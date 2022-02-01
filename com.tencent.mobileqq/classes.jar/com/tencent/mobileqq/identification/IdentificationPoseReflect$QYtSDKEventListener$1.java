@@ -9,12 +9,12 @@ class IdentificationPoseReflect$QYtSDKEventListener$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationPoseReflect$QYtSDKEventListener.a.a.handleEvent(this.jdField_a_of_type_JavaUtilHashMap);
+    this.b.a.b.handleEvent(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationPoseReflect.QYtSDKEventListener.1
  * JD-Core Version:    0.7.0.1
  */

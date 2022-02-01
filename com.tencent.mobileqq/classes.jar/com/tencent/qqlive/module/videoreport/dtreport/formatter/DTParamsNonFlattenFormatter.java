@@ -62,13 +62,15 @@ public class DTParamsNonFlattenFormatter
     if (paramMap1 != null) {
       paramString.putAll(paramMap1);
     }
-    paramString.put("udf_kv", paramMap2);
+    if (paramMap2 != null) {
+      paramString.put("udf_kv", paramMap2);
+    }
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.DTParamsNonFlattenFormatter
  * JD-Core Version:    0.7.0.1
  */

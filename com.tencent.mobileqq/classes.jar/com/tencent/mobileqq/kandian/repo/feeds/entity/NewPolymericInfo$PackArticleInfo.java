@@ -5,31 +5,31 @@ import com.tencent.qphone.base.util.QLog;
 public class NewPolymericInfo$PackArticleInfo
   implements Cloneable
 {
-  public int a;
   public long a;
-  public NewPolymericInfo.PackQuestionAnswerExtraInfo a;
-  public NewPolymericInfo.PackTopicExtraInfo a;
-  public NewPolymericInfo.PackVideoInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public int c;
-  public long c;
   public String c;
-  public int d;
   public String d;
-  public int e;
   public String e;
-  public int f;
   public String f;
-  public int g;
   public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  public int h;
+  public long i;
+  public long j;
+  public int k;
+  public String l;
+  public int m;
+  public int n;
+  public NewPolymericInfo.PackVideoInfo o;
+  public NewPolymericInfo.PackTopicExtraInfo p;
+  public NewPolymericInfo.PackQuestionAnswerExtraInfo q;
+  public String r;
+  public boolean s;
+  public String t;
+  public int u;
+  public int v;
+  public String w;
+  public int x;
+  public String y;
   
   public Object clone()
   {
@@ -39,17 +39,17 @@ public class NewPolymericInfo$PackArticleInfo
       localPackArticleInfo1 = (PackArticleInfo)super.clone();
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo != null) {
-          localPackArticleInfo1.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo = ((NewPolymericInfo.PackVideoInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo.clone());
+        if (this.o != null) {
+          localPackArticleInfo1.o = ((NewPolymericInfo.PackVideoInfo)this.o.clone());
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackTopicExtraInfo != null) {
-          localPackArticleInfo1.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackTopicExtraInfo = ((NewPolymericInfo.PackTopicExtraInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackTopicExtraInfo.clone());
+        if (this.p != null) {
+          localPackArticleInfo1.p = ((NewPolymericInfo.PackTopicExtraInfo)this.p.clone());
         }
         PackArticleInfo localPackArticleInfo2 = localPackArticleInfo1;
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackQuestionAnswerExtraInfo == null) {
+        if (this.q == null) {
           return ???;
         }
-        localPackArticleInfo1.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackQuestionAnswerExtraInfo = ((NewPolymericInfo.PackQuestionAnswerExtraInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackQuestionAnswerExtraInfo.clone());
+        localPackArticleInfo1.q = ((NewPolymericInfo.PackQuestionAnswerExtraInfo)this.q.clone());
         return localPackArticleInfo1;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException1) {}
@@ -71,54 +71,54 @@ public class NewPolymericInfo$PackArticleInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PackArticleInfo = {\ncellStyleID = ");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.t);
     localStringBuilder.append("\narticleID = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\narticleTitle = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\narticleSummary = ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\nfirstPagePicUrl = ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("\narticleContentUrl = ");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("\nsubscribeID = ");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("\nsubscribeName = ");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("\nstrategyID = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\nalgorithmID = ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append("\nfeedsID = ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append("\nfeedsType = ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\ninnerUniqID = ");
-    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
-    localStringBuilder.append("\nisGallery = ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append("\ngalleryPicNum = ");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append("\nvideoInfo = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityNewPolymericInfo$PackVideoInfo);
-    localStringBuilder.append("\nbuttonWording = ");
     localStringBuilder.append(this.h);
+    localStringBuilder.append("\nalgorithmID = ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("\nfeedsID = ");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("\nfeedsType = ");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("\ninnerUniqID = ");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("\nisGallery = ");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("\ngalleryPicNum = ");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append("\nvideoInfo = ");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("\nbuttonWording = ");
+    localStringBuilder.append(this.r);
     localStringBuilder.append("\nisUgc = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.s);
     localStringBuilder.append("\nplayCount=");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.v);
     localStringBuilder.append("commentCount=");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(this.x);
     localStringBuilder.append("isGifCoverUrl = ");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.u);
     localStringBuilder.append("\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.NewPolymericInfo.PackArticleInfo
  * JD-Core Version:    0.7.0.1
  */

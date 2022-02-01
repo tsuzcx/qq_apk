@@ -72,8 +72,8 @@ import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity309
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity327;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity34;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity35;
-import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity350;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity351;
+import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity356;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity36;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity41;
 import com.tencent.mobileqq.persistence.bridge.upgrade.entity.DBUpgradeEntity48;
@@ -258,8 +258,8 @@ public class DBBuildUtil
     sDBUpgradeEntityList.add(DBUpgradeEntity300.class);
     sDBUpgradeEntityList.add(DBUpgradeEntity309.class);
     sDBUpgradeEntityList.add(DBUpgradeEntity327.class);
-    sDBUpgradeEntityList.add(DBUpgradeEntity350.class);
     sDBUpgradeEntityList.add(DBUpgradeEntity351.class);
+    sDBUpgradeEntityList.add(DBUpgradeEntity356.class);
   }
   
   private static List<Interceptor<Void>> createDBCorruptionInterceptorList()
@@ -356,7 +356,7 @@ public class DBBuildUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.DBBuildUtil
  * JD-Core Version:    0.7.0.1
  */

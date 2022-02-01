@@ -13,17 +13,17 @@ class CustomKeyboardModule$2
   
   public void onClick(View paramView)
   {
-    CustomKeyboardModule.a(this.a).setVisibility(8);
-    CustomKeyboardModule.b(this.a);
-    if ((CustomKeyboardModule.a(this.a) instanceof Activity)) {
-      KeyboardUtil.b((Activity)CustomKeyboardModule.b(this.a), CustomKeyboardModule.a(this.a));
+    CustomKeyboardModule.b(this.a).setVisibility(8);
+    CustomKeyboardModule.c(this.a);
+    if ((CustomKeyboardModule.d(this.a) instanceof Activity)) {
+      KeyboardUtil.b((Activity)CustomKeyboardModule.e(this.a), CustomKeyboardModule.f(this.a));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.keyboard.CustomKeyboardModule.2
  * JD-Core Version:    0.7.0.1
  */

@@ -85,10 +85,10 @@ public class QCallRecord
     Calendar localCalendar2 = Calendar.getInstance();
     localCalendar2.setTimeInMillis(System.currentTimeMillis());
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6))) {
-      return HardCodeUtil.a(2131709565);
+      return HardCodeUtil.a(2131907295);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) + 1 == localCalendar2.get(6))) {
-      return HardCodeUtil.a(2131709563);
+      return HardCodeUtil.a(2131907293);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) > localCalendar2.get(6) - 7)) {
       switch (localCalendar1.get(7))
@@ -96,19 +96,19 @@ public class QCallRecord
       default: 
         break;
       case 7: 
-        return HardCodeUtil.a(2131709562);
+        return HardCodeUtil.a(2131907292);
       case 6: 
-        return HardCodeUtil.a(2131709567);
+        return HardCodeUtil.a(2131907297);
       case 5: 
-        return HardCodeUtil.a(2131709564);
+        return HardCodeUtil.a(2131907294);
       case 4: 
-        return HardCodeUtil.a(2131709561);
+        return HardCodeUtil.a(2131907291);
       case 3: 
-        return HardCodeUtil.a(2131709559);
+        return HardCodeUtil.a(2131907289);
       case 2: 
-        return HardCodeUtil.a(2131709560);
+        return HardCodeUtil.a(2131907290);
       case 1: 
-        return HardCodeUtil.a(2131709557);
+        return HardCodeUtil.a(2131907287);
       }
     }
     return new SimpleDateFormat("yy-MM-dd").format(localDate);
@@ -176,7 +176,7 @@ public class QCallRecord
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("");
         ((StringBuilder)localObject1).append(k);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131709558));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131907288));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       localObject2 = localObject1;
@@ -185,13 +185,13 @@ public class QCallRecord
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
         ((StringBuilder)localObject2).append(j);
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131709566));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131907296));
         localObject2 = ((StringBuilder)localObject2).toString();
       }
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append((String)localObject2);
       ((StringBuilder)localObject1).append(i);
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131709556));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131907286));
       return ((StringBuilder)localObject1).toString();
     }
     return "";
@@ -261,7 +261,7 @@ public class QCallRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QCallRecord
  * JD-Core Version:    0.7.0.1
  */

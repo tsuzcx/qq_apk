@@ -10,7 +10,7 @@ class MediaPlayerWrapper$2
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
+    this.a.a(this.b);
   }
 }
 

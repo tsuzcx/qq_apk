@@ -18,43 +18,43 @@ class NearbyProfileDisplayTribePanel$29
     {
     default: 
     case 6: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null)
+      if (this.a.S != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a();
+        this.a.S.a();
         return;
       }
       break;
     case 5: 
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131699176, 0).a();
+      QQToast.makeText(this.a.e, 2131897192, 0).show();
       return;
     case 4: 
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null) && (NearbyProfileDisplayTribePanel.a(this.a) != null))
+      if ((this.a.S != null) && (NearbyProfileDisplayTribePanel.j(this.a) != null))
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698757);
+        if (this.a.T != null) {
+          this.a.T.setText(2131896715);
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(NearbyProfileDisplayTribePanel.a(this.a).uRoomid);
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, NearbyProfileDisplayTribePanel.a(this.a).uin, "", "yes", "android");
+        this.a.S.a(NearbyProfileDisplayTribePanel.j(this.a).uRoomid);
+        ReportController.b(this.a.e.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, NearbyProfileDisplayTribePanel.j(this.a).uin, "", "yes", "android");
         return;
       }
       break;
     case 3: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
+      if (this.a.T != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
+        this.a.T.setProgress(100);
         return;
       }
       break;
     case 2: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
+      if (this.a.T != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
+        this.a.T.setProgress(paramMessage.arg1);
         return;
       }
       break;
     case 1: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131699179);
+      if (this.a.T != null) {
+        this.a.T.setText(2131897195);
       }
       break;
     }
@@ -62,7 +62,7 @@ class NearbyProfileDisplayTribePanel$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.29
  * JD-Core Version:    0.7.0.1
  */

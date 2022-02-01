@@ -1,53 +1,26 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
-import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
 import com.tencent.mobileqq.dinifly.model.content.RectangleShape;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 
 class RectangleShapeParser
 {
+  private static JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "nm", "p", "s", "r", "hd" });
+  
   static RectangleShape parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    String str1 = null;
-    Object localObject1 = str1;
+    String str = null;
+    Object localObject1 = str;
     Object localObject2 = localObject1;
     Object localObject3 = localObject2;
     boolean bool = false;
     while (paramJsonReader.hasNext())
     {
-      String str2 = paramJsonReader.nextName();
-      int i = -1;
-      int j = str2.hashCode();
-      if (j != 112)
-      {
-        if (j != 3324)
-        {
-          if (j != 3519)
-          {
-            if (j != 114)
-            {
-              if ((j == 115) && (str2.equals("s"))) {
-                i = 2;
-              }
-            }
-            else if (str2.equals("r")) {
-              i = 3;
-            }
-          }
-          else if (str2.equals("nm")) {
-            i = 0;
-          }
-        }
-        else if (str2.equals("hd")) {
-          i = 4;
-        }
-      }
-      else if (str2.equals("p")) {
-        i = 1;
-      }
+      int i = paramJsonReader.selectName(NAMES);
       if (i != 0)
       {
         if (i != 1)
@@ -75,15 +48,15 @@ class RectangleShapeParser
         }
       }
       else {
-        str1 = paramJsonReader.nextString();
+        str = paramJsonReader.nextString();
       }
     }
-    return new RectangleShape(str1, (AnimatableValue)localObject1, (AnimatablePointValue)localObject2, (AnimatableFloatValue)localObject3, bool);
+    return new RectangleShape(str, (AnimatableValue)localObject1, (AnimatableValue)localObject2, (AnimatableFloatValue)localObject3, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.RectangleShapeParser
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class CEFontPixelsFactory
       return null;
     }
     paramString = FontUtils.a(paramString, this.a);
-    return FontUtils.a((int)(paramFontOption.a / DeviceInfoUtil.a()), paramFontOption.b, (int)paramFontOption.c, (int)paramFontOption.d, 1, "", paramString, this.a);
+    return FontUtils.a((int)(paramFontOption.a / DeviceInfoUtil.A()), paramFontOption.b, (int)paramFontOption.e, (int)paramFontOption.f, 1, "", paramString, this.a);
   }
   
   public void a(int paramInt)
@@ -28,7 +28,7 @@ public class CEFontPixelsFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.util.CEFontPixelsFactory
  * JD-Core Version:    0.7.0.1
  */

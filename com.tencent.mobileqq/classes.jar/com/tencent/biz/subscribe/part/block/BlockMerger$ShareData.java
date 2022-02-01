@@ -3,17 +3,17 @@ package com.tencent.biz.subscribe.part.block;
 public class BlockMerger$ShareData
 {
   public Object a;
-  public boolean a;
+  public boolean b;
   
   public BlockMerger$ShareData(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a = paramObject;
   }
   
   public BlockMerger$ShareData(Object paramObject, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramObject;
+    this.b = paramBoolean;
   }
 }
 

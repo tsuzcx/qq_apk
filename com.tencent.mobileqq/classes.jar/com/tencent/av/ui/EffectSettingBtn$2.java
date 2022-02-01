@@ -7,12 +7,12 @@ class EffectSettingBtn$2
 {
   public void run()
   {
-    if (!this.this$0.b)
+    if (!this.this$0.g)
     {
-      this.this$0.a.postDelayed(EffectSettingBtn.a(this.this$0), 1000L);
+      this.this$0.c.postDelayed(EffectSettingBtn.a(this.this$0), 1000L);
       return;
     }
-    EffectSettingBtn.a(this.this$0);
+    EffectSettingBtn.b(this.this$0);
   }
 }
 

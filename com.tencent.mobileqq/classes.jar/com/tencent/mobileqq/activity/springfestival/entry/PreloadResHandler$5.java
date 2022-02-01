@@ -27,7 +27,7 @@ class PreloadResHandler$5
     }
     String str;
     boolean bool;
-    if (((i & j) != 0) && (!StringUtil.a(paramPathResult.filePath)))
+    if (((i & j) != 0) && (!StringUtil.isEmpty(paramPathResult.filePath)))
     {
       str = paramPathResult.filePath;
       bool = true;
@@ -44,17 +44,17 @@ class PreloadResHandler$5
       } else {
         paramPathResult = paramPathResult.filePath;
       }
-      QLog.i("shua2021_PreloadResHandler", 2, String.format("getPreloadFilePath... onResult=%d path=%s url=%s", new Object[] { Integer.valueOf(paramInt), paramPathResult, this.jdField_a_of_type_JavaLangString }));
+      QLog.i("shua2021_PreloadResHandler", 2, String.format("getPreloadFilePath... onResult=%d path=%s url=%s", new Object[] { Integer.valueOf(paramInt), paramPathResult, this.a }));
     }
-    paramPathResult = (PreloadResHandler)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    paramPathResult = (PreloadResHandler)this.b.get();
     if (paramPathResult != null) {
-      paramPathResult.a(bool, this.jdField_a_of_type_JavaLangString, str);
+      paramPathResult.a(bool, this.a, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.PreloadResHandler.5
  * JD-Core Version:    0.7.0.1
  */

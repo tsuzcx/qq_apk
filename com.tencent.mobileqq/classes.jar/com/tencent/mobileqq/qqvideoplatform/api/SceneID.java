@@ -2,7 +2,28 @@ package com.tencent.mobileqq.qqvideoplatform.api;
 
 public class SceneID
 {
-  public static String a(int paramInt)
+  public static final int AE_ALBUM_VIDEO = 113;
+  public static final int AIO_LONG_BUBBLE = 101;
+  public static final int AIO_QQFLOATING = 116;
+  public static final int AIO_SHORT_BUBBLE = 100;
+  public static final int ALBUM_VIDEO = 105;
+  public static final int AR_VIDEO = 108;
+  public static final int AVGAME_VIDEO = 107;
+  public static final int COMIC_VIDEO = 119;
+  public static final int FILE_VIDEO = 109;
+  public static final int GDT_AD_VIDEO = 110;
+  public static final int MINIAPP_VIDEO = 114;
+  public static final int QQGME_VIDEO = 106;
+  public static final int QQ_HEALTH_CENTER = 117;
+  public static final int QQ_RTC_VIDEO = 115;
+  public static final int QQ_VOICE = 118;
+  public static final int QZONE_GDT_VIDEO = 103;
+  public static final int QZONE_VIDEO = 102;
+  public static final int READINJOY_VIDEO = 104;
+  public static final int TRIBE_VIDEO = 111;
+  public static final int WS_VIDEO = 112;
+  
+  public static String getSceneStr(int paramInt)
   {
     switch (paramInt)
     {
@@ -51,7 +72,7 @@ public class SceneID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqvideoplatform.api.SceneID
  * JD-Core Version:    0.7.0.1
  */

@@ -71,7 +71,7 @@ public abstract class PlayModeUtils$VideoInfoObserver
         {
           a(paramInt, paramBundle, null);
         }
-        paramBundle = GetVideoFullInfoListRequest.a;
+        paramBundle = GetVideoFullInfoListRequest.g;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(l);
         ((StringBuilder)localObject1).append("");
@@ -104,7 +104,7 @@ public abstract class PlayModeUtils$VideoInfoObserver
       }
     }
     a(paramInt, null, null);
-    paramArrayOfByte = GetVideoFullInfoListRequest.a;
+    paramArrayOfByte = GetVideoFullInfoListRequest.g;
     paramBundle = new StringBuilder();
     paramBundle.append(l);
     paramBundle.append("");
@@ -116,7 +116,7 @@ public abstract class PlayModeUtils$VideoInfoObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.VideoInfoObserver
  * JD-Core Version:    0.7.0.1
  */

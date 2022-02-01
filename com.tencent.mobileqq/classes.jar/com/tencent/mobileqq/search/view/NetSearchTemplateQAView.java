@@ -12,25 +12,24 @@ import java.util.ArrayList;
 public class NetSearchTemplateQAView
   extends NetSearchTemplateBaseView
 {
-  public LinearLayout a;
-  public TextView a;
   public URLImageView a;
-  public ArrayList<NetSearchTemplateQAView.AnswerView> a;
   public TextView b;
+  public LinearLayout c;
+  public TextView d;
+  public ArrayList<NetSearchTemplateQAView.AnswerView> n = new ArrayList();
   
   public NetSearchTemplateQAView(ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   protected void a()
   {
-    View localView = a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363011));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368069));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131362712));
-    this.b = ((TextView)localView.findViewById(2131362715));
+    View localView = b(this.m);
+    this.a = ((URLImageView)localView.findViewById(2131428814));
+    this.b = ((TextView)localView.findViewById(2131434919));
+    this.c = ((LinearLayout)localView.findViewById(2131428394));
+    this.d = ((TextView)localView.findViewById(2131428397));
   }
   
   public void a(NetSearchTemplateQAItem paramNetSearchTemplateQAItem)
@@ -40,7 +39,7 @@ public class NetSearchTemplateQAView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateQAView
  * JD-Core Version:    0.7.0.1
  */

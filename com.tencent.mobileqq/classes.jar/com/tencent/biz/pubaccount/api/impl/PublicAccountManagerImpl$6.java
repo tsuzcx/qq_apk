@@ -15,7 +15,7 @@ class PublicAccountManagerImpl$6
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    this.a.setObserver(null);
     if (paramBoolean) {}
     try
     {
@@ -75,7 +75,7 @@ class PublicAccountManagerImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.6
  * JD-Core Version:    0.7.0.1
  */

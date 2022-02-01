@@ -5,6 +5,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import com.tencent.mobileqq.qrscan.OnQRHandleResultCallback;
 import com.tencent.mobileqq.qrscan.ScannerParams;
+import com.tencent.mobileqq.wxmini.api.IWxMiniManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -22,11 +23,6 @@ public class MiniCodeQRProcessor
     return "MiniCodeQRProcessor";
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
     paramString1.toLowerCase();
@@ -38,8 +34,17 @@ public class MiniCodeQRProcessor
     if (QLog.isColorLevel()) {
       QLog.i("BaseQRScanResultProcessor.MiniCodeProcessor", 2, String.format("jumpMiniCode result=%s", new Object[] { paramString1 }));
     }
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchAppByMiniCode(this.a.a(), paramString1, 1048, null);
-    this.a.b();
+    if ("wx".equals(paramString2)) {
+      ((IWxMiniManager)QRoute.api(IWxMiniManager.class)).startWxMiniApp(this.b.d(), paramString1, 2, 1048);
+    } else {
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchAppByMiniCode(this.b.d(), paramString1, 1048, null);
+    }
+    this.b.b();
+    return true;
+  }
+  
+  public boolean b()
+  {
     return true;
   }
 }

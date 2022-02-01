@@ -7,19 +7,19 @@ class CursorManager$1
   
   public void run()
   {
-    UserEditInfo localUserEditInfo1 = this.this$0.a();
+    UserEditInfo localUserEditInfo1 = this.this$0.b();
     UserEditInfo localUserEditInfo2 = this.a;
     boolean bool = true;
-    localUserEditInfo2.jdField_c_of_type_Boolean = true;
-    if ((localUserEditInfo1 == null) || (localUserEditInfo1.jdField_c_of_type_Int != this.a.jdField_c_of_type_Int) || (!CursorManager.a(this.this$0))) {
+    localUserEditInfo2.j = true;
+    if ((localUserEditInfo1 == null) || (localUserEditInfo1.f != this.a.f) || (!CursorManager.a(this.this$0))) {
       bool = false;
     }
-    localUserEditInfo2.a = bool;
+    localUserEditInfo2.e = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.CursorManager.1
  * JD-Core Version:    0.7.0.1
  */

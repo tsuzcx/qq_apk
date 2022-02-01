@@ -21,7 +21,7 @@ class TroopAddFrdsInnerFrame$5
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    Object localObject1 = this.a.subList(this.b, this.c);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = ((List)localObject1).iterator();
     int i = 0;
@@ -32,20 +32,20 @@ class TroopAddFrdsInnerFrame$5
         break;
       }
       localTroopMemberInfo = (TroopMemberInfo)localIterator.next();
-      if (!this.jdField_a_of_type_JavaLangString.equals(this.this$0.jdField_b_of_type_JavaLangString))
+      if (!this.d.equals(this.this$0.c))
       {
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("subThread, curTroopUin != mTroopUin, return, ");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.d);
           ((StringBuilder)localObject1).append(",");
-          ((StringBuilder)localObject1).append(this.this$0.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.this$0.c);
           QLog.d("TroopMemberListInnerFrame.thread", 2, ((StringBuilder)localObject1).toString());
         }
         return;
       }
-    } while (((!this.this$0.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mShowMyself) && (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(localTroopMemberInfo.memberuin))) || (this.this$0.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.mUinsToHide.contains(localTroopMemberInfo.memberuin)) || (!Utils.d(localTroopMemberInfo.memberuin)));
+    } while (((!this.this$0.f.mShowMyself) && (this.e.equalsIgnoreCase(localTroopMemberInfo.memberuin))) || (this.this$0.f.mUinsToHide.contains(localTroopMemberInfo.memberuin)) || (!Utils.e(localTroopMemberInfo.memberuin)));
     for (;;)
     {
       try
@@ -57,9 +57,9 @@ class TroopAddFrdsInnerFrame$5
             break;
           }
           localObject1 = null;
-          if (this.this$0.f == TroopAddFrdsInnerFrame.d)
+          if (this.this$0.z == TroopAddFrdsInnerFrame.x)
           {
-            localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(CommonUtils.a(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
+            localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.b(CommonUtils.a(this.this$0.h, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
             if ((localTroopMemberInfo.displayedNamePinyinFirst != null) && (localTroopMemberInfo.displayedNamePinyinFirst.length() != 0)) {
               localObject1 = localTroopMemberInfo.displayedNamePinyinFirst.substring(0, 1);
             } else {
@@ -72,7 +72,7 @@ class TroopAddFrdsInnerFrame$5
               localObject1 = "#";
             }
           }
-          else if (this.this$0.f == TroopAddFrdsInnerFrame.e)
+          else if (this.this$0.z == TroopAddFrdsInnerFrame.y)
           {
             if ((!TextUtils.isEmpty(TroopAddFrdsInnerFrame.a(this.this$0))) && (TroopAddFrdsInnerFrame.a(this.this$0).equalsIgnoreCase(localTroopMemberInfo.memberuin))) {
               localTroopMemberInfo.addState = 1;
@@ -84,15 +84,15 @@ class TroopAddFrdsInnerFrame$5
             ((StringBuilder)localObject1).append(localTroopMemberInfo.addState);
             localObject1 = ((StringBuilder)localObject1).toString();
           }
-          if ((localTroopMemberInfo.commonFrdCnt == -2147483648) && (!localTroopMemberInfo.memberuin.equals(this.jdField_b_of_type_JavaLangString))) {
+          if ((localTroopMemberInfo.commonFrdCnt == -2147483648) && (!localTroopMemberInfo.memberuin.equals(this.e))) {
             localArrayList.add(localTroopMemberInfo.memberuin);
           }
-          synchronized (this.jdField_a_of_type_JavaUtilMap)
+          synchronized (this.f)
           {
-            if (this.jdField_a_of_type_JavaUtilMap.get(localObject1) == null) {
-              this.jdField_a_of_type_JavaUtilMap.put(localObject1, new ArrayList());
+            if (this.f.get(localObject1) == null) {
+              this.f.put(localObject1, new ArrayList());
             }
-            ((List)this.jdField_a_of_type_JavaUtilMap.get(localObject1)).add(localTroopMemberInfo);
+            ((List)this.f.get(localObject1)).add(localTroopMemberInfo);
             i += 1;
           }
         }
@@ -101,31 +101,31 @@ class TroopAddFrdsInnerFrame$5
       {
         continue;
       }
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      synchronized (this.g)
       {
-        this.jdField_b_of_type_JavaUtilList.addAll(localArrayList);
+        this.g.addAll(localArrayList);
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder();
           ((StringBuilder)???).append("subThread end, id=");
           ((StringBuilder)???).append(Thread.currentThread().getId());
           ((StringBuilder)???).append(", threadCnt=");
-          ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          ((StringBuilder)???).append(this.h.get());
           ((StringBuilder)???).append(", curTroopUin=");
-          ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)???).append(this.d);
           QLog.d("TroopMemberListInnerFrame.thread", 2, ((StringBuilder)???).toString());
         }
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndDecrement() <= 1)
+        if (this.h.getAndDecrement() <= 1)
         {
-          ??? = this.this$0.jdField_b_of_type_AndroidOsHandler.obtainMessage(3);
+          ??? = this.this$0.C.obtainMessage(3);
           ((Message)???).arg1 = i;
-          ((Message)???).obj = new Object[] { this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString };
-          this.this$0.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)???);
-          if (this.jdField_b_of_type_JavaUtilList.size() > 0)
+          ((Message)???).obj = new Object[] { this.f, this.d };
+          this.this$0.C.sendMessage((Message)???);
+          if (this.g.size() > 0)
           {
-            ??? = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
-            ((Message)???).obj = this.jdField_b_of_type_JavaUtilList;
-            this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)???);
+            ??? = this.this$0.B.obtainMessage(5);
+            ((Message)???).obj = this.g;
+            this.this$0.B.sendMessage((Message)???);
           }
         }
         return;
@@ -135,7 +135,7 @@ class TroopAddFrdsInnerFrame$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopAddFrdsInnerFrame.5
  * JD-Core Version:    0.7.0.1
  */

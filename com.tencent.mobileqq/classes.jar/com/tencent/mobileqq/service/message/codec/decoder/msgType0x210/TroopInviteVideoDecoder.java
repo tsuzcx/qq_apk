@@ -174,7 +174,7 @@ public class TroopInviteVideoDecoder
           return;
         }
       }
-      paramBoolean = paramQQAppInterface.getAVNotifyCenter().c(localInviteInfo.uint64_group_code.get());
+      paramBoolean = paramQQAppInterface.getAVNotifyCenter().d(localInviteInfo.uint64_group_code.get());
       if (QLog.isColorLevel())
       {
         paramInviteInfo = new StringBuilder();
@@ -198,20 +198,20 @@ public class TroopInviteVideoDecoder
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(localInviteInfo.uint64_uin.get());
         localStringBuilder.append("");
-        if (!((TroopManager)localObject).c(paramInviteInfo, localStringBuilder.toString()))
+        if (!((TroopManager)localObject).j(paramInviteInfo, localStringBuilder.toString()))
         {
           paramBoolean = false;
-          if (paramQQAppInterface.getAVNotifyCenter().b() > 0L) {
+          if (paramQQAppInterface.getAVNotifyCenter().g() > 0L) {
             paramBoolean = true;
           }
-          if (((TroopManager)localObject).b() == 2)
+          if (((TroopManager)localObject).j() == 2)
           {
             if (QLog.isColorLevel()) {
               QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "只允许同时存在两个邀请框");
             }
             return;
           }
-          if (((TroopManager)localObject).b() > 0)
+          if (((TroopManager)localObject).j() > 0)
           {
             if (QLog.isColorLevel()) {
               QLog.d("TroopInviteVideoDecoder.troopgroup_vedio.invite", 2, "hasGroupInviting");
@@ -224,7 +224,7 @@ public class TroopInviteVideoDecoder
           {
             paramInviteInfo = new Intent(paramQQAppInterface.getApp().getApplicationContext(), GaInviteDialogActivity.class);
           }
-          ((TroopManager)localObject).a(String.valueOf(localInviteInfo.uint64_group_code.get()), String.valueOf(localInviteInfo.uint64_uin.get()));
+          ((TroopManager)localObject).i(String.valueOf(localInviteInfo.uint64_group_code.get()), String.valueOf(localInviteInfo.uint64_uin.get()));
           if (((KeyguardManager)paramQQAppInterface.getApp().getApplicationContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode())
           {
             localObject = new Intent();
@@ -256,13 +256,13 @@ public class TroopInviteVideoDecoder
       QLog.d("TroopInviteVideoDecoder", 2, "processMsg0x210Sub0xb1");
     }
     paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    a(paramMessageHandler.a, paramMsgType0x210, false);
-    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
+    a(paramMessageHandler.n, paramMsgType0x210, false);
+    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.TroopInviteVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

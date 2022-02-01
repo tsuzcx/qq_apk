@@ -12,17 +12,17 @@ public class JumpParserFactory
     {
       try
       {
-        if (paramJumpParserResult.d() == null)
+        if (paramJumpParserResult.e() == null)
         {
           continue;
           if (i >= paramArrayList.size()) {
             break label148;
           }
           JumpParserBean localJumpParserBean = (JumpParserBean)paramArrayList.get(i);
-          if (!paramJumpParserResult.d().startsWith(localJumpParserBean.a())) {
+          if (!paramJumpParserResult.e().startsWith(localJumpParserBean.a())) {
             break label141;
           }
-          paramJumpParserResult = localJumpParserBean.a();
+          paramJumpParserResult = localJumpParserBean.b();
           if (paramJumpParserResult == null) {
             break;
           }
@@ -57,7 +57,7 @@ public class JumpParserFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.JumpParserFactory
  * JD-Core Version:    0.7.0.1
  */

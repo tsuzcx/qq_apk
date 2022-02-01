@@ -11,26 +11,32 @@ class AEEditorLoadingView$3
   
   public Unit a(PAGView paramPAGView)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     String str;
     if (i != 1)
     {
-      if (i != 2) {
-        str = AEEditorLoadingView.d();
-      } else {
-        str = AEEditorLoadingView.c();
+      if (i != 2)
+      {
+        if (i != 4) {
+          str = AEEditorLoadingView.f();
+        } else {
+          str = "";
+        }
+      }
+      else {
+        str = AEEditorLoadingView.e();
       }
     }
     else {
-      str = AEEditorLoadingView.b();
+      str = AEEditorLoadingView.d();
     }
-    AEEditorLoadingView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorLoadingView, paramPAGView, str);
+    AEEditorLoadingView.a(this.b, paramPAGView, str);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.AEEditorLoadingView.3
  * JD-Core Version:    0.7.0.1
  */

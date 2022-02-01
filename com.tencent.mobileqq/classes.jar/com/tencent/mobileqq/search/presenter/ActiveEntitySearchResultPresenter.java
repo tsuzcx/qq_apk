@@ -51,28 +51,28 @@ import com.tencent.qphone.base.util.QLog;
 public class ActiveEntitySearchResultPresenter
   extends SearchResultPresenter
 {
-  int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private GroupSearchAdapter jdField_a_of_type_ComTencentMobileqqSearchAdapterGroupSearchAdapter;
-  private GroupBaseNetSearchModelItem jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem;
-  private TroopMngObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver = new ActiveEntitySearchResultPresenter.1(this);
-  private TroopNotifyHelper.OnTroopSafeDialogClickConfirm jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNotifyHelper$OnTroopSafeDialogClickConfirm = new ActiveEntitySearchResultPresenter.2(this);
-  boolean jdField_a_of_type_Boolean = false;
+  int a;
+  boolean b = false;
+  private GroupSearchAdapter c;
+  private QQAppInterface d;
+  private View e;
+  private GroupBaseNetSearchModelItem f;
+  private TroopMngObserver g = new ActiveEntitySearchResultPresenter.1(this);
+  private TroopNotifyHelper.OnTroopSafeDialogClickConfirm h = new ActiveEntitySearchResultPresenter.2(this);
   
   public ActiveEntitySearchResultPresenter(IFaceDecoder paramIFaceDecoder, int paramInt)
   {
     super(paramIFaceDecoder);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.a = paramInt;
+    this.d = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
   }
   
   public ActiveEntitySearchResultPresenter(IFaceDecoder paramIFaceDecoder, int paramInt, GroupSearchAdapter paramGroupSearchAdapter)
   {
     super(paramIFaceDecoder);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterGroupSearchAdapter = paramGroupSearchAdapter;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.a = paramInt;
+    this.c = paramGroupSearchAdapter;
+    this.d = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
   }
   
   private void a(Context paramContext, GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem)
@@ -132,19 +132,19 @@ public class ActiveEntitySearchResultPresenter
         if ((i != 103) && (i != 104))
         {
           if ((i == 112) || (i == 113)) {
-            if (paramGroupBaseNetSearchModelItem.jdField_d_of_type_Boolean) {
+            if (paramGroupBaseNetSearchModelItem.I) {
               i = 30017;
             } else {
               i = 30019;
             }
           }
         }
-        else if (paramGroupBaseNetSearchModelItem.jdField_d_of_type_Boolean) {
+        else if (paramGroupBaseNetSearchModelItem.I) {
           i = 30013;
         } else {
           i = 30015;
         }
-        JoinTroopUtil.a(paramContext, paramGroupBaseNetSearchModelItem.jdField_b_of_type_JavaLangString, paramGroupBaseNetSearchModelItem.jdField_c_of_type_JavaLangString, i, "", paramGroupBaseNetSearchModelItem.q, false, new ActiveEntitySearchResultPresenter.5(this, paramGroupBaseNetSearchModelItem));
+        JoinTroopUtil.a(paramContext, paramGroupBaseNetSearchModelItem.b, paramGroupBaseNetSearchModelItem.c, i, "", paramGroupBaseNetSearchModelItem.T, false, new ActiveEntitySearchResultPresenter.6(this, paramGroupBaseNetSearchModelItem));
         return;
       }
       return;
@@ -156,7 +156,7 @@ public class ActiveEntitySearchResultPresenter
     Drawable localDrawable;
     if (paramInt == 1)
     {
-      localDrawable = paramImageView2.getResources().getDrawable(2130842421);
+      localDrawable = paramImageView2.getResources().getDrawable(2130843374);
       paramImageView1.setColorFilter(-1610612736, PorterDuff.Mode.SRC_OVER);
       paramImageView2.setImageDrawable(localDrawable);
       paramImageView2.setScaleType(ImageView.ScaleType.CENTER);
@@ -165,7 +165,7 @@ public class ActiveEntitySearchResultPresenter
     }
     if (paramInt == 2)
     {
-      localDrawable = paramImageView2.getResources().getDrawable(2130842450);
+      localDrawable = paramImageView2.getResources().getDrawable(2130843403);
       paramImageView1.setColorFilter(-1610612736, PorterDuff.Mode.SRC_OVER);
       paramImageView2.setImageDrawable(localDrawable);
       paramImageView2.setScaleType(ImageView.ScaleType.CENTER);
@@ -236,7 +236,7 @@ public class ActiveEntitySearchResultPresenter
   {
     try
     {
-      ReportController.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Grp_find", "", "grptab", "Clk_join", 0, 0, this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.jdField_b_of_type_JavaLangString, "", "", "");
+      ReportController.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "P_CliOper", "Grp_find", "", "grptab", "Clk_join", 0, 0, this.f.b, "", "", "");
       return;
     }
     catch (Throwable localThrowable) {}
@@ -244,7 +244,7 @@ public class ActiveEntitySearchResultPresenter
   
   public void a()
   {
-    GroupSearchAdapter localGroupSearchAdapter = this.jdField_a_of_type_ComTencentMobileqqSearchAdapterGroupSearchAdapter;
+    GroupSearchAdapter localGroupSearchAdapter = this.c;
     if (localGroupSearchAdapter != null) {
       localGroupSearchAdapter.notifyDataSetChanged();
     }
@@ -284,27 +284,27 @@ public class ActiveEntitySearchResultPresenter
     if ((paramISearchResultModel instanceof GroupBaseNetSearchModelItem))
     {
       GroupBaseNetSearchModelItem localGroupBaseNetSearchModelItem = (GroupBaseNetSearchModelItem)paramISearchResultModel;
-      this.jdField_a_of_type_Int = localGroupBaseNetSearchModelItem.d();
-      Object localObject1 = paramISearchResultView.a();
-      Object localObject2 = paramISearchResultView.b();
-      Object localObject3 = paramISearchResultView.c();
-      Resources localResources = paramISearchResultView.a().getContext().getResources();
-      if ((localObject3 != null) && (localGroupBaseNetSearchModelItem.jdField_c_of_type_Int != -1)) {
-        ((TextView)localObject3).setTextColor(localResources.getColor(localGroupBaseNetSearchModelItem.jdField_c_of_type_Int));
+      this.a = localGroupBaseNetSearchModelItem.j();
+      Object localObject1 = paramISearchResultView.b();
+      Object localObject2 = paramISearchResultView.c();
+      Object localObject3 = paramISearchResultView.d();
+      Resources localResources = paramISearchResultView.h().getContext().getResources();
+      if ((localObject3 != null) && (localGroupBaseNetSearchModelItem.q != -1)) {
+        ((TextView)localObject3).setTextColor(localResources.getColor(localGroupBaseNetSearchModelItem.q));
       }
       if ((paramISearchResultView instanceof SearchResultFromNetView))
       {
         paramISearchResultModel = (SearchResultFromNetView)paramISearchResultView;
-        if (paramISearchResultModel.e() != null) {
-          paramISearchResultModel.e().setVisibility(8);
+        if (paramISearchResultModel.l() != null) {
+          paramISearchResultModel.l().setVisibility(8);
         }
         if (localObject1 != null) {
-          a((TextView)localObject1, localGroupBaseNetSearchModelItem.i);
+          a((TextView)localObject1, localGroupBaseNetSearchModelItem.w);
         }
         if (localObject2 != null) {
-          a((TextView)localObject2, localGroupBaseNetSearchModelItem.j);
+          a((TextView)localObject2, localGroupBaseNetSearchModelItem.x);
         }
-        int i = this.jdField_a_of_type_Int;
+        int i = this.a;
         if (i != 1073745984) {
           switch (i)
           {
@@ -319,87 +319,88 @@ public class ActiveEntitySearchResultPresenter
               break;
             }
             ((TextView)localObject1).setCompoundDrawablePadding(AIOUtils.b(4.0F, localResources));
-            ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130841685, 0);
+            ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130842600, 0);
             break;
           case 1002: 
-            if (paramISearchResultModel.a() != null)
+            if (paramISearchResultModel.k() != null)
             {
-              paramISearchResultModel.a().setVisibility(0);
-              paramISearchResultModel.a().setLabelType(1);
-              paramISearchResultModel.a().a(localGroupBaseNetSearchModelItem.a);
+              paramISearchResultModel.k().setVisibility(0);
+              paramISearchResultModel.k().setLabelType(1);
+              paramISearchResultModel.k().a(localGroupBaseNetSearchModelItem.z);
             }
-            if (paramISearchResultModel.c != null) {
-              if ((localGroupBaseNetSearchModelItem.jdField_b_of_type_Long & 0x800) != 0L) {
-                paramISearchResultModel.c.setVisibility(0);
+            if (paramISearchResultModel.b != null) {
+              if ((localGroupBaseNetSearchModelItem.v & 0x800) != 0L) {
+                paramISearchResultModel.b.setVisibility(0);
               } else {
-                paramISearchResultModel.c.setVisibility(8);
+                paramISearchResultModel.b.setVisibility(8);
               }
             }
-            if (paramISearchResultModel.d == null) {
+            if (paramISearchResultModel.c == null) {
               break;
             }
-            paramISearchResultModel.d.setVisibility(8);
+            paramISearchResultModel.c.setVisibility(8);
             break;
           case 1001: 
-            if (paramISearchResultModel.b() != null) {
-              paramISearchResultModel.b().a(localGroupBaseNetSearchModelItem.jdField_b_of_type_JavaUtilList, localGroupBaseNetSearchModelItem.e, localGroupBaseNetSearchModelItem.jdField_d_of_type_Int - 1, 1);
+            if (paramISearchResultModel.o() != null) {
+              paramISearchResultModel.o().a(localGroupBaseNetSearchModelItem.V, localGroupBaseNetSearchModelItem.s, localGroupBaseNetSearchModelItem.r - 1, 1);
             }
-            if (paramISearchResultModel.h() != null) {
-              if (!TextUtils.isEmpty(localGroupBaseNetSearchModelItem.s)) {
-                paramISearchResultModel.h().setText(localGroupBaseNetSearchModelItem.s);
+            if (paramISearchResultModel.q() != null) {
+              if (!TextUtils.isEmpty(localGroupBaseNetSearchModelItem.W)) {
+                paramISearchResultModel.q().setText(localGroupBaseNetSearchModelItem.W);
               } else {
-                paramISearchResultModel.h().setText("");
+                paramISearchResultModel.q().setText("");
               }
             }
-            if ((paramISearchResultModel.g() != null) && (paramISearchResultModel.f() != null))
+            if ((paramISearchResultModel.p() != null) && (paramISearchResultModel.n() != null))
             {
-              localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-              if (((FriendsManager)localObject1).b(localGroupBaseNetSearchModelItem.jdField_b_of_type_JavaLangString)) {
-                localGroupBaseNetSearchModelItem.n = 2;
-              } else if (((FriendsManager)localObject1).d(localGroupBaseNetSearchModelItem.jdField_b_of_type_JavaLangString)) {
-                localGroupBaseNetSearchModelItem.n = 1;
+              localObject1 = (FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
+              if (((FriendsManager)localObject1).n(localGroupBaseNetSearchModelItem.b)) {
+                localGroupBaseNetSearchModelItem.X = 2;
+              } else if (((FriendsManager)localObject1).v(localGroupBaseNetSearchModelItem.b)) {
+                localGroupBaseNetSearchModelItem.X = 1;
               }
-              if (localGroupBaseNetSearchModelItem.n == 0)
+              if (localGroupBaseNetSearchModelItem.X == 0)
               {
-                if (!RobotUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localGroupBaseNetSearchModelItem.jdField_b_of_type_JavaLangString))
+                if (!RobotUtils.a(this.d, localGroupBaseNetSearchModelItem.b))
                 {
-                  paramISearchResultModel.f().setVisibility(0);
-                  paramISearchResultModel.f().setText(HardCodeUtil.a(2131689589));
+                  paramISearchResultModel.n().setVisibility(0);
+                  paramISearchResultModel.n().setText(HardCodeUtil.a(2131886199));
                 }
                 else
                 {
-                  paramISearchResultModel.f().setVisibility(8);
+                  paramISearchResultModel.n().setVisibility(8);
                 }
-                paramISearchResultModel.g().setVisibility(8);
+                paramISearchResultModel.p().setVisibility(8);
               }
-              else if (localGroupBaseNetSearchModelItem.n == 1)
+              else if (localGroupBaseNetSearchModelItem.X == 1)
               {
-                paramISearchResultModel.f().setVisibility(8);
-                paramISearchResultModel.g().setVisibility(0);
-                paramISearchResultModel.g().setText(2131718222);
+                paramISearchResultModel.n().setVisibility(8);
+                paramISearchResultModel.p().setVisibility(0);
+                paramISearchResultModel.p().setText(2131915704);
               }
               else
               {
-                paramISearchResultModel.f().setVisibility(8);
-                paramISearchResultModel.g().setVisibility(0);
-                paramISearchResultModel.g().setText(2131689988);
+                paramISearchResultModel.n().setVisibility(8);
+                paramISearchResultModel.p().setVisibility(0);
+                paramISearchResultModel.p().setText(2131886630);
               }
             }
             localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-            if ((paramISearchResultModel.b() == null) || (paramISearchResultModel.f() == null)) {
+            if ((paramISearchResultModel.m() == null) || (paramISearchResultModel.n() == null)) {
               break;
             }
-            if (RobotUtils.a((QQAppInterface)localObject1, localGroupBaseNetSearchModelItem.jdField_b_of_type_JavaLangString)) {
-              paramISearchResultModel.b().setVisibility(0);
+            if (RobotUtils.a((QQAppInterface)localObject1, localGroupBaseNetSearchModelItem.b)) {
+              paramISearchResultModel.m().setVisibility(0);
             } else {
-              paramISearchResultModel.b().setVisibility(8);
+              paramISearchResultModel.m().setVisibility(8);
             }
             break;
           }
         } else {
-          a((TextView)localObject1, (TextView)localObject3, localGroupBaseNetSearchModelItem.b(), null);
+          a((TextView)localObject1, (TextView)localObject3, localGroupBaseNetSearchModelItem.d(), null);
         }
-        if (this.jdField_a_of_type_Int == 1002)
+        i = this.a;
+        if (i == 1002)
         {
           paramISearchResultModel = paramISearchResultView.a("ActiveEntitySearchResultPresenter_add_troop");
           localObject1 = (Pair)localGroupBaseNetSearchModelItem.a("ActiveEntitySearchResultPresenter_add_troop");
@@ -411,15 +412,15 @@ public class ActiveEntitySearchResultPresenter
               localObject2 = (TextView)paramISearchResultModel;
               ((TextView)localObject2).setText((CharSequence)((Pair)localObject1).first);
               ((TextView)localObject2).setEnabled(((Boolean)((Pair)localObject1).second).booleanValue());
-              ((TextView)localObject2).setTextAppearance(((TextView)localObject2).getContext(), 2131755552);
+              ((TextView)localObject2).setTextAppearance(((TextView)localObject2).getContext(), 2131952365);
               localObject3 = ((TextView)localObject2).getLayoutParams();
               if (((Boolean)((Pair)localObject1).second).booleanValue())
               {
-                i = paramISearchResultModel.getContext().getResources().getDimensionPixelSize(2131296742);
+                i = paramISearchResultModel.getContext().getResources().getDimensionPixelSize(2131297073);
                 ((TextView)localObject2).setPadding(i, 0, i, 0);
                 ((TextView)localObject2).setMinWidth(ScreenUtil.dip2px(60.0F));
                 ((TextView)localObject2).setMinWidth(ScreenUtil.dip2px(29.0F));
-                ((TextView)localObject2).setBackgroundResource(2130839314);
+                ((TextView)localObject2).setBackgroundResource(2130839494);
                 if (localObject3 != null)
                 {
                   ((ViewGroup.LayoutParams)localObject3).height = -2;
@@ -478,17 +479,32 @@ public class ActiveEntitySearchResultPresenter
             ((FolderTextView)paramISearchResultModel).setText(new QQText((CharSequence)localObject1, 11, 16));
           }
         }
-        super.a(localGroupBaseNetSearchModelItem, paramISearchResultView);
-        a(paramISearchResultView.a(), localGroupBaseNetSearchModelItem.b(), true, false);
-        a(paramISearchResultView.b(), localGroupBaseNetSearchModelItem.c(), false);
-        a(paramISearchResultView.c(), localGroupBaseNetSearchModelItem.a(), false);
-        a(paramISearchResultView.d(), localGroupBaseNetSearchModelItem.d(), false);
-        if ((this.jdField_a_of_type_Int == 1001) && (TextUtils.isEmpty(localGroupBaseNetSearchModelItem.h)))
+        else if (i == 1107)
         {
-          paramISearchResultModel = paramISearchResultView.b();
-          paramISearchResultModel.setText(localGroupBaseNetSearchModelItem.c());
-          PrettyAccountUtil.a(paramISearchResultModel, localGroupBaseNetSearchModelItem.f, localGroupBaseNetSearchModelItem.g, 2131167139, 17);
-          PrettyAccountUtil.a("0X800B237", localGroupBaseNetSearchModelItem.f, localGroupBaseNetSearchModelItem.g);
+          localObject1 = paramISearchResultView.a("ActiveEntitySearchResultPresenter_add_troop");
+          paramISearchResultModel = (Pair)localGroupBaseNetSearchModelItem.a("ActiveEntitySearchResultPresenter_add_troop");
+          if ((localObject1 != null) && (paramISearchResultModel != null))
+          {
+            ((View)localObject1).setVisibility(0);
+            if ((localObject1 instanceof TextView))
+            {
+              localObject1 = (TextView)localObject1;
+              ((TextView)localObject1).setText((CharSequence)paramISearchResultModel.first);
+              ((TextView)localObject1).setEnabled(((Boolean)paramISearchResultModel.second).booleanValue());
+            }
+          }
+        }
+        super.a(localGroupBaseNetSearchModelItem, paramISearchResultView);
+        a(paramISearchResultView.b(), localGroupBaseNetSearchModelItem.d(), true, false);
+        a(paramISearchResultView.c(), localGroupBaseNetSearchModelItem.e(), false);
+        a(paramISearchResultView.d(), localGroupBaseNetSearchModelItem.a(), false);
+        a(paramISearchResultView.e(), localGroupBaseNetSearchModelItem.f(), false);
+        if ((this.a == 1001) && (TextUtils.isEmpty(localGroupBaseNetSearchModelItem.n)))
+        {
+          paramISearchResultModel = paramISearchResultView.c();
+          paramISearchResultModel.setText(localGroupBaseNetSearchModelItem.e());
+          PrettyAccountUtil.a(paramISearchResultModel, localGroupBaseNetSearchModelItem.t, localGroupBaseNetSearchModelItem.u, 2131168119, 17);
+          PrettyAccountUtil.a("0X800B237", localGroupBaseNetSearchModelItem.t, localGroupBaseNetSearchModelItem.u);
         }
         return;
       }
@@ -518,7 +534,7 @@ public class ActiveEntitySearchResultPresenter
   
   public void b(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    Object localObject = paramISearchResultView.b();
+    Object localObject = paramISearchResultView.g();
     if (localObject == null) {
       return;
     }
@@ -529,33 +545,33 @@ public class ActiveEntitySearchResultPresenter
         GroupBaseNetSearchModelItem localGroupBaseNetSearchModelItem = (GroupBaseNetSearchModelItem)paramISearchResultModel;
         SearchResultFromNetView localSearchResultFromNetView = (SearchResultFromNetView)paramISearchResultView;
         ViewGroup.LayoutParams localLayoutParams = ((ImageView)localObject).getLayoutParams();
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.b) {
           localLayoutParams.height = AIOUtils.b(30.0F, ((ImageView)localObject).getContext().getResources());
-        } else if ((localGroupBaseNetSearchModelItem.d() != 8192) && (localGroupBaseNetSearchModelItem.d() != 16) && (localGroupBaseNetSearchModelItem.d() != 8))
+        } else if ((localGroupBaseNetSearchModelItem.j() != 8192) && (localGroupBaseNetSearchModelItem.j() != 16) && (localGroupBaseNetSearchModelItem.j() != 8))
         {
-          if (localGroupBaseNetSearchModelItem.d() == 1001) {
+          if (localGroupBaseNetSearchModelItem.j() == 1001) {
             localLayoutParams.height = AIOUtils.b(60.0F, ((ImageView)localObject).getContext().getResources());
-          } else if ((localGroupBaseNetSearchModelItem.d() != 1024) && (localGroupBaseNetSearchModelItem.d() != 1002)) {
-            localLayoutParams.height = ((ImageView)localObject).getResources().getDimensionPixelSize(2131298469);
+          } else if ((localGroupBaseNetSearchModelItem.j() != 1024) && (localGroupBaseNetSearchModelItem.j() != 1002) && (localGroupBaseNetSearchModelItem.j() != 1107)) {
+            localLayoutParams.height = ((ImageView)localObject).getResources().getDimensionPixelSize(2131299183);
           }
         }
         else {
           localLayoutParams.height = AIOUtils.b(70.0F, ((ImageView)localObject).getContext().getResources());
         }
         ((ImageView)localObject).setLayoutParams(localLayoutParams);
-        if (localSearchResultFromNetView.c() != null) {
-          localSearchResultFromNetView.c().setLayoutParams(localLayoutParams);
+        if (localSearchResultFromNetView.j() != null) {
+          localSearchResultFromNetView.j().setLayoutParams(localLayoutParams);
         }
-        if ((localGroupBaseNetSearchModelItem.d() != 1001) && (localGroupBaseNetSearchModelItem.d() != 1002))
+        if ((localGroupBaseNetSearchModelItem.j() != 1001) && (localGroupBaseNetSearchModelItem.j() != 1002))
         {
-          int i = paramISearchResultView.a().getResources().getDimensionPixelSize(2131297515);
+          int i = paramISearchResultView.h().getResources().getDimensionPixelSize(2131298168);
           paramISearchResultModel = URLDrawable.URLDrawableOptions.obtain();
           paramISearchResultModel.mRequestWidth = i;
           paramISearchResultModel.mRequestHeight = i;
-          if (localGroupBaseNetSearchModelItem.jdField_b_of_type_Boolean) {
+          if (localGroupBaseNetSearchModelItem.o) {
             paramISearchResultModel.mMemoryCacheKeySuffix = "isAvatar";
           }
-          if (this.jdField_a_of_type_Boolean)
+          if (this.b)
           {
             localObject = new GradientDrawable();
             ((GradientDrawable)localObject).setColor(Color.parseColor("#ECEAE8"));
@@ -563,21 +579,21 @@ public class ActiveEntitySearchResultPresenter
             paramISearchResultModel.mLoadingDrawable = ((Drawable)localObject);
             paramISearchResultModel.mFailedDrawable = ((Drawable)localObject);
           }
-          paramISearchResultModel = URLDrawable.getDrawable(localGroupBaseNetSearchModelItem.c(), paramISearchResultModel);
-          if (localGroupBaseNetSearchModelItem.jdField_b_of_type_Boolean) {
-            paramISearchResultModel.setDecodeHandler(URLDrawableDecodeHandler.a);
+          paramISearchResultModel = URLDrawable.getDrawable(localGroupBaseNetSearchModelItem.i(), paramISearchResultModel);
+          if (localGroupBaseNetSearchModelItem.o) {
+            paramISearchResultModel.setDecodeHandler(URLDrawableDecodeHandler.b);
           }
           if ((paramISearchResultModel.getStatus() != 1) && (paramISearchResultModel.getStatus() != 0)) {
             paramISearchResultModel.restartDownload();
           }
-          paramISearchResultView.b().setImageDrawable(paramISearchResultModel);
+          paramISearchResultView.g().setImageDrawable(paramISearchResultModel);
         }
         else
         {
           super.b(paramISearchResultModel, paramISearchResultView);
         }
-        if ((paramISearchResultView.b() != null) && (localSearchResultFromNetView.c() != null)) {
-          a(paramISearchResultView.b(), localSearchResultFromNetView.c(), localGroupBaseNetSearchModelItem.jdField_b_of_type_Int);
+        if ((paramISearchResultView.g() != null) && (localSearchResultFromNetView.j() != null)) {
+          a(paramISearchResultView.g(), localSearchResultFromNetView.j(), localGroupBaseNetSearchModelItem.p);
         }
       }
       else
@@ -601,18 +617,25 @@ public class ActiveEntitySearchResultPresenter
     if ((paramISearchResultModel instanceof GroupBaseNetSearchModelItem))
     {
       paramISearchResultModel = (GroupBaseNetSearchModelItem)paramISearchResultModel;
-      if (paramISearchResultModel.d() == 1002)
+      if (paramISearchResultModel.j() == 1002)
       {
         paramISearchResultView = paramISearchResultView.a("ActiveEntitySearchResultPresenter_add_troop");
         if (paramISearchResultView != null) {
           paramISearchResultView.setOnClickListener(new ActiveEntitySearchResultPresenter.3(this, paramISearchResultModel));
         }
       }
-      else if (paramISearchResultModel.d() == 1001)
+      else if (paramISearchResultModel.j() == 1001)
       {
         paramISearchResultView = (SearchResultFromNetView)paramISearchResultView;
-        if (paramISearchResultView.f() != null) {
-          paramISearchResultView.f().setOnClickListener(new ActiveEntitySearchResultPresenter.4(this, paramISearchResultModel));
+        if (paramISearchResultView.n() != null) {
+          paramISearchResultView.n().setOnClickListener(new ActiveEntitySearchResultPresenter.4(this, paramISearchResultModel));
+        }
+      }
+      else if (paramISearchResultModel.j() == 1107)
+      {
+        paramISearchResultView = paramISearchResultView.a("ActiveEntitySearchResultPresenter_add_troop");
+        if (paramISearchResultView != null) {
+          paramISearchResultView.setOnClickListener(new ActiveEntitySearchResultPresenter.5(this, paramISearchResultModel));
         }
       }
     }
@@ -620,18 +643,18 @@ public class ActiveEntitySearchResultPresenter
   
   public void d(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    if (((paramISearchResultModel instanceof GroupBaseNetSearchModelItem)) && (!this.jdField_a_of_type_Boolean))
+    if (((paramISearchResultModel instanceof GroupBaseNetSearchModelItem)) && (!this.b))
     {
       GroupBaseNetSearchModelItem localGroupBaseNetSearchModelItem = (GroupBaseNetSearchModelItem)paramISearchResultModel;
-      if (a(localGroupBaseNetSearchModelItem.d())) {
-        SearchViewUtils.a(paramISearchResultModel.b(), paramISearchResultModel.f_(), paramISearchResultView.a(), localGroupBaseNetSearchModelItem.u);
+      if (a(localGroupBaseNetSearchModelItem.j())) {
+        SearchViewUtils.a(paramISearchResultModel.ck_(), paramISearchResultModel.cl_(), paramISearchResultView.h(), localGroupBaseNetSearchModelItem.af);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

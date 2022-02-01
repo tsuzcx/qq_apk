@@ -64,60 +64,6 @@ public class Util
     return null;
   }
   
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return "null";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("\"");
-    int j = paramString.length();
-    int i = 0;
-    while (i < j)
-    {
-      char c = paramString.charAt(i);
-      if (c != '\f')
-      {
-        if (c != '\r')
-        {
-          if ((c != '"') && (c != '/') && (c != '\\')) {}
-          switch (c)
-          {
-          default: 
-            if (c <= '\037') {
-              localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
-            } else {
-              localStringBuilder.append(c);
-            }
-            break;
-          case '\n': 
-            localStringBuilder.append("\\n");
-            break;
-          case '\t': 
-            localStringBuilder.append("\\t");
-            break;
-          case '\b': 
-            localStringBuilder.append("\\b");
-            break;
-            localStringBuilder.append('\\');
-            localStringBuilder.append(c);
-            break;
-          }
-        }
-        else
-        {
-          localStringBuilder.append("\\r");
-        }
-      }
-      else {
-        localStringBuilder.append("\\f");
-      }
-      i += 1;
-    }
-    localStringBuilder.append("\"");
-    return localStringBuilder.toString();
-  }
-  
   public static String a(String paramString, int paramInt)
   {
     boolean bool = TextUtils.isEmpty(paramString);
@@ -211,30 +157,6 @@ public class Util
     ((Activity)paramContext).setResult(-1, localIntent);
   }
   
-  public static void a(String paramString)
-  {
-    try
-    {
-      ((IUtil)((Class)a.get(0)).newInstance()).a(paramString);
-      return;
-    }
-    catch (InstantiationException paramString)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("beginTimeTrack error:");
-      localStringBuilder.append(paramString);
-      QLog.e("Util", 1, localStringBuilder.toString());
-      return;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("beginTimeTrack error:");
-      localStringBuilder.append(paramString);
-      QLog.e("Util", 1, localStringBuilder.toString());
-    }
-  }
-  
   public static final void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)
   {
     a(paramAppRuntime, paramString1, "connect_share2qq", paramString2, paramLong1, paramLong2, paramString3);
@@ -305,41 +227,12 @@ public class Util
     return false;
   }
   
-  public static String b(String paramString)
-  {
-    return a(paramString, 1);
-  }
-  
   public static String b(String paramString, String... paramVarArgs)
   {
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
     return paramString.replaceAll("((?i)sid|uin|sec_sig|MOBINFO)=[^&#]+", "$1=****");
-  }
-  
-  public static void b(String paramString)
-  {
-    try
-    {
-      ((IUtil)((Class)a.get(0)).newInstance()).b(paramString);
-      return;
-    }
-    catch (InstantiationException paramString)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("endTimeTrack error:");
-      localStringBuilder.append(paramString);
-      QLog.e("Util", 1, localStringBuilder.toString());
-      return;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("endTimeTrack error:");
-      localStringBuilder.append(paramString);
-      QLog.e("Util", 1, localStringBuilder.toString());
-    }
   }
   
   public static boolean b(String paramString)
@@ -361,18 +254,56 @@ public class Util
   
   public static String c(String paramString)
   {
-    paramString = paramString.toCharArray();
+    if (paramString == null) {
+      return "null";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("\"");
+    int j = paramString.length();
     int i = 0;
-    while (i < paramString.length)
+    while (i < j)
     {
-      if (paramString[i] == '　') {
-        paramString[i] = 32;
-      } else if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-        paramString[i] = ((char)(paramString[i] - 65248));
+      char c = paramString.charAt(i);
+      if (c != '\f')
+      {
+        if (c != '\r')
+        {
+          if ((c != '"') && (c != '/') && (c != '\\')) {}
+          switch (c)
+          {
+          default: 
+            if (c <= '\037') {
+              localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+            } else {
+              localStringBuilder.append(c);
+            }
+            break;
+          case '\n': 
+            localStringBuilder.append("\\n");
+            break;
+          case '\t': 
+            localStringBuilder.append("\\t");
+            break;
+          case '\b': 
+            localStringBuilder.append("\\b");
+            break;
+            localStringBuilder.append('\\');
+            localStringBuilder.append(c);
+            break;
+          }
+        }
+        else
+        {
+          localStringBuilder.append("\\r");
+        }
+      }
+      else {
+        localStringBuilder.append("\\f");
       }
       i += 1;
     }
-    return new String(paramString);
+    localStringBuilder.append("\"");
+    return localStringBuilder.toString();
   }
   
   public static String c(String paramString, String... paramVarArgs)
@@ -405,10 +336,79 @@ public class Util
     }
     return localObject;
   }
+  
+  public static String d(String paramString)
+  {
+    return a(paramString, 1);
+  }
+  
+  public static String e(String paramString)
+  {
+    paramString = paramString.toCharArray();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      if (paramString[i] == '　') {
+        paramString[i] = 32;
+      } else if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+        paramString[i] = ((char)(paramString[i] - 65248));
+      }
+      i += 1;
+    }
+    return new String(paramString);
+  }
+  
+  public static void f(String paramString)
+  {
+    try
+    {
+      ((IUtil)((Class)a.get(0)).newInstance()).a(paramString);
+      return;
+    }
+    catch (InstantiationException paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("beginTimeTrack error:");
+      localStringBuilder.append(paramString);
+      QLog.e("Util", 1, localStringBuilder.toString());
+      return;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("beginTimeTrack error:");
+      localStringBuilder.append(paramString);
+      QLog.e("Util", 1, localStringBuilder.toString());
+    }
+  }
+  
+  public static void g(String paramString)
+  {
+    try
+    {
+      ((IUtil)((Class)a.get(0)).newInstance()).b(paramString);
+      return;
+    }
+    catch (InstantiationException paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("endTimeTrack error:");
+      localStringBuilder.append(paramString);
+      QLog.e("Util", 1, localStringBuilder.toString());
+      return;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("endTimeTrack error:");
+      localStringBuilder.append(paramString);
+      QLog.e("Util", 1, localStringBuilder.toString());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.util.Util
  * JD-Core Version:    0.7.0.1
  */

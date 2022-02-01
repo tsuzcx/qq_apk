@@ -10,13 +10,13 @@ class MsgBackupQRFragment$5
   
   public void run()
   {
-    Bitmap localBitmap = this.this$0.a(this.a);
+    Bitmap localBitmap = this.this$0.b(this.a);
     MsgBackupQRFragment.b(this.this$0, localBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment.5
  * JD-Core Version:    0.7.0.1
  */

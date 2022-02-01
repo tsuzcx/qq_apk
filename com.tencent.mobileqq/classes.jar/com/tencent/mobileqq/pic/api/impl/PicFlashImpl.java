@@ -9,7 +9,9 @@ import android.util.DisplayMetrics;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.mobileqq.app.FlashPicHelper;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.api.IPicAIO;
 import com.tencent.mobileqq.pic.api.IPicFlash;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.RoundedColorDrawable;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -63,13 +65,14 @@ public class PicFlashImpl
     try
     {
       Resources localResources = BaseApplication.getContext().getResources();
-      int i = (int)(localResources.getDisplayMetrics().densityDpi / 160 * 12.0F);
-      this.mReadedDrawable = new RoundedColorDrawable(localResources.getColor(2131166401), Utils.a(130.0F, localResources), Utils.a(102.0F, localResources), i);
+      int i = localResources.getDisplayMetrics().densityDpi;
+      i = (int)(((IPicAIO)QRoute.api(IPicAIO.class)).getRoundCorner() * (i / 160));
+      this.mReadedDrawable = new RoundedColorDrawable(localResources.getColor(2131167240), Utils.a(130.0F, localResources), Utils.a(102.0F, localResources), i);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      label64:
-      break label64;
+      label77:
+      break label77;
     }
     if (QLog.isColorLevel()) {
       QLog.d("PicFlashImpl", 2, "getReadedDrawable OOM");
@@ -124,7 +127,7 @@ public class PicFlashImpl
   
   public void setFlashPicMsgReaded(MessageRecord paramMessageRecord)
   {
-    FlashPicHelper.a(paramMessageRecord);
+    FlashPicHelper.c(paramMessageRecord);
   }
   
   public boolean showFlashPicOption(int paramInt, String paramString)
@@ -134,7 +137,7 @@ public class PicFlashImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.PicFlashImpl
  * JD-Core Version:    0.7.0.1
  */

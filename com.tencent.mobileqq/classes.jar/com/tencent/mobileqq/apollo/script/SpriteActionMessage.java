@@ -9,12 +9,12 @@ import com.tencent.mobileqq.apollo.model.MessageForApollo;
 import com.tencent.mobileqq.apollo.model.ScriptResult;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.res.api.IApolloResManager;
-import com.tencent.mobileqq.apollo.res.api.impl.ApolloResManagerImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.cmshow.engine.util.CMResUtil;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -37,26 +37,26 @@ public class SpriteActionMessage
   {
     if (paramApolloActionData == null)
     {
-      QLog.e("[cmshow][scripted]SpriteActionMessage", 1, "[tiggerAction] actionData is null,return.");
+      QLog.e("[cmshow][scripted]SpriteActionMessage", 1, "[triggerAction] actionData is null,return.");
       return;
     }
     Object localObject = this.a;
     if (localObject != null)
     {
-      if (((SpriteContext)localObject).a() == null) {
+      if (((SpriteContext)localObject).l() == null) {
         return;
       }
       localObject = new SpriteTaskParam();
       ((SpriteTaskParam)localObject).f = paramApolloActionData.actionId;
-      ((SpriteTaskParam)localObject).jdField_c_of_type_Int = 0;
+      ((SpriteTaskParam)localObject).c = 0;
       ((SpriteTaskParam)localObject).g = 3;
       ((SpriteTaskParam)localObject).e = paramApolloActionData.personNum;
-      ((SpriteTaskParam)localObject).jdField_a_of_type_Long = -10000L;
-      ((SpriteTaskParam)localObject).jdField_a_of_type_Boolean = true;
-      ((SpriteTaskParam)localObject).b = false;
-      ((SpriteTaskParam)localObject).jdField_c_of_type_JavaLangString = paramApolloActionData.bubbleText;
-      ((SpriteTaskParam)localObject).jdField_a_of_type_JavaLangString = String.valueOf(this.a.a().getCurrentAccountUin());
-      ((ISpriteScriptManager)this.a.a().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteBridge().b((SpriteTaskParam)localObject);
+      ((SpriteTaskParam)localObject).h = -10000L;
+      ((SpriteTaskParam)localObject).l = true;
+      ((SpriteTaskParam)localObject).q = false;
+      ((SpriteTaskParam)localObject).o = paramApolloActionData.bubbleText;
+      ((SpriteTaskParam)localObject).j = String.valueOf(this.a.l().getCurrentAccountUin());
+      ((ISpriteScriptManager)this.a.l().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteBridge().b((SpriteTaskParam)localObject);
     }
   }
   
@@ -70,10 +70,10 @@ public class SpriteActionMessage
     Object localObject = this.a;
     if (localObject != null)
     {
-      if (((SpriteContext)localObject).a() == null) {
+      if (((SpriteContext)localObject).l() == null) {
         return;
       }
-      localObject = SpriteUtil.a(this.a.a());
+      localObject = SpriteUtil.i(this.a.l());
       if (localObject == null) {
         return;
       }
@@ -88,25 +88,25 @@ public class SpriteActionMessage
     Object localObject = this.a;
     if (localObject != null)
     {
-      if (((SpriteContext)localObject).a() == null) {
+      if (((SpriteContext)localObject).l() == null) {
         return;
       }
-      localObject = this.a.a();
-      ApolloActionData localApolloActionData = ((ApolloDaoManagerServiceImpl)((QQAppInterface)localObject).getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(paramInt);
-      String str = HardCodeUtil.a(2131714126);
-      if (localApolloActionData == null)
+      localObject = ((ApolloDaoManagerServiceImpl)this.a.l().getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(paramInt);
+      String str = HardCodeUtil.a(2131911656);
+      if (localObject == null)
       {
         a(str);
         return;
       }
-      localApolloActionData.bubbleText = str;
-      if (!CMResUtil.a(paramInt, localApolloActionData.personNum))
+      ((ApolloActionData)localObject).bubbleText = str;
+      IApolloResManager localIApolloResManager = ApolloResManagerFacade.a.a(Scene.AIO);
+      if (!localIApolloResManager.c(paramInt, ((ApolloActionData)localObject).personNum))
       {
-        ((ApolloResManagerImpl)((QQAppInterface)localObject).getRuntimeService(IApolloResManager.class, "all")).downloadApolloRes(localApolloActionData, 4, null);
+        localIApolloResManager.a((ApolloActionData)localObject, 4, null);
         a(str);
         return;
       }
-      a(localApolloActionData);
+      a((ApolloActionData)localObject);
     }
   }
   
@@ -122,10 +122,10 @@ public class SpriteActionMessage
       bool2 = bool1;
       if (localObject1 != null)
       {
-        if (((SpriteContext)localObject1).a() == null) {
+        if (((SpriteContext)localObject1).l() == null) {
           return true;
         }
-        QQAppInterface localQQAppInterface = this.a.a();
+        QQAppInterface localQQAppInterface = this.a.l();
         localObject1 = paramMessageForApollo.extendJson;
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow][scripted]SpriteActionMessage", 2, new Object[] { "rep data:", localObject1 });
@@ -211,7 +211,7 @@ public class SpriteActionMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteActionMessage
  * JD-Core Version:    0.7.0.1
  */

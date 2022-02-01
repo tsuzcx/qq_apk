@@ -12,18 +12,18 @@ class AIOShareActionSheet$10$1
   
   public void a()
   {
-    if ((AIOShareActionSheet.a(this.a.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet) != null) && (AIOShareActionSheet.a(this.a.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet).a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.a.jdField_a_of_type_JavaUtilList, 2, AIOShareActionSheet.a(this.a.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet).a.a);
+    if ((AIOShareActionSheet.a(this.a.d) != null) && (AIOShareActionSheet.a(this.a.d).ah != null)) {
+      this.a.b.a(this.a.c, 2, AIOShareActionSheet.a(this.a.d).ah.a);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a();
-    if (AIOShareActionSheet.a(this.a.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet) != null) {
-      AIOShareActionSheet.a(this.a.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet).a(false, null, false);
+    this.a.b.a();
+    if (AIOShareActionSheet.a(this.a.d) != null) {
+      AIOShareActionSheet.a(this.a.d).a(false, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet.10.1
  * JD-Core Version:    0.7.0.1
  */

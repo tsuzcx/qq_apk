@@ -174,7 +174,61 @@ public class KplHelper
     label240:
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public static boolean a(BaseChatPie paramBaseChatPie)
+  {
+    Object localObject = StrangerChatPie.a(paramBaseChatPie.e, paramBaseChatPie.ah.a, false, false);
+    boolean bool = true;
+    if (localObject == null) {
+      if (paramBaseChatPie.ah.a == 1022)
+      {
+        localObject = paramBaseChatPie.V.a();
+        FriendsManager localFriendsManager = (FriendsManager)paramBaseChatPie.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        if ((localObject != null) && (((List)localObject).size() > 0) && (!localFriendsManager.n(paramBaseChatPie.ah.b)) && (!TextUtils.isEmpty(((ChatMessage)((List)localObject).get(((List)localObject).size() - 1)).getExtInfoFromExtStr("msg_ext_key")))) {}
+      }
+      else
+      {
+        bool = false;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isKplPie=");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append(" friendUin=");
+      ((StringBuilder)localObject).append(paramBaseChatPie.ah.b);
+      QLog.d("KplMessage", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = StrangerChatPie.a(paramContext, paramInt, false, false);
+    boolean bool = true;
+    if (paramContext == null)
+    {
+      paramContext = paramQQAppInterface.getMessageFacade().o(paramString, paramInt);
+      paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if ((paramContext == null) || (paramContext.size() <= 0) || (paramQQAppInterface.n(paramString)) || (TextUtils.isEmpty(((ChatMessage)paramContext.get(paramContext.size() - 1)).getExtInfoFromExtStr("msg_ext_key")))) {
+        bool = false;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("isKplSession=");
+      paramQQAppInterface.append(bool);
+      paramQQAppInterface.append(" friendUin=");
+      paramQQAppInterface.append(paramString);
+      paramQQAppInterface.append(" sessionType=");
+      paramQQAppInterface.append(paramInt);
+      QLog.d("KplMessage", 2, paramQQAppInterface.toString());
+    }
+    return bool;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
@@ -214,64 +268,10 @@ public class KplHelper
       }
     }
   }
-  
-  public static boolean a(BaseChatPie paramBaseChatPie)
-  {
-    Object localObject = StrangerChatPie.a(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, false);
-    boolean bool = true;
-    if (localObject == null) {
-      if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1022)
-      {
-        localObject = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
-        FriendsManager localFriendsManager = (FriendsManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        if ((localObject != null) && (((List)localObject).size() > 0) && (!localFriendsManager.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((ChatMessage)((List)localObject).get(((List)localObject).size() - 1)).getExtInfoFromExtStr("msg_ext_key")))) {}
-      }
-      else
-      {
-        bool = false;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("isKplPie=");
-      ((StringBuilder)localObject).append(bool);
-      ((StringBuilder)localObject).append(" friendUin=");
-      ((StringBuilder)localObject).append(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      QLog.d("KplMessage", 2, ((StringBuilder)localObject).toString());
-    }
-    return bool;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = StrangerChatPie.a(paramContext, paramInt, false, false);
-    boolean bool = true;
-    if (paramContext == null)
-    {
-      paramContext = paramQQAppInterface.getMessageFacade().b(paramString, paramInt);
-      paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((paramContext == null) || (paramContext.size() <= 0) || (paramQQAppInterface.b(paramString)) || (TextUtils.isEmpty(((ChatMessage)paramContext.get(paramContext.size() - 1)).getExtInfoFromExtStr("msg_ext_key")))) {
-        bool = false;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("isKplSession=");
-      paramQQAppInterface.append(bool);
-      paramQQAppInterface.append(" friendUin=");
-      paramQQAppInterface.append(paramString);
-      paramQQAppInterface.append(" sessionType=");
-      paramQQAppInterface.append(paramInt);
-      QLog.d("KplMessage", 2, paramQQAppInterface.toString());
-    }
-    return bool;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.KplHelper
  * JD-Core Version:    0.7.0.1
  */

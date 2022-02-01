@@ -34,9 +34,9 @@ class AuthorityControlFragment$3
     {
       AuthorityControlFragment.a(this.a).a(0L);
       paramView = this.a;
-      AuthorityControlFragment.a(paramView, (OpenAgentHandler)AuthorityControlFragment.a(paramView).getBusinessHandler(BusinessHandlerFactory.OPEN_AGENT_HANDLER));
-      AuthorityControlFragment.a(this.a).a();
-      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
+      AuthorityControlFragment.a(paramView, (OpenAgentHandler)AuthorityControlFragment.b(paramView).getBusinessHandler(BusinessHandlerFactory.OPEN_AGENT_HANDLER));
+      AuthorityControlFragment.c(this.a).a();
+      AuthorityControlFragment.d(this.a).notifyDataSetChanged();
     }
     return true;
   }
@@ -50,7 +50,7 @@ class AuthorityControlFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlFragment.3
  * JD-Core Version:    0.7.0.1
  */

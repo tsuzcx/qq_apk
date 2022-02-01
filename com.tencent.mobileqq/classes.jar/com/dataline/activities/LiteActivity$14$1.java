@@ -18,22 +18,22 @@ class LiteActivity$14$1
   public void run()
   {
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDrawable(2130839075);
+      localObject = this.this$0.a.getResources().getDrawable(LiteActivity.B());
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("key_use_rect", true);
       localBundle.putBoolean("key_double_bitmap", true);
-      localObject = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), this.this$0.jdField_a_of_type_JavaLangString, "-chatBg-", (Drawable)localObject, new int[] { 0 }, "-chatBg-", localBundle);
+      localObject = VasApngUtil.getApngDrawable(BaseApplicationImpl.sApplication.getRuntime(), this.this$0.b, "-chatBg-", (Drawable)localObject, new int[] { 0 }, "-chatBg-", localBundle);
     }
     else
     {
-      localObject = new ChatBackgroundDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localObject = new ChatBackgroundDrawable(this.this$0.a.getResources(), this.b);
     }
-    this.this$0.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable((Drawable)localObject);
-    this.this$0.jdField_a_of_type_AndroidViewViewGroup.setTag(2131361813, this.this$0.jdField_a_of_type_JavaLangString);
-    this.this$0.jdField_a_of_type_AndroidViewViewGroup.setTag(2131361812, localObject);
-    LiteActivity.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity);
+    this.this$0.c.setBackgroundDrawable((Drawable)localObject);
+    this.this$0.c.setTag(2131427359, this.this$0.b);
+    this.this$0.c.setTag(2131427358, localObject);
+    LiteActivity.a(this.this$0.a);
   }
 }
 

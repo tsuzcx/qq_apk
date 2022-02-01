@@ -48,46 +48,46 @@ public class AuthorityControlFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private AuthorityControlAdapter jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter;
-  private OpenAgentHandler jdField_a_of_type_ComTencentOpenManagerOpenAgentHandler;
-  private OpenAgentObserver jdField_a_of_type_ComTencentOpenManagerOpenAgentObserver;
-  private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  View.OnTouchListener a;
+  private XListView b;
+  private AuthorityControlAdapter c;
+  private Context d;
+  private View e;
+  private QQAppInterface f;
+  private OpenAgentObserver g;
+  private OpenAgentHandler h;
+  private TextView i;
+  private ColorStateList j;
   @NonNull
-  private ArrayList<AppInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<AppInfo> k = new ArrayList();
+  private PullRefreshHeader l;
+  private OverScrollViewListener m;
+  private QQProgressDialog n;
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
-    this.jdField_a_of_type_AndroidContentContext = getBaseActivity();
+    this.f = getBaseActivity().app;
+    this.d = getBaseActivity();
     c();
     d();
     e();
     b();
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131692183, 0).a();
+      QQToast.makeText(this.d, 2131889169, 0).show();
       f();
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenManagerOpenAgentHandler = ((OpenAgentHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.OPEN_AGENT_HANDLER));
-    this.jdField_a_of_type_ComTencentOpenManagerOpenAgentHandler.a();
+    this.h = ((OpenAgentHandler)this.f.getBusinessHandler(BusinessHandlerFactory.OPEN_AGENT_HANDLER));
+    this.h.a();
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.n.show();
       label94:
-      this.jdField_a_of_type_AndroidContentResColorStateList = this.rightViewText.getTextColors();
-      this.jdField_a_of_type_AndroidViewView$OnTouchListener = new AuthorityControlFragment.1(this);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DC3", "0X8009DC3", 0, 0, "", "", "", "");
-      AuthorityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800B92E", null);
+      this.j = this.rightViewText.getTextColors();
+      this.a = new AuthorityControlFragment.1(this);
+      ReportController.b(this.f, "dc00898", "", "", "0X8009DC3", "0X8009DC3", 0, 0, "", "", "", "");
+      AuthorityUtil.a(this.f, "0X800B92E", null);
       return;
     }
     catch (Throwable localThrowable)
@@ -103,13 +103,13 @@ public class AuthorityControlFragment
   
   private void a(List<AppInfo> paramList)
   {
-    AuthorityControlAdapter localAuthorityControlAdapter = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter;
+    AuthorityControlAdapter localAuthorityControlAdapter = this.c;
     if (localAuthorityControlAdapter == null) {
       return;
     }
     localAuthorityControlAdapter.b(paramList);
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter.a();
-    if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter.getCount() == 0) {
+    this.c.c();
+    if (this.c.getCount() == 0) {
       f();
     }
   }
@@ -117,9 +117,9 @@ public class AuthorityControlFragment
   private void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.l.a(0);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+      this.l.a(1);
     }
     ThreadManager.getUIHandler().postDelayed(new AuthorityControlFragment.6(this), 800L);
   }
@@ -127,44 +127,44 @@ public class AuthorityControlFragment
   private void b()
   {
     AuthorityControlFragment.2 local2 = new AuthorityControlFragment.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setHandler(AuthorityControlFragment.class, local2);
+    this.f.setHandler(AuthorityControlFragment.class, local2);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new AuthorityControlFragment.3(this);
+    this.m = new AuthorityControlFragment.3(this);
   }
   
   private void d()
   {
-    setTitle(getString(2131690223));
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter = new AuthorityControlAdapter(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131370165));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559642, null, false));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener);
-    Object localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558649, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView((View)localObject);
-    this.jdField_a_of_type_AndroidViewView = a(2131366207);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363076));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter);
-    localObject = this.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog((Context)localObject, ((Context)localObject).getResources().getDimensionPixelSize(2131299168));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131701029));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new AuthorityControlFragment.4(this));
+    setTitle(getString(2131887123));
+    this.c = new AuthorityControlAdapter(this, this.f);
+    this.b = ((XListView)a(2131437331));
+    this.l = ((PullRefreshHeader)LayoutInflater.from(this.d).inflate(2131625671, null, false));
+    this.b.setOverScrollHeader(this.l);
+    this.b.setOverScrollListener(this.m);
+    Object localObject = LayoutInflater.from(this.d).inflate(2131624264, this.b, false);
+    this.b.addHeaderView((View)localObject);
+    this.e = a(2131432495);
+    this.i = ((TextView)((View)localObject).findViewById(2131428911));
+    this.b.setAdapter(this.c);
+    localObject = this.d;
+    this.n = new QQProgressDialog((Context)localObject, ((Context)localObject).getResources().getDimensionPixelSize(2131299920));
+    this.n.a(HardCodeUtil.a(2131899050));
+    this.n.c(false);
+    this.n.setOnCancelListener(new AuthorityControlFragment.4(this));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentOpenManagerOpenAgentObserver = new AuthorityControlFragment.5(this);
+    this.g = new AuthorityControlFragment.5(this);
   }
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.b.setVisibility(8);
+    this.i.setVisibility(8);
+    this.e.setVisibility(0);
     this.rightViewText.setVisibility(8);
     setLeftButton("", null);
     this.mLeftBackIcon.setVisibility(0);
@@ -172,12 +172,12 @@ public class AuthorityControlFragment
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter.b();
-    setTextWithTalk(this.rightViewText, 2131690226);
-    this.rightViewText.setTextColor(getResources().getColorStateList(2131165308));
-    this.rightViewText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+    this.c.d();
+    setTextWithTalk(this.rightViewText, 2131887126);
+    this.rightViewText.setTextColor(getResources().getColorStateList(2131165544));
+    this.rightViewText.setOnTouchListener(this.a);
     this.rightViewText.setEnabled(false);
-    setLeftButton(2131690728, new AuthorityControlFragment.7(this));
+    setLeftButton(2131887648, new AuthorityControlFragment.7(this));
     Object localObject = this.leftViewNotBack.getLayoutParams();
     if ((localObject instanceof RelativeLayout.LayoutParams))
     {
@@ -186,47 +186,47 @@ public class AuthorityControlFragment
       this.leftViewNotBack.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     this.leftView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718195);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(null);
+    this.i.setText(2131915675);
+    this.b.setOverScrollHeader(null);
     a(true);
-    AuthorityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800B932", null);
+    AuthorityUtil.a(this.f, "0X800B932", null);
   }
   
   private void h()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter.a();
+    Object localObject1 = this.c.b();
     if (((List)localObject1).size() == 0)
     {
-      AuthorityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800B933", null);
+      AuthorityUtil.a(this.f, "0X800B933", null);
       return;
     }
     Object localObject2 = new AuthorityControlFragment.8(this, (List)localObject1);
     Object localObject3 = new AuthorityControlFragment.9(this);
     if (((List)localObject1).size() == 1) {
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718194);
+      localObject1 = this.d.getResources().getString(2131915674);
     } else {
-      localObject1 = HardCodeUtil.a(2131701018);
+      localObject1 = HardCodeUtil.a(2131899039);
     }
-    int i = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter.a().size();
-    Object localObject4 = String.format(HardCodeUtil.a(2131701021), new Object[] { Integer.valueOf(i) });
-    localObject1 = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, (String)localObject4, (String)localObject1, 2131690728, 2131694583, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject3);
+    int i1 = this.c.b().size();
+    Object localObject4 = String.format(HardCodeUtil.a(2131899042), new Object[] { Integer.valueOf(i1) });
+    localObject1 = DialogUtil.a(this.d, 230, (String)localObject4, (String)localObject1, 2131887648, 2131892267, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject3);
     try
     {
       ((QQCustomDialog)localObject1).show();
       label145:
       localObject1 = new StringBuilder();
       localObject2 = new StringBuilder();
-      localObject3 = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter.a().iterator();
+      localObject3 = this.c.b().iterator();
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (AppInfo)((Iterator)localObject3).next();
         ((StringBuilder)localObject1).append(String.valueOf(((AppInfo)localObject4).a()));
         ((StringBuilder)localObject1).append(" ");
-        ((StringBuilder)localObject2).append(((AppInfo)localObject4).b());
+        ((StringBuilder)localObject2).append(((AppInfo)localObject4).c());
         ((StringBuilder)localObject2).append(" ");
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DC6", "0X8009DC6", 0, 0, "", "", ((StringBuilder)localObject1).toString(), "");
-      AuthorityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800B933", new String[] { "", "", ((StringBuilder)localObject2).toString(), "" });
+      ReportController.b(this.f, "dc00898", "", "", "0X8009DC6", "0X8009DC6", 0, 0, "", "", ((StringBuilder)localObject1).toString(), "");
+      AuthorityUtil.a(this.f, "0X800B933", new String[] { "", "", ((StringBuilder)localObject2).toString(), "" });
       return;
     }
     catch (Throwable localThrowable)
@@ -242,7 +242,7 @@ public class AuthorityControlFragment
   
   protected int getContentLayoutId()
   {
-    return 2131558473;
+    return 2131624015;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -256,7 +256,7 @@ public class AuthorityControlFragment
   public void onClick(View paramView)
   {
     if (this.rightViewText.getId() == paramView.getId()) {
-      if (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter.a()) {
+      if (this.c.a()) {
         h();
       } else {
         g();
@@ -268,28 +268,28 @@ public class AuthorityControlFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeHandler(AuthorityControlFragment.class);
+    this.f.removeHandler(AuthorityControlFragment.class);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter != null) && (localArrayList.size() == this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthorityControlAdapter.getCount())) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DC7", "0X8009DC7", 0, 0, "", "", "", "");
+    ArrayList localArrayList = this.k;
+    if ((localArrayList != null) && (this.c != null) && (localArrayList.size() == this.c.getCount())) {
+      ReportController.b(this.f, "dc00898", "", "", "0X8009DC7", "0X8009DC7", 0, 0, "", "", "", "");
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentOpenManagerOpenAgentObserver);
+    this.f.addObserver(this.g);
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentOpenManagerOpenAgentObserver);
+    this.f.removeObserver(this.g);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -300,7 +300,7 @@ public class AuthorityControlFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ class MatchChatSettingFragment$1
     }
   }
   
-  protected void c(boolean paramBoolean)
+  protected void d(boolean paramBoolean)
   {
     Object localObject;
     if (QLog.isColorLevel())

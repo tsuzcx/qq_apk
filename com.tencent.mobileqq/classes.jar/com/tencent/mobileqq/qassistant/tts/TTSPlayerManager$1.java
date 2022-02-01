@@ -14,16 +14,16 @@ class TTSPlayerManager$1
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer.release();
-    TTSPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqQassistantTtsTTSPlayerManager, null);
-    if (TTSPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqQassistantTtsTTSPlayerManager) != null) {
-      TTSPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqQassistantTtsTTSPlayerManager).b(this.jdField_a_of_type_JavaLangString);
+    TTSPlayerManager.a(this.b, null);
+    if (TTSPlayerManager.a(this.b) != null) {
+      TTSPlayerManager.a(this.b).b(this.a);
     }
     QQAudioUtils.a(MobileQQ.sMobileQQ, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.tts.TTSPlayerManager.1
  * JD-Core Version:    0.7.0.1
  */

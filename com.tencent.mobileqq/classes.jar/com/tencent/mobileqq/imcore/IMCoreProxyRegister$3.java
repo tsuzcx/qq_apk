@@ -36,13 +36,13 @@ final class IMCoreProxyRegister$3
   public void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
     if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
-      ((QQAppInterface)paramBaseQQAppInterface).getConversationFacade().a(paramString, paramInt1, paramInt2);
+      ((QQAppInterface)paramBaseQQAppInterface).getConversationFacade().b(paramString, paramInt1, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.IMCoreProxyRegister.3
  * JD-Core Version:    0.7.0.1
  */

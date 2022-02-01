@@ -2,11 +2,11 @@ package com.tencent.mtt.hippy.dom.node;
 
 public class TextExtra
 {
-  public float mBottomPadding;
-  public Object mExtra;
-  public float mLeftPadding;
-  public float mRightPadding;
-  public float mTopPadding;
+  public final float mBottomPadding;
+  public final Object mExtra;
+  public final float mLeftPadding;
+  public final float mRightPadding;
+  public final float mTopPadding;
   
   public TextExtra(Object paramObject, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
@@ -19,7 +19,7 @@ public class TextExtra
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.TextExtra
  * JD-Core Version:    0.7.0.1
  */

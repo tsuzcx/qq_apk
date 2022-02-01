@@ -62,7 +62,7 @@ public class ScribbleMsgUtilsImpl
       return false;
     }
     ThreadManager.post(new ScribbleMsgUtilsImpl.1(this, paramAppRuntime, paramMessageForScribble), 5, null, false);
-    localScribbleBaseOperator.a(localMessageForScribble);
+    localScribbleBaseOperator.b(localMessageForScribble);
     return true;
   }
   
@@ -158,7 +158,7 @@ public class ScribbleMsgUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.impl.ScribbleMsgUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

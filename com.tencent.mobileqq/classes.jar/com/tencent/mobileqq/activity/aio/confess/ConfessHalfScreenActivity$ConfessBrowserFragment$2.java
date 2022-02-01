@@ -25,20 +25,20 @@ class ConfessHalfScreenActivity$ConfessBrowserFragment$2
   public void onFinalState(Bundle paramBundle)
   {
     super.onFinalState(paramBundle);
-    this.a.getSwiftTitleUI().b(false);
-    this.a.getUIStyleHandler().a.setVisibility(8);
+    this.a.getSwiftTitleUI().e(false);
+    this.a.getUIStyleHandler().v.setVisibility(8);
   }
   
   public void onInitUIContent(Bundle paramBundle)
   {
-    this.a.getUIStyle().c = 0L;
+    this.a.getUIStyle().e = 0L;
     super.onInitUIContent(paramBundle);
-    this.a.getActivity().getWindow().setBackgroundDrawableResource(2131167333);
-    if ((this.a.getUIStyleHandler().jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-      ((RefreshView)this.a.getUIStyleHandler().jdField_c_of_type_AndroidViewViewGroup).a(false);
+    this.a.getActivity().getWindow().setBackgroundDrawableResource(2131168376);
+    if ((this.a.getUIStyleHandler().u instanceof RefreshView)) {
+      ((RefreshView)this.a.getUIStyleHandler().u).a(false);
     }
-    if (this.a.getUIStyleHandler().jdField_c_of_type_AndroidViewView != null) {
-      this.a.getUIStyleHandler().jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.getUIStyleHandler().D != null) {
+      this.a.getUIStyleHandler().D.setVisibility(8);
     }
     this.a.contentView.setBackgroundColor(0);
   }
@@ -57,7 +57,7 @@ class ConfessHalfScreenActivity$ConfessBrowserFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment.2
  * JD-Core Version:    0.7.0.1
  */

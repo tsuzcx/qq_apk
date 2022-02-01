@@ -19,114 +19,89 @@ import com.tencent.mobileqq.utils.ValueAnimation;
 
 public class WebViewTitlerBar
 {
-  int jdField_a_of_type_Int = 255;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  public View.OnClickListener a;
-  View jdField_a_of_type_AndroidViewView;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-  String jdField_a_of_type_JavaLangString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  View jdField_b_of_type_AndroidViewView;
-  FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView a;
+  ImageView b;
+  TextView c;
+  TextView d;
+  ImageView e;
+  View f;
+  Activity g;
+  ImageView h;
+  String i = null;
+  CustomWebView j = null;
+  FrameLayout k;
+  RelativeLayout l;
+  FrameLayout m;
+  View n;
+  int o = 255;
+  public View.OnClickListener p = null;
+  boolean q = false;
   
   public WebViewTitlerBar(Activity paramActivity, CustomWebView paramCustomWebView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
+    this.g = paramActivity;
+    this.j = paramCustomWebView;
     a(paramViewGroup);
     a();
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ImageView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
-  }
-  
-  public CharSequence a()
-  {
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-    if (localTextView != null) {
-      return localTextView.getText();
-    }
-    return null;
-  }
-  
   void a()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365153));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365163));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365161));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369249));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxEms(9);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369245));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369202));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369233));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369216));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363751);
+    this.k = ((FrameLayout)this.f.findViewById(2131431304));
+    this.l = ((RelativeLayout)this.f.findViewById(2131431316));
+    this.m = ((FrameLayout)this.f.findViewById(2131431314));
+    this.a = ((TextView)this.f.findViewById(2131436227));
+    this.a.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
+    this.a.setMaxEms(9);
+    this.b = ((ImageView)this.f.findViewById(2131436224));
+    this.c = ((TextView)this.f.findViewById(2131436180));
+    this.d = ((TextView)this.f.findViewById(2131436211));
+    this.e = ((ImageView)this.f.findViewById(2131436194));
+    this.n = this.f.findViewById(2131429675);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
+    if (this.q) {
+      this.q = false;
     }
     if (paramInt2 == 0)
     {
-      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInt1);
-      this.jdField_a_of_type_Int = paramInt1;
+      this.f.getBackground().mutate().setAlpha(paramInt1);
+      this.o = paramInt1;
       return;
     }
-    int i = this.jdField_a_of_type_Int;
-    if (i == paramInt1) {
+    int i1 = this.o;
+    if (i1 == paramInt1) {
       return;
     }
-    a(i, paramInt1, paramInt2);
+    a(i1, paramInt1, paramInt2);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 == 0)
     {
-      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInt2);
+      this.f.getBackground().mutate().setAlpha(paramInt2);
       return;
     }
     ValueAnimation localValueAnimation = new ValueAnimation(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), new WebViewTitlerBar.3(this, paramInt2));
     localValueAnimation.setDuration(paramInt3);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localValueAnimation);
+    this.q = true;
+    this.f.startAnimation(localValueAnimation);
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    this.c.setOnClickListener(paramOnClickListener);
   }
   
   public void a(View paramView)
   {
     try
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView, new RelativeLayout.LayoutParams(-2, -1));
+      this.l.removeAllViews();
+      this.l.addView(paramView, new RelativeLayout.LayoutParams(-2, -1));
       return;
     }
     catch (Exception paramView)
@@ -137,133 +112,157 @@ public class WebViewTitlerBar
   
   void a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131563051, paramViewGroup, true);
+    this.f = LayoutInflater.from(this.g).inflate(2131629667, paramViewGroup, true);
   }
   
   public void a(ImageView paramImageView)
   {
-    this.jdField_c_of_type_AndroidWidgetImageView = paramImageView;
+    this.h = paramImageView;
   }
   
   public void a(CharSequence paramCharSequence)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     if (localTextView != null)
     {
       localTextView.setText(paramCharSequence);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.c.setVisibility(0);
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
     boolean bool = TextUtils.isEmpty(paramString2);
-    int i = 0;
+    int i1 = 0;
     if (!bool)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString2);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.bringToFront();
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundColor(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.d.setText(paramString2);
+      this.d.setVisibility(0);
+      this.d.bringToFront();
+      this.e.setImageResource(0);
+      this.e.setBackgroundColor(0);
+      this.e.setVisibility(8);
     }
     if (!TextUtils.isEmpty(paramString3)) {}
     try
     {
-      int j = Color.parseColor(paramString3);
-      i = j;
+      int i2 = Color.parseColor(paramString3);
+      i1 = i2;
     }
     catch (Exception paramString2)
     {
       label79:
       break label79;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i);
+    this.d.setTextColor(i1);
     if (paramString1 != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramString1.trim();
+      this.i = paramString1.trim();
       b(new WebViewTitlerBar.2(this));
       return;
     }
-    this.jdField_a_of_type_JavaLangString = null;
+    this.i = null;
   }
   
   public void a(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
-    int i;
+    ImageView localImageView = this.e;
+    int i1;
     if (paramBoolean) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 8;
+      i1 = 8;
     }
-    localImageView.setVisibility(i);
+    localImageView.setVisibility(i1);
   }
   
   public ImageView b()
   {
-    return this.jdField_c_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.e;
   }
   
   public void b(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    this.d.setOnClickListener(paramOnClickListener);
   }
   
   public void b(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    this.a.setText(paramCharSequence);
   }
   
   public void b(boolean paramBoolean)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     if (localTextView != null)
     {
-      int i;
+      int i1;
       if (paramBoolean) {
-        i = 0;
+        i1 = 0;
       } else {
-        i = 4;
+        i1 = 4;
       }
-      localTextView.setVisibility(i);
+      localTextView.setVisibility(i1);
     }
   }
   
-  public TextView c()
+  public CharSequence c()
   {
-    return this.jdField_c_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.d;
+    if (localTextView != null) {
+      return localTextView.getText();
+    }
+    return null;
   }
   
   public void c(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    this.e.setOnClickListener(paramOnClickListener);
   }
   
   public void c(boolean paramBoolean)
   {
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.d;
     if (localTextView != null)
     {
-      int i;
+      int i1;
       if (paramBoolean) {
-        i = 0;
+        i1 = 0;
       } else {
-        i = 8;
+        i1 = 8;
       }
-      localTextView.setVisibility(i);
+      localTextView.setVisibility(i1);
     }
+  }
+  
+  public View d()
+  {
+    return this.f;
+  }
+  
+  public TextView e()
+  {
+    return this.c;
+  }
+  
+  public TextView f()
+  {
+    return this.a;
+  }
+  
+  public TextView g()
+  {
+    return this.d;
+  }
+  
+  public ImageView h()
+  {
+    return this.h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTitlerBar
  * JD-Core Version:    0.7.0.1
  */

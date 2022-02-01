@@ -48,7 +48,7 @@ class SogouEmoji$SogouEmoticonObserver
       if (paramObject.size() == 0) {
         return;
       }
-      paramBoolean = ((SogouEmoji)localObject).a.a(((SogouEmoji)localObject).b);
+      paramBoolean = ((SogouEmoji)localObject).h.b(((SogouEmoji)localObject).d);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -72,7 +72,7 @@ class SogouEmoji$SogouEmoticonObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.SogouEmoji.SogouEmoticonObserver
  * JD-Core Version:    0.7.0.1
  */

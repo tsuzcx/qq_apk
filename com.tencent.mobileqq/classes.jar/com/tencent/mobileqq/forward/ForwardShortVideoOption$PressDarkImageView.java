@@ -14,13 +14,8 @@ import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 class ForwardShortVideoOption$PressDarkImageView
   extends ImageView
 {
-  public static ColorFilter a;
-  ImageView a;
-  
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(167970842, PorterDuff.Mode.SRC_ATOP);
-  }
+  public static ColorFilter a = new PorterDuffColorFilter(167970842, PorterDuff.Mode.SRC_ATOP);
+  ImageView b;
   
   public ForwardShortVideoOption$PressDarkImageView(Context paramContext)
   {
@@ -46,12 +41,12 @@ class ForwardShortVideoOption$PressDarkImageView
       if (Build.VERSION.SDK_INT >= 11)
       {
         super.setAlpha(0.5F);
-        localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+        localObject = this.b;
         if (localObject != null)
         {
           localObject = ((ImageView)localObject).getDrawable();
           if (localObject != null) {
-            ((Drawable)localObject).setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
+            ((Drawable)localObject).setColorFilter(BaseBubbleBuilder.n);
           }
         }
       }
@@ -59,7 +54,7 @@ class ForwardShortVideoOption$PressDarkImageView
     else if (Build.VERSION.SDK_INT >= 11)
     {
       super.setAlpha(1.0F);
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+      localObject = this.b;
       if (localObject != null)
       {
         localObject = ((ImageView)localObject).getDrawable();
@@ -72,7 +67,7 @@ class ForwardShortVideoOption$PressDarkImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView
  * JD-Core Version:    0.7.0.1
  */

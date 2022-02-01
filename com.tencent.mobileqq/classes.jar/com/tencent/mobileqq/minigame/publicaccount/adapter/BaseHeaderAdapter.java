@@ -64,8 +64,8 @@ public abstract class BaseHeaderAdapter
   
   protected View createEmptyView()
   {
-    View localView = LayoutInflater.from(this.mActivity).inflate(2131559147, null, false);
-    ((ImageView)localView.findViewById(2131366220)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
+    View localView = LayoutInflater.from(this.mActivity).inflate(2131624902, null, false);
+    ((ImageView)localView.findViewById(2131432508)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
     return localView;
   }
   
@@ -203,7 +203,7 @@ public abstract class BaseHeaderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.adapter.BaseHeaderAdapter
  * JD-Core Version:    0.7.0.1
  */

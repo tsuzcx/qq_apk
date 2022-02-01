@@ -18,7 +18,7 @@ class QCircleThirdTabConfig$2
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSwitch.GetCircleTabBucketRsp paramGetCircleTabBucketRsp)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    long l = System.currentTimeMillis() - this.a;
     paramString = new StringBuilder();
     paramString.append("getQCircleTabBucketConfig traceId");
     paramString.append(paramBaseRequest.getTraceId());
@@ -31,7 +31,7 @@ class QCircleThirdTabConfig$2
     QLog.d("QCircleThirdTabConfig", 1, paramString.toString());
     if ((paramLong == 0L) && (paramBoolean) && (paramGetCircleTabBucketRsp != null))
     {
-      QCircleThirdTabConfig.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig, paramGetCircleTabBucketRsp.sws.get());
+      QCircleThirdTabConfig.a(paramGetCircleTabBucketRsp.sws.get());
       paramBoolean = paramGetCircleTabBucketRsp.isNewRegUid.get();
       int i = paramGetCircleTabBucketRsp.expId.get();
       paramBaseRequest = new StringBuilder();
@@ -40,7 +40,7 @@ class QCircleThirdTabConfig$2
       paramBaseRequest.append("expId:");
       paramBaseRequest.append(i);
       QLog.d("QCircleThirdTabConfig", 1, paramBaseRequest.toString());
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig;
+      paramString = this.c;
       if (paramBoolean)
       {
         paramBaseRequest = new StringBuilder();
@@ -52,21 +52,21 @@ class QCircleThirdTabConfig$2
       {
         paramBaseRequest = "3";
       }
-      QCircleThirdTabConfig.a(paramString, "EVENT_FETCH_QCIRCLE_THIRD_TAB_CONFIG", Arrays.asList(new FeedCloudCommon.Entry[] { QCircleThirdTabConfig.a(paramString, "ret_code", paramBaseRequest), QCircleThirdTabConfig.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig, "time_cost", String.valueOf(l)) }));
+      QCircleThirdTabConfig.a(paramString, "EVENT_FETCH_QCIRCLE_THIRD_TAB_CONFIG", Arrays.asList(new FeedCloudCommon.Entry[] { QCircleThirdTabConfig.a(paramString, "ret_code", paramBaseRequest), QCircleThirdTabConfig.a(this.c, "time_cost", String.valueOf(l)) }));
     }
     else
     {
       QLog.d("QCircleThirdTabConfig", 1, "request filed notify kanDian");
-      QCircleThirdTabConfig.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig, true);
-      paramBaseRequest = this.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig;
-      QCircleThirdTabConfig.a(paramBaseRequest, "EVENT_FETCH_QCIRCLE_THIRD_TAB_CONFIG", Arrays.asList(new FeedCloudCommon.Entry[] { QCircleThirdTabConfig.a(paramBaseRequest, "ret_code", "4"), QCircleThirdTabConfig.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleQCircleThirdTabConfig, "time_cost", String.valueOf(l)) }));
+      QCircleThirdTabConfig.a(this.c, true);
+      paramBaseRequest = this.c;
+      QCircleThirdTabConfig.a(paramBaseRequest, "EVENT_FETCH_QCIRCLE_THIRD_TAB_CONFIG", Arrays.asList(new FeedCloudCommon.Entry[] { QCircleThirdTabConfig.a(paramBaseRequest, "ret_code", "4"), QCircleThirdTabConfig.a(this.c, "time_cost", String.valueOf(l)) }));
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.b.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.QCircleThirdTabConfig.2
  * JD-Core Version:    0.7.0.1
  */

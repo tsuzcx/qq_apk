@@ -2,25 +2,30 @@ package com.tencent.liteav.audio.impl;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.media.AudioManager;
 import com.tencent.liteav.audio.TXCAudioEncoderConfig;
 import com.tencent.liteav.audio.TXCAudioEngine;
 import com.tencent.liteav.audio.e;
+import com.tencent.liteav.audio.g;
+import com.tencent.liteav.audio.impl.earmonitor.TXSystemAudioKit;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.StatusBucket;
 import com.tencent.liteav.basic.structs.a;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
 public class TXCAudioEngineJNI
 {
   private static final String TAG = "TXCAudioEngineJNI";
-  private static WeakReference<e> mAudioCaptureDataListener = null;
+  private static WeakReference<g> mAudioCaptureDataListener = null;
   private static TXCAudioEngineJNI.a mAudioDumpingListener;
+  private static WeakReference<e> mMixedAllDataListener = new WeakReference(null);
+  private static AudioManager sAudioManager;
   
   static
   {
-    f.f();
+    h.f();
     nativeCacheClassForNative();
     mAudioDumpingListener = null;
   }
@@ -45,7 +50,7 @@ public class TXCAudioEngineJNI
       ((StringBuilder)localObject).append(paramContext.packageName);
       ((StringBuilder)localObject).append("/lib");
       String str3 = ((StringBuilder)localObject).toString();
-      localObject = f.g();
+      localObject = h.g();
       paramContext = (Context)localObject;
       if (localObject == null) {
         paramContext = "";
@@ -79,9 +84,69 @@ public class TXCAudioEngineJNI
     mAudioDumpingListener = parama;
   }
   
+  private static AudioManager getAudioManager()
+  {
+    if (sAudioManager == null) {
+      sAudioManager = (AudioManager)TXCAudioEngine.getInstance().getAppContext().getSystemService("audio");
+    }
+    return sAudioManager;
+  }
+  
+  public static int getAudioMode()
+  {
+    try
+    {
+      AudioManager localAudioManager = getAudioManager();
+      if (localAudioManager != null)
+      {
+        int i = localAudioManager.getMode();
+        return i;
+      }
+    }
+    catch (Exception localException)
+    {
+      label15:
+      break label15;
+    }
+    return -1;
+  }
+  
   public static StatusBucket getStatus(int paramInt)
   {
     return nativeGetStatus(paramInt);
+  }
+  
+  public static int getSystemVolume()
+  {
+    try
+    {
+      if (getAudioMode() != 0) {
+        break label33;
+      }
+      i = 3;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        AudioManager localAudioManager;
+        continue;
+        label33:
+        int i = 0;
+      }
+    }
+    localAudioManager = getAudioManager();
+    if (localAudioManager != null)
+    {
+      i = localAudioManager.getStreamVolume(i);
+      return i;
+    }
+    return -1;
+  }
+  
+  public static boolean isAppInBackground()
+  {
+    return h.a(TXCAudioEngine.getInstance().getAppContext());
   }
   
   public static native void nativeAppendLibraryPath(String paramString);
@@ -95,7 +160,7 @@ public class TXCAudioEngineJNI
       TXCLog.e("TXCAudioEngineJNI", "nativeCheckTraeEngine failed, context is null!");
       return false;
     }
-    if (f.a("traeimp-rtmp"))
+    if (h.a("traeimp-rtmp"))
     {
       TXCLog.e("TXCAudioEngineJNI", "link traeimp-rtmp success !");
       return true;
@@ -111,7 +176,7 @@ public class TXCAudioEngineJNI
     ((StringBuilder)localObject).append(paramContext.packageName);
     ((StringBuilder)localObject).append("/lib");
     String str2 = ((StringBuilder)localObject).toString();
-    localObject = f.g();
+    localObject = h.g();
     paramContext = (Context)localObject;
     if (localObject == null) {
       paramContext = "";
@@ -170,6 +235,8 @@ public class TXCAudioEngineJNI
   
   public static native void nativeClean();
   
+  public static native void nativeCloseAudioTunnel(int paramInt);
+  
   public static native void nativeDeleteAudioSessionDuplicate();
   
   public static native void nativeEnableAudioEarMonitoring(boolean paramBoolean);
@@ -180,9 +247,13 @@ public class TXCAudioEngineJNI
   
   public static native void nativeEnableCaptureEOSMode(boolean paramBoolean);
   
+  public static native void nativeEnableDeviceAbnormalDetection(boolean paramBoolean);
+  
   public static native void nativeEnableEncodedDataCallback(boolean paramBoolean);
   
   public static native void nativeEnableEncodedDataPackWithTRAEHeaderCallback(boolean paramBoolean);
+  
+  public static native void nativeEnableInbandFEC(boolean paramBoolean);
   
   public static native void nativeEnableMixMode(boolean paramBoolean);
   
@@ -210,6 +281,8 @@ public class TXCAudioEngineJNI
   
   public static native boolean nativeIsAudioDevicePlaying();
   
+  public static native boolean nativeIsDataCallbackFormatInvalid(int paramInt1, int paramInt2, int paramInt3);
+  
   public static native boolean nativeIsRemoteAudioPlaying(String paramString);
   
   public static native void nativeMuteLocalAudio(boolean paramBoolean);
@@ -219,6 +292,10 @@ public class TXCAudioEngineJNI
   public static native void nativeMuteRemoteAudioInSpeaker(String paramString, boolean paramBoolean);
   
   public static native void nativeNewAudioSessionDuplicate(Context paramContext);
+  
+  public static native void nativeNotifySystemEarMonitoringInitializing();
+  
+  public static native int nativeOpenAudioTunnel(boolean paramBoolean);
   
   public static native void nativePauseAudioCapture(boolean paramBoolean);
   
@@ -230,6 +307,8 @@ public class TXCAudioEngineJNI
   
   public static native void nativeSendCustomPCMData(byte[] paramArrayOfByte, int paramInt1, long paramLong, int paramInt2, int paramInt3);
   
+  public static native void nativeSetAudioCacheParams(int paramInt1, int paramInt2);
+  
   public static native void nativeSetAudioEarMonitoringVolume(int paramInt);
   
   public static native void nativeSetAudioEncoderParam(int paramInt1, int paramInt2);
@@ -239,6 +318,8 @@ public class TXCAudioEngineJNI
   public static native void nativeSetAudioEngineCaptureRawDataCallback(boolean paramBoolean);
   
   public static native void nativeSetAudioEngineEncodedDataCallback(boolean paramBoolean);
+  
+  public static native void nativeSetAudioEngineMixedAllDataCallback(boolean paramBoolean);
   
   public static native void nativeSetAudioEngineRemoteStreamDataListener(String paramString, boolean paramBoolean);
   
@@ -259,6 +340,8 @@ public class TXCAudioEngineJNI
   public static native void nativeSetEncoderSampleRate(int paramInt);
   
   public static native void nativeSetEventCallbackEnabled(boolean paramBoolean);
+  
+  public static native void nativeSetLocalProcessedDataCallbackFormat(int paramInt1, int paramInt2, int paramInt3);
   
   public static native void nativeSetMaxSelectedPlayStreams(int paramInt);
   
@@ -290,6 +373,8 @@ public class TXCAudioEngineJNI
   
   public static native void nativeSetSoftwareCaptureVolume(float paramFloat);
   
+  public static native void nativeSetSystemEarMonitoring(TXSystemAudioKit paramTXSystemAudioKit);
+  
   public static native void nativeSetSystemVolumeType(int paramInt);
   
   public static native void nativeSetTRAEConfig(String paramString);
@@ -308,9 +393,9 @@ public class TXCAudioEngineJNI
   
   public static native void nativeUnInitAudioDevice();
   
-  public static native void nativeUnInitEngine();
-  
   public static native void nativeUseSysAudioDevice(boolean paramBoolean);
+  
+  public static native void nativeWriteDataToTunnel(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte);
   
   public static void onError(String paramString1, int paramInt, String paramString2, String paramString3)
   {
@@ -330,11 +415,19 @@ public class TXCAudioEngineJNI
     }
   }
   
+  public static void onMixedAllData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    e locale = (e)mMixedAllDataListener.get();
+    if (locale != null) {
+      locale.onMixedAllData(paramArrayOfByte, paramInt1, paramInt2);
+    }
+  }
+  
   public static void onRecordEncData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2)
   {
     WeakReference localWeakReference = mAudioCaptureDataListener;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((e)mAudioCaptureDataListener.get()).onRecordEncData(paramArrayOfByte, paramLong, paramInt1, paramInt2, 16);
+      ((g)mAudioCaptureDataListener.get()).onRecordEncData(paramArrayOfByte, paramLong, paramInt1, paramInt2, 16);
     }
   }
   
@@ -348,7 +441,7 @@ public class TXCAudioEngineJNI
     TXCLog.e("TXCAudioEngineJNI", ((StringBuilder)localObject).toString());
     localObject = mAudioCaptureDataListener;
     if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-      ((e)mAudioCaptureDataListener.get()).onRecordError(paramInt, paramString);
+      ((g)mAudioCaptureDataListener.get()).onRecordError(paramInt, paramString);
     }
   }
   
@@ -356,7 +449,7 @@ public class TXCAudioEngineJNI
   {
     WeakReference localWeakReference = mAudioCaptureDataListener;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((e)mAudioCaptureDataListener.get()).onRecordPcmData(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3);
+      ((g)mAudioCaptureDataListener.get()).onRecordPcmData(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3);
     }
   }
   
@@ -364,8 +457,13 @@ public class TXCAudioEngineJNI
   {
     WeakReference localWeakReference = mAudioCaptureDataListener;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((e)mAudioCaptureDataListener.get()).onRecordRawPcmData(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3, false);
+      ((g)mAudioCaptureDataListener.get()).onRecordRawPcmData(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3, false);
     }
+  }
+  
+  public static void onWarning(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    TXCAudioEngine.getInstance().onWarning(paramString1, paramInt, paramString2, paramString3);
   }
   
   public static void pauseAudioCapture(boolean paramBoolean)
@@ -385,7 +483,7 @@ public class TXCAudioEngineJNI
     nativeSendCustomPCMData(paramArrayOfByte, paramArrayOfByte.length, 0L, paramInt1, paramInt2);
   }
   
-  public static void setAudioCaptureDataListener(WeakReference<e> paramWeakReference)
+  public static void setAudioCaptureDataListener(WeakReference<g> paramWeakReference)
   {
     mAudioCaptureDataListener = paramWeakReference;
     paramWeakReference = mAudioCaptureDataListener;
@@ -410,10 +508,22 @@ public class TXCAudioEngineJNI
     }
     nativeSetAudioEngineEncodedDataCallback(bool1);
   }
+  
+  public static void setMixedAllDataListener(e parame)
+  {
+    mMixedAllDataListener = new WeakReference(parame);
+    boolean bool;
+    if (parame != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    nativeSetAudioEngineMixedAllDataCallback(bool);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.TXCAudioEngineJNI
  * JD-Core Version:    0.7.0.1
  */

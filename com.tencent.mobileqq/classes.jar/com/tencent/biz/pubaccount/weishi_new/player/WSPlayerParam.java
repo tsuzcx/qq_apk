@@ -6,22 +6,22 @@ import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSVideoView;
 
 public class WSPlayerParam
 {
-  public int a = 0;
-  public long a;
   public ViewGroup a;
-  public IWSPlayerUIDelegate a;
-  public WSPlayerWrapper a;
-  public WSVideoInfo a;
-  public IWSPlayerReport a;
-  public IWSVideoView a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public IWSVideoView b;
+  public WSVideoInfo c;
+  public WSPlayerWrapper d;
+  public int e = 0;
+  public int f;
+  public long g;
+  public boolean h;
+  public boolean i;
+  public String j;
+  public IWSPlayerUIDelegate k;
+  public IWSPlayerReport l;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerParam
  * JD-Core Version:    0.7.0.1
  */

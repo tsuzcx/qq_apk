@@ -151,7 +151,7 @@ public class VideoPageUtils
     VideoEventReporter.getInstance().reportVideoStart(paramObject, paramVideoSession);
   }
   
-  public static void saveStartEvent(@NonNull VideoSession paramVideoSession)
+  public static void saveStartEvent(Object paramObject, @NonNull VideoSession paramVideoSession)
   {
     if (shouldReportStart(paramVideoSession))
     {
@@ -162,7 +162,7 @@ public class VideoPageUtils
         paramVideoSession.setCurPage(localMap);
       }
     }
-    VideoHeartBeatManager.getInstance().saveStartEvent(paramVideoSession);
+    VideoEventReporter.getInstance().stashVideoStart(paramObject, paramVideoSession);
   }
   
   private static boolean shouldReportEnd(@NonNull VideoSession paramVideoSession)
@@ -215,7 +215,7 @@ public class VideoPageUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoPageUtils
  * JD-Core Version:    0.7.0.1
  */

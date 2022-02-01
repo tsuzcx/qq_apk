@@ -16,7 +16,7 @@ public class UploadingFactory
     return null;
   }
   
-  public static <T extends Thread> T a(Class<T> paramClass)
+  public static <T extends Thread> T b(Class<T> paramClass)
   {
     try
     {
@@ -32,7 +32,7 @@ public class UploadingFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.UploadingFactory
  * JD-Core Version:    0.7.0.1
  */

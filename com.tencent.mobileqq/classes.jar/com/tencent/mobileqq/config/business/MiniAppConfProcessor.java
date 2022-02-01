@@ -20,29 +20,6 @@ public class MiniAppConfProcessor
   public static volatile int a = -1;
   public static volatile int b = -1;
   
-  public static int a()
-  {
-    if (b == -1)
-    {
-      b = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappfullscreenminedatamaxnum", 50);
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[MiniAppUserAppInfoListManager].maxtopnum = ");
-      localStringBuilder.append(b);
-      QLog.d("MiniAppConfProcessor", 1, localStringBuilder.toString());
-    }
-    return b;
-  }
-  
-  public static int a(int paramInt)
-  {
-    paramInt = a("miniapptriggerfullscreenheight", paramInt);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getTriggerFullScreenHeight, height = ");
-    localStringBuilder.append(paramInt);
-    QLog.d("MiniAppConfProcessor", 2, localStringBuilder.toString());
-    return paramInt;
-  }
-  
   public static int a(String paramString, int paramInt)
   {
     Object localObject = paramString;
@@ -84,16 +61,7 @@ public class MiniAppConfProcessor
   
   public static MiniAppConfBean a()
   {
-    return (MiniAppConfBean)QConfigManager.a().a(425);
-  }
-  
-  public static String a()
-  {
-    MiniAppConfBean localMiniAppConfBean = a();
-    if (localMiniAppConfBean != null) {
-      return localMiniAppConfBean.a();
-    }
-    return "";
+    return (MiniAppConfBean)QConfigManager.b().b(425);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -135,7 +103,17 @@ public class MiniAppConfProcessor
     return paramString2;
   }
   
-  public static boolean a()
+  public static int b(int paramInt)
+  {
+    paramInt = a("miniapptriggerfullscreenheight", paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getTriggerFullScreenHeight, height = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("MiniAppConfProcessor", 2, localStringBuilder.toString());
+    return paramInt;
+  }
+  
+  public static boolean b()
   {
     Object localObject = a();
     boolean bool;
@@ -154,7 +132,7 @@ public class MiniAppConfProcessor
     return bool;
   }
   
-  public static int b(int paramInt)
+  public static int c(int paramInt)
   {
     paramInt = a("pulldownRefreshMinDistance", paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -164,26 +142,25 @@ public class MiniAppConfProcessor
     return paramInt;
   }
   
-  public static String b()
-  {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735");
-  }
-  
-  public static boolean b()
+  public static boolean c()
   {
     MiniAppConfBean localMiniAppConfBean = a();
     if (localMiniAppConfBean != null) {
-      return localMiniAppConfBean.g();
+      return localMiniAppConfBean.h();
     }
     return false;
   }
   
-  public static String c()
+  public static String d()
   {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationNickName", "小程序通知");
+    MiniAppConfBean localMiniAppConfBean = a();
+    if (localMiniAppConfBean != null) {
+      return localMiniAppConfBean.i();
+    }
+    return "";
   }
   
-  public static boolean c()
+  public static boolean e()
   {
     if (a == -1) {}
     try
@@ -211,57 +188,20 @@ public class MiniAppConfProcessor
     return a == 1;
   }
   
-  public static String d()
+  public static int f()
   {
-    String str2 = "QQ小程序";
-    String str1 = str2;
-    try
+    if (b == -1)
     {
-      String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      str1 = str2;
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
-      str1 = str2;
+      b = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappfullscreenminedatamaxnum", 50);
       StringBuilder localStringBuilder = new StringBuilder();
-      str1 = str2;
-      localStringBuilder.append(str3);
-      str1 = str2;
-      localStringBuilder.append("_");
-      str1 = str2;
-      localStringBuilder.append("miniappfullscreentitle");
-      str1 = str2;
-      str2 = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), "QQ小程序");
-      localObject = str2;
-      str1 = str2;
-      if (!QLog.isColorLevel()) {
-        break label161;
-      }
-      str1 = str2;
-      localObject = new StringBuilder();
-      str1 = str2;
-      ((StringBuilder)localObject).append("[DesktopDataManager]. desktopTitleConfig title: ");
-      str1 = str2;
-      ((StringBuilder)localObject).append(str2);
-      str1 = str2;
-      ((StringBuilder)localObject).append("，uin: ");
-      str1 = str2;
-      ((StringBuilder)localObject).append(str3);
-      str1 = str2;
-      QLog.d("MiniAppConfProcessor", 2, ((StringBuilder)localObject).toString());
-      return str2;
+      localStringBuilder.append("[MiniAppUserAppInfoListManager].maxtopnum = ");
+      localStringBuilder.append(b);
+      QLog.d("MiniAppConfProcessor", 1, localStringBuilder.toString());
     }
-    catch (Exception localException)
-    {
-      Object localObject;
-      label151:
-      label161:
-      break label151;
-    }
-    QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. desktopTitleConfig Exception");
-    localObject = str1;
-    return localObject;
+    return b;
   }
   
-  public static boolean d()
+  public static boolean g()
   {
     boolean bool = false;
     if (a("miniappshowreddot", 0) == 1) {
@@ -270,7 +210,7 @@ public class MiniAppConfProcessor
     return bool;
   }
   
-  public static boolean e()
+  public static boolean h()
   {
     boolean bool = false;
     if (a("miniappshowmessagereddot", 0) == 1) {
@@ -279,12 +219,12 @@ public class MiniAppConfProcessor
     return bool;
   }
   
-  public static boolean f()
+  public static boolean i()
   {
     return a("miniappfullscreenshownotificationbtn", 1) == 1;
   }
   
-  public static boolean g()
+  public static boolean j()
   {
     int i;
     if (a("miniappfullscreenshownotificationreddot", 1) == 1) {
@@ -292,15 +232,25 @@ public class MiniAppConfProcessor
     } else {
       i = 0;
     }
-    return (f()) && (i != 0);
+    return (i()) && (i != 0);
   }
   
-  public static boolean h()
+  public static String k()
   {
-    return i() ^ true;
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationUin", "1038354735");
   }
   
-  public static boolean i()
+  public static String l()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "miniappNotificationNickName", "小程序通知");
+  }
+  
+  public static boolean m()
+  {
+    return n() ^ true;
+  }
+  
+  public static boolean n()
   {
     boolean bool = false;
     try
@@ -353,6 +303,56 @@ public class MiniAppConfProcessor
       bool = true;
     }
     return bool;
+  }
+  
+  public static String o()
+  {
+    String str2 = "QQ小程序";
+    String str1 = str2;
+    try
+    {
+      String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      str1 = str2;
+      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+      str1 = str2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      str1 = str2;
+      localStringBuilder.append(str3);
+      str1 = str2;
+      localStringBuilder.append("_");
+      str1 = str2;
+      localStringBuilder.append("miniappfullscreentitle");
+      str1 = str2;
+      str2 = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), "QQ小程序");
+      localObject = str2;
+      str1 = str2;
+      if (!QLog.isColorLevel()) {
+        break label161;
+      }
+      str1 = str2;
+      localObject = new StringBuilder();
+      str1 = str2;
+      ((StringBuilder)localObject).append("[DesktopDataManager]. desktopTitleConfig title: ");
+      str1 = str2;
+      ((StringBuilder)localObject).append(str2);
+      str1 = str2;
+      ((StringBuilder)localObject).append("，uin: ");
+      str1 = str2;
+      ((StringBuilder)localObject).append(str3);
+      str1 = str2;
+      QLog.d("MiniAppConfProcessor", 2, ((StringBuilder)localObject).toString());
+      return str2;
+    }
+    catch (Exception localException)
+    {
+      Object localObject;
+      label151:
+      label161:
+      break label151;
+    }
+    QLog.d("MiniAppConfProcessor", 1, "[DesktopDataManager]. desktopTitleConfig Exception");
+    localObject = str1;
+    return localObject;
   }
   
   @NonNull
@@ -425,7 +425,7 @@ public class MiniAppConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MiniAppConfProcessor
  * JD-Core Version:    0.7.0.1
  */

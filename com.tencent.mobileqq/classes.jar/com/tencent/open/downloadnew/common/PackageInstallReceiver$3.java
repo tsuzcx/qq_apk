@@ -30,7 +30,7 @@ class PackageInstallReceiver$3
       localStringBuilder.append(" ");
       localStringBuilder.append(((DownloadInfo)localObject1).e);
       LogUtility.c((String)localObject2, localStringBuilder.toString());
-      DownloadManager.a().d((DownloadInfo)localObject1);
+      DownloadManager.b().e((DownloadInfo)localObject1);
       AppCircleReportManager.a().a(101, (DownloadInfo)localObject1);
     }
     else
@@ -42,12 +42,12 @@ class PackageInstallReceiver$3
       localStringBuilder.append(((DownloadInfo)localObject1).toString());
       LogUtility.c((String)localObject2, localStringBuilder.toString());
     }
-    DownloadManager.a().a(6, (DownloadInfo)localObject1);
+    DownloadManager.b().a(6, (DownloadInfo)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver.3
  * JD-Core Version:    0.7.0.1
  */

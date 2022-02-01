@@ -41,57 +41,12 @@ public class FriendProfilePicBrowserActivity
   extends PicBrowserActivity
   implements DialogInterface.OnCancelListener, View.OnClickListener, PicBrowserImage.OnLoadListener
 {
-  int jdField_a_of_type_Int;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  FriendProfileCardPicScene jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  
-  private File a()
-  {
-    PicInfo localPicInfo = this.jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene.a();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getCurPicPathUrl, curPicInfo=");
-      localStringBuilder.append(localPicInfo);
-      QLog.d("FriendProfilePicBrowserActivity", 2, localStringBuilder.toString());
-    }
-    if (localPicInfo == null) {
-      return null;
-    }
-    if (!TextUtils.isEmpty(localPicInfo.c)) {
-      return new File(localPicInfo.c);
-    }
-    return AbsDownloader.getFile(localPicInfo.a);
-  }
-  
-  private String a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene;
-    int i;
-    if (localObject != null) {
-      i = ((FriendProfileCardPicScene)localObject).a();
-    } else {
-      i = -1;
-    }
-    if ((i >= 0) && (i < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-    } else {
-      localObject = "";
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getCurrFileId, index=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(",fileId=");
-      localStringBuilder.append((String)localObject);
-      QLog.d("FriendProfilePicBrowserActivity", 2, localStringBuilder.toString());
-    }
-    return localObject;
-  }
+  Handler a = new Handler();
+  FriendProfileCardPicScene b;
+  int c;
+  ArrayList<String> d;
+  private Button e;
+  private ImageView f;
   
   private void a(Bundle paramBundle)
   {
@@ -101,7 +56,41 @@ public class FriendProfilePicBrowserActivity
     finish();
   }
   
-  private boolean a()
+  private void c()
+  {
+    Object localObject = getIntent().getExtras();
+    this.c = ((Bundle)localObject).getInt("fromType", 0);
+    this.mIndex = ((Bundle)localObject).getInt("index", 0);
+    if (this.mIndex < 0) {
+      this.mIndex = 0;
+    }
+    this.mPicInfos = null;
+    this.mPicInfos = ((Bundle)localObject).getParcelableArrayList("picInfos");
+    int i = this.c;
+    if (i == 1)
+    {
+      localObject = ((DynamicAvatarManager)this.app.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).a(this.app.getCurrentAccountUin());
+      PicInfo localPicInfo = new PicInfo();
+      if (localObject != null) {
+        if (!TextUtils.isEmpty(((DynamicAvatar)localObject).basicBigUrl)) {
+          localPicInfo.e = ((DynamicAvatar)localObject).basicBigUrl;
+        } else if (!TextUtils.isEmpty(((DynamicAvatar)localObject).basicSmallUrl)) {
+          localPicInfo.e = ((DynamicAvatar)localObject).basicSmallUrl;
+        }
+      }
+      if (!TextUtils.isEmpty(localPicInfo.e))
+      {
+        this.mPicInfos = new ArrayList();
+        this.mPicInfos.add(localPicInfo);
+      }
+    }
+    else if (i == 2)
+    {
+      this.d = ((Bundle)localObject).getStringArrayList("fileIdList");
+    }
+  }
+  
+  private boolean d()
   {
     Object localObject = getIntent().getExtras();
     int j = 0;
@@ -138,70 +127,55 @@ public class FriendProfilePicBrowserActivity
     return bool;
   }
   
-  private void c()
+  private File e()
   {
-    Object localObject = getIntent().getExtras();
-    this.jdField_a_of_type_Int = ((Bundle)localObject).getInt("fromType", 0);
-    this.mIndex = ((Bundle)localObject).getInt("index", 0);
-    if (this.mIndex < 0) {
-      this.mIndex = 0;
-    }
-    this.mPicInfos = null;
-    this.mPicInfos = ((Bundle)localObject).getParcelableArrayList("picInfos");
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1)
+    PicInfo localPicInfo = this.b.F();
+    if (QLog.isColorLevel())
     {
-      localObject = ((DynamicAvatarManager)this.app.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).a(this.app.getCurrentAccountUin());
-      PicInfo localPicInfo = new PicInfo();
-      if (localObject != null) {
-        if (!TextUtils.isEmpty(((DynamicAvatar)localObject).basicBigUrl)) {
-          localPicInfo.d = ((DynamicAvatar)localObject).basicBigUrl;
-        } else if (!TextUtils.isEmpty(((DynamicAvatar)localObject).basicSmallUrl)) {
-          localPicInfo.d = ((DynamicAvatar)localObject).basicSmallUrl;
-        }
-      }
-      if (!TextUtils.isEmpty(localPicInfo.d))
-      {
-        this.mPicInfos = new ArrayList();
-        this.mPicInfos.add(localPicInfo);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCurPicPathUrl, curPicInfo=");
+      localStringBuilder.append(localPicInfo);
+      QLog.d("FriendProfilePicBrowserActivity", 2, localStringBuilder.toString());
     }
-    else if (i == 2)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList = ((Bundle)localObject).getStringArrayList("fileIdList");
+    if (localPicInfo == null) {
+      return null;
     }
+    if (!TextUtils.isEmpty(localPicInfo.d)) {
+      return new File(localPicInfo.d);
+    }
+    return AbsDownloader.getFile(localPicInfo.b);
   }
   
-  private void d()
+  private void f()
   {
-    File localFile = a();
+    File localFile = e();
     if (localFile == null) {
       return;
     }
     ProfileCardUtil.a(localFile.getAbsolutePath(), this);
   }
   
-  private void e()
+  private void g()
   {
-    File localFile = a();
+    File localFile = e();
     if (localFile == null) {
       return;
     }
     ProfileCardUtil.a(localFile.getAbsolutePath(), this.app, this);
   }
   
-  private void f()
+  private void h()
   {
-    File localFile = a();
+    File localFile = e();
     if (localFile == null) {
       return;
     }
     ProfileCardUtil.b(localFile.getAbsolutePath(), this.app, this);
   }
   
-  private void g()
+  private void i()
   {
-    File localFile = a();
+    File localFile = e();
     if (localFile == null)
     {
       if (QLog.isColorLevel()) {
@@ -212,27 +186,53 @@ public class FriendProfilePicBrowserActivity
     AIOGalleryUtils.a(this, localFile, Utils.Crc64String(localFile.getAbsolutePath()));
   }
   
-  private void h()
+  private void j()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfilePicBrowserActivity", 2, "deletePic");
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 0);
-    localQQCustomDialog.setMessage(getString(2131691466)).setCancelable(true);
-    localQQCustomDialog.setNegativeButton(2131690728, new FriendProfilePicBrowserActivity.2(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(2131690709, new FriendProfilePicBrowserActivity.3(this, localQQCustomDialog));
+    localQQCustomDialog.setMessage(getString(2131888424)).setCancelable(true);
+    localQQCustomDialog.setNegativeButton(2131887648, new FriendProfilePicBrowserActivity.2(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(2131887629, new FriendProfilePicBrowserActivity.3(this, localQQCustomDialog));
     if (!isFinishing()) {
       localQQCustomDialog.show();
     }
   }
   
+  private String k()
+  {
+    Object localObject = this.b;
+    int i;
+    if (localObject != null) {
+      i = ((FriendProfileCardPicScene)localObject).G();
+    } else {
+      i = -1;
+    }
+    if ((i >= 0) && (i < this.d.size())) {
+      localObject = (String)this.d.get(i);
+    } else {
+      localObject = "";
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCurrFileId, index=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",fileId=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("FriendProfilePicBrowserActivity", 2, localStringBuilder.toString());
+    }
+    return localObject;
+  }
+  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetButton;
+    Object localObject = this.e;
     if (localObject != null) {
       ((Button)localObject).setVisibility(8);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    localObject = this.f;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
     }
@@ -242,23 +242,23 @@ public class FriendProfilePicBrowserActivity
   
   public void a(int paramInt1, int paramInt2)
   {
-    FriendProfileCardPicScene localFriendProfileCardPicScene = this.jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene;
-    if ((localFriendProfileCardPicScene != null) && (localFriendProfileCardPicScene.a() == paramInt1)) {
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    FriendProfileCardPicScene localFriendProfileCardPicScene = this.b;
+    if ((localFriendProfileCardPicScene != null) && (localFriendProfileCardPicScene.G() == paramInt1)) {
+      this.e.setEnabled(false);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    FriendProfileCardPicScene localFriendProfileCardPicScene = this.jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene;
-    if ((localFriendProfileCardPicScene != null) && (localFriendProfileCardPicScene.a() == paramInt)) {
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    FriendProfileCardPicScene localFriendProfileCardPicScene = this.b;
+    if ((localFriendProfileCardPicScene != null) && (localFriendProfileCardPicScene.G() == paramInt)) {
+      this.e.setEnabled(true);
     }
   }
   
   public void b()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene.f();
+    boolean bool = this.b.f();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -270,14 +270,14 @@ public class FriendProfilePicBrowserActivity
       return;
     }
     Object localObject = ActionSheet.createFullScreenDialog(this, false);
-    ((ActionSheet)localObject).addButton(2131693256);
-    ((ActionSheet)localObject).addButton(2131692770);
-    ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131705022));
-    ((ActionSheet)localObject).addButton(2131692766);
-    if (this.jdField_a_of_type_Int == 2) {
-      ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131704982), 3);
+    ((ActionSheet)localObject).addButton(2131890804);
+    ((ActionSheet)localObject).addButton(2131889841);
+    ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131902913));
+    ((ActionSheet)localObject).addButton(2131889837);
+    if (this.c == 2) {
+      ((ActionSheet)localObject).addButton(HardCodeUtil.a(2131902873), 3);
     }
-    ((ActionSheet)localObject).addCancelButton(HardCodeUtil.a(2131705023));
+    ((ActionSheet)localObject).addCancelButton(HardCodeUtil.a(2131898212));
     ((ActionSheet)localObject).setOnButtonClickListener(new FriendProfilePicBrowserActivity.1(this, (ActionSheet)localObject));
     ((ActionSheet)localObject).show();
     ReportController.b(this.app, "dc00898", "", "", "0X8007C13", "0X8007C13", 0, 0, "", "", "", "");
@@ -311,7 +311,7 @@ public class FriendProfilePicBrowserActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    boolean bool = a();
+    boolean bool = d();
     int j = 0;
     if (!bool)
     {
@@ -321,19 +321,19 @@ public class FriendProfilePicBrowserActivity
     getWindow().setFlags(1024, 1024);
     this.mGalleryManager = new FriendProfilePicBrowserActivity.FriendProfileGalleryManager(this);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131377323));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367437));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131705027));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.e = ((Button)findViewById(2131445711));
+    this.e.setOnClickListener(this);
+    this.e.setEnabled(false);
+    this.f = ((ImageView)findViewById(2131433940));
+    this.f.setContentDescription(HardCodeUtil.a(2131902917));
+    this.f.setOnClickListener(this);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
-    this.jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene.a(false);
-    int i = this.jdField_a_of_type_Int;
+    this.b.a(false);
+    int i = this.c;
     if (i == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+      this.e.setVisibility(4);
       i = j;
       if (this.mPicInfos != null)
       {
@@ -341,10 +341,10 @@ public class FriendProfilePicBrowserActivity
         if (this.mPicInfos.size() > 0)
         {
           i = j;
-          if (!TextUtils.isEmpty(((PicInfo)this.mPicInfos.get(0)).d))
+          if (!TextUtils.isEmpty(((PicInfo)this.mPicInfos.get(0)).e))
           {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-            this.jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene.a(true);
+            this.f.setVisibility(4);
+            this.b.a(true);
             i = 1;
           }
         }
@@ -367,9 +367,9 @@ public class FriendProfilePicBrowserActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    FriendProfileCardPicScene localFriendProfileCardPicScene = this.jdField_a_of_type_ComTencentMobileqqProfileFriendProfileCardPicScene;
+    FriendProfileCardPicScene localFriendProfileCardPicScene = this.b;
     if (localFriendProfileCardPicScene != null) {
-      localFriendProfileCardPicScene.u();
+      localFriendProfileCardPicScene.H();
     }
   }
   
@@ -404,12 +404,12 @@ public class FriendProfilePicBrowserActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131367437)
+    if (i != 2131433940)
     {
-      if (i == 2131377323)
+      if (i == 2131445711)
       {
         Intent localIntent = getIntent();
-        localIntent.putExtra("setHead_fileid", a());
+        localIntent.putExtra("setHead_fileid", k());
         setResult(-1, localIntent);
         finish();
         ReportController.b(this.app, "dc00898", "", "", "0X8007C12", "0X8007C12", 0, 0, "", "", "", "");
@@ -430,7 +430,7 @@ public class FriendProfilePicBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

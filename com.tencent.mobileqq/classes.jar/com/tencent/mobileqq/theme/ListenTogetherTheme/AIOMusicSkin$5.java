@@ -17,9 +17,9 @@ class AIOMusicSkin$5
     ThreadManager.getSubThreadHandler().removeCallbacks(this);
     boolean bool1;
     StringBuilder localStringBuilder;
-    if (this.this$0.n_())
+    if (this.this$0.du_())
     {
-      boolean bool2 = AIOMusicSkin.a(AIOMusicSkin.b(this.this$0));
+      boolean bool2 = AIOMusicSkin.b(AIOMusicSkin.f(this.this$0));
       bool1 = bool2;
       if (!bool2)
       {
@@ -27,10 +27,10 @@ class AIOMusicSkin$5
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("download themeId:");
-          localStringBuilder.append(AIOMusicSkin.b(this.this$0));
+          localStringBuilder.append(AIOMusicSkin.f(this.this$0));
           QLog.i("AIOMusicSkin", 2, localStringBuilder.toString());
         }
-        MusicThemeCallback.sInstance.download(AIOMusicSkin.b(this.this$0), AIOMusicSkin.a(this.this$0), false);
+        MusicThemeCallback.sInstance.download(AIOMusicSkin.f(this.this$0), AIOMusicSkin.g(this.this$0), false);
         bool1 = bool2;
       }
     }
@@ -42,7 +42,7 @@ class AIOMusicSkin$5
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("refresh, needSkin:");
-      localStringBuilder.append(this.this$0.n_());
+      localStringBuilder.append(this.this$0.du_());
       localStringBuilder.append(" isShow: ");
       localStringBuilder.append(bool1);
       QLog.d("AIOMusicSkin", 2, localStringBuilder.toString());
@@ -52,7 +52,7 @@ class AIOMusicSkin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.5
  * JD-Core Version:    0.7.0.1
  */

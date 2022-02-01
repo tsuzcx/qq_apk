@@ -2,6 +2,9 @@ package com.tencent.mobileqq.apollo.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.BaseChatPanelBarConfProcessor;
+import com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.ChatPanelBarConfBean;
+import com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
 import com.tencent.mobileqq.apollo.model.ApolloInfo;
@@ -11,6 +14,7 @@ import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -19,6 +23,17 @@ import org.jetbrains.annotations.NotNull;
 
 public class ApolloPanelUtil
 {
+  public static int a(int paramInt)
+  {
+    if (CmShowAioMatcherImpl.judgeSupported(paramInt, 1)) {
+      return 4018;
+    }
+    if (CmShowAioMatcherImpl.judgeSupported(paramInt, 2)) {
+      return 4019;
+    }
+    return -1;
+  }
+  
   public static int a(QQAppInterface paramQQAppInterface, ApolloInfo paramApolloInfo, ApolloActionData paramApolloActionData)
   {
     if (paramQQAppInterface == null) {
@@ -107,26 +122,26 @@ public class ApolloPanelUtil
     return ((SharedPreferences)localObject).getString("sp_key_apollo_current_page_package_id_2d", String.valueOf(0));
   }
   
-  public static String a(@NotNull String paramString)
+  public static String a(@NotNull String paramString, IApolloResManager paramIApolloResManager)
   {
-    Object localObject = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getAppInterface();
-    if (localObject == null) {
+    AppRuntime localAppRuntime = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getAppInterface();
+    if (localAppRuntime == null) {
       return null;
     }
     int i = 0;
-    paramString = ApolloActionHelperImpl.getRoleDressIdByUin(paramString, (AppRuntime)localObject, false);
+    paramString = ApolloActionHelperImpl.getRoleDressIdByUin(paramString, localAppRuntime, false, paramIApolloResManager);
     if ((paramString != null) && (paramString.length == 2) && (paramString[1] != null) && (((int[])paramString[1]).length > 0))
     {
       paramString = (int[])paramString[1];
-      localObject = new StringBuilder();
+      paramIApolloResManager = new StringBuilder();
       int j = paramString.length;
       while (i < j)
       {
-        ((StringBuilder)localObject).append(paramString[i]);
-        ((StringBuilder)localObject).append("_");
+        paramIApolloResManager.append(paramString[i]);
+        paramIApolloResManager.append("_");
         i += 1;
       }
-      return ((StringBuilder)localObject).toString();
+      return paramIApolloResManager.toString();
     }
     return null;
   }
@@ -181,10 +196,21 @@ public class ApolloPanelUtil
     }
     ((SharedPreferences.Editor)localObject3).apply();
   }
+  
+  public static int b(int paramInt)
+  {
+    if (paramInt == 0) {
+      return BaseChatPanelBarConfProcessor.a().b;
+    }
+    if (paramInt == 1) {
+      return BaseChatPanelBarConfProcessor.b().b;
+    }
+    return -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloPanelUtil
  * JD-Core Version:    0.7.0.1
  */

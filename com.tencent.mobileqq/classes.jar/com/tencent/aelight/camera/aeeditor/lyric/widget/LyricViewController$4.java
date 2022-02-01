@@ -2,7 +2,7 @@ package com.tencent.aelight.camera.aeeditor.lyric.widget;
 
 import android.os.SystemClock;
 import android.util.Log;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.Lyric;
 
 class LyricViewController$4
   implements Runnable
@@ -11,15 +11,15 @@ class LyricViewController$4
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric != null) && (!this.this$0.jdField_a_of_type_ComTencentWeseevideoEditorStickerMusicLyricDataLyric.isEmpty()))
+    if ((this.this$0.d != null) && (!this.this$0.d.isEmpty()))
     {
-      this.this$0.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Int);
-      if ((this.this$0.jdField_a_of_type_Boolean) && (this.this$0.jdField_a_of_type_Int > 0))
+      this.this$0.e = (SystemClock.elapsedRealtime() - this.a);
+      if ((this.this$0.f) && (this.this$0.g > 0))
       {
         LyricViewController localLyricViewController = this.this$0;
-        localLyricViewController.jdField_a_of_type_Long -= this.this$0.jdField_a_of_type_Int;
+        localLyricViewController.e -= this.this$0.g;
       }
-      LyricViewController.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+      LyricViewController.a(this.this$0, this.a, this.b);
       return;
     }
     Log.w("ModuleController", "seek before set lyric");
@@ -27,7 +27,7 @@ class LyricViewController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricViewController.4
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ class ApolloPluginRscLoader$3
   
   public void a(boolean paramBoolean, CmShowRscUpdateHandlerImpl.ContentUpdateCheckResult paramContentUpdateCheckResult)
   {
-    ApolloPluginRscLoader.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader).remove(this.jdField_a_of_type_Int);
+    ApolloPluginRscLoader.b(this.g).remove(this.a);
     paramContentUpdateCheckResult = new StringBuilder();
     paramContentUpdateCheckResult.append("checkRoomRsc onCheckFinish success:");
     paramContentUpdateCheckResult.append(paramBoolean);
@@ -29,45 +29,45 @@ class ApolloPluginRscLoader$3
     int i = 0;
     if (paramBoolean)
     {
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      while (i < this.b.length)
       {
-        paramContentUpdateCheckResult = ((CmShowRscCacheManagerImpl)QRoute.api(ICmShowRscCacheManager.class)).getRscItem(8, this.jdField_a_of_type_ArrayOfInt[i]);
+        paramContentUpdateCheckResult = ((CmShowRscCacheManagerImpl)QRoute.api(ICmShowRscCacheManager.class)).getRscItem(8, this.b[i]);
         if (paramContentUpdateCheckResult != null) {
-          this.jdField_a_of_type_JavaUtilList.add(paramContentUpdateCheckResult);
+          this.c.add(paramContentUpdateCheckResult);
         }
         i += 1;
       }
-      CmShowRscDownloader.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new ApolloPluginRscLoader.3.1(this), this.jdField_a_of_type_JavaUtilList, false, null);
+      CmShowRscDownloader.a(this.d, "", new ApolloPluginRscLoader.3.1(this), this.c, false, null);
       return;
     }
     i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    while (i < this.b.length)
     {
-      paramContentUpdateCheckResult = ((CmShowRscCacheManagerImpl)QRoute.api(ICmShowRscCacheManager.class)).getRscItem(8, this.jdField_a_of_type_ArrayOfInt[i]);
+      paramContentUpdateCheckResult = ((CmShowRscCacheManagerImpl)QRoute.api(ICmShowRscCacheManager.class)).getRscItem(8, this.b[i]);
       int j = 2;
       if (paramContentUpdateCheckResult != null)
       {
-        ApolloPluginRscLoader localApolloPluginRscLoader = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader;
-        int k = paramContentUpdateCheckResult.b;
-        if (paramContentUpdateCheckResult.a()) {
+        ApolloPluginRscLoader localApolloPluginRscLoader = this.g;
+        int k = paramContentUpdateCheckResult.c;
+        if (paramContentUpdateCheckResult.c()) {
           j = 0;
         }
         paramContentUpdateCheckResult = ApolloPluginRscLoader.a(localApolloPluginRscLoader, 8, String.valueOf(k), j);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramContentUpdateCheckResult);
+        this.e.put(paramContentUpdateCheckResult);
       }
       else
       {
-        paramContentUpdateCheckResult = ApolloPluginRscLoader.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramContentUpdateCheckResult);
+        paramContentUpdateCheckResult = ApolloPluginRscLoader.a(this.g, 8, String.valueOf(this.b[i]), 2);
+        this.e.put(paramContentUpdateCheckResult);
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, HardCodeUtil.a(2131700719), this.jdField_a_of_type_OrgJsonJSONArray);
+    this.g.a(this.f, HardCodeUtil.a(2131898745), this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloPluginRscLoader.3
  * JD-Core Version:    0.7.0.1
  */

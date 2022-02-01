@@ -16,21 +16,21 @@ public class ComponentHeaderNewSocial$MoreSpan
   extends ClickableSpan
   implements ClickableSpanPressed
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
+  AbsBaseArticleInfo b;
+  private int d = -1;
+  private TextPaint e;
   
   public ComponentHeaderNewSocial$MoreSpan(ComponentHeaderNewSocial paramComponentHeaderNewSocial, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramAbsBaseArticleInfo;
+    this.d = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.a = paramBoolean;
+    TextPaint localTextPaint = this.e;
     if (localTextPaint != null) {
       updateDrawState(localTextPaint);
     }
@@ -38,35 +38,35 @@ public class ComponentHeaderNewSocial$MoreSpan
   
   public void onClick(View paramView)
   {
-    if (RIJItemViewTypeUtils.l(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+    if (RIJItemViewTypeUtils.l(this.b))
     {
-      RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderNewSocial.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 0, false, 5, false);
-      RIJFrameworkReportManager.b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderNewSocial.a.a.c());
+      RIJJumpUtils.a(this.c.getContext(), this.b, 0, false, 5, false);
+      RIJFrameworkReportManager.b(this.b, this.c.a.a.m());
       return;
     }
-    RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderNewSocial.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, false);
+    RIJJumpUtils.a(this.c.getContext(), this.b, false);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.e = paramTextPaint;
+    this.e.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.e;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = this.jdField_a_of_type_Int;
+    if (this.a) {
+      i = this.d;
     } else {
       i = -1;
     }
     paramTextPaint.bgColor = i;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.a(2, 14, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderNewSocial.getResources()));
-    this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+    this.e.setTextSize(AIOUtils.a(2, 14, this.c.getResources()));
+    this.e.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderNewSocial.MoreSpan
  * JD-Core Version:    0.7.0.1
  */

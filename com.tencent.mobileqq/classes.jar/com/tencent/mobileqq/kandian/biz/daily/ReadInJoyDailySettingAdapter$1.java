@@ -12,14 +12,14 @@ class ReadInJoyDailySettingAdapter$1
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingAdapter;
-    paramView.a = new ReadInJoyDailySettingPopupWindow((Activity)ReadInJoyDailySettingAdapter.a(paramView), new ReadInJoyDailySettingAdapter.1.1(this), this.jdField_a_of_type_ComTencentMobileqqKandianRepoDailyReadInJoyDailySettingModel.b, this.jdField_a_of_type_ComTencentMobileqqKandianRepoDailyReadInJoyDailySettingModel.a);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingAdapter.a.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizDailyReadInJoyDailySettingAdapter$DailySettingViewHolder.b);
+    paramView = this.d;
+    paramView.a = new ReadInJoyDailySettingPopupWindow((Activity)ReadInJoyDailySettingAdapter.a(paramView), new ReadInJoyDailySettingAdapter.1.1(this), this.b.f, this.b.e);
+    this.d.a.b(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailySettingAdapter.1
  * JD-Core Version:    0.7.0.1
  */

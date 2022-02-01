@@ -15,46 +15,44 @@ import mqq.app.Constants.LogoutReason;
 
 public class ConversationHotChatCtrl
 {
-  private Conversation jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = null;
-  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = null;
-  public QQCustomDialog a;
-  public QQProgressDialog a;
+  public QQCustomDialog a = null;
+  public QQProgressDialog b = null;
+  private HotChatObserver c = null;
+  private Conversation d = null;
   
   public ConversationHotChatCtrl(Conversation paramConversation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
+    this.d = paramConversation;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    Object localObject = this.a;
     if (localObject != null)
     {
       ((QQCustomDialog)localObject).dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.a = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    localObject = this.b;
     if (localObject != null)
     {
       ((QQProgressDialog)localObject).dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.b = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
+    if (this.c != null) {
+      this.d.s().removeObserver(this.c);
     }
   }
   
   public void a(RecentUser paramRecentUser)
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
+    QQAppInterface localQQAppInterface = this.d.s();
+    BaseActivity localBaseActivity = (BaseActivity)this.d.P();
     HotChatManager localHotChatManager = localQQAppInterface.getHotChatMng(false);
     if ((localHotChatManager != null) && (localHotChatManager.b(paramRecentUser.uin)))
     {
-      localHotChatManager.a(paramRecentUser.uin);
-      HotChatInfo localHotChatInfo = localHotChatManager.a(paramRecentUser.uin);
+      localHotChatManager.g(paramRecentUser.uin);
+      HotChatInfo localHotChatInfo = localHotChatManager.c(paramRecentUser.uin);
       if (localHotChatInfo != null)
       {
         int i;
@@ -79,10 +77,10 @@ public class ConversationHotChatCtrl
             i = 2;
           }
           ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004D29", "0X8004D29", i, 0, "", "", "", "");
-          if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver == null) {
-            this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new ConversationHotChatCtrl.1(this, localBaseActivity);
+          if (this.c == null) {
+            this.c = new ConversationHotChatCtrl.1(this, localBaseActivity);
           }
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = HotChatHelper.a(localHotChatManager.a(paramRecentUser.uin), new ConversationHotChatCtrl.2(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
+          this.a = HotChatHelper.a(localHotChatManager.c(paramRecentUser.uin), new ConversationHotChatCtrl.2(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
         }
       }
     }
@@ -95,7 +93,7 @@ public class ConversationHotChatCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationHotChatCtrl
  * JD-Core Version:    0.7.0.1
  */

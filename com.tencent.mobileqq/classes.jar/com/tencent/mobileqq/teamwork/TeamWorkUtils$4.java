@@ -14,12 +14,12 @@ final class TeamWorkUtils$4
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler(), new ArrayList(), this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg, this.jdField_a_of_type_TencentImMsgIm_msg_body$NotOnlineFile, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.frienduin, false, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.vipBubbleID, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.vipBubbleDiyTextId, null);
+    this.a.getFileTransferHandler().a(this.a.getMsgHandler(), new ArrayList(), this.b, this.c, this.d.frienduin, false, false, this.d.vipBubbleID, this.d.vipBubbleDiyTextId, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkUtils.4
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,6 @@ class XC_MethodReplacement$1
   {
     super(paramInt);
   }
-  
-  protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
-  {
-    return null;
-  }
 }
 
 

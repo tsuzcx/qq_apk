@@ -10,13 +10,13 @@ class ReadInJoyCommentPBModule$5
   public void run()
   {
     if (ReadInJoyCommentPBModule.a(this.this$0) != null) {
-      ReadInJoyCommentPBModule.a(this.this$0).i_(1001);
+      ReadInJoyCommentPBModule.a(this.this$0).l_(1001);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentPBModule.5
  * JD-Core Version:    0.7.0.1
  */

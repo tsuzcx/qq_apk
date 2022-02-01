@@ -3,8 +3,8 @@ package com.tencent.biz.qqstory.playvideo.player.mediaplayer;
 class AudioPlayback$AudioThread
   extends Thread
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean = true;
+  private final Object a = new Object();
+  private boolean b = true;
   
   AudioPlayback$AudioThread(AudioPlayback paramAudioPlayback)
   {
@@ -13,16 +13,16 @@ class AudioPlayback$AudioThread
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaLangObject.notify();
+      this.a.notify();
       return;
     }
   }
   
   void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
     try
     {
       notify();
@@ -38,22 +38,22 @@ class AudioPlayback$AudioThread
       {
         try
         {
-          while (this.jdField_a_of_type_Boolean) {
+          while (this.b) {
             wait();
           }
-          synchronized (this.jdField_a_of_type_JavaLangObject)
+          synchronized (this.a)
           {
             AudioPlayback.BufferQueue.Item localItem;
             for (;;)
             {
-              localItem = this.this$0.a.a();
+              localItem = this.this$0.b.a();
               if (localItem != null) {
                 break;
               }
-              this.jdField_a_of_type_JavaLangObject.wait();
+              this.a.wait();
             }
-            this.this$0.b(localItem.jdField_a_of_type_JavaNioByteBuffer, localItem.jdField_a_of_type_Long);
-            this.this$0.a.a(localItem);
+            this.this$0.b(localItem.a, localItem.b);
+            this.this$0.b.a(localItem);
           }
           interrupt();
         }

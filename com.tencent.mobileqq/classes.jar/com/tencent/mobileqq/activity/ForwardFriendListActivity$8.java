@@ -10,7 +10,7 @@ class ForwardFriendListActivity$8
   
   public void a(View paramView)
   {
-    if (ForwardFriendListActivity.a(this.a))
+    if (ForwardFriendListActivity.f(this.a))
     {
       ForwardFriendListActivity.b(this.a, paramView);
       return;
@@ -20,12 +20,12 @@ class ForwardFriendListActivity$8
   
   public boolean a(String paramString, int paramInt)
   {
-    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
+    return ForwardFriendListActivity.b(this.a, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardFriendListActivity.8
  * JD-Core Version:    0.7.0.1
  */

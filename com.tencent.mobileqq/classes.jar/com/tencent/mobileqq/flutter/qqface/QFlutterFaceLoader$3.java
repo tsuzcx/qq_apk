@@ -11,15 +11,15 @@ class QFlutterFaceLoader$3
   
   public void run()
   {
-    Iterator localIterator = QFlutterFaceLoader.a(this.this$0).iterator();
+    Iterator localIterator = QFlutterFaceLoader.d(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((QFlutterFaceLoader.FaceObserver)localIterator.next()).onFaceUpdate(this.jdField_a_of_type_ComTencentMobileqqFlutterQqfaceDecodeRequest, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString);
+      ((QFlutterFaceLoader.FaceObserver)localIterator.next()).onFaceUpdate(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader.3
  * JD-Core Version:    0.7.0.1
  */

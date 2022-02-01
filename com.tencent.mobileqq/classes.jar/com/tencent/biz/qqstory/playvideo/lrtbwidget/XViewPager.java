@@ -46,90 +46,85 @@ import java.util.List;
 public class XViewPager
   extends ViewGroup
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new XViewPager.2();
-  private static final XViewPager.ViewPositionComparator jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$ViewPositionComparator = new XViewPager.ViewPositionComparator();
-  private static final Comparator<XViewPager.ItemInfo> jdField_a_of_type_JavaUtilComparator;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842931 };
-  private float jdField_a_of_type_Float = 0.6F;
-  protected int a;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Parcelable jdField_a_of_type_AndroidOsParcelable;
-  private EdgeEffectCompat jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private PagerAdapter jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
-  private final XViewPager.ItemInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$ItemInfo;
-  private XViewPager.OnAdapterChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnAdapterChangeListener;
-  private XViewPager.OnDragStatusChangedListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnDragStatusChangedListener;
-  private XViewPager.OnPageChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
-  private XViewPager.OnVisibilityChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnVisibilityChangeListener;
-  private XViewPager.PageTransformer jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer = null;
-  private XViewPager.PagerObserver jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PagerObserver;
-  private ClassLoader jdField_a_of_type_JavaLangClassLoader;
-  private final Runnable jdField_a_of_type_JavaLangRunnable;
+  private static final XViewPager.ViewPositionComparator ax = new XViewPager.ViewPositionComparator();
+  private static final int[] n = { 16842931 };
+  private static final Comparator<XViewPager.ItemInfo> p = new XViewPager.1();
+  private static final Interpolator q = new XViewPager.2();
+  private XViewPager.PagerObserver A;
+  private int B;
+  private Drawable C;
+  private int D;
+  private int E;
+  private int F;
+  private int G;
+  private float H;
+  private float I;
+  private int J;
+  private int K;
+  private boolean L;
+  private boolean M;
+  private boolean N;
+  private int O;
+  private boolean P;
+  private int Q;
+  private boolean R;
+  private int S;
+  private int T;
+  private float U;
+  private float V;
+  private float W;
+  private float Z;
   public String a;
-  private Method jdField_a_of_type_JavaLangReflectMethod;
-  private final ArrayList<XViewPager.ItemInfo> jdField_a_of_type_JavaUtilArrayList;
-  private List<XViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = -1;
-  private EdgeEffectCompat jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat;
-  private XViewPager.OnPageChangeListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
-  private XViewPager.PageTransformer jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer;
-  private ArrayList<View> jdField_b_of_type_JavaUtilArrayList;
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = 1;
-  private EdgeEffectCompat jdField_c_of_type_AndroidSupportV4WidgetEdgeEffectCompat;
-  private boolean jdField_c_of_type_Boolean = true;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private EdgeEffectCompat jdField_d_of_type_AndroidSupportV4WidgetEdgeEffectCompat;
-  private boolean jdField_d_of_type_Boolean = true;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean = false;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
-  private float jdField_g_of_type_Float;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean;
-  private int jdField_h_of_type_Int;
-  private boolean jdField_h_of_type_Boolean;
-  private int jdField_i_of_type_Int;
-  private boolean jdField_i_of_type_Boolean;
-  private int jdField_j_of_type_Int;
-  private boolean jdField_j_of_type_Boolean;
-  private int jdField_k_of_type_Int;
-  private boolean jdField_k_of_type_Boolean;
-  private int jdField_l_of_type_Int;
-  private boolean jdField_l_of_type_Boolean;
-  private int jdField_m_of_type_Int;
-  private boolean jdField_m_of_type_Boolean;
-  private int jdField_n_of_type_Int;
-  private boolean jdField_n_of_type_Boolean;
-  private int jdField_o_of_type_Int;
-  private boolean jdField_o_of_type_Boolean;
-  private int jdField_p_of_type_Int;
-  private boolean jdField_p_of_type_Boolean;
-  private int q;
-  private int r;
-  private int s;
-  private int t;
-  private int u;
+  private int aA;
+  private final Runnable aB;
+  private int aC;
+  private int aa;
+  private VelocityTracker ab;
+  private int ac;
+  private int ad;
+  private int ae;
+  private int af;
+  private boolean ag;
+  private EdgeEffectCompat ah;
+  private EdgeEffectCompat ai;
+  private EdgeEffectCompat aj;
+  private EdgeEffectCompat ak;
+  private boolean al;
+  private boolean am;
+  private boolean an;
+  private boolean ao;
+  private int ap;
+  private XViewPager.OnPageChangeListener aq;
+  private XViewPager.OnPageChangeListener ar;
+  private XViewPager.OnAdapterChangeListener as;
+  private XViewPager.PageTransformer at;
+  private Method au;
+  private int av;
+  private ArrayList<View> aw;
+  private XViewPager.OnDragStatusChangedListener ay;
+  private boolean az;
+  protected int b;
+  private boolean c = false;
+  private boolean d = false;
+  private boolean e = true;
+  private boolean f = true;
+  private XViewPager.PageTransformer g = null;
+  private boolean h = false;
+  private float i = 0.6F;
+  private int j = -1;
+  private int k = 1;
+  private XViewPager.OnVisibilityChangeListener l;
+  private List<XViewPager.OnPageChangeListener> m;
+  private int o;
+  private final ArrayList<XViewPager.ItemInfo> r;
+  private final XViewPager.ItemInfo s;
+  private final Rect t;
+  private PagerAdapter u;
   private int v;
   private int w;
-  private int x;
-  private int y;
-  private int z;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilComparator = new XViewPager.1();
-  }
+  private Parcelable x;
+  private ClassLoader y;
+  private Scroller z;
   
   public XViewPager(Context paramContext)
   {
@@ -137,24 +132,24 @@ public class XViewPager
     paramContext = new StringBuilder();
     paramContext.append("XViewPager");
     paramContext.append(System.identityHashCode(this));
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$ItemInfo = new XViewPager.ItemInfo();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsParcelable = null;
-    this.jdField_a_of_type_JavaLangClassLoader = null;
-    this.jdField_b_of_type_Float = -3.402824E+038F;
-    this.jdField_c_of_type_Float = 3.4028235E+38F;
-    this.jdField_n_of_type_Int = 1;
-    this.r = -1;
-    this.jdField_l_of_type_Boolean = true;
-    this.jdField_m_of_type_Boolean = false;
-    this.jdField_n_of_type_Boolean = false;
-    this.jdField_p_of_type_Boolean = false;
-    this.y = 0;
-    this.jdField_a_of_type_JavaLangRunnable = new XViewPager.3(this);
-    this.z = 0;
+    this.a = paramContext.toString();
+    this.r = new ArrayList();
+    this.s = new XViewPager.ItemInfo();
+    this.t = new Rect();
+    this.w = -1;
+    this.x = null;
+    this.y = null;
+    this.H = -3.402824E+038F;
+    this.I = 3.4028235E+38F;
+    this.O = 1;
+    this.aa = -1;
+    this.al = true;
+    this.am = false;
+    this.an = false;
+    this.az = false;
+    this.aA = 0;
+    this.aB = new XViewPager.3(this);
+    this.aC = 0;
     a();
   }
   
@@ -164,30 +159,30 @@ public class XViewPager
     paramContext = new StringBuilder();
     paramContext.append("XViewPager");
     paramContext.append(System.identityHashCode(this));
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$ItemInfo = new XViewPager.ItemInfo();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsParcelable = null;
-    this.jdField_a_of_type_JavaLangClassLoader = null;
-    this.jdField_b_of_type_Float = -3.402824E+038F;
-    this.jdField_c_of_type_Float = 3.4028235E+38F;
-    this.jdField_n_of_type_Int = 1;
-    this.r = -1;
-    this.jdField_l_of_type_Boolean = true;
-    this.jdField_m_of_type_Boolean = false;
-    this.jdField_n_of_type_Boolean = false;
-    this.jdField_p_of_type_Boolean = false;
-    this.y = 0;
-    this.jdField_a_of_type_JavaLangRunnable = new XViewPager.3(this);
-    this.z = 0;
+    this.a = paramContext.toString();
+    this.r = new ArrayList();
+    this.s = new XViewPager.ItemInfo();
+    this.t = new Rect();
+    this.w = -1;
+    this.x = null;
+    this.y = null;
+    this.H = -3.402824E+038F;
+    this.I = 3.4028235E+38F;
+    this.O = 1;
+    this.aa = -1;
+    this.al = true;
+    this.am = false;
+    this.an = false;
+    this.az = false;
+    this.aA = 0;
+    this.aB = new XViewPager.3(this);
+    this.aC = 0;
     a();
   }
   
   private int a(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
   {
-    if ((Math.abs(paramInt3) > this.u) && (Math.abs(paramInt2) > this.s))
+    if ((Math.abs(paramInt3) > this.ae) && (Math.abs(paramInt2) > this.ac))
     {
       if (paramInt2 <= 0) {
         paramInt1 += 1;
@@ -196,23 +191,23 @@ public class XViewPager
     else
     {
       float f1;
-      if (paramInt1 >= this.jdField_e_of_type_Int) {
-        f1 = 1.0F - this.jdField_a_of_type_Float;
+      if (paramInt1 >= this.v) {
+        f1 = 1.0F - this.i;
       } else {
-        f1 = this.jdField_a_of_type_Float;
+        f1 = this.i;
       }
       paramInt1 = (int)(paramInt1 + paramFloat + f1);
     }
     paramInt2 = paramInt1;
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.r.size() > 0)
     {
-      if (this.jdField_n_of_type_Int == 0) {
-        return Math.max(0, Math.min(paramInt1, this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount()));
+      if (this.O == 0) {
+        return Math.max(0, Math.min(paramInt1, this.u.getCount()));
       }
-      XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.r.get(0);
+      Object localObject = this.r;
       localObject = (XViewPager.ItemInfo)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
-      paramInt2 = Math.max(localItemInfo.jdField_a_of_type_Int, Math.min(paramInt1, ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int));
+      paramInt2 = Math.max(localItemInfo.b, Math.min(paramInt1, ((XViewPager.ItemInfo)localObject).b));
     }
     return paramInt2;
   }
@@ -243,87 +238,10 @@ public class XViewPager
     return localRect;
   }
   
-  private XViewPager.ItemInfo a()
-  {
-    if (f()) {
-      return b();
-    }
-    int i1 = d();
-    float f1;
-    if (i1 > 0) {
-      f1 = getScrollX() / i1;
-    } else {
-      f1 = 0.0F;
-    }
-    float f2;
-    if (i1 > 0) {
-      f2 = this.jdField_g_of_type_Int / i1;
-    } else {
-      f2 = 0.0F;
-    }
-    Object localObject = null;
-    i1 = 0;
-    int i2 = 1;
-    int i3 = -1;
-    float f3 = 0.0F;
-    float f4 = 0.0F;
-    while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      XViewPager.ItemInfo localItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      int i4 = i1;
-      XViewPager.ItemInfo localItemInfo1 = localItemInfo2;
-      if (i2 == 0)
-      {
-        int i5 = localItemInfo2.jdField_a_of_type_Int;
-        i3 += 1;
-        i4 = i1;
-        localItemInfo1 = localItemInfo2;
-        if (i5 != i3)
-        {
-          localItemInfo1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$ItemInfo;
-          localItemInfo1.jdField_b_of_type_Float = (f3 + f4 + f2);
-          localItemInfo1.jdField_a_of_type_Int = i3;
-          localItemInfo1.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(localItemInfo1.jdField_a_of_type_Int);
-          i4 = i1 - 1;
-        }
-      }
-      f3 = localItemInfo1.jdField_b_of_type_Float;
-      f4 = localItemInfo1.jdField_a_of_type_Float;
-      if ((i2 == 0) && (f1 < f3)) {
-        return localObject;
-      }
-      if (f1 >= f4 + f3 + f2)
-      {
-        if (i4 == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-          return localItemInfo1;
-        }
-        i3 = localItemInfo1.jdField_a_of_type_Int;
-        f4 = localItemInfo1.jdField_a_of_type_Float;
-        i1 = i4 + 1;
-        i2 = 0;
-        localObject = localItemInfo1;
-      }
-      else
-      {
-        return localItemInfo1;
-      }
-    }
-    return localObject;
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { getScrollX(), paramInt2 });
-    localValueAnimator.setDuration(this.y);
-    localValueAnimator.addUpdateListener(new XViewPager.4(this));
-    localValueAnimator.addListener(new XViewPager.5(this));
-    localValueAnimator.start();
-  }
-  
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     XViewPager.ItemInfo localItemInfo;
-    if ((paramInt2 > 0) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    if ((paramInt2 > 0) && (!this.r.isEmpty()))
     {
       int i1 = getPaddingLeft();
       int i2 = getPaddingRight();
@@ -331,29 +249,29 @@ public class XViewPager
       int i4 = getPaddingRight();
       paramInt2 = (int)(getScrollX() / (paramInt2 - i3 - i4 + paramInt4) * (paramInt1 - i1 - i2 + paramInt3));
       scrollTo(paramInt2, getScrollY());
-      if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished())
+      if (!this.z.isFinished())
       {
-        paramInt3 = this.jdField_a_of_type_AndroidWidgetScroller.getDuration();
-        paramInt4 = this.jdField_a_of_type_AndroidWidgetScroller.timePassed();
-        localItemInfo = a(this.jdField_e_of_type_Int);
+        paramInt3 = this.z.getDuration();
+        paramInt4 = this.z.timePassed();
+        localItemInfo = b(this.v);
         if (localItemInfo != null) {
-          this.jdField_a_of_type_AndroidWidgetScroller.startScroll(paramInt2, 0, (int)(localItemInfo.jdField_b_of_type_Float * paramInt1), 0, paramInt3 - paramInt4);
+          this.z.startScroll(paramInt2, 0, (int)(localItemInfo.e * paramInt1), 0, paramInt3 - paramInt4);
         }
       }
     }
     else
     {
-      localItemInfo = a(this.jdField_e_of_type_Int);
+      localItemInfo = b(this.v);
       float f1;
       if (localItemInfo != null) {
-        f1 = Math.min(localItemInfo.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
+        f1 = Math.min(localItemInfo.e, this.I);
       } else {
         f1 = 0.0F;
       }
       paramInt1 = (int)(f1 * (paramInt1 - getPaddingLeft() - getPaddingRight()));
       if (paramInt1 != getScrollX())
       {
-        b(false);
+        a(false);
         scrollTo(paramInt1, getScrollY());
       }
     }
@@ -361,11 +279,11 @@ public class XViewPager
   
   private void a(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
-    Object localObject = a(paramInt1);
+    Object localObject = b(paramInt1);
     int i2 = 0;
     int i1;
     if (localObject != null) {
-      i1 = (int)(d() * Math.max(this.jdField_b_of_type_Float, Math.min(((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float, this.jdField_c_of_type_Float)));
+      i1 = (int)(getClientWidth() * Math.max(this.H, Math.min(((XViewPager.ItemInfo)localObject).e, this.I)));
     } else {
       i1 = 0;
     }
@@ -374,21 +292,21 @@ public class XViewPager
       a(i1, 0, paramInt2);
       if (paramBoolean2)
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+        localObject = this.aq;
         if (localObject != null) {
           ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
         }
       }
       if (paramBoolean2)
       {
-        localObject = this.jdField_a_of_type_JavaUtilList;
+        localObject = this.m;
         if (localObject != null)
         {
           i1 = ((List)localObject).size();
           paramInt2 = i2;
           while (paramInt2 < i1)
           {
-            localObject = (XViewPager.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+            localObject = (XViewPager.OnPageChangeListener)this.m.get(paramInt2);
             if (localObject != null) {
               ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
             }
@@ -398,7 +316,7 @@ public class XViewPager
       }
       if (paramBoolean2)
       {
-        localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+        localObject = this.ar;
         if (localObject != null) {
           ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
         }
@@ -408,21 +326,21 @@ public class XViewPager
     {
       if (paramBoolean2)
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+        localObject = this.aq;
         if (localObject != null) {
           ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
         }
       }
       if (paramBoolean2)
       {
-        localObject = this.jdField_a_of_type_JavaUtilList;
+        localObject = this.m;
         if (localObject != null)
         {
           i2 = ((List)localObject).size();
           paramInt2 = 0;
           while (paramInt2 < i2)
           {
-            localObject = (XViewPager.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+            localObject = (XViewPager.OnPageChangeListener)this.m.get(paramInt2);
             if (localObject != null) {
               ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
             }
@@ -432,36 +350,36 @@ public class XViewPager
       }
       if (paramBoolean2)
       {
-        localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+        localObject = this.ar;
         if (localObject != null) {
           ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
         }
       }
-      b(false);
-      if (this.jdField_p_of_type_Boolean)
+      a(false);
+      if (this.az)
       {
-        a(paramInt1, i1);
+        b(paramInt1, i1);
         return;
       }
       scrollTo(i1, 0);
-      b(i1);
+      d(i1);
     }
   }
   
   private void a(MotionEvent paramMotionEvent)
   {
     int i1 = MotionEventCompat.getActionIndex(paramMotionEvent);
-    if (MotionEventCompat.getPointerId(paramMotionEvent, i1) == this.r)
+    if (MotionEventCompat.getPointerId(paramMotionEvent, i1) == this.aa)
     {
       if (i1 == 0) {
         i1 = 1;
       } else {
         i1 = 0;
       }
-      this.jdField_d_of_type_Float = MotionEventCompat.getX(paramMotionEvent, i1);
-      this.jdField_e_of_type_Float = MotionEventCompat.getY(paramMotionEvent, i1);
-      this.r = MotionEventCompat.getPointerId(paramMotionEvent, i1);
-      paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+      this.U = MotionEventCompat.getX(paramMotionEvent, i1);
+      this.V = MotionEventCompat.getY(paramMotionEvent, i1);
+      this.aa = MotionEventCompat.getPointerId(paramMotionEvent, i1);
+      paramMotionEvent = this.ab;
       if (paramMotionEvent != null) {
         paramMotionEvent.clear();
       }
@@ -470,60 +388,60 @@ public class XViewPager
   
   private void a(XViewPager.ItemInfo paramItemInfo1, int paramInt, XViewPager.ItemInfo paramItemInfo2)
   {
-    int i4 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount();
-    int i1 = d();
+    int i4 = this.u.getCount();
+    int i1 = getClientWidth();
     float f2;
     if (i1 > 0) {
-      f2 = this.jdField_g_of_type_Int / i1;
+      f2 = this.B / i1;
     } else {
       f2 = 0.0F;
     }
     if (paramItemInfo2 != null)
     {
-      i1 = paramItemInfo2.jdField_a_of_type_Int;
-      if (i1 < paramItemInfo1.jdField_a_of_type_Int)
+      i1 = paramItemInfo2.b;
+      if (i1 < paramItemInfo1.b)
       {
-        f1 = paramItemInfo2.jdField_b_of_type_Float + paramItemInfo2.jdField_a_of_type_Float + f2;
+        f1 = paramItemInfo2.e + paramItemInfo2.d + f2;
         i1 += 1;
         i2 = 0;
-        while ((i1 <= paramItemInfo1.jdField_a_of_type_Int) && (i2 < this.jdField_a_of_type_JavaUtilArrayList.size()))
+        while ((i1 <= paramItemInfo1.b) && (i2 < this.r.size()))
         {
-          for (paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2);; paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2))
+          for (paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2);; paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2))
           {
             i3 = i1;
             f3 = f1;
-            if (i1 <= paramItemInfo2.jdField_a_of_type_Int) {
+            if (i1 <= paramItemInfo2.b) {
               break;
             }
             i3 = i1;
             f3 = f1;
-            if (i2 >= this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+            if (i2 >= this.r.size() - 1) {
               break;
             }
             i2 += 1;
           }
-          while (i3 < paramItemInfo2.jdField_a_of_type_Int)
+          while (i3 < paramItemInfo2.b)
           {
-            f3 += this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(i3) + f2;
+            f3 += this.u.getPageWidth(i3) + f2;
             i3 += 1;
           }
-          paramItemInfo2.jdField_b_of_type_Float = f3;
-          f1 = f3 + (paramItemInfo2.jdField_a_of_type_Float + f2);
+          paramItemInfo2.e = f3;
+          f1 = f3 + (paramItemInfo2.d + f2);
           i1 = i3 + 1;
         }
       }
-      if (i1 > paramItemInfo1.jdField_a_of_type_Int)
+      if (i1 > paramItemInfo1.b)
       {
-        i2 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-        f1 = paramItemInfo2.jdField_b_of_type_Float;
+        i2 = this.r.size() - 1;
+        f1 = paramItemInfo2.e;
         i1 -= 1;
-        while ((i1 >= paramItemInfo1.jdField_a_of_type_Int) && (i2 >= 0))
+        while ((i1 >= paramItemInfo1.b) && (i2 >= 0))
         {
-          for (paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2);; paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2))
+          for (paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2);; paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2))
           {
             i3 = i1;
             f3 = f1;
-            if (i1 >= paramItemInfo2.jdField_a_of_type_Int) {
+            if (i1 >= paramItemInfo2.b) {
               break;
             }
             i3 = i1;
@@ -533,564 +451,104 @@ public class XViewPager
             }
             i2 -= 1;
           }
-          while (i3 > paramItemInfo2.jdField_a_of_type_Int)
+          while (i3 > paramItemInfo2.b)
           {
-            f3 -= this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(i3) + f2;
+            f3 -= this.u.getPageWidth(i3) + f2;
             i3 -= 1;
           }
-          f1 = f3 - (paramItemInfo2.jdField_a_of_type_Float + f2);
-          paramItemInfo2.jdField_b_of_type_Float = f1;
+          f1 = f3 - (paramItemInfo2.d + f2);
+          paramItemInfo2.e = f1;
           i1 = i3 - 1;
         }
       }
     }
-    int i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f3 = paramItemInfo1.jdField_b_of_type_Float;
-    i1 = paramItemInfo1.jdField_a_of_type_Int - 1;
-    if (paramItemInfo1.jdField_a_of_type_Int == 0) {
-      f1 = paramItemInfo1.jdField_b_of_type_Float;
+    int i3 = this.r.size();
+    float f3 = paramItemInfo1.e;
+    i1 = paramItemInfo1.b - 1;
+    if (paramItemInfo1.b == 0) {
+      f1 = paramItemInfo1.e;
     } else {
       f1 = -3.402824E+038F;
     }
-    this.jdField_b_of_type_Float = f1;
-    int i2 = paramItemInfo1.jdField_a_of_type_Int;
+    this.H = f1;
+    int i2 = paramItemInfo1.b;
     i4 -= 1;
     if (i2 == i4) {
-      f1 = paramItemInfo1.jdField_b_of_type_Float + paramItemInfo1.jdField_a_of_type_Float - 1.0F;
+      f1 = paramItemInfo1.e + paramItemInfo1.d - 1.0F;
     } else {
       f1 = 3.4028235E+38F;
     }
-    this.jdField_c_of_type_Float = f1;
+    this.I = f1;
     i2 = paramInt - 1;
     float f1 = f3;
     while (i2 >= 0)
     {
-      paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
-      while (i1 > paramItemInfo2.jdField_a_of_type_Int)
+      paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2);
+      while (i1 > paramItemInfo2.b)
       {
-        f1 -= this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(i1) + f2;
+        f1 -= this.u.getPageWidth(i1) + f2;
         i1 -= 1;
       }
-      f1 -= paramItemInfo2.jdField_a_of_type_Float + f2;
-      paramItemInfo2.jdField_b_of_type_Float = f1;
-      if (paramItemInfo2.jdField_a_of_type_Int == 0) {
-        this.jdField_b_of_type_Float = f1;
+      f1 -= paramItemInfo2.d + f2;
+      paramItemInfo2.e = f1;
+      if (paramItemInfo2.b == 0) {
+        this.H = f1;
       }
       i2 -= 1;
       i1 -= 1;
     }
-    f1 = paramItemInfo1.jdField_b_of_type_Float + paramItemInfo1.jdField_a_of_type_Float + f2;
-    i2 = paramItemInfo1.jdField_a_of_type_Int + 1;
+    f1 = paramItemInfo1.e + paramItemInfo1.d + f2;
+    i2 = paramItemInfo1.b + 1;
     i1 = paramInt + 1;
     paramInt = i2;
     while (i1 < i3)
     {
-      paramItemInfo1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      while (paramInt < paramItemInfo1.jdField_a_of_type_Int)
+      paramItemInfo1 = (XViewPager.ItemInfo)this.r.get(i1);
+      while (paramInt < paramItemInfo1.b)
       {
-        f1 += this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(paramInt) + f2;
+        f1 += this.u.getPageWidth(paramInt) + f2;
         paramInt += 1;
       }
-      if (paramItemInfo1.jdField_a_of_type_Int == i4) {
-        this.jdField_c_of_type_Float = (paramItemInfo1.jdField_a_of_type_Float + f1 - 1.0F);
+      if (paramItemInfo1.b == i4) {
+        this.I = (paramItemInfo1.d + f1 - 1.0F);
       }
-      paramItemInfo1.jdField_b_of_type_Float = f1;
-      f1 += paramItemInfo1.jdField_a_of_type_Float + f2;
+      paramItemInfo1.e = f1;
+      f1 += paramItemInfo1.d + f2;
       i1 += 1;
       paramInt += 1;
     }
-    this.jdField_n_of_type_Boolean = false;
+    this.an = false;
   }
   
-  private boolean a(float paramFloat)
+  private void a(boolean paramBoolean)
   {
-    f();
-    float f1 = this.jdField_d_of_type_Float;
-    this.jdField_d_of_type_Float = paramFloat;
-    float f2 = getScrollX() + (f1 - paramFloat);
-    float f3 = d();
-    paramFloat = this.jdField_b_of_type_Float * f3;
-    f1 = this.jdField_c_of_type_Float * f3;
-    Object localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
-    localObject2 = (XViewPager.ItemInfo)((ArrayList)localObject2).get(((ArrayList)localObject2).size() - 1);
-    if (((XViewPager.ItemInfo)localObject1).jdField_a_of_type_Int != 0)
-    {
-      paramFloat = ((XViewPager.ItemInfo)localObject1).jdField_b_of_type_Float * f3;
-      i1 = 0;
-    }
-    else
-    {
-      i1 = 1;
-    }
-    int i2;
-    if (((XViewPager.ItemInfo)localObject2).jdField_a_of_type_Int != this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount() - 1)
-    {
-      f1 = ((XViewPager.ItemInfo)localObject2).jdField_b_of_type_Float * f3;
-      i2 = 0;
-    }
-    else
-    {
-      i2 = 1;
-    }
-    boolean bool;
-    if (f2 < paramFloat)
-    {
-      if (i1 != 0) {
-        bool = this.jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onPull(Math.abs(paramFloat - f2) / f3);
-      } else {
-        bool = false;
-      }
-      if (this.jdField_e_of_type_Boolean) {
-        paramFloat = f2;
-      }
-    }
-    else if (f2 > f1)
-    {
-      if (i2 != 0) {
-        bool = this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onPull(Math.abs(f2 - f1) / f3);
-      } else {
-        bool = false;
-      }
-      if (this.jdField_e_of_type_Boolean) {
-        paramFloat = f2;
-      } else {
-        paramFloat = f1;
-      }
-    }
-    else
-    {
-      bool = false;
-      paramFloat = f2;
-    }
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnDragStatusChangedListener;
-    f1 = paramFloat;
-    if (localObject1 != null)
-    {
-      f1 = paramFloat;
-      if (!((XViewPager.OnDragStatusChangedListener)localObject1).a())
-      {
-        i1 = getWidth() * (c() - 1);
-        if (this.jdField_o_of_type_Int == 3)
-        {
-          f1 = i1;
-          if (paramFloat < f1) {}
-        }
-        else
-        {
-          f1 = paramFloat;
-          if (this.jdField_o_of_type_Int == 5)
-          {
-            f2 = i1;
-            f1 = paramFloat;
-            if (paramFloat > f2) {
-              f1 = f2;
-            }
-          }
-        }
-      }
-    }
-    paramFloat = this.jdField_d_of_type_Float;
-    int i1 = (int)f1;
-    this.jdField_d_of_type_Float = (paramFloat + (f1 - i1));
-    scrollTo(i1, 0);
-    b(i1);
-    return bool;
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2)
-  {
-    return ((paramFloat1 < this.q) && (paramFloat2 > 0.0F)) || ((paramFloat1 > getWidth() - this.q) && (paramFloat2 < 0.0F));
-  }
-  
-  private XViewPager.ItemInfo b()
-  {
-    int i1 = e();
-    float f1;
-    if (i1 > 0) {
-      f1 = getScrollY() / i1;
-    } else {
-      f1 = 0.0F;
-    }
-    float f2;
-    if (i1 > 0) {
-      f2 = this.jdField_g_of_type_Int / i1;
-    } else {
-      f2 = 0.0F;
-    }
-    Object localObject = null;
-    i1 = 0;
-    int i2 = 1;
-    int i3 = -1;
-    float f3 = 0.0F;
-    float f4 = 0.0F;
-    while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      XViewPager.ItemInfo localItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      int i4 = i1;
-      XViewPager.ItemInfo localItemInfo1 = localItemInfo2;
-      if (i2 == 0)
-      {
-        int i5 = localItemInfo2.jdField_a_of_type_Int;
-        i3 += 1;
-        i4 = i1;
-        localItemInfo1 = localItemInfo2;
-        if (i5 != i3)
-        {
-          localItemInfo1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$ItemInfo;
-          localItemInfo1.jdField_b_of_type_Float = (f3 + f4 + f2);
-          localItemInfo1.jdField_a_of_type_Int = i3;
-          localItemInfo1.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(localItemInfo1.jdField_a_of_type_Int);
-          i4 = i1 - 1;
-        }
-      }
-      f3 = localItemInfo1.jdField_b_of_type_Float;
-      f4 = localItemInfo1.jdField_a_of_type_Float;
-      if ((i2 == 0) && (f1 < f3)) {
-        return localObject;
-      }
-      if (f1 >= f4 + f3 + f2)
-      {
-        if (i4 == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-          return localItemInfo1;
-        }
-        i3 = localItemInfo1.jdField_a_of_type_Int;
-        f4 = localItemInfo1.jdField_a_of_type_Float;
-        i1 = i4 + 1;
-        i2 = 0;
-        localObject = localItemInfo1;
-      }
-      else
-      {
-        return localItemInfo1;
-      }
-    }
-    return localObject;
-  }
-  
-  private void b(int paramInt)
-  {
-    if (this.z == paramInt) {
-      return;
-    }
-    this.z = paramInt;
-    Object localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer;
-    int i1 = 0;
-    if (localObject != null)
-    {
-      boolean bool;
-      if (paramInt != 0) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      c(bool);
-    }
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
-    if (localObject != null) {
-      ((XViewPager.OnPageChangeListener)localObject).b(paramInt);
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList;
-    if (localObject != null)
-    {
-      int i2 = ((List)localObject).size();
-      while (i1 < i2)
-      {
-        localObject = (XViewPager.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (localObject != null) {
-          ((XViewPager.OnPageChangeListener)localObject).b(paramInt);
-        }
-        i1 += 1;
-      }
-    }
-  }
-  
-  private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    XViewPager.ItemInfo localItemInfo;
-    if ((paramInt2 > 0) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      int i1 = getPaddingTop();
-      int i2 = getPaddingBottom();
-      int i3 = getPaddingTop();
-      int i4 = getPaddingBottom();
-      paramInt2 = (int)(getScrollY() / (paramInt2 - i3 - i4 + paramInt4) * (paramInt1 - i1 - i2 + paramInt3));
-      scrollTo(getScrollX(), paramInt2);
-      if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished())
-      {
-        paramInt3 = this.jdField_a_of_type_AndroidWidgetScroller.getDuration();
-        paramInt4 = this.jdField_a_of_type_AndroidWidgetScroller.timePassed();
-        localItemInfo = a(this.jdField_e_of_type_Int);
-        if (localItemInfo != null) {
-          this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, paramInt2, 0, (int)(localItemInfo.jdField_b_of_type_Float * paramInt1), paramInt3 - paramInt4);
-        }
-      }
-    }
-    else
-    {
-      localItemInfo = a(this.jdField_e_of_type_Int);
-      float f1;
-      if (localItemInfo != null) {
-        f1 = Math.min(localItemInfo.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
-      } else {
-        f1 = 0.0F;
-      }
-      paramInt1 = (int)(f1 * (paramInt1 - getPaddingTop() - getPaddingBottom()));
-      if (paramInt1 != getScrollY())
-      {
-        b(false);
-        scrollTo(getScrollX(), paramInt1);
-      }
-    }
-  }
-  
-  private void b(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
-  {
-    Object localObject = a(paramInt1);
-    int i2 = 0;
-    int i1;
-    if (localObject != null) {
-      i1 = (int)(e() * Math.max(this.jdField_b_of_type_Float, Math.min(((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float, this.jdField_c_of_type_Float)));
-    } else {
-      i1 = 0;
-    }
-    if (paramBoolean1)
-    {
-      a(0, i1, paramInt2);
-      if (paramBoolean2)
-      {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
-        if (localObject != null) {
-          ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
-        }
-      }
-      if (paramBoolean2)
-      {
-        localObject = this.jdField_a_of_type_JavaUtilList;
-        if (localObject != null)
-        {
-          i1 = ((List)localObject).size();
-          paramInt2 = i2;
-          while (paramInt2 < i1)
-          {
-            localObject = (XViewPager.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
-            if (localObject != null) {
-              ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
-            }
-            paramInt2 += 1;
-          }
-        }
-      }
-      if (paramBoolean2)
-      {
-        localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
-        if (localObject != null) {
-          ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
-        }
-      }
-    }
-    else
-    {
-      if (paramBoolean2)
-      {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
-        if (localObject != null) {
-          ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
-        }
-      }
-      if (paramBoolean2)
-      {
-        localObject = this.jdField_a_of_type_JavaUtilList;
-        if (localObject != null)
-        {
-          i2 = ((List)localObject).size();
-          paramInt2 = 0;
-          while (paramInt2 < i2)
-          {
-            localObject = (XViewPager.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
-            if (localObject != null) {
-              ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
-            }
-            paramInt2 += 1;
-          }
-        }
-      }
-      if (paramBoolean2)
-      {
-        localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
-        if (localObject != null) {
-          ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
-        }
-      }
-      b(false);
-      scrollTo(0, i1);
-      c(i1);
-    }
-  }
-  
-  private void b(XViewPager.ItemInfo paramItemInfo1, int paramInt, XViewPager.ItemInfo paramItemInfo2)
-  {
-    int i4 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount();
-    int i1 = e();
-    float f2;
-    if (i1 > 0) {
-      f2 = this.jdField_g_of_type_Int / i1;
-    } else {
-      f2 = 0.0F;
-    }
-    if (paramItemInfo2 != null)
-    {
-      i1 = paramItemInfo2.jdField_a_of_type_Int;
-      if (i1 < paramItemInfo1.jdField_a_of_type_Int)
-      {
-        f1 = paramItemInfo2.jdField_b_of_type_Float + paramItemInfo2.jdField_a_of_type_Float + f2;
-        i1 += 1;
-        i2 = 0;
-        while ((i1 <= paramItemInfo1.jdField_a_of_type_Int) && (i2 < this.jdField_a_of_type_JavaUtilArrayList.size()))
-        {
-          for (paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2);; paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2))
-          {
-            i3 = i1;
-            f3 = f1;
-            if (i1 <= paramItemInfo2.jdField_a_of_type_Int) {
-              break;
-            }
-            i3 = i1;
-            f3 = f1;
-            if (i2 >= this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-              break;
-            }
-            i2 += 1;
-          }
-          while (i3 < paramItemInfo2.jdField_a_of_type_Int)
-          {
-            f3 += this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(i3) + f2;
-            i3 += 1;
-          }
-          paramItemInfo2.jdField_b_of_type_Float = f3;
-          f1 = f3 + (paramItemInfo2.jdField_a_of_type_Float + f2);
-          i1 = i3 + 1;
-        }
-      }
-      if (i1 > paramItemInfo1.jdField_a_of_type_Int)
-      {
-        i2 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-        f1 = paramItemInfo2.jdField_b_of_type_Float;
-        i1 -= 1;
-        while ((i1 >= paramItemInfo1.jdField_a_of_type_Int) && (i2 >= 0))
-        {
-          for (paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2);; paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2))
-          {
-            i3 = i1;
-            f3 = f1;
-            if (i1 >= paramItemInfo2.jdField_a_of_type_Int) {
-              break;
-            }
-            i3 = i1;
-            f3 = f1;
-            if (i2 <= 0) {
-              break;
-            }
-            i2 -= 1;
-          }
-          while (i3 > paramItemInfo2.jdField_a_of_type_Int)
-          {
-            f3 -= this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(i3) + f2;
-            i3 -= 1;
-          }
-          f1 = f3 - (paramItemInfo2.jdField_a_of_type_Float + f2);
-          paramItemInfo2.jdField_b_of_type_Float = f1;
-          i1 = i3 - 1;
-        }
-      }
-    }
-    int i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f3 = paramItemInfo1.jdField_b_of_type_Float;
-    i1 = paramItemInfo1.jdField_a_of_type_Int - 1;
-    if (paramItemInfo1.jdField_a_of_type_Int == 0) {
-      f1 = paramItemInfo1.jdField_b_of_type_Float;
-    } else {
-      f1 = -3.402824E+038F;
-    }
-    this.jdField_b_of_type_Float = f1;
-    int i2 = paramItemInfo1.jdField_a_of_type_Int;
-    i4 -= 1;
-    if (i2 == i4) {
-      f1 = paramItemInfo1.jdField_b_of_type_Float + paramItemInfo1.jdField_a_of_type_Float - 1.0F;
-    } else {
-      f1 = 3.4028235E+38F;
-    }
-    this.jdField_c_of_type_Float = f1;
-    i2 = paramInt - 1;
-    float f1 = f3;
-    while (i2 >= 0)
-    {
-      paramItemInfo2 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
-      while (i1 > paramItemInfo2.jdField_a_of_type_Int)
-      {
-        f1 -= this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(i1) + f2;
-        i1 -= 1;
-      }
-      f1 -= paramItemInfo2.jdField_a_of_type_Float + f2;
-      paramItemInfo2.jdField_b_of_type_Float = f1;
-      if (paramItemInfo2.jdField_a_of_type_Int == 0) {
-        this.jdField_b_of_type_Float = f1;
-      }
-      i2 -= 1;
-      i1 -= 1;
-    }
-    f1 = paramItemInfo1.jdField_b_of_type_Float + paramItemInfo1.jdField_a_of_type_Float + f2;
-    i2 = paramItemInfo1.jdField_a_of_type_Int + 1;
-    i1 = paramInt + 1;
-    paramInt = i2;
-    while (i1 < i3)
-    {
-      paramItemInfo1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      while (paramInt < paramItemInfo1.jdField_a_of_type_Int)
-      {
-        f1 += this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(paramInt) + f2;
-        paramInt += 1;
-      }
-      if (paramItemInfo1.jdField_a_of_type_Int == i4) {
-        this.jdField_c_of_type_Float = (paramItemInfo1.jdField_a_of_type_Float + f1 - 1.0F);
-      }
-      paramItemInfo1.jdField_b_of_type_Float = f1;
-      f1 += paramItemInfo1.jdField_a_of_type_Float + f2;
-      i1 += 1;
-      paramInt += 1;
-    }
-    this.jdField_n_of_type_Boolean = false;
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (this.z == 2) {
+    if (this.aC == 2) {
       i1 = 1;
     } else {
       i1 = 0;
     }
     if (i1 != 0)
     {
-      e(false);
-      this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+      setScrollingCacheEnabled(false);
+      this.z.abortAnimation();
       i2 = getScrollX();
       i3 = getScrollY();
-      int i4 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      int i5 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+      int i4 = this.z.getCurrX();
+      int i5 = this.z.getCurrY();
       if ((i2 != i4) || (i3 != i5)) {
         scrollTo(i4, i5);
       }
     }
-    this.jdField_h_of_type_Boolean = false;
+    this.N = false;
     int i3 = 0;
     int i2 = i1;
     int i1 = i3;
-    while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i1 < this.r.size())
     {
-      XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (localItemInfo.jdField_a_of_type_Boolean)
+      XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.r.get(i1);
+      if (localItemInfo.c)
       {
-        localItemInfo.jdField_a_of_type_Boolean = false;
+        localItemInfo.c = false;
         i2 = 1;
       }
       i1 += 1;
@@ -1099,113 +557,285 @@ public class XViewPager
     {
       if (paramBoolean)
       {
-        ViewCompat.postOnAnimation(this, this.jdField_a_of_type_JavaLangRunnable);
+        ViewCompat.postOnAnimation(this, this.aB);
         return;
       }
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      this.aB.run();
     }
   }
   
-  private boolean b(float paramFloat)
+  private boolean a(float paramFloat1, float paramFloat2)
   {
-    f();
-    float f1 = this.jdField_e_of_type_Float;
-    this.jdField_e_of_type_Float = paramFloat;
-    float f2 = getScrollY() + (f1 - paramFloat);
-    float f3 = e();
-    paramFloat = this.jdField_b_of_type_Float * f3;
-    f1 = this.jdField_c_of_type_Float * f3;
-    XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    int i1 = ((ArrayList)localObject).size();
-    int i2 = 1;
-    localObject = (XViewPager.ItemInfo)((ArrayList)localObject).get(i1 - 1);
-    if (localItemInfo.jdField_a_of_type_Int != 0)
+    return ((paramFloat1 < this.T) && (paramFloat2 > 0.0F)) || ((paramFloat1 > getWidth() - this.T) && (paramFloat2 < 0.0F));
+  }
+  
+  private void b(int paramInt1, int paramInt2)
+  {
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { getScrollX(), paramInt2 });
+    localValueAnimator.setDuration(this.aA);
+    localValueAnimator.addUpdateListener(new XViewPager.4(this));
+    localValueAnimator.addListener(new XViewPager.5(this));
+    localValueAnimator.start();
+  }
+  
+  private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    XViewPager.ItemInfo localItemInfo;
+    if ((paramInt2 > 0) && (!this.r.isEmpty()))
     {
-      paramFloat = localItemInfo.jdField_b_of_type_Float * f3;
+      int i1 = getPaddingTop();
+      int i2 = getPaddingBottom();
+      int i3 = getPaddingTop();
+      int i4 = getPaddingBottom();
+      paramInt2 = (int)(getScrollY() / (paramInt2 - i3 - i4 + paramInt4) * (paramInt1 - i1 - i2 + paramInt3));
+      scrollTo(getScrollX(), paramInt2);
+      if (!this.z.isFinished())
+      {
+        paramInt3 = this.z.getDuration();
+        paramInt4 = this.z.timePassed();
+        localItemInfo = b(this.v);
+        if (localItemInfo != null) {
+          this.z.startScroll(0, paramInt2, 0, (int)(localItemInfo.e * paramInt1), paramInt3 - paramInt4);
+        }
+      }
+    }
+    else
+    {
+      localItemInfo = b(this.v);
+      float f1;
+      if (localItemInfo != null) {
+        f1 = Math.min(localItemInfo.e, this.I);
+      } else {
+        f1 = 0.0F;
+      }
+      paramInt1 = (int)(f1 * (paramInt1 - getPaddingTop() - getPaddingBottom()));
+      if (paramInt1 != getScrollY())
+      {
+        a(false);
+        scrollTo(getScrollX(), paramInt1);
+      }
+    }
+  }
+  
+  private void b(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
+  {
+    Object localObject = b(paramInt1);
+    int i2 = 0;
+    int i1;
+    if (localObject != null) {
+      i1 = (int)(getClientHeight() * Math.max(this.H, Math.min(((XViewPager.ItemInfo)localObject).e, this.I)));
+    } else {
       i1 = 0;
     }
+    if (paramBoolean1)
+    {
+      a(0, i1, paramInt2);
+      if (paramBoolean2)
+      {
+        localObject = this.aq;
+        if (localObject != null) {
+          ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
+        }
+      }
+      if (paramBoolean2)
+      {
+        localObject = this.m;
+        if (localObject != null)
+        {
+          i1 = ((List)localObject).size();
+          paramInt2 = i2;
+          while (paramInt2 < i1)
+          {
+            localObject = (XViewPager.OnPageChangeListener)this.m.get(paramInt2);
+            if (localObject != null) {
+              ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
+            }
+            paramInt2 += 1;
+          }
+        }
+      }
+      if (paramBoolean2)
+      {
+        localObject = this.ar;
+        if (localObject != null) {
+          ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
+        }
+      }
+    }
     else
     {
-      i1 = 1;
-    }
-    if (((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int != this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount() - 1)
-    {
-      f1 = ((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float * f3;
-      i2 = 0;
-    }
-    boolean bool;
-    if (f2 < paramFloat)
-    {
-      if (i1 != 0) {
-        bool = this.jdField_c_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onPull(Math.abs(paramFloat - f2) / f3);
-      } else {
-        bool = false;
+      if (paramBoolean2)
+      {
+        localObject = this.aq;
+        if (localObject != null) {
+          ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
+        }
       }
-      if (this.jdField_e_of_type_Boolean) {
-        paramFloat = f2;
+      if (paramBoolean2)
+      {
+        localObject = this.m;
+        if (localObject != null)
+        {
+          i2 = ((List)localObject).size();
+          paramInt2 = 0;
+          while (paramInt2 < i2)
+          {
+            localObject = (XViewPager.OnPageChangeListener)this.m.get(paramInt2);
+            if (localObject != null) {
+              ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
+            }
+            paramInt2 += 1;
+          }
+        }
       }
-    }
-    else if (f2 > f1)
-    {
-      if (i2 != 0) {
-        bool = this.jdField_d_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onPull(Math.abs(f2 - f1) / f3);
-      } else {
-        bool = false;
+      if (paramBoolean2)
+      {
+        localObject = this.ar;
+        if (localObject != null) {
+          ((XViewPager.OnPageChangeListener)localObject).a(paramInt1);
+        }
       }
-      if (this.jdField_e_of_type_Boolean) {
-        paramFloat = f2;
-      } else {
-        paramFloat = f1;
-      }
+      a(false);
+      scrollTo(0, i1);
+      e(i1);
     }
-    else
-    {
-      bool = false;
-      paramFloat = f2;
-    }
-    f1 = this.jdField_e_of_type_Float;
-    i1 = (int)paramFloat;
-    this.jdField_e_of_type_Float = (f1 + (paramFloat - i1));
-    scrollTo(0, i1);
-    c(i1);
-    return bool;
   }
   
-  private boolean b(float paramFloat1, float paramFloat2)
+  private void b(XViewPager.ItemInfo paramItemInfo1, int paramInt, XViewPager.ItemInfo paramItemInfo2)
   {
-    return ((paramFloat1 < this.q) && (paramFloat2 > 0.0F)) || ((paramFloat1 > getHeight() - this.q) && (paramFloat2 < 0.0F));
-  }
-  
-  private boolean b(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    int i4 = this.u.getCount();
+    int i1 = getClientHeight();
+    float f2;
+    if (i1 > 0) {
+      f2 = this.B / i1;
+    } else {
+      f2 = 0.0F;
+    }
+    if (paramItemInfo2 != null)
     {
-      this.jdField_o_of_type_Boolean = false;
-      a(0, 0.0F, 0);
-      if (this.jdField_o_of_type_Boolean) {
-        return false;
+      i1 = paramItemInfo2.b;
+      if (i1 < paramItemInfo1.b)
+      {
+        f1 = paramItemInfo2.e + paramItemInfo2.d + f2;
+        i1 += 1;
+        i2 = 0;
+        while ((i1 <= paramItemInfo1.b) && (i2 < this.r.size()))
+        {
+          for (paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2);; paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2))
+          {
+            i3 = i1;
+            f3 = f1;
+            if (i1 <= paramItemInfo2.b) {
+              break;
+            }
+            i3 = i1;
+            f3 = f1;
+            if (i2 >= this.r.size() - 1) {
+              break;
+            }
+            i2 += 1;
+          }
+          while (i3 < paramItemInfo2.b)
+          {
+            f3 += this.u.getPageWidth(i3) + f2;
+            i3 += 1;
+          }
+          paramItemInfo2.e = f3;
+          f1 = f3 + (paramItemInfo2.d + f2);
+          i1 = i3 + 1;
+        }
       }
-      throw new IllegalStateException("onPageScrolled did not call superclass implementation");
+      if (i1 > paramItemInfo1.b)
+      {
+        i2 = this.r.size() - 1;
+        f1 = paramItemInfo2.e;
+        i1 -= 1;
+        while ((i1 >= paramItemInfo1.b) && (i2 >= 0))
+        {
+          for (paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2);; paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2))
+          {
+            i3 = i1;
+            f3 = f1;
+            if (i1 >= paramItemInfo2.b) {
+              break;
+            }
+            i3 = i1;
+            f3 = f1;
+            if (i2 <= 0) {
+              break;
+            }
+            i2 -= 1;
+          }
+          while (i3 > paramItemInfo2.b)
+          {
+            f3 -= this.u.getPageWidth(i3) + f2;
+            i3 -= 1;
+          }
+          f1 = f3 - (paramItemInfo2.d + f2);
+          paramItemInfo2.e = f1;
+          i1 = i3 - 1;
+        }
+      }
     }
-    XViewPager.ItemInfo localItemInfo = a();
-    int i2 = d();
-    int i3 = this.jdField_g_of_type_Int;
-    float f2 = i3;
-    float f1 = i2;
-    f2 /= f1;
-    int i1 = localItemInfo.jdField_a_of_type_Int;
-    f1 = (paramInt / f1 - localItemInfo.jdField_b_of_type_Float) / (localItemInfo.jdField_a_of_type_Float + f2);
-    paramInt = (int)((i2 + i3) * f1);
-    this.jdField_o_of_type_Boolean = false;
-    a(i1, f1, paramInt);
-    if (this.jdField_o_of_type_Boolean) {
-      return true;
+    int i3 = this.r.size();
+    float f3 = paramItemInfo1.e;
+    i1 = paramItemInfo1.b - 1;
+    if (paramItemInfo1.b == 0) {
+      f1 = paramItemInfo1.e;
+    } else {
+      f1 = -3.402824E+038F;
     }
-    throw new IllegalStateException("onPageScrolled did not call superclass implementation");
+    this.H = f1;
+    int i2 = paramItemInfo1.b;
+    i4 -= 1;
+    if (i2 == i4) {
+      f1 = paramItemInfo1.e + paramItemInfo1.d - 1.0F;
+    } else {
+      f1 = 3.4028235E+38F;
+    }
+    this.I = f1;
+    i2 = paramInt - 1;
+    float f1 = f3;
+    while (i2 >= 0)
+    {
+      paramItemInfo2 = (XViewPager.ItemInfo)this.r.get(i2);
+      while (i1 > paramItemInfo2.b)
+      {
+        f1 -= this.u.getPageWidth(i1) + f2;
+        i1 -= 1;
+      }
+      f1 -= paramItemInfo2.d + f2;
+      paramItemInfo2.e = f1;
+      if (paramItemInfo2.b == 0) {
+        this.H = f1;
+      }
+      i2 -= 1;
+      i1 -= 1;
+    }
+    f1 = paramItemInfo1.e + paramItemInfo1.d + f2;
+    i2 = paramItemInfo1.b + 1;
+    i1 = paramInt + 1;
+    paramInt = i2;
+    while (i1 < i3)
+    {
+      paramItemInfo1 = (XViewPager.ItemInfo)this.r.get(i1);
+      while (paramInt < paramItemInfo1.b)
+      {
+        f1 += this.u.getPageWidth(paramInt) + f2;
+        paramInt += 1;
+      }
+      if (paramItemInfo1.b == i4) {
+        this.I = (paramItemInfo1.d + f1 - 1.0F);
+      }
+      paramItemInfo1.e = f1;
+      f1 += paramItemInfo1.d + f2;
+      i1 += 1;
+      paramInt += 1;
+    }
+    this.an = false;
   }
   
-  private void c(boolean paramBoolean)
+  private void b(boolean paramBoolean)
   {
     int i3 = getChildCount();
     int i1 = 0;
@@ -1222,59 +852,108 @@ public class XViewPager
     }
   }
   
-  private boolean c()
+  private boolean b(float paramFloat)
   {
-    return (this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean);
-  }
-  
-  private boolean c(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    m();
+    float f1 = this.U;
+    this.U = paramFloat;
+    float f2 = getScrollX() + (f1 - paramFloat);
+    float f3 = getClientWidth();
+    paramFloat = this.H * f3;
+    f1 = this.I * f3;
+    Object localObject1 = (XViewPager.ItemInfo)this.r.get(0);
+    Object localObject2 = this.r;
+    localObject2 = (XViewPager.ItemInfo)((ArrayList)localObject2).get(((ArrayList)localObject2).size() - 1);
+    if (((XViewPager.ItemInfo)localObject1).b != 0)
     {
-      this.jdField_o_of_type_Boolean = false;
-      b(0, 0.0F, 0);
-      if (this.jdField_o_of_type_Boolean) {
-        return false;
-      }
-      throw new IllegalStateException("onPageScrolled did not call superclass implementation");
+      paramFloat = ((XViewPager.ItemInfo)localObject1).e * f3;
+      i1 = 0;
     }
-    XViewPager.ItemInfo localItemInfo = a();
-    int i2 = e();
-    int i3 = this.jdField_g_of_type_Int;
-    float f2 = i3;
-    float f1 = i2;
-    f2 /= f1;
-    int i1 = localItemInfo.jdField_a_of_type_Int;
-    f1 = (paramInt / f1 - localItemInfo.jdField_b_of_type_Float) / (localItemInfo.jdField_a_of_type_Float + f2);
-    paramInt = (int)((i2 + i3) * f1);
-    this.jdField_o_of_type_Boolean = false;
-    b(i1, f1, paramInt);
-    if (this.jdField_o_of_type_Boolean) {
-      return true;
+    else
+    {
+      i1 = 1;
     }
-    throw new IllegalStateException("onPageScrolled did not call superclass implementation");
-  }
-  
-  private int d()
-  {
-    return getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
-  }
-  
-  private void d()
-  {
     int i2;
-    for (int i1 = 0; i1 < getChildCount(); i1 = i2 + 1)
+    if (((XViewPager.ItemInfo)localObject2).b != this.u.getCount() - 1)
     {
-      i2 = i1;
-      if (!((XViewPager.LayoutParams)getChildAt(i1).getLayoutParams()).jdField_a_of_type_Boolean)
-      {
-        removeViewAt(i1);
-        i2 = i1 - 1;
+      f1 = ((XViewPager.ItemInfo)localObject2).e * f3;
+      i2 = 0;
+    }
+    else
+    {
+      i2 = 1;
+    }
+    boolean bool;
+    if (f2 < paramFloat)
+    {
+      if (i1 != 0) {
+        bool = this.ah.onPull(Math.abs(paramFloat - f2) / f3);
+      } else {
+        bool = false;
+      }
+      if (this.h) {
+        paramFloat = f2;
       }
     }
+    else if (f2 > f1)
+    {
+      if (i2 != 0) {
+        bool = this.ai.onPull(Math.abs(f2 - f1) / f3);
+      } else {
+        bool = false;
+      }
+      if (this.h) {
+        paramFloat = f2;
+      } else {
+        paramFloat = f1;
+      }
+    }
+    else
+    {
+      bool = false;
+      paramFloat = f2;
+    }
+    localObject1 = this.ay;
+    f1 = paramFloat;
+    if (localObject1 != null)
+    {
+      f1 = paramFloat;
+      if (!((XViewPager.OnDragStatusChangedListener)localObject1).a())
+      {
+        i1 = getWidth() * (getCurrentItem() - 1);
+        if (this.Q == 3)
+        {
+          f1 = i1;
+          if (paramFloat < f1) {}
+        }
+        else
+        {
+          f1 = paramFloat;
+          if (this.Q == 5)
+          {
+            f2 = i1;
+            f1 = paramFloat;
+            if (paramFloat > f2) {
+              f1 = f2;
+            }
+          }
+        }
+      }
+    }
+    paramFloat = this.U;
+    int i1 = (int)f1;
+    this.U = (paramFloat + (f1 - i1));
+    scrollTo(i1, 0);
+    d(i1);
+    return bool;
   }
   
-  private void d(boolean paramBoolean)
+  private boolean b(float paramFloat1, float paramFloat2)
+  {
+    return ((paramFloat1 < this.T) && (paramFloat2 > 0.0F)) || ((paramFloat1 > getHeight() - this.T) && (paramFloat2 < 0.0F));
+  }
+  
+  private void c(boolean paramBoolean)
   {
     ViewParent localViewParent = getParent();
     if (localViewParent != null) {
@@ -1282,23 +961,179 @@ public class XViewPager
     }
   }
   
-  private boolean d()
+  private boolean c(float paramFloat)
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean);
+    m();
+    float f1 = this.V;
+    this.V = paramFloat;
+    float f2 = getScrollY() + (f1 - paramFloat);
+    float f3 = getClientHeight();
+    paramFloat = this.H * f3;
+    f1 = this.I * f3;
+    XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.r.get(0);
+    Object localObject = this.r;
+    int i1 = ((ArrayList)localObject).size();
+    int i2 = 1;
+    localObject = (XViewPager.ItemInfo)((ArrayList)localObject).get(i1 - 1);
+    if (localItemInfo.b != 0)
+    {
+      paramFloat = localItemInfo.e * f3;
+      i1 = 0;
+    }
+    else
+    {
+      i1 = 1;
+    }
+    if (((XViewPager.ItemInfo)localObject).b != this.u.getCount() - 1)
+    {
+      f1 = ((XViewPager.ItemInfo)localObject).e * f3;
+      i2 = 0;
+    }
+    boolean bool;
+    if (f2 < paramFloat)
+    {
+      if (i1 != 0) {
+        bool = this.aj.onPull(Math.abs(paramFloat - f2) / f3);
+      } else {
+        bool = false;
+      }
+      if (this.h) {
+        paramFloat = f2;
+      }
+    }
+    else if (f2 > f1)
+    {
+      if (i2 != 0) {
+        bool = this.ak.onPull(Math.abs(f2 - f1) / f3);
+      } else {
+        bool = false;
+      }
+      if (this.h) {
+        paramFloat = f2;
+      } else {
+        paramFloat = f1;
+      }
+    }
+    else
+    {
+      bool = false;
+      paramFloat = f2;
+    }
+    f1 = this.V;
+    i1 = (int)paramFloat;
+    this.V = (f1 + (paramFloat - i1));
+    scrollTo(0, i1);
+    e(i1);
+    return bool;
   }
   
-  private int e()
+  private boolean d(int paramInt)
+  {
+    if (this.r.size() == 0)
+    {
+      this.ao = false;
+      a(0, 0.0F, 0);
+      if (this.ao) {
+        return false;
+      }
+      throw new IllegalStateException("onPageScrolled did not call superclass implementation");
+    }
+    XViewPager.ItemInfo localItemInfo = n();
+    int i2 = getClientWidth();
+    int i3 = this.B;
+    float f2 = i3;
+    float f1 = i2;
+    f2 /= f1;
+    int i1 = localItemInfo.b;
+    f1 = (paramInt / f1 - localItemInfo.e) / (localItemInfo.d + f2);
+    paramInt = (int)((i2 + i3) * f1);
+    this.ao = false;
+    a(i1, f1, paramInt);
+    if (this.ao) {
+      return true;
+    }
+    throw new IllegalStateException("onPageScrolled did not call superclass implementation");
+  }
+  
+  private boolean e(int paramInt)
+  {
+    if (this.r.size() == 0)
+    {
+      this.ao = false;
+      b(0, 0.0F, 0);
+      if (this.ao) {
+        return false;
+      }
+      throw new IllegalStateException("onPageScrolled did not call superclass implementation");
+    }
+    XViewPager.ItemInfo localItemInfo = n();
+    int i2 = getClientHeight();
+    int i3 = this.B;
+    float f2 = i3;
+    float f1 = i2;
+    f2 /= f1;
+    int i1 = localItemInfo.b;
+    f1 = (paramInt / f1 - localItemInfo.e) / (localItemInfo.d + f2);
+    paramInt = (int)((i2 + i3) * f1);
+    this.ao = false;
+    b(i1, f1, paramInt);
+    if (this.ao) {
+      return true;
+    }
+    throw new IllegalStateException("onPageScrolled did not call superclass implementation");
+  }
+  
+  private boolean g()
+  {
+    return (this.e) && (this.f);
+  }
+  
+  private int getClientHeight()
   {
     return getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
   }
   
-  private void e()
+  private int getClientWidth()
   {
-    if (this.x != 0)
+    return getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
+  }
+  
+  private boolean h()
+  {
+    return (this.c) && (this.d);
+  }
+  
+  private void i()
+  {
+    int i2;
+    for (int i1 = 0; i1 < getChildCount(); i1 = i2 + 1)
     {
-      Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
+      i2 = i1;
+      if (!((XViewPager.LayoutParams)getChildAt(i1).getLayoutParams()).a)
+      {
+        removeViewAt(i1);
+        i2 = i1 - 1;
+      }
+    }
+  }
+  
+  private boolean j()
+  {
+    return (Gravity.isHorizontal(this.Q)) || (((this.e) || (this.f)) && ((this.Q == 0) || (!k())));
+  }
+  
+  private boolean k()
+  {
+    return (Gravity.isVertical(this.Q)) || (((this.c) || (this.d)) && ((this.Q == 0) || (!j())));
+  }
+  
+  private void l()
+  {
+    if (this.av != 0)
+    {
+      Object localObject = this.aw;
       if (localObject == null) {
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+        this.aw = new ArrayList();
       } else {
         ((ArrayList)localObject).clear();
       }
@@ -1307,30 +1142,18 @@ public class XViewPager
       while (i1 < i2)
       {
         localObject = getChildAt(i1);
-        this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
+        this.aw.add(localObject);
         i1 += 1;
       }
-      Collections.sort(this.jdField_b_of_type_JavaUtilArrayList, jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$ViewPositionComparator);
+      Collections.sort(this.aw, ax);
     }
   }
   
-  private void e(boolean paramBoolean)
-  {
-    if (this.jdField_g_of_type_Boolean != paramBoolean) {
-      this.jdField_g_of_type_Boolean = paramBoolean;
-    }
-  }
-  
-  private boolean e()
-  {
-    return (Gravity.isHorizontal(this.jdField_o_of_type_Int)) || (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && ((this.jdField_o_of_type_Int == 0) || (!f())));
-  }
-  
-  private void f()
+  private void m()
   {
     int i4 = getChildCount();
-    int i5 = d();
-    int i6 = e();
+    int i5 = getClientWidth();
+    int i6 = getClientHeight();
     int i3 = 0;
     int i2;
     for (int i1 = 0; i3 < i4; i1 = i2)
@@ -1340,7 +1163,7 @@ public class XViewPager
       if (localView.getVisibility() != 8)
       {
         i2 = i1;
-        if (!((XViewPager.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Boolean)
+        if (!((XViewPager.LayoutParams)localView.getLayoutParams()).a)
         {
           XViewPager.ItemInfo localItemInfo = a(localView);
           i2 = i1;
@@ -1348,9 +1171,9 @@ public class XViewPager
           {
             int i7;
             int i8;
-            if (Gravity.isHorizontal(this.jdField_o_of_type_Int))
+            if (Gravity.isHorizontal(this.Q))
             {
-              i7 = (int)(i5 * localItemInfo.jdField_b_of_type_Float);
+              i7 = (int)(i5 * localItemInfo.e);
               i8 = getPaddingLeft();
               i2 = getPaddingTop();
               i7 = i8 + i7 - localView.getLeft();
@@ -1368,16 +1191,16 @@ public class XViewPager
               i2 = i1;
               if (i1 != 0)
               {
-                this.jdField_m_of_type_Boolean = false;
+                this.am = false;
                 i2 = i1;
               }
             }
             else
             {
               i2 = i1;
-              if (Gravity.isVertical(this.jdField_o_of_type_Int))
+              if (Gravity.isVertical(this.Q))
               {
-                i7 = (int)(i6 * localItemInfo.jdField_b_of_type_Float);
+                i7 = (int)(i6 * localItemInfo.e);
                 i8 = getPaddingTop();
                 i2 = getPaddingLeft();
                 i7 = i8 + i7 - localView.getTop();
@@ -1395,7 +1218,7 @@ public class XViewPager
                 i2 = i1;
                 if (i1 != 0)
                 {
-                  this.jdField_m_of_type_Boolean = true;
+                  this.am = true;
                   i2 = i1;
                 }
               }
@@ -1407,31 +1230,203 @@ public class XViewPager
     }
     if (i1 != 0)
     {
-      if (Gravity.isHorizontal(this.jdField_o_of_type_Int))
+      if (Gravity.isHorizontal(this.Q))
       {
-        a(this.jdField_e_of_type_Int, false, 0, false);
+        a(this.v, false, 0, false);
         return;
       }
-      if (Gravity.isVertical(this.jdField_o_of_type_Int)) {
-        b(this.jdField_e_of_type_Int, false, 0, false);
+      if (Gravity.isVertical(this.Q)) {
+        b(this.v, false, 0, false);
       }
     }
   }
   
-  private boolean f()
+  private XViewPager.ItemInfo n()
   {
-    return (Gravity.isVertical(this.jdField_o_of_type_Int)) || (((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) && ((this.jdField_o_of_type_Int == 0) || (!e())));
+    if (k()) {
+      return o();
+    }
+    int i1 = getClientWidth();
+    float f1;
+    if (i1 > 0) {
+      f1 = getScrollX() / i1;
+    } else {
+      f1 = 0.0F;
+    }
+    float f2;
+    if (i1 > 0) {
+      f2 = this.B / i1;
+    } else {
+      f2 = 0.0F;
+    }
+    Object localObject = null;
+    i1 = 0;
+    int i2 = 1;
+    int i3 = -1;
+    float f3 = 0.0F;
+    float f4 = 0.0F;
+    while (i1 < this.r.size())
+    {
+      XViewPager.ItemInfo localItemInfo2 = (XViewPager.ItemInfo)this.r.get(i1);
+      int i4 = i1;
+      XViewPager.ItemInfo localItemInfo1 = localItemInfo2;
+      if (i2 == 0)
+      {
+        int i5 = localItemInfo2.b;
+        i3 += 1;
+        i4 = i1;
+        localItemInfo1 = localItemInfo2;
+        if (i5 != i3)
+        {
+          localItemInfo1 = this.s;
+          localItemInfo1.e = (f3 + f4 + f2);
+          localItemInfo1.b = i3;
+          localItemInfo1.d = this.u.getPageWidth(localItemInfo1.b);
+          i4 = i1 - 1;
+        }
+      }
+      f3 = localItemInfo1.e;
+      f4 = localItemInfo1.d;
+      if ((i2 == 0) && (f1 < f3)) {
+        return localObject;
+      }
+      if (f1 >= f4 + f3 + f2)
+      {
+        if (i4 == this.r.size() - 1) {
+          return localItemInfo1;
+        }
+        i3 = localItemInfo1.b;
+        f4 = localItemInfo1.d;
+        i1 = i4 + 1;
+        i2 = 0;
+        localObject = localItemInfo1;
+      }
+      else
+      {
+        return localItemInfo1;
+      }
+    }
+    return localObject;
   }
   
-  private void g()
+  private XViewPager.ItemInfo o()
   {
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_j_of_type_Boolean = false;
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    int i1 = getClientHeight();
+    float f1;
+    if (i1 > 0) {
+      f1 = getScrollY() / i1;
+    } else {
+      f1 = 0.0F;
+    }
+    float f2;
+    if (i1 > 0) {
+      f2 = this.B / i1;
+    } else {
+      f2 = 0.0F;
+    }
+    Object localObject = null;
+    i1 = 0;
+    int i2 = 1;
+    int i3 = -1;
+    float f3 = 0.0F;
+    float f4 = 0.0F;
+    while (i1 < this.r.size())
+    {
+      XViewPager.ItemInfo localItemInfo2 = (XViewPager.ItemInfo)this.r.get(i1);
+      int i4 = i1;
+      XViewPager.ItemInfo localItemInfo1 = localItemInfo2;
+      if (i2 == 0)
+      {
+        int i5 = localItemInfo2.b;
+        i3 += 1;
+        i4 = i1;
+        localItemInfo1 = localItemInfo2;
+        if (i5 != i3)
+        {
+          localItemInfo1 = this.s;
+          localItemInfo1.e = (f3 + f4 + f2);
+          localItemInfo1.b = i3;
+          localItemInfo1.d = this.u.getPageWidth(localItemInfo1.b);
+          i4 = i1 - 1;
+        }
+      }
+      f3 = localItemInfo1.e;
+      f4 = localItemInfo1.d;
+      if ((i2 == 0) && (f1 < f3)) {
+        return localObject;
+      }
+      if (f1 >= f4 + f3 + f2)
+      {
+        if (i4 == this.r.size() - 1) {
+          return localItemInfo1;
+        }
+        i3 = localItemInfo1.b;
+        f4 = localItemInfo1.d;
+        i1 = i4 + 1;
+        i2 = 0;
+        localObject = localItemInfo1;
+      }
+      else
+      {
+        return localItemInfo1;
+      }
+    }
+    return localObject;
+  }
+  
+  private void p()
+  {
+    this.P = false;
+    this.R = false;
+    VelocityTracker localVelocityTracker = this.ab;
     if (localVelocityTracker != null)
     {
       localVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.ab = null;
+    }
+  }
+  
+  private void setScrollState(int paramInt)
+  {
+    if (this.aC == paramInt) {
+      return;
+    }
+    this.aC = paramInt;
+    Object localObject = this.at;
+    int i1 = 0;
+    if (localObject != null)
+    {
+      boolean bool;
+      if (paramInt != 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      b(bool);
+    }
+    localObject = this.aq;
+    if (localObject != null) {
+      ((XViewPager.OnPageChangeListener)localObject).b(paramInt);
+    }
+    localObject = this.m;
+    if (localObject != null)
+    {
+      int i2 = ((List)localObject).size();
+      while (i1 < i2)
+      {
+        localObject = (XViewPager.OnPageChangeListener)this.m.get(i1);
+        if (localObject != null) {
+          ((XViewPager.OnPageChangeListener)localObject).b(paramInt);
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  private void setScrollingCacheEnabled(boolean paramBoolean)
+  {
+    if (this.M != paramBoolean) {
+      this.M = paramBoolean;
     }
   }
   
@@ -1442,66 +1437,33 @@ public class XViewPager
     return (float)Math.sin((float)(d1 * 0.47123891676382D));
   }
   
-  public int a()
-  {
-    return this.z;
-  }
-  
-  public PagerAdapter a()
-  {
-    return this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
-  }
-  
-  XViewPager.ItemInfo a(int paramInt)
-  {
-    int i1 = 0;
-    while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (localItemInfo.jdField_a_of_type_Int == paramInt) {
-        return localItemInfo;
-      }
-      i1 += 1;
-    }
-    return null;
-  }
-  
   XViewPager.ItemInfo a(int paramInt1, int paramInt2)
   {
     XViewPager.ItemInfo localItemInfo = new XViewPager.ItemInfo();
-    localItemInfo.jdField_a_of_type_Int = paramInt1;
-    localItemInfo.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.instantiateItem(this, paramInt1);
-    localItemInfo.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(paramInt1);
-    if ((paramInt2 >= 0) && (paramInt2 < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    localItemInfo.b = paramInt1;
+    localItemInfo.a = this.u.instantiateItem(this, paramInt1);
+    localItemInfo.d = this.u.getPageWidth(paramInt1);
+    if ((paramInt2 >= 0) && (paramInt2 < this.r.size()))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramInt2, localItemInfo);
+      this.r.add(paramInt2, localItemInfo);
       return localItemInfo;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(localItemInfo);
+    this.r.add(localItemInfo);
     return localItemInfo;
   }
   
   XViewPager.ItemInfo a(View paramView)
   {
     int i1 = 0;
-    while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i1 < this.r.size())
     {
-      XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.isViewFromObject(paramView, localItemInfo.jdField_a_of_type_JavaLangObject)) {
+      XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.r.get(i1);
+      if (this.u.isViewFromObject(paramView, localItemInfo.a)) {
         return localItemInfo;
       }
       i1 += 1;
     }
     return null;
-  }
-  
-  public List<XViewPager.OnPageChangeListener> a()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList == null) {
-      return Collections.emptyList();
-    }
-    return Collections.unmodifiableList(localList);
   }
   
   void a()
@@ -1510,19 +1472,19 @@ public class XViewPager
     setDescendantFocusability(262144);
     setFocusable(true);
     Context localContext = getContext();
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(localContext, jdField_a_of_type_AndroidViewAnimationInterpolator);
+    this.z = new Scroller(localContext, q);
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(localContext);
     float f1 = localContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(localViewConfiguration);
-    this.s = ((int)(400.0F * f1));
-    this.t = localViewConfiguration.getScaledMaximumFlingVelocity();
-    this.jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat = new EdgeEffectCompat(localContext);
-    this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat = new EdgeEffectCompat(localContext);
-    this.jdField_c_of_type_AndroidSupportV4WidgetEdgeEffectCompat = new EdgeEffectCompat(localContext);
-    this.jdField_d_of_type_AndroidSupportV4WidgetEdgeEffectCompat = new EdgeEffectCompat(localContext);
-    this.u = ((int)(25.0F * f1));
-    this.v = ((int)(2.0F * f1));
-    this.jdField_p_of_type_Int = ((int)(f1 * 16.0F));
+    this.b = ViewConfigurationCompat.getScaledPagingTouchSlop(localViewConfiguration);
+    this.ac = ((int)(400.0F * f1));
+    this.ad = localViewConfiguration.getScaledMaximumFlingVelocity();
+    this.ah = new EdgeEffectCompat(localContext);
+    this.ai = new EdgeEffectCompat(localContext);
+    this.aj = new EdgeEffectCompat(localContext);
+    this.ak = new EdgeEffectCompat(localContext);
+    this.ae = ((int)(25.0F * f1));
+    this.af = ((int)(2.0F * f1));
+    this.S = ((int)(f1 * 16.0F));
     ViewCompat.setAccessibilityDelegate(this, new XViewPager.MyAccessibilityDelegate(this));
     if (ViewCompat.getImportantForAccessibility(this) == 0) {
       ViewCompat.setImportantForAccessibility(this, 1);
@@ -1531,7 +1493,7 @@ public class XViewPager
   
   void a(int paramInt)
   {
-    int i1 = this.jdField_e_of_type_Int;
+    int i1 = this.v;
     int i4;
     if (i1 != paramInt)
     {
@@ -1540,8 +1502,8 @@ public class XViewPager
       } else {
         i1 = 17;
       }
-      localObject2 = a(this.jdField_e_of_type_Int);
-      this.jdField_e_of_type_Int = paramInt;
+      localObject2 = b(this.v);
+      this.v = paramInt;
       i4 = i1;
     }
     else
@@ -1549,33 +1511,33 @@ public class XViewPager
       i4 = 2;
       localObject2 = null;
     }
-    if (this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter == null)
+    if (this.u == null)
     {
-      e();
+      l();
       return;
     }
-    if (this.jdField_h_of_type_Boolean)
+    if (this.N)
     {
-      e();
+      l();
       return;
     }
     if (getWindowToken() == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.startUpdate(this);
-    int i8 = this.jdField_n_of_type_Int;
-    int i9 = Math.max(0, this.jdField_e_of_type_Int - i8);
-    int i6 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount();
-    int i7 = Math.min(i6 - 1, this.jdField_e_of_type_Int + i8);
-    if (i6 == this.jdField_d_of_type_Int)
+    this.u.startUpdate(this);
+    int i8 = this.O;
+    int i9 = Math.max(0, this.v - i8);
+    int i6 = this.u.getCount();
+    int i7 = Math.min(i6 - 1, this.v + i8);
+    if (i6 == this.o)
     {
       int i2 = 0;
-      while (i2 < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i2 < this.r.size())
       {
-        localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
-        if (((XViewPager.ItemInfo)localObject1).jdField_a_of_type_Int >= this.jdField_e_of_type_Int)
+        localObject1 = (XViewPager.ItemInfo)this.r.get(i2);
+        if (((XViewPager.ItemInfo)localObject1).b >= this.v)
         {
-          if (((XViewPager.ItemInfo)localObject1).jdField_a_of_type_Int != this.jdField_e_of_type_Int) {
+          if (((XViewPager.ItemInfo)localObject1).b != this.v) {
             break;
           }
           break label218;
@@ -1589,29 +1551,29 @@ public class XViewPager
       {
         localObject3 = localObject1;
         if (i6 > 0) {
-          localObject3 = a(this.jdField_e_of_type_Int, i2);
+          localObject3 = a(this.v, i2);
         }
       }
       if (localObject3 != null)
       {
         int i3 = i2 - 1;
         if (i3 >= 0) {
-          localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i3);
+          localObject1 = (XViewPager.ItemInfo)this.r.get(i3);
         } else {
           localObject1 = null;
         }
-        int i10 = d();
+        int i10 = getClientWidth();
         float f1;
         if (i10 <= 0) {
           f1 = 0.0F;
         } else {
-          f1 = 2.0F - ((XViewPager.ItemInfo)localObject3).jdField_a_of_type_Float + getPaddingLeft() / i10;
+          f1 = 2.0F - ((XViewPager.ItemInfo)localObject3).d + getPaddingLeft() / i10;
         }
         float f3 = f1;
         if (i8 == 0) {
           f3 = 0.0F;
         }
-        int i5 = this.jdField_e_of_type_Int - 1;
+        int i5 = this.v - 1;
         float f2 = 0.0F;
         for (Object localObject4 = localObject1; i5 >= 0; localObject4 = localObject1)
         {
@@ -1624,18 +1586,18 @@ public class XViewPager
             i1 = i2;
             paramInt = i3;
             localObject1 = localObject4;
-            if (i5 != localObject4.jdField_a_of_type_Int) {
+            if (i5 != localObject4.b) {
               break label625;
             }
             f1 = f2;
             i1 = i2;
             paramInt = i3;
             localObject1 = localObject4;
-            if (localObject4.jdField_a_of_type_Boolean) {
+            if (localObject4.c) {
               break label625;
             }
-            this.jdField_a_of_type_JavaUtilArrayList.remove(i3);
-            this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.destroyItem(this, i5, localObject4.jdField_a_of_type_JavaLangObject);
+            this.r.remove(i3);
+            this.u.destroyItem(this, i5, localObject4.a);
             i3 -= 1;
             i2 -= 1;
             f1 = f2;
@@ -1643,7 +1605,7 @@ public class XViewPager
             paramInt = i3;
             if (i3 >= 0)
             {
-              localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i3);
+              localObject1 = (XViewPager.ItemInfo)this.r.get(i3);
               f1 = f2;
               i1 = i2;
               paramInt = i3;
@@ -1656,27 +1618,27 @@ public class XViewPager
             {
               localObject1 = null;
               break label625;
-              if ((localObject4 == null) || (i5 != localObject4.jdField_a_of_type_Int)) {
+              if ((localObject4 == null) || (i5 != localObject4.b)) {
                 break;
               }
-              f2 += localObject4.jdField_a_of_type_Float;
+              f2 += localObject4.d;
               i3 -= 1;
               f1 = f2;
               i1 = i2;
               paramInt = i3;
             } while (i3 < 0);
-            localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i3);
+            localObject1 = (XViewPager.ItemInfo)this.r.get(i3);
             f1 = f2;
             i1 = i2;
             paramInt = i3;
             break;
-            f2 += a(i5, i3 + 1).jdField_a_of_type_Float;
+            f2 += a(i5, i3 + 1).d;
             i2 += 1;
             f1 = f2;
             i1 = i2;
             paramInt = i3;
           } while (i3 < 0);
-          localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i3);
+          localObject1 = (XViewPager.ItemInfo)this.r.get(i3);
           paramInt = i3;
           i1 = i2;
           f1 = f2;
@@ -1686,12 +1648,12 @@ public class XViewPager
           i2 = i1;
           i3 = paramInt;
         }
-        f2 = ((XViewPager.ItemInfo)localObject3).jdField_a_of_type_Float;
+        f2 = ((XViewPager.ItemInfo)localObject3).d;
         i1 = i2 + 1;
         if (f2 < 2.0F)
         {
-          if (i1 < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-            localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if (i1 < this.r.size()) {
+            localObject1 = (XViewPager.ItemInfo)this.r.get(i1);
           } else {
             localObject1 = null;
           }
@@ -1704,7 +1666,7 @@ public class XViewPager
           if (i8 == 0) {
             f3 = 0.0F;
           }
-          i3 = this.jdField_e_of_type_Int;
+          i3 = this.v;
           for (localObject4 = localObject1;; localObject4 = localObject1)
           {
             i3 += 1;
@@ -1719,22 +1681,22 @@ public class XViewPager
               f1 = f2;
               paramInt = i1;
               localObject1 = localObject4;
-              if (i3 != localObject4.jdField_a_of_type_Int) {
+              if (i3 != localObject4.b) {
                 break label1009;
               }
               f1 = f2;
               paramInt = i1;
               localObject1 = localObject4;
-              if (localObject4.jdField_a_of_type_Boolean) {
+              if (localObject4.c) {
                 break label1009;
               }
-              this.jdField_a_of_type_JavaUtilArrayList.remove(i1);
-              this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.destroyItem(this, i3, localObject4.jdField_a_of_type_JavaLangObject);
+              this.r.remove(i1);
+              this.u.destroyItem(this, i3, localObject4.a);
               f1 = f2;
               paramInt = i1;
-              if (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+              if (i1 < this.r.size())
               {
-                localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+                localObject1 = (XViewPager.ItemInfo)this.r.get(i1);
                 f1 = f2;
                 paramInt = i1;
                 break label1009;
@@ -1746,25 +1708,25 @@ public class XViewPager
               {
                 localObject1 = null;
                 break label1009;
-                if ((localObject4 == null) || (i3 != localObject4.jdField_a_of_type_Int)) {
+                if ((localObject4 == null) || (i3 != localObject4.b)) {
                   break;
                 }
-                f2 += localObject4.jdField_a_of_type_Float;
+                f2 += localObject4.d;
                 i1 += 1;
                 f1 = f2;
                 paramInt = i1;
-              } while (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size());
-              localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+              } while (i1 >= this.r.size());
+              localObject1 = (XViewPager.ItemInfo)this.r.get(i1);
               f1 = f2;
               paramInt = i1;
               break;
               localObject1 = a(i3, i1);
               i1 += 1;
-              f2 += ((XViewPager.ItemInfo)localObject1).jdField_a_of_type_Float;
+              f2 += ((XViewPager.ItemInfo)localObject1).d;
               f1 = f2;
               paramInt = i1;
-            } while (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size());
-            localObject1 = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+            } while (i1 >= this.r.size());
+            localObject1 = (XViewPager.ItemInfo)this.r.get(i1);
             paramInt = i1;
             f1 = f2;
             label1009:
@@ -1772,40 +1734,40 @@ public class XViewPager
             i1 = paramInt;
           }
         }
-        if (f()) {
+        if (k()) {
           b((XViewPager.ItemInfo)localObject3, i2, (XViewPager.ItemInfo)localObject2);
         } else {
           a((XViewPager.ItemInfo)localObject3, i2, (XViewPager.ItemInfo)localObject2);
         }
       }
-      localObject2 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
-      paramInt = this.jdField_e_of_type_Int;
+      localObject2 = this.u;
+      paramInt = this.v;
       if (localObject3 != null) {
-        localObject1 = ((XViewPager.ItemInfo)localObject3).jdField_a_of_type_JavaLangObject;
+        localObject1 = ((XViewPager.ItemInfo)localObject3).a;
       } else {
         localObject1 = null;
       }
       ((PagerAdapter)localObject2).setPrimaryItem(this, paramInt, localObject1);
-      this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.finishUpdate(this);
+      this.u.finishUpdate(this);
       i1 = getChildCount();
       paramInt = 0;
       while (paramInt < i1)
       {
         localObject2 = getChildAt(paramInt);
         localObject1 = (XViewPager.LayoutParams)((View)localObject2).getLayoutParams();
-        ((XViewPager.LayoutParams)localObject1).jdField_c_of_type_Int = paramInt;
-        if ((!((XViewPager.LayoutParams)localObject1).jdField_a_of_type_Boolean) && (((XViewPager.LayoutParams)localObject1).jdField_a_of_type_Float == 0.0F))
+        ((XViewPager.LayoutParams)localObject1).f = paramInt;
+        if ((!((XViewPager.LayoutParams)localObject1).a) && (((XViewPager.LayoutParams)localObject1).c == 0.0F))
         {
           localObject2 = a((View)localObject2);
           if (localObject2 != null)
           {
-            ((XViewPager.LayoutParams)localObject1).jdField_a_of_type_Float = ((XViewPager.ItemInfo)localObject2).jdField_a_of_type_Float;
-            ((XViewPager.LayoutParams)localObject1).jdField_b_of_type_Int = ((XViewPager.ItemInfo)localObject2).jdField_a_of_type_Int;
+            ((XViewPager.LayoutParams)localObject1).c = ((XViewPager.ItemInfo)localObject2).d;
+            ((XViewPager.LayoutParams)localObject1).e = ((XViewPager.ItemInfo)localObject2).b;
           }
         }
         paramInt += 1;
       }
-      e();
+      l();
       if (hasFocus())
       {
         localObject1 = findFocus();
@@ -1814,14 +1776,14 @@ public class XViewPager
         } else {
           localObject1 = null;
         }
-        if ((localObject1 == null) || (((XViewPager.ItemInfo)localObject1).jdField_a_of_type_Int != this.jdField_e_of_type_Int))
+        if ((localObject1 == null) || (((XViewPager.ItemInfo)localObject1).b != this.v))
         {
           paramInt = 0;
           while (paramInt < getChildCount())
           {
             localObject1 = getChildAt(paramInt);
             localObject2 = a((View)localObject1);
-            if ((localObject2 != null) && (((XViewPager.ItemInfo)localObject2).jdField_a_of_type_Int == this.jdField_e_of_type_Int) && (((View)localObject1).requestFocus(i4))) {
+            if ((localObject2 != null) && (((XViewPager.ItemInfo)localObject2).b == this.v) && (((View)localObject1).requestFocus(i4))) {
               return;
             }
             paramInt += 1;
@@ -1842,7 +1804,7 @@ public class XViewPager
     Object localObject1 = Integer.toHexString(getId());
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("The application's PagerAdapter changed the adapter's contents without calling PagerAdapter#notifyDataSetChanged! Expected adapter item count: ");
-    ((StringBuilder)localObject2).append(this.jdField_d_of_type_Int);
+    ((StringBuilder)localObject2).append(this.o);
     ((StringBuilder)localObject2).append(", found: ");
     ((StringBuilder)localObject2).append(i6);
     ((StringBuilder)localObject2).append(" Pager id: ");
@@ -1850,7 +1812,7 @@ public class XViewPager
     ((StringBuilder)localObject2).append(" Pager class: ");
     ((StringBuilder)localObject2).append(getClass());
     ((StringBuilder)localObject2).append(" Problematic adapter: ");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getClass());
+    ((StringBuilder)localObject2).append(this.u.getClass());
     localObject1 = new IllegalStateException(((StringBuilder)localObject2).toString());
     for (;;)
     {
@@ -1860,7 +1822,7 @@ public class XViewPager
   
   protected void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    int i1 = this.w;
+    int i1 = this.ap;
     int i6 = 0;
     int i2;
     if (i1 > 0)
@@ -1875,9 +1837,9 @@ public class XViewPager
       {
         localObject = getChildAt(i4);
         XViewPager.LayoutParams localLayoutParams = (XViewPager.LayoutParams)((View)localObject).getLayoutParams();
-        if (localLayoutParams.jdField_a_of_type_Boolean)
+        if (localLayoutParams.a)
         {
-          int i3 = localLayoutParams.jdField_a_of_type_Int & 0x7;
+          int i3 = localLayoutParams.b & 0x7;
           if (i3 != 1)
           {
             int i5;
@@ -1914,29 +1876,29 @@ public class XViewPager
         i4 += 1;
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+    Object localObject = this.aq;
     if (localObject != null) {
       ((XViewPager.OnPageChangeListener)localObject).a(paramInt1, paramFloat, paramInt2);
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    localObject = this.m;
     if (localObject != null)
     {
       i2 = ((List)localObject).size();
       i1 = 0;
       while (i1 < i2)
       {
-        localObject = (XViewPager.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(i1);
+        localObject = (XViewPager.OnPageChangeListener)this.m.get(i1);
         if (localObject != null) {
           ((XViewPager.OnPageChangeListener)localObject).a(paramInt1, paramFloat, paramInt2);
         }
         i1 += 1;
       }
     }
-    localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+    localObject = this.ar;
     if (localObject != null) {
       ((XViewPager.OnPageChangeListener)localObject).a(paramInt1, paramFloat, paramInt2);
     }
-    if (this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer != null)
+    if (this.at != null)
     {
       paramInt2 = getScrollX();
       i1 = getChildCount();
@@ -1944,22 +1906,22 @@ public class XViewPager
       while (paramInt1 < i1)
       {
         localObject = getChildAt(paramInt1);
-        if (!((XViewPager.LayoutParams)((View)localObject).getLayoutParams()).jdField_a_of_type_Boolean)
+        if (!((XViewPager.LayoutParams)((View)localObject).getLayoutParams()).a)
         {
-          paramFloat = (((View)localObject).getLeft() - paramInt2) / d();
-          this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer.a((View)localObject, paramFloat);
+          paramFloat = (((View)localObject).getLeft() - paramInt2) / getClientWidth();
+          this.at.a((View)localObject, paramFloat);
         }
         paramInt1 += 1;
       }
     }
-    this.jdField_o_of_type_Boolean = true;
+    this.ao = true;
   }
   
   void a(int paramInt1, int paramInt2, int paramInt3)
   {
     if (getChildCount() == 0)
     {
-      e(false);
+      setScrollingCacheEnabled(false);
       return;
     }
     int i1 = getScrollX();
@@ -1968,15 +1930,15 @@ public class XViewPager
     paramInt2 -= i2;
     if ((i3 == 0) && (paramInt2 == 0))
     {
-      b(false);
+      a(false);
       c();
-      b(0);
+      setScrollState(0);
       return;
     }
-    e(true);
-    b(2);
-    paramInt1 = d();
-    int i4 = e();
+    setScrollingCacheEnabled(true);
+    setScrollState(2);
+    paramInt1 = getClientWidth();
+    int i4 = getClientHeight();
     int i5 = paramInt1 / 2;
     int i6 = i4 / 2;
     float f2 = Math.abs(i3);
@@ -1992,37 +1954,37 @@ public class XViewPager
     paramInt1 = Math.abs(paramInt3);
     if (paramInt1 > 0)
     {
-      if (f()) {
+      if (k()) {
         paramInt1 = Math.round(Math.abs((f6 + f4 * f6) / paramInt1) * 1000.0F);
       } else {
         paramInt1 = Math.round(Math.abs((f3 + f5 * f3) / paramInt1) * 1000.0F);
       }
       paramInt1 *= 4;
     }
-    else if (f())
+    else if (k())
     {
-      f1 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(this.jdField_e_of_type_Int);
-      paramInt1 = (int)((Math.abs(paramInt2) / (f2 * f1 + this.jdField_g_of_type_Int) + 1.0F) * 100.0F);
+      f1 = this.u.getPageWidth(this.v);
+      paramInt1 = (int)((Math.abs(paramInt2) / (f2 * f1 + this.B) + 1.0F) * 100.0F);
     }
     else
     {
-      f2 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(this.jdField_e_of_type_Int);
-      paramInt1 = (int)((Math.abs(i3) / (f1 * f2 + this.jdField_g_of_type_Int) + 1.0F) * 100.0F);
+      f2 = this.u.getPageWidth(this.v);
+      paramInt1 = (int)((Math.abs(i3) / (f1 * f2 + this.B) + 1.0F) * 100.0F);
     }
     paramInt1 = Math.min(paramInt1, 600);
-    paramInt3 = this.jdField_c_of_type_Int;
+    paramInt3 = this.k;
     if ((paramInt3 != 2) && (paramInt3 != 3))
     {
-      paramInt3 = this.jdField_b_of_type_Int;
+      paramInt3 = this.j;
       if (paramInt3 > 0) {
-        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i1, i2, i3, paramInt2, paramInt3);
+        this.z.startScroll(i1, i2, i3, paramInt2, paramInt3);
       } else {
-        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i1, i2, i3, paramInt2, paramInt1);
+        this.z.startScroll(i1, i2, i3, paramInt2, paramInt1);
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i1, i2, i3, paramInt2, paramInt1 / this.jdField_c_of_type_Int);
+      this.z.startScroll(i1, i2, i3, paramInt2, paramInt1 / this.k);
     }
     ViewCompat.postInvalidateOnAnimation(this);
   }
@@ -2034,16 +1996,16 @@ public class XViewPager
   
   void a(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+    Object localObject = this.u;
     int i2 = 0;
     if ((localObject != null) && (((PagerAdapter)localObject).getCount() > 0))
     {
-      if ((!paramBoolean2) && (this.jdField_e_of_type_Int == paramInt1) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+      if ((!paramBoolean2) && (this.v == paramInt1) && (this.r.size() != 0))
       {
-        e(false);
+        setScrollingCacheEnabled(false);
         return;
       }
-      int i1 = this.jdField_e_of_type_Int;
+      int i1 = this.v;
       paramBoolean2 = true;
       if (paramInt1 < 0)
       {
@@ -2052,44 +2014,44 @@ public class XViewPager
       else
       {
         i1 = paramInt1;
-        if (paramInt1 >= this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount()) {
-          i1 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount() - 1;
+        if (paramInt1 >= this.u.getCount()) {
+          i1 = this.u.getCount() - 1;
         }
       }
-      paramInt1 = this.jdField_n_of_type_Int;
-      int i3 = this.jdField_e_of_type_Int;
+      paramInt1 = this.O;
+      int i3 = this.v;
       if ((i1 > i3 + paramInt1) || (i1 < i3 - paramInt1))
       {
         paramInt1 = 0;
-        while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+        while (paramInt1 < this.r.size())
         {
-          ((XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).jdField_a_of_type_Boolean = true;
+          ((XViewPager.ItemInfo)this.r.get(paramInt1)).c = true;
           paramInt1 += 1;
         }
       }
-      if (this.jdField_e_of_type_Int == i1) {
+      if (this.v == i1) {
         paramBoolean2 = false;
       }
-      if (this.jdField_l_of_type_Boolean)
+      if (this.al)
       {
-        this.jdField_e_of_type_Int = i1;
+        this.v = i1;
         if (paramBoolean2)
         {
-          localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+          localObject = this.aq;
           if (localObject != null) {
             ((XViewPager.OnPageChangeListener)localObject).a(i1);
           }
         }
         if (paramBoolean2)
         {
-          localObject = this.jdField_a_of_type_JavaUtilList;
+          localObject = this.m;
           if (localObject != null)
           {
             paramInt2 = ((List)localObject).size();
             paramInt1 = i2;
             while (paramInt1 < paramInt2)
             {
-              localObject = (XViewPager.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+              localObject = (XViewPager.OnPageChangeListener)this.m.get(paramInt1);
               if (localObject != null) {
                 ((XViewPager.OnPageChangeListener)localObject).a(i1);
               }
@@ -2099,7 +2061,7 @@ public class XViewPager
         }
         if (paramBoolean2)
         {
-          localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+          localObject = this.ar;
           if (localObject != null) {
             ((XViewPager.OnPageChangeListener)localObject).a(i1);
           }
@@ -2108,7 +2070,7 @@ public class XViewPager
         return;
       }
       a(i1);
-      if (f())
+      if (k())
       {
         b(i1, paramBoolean1, paramInt2, paramBoolean2);
         return;
@@ -2116,52 +2078,52 @@ public class XViewPager
       a(i1, paramBoolean1, paramInt2, paramBoolean2);
       return;
     }
-    e(false);
+    setScrollingCacheEnabled(false);
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if ((this.jdField_g_of_type_Int > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter != null))
+    if ((this.B > 0) && (this.C != null) && (this.r.size() > 0) && (this.u != null))
     {
       int i3 = getScrollY();
       int i4 = getHeight();
-      float f1 = this.jdField_g_of_type_Int;
+      float f1 = this.B;
       float f5 = i4;
       float f2 = f1 / f5;
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      Object localObject = this.r;
       int i2 = 0;
       localObject = (XViewPager.ItemInfo)((ArrayList)localObject).get(0);
-      f1 = ((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float;
-      int i5 = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i1 = ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int;
-      int i6 = ((XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1)).jdField_a_of_type_Int;
+      f1 = ((XViewPager.ItemInfo)localObject).e;
+      int i5 = this.r.size();
+      int i1 = ((XViewPager.ItemInfo)localObject).b;
+      int i6 = ((XViewPager.ItemInfo)this.r.get(i5 - 1)).b;
       while (i1 < i6)
       {
-        while ((i1 > ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int) && (i2 < i5))
+        while ((i1 > ((XViewPager.ItemInfo)localObject).b) && (i2 < i5))
         {
-          localObject = this.jdField_a_of_type_JavaUtilArrayList;
+          localObject = this.r;
           i2 += 1;
           localObject = (XViewPager.ItemInfo)((ArrayList)localObject).get(i2);
         }
         float f3;
-        if (i1 == ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int)
+        if (i1 == ((XViewPager.ItemInfo)localObject).b)
         {
-          f3 = (((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float + ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Float) * f5;
-          f1 = ((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float + ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Float + f2;
+          f3 = (((XViewPager.ItemInfo)localObject).e + ((XViewPager.ItemInfo)localObject).d) * f5;
+          f1 = ((XViewPager.ItemInfo)localObject).e + ((XViewPager.ItemInfo)localObject).d + f2;
         }
         else
         {
-          float f4 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(i1);
+          float f4 = this.u.getPageWidth(i1);
           f3 = f1 + (f4 + f2);
           f4 = (f1 + f4) * f5;
           f1 = f3;
           f3 = f4;
         }
-        int i7 = this.jdField_g_of_type_Int;
+        int i7 = this.B;
         if (i7 + f3 > i3)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_j_of_type_Int, (int)f3, this.jdField_k_of_type_Int, (int)(i7 + f3 + 0.5F));
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+          this.C.setBounds(this.F, (int)f3, this.G, (int)(i7 + f3 + 0.5F));
+          this.C.draw(paramCanvas);
         }
         if (f3 > i3 + i4) {
           return;
@@ -2173,36 +2135,10 @@ public class XViewPager
   
   public void a(XViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.m == null) {
+      this.m = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    if (Build.VERSION.SDK_INT >= 7)
-    {
-      if (this.jdField_a_of_type_JavaLangReflectMethod == null) {
-        try
-        {
-          this.jdField_a_of_type_JavaLangReflectMethod = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
-        }
-        catch (NoSuchMethodException localNoSuchMethodException)
-        {
-          SLog.c(this.jdField_a_of_type_JavaLangString, "Can't find setChildrenDrawingOrderEnabled", localNoSuchMethodException);
-        }
-      }
-      try
-      {
-        this.jdField_a_of_type_JavaLangReflectMethod.invoke(this, new Object[] { Boolean.valueOf(paramBoolean) });
-        return;
-      }
-      catch (Exception localException)
-      {
-        SLog.c(this.jdField_a_of_type_JavaLangString, "Error changing children drawing order", localException);
-      }
-    }
+    this.m.add(paramOnPageChangeListener);
   }
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -2236,10 +2172,10 @@ public class XViewPager
         i6 = paramInt1;
         i5 = paramInt4;
         paramInt3 = i3;
-        if (localLayoutParams.jdField_a_of_type_Boolean)
+        if (localLayoutParams.a)
         {
-          paramInt3 = localLayoutParams.jdField_a_of_type_Int & 0x7;
-          i5 = localLayoutParams.jdField_a_of_type_Int & 0x70;
+          paramInt3 = localLayoutParams.b & 0x7;
+          i5 = localLayoutParams.b & 0x70;
           if (paramInt3 != 1)
           {
             if (paramInt3 != 3)
@@ -2316,17 +2252,17 @@ public class XViewPager
       if (localView.getVisibility() != 8)
       {
         localLayoutParams = (XViewPager.LayoutParams)localView.getLayoutParams();
-        if (!localLayoutParams.jdField_a_of_type_Boolean)
+        if (!localLayoutParams.a)
         {
           XViewPager.ItemInfo localItemInfo = a(localView);
           if (localItemInfo != null)
           {
             float f1 = i2;
-            i5 = (int)(localItemInfo.jdField_b_of_type_Float * f1) + paramInt1;
-            if (localLayoutParams.jdField_b_of_type_Boolean)
+            i5 = (int)(localItemInfo.e * f1) + paramInt1;
+            if (localLayoutParams.d)
             {
-              localLayoutParams.jdField_b_of_type_Boolean = false;
-              localView.measure(View.MeasureSpec.makeMeasureSpec(i9 - paramInt2 - i1, 1073741824), View.MeasureSpec.makeMeasureSpec((int)(f1 * localLayoutParams.jdField_a_of_type_Float), 1073741824));
+              localLayoutParams.d = false;
+              localView.measure(View.MeasureSpec.makeMeasureSpec(i9 - paramInt2 - i1, 1073741824), View.MeasureSpec.makeMeasureSpec((int)(f1 * localLayoutParams.c), 1073741824));
             }
             localView.layout(paramInt2, i5, localView.getMeasuredWidth() + paramInt2, localView.getMeasuredHeight() + i5);
           }
@@ -2334,121 +2270,18 @@ public class XViewPager
       }
       i4 += 1;
     }
-    this.jdField_h_of_type_Int = paramInt1;
-    this.jdField_j_of_type_Int = paramInt2;
-    this.jdField_i_of_type_Int = (i10 - paramInt4);
-    this.jdField_k_of_type_Int = (i9 - i1);
-    this.w = i3;
-    if ((!this.jdField_l_of_type_Boolean) && (this.jdField_m_of_type_Boolean)) {
+    this.D = paramInt1;
+    this.F = paramInt2;
+    this.E = (i10 - paramInt4);
+    this.G = (i9 - i1);
+    this.ap = i3;
+    if ((!this.al) && (this.am)) {
       break label640;
     }
-    b(this.jdField_e_of_type_Int, false, 0, false);
+    b(this.v, false, 0, false);
     label640:
-    this.jdField_l_of_type_Boolean = false;
-    this.jdField_m_of_type_Boolean = true;
-  }
-  
-  boolean a()
-  {
-    int i1 = this.jdField_e_of_type_Int;
-    if (i1 > 0)
-    {
-      setCurrentItem(i1 - 1, true);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Object localObject2 = findFocus();
-    boolean bool = false;
-    View localView = null;
-    Object localObject1;
-    int i1;
-    if (localObject2 == this)
-    {
-      localObject1 = localView;
-    }
-    else
-    {
-      if (localObject2 != null)
-      {
-        for (localObject1 = ((View)localObject2).getParent(); (localObject1 instanceof ViewGroup); localObject1 = ((ViewParent)localObject1).getParent()) {
-          if (localObject1 == this)
-          {
-            i1 = 1;
-            break label70;
-          }
-        }
-        i1 = 0;
-        label70:
-        if (i1 == 0)
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(localObject2.getClass().getSimpleName());
-          for (localObject1 = ((View)localObject2).getParent(); (localObject1 instanceof ViewGroup); localObject1 = ((ViewParent)localObject1).getParent())
-          {
-            localStringBuilder.append(" => ");
-            localStringBuilder.append(localObject1.getClass().getSimpleName());
-          }
-          localObject1 = this.jdField_a_of_type_JavaLangString;
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("arrowScroll tried to find focus based on non-child current focused view ");
-          ((StringBuilder)localObject2).append(localStringBuilder.toString());
-          SLog.e((String)localObject1, ((StringBuilder)localObject2).toString());
-          localObject1 = localView;
-          break label203;
-        }
-      }
-      localObject1 = localObject2;
-    }
-    label203:
-    localView = FocusFinder.getInstance().findNextFocus(this, (View)localObject1, paramInt);
-    int i2;
-    if ((localView != null) && (localView != localObject1)) {
-      if (paramInt == 17)
-      {
-        i1 = a(this.jdField_a_of_type_AndroidGraphicsRect, localView).left;
-        i2 = a(this.jdField_a_of_type_AndroidGraphicsRect, (View)localObject1).left;
-        if ((localObject1 != null) && (i1 >= i2)) {
-          bool = a();
-        } else {
-          bool = localView.requestFocus();
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (paramInt == 66)
-      {
-        i1 = a(this.jdField_a_of_type_AndroidGraphicsRect, localView).left;
-        i2 = a(this.jdField_a_of_type_AndroidGraphicsRect, (View)localObject1).left;
-        if ((localObject1 != null) && (i1 <= i2))
-        {
-          bool = b();
-        }
-        else
-        {
-          bool = localView.requestFocus();
-          continue;
-          if ((paramInt != 17) && (paramInt != 1))
-          {
-            if ((paramInt == 66) || (paramInt == 2)) {
-              bool = b();
-            }
-          }
-          else {
-            bool = a();
-          }
-        }
-      }
-    }
-    if (bool) {
-      playSoundEffect(SoundEffectConstants.getContantForFocusDirection(paramInt));
-    }
-    return bool;
+    this.al = false;
+    this.am = true;
   }
   
   public boolean a(KeyEvent paramKeyEvent)
@@ -2463,22 +2296,22 @@ public class XViewPager
         default: 
           break;
         case 22: 
-          return a(66);
+          return c(66);
         case 21: 
-          return a(17);
+          return c(17);
         case 20: 
-          return a(130);
+          return c(130);
         case 19: 
-          return a(33);
+          return c(33);
         }
       }
       else if (Build.VERSION.SDK_INT >= 11)
       {
         if (KeyEventCompat.hasNoModifiers(paramKeyEvent)) {
-          return a(2);
+          return c(2);
         }
         if (KeyEventCompat.hasModifiers(paramKeyEvent, 1)) {
-          return a(1);
+          return c(1);
         }
       }
     }
@@ -2526,7 +2359,7 @@ public class XViewPager
         if (localView.getVisibility() == 0)
         {
           XViewPager.ItemInfo localItemInfo = a(localView);
-          if ((localItemInfo != null) && (localItemInfo.jdField_a_of_type_Int == this.jdField_e_of_type_Int)) {
+          if ((localItemInfo != null) && (localItemInfo.b == this.v)) {
             localView.addFocusables(paramArrayList, paramInt1, paramInt2);
           }
         }
@@ -2554,7 +2387,7 @@ public class XViewPager
       if (localView.getVisibility() == 0)
       {
         XViewPager.ItemInfo localItemInfo = a(localView);
-        if ((localItemInfo != null) && (localItemInfo.jdField_a_of_type_Int == this.jdField_e_of_type_Int)) {
+        if ((localItemInfo != null) && (localItemInfo.b == this.v)) {
           localView.addTouchables(paramArrayList);
         }
       }
@@ -2569,12 +2402,12 @@ public class XViewPager
       localLayoutParams = generateLayoutParams(paramLayoutParams);
     }
     paramLayoutParams = (XViewPager.LayoutParams)localLayoutParams;
-    paramLayoutParams.jdField_a_of_type_Boolean |= paramView instanceof XViewPager.Decor;
-    if (this.jdField_f_of_type_Boolean)
+    paramLayoutParams.a |= paramView instanceof XViewPager.Decor;
+    if (this.L)
     {
-      if (!paramLayoutParams.jdField_a_of_type_Boolean)
+      if (!paramLayoutParams.a)
       {
-        paramLayoutParams.jdField_b_of_type_Boolean = true;
+        paramLayoutParams.d = true;
         addViewInLayout(paramView, paramInt, localLayoutParams);
         return;
       }
@@ -2583,9 +2416,18 @@ public class XViewPager
     super.addView(paramView, paramInt, localLayoutParams);
   }
   
-  public int b()
+  XViewPager.ItemInfo b(int paramInt)
   {
-    return this.jdField_o_of_type_Int;
+    int i1 = 0;
+    while (i1 < this.r.size())
+    {
+      XViewPager.ItemInfo localItemInfo = (XViewPager.ItemInfo)this.r.get(i1);
+      if (localItemInfo.b == paramInt) {
+        return localItemInfo;
+      }
+      i1 += 1;
+    }
+    return null;
   }
   
   XViewPager.ItemInfo b(View paramView)
@@ -2608,23 +2450,23 @@ public class XViewPager
   
   void b()
   {
-    int i9 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount();
-    this.jdField_d_of_type_Int = i9;
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() < this.jdField_n_of_type_Int * 2 + 1) && (this.jdField_a_of_type_JavaUtilArrayList.size() < i9)) {
+    int i9 = this.u.getCount();
+    this.o = i9;
+    if ((this.r.size() < this.O * 2 + 1) && (this.r.size() < i9)) {
       i1 = 1;
     } else {
       i1 = 0;
     }
-    int i2 = this.jdField_e_of_type_Int;
+    int i2 = this.v;
     int i6 = i1;
     int i1 = i2;
     int i3 = 0;
     i2 = 0;
     Object localObject;
-    while (i3 < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i3 < this.r.size())
     {
-      localObject = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i3);
-      int i8 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getItemPosition(((XViewPager.ItemInfo)localObject).jdField_a_of_type_JavaLangObject);
+      localObject = (XViewPager.ItemInfo)this.r.get(i3);
+      int i8 = this.u.getItemPosition(((XViewPager.ItemInfo)localObject).a);
       int i4;
       int i5;
       int i7;
@@ -2638,20 +2480,20 @@ public class XViewPager
       {
         if (i8 == -2)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(i3);
+          this.r.remove(i3);
           i5 = i3 - 1;
           i4 = i2;
           if (i2 == 0)
           {
-            this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.startUpdate(this);
+            this.u.startUpdate(this);
             i4 = 1;
           }
-          this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.destroyItem(this, ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int, ((XViewPager.ItemInfo)localObject).jdField_a_of_type_JavaLangObject);
+          this.u.destroyItem(this, ((XViewPager.ItemInfo)localObject).b, ((XViewPager.ItemInfo)localObject).a);
           i3 = i5;
           i2 = i4;
-          if (this.jdField_e_of_type_Int == ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int)
+          if (this.v == ((XViewPager.ItemInfo)localObject).b)
           {
-            i1 = Math.max(0, Math.min(this.jdField_e_of_type_Int, i9 - 1));
+            i1 = Math.max(0, Math.min(this.v, i9 - 1));
             i2 = i4;
             i3 = i5;
           }
@@ -2666,13 +2508,13 @@ public class XViewPager
           i4 = i3;
           i5 = i2;
           i7 = i1;
-          if (((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int == i8) {
+          if (((XViewPager.ItemInfo)localObject).b == i8) {
             break;
           }
-          if (((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int == this.jdField_e_of_type_Int) {
+          if (((XViewPager.ItemInfo)localObject).b == this.v) {
             i1 = i8;
           }
-          ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int = i8;
+          ((XViewPager.ItemInfo)localObject).b = i8;
         }
       }
       i3 = i4 + 1;
@@ -2680,9 +2522,9 @@ public class XViewPager
       i1 = i7;
     }
     if (i2 != 0) {
-      this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.finishUpdate(this);
+      this.u.finishUpdate(this);
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, jdField_a_of_type_JavaUtilComparator);
+    Collections.sort(this.r, p);
     if (i6 != 0)
     {
       i3 = getChildCount();
@@ -2690,8 +2532,8 @@ public class XViewPager
       while (i2 < i3)
       {
         localObject = (XViewPager.LayoutParams)getChildAt(i2).getLayoutParams();
-        if (!((XViewPager.LayoutParams)localObject).jdField_a_of_type_Boolean) {
-          ((XViewPager.LayoutParams)localObject).jdField_a_of_type_Float = 0.0F;
+        if (!((XViewPager.LayoutParams)localObject).a) {
+          ((XViewPager.LayoutParams)localObject).c = 0.0F;
         }
         i2 += 1;
       }
@@ -2702,7 +2544,7 @@ public class XViewPager
   
   protected void b(int paramInt1, float paramFloat, int paramInt2)
   {
-    int i1 = this.w;
+    int i1 = this.ap;
     int i6 = 0;
     int i2;
     if (i1 > 0)
@@ -2717,9 +2559,9 @@ public class XViewPager
       {
         localObject = getChildAt(i4);
         XViewPager.LayoutParams localLayoutParams = (XViewPager.LayoutParams)((View)localObject).getLayoutParams();
-        if (localLayoutParams.jdField_a_of_type_Boolean)
+        if (localLayoutParams.a)
         {
-          int i3 = localLayoutParams.jdField_a_of_type_Int & 0x70;
+          int i3 = localLayoutParams.b & 0x70;
           if (i3 != 16)
           {
             int i5;
@@ -2756,29 +2598,29 @@ public class XViewPager
         i4 += 1;
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+    Object localObject = this.aq;
     if (localObject != null) {
       ((XViewPager.OnPageChangeListener)localObject).a(paramInt1, paramFloat, paramInt2);
     }
-    localObject = this.jdField_a_of_type_JavaUtilList;
+    localObject = this.m;
     if (localObject != null)
     {
       i2 = ((List)localObject).size();
       i1 = 0;
       while (i1 < i2)
       {
-        localObject = (XViewPager.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(i1);
+        localObject = (XViewPager.OnPageChangeListener)this.m.get(i1);
         if (localObject != null) {
           ((XViewPager.OnPageChangeListener)localObject).a(paramInt1, paramFloat, paramInt2);
         }
         i1 += 1;
       }
     }
-    localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener;
+    localObject = this.ar;
     if (localObject != null) {
       ((XViewPager.OnPageChangeListener)localObject).a(paramInt1, paramFloat, paramInt2);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer != null)
+    if (this.g != null)
     {
       paramInt2 = getScrollY();
       i1 = getChildCount();
@@ -2786,26 +2628,15 @@ public class XViewPager
       while (paramInt1 < i1)
       {
         localObject = getChildAt(paramInt1);
-        if (!((XViewPager.LayoutParams)((View)localObject).getLayoutParams()).jdField_a_of_type_Boolean)
+        if (!((XViewPager.LayoutParams)((View)localObject).getLayoutParams()).a)
         {
-          paramFloat = (((View)localObject).getTop() - paramInt2) / e();
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer.a((View)localObject, paramFloat);
+          paramFloat = (((View)localObject).getTop() - paramInt2) / getClientHeight();
+          this.g.a((View)localObject, paramFloat);
         }
         paramInt1 += 1;
       }
     }
-    this.jdField_o_of_type_Boolean = true;
-  }
-  
-  boolean b()
-  {
-    PagerAdapter localPagerAdapter = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
-    if ((localPagerAdapter != null) && (this.jdField_e_of_type_Int < localPagerAdapter.getCount() - 1))
-    {
-      setCurrentItem(this.jdField_e_of_type_Int + 1, true);
-      return true;
-    }
-    return false;
+    this.ao = true;
   }
   
   protected boolean b(View paramView, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
@@ -2833,33 +2664,120 @@ public class XViewPager
     return (paramBoolean) && (ViewCompat.canScrollVertically(paramView, -paramInt1));
   }
   
-  public int c()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
   void c()
   {
-    a(this.jdField_e_of_type_Int);
+    a(this.v);
+  }
+  
+  public boolean c(int paramInt)
+  {
+    Object localObject2 = findFocus();
+    boolean bool = false;
+    View localView = null;
+    Object localObject1;
+    int i1;
+    if (localObject2 == this)
+    {
+      localObject1 = localView;
+    }
+    else
+    {
+      if (localObject2 != null)
+      {
+        for (localObject1 = ((View)localObject2).getParent(); (localObject1 instanceof ViewGroup); localObject1 = ((ViewParent)localObject1).getParent()) {
+          if (localObject1 == this)
+          {
+            i1 = 1;
+            break label70;
+          }
+        }
+        i1 = 0;
+        label70:
+        if (i1 == 0)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localObject2.getClass().getSimpleName());
+          for (localObject1 = ((View)localObject2).getParent(); (localObject1 instanceof ViewGroup); localObject1 = ((ViewParent)localObject1).getParent())
+          {
+            localStringBuilder.append(" => ");
+            localStringBuilder.append(localObject1.getClass().getSimpleName());
+          }
+          localObject1 = this.a;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("arrowScroll tried to find focus based on non-child current focused view ");
+          ((StringBuilder)localObject2).append(localStringBuilder.toString());
+          SLog.e((String)localObject1, ((StringBuilder)localObject2).toString());
+          localObject1 = localView;
+          break label203;
+        }
+      }
+      localObject1 = localObject2;
+    }
+    label203:
+    localView = FocusFinder.getInstance().findNextFocus(this, (View)localObject1, paramInt);
+    int i2;
+    if ((localView != null) && (localView != localObject1)) {
+      if (paramInt == 17)
+      {
+        i1 = a(this.t, localView).left;
+        i2 = a(this.t, (View)localObject1).left;
+        if ((localObject1 != null) && (i1 >= i2)) {
+          bool = d();
+        } else {
+          bool = localView.requestFocus();
+        }
+      }
+    }
+    for (;;)
+    {
+      break;
+      if (paramInt == 66)
+      {
+        i1 = a(this.t, localView).left;
+        i2 = a(this.t, (View)localObject1).left;
+        if ((localObject1 != null) && (i1 <= i2))
+        {
+          bool = e();
+        }
+        else
+        {
+          bool = localView.requestFocus();
+          continue;
+          if ((paramInt != 17) && (paramInt != 1))
+          {
+            if ((paramInt == 66) || (paramInt == 2)) {
+              bool = e();
+            }
+          }
+          else {
+            bool = d();
+          }
+        }
+      }
+    }
+    if (bool) {
+      playSoundEffect(SoundEffectConstants.getContantForFocusDirection(paramInt));
+    }
+    return bool;
   }
   
   public boolean canScrollHorizontally(int paramInt)
   {
-    PagerAdapter localPagerAdapter = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+    PagerAdapter localPagerAdapter = this.u;
     boolean bool3 = false;
     boolean bool2 = false;
     if (localPagerAdapter == null) {
       return false;
     }
     boolean bool1 = bool3;
-    if (c())
+    if (g())
     {
-      int i1 = d();
+      int i1 = getClientWidth();
       int i2 = getScrollX();
       if (paramInt < 0)
       {
         bool1 = bool2;
-        if (i2 > (int)(i1 * this.jdField_b_of_type_Float)) {
+        if (i2 > (int)(i1 * this.H)) {
           bool1 = true;
         }
         return bool1;
@@ -2868,7 +2786,7 @@ public class XViewPager
       if (paramInt > 0)
       {
         bool1 = bool3;
-        if (i2 < (int)(i1 * this.jdField_c_of_type_Float)) {
+        if (i2 < (int)(i1 * this.I)) {
           bool1 = true;
         }
       }
@@ -2883,37 +2801,48 @@ public class XViewPager
   
   public void computeScroll()
   {
-    f();
-    if ((!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()))
+    m();
+    if ((!this.z.isFinished()) && (this.z.computeScrollOffset()))
     {
       int i1 = getScrollX();
       int i2 = getScrollY();
-      int i3 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      int i4 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+      int i3 = this.z.getCurrX();
+      int i4 = this.z.getCurrY();
       if ((i1 != i3) || (i2 != i4))
       {
         scrollTo(i3, i4);
-        if (Gravity.isHorizontal(this.jdField_o_of_type_Int))
+        if (Gravity.isHorizontal(this.Q))
         {
-          if (!b(i3))
+          if (!d(i3))
           {
-            this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+            this.z.abortAnimation();
             scrollTo(0, i4);
           }
         }
-        else if (!c(i4))
+        else if (!e(i4))
         {
-          this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+          this.z.abortAnimation();
           scrollTo(i3, 0);
         }
       }
       ViewCompat.postInvalidateOnAnimation(this);
       return;
     }
-    if (this.z == 0) {
-      this.jdField_o_of_type_Int = 0;
+    if (this.aC == 0) {
+      this.Q = 0;
     }
-    b(true);
+    a(true);
+  }
+  
+  boolean d()
+  {
+    int i1 = this.v;
+    if (i1 > 0)
+    {
+      setCurrentItem(i1 - 1, true);
+      return true;
+    }
+    return false;
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -2934,7 +2863,7 @@ public class XViewPager
       if (localView.getVisibility() == 0)
       {
         XViewPager.ItemInfo localItemInfo = a(localView);
-        if ((localItemInfo != null) && (localItemInfo.jdField_a_of_type_Int == this.jdField_e_of_type_Int) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent))) {
+        if ((localItemInfo != null) && (localItemInfo.b == this.v) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent))) {
           return true;
         }
       }
@@ -2952,33 +2881,33 @@ public class XViewPager
     if (i4 != 0) {
       if (i4 == 1)
       {
-        PagerAdapter localPagerAdapter = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+        PagerAdapter localPagerAdapter = this.u;
         if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 1)) {}
       }
       else
       {
-        this.jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat.finish();
-        this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat.finish();
-        this.jdField_c_of_type_AndroidSupportV4WidgetEdgeEffectCompat.finish();
-        this.jdField_d_of_type_AndroidSupportV4WidgetEdgeEffectCompat.finish();
+        this.ah.finish();
+        this.ai.finish();
+        this.aj.finish();
+        this.ak.finish();
         break label290;
       }
     }
     int i2;
-    if (!this.jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat.isFinished())
+    if (!this.ah.isFinished())
     {
       i3 = paramCanvas.save();
       i1 = getHeight() - getPaddingTop() - getPaddingBottom();
       i4 = getWidth();
       paramCanvas.rotate(270.0F);
-      paramCanvas.translate(-i1 + getPaddingTop(), this.jdField_b_of_type_Float * i4);
-      this.jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat.setSize(i1, i4);
-      i2 = false | this.jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat.draw(paramCanvas);
+      paramCanvas.translate(-i1 + getPaddingTop(), this.H * i4);
+      this.ah.setSize(i1, i4);
+      i2 = false | this.ah.draw(paramCanvas);
       paramCanvas.restoreToCount(i3);
     }
     i3 = i2;
     boolean bool;
-    if (!this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat.isFinished())
+    if (!this.ai.isFinished())
     {
       i4 = paramCanvas.save();
       i3 = getWidth();
@@ -2986,14 +2915,14 @@ public class XViewPager
       int i6 = getPaddingTop();
       int i7 = getPaddingBottom();
       paramCanvas.rotate(90.0F);
-      paramCanvas.translate(-getPaddingTop(), -(this.jdField_c_of_type_Float + 1.0F) * i3);
-      this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat.setSize(i5 - i6 - i7, i3);
-      bool = i2 | this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat.draw(paramCanvas);
+      paramCanvas.translate(-getPaddingTop(), -(this.I + 1.0F) * i3);
+      this.ai.setSize(i5 - i6 - i7, i3);
+      bool = i2 | this.ai.draw(paramCanvas);
       paramCanvas.restoreToCount(i4);
     }
-    if (this.jdField_c_of_type_AndroidSupportV4WidgetEdgeEffectCompat.isFinished())
+    if (this.aj.isFinished())
     {
-      if (this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat.isFinished())
+      if (this.ai.isFinished())
       {
         label290:
         if (bool) {
@@ -3009,10 +2938,21 @@ public class XViewPager
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.C;
     if ((localDrawable != null) && (localDrawable.isStateful())) {
       localDrawable.setState(getDrawableState());
     }
+  }
+  
+  boolean e()
+  {
+    PagerAdapter localPagerAdapter = this.u;
+    if ((localPagerAdapter != null) && (this.v < localPagerAdapter.getCount() - 1))
+    {
+      setCurrentItem(this.v + 1, true);
+      return true;
+    }
+    return false;
   }
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
@@ -3030,89 +2970,133 @@ public class XViewPager
     return generateDefaultLayoutParams();
   }
   
+  public PagerAdapter getAdapter()
+  {
+    return this.u;
+  }
+  
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     if (Build.VERSION.SDK_INT >= 24)
     {
-      localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+      localArrayList = this.aw;
       if ((localArrayList == null) || (localArrayList.size() != getChildCount())) {
-        e();
+        l();
       }
     }
     int i1;
-    if (this.x == 2) {
+    if (this.av == 2) {
       i1 = paramInt1 - 1 - paramInt2;
     } else {
       i1 = paramInt2;
     }
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.aw;
     if (localArrayList != null) {
-      return ((XViewPager.LayoutParams)((View)localArrayList.get(i1)).getLayoutParams()).jdField_c_of_type_Int;
+      return ((XViewPager.LayoutParams)((View)localArrayList.get(i1)).getLayoutParams()).f;
     }
     return super.getChildDrawingOrder(paramInt1, paramInt2);
+  }
+  
+  public int getCurrentItem()
+  {
+    return this.v;
+  }
+  
+  public int getOffscreenPageLimit()
+  {
+    return this.O;
+  }
+  
+  public List<XViewPager.OnPageChangeListener> getOnPageChangeListeners()
+  {
+    List localList = this.m;
+    if (localList == null) {
+      return Collections.emptyList();
+    }
+    return Collections.unmodifiableList(localList);
+  }
+  
+  public int getPageMargin()
+  {
+    return this.B;
+  }
+  
+  public XViewPager.PageTransformer getPageTransformer()
+  {
+    return this.at;
+  }
+  
+  public int getScrollState()
+  {
+    return this.aC;
+  }
+  
+  public int getmDraggedDirection()
+  {
+    return this.Q;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_l_of_type_Boolean = true;
+    this.al = true;
   }
   
   protected void onDetachedFromWindow()
   {
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    removeCallbacks(this.aB);
     super.onDetachedFromWindow();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (f())
+    if (k())
     {
       a(paramCanvas);
       return;
     }
-    if ((this.jdField_g_of_type_Int > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter != null))
+    if ((this.B > 0) && (this.C != null) && (this.r.size() > 0) && (this.u != null))
     {
       int i3 = getScrollX();
       int i4 = getWidth();
-      float f1 = this.jdField_g_of_type_Int;
+      float f1 = this.B;
       float f5 = i4;
       float f2 = f1 / f5;
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      Object localObject = this.r;
       int i2 = 0;
       localObject = (XViewPager.ItemInfo)((ArrayList)localObject).get(0);
-      f1 = ((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float;
-      int i5 = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int i1 = ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int;
-      int i6 = ((XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1)).jdField_a_of_type_Int;
+      f1 = ((XViewPager.ItemInfo)localObject).e;
+      int i5 = this.r.size();
+      int i1 = ((XViewPager.ItemInfo)localObject).b;
+      int i6 = ((XViewPager.ItemInfo)this.r.get(i5 - 1)).b;
       while (i1 < i6)
       {
-        while ((i1 > ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int) && (i2 < i5))
+        while ((i1 > ((XViewPager.ItemInfo)localObject).b) && (i2 < i5))
         {
-          localObject = this.jdField_a_of_type_JavaUtilArrayList;
+          localObject = this.r;
           i2 += 1;
           localObject = (XViewPager.ItemInfo)((ArrayList)localObject).get(i2);
         }
         float f3;
-        if (i1 == ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int)
+        if (i1 == ((XViewPager.ItemInfo)localObject).b)
         {
-          f3 = (((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float + ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Float) * f5;
-          f1 = ((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float + ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Float + f2;
+          f3 = (((XViewPager.ItemInfo)localObject).e + ((XViewPager.ItemInfo)localObject).d) * f5;
+          f1 = ((XViewPager.ItemInfo)localObject).e + ((XViewPager.ItemInfo)localObject).d + f2;
         }
         else
         {
-          float f4 = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getPageWidth(i1);
+          float f4 = this.u.getPageWidth(i1);
           f3 = f1 + (f4 + f2);
           f4 = (f1 + f4) * f5;
           f1 = f3;
           f3 = f4;
         }
-        int i7 = this.jdField_g_of_type_Int;
+        int i7 = this.B;
         if (i7 + f3 > i3)
         {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds((int)f3, this.jdField_h_of_type_Int, (int)(i7 + f3 + 0.5F), this.jdField_i_of_type_Int);
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+          this.C.setBounds((int)f3, this.D, (int)(i7 + f3 + 0.5F), this.E);
+          this.C.draw(paramCanvas);
         }
         if (f3 > i3 + i4) {
           return;
@@ -3130,10 +3114,10 @@ public class XViewPager
     {
       if (i2 != 0)
       {
-        if (this.jdField_i_of_type_Boolean) {
+        if (this.P) {
           return true;
         }
-        if (this.jdField_j_of_type_Boolean) {
+        if (this.R) {
           return false;
         }
       }
@@ -3148,86 +3132,86 @@ public class XViewPager
         }
         else
         {
-          i2 = this.r;
+          i2 = this.aa;
           if (i2 != -1)
           {
             i2 = MotionEventCompat.findPointerIndex(paramMotionEvent, i2);
             float f2 = MotionEventCompat.getX(paramMotionEvent, i2);
-            f1 = f2 - this.jdField_d_of_type_Float;
+            f1 = f2 - this.U;
             float f4 = Math.abs(f1);
             float f3 = MotionEventCompat.getY(paramMotionEvent, i2);
-            float f5 = f3 - this.jdField_e_of_type_Float;
+            float f5 = f3 - this.V;
             float f6 = Math.abs(f5);
-            if (((d()) || ((this.jdField_a_of_type_Boolean) && (f5 < 0.0F)) || ((this.jdField_b_of_type_Boolean) && (f5 > 0.0F))) && (f5 != 0.0F) && (!b(this.jdField_e_of_type_Float, f5)) && (b(this, false, (int)f5, (int)f2, (int)f3)))
+            if (((h()) || ((this.c) && (f5 < 0.0F)) || ((this.d) && (f5 > 0.0F))) && (f5 != 0.0F) && (!b(this.V, f5)) && (b(this, false, (int)f5, (int)f2, (int)f3)))
             {
-              this.jdField_d_of_type_Float = f2;
-              this.jdField_e_of_type_Float = f3;
-              this.jdField_j_of_type_Boolean = true;
-              this.jdField_o_of_type_Int = 0;
+              this.U = f2;
+              this.V = f3;
+              this.R = true;
+              this.Q = 0;
               return false;
             }
-            if (((c()) || ((this.jdField_c_of_type_Boolean) && (f1 < 0.0F)) || ((this.jdField_d_of_type_Boolean) && (f1 > 0.0F))) && (f1 != 0.0F) && (!a(this.jdField_d_of_type_Float, f1)) && (a(this, false, (int)f1, (int)f2, (int)f3)))
+            if (((g()) || ((this.e) && (f1 < 0.0F)) || ((this.f) && (f1 > 0.0F))) && (f1 != 0.0F) && (!a(this.U, f1)) && (a(this, false, (int)f1, (int)f2, (int)f3)))
             {
-              this.jdField_d_of_type_Float = f2;
-              this.jdField_e_of_type_Float = f3;
-              this.jdField_j_of_type_Boolean = true;
-              this.jdField_o_of_type_Int = 0;
+              this.U = f2;
+              this.V = f3;
+              this.R = true;
+              this.Q = 0;
               return false;
             }
-            if (((d()) || ((this.jdField_a_of_type_Boolean) && (f5 < 0.0F)) || ((this.jdField_b_of_type_Boolean) && (f5 > 0.0F))) && (!Gravity.isHorizontal(this.jdField_o_of_type_Int)) && (f6 > this.jdField_a_of_type_Int) && (f6 * 0.6F > f4))
+            if (((h()) || ((this.c) && (f5 < 0.0F)) || ((this.d) && (f5 > 0.0F))) && (!Gravity.isHorizontal(this.Q)) && (f6 > this.b) && (f6 * 0.6F > f4))
             {
-              this.jdField_i_of_type_Boolean = true;
+              this.P = true;
               if (f5 > 0.0F) {
                 i1 = 80;
               } else {
                 i1 = 48;
               }
-              this.jdField_o_of_type_Int = i1;
-              d(true);
-              b(1);
-              this.jdField_d_of_type_Float = f2;
+              this.Q = i1;
+              c(true);
+              setScrollState(1);
+              this.U = f2;
               if (f5 > 0.0F) {
-                f1 = this.jdField_g_of_type_Float + this.jdField_a_of_type_Int;
+                f1 = this.Z + this.b;
               } else {
-                f1 = this.jdField_g_of_type_Float - this.jdField_a_of_type_Int;
+                f1 = this.Z - this.b;
               }
-              this.jdField_e_of_type_Float = f1;
-              e(true);
+              this.V = f1;
+              setScrollingCacheEnabled(true);
             }
-            else if (((c()) || ((this.jdField_c_of_type_Boolean) && (f1 < 0.0F)) || ((this.jdField_d_of_type_Boolean) && (f1 > 0.0F))) && (!Gravity.isVertical(this.jdField_o_of_type_Int)) && (f4 > this.jdField_a_of_type_Int) && (0.6F * f4 > f6))
+            else if (((g()) || ((this.e) && (f1 < 0.0F)) || ((this.f) && (f1 > 0.0F))) && (!Gravity.isVertical(this.Q)) && (f4 > this.b) && (0.6F * f4 > f6))
             {
-              this.jdField_i_of_type_Boolean = true;
+              this.P = true;
               if (f1 > 0.0F) {
                 i1 = 5;
               }
-              this.jdField_o_of_type_Int = i1;
-              d(true);
-              b(1);
+              this.Q = i1;
+              c(true);
+              setScrollState(1);
               if (f1 > 0.0F) {
-                f1 = this.jdField_f_of_type_Float + this.jdField_a_of_type_Int;
+                f1 = this.W + this.b;
               } else {
-                f1 = this.jdField_f_of_type_Float - this.jdField_a_of_type_Int;
+                f1 = this.W - this.b;
               }
-              this.jdField_d_of_type_Float = f1;
-              this.jdField_e_of_type_Float = f3;
-              e(true);
+              this.U = f1;
+              this.V = f3;
+              setScrollingCacheEnabled(true);
             }
-            else if (((!d()) || ((this.jdField_a_of_type_Boolean) && (f5 > 0.0F)) || ((this.jdField_b_of_type_Boolean) && (f5 < 0.0F))) && (f6 > this.jdField_a_of_type_Int))
+            else if (((!h()) || ((this.c) && (f5 > 0.0F)) || ((this.d) && (f5 < 0.0F))) && (f6 > this.b))
             {
-              this.jdField_j_of_type_Boolean = true;
+              this.R = true;
             }
-            else if (((!c()) || ((this.jdField_c_of_type_Boolean) && (f1 > 0.0F)) || ((this.jdField_d_of_type_Boolean) && (f1 < 0.0F))) && (f4 > this.jdField_a_of_type_Int))
+            else if (((!g()) || ((this.e) && (f1 > 0.0F)) || ((this.f) && (f1 < 0.0F))) && (f4 > this.b))
             {
-              this.jdField_j_of_type_Boolean = true;
+              this.R = true;
             }
-            if (this.jdField_i_of_type_Boolean) {
-              if (Gravity.isHorizontal(this.jdField_o_of_type_Int))
+            if (this.P) {
+              if (Gravity.isHorizontal(this.Q))
               {
-                if (a(f2)) {
+                if (b(f2)) {
                   ViewCompat.postInvalidateOnAnimation(this);
                 }
               }
-              else if (b(f3)) {
+              else if (c(f3)) {
                 ViewCompat.postInvalidateOnAnimation(this);
               }
             }
@@ -3237,59 +3221,59 @@ public class XViewPager
       else
       {
         f1 = paramMotionEvent.getX();
-        this.jdField_f_of_type_Float = f1;
-        this.jdField_d_of_type_Float = f1;
+        this.W = f1;
+        this.U = f1;
         f1 = paramMotionEvent.getY();
-        this.jdField_g_of_type_Float = f1;
-        this.jdField_e_of_type_Float = f1;
-        this.r = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-        this.jdField_j_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-        if ((Gravity.isHorizontal(this.jdField_o_of_type_Int)) && (this.z == 2) && (Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getFinalX() - this.jdField_a_of_type_AndroidWidgetScroller.getCurrX()) > this.v))
+        this.Z = f1;
+        this.V = f1;
+        this.aa = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+        this.R = false;
+        this.z.computeScrollOffset();
+        if ((Gravity.isHorizontal(this.Q)) && (this.aC == 2) && (Math.abs(this.z.getFinalX() - this.z.getCurrX()) > this.af))
         {
-          this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
-          this.jdField_h_of_type_Boolean = false;
+          this.z.abortAnimation();
+          this.N = false;
           c();
-          this.jdField_i_of_type_Boolean = true;
-          d(true);
-          b(1);
+          this.P = true;
+          c(true);
+          setScrollState(1);
         }
-        else if ((Gravity.isVertical(this.jdField_o_of_type_Int)) && (this.z == 2) && (Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getFinalY() - this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) > this.v))
+        else if ((Gravity.isVertical(this.Q)) && (this.aC == 2) && (Math.abs(this.z.getFinalY() - this.z.getCurrY()) > this.af))
         {
-          this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
-          this.jdField_h_of_type_Boolean = false;
+          this.z.abortAnimation();
+          this.N = false;
           c();
-          this.jdField_i_of_type_Boolean = true;
-          d(true);
-          b(1);
+          this.P = true;
+          c(true);
+          setScrollState(1);
         }
         else
         {
-          b(false);
-          this.jdField_i_of_type_Boolean = false;
+          a(false);
+          this.P = false;
         }
       }
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-        this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+      if (this.ab == null) {
+        this.ab = VelocityTracker.obtain();
       }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-      return this.jdField_i_of_type_Boolean;
+      this.ab.addMovement(paramMotionEvent);
+      return this.P;
     }
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_j_of_type_Boolean = false;
-    this.r = -1;
-    paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    this.P = false;
+    this.R = false;
+    this.aa = -1;
+    paramMotionEvent = this.ab;
     if (paramMotionEvent != null)
     {
       paramMotionEvent.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+      this.ab = null;
     }
     return false;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (f())
+    if (k())
     {
       a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
       return;
@@ -3323,10 +3307,10 @@ public class XViewPager
         i6 = paramInt1;
         i5 = paramInt4;
         paramInt3 = i3;
-        if (localLayoutParams.jdField_a_of_type_Boolean)
+        if (localLayoutParams.a)
         {
-          paramInt3 = localLayoutParams.jdField_a_of_type_Int & 0x7;
-          i5 = localLayoutParams.jdField_a_of_type_Int & 0x70;
+          paramInt3 = localLayoutParams.b & 0x7;
+          i5 = localLayoutParams.b & 0x70;
           if (paramInt3 != 1)
           {
             if (paramInt3 != 3)
@@ -3401,17 +3385,17 @@ public class XViewPager
       if (localView.getVisibility() != 8)
       {
         localLayoutParams = (XViewPager.LayoutParams)localView.getLayoutParams();
-        if (!localLayoutParams.jdField_a_of_type_Boolean)
+        if (!localLayoutParams.a)
         {
           XViewPager.ItemInfo localItemInfo = a(localView);
           if (localItemInfo != null)
           {
             float f1 = i9 - paramInt2 - i2;
-            i1 = (int)(localItemInfo.jdField_b_of_type_Float * f1) + paramInt2;
-            if (localLayoutParams.jdField_b_of_type_Boolean)
+            i1 = (int)(localItemInfo.e * f1) + paramInt2;
+            if (localLayoutParams.d)
             {
-              localLayoutParams.jdField_b_of_type_Boolean = false;
-              localView.measure(View.MeasureSpec.makeMeasureSpec((int)(f1 * localLayoutParams.jdField_a_of_type_Float), 1073741824), View.MeasureSpec.makeMeasureSpec(i10 - paramInt1 - paramInt4, 1073741824));
+              localLayoutParams.d = false;
+              localView.measure(View.MeasureSpec.makeMeasureSpec((int)(f1 * localLayoutParams.c), 1073741824), View.MeasureSpec.makeMeasureSpec(i10 - paramInt1 - paramInt4, 1073741824));
             }
             localView.layout(i1, paramInt1, localView.getMeasuredWidth() + i1, localView.getMeasuredHeight() + paramInt1);
           }
@@ -3419,25 +3403,25 @@ public class XViewPager
       }
       paramInt3 += 1;
     }
-    this.jdField_h_of_type_Int = paramInt1;
-    this.jdField_j_of_type_Int = paramInt2;
-    this.jdField_i_of_type_Int = (i10 - paramInt4);
-    this.jdField_k_of_type_Int = (i9 - i2);
-    this.w = i3;
-    if ((!this.jdField_l_of_type_Boolean) && (!this.jdField_m_of_type_Boolean)) {
+    this.D = paramInt1;
+    this.F = paramInt2;
+    this.E = (i10 - paramInt4);
+    this.G = (i9 - i2);
+    this.ap = i3;
+    if ((!this.al) && (!this.am)) {
       break label647;
     }
-    a(this.jdField_e_of_type_Int, false, 0, false);
+    a(this.v, false, 0, false);
     label647:
-    this.jdField_l_of_type_Boolean = false;
-    this.jdField_m_of_type_Boolean = false;
+    this.al = false;
+    this.am = false;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(getDefaultSize(0, paramInt1), getDefaultSize(0, paramInt2));
     paramInt1 = getMeasuredWidth();
-    this.q = Math.min(paramInt1 / 10, this.jdField_p_of_type_Int);
+    this.T = Math.min(paramInt1 / 10, this.S);
     int i1 = getPaddingLeft();
     int i2 = getPaddingRight();
     paramInt2 = getMeasuredHeight();
@@ -3468,10 +3452,10 @@ public class XViewPager
         {
           i1 = paramInt1;
           i2 = paramInt2;
-          if (localLayoutParams.jdField_a_of_type_Boolean)
+          if (localLayoutParams.a)
           {
-            i1 = localLayoutParams.jdField_a_of_type_Int & 0x7;
-            i2 = localLayoutParams.jdField_a_of_type_Int & 0x70;
+            i1 = localLayoutParams.b & 0x7;
+            i2 = localLayoutParams.b & 0x70;
             int i5;
             if ((i2 != 48) && (i2 != 80)) {
               i5 = 0;
@@ -3557,12 +3541,12 @@ public class XViewPager
       paramInt1 = i1;
       paramInt2 = i2;
     }
-    this.jdField_l_of_type_Int = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
-    this.jdField_m_of_type_Int = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
-    this.jdField_f_of_type_Boolean = true;
+    this.J = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
+    this.K = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
+    this.L = true;
     c();
     paramInt2 = 0;
-    this.jdField_f_of_type_Boolean = false;
+    this.L = false;
     i1 = getChildCount();
     while (paramInt2 < i1)
     {
@@ -3570,8 +3554,8 @@ public class XViewPager
       if ((localView != null) && (localView.getVisibility() != 8))
       {
         localLayoutParams = (XViewPager.LayoutParams)localView.getLayoutParams();
-        if ((localLayoutParams != null) && (!localLayoutParams.jdField_a_of_type_Boolean)) {
-          localView.measure(View.MeasureSpec.makeMeasureSpec((int)(paramInt1 * localLayoutParams.jdField_a_of_type_Float), 1073741824), this.jdField_m_of_type_Int);
+        if ((localLayoutParams != null) && (!localLayoutParams.a)) {
+          localView.measure(View.MeasureSpec.makeMeasureSpec((int)(paramInt1 * localLayoutParams.c), 1073741824), this.K);
         }
       }
       paramInt2 += 1;
@@ -3600,7 +3584,7 @@ public class XViewPager
       if (localView.getVisibility() == 0)
       {
         XViewPager.ItemInfo localItemInfo = a(localView);
-        if ((localItemInfo != null) && (localItemInfo.jdField_a_of_type_Int == this.jdField_e_of_type_Int) && (localView.requestFocus(paramInt, paramRect))) {
+        if ((localItemInfo != null) && (localItemInfo.b == this.v) && (localView.requestFocus(paramInt, paramRect))) {
           return true;
         }
       }
@@ -3618,25 +3602,25 @@ public class XViewPager
     }
     paramParcelable = (XViewPager.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    PagerAdapter localPagerAdapter = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+    PagerAdapter localPagerAdapter = this.u;
     if (localPagerAdapter != null)
     {
-      localPagerAdapter.restoreState(paramParcelable.jdField_a_of_type_AndroidOsParcelable, paramParcelable.jdField_a_of_type_JavaLangClassLoader);
-      a(paramParcelable.jdField_a_of_type_Int, false, true);
+      localPagerAdapter.restoreState(paramParcelable.b, paramParcelable.c);
+      a(paramParcelable.a, false, true);
       return;
     }
-    this.jdField_f_of_type_Int = paramParcelable.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidOsParcelable = paramParcelable.jdField_a_of_type_AndroidOsParcelable;
-    this.jdField_a_of_type_JavaLangClassLoader = paramParcelable.jdField_a_of_type_JavaLangClassLoader;
+    this.w = paramParcelable.a;
+    this.x = paramParcelable.b;
+    this.y = paramParcelable.c;
   }
   
   public Parcelable onSaveInstanceState()
   {
     XViewPager.SavedState localSavedState = new XViewPager.SavedState(super.onSaveInstanceState());
-    localSavedState.jdField_a_of_type_Int = this.jdField_e_of_type_Int;
-    PagerAdapter localPagerAdapter = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+    localSavedState.a = this.v;
+    PagerAdapter localPagerAdapter = this.u;
     if (localPagerAdapter != null) {
-      localSavedState.jdField_a_of_type_AndroidOsParcelable = localPagerAdapter.saveState();
+      localSavedState.b = localPagerAdapter.saveState();
     }
     return localSavedState;
   }
@@ -3646,19 +3630,19 @@ public class XViewPager
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt1 != paramInt3)
     {
-      int i1 = this.jdField_g_of_type_Int;
+      int i1 = this.B;
       a(paramInt1, paramInt3, i1, i1);
     }
     if (paramInt2 != paramInt4)
     {
-      paramInt1 = this.jdField_g_of_type_Int;
+      paramInt1 = this.B;
       b(paramInt2, paramInt4, paramInt1, paramInt1);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_k_of_type_Boolean) {
+    if (this.ag) {
       return true;
     }
     int i1 = paramMotionEvent.getAction();
@@ -3666,16 +3650,16 @@ public class XViewPager
     if ((i1 == 0) && (paramMotionEvent.getEdgeFlags() != 0)) {
       return false;
     }
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+    Object localObject = this.u;
     if (localObject != null)
     {
       if (((PagerAdapter)localObject).getCount() == 0) {
         return false;
       }
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-        this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+      if (this.ab == null) {
+        this.ab = VelocityTracker.obtain();
       }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+      this.ab.addMovement(paramMotionEvent);
       int i3 = paramMotionEvent.getAction() & 0xFF;
       float f1;
       if (i3 != 0)
@@ -3698,94 +3682,94 @@ public class XViewPager
                   break label1282;
                 }
                 a(paramMotionEvent);
-                this.jdField_d_of_type_Float = MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.r));
-                this.jdField_e_of_type_Float = MotionEventCompat.getY(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.r));
+                this.U = MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.aa));
+                this.V = MotionEventCompat.getY(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.aa));
                 i1 = i2;
                 break label1282;
               }
               i1 = MotionEventCompat.getActionIndex(paramMotionEvent);
               f1 = MotionEventCompat.getX(paramMotionEvent, i1);
               f2 = MotionEventCompat.getY(paramMotionEvent, i1);
-              this.jdField_d_of_type_Float = f1;
-              this.jdField_e_of_type_Float = f2;
-              this.r = MotionEventCompat.getPointerId(paramMotionEvent, i1);
+              this.U = f1;
+              this.V = f2;
+              this.aa = MotionEventCompat.getPointerId(paramMotionEvent, i1);
               i1 = i2;
               break label1282;
             }
             i1 = i2;
-            if (!this.jdField_i_of_type_Boolean) {
+            if (!this.P) {
               break label1282;
             }
-            if (Gravity.isHorizontal(this.jdField_o_of_type_Int)) {
-              a(this.jdField_e_of_type_Int, true, 0, false);
+            if (Gravity.isHorizontal(this.Q)) {
+              a(this.v, true, 0, false);
             } else {
-              b(this.jdField_e_of_type_Int, true, 0, false);
+              b(this.v, true, 0, false);
             }
-            this.r = -1;
-            g();
-            if (Gravity.isHorizontal(this.jdField_o_of_type_Int))
+            this.aa = -1;
+            p();
+            if (Gravity.isHorizontal(this.Q))
             {
-              bool2 = this.jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onRelease();
-              bool1 = this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onRelease();
+              bool2 = this.ah.onRelease();
+              bool1 = this.ai.onRelease();
             }
             else
             {
-              bool2 = this.jdField_c_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onRelease();
-              bool1 = this.jdField_d_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onRelease();
+              bool2 = this.aj.onRelease();
+              bool1 = this.ak.onRelease();
             }
           }
           else
           {
-            if (!this.jdField_i_of_type_Boolean)
+            if (!this.P)
             {
-              i3 = MotionEventCompat.findPointerIndex(paramMotionEvent, this.r);
+              i3 = MotionEventCompat.findPointerIndex(paramMotionEvent, this.aa);
               f1 = MotionEventCompat.getX(paramMotionEvent, i3);
-              float f3 = Math.abs(f1 - this.jdField_d_of_type_Float);
+              float f3 = Math.abs(f1 - this.U);
               f2 = MotionEventCompat.getY(paramMotionEvent, i3);
-              float f4 = Math.abs(f2 - this.jdField_e_of_type_Float);
-              if (((d()) || ((this.jdField_a_of_type_Boolean) && (f2 < this.jdField_e_of_type_Float)) || ((this.jdField_b_of_type_Boolean) && (f2 > this.jdField_e_of_type_Float))) && ((!this.jdField_i_of_type_Boolean) || (!Gravity.isHorizontal(this.jdField_o_of_type_Int))) && (f4 > this.jdField_a_of_type_Int) && (f4 > f3))
+              float f4 = Math.abs(f2 - this.V);
+              if (((h()) || ((this.c) && (f2 < this.V)) || ((this.d) && (f2 > this.V))) && ((!this.P) || (!Gravity.isHorizontal(this.Q))) && (f4 > this.b) && (f4 > f3))
               {
-                this.jdField_i_of_type_Boolean = true;
-                if (f2 < this.jdField_e_of_type_Float) {
+                this.P = true;
+                if (f2 < this.V) {
                   i1 = 48;
                 } else {
                   i1 = 80;
                 }
-                this.jdField_o_of_type_Int = i1;
-                d(true);
-                this.jdField_d_of_type_Float = f1;
-                f1 = this.jdField_g_of_type_Float;
+                this.Q = i1;
+                c(true);
+                this.U = f1;
+                f1 = this.Z;
                 if (f2 - f1 > 0.0F) {
-                  f1 += this.jdField_a_of_type_Int;
+                  f1 += this.b;
                 } else {
-                  f1 -= this.jdField_a_of_type_Int;
+                  f1 -= this.b;
                 }
-                this.jdField_e_of_type_Float = f1;
-                b(1);
-                e(true);
+                this.V = f1;
+                setScrollState(1);
+                setScrollingCacheEnabled(true);
                 localObject = getParent();
                 if (localObject != null) {
                   ((ViewParent)localObject).requestDisallowInterceptTouchEvent(true);
                 }
               }
-              else if (((c()) || ((this.jdField_c_of_type_Boolean) && (f1 < this.jdField_d_of_type_Float)) || ((this.jdField_d_of_type_Boolean) && (f1 > this.jdField_d_of_type_Float))) && ((!this.jdField_i_of_type_Boolean) || (!Gravity.isVertical(this.jdField_o_of_type_Int))) && (f3 > this.jdField_a_of_type_Int) && (f3 > f4))
+              else if (((g()) || ((this.e) && (f1 < this.U)) || ((this.f) && (f1 > this.U))) && ((!this.P) || (!Gravity.isVertical(this.Q))) && (f3 > this.b) && (f3 > f4))
               {
-                this.jdField_i_of_type_Boolean = true;
-                if (f1 < this.jdField_d_of_type_Float) {
+                this.P = true;
+                if (f1 < this.U) {
                   i1 = 3;
                 }
-                this.jdField_o_of_type_Int = i1;
-                d(true);
-                f3 = this.jdField_f_of_type_Float;
+                this.Q = i1;
+                c(true);
+                f3 = this.W;
                 if (f1 - f3 > 0.0F) {
-                  f1 = f3 + this.jdField_a_of_type_Int;
+                  f1 = f3 + this.b;
                 } else {
-                  f1 = f3 - this.jdField_a_of_type_Int;
+                  f1 = f3 - this.b;
                 }
-                this.jdField_d_of_type_Float = f1;
-                this.jdField_e_of_type_Float = f2;
-                b(1);
-                e(true);
+                this.U = f1;
+                this.V = f2;
+                setScrollState(1);
+                setScrollingCacheEnabled(true);
                 localObject = getParent();
                 if (localObject != null) {
                   ((ViewParent)localObject).requestDisallowInterceptTouchEvent(true);
@@ -3793,13 +3777,13 @@ public class XViewPager
               }
             }
             i1 = i2;
-            if (!this.jdField_i_of_type_Boolean) {
+            if (!this.P) {
               break label1282;
             }
-            if (Gravity.isHorizontal(this.jdField_o_of_type_Int)) {
-              bool1 = a(MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.r)));
+            if (Gravity.isHorizontal(this.Q)) {
+              bool1 = b(MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.aa)));
             } else {
-              bool1 = b(MotionEventCompat.getY(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.r)));
+              bool1 = c(MotionEventCompat.getY(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.aa)));
             }
             i1 = false | bool1;
             break label1282;
@@ -3808,82 +3792,82 @@ public class XViewPager
         else
         {
           i1 = i2;
-          if (!this.jdField_i_of_type_Boolean) {
+          if (!this.P) {
             break label1282;
           }
-          if (Gravity.isHorizontal(this.jdField_o_of_type_Int))
+          if (Gravity.isHorizontal(this.Q))
           {
-            localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
-            ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.t);
-            i3 = (int)VelocityTrackerCompat.getXVelocity((VelocityTracker)localObject, this.r);
-            this.jdField_h_of_type_Boolean = true;
-            i1 = d();
+            localObject = this.ab;
+            ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.ad);
+            i3 = (int)VelocityTrackerCompat.getXVelocity((VelocityTracker)localObject, this.aa);
+            this.N = true;
+            i1 = getClientWidth();
             i2 = getScrollX();
-            localObject = a();
-            i2 = a(((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int, (i2 / i1 - ((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float) / ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Float, i3, (int)(MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.r)) - this.jdField_f_of_type_Float));
-            paramMotionEvent = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnDragStatusChangedListener;
+            localObject = n();
+            i2 = a(((XViewPager.ItemInfo)localObject).b, (i2 / i1 - ((XViewPager.ItemInfo)localObject).e) / ((XViewPager.ItemInfo)localObject).d, i3, (int)(MotionEventCompat.getX(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.aa)) - this.W));
+            paramMotionEvent = this.ay;
             i1 = i2;
             if (paramMotionEvent != null)
             {
               i1 = i2;
               if (!paramMotionEvent.a()) {
-                if ((this.jdField_o_of_type_Int == 3) && (i2 < c()))
+                if ((this.Q == 3) && (i2 < getCurrentItem()))
                 {
-                  i1 = c();
+                  i1 = getCurrentItem();
                 }
                 else
                 {
                   i1 = i2;
-                  if (this.jdField_o_of_type_Int == 5)
+                  if (this.Q == 5)
                   {
                     i1 = i2;
-                    if (i2 > c()) {
-                      i1 = c();
+                    if (i2 > getCurrentItem()) {
+                      i1 = getCurrentItem();
                     }
                   }
                 }
               }
             }
             a(i1, true, true, i3);
-            this.r = -1;
-            g();
-            bool2 = this.jdField_a_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onRelease();
-            bool1 = this.jdField_b_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onRelease();
+            this.aa = -1;
+            p();
+            bool2 = this.ah.onRelease();
+            bool1 = this.ai.onRelease();
           }
           else
           {
             i1 = i2;
-            if (!Gravity.isVertical(this.jdField_o_of_type_Int)) {
+            if (!Gravity.isVertical(this.Q)) {
               break label1282;
             }
-            localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
-            ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.t);
-            i1 = (int)VelocityTrackerCompat.getYVelocity((VelocityTracker)localObject, this.r);
-            this.jdField_h_of_type_Boolean = true;
-            i2 = e();
+            localObject = this.ab;
+            ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.ad);
+            i1 = (int)VelocityTrackerCompat.getYVelocity((VelocityTracker)localObject, this.aa);
+            this.N = true;
+            i2 = getClientHeight();
             i3 = getScrollY();
-            localObject = a();
-            a(a(((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int, (i3 / i2 - ((XViewPager.ItemInfo)localObject).jdField_b_of_type_Float) / ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Float, i1, (int)(MotionEventCompat.getY(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.r)) - this.jdField_g_of_type_Float)), true, true, i1);
-            this.r = -1;
-            g();
-            bool2 = this.jdField_c_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onRelease();
-            bool1 = this.jdField_d_of_type_AndroidSupportV4WidgetEdgeEffectCompat.onRelease();
+            localObject = n();
+            a(a(((XViewPager.ItemInfo)localObject).b, (i3 / i2 - ((XViewPager.ItemInfo)localObject).e) / ((XViewPager.ItemInfo)localObject).d, i1, (int)(MotionEventCompat.getY(paramMotionEvent, MotionEventCompat.findPointerIndex(paramMotionEvent, this.aa)) - this.Z)), true, true, i1);
+            this.aa = -1;
+            p();
+            bool2 = this.aj.onRelease();
+            bool1 = this.ak.onRelease();
           }
         }
         i1 = bool2 | bool1;
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
-        this.jdField_h_of_type_Boolean = false;
+        this.z.abortAnimation();
+        this.N = false;
         c();
         f1 = paramMotionEvent.getX();
-        this.jdField_f_of_type_Float = f1;
-        this.jdField_d_of_type_Float = f1;
+        this.W = f1;
+        this.U = f1;
         f1 = paramMotionEvent.getY();
-        this.jdField_g_of_type_Float = f1;
-        this.jdField_e_of_type_Float = f1;
-        this.r = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+        this.Z = f1;
+        this.V = f1;
+        this.aa = MotionEventCompat.getPointerId(paramMotionEvent, 0);
         i1 = i2;
       }
       label1282:
@@ -3898,7 +3882,7 @@ public class XViewPager
   protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    XViewPager.OnVisibilityChangeListener localOnVisibilityChangeListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnVisibilityChangeListener;
+    XViewPager.OnVisibilityChangeListener localOnVisibilityChangeListener = this.l;
     if (localOnVisibilityChangeListener != null) {
       localOnVisibilityChangeListener.a(paramView, paramInt);
     }
@@ -3906,7 +3890,7 @@ public class XViewPager
   
   public void removeView(View paramView)
   {
-    if (this.jdField_f_of_type_Boolean)
+    if (this.L)
     {
       removeViewInLayout(paramView);
       return;
@@ -3926,44 +3910,44 @@ public class XViewPager
   
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
-    Object localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
+    Object localObject = this.u;
     if (localObject != null)
     {
-      ((PagerAdapter)localObject).unregisterDataSetObserver(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PagerObserver);
-      this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.startUpdate(this);
+      ((PagerAdapter)localObject).unregisterDataSetObserver(this.A);
+      this.u.startUpdate(this);
       int i1 = 0;
-      while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i1 < this.r.size())
       {
-        localObject = (XViewPager.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.destroyItem(this, ((XViewPager.ItemInfo)localObject).jdField_a_of_type_Int, ((XViewPager.ItemInfo)localObject).jdField_a_of_type_JavaLangObject);
+        localObject = (XViewPager.ItemInfo)this.r.get(i1);
+        this.u.destroyItem(this, ((XViewPager.ItemInfo)localObject).b, ((XViewPager.ItemInfo)localObject).a);
         i1 += 1;
       }
-      this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.finishUpdate(this);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      d();
-      this.jdField_e_of_type_Int = 0;
+      this.u.finishUpdate(this);
+      this.r.clear();
+      i();
+      this.v = 0;
       scrollTo(0, 0);
     }
-    localObject = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter;
-    this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter = paramPagerAdapter;
-    this.jdField_d_of_type_Int = 0;
-    if (this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter != null)
+    localObject = this.u;
+    this.u = paramPagerAdapter;
+    this.o = 0;
+    if (this.u != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PagerObserver == null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PagerObserver = new XViewPager.PagerObserver(this, null);
+      if (this.A == null) {
+        this.A = new XViewPager.PagerObserver(this, null);
       }
-      this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PagerObserver);
-      this.jdField_h_of_type_Boolean = false;
-      boolean bool = this.jdField_l_of_type_Boolean;
-      this.jdField_l_of_type_Boolean = true;
-      this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.getCount();
-      if (this.jdField_f_of_type_Int >= 0)
+      this.u.registerDataSetObserver(this.A);
+      this.N = false;
+      boolean bool = this.al;
+      this.al = true;
+      this.o = this.u.getCount();
+      if (this.w >= 0)
       {
-        this.jdField_a_of_type_AndroidxViewpagerWidgetPagerAdapter.restoreState(this.jdField_a_of_type_AndroidOsParcelable, this.jdField_a_of_type_JavaLangClassLoader);
-        a(this.jdField_f_of_type_Int, false, true);
-        this.jdField_f_of_type_Int = -1;
-        this.jdField_a_of_type_AndroidOsParcelable = null;
-        this.jdField_a_of_type_JavaLangClassLoader = null;
+        this.u.restoreState(this.x, this.y);
+        a(this.w, false, true);
+        this.w = -1;
+        this.x = null;
+        this.y = null;
       }
       else if (!bool)
       {
@@ -3974,49 +3958,75 @@ public class XViewPager
         requestLayout();
       }
     }
-    XViewPager.OnAdapterChangeListener localOnAdapterChangeListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnAdapterChangeListener;
+    XViewPager.OnAdapterChangeListener localOnAdapterChangeListener = this.as;
     if ((localOnAdapterChangeListener != null) && (localObject != paramPagerAdapter)) {
       localOnAdapterChangeListener.a((PagerAdapter)localObject, paramPagerAdapter);
     }
   }
   
+  void setChildrenDrawingOrderEnabledCompat(boolean paramBoolean)
+  {
+    if (Build.VERSION.SDK_INT >= 7)
+    {
+      if (this.au == null) {
+        try
+        {
+          this.au = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          SLog.c(this.a, "Can't find setChildrenDrawingOrderEnabled", localNoSuchMethodException);
+        }
+      }
+      try
+      {
+        this.au.invoke(this, new Object[] { Boolean.valueOf(paramBoolean) });
+        return;
+      }
+      catch (Exception localException)
+      {
+        SLog.c(this.a, "Error changing children drawing order", localException);
+      }
+    }
+  }
+  
   public void setCurrentItem(int paramInt)
   {
-    this.jdField_h_of_type_Boolean = false;
-    a(paramInt, this.jdField_l_of_type_Boolean ^ true, false);
+    this.N = false;
+    a(paramInt, this.al ^ true, false);
   }
   
   public void setCurrentItem(int paramInt, boolean paramBoolean)
   {
-    this.jdField_h_of_type_Boolean = false;
+    this.N = false;
     a(paramInt, paramBoolean, false);
   }
   
   public void setCurrentItemWithTransform(int paramInt1, int paramInt2)
   {
-    this.jdField_p_of_type_Boolean = true;
-    this.y = paramInt2;
+    this.az = true;
+    this.aA = paramInt2;
     setCurrentItem(paramInt1, false);
-    this.jdField_p_of_type_Boolean = false;
+    this.az = false;
   }
   
   public void setDistanceAndVelocityThreshold(int paramInt1, int paramInt2)
   {
-    this.u = paramInt1;
-    this.s = paramInt2;
+    this.ae = paramInt1;
+    this.ac = paramInt2;
   }
   
   public void setEnableOverScroll(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public void setEnableScrollDirection(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_d_of_type_Boolean = paramBoolean4;
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
+    this.e = paramBoolean3;
+    this.f = paramBoolean4;
   }
   
   public void setOffscreenPageLimit(int paramInt)
@@ -4024,7 +4034,7 @@ public class XViewPager
     int i1 = paramInt;
     if (paramInt < 1)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Requested offscreen page limit ");
       localStringBuilder.append(paramInt);
@@ -4033,34 +4043,39 @@ public class XViewPager
       SLog.d(str, localStringBuilder.toString());
       i1 = 1;
     }
-    if (i1 != this.jdField_n_of_type_Int)
+    if (i1 != this.O)
     {
-      this.jdField_n_of_type_Int = i1;
+      this.O = i1;
       c();
     }
   }
   
+  void setOnAdapterChangeListener(XViewPager.OnAdapterChangeListener paramOnAdapterChangeListener)
+  {
+    this.as = paramOnAdapterChangeListener;
+  }
+  
   public void setOnDragStatusChangedListener(XViewPager.OnDragStatusChangedListener paramOnDragStatusChangedListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnDragStatusChangedListener = paramOnDragStatusChangedListener;
+    this.ay = paramOnDragStatusChangedListener;
   }
   
   public void setOnPageChangeListener(XViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnPageChangeListener = paramOnPageChangeListener;
+    this.aq = paramOnPageChangeListener;
   }
   
   public void setOnVisibilityChangeListener(@Nullable XViewPager.OnVisibilityChangeListener paramOnVisibilityChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$OnVisibilityChangeListener = paramOnVisibilityChangeListener;
+    this.l = paramOnVisibilityChangeListener;
   }
   
   public void setPageMargin(int paramInt)
   {
-    int i1 = this.jdField_g_of_type_Int;
-    this.jdField_g_of_type_Int = paramInt;
+    int i1 = this.B;
+    this.B = paramInt;
     int i2;
-    if (d())
+    if (h())
     {
       i2 = getHeight();
       b(i2, i2, paramInt, i1);
@@ -4080,7 +4095,7 @@ public class XViewPager
   
   public void setPageMarginDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.C = paramDrawable;
     if (paramDrawable != null) {
       refreshDrawableState();
     }
@@ -4096,12 +4111,12 @@ public class XViewPager
   
   public void setPageScrollDuration(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.j = paramInt;
   }
   
   public void setPageScrollDurationDivisor(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.k = paramInt;
   }
   
   public void setPageTransformer(boolean paramBoolean, XViewPager.PageTransformer paramPageTransformer)
@@ -4116,7 +4131,7 @@ public class XViewPager
         bool1 = false;
       }
       boolean bool2;
-      if (this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer != null) {
+      if (this.at != null) {
         bool2 = true;
       } else {
         bool2 = false;
@@ -4127,18 +4142,18 @@ public class XViewPager
       } else {
         i1 = 0;
       }
-      this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager$PageTransformer = paramPageTransformer;
-      a(bool1);
+      this.at = paramPageTransformer;
+      setChildrenDrawingOrderEnabledCompat(bool1);
       if (bool1)
       {
         if (paramBoolean) {
           i2 = 2;
         }
-        this.x = i2;
+        this.av = i2;
       }
       else
       {
-        this.x = 0;
+        this.av = 0;
       }
       if (i1 != 0) {
         c();
@@ -4149,23 +4164,23 @@ public class XViewPager
   public void setPageTurningThreshold(float paramFloat)
   {
     if ((paramFloat > 0.0F) && (paramFloat < 1.0F)) {
-      this.jdField_a_of_type_Float = paramFloat;
+      this.i = paramFloat;
     }
   }
   
   public void setScroller(Scroller paramScroller)
   {
-    this.jdField_a_of_type_AndroidWidgetScroller = paramScroller;
+    this.z = paramScroller;
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.C);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager
  * JD-Core Version:    0.7.0.1
  */

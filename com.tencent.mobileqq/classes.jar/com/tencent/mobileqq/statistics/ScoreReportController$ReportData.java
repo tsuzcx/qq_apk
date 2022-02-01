@@ -8,35 +8,28 @@ import com.tencent.qphone.base.util.QLog;
 class ScoreReportController$ReportData
 {
   public long a;
-  public String a;
   public long b;
-  public String b;
   public long c;
-  public String c;
   public long d;
-  public String d;
   public long e;
-  public String e;
   public long f;
-  public String f;
-  public long g;
-  public long h;
-  public long i = 0L;
-  public long j = 4L;
-  public long k = a();
-  public long l = Build.VERSION.SDK_INT;
-  public long m;
-  public long n = 0L;
-  public long o = 0L;
-  public long p = 0L;
-  public long q = 0L;
-  
-  public ScoreReportController$ReportData()
-  {
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "8.7.0";
-    this.jdField_c_of_type_JavaLangString = Build.MODEL;
-  }
+  public String g;
+  public String h = "8.8.17";
+  public long i;
+  public long j;
+  public long k = 0L;
+  public String l = Build.MODEL;
+  public long m = 4L;
+  public long n = a();
+  public long o = Build.VERSION.SDK_INT;
+  public String p;
+  public String q = "";
+  public long r;
+  public long s = 0L;
+  public long t = 0L;
+  public long u = 0L;
+  public long v = 0L;
+  public String w;
   
   public int a()
   {
@@ -81,24 +74,20 @@ class ScoreReportController$ReportData
     return i1;
   }
   
-  public String a()
+  public String b()
   {
     StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_f_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('|');
     localStringBuilder.append(this.g);
     localStringBuilder.append('|');
@@ -106,17 +95,11 @@ class ScoreReportController$ReportData
     localStringBuilder.append('|');
     localStringBuilder.append(this.i);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
     localStringBuilder.append(this.j);
     localStringBuilder.append('|');
     localStringBuilder.append(this.k);
     localStringBuilder.append('|');
     localStringBuilder.append(this.l);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
     localStringBuilder.append('|');
     localStringBuilder.append(this.m);
     localStringBuilder.append('|');
@@ -128,14 +111,24 @@ class ScoreReportController$ReportData
     localStringBuilder.append('|');
     localStringBuilder.append(this.q);
     localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.r);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.s);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.t);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.u);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.v);
+    localStringBuilder.append('|');
+    localStringBuilder.append(this.w);
     localStringBuilder.append('|');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ScoreReportController.ReportData
  * JD-Core Version:    0.7.0.1
  */

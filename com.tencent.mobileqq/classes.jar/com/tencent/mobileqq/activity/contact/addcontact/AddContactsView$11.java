@@ -13,18 +13,18 @@ class AddContactsView$11
   protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
     if (paramBoolean) {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
+      this.a.B = paramLBSInfo.a();
     }
-    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
+    if ((this.a.B == null) || (this.a.B.length != 4)) {
+      this.a.B = new String[] { "-1", "-1", "-1", "-1" };
     }
-    if (this.a.c) {
+    if (this.a.s) {
       this.a.f();
     }
-    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
+    if (!"-1".equals(this.a.B[0]))
     {
-      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
-      this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
+      this.a.B[3] = "0";
+      this.a.r.a(this.a.B);
     }
     if (QLog.isColorLevel())
     {
@@ -32,16 +32,16 @@ class AddContactsView$11
       paramLBSInfo.append("onGetUserLocation|isSuccess : ");
       paramLBSInfo.append(paramBoolean);
       paramLBSInfo.append(", autoReqLocation : ");
-      paramLBSInfo.append(this.a.c);
+      paramLBSInfo.append(this.a.s);
       paramLBSInfo.append(", locationCodes[0] : ");
-      paramLBSInfo.append(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+      paramLBSInfo.append(this.a.B[0]);
       QLog.d("AddContactsView", 2, paramLBSInfo.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.11
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,14 @@ import java.util.List;
 public class UFTFileUploaderProp$FtnMoreUrlFUperPropV1
   extends UFTFileUploaderProp.FtnFUperProp
 {
-  protected List<String> a;
-  protected boolean b;
-  protected String f;
-  protected String g;
-  
-  public List<String> a()
-  {
-    return this.a;
-  }
+  protected List<String> i;
+  protected String j;
+  protected boolean k;
+  protected String l;
   
   public void a(List<String> paramList)
   {
-    this.a = paramList;
+    this.i = paramList;
   }
   
   public boolean a()
@@ -26,53 +21,58 @@ public class UFTFileUploaderProp$FtnMoreUrlFUperPropV1
     if (!super.a()) {
       return false;
     }
-    List localList = this.a;
+    List localList = this.i;
     if ((localList != null) && (localList.size() != 0))
     {
-      if (TextUtils.isEmpty(this.f))
+      if (TextUtils.isEmpty(this.j))
       {
-        this.jdField_b_of_type_JavaLangString = "urlParams is empty";
+        this.d = "urlParams is empty";
         return false;
       }
       return true;
     }
-    this.jdField_b_of_type_JavaLangString = "lstUrl is empty";
+    this.d = "lstUrl is empty";
     return false;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.k = paramBoolean;
   }
   
   public void e(String paramString)
   {
-    this.f = paramString;
-  }
-  
-  public String f()
-  {
-    return this.f;
+    this.j = paramString;
   }
   
   public void f(String paramString)
   {
-    this.g = paramString;
+    this.l = paramString;
   }
   
-  public String g()
+  public List<String> j()
   {
-    return this.g;
+    return this.i;
+  }
+  
+  public String k()
+  {
+    return this.j;
+  }
+  
+  public boolean l()
+  {
+    return this.k;
+  }
+  
+  public String m()
+  {
+    return this.l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.UFTFileUploaderProp.FtnMoreUrlFUperPropV1
  * JD-Core Version:    0.7.0.1
  */

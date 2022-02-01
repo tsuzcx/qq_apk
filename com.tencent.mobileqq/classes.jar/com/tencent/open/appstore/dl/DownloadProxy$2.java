@@ -14,19 +14,19 @@ class DownloadProxy$2
   public void run()
   {
     LogUtility.b("DownloadResolver", "[queryByDownloadManagerV2] enter");
-    DownloadManagerV2.a().a();
+    DownloadManagerV2.a().b();
     for (;;)
     {
       int i;
       try
       {
         ArrayList localArrayList = new ArrayList();
-        int j = this.jdField_a_of_type_JavaUtilList.size();
+        int j = this.a.size();
         i = 0;
         if (i < j)
         {
-          localObject = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (!DownloadManagerV2.a().b((DownloadInfo)localObject)) {
+          localObject = (DownloadInfo)this.a.get(i);
+          if (!DownloadManagerV2.a().i((DownloadInfo)localObject)) {
             break label162;
           }
           StringBuilder localStringBuilder = new StringBuilder();
@@ -36,16 +36,16 @@ class DownloadProxy$2
           localArrayList.add(localObject);
           break label162;
         }
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null)
+        if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localArrayList);
+          this.b.a(localArrayList);
           return;
         }
       }
       catch (Exception localException)
       {
         LogUtility.c("DownloadResolver", "[queryByDownloadManagerV2] Exception>>>", localException);
-        Object localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener;
+        Object localObject = this.b;
         if (localObject != null) {
           ((DownloadQueryListener)localObject).a(-1, localException.getMessage());
         }
@@ -58,7 +58,7 @@ class DownloadProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadProxy.2
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import androidx.lifecycle.Observer;
 import com.tencent.aelight.camera.ae.AEPituCameraUnit;
 import com.tencent.aelight.camera.ae.mode.AEVideoStoryCaptureModeViewModel;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import com.tencent.mobileqq.widget.SimpleSlidingIndicator;
 
 class AEGIFStickerListPart$4
   implements Observer<Boolean>
@@ -19,29 +19,29 @@ class AEGIFStickerListPart$4
     if (paramBoolean == null) {
       return;
     }
-    Intent localIntent = AEGIFStickerListPart.a(this.a).a().getIntent();
+    Intent localIntent = AEGIFStickerListPart.e(this.a).s().getIntent();
     if (localIntent != null) {
       localIntent.getIntExtra("AECAMERA_MODE", 200);
     }
     if (paramBoolean.booleanValue())
     {
-      if (AEGIFStickerListPart.a(this.a).a())
+      if (AEGIFStickerListPart.f(this.a).a())
       {
         AEGIFStickerListPart.a(this.a).setVisibility(0);
-        AEGIFStickerListPart.a(this.a).setVisibility(0);
+        AEGIFStickerListPart.b(this.a).setVisibility(0);
         return;
       }
       AEGIFStickerListPart.a(this.a).setVisibility(8);
-      AEGIFStickerListPart.a(this.a).setVisibility(8);
+      AEGIFStickerListPart.b(this.a).setVisibility(8);
       return;
     }
     AEGIFStickerListPart.a(this.a).setVisibility(4);
-    AEGIFStickerListPart.a(this.a).setVisibility(4);
+    AEGIFStickerListPart.b(this.a).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGIFStickerListPart.4
  * JD-Core Version:    0.7.0.1
  */

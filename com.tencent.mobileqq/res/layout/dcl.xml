@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="21.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/d_n" android:background="@drawable/gsj" android:layout_width="21.0dip" android:layout_height="21.0dip">
+        <com.tencent.mobileqq.widget.RoundImageView android:id="@id/icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:textSize="17.0sp" android:textStyle="bold" android:id="@id/b2y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxWidth="421.0dip" android:singleLine="true" android:layout_toRightOf="@id/d_n" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -45,17 +45,17 @@ final class SSOHttpUtils$1
           localObject = new NewIntent(this.a.getApplication(), StepCounterServlert.class);
           ((NewIntent)localObject).putExtra("msf_cmd_type", "cmd_update_lastreport_time");
           ((NewIntent)localObject).putExtra("last_report_time", new Long(NetConnInfoCenter.getServerTimeMillis()));
-          ((NewIntent)localObject).putExtra("has_report_yes", new Boolean(SSOHttpUtils.jdField_a_of_type_Boolean));
+          ((NewIntent)localObject).putExtra("has_report_yes", new Boolean(SSOHttpUtils.j));
           this.a.startServlet((NewIntent)localObject);
-          SSOHttpUtils.jdField_a_of_type_Float = SSOHttpUtils.jdField_a_of_type_Int - SSOHttpUtils.b + SSOHttpUtils.c;
+          SSOHttpUtils.a = SSOHttpUtils.f - SSOHttpUtils.g + SSOHttpUtils.h;
           localObject = this.a.getAccount();
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            SSOHttpUtils.jdField_a_of_type_JavaLangString = (String)localObject;
+            SSOHttpUtils.b = (String)localObject;
           }
-          SSOHttpUtils.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+          SSOHttpUtils.c = NetConnInfoCenter.getServerTimeMillis();
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("SSOHttpUtils do report success steps:");
-          ((StringBuilder)localObject).append(SSOHttpUtils.jdField_a_of_type_Float);
+          ((StringBuilder)localObject).append(SSOHttpUtils.a);
           QLog.i("SSOHttpUtils", 1, ((StringBuilder)localObject).toString());
         }
         paramBundle = new JSONObject(paramBundle.rspdata.get());
@@ -94,7 +94,7 @@ final class SSOHttpUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.SSOHttpUtils.1
  * JD-Core Version:    0.7.0.1
  */

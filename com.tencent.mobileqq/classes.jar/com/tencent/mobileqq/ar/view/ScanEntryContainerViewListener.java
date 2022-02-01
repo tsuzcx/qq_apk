@@ -7,21 +7,21 @@ import com.tencent.mobileqq.olympic.activity.PromotionRes;
 
 public abstract interface ScanEntryContainerViewListener
 {
-  public abstract ARCommonConfigInfo a();
-  
-  public abstract ScanEntryResourceDelegate a();
-  
-  public abstract UniformGLRenderManager a();
-  
-  public abstract PromotionRes a();
-  
   public abstract void a(boolean paramBoolean);
   
   public abstract void b(boolean paramBoolean);
+  
+  public abstract ARCommonConfigInfo getARCommonConfig();
+  
+  public abstract PromotionRes getPromotionManager();
+  
+  public abstract UniformGLRenderManager getRenderEngine();
+  
+  public abstract ScanEntryResourceDelegate getUniformResManger();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryContainerViewListener
  * JD-Core Version:    0.7.0.1
  */

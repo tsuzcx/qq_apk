@@ -23,18 +23,18 @@ public class NestScrollRecyclerView
   extends RecyclerViewCompat
   implements NestedScrollingParent
 {
-  private static String jdField_a_of_type_JavaLangString = "NestScrollRecyclerView";
-  private int jdField_a_of_type_Int;
-  private NestedScrollingParentHelper jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper;
-  private View jdField_a_of_type_AndroidViewView;
-  private NestScrollRecyclerView.NestScrollDelegate jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$NestScrollDelegate;
-  private NestScrollRecyclerView.TransDispatchDelegate jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$TransDispatchDelegate;
-  private RefreshHeaderView jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
+  private static String a = "NestScrollRecyclerView";
+  private NestedScrollingParentHelper b;
   private int c;
   private int d;
+  private int e;
+  private int f;
+  private RefreshHeaderView g;
+  private View h;
+  private View i;
+  private NestScrollRecyclerView.NestScrollDelegate j;
+  private NestScrollRecyclerView.TransDispatchDelegate k;
+  private boolean l;
   
   public NestScrollRecyclerView(Context paramContext)
   {
@@ -54,19 +54,8 @@ public class NestScrollRecyclerView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
-    this.d = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-  }
-  
-  private void a(RecyclerView paramRecyclerView)
-  {
-    if (((paramRecyclerView instanceof NestScrollRecyclerView)) && ((getAdapter() instanceof PullLoadMoreAdapter)) && (((PullLoadMoreAdapter)getAdapter()).b()))
-    {
-      paramRecyclerView = (NestScrollRecyclerView)paramRecyclerView;
-      if (paramRecyclerView.a() == null) {
-        paramRecyclerView.a(((PullLoadMoreAdapter)getAdapter()).a());
-      }
-    }
+    this.b = new NestedScrollingParentHelper(this);
+    this.f = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }
   
   private void a(MotionEvent paramMotionEvent, View paramView)
@@ -77,7 +66,7 @@ public class NestScrollRecyclerView
     getGlobalVisibleRect((Rect)localObject);
     float f1 = ((Rect)localObject).left - localRect.left;
     float f2 = ((Rect)localObject).top - localRect.top;
-    paramView = jdField_a_of_type_JavaLangString;
+    paramView = a;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("modifyEventPos offsetX:");
     ((StringBuilder)localObject).append(f1);
@@ -87,20 +76,15 @@ public class NestScrollRecyclerView
     paramMotionEvent.offsetLocation(f1, f2);
   }
   
-  private void a(RefreshHeaderView paramRefreshHeaderView)
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView = paramRefreshHeaderView;
-  }
-  
   private boolean a(int paramInt, RecyclerView paramRecyclerView)
   {
-    a(paramRecyclerView);
+    setParentRefreshViewDelegate(paramRecyclerView);
     if (((paramInt > 0) && (a(paramRecyclerView))) || ((paramInt < 0) && (!paramRecyclerView.canScrollVertically(-1))))
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "parent is consume");
+      QLog.d(a, 4, "parent is consume");
       return true;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "self consume");
+    QLog.d(a, 4, "self consume");
     return false;
   }
   
@@ -109,23 +93,23 @@ public class NestScrollRecyclerView
     if ((paramRecyclerView instanceof NestScrollRecyclerView))
     {
       localObject = (NestScrollRecyclerView)paramRecyclerView;
-      if (((NestScrollRecyclerView)localObject).a() != null) {
-        return ((NestScrollRecyclerView)localObject).a().a(paramRecyclerView);
+      if (((NestScrollRecyclerView)localObject).getNestScrollDelegate() != null) {
+        return ((NestScrollRecyclerView)localObject).getNestScrollDelegate().a(paramRecyclerView);
       }
     }
-    paramRecyclerView = this.jdField_b_of_type_AndroidViewView;
+    paramRecyclerView = this.i;
     boolean bool = false;
     if (paramRecyclerView == null)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "isNestViewNotReachTop mNestTargetViewWrapper is null");
+      QLog.d(a, 1, "isNestViewNotReachTop mNestTargetViewWrapper is null");
       return false;
     }
-    paramRecyclerView = jdField_a_of_type_JavaLangString;
+    paramRecyclerView = a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("isNestViewNotReachTop mNestTargetViewWrapper.getTop()");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidViewView.getTop());
+    ((StringBuilder)localObject).append(this.i.getTop());
     QLog.d(paramRecyclerView, 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_b_of_type_AndroidViewView.getTop() > 0) {
+    if (this.i.getTop() > 0) {
       bool = true;
     }
     return bool;
@@ -133,34 +117,40 @@ public class NestScrollRecyclerView
   
   private boolean a(MotionEvent paramMotionEvent)
   {
-    if (((getAdapter() instanceof PullLoadMoreAdapter)) && (((PullLoadMoreAdapter)getAdapter()).b()) && (((PullLoadMoreAdapter)getAdapter()).a() != null)) {
-      ((PullLoadMoreAdapter)getAdapter()).a().a(paramMotionEvent);
+    if (((getAdapter() instanceof PullLoadMoreAdapter)) && (((PullLoadMoreAdapter)getAdapter()).m()) && (((PullLoadMoreAdapter)getAdapter()).o() != null)) {
+      ((PullLoadMoreAdapter)getAdapter()).o().a(paramMotionEvent);
     }
-    if (a() != null) {
-      a().a(paramMotionEvent);
+    if (getParentRefreshView() != null) {
+      getParentRefreshView().a(paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public NestScrollRecyclerView.NestScrollDelegate a()
+  private void setParentRefreshView(RefreshHeaderView paramRefreshHeaderView)
   {
-    return this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$NestScrollDelegate;
+    this.g = paramRefreshHeaderView;
   }
   
-  public RefreshHeaderView a()
+  private void setParentRefreshViewDelegate(RecyclerView paramRecyclerView)
   {
-    return this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView;
+    if (((paramRecyclerView instanceof NestScrollRecyclerView)) && ((getAdapter() instanceof PullLoadMoreAdapter)) && (((PullLoadMoreAdapter)getAdapter()).m()))
+    {
+      paramRecyclerView = (NestScrollRecyclerView)paramRecyclerView;
+      if (paramRecyclerView.getParentRefreshView() == null) {
+        paramRecyclerView.setParentRefreshView(((PullLoadMoreAdapter)getAdapter()).o());
+      }
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$TransDispatchDelegate != null)
+    if (this.k != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      if ((localView != null) && (!a((RecyclerView)localView)) && (ViewUtils.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) && (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$TransDispatchDelegate.a(paramMotionEvent, (RecyclerView)this.jdField_a_of_type_AndroidViewView)))
+      View localView = this.h;
+      if ((localView != null) && (!a((RecyclerView)localView)) && (ViewUtils.a(this.h, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())) && (this.k.a(paramMotionEvent, (RecyclerView)this.h)))
       {
-        a(paramMotionEvent, this.jdField_a_of_type_AndroidViewView);
-        return this.jdField_a_of_type_AndroidViewView.dispatchTouchEvent(paramMotionEvent);
+        a(paramMotionEvent, this.h);
+        return this.h.dispatchTouchEvent(paramMotionEvent);
       }
     }
     return super.dispatchTouchEvent(paramMotionEvent);
@@ -168,7 +158,7 @@ public class NestScrollRecyclerView
   
   public boolean fling(int paramInt1, int paramInt2)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("velocityX");
     localStringBuilder.append(paramInt1);
@@ -178,61 +168,76 @@ public class NestScrollRecyclerView
     return super.fling(paramInt1, paramInt2);
   }
   
+  public NestScrollRecyclerView.NestScrollDelegate getNestScrollDelegate()
+  {
+    return this.j;
+  }
+  
   public int getNestedScrollAxes()
   {
-    return this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.getNestedScrollAxes();
+    return this.b.getNestedScrollAxes();
+  }
+  
+  public RefreshHeaderView getParentRefreshView()
+  {
+    return this.g;
+  }
+  
+  public NestScrollRecyclerView.TransDispatchDelegate getTransDispatchDelegate()
+  {
+    return this.k;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onInterceptTouchEvent hashCode");
     localStringBuilder.append(hashCode());
     QLog.d(str, 4, localStringBuilder.toString());
-    int i = paramMotionEvent.getAction();
-    int j = paramMotionEvent.getActionIndex();
-    if (i != 0)
+    int m = paramMotionEvent.getAction();
+    int n = paramMotionEvent.getActionIndex();
+    if (m != 0)
     {
-      if (i != 2) {
+      if (m != 2) {
         return super.onInterceptTouchEvent(paramMotionEvent);
       }
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onInterceptTouchEvent:  X:");
       localStringBuilder.append(paramMotionEvent.getX());
       localStringBuilder.append(" Y:");
       localStringBuilder.append(paramMotionEvent.getY());
       QLog.d(str, 4, localStringBuilder.toString());
-      j = (int)(paramMotionEvent.getX() + 0.5F);
-      i = (int)(paramMotionEvent.getY() + 0.5F);
-      j -= this.jdField_a_of_type_Int;
-      i = (int)((i - this.jdField_b_of_type_Int) * 0.6F);
-      str = jdField_a_of_type_JavaLangString;
+      n = (int)(paramMotionEvent.getX() + 0.5F);
+      m = (int)(paramMotionEvent.getY() + 0.5F);
+      n -= this.c;
+      m = (int)((m - this.d) * 0.6F);
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("ACTION_MOVE dx:");
-      localStringBuilder.append(j);
+      localStringBuilder.append(n);
       localStringBuilder.append("    dy:");
-      localStringBuilder.append(i);
+      localStringBuilder.append(m);
       QLog.d(str, 1, localStringBuilder.toString());
-      if ((Math.abs(j) > this.d) && (Math.abs(j) >= Math.abs(i)))
+      if ((Math.abs(n) > this.f) && (Math.abs(n) >= Math.abs(m)))
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "move axis x");
+        QLog.d(a, 4, "move axis x");
         return false;
       }
-      if ((this.jdField_a_of_type_AndroidViewView instanceof NestScrollRecyclerView))
+      if ((this.h instanceof NestScrollRecyclerView))
       {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "NestScrollRecyclerView");
+        QLog.d(a, 4, "NestScrollRecyclerView");
         return false;
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getX() + 0.5F));
-      this.jdField_b_of_type_Int = ((int)(paramMotionEvent.getY() + 0.5F));
-      this.c = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
-      this.jdField_a_of_type_AndroidViewView = null;
-      this.jdField_b_of_type_AndroidViewView = null;
+      this.c = ((int)(paramMotionEvent.getX() + 0.5F));
+      this.d = ((int)(paramMotionEvent.getY() + 0.5F));
+      this.e = MotionEventCompat.findPointerIndex(paramMotionEvent, n);
+      this.h = null;
+      this.i = null;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -240,7 +245,7 @@ public class NestScrollRecyclerView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.l)
     {
       paramInt1 = getMeasuredHeight();
       paramInt2 = getMeasuredWidth();
@@ -256,7 +261,7 @@ public class NestScrollRecyclerView
   
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    Log.d(jdField_a_of_type_JavaLangString, String.format("----onNestedFling---------------- velocityX:%s, velocityY:%s, consumed:%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(paramBoolean) }));
+    Log.d(a, String.format("----onNestedFling---------------- velocityX:%s, velocityY:%s, consumed:%s", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(paramBoolean) }));
     return false;
   }
   
@@ -264,27 +269,27 @@ public class NestScrollRecyclerView
   {
     if ((paramView instanceof NestScrollRecyclerView))
     {
-      int i = (int)paramFloat2;
-      if (a(i, (NestScrollRecyclerView)paramView))
+      int m = (int)paramFloat2;
+      if (a(m, (NestScrollRecyclerView)paramView))
       {
-        fling((int)paramFloat1, i);
+        fling((int)paramFloat1, m);
         bool = true;
         break label42;
       }
     }
     boolean bool = false;
     label42:
-    Log.d(jdField_a_of_type_JavaLangString, String.format("----onNestedPreFling---------------- ret:%s, velocityY:%s", new Object[] { Boolean.valueOf(bool), Float.valueOf(paramFloat2) }));
+    Log.d(a, String.format("----onNestedPreFling---------------- ret:%s, velocityY:%s", new Object[] { Boolean.valueOf(bool), Float.valueOf(paramFloat2) }));
     return bool;
   }
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    Log.d(jdField_a_of_type_JavaLangString, String.format("onNestedPreScroll dx:%s,dy:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    Log.d(a, String.format("onNestedPreScroll dx:%s,dy:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if (((paramView instanceof RecyclerView)) && (a(paramInt2, (RecyclerView)paramView)))
     {
       scrollBy(0, paramInt2);
-      paramView = jdField_a_of_type_JavaLangString;
+      paramView = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("scrollBy");
       localStringBuilder.append(paramInt2);
@@ -295,7 +300,7 @@ public class NestScrollRecyclerView
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onNestedScroll: targetView:");
     localStringBuilder.append(paramView.hashCode());
@@ -313,22 +318,22 @@ public class NestScrollRecyclerView
   @SuppressLint({"NewApi"})
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
-    Log.d(jdField_a_of_type_JavaLangString, "----父布局onNestedScrollAccepted----------------");
-    this.jdField_a_of_type_AndroidViewView = paramView2;
-    this.jdField_b_of_type_AndroidViewView = paramView1;
-    this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onNestedScrollAccepted(paramView1, paramView2, paramInt);
+    Log.d(a, "----父布局onNestedScrollAccepted----------------");
+    this.h = paramView2;
+    this.i = paramView1;
+    this.b.onNestedScrollAccepted(paramView1, paramView2, paramInt);
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    Log.d(jdField_a_of_type_JavaLangString, String.format("父布局onStartNestedScroll: child:%s, target:%s, nestedScrollAxes:%s", new Object[] { Integer.valueOf(paramView1.hashCode()), Integer.valueOf(paramView2.hashCode()), Integer.valueOf(paramInt) }));
+    Log.d(a, String.format("父布局onStartNestedScroll: child:%s, target:%s, nestedScrollAxes:%s", new Object[] { Integer.valueOf(paramView1.hashCode()), Integer.valueOf(paramView2.hashCode()), Integer.valueOf(paramInt) }));
     return (paramInt & 0x2) != 0;
   }
   
   public void onStopNestedScroll(View paramView)
   {
-    Log.d(jdField_a_of_type_JavaLangString, "----父布局onStopNestedScroll----------------");
-    this.jdField_a_of_type_AndroidSupportV4ViewNestedScrollingParentHelper.onStopNestedScroll(paramView);
+    Log.d(a, "----父布局onStopNestedScroll----------------");
+    this.b.onStopNestedScroll(paramView);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -352,17 +357,17 @@ public class NestScrollRecyclerView
   
   public void setNeedLimitHeightWidth(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
   }
   
   public void setNestScrollDelegate(NestScrollRecyclerView.NestScrollDelegate paramNestScrollDelegate)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$NestScrollDelegate = paramNestScrollDelegate;
+    this.j = paramNestScrollDelegate;
   }
   
   public void setTransDispatchDelegate(NestScrollRecyclerView.TransDispatchDelegate paramTransDispatchDelegate)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseNestScrollRecyclerView$TransDispatchDelegate = paramTransDispatchDelegate;
+    this.k = paramTransDispatchDelegate;
   }
 }
 

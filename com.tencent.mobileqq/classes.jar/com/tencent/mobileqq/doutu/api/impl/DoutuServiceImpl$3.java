@@ -23,8 +23,8 @@ class DoutuServiceImpl$3
         DoutuServiceImpl.access$102(this.this$0, 1);
         NewIntent localNewIntent = new NewIntent(DoutuServiceImpl.access$000(this.this$0).getApp(), DoutuServlet.class);
         localNewIntent.putExtra("KEY_CMD", 1);
-        DoutuServiceImpl.access$200(this.this$0, localNewIntent, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuItem);
-        DoutuServiceImpl.access$300(this.this$0, localNewIntent, this.jdField_a_of_type_JavaLangString);
+        DoutuServiceImpl.access$200(this.this$0, localNewIntent, this.a, this.b, this.c);
+        DoutuServiceImpl.access$300(this.this$0, localNewIntent, this.a);
         DoutuServiceImpl.access$000(this.this$0).startServlet(localNewIntent);
         return;
       }
@@ -38,7 +38,7 @@ class DoutuServiceImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.api.impl.DoutuServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

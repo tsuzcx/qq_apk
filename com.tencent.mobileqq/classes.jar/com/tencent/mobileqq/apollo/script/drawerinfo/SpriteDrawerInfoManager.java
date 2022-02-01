@@ -24,42 +24,42 @@ import java.util.Iterator;
 
 public class SpriteDrawerInfoManager
 {
-  IApolloStatusOrDressChangeListener jdField_a_of_type_ComTencentMobileqqApolloListenerIApolloStatusOrDressChangeListener = new SpriteDrawerInfoManager.1(this);
-  ITraceSpanMessage jdField_a_of_type_ComTencentMobileqqApolloListenerITraceSpanMessage = new SpriteDrawerInfoManager.2(this);
-  private SpriteActionScript jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript;
-  private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private SpriteRscBuilder jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder;
-  private SpriteScriptCreator jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator;
-  private SpriteDrawerInfoBridge jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoBridge;
-  private SpriteDrawerInfoTaskHandler jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoTaskHandler;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  IApolloStatusOrDressChangeListener a = new SpriteDrawerInfoManager.1(this);
+  ITraceSpanMessage b = new SpriteDrawerInfoManager.2(this);
+  private WeakReference<QQAppInterface> c;
+  private SpriteContext d;
+  private SpriteScriptCreator e;
+  private SpriteDrawerInfoTaskHandler f;
+  private SpriteRscBuilder g;
+  private SpriteDrawerInfoBridge h;
+  private SpriteActionScript i;
+  private boolean j = false;
   
   public SpriteDrawerInfoManager(QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][scripted]SpriteDrawerInfoManager", 2, "SpriteDrawerInfoManager constructor.");
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = new SpriteContext(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoTaskHandler = new SpriteDrawerInfoTaskHandler(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator = new SpriteScriptCreator(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext, this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoTaskHandler);
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder = new SpriteRscBuilder(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoBridge = new SpriteDrawerInfoBridge(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext, this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoTaskHandler, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator);
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder);
+    this.d = new SpriteContext(paramQQAppInterface);
+    this.c = new WeakReference(paramQQAppInterface);
+    this.f = new SpriteDrawerInfoTaskHandler(this.d);
+    this.e = new SpriteScriptCreator(this.d, this.f);
+    this.g = new SpriteRscBuilder(this.d);
+    this.h = new SpriteDrawerInfoBridge(this.d, this.f, this.g, this.e);
+    this.d.a(this.g);
     paramQQAppInterface = (ApolloMessageServiceImpl)paramQQAppInterface.getRuntimeService(IApolloMessageService.class, "all");
-    paramQQAppInterface.addListener(ApolloMessageServiceImpl.Companion.MessageType.STATE_OR_DRESS_CHANGE, this.jdField_a_of_type_ComTencentMobileqqApolloListenerIApolloStatusOrDressChangeListener);
-    paramQQAppInterface.addListener(ApolloMessageServiceImpl.Companion.MessageType.TRACE_SPAN_MESSAGE, this.jdField_a_of_type_ComTencentMobileqqApolloListenerITraceSpanMessage);
+    paramQQAppInterface.addListener(ApolloMessageServiceImpl.Companion.MessageType.STATE_OR_DRESS_CHANGE, this.a);
+    paramQQAppInterface.addListener(ApolloMessageServiceImpl.Companion.MessageType.TRACE_SPAN_MESSAGE, this.b);
   }
   
   private void a(int paramInt, ArrayList<String> paramArrayList)
   {
-    SpriteActionScript localSpriteActionScript = a();
+    SpriteActionScript localSpriteActionScript = e();
     if ((localSpriteActionScript != null) && (paramArrayList != null))
     {
       Iterator localIterator = paramArrayList.iterator();
       while (localIterator.hasNext()) {
-        if (((String)localIterator.next()).equals(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_b_of_type_JavaLangString)) {
+        if (((String)localIterator.next()).equals(this.d.c)) {
           localSpriteActionScript.a(paramInt, paramArrayList);
         }
       }
@@ -68,47 +68,24 @@ public class SpriteDrawerInfoManager
   
   private void a(int paramInt, Object... paramVarArgs)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      TraceReportUtil.a(TraceReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d), 1, paramInt, 0L, paramVarArgs);
+    if (!this.j) {
+      TraceReportUtil.a(TraceReportUtil.c(this.d.i), 1, paramInt, 0L, paramVarArgs);
     }
-  }
-  
-  public SpriteActionScript a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript;
-  }
-  
-  public SpriteContext a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  }
-  
-  public SpriteDrawerInfoBridge a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoBridge;
   }
   
   public QQAppInterface a()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.c;
     if (localWeakReference == null) {
       return null;
     }
     return (QQAppInterface)localWeakReference.get();
   }
   
-  public void a()
-  {
-    SpriteDrawerInfoBridge localSpriteDrawerInfoBridge = this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoBridge;
-    if (localSpriteDrawerInfoBridge != null) {
-      localSpriteDrawerInfoBridge.b();
-    }
-  }
-  
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     ApolloRoleInfo localApolloRoleInfo = new ApolloRoleInfo(paramFloat1, paramFloat2, paramFloat3);
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(localApolloRoleInfo);
+    this.d.a(localApolloRoleInfo);
   }
   
   public void a(int paramInt)
@@ -117,29 +94,29 @@ public class SpriteDrawerInfoManager
     ((StringBuilder)localObject).append("[onSurfaceReady], spriteFrom:");
     ((StringBuilder)localObject).append(paramInt);
     QLog.i("[cmshow][scripted]SpriteDrawerInfoManager", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoBridge != null))
+    localObject = this.d;
+    if ((localObject != null) && (this.h != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator == null) {
+      if (this.e == null) {
         return;
       }
       ((SpriteContext)localObject).g(true);
-      int i = TraceReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.b(i);
-      TraceReportUtil.a(i, 100, 0, new Object[] { "onSurfaceReady" });
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(-2, paramInt);
-      TraceReportUtil.a(i, 200);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator.a();
-      TraceReportUtil.a(i, 200, 0, new Object[] { "loadBasicScript done" });
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.f(true);
-      TraceReportUtil.a(i, 300);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext);
-      TraceReportUtil.a(i, 300, 0, new Object[] { "initSprite done" });
-      TraceReportUtil.a(i, 1, 0, new Object[] { "terminal all done" });
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript = ((SpriteActionScript)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator.b(0));
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().c();
+      int k = TraceReportUtil.c(this.d.i);
+      this.d.b(k);
+      TraceReportUtil.a(k, 100, 0, new Object[] { "onSurfaceReady" });
+      this.d.a(-2, paramInt);
+      TraceReportUtil.a(k, 200);
+      this.e.a();
+      TraceReportUtil.a(k, 200, 0, new Object[] { "loadBasicScript done" });
+      this.d.f(true);
+      TraceReportUtil.a(k, 300);
+      this.h.a(this.d);
+      TraceReportUtil.a(k, 300, 0, new Object[] { "initSprite done" });
+      TraceReportUtil.a(k, 1, 0, new Object[] { "terminal all done" });
+      this.j = true;
+      this.i = ((SpriteActionScript)this.e.b(0));
+      if (this.d.u() != null) {
+        this.d.u().c();
       }
     }
   }
@@ -147,7 +124,7 @@ public class SpriteDrawerInfoManager
   public void a(ISpriteDrawerInfoCallback paramISpriteDrawerInfoCallback)
   {
     if (paramISpriteDrawerInfoCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(paramISpriteDrawerInfoCallback);
+      this.d.a(paramISpriteDrawerInfoCallback);
     }
   }
   
@@ -156,7 +133,7 @@ public class SpriteDrawerInfoManager
     if (paramICMShowEngine == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(paramICMShowEngine);
+    this.d.a(paramICMShowEngine);
   }
   
   public void a(String paramString)
@@ -164,30 +141,26 @@ public class SpriteDrawerInfoManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.b(paramString);
-    int i = 0;
+    this.d.c(paramString);
+    int k = 0;
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null) {
-      i = ((IApolloManagerService)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getCmShowStatus(paramString);
+      k = ((IApolloManagerService)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getCmShowStatus(paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_b_of_type_Int = i;
+    this.d.d = k;
   }
   
   public void b()
   {
-    if (!SpriteUtil.d(a())) {
-      return;
+    SpriteDrawerInfoBridge localSpriteDrawerInfoBridge = this.h;
+    if (localSpriteDrawerInfoBridge != null) {
+      localSpriteDrawerInfoBridge.c();
     }
-    SpriteActionScript localSpriteActionScript = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript;
-    if (localSpriteActionScript != null) {
-      localSpriteActionScript.c(1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(-1);
   }
   
   public void b(int paramInt)
   {
-    SpriteContext localSpriteContext = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+    SpriteContext localSpriteContext = this.d;
     if (localSpriteContext != null) {
       localSpriteContext.a(-2, paramInt);
     }
@@ -195,39 +168,66 @@ public class SpriteDrawerInfoManager
   
   public void c()
   {
-    if (!SpriteUtil.d(a())) {
+    if (!SpriteUtil.j(a())) {
       return;
     }
-    SpriteActionScript localSpriteActionScript = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionScript;
+    SpriteActionScript localSpriteActionScript = this.i;
+    if (localSpriteActionScript != null) {
+      localSpriteActionScript.c(1);
+    }
+    this.d.a(-1);
+  }
+  
+  public void d()
+  {
+    if (!SpriteUtil.j(a())) {
+      return;
+    }
+    SpriteActionScript localSpriteActionScript = this.i;
     if (localSpriteActionScript != null) {
       localSpriteActionScript.c(2);
     }
   }
   
-  public void d()
+  public SpriteActionScript e()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteRscBuilder;
+    return this.i;
+  }
+  
+  public SpriteContext f()
+  {
+    return this.d;
+  }
+  
+  public SpriteDrawerInfoBridge g()
+  {
+    return this.h;
+  }
+  
+  public void h()
+  {
+    Object localObject = this.g;
     if (localObject != null) {
       ((SpriteRscBuilder)localObject).a();
     }
-    TraceReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c(), true);
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoTaskHandler.a();
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator.b();
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c();
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerinfoSpriteDrawerInfoBridge.a();
+    TraceReportUtil.a(this.d.w(), true);
+    this.f.e();
+    this.e.b();
+    this.d.y();
+    this.h.b();
     localObject = a();
     if (localObject != null)
     {
       localObject = (ApolloMessageServiceImpl)((QQAppInterface)localObject).getRuntimeService(IApolloMessageService.class, "all");
-      ((ApolloMessageServiceImpl)localObject).removeListener(ApolloMessageServiceImpl.Companion.MessageType.STATE_OR_DRESS_CHANGE, this.jdField_a_of_type_ComTencentMobileqqApolloListenerIApolloStatusOrDressChangeListener);
-      ((ApolloMessageServiceImpl)localObject).removeListener(ApolloMessageServiceImpl.Companion.MessageType.TRACE_SPAN_MESSAGE, this.jdField_a_of_type_ComTencentMobileqqApolloListenerITraceSpanMessage);
+      ((ApolloMessageServiceImpl)localObject).removeListener(ApolloMessageServiceImpl.Companion.MessageType.STATE_OR_DRESS_CHANGE, this.a);
+      ((ApolloMessageServiceImpl)localObject).removeListener(ApolloMessageServiceImpl.Companion.MessageType.TRACE_SPAN_MESSAGE, this.b);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoManager
  * JD-Core Version:    0.7.0.1
  */

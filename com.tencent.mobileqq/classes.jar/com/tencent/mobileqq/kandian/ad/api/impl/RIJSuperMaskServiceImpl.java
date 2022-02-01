@@ -28,7 +28,7 @@ public class RIJSuperMaskServiceImpl
   
   public void close()
   {
-    SuperMaskUIMgr.a.d();
+    SuperMaskUIMgr.a.i();
   }
   
   public MaterialData findDataById(Object paramObject, String paramString)
@@ -48,22 +48,22 @@ public class RIJSuperMaskServiceImpl
   
   public ConcurrentHashMap<String, MaterialData> getAllDBData(Object paramObject)
   {
-    return AdMaterialResManager.a((QQAppInterface)paramObject).a();
+    return AdMaterialResManager.a((QQAppInterface)paramObject).g();
   }
   
   public int getChannelID()
   {
-    return SuperMaskUIMgr.a.b();
+    return SuperMaskUIMgr.a.c();
   }
   
   public boolean getHasVolume()
   {
-    return SuperMaskUIMgr.a.a();
+    return SuperMaskUIMgr.a.b();
   }
   
   public int getMaxReqCount()
   {
-    return AdMaterialResManager.b();
+    return AdMaterialResManager.f();
   }
   
   public int getShowStatus()
@@ -88,7 +88,7 @@ public class RIJSuperMaskServiceImpl
   
   public boolean isNormalMask()
   {
-    return SuperMaskDataMgr.a.a();
+    return SuperMaskDataMgr.a.d();
   }
   
   public String obtainResPath(String paramString1, String paramString2, int paramInt)
@@ -98,7 +98,7 @@ public class RIJSuperMaskServiceImpl
   
   public void onPause()
   {
-    SuperMaskUIMgr.a.c();
+    SuperMaskUIMgr.a.h();
   }
   
   public void onResDownloadDone(Object paramObject, DownloadTask paramDownloadTask, MaterialData paramMaterialData, File paramFile)
@@ -113,7 +113,7 @@ public class RIJSuperMaskServiceImpl
   
   public void onResume()
   {
-    SuperMaskUIMgr.a.b();
+    SuperMaskUIMgr.a.g();
   }
   
   public void receiveAd(Object paramObject)
@@ -123,17 +123,17 @@ public class RIJSuperMaskServiceImpl
   
   public void refreshDailyReqAndRefreshNum()
   {
-    SuperMaskConfigMgr.a.b();
+    SuperMaskConfigMgr.a.k();
   }
   
   public void refreshMainFeedsReqAndRefreshNum()
   {
-    SuperMaskConfigMgr.a.a();
+    SuperMaskConfigMgr.a.j();
   }
   
   public void resetUIMgr()
   {
-    SuperMaskUIMgr.a.e();
+    SuperMaskUIMgr.a.j();
   }
   
   public void setChannelID(int paramInt)
@@ -163,7 +163,7 @@ public class RIJSuperMaskServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJSuperMaskServiceImpl
  * JD-Core Version:    0.7.0.1
  */

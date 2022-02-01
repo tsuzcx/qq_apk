@@ -12,12 +12,12 @@ class HiBoomItemBuilder$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHiBoomItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHiBoomItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHiBoomItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    ChatActivityFacade.b(this.b.d, this.b.a, this.b.f, this.a.uniseq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HiBoomItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

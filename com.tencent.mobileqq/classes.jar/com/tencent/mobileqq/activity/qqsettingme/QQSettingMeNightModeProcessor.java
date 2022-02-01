@@ -17,113 +17,107 @@ import mqq.app.AppRuntime;
 public class QQSettingMeNightModeProcessor
   extends QQSettingMeBaseProcessor
 {
-  private View jdField_a_of_type_AndroidViewView;
-  public MutableLiveData<Integer> a;
-  private final NightModeLogic.NightModeCallback jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic$NightModeCallback = new QQSettingMeNightModeProcessor.1(this);
-  private NightModeLogic jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic;
-  public MutableLiveData<Integer> b;
-  private boolean b;
+  public MutableLiveData<Integer> a = new MutableLiveData();
+  public MutableLiveData<Integer> b = new MutableLiveData();
+  private NightModeLogic i;
+  private boolean j;
+  private View k;
+  private final NightModeLogic.NightModeCallback l = new QQSettingMeNightModeProcessor.1(this);
   
-  public QQSettingMeNightModeProcessor()
+  private void a()
   {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  }
-  
-  private void j()
-  {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    this.jdField_a_of_type_AndroidViewView.setClickable(false);
-    this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    com.tencent.mobileqq.activity.recent.DrawerFrame.a = 0;
-    if (AppSetting.d)
+    this.k.setOnClickListener(null);
+    this.k.setClickable(false);
+    this.i.a(this.d);
+    com.tencent.mobileqq.activity.recent.DrawerFrame.b = 0;
+    if (AppSetting.e)
     {
       String str;
-      if (!QQTheme.a()) {
+      if (!QQTheme.isNowThemeIsNight()) {
         str = "关闭夜间模式";
       } else {
         str = "夜间模式 ";
       }
-      AccessibilityUtil.a(this.jdField_a_of_type_AndroidViewView, str, Button.class.getName());
+      AccessibilityUtil.a(this.k, str, Button.class.getName());
     }
-    QCircleUtils.a().downloadSkinPackage("https://downv6.qq.com/video_story/qcircle/skin/darkmode-v87004.skin");
-  }
-  
-  public String a()
-  {
-    return "d_night_mode";
+    QCircleUtils.a().downloadSkinPackage("https://downv6.qq.com/video_story/qcircle/skin/darkmode-v87006.skin");
   }
   
   public void a(QQSettingMe paramQQSettingMe)
   {
-    this.jdField_a_of_type_AndroidViewView = paramQQSettingMe.b;
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeNightModeProcessor.2(this, paramQQSettingMe));
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeNightModeProcessor.3(this, paramQQSettingMe));
+    this.k = paramQQSettingMe.f;
+    this.a.observe(this.e, new QQSettingMeNightModeProcessor.2(this, paramQQSettingMe));
+    this.b.observe(this.e, new QQSettingMeNightModeProcessor.3(this, paramQQSettingMe));
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.j)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic.a(this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic$NightModeCallback, false);
-      this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-      this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic.a(paramAppRuntime);
-      this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic.a(this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic$NightModeCallback, true);
+      this.i.a(this.l, false);
+      this.c = paramAppRuntime;
+      this.i.a(paramAppRuntime);
+      this.i.a(this.l, true);
       return;
     }
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.c = paramAppRuntime;
   }
   
-  public void b()
+  public String b()
   {
-    super.b();
-    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic == null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic = new NightModeLogic(this.jdField_a_of_type_MqqAppAppRuntime);
-      this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic.a(this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic$NightModeCallback, true);
-      this.jdField_b_of_type_Boolean = true;
-    }
-    g();
+    return "d_night_mode";
   }
   
   public void d()
   {
-    if (this.jdField_b_of_type_Boolean)
+    super.d();
+    if ((!this.j) || (this.i == null))
     {
-      NightModeLogic localNightModeLogic = this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic;
-      if (localNightModeLogic != null)
-      {
-        localNightModeLogic.a(this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic$NightModeCallback, false);
-        this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic.a();
-      }
+      this.i = new NightModeLogic(this.c);
+      this.i.a(this.l, true);
+      this.j = true;
     }
-    this.jdField_a_of_type_AndroidViewView = null;
+    i();
   }
   
   public void f()
   {
-    NightModeLogic localNightModeLogic = this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic;
+    if (this.j)
+    {
+      NightModeLogic localNightModeLogic = this.i;
+      if (localNightModeLogic != null)
+      {
+        localNightModeLogic.a(this.l, false);
+        this.i.d();
+      }
+    }
+    this.k = null;
+  }
+  
+  public void h()
+  {
+    NightModeLogic localNightModeLogic = this.i;
     if (localNightModeLogic != null) {
-      localNightModeLogic.b();
+      localNightModeLogic.e();
     }
   }
   
-  public void g()
+  public void i()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqVasThemeNightModeLogic.a();
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(Integer.valueOf(i));
+    int m = this.i.a();
+    this.a.setValue(Integer.valueOf(m));
   }
   
   public void onClick(View paramView)
   {
-    if (!DarkModeManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, "", new QQSettingMeNightModeProcessor.4(this))) {
-      j();
+    if (!DarkModeManager.b(this.d, "", new QQSettingMeNightModeProcessor.4(this))) {
+      a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeNightModeProcessor
  * JD-Core Version:    0.7.0.1
  */

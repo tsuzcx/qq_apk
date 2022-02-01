@@ -16,18 +16,12 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/weishi_new/view/RecyclerViewHelper;", "", "()V", "TAG", "", "sGlobalRect", "Landroid/graphics/Rect;", "getSGlobalRect", "()Landroid/graphics/Rect;", "sGlobalRect$delegate", "Lkotlin/Lazy;", "isLoadMoreViewExposed", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "isFooterView", "Lkotlin/Function1;", "Landroid/view/View;", "isLoadMoreViewExposedVertical", "qqweishi_impl_release"}, k=1, mv={1, 1, 16})
 public final class RecyclerViewHelper
 {
-  public static final RecyclerViewHelper a;
-  private static final Lazy a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRecyclerViewHelper = new RecyclerViewHelper();
-    jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)RecyclerViewHelper.sGlobalRect.2.INSTANCE);
-  }
+  public static final RecyclerViewHelper a = new RecyclerViewHelper();
+  private static final Lazy b = LazyKt.lazy((Function0)RecyclerViewHelper.sGlobalRect.2.INSTANCE);
   
   private final Rect a()
   {
-    return (Rect)jdField_a_of_type_KotlinLazy.getValue();
+    return (Rect)b.getValue();
   }
   
   @JvmStatic
@@ -50,7 +44,7 @@ public final class RecyclerViewHelper
     {
       bool1 = bool2;
       if (((Boolean)paramFunction1.invoke(paramRecyclerView)).booleanValue()) {
-        bool1 = paramRecyclerView.getGlobalVisibleRect(jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRecyclerViewHelper.a());
+        bool1 = paramRecyclerView.getGlobalVisibleRect(a.a());
       }
     }
     return bool1;
@@ -64,7 +58,7 @@ public final class RecyclerViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RecyclerViewHelper
  * JD-Core Version:    0.7.0.1
  */

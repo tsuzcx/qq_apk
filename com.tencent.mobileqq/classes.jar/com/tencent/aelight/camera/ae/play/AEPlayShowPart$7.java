@@ -22,8 +22,8 @@ class AEPlayShowPart$7
     paramAECaptureModeChangingEvent = paramAECaptureModeChangingEvent.b;
     if (paramAECaptureModeChangingEvent == AECaptureMode.NORMAL)
     {
-      if ((AEPlayShowGridAdapter.selectedMaterial == null) || (AEPlayShowGridAdapter.selectedMaterial != AEMaterialManager.a())) {
-        AEBaseReportParam.a().n("none");
+      if ((AEPlayShowGridAdapter.selectedMaterial == null) || (AEPlayShowGridAdapter.selectedMaterial != AEMaterialManager.n())) {
+        AEBaseReportParam.a().r("none");
       }
       if (this.this$0.hasInflated()) {
         AEPlayShowPart.access$800(this.this$0).setVisibility(8);
@@ -42,7 +42,7 @@ class AEPlayShowPart$7
       {
         paramAECaptureModeChangingEvent = AEPlayShowPart.access$700(this.this$0).getLastMaterialTabId();
         if ((!TextUtils.isEmpty(paramAECaptureModeChangingEvent)) && (!"-1".equals(paramAECaptureModeChangingEvent))) {
-          AEBaseReportParam.a().n(paramAECaptureModeChangingEvent);
+          AEBaseReportParam.a().r(paramAECaptureModeChangingEvent);
         }
       }
       AEPlayShowPart.access$800(this.this$0).setVisibility(0);
@@ -52,7 +52,7 @@ class AEPlayShowPart$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEPlayShowPart.7
  * JD-Core Version:    0.7.0.1
  */

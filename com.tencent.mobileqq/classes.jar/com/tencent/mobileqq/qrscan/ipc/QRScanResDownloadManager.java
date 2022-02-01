@@ -20,14 +20,8 @@ import java.util.ArrayList;
 
 public class QRScanResDownloadManager
 {
-  public static Handler a;
-  private static ArrayList<QRScanResDownloadManager.DownloadCallback> a;
-  
-  static
-  {
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
-  }
+  public static Handler a = new Handler(Looper.getMainLooper());
+  private static ArrayList<QRScanResDownloadManager.DownloadCallback> b = new ArrayList(2);
   
   private static IEarlyDownloadService a(AppInterface paramAppInterface)
   {
@@ -63,7 +57,7 @@ public class QRScanResDownloadManager
   {
     try
     {
-      Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
+      Object[] arrayOfObject = b.toArray();
       if (arrayOfObject != null)
       {
         if (arrayOfObject.length <= 0) {
@@ -73,7 +67,7 @@ public class QRScanResDownloadManager
         while (i < arrayOfObject.length)
         {
           QRScanResDownloadManager.DownloadCallback localDownloadCallback = (QRScanResDownloadManager.DownloadCallback)arrayOfObject[i];
-          jdField_a_of_type_AndroidOsHandler.post(new QRScanResDownloadManager.1(localDownloadCallback, paramInt1, paramInt2));
+          a.post(new QRScanResDownloadManager.1(localDownloadCallback, paramInt1, paramInt2));
           i += 1;
         }
       }
@@ -93,7 +87,7 @@ public class QRScanResDownloadManager
       return;
     }
     Object localObject = null;
-    boolean bool3 = a(paramInt, paramAppInterface);
+    boolean bool3 = b(paramInt, paramAppInterface);
     boolean bool1;
     if (paramInt != 0)
     {
@@ -109,36 +103,36 @@ public class QRScanResDownloadManager
           else
           {
             paramAppInterface = localIEarlyDownloadService.getEarlyHandler("qq.android.qbarnative.model_v8.6.0");
-            bool1 = QBarModelLoader.a();
+            bool1 = QBarModelLoader.c();
           }
         }
         else
         {
           paramAppInterface = localIEarlyDownloadService.getEarlyHandler("qq.android.minidetect.model_v8.6.0");
-          bool1 = MiniScanDetectModelLoader.a();
+          bool1 = MiniScanDetectModelLoader.c();
         }
       }
       else
       {
         paramAppInterface = localIEarlyDownloadService.getEarlyHandler("qq.android.minidetect.so_v8.6.0");
-        bool1 = MiniScanDetectSoLoader.a();
+        bool1 = MiniScanDetectSoLoader.b();
       }
     }
     else
     {
-      paramAppInterface = localIEarlyDownloadService.getEarlyHandler("qq.android.minidecode.so_v8.2.0");
-      bool1 = MiniScanDecodeSoLoader.a();
+      paramAppInterface = localIEarlyDownloadService.getEarlyHandler("qq.android.minidecode.so_v8.8.5");
+      bool1 = MiniScanDecodeSoLoader.b();
     }
     if (paramAppInterface != null)
     {
-      int i = paramAppInterface.b();
+      int i = paramAppInterface.f();
       boolean bool2;
-      if ((bool3) && (bool1) && (paramAppInterface.g()) && (i > 1)) {
+      if ((bool3) && (bool1) && (paramAppInterface.r()) && (i > 1)) {
         bool2 = false;
       } else {
         bool2 = true;
       }
-      QLog.d("MiniRecog.ResDownloadManager", 1, String.format("downloadMiniRes resType=%d needDownload=%b bConfigReady=%b bResExits=%b isEarlySuc=%b version=%d", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1), Boolean.valueOf(paramAppInterface.g()), Integer.valueOf(i) }));
+      QLog.d("MiniRecog.ResDownloadManager", 1, String.format("downloadMiniRes resType=%d needDownload=%b bConfigReady=%b bResExits=%b isEarlySuc=%b version=%d", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1), Boolean.valueOf(paramAppInterface.r()), Integer.valueOf(i) }));
       if (bool2) {
         paramAppInterface.a(true);
       }
@@ -149,7 +143,7 @@ public class QRScanResDownloadManager
   {
     try
     {
-      Object[] arrayOfObject = jdField_a_of_type_JavaUtilArrayList.toArray();
+      Object[] arrayOfObject = b.toArray();
       if (arrayOfObject != null)
       {
         if (arrayOfObject.length <= 0) {
@@ -159,7 +153,7 @@ public class QRScanResDownloadManager
         while (i < arrayOfObject.length)
         {
           QRScanResDownloadManager.DownloadCallback localDownloadCallback = (QRScanResDownloadManager.DownloadCallback)arrayOfObject[i];
-          jdField_a_of_type_AndroidOsHandler.post(new QRScanResDownloadManager.2(localDownloadCallback, paramInt, paramBoolean));
+          a.post(new QRScanResDownloadManager.2(localDownloadCallback, paramInt, paramBoolean));
           i += 1;
         }
       }
@@ -177,25 +171,16 @@ public class QRScanResDownloadManager
     if (paramDownloadCallback != null) {
       try
       {
-        if (!jdField_a_of_type_JavaUtilArrayList.contains(paramDownloadCallback))
+        if (!b.contains(paramDownloadCallback))
         {
           if (QLog.isColorLevel()) {
             QLog.i("MiniRecog.ResDownloadManager", 2, "addDownloadCallback");
           }
-          jdField_a_of_type_JavaUtilArrayList.add(paramDownloadCallback);
+          b.add(paramDownloadCallback);
         }
       }
       finally {}
     }
-  }
-  
-  public static boolean a(int paramInt, AppInterface paramAppInterface)
-  {
-    boolean bool = b(paramInt, paramAppInterface);
-    if (!bool) {
-      b(paramInt, paramAppInterface);
-    }
-    return bool;
   }
   
   private static boolean a(EarlyHandler paramEarlyHandler)
@@ -203,7 +188,7 @@ public class QRScanResDownloadManager
     if (paramEarlyHandler == null) {
       return false;
     }
-    paramEarlyHandler = paramEarlyHandler.a();
+    paramEarlyHandler = paramEarlyHandler.h();
     if (paramEarlyHandler == null) {
       return false;
     }
@@ -224,7 +209,16 @@ public class QRScanResDownloadManager
     return false;
   }
   
-  public static void b(int paramInt, AppInterface paramAppInterface)
+  public static boolean b(int paramInt, AppInterface paramAppInterface)
+  {
+    boolean bool = d(paramInt, paramAppInterface);
+    if (!bool) {
+      c(paramInt, paramAppInterface);
+    }
+    return bool;
+  }
+  
+  public static void c(int paramInt, AppInterface paramAppInterface)
   {
     paramAppInterface = a(paramAppInterface);
     if (paramAppInterface == null) {
@@ -240,9 +234,9 @@ public class QRScanResDownloadManager
             return;
           }
           paramAppInterface = (QBarModelDownloadHandler)paramAppInterface.getEarlyHandler("qq.android.qbarnative.model_v8.6.0");
-          if ((paramAppInterface != null) && (paramAppInterface.g()) && (!QBarModelLoader.a()))
+          if ((paramAppInterface != null) && (paramAppInterface.r()) && (!QBarModelLoader.c()))
           {
-            paramAppInterface.f();
+            paramAppInterface.w();
             if (QLog.isColorLevel()) {
               QLog.d("MiniRecog.ResDownloadManager", 2, String.format("resetResDownloadState resType=%d download state", new Object[] { Integer.valueOf(paramInt) }));
             }
@@ -251,9 +245,9 @@ public class QRScanResDownloadManager
         else
         {
           paramAppInterface = (MiniScanDetectModelsDownloadHandler)paramAppInterface.getEarlyHandler("qq.android.minidetect.model_v8.6.0");
-          if ((paramAppInterface != null) && (paramAppInterface.g()) && (!MiniScanDetectModelLoader.a()))
+          if ((paramAppInterface != null) && (paramAppInterface.r()) && (!MiniScanDetectModelLoader.c()))
           {
-            paramAppInterface.f();
+            paramAppInterface.w();
             if (QLog.isColorLevel()) {
               QLog.d("MiniRecog.ResDownloadManager", 2, String.format("resetResDownloadState resType=%d download state", new Object[] { Integer.valueOf(paramInt) }));
             }
@@ -263,9 +257,9 @@ public class QRScanResDownloadManager
       else
       {
         paramAppInterface = (MiniScanDetectSoDownloadHandler)paramAppInterface.getEarlyHandler("qq.android.minidetect.so_v8.6.0");
-        if ((paramAppInterface != null) && (paramAppInterface.g()) && (!MiniScanDetectSoLoader.a()))
+        if ((paramAppInterface != null) && (paramAppInterface.r()) && (!MiniScanDetectSoLoader.b()))
         {
-          paramAppInterface.g();
+          paramAppInterface.x();
           if (QLog.isColorLevel()) {
             QLog.d("MiniRecog.ResDownloadManager", 2, String.format("resetResDownloadState resType=%d download state", new Object[] { Integer.valueOf(paramInt) }));
           }
@@ -274,10 +268,10 @@ public class QRScanResDownloadManager
     }
     else
     {
-      paramAppInterface = (MiniScanDecodeSoDownloadHandler)paramAppInterface.getEarlyHandler("qq.android.minidecode.so_v8.2.0");
-      if ((paramAppInterface != null) && (paramAppInterface.g()) && (!MiniScanDecodeSoLoader.a()))
+      paramAppInterface = (MiniScanDecodeSoDownloadHandler)paramAppInterface.getEarlyHandler("qq.android.minidecode.so_v8.8.5");
+      if ((paramAppInterface != null) && (paramAppInterface.r()) && (!MiniScanDecodeSoLoader.b()))
       {
-        paramAppInterface.g();
+        paramAppInterface.x();
         if (QLog.isColorLevel()) {
           QLog.d("MiniRecog.ResDownloadManager", 2, String.format("resetResDownloadState resType=%d download state", new Object[] { Integer.valueOf(paramInt) }));
         }
@@ -285,7 +279,7 @@ public class QRScanResDownloadManager
     }
   }
   
-  public static boolean b(int paramInt, AppInterface paramAppInterface)
+  public static boolean d(int paramInt, AppInterface paramAppInterface)
   {
     paramAppInterface = a(paramAppInterface);
     if (paramAppInterface == null) {
@@ -314,10 +308,10 @@ public class QRScanResDownloadManager
               if (paramAppInterface != null)
               {
                 bool1 = bool2;
-                if (paramAppInterface.g())
+                if (paramAppInterface.r())
                 {
                   bool1 = bool2;
-                  if (!QBarModelLoader.a()) {}
+                  if (!QBarModelLoader.c()) {}
                 }
               }
             }
@@ -339,11 +333,11 @@ public class QRScanResDownloadManager
               break;
             }
             bool1 = bool2;
-            if (!paramAppInterface.g()) {
+            if (!paramAppInterface.r()) {
               break;
             }
             bool1 = bool2;
-            if (!MiniScanDetectModelLoader.a()) {
+            if (!MiniScanDetectModelLoader.c()) {
               break;
             }
           }
@@ -360,10 +354,10 @@ public class QRScanResDownloadManager
           if (paramAppInterface != null)
           {
             bool2 = bool1;
-            if (paramAppInterface.g())
+            if (paramAppInterface.r())
             {
               bool2 = bool1;
-              if (MiniScanDetectSoLoader.a()) {
+              if (MiniScanDetectSoLoader.b()) {
                 bool2 = true;
               }
             }
@@ -372,14 +366,14 @@ public class QRScanResDownloadManager
         bool1 = bool2;
         if (bool2)
         {
-          paramAppInterface.f();
+          paramAppInterface.w();
           bool1 = bool2;
         }
       }
     }
     else
     {
-      paramAppInterface = (MiniScanDecodeSoDownloadHandler)paramAppInterface.getEarlyHandler("qq.android.minidecode.so_v8.2.0");
+      paramAppInterface = (MiniScanDecodeSoDownloadHandler)paramAppInterface.getEarlyHandler("qq.android.minidecode.so_v8.8.5");
       bool1 = a(paramAppInterface);
       bool2 = bool1;
       if (!bool1)
@@ -388,10 +382,10 @@ public class QRScanResDownloadManager
         if (paramAppInterface != null)
         {
           bool2 = bool1;
-          if (paramAppInterface.g())
+          if (paramAppInterface.r())
           {
             bool2 = bool1;
-            if (MiniScanDecodeSoLoader.a()) {
+            if (MiniScanDecodeSoLoader.b()) {
               bool2 = true;
             }
           }
@@ -400,7 +394,7 @@ public class QRScanResDownloadManager
       bool1 = bool2;
       if (bool2)
       {
-        paramAppInterface.f();
+        paramAppInterface.w();
         bool1 = bool2;
       }
     }
@@ -412,7 +406,7 @@ public class QRScanResDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.ipc.QRScanResDownloadManager
  * JD-Core Version:    0.7.0.1
  */

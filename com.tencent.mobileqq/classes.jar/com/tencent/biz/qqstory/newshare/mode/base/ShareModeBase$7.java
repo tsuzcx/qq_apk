@@ -11,15 +11,15 @@ class ShareModeBase$7
     super(paramString1, paramString2, paramBoolean);
   }
   
-  public boolean b()
+  public boolean c()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.e = ((String)a("EncryptUrlJob_encryptedUrl"));
+    this.a.h = ((String)b("EncryptUrlJob_encryptedUrl"));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.7
  * JD-Core Version:    0.7.0.1
  */

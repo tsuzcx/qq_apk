@@ -13,12 +13,12 @@ class QQSettingMeSuperMemberProcessor$5
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "init parse config json");
     }
-    VipGrayConfigHelper.a().a(this.this$0.a);
+    VipGrayConfigHelper.a().a(this.this$0.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSuperMemberProcessor.5
  * JD-Core Version:    0.7.0.1
  */

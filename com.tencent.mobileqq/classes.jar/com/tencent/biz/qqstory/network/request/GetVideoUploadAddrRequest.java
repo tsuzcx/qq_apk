@@ -15,12 +15,17 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class GetVideoUploadAddrRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.video_apply_upload");
-  public long b;
-  public String b;
-  public String c;
+  public static final String e = StoryApi.a("StorySvc.video_apply_upload");
+  public String f;
+  public String g;
+  public long h;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspUploadStoryVideo localRspUploadStoryVideo = new qqstory_service.RspUploadStoryVideo();
     try
@@ -36,21 +41,16 @@ public class GetVideoUploadAddrRequest
     return null;
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqUploadStoryVideo localReqUploadStoryVideo = new qqstory_service.ReqUploadStoryVideo();
-    if (this.jdField_b_of_type_JavaLangString != null)
+    if (this.f != null)
     {
-      localReqUploadStoryVideo.md5.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-      if (this.c != null)
+      localReqUploadStoryVideo.md5.set(ByteStringMicro.copyFromUtf8(this.f));
+      if (this.g != null)
       {
-        localReqUploadStoryVideo.sha.set(ByteStringMicro.copyFromUtf8(this.c));
-        localReqUploadStoryVideo.size.set(this.jdField_b_of_type_Long);
+        localReqUploadStoryVideo.sha.set(ByteStringMicro.copyFromUtf8(this.g));
+        localReqUploadStoryVideo.size.set(this.h);
         return localReqUploadStoryVideo.toByteArray();
       }
       SLog.d("Q.qqstory:GetVideoUploadAddrRequest", "without sha");
@@ -64,20 +64,20 @@ public class GetVideoUploadAddrRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetStoryVideoUploadAddressRequest{md5='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", sha='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", size=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetVideoUploadAddrRequest
  * JD-Core Version:    0.7.0.1
  */

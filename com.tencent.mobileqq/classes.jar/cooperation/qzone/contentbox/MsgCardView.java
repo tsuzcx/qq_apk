@@ -41,14 +41,14 @@ public class MsgCardView
   extends LinearLayout
   implements FeedListView.LoadFeedCallback
 {
-  private static final int CARD_RADIUS = ViewUtils.b(8.0F);
+  private static final int CARD_RADIUS = ViewUtils.dpToPx(8.0F);
   private static final int HOUR_OF_ONE_DAY = 24;
   private static final int LARGE_PHOTO_HEIGHT;
   private static final int LIST_ITEM_MARGIN_BOTTOM;
   private static final int LIST_ITEM_MARGIN_TOP;
   private static final int LIST_MARGIN_LEFT;
   private static final int LIST_MARGIN_RIGHT;
-  private static final int LIST_MARGIN_TOP = ViewUtils.b(35.0F);
+  private static final int LIST_MARGIN_TOP = ViewUtils.dpToPx(35.0F);
   private static final int MAX_PAGE_ITEM = 9;
   private static final long ONE_HOUR = 3600000L;
   private static final String TAG = "MsgCardView";
@@ -75,11 +75,11 @@ public class MsgCardView
   
   static
   {
-    LIST_MARGIN_LEFT = ViewUtils.b(12.0F);
-    LIST_MARGIN_RIGHT = ViewUtils.b(12.0F);
-    LIST_ITEM_MARGIN_TOP = ViewUtils.b(10.0F);
-    LIST_ITEM_MARGIN_BOTTOM = ViewUtils.b(18.0F);
-    LARGE_PHOTO_HEIGHT = ViewUtils.b(230.0F);
+    LIST_MARGIN_LEFT = ViewUtils.dpToPx(12.0F);
+    LIST_MARGIN_RIGHT = ViewUtils.dpToPx(12.0F);
+    LIST_ITEM_MARGIN_TOP = ViewUtils.dpToPx(10.0F);
+    LIST_ITEM_MARGIN_BOTTOM = ViewUtils.dpToPx(18.0F);
+    LARGE_PHOTO_HEIGHT = ViewUtils.dpToPx(230.0F);
   }
   
   public MsgCardView(Context paramContext, QQAppInterface paramQQAppInterface)
@@ -150,7 +150,7 @@ public class MsgCardView
     long l = System.currentTimeMillis() - paramLong;
     if (l < 3600000L)
     {
-      this.mTitleTime.setText(HardCodeUtil.a(2131706978));
+      this.mTitleTime.setText(HardCodeUtil.a(2131904820));
       return;
     }
     l /= 3600000L;
@@ -204,7 +204,7 @@ public class MsgCardView
   
   public void onDestroy()
   {
-    this.mQQDailyArkView.a();
+    this.mQQDailyArkView.b();
   }
   
   public void onLoadOver(boolean paramBoolean)
@@ -273,11 +273,11 @@ public class MsgCardView
       if (localObject != null) {
         ((FeedListView)localObject).setBackgroundColor(-15263977);
       }
-      this.mPicContainer.setBackgroundResource(2130848757);
-      this.mMoreContainer.setBackgroundResource(2130848757);
+      this.mPicContainer.setBackgroundResource(2130850424);
+      this.mMoreContainer.setBackgroundResource(2130850424);
       this.mFeedTitleTv.setTextColor(-5723992);
-      this.mFeedTitleTv.setBackgroundResource(2130848710);
-      this.mQcircleBG.setImageDrawable(getResources().getDrawable(2130844131));
+      this.mFeedTitleTv.setBackgroundResource(2130850377);
+      this.mQcircleBG.setImageDrawable(getResources().getDrawable(2130845185));
     }
     else
     {
@@ -289,13 +289,13 @@ public class MsgCardView
       if (localObject != null) {
         ((FeedListView)localObject).setBackgroundColor(-1);
       }
-      this.mPicContainer.setBackgroundResource(2130848756);
-      this.mMoreContainer.setBackgroundResource(2130848756);
+      this.mPicContainer.setBackgroundResource(2130850423);
+      this.mMoreContainer.setBackgroundResource(2130850423);
       this.mFeedTitleTv.setTextColor(-16578534);
-      this.mFeedTitleTv.setBackgroundResource(2130848709);
-      this.mQcircleBG.setImageDrawable(getResources().getDrawable(2130844132));
+      this.mFeedTitleTv.setBackgroundResource(2130850376);
+      this.mQcircleBG.setImageDrawable(getResources().getDrawable(2130845186));
     }
-    this.mPicContainer.setPadding(ViewUtils.a(5.0F), ViewUtils.a(5.0F), ViewUtils.a(5.0F), ViewUtils.a(5.0F));
+    this.mPicContainer.setPadding(ViewUtils.dip2px(5.0F), ViewUtils.dip2px(5.0F), ViewUtils.dip2px(5.0F), ViewUtils.dip2px(5.0F));
     this.mPicView.removeAllViews();
     int k = paramMQMsg.msgType;
     int i = -1315339;
@@ -316,7 +316,7 @@ public class MsgCardView
     else if (paramBoolean2)
     {
       localObject = new TextView(this.mContext);
-      ((TextView)localObject).setPadding(ViewUtils.a(12.0F), 0, 0, 0);
+      ((TextView)localObject).setPadding(ViewUtils.dip2px(12.0F), 0, 0, 0);
       ((TextView)localObject).setGravity(16);
       ((TextView)localObject).setTextSize(17.0F);
       if (paramBoolean1) {
@@ -327,7 +327,7 @@ public class MsgCardView
         ((TextView)localObject).setTypeface(Typeface.DEFAULT_BOLD);
       }
       ((TextView)localObject).setText(paramMQMsg.title);
-      this.mPicView.addView((View)localObject, new LinearLayout.LayoutParams(-1, ViewUtils.a(51.0F)));
+      this.mPicView.addView((View)localObject, new LinearLayout.LayoutParams(-1, ViewUtils.dip2px(51.0F)));
       localObject = new View(this.mContext);
       if (paramBoolean1) {
         i = -15066598;
@@ -421,7 +421,7 @@ public class MsgCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgCardView
  * JD-Core Version:    0.7.0.1
  */

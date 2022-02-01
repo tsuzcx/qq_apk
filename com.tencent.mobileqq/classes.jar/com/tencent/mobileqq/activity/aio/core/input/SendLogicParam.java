@@ -4,32 +4,32 @@ import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
 
 public class SendLogicParam
 {
-  private ChatActivityFacade.SendMsgParams jdField_a_of_type_ComTencentMobileqqActivityChatActivityFacade$SendMsgParams;
-  private String jdField_a_of_type_JavaLangString = "";
-  
-  public ChatActivityFacade.SendMsgParams a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityFacade$SendMsgParams;
-  }
+  private String a = "";
+  private ChatActivityFacade.SendMsgParams b;
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(ChatActivityFacade.SendMsgParams paramSendMsgParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityFacade$SendMsgParams = paramSendMsgParams;
+    this.b = paramSendMsgParams;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
+  }
+  
+  public ChatActivityFacade.SendMsgParams b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.input.SendLogicParam
  * JD-Core Version:    0.7.0.1
  */

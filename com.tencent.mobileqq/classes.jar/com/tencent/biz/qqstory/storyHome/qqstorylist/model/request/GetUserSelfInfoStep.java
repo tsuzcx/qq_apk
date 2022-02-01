@@ -18,12 +18,12 @@ public class GetUserSelfInfoStep
   extends SimpleStep
   implements CmdTaskManger.CommandCallback<GetUserSelfInfoStep.Request, GetUserSelfInfoStep.Response>
 {
-  private Repository jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private Repository b;
   
   public GetUserSelfInfoStep(Repository paramRepository)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository = paramRepository;
+    this.b = paramRepository;
   }
   
   public static boolean a(MyStorys paramMyStorys)
@@ -31,42 +31,30 @@ public class GetUserSelfInfoStep
     if (paramMyStorys != null)
     {
       StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-      paramMyStorys.jdField_b_of_type_Int = ((Integer)localStoryConfigManager.b("qqstory_my_fans_count", Integer.valueOf(0))).intValue();
+      paramMyStorys.i = ((Integer)localStoryConfigManager.c("qqstory_my_fans_count", Integer.valueOf(0))).intValue();
       boolean bool;
-      if (((Integer)localStoryConfigManager.b("qqstory_i_am_vip", Integer.valueOf(0))).intValue() > 0) {
+      if (((Integer)localStoryConfigManager.c("qqstory_i_am_vip", Integer.valueOf(0))).intValue() > 0) {
         bool = true;
       } else {
         bool = false;
       }
-      paramMyStorys.jdField_c_of_type_Boolean = bool;
-      paramMyStorys.jdField_c_of_type_Int = ((Integer)localStoryConfigManager.b("qqstory_my_vidoe_count", Integer.valueOf(0))).intValue();
-      paramMyStorys.a = ((Integer)localStoryConfigManager.b("qqstory_my_visiter_count", Integer.valueOf(0))).intValue();
-      paramMyStorys.jdField_b_of_type_JavaLangString = ((String)localStoryConfigManager.b("qqstory_my_newest_video_cover", ""));
-      paramMyStorys.jdField_c_of_type_JavaLangString = ((String)localStoryConfigManager.b("qqstory_my_newest_video_vid", ""));
+      paramMyStorys.h = bool;
+      paramMyStorys.j = ((Integer)localStoryConfigManager.c("qqstory_my_vidoe_count", Integer.valueOf(0))).intValue();
+      paramMyStorys.k = ((Integer)localStoryConfigManager.c("qqstory_my_visiter_count", Integer.valueOf(0))).intValue();
+      paramMyStorys.l = ((String)localStoryConfigManager.c("qqstory_my_newest_video_cover", ""));
+      paramMyStorys.m = ((String)localStoryConfigManager.c("qqstory_my_newest_video_vid", ""));
       return true;
     }
     throw new IllegalArgumentException("argument can't be null");
   }
   
-  public String a()
-  {
-    return "GetUserSelfInfoStep";
-  }
-  
-  public void a()
-  {
-    SLog.d("Q.qqstory.home.GetUserSelfInfoStep", "run");
-    GetUserSelfInfoStep.Request localRequest = new GetUserSelfInfoStep.Request();
-    CmdTaskManger.a().a(localRequest, this);
-  }
-  
   public void a(@NonNull GetUserSelfInfoStep.Request paramRequest, @Nullable GetUserSelfInfoStep.Response paramResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     SLog.d("Q.qqstory.home.GetUserSelfInfoStep", "onCmdRespond");
-    if (b())
+    if (g())
     {
       SLog.e("Q.qqstory.home.GetUserSelfInfoStep", "GetUserSelfInfoRequest was reseted !");
-      d();
+      h();
       return;
     }
     if (paramErrorMessage.isFail())
@@ -76,11 +64,11 @@ public class GetUserSelfInfoStep
       return;
     }
     paramRequest = (UserManager)SuperManager.a(2);
-    if (paramRequest.b(paramResponse.a) == null)
+    if (paramRequest.b(paramResponse.b) == null)
     {
       paramErrorMessage = new QQUserUIItem();
-      paramErrorMessage.uid = paramResponse.a;
-      int i = paramResponse.jdField_b_of_type_Int;
+      paramErrorMessage.uid = paramResponse.b;
+      int i = paramResponse.a;
       boolean bool = true;
       if (i != 1) {
         bool = false;
@@ -88,7 +76,7 @@ public class GetUserSelfInfoStep
       paramErrorMessage.isVip = bool;
       paramRequest.a(paramErrorMessage);
     }
-    paramRequest = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository;
+    paramRequest = this.b;
     if (paramRequest != null)
     {
       paramRequest.a(new GetUserSelfInfoStep.1(this, paramResponse));
@@ -96,24 +84,36 @@ public class GetUserSelfInfoStep
     }
     SLog.a("Q.qqstory.home.GetUserSelfInfoStep", "receive the user self2 info: %s", paramResponse);
     paramRequest = (StoryConfigManager)SuperManager.a(10);
-    paramRequest.b("qqstory_my_fans_count", Integer.valueOf(paramResponse.jdField_c_of_type_Int));
-    paramRequest.b("qqstory_i_am_vip", Integer.valueOf(paramResponse.jdField_b_of_type_Int));
-    paramRequest.b("qqstory_my_vidoe_count", Integer.valueOf(paramResponse.jdField_d_of_type_Int));
-    paramRequest.b("qqstory_my_visiter_count", Integer.valueOf(paramResponse.e));
-    paramRequest.b("qqstory_my_newest_video_cover", paramResponse.jdField_c_of_type_JavaLangString);
-    paramRequest.b("qqstory_my_newest_video_vid", paramResponse.jdField_d_of_type_JavaLangString);
-    QQStoryContext.a().a(paramResponse.a);
-    d();
+    paramRequest.d("qqstory_my_fans_count", Integer.valueOf(paramResponse.e));
+    paramRequest.d("qqstory_i_am_vip", Integer.valueOf(paramResponse.a));
+    paramRequest.d("qqstory_my_vidoe_count", Integer.valueOf(paramResponse.f));
+    paramRequest.d("qqstory_my_visiter_count", Integer.valueOf(paramResponse.g));
+    paramRequest.d("qqstory_my_newest_video_cover", paramResponse.h);
+    paramRequest.d("qqstory_my_newest_video_vid", paramResponse.i);
+    QQStoryContext.a().a(paramResponse.b);
+    h();
   }
   
-  public void b() {}
+  public void b()
+  {
+    SLog.d("Q.qqstory.home.GetUserSelfInfoStep", "run");
+    GetUserSelfInfoStep.Request localRequest = new GetUserSelfInfoStep.Request();
+    CmdTaskManger.a().a(localRequest, this);
+  }
   
-  public boolean b()
+  public String c()
+  {
+    return "GetUserSelfInfoStep";
+  }
+  
+  public void e() {}
+  
+  public void f()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
+      this.a = true;
+      return;
     }
     finally
     {
@@ -122,12 +122,12 @@ public class GetUserSelfInfoStep
     }
   }
   
-  public void c()
+  public boolean g()
   {
     try
     {
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      boolean bool = this.a;
+      return bool;
     }
     finally
     {

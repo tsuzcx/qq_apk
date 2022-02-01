@@ -9,59 +9,54 @@ import java.util.List;
 public class DefaultPlayerVideoListSynchronizer$PlayerVideoListEvent
   extends BaseEvent
 {
-  public int a;
-  public long a;
-  public LiveVideoEntry a;
   public String a;
-  public List<StoryVideoItem> a;
-  public boolean a;
-  public long b;
   public String b;
-  public List<String> b;
-  public boolean b;
   public String c;
-  public boolean c;
-  
-  public DefaultPlayerVideoListSynchronizer$PlayerVideoListEvent()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public long d;
+  public List<StoryVideoItem> e = new ArrayList();
+  public long f;
+  public int h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public LiveVideoEntry l;
+  public List<String> m;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PlayerVideoListEvent{context='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", uid='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", label='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", topicId=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", mStoryVideoItems=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", totalTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", videoCount=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", isFromCache=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", isEnd=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", interactStatus=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", liveVideoInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLiveVideoEntry);
+    localStringBuilder.append(this.l);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent
  * JD-Core Version:    0.7.0.1
  */

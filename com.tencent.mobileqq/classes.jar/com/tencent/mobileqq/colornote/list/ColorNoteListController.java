@@ -30,24 +30,24 @@ import mqq.app.AppRuntime;
 public class ColorNoteListController
   implements RecyclerView.ItemAnimator.ItemAnimatorFinishedListener, View.OnClickListener, OnListHideListener
 {
-  private static int jdField_a_of_type_Int = 2131167410;
-  private static final List<IColorNoteListListener> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private static int jdField_b_of_type_Int = 2131167394;
-  private static int jdField_c_of_type_Int = 2130839249;
-  private Context jdField_a_of_type_AndroidContentContext;
-  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ColorNoteListAdapter jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter;
-  private ColorNoteListLayout jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout;
-  private OnListHideListener jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener;
-  private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = true;
-  private boolean jdField_c_of_type_Boolean = false;
+  private static int j = 2131168487;
+  private static int k = 2131168464;
+  private static int l = 2130839421;
+  private static final List<IColorNoteListListener> r = new ArrayList();
+  RecyclerView a;
+  private Context b;
+  private OnListHideListener c;
+  private GestureDetector d;
+  private ColorNoteListAdapter e;
+  private View f;
+  private ViewStub g;
+  private View h;
+  private BounceScrollView i;
+  private ColorNoteListLayout m;
+  private boolean n;
+  private ImageView o;
+  private boolean p = true;
+  private boolean q = false;
   
   static
   {
@@ -57,7 +57,7 @@ public class ColorNoteListController
       while (localIterator.hasNext())
       {
         Class localClass = (Class)localIterator.next();
-        jdField_a_of_type_JavaUtilList.add(localClass.newInstance());
+        r.add(localClass.newInstance());
       }
       return;
     }
@@ -69,162 +69,162 @@ public class ColorNoteListController
   
   public ColorNoteListController(Context paramContext, OnListHideListener paramOnListHideListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListOnListHideListener = paramOnListHideListener;
+    this.b = paramContext;
+    this.c = paramOnListHideListener;
   }
   
   private void b(List<ColorNote> paramList)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = r.iterator();
     while (localIterator.hasNext()) {
       ((IColorNoteListListener)localIterator.next()).a(paramList);
     }
   }
   
-  private void d()
+  private void g()
   {
-    g();
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558886, null);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout = ((ColorNoteListLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364840));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364844));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363783));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.a();
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131364843));
-    Object localObject = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext);
+    j();
+    this.f = LayoutInflater.from(this.b).inflate(2131624508, null);
+    this.m = ((ColorNoteListLayout)this.f.findViewById(2131430965));
+    this.o = ((ImageView)this.f.findViewById(2131430969));
+    this.i = ((BounceScrollView)this.f.findViewById(2131429716));
+    this.a = this.m.getRecyclerView();
+    this.g = ((ViewStub)this.f.findViewById(2131430968));
+    Object localObject = new LinearLayoutManager(this.b);
     ((LinearLayoutManager)localObject).setOrientation(1);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ColorNoteListController.1(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new ColorNoteListController.2(this));
+    this.a.setLayoutManager((RecyclerView.LayoutManager)localObject);
+    this.m.setOnClickListener(this);
+    this.a.setOnClickListener(this);
+    this.f.setOnClickListener(this);
+    this.o.setOnClickListener(new ColorNoteListController.1(this));
+    this.d = new GestureDetector(new ColorNoteListController.2(this));
     localObject = new ColorNoteListController.3(this);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener((View.OnTouchListener)localObject);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131363783).setOnTouchListener((View.OnTouchListener)localObject);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.setPadding(0, ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext), 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setFocusableInTouchMode(true);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setFocusable(true);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.requestFocus();
+    this.f.setOnTouchListener((View.OnTouchListener)localObject);
+    this.f.findViewById(2131429716).setOnTouchListener((View.OnTouchListener)localObject);
+    this.f.setBackgroundResource(k);
+    this.f.setPadding(0, ImmersiveUtils.getStatusBarHeight(this.b), 0, 0);
+    this.m.setFocusableInTouchMode(true);
+    this.m.setFocusable(true);
+    this.m.requestFocus();
   }
   
-  private void e()
+  private void h()
   {
-    this.jdField_c_of_type_Boolean = false;
-    Object localObject = this.jdField_b_of_type_AndroidViewView;
-    if ((localObject != null) && (((View)localObject).getVisibility() == 0) && (this.jdField_b_of_type_AndroidViewView.hasFocus())) {
+    this.q = false;
+    Object localObject = this.h;
+    if ((localObject != null) && (((View)localObject).getVisibility() == 0) && (this.h.hasFocus())) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.animate().alpha(0.0F).setDuration(200L).start();
-    localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.animate().setInterpolator(new AccelerateInterpolator(3.0F));
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = -this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getWidth();
+    this.f.animate().alpha(0.0F).setDuration(200L).start();
+    localObject = this.a.animate().setInterpolator(new AccelerateInterpolator(3.0F));
+    int i1;
+    if (this.n) {
+      i1 = -this.a.getWidth();
     } else {
-      i = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getWidth();
+      i1 = this.a.getWidth();
     }
-    ((ViewPropertyAnimator)localObject).translationX(i).setDuration(180L).setListener(new ColorNoteListController.6(this)).start();
-    f();
+    ((ViewPropertyAnimator)localObject).translationX(i1).setDuration(180L).setListener(new ColorNoteListController.6(this)).start();
+    i();
   }
   
-  private void f()
+  private void i()
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = r.iterator();
     while (localIterator.hasNext()) {
       ((IColorNoteListListener)localIterator.next()).a();
     }
   }
   
-  private void g()
+  private void j()
   {
-    if (QQTheme.a())
+    if (QQTheme.isNowThemeIsNight())
     {
-      jdField_a_of_type_Int = 2131165344;
-      jdField_b_of_type_Int = 2131165327;
-      jdField_c_of_type_Int = 2130839250;
+      j = 2131165586;
+      k = 2131165564;
+      l = 2130839422;
       return;
     }
-    jdField_a_of_type_Int = 2131167410;
-    jdField_b_of_type_Int = 2131167394;
-    jdField_c_of_type_Int = 2130839249;
+    j = 2131168487;
+    k = 2131168464;
+    l = 2130839421;
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.notifyDataSetChanged();
+    return this.f;
   }
   
   public void a(List<ColorNote> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.a(paramList);
-    a();
+    this.e.a(paramList);
+    b();
   }
   
   public void a(AppRuntime paramAppRuntime, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    d();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter = new ColorNoteListAdapter(jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.a(paramBoolean);
+    this.q = true;
+    this.n = paramBoolean;
+    g();
+    this.e = new ColorNoteListAdapter(r);
+    this.e.a(this);
+    this.e.a(paramBoolean);
     paramAppRuntime = ((IColorNoteDataService)paramAppRuntime.getRuntimeService(IColorNoteDataService.class, "all")).getVisiableColorNotes();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.a(paramAppRuntime);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.a(new ColorNoteListController.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setAnchor(paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListLayout.setHideListener(this);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-    this.jdField_a_of_type_AndroidViewView.animate().alpha(0.9F).setDuration(200L).setListener(new ColorNoteListController.5(this, paramBoolean)).start();
-    if (!this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.e.a(paramAppRuntime);
+    this.a.setAdapter(this.e);
+    this.a.setVisibility(4);
+    this.e.a(new ColorNoteListController.4(this));
+    this.m.setAnchor(paramInt1, paramInt2);
+    this.m.setHideListener(this);
+    this.f.setAlpha(0.0F);
+    this.f.animate().alpha(0.9F).setDuration(200L).setListener(new ColorNoteListController.5(this, paramBoolean)).start();
+    if (!this.p) {
+      this.o.setVisibility(8);
     } else {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.o.setVisibility(0);
     }
     b(paramAppRuntime);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
+    this.q = paramBoolean;
   }
   
   public void b()
   {
-    e();
+    this.e.notifyDataSetChanged();
   }
   
   public void c()
   {
-    g();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(jdField_c_of_type_Int);
+    h();
+  }
+  
+  public void d()
+  {
+    j();
+    this.f.setBackgroundResource(j);
+    this.o.setBackgroundResource(l);
+  }
+  
+  public boolean e()
+  {
+    return this.q;
   }
   
   public void onAnimationsFinished()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.getItemCount() == 0) {
-      e();
+    if (this.e.getItemCount() == 0) {
+      h();
     }
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if ((i == 2131364841) || (i == 2131364840) || (i == 2131364848))
+    int i1 = paramView.getId();
+    if ((i1 == 2131430966) || (i1 == 2131430965) || (i1 == 2131430973))
     {
-      e();
+      h();
       ReportController.b(null, "dc00898", "", "", "0X800A6CE", "0X800A6CE", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -232,7 +232,7 @@ public class ColorNoteListController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListController
  * JD-Core Version:    0.7.0.1
  */

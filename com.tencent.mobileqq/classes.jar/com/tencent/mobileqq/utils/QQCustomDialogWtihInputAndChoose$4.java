@@ -10,7 +10,7 @@ class QQCustomDialogWtihInputAndChoose$4
   
   public boolean a(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.i))
     {
       this.a.a();
       return true;
@@ -20,7 +20,7 @@ class QQCustomDialogWtihInputAndChoose$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.4
  * JD-Core Version:    0.7.0.1
  */

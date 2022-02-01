@@ -35,6 +35,7 @@ public class CommonBadgeUtilImpl
   public static final String MANUFACTURER_OF_HARDWARE_HUAWEI = "huawei";
   public static final String MANUFACTURER_OF_HARDWARE_LENOVO = "lenovo";
   public static final String MANUFACTURER_OF_HARDWARE_NUBIA = "nubia";
+  public static final String MANUFACTURER_OF_HARDWARE_ONEPLUS = "OnePlus";
   public static final String MANUFACTURER_OF_HARDWARE_OPPO = "OPPO";
   public static final String MANUFACTURER_OF_HARDWARE_OPPO_REALME = "Realme";
   public static final String MANUFACTURER_OF_HARDWARE_SANXING = "samsung";
@@ -197,6 +198,26 @@ public class CommonBadgeUtilImpl
     catch (Throwable paramContext) {}
   }
   
+  public static void changeOnePlusBadge(Context paramContext, int paramInt)
+  {
+    paramInt = Math.min(paramInt, mLimitCount);
+    try
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("app_badge_count", paramInt);
+      paramContext.getContentResolver().call(Uri.parse("content://com.android.badge/badge"), "setAppBadgeCount", null, localBundle);
+      paramContext = new StringBuilder();
+      paramContext.append("changeOnePlusBadge count=");
+      paramContext.append(paramInt);
+      QLog.i("CommonBadgeUtilImpl", 1, paramContext.toString());
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("CommonBadgeUtilImpl", 1, "Write unread number FAILED!!! e = ", paramContext);
+    }
+  }
+  
   public static void changeVivoBadge(Context paramContext, int paramInt)
   {
     int j = mLimitCount;
@@ -281,7 +302,7 @@ public class CommonBadgeUtilImpl
   public static boolean isMIUI6()
   {
     // Byte code:
-    //   0: getstatic 107	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   0: getstatic 110	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   3: istore_1
     //   4: iconst_0
     //   5: istore_2
@@ -290,8 +311,8 @@ public class CommonBadgeUtilImpl
     //   8: iload_1
     //   9: ifne +379 -> 388
     //   12: iconst_m1
-    //   13: putstatic 107	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
-    //   16: ldc 97
+    //   13: putstatic 110	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   16: ldc 100
     //   18: astore_3
     //   19: aconst_null
     //   20: astore 5
@@ -299,35 +320,35 @@ public class CommonBadgeUtilImpl
     //   23: astore 7
     //   25: aconst_null
     //   26: astore 6
-    //   28: new 367	java/io/BufferedReader
+    //   28: new 384	java/io/BufferedReader
     //   31: dup
-    //   32: new 369	java/io/InputStreamReader
+    //   32: new 386	java/io/InputStreamReader
     //   35: dup
-    //   36: new 371	java/lang/ProcessBuilder
+    //   36: new 388	java/lang/ProcessBuilder
     //   39: dup
     //   40: iconst_2
-    //   41: anewarray 85	java/lang/String
+    //   41: anewarray 88	java/lang/String
     //   44: dup
     //   45: iconst_0
-    //   46: ldc_w 373
+    //   46: ldc_w 390
     //   49: aastore
     //   50: dup
     //   51: iconst_1
-    //   52: ldc_w 375
+    //   52: ldc_w 392
     //   55: aastore
-    //   56: invokespecial 378	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
-    //   59: invokevirtual 382	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
-    //   62: invokevirtual 388	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   65: invokespecial 391	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   56: invokespecial 395	java/lang/ProcessBuilder:<init>	([Ljava/lang/String;)V
+    //   59: invokevirtual 399	java/lang/ProcessBuilder:start	()Ljava/lang/Process;
+    //   62: invokevirtual 405	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   65: invokespecial 408	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   68: sipush 1024
-    //   71: invokespecial 394	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   71: invokespecial 411	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   74: astore 4
     //   76: aload_3
     //   77: astore 5
     //   79: aload_3
     //   80: astore 6
     //   82: aload 4
-    //   84: invokevirtual 397	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   84: invokevirtual 414	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   87: astore 7
     //   89: aload 7
     //   91: astore 5
@@ -336,43 +357,43 @@ public class CommonBadgeUtilImpl
     //   97: aload 7
     //   99: astore_3
     //   100: aload 4
-    //   102: invokevirtual 400	java/io/BufferedReader:close	()V
+    //   102: invokevirtual 417	java/io/BufferedReader:close	()V
     //   105: aload 4
-    //   107: invokevirtual 400	java/io/BufferedReader:close	()V
+    //   107: invokevirtual 417	java/io/BufferedReader:close	()V
     //   110: aload 7
-    //   112: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   112: invokestatic 323	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   115: ifne +273 -> 388
     //   118: aload 7
-    //   120: invokestatic 404	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   120: invokestatic 421	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   123: istore_0
     //   124: goto +10 -> 134
     //   127: astore_3
     //   128: aload_3
-    //   129: invokevirtual 405	java/lang/NumberFormatException:printStackTrace	()V
+    //   129: invokevirtual 422	java/lang/NumberFormatException:printStackTrace	()V
     //   132: iconst_0
     //   133: istore_0
     //   134: iload_0
     //   135: iconst_3
     //   136: if_icmple +252 -> 388
-    //   139: new 154	java/lang/StringBuilder
+    //   139: new 157	java/lang/StringBuilder
     //   142: dup
-    //   143: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   143: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   146: astore_3
     //   147: aload_3
-    //   148: ldc_w 407
-    //   151: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: ldc_w 424
+    //   151: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: pop
     //   155: aload_3
     //   156: iload_0
-    //   157: invokevirtual 164	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   157: invokevirtual 167	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   160: pop
-    //   161: ldc_w 409
+    //   161: ldc_w 426
     //   164: aload_3
-    //   165: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   168: invokestatic 299	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   165: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   168: invokestatic 316	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   171: pop
     //   172: iconst_1
-    //   173: putstatic 107	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   173: putstatic 110	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   176: goto +212 -> 388
     //   179: astore_3
     //   180: aload 4
@@ -390,95 +411,95 @@ public class CommonBadgeUtilImpl
     //   204: aload 6
     //   206: ifnull +11 -> 217
     //   209: aload 6
-    //   211: invokevirtual 400	java/io/BufferedReader:close	()V
+    //   211: invokevirtual 417	java/io/BufferedReader:close	()V
     //   214: goto +3 -> 217
     //   217: aload 5
-    //   219: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   219: invokestatic 323	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   222: ifne +61 -> 283
     //   225: aload 5
-    //   227: invokestatic 404	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   227: invokestatic 421	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   230: istore_1
     //   231: iload_1
     //   232: istore_0
     //   233: goto +8 -> 241
     //   236: astore_3
     //   237: aload_3
-    //   238: invokevirtual 405	java/lang/NumberFormatException:printStackTrace	()V
+    //   238: invokevirtual 422	java/lang/NumberFormatException:printStackTrace	()V
     //   241: iload_0
     //   242: iconst_3
     //   243: if_icmple +40 -> 283
-    //   246: new 154	java/lang/StringBuilder
+    //   246: new 157	java/lang/StringBuilder
     //   249: dup
-    //   250: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   250: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   253: astore_3
     //   254: aload_3
-    //   255: ldc_w 407
-    //   258: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: ldc_w 424
+    //   258: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   261: pop
     //   262: aload_3
     //   263: iload_0
-    //   264: invokevirtual 164	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   264: invokevirtual 167	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   267: pop
-    //   268: ldc_w 409
+    //   268: ldc_w 426
     //   271: aload_3
-    //   272: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: invokestatic 299	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   272: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   275: invokestatic 316	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   278: pop
     //   279: iconst_1
-    //   280: putstatic 107	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   280: putstatic 110	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   283: aload 4
     //   285: athrow
     //   286: aload 4
     //   288: ifnull +11 -> 299
     //   291: aload 4
-    //   293: invokevirtual 400	java/io/BufferedReader:close	()V
+    //   293: invokevirtual 417	java/io/BufferedReader:close	()V
     //   296: goto +3 -> 299
     //   299: aload_3
-    //   300: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   300: invokestatic 323	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   303: ifne +85 -> 388
     //   306: aload_3
-    //   307: invokestatic 404	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   307: invokestatic 421	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   310: istore_0
     //   311: goto +10 -> 321
     //   314: astore_3
     //   315: aload_3
-    //   316: invokevirtual 405	java/lang/NumberFormatException:printStackTrace	()V
+    //   316: invokevirtual 422	java/lang/NumberFormatException:printStackTrace	()V
     //   319: iconst_0
     //   320: istore_0
     //   321: iload_0
     //   322: iconst_3
     //   323: if_icmple +65 -> 388
-    //   326: new 154	java/lang/StringBuilder
+    //   326: new 157	java/lang/StringBuilder
     //   329: dup
-    //   330: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   330: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   333: astore_3
     //   334: goto -187 -> 147
     //   337: aload 4
     //   339: ifnull +11 -> 350
     //   342: aload 4
-    //   344: invokevirtual 400	java/io/BufferedReader:close	()V
+    //   344: invokevirtual 417	java/io/BufferedReader:close	()V
     //   347: goto +3 -> 350
     //   350: aload_3
-    //   351: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   351: invokestatic 323	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   354: ifne +34 -> 388
     //   357: aload_3
-    //   358: invokestatic 404	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   358: invokestatic 421	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   361: istore_0
     //   362: goto +10 -> 372
     //   365: astore_3
     //   366: aload_3
-    //   367: invokevirtual 405	java/lang/NumberFormatException:printStackTrace	()V
+    //   367: invokevirtual 422	java/lang/NumberFormatException:printStackTrace	()V
     //   370: iconst_0
     //   371: istore_0
     //   372: iload_0
     //   373: iconst_3
     //   374: if_icmple +14 -> 388
-    //   377: new 154	java/lang/StringBuilder
+    //   377: new 157	java/lang/StringBuilder
     //   380: dup
-    //   381: invokespecial 155	java/lang/StringBuilder:<init>	()V
+    //   381: invokespecial 158	java/lang/StringBuilder:<init>	()V
     //   384: astore_3
     //   385: goto -238 -> 147
-    //   388: getstatic 107	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
+    //   388: getstatic 110	com/tencent/commonsdk/badge/CommonBadgeUtilImpl:miui6Flag	I
     //   391: iconst_1
     //   392: if_icmpne +5 -> 397
     //   395: iconst_1
@@ -609,9 +630,9 @@ public class CommonBadgeUtilImpl
       {
         bool1 = true;
         break;
-      } while ((islenovoLanucher("com.lenovo.launcher")) || (isQQLanucher()) || (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) || (Build.MANUFACTURER.equalsIgnoreCase("samsung")) || (Build.MANUFACTURER.equalsIgnoreCase("huawei")) || (Build.MANUFACTURER.equalsIgnoreCase("HONOR")) || (Build.MANUFACTURER.equalsIgnoreCase("OPPO")) || (Build.MANUFACTURER.equalsIgnoreCase("Realme")) || (Build.MANUFACTURER.equalsIgnoreCase("vivo")) || (Build.MANUFACTURER.equalsIgnoreCase("nubia")));
+      } while ((islenovoLanucher("com.lenovo.launcher")) || (isQQLanucher()) || (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) || (Build.MANUFACTURER.equalsIgnoreCase("samsung")) || (Build.MANUFACTURER.equalsIgnoreCase("huawei")) || (Build.MANUFACTURER.equalsIgnoreCase("HONOR")) || (Build.MANUFACTURER.equalsIgnoreCase("OPPO")) || (Build.MANUFACTURER.equalsIgnoreCase("Realme")) || (Build.MANUFACTURER.equalsIgnoreCase("vivo")) || (Build.MANUFACTURER.equalsIgnoreCase("nubia")) || (Build.MANUFACTURER.equalsIgnoreCase("lenovo")));
       bool1 = bool2;
-    } while (Build.MANUFACTURER.equalsIgnoreCase("lenovo"));
+    } while (Build.MANUFACTURER.equalsIgnoreCase("OnePlus"));
     BadgeController.init(sContext);
     if (BadgeController.isSupport(sContext)) {
       bool1 = true;
@@ -713,8 +734,13 @@ public class CommonBadgeUtilImpl
         changeVivoBadge(paramContext, paramInt);
         return;
       }
-      if (Build.MANUFACTURER.equalsIgnoreCase("nubia")) {
+      if (Build.MANUFACTURER.equalsIgnoreCase("nubia"))
+      {
         changeNubiaBadge(paramContext, paramInt);
+        return;
+      }
+      if (Build.MANUFACTURER.equalsIgnoreCase("OnePlus")) {
+        changeOnePlusBadge(paramContext, paramInt);
       }
     }
     else
@@ -986,7 +1012,7 @@ public class CommonBadgeUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.commonsdk.badge.CommonBadgeUtilImpl
  * JD-Core Version:    0.7.0.1
  */

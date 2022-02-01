@@ -11,7 +11,7 @@ class StoryQQ2UidConverter$1
   
   public void run()
   {
-    String str = this.this$0.a(this.a);
+    String str = this.this$0.b(this.a);
     SLog.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from cache. qq = %d, uid = %s.", Long.valueOf(this.a), str);
     ThreadManager.getUIHandler().post(new StoryQQ2UidConverter.1.1(this, str));
   }

@@ -29,12 +29,12 @@ class ReadInJoyDynamicChannelAdapter$1
     com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.a = localAbsBaseArticleInfo;
     ReadInJoyLogicEngine.a().a(localAbsBaseArticleInfo.mArticleID, System.currentTimeMillis());
     this.a.notifyItemChanged(i);
-    RIJFrameworkReportManager.a(ReadInJoyDynamicChannelAdapter.a(this.a), localAbsBaseArticleInfo, (int)localAbsBaseArticleInfo.mChannelID);
+    RIJFrameworkReportManager.a(ReadInJoyDynamicChannelAdapter.b(this.a), localAbsBaseArticleInfo, (int)localAbsBaseArticleInfo.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.compat.ReadInJoyDynamicChannelAdapter.1
  * JD-Core Version:    0.7.0.1
  */

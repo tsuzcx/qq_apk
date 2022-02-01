@@ -13,23 +13,26 @@ class VPNGRenderer$1
   {
     if (VPNGRenderer.a(this.a))
     {
-      this.a.a.start();
+      this.a.e.start();
+      if (VPNGRenderer.b(this.a)) {
+        this.a.k();
+      }
     }
     else
     {
       VPNGRenderer.a(this.a, false);
-      if (VPNGRenderer.a(this.a) != null) {
-        VPNGRenderer.a(this.a).onCompletion(this.a.a);
+      if (VPNGRenderer.c(this.a) != null) {
+        VPNGRenderer.c(this.a).onCompletion(this.a.e);
       }
     }
-    if (VPNGRenderer.a(this.a) != null) {
-      VPNGRenderer.a(this.a).onCall(7, "");
+    if (VPNGRenderer.d(this.a) != null) {
+      VPNGRenderer.d(this.a).onCall(7, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.glrenderer.VPNGRenderer.1
  * JD-Core Version:    0.7.0.1
  */

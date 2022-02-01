@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.kandian.repo.feeds;
 
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.support.annotation.UiThread;
 import android.util.SparseArray;
 import android.view.View;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.kandian.repo.comment.CommentReportInfo;
 import com.tencent.mobileqq.kandian.repo.comment.entity.DiandianTopConfig;
 import com.tencent.mobileqq.kandian.repo.feeds.api.IInsertArticleCallback;
@@ -27,56 +27,31 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.json.JSONObject;
 import tencent.im.oidb.cmd0xbd6.oidb_cmd0xbd6.RspBody;
 
 public class ReadInJoyLogicEngineEventDispatcher
 {
-  private static ReadInJoyLogicEngineEventDispatcher jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyLogicEngineEventDispatcher;
-  private final CopyOnWriteArrayList<ReadInJoyObserver> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static ReadInJoyLogicEngineEventDispatcher b;
+  private final CopyOnWriteArrayList<ReadInJoyObserver> a = new CopyOnWriteArrayList();
   
   public static ReadInJoyLogicEngineEventDispatcher a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyLogicEngineEventDispatcher == null) {
-        jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyLogicEngineEventDispatcher = new ReadInJoyLogicEngineEventDispatcher();
+      if (b == null) {
+        b = new ReadInJoyLogicEngineEventDispatcher();
       }
-      return jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyLogicEngineEventDispatcher;
+      return b;
     }
     finally {}
   }
   
-  public void a()
-  {
-    ??? = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (((Iterator)???).hasNext())
-    {
-      localReadInJoyObserver = (ReadInJoyObserver)((Iterator)???).next();
-      if (localReadInJoyObserver != null) {
-        break label36;
-      }
-    }
-    ReadInJoyObserver localReadInJoyObserver = null;
-    label36:
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      if (localReadInJoyObserver != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localReadInJoyObserver);
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw localObject1;
-    }
-  }
-  
   public void a(float paramFloat, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramFloat, paramInt);
       }
@@ -90,11 +65,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).c(paramInt);
+        ((ReadInJoyObserver)localIterator.next()).m_(paramInt);
       }
       return;
     }
@@ -106,9 +81,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt1, int paramInt2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b_(paramInt1, paramInt2);
       }
@@ -122,9 +97,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
       }
@@ -138,9 +113,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt, long paramLong, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramLong, paramString);
       }
@@ -154,9 +129,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2, String paramString3)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt1, paramLong, paramString1, paramInt2, paramString2, paramString3);
       }
@@ -170,9 +145,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt1, long paramLong, List<Long> paramList, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt1, paramLong, paramList, paramInt2, paramInt3, paramBoolean);
       }
@@ -186,9 +161,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt, AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString1, String paramString2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramAbsBaseArticleInfo, paramString1, paramString2);
       }
@@ -202,9 +177,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt, PositionData paramPositionData)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
+      Iterator localIterator = new ArrayList(this.a).iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramPositionData);
       }
@@ -218,9 +193,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt, KingMomentInfo paramKingMomentInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramKingMomentInfo);
       }
@@ -234,9 +209,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt, Object paramObject)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramObject);
       }
@@ -248,11 +223,27 @@ public class ReadInJoyLogicEngineEventDispatcher
     }
   }
   
+  public void a(int paramInt, @NonNull String paramString1, @NonNull String paramString2, JSONObject paramJSONObject)
+  {
+    synchronized (this.a)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramString1, paramString2, paramJSONObject);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramString1;
+    }
+  }
+  
   public void a(int paramInt, String paramString, List<AbsBaseArticleInfo> paramList, IInsertArticleCallback paramIInsertArticleCallback)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramString, paramList, paramIInsertArticleCallback);
       }
@@ -266,9 +257,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt, List<Long> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramList);
       }
@@ -282,9 +273,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt, paramBoolean, paramList);
       }
@@ -296,11 +287,27 @@ public class ReadInJoyLogicEngineEventDispatcher
     }
   }
   
+  public void a(long paramLong, int paramInt)
+  {
+    synchronized (this.a)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ReadInJoyObserver)localIterator.next()).a(paramLong, paramInt);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
   public void a(long paramLong, int paramInt, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramLong, paramInt, paramString);
       }
@@ -314,9 +321,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b(paramLong, paramBoolean);
       }
@@ -330,9 +337,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(Configuration paramConfiguration)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramConfiguration);
       }
@@ -344,27 +351,11 @@ public class ReadInJoyLogicEngineEventDispatcher
     }
   }
   
-  public void a(Bitmap arg1)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ReadInJoyObserver localReadInJoyObserver = (ReadInJoyObserver)localIterator.next();
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw localObject;
-    }
-  }
-  
   public void a(View paramView)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramView);
       }
@@ -378,9 +369,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(ReadInJoyLogicEngineEventDispatcher.ForEachObserverJob paramForEachObserverJob)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         paramForEachObserverJob.a((ReadInJoyObserver)localIterator.next());
       }
@@ -397,10 +388,10 @@ public class ReadInJoyLogicEngineEventDispatcher
     if (paramReadInJoyObserver == null) {
       return;
     }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramReadInJoyObserver)) {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    if (!this.a.contains(paramReadInJoyObserver)) {
+      synchronized (this.a)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramReadInJoyObserver);
+        this.a.add(paramReadInJoyObserver);
         return;
       }
     }
@@ -408,9 +399,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a_(paramAbsBaseArticleInfo);
       }
@@ -424,9 +415,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramAbsBaseArticleInfo, paramBoolean);
       }
@@ -440,9 +431,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
+      Iterator localIterator = new ArrayList(this.a).iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramTabChannelCoverInfo);
       }
@@ -456,9 +447,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(TopBannerInfo paramTopBannerInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramTopBannerInfo);
       }
@@ -472,9 +463,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(AbsListView paramAbsListView)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramAbsListView);
       }
@@ -488,9 +479,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(Long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramLong);
       }
@@ -504,9 +495,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(Object paramObject, int paramInt, boolean paramBoolean, String... paramVarArgs)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramObject, paramInt, paramBoolean, paramVarArgs);
       }
@@ -525,9 +516,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).c(paramString, paramInt);
       }
@@ -541,9 +532,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramString, paramInt1, paramInt2);
       }
@@ -557,9 +548,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramString1, paramInt1, paramLong, paramString2, paramInt2, paramString3, paramString4);
       }
@@ -573,9 +564,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(String paramString1, int paramInt, oidb_cmd0xbd6.RspBody paramRspBody, String paramString2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramString1, paramInt, paramRspBody, paramString2);
       }
@@ -589,9 +580,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramString1, paramString2, paramInt);
       }
@@ -605,9 +596,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(ArrayList<String> paramArrayList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramArrayList);
       }
@@ -621,9 +612,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(List<SubscriptionFeed> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a_(paramList);
       }
@@ -637,9 +628,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(List<String> paramList, List<TopicInfo> paramList1)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b(paramList, paramList1);
       }
@@ -653,9 +644,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
+      Iterator localIterator = new ArrayList(this.a).iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b(paramBoolean);
       }
@@ -669,9 +660,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<AbsBaseArticleInfo> paramList1)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
       }
@@ -685,9 +676,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, int paramInt, SparseArray<ChannelInfo> paramSparseArray)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramInt, paramSparseArray);
       }
@@ -701,9 +692,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramInt, paramString);
       }
@@ -717,9 +708,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, int paramInt, String paramString, CommentReportInfo paramCommentReportInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramInt, paramString, paramCommentReportInfo);
       }
@@ -733,9 +724,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, int paramInt, String paramString, UserCoinInfo paramUserCoinInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramInt, paramString, paramUserCoinInfo);
       }
@@ -749,9 +740,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramInt1, paramString1, paramString2, paramInt2);
       }
@@ -765,9 +756,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean1, int paramInt, String paramString1, String paramString2, boolean paramBoolean2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean1, paramInt, paramString1, paramString2, paramBoolean2);
       }
@@ -781,9 +772,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean1, paramInt, paramList, paramBoolean2);
       }
@@ -797,9 +788,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, long paramLong, List<RecommendFollowInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramLong, paramList);
       }
@@ -815,9 +806,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   {
     try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+      synchronized (this.a)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+        Iterator localIterator = this.a.iterator();
         while (localIterator.hasNext()) {
           ((ReadInJoyObserver)localIterator.next()).a_(paramBoolean, paramString);
         }
@@ -831,9 +822,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramString1, paramString2, paramString3, paramInt1, paramInt2);
       }
@@ -847,9 +838,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramString1, paramString2, paramString3, paramInt1, paramString4, paramInt2, paramString5);
       }
@@ -863,9 +854,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramString1, paramString2, paramString3, paramString4, paramInt);
       }
@@ -879,9 +870,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, List<DiandianTopConfig> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).d(paramBoolean, paramList);
       }
@@ -896,9 +887,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   @Deprecated
   public void a(boolean paramBoolean1, List<FollowingMember> paramList, long paramLong, boolean paramBoolean2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean1, paramList, paramLong, paramBoolean2);
       }
@@ -912,9 +903,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void a(boolean paramBoolean, List<Long> paramList, List<AbsBaseArticleInfo> paramList1)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramList, paramList1);
       }
@@ -928,27 +919,37 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    ??? = this.a.iterator();
+    while (((Iterator)???).hasNext())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).aE_();
+      localReadInJoyObserver = (ReadInJoyObserver)((Iterator)???).next();
+      if (localReadInJoyObserver != null) {
+        break label36;
+      }
+    }
+    ReadInJoyObserver localReadInJoyObserver = null;
+    label36:
+    synchronized (this.a)
+    {
+      this.a.clear();
+      if (localReadInJoyObserver != null) {
+        this.a.add(localReadInJoyObserver);
       }
       return;
     }
     for (;;)
     {
-      throw localObject;
+      throw localObject1;
     }
   }
   
   public void b(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).d(paramInt);
+        ((ReadInJoyObserver)localIterator.next()).n_(paramInt);
       }
       return;
     }
@@ -960,9 +961,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b(int paramInt, List<Long> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).c(paramInt, paramList);
       }
@@ -976,9 +977,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b(long paramLong, boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramLong, paramBoolean);
       }
@@ -992,9 +993,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b(ReadInJoyObserver paramReadInJoyObserver)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramReadInJoyObserver);
+      this.a.remove(paramReadInJoyObserver);
       return;
     }
   }
@@ -1006,9 +1007,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b(String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b(paramString, paramInt);
       }
@@ -1022,11 +1023,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b(List<TagInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).b(paramList);
+        ((ReadInJoyObserver)localIterator.next()).c(paramList);
       }
       return;
     }
@@ -1036,14 +1037,13 @@ public class ReadInJoyLogicEngineEventDispatcher
     }
   }
   
-  @UiThread
   public void b(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = new ArrayList(this.a).iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).a(paramBoolean);
+        ((ReadInJoyObserver)localIterator.next()).c(paramBoolean);
       }
       return;
     }
@@ -1055,9 +1055,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b(paramBoolean1, paramInt, paramList, paramBoolean2);
       }
@@ -1071,9 +1071,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).f(paramBoolean, paramList);
       }
@@ -1087,9 +1087,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void b(boolean paramBoolean1, List<FollowingMember> paramList, long paramLong, boolean paramBoolean2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b(paramBoolean1, paramList, paramLong, paramBoolean2);
       }
@@ -1103,11 +1103,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void c()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).c();
+        ((ReadInJoyObserver)localIterator.next()).cE_();
       }
       return;
     }
@@ -1119,9 +1119,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void c(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramInt);
       }
@@ -1135,9 +1135,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void c(int paramInt, List<Long> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b(paramInt, paramList);
       }
@@ -1151,11 +1151,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void c(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).d_(paramString);
+        ((ReadInJoyObserver)localIterator.next()).k_(paramString);
       }
       return;
     }
@@ -1167,9 +1167,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void c(String paramString, int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramString, paramInt);
       }
@@ -1181,11 +1181,44 @@ public class ReadInJoyLogicEngineEventDispatcher
     }
   }
   
+  public void c(List<TopicInfo> paramList)
+  {
+    synchronized (this.a)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ReadInJoyObserver)localIterator.next()).b(paramList);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramList;
+    }
+  }
+  
+  @UiThread
+  public void c(boolean paramBoolean)
+  {
+    synchronized (this.a)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ReadInJoyObserver)localIterator.next()).a(paramBoolean);
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
   public void c(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).a(paramBoolean, paramList);
       }
@@ -1199,9 +1232,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void c(boolean paramBoolean1, List<FollowingMember> paramList, long paramLong, boolean paramBoolean2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).c(paramBoolean1, paramList, paramLong, paramBoolean2);
       }
@@ -1215,11 +1248,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void d()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).aq_();
+        ((ReadInJoyObserver)localIterator.next()).cF_();
       }
       return;
     }
@@ -1231,11 +1264,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void d(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).g(paramInt);
+        ((ReadInJoyObserver)localIterator.next()).e(paramInt);
       }
       return;
     }
@@ -1247,9 +1280,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void d(int paramInt, List<ChannelBannerInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).d(paramInt, paramList);
       }
@@ -1263,9 +1296,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void d(boolean paramBoolean, List<Integer> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).g(paramBoolean, paramList);
       }
@@ -1279,11 +1312,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void e()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).ar_();
+        ((ReadInJoyObserver)localIterator.next()).cG_();
       }
       return;
     }
@@ -1295,11 +1328,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void e(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).e(paramInt);
+        ((ReadInJoyObserver)localIterator.next()).f(paramInt);
       }
       return;
     }
@@ -1311,9 +1344,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void e(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
+      Iterator localIterator = new ArrayList(this.a).iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).e(paramBoolean, paramList);
       }
@@ -1327,11 +1360,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void f()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).l();
+        ((ReadInJoyObserver)localIterator.next()).cK_();
       }
       return;
     }
@@ -1343,11 +1376,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void f(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = new ArrayList(this.a).iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).f(paramInt);
+        ((ReadInJoyObserver)localIterator.next()).o_(paramInt);
       }
       return;
     }
@@ -1359,9 +1392,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void f(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).b(paramBoolean, paramList);
       }
@@ -1375,27 +1408,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void g()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).o();
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw localObject;
-    }
-  }
-  
-  public void g(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList).iterator();
-      while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).j_(paramInt);
+        ((ReadInJoyObserver)localIterator.next()).s();
       }
       return;
     }
@@ -1407,9 +1424,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void g(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).c(paramBoolean, paramList);
       }
@@ -1423,11 +1440,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void h()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).p();
+        ((ReadInJoyObserver)localIterator.next()).t();
       }
       return;
     }
@@ -1439,9 +1456,9 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void h(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((ReadInJoyObserver)localIterator.next()).h(paramBoolean, paramList);
       }
@@ -1455,11 +1472,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void i()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).h();
+        ((ReadInJoyObserver)localIterator.next()).cH_();
       }
       return;
     }
@@ -1471,11 +1488,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void j()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).aF_();
+        ((ReadInJoyObserver)localIterator.next()).cI_();
       }
       return;
     }
@@ -1487,11 +1504,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void k()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).k();
+        ((ReadInJoyObserver)localIterator.next()).cJ_();
       }
       return;
     }
@@ -1503,19 +1520,19 @@ public class ReadInJoyLogicEngineEventDispatcher
   
   public void l()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      ((ReadInJoyObserver)localIterator.next()).g();
+      ((ReadInJoyObserver)localIterator.next()).f();
     }
   }
   
   public void m()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).i();
+        ((ReadInJoyObserver)localIterator.next()).cL_();
       }
       return;
     }
@@ -1529,11 +1546,11 @@ public class ReadInJoyLogicEngineEventDispatcher
   {
     try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+      synchronized (this.a)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+        Iterator localIterator = this.a.iterator();
         while (localIterator.hasNext()) {
-          ((ReadInJoyObserver)localIterator.next()).as_();
+          ((ReadInJoyObserver)localIterator.next()).cM_();
         }
         return;
       }
@@ -1542,10 +1559,26 @@ public class ReadInJoyLogicEngineEventDispatcher
     finally {}
     for (;;) {}
   }
+  
+  public void o()
+  {
+    synchronized (this.a)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ReadInJoyObserver)localIterator.next()).cN_();
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher
  * JD-Core Version:    0.7.0.1
  */

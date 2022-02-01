@@ -15,41 +15,39 @@ import java.util.Arrays;
 public class VipPendantDrawable
   extends Drawable
 {
-  protected int a;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  protected Paint a;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  VipPendantDrawable.MutilePlayInfo jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPendantDrawable$MutilePlayInfo;
-  protected Object a;
-  protected int b = 50;
+  protected int a = -1;
+  protected Object b;
+  protected Paint c = new Paint(6);
+  protected int d = 50;
+  Handler e = new Handler(Looper.getMainLooper());
+  Resources f;
+  VipPendantDrawable.MutilePlayInfo g;
   
   public VipPendantDrawable(Resources paramResources)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+    this.f = paramResources;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.b = 50;
+    this.a = -1;
+    this.d = 50;
   }
   
   public void a(VipPendantDrawable.MutilePlayInfo paramMutilePlayInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPendantDrawable$MutilePlayInfo = paramMutilePlayInfo;
+    this.g = paramMutilePlayInfo;
   }
   
   public void a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    if ((localObject != null) && ((localObject instanceof VipPendantDrawable.SourcesBigPng)) && (((VipPendantDrawable.SourcesBigPng)localObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((VipPendantDrawable.SourcesBigPng)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
+    Object localObject = this.b;
+    if ((localObject != null) && ((localObject instanceof VipPendantDrawable.SourcesBigPng)) && (((VipPendantDrawable.SourcesBigPng)localObject).a != null) && (this.a == 1) && (((VipPendantDrawable.SourcesBigPng)this.b).a.equals(paramString))) {
       return;
     }
     a();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangObject = new VipPendantDrawable.SourcesBigPng(this, paramString);
+    this.a = 1;
+    this.b = new VipPendantDrawable.SourcesBigPng(this, paramString);
   }
   
   public void a(String[] paramArrayOfString, int paramInt)
@@ -59,9 +57,9 @@ public class VipPendantDrawable
     }
     try
     {
-      if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof VipPendantDrawable.SourcesBigPng)))
+      if ((this.a == 0) && (this.b != null) && (!(this.b instanceof VipPendantDrawable.SourcesBigPng)))
       {
-        boolean bool = Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString);
+        boolean bool = Arrays.equals((String[])this.b, paramArrayOfString);
         if (bool) {
           return;
         }
@@ -74,23 +72,23 @@ public class VipPendantDrawable
       localStringBuilder.append(MsfSdkUtils.getStackTraceString(localException));
       QLog.e("VipPendantDrawable", 1, localStringBuilder.toString());
       a();
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangObject = paramArrayOfString;
-      this.b = paramInt;
+      this.a = 0;
+      this.b = paramArrayOfString;
+      this.d = paramInt;
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Int == -1) {
+    if (this.a == -1) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPendantDrawable$MutilePlayInfo;
+    Object localObject = this.g;
     if (localObject != null)
     {
       localObject = ((VipPendantDrawable.MutilePlayInfo)localObject).a();
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        paramCanvas.drawBitmap((Bitmap)localObject, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap((Bitmap)localObject, null, getBounds(), this.c);
       }
     }
   }
@@ -102,28 +100,28 @@ public class VipPendantDrawable
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.c.getAlpha())
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.c.setAlpha(paramInt);
       invalidateSelf();
     }
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.c.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
   
   public void setDither(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    this.c.setDither(paramBoolean);
     invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable
  * JD-Core Version:    0.7.0.1
  */

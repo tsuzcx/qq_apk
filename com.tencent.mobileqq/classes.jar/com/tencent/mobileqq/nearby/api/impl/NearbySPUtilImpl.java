@@ -16,12 +16,12 @@ public class NearbySPUtilImpl
   
   public boolean checkPreload(String paramString)
   {
-    return NearbySPUtil.e(paramString);
+    return NearbySPUtil.h(paramString);
   }
   
   public void clearCornerRedDot(String paramString)
   {
-    NearbySPUtil.a(paramString);
+    NearbySPUtil.f(paramString);
   }
   
   public boolean contains(String paramString1, String paramString2)
@@ -36,12 +36,12 @@ public class NearbySPUtilImpl
   
   public void enterNearbyProcess(String paramString)
   {
-    NearbySPUtil.d(paramString);
+    NearbySPUtil.k(paramString);
   }
   
   public boolean getDatingSessionSwitch(String paramString)
   {
-    return NearbySPUtil.d(paramString);
+    return NearbySPUtil.e(paramString);
   }
   
   public String getLiveTabWebViewUrlByJson()
@@ -56,7 +56,7 @@ public class NearbySPUtilImpl
   
   public SosoLbsInfo getNearbyLastLocation(String paramString)
   {
-    return NearbySPUtil.a(paramString);
+    return NearbySPUtil.g(paramString);
   }
   
   public String getNearbyTabUrlParams()
@@ -66,7 +66,7 @@ public class NearbySPUtilImpl
   
   public boolean getNotifySwitchState(String paramString)
   {
-    return NearbySPUtil.c(paramString);
+    return NearbySPUtil.d(paramString);
   }
   
   public SharedPreferences getSharedPreferences(String paramString1, String paramString2, int paramInt)
@@ -76,12 +76,12 @@ public class NearbySPUtilImpl
   
   public int getUnreadCount(String paramString1, String paramString2)
   {
-    return NearbySPUtil.a(paramString1, paramString2);
+    return NearbySPUtil.b(paramString1, paramString2);
   }
   
   public String getUrlJsonToStr(String paramString)
   {
-    return NearbySPUtil.a(paramString);
+    return NearbySPUtil.o(paramString);
   }
   
   public Object getValue(SharedPreferences paramSharedPreferences, String paramString, Object paramObject)
@@ -101,12 +101,12 @@ public class NearbySPUtilImpl
   
   public Object[] getVoteInfo(String paramString)
   {
-    return NearbySPUtil.a(paramString);
+    return NearbySPUtil.c(paramString);
   }
   
   public boolean isNeedNearbyShowGuide(String paramString)
   {
-    return NearbySPUtil.f(paramString);
+    return NearbySPUtil.l(paramString);
   }
   
   public boolean isObtainLocAllowed(String paramString)
@@ -121,22 +121,22 @@ public class NearbySPUtilImpl
   
   public void preloadNearbyProcessStart(String paramString)
   {
-    NearbySPUtil.b(paramString);
+    NearbySPUtil.i(paramString);
   }
   
   public void preloadNearbyProcessSuc(String paramString)
   {
-    NearbySPUtil.c(paramString);
+    NearbySPUtil.j(paramString);
   }
   
   public void saveLiveTabWebViewUrlParam(String paramString)
   {
-    NearbySPUtil.f(paramString);
+    NearbySPUtil.n(paramString);
   }
   
   public void saveNearbyTabUrlParams(String paramString)
   {
-    NearbySPUtil.e(paramString);
+    NearbySPUtil.m(paramString);
   }
   
   public void setNearbyLastLocation(String paramString, SosoLbsInfo paramSosoLbsInfo)
@@ -146,7 +146,7 @@ public class NearbySPUtilImpl
   
   public void setNotifySwitchState(String paramString, boolean paramBoolean)
   {
-    NearbySPUtil.a(paramString, paramBoolean);
+    NearbySPUtil.c(paramString, paramBoolean);
   }
   
   public boolean setObtainLocAllowed(String paramString, boolean paramBoolean)
@@ -156,17 +156,17 @@ public class NearbySPUtilImpl
   
   public boolean setValue(SharedPreferences paramSharedPreferences, String paramString, Object paramObject)
   {
-    return NearbySPUtil.a(paramSharedPreferences, paramString, paramObject);
+    return NearbySPUtil.b(paramSharedPreferences, paramString, paramObject);
   }
   
   public boolean setValue(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
   {
-    return NearbySPUtil.a(paramString1, paramString2, paramInt, paramString3, paramObject);
+    return NearbySPUtil.b(paramString1, paramString2, paramInt, paramString3, paramObject);
   }
   
   public boolean setValue(String paramString1, String paramString2, Object paramObject)
   {
-    return NearbySPUtil.a(paramString1, paramString2, paramObject);
+    return NearbySPUtil.b(paramString1, paramString2, paramObject);
   }
   
   public boolean setVisibilityForPeople(String paramString, boolean paramBoolean)
@@ -181,7 +181,7 @@ public class NearbySPUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.NearbySPUtilImpl
  * JD-Core Version:    0.7.0.1
  */

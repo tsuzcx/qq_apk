@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public abstract class a
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  protected int a;
+  protected final int a;
   protected CopyOnWriteArrayList<Integer> b;
   protected CopyOnWriteArrayList<a.a> c;
   
@@ -141,7 +141,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.a
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class QFileSendBarManager$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.e)
     {
       int i = 4;
       if (QFileSendBarManager.a(this.a) == 1) {
@@ -26,7 +26,7 @@ class QFileSendBarManager$1
       } else if (QFileSendBarManager.a(this.a) == 0) {
         i = 1;
       }
-      if ((QFileSendBarManager.a(this.a) != null) && (QFileSendBarManager.a(this.a).equals(AppConstants.DATALINE_PC_UIN))) {
+      if ((QFileSendBarManager.b(this.a) != null) && (QFileSendBarManager.b(this.a).equals(AppConstants.DATALINE_PC_UIN))) {
         i = 3;
       }
       long l = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount();
@@ -41,17 +41,17 @@ class QFileSendBarManager$1
         localObject1 = new Intent();
         ((Intent)localObject1).putExtra("file_choose_search_result_code", "file_choose_search_result_code");
         ((Intent)localObject1).putParcelableArrayListExtra("reslut_select_file_info_list", (ArrayList)localObject2);
-        localObject2 = (Activity)this.a.jdField_a_of_type_AndroidContentContext;
+        localObject2 = (Activity)this.a.a;
         ((Activity)localObject2).setResult(-1, (Intent)localObject1);
         ((Activity)localObject2).finish();
       }
       else if (QFileSendBarManager.a(this.a) == 1)
       {
-        QFileSendBarManager.a(this.a);
+        QFileSendBarManager.c(this.a);
       }
       else
       {
-        QFileSendBarManager.b(this.a);
+        QFileSendBarManager.d(this.a);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -59,7 +59,7 @@ class QFileSendBarManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.1
  * JD-Core Version:    0.7.0.1
  */

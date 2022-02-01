@@ -13,13 +13,13 @@ class EditPicActivity$1
     SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
     EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.mEditVideoPartManager.a(EditDoodleExport.class);
     if (localEditDoodleExport != null) {
-      localEditDoodleExport.b();
+      localEditDoodleExport.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicActivity.1
  * JD-Core Version:    0.7.0.1
  */

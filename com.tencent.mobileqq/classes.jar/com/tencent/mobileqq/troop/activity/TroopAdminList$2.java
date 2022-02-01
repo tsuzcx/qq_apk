@@ -14,12 +14,12 @@ class TroopAdminList$2
     if (QLog.isColorLevel()) {
       QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
     }
-    this.a.c();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.2
  * JD-Core Version:    0.7.0.1
  */

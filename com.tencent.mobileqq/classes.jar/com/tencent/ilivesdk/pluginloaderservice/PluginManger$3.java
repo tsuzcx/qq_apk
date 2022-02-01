@@ -19,24 +19,24 @@ final class PluginManger$3
     {
       if (new PluginUpdater().a(this.a).a().exists())
       {
-        DataReport.o(String.format("updater %s success.", new Object[] { this.a.c() }));
+        DataReport.o(String.format("updater %s success.", new Object[] { this.a.e() }));
         return;
       }
-      DataReport.n(String.format("updater %s fail.", new Object[] { this.a.c() }));
+      DataReport.n(String.format("updater %s fail.", new Object[] { this.a.e() }));
       return;
     }
     catch (IOException localIOException)
     {
-      String str = String.format("updaterPlugin[%s] IOException: %s", new Object[] { this.a.c(), localIOException.getMessage() });
+      String str = String.format("updaterPlugin[%s] IOException: %s", new Object[] { this.a.e(), localIOException.getMessage() });
       DataReport.n(str);
       LogUtil.c("PluginManger", str, new Object[0]);
-      PluginManger.a().remove(this.a.c());
+      PluginManger.a().remove(this.a.e());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.PluginManger.3
  * JD-Core Version:    0.7.0.1
  */

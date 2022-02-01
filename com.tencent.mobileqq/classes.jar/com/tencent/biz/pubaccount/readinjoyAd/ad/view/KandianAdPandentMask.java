@@ -22,7 +22,7 @@ public class KandianAdPandentMask
   public static void a(JSONObject paramJSONObject)
   {
     ((IRIJSuperMaskService)QRoute.api(IRIJSuperMaskService.class)).setShowStatus(4);
-    SuperMaskDataMgr.a.a();
+    SuperMaskDataMgr.a.f();
   }
   
   public void a()
@@ -43,19 +43,19 @@ public class KandianAdPandentMask
     localStringBuilder.append(str2);
     str2 = localStringBuilder.toString();
     int i = paramJSONObject.optInt("superMaskType");
-    if (!FileUtil.b(str2))
+    if (!FileUtil.d(str2))
     {
       SuperMaskReportMgr.a.a("fileNotExists", "");
       a(paramJSONObject);
       return;
     }
-    if (!new ChannelIdCheckStep().a())
+    if (!new ChannelIdCheckStep().c())
     {
       a(paramJSONObject);
       return;
     }
     ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "real show superMask");
-    if (SuperMaskDataMgr.a.b()) {
+    if (SuperMaskDataMgr.a.e()) {
       this.a = new KandianCompetitiveAdPandentView(paramActivity, paramListView, str1);
     } else {
       this.a = new KandianAdPandentMask.KandianAdPandentView(paramActivity, paramListView, str2);
@@ -81,7 +81,7 @@ public class KandianAdPandentMask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianAdPandentMask
  * JD-Core Version:    0.7.0.1
  */

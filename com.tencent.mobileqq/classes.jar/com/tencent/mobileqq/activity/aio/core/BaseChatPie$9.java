@@ -7,12 +7,12 @@ class BaseChatPie$9
   
   public void run()
   {
-    this.this$0.C();
+    this.this$0.Z();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.9
  * JD-Core Version:    0.7.0.1
  */

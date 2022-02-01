@@ -30,8 +30,8 @@ class SignTextEditFragment$SignatureTopicObserver
     } else {
       SignTextEditFragment.a(this.a, 2);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.a(paramObject, true)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.notifyDataSetChanged();
+    if (this.a.n.a(paramObject, true)) {
+      this.a.n.notifyDataSetChanged();
     }
   }
   
@@ -62,15 +62,15 @@ class SignTextEditFragment$SignatureTopicObserver
     } else {
       SignTextEditFragment.a(this.a, 3);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.a((List)localObject, false)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter.notifyDataSetChanged();
+    if (this.a.n.a((List)localObject, false)) {
+      this.a.n.notifyDataSetChanged();
     }
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
+    this.a.f.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.SignatureTopicObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -18,20 +18,20 @@ class BaseChatPie$13
   
   public void run()
   {
-    if (AIOMusicSkin.a().n_()) {
+    if (AIOMusicSkin.a().du_()) {
       return;
     }
-    if ((ChatBackground.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, 3, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground)) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a != this.this$0.d.getBackground())) {
-      this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(60, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a));
+    if ((ChatBackground.a(this.this$0.e, this.this$0.d.getCurrentAccountUin(), this.this$0.ah.b, true, 3, this.this$0.ah.H)) || (this.this$0.ah.H.c != this.this$0.ba.getBackground())) {
+      this.this$0.m.sendMessage(this.this$0.m.obtainMessage(60, this.this$0.ah.H.c));
     }
-    if (ChatBackgroundManager.b(new File(ChatBackgroundUtil.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))) {
+    if (ChatBackgroundManager.b(new File(ChatBackgroundUtil.a(this.this$0.e, this.this$0.d.getCurrentAccountUin(), this.this$0.ah.b)))) {
       ThreadManager.getSubThreadHandler().postDelayed(new BaseChatPie.13.1(this), 2000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.13
  * JD-Core Version:    0.7.0.1
  */

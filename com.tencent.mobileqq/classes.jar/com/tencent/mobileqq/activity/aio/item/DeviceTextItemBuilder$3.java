@@ -16,9 +16,9 @@ class DeviceTextItemBuilder$3
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetSupport(this.a.a))
+    if (!NetworkUtil.isNetSupport(this.a.e))
     {
-      QQToast.a(this.a.a, HardCodeUtil.a(2131703390), 2000).a();
+      QQToast.makeText(this.a.e, HardCodeUtil.a(2131901350), 2000).show();
       return;
     }
     paramView = new Intent();
@@ -26,12 +26,12 @@ class DeviceTextItemBuilder$3
     paramView.setAction("android.intent.action.VIEW");
     paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
     paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
-    this.a.a.startActivity(paramView);
+    this.a.e.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

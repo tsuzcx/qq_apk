@@ -1,6 +1,8 @@
 package com.tencent.aelight.camera.ae.control;
 
 import android.annotation.SuppressLint;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowFilterDataManager;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowMaterialManager;
 import com.tencent.aelight.camera.ae.data.AEMaterialManager;
 import com.tencent.aelight.camera.ae.play.AEPlayShowMaterialManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
@@ -13,9 +15,9 @@ import mqq.app.AppRuntime;
 
 public class AEQIMManager
 {
+  private final IAEQIMManager[] a = new IAEQIMManager[5];
   @SuppressLint({"UseSparseArrays"})
-  private final HashMap<Integer, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final IAEQIMManager[] jdField_a_of_type_ArrayOfComTencentAelightCameraAeControlIAEQIMManager = new IAEQIMManager[3];
+  private final HashMap<Integer, Object> b = new HashMap();
   
   public static AEQIMManager a()
   {
@@ -27,7 +29,7 @@ public class AEQIMManager
     return AEQIMManager.InstanceHolder.a().b(paramInt);
   }
   
-  private boolean a()
+  private boolean c()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (QLog.isColorLevel())
@@ -40,68 +42,47 @@ public class AEQIMManager
     return ((localAppRuntime instanceof QQAppInterface)) || ((localAppRuntime instanceof ToolRuntimePeak));
   }
   
-  public void a()
-  {
-    int i = 0;
-    for (;;)
-    {
-      Object localObject3 = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAeControlIAEQIMManager;
-      if (i < localObject3.length) {
-        try
-        {
-          if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i))) {
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), new Object());
-          }
-          Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-          try
-          {
-            localObject3 = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAeControlIAEQIMManager[i];
-            if (localObject3 != null)
-            {
-              SLog.b("AEQIMManager", "destroy manager : %s", localObject3);
-              ((IAEQIMManager)localObject3).onDestroy();
-            }
-            this.jdField_a_of_type_ArrayOfComTencentAelightCameraAeControlIAEQIMManager[i] = null;
-            i += 1;
-            continue;
-          }
-          finally {}
-          return;
-        }
-        finally {}
-      }
-    }
-  }
-  
   public IAEQIMManager b(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAeControlIAEQIMManager;
+    Object localObject1 = this.a;
     Object localObject3 = localObject1[paramInt];
     if (localObject3 == null) {
       try
       {
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new Object());
+        if (!this.b.containsKey(Integer.valueOf(paramInt))) {
+          this.b.put(Integer.valueOf(paramInt), new Object());
         }
-        localObject3 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        localObject3 = this.b.get(Integer.valueOf(paramInt));
         try
         {
-          localObject1 = this.jdField_a_of_type_ArrayOfComTencentAelightCameraAeControlIAEQIMManager[paramInt];
+          localObject1 = this.a[paramInt];
           if (localObject1 != null) {
             return localObject1;
           }
-          if (a())
+          if (c())
           {
             if (paramInt != 1)
             {
-              if (paramInt == 2) {
+              if (paramInt != 2)
+              {
+                if (paramInt != 3)
+                {
+                  if (paramInt == 4) {
+                    localObject1 = new AEFlashShowFilterDataManager();
+                  }
+                }
+                else {
+                  localObject1 = new AEFlashShowMaterialManager();
+                }
+              }
+              else {
                 localObject1 = new AEPlayShowMaterialManager();
               }
             }
             else {
               localObject1 = new AEMaterialManager();
             }
-            this.jdField_a_of_type_ArrayOfComTencentAelightCameraAeControlIAEQIMManager[paramInt] = localObject1;
+            this.a[paramInt] = localObject1;
             if (localObject1 != null)
             {
               ((IAEQIMManager)localObject1).onInit();
@@ -117,10 +98,43 @@ public class AEQIMManager
       finally {}
     }
   }
+  
+  public void b()
+  {
+    int i = 0;
+    for (;;)
+    {
+      Object localObject3 = this.a;
+      if (i < localObject3.length) {
+        try
+        {
+          if (!this.b.containsKey(Integer.valueOf(i))) {
+            this.b.put(Integer.valueOf(i), new Object());
+          }
+          Object localObject1 = this.b.get(Integer.valueOf(i));
+          try
+          {
+            localObject3 = this.a[i];
+            if (localObject3 != null)
+            {
+              SLog.b("AEQIMManager", "destroy manager : %s", localObject3);
+              ((IAEQIMManager)localObject3).onDestroy();
+            }
+            this.a[i] = null;
+            i += 1;
+            continue;
+          }
+          finally {}
+          return;
+        }
+        finally {}
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.control.AEQIMManager
  * JD-Core Version:    0.7.0.1
  */

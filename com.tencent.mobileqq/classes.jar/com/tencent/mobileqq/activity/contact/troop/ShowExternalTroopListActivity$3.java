@@ -14,14 +14,14 @@ class ShowExternalTroopListActivity$3
   
   public void run()
   {
-    String str = ContactUtils.a(this.this$0.app, this.this$0.a);
-    Card localCard = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.this$0.a);
+    String str = ContactUtils.a(this.this$0.app, this.this$0.n);
+    Card localCard = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.this$0.n);
     this.this$0.runOnUiThread(new ShowExternalTroopListActivity.3.1(this, str, localCard));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.3
  * JD-Core Version:    0.7.0.1
  */

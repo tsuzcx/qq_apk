@@ -17,8 +17,8 @@ class WSVideoPreDownloadManager$2
     localStringBuilder.append(" ERROR code: ");
     localStringBuilder.append(paramInt);
     WSLog.d("WS_VIDEO_PRE_DL", localStringBuilder.toString());
-    if (WSVideoPreDownloadManager.a(this.a) != null) {
-      WSVideoPreDownloadManager.a(this.a).a(paramString1, paramInt, paramString2);
+    if (WSVideoPreDownloadManager.b(this.a) != null) {
+      WSVideoPreDownloadManager.b(this.a).a(paramString1, paramInt, paramString2);
     }
     ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
   }
@@ -30,15 +30,15 @@ class WSVideoPreDownloadManager$2
     localStringBuilder.append(paramString1);
     localStringBuilder.append(" SUCCESS");
     WSLog.g("WS_VIDEO_PRE_DL", localStringBuilder.toString());
-    if (WSVideoPreDownloadManager.a(this.a) != null) {
-      WSVideoPreDownloadManager.a(this.a).a(paramString1, paramString2);
+    if (WSVideoPreDownloadManager.b(this.a) != null) {
+      WSVideoPreDownloadManager.b(this.a).a(paramString1, paramString2);
     }
     ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.2
  * JD-Core Version:    0.7.0.1
  */

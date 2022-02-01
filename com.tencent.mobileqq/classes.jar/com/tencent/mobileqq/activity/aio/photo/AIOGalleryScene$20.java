@@ -14,13 +14,13 @@ class AIOGalleryScene$20
   {
     try
     {
-      if (this.jdField_a_of_type_JavaIoFile != null)
+      if (this.a != null)
       {
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("file://");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        ((StringBuilder)localObject).append(this.a.getAbsolutePath());
         localObject = Uri.parse(((StringBuilder)localObject).toString());
-        AIOGalleryScene.a(this.this$0, (Uri)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+        AIOGalleryScene.a(this.this$0, (Uri)localObject, this.b);
         return;
       }
     }
@@ -35,7 +35,7 @@ class AIOGalleryScene$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.20
  * JD-Core Version:    0.7.0.1
  */

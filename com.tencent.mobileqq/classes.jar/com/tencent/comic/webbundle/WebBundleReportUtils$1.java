@@ -31,16 +31,16 @@ final class WebBundleReportUtils$1
     } else {
       str4 = Build.VERSION.RELEASE;
     }
-    int i = HttpUtil.getNetWorkType();
-    if (i != -1)
+    int k = HttpUtil.getNetWorkType();
+    if (k != -1)
     {
-      if (i != 1)
+      if (k != 1)
       {
-        if (i != 2)
+        if (k != 2)
         {
-          if (i != 3)
+          if (k != 3)
           {
-            if (i == 4) {
+            if (k == 4) {
               str1 = "4G";
             }
           }
@@ -68,31 +68,31 @@ final class WebBundleReportUtils$1
     localStringBuffer.append('|');
     localStringBuffer.append(str1);
     localStringBuffer.append('|');
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.a);
     localStringBuffer.append('|');
-    localStringBuffer.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuffer.append(this.b);
     localStringBuffer.append('|');
-    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(this.c);
     localStringBuffer.append('|');
-    localStringBuffer.append(this.jdField_b_of_type_Int);
-    localStringBuffer.append('|');
-    localStringBuffer.append(this.jdField_c_of_type_Int);
-    localStringBuffer.append('|');
-    localStringBuffer.append(this.jdField_d_of_type_Int);
-    localStringBuffer.append('|');
-    localStringBuffer.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuffer.append('|');
-    localStringBuffer.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuffer.append(this.d);
     localStringBuffer.append('|');
     localStringBuffer.append(this.e);
     localStringBuffer.append('|');
     localStringBuffer.append(this.f);
+    localStringBuffer.append('|');
+    localStringBuffer.append(this.g);
+    localStringBuffer.append('|');
+    localStringBuffer.append(this.h);
+    localStringBuffer.append('|');
+    localStringBuffer.append(this.i);
+    localStringBuffer.append('|');
+    localStringBuffer.append(this.j);
     DcReportUtil.a(null, "sendtdbank|b_sng_qqvip_sng_qq_comic|sng_mobileqq_times_statistics", localStringBuffer.toString(), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.webbundle.WebBundleReportUtils.1
  * JD-Core Version:    0.7.0.1
  */

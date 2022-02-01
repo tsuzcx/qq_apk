@@ -11,7 +11,6 @@ import com.tencent.mobileqq.apollo.api.IApolloMessageService;
 import com.tencent.mobileqq.apollo.handler.IApolloExtensionHandler;
 import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
-import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -19,7 +18,6 @@ import com.tencent.mobileqq.avatar.api.IQQAvatarHandlerService;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.profilecommon.processor.AbsProfileCommonProcessor;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
@@ -29,6 +27,7 @@ import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
+import mqq.util.LogUtil;
 
 @KeepClassConstructor
 public class ApolloPushControlProcessor
@@ -135,7 +134,7 @@ public class ApolloPushControlProcessor
       ((IApolloDaoManagerService)localObject).saveOrUpdateApolloBaseInfo(localApolloBaseInfo);
     }
     localObject = localQQAppInterface.getMessageFacade();
-    if ((localObject == null) || (!((QQMessageFacade)localObject).a()) || (TextUtils.isEmpty(((QQMessageFacade)localObject).a())) || (!CmShowAioMatcherImpl.judgeSupported(((QQMessageFacade)localObject).a(), 1)) || (!((QQMessageFacade)localObject).a().equals(paramByteStringMicro))) {
+    if ((localObject == null) || (!((QQMessageFacade)localObject).n()) || (TextUtils.isEmpty(((QQMessageFacade)localObject).l())) || (!CmShowAioMatcherImpl.judgeSupported(((QQMessageFacade)localObject).m(), 1)) || (!((QQMessageFacade)localObject).l().equals(paramByteStringMicro))) {
       i = 0;
     }
     if (((paramByteStringMicro.equals(localQQAppInterface.getCurrentUin())) && (paramIApolloManagerService.getApolloUserStatus() == 2)) || (i != 0))
@@ -251,7 +250,7 @@ public class ApolloPushControlProcessor
     paramByteStringMicro = String.valueOf(this.a);
     Object localObject = (IApolloDaoManagerService)this.appRuntime.getRuntimeService(IApolloDaoManagerService.class, "all");
     ApolloBaseInfo localApolloBaseInfo = ((IApolloDaoManagerService)localObject).getApolloBaseInfo(paramByteStringMicro);
-    QLog.d("Q.msg.BaseMessageProcessor", 1, new Object[] { "cmshow_online_push,  uin: ", ((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramByteStringMicro), ", cmshow3dFlag: ", Integer.valueOf(i), ", local=", Integer.valueOf(localApolloBaseInfo.cmshow3dFlag) });
+    QLog.d("Q.msg.BaseMessageProcessor", 1, new Object[] { "cmshow_online_push,  uin: ", LogUtil.wrapLogUin(paramByteStringMicro), ", cmshow3dFlag: ", Integer.valueOf(i), ", local=", Integer.valueOf(localApolloBaseInfo.cmshow3dFlag) });
     if (localApolloBaseInfo.cmshow3dFlag != i)
     {
       int j = localApolloBaseInfo.cmshow3dFlag;
@@ -286,7 +285,7 @@ public class ApolloPushControlProcessor
     i = 0;
     if (bool)
     {
-      localObject = ((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin((String)localObject);
+      localObject = LogUtil.wrapLogUin((String)localObject);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramByteStringMicro.apolloDrawerStatus);
       localStringBuilder.append(";");
@@ -397,7 +396,7 @@ public class ApolloPushControlProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.push.ApolloPushControlProcessor
  * JD-Core Version:    0.7.0.1
  */

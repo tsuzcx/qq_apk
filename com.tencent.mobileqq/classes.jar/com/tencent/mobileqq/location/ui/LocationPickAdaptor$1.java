@@ -12,24 +12,24 @@ class LocationPickAdaptor$1
   public void a(List<LocationRoom.Venue> paramList)
   {
     int i;
-    if ((LocationPickAdaptor.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor) != null) && (LocationPickAdaptor.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor).size() > 0)) {
+    if ((LocationPickAdaptor.a(this.b) != null) && (LocationPickAdaptor.a(this.b).size() > 0)) {
       i = 1;
     } else {
       i = 0;
     }
-    LocationPickAdaptor.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor, paramList);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor.notifyDataSetChanged();
-    LocationPickAdaptor.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor, TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if ((LocationPickAdaptor.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor).size() > 0) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    LocationPickAdaptor.a(this.b, paramList);
+    this.b.notifyDataSetChanged();
+    LocationPickAdaptor.a(this.b, TextUtils.isEmpty(this.a));
+    if ((LocationPickAdaptor.a(this.b).size() > 0) && (TextUtils.isEmpty(this.a)))
     {
       if (i == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor.a(0);
+        this.b.b(0);
       }
     }
-    else if (LocationPickAdaptor.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor) != null)
+    else if (LocationPickAdaptor.b(this.b) != null)
     {
-      paramList = LocationPickAdaptor.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor);
-      if (LocationPickAdaptor.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor).size() > 0) {
+      paramList = LocationPickAdaptor.b(this.b);
+      if (LocationPickAdaptor.a(this.b).size() > 0) {
         i = 3;
       } else {
         i = 2;
@@ -40,7 +40,7 @@ class LocationPickAdaptor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickAdaptor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,36 +9,12 @@ import java.util.List;
 
 public final class ForeBackgroundSwitch
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<WeakReference<ForeBackgroundSwitch.Callback>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<WeakReference<ForeBackgroundSwitch.Callback>> a = new ArrayList();
+  private final Object b = new Object();
   
   public static ForeBackgroundSwitch a()
   {
     return ForeBackgroundSwitch.SingletonHolder.a();
-  }
-  
-  public final void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
-    }
-    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ForeBackgroundSwitch.Callback localCallback = (ForeBackgroundSwitch.Callback)((WeakReference)localIterator.next()).get();
-        if (localCallback != null) {
-          localCallback.b();
-        }
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw localObject2;
-    }
   }
   
   public final void a(String arg1)
@@ -57,9 +33,9 @@ public final class ForeBackgroundSwitch
       QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(SafeModeUtil.b) });
     }
     QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject1 = this.a.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         ForeBackgroundSwitch.Callback localCallback = (ForeBackgroundSwitch.Callback)((WeakReference)((Iterator)localObject1).next()).get();
@@ -74,10 +50,34 @@ public final class ForeBackgroundSwitch
       throw localObject2;
     }
   }
+  
+  public final void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
+    }
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
+    synchronized (this.b)
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        ForeBackgroundSwitch.Callback localCallback = (ForeBackgroundSwitch.Callback)((WeakReference)localIterator.next()).get();
+        if (localCallback != null) {
+          localCallback.b();
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ForeBackgroundSwitch
  * JD-Core Version:    0.7.0.1
  */

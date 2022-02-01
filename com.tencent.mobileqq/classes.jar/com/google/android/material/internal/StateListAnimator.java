@@ -11,47 +11,47 @@ import java.util.ArrayList;
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public final class StateListAnimator
 {
-  private final Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new StateListAnimator.1(this);
   @Nullable
-  ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator = null;
+  ValueAnimator a = null;
+  private final ArrayList<StateListAnimator.Tuple> b = new ArrayList();
   @Nullable
-  private StateListAnimator.Tuple jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator$Tuple = null;
-  private final ArrayList<StateListAnimator.Tuple> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private StateListAnimator.Tuple c = null;
+  private final Animator.AnimatorListener d = new StateListAnimator.1(this);
   
   private void a(@NonNull StateListAnimator.Tuple paramTuple)
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = paramTuple.jdField_a_of_type_AndroidAnimationValueAnimator;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.a = paramTuple.b;
+    this.a.start();
   }
   
   private void b()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.a;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.a = null;
     }
   }
   
   public void a()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.a;
     if (localValueAnimator != null)
     {
       localValueAnimator.end();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.a = null;
     }
   }
   
   public void a(int[] paramArrayOfInt)
   {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = this.b.size();
     int i = 0;
     while (i < j)
     {
-      localTuple = (StateListAnimator.Tuple)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (StateSet.stateSetMatches(localTuple.jdField_a_of_type_ArrayOfInt, paramArrayOfInt))
+      localTuple = (StateListAnimator.Tuple)this.b.get(i);
+      if (StateSet.stateSetMatches(localTuple.a, paramArrayOfInt))
       {
         paramArrayOfInt = localTuple;
         break label55;
@@ -60,14 +60,14 @@ public final class StateListAnimator
     }
     paramArrayOfInt = null;
     label55:
-    StateListAnimator.Tuple localTuple = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator$Tuple;
+    StateListAnimator.Tuple localTuple = this.c;
     if (paramArrayOfInt == localTuple) {
       return;
     }
     if (localTuple != null) {
       b();
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator$Tuple = paramArrayOfInt;
+    this.c = paramArrayOfInt;
     if (paramArrayOfInt != null) {
       a(paramArrayOfInt);
     }
@@ -76,13 +76,13 @@ public final class StateListAnimator
   public void a(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
   {
     paramArrayOfInt = new StateListAnimator.Tuple(paramArrayOfInt, paramValueAnimator);
-    paramValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramArrayOfInt);
+    paramValueAnimator.addListener(this.d);
+    this.b.add(paramArrayOfInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.StateListAnimator
  * JD-Core Version:    0.7.0.1
  */

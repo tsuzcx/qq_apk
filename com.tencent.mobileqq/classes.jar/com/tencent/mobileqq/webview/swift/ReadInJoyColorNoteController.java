@@ -16,7 +16,7 @@ public class ReadInJoyColorNoteController
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    paramBundle = super.a();
+    paramBundle = super.i();
     if (paramBundle != null)
     {
       paramBundle.disableSwipe();
@@ -26,7 +26,7 @@ public class ReadInJoyColorNoteController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.ReadInJoyColorNoteController
  * JD-Core Version:    0.7.0.1
  */

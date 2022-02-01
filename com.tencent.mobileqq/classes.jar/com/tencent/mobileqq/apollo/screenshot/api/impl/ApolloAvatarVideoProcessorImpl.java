@@ -108,7 +108,7 @@ public class ApolloAvatarVideoProcessorImpl
       localObject = ((StringBuilder)localObject).toString();
       localObject = new ApolloVideoEncoder(this.mPicList, (String)localObject, paramInt, paramInt);
       ((ApolloVideoEncoder)localObject).a(this.mOnEncodeListener);
-      ((ApolloVideoEncoder)localObject).a();
+      ((ApolloVideoEncoder)localObject).b();
       return;
     }
     localObject = new StringBuilder();
@@ -168,7 +168,7 @@ public class ApolloAvatarVideoProcessorImpl
     if (paramFileMsg != null) {
       paramFileMsg.a(true, localAppInterface.getCurrentAccountUin(), 0);
     }
-    FaceUtil.a(null);
+    FaceUtil.e(null);
     if (((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(localAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
       ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(localAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(1));
     }
@@ -185,7 +185,7 @@ public class ApolloAvatarVideoProcessorImpl
     if (paramInt == arrayOfInt[0])
     {
       this.mVideoPathBig = paramString;
-      if (CmShowWnsUtils.t()) {
+      if (CmShowWnsUtils.A()) {
         compressWithResolution(this.mVideoPathBig, RESOLUTIONS_DEFAULT[1]);
       } else {
         encodeWithResolution(getResolution(1));
@@ -194,7 +194,7 @@ public class ApolloAvatarVideoProcessorImpl
     else if (paramInt == arrayOfInt[1])
     {
       this.mVideoPathMedium = paramString;
-      if (CmShowWnsUtils.t()) {
+      if (CmShowWnsUtils.A()) {
         compressWithResolution(this.mVideoPathBig, RESOLUTIONS_DEFAULT[2]);
       } else {
         encodeWithResolution(getResolution(2));
@@ -253,30 +253,30 @@ public class ApolloAvatarVideoProcessorImpl
     //   27: areturn
     //   28: ldc 22
     //   30: iconst_2
-    //   31: ldc_w 418
-    //   34: invokestatic 421	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   31: ldc_w 419
+    //   34: invokestatic 422	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   37: new 274	java/io/File
     //   40: dup
     //   41: aload_0
     //   42: aload_0
     //   43: getfield 146	com/tencent/mobileqq/apollo/screenshot/api/impl/ApolloAvatarVideoProcessorImpl:mActionId	I
     //   46: invokespecial 164	com/tencent/mobileqq/apollo/screenshot/api/impl/ApolloAvatarVideoProcessorImpl:getVideoDirPath	(I)Ljava/lang/String;
-    //   49: ldc_w 423
-    //   52: invokespecial 426	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: ldc_w 424
+    //   52: invokespecial 427	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   55: astore 8
-    //   57: new 428	android/graphics/BitmapFactory$Options
+    //   57: new 429	android/graphics/BitmapFactory$Options
     //   60: dup
-    //   61: invokespecial 429	android/graphics/BitmapFactory$Options:<init>	()V
+    //   61: invokespecial 430	android/graphics/BitmapFactory$Options:<init>	()V
     //   64: astore 5
     //   66: aload 5
-    //   68: getstatic 435	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   71: putfield 438	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   68: getstatic 436	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   71: putfield 439	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   74: aload_1
     //   75: iconst_0
-    //   76: invokeinterface 441 2 0
-    //   81: checkcast 443	java/lang/String
+    //   76: invokeinterface 442 2 0
+    //   81: checkcast 444	java/lang/String
     //   84: aload 5
-    //   86: invokestatic 449	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   86: invokestatic 450	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   89: astore 5
     //   91: aload 7
     //   93: astore 4
@@ -288,7 +288,7 @@ public class ApolloAvatarVideoProcessorImpl
     //   105: sipush 480
     //   108: sipush 480
     //   111: iconst_1
-    //   112: invokestatic 455	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   112: invokestatic 456	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
     //   115: astore 4
     //   117: aload 4
     //   119: ifnull +111 -> 230
@@ -299,21 +299,21 @@ public class ApolloAvatarVideoProcessorImpl
     //   128: aload 4
     //   130: bipush 100
     //   132: aload 8
-    //   134: invokestatic 460	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;ILjava/io/File;)Z
+    //   134: invokestatic 461	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;ILjava/io/File;)Z
     //   137: pop
     //   138: aload 4
     //   140: astore_2
     //   141: aload 4
     //   143: astore_3
     //   144: aload 8
-    //   146: invokevirtual 320	java/io/File:exists	()Z
+    //   146: invokevirtual 321	java/io/File:exists	()Z
     //   149: ifeq +70 -> 219
     //   152: aload 4
     //   154: astore_2
     //   155: aload 4
     //   157: astore_3
     //   158: aload 8
-    //   160: invokevirtual 464	java/io/File:length	()J
+    //   160: invokevirtual 465	java/io/File:length	()J
     //   163: lconst_0
     //   164: lcmp
     //   165: ifle +54 -> 219
@@ -323,23 +323,23 @@ public class ApolloAvatarVideoProcessorImpl
     //   173: astore_3
     //   174: ldc 22
     //   176: iconst_2
-    //   177: ldc_w 466
-    //   180: invokestatic 421	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   177: ldc_w 467
+    //   180: invokestatic 422	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   183: aload 4
     //   185: astore_2
     //   186: aload 4
     //   188: astore_3
     //   189: aload 8
-    //   191: invokevirtual 326	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   191: invokevirtual 327	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   194: astore 6
     //   196: aload 5
     //   198: ifnull +8 -> 206
     //   201: aload 5
-    //   203: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   203: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   206: aload 4
     //   208: ifnull +8 -> 216
     //   211: aload 4
-    //   213: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   213: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   216: aload 6
     //   218: areturn
     //   219: aload 4
@@ -347,13 +347,13 @@ public class ApolloAvatarVideoProcessorImpl
     //   222: aload 4
     //   224: astore_3
     //   225: aload 4
-    //   227: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   227: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   230: aload 4
     //   232: astore_2
     //   233: aload 4
     //   235: astore_3
     //   236: aload 5
-    //   238: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   238: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   241: goto +20 -> 261
     //   244: astore_1
     //   245: aload_2
@@ -368,11 +368,11 @@ public class ApolloAvatarVideoProcessorImpl
     //   261: aload 5
     //   263: ifnull +8 -> 271
     //   266: aload 5
-    //   268: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   268: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   271: aload 4
     //   273: ifnull +48 -> 321
     //   276: aload 4
-    //   278: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   278: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   281: goto +40 -> 321
     //   284: astore_1
     //   285: aconst_null
@@ -384,30 +384,30 @@ public class ApolloAvatarVideoProcessorImpl
     //   295: aconst_null
     //   296: astore_3
     //   297: aload 4
-    //   299: invokevirtual 472	java/lang/Throwable:printStackTrace	()V
-    //   302: invokestatic 477	java/lang/System:gc	()V
+    //   299: invokevirtual 473	java/lang/Throwable:printStackTrace	()V
+    //   302: invokestatic 478	java/lang/System:gc	()V
     //   305: aload_2
     //   306: ifnull +7 -> 313
     //   309: aload_2
-    //   310: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   310: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   313: aload_3
     //   314: ifnull +7 -> 321
     //   317: aload_3
-    //   318: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   318: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   321: aload_1
     //   322: iconst_0
-    //   323: invokeinterface 441 2 0
-    //   328: checkcast 443	java/lang/String
+    //   323: invokeinterface 442 2 0
+    //   328: checkcast 444	java/lang/String
     //   331: areturn
     //   332: astore_1
     //   333: aload_2
     //   334: ifnull +7 -> 341
     //   337: aload_2
-    //   338: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   338: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   341: aload_3
     //   342: ifnull +7 -> 349
     //   345: aload_3
-    //   346: invokevirtual 469	android/graphics/Bitmap:recycle	()V
+    //   346: invokevirtual 470	android/graphics/Bitmap:recycle	()V
     //   349: aload_1
     //   350: athrow
     //   351: aconst_null
@@ -462,11 +462,23 @@ public class ApolloAvatarVideoProcessorImpl
       return;
     }
     this.mUploadKey = ((int)(System.currentTimeMillis() / 1000L));
+    if (TextUtils.isEmpty(this.mVideoPathBig))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("mVideoPathBig is empty: ");
+      ((StringBuilder)localObject1).append(this.mVideoPathBig);
+      QLog.e("[cmshow]ApolloAvatarVideoProcessor", 1, ((StringBuilder)localObject1).toString());
+      localObject1 = this.mFinishListener;
+      if (localObject1 != null) {
+        ((IApolloAvatarVideoProcessor.OnProcessFinishListener)localObject1).a(false, this.mActionId);
+      }
+      return;
+    }
     Object localObject1 = new File(this.mVideoPathBig);
     if ((((File)localObject1).exists()) && (((File)localObject1).length() > 0L))
     {
       ApolloVideoUtils.a((AppInterface)localObject2, this.mVideoPathBig, 36, this.mUploadKey, 640);
-      FaceUtil.a(this.mVideoPathBig);
+      FaceUtil.e(this.mVideoPathBig);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("uploadVideoBig ");
       ((StringBuilder)localObject2).append(((File)localObject1).length());
@@ -495,7 +507,7 @@ public class ApolloAvatarVideoProcessorImpl
       if ((localFile.exists()) && (localFile.length() > 0L))
       {
         ApolloVideoUtils.a((AppInterface)localObject, this.mVideoCoverPath);
-        FaceUtil.a(this.mVideoCoverPath);
+        FaceUtil.e(this.mVideoCoverPath);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("uploadVideoCover ");
         ((StringBuilder)localObject).append(localFile.length());
@@ -506,37 +518,61 @@ public class ApolloAvatarVideoProcessorImpl
   
   private void uploadVideoMedium()
   {
-    Object localObject = (AppInterface)this.mAppRef.get();
-    if (localObject == null) {
+    Object localObject2 = (AppInterface)this.mAppRef.get();
+    if (localObject2 == null) {
       return;
     }
-    File localFile = new File(this.mVideoPathMedium);
-    if ((localFile.exists()) && (localFile.length() > 0L))
+    if (TextUtils.isEmpty(this.mVideoPathMedium))
     {
-      ApolloVideoUtils.a((AppInterface)localObject, this.mVideoPathMedium, 37, this.mUploadKey, 200);
-      FaceUtil.a(this.mVideoPathMedium);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("uploadVideoMedium ");
-      ((StringBuilder)localObject).append(localFile.length());
-      QLog.i("[cmshow]ApolloAvatarVideoProcessor", 1, ((StringBuilder)localObject).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("mVideoPathMedium is empty: ");
+      ((StringBuilder)localObject1).append(this.mVideoPathMedium);
+      QLog.e("[cmshow]ApolloAvatarVideoProcessor", 1, ((StringBuilder)localObject1).toString());
+      localObject1 = this.mFinishListener;
+      if (localObject1 != null) {
+        ((IApolloAvatarVideoProcessor.OnProcessFinishListener)localObject1).a(false, this.mActionId);
+      }
+      return;
+    }
+    Object localObject1 = new File(this.mVideoPathMedium);
+    if ((((File)localObject1).exists()) && (((File)localObject1).length() > 0L))
+    {
+      ApolloVideoUtils.a((AppInterface)localObject2, this.mVideoPathMedium, 37, this.mUploadKey, 200);
+      FaceUtil.e(this.mVideoPathMedium);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("uploadVideoMedium ");
+      ((StringBuilder)localObject2).append(((File)localObject1).length());
+      QLog.i("[cmshow]ApolloAvatarVideoProcessor", 1, ((StringBuilder)localObject2).toString());
     }
   }
   
   private void uploadVideoSmall()
   {
-    Object localObject = (AppInterface)this.mAppRef.get();
-    if (localObject == null) {
+    Object localObject2 = (AppInterface)this.mAppRef.get();
+    if (localObject2 == null) {
       return;
     }
-    File localFile = new File(this.mVideoPathSmall);
-    if ((localFile.exists()) && (localFile.length() > 0L))
+    if (TextUtils.isEmpty(this.mVideoPathSmall))
     {
-      ApolloVideoUtils.a((AppInterface)localObject, this.mVideoPathSmall, 38, this.mUploadKey, 100);
-      FaceUtil.a(this.mVideoPathSmall);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("uploadVideoSmall ");
-      ((StringBuilder)localObject).append(localFile.length());
-      QLog.i("[cmshow]ApolloAvatarVideoProcessor", 1, ((StringBuilder)localObject).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("mVideoPathSmall is empty: ");
+      ((StringBuilder)localObject1).append(this.mVideoPathSmall);
+      QLog.e("[cmshow]ApolloAvatarVideoProcessor", 1, ((StringBuilder)localObject1).toString());
+      localObject1 = this.mFinishListener;
+      if (localObject1 != null) {
+        ((IApolloAvatarVideoProcessor.OnProcessFinishListener)localObject1).a(false, this.mActionId);
+      }
+      return;
+    }
+    Object localObject1 = new File(this.mVideoPathSmall);
+    if ((((File)localObject1).exists()) && (((File)localObject1).length() > 0L))
+    {
+      ApolloVideoUtils.a((AppInterface)localObject2, this.mVideoPathSmall, 38, this.mUploadKey, 100);
+      FaceUtil.e(this.mVideoPathSmall);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("uploadVideoSmall ");
+      ((StringBuilder)localObject2).append(((File)localObject1).length());
+      QLog.i("[cmshow]ApolloAvatarVideoProcessor", 1, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -552,7 +588,7 @@ public class ApolloAvatarVideoProcessorImpl
     if ((this.mUploadHandler != null) && (localAppInterface != null))
     {
       ((ITransFileController)localAppInterface.getRuntimeService(ITransFileController.class, "all")).removeHandle(this.mUploadHandler);
-      FaceUtil.a(null);
+      FaceUtil.e(null);
     }
   }
   
@@ -568,7 +604,7 @@ public class ApolloAvatarVideoProcessorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.api.impl.ApolloAvatarVideoProcessorImpl
  * JD-Core Version:    0.7.0.1
  */

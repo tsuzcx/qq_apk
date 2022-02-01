@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/nxv" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/title_container" android:layout_width="fill_parent" android:layout_height="63.0dip" />
-    <FrameLayout android:id="@id/l1y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <View android:id="@id/mvu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/nxa" />
+    <RelativeLayout android:id="@id/nxa" android:background="@drawable/bks" android:layout_width="fill_parent" android:layout_height="354.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/qrj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <include layout="@layout/cjc" />
+        </RelativeLayout>
+        <FrameLayout android:id="@id/oty" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/nqc" android:background="@drawable/bkt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_centerHorizontal="true" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/qf4" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginTop="25.0dip" android:layout_centerHorizontal="true">
+            <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/jq_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="创建子频道" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView android:id="@id/9l" android:background="@drawable/bke" android:visibility="invisible" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="18.0dip" android:layout_marginTop="84.0dip" />
+</RelativeLayout>

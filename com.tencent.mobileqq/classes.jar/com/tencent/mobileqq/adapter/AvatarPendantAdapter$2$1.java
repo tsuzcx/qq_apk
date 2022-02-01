@@ -10,14 +10,14 @@ class AvatarPendantAdapter$2$1
   
   public void run()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    int j = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new LinearLayout.LayoutParams(i - j, -2));
+    int i = this.a.getWidth();
+    int j = this.b;
+    this.a.setLayoutParams(new LinearLayout.LayoutParams(i - j, -2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

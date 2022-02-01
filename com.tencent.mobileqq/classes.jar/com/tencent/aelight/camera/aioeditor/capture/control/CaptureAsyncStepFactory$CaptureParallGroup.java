@@ -8,13 +8,13 @@ public class CaptureAsyncStepFactory$CaptureParallGroup
 {
   public AsyncStep a()
   {
-    if (this.b < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+    if (this.d < this.e.length)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.b] = CaptureAsyncStepFactory.a(this.mAutomator, this.jdField_a_of_type_ArrayOfJavaLangString[this.b]);
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep[this.b].mParams = this.mParams;
-      AsyncStep[] arrayOfAsyncStep = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep;
-      int i = this.b;
-      this.b = (i + 1);
+      this.b[this.d] = CaptureAsyncStepFactory.a(this.mAutomator, this.e[this.d]);
+      this.b[this.d].mParams = this.mParams;
+      AsyncStep[] arrayOfAsyncStep = this.b;
+      int i = this.d;
+      this.d = (i + 1);
       return arrayOfAsyncStep[i];
     }
     return null;
@@ -22,7 +22,7 @@ public class CaptureAsyncStepFactory$CaptureParallGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.CaptureAsyncStepFactory.CaptureParallGroup
  * JD-Core Version:    0.7.0.1
  */

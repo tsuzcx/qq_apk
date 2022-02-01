@@ -17,19 +17,19 @@ import org.json.JSONObject;
 public class PublicAccountCenterUrlConfBean
   implements IQStorageSafable<String>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = false;
+  private String a = "";
+  private String b = "";
   private String c = "";
+  private boolean d = false;
+  private boolean e = false;
   
   public static PublicAccountCenterUrlConfBean a()
   {
     PublicAccountCenterUrlConfBean localPublicAccountCenterUrlConfBean = new PublicAccountCenterUrlConfBean();
-    localPublicAccountCenterUrlConfBean.jdField_a_of_type_JavaLangString = PublicAccountConfigUtilImpl.PUBLIC_ACCOUNT_CENTER_URL;
-    localPublicAccountCenterUrlConfBean.jdField_b_of_type_JavaLangString = PublicAccountConfigUtilImpl.PUBLIC_ACCOUNT_CATEGORY_URL;
+    localPublicAccountCenterUrlConfBean.a = PublicAccountConfigUtilImpl.PUBLIC_ACCOUNT_CENTER_URL;
+    localPublicAccountCenterUrlConfBean.b = PublicAccountConfigUtilImpl.PUBLIC_ACCOUNT_CATEGORY_URL;
     localPublicAccountCenterUrlConfBean.c = PublicAccountConfigUtilImpl.READINJOY_SEARCH_URL;
-    localPublicAccountCenterUrlConfBean.jdField_a_of_type_Boolean = PublicAccountConfigUtilImpl.IMAGE_COLLECTION_COMMENT;
+    localPublicAccountCenterUrlConfBean.d = PublicAccountConfigUtilImpl.IMAGE_COLLECTION_COMMENT;
     return localPublicAccountCenterUrlConfBean;
   }
   
@@ -42,20 +42,20 @@ public class PublicAccountCenterUrlConfBean
     {
       paramString = new JSONObject(paramString);
       if (paramString.has("pacenter_url")) {
-        this.jdField_a_of_type_JavaLangString = paramPublicAccountCenterUrlConfBean.jdField_a_of_type_JavaLangString;
+        this.a = paramPublicAccountCenterUrlConfBean.a;
       }
       if (paramString.has("pacategory_url")) {
-        this.jdField_b_of_type_JavaLangString = paramPublicAccountCenterUrlConfBean.jdField_b_of_type_JavaLangString;
+        this.b = paramPublicAccountCenterUrlConfBean.b;
       }
       if (paramString.has("readinjoy_search_url")) {
         this.c = paramPublicAccountCenterUrlConfBean.c;
       }
       if (paramString.has("image_collection_comment")) {
-        this.jdField_a_of_type_Boolean = paramPublicAccountCenterUrlConfBean.jdField_a_of_type_Boolean;
+        this.d = paramPublicAccountCenterUrlConfBean.d;
       }
-      if (paramPublicAccountCenterUrlConfBean.jdField_b_of_type_Boolean)
+      if (paramPublicAccountCenterUrlConfBean.e)
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.e = true;
         return this;
       }
     }
@@ -75,7 +75,7 @@ public class PublicAccountCenterUrlConfBean
     int i = 0;
     while (i < paramArrayOfQConfItem.length)
     {
-      String str = paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString;
+      String str = paramArrayOfQConfItem[i].b;
       try
       {
         PublicAccountCenterUrlConfBean localPublicAccountCenterUrlConfBean = ((PublicAccountCenterUrlConfBean)localObject).a((PublicAccountCenterUrlConfBean)QStorage.a(str, PublicAccountCenterUrlConfBean.class), str);
@@ -93,14 +93,6 @@ public class PublicAccountCenterUrlConfBean
     return localObject;
   }
   
-  public void a()
-  {
-    PublicAccountConfigUtilImpl.PUBLIC_ACCOUNT_CENTER_URL = this.jdField_a_of_type_JavaLangString;
-    PublicAccountConfigUtilImpl.PUBLIC_ACCOUNT_CATEGORY_URL = this.jdField_b_of_type_JavaLangString;
-    PublicAccountConfigUtilImpl.READINJOY_SEARCH_URL = this.c;
-    PublicAccountConfigUtilImpl.IMAGE_COLLECTION_COMMENT = this.jdField_a_of_type_Boolean;
-  }
-  
   public void a(String paramString)
   {
     for (;;)
@@ -112,11 +104,11 @@ public class PublicAccountCenterUrlConfBean
         String str2 = paramString.getString("pacategory_url");
         if (PublicAccountConfigUtilImpl.checkUrlFormat(str1))
         {
-          this.jdField_a_of_type_JavaLangString = str1;
+          this.a = str1;
           bool1 = true;
           if (PublicAccountConfigUtilImpl.checkUrlFormat(str2))
           {
-            this.jdField_b_of_type_JavaLangString = str2;
+            this.b = str2;
             bool1 = true;
           }
           boolean bool2 = bool1;
@@ -132,10 +124,10 @@ public class PublicAccountCenterUrlConfBean
           }
           if (paramString.has("image_collection_comment"))
           {
-            this.jdField_a_of_type_Boolean = paramString.getBoolean("image_collection_comment");
+            this.d = paramString.getBoolean("image_collection_comment");
             bool2 = true;
           }
-          this.jdField_b_of_type_Boolean = bool2;
+          this.e = bool2;
           return;
         }
       }
@@ -145,7 +137,7 @@ public class PublicAccountCenterUrlConfBean
           QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramString);
         }
         paramString.printStackTrace();
-        this.jdField_b_of_type_Boolean = false;
+        this.e = false;
         return;
       }
       boolean bool1 = false;
@@ -153,6 +145,14 @@ public class PublicAccountCenterUrlConfBean
   }
   
   public void b()
+  {
+    PublicAccountConfigUtilImpl.PUBLIC_ACCOUNT_CENTER_URL = this.a;
+    PublicAccountConfigUtilImpl.PUBLIC_ACCOUNT_CATEGORY_URL = this.b;
+    PublicAccountConfigUtilImpl.READINJOY_SEARCH_URL = this.c;
+    PublicAccountConfigUtilImpl.IMAGE_COLLECTION_COMMENT = this.d;
+  }
+  
+  public void c()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
@@ -164,7 +164,7 @@ public class PublicAccountCenterUrlConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PublicAccountCenterUrlConfBean
  * JD-Core Version:    0.7.0.1
  */

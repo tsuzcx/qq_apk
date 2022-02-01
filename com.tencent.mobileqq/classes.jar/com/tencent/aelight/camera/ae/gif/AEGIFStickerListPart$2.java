@@ -9,7 +9,7 @@ import com.tencent.aelight.camera.ae.mode.AECaptureMode;
 import com.tencent.aelight.camera.ae.mode.AECaptureModeChangingEvent;
 import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
 import com.tencent.aelight.camera.ae.report.AEBaseReportParam;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import com.tencent.mobileqq.widget.SimpleSlidingIndicator;
 
 class AEGIFStickerListPart$2
   implements Observer<AECaptureModeChangingEvent>
@@ -25,30 +25,30 @@ class AEGIFStickerListPart$2
     if (localAECaptureMode == AECaptureMode.NORMAL)
     {
       AEGIFStickerListPart.a(this.a).setVisibility(8);
-      AEGIFStickerListPart.a(this.a).setVisibility(8);
+      AEGIFStickerListPart.b(this.a).setVisibility(8);
       return;
     }
     if (localAECaptureMode == AECaptureMode.GIF)
     {
-      AEGIFStickerListPart.a(this.a);
-      AEFontManager.a().a();
-      AEBaseDataReporter.a().aj();
-      if ((paramAECaptureModeChangingEvent.a != null) && (!TextUtils.isEmpty(AEGIFStickerListPart.a(this.a))))
+      AEGIFStickerListPart.c(this.a);
+      AEFontManager.a().b();
+      AEBaseDataReporter.a().ao();
+      if ((paramAECaptureModeChangingEvent.a != null) && (!TextUtils.isEmpty(AEGIFStickerListPart.d(this.a))))
       {
-        AEBaseReportParam.a().s(AEGIFStickerListPart.a(this.a));
-        AEBaseDataReporter.a().am();
+        AEBaseReportParam.a().D(AEGIFStickerListPart.d(this.a));
+        AEBaseDataReporter.a().ar();
       }
     }
     else if (localAECaptureMode == AECaptureMode.PLAY)
     {
       AEGIFStickerListPart.a(this.a).setVisibility(8);
-      AEGIFStickerListPart.a(this.a).setVisibility(8);
+      AEGIFStickerListPart.b(this.a).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGIFStickerListPart.2
  * JD-Core Version:    0.7.0.1
  */

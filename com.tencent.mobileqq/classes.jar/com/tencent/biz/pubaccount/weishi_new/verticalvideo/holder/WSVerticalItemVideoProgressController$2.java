@@ -15,19 +15,19 @@ class WSVerticalItemVideoProgressController$2
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    if (WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController) != null)
+    if (WSVerticalItemVideoProgressController.a(this.b) != null)
     {
       Object localObject = new Rect();
-      WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).a((Rect)localObject);
-      if ((WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController)) || ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getX() > ((Rect)localObject).left) && (paramMotionEvent.getX() < ((Rect)localObject).right) && (paramMotionEvent.getY() >= ((Rect)localObject).top - WeishiUIUtil.g) && (paramMotionEvent.getY() <= ((Rect)localObject).bottom + WeishiUIUtil.g)))
+      WSVerticalItemVideoProgressController.a(this.b).a((Rect)localObject);
+      if ((WSVerticalItemVideoProgressController.c(this.b)) || ((paramMotionEvent.getAction() == 0) && (paramMotionEvent.getX() > ((Rect)localObject).left) && (paramMotionEvent.getX() < ((Rect)localObject).right) && (paramMotionEvent.getY() >= ((Rect)localObject).top - WeishiUIUtil.h) && (paramMotionEvent.getY() <= ((Rect)localObject).bottom + WeishiUIUtil.h)))
       {
-        if (!WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController))
+        if (!WSVerticalItemVideoProgressController.c(this.b))
         {
-          WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController, true);
-          WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).a(this.jdField_a_of_type_JavaLangRunnable);
-          WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).setSeekBarActivated(true);
-          WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).setThumb(WSVerticalItemVideoProgressController.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).getDrawable(2130841886));
-          WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).requestDisallowInterceptTouchEvent(true);
+          WSVerticalItemVideoProgressController.a(this.b, true);
+          WSVerticalItemVideoProgressController.a(this.b).a(this.a);
+          WSVerticalItemVideoProgressController.a(this.b).setSeekBarActivated(true);
+          WSVerticalItemVideoProgressController.a(this.b).setThumb(WSVerticalItemVideoProgressController.d(this.b).getDrawable(2130842804));
+          WSVerticalItemVideoProgressController.e(this.b).requestDisallowInterceptTouchEvent(true);
         }
         float f2 = ((Rect)localObject).top;
         float f3 = ((Rect)localObject).height() / 2.0F;
@@ -40,11 +40,11 @@ class WSVerticalItemVideoProgressController$2
         localObject = MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getAction(), f1, f2 + f3, paramMotionEvent.getMetaState());
         if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
         {
-          WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
-          WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController, false);
-          WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).requestDisallowInterceptTouchEvent(false);
+          WSVerticalItemVideoProgressController.a(this.b).postDelayed(this.a, 400L);
+          WSVerticalItemVideoProgressController.a(this.b, false);
+          WSVerticalItemVideoProgressController.e(this.b).requestDisallowInterceptTouchEvent(false);
         }
-        WSVerticalItemVideoProgressController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemVideoProgressController).a((MotionEvent)localObject);
+        WSVerticalItemVideoProgressController.a(this.b).a((MotionEvent)localObject);
         return true;
       }
     }
@@ -53,7 +53,7 @@ class WSVerticalItemVideoProgressController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.2
  * JD-Core Version:    0.7.0.1
  */

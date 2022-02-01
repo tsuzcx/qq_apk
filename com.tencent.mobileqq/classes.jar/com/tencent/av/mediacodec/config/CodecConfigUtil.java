@@ -18,13 +18,13 @@ public class CodecConfigUtil
     if (Build.VERSION.SDK_INT < paramTestInfo.c) {
       return 0;
     }
-    if (!a(paramTestInfo.jdField_a_of_type_JavaLangString, null)) {
+    if (!a(paramTestInfo.f, null)) {
       return 0;
     }
-    if (ArrayUtils.contains(paramTestInfo.jdField_a_of_type_JavaUtilArrayList, Integer.valueOf(Build.VERSION.SDK_INT))) {
+    if (ArrayUtils.contains(paramTestInfo.d, Integer.valueOf(Build.VERSION.SDK_INT))) {
       return 0;
     }
-    if ((paramTestInfo.d != 0) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= paramTestInfo.d)) {
+    if ((paramTestInfo.e != 0) && (Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT >= paramTestInfo.e)) {
       return 2;
     }
     return 1;

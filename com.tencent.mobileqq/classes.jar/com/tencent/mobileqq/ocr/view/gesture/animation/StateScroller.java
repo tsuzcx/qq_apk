@@ -6,69 +6,69 @@ import android.view.animation.Interpolator;
 
 public class StateScroller
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateDecelerateInterpolator();
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long = 250L;
+  private final Interpolator a = new AccelerateDecelerateInterpolator();
+  private boolean b = true;
   private float c;
+  private float d;
+  private float e;
+  private long f;
+  private long g = 250L;
   
   private static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     return paramFloat1 + (paramFloat2 - paramFloat1) * paramFloat3;
   }
   
-  public float a()
-  {
-    return this.c;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.b = false;
+    this.f = SystemClock.elapsedRealtime();
     this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.e = paramFloat1;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    long l1 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    long l2 = this.jdField_b_of_type_Long;
-    if (l1 >= l2)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.c = this.jdField_b_of_type_Float;
-      return false;
-    }
-    float f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation((float)l1 / (float)l2);
-    this.c = a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f);
-    return true;
+    this.g = paramLong;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    if (this.b) {
+      return false;
+    }
+    long l1 = SystemClock.elapsedRealtime() - this.f;
+    long l2 = this.g;
+    if (l1 >= l2)
+    {
+      this.b = true;
+      this.e = this.d;
+      return false;
+    }
+    float f1 = this.a.getInterpolation((float)l1 / (float)l2);
+    this.e = a(this.c, this.d, f1);
+    return true;
+  }
+  
+  public boolean c()
+  {
+    return this.b;
+  }
+  
+  public float d()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.animation.StateScroller
  * JD-Core Version:    0.7.0.1
  */

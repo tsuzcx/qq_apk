@@ -9,8 +9,8 @@ class DoubleVideoCtrlUI$8$2
   
   public void run()
   {
-    boolean bool = this.a.this$0.a(0);
-    String str = this.a.this$0.d;
+    boolean bool = this.a.this$0.g(0);
+    String str = this.a.this$0.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("StartGlassCheck  取消, ret[");
     localStringBuilder.append(bool);

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="90.0dip" android:width="52.0dip" android:viewportWidth="104.0" android:viewportHeight="180.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/bq6" />
-    <item android:state_pressed="true" android:drawable="@drawable/bq6" />
-    <item android:drawable="@color/ajr" />
-</selector>
+    <path android:fillColor="#fffefffe" android:pathData="M66,156C29.549,156 0,126.451 0,90C-0,53.549 29.549,24 66,24L80,24L80.397,23.997C93.469,23.785 104,13.122 104,0L104,0L104,180L103.997,179.603C103.785,166.531 93.122,156 80,156L80,156L66,156Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+</vector>

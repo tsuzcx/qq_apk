@@ -12,8 +12,8 @@ class EditVideoLimitRegion$1$1
   {
     try
     {
-      this.this$0.a.setUserName(this.jdField_a_of_type_JavaLangString);
-      this.this$0.a.setUserHead(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.this$0.a.setUserName(this.a);
+      this.this$0.a.setUserHead(this.b);
       return;
     }
     catch (Exception localException) {}
@@ -21,7 +21,7 @@ class EditVideoLimitRegion$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoLimitRegion.1.1
  * JD-Core Version:    0.7.0.1
  */

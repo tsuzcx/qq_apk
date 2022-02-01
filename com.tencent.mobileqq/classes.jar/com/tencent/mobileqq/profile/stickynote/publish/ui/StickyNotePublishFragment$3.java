@@ -16,23 +16,23 @@ class StickyNotePublishFragment$3
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (StickyNotePublishFragment.a(this.a))
+    if (StickyNotePublishFragment.e(this.a))
     {
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.b(this.a).setVisibility(8);
       InputMethodUtil.b(StickyNotePublishFragment.a(this.a));
       return false;
     }
-    if (StickyNotePublishFragment.a(this.a) == 0)
+    if (StickyNotePublishFragment.f(this.a) == 0)
     {
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
-      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.b(this.a).setVisibility(8);
+      StickyNotePublishFragment.c(this.a).setVisibility(8);
+      StickyNotePublishFragment.d(this.a).setVisibility(8);
       StickyNotePublishFragment.a(this.a).setVisibility(0);
       StickyNotePublishFragment.a(this.a).requestFocus();
       InputMethodUtil.a(StickyNotePublishFragment.a(this.a));
       return false;
     }
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.b(this.a).setVisibility(8);
     StickyNotePublishFragment.a(this.a, 0);
     this.a.a(false);
     this.a.b(false);
@@ -43,7 +43,7 @@ class StickyNotePublishFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.3
  * JD-Core Version:    0.7.0.1
  */

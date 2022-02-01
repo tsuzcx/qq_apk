@@ -7,8 +7,8 @@ class GameResultFragment$4$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameresultGameResultFragment$4$1.a.this$0.a != null) {
-      this.jdField_a_of_type_ComTencentAvgameGameresultGameResultFragment$4$1.a.this$0.a.a(5, null, this.jdField_a_of_type_JavaLangString);
+    if (this.b.b.this$0.a != null) {
+      this.b.b.this$0.a.a(5, null, this.a);
     }
   }
 }

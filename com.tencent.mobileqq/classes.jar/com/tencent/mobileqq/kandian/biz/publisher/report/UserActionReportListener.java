@@ -4,9 +4,7 @@ import androidx.annotation.VisibleForTesting;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.qroute.QRouteApi;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tkd.topicsdk.TopicSDK;
 import com.tencent.tkd.topicsdk.TopicSDK.Companion;
@@ -64,11 +62,40 @@ public final class UserActionReportListener
     return false;
   }
   
-  @VisibleForTesting
-  public final int a(@NotNull UserActionEvent paramUserActionEvent)
+  public void a(@NotNull UserActionEvent paramUserActionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramUserActionEvent, "event");
-    Object localObject = paramUserActionEvent.a();
+    String str = PublisherReportUtils.a.a(paramUserActionEvent.a(), paramUserActionEvent.b(), paramUserActionEvent.c());
+    int i;
+    if (((CharSequence)str).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      Object localObject1 = BaseApplicationImpl.getApplication();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
+      Object localObject2 = ((BaseApplicationImpl)localObject1).getRuntime();
+      localObject1 = localObject2;
+      if (!(localObject2 instanceof QQAppInterface)) {
+        localObject1 = null;
+      }
+      localObject1 = (QQAppInterface)localObject1;
+      localObject2 = TopicSDK.a.a().b().f().a();
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "TopicSDK.instance().topicSDKConfig.account.userId");
+      i = b(paramUserActionEvent);
+      paramUserActionEvent = a(paramUserActionEvent, str);
+      PublicAccountReportUtils.a((AppInterface)localObject1, (String)localObject2, str, str, i, 0, "", "", "", paramUserActionEvent.toString(), false);
+      return;
+    }
+  }
+  
+  @VisibleForTesting
+  public final int b(@NotNull UserActionEvent paramUserActionEvent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramUserActionEvent, "event");
+    Object localObject = paramUserActionEvent.e();
     if (localObject != null)
     {
       localObject = ((PublishArticleInfo)localObject).getScene();
@@ -78,7 +105,7 @@ public final class UserActionReportListener
     {
       localObject = "";
     }
-    paramUserActionEvent = paramUserActionEvent.a();
+    paramUserActionEvent = paramUserActionEvent.d();
     if (paramUserActionEvent != null)
     {
       paramUserActionEvent = paramUserActionEvent.getScene();
@@ -109,41 +136,10 @@ public final class UserActionReportListener
     }
     return -1;
   }
-  
-  public void a(@NotNull UserActionEvent paramUserActionEvent)
-  {
-    Intrinsics.checkParameterIsNotNull(paramUserActionEvent, "event");
-    String str = PublisherReportUtils.a.a(paramUserActionEvent.a(), paramUserActionEvent.a(), paramUserActionEvent.a());
-    int i;
-    if (((CharSequence)str).length() > 0) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i != 0)
-    {
-      Object localObject1 = BaseApplicationImpl.getApplication();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
-      Object localObject2 = ((BaseApplicationImpl)localObject1).getRuntime();
-      localObject1 = localObject2;
-      if (!(localObject2 instanceof QQAppInterface)) {
-        localObject1 = null;
-      }
-      localObject1 = (QQAppInterface)localObject1;
-      localObject2 = TopicSDK.a.a().a().a().a();
-      Intrinsics.checkExpressionValueIsNotNull(localObject2, "TopicSDK.instance().topicSDKConfig.account.userId");
-      i = a(paramUserActionEvent);
-      paramUserActionEvent = a(paramUserActionEvent, str);
-      QRouteApi localQRouteApi = QRoute.api(IPublicAccountReportUtils.class);
-      Intrinsics.checkExpressionValueIsNotNull(localQRouteApi, "QRoute.api(IPublicAccountReportUtils::class.java)");
-      ((IPublicAccountReportUtils)localQRouteApi).publicAccountReportClickEvent((AppInterface)localObject1, (String)localObject2, str, str, i, 0, "", "", "", paramUserActionEvent.toString(), false);
-      return;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.report.UserActionReportListener
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ public class ReadinjoyPlayerReporter$BufferingStartAction
   
   public void a(int paramInt, Object paramObject)
   {
-    this.a.a.e = SystemClock.uptimeMillis();
+    this.a.a.p = SystemClock.uptimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.player.ReadinjoyPlayerReporter.BufferingStartAction
  * JD-Core Version:    0.7.0.1
  */

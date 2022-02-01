@@ -20,52 +20,52 @@ class AVGameLobbyOnClickListenerFactory$3
     if (paramIBaseData == null) {
       return;
     }
-    if (AsyncExitTask.a())
+    if (AsyncExitTask.b())
     {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplicationContext(), 2131690426, 0).a();
+      QQToast.makeText(this.a.b.getApplicationContext(), 2131887337, 0).show();
       return;
     }
     paramIBaseData = (AVGameLobbySurvivalContentInfo)paramIBaseData;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getTimeType is ");
-    localStringBuilder.append(paramIBaseData.c());
+    localStringBuilder.append(paramIBaseData.d());
     QLog.d("AVGameLobbyOnClickListenerFactory", 2, localStringBuilder.toString());
-    if (paramView.getId() == 2131363236)
+    if (paramView.getId() == 2131429110)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AVGameLobbyOnClickListenerFactory", 2, "reserve button click");
       }
-      if (paramIBaseData.b()) {
+      if (paramIBaseData.i()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a())
+      if (this.a.a.e())
       {
-        this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a(paramIBaseData.d(), paramIBaseData.b() ^ true);
+        this.a.a.a(paramIBaseData.f(), paramIBaseData.i() ^ true);
         paramIBaseData.b(false);
         paramView.setClickable(false);
-        ReportController.b(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "0X800B690", "0X800B690", 0, 0, "", "", "", "");
+        ReportController.b(this.a.b, "dc00898", "", "", "0X800B690", "0X800B690", 0, 0, "", "", "", "");
         return;
       }
-      this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.b(paramIBaseData.d());
-      this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.d();
+      this.a.a.b(paramIBaseData.f());
+      this.a.a.f();
       return;
     }
-    if (paramIBaseData.c() == 3)
+    if (paramIBaseData.d() == 3)
     {
-      if (paramIBaseData.d()) {
-        this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a(paramIBaseData.b(), paramIBaseData.d());
+      if (paramIBaseData.t()) {
+        this.a.a.a(paramIBaseData.i(), paramIBaseData.f());
       }
-      this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.c(paramIBaseData.d(), paramIBaseData.d());
+      this.a.a.c(paramIBaseData.f(), paramIBaseData.t());
       if (QLog.isColorLevel()) {
         QLog.d("AVGameLobbyOnClickListenerFactory", 2, "reserve item click");
       }
     }
     else
     {
-      if (paramIBaseData.d()) {
-        this.a.jdField_a_of_type_ComTencentAvgameGamelobbyIAVGameRoomCenterFragment.a(paramIBaseData.b(), paramIBaseData.d());
+      if (paramIBaseData.t()) {
+        this.a.a.a(paramIBaseData.i(), paramIBaseData.f());
       }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplicationContext(), 0, 2131690430, 0).a();
+      QQToast.makeText(this.a.b.getApplicationContext(), 0, 2131887341, 0).show();
       if (QLog.isColorLevel()) {
         QLog.d("AVGameLobbyOnClickListenerFactory", 2, "reserve item click err");
       }

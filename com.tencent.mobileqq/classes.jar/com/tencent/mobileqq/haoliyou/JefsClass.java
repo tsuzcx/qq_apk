@@ -36,16 +36,16 @@ import mqq.app.MobileQQ;
 public class JefsClass
   extends IATHandler
 {
+  private static final Set<String> b = new ArraySet();
   @Nullable
-  private static IJefsClassInjectInterface jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
-  private static JefsClass jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass = new JefsClass();
-  private static final Set<String> jdField_a_of_type_JavaUtilSet = new ArraySet();
-  private static final Set<String> b;
-  private static final Set<String> c;
-  private int jdField_a_of_type_Int;
-  private final SparseArrayCompat<Runnable> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private JefsClass.TeleScreenReceiver jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$TeleScreenReceiver;
-  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new JefsClass.1(this);
+  private static IJefsClassInjectInterface c;
+  private static final Set<String> d;
+  private static final Set<String> e;
+  private static JefsClass j = new JefsClass();
+  private ThreadLocal<Boolean> f = new JefsClass.1(this);
+  private final SparseArrayCompat<Runnable> g = new SparseArrayCompat();
+  private int h;
+  private JefsClass.TeleScreenReceiver i;
   
   static
   {
@@ -53,119 +53,82 @@ public class JefsClass
     {
       QLog.d("TeleScreen|JefsClass", 1, "JefsClassInjectUtil newInstance");
       if (JefsClassInjectUtil.a.size() > 0) {
-        jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface = (IJefsClassInjectInterface)((Class)JefsClassInjectUtil.a.get(0)).newInstance();
+        c = (IJefsClassInjectInterface)((Class)JefsClassInjectUtil.a.get(0)).newInstance();
       }
     }
     catch (Exception localException)
     {
       QLog.e("TeleScreen|JefsClass", 1, "JefsClassInjectUtil static statement: ", localException);
     }
-    jdField_a_of_type_JavaUtilSet.add("android.settings.ACCESSIBILITY_SETTINGS");
+    b.add("android.settings.ACCESSIBILITY_SETTINGS");
     if (Build.VERSION.SDK_INT >= 26) {
-      jdField_a_of_type_JavaUtilSet.add("android.settings.APP_NOTIFICATION_SETTINGS");
+      b.add("android.settings.APP_NOTIFICATION_SETTINGS");
     }
-    jdField_a_of_type_JavaUtilSet.add("android.settings.APPLICATION_DETAILS_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.BLUETOOTH_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.DATA_ROAMING_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.DATE_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.INTERNAL_STORAGE_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.MEMORY_CARD_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.LOCALE_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.LOCATION_SOURCE_SETTINGS");
+    b.add("android.settings.APPLICATION_DETAILS_SETTINGS");
+    b.add("android.settings.BLUETOOTH_SETTINGS");
+    b.add("android.settings.DATA_ROAMING_SETTINGS");
+    b.add("android.settings.DATE_SETTINGS");
+    b.add("android.settings.INTERNAL_STORAGE_SETTINGS");
+    b.add("android.settings.MEMORY_CARD_SETTINGS");
+    b.add("android.settings.LOCALE_SETTINGS");
+    b.add("android.settings.LOCATION_SOURCE_SETTINGS");
     if (Build.VERSION.SDK_INT >= 24) {
-      jdField_a_of_type_JavaUtilSet.add("android.settings.MANAGE_DEFAULT_APPS_SETTINGS");
+      b.add("android.settings.MANAGE_DEFAULT_APPS_SETTINGS");
     }
     if (Build.VERSION.SDK_INT >= 23) {
-      jdField_a_of_type_JavaUtilSet.add("android.settings.action.MANAGE_OVERLAY_PERMISSION");
+      b.add("android.settings.action.MANAGE_OVERLAY_PERMISSION");
     }
     if (Build.VERSION.SDK_INT >= 19) {
-      jdField_a_of_type_JavaUtilSet.add("android.settings.NFC_PAYMENT_SETTINGS");
+      b.add("android.settings.NFC_PAYMENT_SETTINGS");
     }
     if (Build.VERSION.SDK_INT >= 16) {
-      jdField_a_of_type_JavaUtilSet.add("android.settings.NFC_SETTINGS");
+      b.add("android.settings.NFC_SETTINGS");
     }
-    jdField_a_of_type_JavaUtilSet.add("android.settings.NFCSHARING_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.WIFI_SETTINGS");
-    jdField_a_of_type_JavaUtilSet.add("android.settings.WIRELESS_SETTINGS");
+    b.add("android.settings.NFCSHARING_SETTINGS");
+    b.add("android.settings.SETTINGS");
+    b.add("android.settings.WIFI_SETTINGS");
+    b.add("android.settings.WIRELESS_SETTINGS");
     if (Build.VERSION.SDK_INT >= 23) {
-      jdField_a_of_type_JavaUtilSet.add("android.settings.action.MANAGE_WRITE_SETTINGS");
+      b.add("android.settings.action.MANAGE_WRITE_SETTINGS");
     }
-    jdField_a_of_type_JavaUtilSet.add("android.media.action.IMAGE_CAPTURE");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.PICK");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.CALL");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.DIAL");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.CALL_BUTTON");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.SENDTO");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.GET_CONTENT");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.RINGTONE_PICKER");
+    b.add("android.media.action.IMAGE_CAPTURE");
+    b.add("android.intent.action.PICK");
+    b.add("android.intent.action.CALL");
+    b.add("android.intent.action.DIAL");
+    b.add("android.intent.action.CALL_BUTTON");
+    b.add("android.intent.action.SENDTO");
+    b.add("android.intent.action.GET_CONTENT");
+    b.add("android.intent.action.RINGTONE_PICKER");
     if (Build.VERSION.SDK_INT >= 19) {
-      jdField_a_of_type_JavaUtilSet.add("android.nfc.cardemulation.action.ACTION_CHANGE_DEFAULT");
+      b.add("android.nfc.cardemulation.action.ACTION_CHANGE_DEFAULT");
     }
-    jdField_a_of_type_JavaUtilSet.add("android.content.pm.CONFIRM_ACCESS_APPCATONS");
-    jdField_a_of_type_JavaUtilSet.add("com.meizu.safe.security.SHOW_APPSEC");
-    jdField_a_of_type_JavaUtilSet.add("miui.intent.action.APP_PERM_EDITOR");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.INSERT_OR_EDIT");
-    jdField_a_of_type_JavaUtilSet.add("android.intent.action.INSERT");
+    b.add("android.content.pm.CONFIRM_ACCESS_APPCATONS");
+    b.add("com.meizu.safe.security.SHOW_APPSEC");
+    b.add("miui.intent.action.APP_PERM_EDITOR");
+    b.add("android.intent.action.INSERT_OR_EDIT");
+    b.add("android.intent.action.INSERT");
     if (Build.VERSION.SDK_INT >= 16) {
-      jdField_a_of_type_JavaUtilSet.add("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
+      b.add("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
     }
-    b = new ArraySet();
-    b.add(MobileQQ.getContext().getPackageName());
-    b.add("com.android.settings");
-    b.add("com.miui.securitycenter");
-    b.add("com.miui.system");
-    b.add("com.zui.safecenter");
-    b.add("com.android.mms");
-    b.add("com.sonymobile.cta");
-    b.add("com.huawei.systemmanager");
-    b.add("com.sec.android.app.capabilitymanager");
-    b.add("com.coloros.safecenter");
-    c = new ArraySet();
-    c.add("com.tencent.mm");
-    c.add("com.tencent.mtt");
-    c.add("com.tencent.qzone.capaoptools");
+    d = new ArraySet();
+    d.add(MobileQQ.getContext().getPackageName());
+    d.add("com.android.settings");
+    d.add("com.miui.securitycenter");
+    d.add("com.miui.system");
+    d.add("com.zui.safecenter");
+    d.add("com.android.mms");
+    d.add("com.sonymobile.cta");
+    d.add("com.huawei.systemmanager");
+    d.add("com.sec.android.app.capabilitymanager");
+    d.add("com.coloros.safecenter");
+    d.add("com.iqoo.secure");
+    e = new ArraySet();
+    e.add("com.tencent.mm");
+    e.add("com.tencent.mtt");
+    e.add("com.tencent.qzone.capaoptools");
   }
   
-  private int a(Runnable paramRunnable)
-  {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
-    {
-      do
-      {
-        this.jdField_a_of_type_Int += 1;
-      } while (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null);
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, paramRunnable);
-      return i;
-    }
-    for (;;)
-    {
-      throw paramRunnable;
-    }
-  }
-  
-  private ArrayMap<String, String> a(String paramString)
-  {
-    ArrayMap localArrayMap = new ArrayMap();
-    if (paramString != null)
-    {
-      paramString = paramString.split(",");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String[] arrayOfString = paramString[i].split("=");
-        if (arrayOfString.length == 2) {
-          localArrayMap.put(arrayOfString[0], arrayOfString[1]);
-        }
-        i += 1;
-      }
-    }
-    return localArrayMap;
-  }
-  
-  private static String a(Context paramContext, Intent paramIntent)
+  static String a(Context paramContext, Intent paramIntent)
   {
     if (QLog.isColorLevel())
     {
@@ -219,7 +182,7 @@ public class JefsClass
     return paramIntent;
   }
   
-  private static String a(Context paramContext, Intent paramIntent, String paramString)
+  static String a(Context paramContext, Intent paramIntent, String paramString)
   {
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
@@ -287,9 +250,9 @@ public class JefsClass
   
   private void a(int paramInt1, int paramInt2)
   {
-    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+    synchronized (this.g)
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
+      Runnable localRunnable = (Runnable)this.g.get(paramInt1);
       if (localRunnable == null) {
         QLog.w("TeleScreen|JefsClass", 1, "no todo");
       }
@@ -303,7 +266,7 @@ public class JefsClass
   private void a(Context paramContext, Intent paramIntent, JefsClass.CancelableRunnable paramCancelableRunnable, JefsClass.Interceptor paramInterceptor)
   {
     QLog.i("TeleScreen|JefsClass", 1, "intercept: ");
-    if (((Boolean)this.jdField_a_of_type_JavaLangThreadLocal.get()).booleanValue())
+    if (((Boolean)this.f.get()).booleanValue())
     {
       a(paramCancelableRunnable);
       return;
@@ -320,10 +283,10 @@ public class JefsClass
       ((StringBuilder)localObject).append(str1);
       QLog.d("TeleScreen|JefsClass", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
+    Object localObject = c;
     if ((localObject != null) && (((IJefsClassInjectInterface)localObject).a()))
     {
-      if (b.contains(str2))
+      if (d.contains(str2))
       {
         if (QLog.isColorLevel())
         {
@@ -348,7 +311,7 @@ public class JefsClass
         {
           str2 = ((ComponentName)localObject).getPackageName();
           str1 = str2;
-          if (b.contains(str2))
+          if (d.contains(str2))
           {
             if (QLog.isColorLevel())
             {
@@ -365,7 +328,7 @@ public class JefsClass
         }
       }
       str2 = paramIntent.getAction();
-      if (jdField_a_of_type_JavaUtilSet.contains(str2))
+      if (b.contains(str2))
       {
         if (QLog.isColorLevel())
         {
@@ -386,7 +349,7 @@ public class JefsClass
       }
       if (localObject != null)
       {
-        IJefsClassInjectInterface localIJefsClassInjectInterface = jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
+        IJefsClassInjectInterface localIJefsClassInjectInterface = c;
         if (localIJefsClassInjectInterface != null) {
           localIJefsClassInjectInterface.a(((AppRuntime)localObject).getAccount(), paramIntent);
         }
@@ -405,7 +368,7 @@ public class JefsClass
           paramContext = ((ResolveInfo)((List)localObject).get(0)).activityInfo;
           if (paramContext != null)
           {
-            if (b.contains(paramContext.packageName))
+            if (d.contains(paramContext.packageName))
             {
               if (QLog.isColorLevel())
               {
@@ -453,20 +416,20 @@ public class JefsClass
     paramCancelableRunnable.a(str1);
     try
     {
-      Object localObject1 = (TeleScreenConfig.Config)QConfigManager.a().a(416);
-      int i;
-      if ((((TeleScreenConfig.Config)localObject1).a) && (!((TeleScreenConfig.Config)localObject1).a(str1, paramString3)) && (!a(paramList)) && (!a(str1, paramString2))) {
-        i = 1;
+      Object localObject1 = (TeleScreenConfig.Config)QConfigManager.b().b(416);
+      int k;
+      if ((((TeleScreenConfig.Config)localObject1).c) && (!((TeleScreenConfig.Config)localObject1).a(str1, paramString3)) && (!a(paramList)) && (!a(str1, paramString2))) {
+        k = 1;
       } else {
-        i = 0;
+        k = 0;
       }
       Object localObject2 = null;
-      if (i != 0) {
+      if (k != 0) {
         localObject1 = paramCancelableRunnable;
       } else {
         localObject1 = null;
       }
-      if (i == 0)
+      if (k == 0)
       {
         QLog.i("TeleScreen|JefsClass", 1, "report async");
         a(paramCancelableRunnable);
@@ -511,10 +474,10 @@ public class JefsClass
         }
         if ((paramString3 != null) && (paramString3.startsWith("tencentfile://")))
         {
-          i = paramString3.indexOf(",url=");
-          if (i >= 0)
+          k = paramString3.indexOf(",url=");
+          if (k >= 0)
           {
-            paramIntent = a(paramString3.substring(i));
+            paramIntent = a(paramString3.substring(k));
             if (URLEncoder.encode("application/vnd.android.package-archive").equals(paramIntent.get("downloadmimetype")))
             {
               a(paramContext, str1, str2, null, URLDecoder.decode((String)paramIntent.get("downloadurl")), (Runnable)localObject1);
@@ -567,7 +530,7 @@ public class JefsClass
       ReportController.b(null, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", (String)localObject2, (String)localObject1);
     }
     Object localObject1 = new WeakReference(paramContext);
-    Object localObject2 = jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
+    Object localObject2 = c;
     if (localObject2 == null) {
       return;
     }
@@ -593,7 +556,7 @@ public class JefsClass
       ReportController.b(null, "dc00898", "", "", "0X8009C58", "0X8009C58", 0, 0, "", "", (String)localObject2, (String)localObject1);
     }
     Object localObject1 = new WeakReference(paramContext);
-    Object localObject2 = jdField_a_of_type_ComTencentMobileqqHaoliyouIJefsClassInjectInterface;
+    Object localObject2 = c;
     if (localObject2 == null) {
       return;
     }
@@ -605,9 +568,9 @@ public class JefsClass
     if (paramRunnable == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangThreadLocal.set(Boolean.valueOf(true));
+    this.f.set(Boolean.valueOf(true));
     paramRunnable.run();
-    this.jdField_a_of_type_JavaLangThreadLocal.set(Boolean.valueOf(false));
+    this.f.set(Boolean.valueOf(false));
   }
   
   private static boolean a(String paramString1, String paramString2)
@@ -615,7 +578,7 @@ public class JefsClass
     return ("biz_src_jc_qzone".equals(paramString1)) && ("com.qzone".equals(paramString2));
   }
   
-  private static boolean a(List<ResolveInfo> paramList)
+  static boolean a(List<ResolveInfo> paramList)
   {
     if (paramList != null)
     {
@@ -632,23 +595,41 @@ public class JefsClass
     return false;
   }
   
+  private int b(Runnable paramRunnable)
+  {
+    synchronized (this.g)
+    {
+      do
+      {
+        this.h += 1;
+      } while (this.g.get(this.h) != null);
+      int k = this.h;
+      this.g.put(k, paramRunnable);
+      return k;
+    }
+    for (;;)
+    {
+      throw paramRunnable;
+    }
+  }
+  
   private void b(int paramInt1, int paramInt2)
   {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+      synchronized (this.g)
       {
-        if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.indexOfKey(paramInt1) >= 0)
+        if (this.g.indexOfKey(paramInt1) >= 0)
         {
-          i = 1;
-          this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt1);
-          if (i != 0)
+          k = 1;
+          this.g.delete(paramInt1);
+          if (k != 0)
           {
-            paramInt1 = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size();
+            paramInt1 = this.g.size();
             if (paramInt1 <= 0) {
               try
               {
-                MobileQQ.context.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$TeleScreenReceiver);
+                MobileQQ.context.unregisterReceiver(this.i);
               }
               catch (Throwable localThrowable)
               {
@@ -660,13 +641,33 @@ public class JefsClass
           return;
         }
       }
-      int i = 0;
+      int k = 0;
     }
   }
   
   public static JefsClass getInstance()
   {
-    return jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass;
+    return j;
+  }
+  
+  ArrayMap<String, String> a(String paramString)
+  {
+    ArrayMap localArrayMap = new ArrayMap();
+    if (paramString != null)
+    {
+      paramString = paramString.split(",");
+      int m = paramString.length;
+      int k = 0;
+      while (k < m)
+      {
+        String[] arrayOfString = paramString[k].split("=");
+        if (arrayOfString.length == 2) {
+          localArrayMap.put(arrayOfString[0], arrayOfString[1]);
+        }
+        k += 1;
+      }
+    }
+    return localArrayMap;
   }
   
   public JefsClass.Cancelable a(Context paramContext, Intent paramIntent, String paramString, WeakOuterRefRunnable paramWeakOuterRefRunnable)
@@ -685,10 +686,10 @@ public class JefsClass
       localStringBuilder.append("]");
       QLog.d("TeleScreen|JefsClass", 2, localStringBuilder.toString());
     }
-    int i = paramIntent.getIntExtra("key_callback_id", 0);
-    paramWeakOuterRefRunnable.b(i);
+    int k = paramIntent.getIntExtra("key_callback_id", 0);
+    paramWeakOuterRefRunnable.b(k);
     paramWeakOuterRefRunnable = new JefsClass.CancelableRunnable(paramWeakOuterRefRunnable);
-    a(paramContext, paramIntent, paramWeakOuterRefRunnable, new JefsClass.3(this, paramContext, paramIntent, paramString, i));
+    a(paramContext, paramIntent, paramWeakOuterRefRunnable, new JefsClass.3(this, paramContext, paramIntent, paramString, k));
     return paramWeakOuterRefRunnable.a();
   }
   
@@ -744,7 +745,7 @@ public class JefsClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass
  * JD-Core Version:    0.7.0.1
  */

@@ -9,31 +9,27 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/mvp/ListPresenter;", "BEAN", "VIEW", "Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListView;", "Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListPresenter;", "model", "Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListModel;", "(Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListModel;)V", "mIsUsedCacheData", "", "mView", "getModel", "()Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListModel;", "setModel", "total", "", "getTotal", "()I", "attachView", "", "view", "(Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListView;)V", "detachView", "handleLoadFirstPageError", "isCacheData", "list", "", "errorCode", "errorMsg", "", "handleLoadFirstPageSuccess", "handleLoadFirstPageSuccessNotCacheData", "handleLoadFirstPageSuccessWithCacheData", "loadFirstPage", "needCache", "(Ljava/lang/Boolean;)V", "loadNextPage", "refreshPage", "updateModel", "updateView", "Companion", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/mvp/ListPresenter;", "BEAN", "VIEW", "Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListView;", "Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListPresenter;", "model", "Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListModel;", "(Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListModel;)V", "isLoading", "", "mIsUsedCacheData", "mView", "getModel", "()Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListModel;", "setModel", "total", "", "getTotal", "()I", "attachView", "", "view", "(Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListView;)V", "detachView", "handleLoadFirstPageError", "isCacheData", "list", "", "errorCode", "errorMsg", "", "handleLoadFirstPageSuccess", "handleLoadFirstPageSuccessNotCacheData", "handleLoadFirstPageSuccessWithCacheData", "loadFirstPage", "needCache", "(Ljava/lang/Boolean;)V", "loadNextPage", "refreshPage", "updateModel", "updateView", "Companion", "topicsdk-common_release"}, k=1, mv={1, 1, 16})
 public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
   implements ListContract.IListPresenter<BEAN, VIEW>
 {
-  public static final ListPresenter.Companion a;
+  public static final ListPresenter.Companion a = new ListPresenter.Companion(null);
+  private ListContract.IListView<BEAN> b;
+  private boolean c;
+  private boolean d;
   @NotNull
-  private ListContract.IListModel<BEAN> jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListModel;
-  private ListContract.IListView<BEAN> jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
-  private boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkMvpListPresenter$Companion = new ListPresenter.Companion(null);
-  }
+  private ListContract.IListModel<BEAN> e;
   
   public ListPresenter(@NotNull ListContract.IListModel<BEAN> paramIListModel)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListModel = paramIListModel;
+    this.e = paramIListModel;
   }
   
   private final void a(List<? extends BEAN> paramList)
   {
     if ((((Collection)paramList).isEmpty() ^ true))
     {
-      ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+      ListContract.IListView localIListView = this.b;
       if (localIListView != null)
       {
         localIListView.setCenterHide();
@@ -41,7 +37,7 @@ public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
         localIListView.setFooterNoMore();
         localIListView.setHeaderLoading();
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
     }
   }
   
@@ -57,16 +53,16 @@ public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
   
   private final void a(boolean paramBoolean, List<? extends BEAN> paramList, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+      ListContract.IListView localIListView = this.b;
       if (localIListView != null) {
         localIListView.setHeaderError(paramInt, paramString);
       }
     }
     if (((((Collection)paramList).isEmpty() ^ true)) && (paramBoolean))
     {
-      paramString = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+      paramString = this.b;
       if (paramString != null)
       {
         paramString.setCenterHide();
@@ -74,13 +70,13 @@ public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
         paramString.setFooterNoMore();
       }
     }
-    else if (!this.jdField_a_of_type_Boolean)
+    else if (!this.c)
     {
-      paramList = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+      paramList = this.b;
       if (paramList != null) {
         paramList.setCenterError(paramInt, paramString);
       }
-      paramList = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+      paramList = this.b;
       if (paramList != null) {
         paramList.setTotal(0);
       }
@@ -89,31 +85,25 @@ public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
   
   private final void b(int paramInt, List<? extends BEAN> paramList)
   {
-    ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+    ListContract.IListView localIListView = this.b;
     if (localIListView != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.c) {
         localIListView.setHeaderSuccess();
       }
       a(paramInt, paramList);
     }
   }
   
-  @NotNull
-  public final ListContract.IListModel<BEAN> a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListModel;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView = ((ListContract.IListView)null);
+    this.b = ((ListContract.IListView)null);
   }
   
   public void a(int paramInt, @NotNull List<? extends BEAN> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "list");
-    ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+    ListContract.IListView localIListView = this.b;
     if (localIListView != null)
     {
       localIListView.setTotal(paramInt);
@@ -121,7 +111,7 @@ public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
       if ((((Collection)paramList).isEmpty() ^ true))
       {
         localIListView.setCenterHide();
-        if (this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListModel.a())
+        if (this.e.a())
         {
           localIListView.setFooterHasMore();
           return;
@@ -137,16 +127,20 @@ public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
   public void a(@NotNull VIEW paramVIEW)
   {
     Intrinsics.checkParameterIsNotNull(paramVIEW, "view");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView = paramVIEW;
+    this.b = paramVIEW;
   }
   
   public void a(@Nullable Boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+    if (this.d) {
+      return;
+    }
+    this.d = true;
+    Object localObject = this.b;
     if (localObject != null) {
       ((ListContract.IListView)localObject).setCenterLoading();
     }
-    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListModel;
+    localObject = this.e;
     boolean bool;
     if (paramBoolean != null) {
       bool = paramBoolean.booleanValue();
@@ -158,24 +152,34 @@ public class ListPresenter<BEAN, VIEW extends ListContract.IListView<BEAN>>
   
   public void b()
   {
-    if (!this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListModel.a())
+    if (!this.e.a())
     {
-      localIListView = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+      localIListView = this.b;
       if (localIListView != null) {
         localIListView.setFooterNoMore();
       }
       return;
     }
-    ListContract.IListView localIListView = this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListView;
+    if (this.d) {
+      return;
+    }
+    this.d = true;
+    ListContract.IListView localIListView = this.b;
     if (localIListView != null) {
       localIListView.setFooterLoading();
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMvpListContract$IListModel.a((Function4)new ListPresenter.loadNextPage.1(this));
+    this.e.a((Function4)new ListPresenter.loadNextPage.1(this));
+  }
+  
+  @NotNull
+  public final ListContract.IListModel<BEAN> c()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mvp.ListPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,38 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PromotionUtil
 {
-  static SubProcessPromotionMgr a;
   public static String a = "AREngine_ARPromotion";
+  static SubProcessPromotionMgr b;
   
-  public static PromotionMgr a(AppInterface paramAppInterface)
+  public static SubProcessPromotionMgr a(AppInterface paramAppInterface)
+  {
+    if (((paramAppInterface instanceof QQAppInterface)) && (QQAudioHelper.b())) {
+      throw new IllegalArgumentException(HardCodeUtil.a(2131906292));
+    }
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new SubProcessPromotionMgr(paramAppInterface);
+        }
+      }
+      finally {}
+    }
+    return b;
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return paramLong < QQAudioHelper.c();
+  }
+  
+  public static boolean a(long paramLong1, long paramLong2)
+  {
+    long l = QQAudioHelper.c();
+    return (paramLong1 < l) && (paramLong2 > l);
+  }
+  
+  public static PromotionMgr b(AppInterface paramAppInterface)
   {
     if ((paramAppInterface instanceof QQAppInterface)) {
       return (PromotionMgr)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.ARPROMOTION_MANAGER);
@@ -21,51 +49,23 @@ public class PromotionUtil
     if (!QQAudioHelper.b()) {
       return null;
     }
-    throw new IllegalArgumentException(HardCodeUtil.a(2131708509));
+    throw new IllegalArgumentException(HardCodeUtil.a(2131906294));
   }
   
-  public static SubProcessPromotionMgr a(AppInterface paramAppInterface)
-  {
-    if (((paramAppInterface instanceof QQAppInterface)) && (QQAudioHelper.b())) {
-      throw new IllegalArgumentException(HardCodeUtil.a(2131708507));
-    }
-    if (jdField_a_of_type_ComTencentMobileqqArARPromotionMgrSubProcessPromotionMgr == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentMobileqqArARPromotionMgrSubProcessPromotionMgr == null) {
-          jdField_a_of_type_ComTencentMobileqqArARPromotionMgrSubProcessPromotionMgr = new SubProcessPromotionMgr(paramAppInterface);
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentMobileqqArARPromotionMgrSubProcessPromotionMgr;
-  }
-  
-  public static void a(AppInterface paramAppInterface)
+  public static void c(AppInterface paramAppInterface)
   {
     if ((paramAppInterface instanceof QQAppInterface))
     {
-      a(paramAppInterface).a(paramAppInterface);
+      b(paramAppInterface).a(paramAppInterface);
       BusinessCommonConfig.getInstance(paramAppInterface).doOnReconnect();
       return;
     }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "doOnReconnect, 不是主进程");
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong < QQAudioHelper.a();
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    long l = QQAudioHelper.a();
-    return (paramLong1 < l) && (paramLong2 > l);
+    QLog.w(a, 1, "doOnReconnect, 不是主进程");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,19 @@ import java.util.Set;
 abstract class QIMMusicConfigManager$LoadMusicStepTask
   implements INetEngineListener, Runnable
 {
-  final QIMMusicConfigManager jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager;
-  final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  final IHttpEngineService jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
-  final String b;
-  final String c;
+  final QIMMusicConfigManager b;
+  final AppInterface c;
+  final String d;
+  final String e;
+  final IHttpEngineService f;
   
   QIMMusicConfigManager$LoadMusicStepTask(QIMMusicConfigManager paramQIMMusicConfigManager)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager = paramQIMMusicConfigManager;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQIMMusicConfigManager.a();
-    this.b = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.c = paramQIMMusicConfigManager.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService = paramQIMMusicConfigManager.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
+    this.b = paramQIMMusicConfigManager;
+    this.c = paramQIMMusicConfigManager.g();
+    this.d = this.c.getCurrentAccountUin();
+    this.e = paramQIMMusicConfigManager.b;
+    this.f = paramQIMMusicConfigManager.h;
   }
   
   String a(long paramLong)
@@ -45,7 +45,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(paramLong);
     localObject = ((StringBuilder)localObject).toString();
-    String str = MD5.a((String)localObject).toLowerCase();
+    String str = MD5.b((String)localObject).toLowerCase();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -103,7 +103,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
     return localHashMap;
   }
   
-  void a()
+  void b()
   {
     ThreadManager.executeOnSubThread(this);
   }
@@ -114,7 +114,7 @@ abstract class QIMMusicConfigManager$LoadMusicStepTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QIMMusicConfigManager.LoadMusicStepTask
  * JD-Core Version:    0.7.0.1
  */

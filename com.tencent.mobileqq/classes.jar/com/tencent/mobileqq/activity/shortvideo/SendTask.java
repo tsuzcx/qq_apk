@@ -13,19 +13,19 @@ import java.io.File;
 public class SendTask
   implements Runnable
 {
-  Intent jdField_a_of_type_AndroidContentIntent;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  boolean jdField_a_of_type_Boolean;
+  BaseActivity a;
+  Intent b;
+  boolean c;
   
   public SendTask(BaseActivity paramBaseActivity, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.a = paramBaseActivity;
     if (paramIntent != null) {
-      this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      this.b = paramIntent;
     } else {
-      this.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
+      this.b = this.a.getIntent();
     }
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidContentIntent.getExtras().getBoolean("send_in_background");
+    this.c = this.b.getExtras().getBoolean("send_in_background");
   }
   
   public static void a(Intent paramIntent)
@@ -71,10 +71,10 @@ public class SendTask
     if (QLog.isColorLevel()) {
       QLog.d("SendVideoActivity", 2, "#SendTask# run(): start");
     }
-    a(this.jdField_a_of_type_AndroidContentIntent);
-    CodecParam.mRecordFrames = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_frame_count", 0);
-    CodecParam.mRecordTime = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sv_total_record_time", 0);
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_send_path");
+    a(this.b);
+    CodecParam.mRecordFrames = this.b.getIntExtra("sv_total_frame_count", 0);
+    CodecParam.mRecordTime = this.b.getIntExtra("sv_total_record_time", 0);
+    String str = this.b.getStringExtra("thumbfile_send_path");
     Object localObject;
     if (FileUtils.fileExistsAndNotEmpty(str))
     {
@@ -83,7 +83,7 @@ public class SendTask
       ((URLDrawable)localObject).downloadImediatly();
       if (((URLDrawable)localObject).getStatus() == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new SendTask.1(this));
+        this.a.runOnUiThread(new SendTask.1(this));
         return;
       }
       if (QLog.isColorLevel())
@@ -93,8 +93,8 @@ public class SendTask
         ((StringBuilder)localObject).append(str);
         QLog.d("SendVideoActivity", 2, ((StringBuilder)localObject).toString());
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new SendTask.2(this));
+      if (!this.c) {
+        this.a.runOnUiThread(new SendTask.2(this));
       }
     }
     else
@@ -106,15 +106,15 @@ public class SendTask
         ((StringBuilder)localObject).append(str);
         QLog.e("SendVideoActivity", 2, ((StringBuilder)localObject).toString());
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new SendTask.3(this));
+      if (!this.c) {
+        this.a.runOnUiThread(new SendTask.3(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.SendTask
  * JD-Core Version:    0.7.0.1
  */

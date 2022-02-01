@@ -10,7 +10,7 @@ class BlockMerger$3
   public void onGlobalLayout()
   {
     BlockMerger localBlockMerger = this.a;
-    BlockMerger.a(localBlockMerger, localBlockMerger.e());
+    BlockMerger.a(localBlockMerger, localBlockMerger.q());
   }
 }
 

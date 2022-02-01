@@ -8,60 +8,27 @@ import java.util.List;
 
 public class ImageFilterInfoCache
 {
-  private int jdField_a_of_type_Int = 0;
-  private List<ImageFilterStatus> jdField_a_of_type_JavaUtilList = new ArrayList(9);
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[9];
-  private List<HashMap<Integer, Float>> b = new ArrayList();
+  private List<ImageFilterStatus> a = new ArrayList(9);
+  private String[] b = new String[9];
+  private List<HashMap<Integer, Float>> c = new ArrayList();
+  private int d = 0;
   
   public ImageFilterInfoCache()
   {
     b();
   }
   
-  private ImageFilterStatus a(int paramInt)
+  private ImageFilterStatus o(int paramInt)
   {
-    return (ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public float a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public float a(int paramInt1, int paramInt2, float paramFloat)
-  {
-    if (!((HashMap)this.b.get(paramInt1)).containsKey(Integer.valueOf(paramInt2))) {
-      return paramFloat;
-    }
-    return ((Float)((HashMap)this.b.get(paramInt1)).get(Integer.valueOf(paramInt2))).floatValue();
-  }
-  
-  public int a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public AIFilterResult a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public ComicsFilterResult a(int paramInt)
-  {
-    return a(paramInt).a();
-  }
-  
-  public String a(int paramInt)
-  {
-    return a(paramInt).a();
+    return (ImageFilterStatus)this.a.get(paramInt);
   }
   
   public void a()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.d)
     {
-      ((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(i)).a();
+      ((ImageFilterStatus)this.a.get(i)).a();
       i += 1;
     }
   }
@@ -70,7 +37,7 @@ public class ImageFilterInfoCache
   {
     if (paramInt <= 9)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.d = paramInt;
       return;
     }
     throw new IllegalArgumentException("image count > max count 9");
@@ -78,99 +45,132 @@ public class ImageFilterInfoCache
   
   public void a(int paramInt, float paramFloat)
   {
-    a(paramInt).a(paramFloat);
+    o(paramInt).a(paramFloat);
   }
   
   public void a(int paramInt1, int paramInt2, float paramFloat)
   {
-    ((HashMap)this.b.get(paramInt1)).put(Integer.valueOf(paramInt2), Float.valueOf(paramFloat));
+    ((HashMap)this.c.get(paramInt1)).put(Integer.valueOf(paramInt2), Float.valueOf(paramFloat));
   }
   
   public void a(int paramInt, AIFilterResult paramAIFilterResult)
   {
-    a(paramInt).a(paramAIFilterResult);
+    o(paramInt).a(paramAIFilterResult);
   }
   
   public void a(int paramInt1, ComicsFilterResult paramComicsFilterResult, int paramInt2)
   {
-    a(paramInt1).a(paramComicsFilterResult, paramInt2);
+    o(paramInt1).a(paramComicsFilterResult, paramInt2);
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString[paramInt] = paramString;
+    this.b[paramInt] = paramString;
   }
   
   public void a(int paramInt1, String paramString, float paramFloat, int paramInt2)
   {
-    ((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).a(paramString, paramFloat, paramInt2);
+    ((ImageFilterStatus)this.a.get(paramInt1)).a(paramString, paramFloat, paramInt2);
   }
   
-  public boolean a(int paramInt)
+  public float b(int paramInt1, int paramInt2, float paramFloat)
   {
-    return a(paramInt).a();
+    if (!((HashMap)this.c.get(paramInt1)).containsKey(Integer.valueOf(paramInt2))) {
+      return paramFloat;
+    }
+    return ((Float)((HashMap)this.c.get(paramInt1)).get(Integer.valueOf(paramInt2))).floatValue();
   }
   
   public int b(int paramInt)
   {
-    return a(paramInt).b();
-  }
-  
-  public String b(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    return o(paramInt).e();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.b.clear();
+    this.a.clear();
+    this.c.clear();
     int i = 0;
     while (i < 9)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new ImageFilterStatus());
-      this.b.add(new HashMap());
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = "";
+      this.a.add(new ImageFilterStatus());
+      this.c.add(new HashMap());
+      this.b[i] = "";
       i += 1;
     }
   }
   
-  public void b(int paramInt)
+  public int c(int paramInt)
+  {
+    return o(paramInt).f();
+  }
+  
+  public String d(int paramInt)
+  {
+    return o(paramInt).g();
+  }
+  
+  public float e(int paramInt)
+  {
+    return o(paramInt).h();
+  }
+  
+  public AIFilterResult f(int paramInt)
+  {
+    return o(paramInt).i();
+  }
+  
+  public ComicsFilterResult g(int paramInt)
+  {
+    return o(paramInt).j();
+  }
+  
+  public void h(int paramInt)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
-      ((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(i)).a(((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(), ((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(), ((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a());
-      ((HashMap)this.b.get(i)).put(Integer.valueOf(((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a()), Float.valueOf(((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a()));
+      ((ImageFilterStatus)this.a.get(i)).a(((ImageFilterStatus)this.a.get(paramInt)).g(), ((ImageFilterStatus)this.a.get(paramInt)).h(), ((ImageFilterStatus)this.a.get(paramInt)).e());
+      ((HashMap)this.c.get(i)).put(Integer.valueOf(((ImageFilterStatus)this.a.get(paramInt)).e()), Float.valueOf(((ImageFilterStatus)this.a.get(paramInt)).h()));
       i += 1;
     }
   }
   
-  public boolean b(int paramInt)
+  public void i(int paramInt)
   {
-    return a(paramInt).b();
+    o(paramInt).a();
   }
   
-  public void c(int paramInt)
+  public String j(int paramInt)
   {
-    a(paramInt).a();
+    return this.b[paramInt];
   }
   
-  public boolean c(int paramInt)
+  public boolean k(int paramInt)
   {
-    return a(paramInt).c();
+    return o(paramInt).b();
   }
   
-  public void d(int paramInt)
+  public boolean l(int paramInt)
   {
-    int i = ((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
-    ((ImageFilterStatus)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a(null, i);
-    this.b.set(paramInt, new HashMap());
+    return o(paramInt).c();
+  }
+  
+  public boolean m(int paramInt)
+  {
+    return o(paramInt).d();
+  }
+  
+  public void n(int paramInt)
+  {
+    int i = ((ImageFilterStatus)this.a.get(paramInt)).e();
+    ((ImageFilterStatus)this.a.get(paramInt)).a(null, i);
+    this.c.set(paramInt, new HashMap());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.ImageFilterInfoCache
  * JD-Core Version:    0.7.0.1
  */

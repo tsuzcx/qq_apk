@@ -95,7 +95,7 @@ public class QQAppModule
   @HippyMethod(name="getAppsVerionCodeBatch")
   public void getAppsVerionCodeBatch(String paramString, Promise paramPromise)
   {
-    paramPromise.resolve(PackageUtil.d(BaseApplicationImpl.getContext(), paramString));
+    paramPromise.resolve(PackageUtil.e(BaseApplicationImpl.getContext(), paramString));
   }
   
   @HippyMethod(name="isAppInstalled")
@@ -109,7 +109,7 @@ public class QQAppModule
   @HippyMethod(name="isAppInstalledBatch")
   public void isAppInstalledBatch(String paramString, Promise paramPromise)
   {
-    paramPromise.resolve(PackageUtil.c(BaseApplicationImpl.getContext(), paramString));
+    paramPromise.resolve(PackageUtil.d(BaseApplicationImpl.getContext(), paramString));
   }
   
   @HippyMethod(name="launchAppWithTokens")
@@ -131,7 +131,7 @@ public class QQAppModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQAppModule
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,8 @@ import com.tencent.mobileqq.kandian.biz.reward.api.IRIJAidlClient;
 import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsAppInterfaceFactory;
 import com.tencent.mobileqq.nearby.api.IFactoryApi;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.mobileqq.qqgift.runtime.QQGiftToolAppInterface;
+import com.tencent.mobileqq.qqlive.runtime.QQLiveToolAppInterface;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.startup.step.DtSdkInitStep;
 import com.tencent.mobileqq.startup.step.InitSkin;
@@ -59,12 +61,12 @@ public class ToolAppRuntime
     for (;;)
     {
       bool1 = true;
-      break label460;
+      break label516;
       if ("comic_plugin.apk".equals(paramString))
       {
         localObject = ((IQQComicService)getRuntimeService(IQQComicService.class, "tool")).createComicRuntime(localBaseApplicationImpl, MobileQQ.processName);
         bool1 = bool2;
-        break label460;
+        break label516;
       }
       if ("qqpim_plugin.apk".equals(paramString))
       {
@@ -76,7 +78,7 @@ public class ToolAppRuntime
         {
           localObject = new OlympicToolAppInterface(localBaseApplicationImpl, MobileQQ.processName);
           bool1 = bool2;
-          break label460;
+          break label516;
         }
         if ("qwallet_plugin.apk".equals(paramString))
         {
@@ -88,7 +90,7 @@ public class ToolAppRuntime
           {
             localObject = QQIndividualityRuntimeHelper.a(localBaseApplicationImpl, MobileQQ.processName);
             bool1 = bool2;
-            break label460;
+            break label516;
           }
           if ("modular_web".equals(paramString))
           {
@@ -129,16 +131,26 @@ public class ToolAppRuntime
       localObject = new IliveAppInterface(localBaseApplicationImpl, MobileQQ.processName);
       bool1 = bool2;
     }
+    else if ("qcircle_flutter".equals(paramString))
+    {
+      localObject = new QCircleFlutterAppInterface(localBaseApplicationImpl, MobileQQ.processName);
+      bool1 = bool2;
+    }
+    else if ("qq_live_tool".equals(paramString))
+    {
+      localObject = new QQLiveToolAppInterface(localBaseApplicationImpl, MobileQQ.processName);
+      bool1 = bool2;
+    }
     else
     {
       bool1 = bool2;
-      if ("qcircle_flutter".equals(paramString))
+      if ("qq_gift_tool".equals(paramString))
       {
-        localObject = new QCircleFlutterAppInterface(localBaseApplicationImpl, MobileQQ.processName);
+        localObject = new QQGiftToolAppInterface(localBaseApplicationImpl, MobileQQ.processName);
         bool1 = bool2;
       }
     }
-    label460:
+    label516:
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -148,15 +160,15 @@ public class ToolAppRuntime
       paramString.append(localObject);
       QLog.i("ToolAppRuntime", 2, paramString.toString());
     }
-    if ((!InitSkin.c) && (bool1)) {
-      InitSkin.a();
+    if ((!InitSkin.sToolProcessInitComplete) && (bool1)) {
+      InitSkin.waitAsynInitSkin();
     }
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.ToolAppRuntime
  * JD-Core Version:    0.7.0.1
  */

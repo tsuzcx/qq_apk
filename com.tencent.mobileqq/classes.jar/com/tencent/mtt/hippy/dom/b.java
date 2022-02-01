@@ -6,7 +6,7 @@ import android.util.SparseBooleanArray;
 public class b
 {
   private final SparseArray<com.tencent.mtt.hippy.dom.node.b> a = new SparseArray();
-  private SparseBooleanArray b = new SparseBooleanArray();
+  private final SparseBooleanArray b = new SparseBooleanArray();
   
   public int a()
   {
@@ -126,7 +126,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.b
  * JD-Core Version:    0.7.0.1
  */

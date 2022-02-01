@@ -28,7 +28,74 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.MsgBody.SubCmd0
 public class SubType0x26
   implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
-  private static long a(QQAppInterface paramQQAppInterface, submsgtype0x26.MsgBody paramMsgBody)
+  public static void a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x26");
+    }
+    submsgtype0x26.MsgBody localMsgBody = new submsgtype0x26.MsgBody();
+    try
+    {
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      if (!localMsgBody.uint32_sub_cmd.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x26 : msg has not body");
+        }
+        return;
+      }
+      paramOnLinePushMessageProcessor = (QQAppInterface)paramOnLinePushMessageProcessor.a();
+      c(paramOnLinePushMessageProcessor, localMsgBody);
+      long l = b(paramOnLinePushMessageProcessor, localMsgBody);
+      if (l != 0L)
+      {
+        TroopShortcutBarHandler localTroopShortcutBarHandler = (TroopShortcutBarHandler)paramOnLinePushMessageProcessor.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+        if (localTroopShortcutBarHandler != null) {
+          localTroopShortcutBarHandler.notifyUI(3, true, new Object[] { Long.valueOf(l) });
+        }
+      }
+      if ((localMsgBody.uint32_sub_cmd.get() != 1) && (localMsgBody.uint32_sub_cmd.get() != 4))
+      {
+        if (localMsgBody.uint32_sub_cmd.get() == 3) {
+          a(paramOnLinePushMessageProcessor, localMsgBody);
+        }
+      }
+      else {
+        ((ITroopOnlinePushHandler)paramOnLinePushMessageProcessor.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_PUSH_HANDLER)).a(paramArrayOfByte);
+      }
+      return;
+    }
+    catch (Exception paramOnLinePushMessageProcessor)
+    {
+      label181:
+      break label181;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x26 : fail to parse submsgtype0x26.");
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, submsgtype0x26.MsgBody paramMsgBody)
+  {
+    if ((!paramMsgBody.msg_subcmd_0x3_push_body.has()) && (QLog.isColorLevel())) {
+      QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x26 : msg has not 0x3_push_body");
+    }
+    paramMsgBody = (submsgtype0x26.MsgBody.SubCmd0x3UpdateDiscussAppInfo)paramMsgBody.msg_subcmd_0x3_push_body.get();
+    if ((paramMsgBody.uint64_conf_uin.has()) && (paramMsgBody.msg_app_tip_notify.has()))
+    {
+      paramMsgBody.uint64_conf_uin.get();
+      paramMsgBody = (submsgtype0x26.AppTipNotify)paramMsgBody.msg_app_tip_notify.get();
+      if (paramMsgBody.bytes_text.has())
+      {
+        paramMsgBody = paramMsgBody.bytes_text.get().toByteArray();
+        if (paramMsgBody.length > 0) {
+          paramQQAppInterface.getGAudioHandler().c(paramMsgBody);
+        }
+      }
+    }
+  }
+  
+  private static long b(QQAppInterface paramQQAppInterface, submsgtype0x26.MsgBody paramMsgBody)
   {
     int i = paramMsgBody.uint32_sub_cmd.get();
     long l1 = 0L;
@@ -87,74 +154,7 @@ public class SubType0x26
     return l2;
   }
   
-  public static void a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, byte[] paramArrayOfByte)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x26");
-    }
-    submsgtype0x26.MsgBody localMsgBody = new submsgtype0x26.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramArrayOfByte);
-      if (!localMsgBody.uint32_sub_cmd.has())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x26 : msg has not body");
-        }
-        return;
-      }
-      paramOnLinePushMessageProcessor = (QQAppInterface)paramOnLinePushMessageProcessor.a();
-      b(paramOnLinePushMessageProcessor, localMsgBody);
-      long l = a(paramOnLinePushMessageProcessor, localMsgBody);
-      if (l != 0L)
-      {
-        TroopShortcutBarHandler localTroopShortcutBarHandler = (TroopShortcutBarHandler)paramOnLinePushMessageProcessor.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
-        if (localTroopShortcutBarHandler != null) {
-          localTroopShortcutBarHandler.notifyUI(3, true, new Object[] { Long.valueOf(l) });
-        }
-      }
-      if ((localMsgBody.uint32_sub_cmd.get() != 1) && (localMsgBody.uint32_sub_cmd.get() != 4))
-      {
-        if (localMsgBody.uint32_sub_cmd.get() == 3) {
-          a(paramOnLinePushMessageProcessor, localMsgBody);
-        }
-      }
-      else {
-        ((ITroopOnlinePushHandler)paramOnLinePushMessageProcessor.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_PUSH_HANDLER)).a(paramArrayOfByte);
-      }
-      return;
-    }
-    catch (Exception paramOnLinePushMessageProcessor)
-    {
-      label181:
-      break label181;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x26 : fail to parse submsgtype0x26.");
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, submsgtype0x26.MsgBody paramMsgBody)
-  {
-    if ((!paramMsgBody.msg_subcmd_0x3_push_body.has()) && (QLog.isColorLevel())) {
-      QLog.e("Q.msg.BaseMessageProcessor", 2, "handleMsgType0x210SubMsgType0x26 : msg has not 0x3_push_body");
-    }
-    paramMsgBody = (submsgtype0x26.MsgBody.SubCmd0x3UpdateDiscussAppInfo)paramMsgBody.msg_subcmd_0x3_push_body.get();
-    if ((paramMsgBody.uint64_conf_uin.has()) && (paramMsgBody.msg_app_tip_notify.has()))
-    {
-      paramMsgBody.uint64_conf_uin.get();
-      paramMsgBody = (submsgtype0x26.AppTipNotify)paramMsgBody.msg_app_tip_notify.get();
-      if (paramMsgBody.bytes_text.has())
-      {
-        paramMsgBody = paramMsgBody.bytes_text.get().toByteArray();
-        if (paramMsgBody.length > 0) {
-          paramQQAppInterface.getGAudioHandler().c(paramMsgBody);
-        }
-      }
-    }
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, submsgtype0x26.MsgBody paramMsgBody)
+  private static void c(QQAppInterface paramQQAppInterface, submsgtype0x26.MsgBody paramMsgBody)
   {
     if (paramMsgBody == null) {
       return;
@@ -185,7 +185,7 @@ public class SubType0x26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x26
  * JD-Core Version:    0.7.0.1
  */

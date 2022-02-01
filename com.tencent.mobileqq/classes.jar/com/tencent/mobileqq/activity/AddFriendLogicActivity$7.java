@@ -19,12 +19,12 @@ class AddFriendLogicActivity$7
       paramDialogInterface.putExtra("is_change_account", true);
       paramDialogInterface.putExtra("if_check_account_same", true);
       paramDialogInterface.putExtras(this.a.getIntent().getExtras());
-      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.c(this.a));
-      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.putExtra("appid", AddFriendLogicActivity.m(this.a));
+      paramDialogInterface.putExtra("openid", AddFriendLogicActivity.a);
       paramDialogInterface.putExtra("key_action", AddFriendLogicActivity.class.getSimpleName());
       paramDialogInterface.addFlags(268435456);
       paramDialogInterface.addFlags(67108864);
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      this.a.i.cancel();
       RouteUtils.a(this.a, paramDialogInterface, "/base/login");
       this.a.finish();
       return;
@@ -38,7 +38,7 @@ class AddFriendLogicActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendLogicActivity.7
  * JD-Core Version:    0.7.0.1
  */

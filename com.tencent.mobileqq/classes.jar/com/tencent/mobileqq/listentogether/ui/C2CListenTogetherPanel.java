@@ -14,35 +14,21 @@ public class C2CListenTogetherPanel
     super(paramBaseChatPie);
   }
   
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof FriendChatPie)) {
-      ((FriendChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).ap();
-    }
-  }
-  
-  public boolean a()
+  public boolean b()
   {
     return true;
   }
   
-  public boolean b()
+  public boolean c()
   {
     return true;
   }
   
   public void d()
   {
-    super.d();
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.jdField_a_of_type_JavaLangString = "";
+    if ((this.a instanceof FriendChatPie)) {
+      ((FriendChatPie)this.a).bB();
     }
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo = new BaseListenTogetherPanel.ReportInfo();
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo.jdField_a_of_type_JavaLangString = "c2c_AIO";
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$ReportInfo.b = "";
   }
   
   public String getTag()
@@ -52,23 +38,37 @@ public class C2CListenTogetherPanel
   
   public void k()
   {
+    super.k();
+    this.e.a = 2;
+    this.e.b = this.a.ae();
+    if (this.e.b == null) {
+      this.e.b = "";
+    }
+    this.m = new BaseListenTogetherPanel.ReportInfo();
+    this.m.a = "c2c_AIO";
+    this.m.b = -1;
+    this.m.c = "";
+  }
+  
+  public void m()
+  {
     boolean bool;
-    if ((AIOMusicSkin.a().n_()) && (!QQTheme.f())) {
+    if ((AIOMusicSkin.a().du_()) && (!QQTheme.isNowSimpleUI())) {
       bool = true;
     } else {
       bool = false;
     }
-    QLog.d("BaseListenTogetherPanel_C2C", 1, String.format("[music-panel] onVasSkinStateChange mutualLevel=%d vasSkinShowing [%b-->%b]", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData.f), Boolean.valueOf(this.e), Boolean.valueOf(bool) }));
-    if (bool != this.e)
+    QLog.d("BaseListenTogetherPanel_C2C", 1, String.format("[music-panel] onVasSkinStateChange mutualLevel=%d vasSkinShowing [%b-->%b]", new Object[] { Integer.valueOf(this.e.p), Boolean.valueOf(this.l), Boolean.valueOf(bool) }));
+    if (bool != this.l)
     {
-      this.e = bool;
-      a(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiBaseListenTogetherPanel$UiData);
+      this.l = bool;
+      a(this.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.C2CListenTogetherPanel
  * JD-Core Version:    0.7.0.1
  */

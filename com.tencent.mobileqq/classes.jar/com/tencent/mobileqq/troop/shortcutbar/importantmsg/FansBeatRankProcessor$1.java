@@ -16,14 +16,14 @@ class FansBeatRankProcessor$1
         return;
       }
       if (TextUtils.equals(paramString, FansBeatRankProcessor.a(this.a))) {
-        FansBeatRankProcessor.a(this.a);
+        FansBeatRankProcessor.b(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.FansBeatRankProcessor.1
  * JD-Core Version:    0.7.0.1
  */

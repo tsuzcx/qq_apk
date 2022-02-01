@@ -21,9 +21,9 @@ import mqq.os.MqqHandler;
 
 public class VoiceTimeTraceUtil
 {
-  private volatile VoiceCacheHolder jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder;
-  private Map<VoiceBean, VoiceTimeTraceInfo> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Map<String, String> b = new ConcurrentHashMap();
+  private Map<VoiceBean, VoiceTimeTraceInfo> a = new ConcurrentHashMap();
+  private volatile VoiceCacheHolder b;
+  private Map<String, String> c = new ConcurrentHashMap();
   
   public static VoiceTimeTraceUtil a()
   {
@@ -130,19 +130,19 @@ public class VoiceTimeTraceUtil
   
   public String a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder != null)
+    if (this.b != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a()) {
+      if (this.b.e()) {
         return "";
       }
       ArrayList localArrayList = new ArrayList();
-      paramString = AssistantUtils.a(paramString);
+      paramString = AssistantUtils.c(paramString);
       int i = 0;
-      while (i < this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a())
+      while (i < this.b.d())
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a(i);
-        if ((((VoiceBean)localObject).d()) && (((VoiceBean)localObject).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
-          localArrayList.add(this.jdField_a_of_type_JavaUtilMap.get(localObject));
+        localObject = this.b.a(i);
+        if ((((VoiceBean)localObject).e()) && (((VoiceBean)localObject).h.equalsIgnoreCase(paramString))) {
+          localArrayList.add(this.a.get(localObject));
         }
         i += 1;
       }
@@ -150,7 +150,7 @@ public class VoiceTimeTraceUtil
       {
         paramString = new StringBuilder();
         paramString.append("summaryTraceInfo, traceInfoList empty, cacheSize:");
-        paramString.append(this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a());
+        paramString.append(this.b.d());
         AssistantUtils.a("VoiceTimeTraceUtil", paramString.toString());
         return "";
       }
@@ -159,13 +159,13 @@ public class VoiceTimeTraceUtil
       while (paramString.hasNext())
       {
         localObject = (VoiceTimeTraceInfo)paramString.next();
-        ((VoiceTimeTraceInfo)localObject).a();
+        ((VoiceTimeTraceInfo)localObject).b();
         l1 += ((VoiceTimeTraceInfo)localObject).j;
       }
       l1 /= localArrayList.size();
       paramString = (VoiceTimeTraceInfo)localArrayList.get(localArrayList.size() - 1);
       Object localObject = (VoiceTimeTraceInfo)localArrayList.get(0);
-      long l2 = paramString.g - ((VoiceTimeTraceInfo)localObject).jdField_a_of_type_Long;
+      long l2 = paramString.g - ((VoiceTimeTraceInfo)localObject).a;
       localObject = new StringBuilder("\n");
       ((StringBuilder)localObject).append("指令总耗时：");
       ((StringBuilder)localObject).append(l2);
@@ -194,22 +194,22 @@ public class VoiceTimeTraceUtil
       AssistantUtils.a("VoiceTimeTraceUtil", ((StringBuilder)localObject).toString().replace("\n", "， "));
       StringBuilder localStringBuilder = new StringBuilder("\n");
       localStringBuilder.append("语音指令ID：");
-      localStringBuilder.append(paramString.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramString.q);
       localStringBuilder.append("\n");
       localStringBuilder.append("后台错误码：");
-      localStringBuilder.append(b(paramString.jdField_a_of_type_Int));
+      localStringBuilder.append(b(paramString.m));
       localStringBuilder.append("\n");
       localStringBuilder.append("微信错误码：");
-      localStringBuilder.append(a(paramString.jdField_b_of_type_Int));
+      localStringBuilder.append(a(paramString.n));
       localStringBuilder.append("\n");
       localStringBuilder.append("语音转文本：");
-      localStringBuilder.append(paramString.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramString.r);
       localStringBuilder.append("\n");
       localStringBuilder.append("技能树意图：");
-      localStringBuilder.append(paramString.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(paramString.s);
       localStringBuilder.append("\n");
       AssistantUtils.a("VoiceTimeTraceUtil", localStringBuilder.toString().replace("\n", "， "));
-      AssistantUtils.a(paramString.a(), paramString.jdField_a_of_type_JavaLangString, paramString.jdField_b_of_type_JavaLangString, paramString.jdField_c_of_type_JavaLangString, localArrayList.size(), paramString.jdField_d_of_type_Int, l2, l1, paramString.h, paramString.i, paramString.j, paramString.k, paramString.l);
+      AssistantUtils.a(paramString.a(), paramString.q, paramString.r, paramString.s, localArrayList.size(), paramString.p, l2, l1, paramString.h, paramString.i, paramString.j, paramString.k, paramString.l);
       paramString = new StringBuilder();
       paramString.append(localStringBuilder.toString().trim());
       paramString.append("\n");
@@ -218,8 +218,6 @@ public class VoiceTimeTraceUtil
     }
     return "";
   }
-  
-  public void a() {}
   
   public void a(Activity paramActivity)
   {
@@ -231,89 +229,89 @@ public class VoiceTimeTraceUtil
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("snapshotList:");
-      ((StringBuilder)localObject).append(this.b.toString());
+      ((StringBuilder)localObject).append(this.c.toString());
       AssistantUtils.a("VoiceTimeTraceUtil", ((StringBuilder)localObject).toString());
-      if (this.b.isEmpty())
+      if (this.c.isEmpty())
       {
-        QQToast.a(paramActivity, "快照文件为空", 0).a();
+        QQToast.makeText(paramActivity, "快照文件为空", 0).show();
         return;
       }
-      if (this.b.get("SLK") != null) {
-        FileUtils.isEmptyFile((String)this.b.get("SLK"));
+      if (this.c.get("SLK") != null) {
+        FileUtils.isEmptyFile((String)this.c.get("SLK"));
       }
-      if (this.b.get("PCM") != null) {
-        FileUtils.isEmptyFile((String)this.b.get("PCM"));
+      if (this.c.get("PCM") != null) {
+        FileUtils.isEmptyFile((String)this.c.get("PCM"));
       }
-      if (this.b.get("BUF") != null) {
-        FileUtils.isEmptyFile((String)this.b.get("BUF"));
+      if (this.c.get("BUF") != null) {
+        FileUtils.isEmptyFile((String)this.c.get("BUF"));
       }
-      localObject = new ArrayList(this.b.values().size());
+      localObject = new ArrayList(this.c.values().size());
       ThreadManager.getFileThreadHandler().post(new VoiceTimeTraceUtil.1(this, (List)localObject, paramActivity));
       return;
     }
-    QQToast.a(paramActivity, "转发环境错误", 0).a();
+    QQToast.makeText(paramActivity, "转发环境错误", 0).show();
   }
   
   public void a(VoiceCacheHolder paramVoiceCacheHolder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder = paramVoiceCacheHolder;
+    this.b = paramVoiceCacheHolder;
   }
   
   public void a(VoiceBean paramVoiceBean)
   {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
     VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
     if (localVoiceTimeTraceInfo2 == null) {
       localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
     }
-    localVoiceTimeTraceInfo1.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+    localVoiceTimeTraceInfo1.a = System.currentTimeMillis();
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
   }
   
   public void a(VoiceBean paramVoiceBean, int paramInt1, int paramInt2, int paramInt3)
   {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
     VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
     if (localVoiceTimeTraceInfo2 == null) {
       localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
     }
-    localVoiceTimeTraceInfo1.jdField_a_of_type_Int = paramInt1;
-    localVoiceTimeTraceInfo1.jdField_b_of_type_Int = paramInt2;
-    localVoiceTimeTraceInfo1.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+    localVoiceTimeTraceInfo1.m = paramInt1;
+    localVoiceTimeTraceInfo1.n = paramInt2;
+    localVoiceTimeTraceInfo1.o = paramInt3;
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
   }
   
   public void a(VoiceBean paramVoiceBean, long paramLong1, long paramLong2)
   {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
     VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
     if (localVoiceTimeTraceInfo2 == null) {
       localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
     }
     localVoiceTimeTraceInfo1.h = paramLong1;
     localVoiceTimeTraceInfo1.i = paramLong2;
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
   }
   
   public void a(VoiceBean paramVoiceBean, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
     VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
     if (localVoiceTimeTraceInfo2 == null) {
       localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
     }
     localVoiceTimeTraceInfo1.g = System.currentTimeMillis();
-    localVoiceTimeTraceInfo1.jdField_a_of_type_JavaLangString = paramString1;
-    localVoiceTimeTraceInfo1.jdField_b_of_type_JavaLangString = paramString2;
-    localVoiceTimeTraceInfo1.jdField_d_of_type_Int = paramInt;
-    localVoiceTimeTraceInfo1.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+    localVoiceTimeTraceInfo1.q = paramString1;
+    localVoiceTimeTraceInfo1.r = paramString2;
+    localVoiceTimeTraceInfo1.p = paramInt;
+    localVoiceTimeTraceInfo1.s = paramString3;
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
   }
   
   public void a(String paramString1, String paramString2)
   {
     Object localObject = new File(paramString2);
-    if ((((File)localObject).exists()) && (((File)localObject).length() > 0L) && (!this.b.containsKey(paramString1)))
+    if ((((File)localObject).exists()) && (((File)localObject).length() > 0L) && (!this.c.containsKey(paramString1)))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("put snapshot key: ");
@@ -321,15 +319,28 @@ public class VoiceTimeTraceUtil
       ((StringBuilder)localObject).append(", path: ");
       ((StringBuilder)localObject).append(paramString2);
       AssistantUtils.a("VoiceTimeTraceUtil", ((StringBuilder)localObject).toString());
-      this.b.put(paramString1, paramString2);
+      this.c.put(paramString1, paramString2);
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3) {}
   
-  public void b()
+  public void b() {}
+  
+  public void b(VoiceBean paramVoiceBean)
   {
-    Iterator localIterator = this.b.entrySet().iterator();
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
+    if (localVoiceTimeTraceInfo2 == null) {
+      localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
+    }
+    localVoiceTimeTraceInfo1.b = System.currentTimeMillis();
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.c.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -337,37 +348,37 @@ public class VoiceTimeTraceUtil
         FileUtils.deleteFile((String)localEntry.getValue());
       }
     }
-    this.b.clear();
-  }
-  
-  public void b(VoiceBean paramVoiceBean)
-  {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
-    if (localVoiceTimeTraceInfo2 == null) {
-      localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
-    }
-    localVoiceTimeTraceInfo1.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.c.clear();
   }
   
   public void c(VoiceBean paramVoiceBean)
   {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
     VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
     if (localVoiceTimeTraceInfo2 == null) {
       localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
     }
-    localVoiceTimeTraceInfo1.jdField_c_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+    localVoiceTimeTraceInfo1.c = System.currentTimeMillis();
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
   }
   
   public void d()
+  {
+    this.a.clear();
+  }
+  
+  public void d(VoiceBean paramVoiceBean)
+  {
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
+    if (localVoiceTimeTraceInfo2 == null) {
+      localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
+    }
+    localVoiceTimeTraceInfo1.d = System.currentTimeMillis();
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+  }
+  
+  public void e()
   {
     IVoiceAssistantCore localIVoiceAssistantCore = AssistantUtils.a();
     if ((localIVoiceAssistantCore != null) && (localIVoiceAssistantCore.getActivity() != null))
@@ -378,42 +389,31 @@ public class VoiceTimeTraceUtil
     AssistantUtils.a("VoiceTimeTraceUtil", "traceSnapshot, env Error");
   }
   
-  public void d(VoiceBean paramVoiceBean)
-  {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
-    if (localVoiceTimeTraceInfo2 == null) {
-      localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
-    }
-    localVoiceTimeTraceInfo1.jdField_d_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
-  }
-  
   public void e(VoiceBean paramVoiceBean)
   {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
     VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
     if (localVoiceTimeTraceInfo2 == null) {
       localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
     }
     localVoiceTimeTraceInfo1.e = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
   }
   
   public void f(VoiceBean paramVoiceBean)
   {
-    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.jdField_a_of_type_JavaUtilMap.get(paramVoiceBean);
+    VoiceTimeTraceInfo localVoiceTimeTraceInfo2 = (VoiceTimeTraceInfo)this.a.get(paramVoiceBean);
     VoiceTimeTraceInfo localVoiceTimeTraceInfo1 = localVoiceTimeTraceInfo2;
     if (localVoiceTimeTraceInfo2 == null) {
       localVoiceTimeTraceInfo1 = new VoiceTimeTraceInfo();
     }
     localVoiceTimeTraceInfo1.f = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilMap.put(paramVoiceBean, localVoiceTimeTraceInfo1);
+    this.a.put(paramVoiceBean, localVoiceTimeTraceInfo1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.VoiceTimeTraceUtil
  * JD-Core Version:    0.7.0.1
  */

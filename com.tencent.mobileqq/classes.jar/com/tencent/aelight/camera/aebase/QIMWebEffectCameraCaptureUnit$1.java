@@ -22,7 +22,7 @@ class QIMWebEffectCameraCaptureUnit$1
       if (paramIntent.getIntExtra("broadcastType", 1) != 1) {
         return;
       }
-      paramContext = QIMWebEffectCameraCaptureUnit.a(this.a).a();
+      paramContext = QIMWebEffectCameraCaptureUnit.a(this.a).getActivity();
       if (paramContext != null)
       {
         if (paramContext.isFinishing()) {
@@ -35,7 +35,7 @@ class QIMWebEffectCameraCaptureUnit$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.QIMWebEffectCameraCaptureUnit.1
  * JD-Core Version:    0.7.0.1
  */

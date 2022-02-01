@@ -11,17 +11,17 @@ class FullScreenInputHelper$3
   
   public void run()
   {
-    if (FullScreenInputHelper.a(this.this$0).a.getLineCount() > 3)
+    if (this.this$0.a.Y.getLineCount() > 3)
     {
-      this.this$0.a.setVisibility(0);
+      FullScreenInputHelper.a(this.this$0);
       return;
     }
-    this.this$0.a.setVisibility(8);
+    this.this$0.c.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.3
  * JD-Core Version:    0.7.0.1
  */

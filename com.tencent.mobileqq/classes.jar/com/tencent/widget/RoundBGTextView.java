@@ -11,9 +11,9 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class RoundBGTextView
   extends SingleLineTextView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int b = 0;
+  private int a = 0;
+  private Paint b;
+  private int c = 0;
   
   public RoundBGTextView(Context paramContext)
   {
@@ -32,30 +32,30 @@ public class RoundBGTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    if (this.b == null) {
+      this.b = new Paint();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
+    this.b.setStyle(Paint.Style.FILL);
+    this.b.setColor(this.c);
     RectF localRectF = new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
-    int i = this.jdField_a_of_type_Int;
-    paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
+    int i = this.a;
+    paramCanvas.drawRoundRect(localRectF, i, i, this.b);
     super.onDraw(paramCanvas);
   }
   
   public void setBgColor(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public void setRoundCornerSize(int paramInt)
   {
-    this.jdField_a_of_type_Int = AIOUtils.b(paramInt, getResources());
+    this.a = AIOUtils.b(paramInt, getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.RoundBGTextView
  * JD-Core Version:    0.7.0.1
  */

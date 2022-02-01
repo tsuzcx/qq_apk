@@ -15,43 +15,43 @@ class AssetWriterInput$2
     {
       try
       {
-        AssetWriterInput.access$300(this.this$0).endWriteVideoSample();
+        this.this$0.writer.endWriteVideoSample(null, null);
       }
       catch (Throwable localThrowable1)
       {
-        if (AssetWriterInput.access$400(this.this$0) != null)
+        if (AssetWriterInput.access$300(this.this$0) != null)
         {
-          AssetWriterInput.access$400(this.this$0).onError(new ExportErrorStatus(-123, localThrowable1));
+          AssetWriterInput.access$300(this.this$0).onError(new ExportErrorStatus(-123, localThrowable1));
           return;
         }
       }
-      if (AssetWriterInput.access$400(this.this$0) != null) {
-        AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, -1L);
+      if (AssetWriterInput.access$300(this.this$0) != null) {
+        AssetWriterInput.access$300(this.this$0).onProgressChanged(this.this$0, -1L);
       }
     }
     else
     {
       try
       {
-        AssetWriterInput.access$300(this.this$0).endWriteAudioSample();
+        this.this$0.writer.endWriteAudioSample();
       }
       catch (Throwable localThrowable2)
       {
-        if (AssetWriterInput.access$400(this.this$0) != null)
+        if (AssetWriterInput.access$300(this.this$0) != null)
         {
-          AssetWriterInput.access$400(this.this$0).onError(new ExportErrorStatus(-124, localThrowable2));
+          AssetWriterInput.access$300(this.this$0).onError(new ExportErrorStatus(-124, localThrowable2));
           return;
         }
       }
-      if (AssetWriterInput.access$400(this.this$0) != null) {
-        AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, -1L);
+      if (AssetWriterInput.access$300(this.this$0) != null) {
+        AssetWriterInput.access$300(this.this$0).onProgressChanged(this.this$0, -1L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriterInput.2
  * JD-Core Version:    0.7.0.1
  */

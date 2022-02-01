@@ -12,13 +12,13 @@ class FavoriteSearchResultGroupPresenter$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessGroupModelGroupSearchModelFavorite.a(paramView);
+    this.a.a(paramView);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchResultGroupPresenter.1
  * JD-Core Version:    0.7.0.1
  */

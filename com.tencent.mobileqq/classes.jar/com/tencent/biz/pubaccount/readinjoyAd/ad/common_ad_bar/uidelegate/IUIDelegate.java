@@ -16,37 +16,29 @@ public abstract class IUIDelegate
   implements View.OnClickListener
 {
   public int a;
-  protected Context a;
-  protected ViewGroup a;
-  public AdvertisementInfo a;
-  protected FeedBackClickListener a;
-  public AdData a;
-  public boolean a;
-  public boolean b = false;
+  protected Context b;
+  protected ViewGroup c;
+  protected FeedBackClickListener d;
+  public boolean e = false;
+  public boolean f = false;
+  public AdData g;
+  public AdvertisementInfo h;
   
   public IUIDelegate(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(paramContext);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(a(), this.jdField_a_of_type_AndroidViewViewGroup);
-    a();
+    this.a = paramInt;
+    this.b = paramContext;
+    this.c = new FrameLayout(paramContext);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(a(), this.c);
     b();
+    c();
   }
   
   public abstract int a();
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public abstract void a();
-  
   public void a(FeedBackClickListener paramFeedBackClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_barCallbackFeedBackClickListener = paramFeedBackClickListener;
+    this.d = paramFeedBackClickListener;
   }
   
   public void a(View... paramVarArgs)
@@ -70,24 +62,31 @@ public abstract class IUIDelegate
     if (paramAdData == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData = paramAdData;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData);
+    this.g = paramAdData;
+    this.h = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData);
   }
   
   public abstract void c();
   
-  public void d()
+  public abstract void d();
+  
+  public void e()
   {
-    this.b = true;
+    this.f = true;
   }
   
-  public void e() {}
+  public void g() {}
   
-  public void f() {}
+  public void h() {}
+  
+  public View i()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.IUIDelegate
  * JD-Core Version:    0.7.0.1
  */

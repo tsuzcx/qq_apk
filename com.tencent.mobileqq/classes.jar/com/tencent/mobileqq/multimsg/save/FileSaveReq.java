@@ -24,28 +24,23 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class FileSaveReq
 {
   public int a;
-  public QFileMultiSaveReq a;
-  public PicReq a;
-  public ShortVideoReq a;
-  public CopyOnWriteArrayList<ISingleFileSaveCallBack> a;
-  
-  public FileSaveReq()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
+  public PicReq b;
+  public ShortVideoReq c;
+  public QFileMultiSaveReq d;
+  public CopyOnWriteArrayList<ISingleFileSaveCallBack> e = new CopyOnWriteArrayList();
   
   public static FileSaveReq a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
     FileSaveReq localFileSaveReq = new FileSaveReq();
-    localFileSaveReq.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq = new QFileMultiSaveReq(paramQQAppInterface, paramChatMessage);
+    localFileSaveReq.d = new QFileMultiSaveReq(paramQQAppInterface, paramChatMessage);
     return localFileSaveReq;
   }
   
   public static FileSaveReq a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
   {
     FileSaveReq localFileSaveReq = new FileSaveReq();
-    localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = SVBusiUtil.a(paramQQAppInterface, paramMessageForShortVideo, 1);
-    localFileSaveReq.jdField_a_of_type_Int = 2;
+    localFileSaveReq.c = SVBusiUtil.a(paramQQAppInterface, paramMessageForShortVideo, 1);
+    localFileSaveReq.a = 2;
     return localFileSaveReq;
   }
   
@@ -60,8 +55,8 @@ public class FileSaveReq
     FileSaveReq localFileSaveReq = new FileSaveReq();
     PicReq localPicReq = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(i, 1);
     localPicReq.a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
-    localFileSaveReq.jdField_a_of_type_ComTencentMobileqqPicPicReq = localPicReq;
-    localFileSaveReq.jdField_a_of_type_Int = 1;
+    localFileSaveReq.b = localPicReq;
+    localFileSaveReq.a = 1;
     return localFileSaveReq;
   }
   
@@ -111,31 +106,31 @@ public class FileSaveReq
                         break;
                       } while (!(paramList instanceof MessageForDLFile));
                       paramList = a(paramQQAppInterface, paramList);
-                      paramList.jdField_a_of_type_Int = 9;
+                      paramList.a = 9;
                       break;
                     } while (!(paramList instanceof MessageForDLFile));
                     paramList = a(paramQQAppInterface, paramList);
-                    paramList.jdField_a_of_type_Int = 8;
+                    paramList.a = 8;
                     break;
                     if ((paramList instanceof MessageForFile))
                     {
                       paramList = a(paramQQAppInterface, paramList);
-                      paramList.jdField_a_of_type_Int = 5;
+                      paramList.a = 5;
                       break;
                     }
                   } while (!(paramList instanceof MessageForTroopFile));
                   paramList = a(paramQQAppInterface, paramList);
-                  paramList.jdField_a_of_type_Int = 7;
+                  paramList.a = 7;
                   break;
                   if ((paramList instanceof MessageForFile))
                   {
                     paramList = a(paramQQAppInterface, paramList);
-                    paramList.jdField_a_of_type_Int = 4;
+                    paramList.a = 4;
                     break;
                   }
                 } while (!(paramList instanceof MessageForTroopFile));
                 paramList = a(paramQQAppInterface, paramList);
-                paramList.jdField_a_of_type_Int = 6;
+                paramList.a = 6;
                 break;
               } while (!(paramList instanceof MessageForShortVideo));
               paramList = a(paramQQAppInterface, (MessageForShortVideo)paramList);
@@ -161,24 +156,24 @@ public class FileSaveReq
   public static FileSaveReq b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
   {
     FileSaveReq localFileSaveReq = new FileSaveReq();
-    localFileSaveReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = SVBusiUtil.a(paramQQAppInterface, paramMessageForShortVideo, 1);
-    localFileSaveReq.jdField_a_of_type_Int = 3;
+    localFileSaveReq.c = SVBusiUtil.a(paramQQAppInterface, paramMessageForShortVideo, 1);
+    localFileSaveReq.a = 3;
     return localFileSaveReq;
   }
   
   public void a(ISingleFileSaveCallBack paramISingleFileSaveCallBack)
   {
-    if ((paramISingleFileSaveCallBack != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramISingleFileSaveCallBack))) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramISingleFileSaveCallBack);
+    if ((paramISingleFileSaveCallBack != null) && (!this.e.contains(paramISingleFileSaveCallBack))) {
+      this.e.add(paramISingleFileSaveCallBack);
     }
   }
   
   public void b(ISingleFileSaveCallBack paramISingleFileSaveCallBack)
   {
-    if ((paramISingleFileSaveCallBack != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramISingleFileSaveCallBack))) {
+    if ((paramISingleFileSaveCallBack != null) && (this.e.contains(paramISingleFileSaveCallBack))) {
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramISingleFileSaveCallBack);
+        this.e.remove(paramISingleFileSaveCallBack);
         return;
       }
       catch (Exception paramISingleFileSaveCallBack)
@@ -196,7 +191,7 @@ public class FileSaveReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.FileSaveReq
  * JD-Core Version:    0.7.0.1
  */

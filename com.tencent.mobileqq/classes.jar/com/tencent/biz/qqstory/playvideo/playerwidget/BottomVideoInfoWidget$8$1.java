@@ -11,13 +11,13 @@ class BottomVideoInfoWidget$8$1
   
   public void run()
   {
-    Activity localActivity = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget.b();
-    if (StoryPublishLauncher.a().a(localActivity, new Bundle(), 467)) {
-      BottomVideoInfoWidget.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget, localActivity, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.d, this.a.e, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    Activity localActivity = this.a.h.y();
+    if (StoryPublishLauncher.a().b(localActivity, new Bundle(), 467)) {
+      BottomVideoInfoWidget.a(this.a.h, localActivity, this.a.a, this.a.b, this.a.c, this.a.d, this.a.e, this.a.f, this.a.g);
     } else {
-      BottomVideoInfoWidget.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget, new BottomVideoInfoWidget.8.1.1(this, localActivity));
+      BottomVideoInfoWidget.a(this.a.h, new BottomVideoInfoWidget.8.1.1(this, localActivity));
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget.l();
+    this.a.h.E();
   }
 }
 

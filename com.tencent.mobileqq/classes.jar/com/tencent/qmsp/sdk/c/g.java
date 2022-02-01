@@ -36,8 +36,9 @@ public class g
   
   static
   {
-    byte[] arrayOfByte = { 49, 99, -70 };
-    l = new byte[][] { { 54, 100 }, arrayOfByte, { 54, 115 } };
+    byte[] arrayOfByte1 = { 54, 100 };
+    byte[] arrayOfByte2 = { 54, 115 };
+    l = new byte[][] { arrayOfByte1, { 49, 99, -70 }, arrayOfByte2 };
   }
   
   private g()
@@ -750,7 +751,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qmsp.sdk.c.g
  * JD-Core Version:    0.7.0.1
  */

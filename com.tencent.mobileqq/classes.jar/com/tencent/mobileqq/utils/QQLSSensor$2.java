@@ -18,7 +18,7 @@ class QQLSSensor$2
     synchronized (this.a)
     {
       if (QQLSSensor.a(this.a) != null) {
-        QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
+        QQLSSensor.a(this.a).a(QQLSSensor.d(this.a));
       } else if (QLog.isDevelopLevel()) {
         QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
       }
@@ -29,7 +29,7 @@ class QQLSSensor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQLSSensor.2
  * JD-Core Version:    0.7.0.1
  */

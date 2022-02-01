@@ -13,14 +13,14 @@ class AvAddFriendService$3
     super.onAddFriend(paramString);
     if (QLog.isColorLevel())
     {
-      String str = AvAddFriendService.a;
+      String str = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onAddFriend 进入好友列表");
       localStringBuilder.append(paramString);
       QLog.d(str, 2, localStringBuilder.toString());
     }
     AvAddFriendService.a(this.a, paramString, 4);
-    this.a.a(paramString);
+    this.a.b(paramString);
   }
   
   protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
@@ -29,14 +29,14 @@ class AvAddFriendService$3
     paramObject = String.valueOf((Long)paramObject);
     if (QLog.isColorLevel())
     {
-      String str = AvAddFriendService.a;
+      String str = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onUpdateDelFriend 删除好友");
       localStringBuilder.append(paramObject);
       QLog.d(str, 2, localStringBuilder.toString());
     }
     AvAddFriendService.a(this.a, paramObject, 0);
-    this.a.a(paramObject);
+    this.a.b(paramObject);
   }
 }
 

@@ -5,35 +5,35 @@ import com.tencent.mobileqq.search.model.ISearchResultModel;
 import java.util.List;
 
 public abstract class FTSGroupSearchModelEntity
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  protected String a;
   protected List<ISearchResultModel> a;
+  protected String b;
   
   public FTSGroupSearchModelEntity(List<ISearchResultModel> paramList, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramList;
+    this.b = paramString;
   }
   
-  public int a()
+  public List<ISearchResultModel> b()
+  {
+    return this.a;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public int d()
   {
     return 3;
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.FTSGroupSearchModelEntity
  * JD-Core Version:    0.7.0.1
  */

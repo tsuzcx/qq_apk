@@ -28,7 +28,7 @@ class TroopMemberListActivity$39
       localStringBuilder.append("");
       paramLong1.removeItem(localStringBuilder.toString());
       if (this.a.mAdapter != null) {
-        this.a.mAdapter.a();
+        this.a.mAdapter.c();
       }
       if (this.a.isSearchMode)
       {
@@ -45,7 +45,7 @@ class TroopMemberListActivity$39
     else
     {
       paramLong1 = this.a;
-      QQToast.a(paramLong1, 1, paramLong1.getString(2131693534), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(paramLong1, 1, paramLong1.getString(2131891098), 0).show(this.a.getTitleBarHeight());
     }
     if (this.a.mProgressDialog != null) {
       this.a.mProgressDialog.dismiss();
@@ -66,7 +66,7 @@ class TroopMemberListActivity$39
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.39
  * JD-Core Version:    0.7.0.1
  */

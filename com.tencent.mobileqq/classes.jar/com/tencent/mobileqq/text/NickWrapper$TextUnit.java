@@ -5,30 +5,30 @@ import android.support.annotation.NonNull;
 
 public abstract class NickWrapper$TextUnit
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private int a;
+  private String b;
   
   public NickWrapper$TextUnit(int paramInt, @NonNull String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   abstract float a(@NonNull Paint paramPaint);
   
-  int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
+  }
+  
+  int b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.NickWrapper.TextUnit
  * JD-Core Version:    0.7.0.1
  */

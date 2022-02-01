@@ -1,14 +1,17 @@
 package com.tencent.liteav.basic.b;
 
-public abstract interface a
+public class a
 {
-  public abstract void onError(String paramString1, int paramInt, String paramString2, String paramString3);
-  
-  public abstract void onEvent(String paramString1, int paramInt, String paramString2, String paramString3);
+  public static float a = 0.1F;
+  public static float b = 0.1F;
+  public static float c = 1.2F;
+  public static float d = 0.9F;
+  public static float e = 0.9F;
+  public static float f = 2.0F;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -33,25 +33,25 @@ public class QCircleABTestApiImpl
   public boolean isContrast()
   {
     ExpEntityInfo localExpEntityInfo = this.mCurrentExpInfo;
-    return (localExpEntityInfo != null) && (localExpEntityInfo.b());
+    return (localExpEntityInfo != null) && (localExpEntityInfo.g());
   }
   
   public boolean isExpHit(String paramString)
   {
     ExpEntityInfo localExpEntityInfo = this.mCurrentExpInfo;
-    return (localExpEntityInfo != null) && (localExpEntityInfo.c(paramString));
+    return (localExpEntityInfo != null) && (localExpEntityInfo.d(paramString));
   }
   
   public boolean isExpOnline()
   {
     ExpEntityInfo localExpEntityInfo = this.mCurrentExpInfo;
-    return (localExpEntityInfo != null) && (localExpEntityInfo.c());
+    return (localExpEntityInfo != null) && (localExpEntityInfo.i());
   }
   
   public boolean isExperiment()
   {
     ExpEntityInfo localExpEntityInfo = this.mCurrentExpInfo;
-    return (localExpEntityInfo != null) && (localExpEntityInfo.a());
+    return (localExpEntityInfo != null) && (localExpEntityInfo.f());
   }
   
   public IQCircleABTestApi loadExperiment(String paramString)
@@ -61,7 +61,7 @@ public class QCircleABTestApiImpl
     if (localObject == null) {
       localObject = "null";
     } else {
-      localObject = ((ExpEntityInfo)localObject).a();
+      localObject = ((ExpEntityInfo)localObject).k();
     }
     QLog.d("QCircleABTestApi", 1, new Object[] { "[loadExperiment] expTagName: ", paramString, " | expInfo: ", localObject });
     return this;
@@ -69,12 +69,12 @@ public class QCircleABTestApiImpl
   
   public void registerExpConfigInfo(String paramString)
   {
-    ABTestController.a().a(paramString);
+    ABTestController.a().c(paramString);
   }
   
   public void release()
   {
-    ABTestController.a().a();
+    ABTestController.a().c();
   }
   
   public void reportEvent(int paramInt, String paramString)
@@ -92,7 +92,7 @@ public class QCircleABTestApiImpl
     if (localExpEntityInfo == null) {
       return;
     }
-    localExpEntityInfo.a();
+    localExpEntityInfo.h();
   }
   
   public void reportExposure(String paramString)
@@ -101,12 +101,12 @@ public class QCircleABTestApiImpl
     if (localExpEntityInfo == null) {
       return;
     }
-    localExpEntityInfo.a(paramString);
+    localExpEntityInfo.c(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleABTestApiImpl
  * JD-Core Version:    0.7.0.1
  */

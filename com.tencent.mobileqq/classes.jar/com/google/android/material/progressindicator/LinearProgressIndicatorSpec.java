@@ -14,45 +14,45 @@ import com.google.android.material.internal.ThemeEnforcement;
 public final class LinearProgressIndicatorSpec
   extends BaseProgressIndicatorSpec
 {
-  boolean a;
-  public int f;
   public int g;
+  public int h;
+  boolean i;
   
   public LinearProgressIndicatorSpec(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.t);
+    this(paramContext, paramAttributeSet, R.attr.A);
   }
   
   public LinearProgressIndicatorSpec(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt)
   {
-    this(paramContext, paramAttributeSet, paramInt, LinearProgressIndicator.b);
+    this(paramContext, paramAttributeSet, paramInt, LinearProgressIndicator.d);
   }
   
   public LinearProgressIndicatorSpec(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    int[] arrayOfInt = R.styleable.L;
-    paramInt1 = R.attr.t;
-    paramInt2 = LinearProgressIndicator.b;
+    int[] arrayOfInt = R.styleable.dv;
+    paramInt1 = R.attr.A;
+    paramInt2 = LinearProgressIndicator.d;
     boolean bool = false;
     paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, arrayOfInt, paramInt1, paramInt2, new int[0]);
-    this.f = paramContext.getInt(R.styleable.ce, 1);
-    this.g = paramContext.getInt(R.styleable.cf, 0);
+    this.g = paramContext.getInt(R.styleable.dw, 1);
+    this.h = paramContext.getInt(R.styleable.dx, 0);
     paramContext.recycle();
-    a();
-    if (this.g == 1) {
+    c();
+    if (this.h == 1) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.i = bool;
   }
   
-  void a()
+  void c()
   {
-    if (this.f == 0)
+    if (this.g == 0)
     {
       if (this.b <= 0)
       {
-        if (this.jdField_a_of_type_ArrayOfInt.length >= 3) {
+        if (this.c.length >= 3) {
           return;
         }
         throw new IllegalArgumentException("Contiguous indeterminate animation must be used with 3 or more indicator colors.");
@@ -63,7 +63,7 @@ public final class LinearProgressIndicatorSpec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.LinearProgressIndicatorSpec
  * JD-Core Version:    0.7.0.1
  */

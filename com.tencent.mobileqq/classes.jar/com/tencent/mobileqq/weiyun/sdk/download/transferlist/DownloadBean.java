@@ -2,29 +2,29 @@ package com.tencent.mobileqq.weiyun.sdk.download.transferlist;
 
 public class DownloadBean
 {
-  public int a;
   public long a;
-  public String a;
-  public int b;
-  public long b;
   public String b;
-  public long c;
   public String c;
-  public long d;
   public String d;
-  public long e;
   public String e;
   public String f;
-  public String g;
+  public long g;
   public String h;
-  public String i;
+  public long i;
   public String j;
-  public String k;
-  public String l;
+  public int k;
+  public int l;
+  public String m;
+  public long n;
+  public long o;
+  public String p;
+  public String q;
+  public String r;
+  public String s;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.download.transferlist.DownloadBean
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class AEEditorStickerControlPanel$4
   
   public void a(Integer paramInteger)
   {
-    if ((paramInteger != null) && (AEEditorStickerControlPanel.a(this.a) != null)) {
-      AEEditorStickerControlPanel.a(this.a).b(paramInteger.intValue());
+    if ((paramInteger != null) && (AEEditorStickerControlPanel.e(this.a) != null)) {
+      AEEditorStickerControlPanel.e(this.a).b(paramInteger.intValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerControlPanel.4
  * JD-Core Version:    0.7.0.1
  */

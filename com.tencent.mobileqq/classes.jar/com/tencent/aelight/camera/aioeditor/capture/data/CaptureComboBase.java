@@ -7,35 +7,24 @@ import java.util.Iterator;
 
 public abstract class CaptureComboBase
 {
-  public int a;
-  protected SegmentKeeper a;
-  public Object a;
-  public ArrayList<CaptureComboDownloadListener> a;
-  public int b;
+  public ArrayList<CaptureComboDownloadListener> a = new ArrayList();
+  public int b = 2;
+  public int c;
+  protected SegmentKeeper d;
+  public Object e;
   
   public CaptureComboBase(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.e = paramObject;
   }
-  
-  public abstract float a();
-  
-  public abstract int a();
   
   public abstract int a(Activity paramActivity, int paramInt);
   
-  public String a()
-  {
-    return String.valueOf(this.jdField_a_of_type_JavaLangObject.hashCode());
-  }
-  
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((CaptureComboDownloadListener)localIterator.next()).a(this);
       }
@@ -49,9 +38,9 @@ public abstract class CaptureComboBase
   
   public void a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((CaptureComboDownloadListener)localIterator.next()).a(this, paramInt);
       }
@@ -63,14 +52,12 @@ public abstract class CaptureComboBase
     }
   }
   
-  public abstract void a(Activity paramActivity, int paramInt);
-  
   public void a(CaptureComboDownloadListener paramCaptureComboDownloadListener)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.a)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramCaptureComboDownloadListener)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramCaptureComboDownloadListener);
+      if (!this.a.contains(paramCaptureComboDownloadListener)) {
+        this.a.add(paramCaptureComboDownloadListener);
       }
       return;
     }
@@ -78,19 +65,14 @@ public abstract class CaptureComboBase
   
   public void a(SegmentKeeper paramSegmentKeeper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = paramSegmentKeeper;
-  }
-  
-  public int b()
-  {
-    return 1;
+    this.d = paramSegmentKeeper;
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.a)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((CaptureComboDownloadListener)localIterator.next()).b(this);
       }
@@ -102,11 +84,27 @@ public abstract class CaptureComboBase
     }
   }
   
-  public void b(Activity paramActivity, int paramInt) {}
+  public abstract void b(Activity paramActivity, int paramInt);
+  
+  public abstract int c();
+  
+  public void c(Activity paramActivity, int paramInt) {}
+  
+  public int d()
+  {
+    return 1;
+  }
+  
+  public abstract float e();
+  
+  public String f()
+  {
+    return String.valueOf(this.e.hashCode());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.CaptureComboBase
  * JD-Core Version:    0.7.0.1
  */

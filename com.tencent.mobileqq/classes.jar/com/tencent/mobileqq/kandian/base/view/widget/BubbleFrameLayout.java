@@ -19,26 +19,26 @@ import com.tencent.mobileqq.R.styleable;
 public class BubbleFrameLayout
   extends FrameLayout
 {
-  private static final int jdField_a_of_type_Int = Color.argb(25, 0, 0, 0);
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private float jdField_g_of_type_Float;
-  private int jdField_g_of_type_Int;
+  private static final int a = Color.argb(25, 0, 0, 0);
+  private float b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
   private int h;
   private int i;
   private int j;
+  private int k;
+  private Path l = new Path();
+  private RectF m = new RectF();
+  private Paint n = new Paint(1);
+  private float o;
+  private float p;
+  private float q;
+  private float r;
+  private float s;
+  private float t;
   
   public BubbleFrameLayout(@NonNull Context paramContext)
   {
@@ -53,7 +53,7 @@ public class BubbleFrameLayout
   
   private void a()
   {
-    setPadding(getPaddingLeft() + this.jdField_e_of_type_Int, getPaddingTop() + this.jdField_e_of_type_Int, getPaddingRight() + this.jdField_e_of_type_Int, getPaddingBottom() + this.jdField_f_of_type_Int + this.jdField_e_of_type_Int);
+    setPadding(getPaddingLeft() + this.f, getPaddingTop() + this.f, getPaddingRight() + this.f, getPaddingBottom() + this.g + this.f);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -61,20 +61,20 @@ public class BubbleFrameLayout
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.BubbleFrameLayout, 0, 0);
     try
     {
-      this.jdField_a_of_type_Float = paramContext.getFloat(8, 0.6F);
-      this.jdField_f_of_type_Int = paramContext.getDimensionPixelSize(9, 24);
-      this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(2, 6);
-      this.h = paramContext.getDimensionPixelSize(5, 0);
-      this.jdField_g_of_type_Int = paramContext.getDimensionPixelSize(6, 4);
-      this.jdField_e_of_type_Int = paramContext.getDimensionPixelSize(7, 24);
-      this.j = paramContext.getColor(4, jdField_a_of_type_Int);
-      this.i = paramContext.getColor(0, -1);
-      this.jdField_c_of_type_Int = paramContext.getColor(1, -1644826);
-      this.jdField_d_of_type_Int = paramContext.getDimensionPixelSize(3, 1);
+      this.b = paramContext.getFloat(8, 0.6F);
+      this.g = paramContext.getDimensionPixelSize(9, 24);
+      this.c = paramContext.getDimensionPixelSize(2, 6);
+      this.i = paramContext.getDimensionPixelSize(5, 0);
+      this.h = paramContext.getDimensionPixelSize(6, 4);
+      this.f = paramContext.getDimensionPixelSize(7, 24);
+      this.k = paramContext.getColor(4, a);
+      this.j = paramContext.getColor(0, -1);
+      this.d = paramContext.getColor(1, -1644826);
+      this.e = paramContext.getDimensionPixelSize(3, 1);
       paramContext.recycle();
-      this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.WINDING);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_e_of_type_Int, this.h, this.jdField_g_of_type_Int, this.j);
-      setLayerType(1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.l.setFillType(Path.FillType.WINDING);
+      this.n.setShadowLayer(this.f, this.i, this.h, this.k);
+      setLayerType(1, this.n);
       setWillNotDraw(false);
       a();
       return;
@@ -88,72 +88,72 @@ public class BubbleFrameLayout
   private void a(Canvas paramCanvas)
   {
     paramCanvas.save();
-    int k = this.jdField_e_of_type_Int;
-    int n = getWidth();
-    int m = this.jdField_e_of_type_Int;
-    n -= m;
-    int i1 = getHeight() - this.jdField_f_of_type_Int - this.jdField_e_of_type_Int;
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f2 = this.jdField_b_of_type_Int + k;
-    float f1 = i1;
+    int i1 = this.f;
+    int i3 = getWidth();
+    int i2 = this.f;
+    i3 -= i2;
+    int i4 = getHeight() - this.g - this.f;
+    Object localObject = this.l;
+    float f2 = this.c + i1;
+    float f1 = i4;
     ((Path)localObject).moveTo(f2, f1);
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    float f3 = k;
-    int i2 = this.jdField_b_of_type_Int;
-    ((RectF)localObject).set(f3, i1 - i2 * 2, i2 * 2 + k, f1);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 90.0F, 90.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f3, this.jdField_b_of_type_Int + m);
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    f2 = m;
-    i2 = this.jdField_b_of_type_Int;
-    ((RectF)localObject).set(f3, f2, i2 * 2 + k, i2 * 2 + m);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, -180.0F, 90.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(n - this.jdField_b_of_type_Int, f2);
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    i2 = this.jdField_b_of_type_Int;
-    f3 = n - i2 * 2;
-    float f4 = n;
-    ((RectF)localObject).set(f3, f2, f4, m + i2 * 2);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 90.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f4, i1 - this.jdField_b_of_type_Int);
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    m = this.jdField_b_of_type_Int;
-    ((RectF)localObject).set(n - m * 2, i1 - m * 2, f4, f1);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 90.0F);
-    this.jdField_d_of_type_Float = (getWidth() * this.jdField_a_of_type_Float);
-    this.jdField_e_of_type_Float = (getHeight() - this.jdField_e_of_type_Int);
-    f2 = this.jdField_d_of_type_Float;
-    m = this.jdField_f_of_type_Int;
-    this.jdField_b_of_type_Float = (f2 - m);
-    this.jdField_c_of_type_Float = (this.jdField_e_of_type_Float - m);
-    this.jdField_f_of_type_Float = (this.jdField_b_of_type_Float + m * 2);
-    this.jdField_g_of_type_Float = this.jdField_c_of_type_Float;
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_f_of_type_Float, this.jdField_g_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_d_of_type_Float, this.jdField_e_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(k + this.jdField_b_of_type_Int, f1);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    localObject = this.m;
+    float f3 = i1;
+    int i5 = this.c;
+    ((RectF)localObject).set(f3, i4 - i5 * 2, i5 * 2 + i1, f1);
+    this.l.arcTo(this.m, 90.0F, 90.0F);
+    this.l.lineTo(f3, this.c + i2);
+    localObject = this.m;
+    f2 = i2;
+    i5 = this.c;
+    ((RectF)localObject).set(f3, f2, i5 * 2 + i1, i5 * 2 + i2);
+    this.l.arcTo(this.m, -180.0F, 90.0F);
+    this.l.lineTo(i3 - this.c, f2);
+    localObject = this.m;
+    i5 = this.c;
+    f3 = i3 - i5 * 2;
+    float f4 = i3;
+    ((RectF)localObject).set(f3, f2, f4, i2 + i5 * 2);
+    this.l.arcTo(this.m, -90.0F, 90.0F);
+    this.l.lineTo(f4, i4 - this.c);
+    localObject = this.m;
+    i2 = this.c;
+    ((RectF)localObject).set(i3 - i2 * 2, i4 - i2 * 2, f4, f1);
+    this.l.arcTo(this.m, 0.0F, 90.0F);
+    this.q = (getWidth() * this.b);
+    this.r = (getHeight() - this.f);
+    f2 = this.q;
+    i2 = this.g;
+    this.o = (f2 - i2);
+    this.p = (this.r - i2);
+    this.s = (this.o + i2 * 2);
+    this.t = this.p;
+    this.l.lineTo(this.s, this.t);
+    this.l.lineTo(this.q, this.r);
+    this.l.lineTo(this.o, this.p);
+    this.l.lineTo(i1 + this.c, f1);
+    this.l.close();
+    paramCanvas.drawPath(this.l, this.n);
+    this.l.reset();
     paramCanvas.restore();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    paramCanvas.translate(0.0F, this.jdField_e_of_type_Int / 2);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.i);
+    paramCanvas.translate(0.0F, this.f / 2);
+    this.n.setColor(this.j);
     a(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_d_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
+    this.n.setStyle(Paint.Style.STROKE);
+    this.n.setStrokeWidth(this.e);
+    this.n.setColor(this.d);
     a(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
+    this.n.setAlpha(255);
     super.onDraw(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.BubbleFrameLayout
  * JD-Core Version:    0.7.0.1
  */

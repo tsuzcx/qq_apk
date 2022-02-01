@@ -152,7 +152,7 @@ public class SharpPDec
     boolean bool;
     try
     {
-      bool = AVSoUtils.a();
+      bool = AVSoUtils.g();
       try
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -173,7 +173,7 @@ public class SharpPDec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.SharpPDec
  * JD-Core Version:    0.7.0.1
  */

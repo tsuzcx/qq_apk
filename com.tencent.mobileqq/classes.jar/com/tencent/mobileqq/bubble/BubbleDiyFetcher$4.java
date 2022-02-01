@@ -15,46 +15,46 @@ class BubbleDiyFetcher$4
   
   public void run()
   {
-    if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+    if (!this.this$0.h.isEmpty())
     {
       localObject1 = this.this$0;
-      BubbleDiyFetcher.a((BubbleDiyFetcher)localObject1, TextUtils.join(",", ((BubbleDiyFetcher)localObject1).jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), "now query mUnCacheDiyId: ");
+      BubbleDiyFetcher.a((BubbleDiyFetcher)localObject1, TextUtils.join(",", ((BubbleDiyFetcher)localObject1).h), "now query mUnCacheDiyId: ");
       this.this$0.c(this.a);
-      if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
+      if (!this.this$0.h.isEmpty())
       {
-        ((BubbleDiyHandler)this.a.getBusinessHandler(BusinessHandlerFactory.BUBBLE_DIYTEXT_HANDLER)).a(new ArrayList(this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), null);
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
+        ((BubbleDiyHandler)this.a.getBusinessHandler(BusinessHandlerFactory.BUBBLE_DIYTEXT_HANDLER)).a(new ArrayList(this.this$0.h), null);
+        this.this$0.h.clear();
       }
     }
-    if (!this.this$0.b.isEmpty()) {
-      this.this$0.b();
+    if (!this.this$0.i.isEmpty()) {
+      this.this$0.c();
     }
     Object localObject2;
-    if (!this.this$0.c.isEmpty())
+    if (!this.this$0.j.isEmpty())
     {
-      localObject1 = this.this$0.c.iterator();
+      localObject1 = this.this$0.j.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.this$0.c((String)localObject2);
+          this.this$0.d((String)localObject2);
         }
       }
     }
-    Object localObject1 = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Object localObject1 = this.this$0.g.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (VipBubbleDrawable)((Iterator)localObject1).next();
       if ((localObject2 == null) || (((VipBubbleDrawable)localObject2).getCallback() == null)) {
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
+        this.this$0.g.remove(localObject2);
       }
     }
-    BubbleDiyFetcher.jdField_a_of_type_Long = 0L;
+    BubbleDiyFetcher.l = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher.4
  * JD-Core Version:    0.7.0.1
  */

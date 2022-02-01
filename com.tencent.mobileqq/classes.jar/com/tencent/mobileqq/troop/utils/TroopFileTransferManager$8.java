@@ -22,7 +22,7 @@ class TroopFileTransferManager$8
     {
       try
       {
-        paramString1 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
+        paramString1 = (TroopFileTransferManager)TroopFileTransferManager.t().get(Long.valueOf(l));
         if (paramString1 == null)
         {
           if (QLog.isDevelopLevel())
@@ -50,7 +50,7 @@ class TroopFileTransferManager$8
       }
       try
       {
-        paramString2 = (TroopFileTransferManager.Item)paramString1.a.get(paramBundle);
+        paramString2 = (TroopFileTransferManager.Item)paramString1.l.get(paramBundle);
         if (paramString2 == null)
         {
           if (QLog.isDevelopLevel())
@@ -75,29 +75,29 @@ class TroopFileTransferManager$8
           {
             ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt1);
             if (paramInt1 == 0) {
-              this.a.b.remove(paramBundle);
+              this.a.m.remove(paramBundle);
             } else {
-              this.a.b.put(paramBundle, Integer.valueOf(paramInt1));
+              this.a.m.put(paramBundle, Integer.valueOf(paramInt1));
             }
-            if (this.a.b.size() == 0)
+            if (this.a.m.size() == 0)
             {
-              paramString3 = new TroopFileError.SimpleErrorInfo(paramString2.FileName, this.a.e, 5, 604);
+              paramString3 = new TroopFileError.SimpleErrorInfo(paramString2.FileName, this.a.k, 5, 604);
               this.a.a(paramString2, 5, paramString3);
             }
             else
             {
-              paramString3 = this.a.b.keySet().iterator();
+              paramString3 = this.a.m.keySet().iterator();
               if (!paramString3.hasNext()) {
                 continue;
               }
               paramBundle = (UUID)paramString3.next();
-              if (((Integer)this.a.b.get(paramBundle)).intValue() != 2147483647) {
+              if (((Integer)this.a.m.get(paramBundle)).intValue() != 2147483647) {
                 continue;
               }
               paramInt1 = paramInt2;
               if (paramInt1 != 0)
               {
-                paramString3 = new TroopFileError.SimpleErrorInfo(paramString2.FileName, this.a.e, 5, 605);
+                paramString3 = new TroopFileError.SimpleErrorInfo(paramString2.FileName, this.a.k, 5, 605);
                 this.a.a(paramString2, 5, paramString3);
               }
             }
@@ -114,7 +114,7 @@ class TroopFileTransferManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.8
  * JD-Core Version:    0.7.0.1
  */

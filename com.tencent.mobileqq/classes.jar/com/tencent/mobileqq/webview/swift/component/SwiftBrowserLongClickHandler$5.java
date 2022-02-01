@@ -18,16 +18,16 @@ class SwiftBrowserLongClickHandler$5
     localStringBuilder.append("file://");
     localStringBuilder.append(this.a);
     localIntent.setData(Uri.parse(localStringBuilder.toString()));
-    this.this$0.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.this$0.f.sendBroadcast(localIntent);
+    if ((this.this$0.d != null) && (this.this$0.d.isShowing())) {
+      this.this$0.d.dismiss();
     }
-    QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131716707, new Object[] { this.a }), 1).b(this.this$0.jdField_a_of_type_Int);
+    QQToast.makeText(this.this$0.f.getApplicationContext(), 2, this.this$0.f.getString(2131914171, new Object[] { this.a }), 1).show(this.this$0.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.5
  * JD-Core Version:    0.7.0.1
  */

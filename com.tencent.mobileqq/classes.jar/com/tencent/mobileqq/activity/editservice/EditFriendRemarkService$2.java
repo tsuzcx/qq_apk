@@ -10,10 +10,10 @@ class EditFriendRemarkService$2
   
   protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if (!EditFriendRemarkService.b(this.a).equals(paramString1)) {
+    if (!EditFriendRemarkService.e(this.a).equals(paramString1)) {
       return;
     }
-    if (!EditFriendRemarkService.a(this.a).booleanValue()) {
+    if (!EditFriendRemarkService.f(this.a).booleanValue()) {
       return;
     }
     EditFriendRemarkService.a(this.a, Boolean.valueOf(false));
@@ -22,7 +22,7 @@ class EditFriendRemarkService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditFriendRemarkService.2
  * JD-Core Version:    0.7.0.1
  */

@@ -32,11 +32,6 @@ public class TroopPhotoHandler
     this.appRuntime.addDefaultObservers(paramString);
   }
   
-  protected String a()
-  {
-    return "TroopPhotoHandler";
-  }
-  
   public void a(String paramString)
   {
     a(paramString, false);
@@ -94,6 +89,11 @@ public class TroopPhotoHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopPhotoHandler";
+  }
+  
   protected Class<? extends BusinessObserver> observerClass()
   {
     return TroopPhotoObserver.class;
@@ -103,7 +103,7 @@ public class TroopPhotoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopphoto.api.impl.TroopPhotoHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -8,48 +8,48 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoFramesRetriever$FrameFetchTask
   implements Comparable<FrameFetchTask>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
   private int b;
+  private long c;
+  private int d;
   
   public VideoFramesRetriever$FrameFetchTask(long paramLong, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Long = ???;
-    this.b = paramInt2;
+    this.c = ???;
+    this.d = paramInt2;
     int i;
-    this.jdField_a_of_type_Int = Math.min(i, VideoFramesRetriever.a(paramLong));
-    ((Map)VideoFramesRetriever.a(paramLong)).put(Integer.valueOf(this.b), this);
+    this.b = Math.min(i, VideoFramesRetriever.a(paramLong));
+    ((Map)VideoFramesRetriever.b(paramLong)).put(Integer.valueOf(this.d), this);
   }
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public int a(@Nullable FrameFetchTask paramFrameFetchTask)
   {
     long l;
     if (paramFrameFetchTask != null) {
-      l = paramFrameFetchTask.jdField_a_of_type_Long;
+      l = paramFrameFetchTask.c;
     } else {
       l = 0L;
     }
-    return -(int)(this.jdField_a_of_type_Long - l);
+    return -(int)(this.c - l);
   }
   
   public final void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public final int b()
   {
-    return this.b;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoFramesRetriever.FrameFetchTask
  * JD-Core Version:    0.7.0.1
  */

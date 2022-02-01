@@ -39,14 +39,6 @@ public class ETSubstitutionConfig
     }
   }
   
-  public static long a(long paramLong)
-  {
-    if (paramLong == 0L) {
-      return 0L;
-    }
-    return ETEngine.getInstance().native_CloneNativeSubstitutionConfig(paramLong);
-  }
-  
   public static long a(ETFont paramETFont, String paramString)
   {
     try
@@ -120,6 +112,14 @@ public class ETSubstitutionConfig
     paramArrayOfByte[(paramInt1 + 1)] = ((byte)(paramInt2 >> 16 & 0xFF));
     paramArrayOfByte[(paramInt1 + 2)] = ((byte)(paramInt2 >> 8 & 0xFF));
     paramArrayOfByte[(paramInt1 + 3)] = ((byte)(paramInt2 & 0xFF));
+  }
+  
+  public static long b(long paramLong)
+  {
+    if (paramLong == 0L) {
+      return 0L;
+    }
+    return ETEngine.getInstance().native_CloneNativeSubstitutionConfig(paramLong);
   }
 }
 

@@ -19,9 +19,9 @@ public class TimerTaskManager
   private static final String TAG = "VR_TimerTaskManager";
   private static final String mIDPrefix = "VR_TimerTask_ID_";
   private ScheduledExecutorService mHandlerExecutor = new ScheduledHandlerExecutorService(Looper.getMainLooper());
+  private AtomicInteger mNextID = new AtomicInteger(0);
   private ScheduledExecutorService mThreadExecutor = new ScheduledThreadPoolExecutor(4, new NamedThreadFactory("VR_TimerTaskManager"), new ThreadPoolExecutor.AbortPolicy());
   private ConcurrentHashMap<String, Future<?>> mWorkingGroup = new ConcurrentHashMap();
-  private AtomicInteger nextID = new AtomicInteger(0);
   
   private String addTimerTask(Runnable paramRunnable, long paramLong1, long paramLong2, boolean paramBoolean)
   {
@@ -34,7 +34,7 @@ public class TimerTaskManager
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("VR_TimerTask_ID_");
-    ((StringBuilder)localObject).append(this.nextID.incrementAndGet());
+    ((StringBuilder)localObject).append(this.mNextID.incrementAndGet());
     localObject = ((StringBuilder)localObject).toString();
     boolean bool;
     if (paramLong2 > 0L) {
@@ -107,7 +107,7 @@ public class TimerTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.task.TimerTaskManager
  * JD-Core Version:    0.7.0.1
  */

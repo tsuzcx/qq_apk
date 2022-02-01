@@ -25,7 +25,7 @@ class QRCardActivity$NumberSpan
         QRCardActivity.a(this.a, paramView.getContext(), 3, str, null);
         return;
       }
-      if (Pattern.compile(QRCardActivity.p).matcher(str).matches()) {
+      if (Pattern.compile(QRCardActivity.E).matcher(str).matches()) {
         this.a.a(str);
       }
     }
@@ -33,12 +33,12 @@ class QRCardActivity$NumberSpan
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(this.a.a);
+    paramTextPaint.setColor(this.a.z);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRCardActivity.NumberSpan
  * JD-Core Version:    0.7.0.1
  */

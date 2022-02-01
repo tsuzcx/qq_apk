@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="#ffcbcbd0" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/aoe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d3v" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/b9n" android:layout_below="@id/aoe" />
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.image.URLImageView android:id="@id/q61" android:layout_width="12.0dip" android:layout_height="12.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/q62" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/q63" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/q64" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/q65" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" />
+</LinearLayout>

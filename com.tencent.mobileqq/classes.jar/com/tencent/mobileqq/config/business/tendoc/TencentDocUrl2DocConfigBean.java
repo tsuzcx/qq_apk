@@ -7,8 +7,8 @@ import java.util.List;
 
 final class TencentDocUrl2DocConfigBean
 {
-  private int jdField_a_of_type_Int = -1;
-  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int a = -1;
+  private final List<String> b = new ArrayList();
   
   public static TencentDocUrl2DocConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -17,17 +17,17 @@ final class TencentDocUrl2DocConfigBean
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
   }
   
   public boolean a(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilList.contains(paramString));
+    return (!TextUtils.isEmpty(paramString)) && (this.b.contains(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocUrl2DocConfigBean
  * JD-Core Version:    0.7.0.1
  */

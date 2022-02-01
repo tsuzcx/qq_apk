@@ -12,24 +12,24 @@ class EnterpriseQQManager$1
   
   public void run()
   {
-    if ((EnterpriseQQManager.a(this.this$0) != null) && (EnterpriseQQManager.a(this.this$0) != null))
+    if ((EnterpriseQQManager.a(this.this$0) != null) && (EnterpriseQQManager.b(this.this$0) != null))
     {
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.this$0.a);
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.this$0.b);
       return;
     }
     synchronized (EnterpriseQQManager.a())
     {
-      if ((EnterpriseQQManager.a(this.this$0) != null) && (EnterpriseQQManager.a(this.this$0).size() > 0))
+      if ((EnterpriseQQManager.c(this.this$0) != null) && (EnterpriseQQManager.c(this.this$0).size() > 0))
       {
-        Iterator localIterator = EnterpriseQQManager.a(this.this$0).iterator();
+        Iterator localIterator = EnterpriseQQManager.c(this.this$0).iterator();
         while (localIterator.hasNext())
         {
           EnterpriseQQManager.EventRequest localEventRequest = (EnterpriseQQManager.EventRequest)localIterator.next();
           if (localEventRequest != null) {
-            this.this$0.a(EnterpriseQQManager.a(this.this$0), EnterpriseQQManager.a(this.this$0), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
+            this.this$0.a(EnterpriseQQManager.a(this.this$0), EnterpriseQQManager.b(this.this$0), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
           }
         }
-        EnterpriseQQManager.a(this.this$0).clear();
+        EnterpriseQQManager.c(this.this$0).clear();
       }
       EnterpriseQQManager.a(this.this$0, null);
       EnterpriseQQManager.a(this.this$0, null);
@@ -43,7 +43,7 @@ class EnterpriseQQManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager.1
  * JD-Core Version:    0.7.0.1
  */

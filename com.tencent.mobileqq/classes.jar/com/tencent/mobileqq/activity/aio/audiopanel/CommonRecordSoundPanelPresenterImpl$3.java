@@ -7,12 +7,12 @@ class CommonRecordSoundPanelPresenterImpl$3
   
   public void run()
   {
-    this.a.e();
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanelPresenterImpl.3
  * JD-Core Version:    0.7.0.1
  */

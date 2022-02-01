@@ -22,12 +22,12 @@ class UiApiPlugin$31
     long l = paramIntent.getLongExtra("seq", 0L);
     Bundle localBundle = new Bundle();
     localBundle.putLong("seq", l);
-    if (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L) {
+    if (UiApiPlugin.Z.get() != -1L) {
       paramContext.send(-1, localBundle);
     }
     String str = paramIntent.getStringExtra("date");
     paramIntent = paramIntent.getStringExtra("id");
-    Object localObject = this.a.mRuntime.a();
+    Object localObject = this.a.mRuntime.d();
     if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
       localObject = this.a.mRuntime.a();
@@ -36,8 +36,8 @@ class UiApiPlugin$31
         localBundle = new Bundle();
         localBundle.putString("date", str);
         localBundle.putString("id", paramIntent);
-        UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
-        UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = paramContext;
+        UiApiPlugin.Z.set(l);
+        UiApiPlugin.aa = paramContext;
         ((WebView)localObject).getX5WebViewExtension().invokeMiscMethod("uploadX5CoreLiveLog", localBundle);
         return;
       }
@@ -49,7 +49,7 @@ class UiApiPlugin$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.31
  * JD-Core Version:    0.7.0.1
  */

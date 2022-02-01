@@ -7,6 +7,7 @@ public class FaceDetectorFeature
   public int boundsX;
   public int boundsY;
   public float[] fFeatures;
+  public float[] fFeatures256;
   public float[] fFeaturesYoutuOriginX;
   public float[] fFeaturesYoutuOriginY;
   Face3DResult facekit3DResult;
@@ -23,6 +24,7 @@ public class FaceDetectorFeature
   public int mouthBoundsX;
   public int mouthBoundsY;
   public float pitch;
+  public float[] points256Visibility;
   public float[] pointsVisibility;
   public int reBoundsH;
   public int reBoundsW;
@@ -33,7 +35,7 @@ public class FaceDetectorFeature
   public float yaw;
   public float[] youtuVisibility;
   
-  public FaceDetectorFeature(int paramInt1, float paramFloat1, float paramFloat2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16, int paramInt17, boolean paramBoolean, float paramFloat3, float paramFloat4, float paramFloat5, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4, float[] paramArrayOfFloat5, FaceDetectorFeaturePerspective paramFaceDetectorFeaturePerspective, Face3DResult paramFace3DResult)
+  public FaceDetectorFeature(int paramInt1, float paramFloat1, float paramFloat2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16, int paramInt17, boolean paramBoolean, float paramFloat3, float paramFloat4, float paramFloat5, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3, float[] paramArrayOfFloat4, float[] paramArrayOfFloat5, float[] paramArrayOfFloat6, float[] paramArrayOfFloat7, FaceDetectorFeaturePerspective paramFaceDetectorFeaturePerspective, Face3DResult paramFace3DResult)
   {
     this.traceId = paramInt1;
     this.imageWidth = paramFloat1;
@@ -62,14 +64,16 @@ public class FaceDetectorFeature
     this.fFeaturesYoutuOriginY = paramArrayOfFloat2;
     this.youtuVisibility = paramArrayOfFloat3;
     this.pointsVisibility = paramArrayOfFloat4;
+    this.points256Visibility = paramArrayOfFloat6;
     this.fFeatures = paramArrayOfFloat5;
+    this.fFeatures256 = paramArrayOfFloat7;
     this.featurePerspective = paramFaceDetectorFeaturePerspective;
     this.facekit3DResult = paramFace3DResult;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.gyailib.library.FaceDetectorFeature
  * JD-Core Version:    0.7.0.1
  */

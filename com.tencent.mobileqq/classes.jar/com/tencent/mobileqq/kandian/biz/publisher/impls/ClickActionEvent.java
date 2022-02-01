@@ -9,30 +9,30 @@ import org.jetbrains.annotations.NotNull;
 public final class ClickActionEvent
   implements IEvent
 {
-  private int jdField_a_of_type_Int;
+  private int a;
   @NotNull
-  private Intent jdField_a_of_type_AndroidContentIntent;
+  private Intent b;
   
   public ClickActionEvent(int paramInt, @NotNull Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.a = paramInt;
+    this.b = paramIntent;
   }
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   @NotNull
-  public final Intent a()
+  public final Intent b()
   {
-    return this.jdField_a_of_type_AndroidContentIntent;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ClickActionEvent
  * JD-Core Version:    0.7.0.1
  */

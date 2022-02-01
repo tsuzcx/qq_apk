@@ -17,7 +17,7 @@ class QFileAppStorePromoteManager$2
   {
     Object localObject = new AppDetailReqParam();
     AppParam localAppParam = new AppParam();
-    localAppParam.packageName = this.jdField_a_of_type_JavaLangString;
+    localAppParam.packageName = this.a;
     ((AppDetailReqParam)localObject).apps.add(localAppParam);
     ((AppDetailReqParam)localObject).biz = "mobileqq_file";
     int i = GetAppInfoManager.get().requestAppInfo((AppDetailReqParam)localObject, QFileAppStorePromoteManager.a(this.this$0));
@@ -40,7 +40,7 @@ class QFileAppStorePromoteManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileAppStorePromoteManager.2
  * JD-Core Version:    0.7.0.1
  */

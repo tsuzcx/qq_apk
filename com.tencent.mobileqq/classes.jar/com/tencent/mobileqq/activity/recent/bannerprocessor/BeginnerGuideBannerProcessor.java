@@ -18,12 +18,7 @@ import tencent.im.oidb.cmd0x59f.oidb_0x59f.Guidelines_8410;
 public class BeginnerGuideBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.Q;
-  }
+  public static final int a = BannerTypeCollections.R;
   
   public BeginnerGuideBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -32,23 +27,18 @@ public class BeginnerGuideBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    return new NewerGuideBannerView(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-  }
-  
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
+    return new NewerGuideBannerView(this.f);
   }
   
   public void a(Message paramMessage, long paramLong, boolean paramBoolean)
   {
     if (paramMessage.what == 3000)
     {
-      if (!BannerManager.a().b(jdField_a_of_type_Int)) {
+      if (!BannerManager.a().d(a)) {
         return;
       }
-      BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
-      paramMessage = (Conversation)FrameHelperActivity.a((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).a(Conversation.class);
+      BannerManager.a().a(a, 0, paramMessage);
+      paramMessage = (Conversation)FrameHelperActivity.a((BaseActivity)this.f).a(Conversation.class);
       if (paramMessage != null) {
         paramMessage.a(0L);
       }
@@ -57,19 +47,24 @@ public class BeginnerGuideBannerProcessor
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    if ((paramMessage != null) && ((paramBanner.a instanceof NewerGuideBannerView)) && ((paramMessage.obj instanceof oidb_0x59f.Guidelines_8410))) {
-      ((NewerGuideBannerView)paramBanner.a).a((oidb_0x59f.Guidelines_8410)paramMessage.obj);
+    if ((paramMessage != null) && ((paramBanner.c instanceof NewerGuideBannerView)) && ((paramMessage.obj instanceof oidb_0x59f.Guidelines_8410))) {
+      ((NewerGuideBannerView)paramBanner.c).a((oidb_0x59f.Guidelines_8410)paramMessage.obj);
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BeginnerGuideBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

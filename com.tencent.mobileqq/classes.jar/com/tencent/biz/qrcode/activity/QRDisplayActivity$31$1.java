@@ -13,24 +13,24 @@ class QRDisplayActivity$31$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.this$0.isFinishing()) {
+    if (this.b.this$0.isFinishing()) {
       return;
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("forward_type", 1);
-    localBundle.putString("forward_filepath", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_filepath", this.a);
+    localBundle.putString("forward_thumb", this.a);
+    localBundle.putString("forward_urldrawable_big_url", this.a);
+    localBundle.putString("forward_extra", this.a);
     localBundle.putInt("key_req", 1);
-    localBundle.putInt("key_direct_show_uin_type", this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.a);
-    localBundle.putString("key_direct_show_uin", this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.b);
-    if ((6000 == this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.a) && (AppConstants.DATALINE_PC_UIN == this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.b)) {
+    localBundle.putInt("key_direct_show_uin_type", this.b.b);
+    localBundle.putString("key_direct_show_uin", this.b.c);
+    if ((6000 == this.b.b) && (AppConstants.DATALINE_PC_UIN == this.b.c)) {
       localBundle.putBoolean("filepath_copy", true);
     }
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    ForwardBaseOption.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$31.this$0, localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_gxl_ctcshare");
+    ForwardBaseOption.a(this.b.this$0, localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_gxl_ctcshare");
   }
 }
 

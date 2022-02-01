@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.core.net;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.quicksend.f;
+import com.tencent.mobileqq.msf.core.quicksend.g;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.HttpURLConnection;
@@ -165,7 +165,7 @@ public class e
     return false;
   }
   
-  public boolean a(String paramString1, int paramInt, String paramString2, f paramf)
+  public boolean a(String paramString1, int paramInt, String paramString2, g paramg)
   {
     this.a = false;
     long l2 = 0L;
@@ -282,10 +282,10 @@ public class e
       }
       paramString1.printStackTrace();
       paramString1 = a(paramString1.toString().toLowerCase());
-      paramString2 = new StringBuilder(paramf.m);
+      paramString2 = new StringBuilder(paramg.m);
       paramString2.append("|");
       paramString2.append(paramString1);
-      paramf.m = paramString2.toString();
+      paramg.m = paramString2.toString();
       paramString2 = new StringBuilder();
       paramString2.append("LightHttpEngine connect ");
       paramString2.append(this.c);
@@ -301,7 +301,7 @@ public class e
   }
   
   /* Error */
-  public byte[] a(com.tencent.qphone.base.remote.ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, String paramString, f paramf)
+  public byte[] a(com.tencent.qphone.base.remote.ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, String paramString, g paramg)
   {
     // Byte code:
     //   0: invokestatic 250	android/os/SystemClock:elapsedRealtime	()J
@@ -552,7 +552,7 @@ public class e
     //   438: aload 4
     //   440: aload 10
     //   442: invokevirtual 325	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   445: putfield 411	com/tencent/mobileqq/msf/core/quicksend/f:h	Ljava/lang/String;
+    //   445: putfield 411	com/tencent/mobileqq/msf/core/quicksend/g:h	Ljava/lang/String;
     //   448: aload 11
     //   450: astore_2
     //   451: aload_1
@@ -686,7 +686,7 @@ public class e
     //   0	677	1	paramToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
     //   0	677	2	paramArrayOfByte	byte[]
     //   0	677	3	paramString	String
-    //   0	677	4	paramf	f
+    //   0	677	4	paramg	g
     //   162	191	5	m	int
     //   3	512	6	l1	long
     //   178	335	8	l2	long
@@ -791,7 +791,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.e
  * JD-Core Version:    0.7.0.1
  */

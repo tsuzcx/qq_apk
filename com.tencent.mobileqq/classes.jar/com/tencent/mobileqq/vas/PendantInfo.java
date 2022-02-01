@@ -61,65 +61,58 @@ import org.jetbrains.annotations.Nullable;
 public class PendantInfo
   implements VipPendantDrawable.MutilePlayInfo
 {
-  static int jdField_a_of_type_Int = 1000;
-  static ConcurrentHashMap<Long, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  static int jdField_b_of_type_Int = 20;
-  public static int c;
-  public static int d = 2;
-  public static int e = 3;
-  public static int f = 4;
-  public static int g = 5;
-  public static int h = 6;
-  public static int i = 7;
-  public static int j = -2147483648;
-  public static int k = 100;
-  public static int l = 2147483647;
-  public static int m = 3;
-  long jdField_a_of_type_Long;
-  protected Context a;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  PendantInfo.AnimationLruCache jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache;
-  PendantInfo.DecodeNextFrameTask jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask;
-  DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = null;
-  protected Object a;
-  String jdField_a_of_type_JavaLangString = null;
-  final List<Long> jdField_a_of_type_JavaUtilList = new LinkedList();
-  Map<String, Long> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  public MqqHandler a;
-  boolean jdField_a_of_type_Boolean;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private String jdField_b_of_type_JavaLangString;
-  protected boolean b;
-  boolean c;
-  int n;
+  static int a = 1000;
+  static int b = 20;
+  static ConcurrentHashMap<Long, Integer> c = new ConcurrentHashMap();
+  public static int d = 1;
+  public static int e = 2;
+  public static int f = 3;
+  public static int g = 4;
+  public static int h = 5;
+  public static int i = 6;
+  public static int j = 7;
+  public static int k = -2147483648;
+  public static int l = 100;
+  public static int m = 2147483647;
+  public static int n = 3;
+  int A = n;
+  protected Object B;
+  String C = null;
+  Bitmap D;
+  DownloaderFactory E = null;
+  boolean F = false;
+  Map<String, Long> G = new ConcurrentHashMap();
+  final List<Long> H = new LinkedList();
+  private int I = 0;
+  private String J;
   int o;
-  int p;
-  protected int q = -1;
-  int r = m;
-  private int s = 0;
-  
-  static
-  {
-    jdField_c_of_type_Int = 1;
-  }
+  long p;
+  int q;
+  int r;
+  boolean s;
+  protected Context t;
+  String[] u;
+  PendantInfo.AnimationLruCache v;
+  public MqqHandler w;
+  protected boolean x = true;
+  PendantInfo.DecodeNextFrameTask y;
+  protected int z = -1;
   
   public PendantInfo(long paramLong)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = paramLong;
+    this.p = paramLong;
+    this.q = -1;
+    this.r = -1;
     this.o = -1;
-    this.p = -1;
-    this.n = -1;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_MqqOsMqqHandler = new PendantInfo.1(this, Looper.getMainLooper(), null);
-    QQAppInterface localQQAppInterface = a();
+    this.u = null;
+    this.t = BaseApplicationImpl.getContext();
+    this.w = new PendantInfo.1(this, Looper.getMainLooper(), null);
+    QQAppInterface localQQAppInterface = i();
     if (localQQAppInterface == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = ((DownloaderFactory)localQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY));
-    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache = new PendantInfo.AnimationLruCache(this, jdField_b_of_type_Int);
+    this.E = ((DownloaderFactory)localQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY));
+    this.v = new PendantInfo.AnimationLruCache(this, b);
   }
   
   private int a(int paramInt, Integer paramInteger)
@@ -136,21 +129,21 @@ public class PendantInfo
           if (QLog.isColorLevel()) {
             QLog.d("PendantInfo", 2, "static pendant, abort dynamic request");
           }
-          this.o = 5;
-          this.jdField_b_of_type_JavaLangString = AvatarPendantUtil.b(this.jdField_a_of_type_Long, this.o);
+          this.q = 5;
+          this.J = AvatarPendantUtil.b(this.p, this.q);
           StringBuilder localStringBuilder = AIOUtils.a();
-          if (this.o == 2) {
+          if (this.q == 2) {
             paramInteger = "dynamic_pendant";
           } else {
             paramInteger = "static_pendant";
           }
           localStringBuilder.append(paramInteger);
           localStringBuilder.append("_");
-          localStringBuilder.append(this.jdField_a_of_type_Long);
+          localStringBuilder.append(this.p);
           localStringBuilder.append("_");
-          localStringBuilder.append(this.o);
-          this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-          i1 = this.o;
+          localStringBuilder.append(this.q);
+          this.C = localStringBuilder.toString();
+          i1 = this.q;
         }
       }
     }
@@ -185,9 +178,9 @@ public class PendantInfo
         QLog.d("PendantInfo", 2, ((StringBuilder)localObject).toString());
       }
       paramInt1 = i1;
-      this.n = i1;
+      this.o = i1;
       paramInt1 = i1;
-      AvatarPendantUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(i1));
+      AvatarPendantUtil.a.put(Long.valueOf(this.p), Integer.valueOf(i1));
     }
     catch (Exception localException)
     {
@@ -214,7 +207,7 @@ public class PendantInfo
         paramString.append(paramInt1);
         QLog.d("PendantInfo", 2, paramString.toString());
       }
-      AvatarPendantUtil.b.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(paramInt1));
+      AvatarPendantUtil.b.put(Long.valueOf(this.p), Integer.valueOf(paramInt1));
       return i1;
     }
     catch (Exception paramString)
@@ -258,13 +251,13 @@ public class PendantInfo
     paramOptions.append("doDecodeNext, maybe reuse failed, path=");
     paramOptions.append(paramString);
     QLog.e("PendantInfo", 1, paramOptions.toString());
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.D != null)
     {
       paramOptions = new StringBuilder();
       paramOptions.append("doDecodeNext, mRecycleBitmap width=");
-      paramOptions.append(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+      paramOptions.append(this.D.getWidth());
       paramOptions.append(", height=");
-      paramOptions.append(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      paramOptions.append(this.D.getHeight());
       QLog.e("PendantInfo", 1, paramOptions.toString());
     }
     if (paramBitmap != null)
@@ -290,7 +283,7 @@ public class PendantInfo
     }
     try
     {
-      paramSourcesBigPng = SafeBitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramSourcesBigPng.jdField_a_of_type_JavaLangString)), null, localOptions);
+      paramSourcesBigPng = SafeBitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramSourcesBigPng.a)), null, localOptions);
       return paramSourcesBigPng;
     }
     catch (OutOfMemoryError paramSourcesBigPng)
@@ -300,15 +293,6 @@ public class PendantInfo
     }
     if (QLog.isColorLevel()) {
       QLog.i("PendantInfo", 2, "decodeFile failed OOM");
-    }
-    return null;
-  }
-  
-  private QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
     }
     return null;
   }
@@ -325,9 +309,9 @@ public class PendantInfo
         paramBufferedInputStream.inJustDecodeBounds = true;
         localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramString));
         BitmapFactory.decodeStream(localBufferedInputStream, null, paramBufferedInputStream);
-        paramString = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        paramString = this.D;
         if ((paramString != null) && (FriendProfileCardBgDrawable.a(paramString, paramBufferedInputStream.outWidth, paramBufferedInputStream.outHeight))) {
-          paramOptions.inBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+          paramOptions.inBitmap = this.D;
         } else {
           paramOptions.inBitmap = null;
         }
@@ -345,10 +329,10 @@ public class PendantInfo
       File localFile = new File(AvatarPendantUtil.b(paramLong1, 8));
       if (DownloaderFactory.a(paramFile, localFile, true))
       {
-        a();
-        paramFile = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(20);
+        b();
+        paramFile = this.w.obtainMessage(20);
         if (a(paramFile, paramLong2)) {
-          this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramFile);
+          this.w.sendMessage(paramFile);
         }
       }
       else
@@ -396,55 +380,55 @@ public class PendantInfo
     // Byte code:
     //   0: iconst_m1
     //   1: aload_0
-    //   2: getfield 108	com/tencent/mobileqq/vas/PendantInfo:p	I
+    //   2: getfield 123	com/tencent/mobileqq/vas/PendantInfo:r	I
     //   5: if_icmpne +250 -> 255
     //   8: iload_2
     //   9: iconst_2
     //   10: if_icmpne +245 -> 255
-    //   13: getstatic 54	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   13: getstatic 69	com/tencent/mobileqq/vas/PendantInfo:c	Ljava/util/concurrent/ConcurrentHashMap;
     //   16: aload_0
-    //   17: getfield 104	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_Long	J
-    //   20: invokestatic 244	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   23: invokevirtual 445	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   17: getfield 119	com/tencent/mobileqq/vas/PendantInfo:p	J
+    //   20: invokestatic 260	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   23: invokevirtual 458	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
     //   26: ifeq +85 -> 111
     //   29: aload_0
-    //   30: getstatic 54	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   30: getstatic 69	com/tencent/mobileqq/vas/PendantInfo:c	Ljava/util/concurrent/ConcurrentHashMap;
     //   33: aload_0
-    //   34: getfield 104	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_Long	J
-    //   37: invokestatic 244	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   40: invokevirtual 449	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   43: checkcast 161	java/lang/Integer
-    //   46: invokevirtual 165	java/lang/Integer:intValue	()I
-    //   49: putfield 108	com/tencent/mobileqq/vas/PendantInfo:p	I
-    //   52: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   34: getfield 119	com/tencent/mobileqq/vas/PendantInfo:p	J
+    //   37: invokestatic 260	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   40: invokevirtual 462	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   43: checkcast 176	java/lang/Integer
+    //   46: invokevirtual 180	java/lang/Integer:intValue	()I
+    //   49: putfield 123	com/tencent/mobileqq/vas/PendantInfo:r	I
+    //   52: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   55: ifeq +200 -> 255
-    //   58: new 196	java/lang/StringBuilder
+    //   58: new 211	java/lang/StringBuilder
     //   61: dup
-    //   62: invokespecial 235	java/lang/StringBuilder:<init>	()V
+    //   62: invokespecial 250	java/lang/StringBuilder:<init>	()V
     //   65: astore_1
     //   66: aload_1
-    //   67: ldc_w 451
-    //   70: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc_w 464
+    //   70: invokevirtual 215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   73: pop
     //   74: aload_1
     //   75: aload_0
-    //   76: getfield 108	com/tencent/mobileqq/vas/PendantInfo:p	I
-    //   79: invokevirtual 208	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   76: getfield 123	com/tencent/mobileqq/vas/PendantInfo:r	I
+    //   79: invokevirtual 223	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   82: pop
     //   83: aload_1
-    //   84: ldc_w 453
-    //   87: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: ldc_w 466
+    //   87: invokevirtual 215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   90: pop
     //   91: aload_1
     //   92: aload_0
-    //   93: getfield 104	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_Long	J
-    //   96: invokevirtual 205	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   93: getfield 119	com/tencent/mobileqq/vas/PendantInfo:p	J
+    //   96: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   99: pop
-    //   100: ldc 173
+    //   100: ldc 188
     //   102: iconst_2
     //   103: aload_1
-    //   104: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   104: invokevirtual 227	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 193	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   110: return
     //   111: aload_3
     //   112: astore 4
@@ -453,68 +437,68 @@ public class PendantInfo
     //   118: aload_3
     //   119: astore 4
     //   121: aload_1
-    //   122: invokevirtual 393	java/io/File:exists	()Z
+    //   122: invokevirtual 406	java/io/File:exists	()Z
     //   125: ifeq +124 -> 249
     //   128: aload_1
-    //   129: invokestatic 459	com/tencent/mobileqq/utils/FileUtils:readFileToString	(Ljava/io/File;)Ljava/lang/String;
+    //   129: invokestatic 472	com/tencent/mobileqq/utils/FileUtils:readFileToString	(Ljava/io/File;)Ljava/lang/String;
     //   132: astore 4
     //   134: goto +115 -> 249
-    //   137: new 196	java/lang/StringBuilder
+    //   137: new 211	java/lang/StringBuilder
     //   140: dup
-    //   141: invokespecial 235	java/lang/StringBuilder:<init>	()V
+    //   141: invokespecial 250	java/lang/StringBuilder:<init>	()V
     //   144: astore 4
     //   146: aload 4
-    //   148: ldc_w 461
-    //   151: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: ldc_w 474
+    //   151: invokevirtual 215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: pop
     //   155: aload 4
     //   157: aload_1
-    //   158: invokevirtual 464	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   158: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   161: pop
-    //   162: ldc 173
+    //   162: ldc 188
     //   164: iconst_2
     //   165: aload 4
-    //   167: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   167: invokevirtual 227	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 292	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   173: aload_3
     //   174: astore 4
     //   176: goto +73 -> 249
     //   179: astore 5
     //   181: aload_3
     //   182: astore 4
-    //   184: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   184: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   187: ifeq +62 -> 249
-    //   190: new 196	java/lang/StringBuilder
+    //   190: new 211	java/lang/StringBuilder
     //   193: dup
-    //   194: invokespecial 235	java/lang/StringBuilder:<init>	()V
+    //   194: invokespecial 250	java/lang/StringBuilder:<init>	()V
     //   197: astore 4
     //   199: aload 4
-    //   201: ldc_w 466
-    //   204: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: ldc_w 479
+    //   204: invokevirtual 215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   207: pop
     //   208: aload 4
     //   210: aload_1
-    //   211: invokevirtual 464	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   211: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   214: pop
     //   215: aload 4
-    //   217: ldc_w 468
-    //   220: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: ldc_w 481
+    //   220: invokevirtual 215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   223: pop
     //   224: aload 4
     //   226: aload 5
-    //   228: invokestatic 274	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   231: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: invokestatic 290	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   231: invokevirtual 215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: pop
-    //   235: ldc 173
+    //   235: ldc 188
     //   237: iconst_2
     //   238: aload 4
-    //   240: invokevirtual 212	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   243: invokestatic 276	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   240: invokevirtual 227	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   243: invokestatic 292	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   246: aload_3
     //   247: astore 4
     //   249: aload_0
     //   250: aload 4
-    //   252: invokevirtual 470	com/tencent/mobileqq/vas/PendantInfo:a	(Ljava/lang/String;)V
+    //   252: invokevirtual 483	com/tencent/mobileqq/vas/PendantInfo:a	(Ljava/lang/String;)V
     //   255: return
     //   256: astore 4
     //   258: goto -121 -> 137
@@ -559,13 +543,13 @@ public class PendantInfo
   
   private void b(Message paramMessage)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.o == 2) && (this.r > 0))
+    if ((!this.s) && (this.q == 2) && (this.A > 0))
     {
       b(paramMessage.getData().getLong("targetId"));
       return;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.o == 1)) {
-      d();
+    if ((!this.s) && (this.q == 1)) {
+      g();
     }
   }
   
@@ -573,9 +557,9 @@ public class PendantInfo
   {
     try
     {
-      if (g == paramLong)
+      if (h == paramLong)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+        localObject1 = this.v.values().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Drawable)((Iterator)localObject1).next();
@@ -584,7 +568,7 @@ public class PendantInfo
           }
         }
       }
-      Object localObject1 = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(paramLong));
+      Object localObject1 = (Drawable)this.v.get(Long.valueOf(paramLong));
       if (localObject1 != null)
       {
         ((Drawable)localObject1).invalidateSelf();
@@ -606,42 +590,42 @@ public class PendantInfo
   
   private void c(long paramLong, int paramInt)
   {
-    int i1 = this.n;
+    int i1 = this.o;
     Object localObject;
-    if ((i1 != -1) && (this.p != -1))
+    if ((i1 != -1) && (this.r != -1))
     {
       if (i1 != 0)
       {
-        localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+        localObject = this.w;
         if (localObject != null)
         {
           localObject = ((MqqHandler)localObject).obtainMessage(20);
           if (a((Message)localObject, paramLong)) {
-            this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+            this.w.sendMessage((Message)localObject);
           }
         }
       }
     }
     else
     {
-      if (a(new File(AvatarPendantUtil.b(this.jdField_a_of_type_Long, 4)), paramInt) > -1) {
+      if (a(new File(AvatarPendantUtil.b(this.p, 4)), paramInt) > -1) {
         i1 = 1;
       } else {
         i1 = 0;
       }
       if (i1 != 0)
       {
-        if (this.n == 0)
+        if (this.o == 0)
         {
           QLog.d("PendantInfo", 2, "static type request dynamic resources");
           return;
         }
-        localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+        localObject = this.w;
         if (localObject != null)
         {
           localObject = ((MqqHandler)localObject).obtainMessage(20);
           if (a((Message)localObject, paramLong)) {
-            this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+            this.w.sendMessage((Message)localObject);
           }
         }
       }
@@ -655,9 +639,9 @@ public class PendantInfo
   private void c(Message paramMessage)
   {
     long l1 = paramMessage.getData().getLong("targetId");
-    if (g == l1)
+    if (h == l1)
     {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+      paramMessage = this.v.values().iterator();
       while (paramMessage.hasNext())
       {
         Drawable localDrawable = (Drawable)paramMessage.next();
@@ -666,7 +650,7 @@ public class PendantInfo
         }
       }
     }
-    paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
+    paramMessage = (Drawable)this.v.get(Long.valueOf(l1));
     if (paramMessage != null) {
       paramMessage.invalidateSelf();
     }
@@ -675,9 +659,9 @@ public class PendantInfo
   private void d(Message paramMessage)
   {
     long l1 = paramMessage.getData().getLong("targetId");
-    if (g == l1)
+    if (h == l1)
     {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+      paramMessage = this.v.values().iterator();
       while (paramMessage.hasNext())
       {
         Drawable localDrawable = (Drawable)paramMessage.next();
@@ -686,7 +670,7 @@ public class PendantInfo
         }
       }
     }
-    paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
+    paramMessage = (Drawable)this.v.get(Long.valueOf(l1));
     if (paramMessage != null) {
       a(paramMessage, false, 0L);
     }
@@ -695,9 +679,9 @@ public class PendantInfo
   private void e(Message paramMessage)
   {
     long l1 = paramMessage.getData().getLong("targetId");
-    if (g == l1)
+    if (h == l1)
     {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+      paramMessage = this.v.values().iterator();
       while (paramMessage.hasNext())
       {
         Drawable localDrawable = (Drawable)paramMessage.next();
@@ -706,7 +690,7 @@ public class PendantInfo
         }
       }
     }
-    paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
+    paramMessage = (Drawable)this.v.get(Long.valueOf(l1));
     if ((paramMessage != null) && ((paramMessage instanceof VipPendantDrawable))) {
       a((VipPendantDrawable)paramMessage, l1);
     }
@@ -714,45 +698,45 @@ public class PendantInfo
   
   private void f(Message paramMessage)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.q = a(this.q);
+    this.x = true;
+    this.z = a(this.z);
     if ((paramMessage.obj instanceof Bitmap))
     {
       localObject = (Bitmap)paramMessage.obj;
-      if ((localObject != null) && (b() != localObject))
+      if ((localObject != null) && (e() != localObject))
       {
         Bitmap localBitmap = a();
         if (localBitmap != null) {
           if ((localBitmap.isMutable()) && (Build.VERSION.SDK_INT > 11))
           {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+            this.D = localBitmap;
           }
           else
           {
             localBitmap.recycle();
-            this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+            this.D = null;
           }
         }
         a((Bitmap)localObject);
       }
       long l1 = paramMessage.getData().getLong("targetId");
       c(l1);
-      if (2 == this.o)
+      if (2 == this.q)
       {
-        if (this.jdField_c_of_type_Boolean)
+        if (this.F)
         {
           paramMessage = new StringBuilder();
           paramMessage.append("cancel decode pendant in market:");
-          paramMessage.append(this.jdField_a_of_type_Long);
+          paramMessage.append(this.p);
           QLog.d("PendantInfo", 2, paramMessage.toString());
-          this.jdField_c_of_type_Boolean = false;
-          l1 = g;
-          this.q = 0;
-          this.r = 3;
+          this.F = false;
+          l1 = h;
+          this.z = 0;
+          this.A = 3;
         }
-        if (this.r == 0)
+        if (this.A == 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = null;
+          this.y = null;
           return;
         }
         b(l1);
@@ -765,11 +749,20 @@ public class PendantInfo
     QLog.d("PendantInfo", 2, ((StringBuilder)localObject).toString());
   }
   
+  private QQAppInterface i()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
   protected int a(int paramInt)
   {
-    if (paramInt == this.s - 1)
+    if (paramInt == this.I - 1)
     {
-      this.r -= 1;
+      this.A -= 1;
       return 0;
     }
     return paramInt + 1;
@@ -780,7 +773,7 @@ public class PendantInfo
     if (paramFile == null) {
       return -1;
     }
-    Integer localInteger2 = (Integer)AvatarPendantUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
+    Integer localInteger2 = (Integer)AvatarPendantUtil.a.get(Long.valueOf(this.p));
     Object localObject3 = null;
     Object localObject2 = null;
     Integer localInteger1 = localInteger2;
@@ -790,7 +783,7 @@ public class PendantInfo
       {
         localInteger1 = localInteger2;
         localObject1 = localObject3;
-        if (-1 != this.n) {}
+        if (-1 != this.o) {}
       }
       else
       {
@@ -814,7 +807,7 @@ public class PendantInfo
         }
         else
         {
-          localInteger1 = (Integer)AvatarPendantUtil.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
+          localInteger1 = (Integer)AvatarPendantUtil.a.get(Long.valueOf(this.p));
         }
       }
     }
@@ -824,7 +817,7 @@ public class PendantInfo
   
   public Bitmap a()
   {
-    return b();
+    return e();
   }
   
   @TargetApi(11)
@@ -834,7 +827,7 @@ public class PendantInfo
     {
       if (paramObject == null)
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.x = true;
         return null;
       }
       Object localObject3 = new BitmapFactory.Options();
@@ -889,21 +882,21 @@ public class PendantInfo
   
   public Drawable a(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    this.o = paramInt1;
+    this.q = paramInt1;
     Object localObject2 = AIOUtils.a();
     Object localObject1;
-    if (this.o == 2) {
+    if (this.q == 2) {
       localObject1 = "dynamic_pendant";
     } else {
       localObject1 = "static_pendant";
     }
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append("_");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject2).append(this.p);
     ((StringBuilder)localObject2).append("_");
-    ((StringBuilder)localObject2).append(this.o);
-    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-    localObject2 = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(paramLong));
+    ((StringBuilder)localObject2).append(this.q);
+    this.C = ((StringBuilder)localObject2).toString();
+    localObject2 = (Drawable)this.v.get(Long.valueOf(paramLong));
     if ((!TextUtils.isEmpty(paramString)) && (paramInt2 > 0))
     {
       if (localObject2 != null)
@@ -921,7 +914,7 @@ public class PendantInfo
         localObject1 = new DiyPendantDrawable(BaseApplicationImpl.getApplication().getResources());
         ((DiyPendantDrawable)localObject1).b(paramString);
         ((DiyPendantDrawable)localObject1).a(this);
-        this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.put(Long.valueOf(paramLong), localObject1);
+        this.v.put(Long.valueOf(paramLong), localObject1);
       }
     }
     else if (localObject2 != null)
@@ -933,54 +926,10 @@ public class PendantInfo
     {
       localObject1 = new VipPendantDrawable(BaseApplicationImpl.getApplication().getResources());
       ((VipPendantDrawable)localObject1).a(this);
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.put(Long.valueOf(paramLong), localObject1);
+      this.v.put(Long.valueOf(paramLong), localObject1);
     }
     ThreadManager.post(new PendantInfo.2(this, paramInt1, paramLong, (Drawable)localObject1), 8, null, true);
     return localObject1;
-  }
-  
-  void a()
-  {
-    try
-    {
-      Object localObject1 = this.jdField_a_of_type_ArrayOfJavaLangString;
-      if (localObject1 != null) {
-        return;
-      }
-      localObject1 = AvatarPendantUtil.b(this.jdField_a_of_type_Long, 8);
-      if (FileUtils.fileExists((String)localObject1))
-      {
-        Object localObject3 = FileUtils.getChildFiles((String)localObject1);
-        int i1 = ((ArrayList)localObject3).size();
-        if (i1 <= 0) {
-          return;
-        }
-        this.jdField_a_of_type_ArrayOfJavaLangString = new String[((ArrayList)localObject3).size()];
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append((String)localObject1);
-        ((StringBuilder)localObject3).append(File.separator);
-        localObject1 = ((StringBuilder)localObject3).toString();
-        i1 = 0;
-        int i3 = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-        while (i1 < i3)
-        {
-          localObject3 = this.jdField_a_of_type_ArrayOfJavaLangString;
-          StringBuilder localStringBuilder = AIOUtils.a();
-          localStringBuilder.append((String)localObject1);
-          int i2 = i1 + 1;
-          localStringBuilder.append(i2);
-          localStringBuilder.append(".png");
-          localObject3[i1] = localStringBuilder.toString();
-          i1 = i2;
-        }
-      }
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject2;
-    }
   }
   
   void a(int paramInt1, int paramInt2, long paramLong)
@@ -993,15 +942,15 @@ public class PendantInfo
         localStringBuilder.append("download pendant report actionResult=");
         localStringBuilder.append(paramInt1);
         localStringBuilder.append(",pendantId=");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.p);
         localStringBuilder.append(",type=");
         localStringBuilder.append(paramInt2);
         QLog.i("PendantInfo", 2, localStringBuilder.toString());
       }
-      int i1 = NetworkUtil.getSystemNetwork(this.jdField_a_of_type_AndroidContentContext);
+      int i1 = NetworkUtil.getSystemNetwork(this.t);
       if (paramLong < 3600000L)
       {
-        VasWebviewUtil.a("AvatarPendant", "download", String.valueOf(this.jdField_a_of_type_Long), 0, 0, paramInt1, i1, String.valueOf(paramLong), String.valueOf(paramInt2));
+        VasWebviewUtil.a("AvatarPendant", "download", String.valueOf(this.p), 0, 0, paramInt1, i1, String.valueOf(paramLong), String.valueOf(paramInt2));
         return;
       }
     }
@@ -1013,15 +962,15 @@ public class PendantInfo
   
   void a(int paramInt, long paramLong)
   {
-    QQAppInterface localQQAppInterface = a();
+    QQAppInterface localQQAppInterface = i();
     if (localQQAppInterface == null) {
       return;
     }
-    File localFile = new File(AvatarPendantUtil.b(this.jdField_a_of_type_Long, 4));
+    File localFile = new File(AvatarPendantUtil.b(this.p, 4));
     if (!localFile.exists())
     {
-      ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4), "PendantInfo");
-      this.jdField_a_of_type_JavaUtilMap.put(AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4), Long.valueOf(paramInt));
+      ((IVasQuickUpdateService)localQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, AvatarPendantUtil.a(this.p, 4), "PendantInfo");
+      this.G.put(AvatarPendantUtil.a(this.p, 4), Long.valueOf(paramInt));
       return;
     }
     paramInt = a(localFile, paramInt);
@@ -1032,9 +981,9 @@ public class PendantInfo
   
   public void a(long paramLong)
   {
-    File localFile = new File(AvatarPendantUtil.b(this.jdField_a_of_type_Long, 4));
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4))) {
-      i1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(AvatarPendantUtil.a(this.jdField_a_of_type_Long, 4))).intValue();
+    File localFile = new File(AvatarPendantUtil.b(this.p, 4));
+    if (this.G.containsKey(AvatarPendantUtil.a(this.p, 4))) {
+      i1 = ((Long)this.G.get(AvatarPendantUtil.a(this.p, 4))).intValue();
     } else {
       i1 = 1;
     }
@@ -1047,38 +996,38 @@ public class PendantInfo
   void a(long paramLong, int paramInt)
   {
     if (paramInt == 2) {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      synchronized (this.H)
       {
         StringBuilder localStringBuilder;
-        if (this.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(this.jdField_a_of_type_Long)))
+        if (this.H.contains(Long.valueOf(this.p)))
         {
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("downloadPendantDrawable pendant ");
-            localStringBuilder.append(this.jdField_a_of_type_Long);
+            localStringBuilder.append(this.p);
             localStringBuilder.append(" is downloading");
             QLog.d("PendantInfo", 2, localStringBuilder.toString());
           }
           return;
         }
-        this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(this.jdField_a_of_type_Long));
+        this.H.add(Long.valueOf(this.p));
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("downloadPendantDrawable pendant ");
-          localStringBuilder.append(this.jdField_a_of_type_Long);
+          localStringBuilder.append(this.p);
           localStringBuilder.append(" add to list");
           QLog.d("PendantInfo", 2, localStringBuilder.toString());
         }
       }
     }
-    ??? = a();
+    ??? = i();
     if (??? == null) {
       return;
     }
-    ((IVasQuickUpdateService)((QQAppInterface)???).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt), "PendantInfo");
-    this.jdField_a_of_type_JavaUtilMap.put(AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt), Long.valueOf(paramLong));
+    ((IVasQuickUpdateService)((QQAppInterface)???).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(4L, AvatarPendantUtil.a(this.p, paramInt), "PendantInfo");
+    this.G.put(AvatarPendantUtil.a(this.p, paramInt), Long.valueOf(paramLong));
   }
   
   void a(Bitmap paramBitmap)
@@ -1086,25 +1035,25 @@ public class PendantInfo
     int i1 = Utils.a(paramBitmap);
     BitmapDrawable localBitmapDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), paramBitmap);
     localBitmapDrawable.setTargetDensity(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics());
-    if (this.jdField_a_of_type_JavaLangString == null)
+    if (this.C == null)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("PendantInfo", 4, "setPendantBitmap cache key equal null");
       }
       StringBuilder localStringBuilder = AIOUtils.a();
-      if (this.o == 2) {
+      if (this.q == 2) {
         paramBitmap = "dynamic_pendant";
       } else {
         paramBitmap = "static_pendant";
       }
       localStringBuilder.append(paramBitmap);
       localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.p);
       localStringBuilder.append("_");
-      localStringBuilder.append(this.o);
-      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      localStringBuilder.append(this.q);
+      this.C = localStringBuilder.toString();
     }
-    GlobalImageCache.a.put(this.jdField_a_of_type_JavaLangString, new Pair(localBitmapDrawable.getConstantState(), Integer.valueOf(i1)));
+    GlobalImageCache.a.put(this.C, new Pair(localBitmapDrawable.getConstantState(), Integer.valueOf(i1)));
   }
   
   void a(Drawable paramDrawable, boolean paramBoolean, long paramLong)
@@ -1114,17 +1063,17 @@ public class PendantInfo
     }
     try
     {
-      d();
-      this.r = 0;
+      g();
+      this.A = 0;
       if ((paramDrawable instanceof VipPendantDrawable)) {
-        ((VipPendantDrawable)paramDrawable).a(this.jdField_b_of_type_JavaLangString);
+        ((VipPendantDrawable)paramDrawable).a(this.J);
       }
-      paramDrawable = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(16);
+      paramDrawable = this.w.obtainMessage(16);
       if (paramBoolean) {
-        paramLong = g;
+        paramLong = h;
       }
       if (a(paramDrawable, paramLong)) {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramDrawable);
+        this.w.sendMessage(paramDrawable);
       }
       return;
     }
@@ -1138,14 +1087,14 @@ public class PendantInfo
   
   public void a(View paramView, int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
       if (QLog.isColorLevel()) {
         QLog.i("PendantInfo", 2, "setDrawable, SimpleUIMode is open now");
       }
       return;
     }
-    this.jdField_b_of_type_JavaLangString = AvatarPendantUtil.b(this.jdField_a_of_type_Long, paramInt1);
+    this.J = AvatarPendantUtil.b(this.p, paramInt1);
     paramString = a(paramInt1, paramLong, paramString, paramInt2);
     if ((paramView instanceof BaseChatItemLayout))
     {
@@ -1161,37 +1110,37 @@ public class PendantInfo
   {
     if (paramVipPendantDrawable != null)
     {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      String[] arrayOfString = this.u;
       if (arrayOfString == null) {
         return;
       }
-      paramVipPendantDrawable.a(arrayOfString, this.p);
-      paramVipPendantDrawable = this.jdField_a_of_type_ArrayOfJavaLangString;
-      this.jdField_a_of_type_JavaLangObject = paramVipPendantDrawable;
-      this.s = paramVipPendantDrawable.length;
+      paramVipPendantDrawable.a(arrayOfString, this.r);
+      paramVipPendantDrawable = this.u;
+      this.B = paramVipPendantDrawable;
+      this.I = paramVipPendantDrawable.length;
       boolean bool;
-      if ((!this.jdField_c_of_type_Boolean) && (this.r > 3)) {
+      if ((!this.F) && (this.A > 3)) {
         bool = true;
       } else {
         bool = false;
       }
-      int i1 = i;
+      int i1 = j;
       if (paramLong == i1)
       {
-        this.jdField_c_of_type_Boolean = false;
-        this.r = l;
+        this.F = false;
+        this.A = m;
         b(i1);
       }
       else if (!bool)
       {
-        this.r = m;
-        b(g);
+        this.A = n;
+        b(h);
       }
       if (QLog.isColorLevel())
       {
         paramVipPendantDrawable = new StringBuilder();
         paramVipPendantDrawable.append("setPngsDrawable repeatCount:");
-        paramVipPendantDrawable.append(this.r);
+        paramVipPendantDrawable.append(this.A);
         paramVipPendantDrawable.append(",targetID:");
         paramVipPendantDrawable.append(paramLong);
         paramVipPendantDrawable.append(",pendantInMarket:");
@@ -1228,23 +1177,23 @@ public class PendantInfo
     int i1 = -2147483648;
     if (-2147483648 != i1)
     {
-      this.p = i1;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.p));
+      this.r = i1;
+      c.put(Long.valueOf(this.p), Integer.valueOf(this.r));
       return;
     }
-    this.p = k;
+    this.r = l;
     a(1, 7, 0L);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.s = paramBoolean;
     try
     {
-      Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(18);
-      if (a(localMessage, g))
+      Message localMessage = this.w.obtainMessage(18);
+      if (a(localMessage, h))
       {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, jdField_a_of_type_Int);
+        this.w.sendMessageDelayed(localMessage, a);
         return;
       }
     }
@@ -1257,60 +1206,61 @@ public class PendantInfo
     }
   }
   
-  boolean a()
+  void b()
   {
-    Pair localPair = (Pair)GlobalImageCache.a.get(this.jdField_a_of_type_JavaLangString);
-    return (localPair != null) && (localPair.first != null);
-  }
-  
-  Bitmap b()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangString == null)
+    try
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PendantInfo", 4, "getPendantBitmap cache key equal null");
+      Object localObject1 = this.u;
+      if (localObject1 != null) {
+        return;
       }
-      StringBuilder localStringBuilder = AIOUtils.a();
-      if (this.o == 2) {
-        localObject = "dynamic_pendant";
-      } else {
-        localObject = "static_pendant";
+      localObject1 = AvatarPendantUtil.b(this.p, 8);
+      if (FileUtils.fileExists((String)localObject1))
+      {
+        Object localObject3 = FileUtils.getChildFiles((String)localObject1);
+        int i1 = ((ArrayList)localObject3).size();
+        if (i1 <= 0) {
+          return;
+        }
+        this.u = new String[((ArrayList)localObject3).size()];
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(File.separator);
+        localObject1 = ((StringBuilder)localObject3).toString();
+        i1 = 0;
+        int i3 = this.u.length;
+        while (i1 < i3)
+        {
+          localObject3 = this.u;
+          StringBuilder localStringBuilder = AIOUtils.a();
+          localStringBuilder.append((String)localObject1);
+          int i2 = i1 + 1;
+          localStringBuilder.append(i2);
+          localStringBuilder.append(".png");
+          localObject3[i1] = localStringBuilder.toString();
+          i1 = i2;
+        }
       }
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.o);
-      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      return;
     }
-    if (GlobalImageCache.a != null) {
-      localObject = (Pair)GlobalImageCache.a.get(this.jdField_a_of_type_JavaLangString);
-    } else {
-      localObject = null;
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
-    if ((localObject != null) && (((Pair)localObject).first != null)) {
-      return ((BitmapDrawable)((Drawable.ConstantState)((Pair)localObject).first).newDrawable(BaseApplicationImpl.getApplication().getResources())).getBitmap();
-    }
-    return null;
-  }
-  
-  public void b()
-  {
-    this.jdField_c_of_type_Boolean = true;
   }
   
   protected void b(long paramLong)
   {
-    if ((this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+    if ((this.x) && (!this.s))
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.x = false;
       long l1 = SystemClock.uptimeMillis();
-      long l2 = this.p;
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = new PendantInfo.DecodeNextFrameTask(this, this.jdField_a_of_type_ArrayOfJavaLangString, paramLong);
+      long l2 = this.r;
+      this.y = new PendantInfo.DecodeNextFrameTask(this, this.u, paramLong);
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
+        this.y.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.z), Long.valueOf(this.q) });
         return;
       }
       catch (Exception localException)
@@ -1325,17 +1275,17 @@ public class PendantInfo
   
   void b(long paramLong, int paramInt)
   {
-    long l1 = g;
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt))) {
-      l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(AvatarPendantUtil.a(this.jdField_a_of_type_Long, paramInt))).longValue();
+    long l1 = h;
+    if (this.G.containsKey(AvatarPendantUtil.a(this.p, paramInt))) {
+      l1 = ((Long)this.G.get(AvatarPendantUtil.a(this.p, paramInt))).longValue();
     }
-    if ((2 == paramInt) && (this.n == 1))
+    if ((2 == paramInt) && (this.o == 1))
     {
       a(paramLong, l1, new File(AvatarPendantUtil.b(paramLong, paramInt)));
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      synchronized (this.H)
       {
         StringBuilder localStringBuilder;
-        if (this.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(paramLong)))
+        if (this.H.contains(Long.valueOf(paramLong)))
         {
           if (QLog.isColorLevel())
           {
@@ -1345,7 +1295,7 @@ public class PendantInfo
             localStringBuilder.append(" from list");
             QLog.d("PendantInfo", 2, localStringBuilder.toString());
           }
-          this.jdField_a_of_type_JavaUtilList.remove(Long.valueOf(paramLong));
+          this.H.remove(Long.valueOf(paramLong));
         }
         else if (QLog.isColorLevel())
         {
@@ -1358,44 +1308,87 @@ public class PendantInfo
         return;
       }
     }
-    ??? = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(19);
-    if (a((Message)???, g)) {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)???);
+    ??? = this.w.obtainMessage(19);
+    if (a((Message)???, h)) {
+      this.w.sendMessage((Message)???);
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.clear();
-    e();
+    this.F = true;
   }
   
-  void d()
+  public void d()
+  {
+    this.v.clear();
+    h();
+  }
+  
+  Bitmap e()
+  {
+    Object localObject;
+    if (this.C == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("PendantInfo", 4, "getPendantBitmap cache key equal null");
+      }
+      StringBuilder localStringBuilder = AIOUtils.a();
+      if (this.q == 2) {
+        localObject = "dynamic_pendant";
+      } else {
+        localObject = "static_pendant";
+      }
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.p);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.q);
+      this.C = localStringBuilder.toString();
+    }
+    if (GlobalImageCache.a != null) {
+      localObject = (Pair)GlobalImageCache.a.get(this.C);
+    } else {
+      localObject = null;
+    }
+    if ((localObject != null) && (((Pair)localObject).first != null)) {
+      return ((BitmapDrawable)((Drawable.ConstantState)((Pair)localObject).first).newDrawable(BaseApplicationImpl.getApplication().getResources())).getBitmap();
+    }
+    return null;
+  }
+  
+  boolean f()
+  {
+    Pair localPair = (Pair)GlobalImageCache.a.get(this.C);
+    return (localPair != null) && (localPair.first != null);
+  }
+  
+  void g()
   {
     try
     {
-      if (((this.jdField_a_of_type_JavaLangObject instanceof PendantInfo.SourcesBigPng)) && (a()))
+      if (((this.B instanceof PendantInfo.SourcesBigPng)) && (f()))
       {
-        if ((this.jdField_a_of_type_JavaLangObject != null) && (((PendantInfo.SourcesBigPng)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString != null) && (((PendantInfo.SourcesBigPng)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
+        if ((this.B != null) && (((PendantInfo.SourcesBigPng)this.B).a != null) && (((PendantInfo.SourcesBigPng)this.B).a.equals(this.J))) {
           break label244;
         }
-        if (this.jdField_a_of_type_Boolean) {}
+        if (this.s) {}
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask != null)
+      else if (this.y != null)
       {
-        Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(16);
-        if (!a(localMessage, g)) {
+        Message localMessage = this.w.obtainMessage(16);
+        if (!a(localMessage, h)) {
           return;
         }
-        this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+        this.w.sendMessage(localMessage);
         return;
       }
-      this.jdField_a_of_type_JavaLangObject = new PendantInfo.SourcesBigPng(this, this.jdField_b_of_type_JavaLangString);
-      this.r = 0;
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = new PendantInfo.DecodeNextFrameTask(this, this.jdField_a_of_type_JavaLangObject, g);
+      this.B = new PendantInfo.SourcesBigPng(this, this.J);
+      this.A = 0;
+      this.y = new PendantInfo.DecodeNextFrameTask(this, this.B, h);
       long l1 = SystemClock.uptimeMillis();
-      long l2 = this.p;
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
+      long l2 = this.r;
+      this.y.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.z), Long.valueOf(this.q) });
       return;
     }
     catch (Exception localException)
@@ -1410,20 +1403,20 @@ public class PendantInfo
     return;
   }
   
-  public void e()
+  public void h()
   {
-    PendantInfo.DecodeNextFrameTask localDecodeNextFrameTask = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask;
+    PendantInfo.DecodeNextFrameTask localDecodeNextFrameTask = this.y;
     if (localDecodeNextFrameTask != null)
     {
       localDecodeNextFrameTask.cancel(false);
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$DecodeNextFrameTask = null;
+      this.y = null;
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.x = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.PendantInfo
  * JD-Core Version:    0.7.0.1
  */

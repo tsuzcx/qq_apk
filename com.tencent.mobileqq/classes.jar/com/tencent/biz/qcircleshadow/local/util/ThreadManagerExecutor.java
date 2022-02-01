@@ -5,23 +5,12 @@ import com.tencent.mobileqq.mqq.api.IThreadManagerApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import java.util.List;
 import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class ThreadManagerExecutor
   extends AbstractExecutorService
 {
   private final int a;
-  
-  ThreadManagerExecutor(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public static ExecutorService a(int paramInt)
-  {
-    return new ThreadManagerExecutor(paramInt);
-  }
   
   public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
   {
@@ -56,7 +45,7 @@ public class ThreadManagerExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.util.ThreadManagerExecutor
  * JD-Core Version:    0.7.0.1
  */

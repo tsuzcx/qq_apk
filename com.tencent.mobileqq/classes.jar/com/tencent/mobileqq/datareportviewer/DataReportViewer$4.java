@@ -18,21 +18,21 @@ class DataReportViewer$4
   
   public void onClick(View paramView)
   {
-    ClipboardManager localClipboardManager = (ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard");
+    ClipboardManager localClipboardManager = (ClipboardManager)this.a.getSystemService("clipboard");
     if (localClipboardManager != null)
     {
-      ClipData localClipData = ClipData.newPlainText(null, this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportData.toString());
+      ClipData localClipData = ClipData.newPlainText(null, this.b.toString());
       ClipboardMonitor.setPrimaryClip(localClipboardManager, localClipData);
       localClipboardManager.setPrimaryClip(localClipData);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.getContext(), HardCodeUtil.a(2131702938), 0).a();
+      QQToast.makeText(this.d.getContext(), HardCodeUtil.a(2131900915), 0).show();
     }
-    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
+    this.c.removeViewImmediate(this.d.m);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer.4
  * JD-Core Version:    0.7.0.1
  */

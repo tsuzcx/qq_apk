@@ -11,20 +11,20 @@ class RunningJob$4
   
   public void run()
   {
-    if (this.this$0.a.a)
+    if (this.this$0.b.d)
     {
-      RIJImageOptReport.a(6, this.this$0.a);
-      RIJImageOptReport.a(this.this$0.a, false, "cancelled");
+      RIJImageOptReport.a(6, this.this$0.b);
+      RIJImageOptReport.a(this.this$0.b, false, "cancelled");
       return;
     }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((IBitmapCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.this$0.a, this.jdField_a_of_type_JavaLangThrowable);
+    if (this.a.get() != null) {
+      ((IBitmapCallback)this.a.get()).a(this.this$0.b, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.RunningJob.4
  * JD-Core Version:    0.7.0.1
  */

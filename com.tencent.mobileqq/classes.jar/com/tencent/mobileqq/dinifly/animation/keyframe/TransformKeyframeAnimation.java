@@ -2,8 +2,8 @@ package com.tencent.mobileqq.dinifly.animation.keyframe;
 
 import android.graphics.Matrix;
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableIntegerValue;
@@ -195,91 +195,112 @@ public class TransformKeyframeAnimation
         paramT.setValueCallback(paramLottieValueCallback);
       }
     }
-    else if (paramT == LottieProperty.TRANSFORM_SCALE)
-    {
-      paramT = this.scale;
-      if (paramT == null) {
-        this.scale = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, new ScaleXY());
-      } else {
-        paramT.setValueCallback(paramLottieValueCallback);
-      }
-    }
-    else if (paramT == LottieProperty.TRANSFORM_ROTATION)
-    {
-      paramT = this.rotation;
-      if (paramT == null) {
-        this.rotation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Float.valueOf(0.0F));
-      } else {
-        paramT.setValueCallback(paramLottieValueCallback);
-      }
-    }
-    else if (paramT == LottieProperty.TRANSFORM_OPACITY)
-    {
-      paramT = this.opacity;
-      if (paramT == null) {
-        this.opacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
-      } else {
-        paramT.setValueCallback(paramLottieValueCallback);
-      }
-    }
     else
     {
       Object localObject;
-      if (paramT == LottieProperty.TRANSFORM_START_OPACITY)
+      if (paramT == LottieProperty.TRANSFORM_POSITION_X)
       {
-        localObject = this.startOpacity;
-        if (localObject != null)
+        localObject = this.position;
+        if ((localObject instanceof SplitDimensionPathKeyframeAnimation))
         {
-          if (localObject == null)
+          ((SplitDimensionPathKeyframeAnimation)localObject).setXValueCallback(paramLottieValueCallback);
+          break label490;
+        }
+      }
+      if (paramT == LottieProperty.TRANSFORM_POSITION_Y)
+      {
+        localObject = this.position;
+        if ((localObject instanceof SplitDimensionPathKeyframeAnimation))
+        {
+          ((SplitDimensionPathKeyframeAnimation)localObject).setYValueCallback(paramLottieValueCallback);
+          break label490;
+        }
+      }
+      if (paramT == LottieProperty.TRANSFORM_SCALE)
+      {
+        paramT = this.scale;
+        if (paramT == null) {
+          this.scale = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, new ScaleXY());
+        } else {
+          paramT.setValueCallback(paramLottieValueCallback);
+        }
+      }
+      else if (paramT == LottieProperty.TRANSFORM_ROTATION)
+      {
+        paramT = this.rotation;
+        if (paramT == null) {
+          this.rotation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Float.valueOf(0.0F));
+        } else {
+          paramT.setValueCallback(paramLottieValueCallback);
+        }
+      }
+      else if (paramT == LottieProperty.TRANSFORM_OPACITY)
+      {
+        paramT = this.opacity;
+        if (paramT == null) {
+          this.opacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
+        } else {
+          paramT.setValueCallback(paramLottieValueCallback);
+        }
+      }
+      else
+      {
+        if (paramT == LottieProperty.TRANSFORM_START_OPACITY)
+        {
+          localObject = this.startOpacity;
+          if (localObject != null)
           {
-            this.startOpacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
-            break label430;
+            if (localObject == null)
+            {
+              this.startOpacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
+              break label490;
+            }
+            ((BaseKeyframeAnimation)localObject).setValueCallback(paramLottieValueCallback);
+            break label490;
           }
-          ((BaseKeyframeAnimation)localObject).setValueCallback(paramLottieValueCallback);
-          break label430;
         }
-      }
-      if (paramT == LottieProperty.TRANSFORM_END_OPACITY)
-      {
-        localObject = this.endOpacity;
-        if (localObject != null)
+        if (paramT == LottieProperty.TRANSFORM_END_OPACITY)
         {
-          if (localObject == null)
+          localObject = this.endOpacity;
+          if (localObject != null)
           {
-            this.endOpacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
-            break label430;
+            if (localObject == null)
+            {
+              this.endOpacity = new ValueCallbackKeyframeAnimation(paramLottieValueCallback, Integer.valueOf(100));
+              break label490;
+            }
+            ((BaseKeyframeAnimation)localObject).setValueCallback(paramLottieValueCallback);
+            break label490;
           }
-          ((BaseKeyframeAnimation)localObject).setValueCallback(paramLottieValueCallback);
-          break label430;
         }
-      }
-      if (paramT == LottieProperty.TRANSFORM_SKEW)
-      {
-        localObject = this.skew;
-        if (localObject != null)
+        if (paramT == LottieProperty.TRANSFORM_SKEW)
         {
-          if (localObject == null) {
-            this.skew = new FloatKeyframeAnimation(Collections.singletonList(new Keyframe(Float.valueOf(0.0F))));
+          localObject = this.skew;
+          if (localObject != null)
+          {
+            if (localObject == null) {
+              this.skew = new FloatKeyframeAnimation(Collections.singletonList(new Keyframe(Float.valueOf(0.0F))));
+            }
+            this.skew.setValueCallback(paramLottieValueCallback);
+            break label490;
           }
-          this.skew.setValueCallback(paramLottieValueCallback);
-          break label430;
         }
+        if (paramT != LottieProperty.TRANSFORM_SKEW_ANGLE) {
+          break label492;
+        }
+        paramT = this.skewAngle;
+        if (paramT == null) {
+          break label492;
+        }
+        if (paramT == null) {
+          this.skewAngle = new FloatKeyframeAnimation(Collections.singletonList(new Keyframe(Float.valueOf(0.0F))));
+        }
+        this.skewAngle.setValueCallback(paramLottieValueCallback);
       }
-      if (paramT != LottieProperty.TRANSFORM_SKEW_ANGLE) {
-        break label432;
-      }
-      paramT = this.skewAngle;
-      if (paramT == null) {
-        break label432;
-      }
-      if (paramT == null) {
-        this.skewAngle = new FloatKeyframeAnimation(Collections.singletonList(new Keyframe(Float.valueOf(0.0F))));
-      }
-      this.skewAngle.setValueCallback(paramLottieValueCallback);
     }
-    label430:
+    label490:
     return true;
-    label432:
+    label492:
     return false;
   }
   
@@ -482,7 +503,7 @@ public class TransformKeyframeAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.TransformKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

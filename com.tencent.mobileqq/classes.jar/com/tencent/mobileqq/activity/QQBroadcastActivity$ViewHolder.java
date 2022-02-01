@@ -7,18 +7,18 @@ import android.widget.TextView;
 
 class QQBroadcastActivity$ViewHolder
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView a;
+  RelativeLayout b;
   TextView c;
   TextView d;
+  TextView e;
+  ImageView f;
+  View g;
+  RelativeLayout h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class Conversation$UICallBack$9
   
   public boolean onLongClick(View paramView)
   {
-    return this.a.a.a.b.performLongClick();
+    return this.a.a.Y.ae.performLongClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.9
  * JD-Core Version:    0.7.0.1
  */

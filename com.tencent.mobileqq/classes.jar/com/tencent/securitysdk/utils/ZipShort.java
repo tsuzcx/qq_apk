@@ -21,15 +21,15 @@ public final class ZipShort
     this.a += (paramArrayOfByte[paramInt] & 0xFF);
   }
   
-  public int a()
-  {
-    return this.a;
-  }
-  
   public byte[] a()
   {
     int i = this.a;
     return new byte[] { (byte)(i & 0xFF), (byte)((i & 0xFF00) >> 8) };
+  }
+  
+  public int b()
+  {
+    return this.a;
   }
   
   public boolean equals(Object paramObject)
@@ -42,7 +42,7 @@ public final class ZipShort
         return false;
       }
       bool1 = bool2;
-      if (this.a == ((ZipShort)paramObject).a()) {
+      if (this.a == ((ZipShort)paramObject).b()) {
         bool1 = true;
       }
     }
@@ -56,7 +56,7 @@ public final class ZipShort
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ZipShort
  * JD-Core Version:    0.7.0.1
  */

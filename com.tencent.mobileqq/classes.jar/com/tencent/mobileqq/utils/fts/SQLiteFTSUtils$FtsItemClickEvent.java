@@ -3,47 +3,47 @@ package com.tencent.mobileqq.utils.fts;
 public class SQLiteFTSUtils$FtsItemClickEvent
 {
   public static int a;
-  public static long a;
-  public static boolean a;
   public static int b;
-  public static long b;
   public static int c;
-  public static long c;
   public static int d;
-  public static long d;
   public static int e;
-  public static long e;
   public static int f;
-  public static long f;
   public static int g;
-  public static int h;
-  public static int i;
+  public static long h;
+  public static long i;
   public static int j;
+  public static int k;
+  public static int l;
+  public static long m;
+  public static long n;
+  public static long o;
+  public static long p;
+  public static boolean q;
   
   public static void a()
   {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 0;
-    jdField_d_of_type_Int = 0;
-    jdField_e_of_type_Int = 0;
-    jdField_f_of_type_Int = 0;
+    a = 0;
+    b = 0;
+    c = 0;
+    d = 0;
+    e = 0;
+    f = 0;
     g = 0;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    h = 0;
-    i = 0;
+    h = 0L;
+    i = 0L;
     j = 0;
-    jdField_c_of_type_Long = 0L;
-    jdField_d_of_type_Long = 0L;
-    jdField_e_of_type_Long = 0L;
-    jdField_f_of_type_Long = 0L;
-    jdField_a_of_type_Boolean = false;
+    k = 0;
+    l = 0;
+    m = 0L;
+    n = 0L;
+    o = 0L;
+    p = 0L;
+    q = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent
  * JD-Core Version:    0.7.0.1
  */

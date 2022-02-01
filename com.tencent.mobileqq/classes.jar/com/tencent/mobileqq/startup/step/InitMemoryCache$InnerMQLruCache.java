@@ -36,7 +36,7 @@ class InitMemoryCache$InnerMQLruCache
     }
     else if ((paramObject instanceof CloseableBitmap))
     {
-      paramObject = ((CloseableBitmap)paramObject).a();
+      paramObject = ((CloseableBitmap)paramObject).b();
       if (paramObject != null) {
         return Utils.a(paramObject);
       }
@@ -45,24 +45,15 @@ class InitMemoryCache$InnerMQLruCache
     {
       return ((Sizeable)paramObject).getByteSize();
     }
-    MemoryClearManager.a(paramString, MemoryClearManager.m);
+    MemoryClearManager.a(paramString, MemoryClearManager.v);
     return 204800;
-  }
-  
-  public Object a(String paramString, Object paramObject)
-  {
-    Object localObject = paramObject;
-    if ((paramObject instanceof CloseableBitmap)) {
-      localObject = ((CloseableBitmap)paramObject).a();
-    }
-    return super.put(paramString, localObject);
   }
   
   public Object a(String paramString, Object paramObject, byte paramByte)
   {
     Object localObject = paramObject;
     if ((paramObject instanceof CloseableBitmap)) {
-      localObject = ((CloseableBitmap)paramObject).a();
+      localObject = ((CloseableBitmap)paramObject).d();
     }
     return super.put(paramString, localObject, paramByte);
   }
@@ -75,10 +66,19 @@ class InitMemoryCache$InnerMQLruCache
       ((CloseableBitmap)paramObject1).a();
     }
   }
+  
+  public Object b(String paramString, Object paramObject)
+  {
+    Object localObject = paramObject;
+    if ((paramObject instanceof CloseableBitmap)) {
+      localObject = ((CloseableBitmap)paramObject).d();
+    }
+    return super.put(paramString, localObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitMemoryCache.InnerMQLruCache
  * JD-Core Version:    0.7.0.1
  */

@@ -15,18 +15,18 @@ class UserOperationModule$3
   public void run()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      ReadInJoyLogicEngineEventDispatcher.a().b(((BatchFollowModel)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long, ((BatchFollowModel)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Boolean);
+      ReadInJoyLogicEngineEventDispatcher.a().b(((BatchFollowModel)this.a.get(i)).a, ((BatchFollowModel)this.a.get(i)).c);
       i += 1;
     }
     ThreadManager.post(new UserOperationModule.3.1(this), 5, null, true);
-    ((UserOperationModule.BatchFollowCallBack)this.jdField_a_of_type_ComTencentMobileqqKandianRepoAccountApiBaseOx978RespCallBack).a(true, this.jdField_a_of_type_JavaUtilArrayList, "");
+    ((UserOperationModule.BatchFollowCallBack)this.c).a(true, this.a, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.UserOperationModule.3
  * JD-Core Version:    0.7.0.1
  */

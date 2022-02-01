@@ -79,7 +79,7 @@ public class SignatureEditManager
       ((StringBuilder)localObject2).append("&fontId=");
       ((StringBuilder)localObject2).append(paramInt4);
     }
-    localObject1 = VasWebviewUtil.a(((StringBuilder)localObject2).toString(), paramInt5);
+    localObject1 = VasWebviewUtil.b(((StringBuilder)localObject2).toString(), paramInt5);
     if (QLog.isColorLevel())
     {
       localObject2 = VasUtils.a;
@@ -112,7 +112,7 @@ public class SignatureEditManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.signature.SignatureEditManager
  * JD-Core Version:    0.7.0.1
  */

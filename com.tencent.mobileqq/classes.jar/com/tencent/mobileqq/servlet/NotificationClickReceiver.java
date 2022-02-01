@@ -121,7 +121,7 @@ public class NotificationClickReceiver
           paramContext.subactionType = String.valueOf(3);
           paramContext.reserves = String.valueOf(7);
           QZoneClickReport.report((String)localObject, paramContext, true);
-          CliNotifyPush.a.clear();
+          CliNotifyPush.b.clear();
         }
         Uri localUri = Uri.parse(str1);
         if (TextUtils.isEmpty(localUri.getQueryParameter("from")))
@@ -159,7 +159,7 @@ public class NotificationClickReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.NotificationClickReceiver
  * JD-Core Version:    0.7.0.1
  */

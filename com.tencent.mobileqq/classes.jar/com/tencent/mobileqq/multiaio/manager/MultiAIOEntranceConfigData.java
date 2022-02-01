@@ -8,15 +8,9 @@ import org.json.JSONObject;
 
 public class MultiAIOEntranceConfigData
 {
-  public String a;
-  public List<String> a;
   public boolean a;
-  
-  public MultiAIOEntranceConfigData()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public String b = "";
+  public List<String> c = new ArrayList();
   
   public static MultiAIOEntranceConfigData a(String paramString)
   {
@@ -31,10 +25,10 @@ public class MultiAIOEntranceConfigData
       if (paramString.optInt("mainswitch", 0) == 1) {
         bool = true;
       }
-      localMultiAIOEntranceConfigData.jdField_a_of_type_Boolean = bool;
-      localMultiAIOEntranceConfigData.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
+      localMultiAIOEntranceConfigData.a = bool;
+      localMultiAIOEntranceConfigData.b = paramString.optString("qmcf", "");
       paramString = a(paramString.optJSONArray("black"));
-      localMultiAIOEntranceConfigData.jdField_a_of_type_JavaUtilList.addAll(paramString);
+      localMultiAIOEntranceConfigData.c.addAll(paramString);
       return localMultiAIOEntranceConfigData;
     }
     catch (Exception paramString)
@@ -67,24 +61,24 @@ public class MultiAIOEntranceConfigData
     return localArrayList;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public List<String> c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.manager.MultiAIOEntranceConfigData
  * JD-Core Version:    0.7.0.1
  */

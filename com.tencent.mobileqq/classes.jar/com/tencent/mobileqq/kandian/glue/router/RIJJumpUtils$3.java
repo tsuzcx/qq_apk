@@ -27,7 +27,7 @@ final class RIJJumpUtils$3
       localObject2 = localObject4;
       ((StringBuilder)localObject1).append("https://union.video.qq.com/fcgi-bin/data?otype=json&tid=");
       localObject2 = localObject4;
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       localObject2 = localObject4;
       ((StringBuilder)localObject1).append("&appid=");
       localObject2 = localObject4;
@@ -98,7 +98,7 @@ final class RIJJumpUtils$3
     }
     label365:
     boolean bool = false;
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsNativeWebVideoCoverGetCallback;
+    Object localObject3 = this.e;
     if (localObject3 != null) {
       ((NativeWebVideoCoverGetCallback)localObject3).a(bool, this.d, (String)localObject1, i, j);
     }
@@ -106,7 +106,7 @@ final class RIJJumpUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.3
  * JD-Core Version:    0.7.0.1
  */

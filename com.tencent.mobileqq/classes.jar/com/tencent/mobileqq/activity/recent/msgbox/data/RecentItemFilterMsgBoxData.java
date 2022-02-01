@@ -42,24 +42,24 @@ public class RecentItemFilterMsgBoxData
       this.mUnreadNum += i;
       if (i > 0)
       {
-        this.mMsgExtroInfo = localITempMsgBoxCallback.a(paramBaseQQAppInterface, paramMessage.frienduin, paramMessage.istroop, this.mUnreadNum, paramMessage);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+        this.mMsgExtroInfo = localITempMsgBoxCallback.b(paramBaseQQAppInterface, paramMessage.frienduin, paramMessage.istroop, this.mUnreadNum, paramMessage);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
     }
   }
   
   private void a(BaseQQAppInterface paramBaseQQAppInterface, Message paramMessage)
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(",");
-      localStringBuilder.append(paramBaseQQAppInterface.getApplication().getString(2131698938));
+      localStringBuilder.append(paramBaseQQAppInterface.getApplication().getString(2131896912));
       int i = ((IConversationFacade)paramBaseQQAppInterface.getRuntimeService(IConversationFacade.class, "")).getUnreadCount(AppConstants.FILTER_MSG_UIN, 10012) + ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getAllFilterMsgUnreadNumOfQCall(paramBaseQQAppInterface, paramMessage);
       if (i > 0)
       {
         localStringBuilder.append(",");
-        localStringBuilder.append(String.format(paramBaseQQAppInterface.getApplication().getString(2131719576), new Object[] { Integer.valueOf(i) }));
+        localStringBuilder.append(String.format(paramBaseQQAppInterface.getApplication().getString(2131917139), new Object[] { Integer.valueOf(i) }));
       }
       this.mContentDesc = localStringBuilder.toString();
     }
@@ -72,7 +72,7 @@ public class RecentItemFilterMsgBoxData
     int i = paramIConversationFacade.getUnreadCount(AppConstants.FILTER_MSG_UIN, 10012) + ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getAllFilterMsgUnreadNumOfQCall(paramBaseQQAppInterface, paramMessage);
     if (i != 0)
     {
-      paramMsgSummary.strContent = String.format(paramBaseQQAppInterface.getApplication().getString(2131698939), new Object[] { Integer.valueOf(i) });
+      paramMsgSummary.strContent = String.format(paramBaseQQAppInterface.getApplication().getString(2131896913), new Object[] { Integer.valueOf(i) });
       return;
     }
     paramMsgSummary.strContent = "";
@@ -101,7 +101,7 @@ public class RecentItemFilterMsgBoxData
         return;
       }
       super.update(paramBaseQQAppInterface, paramContext);
-      this.mTitleName = paramBaseQQAppInterface.getApplication().getString(2131698938);
+      this.mTitleName = paramBaseQQAppInterface.getApplication().getString(2131896912);
       MsgSummary localMsgSummary = getMsgSummaryTemp();
       IMessageFacade localIMessageFacade = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
       IConversationFacade localIConversationFacade = (IConversationFacade)paramBaseQQAppInterface.getRuntimeService(IConversationFacade.class, "");
@@ -156,7 +156,7 @@ public class RecentItemFilterMsgBoxData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.data.RecentItemFilterMsgBoxData
  * JD-Core Version:    0.7.0.1
  */

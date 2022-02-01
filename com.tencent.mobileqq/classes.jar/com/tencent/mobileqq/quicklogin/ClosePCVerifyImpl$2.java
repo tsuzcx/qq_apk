@@ -14,13 +14,13 @@ class ClosePCVerifyImpl$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ReportController.b(null, "dc00898", "", "", "0X800AE05", "0X800AE05", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqQuickloginClosePCVerifyImpl.a(false, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.c.a(false, this.a);
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.quicklogin.ClosePCVerifyImpl.2
  * JD-Core Version:    0.7.0.1
  */

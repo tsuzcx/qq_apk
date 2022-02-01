@@ -7,12 +7,12 @@ class QQVipFeedWedFragment$5$1
   
   public void run()
   {
-    QQVipFeedWedFragment.a(this.a.a);
+    QQVipFeedWedFragment.f(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

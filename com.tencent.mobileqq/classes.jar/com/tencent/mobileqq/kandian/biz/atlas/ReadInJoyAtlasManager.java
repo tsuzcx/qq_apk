@@ -9,9 +9,9 @@ import com.tencent.biz.ProtoUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.biz.atlas.favorite.api.IReadInJoyAtlasManager;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.repo.atlas.AtlasModelImage;
 import com.tencent.mobileqq.kandian.repo.atlas.AtlasModelImageList;
 import com.tencent.mobileqq.kandian.repo.atlas.AtlasStackInfo;
@@ -22,7 +22,6 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -90,9 +89,9 @@ public class ReadInJoyAtlasManager
     localStringBuilder.append("Q.readinjoy.atlas..");
     localStringBuilder.append(ReadInJoyAtlasManager.class.getSimpleName());
     TAG = localStringBuilder.toString();
-    ERROR_TIPS_DATA_ERROR = HardCodeUtil.a(2131712844);
-    ERROR_TIPS_NET_ERROR = HardCodeUtil.a(2131712758);
-    ERROR_TIPS_NO_MORE_DATA = HardCodeUtil.a(2131712911);
+    ERROR_TIPS_DATA_ERROR = HardCodeUtil.a(2131910416);
+    ERROR_TIPS_NET_ERROR = HardCodeUtil.a(2131910332);
+    ERROR_TIPS_NO_MORE_DATA = HardCodeUtil.a(2131910481);
     sTips = new HashMap();
     sTips.put(Integer.valueOf(1), ERROR_TIPS_DATA_ERROR);
     sTips.put(Integer.valueOf(2), ERROR_TIPS_NET_ERROR);
@@ -108,7 +107,7 @@ public class ReadInJoyAtlasManager
       RIJSPUtils.a("Key_First_ReadInJoy_Favorite", Integer.valueOf(1), true);
       if (!paramBoolean)
       {
-        QQToast.a(BaseApplicationImpl.getContext(), 0, BaseApplicationImpl.getContext().getResources().getString(2131692227), 0).a();
+        QQToast.makeText(BaseApplicationImpl.getContext(), 0, BaseApplicationImpl.getContext().getResources().getString(2131889214), 0).show();
         return true;
       }
     }
@@ -184,7 +183,7 @@ public class ReadInJoyAtlasManager
       return;
     }
     Object localObject1 = new oidb_cmd0x83e.ReqBody();
-    ((oidb_cmd0x83e.ReqBody)localObject1).uint64_uin.set(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+    ((oidb_cmd0x83e.ReqBody)localObject1).uint64_uin.set(RIJQQAppInterfaceUtil.c());
     ((oidb_cmd0x83e.ReqBody)localObject1).bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramString));
     Object localObject2 = ((oidb_cmd0x83e.ReqBody)localObject1).uint32_operation;
     if (!paramBoolean) {
@@ -270,27 +269,27 @@ public class ReadInJoyAtlasManager
   public void doFavoriteToast(Context paramContext, boolean paramBoolean, int paramInt)
   {
     paramContext = new QQToast(paramContext);
-    paramContext.d(2000);
+    paramContext.setDuration(2000);
     if (paramBoolean)
     {
-      paramContext.b(2);
-      paramContext.a(QQToast.a(2));
+      paramContext.setType(2);
+      paramContext.setToastIcon(QQToast.getIconRes(2));
       if (paramInt == 1) {
-        paramContext.a(HardCodeUtil.a(2131713052));
+        paramContext.setToastMsg(HardCodeUtil.a(2131910613));
       } else if (paramInt == 2) {
-        paramContext.a(HardCodeUtil.a(2131713027));
+        paramContext.setToastMsg(HardCodeUtil.a(2131910589));
       }
-      paramContext.a();
+      paramContext.show();
       return;
     }
-    paramContext.b(1);
-    paramContext.a(QQToast.a(1));
+    paramContext.setType(1);
+    paramContext.setToastIcon(QQToast.getIconRes(1));
     if (paramInt == 1) {
-      paramContext.a(HardCodeUtil.a(2131712741));
+      paramContext.setToastMsg(HardCodeUtil.a(2131910316));
     } else {
-      paramContext.a(HardCodeUtil.a(2131712918));
+      paramContext.setToastMsg(HardCodeUtil.a(2131910488));
     }
-    paramContext.a();
+    paramContext.show();
   }
   
   public void enterGallery(AtlasModelImageList paramAtlasModelImageList, int paramInt)
@@ -326,7 +325,7 @@ public class ReadInJoyAtlasManager
     }
     Object localObject1 = new oidb_cmd0xb54.ReqBody();
     Object localObject2 = new oidb_cmd0xb54.Client();
-    ((oidb_cmd0xb54.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    ((oidb_cmd0xb54.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     ((oidb_cmd0xb54.Client)localObject2).uint32_type.set(1);
     ((oidb_cmd0xb54.ReqBody)localObject1).msg_client.set((MessageMicro)localObject2);
     localObject2 = new oidb_cmd0xb54.ReqOption();
@@ -361,7 +360,7 @@ public class ReadInJoyAtlasManager
       }
       localObject1 = new oidb_cmd0xad6.ReqBody();
       localObject2 = new oidb_cmd0xad6.Client();
-      ((oidb_cmd0xad6.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+      ((oidb_cmd0xad6.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
       ((oidb_cmd0xad6.Client)localObject2).uint32_type.set(1);
       oidb_cmd0xad6.ReqArticle localReqArticle = new oidb_cmd0xad6.ReqArticle();
       localReqArticle.bytes_row_key.set(ByteStringMicro.copyFromUtf8(paramString1));
@@ -407,7 +406,7 @@ public class ReadInJoyAtlasManager
   public JSONArray getCurrentRowKey()
   {
     JSONArray localJSONArray = new JSONArray();
-    localJSONArray.put(this.mAtlasStackInfo.a());
+    localJSONArray.put(this.mAtlasStackInfo.b());
     return localJSONArray;
   }
   
@@ -450,7 +449,7 @@ public class ReadInJoyAtlasManager
   
   public void onDestroy()
   {
-    this.mAtlasStackInfo.a();
+    this.mAtlasStackInfo.c();
   }
   
   public void recommendEnter(AtlasModelImageList paramAtlasModelImageList, boolean paramBoolean)
@@ -510,7 +509,7 @@ public class ReadInJoyAtlasManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasManager
  * JD-Core Version:    0.7.0.1
  */

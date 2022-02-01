@@ -7,36 +7,36 @@ import com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLay
 class EditProviderPart$TapDetectorListener
   extends GestureDetector.SimpleOnGestureListener
 {
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   private EditProviderPart$TapDetectorListener(EditProviderPart paramEditProviderPart) {}
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if (EditProviderPart.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditProviderPart).c())
+    if (EditProviderPart.a(this.a).s())
     {
-      paramMotionEvent = (EditDoodleExport)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditProviderPart.a(EditDoodleExport.class);
+      paramMotionEvent = (EditDoodleExport)this.a.b(EditDoodleExport.class);
       if (paramMotionEvent != null) {
-        paramMotionEvent.e_();
+        paramMotionEvent.c();
       }
     }
     try
     {
-      boolean bool = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditProviderPart.a.c();
+      boolean bool = this.a.t.j();
       if (!bool) {
         return false;
       }
-      int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditProviderPart.a.f;
+      int i = this.a.t.C;
       if (i == 0)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditProviderPart.a.b(11);
+        this.b = true;
+        this.a.t.d(11);
         return true;
       }
-      if ((this.jdField_a_of_type_Boolean) && (i == 11))
+      if ((this.b) && (i == 11))
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditProviderPart.a.b(0);
+        this.b = false;
+        this.a.t.d(0);
         return true;
       }
       return false;
@@ -47,7 +47,7 @@ class EditProviderPart$TapDetectorListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditProviderPart.TapDetectorListener
  * JD-Core Version:    0.7.0.1
  */

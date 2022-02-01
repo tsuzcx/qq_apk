@@ -32,14 +32,14 @@ final class VideoDtReportController$reportDtVideoStart$1
     Intrinsics.checkParameterIsNotNull(paramView, "originView");
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "article");
     this.this$0.c(VideoSessionUtils.a());
-    paramIVideoView = VideoDTReport.Builder.a((VideoInfo)null).a(this.this$0.a()).a(paramAbsBaseArticleInfo.mChannelID).b(paramAbsBaseArticleInfo.innerUniqueID).c(paramAbsBaseArticleInfo.getSubscribeUin()).b(paramIPlayer.a()).d(this.this$0.b()).c(1).e(paramView.getWidth()).f(paramView.getHeight());
+    paramIVideoView = VideoDTReport.Builder.a((VideoInfo)null).a(this.this$0.a()).a(paramAbsBaseArticleInfo.mChannelID).b(paramAbsBaseArticleInfo.innerUniqueID).c(paramAbsBaseArticleInfo.getSubscribeUin()).b(paramIPlayer.n()).d(this.this$0.b()).c(1).e(paramView.getWidth()).f(paramView.getHeight());
     Intrinsics.checkExpressionValueIsNotNull(paramIVideoView, "VideoDTReport.Builder.ma…Height(originView.height)");
     VideoDTReport.a(paramView.getContext(), paramIPlayer, paramIVideoView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoDtReportController.reportDtVideoStart.1
  * JD-Core Version:    0.7.0.1
  */

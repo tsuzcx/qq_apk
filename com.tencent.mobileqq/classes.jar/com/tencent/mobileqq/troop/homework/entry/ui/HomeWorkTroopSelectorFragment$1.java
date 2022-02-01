@@ -25,7 +25,7 @@ class HomeWorkTroopSelectorFragment$1
       while (i < j)
       {
         localObject = (HomeWorkTroopSelectorFragment.MyPair)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
-        if ((((Boolean)((HomeWorkTroopSelectorFragment.MyPair)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((HomeWorkTroopSelectorFragment.MyPair)localObject).a).troopuin)))
+        if ((((Boolean)((HomeWorkTroopSelectorFragment.MyPair)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.b(this.a).equals(((TroopInfo)((HomeWorkTroopSelectorFragment.MyPair)localObject).a).troopuin)))
         {
           localArrayList1.add(((TroopInfo)((HomeWorkTroopSelectorFragment.MyPair)localObject).a).troopname);
           localArrayList2.add(((TroopInfo)((HomeWorkTroopSelectorFragment.MyPair)localObject).a).troopuin);
@@ -43,7 +43,7 @@ class HomeWorkTroopSelectorFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,34 +10,34 @@ import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData;
 class NativeCommentTextView$1
   implements ValueAnimator.AnimatorUpdateListener
 {
-  String jdField_a_of_type_JavaLangString = NativeCommentTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiNativeCommentTextView).a.commentId;
+  String a = NativeCommentTextView.a(this.c).c.commentId;
   
   NativeCommentTextView$1(NativeCommentTextView paramNativeCommentTextView, View paramView) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((NativeCommentTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiNativeCommentTextView) != null) && (NativeCommentTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiNativeCommentTextView).a != null))
+    if ((NativeCommentTextView.a(this.c) != null) && (NativeCommentTextView.a(this.c).c != null))
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       if (str != null)
       {
-        if (!str.equals(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiNativeCommentTextView).a.commentId))
+        if (!str.equals(NativeCommentTextView.a(this.c).c.commentId))
         {
-          NativeCommentTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
+          NativeCommentTextView.a(this.c, this.b);
           return;
         }
         int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-        NativeCommentTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiNativeCommentTextView).setAlpha(i);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiNativeCommentTextView));
+        NativeCommentTextView.b(this.c).setAlpha(i);
+        this.b.setBackgroundDrawable(NativeCommentTextView.b(this.c));
         return;
       }
     }
-    NativeCommentTextView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
+    NativeCommentTextView.a(this.c, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.NativeCommentTextView.1
  * JD-Core Version:    0.7.0.1
  */

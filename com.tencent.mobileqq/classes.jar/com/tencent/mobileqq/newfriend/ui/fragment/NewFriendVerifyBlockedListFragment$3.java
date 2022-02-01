@@ -12,21 +12,21 @@ class NewFriendVerifyBlockedListFragment$3
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    if (NewFriendVerifyBlockedListFragment.d(this.a) != null)
     {
       if ((paramInt != 0) && (paramInt != 1))
       {
-        NewFriendVerifyBlockedListFragment.a(this.a).a();
+        NewFriendVerifyBlockedListFragment.d(this.a).a();
         return;
       }
-      NewFriendVerifyBlockedListFragment.a(this.a).b();
-      NewFriendVerifyBlockedListFragment.a(this.a).c();
+      NewFriendVerifyBlockedListFragment.d(this.a).b();
+      NewFriendVerifyBlockedListFragment.d(this.a).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.fragment.NewFriendVerifyBlockedListFragment.3
  * JD-Core Version:    0.7.0.1
  */

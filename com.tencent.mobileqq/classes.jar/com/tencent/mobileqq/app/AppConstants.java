@@ -42,6 +42,8 @@ public abstract interface AppConstants
   public static final int CSPECIAL_FLAG_QIDIAN_EXT = 4;
   public static final int CSPECIAL_FLAG_QIDIAN_MASTER = 16;
   public static final int CSPECIAL_FLAG_ROBOT = 2;
+  public static final String DATALINE_GUILD_UIN;
+  public static final long DATALINE_GUILD_UIN_LONGVALUE = 9909L;
   public static final String DATALINE_IPAD_UIN;
   public static final long DATALINE_IPAD_UIN_LONGVALUE = 9962L;
   public static final String DATALINE_NEW_VERSION_UIN = "3636666661";
@@ -85,6 +87,8 @@ public abstract interface AppConstants
   public static final long FRIEND_SYSTEM_MSG_UIN_LONGVALUE = 9987L;
   public static final String FRIEND_SYSTEM_RIBBON_MSG_UIN;
   public static final long FRIEND_SYSTEM_RIBBON_MSG_UIN_LONGVALUE = 9984L;
+  public static final String GAME_MSG_BOX_UIN;
+  public static final long GAME_MSG_BOX_UIN_VAULE = 9910L;
   public static final String GOOGLEMAP_URL = "http://maps.google.com/maps?q=";
   public static final String GRAY_TIP_BUSI_ID = "1008";
   public static final int GROUP_BLACK_LIST_ID = -1002;
@@ -508,6 +512,7 @@ public abstract interface AppConstants
     SAME_STATE_BOX_UIN = String.valueOf(9991L);
     SUBACCOUNT_ASSISTANT_UIN = String.valueOf(9992L);
     SMARTDEVICE_SEARCH_UIN = String.valueOf(9971L);
+    DATALINE_GUILD_UIN = String.valueOf(9909L);
     DATALINE_PC_UIN = String.valueOf(9993L);
     DATALINE_IPAD_UIN = String.valueOf(9962L);
     DATALINE_PRINTER_UIN = String.valueOf(9978L);
@@ -589,6 +594,7 @@ public abstract interface AppConstants
     AUDIO_ROOM_UIN = String.valueOf(3606676177L);
     TEMP_MSG_BOX_UIN = String.valueOf(9912L);
     FILTER_MSG_UIN = String.valueOf(9911L);
+    GAME_MSG_BOX_UIN = String.valueOf(9910L);
     SDCARD_ROOT = AppOpenConstants.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(SDCARD_ROOT);
@@ -1012,7 +1018,7 @@ public abstract interface AppConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.AppConstants
  * JD-Core Version:    0.7.0.1
  */

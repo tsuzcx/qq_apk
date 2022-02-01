@@ -1,78 +1,71 @@
 package com.tencent.mobileqq.nearby;
 
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
 
 class NearbyJsInterface$7
-  implements Runnable
+  implements BusinessObserver
 {
-  NearbyJsInterface$7(NearbyJsInterface paramNearbyJsInterface, String paramString, long paramLong) {}
+  NearbyJsInterface$7(NearbyJsInterface paramNearbyJsInterface, String paramString, int paramInt) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    for (;;)
+    if (paramBoolean) {}
+    try
     {
-      int i;
-      try
-      {
-        localJSONArray = new JSONArray(new JSONObject(this.jdField_a_of_type_JavaLangString).optString("imageArray"));
-        if (!QLog.isColorLevel()) {
-          break label230;
-        }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("preloadImage: size=");
-        ((StringBuilder)localObject).append(localJSONArray.length());
-        QLog.d("nearby.img.preload", 2, ((StringBuilder)localObject).toString());
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null) {
+        break label232;
       }
-      catch (Exception localException)
-      {
-        JSONArray localJSONArray;
-        URLDrawable localURLDrawable;
-        StringBuilder localStringBuilder2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("preloadImage failed!:");
-        ((StringBuilder)localObject).append(localException.toString());
-        QLog.e("nearby.img.preload", 2, ((StringBuilder)localObject).toString());
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append("preloadImage: costTime=");
-        localStringBuilder1.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-        QLog.d("nearby.img.preload", 2, localStringBuilder1.toString());
-        return;
+      Object localObject = new WebSsoBody.WebSsoResponseBody();
+      ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+      paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+      if (paramBundle.optInt("retcode") != 0) {
+        break label232;
       }
-      if (i < localJSONArray.length())
-      {
-        localObject = localJSONArray.getString(i);
-        localURLDrawable = URLDrawable.getDrawable((String)localObject, URLDrawable.URLDrawableOptions.obtain());
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("preloadImg:");
-          localStringBuilder2.append((String)localObject);
-          QLog.d("nearby.img.preload", 2, localStringBuilder2.toString());
-        }
-        localURLDrawable.downloadImediatly(false);
-        i += 1;
+      paramBundle = paramBundle.optString(this.a);
+      localObject = SharedPreUtils.ag(this.c.a, this.a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("&uid=");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append("&from=");
+      localStringBuilder.append(this.b);
+      paramBundle = localStringBuilder.toString();
+      localObject = new Intent(this.c.a, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramBundle);
+      this.c.a.startActivity((Intent)localObject);
+      if (!QLog.isColorLevel()) {
+        break label232;
       }
-      else
-      {
-        label230:
-        i = 0;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openProfileCard web url:");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.d("NearbyJsInterface", 2, ((StringBuilder)localObject).toString());
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      label218:
+      label232:
+      break label218;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyJsInterface", 2, "openProfileCard, exception");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyJsInterface.7
  * JD-Core Version:    0.7.0.1
  */

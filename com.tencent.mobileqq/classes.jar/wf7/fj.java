@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.io.InputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -645,7 +646,7 @@ public class fj
       Object localObject = (WifiManager)ea.cr().getSystemService("wifi");
       if (localObject != null)
       {
-        localObject = ((WifiManager)localObject).getConnectionInfo();
+        localObject = NetworkMonitor.getConnectionInfo((WifiManager)localObject);
         if (localObject != null)
         {
           localObject = ((WifiInfo)localObject).getSSID();
@@ -663,7 +664,7 @@ public class fj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     wf7.fj
  * JD-Core Version:    0.7.0.1
  */

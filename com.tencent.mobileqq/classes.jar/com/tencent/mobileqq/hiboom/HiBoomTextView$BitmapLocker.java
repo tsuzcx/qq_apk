@@ -5,7 +5,7 @@ import android.graphics.Bitmap.Config;
 
 class HiBoomTextView$BitmapLocker
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Bitmap b;
   
   private HiBoomTextView$BitmapLocker(HiBoomTextView paramHiBoomTextView) {}
   
@@ -14,15 +14,15 @@ class HiBoomTextView$BitmapLocker
     if ((paramInt1 >= 1) && (paramInt2 >= 1)) {}
     try
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && ((this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() < paramInt1) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() < paramInt2)))
+      if ((this.b != null) && ((this.b.getWidth() < paramInt1) || (this.b.getHeight() < paramInt2)))
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        this.b.recycle();
+        this.b = null;
       }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      if (this.b == null) {
+        this.b = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap.eraseColor(0);
+      this.b.eraseColor(0);
       return;
     }
     finally {}
@@ -30,12 +30,12 @@ class HiBoomTextView$BitmapLocker
   
   Bitmap a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomTextView.BitmapLocker
  * JD-Core Version:    0.7.0.1
  */

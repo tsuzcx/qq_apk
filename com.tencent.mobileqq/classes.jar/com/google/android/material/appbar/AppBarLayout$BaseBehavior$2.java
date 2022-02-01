@@ -14,13 +14,13 @@ class AppBarLayout$BaseBehavior$2
   
   public boolean perform(@NonNull View paramView, @Nullable AccessibilityViewCommand.CommandArguments paramCommandArguments)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialAppbarAppBarLayout$BaseBehavior.a(this.jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout, this.jdField_a_of_type_ComGoogleAndroidMaterialAppbarAppBarLayout, this.jdField_a_of_type_AndroidViewView, 0, this.jdField_a_of_type_Int, new int[] { 0, 0 }, 1);
+    this.e.a(this.a, this.b, this.c, 0, this.d, new int[] { 0, 0 }, 1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.AppBarLayout.BaseBehavior.2
  * JD-Core Version:    0.7.0.1
  */

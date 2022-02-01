@@ -23,24 +23,24 @@ import java.util.List;
 public class ImgPreviewAdapter
   extends PagerAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ImgPreviewAdapter.1(this);
-  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  private IEmoticonFromGroupManager jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager;
-  private LinkedList<URLImageView> jdField_a_of_type_JavaUtilLinkedList;
-  private List<EmoticonFromGroupEntity> jdField_a_of_type_JavaUtilList;
+  private LinkedList<URLImageView> a;
+  private Context b;
+  private List<EmoticonFromGroupEntity> c;
+  private ViewPager d;
+  private IEmoticonFromGroupManager e;
+  private View.OnClickListener f = new ImgPreviewAdapter.1(this);
   
   ImgPreviewAdapter(QQAppInterface paramQQAppInterface, Context paramContext, ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
-    this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager = ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager;
+    this.b = paramContext;
+    this.d = paramViewPager;
+    this.a = new LinkedList();
+    this.e = ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).d;
   }
   
   EmoticonFromGroupEntity a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList == null) {
       return null;
     }
@@ -49,19 +49,19 @@ public class ImgPreviewAdapter
   
   public void a(List<EmoticonFromGroupEntity> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramList;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramObject = (URLImageView)paramObject;
     paramViewGroup.removeView(paramObject);
-    this.jdField_a_of_type_JavaUtilLinkedList.add(paramObject);
+    this.a.add(paramObject);
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList == null) {
       return 0;
     }
@@ -76,19 +76,19 @@ public class ImgPreviewAdapter
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     URLImageView localURLImageView;
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    if (this.a.size() > 0)
     {
-      localURLImageView = (URLImageView)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+      localURLImageView = (URLImageView)this.a.removeFirst();
     }
     else
     {
-      localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+      localURLImageView = new URLImageView(this.b);
       localURLImageView.setLayoutParams(new Gallery.LayoutParams(ScreenUtil.dip2px(166.0F), ScreenUtil.dip2px(166.0F)));
       localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localURLImageView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165418));
+      localURLImageView.setBackgroundColor(this.b.getResources().getColor(2131165715));
     }
-    localURLImageView.setImageDrawable((URLDrawable)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager.a((EmoticonFromGroupEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt), 1, -1, null));
-    localURLImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    localURLImageView.setImageDrawable((URLDrawable)this.e.a((EmoticonFromGroupEntity)this.c.get(paramInt), 1, -1, null));
+    localURLImageView.setOnClickListener(this.f);
     paramViewGroup.addView(localURLImageView);
     return localURLImageView;
   }
@@ -100,7 +100,7 @@ public class ImgPreviewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

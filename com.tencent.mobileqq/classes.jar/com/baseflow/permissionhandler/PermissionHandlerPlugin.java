@@ -15,42 +15,42 @@ public final class PermissionHandlerPlugin
   implements FlutterPlugin, ActivityAware
 {
   @Nullable
-  private MethodCallHandlerImpl jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl;
-  private MethodChannel jdField_a_of_type_IoFlutterPluginCommonMethodChannel;
+  private MethodCallHandlerImpl a;
+  private MethodChannel b;
   
   private void a()
   {
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel.setMethodCallHandler(null);
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel = null;
-    this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl = null;
+    this.b.setMethodCallHandler(null);
+    this.b = null;
+    this.a = null;
   }
   
   private void a(Activity paramActivity, PermissionManager.ActivityRegistry paramActivityRegistry, PermissionManager.PermissionRegistry paramPermissionRegistry)
   {
-    MethodCallHandlerImpl localMethodCallHandlerImpl = this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl;
+    MethodCallHandlerImpl localMethodCallHandlerImpl = this.a;
     if (localMethodCallHandlerImpl != null)
     {
       localMethodCallHandlerImpl.a(paramActivity);
-      this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl.a(paramActivityRegistry);
-      this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl.a(paramPermissionRegistry);
+      this.a.a(paramActivityRegistry);
+      this.a.a(paramPermissionRegistry);
     }
   }
   
   private void a(Context paramContext, BinaryMessenger paramBinaryMessenger)
   {
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel = new MethodChannel(paramBinaryMessenger, "flutter.baseflow.com/permissions/methods");
-    this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl = new MethodCallHandlerImpl(paramContext, new AppSettingsManager(), new PermissionManager(), new ServiceManager());
-    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel.setMethodCallHandler(this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl);
+    this.b = new MethodChannel(paramBinaryMessenger, "flutter.baseflow.com/permissions/methods");
+    this.a = new MethodCallHandlerImpl(paramContext, new AppSettingsManager(), new PermissionManager(), new ServiceManager());
+    this.b.setMethodCallHandler(this.a);
   }
   
   private void b()
   {
-    MethodCallHandlerImpl localMethodCallHandlerImpl = this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl;
+    MethodCallHandlerImpl localMethodCallHandlerImpl = this.a;
     if (localMethodCallHandlerImpl != null)
     {
       localMethodCallHandlerImpl.a(null);
-      this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl.a(null);
-      this.jdField_a_of_type_ComBaseflowPermissionhandlerMethodCallHandlerImpl.a(null);
+      this.a.a(null);
+      this.a.a(null);
     }
   }
   

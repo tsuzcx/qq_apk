@@ -1,38 +1,27 @@
 package com.tencent.turingfd.sdk.xq;
 
-public final class Mandarin
-  implements TuringFdService.ITuringDID
+import android.os.Build.VERSION;
+import java.security.spec.AlgorithmParameterSpec;
+
+public abstract class Mandarin
 {
-  public Mandarin(goto paramgoto) {}
-  
-  public String getAIDTicket()
+  public static Mandarin a(String paramString, int paramInt)
   {
-    return ((Bilberry)this.a).Jh;
+    if (Build.VERSION.SDK_INT >= 23) {
+      return new Mandarin.do(paramString, paramInt);
+    }
+    return new Mandarin.if(paramString, paramInt);
   }
   
-  public int getErrorCode()
-  {
-    return ((Bilberry)this.a).zg;
-  }
+  public abstract Mandarin a(String... paramVarArgs);
   
-  public long getExpiredTimestamp()
-  {
-    return ((Bilberry)this.a).Fh;
-  }
+  public abstract AlgorithmParameterSpec a();
   
-  public String getOpenIdTicket()
-  {
-    return ((Bilberry)this.a).Eh;
-  }
-  
-  public String getTAIDTicket()
-  {
-    return ((Bilberry)this.a).Ih;
-  }
+  public abstract Mandarin b(String... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Mandarin
  * JD-Core Version:    0.7.0.1
  */

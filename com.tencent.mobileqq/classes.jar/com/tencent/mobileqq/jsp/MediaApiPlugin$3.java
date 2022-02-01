@@ -24,13 +24,13 @@ class MediaApiPlugin$3
     {
       try
       {
-        localObject = FileUtils.readFile(this.jdField_a_of_type_JavaLangString);
+        localObject = FileUtils.readFile(this.a);
         localObject = this.this$0.a((byte[])localObject);
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         label61:
-        Object localObject = MediaApiPlugin.jdField_a_of_type_JavaLangString;
+        Object localObject = MediaApiPlugin.d;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("saveImage: ");
         localStringBuilder.append(QLog.getStackTraceString(localOutOfMemoryError));
@@ -49,7 +49,7 @@ class MediaApiPlugin$3
     try
     {
       localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", localBaseApplication.getString(2131718388));
+      localJSONObject.put("msg", localBaseApplication.getString(2131915880));
       localJSONObject.put("imageID", localObject);
     }
     catch (JSONException localJSONException)
@@ -58,13 +58,13 @@ class MediaApiPlugin$3
     }
     break label154;
     localJSONObject.put("retCode", 2);
-    localJSONObject.put("msg", localOutOfMemoryError.getString(2131718385));
+    localJSONObject.put("msg", localOutOfMemoryError.getString(2131915877));
     break label154;
     label133:
     localJSONObject.put("retCode", 1);
-    localJSONObject.put("msg", localOutOfMemoryError.getString(2131718387));
+    localJSONObject.put("msg", localOutOfMemoryError.getString(2131915879));
     label154:
-    if ((!TextUtils.isEmpty(this.b)) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
+    if ((!TextUtils.isEmpty(this.b)) && (this.c.compareAndSet(false, true)))
     {
       this.this$0.callJs(this.b, new String[] { localJSONObject.toString() });
       return;
@@ -74,7 +74,7 @@ class MediaApiPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MediaApiPlugin.3
  * JD-Core Version:    0.7.0.1
  */

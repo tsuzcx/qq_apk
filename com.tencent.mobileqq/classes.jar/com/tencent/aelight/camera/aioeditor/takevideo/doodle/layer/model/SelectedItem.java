@@ -5,39 +5,39 @@ import android.support.annotation.NonNull;
 
 public class SelectedItem
 {
-  public final int a;
-  public final Drawable a;
   public final String a;
   public final String b;
+  public final Drawable c;
+  public final int d;
   
   public SelectedItem(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramDrawable;
+    this.d = paramInt;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SelectedItem{");
     localStringBuilder.append("category='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", name='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", drawable=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", isDynamic=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.model.SelectedItem
  * JD-Core Version:    0.7.0.1
  */

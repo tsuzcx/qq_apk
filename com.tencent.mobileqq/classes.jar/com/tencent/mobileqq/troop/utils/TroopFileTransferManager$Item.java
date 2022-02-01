@@ -127,31 +127,31 @@ public class TroopFileTransferManager$Item
     this.transferedSize = 0L;
     this.retryTimes = 0;
     this.bExtfTransfer = false;
-    this.Id = paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID;
-    this.LocalFile = paramTroopFileInfo.jdField_i_of_type_JavaLangString;
-    this.Status = paramTroopFileInfo.jdField_e_of_type_Int;
-    this.FilePath = paramTroopFileInfo.jdField_b_of_type_JavaLangString;
-    this.FileName = paramTroopFileInfo.jdField_c_of_type_JavaLangString;
-    this.ProgressTotal = paramTroopFileInfo.jdField_a_of_type_Long;
-    this.UploadTime = paramTroopFileInfo.a();
-    this.BusId = paramTroopFileInfo.jdField_a_of_type_Int;
-    if ((paramTroopFileInfo.jdField_j_of_type_JavaLangString != null) && (paramTroopFileInfo.jdField_j_of_type_JavaLangString.length() > 0)) {
+    this.Id = paramTroopFileInfo.b;
+    this.LocalFile = paramTroopFileInfo.t;
+    this.Status = paramTroopFileInfo.p;
+    this.FilePath = paramTroopFileInfo.c;
+    this.FileName = paramTroopFileInfo.d;
+    this.ProgressTotal = paramTroopFileInfo.e;
+    this.UploadTime = paramTroopFileInfo.d();
+    this.BusId = paramTroopFileInfo.f;
+    if ((paramTroopFileInfo.w != null) && (paramTroopFileInfo.w.length() > 0)) {
       bool1 = true;
     } else {
       bool1 = false;
     }
     this.HasThumbnailFile_Small = bool1;
     boolean bool1 = bool2;
-    if (paramTroopFileInfo.k != null)
+    if (paramTroopFileInfo.x != null)
     {
       bool1 = bool2;
-      if (paramTroopFileInfo.k.length() > 0) {
+      if (paramTroopFileInfo.x.length() > 0) {
         bool1 = true;
       }
     }
     this.HasThumbnailFile_Large = bool1;
-    this.NickName = paramTroopFileInfo.o;
-    this.mParentId = paramTroopFileInfo.jdField_g_of_type_JavaLangString;
+    this.NickName = paramTroopFileInfo.G;
+    this.mParentId = paramTroopFileInfo.o;
   }
   
   public final boolean canFetchThumbnailFile(int paramInt)
@@ -247,13 +247,13 @@ public class TroopFileTransferManager$Item
   public final TroopFileStatusInfo getInfo(long paramLong)
   {
     TroopFileStatusInfo localTroopFileStatusInfo = new TroopFileStatusInfo();
-    localTroopFileStatusInfo.jdField_b_of_type_Long = paramLong;
-    localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID = this.Id;
-    localTroopFileStatusInfo.jdField_d_of_type_Long = this.ProgressValue;
-    localTroopFileStatusInfo.jdField_b_of_type_Int = this.Status;
-    localTroopFileStatusInfo.jdField_a_of_type_Boolean = this.IsNewStatus;
-    localTroopFileStatusInfo.jdField_c_of_type_Int = this.ErrorCode;
-    localTroopFileStatusInfo.jdField_h_of_type_Int = this.BusId;
+    localTroopFileStatusInfo.d = paramLong;
+    localTroopFileStatusInfo.a = this.Id;
+    localTroopFileStatusInfo.j = this.ProgressValue;
+    localTroopFileStatusInfo.e = this.Status;
+    localTroopFileStatusInfo.f = this.IsNewStatus;
+    localTroopFileStatusInfo.g = this.ErrorCode;
+    localTroopFileStatusInfo.u = this.BusId;
     boolean bool = this.HasThumbnailFile_Small;
     String str2 = "";
     String str1;
@@ -264,7 +264,7 @@ public class TroopFileTransferManager$Item
     } else {
       str1 = "";
     }
-    localTroopFileStatusInfo.jdField_b_of_type_JavaLangString = str1;
+    localTroopFileStatusInfo.l = str1;
     if (this.HasThumbnailFile_Large) {
       str1 = getThumbnailFile(paramLong, 640);
     } else if (canFetchThumbnailFile(640)) {
@@ -272,7 +272,7 @@ public class TroopFileTransferManager$Item
     } else {
       str1 = "";
     }
-    localTroopFileStatusInfo.jdField_c_of_type_JavaLangString = str1;
+    localTroopFileStatusInfo.m = str1;
     if (this.HasThumbnailFile_Middle)
     {
       str1 = getThumbnailFile(paramLong, 383);
@@ -284,40 +284,40 @@ public class TroopFileTransferManager$Item
         str1 = null;
       }
     }
-    localTroopFileStatusInfo.jdField_d_of_type_JavaLangString = str1;
-    localTroopFileStatusInfo.jdField_c_of_type_Long = this.ProgressTotal;
-    localTroopFileStatusInfo.jdField_d_of_type_Int = this.UploadTime;
-    localTroopFileStatusInfo.jdField_e_of_type_JavaLangString = this.FilePath;
+    localTroopFileStatusInfo.n = str1;
+    localTroopFileStatusInfo.i = this.ProgressTotal;
+    localTroopFileStatusInfo.h = this.UploadTime;
+    localTroopFileStatusInfo.r = this.FilePath;
     if ((!TextUtils.isEmpty(this.NameForSave)) && (this.SafeCheckRes == 2)) {
-      localTroopFileStatusInfo.jdField_g_of_type_JavaLangString = this.NameForSave;
+      localTroopFileStatusInfo.t = this.NameForSave;
     } else {
-      localTroopFileStatusInfo.jdField_g_of_type_JavaLangString = this.FileName;
+      localTroopFileStatusInfo.t = this.FileName;
     }
-    localTroopFileStatusInfo.jdField_a_of_type_JavaLangString = this.LocalFile;
-    localTroopFileStatusInfo.jdField_h_of_type_JavaLangString = this.NickName;
-    localTroopFileStatusInfo.jdField_e_of_type_Long = this.entrySessionID;
+    localTroopFileStatusInfo.k = this.LocalFile;
+    localTroopFileStatusInfo.w = this.NickName;
+    localTroopFileStatusInfo.v = this.entrySessionID;
     if (TextUtils.isEmpty(this.mParentId)) {
       str1 = "/";
     } else {
       str1 = this.mParentId;
     }
-    localTroopFileStatusInfo.jdField_i_of_type_JavaLangString = str1;
-    localTroopFileStatusInfo.jdField_b_of_type_Boolean = this.ThumbnailDownloading_Middle_Fail;
-    if ((localTroopFileStatusInfo.jdField_b_of_type_Boolean) && (!FileUtil.a(localTroopFileStatusInfo.jdField_d_of_type_JavaLangString))) {
-      localTroopFileStatusInfo.jdField_d_of_type_JavaLangString = null;
+    localTroopFileStatusInfo.x = str1;
+    localTroopFileStatusInfo.y = this.ThumbnailDownloading_Middle_Fail;
+    if ((localTroopFileStatusInfo.y) && (!FileUtil.b(localTroopFileStatusInfo.n))) {
+      localTroopFileStatusInfo.n = null;
     }
-    localTroopFileStatusInfo.jdField_e_of_type_Int = this.width;
-    localTroopFileStatusInfo.f = this.height;
-    localTroopFileStatusInfo.jdField_g_of_type_Int = this.duration;
-    localTroopFileStatusInfo.jdField_j_of_type_JavaLangString = this.mExcitingSpeed;
-    localTroopFileStatusInfo.jdField_j_of_type_Int = this.thumbInvalidCode;
-    localTroopFileStatusInfo.jdField_c_of_type_Boolean = this.genThumb_Middle_OnGettedLargeOrOrigPic;
-    localTroopFileStatusInfo.k = this.yybApkPackageName;
-    localTroopFileStatusInfo.l = this.yybApkName;
-    localTroopFileStatusInfo.m = this.yybApkIconUrl;
-    localTroopFileStatusInfo.jdField_i_of_type_Int = this.apkSafeLevel;
-    localTroopFileStatusInfo.n = this.apkSafeMsg;
-    localTroopFileStatusInfo.o = this.apkSafeDetailUrl;
+    localTroopFileStatusInfo.o = this.width;
+    localTroopFileStatusInfo.p = this.height;
+    localTroopFileStatusInfo.q = this.duration;
+    localTroopFileStatusInfo.z = this.mExcitingSpeed;
+    localTroopFileStatusInfo.H = this.thumbInvalidCode;
+    localTroopFileStatusInfo.G = this.genThumb_Middle_OnGettedLargeOrOrigPic;
+    localTroopFileStatusInfo.A = this.yybApkPackageName;
+    localTroopFileStatusInfo.B = this.yybApkName;
+    localTroopFileStatusInfo.C = this.yybApkIconUrl;
+    localTroopFileStatusInfo.D = this.apkSafeLevel;
+    localTroopFileStatusInfo.E = this.apkSafeMsg;
+    localTroopFileStatusInfo.F = this.apkSafeDetailUrl;
     return localTroopFileStatusInfo;
   }
   
@@ -356,7 +356,7 @@ public class TroopFileTransferManager$Item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item
  * JD-Core Version:    0.7.0.1
  */

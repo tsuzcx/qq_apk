@@ -11,8 +11,8 @@ public class AnimationView
   extends RoundImageView
 {
   protected AnimationView.AnimationInfo a;
-  protected AnimationView.MyAnimationListener a;
-  protected AnimationView.Player a;
+  protected AnimationView.Player b;
+  protected AnimationView.MyAnimationListener c;
   
   public AnimationView(Context paramContext)
   {
@@ -31,17 +31,17 @@ public class AnimationView
   
   public AnimationView.AnimationInfo getAnimationFromInfo()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+    return this.a;
   }
   
   public AnimationView.Player getPlayer()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    return this.b;
   }
   
   public void pause()
   {
-    AnimationView.Player localPlayer = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    AnimationView.Player localPlayer = this.b;
     if (localPlayer == null) {
       return;
     }
@@ -50,7 +50,7 @@ public class AnimationView
   
   public void play()
   {
-    AnimationView.Player localPlayer = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    AnimationView.Player localPlayer = this.b;
     if (localPlayer == null) {
       return;
     }
@@ -59,7 +59,7 @@ public class AnimationView
   
   public void resume()
   {
-    AnimationView.Player localPlayer = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    AnimationView.Player localPlayer = this.b;
     if (localPlayer == null) {
       return;
     }
@@ -91,9 +91,9 @@ public class AnimationView
       if (paramInt1 <= 0) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = AnimationView.AnimationInfo.loadFromFrames(paramArrayList, paramInt1, paramInt2);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = new AnimationView.Player(this);
+      this.a = AnimationView.AnimationInfo.loadFromFrames(paramArrayList, paramInt1, paramInt2);
+      if (this.b == null) {
+        this.b = new AnimationView.Player(this);
       }
     }
   }
@@ -118,25 +118,25 @@ public class AnimationView
   
   public void setAnimationFromInfo(AnimationView.AnimationInfo paramAnimationInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramAnimationInfo;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = new AnimationView.Player(this);
+    this.a = paramAnimationInfo;
+    if (this.b == null) {
+      this.b = new AnimationView.Player(this);
     }
   }
   
   public void setAnimationListener(AnimationView.MyAnimationListener paramMyAnimationListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener = paramMyAnimationListener;
+    this.c = paramMyAnimationListener;
   }
   
   public void setPlayer(AnimationView.Player paramPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = paramPlayer;
+    this.b = paramPlayer;
   }
   
   public void stop()
   {
-    AnimationView.Player localPlayer = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    AnimationView.Player localPlayer = this.b;
     if (localPlayer == null) {
       return;
     }
@@ -145,7 +145,7 @@ public class AnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView
  * JD-Core Version:    0.7.0.1
  */

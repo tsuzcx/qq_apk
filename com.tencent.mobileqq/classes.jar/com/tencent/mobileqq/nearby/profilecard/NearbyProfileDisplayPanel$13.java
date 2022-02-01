@@ -1,29 +1,24 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment.OnLoadMomentListener;
 
 class NearbyProfileDisplayPanel$13
-  implements Runnable
+  implements NearbyMomentFragment.OnLoadMomentListener
 {
   NearbyProfileDisplayPanel$13(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  public void a()
   {
-    Object localObject = (FriendsManager)this.this$0.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localObject == null) {
-      localObject = null;
-    } else {
-      localObject = ((FriendsManager)localObject).a(this.this$0.a.getCurrentAccountUin());
+    if (!NearbyProfileDisplayPanel.g(this.a))
+    {
+      NearbyProfileDisplayPanel localNearbyProfileDisplayPanel = this.a;
+      localNearbyProfileDisplayPanel.a(localNearbyProfileDisplayPanel.ac, false);
     }
-    this.this$0.a.runOnUiThread(new NearbyProfileDisplayPanel.13.1(this, (Card)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.13
  * JD-Core Version:    0.7.0.1
  */

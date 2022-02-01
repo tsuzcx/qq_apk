@@ -7,28 +7,28 @@ import com.tencent.av.VideoController;
 class GaInviteActivity$DialogInterfaceOnClickListener
   implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  int a;
   
   public GaInviteActivity$DialogInterfaceOnClickListener(GaInviteActivity paramGaInviteActivity, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.a;
     if (paramInt != 0)
     {
       if ((paramInt == 1) || (paramInt == 2)) {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+        this.b.finish();
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.d) {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.n();
+      if (this.b.f.j) {
+        this.b.f.G();
       }
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
+      this.b.g();
     }
     paramDialogInterface.dismiss();
   }

@@ -11,31 +11,31 @@ class SimpleCheckableSlidingIndicator$2
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
+    if (paramMessage.what == SimpleCheckableSlidingIndicator.e)
     {
       if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
       {
-        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
-        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+        SimpleCheckableSlidingIndicator.b(this.a, SimpleCheckableSlidingIndicator.b);
+        if (SimpleCheckableSlidingIndicator.b(this.a) != null) {
+          SimpleCheckableSlidingIndicator.b(this.a).a(SimpleCheckableSlidingIndicator.c(this.a));
         }
-        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
+        SimpleCheckableSlidingIndicator.d(this.a).removeMessages(SimpleCheckableSlidingIndicator.e);
         return false;
       }
-      SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
-      if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-        SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+      SimpleCheckableSlidingIndicator.b(this.a, SimpleCheckableSlidingIndicator.d);
+      if (SimpleCheckableSlidingIndicator.b(this.a) != null) {
+        SimpleCheckableSlidingIndicator.b(this.a).a(SimpleCheckableSlidingIndicator.c(this.a));
       }
       paramMessage = this.a;
-      SimpleCheckableSlidingIndicator.b(paramMessage, paramMessage.getScrollX());
-      SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
+      SimpleCheckableSlidingIndicator.c(paramMessage, paramMessage.getScrollX());
+      SimpleCheckableSlidingIndicator.d(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.e, 50L);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator.2
  * JD-Core Version:    0.7.0.1
  */

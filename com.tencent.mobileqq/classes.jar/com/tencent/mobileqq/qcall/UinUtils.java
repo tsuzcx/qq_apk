@@ -45,28 +45,6 @@ public class UinUtils
     return localBigInteger1.toString();
   }
   
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    StringBuffer localStringBuffer = new StringBuffer(paramString);
-    int j = paramString.length() - 4;
-    int k = j - 4;
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    j = k;
-    if (k < 0) {
-      j = 0;
-    }
-    if ((j < i) && (i > 0)) {
-      localStringBuffer.replace(j, i, "*");
-    }
-    return localStringBuffer.toString();
-  }
-  
   public static long b(String paramString)
   {
     try
@@ -91,10 +69,32 @@ public class UinUtils
     }
     return 0L;
   }
+  
+  public static String c(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramString);
+    int j = paramString.length() - 4;
+    int k = j - 4;
+    int i = j;
+    if (j < 0) {
+      i = 0;
+    }
+    j = k;
+    if (k < 0) {
+      j = 0;
+    }
+    if ((j < i) && (i > 0)) {
+      localStringBuffer.replace(j, i, "*");
+    }
+    return localStringBuffer.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.UinUtils
  * JD-Core Version:    0.7.0.1
  */

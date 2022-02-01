@@ -11,7 +11,7 @@ class TroopStoryForwardTask$3
   
   public void onNotifyResultAfterSendRich(boolean paramBoolean, long paramLong, StatictisInfo paramStatictisInfo)
   {
-    paramStatictisInfo = this.a.a;
+    paramStatictisInfo = this.a.b;
     int i;
     if (paramBoolean) {
       i = 4;

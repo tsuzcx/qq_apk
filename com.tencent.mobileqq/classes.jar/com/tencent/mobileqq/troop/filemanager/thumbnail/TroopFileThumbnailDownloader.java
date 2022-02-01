@@ -11,14 +11,14 @@ import java.util.List;
 public class TroopFileThumbnailDownloader
   extends TroopFileDownloader
 {
-  protected boolean c = false;
-  protected boolean d = false;
-  protected long g = 2000L;
+  protected boolean s = false;
+  protected boolean t = false;
+  protected long u = 2000L;
   
   protected TroopFileThumbnailDownloader(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
   {
     super(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean2, paramString4);
-    this.c = paramBoolean1;
+    this.s = paramBoolean1;
   }
   
   public static TroopFileThumbnailDownloader a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
@@ -41,7 +41,7 @@ public class TroopFileThumbnailDownloader
     }
     if (!TextUtils.isEmpty(str))
     {
-      int i = TroopFileTransferUtil.Log.a;
+      int i = TroopFileTransferUtil.Log.b;
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("getFileDownloader ");
       paramQQAppInterface.append(str);
@@ -53,10 +53,10 @@ public class TroopFileThumbnailDownloader
   
   public long a()
   {
-    long l = this.g;
+    long l = this.u;
     if (l <= 6000L)
     {
-      this.g = (2000L + l);
+      this.u = (2000L + l);
       return l;
     }
     return 2000L;
@@ -64,10 +64,10 @@ public class TroopFileThumbnailDownloader
   
   public void a(HttpMsg paramHttpMsg)
   {
-    if (!this.c) {
+    if (!this.s) {
       return;
     }
-    if (this.d) {
+    if (this.t) {
       return;
     }
     paramHttpMsg = paramHttpMsg.getResponseProperty("Set-Cookie");
@@ -114,29 +114,29 @@ public class TroopFileThumbnailDownloader
         j = k;
       }
     }
-    if ((j != 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink != null) && ((this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink instanceof TroopFileThumbnailDownloader.IFileThumbDownloaderSink))) {
-      ((TroopFileThumbnailDownloader.IFileThumbDownloaderSink)this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink).a(j);
+    if ((j != 0) && (this.n != null) && ((this.n instanceof TroopFileThumbnailDownloader.IFileThumbDownloaderSink))) {
+      ((TroopFileThumbnailDownloader.IFileThumbDownloaderSink)this.n).a(j);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.p = paramBoolean;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.t = paramBoolean;
   }
   
-  public void i()
+  public void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileTransferRetryController.a();
+    this.l.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailDownloader
  * JD-Core Version:    0.7.0.1
  */

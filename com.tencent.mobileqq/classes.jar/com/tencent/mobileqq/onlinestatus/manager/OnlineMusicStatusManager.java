@@ -43,17 +43,15 @@ public class OnlineMusicStatusManager
   implements Handler.Callback, IOnlineMusicStatusManager
 {
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private QQPlayerCallback jdField_a_of_type_ComTencentMobileqqMusicQQPlayerCallback = new OnlineMusicStatusManager.1(this);
-  public ConcurrentHashMap<String, Lyric> a;
-  public CopyOnWriteArrayList a;
+  public ConcurrentHashMap<String, Lyric> b = new ConcurrentHashMap();
+  public CopyOnWriteArrayList c = new CopyOnWriteArrayList();
+  private Handler d;
+  private AppInterface e;
+  private QQPlayerCallback f = new OnlineMusicStatusManager.1(this);
   
   public OnlineMusicStatusManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.e = paramAppInterface;
     a(null);
   }
   
@@ -63,9 +61,9 @@ public class OnlineMusicStatusManager
     if ((!TextUtils.isEmpty(paramFriends.songName)) && (System.currentTimeMillis() < paramFriends.songEndTime))
     {
       if (!TextUtils.isEmpty(paramFriends.singerName)) {
-        paramAppRuntime = String.format(paramAppRuntime.getString(2131698498), new Object[] { paramFriends.songName, paramFriends.singerName });
+        paramAppRuntime = String.format(paramAppRuntime.getString(2131896440), new Object[] { paramFriends.songName, paramFriends.singerName });
       } else {
-        paramAppRuntime = String.format(paramAppRuntime.getString(2131698499), new Object[] { paramFriends.songName });
+        paramAppRuntime = String.format(paramAppRuntime.getString(2131896441), new Object[] { paramFriends.songName });
       }
       if ((paramTextView instanceof OnlineStatusLyricView))
       {
@@ -74,12 +72,12 @@ public class OnlineMusicStatusManager
       }
       else
       {
-        paramAppRuntime = OnlineStatusUtil.a(paramTextView.getPaint(), paramAppRuntime, ViewUtils.a(200.0F));
+        paramAppRuntime = OnlineStatusUtil.a(paramTextView.getPaint(), paramAppRuntime, ViewUtils.dip2px(200.0F));
       }
       ReportController.b(null, "dc00898", "", "", "0X800AC92", "0X800AC92", paramFriends.songSourceType, 0, "", "0", "0", "");
       return paramAppRuntime;
     }
-    return paramAppRuntime.getString(2131698500);
+    return paramAppRuntime.getString(2131896442);
   }
   
   public static void a(Friends paramFriends)
@@ -103,7 +101,7 @@ public class OnlineMusicStatusManager
         StatSvcStatSong.SongInfo localSongInfo = new StatSvcStatSong.SongInfo();
         localSongInfo.mergeFrom(paramArrayOfByte);
         paramFriends.songId = localSongInfo.bytes_song_id.get().toStringUtf8();
-        boolean bool = ((OnlineMusicStatusManager)((IOnlineStatusManagerService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class)).jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramFriends.songId);
+        boolean bool = ((OnlineMusicStatusManager)((IOnlineStatusManagerService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineMusicStatusManager.class)).c.contains(paramFriends.songId);
         if (bool)
         {
           a(paramFriends);
@@ -117,7 +115,7 @@ public class OnlineMusicStatusManager
         paramFriends.songPauseRemainTime = localSongInfo.uint32_pause_remaining_time.get();
         paramFriends.songDuration = localSongInfo.uint32_song_play_time.get();
         if (QLog.isColorLevel()) {
-          QLog.d("OnlineMusicStatusManager", 2, new Object[] { "update onlineSongState from ", paramString, ", uin:", StringUtil.e(paramFriends.uin), " songId:", paramFriends.songId, " songName:", paramFriends.songName, " songEndTime:", Long.valueOf(paramFriends.songEndTime), " source:", Integer.valueOf(paramFriends.songSourceType), " pauseRemain:", Integer.valueOf(paramFriends.songPauseRemainTime), " duration:", Integer.valueOf(paramFriends.songDuration), " remainTime:", Long.valueOf(paramFriends.songEndTime - System.currentTimeMillis()) });
+          QLog.d("OnlineMusicStatusManager", 2, new Object[] { "update onlineSongState from ", paramString, ", uin:", StringUtil.getSimpleUinForPrint(paramFriends.uin), " songId:", paramFriends.songId, " songName:", paramFriends.songName, " songEndTime:", Long.valueOf(paramFriends.songEndTime), " source:", Integer.valueOf(paramFriends.songSourceType), " pauseRemain:", Integer.valueOf(paramFriends.songPauseRemainTime), " duration:", Integer.valueOf(paramFriends.songDuration), " remainTime:", Long.valueOf(paramFriends.songEndTime - System.currentTimeMillis()) });
         }
       }
       else
@@ -132,36 +130,29 @@ public class OnlineMusicStatusManager
     }
   }
   
-  public static boolean a()
+  public static boolean d()
   {
     return MobileQQ.sMobileQQ.getSharedPreferences("online_music_status", 0).getBoolean("has_set_online_music", false);
   }
   
-  public static void b()
+  public static void e()
   {
     MobileQQ.sMobileQQ.getSharedPreferences("online_music_status", 0).edit().putBoolean("has_set_online_music", true).apply();
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public Lyric a(String paramString)
   {
-    return (Lyric)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    return (Lyric)this.b.get(paramString);
   }
-  
-  public QQPlayerCallback a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerCallback;
-  }
-  
-  public void a() {}
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -169,21 +160,21 @@ public class OnlineMusicStatusManager
     QLog.d("OnlineMusicStatusManager", 1, new Object[] { "handleOnlineStatusChanged, ", Long.valueOf(paramLong1), "->", Long.valueOf(paramLong2) });
     if ((paramLong1 == 1028L) && (paramLong2 != 1028L))
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.d.sendEmptyMessage(1);
       return;
     }
     if ((paramLong1 != 1028L) && (paramLong2 == 1028L))
     {
       if (((IQQPlayerServiceApi)QRoute.api(IQQPlayerServiceApi.class)).isListeningTogether())
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 3000L);
+        this.d.removeMessages(1);
+        this.d.sendEmptyMessageDelayed(2, 3000L);
         return;
       }
       if (((IQQPlayerServiceApi)QRoute.api(IQQPlayerServiceApi.class)).isQQPlayServicePlaying())
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 3000L);
+        this.d.removeMessages(1);
+        this.d.sendEmptyMessageDelayed(3, 3000L);
       }
     }
   }
@@ -204,45 +195,52 @@ public class OnlineMusicStatusManager
   
   public void a(Handler paramHandler)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    if (this.d != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+      this.d = paramHandler;
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    this.d = new Handler(ThreadManager.getSubThreadLooper(), this);
+  }
+  
+  public QQPlayerCallback b()
+  {
+    return this.f;
   }
   
   public void b(int paramInt)
   {
     if (((IQQPlayerServiceApi)QRoute.api(IQQPlayerServiceApi.class)).isStatePlaying(paramInt))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 3000L);
+      this.d.removeCallbacksAndMessages(null);
+      this.d.sendEmptyMessageDelayed(2, 3000L);
       return;
     }
     if (((IQQPlayerServiceApi)QRoute.api(IQQPlayerServiceApi.class)).isStateCompletion(paramInt))
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+      this.d.sendEmptyMessageDelayed(1, 3000L);
       return;
     }
     if ((!((IQQPlayerServiceApi)QRoute.api(IQQPlayerServiceApi.class)).isStateError(paramInt)) && (!((IQQPlayerServiceApi)QRoute.api(IQQPlayerServiceApi.class)).isStateStop(paramInt)))
     {
       if (((IQQPlayerServiceApi)QRoute.api(IQQPlayerServiceApi.class)).isStatePause(paramInt))
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, 1, 0);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        this.d.removeCallbacksAndMessages(null);
+        Message localMessage = this.d.obtainMessage(2, 1, 0);
+        this.d.sendMessage(localMessage);
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.d.removeCallbacksAndMessages(null);
+      this.d.sendEmptyMessage(1);
       if (((IQQPlayerServiceApi)QRoute.api(IQQPlayerServiceApi.class)).isStateStop(paramInt)) {
-        this.jdField_a_of_type_Int = 0;
+        this.a = 0;
       }
     }
   }
+  
+  public void c() {}
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -257,7 +255,7 @@ public class OnlineMusicStatusManager
         if (i != 3) {
           return false;
         }
-        localOnlineStatusHandler = (OnlineStatusHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(OnlineStatusHandler.class.getName());
+        localOnlineStatusHandler = (OnlineStatusHandler)this.e.getBusinessHandler(OnlineStatusHandler.class.getName());
         localIOnlineMusicStatusApi = (IOnlineMusicStatusApi)QRoute.api(IOnlineMusicStatusApi.class);
         if (paramMessage.arg1 == 1) {
           bool = true;
@@ -268,13 +266,13 @@ public class OnlineMusicStatusManager
         localOnlineStatusHandler.a(paramMessage);
         if (paramMessage != null)
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, paramMessage.b);
+          this.d.sendEmptyMessageDelayed(1, paramMessage.f);
           return false;
         }
       }
       else
       {
-        localOnlineStatusHandler = (OnlineStatusHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(OnlineStatusHandler.class.getName());
+        localOnlineStatusHandler = (OnlineStatusHandler)this.e.getBusinessHandler(OnlineStatusHandler.class.getName());
         localIOnlineMusicStatusApi = (IOnlineMusicStatusApi)QRoute.api(IOnlineMusicStatusApi.class);
         if (paramMessage.arg1 == 1) {
           bool = true;
@@ -285,21 +283,21 @@ public class OnlineMusicStatusManager
         localOnlineStatusHandler.a(paramMessage);
         if (paramMessage != null)
         {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, paramMessage.b);
+          this.d.sendEmptyMessageDelayed(1, paramMessage.f);
           return false;
         }
       }
     }
     else
     {
-      ((OnlineStatusHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(OnlineStatusHandler.class.getName())).a(null);
+      ((OnlineStatusHandler)this.e.getBusinessHandler(OnlineStatusHandler.class.getName())).a(null);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.OnlineMusicStatusManager
  * JD-Core Version:    0.7.0.1
  */

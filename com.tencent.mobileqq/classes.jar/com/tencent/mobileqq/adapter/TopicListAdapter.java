@@ -21,26 +21,21 @@ import java.util.List;
 public class TopicListAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private TopicListAdapter.IAddTopicListener jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter$IAddTopicListener;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private List<SignatureManager.TopicInfo> jdField_a_of_type_JavaUtilList;
-  private List<SignatureManager.TopicInfo> b;
+  private QQAppInterface a;
+  private Context b;
+  private LayoutInflater c;
+  private XListView d;
+  private List<SignatureManager.TopicInfo> e;
+  private List<SignatureManager.TopicInfo> f;
+  private TopicListAdapter.IAddTopicListener g;
   
   public TopicListAdapter(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, TopicListAdapter.IAddTopicListener paramIAddTopicListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_ComTencentMobileqqAdapterTopicListAdapter$IAddTopicListener = paramIAddTopicListener;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-  }
-  
-  private float a(int paramInt)
-  {
-    return Math.round(paramInt / 10000.0F * 100.0F) / 100.0F;
+    this.b = paramContext;
+    this.a = paramQQAppInterface;
+    this.d = paramXListView;
+    this.g = paramIAddTopicListener;
+    this.c = LayoutInflater.from(paramContext);
   }
   
   private String a(SignatureManager.TopicInfo paramTopicInfo)
@@ -51,7 +46,7 @@ public class TopicListAdapter
       if (paramTopicInfo.friendNum > 0) {
         if (paramTopicInfo.friendNum >= 10000)
         {
-          localStringBuilder.append(a(paramTopicInfo.friendNum));
+          localStringBuilder.append(b(paramTopicInfo.friendNum));
           localStringBuilder.append("万好友");
         }
         else
@@ -66,7 +61,7 @@ public class TopicListAdapter
       if (paramTopicInfo.totalNum > 0) {
         if (paramTopicInfo.totalNum >= 10000)
         {
-          localStringBuilder.append(a(paramTopicInfo.totalNum));
+          localStringBuilder.append(b(paramTopicInfo.totalNum));
           localStringBuilder.append("万人添加该话题");
         }
         else
@@ -99,46 +94,51 @@ public class TopicListAdapter
     return paramString;
   }
   
+  private float b(int paramInt)
+  {
+    return Math.round(paramInt / 10000.0F * 100.0F) / 100.0F;
+  }
+  
   public SignatureManager.TopicInfo a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.e;
     if ((localList != null) && (paramInt >= 0) && (paramInt < localList.size())) {
-      return (SignatureManager.TopicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (SignatureManager.TopicInfo)this.e.get(paramInt);
     }
     return null;
   }
   
   public List<SignatureManager.TopicInfo> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.e;
   }
   
   public boolean a(List<SignatureManager.TopicInfo> paramList, boolean paramBoolean)
   {
     boolean bool;
-    if (paramList != this.jdField_a_of_type_JavaUtilList)
+    if (paramList != this.e)
     {
-      this.jdField_a_of_type_JavaUtilList = ((ArrayList)paramList);
+      this.e = ((ArrayList)paramList);
       bool = true;
     }
     else
     {
       bool = false;
     }
-    if ((paramBoolean) && (paramList != this.b)) {
-      this.b = ((ArrayList)paramList);
+    if ((paramBoolean) && (paramList != this.f)) {
+      this.f = ((ArrayList)paramList);
     }
     return bool;
   }
   
   public List<SignatureManager.TopicInfo> b()
   {
-    return this.b;
+    return this.f;
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.e;
     if (localList == null) {
       return 0;
     }
@@ -155,11 +155,11 @@ public class TopicListAdapter
     Object localObject;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562046, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+      paramView = this.c.inflate(2131628472, this.d, false);
       localObject = new TopicListAdapter.ViewHolder();
-      ((TopicListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369273));
-      ((TopicListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379939));
-      ((TopicListAdapter.ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131379940));
+      ((TopicListAdapter.ViewHolder)localObject).d = ((ImageView)paramView.findViewById(2131436252));
+      ((TopicListAdapter.ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131448825));
+      ((TopicListAdapter.ViewHolder)localObject).c = ((TextView)paramView.findViewById(2131448826));
       paramView.setTag(localObject);
     }
     else
@@ -169,28 +169,28 @@ public class TopicListAdapter
     SignatureManager.TopicInfo localTopicInfo = a(paramInt);
     if (localTopicInfo != null)
     {
-      ((TopicListAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localTopicInfo.topicStr);
-      ((TopicListAdapter.ViewHolder)localObject).jdField_a_of_type_Int = localTopicInfo.topicId;
+      ((TopicListAdapter.ViewHolder)localObject).b.setText(localTopicInfo.topicStr);
+      ((TopicListAdapter.ViewHolder)localObject).a = localTopicInfo.topicId;
       String str = a(localTopicInfo);
       if (TextUtils.isEmpty(str))
       {
-        ((TopicListAdapter.ViewHolder)localObject).b.setVisibility(8);
+        ((TopicListAdapter.ViewHolder)localObject).c.setVisibility(8);
       }
       else
       {
-        ((TopicListAdapter.ViewHolder)localObject).b.setVisibility(0);
-        ((TopicListAdapter.ViewHolder)localObject).b.setText(str);
+        ((TopicListAdapter.ViewHolder)localObject).c.setVisibility(0);
+        ((TopicListAdapter.ViewHolder)localObject).c.setText(str);
       }
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131714829));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912330));
       ((StringBuilder)localObject).append(a(localTopicInfo.topicStr));
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131714828));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912329));
       paramView.setContentDescription(((StringBuilder)localObject).toString());
     }
-    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-      paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839385));
+    if (ThemeUtil.isNowThemeIsNight(this.a, false, null)) {
+      paramView.setBackgroundDrawable(this.b.getResources().getDrawable(2130839569));
     } else {
-      paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839384));
+      paramView.setBackgroundDrawable(this.b.getResources().getDrawable(2130839568));
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -198,7 +198,7 @@ public class TopicListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TopicListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,20 @@ public class RundownProtection
 {
   private AtomicInteger a = new AtomicInteger(0);
   
-  public void a()
+  public boolean a()
+  {
+    int i;
+    do
+    {
+      i = this.a.get();
+      if ((i & 0x1) != 0) {
+        return false;
+      }
+    } while (!this.a.compareAndSet(i, i + 2));
+    return true;
+  }
+  
+  public void b()
   {
     int i;
     do
@@ -29,20 +42,7 @@ public class RundownProtection
     } while (!this.a.compareAndSet(i, i - 2));
   }
   
-  public boolean a()
-  {
-    int i;
-    do
-    {
-      i = this.a.get();
-      if ((i & 0x1) != 0) {
-        return false;
-      }
-    } while (!this.a.compareAndSet(i, i + 2));
-    return true;
-  }
-  
-  public void b()
+  public void c()
   {
     if (this.a.compareAndSet(0, 1)) {
       return;
@@ -75,7 +75,7 @@ public class RundownProtection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.RundownProtection
  * JD-Core Version:    0.7.0.1
  */

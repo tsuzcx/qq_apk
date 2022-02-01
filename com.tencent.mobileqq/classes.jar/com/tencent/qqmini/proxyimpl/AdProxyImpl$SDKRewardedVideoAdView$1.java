@@ -2,7 +2,6 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.text.TextUtils;
 import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtPreLoader;
 import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoPageData;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.mobileqq.mini.util.AdUtils;
@@ -10,8 +9,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ICmdListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IRewardVideoAdListener;
 import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 class AdProxyImpl$SDKRewardedVideoAdView$1
   implements AdProxy.ICmdListener
@@ -23,100 +24,106 @@ class AdProxyImpl$SDKRewardedVideoAdView$1
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("onCmdListener: ");
     ((StringBuilder)localObject1).append(paramJSONObject);
-    localObject1 = ((StringBuilder)localObject1).toString();
-    int j = 1;
-    QLog.i("AdProxyImpl", 1, (String)localObject1);
+    QLog.i("AdProxyImpl", 1, ((StringBuilder)localObject1).toString());
     if ((paramBoolean) && (paramJSONObject != null)) {}
-    try
+    for (;;)
     {
-      int i = paramJSONObject.getInt("retCode");
-      localObject1 = paramJSONObject.getString("errMsg");
-      paramJSONObject = paramJSONObject.getString("response");
-      if ((i == 0) && (!TextUtils.isEmpty(paramJSONObject)))
+      try
       {
-        if (new JSONObject(paramJSONObject).optInt("ret", -1) == 102006)
+        int i = paramJSONObject.getInt("retCode");
+        localObject1 = paramJSONObject.getString("errMsg");
+        paramJSONObject = paramJSONObject.getString("response");
+        if ((i == 0) && (!TextUtils.isEmpty(paramJSONObject)))
         {
-          QLog.e("AdProxyImpl", 1, "mockAdJson failed ret == 102006");
-          if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener == null) {
+          if (new JSONObject(paramJSONObject).optInt("ret", -1) == 102006)
+          {
+            QLog.e("AdProxyImpl", 1, "mockAdJson failed ret == 102006");
+            if (this.a.b == null) {
+              break label536;
+            }
+            this.a.b.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
             return;
           }
-          this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
-          return;
-        }
-        localObject1 = AdProxyImpl.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, paramJSONObject);
-        paramJSONObject = null;
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramJSONObject = AdProxyImpl.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, (String)localObject1);
-        }
-        if (paramJSONObject != null)
-        {
-          paramJSONObject = new GdtAd(paramJSONObject);
-          if (!paramJSONObject.isValid()) {
-            break label482;
+          JSONArray localJSONArray = AdProxyImpl.a(this.a.r, paramJSONObject);
+          Object localObject2 = null;
+          if ((localJSONArray == null) || (localJSONArray.isNull(0))) {
+            break label537;
           }
-          GdtPreLoader.a().a(paramJSONObject);
-          Object localObject2 = this.a;
-          i = j;
-          if (this.a.c == 90) {
-            i = 0;
+          paramJSONObject = localJSONArray.get(0).toString();
+          this.a.c = AdProxyImpl.SDKRewardedVideoAdView.a(this.a, paramJSONObject);
+          if (TextUtils.isEmpty(paramJSONObject)) {
+            break label542;
           }
-          ((AdProxyImpl.SDKRewardedVideoAdView)localObject2).jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData = RewardedVideoAdPlugin.a(paramJSONObject, (String)localObject1, i);
-          if (this.a.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData == null) {
-            break label482;
-          }
-          i = AdUtils.getRewardVideoShowTimeFromExp(paramJSONObject);
-          if (i > 0) {
-            this.a.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.setVideoCountDown(i);
-          }
-          if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null)
+          localObject1 = AdProxyImpl.b(this.a.r, paramJSONObject);
+          if ((this.a.c != null) && (localObject1 != null))
           {
-            localObject2 = AdUtils.getExpParam(paramJSONObject);
-            this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onADLoad((List)localObject2);
+            localObject1 = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
+            if (this.a.b != null)
+            {
+              List localList = AdUtils.getExpParam((GdtAd)localObject1);
+              this.a.b.onADLoad(localList);
+            }
+            AdProxyImpl.a(this.a.r, paramJSONObject, this.a.j);
+            paramJSONObject = ((GdtAd)localObject1).getUrlForClick();
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(this.a.c.adId);
+            ((StringBuilder)localObject1).append("");
+            MiniAdAntiSpamReportUtil.a(((StringBuilder)localObject1).toString(), paramJSONObject);
+            paramJSONObject = new StringBuilder();
+            paramJSONObject.append(this.a.c.adId);
+            paramJSONObject.append("");
+            MiniAdAntiSpamReportUtil.a(paramJSONObject.toString());
           }
-          AdProxyImpl.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, (String)localObject1, this.a.b);
-          paramJSONObject = paramJSONObject.getUrlForClick();
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(this.a.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.adId);
-          ((StringBuilder)localObject1).append("");
-          MiniAdAntiSpamReportUtil.a(((StringBuilder)localObject1).toString(), paramJSONObject);
-          paramJSONObject = new StringBuilder();
-          paramJSONObject.append(this.a.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.adId);
-          paramJSONObject.append("");
-          MiniAdAntiSpamReportUtil.a(paramJSONObject.toString());
+          else
+          {
+            QLog.e("AdProxyImpl", 1, "first adInfo is null");
+          }
+          paramJSONObject = localObject2;
+          if (localJSONArray != null)
+          {
+            paramJSONObject = localObject2;
+            if (!localJSONArray.isNull(1)) {
+              paramJSONObject = localJSONArray.get(1).toString();
+            }
+          }
+          this.a.d = AdProxyImpl.SDKRewardedVideoAdView.a(this.a, paramJSONObject);
           return;
         }
-        QLog.e("AdProxyImpl", 1, "adInfo is null");
+        int j = PluginConst.AdConst.getRetCodeByServerResult(i);
+        if (j != -1) {
+          i = j;
+        }
+        if (this.a.b == null) {
+          continue;
+        }
+        this.a.b.onError(i, (String)localObject1);
         return;
       }
-      j = PluginConst.AdConst.getRetCodeByServerResult(i);
-      if (j != -1) {
-        i = j;
+      catch (JSONException paramJSONObject)
+      {
+        continue;
       }
-      if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener == null) {
-        break label482;
+      if (this.a.b != null) {
+        this.a.b.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
-      this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(i, (String)localObject1);
       return;
+      if (this.a.b != null) {
+        this.a.b.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
+      }
+      return;
+      label536:
+      return;
+      label537:
+      paramJSONObject = null;
+      continue;
+      label542:
+      localObject1 = null;
     }
-    catch (JSONException paramJSONObject)
-    {
-      label454:
-      break label454;
-    }
-    if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null) {
-      this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
-    }
-    label482:
-    return;
-    if (this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null) {
-      this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
-    }
-    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKRewardedVideoAdView.1
  * JD-Core Version:    0.7.0.1
  */

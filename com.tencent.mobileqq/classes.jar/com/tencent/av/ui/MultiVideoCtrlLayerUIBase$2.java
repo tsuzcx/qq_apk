@@ -21,8 +21,8 @@ class MultiVideoCtrlLayerUIBase$2
     paramContext = paramIntent.getAction();
     long l1 = paramIntent.getLongExtra("groupId", 0L);
     long l2 = paramIntent.getLongExtra("roomId", 0L);
-    long l3 = this.a.a.d();
-    long l4 = this.a.b;
+    long l3 = this.a.am.ap();
+    long l4 = this.a.j;
     boolean bool = true;
     int i;
     if (l4 == l1) {
@@ -38,7 +38,7 @@ class MultiVideoCtrlLayerUIBase$2
     }
     if (QLog.isColorLevel())
     {
-      String str = this.a.d;
+      String str = this.a.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleMsgType0x210SuMsgType0x116 mMemberChangeEventReceiver fit=");
       if ((i == 0) || (j == 0)) {
@@ -48,7 +48,7 @@ class MultiVideoCtrlLayerUIBase$2
       localStringBuilder.append(";current roomId=");
       localStringBuilder.append(l3);
       localStringBuilder.append(";groupId=");
-      localStringBuilder.append(this.a.b);
+      localStringBuilder.append(this.a.j);
       QLog.d(str, 2, localStringBuilder.toString());
     }
     if ("tencent.video.q2v.GvideoMemInviteUpdate".equals(paramContext)) {
@@ -60,14 +60,14 @@ class MultiVideoCtrlLayerUIBase$2
       try
       {
         paramContext.mergeFrom(paramIntent.getByteArrayExtra("pushData"));
-        this.a.a.a(paramContext.rpt_msg_member_join, paramContext.rpt_msg_member_quit, paramContext.uint32_invite_list_total_count.get(), paramContext.enum_event_type.get());
+        this.a.am.a(paramContext.rpt_msg_member_join, paramContext.rpt_msg_member_quit, paramContext.uint32_invite_list_total_count.get(), paramContext.enum_event_type.get());
         return;
       }
       catch (InvalidProtocolBufferMicroException paramContext)
       {
         paramContext.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.d(this.a.d, 2, "mMemberChangeEventReceiver throw exception");
+          QLog.d(this.a.X, 2, "mMemberChangeEventReceiver throw exception");
         }
       }
     }

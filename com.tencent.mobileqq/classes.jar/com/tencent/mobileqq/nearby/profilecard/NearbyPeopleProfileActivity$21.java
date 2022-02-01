@@ -11,18 +11,18 @@ class NearbyPeopleProfileActivity$21
   {
     if ((paramBoolean) && (paramInt == 2))
     {
-      if ((NearbyPeopleProfileActivity.access$400(this.a) != null) && (this.a.mMode == 1))
+      if ((NearbyPeopleProfileActivity.access$300(this.a) != null) && (this.a.mMode == 1))
       {
-        NearbyPeopleProfileActivity.access$400(this.a).d();
+        NearbyPeopleProfileActivity.access$300(this.a).g();
         return;
       }
-      NearbyPeopleProfileActivity.access$500(this.a);
+      NearbyPeopleProfileActivity.access$400(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.21
  * JD-Core Version:    0.7.0.1
  */

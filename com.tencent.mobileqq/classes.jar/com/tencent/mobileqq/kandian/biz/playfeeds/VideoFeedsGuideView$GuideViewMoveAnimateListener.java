@@ -10,24 +10,24 @@ class VideoFeedsGuideView$GuideViewMoveAnimateListener
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (VideoFeedsGuideView.a(this.a) == 1)
+    if (VideoFeedsGuideView.b(this.a) == 1)
     {
       VideoFeedsGuideView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
       paramValueAnimator = this.a;
-      VideoFeedsGuideView.b(paramValueAnimator, VideoFeedsGuideView.b(paramValueAnimator) + VideoFeedsGuideView.c(this.a));
+      VideoFeedsGuideView.b(paramValueAnimator, VideoFeedsGuideView.c(paramValueAnimator) + VideoFeedsGuideView.d(this.a));
     }
     else
     {
       VideoFeedsGuideView.c(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
       paramValueAnimator = this.a;
-      VideoFeedsGuideView.d(paramValueAnimator, VideoFeedsGuideView.b(paramValueAnimator) + VideoFeedsGuideView.d(this.a));
+      VideoFeedsGuideView.d(paramValueAnimator, VideoFeedsGuideView.c(paramValueAnimator) + VideoFeedsGuideView.e(this.a));
     }
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsGuideView.GuideViewMoveAnimateListener
  * JD-Core Version:    0.7.0.1
  */

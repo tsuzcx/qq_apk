@@ -382,7 +382,7 @@ public class IntimateInfo
         }
       }
       localIntimateInfo.updateTimeMills = NetConnInfoCenter.getServerTimeMillis();
-      localIntimateInfo.isFriend = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(localIntimateInfo.friendUin);
+      localIntimateInfo.isFriend = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(localIntimateInfo.friendUin);
       localIntimateInfo.commonBodies = paramRspBody.rpt_msg_common_rspbody.get();
       copyFrom848NewInfo(paramQQAppInterface, paramRspBody, localIntimateInfo);
       localIntimateInfo.loveTreeInfo = LoveTreeInfo.a((oidb_0xcf4.LoveTreeInfo)paramRspBody.msg_love_tree_info.get());
@@ -801,7 +801,7 @@ public class IntimateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo
  * JD-Core Version:    0.7.0.1
  */

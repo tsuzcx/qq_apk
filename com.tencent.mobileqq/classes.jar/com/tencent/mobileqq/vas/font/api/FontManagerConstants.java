@@ -8,6 +8,10 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
@@ -65,6 +69,7 @@ public class FontManagerConstants
   public static final String TEST_DIR = "/FontTest";
   public static final String TEST_DIYFONT_TITLE = "应用DIY字体";
   public static final String TEST_DIYFONT_ZIP_NAME = "androidDIYFont.zip";
+  public static boolean isTest = false;
   public static Vector<Integer> mFontBlackList;
   public static AtomicBoolean mFontSwitchFZ;
   public static AtomicBoolean mFontSwitchHanYi;
@@ -81,7 +86,8 @@ public class FontManagerConstants
   public static float magicFontSize1Number;
   public static float magicFontSize2Number;
   public static volatile boolean sHasChatFont;
-  public static long todayStartTime = 0L;
+  public static Map<Long, Integer> testFontId = new HashMap();
+  public static long todayStartTime;
   public AtomicBoolean isTestOn = new AtomicBoolean(false);
   public String mTestFontFile = null;
   public int mTestFontType = -1;
@@ -141,6 +147,7 @@ public class FontManagerConstants
     localStringBuilder.append("/FontTest");
     localStringBuilder.append("/diyfont/");
     DIY_FONT_DIR = localStringBuilder.toString();
+    todayStartTime = 0L;
   }
   
   public static boolean checkFontExist(int paramInt1, int paramInt2)
@@ -150,68 +157,55 @@ public class FontManagerConstants
   
   public static int generateFontValue(ExtensionInfo paramExtensionInfo)
   {
+    int i;
     if (paramExtensionInfo != null) {
-      return (int)(((paramExtensionInfo.uVipFont & 0xFF) << 8) + (0xFF & paramExtensionInfo.uVipFont >> 8)) + (paramExtensionInfo.vipFontType << 16) + (paramExtensionInfo.magicFont << 24);
+      i = (int)(((paramExtensionInfo.uVipFont & 0xFF) << 8) + (0xFF & paramExtensionInfo.uVipFont >> 8)) + (paramExtensionInfo.vipFontType << 16) + (paramExtensionInfo.magicFont << 24);
+    } else {
+      i = 0;
     }
-    return 0;
+    if (isTest) {
+      testFontId.put(Long.valueOf(i), Integer.valueOf((int)paramExtensionInfo.uVipFont));
+    }
+    return i;
   }
   
   public static String getSenderUin(MessageRecord paramMessageRecord)
   {
-    int i = paramMessageRecord.istroop;
-    if (i != 0)
-    {
-      if (i != 1)
-      {
-        if (i == 1025) {
-          break label240;
-        }
-        if (i != 3000) {
-          if ((i == 10002) || (i == 10004)) {
-            break label240;
-          }
-        }
+    if (Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(1000), Integer.valueOf(1001), Integer.valueOf(10002), Integer.valueOf(10004), Integer.valueOf(1002), Integer.valueOf(1003), Integer.valueOf(1004), Integer.valueOf(1005), Integer.valueOf(1006), Integer.valueOf(1008), Integer.valueOf(1009), Integer.valueOf(1020), Integer.valueOf(1021), Integer.valueOf(1022), Integer.valueOf(1010), Integer.valueOf(1025), Integer.valueOf(10008), Integer.valueOf(10010) }).contains(Integer.valueOf(paramMessageRecord.istroop))) {
+      if (paramMessageRecord.isSend()) {
+        paramMessageRecord = paramMessageRecord.selfuin;
+      } else {
+        paramMessageRecord = paramMessageRecord.frienduin;
       }
-      switch (i)
+    }
+    for (;;)
+    {
+      return paramMessageRecord;
+      if (paramMessageRecord.istroop == 1)
       {
-      default: 
-        switch (i)
-        {
-        default: 
-          switch (i)
-          {
-          default: 
-            switch (i)
-            {
-            default: 
-              break label238;
-              if (paramMessageRecord.isSend()) {
-                return paramMessageRecord.selfuin;
-              }
-              return paramMessageRecord.senderuin;
-              AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
-              if ((localAppRuntime != null) && (!((IFontManagerService)localAppRuntime.getRuntimeService(IFontManagerService.class, "")).isAnonymousMsg(paramMessageRecord)))
-              {
-                if (paramMessageRecord.isSend()) {
-                  return paramMessageRecord.selfuin;
-                }
-                return paramMessageRecord.senderuin;
-              }
-              label238:
-              return null;
-            }
-            break;
-          }
+        AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
+        if ((localAppRuntime == null) || (((IFontManagerService)localAppRuntime.getRuntimeService(IFontManagerService.class, "")).isAnonymousMsg(paramMessageRecord))) {
           break;
         }
-        break;
+        if (paramMessageRecord.isSend()) {
+          paramMessageRecord = paramMessageRecord.selfuin;
+        } else {
+          paramMessageRecord = paramMessageRecord.senderuin;
+        }
+      }
+      else
+      {
+        if (paramMessageRecord.istroop != 3000) {
+          break;
+        }
+        if (paramMessageRecord.isSend()) {
+          paramMessageRecord = paramMessageRecord.selfuin;
+        } else {
+          paramMessageRecord = paramMessageRecord.senderuin;
+        }
       }
     }
-    label240:
-    if (paramMessageRecord.isSend()) {
-      return paramMessageRecord.selfuin;
-    }
-    return paramMessageRecord.frienduin;
+    return null;
   }
   
   public static String getStaticTTFPath(int paramInt1, int paramInt2)
@@ -252,6 +246,9 @@ public class FontManagerConstants
   
   public static long parseFontId(long paramLong)
   {
+    if (isTest) {
+      return ((Integer)testFontId.get(Long.valueOf(paramLong))).intValue();
+    }
     return ((paramLong & 0xFF) << 8) + (paramLong >> 8 & 0xFF);
   }
   
@@ -355,7 +352,7 @@ public class FontManagerConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.font.api.FontManagerConstants
  * JD-Core Version:    0.7.0.1
  */

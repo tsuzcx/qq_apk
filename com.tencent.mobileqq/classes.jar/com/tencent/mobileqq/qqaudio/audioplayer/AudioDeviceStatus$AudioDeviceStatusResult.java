@@ -2,9 +2,9 @@ package com.tencent.mobileqq.qqaudio.audioplayer;
 
 public class AudioDeviceStatus$AudioDeviceStatusResult
 {
-  int jdField_a_of_type_Int;
-  AudioPlayerHelper.AudioPlayerParameter jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter;
-  volatile boolean jdField_a_of_type_Boolean;
+  int a;
+  AudioPlayerHelper.AudioPlayerParameter b;
+  volatile boolean c;
   
   public AudioDeviceStatus$AudioDeviceStatusResult(AudioPlayerHelper.AudioPlayerParameter paramAudioPlayerParameter, int paramInt)
   {
@@ -13,48 +13,48 @@ public class AudioDeviceStatus$AudioDeviceStatusResult
   
   public AudioDeviceStatus$AudioDeviceStatusResult(AudioPlayerHelper.AudioPlayerParameter paramAudioPlayerParameter, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter = paramAudioPlayerParameter;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.b = paramAudioPlayerParameter;
+    this.c = paramBoolean;
+    this.a = paramInt;
   }
   
   public AudioPlayerHelper.AudioPlayerParameter a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public boolean a(AudioDeviceStatusResult paramAudioDeviceStatusResult)
   {
     if (paramAudioDeviceStatusResult != null)
     {
-      AudioPlayerHelper.AudioPlayerParameter localAudioPlayerParameter = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter;
+      AudioPlayerHelper.AudioPlayerParameter localAudioPlayerParameter = this.b;
       if (localAudioPlayerParameter != null) {
-        return localAudioPlayerParameter.equals(paramAudioDeviceStatusResult.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter);
+        return localAudioPlayerParameter.equals(paramAudioDeviceStatusResult.b);
       }
     }
     return false;
   }
+  
+  public int b()
+  {
+    return this.a;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public void d()
+  {
+    if (this.c) {
+      this.c = false;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioDeviceStatus.AudioDeviceStatusResult
  * JD-Core Version:    0.7.0.1
  */

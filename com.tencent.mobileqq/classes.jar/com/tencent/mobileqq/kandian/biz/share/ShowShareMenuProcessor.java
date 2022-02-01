@@ -31,12 +31,12 @@ public final class ShowShareMenuProcessor
   extends TribeWebViewPlugin.BaseTribePluginProcessor
   implements DialogInterface.OnCancelListener, DialogInterface.OnDismissListener, ShareActionSheet.OnItemClickListener
 {
-  private ShareToComputerHelper jdField_a_of_type_ComTencentMobileqqKandianBizShareShareToComputerHelper;
-  private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
-  private String jdField_a_of_type_JavaLangString = "";
-  private final HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private final HashMap<Integer, String> b = new HashMap();
+  private boolean a;
+  private String b = "";
+  private ShareActionSheet c;
+  private ShareToComputerHelper d;
+  private final HashMap<String, Integer> e = new HashMap();
+  private final HashMap<Integer, String> f = new HashMap();
   
   public ShowShareMenuProcessor(@NotNull TribeWebViewPlugin paramTribeWebViewPlugin)
   {
@@ -47,7 +47,7 @@ public final class ShowShareMenuProcessor
   {
     Object localObject = a().mRuntime;
     if (localObject != null) {
-      localObject = ((WebViewPlugin.PluginRuntime)localObject).a();
+      localObject = ((WebViewPlugin.PluginRuntime)localObject).d();
     } else {
       localObject = null;
     }
@@ -58,32 +58,32 @@ public final class ShowShareMenuProcessor
         ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_feeds_buluo");
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    localObject = this.c;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
     }
     ((ShareActionSheet)localObject).setActionSheetItems(paramList1, paramList2);
-    paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    paramList1 = this.c;
     if (paramList1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
     }
     paramList1.setItemClickListenerV2((ShareActionSheet.OnItemClickListener)this);
-    paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    paramList1 = this.c;
     if (paramList1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
     }
     paramList1.setCancelListener((DialogInterface.OnCancelListener)this);
-    paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    paramList1 = this.c;
     if (paramList1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
     }
     paramList1.setOnDismissListener((DialogInterface.OnDismissListener)this);
-    paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    paramList1 = this.c;
     if (paramList1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
     }
     paramList1.setIntentForStartForwardRecentActivity(new Intent());
-    paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    paramList1 = this.c;
     if (paramList1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
     }
@@ -94,19 +94,25 @@ public final class ShowShareMenuProcessor
       i = 8;
     }
     paramList1.setRowVisibility(i, 0, 0);
-    paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    paramList1 = this.c;
     if (paramList1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
     }
     paramList1.show();
-    paramList1 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    paramList1 = this.c;
     if (paramList1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
     }
     return paramList1;
   }
   
-  private final void a()
+  private final void a(String paramString, int paramInt)
+  {
+    ((Map)this.e).put(paramString, Integer.valueOf(paramInt));
+    ((Map)this.f).put(Integer.valueOf(paramInt), paramString);
+  }
+  
+  private final void b()
   {
     Object localObject1 = new ShareActionSheetV2.Param();
     WebViewPlugin.PluginRuntime localPluginRuntime = a().mRuntime;
@@ -114,25 +120,19 @@ public final class ShowShareMenuProcessor
     {
       Object localObject2 = a().mRuntime;
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "plugin.mRuntime");
-      localObject2 = ((WebViewPlugin.PluginRuntime)localObject2).a();
+      localObject2 = ((WebViewPlugin.PluginRuntime)localObject2).d();
       ((ShareActionSheetV2.Param)localObject1).context = ((Context)localObject2);
       localObject1 = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject1);
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "ShareActionSheetFactory.create(param)");
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ((ShareActionSheet)localObject1);
+      this.c = ((ShareActionSheet)localObject1);
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "activity");
       ((Activity)localObject2).getIntent().putExtra("big_brother_source_key", "biz_src_feeds_kandian");
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizShareShareToComputerHelper = new ShareToComputerHelper(localPluginRuntime.a());
+      this.d = new ShareToComputerHelper(localPluginRuntime.b());
     }
-    b();
+    c();
   }
   
-  private final void a(String paramString, int paramInt)
-  {
-    ((Map)this.jdField_a_of_type_JavaUtilHashMap).put(paramString, Integer.valueOf(paramInt));
-    ((Map)this.b).put(Integer.valueOf(paramInt), paramString);
-  }
-  
-  private final void b()
+  private final void c()
   {
     a("Qfriend", 2);
     a("Qzone", 3);
@@ -166,10 +166,10 @@ public final class ShowShareMenuProcessor
   public void a(@NotNull JSONObject paramJSONObject)
   {
     Intrinsics.checkParameterIsNotNull(paramJSONObject, "json");
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      this.jdField_a_of_type_Boolean = true;
-      a();
+      this.a = true;
+      b();
     }
     Object localObject = paramJSONObject.optJSONArray("secondLineIcons");
     JSONArray localJSONArray = paramJSONObject.optJSONArray("thirdLineIcons");
@@ -181,7 +181,7 @@ public final class ShowShareMenuProcessor
     Integer localInteger;
     while (i < k)
     {
-      localInteger = (Integer)((Map)this.jdField_a_of_type_JavaUtilHashMap).get(((JSONArray)localObject).get(i));
+      localInteger = (Integer)((Map)this.e).get(((JSONArray)localObject).get(i));
       if (localInteger != null) {
         localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(localInteger.intValue()));
       }
@@ -192,7 +192,7 @@ public final class ShowShareMenuProcessor
     i = j;
     while (i < k)
     {
-      localInteger = (Integer)((Map)this.jdField_a_of_type_JavaUtilHashMap).get(localJSONArray.get(i));
+      localInteger = (Integer)((Map)this.e).get(localJSONArray.get(i));
       if (localInteger != null) {
         ((ArrayList)localObject).add(ShareActionSheetBuilder.ActionSheetItem.build(localInteger.intValue()));
       }
@@ -200,7 +200,7 @@ public final class ShowShareMenuProcessor
     }
     paramJSONObject = paramJSONObject.optString("callback");
     Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "json.optString(\"callback\")");
-    this.jdField_a_of_type_JavaLangString = paramJSONObject;
+    this.b = paramJSONObject;
     a(bool, (List)localArrayList, (List)localObject);
   }
   
@@ -212,7 +212,7 @@ public final class ShowShareMenuProcessor
     paramDialogInterface.putOpt("shared", Boolean.valueOf(false));
     paramDialogInterface.putOpt("toUin", Long.valueOf(0L));
     paramDialogInterface.putOpt("uinType", localInteger);
-    a().callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramDialogInterface.toString() });
+    a().callJs(this.b, new String[] { paramDialogInterface.toString() });
   }
   
   public void onDismiss(@Nullable DialogInterface paramDialogInterface)
@@ -223,7 +223,7 @@ public final class ShowShareMenuProcessor
     paramDialogInterface.putOpt("shared", Boolean.valueOf(false));
     paramDialogInterface.putOpt("toUin", Long.valueOf(0L));
     paramDialogInterface.putOpt("uinType", localInteger);
-    a().callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramDialogInterface.toString() });
+    a().callJs(this.b, new String[] { paramDialogInterface.toString() });
   }
   
   public void onItemClick(@Nullable ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, @Nullable ShareActionSheet paramShareActionSheet)
@@ -231,7 +231,7 @@ public final class ShowShareMenuProcessor
     if (paramActionSheetItem != null)
     {
       JSONObject localJSONObject = new JSONObject();
-      paramShareActionSheet = (String)this.b.get(Integer.valueOf(paramActionSheetItem.action));
+      paramShareActionSheet = (String)this.f.get(Integer.valueOf(paramActionSheetItem.action));
       if (paramShareActionSheet == null) {
         paramShareActionSheet = Integer.valueOf(0);
       }
@@ -249,8 +249,8 @@ public final class ShowShareMenuProcessor
       }
       localJSONObject.putOpt("toUin", paramShareActionSheet);
       localJSONObject.putOpt("uinType", Integer.valueOf(paramActionSheetItem.uinType));
-      a().callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      paramActionSheetItem = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+      a().callJs(this.b, new String[] { localJSONObject.toString() });
+      paramActionSheetItem = this.c;
       if (paramActionSheetItem == null) {
         Intrinsics.throwUninitializedPropertyAccessException("shareActionSheet");
       }
@@ -260,7 +260,7 @@ public final class ShowShareMenuProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.ShowShareMenuProcessor
  * JD-Core Version:    0.7.0.1
  */

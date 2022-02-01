@@ -8,19 +8,19 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class ImgDownloadListener
   implements URLDrawable.DownloadListener
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "freshnews.small_pic_download";
+  private long a;
+  private Context b;
+  private String c = "freshnews.small_pic_download";
   
   public ImgDownloadListener(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   public ImgDownloadListener(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramContext;
+    this.c = paramString;
   }
   
   public void onFileDownloadFailed(int paramInt)
@@ -30,7 +30,7 @@ public class ImgDownloadListener
   
   public void onFileDownloadStarted()
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.a = SystemClock.elapsedRealtime();
   }
   
   public void onFileDownloadSucceed(long paramLong)
@@ -40,7 +40,7 @@ public class ImgDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ImgDownloadListener
  * JD-Core Version:    0.7.0.1
  */

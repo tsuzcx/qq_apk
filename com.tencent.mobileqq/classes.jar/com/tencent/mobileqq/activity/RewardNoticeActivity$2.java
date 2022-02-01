@@ -15,21 +15,21 @@ class RewardNoticeActivity$2
   {
     if (paramBoolean)
     {
-      if (!TextUtils.isEmpty(this.a.f)) {
-        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      if (!TextUtils.isEmpty(this.a.q)) {
+        QQToast.makeText(this.a.app.getApp(), 2, this.a.q, 0).show();
       }
-      if (this.a.a == 13) {
+      if (this.a.j == 13) {
         this.a.b();
       }
       this.a.finish();
       return;
     }
-    QQToast.a(this.a.app.getApp(), 1, HardCodeUtil.a(2131713368), 0).a();
+    QQToast.makeText(this.a.app.getApp(), 1, HardCodeUtil.a(2131910921), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RewardNoticeActivity.2
  * JD-Core Version:    0.7.0.1
  */

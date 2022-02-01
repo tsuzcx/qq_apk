@@ -16,26 +16,26 @@ import java.util.List;
 public class OpenJsBridge
   extends JsBridge
 {
-  HashMap<String, JsBridge.JsHandler> b = new HashMap();
+  HashMap<String, JsBridge.JsHandler> c = new HashMap();
   
   public HashMap<String, JsBridge.JsHandler> a()
   {
-    return this.b;
+    return this.c;
   }
   
   public void a(JsBridge.JsHandler paramJsHandler, String paramString)
   {
-    this.b.put(paramString, paramJsHandler);
+    this.c.put(paramString, paramJsHandler);
   }
   
   public void a(String paramString)
   {
     if (paramString == null)
     {
-      this.b.clear();
+      this.c.clear();
       return;
     }
-    this.b.remove(paramString);
+    this.c.remove(paramString);
   }
   
   public void a(String paramString1, String paramString2, List<String> paramList, JsBridge.JsBridgeListener paramJsBridgeListener)
@@ -67,7 +67,7 @@ public class OpenJsBridge
     localStringBuilder.append("[getResult]time4-time3=");
     localStringBuilder.append(l2 - l1);
     LogUtility.b("OpenJsBridge", localStringBuilder.toString());
-    paramString1 = (JsBridge.JsHandler)this.b.get(paramString1);
+    paramString1 = (JsBridge.JsHandler)this.c.get(paramString1);
     if (paramString1 != null)
     {
       paramString1.call(paramString2, paramList, paramJsBridgeListener);
@@ -101,7 +101,7 @@ public class OpenJsBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.OpenJsBridge
  * JD-Core Version:    0.7.0.1
  */

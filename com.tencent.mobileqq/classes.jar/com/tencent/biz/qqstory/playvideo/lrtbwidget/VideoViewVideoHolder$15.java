@@ -20,51 +20,51 @@ class VideoViewVideoHolder$15
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.a;
     Object localObject = "0";
-    int i;
+    int i1;
     if (bool)
     {
-      i = this.jdField_a_of_type_Int;
+      i1 = this.b;
       paramJobContext = new StringBuilder();
-      paramJobContext.append(String.valueOf(i));
+      paramJobContext.append(String.valueOf(i1));
       paramJobContext.append("*");
       paramVarArgs = paramJobContext.toString();
       paramJobContext = paramVarArgs;
-      if (this.jdField_a_of_type_JavaLangLong != null)
+      if (this.c != null)
       {
         paramJobContext = new StringBuilder();
         paramJobContext.append(paramVarArgs);
-        paramJobContext.append(String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_JavaLangLong.longValue()));
+        paramJobContext.append(String.valueOf(SystemClock.uptimeMillis() - this.c.longValue()));
         paramJobContext = paramJobContext.toString();
       }
-      i = 200;
+      i1 = 200;
     }
-    else if (this.jdField_b_of_type_Boolean)
+    else if (this.d)
     {
-      i = this.jdField_b_of_type_Int;
-      paramJobContext = String.valueOf(this.jdField_c_of_type_Int);
+      i1 = this.e;
+      paramJobContext = String.valueOf(this.f);
     }
     else
     {
       paramJobContext = "0";
-      i = 0;
+      i1 = 0;
     }
-    if ((i != 0) && (i != 7))
+    if ((i1 != 0) && (i1 != 7))
     {
       paramVarArgs = (Void[])localObject;
-      if (i == 200)
+      if (i1 == 200)
       {
-        j = this.jdField_a_of_type_Int;
+        i2 = this.b;
         paramVarArgs = (Void[])localObject;
-        if (j >= 6)
+        if (i2 >= 6)
         {
           paramVarArgs = (Void[])localObject;
-          if (j > 10) {}
+          if (i2 > 10) {}
         }
       }
     }
-    else if (this.jdField_d_of_type_Int == 1)
+    else if (this.g == 1)
     {
       paramVarArgs = "1";
     }
@@ -73,52 +73,52 @@ class VideoViewVideoHolder$15
       paramVarArgs = "2";
     }
     localObject = paramJobContext;
-    int j = i;
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString))
+    int i2 = i1;
+    if (TextUtils.equals(this.h, this.i))
     {
       localObject = paramJobContext;
-      j = i;
-      if (i != 0)
+      i2 = i1;
+      if (i1 != 0)
       {
-        SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "reportDevPlayerDone, errorCode=%d, suError=%s => treat as success => 300", new Object[] { Integer.valueOf(i), paramJobContext });
+        SLog.d(this.q.a, "reportDevPlayerDone, errorCode=%d, suError=%s => treat as success => 300", new Object[] { Integer.valueOf(i1), paramJobContext });
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(String.valueOf(i));
+        ((StringBuilder)localObject).append(String.valueOf(i1));
         ((StringBuilder)localObject).append("*");
         localObject = ((StringBuilder)localObject).toString();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject);
         localStringBuilder.append(paramJobContext);
         localObject = localStringBuilder.toString();
-        j = 300;
+        i2 = 300;
       }
     }
-    StoryReportor.b("play_video", "play_result", this.e, j, new String[] { localObject, paramVarArgs, StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
-    StoryReportor.b("play_video", "play_buffering", this.e, j, new String[] { String.valueOf(this.f), String.valueOf(this.g), StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
-    long l2 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData.jdField_a_of_type_Long;
+    StoryReportor.b("play_video", "play_result", this.j, i2, new String[] { localObject, paramVarArgs, StoryReportor.a(this.q.a()), this.i });
+    StoryReportor.b("play_video", "play_buffering", this.j, i2, new String[] { String.valueOf(this.k), String.valueOf(this.l), StoryReportor.a(this.q.a()), this.i });
+    long l2 = this.m.d;
     long l1 = 0L;
     if (l2 > 0L) {
-      StoryReportor.b("play_video", "play_bitRate", this.e, j, new String[] { localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData.toString(), StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      StoryReportor.b("play_video", "play_bitRate", this.j, i2, new String[] { localObject, this.m.toString(), StoryReportor.a(this.q.a()), this.i });
     }
-    if (this.jdField_a_of_type_Boolean) {
-      i = 1;
-    } else if (this.jdField_b_of_type_Boolean) {
-      i = 2;
+    if (this.a) {
+      i1 = 1;
+    } else if (this.d) {
+      i1 = 2;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    if (i != 0)
+    if (i1 != 0)
     {
-      if (this.jdField_a_of_type_Long != 0L) {
-        l1 = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+      if (this.n != 0L) {
+        l1 = SystemClock.uptimeMillis() - this.n;
       }
-      StoryReportor.b("sdk_download_video", "video_download_error", this.e, j, new String[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, String.valueOf(i), String.valueOf(l1) });
+      StoryReportor.b("sdk_download_video", "video_download_error", this.j, i2, new String[] { this.o, this.p, String.valueOf(i1), String.valueOf(l1) });
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.15
  * JD-Core Version:    0.7.0.1
  */

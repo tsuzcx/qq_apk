@@ -17,7 +17,7 @@ class VideoForDisc$1
   {
     paramString1 = new StringBuilder();
     paramString1.append("[");
-    paramString1.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDisc.a.nSessionId);
+    paramString1.append(this.b.a.nSessionId);
     paramString1.append("],[getOnlinePlay Url]  ID[");
     paramString1.append(paramLong2);
     paramString1.append("] OnDiscDownloadInfo");
@@ -29,8 +29,8 @@ class VideoForDisc$1
       }
       if (!paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDisc.a(false);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)0L, BaseApplication.getContext().getResources().getString(2131690964));
+        this.b.a(false);
+        this.a.a((int)0L, BaseApplication.getContext().getResources().getString(2131887903));
         return;
       }
     }
@@ -47,23 +47,23 @@ class VideoForDisc$1
       if (QLog.isColorLevel()) {
         QLog.d("VideoForDisc<QFile>", 1, paramString1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramString1, paramString5);
+      this.a.a(paramString1, paramString5);
       return;
     }
     paramLong2 = 9360L;
     if (paramLong1 == 0L) {
       paramLong2 = 9048L;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131690964));
+    this.a.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131887903));
     return;
     label292:
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDisc.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131692751));
+    this.b.a(true);
+    this.a.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131889822));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForDisc.1
  * JD-Core Version:    0.7.0.1
  */

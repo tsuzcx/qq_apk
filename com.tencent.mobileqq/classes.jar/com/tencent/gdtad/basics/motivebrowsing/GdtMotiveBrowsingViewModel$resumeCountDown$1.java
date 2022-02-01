@@ -15,26 +15,26 @@ final class GdtMotiveBrowsingViewModel$resumeCountDown$1<T>
   public final void a(Long paramLong)
   {
     paramLong = this.a;
-    GdtMotiveBrowsingViewModel.a(paramLong, GdtMotiveBrowsingViewModel.a(paramLong) - 1);
+    GdtMotiveBrowsingViewModel.a(paramLong, GdtMotiveBrowsingViewModel.b(paramLong) - 1);
     if (QLog.isColorLevel())
     {
       paramLong = new StringBuilder();
       paramLong.append("onCountDown subscribe value : ");
-      paramLong.append(GdtMotiveBrowsingViewModel.a(this.a));
+      paramLong.append(GdtMotiveBrowsingViewModel.b(this.a));
       QLog.d("GdtMotiveBrowsingViewModel", 2, paramLong.toString());
     }
-    if (GdtMotiveBrowsingViewModel.a(this.a) <= 0)
+    if (GdtMotiveBrowsingViewModel.b(this.a) <= 0)
     {
       paramLong = this.a;
-      GdtMotiveBrowsingViewModel.a(paramLong, GdtMotiveBrowsingViewModel.a(paramLong));
+      GdtMotiveBrowsingViewModel.a(paramLong, GdtMotiveBrowsingViewModel.c(paramLong));
       GdtMotiveBrowsingViewModel.b(this.a, (Subscription)null);
     }
-    this.a.a().setValue(new MotiveBrowsingData(1, null, GdtMotiveBrowsingViewModel.a(this.a), 2, null));
+    this.a.a().setValue(new MotiveBrowsingData(1, null, GdtMotiveBrowsingViewModel.b(this.a), 2, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingViewModel.resumeCountDown.1
  * JD-Core Version:    0.7.0.1
  */

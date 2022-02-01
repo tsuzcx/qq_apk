@@ -47,7 +47,7 @@ public abstract class JsWebViewPlugin
       if ((paramString2 != Void.TYPE) && (paramString2 != Void.class))
       {
         if (paramJsBridgeListener != null) {
-          if (paramJsBridgeListener.a) {
+          if (paramJsBridgeListener.c) {
             callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, paramString1, null));
           } else {
             paramJsBridgeListener.a(paramString1);
@@ -55,7 +55,7 @@ public abstract class JsWebViewPlugin
         }
       }
       else if (paramJsBridgeListener != null) {
-        if (paramJsBridgeListener.a) {
+        if (paramJsBridgeListener.c) {
           callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, null, null));
         } else {
           paramJsBridgeListener.a(null);
@@ -70,7 +70,7 @@ public abstract class JsWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.JsWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

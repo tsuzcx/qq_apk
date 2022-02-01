@@ -23,17 +23,17 @@ public class VideoCaptureFragment
   extends PublicBaseFragment
   implements IVideoCaptureView
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CaptureOperateTouchLayout jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout;
-  private VideoMeasureScaleView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoMeasureScaleView;
-  private ImageUpdateListener jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectImageUpdateListener;
-  private PreviewImageAdapter jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectPreviewImageAdapter;
-  private VideoCapturePresenter jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectVideoCapturePresenter;
-  private TextView b;
+  private Activity a;
+  private RecyclerView b;
+  private CaptureOperateTouchLayout c;
+  private ViewGroup d;
+  private TextView e;
+  private TextView f;
+  private VideoMeasureScaleView g;
+  private ImageView h;
+  private ImageUpdateListener i;
+  private PreviewImageAdapter j;
+  private VideoCapturePresenter k;
   
   public static VideoCaptureFragment a(String paramString, float paramFloat)
   {
@@ -45,25 +45,20 @@ public class VideoCaptureFragment
     return localVideoCaptureFragment;
   }
   
-  private void a()
+  private void e()
   {
-    int i = b() + this.jdField_a_of_type_AndroidWidgetImageView.getPaddingTop() + this.jdField_a_of_type_AndroidWidgetImageView.getPaddingBottom();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.height = i;
-    localLayoutParams.width = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    int m = b() + this.h.getPaddingTop() + this.h.getPaddingBottom();
+    ViewGroup.LayoutParams localLayoutParams = this.h.getLayoutParams();
+    localLayoutParams.height = m;
+    localLayoutParams.width = m;
+    this.h.setLayoutParams(localLayoutParams);
   }
   
-  private void b()
+  private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout.setup(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetTextView, this.b, this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoMeasureScaleView, a());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout.setEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout.setOnCaptureOperateCallback(new VideoCaptureFragment.1(this));
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout.a();
+    this.c.setup(this.h, this.e, this.f, this.g, a());
+    this.c.setEnabled(false);
+    this.c.setOnCaptureOperateCallback(new VideoCaptureFragment.1(this));
   }
   
   public int a()
@@ -71,30 +66,25 @@ public class VideoCaptureFragment
     return 5;
   }
   
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
   public void a(float paramFloat, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout.a(paramFloat, paramBoolean);
+    this.c.a(paramFloat, paramBoolean);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectPreviewImageAdapter.notifyItemChanged(paramInt);
+    this.j.notifyItemChanged(paramInt);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout.setDuration(paramLong);
+    this.c.setDuration(paramLong);
   }
   
   public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-    ImageUpdateListener localImageUpdateListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectImageUpdateListener;
+    this.h.setImageBitmap(paramBitmap);
+    ImageUpdateListener localImageUpdateListener = this.i;
     if (localImageUpdateListener != null) {
       localImageUpdateListener.a(paramBitmap);
     }
@@ -102,94 +92,104 @@ public class VideoCaptureFragment
   
   public void a(ImageUpdateListener paramImageUpdateListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectImageUpdateListener = paramImageUpdateListener;
+    this.i = paramImageUpdateListener;
   }
   
   public void a(OutputPicListener paramOutputPicListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectVideoCapturePresenter.a(paramOutputPicListener);
+    this.k.a(paramOutputPicListener);
   }
   
   public void a(List<CaptureTask> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectPreviewImageAdapter = new PreviewImageAdapter(this.jdField_a_of_type_AndroidAppActivity, paramList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectPreviewImageAdapter);
+    this.j = new PreviewImageAdapter(this.a, paramList);
+    this.b.setAdapter(this.j);
   }
   
   public int b()
   {
-    return (int)((UIUtils.a(BaseApplication.getContext()) - UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 5.0F)) / a());
+    return (int)((UIUtils.b(BaseApplication.getContext()) - UIUtils.a(this.a, 5.0F)) / a());
   }
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout.setDuration(paramLong);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout.setEnabled(true);
+    this.c.setDuration(paramLong);
+    this.c.setEnabled(true);
   }
   
   public void b(List<CaptureTask> paramList)
   {
-    PreviewImageAdapter localPreviewImageAdapter = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectPreviewImageAdapter;
+    PreviewImageAdapter localPreviewImageAdapter = this.j;
     if (localPreviewImageAdapter != null)
     {
       localPreviewImageAdapter.clearList();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectPreviewImageAdapter.appendList(paramList);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectPreviewImageAdapter.notifyDataSetChanged();
+      this.j.appendList(paramList);
+      this.j.notifyDataSetChanged();
     }
+  }
+  
+  public ViewGroup c()
+  {
+    return this.d;
+  }
+  
+  public float d()
+  {
+    return this.c.getCurrentProgress();
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131559981, null);
+    return View.inflate(this.a, 2131626024, null);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectVideoCapturePresenter.c();
+    this.k.c();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectVideoCapturePresenter.e();
+    this.k.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectVideoCapturePresenter.d();
+    this.k.d();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131380541));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131380535));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout = ((CaptureOperateTouchLayout)paramView.findViewById(2131380539));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380536));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380540));
-    this.b = ((TextView)paramView.findViewById(2131380542));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoMeasureScaleView = ((VideoMeasureScaleView)paramView.findViewById(2131380538));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectVideoCapturePresenter = new VideoCapturePresenter(this.jdField_a_of_type_AndroidAppActivity, getArguments(), this);
-    paramView = new LinearLayoutManager(this.jdField_a_of_type_AndroidAppActivity, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutParams().height = b();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-    a();
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectVideoCapturePresenter.a();
+    this.b = ((RecyclerView)paramView.findViewById(2131449498));
+    this.d = ((ViewGroup)paramView.findViewById(2131449492));
+    this.c = ((CaptureOperateTouchLayout)paramView.findViewById(2131449496));
+    this.h = ((ImageView)paramView.findViewById(2131449493));
+    this.e = ((TextView)paramView.findViewById(2131449497));
+    this.f = ((TextView)paramView.findViewById(2131449499));
+    this.g = ((VideoMeasureScaleView)paramView.findViewById(2131449495));
+    this.k = new VideoCapturePresenter(this.a, getArguments(), this);
+    paramView = new LinearLayoutManager(this.a, 0, false);
+    this.b.setLayoutManager(paramView);
+    this.b.getLayoutParams().height = b();
+    this.b.setLayoutManager(paramView);
+    e();
+    f();
+    this.k.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.VideoCaptureFragment
  * JD-Core Version:    0.7.0.1
  */

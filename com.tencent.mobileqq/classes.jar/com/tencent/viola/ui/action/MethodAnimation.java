@@ -28,6 +28,7 @@ import com.tencent.viola.ui.baseComponent.VComponent.AnimationInfo;
 import com.tencent.viola.ui.context.DOMActionContext;
 import com.tencent.viola.ui.context.RenderActionContext;
 import com.tencent.viola.ui.dom.DomObject;
+import com.tencent.viola.ui.dom.Style;
 import com.tencent.viola.ui.dom.style.BorderDrawable;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.viola.utils.SingleFunctionParser;
@@ -233,6 +234,44 @@ public class MethodAnimation
     catch (RuntimeException paramViolaInstance) {}
   }
   
+  private void updateAnimateProperty2Dom(VComponent paramVComponent)
+  {
+    Object localObject = this.mAnimationBean;
+    if (localObject != null)
+    {
+      if (((AnimationBean)localObject).styles == null) {
+        return;
+      }
+      if (paramVComponent == null) {
+        return;
+      }
+      paramVComponent = paramVComponent.getDomObject();
+      if (paramVComponent == null) {
+        return;
+      }
+      paramVComponent = paramVComponent.getStyle();
+      localObject = this.mAnimationBean.styles;
+      if (((AnimationBean.Style)localObject).pivot != null) {
+        paramVComponent.put("transform_origin_parse", ((AnimationBean.Style)localObject).pivot);
+      }
+      if (((AnimationBean.Style)localObject).transformMap != null) {
+        paramVComponent.put("transform_parse", ((AnimationBean.Style)localObject).transformMap);
+      }
+      if (!TextUtils.isEmpty(((AnimationBean.Style)localObject).width)) {
+        paramVComponent.put("width", ((AnimationBean.Style)localObject).width);
+      }
+      if (!TextUtils.isEmpty(((AnimationBean.Style)localObject).height)) {
+        paramVComponent.put("height", ((AnimationBean.Style)localObject).height);
+      }
+      if (!TextUtils.isEmpty(((AnimationBean.Style)localObject).backgroundColor)) {
+        paramVComponent.put("backgroundColor", ((AnimationBean.Style)localObject).backgroundColor);
+      }
+      if (!TextUtils.isEmpty(((AnimationBean.Style)localObject).opacity)) {
+        paramVComponent.put("opacity", ((AnimationBean.Style)localObject).opacity);
+      }
+    }
+  }
+  
   public void executeDom(DOMActionContext paramDOMActionContext)
   {
     try
@@ -277,7 +316,7 @@ public class MethodAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAnimation
  * JD-Core Version:    0.7.0.1
  */

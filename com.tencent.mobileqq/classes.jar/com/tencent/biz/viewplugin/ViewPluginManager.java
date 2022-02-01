@@ -16,27 +16,27 @@ import java.util.HashMap;
 
 public class ViewPluginManager
 {
-  SharedPreferences a;
   public ViewPluginContext a;
-  public BaseActivity a;
-  public ClassLoader a;
-  public String a;
-  public HashMap<String, Class> a;
-  public String b;
-  String c = null;
-  public String d = null;
+  public ClassLoader b;
+  public String c;
+  public String d;
+  public BaseActivity e;
+  public HashMap<String, Class> f;
+  String g = null;
+  SharedPreferences h;
+  public String i = null;
   
   public ViewPluginManager(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3)
   {
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.d = paramString1;
+    this.c = paramString2;
+    this.e = paramBaseActivity;
+    this.f = new HashMap();
     paramBaseActivity = new StringBuilder();
-    paramBaseActivity.append(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getFilesDir());
+    paramBaseActivity.append(this.e.getFilesDir());
     paramBaseActivity.append(paramString3);
-    this.c = paramBaseActivity.toString();
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getPreferences(0);
+    this.g = paramBaseActivity.toString();
+    this.h = this.e.getPreferences(0);
   }
   
   public static boolean a(View paramView, String paramString)
@@ -63,7 +63,7 @@ public class ViewPluginManager
   
   public View a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangClassLoader;
+    Object localObject = this.b;
     if (localObject != null) {}
     try
     {
@@ -75,7 +75,7 @@ public class ViewPluginManager
       {
         try
         {
-          paramString = (View)((Class)localObject).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext });
+          paramString = (View)((Class)localObject).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.a });
           return paramString;
         }
         catch (Exception paramString) {}
@@ -89,34 +89,26 @@ public class ViewPluginManager
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("plugin:");
-        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(this.d);
         ((StringBuilder)localObject).append(" not find view:");
         ((StringBuilder)localObject).append(paramString);
         QLog.d("ViewPluginManager", 2, ((StringBuilder)localObject).toString());
       }
       return null;
     }
-    if (this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext == null)
+    if (this.a == null)
     {
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("plugin:");
-        paramString.append(this.b);
+        paramString.append(this.d);
         paramString.append(" plugin context is null");
         QLog.d("ViewPluginManager", 2, paramString.toString());
       }
       return null;
     }
     return null;
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("sp_key_plugin_view_version_");
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
   }
   
   public void a()
@@ -128,41 +120,41 @@ public class ViewPluginManager
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("https://");
-    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(this.d);
     ((StringBuilder)localObject1).append("?_bid=");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.c);
     localObject1 = ((StringBuilder)localObject1).toString();
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("loadPlugin:");
-      ((StringBuilder)localObject2).append(this.b);
+      ((StringBuilder)localObject2).append(this.d);
       ((StringBuilder)localObject2).append("mBid:");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.c);
       QLog.d("ViewPluginManager", 2, ((StringBuilder)localObject2).toString());
     }
-    HtmlOffline.a();
+    HtmlOffline.b();
     boolean bool;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getLongAccountUin() % 10L == 6L)) {
+    if ((this.e.app != null) && (this.e.app.getLongAccountUin() % 10L == 6L)) {
       bool = true;
     } else {
       bool = false;
     }
-    HtmlOffline.a = bool;
+    HtmlOffline.i = bool;
     a();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext();
+    Object localObject2 = this.e.getApplicationContext();
     long l = System.currentTimeMillis();
-    if ((!HtmlOffline.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), (String)localObject1, new ViewPluginManager.2(this, l, (Context)localObject2, paramBoolean, paramAsyncCallBack))) && (QLog.isColorLevel()))
+    if ((!HtmlOffline.a(this.e.getApplicationContext(), (String)localObject1, new ViewPluginManager.2(this, l, (Context)localObject2, paramBoolean, paramAsyncCallBack))) && (QLog.isColorLevel()))
     {
       paramAsyncCallBack = new StringBuilder();
       paramAsyncCallBack.append("plugin:");
-      paramAsyncCallBack.append(this.b);
+      paramAsyncCallBack.append(this.d);
       paramAsyncCallBack.append(" transToLocalUrl: return false");
       QLog.i("ViewPluginManager", 2, paramAsyncCallBack.toString());
     }
   }
   
-  public void a(String paramString)
+  public void b(String paramString)
   {
     paramString = a(paramString);
     if (paramString == null) {
@@ -177,10 +169,18 @@ public class ViewPluginManager
     }
     catch (Exception paramString) {}
   }
+  
+  public String c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_key_plugin_view_version_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginManager
  * JD-Core Version:    0.7.0.1
  */

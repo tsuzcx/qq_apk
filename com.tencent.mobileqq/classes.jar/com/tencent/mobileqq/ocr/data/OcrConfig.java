@@ -47,70 +47,70 @@ public class OcrConfig
   
   static
   {
-    a.put("zh", HardCodeUtil.a(2131707697));
-    a.put("en", HardCodeUtil.a(2131707709));
-    a.put("af", HardCodeUtil.a(2131707738));
-    a.put("ar", HardCodeUtil.a(2131707754));
-    a.put("eu", HardCodeUtil.a(2131707719));
-    a.put("be", HardCodeUtil.a(2131707733));
-    a.put("hr", HardCodeUtil.a(2131707707));
-    a.put("da", HardCodeUtil.a(2131707752));
-    a.put("nl", HardCodeUtil.a(2131707714));
-    a.put("fo", HardCodeUtil.a(2131707703));
-    a.put("fi", HardCodeUtil.a(2131707718));
-    a.put("fr", HardCodeUtil.a(2131707723));
-    a.put("gd", HardCodeUtil.a(2131707731));
-    a.put("de", HardCodeUtil.a(2131707710));
-    a.put("he", HardCodeUtil.a(2131707741));
-    a.put("hu", HardCodeUtil.a(2131707746));
-    a.put("id", HardCodeUtil.a(2131707729));
-    a.put("it", HardCodeUtil.a(2131707717));
-    a.put("kr", HardCodeUtil.a(2131707744));
-    a.put("ko", HardCodeUtil.a(2131707727));
-    a.put("lv", HardCodeUtil.a(2131707756));
-    a.put("mk", HardCodeUtil.a(2131707732));
-    a.put("mt", HardCodeUtil.a(2131707721));
-    a.put("no", HardCodeUtil.a(2131707745));
-    a.put("pt", HardCodeUtil.a(2131707742));
-    a.put("rm", HardCodeUtil.a(2131707740));
-    a.put("ro", HardCodeUtil.a(2131707724));
-    a.put("sr", HardCodeUtil.a(2131707755));
-    a.put("sk", HardCodeUtil.a(2131707736));
-    a.put("sb", HardCodeUtil.a(2131707722));
-    a.put("es", HardCodeUtil.a(2131707728));
-    a.put("sx", HardCodeUtil.a(2131707737));
-    a.put("sv", HardCodeUtil.a(2131707734));
-    a.put("ts", HardCodeUtil.a(2131707711));
-    a.put("tr", HardCodeUtil.a(2131707701));
-    a.put("ur", HardCodeUtil.a(2131707696));
-    a.put("vi", HardCodeUtil.a(2131707748));
-    a.put("ji", HardCodeUtil.a(2131707705));
-    a.put("sq", HardCodeUtil.a(2131707720));
-    a.put("bg", HardCodeUtil.a(2131707725));
-    a.put("ca", HardCodeUtil.a(2131707704));
-    a.put("cs", HardCodeUtil.a(2131707749));
-    a.put("et", HardCodeUtil.a(2131707750));
-    a.put("fa", HardCodeUtil.a(2131707706));
-    a.put("ga", HardCodeUtil.a(2131707743));
-    a.put("el", HardCodeUtil.a(2131707702));
-    a.put("hi", HardCodeUtil.a(2131707716));
-    a.put("is", HardCodeUtil.a(2131707700));
-    a.put("jp", HardCodeUtil.a(2131707751));
-    a.put("ja", HardCodeUtil.a(2131707753));
-    a.put("lt", HardCodeUtil.a(2131707739));
-    a.put("ms", HardCodeUtil.a(2131707715));
-    a.put("pl", HardCodeUtil.a(2131707730));
-    a.put("ru", HardCodeUtil.a(2131707735));
-    a.put("sz", HardCodeUtil.a(2131707747));
-    a.put("sl", HardCodeUtil.a(2131707726));
-    a.put("th", HardCodeUtil.a(2131707695));
-    a.put("tn", HardCodeUtil.a(2131707698));
-    a.put("uk", HardCodeUtil.a(2131707708));
-    a.put("ve", HardCodeUtil.a(2131707757));
-    a.put("xh", HardCodeUtil.a(2131707713));
-    a.put("zu", HardCodeUtil.a(2131707712));
-    a.put("jap", HardCodeUtil.a(2131707751));
-    a.put("unk", HardCodeUtil.a(2131707699));
+    a.put("zh", HardCodeUtil.a(2131905511));
+    a.put("en", HardCodeUtil.a(2131905523));
+    a.put("af", HardCodeUtil.a(2131905552));
+    a.put("ar", HardCodeUtil.a(2131905568));
+    a.put("eu", HardCodeUtil.a(2131905533));
+    a.put("be", HardCodeUtil.a(2131905547));
+    a.put("hr", HardCodeUtil.a(2131905521));
+    a.put("da", HardCodeUtil.a(2131905566));
+    a.put("nl", HardCodeUtil.a(2131905528));
+    a.put("fo", HardCodeUtil.a(2131905517));
+    a.put("fi", HardCodeUtil.a(2131905532));
+    a.put("fr", HardCodeUtil.a(2131905537));
+    a.put("gd", HardCodeUtil.a(2131905545));
+    a.put("de", HardCodeUtil.a(2131905524));
+    a.put("he", HardCodeUtil.a(2131905555));
+    a.put("hu", HardCodeUtil.a(2131905560));
+    a.put("id", HardCodeUtil.a(2131905543));
+    a.put("it", HardCodeUtil.a(2131905531));
+    a.put("kr", HardCodeUtil.a(2131905558));
+    a.put("ko", HardCodeUtil.a(2131905541));
+    a.put("lv", HardCodeUtil.a(2131905570));
+    a.put("mk", HardCodeUtil.a(2131905546));
+    a.put("mt", HardCodeUtil.a(2131905535));
+    a.put("no", HardCodeUtil.a(2131905559));
+    a.put("pt", HardCodeUtil.a(2131905556));
+    a.put("rm", HardCodeUtil.a(2131905554));
+    a.put("ro", HardCodeUtil.a(2131905538));
+    a.put("sr", HardCodeUtil.a(2131905569));
+    a.put("sk", HardCodeUtil.a(2131905550));
+    a.put("sb", HardCodeUtil.a(2131905536));
+    a.put("es", HardCodeUtil.a(2131905542));
+    a.put("sx", HardCodeUtil.a(2131905551));
+    a.put("sv", HardCodeUtil.a(2131905548));
+    a.put("ts", HardCodeUtil.a(2131905525));
+    a.put("tr", HardCodeUtil.a(2131905515));
+    a.put("ur", HardCodeUtil.a(2131905510));
+    a.put("vi", HardCodeUtil.a(2131905562));
+    a.put("ji", HardCodeUtil.a(2131905519));
+    a.put("sq", HardCodeUtil.a(2131905534));
+    a.put("bg", HardCodeUtil.a(2131905539));
+    a.put("ca", HardCodeUtil.a(2131905518));
+    a.put("cs", HardCodeUtil.a(2131905563));
+    a.put("et", HardCodeUtil.a(2131905564));
+    a.put("fa", HardCodeUtil.a(2131905520));
+    a.put("ga", HardCodeUtil.a(2131905557));
+    a.put("el", HardCodeUtil.a(2131905516));
+    a.put("hi", HardCodeUtil.a(2131905530));
+    a.put("is", HardCodeUtil.a(2131905514));
+    a.put("jp", HardCodeUtil.a(2131905565));
+    a.put("ja", HardCodeUtil.a(2131905567));
+    a.put("lt", HardCodeUtil.a(2131905553));
+    a.put("ms", HardCodeUtil.a(2131905529));
+    a.put("pl", HardCodeUtil.a(2131905544));
+    a.put("ru", HardCodeUtil.a(2131905549));
+    a.put("sz", HardCodeUtil.a(2131905561));
+    a.put("sl", HardCodeUtil.a(2131905540));
+    a.put("th", HardCodeUtil.a(2131905509));
+    a.put("tn", HardCodeUtil.a(2131905512));
+    a.put("uk", HardCodeUtil.a(2131905522));
+    a.put("ve", HardCodeUtil.a(2131905571));
+    a.put("xh", HardCodeUtil.a(2131905527));
+    a.put("zu", HardCodeUtil.a(2131905526));
+    a.put("jap", HardCodeUtil.a(2131905565));
+    a.put("unk", HardCodeUtil.a(2131905513));
   }
   
   public OcrConfig() {}
@@ -155,12 +155,12 @@ public class OcrConfig
   public static String getDefaultLanguageName(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      return HardCodeUtil.a(2131707699);
+      return HardCodeUtil.a(2131905513);
     }
     String str2 = (String)a.get(paramString);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = HardCodeUtil.a(2131707699);
+      str1 = HardCodeUtil.a(2131905513);
     }
     if (QLog.isColorLevel()) {
       QLog.d("OcrConfig", 2, String.format("getDefaultLanguageName, code:%s, name:%s", new Object[] { paramString, str1 }));
@@ -1445,7 +1445,7 @@ public class OcrConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.OcrConfig
  * JD-Core Version:    0.7.0.1
  */

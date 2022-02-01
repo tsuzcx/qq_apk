@@ -15,18 +15,18 @@ class ColorRingPlayer$1
   
   public void onCompletion(MediaPlayer arg1)
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b.b)
     {
       ???.release();
-      this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      ??? = this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer;
-      ???.jdField_a_of_type_Int = 0;
-      ???.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.c.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130847318));
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$PlayerStatus)
+      this.b.c = null;
+      ??? = this.b;
+      ???.d = 0;
+      ???.n.setProgress(0);
+      this.b.m.setImageDrawable(this.b.e.getResources().getDrawable(2130848969));
+      this.a.abandonAudioFocus(this.b.u);
+      synchronized (this.b.a)
       {
-        this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer$PlayerStatus.jdField_a_of_type_Int = 6;
+        this.b.a.a = 6;
         return;
       }
     }
@@ -34,7 +34,7 @@ class ColorRingPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.ColorRingPlayer.1
  * JD-Core Version:    0.7.0.1
  */

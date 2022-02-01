@@ -32,13 +32,13 @@ public class EcshopMenuDialog
   extends PopupWindow
   implements View.OnClickListener
 {
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private EcshopMenuDialog.OnClickActionListener jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopMenuDialog$OnClickActionListener;
+  private EcshopMenuDialog.OnClickActionListener a;
+  private final Activity b;
   
   private EcshopMenuDialog(Activity paramActivity, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super(paramView, paramInt1, paramInt2, paramBoolean);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramActivity;
   }
   
   public static int a(Context paramContext, int paramInt)
@@ -48,7 +48,7 @@ public class EcshopMenuDialog
   
   private static View a(Activity paramActivity, List<EcshopConfBean.MenuConfBean> paramList, ArrayList<RedPointInfo> paramArrayList)
   {
-    View localView = LayoutInflater.from(paramActivity).inflate(2131561888, null);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131628306, null);
     a(paramActivity, localView, paramList, paramArrayList);
     return localView;
   }
@@ -56,13 +56,13 @@ public class EcshopMenuDialog
   public static EcshopMenuDialog a(Activity paramActivity, List<EcshopConfBean.MenuConfBean> paramList, ArrayList<RedPointInfo> paramArrayList, EcshopMenuDialog.OnClickActionListener paramOnClickActionListener)
   {
     int i = a(paramActivity, paramList.size());
-    int j = ViewUtils.a(122.0F);
+    int j = ViewUtils.dip2px(122.0F);
     paramActivity = new EcshopMenuDialog(paramActivity, a(paramActivity, paramList, paramArrayList), j, i, true);
-    paramActivity.setAnimationStyle(2131755035);
+    paramActivity.setAnimationStyle(2131951650);
     paramActivity.setBackgroundDrawable(new ColorDrawable(0));
     paramActivity.setOutsideTouchable(false);
     paramActivity.a(paramActivity.getContentView());
-    paramActivity.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopMenuDialog$OnClickActionListener = paramOnClickActionListener;
+    paramActivity.a = paramOnClickActionListener;
     return paramActivity;
   }
   
@@ -75,7 +75,7 @@ public class EcshopMenuDialog
   
   private static void a(Context paramContext, View paramView, List<EcshopConfBean.MenuConfBean> paramList, ArrayList<RedPointInfo> paramArrayList)
   {
-    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131370288);
+    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131437520);
     localLinearLayout.removeAllViews();
     long l = NetConnInfoCenter.getServerTime();
     Iterator localIterator = paramList.iterator();
@@ -85,12 +85,34 @@ public class EcshopMenuDialog
       Object localObject1 = LayoutInflater.from(paramContext);
       paramList = null;
       paramView = null;
-      localObject1 = ((LayoutInflater)localObject1).inflate(2131561889, null);
-      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131381222);
-      Object localObject2 = (TextView)((View)localObject1).findViewById(2131379739);
-      ((ImageView)((View)localObject1).findViewById(2131370806)).setImageDrawable(QQShopPicUtil.a(localMenuConfBean.d, URLDrawableHelperConstants.a));
-      ((TextView)localObject2).setText(localMenuConfBean.jdField_a_of_type_JavaLangString);
-      ((TextView)localObject2).setTextColor(Color.parseColor(localMenuConfBean.f));
+      localObject1 = ((LayoutInflater)localObject1).inflate(2131628307, null);
+      ImageView localImageView1 = (ImageView)((View)localObject1).findViewById(2131450270);
+      Object localObject2 = (TextView)((View)localObject1).findViewById(2131448544);
+      ImageView localImageView2 = (ImageView)((View)localObject1).findViewById(2131438119);
+      TextView localTextView = (TextView)((View)localObject1).findViewById(2131438121);
+      if (localMenuConfBean.a != 0)
+      {
+        if (localMenuConfBean.a >= 100)
+        {
+          localTextView.setText("99+");
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(localMenuConfBean.a);
+          localTextView.setText(localStringBuilder.toString());
+        }
+        localTextView.post(new EcshopMenuDialog.1(localTextView));
+        localTextView.setVisibility(0);
+      }
+      else
+      {
+        localTextView.setVisibility(8);
+      }
+      localImageView2.setImageDrawable(QQShopPicUtil.a(localMenuConfBean.f, URLDrawableHelperConstants.a));
+      ((TextView)localObject2).setText(localMenuConfBean.c);
+      ((TextView)localObject2).setTextColor(Color.parseColor(localMenuConfBean.h));
       if (paramArrayList != null)
       {
         localObject2 = paramArrayList.iterator();
@@ -101,7 +123,7 @@ public class EcshopMenuDialog
             break;
           }
           paramList = (RedPointInfo)((Iterator)localObject2).next();
-          if (paramList.mTabId == localMenuConfBean.jdField_a_of_type_Int) {
+          if (paramList.mTabId == localMenuConfBean.b) {
             paramView = paramList;
           }
         }
@@ -110,13 +132,13 @@ public class EcshopMenuDialog
       if (paramList != null)
       {
         if (QQShopRedPointUtil.a.a(paramList, -1, l)) {
-          localImageView.setVisibility(0);
+          localImageView1.setVisibility(0);
         } else {
-          localImageView.setVisibility(8);
+          localImageView1.setVisibility(8);
         }
       }
       else {
-        localImageView.setVisibility(8);
+        localImageView1.setVisibility(8);
       }
       localLinearLayout.addView((View)localObject1, new LinearLayout.LayoutParams(-1, DisplayUtil.a(paramContext, 50.0F)));
     }
@@ -142,13 +164,13 @@ public class EcshopMenuDialog
   public void dismiss()
   {
     super.dismiss();
-    a(this.jdField_a_of_type_AndroidAppActivity, 1.0F);
+    a(this.b, 1.0F);
   }
   
   public void onClick(View paramView)
   {
     EcshopMenuDialog.ViewTag localViewTag = (EcshopMenuDialog.ViewTag)paramView.getTag();
-    EcshopMenuDialog.OnClickActionListener localOnClickActionListener = this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopMenuDialog$OnClickActionListener;
+    EcshopMenuDialog.OnClickActionListener localOnClickActionListener = this.a;
     if ((localOnClickActionListener != null) && (localViewTag != null)) {
       localOnClickActionListener.a(localViewTag);
     }
@@ -159,12 +181,12 @@ public class EcshopMenuDialog
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
   {
     super.showAsDropDown(paramView, paramInt1, paramInt2);
-    a(this.jdField_a_of_type_AndroidAppActivity, 0.6F);
+    a(this.b, 0.6F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.EcshopMenuDialog
  * JD-Core Version:    0.7.0.1
  */

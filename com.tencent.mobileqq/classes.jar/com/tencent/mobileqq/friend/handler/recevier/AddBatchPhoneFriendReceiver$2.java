@@ -10,12 +10,12 @@ class AddBatchPhoneFriendReceiver$2
   
   public void run()
   {
-    ((FriendHandler)this.this$0.a()).a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList);
+    ((FriendHandler)this.this$0.c()).a(this.a, this.b, this.c, this.d, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.AddBatchPhoneFriendReceiver.2
  * JD-Core Version:    0.7.0.1
  */

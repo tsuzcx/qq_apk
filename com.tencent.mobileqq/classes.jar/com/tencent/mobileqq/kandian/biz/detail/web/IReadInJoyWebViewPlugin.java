@@ -14,29 +14,29 @@ public abstract interface IReadInJoyWebViewPlugin
   
   public abstract int a(byte paramByte, boolean paramBoolean);
   
-  @Nullable
-  public abstract Activity a();
-  
-  @Nullable
-  public abstract Object a();
-  
-  @Nullable
-  public abstract String a();
-  
   @NotNull
   public abstract AppRuntime a();
   
   @Nullable
-  public abstract String b();
+  public abstract Object b();
   
   @Nullable
   public abstract String c();
+  
+  @Nullable
+  public abstract String d();
+  
+  @Nullable
+  public abstract Activity e();
+  
+  @Nullable
+  public abstract String f();
   
   public abstract void startActivityForResult(@Nullable Intent paramIntent, byte paramByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.detail.web.IReadInJoyWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

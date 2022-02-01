@@ -14,7 +14,7 @@ public class FeedSegment$TroopNickNameUpdateEventReceiver
   
   public void a(@NonNull FeedSegment paramFeedSegment, @NonNull TroopNickNameManager.TroopNickNameUpdateEvent paramTroopNickNameUpdateEvent)
   {
-    paramFeedSegment.i();
+    paramFeedSegment.m();
   }
   
   public Class acceptEventClass()

@@ -18,7 +18,7 @@ public class BindGroupActivity$GroupListAdapter
   
   public int getCount()
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
+    return this.a.m.size();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -30,23 +30,23 @@ public class BindGroupActivity$GroupListAdapter
     }
     else
     {
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562819, paramViewGroup, false);
+      paramView = this.a.i.inflate(2131629264, paramViewGroup, false);
       localViewHolder = new BindGroupActivity.ViewHolder();
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366401));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379316));
+      localViewHolder.a = ((ImageView)paramView.findViewById(2131432714));
+      localViewHolder.b = ((TextView)paramView.findViewById(2131448053));
       paramView.setTag(localViewHolder);
     }
-    BindGroupActivity.GroupInfo localGroupInfo = (BindGroupActivity.GroupInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupInfo.b);
-    localViewHolder.jdField_a_of_type_JavaLangString = localGroupInfo.c;
+    BindGroupActivity.GroupInfo localGroupInfo = (BindGroupActivity.GroupInfo)this.a.m.get(paramInt);
+    localViewHolder.b.setText(localGroupInfo.b);
+    localViewHolder.c = localGroupInfo.c;
     Bitmap localBitmap = ImageLoader.a().a(localGroupInfo.c);
     if (localBitmap != null)
     {
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      localViewHolder.a.setImageBitmap(localBitmap);
     }
     else
     {
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840582);
+      localViewHolder.a.setImageResource(2130841348);
       ImageLoader.a().a(localGroupInfo.c, this.a);
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
@@ -55,7 +55,7 @@ public class BindGroupActivity$GroupListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupActivity.GroupListAdapter
  * JD-Core Version:    0.7.0.1
  */

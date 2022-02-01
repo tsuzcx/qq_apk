@@ -20,7 +20,7 @@ class GetNearbyRecommender$MyCardObserver
       paramCard.append(paramString);
       QLog.d("QQInitHandler", 2, paramCard.toString());
     }
-    if (!this.a.mAutomator.a.getCurrentAccountUin().equals(paramString)) {
+    if (!this.a.mAutomator.k.getCurrentAccountUin().equals(paramString)) {
       return;
     }
     if (!paramBoolean)
@@ -33,7 +33,7 @@ class GetNearbyRecommender$MyCardObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetNearbyRecommender.MyCardObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.av.utils;
 
 class SensorReport$ScreenInfo
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
+  int a = 0;
   long b = 0L;
-  long c = this.jdField_a_of_type_ComTencentAvUtilsSensorReport.jdField_a_of_type_Int;
+  long c = 0L;
+  long d = this.e.a;
   
   SensorReport$ScreenInfo(SensorReport paramSensorReport) {}
 }

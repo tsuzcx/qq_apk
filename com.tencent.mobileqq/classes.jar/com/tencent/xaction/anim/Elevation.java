@@ -8,7 +8,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Elevation;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "elev", "", "getElev", "()F", "setElev", "(F)V", "start", "getStart", "setStart", "doFrameUpdate", "", "animTime", "end", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Elevation;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "elev", "", "getElev", "()F", "setElev", "(F)V", "start", "getStart", "setStart", "doFrameUpdate", "", "animTime", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Elevation
   extends BaseAnim
@@ -28,8 +28,6 @@ public final class Elevation
       }
     }
   }
-  
-  public void end() {}
   
   public final float getElev()
   {
@@ -62,7 +60,7 @@ public final class Elevation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.anim.Elevation
  * JD-Core Version:    0.7.0.1
  */

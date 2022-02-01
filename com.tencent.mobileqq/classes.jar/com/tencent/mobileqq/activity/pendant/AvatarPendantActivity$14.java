@@ -24,11 +24,11 @@ class AvatarPendantActivity$14
 {
   AvatarPendantActivity$14(AvatarPendantActivity paramAvatarPendantActivity, ArrayList paramArrayList, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    if ((paramInt >= 0) && (paramInt < this.a.size()))
     {
-      paramInt = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue();
+      paramInt = ((Integer)this.a.get(paramInt)).intValue();
       int i;
       if (paramInt != 13)
       {
@@ -39,114 +39,114 @@ class AvatarPendantActivity$14
           default: 
             break;
           case 24: 
-            this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.g();
-            AvatarPendantActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity);
+            this.c.k();
+            AvatarPendantActivity.b(this.c);
             break;
           case 23: 
-            paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app;
-            AvatarPendantActivity localAvatarPendantActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity;
-            ProfileCardUtil.a(paramView, localAvatarPendantActivity, localAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne.uin, 0, 0);
+            paramView = this.c.app;
+            AvatarPendantActivity localAvatarPendantActivity = this.c;
+            ProfileCardUtil.a(paramView, localAvatarPendantActivity, localAvatarPendantActivity.E, this.c.L.uin, 0, 0);
             break;
           case 22: 
             boolean bool = VideoEnvironment.isShortVideoSoLibLoaded();
-            if ((!AudioPlayerHelper.a()) && (!Build.MODEL.contains("Redmi 3")) && (!Build.MODEL.contains("M3S")))
+            if ((!AudioPlayerHelper.e()) && (!Build.MODEL.contains("Redmi 3")) && (!Build.MODEL.contains("M3S")))
             {
               if (bool)
               {
                 if (Build.VERSION.SDK_INT >= 23)
                 {
-                  if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
+                  if (this.c.checkSelfPermission("android.permission.CAMERA") != 0) {
                     paramInt = 1;
                   } else {
                     paramInt = 0;
                   }
-                  if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {
+                  if (this.c.checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {
                     i = 1;
                   } else {
                     i = 0;
                   }
                   int j;
-                  if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
+                  if (this.c.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
                     j = 1;
                   } else {
                     j = 0;
                   }
                   if ((paramInt == 0) && (i == 0) && (j == 0))
                   {
-                    DynamicAvatarRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 1, 1);
-                    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007100", "0X8007100", 0, 0, "", "", "", "");
+                    DynamicAvatarRecordActivity.a(this.c, 1, 1);
+                    ReportController.b(this.c.app, "dc00898", "", "", "0X8007100", "0X8007100", 0, 0, "", "", "", "");
                   }
                   else
                   {
-                    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.requestPermissions(new AvatarPendantActivity.14.1(this), 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.WRITE_EXTERNAL_STORAGE" });
+                    this.c.requestPermissions(new AvatarPendantActivity.14.1(this), 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.WRITE_EXTERNAL_STORAGE" });
                   }
                 }
                 else
                 {
-                  DynamicAvatarRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 1, 1);
-                  ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007100", "0X8007100", 0, 0, "", "", "", "");
+                  DynamicAvatarRecordActivity.a(this.c, 1, 1);
+                  ReportController.b(this.c.app, "dc00898", "", "", "0X8007100", "0X8007100", 0, 0, "", "", "", "");
                 }
               }
               else
               {
-                if (!this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.e)
+                if (!this.c.ae)
                 {
                   ThreadManager.postImmediately(new AvatarPendantActivity.14.2(this), null, true);
-                  this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.e = true;
+                  this.c.ae = true;
                 }
-                QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, HardCodeUtil.a(2131701096), 0).a();
+                QQToast.makeText(this.c, HardCodeUtil.a(2131899114), 0).show();
               }
             }
             else {
-              QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, HardCodeUtil.a(2131701092), 0).a();
+              QQToast.makeText(this.c, HardCodeUtil.a(2131899110), 0).show();
             }
             break;
           }
         }
         else
         {
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, QQBrowserActivity.class);
+          paramView = new Intent(this.c, QQBrowserActivity.class);
           paramView.putExtra("url", "https://ti.qq.com/avatarlist/public/index.html?_wv=3&_wwv=4");
-          this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.startActivity(paramView);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007C10", "0X8007C10", 0, 0, "", "", "", "");
+          this.c.startActivity(paramView);
+          ReportController.b(this.c.app, "dc00898", "", "", "0X8007C10", "0X8007C10", 0, 0, "", "", "", "");
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.g();
+        this.c.k();
         if (Build.VERSION.SDK_INT >= 23)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
+          if (this.c.checkSelfPermission("android.permission.CAMERA") != 0) {
             paramInt = 1;
           } else {
             paramInt = 0;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
+          if (this.c.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
             i = 1;
           } else {
             i = 0;
           }
           if ((paramInt == 0) && (i == 0))
           {
-            paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity;
-            paramView.jdField_a_of_type_AndroidNetUri = ProfileCardUtils.enterSnapshot(paramView, 5);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8004176", "0X8004176", this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne.profileEntryType, 0, "", "", "", "");
+            paramView = this.c;
+            paramView.K = ProfileCardUtils.enterSnapshot(paramView, 5);
+            ReportController.b(this.c.app, "CliOper", "", "", "0X8004176", "0X8004176", this.c.L.profileEntryType, 0, "", "", "", "");
           }
           else
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.requestPermissions(new AvatarPendantActivity.14.3(this), 2, new String[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE" });
+            this.c.requestPermissions(new AvatarPendantActivity.14.3(this), 2, new String[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE" });
           }
         }
         else
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity;
-          paramView.jdField_a_of_type_AndroidNetUri = ProfileCardUtils.enterSnapshot(paramView, 5);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8004176", "0X8004176", this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne.profileEntryType, 0, "", "", "", "");
+          paramView = this.c;
+          paramView.K = ProfileCardUtils.enterSnapshot(paramView, 5);
+          ReportController.b(this.c.app, "CliOper", "", "", "0X8004176", "0X8004176", this.c.L.profileEntryType, 0, "", "", "", "");
         }
       }
       try
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        this.b.dismiss();
         return;
       }
       catch (Exception paramView)
@@ -155,12 +155,12 @@ class AvatarPendantActivity$14
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.14
  * JD-Core Version:    0.7.0.1
  */

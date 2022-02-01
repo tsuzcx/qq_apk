@@ -3,6 +3,8 @@ package com.tencent.mobileqq.pluspanel.appinfo;
 import android.util.SparseArray;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo.Factory;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 
 public class AppInfoFactory
@@ -110,6 +112,8 @@ public class AppInfoFactory
     this.a.put(1106729451, new BulkSendMsgAppInfo());
     localObject = new AskAnonymouslyAppInfo();
     this.a.put(101912132, localObject);
+    localObject = (PlusPanelAppInfo)((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getNewGuildMobaTeamAppInfo();
+    this.a.put(2000000001, localObject);
   }
   
   private void a(PlusPanelAppInfo paramPlusPanelAppInfo, TroopAIOAppInfo paramTroopAIOAppInfo)
@@ -154,7 +158,7 @@ public class AppInfoFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AppInfoFactory
  * JD-Core Version:    0.7.0.1
  */

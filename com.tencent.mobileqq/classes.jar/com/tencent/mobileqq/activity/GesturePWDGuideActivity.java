@@ -15,8 +15,8 @@ public class GesturePWDGuideActivity
   
   private void a()
   {
-    setTitle(2131692903);
-    this.a = ((Button)findViewById(2131367635));
+    setTitle(2131890014);
+    this.a = ((Button)findViewById(2131434179));
     this.a.setOnClickListener(new GesturePWDGuideActivity.1(this));
   }
   
@@ -49,13 +49,13 @@ public class GesturePWDGuideActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559203);
+    super.setContentView(2131624959);
     a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDGuideActivity
  * JD-Core Version:    0.7.0.1
  */

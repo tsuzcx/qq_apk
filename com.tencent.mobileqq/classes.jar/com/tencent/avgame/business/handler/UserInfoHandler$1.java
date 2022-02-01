@@ -10,10 +10,10 @@ class UserInfoHandler$1
   
   public void run()
   {
-    UserInfoHandler.a(this.this$0, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_JavaUtilList, this.b);
-    this.this$0.notifyUI(2, true, new Object[] { Integer.valueOf(0), this.jdField_a_of_type_JavaUtilHashMap });
-    if (this.b.size() > 0) {
-      UserInfoHandler.a(this.this$0, 0, this.b);
+    UserInfoHandler.a(this.this$0, this.a, this.b, this.c);
+    this.this$0.notifyUI(2, true, new Object[] { Integer.valueOf(0), this.a });
+    if (this.c.size() > 0) {
+      UserInfoHandler.a(this.this$0, 0, this.c);
     }
   }
 }

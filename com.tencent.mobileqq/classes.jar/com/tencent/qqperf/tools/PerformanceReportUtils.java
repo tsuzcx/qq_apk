@@ -10,40 +10,33 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PerformanceReportUtils
 {
-  public static int a = 0;
-  private static long jdField_a_of_type_Long = 14400000L;
-  private static String jdField_a_of_type_JavaLangString = "uiswitchinterval";
+  private static long A = 0L;
   public static boolean a = false;
-  static String[] jdField_a_of_type_ArrayOfJavaLangString = { jdField_e_of_type_JavaLangString, jdField_f_of_type_JavaLangString, jdField_g_of_type_JavaLangString, jdField_h_of_type_JavaLangString, i, j, k };
-  private static long jdField_b_of_type_Long = 0L;
-  private static String jdField_b_of_type_JavaLangString = "uiswitchflag";
-  private static long jdField_c_of_type_Long = 0L;
-  private static String jdField_c_of_type_JavaLangString = "fpsinterval";
-  private static long jdField_d_of_type_Long = 0L;
-  private static String jdField_d_of_type_JavaLangString = "fpsflag";
-  private static long jdField_e_of_type_Long = 0L;
-  private static String jdField_e_of_type_JavaLangString = "actUISwitchC2C";
-  private static long jdField_f_of_type_Long = 0L;
-  private static String jdField_f_of_type_JavaLangString = "actUISwitchGroup";
-  private static long jdField_g_of_type_Long = 0L;
-  private static String jdField_g_of_type_JavaLangString = "actUISwitchDiscuss";
-  private static long jdField_h_of_type_Long = 0L;
-  private static String jdField_h_of_type_JavaLangString = "actUISwitchQzone";
-  private static String i = "actUISwitchUserAlbum";
-  private static String j = "actUISwitchQunAlbum";
-  private static String k = "actUISwitchUserHome";
-  private static String l = "actUISwitchPushBannerMyfeed";
-  private static String m = "actUISwitchNotificationMyfeed";
-  private static String n = "actUISwitchMyfeed";
-  private static String o = "actUISwitchAioPreload";
-  private static String p = "";
-  
-  static
-  {
-    b = 0L;
-    c = 0L;
-    d = 0L;
-  }
+  public static int b = 0;
+  static String[] c = { i, j, k, l, m, n, o };
+  private static long d = 14400000L;
+  private static String e = "uiswitchinterval";
+  private static String f = "uiswitchflag";
+  private static String g = "fpsinterval";
+  private static String h = "fpsflag";
+  private static String i = "actUISwitchC2C";
+  private static String j = "actUISwitchGroup";
+  private static String k = "actUISwitchDiscuss";
+  private static String l = "actUISwitchQzone";
+  private static String m = "actUISwitchUserAlbum";
+  private static String n = "actUISwitchQunAlbum";
+  private static String o = "actUISwitchUserHome";
+  private static String p = "actUISwitchPushBannerMyfeed";
+  private static String q = "actUISwitchNotificationMyfeed";
+  private static String r = "actUISwitchMyfeed";
+  private static String s = "actUISwitchAioPreload";
+  private static String t = "";
+  private static long u = 0L;
+  private static long v = 0L;
+  private static long w = 0L;
+  private static long x = 0L;
+  private static long y = 0L;
+  private static long z = 0L;
   
   public static void a(Context paramContext, String paramString, int paramInt, long paramLong)
   {
@@ -68,60 +61,84 @@ public class PerformanceReportUtils
     }
     if ("actFPSAIO".equals(paramString))
     {
-      b = paramLong;
+      u = paramLong;
       return;
     }
     if ("actFPSRecent".equals(paramString))
     {
-      c = paramLong;
+      v = paramLong;
       return;
     }
     if ("actFPSFriend".equals(paramString))
     {
-      d = paramLong;
+      w = paramLong;
       return;
     }
     if ("actFPSQZoneFriendFeed".equals(paramString))
     {
-      jdField_e_of_type_Long = paramLong;
+      x = paramLong;
       return;
     }
     if ("actFPSQZoneMyFeed".equals(paramString))
     {
-      jdField_f_of_type_Long = paramLong;
+      y = paramLong;
       return;
     }
     if ("actFPSQZoneUserHome".equals(paramString))
     {
-      jdField_g_of_type_Long = paramLong;
+      z = paramLong;
       return;
     }
     if ("actFPSQZoneMoodList".equals(paramString)) {
-      jdField_h_of_type_Long = paramLong;
+      A = paramLong;
     }
   }
   
-  private static SharedPreferences b()
+  private static String b(int paramInt)
   {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    int i1;
-    if (Build.VERSION.SDK_INT > 10) {
-      i1 = 4;
-    } else {
-      i1 = 0;
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 3000)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return null;
+          case 10: 
+            return s;
+          case 9: 
+            return r;
+          case 8: 
+            return q;
+          case 7: 
+            return p;
+          case 6: 
+            return o;
+          case 5: 
+            return n;
+          case 4: 
+            return m;
+          }
+          return l;
+        }
+        return k;
+      }
+      return j;
     }
-    return localBaseApplication.getSharedPreferences("PerformanceReportUtils", i1);
+    return i;
   }
   
   private static boolean b(String paramString)
   {
     long l1;
     if ("actFPSAIO".equals(paramString)) {
-      l1 = b;
+      l1 = u;
     } else if ("actFPSRecent".equals(paramString)) {
-      l1 = c;
+      l1 = v;
     } else if ("actFPSFriend".equals(paramString)) {
-      l1 = d;
+      l1 = w;
     } else {
       l1 = 0L;
     }
@@ -134,10 +151,22 @@ public class PerformanceReportUtils
     }
     return bool;
   }
+  
+  private static SharedPreferences d()
+  {
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    int i1;
+    if (Build.VERSION.SDK_INT > 10) {
+      i1 = 4;
+    } else {
+      i1 = 0;
+    }
+    return localBaseApplication.getSharedPreferences("PerformanceReportUtils", i1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.tools.PerformanceReportUtils
  * JD-Core Version:    0.7.0.1
  */

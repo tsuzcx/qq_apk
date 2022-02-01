@@ -7,42 +7,31 @@ import java.io.RandomAccessFile;
 public class FileInfo
   extends DecodeInfo
 {
-  public float a;
-  public long a;
-  public MediaCodec.BufferInfo a;
-  public MediaExtractor a;
-  public RandomAccessFile a;
-  public String a;
-  public byte[] a;
-  public int b = 0;
-  public int c = 2147483647;
+  public String c = "";
   public int d = 0;
-  public int e = 0;
-  
-  public FileInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_JavaIoRandomAccessFile = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = null;
-    this.jdField_a_of_type_ArrayOfByte = null;
-  }
+  public int e = 2147483647;
+  public float f = 1.0F;
+  public int g = 0;
+  public RandomAccessFile h = null;
+  public long i = 0L;
+  public MediaExtractor j = null;
+  public MediaCodec.BufferInfo k = null;
+  public int l = 0;
+  public byte[] m = null;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FileInfo{filename = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", fileType = ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(", volumeScale = ");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(", mixCnt = ");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", fileType = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", volumeScale = ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", mixCnt = ");
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", channelNum = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

@@ -19,16 +19,16 @@ class OCRResultFragmentNew$3
   
   public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (paramMenuItem.getItemId() == 2131372056)
+    if (paramMenuItem.getItemId() == 2131439519)
     {
-      paramActionMode = OCRPerformUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
+      paramActionMode = OCRPerformUtil.a(this.a);
       if (TextUtils.isEmpty(paramActionMode))
       {
-        QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), 1, HardCodeUtil.a(2131707821), 0).a();
+        QQToast.makeText(OCRResultFragmentNew.a(this.b), 1, HardCodeUtil.a(2131905635), 0).show();
         return false;
       }
-      OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), paramActionMode);
-      OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).overridePendingTransition(2130772006, 0);
+      OCRTextSearchActivity.a(OCRResultFragmentNew.a(this.b), paramActionMode);
+      OCRResultFragmentNew.a(this.b).overridePendingTransition(2130772009, 0);
       return true;
     }
     return false;
@@ -38,7 +38,7 @@ class OCRResultFragmentNew$3
   {
     paramActionMode = paramActionMode.getMenuInflater();
     if (paramActionMode != null) {
-      paramActionMode.inflate(2131623939, paramMenu);
+      paramActionMode.inflate(2131689475, paramMenu);
     }
     return true;
   }
@@ -52,7 +52,7 @@ class OCRResultFragmentNew$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.3
  * JD-Core Version:    0.7.0.1
  */

@@ -6,18 +6,18 @@ import java.io.File;
 
 class CameraProxy$TakePictureData
 {
-  int jdField_a_of_type_Int;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  CameraCover.PictureCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback;
-  File jdField_a_of_type_JavaIoFile;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  File a;
+  Rect b;
+  CameraCover.PictureCallback c;
+  int d;
+  boolean e;
+  int f;
   
   private CameraProxy$TakePictureData(CameraProxy paramCameraProxy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.TakePictureData
  * JD-Core Version:    0.7.0.1
  */

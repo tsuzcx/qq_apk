@@ -10,17 +10,17 @@ class FileBrowserModelDefault$1
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel$OnAppStorePromoteListener.a();
+    this.a.a();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel$OnAppStorePromoteListener.b();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.FileBrowserModelDefault.1
  * JD-Core Version:    0.7.0.1
  */

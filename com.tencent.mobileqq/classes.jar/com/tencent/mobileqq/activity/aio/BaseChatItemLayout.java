@@ -57,6 +57,7 @@ import com.tencent.mobileqq.emoticon.StickerInfo;
 import com.tencent.mobileqq.multimsg.MultiMsgManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.widget.TroopRobotNextTipsView;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vas.config.business.qvip.QVipStickerProcessor;
@@ -66,6 +67,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.QQViewCompatUtil;
+import com.tencent.widget.OnlineStatusCircleView;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -96,26 +98,29 @@ public class BaseChatItemLayout
   public static int U;
   public static int V;
   public static int W;
-  public static final float a;
-  public static final int a;
-  public static CompoundButton.OnCheckedChangeListener a;
-  public static BaseChatItemLayout.OnChatMessageCheckedChangeListener a;
-  public static boolean a;
-  private static final int ab;
-  private static final int ac;
-  public static final float b;
+  public static final int a = ViewUtils.dpToPx(5.0F);
+  private static final int aD = ViewUtils.dpToPx(2.0F);
+  private static final int aE = ViewUtils.dpToPx(18.0F);
+  private static final int aF;
+  private static final int aG;
+  private static final int aH;
+  private static final int aI;
+  private static final int aJ;
+  private static final int aK;
+  private static final int aL;
+  private static final int aM;
+  public static boolean ad = false;
+  public static BaseChatItemLayout.OnChatMessageCheckedChangeListener an;
+  public static CompoundButton.OnCheckedChangeListener ao = new BaseChatItemLayout.2();
   public static final int b;
-  public static final float c;
   public static final int c;
-  @Deprecated
-  public static final float d;
   public static int d;
   public static int e;
   public static int f;
   public static int g;
-  public static final int h;
-  public static final int i;
-  public static final int j;
+  public static final float h;
+  public static final float i;
+  public static final float j;
   public static final int k;
   public static final int l;
   public static final int m;
@@ -128,121 +133,122 @@ public class BaseChatItemLayout
   public static final int t;
   public static final int u;
   public static final int v;
-  public static final int w;
+  @Deprecated
+  public static final float w;
   public static final int x;
   public static int y;
   public static final int z;
-  int X = 0;
-  int Y;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  public CheckBox a;
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public URLImageView a;
-  BaseChatItemLayout.MiniAioShieldItemTouchListener jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout$MiniAioShieldItemTouchListener = null;
-  private BaseChatItemLayoutViewWrapperFactory jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewWrapperFactory;
-  private SelectableDelegate jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  public EmojiStickerManager.StickerDoubleClickListener a;
-  TroopRobotNextTipsView jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView;
-  public ArrayList<EmojiStickerManager.Sticker> a;
-  protected int[] a;
-  private int ad = -1;
-  private int ae = -1;
-  private int af = -1;
-  private int ag = -1;
-  private int ah = -1;
-  private int ai = -1;
-  private int aj;
-  private int ak = -1;
-  private int al = -1;
-  private int am = -1;
-  private int an = 0;
-  private int ao = 0;
-  private int ap = 0;
-  private int aq = 0;
-  public ImageView b;
-  TextView b;
-  private TextView c;
-  private boolean d;
-  private boolean e;
-  private boolean f;
-  private boolean g;
-  private boolean h;
-  private boolean i;
-  private boolean j;
+  protected int[] Z = new int[2];
+  private SelectableDelegate aN;
+  private boolean aO = false;
+  private boolean aP = false;
+  private int aQ = -1;
+  private int aR = -1;
+  private int aS = -1;
+  private int aT = -1;
+  private int aU = -1;
+  private int aV = -1;
+  private Paint aW;
+  private Rect aX;
+  private int aY;
+  private boolean aZ = false;
+  public TextView aa;
+  TextView ab;
+  public CheckBox ac;
+  public URLImageView ae;
+  public OnlineStatusCircleView af;
+  public ProgressBar ag;
+  public ImageView ah;
+  public ImageView ai;
+  int aj = 0;
+  int ak;
+  TroopRobotNextTipsView al;
+  public ArrayList<EmojiStickerManager.Sticker> am;
+  BaseChatItemLayout.MiniAioShieldItemTouchListener ap = null;
+  ChatMessage aq;
+  public EmojiStickerManager.StickerDoubleClickListener ar;
+  private int ba = -1;
+  private int bb = -1;
+  private int bc = -1;
+  private BaseChatItemLayoutViewWrapperFactory bd;
+  private TextView be;
+  private boolean bf = false;
+  private boolean bg = this.bf;
+  private int bh = 0;
+  private int bi = 0;
+  private int bj = 0;
+  private int bk = 0;
+  private boolean bl = false;
+  private MotionEvent bm;
+  private boolean bn = false;
   
   static
   {
-    jdField_a_of_type_Int = ViewUtils.b(5.0F);
-    ab = ViewUtils.b(2.0F);
-    ac = ViewUtils.b(18.0F);
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     DisplayMetrics localDisplayMetrics = localBaseApplication.getResources().getDisplayMetrics();
-    jdField_d_of_type_Float = localDisplayMetrics.density;
-    jdField_a_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131296453);
-    jdField_b_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131299127);
-    jdField_c_of_type_Float = localBaseApplication.getResources().getDimensionPixelSize(2131296453);
-    jdField_h_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296382);
-    jdField_i_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296381);
-    jdField_j_of_type_Int = localBaseApplication.getResources().getDimensionPixelSize(2131296380);
-    k = localBaseApplication.getResources().getDimensionPixelSize(2131296379);
-    l = localBaseApplication.getResources().getDimensionPixelSize(2131296378);
-    m = localBaseApplication.getResources().getDimensionPixelSize(2131296449);
-    n = localBaseApplication.getResources().getDimensionPixelSize(2131296448);
-    o = localBaseApplication.getResources().getDimensionPixelSize(2131296447);
-    p = localBaseApplication.getResources().getDimensionPixelSize(2131296446);
-    s = localBaseApplication.getResources().getDimensionPixelSize(2131296438);
-    r = localBaseApplication.getResources().getDimensionPixelSize(2131296388);
-    q = localBaseApplication.getResources().getDimensionPixelSize(2131296431);
-    jdField_b_of_type_Int = localDisplayMetrics.widthPixels;
-    jdField_c_of_type_Int = localDisplayMetrics.heightPixels;
-    jdField_d_of_type_Int = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    jdField_e_of_type_Int = (int)(jdField_d_of_type_Int - jdField_d_of_type_Float * 108.0F);
-    jdField_f_of_type_Int = jdField_e_of_type_Int - jdField_j_of_type_Int - k;
-    jdField_g_of_type_Int = jdField_f_of_type_Int - s * 2;
-    t = localBaseApplication.getResources().getDimensionPixelSize(2131296425);
-    u = localBaseApplication.getResources().getDimensionPixelSize(2131296426);
-    v = localBaseApplication.getResources().getDimensionPixelSize(2131296427);
-    w = localBaseApplication.getResources().getDimensionPixelSize(2131296423);
-    x = localBaseApplication.getResources().getDimensionPixelSize(2131296413);
-    y = localBaseApplication.getResources().getDimensionPixelSize(2131296411);
-    B = localBaseApplication.getResources().getDimensionPixelSize(2131299077);
-    B = Math.min(B, jdField_f_of_type_Int);
-    int i1 = jdField_d_of_type_Int - t - u - localBaseApplication.getResources().getDimensionPixelSize(2131299072) * 2;
-    int i2 = jdField_j_of_type_Int + k + B;
+    w = localDisplayMetrics.density;
+    h = localBaseApplication.getResources().getDimensionPixelSize(2131296687);
+    i = localBaseApplication.getResources().getDimensionPixelSize(2131299864);
+    j = localBaseApplication.getResources().getDimensionPixelSize(2131296687);
+    k = localBaseApplication.getResources().getDimensionPixelSize(2131296614);
+    l = localBaseApplication.getResources().getDimensionPixelSize(2131296613);
+    aF = localBaseApplication.getResources().getDimensionPixelSize(2131296611);
+    aG = localBaseApplication.getResources().getDimensionPixelSize(2131296612);
+    aH = localBaseApplication.getResources().getDimensionPixelSize(2131296609);
+    aI = localBaseApplication.getResources().getDimensionPixelSize(2131296610);
+    m = localBaseApplication.getResources().getDimensionPixelSize(2131296608);
+    n = localBaseApplication.getResources().getDimensionPixelSize(2131296683);
+    o = localBaseApplication.getResources().getDimensionPixelSize(2131296682);
+    aJ = localBaseApplication.getResources().getDimensionPixelSize(2131296680);
+    aK = localBaseApplication.getResources().getDimensionPixelSize(2131296681);
+    aL = localBaseApplication.getResources().getDimensionPixelSize(2131296678);
+    aM = localBaseApplication.getResources().getDimensionPixelSize(2131296679);
+    r = localBaseApplication.getResources().getDimensionPixelSize(2131296670);
+    q = localBaseApplication.getResources().getDimensionPixelSize(2131296620);
+    p = localBaseApplication.getResources().getDimensionPixelSize(2131296663);
+    b = localDisplayMetrics.widthPixels;
+    c = localDisplayMetrics.heightPixels;
+    d = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    e = (int)(d - w * 108.0F);
+    f = e - getBubblePaddingAlignHead() - getBubblePaddingAlignError();
+    g = f - r * 2;
+    s = localBaseApplication.getResources().getDimensionPixelSize(2131296657);
+    t = localBaseApplication.getResources().getDimensionPixelSize(2131296658);
+    u = localBaseApplication.getResources().getDimensionPixelSize(2131296659);
+    v = localBaseApplication.getResources().getDimensionPixelSize(2131296655);
+    x = localBaseApplication.getResources().getDimensionPixelSize(2131296645);
+    y = localBaseApplication.getResources().getDimensionPixelSize(2131296643);
+    B = localBaseApplication.getResources().getDimensionPixelSize(2131299805);
+    B = Math.min(B, f);
+    int i1 = d - s - t - localBaseApplication.getResources().getDimensionPixelSize(2131299800) * 2;
+    int i2 = getBubblePaddingAlignHead() + getBubblePaddingAlignError() + B;
     z = Math.min(i1, i2);
-    if (jdField_d_of_type_Int < 1441) {
+    if (d < 1441) {
       A = i1;
     } else {
       A = Math.min(i1, i2);
     }
-    C = localBaseApplication.getResources().getDimensionPixelSize(2131296421);
-    D = localBaseApplication.getResources().getDimensionPixelSize(2131296420);
-    E = localBaseApplication.getResources().getDimensionPixelSize(2131296419);
-    F = localBaseApplication.getResources().getDimensionPixelSize(2131296409);
-    G = localBaseApplication.getResources().getDimensionPixelSize(2131296408);
-    H = localBaseApplication.getResources().getDimensionPixelSize(2131296407);
-    I = localBaseApplication.getResources().getDimensionPixelSize(2131296402);
-    J = localBaseApplication.getResources().getDimensionPixelSize(2131296404);
-    K = localBaseApplication.getResources().getDimensionPixelSize(2131296403);
-    M = localBaseApplication.getResources().getDimensionPixelSize(2131296406);
-    L = localBaseApplication.getResources().getDimensionPixelSize(2131296405);
-    N = localBaseApplication.getResources().getDimensionPixelSize(2131296456);
-    O = localBaseApplication.getResources().getDimensionPixelSize(2131296455);
-    P = localBaseApplication.getResources().getDimensionPixelSize(2131296457);
+    C = localBaseApplication.getResources().getDimensionPixelSize(2131296653);
+    D = localBaseApplication.getResources().getDimensionPixelSize(2131296652);
+    E = localBaseApplication.getResources().getDimensionPixelSize(2131296651);
+    F = localBaseApplication.getResources().getDimensionPixelSize(2131296641);
+    G = localBaseApplication.getResources().getDimensionPixelSize(2131296640);
+    H = localBaseApplication.getResources().getDimensionPixelSize(2131296639);
+    I = localBaseApplication.getResources().getDimensionPixelSize(2131296634);
+    J = localBaseApplication.getResources().getDimensionPixelSize(2131296636);
+    K = localBaseApplication.getResources().getDimensionPixelSize(2131296635);
+    M = localBaseApplication.getResources().getDimensionPixelSize(2131296638);
+    L = localBaseApplication.getResources().getDimensionPixelSize(2131296637);
+    N = localBaseApplication.getResources().getDimensionPixelSize(2131296690);
+    O = localBaseApplication.getResources().getDimensionPixelSize(2131296689);
+    P = localBaseApplication.getResources().getDimensionPixelSize(2131296691);
     Q = AIOUtils.b(26.0F, localBaseApplication.getResources());
-    R = localBaseApplication.getResources().getDimensionPixelSize(2131296412);
-    S = localBaseApplication.getResources().getDimensionPixelSize(2131296430);
-    T = localBaseApplication.getResources().getDimensionPixelSize(2131296428);
-    U = localBaseApplication.getResources().getDimensionPixelSize(2131296429);
-    V = localBaseApplication.getResources().getDimensionPixelSize(2131296415);
-    W = localBaseApplication.getResources().getDimensionPixelSize(2131296414);
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new BaseChatItemLayout.2();
+    R = localBaseApplication.getResources().getDimensionPixelSize(2131296644);
+    S = localBaseApplication.getResources().getDimensionPixelSize(2131296662);
+    T = localBaseApplication.getResources().getDimensionPixelSize(2131296660);
+    U = localBaseApplication.getResources().getDimensionPixelSize(2131296661);
+    V = localBaseApplication.getResources().getDimensionPixelSize(2131296647);
+    W = localBaseApplication.getResources().getDimensionPixelSize(2131296646);
   }
   
   public BaseChatItemLayout(Context paramContext)
@@ -258,29 +264,21 @@ public class BaseChatItemLayout
   public BaseChatItemLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_ArrayOfInt = new int[2];
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = this.jdField_g_of_type_Boolean;
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_j_of_type_Boolean = false;
     setWillNotDraw(false);
     setClipChildren(false);
     setClipToPadding(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewWrapperFactory = new BaseChatItemLayoutViewWrapperFactory(this, paramContext);
+    this.bd = new BaseChatItemLayoutViewWrapperFactory(this, paramContext);
   }
   
   private int a(float paramFloat1, float paramFloat2)
   {
-    int i3 = this.ad;
-    int i2 = jdField_a_of_type_Int;
+    int i3 = this.aQ;
+    int i2 = a;
     int i1 = i3 - i2 * 3;
     i3 += i2 * 3;
-    int i4 = this.ae;
-    i2 = i4 - ac - i2 * 2;
-    if ((paramFloat1 >= i1) && (paramFloat1 <= i3) && (paramFloat2 >= i2) && (paramFloat2 <= i4) && (this.jdField_d_of_type_Boolean)) {
+    int i4 = this.aR;
+    i2 = i4 - aE - i2 * 2;
+    if ((paramFloat1 >= i1) && (paramFloat1 <= i3) && (paramFloat2 >= i2) && (paramFloat2 <= i4) && (this.aO)) {
       return 1;
     }
     if (QLog.isColorLevel())
@@ -300,11 +298,11 @@ public class BaseChatItemLayout
       localStringBuilder.append(paramFloat2);
       QLog.d("BaseChatItemLayout", 2, localStringBuilder.toString());
     }
-    i1 = this.af;
-    i2 = jdField_a_of_type_Int;
-    i3 = this.ag;
-    i4 = ac;
-    if ((paramFloat1 >= i1 - i2 * 3) && (paramFloat1 <= i1 + i2 * 3) && (paramFloat2 >= i3 - i4) && (paramFloat2 <= i3 + i2 * 2) && (this.jdField_e_of_type_Boolean)) {
+    i1 = this.aS;
+    i2 = a;
+    i3 = this.aT;
+    i4 = aE;
+    if ((paramFloat1 >= i1 - i2 * 3) && (paramFloat1 <= i1 + i2 * 3) && (paramFloat2 >= i3 - i4) && (paramFloat2 <= i3 + i2 * 2) && (this.aP)) {
       return 2;
     }
     return -1;
@@ -312,130 +310,130 @@ public class BaseChatItemLayout
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    int i1 = this.ak;
+    int i1 = this.ba;
     if (i1 == 1)
     {
-      i1 = this.ah;
+      i1 = this.aU;
       if (i1 != -1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt, i1, paramBoolean);
+        this.aN.a(paramInt, i1, paramBoolean);
       }
     }
     else if (i1 == 2)
     {
-      i1 = this.ai;
+      i1 = this.aV;
       if (i1 != -1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt, i1, paramBoolean);
+        this.aN.a(paramInt, i1, paramBoolean);
       }
     }
   }
   
   private void a(Canvas paramCanvas)
   {
-    Object localObject = findViewById(2131364521);
+    Object localObject = findViewById(2131430578);
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)((View)localObject).getTag(2131364568));
-      this.an = ((View)localObject).getLeft();
-      this.ao = ((View)localObject).getMeasuredWidth();
-      this.ap = ((View)localObject).getTop();
-      this.aq = ((View)localObject).getMeasuredHeight();
+      this.aq = ((ChatMessage)((View)localObject).getTag(2131430627));
+      this.bh = ((View)localObject).getLeft();
+      this.bi = ((View)localObject).getMeasuredWidth();
+      this.bj = ((View)localObject).getTop();
+      this.bk = ((View)localObject).getMeasuredHeight();
     }
     int i2;
     int i1;
     int i3;
     int i4;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.am != null)
     {
       i2 = 0;
       i1 = 0;
-      while (i2 <= this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+      while (i2 <= this.am.size() - 1)
       {
-        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)this.am.get(i2);
+        localObject = this.aq;
         if ((localObject != null) && (((ChatMessage)localObject).stickerHidden))
         {
-          if (localSticker.jdField_a_of_type_Int + this.an + localSticker.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2) {
+          if (localSticker.b + this.bh + localSticker.d / 2 < getMeasuredWidth() / 2) {
             i3 = -400;
           } else {
             i3 = 400;
           }
-          localSticker.jdField_e_of_type_Int = i3;
-          localSticker.jdField_f_of_type_Int = 0;
+          localSticker.g = i3;
+          localSticker.h = 0;
         }
         i4 = paramCanvas.getSaveCount();
         paramCanvas.save();
-        i3 = localSticker.jdField_a_of_type_Int + this.an;
-        int i5 = (int)((localSticker.jdField_a_of_type_Float - 1.0F) * localSticker.jdField_c_of_type_Int);
-        int i6 = (int)((localSticker.jdField_a_of_type_Float - 1.0F) * localSticker.jdField_d_of_type_Int);
-        paramCanvas.translate(localSticker.jdField_e_of_type_Int + i3 - i5 / 2, localSticker.jdField_b_of_type_Int - i6 / 2);
-        paramCanvas.rotate((float)localSticker.jdField_a_of_type_Double, localSticker.jdField_c_of_type_Int * localSticker.jdField_a_of_type_Float / 2.0F, localSticker.jdField_d_of_type_Int * localSticker.jdField_a_of_type_Float / 2.0F);
-        localSticker.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(localSticker.jdField_f_of_type_Int);
-        localSticker.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)(localSticker.jdField_c_of_type_Int * localSticker.jdField_a_of_type_Float), (int)(localSticker.jdField_d_of_type_Int * localSticker.jdField_a_of_type_Float));
-        localSticker.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        i3 = localSticker.b + this.bh;
+        int i5 = (int)((localSticker.n - 1.0F) * localSticker.d);
+        int i6 = (int)((localSticker.n - 1.0F) * localSticker.e);
+        paramCanvas.translate(localSticker.g + i3 - i5 / 2, localSticker.c - i6 / 2);
+        paramCanvas.rotate((float)localSticker.f, localSticker.d * localSticker.n / 2.0F, localSticker.e * localSticker.n / 2.0F);
+        localSticker.a.setAlpha(localSticker.h);
+        localSticker.a.setBounds(0, 0, (int)(localSticker.d * localSticker.n), (int)(localSticker.e * localSticker.n));
+        localSticker.a.draw(paramCanvas);
         paramCanvas.restoreToCount(i4);
-        if ((!localSticker.jdField_a_of_type_Boolean) && ((!(localSticker.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) || (((URLDrawable)localSticker.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getStatus() == 1)))
+        if ((!localSticker.j) && ((!(localSticker.a instanceof URLDrawable)) || (((URLDrawable)localSticker.a).getStatus() == 1)))
         {
           boolean bool;
-          if ((localSticker.jdField_c_of_type_Int - localSticker.jdField_g_of_type_Int >= 0) && (localSticker.jdField_d_of_type_Int - localSticker.jdField_h_of_type_Int >= 0)) {
+          if ((localSticker.d - localSticker.k >= 0) && (localSticker.e - localSticker.l >= 0)) {
             bool = false;
           } else {
             bool = true;
           }
-          localSticker.jdField_a_of_type_Boolean = bool;
-          if (localSticker.jdField_a_of_type_ComTencentMobileqqEmoticonStickerInfo != null) {
-            localSticker.jdField_a_of_type_ComTencentMobileqqEmoticonStickerInfo.isShown = localSticker.jdField_a_of_type_Boolean;
+          localSticker.j = bool;
+          if (localSticker.o != null) {
+            localSticker.o.isShown = localSticker.j;
           }
-          if (!localSticker.jdField_a_of_type_Boolean)
+          if (!localSticker.j)
           {
             i4 = paramCanvas.getSaveCount();
             paramCanvas.save();
-            paramCanvas.translate(i3 + localSticker.jdField_e_of_type_Int - localSticker.jdField_c_of_type_Int / 2 + localSticker.jdField_g_of_type_Int, localSticker.jdField_b_of_type_Int - localSticker.jdField_d_of_type_Int / 2 + localSticker.jdField_h_of_type_Int);
-            paramCanvas.clipRect(0, 0, localSticker.jdField_c_of_type_Int, localSticker.jdField_d_of_type_Int);
-            if (localSticker.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
+            paramCanvas.translate(i3 + localSticker.g - localSticker.d / 2 + localSticker.k, localSticker.c - localSticker.e / 2 + localSticker.l);
+            paramCanvas.clipRect(0, 0, localSticker.d, localSticker.e);
+            if (localSticker.m == null) {
               localObject = EmojiStickerManager.a().a(getContext()).mutate();
             } else {
-              localObject = localSticker.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+              localObject = localSticker.m;
             }
-            ((Drawable)localObject).setBounds(0, 0, localSticker.jdField_c_of_type_Int, localSticker.jdField_d_of_type_Int);
+            ((Drawable)localObject).setBounds(0, 0, localSticker.d, localSticker.e);
             ((Drawable)localObject).draw(paramCanvas);
             paramCanvas.restoreToCount(i4);
-            localSticker.jdField_g_of_type_Int += EmojiStickerManager.jdField_g_of_type_Int;
-            localSticker.jdField_h_of_type_Int += EmojiStickerManager.jdField_g_of_type_Int;
-            localSticker.jdField_a_of_type_Float -= EmojiStickerManager.jdField_a_of_type_Float;
-            if (localSticker.jdField_a_of_type_Float < 1.0F) {
-              localSticker.jdField_a_of_type_Float = 1.0F;
+            localSticker.k += EmojiStickerManager.s;
+            localSticker.l += EmojiStickerManager.s;
+            localSticker.n -= EmojiStickerManager.t;
+            if (localSticker.n < 1.0F) {
+              localSticker.n = 1.0F;
             }
           }
         }
-        if (localSticker.jdField_a_of_type_Boolean) {
-          localSticker.jdField_a_of_type_Float = 1.0F;
+        if (localSticker.j) {
+          localSticker.n = 1.0F;
         }
-        if (!localSticker.jdField_a_of_type_Boolean) {
+        if (!localSticker.j) {
           i1 = 1;
         }
         i2 += 1;
       }
-      f();
+      l();
     }
     else
     {
       i1 = 0;
     }
-    if ((EmojiStickerManager.jdField_b_of_type_Boolean) || ((!EmojiStickerManager.jdField_b_of_type_Boolean) && (this.jdField_g_of_type_Boolean)))
+    if ((EmojiStickerManager.b) || ((!EmojiStickerManager.b) && (this.bf)))
     {
       i2 = paramCanvas.getSaveCount();
-      i3 = this.an;
-      i4 = this.ap;
-      paramCanvas.clipRect(i3, i4, this.ao + i3, this.aq + i4);
-      if (this.jdField_g_of_type_Boolean) {
+      i3 = this.bh;
+      i4 = this.bj;
+      paramCanvas.clipRect(i3, i4, this.bi + i3, this.bk + i4);
+      if (this.bf) {
         localObject = "#19000000";
       } else {
         localObject = "#00000000";
       }
       paramCanvas.drawColor(Color.parseColor((String)localObject));
       paramCanvas.restoreToCount(i2);
-      if (!EmojiStickerManager.jdField_b_of_type_Boolean) {
-        this.jdField_g_of_type_Boolean = false;
+      if (!EmojiStickerManager.b) {
+        this.bf = false;
       }
     }
     if (i1 != 0) {
@@ -443,76 +441,46 @@ public class BaseChatItemLayout
     }
   }
   
-  private boolean a(float paramFloat1, float paramFloat2)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
-        int i1 = localSticker.jdField_a_of_type_Int;
-        int i2 = this.an;
-        int i5 = (int)((localSticker.jdField_a_of_type_Float - 1.0F) * localSticker.jdField_c_of_type_Int);
-        int i4 = (int)((localSticker.jdField_a_of_type_Float - 1.0F) * localSticker.jdField_d_of_type_Int);
-        int i3 = localSticker.jdField_e_of_type_Int;
-        i5 /= 2;
-        int i6 = localSticker.jdField_b_of_type_Int;
-        i4 /= 2;
-        float f1 = i1 + i2 + i3 - i5;
-        if ((paramFloat1 > f1) && (paramFloat1 < f1 + localSticker.jdField_a_of_type_Float * localSticker.jdField_c_of_type_Int))
-        {
-          f1 = i6 - i4;
-          if ((paramFloat2 > f1) && (paramFloat2 < f1 + localSticker.jdField_a_of_type_Float * localSticker.jdField_d_of_type_Int)) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
   private boolean a(MotionEvent paramMotionEvent)
   {
     int i1 = paramMotionEvent.getAction();
     int i2;
-    if (!this.jdField_f_of_type_Boolean)
+    if (!this.aZ)
     {
       i2 = a(paramMotionEvent.getX(), paramMotionEvent.getY());
       if ((i2 != -1) && (i1 == 0))
       {
-        e();
-        this.jdField_f_of_type_Boolean = true;
-        this.ak = i2;
-        this.al = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b();
-        this.am = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.c();
+        k();
+        this.aZ = true;
+        this.ba = i2;
+        this.bb = this.aN.e();
+        this.bc = this.aN.f();
         if (paramMotionEvent.getSource() != -1) {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.ak, false);
+          this.aN.a(this.ba, false);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a()) {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b();
+        if (this.aN.i()) {
+          this.aN.j();
         }
         return true;
       }
       return false;
     }
-    e();
+    k();
     if ((i1 != 1) && (i1 != 3))
     {
       if (i1 == 2)
       {
         int i3 = (int)paramMotionEvent.getRawX();
         int i4 = (int)paramMotionEvent.getRawY();
-        int i5 = this.ak;
+        int i5 = this.ba;
         int[] arrayOfInt;
         if (i5 == 1)
         {
-          i1 = this.ad;
-          i2 = this.ae;
-          i5 = ac;
-          int i6 = jdField_a_of_type_Int;
-          arrayOfInt = a(i3, i4, i1, i2, i6 * 2 + i5, -i5, this.jdField_d_of_type_Boolean, i6 * 2);
+          i1 = this.aQ;
+          i2 = this.aR;
+          i5 = aE;
+          int i6 = a;
+          arrayOfInt = a(i3, i4, i1, i2, i6 * 2 + i5, -i5, this.aO, i6 * 2);
           i1 = arrayOfInt[0];
           i2 = arrayOfInt[1];
         }
@@ -522,10 +490,10 @@ public class BaseChatItemLayout
           i2 = i4;
           if (i5 == 2)
           {
-            i1 = this.af;
-            i2 = this.ag;
-            i5 = jdField_a_of_type_Int;
-            arrayOfInt = a(i3, i4, i1, i2, 0, i5 * 2, this.jdField_e_of_type_Boolean, -i5 * 2);
+            i1 = this.aS;
+            i2 = this.aT;
+            i5 = a;
+            arrayOfInt = a(i3, i4, i1, i2, 0, i5 * 2, this.aP, -i5 * 2);
             i1 = arrayOfInt[0];
             i2 = arrayOfInt[1];
           }
@@ -536,11 +504,11 @@ public class BaseChatItemLayout
     }
     else
     {
-      this.jdField_f_of_type_Boolean = false;
-      this.ah = -1;
-      this.ai = -1;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(-1, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a();
+      this.aZ = false;
+      this.aU = -1;
+      this.aV = -1;
+      this.aN.a(-1, true);
+      this.aN.h();
       if (i1 == 1)
       {
         if (paramMotionEvent.getSource() == -1) {
@@ -572,7 +540,7 @@ public class BaseChatItemLayout
   
   private int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, int paramInt7)
   {
-    int i2 = jdField_a_of_type_Int;
+    int i2 = a;
     int i1 = paramInt2;
     if (paramInt1 >= paramInt3 - i2 * 3)
     {
@@ -596,143 +564,162 @@ public class BaseChatItemLayout
     return new int[] { paramInt1, i1 };
   }
   
-  private void d(int paramInt)
+  private boolean b(float paramFloat1, float paramFloat2)
   {
-    if (this.Y != paramInt)
+    Object localObject = this.am;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      this.Y = paramInt;
-      Object localObject = (HeadIconWrapper)a(HeadIconWrapper.class);
-      if (localObject != null)
+      localObject = this.am.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = ((HeadIconWrapper)localObject).a();
-        if (localObject != null) {
-          ((RelativeLayout.LayoutParams)((BaseChatItemLayoutViewBasicAbility)localObject).getLayoutParams()).addRule(3, this.Y);
-        }
-      }
-      localObject = this.jdField_a_of_type_ComTencentImageURLImageView;
-      if (localObject != null) {
-        ((RelativeLayout.LayoutParams)((URLImageView)localObject).getLayoutParams()).addRule(3, this.Y);
-      }
-      localObject = (NickNameLayoutViewWrapper)a(NickNameLayoutViewWrapper.class);
-      BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility;
-      if (localObject != null)
-      {
-        localBaseChatItemLayoutViewBasicAbility = ((NickNameLayoutViewWrapper)localObject).a().c();
-        if ((localBaseChatItemLayoutViewBasicAbility != null) && (localBaseChatItemLayoutViewBasicAbility.checkViewNonNull())) {
-          ((RelativeLayout.LayoutParams)localBaseChatItemLayoutViewBasicAbility.getLayoutParams()).addRule(3, this.Y);
-        }
-        localObject = ((NickNameLayoutViewWrapper)localObject).a();
-        if ((localObject != null) && (((BaseChatItemLayoutViewBasicAbility)localObject).checkViewNonNull())) {
-          ((RelativeLayout.LayoutParams)((BaseChatItemLayoutViewBasicAbility)localObject).getLayoutParams()).addRule(3, this.Y);
-        }
-      }
-      localObject = (BubbleViewWrapper)a(BubbleViewWrapper.class);
-      if (localObject != null)
-      {
-        localObject = ((BubbleViewWrapper)localObject).a();
-        if ((localObject != null) && (((BaseChatItemLayoutViewBasicAbility)localObject).checkViewNonNull()))
+        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
+        int i1 = localSticker.b;
+        int i2 = this.bh;
+        int i5 = (int)((localSticker.n - 1.0F) * localSticker.d);
+        int i4 = (int)((localSticker.n - 1.0F) * localSticker.e);
+        int i3 = localSticker.g;
+        i5 /= 2;
+        int i6 = localSticker.c;
+        i4 /= 2;
+        float f1 = i1 + i2 + i3 - i5;
+        if ((paramFloat1 > f1) && (paramFloat1 < f1 + localSticker.n * localSticker.d))
         {
-          localBaseChatItemLayoutViewBasicAbility = a(NickNameChatItemLayoutProcessor.jdField_h_of_type_Int);
-          if ((localBaseChatItemLayoutViewBasicAbility == null) || (!localBaseChatItemLayoutViewBasicAbility.checkViewNonNull()) || (localBaseChatItemLayoutViewBasicAbility.getViewVisibility() != 0))
-          {
-            ((RelativeLayout.LayoutParams)((BaseChatItemLayoutViewBasicAbility)localObject).getLayoutParams()).addRule(3, this.Y);
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append(" setTopId mTopId = ");
-              ((StringBuilder)localObject).append(this.Y);
-              QLog.d("BubbleView", 2, ((StringBuilder)localObject).toString());
-            }
+          f1 = i6 - i4;
+          if ((paramFloat2 > f1) && (paramFloat2 < f1 + localSticker.n * localSticker.e)) {
+            return true;
           }
         }
       }
     }
+    return false;
   }
   
-  private void e()
+  public static int getBubblePaddingAlignError()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate != null) {
+    if (QQTheme.isNowSimpleUI()) {
+      return aI;
+    }
+    return aH;
+  }
+  
+  public static int getBubblePaddingAlignHead()
+  {
+    if (QQTheme.isNowSimpleUI()) {
+      return aG;
+    }
+    return aF;
+  }
+  
+  public static int getTextBubblePaddingAlignError()
+  {
+    return getBubblePaddingAlignError() + getTextPaddingAlignError();
+  }
+  
+  public static int getTextBubblePaddingAlignHead()
+  {
+    return getBubblePaddingAlignHead() + getTextPaddingAlignHead();
+  }
+  
+  public static int getTextPaddingAlignError()
+  {
+    if (QQTheme.isNowSimpleUI()) {
+      return aM;
+    }
+    return aL;
+  }
+  
+  public static int getTextPaddingAlignHead()
+  {
+    if (QQTheme.isNowSimpleUI()) {
+      return aK;
+    }
+    return aJ;
+  }
+  
+  private void k()
+  {
+    if (this.aN != null) {
       return;
     }
     throw new IllegalStateException("Has no bound delegate!");
   }
   
-  private void f()
+  private void l()
   {
-    if (this.jdField_i_of_type_Boolean)
+    if (this.bl)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      Object localObject = this.am;
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject = this.am.iterator();
         boolean bool = false;
         while (((Iterator)localObject).hasNext())
         {
           EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
-          if (localSticker.jdField_a_of_type_Int + this.an + localSticker.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2)
+          if (localSticker.b + this.bh + localSticker.d / 2 < getMeasuredWidth() / 2)
           {
-            if (Math.abs(localSticker.jdField_e_of_type_Int) > 200)
+            if (Math.abs(localSticker.g) > 200)
             {
-              localSticker.jdField_e_of_type_Int -= EmojiStickerManager.jdField_f_of_type_Int;
-              localSticker.jdField_f_of_type_Int -= Math.abs(EmojiStickerManager.jdField_f_of_type_Int / 2);
-              localSticker.jdField_f_of_type_Int = Math.min(255, Math.max(0, localSticker.jdField_f_of_type_Int));
+              localSticker.g -= EmojiStickerManager.r;
+              localSticker.h -= Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
             }
             else
             {
-              localSticker.jdField_f_of_type_Int += Math.abs(EmojiStickerManager.jdField_f_of_type_Int / 2);
-              localSticker.jdField_f_of_type_Int = Math.min(255, Math.max(0, localSticker.jdField_f_of_type_Int));
-              localSticker.jdField_e_of_type_Int += EmojiStickerManager.jdField_f_of_type_Int;
+              localSticker.h += Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g += EmojiStickerManager.r;
             }
-            if (localSticker.jdField_e_of_type_Int <= 0) {
+            if (localSticker.g <= 0) {
               break label362;
             }
-            localSticker.jdField_e_of_type_Int = 0;
-            if (EmojiStickerManager.jdField_a_of_type_AndroidViewView == null) {
-              localSticker.jdField_f_of_type_Int = 255;
+            localSticker.g = 0;
+            if (EmojiStickerManager.f == null) {
+              localSticker.h = 255;
             }
-            this.jdField_i_of_type_Boolean = false;
+            this.bl = false;
           }
           else
           {
-            if (Math.abs(localSticker.jdField_e_of_type_Int) < 200)
+            if (Math.abs(localSticker.g) < 200)
             {
-              localSticker.jdField_f_of_type_Int += Math.abs(EmojiStickerManager.jdField_f_of_type_Int / 2);
-              localSticker.jdField_f_of_type_Int = Math.min(255, Math.max(0, localSticker.jdField_f_of_type_Int));
-              localSticker.jdField_e_of_type_Int -= EmojiStickerManager.jdField_f_of_type_Int;
+              localSticker.h += Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g -= EmojiStickerManager.r;
             }
             else
             {
-              localSticker.jdField_f_of_type_Int -= Math.abs(EmojiStickerManager.jdField_f_of_type_Int / 2);
-              localSticker.jdField_f_of_type_Int = Math.min(255, Math.max(0, localSticker.jdField_f_of_type_Int));
-              localSticker.jdField_e_of_type_Int += EmojiStickerManager.jdField_f_of_type_Int;
+              localSticker.h -= Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g += EmojiStickerManager.r;
             }
-            if (localSticker.jdField_e_of_type_Int >= 0) {
+            if (localSticker.g >= 0) {
               break label362;
             }
-            localSticker.jdField_e_of_type_Int = 0;
-            if (EmojiStickerManager.jdField_a_of_type_AndroidViewView == null) {
-              localSticker.jdField_f_of_type_Int = 255;
+            localSticker.g = 0;
+            if (EmojiStickerManager.f == null) {
+              localSticker.h = 255;
             }
-            this.jdField_i_of_type_Boolean = false;
+            this.bl = false;
           }
           bool = false;
           label362:
-          if (localSticker.jdField_e_of_type_Int < -400)
+          if (localSticker.g < -400)
           {
-            localSticker.jdField_e_of_type_Int = -400;
-            localSticker.jdField_f_of_type_Int = 0;
-            this.jdField_i_of_type_Boolean = false;
+            localSticker.g = -400;
+            localSticker.h = 0;
+            this.bl = false;
             bool = true;
           }
-          if (localSticker.jdField_e_of_type_Int > 400)
+          if (localSticker.g > 400)
           {
-            localSticker.jdField_e_of_type_Int = 400;
-            localSticker.jdField_f_of_type_Int = 0;
-            this.jdField_i_of_type_Boolean = false;
+            localSticker.g = 400;
+            localSticker.h = 0;
+            this.bl = false;
             bool = true;
           }
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        localObject = this.aq;
         if (localObject != null) {
           ((ChatMessage)localObject).stickerHidden = bool;
         }
@@ -741,31 +728,65 @@ public class BaseChatItemLayout
     }
   }
   
-  public int a()
+  private void setTopId(int paramInt)
   {
-    return this.Y;
+    if (this.ak != paramInt)
+    {
+      this.ak = paramInt;
+      Object localObject = (HeadIconWrapper)a(HeadIconWrapper.class);
+      if (localObject != null)
+      {
+        localObject = ((HeadIconWrapper)localObject).c();
+        if (localObject != null) {
+          ((RelativeLayout.LayoutParams)((BaseChatItemLayoutViewBasicAbility)localObject).getLayoutParams()).addRule(3, this.ak);
+        }
+      }
+      localObject = this.ae;
+      if (localObject != null) {
+        ((RelativeLayout.LayoutParams)((URLImageView)localObject).getLayoutParams()).addRule(3, this.ak);
+      }
+      localObject = (NickNameLayoutViewWrapper)a(NickNameLayoutViewWrapper.class);
+      BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility;
+      if (localObject != null)
+      {
+        localBaseChatItemLayoutViewBasicAbility = ((NickNameLayoutViewWrapper)localObject).d().c();
+        if ((localBaseChatItemLayoutViewBasicAbility != null) && (localBaseChatItemLayoutViewBasicAbility.checkViewNonNull())) {
+          ((RelativeLayout.LayoutParams)localBaseChatItemLayoutViewBasicAbility.getLayoutParams()).addRule(3, this.ak);
+        }
+        localObject = ((NickNameLayoutViewWrapper)localObject).c();
+        if ((localObject != null) && (((BaseChatItemLayoutViewBasicAbility)localObject).checkViewNonNull())) {
+          ((RelativeLayout.LayoutParams)((BaseChatItemLayoutViewBasicAbility)localObject).getLayoutParams()).addRule(3, this.ak);
+        }
+      }
+      localObject = (BubbleViewWrapper)a(BubbleViewWrapper.class);
+      if (localObject != null)
+      {
+        localObject = ((BubbleViewWrapper)localObject).c();
+        if ((localObject != null) && (((BaseChatItemLayoutViewBasicAbility)localObject).checkViewNonNull()))
+        {
+          localBaseChatItemLayoutViewBasicAbility = a(NickNameChatItemLayoutProcessor.h);
+          if ((localBaseChatItemLayoutViewBasicAbility == null) || (!localBaseChatItemLayoutViewBasicAbility.checkViewNonNull()) || (localBaseChatItemLayoutViewBasicAbility.getViewVisibility() != 0))
+          {
+            ((RelativeLayout.LayoutParams)((BaseChatItemLayoutViewBasicAbility)localObject).getLayoutParams()).addRule(3, this.ak);
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(" setTopId mTopId = ");
+              ((StringBuilder)localObject).append(this.ak);
+              QLog.d("BubbleView", 2, ((StringBuilder)localObject).toString());
+            }
+          }
+        }
+      }
+    }
   }
   
   public int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    if ((!this.jdField_d_of_type_Boolean) && (!this.jdField_e_of_type_Boolean)) {
+    if ((!this.aO) && (!this.aP)) {
       return -1;
     }
-    return new SelectCursorTouchHelper(this, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
-  }
-  
-  public int a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return this.ad;
-    }
-    return this.af;
-  }
-  
-  @NonNull
-  public View a()
-  {
-    return this;
+    return new SelectCursorTouchHelper(this, this.aN).a(paramFloat1, paramFloat2, paramInt1, paramInt2);
   }
   
   @Nullable
@@ -781,113 +802,77 @@ public class BaseChatItemLayout
   @Nullable
   public <T extends BaseChatItemLayoutViewWrapper> T a(Class<? extends BaseChatItemLayoutViewWrapper> paramClass)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBasechatItemlayoutBaseChatItemLayoutViewWrapperFactory.a(paramClass);
-  }
-  
-  protected void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentImageURLImageView;
-    if ((localObject != null) && (((URLImageView)localObject).getVisibility() == 0))
-    {
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
-      if (this.X == 1)
-      {
-        ((RelativeLayout.LayoutParams)localObject).addRule(11);
-        ((RelativeLayout.LayoutParams)localObject).addRule(9, 0);
-      }
-      else
-      {
-        ((RelativeLayout.LayoutParams)localObject).addRule(9);
-        ((RelativeLayout.LayoutParams)localObject).addRule(11, 0);
-        CheckBox localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
-        if ((localCheckBox != null) && (localCheckBox.getVisibility() != 8)) {
-          ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(25.0F, getContext().getResources());
-        } else {
-          ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
-        }
-      }
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, this.Y);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 1) {
-      this.jdField_d_of_type_Boolean = false;
-    } else {
-      this.jdField_e_of_type_Boolean = false;
-    }
-    invalidate();
+    return this.bd.a(paramClass);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.am;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      localObject = this.aq;
       int i1;
       if ((localObject != null) && (((ChatMessage)localObject).stickerHidden)) {
         i1 = 1;
       } else {
         i1 = 0;
       }
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject = this.am.iterator();
       while (((Iterator)localObject).hasNext())
       {
         EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (i1 != 0))
+        if ((this.aq != null) && (i1 != 0))
         {
           int i2;
-          if (localSticker.jdField_a_of_type_Int + this.an + localSticker.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2) {
+          if (localSticker.b + this.bh + localSticker.d / 2 < getMeasuredWidth() / 2) {
             i2 = -400;
           } else {
             i2 = 400;
           }
-          localSticker.jdField_e_of_type_Int = i2;
-          localSticker.jdField_f_of_type_Int = 0;
+          localSticker.g = i2;
+          localSticker.h = 0;
         }
-        if ((paramInt2 != EmojiStickerManager.jdField_e_of_type_Int) || (localSticker.jdField_e_of_type_Int != 0)) {
-          if (paramInt2 == EmojiStickerManager.jdField_d_of_type_Int)
+        if ((paramInt2 != EmojiStickerManager.q) || (localSticker.g != 0)) {
+          if (paramInt2 == EmojiStickerManager.p)
           {
-            if (localSticker.jdField_a_of_type_Int + this.an + localSticker.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2) {
-              localSticker.jdField_e_of_type_Int -= paramInt1;
+            if (localSticker.b + this.bh + localSticker.d / 2 < getMeasuredWidth() / 2) {
+              localSticker.g -= paramInt1;
             } else {
-              localSticker.jdField_e_of_type_Int += paramInt1;
+              localSticker.g += paramInt1;
             }
-            localSticker.jdField_f_of_type_Int -= Math.abs(paramInt1 / 2);
-            localSticker.jdField_f_of_type_Int = Math.min(255, Math.max(0, localSticker.jdField_f_of_type_Int));
+            localSticker.h -= Math.abs(paramInt1 / 2);
+            localSticker.h = Math.min(255, Math.max(0, localSticker.h));
           }
-          else if (paramInt2 == EmojiStickerManager.jdField_e_of_type_Int)
+          else if (paramInt2 == EmojiStickerManager.q)
           {
-            if (localSticker.jdField_a_of_type_Int + this.an + localSticker.jdField_c_of_type_Int / 2 < getMeasuredWidth() / 2)
+            if (localSticker.b + this.bh + localSticker.d / 2 < getMeasuredWidth() / 2)
             {
-              localSticker.jdField_e_of_type_Int += paramInt1;
-              if (localSticker.jdField_e_of_type_Int > 0) {
-                localSticker.jdField_e_of_type_Int = 0;
+              localSticker.g += paramInt1;
+              if (localSticker.g > 0) {
+                localSticker.g = 0;
               }
             }
             else
             {
-              localSticker.jdField_e_of_type_Int -= paramInt1;
-              if (localSticker.jdField_e_of_type_Int < 0) {
-                localSticker.jdField_e_of_type_Int = 0;
+              localSticker.g -= paramInt1;
+              if (localSticker.g < 0) {
+                localSticker.g = 0;
               }
             }
-            localSticker.jdField_f_of_type_Int += Math.abs(paramInt1 / 2);
-            localSticker.jdField_f_of_type_Int = Math.min(255, Math.max(0, localSticker.jdField_f_of_type_Int));
+            localSticker.h += Math.abs(paramInt1 / 2);
+            localSticker.h = Math.min(255, Math.max(0, localSticker.h));
           }
         }
-        if (localSticker.jdField_e_of_type_Int < -400) {
-          localSticker.jdField_e_of_type_Int = -400;
+        if (localSticker.g < -400) {
+          localSticker.g = -400;
         }
-        if (localSticker.jdField_e_of_type_Int > 400) {
-          localSticker.jdField_e_of_type_Int = 400;
+        if (localSticker.g > 400) {
+          localSticker.g = 400;
         }
       }
       if (i1 != 0)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        localObject = this.aq;
         if (localObject != null) {
           ((ChatMessage)localObject).stickerHidden = false;
         }
@@ -900,24 +885,24 @@ public class BaseChatItemLayout
   {
     if (paramInt3 == 2)
     {
-      this.al = (paramInt1 - paramInt2);
+      this.bb = (paramInt1 - paramInt2);
       return;
     }
-    this.am = (paramInt1 + paramInt2);
+    this.bc = (paramInt1 + paramInt2);
   }
   
   public void a(Context paramContext, BaseAdapter paramBaseAdapter)
   {
-    Object localObject = (ImageView)findViewById(2131364544);
+    Object localObject = (ImageView)findViewById(2131430602);
     if (localObject == null)
     {
       localObject = new ImageView(paramContext);
-      ((ImageView)localObject).setId(2131364544);
-      ((ImageView)localObject).setImageResource(2130838034);
+      ((ImageView)localObject).setId(2131430602);
+      ((ImageView)localObject).setImageResource(2130838076);
       int i1 = V;
       paramBaseAdapter = new RelativeLayout.LayoutParams(i1, i1);
       paramBaseAdapter.leftMargin = (paramContext.getResources().getDisplayMetrics().widthPixels + W - getPaddingLeft());
-      paramBaseAdapter.addRule(15, 2131364521);
+      paramBaseAdapter.addRule(15, 2131430578);
       addView((View)localObject, paramBaseAdapter);
       ((ImageView)localObject).setVisibility(4);
       paramContext = (Context)localObject;
@@ -929,10 +914,10 @@ public class BaseChatItemLayout
         paramContext = ((BaseActivity)paramContext).getChatFragment();
         if (paramContext != null)
         {
-          paramContext = paramContext.a();
+          paramContext = paramContext.k();
           if (paramContext != null)
           {
-            paramContext = (LeftSwipeReplyHelper)paramContext.a(50);
+            paramContext = (LeftSwipeReplyHelper)paramContext.q(50);
             if (paramContext != null) {
               paramContext.a(this);
             }
@@ -945,7 +930,7 @@ public class BaseChatItemLayout
     localObject = a(BubbleViewWrapper.class);
     if (localObject != null)
     {
-      localObject = ((BaseChatItemLayoutViewWrapper)localObject).a();
+      localObject = ((BaseChatItemLayoutViewWrapper)localObject).c();
       if (localObject != null) {
         ((BaseChatItemLayoutViewBasicAbility)localObject).post(new BaseChatItemLayout.1(this, paramBaseAdapter, (BaseChatItemLayoutViewBasicAbility)localObject, paramContext));
       }
@@ -959,11 +944,11 @@ public class BaseChatItemLayout
       paramImageView = (RelativeLayout.LayoutParams)paramImageView.getLayoutParams();
       if (paramBoolean)
       {
-        paramImageView.addRule(0, 2131364521);
+        paramImageView.addRule(0, 2131430578);
         paramImageView.addRule(1, 0);
         return;
       }
-      paramImageView.addRule(1, 2131364521);
+      paramImageView.addRule(1, 2131430578);
       paramImageView.addRule(0, 0);
     }
   }
@@ -975,57 +960,49 @@ public class BaseChatItemLayout
       paramProgressBar = (RelativeLayout.LayoutParams)paramProgressBar.getLayoutParams();
       if (paramBoolean)
       {
-        paramProgressBar.addRule(0, 2131364521);
+        paramProgressBar.addRule(0, 2131430578);
         paramProgressBar.addRule(1, 0);
         return;
       }
-      paramProgressBar.addRule(1, 2131364521);
+      paramProgressBar.addRule(1, 2131430578);
       paramProgressBar.addRule(0, 0);
     }
   }
   
   public void a(SelectableDelegate paramSelectableDelegate)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate = paramSelectableDelegate;
+    this.aN = paramSelectableDelegate;
   }
   
   public boolean a()
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.ab;
     return (localTextView != null) && (localTextView.getVisibility() == 0);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return this.jdField_d_of_type_Boolean;
-    }
-    return this.jdField_e_of_type_Boolean;
   }
   
   public boolean a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, String paramString, boolean paramBoolean, float paramFloat, StickerInfo paramStickerInfo)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.am == null) {
+      this.am = new ArrayList();
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() < QVipStickerProcessor.jdField_c_of_type_Int)
+    if (this.am.size() < QVipStickerProcessor.c)
     {
       EmojiStickerManager.Sticker localSticker = new EmojiStickerManager.Sticker();
       if (paramDrawable != null)
       {
-        localSticker.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
+        localSticker.a = paramDrawable.mutate();
         paramDrawable.setCallback(this);
       }
-      localSticker.jdField_a_of_type_Int = paramInt1;
-      localSticker.jdField_b_of_type_Int = paramInt2;
-      localSticker.jdField_c_of_type_Int = paramInt3;
-      localSticker.jdField_d_of_type_Int = paramInt4;
-      localSticker.jdField_a_of_type_Double = paramDouble;
-      localSticker.jdField_a_of_type_JavaLangString = paramString;
-      localSticker.jdField_a_of_type_Boolean = paramBoolean;
-      localSticker.jdField_a_of_type_Float = paramFloat;
-      localSticker.jdField_a_of_type_ComTencentMobileqqEmoticonStickerInfo = paramStickerInfo;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localSticker);
+      localSticker.b = paramInt1;
+      localSticker.c = paramInt2;
+      localSticker.d = paramInt3;
+      localSticker.e = paramInt4;
+      localSticker.f = paramDouble;
+      localSticker.i = paramString;
+      localSticker.j = paramBoolean;
+      localSticker.n = paramFloat;
+      localSticker.o = paramStickerInfo;
+      this.am.add(localSticker);
       return true;
     }
     return false;
@@ -1062,38 +1039,18 @@ public class BaseChatItemLayout
     }
   }
   
-  public int b()
-  {
-    return this.X;
-  }
-  
   public int b(int paramInt)
   {
     if (paramInt == 1) {
-      return this.ae;
+      return this.aQ;
     }
-    return this.ag;
-  }
-  
-  public void b()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null)
-    {
-      this.jdField_i_of_type_Boolean = false;
-      localArrayList.clear();
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.aj = paramInt;
+    return this.aS;
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    e();
-    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+    k();
+    getLocationInWindow(this.Z);
     boolean bool;
     if ((paramInt1 != -1) && (paramInt2 != -1)) {
       bool = true;
@@ -1103,77 +1060,91 @@ public class BaseChatItemLayout
     int[] arrayOfInt;
     if (paramInt3 == 1)
     {
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      this.ad = (paramInt1 - arrayOfInt[0]);
-      this.ae = (paramInt2 - arrayOfInt[1]);
-      this.jdField_d_of_type_Boolean = bool;
+      arrayOfInt = this.Z;
+      this.aQ = (paramInt1 - arrayOfInt[0]);
+      this.aR = (paramInt2 - arrayOfInt[1]);
+      this.aO = bool;
     }
     else
     {
-      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      this.af = (paramInt1 - arrayOfInt[0]);
-      this.ag = (paramInt2 - arrayOfInt[1]);
-      this.jdField_e_of_type_Boolean = bool;
+      arrayOfInt = this.Z;
+      this.aS = (paramInt1 - arrayOfInt[0]);
+      this.aT = (paramInt2 - arrayOfInt[1]);
+      this.aP = bool;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    if (this.aW == null) {
+      this.aW = new Paint(1);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (this.aX == null) {
+      this.aX = new Rect();
     }
     if (paramInt3 == 1)
     {
-      this.ah = paramInt2;
+      this.aU = paramInt2;
     }
     else if (paramInt3 == 2)
     {
-      this.ai = paramInt2;
+      this.aV = paramInt2;
     }
     else
     {
-      this.ah = -1;
-      this.ai = -1;
+      this.aU = -1;
+      this.aV = -1;
     }
     invalidate();
   }
   
   public boolean b()
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.ah;
     return (localImageView != null) && (localImageView.getVisibility() == 0);
   }
   
-  public void c()
+  public int c(int paramInt)
   {
-    this.jdField_i_of_type_Boolean = true;
-    invalidate();
+    if (paramInt == 1) {
+      return this.aR;
+    }
+    return this.aT;
   }
   
-  public void c(int paramInt)
+  protected void c()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null)
+    Object localObject = this.ae;
+    if ((localObject != null) && (((URLImageView)localObject).getVisibility() == 0))
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject = (RelativeLayout.LayoutParams)this.ae.getLayoutParams();
+      if (this.aj == 1)
       {
-        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
-        localSticker.jdField_b_of_type_Int += paramInt;
+        ((RelativeLayout.LayoutParams)localObject).addRule(11);
+        ((RelativeLayout.LayoutParams)localObject).addRule(9, 0);
       }
+      else
+      {
+        ((RelativeLayout.LayoutParams)localObject).addRule(9);
+        ((RelativeLayout.LayoutParams)localObject).addRule(11, 0);
+        CheckBox localCheckBox = this.ac;
+        if ((localCheckBox != null) && (localCheckBox.getVisibility() != 8)) {
+          ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(25.0F, getContext().getResources());
+        } else {
+          ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
+        }
+      }
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, this.ak);
     }
   }
   
   protected void c(int paramInt1, int paramInt2, int paramInt3)
   {
     int i2;
-    if (this.ak == 1) {
-      i2 = this.al;
+    if (this.ba == 1) {
+      i2 = this.bb;
     } else {
-      i2 = this.am;
+      i2 = this.bc;
     }
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, paramInt2);
+    int i1 = this.aN.b(paramInt1, paramInt2);
     if (paramInt3 == -1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.ak, false);
+      this.aN.a(this.ba, false);
     }
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
@@ -1182,7 +1153,7 @@ public class BaseChatItemLayout
       localStringBuilder.append("updateCursorLocation, touchIndex=");
       localStringBuilder.append(i1);
       localStringBuilder.append(", type=");
-      localStringBuilder.append(this.ak);
+      localStringBuilder.append(this.ba);
       QLog.d("BaseChatItemLayout", 2, localStringBuilder.toString());
     }
     if (i1 == -1) {
@@ -1190,13 +1161,13 @@ public class BaseChatItemLayout
     }
     if (i1 != i2)
     {
-      if (this.ak == 1)
+      if (this.ba == 1)
       {
-        paramInt3 = this.al;
+        paramInt3 = this.bb;
         if (i1 < paramInt3)
         {
-          paramInt3 = this.am;
-          this.al = i1;
+          paramInt3 = this.bc;
+          this.bb = i1;
         }
       }
       for (;;)
@@ -1207,64 +1178,64 @@ public class BaseChatItemLayout
         break;
         if (i1 > paramInt3)
         {
-          paramInt3 = this.am;
+          paramInt3 = this.bc;
           if (i1 < paramInt3)
           {
-            this.al = i1;
+            this.bb = i1;
             continue;
           }
         }
-        paramInt3 = this.al;
+        paramInt3 = this.bb;
         if (i1 == paramInt3)
         {
-          i1 = this.am;
+          i1 = this.bc;
           break;
         }
-        paramInt3 = this.am;
+        paramInt3 = this.bc;
         if (i1 == paramInt3)
         {
           i1 = paramInt3 - 1;
         }
         else
         {
-          this.al = paramInt3;
-          this.am = i1;
-          this.ak = 2;
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.ak);
+          this.bb = paramInt3;
+          this.bc = i1;
+          this.ba = 2;
+          this.aN.a(this.ba);
           break;
-          paramInt3 = this.am;
+          paramInt3 = this.bc;
           if (i1 > paramInt3)
           {
-            paramInt3 = this.al;
-            this.am = i1;
+            paramInt3 = this.bb;
+            this.bc = i1;
             break;
           }
           if (i1 < paramInt3)
           {
-            paramInt3 = this.al;
+            paramInt3 = this.bb;
             if (i1 > paramInt3)
             {
-              this.am = i1;
+              this.bc = i1;
               break;
             }
           }
-          paramInt3 = this.am;
+          paramInt3 = this.bc;
           if (i1 == paramInt3)
           {
-            i1 = this.al;
+            i1 = this.bb;
           }
           else
           {
-            paramInt3 = this.al;
+            paramInt3 = this.bb;
             if (i1 == paramInt3)
             {
               i1 = paramInt3 + 1;
               break;
             }
-            this.am = paramInt3;
-            this.al = i1;
-            this.ak = 1;
-            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.ak);
+            this.bc = paramInt3;
+            this.bb = i1;
+            this.ba = 1;
+            this.aN.a(this.ba);
           }
         }
       }
@@ -1277,40 +1248,25 @@ public class BaseChatItemLayout
         localStringBuilder.append(i1);
         QLog.d("BaseChatItemLayout", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt3, i1);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b(paramInt1, paramInt2);
+      this.aN.a(paramInt3, i1);
+      this.aN.c(paramInt1, paramInt2);
       a(paramInt1, true);
       return;
     }
     a(paramInt1, false);
   }
   
-  public boolean c()
-  {
-    return this.X == 1;
-  }
-  
-  public void d()
-  {
-    setPendantImageVisible(false);
-    View localView = findViewById(2131365992);
-    if ((localView != null) && (localView.getVisibility() != 8)) {
-      localView.setVisibility(8);
-    }
-    localView = findViewById(2131367028);
-    if ((localView != null) && (localView.getVisibility() != 8)) {
-      localView.setVisibility(8);
-    }
-    localView = findViewById(2131367027);
-    if ((localView != null) && (localView.getVisibility() != 8)) {
-      localView.setVisibility(8);
-    }
-  }
-  
   public boolean d()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    return (localArrayList == null) || (localArrayList.size() < QVipStickerProcessor.jdField_b_of_type_Int);
+    return this.aj == 1;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    if (paramInt == 1) {
+      return this.aO;
+    }
+    return this.aP;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -1331,38 +1287,105 @@ public class BaseChatItemLayout
       break label13;
     }
     QLog.e("BaseChatItemLayout", 1, "dispatchDraw oom");
-    if (this.jdField_d_of_type_Boolean)
+    if (this.aO)
     {
-      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-      i1 = this.ad;
-      i2 = ab;
-      i3 = this.ae;
-      localRect.set(i1 - i2, i3 - ac, i1, i3);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.aj);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      f1 = this.jdField_a_of_type_AndroidGraphicsRect.centerX();
-      i1 = this.jdField_a_of_type_AndroidGraphicsRect.top;
-      i2 = jdField_a_of_type_Int;
-      paramCanvas.drawCircle(f1, i1 - i2, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localRect = this.aX;
+      i1 = this.aQ;
+      i2 = aD;
+      i3 = this.aR;
+      localRect.set(i1 - i2, i3 - aE, i1, i3);
+      this.aW.setColor(this.aY);
+      paramCanvas.drawRect(this.aX, this.aW);
+      f1 = this.aX.centerX();
+      i1 = this.aX.top;
+      i2 = a;
+      paramCanvas.drawCircle(f1, i1 - i2, i2, this.aW);
     }
-    if (this.jdField_e_of_type_Boolean)
+    if (this.aP)
     {
-      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-      i1 = this.af;
-      i2 = this.ag;
-      localRect.set(i1, i2 - ac, ab + i1, i2);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.aj);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      f1 = this.jdField_a_of_type_AndroidGraphicsRect.centerX();
-      i1 = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-      i2 = jdField_a_of_type_Int;
-      paramCanvas.drawCircle(f1, i1 + i2, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localRect = this.aX;
+      i1 = this.aS;
+      i2 = this.aT;
+      localRect.set(i1, i2 - aE, aD + i1, i2);
+      this.aW.setColor(this.aY);
+      paramCanvas.drawRect(this.aX, this.aW);
+      f1 = this.aX.centerX();
+      i1 = this.aX.bottom;
+      i2 = a;
+      paramCanvas.drawCircle(f1, i1 + i2, i2, this.aW);
     }
   }
   
-  public boolean e()
+  @NonNull
+  public View e()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    return this;
+  }
+  
+  public void e(int paramInt)
+  {
+    if (paramInt == 1) {
+      this.aO = false;
+    } else {
+      this.aP = false;
+    }
+    invalidate();
+  }
+  
+  public void f()
+  {
+    ArrayList localArrayList = this.am;
+    if (localArrayList != null)
+    {
+      this.bl = false;
+      localArrayList.clear();
+    }
+  }
+  
+  public void f(int paramInt)
+  {
+    this.aY = paramInt;
+  }
+  
+  public void g(int paramInt)
+  {
+    Object localObject = this.am;
+    if (localObject != null)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
+        localSticker.c += paramInt;
+      }
+    }
+  }
+  
+  public boolean g()
+  {
+    ArrayList localArrayList = this.am;
+    return (localArrayList == null) || (localArrayList.size() < QVipStickerProcessor.b);
+  }
+  
+  public int getHeadIconPosition()
+  {
+    return this.aj;
+  }
+  
+  public int getTopId()
+  {
+    return this.ak;
+  }
+  
+  public void h()
+  {
+    this.bl = true;
+    invalidate();
+  }
+  
+  public boolean i()
+  {
+    ArrayList localArrayList = this.am;
     return (localArrayList != null) && (localArrayList.size() > 0);
   }
   
@@ -1371,12 +1394,29 @@ public class BaseChatItemLayout
     invalidate();
   }
   
+  public void j()
+  {
+    setPendantImageVisible(false);
+    View localView = findViewById(2131432263);
+    if ((localView != null) && (localView.getVisibility() != 8)) {
+      localView.setVisibility(8);
+    }
+    localView = findViewById(2131433476);
+    if ((localView != null) && (localView.getVisibility() != 8)) {
+      localView.setVisibility(8);
+    }
+    localView = findViewById(2131433475);
+    if ((localView != null) && (localView.getVisibility() != 8)) {
+      localView.setVisibility(8);
+    }
+  }
+  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.aB) {
       return true;
     }
-    if (jdField_a_of_type_Boolean)
+    if (ad)
     {
       if (paramMotionEvent.getAction() == 0)
       {
@@ -1388,13 +1428,13 @@ public class BaseChatItemLayout
     }
     else
     {
-      if (a(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+      if (b(paramMotionEvent.getX(), paramMotionEvent.getY())) {
         return true;
       }
-      if (((this.jdField_d_of_type_Boolean) || (this.jdField_e_of_type_Boolean)) && (a(paramMotionEvent.getX(), paramMotionEvent.getY()) != -1))
+      if (((this.aO) || (this.aP)) && (a(paramMotionEvent.getX(), paramMotionEvent.getY()) != -1))
       {
-        e();
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.c();
+        k();
+        this.aN.m();
         return true;
       }
     }
@@ -1404,10 +1444,10 @@ public class BaseChatItemLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.am;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      this.jdField_i_of_type_Boolean = false;
+      this.bl = false;
       paramInt1 = getMeasuredHeight();
       paramInt2 = getChildCount() - 1;
       while (paramInt2 >= 0)
@@ -1417,21 +1457,21 @@ public class BaseChatItemLayout
         if (localObject != null)
         {
           i1 = paramInt1;
-          if (((View)localObject).getId() == 2131364521)
+          if (((View)localObject).getId() == 2131430578)
           {
             localObject = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
             i1 = 0;
             int i3 = 0;
-            while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+            while (i1 < this.am.size())
             {
-              EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-              localSticker.jdField_f_of_type_Int = 255;
-              localSticker.jdField_e_of_type_Int = 0;
+              EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)this.am.get(i1);
+              localSticker.h = 255;
+              localSticker.g = 0;
               int i2 = paramInt1;
-              if (localSticker.jdField_b_of_type_Int + localSticker.jdField_d_of_type_Int > paramInt1)
+              if (localSticker.c + localSticker.e > paramInt1)
               {
-                ((RelativeLayout.LayoutParams)localObject).bottomMargin = (localSticker.jdField_b_of_type_Int + localSticker.jdField_d_of_type_Int - paramInt1);
-                i2 = localSticker.jdField_b_of_type_Int + localSticker.jdField_d_of_type_Int;
+                ((RelativeLayout.LayoutParams)localObject).bottomMargin = (localSticker.c + localSticker.e - paramInt1);
+                i2 = localSticker.c + localSticker.e;
                 i3 = 1;
               }
               i1 += 1;
@@ -1463,17 +1503,17 @@ public class BaseChatItemLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
+    boolean bool = this.aB;
     MotionEvent localMotionEvent = null;
     if (bool)
     {
-      if ((paramMotionEvent.getAction() == 1) && (!this.jdField_c_of_type_Boolean))
+      if ((paramMotionEvent.getAction() == 1) && (!this.aC))
       {
-        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout$MiniAioShieldItemTouchListener;
+        paramMotionEvent = this.ap;
         if (paramMotionEvent != null)
         {
-          paramMotionEvent.a_(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-          QQToast.a(BaseApplication.getContext(), 0, HardCodeUtil.a(2131701208), 0).a();
+          paramMotionEvent.a_(this.aq);
+          QQToast.makeText(BaseApplication.getContext(), 0, HardCodeUtil.a(2131899220), 0).show();
           return true;
         }
         paramMotionEvent = localMotionEvent;
@@ -1484,20 +1524,20 @@ public class BaseChatItemLayout
       }
       return true;
     }
-    if (jdField_a_of_type_Boolean)
+    if (ad)
     {
       AIOCheckBoxUtil.a(this, paramMotionEvent);
       return true;
     }
-    if (a(paramMotionEvent.getX(), paramMotionEvent.getY()))
+    if (b(paramMotionEvent.getX(), paramMotionEvent.getY()))
     {
       if (paramMotionEvent.getAction() == 0)
       {
-        localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+        localMotionEvent = this.bm;
         if ((localMotionEvent != null) && (a(localMotionEvent, paramMotionEvent)))
         {
-          this.jdField_j_of_type_Boolean = true;
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerDoubleClickListener;
+          this.bn = true;
+          paramMotionEvent = this.ar;
           if (paramMotionEvent != null)
           {
             paramMotionEvent.a(this);
@@ -1507,16 +1547,16 @@ public class BaseChatItemLayout
       }
       else if (paramMotionEvent.getAction() == 1)
       {
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        if (this.jdField_j_of_type_Boolean)
+        this.bm = MotionEvent.obtain(paramMotionEvent);
+        if (this.bn)
         {
-          this.jdField_j_of_type_Boolean = false;
-          this.jdField_a_of_type_AndroidViewMotionEvent = null;
+          this.bn = false;
+          this.bm = null;
         }
       }
       return true;
     }
-    if (((this.jdField_d_of_type_Boolean) || (this.jdField_e_of_type_Boolean)) && (a(paramMotionEvent))) {
+    if (((this.aO) || (this.aP)) && (a(paramMotionEvent))) {
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -1532,53 +1572,53 @@ public class BaseChatItemLayout
   
   public void setCheckBox(ChatMessage paramChatMessage)
   {
-    boolean bool = jdField_a_of_type_Boolean;
+    boolean bool = ad;
     if (bool)
     {
       Object localObject;
-      if (this.jdField_a_of_type_AndroidWidgetCheckBox == null)
+      if (this.ac == null)
       {
-        this.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(getContext());
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839072);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131364547);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+        this.ac = new CheckBox(getContext());
+        this.ac.setButtonDrawable(2130839226);
+        this.ac.setId(2131430605);
+        this.ac.setOnCheckedChangeListener(ao);
         localObject = new RelativeLayout.LayoutParams(AIOUtils.b(24.0F, getContext().getResources()), AIOUtils.b(24.0F, getContext().getResources()));
         ((RelativeLayout.LayoutParams)localObject).topMargin = x;
         ((RelativeLayout.LayoutParams)localObject).addRule(9);
-        ((RelativeLayout.LayoutParams)localObject).addRule(3, this.Y);
-        addView(this.jdField_a_of_type_AndroidWidgetCheckBox, (ViewGroup.LayoutParams)localObject);
+        ((RelativeLayout.LayoutParams)localObject).addRule(3, this.ak);
+        addView(this.ac, (ViewGroup.LayoutParams)localObject);
       }
       else
       {
         localObject = new RelativeLayout.LayoutParams(AIOUtils.b(24.0F, getContext().getResources()), AIOUtils.b(24.0F, getContext().getResources()));
         ((RelativeLayout.LayoutParams)localObject).topMargin = x;
         ((RelativeLayout.LayoutParams)localObject).addRule(9);
-        ((RelativeLayout.LayoutParams)localObject).addRule(3, this.Y);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        ((RelativeLayout.LayoutParams)localObject).addRule(3, this.ak);
+        this.ac.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramChatMessage);
+      this.ac.setTag(paramChatMessage);
       if (bool)
       {
-        localObject = AIOLongShotHelper.a();
-        if ((localObject != null) && (((AIOLongShotHelper)localObject).a()))
+        localObject = AIOLongShotHelper.f();
+        if ((localObject != null) && (((AIOLongShotHelper)localObject).c()))
         {
-          this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(((AIOLongShotHelper)localObject).a(paramChatMessage));
+          this.ac.setVisibility(8);
+          this.ac.setChecked(((AIOLongShotHelper)localObject).a(paramChatMessage));
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+        this.ac.setVisibility(0);
         if (MultiMsgManager.a().a(paramChatMessage))
         {
-          this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+          this.ac.setChecked(true);
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+        this.ac.setChecked(false);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(4);
+      this.ac.setVisibility(4);
       return;
     }
-    paramChatMessage = this.jdField_a_of_type_AndroidWidgetCheckBox;
+    paramChatMessage = this.ac;
     if (paramChatMessage != null) {
       paramChatMessage.setVisibility(8);
     }
@@ -1591,50 +1631,50 @@ public class BaseChatItemLayout
   
   public void setFailedIconResource(int paramInt, View.OnClickListener paramOnClickListener, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null)
+    if (this.ah == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131364528);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getContext().getString(2131689897));
+      this.ah = new ImageView(getContext());
+      this.ah.setId(2131430585);
+      this.ah.setContentDescription(getContext().getString(2131886538));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.bottomMargin = AIOUtils.b(16.0F, getContext().getResources());
-      localLayoutParams.addRule(8, 2131364521);
-      if (this.X == 1)
+      localLayoutParams.addRule(8, 2131430578);
+      if (this.aj == 1)
       {
-        localLayoutParams.addRule(0, 2131364521);
+        localLayoutParams.addRule(0, 2131430578);
         localLayoutParams.addRule(1, 0);
       }
       else
       {
-        localLayoutParams.addRule(1, 2131364521);
+        localLayoutParams.addRule(1, 2131430578);
         localLayoutParams.addRule(0, 0);
       }
-      addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+      addView(this.ah, localLayoutParams);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramObject);
+    this.ah.setImageResource(paramInt);
+    this.ah.setVisibility(0);
+    this.ah.setOnClickListener(paramOnClickListener);
+    this.ah.setTag(paramObject);
   }
   
   public void setFailedIconVisable(boolean paramBoolean, View.OnClickListener paramOnClickListener)
   {
     if (paramBoolean)
     {
-      setFailedIconResource(2130838217, paramOnClickListener);
+      setFailedIconResource(2130838271, paramOnClickListener);
     }
     else
     {
-      paramOnClickListener = this.jdField_a_of_type_AndroidWidgetImageView;
+      paramOnClickListener = this.ah;
       if (paramOnClickListener != null)
       {
         paramOnClickListener.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+        this.ah.setOnClickListener(null);
       }
     }
-    if (jdField_a_of_type_Boolean)
+    if (ad)
     {
-      paramOnClickListener = this.jdField_a_of_type_AndroidWidgetImageView;
+      paramOnClickListener = this.ah;
       if (paramOnClickListener != null) {
         paramOnClickListener.setOnClickListener(null);
       }
@@ -1646,63 +1686,63 @@ public class BaseChatItemLayout
     int i1 = 0;
     if (paramBoolean)
     {
-      if (this.jdField_b_of_type_AndroidWidgetTextView == null)
+      if (this.ab == null)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_b_of_type_AndroidWidgetTextView.setId(2131364529);
+        this.ab = new TextView(getContext());
+        this.ab.setId(2131430586);
         i1 = AIOUtils.b(12.0F, getContext().getResources());
         int i2 = AIOUtils.b(5.0F, getContext().getResources());
-        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130844764);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
+        this.ab.setBackgroundResource(2130846198);
+        this.ab.setTextSize(2, 13.0F);
         if (paramColorStateList != null) {
-          this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+          this.ab.setTextColor(paramColorStateList);
         }
-        this.jdField_b_of_type_AndroidWidgetTextView.setPadding(i1, i2, i1, i2);
-        this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-        this.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(new LinkMovementMethod());
+        this.ab.setPadding(i1, i2, i1, i2);
+        this.ab.setGravity(17);
+        this.ab.setMovementMethod(new LinkMovementMethod());
         if (paramInt <= 0) {
           paramInt = -2;
         } else {
           paramInt = AIOUtils.b(paramInt, getContext().getResources());
         }
         paramColorStateList = new RelativeLayout.LayoutParams(paramInt, -2);
-        paramColorStateList.bottomMargin = getContext().getResources().getDimensionPixelOffset(2131296455);
+        paramColorStateList.bottomMargin = getContext().getResources().getDimensionPixelOffset(2131296689);
         paramInt = AIOUtils.b(45.0F, getContext().getResources());
         paramColorStateList.leftMargin = paramInt;
         paramColorStateList.rightMargin = paramInt;
         paramColorStateList.addRule(14);
-        paramColorStateList.addRule(3, 2131364552);
-        addView(this.jdField_b_of_type_AndroidWidgetTextView, paramColorStateList);
+        paramColorStateList.addRule(3, 2131430611);
+        addView(this.ab, paramColorStateList);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      if ((paramCharSequence != null) && (!paramCharSequence.equals(this.jdField_b_of_type_AndroidWidgetTextView.getTag())))
+      this.ab.setVisibility(0);
+      if ((paramCharSequence != null) && (!paramCharSequence.equals(this.ab.getTag())))
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-        this.jdField_b_of_type_AndroidWidgetTextView.setTag(paramCharSequence);
+        this.ab.setText(paramCharSequence);
+        this.ab.setTag(paramCharSequence);
       }
-      d(2131364529);
+      setTopId(2131430586);
     }
     else
     {
-      paramCharSequence = this.jdField_b_of_type_AndroidWidgetTextView;
+      paramCharSequence = this.ab;
       if (paramCharSequence != null)
       {
         paramCharSequence.setVisibility(8);
-        paramCharSequence = this.jdField_a_of_type_AndroidWidgetTextView;
+        paramCharSequence = this.aa;
         paramInt = i1;
         if (paramCharSequence != null)
         {
           paramInt = i1;
           if (paramCharSequence.getVisibility() == 0) {
-            paramInt = 2131364552;
+            paramInt = 2131430611;
           }
         }
-        d(paramInt);
+        setTopId(paramInt);
       }
     }
-    if (this.Y == 2131364552)
+    if (this.ak == 2131430611)
     {
-      paramCharSequence = this.jdField_a_of_type_AndroidWidgetTextView;
+      paramCharSequence = this.aa;
       if (paramCharSequence != null)
       {
         paramCharSequence = (RelativeLayout.LayoutParams)paramCharSequence.getLayoutParams();
@@ -1716,14 +1756,14 @@ public class BaseChatItemLayout
         return;
       }
     }
-    if (this.Y == 2131364529)
+    if (this.ak == 2131430586)
     {
-      paramChatMessage = this.jdField_b_of_type_AndroidWidgetTextView;
+      paramChatMessage = this.ab;
       if (paramChatMessage != null)
       {
         paramChatMessage = (RelativeLayout.LayoutParams)paramChatMessage.getLayoutParams();
         paramChatMessage.topMargin = AIOUtils.b(10.0F, getContext().getResources());
-        this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(paramChatMessage);
+        this.ab.setLayoutParams(paramChatMessage);
       }
     }
   }
@@ -1738,33 +1778,33 @@ public class BaseChatItemLayout
   
   public void setHearIconPosition(int paramInt)
   {
-    if (this.X != paramInt)
+    if (this.aj != paramInt)
     {
-      this.X = paramInt;
+      this.aj = paramInt;
       int i1 = 0;
       boolean bool = true;
       if (paramInt != 1) {
         bool = false;
       }
-      Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      Object localObject = this.aa;
       paramInt = i1;
       if (localObject != null)
       {
         paramInt = i1;
         if (((TextView)localObject).getVisibility() == 0) {
-          paramInt = this.jdField_a_of_type_AndroidWidgetTextView.getId();
+          paramInt = this.aa.getId();
         }
       }
-      localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject = this.ab;
       i1 = paramInt;
       if (localObject != null)
       {
         i1 = paramInt;
         if (((TextView)localObject).getVisibility() == 0) {
-          i1 = this.jdField_b_of_type_AndroidWidgetTextView.getId();
+          i1 = this.ab.getId();
         }
       }
-      localObject = this.jdField_a_of_type_AndroidWidgetCheckBox;
+      localObject = this.ac;
       if (localObject != null) {
         ((RelativeLayout.LayoutParams)((CheckBox)localObject).getLayoutParams()).addRule(9);
       }
@@ -1772,12 +1812,12 @@ public class BaseChatItemLayout
       if (localObject != null) {
         ((IHeadIconProcessor)((HeadIconWrapper)localObject).a()).a(bool, i1);
       }
-      a();
+      c();
       localObject = (NickNameLayoutViewWrapper)a(NickNameLayoutViewWrapper.class);
       paramInt = i1;
       if (localObject != null)
       {
-        localObject = ((NickNameLayoutViewWrapper)localObject).a();
+        localObject = ((NickNameLayoutViewWrapper)localObject).c();
         paramInt = i1;
         if (localObject != null)
         {
@@ -1793,14 +1833,14 @@ public class BaseChatItemLayout
       if (localObject != null) {
         ((IBubbleViewProcessor)((BubbleViewWrapper)localObject).a()).a(bool, paramInt);
       }
-      a(this.jdField_a_of_type_AndroidWidgetProgressBar, bool);
-      a(this.jdField_a_of_type_AndroidWidgetImageView, bool);
+      a(this.ag, bool);
+      a(this.ah, bool);
     }
   }
   
   public void setMiniAioShieldItemTouchListener(BaseChatItemLayout.MiniAioShieldItemTouchListener paramMiniAioShieldItemTouchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout$MiniAioShieldItemTouchListener = paramMiniAioShieldItemTouchListener;
+    this.ap = paramMiniAioShieldItemTouchListener;
   }
   
   public void setNetIconVisible(boolean paramBoolean) {}
@@ -1820,17 +1860,17 @@ public class BaseChatItemLayout
   
   public void setPendantImage(Drawable paramDrawable)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentImageURLImageView;
+    Object localObject = this.ae;
     CheckBox localCheckBox;
     if (localObject == null)
     {
-      this.jdField_a_of_type_ComTencentImageURLImageView = new MosaicURLImageView(getContext());
-      this.jdField_a_of_type_ComTencentImageURLImageView.setId(2131364541);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      this.ae = new MosaicURLImageView(getContext());
+      this.ae.setId(2131430599);
+      this.ae.setScaleType(ImageView.ScaleType.FIT_XY);
       localObject = new RelativeLayout.LayoutParams(S, T);
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364529);
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131430586);
       ((RelativeLayout.LayoutParams)localObject).topMargin = U;
-      if (this.X == 1)
+      if (this.aj == 1)
       {
         ((RelativeLayout.LayoutParams)localObject).addRule(11);
         ((RelativeLayout.LayoutParams)localObject).addRule(9, 0);
@@ -1841,21 +1881,25 @@ public class BaseChatItemLayout
       {
         ((RelativeLayout.LayoutParams)localObject).addRule(9);
         ((RelativeLayout.LayoutParams)localObject).addRule(11, 0);
-        localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
+        localCheckBox = this.ac;
         if ((localCheckBox != null) && (localCheckBox.getVisibility() != 8)) {
           ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(25.0F, getContext().getResources());
         } else {
           ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
         }
       }
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, this.Y);
-      addView(this.jdField_a_of_type_ComTencentImageURLImageView, (ViewGroup.LayoutParams)localObject);
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, this.ak);
+      addView(this.ae, (ViewGroup.LayoutParams)localObject);
+      localObject = this.af;
+      if ((localObject != null) && (((OnlineStatusCircleView)localObject).getVisibility() == 0)) {
+        this.af.bringToFront();
+      }
     }
     else
     {
       localObject = (RelativeLayout.LayoutParams)((URLImageView)localObject).getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364529);
-      if (this.X == 1)
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131430586);
+      if (this.aj == 1)
       {
         ((RelativeLayout.LayoutParams)localObject).addRule(11);
         ((RelativeLayout.LayoutParams)localObject).addRule(9, 0);
@@ -1866,29 +1910,29 @@ public class BaseChatItemLayout
       {
         ((RelativeLayout.LayoutParams)localObject).addRule(9);
         ((RelativeLayout.LayoutParams)localObject).addRule(11, 0);
-        localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
+        localCheckBox = this.ac;
         if ((localCheckBox != null) && (localCheckBox.getVisibility() != 8)) {
           ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(25.0F, getContext().getResources());
         } else {
           ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
         }
       }
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, this.Y);
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, this.ak);
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramDrawable);
-    paramDrawable = AIOLongShotHelper.a();
-    if ((paramDrawable != null) && (paramDrawable.c())) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+    this.ae.setVisibility(0);
+    this.ae.setImageDrawable(paramDrawable);
+    paramDrawable = AIOLongShotHelper.f();
+    if ((paramDrawable != null) && (paramDrawable.h())) {
+      this.ae.setVisibility(8);
     }
     if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setColorFilter(1996488704);
+      this.ae.setColorFilter(1996488704);
     }
   }
   
   public void setPendantImageVisible(boolean paramBoolean)
   {
-    URLImageView localURLImageView = this.jdField_a_of_type_ComTencentImageURLImageView;
+    URLImageView localURLImageView = this.ae;
     if (localURLImageView != null)
     {
       int i1;
@@ -1905,34 +1949,34 @@ public class BaseChatItemLayout
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidWidgetProgressBar == null)
+      if (this.ag == null)
       {
-        this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(getContext(), null, 0);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setId(2131364548);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130839401));
+        this.ag = new ProgressBar(getContext(), null, 0);
+        this.ag.setId(2131430606);
+        this.ag.setIndeterminate(true);
+        this.ag.setIndeterminateDrawable(getResources().getDrawable(2130839585));
         int i1 = AIOUtils.b(16.0F, getContext().getResources());
         localObject = new RelativeLayout.LayoutParams(i1, i1);
         ((RelativeLayout.LayoutParams)localObject).bottomMargin = AIOUtils.b(18.0F, getContext().getResources());
-        ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131364521);
-        if (this.X == 1)
+        ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131430578);
+        if (this.aj == 1)
         {
           ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(4.0F, getContext().getResources());
-          ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131364521);
+          ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131430578);
           ((RelativeLayout.LayoutParams)localObject).addRule(1, 0);
         }
         else
         {
           ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(4.0F, getContext().getResources());
-          ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131364521);
+          ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131430578);
           ((RelativeLayout.LayoutParams)localObject).addRule(0, 0);
         }
-        addView(this.jdField_a_of_type_AndroidWidgetProgressBar, (ViewGroup.LayoutParams)localObject);
+        addView(this.ag, (ViewGroup.LayoutParams)localObject);
       }
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      this.ag.setVisibility(0);
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    Object localObject = this.ag;
     if (localObject != null) {
       ((ProgressBar)localObject).setVisibility(8);
     }
@@ -1942,27 +1986,27 @@ public class BaseChatItemLayout
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView == null)
+      if (this.al == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView = new TroopRobotNextTipsView(getContext(), paramContext, paramQQAppInterface);
-        paramContext = new RelativeLayout.LayoutParams(jdField_e_of_type_Int, -2);
-        int i1 = o;
-        int i2 = p;
+        this.al = new TroopRobotNextTipsView(getContext(), paramContext, paramQQAppInterface);
+        paramContext = new RelativeLayout.LayoutParams(e, -2);
+        int i1 = getTextPaddingAlignHead();
+        int i2 = getTextPaddingAlignError();
         if (paramChatMessage.isSend())
         {
-          i1 = p;
-          i2 = o;
+          i1 = getTextPaddingAlignError();
+          i2 = getTextPaddingAlignHead();
         }
-        paramContext.addRule(3, 2131364521);
-        paramContext.addRule(5, 2131364521);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView.setPadding(i1, 0, i2, 0);
-        addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView, paramContext);
+        paramContext.addRule(3, 2131430578);
+        paramContext.addRule(5, 2131430578);
+        this.al.setPadding(i1, 0, i2, 0);
+        addView(this.al, paramContext);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView.a(paramChatMessage);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView.setVisibility(0);
+      this.al.a(paramChatMessage);
+      this.al.setVisibility(0);
       return;
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopRobotNextTipsView;
+    paramContext = this.al;
     if (paramContext != null) {
       paramContext.setVisibility(8);
     }
@@ -1970,11 +2014,11 @@ public class BaseChatItemLayout
   
   public void setStickerPressStatus(boolean paramBoolean)
   {
-    this.jdField_g_of_type_Boolean = paramBoolean;
-    if (this.jdField_g_of_type_Boolean != this.jdField_h_of_type_Boolean) {
+    this.bf = paramBoolean;
+    if (this.bf != this.bg) {
       invalidate();
     }
-    this.jdField_h_of_type_Boolean = this.jdField_g_of_type_Boolean;
+    this.bg = this.bf;
   }
   
   public void setTailMessage(boolean paramBoolean, CharSequence paramCharSequence, View.OnClickListener paramOnClickListener)
@@ -1986,45 +2030,45 @@ public class BaseChatItemLayout
   {
     if (paramBoolean1)
     {
-      if (this.jdField_c_of_type_AndroidWidgetTextView == null)
+      if (this.be == null)
       {
-        this.jdField_c_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_c_of_type_AndroidWidgetTextView.setId(2131364550);
+        this.be = new TextView(getContext());
+        this.be.setId(2131430608);
         if (paramBoolean2) {
-          this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130850064);
+          this.be.setBackgroundResource(2130851832);
         } else {
-          this.jdField_c_of_type_AndroidWidgetTextView.setBackgroundResource(2130841645);
+          this.be.setBackgroundResource(2130842560);
         }
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-        this.jdField_c_of_type_AndroidWidgetTextView.setGravity(17);
-        this.jdField_c_of_type_AndroidWidgetTextView.setPadding(24, 0, 24, 0);
+        this.be.setTextSize(2, 13.0F);
+        this.be.setTextColor(-1);
+        this.be.setGravity(17);
+        this.be.setPadding(24, 0, 24, 0);
         Object localObject = new RelativeLayout.LayoutParams(-2, -2);
-        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364521);
-        ((RelativeLayout.LayoutParams)localObject).addRule(5, 2131364521);
+        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131430578);
+        ((RelativeLayout.LayoutParams)localObject).addRule(5, 2131430578);
         ((RelativeLayout.LayoutParams)localObject).addRule(7, 0);
-        ((RelativeLayout.LayoutParams)localObject).bottomMargin = jdField_i_of_type_Int;
-        addView(this.jdField_c_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+        ((RelativeLayout.LayoutParams)localObject).bottomMargin = l;
+        addView(this.be, (ViewGroup.LayoutParams)localObject);
         localObject = new View(getContext());
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(0, 0);
-        localLayoutParams.addRule(3, 2131364550);
-        localLayoutParams.addRule(5, 2131364521);
+        localLayoutParams.addRule(3, 2131430608);
+        localLayoutParams.addRule(5, 2131430578);
         addView((View)localObject, localLayoutParams);
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (paramCharSequence != this.jdField_c_of_type_AndroidWidgetTextView.getTag()) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+      this.be.setVisibility(0);
+      if (paramCharSequence != this.be.getTag()) {
+        this.be.setText(paramCharSequence);
       }
-      paramCharSequence = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-      if (this.X == 1) {
-        paramCharSequence.leftMargin = k;
+      paramCharSequence = (RelativeLayout.LayoutParams)this.be.getLayoutParams();
+      if (this.aj == 1) {
+        paramCharSequence.leftMargin = getBubblePaddingAlignError();
       } else {
-        paramCharSequence.leftMargin = jdField_j_of_type_Int;
+        paramCharSequence.leftMargin = getBubblePaddingAlignHead();
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+      this.be.setOnClickListener(paramOnClickListener);
       return;
     }
-    paramCharSequence = this.jdField_c_of_type_AndroidWidgetTextView;
+    paramCharSequence = this.be;
     if (paramCharSequence != null) {
       paramCharSequence.setVisibility(8);
     }
@@ -2036,45 +2080,45 @@ public class BaseChatItemLayout
       return;
     }
     long l1 = paramChatMessage.time;
-    int i1 = 2131364529;
+    int i1 = 2131430586;
     if ((paramBoolean) && (l1 > 0L))
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+      if (this.aa == null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-        this.jdField_a_of_type_AndroidWidgetTextView.setId(2131364552);
+        this.aa = new TextView(getContext());
+        this.aa.setId(2131430611);
         int i2 = AIOUtils.b(14.0F, getContext().getResources());
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
-        this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i2, 0, i2, 0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+        this.aa.setTextSize(2, 12.0F);
+        this.aa.setPadding(i2, 0, i2, 0);
+        this.aa.setGravity(17);
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         localLayoutParams.topMargin = N;
         localLayoutParams.bottomMargin = O;
         localLayoutParams.addRule(14);
-        addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTag(Long.valueOf(0L));
+        addView(this.aa, localLayoutParams);
+        this.aa.setTag(Long.valueOf(0L));
       }
       if (paramColorStateList != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+        this.aa.setTextColor(paramColorStateList);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (((Long)this.jdField_a_of_type_AndroidWidgetTextView.getTag()).longValue() != l1) {
+      this.aa.setVisibility(0);
+      if (((Long)this.aa.getTag()).longValue() != l1) {
         if (paramCharSequence != null)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+          this.aa.setText(paramCharSequence);
         }
         else
         {
           paramColorStateList = TimeFormatterUtils.a(getContext(), 3, l1 * 1000L);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramColorStateList);
+          this.aa.setText(paramColorStateList);
         }
       }
-      paramColorStateList = this.jdField_b_of_type_AndroidWidgetTextView;
+      paramColorStateList = this.ab;
       if ((paramColorStateList == null) || (paramColorStateList.getVisibility() != 0)) {
-        i1 = 2131364552;
+        i1 = 2131430611;
       }
-      d(i1);
-      paramColorStateList = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+      setTopId(i1);
+      paramColorStateList = (RelativeLayout.LayoutParams)this.aa.getLayoutParams();
       i1 = N;
       if (paramChatMessage.isFirstMsg) {
         i1 = N + P;
@@ -2083,15 +2127,15 @@ public class BaseChatItemLayout
       TimestampReporter.a(null, paramChatMessage);
       return;
     }
-    paramChatMessage = this.jdField_a_of_type_AndroidWidgetTextView;
+    paramChatMessage = this.aa;
     if (paramChatMessage != null)
     {
       paramChatMessage.setVisibility(8);
-      paramChatMessage = this.jdField_b_of_type_AndroidWidgetTextView;
+      paramChatMessage = this.ab;
       if ((paramChatMessage == null) || (paramChatMessage.getVisibility() != 0)) {
         i1 = 0;
       }
-      d(i1);
+      setTopId(i1);
     }
   }
   
@@ -2099,34 +2143,34 @@ public class BaseChatItemLayout
   {
     if (paramBoolean)
     {
-      localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+      localObject = this.ai;
       if (localObject != null)
       {
         ((ImageView)localObject).setVisibility(0);
         return;
       }
-      this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
+      this.ai = new ImageView(getContext());
       localObject = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.b(8.0F, getContext().getResources());
       ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(-3.0F, getContext().getResources());
-      ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131364521);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131364521);
-      addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130850767);
+      ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131430578);
+      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131430578);
+      addView(this.ai, (ViewGroup.LayoutParams)localObject);
+      this.ai.setImageResource(2130852589);
       return;
     }
-    Object localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    Object localObject = this.ai;
     if (localObject != null)
     {
       ((ImageView)localObject).setOnClickListener(null);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetImageView = null;
+      this.ai.setVisibility(8);
+      this.ai = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseChatItemLayout
  * JD-Core Version:    0.7.0.1
  */

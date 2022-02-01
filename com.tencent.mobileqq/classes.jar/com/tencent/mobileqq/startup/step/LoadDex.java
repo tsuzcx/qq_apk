@@ -114,7 +114,7 @@ public class LoadDex
         DexPatchInstaller.a(BaseApplicationImpl.sApplication);
         VFSRegisterProxy localVFSRegisterProxy = VFSRegisterProxy.a();
         BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-        ReportCallback localReportCallback = ReportCallback.a();
+        ReportCallback localReportCallback = ReportCallback.b();
         if (BaseApplicationImpl.sProcessId != 1) {
           break label551;
         }
@@ -123,7 +123,7 @@ public class LoadDex
         if (BaseApplicationImpl.sProcessId == 1)
         {
           eipc.EIPCContentProvider.sIsDexInjectFinish = true;
-          ThreadRegulator.a().a();
+          ThreadRegulator.a().b();
         }
         if (BaseApplicationImpl.sProcessId != 4)
         {
@@ -141,7 +141,7 @@ public class LoadDex
             ThreadManager.getSubThreadHandler().post(Step.AmStepFactory.b(14, this.mDirector, null));
           }
         }
-        LoadCompactDynamicFeature.a().a();
+        LoadCompactDynamicFeature.a().b();
         if (1 == BaseApplicationImpl.sProcessId) {
           ThreadManager.getSubThreadHandler().postDelayed(new LoadDex.1(this), 30000L);
         } else {
@@ -193,7 +193,7 @@ public class LoadDex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadDex
  * JD-Core Version:    0.7.0.1
  */

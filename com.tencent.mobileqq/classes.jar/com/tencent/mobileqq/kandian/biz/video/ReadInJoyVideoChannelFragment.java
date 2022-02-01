@@ -43,69 +43,57 @@ import java.util.List;
 public class ReadInJoyVideoChannelFragment
   extends ReadInJoyBaseFragment
 {
-  private int jdField_a_of_type_Int = -1;
-  protected long a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private IHomeWatcher jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIHomeWatcher;
-  protected ReadInJoyChannelViewController a;
-  private long b;
-  private long c;
-  private boolean e = false;
-  private boolean f;
-  private boolean g = true;
-  private boolean h = false;
-  
-  public ReadInJoyVideoChannelFragment()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController = null;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIHomeWatcher = ((IRIJAdService)QRoute.api(IRIJAdService.class)).createHomeWatcher(a());
-    this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIHomeWatcher.a(new ReadInJoyVideoChannelFragment.2(this));
-  }
+  protected ReadInJoyChannelViewController a = null;
+  protected long b = 0L;
+  private boolean c = false;
+  private long d;
+  private long m;
+  private boolean n;
+  private int o = -1;
+  private boolean p = true;
+  private boolean q = false;
+  private ViewGroup r;
+  private IHomeWatcher s;
   
   private void a(Activity paramActivity)
   {
     try
     {
-      if ((!this.h) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController == null))
+      if ((!this.q) && (this.a == null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController = ((ReadInJoyChannelViewController)ReadInJoyUtils.a.remove(Integer.valueOf(56)));
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController == null)
+        this.a = ((ReadInJoyChannelViewController)ReadInJoyUtils.c.remove(Integer.valueOf(56)));
+        if (this.a == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController = new ReadInJoyChannelViewController(paramActivity);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a(56);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.b(3);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.c(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a(this.jdField_a_of_type_AndroidViewViewGroup);
-          i();
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.b(true);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.aw_();
+          this.a = new ReadInJoyChannelViewController(paramActivity);
+          this.a.a(56);
+          this.a.b(3);
+          this.a.c(this.o);
+          this.a.a(this.r);
+          x();
+          this.a.b(true);
+          this.a.cT_();
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.c(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkCallHotwordChange, this.jdField_b_of_type_Int);
-        paramActivity = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a();
+        this.a.c(this.o);
+        this.a.a(this.j, this.k);
+        paramActivity = (ViewGroup)this.a.q();
         int i;
-        if (this.jdField_a_of_type_Int == 1002)
+        if (this.o == 1002)
         {
           int j = AIOUtils.b(44.5F, getResources());
           i = j;
           if (ImmersiveUtils.isSupporImmersive() == 1) {
-            i = j + ImmersiveUtils.getStatusBarHeight(a());
+            i = j + ImmersiveUtils.getStatusBarHeight(v());
           }
           paramActivity.setPadding(0, i, 0, 0);
         }
-        else if (this.jdField_a_of_type_Int == 1003)
+        else if (this.o == 1003)
         {
-          i = a();
+          i = b();
           if (i > 0) {
             paramActivity.setPadding(0, i, 0, 0);
           }
         }
-        this.h = true;
+        this.q = true;
         return;
       }
       return;
@@ -115,17 +103,17 @@ public class ReadInJoyVideoChannelFragment
   
   private void b(Activity paramActivity)
   {
-    if (((!RIJShowKanDianTabSp.c()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity))) && (!this.f) && (this.jdField_b_of_type_Long > 0L))
+    if (((!RIJShowKanDianTabSp.c()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity))) && (!this.n) && (this.d > 0L))
     {
-      paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+      paramActivity = this.a;
       if (paramActivity != null) {
-        paramActivity.d();
+        paramActivity.k();
       }
     }
-    if ((ReadInJoyHelper.l()) && (a().mainVideoTabRedHasRed()))
+    if ((ReadInJoyHelper.v()) && (u().mainVideoTabRedHasRed()))
     {
-      paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
-      if ((paramActivity != null) && (this.jdField_a_of_type_Int == 1001))
+      paramActivity = this.a;
+      if ((paramActivity != null) && (this.o == 1001))
       {
         paramActivity.a(true);
         ReadInJoyLogicEngineEventDispatcher.a().a(3, null);
@@ -136,11 +124,11 @@ public class ReadInJoyVideoChannelFragment
         return;
       }
     }
-    if ((ReadInJoyHelper.l()) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController != null) && ((a() instanceof SplashActivity)))
+    if ((ReadInJoyHelper.v()) && (this.a != null) && ((v() instanceof SplashActivity)))
     {
-      long l = System.currentTimeMillis() - ReadInJoyHelper.a((QQAppInterface)ReadInJoyUtils.a(), a());
+      long l = System.currentTimeMillis() - ReadInJoyHelper.a((QQAppInterface)ReadInJoyUtils.b(), v());
       boolean bool = false;
-      if ((l >= 900000L) && (!this.g))
+      if ((l >= 900000L) && (!this.p))
       {
         paramActivity = new StringBuilder();
         paramActivity.append("videochannel tab auto refresh ! duration : ");
@@ -150,11 +138,11 @@ public class ReadInJoyVideoChannelFragment
       }
       else
       {
-        this.g = false;
+        this.p = false;
       }
       if (bool)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a(true);
+        this.a.a(true);
         ReadInJoyLogicEngineEventDispatcher.a().a(3, null);
       }
       if (QLog.isColorLevel())
@@ -169,55 +157,61 @@ public class ReadInJoyVideoChannelFragment
   
   private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Long != 0L)
+    if (this.b != 0L)
     {
-      ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
-      if ((localReadInJoyChannelViewController != null) && (localReadInJoyChannelViewController.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().size() > 0)) {
-        RIJStatisticCollectorReport.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().a(), (AbsBaseArticleInfo)this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().get(0), paramBoolean);
+      ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
+      if ((localReadInJoyChannelViewController != null) && (localReadInJoyChannelViewController.j() != null) && (this.a.u() != null) && (this.a.u().size() > 0)) {
+        RIJStatisticCollectorReport.a(56, (System.currentTimeMillis() - this.b) / 1000L, this.a.j().a(), (AbsBaseArticleInfo)this.a.u().get(0), paramBoolean);
       }
     }
   }
   
-  private void i()
+  private void w()
   {
-    if (this.e)
+    this.s = ((IRIJAdService)QRoute.api(IRIJAdService.class)).createHomeWatcher(v());
+    this.s.a(new ReadInJoyVideoChannelFragment.2(this));
+  }
+  
+  private void x()
+  {
+    if (this.c)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+      Object localObject = this.a;
       if (localObject != null)
       {
-        ((ReadInJoyChannelViewController)localObject).a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", Long.valueOf(this.jdField_b_of_type_Long));
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", Long.valueOf(this.jdField_c_of_type_Long));
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", this.f);
+        ((ReadInJoyChannelViewController)localObject).cQ_().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", Long.valueOf(this.d));
+        this.a.cQ_().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", Long.valueOf(this.m));
+        this.a.cQ_().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", this.n);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("doRefreshAndForceInsert()：set intent args finish : ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().getIntent().getExtras().toString());
+          ((StringBuilder)localObject).append(this.a.cQ_().getIntent().getExtras().toString());
           QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, ((StringBuilder)localObject).toString());
         }
-        this.e = false;
+        this.c = false;
       }
     }
   }
   
-  private void j()
+  private void y()
   {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
-    if ((localReadInJoyChannelViewController != null) && (localReadInJoyChannelViewController.a() != null))
+    this.d = 0L;
+    this.m = 0L;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
+    if ((localReadInJoyChannelViewController != null) && (localReadInJoyChannelViewController.cQ_() != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", 0L);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", false);
+      this.a.cQ_().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);
+      this.a.cQ_().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", 0L);
+      this.a.cQ_().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", false);
     }
   }
   
   public VideoPlayManager a()
   {
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
-      return localReadInJoyChannelViewController.a();
+      return localReadInJoyChannelViewController.j();
     }
     return null;
   }
@@ -225,13 +219,13 @@ public class ReadInJoyVideoChannelFragment
   public void a(int paramInt)
   {
     super.a(paramInt);
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null)
     {
       localReadInJoyChannelViewController.a(true);
       return;
     }
-    ReadInJoyChannelViewPagerController.d(b());
+    ReadInJoyChannelViewPagerController.d(d());
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -245,7 +239,7 @@ public class ReadInJoyVideoChannelFragment
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ReadInJoyChannelViewController)localObject).a(paramInt1, paramInt2, paramIntent);
     }
@@ -290,127 +284,127 @@ public class ReadInJoyVideoChannelFragment
       localStringBuilder.append((String)localObject);
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (!this.h)) {
+    if ((this.r != null) && (!this.q)) {
       a(paramActivity);
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    this.b = System.currentTimeMillis();
+    this.g = true;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((ReadInJoyChannelViewController)localObject).n();
+      ((ReadInJoyChannelViewController)localObject).p();
     }
     if (paramBundle != null)
     {
-      this.jdField_b_of_type_Long = paramBundle.getLong("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID");
-      this.jdField_c_of_type_Long = paramBundle.getLong("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ");
-      this.f = paramBoolean;
-      if (this.jdField_b_of_type_Long != 0L)
+      this.d = paramBundle.getLong("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID");
+      this.m = paramBundle.getLong("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ");
+      this.n = paramBoolean;
+      if (this.d != 0L)
       {
-        this.e = true;
-        i();
+        this.c = true;
+        x();
       }
     }
     if ((RIJShowKanDianTabSp.c()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity)))
     {
-      a().erasureTabRed(1);
+      u().erasureTabRed(1);
     }
     else
     {
-      paramBundle = ((ReadInJoyNewFeedsActivity)paramActivity).a();
-      int i = paramBundle.b();
+      paramBundle = ((ReadInJoyNewFeedsActivity)paramActivity).n();
+      int i = paramBundle.getShowingPopupTipsTapPosi();
       if (i == 1) {
-        paramBundle.b(i);
+        paramBundle.d(i);
       }
     }
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    paramBundle = this.a;
     if (paramBundle != null) {
       paramBundle.i();
     }
     b(paramActivity);
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIHomeWatcher;
+    paramActivity = this.s;
     if (paramActivity != null) {
-      paramActivity.a();
+      paramActivity.b();
     }
   }
   
-  public void az_()
+  public int d()
   {
-    super.az_();
+    return 56;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.o = paramInt;
+  }
+  
+  public void g()
+  {
+    super.g();
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyTabDoubleClick()");
     }
   }
   
-  public int b()
-  {
-    return 56;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void d()
+  public void h()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyTitleClick()");
     }
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.a(true);
     }
     ThreadManager.executeOnSubThread(new ReadInJoyVideoChannelFragment.1(this));
   }
   
-  public boolean d()
+  public void k()
   {
-    b(true);
-    b();
-    return true;
-  }
-  
-  public void e()
-  {
-    super.e();
+    super.k();
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyHideSelf()");
     }
-    this.jdField_b_of_type_Boolean = false;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    this.g = false;
+    Object localObject = this.a;
     if (localObject != null) {
-      ((ReadInJoyChannelViewController)localObject).j();
+      ((ReadInJoyChannelViewController)localObject).n();
     }
-    j();
+    y();
     b(false);
-    this.jdField_a_of_type_Long = 0L;
-    if ((ReadInJoyHelper.l()) && ((a() instanceof SplashActivity))) {
-      ReadInJoyHelper.a((QQAppInterface)ReadInJoyUtils.a(), System.currentTimeMillis(), a());
+    this.b = 0L;
+    if ((ReadInJoyHelper.v()) && ((v() instanceof SplashActivity))) {
+      ReadInJoyHelper.a((QQAppInterface)ReadInJoyUtils.b(), System.currentTimeMillis(), v());
     }
     VideoVolumeControl.getInstance().requestOrAbandonAudioFocus(false, "videoFeeds tab hiseSelf");
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIHomeWatcher;
+    localObject = this.s;
     if (localObject != null) {
-      ((IHomeWatcher)localObject).b();
+      ((IHomeWatcher)localObject).c();
     }
   }
   
-  public void f()
+  public void l()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyClickSelf()");
     }
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.a(true);
     }
   }
   
-  public void g()
+  public void n()
   {
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
-      localReadInJoyChannelViewController.k();
+      localReadInJoyChannelViewController.cR_();
     }
+  }
+  
+  public boolean o()
+  {
+    b(true);
+    f();
+    return true;
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -432,7 +426,7 @@ public class ReadInJoyVideoChannelFragment
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ReadInJoyChannelViewController)localObject).a(paramInt1, paramInt2, paramIntent);
     }
@@ -459,13 +453,13 @@ public class ReadInJoyVideoChannelFragment
         QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, localStringBuilder.toString());
       }
     }
-    a();
+    w();
   }
   
   public boolean onBackEvent()
   {
     b(false);
-    b();
+    f();
     return true;
   }
   
@@ -475,8 +469,8 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onCreate()");
     }
-    if (!this.jdField_c_of_type_Boolean) {
-      VideoVolumeControl.getInstance().inKandianModule(a());
+    if (!this.h) {
+      VideoVolumeControl.getInstance().inKandianModule(v());
     }
   }
   
@@ -485,13 +479,13 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onCreateView()");
     }
-    this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(paramLayoutInflater.getContext());
-    if ((getUserVisibleHint()) || (!ReadInJoyUtils.a())) {
-      a(a());
+    this.r = new FrameLayout(paramLayoutInflater.getContext());
+    if ((getUserVisibleHint()) || (!ReadInJoyUtils.g())) {
+      a(v());
     }
-    VideoReport.setPageId(this.jdField_a_of_type_AndroidViewViewGroup, "14");
-    VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewViewGroup, new RIJDtParamBuilder().a(Integer.valueOf(56)).a());
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    VideoReport.setPageId(this.r, "14");
+    VideoReport.setPageParams(this.r, new RIJDtParamBuilder().a(Integer.valueOf(56)).b());
+    return this.r;
   }
   
   public void onDestroy()
@@ -502,10 +496,10 @@ public class ReadInJoyVideoChannelFragment
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onDestroy()");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController.e();
+      if (this.a != null) {
+        this.a.e();
       }
-      j();
+      y();
       return;
     }
     catch (Exception localException)
@@ -520,8 +514,8 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onDestroyView()");
     }
-    if (!this.jdField_c_of_type_Boolean) {
-      VideoVolumeControl.getInstance().outKandianModule(a());
+    if (!this.h) {
+      VideoVolumeControl.getInstance().outKandianModule(v());
     }
     ((IRIJAdExposeFreshService)QRoute.api(IRIJAdExposeFreshService.class)).exitScene("RIJAdRefreshSceneVideoTab");
   }
@@ -532,7 +526,7 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onDetach()");
     }
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.c();
     }
@@ -544,16 +538,16 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onPause()");
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.g)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+      localObject = this.a;
       if (localObject != null) {
         ((ReadInJoyChannelViewController)localObject).h();
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIHomeWatcher;
+    Object localObject = this.s;
     if (localObject != null) {
-      ((IHomeWatcher)localObject).b();
+      ((IHomeWatcher)localObject).c();
     }
   }
   
@@ -563,18 +557,18 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onResume()");
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.g)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+      localObject = this.a;
       if (localObject != null)
       {
         ((ReadInJoyChannelViewController)localObject).i();
         VideoVolumeControl.getInstance().resumeInKandianModule();
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIHomeWatcher;
+    Object localObject = this.s;
     if ((localObject != null) && (!((IHomeWatcher)localObject).a())) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianAdApiEntityIHomeWatcher.a();
+      this.s.b();
     }
   }
   
@@ -584,8 +578,8 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onStart()");
     }
-    PlayFeedsSPUtils.a(RIJQQAppInterfaceUtil.a());
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    PlayFeedsSPUtils.a(RIJQQAppInterfaceUtil.e());
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.f();
     }
@@ -597,7 +591,7 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onStop()");
     }
-    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyChannelViewController;
+    ReadInJoyChannelViewController localReadInJoyChannelViewController = this.a;
     if (localReadInJoyChannelViewController != null) {
       localReadInJoyChannelViewController.g();
     }
@@ -606,7 +600,7 @@ public class ReadInJoyVideoChannelFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.ReadInJoyVideoChannelFragment
  * JD-Core Version:    0.7.0.1
  */

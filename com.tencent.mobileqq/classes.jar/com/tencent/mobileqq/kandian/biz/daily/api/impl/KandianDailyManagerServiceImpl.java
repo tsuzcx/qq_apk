@@ -21,7 +21,7 @@ public final class KandianDailyManagerServiceImpl
   {
     KandianDailyManager localKandianDailyManager = this.manager;
     if (localKandianDailyManager != null) {
-      return localKandianDailyManager.b();
+      return localKandianDailyManager.d();
     }
     return null;
   }
@@ -31,7 +31,7 @@ public final class KandianDailyManagerServiceImpl
   {
     KandianDailyManager localKandianDailyManager = this.manager;
     if (localKandianDailyManager != null) {
-      return localKandianDailyManager.a();
+      return localKandianDailyManager.b();
     }
     return null;
   }
@@ -41,7 +41,7 @@ public final class KandianDailyManagerServiceImpl
   {
     KandianDailyManager localKandianDailyManager = this.manager;
     if (localKandianDailyManager != null) {
-      return localKandianDailyManager.a();
+      return localKandianDailyManager.c();
     }
     return null;
   }
@@ -96,7 +96,7 @@ public final class KandianDailyManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.api.impl.KandianDailyManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

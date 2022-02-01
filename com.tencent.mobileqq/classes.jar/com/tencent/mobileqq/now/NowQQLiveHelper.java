@@ -26,7 +26,7 @@ public class NowQQLiveHelper
   
   public static int a()
   {
-    Object localObject = a();
+    Object localObject = c();
     if (!(localObject instanceof QQAppInterface)) {
       return 0;
     }
@@ -41,18 +41,15 @@ public class NowQQLiveHelper
     return 0;
   }
   
-  public static AppRuntime a()
+  public static final boolean a(Context paramContext, String paramString, int paramInt)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return localBaseApplicationImpl.getRuntime();
-    }
-    return null;
+    NowQQLiveFragment.a(paramContext, paramString, paramInt);
+    return true;
   }
   
-  public static boolean a()
+  public static boolean b()
   {
-    Object localObject = a();
+    Object localObject = c();
     if (!(localObject instanceof QQAppInterface)) {
       return false;
     }
@@ -64,26 +61,29 @@ public class NowQQLiveHelper
       }
       ((QQAppInterface)localObject).getMessageFacade().a(NowQQLiveConstant.a, 1008, true, true);
       RecentUtil.b((QQAppInterface)localObject, NowQQLiveConstant.a, 1008);
-      ServiceAccountFolderManager.a().a((AppInterface)localObject, NowQQLiveConstant.a);
+      ServiceAccountFolderManager.a().c((AppInterface)localObject, NowQQLiveConstant.a);
       return true;
     }
     return false;
   }
   
-  public static final boolean a(Context paramContext, String paramString, int paramInt)
+  public static AppRuntime c()
   {
-    NowQQLiveFragment.a(paramContext, paramString, paramInt);
-    return true;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return localBaseApplicationImpl.getRuntime();
+    }
+    return null;
   }
   
-  public static boolean b()
+  public static boolean d()
   {
     return new File(a, "testserver").exists();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.NowQQLiveHelper
  * JD-Core Version:    0.7.0.1
  */

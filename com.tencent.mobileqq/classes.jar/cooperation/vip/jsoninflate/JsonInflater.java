@@ -18,18 +18,18 @@ import org.json.JSONObject;
 
 public class JsonInflater
 {
-  private JsonInflaterFactory jdField_a_of_type_CooperationVipJsoninflateUtilJsonInflaterFactory;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> a;
+  private JsonInflaterFactory b;
   
   private JsonInflater(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.a = new WeakReference(paramContext);
   }
   
   private ViewGroup.LayoutParams a(View paramView, ViewModel paramViewModel, JSONObject paramJSONObject)
   {
     if ((paramView != null) && (paramJSONObject != null) && (paramJSONObject.length() != 0) && (paramViewModel != null)) {
-      return this.jdField_a_of_type_CooperationVipJsoninflateUtilJsonInflaterFactory.a(paramView).a(paramJSONObject, paramViewModel);
+      return this.b.a(paramView).a(paramJSONObject, paramViewModel);
     }
     return null;
   }
@@ -55,11 +55,11 @@ public class JsonInflater
           localStringBuilder.append(paramString);
           QLog.i("JsonInflater", 0, localStringBuilder.toString());
         }
-        paramContext = this.jdField_a_of_type_CooperationVipJsoninflateUtilJsonInflaterFactory.a(paramContext, paramString);
+        paramContext = this.b.a(paramContext, paramString);
         if (paramContext == null) {
           return null;
         }
-        paramContext = this.jdField_a_of_type_CooperationVipJsoninflateUtilJsonInflaterFactory.a(paramString, paramContext);
+        paramContext = this.b.a(paramString, paramContext);
         a(paramContext, paramJSONObject);
         return paramContext;
       }
@@ -93,9 +93,9 @@ public class JsonInflater
         if (bool2) {
           QLog.i("JsonInflater", 0, "inflate: ");
         }
-        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+        if ((this.a != null) && (this.a.get() != null))
         {
-          localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          localObject1 = (Context)this.a.get();
           if (localObject1 == null) {
             return null;
           }
@@ -109,7 +109,7 @@ public class JsonInflater
             QLog.e("JsonInflater", 1, "inflate: createViewModel error null return");
             return null;
           }
-          View localView = localViewModel.a();
+          View localView = localViewModel.l();
           if (localView == null)
           {
             QLog.e("JsonInflater", 1, "inflate: tempView error null return");
@@ -151,7 +151,7 @@ public class JsonInflater
           paramJSONObject = new StringBuilder();
           paramJSONObject.append("inflate: weakContext == null ： ");
           paramBoolean = bool1;
-          if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+          if (this.a == null) {
             paramBoolean = true;
           }
           paramJSONObject.append(paramBoolean);
@@ -208,24 +208,24 @@ public class JsonInflater
   
   public ViewModel a(@NonNull JSONArray paramJSONArray, ViewGroup paramViewGroup, boolean paramBoolean, JsonInflaterFactory paramJsonInflaterFactory)
   {
-    this.jdField_a_of_type_CooperationVipJsoninflateUtilJsonInflaterFactory = paramJsonInflaterFactory;
-    paramViewGroup = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.b = paramJsonInflaterFactory;
+    paramViewGroup = this.a;
     paramBoolean = false;
     if ((paramViewGroup != null) && (paramViewGroup.get() != null))
     {
-      paramViewGroup = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramViewGroup = (Context)this.a.get();
       if (paramViewGroup == null) {
         return null;
       }
       paramViewGroup = new RelativeLayout(paramViewGroup);
-      paramJsonInflaterFactory = this.jdField_a_of_type_CooperationVipJsoninflateUtilJsonInflaterFactory.a(paramViewGroup);
+      paramJsonInflaterFactory = this.b.a(paramViewGroup);
       int i = 0;
       while (i < paramJSONArray.length())
       {
         ViewModel localViewModel = a(paramJSONArray.optJSONObject(i), paramViewGroup, false);
         if (localViewModel != null)
         {
-          paramViewGroup.addView(localViewModel.a());
+          paramViewGroup.addView(localViewModel.l());
           localViewModel.a();
           paramJsonInflaterFactory.a(localViewModel);
         }
@@ -235,7 +235,7 @@ public class JsonInflater
     }
     paramJSONArray = new StringBuilder();
     paramJSONArray.append("inflate: weakContext == null ： ");
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    if (this.a == null) {
       paramBoolean = true;
     }
     paramJSONArray.append(paramBoolean);
@@ -247,7 +247,7 @@ public class JsonInflater
   public ViewModel a(@NonNull JSONObject paramJSONObject, ViewGroup paramViewGroup, boolean paramBoolean, JsonInflaterFactory paramJsonInflaterFactory)
   {
     AssertUtils.mainThreadCheck();
-    this.jdField_a_of_type_CooperationVipJsoninflateUtilJsonInflaterFactory = paramJsonInflaterFactory;
+    this.b = paramJsonInflaterFactory;
     return a(paramJSONObject, paramViewGroup, paramBoolean);
   }
   
@@ -269,12 +269,12 @@ public class JsonInflater
         if (localJSONObject != null)
         {
           ViewModel localViewModel = a(localJSONObject.optString("type"), paramContext, localJSONObject);
-          ViewGroup localViewGroup = (ViewGroup)paramViewModel.a();
+          ViewGroup localViewGroup = (ViewGroup)paramViewModel.l();
           ViewGroup.LayoutParams localLayoutParams = a(localViewGroup, localViewModel, localJSONObject);
           a(localViewModel, paramContext, localJSONObject);
-          if ((localViewModel != null) && (localViewModel.a() != null))
+          if ((localViewModel != null) && (localViewModel.l() != null))
           {
-            localViewGroup.addView(localViewModel.a(), localLayoutParams);
+            localViewGroup.addView(localViewModel.l(), localLayoutParams);
             localViewModel.a();
             paramViewModel.a(localViewModel);
           }
@@ -298,13 +298,13 @@ public class JsonInflater
       if (paramViewModel != null) {
         paramViewModel.a(paramJSONObject);
       }
-      this.jdField_a_of_type_CooperationVipJsoninflateUtilJsonInflaterFactory.a(paramViewModel, paramJSONObject);
+      this.b.a(paramViewModel, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.jsoninflate.JsonInflater
  * JD-Core Version:    0.7.0.1
  */

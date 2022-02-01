@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.qqgamepub.data.QQGameMsgInfo;
-import com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePubAccountHippyFragment;
+import com.tencent.mobileqq.qqgamepub.hippy.fragment.GamePAHippyFragment;
 import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.mobileqq.qqgamepub.utils.QQGameUIHelper;
 import com.tencent.mobileqq.qqgamepub.view.IHeaderView;
@@ -26,32 +26,32 @@ import java.util.List;
 public class GamePubAccountHeadAdapter
   extends PagerAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GamePubAccountHippyFragment jdField_a_of_type_ComTencentMobileqqQqgamepubHippyFragmentGamePubAccountHippyFragment;
-  private List<IHeaderView> jdField_a_of_type_JavaUtilList;
+  private List<IHeaderView> a;
   private List<QQGameMsgInfo> b;
+  private Context c;
+  private GamePAHippyFragment d;
   
-  public GamePubAccountHeadAdapter(List<IHeaderView> paramList, List<QQGameMsgInfo> paramList1, Context paramContext, GamePubAccountHippyFragment paramGamePubAccountHippyFragment)
+  public GamePubAccountHeadAdapter(List<IHeaderView> paramList, List<QQGameMsgInfo> paramList1, Context paramContext, GamePAHippyFragment paramGamePAHippyFragment)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubHippyFragmentGamePubAccountHippyFragment = paramGamePubAccountHippyFragment;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.c = paramContext;
+    this.d = paramGamePAHippyFragment;
+    this.a = new ArrayList();
+    this.a.addAll(paramList);
     this.b = new ArrayList();
     this.b.addAll(paramList1);
   }
   
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559147, null, false);
-    ((ImageView)localView.findViewById(2131366220)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
+    View localView = LayoutInflater.from(this.c).inflate(2131624902, null, false);
+    ((ImageView)localView.findViewById(2131432508)).setImageDrawable(URLDrawable.getDrawable("https://cmshow.gtimg.cn/client/gameCenter/gameCenter_no_message@2x.png"));
     return localView;
   }
   
   public void a(List<IHeaderView> paramList, List<QQGameMsgInfo> paramList1)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
     this.b.clear();
     this.b.addAll(paramList1);
     notifyDataSetChanged();
@@ -64,9 +64,9 @@ public class GamePubAccountHeadAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if ((localList != null) && (localList.size() > 1)) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+      return this.a.size();
     }
     return 1;
   }
@@ -89,8 +89,8 @@ public class GamePubAccountHeadAdapter
         localObject1 = null;
       }
       IHeaderView localIHeaderView;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localIHeaderView = (IHeaderView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (paramInt < this.a.size()) {
+        localIHeaderView = (IHeaderView)this.a.get(paramInt);
       } else {
         localIHeaderView = null;
       }
@@ -121,7 +121,7 @@ public class GamePubAccountHeadAdapter
       localLayoutParams.addRule(13, localView.getId());
       if (localObject1 != null)
       {
-        localObject2 = QQGameUIHelper.a((QQGameMsgInfo)localObject1, this.jdField_a_of_type_AndroidContentContext);
+        localObject2 = QQGameUIHelper.a((QQGameMsgInfo)localObject1, this.c);
         localTextView = (TextView)((Pair)localObject2).first;
         localObject2 = (RelativeLayout.LayoutParams)((Pair)localObject2).second;
       }
@@ -136,11 +136,11 @@ public class GamePubAccountHeadAdapter
       paramViewGroup.addView(localRelativeLayout, localLayoutParams);
       if (localObject1 != null)
       {
-        localIHeaderView.a((QQGameMsgInfo)localObject1, (Activity)this.jdField_a_of_type_AndroidContentContext, paramInt, GamePubAccountHelper.a());
-        this.jdField_a_of_type_ComTencentMobileqqQqgamepubHippyFragmentGamePubAccountHippyFragment.a(paramInt, localIHeaderView);
+        localIHeaderView.a((QQGameMsgInfo)localObject1, (Activity)this.c, paramInt, GamePubAccountHelper.a());
+        this.d.a(paramInt, localIHeaderView);
         return localRelativeLayout;
       }
-      localIHeaderView.a(new QQGameMsgInfo(), (Activity)this.jdField_a_of_type_AndroidContentContext, paramInt, GamePubAccountHelper.a());
+      localIHeaderView.a(new QQGameMsgInfo(), (Activity)this.c, paramInt, GamePubAccountHelper.a());
       return localRelativeLayout;
     }
     localObject1 = a();
@@ -155,7 +155,7 @@ public class GamePubAccountHeadAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.hippy.view.GamePubAccountHeadAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,20 +13,20 @@ class SSOLoginAction$3
   
   public void a(AccountInfo paramAccountInfo)
   {
-    SSOLog.a("SSOLoginAction", new Object[] { "getTicketNoPasswd onSuccess:", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+    SSOLog.a("SSOLoginAction", new Object[] { "getTicketNoPasswd onSuccess:", Long.valueOf(System.currentTimeMillis() - this.c) });
     AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramAccountInfo);
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction, paramAccountInfo, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
+    SSOLoginAction.a(this.f, paramAccountInfo, this.b, this.d, this.a, this.e);
   }
   
   public void a(String paramString, Bundle paramBundle)
   {
     AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", "", false);
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction, paramString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString);
+    SSOLoginAction.a(this.f, paramString, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.SSOLoginAction.3
  * JD-Core Version:    0.7.0.1
  */

@@ -98,21 +98,21 @@ public class TroopRedDotHandler
   {
     long l = paramGroupAppUnreadInfo.opt_uint64_appid.get();
     TroopUnreadMsgInfo localTroopUnreadMsgInfo = new TroopUnreadMsgInfo();
-    localTroopUnreadMsgInfo.jdField_a_of_type_Long = l;
-    localTroopUnreadMsgInfo.jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
-    localTroopUnreadMsgInfo.b = paramGroupAppUnreadInfo.opt_int32_group_unread_num.get();
-    localTroopUnreadMsgInfo.jdField_a_of_type_Int = paramGroupAppUnreadInfo.opt_int32_group_album_passive_cnt.get();
+    localTroopUnreadMsgInfo.a = l;
+    localTroopUnreadMsgInfo.b = String.valueOf(paramLong);
+    localTroopUnreadMsgInfo.d = paramGroupAppUnreadInfo.opt_int32_group_unread_num.get();
+    localTroopUnreadMsgInfo.c = paramGroupAppUnreadInfo.opt_int32_group_album_passive_cnt.get();
     TroopRedDotHandlerProcessorConfig.a().a(this.appRuntime, paramLong, localTroopUnreadMsgInfo);
     if (QLog.isDevelopLevel())
     {
       paramStringBuilder.append("add photoinfo, groupCode = ");
       paramStringBuilder.append(paramLong);
       paramStringBuilder.append(", appid = ");
-      paramStringBuilder.append(localTroopUnreadMsgInfo.jdField_a_of_type_Long);
+      paramStringBuilder.append(localTroopUnreadMsgInfo.a);
       paramStringBuilder.append(", messageNum = ");
-      paramStringBuilder.append(localTroopUnreadMsgInfo.jdField_a_of_type_Int);
+      paramStringBuilder.append(localTroopUnreadMsgInfo.c);
       paramStringBuilder.append(", newPhotoes = ");
-      paramStringBuilder.append(localTroopUnreadMsgInfo.b);
+      paramStringBuilder.append(localTroopUnreadMsgInfo.d);
     }
     paramList.add(localTroopUnreadMsgInfo);
     return a(false, localTroopUnreadMsgInfo);
@@ -120,17 +120,17 @@ public class TroopRedDotHandler
   
   private boolean a(boolean paramBoolean, TroopUnreadMsgInfo paramTroopUnreadMsgInfo)
   {
-    long l = paramTroopUnreadMsgInfo.jdField_a_of_type_Long;
+    long l = paramTroopUnreadMsgInfo.a;
     boolean bool = true;
     if (l == 1102858908L)
     {
-      if (paramTroopUnreadMsgInfo.b == -1) {
+      if (paramTroopUnreadMsgInfo.d == -1) {
         return bool;
       }
-      if (paramTroopUnreadMsgInfo.b > 0) {
+      if (paramTroopUnreadMsgInfo.d > 0) {
         return true;
       }
-      if (paramTroopUnreadMsgInfo.b == 0) {
+      if (paramTroopUnreadMsgInfo.d == 0) {
         return true;
       }
     }
@@ -150,7 +150,7 @@ public class TroopRedDotHandler
       paramToServiceMsg = paramToServiceMsg.extraData.getString("type");
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        notifyUI(TroopRedDotObserver.jdField_a_of_type_Int, false, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
+        notifyUI(TroopRedDotObserver.b, false, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
         return;
       }
       paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -173,7 +173,7 @@ public class TroopRedDotHandler
       paramObject.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
       l = paramObject.opt_uint64_group_code.get();
       TroopRedDotHandlerProcessorConfig.a().a(this.appRuntime, String.valueOf(l));
-      notifyUI(TroopRedDotObserver.jdField_a_of_type_Int, true, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
+      notifyUI(TroopRedDotObserver.b, true, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
       if (!QLog.isColorLevel()) {
         break label282;
       }
@@ -187,18 +187,13 @@ public class TroopRedDotHandler
     {
       break label254;
     }
-    notifyUI(TroopRedDotObserver.jdField_a_of_type_Int, false, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
+    notifyUI(TroopRedDotObserver.b, false, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
     label282:
     return;
-    notifyUI(TroopRedDotObserver.jdField_a_of_type_Int, false, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
+    notifyUI(TroopRedDotObserver.b, false, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
     return;
     label312:
-    notifyUI(TroopRedDotObserver.jdField_a_of_type_Int, false, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
-  }
-  
-  protected String a()
-  {
-    return "TroopRedDotHandler";
+    notifyUI(TroopRedDotObserver.b, false, new Object[] { str, paramToServiceMsg, Boolean.valueOf(true) });
   }
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
@@ -254,11 +249,11 @@ public class TroopRedDotHandler
               if (i == 0) {
                 break label408;
               }
-              notifyUI(TroopRedDotObserver.f, true, new Object[] { String.valueOf(l), Boolean.valueOf(false), Boolean.valueOf(false) });
+              notifyUI(TroopRedDotObserver.g, true, new Object[] { String.valueOf(l), Boolean.valueOf(false), Boolean.valueOf(false) });
               break label408;
             }
             i = paramFromServiceMsg.opt_int32_show_red_point_mobile.get();
-            notifyUI(TroopRedDotObserver.e, true, new Object[] { Boolean.valueOf(false), paramToServiceMsg, Integer.valueOf(i) });
+            notifyUI(TroopRedDotObserver.f, true, new Object[] { Boolean.valueOf(false), paramToServiceMsg, Integer.valueOf(i) });
             return;
           }
           catch (Exception paramToServiceMsg)
@@ -367,6 +362,11 @@ public class TroopRedDotHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopRedDotHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.a == null)
@@ -404,7 +404,7 @@ public class TroopRedDotHandler
       }
       return;
     }
-    if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+    if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
     {
       if (QLog.isColorLevel())
       {
@@ -427,7 +427,7 @@ public class TroopRedDotHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopreddot.handler.TroopRedDotHandler
  * JD-Core Version:    0.7.0.1
  */

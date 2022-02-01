@@ -101,24 +101,24 @@ public class AppPayActivity
     }
     if (bool)
     {
-      VACDReportUtil.a(l, ((PayApi)localObject).i, "parseurl", paramIntent, 0, null);
+      VACDReportUtil.a(l, ((PayApi)localObject).j, "parseurl", paramIntent, 0, null);
       paramIntent = new Bundle();
       paramIntent.putInt("extra.key.pay.type", 1);
       paramIntent.putInt("extra.key.pay.from", 2);
       paramIntent.putInt("extra.key.pay.platform", 1);
       paramIntent.putInt("extra.key.app.type", 1);
       paramIntent.putLong("vacreport_key_seq", l);
-      paramIntent.putString("appId", ((PayApi)localObject).jdField_a_of_type_JavaLangString);
-      paramIntent.putString("callbackSn", ((PayApi)localObject).e);
-      paramIntent.putString("nonce", ((PayApi)localObject).j);
-      paramIntent.putLong("timeStamp", ((PayApi)localObject).jdField_a_of_type_Long);
-      paramIntent.putString("sig", ((PayApi)localObject).m);
-      paramIntent.putString("sigType", ((PayApi)localObject).l);
-      paramIntent.putString("tokenId", ((PayApi)localObject).i);
-      paramIntent.putString("bargainorId", ((PayApi)localObject).k);
+      paramIntent.putString("appId", ((PayApi)localObject).a);
+      paramIntent.putString("callbackSn", ((PayApi)localObject).f);
+      paramIntent.putString("nonce", ((PayApi)localObject).k);
+      paramIntent.putLong("timeStamp", ((PayApi)localObject).l);
+      paramIntent.putString("sig", ((PayApi)localObject).o);
+      paramIntent.putString("sigType", ((PayApi)localObject).n);
+      paramIntent.putString("tokenId", ((PayApi)localObject).j);
+      paramIntent.putString("bargainorId", ((PayApi)localObject).m);
       paramIntent.putString("qVersion", DeviceInfoUtil.a(this));
-      paramIntent.putString("packageName", ((PayApi)localObject).n);
-      paramIntent.putString("callbackScheme", ((PayApi)localObject).f);
+      paramIntent.putString("packageName", ((PayApi)localObject).p);
+      paramIntent.putString("callbackScheme", ((PayApi)localObject).g);
       localObject = new Intent(this, OpenPayActivity.class);
       ((Intent)localObject).putExtras(paramIntent);
       ((Intent)localObject).addFlags(67108864);
@@ -127,68 +127,6 @@ public class AppPayActivity
     else
     {
       VACDReportUtil.endReport(l, "parseurl", paramIntent, 668801, "params error");
-    }
-    super.finish();
-  }
-  
-  private void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    long l = VACDReportUtil.a(null, "qqwallet", "pay-app", "payinvoke", null, 0, null);
-    Object localObject = new PayApi();
-    ((PayApi)localObject).a(paramString);
-    boolean bool = ((PayApi)localObject).a();
-    paramString = ((PayApi)localObject).toString();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("&check=");
-    localStringBuilder.append(bool);
-    paramString = localStringBuilder.toString();
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuilder.append(" AppPayActivity.doBrowserPay data:");
-      localStringBuilder.append(paramString);
-      QLog.i("Q.qwallet.pay", 2, localStringBuilder.toString());
-    }
-    if (bool)
-    {
-      if (!a(((PayApi)localObject).n))
-      {
-        VACDReportUtil.endReport(l, "parseurl", paramString, 668801, "app died.");
-        super.finish();
-        return;
-      }
-      VACDReportUtil.a(l, ((PayApi)localObject).i, "parseurl", paramString, 0, null);
-      paramString = new Bundle();
-      paramString.putInt("extra.key.pay.type", 1);
-      paramString.putInt("extra.key.pay.from", 2);
-      paramString.putInt("extra.key.pay.platform", 1);
-      paramString.putInt("extra.key.app.type", 2);
-      paramString.putLong("vacreport_key_seq", l);
-      paramString.putString("appId", ((PayApi)localObject).jdField_a_of_type_JavaLangString);
-      paramString.putString("callbackSn", ((PayApi)localObject).e);
-      paramString.putString("nonce", ((PayApi)localObject).j);
-      paramString.putLong("timeStamp", ((PayApi)localObject).jdField_a_of_type_Long);
-      paramString.putString("sig", ((PayApi)localObject).m);
-      paramString.putString("sigType", ((PayApi)localObject).l);
-      paramString.putString("tokenId", ((PayApi)localObject).i);
-      paramString.putString("bargainorId", ((PayApi)localObject).k);
-      paramString.putString("qVersion", DeviceInfoUtil.a(this));
-      paramString.putString("packageName", ((PayApi)localObject).n);
-      paramString.putString("callbackScheme", ((PayApi)localObject).f);
-      localObject = new Intent(this, OpenPayActivity.class);
-      ((Intent)localObject).putExtras(paramString);
-      ((Intent)localObject).addFlags(67108864);
-      super.startActivity((Intent)localObject);
-    }
-    else
-    {
-      VACDReportUtil.endReport(l, "parseurl", paramString, 668801, "params error");
     }
     super.finish();
   }
@@ -271,7 +209,7 @@ public class AppPayActivity
         }
         if (localObject2 != null)
         {
-          a((String)localObject2);
+          b((String)localObject2);
           return;
         }
       }
@@ -290,6 +228,68 @@ public class AppPayActivity
       ((StringBuilder)localObject2).append("AppPayActivity.doPay url error:");
       ((StringBuilder)localObject2).append(localCharSequence);
       QLog.e("Q.qwallet.pay", 2, ((StringBuilder)localObject2).toString());
+    }
+    super.finish();
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    long l = VACDReportUtil.a(null, "qqwallet", "pay-app", "payinvoke", null, 0, null);
+    Object localObject = new PayApi();
+    ((PayApi)localObject).a(paramString);
+    boolean bool = ((PayApi)localObject).a();
+    paramString = ((PayApi)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("&check=");
+    localStringBuilder.append(bool);
+    paramString = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append(" AppPayActivity.doBrowserPay data:");
+      localStringBuilder.append(paramString);
+      QLog.i("Q.qwallet.pay", 2, localStringBuilder.toString());
+    }
+    if (bool)
+    {
+      if (!a(((PayApi)localObject).p))
+      {
+        VACDReportUtil.endReport(l, "parseurl", paramString, 668801, "app died.");
+        super.finish();
+        return;
+      }
+      VACDReportUtil.a(l, ((PayApi)localObject).j, "parseurl", paramString, 0, null);
+      paramString = new Bundle();
+      paramString.putInt("extra.key.pay.type", 1);
+      paramString.putInt("extra.key.pay.from", 2);
+      paramString.putInt("extra.key.pay.platform", 1);
+      paramString.putInt("extra.key.app.type", 2);
+      paramString.putLong("vacreport_key_seq", l);
+      paramString.putString("appId", ((PayApi)localObject).a);
+      paramString.putString("callbackSn", ((PayApi)localObject).f);
+      paramString.putString("nonce", ((PayApi)localObject).k);
+      paramString.putLong("timeStamp", ((PayApi)localObject).l);
+      paramString.putString("sig", ((PayApi)localObject).o);
+      paramString.putString("sigType", ((PayApi)localObject).n);
+      paramString.putString("tokenId", ((PayApi)localObject).j);
+      paramString.putString("bargainorId", ((PayApi)localObject).m);
+      paramString.putString("qVersion", DeviceInfoUtil.a(this));
+      paramString.putString("packageName", ((PayApi)localObject).p);
+      paramString.putString("callbackScheme", ((PayApi)localObject).g);
+      localObject = new Intent(this, OpenPayActivity.class);
+      ((Intent)localObject).putExtras(paramString);
+      ((Intent)localObject).addFlags(67108864);
+      super.startActivity((Intent)localObject);
+    }
+    else
+    {
+      VACDReportUtil.endReport(l, "parseurl", paramString, 668801, "params error");
     }
     super.finish();
   }
@@ -452,7 +452,7 @@ public class AppPayActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.open.AppPayActivity
  * JD-Core Version:    0.7.0.1
  */

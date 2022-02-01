@@ -14,7 +14,7 @@ final class FileCategoryUtil$2
   
   public void run()
   {
-    if (FileUtil.b(this.a.getFilePath())) {
+    if (FileUtil.d(this.a.getFilePath())) {
       return;
     }
     if (this.a.strApkPackageName != null)
@@ -22,7 +22,7 @@ final class FileCategoryUtil$2
       if (this.a.strApkPackageName.length() == 0) {
         return;
       }
-      Object localObject = FileCategoryUtil.a(BaseApplication.getContext()).iterator();
+      Object localObject = FileCategoryUtil.e(BaseApplication.getContext()).iterator();
       while (((Iterator)localObject).hasNext())
       {
         PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
@@ -38,7 +38,7 @@ final class FileCategoryUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileCategoryUtil.2
  * JD-Core Version:    0.7.0.1
  */

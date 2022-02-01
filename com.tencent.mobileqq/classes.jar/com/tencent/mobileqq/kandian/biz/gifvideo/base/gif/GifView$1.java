@@ -12,42 +12,42 @@ class GifView$1
   
   public void onFileDownloadFailed(int paramInt)
   {
-    if (GifView.access$000(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView))
+    if (GifView.access$000(this.g))
     {
-      if (GifView.access$100(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView)) {
-        GifView.access$200(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView);
+      if (GifView.access$100(this.g)) {
+        GifView.access$200(this.g);
       } else {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+        this.f.restartDownload();
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onLoadFialed! mIsBigImg=");
-      ((StringBuilder)localObject).append(GifView.access$100(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+      ((StringBuilder)localObject).append(GifView.access$100(this.g));
       ((StringBuilder)localObject).append(" w=");
-      ((StringBuilder)localObject).append(GifView.access$300(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+      ((StringBuilder)localObject).append(GifView.access$300(this.g));
       ((StringBuilder)localObject).append(" h=");
-      ((StringBuilder)localObject).append(GifView.access$400(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+      ((StringBuilder)localObject).append(GifView.access$400(this.g));
       QLog.d("gifvideo.GifView", 1, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView;
+      localObject = this.g;
       ((GifView)localObject).mTryCounts += 1;
     }
   }
   
   public void onFileDownloadStarted()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
+    this.a.set(System.currentTimeMillis());
   }
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    this.b.set(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    this.c.set(System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
-    this.d.set(paramLong);
+    this.b.set(System.currentTimeMillis() - this.c);
+    this.d.set(System.currentTimeMillis() - this.a.get());
+    this.e.set(paramLong);
     QLog.d("gifvideo.GifView", 1, "gif download success");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.gif.GifView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class EffectOperateManager$MyGoToVoiceChangeRunnalbe
   {
     EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.a.get();
     if (localEffectOperateManager != null) {
-      localEffectOperateManager.b();
+      localEffectOperateManager.d();
     }
   }
 }

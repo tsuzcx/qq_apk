@@ -18,7 +18,7 @@ public class TencentDocStructMsgGrayTipsConfigBean
       TencentDocStructMsgGrayTipsConfigBean localTencentDocStructMsgGrayTipsConfigBean = new TencentDocStructMsgGrayTipsConfigBean();
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         if (paramArrayOfQConfItem.has("flag"))
         {
           localTencentDocStructMsgGrayTipsConfigBean.d = paramArrayOfQConfItem.getInt("flag");
@@ -99,7 +99,7 @@ public class TencentDocStructMsgGrayTipsConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocStructMsgGrayTipsConfigBean
  * JD-Core Version:    0.7.0.1
  */

@@ -26,10 +26,10 @@ public class EcShopFirstRunMsgConfigs
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "EcShopFirstRunMsgConfigs start in addEcShopAssistToRUFirstTime...");
     }
-    ((EcShopAssistantManager)this.mAutomator.a.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).c();
+    ((EcShopAssistantManager)this.mAutomator.k.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).e();
     EcShopFirstRunMsgConfigs.1 local1 = new EcShopFirstRunMsgConfigs.1(this);
     List localList1 = Arrays.asList(new String[] { "https://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_wl_conf.json", "https://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_jd_conf.json" });
-    List localList2 = Arrays.asList(new String[] { EcShopAssistantManager.e, EcShopAssistantManager.f });
+    List localList2 = Arrays.asList(new String[] { EcShopAssistantManager.m, EcShopAssistantManager.n });
     List localList3 = Arrays.asList(new String[] { "last_modified_report_json", "last_modified_behaviors_json" });
     int i = 0;
     while (i < localList1.size())
@@ -39,7 +39,7 @@ public class EcShopFirstRunMsgConfigs
       Object localObject1 = (String)localList3.get(i);
       if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
       {
-        DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.mAutomator.a.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+        DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.mAutomator.k.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
         if (localDownloaderInterface != null)
         {
           Object localObject3 = EmosmUtils.a("VIP_shop_assit_cfg", (String)localObject2);
@@ -50,13 +50,13 @@ public class EcShopFirstRunMsgConfigs
             if (((File)localObject2).exists())
             {
               long l = ((File)localObject2).lastModified();
-              ((DownloadTask)localObject3).i = this.mAutomator.a.getApp().getSharedPreferences("ecshop_sp", 0).getLong((String)localObject1, 0L);
-              if (Long.valueOf(l).longValue() != ((DownloadTask)localObject3).i) {
-                ((DownloadTask)localObject3).m = true;
+              ((DownloadTask)localObject3).I = this.mAutomator.k.getApp().getSharedPreferences("ecshop_sp", 0).getLong((String)localObject1, 0L);
+              if (Long.valueOf(l).longValue() != ((DownloadTask)localObject3).I) {
+                ((DownloadTask)localObject3).G = true;
               }
             }
-            ((DownloadTask)localObject3).j = true;
-            ((DownloadTask)localObject3).p = false;
+            ((DownloadTask)localObject3).D = true;
+            ((DownloadTask)localObject3).N = false;
             localObject1 = new Bundle();
             ((Bundle)localObject1).putString("path", str);
             localDownloaderInterface.startDownload((DownloadTask)localObject3, local1, (Bundle)localObject1);
@@ -70,7 +70,7 @@ public class EcShopFirstRunMsgConfigs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs
  * JD-Core Version:    0.7.0.1
  */

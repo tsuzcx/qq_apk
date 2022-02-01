@@ -14,7 +14,7 @@ class PTSJSCLoader$3
     PTSJSCLoader.3.1 local1 = new PTSJSCLoader.3.1(this);
     try
     {
-      HtmlOffline.a();
+      HtmlOffline.b();
     }
     catch (Throwable localThrowable2)
     {
@@ -39,7 +39,7 @@ class PTSJSCLoader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSJSCLoader.3
  * JD-Core Version:    0.7.0.1
  */

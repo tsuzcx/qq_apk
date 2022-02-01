@@ -36,17 +36,17 @@ class LyricsController$6
       localStringBuilder.append(paramActivity.getClass().getName());
       QLog.d("LyricsController", 2, localStringBuilder.toString());
     }
-    if ((this.a.c) && (!this.a.b))
+    if ((this.a.f) && (!this.a.e))
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.x);
+      ThreadManager.getUIHandlerV2().postDelayed(this.a.x, 1000L);
       return;
     }
-    if (LyricsController.b(this.a))
+    if (LyricsController.c(this.a))
     {
       LyricsController.a(this.a, false);
       paramActivity = this.a;
-      paramActivity.jdField_a_of_type_Boolean = true;
+      paramActivity.c = true;
       paramActivity.a(true);
     }
   }
@@ -77,7 +77,7 @@ class LyricsController$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.6
  * JD-Core Version:    0.7.0.1
  */

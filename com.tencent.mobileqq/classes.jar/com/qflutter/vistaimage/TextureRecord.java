@@ -26,25 +26,33 @@ class TextureRecord
   private int heightPx;
   private String imageUri;
   private boolean isBitmapClipped;
+  private double radius;
   private IRenderer renderer;
+  private RendererParams.ImageRepeat repeat = RendererParams.ImageRepeat.NO_REPEAT;
   private int state;
   private VistaImageTask vistaImageTask;
   private int widthPx;
   
-  TextureRecord(VistaImageTask paramVistaImageTask, String paramString, int paramInt1, int paramInt2, float paramFloat, int paramInt3, boolean paramBoolean, Drawable paramDrawable, IRenderer paramIRenderer)
+  TextureRecord(VistaImageTask paramVistaImageTask, float paramFloat, boolean paramBoolean, Drawable paramDrawable, IRenderer paramIRenderer)
   {
     this.state = 1;
     this.vistaImageTask = paramVistaImageTask;
-    this.imageUri = paramString;
-    this.widthPx = Math.round(paramInt1 * paramFloat);
-    this.heightPx = Math.round(paramInt2 * paramFloat);
+    this.imageUri = paramVistaImageTask.getUri();
+    this.widthPx = Math.round(paramVistaImageTask.getWidth() * paramFloat);
+    this.heightPx = Math.round(paramVistaImageTask.getHeight() * paramFloat);
     this.density = paramFloat;
-    this.fitType = paramInt3;
+    this.fitType = paramVistaImageTask.getFitType();
     this.drawable = paramDrawable;
     this.bitmapWidth = paramDrawable.getIntrinsicWidth();
     this.bitmapHeight = paramDrawable.getIntrinsicHeight();
     this.renderer = paramIRenderer;
     this.isBitmapClipped = paramBoolean;
+    double d1 = paramVistaImageTask.getRadius();
+    double d2 = paramFloat;
+    Double.isNaN(d2);
+    Double.isNaN(d2);
+    this.radius = (d1 * d2);
+    this.repeat = paramVistaImageTask.getRepeat();
     if (this.widthPx == 0) {
       this.widthPx = (this.bitmapWidth * this.heightPx / this.bitmapHeight);
     }
@@ -55,21 +63,15 @@ class TextureRecord
     {
       paramVistaImageTask = new StringBuilder();
       paramVistaImageTask.append("[TextureRecord] uri=");
-      paramVistaImageTask.append(paramString);
+      paramVistaImageTask.append(this.imageUri);
       paramVistaImageTask.append(", widthPx=");
       paramVistaImageTask.append(this.widthPx);
       paramVistaImageTask.append(", heightPx=");
       paramVistaImageTask.append(this.heightPx);
-      paramVistaImageTask.append(", width=");
-      paramVistaImageTask.append(paramInt1);
-      paramVistaImageTask.append(", height=");
-      paramVistaImageTask.append(paramInt2);
-      paramVistaImageTask.append(", bmpWidth+");
+      paramVistaImageTask.append(", bmpWidth=");
       paramVistaImageTask.append(this.bitmapWidth);
       paramVistaImageTask.append(", bmpHeight=");
       paramVistaImageTask.append(this.bitmapHeight);
-      paramVistaImageTask.append(", density=");
-      paramVistaImageTask.append(paramFloat);
       paramVistaImageTask.append(", density=");
       paramVistaImageTask.append(paramFloat);
       VistaImageLog.d("TextureRecord", paramVistaImageTask.toString());
@@ -166,7 +168,8 @@ class TextureRecord
     if (this.renderer == null) {
       this.renderer = new DrawableRenderer();
     }
-    this.renderer.init(paramTextureRegistry, this.drawable, this.fitType, this.isBitmapClipped, getConstrainedWidth(), getConstrainedHeight());
+    paramTextureRegistry = RendererParams.Builder.aRendererParams().withSurface(paramTextureRegistry).withDrawable(this.drawable).withFitType(this.fitType).withIsClipped(this.isBitmapClipped).withViewWidth(getConstrainedWidth()).withViewHeight(getConstrainedHeight()).withRadius(this.radius).withRepeat(this.repeat).build();
+    this.renderer.init(paramTextureRegistry);
     if (VistaImageLog.isColorLevel())
     {
       paramTextureRegistry = new StringBuilder();
@@ -241,7 +244,7 @@ class TextureRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.vistaimage.TextureRecord
  * JD-Core Version:    0.7.0.1
  */

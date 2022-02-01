@@ -39,7 +39,7 @@ public abstract class AbstractPhotoPreviewActivity
   
   public void doOnBackPressed()
   {
-    this.mPhotoPreviewCustomization.g();
+    this.mPhotoPreviewCustomization.i();
     QAlbumUtil.anim(this, true, false);
   }
   
@@ -56,7 +56,7 @@ public abstract class AbstractPhotoPreviewActivity
     Object localObject = new BrowserParamsBuilder();
     ((BrowserParamsBuilder)localObject).a(true);
     ((BrowserParamsBuilder)localObject).b(true);
-    ((BrowserParamsBuilder)localObject).c(this.mPhotoPreviewCustomization.d());
+    ((BrowserParamsBuilder)localObject).c(this.mPhotoPreviewCustomization.t());
     ((BrowserParamsBuilder)localObject).a(new AlbumPreviewFactory());
     paramBundle = new AlbumPreviewBuilder(this.mPhotoPreviewCustomization);
     paramBundle.a((BrowserParamsBuilder)localObject);
@@ -85,14 +85,14 @@ public abstract class AbstractPhotoPreviewActivity
   public void doOnPause()
   {
     super.doOnPause();
-    this.mPhotoPreviewCustomization.l();
+    this.mPhotoPreviewCustomization.u();
   }
   
   @TargetApi(9)
   public void doOnResume()
   {
     super.doOnResume();
-    this.mPhotoPreviewCustomization.i();
+    this.mPhotoPreviewCustomization.n();
   }
   
   public PhotoPreviewCustomization<? extends OtherCommonData> generateCustomization()
@@ -114,7 +114,7 @@ public abstract class AbstractPhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.AbstractPhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

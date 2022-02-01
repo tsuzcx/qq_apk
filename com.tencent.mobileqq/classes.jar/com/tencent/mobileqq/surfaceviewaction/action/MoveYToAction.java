@@ -3,35 +3,35 @@ package com.tencent.mobileqq.surfaceviewaction.action;
 public class MoveYToAction
   extends Action
 {
-  private int f;
-  private int g;
+  private int m;
+  private int n;
   
   public MoveYToAction(int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramInt1, 16, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
+    this.m = paramInt2;
+    this.n = paramInt3;
   }
   
   protected void a(int paramInt, float paramFloat)
   {
-    int i = this.f;
-    float f1 = i;
-    int j = this.g;
-    this.b = ((int)(f1 + (j - i) * paramFloat));
+    int i = this.m;
+    float f = i;
+    int j = this.n;
+    this.b = ((int)(f + (j - i) * paramFloat));
     if (j - i > 0)
     {
-      f1 = this.b;
-      i = this.g;
-      if (f1 >= i) {
+      f = this.b;
+      i = this.n;
+      if (f >= i) {
         this.b = i;
       }
     }
     else
     {
-      f1 = this.b;
-      i = this.g;
-      if (f1 <= i) {
+      f = this.b;
+      i = this.n;
+      if (f <= i) {
         this.b = i;
       }
     }
@@ -40,7 +40,7 @@ public class MoveYToAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.MoveYToAction
  * JD-Core Version:    0.7.0.1
  */

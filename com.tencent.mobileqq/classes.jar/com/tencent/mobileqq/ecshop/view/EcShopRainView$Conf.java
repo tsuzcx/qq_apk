@@ -4,20 +4,20 @@ import android.graphics.Bitmap;
 
 public class EcShopRainView$Conf
 {
-  public int a;
   public Bitmap a;
   public int b;
+  public int c;
   
   public EcShopRainView$Conf(Bitmap paramBitmap, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramBitmap;
     this.b = paramInt;
+    this.c = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.EcShopRainView.Conf
  * JD-Core Version:    0.7.0.1
  */

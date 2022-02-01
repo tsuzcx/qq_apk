@@ -18,64 +18,64 @@ import org.json.JSONObject;
 public class RedTouchLifeTimeManager
   extends BroadcastReceiver
 {
-  private static RedTouchLifeTimeManager jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  QActivityLifecycleCallbacks jdField_a_of_type_MqqAppQActivityLifecycleCallbacks = new RedTouchLifeTimeManager.2(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b;
+  private static RedTouchLifeTimeManager b;
+  QActivityLifecycleCallbacks a = new RedTouchLifeTimeManager.2(this);
   private String c;
-  private String d;
+  private boolean d = false;
+  private String e;
+  private long f;
+  private String g;
+  private String h;
   
   private RedTouchLifeTimeManager()
   {
-    a();
+    b();
   }
   
   public static RedTouchLifeTimeManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager == null) {
-          jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager = new RedTouchLifeTimeManager();
+        if (b == null) {
+          b = new RedTouchLifeTimeManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager;
+    return b;
   }
   
-  private void a()
+  private void b()
   {
-    Foreground.addActivityLifeCallback(this.jdField_a_of_type_MqqAppQActivityLifecycleCallbacks);
+    Foreground.addActivityLifeCallback(this.a);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.plugin.state.change");
     BaseApplicationImpl.getApplication().registerReceiver(this, localIntentFilter);
   }
   
-  private void b()
+  private void c()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    this.d = false;
+    long l = System.currentTimeMillis() - this.f;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("triggleReport time = ");
     ((StringBuilder)localObject).append(l);
     ((StringBuilder)localObject).append(" class name ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.c);
     QLog.i("RedTouchLifeTimeManager", 1, ((StringBuilder)localObject).toString());
     localObject = new TianShuReportData();
-    ((TianShuReportData)localObject).d = 133;
-    ((TianShuReportData)localObject).jdField_e_of_type_Int = ((int)l);
-    ((TianShuReportData)localObject).g = String.valueOf(this.c);
-    ((TianShuReportData)localObject).b = String.valueOf(this.d);
-    ((TianShuReportData)localObject).jdField_a_of_type_Int = 1;
-    ((TianShuReportData)localObject).jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    ((TianShuReportData)localObject).jdField_e_of_type_JavaLangString = "vab_red";
+    ((TianShuReportData)localObject).p = 133;
+    ((TianShuReportData)localObject).q = ((int)l);
+    ((TianShuReportData)localObject).h = String.valueOf(this.g);
+    ((TianShuReportData)localObject).b = String.valueOf(this.h);
+    ((TianShuReportData)localObject).c = 1;
+    ((TianShuReportData)localObject).o = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
     ((TianShuReportData)localObject).f = "vab_red";
+    ((TianShuReportData)localObject).g = "vab_red";
     ThreadManager.getSubThreadHandler().post(new RedTouchLifeTimeManager.1(this, (TianShuReportData)localObject));
   }
   
@@ -87,17 +87,17 @@ public class RedTouchLifeTimeManager
     try
     {
       paramString = new JSONObject(paramString);
-      this.c = paramString.getString("ad_id");
-      this.d = paramString.getString("trace_id");
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (Foreground.getTopActivity() != null)) {
-        this.jdField_a_of_type_JavaLangString = Foreground.getTopActivity().getClass().getName();
+      this.g = paramString.getString("ad_id");
+      this.h = paramString.getString("trace_id");
+      this.d = true;
+      this.f = System.currentTimeMillis();
+      if ((TextUtils.isEmpty(this.c)) && (Foreground.getTopActivity() != null)) {
+        this.c = Foreground.getTopActivity().getClass().getName();
       }
-      this.b = this.jdField_a_of_type_JavaLangString;
+      this.e = this.c;
       paramString = new StringBuilder();
       paramString.append(" triggleWhenRedClick class name ");
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.c);
       QLog.i("RedTouchLifeTimeManager", 1, paramString.toString());
       return;
     }
@@ -119,13 +119,13 @@ public class RedTouchLifeTimeManager
     if (("com.tencent.plugin.state.change".equals(paramContext)) && (paramIntent.getIntExtra("key_plugin_state", 0) == 0))
     {
       QLog.i("RedTouchLifeTimeManager", 1, "[onReceive] bg action");
-      b();
+      c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager
  * JD-Core Version:    0.7.0.1
  */

@@ -18,17 +18,17 @@ class EditorStateMachineController$6
   public void a(EditorState paramEditorState)
   {
     super.a(paramEditorState);
-    if (WriteTogetherUtils.a(EditorStateMachineController.a(this.a), EditorStateMachineController.a(this.a)))
+    if (WriteTogetherUtils.a(EditorStateMachineController.d(this.a), EditorStateMachineController.e(this.a)))
     {
-      EditorStateMachineController.a(this.a).a(false, false);
+      EditorStateMachineController.c(this.a).a(false, false);
       return;
     }
-    EditorStateMachineController.a(this.a).a(EditorState.CLOSED_BY_ADMIN, EditorStateMachineController.a(this.a).getString(2131720455));
+    EditorStateMachineController.b(this.a).a(EditorState.CLOSED_BY_ADMIN, EditorStateMachineController.a(this.a).getString(2131918131));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController.6
  * JD-Core Version:    0.7.0.1
  */

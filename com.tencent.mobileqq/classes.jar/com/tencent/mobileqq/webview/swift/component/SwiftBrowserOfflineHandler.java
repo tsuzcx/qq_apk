@@ -15,25 +15,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SwiftBrowserOfflineHandler
 {
-  public static final LruCache<String, SwiftBrowserOfflineHandler> a;
-  public static final AtomicInteger c = new AtomicInteger(1);
-  public final AuthorizeConfig a;
-  public String a;
-  public final CopyOnWriteArrayList<SwiftBrowserOfflineHandler.CheckOfflineCallback> a;
-  public final AtomicInteger a;
-  public final AtomicInteger b = new AtomicInteger(1);
-  
-  static
-  {
-    jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
-  }
+  public static final LruCache<String, SwiftBrowserOfflineHandler> a = new LruCache(8);
+  public static final AtomicInteger g = new AtomicInteger(1);
+  public final CopyOnWriteArrayList<SwiftBrowserOfflineHandler.CheckOfflineCallback> b = new CopyOnWriteArrayList();
+  public final AuthorizeConfig c;
+  public String d;
+  public final AtomicInteger e = new AtomicInteger(0);
+  public final AtomicInteger f = new AtomicInteger(1);
   
   SwiftBrowserOfflineHandler(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizAuthorizeConfig = AuthorizeConfig.a();
+    this.d = paramString;
+    this.c = AuthorizeConfig.a();
   }
   
   public static SwiftBrowserOfflineHandler a(String paramString)
@@ -78,12 +71,12 @@ public class SwiftBrowserOfflineHandler
     {
       if (!TextUtils.isEmpty(paramString))
       {
-        SwiftBrowserOfflineHandler localSwiftBrowserOfflineHandler = (SwiftBrowserOfflineHandler)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+        SwiftBrowserOfflineHandler localSwiftBrowserOfflineHandler = (SwiftBrowserOfflineHandler)a.get(paramString);
         localObject = localSwiftBrowserOfflineHandler;
         if (localSwiftBrowserOfflineHandler == null)
         {
           localObject = new SwiftBrowserOfflineHandler(paramString);
-          jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, localObject);
+          a.put(paramString, localObject);
         }
       }
       return localObject;
@@ -93,53 +86,48 @@ public class SwiftBrowserOfflineHandler
   
   void a()
   {
-    this.b.compareAndSet(2, 3);
+    this.f.compareAndSet(2, 3);
     new Handler(Looper.getMainLooper()).post(new SwiftBrowserOfflineHandler.3(this));
   }
   
   public void a(SwiftBrowserOfflineHandler.CheckOfflineCallback paramCheckOfflineCallback, String paramString)
   {
-    if ((this.b.get() == 3) && (paramCheckOfflineCallback != null))
+    if ((this.f.get() == 3) && (paramCheckOfflineCallback != null))
     {
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("now offline bid is ready, ");
-        paramString.append(this.jdField_a_of_type_JavaLangString);
+        paramString.append(this.d);
         paramString.append(", mode is ");
-        paramString.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        paramString.append(this.e.get());
         QLog.i("SwiftBrowserOfflineHandler", 2, paramString.toString());
       }
-      paramCheckOfflineCallback.onCheckOfflineFinish(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      paramCheckOfflineCallback.onCheckOfflineFinish(this.e.get());
       return;
     }
-    if ((paramCheckOfflineCallback != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramCheckOfflineCallback))) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramCheckOfflineCallback);
+    if ((paramCheckOfflineCallback != null) && (!this.b.contains(paramCheckOfflineCallback))) {
+      this.b.add(paramCheckOfflineCallback);
     }
     paramCheckOfflineCallback = new SwiftBrowserOfflineHandler.1(this, paramString);
-    if (this.b.compareAndSet(1, 2))
+    if (this.f.compareAndSet(1, 2))
     {
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("post thread to check offline, bid = ");
-        paramString.append(this.jdField_a_of_type_JavaLangString);
+        paramString.append(this.d);
         QLog.i("SwiftBrowserOfflineHandler", 2, paramString.toString());
       }
       ThreadManager.postImmediately(paramCheckOfflineCallback, new SwiftBrowserOfflineHandler.2(this), false);
     }
   }
   
-  public boolean a()
-  {
-    return this.b.get() == 3;
-  }
-  
   public void b()
   {
-    if (c.compareAndSet(1, 2))
+    if (g.compareAndSet(1, 2))
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentBizAuthorizeConfig.a("ex_offline", "");
+      Object localObject1 = this.c.c("ex_offline", "");
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject1 = ((String)localObject1).split(",");
@@ -164,29 +152,34 @@ public class SwiftBrowserOfflineHandler
             ((StringBuilder)localObject1).append("*****offline can not use!!! ");
             ((StringBuilder)localObject1).append(str1);
             QLog.e("SwiftBrowserOfflineHandler", 1, ((StringBuilder)localObject1).toString());
-            c.compareAndSet(2, 4);
+            g.compareAndSet(2, 4);
             return;
           }
           i += 1;
         }
       }
-      c.compareAndSet(2, 3);
+      g.compareAndSet(2, 3);
     }
   }
   
-  public void c()
+  public boolean c()
+  {
+    return this.f.get() == 3;
+  }
+  
+  public void d()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("now reset bid cache! ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     QLog.w("SwiftBrowserOfflineHandler", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    this.b.set(1);
+    this.e.set(0);
+    this.f.set(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler
  * JD-Core Version:    0.7.0.1
  */

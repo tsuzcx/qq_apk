@@ -35,16 +35,16 @@ import java.util.List;
 public class GameRoomFloatView
   implements View.OnTouchListener
 {
-  protected int a;
-  protected BroadcastReceiver a;
-  protected Context a;
-  protected WindowManager a;
   protected TextView a;
-  protected WerewolvesObserver a;
-  protected boolean a;
-  protected int b;
-  protected boolean b;
-  protected int c;
+  protected WindowManager b;
+  protected Context c;
+  protected int d;
+  protected int e;
+  protected boolean f;
+  protected boolean g;
+  protected int h;
+  protected WerewolvesObserver i = new GameRoomFloatView.4(this);
+  protected BroadcastReceiver j = new GameRoomFloatView.5(this);
   
   public GameRoomFloatView()
   {
@@ -53,91 +53,84 @@ public class GameRoomFloatView
   
   public GameRoomFloatView(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver = new GameRoomFloatView.4(this);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new GameRoomFloatView.5(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131705184));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#B2FFFFFF"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(81);
-    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F));
+    this.c = paramContext;
+    this.a = new TextView(this.c);
+    this.a.setOnTouchListener(this);
+    this.a.setText(HardCodeUtil.a(2131903072));
+    this.a.setTextSize(10.0F);
+    this.a.setTextColor(Color.parseColor("#B2FFFFFF"));
+    this.a.setGravity(81);
+    this.a.setPadding(0, 0, 0, DisplayUtil.a(this.c, 15.0F));
     paramContext = new IntentFilter("tencent.video.v2q.SmallScreenState");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramContext);
+    this.c.registerReceiver(this.j, paramContext);
   }
   
-  private void b()
+  private void c()
   {
-    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    int j = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
-    int i = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getHeight();
-    if (localLayoutParams.x - this.jdField_a_of_type_AndroidWidgetTextView.getWidth() / 2 > j / 2) {
-      j = j - this.jdField_a_of_type_AndroidWidgetTextView.getWidth() - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.a.getLayoutParams();
+    int m = this.b.getDefaultDisplay().getWidth();
+    int k = this.b.getDefaultDisplay().getHeight();
+    if (localLayoutParams.x - this.a.getWidth() / 2 > m / 2) {
+      m = m - this.a.getWidth() - DisplayUtil.a(this.c, 10.0F);
     } else {
-      j = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+      m = DisplayUtil.a(this.c, 10.0F);
     }
-    float f1 = localLayoutParams.y - this.jdField_a_of_type_AndroidWidgetTextView.getHeight() / 2;
-    float f2 = i;
+    float f1 = localLayoutParams.y - this.a.getHeight() / 2;
+    float f2 = k;
     if (f1 > 0.8F * f2)
     {
-      i = i - this.jdField_a_of_type_AndroidWidgetTextView.getHeight() - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+      k = k - this.a.getHeight() - DisplayUtil.a(this.c, 10.0F);
     }
     else
     {
-      if (localLayoutParams.y - this.jdField_a_of_type_AndroidWidgetTextView.getHeight() / 2 > 0.6F * f2)
+      if (localLayoutParams.y - this.a.getHeight() / 2 > 0.6F * f2)
       {
-        f1 = i - this.jdField_a_of_type_AndroidWidgetTextView.getHeight();
+        f1 = k - this.a.getHeight();
         f2 = 0.75F;
       }
       for (;;)
       {
-        i = (int)(f1 * f2);
+        k = (int)(f1 * f2);
         break label287;
-        if (localLayoutParams.y - this.jdField_a_of_type_AndroidWidgetTextView.getHeight() / 2 > 0.4F * f2)
+        if (localLayoutParams.y - this.a.getHeight() / 2 > 0.4F * f2)
         {
-          f1 = i - this.jdField_a_of_type_AndroidWidgetTextView.getHeight();
+          f1 = k - this.a.getHeight();
           f2 = 0.5F;
         }
         else
         {
-          if (localLayoutParams.y - this.jdField_a_of_type_AndroidWidgetTextView.getHeight() / 2 <= f2 * 0.2F) {
+          if (localLayoutParams.y - this.a.getHeight() / 2 <= f2 * 0.2F) {
             break;
           }
-          f1 = i - this.jdField_a_of_type_AndroidWidgetTextView.getHeight();
+          f1 = k - this.a.getHeight();
           f2 = 0.25F;
         }
       }
-      i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+      k = DisplayUtil.a(this.c, 10.0F);
     }
     label287:
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { localLayoutParams.x, j });
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { localLayoutParams.x, m });
     localValueAnimator.addUpdateListener(new GameRoomFloatView.2(this, localLayoutParams, localValueAnimator));
     localValueAnimator.setDuration(200L);
-    localValueAnimator.setTarget(this.jdField_a_of_type_AndroidWidgetTextView);
+    localValueAnimator.setTarget(this.a);
     localValueAnimator.start();
-    localValueAnimator = ValueAnimator.ofInt(new int[] { localLayoutParams.y, i });
+    localValueAnimator = ValueAnimator.ofInt(new int[] { localLayoutParams.y, k });
     localValueAnimator.addUpdateListener(new GameRoomFloatView.3(this, localLayoutParams, localValueAnimator));
     localValueAnimator.setDuration(200L);
-    localValueAnimator.setTarget(this.jdField_a_of_type_AndroidWidgetTextView);
+    localValueAnimator.setTarget(this.a);
     localValueAnimator.start();
-  }
-  
-  public int a()
-  {
-    return this.c;
   }
   
   public void a()
   {
-    if (this.jdField_b_of_type_Boolean) {}
+    if (this.g) {}
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_AndroidWidgetTextView);
+      this.a.setBackgroundResource(0);
+      this.b.removeViewImmediate(this.a);
       label28:
-      this.jdField_b_of_type_Boolean = false;
-      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).removeObserver(this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver);
+      this.g = false;
+      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).removeObserver(this.i);
       return;
     }
     catch (Exception localException)
@@ -156,62 +149,62 @@ public class GameRoomFloatView
       ((StringBuilder)localObject).append(paramInt1);
       QLog.d("GameRoomFloatView", 2, ((StringBuilder)localObject).toString());
     }
-    this.c = paramInt1;
-    if (this.jdField_a_of_type_AndroidViewWindowManager == null) {
-      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window"));
+    this.h = paramInt1;
+    if (this.b == null) {
+      this.b = ((WindowManager)this.c.getSystemService("window"));
     }
-    if (!this.jdField_b_of_type_Boolean) {
-      if (!SmallScreenUtils.c(this.jdField_a_of_type_AndroidContentContext))
+    if (!this.g) {
+      if (!SmallScreenUtils.c(this.c))
       {
         if (QLog.isColorLevel()) {
           QLog.d("GameRoomFloatView", 2, "GameRoomFloatView->show: isFloatWindowOpAllowed = false");
         }
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, SmallScreenDialogActivity.class);
+        localObject = new Intent(this.c, SmallScreenDialogActivity.class);
         ((Intent)localObject).addFlags(268435456);
         ((Intent)localObject).addFlags(536870912);
         ((Intent)localObject).addFlags(67108864);
         ((Intent)localObject).addFlags(131072);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+        this.c.startActivity((Intent)localObject);
       }
     }
     try
     {
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_AndroidWidgetTextView);
-      label169:
-      int j = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
-      int k = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getHeight();
-      int i;
+      this.b.removeViewImmediate(this.a);
+      label172:
+      int m = this.b.getDefaultDisplay().getWidth();
+      int n = this.b.getDefaultDisplay().getHeight();
+      int k;
       if (Build.VERSION.SDK_INT >= 26) {
-        i = 2038;
+        k = 2038;
       } else {
-        i = 2010;
+        k = 2010;
       }
-      localObject = new WindowManager.LayoutParams(-2, -2, i, 776, -2);
+      localObject = new WindowManager.LayoutParams(-2, -2, k, 776, -2);
       ((WindowManager.LayoutParams)localObject).gravity = 51;
-      ((WindowManager.LayoutParams)localObject).x = (j - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 62.0F) - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
-      ((WindowManager.LayoutParams)localObject).y = ((int)((k - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 67.0F)) * 0.25F));
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130842336);
+      ((WindowManager.LayoutParams)localObject).x = (m - DisplayUtil.a(this.c, 62.0F) - DisplayUtil.a(this.c, 10.0F));
+      ((WindowManager.LayoutParams)localObject).y = ((int)((n - DisplayUtil.a(this.c, 67.0F)) * 0.25F));
+      this.a.setBackgroundResource(2130843280);
       try
       {
-        this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+        this.b.addView(this.a, (ViewGroup.LayoutParams)localObject);
       }
       catch (Exception localException1)
       {
         QLog.e("GameRoomFloatView", 1, localException1, new Object[0]);
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.g = true;
       if (paramInt1 == 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131705235));
+        this.a.setText(HardCodeUtil.a(2131903120));
       } else {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131705226));
+        this.a.setText(HardCodeUtil.a(2131903111));
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new GameRoomFloatView.1(this, paramInt1, paramLong, paramString2, paramString1, paramInt2));
-      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver);
+      this.a.setOnClickListener(new GameRoomFloatView.1(this, paramInt1, paramLong, paramString2, paramString1, paramInt2));
+      ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.i);
       return;
     }
     catch (Exception localException2)
     {
-      break label169;
+      break label172;
     }
   }
   
@@ -225,12 +218,12 @@ public class GameRoomFloatView
       ((EntityManager)localObject2).update(paramHotChatInfo);
       ((EntityManager)localObject2).close();
       localObject1 = (HotChatManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      localObject2 = ((HotChatManager)localObject1).a();
+      localObject2 = ((HotChatManager)localObject1).c();
       if ((localObject2 != null) && (!((List)localObject2).contains(paramHotChatInfo))) {
         ((List)localObject2).add(paramHotChatInfo);
       }
       ((HotChatManager)localObject1).a(paramHotChatInfo, 4);
-      paramHotChatInfo = new Intent(this.jdField_a_of_type_AndroidContentContext, ChatActivity.class);
+      paramHotChatInfo = new Intent(this.c, ChatActivity.class);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(paramInt);
       ((StringBuilder)localObject1).append("");
@@ -244,64 +237,69 @@ public class GameRoomFloatView
       paramHotChatInfo.putExtra("hotnamecode", paramString1);
       paramHotChatInfo = AIOUtils.a(paramHotChatInfo, new int[] { 2 });
       paramHotChatInfo.addFlags(268435456);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramHotChatInfo);
+      this.c.startActivity(paramHotChatInfo);
       a();
       return;
     }
     finally {}
   }
   
+  public int b()
+  {
+    return this.h;
+  }
+  
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    int j = (int)paramMotionEvent.getRawX();
-    int k = (int)paramMotionEvent.getRawY();
-    if (i == 0)
+    int k = paramMotionEvent.getAction();
+    int m = (int)paramMotionEvent.getRawX();
+    int n = (int)paramMotionEvent.getRawY();
+    if (k == 0)
     {
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
-      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getY());
+      this.d = ((int)paramMotionEvent.getX());
+      this.e = ((int)paramMotionEvent.getY());
       return false;
     }
-    if (i == 2)
+    if (k == 2)
     {
-      if ((this.jdField_a_of_type_Boolean) || (Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Int) > DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F)) || (Math.abs(paramMotionEvent.getY() - this.jdField_b_of_type_Int) > DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F)))
+      if ((this.f) || (Math.abs(paramMotionEvent.getX() - this.d) > DisplayUtil.a(this.c, 10.0F)) || (Math.abs(paramMotionEvent.getY() - this.e) > DisplayUtil.a(this.c, 10.0F)))
       {
-        this.jdField_a_of_type_Boolean = true;
-        paramView = (WindowManager.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-        paramView.x = (j - this.jdField_a_of_type_Int);
-        paramView.y = (k - this.jdField_b_of_type_Int - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 25.0F));
-        i = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getWidth();
-        j = this.jdField_a_of_type_AndroidViewWindowManager.getDefaultDisplay().getHeight();
+        this.f = true;
+        paramView = (WindowManager.LayoutParams)this.a.getLayoutParams();
+        paramView.x = (m - this.d);
+        paramView.y = (n - this.e - DisplayUtil.a(this.c, 25.0F));
+        k = this.b.getDefaultDisplay().getWidth();
+        m = this.b.getDefaultDisplay().getHeight();
         if (paramView.x < 0) {
           paramView.x = 0;
-        } else if (paramView.x > i - this.jdField_a_of_type_AndroidWidgetTextView.getWidth()) {
-          paramView.x = (i - this.jdField_a_of_type_AndroidWidgetTextView.getWidth());
+        } else if (paramView.x > k - this.a.getWidth()) {
+          paramView.x = (k - this.a.getWidth());
         }
         if (paramView.y < 0) {
           paramView.y = 0;
-        } else if (paramView.y > j - this.jdField_a_of_type_AndroidWidgetTextView.getHeight()) {
-          paramView.y = (j - this.jdField_a_of_type_AndroidWidgetTextView.getHeight());
+        } else if (paramView.y > m - this.a.getHeight()) {
+          paramView.y = (m - this.a.getHeight());
         }
-        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidWidgetTextView, paramView);
+        this.b.updateViewLayout(this.a, paramView);
       }
       return true;
     }
-    if ((i != 1) && (i != 3)) {
+    if ((k != 1) && (k != 3)) {
       return false;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
-      b();
-      this.jdField_a_of_type_Boolean = false;
+      c();
+      this.f = false;
       return true;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.f = false;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView
  * JD-Core Version:    0.7.0.1
  */

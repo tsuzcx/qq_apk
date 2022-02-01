@@ -9,14 +9,14 @@ class TroopListAdapter2$3$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$3.this$0.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$3.this$0.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    TroopListAdapter2.a(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$3.this$0);
+    this.b.this$0.p.clear();
+    this.b.this$0.p.addAll(this.a);
+    TroopListAdapter2.b(this.b.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.3.1
  * JD-Core Version:    0.7.0.1
  */

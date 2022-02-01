@@ -21,8 +21,8 @@ class MusicPlayerActivity$2
     MusicPlayerActivity.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
     try
     {
-      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
-      paramComponentName = MusicPlayerActivity.a(this.a).a();
+      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.e(this.a));
+      paramComponentName = MusicPlayerActivity.a(this.a).k();
       paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
       if (paramComponentName != null)
       {
@@ -30,11 +30,11 @@ class MusicPlayerActivity$2
         if (MusicPlayerActivity.b().containsKey(str)) {
           MusicPlayerActivity.a(this.a, (MusicPlayerActivity.SimpleSongInfo)MusicPlayerActivity.b().get(str), paramIBinder);
         } else {
-          MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
+          MusicPlayerActivity.a(this.a, paramComponentName.e, paramComponentName.j, paramComponentName.g, paramIBinder, false, false);
         }
-        int i = MusicPlayerActivity.a(this.a).a();
-        Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-        MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
+        int i = MusicPlayerActivity.a(this.a).g();
+        Message.obtain(MusicPlayerActivity.b(this.a), 50, i, 0).sendToTarget();
+        MusicPlayerActivity.c(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.e, paramComponentName.j, paramComponentName.i, String.valueOf(paramComponentName.a), paramComponentName.f, MusicPlayerActivity.a(this.a).i());
       }
       return;
     }
@@ -47,7 +47,7 @@ class MusicPlayerActivity$2
     if (paramComponentName != null) {}
     try
     {
-      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      paramComponentName.b(MusicPlayerActivity.e(this.a));
       return;
     }
     catch (RemoteException paramComponentName) {}
@@ -55,7 +55,7 @@ class MusicPlayerActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.2
  * JD-Core Version:    0.7.0.1
  */

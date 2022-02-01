@@ -38,7 +38,7 @@ final class MQPSensitiveMsgUtil$6
       j = k;
       if (paramView != null)
       {
-        paramView = paramView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+        paramView = paramView.a(this.a, this.b, this.c);
         if (paramView == null) {
           return;
         }
@@ -55,9 +55,9 @@ final class MQPSensitiveMsgUtil$6
             localException.printStackTrace();
           }
         }
-        else if (this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.has())
+        else if (this.d.bankcode_elems.has())
         {
-          localIterator = this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.get().iterator();
+          localIterator = this.d.bankcode_elems.get().iterator();
           i = 0;
           while (localIterator.hasNext())
           {
@@ -84,7 +84,7 @@ final class MQPSensitiveMsgUtil$6
     boolean bool = true;
     i = j;
     label216:
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
       if (!bool) {
         return;
@@ -103,7 +103,7 @@ final class MQPSensitiveMsgUtil$6
           String str2 = ((Bundle)localObject2).getString("AlertText");
           String str3 = ((Bundle)localObject2).getString("AlertOtherBtnText");
           localObject2 = ((Bundle)localObject2).getString("AlertCancelBtnText");
-          MQPSensitiveMsgUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, (String)localObject1, str2, str3, (String)localObject2);
+          MQPSensitiveMsgUtil.a(this.a, this.b, this.c, (String)localObject1, str2, str3, (String)localObject2);
         }
       }
     }
@@ -117,7 +117,7 @@ final class MQPSensitiveMsgUtil$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.sec.MQPSensitiveMsgUtil.6
  * JD-Core Version:    0.7.0.1
  */

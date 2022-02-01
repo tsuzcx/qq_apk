@@ -15,16 +15,16 @@ class OverCoverFrameLayout$1
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (Math.abs(paramFloat2) <= this.a.e) {
+    if (Math.abs(paramFloat2) <= this.a.i) {
       return false;
     }
-    if ((this.a.a != null) && (this.a.a.a())) {
+    if ((this.a.l != null) && (this.a.l.a())) {
       return false;
     }
     if (paramFloat2 < 0.0F) {
-      this.a.a();
-    } else {
       this.a.b();
+    } else {
+      this.a.c();
     }
     return true;
   }
@@ -33,16 +33,16 @@ class OverCoverFrameLayout$1
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (Math.abs(paramFloat2) <= this.a.d) {
+    if (Math.abs(paramFloat2) <= this.a.h) {
       return false;
     }
-    if ((this.a.a != null) && (this.a.a.a())) {
+    if ((this.a.l != null) && (this.a.l.a())) {
       return false;
     }
     if (paramFloat2 > 0.0F) {
-      this.a.a();
-    } else {
       this.a.b();
+    } else {
+      this.a.c();
     }
     return true;
   }
@@ -56,7 +56,7 @@ class OverCoverFrameLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class QIMUndecideNotifyDialog$1
   
   public void onClick(View paramView)
   {
-    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
+    OpenPlayerBuilder localOpenPlayerBuilder = new OpenPlayerBuilder(new VidListPlayInfo(this.a), 120);
     localOpenPlayerBuilder.a();
-    StoryPlayerLauncher.a(this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.a, localOpenPlayerBuilder.a(), null);
+    StoryPlayerLauncher.a(this.b.a, localOpenPlayerBuilder.f(), null);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog.1
  * JD-Core Version:    0.7.0.1
  */

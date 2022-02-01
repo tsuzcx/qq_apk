@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 class VipProfileCardPreviewActivity$2
   implements ViewPager.OnPageChangeListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   boolean b = false;
   
   VipProfileCardPreviewActivity$2(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
@@ -27,26 +27,26 @@ class VipProfileCardPreviewActivity$2
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.b();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity;
-      ((VipProfileCardPreviewActivity)localObject).a(((VipProfileCardPreviewActivity)localObject).x);
+      this.c.K.b();
+      localObject = this.c;
+      ((VipProfileCardPreviewActivity)localObject).a(((VipProfileCardPreviewActivity)localObject).ab);
       this.b = true;
     }
     if (paramInt == 2) {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity;
-        ((VipProfileCardPreviewActivity)localObject).b(((VipProfileCardPreviewActivity)localObject).x);
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.a();
+        localObject = this.c;
+        ((VipProfileCardPreviewActivity)localObject).b(((VipProfileCardPreviewActivity)localObject).ab);
+        this.a = false;
+        this.c.K.a();
       }
       if (this.b)
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.a();
+        this.c.K.a();
         this.b = false;
       }
     }
@@ -61,7 +61,7 @@ class VipProfileCardPreviewActivity$2
       localStringBuilder.append(paramInt1);
       QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.b();
+    this.c.K.b();
   }
   
   public void onPageSelected(int paramInt)
@@ -73,16 +73,16 @@ class VipProfileCardPreviewActivity$2
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.a();
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.d(paramInt);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity;
-    ((VipProfileCardPreviewActivity)localObject).x = paramInt;
-    ReportController.b(((VipProfileCardPreviewActivity)localObject).app, "CliOper", "", "", "card_mall", "0X8004C26", 0, 0, "", "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app.getCurrentAccountUin()));
+    this.c.K.a();
+    this.c.d(paramInt);
+    Object localObject = this.c;
+    ((VipProfileCardPreviewActivity)localObject).ab = paramInt;
+    ReportController.b(((VipProfileCardPreviewActivity)localObject).app, "CliOper", "", "", "card_mall", "0X8004C26", 0, 0, "", "", "", VipUtils.a(this.c.app, this.c.app.getCurrentAccountUin()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.2
  * JD-Core Version:    0.7.0.1
  */

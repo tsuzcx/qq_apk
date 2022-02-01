@@ -16,37 +16,37 @@ import java.util.Map;
 public class WSChoiceVideoAdapter
   extends WSAbsSingleCheckAdapter<WSVerticalItemData, WSChoiceVideoHolder>
 {
-  private long a;
-  private int jdField_b_of_type_Int = -1;
-  private long jdField_b_of_type_Long;
+  private long b;
   private int c = -1;
+  private long d;
+  private int e = -1;
   
   public WSChoiceVideoAdapter(Context paramContext, RecyclerView paramRecyclerView)
   {
     super(paramContext, paramRecyclerView);
   }
   
-  private String a(int paramInt)
-  {
-    if (paramInt < getDataList().size()) {
-      return ((WSVerticalItemData)getDataList().get(paramInt)).a().id;
-    }
-    return "";
-  }
-  
   private void b(int paramInt)
   {
-    if (paramInt >= this.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-    int i = this.c;
-    if ((paramInt <= i) || (i == -1))
+    if (paramInt >= this.c)
     {
       this.c = paramInt;
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      this.b = System.currentTimeMillis();
     }
+    int i = this.e;
+    if ((paramInt <= i) || (i == -1))
+    {
+      this.e = paramInt;
+      this.d = System.currentTimeMillis();
+    }
+  }
+  
+  private String c(int paramInt)
+  {
+    if (paramInt < getDataList().size()) {
+      return ((WSVerticalItemData)getDataList().get(paramInt)).b().id;
+    }
+    return "";
   }
   
   public WSChoiceVideoHolder a(ViewGroup paramViewGroup, int paramInt)
@@ -54,22 +54,11 @@ public class WSChoiceVideoAdapter
     return new WSChoiceVideoHolder(paramViewGroup, this);
   }
   
-  public Map<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("max_feedid", a(this.jdField_b_of_type_Int));
-    localHashMap.put("max_times", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("min_feedid", a(this.c));
-    localHashMap.put("min_times", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("num", String.valueOf(this.jdField_b_of_type_Int - this.c));
-    return localHashMap;
-  }
-  
   public void a(WSChoiceVideoHolder paramWSChoiceVideoHolder, int paramInt)
   {
     WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)getDataList().get(paramInt);
     if (localWSVerticalItemData.a()) {
-      this.jdField_a_of_type_Int = paramInt;
+      this.a = paramInt;
     }
     paramWSChoiceVideoHolder.a(localWSVerticalItemData);
     b(paramInt);
@@ -78,10 +67,10 @@ public class WSChoiceVideoAdapter
   public void a(WSXRecyclerView paramWSXRecyclerView)
   {
     paramWSXRecyclerView = (LinearLayoutManager)paramWSXRecyclerView.getRecyclerView().getLayoutManager();
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.c = paramWSXRecyclerView.findFirstVisibleItemPosition();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Int = paramWSXRecyclerView.findLastVisibleItemPosition();
+    this.d = System.currentTimeMillis();
+    this.e = paramWSXRecyclerView.findFirstVisibleItemPosition();
+    this.b = System.currentTimeMillis();
+    this.c = paramWSXRecyclerView.findLastVisibleItemPosition();
   }
   
   public void a(List<WSVerticalItemData> paramList)
@@ -102,9 +91,20 @@ public class WSChoiceVideoAdapter
       notifyItemRangeInserted(0, paramList.size());
     }
     int i = paramList.size();
-    this.jdField_a_of_type_Int += i;
-    this.jdField_b_of_type_Int += i;
+    this.a += i;
     this.c += i;
+    this.e += i;
+  }
+  
+  public Map<String, String> c()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("max_feedid", c(this.c));
+    localHashMap.put("max_times", String.valueOf(this.b));
+    localHashMap.put("min_feedid", c(this.e));
+    localHashMap.put("min_times", String.valueOf(this.d));
+    localHashMap.put("num", String.valueOf(this.c - this.e));
+    return localHashMap;
   }
   
   public int getCustomItemViewType(int paramInt)
@@ -114,7 +114,7 @@ public class WSChoiceVideoAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.choicepanel.WSChoiceVideoAdapter
  * JD-Core Version:    0.7.0.1
  */

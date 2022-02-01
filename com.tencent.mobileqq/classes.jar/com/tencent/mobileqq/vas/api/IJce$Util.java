@@ -16,7 +16,7 @@ public class IJce$Util
   {
     try
     {
-      Object localObject = VasUtil.a();
+      Object localObject = VasUtil.d();
       if (localObject == null) {
         return null;
       }
@@ -27,7 +27,7 @@ public class IJce$Util
       localLoginInfo.iKeyType = 1;
       localLoginInfo.sSKey = ((String)localObject);
       localLoginInfo.iOpplat = 2;
-      localLoginInfo.sClientVer = DeviceInfoUtil.c();
+      localLoginInfo.sClientVer = DeviceInfoUtil.e();
       return localLoginInfo;
     }
     catch (Exception localException)
@@ -48,7 +48,7 @@ public class IJce$Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.IJce.Util
  * JD-Core Version:    0.7.0.1
  */

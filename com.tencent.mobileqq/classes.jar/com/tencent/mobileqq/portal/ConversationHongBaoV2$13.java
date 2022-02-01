@@ -17,12 +17,12 @@ class ConversationHongBaoV2$13
       QLog.d("2021_UI_ConversationHongBaoV2", 2, "doHideTitleAnim onAnimationCancel");
     }
     paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-ConversationHongBaoV2.e(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2));
+    paramAnimator.topMargin = (-ConversationHongBaoV2.p(this.c));
     this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.e)
+    if (this.c.n)
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.a.setAlpha(0.0F);
+      this.a.setVisibility(8);
     }
   }
   
@@ -32,12 +32,12 @@ class ConversationHongBaoV2$13
       QLog.d("2021_UI_ConversationHongBaoV2", 2, "doHideTitleAnim onAnimationEnd");
     }
     paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-ConversationHongBaoV2.e(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2));
+    paramAnimator.topMargin = (-ConversationHongBaoV2.p(this.c));
     this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.e)
+    if (this.c.n)
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.a.setAlpha(0.0F);
+      this.a.setVisibility(8);
     }
   }
   
@@ -45,14 +45,14 @@ class ConversationHongBaoV2$13
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.e) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (!this.c.n) {
+      this.a.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.13
  * JD-Core Version:    0.7.0.1
  */

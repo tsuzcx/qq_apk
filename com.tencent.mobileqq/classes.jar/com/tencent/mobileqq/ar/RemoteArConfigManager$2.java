@@ -18,12 +18,12 @@ class RemoteArConfigManager$2
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadSuccess ");
     }
-    if (RemoteArConfigManager.a(this.a) == null)
+    if (RemoteArConfigManager.c(this.a) == null)
     {
       QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadSuccess error mHandler is null ");
       return;
     }
-    RemoteArConfigManager.a(this.a).sendMessage(RemoteArConfigManager.a(this.a).obtainMessage(3));
+    RemoteArConfigManager.c(this.a).sendMessage(RemoteArConfigManager.c(this.a).obtainMessage(3));
   }
   
   public void a(int paramInt)
@@ -35,12 +35,12 @@ class RemoteArConfigManager$2
       localStringBuilder.append(paramInt);
       QLog.d("ArConfig_RemoteArConfigManager", 2, localStringBuilder.toString());
     }
-    if (RemoteArConfigManager.a(this.a) == null)
+    if (RemoteArConfigManager.c(this.a) == null)
     {
       QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadError error mHandler is null ");
       return;
     }
-    RemoteArConfigManager.a(this.a).sendMessage(RemoteArConfigManager.a(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
+    RemoteArConfigManager.c(this.a).sendMessage(RemoteArConfigManager.c(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -55,7 +55,7 @@ class RemoteArConfigManager$2
         ((StringBuilder)localObject).append(l);
         QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
       }
-      if (RemoteArConfigManager.a(this.a) == null)
+      if (RemoteArConfigManager.c(this.a) == null)
       {
         QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadProcess error mHandler is null ");
         return;
@@ -64,7 +64,7 @@ class RemoteArConfigManager$2
       ((Message)localObject).what = 4;
       ((Message)localObject).arg1 = ((int)paramLong1);
       ((Message)localObject).arg2 = ((int)paramLong2);
-      RemoteArConfigManager.a(this.a).sendMessage((Message)localObject);
+      RemoteArConfigManager.c(this.a).sendMessage((Message)localObject);
     }
   }
   
@@ -73,7 +73,7 @@ class RemoteArConfigManager$2
     if (QLog.isColorLevel()) {
       QLog.d("ArConfig_RemoteArConfigManager", 2, "onConfigChanged!");
     }
-    if (RemoteArConfigManager.a(this.a) == null)
+    if (RemoteArConfigManager.c(this.a) == null)
     {
       QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onConfigChanged error mHandler is null ");
       return;
@@ -83,27 +83,27 @@ class RemoteArConfigManager$2
       Message localMessage = Message.obtain();
       localMessage.what = 1;
       localMessage.obj = paramArConfigInfo;
-      RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+      RemoteArConfigManager.c(this.a).sendMessage(localMessage);
     }
     if (paramArEffectConfig != null)
     {
       paramArConfigInfo = Message.obtain();
       paramArConfigInfo.what = 2;
       paramArConfigInfo.obj = paramArEffectConfig;
-      RemoteArConfigManager.a(this.a).sendMessage(paramArConfigInfo);
+      RemoteArConfigManager.c(this.a).sendMessage(paramArConfigInfo);
     }
     if (paramARCommonConfigInfo != null)
     {
       paramArConfigInfo = Message.obtain();
       paramArConfigInfo.what = 9;
       paramArConfigInfo.obj = paramARCommonConfigInfo;
-      RemoteArConfigManager.a(this.a).sendMessage(paramArConfigInfo);
+      RemoteArConfigManager.c(this.a).sendMessage(paramArConfigInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.RemoteArConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

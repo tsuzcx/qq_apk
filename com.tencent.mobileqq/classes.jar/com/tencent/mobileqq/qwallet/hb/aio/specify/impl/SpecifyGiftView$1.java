@@ -17,17 +17,17 @@ class SpecifyGiftView$1
   
   public void onClick(View paramView)
   {
-    SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyGiftView).stop();
-    Object localObject = this.jdField_a_of_type_ComQwalletTempISpriteVideoViewTemp$OnFrameEndListener;
+    SpecifyGiftView.a(this.c).stop();
+    Object localObject = this.a;
     if (localObject != null) {
       ((ISpriteVideoViewTemp.OnFrameEndListener)localObject).a();
     }
-    localObject = QWalletTools.a();
+    localObject = QWalletTools.b();
     if (localObject != null) {
-      ((IAIOAnimationControlManager)((BaseQQAppInterface)localObject).getRuntimeService(IAIOAnimationControlManager.class)).removeAllGiftMsgByTroop(SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyGiftView).frienduin);
+      ((IAIOAnimationControlManager)((BaseQQAppInterface)localObject).getRuntimeService(IAIOAnimationControlManager.class)).removeAllGiftMsgByTroop(SpecifyGiftView.b(this.c).frienduin);
     }
     QWalletTools.a((AppInterface)localObject, "212", "only.animation.close");
-    localObject = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    localObject = this.b;
     if (localObject != null) {
       ((View.OnClickListener)localObject).onClick(paramView);
     }
@@ -35,7 +35,7 @@ class SpecifyGiftView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.specify.impl.SpecifyGiftView.1
  * JD-Core Version:    0.7.0.1
  */

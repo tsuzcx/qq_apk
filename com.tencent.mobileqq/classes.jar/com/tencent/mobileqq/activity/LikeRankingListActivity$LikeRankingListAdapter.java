@@ -23,57 +23,57 @@ import java.util.Locale;
 class LikeRankingListActivity$LikeRankingListAdapter
   extends BaseAdapter
 {
-  RelativeSizeSpan jdField_a_of_type_AndroidTextStyleRelativeSizeSpan = new RelativeSizeSpan(0.62F);
-  String jdField_a_of_type_JavaLangString;
-  List<LikeRankingInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = { 2130845521, 2130845522, 2130845523 };
-  String jdField_b_of_type_JavaLangString;
-  int[] jdField_b_of_type_ArrayOfInt = { 2130845518, 2130845519, 2130845520 };
+  List<LikeRankingInfo> a = new ArrayList();
+  boolean b = false;
+  String c;
+  String d;
+  RelativeSizeSpan e = new RelativeSizeSpan(0.62F);
+  int[] f = { 2130846984, 2130846985, 2130846986 };
+  int[] g = { 2130846981, 2130846982, 2130846983 };
   
   public LikeRankingListActivity$LikeRankingListAdapter(LikeRankingListActivity paramLikeRankingListActivity)
   {
-    this.jdField_b_of_type_JavaLangString = paramLikeRankingListActivity.getString(2131719729);
-    this.jdField_a_of_type_JavaLangString = paramLikeRankingListActivity.getString(2131693636);
+    this.d = paramLikeRankingListActivity.getString(2131917332);
+    this.c = paramLikeRankingListActivity.getString(2131891211);
   }
   
   public LikeRankingInfo a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (LikeRankingInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (LikeRankingInfo)this.a.get(paramInt);
     }
     return null;
   }
   
   public void a(List<LikeRankingInfo> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    LikeRankingInfo localLikeRankingInfo1 = this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo;
+    this.a.clear();
+    LikeRankingInfo localLikeRankingInfo1 = this.h.h;
     int i = paramList.size() - 1;
     while (i >= 0)
     {
       LikeRankingInfo localLikeRankingInfo2 = (LikeRankingInfo)paramList.get(i);
-      if (localLikeRankingInfo2.uin == this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.uin)
+      if (localLikeRankingInfo2.uin == this.h.h.uin)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo = localLikeRankingInfo2;
+        this.h.h = localLikeRankingInfo2;
         break;
       }
       i -= 1;
     }
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum > 3) && (this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday > 0)) {
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo);
+    if ((this.a.size() == 0) && (this.h.h.rankingNum > 3) && (this.h.h.likeCountOfToday > 0)) {
+      this.a.add(this.h.h);
     }
     if (QLog.isColorLevel()) {
-      QLog.i("LikeRankingListActivity", 2, String.format("setList isServer:%s oldRankInfo:%s newRankInfo:%s size:%d", new Object[] { Boolean.valueOf(paramBoolean), localLikeRankingInfo1, this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo, Integer.valueOf(paramList.size()) }));
+      QLog.i("LikeRankingListActivity", 2, String.format("setList isServer:%s oldRankInfo:%s newRankInfo:%s size:%d", new Object[] { Boolean.valueOf(paramBoolean), localLikeRankingInfo1, this.h.h, Integer.valueOf(paramList.size()) }));
     }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_Boolean = false;
+    this.a.addAll(paramList);
+    this.b = false;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    return this.a.size() + 1;
   }
   
   public long getItemId(int paramInt)
@@ -102,26 +102,26 @@ class LikeRankingListActivity$LikeRankingListAdapter
         }
         else
         {
-          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity).inflate(2131559469, null);
+          localView = LayoutInflater.from(this.h).inflate(2131625460, null);
           paramView = new LikeRankingListActivity.LikeRankingListAdapter.MoreViewHolder(this);
-          paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371517));
-          paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131376345));
-          paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370354));
+          paramView.a = ((TextView)localView.findViewById(2131438894));
+          paramView.b = ((ProgressBar)localView.findViewById(2131444560));
+          paramView.c = ((ImageView)localView.findViewById(2131437616));
           localView.setTag(paramView);
         }
       }
       else
       {
-        localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity).inflate(2131561153, null);
+        localView = LayoutInflater.from(this.h).inflate(2131627504, null);
         paramView = new LikeRankingListActivity.LikeRankingListAdapter.ViewHolder(this);
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379834));
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369461));
-        paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369287));
-        paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369286));
-        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379784));
-        paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379942));
-        paramView.d = ((TextView)localView.findViewById(2131379753));
-        paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365759);
+        paramView.a = ((TextView)localView.findViewById(2131448682));
+        paramView.b = ((ImageView)localView.findViewById(2131436525));
+        paramView.c = ((ImageView)localView.findViewById(2131436273));
+        paramView.d = ((ImageView)localView.findViewById(2131436271));
+        paramView.e = ((TextView)localView.findViewById(2131448606));
+        paramView.f = ((TextView)localView.findViewById(2131448829));
+        paramView.g = ((TextView)localView.findViewById(2131448561));
+        paramView.h = localView.findViewById(2131432003);
         localView.setTag(paramView);
       }
     }
@@ -133,28 +133,28 @@ class LikeRankingListActivity$LikeRankingListAdapter
       if (i == 1)
       {
         paramView = (LikeRankingListActivity.LikeRankingListAdapter.MoreViewHolder)localView.getTag();
-        localObject = paramView.jdField_a_of_type_AndroidWidgetTextView;
-        if (this.jdField_a_of_type_Boolean) {
-          i = 2131693802;
+        localObject = paramView.a;
+        if (this.b) {
+          i = 2131891378;
         } else {
-          i = 2131694220;
+          i = 2131891858;
         }
         ((TextView)localObject).setText(i);
-        localObject = paramView.jdField_a_of_type_AndroidWidgetProgressBar;
-        if (this.jdField_a_of_type_Boolean) {
+        localObject = paramView.b;
+        if (this.b) {
           i = 0;
         } else {
           i = 8;
         }
         ((ProgressBar)localObject).setVisibility(i);
-        paramView = paramView.jdField_a_of_type_AndroidWidgetImageView;
-        if (this.jdField_a_of_type_Boolean) {
+        paramView = paramView.c;
+        if (this.b) {
           i = k;
         } else {
           i = 0;
         }
         paramView.setVisibility(i);
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.b) {
           i = j;
         } else {
           i = 4;
@@ -168,55 +168,55 @@ class LikeRankingListActivity$LikeRankingListAdapter
       if (localLikeRankingInfo != null)
       {
         LikeRankingListActivity.LikeRankingListAdapter.ViewHolder localViewHolder = (LikeRankingListActivity.LikeRankingListAdapter.ViewHolder)localView.getTag();
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
-        if ((paramInt == 0) && (localLikeRankingInfo.uin == this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.uin) && ((localLikeRankingInfo.rankingNum > 3) || (localLikeRankingInfo.rankingNum < 1))) {
-          localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        localViewHolder.a.setText(String.valueOf(paramInt));
+        if ((paramInt == 0) && (localLikeRankingInfo.uin == this.h.h.uin) && ((localLikeRankingInfo.rankingNum > 3) || (localLikeRankingInfo.rankingNum < 1))) {
+          localViewHolder.h.setVisibility(0);
         } else {
-          localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+          localViewHolder.h.setVisibility(8);
         }
         String str = String.valueOf(localLikeRankingInfo.uin);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.e(str);
+        paramView = this.h.b.m(str);
         if (paramView != null)
         {
-          localViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramView.getFriendNick());
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, str);
+          localViewHolder.e.setText(paramView.getFriendNick());
+          localObject = this.h.c.getBitmapFromCache(1, str);
           paramView = (View)localObject;
           if (localObject == null)
           {
-            if (!this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(str, 1, true);
+            if (!this.h.c.isPausing()) {
+              this.h.c.requestDecodeFace(str, 1, true);
             }
-            paramView = ImageUtil.f();
+            paramView = ImageUtil.k();
           }
-          localViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramView);
+          localViewHolder.d.setImageBitmap(paramView);
         }
         else
         {
-          localViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(str);
-          localViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.f());
+          localViewHolder.e.setText(str);
+          localViewHolder.d.setImageBitmap(ImageUtil.k());
         }
         i = localLikeRankingInfo.rankingNum;
         if ((i != 1) && (i != 2) && (i != 3))
         {
           if (localLikeRankingInfo.rankingNum < 1) {
-            localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText("-");
+            localViewHolder.a.setText("-");
           } else {
-            localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(localLikeRankingInfo.rankingNum));
+            localViewHolder.a.setText(String.valueOf(localLikeRankingInfo.rankingNum));
           }
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+          localViewHolder.b.setVisibility(8);
+          localViewHolder.c.setVisibility(8);
         }
         else
         {
-          localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(localLikeRankingInfo.rankingNum));
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(this.jdField_b_of_type_ArrayOfInt[(localLikeRankingInfo.rankingNum - 1)]);
-          localViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+          localViewHolder.a.setText(String.valueOf(localLikeRankingInfo.rankingNum));
+          localViewHolder.b.setVisibility(8);
+          localViewHolder.c.setImageResource(this.g[(localLikeRankingInfo.rankingNum - 1)]);
+          localViewHolder.c.setVisibility(0);
         }
-        paramView = new SpannableString(String.format(Locale.CHINA, this.jdField_a_of_type_JavaLangString, new Object[] { Integer.valueOf(localLikeRankingInfo.likeCountOfToday) }));
-        paramView.setSpan(this.jdField_a_of_type_AndroidTextStyleRelativeSizeSpan, 0, 1, 33);
-        localViewHolder.d.setText(paramView);
-        localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, this.jdField_b_of_type_JavaLangString, new Object[] { Integer.valueOf(localLikeRankingInfo.totalLikeCount) }));
+        paramView = new SpannableString(String.format(Locale.CHINA, this.c, new Object[] { Integer.valueOf(localLikeRankingInfo.likeCountOfToday) }));
+        paramView.setSpan(this.e, 0, 1, 33);
+        localViewHolder.g.setText(paramView);
+        localViewHolder.f.setText(String.format(Locale.CHINA, this.d, new Object[] { Integer.valueOf(localLikeRankingInfo.totalLikeCount) }));
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
@@ -230,7 +230,7 @@ class LikeRankingListActivity$LikeRankingListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.LikeRankingListAdapter
  * JD-Core Version:    0.7.0.1
  */

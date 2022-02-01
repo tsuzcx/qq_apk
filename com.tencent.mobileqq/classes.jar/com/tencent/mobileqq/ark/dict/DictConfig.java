@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class DictConfig
 {
-  public ArrayList<DictInfo> a;
   public String b;
-  public ArrayList<ConditionalDict> b = new ArrayList();
   public String c;
   public String d;
   public String e;
+  public ArrayList<DictInfo> f;
+  public ArrayList<ConditionalDict> g = new ArrayList();
   
   String a()
   {
@@ -18,7 +18,7 @@ public class DictConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.DictConfig
  * JD-Core Version:    0.7.0.1
  */

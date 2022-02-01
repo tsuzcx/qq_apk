@@ -6,11 +6,6 @@ import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
 public class TopicOperGuessVideo
   extends TopicBase
 {
-  protected TopicBase a()
-  {
-    return new TopicOperGuessVideo();
-  }
-  
   public void a(TopicBase paramTopicBase)
   {
     super.a(paramTopicBase);
@@ -26,11 +21,16 @@ public class TopicOperGuessVideo
     return 3;
   }
   
+  protected TopicBase n()
+  {
+    return new TopicOperGuessVideo();
+  }
+  
   @NonNull
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(d());
+    localStringBuilder.append(o());
     return localStringBuilder.toString();
   }
 }

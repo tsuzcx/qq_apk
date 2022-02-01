@@ -13,9 +13,9 @@ class AVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter$1
   
   public void onClick(View paramView)
   {
-    AVGameQuestionClassSelectDialog.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter.a, this.jdField_a_of_type_ComTencentAvgameGamelogicDataQuestionClassInfoItem.a);
-    if (AVGameQuestionClassSelectDialog.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter.a)) {
-      AVGameQuestionClassSelectDialog.a(this.jdField_a_of_type_ComTencentAvgameUiAVGameQuestionClassSelectDialog$AVGameQuestionClassViewAdapter.a).removeMessages(0);
+    AVGameQuestionClassSelectDialog.a(this.b.a, this.a.a);
+    if (AVGameQuestionClassSelectDialog.c(this.b.a)) {
+      AVGameQuestionClassSelectDialog.d(this.b.a).removeMessages(0);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

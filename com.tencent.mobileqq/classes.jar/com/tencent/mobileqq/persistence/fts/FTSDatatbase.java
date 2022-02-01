@@ -14,13 +14,13 @@ import mqq.app.MobileQQ;
 
 public class FTSDatatbase
 {
-  private String jdField_a_of_type_JavaLangString;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  private AppRuntime a;
+  private String b;
+  private String c;
+  private String d;
+  private boolean e;
+  private boolean f;
+  private boolean g;
   
   public FTSDatatbase(AppRuntime paramAppRuntime)
   {
@@ -39,19 +39,19 @@ public class FTSDatatbase
       com.tencent.mobileqq.fts.api.impl.FTSDBRuntimeServiceImpl.ENABLE = false;
     }
     if ((i != 0) && (bool)) {
-      this.jdField_a_of_type_Boolean = true;
+      this.e = true;
     } else {
-      this.jdField_a_of_type_Boolean = false;
+      this.e = false;
     }
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_JavaLangString = paramAppRuntime.getCurrentAccountUin();
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.a = paramAppRuntime;
+    this.b = paramAppRuntime.getCurrentAccountUin();
+    this.c = this.b;
     paramAppRuntime = new StringBuilder();
-    paramAppRuntime.append(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getFilesDir().getAbsolutePath().replace("files", "databases"));
+    paramAppRuntime.append(this.a.getApplication().getFilesDir().getAbsolutePath().replace("files", "databases"));
     paramAppRuntime.append(File.separator);
-    paramAppRuntime.append(this.jdField_b_of_type_JavaLangString);
+    paramAppRuntime.append(this.c);
     paramAppRuntime.append("-IndexQQMsg.db");
-    this.jdField_c_of_type_JavaLangString = paramAppRuntime.toString();
+    this.d = paramAppRuntime.toString();
   }
   
   private synchronized native int batchTrans(ArrayList<FTSEntity> paramArrayList, String paramString, int paramInt);
@@ -80,26 +80,9 @@ public class FTSDatatbase
   
   private synchronized native int updateIndexTable(FTSEntity paramFTSEntity);
   
-  public int a(String paramString)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      return -1;
-    }
-    try
-    {
-      int i = readCursor(paramString);
-      return i;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("Q.fts.db", 2, paramString, new Object[0]);
-    }
-    return -1;
-  }
-  
   public int a(ArrayList<FTSEntity> paramArrayList, int paramInt)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.f) {
       return -1;
     }
     if (paramArrayList == null)
@@ -121,7 +104,7 @@ public class FTSDatatbase
   
   public int a(ArrayList<FTSEntity> paramArrayList, int paramInt1, int paramInt2)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.f) {
       return -1;
     }
     long l = System.currentTimeMillis();
@@ -173,7 +156,7 @@ public class FTSDatatbase
   {
     try
     {
-      if (TextUtils.isEmpty(paramFTSQueryArgs.jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty(paramFTSQueryArgs.a))
       {
         if (QLog.isColorLevel())
         {
@@ -183,7 +166,7 @@ public class FTSDatatbase
       }
       else
       {
-        if (TextUtils.isEmpty(paramFTSQueryArgs.jdField_c_of_type_JavaLangString))
+        if (TextUtils.isEmpty(paramFTSQueryArgs.h))
         {
           if (!QLog.isColorLevel()) {
             break label376;
@@ -196,11 +179,11 @@ public class FTSDatatbase
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("query: sql = ");
-          ((StringBuilder)localObject).append(paramFTSQueryArgs.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramFTSQueryArgs.a);
           QLog.i("Q.fts.db", 2, ((StringBuilder)localObject).toString());
         }
         long l1 = System.nanoTime();
-        paramFTSQueryArgs = queryIndexTable(paramFTSQueryArgs.jdField_a_of_type_JavaLangString, paramFTSQueryArgs.jdField_a_of_type_ArrayOfJavaLangString, paramFTSQueryArgs.jdField_a_of_type_Boolean, paramFTSQueryArgs.jdField_b_of_type_Boolean, paramFTSQueryArgs.jdField_a_of_type_Int, paramFTSQueryArgs.jdField_b_of_type_Int, paramFTSQueryArgs.jdField_b_of_type_JavaLangString, paramFTSQueryArgs.jdField_c_of_type_JavaLangString, paramFTSQueryArgs.jdField_c_of_type_Int);
+        paramFTSQueryArgs = queryIndexTable(paramFTSQueryArgs.a, paramFTSQueryArgs.b, paramFTSQueryArgs.c, paramFTSQueryArgs.d, paramFTSQueryArgs.e, paramFTSQueryArgs.f, paramFTSQueryArgs.g, paramFTSQueryArgs.h, paramFTSQueryArgs.i);
         long l2 = System.nanoTime();
         boolean bool = QLog.isColorLevel();
         if (bool)
@@ -253,19 +236,14 @@ public class FTSDatatbase
     return null;
   }
   
-  public void a()
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
   public boolean a()
   {
-    return (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean);
+    return (this.f) && (this.e);
   }
   
   public boolean a(String paramString)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.f) {
       return false;
     }
     if (createCursor(paramString) != 0)
@@ -283,20 +261,42 @@ public class FTSDatatbase
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public int b(String paramString)
-  {
-    if (!a()) {
-      return -1;
-    }
-    return queryIndexCount(paramString);
-  }
-  
   public void b()
   {
-    if ((this.jdField_c_of_type_Boolean) || (a()))
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (!this.f) {
+      return false;
+    }
+    return isTableExist(paramString) == 0;
+  }
+  
+  public int c(String paramString)
+  {
+    if (!this.f) {
+      return -1;
+    }
+    try
     {
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
+      int i = readCursor(paramString);
+      return i;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("Q.fts.db", 2, paramString, new Object[0]);
+    }
+    return -1;
+  }
+  
+  public void c()
+  {
+    if ((this.g) || (a()))
+    {
+      this.g = false;
+      this.f = false;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(Thread.currentThread().getName());
       localStringBuilder.append(" native closeFTS V1");
@@ -307,18 +307,18 @@ public class FTSDatatbase
     }
   }
   
-  public boolean b(String paramString)
+  public int d(String paramString)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      return false;
+    if (!a()) {
+      return -1;
     }
-    return isTableExist(paramString) == 0;
+    return queryIndexCount(paramString);
   }
   
-  public void c()
+  public void d()
   {
-    b();
-    File localFile = new File(this.jdField_c_of_type_JavaLangString);
+    c();
+    File localFile = new File(this.d);
     if ((localFile.exists()) && (localFile.isFile())) {
       localFile.delete();
     }
@@ -326,7 +326,7 @@ public class FTSDatatbase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.fts.FTSDatatbase
  * JD-Core Version:    0.7.0.1
  */

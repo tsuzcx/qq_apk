@@ -13,8 +13,8 @@ class Game$2
   
   public void onFinish()
   {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    Game.b(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame, this.jdField_a_of_type_Int - i);
+    int i = (int)(SystemClock.elapsedRealtime() - this.a);
+    Game.b(this.c, this.b - i);
   }
   
   public void onTick(long paramLong) {}

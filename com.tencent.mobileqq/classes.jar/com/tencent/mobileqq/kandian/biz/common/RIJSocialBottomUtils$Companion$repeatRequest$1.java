@@ -12,12 +12,12 @@ final class RIJSocialBottomUtils$Companion$repeatRequest$1
   
   public final void run()
   {
-    RIJSocialBottomUtils.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo, RIJSocialBottomUtils.a());
+    RIJSocialBottomUtils.a.a(this.a, this.b, RIJSocialBottomUtils.g());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils.Companion.repeatRequest.1
  * JD-Core Version:    0.7.0.1
  */

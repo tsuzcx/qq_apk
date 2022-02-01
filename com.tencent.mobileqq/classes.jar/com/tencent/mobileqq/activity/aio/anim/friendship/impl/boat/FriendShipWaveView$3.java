@@ -14,13 +14,13 @@ class FriendShipWaveView$3
   public void a()
   {
     SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(300, 0.1F, 1.1F), new ScaleAction(100, 1.2F, 0.9F), new ScaleAction(100, 0.9F, 1.0F) });
-    this.a.c.a(new Action[] { localSequenceAction });
-    this.a.b.a(new Action[] { new ScaleAction(300, 0.0F, 1.0F) });
+    this.a.g.a(new Action[] { localSequenceAction });
+    this.a.f.a(new Action[] { new ScaleAction(300, 0.0F, 1.0F) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class AECropperView$TouchGestureCallback
     if (AECropperView.a(this.a) != null)
     {
       localObject = AECropperView.a(this.a);
-      if (((AECropperView.a(this.a) != null) && (!AECropperView.a(this.a).a())) || (this.a.a == null) || (!this.a.a.b())) {
+      if (((AECropperView.b(this.a) != null) && (!AECropperView.b(this.a).a())) || (this.a.a == null) || (!this.a.a.e())) {
         bool = false;
       }
       ((AECropperGridView)localObject).setShowGrid(bool);
@@ -29,10 +29,10 @@ class AECropperView$TouchGestureCallback
     {
       localObject = AECropperView.a(this.a);
       boolean bool1 = bool2;
-      if (AECropperView.a(this.a) != null)
+      if (AECropperView.b(this.a) != null)
       {
         bool1 = bool2;
-        if (AECropperView.a(this.a).b()) {
+        if (AECropperView.b(this.a).b()) {
           bool1 = true;
         }
       }
@@ -42,7 +42,7 @@ class AECropperView$TouchGestureCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.nocropper.AECropperView.TouchGestureCallback
  * JD-Core Version:    0.7.0.1
  */

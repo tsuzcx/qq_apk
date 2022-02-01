@@ -16,21 +16,21 @@ import java.util.List;
 public class ContactSearchResultMobileMultiPresenter
   extends ContactSearchResultPresenter
 {
-  private List<PhoneContact> a;
+  private List<PhoneContact> b;
   
   public ContactSearchResultMobileMultiPresenter(IFaceDecoder paramIFaceDecoder, ContactSearchResultPresenter.OnActionListener paramOnActionListener, List<PhoneContact> paramList)
   {
     super(paramIFaceDecoder, paramOnActionListener);
-    this.a = paramList;
+    this.b = paramList;
   }
   
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.a(paramISearchResultModel, paramISearchResultView);
-    if (paramISearchResultView.c() != null)
+    if (paramISearchResultView.d() != null)
     {
       paramISearchResultModel = (ContactSearchModelPhoneContact)paramISearchResultModel;
-      Object localObject = this.a;
+      Object localObject = this.b;
       int k = 0;
       int i;
       if (localObject != null)
@@ -45,7 +45,7 @@ public class ContactSearchResultMobileMultiPresenter
           }
           if (((PhoneContact)((Iterator)localObject).next()).contactID == paramISearchResultModel.a.contactID)
           {
-            paramISearchResultView.c().setText(HardCodeUtil.a(2131702690));
+            paramISearchResultView.d().setText(HardCodeUtil.a(2131900680));
             i = 1;
           }
         }
@@ -53,20 +53,20 @@ public class ContactSearchResultMobileMultiPresenter
       int j = 0;
       if (!TextUtils.isEmpty(paramISearchResultModel.a()))
       {
-        paramISearchResultView.c().setText(paramISearchResultModel.a());
+        paramISearchResultView.d().setText(paramISearchResultModel.a());
         j = 1;
       }
-      paramISearchResultModel = paramISearchResultView.c();
+      paramISearchResultModel = paramISearchResultView.d();
       if (j != 0) {
         i = k;
       } else {
         i = 8;
       }
       paramISearchResultModel.setVisibility(i);
-      paramISearchResultView.a().setClickable(j ^ 0x1);
+      paramISearchResultView.h().setClickable(j ^ 0x1);
     }
-    if (paramISearchResultView.a() != null) {
-      paramISearchResultView.a().setVisibility(8);
+    if (paramISearchResultView.f() != null) {
+      paramISearchResultView.f().setVisibility(8);
     }
   }
   
@@ -74,7 +74,7 @@ public class ContactSearchResultMobileMultiPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.presenter.ContactSearchResultMobileMultiPresenter
  * JD-Core Version:    0.7.0.1
  */

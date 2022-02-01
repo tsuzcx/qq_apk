@@ -36,7 +36,7 @@ public class ArgumentUtils
     int i = 0;
     if (bool)
     {
-      paramObject = (String[])(String[])paramObject;
+      paramObject = (String[])paramObject;
       j = paramObject.length;
       while (i < j)
       {
@@ -46,7 +46,7 @@ public class ArgumentUtils
     }
     if ((paramObject instanceof Parcelable[]))
     {
-      paramObject = (Parcelable[])(Parcelable[])paramObject;
+      paramObject = (Parcelable[])paramObject;
       k = paramObject.length;
       i = j;
       while (i < k)
@@ -60,7 +60,7 @@ public class ArgumentUtils
     }
     if ((paramObject instanceof int[]))
     {
-      paramObject = (int[])(int[])paramObject;
+      paramObject = (int[])paramObject;
       j = paramObject.length;
       i = k;
       while (i < j)
@@ -71,7 +71,7 @@ public class ArgumentUtils
     }
     if ((paramObject instanceof float[]))
     {
-      paramObject = (float[])(float[])paramObject;
+      paramObject = (float[])paramObject;
       j = paramObject.length;
       i = m;
       while (i < j)
@@ -82,7 +82,7 @@ public class ArgumentUtils
     }
     if ((paramObject instanceof double[]))
     {
-      paramObject = (double[])(double[])paramObject;
+      paramObject = (double[])paramObject;
       j = paramObject.length;
       i = n;
       while (i < j)
@@ -93,7 +93,7 @@ public class ArgumentUtils
     }
     if ((paramObject instanceof boolean[]))
     {
-      paramObject = (boolean[])(boolean[])paramObject;
+      paramObject = (boolean[])paramObject;
       j = paramObject.length;
       i = i1;
       while (i < j)
@@ -692,27 +692,6 @@ public class ArgumentUtils
     return localHippyArray;
   }
   
-  public static HippyMap parseToMap(String paramString)
-  {
-    HippyMap localHippyMap = new HippyMap();
-    if (TextUtils.isEmpty(paramString)) {
-      return localHippyMap;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      Iterator localIterator = paramString.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        parseObjectGotoMap(localHippyMap, str, paramString.get(str));
-      }
-      return localHippyMap;
-    }
-    catch (Throwable paramString) {}
-    return localHippyMap;
-  }
-  
   private static void stringFormat(String paramString, GrowByteBuffer paramGrowByteBuffer)
   {
     StringBuilder localStringBuilder = paramGrowByteBuffer.getStringBuilderCache();
@@ -766,74 +745,10 @@ public class ArgumentUtils
     }
     paramStringBuilder.append("\"");
   }
-  
-  public static Bundle toBundle(HippyMap paramHippyMap)
-  {
-    Bundle localBundle = new Bundle(9);
-    if (paramHippyMap != null)
-    {
-      Iterator localIterator = paramHippyMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = paramHippyMap.get(str);
-        if (localObject == null) {}
-        for (localObject = null;; localObject = (String)localObject)
-        {
-          localBundle.putString(str, (String)localObject);
-          break;
-          if (!(localObject instanceof String)) {
-            break label82;
-          }
-        }
-        label82:
-        if ((!localObject.getClass().isAssignableFrom(Integer.TYPE)) && (!(localObject instanceof Integer)))
-        {
-          if ((!localObject.getClass().isAssignableFrom(Long.TYPE)) && (!(localObject instanceof Long)))
-          {
-            if ((!localObject.getClass().isAssignableFrom(Double.TYPE)) && (!(localObject instanceof Double)))
-            {
-              if ((!localObject.getClass().isAssignableFrom(Boolean.TYPE)) && (!(localObject instanceof Boolean)))
-              {
-                if ((localObject instanceof HippyMap))
-                {
-                  localBundle.putBundle(str, toBundle((HippyMap)localObject));
-                }
-                else
-                {
-                  if ((localObject instanceof HippyArray)) {
-                    throw new UnsupportedOperationException("Arrays aren't supported yet.");
-                  }
-                  paramHippyMap = new StringBuilder();
-                  paramHippyMap.append("Could not convert object with key: ");
-                  paramHippyMap.append(str);
-                  paramHippyMap.append(".");
-                  throw new IllegalArgumentException(paramHippyMap.toString());
-                }
-              }
-              else {
-                localBundle.putBoolean(str, ((Boolean)localObject).booleanValue());
-              }
-            }
-            else {
-              localBundle.putDouble(str, ((Double)localObject).doubleValue());
-            }
-          }
-          else {
-            localBundle.putLong(str, ((Long)localObject).longValue());
-          }
-        }
-        else {
-          localBundle.putInt(str, ((Integer)localObject).intValue());
-        }
-      }
-    }
-    return localBundle;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.ArgumentUtils
  * JD-Core Version:    0.7.0.1
  */

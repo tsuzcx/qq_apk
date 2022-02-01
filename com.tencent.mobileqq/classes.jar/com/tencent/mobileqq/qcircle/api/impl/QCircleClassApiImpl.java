@@ -5,7 +5,8 @@ import com.tencent.biz.qcircleshadow.delegateimpl.QCircleApplicationImpl;
 import com.tencent.biz.qcircleshadow.handler.QCircleHandler;
 import com.tencent.biz.qcircleshadow.lib.QCircleSchemeHandler;
 import com.tencent.biz.qcircleshadow.local.fragment.QCircleHostTransFragment;
-import com.tencent.biz.qcircleshadow.local.fragment.QCirclePluginLoadingFragment;
+import com.tencent.biz.qcircleshadow.local.fragment.QCircleHostTransLoginOutFragment;
+import com.tencent.biz.qcircleshadow.local.fragment.qcircle.QCirclePluginLoadingFragment;
 import com.tencent.biz.richframework.delegate.IApplicationDelegate;
 import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
@@ -43,6 +44,11 @@ public class QCircleClassApiImpl
     return QCircleHostTransFragment.class;
   }
   
+  public Class getQCircleHostTransLoginOutFragmentClass()
+  {
+    return QCircleHostTransLoginOutFragment.class;
+  }
+  
   public IVistaImage getQCircleVistaImageInstance()
   {
     return QCircleSchemeHandler.getInstance();
@@ -55,7 +61,7 @@ public class QCircleClassApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleClassApiImpl
  * JD-Core Version:    0.7.0.1
  */

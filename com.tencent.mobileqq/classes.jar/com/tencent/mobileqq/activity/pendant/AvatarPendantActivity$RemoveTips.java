@@ -17,16 +17,16 @@ class AvatarPendantActivity$RemoveTips
   public void run()
   {
     if (this.b) {
-      this.this$0.b.setVisibility(8);
+      this.this$0.aa.setVisibility(8);
     }
     if (this.a) {
-      this.this$0.a.setVisibility(8);
+      this.this$0.Z.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.RemoveTips
  * JD-Core Version:    0.7.0.1
  */

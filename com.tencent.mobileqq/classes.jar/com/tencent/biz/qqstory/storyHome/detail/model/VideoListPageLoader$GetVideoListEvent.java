@@ -10,27 +10,26 @@ import java.util.List;
 public class VideoListPageLoader$GetVideoListEvent
   extends BasePageLoaderEvent
 {
-  public FeedVideoInfo a;
-  public String a;
-  public List<StoryVideoItem> a;
-  public String b;
+  public String e;
+  public String f;
+  public List<StoryVideoItem> h = new ArrayList();
+  public FeedVideoInfo i;
   
   public VideoListPageLoader$GetVideoListEvent(ErrorMessage paramErrorMessage, String paramString)
   {
     super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetVideoListEvent{mVideoItems=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(this.h.size());
     localStringBuilder.append(", feedId=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", mUnionId=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     localStringBuilder.append(super.toString());
     return localStringBuilder.toString();

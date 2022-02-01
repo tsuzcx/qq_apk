@@ -30,11 +30,16 @@ public class AECircleBroadcastReceiver
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_CAT.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_DEPTH.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_GENDER.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_AGE.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_GAZE.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_HAND.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_SEG_HAIR.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_SEG_SKY.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_SEG_HEAD.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_SCENE.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_BODY.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_BODY_3D.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_EMOTION.resPrefix);
     return localIntentFilter;
   }
   
@@ -77,7 +82,7 @@ public class AECircleBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AECircleBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

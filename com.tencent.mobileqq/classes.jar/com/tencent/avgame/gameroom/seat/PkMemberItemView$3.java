@@ -11,14 +11,14 @@ class PkMemberItemView$3
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
-    PkMemberItemView.a(paramAnimator, paramAnimator, this.jdField_a_of_type_AndroidViewView);
+    paramAnimator = this.b;
+    PkMemberItemView.a(paramAnimator, paramAnimator, this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
-    PkMemberItemView.a(paramAnimator, paramAnimator, this.jdField_a_of_type_AndroidViewView);
+    paramAnimator = this.b;
+    PkMemberItemView.a(paramAnimator, paramAnimator, this.a);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}

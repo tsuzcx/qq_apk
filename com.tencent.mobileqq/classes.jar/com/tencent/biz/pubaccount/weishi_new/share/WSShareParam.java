@@ -2,30 +2,33 @@ package com.tencent.biz.pubaccount.weishi_new.share;
 
 import UserGrowth.stSimpleMetaFeed;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalDialogListener;
+import java.util.Map;
 
 public class WSShareParam
 {
-  public int a;
   public stSimpleMetaFeed a;
-  private WSVerticalDialogListener a;
-  public String a;
   public int b;
-  public String b;
-  public String c;
+  public int c;
+  public String d;
+  public String e;
+  public String f;
+  public Map<String, String> g;
+  public boolean h = true;
+  private WSVerticalDialogListener i;
   
   public WSVerticalDialogListener a()
   {
-    return this.a;
+    return this.i;
   }
   
   public void a(WSVerticalDialogListener paramWSVerticalDialogListener)
   {
-    this.a = paramWSVerticalDialogListener;
+    this.i = paramWSVerticalDialogListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.share.WSShareParam
  * JD-Core Version:    0.7.0.1
  */

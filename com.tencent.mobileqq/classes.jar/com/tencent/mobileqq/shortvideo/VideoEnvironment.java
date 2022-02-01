@@ -204,7 +204,7 @@ public class VideoEnvironment
   
   public static boolean isX86Platform()
   {
-    return DeviceInfoUtil.k();
+    return DeviceInfoUtil.Y();
   }
   
   private static int judgeCurrentSpVideoNameValidate(String[] paramArrayOfString)
@@ -217,8 +217,8 @@ public class VideoEnvironment
     if (str.equals("d000_1")) {
       return -11;
     }
-    localObject = ShortVideoSoManager.a(str);
-    int i = ((ShortVideoSoManager.CfgParser)localObject).a();
+    localObject = ShortVideoSoManager.d(str);
+    int i = ((ShortVideoSoManager.CfgParser)localObject).e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LoadPathSo: CfgParser err=");
     localStringBuilder.append(i);
@@ -257,7 +257,7 @@ public class VideoEnvironment
     //   15: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   18: astore_1
     //   19: aload_1
-    //   20: ldc 233
+    //   20: ldc 234
     //   22: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: pop
     //   26: aload_1
@@ -275,14 +275,14 @@ public class VideoEnvironment
     //   47: astore_1
     //   48: aload_1
     //   49: monitorenter
-    //   50: invokestatic 236	com/tencent/mobileqq/shortvideo/VideoEnvironment:realDoLoadSo	()I
+    //   50: invokestatic 237	com/tencent/mobileqq/shortvideo/VideoEnvironment:realDoLoadSo	()I
     //   53: istore_0
     //   54: new 45	java/lang/StringBuilder
     //   57: dup
     //   58: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   61: astore_2
     //   62: aload_2
-    //   63: ldc 238
+    //   63: ldc 239
     //   65: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: aload_2
@@ -430,7 +430,7 @@ public class VideoEnvironment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoEnvironment
  * JD-Core Version:    0.7.0.1
  */

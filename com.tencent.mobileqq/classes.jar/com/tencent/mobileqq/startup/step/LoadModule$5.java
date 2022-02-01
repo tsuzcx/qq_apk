@@ -20,7 +20,7 @@ final class LoadModule$5
       localStringBuilder.append(" ON ");
       localStringBuilder.append(str);
       int i = paramEntity.istroop;
-      if ((i != 1) && (i != 3000)) {
+      if ((i != 1) && (i != 3000) && (i != 10014)) {
         paramEntity = "time";
       } else {
         paramEntity = "shmsgseq";
@@ -40,7 +40,7 @@ final class LoadModule$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadModule.5
  * JD-Core Version:    0.7.0.1
  */

@@ -15,21 +15,21 @@ import java.io.IOException;
 
 public class Texture
 {
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private SpriteGLView jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  public boolean b = false;
+  int a;
+  Bitmap b;
+  boolean c = false;
+  public boolean d = false;
+  private byte[] e;
+  private SpriteGLView f;
+  private String g;
   
   public Texture(Context paramContext, SpriteGLView paramSpriteGLView, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.f = paramSpriteGLView;
+    this.g = paramString;
     try
     {
-      this.jdField_a_of_type_ArrayOfByte = a(paramString);
+      this.e = a(paramString);
       return;
     }
     catch (IOException paramContext)
@@ -42,9 +42,9 @@ public class Texture
   
   public Texture(SpriteGLView paramSpriteGLView, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Boolean = true;
+    this.f = paramSpriteGLView;
+    this.b = paramBitmap;
+    this.c = true;
     paramSpriteGLView.b(new Texture.1(this));
   }
   
@@ -87,7 +87,7 @@ public class Texture
           {
             paramString = new StringBuilder();
             paramString.append("getContent: filePath = ");
-            paramString.append(this.jdField_a_of_type_JavaLangString);
+            paramString.append(this.g);
             QLog.d("Texture", 2, paramString.toString());
           }
           return arrayOfByte;
@@ -118,7 +118,7 @@ public class Texture
   
   public void a()
   {
-    if (this.jdField_a_of_type_ArrayOfByte != null)
+    if (this.e != null)
     {
       try
       {
@@ -129,7 +129,7 @@ public class Texture
         } else {
           ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_4444;
         }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeByteArray(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length, (BitmapFactory.Options)localObject);
+        this.b = BitmapFactory.decodeByteArray(this.e, 0, this.e.length, (BitmapFactory.Options)localObject);
         int i = (int)(System.currentTimeMillis() - l);
         if (QLog.isColorLevel())
         {
@@ -138,8 +138,8 @@ public class Texture
           ((StringBuilder)localObject).append(i);
           QLog.d("Texture", 2, ((StringBuilder)localObject).toString());
         }
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new Texture.2(this));
+        this.c = true;
+        this.f.b(new Texture.2(this));
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
@@ -147,13 +147,13 @@ public class Texture
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("Texture: cannot decode (");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.g);
           localStringBuilder.append("): ");
           localStringBuilder.append(QLog.getStackTraceString(localOutOfMemoryError));
           QLog.d("Texture", 2, localStringBuilder.toString());
         }
       }
-      this.jdField_a_of_type_ArrayOfByte = null;
+      this.e = null;
     }
   }
   
@@ -165,38 +165,38 @@ public class Texture
       local3.run();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(local3);
+    this.f.b(local3);
   }
   
   void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.b;
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      if (this.b) {
+      if (this.d) {
         return;
       }
       localObject = new int[1];
       GLES20.glGenTextures(1, (int[])localObject, 0);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = localObject[0];
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(this.jdField_a_of_type_Int);
-      GLES20.glBindTexture(3553, this.jdField_a_of_type_Int);
-      GLUtils.texImage2D(3553, 0, this.jdField_a_of_type_AndroidGraphicsBitmap, 0);
+      this.f.a(this.a);
+      this.a = localObject[0];
+      this.f.b(this.a);
+      GLES20.glBindTexture(3553, this.a);
+      GLUtils.texImage2D(3553, 0, this.b, 0);
       GLES20.glTexParameterf(3553, 10241, 9728.0F);
       GLES20.glTexParameterf(3553, 10240, 9728.0F);
       GLES20.glBindTexture(3553, 0);
-      if (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.c) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      if (!this.f.x) {
+        this.b.recycle();
       }
-      this.b = true;
+      this.d = true;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("Texture->load: textureId = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.a);
         ((StringBuilder)localObject).append(", filePath = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.g);
         QLog.d("Texture", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -209,7 +209,7 @@ public class Texture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Texture
  * JD-Core Version:    0.7.0.1
  */

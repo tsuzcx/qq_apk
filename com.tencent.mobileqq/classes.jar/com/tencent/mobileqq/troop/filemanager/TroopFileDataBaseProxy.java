@@ -96,7 +96,7 @@ public class TroopFileDataBaseProxy
     if (paramUUID == null) {
       return;
     }
-    int i = TroopFileTransferUtil.Log.a;
+    int i = TroopFileTransferUtil.Log.b;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[");
     ((StringBuilder)localObject).append(paramUUID.toString());
@@ -117,7 +117,7 @@ public class TroopFileDataBaseProxy
       if (paramTroopFileTansferItemEntity.Id == null) {
         return;
       }
-      int i = TroopFileTransferUtil.Log.a;
+      int i = TroopFileTransferUtil.Log.b;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
       ((StringBuilder)localObject).append(paramTroopFileTansferItemEntity.Id.toString());
@@ -141,7 +141,7 @@ public class TroopFileDataBaseProxy
       paramTroopFileTansferItemEntity.preupdate();
       localObject = a(paramTroopFileTansferItemEntity);
       ((ContentValues)localObject).put("Status", Integer.valueOf(i));
-      ((ContentValues)localObject).put("_sStatus", TroopFileInfo.FileStatus.a(i));
+      ((ContentValues)localObject).put("_sStatus", TroopFileInfo.FileStatus.c(i));
       String str1 = paramTroopFileTansferItemEntity.getTableName();
       String str2 = paramTroopFileTansferItemEntity.Id.toString();
       paramTroopFileTansferItemEntity = new TroopFileDataBaseProxy.2(this, paramTroopFileTansferItemEntity);
@@ -151,7 +151,7 @@ public class TroopFileDataBaseProxy
   
   public void a(TroopFileTansferItemEntity paramTroopFileTansferItemEntity, ProxyListener paramProxyListener)
   {
-    int i = TroopFileTransferUtil.Log.a;
+    int i = TroopFileTransferUtil.Log.b;
     paramProxyListener = new StringBuilder();
     paramProxyListener.append("[");
     paramProxyListener.append(paramTroopFileTansferItemEntity.Id.toString());
@@ -170,7 +170,7 @@ public class TroopFileDataBaseProxy
       this.proxyManager.addMsgQueue(String.valueOf(0), 0, paramTroopFileTansferItemEntity.getTableName(), paramTroopFileTansferItemEntity, 1, paramProxyListener);
       return;
     }
-    i = TroopFileTransferUtil.Log.a;
+    i = TroopFileTransferUtil.Log.b;
     paramProxyListener = new StringBuilder();
     paramProxyListener.append("Item status[");
     paramProxyListener.append(String.valueOf(paramTroopFileTansferItemEntity.getStatus()));
@@ -194,7 +194,7 @@ public class TroopFileDataBaseProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileDataBaseProxy
  * JD-Core Version:    0.7.0.1
  */

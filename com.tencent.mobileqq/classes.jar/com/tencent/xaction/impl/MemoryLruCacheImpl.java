@@ -11,48 +11,43 @@ import org.jetbrains.annotations.Nullable;
 public final class MemoryLruCacheImpl
   implements IMemoryLruCache
 {
-  private static long jdField_a_of_type_Long;
-  public static final MemoryLruCacheImpl.Companion a;
-  private static long jdField_b_of_type_Long;
-  private static long c;
-  private int jdField_a_of_type_Int = (int)Runtime.getRuntime().maxMemory();
-  private MemoryLruCacheImpl.cache.1 jdField_a_of_type_ComTencentXactionImplMemoryLruCacheImpl$cache$1;
-  private final int jdField_b_of_type_Int;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentXactionImplMemoryLruCacheImpl$Companion = new MemoryLruCacheImpl.Companion(null);
-  }
+  public static final MemoryLruCacheImpl.Companion a = new MemoryLruCacheImpl.Companion(null);
+  private static long e;
+  private static long f;
+  private static long g;
+  private int b = (int)Runtime.getRuntime().maxMemory();
+  private final int c;
+  private MemoryLruCacheImpl.cache.1 d;
   
   public MemoryLruCacheImpl(long paramLong)
   {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = (i / 6);
+    int i = this.b;
+    this.c = (i / 6);
     if (paramLong == 0L) {
-      i /= this.jdField_b_of_type_Int;
+      i /= this.c;
     } else {
       i = (int)paramLong;
     }
-    this.jdField_a_of_type_ComTencentXactionImplMemoryLruCacheImpl$cache$1 = new MemoryLruCacheImpl.cache.1(this, paramLong, i);
+    this.d = new MemoryLruCacheImpl.cache.1(this, paramLong, i);
   }
   
   @Nullable
   public Bitmap a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
-    return (Bitmap)this.jdField_a_of_type_ComTencentXactionImplMemoryLruCacheImpl$cache$1.get(paramString);
+    return (Bitmap)this.d.get(paramString);
   }
   
   public void a(@NotNull String paramString, @NotNull Bitmap paramBitmap)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
     Intrinsics.checkParameterIsNotNull(paramBitmap, "obj");
-    this.jdField_a_of_type_ComTencentXactionImplMemoryLruCacheImpl$cache$1.put(paramString, paramBitmap);
+    this.d.put(paramString, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.impl.MemoryLruCacheImpl
  * JD-Core Version:    0.7.0.1
  */

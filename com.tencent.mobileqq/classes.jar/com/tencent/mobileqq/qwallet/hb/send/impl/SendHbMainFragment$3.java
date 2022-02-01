@@ -15,7 +15,7 @@ class SendHbMainFragment$3
   
   public QBaseFragment a(int paramInt)
   {
-    return ((SendHbMainFragment.HbHolder)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplBaseHbFragment;
+    return ((SendHbMainFragment.HbHolder)SendHbMainFragment.a(this.a).get(paramInt)).c;
   }
   
   public int getCount()
@@ -25,12 +25,12 @@ class SendHbMainFragment$3
   
   public CharSequence getPageTitle(int paramInt)
   {
-    return ((SendHbMainFragment.HbHolder)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_JavaLangString;
+    return ((SendHbMainFragment.HbHolder)SendHbMainFragment.a(this.a).get(paramInt)).b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.SendHbMainFragment.3
  * JD-Core Version:    0.7.0.1
  */

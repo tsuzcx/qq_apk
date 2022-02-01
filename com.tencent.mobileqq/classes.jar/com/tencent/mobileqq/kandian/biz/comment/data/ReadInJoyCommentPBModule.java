@@ -5,13 +5,17 @@ import android.os.Handler;
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.CommentAdParams;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.kandian.base.image.ImageManager;
 import com.tencent.mobileqq.kandian.base.image.ImageRequest;
 import com.tencent.mobileqq.kandian.base.image.RIJImageTypeOptHelper;
-import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyOidbHelper;
 import com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils;
+import com.tencent.mobileqq.kandian.biz.ad.RIJCommentAdUtils;
+import com.tencent.mobileqq.kandian.biz.ad.RIJCommentAdUtils.CommentAdUtilParams;
 import com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentHelper;
 import com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentObserver;
 import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData;
@@ -24,6 +28,7 @@ import com.tencent.mobileqq.kandian.biz.comment.entity.CommentData;
 import com.tencent.mobileqq.kandian.biz.comment.entity.CommonCommentData;
 import com.tencent.mobileqq.kandian.biz.comment.entity.SubCommentData;
 import com.tencent.mobileqq.kandian.biz.comment.entity.SubCommentData.RepliedCommentData;
+import com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentAegisHelper;
 import com.tencent.mobileqq.kandian.biz.comment.helper.RIJPerformanceReporter;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
@@ -40,7 +45,6 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -58,6 +62,7 @@ import org.jetbrains.annotations.NotNull;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.AccountLevelInfo;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.Activity;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.ActivityLevel;
+import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.AdRspInfo;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.ArticleInfo;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.AtData;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.Banner;
@@ -69,6 +74,7 @@ import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.LinkData;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.MedalInfo;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.MediaData;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.RepliedCommentInfo;
+import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.ReqAdvertisePara;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.ReqBody;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.ReqParam;
 import tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.RptData;
@@ -80,12 +86,20 @@ import tencent.im.oidb.cmd0xdc8.oidb_cmd0xdc8.ReqBody;
 public class ReadInJoyCommentPBModule
   extends ReadInJoyEngineModule
 {
-  private ReadInJoyCommentObserver jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private ReadInJoyCommentObserver a = null;
   
   public ReadInJoyCommentPBModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
+  }
+  
+  private static RIJCommentAdUtils.CommentAdUtilParams a(RIJRequestDataForComment paramRIJRequestDataForComment, int paramInt)
+  {
+    RIJCommentAdUtils.CommentAdUtilParams localCommentAdUtilParams = new RIJCommentAdUtils.CommentAdUtilParams();
+    localCommentAdUtilParams.a = 1;
+    localCommentAdUtilParams.b = RIJCommentAdUtils.a(paramRIJRequestDataForComment.a, paramInt);
+    localCommentAdUtilParams.d = paramRIJRequestDataForComment;
+    return localCommentAdUtilParams;
   }
   
   @Nullable
@@ -97,8 +111,8 @@ public class ReadInJoyCommentPBModule
       if (paramRptData != null)
       {
         BaseCommentData.CommentRptData localCommentRptData = new BaseCommentData.CommentRptData();
-        localCommentRptData.jdField_a_of_type_Int = 0;
-        localCommentRptData.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.content, "");
+        localCommentRptData.a = 0;
+        localCommentRptData.b = RIJPBFieldUtils.a(paramRptData.content, "");
         return localCommentRptData;
       }
     }
@@ -120,7 +134,7 @@ public class ReadInJoyCommentPBModule
         Iterator localIterator = paramComment.sub_comments.get().iterator();
         while (localIterator.hasNext())
         {
-          SubCommentData localSubCommentData = a((oidb_cmd0xc46.Comment)localIterator.next());
+          SubCommentData localSubCommentData = b((oidb_cmd0xc46.Comment)localIterator.next());
           if (localSubCommentData != null) {
             localCommentData.subCommentList.add(localSubCommentData);
           }
@@ -158,61 +172,6 @@ public class ReadInJoyCommentPBModule
     return null;
   }
   
-  private SubCommentData a(oidb_cmd0xc46.Comment paramComment)
-  {
-    if ((paramComment != null) && (paramComment.comment_id.has()))
-    {
-      SubCommentData localSubCommentData = new SubCommentData();
-      a(paramComment, localSubCommentData);
-      if (paramComment.first_comment_id.has()) {
-        localSubCommentData.parentCommentId = paramComment.first_comment_id.get();
-      }
-      if (paramComment.replied_user_id.has()) {
-        localSubCommentData.repliedUserUin = paramComment.replied_user_id.get();
-      }
-      if (paramComment.replied_user_nick_name.has()) {
-        localSubCommentData.repliedUserNickname = paramComment.replied_user_nick_name.get();
-      }
-      if (paramComment.replied_user_homepage.has()) {
-        localSubCommentData.repliedUserHomePage = paramComment.replied_user_homepage.get();
-      }
-      if (paramComment.has_target.has()) {
-        localSubCommentData.hasTarget = paramComment.has_target.get();
-      }
-      boolean bool1 = paramComment.is_anchor.has();
-      boolean bool2 = false;
-      if (bool1)
-      {
-        if (paramComment.is_anchor.get() == 1) {
-          bool1 = true;
-        } else {
-          bool1 = false;
-        }
-        localSubCommentData.isAnchor = bool1;
-      }
-      if (paramComment.is_delete.has())
-      {
-        bool1 = bool2;
-        if (paramComment.is_delete.get() == 1) {
-          bool1 = true;
-        }
-        localSubCommentData.isDelete = bool1;
-      }
-      if (paramComment.rpt_medal_info_list.has()) {
-        localSubCommentData.medalInfo = a(true, paramComment.rpt_medal_info_list.get(), localSubCommentData.uin);
-      }
-      if (paramComment.replied_comment.has()) {
-        localSubCommentData.repliedCommentData = a((oidb_cmd0xc46.RepliedCommentInfo)paramComment.replied_comment.get());
-      }
-      paramComment = new StringBuilder();
-      paramComment.append("convertSubCommentData | ");
-      paramComment.append(localSubCommentData.toString());
-      QLog.d("ReadInJoyCommentPBModule", 2, paramComment.toString());
-      return localSubCommentData;
-    }
-    return null;
-  }
-  
   private ReadInJoyMedalInfo a(boolean paramBoolean, List<oidb_cmd0xc46.MedalInfo> paramList, String paramString)
   {
     ArrayList localArrayList = new ArrayList();
@@ -224,36 +183,36 @@ public class ReadInJoyCommentPBModule
         oidb_cmd0xc46.MedalInfo localMedalInfo = (oidb_cmd0xc46.MedalInfo)paramList.next();
         ReadInJoyMedalInfo localReadInJoyMedalInfo = new ReadInJoyMedalInfo();
         if (localMedalInfo.is_jump.has()) {
-          localReadInJoyMedalInfo.jdField_b_of_type_Int = localMedalInfo.is_jump.get();
+          localReadInJoyMedalInfo.e = localMedalInfo.is_jump.get();
         }
         if (localMedalInfo.jump_url.has()) {
-          localReadInJoyMedalInfo.jdField_c_of_type_JavaLangString = localMedalInfo.jump_url.get().toStringUtf8();
+          localReadInJoyMedalInfo.f = localMedalInfo.jump_url.get().toStringUtf8();
         }
         if (localMedalInfo.medal_type.has()) {
-          localReadInJoyMedalInfo.jdField_a_of_type_Int = localMedalInfo.medal_type.get();
+          localReadInJoyMedalInfo.d = localMedalInfo.medal_type.get();
         }
         if (localMedalInfo.medal_id.has()) {
-          localReadInJoyMedalInfo.jdField_a_of_type_Long = localMedalInfo.medal_id.get();
+          localReadInJoyMedalInfo.a = localMedalInfo.medal_id.get();
         }
         if (localMedalInfo.medal_name.has()) {
-          localReadInJoyMedalInfo.jdField_a_of_type_JavaLangString = localMedalInfo.medal_name.get().toStringUtf8();
+          localReadInJoyMedalInfo.b = localMedalInfo.medal_name.get().toStringUtf8();
         }
         if (localMedalInfo.medal_url.has()) {
-          localReadInJoyMedalInfo.jdField_b_of_type_JavaLangString = localMedalInfo.medal_url.get().toStringUtf8();
+          localReadInJoyMedalInfo.c = localMedalInfo.medal_url.get().toStringUtf8();
         }
         if (localMedalInfo.pic_width.has()) {
-          localReadInJoyMedalInfo.jdField_c_of_type_Int = localMedalInfo.pic_width.get();
+          localReadInJoyMedalInfo.g = localMedalInfo.pic_width.get();
         }
         if (localMedalInfo.pic_height.has()) {
-          localReadInJoyMedalInfo.jdField_d_of_type_Int = localMedalInfo.pic_height.get();
+          localReadInJoyMedalInfo.h = localMedalInfo.pic_height.get();
         }
-        localReadInJoyMedalInfo.jdField_e_of_type_JavaLangString = "3";
+        localReadInJoyMedalInfo.j = "3";
         if (paramBoolean) {
-          localReadInJoyMedalInfo.f = "7";
+          localReadInJoyMedalInfo.k = "7";
         } else {
-          localReadInJoyMedalInfo.f = "6";
+          localReadInJoyMedalInfo.k = "6";
         }
-        localReadInJoyMedalInfo.h = paramString;
+        localReadInJoyMedalInfo.m = paramString;
         localArrayList.add(localReadInJoyMedalInfo);
       }
     }
@@ -266,64 +225,29 @@ public class ReadInJoyCommentPBModule
   
   private List<CommentData> a(List<oidb_cmd0xc46.Comment> paramList)
   {
-    if ((paramList != null) && (paramList.size() != 0))
+    if (paramList.isEmpty()) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      Object localObject = (oidb_cmd0xc46.Comment)paramList.next();
+      if (localObject != null)
       {
-        Object localObject = (oidb_cmd0xc46.Comment)paramList.next();
-        if (localObject != null)
+        localObject = a((oidb_cmd0xc46.Comment)localObject);
+        if (((CommentData)localObject).isAd)
         {
-          localObject = a((oidb_cmd0xc46.Comment)localObject);
-          if (localObject != null) {
+          if (RIJCommentAdUtils.a()) {
             localArrayList.add(localObject);
           }
         }
-      }
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  private void a(@NotNull BaseCommentData paramBaseCommentData, @NotNull oidb_cmd0xc46.Comment paramComment)
-  {
-    if ((paramComment.is_multi_media.has()) && (paramComment.is_multi_media.get() == 1))
-    {
-      QLog.d("ReadInJoyCommentPBModule", 1, "comment type is multi media");
-      if (paramComment.rpt_media_data_list.has()) {
-        paramComment = paramComment.rpt_media_data_list.get();
-      } else {
-        paramComment = null;
-      }
-      if ((paramComment != null) && (paramComment.size() > 0))
-      {
-        int j = paramComment.size();
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("comment media size : ");
-        ((StringBuilder)localObject).append(j);
-        QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
-        paramBaseCommentData.mediaDataList = new ArrayList();
-        int i = 0;
-        while (i < j)
-        {
-          localObject = (oidb_cmd0xc46.MediaData)paramComment.get(i);
-          BaseCommentData.MediaData localMediaData = new BaseCommentData.MediaData();
-          localMediaData.jdField_a_of_type_JavaLangString = ((oidb_cmd0xc46.MediaData)localObject).text.get();
-          localMediaData.jdField_e_of_type_Int = ((oidb_cmd0xc46.MediaData)localObject).media_type.get();
-          localMediaData.jdField_a_of_type_Int = ((oidb_cmd0xc46.MediaData)localObject).pic_width.get();
-          localMediaData.jdField_b_of_type_Int = ((oidb_cmd0xc46.MediaData)localObject).pic_length.get();
-          localMediaData.jdField_b_of_type_JavaLangString = ((oidb_cmd0xc46.MediaData)localObject).pic_url.get();
-          localMediaData.jdField_e_of_type_JavaLangString = ((oidb_cmd0xc46.MediaData)localObject).thumbnail_url.get();
-          localMediaData.jdField_d_of_type_JavaLangString = ((oidb_cmd0xc46.MediaData)localObject).video_url.get();
-          localMediaData.jdField_d_of_type_Int = ((oidb_cmd0xc46.MediaData)localObject).video_duration.get();
-          localMediaData.jdField_c_of_type_JavaLangString = ((oidb_cmd0xc46.MediaData)localObject).sound_url.get();
-          localMediaData.jdField_c_of_type_Int = ((oidb_cmd0xc46.MediaData)localObject).sound_duration.get();
-          paramBaseCommentData.mediaDataList.add(localMediaData);
-          i += 1;
+        else {
+          localArrayList.add(localObject);
         }
       }
     }
+    return localArrayList;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -337,7 +261,7 @@ public class ReadInJoyCommentPBModule
     paramFromServiceMsg = new ReadInJoyCommentPBModule.ResponseCommentInfo();
     paramObject = new ReadInJoyCommentPBModule.ResponseCommentInfo();
     ReadInJoyCommentPBModule.ResponseExtraInfo localResponseExtraInfo = new ReadInJoyCommentPBModule.ResponseExtraInfo();
-    localResponseExtraInfo.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label = new ReadInJoyCommentPBModule.Label();
+    localResponseExtraInfo.f = new ReadInJoyCommentPBModule.Label();
     if (j == 0)
     {
       boolean bool;
@@ -346,12 +270,12 @@ public class ReadInJoyCommentPBModule
       } else {
         bool = false;
       }
-      paramObject.jdField_a_of_type_Boolean = bool;
+      paramObject.d = bool;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleCommonCommentList | hasNextPage ");
       localStringBuilder.append(((oidb_cmd0xc46.RspBody)localObject).next.get());
       QLog.d("ReadInJoyCommentPBModule", 2, localStringBuilder.toString());
-      paramObject.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(((oidb_cmd0xc46.RspBody)localObject).page_cookie, "");
+      paramObject.e = RIJPBFieldUtils.a(((oidb_cmd0xc46.RspBody)localObject).page_cookie, "");
       if (((oidb_cmd0xc46.RspBody)localObject).extra_info.has())
       {
         if (RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).hot_next, 0) == 1) {
@@ -359,14 +283,14 @@ public class ReadInJoyCommentPBModule
         } else {
           bool = false;
         }
-        paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
-        paramFromServiceMsg.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).hot_page_cookie, "");
-        localResponseExtraInfo.jdField_b_of_type_Long = RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).hidden_comment_count, 0);
-        localResponseExtraInfo.jdField_a_of_type_Int = RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).show_mask, 0);
+        paramFromServiceMsg.d = bool;
+        paramFromServiceMsg.e = RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).hot_page_cookie, "");
+        localResponseExtraInfo.b = RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).hidden_comment_count, 0);
+        localResponseExtraInfo.c = RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).show_mask, 0);
         if (((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).jump_kva_schema.has()) {
           try
           {
-            localResponseExtraInfo.jdField_a_of_type_JavaLangString = new String(Base64Util.decode(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).jump_kva_schema.get(), 0), "utf-8");
+            localResponseExtraInfo.d = new String(Base64Util.decode(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).jump_kva_schema.get(), 0), "utf-8");
           }
           catch (UnsupportedEncodingException localUnsupportedEncodingException)
           {
@@ -378,34 +302,28 @@ public class ReadInJoyCommentPBModule
         } else {
           bool = false;
         }
-        localResponseExtraInfo.jdField_a_of_type_Boolean = bool;
+        localResponseExtraInfo.e = bool;
         if (RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).is_show_label, 0) == 1) {
           bool = true;
         } else {
           bool = false;
         }
-        localResponseExtraInfo.jdField_b_of_type_Boolean = bool;
+        localResponseExtraInfo.g = bool;
         if (((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).default_input.has()) {
-          localResponseExtraInfo.jdField_b_of_type_JavaLangString = ((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).default_input.get();
+          localResponseExtraInfo.h = ((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).default_input.get();
         }
         a((oidb_cmd0xc46.RspBody)localObject, localResponseExtraInfo);
-        if (RIJPBFieldUtils.a(((oidb_cmd0xc46.ExtraInfo)((oidb_cmd0xc46.RspBody)localObject).extra_info.get()).is_show_follow_button, 0) == 1) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-        this.jdField_a_of_type_Boolean = bool;
       }
       if (((oidb_cmd0xc46.RspBody)localObject).hot_comment_list.has()) {
-        paramFromServiceMsg.jdField_a_of_type_JavaUtilList = a(((oidb_cmd0xc46.RspBody)localObject).hot_comment_list.get());
+        paramFromServiceMsg.a = a(((oidb_cmd0xc46.RspBody)localObject).hot_comment_list.get());
       }
       if (((oidb_cmd0xc46.RspBody)localObject).comment_list.has()) {
-        paramObject.jdField_a_of_type_JavaUtilList = a(((oidb_cmd0xc46.RspBody)localObject).comment_list.get());
+        paramObject.a = a(((oidb_cmd0xc46.RspBody)localObject).comment_list.get());
       }
       if (((oidb_cmd0xc46.RspBody)localObject).article_info.has())
       {
         oidb_cmd0xc46.ArticleInfo localArticleInfo = (oidb_cmd0xc46.ArticleInfo)((oidb_cmd0xc46.RspBody)localObject).article_info.get();
-        localResponseExtraInfo.jdField_a_of_type_Long = RIJPBFieldUtils.a(localArticleInfo.comment_count, 0L);
+        localResponseExtraInfo.a = RIJPBFieldUtils.a(localArticleInfo.comment_count, 0L);
         if ((paramToServiceMsg.getAttribute("anchor_request") != null) && (localArticleInfo.has_anchor.has()))
         {
           if (localArticleInfo.has_anchor.get() == 0) {
@@ -444,26 +362,26 @@ public class ReadInJoyCommentPBModule
     ((StringBuilder)localObject).append("handleCommonCommentList | retCode ");
     ((StringBuilder)localObject).append(j);
     ((StringBuilder)localObject).append(" | hasNewNextPage ");
-    ((StringBuilder)localObject).append(paramObject.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(paramObject.d);
     ((StringBuilder)localObject).append(" | hasHotNextPage+");
-    ((StringBuilder)localObject).append(paramFromServiceMsg.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(paramFromServiceMsg.d);
     ((StringBuilder)localObject).append(" | newPageCookie ");
-    ((StringBuilder)localObject).append(paramObject.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramObject.e);
     ((StringBuilder)localObject).append("; hotPageCookie ");
-    ((StringBuilder)localObject).append(paramFromServiceMsg.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramFromServiceMsg.e);
     ((StringBuilder)localObject).append("| articleCommentCnt ");
-    ((StringBuilder)localObject).append(localResponseExtraInfo.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(localResponseExtraInfo.a);
     ((StringBuilder)localObject).append(" | hotCommentListSize ");
     int i;
-    if (paramFromServiceMsg.jdField_a_of_type_JavaUtilList != null) {
-      i = paramFromServiceMsg.jdField_a_of_type_JavaUtilList.size();
+    if (paramFromServiceMsg.a != null) {
+      i = paramFromServiceMsg.a.size();
     } else {
       i = 0;
     }
     ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append(" | newCommentListSize ");
-    if (paramObject.jdField_a_of_type_JavaUtilList != null) {
-      i = paramObject.jdField_a_of_type_JavaUtilList.size();
+    if (paramObject.a != null) {
+      i = paramObject.a.size();
     } else {
       i = 0;
     }
@@ -472,10 +390,10 @@ public class ReadInJoyCommentPBModule
     ((StringBuilder)localObject).append(localResponseExtraInfo);
     QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
     if (paramFromServiceMsg.a()) {
-      paramFromServiceMsg.jdField_a_of_type_JavaUtilList.add(0, paramToServiceMsg);
+      paramFromServiceMsg.a.add(0, paramToServiceMsg);
     }
     if (paramObject.a()) {
-      paramObject.jdField_a_of_type_JavaUtilList.add(0, paramToServiceMsg);
+      paramObject.a.add(0, paramToServiceMsg);
     }
     this.mMainThreadHandler.post(new ReadInJoyCommentPBModule.2(this, j, paramFromServiceMsg, paramObject, localResponseExtraInfo));
   }
@@ -486,12 +404,12 @@ public class ReadInJoyCommentPBModule
       try
       {
         ImageRequest localImageRequest = new ImageRequest();
-        localImageRequest.jdField_b_of_type_Boolean = true;
-        localImageRequest.jdField_b_of_type_Int = ViewUtils.b(37.0F);
-        localImageRequest.jdField_a_of_type_Int = ViewUtils.b(37.0F);
-        localImageRequest.jdField_c_of_type_Int = 1;
+        localImageRequest.e = true;
+        localImageRequest.c = ViewUtils.dpToPx(37.0F);
+        localImageRequest.b = ViewUtils.dpToPx(37.0F);
+        localImageRequest.g = 1;
         RIJImageTypeOptHelper.a.a(localImageRequest, paramString);
-        ((IImageManager)QRoute.api(IImageManager.class)).loadImage(localImageRequest, new ReadInJoyCommentPBModule.12(paramString));
+        ImageManager.get().loadImage(localImageRequest, new ReadInJoyCommentPBModule.12(paramString));
         return;
       }
       catch (Exception paramString)
@@ -554,7 +472,7 @@ public class ReadInJoyCommentPBModule
     if (((oidb_cmd0xc46.ExtraInfo)paramRspBody.extra_info.get()).label.has())
     {
       paramRspBody = ((oidb_cmd0xc46.ExtraInfo)paramRspBody.extra_info.get()).label;
-      ReadInJoyCommentPBModule.Label localLabel = paramResponseExtraInfo.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label;
+      ReadInJoyCommentPBModule.Label localLabel = paramResponseExtraInfo.f;
       PBUInt32Field localPBUInt32Field = paramRspBody.show_delete;
       boolean bool2 = false;
       if (RIJPBFieldUtils.a(localPBUInt32Field, 0) == 1) {
@@ -562,29 +480,29 @@ public class ReadInJoyCommentPBModule
       } else {
         bool1 = false;
       }
-      localLabel.jdField_a_of_type_Boolean = bool1;
-      localLabel = paramResponseExtraInfo.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label;
+      localLabel.a = bool1;
+      localLabel = paramResponseExtraInfo.f;
       if (RIJPBFieldUtils.a(paramRspBody.show_top, 0) == 1) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       localLabel.c = bool1;
-      localLabel = paramResponseExtraInfo.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label;
+      localLabel = paramResponseExtraInfo.f;
       if (RIJPBFieldUtils.a(paramRspBody.show_sink, 0) == 1) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      localLabel.jdField_b_of_type_Boolean = bool1;
-      localLabel = paramResponseExtraInfo.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label;
+      localLabel.b = bool1;
+      localLabel = paramResponseExtraInfo.f;
       if (RIJPBFieldUtils.a(paramRspBody.show_block, 0) == 1) {
         bool1 = true;
       } else {
         bool1 = false;
       }
       localLabel.d = bool1;
-      paramResponseExtraInfo = paramResponseExtraInfo.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataReadInJoyCommentPBModule$Label;
+      paramResponseExtraInfo = paramResponseExtraInfo.f;
       boolean bool1 = bool2;
       if (RIJPBFieldUtils.a(paramRspBody.show_arbitration, 0) == 1) {
         bool1 = true;
@@ -602,12 +520,67 @@ public class ReadInJoyCommentPBModule
       if (paramRptData != null)
       {
         BaseCommentData.CommentRptData localCommentRptData = new BaseCommentData.CommentRptData();
-        localCommentRptData.jdField_a_of_type_Int = 3;
-        localCommentRptData.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.content, "");
-        localCommentRptData.jdField_c_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.url, "");
-        localCommentRptData.jdField_d_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.topic_id, "");
+        localCommentRptData.a = 3;
+        localCommentRptData.b = RIJPBFieldUtils.a(paramRptData.content, "");
+        localCommentRptData.d = RIJPBFieldUtils.a(paramRptData.url, "");
+        localCommentRptData.e = RIJPBFieldUtils.a(paramRptData.topic_id, "");
         return localCommentRptData;
       }
+    }
+    return null;
+  }
+  
+  private SubCommentData b(oidb_cmd0xc46.Comment paramComment)
+  {
+    if ((paramComment != null) && (paramComment.comment_id.has()))
+    {
+      SubCommentData localSubCommentData = new SubCommentData();
+      a(paramComment, localSubCommentData);
+      if (paramComment.first_comment_id.has()) {
+        localSubCommentData.parentCommentId = paramComment.first_comment_id.get();
+      }
+      if (paramComment.replied_user_id.has()) {
+        localSubCommentData.repliedUserUin = paramComment.replied_user_id.get();
+      }
+      if (paramComment.replied_user_nick_name.has()) {
+        localSubCommentData.repliedUserNickname = paramComment.replied_user_nick_name.get();
+      }
+      if (paramComment.replied_user_homepage.has()) {
+        localSubCommentData.repliedUserHomePage = paramComment.replied_user_homepage.get();
+      }
+      if (paramComment.has_target.has()) {
+        localSubCommentData.hasTarget = paramComment.has_target.get();
+      }
+      boolean bool1 = paramComment.is_anchor.has();
+      boolean bool2 = false;
+      if (bool1)
+      {
+        if (paramComment.is_anchor.get() == 1) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        localSubCommentData.isAnchor = bool1;
+      }
+      if (paramComment.is_delete.has())
+      {
+        bool1 = bool2;
+        if (paramComment.is_delete.get() == 1) {
+          bool1 = true;
+        }
+        localSubCommentData.isDelete = bool1;
+      }
+      if (paramComment.rpt_medal_info_list.has()) {
+        localSubCommentData.medalInfo = a(true, paramComment.rpt_medal_info_list.get(), localSubCommentData.uin);
+      }
+      if (paramComment.replied_comment.has()) {
+        localSubCommentData.repliedCommentData = a((oidb_cmd0xc46.RepliedCommentInfo)paramComment.replied_comment.get());
+      }
+      paramComment = new StringBuilder();
+      paramComment.append("convertSubCommentData | ");
+      paramComment.append(localSubCommentData.toString());
+      QLog.d("ReadInJoyCommentPBModule", 2, paramComment.toString());
+      return localSubCommentData;
     }
     return null;
   }
@@ -623,7 +596,7 @@ public class ReadInJoyCommentPBModule
         Object localObject = (oidb_cmd0xc46.Comment)paramList.next();
         if (localObject != null)
         {
-          localObject = a((oidb_cmd0xc46.Comment)localObject);
+          localObject = b((oidb_cmd0xc46.Comment)localObject);
           if (localObject != null) {
             localArrayList.add(localObject);
           }
@@ -632,6 +605,46 @@ public class ReadInJoyCommentPBModule
       return localArrayList;
     }
     return new ArrayList();
+  }
+  
+  private void b(@NotNull BaseCommentData paramBaseCommentData, @NotNull oidb_cmd0xc46.Comment paramComment)
+  {
+    if ((paramComment.is_multi_media.has()) && (paramComment.is_multi_media.get() == 1))
+    {
+      QLog.d("ReadInJoyCommentPBModule", 1, "comment type is multi media");
+      if (paramComment.rpt_media_data_list.has()) {
+        paramComment = paramComment.rpt_media_data_list.get();
+      } else {
+        paramComment = null;
+      }
+      if ((paramComment != null) && (paramComment.size() > 0))
+      {
+        int j = paramComment.size();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("comment media size : ");
+        ((StringBuilder)localObject).append(j);
+        QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
+        paramBaseCommentData.mediaDataList = new ArrayList();
+        int i = 0;
+        while (i < j)
+        {
+          localObject = (oidb_cmd0xc46.MediaData)paramComment.get(i);
+          BaseCommentData.MediaData localMediaData = new BaseCommentData.MediaData();
+          localMediaData.a = ((oidb_cmd0xc46.MediaData)localObject).text.get();
+          localMediaData.i = ((oidb_cmd0xc46.MediaData)localObject).media_type.get();
+          localMediaData.c = ((oidb_cmd0xc46.MediaData)localObject).pic_width.get();
+          localMediaData.d = ((oidb_cmd0xc46.MediaData)localObject).pic_length.get();
+          localMediaData.b = ((oidb_cmd0xc46.MediaData)localObject).pic_url.get();
+          localMediaData.j = ((oidb_cmd0xc46.MediaData)localObject).thumbnail_url.get();
+          localMediaData.g = ((oidb_cmd0xc46.MediaData)localObject).video_url.get();
+          localMediaData.h = ((oidb_cmd0xc46.MediaData)localObject).video_duration.get();
+          localMediaData.e = ((oidb_cmd0xc46.MediaData)localObject).sound_url.get();
+          localMediaData.f = ((oidb_cmd0xc46.MediaData)localObject).sound_duration.get();
+          paramBaseCommentData.mediaDataList.add(localMediaData);
+          i += 1;
+        }
+      }
+    }
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -655,23 +668,23 @@ public class ReadInJoyCommentPBModule
         } else {
           bool = false;
         }
-        paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
+        paramFromServiceMsg.d = bool;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("handleFamilyCommentList | hasNextPage ");
         ((StringBuilder)localObject2).append(((oidb_cmd0xc46.RspBody)localObject1).next.get());
         QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject2).toString());
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).page_cookie.has()) {
-        paramFromServiceMsg.jdField_a_of_type_JavaLangString = ((oidb_cmd0xc46.RspBody)localObject1).page_cookie.get().toStringUtf8();
+        paramFromServiceMsg.e = ((oidb_cmd0xc46.RspBody)localObject1).page_cookie.get().toStringUtf8();
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).comment_list.has()) {
-        paramFromServiceMsg.jdField_a_of_type_JavaUtilList = a(((oidb_cmd0xc46.RspBody)localObject1).comment_list.get());
+        paramFromServiceMsg.a = a(((oidb_cmd0xc46.RspBody)localObject1).comment_list.get());
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).article_info.has())
       {
         localObject2 = (oidb_cmd0xc46.ArticleInfo)((oidb_cmd0xc46.RspBody)localObject1).article_info.get();
         if (((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.has()) {
-          paramObject.jdField_a_of_type_Long = ((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.get();
+          paramObject.a = ((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.get();
         }
         if ((paramToServiceMsg.getAttribute("anchor_request") != null) && (((oidb_cmd0xc46.ArticleInfo)localObject2).has_anchor.has()))
         {
@@ -712,26 +725,6 @@ public class ReadInJoyCommentPBModule
     this.mMainThreadHandler.post(new ReadInJoyCommentPBModule.4(this, i, paramFromServiceMsg, paramObject, paramToServiceMsg));
   }
   
-  private static void b(oidb_cmd0xc46.Comment paramComment, BaseCommentData paramBaseCommentData)
-  {
-    if (!paramComment.rpt_data.has()) {
-      return;
-    }
-    paramBaseCommentData.commentRptDataList = new ArrayList();
-    paramComment = paramComment.rpt_data.get();
-    if (paramComment == null) {
-      return;
-    }
-    paramComment = paramComment.iterator();
-    while (paramComment.hasNext())
-    {
-      oidb_cmd0xc46.RptData localRptData = (oidb_cmd0xc46.RptData)paramComment.next();
-      if (localRptData != null) {
-        a(localRptData, paramBaseCommentData);
-      }
-    }
-  }
-  
   @Nullable
   private static BaseCommentData.CommentRptData c(oidb_cmd0xc46.RptData paramRptData)
   {
@@ -741,13 +734,37 @@ public class ReadInJoyCommentPBModule
       if (paramRptData != null)
       {
         BaseCommentData.CommentRptData localCommentRptData = new BaseCommentData.CommentRptData();
-        localCommentRptData.jdField_a_of_type_Int = 2;
-        localCommentRptData.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.content, "");
-        localCommentRptData.jdField_c_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.url, "");
+        localCommentRptData.a = 2;
+        localCommentRptData.b = RIJPBFieldUtils.a(paramRptData.content, "");
+        localCommentRptData.d = RIJPBFieldUtils.a(paramRptData.url, "");
         return localCommentRptData;
       }
     }
     return null;
+  }
+  
+  private static void c(@NotNull BaseCommentData paramBaseCommentData, @NotNull oidb_cmd0xc46.Comment paramComment)
+  {
+    if (c(paramComment))
+    {
+      paramBaseCommentData.isAd = true;
+      paramComment = RIJCommentAdUtils.a(paramComment.ad_rsp_info.data.get().toByteArray());
+      if (!paramComment.isEmpty())
+      {
+        paramComment = (AdvertisementInfo)paramComment.get(0);
+        paramBaseCommentData.advertisementInfo = paramComment;
+        if ((paramComment != null) && (paramComment.mCommentAdParams != null))
+        {
+          paramBaseCommentData = paramComment.mCommentAdParams;
+          if (paramBaseCommentData.f > 0) {
+            RIJCommentAdUtils.b = paramBaseCommentData.f;
+          }
+          if (paramBaseCommentData.e > 0) {
+            RIJCommentAdUtils.a = paramBaseCommentData.e;
+          }
+        }
+      }
+    }
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -771,23 +788,23 @@ public class ReadInJoyCommentPBModule
         } else {
           bool = false;
         }
-        paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
+        paramFromServiceMsg.d = bool;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("handleNewCommentList | hasNextPage ");
         ((StringBuilder)localObject2).append(((oidb_cmd0xc46.RspBody)localObject1).next.get());
         QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject2).toString());
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).page_cookie.has()) {
-        paramFromServiceMsg.jdField_a_of_type_JavaLangString = ((oidb_cmd0xc46.RspBody)localObject1).page_cookie.get().toStringUtf8();
+        paramFromServiceMsg.e = ((oidb_cmd0xc46.RspBody)localObject1).page_cookie.get().toStringUtf8();
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).comment_list.has()) {
-        paramFromServiceMsg.jdField_a_of_type_JavaUtilList = a(((oidb_cmd0xc46.RspBody)localObject1).comment_list.get());
+        paramFromServiceMsg.a = a(((oidb_cmd0xc46.RspBody)localObject1).comment_list.get());
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).article_info.has())
       {
         localObject2 = (oidb_cmd0xc46.ArticleInfo)((oidb_cmd0xc46.RspBody)localObject1).article_info.get();
         if (((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.has()) {
-          paramObject.jdField_a_of_type_Long = ((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.get();
+          paramObject.a = ((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.get();
         }
         if ((paramToServiceMsg.getAttribute("anchor_request") != null) && (((oidb_cmd0xc46.ArticleInfo)localObject2).has_anchor.has()))
         {
@@ -828,6 +845,31 @@ public class ReadInJoyCommentPBModule
     this.mMainThreadHandler.post(new ReadInJoyCommentPBModule.6(this, i, paramFromServiceMsg, paramObject, paramToServiceMsg));
   }
   
+  private static boolean c(oidb_cmd0xc46.Comment paramComment)
+  {
+    PBUInt32Field localPBUInt32Field = paramComment.is_ad;
+    boolean bool2 = false;
+    int i;
+    if (RIJPBFieldUtils.a(localPBUInt32Field, 0) == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    boolean bool1 = bool2;
+    if (i != 0)
+    {
+      bool1 = bool2;
+      if (paramComment.ad_rsp_info.has())
+      {
+        bool1 = bool2;
+        if (paramComment.ad_rsp_info.data.has()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
   @Nullable
   private static BaseCommentData.CommentRptData d(oidb_cmd0xc46.RptData paramRptData)
   {
@@ -837,9 +879,9 @@ public class ReadInJoyCommentPBModule
       if (paramRptData != null)
       {
         BaseCommentData.CommentRptData localCommentRptData = new BaseCommentData.CommentRptData();
-        localCommentRptData.jdField_a_of_type_Int = 1;
-        localCommentRptData.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.content, "");
-        localCommentRptData.jdField_b_of_type_JavaLangString = RIJPBFieldUtils.a(paramRptData.uid, "");
+        localCommentRptData.a = 1;
+        localCommentRptData.b = RIJPBFieldUtils.a(paramRptData.content, "");
+        localCommentRptData.c = RIJPBFieldUtils.a(paramRptData.uid, "");
         return localCommentRptData;
       }
     }
@@ -867,23 +909,23 @@ public class ReadInJoyCommentPBModule
         } else {
           bool = false;
         }
-        paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
+        paramFromServiceMsg.d = bool;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("handleHotCommentList | hasNextPage ");
         ((StringBuilder)localObject2).append(((oidb_cmd0xc46.RspBody)localObject1).next.get());
         QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject2).toString());
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).page_cookie.has()) {
-        paramFromServiceMsg.jdField_a_of_type_JavaLangString = ((oidb_cmd0xc46.RspBody)localObject1).page_cookie.get().toStringUtf8();
+        paramFromServiceMsg.e = ((oidb_cmd0xc46.RspBody)localObject1).page_cookie.get().toStringUtf8();
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).hot_comment_list.has()) {
-        paramFromServiceMsg.jdField_a_of_type_JavaUtilList = a(((oidb_cmd0xc46.RspBody)localObject1).hot_comment_list.get());
+        paramFromServiceMsg.a = a(((oidb_cmd0xc46.RspBody)localObject1).hot_comment_list.get());
       }
       if (((oidb_cmd0xc46.RspBody)localObject1).article_info.has())
       {
         localObject2 = (oidb_cmd0xc46.ArticleInfo)((oidb_cmd0xc46.RspBody)localObject1).article_info.get();
         if (((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.has()) {
-          paramObject.jdField_a_of_type_Long = ((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.get();
+          paramObject.a = ((oidb_cmd0xc46.ArticleInfo)localObject2).comment_count.get();
         }
         if ((paramToServiceMsg.getAttribute("anchor_request") != null) && (((oidb_cmd0xc46.ArticleInfo)localObject2).has_anchor.has()))
         {
@@ -945,14 +987,14 @@ public class ReadInJoyCommentPBModule
         } else {
           bool = false;
         }
-        paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
+        paramFromServiceMsg.d = bool;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("handleSubCommentList | hasNextPage ");
         localStringBuilder.append(((oidb_cmd0xc46.RspBody)localObject).next.get());
         QLog.d("ReadInJoyCommentPBModule", 1, localStringBuilder.toString());
       }
       if (((oidb_cmd0xc46.RspBody)localObject).page_cookie.has()) {
-        paramFromServiceMsg.jdField_a_of_type_JavaLangString = ((oidb_cmd0xc46.RspBody)localObject).page_cookie.get().toStringUtf8();
+        paramFromServiceMsg.e = ((oidb_cmd0xc46.RspBody)localObject).page_cookie.get().toStringUtf8();
       }
       if (((oidb_cmd0xc46.RspBody)localObject).comment_list.has()) {
         paramFromServiceMsg.b = b(((oidb_cmd0xc46.RspBody)localObject).comment_list.get());
@@ -960,7 +1002,7 @@ public class ReadInJoyCommentPBModule
         paramFromServiceMsg.b = new ArrayList();
       }
       if (((oidb_cmd0xc46.RspBody)localObject).first_comment_detail.has()) {
-        paramFromServiceMsg.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityCommentData = a((oidb_cmd0xc46.Comment)((oidb_cmd0xc46.RspBody)localObject).first_comment_detail.get());
+        paramFromServiceMsg.c = a((oidb_cmd0xc46.Comment)((oidb_cmd0xc46.RspBody)localObject).first_comment_detail.get());
       }
       if (((oidb_cmd0xc46.RspBody)localObject).article_info.has())
       {
@@ -1009,13 +1051,13 @@ public class ReadInJoyCommentPBModule
     }
     paramFromServiceMsg.a(i, j, l);
     ReadinjoyReportUtils.a(j, paramToServiceMsg, 5, null);
-    if (ReadInJoyUtils.a() == null) {
+    if (ReadInJoyUtils.b() == null) {
       return;
     }
     paramFromServiceMsg = new HashMap();
     paramFromServiceMsg.put("retCode", String.valueOf(j));
     paramFromServiceMsg.put("request_comment_type", String.valueOf(k));
-    paramObject = StatisticCollector.getInstance(ReadInJoyUtils.a().getApplication());
+    paramObject = StatisticCollector.getInstance(ReadInJoyUtils.b().getApplication());
     boolean bool;
     if (j == 0) {
       bool = true;
@@ -1031,137 +1073,169 @@ public class ReadInJoyCommentPBModule
     QLog.d("ReadInJoyCommentPBModule", 1, paramToServiceMsg.toString());
   }
   
+  private void f(oidb_cmd0xc46.Comment paramComment, BaseCommentData paramBaseCommentData)
+  {
+    paramBaseCommentData.commentLinkDataList = new ArrayList();
+    if (paramComment.link_data.has())
+    {
+      paramBaseCommentData.commentLinkDataList = new ArrayList();
+      paramComment = paramComment.link_data.get();
+      if (paramComment != null)
+      {
+        paramComment = paramComment.iterator();
+        while (paramComment.hasNext())
+        {
+          oidb_cmd0xc46.LinkData localLinkData = (oidb_cmd0xc46.LinkData)paramComment.next();
+          if (localLinkData != null)
+          {
+            BaseCommentData.CommentLinkData localCommentLinkData = new BaseCommentData.CommentLinkData();
+            localCommentLinkData.iconUrl = RIJPBFieldUtils.a(localLinkData.icon, "");
+            localCommentLinkData.linkUrl = RIJPBFieldUtils.a(localLinkData.url, "");
+            localCommentLinkData.type = RIJPBFieldUtils.a(localLinkData.type, 0);
+            localCommentLinkData.wording = RIJPBFieldUtils.a(localLinkData.wording, "");
+            paramBaseCommentData.commentLinkDataList.add(localCommentLinkData);
+          }
+        }
+      }
+    }
+  }
+  
+  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, new oidb_cmd0xc46.RspBody());
+    if (i != 0)
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("errorCode:");
+      paramObject.append(i);
+      paramObject.append(" reqCommentType:");
+      paramObject.append(paramToServiceMsg.getAttributes().get("service_type"));
+      paramObject.append(" errorMsg:");
+      paramObject.append(paramFromServiceMsg.getBusinessFailMsg());
+      RIJCommentAegisHelper.a(paramObject.toString(), "ReadInJoyCommentPBModule");
+    }
+  }
+  
+  private static void g(oidb_cmd0xc46.Comment paramComment, BaseCommentData paramBaseCommentData)
+  {
+    if (!paramComment.rpt_data.has()) {
+      return;
+    }
+    paramBaseCommentData.commentRptDataList = new ArrayList();
+    paramComment = paramComment.rpt_data.get();
+    if (paramComment == null) {
+      return;
+    }
+    paramComment = paramComment.iterator();
+    while (paramComment.hasNext())
+    {
+      oidb_cmd0xc46.RptData localRptData = (oidb_cmd0xc46.RptData)paramComment.next();
+      if (localRptData != null) {
+        a(localRptData, paramBaseCommentData);
+      }
+    }
+  }
+  
   @VisibleForTesting
   SubCommentData.RepliedCommentData a(oidb_cmd0xc46.RepliedCommentInfo paramRepliedCommentInfo)
   {
     SubCommentData.RepliedCommentData localRepliedCommentData = new SubCommentData.RepliedCommentData();
     if (paramRepliedCommentInfo.replied_user_id.has()) {
-      localRepliedCommentData.jdField_e_of_type_JavaLangString = paramRepliedCommentInfo.replied_user_id.get();
+      localRepliedCommentData.f = paramRepliedCommentInfo.replied_user_id.get();
     }
     if (paramRepliedCommentInfo.replied_user_nick_name.has()) {
-      localRepliedCommentData.jdField_d_of_type_JavaLangString = paramRepliedCommentInfo.replied_user_nick_name.get();
+      localRepliedCommentData.e = paramRepliedCommentInfo.replied_user_nick_name.get();
     }
     if (paramRepliedCommentInfo.replied_comment_content.has()) {
-      localRepliedCommentData.jdField_b_of_type_JavaLangString = paramRepliedCommentInfo.replied_comment_content.get();
+      localRepliedCommentData.b = paramRepliedCommentInfo.replied_comment_content.get();
     }
     if (paramRepliedCommentInfo.replied_comment_is_delete.has()) {
-      localRepliedCommentData.jdField_a_of_type_Int = paramRepliedCommentInfo.replied_comment_is_delete.get();
+      localRepliedCommentData.c = paramRepliedCommentInfo.replied_comment_is_delete.get();
     }
     if (paramRepliedCommentInfo.replied_user_homepage.has()) {
-      localRepliedCommentData.jdField_c_of_type_JavaLangString = paramRepliedCommentInfo.replied_user_homepage.get();
+      localRepliedCommentData.d = paramRepliedCommentInfo.replied_user_homepage.get();
     }
     if (paramRepliedCommentInfo.replied_comment_id.has()) {
-      localRepliedCommentData.jdField_a_of_type_JavaLangString = paramRepliedCommentInfo.replied_comment_id.get();
+      localRepliedCommentData.a = paramRepliedCommentInfo.replied_comment_id.get();
     }
     return localRepliedCommentData;
   }
   
   public void a(ReadInJoyCommentObserver paramReadInJoyCommentObserver)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver = paramReadInJoyCommentObserver;
+    this.a = paramReadInJoyCommentObserver;
     paramReadInJoyCommentObserver = new StringBuilder();
     paramReadInJoyCommentObserver.append("setCommentObserver: mCommentObserver=");
-    paramReadInJoyCommentObserver.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver);
+    paramReadInJoyCommentObserver.append(this.a);
     QLog.d("ReadInJoyCommentPBModule", 1, paramReadInJoyCommentObserver.toString());
   }
   
-  @VisibleForTesting
-  void a(BaseCommentData paramBaseCommentData)
+  public void a(RIJRequestDataForComment paramRIJRequestDataForComment)
   {
-    if ((paramBaseCommentData.isAuthorReply()) && (this.jdField_a_of_type_Boolean) && ((paramBaseCommentData instanceof CommentData)))
-    {
-      paramBaseCommentData.shouldShowFollowButton = true;
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    paramBaseCommentData.shouldShowFollowButton = false;
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, CommonCommentData paramCommonCommentData)
-  {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QLog.d("ReadInJoyCommentPBModule", 2, "requestFamliyCommentList | articleId is null");
-      return;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("requestFamliyCommentList | articleId : ");
-    ((StringBuilder)localObject).append(paramString1);
-    ((StringBuilder)localObject).append(" contentSrc : ");
-    ((StringBuilder)localObject).append(paramInt2);
-    ((StringBuilder)localObject).append(" ; pageCookie : ");
-    ((StringBuilder)localObject).append(paramString2);
-    QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
-    localObject = new oidb_cmd0xc46.ReqBody();
-    oidb_cmd0xc46.ReqParam localReqParam = new oidb_cmd0xc46.ReqParam();
-    localReqParam.with_sub_comments.set(1);
-    localReqParam.with_author_reply.set(1);
-    localReqParam.with_style_data.set(1);
-    ((oidb_cmd0xc46.ReqBody)localObject).req_param.set(localReqParam);
-    ((oidb_cmd0xc46.ReqBody)localObject).rowkey.set(paramString1);
-    ((oidb_cmd0xc46.ReqBody)localObject).page_cookie.set(ByteStringMicro.copyFromUtf8(paramString2));
-    ((oidb_cmd0xc46.ReqBody)localObject).page_size.set(paramInt1);
-    ((oidb_cmd0xc46.ReqBody)localObject).content_src.set(ReadInJoyCommentHelper.a(paramInt2));
-    ((oidb_cmd0xc46.ReqBody)localObject).with_activity_data.set(1);
-    a((oidb_cmd0xc46.ReqBody)localObject, paramCommonCommentData);
-    paramString1 = ReadInJoyOidbHelper.a("OidbSvc.0xc46", 3142, 6, ((oidb_cmd0xc46.ReqBody)localObject).toByteArray());
-    paramString1.addAttribute("service_type", Integer.valueOf(6));
-    sendPbReq(paramString1);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, CommonCommentData paramCommonCommentData)
-  {
-    if (TextUtils.isEmpty(paramString1))
+    if (TextUtils.isEmpty(paramRIJRequestDataForComment.a))
     {
       QLog.d("ReadInJoyCommentPBModule", 2, "requestCommonCommentList | articleId is null");
       return;
     }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("requestCommonCommentList | articleId : ");
-    ((StringBuilder)localObject).append(paramString1);
-    ((StringBuilder)localObject).append(" contentSrc : ");
-    ((StringBuilder)localObject).append(paramInt2);
-    ((StringBuilder)localObject).append("; mainCommentId : ");
-    ((StringBuilder)localObject).append(paramString3);
-    ((StringBuilder)localObject).append(" ; pageCookie : ");
-    ((StringBuilder)localObject).append(paramString2);
-    ((StringBuilder)localObject).append("; commonCommentData ");
-    ((StringBuilder)localObject).append(paramCommonCommentData);
-    QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
-    localObject = new oidb_cmd0xc46.ReqBody();
-    oidb_cmd0xc46.ReqParam localReqParam = new oidb_cmd0xc46.ReqParam();
-    localReqParam.with_style_data.set(1);
-    localReqParam.with_sub_comments.set(1);
-    localReqParam.with_author_reply.set(1);
-    ((oidb_cmd0xc46.ReqBody)localObject).req_param.set(localReqParam);
-    ((oidb_cmd0xc46.ReqBody)localObject).rowkey.set(paramString1);
-    ((oidb_cmd0xc46.ReqBody)localObject).page_cookie.set(ByteStringMicro.copyFromUtf8(paramString2));
-    ((oidb_cmd0xc46.ReqBody)localObject).page_size.set(paramInt1);
-    ((oidb_cmd0xc46.ReqBody)localObject).content_src.set(ReadInJoyCommentHelper.a(paramInt2));
-    ((oidb_cmd0xc46.ReqBody)localObject).with_activity_data.set(1);
-    a((oidb_cmd0xc46.ReqBody)localObject, paramCommonCommentData);
-    paramInt1 = 0;
-    if (!TextUtils.isEmpty(paramString3))
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("requestCommonCommentList | articleId : ");
+    ((StringBuilder)localObject1).append(paramRIJRequestDataForComment.a);
+    ((StringBuilder)localObject1).append(" contentSrc : ");
+    ((StringBuilder)localObject1).append(paramRIJRequestDataForComment.d);
+    ((StringBuilder)localObject1).append("; mainCommentId : ");
+    ((StringBuilder)localObject1).append(paramRIJRequestDataForComment.e);
+    ((StringBuilder)localObject1).append(" ; pageCookie : ");
+    ((StringBuilder)localObject1).append(paramRIJRequestDataForComment.b);
+    ((StringBuilder)localObject1).append("; commonCommentData ");
+    ((StringBuilder)localObject1).append(paramRIJRequestDataForComment.f);
+    QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = new oidb_cmd0xc46.ReqBody();
+    Object localObject2 = new oidb_cmd0xc46.ReqParam();
+    ((oidb_cmd0xc46.ReqParam)localObject2).with_style_data.set(1);
+    ((oidb_cmd0xc46.ReqParam)localObject2).with_sub_comments.set(1);
+    ((oidb_cmd0xc46.ReqParam)localObject2).with_author_reply.set(1);
+    ((oidb_cmd0xc46.ReqParam)localObject2).req_advertise_para.set(RIJCommentAdUtils.a(a(paramRIJRequestDataForComment, 1)));
+    ((oidb_cmd0xc46.ReqBody)localObject1).req_param.set((MessageMicro)localObject2);
+    ((oidb_cmd0xc46.ReqBody)localObject1).rowkey.set(paramRIJRequestDataForComment.a);
+    ((oidb_cmd0xc46.ReqBody)localObject1).page_cookie.set(ByteStringMicro.copyFromUtf8(paramRIJRequestDataForComment.b));
+    ((oidb_cmd0xc46.ReqBody)localObject1).page_size.set(paramRIJRequestDataForComment.c);
+    ((oidb_cmd0xc46.ReqBody)localObject1).content_src.set(ReadInJoyCommentHelper.a(paramRIJRequestDataForComment.d));
+    ((oidb_cmd0xc46.ReqBody)localObject1).with_activity_data.set(1);
+    a((oidb_cmd0xc46.ReqBody)localObject1, paramRIJRequestDataForComment.f);
+    int i = 0;
+    if (!TextUtils.isEmpty(paramRIJRequestDataForComment.e))
     {
-      ((oidb_cmd0xc46.ReqBody)localObject).anchor_id.set(paramString3);
-      paramInt1 = 1;
+      ((oidb_cmd0xc46.ReqBody)localObject1).anchor_id.set(paramRIJRequestDataForComment.e);
+      i = 1;
     }
-    paramCommonCommentData = new StringBuilder();
-    paramCommonCommentData.append("requestCommonCommentList | articleId : ");
-    paramCommonCommentData.append(paramString1);
-    paramCommonCommentData.append(" contentSrc : ");
-    paramCommonCommentData.append(paramInt2);
-    paramCommonCommentData.append("; mainCommentId : ");
-    paramCommonCommentData.append(paramString3);
-    paramCommonCommentData.append(" ; pageCookie : ");
-    paramCommonCommentData.append(paramString2);
-    QLog.d("ReadInJoyCommentPBModule", 1, paramCommonCommentData.toString());
-    paramString1 = ReadInJoyOidbHelper.a("OidbSvc.0xc46", 3142, 5, ((oidb_cmd0xc46.ReqBody)localObject).toByteArray());
-    paramString1.addAttribute("service_type", Integer.valueOf(5));
-    if (paramInt1 != 0) {
-      paramString1.addAttribute("anchor_request", Integer.valueOf(1));
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("requestCommonCommentList | articleId : ");
+    ((StringBuilder)localObject2).append(paramRIJRequestDataForComment.a);
+    ((StringBuilder)localObject2).append(" contentSrc : ");
+    ((StringBuilder)localObject2).append(paramRIJRequestDataForComment.d);
+    ((StringBuilder)localObject2).append("; mainCommentId : ");
+    ((StringBuilder)localObject2).append(paramRIJRequestDataForComment.e);
+    ((StringBuilder)localObject2).append(" ; pageCookie : ");
+    ((StringBuilder)localObject2).append(paramRIJRequestDataForComment.b);
+    QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject2).toString());
+    paramRIJRequestDataForComment = ReadInJoyOidbHelper.a("OidbSvc.0xc46", 3142, 5, ((oidb_cmd0xc46.ReqBody)localObject1).toByteArray());
+    paramRIJRequestDataForComment.addAttribute("service_type", Integer.valueOf(5));
+    if (i != 0) {
+      paramRIJRequestDataForComment.addAttribute("anchor_request", Integer.valueOf(1));
     }
-    sendPbReq(paramString1);
+    sendPbReq(paramRIJRequestDataForComment);
+  }
+  
+  @VisibleForTesting
+  void a(BaseCommentData paramBaseCommentData, oidb_cmd0xc46.Comment paramComment)
+  {
+    paramComment = paramComment.is_show_follow_button;
+    boolean bool = true;
+    paramBaseCommentData.shouldShowFollowButton = a(paramComment, 1);
+    if ((!paramBaseCommentData.shouldShowFollowButton) || (paramBaseCommentData.isFollowing)) {
+      bool = false;
+    }
+    paramBaseCommentData.isFollowButtonShown = bool;
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -1236,8 +1310,6 @@ public class ReadInJoyCommentPBModule
   
   public void a(oidb_cmd0xc46.Comment paramComment, BaseCommentData paramBaseCommentData)
   {
-    boolean bool;
-    Object localObject;
     if (paramComment != null)
     {
       if (paramBaseCommentData == null) {
@@ -1247,7 +1319,7 @@ public class ReadInJoyCommentPBModule
       paramBaseCommentData.uin = RIJPBFieldUtils.a(paramComment.author_id, "");
       paramBaseCommentData.commentTime = RIJPBFieldUtils.a(paramComment.create_time);
       paramBaseCommentData.commentContent = RIJPBFieldUtils.a(paramComment.content, "");
-      b(paramComment, paramBaseCommentData);
+      g(paramComment, paramBaseCommentData);
       paramBaseCommentData.likeCnt = RIJPBFieldUtils.a(paramComment.like_num, 0);
       paramBaseCommentData.like = RIJPBFieldUtils.a(paramComment.like, 0);
       paramBaseCommentData.disLike = RIJPBFieldUtils.a(paramComment.dislike, 0);
@@ -1257,18 +1329,8 @@ public class ReadInJoyCommentPBModule
       paramBaseCommentData.level = RIJPBFieldUtils.a(paramComment.level);
       paramBaseCommentData.authorComment = RIJPBFieldUtils.a(paramComment.author_comment, "");
       paramBaseCommentData.nickName = RIJPBFieldUtils.a(paramComment.nick_name, "");
-      if (RIJPBFieldUtils.a(paramComment.author_like) == 1) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      paramBaseCommentData.isAuthorLike = bool;
-      if (RIJPBFieldUtils.a(paramComment.follow_status) == 1) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      paramBaseCommentData.isFollowing = bool;
+      paramBaseCommentData.isAuthorLike = a(paramComment.author_like, 1);
+      paramBaseCommentData.isFollowing = a(paramComment.follow_status, 1);
       paramBaseCommentData.avatar = RIJPBFieldUtils.a(paramComment.avatar, "");
       a(paramBaseCommentData.avatar);
       paramBaseCommentData.myself = RIJPBFieldUtils.a(paramComment.myself, 0);
@@ -1282,180 +1344,218 @@ public class ReadInJoyCommentPBModule
       paramBaseCommentData.activityJumpUrl = RIJPBFieldUtils.a(paramComment.jump_url, "");
       paramBaseCommentData.isStar = RIJPBFieldUtils.a(paramComment.is_star);
       paramBaseCommentData.isApproved = RIJPBFieldUtils.a(paramComment.is_approved);
-      if (paramComment.account_level_info.has())
-      {
-        paramBaseCommentData.accountLevelInfo = new BaseCommentData.AccountLevelInfo();
-        paramBaseCommentData.accountLevelInfo.jdField_a_of_type_Int = RIJPBFieldUtils.a(paramComment.account_level_info.uint32_account_cc_level);
-        paramBaseCommentData.accountLevelInfo.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramComment.account_level_info.account_cc_level_icon_s, "");
-      }
-      if (paramComment.user_identity_icon.has())
-      {
-        paramBaseCommentData.userIdentityIcon = new BaseCommentData.UserIdentityIcon();
-        paramBaseCommentData.userIdentityIcon.jdField_a_of_type_Int = RIJPBFieldUtils.a(paramComment.user_identity_icon.identity_type);
-        paramBaseCommentData.userIdentityIcon.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.a(paramComment.user_identity_icon.icon_url, "");
-        paramBaseCommentData.userIdentityIcon.jdField_b_of_type_JavaLangString = RIJPBFieldUtils.a(paramComment.user_identity_icon.summary, "");
-      }
+      d(paramComment, paramBaseCommentData);
+      c(paramComment, paramBaseCommentData);
       paramBaseCommentData.createSrc = RIJPBFieldUtils.a(paramComment.create_source, 0);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("create_source : ");
-      ((StringBuilder)localObject).append(paramComment.create_source.get());
-      QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("create_source : ");
+      localStringBuilder.append(paramComment.create_source.get());
+      QLog.d("ReadInJoyCommentPBModule", 1, localStringBuilder.toString());
       paramBaseCommentData.isAuthorReply = RIJPBFieldUtils.a(paramComment.is_author_reply);
       paramBaseCommentData.userTitle = RIJPBFieldUtils.a(paramComment.user_title, "");
       paramBaseCommentData.ksHomePage = RIJPBFieldUtils.a(paramComment.ks_homepage, "");
-      if (paramComment.activity.has()) {
-        paramBaseCommentData.activityCfgID = RIJPBFieldUtils.a(paramComment.activity.config_id);
-      }
-      if (!paramComment.jump_schema.has()) {}
-    }
-    try
-    {
-      paramBaseCommentData.flowGuidePtsData = new String(Base64Util.decode(paramComment.jump_schema.get(), 0), "utf-8");
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("flowGuidePtsData : ");
-      ((StringBuilder)localObject).append(paramBaseCommentData.flowGuidePtsData);
-      QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
-    }
-    catch (Exception localException)
-    {
-      label697:
-      break label697;
-    }
-    a(paramBaseCommentData, paramComment);
-    paramBaseCommentData.styleData = RIJPBFieldUtils.a(paramComment.style_data, "");
-    if (RIJPBFieldUtils.a(paramComment.comment_author_top) == 1) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    paramBaseCommentData.isAuthorSticky = bool;
-    if (RIJPBFieldUtils.a(paramComment.comment_author_top) == 3) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    paramBaseCommentData.isAuthorBottom = bool;
-    paramBaseCommentData.avatarPendantUrl = RIJPBFieldUtils.a(paramComment.avatar_pendant, "");
-    paramBaseCommentData.commentLinkDataList = new ArrayList();
-    if (paramComment.link_data.has())
-    {
-      paramBaseCommentData.commentLinkDataList = new ArrayList();
-      localObject = paramComment.link_data.get();
-      if (localObject != null)
+      b(paramComment, paramBaseCommentData);
+      e(paramComment, paramBaseCommentData);
+      b(paramBaseCommentData, paramComment);
+      c(paramBaseCommentData, paramComment);
+      paramBaseCommentData.styleData = RIJPBFieldUtils.a(paramComment.style_data, "");
+      paramBaseCommentData.isAuthorSticky = a(paramComment.comment_author_top, 1);
+      paramBaseCommentData.isAuthorBottom = a(paramComment.comment_author_top, 3);
+      paramBaseCommentData.avatarPendantUrl = RIJPBFieldUtils.a(paramComment.avatar_pendant, "");
+      f(paramComment, paramBaseCommentData);
+      paramBaseCommentData.shareUrl = paramComment.share_url.get();
+      paramBaseCommentData.commentApp = RIJPBFieldUtils.a(paramComment.comment_app, 0);
+      a(paramBaseCommentData, paramComment);
+      if (QLog.isColorLevel())
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          oidb_cmd0xc46.LinkData localLinkData = (oidb_cmd0xc46.LinkData)((Iterator)localObject).next();
-          if (localLinkData != null)
-          {
-            BaseCommentData.CommentLinkData localCommentLinkData = new BaseCommentData.CommentLinkData();
-            localCommentLinkData.iconUrl = RIJPBFieldUtils.a(localLinkData.icon, "");
-            localCommentLinkData.linkUrl = RIJPBFieldUtils.a(localLinkData.url, "");
-            localCommentLinkData.type = RIJPBFieldUtils.a(localLinkData.type, 0);
-            localCommentLinkData.wording = RIJPBFieldUtils.a(localLinkData.wording, "");
-            paramBaseCommentData.commentLinkDataList.add(localCommentLinkData);
-          }
-        }
+        paramComment = new StringBuilder();
+        paramComment.append("[convertBaseCommentData] uin = ");
+        paramComment.append(paramBaseCommentData.uin);
+        paramComment.append(", avatarPendantUrl = ");
+        paramComment.append(paramBaseCommentData.avatarPendantUrl);
+        QLog.i("ReadInJoyCommentPBModule", 1, paramComment.toString());
       }
-    }
-    if (paramComment.activity_level.has()) {
-      paramBaseCommentData.activityLevel = ((oidb_cmd0xc46.ActivityLevel)paramComment.activity_level.get());
-    }
-    paramBaseCommentData.shareUrl = paramComment.share_url.get();
-    paramBaseCommentData.commentApp = RIJPBFieldUtils.a(paramComment.comment_app, 0);
-    a(paramBaseCommentData);
-    if (QLog.isColorLevel())
-    {
       paramComment = new StringBuilder();
-      paramComment.append("[convertBaseCommentData] uin = ");
-      paramComment.append(paramBaseCommentData.uin);
-      paramComment.append(", avatarPendantUrl = ");
-      paramComment.append(paramBaseCommentData.avatarPendantUrl);
-      QLog.i("ReadInJoyCommentPBModule", 1, paramComment.toString());
+      paramComment.append("comment style_data ");
+      paramComment.append(paramBaseCommentData.styleData);
+      QLog.d("ReadInJoyCommentPBModule", 1, paramComment.toString());
+      paramComment = new StringBuilder();
+      paramComment.append("convertBaseCommentData | ");
+      paramComment.append(paramBaseCommentData.toString());
+      QLog.d("ReadInJoyCommentPBModule", 2, paramComment.toString());
     }
-    paramComment = new StringBuilder();
-    paramComment.append("comment style_data ");
-    paramComment.append(paramBaseCommentData.styleData);
-    QLog.d("ReadInJoyCommentPBModule", 1, paramComment.toString());
-    paramComment = new StringBuilder();
-    paramComment.append("convertBaseCommentData | ");
-    paramComment.append(paramBaseCommentData.toString());
-    QLog.d("ReadInJoyCommentPBModule", 2, paramComment.toString());
   }
   
-  public void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, CommonCommentData paramCommonCommentData)
+  @VisibleForTesting
+  boolean a(PBUInt32Field paramPBUInt32Field, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString1))
+    return RIJPBFieldUtils.a(paramPBUInt32Field) == paramInt;
+  }
+  
+  public void b(RIJRequestDataForComment paramRIJRequestDataForComment)
+  {
+    if (TextUtils.isEmpty(paramRIJRequestDataForComment.a))
+    {
+      QLog.d("ReadInJoyCommentPBModule", 2, "requestFamliyCommentList | articleId is null");
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("requestFamliyCommentList | articleId : ");
+    ((StringBuilder)localObject).append(paramRIJRequestDataForComment.a);
+    ((StringBuilder)localObject).append(" contentSrc : ");
+    ((StringBuilder)localObject).append(paramRIJRequestDataForComment.d);
+    ((StringBuilder)localObject).append(" ; pageCookie : ");
+    ((StringBuilder)localObject).append(paramRIJRequestDataForComment.b);
+    QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
+    localObject = new oidb_cmd0xc46.ReqBody();
+    oidb_cmd0xc46.ReqParam localReqParam = new oidb_cmd0xc46.ReqParam();
+    localReqParam.with_sub_comments.set(1);
+    localReqParam.with_author_reply.set(1);
+    localReqParam.with_style_data.set(1);
+    ((oidb_cmd0xc46.ReqBody)localObject).req_param.set(localReqParam);
+    ((oidb_cmd0xc46.ReqBody)localObject).rowkey.set(paramRIJRequestDataForComment.a);
+    ((oidb_cmd0xc46.ReqBody)localObject).page_cookie.set(ByteStringMicro.copyFromUtf8(paramRIJRequestDataForComment.b));
+    ((oidb_cmd0xc46.ReqBody)localObject).page_size.set(paramRIJRequestDataForComment.c);
+    ((oidb_cmd0xc46.ReqBody)localObject).content_src.set(ReadInJoyCommentHelper.a(paramRIJRequestDataForComment.d));
+    ((oidb_cmd0xc46.ReqBody)localObject).with_activity_data.set(1);
+    a((oidb_cmd0xc46.ReqBody)localObject, paramRIJRequestDataForComment.f);
+    paramRIJRequestDataForComment = ReadInJoyOidbHelper.a("OidbSvc.0xc46", 3142, 6, ((oidb_cmd0xc46.ReqBody)localObject).toByteArray());
+    paramRIJRequestDataForComment.addAttribute("service_type", Integer.valueOf(6));
+    sendPbReq(paramRIJRequestDataForComment);
+  }
+  
+  @VisibleForTesting
+  void b(oidb_cmd0xc46.Comment paramComment, BaseCommentData paramBaseCommentData)
+  {
+    if (paramComment.activity.has()) {
+      paramBaseCommentData.activityCfgID = RIJPBFieldUtils.a(paramComment.activity.config_id);
+    }
+  }
+  
+  public void c(RIJRequestDataForComment paramRIJRequestDataForComment)
+  {
+    if (TextUtils.isEmpty(paramRIJRequestDataForComment.a))
     {
       QLog.d("ReadInJoyCommentPBModule", 2, "requestNewCommentList | articleId is null");
       return;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("requestNewCommentList | newCookie : ");
-    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(paramRIJRequestDataForComment.b);
     QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
     localObject = new oidb_cmd0xc46.ReqBody();
-    ((oidb_cmd0xc46.ReqBody)localObject).rowkey.set(paramString1);
-    ((oidb_cmd0xc46.ReqBody)localObject).page_cookie.set(ByteStringMicro.copyFromUtf8(paramString2));
-    ((oidb_cmd0xc46.ReqBody)localObject).page_size.set(paramInt1);
-    ((oidb_cmd0xc46.ReqBody)localObject).content_src.set(ReadInJoyCommentHelper.a(paramInt2));
+    ((oidb_cmd0xc46.ReqBody)localObject).rowkey.set(paramRIJRequestDataForComment.a);
+    ((oidb_cmd0xc46.ReqBody)localObject).page_cookie.set(ByteStringMicro.copyFromUtf8(paramRIJRequestDataForComment.b));
+    ((oidb_cmd0xc46.ReqBody)localObject).page_size.set(paramRIJRequestDataForComment.c);
+    ((oidb_cmd0xc46.ReqBody)localObject).content_src.set(ReadInJoyCommentHelper.a(paramRIJRequestDataForComment.d));
     ((oidb_cmd0xc46.ReqBody)localObject).with_activity_data.set(1);
-    paramString1 = new oidb_cmd0xc46.ReqParam();
-    paramString1.with_sub_comments.set(1);
-    paramString1.with_author_reply.set(1);
-    paramString1.with_style_data.set(1);
-    ((oidb_cmd0xc46.ReqBody)localObject).req_param.set(paramString1);
-    a((oidb_cmd0xc46.ReqBody)localObject, paramCommonCommentData);
-    paramInt1 = 0;
-    if (!TextUtils.isEmpty(paramString3))
+    oidb_cmd0xc46.ReqParam localReqParam = new oidb_cmd0xc46.ReqParam();
+    localReqParam.with_sub_comments.set(1);
+    localReqParam.with_author_reply.set(1);
+    localReqParam.with_style_data.set(1);
+    localReqParam.req_advertise_para.set(RIJCommentAdUtils.a(a(paramRIJRequestDataForComment, 2)));
+    ((oidb_cmd0xc46.ReqBody)localObject).req_param.set(localReqParam);
+    a((oidb_cmd0xc46.ReqBody)localObject, paramRIJRequestDataForComment.f);
+    int i = 0;
+    if (!TextUtils.isEmpty(paramRIJRequestDataForComment.e))
     {
-      ((oidb_cmd0xc46.ReqBody)localObject).anchor_id.set(paramString3);
-      paramInt1 = 1;
+      ((oidb_cmd0xc46.ReqBody)localObject).anchor_id.set(paramRIJRequestDataForComment.e);
+      i = 1;
     }
-    paramString1 = ReadInJoyOidbHelper.a("OidbSvc.0xc46", 3142, 2, ((oidb_cmd0xc46.ReqBody)localObject).toByteArray());
-    paramString1.addAttribute("service_type", Integer.valueOf(2));
-    if (paramInt1 != 0) {
-      paramString1.addAttribute("anchor_request", Integer.valueOf(1));
+    paramRIJRequestDataForComment = ReadInJoyOidbHelper.a("OidbSvc.0xc46", 3142, 2, ((oidb_cmd0xc46.ReqBody)localObject).toByteArray());
+    paramRIJRequestDataForComment.addAttribute("service_type", Integer.valueOf(2));
+    if (i != 0) {
+      paramRIJRequestDataForComment.addAttribute("anchor_request", Integer.valueOf(1));
     }
-    sendPbReq(paramString1);
+    sendPbReq(paramRIJRequestDataForComment);
   }
   
-  public void c(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, CommonCommentData paramCommonCommentData)
+  @VisibleForTesting
+  void c(oidb_cmd0xc46.Comment paramComment, BaseCommentData paramBaseCommentData)
   {
-    if (TextUtils.isEmpty(paramString1))
+    if (paramComment.user_identity_icon.has())
+    {
+      paramBaseCommentData.userIdentityIcon = new BaseCommentData.UserIdentityIcon();
+      paramBaseCommentData.userIdentityIcon.a = RIJPBFieldUtils.a(paramComment.user_identity_icon.identity_type);
+      paramBaseCommentData.userIdentityIcon.b = RIJPBFieldUtils.a(paramComment.user_identity_icon.icon_url, "");
+      paramBaseCommentData.userIdentityIcon.c = RIJPBFieldUtils.a(paramComment.user_identity_icon.summary, "");
+    }
+  }
+  
+  public void d(RIJRequestDataForComment paramRIJRequestDataForComment)
+  {
+    if (TextUtils.isEmpty(paramRIJRequestDataForComment.a))
     {
       QLog.d("ReadInJoyCommentPBModule", 2, "requestHotCommentList | articleId is null");
       return;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("requestHotCommentList | hotPageCookie : ");
-    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(paramRIJRequestDataForComment.b);
     QLog.d("ReadInJoyCommentPBModule", 1, ((StringBuilder)localObject).toString());
     localObject = new oidb_cmd0xc46.ReqBody();
-    ((oidb_cmd0xc46.ReqBody)localObject).rowkey.set(paramString1);
-    ((oidb_cmd0xc46.ReqBody)localObject).page_cookie.set(ByteStringMicro.copyFromUtf8(paramString2));
-    ((oidb_cmd0xc46.ReqBody)localObject).page_size.set(paramInt1);
-    ((oidb_cmd0xc46.ReqBody)localObject).content_src.set(ReadInJoyCommentHelper.a(paramInt2));
+    ((oidb_cmd0xc46.ReqBody)localObject).rowkey.set(paramRIJRequestDataForComment.a);
+    ((oidb_cmd0xc46.ReqBody)localObject).page_cookie.set(ByteStringMicro.copyFromUtf8(paramRIJRequestDataForComment.b));
+    ((oidb_cmd0xc46.ReqBody)localObject).page_size.set(paramRIJRequestDataForComment.c);
+    ((oidb_cmd0xc46.ReqBody)localObject).content_src.set(ReadInJoyCommentHelper.a(paramRIJRequestDataForComment.d));
     ((oidb_cmd0xc46.ReqBody)localObject).with_activity_data.set(1);
-    paramString1 = new oidb_cmd0xc46.ReqParam();
-    paramString1.with_sub_comments.set(1);
-    paramString1.with_author_reply.set(1);
-    paramString1.with_style_data.set(1);
-    ((oidb_cmd0xc46.ReqBody)localObject).req_param.set(paramString1);
-    a((oidb_cmd0xc46.ReqBody)localObject, paramCommonCommentData);
-    paramInt1 = 0;
-    if (!TextUtils.isEmpty(paramString3))
+    oidb_cmd0xc46.ReqParam localReqParam = new oidb_cmd0xc46.ReqParam();
+    localReqParam.with_sub_comments.set(1);
+    localReqParam.with_author_reply.set(1);
+    localReqParam.with_style_data.set(1);
+    localReqParam.req_advertise_para.set(RIJCommentAdUtils.a(a(paramRIJRequestDataForComment, 3)));
+    ((oidb_cmd0xc46.ReqBody)localObject).req_param.set(localReqParam);
+    a((oidb_cmd0xc46.ReqBody)localObject, paramRIJRequestDataForComment.f);
+    int i = 0;
+    if (!TextUtils.isEmpty(paramRIJRequestDataForComment.e))
     {
-      ((oidb_cmd0xc46.ReqBody)localObject).anchor_id.set(paramString3);
-      paramInt1 = 1;
+      ((oidb_cmd0xc46.ReqBody)localObject).anchor_id.set(paramRIJRequestDataForComment.e);
+      i = 1;
     }
-    paramString1 = ReadInJoyOidbHelper.a("OidbSvc.0xc46", 3142, 3, ((oidb_cmd0xc46.ReqBody)localObject).toByteArray());
-    paramString1.addAttribute("service_type", Integer.valueOf(3));
-    if (paramInt1 != 0) {
-      paramString1.addAttribute("anchor_request", Integer.valueOf(1));
+    paramRIJRequestDataForComment = ReadInJoyOidbHelper.a("OidbSvc.0xc46", 3142, 3, ((oidb_cmd0xc46.ReqBody)localObject).toByteArray());
+    paramRIJRequestDataForComment.addAttribute("service_type", Integer.valueOf(3));
+    if (i != 0) {
+      paramRIJRequestDataForComment.addAttribute("anchor_request", Integer.valueOf(1));
     }
-    sendPbReq(paramString1);
+    sendPbReq(paramRIJRequestDataForComment);
+  }
+  
+  @VisibleForTesting
+  void d(oidb_cmd0xc46.Comment paramComment, BaseCommentData paramBaseCommentData)
+  {
+    if (paramComment.account_level_info.has())
+    {
+      paramBaseCommentData.accountLevelInfo = new BaseCommentData.AccountLevelInfo();
+      paramBaseCommentData.accountLevelInfo.a = RIJPBFieldUtils.a(paramComment.account_level_info.uint32_account_cc_level);
+      paramBaseCommentData.accountLevelInfo.b = RIJPBFieldUtils.a(paramComment.account_level_info.account_cc_level_icon_s, "");
+    }
+    if (paramComment.activity_level.has()) {
+      paramBaseCommentData.activityLevel = ((oidb_cmd0xc46.ActivityLevel)paramComment.activity_level.get());
+    }
+  }
+  
+  @VisibleForTesting
+  void e(oidb_cmd0xc46.Comment paramComment, BaseCommentData paramBaseCommentData)
+  {
+    if (paramComment.jump_schema.has()) {}
+    try
+    {
+      paramBaseCommentData.flowGuidePtsData = new String(Base64Util.decode(paramComment.jump_schema.get(), 0), "utf-8");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("flowGuidePtsData : ");
+      localStringBuilder.append(paramBaseCommentData.flowGuidePtsData);
+      QLog.d("ReadInJoyCommentPBModule", 1, localStringBuilder.toString());
+      return;
+    }
+    catch (Exception paramBaseCommentData)
+    {
+      label71:
+      break label71;
+    }
+    paramBaseCommentData = new StringBuilder();
+    paramBaseCommentData.append("parseJumpSchema() parse with Exception");
+    paramBaseCommentData.append(paramComment.jump_schema.get());
+    QLog.d("ReadInJoyCommentPBModule", 1, paramBaseCommentData.toString());
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1463,6 +1563,7 @@ public class ReadInJoyCommentPBModule
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xc46"))
     {
       f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      g(paramToServiceMsg, paramFromServiceMsg, paramObject);
       if (((Integer)paramToServiceMsg.getAttributes().get("service_type")).intValue() == 1) {
         a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       } else if (((Integer)paramToServiceMsg.getAttributes().get("service_type")).intValue() == 4) {
@@ -1488,13 +1589,13 @@ public class ReadInJoyCommentPBModule
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver = null;
+    this.a = null;
     QLog.d("ReadInJoyCommentPBModule", 1, "unInitialize");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentPBModule
  * JD-Core Version:    0.7.0.1
  */

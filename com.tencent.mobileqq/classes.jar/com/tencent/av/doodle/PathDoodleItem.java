@@ -7,40 +7,33 @@ import android.graphics.PointF;
 public abstract class PathDoodleItem
   extends DoodleItem
 {
-  protected Path a;
-  protected PathMeasure a;
-  
-  public PathDoodleItem()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = null;
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
-  }
+  protected Path j = new Path();
+  protected PathMeasure k = null;
   
   public abstract void a();
   
   public void a(float paramFloat1, float paramFloat2)
   {
     super.a(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
-  }
-  
-  public void b(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (paramFloat1 + this.jdField_a_of_type_AndroidGraphicsPointF.x) / 2.0F, (paramFloat2 + this.jdField_a_of_type_AndroidGraphicsPointF.y) / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    this.j.reset();
+    this.j.moveTo(paramFloat1, paramFloat2);
+    this.k.setPath(this.j, false);
     a();
   }
   
   public void c(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    this.j.quadTo(this.h.x, this.h.y, (paramFloat1 + this.h.x) / 2.0F, (paramFloat2 + this.h.y) / 2.0F);
+    this.k.setPath(this.j, false);
+    a();
+  }
+  
+  public void d(float paramFloat1, float paramFloat2)
+  {
+    this.h.x = paramFloat1;
+    this.h.y = paramFloat2;
+    this.j.lineTo(this.h.x, this.h.y);
+    this.k.setPath(this.j, false);
     a();
   }
 }

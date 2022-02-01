@@ -53,29 +53,29 @@ public class SessionClearFragment
   extends PublicBaseFragment
   implements PublicFragmentActivityCallBackInterface
 {
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
-  private SessionClearFragment.SessionListAdapter jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter;
-  private PeakAppInterface jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface;
-  private MessageCleanManager jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager;
-  private INonMainProcAvatarLoader jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  List<CleanMessageItemInfo> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 0;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private INonMainProcAvatarLoader jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
-  private int jdField_c_of_type_Int = 0;
-  private INonMainProcAvatarLoader jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+  List<CleanMessageItemInfo> a;
+  private RecyclerView b;
+  private LinearLayoutManager c;
+  private SessionClearFragment.SessionListAdapter d;
+  private Button e;
+  private TextView f;
+  private Button g;
+  private RelativeLayout h;
+  private IAIOImageProvider i;
+  private int j = 0;
+  private INonMainProcAvatarLoader k;
+  private INonMainProcAvatarLoader l;
+  private INonMainProcAvatarLoader m;
+  private PeakAppInterface n;
+  private MessageCleanManager o;
+  private SparseArray<URLDrawable> p = new SparseArray();
+  private int q = 0;
+  private QQProgressDialog r;
+  private View s;
+  private Bitmap t;
+  private Activity u;
+  private int v = 0;
+  private LinearLayout w;
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2)
   {
@@ -106,18 +106,18 @@ public class SessionClearFragment
   private void a(int paramInt)
   {
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131713728));
+      this.e.setText(HardCodeUtil.a(2131911271));
     } else {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131713716));
+      this.e.setText(HardCodeUtil.a(2131911259));
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.j = paramInt;
   }
   
   private void a(Dialog paramDialog)
   {
     if (paramDialog != null)
     {
-      Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+      Object localObject = this.u;
       if ((localObject != null) && (!((Activity)localObject).isFinishing())) {
         try
         {
@@ -140,20 +140,20 @@ public class SessionClearFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377283));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377135));
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377728));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365494));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363756));
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getBaseActivity());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366202));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter = new SessionClearFragment.SessionListAdapter(this, new ArrayList());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new SessionClearFragment.5(this));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new SessionClearFragment.6(this));
-    paramView.findViewById(2131364711).setOnClickListener(new SessionClearFragment.7(this));
+    this.b = ((RecyclerView)paramView.findViewById(2131445670));
+    this.e = ((Button)paramView.findViewById(2131445510));
+    this.j = 0;
+    this.f = ((TextView)paramView.findViewById(2131446186));
+    this.g = ((Button)paramView.findViewById(2131431708));
+    this.h = ((RelativeLayout)paramView.findViewById(2131429680));
+    this.c = new LinearLayoutManager(getBaseActivity());
+    this.w = ((LinearLayout)paramView.findViewById(2131432490));
+    this.b.setLayoutManager(this.c);
+    this.d = new SessionClearFragment.SessionListAdapter(this, new ArrayList());
+    this.b.setAdapter(this.d);
+    this.e.setOnClickListener(new SessionClearFragment.5(this));
+    this.g.setOnClickListener(new SessionClearFragment.6(this));
+    paramView.findViewById(2131430817).setOnClickListener(new SessionClearFragment.7(this));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2, ImageView paramImageView, int paramInt3)
@@ -165,7 +165,7 @@ public class SessionClearFragment
       {
         paramString = a(paramString.toString(), paramInt1, paramInt2);
         if ((paramString instanceof URLDrawable)) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt3, (URLDrawable)paramString);
+          this.p.put(paramInt3, (URLDrawable)paramString);
         }
         paramImageView.setImageDrawable(paramString);
         return;
@@ -176,18 +176,18 @@ public class SessionClearFragment
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface());
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider == null)
+    this.n = ((PeakAppInterface)((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface());
+    if (this.i == null)
     {
-      Object localObject = (BinderWarpper)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
+      Object localObject = (BinderWarpper)this.u.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = IAIOImageProvider.Stub.a(((BinderWarpper)localObject).a);
+        this.i = IAIOImageProvider.Stub.a(((BinderWarpper)localObject).a);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("IAIOImageProvider is ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider);
+          ((StringBuilder)localObject).append(this.i);
           QLog.d("SessionClearFragment", 2, ((StringBuilder)localObject).toString());
         }
       }
@@ -196,83 +196,83 @@ public class SessionClearFragment
         throw new IllegalArgumentException("can't find Binder in Intent..");
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface());
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager = ((MessageCleanManager)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.a(new SessionClearFragment.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider);
-    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.jdField_a_of_type_AndroidAppActivity, 1);
-    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
-    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(new SessionClearFragment.2(this));
-    this.jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.jdField_a_of_type_AndroidAppActivity, 4);
-    this.jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
-    this.jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(new SessionClearFragment.3(this));
-    this.jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.jdField_a_of_type_AndroidAppActivity, 101);
-    this.jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
-    this.jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(new SessionClearFragment.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.b();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
+    this.n = ((PeakAppInterface)((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface());
+    this.o = ((MessageCleanManager)this.n.getManager(4));
+    this.o.a(new SessionClearFragment.1(this));
+    this.o.a(this.i);
+    this.k = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.u, 1);
+    this.k.a();
+    this.k.a(new SessionClearFragment.2(this));
+    this.l = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.u, 4);
+    this.l.a();
+    this.l.a(new SessionClearFragment.3(this));
+    this.m = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.u, 101);
+    this.m.a();
+    this.m.a(new SessionClearFragment.4(this));
+    this.o.b();
+    this.t = ImageUtil.k();
   }
   
   private void d()
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.getItemCount())
+    int i1 = 0;
+    while (i1 < this.d.getItemCount())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(i).a) {
-        localArrayList1.add(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(i));
+      if (this.d.a(i1).g) {
+        localArrayList1.add(this.d.a(i1));
       } else {
-        localArrayList2.add(this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(i));
+        localArrayList2.add(this.d.a(i1));
       }
-      i += 1;
+      i1 += 1;
     }
     if (localArrayList1.size() > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.a(localArrayList1);
+      this.o.a(localArrayList1);
       if (localArrayList2.size() == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.w.setVisibility(0);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(localArrayList2);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.d.a(localArrayList2);
+        this.f.setVisibility(8);
         a(0);
       }
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691487, 0).b(getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(this.u, 2, 2131888446, 0).show(getResources().getDimensionPixelSize(2131299920));
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131299168));
+    if (this.r == null) {
+      this.r = new QQProgressDialog(this.u, getResources().getDimensionPixelSize(2131299920));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131713723));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new SessionClearFragment.8(this));
+    this.r.setCancelable(false);
+    this.r.setCanceledOnTouchOutside(false);
+    this.r.a(HardCodeUtil.a(2131911266));
+    this.r.show();
+    this.r.a(new SessionClearFragment.8(this));
   }
   
   public void a(List<CleanMessageItemInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a(paramList);
+    this.d.a(paramList);
   }
   
   protected void b()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.r;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.r.dismiss();
     }
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.u = paramActivity;
     if (QLog.isColorLevel()) {
       QLog.d("SessionClearFragment", 2, "onAttach");
     }
@@ -283,7 +283,7 @@ public class SessionClearFragment
     if (QLog.isColorLevel()) {
       QLog.d("SessionClearFragment", 2, "onBackPressed");
     }
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.u.finish();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -292,15 +292,15 @@ public class SessionClearFragment
     if (QLog.isColorLevel()) {
       QLog.d("SessionClearFragment", 2, "onCreate");
     }
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().findViewById(16908290);
+    this.s = this.u.getWindow().getDecorView().findViewById(16908290);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      paramBundle = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      int i = ImmersiveUtils.getStatusBarHeight(getBaseActivity());
+      paramBundle = (LinearLayout.LayoutParams)this.s.getLayoutParams();
+      int i1 = ImmersiveUtils.getStatusBarHeight(getBaseActivity());
       if (paramBundle != null) {
-        paramBundle.setMargins(0, i, 0, 0);
+        paramBundle.setMargins(0, i1, 0, 0);
       }
-      this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(0);
+      this.s.setSystemUiVisibility(0);
     }
     c();
   }
@@ -310,7 +310,7 @@ public class SessionClearFragment
     if (QLog.isColorLevel()) {
       QLog.d("SessionClearFragment", 2, "onCreateView");
     }
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562834, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131629279, paramViewGroup, false);
     a(paramLayoutInflater);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -322,15 +322,15 @@ public class SessionClearFragment
     if (QLog.isColorLevel()) {
       QLog.d("SessionClearFragment", 2, "onDestroy");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageCleanManager.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.b();
-    this.jdField_b_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.b();
-    this.jdField_c_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.b();
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    this.o.onDestroy();
+    this.k.c();
+    this.l.c();
+    this.m.c();
+    QQProgressDialog localQQProgressDialog = this.r;
     if (localQQProgressDialog != null) {
       localQQProgressDialog.dismiss();
     }
-    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.u = null;
   }
   
   public void onNewIntent(Intent paramIntent)
@@ -343,7 +343,7 @@ public class SessionClearFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment
  * JD-Core Version:    0.7.0.1
  */

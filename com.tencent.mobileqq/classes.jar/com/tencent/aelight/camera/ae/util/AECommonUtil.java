@@ -136,12 +136,12 @@ public class AECommonUtil
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (TextUtils.isEmpty("8.7.0")) {
+      if (TextUtils.isEmpty("8.8.17")) {
         return false;
       }
       String[] arrayOfString1 = paramString1.split("\\.");
       String[] arrayOfString2 = paramString2.split("\\.");
-      paramString1 = "8.7.0".split("\\.");
+      paramString1 = "8.8.17".split("\\.");
       int i = Math.min(arrayOfString1.length, Math.min(arrayOfString2.length, paramString1.length));
       paramString2 = a(arrayOfString1, i);
       arrayOfString1 = a(arrayOfString2, i);
@@ -192,7 +192,7 @@ public class AECommonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.util.AECommonUtil
  * JD-Core Version:    0.7.0.1
  */

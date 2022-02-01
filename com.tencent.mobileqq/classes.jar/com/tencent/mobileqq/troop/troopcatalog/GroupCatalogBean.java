@@ -5,32 +5,32 @@ import java.util.ArrayList;
 public class GroupCatalogBean
 {
   public int a;
-  public GroupCatalogBean a;
-  public String a;
-  public ArrayList<GroupCatalogBean> a;
   public String b;
+  public String c;
+  public ArrayList<GroupCatalogBean> d;
+  public GroupCatalogBean e;
   
   private GroupCatalogBean() {}
   
   public GroupCatalogBean(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.a = paramInt;
+    this.c = paramString1;
+    this.b = paramString2;
   }
   
   public String a()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.b;
     GroupCatalogBean localGroupCatalogBean = this;
     for (;;)
     {
-      localGroupCatalogBean = localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean;
+      localGroupCatalogBean = localGroupCatalogBean.e;
       if (localGroupCatalogBean == null) {
         break;
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localGroupCatalogBean.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(localGroupCatalogBean.b);
       localStringBuilder.append("-");
       localStringBuilder.append(str);
       str = localStringBuilder.toString();
@@ -38,27 +38,27 @@ public class GroupCatalogBean
     return str;
   }
   
-  public void a(GroupCatalogBean paramGroupCatalogBean)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramGroupCatalogBean);
-  }
-  
   public boolean a(GroupCatalogBean paramGroupCatalogBean)
   {
-    if ((paramGroupCatalogBean != null) && (paramGroupCatalogBean.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
+    if ((paramGroupCatalogBean != null) && (paramGroupCatalogBean.a + 1 == this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean = paramGroupCatalogBean;
+      this.e = paramGroupCatalogBean;
       return true;
     }
     return false;
   }
+  
+  public void b(GroupCatalogBean paramGroupCatalogBean)
+  {
+    if (this.d == null) {
+      this.d = new ArrayList();
+    }
+    this.d.add(paramGroupCatalogBean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcatalog.GroupCatalogBean
  * JD-Core Version:    0.7.0.1
  */

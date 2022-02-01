@@ -22,7 +22,7 @@ final class Argument$data$2
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(this.this$0.d());
+      JSONObject localJSONObject = new JSONObject(this.this$0.g());
       return localJSONObject;
     }
     catch (Throwable localThrowable)
@@ -30,7 +30,7 @@ final class Argument$data$2
       String str = String.valueOf(this.this$0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("parse rawParams:");
-      localStringBuilder.append(this.this$0.d());
+      localStringBuilder.append(this.this$0.g());
       localStringBuilder.append(" exception:");
       QLog.e(str, 1, localStringBuilder.toString(), localThrowable);
     }
@@ -39,7 +39,7 @@ final class Argument$data$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.model.Argument.data.2
  * JD-Core Version:    0.7.0.1
  */

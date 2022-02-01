@@ -14,48 +14,48 @@ class DiscussionView$MyDiscussionObserver
   
   protected void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    this.a.m.notifyDataSetChanged();
   }
   
   protected void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.a.i();
+      this.a.j();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    if (this.a.c)
+    this.a.m.notifyDataSetChanged();
+    if (this.a.n)
     {
       DiscussionView localDiscussionView = this.a;
-      localDiscussionView.c = false;
+      localDiscussionView.n = false;
       if (paramBoolean)
       {
         DiscussionView.a(localDiscussionView).a(0);
         this.a.a(100, 800L);
         return;
       }
-      localDiscussionView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-      this.a.b(2131719247);
+      localDiscussionView.l.springBackOverScrollHeaderView();
+      this.a.a(2131916799);
     }
   }
   
   protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
   {
     if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+      this.a.m.notifyDataSetChanged();
     }
   }
   
   protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
     if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+      this.a.m.notifyDataSetChanged();
     }
   }
   
   protected void a(boolean paramBoolean, long paramLong)
   {
     if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+      this.a.m.notifyDataSetChanged();
     }
   }
   
@@ -70,31 +70,31 @@ class DiscussionView$MyDiscussionObserver
       localStringBuilder.append(paramLong);
       QLog.d("DiscussionView", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    this.a.m.notifyDataSetChanged();
   }
   
   protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    this.a.m.notifyDataSetChanged();
   }
   
   protected void a(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+      this.a.m.notifyDataSetChanged();
     }
   }
   
   protected void a(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+      this.a.m.notifyDataSetChanged();
     }
   }
   
   protected void b()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    this.a.m.notifyDataSetChanged();
   }
   
   protected void b(boolean paramBoolean, Long paramLong)
@@ -108,19 +108,19 @@ class DiscussionView$MyDiscussionObserver
       localStringBuilder.append(paramLong);
       QLog.d("DiscussionView", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    this.a.m.notifyDataSetChanged();
   }
   
   protected void b(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+      this.a.m.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.DiscussionView.MyDiscussionObserver
  * JD-Core Version:    0.7.0.1
  */

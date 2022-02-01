@@ -12,7 +12,7 @@ class TroopAppShortcutBarHelper$1
   
   public void a()
   {
-    if ((TroopAppShortcutBarHelper.a(this.a) != null) && (TroopAppShortcutBarHelper.a(this.a).a()))
+    if ((TroopAppShortcutBarHelper.a(this.a) != null) && (TroopAppShortcutBarHelper.a(this.a).f()))
     {
       if (QLog.isColorLevel()) {
         QLog.e("TroopAppShortcutBarHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel.reportAppShortcutBarItem()");
@@ -23,14 +23,14 @@ class TroopAppShortcutBarHelper$1
     {
       QLog.e("TroopAppShortcutBarHelper", 2, "ShortcutBarAioHelper.init  mAppShortcutBarView.setOnScrollChangedListener mAppPanel is null");
     }
-    if ((TroopAppShortcutBarHelper.a(this.a) != null) && (TroopAppShortcutBarHelper.a(this.a).a())) {
-      TroopAppShortcutBarHelper.a(this.a).e();
+    if ((TroopAppShortcutBarHelper.b(this.a) != null) && (TroopAppShortcutBarHelper.b(this.a).e())) {
+      TroopAppShortcutBarHelper.b(this.a).f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAppShortcutBarHelper.1
  * JD-Core Version:    0.7.0.1
  */

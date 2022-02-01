@@ -20,18 +20,18 @@ public class RecentConfessItemBuilder
     paramObject = super.a(paramInt, paramObject, paramRecentFaceDecoder, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramOnDragModeChangedListener);
     paramRecentFaceDecoder = (RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder)paramObject.getTag();
     paramViewGroup = paramContext.getResources();
-    paramView = paramViewGroup.getColorStateList(2131167138);
-    paramViewGroup = paramViewGroup.getColorStateList(2131167056);
-    paramRecentFaceDecoder.a.setTextColor(paramViewGroup);
-    paramRecentFaceDecoder.b.setTextColor(paramView);
-    paramRecentFaceDecoder.a.setExtendTextColor(paramView, 0);
-    paramObject.findViewById(2131376384).setBackgroundResource(2130839390);
+    paramView = paramViewGroup.getColorStateList(2131168118);
+    paramViewGroup = paramViewGroup.getColorStateList(2131167993);
+    paramRecentFaceDecoder.d.setTextColor(paramViewGroup);
+    paramRecentFaceDecoder.g.setTextColor(paramView);
+    paramRecentFaceDecoder.d.setExtendTextColor(paramView, 0);
+    paramObject.findViewById(2131444600).setBackgroundResource(2130839574);
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentConfessItemBuilder
  * JD-Core Version:    0.7.0.1
  */

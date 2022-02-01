@@ -10,13 +10,13 @@ class QzoneSlideShowPreparingFragment$4$1
   
   public void run()
   {
-    QzoneSlideShowPreparingFragment.a(this.a.a).setProgress(99);
-    QzoneSlideShowPreparingFragment.a(this.a.a).setText("99%");
+    QzoneSlideShowPreparingFragment.b(this.a.a).setProgress(99);
+    QzoneSlideShowPreparingFragment.c(this.a.a).setText("99%");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,13 @@ class GroupVideoLoadingFragment$3
   public void handleMessage(Message paramMessage)
   {
     int i = paramMessage.arg1;
-    if (i < GroupVideoLoadingFragment.a(this.a)) {
+    if (i < GroupVideoLoadingFragment.f(this.a)) {
       return;
     }
     GroupVideoLoadingFragment.b(this.a, i);
-    GroupVideoLoadingFragment.a(this.a).a(GroupVideoLoadingFragment.a(this.a), 0L);
+    GroupVideoLoadingFragment.c(this.a).a(GroupVideoLoadingFragment.f(this.a), 0L);
     paramMessage = Message.obtain();
-    if (GroupVideoLoadingFragment.a(this.a) >= 90) {
+    if (GroupVideoLoadingFragment.f(this.a) >= 90) {
       i += 1;
     } else {
       i += 8;
@@ -32,7 +32,7 @@ class GroupVideoLoadingFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment.3
  * JD-Core Version:    0.7.0.1
  */

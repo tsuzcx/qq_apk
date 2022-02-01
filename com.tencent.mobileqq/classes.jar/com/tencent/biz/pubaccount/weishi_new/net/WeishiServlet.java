@@ -16,10 +16,10 @@ public class WeishiServlet
 {
   private String a(WeishiRequest paramWeishiRequest, String paramString)
   {
-    WeSeeConfigBean localWeSeeConfigBean = WSConfigManager.a().a();
+    WeSeeConfigBean localWeSeeConfigBean = WSConfigManager.a().b();
     boolean bool;
-    if ((localWeSeeConfigBean != null) && (localWeSeeConfigBean.a != null)) {
-      bool = localWeSeeConfigBean.a.a();
+    if ((localWeSeeConfigBean != null) && (localWeSeeConfigBean.d != null)) {
+      bool = localWeSeeConfigBean.d.a();
     } else {
       bool = false;
     }
@@ -44,7 +44,7 @@ public class WeishiServlet
     {
       paramIntent = (WeishiIntent)paramIntent;
       if (paramIntent.a != null) {
-        paramIntent.a.a.a(paramFromServiceMsg);
+        paramIntent.a.g.a(paramFromServiceMsg);
       }
     }
   }
@@ -62,14 +62,14 @@ public class WeishiServlet
       {
         Object localObject3 = (WeishiIntent)paramIntent;
         WeishiTask localWeishiTask = ((WeishiIntent)localObject3).a;
-        WeishiRequest localWeishiRequest = localWeishiTask.a;
+        WeishiRequest localWeishiRequest = localWeishiTask.g;
         Object localObject2 = localWeishiRequest.encode();
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("onSend request encode result is null.cmd=");
-          ((StringBuilder)localObject1).append(localWeishiTask.a.uniKey());
+          ((StringBuilder)localObject1).append(localWeishiTask.g.uniKey());
           Log.e("weishi-Servlet", ((StringBuilder)localObject1).toString());
           localObject1 = new byte[4];
         }
@@ -77,21 +77,21 @@ public class WeishiServlet
         paramPacket.setTimeout(l);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("request = ");
-        ((StringBuilder)localObject2).append(localWeishiTask.a.getCmdString());
+        ((StringBuilder)localObject2).append(localWeishiTask.g.getCmdString());
         ((StringBuilder)localObject2).append("; timeout:");
         ((StringBuilder)localObject2).append(l);
         WSLog.d("weishi-Servlet", ((StringBuilder)localObject2).toString());
-        localObject2 = a(localWeishiRequest, localWeishiRequest.d());
+        localObject2 = a(localWeishiRequest, localWeishiRequest.i());
         paramPacket.setSSOCommand((String)localObject2);
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("SSO命令字: ");
         ((StringBuilder)localObject3).append((String)localObject2);
         Log.i("weishi-Servlet", ((StringBuilder)localObject3).toString());
-        localWeishiRequest.e = localObject1.length;
+        localWeishiRequest.k = localObject1.length;
         paramPacket.putSendData((byte[])localObject1);
         paramPacket = new StringBuilder();
         paramPacket.append("onSend request cmd=");
-        paramPacket.append(localWeishiTask.a.uniKey());
+        paramPacket.append(localWeishiTask.g.uniKey());
         paramPacket.append(" is correct");
         Log.i("weishi-Servlet", paramPacket.toString());
       }
@@ -99,7 +99,7 @@ public class WeishiServlet
       {
         Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
       }
-      ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
+      ((WeishiIntent)paramIntent).a.g.g = System.currentTimeMillis();
       return;
     }
     catch (Exception paramIntent)
@@ -113,7 +113,7 @@ public class WeishiServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiServlet
  * JD-Core Version:    0.7.0.1
  */

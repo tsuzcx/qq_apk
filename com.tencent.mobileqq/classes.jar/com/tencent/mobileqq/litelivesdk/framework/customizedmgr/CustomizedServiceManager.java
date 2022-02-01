@@ -12,19 +12,9 @@ import java.util.Set;
 
 public class CustomizedServiceManager
 {
-  public static CustomizedServiceManager a;
-  Map<String, Map<Class<? extends ServiceBaseInterface>, Class<? extends BaseServiceBuilder>>> a;
+  public static CustomizedServiceManager c = new CustomizedServiceManager();
+  Map<String, Map<Class<? extends ServiceBaseInterface>, Class<? extends BaseServiceBuilder>>> a = new Hashtable();
   Map<String, Map<Integer, Class<? extends BaseSDKPageBizBootModules>>> b = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkCustomizedmgrCustomizedServiceManager = new CustomizedServiceManager();
-  }
-  
-  private CustomizedServiceManager()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new Hashtable();
-  }
   
   public Map<Integer, Class<? extends BaseSDKPageBizBootModules>> a(String paramString)
   {
@@ -33,14 +23,8 @@ public class CustomizedServiceManager
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.a.clear();
     this.b.clear();
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    this.b.remove(paramString);
   }
   
   public void a(String paramString, int paramInt, Class<? extends BaseSDKPageBizBootModules> paramClass)
@@ -57,19 +41,19 @@ public class CustomizedServiceManager
   
   public void a(String paramString, Class<? extends ServiceBaseInterface> paramClass, Class<? extends BaseServiceBuilder> paramClass1)
   {
-    Map localMap = (Map)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    Map localMap = (Map)this.a.get(paramString);
     Object localObject = localMap;
     if (localMap == null)
     {
       localObject = new HashMap();
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      this.a.put(paramString, localObject);
     }
     ((Map)localObject).put(paramClass, paramClass1);
   }
   
   public void a(String paramString, Map<Class<? extends ServiceBaseInterface>, BaseServiceBuilder> paramMap)
   {
-    paramString = (Map)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (Map)this.a.get(paramString);
     if ((paramString != null) && (paramString.size() > 0))
     {
       Iterator localIterator = paramString.keySet().iterator();
@@ -97,7 +81,7 @@ public class CustomizedServiceManager
   
   public Map<Class<? extends ServiceBaseInterface>, Class<? extends BaseServiceBuilder>> b(String paramString)
   {
-    return (Map)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    return (Map)this.a.get(paramString);
   }
   
   public void b(String paramString, Map<Integer, BizModulesBuilder> paramMap)
@@ -113,10 +97,16 @@ public class CustomizedServiceManager
       }
     }
   }
+  
+  public void c(String paramString)
+  {
+    this.a.remove(paramString);
+    this.b.remove(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.customizedmgr.CustomizedServiceManager
  * JD-Core Version:    0.7.0.1
  */

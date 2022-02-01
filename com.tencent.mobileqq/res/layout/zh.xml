@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingBottom="17.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/g7l" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="24.0dip" />
-    <ImageButton android:gravity="center_vertical" android:id="@id/g76" android:background="@null" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/d_z" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" android:contentDescription="@string/sf" />
-    <ImageButton android:gravity="center_vertical" android:id="@id/m1o" android:background="@null" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="18.0dip" android:src="@drawable/hsj" android:layout_toRightOf="@id/g76" android:layout_alignParentTop="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" android:contentDescription="@string/ipu" />
-    <RelativeLayout android:id="@id/huk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/m1o">
-        <ImageView android:id="@id/hk9" android:background="@drawable/chz" android:layout_width="13.0dip" android:layout_height="8.0dip" android:layout_marginLeft="65.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/hul" android:background="@drawable/ci0" android:paddingLeft="10.0dip" android:paddingTop="11.0dip" android:paddingRight="10.0dip" android:paddingBottom="11.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:includeFontPadding="false" android:layout_below="@id/hk9" />
+    <RelativeLayout android:id="@id/p60" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/g7l" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="36.0dip" />
+        <ImageButton android:gravity="center_vertical" android:id="@id/g76" android:background="@null" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/d_z" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" android:contentDescription="@string/sf" />
+        <include android:id="@id/e7g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" layout="@layout/y6" />
+        <include android:id="@id/oc3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" layout="@layout/cqd" />
+        <include layout="@layout/za" />
     </RelativeLayout>
-    <include android:id="@id/e7g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" layout="@layout/y6" />
-    <include android:id="@id/nf6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" layout="@layout/cmz" />
-    <include layout="@layout/za" />
+    <RelativeLayout android:id="@id/p5z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/p60">
+        <TextView android:textSize="16.0dip" android:textColor="@color/mn" android:ellipsize="marquee" android:id="@id/bgz" android:visibility="visible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:singleLine="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/mn" android:id="@id/quf" android:visibility="visible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+    </RelativeLayout>
 </RelativeLayout>

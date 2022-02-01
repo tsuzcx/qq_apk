@@ -11,22 +11,22 @@ class ToastUtil$3
   
   public void run()
   {
-    if (this.this$0.b == null)
+    if (this.this$0.c == null)
     {
-      this.this$0.b = new Toast(CommonDataAdapter.a().a());
-      this.this$0.b.setView(this.jdField_a_of_type_AndroidViewView);
-      this.this$0.b.setDuration(this.jdField_a_of_type_Int);
-      this.this$0.b.show();
+      this.this$0.c = new Toast(CommonDataAdapter.a().b());
+      this.this$0.c.setView(this.a);
+      this.this$0.c.setDuration(this.b);
+      this.this$0.c.show();
       return;
     }
-    this.this$0.b.setView(this.jdField_a_of_type_AndroidViewView);
-    this.this$0.b.setDuration(this.jdField_a_of_type_Int);
-    this.this$0.b.show();
+    this.this$0.c.setView(this.a);
+    this.this$0.c.setDuration(this.b);
+    this.this$0.c.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.ToastUtil.3
  * JD-Core Version:    0.7.0.1
  */

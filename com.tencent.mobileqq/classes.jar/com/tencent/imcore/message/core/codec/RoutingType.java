@@ -8,15 +8,15 @@ public abstract interface RoutingType<T extends AppInterface>
 {
   public abstract int a();
   
-  public abstract boolean a();
-  
   public abstract boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, T paramT);
   
-  public abstract int b();
+  public abstract boolean b();
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.core.codec.RoutingType
  * JD-Core Version:    0.7.0.1
  */

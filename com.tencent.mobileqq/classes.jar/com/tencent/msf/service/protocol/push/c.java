@@ -3,11 +3,14 @@ package com.tencent.msf.service.protocol.push;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public final class c
   extends JceStruct
 {
-  static byte[] q;
+  static byte[] v = (byte[])new byte[1];
+  static ArrayList w;
   public long a = 0L;
   public long b = 0L;
   public String c = "";
@@ -24,10 +27,22 @@ public final class c
   public String n = "";
   public String o = "";
   public String p = "";
+  public ArrayList q = null;
+  public long r = 0L;
+  public long s = 0L;
+  public int t = 0;
+  public byte u = 1;
+  
+  static
+  {
+    ((byte[])v)[0] = 0;
+    w = new ArrayList();
+    w.add(Long.valueOf(0L));
+  }
   
   public c() {}
   
-  public c(long paramLong1, long paramLong2, String paramString1, int paramInt1, byte paramByte1, byte paramByte2, byte paramByte3, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, String paramString2, String paramString3, String paramString4)
+  public c(long paramLong1, long paramLong2, String paramString1, int paramInt1, byte paramByte1, byte paramByte2, byte paramByte3, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, String paramString2, String paramString3, String paramString4, ArrayList paramArrayList, long paramLong3, long paramLong4, int paramInt7, byte paramByte4)
   {
     this.a = paramLong1;
     this.b = paramLong2;
@@ -45,6 +60,11 @@ public final class c
     this.n = paramString2;
     this.o = paramString3;
     this.p = paramString4;
+    this.q = paramArrayList;
+    this.r = paramLong3;
+    this.s = paramLong4;
+    this.t = paramInt7;
+    this.u = paramByte4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -61,15 +81,15 @@ public final class c
     this.j = paramJceInputStream.read(this.j, 9, false);
     this.k = paramJceInputStream.read(this.k, 10, false);
     this.l = paramJceInputStream.read(this.l, 11, false);
-    if (q == null)
-    {
-      q = (byte[])new byte[1];
-      ((byte[])q)[0] = 0;
-    }
-    this.m = ((byte[])paramJceInputStream.read(q, 12, false));
+    this.m = ((byte[])paramJceInputStream.read(v, 12, false));
     this.n = paramJceInputStream.readString(13, false);
     this.o = paramJceInputStream.readString(14, false);
     this.p = paramJceInputStream.readString(15, false);
+    this.q = ((ArrayList)paramJceInputStream.read(w, 16, false));
+    this.r = paramJceInputStream.read(this.r, 17, false);
+    this.s = paramJceInputStream.read(this.s, 18, false);
+    this.t = paramJceInputStream.read(this.t, 19, false);
+    this.u = paramJceInputStream.read(this.u, 20, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -102,11 +122,19 @@ public final class c
     if (localObject != null) {
       paramJceOutputStream.write((String)localObject, 15);
     }
+    localObject = this.q;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 16);
+    }
+    paramJceOutputStream.write(this.r, 17);
+    paramJceOutputStream.write(this.s, 18);
+    paramJceOutputStream.write(this.t, 19);
+    paramJceOutputStream.write(this.u, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.c
  * JD-Core Version:    0.7.0.1
  */

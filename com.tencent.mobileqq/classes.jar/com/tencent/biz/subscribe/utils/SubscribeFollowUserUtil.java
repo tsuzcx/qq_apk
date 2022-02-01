@@ -39,7 +39,7 @@ public class SubscribeFollowUserUtil
   
   public static void a(Context paramContext, String paramString1, String paramString2, SubscribeFollowUserUtil.ResultListener paramResultListener)
   {
-    a(paramContext, paramString1, true, paramString2, 2131696446, paramResultListener);
+    a(paramContext, paramString1, true, paramString2, 2131894218, paramResultListener);
   }
   
   public static void a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2, int paramInt, SubscribeFollowUserUtil.ResultListener paramResultListener)
@@ -49,10 +49,10 @@ public class SubscribeFollowUserUtil
     }
     ActionSheet localActionSheet = ActionSheet.create(paramContext);
     if (paramBoolean) {
-      localActionSheet.setMainTitle(String.format(paramContext.getResources().getString(2131695273), new Object[] { paramString2 }));
+      localActionSheet.setMainTitle(String.format(paramContext.getResources().getString(2131893008), new Object[] { paramString2 }));
     }
     localActionSheet.addButton(paramInt, 3);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnDismissListener(new SubscribeFollowUserUtil.1());
     localActionSheet.setOnBottomCancelListener(new SubscribeFollowUserUtil.2(paramResultListener, paramString1, localActionSheet));
     localActionSheet.setOnButtonClickListener(new SubscribeFollowUserUtil.3(paramContext, paramString1, paramResultListener, localActionSheet));
@@ -65,7 +65,7 @@ public class SubscribeFollowUserUtil
   
   public static void b(Context paramContext, String paramString, SubscribeFollowUserUtil.ResultListener paramResultListener)
   {
-    a(paramContext, paramString, false, "", 2131695271, paramResultListener);
+    a(paramContext, paramString, false, "", 2131893006, paramResultListener);
   }
   
   public static void c(Context paramContext, String paramString, SubscribeFollowUserUtil.ResultListener paramResultListener)

@@ -28,15 +28,15 @@ final class FastWebRequestUtil$6
     {
       try
       {
-        Object localObject2 = RIJQQAppInterfaceUtil.a();
-        String str3 = ((TicketManager)((QQAppInterface)ReadInJoyUtils.a()).getManager(2)).getSkey((String)localObject2);
+        Object localObject2 = RIJQQAppInterfaceUtil.d();
+        String str3 = ((TicketManager)((QQAppInterface)ReadInJoyUtils.b()).getManager(2)).getSkey((String)localObject2);
         Bundle localBundle = new Bundle();
         localBundle.putString("type", "1");
-        localBundle.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.publishUin));
+        localBundle.putString("uin", String.valueOf(this.a.publishUin));
         Object localObject1 = str2;
-        if (!RIJItemViewTypeUtils.e(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+        if (!RIJItemViewTypeUtils.e(this.a))
         {
-          if (!RIJItemViewTypeUtils.m(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) {
+          if (!RIJItemViewTypeUtils.m(this.a)) {
             break label388;
           }
           localObject1 = str2;
@@ -68,7 +68,7 @@ final class FastWebRequestUtil$6
         localObject1 = new JSONObject((String)localObject1).getJSONObject("result");
         int i = ((JSONObject)localObject1).getInt("retCode");
         localObject1 = ((JSONObject)localObject1).getString("retMsg");
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebFeedbackCallback != null)
+        if (this.b != null)
         {
           ThreadManager.getUIHandler().post(new FastWebRequestUtil.6.1(this, i, (String)localObject1));
           return;
@@ -76,7 +76,7 @@ final class FastWebRequestUtil$6
       }
       catch (Throwable localThrowable)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFastwebFeedbackCallback != null) {
+        if (this.b != null) {
           ThreadManager.getUIHandler().post(new FastWebRequestUtil.6.2(this, localThrowable));
         }
         QLog.d("FastWebRequestUtil", 2, "shieldFeedSource exception. ", localThrowable);
@@ -89,7 +89,7 @@ final class FastWebRequestUtil$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebRequestUtil.6
  * JD-Core Version:    0.7.0.1
  */

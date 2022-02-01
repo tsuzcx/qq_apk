@@ -18,15 +18,15 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class TroopMemberListHandlerProcessorConfig
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ArrayList<AbsTroopMemberListHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicBoolean a = new AtomicBoolean(false);
+  private static final Object b = new Object();
+  private static ArrayList<AbsTroopMemberListHandlerProcessor> c = new ArrayList();
   
   public static void a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      if (a.get()) {
         return;
       }
       if (TroopCustomizedProcessorRegister.g != null)
@@ -38,7 +38,7 @@ public class TroopMemberListHandlerProcessorConfig
           try
           {
             localObject3 = (AbsTroopMemberListHandlerProcessor)((Class)localObject3).newInstance();
-            jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+            c.add(localObject3);
           }
           catch (Throwable localThrowable)
           {
@@ -46,7 +46,7 @@ public class TroopMemberListHandlerProcessorConfig
           }
         }
       }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      a.set(true);
       return;
     }
     for (;;)
@@ -57,7 +57,7 @@ public class TroopMemberListHandlerProcessorConfig
   
   public static void a(long paramLong, List<oidb_0x899.memberlist> paramList)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMemberListHandlerProcessor)localIterator.next()).a(paramLong, paramList);
     }
@@ -65,7 +65,7 @@ public class TroopMemberListHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, TroopInfo paramTroopInfo, ArrayList<String> paramArrayList)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMemberListHandlerProcessor)localIterator.next()).a(paramAppInterface, paramTroopInfo, paramArrayList);
     }
@@ -73,7 +73,7 @@ public class TroopMemberListHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, String paramString, long paramLong)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMemberListHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString, paramLong);
     }
@@ -81,7 +81,7 @@ public class TroopMemberListHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, String paramString, ArrayList<stTroopMemberInfo> paramArrayList)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMemberListHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString, paramArrayList);
     }
@@ -89,7 +89,7 @@ public class TroopMemberListHandlerProcessorConfig
   
   public static void a(@NonNull TroopMemberCard paramTroopMemberCard, oidb_0x787.MemberLevelInfo paramMemberLevelInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMemberListHandlerProcessor)localIterator.next()).a(paramTroopMemberCard, paramMemberLevelInfo);
     }
@@ -97,7 +97,7 @@ public class TroopMemberListHandlerProcessorConfig
   
   public static void a(@NonNull TroopMemberCardInfo paramTroopMemberCardInfo, stTroopMemberInfo paramstTroopMemberInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMemberListHandlerProcessor)localIterator.next()).a(paramTroopMemberCardInfo, paramstTroopMemberInfo);
     }
@@ -105,7 +105,7 @@ public class TroopMemberListHandlerProcessorConfig
   
   public static void a(@NonNull TroopMemberInfo paramTroopMemberInfo, stTroopMemberInfo paramstTroopMemberInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMemberListHandlerProcessor)localIterator.next()).a(paramTroopMemberInfo, paramstTroopMemberInfo);
     }
@@ -113,7 +113,7 @@ public class TroopMemberListHandlerProcessorConfig
   
   public static void b(@NonNull TroopMemberInfo paramTroopMemberInfo, stTroopMemberInfo paramstTroopMemberInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMemberListHandlerProcessor)localIterator.next()).b(paramTroopMemberInfo, paramstTroopMemberInfo);
     }
@@ -121,7 +121,7 @@ public class TroopMemberListHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopMemberListHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

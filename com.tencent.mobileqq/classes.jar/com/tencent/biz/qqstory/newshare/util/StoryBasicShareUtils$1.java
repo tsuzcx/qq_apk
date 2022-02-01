@@ -13,7 +13,7 @@ final class StoryBasicShareUtils$1
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
+    if (!this.a.equals(paramBaseResp.transaction)) {
       return;
     }
     int i = paramBaseResp.errCode;
@@ -23,32 +23,32 @@ final class StoryBasicShareUtils$1
       {
         if (i != 0)
         {
-          paramBaseResp = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback;
+          paramBaseResp = this.b;
           if (paramBaseResp != null) {
-            paramBaseResp.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
+            paramBaseResp.b(this.c);
           }
         }
         else
         {
-          paramBaseResp = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback;
+          paramBaseResp = this.b;
           if (paramBaseResp != null) {
-            paramBaseResp.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
+            paramBaseResp.a(this.c);
           }
         }
       }
       else
       {
-        paramBaseResp = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback;
+        paramBaseResp = this.b;
         if (paramBaseResp != null) {
-          paramBaseResp.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
+          paramBaseResp.c(this.c);
         }
       }
     }
     else
     {
-      paramBaseResp = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback;
+      paramBaseResp = this.b;
       if (paramBaseResp != null) {
-        paramBaseResp.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData);
+        paramBaseResp.b(this.c);
       }
     }
     WXShareHelper.a().b(this);
@@ -56,7 +56,7 @@ final class StoryBasicShareUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils.1
  * JD-Core Version:    0.7.0.1
  */

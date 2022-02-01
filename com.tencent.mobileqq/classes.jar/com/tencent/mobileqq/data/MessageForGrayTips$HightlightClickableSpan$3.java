@@ -16,7 +16,7 @@ class MessageForGrayTips$HightlightClickableSpan$3
     MsgNotifyPushDialog.a((QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.this$0).get());
     try
     {
-      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(MsgNotifyPushDialog.a);
+      MessageForGrayTips.HightlightClickableSpan.access$100(this.this$0).startActivity(MsgNotifyPushDialog.n);
       return;
     }
     catch (Exception localException)
@@ -33,7 +33,7 @@ class MessageForGrayTips$HightlightClickableSpan$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan.3
  * JD-Core Version:    0.7.0.1
  */

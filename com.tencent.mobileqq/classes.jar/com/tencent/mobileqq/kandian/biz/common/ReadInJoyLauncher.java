@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.os.Parcel;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.launcher.ILauncher;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyJumpUtils;
-import com.tencent.mobileqq.kandian.biz.detail.web.api.IRIJWebArticleOptimizeUtil;
-import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsHelper;
+import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
-import com.tencent.mobileqq.kandian.biz.viola.api.IViolaAccessHelper;
+import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticleOptimizeUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -57,12 +55,12 @@ public class ReadInJoyLauncher
     ((Bundle)localObject2).putLong("VIDEO_PLAY_POSITION", paramColorNote.mExtLong);
     ((Bundle)localObject2).putParcelable("VIDEO_OBJ", localVideoInfo);
     ((Bundle)localObject2).putBoolean("force_enter_native_video_feeds", true);
-    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).openVideoFeedsPlayActivity(paramContext, (Bundle)localObject2, false, 32);
+    VideoFeedsHelper.a(paramContext, (Bundle)localObject2, false, 32);
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("colorNote handleVideoFeedsJump() videoInfo=");
-      paramContext.append(localVideoInfo.e());
+      paramContext.append(localVideoInfo.q());
       QLog.d("ReadInJoyLauncher", 2, paramContext.toString());
     }
   }
@@ -103,12 +101,12 @@ public class ReadInJoyLauncher
     ((StringBuilder)localObject).append("articleInfo From ColorNote :\n");
     ((StringBuilder)localObject).append(paramColorNote.toString());
     QLog.d("ReadInJoyLauncher", 2, ((StringBuilder)localObject).toString());
-    paramColorNote = ((IReadInJoyJumpUtils)QRoute.api(IReadInJoyJumpUtils.class)).getJumpArticleDetailPageIntent(paramContext, paramColorNote);
+    paramColorNote = ReadinjoyJumpUtils.b(paramContext, paramColorNote);
     paramColorNote.addFlags(268435456);
     paramColorNote.putExtra("from_color_note", true);
     paramColorNote.putExtra("native_article_launch_from", 1004);
     paramContext.startActivity(paramColorNote);
-    ((IRIJWebArticleOptimizeUtil)QRoute.api(IRIJWebArticleOptimizeUtil.class)).usePendingTransition(paramContext);
+    RIJWebArticleOptimizeUtil.a.a(paramContext);
   }
   
   private void c(Context paramContext, ColorNote paramColorNote)
@@ -139,7 +137,7 @@ public class ReadInJoyLauncher
         ((Bundle)localObject).putBoolean("from_color_note", true);
         ((Bundle)localObject).putInt("fling_action_key", 2);
         ((Bundle)localObject).putInt("fling_code_key", new Object().hashCode());
-        ((IViolaAccessHelper)QRoute.api(IViolaAccessHelper.class)).startViolaPage(paramContext, null, str1, (Bundle)localObject, bool);
+        ViolaAccessHelper.a(paramContext, null, str1, (Bundle)localObject, bool);
         return;
       }
       catch (Exception paramContext)
@@ -176,7 +174,7 @@ public class ReadInJoyLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyLauncher
  * JD-Core Version:    0.7.0.1
  */

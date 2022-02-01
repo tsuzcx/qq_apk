@@ -5,17 +5,17 @@ import android.support.annotation.Nullable;
 
 public class Operation
 {
-  char jdField_a_of_type_Char;
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString = "";
+  char a;
   int b;
+  int c;
+  String d = "";
   
   void a()
   {
-    this.jdField_a_of_type_Char = '\000';
-    this.jdField_a_of_type_Int = 0;
+    this.a = '\000';
     this.b = 0;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.c = 0;
+    this.d = "";
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -28,10 +28,10 @@ public class Operation
       return false;
     }
     Object localObject = (Operation)paramObject;
-    if ((this.jdField_a_of_type_Char == ((Operation)localObject).jdField_a_of_type_Char) && (this.jdField_a_of_type_Int == ((Operation)localObject).jdField_a_of_type_Int) && (this.b == ((Operation)localObject).b))
+    if ((this.a == ((Operation)localObject).a) && (this.b == ((Operation)localObject).b) && (this.c == ((Operation)localObject).c))
     {
-      paramObject = this.jdField_a_of_type_JavaLangString;
-      localObject = ((Operation)localObject).jdField_a_of_type_JavaLangString;
+      paramObject = this.d;
+      localObject = ((Operation)localObject).d;
       if (paramObject == localObject) {
         return bool;
       }
@@ -48,20 +48,20 @@ public class Operation
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[opcode=");
-    localStringBuilder.append(this.jdField_a_of_type_Char);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", chars=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",lines=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(",lines=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", attribs=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Operation
  * JD-Core Version:    0.7.0.1
  */

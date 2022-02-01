@@ -23,64 +23,59 @@ public final class AtContactView
   extends BasePopupView<EditObject>
   implements View.OnClickListener
 {
-  public static final AtContactView.Companion a;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
-  private final AtContactView.contactFlagListener.1 jdField_a_of_type_ComTencentTkdWeiboAtContactAtContactView$contactFlagListener$1;
-  private MyFansListView jdField_a_of_type_ComTencentTkdWeiboAtContactMyFansListView;
-  private MyFollowListView jdField_a_of_type_ComTencentTkdWeiboAtContactMyFollowListView;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  public static final AtContactView.Companion a = new AtContactView.Companion(null);
+  private TextView c;
+  private View d;
+  private TextView e;
+  private View f;
+  private ViewPager g;
+  private MyFollowListView h;
+  private MyFansListView i;
+  private final AtContactView.contactFlagListener.1 j;
+  private HashMap k;
   
-  static
-  {
-    jdField_a_of_type_ComTencentTkdWeiboAtContactAtContactView$Companion = new AtContactView.Companion(null);
-  }
-  
-  private final void a(int paramInt)
+  private final void setCurrentItem(int paramInt)
   {
     if (paramInt == 0)
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject = this.c;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("myFollowView");
       }
-      ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().d()));
-      localObject = this.jdField_a_of_type_AndroidViewView;
+      ((TextView)localObject).setTextColor(b(UiComponentSdkKt.a().d()));
+      localObject = this.d;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("myFollowTipsView");
       }
       ((View)localObject).setVisibility(0);
-      localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject = this.e;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("myFansView");
       }
-      ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().e()));
-      localObject = this.jdField_b_of_type_AndroidViewView;
+      ((TextView)localObject).setTextColor(b(UiComponentSdkKt.a().e()));
+      localObject = this.f;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("myFansTipsView");
       }
       ((View)localObject).setVisibility(4);
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject = this.c;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("myFollowView");
     }
-    ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().e()));
-    localObject = this.jdField_a_of_type_AndroidViewView;
+    ((TextView)localObject).setTextColor(b(UiComponentSdkKt.a().e()));
+    localObject = this.d;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("myFollowTipsView");
     }
     ((View)localObject).setVisibility(4);
-    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    localObject = this.e;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("myFansView");
     }
-    ((TextView)localObject).setTextColor(a(UiComponentSdkKt.a().d()));
-    localObject = this.jdField_b_of_type_AndroidViewView;
+    ((TextView)localObject).setTextColor(b(UiComponentSdkKt.a().d()));
+    localObject = this.f;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("myFansTipsView");
     }
@@ -89,15 +84,15 @@ public final class AtContactView
   
   public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.k == null) {
+      this.k = new HashMap();
     }
-    View localView2 = (View)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    View localView2 = (View)this.k.get(Integer.valueOf(paramInt));
     View localView1 = localView2;
     if (localView2 == null)
     {
       localView1 = findViewById(paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localView1);
+      this.k.put(Integer.valueOf(paramInt), localView1);
     }
     return localView1;
   }
@@ -105,7 +100,7 @@ public final class AtContactView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    DataTransferManager.a.a((Function2)this.jdField_a_of_type_ComTencentTkdWeiboAtContactAtContactView$contactFlagListener$1);
+    DataTransferManager.a.a((Function2)this.j);
   }
   
   public void onClick(@Nullable View paramView)
@@ -115,33 +110,33 @@ public final class AtContactView
     } else {
       paramView = null;
     }
-    int i = R.id.i;
-    if ((paramView != null) && (paramView.intValue() == i))
+    int m = R.id.e;
+    if ((paramView != null) && (paramView.intValue() == m))
     {
-      a(0);
-      paramView = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+      setCurrentItem(0);
+      paramView = this.g;
       if (paramView == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewPager");
       }
       paramView.setCurrentItem(0);
       return;
     }
-    i = R.id.h;
-    if ((paramView != null) && (paramView.intValue() == i))
+    m = R.id.d;
+    if ((paramView != null) && (paramView.intValue() == m))
     {
-      a(1);
-      paramView = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
+      setCurrentItem(1);
+      paramView = this.g;
       if (paramView == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewPager");
       }
       paramView.setCurrentItem(1);
       return;
     }
-    i = R.id.l;
+    m = R.id.h;
     if (paramView == null) {
       return;
     }
-    if (paramView.intValue() == i) {
+    if (paramView.intValue() == m) {
       a(null);
     }
   }
@@ -149,12 +144,12 @@ public final class AtContactView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    DataTransferManager.a.b((Function2)this.jdField_a_of_type_ComTencentTkdWeiboAtContactAtContactView$contactFlagListener$1);
+    DataTransferManager.a.b((Function2)this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.atContact.AtContactView
  * JD-Core Version:    0.7.0.1
  */

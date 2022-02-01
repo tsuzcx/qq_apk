@@ -26,15 +26,15 @@ public class EmotionAdapter
   implements URLDrawableDownListener
 {
   protected Context a;
-  protected Handler a;
-  protected EmoticonPreviewData a;
-  public List<EmoticonPreviewData> a;
+  protected Handler b;
+  protected EmoticonPreviewData c;
+  public List<EmoticonPreviewData> d;
   
   public EmotionAdapter(Context paramContext, Handler paramHandler, EmoticonPreviewData paramEmoticonPreviewData)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData = paramEmoticonPreviewData;
+    this.a = paramContext;
+    this.b = paramHandler;
+    this.c = paramEmoticonPreviewData;
   }
   
   public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -50,41 +50,41 @@ public class EmotionAdapter
   
   public int a(EmoticonPreviewData paramEmoticonPreviewData)
   {
-    return paramEmoticonPreviewData.a(this.jdField_a_of_type_JavaUtilList);
+    return paramEmoticonPreviewData.a(this.d);
   }
   
   public EmoticonPreviewData a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (!localList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (EmoticonPreviewData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    List localList = this.d;
+    if ((localList != null) && (!localList.isEmpty()) && (paramInt >= 0) && (paramInt < this.d.size())) {
+      return (EmoticonPreviewData)this.d.get(paramInt);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData;
-  }
-  
-  public Long a(int paramInt)
-  {
-    return Long.valueOf(a(paramInt).a());
+    return this.c;
   }
   
   public List<EmoticonPreviewData> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.d;
   }
   
   public void a(List<EmoticonPreviewData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
   }
   
-  public boolean a(int paramInt)
+  public boolean b(int paramInt)
   {
-    return a(paramInt).a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData);
+    return a(paramInt).a(this.c);
+  }
+  
+  public Long c(int paramInt)
+  {
+    return Long.valueOf(a(paramInt).b());
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     if (localList == null) {
       return 1;
     }
@@ -100,20 +100,20 @@ public class EmotionAdapter
   {
     Object localObject = paramView;
     if (paramView == null) {
-      localObject = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+      localObject = new URLImageView(this.a);
     }
     paramView = new StringBuilder();
     paramView.append("getView position:");
     paramView.append(paramInt);
     com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, paramView.toString());
-    paramView = this.jdField_a_of_type_JavaUtilList;
+    paramView = this.d;
     if ((paramView != null) && (!paramView.isEmpty())) {
-      paramView = (EmoticonPreviewData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView = (EmoticonPreviewData)this.d.get(paramInt);
     } else {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmoticonPreviewData;
+      paramView = this.c;
     }
-    Drawable localDrawable = paramView.a(this.jdField_a_of_type_AndroidContentContext);
-    if ((!paramView.a()) && (paramView.b())) {
+    Drawable localDrawable = paramView.a(this.a);
+    if ((!paramView.a()) && (paramView.e())) {
       ((URLImageView)localObject).setURLDrawableDownListener(this);
     } else {
       ((URLImageView)localObject).setURLDrawableDownListener(null);
@@ -121,18 +121,18 @@ public class EmotionAdapter
     if ((localDrawable instanceof PngFrameDrawable))
     {
       paramView = (PngFrameDrawable)localDrawable;
-      if (paramView.a() != null)
+      if (paramView.b() != null)
       {
-        int i = AIOUtils.b(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        paramView = a(paramView.a(), i, i);
+        int i = AIOUtils.b(100.0F, this.a.getResources());
+        paramView = a(paramView.b(), i, i);
         ((ImageView)localObject).setImageBitmap(paramView);
         break label205;
       }
     }
     ((ImageView)localObject).setImageDrawable(localDrawable);
     label205:
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
+    this.b.removeMessages(1001);
+    this.b.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
     return localObject;
   }
@@ -152,7 +152,7 @@ public class EmotionAdapter
     {
       File localFile = paramURLDrawable.getFileInLocal();
       if (localFile != null) {
-        i = ImageUtil.d(localFile.getAbsolutePath());
+        i = ImageUtil.i(localFile.getAbsolutePath());
       }
     }
     catch (Exception localException)
@@ -164,13 +164,13 @@ public class EmotionAdapter
       com.tencent.TMG.utils.QLog.d("EmotionAdapter", 0, "onLoadSuccessed,orientation");
     }
     AIOGalleryAdapter.a(paramView, paramURLDrawable, i);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, -1, 1, paramURLDrawable).sendToTarget();
+    this.b.removeMessages(1001);
+    this.b.obtainMessage(1001, -1, 1, paramURLDrawable).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ import com.tencent.qphone.base.util.QLog;
 
 public class QRRecog
 {
-  Handler jdField_a_of_type_AndroidOsHandler;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  Handler b;
   
   public QRRecog(Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.b = paramHandler;
   }
   
   public int a()
@@ -28,7 +28,7 @@ public class QRRecog
       if (QLog.isColorLevel()) {
         QLog.d("QRSession.QRRecog", 2, String.format("initQbar time cost:%sms, initResult=%s readerResult=%s version=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i), Integer.valueOf(j), str }));
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return 0;
     }
     catch (Exception localException)
@@ -38,25 +38,6 @@ public class QRRecog
       }
     }
     return -1;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).releaseForCamera();
-        this.jdField_a_of_type_Boolean = false;
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QRSession.QRRecog", 2, "unInitQbar fail!", localException);
-      }
-    }
   }
   
   public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, ScannerResult paramScannerResult)
@@ -72,18 +53,37 @@ public class QRRecog
       paramArrayOfByte = null;
     }
     if (QLog.isColorLevel()) {
-      if (paramScannerResult.d()) {
+      if (paramScannerResult.h()) {
         QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR suc. results=%s qrRecog minicode_timecost=%d", new Object[] { paramArrayOfByte, Long.valueOf(System.currentTimeMillis() - l) }));
       } else {
         QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR failed. hasQR=%s qrAreaRatio=%s qrRecog minicode_timecost=%d", new Object[] { Boolean.valueOf(false), Float.valueOf(0.0F), Long.valueOf(System.currentTimeMillis() - l) }));
       }
     }
-    return paramScannerResult.d();
+    return paramScannerResult.h();
+  }
+  
+  public void b()
+  {
+    try
+    {
+      if (this.a)
+      {
+        ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).releaseForCamera();
+        this.a = false;
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QRSession.QRRecog", 2, "unInitQbar fail!", localException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.QRRecog
  * JD-Core Version:    0.7.0.1
  */

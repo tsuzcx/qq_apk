@@ -90,7 +90,7 @@ public abstract class SkinAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.shadow.core.runtime.skin.entity.SkinAttr
  * JD-Core Version:    0.7.0.1
  */

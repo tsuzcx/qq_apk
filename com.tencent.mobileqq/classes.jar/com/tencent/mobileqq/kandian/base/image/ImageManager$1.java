@@ -10,13 +10,13 @@ class ImageManager$1
   
   public void run()
   {
-    RIJImageOptReport.a(3, this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest);
-    this.this$0.mExcutor.execute(this.jdField_a_of_type_ComTencentMobileqqKandianBaseImageRunningJob);
+    RIJImageOptReport.a(3, this.a);
+    this.this$0.mExcutor.execute(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.ImageManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,25 +26,23 @@ public class PreviewVideoSimpleFilePresenter
   extends PreviewSimpleFilePresenter
   implements View.OnClickListener, FileBrowserModelBase.OnPreviewVideoOnlineListener
 {
-  protected long a;
-  protected boolean a;
-  private boolean e = false;
+  protected boolean a = false;
+  protected long b = 0L;
+  private boolean l = false;
   
   public PreviewVideoSimpleFilePresenter(FileBrowserModelBase paramFileBrowserModelBase, Activity paramActivity)
   {
     super(paramFileBrowserModelBase, paramActivity);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-    if (((!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c())) && (QLog.isDevelopLevel())) {
+    this.k.c(false);
+    if (((!TVK_SDKMgr.isInstalled(BaseApplicationImpl.getContext())) || (this.c.t())) && (QLog.isDevelopLevel())) {
       QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this)) && (QLog.isColorLevel())) {
+    if ((this.c.b(this)) && (QLog.isColorLevel())) {
       QLog.d("PreviewVideoSimpleFilePresenter", 2, "requestWhitelist 本地信息为空!!!!");
     }
   }
@@ -64,59 +62,59 @@ public class PreviewVideoSimpleFilePresenter
     if (!TextUtils.isEmpty(paramString1))
     {
       localObject = new Intent();
-      ((Intent)localObject).putExtra("fileid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.n());
+      ((Intent)localObject).putExtra("fileid", this.c.ah());
       ((Intent)localObject).putExtra("url", paramString1);
       ((Intent)localObject).putExtra("cookie", paramString2);
       ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
-      PublicFragmentActivity.Launcher.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, PublicFragmentActivity.class, FileVideoOnlinePlayerFragment.class);
+      PublicFragmentActivity.Launcher.a(this.d, (Intent)localObject, PublicFragmentActivity.class, FileVideoOnlinePlayerFragment.class);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b(3);
+    this.c.b(3);
   }
   
-  protected void al_()
+  public void co_()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(this.e);
-    if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d()))
-    {
-      super.al_();
+    this.d.getString(2131889789);
+    this.l = true;
+    i();
+  }
+  
+  public void cp_()
+  {
+    if (this.a) {
       return;
     }
-    if (this.e)
-    {
-      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692718);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(str, this);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(this.e);
-    }
-  }
-  
-  public void am_()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.getString(2131692718);
-    this.e = true;
-    al_();
-  }
-  
-  public void an_()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
+    this.a = true;
+    this.k.c(true);
     if (QLog.isDevelopLevel()) {
       QLog.d("PreviewVideoSimpleFilePresenter", 4, "executeOnNetWorkThread setCanPreview false-------------");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b(4);
+    this.c.b(4);
   }
   
-  public void c()
+  public void cq_()
   {
-    FMToastUtil.a(2131719092);
+    FMToastUtil.a(2131916628);
+  }
+  
+  protected void i()
+  {
+    this.k.d(this.l);
+    if (FileUtils.fileExistsAndNotEmpty(this.c.y()))
+    {
+      super.i();
+      return;
+    }
+    if (this.l)
+    {
+      String str = this.d.getString(2131889789);
+      this.k.b(str, this);
+      this.k.d(this.l);
+    }
   }
   
   public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L)
+    if (System.currentTimeMillis() - this.b < 500L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("PreviewVideoSimpleFilePresenter", 2, "click online preview video too fast");
@@ -124,13 +122,13 @@ public class PreviewVideoSimpleFilePresenter
     }
     else
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()) {
-        QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131708408), 0).b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.m());
+      this.b = System.currentTimeMillis();
+      if (this.c.t()) {
+        QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131906196), 0).show(this.c.ap());
       } else if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
-        FMToastUtil.a(2131692554);
+        FMToastUtil.a(2131889577);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
+        this.c.a(this);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -138,7 +136,7 @@ public class PreviewVideoSimpleFilePresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.PreviewVideoSimpleFilePresenter
  * JD-Core Version:    0.7.0.1
  */

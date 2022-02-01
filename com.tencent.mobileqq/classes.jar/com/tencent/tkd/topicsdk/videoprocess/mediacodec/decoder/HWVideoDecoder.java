@@ -9,8 +9,8 @@ import com.tencent.tkd.topicsdk.framework.TLog;
 public class HWVideoDecoder
   implements IVideoDecoder
 {
-  private HWVideoDecoder.DecodeRunnable jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable;
-  private Thread jdField_a_of_type_JavaLangThread;
+  private Thread a;
+  private HWVideoDecoder.DecodeRunnable b;
   
   private void a(DecodeConfig paramDecodeConfig, Surface paramSurface, HWDecodeListener paramHWDecodeListener)
   {
@@ -20,7 +20,7 @@ public class HWVideoDecoder
       ((StringBuilder)localObject).append("startDecode config = ");
       ((StringBuilder)localObject).append(paramDecodeConfig);
       TLog.a("HWVideoDecoder", ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_JavaLangThread;
+      localObject = this.a;
       if (localObject != null)
       {
         a();
@@ -33,10 +33,10 @@ public class HWVideoDecoder
           localInterruptedException.printStackTrace();
         }
       }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable = new HWVideoDecoder.DecodeRunnable(paramDecodeConfig.a, paramSurface, paramHWDecodeListener);
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable.a(paramDecodeConfig);
-      this.jdField_a_of_type_JavaLangThread = new Thread(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable, "HWVideoDecoder-Thread");
-      this.jdField_a_of_type_JavaLangThread.start();
+      this.b = new HWVideoDecoder.DecodeRunnable(paramDecodeConfig.a, paramSurface, paramHWDecodeListener);
+      this.b.a(paramDecodeConfig);
+      this.a = new Thread(this.b, "HWVideoDecoder-Thread");
+      this.a.start();
       return;
     }
     throw new IllegalArgumentException("both decodeConfig and surface should not be null");
@@ -44,12 +44,12 @@ public class HWVideoDecoder
   
   public void a()
   {
-    Thread localThread = this.jdField_a_of_type_JavaLangThread;
+    Thread localThread = this.a;
     if (localThread != null) {
       localThread.interrupt();
     }
-    this.jdField_a_of_type_JavaLangThread = null;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable = null;
+    this.a = null;
+    this.b = null;
   }
   
   public void a(DecodeConfig paramDecodeConfig, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, HWDecodeListener paramHWDecodeListener)
@@ -59,7 +59,7 @@ public class HWVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.decoder.HWVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

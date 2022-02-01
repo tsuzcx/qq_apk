@@ -13,23 +13,23 @@ class DeviceSwitchThread$EarphoneSwitchThread
     super(paramContext, paramString);
   }
   
-  private boolean a()
+  private boolean g()
   {
-    boolean bool2 = this.a;
+    boolean bool2 = this.f;
     boolean bool1 = true;
     if (!bool2) {
       return true;
     }
-    SessionInfo localSessionInfo = VideoController.a().a();
+    SessionInfo localSessionInfo = VideoController.f().k();
     int i;
-    if ((localSessionInfo != null) && ((localSessionInfo.d == 1) || (localSessionInfo.d == 2))) {
+    if ((localSessionInfo != null) && ((localSessionInfo.g == 1) || (localSessionInfo.g == 2))) {
       i = 1;
     } else {
       i = 0;
     }
     if (i != 0)
     {
-      if (!VideoController.a().c()) {
+      if (!VideoController.f().g()) {
         return true;
       }
       bool1 = false;
@@ -42,9 +42,9 @@ class DeviceSwitchThread$EarphoneSwitchThread
     a(false);
     d();
     int i = 0;
-    while (this.b)
+    while (this.g)
     {
-      if ((TraeUtils.a()) && (a())) {
+      if ((TraeUtils.a()) && (g())) {
         a(false);
       }
       long l;
@@ -61,7 +61,7 @@ class DeviceSwitchThread$EarphoneSwitchThread
       {
         if (QLog.isColorLevel())
         {
-          String str = DeviceSwitchThread.a();
+          String str = DeviceSwitchThread.f();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("EarphoneSwitchThread InterruptedException[");
           localStringBuilder.append(localInterruptedException.getMessage());
@@ -75,7 +75,7 @@ class DeviceSwitchThread$EarphoneSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.DeviceSwitchThread.EarphoneSwitchThread
  * JD-Core Version:    0.7.0.1
  */

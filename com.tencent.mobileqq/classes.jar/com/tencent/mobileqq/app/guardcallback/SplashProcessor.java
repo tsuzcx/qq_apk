@@ -9,15 +9,15 @@ import com.tencent.qphone.base.util.QLog;
 public class SplashProcessor
   implements IGuardInterface
 {
-  private void d(long paramLong)
+  private void a(long paramLong)
   {
     if ((paramLong == 1L) && (SetSplash.a()))
     {
-      GuardManager localGuardManager = GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardGuardManager;
+      GuardManager localGuardManager = GuardManager.sInstance;
       if (localGuardManager == null) {
         return;
       }
-      if (localGuardManager.jdField_a_of_type_JavaLangString == null)
+      if (localGuardManager.mFgProcess == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("setsplash", 2, "needshowsplashtoday , kill myself");
@@ -28,24 +28,24 @@ public class SplashProcessor
     }
   }
   
-  public void G_() {}
+  public void onApplicationBackground() {}
   
-  public void H_() {}
+  public void onApplicationForeground() {}
   
-  public void a(long paramLong)
+  public void onBackgroundTimeTick(long paramLong)
   {
-    d(paramLong);
+    a(paramLong);
   }
   
-  public void a(boolean paramBoolean) {}
+  public void onBackgroundUnguardTimeTick(long paramLong) {}
   
-  public void b(long paramLong) {}
+  public void onLiteTimeTick(long paramLong) {}
   
-  public void c(long paramLong) {}
+  public void onScreensStateChanged(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.guardcallback.SplashProcessor
  * JD-Core Version:    0.7.0.1
  */

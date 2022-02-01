@@ -10,12 +10,12 @@ class JsFlutterEngine$2$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComMojitoxMxflutterFrameworkJsFlutterEngine$2$1.a.reply(this.jdField_a_of_type_JavaLangString);
+    this.a.b.reply(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.JsFlutterEngine.2.1.1
  * JD-Core Version:    0.7.0.1
  */

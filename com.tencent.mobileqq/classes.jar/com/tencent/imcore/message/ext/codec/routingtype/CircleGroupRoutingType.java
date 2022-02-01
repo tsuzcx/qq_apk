@@ -21,16 +21,11 @@ public class CircleGroupRoutingType
     return 1021;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.BsnsTmp localBsnsTmp = new msg_svc.BsnsTmp();
     localBsnsTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().f(paramMessageRecord.frienduin);
+    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().k(paramMessageRecord.frienduin);
     if (paramMessageRecord != null)
     {
       if (QLog.isColorLevel())
@@ -48,14 +43,19 @@ public class CircleGroupRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 6012;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.CircleGroupRoutingType
  * JD-Core Version:    0.7.0.1
  */

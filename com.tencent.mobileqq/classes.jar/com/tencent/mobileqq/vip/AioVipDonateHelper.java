@@ -19,10 +19,7 @@ import mqq.os.MqqHandler;
 
 public class AioVipDonateHelper
 {
-  public static int a = 1;
-  private static AioVipDonateHelper jdField_a_of_type_ComTencentMobileqqVipAioVipDonateHelper;
   public static String a = "aioVipDonateInfoSpFile_";
-  public static int b = 1;
   public static String b = "lastCheckTime_";
   public static String c = "sendDisable";
   public static String d = "checkFreq";
@@ -32,83 +29,47 @@ public class AioVipDonateHelper
   public static String h = "graytips";
   public static String i = "hightLight";
   public static String j = "jumpUrl";
-  public static String k = "";
-  private List<String> jdField_a_of_type_JavaUtilList = null;
-  private int c;
-  private int d;
-  private int e;
-  private String l = null;
-  private String m;
-  private String n;
-  private String o;
-  
-  public AioVipDonateHelper()
-  {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-  }
+  public static int k = 1;
+  public static String l = "";
+  public static int m = 1;
+  private static AioVipDonateHelper v;
+  private int n = -1;
+  private int o = -1;
+  private String p = null;
+  private List<String> q = null;
+  private int r = -1;
+  private String s;
+  private String t;
+  private String u;
   
   public static AioVipDonateHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqVipAioVipDonateHelper == null) {
+    if (v == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqVipAioVipDonateHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqVipAioVipDonateHelper = new AioVipDonateHelper();
+        if (v == null) {
+          v = new AioVipDonateHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqVipAioVipDonateHelper;
+    return v;
   }
   
-  private void a(QQAppInterface paramQQAppInterface)
+  private void h(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences(jdField_a_of_type_JavaLangString, 0).edit();
-    paramQQAppInterface.putInt(g, this.jdField_e_of_type_Int);
-    if (!TextUtils.isEmpty(this.m)) {
-      paramQQAppInterface.putString(h, this.m);
+    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences(a, 0).edit();
+    paramQQAppInterface.putInt(g, this.r);
+    if (!TextUtils.isEmpty(this.s)) {
+      paramQQAppInterface.putString(h, this.s);
     }
-    if (!TextUtils.isEmpty(this.n)) {
-      paramQQAppInterface.putString(i, this.n);
+    if (!TextUtils.isEmpty(this.t)) {
+      paramQQAppInterface.putString(i, this.t);
     }
-    if (!TextUtils.isEmpty(this.o)) {
-      paramQQAppInterface.putString(j, this.o);
+    if (!TextUtils.isEmpty(this.u)) {
+      paramQQAppInterface.putString(j, this.u);
     }
     paramQQAppInterface.apply();
-  }
-  
-  public long a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return -1L;
-    }
-    if (this.jdField_d_of_type_Int == -1)
-    {
-      MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      this.jdField_d_of_type_Int = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getInt(jdField_d_of_type_JavaLangString, -1);
-    }
-    return this.jdField_d_of_type_Int * 60 * 1000;
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    if (TextUtils.isEmpty(this.m))
-    {
-      MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      this.m = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(h, null);
-    }
-    return this.m;
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -116,10 +77,10 @@ public class AioVipDonateHelper
     if (paramQQAppInterface == null) {
       return;
     }
-    this.jdField_e_of_type_Int = paramInt;
+    this.r = paramInt;
     MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
     paramQQAppInterface = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).edit();
     paramQQAppInterface.putInt(g, paramInt);
@@ -142,25 +103,25 @@ public class AioVipDonateHelper
       Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
       paramQQAppInterface = paramQQAppInterface.getApplication();
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(a);
       ((StringBuilder)localObject2).append((String)localObject1);
       localObject1 = ((StringBuilder)localObject2).toString();
       int i2 = 0;
       paramQQAppInterface = paramQQAppInterface.getSharedPreferences((String)localObject1, 0).edit();
-      this.jdField_c_of_type_Int = paramVipUserInfo.iSendDisable;
-      this.jdField_d_of_type_Int = paramVipUserInfo.iCheckFreq;
+      this.n = paramVipUserInfo.iSendDisable;
+      this.o = paramVipUserInfo.iCheckFreq;
       if (!TextUtils.isEmpty(paramVipUserInfo.sGrayTail))
       {
-        this.l = paramVipUserInfo.sGrayTail;
-        paramQQAppInterface.putString(jdField_e_of_type_JavaLangString, paramVipUserInfo.sGrayTail);
+        this.p = paramVipUserInfo.sGrayTail;
+        paramQQAppInterface.putString(e, paramVipUserInfo.sGrayTail);
       }
       if ((paramVipUserInfo.vSendList != null) && (paramVipUserInfo.vSendList.size() > 0))
       {
         localObject1 = new StringBuilder();
         int i1 = i2;
-        if (this.jdField_a_of_type_JavaUtilList == null)
+        if (this.q == null)
         {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList();
+          this.q = new ArrayList();
           i1 = i2;
         }
         while (i1 < paramVipUserInfo.vSendList.size())
@@ -168,13 +129,13 @@ public class AioVipDonateHelper
           localObject2 = String.valueOf(paramVipUserInfo.vSendList.get(i1));
           ((StringBuilder)localObject1).append((String)localObject2);
           ((StringBuilder)localObject1).append(",");
-          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          this.q.add(localObject2);
           i1 += 1;
         }
         paramQQAppInterface.putString(f, ((StringBuilder)localObject1).toString());
       }
-      paramQQAppInterface.putInt(jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Int);
-      paramQQAppInterface.putInt(jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
+      paramQQAppInterface.putInt(c, this.n);
+      paramQQAppInterface.putInt(d, this.o);
       if (Build.VERSION.SDK_INT < 9)
       {
         paramQQAppInterface.commit();
@@ -192,18 +153,18 @@ public class AioVipDonateHelper
       if (paramAIOSendRes == null) {
         return;
       }
-      this.jdField_e_of_type_Int = paramAIOSendRes.iPopGrayStip;
-      this.m = paramAIOSendRes.sGrayStipMsg;
+      this.r = paramAIOSendRes.iPopGrayStip;
+      this.s = paramAIOSendRes.sGrayStipMsg;
       paramAIOSendRes = paramAIOSendRes.mHighLightMap;
       if ((paramAIOSendRes != null) && (paramAIOSendRes.size() > 0))
       {
-        this.n = ((String)paramAIOSendRes.keySet().iterator().next());
-        if (!TextUtils.isEmpty(this.n)) {
-          this.o = ((String)paramAIOSendRes.get(this.n));
+        this.t = ((String)paramAIOSendRes.keySet().iterator().next());
+        if (!TextUtils.isEmpty(this.t)) {
+          this.u = ((String)paramAIOSendRes.get(this.t));
         }
       }
-      a(paramQQAppInterface);
-      if (this.jdField_e_of_type_Int == b)
+      h(paramQQAppInterface);
+      if (this.r == m)
       {
         paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
         if (paramQQAppInterface != null) {
@@ -219,15 +180,15 @@ public class AioVipDonateHelper
     if (paramQQAppInterface == null) {
       return false;
     }
-    if (this.jdField_c_of_type_Int == -1)
+    if (this.n == -1)
     {
       MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      this.jdField_c_of_type_Int = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getInt(jdField_c_of_type_JavaLangString, -1);
+      this.n = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getInt(c, -1);
     }
-    if (this.jdField_c_of_type_Int == jdField_a_of_type_Int) {
+    if (this.n == k) {
       bool = true;
     }
     return bool;
@@ -240,14 +201,14 @@ public class AioVipDonateHelper
       if (TextUtils.isEmpty(paramString)) {
         return false;
       }
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (this.q == null) {
+        this.q = new ArrayList();
       }
-      if (this.jdField_a_of_type_JavaUtilList.size() < 1)
+      if (this.q.size() < 1)
       {
         MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(a);
         localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
         paramQQAppInterface = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(f, null);
         if (!TextUtils.isEmpty(paramQQAppInterface))
@@ -258,34 +219,18 @@ public class AioVipDonateHelper
           {
             localMobileQQ = paramQQAppInterface[i1];
             if (!TextUtils.isEmpty(localMobileQQ)) {
-              this.jdField_a_of_type_JavaUtilList.add(localMobileQQ.trim());
+              this.q.add(localMobileQQ.trim());
             }
             i1 += 1;
           }
         }
       }
-      paramQQAppInterface = this.jdField_a_of_type_JavaUtilList;
+      paramQQAppInterface = this.q;
       if ((paramQQAppInterface != null) && (paramQQAppInterface.contains(paramString))) {
         return true;
       }
     }
     return false;
-  }
-  
-  public String b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    if (TextUtils.isEmpty(this.n))
-    {
-      MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      this.n = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(i, null);
-    }
-    return this.n;
   }
   
   public boolean b(QQAppInterface paramQQAppInterface)
@@ -295,17 +240,17 @@ public class AioVipDonateHelper
     }
     String str = paramQQAppInterface.getCurrentAccountUin();
     MobileQQ localMobileQQ;
-    if (TextUtils.isEmpty(this.l))
+    if (TextUtils.isEmpty(this.p))
     {
       localMobileQQ = paramQQAppInterface.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      this.l = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(jdField_e_of_type_JavaLangString, null);
+      this.p = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(e, null);
     }
-    if (!TextUtils.isEmpty(this.l))
+    if (!TextUtils.isEmpty(this.p))
     {
-      paramQQAppInterface = this.l.split(",");
+      paramQQAppInterface = this.p.split(",");
       int i1 = 0;
       while (i1 < paramQQAppInterface.length)
       {
@@ -319,45 +264,93 @@ public class AioVipDonateHelper
     return false;
   }
   
-  public String c(QQAppInterface paramQQAppInterface)
+  public long c(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface == null) {
-      return null;
+      return -1L;
     }
-    if (TextUtils.isEmpty(this.o))
+    if (this.o == -1)
     {
       MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      this.o = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(j, k);
+      this.o = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getInt(d, -1);
     }
-    return this.o;
+    return this.o * 60 * 1000;
   }
   
-  public boolean c(QQAppInterface paramQQAppInterface)
+  public boolean d(QQAppInterface paramQQAppInterface)
   {
     boolean bool = false;
     if (paramQQAppInterface == null) {
       return false;
     }
-    if (this.jdField_e_of_type_Int == -1)
+    if (this.r == -1)
     {
       MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
-      this.jdField_e_of_type_Int = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getInt(g, 0);
+      this.r = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getInt(g, 0);
     }
-    if (this.jdField_e_of_type_Int == b) {
+    if (this.r == m) {
       bool = true;
     }
     return bool;
   }
+  
+  public String e(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    if (TextUtils.isEmpty(this.s))
+    {
+      MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a);
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      this.s = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(h, null);
+    }
+    return this.s;
+  }
+  
+  public String f(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    if (TextUtils.isEmpty(this.t))
+    {
+      MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a);
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      this.t = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(i, null);
+    }
+    return this.t;
+  }
+  
+  public String g(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    if (TextUtils.isEmpty(this.u))
+    {
+      MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a);
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      this.u = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getString(j, l);
+    }
+    return this.u;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.AioVipDonateHelper
  * JD-Core Version:    0.7.0.1
  */

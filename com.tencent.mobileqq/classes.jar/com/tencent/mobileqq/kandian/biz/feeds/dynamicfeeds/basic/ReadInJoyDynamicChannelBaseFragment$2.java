@@ -9,12 +9,12 @@ class ReadInJoyDynamicChannelBaseFragment$2
   
   public void run()
   {
-    this.this$0.a.startMachineRefresh();
+    this.this$0.c.startMachineRefresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

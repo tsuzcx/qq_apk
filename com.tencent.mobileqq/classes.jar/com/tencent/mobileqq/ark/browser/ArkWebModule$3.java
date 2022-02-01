@@ -13,8 +13,8 @@ class ArkWebModule$3
   
   public void onClick(View paramView)
   {
-    DoraemonUtil.a(ArkWebModule.a(this.a), -3, "user canceled");
-    ArkWebModule.a(this.a).a();
+    DoraemonUtil.a(ArkWebModule.e(this.a), -3, "user canceled");
+    ArkWebModule.b(this.a).a();
     ArkWebModule.a(this.a).dismiss();
     ArkWebModule.a(this.a, null);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -22,7 +22,7 @@ class ArkWebModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkWebModule.3
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import java.io.PrintStream;
 public class RotateAction
   extends Action
 {
-  private int f;
-  private int g;
+  private int m;
+  private int n;
   
   public RotateAction(int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramInt1, 8, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
+    this.m = paramInt2;
+    this.n = paramInt3;
   }
   
   protected void a(int paramInt, float paramFloat)
@@ -24,24 +24,24 @@ public class RotateAction
     localStringBuilder.append(", percent = ");
     localStringBuilder.append(paramFloat);
     localPrintStream.println(localStringBuilder.toString());
-    int i = this.f;
-    float f1 = i;
-    int j = this.g;
-    this.b = ((int)(f1 + (j - i) * paramFloat));
+    int i = this.m;
+    float f = i;
+    int j = this.n;
+    this.e = ((int)(f + (j - i) * paramFloat));
     if (j - i > 0)
     {
-      i = this.b;
-      j = this.g;
+      i = this.e;
+      j = this.n;
       if (i >= j) {
-        this.b = j;
+        this.e = j;
       }
     }
     else
     {
-      i = this.b;
-      j = this.g;
+      i = this.e;
+      j = this.n;
       if (i <= j) {
-        this.b = j;
+        this.e = j;
       }
     }
     super.a(paramInt, paramFloat);
@@ -49,7 +49,7 @@ public class RotateAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.RotateAction
  * JD-Core Version:    0.7.0.1
  */

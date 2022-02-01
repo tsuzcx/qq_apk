@@ -17,26 +17,26 @@ class TroopSettingActivity$15
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131369202)
+    if (i == 2131436180)
     {
-      TroopSettingActivity.d(this.a);
+      TroopSettingActivity.g(this.a);
       this.a.finish();
     }
-    else if (i == 2131369216)
+    else if (i == 2131436194)
     {
       ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).troopShareUtilityDestroy();
       Object localObject1 = (IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class);
       Object localObject2 = this.a;
-      ((IChatSettingForTroopApi)localObject1).initTroopShareUtility((Activity)localObject2, ((TroopSettingActivity)localObject2).a, TroopSettingActivity.a(this.a));
-      TroopReportor.a("Grp_set_new", "grpData_admin", "share_click", 0, 0, new String[] { this.a.a.troopUin });
-      if (this.a.a.isMember) {
+      ((IChatSettingForTroopApi)localObject1).initTroopShareUtility((Activity)localObject2, ((TroopSettingActivity)localObject2).i, TroopSettingActivity.a(this.a));
+      TroopReportor.a("Grp_set_new", "grpData_admin", "share_click", 0, 0, new String[] { this.a.i.troopUin });
+      if (this.a.i.isMember) {
         localObject1 = "grpData_admin";
       } else {
         localObject1 = "grpData_visitor";
       }
-      String str = this.a.a.troopUin;
-      if (this.a.a.isMember) {
-        localObject2 = TroopReportor.a(this.a.a);
+      String str = this.a.i.troopUin;
+      if (this.a.i.isMember) {
+        localObject2 = TroopReportor.a(this.a.i);
       } else {
         localObject2 = "0";
       }
@@ -47,7 +47,7 @@ class TroopSettingActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.15
  * JD-Core Version:    0.7.0.1
  */

@@ -18,14 +18,14 @@ public class CustomAnimationAdapter
   {
     if ((paramView instanceof ProteusItemView))
     {
-      paramView = ((ProteusItemView)paramView).a();
+      paramView = ((ProteusItemView)paramView).getContainer();
       localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
       localValueAnimator.setDuration(300L);
       localValueAnimator.addUpdateListener(new CustomAnimationAdapter.2(this, paramView));
       localValueAnimator.start();
       return;
     }
-    paramView = paramView.findViewById(2131376809);
+    paramView = paramView.findViewById(2131445137);
     if (paramView == null) {
       return;
     }
@@ -48,12 +48,6 @@ public class CustomAnimationAdapter
     return paramView;
   }
   
-  public void a(int paramInt)
-  {
-    this.a.add(Integer.valueOf(paramInt));
-    notifyDataSetChanged();
-  }
-  
   public int getCount()
   {
     return 0;
@@ -73,10 +67,16 @@ public class CustomAnimationAdapter
   {
     return null;
   }
+  
+  public void q_(int paramInt)
+  {
+    this.a.add(Integer.valueOf(paramInt));
+    notifyDataSetChanged();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.CustomAnimationAdapter
  * JD-Core Version:    0.7.0.1
  */

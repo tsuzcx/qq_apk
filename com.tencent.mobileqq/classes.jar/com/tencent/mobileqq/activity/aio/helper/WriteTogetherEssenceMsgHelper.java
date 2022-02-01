@@ -13,14 +13,14 @@ import com.tencent.qphone.base.util.QLog;
 public class WriteTogetherEssenceMsgHelper
   implements ILifeCycleHelper, OnActivityResultCallback
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean = false;
+  private BaseChatPie a;
+  private QQAppInterface b;
+  private boolean c = false;
   
   public WriteTogetherEssenceMsgHelper(HelperProvider paramHelperProvider, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.a();
+    this.a = paramBaseChatPie;
+    this.b = paramBaseChatPie.i();
     paramHelperProvider.a(this);
   }
   
@@ -44,8 +44,8 @@ public class WriteTogetherEssenceMsgHelper
         paramString.troopUin = l1;
         paramString.msgSeq = paramLong;
         paramString.msgRandom = paramInt;
-        paramString.opUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-        paramString.msgSenderUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+        paramString.opUin = this.b.getCurrentUin();
+        paramString.msgSenderUin = this.b.getCurrentUin();
         paramString.opType = 1;
         if (QLog.isColorLevel())
         {
@@ -54,7 +54,7 @@ public class WriteTogetherEssenceMsgHelper
           localStringBuilder.append(paramString.toString());
           QLog.i("WriteTogetherEssenceMsgHelper", 1, localStringBuilder.toString());
         }
-        ((TroopEssenceMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).a(paramString, 2);
+        ((TroopEssenceMsgManager)this.b.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).a(paramString, 2);
         return;
       }
     }
@@ -65,7 +65,7 @@ public class WriteTogetherEssenceMsgHelper
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public String getTag()
@@ -84,7 +84,7 @@ public class WriteTogetherEssenceMsgHelper
       return;
     }
     if ((paramInt2 & 0x4) != 0) {
-      ((FullScreenInputHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(24)).b(false);
+      ((FullScreenInputHelper)this.a.q(24)).e(false);
     }
     if ((paramIntent != null) && (paramIntent.getExtras() != null)) {
       try
@@ -93,7 +93,7 @@ public class WriteTogetherEssenceMsgHelper
         localObject = paramIntent.getString("KEY_WRITE_TOGETHER_GROUPUIN", null);
         long l = paramIntent.getLong("KEY_WRITE_TOGETHER_MSG_SEQ", 0L);
         paramInt1 = paramIntent.getInt("KEY_WRITE_TOGETHER_MSG_RANDOM", 0);
-        if (this.jdField_a_of_type_Boolean)
+        if (this.c)
         {
           a((String)localObject, l, paramInt1);
           return;
@@ -118,7 +118,7 @@ public class WriteTogetherEssenceMsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.WriteTogetherEssenceMsgHelper
  * JD-Core Version:    0.7.0.1
  */

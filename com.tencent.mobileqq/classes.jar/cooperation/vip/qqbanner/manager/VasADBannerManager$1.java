@@ -22,7 +22,7 @@ class VasADBannerManager$1
     }
     try
     {
-      this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.a();
+      this.b.c();
       return;
     }
     catch (Exception paramURLDrawable)
@@ -39,23 +39,23 @@ class VasADBannerManager$1
     QLog.i("VasADBannerManager", 1, "showVasADBanner urlDrawable load success");
     try
     {
-      if ((this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.jdField_a_of_type_ComTencentImageURLImageView != null) && (paramURLDrawable != null))
+      if ((this.b.b != null) && (this.b.d != null) && (paramURLDrawable != null))
       {
-        this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        VasADBannerManager.a(this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager, this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo);
-        this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.a(this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerConfigInfo);
-        SetSplash.a(this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.jdField_a_of_type_AndroidViewView);
+        this.b.b.setVisibility(0);
+        VasADBannerManager.a(this.b, this.a);
+        this.b.a(this.a);
+        SetSplash.a(this.b.b);
         return;
       }
-      if (this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.jdField_a_of_type_AndroidViewView != null)
+      if (this.b.b != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("showVasADBanner and Animation failed, mUrlImageView :");
-        localStringBuilder.append(this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.jdField_a_of_type_ComTencentImageURLImageView);
+        localStringBuilder.append(this.b.d);
         localStringBuilder.append("urlDrawable :");
         localStringBuilder.append(paramURLDrawable);
         QLog.w("VasADBannerManager", 1, localStringBuilder.toString());
-        this.jdField_a_of_type_CooperationVipQqbannerManagerVasADBannerManager.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.b.b.setVisibility(8);
         return;
       }
     }
@@ -68,7 +68,7 @@ class VasADBannerManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADBannerManager.1
  * JD-Core Version:    0.7.0.1
  */

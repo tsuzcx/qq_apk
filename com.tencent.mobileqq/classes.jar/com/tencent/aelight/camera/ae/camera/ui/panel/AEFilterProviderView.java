@@ -36,19 +36,18 @@ public class AEFilterProviderView
   extends ProviderView
   implements AEFilterProviderAdapter.OnItemClickListener, CaptureComboManager.CaptureComboListener
 {
-  public int a;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private AEFilterProviderAdapter jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter;
-  private AEProviderContainerView jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEProviderContainerView;
-  public VideoFilterTools.DataSet a;
-  private CaptureComboManager jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
-  public ArrayList<FilterCategory> a;
+  public int a = 0;
   public int b = 0;
+  public VideoFilterTools.DataSet c;
+  public ArrayList<FilterCategory> d;
+  private AEProviderContainerView e;
+  private RecyclerView f;
+  private AEFilterProviderAdapter g;
+  private CaptureComboManager h;
   
   public AEFilterProviderView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public static void a(String paramString)
@@ -73,8 +72,8 @@ public class AEFilterProviderView
     }
     if (paramBundle != null)
     {
-      if (VideoFilterTools.a().a[this.g] != null) {
-        VideoFilterTools.a().a[this.g].c = 1;
+      if (VideoFilterTools.a().d[this.D] != null) {
+        VideoFilterTools.a().d[this.D].o = 1;
       }
       paramBundle = (QIMFilterCategoryItem)paramBundle.getParcelable("selected_filter_item");
       if (paramBundle != null)
@@ -86,24 +85,33 @@ public class AEFilterProviderView
           localStringBuilder.append(paramBundle.a);
           QLog.d("AEFilterProviderView", 2, localStringBuilder.toString());
         }
-        paramBundle.c = 1;
+        paramBundle.o = 1;
       }
     }
   }
   
-  protected int a()
+  public static String getFilterId()
   {
-    return 2131560878;
+    String str = AECameraPrefsUtil.a().b("ae_filter_id", "", 0);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFilterId(ae_filter_id, ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(")");
+      QLog.d("AEFilterProviderView", 2, localStringBuilder.toString());
+    }
+    return str;
   }
   
   public void a()
   {
     super.a();
-    CaptureComboManager localCaptureComboManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+    CaptureComboManager localCaptureComboManager = this.h;
     if (localCaptureComboManager != null)
     {
-      localCaptureComboManager.jdField_a_of_type_ArrayOfComTencentAelightCameraAioeditorCaptureDataCaptureComboManager$CaptureRecord[this.g].a();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager.b(this);
+      localCaptureComboManager.o[this.D].b();
+      this.h.b(this);
     }
     if (QLog.isColorLevel()) {
       QLog.d("AEFilterProviderView", 2, "onDestroy");
@@ -123,7 +131,7 @@ public class AEFilterProviderView
       localStringBuilder.append(paramString2);
       QLog.d("AEFilterProviderView", 2, localStringBuilder.toString());
     }
-    FilterCategory localFilterCategory = (FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(this.b);
+    FilterCategory localFilterCategory = (FilterCategory)this.d.get(this.b);
     StringBuilder localStringBuilder = null;
     int j = 0;
     paramInt = 0;
@@ -132,10 +140,10 @@ public class AEFilterProviderView
     {
       i = j;
       paramString1 = localStringBuilder;
-      if (paramInt >= localFilterCategory.a.size()) {
+      if (paramInt >= localFilterCategory.c.size()) {
         break;
       }
-      paramString1 = (QIMFilterCategoryItem)localFilterCategory.a.get(paramInt);
+      paramString1 = (QIMFilterCategoryItem)localFilterCategory.c.get(paramInt);
       if (paramString1.a.equals(paramString2))
       {
         i = paramInt;
@@ -157,37 +165,37 @@ public class AEFilterProviderView
     if (paramString1 != null)
     {
       postDelayed(new AEFilterProviderView.1(this, i), 200L);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager != null)
+      if (this.h != null)
       {
         paramString2 = new Bundle();
         paramString2.putInt("apply_source", 1);
-        paramString2.putInt("capture_scene", this.g);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager.a(paramString1, (Activity)getContext(), paramString2);
+        paramString2.putInt("capture_scene", this.D);
+        this.h.a(paramString1, (Activity)getContext(), paramString2);
       }
-      if (!this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEProviderContainerView.b()) {
+      if (!this.e.j()) {
         a(paramString1.a);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter.notifyDataSetChanged();
+      this.g.notifyDataSetChanged();
     }
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEProviderContainerView = ((AEProviderContainerView)((Activity)getContext()).findViewById(2064121976));
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2064318490, this, true);
+    this.e = ((AEProviderContainerView)((Activity)getContext()).findViewById(2063990904));
+    if (this.w == null) {
+      this.w = LayoutInflater.from(getContext()).inflate(2064056350, this, true);
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122192));
-    paramBundle = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramBundle);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter = new AEFilterProviderAdapter(this.jdField_a_of_type_AndroidContentContext, this.g);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter.a(this);
-    if (QIMManager.a().a(5))
+    this.f = ((RecyclerView)this.w.findViewById(2063991073));
+    paramBundle = new LinearLayoutManager(this.r, 0, false);
+    this.f.setLayoutManager(paramBundle);
+    this.g = new AEFilterProviderAdapter(this.r, this.D);
+    this.f.setAdapter(this.g);
+    this.g.a(this);
+    if (QIMManager.a().c(5))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager = ((CaptureComboManager)QIMManager.a(5));
-      paramBundle = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+      this.h = ((CaptureComboManager)QIMManager.a(5));
+      paramBundle = this.h;
       if (paramBundle != null) {
         paramBundle.a(this);
       }
@@ -195,7 +203,7 @@ public class AEFilterProviderView
     if (QLog.isColorLevel()) {
       QLog.d("QCombo", 2, "FilterProviderView onCreate");
     }
-    paramBundle = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData;
+    paramBundle = this.h.l;
     if (paramBundle == null)
     {
       if (QLog.isColorLevel()) {
@@ -203,7 +211,7 @@ public class AEFilterProviderView
       }
     }
     else {
-      a(paramBundle.a(this.g));
+      a(paramBundle.a(this.D));
     }
   }
   
@@ -229,12 +237,12 @@ public class AEFilterProviderView
       localObject1 = "none";
       if (paramInt == 0)
       {
-        AEBaseReportParam.a().o("none");
+        AEBaseReportParam.a().z("none");
         ((HashMap)localObject2).put("ext15", "none");
       }
       else
       {
-        AEBaseReportParam.a().o(paramView.a);
+        AEBaseReportParam.a().z(paramView.a);
         ((HashMap)localObject2).put("ext15", paramView.a);
       }
       AEReportUtils.b(11, (HashMap)localObject2);
@@ -256,25 +264,25 @@ public class AEFilterProviderView
         QLog.d("AEFilterProviderView", 2, ((StringBuilder)localObject2).toString());
       }
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener.a(-1, paramView);
+    if (this.F != null) {
+      this.F.a(-1, paramView);
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager != null)
+    if (this.h != null)
     {
       localObject1 = new Bundle();
       ((Bundle)localObject1).putInt("apply_source", 1);
-      ((Bundle)localObject1).putInt("capture_scene", this.g);
+      ((Bundle)localObject1).putInt("capture_scene", this.D);
       if ((AEFilterManagerHolder.getAEFilterManager() != null) && (!AEFilterManagerHolder.getAEFilterManager().a)) {
         ((Bundle)localObject1).putBoolean("capture_force_enable", true);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager.a(paramView, (Activity)getContext(), (Bundle)localObject1);
+      this.h.a(paramView, (Activity)getContext(), (Bundle)localObject1);
     }
-    if (!this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEProviderContainerView.b()) {
+    if (!this.e.j()) {
       a(paramView.a);
     }
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+    paramView = this.h;
     if (paramView != null) {
-      paramView.a(this.g, (Activity)this.jdField_a_of_type_AndroidContentContext);
+      paramView.a(this.D, (Activity)this.r);
     }
   }
   
@@ -294,7 +302,7 @@ public class AEFilterProviderView
       QLog.d("AEFilterProviderView", 2, localStringBuilder.toString());
     }
     if (paramComboFilterData != null) {
-      a(paramComboFilterData.a(this.g));
+      a(paramComboFilterData.a(this.D));
     }
   }
   
@@ -303,18 +311,18 @@ public class AEFilterProviderView
     if (QLog.isColorLevel()) {
       QLog.d("AEFilterProviderView", 2, "filters setup()");
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$DataSet = paramDataSet;
-    this.jdField_a_of_type_JavaUtilArrayList = paramDataSet.jdField_b_of_type_JavaUtilArrayList;
-    paramDataSet = this.jdField_a_of_type_JavaUtilArrayList;
+    this.c = paramDataSet;
+    this.d = paramDataSet.b;
+    paramDataSet = this.d;
     if (paramDataSet != null)
     {
       int i = paramDataSet.size();
       int j = this.b;
       if (i > j) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter.a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a);
+        this.g.a(((FilterCategory)this.d.get(j)).c);
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter.notifyDataSetChanged();
+    this.g.notifyDataSetChanged();
   }
   
   public void a(ComboSet paramComboSet) {}
@@ -325,51 +333,51 @@ public class AEFilterProviderView
     {
       paramBundle = new StringBuilder();
       paramBundle.append("fp onComboApply combo ");
-      paramBundle.append(paramComboSet.a);
+      paramBundle.append(paramComboSet.e);
       paramBundle.append(" filter ");
       QLog.i("QCombo", 2, paramBundle.toString());
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter.notifyDataSetChanged();
+    this.g.notifyDataSetChanged();
   }
   
   public void a(FilterSet paramFilterSet, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter.notifyDataSetChanged();
+    this.g.notifyDataSetChanged();
     if (paramBoolean)
     {
-      paramFilterSet = (QimMusicPlayer)QIMManager.a().c(8);
-      if (this.g == 0) {
+      paramFilterSet = (QimMusicPlayer)QIMManager.a().d(8);
+      if (this.D == 0) {
         paramInt = QQFilterRenderManagerHolder.b;
       } else {
         paramInt = QQFilterRenderManagerHolder.c;
       }
       paramFilterSet.c(paramInt);
-      paramFilterSet.f();
+      paramFilterSet.k();
     }
   }
   
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$DataSet == null)
+    if (this.c == null)
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+      localObject = this.h;
       if (localObject != null)
       {
-        localObject = ((CaptureComboManager)localObject).jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$ComboFilterData;
+        localObject = ((CaptureComboManager)localObject).l;
         if (localObject != null) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$DataSet = ((VideoFilterTools.ComboFilterData)localObject).a(this.g);
+          this.c = ((VideoFilterTools.ComboFilterData)localObject).a(this.D);
         }
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$DataSet;
-    if ((localObject != null) && (((VideoFilterTools.DataSet)localObject).jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem != null))
+    Object localObject = this.c;
+    if ((localObject != null) && (((VideoFilterTools.DataSet)localObject).f != null))
     {
       localObject = (Activity)getContext();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$DataSet.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem).a((Activity)localObject, this.g);
-      VideoFilterTools.a().b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$DataSet.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem, (Activity)getContext(), this.g);
-      VideoFilterTools.a().a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaVideoFilterTools$DataSet.jdField_b_of_type_ComTencentAelightCameraAioeditorCaptureDataQIMFilterCategoryItem, this.g);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter.notifyDataSetChanged();
+      this.h.b(this.c.f).a((Activity)localObject, this.D);
+      VideoFilterTools.a().b(this.c.f, (Activity)getContext(), this.D);
+      VideoFilterTools.a().a(this.c.f, this.D);
+      this.g.notifyDataSetChanged();
       a(null, 0);
     }
   }
@@ -383,24 +391,24 @@ public class AEFilterProviderView
   public void c()
   {
     super.c();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener.b();
+    if (this.F != null) {
+      this.F.c();
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter.notifyDataSetChanged();
+    this.g.notifyDataSetChanged();
   }
   
   public void d()
   {
     super.d();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewProviderView$ProviderViewListener.b(false);
+    if (this.F != null) {
+      this.F.b(false);
     }
   }
   
   public void e()
   {
     super.e();
-    CaptureComboManager localCaptureComboManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+    CaptureComboManager localCaptureComboManager = this.h;
     if (localCaptureComboManager != null) {
       localCaptureComboManager.a(this);
     }
@@ -409,15 +417,20 @@ public class AEFilterProviderView
   public void f()
   {
     super.f();
-    CaptureComboManager localCaptureComboManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataCaptureComboManager;
+    CaptureComboManager localCaptureComboManager = this.h;
     if (localCaptureComboManager != null) {
       localCaptureComboManager.b(this);
     }
   }
+  
+  protected int getInflateLayout()
+  {
+    return 2131627201;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEFilterProviderView
  * JD-Core Version:    0.7.0.1
  */

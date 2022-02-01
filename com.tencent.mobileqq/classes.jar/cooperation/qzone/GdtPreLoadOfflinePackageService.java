@@ -30,7 +30,7 @@ public class GdtPreLoadOfflinePackageService
         try
         {
           BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-          HtmlOffline.a();
+          HtmlOffline.b();
           HtmlOffline.a(str, localBaseApplicationImpl.getRuntime());
         }
         catch (Exception localException)
@@ -44,7 +44,7 @@ public class GdtPreLoadOfflinePackageService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.GdtPreLoadOfflinePackageService
  * JD-Core Version:    0.7.0.1
  */

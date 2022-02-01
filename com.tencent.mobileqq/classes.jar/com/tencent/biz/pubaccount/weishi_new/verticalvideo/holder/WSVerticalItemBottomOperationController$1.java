@@ -12,10 +12,10 @@ class WSVerticalItemBottomOperationController$1
   
   public void a(int paramInt, String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      paramString = WSVerticalItemBottomOperationController.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemBottomOperationController).getResources().getString(1929707525);
-      QQToast.a(WSVerticalItemBottomOperationController.d(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemBottomOperationController), 1, paramString, 0).a();
+      paramString = WSVerticalItemBottomOperationController.c(this.b).getResources().getString(1929838607);
+      QQToast.makeText(WSVerticalItemBottomOperationController.d(this.b), 1, paramString, 0).show();
     }
   }
   
@@ -23,14 +23,14 @@ class WSVerticalItemBottomOperationController$1
   {
     if (paramInteger.intValue() == 1)
     {
-      paramInteger = WSVerticalItemBottomOperationController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemBottomOperationController).getResources().getString(1929707526);
-      QQToast.a(WSVerticalItemBottomOperationController.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemBottomOperationController), 2, paramInteger, 0).a();
+      paramInteger = WSVerticalItemBottomOperationController.a(this.b).getResources().getString(1929838608);
+      QQToast.makeText(WSVerticalItemBottomOperationController.b(this.b), 2, paramInteger, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomOperationController.1
  * JD-Core Version:    0.7.0.1
  */

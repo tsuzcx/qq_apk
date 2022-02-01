@@ -255,7 +255,11 @@ public class DavEngineJni
   
   private int getOsType()
   {
-    return this.mSysInfo.getOsType();
+    AVCoreSystemInfo localAVCoreSystemInfo = this.mSysInfo;
+    if (localAVCoreSystemInfo != null) {
+      return localAVCoreSystemInfo.getOsType();
+    }
+    return 0;
   }
   
   private String getRomInfo()
@@ -296,6 +300,8 @@ public class DavEngineJni
   
   native int doQuaReport(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
   
+  native boolean enableAIDenoise(boolean paramBoolean);
+  
   native void enableDumpAudioData(boolean paramBoolean);
   
   native boolean enableLoopback(boolean paramBoolean);
@@ -322,7 +328,7 @@ public class DavEngineJni
   
   native int ignore(long paramLong);
   
-  native int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16);
+  native int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16, boolean paramBoolean3);
   
   public void initContext()
   {
@@ -424,6 +430,10 @@ public class DavEngineJni
   native int requestUnQQ(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
   native int requestVideoMode(long paramLong);
+  
+  native int sendAVAvatar2DMsg(long paramLong, byte[] paramArrayOfByte, boolean paramBoolean);
+  
+  native int sendAVAvatar2DSwitchRequest(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
   
   native int sendAVFunChatMsg(long paramLong, int paramInt, byte[] paramArrayOfByte);
   

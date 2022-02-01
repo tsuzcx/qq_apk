@@ -17,10 +17,10 @@ class HistorySearchEntryModel$2
   {
     long l = ((Long)paramView.getTag(-1)).longValue();
     Object localObject = this.a;
-    int i = HistorySearchEntryModel.a((HistorySearchEntryModel)localObject, ((HistorySearchEntryModel)localObject).a, l);
+    int i = HistorySearchEntryModel.a((HistorySearchEntryModel)localObject, ((HistorySearchEntryModel)localObject).e, l);
     if (i != -1)
     {
-      localObject = (SearchHistory)((IContactSearchable)this.a.a.get(i)).a();
+      localObject = (SearchHistory)((IContactSearchable)this.a.e.get(i)).l();
       if (localObject != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -35,7 +35,7 @@ class HistorySearchEntryModel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.HistorySearchEntryModel.2
  * JD-Core Version:    0.7.0.1
  */

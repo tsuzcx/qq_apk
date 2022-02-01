@@ -12,18 +12,18 @@ class EmojiJsPlugin$8
   
   public void run()
   {
-    WebUiUtils.WebViewProviderInterface localWebViewProviderInterface = this.this$0.mRuntime.a();
+    WebUiUtils.WebViewProviderInterface localWebViewProviderInterface = this.this$0.mRuntime.e();
     if ((localWebViewProviderInterface != null) && (localWebViewProviderInterface.getWebTitleBarInterface() != null))
     {
       EmojiJsPlugin localEmojiJsPlugin = this.this$0;
-      localEmojiJsPlugin.progressDialog = new QQProgressDialog(localEmojiJsPlugin.mRuntime.a(), localWebViewProviderInterface.getWebTitleBarInterface().a());
+      localEmojiJsPlugin.progressDialog = new QQProgressDialog(localEmojiJsPlugin.mRuntime.d(), localWebViewProviderInterface.getWebTitleBarInterface().m());
       this.this$0.progressDialog.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

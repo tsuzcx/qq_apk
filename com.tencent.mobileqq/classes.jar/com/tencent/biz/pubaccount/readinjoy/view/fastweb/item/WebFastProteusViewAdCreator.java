@@ -31,8 +31,8 @@ import org.json.JSONObject;
 public class WebFastProteusViewAdCreator
   implements IStateChangeListener, ItemCreator
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private VafContext a;
+  private Context b;
   
   private void a(Container paramContainer)
   {
@@ -76,65 +76,57 @@ public class WebFastProteusViewAdCreator
           ((NativeTextImp)localObject).setGravity(51);
         }
         localObject = paramContainer.findViewBaseByName("id_recommend_category_download");
-        if ((localObject != null) && (((ViewBase)localObject).getNativeView() != null) && ((((ViewBase)localObject).getNativeView() instanceof NativeTextImp)) && (paramRecommendAdData.d == 12) && (!TextUtils.isEmpty(paramRecommendAdData.p)))
+        if ((localObject != null) && (((ViewBase)localObject).getNativeView() != null) && ((((ViewBase)localObject).getNativeView() instanceof NativeTextImp)) && (paramRecommendAdData.s == 12) && (!TextUtils.isEmpty(paramRecommendAdData.t)))
         {
           localObject = (NativeTextImp)((ViewBase)localObject).getNativeView();
-          if ((localObject != null) && (!paramRecommendAdData.e))
+          if ((localObject != null) && (!paramRecommendAdData.ad))
           {
             ((NativeTextImp)localObject).setVisibility(8);
             return;
           }
           if (localObject != null) {
-            if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppInstall(BaseApplicationImpl.getContext(), paramRecommendAdData.p)) {
+            if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppInstall(BaseApplicationImpl.getContext(), paramRecommendAdData.t)) {
               ((NativeTextImp)localObject).setText("立即打开");
             } else {
               ((NativeTextImp)localObject).setText("立即下载");
             }
           }
         }
-        if (TextUtils.isEmpty(paramRecommendAdData.L))
+        if (TextUtils.isEmpty(paramRecommendAdData.ah))
         {
           paramContainer = paramContainer.findViewBaseByName("id_recommend_account_name");
           if (paramContainer == null) {
             return;
           }
-          paramContainer.getComLayoutParams().mLayoutMarginLeft = AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          paramContainer.getComLayoutParams().mLayoutMarginLeft = AIOUtils.b(16.0F, this.b.getResources());
         }
       }
     }
   }
   
-  public int a(BaseData paramBaseData)
-  {
-    if ((paramBaseData instanceof RecommendAdData)) {
-      return 9;
-    }
-    return -1;
-  }
-  
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new ReadInjoyContext();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-      ((IProteusSupportUtil)QRoute.api(IProteusSupportUtil.class)).initAdapterProteus(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+      this.a = new ReadInjoyContext();
+      this.a.setContext(paramContext);
+      ((IProteusSupportUtil)QRoute.api(IProteusSupportUtil.class)).initAdapterProteus(this.a, "native_article");
     }
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (this.b == null) {
+      this.b = paramContext;
     }
     ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
     paramViewGroup = null;
     String str;
     try
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      Object localObject1 = this.a.getViewFactory().inflate(this.a, localProteusItemData.bd);
       paramViewGroup = (ViewGroup)localObject1;
       localObject2 = ((Container)localObject1).getVirtualView();
       paramViewGroup = (ViewGroup)localObject1;
-      ((IProteusSupportUtil)QRoute.api(IProteusSupportUtil.class)).bindDynamicValue((ViewBase)localObject2, localProteusItemData.a.getViewBean());
+      ((IProteusSupportUtil)QRoute.api(IProteusSupportUtil.class)).bindDynamicValue((ViewBase)localObject2, localProteusItemData.bd.getViewBean());
       paramViewGroup = (ViewGroup)localObject1;
-      localObject2 = localProteusItemData.c.toString();
+      localObject2 = localProteusItemData.bb.toString();
       paramViewGroup = (ViewGroup)localObject1;
       localObject1 = localObject2;
     }
@@ -162,7 +154,7 @@ public class WebFastProteusViewAdCreator
       QLog.d("WebFastProteusViewAdCreator", 1, paramContext.toString());
     }
     if (paramBaseData != null) {
-      paramContext = paramBaseData.b;
+      paramContext = paramBaseData.aQ;
     }
     return new WebFastProteusViewAdCreator.ProteusItemViewHolder(this, (View)localObject2, localProteusItemData);
   }
@@ -173,7 +165,15 @@ public class WebFastProteusViewAdCreator
   
   public boolean a(BaseData paramBaseData)
   {
-    return paramBaseData.u == 9;
+    return paramBaseData.aP == 9;
+  }
+  
+  public int b(BaseData paramBaseData)
+  {
+    if ((paramBaseData instanceof RecommendAdData)) {
+      return 9;
+    }
+    return -1;
   }
   
   public void b()
@@ -192,7 +192,7 @@ public class WebFastProteusViewAdCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastProteusViewAdCreator
  * JD-Core Version:    0.7.0.1
  */

@@ -90,7 +90,7 @@ public class ProfileThirdAppComponent
         paramProfileCardInfo = this.shareResultDlg;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(((ProfileCardInfo)this.mData).card.strReMark);
-        localStringBuilder.append(this.mActivity.getString(2131698641));
+        localStringBuilder.append(this.mActivity.getString(2131896590));
         paramProfileCardInfo.a(localStringBuilder.toString());
         return bool;
       }
@@ -99,7 +99,7 @@ public class ProfileThirdAppComponent
         paramProfileCardInfo = this.shareResultDlg;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(((ProfileCardInfo)this.mData).card.strNick);
-        localStringBuilder.append(this.mActivity.getString(2131698641));
+        localStringBuilder.append(this.mActivity.getString(2131896590));
         paramProfileCardInfo.a(localStringBuilder.toString());
       }
     }
@@ -147,7 +147,7 @@ public class ProfileThirdAppComponent
   public void onResume()
   {
     super.onResume();
-    if ((((ProfileCardInfo)this.mData).allInOne.profileEntryType == 115) && (AddFriendLogicActivity.b)) {
+    if ((((ProfileCardInfo)this.mData).allInOne.profileEntryType == 115) && (AddFriendLogicActivity.d)) {
       qbShowShareResultDialog(this.mActivity.getIntent().getStringExtra("src_name"));
     }
   }
@@ -172,8 +172,8 @@ public class ProfileThirdAppComponent
       return;
     }
     this.shareResultDlg = new ShareAioResultDialog(this.mActivity);
-    this.shareResultDlg.a(this.mActivity.getString(2131698641));
-    String str = this.mActivity.getString(2131718866);
+    this.shareResultDlg.a(this.mActivity.getString(2131896590));
+    String str = this.mActivity.getString(2131916399);
     localObject = str;
     if (paramString != null)
     {
@@ -190,7 +190,7 @@ public class ProfileThirdAppComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.thirdapp.ProfileThirdAppComponent
  * JD-Core Version:    0.7.0.1
  */

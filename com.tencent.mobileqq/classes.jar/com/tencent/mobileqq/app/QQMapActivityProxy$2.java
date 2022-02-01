@@ -16,7 +16,7 @@ class QQMapActivityProxy$2
     if ((paramBoolean) && (paramArrayOfByte != null))
     {
       paramArrayOfByte = new String(paramArrayOfByte);
-      QQMapActivityProxy.a(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", paramArrayOfByte));
+      QQMapActivityProxy.d(this.a).sendBroadcast(new Intent().setAction("com.tencent.mobileqq.onGetStreetViewUrl").putExtra("streetViewUrl", paramArrayOfByte));
     }
     else
     {
@@ -62,7 +62,7 @@ class QQMapActivityProxy$2
     localIntent.setAction("com.tencent.mobileqq.onGetLbsShareSearch");
     localIntent.putExtra("data", paramArrayOfObject);
     localIntent.putExtra("req", ((ToServiceMsg)localObject).extraData.getBundle("req"));
-    QQMapActivityProxy.a(this.a).sendBroadcast(localIntent);
+    QQMapActivityProxy.d(this.a).sendBroadcast(localIntent);
   }
   
   protected void b(boolean paramBoolean, Object[] paramArrayOfObject)
@@ -90,7 +90,7 @@ class QQMapActivityProxy$2
     ((Intent)localObject).setAction("com.tencent.mobileqq.onGetLbsShareShop");
     ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
     ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
-    QQMapActivityProxy.a(this.a).sendBroadcast((Intent)localObject);
+    QQMapActivityProxy.d(this.a).sendBroadcast((Intent)localObject);
   }
   
   protected void c(boolean paramBoolean, Object[] paramArrayOfObject)
@@ -118,12 +118,12 @@ class QQMapActivityProxy$2
     ((Intent)localObject).setAction("com.tencent.mobileqq.onGetShareShopDetail");
     ((Intent)localObject).putExtra("data", (byte[])paramArrayOfObject[1]);
     ((Intent)localObject).putExtra("req", ((ToServiceMsg)paramArrayOfObject[0]).extraData.getBundle("req"));
-    QQMapActivityProxy.a(this.a).sendBroadcast((Intent)localObject);
+    QQMapActivityProxy.d(this.a).sendBroadcast((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQMapActivityProxy.2
  * JD-Core Version:    0.7.0.1
  */

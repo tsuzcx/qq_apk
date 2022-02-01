@@ -11,12 +11,12 @@ public class BannerView$DotsIndicator
   extends LinearLayout
 {
   public int a;
-  private Context a;
   public int b;
   public int c;
   public int d;
   public int e;
   public int f;
+  private Context g;
   
   public BannerView$DotsIndicator(Context paramContext)
   {
@@ -31,7 +31,7 @@ public class BannerView$DotsIndicator
   
   private void a(Context paramContext, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.g = paramContext;
     this.f = paramInt1;
     this.b = AIOUtils.b(6.0F, getResources());
     this.c = AIOUtils.b(10.0F, getResources());
@@ -50,8 +50,8 @@ public class BannerView$DotsIndicator
       int i = 0;
       while (i < this.f)
       {
-        View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-        localView.setBackgroundResource(this.jdField_a_of_type_Int);
+        View localView = new View(this.g);
+        localView.setBackgroundResource(this.a);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.d, this.e);
         localLayoutParams.setMargins(this.c, 0, 0, 0);
         localView.setLayoutParams(localLayoutParams);
@@ -84,7 +84,7 @@ public class BannerView$DotsIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.discovery.BannerView.DotsIndicator
  * JD-Core Version:    0.7.0.1
  */

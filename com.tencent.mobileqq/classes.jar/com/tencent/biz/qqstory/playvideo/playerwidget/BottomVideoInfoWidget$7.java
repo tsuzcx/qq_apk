@@ -11,9 +11,9 @@ class BottomVideoInfoWidget$7
   
   public void run()
   {
-    this.this$0.l();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    BottomVideoInfoWidget.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0);
+    this.this$0.E();
+    this.a.c(false);
+    BottomVideoInfoWidget.f(this.this$0).a(this.b.mVid, 0);
   }
 }
 

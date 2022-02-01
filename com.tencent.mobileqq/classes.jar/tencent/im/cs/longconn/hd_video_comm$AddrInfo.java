@@ -24,7 +24,7 @@ public final class hd_video_comm$AddrInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.AddrInfo
  * JD-Core Version:    0.7.0.1
  */

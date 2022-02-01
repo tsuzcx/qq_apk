@@ -54,7 +54,7 @@ public class TroopNotificationEntryConfig
     this.b = 0;
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
     int i = this.a;
     boolean bool2 = false;
@@ -119,7 +119,7 @@ public class TroopNotificationEntryConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.config.TroopNotificationEntryConfig
  * JD-Core Version:    0.7.0.1
  */

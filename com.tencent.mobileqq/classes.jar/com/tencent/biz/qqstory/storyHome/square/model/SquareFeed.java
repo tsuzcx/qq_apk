@@ -13,30 +13,26 @@ import java.util.List;
 
 public class SquareFeed
 {
-  public ShareGroupItem a;
   public String a;
-  public List<StoryVideoItem> a;
-  public List<SquareFeed.FeedIdVid> b = new ArrayList();
+  public ShareGroupItem b;
+  public List<StoryVideoItem> c = new ArrayList();
+  public List<SquareFeed.FeedIdVid> d = new ArrayList();
   
-  public SquareFeed()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public SquareFeed() {}
   
   public SquareFeed(qqstory_struct.DiscoveryShareGroupInfo paramDiscoveryShareGroupInfo)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = new ShareGroupItem();
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.convertFrom(paramDiscoveryShareGroupInfo.group);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId;
+    this.b = new ShareGroupItem();
+    this.b.convertFrom(paramDiscoveryShareGroupInfo.group);
+    this.a = this.b.shareGroupId;
     paramDiscoveryShareGroupInfo = paramDiscoveryShareGroupInfo.video_info.get().iterator();
     while (paramDiscoveryShareGroupInfo.hasNext())
     {
       qqstory_struct.DiscoveryShareGroupVideoInfo localDiscoveryShareGroupVideoInfo = (qqstory_struct.DiscoveryShareGroupVideoInfo)paramDiscoveryShareGroupInfo.next();
       StoryVideoItem localStoryVideoItem = new StoryVideoItem();
       localStoryVideoItem.convertFrom("square feed", localDiscoveryShareGroupVideoInfo);
-      this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
-      this.b.add(new SquareFeed.FeedIdVid(localDiscoveryShareGroupVideoInfo.feed_id.get().toStringUtf8(), localDiscoveryShareGroupVideoInfo.vid.get().toStringUtf8()));
+      this.c.add(localStoryVideoItem);
+      this.d.add(new SquareFeed.FeedIdVid(localDiscoveryShareGroupVideoInfo.feed_id.get().toStringUtf8(), localDiscoveryShareGroupVideoInfo.vid.get().toStringUtf8()));
     }
   }
 }

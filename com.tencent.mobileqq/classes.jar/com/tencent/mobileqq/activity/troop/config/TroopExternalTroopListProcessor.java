@@ -19,7 +19,7 @@ public class TroopExternalTroopListProcessor
   {
     paramAppInterface = (TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if (paramAppInterface != null) {
-      paramAppInterface.b();
+      paramAppInterface.f();
     }
   }
   
@@ -42,7 +42,7 @@ public class TroopExternalTroopListProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopExternalTroopListProcessor
  * JD-Core Version:    0.7.0.1
  */

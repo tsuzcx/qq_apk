@@ -11,16 +11,22 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class AbstractMagnifierItem
   implements IAPMBase
 {
-  APMModuleConfig jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig = null;
-  private Boolean jdField_a_of_type_JavaLangBoolean = null;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  APMModuleConfig a = null;
+  private volatile boolean b = false;
+  private Boolean c = null;
   
-  public DefaultPluginConfig a()
+  public abstract String a();
+  
+  protected void a(APMModuleConfig paramAPMModuleConfig) {}
+  
+  protected boolean c()
   {
-    return (DefaultPluginConfig)APMConfig.sPluginToQapmPluginConfigMap.get(a());
+    return f().canOpenPlugin();
   }
   
-  protected APMModuleConfig a()
+  public void d() {}
+  
+  protected APMModuleConfig dG_()
   {
     APMModuleConfig localAPMModuleConfig = new APMModuleConfig();
     localAPMModuleConfig.userRatio = 0.0F;
@@ -30,69 +36,63 @@ public abstract class AbstractMagnifierItem
     return localAPMModuleConfig;
   }
   
-  public abstract String a();
-  
-  public void a() {}
-  
-  protected void a(APMModuleConfig paramAPMModuleConfig) {}
-  
-  protected boolean a()
+  public boolean dH_()
   {
-    return b().canOpenPlugin();
+    return this.b;
   }
   
-  public APMModuleConfig b()
+  public APMModuleConfig f()
   {
-    if (this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig == null)
+    if (this.a == null)
     {
-      Object localObject = MagnifierSDK.a().a();
-      this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig = ((APMConfig)localObject).getSampleConfig(a());
-      if (this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig == null) {
-        this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig = a();
+      Object localObject = MagnifierSDK.b().a();
+      this.a = ((APMConfig)localObject).getSampleConfig(a());
+      if (this.a == null) {
+        this.a = dG_();
       }
-      if ((((APMConfig)localObject).runVip) && (UnifiedMonitor.c()) && ((!QLog.isColorLevel()) || ((!"dropframe".equals(a())) && (!"leak".equals(a())))))
+      if ((((APMConfig)localObject).runVip) && (UnifiedMonitor.g()) && ((!QLog.isColorLevel()) || ((!"dropframe".equals(a())) && (!"leak".equals(a())))))
       {
-        localObject = this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig;
+        localObject = this.a;
         ((APMModuleConfig)localObject).evenRatio = 1.0F;
-        ((APMModuleConfig)localObject).threshold = a().threshold;
-        localObject = this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig;
+        ((APMModuleConfig)localObject).threshold = g().threshold;
+        localObject = this.a;
         ((APMModuleConfig)localObject).userRatio = 1.0F;
         ((APMModuleConfig)localObject).maxReport = 2147483647;
         ((APMModuleConfig)localObject).stackDepth = 6;
       }
-      a(this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig);
+      a(this.a);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getMyConfig ");
       ((StringBuilder)localObject).append(a());
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig);
+      ((StringBuilder)localObject).append(this.a);
       QLog.i("MagnifierSDK.QAPM", 1, ((StringBuilder)localObject).toString());
     }
-    return this.jdField_a_of_type_ComTencentQqperfConfigAPMModuleConfig;
+    return this.a;
   }
   
-  public final boolean c()
+  public DefaultPluginConfig g()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return this.jdField_a_of_type_Boolean;
+    return (DefaultPluginConfig)APMConfig.sPluginToQapmPluginConfigMap.get(a());
   }
   
-  public boolean d()
+  public final boolean h()
   {
-    if (this.jdField_a_of_type_JavaLangBoolean == null) {
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(a());
+    this.b = true;
+    return this.b;
+  }
+  
+  public boolean i()
+  {
+    if (this.c == null) {
+      this.c = Boolean.valueOf(c());
     }
-    return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
-  }
-  
-  public boolean o_()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.c.booleanValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.base.AbstractMagnifierItem
  * JD-Core Version:    0.7.0.1
  */

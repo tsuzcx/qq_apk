@@ -11,20 +11,20 @@ class QfileBaseCloudFileTabView$1
   
   public void onGroupExpand(int paramInt)
   {
-    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
+    if ((paramInt == this.a.j.getGroupCount() - 1) && (this.a.d != null))
     {
-      if (!this.a.a())
+      if (!this.a.e())
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
+        this.a.d.setVisible();
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+      this.a.d.setGone();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.1
  * JD-Core Version:    0.7.0.1
  */

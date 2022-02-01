@@ -20,42 +20,42 @@ class AddFriendHelper$3
 {
   AddFriendHelper$3(AddFriendHelper paramAddFriendHelper, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     Object localObject;
     if (paramInt != 0)
     {
       if (paramInt == 1)
       {
-        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+        paramView = new Intent(this.b.c, QQBrowserActivity.class);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.a());
+        ((StringBuilder)localObject).append(this.b.b());
         paramView.putExtra("url", ((StringBuilder)localObject).toString());
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+        this.b.c.startActivity(paramView);
         ReportController.b(null, "dc00898", "", "", "0X800ACA4", "0X800ACA4", 0, 0, "", "0", "0", "");
       }
     }
     else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
+      ReportController.b(this.b.b, "CliOper", "", this.b.e.b, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
       ReportController.b(null, "dc00898", "", "", "0X800ACA3", "0X800ACA3", 0, 0, "", "0", "0", "");
       paramView = new ArrayList();
     }
     try
     {
-      paramView.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.a())));
-      localObject = (IStrangerService)this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IStrangerService.class, "all");
+      paramView.add(Long.valueOf(Long.parseLong(this.b.b())));
+      localObject = (IStrangerService)this.b.b.getRuntimeService(IStrangerService.class, "all");
       if (localObject != null) {
         ((IStrangerService)localObject).deleteStrangers(paramView);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.b.f == null)
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper;
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramView.jdField_a_of_type_AndroidContentContext, 0);
+        paramView = this.b;
+        paramView.f = new QQProgressDialog(paramView.d, 0);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAddFriendHelper.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.b.f.show();
+      this.a.dismiss();
       return;
     }
     catch (NumberFormatException paramView)
@@ -68,7 +68,7 @@ class AddFriendHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AddFriendHelper.3
  * JD-Core Version:    0.7.0.1
  */

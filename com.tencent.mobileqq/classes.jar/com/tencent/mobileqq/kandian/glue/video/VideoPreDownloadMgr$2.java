@@ -13,10 +13,10 @@ class VideoPreDownloadMgr$2
   {
     if (QLog.isColorLevel())
     {
-      String str = VideoPreDownloadMgr.a();
+      String str = VideoPreDownloadMgr.e();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("预下载回调 vid:");
-      localStringBuilder.append(VideoPreDownloadMgr.a(this.a));
+      localStringBuilder.append(VideoPreDownloadMgr.b(this.a));
       QLog.i(str, 2, localStringBuilder.toString());
     }
     ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
@@ -26,10 +26,10 @@ class VideoPreDownloadMgr$2
   {
     if (QLog.isColorLevel())
     {
-      String str = VideoPreDownloadMgr.a();
+      String str = VideoPreDownloadMgr.e();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("预下载回调 vid:");
-      localStringBuilder.append(VideoPreDownloadMgr.a(this.a));
+      localStringBuilder.append(VideoPreDownloadMgr.b(this.a));
       localStringBuilder.append(" SUCCESS");
       QLog.i(str, 2, localStringBuilder.toString());
     }
@@ -38,7 +38,7 @@ class VideoPreDownloadMgr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoPreDownloadMgr.2
  * JD-Core Version:    0.7.0.1
  */

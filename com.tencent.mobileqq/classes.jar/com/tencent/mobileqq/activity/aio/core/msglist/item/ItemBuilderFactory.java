@@ -16,6 +16,7 @@ import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.item.supplier.AIOStoryVideoSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.ActivitySupplier;
+import com.tencent.mobileqq.activity.aio.item.supplier.AniStickerSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.ApolloGameSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.ApolloSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.AppSharePicSupplier;
@@ -139,6 +140,7 @@ import com.tencent.mobileqq.apollo.utils.ApolloClassFactoryApi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForApproval;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
@@ -229,233 +231,235 @@ import java.util.Set;
 
 public class ItemBuilderFactory
 {
-  private static ArrayMap<Class<? extends MessageRecord>, Integer> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-  private static ArrayMap<Class<? extends ChatMessage>, MessageTypeSupplier> b;
+  private static ArrayMap<Class<? extends MessageRecord>, Integer> h = new ArrayMap();
+  private static ArrayMap<Class<? extends ChatMessage>, MessageTypeSupplier> i;
   protected Context a;
-  private final SparseArray<ItemBuilderSupplier<ChatItemBuilder>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  protected SessionInfo a;
-  protected AIOAnimationConatiner a;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  protected MiniChatTextItemBuilder a;
-  protected QQAppInterface a;
-  private Set<ChatItemBuilder> jdField_a_of_type_JavaUtilSet;
+  protected QQAppInterface b;
+  protected SessionInfo c;
+  protected AIOAnimationConatiner d;
+  protected MiniChatTextItemBuilder e;
+  private BaseChatPie f;
+  private Set<ChatItemBuilder> g;
+  private final SparseArray<ItemBuilderSupplier<ChatItemBuilder>> j = new SparseArray();
   
   static
   {
-    Object localObject = jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+    Object localObject = h;
     Integer localInteger = Integer.valueOf(15);
     ((ArrayMap)localObject).put(MessageForNewGrayTips.class, localInteger);
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForSafeGrayTips.class, localInteger);
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForIncompatibleGrayTips.class, localInteger);
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForNearbyMarketGrayTips.class, localInteger);
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopEffectPic.class, Integer.valueOf(80));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDevPtt.class, Integer.valueOf(33));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForPtt.class, Integer.valueOf(2));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForVideo.class, Integer.valueOf(11));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForLocationShare.class, Integer.valueOf(113));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForAutoReply.class, Integer.valueOf(124));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForMarketFace.class, Integer.valueOf(12));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForRichState.class, Integer.valueOf(13));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQQStory.class, Integer.valueOf(67));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTribeShortVideo.class, Integer.valueOf(89));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopPobing.class, Integer.valueOf(77));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopNotification.class, Integer.valueOf(28));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQzoneFeed.class, Integer.valueOf(21));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForPLNews.class, Integer.valueOf(79));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForMedalNews.class, Integer.valueOf(86));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForConfessCard.class, Integer.valueOf(92));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForConfessNews.class, Integer.valueOf(91));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopConfess.class, Integer.valueOf(97));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForEnterTroop.class, Integer.valueOf(22));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForMyEnterTroop.class, Integer.valueOf(23));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForShakeWindow.class, Integer.valueOf(26));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopUnreadTips.class, Integer.valueOf(27));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForSplitLineTips.class, Integer.valueOf(70));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDevShortVideo.class, Integer.valueOf(35));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDevLittleVideo.class, Integer.valueOf(45));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForColorRing.class, Integer.valueOf(31));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopFee.class, Integer.valueOf(44));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDeviceSingleStruct.class, Integer.valueOf(34));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQQWalletTips.class, localInteger);
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDeviceText.class, Integer.valueOf(39));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(((IHotChatApi)QRoute.api(IHotChatApi.class)).getShareHotChatGrayTipsClass(), localInteger);
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDeliverGiftTips.class, localInteger);
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForArkFlashChat.class, Integer.valueOf(76));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForReplyText.class, Integer.valueOf(50));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForApproval.class, Integer.valueOf(52));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForVIPDonate.class, Integer.valueOf(58));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForFoldMsgGrayTips.class, Integer.valueOf(57));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForPokeEmo.class, Integer.valueOf(96));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQQStoryComment.class, Integer.valueOf(68));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopStory.class, Integer.valueOf(73));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForScribble.class, Integer.valueOf(75));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQQStoryFeed.class, Integer.valueOf(87));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTimDouFuGuide.class, Integer.valueOf(85));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForCommonHobbyForAIOShow.class, Integer.valueOf(94));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForLimitChatTopic.class, Integer.valueOf(102));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForStarLeague.class, Integer.valueOf(101));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForFuDai.class, Integer.valueOf(104));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForBirthdayNotice.class, Integer.valueOf(108));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForAIOStoryVideo.class, Integer.valueOf(109));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTofuIntimateAnniversary.class, Integer.valueOf(115));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTofuBaseProfile.class, Integer.valueOf(116));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTofuNicePics.class, Integer.valueOf(117));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTofuAioMiniProfile.class, Integer.valueOf(118));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQCircleIceBreak.class, Integer.valueOf(119));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQCircleFeed.class, Integer.valueOf(123));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForWriteTogether.class, Integer.valueOf(125));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTofuAskAnonymously.class, Integer.valueOf(126));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForBeancurd.class, Integer.valueOf(127));
-    b = new ArrayMap();
-    b.put(MessageForText.class, new TextTypeSupplier());
-    b.put(MessageForTroopGift.class, new GiftTypeSupplier());
-    b.put(MessageForGrayTips.class, new GrayTipsTypeSupplier());
-    b.put(MessageForPic.class, new PicTypeSupplier());
-    b.put(MessageForFile.class, new FileTypeSupplier());
-    b.put(MessageForDLFile.class, new DLFileTypeSupplier());
-    b.put(MessageForPubAccount.class, new PATypeSupplier());
-    b.put(MessageForTroopSign.class, new TroopSignTypeSupplier());
-    b.put(MessageForStructing.class, new StructTypeSupplier());
-    b.put(MessageForLongMsg.class, new LongMsgTypeSupplier());
-    b.put(MessageForMixedMsg.class, new MixedTypeSupplier());
-    b.put(MessageForTroopFile.class, new TroopFileTypeSupplier());
+    h.put(MessageForSafeGrayTips.class, localInteger);
+    h.put(MessageForIncompatibleGrayTips.class, localInteger);
+    h.put(MessageForNearbyMarketGrayTips.class, localInteger);
+    h.put(MessageForTroopEffectPic.class, Integer.valueOf(80));
+    h.put(MessageForDevPtt.class, Integer.valueOf(33));
+    h.put(MessageForPtt.class, Integer.valueOf(2));
+    h.put(MessageForVideo.class, Integer.valueOf(11));
+    h.put(MessageForLocationShare.class, Integer.valueOf(113));
+    h.put(MessageForAutoReply.class, Integer.valueOf(124));
+    h.put(MessageForMarketFace.class, Integer.valueOf(12));
+    h.put(MessageForRichState.class, Integer.valueOf(13));
+    h.put(MessageForQQStory.class, Integer.valueOf(67));
+    h.put(MessageForTribeShortVideo.class, Integer.valueOf(89));
+    h.put(MessageForTroopPobing.class, Integer.valueOf(77));
+    h.put(MessageForTroopNotification.class, Integer.valueOf(28));
+    h.put(MessageForQzoneFeed.class, Integer.valueOf(21));
+    h.put(MessageForPLNews.class, Integer.valueOf(79));
+    h.put(MessageForMedalNews.class, Integer.valueOf(86));
+    h.put(MessageForConfessCard.class, Integer.valueOf(92));
+    h.put(MessageForConfessNews.class, Integer.valueOf(91));
+    h.put(MessageForTroopConfess.class, Integer.valueOf(97));
+    h.put(MessageForEnterTroop.class, Integer.valueOf(22));
+    h.put(MessageForMyEnterTroop.class, Integer.valueOf(23));
+    h.put(MessageForShakeWindow.class, Integer.valueOf(26));
+    h.put(MessageForTroopUnreadTips.class, Integer.valueOf(27));
+    h.put(MessageForSplitLineTips.class, Integer.valueOf(70));
+    h.put(MessageForDevShortVideo.class, Integer.valueOf(35));
+    h.put(MessageForDevLittleVideo.class, Integer.valueOf(45));
+    h.put(MessageForColorRing.class, Integer.valueOf(31));
+    h.put(MessageForTroopFee.class, Integer.valueOf(44));
+    h.put(MessageForDeviceSingleStruct.class, Integer.valueOf(34));
+    h.put(MessageForQQWalletTips.class, localInteger);
+    h.put(MessageForDeviceText.class, Integer.valueOf(39));
+    h.put(((IHotChatApi)QRoute.api(IHotChatApi.class)).getShareHotChatGrayTipsClass(), localInteger);
+    h.put(MessageForDeliverGiftTips.class, localInteger);
+    h.put(MessageForArkFlashChat.class, Integer.valueOf(76));
+    h.put(MessageForReplyText.class, Integer.valueOf(50));
+    h.put(MessageForApproval.class, Integer.valueOf(52));
+    h.put(MessageForVIPDonate.class, Integer.valueOf(58));
+    h.put(MessageForFoldMsgGrayTips.class, Integer.valueOf(57));
+    h.put(MessageForPokeEmo.class, Integer.valueOf(96));
+    h.put(MessageForQQStoryComment.class, Integer.valueOf(68));
+    h.put(MessageForTroopStory.class, Integer.valueOf(73));
+    h.put(MessageForScribble.class, Integer.valueOf(75));
+    h.put(MessageForQQStoryFeed.class, Integer.valueOf(87));
+    h.put(MessageForTimDouFuGuide.class, Integer.valueOf(85));
+    h.put(MessageForCommonHobbyForAIOShow.class, Integer.valueOf(94));
+    h.put(MessageForLimitChatTopic.class, Integer.valueOf(102));
+    h.put(MessageForStarLeague.class, Integer.valueOf(101));
+    h.put(MessageForFuDai.class, Integer.valueOf(104));
+    h.put(MessageForBirthdayNotice.class, Integer.valueOf(108));
+    h.put(MessageForAIOStoryVideo.class, Integer.valueOf(109));
+    h.put(MessageForTofuIntimateAnniversary.class, Integer.valueOf(115));
+    h.put(MessageForTofuBaseProfile.class, Integer.valueOf(116));
+    h.put(MessageForTofuNicePics.class, Integer.valueOf(117));
+    h.put(MessageForTofuAioMiniProfile.class, Integer.valueOf(118));
+    h.put(MessageForQCircleIceBreak.class, Integer.valueOf(119));
+    h.put(MessageForQCircleFeed.class, Integer.valueOf(123));
+    h.put(MessageForWriteTogether.class, Integer.valueOf(125));
+    h.put(MessageForTofuAskAnonymously.class, Integer.valueOf(126));
+    h.put(MessageForBeancurd.class, Integer.valueOf(127));
+    h.put(MessageForAniSticker.class, Integer.valueOf(128));
+    i = new ArrayMap();
+    i.put(MessageForText.class, new TextTypeSupplier());
+    i.put(MessageForTroopGift.class, new GiftTypeSupplier());
+    i.put(MessageForGrayTips.class, new GrayTipsTypeSupplier());
+    i.put(MessageForPic.class, new PicTypeSupplier());
+    i.put(MessageForFile.class, new FileTypeSupplier());
+    i.put(MessageForDLFile.class, new DLFileTypeSupplier());
+    i.put(MessageForPubAccount.class, new PATypeSupplier());
+    i.put(MessageForTroopSign.class, new TroopSignTypeSupplier());
+    i.put(MessageForStructing.class, new StructTypeSupplier());
+    i.put(MessageForLongMsg.class, new LongMsgTypeSupplier());
+    i.put(MessageForMixedMsg.class, new MixedTypeSupplier());
+    i.put(MessageForTroopFile.class, new TroopFileTypeSupplier());
     localObject = new ShortVideoTypeSupplier();
-    b.put(MessageForShortVideo.class, localObject);
-    b.put(MessageForDanceMachine.class, localObject);
-    b.put(MessageForBlessPTV.class, localObject);
-    b.put(MessageForQQWalletMsg.class, new QQWalletTypeSupplier());
-    b.put(MessageForDeviceFile.class, new DeviceFileTypeSupplier());
-    b.put(MessageForArkApp.class, new ArkAppTypeSupplier());
-    b.put(MessageForArkBabyqReply.class, new ArkBabyqReplyTypeSupplier());
+    i.put(MessageForShortVideo.class, localObject);
+    i.put(MessageForDanceMachine.class, localObject);
+    i.put(MessageForBlessPTV.class, localObject);
+    i.put(MessageForQQWalletMsg.class, new QQWalletTypeSupplier());
+    i.put(MessageForDeviceFile.class, new DeviceFileTypeSupplier());
+    i.put(MessageForArkApp.class, new ArkAppTypeSupplier());
+    i.put(MessageForArkBabyqReply.class, new ArkBabyqReplyTypeSupplier());
     localObject = ApolloMessageTypeSupplierApi.a();
     if ((localObject instanceof MessageTypeSupplier)) {
-      b.put(ApolloClassFactoryApi.e(), (MessageTypeSupplier)localObject);
+      i.put(ApolloClassFactoryApi.e(), (MessageTypeSupplier)localObject);
     }
-    b.put(MessageForTroopReward.class, new TroopRewardTypeSupplier());
-    b.put(MessageForPoke.class, new PokeTypeSupplier());
-    b.put(MessageForUniteGrayTip.class, new UniteGrayTipTypeSupplier());
-    b.put(MessageForHiBoom.class, new HiBoomTypeSupplier());
+    i.put(MessageForTroopReward.class, new TroopRewardTypeSupplier());
+    i.put(MessageForPoke.class, new PokeTypeSupplier());
+    i.put(MessageForUniteGrayTip.class, new UniteGrayTipTypeSupplier());
+    i.put(MessageForHiBoom.class, new HiBoomTypeSupplier());
   }
   
   public ItemBuilderFactory(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(61, new FilePicSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(65, new FileVideoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, new FileSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(120, new DLFileSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(121, new DLFilePicSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(122, new DLFileVideoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, new ImageSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(24, new AppSharePicSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, new PTTSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(33, new DevPTTSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(15, new GrayTipsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(72, new TroopWantGiftSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(6, new PASingleSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(7, new PAMultiSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(8, new PATextSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(5, new StructSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(11, new VideoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(113, new LocationShareSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(124, new AutoReplySupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(13, new RichSignatureSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(9, new TranslationSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(12, new MarketFaceSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(16, new ActivitySupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(22, new EnterTroopSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(23, new MyEnterTroopSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(17, new LongMsgSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(18, new MixedSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(21, new QzoneFeedSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(108, new BirthdayNoticeSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(79, new PLNewsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(86, new MedalNewsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(94, new CommonHobbySupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(91, new ConfessNewsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(92, new ConfessCardSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(97, new TroopConfessSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(26, new ShakeWindowSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(62, new PokeSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(96, new PokeEmoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(27, new TroopUnreadTipsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(70, new TroopLineTipsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(28, new StructTroopNotificationSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(29, new ShortVideoSupplier());
+    this.j.put(61, new FilePicSupplier());
+    this.j.put(65, new FileVideoSupplier());
+    this.j.put(3, new FileSupplier());
+    this.j.put(120, new DLFileSupplier());
+    this.j.put(121, new DLFilePicSupplier());
+    this.j.put(122, new DLFileVideoSupplier());
+    this.j.put(1, new ImageSupplier());
+    this.j.put(24, new AppSharePicSupplier());
+    this.j.put(2, new PTTSupplier());
+    this.j.put(33, new DevPTTSupplier());
+    this.j.put(15, new GrayTipsSupplier());
+    this.j.put(72, new TroopWantGiftSupplier());
+    this.j.put(6, new PASingleSupplier());
+    this.j.put(7, new PAMultiSupplier());
+    this.j.put(8, new PATextSupplier());
+    this.j.put(5, new StructSupplier());
+    this.j.put(11, new VideoSupplier());
+    this.j.put(113, new LocationShareSupplier());
+    this.j.put(124, new AutoReplySupplier());
+    this.j.put(13, new RichSignatureSupplier());
+    this.j.put(9, new TranslationSupplier());
+    this.j.put(12, new MarketFaceSupplier());
+    this.j.put(16, new ActivitySupplier());
+    this.j.put(22, new EnterTroopSupplier());
+    this.j.put(23, new MyEnterTroopSupplier());
+    this.j.put(17, new LongMsgSupplier());
+    this.j.put(18, new MixedSupplier());
+    this.j.put(21, new QzoneFeedSupplier());
+    this.j.put(108, new BirthdayNoticeSupplier());
+    this.j.put(79, new PLNewsSupplier());
+    this.j.put(86, new MedalNewsSupplier());
+    this.j.put(94, new CommonHobbySupplier());
+    this.j.put(91, new ConfessNewsSupplier());
+    this.j.put(92, new ConfessCardSupplier());
+    this.j.put(97, new TroopConfessSupplier());
+    this.j.put(26, new ShakeWindowSupplier());
+    this.j.put(62, new PokeSupplier());
+    this.j.put(96, new PokeEmoSupplier());
+    this.j.put(27, new TroopUnreadTipsSupplier());
+    this.j.put(70, new TroopLineTipsSupplier());
+    this.j.put(28, new StructTroopNotificationSupplier());
+    this.j.put(29, new ShortVideoSupplier());
     Object localObject = new ShortVideoRealSupplier();
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(38, localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(40, localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(41, localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(46, new ShortVideoPTVSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(31, new ThumbSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(32, new QQWalletSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(90, new QQWalletTransSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(44, new TroopFeeSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(48, new TroopGiftSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(49, new TroopGiftReceiverSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(35, new DevShortVideoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(45, new DevLittleVideoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(34, new DevSingleStructSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(36, new DevPicSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(37, new DevFileSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(39, new DevTextSupplier());
+    this.j.put(38, localObject);
+    this.j.put(40, localObject);
+    this.j.put(41, localObject);
+    this.j.put(46, new ShortVideoPTVSupplier());
+    this.j.put(31, new ThumbSupplier());
+    this.j.put(32, new QQWalletSupplier());
+    this.j.put(90, new QQWalletTransSupplier());
+    this.j.put(44, new TroopFeeSupplier());
+    this.j.put(48, new TroopGiftSupplier());
+    this.j.put(49, new TroopGiftReceiverSupplier());
+    this.j.put(35, new DevShortVideoSupplier());
+    this.j.put(45, new DevLittleVideoSupplier());
+    this.j.put(34, new DevSingleStructSupplier());
+    this.j.put(36, new DevPicSupplier());
+    this.j.put(37, new DevFileSupplier());
+    this.j.put(39, new DevTextSupplier());
     localObject = new FlashPicSupplier();
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(42, localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(66, localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(56, new ApolloSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(88, new ApolloGameSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(100, new CmGameTipsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(47, new ArkAppSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(81, new ArkAppShareMultiSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(112, new ArkAppMultiSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(76, new ArkFlashChatSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(50, new ReplySupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(52, new ApprovalSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(58, new VIPDonateSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(57, new FoldMsgGrayTipsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(63, new LongTextSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(64, new UniteGrayTipSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(67, new QQStorySupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(89, new TribeShortVideoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(77, new PobingSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(68, new QQStoryCommentSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(71, new TroopSignPicSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(84, new TroopSignVideoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(73, new TroopStorySupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(78, new HiBoomSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(75, new ScribbleSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(80, new TroopEffectPicSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(87, new QQStoryFeedSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(85, new TimDouFuGuideSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(93, new TimDocsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(101, new TroopStarLeagueSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(104, new FuDaiSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(109, new AIOStoryVideoSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(110, new LoverChattingGrayTipSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(111, new AutoVideoSupplier());
+    this.j.put(42, localObject);
+    this.j.put(66, localObject);
+    this.j.put(56, new ApolloSupplier());
+    this.j.put(88, new ApolloGameSupplier());
+    this.j.put(100, new CmGameTipsSupplier());
+    this.j.put(47, new ArkAppSupplier());
+    this.j.put(81, new ArkAppShareMultiSupplier());
+    this.j.put(112, new ArkAppMultiSupplier());
+    this.j.put(76, new ArkFlashChatSupplier());
+    this.j.put(50, new ReplySupplier());
+    this.j.put(52, new ApprovalSupplier());
+    this.j.put(58, new VIPDonateSupplier());
+    this.j.put(57, new FoldMsgGrayTipsSupplier());
+    this.j.put(63, new LongTextSupplier());
+    this.j.put(64, new UniteGrayTipSupplier());
+    this.j.put(67, new QQStorySupplier());
+    this.j.put(89, new TribeShortVideoSupplier());
+    this.j.put(77, new PobingSupplier());
+    this.j.put(68, new QQStoryCommentSupplier());
+    this.j.put(71, new TroopSignPicSupplier());
+    this.j.put(84, new TroopSignVideoSupplier());
+    this.j.put(73, new TroopStorySupplier());
+    this.j.put(78, new HiBoomSupplier());
+    this.j.put(75, new ScribbleSupplier());
+    this.j.put(80, new TroopEffectPicSupplier());
+    this.j.put(87, new QQStoryFeedSupplier());
+    this.j.put(85, new TimDouFuGuideSupplier());
+    this.j.put(93, new TimDocsSupplier());
+    this.j.put(101, new TroopStarLeagueSupplier());
+    this.j.put(104, new FuDaiSupplier());
+    this.j.put(109, new AIOStoryVideoSupplier());
+    this.j.put(110, new LoverChattingGrayTipSupplier());
+    this.j.put(111, new AutoVideoSupplier());
     localObject = new TextSupplier();
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int i = 0;
+    SparseArray localSparseArray = this.j;
+    int k = 0;
     localSparseArray.put(0, localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(115, new TofuIntimateAnniversarySupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(116, new TofuBaseProfileSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(117, new TofuNicePicsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(118, new TofuAioMiniProfileSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(119, new QCircleChatIceBreakSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(123, new QCircleFeedSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(125, new WriteTogetherSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(126, new TofuAskAnonymouslySupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(127, new BeancurdSupplier());
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    while (i < j)
+    this.j.put(115, new TofuIntimateAnniversarySupplier());
+    this.j.put(116, new TofuBaseProfileSupplier());
+    this.j.put(117, new TofuNicePicsSupplier());
+    this.j.put(118, new TofuAioMiniProfileSupplier());
+    this.j.put(119, new QCircleChatIceBreakSupplier());
+    this.j.put(123, new QCircleFeedSupplier());
+    this.j.put(125, new WriteTogetherSupplier());
+    this.j.put(126, new TofuAskAnonymouslySupplier());
+    this.j.put(127, new BeancurdSupplier());
+    this.j.put(128, new AniStickerSupplier());
+    this.a = paramContext;
+    this.b = paramQQAppInterface;
+    this.c = paramSessionInfo;
+    this.d = paramAIOAnimationConatiner;
+    this.f = paramBaseChatPie;
+    this.g = new HashSet();
+    int m = this.j.size();
+    while (k < m)
     {
-      ((ItemBuilderSupplier)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a(paramContext, paramQQAppInterface, paramSessionInfo, paramBaseChatPie, paramAIOAnimationConatiner);
-      i += 1;
+      ((ItemBuilderSupplier)this.j.valueAt(k)).a(paramContext, paramQQAppInterface, paramSessionInfo, paramBaseChatPie, paramAIOAnimationConatiner);
+      k += 1;
     }
   }
   
@@ -466,15 +470,15 @@ public class ItemBuilderFactory
       QLog.e("ItemBuilderFactory", 1, "message is null");
       return 0;
     }
-    if (b.containsKey(paramChatMessage.getClass()))
+    if (i.containsKey(paramChatMessage.getClass()))
     {
-      int i = ((MessageTypeSupplier)b.get(paramChatMessage.getClass())).get(paramQQAppInterface, paramChatMessage);
-      if (i != -1) {
-        return i;
+      int k = ((MessageTypeSupplier)i.get(paramChatMessage.getClass())).get(paramQQAppInterface, paramChatMessage);
+      if (k != -1) {
+        return k;
       }
     }
-    if (jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramChatMessage.getClass())) {
-      return ((Integer)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramChatMessage.getClass())).intValue();
+    if (h.containsKey(paramChatMessage.getClass())) {
+      return ((Integer)h.get(paramChatMessage.getClass())).intValue();
     }
     return 0;
   }
@@ -484,9 +488,9 @@ public class ItemBuilderFactory
     if (((paramChatItemBuilder instanceof BaseBubbleBuilder)) && ((paramBaseAdapter instanceof ChatAdapter1)))
     {
       paramBaseAdapter = (ChatAdapter1)paramBaseAdapter;
-      ((BaseBubbleBuilder)paramChatItemBuilder).a(paramBaseAdapter.a);
+      ((BaseBubbleBuilder)paramChatItemBuilder).a(paramBaseAdapter.i);
     }
-    this.jdField_a_of_type_JavaUtilSet.add(paramChatItemBuilder);
+    this.g.add(paramChatItemBuilder);
     return paramChatItemBuilder;
   }
   
@@ -500,33 +504,33 @@ public class ItemBuilderFactory
       ((StringBuilder)localObject).append(paramChatMessage);
       QLog.i("ItemBuilderFactory", 2, ((StringBuilder)localObject).toString());
     }
-    int i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i) != null)
+    int k = a(this.b, paramChatMessage);
+    if (this.j.get(k) != null)
     {
-      localObject = (ItemBuilderSupplier)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      localObject = (ItemBuilderSupplier)this.j.get(k);
       paramChatMessage = ((ItemBuilderSupplier)localObject).a(paramChatMessage, paramBaseAdapter);
       if (((ItemBuilderSupplier)localObject).a())
       {
         a(paramChatMessage, paramBaseAdapter);
         return paramChatMessage;
       }
-      this.jdField_a_of_type_JavaUtilSet.add(paramChatMessage);
+      this.g.add(paramChatMessage);
       return paramChatMessage;
     }
-    return ((ItemBuilderSupplier)this.jdField_a_of_type_AndroidUtilSparseArray.get(0)).a(paramChatMessage, paramBaseAdapter);
+    return ((ItemBuilderSupplier)this.j.get(0)).a(paramChatMessage, paramBaseAdapter);
   }
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext()) {
-      ((ChatItemBuilder)localIterator.next()).a();
+      ((ChatItemBuilder)localIterator.next()).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.msglist.item.ItemBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

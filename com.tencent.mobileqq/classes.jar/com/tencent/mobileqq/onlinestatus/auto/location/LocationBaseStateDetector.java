@@ -19,23 +19,23 @@ import java.util.Locale;
 public class LocationBaseStateDetector
   implements AutoLocationCheckListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper());
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private GPSDistanceDetector jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector;
-  private LocationCategoryDetector jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector;
-  private StepMovementDetector jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector;
-  private VehicleMovementDetector jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector;
-  private AutoStatusManager.OnInnerStatusUpdateListener jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener;
+  private StepMovementDetector a;
   private StepMovementDetector b;
+  private VehicleMovementDetector c;
+  private LocationCategoryDetector d;
+  private GPSDistanceDetector e;
+  private TextView f;
+  private Handler g = new Handler(ThreadManagerV2.getSubThreadLooper());
+  private AutoStatusManager.OnInnerStatusUpdateListener h;
+  private AppInterface i;
   
   public LocationBaseStateDetector(AppInterface paramAppInterface, AutoStatusManager.OnInnerStatusUpdateListener paramOnInnerStatusUpdateListener)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener = paramOnInnerStatusUpdateListener;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector = new VehicleMovementDetector();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector = new LocationCategoryDetector(paramOnInnerStatusUpdateListener);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector = new GPSDistanceDetector();
+    this.i = paramAppInterface;
+    this.h = paramOnInnerStatusUpdateListener;
+    this.c = new VehicleMovementDetector();
+    this.d = new LocationCategoryDetector(paramOnInnerStatusUpdateListener);
+    this.e = new GPSDistanceDetector();
   }
   
   private void b(Application paramApplication)
@@ -45,28 +45,28 @@ public class LocationBaseStateDetector
       boolean bool1 = paramApplication.getPackageManager().hasSystemFeature("android.hardware.sensor.stepdetector");
       boolean bool2 = paramApplication.getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter");
       if (bool1) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector = new StepSensorDetector();
-      } else if (Constant.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector = new AccelerometerDetector();
+        this.a = new StepSensorDetector();
+      } else if (Constant.O) {
+        this.a = new AccelerometerDetector();
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector = new StepEmptySensor();
+        this.a = new StepEmptySensor();
       }
-      if ((Constant.jdField_b_of_type_Int == 3) && (bool2)) {
+      if ((Constant.b == 3) && (bool2)) {
         this.b = new StepSensorCounter();
       }
       if (QLog.isColorLevel())
       {
         paramApplication = new StringBuilder();
         paramApplication.append("[status][step] initStepDetector mainSensor: ");
-        paramApplication.append(Constant.jdField_a_of_type_Int);
+        paramApplication.append(Constant.a);
         paramApplication.append(" secondarySensor: ");
-        paramApplication.append(Constant.jdField_b_of_type_Int);
+        paramApplication.append(Constant.b);
         paramApplication.append(" hasDetector: ");
         paramApplication.append(bool1);
         paramApplication.append(" hasCounter: ");
         paramApplication.append(bool2);
         paramApplication.append(" final sensor: ");
-        paramApplication.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a());
+        paramApplication.append(this.a.j());
         QLog.d("LocationBaseStateDetector", 2, paramApplication.toString());
       }
     }
@@ -75,16 +75,16 @@ public class LocationBaseStateDetector
       if (QLog.isColorLevel()) {
         QLog.d("LocationBaseStateDetector", 2, "[status][step] initStepDetector compatibility. API<19 ACCELEROMETER");
       }
-      if (Constant.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector = new AccelerometerDetector();
+      if (Constant.O) {
+        this.a = new AccelerometerDetector();
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector = new StepEmptySensor();
+        this.a = new StepEmptySensor();
       }
     }
-    if (Constant.jdField_b_of_type_Boolean)
+    if (Constant.P)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a(this);
+      this.e.a(this);
+      this.a.a(this);
       paramApplication = this.b;
       if (paramApplication != null) {
         paramApplication.a(this);
@@ -92,25 +92,15 @@ public class LocationBaseStateDetector
     }
   }
   
-  public int a()
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.b();
-    int j = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector.a();
-    if ((i == 0) && (j == 0)) {
-      return 0;
-    }
-    return Math.max(j, i);
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject = this.i;
     if (localObject != null)
     {
       long l = ((IOnlineStatusService)((AppInterface)localObject).getRuntimeService(IOnlineStatusService.class, "")).getExtOnlineStatus();
-      if ((l >= 40001L) && (l != 41042L) && (b() == 41042)) {
-        if (ProcessUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp())) {
-          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener.a();
+      if ((l >= 40001L) && (l != 41042L) && (d() == 41042)) {
+        if (ProcessUtil.a(this.i.getApp())) {
+          this.h.a();
         }
       }
       for (;;)
@@ -122,21 +112,21 @@ public class LocationBaseStateDetector
         }
         QLog.d("LocationBaseStateDetector", 2, "[status][auto] notifyCheckStatus background");
         break;
-        boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a();
+        boolean bool2 = this.a.e();
         localObject = this.b;
-        if ((localObject != null) && (!((StepMovementDetector)localObject).a())) {
+        if ((localObject != null) && (!((StepMovementDetector)localObject).e())) {
           bool1 = false;
         } else {
           bool1 = true;
         }
-        boolean bool3 = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector.b();
+        boolean bool3 = this.e.e();
         if (QLog.isColorLevel()) {
           QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][auto] notifyCheckStatus step1:", Boolean.valueOf(bool2), " step2:", Boolean.valueOf(bool1), " dist:", Boolean.valueOf(bool3) });
         }
         if ((!bool2) || (!bool1) || (!bool3)) {
           break;
         }
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener.a();
+        this.h.a();
       }
       boolean bool1 = false;
       label228:
@@ -148,26 +138,26 @@ public class LocationBaseStateDetector
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector.a(paramLong);
+    this.d.a(paramLong);
   }
   
   public void a(Application paramApplication)
   {
     b(paramApplication);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a(paramApplication);
+    this.a.a(this.c);
+    this.a.a(paramApplication);
     StepMovementDetector localStepMovementDetector = this.b;
     if (localStepMovementDetector != null)
     {
-      localStepMovementDetector.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector);
+      localStepMovementDetector.a(this.c);
       this.b.a(paramApplication);
     }
-    if (Constant.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector.a();
+    if (Constant.P) {
+      this.e.a();
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.a();
+      this.c.c();
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new LocationBaseStateDetector.1(this), Constant.i);
+    this.g.postDelayed(new LocationBaseStateDetector.1(this), Constant.j);
   }
   
   public void a(boolean paramBoolean)
@@ -175,150 +165,120 @@ public class LocationBaseStateDetector
     if (QLog.isColorLevel()) {
       QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][autoLoc] stopDetector. delay:", Boolean.valueOf(paramBoolean) });
     }
-    if (Constant.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector.b();
+    if (Constant.P) {
+      this.e.b();
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.b();
+      this.c.d();
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a(paramBoolean);
+    this.a.a(paramBoolean);
     StepMovementDetector localStepMovementDetector = this.b;
     if (localStepMovementDetector != null) {
       localStepMovementDetector.a(paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector.a();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public int b()
-  {
-    int j = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.c();
-    StepMovementDetector localStepMovementDetector = this.b;
-    int i = j;
-    if (localStepMovementDetector != null)
-    {
-      int k = localStepMovementDetector.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] getNewMovementStatus mainStatus:", Integer.valueOf(j), " assistStatus:", Integer.valueOf(k) });
-      }
-      i = j;
-      if (j == 40001)
-      {
-        i = j;
-        if (k == 41042) {
-          i = k;
-        }
-      }
-    }
-    j = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][autoLoc] getNewMovementStatus  stepStatus: ", Constant.a(i), " distanceStatus:", Constant.a(j) });
-    }
-    if (j == 41042) {
-      i = j;
-    }
-    return i;
+    this.d.b();
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public void b()
   {
     if (QLog.isColorLevel())
     {
-      if (Constant.jdField_b_of_type_Boolean) {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector.a();
+      if (Constant.P) {
+        localObject1 = this.e.f();
       } else {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.a();
+        localObject1 = this.c.f();
       }
-      int k = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.b();
-      int j = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a();
+      int m = this.c.j();
+      int k = this.a.c();
       Object localObject2 = this.b;
-      int i = j;
+      int j = k;
       if (localObject2 != null)
       {
-        int m = ((StepMovementDetector)localObject2).a();
+        int n = ((StepMovementDetector)localObject2).c();
         if (QLog.isColorLevel()) {
-          QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] mainStatus:", Integer.valueOf(j), " assistStatus:", Integer.valueOf(m) });
+          QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] mainStatus:", Integer.valueOf(k), " assistStatus:", Integer.valueOf(n) });
         }
-        i = j;
-        if (j == 40001) {
-          if (m != 41012)
+        j = k;
+        if (k == 40001) {
+          if (n != 41012)
           {
-            i = j;
-            if (m != 41013) {}
+            j = k;
+            if (n != 41013) {}
           }
           else
           {
-            i = m;
+            j = n;
           }
         }
       }
-      if ((k != 41014) && (k != 41031)) {
-        j = i;
+      if ((m != 41014) && (m != 41031)) {
+        k = j;
       } else {
-        j = k;
+        k = m;
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("LOC : ");
       ((StringBuilder)localObject2).append(localObject1);
       ((StringBuilder)localObject2).append("\n");
       ((StringBuilder)localObject2).append("          ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector.a());
+      ((StringBuilder)localObject2).append(this.d.c());
       ((StringBuilder)localObject2).append("\n");
       ((StringBuilder)localObject2).append("          updateTime : ");
-      ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.a())));
+      ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.c.e())));
       ((StringBuilder)localObject2).append("\n");
       ((StringBuilder)localObject2).append("STEP: ");
-      ((StringBuilder)localObject2).append(Constant.a(i));
-      ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " sample: %.2f", new Object[] { Double.valueOf(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a()) }));
-      ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " realtime: %.2f", new Object[] { Double.valueOf(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.b()) }));
+      ((StringBuilder)localObject2).append(Constant.c(j));
+      ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " sample: %.2f", new Object[] { Double.valueOf(this.a.a()) }));
+      ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " realtime: %.2f", new Object[] { Double.valueOf(this.a.b()) }));
       ((StringBuilder)localObject2).append("\n");
       if (this.b != null)
       {
         ((StringBuilder)localObject2).append("STEP2: ");
-        ((StringBuilder)localObject2).append(Constant.a(i));
+        ((StringBuilder)localObject2).append(Constant.c(j));
         ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " sample: %.2f", new Object[] { Double.valueOf(this.b.a()) }));
         ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " realtime: %.2f", new Object[] { Double.valueOf(this.b.b()) }));
         ((StringBuilder)localObject2).append("\n");
       }
-      if (Constant.jdField_b_of_type_Boolean)
+      if (Constant.P)
       {
-        i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationGPSDistanceDetector.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusManagerAutoStatusManager$OnInnerStatusUpdateListener.a());
+        j = this.e.a(this.h.b());
         ((StringBuilder)localObject2).append("DIST: ");
-        ((StringBuilder)localObject2).append(Constant.a(i));
+        ((StringBuilder)localObject2).append(Constant.c(j));
       }
       ((StringBuilder)localObject2).append("GPS : ");
-      ((StringBuilder)localObject2).append(Constant.a(k));
+      ((StringBuilder)localObject2).append(Constant.c(m));
       ((StringBuilder)localObject2).append(" ");
-      ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " sample: %.2f", new Object[] { Double.valueOf(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.a()) }));
-      ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " realtime: %.2f", new Object[] { Double.valueOf(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.b()) }));
+      ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " sample: %.2f", new Object[] { Double.valueOf(this.c.h()) }));
+      ((StringBuilder)localObject2).append(String.format(Locale.getDefault(), " realtime: %.2f", new Object[] { Double.valueOf(this.c.i()) }));
       ((StringBuilder)localObject2).append("\n");
       Object localObject1 = this.b;
-      if ((localObject1 != null) && (((StepMovementDetector)localObject1).a() > 0L))
+      if ((localObject1 != null) && (((StepMovementDetector)localObject1).h() > 0L))
       {
         ((StringBuilder)localObject2).append(" walk-time2: ");
-        ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.b.a())));
+        ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.b.h())));
         ((StringBuilder)localObject2).append("\n");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a() > 0L)
+      if (this.a.h() > 0L)
       {
         ((StringBuilder)localObject2).append(" walk-time: ");
-        ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a())));
+        ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.a.h())));
         ((StringBuilder)localObject2).append("\n");
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.b() > 0L)
+      if (this.c.g() > 0L)
       {
         ((StringBuilder)localObject2).append(" still-time: ");
-        ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.b())));
+        ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.c.g())));
         ((StringBuilder)localObject2).append("\n");
       }
       ((StringBuilder)localObject2).append("LAST: ");
-      ((StringBuilder)localObject2).append(Constant.a(j));
+      ((StringBuilder)localObject2).append(Constant.c(k));
       ((StringBuilder)localObject2).append(" at ");
       ((StringBuilder)localObject2).append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date()));
       ((StringBuilder)localObject2).append("\n");
       ((StringBuilder)localObject2).append("CATE: ");
-      ((StringBuilder)localObject2).append(Constant.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector.a()));
+      ((StringBuilder)localObject2).append(Constant.c(this.d.a()));
       localObject1 = ((StringBuilder)localObject2).toString();
-      localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject2 = this.f;
       if (localObject2 != null) {
         ((TextView)localObject2).post(new LocationBaseStateDetector.2(this, (String)localObject1));
       }
@@ -331,59 +291,99 @@ public class LocationBaseStateDetector
   
   public int c()
   {
-    int k = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationVehicleMovementDetector.b();
-    int j = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector.a();
-    StepMovementDetector localStepMovementDetector = this.b;
-    int i = j;
-    if (localStepMovementDetector != null)
-    {
-      int m = localStepMovementDetector.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] getMovementStatus mainStatus:", Integer.valueOf(j), " assistStatus:", Integer.valueOf(m) });
-      }
-      i = j;
-      if (j == 40001) {
-        if (m != 41012)
-        {
-          i = j;
-          if (m != 41013) {}
-        }
-        else
-        {
-          i = m;
-        }
-      }
+    int j = this.a.d();
+    int k = this.e.h();
+    if ((j == 0) && (k == 0)) {
+      return 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][autoLoc] getMovementStatus gpsStatus: ", Constant.a(k), " stepStatus: ", Integer.valueOf(i) });
-    }
-    j = k;
-    if (k != 41014)
-    {
-      if (k == 41031) {
-        return k;
-      }
-      j = i;
-    }
-    return j;
+    return Math.max(k, j);
   }
   
   public int d()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationLocationCategoryDetector.a();
+    int k = this.a.f();
+    StepMovementDetector localStepMovementDetector = this.b;
+    int j = k;
+    if (localStepMovementDetector != null)
+    {
+      int m = localStepMovementDetector.f();
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] getNewMovementStatus mainStatus:", Integer.valueOf(k), " assistStatus:", Integer.valueOf(m) });
+      }
+      j = k;
+      if (k == 40001)
+      {
+        j = k;
+        if (m == 41042) {
+          j = m;
+        }
+      }
+    }
+    k = this.e.a(this.h.b());
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][autoLoc] getNewMovementStatus  stepStatus: ", Constant.c(j), " distanceStatus:", Constant.c(k) });
+    }
+    if (k == 41042) {
+      j = k;
+    }
+    return j;
+  }
+  
+  public int e()
+  {
+    int m = this.c.j();
+    int k = this.a.c();
+    StepMovementDetector localStepMovementDetector = this.b;
+    int j = k;
+    if (localStepMovementDetector != null)
+    {
+      int n = localStepMovementDetector.c();
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][step] getMovementStatus mainStatus:", Integer.valueOf(k), " assistStatus:", Integer.valueOf(n) });
+      }
+      j = k;
+      if (k == 40001) {
+        if (n != 41012)
+        {
+          j = k;
+          if (n != 41013) {}
+        }
+        else
+        {
+          j = n;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationBaseStateDetector", 2, new Object[] { "[status][autoLoc] getMovementStatus gpsStatus: ", Constant.c(m), " stepStatus: ", Integer.valueOf(j) });
+    }
+    k = m;
+    if (m != 41014)
+    {
+      if (m == 41031) {
+        return m;
+      }
+      k = j;
+    }
+    return k;
+  }
+  
+  public int f()
+  {
+    int j = this.d.a();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[status][auto] getCategoryStatus return status: ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(j);
       QLog.d("LocationBaseStateDetector", 2, localStringBuilder.toString());
     }
-    return i;
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.LocationBaseStateDetector
  * JD-Core Version:    0.7.0.1
  */

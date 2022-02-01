@@ -73,22 +73,22 @@ public class ProfileTroopFansInfoComponent
         oidb_0xef6.IdolInfo localIdolInfo = (oidb_0xef6.IdolInfo)paramRspBody.get(i);
         TroopFansInfo.IdolItem localIdolItem = new TroopFansInfo.IdolItem();
         if (localIdolInfo.idol_id.has()) {
-          localIdolItem.jdField_a_of_type_Int = localIdolInfo.idol_id.get();
+          localIdolItem.a = localIdolInfo.idol_id.get();
         }
         if (localIdolInfo.avatar.has()) {
-          localIdolItem.jdField_b_of_type_JavaLangString = localIdolInfo.avatar.get();
+          localIdolItem.c = localIdolInfo.avatar.get();
         }
         if (localIdolInfo.pic.has()) {
-          localIdolItem.c = localIdolInfo.pic.get();
+          localIdolItem.d = localIdolInfo.pic.get();
         }
         if (localIdolInfo.name.has()) {
-          localIdolItem.jdField_a_of_type_JavaLangString = localIdolInfo.name.get();
+          localIdolItem.b = localIdolInfo.name.get();
         }
         if (localIdolInfo.rank.has()) {
-          localIdolItem.jdField_a_of_type_Long = localIdolInfo.rank.get();
+          localIdolItem.e = localIdolInfo.rank.get();
         }
         if (localIdolInfo.score.has()) {
-          localIdolItem.jdField_b_of_type_Long = localIdolInfo.score.get();
+          localIdolItem.f = localIdolInfo.score.get();
         }
         localArrayList.add(localIdolItem);
         i += 1;
@@ -148,14 +148,14 @@ public class ProfileTroopFansInfoComponent
         Object localObject2;
         if (this.mViewContainer == null)
         {
-          this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131559576, null);
-          localObject1 = (RecyclerView)((View)this.mViewContainer).findViewById(2131368321);
+          this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131625604, null);
+          localObject1 = (RecyclerView)((View)this.mViewContainer).findViewById(2131435195);
           if (localObject1 != null)
           {
             localObject2 = new LinearLayoutManager(this.mActivity, 0, false);
             ((LinearLayoutManager)localObject2).setAutoMeasureEnabled(true);
             ((RecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)localObject2);
-            ((RecyclerView)localObject1).addItemDecoration(new ProfileTroopFansInfoComponent.SpacesItemDecoration(ViewUtils.b(8.0F)));
+            ((RecyclerView)localObject1).addItemDecoration(new ProfileTroopFansInfoComponent.SpacesItemDecoration(ViewUtils.dpToPx(8.0F)));
             if (this.mIdolAdapter == null) {
               this.mIdolAdapter = new IdolAdapter(this.mActivity, paramProfileCardInfo.troopUin, this);
             }
@@ -180,9 +180,9 @@ public class ProfileTroopFansInfoComponent
         }
         if (this.mViewContainer != null)
         {
-          localObject1 = ((View)this.mViewContainer).findViewById(2131365027);
-          localObject2 = (TextView)((View)localObject1).findViewById(2131378609);
-          ((View)localObject1).findViewById(2131368343);
+          localObject1 = ((View)this.mViewContainer).findViewById(2131431160);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131447238);
+          ((View)localObject1).findViewById(2131435219);
           ((TextView)localObject2).setText(getTitleText(paramProfileCardInfo));
           ((View)localObject1).setContentDescription(getTitleText(paramProfileCardInfo));
           updateItemTheme(null, (TextView)localObject2, null, null);
@@ -260,7 +260,7 @@ public class ProfileTroopFansInfoComponent
   
   protected String getGenderName(ProfileCardInfo paramProfileCardInfo)
   {
-    String str = this.mActivity.getString(2131699479);
+    String str = this.mActivity.getString(2131897510);
     Object localObject = str;
     if (paramProfileCardInfo != null)
     {
@@ -268,9 +268,9 @@ public class ProfileTroopFansInfoComponent
       if (paramProfileCardInfo.card != null)
       {
         if (paramProfileCardInfo.card.shGender == 1) {
-          paramProfileCardInfo = this.mActivity.getString(2131699478);
+          paramProfileCardInfo = this.mActivity.getString(2131897509);
         } else {
-          paramProfileCardInfo = this.mActivity.getString(2131699479);
+          paramProfileCardInfo = this.mActivity.getString(2131897510);
         }
         localObject = paramProfileCardInfo;
       }
@@ -286,9 +286,9 @@ public class ProfileTroopFansInfoComponent
   protected String getTitleText(ProfileCardInfo paramProfileCardInfo)
   {
     if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.uin)) && (((ProfileCardInfo)this.mData).allInOne.uin.equals(this.mApp.getCurrentUin()))) {
-      return this.mActivity.getString(2131699482);
+      return this.mActivity.getString(2131897513);
     }
-    return String.format(this.mActivity.getString(2131699483), new Object[] { getGenderName(paramProfileCardInfo) });
+    return String.format(this.mActivity.getString(2131897514), new Object[] { getGenderName(paramProfileCardInfo) });
   }
   
   public void gotoWeb()
@@ -381,7 +381,7 @@ public class ProfileTroopFansInfoComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.ProfileTroopFansInfoComponent
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ import mqq.os.MqqHandler;
 public class SingleImageAIFilterProxy
   extends AIFilterProxyBase
 {
-  private static final String a = "SingleImageAIFilterProxy";
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private List<AEEditorImageInfo> c;
+  private static final String d = "SingleImageAIFilterProxy";
+  private String e;
+  private int f;
+  private List<AEEditorImageInfo> g;
   
   public SingleImageAIFilterProxy(String paramString, List<AEEditorImageInfo> paramList, int paramInt)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt;
-    this.c = paramList;
+    this.e = paramString;
+    this.f = paramInt;
+    this.g = paramList;
   }
   
   public AIFilterResult a(List<AIFilterResponse> paramList)
@@ -28,7 +28,7 @@ public class SingleImageAIFilterProxy
     if ((paramList != null) && (paramList.size() != 0))
     {
       if (paramList.size() > 1) {
-        AEQLog.d(jdField_a_of_type_JavaLangString, "single image but responseList != 1");
+        AEQLog.d(d, "single image but responseList != 1");
       }
       paramList = (AIFilterResponse)paramList.get(0);
     }
@@ -42,8 +42,8 @@ public class SingleImageAIFilterProxy
   protected void a(Context paramContext, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_Int = 1;
+    localArrayList.add(this.e);
+    this.a = 1;
     ThreadManager.getSubThreadHandler().post(new SingleImageAIFilterProxy.1(this, localArrayList, paramContext, paramAIFilterProxyCallback));
   }
   
@@ -54,7 +54,7 @@ public class SingleImageAIFilterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.SingleImageAIFilterProxy
  * JD-Core Version:    0.7.0.1
  */

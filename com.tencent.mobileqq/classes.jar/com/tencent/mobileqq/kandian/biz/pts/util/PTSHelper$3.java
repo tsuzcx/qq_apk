@@ -18,45 +18,35 @@ final class PTSHelper$3
     {
       paramString1 = paramMap2.get("dt:element-id");
       paramString2 = paramMap2.get("dt:params");
-      if (QLog.isColorLevel())
-      {
-        paramMap1 = new StringBuilder();
-        paramMap1.append("[onBindNodeInfoFinished] elementId = ");
-        paramMap1.append(paramString1);
-        paramMap1.append(", params = ");
-        paramMap1.append(paramString2);
-        QLog.i("PTSHelper", 1, paramMap1.toString());
-      }
       if (paramString1 == null) {}
     }
     try
     {
       VideoReport.setElementId(paramView, (String)paramString1);
       if (paramString2 == null) {
-        break label176;
+        break label116;
       }
       paramString1 = JsonUtils.covertJsonObjectToMap(new JSONObject((String)paramString2));
-      VideoReport.setElementParams(paramView, new RIJDtParamBuilder().a(paramString1).a());
-      PTSHelper.a(paramString1);
+      VideoReport.setElementParams(paramView, new RIJDtParamBuilder().a(paramString1).c());
       return;
     }
     catch (Exception paramView)
     {
-      label145:
-      break label145;
+      label85:
+      break label85;
     }
     paramString1 = new StringBuilder();
     paramString1.append("[onBindNodeInfoFinished] e = ");
     paramString1.append(paramView);
     QLog.e("PTSHelper", 1, paramString1.toString());
-    label176:
+    label116:
     return;
     QLog.i("PTSHelper", 1, "[onBindNodeInfoFinished] view is null or attributes is empty.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSHelper.3
  * JD-Core Version:    0.7.0.1
  */

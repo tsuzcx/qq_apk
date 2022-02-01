@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#0d03081a" />
-    <size android:height="6.0dip" android:width="6.0dip" />
-</shape>
+    <item android:id="@id/nt4">
+        <shape android:shape="rectangle">
+            <corners android:radius="12.0dip" />
+            <solid android:color="#ffe5e5e5" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ibg" android:left="3.0dip" android:top="3.0dip" android:right="3.0dip" android:bottom="3.0dip" />
+</layer-list>

@@ -8,93 +8,63 @@ import java.util.ArrayList;
 
 public class CameraAttrs
 {
-  private static CameraAttrs jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs;
-  public int a;
-  public String a;
-  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public final boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h = -1;
-  public int i = -1;
-  
-  public CameraAttrs()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_g_of_type_Int = -1;
-    this.jdField_g_of_type_Boolean = false;
-  }
+  private static CameraAttrs s;
+  public final boolean a = false;
+  public int b = -1;
+  public boolean c = false;
+  public String d;
+  public String e;
+  public boolean f = false;
+  public boolean g = false;
+  public boolean h = false;
+  public boolean i = false;
+  public int j = -1;
+  public int k = -1;
+  public int l = -1;
+  public int m = -1;
+  public int n = -1;
+  public int o = -1;
+  public int p = -1;
+  public int q = -1;
+  public boolean r = false;
+  private final ArrayList<String> t = new ArrayList();
   
   public static CameraAttrs a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs == null) {
+    if (s == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs == null) {
-          jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs = new CameraAttrs();
+        if (s == null) {
+          s = new CameraAttrs();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs;
+    return s;
   }
   
   private void a(SharedPreferences paramSharedPreferences)
   {
     QLog.i("Q.camera.adapter.CameraAttrs", 1, "[loadValueFromPref] + BEGIN");
-    this.jdField_b_of_type_Boolean = paramSharedPreferences.getBoolean("sysCameraOn", false);
-    this.jdField_a_of_type_JavaLangString = paramSharedPreferences.getString("str_sysMinVersion", "1.0.0");
-    this.jdField_b_of_type_JavaLangString = paramSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
-    this.jdField_c_of_type_Boolean = paramSharedPreferences.getBoolean("disableCameraSDK", false);
-    this.jdField_d_of_type_Boolean = paramSharedPreferences.getBoolean("readCamNumException", false);
-    this.jdField_e_of_type_Boolean = paramSharedPreferences.getBoolean("disableFrontCamera", false);
-    this.jdField_f_of_type_Boolean = paramSharedPreferences.getBoolean("beBlurredPreviewAfterTakePic", false);
-    this.jdField_b_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate0", -1);
-    this.jdField_c_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate90", -1);
-    this.jdField_d_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate180", -1);
-    this.jdField_e_of_type_Int = paramSharedPreferences.getInt("int_frontCamRotate270", -1);
-    this.jdField_f_of_type_Int = paramSharedPreferences.getInt("int_backCamRotate0", -1);
-    this.jdField_g_of_type_Int = paramSharedPreferences.getInt("int_backCamRotate90", -1);
-    this.h = paramSharedPreferences.getInt("int_backCamRotate180", -1);
-    this.i = paramSharedPreferences.getInt("int_backCamRotate270", -1);
-    this.jdField_g_of_type_Boolean = paramSharedPreferences.getBoolean("frontCamFlipH", false);
+    this.c = paramSharedPreferences.getBoolean("sysCameraOn", false);
+    this.d = paramSharedPreferences.getString("str_sysMinVersion", "1.0.0");
+    this.e = paramSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
+    this.f = paramSharedPreferences.getBoolean("disableCameraSDK", false);
+    this.g = paramSharedPreferences.getBoolean("readCamNumException", false);
+    this.h = paramSharedPreferences.getBoolean("disableFrontCamera", false);
+    this.i = paramSharedPreferences.getBoolean("beBlurredPreviewAfterTakePic", false);
+    this.j = paramSharedPreferences.getInt("int_frontCamRotate0", -1);
+    this.k = paramSharedPreferences.getInt("int_frontCamRotate90", -1);
+    this.l = paramSharedPreferences.getInt("int_frontCamRotate180", -1);
+    this.m = paramSharedPreferences.getInt("int_frontCamRotate270", -1);
+    this.n = paramSharedPreferences.getInt("int_backCamRotate0", -1);
+    this.o = paramSharedPreferences.getInt("int_backCamRotate90", -1);
+    this.p = paramSharedPreferences.getInt("int_backCamRotate180", -1);
+    this.q = paramSharedPreferences.getInt("int_backCamRotate270", -1);
+    this.r = paramSharedPreferences.getBoolean("frontCamFlipH", false);
     if (QLog.isColorLevel()) {
       QLog.i("Q.camera.adapter.CameraAttrs", 2, "[loadValueFromPref] + END");
     }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("sysCameraOn")) {
-      return;
-    }
-    SharedPreferences localSharedPreferences = CameraUtils.a(BaseApplicationImpl.getContext());
-    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean("sysCameraOn", false);
-    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString("str_sysMinVersion", "1.0.0");
-    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
-    this.jdField_a_of_type_JavaUtilArrayList.add("sysCameraOn");
   }
   
   public void a(SharedPreferences paramSharedPreferences, boolean paramBoolean)
@@ -102,10 +72,10 @@ public class CameraAttrs
     if (QLog.isColorLevel()) {
       QLog.i("Q.camera.adapter.CameraAttrs", 4, "[loadConfigAndSave] + BEGIN");
     }
-    int j = paramSharedPreferences.getInt("qcamera_conf_version", 0);
-    if ((j != this.jdField_a_of_type_Int) && (paramBoolean))
+    int i1 = paramSharedPreferences.getInt("qcamera_conf_version", 0);
+    if ((i1 != this.b) && (paramBoolean))
     {
-      this.jdField_a_of_type_Int = j;
+      this.b = i1;
       a(paramSharedPreferences);
     }
     if (QLog.isColorLevel()) {
@@ -115,53 +85,65 @@ public class CameraAttrs
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("disableCameraSDK")) {
+    if (this.t.contains("sysCameraOn")) {
       return;
     }
-    this.jdField_c_of_type_Boolean = CameraUtils.a(BaseApplicationImpl.getContext()).getBoolean("disableCameraSDK", false);
-    this.jdField_a_of_type_JavaUtilArrayList.add("disableCameraSDK");
+    SharedPreferences localSharedPreferences = CameraUtils.b(BaseApplicationImpl.getContext());
+    this.c = localSharedPreferences.getBoolean("sysCameraOn", false);
+    this.d = localSharedPreferences.getString("str_sysMinVersion", "1.0.0");
+    this.e = localSharedPreferences.getString("str_sysMaxVersion", "1000.0.0");
+    this.t.add("sysCameraOn");
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("readCamNumException")) {
+    if (this.t.contains("disableCameraSDK")) {
       return;
     }
-    SharedPreferences localSharedPreferences = CameraUtils.a(BaseApplicationImpl.getContext());
-    this.jdField_d_of_type_Boolean = localSharedPreferences.getBoolean("readCamNumException", false);
-    this.jdField_e_of_type_Boolean = localSharedPreferences.getBoolean("disableFrontCamera", false);
-    this.jdField_a_of_type_JavaUtilArrayList.add("readCamNumException");
+    this.f = CameraUtils.b(BaseApplicationImpl.getContext()).getBoolean("disableCameraSDK", false);
+    this.t.add("disableCameraSDK");
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("int_frontCamRotate0")) {
+    if (this.t.contains("readCamNumException")) {
       return;
     }
-    SharedPreferences localSharedPreferences = CameraUtils.a(BaseApplicationImpl.getContext());
-    this.jdField_b_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate0", -1);
-    this.jdField_c_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate90", -1);
-    this.jdField_d_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate180", -1);
-    this.jdField_e_of_type_Int = localSharedPreferences.getInt("int_frontCamRotate270", -1);
-    this.jdField_f_of_type_Int = localSharedPreferences.getInt("int_backCamRotate0", -1);
-    this.jdField_g_of_type_Int = localSharedPreferences.getInt("int_backCamRotate90", -1);
-    this.h = localSharedPreferences.getInt("int_backCamRotate180", -1);
-    this.i = localSharedPreferences.getInt("int_backCamRotate270", -1);
-    this.jdField_a_of_type_JavaUtilArrayList.add("int_frontCamRotate0");
+    SharedPreferences localSharedPreferences = CameraUtils.b(BaseApplicationImpl.getContext());
+    this.g = localSharedPreferences.getBoolean("readCamNumException", false);
+    this.h = localSharedPreferences.getBoolean("disableFrontCamera", false);
+    this.t.add("readCamNumException");
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains("frontCamFlipH")) {
+    if (this.t.contains("int_frontCamRotate0")) {
       return;
     }
-    this.jdField_g_of_type_Boolean = CameraUtils.a(BaseApplicationImpl.getContext()).getBoolean("frontCamFlipH", false);
-    this.jdField_a_of_type_JavaUtilArrayList.add("frontCamFlipH");
+    SharedPreferences localSharedPreferences = CameraUtils.b(BaseApplicationImpl.getContext());
+    this.j = localSharedPreferences.getInt("int_frontCamRotate0", -1);
+    this.k = localSharedPreferences.getInt("int_frontCamRotate90", -1);
+    this.l = localSharedPreferences.getInt("int_frontCamRotate180", -1);
+    this.m = localSharedPreferences.getInt("int_frontCamRotate270", -1);
+    this.n = localSharedPreferences.getInt("int_backCamRotate0", -1);
+    this.o = localSharedPreferences.getInt("int_backCamRotate90", -1);
+    this.p = localSharedPreferences.getInt("int_backCamRotate180", -1);
+    this.q = localSharedPreferences.getInt("int_backCamRotate270", -1);
+    this.t.add("int_frontCamRotate0");
+  }
+  
+  public void f()
+  {
+    if (this.t.contains("frontCamFlipH")) {
+      return;
+    }
+    this.r = CameraUtils.b(BaseApplicationImpl.getContext()).getBoolean("frontCamFlipH", false);
+    this.t.add("frontCamFlipH");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.camera.adapter.CameraAttrs
  * JD-Core Version:    0.7.0.1
  */

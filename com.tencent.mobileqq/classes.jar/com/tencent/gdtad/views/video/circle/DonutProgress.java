@@ -22,45 +22,45 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class DonutProgress
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private float A;
+  private final float B = ViewUtils.dip2px(10.0F);
+  private final int C = Color.rgb(66, 145, 241);
+  private final int D = Color.rgb(204, 204, 204);
+  private final int E = Color.rgb(66, 145, 241);
+  private final int F = Color.rgb(66, 145, 241);
+  private final int G = 0;
+  private final int H = 100;
+  private final int I = 0;
+  private final float J = ViewUtils.spToPx(18.0F);
+  private final float K = ViewUtils.spToPx(18.0F);
+  private final int L = ViewUtils.dip2px(100.0F);
+  private boolean M;
   protected Paint a;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int;
   protected Paint b;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_b_of_type_JavaLangString = "%";
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint;
-  private String jdField_c_of_type_JavaLangString = null;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private Paint jdField_d_of_type_AndroidGraphicsPaint;
-  private String jdField_d_of_type_JavaLangString;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private Paint jdField_e_of_type_AndroidGraphicsPaint;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private final float jdField_g_of_type_Float = ViewUtils.a(10.0F);
-  private int jdField_g_of_type_Int;
-  private final float jdField_h_of_type_Float = ViewUtils.d(18.0F);
-  private int jdField_h_of_type_Int;
-  private final float jdField_i_of_type_Float = ViewUtils.d(18.0F);
-  private final int jdField_i_of_type_Int = Color.rgb(66, 145, 241);
-  private final int j = Color.rgb(204, 204, 204);
-  private final int k = Color.rgb(66, 145, 241);
-  private final int l = Color.rgb(66, 145, 241);
-  private final int m = 0;
-  private final int n = 100;
-  private final int o = 0;
-  private final int p = ViewUtils.a(100.0F);
+  private Paint c;
+  private Paint d;
+  private Paint e;
+  private RectF f = new RectF();
+  private RectF g = new RectF();
+  private int h = 0;
+  private Bitmap i;
+  private boolean j;
+  private float k;
+  private int l;
+  private int m;
+  private float n = 0.0F;
+  private int o;
+  private int p;
+  private int q;
+  private int r;
+  private float s;
+  private float t;
+  private int u;
+  private String v = "";
+  private String w = "%";
+  private String x = null;
+  private float y;
+  private String z;
   
   public DonutProgress(Context paramContext)
   {
@@ -75,7 +75,7 @@ public class DonutProgress
   public DonutProgress(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramAttributeSet = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.M, paramInt, 0);
+    paramAttributeSet = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.Q, paramInt, 0);
     a(paramAttributeSet);
     paramAttributeSet.recycle();
     a(paramContext);
@@ -89,116 +89,86 @@ public class DonutProgress
     if (i1 == 1073741824) {
       return paramInt;
     }
-    int i2 = this.p;
+    int i2 = this.L;
     if (i1 == -2147483648) {
       return Math.min(i2, paramInt);
     }
     return i2;
   }
   
-  private float f()
+  private float getProgressAngle()
   {
-    return c() / this.jdField_d_of_type_Int * 360.0F;
-  }
-  
-  public float a()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return getProgress() / this.o * 360.0F;
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.j)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new TextPaint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint = new TextPaint();
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_e_of_type_Float);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.a = new TextPaint();
+      this.a.setColor(this.l);
+      this.a.setTextSize(this.k);
+      this.a.setAntiAlias(true);
+      this.b = new TextPaint();
+      this.b.setColor(this.m);
+      this.b.setTextSize(this.y);
+      this.b.setAntiAlias(true);
     }
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_e_of_type_Int);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_c_of_type_Float);
-    this.jdField_d_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(this.jdField_f_of_type_Int);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_d_of_type_Float);
-    this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_e_of_type_AndroidGraphicsPaint.setColor(this.jdField_h_of_type_Int);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.c = new Paint();
+    this.c.setColor(this.p);
+    this.c.setStyle(Paint.Style.STROKE);
+    this.c.setAntiAlias(true);
+    this.c.setStrokeWidth(this.s);
+    this.d = new Paint();
+    this.d.setColor(this.q);
+    this.d.setStyle(Paint.Style.STROKE);
+    this.d.setAntiAlias(true);
+    this.d.setStrokeWidth(this.t);
+    this.e = new Paint();
+    this.e.setColor(this.u);
+    this.e.setAntiAlias(true);
   }
   
   protected void a(Context paramContext)
   {
-    int i1 = this.jdField_a_of_type_Int;
+    int i1 = this.h;
     if (i1 != 0) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Utils.a(paramContext, i1);
+      this.i = Utils.a(paramContext, i1);
     }
   }
   
   protected void a(TypedArray paramTypedArray)
   {
-    this.jdField_e_of_type_Int = paramTypedArray.getColor(R.styleable.jdField_f_of_type_Int, this.jdField_i_of_type_Int);
-    this.jdField_f_of_type_Int = paramTypedArray.getColor(R.styleable.t, this.j);
-    this.jdField_a_of_type_Boolean = paramTypedArray.getBoolean(R.styleable.o, true);
-    this.jdField_a_of_type_Int = paramTypedArray.getResourceId(R.styleable.k, 0);
-    setMax(paramTypedArray.getInt(R.styleable.l, 100));
-    setProgress(paramTypedArray.getFloat(R.styleable.n, 0.0F));
-    this.jdField_c_of_type_Float = paramTypedArray.getDimension(R.styleable.jdField_g_of_type_Int, this.jdField_g_of_type_Float);
-    this.jdField_d_of_type_Float = paramTypedArray.getDimension(R.styleable.u, this.jdField_g_of_type_Float);
-    if (this.jdField_a_of_type_Boolean)
+    this.p = paramTypedArray.getColor(R.styleable.T, this.C);
+    this.q = paramTypedArray.getColor(R.styleable.ah, this.D);
+    this.j = paramTypedArray.getBoolean(R.styleable.ac, true);
+    this.h = paramTypedArray.getResourceId(R.styleable.Y, 0);
+    setMax(paramTypedArray.getInt(R.styleable.Z, 100));
+    setProgress(paramTypedArray.getFloat(R.styleable.ab, 0.0F));
+    this.s = paramTypedArray.getDimension(R.styleable.U, this.B);
+    this.t = paramTypedArray.getDimension(R.styleable.ai, this.B);
+    if (this.j)
     {
-      if (paramTypedArray.getString(R.styleable.m) != null) {
-        this.jdField_a_of_type_JavaLangString = paramTypedArray.getString(R.styleable.m);
+      if (paramTypedArray.getString(R.styleable.aa) != null) {
+        this.v = paramTypedArray.getString(R.styleable.aa);
       }
-      if (paramTypedArray.getString(R.styleable.p) != null) {
-        this.jdField_b_of_type_JavaLangString = paramTypedArray.getString(R.styleable.p);
+      if (paramTypedArray.getString(R.styleable.ad) != null) {
+        this.w = paramTypedArray.getString(R.styleable.ad);
       }
-      if (paramTypedArray.getString(R.styleable.q) != null) {
-        this.jdField_c_of_type_JavaLangString = paramTypedArray.getString(R.styleable.q);
+      if (paramTypedArray.getString(R.styleable.ae) != null) {
+        this.x = paramTypedArray.getString(R.styleable.ae);
       }
-      this.jdField_b_of_type_Int = paramTypedArray.getColor(R.styleable.r, this.k);
-      this.jdField_a_of_type_Float = paramTypedArray.getDimension(R.styleable.s, this.jdField_h_of_type_Float);
-      this.jdField_e_of_type_Float = paramTypedArray.getDimension(R.styleable.j, this.jdField_i_of_type_Float);
-      this.jdField_c_of_type_Int = paramTypedArray.getColor(R.styleable.jdField_i_of_type_Int, this.l);
-      this.jdField_d_of_type_JavaLangString = paramTypedArray.getString(R.styleable.jdField_h_of_type_Int);
+      this.l = paramTypedArray.getColor(R.styleable.af, this.E);
+      this.k = paramTypedArray.getDimension(R.styleable.ag, this.J);
+      this.y = paramTypedArray.getDimension(R.styleable.X, this.K);
+      this.m = paramTypedArray.getColor(R.styleable.W, this.F);
+      this.z = paramTypedArray.getString(R.styleable.V);
     }
-    this.jdField_e_of_type_Float = paramTypedArray.getDimension(R.styleable.j, this.jdField_i_of_type_Float);
-    this.jdField_c_of_type_Int = paramTypedArray.getColor(R.styleable.jdField_i_of_type_Int, this.l);
-    this.jdField_d_of_type_JavaLangString = paramTypedArray.getString(R.styleable.jdField_h_of_type_Int);
-    this.jdField_g_of_type_Int = paramTypedArray.getInt(R.styleable.jdField_e_of_type_Int, 0);
-    this.jdField_h_of_type_Int = paramTypedArray.getColor(R.styleable.jdField_d_of_type_Int, 0);
-  }
-  
-  public float b()
-  {
-    return this.jdField_d_of_type_Float;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    this.y = paramTypedArray.getDimension(R.styleable.X, this.K);
+    this.m = paramTypedArray.getColor(R.styleable.W, this.F);
+    this.z = paramTypedArray.getString(R.styleable.V);
+    this.r = paramTypedArray.getInt(R.styleable.S, 0);
+    this.u = paramTypedArray.getColor(R.styleable.R, 0);
   }
   
   protected void b()
@@ -206,59 +176,89 @@ public class DonutProgress
     a(getContext());
   }
   
-  public float c()
+  public int getAttributeResourceId()
   {
-    return this.jdField_b_of_type_Float;
+    return this.h;
   }
   
-  public int c()
+  public int getFinishedStrokeColor()
   {
-    return this.jdField_e_of_type_Int;
+    return this.p;
   }
   
-  public String c()
+  public float getFinishedStrokeWidth()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.s;
   }
   
-  public float d()
+  public int getInnerBackgroundColor()
   {
-    return this.jdField_a_of_type_Float;
+    return this.u;
   }
   
-  public int d()
+  public String getInnerBottomText()
   {
-    return this.jdField_f_of_type_Int;
+    return this.z;
   }
   
-  public String d()
+  public int getInnerBottomTextColor()
   {
-    return this.jdField_d_of_type_JavaLangString;
+    return this.m;
   }
   
-  public float e()
+  public float getInnerBottomTextSize()
   {
-    return this.jdField_e_of_type_Float;
+    return this.y;
   }
   
-  public int e()
+  public int getMax()
   {
-    return this.jdField_h_of_type_Int;
+    return this.o;
   }
   
-  public int f()
+  public String getPrefixText()
   {
-    return this.jdField_c_of_type_Int;
+    return this.v;
   }
   
-  public int g()
+  public float getProgress()
   {
-    return this.jdField_g_of_type_Int;
+    return this.n;
   }
   
-  public int h()
+  public int getStartingDegree()
   {
-    return this.jdField_a_of_type_Int;
+    return this.r;
+  }
+  
+  public String getSuffixText()
+  {
+    return this.w;
+  }
+  
+  public String getText()
+  {
+    return this.x;
+  }
+  
+  public int getTextColor()
+  {
+    return this.l;
+  }
+  
+  public float getTextSize()
+  {
+    return this.k;
+  }
+  
+  public int getUnfinishedStrokeColor()
+  {
+    return this.q;
+  }
+  
+  public float getUnfinishedStrokeWidth()
+  {
+    return this.t;
   }
   
   public void invalidate()
@@ -270,60 +270,60 @@ public class DonutProgress
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    float f1 = Math.max(this.jdField_c_of_type_Float, this.jdField_d_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, f1, getWidth() - f1, getHeight() - f1);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(f1, f1, getWidth() - f1, getHeight() - f1);
-    f1 = (getWidth() - Math.min(this.jdField_c_of_type_Float, this.jdField_d_of_type_Float) + Math.abs(this.jdField_c_of_type_Float - this.jdField_d_of_type_Float)) / 2.0F;
-    paramCanvas.drawCircle(getWidth() / 2.0F, getHeight() / 2.0F, f1, this.jdField_e_of_type_AndroidGraphicsPaint);
-    if (!this.jdField_b_of_type_Boolean)
+    float f1 = Math.max(this.s, this.t);
+    this.f.set(f1, f1, getWidth() - f1, getHeight() - f1);
+    this.g.set(f1, f1, getWidth() - f1, getHeight() - f1);
+    f1 = (getWidth() - Math.min(this.s, this.t) + Math.abs(this.s - this.t)) / 2.0F;
+    paramCanvas.drawCircle(getWidth() / 2.0F, getHeight() / 2.0F, f1, this.e);
+    if (!this.M)
     {
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -(360.0F - g()), -f(), false, this.jdField_c_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, -(360.0F - g()) - f(), -(360.0F - f()), false, this.jdField_d_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawArc(this.f, -(360.0F - getStartingDegree()), -getProgressAngle(), false, this.c);
+      paramCanvas.drawArc(this.g, -(360.0F - getStartingDegree()) - getProgressAngle(), -(360.0F - getProgressAngle()), false, this.d);
     }
     else
     {
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, g(), f(), false, this.jdField_c_of_type_AndroidGraphicsPaint);
-      localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
-      f1 = g();
-      paramCanvas.drawArc((RectF)localObject, f() + f1, 360.0F - f(), false, this.jdField_d_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawArc(this.f, getStartingDegree(), getProgressAngle(), false, this.c);
+      localObject = this.g;
+      f1 = getStartingDegree();
+      paramCanvas.drawArc((RectF)localObject, getProgressAngle() + f1, 360.0F - getProgressAngle(), false, this.d);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.j)
     {
-      localObject = this.jdField_c_of_type_JavaLangString;
+      localObject = this.x;
       if (localObject == null)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Float);
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.v);
+        ((StringBuilder)localObject).append(this.n);
+        ((StringBuilder)localObject).append(this.w);
         localObject = ((StringBuilder)localObject).toString();
       }
       float f2;
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        f1 = this.jdField_a_of_type_AndroidGraphicsPaint.descent();
-        f2 = this.jdField_a_of_type_AndroidGraphicsPaint.ascent();
-        paramCanvas.drawText((String)localObject, (getWidth() - this.jdField_a_of_type_AndroidGraphicsPaint.measureText((String)localObject)) / 2.0F, (getWidth() - (f1 + f2)) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        f1 = this.a.descent();
+        f2 = this.a.ascent();
+        paramCanvas.drawText((String)localObject, (getWidth() - this.a.measureText((String)localObject)) / 2.0F, (getWidth() - (f1 + f2)) / 2.0F, this.a);
       }
-      if (!TextUtils.isEmpty(d()))
+      if (!TextUtils.isEmpty(getInnerBottomText()))
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_e_of_type_Float);
+        this.b.setTextSize(this.y);
         f1 = getHeight();
-        f2 = this.jdField_f_of_type_Float;
-        float f3 = (this.jdField_a_of_type_AndroidGraphicsPaint.descent() + this.jdField_a_of_type_AndroidGraphicsPaint.ascent()) / 2.0F;
-        paramCanvas.drawText(d(), (getWidth() - this.jdField_b_of_type_AndroidGraphicsPaint.measureText(d())) / 2.0F, f1 - f2 - f3, this.jdField_b_of_type_AndroidGraphicsPaint);
+        f2 = this.A;
+        float f3 = (this.a.descent() + this.a.ascent()) / 2.0F;
+        paramCanvas.drawText(getInnerBottomText(), (getWidth() - this.b.measureText(getInnerBottomText())) / 2.0F, f1 - f2 - f3, this.b);
       }
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.i;
     if (localObject != null) {
-      paramCanvas.drawBitmap((Bitmap)localObject, (getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) / 2.0F, (getHeight() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) / 2.0F, null);
+      paramCanvas.drawBitmap((Bitmap)localObject, (getWidth() - this.i.getWidth()) / 2.0F, (getHeight() - this.i.getHeight()) / 2.0F, null);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(a(paramInt1), a(paramInt2));
-    this.jdField_f_of_type_Float = (getHeight() - getHeight() * 3 / 4);
+    this.A = (getHeight() - getHeight() * 3 / 4);
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -331,25 +331,25 @@ public class DonutProgress
     if ((paramParcelable instanceof Bundle))
     {
       paramParcelable = (Bundle)paramParcelable;
-      this.jdField_b_of_type_Int = paramParcelable.getInt("text_color");
-      this.jdField_a_of_type_Float = paramParcelable.getFloat("text_size");
-      this.jdField_e_of_type_Float = paramParcelable.getFloat("inner_bottom_text_size");
-      this.jdField_d_of_type_JavaLangString = paramParcelable.getString("inner_bottom_text");
-      this.jdField_c_of_type_Int = paramParcelable.getInt("inner_bottom_text_color");
-      this.jdField_e_of_type_Int = paramParcelable.getInt("finished_stroke_color");
-      this.jdField_f_of_type_Int = paramParcelable.getInt("unfinished_stroke_color");
-      this.jdField_c_of_type_Float = paramParcelable.getFloat("finished_stroke_width");
-      this.jdField_d_of_type_Float = paramParcelable.getFloat("unfinished_stroke_width");
-      this.jdField_h_of_type_Int = paramParcelable.getInt("inner_background_color");
-      this.jdField_a_of_type_Int = paramParcelable.getInt("inner_drawable");
+      this.l = paramParcelable.getInt("text_color");
+      this.k = paramParcelable.getFloat("text_size");
+      this.y = paramParcelable.getFloat("inner_bottom_text_size");
+      this.z = paramParcelable.getString("inner_bottom_text");
+      this.m = paramParcelable.getInt("inner_bottom_text_color");
+      this.p = paramParcelable.getInt("finished_stroke_color");
+      this.q = paramParcelable.getInt("unfinished_stroke_color");
+      this.s = paramParcelable.getFloat("finished_stroke_width");
+      this.t = paramParcelable.getFloat("unfinished_stroke_width");
+      this.u = paramParcelable.getInt("inner_background_color");
+      this.h = paramParcelable.getInt("inner_drawable");
       b();
       a();
       setMax(paramParcelable.getInt("max"));
       setStartingDegree(paramParcelable.getInt("starting_degree"));
       setProgress(paramParcelable.getFloat("progress"));
-      this.jdField_a_of_type_JavaLangString = paramParcelable.getString("prefix");
-      this.jdField_b_of_type_JavaLangString = paramParcelable.getString("suffix");
-      this.jdField_c_of_type_JavaLangString = paramParcelable.getString("text");
+      this.v = paramParcelable.getString("prefix");
+      this.w = paramParcelable.getString("suffix");
+      this.x = paramParcelable.getString("text");
       super.onRestoreInstanceState(paramParcelable.getParcelable("saved_instance"));
       return;
     }
@@ -360,72 +360,72 @@ public class DonutProgress
   {
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("saved_instance", super.onSaveInstanceState());
-    localBundle.putInt("text_color", b());
-    localBundle.putFloat("text_size", d());
-    localBundle.putFloat("inner_bottom_text_size", e());
-    localBundle.putFloat("inner_bottom_text_color", f());
-    localBundle.putString("inner_bottom_text", d());
-    localBundle.putInt("inner_bottom_text_color", f());
-    localBundle.putInt("finished_stroke_color", c());
-    localBundle.putInt("unfinished_stroke_color", d());
-    localBundle.putInt("max", a());
-    localBundle.putInt("starting_degree", g());
-    localBundle.putFloat("progress", c());
-    localBundle.putString("suffix", b());
-    localBundle.putString("prefix", c());
-    localBundle.putString("text", a());
-    localBundle.putFloat("finished_stroke_width", a());
-    localBundle.putFloat("unfinished_stroke_width", b());
-    localBundle.putInt("inner_background_color", e());
-    localBundle.putInt("inner_drawable", h());
+    localBundle.putInt("text_color", getTextColor());
+    localBundle.putFloat("text_size", getTextSize());
+    localBundle.putFloat("inner_bottom_text_size", getInnerBottomTextSize());
+    localBundle.putFloat("inner_bottom_text_color", getInnerBottomTextColor());
+    localBundle.putString("inner_bottom_text", getInnerBottomText());
+    localBundle.putInt("inner_bottom_text_color", getInnerBottomTextColor());
+    localBundle.putInt("finished_stroke_color", getFinishedStrokeColor());
+    localBundle.putInt("unfinished_stroke_color", getUnfinishedStrokeColor());
+    localBundle.putInt("max", getMax());
+    localBundle.putInt("starting_degree", getStartingDegree());
+    localBundle.putFloat("progress", getProgress());
+    localBundle.putString("suffix", getSuffixText());
+    localBundle.putString("prefix", getPrefixText());
+    localBundle.putString("text", getText());
+    localBundle.putFloat("finished_stroke_width", getFinishedStrokeWidth());
+    localBundle.putFloat("unfinished_stroke_width", getUnfinishedStrokeWidth());
+    localBundle.putInt("inner_background_color", getInnerBackgroundColor());
+    localBundle.putInt("inner_drawable", getAttributeResourceId());
     return localBundle;
   }
   
   public void setAttributeResourceId(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.h = paramInt;
     b();
     invalidate();
   }
   
   public void setClockWise(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.M = paramBoolean;
   }
   
   public void setFinishedStrokeColor(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.p = paramInt;
     invalidate();
   }
   
   public void setFinishedStrokeWidth(float paramFloat)
   {
-    this.jdField_c_of_type_Float = paramFloat;
+    this.s = paramFloat;
     invalidate();
   }
   
   public void setInnerBackgroundColor(int paramInt)
   {
-    this.jdField_h_of_type_Int = paramInt;
+    this.u = paramInt;
     invalidate();
   }
   
   public void setInnerBottomText(String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.z = paramString;
     invalidate();
   }
   
   public void setInnerBottomTextColor(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.m = paramInt;
     invalidate();
   }
   
   public void setInnerBottomTextSize(float paramFloat)
   {
-    this.jdField_e_of_type_Float = paramFloat;
+    this.y = paramFloat;
     invalidate();
   }
   
@@ -433,76 +433,76 @@ public class DonutProgress
   {
     if (paramInt > 0)
     {
-      this.jdField_d_of_type_Int = paramInt;
+      this.o = paramInt;
       invalidate();
     }
   }
   
   public void setPrefixText(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.v = paramString;
     invalidate();
   }
   
   public void setProgress(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
-    if (this.jdField_b_of_type_Float > a()) {
-      this.jdField_b_of_type_Float %= a();
+    this.n = paramFloat;
+    if (this.n > getMax()) {
+      this.n %= getMax();
     }
     invalidate();
   }
   
   public void setShowText(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void setStartingDegree(int paramInt)
   {
-    this.jdField_g_of_type_Int = paramInt;
+    this.r = paramInt;
     invalidate();
   }
   
   public void setSuffixText(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.w = paramString;
     invalidate();
   }
   
   public void setText(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.x = paramString;
     invalidate();
   }
   
   public void setTextColor(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.l = paramInt;
     invalidate();
   }
   
   public void setTextSize(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.k = paramFloat;
     invalidate();
   }
   
   public void setUnfinishedStrokeColor(int paramInt)
   {
-    this.jdField_f_of_type_Int = paramInt;
+    this.q = paramInt;
     invalidate();
   }
   
   public void setUnfinishedStrokeWidth(float paramFloat)
   {
-    this.jdField_d_of_type_Float = paramFloat;
+    this.t = paramFloat;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.video.circle.DonutProgress
  * JD-Core Version:    0.7.0.1
  */

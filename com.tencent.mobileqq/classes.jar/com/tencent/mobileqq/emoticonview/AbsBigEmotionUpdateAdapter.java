@@ -47,7 +47,7 @@ public abstract class AbsBigEmotionUpdateAdapter
     if (localObject1 != null)
     {
       ((TextView)localObject1).setVisibility(8);
-      ((TextView)localObject1).setId(2131374392);
+      ((TextView)localObject1).setId(2131442558);
       ((TextView)localObject1).setTextColor(this.emoticonTextColor);
       ((TextView)localObject1).setTextSize(11.0F);
       localObject2 = new RelativeLayout.LayoutParams(-1, -2);
@@ -57,10 +57,10 @@ public abstract class AbsBigEmotionUpdateAdapter
       localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     }
     localObject1 = new URLImageView(this.mContext);
-    ((URLImageView)localObject1).setId(2131378202);
+    ((URLImageView)localObject1).setId(2131446720);
     localObject2 = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     ((RelativeLayout.LayoutParams)localObject2).addRule(13, -1);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131374392);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131442558);
     ((RelativeLayout.LayoutParams)localObject2).addRule(14);
     ((URLImageView)localObject1).setVisibility(8);
     ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
@@ -68,12 +68,12 @@ public abstract class AbsBigEmotionUpdateAdapter
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new ImageView(this.mContext);
     ((ImageView)localObject1).setVisibility(8);
-    ((ImageView)localObject1).setId(2131374393);
+    ((ImageView)localObject1).setId(2131442559);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131378202);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131378202);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131446720);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131446720);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       localRelativeLayout.setFocusable(true);
     }
     if (QLog.isColorLevel())
@@ -105,7 +105,7 @@ public abstract class AbsBigEmotionUpdateAdapter
         return;
       }
       paramView.setTag(localObject1);
-      paramEmotionPanelData = (URLImageView)paramView.findViewById(2131378202);
+      paramEmotionPanelData = (URLImageView)paramView.findViewById(2131446720);
       long l = System.currentTimeMillis();
       Object localObject2 = ((EmoticonInfo)localObject1).getDrawable(this.mContext, this.density);
       Object localObject3;
@@ -122,7 +122,7 @@ public abstract class AbsBigEmotionUpdateAdapter
       if ((localObject1 instanceof PicEmoticonInfo))
       {
         paramEmotionPanelData = (PicEmoticonInfo)localObject1;
-        localObject1 = (TextView)paramView.findViewById(2131374392);
+        localObject1 = (TextView)paramView.findViewById(2131442558);
         if (paramEmotionPanelData.emoticon != null)
         {
           localObject2 = paramEmotionPanelData.emoticon.name;
@@ -146,13 +146,13 @@ public abstract class AbsBigEmotionUpdateAdapter
             ((TextView)localObject1).setVisibility(8);
           }
         }
-        paramView = (ImageView)paramView.findViewById(2131374393);
+        paramView = (ImageView)paramView.findViewById(2131442559);
         if (paramEmotionPanelData.isSound())
         {
           if (paramEmotionPanelData.isNewSoundType()) {
-            paramView.setImageResource(2130846464);
+            paramView.setImageResource(2130847937);
           } else {
-            paramView.setImageResource(2130846465);
+            paramView.setImageResource(2130847938);
           }
           paramView.setVisibility(0);
           return;
@@ -164,7 +164,7 @@ public abstract class AbsBigEmotionUpdateAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.AbsBigEmotionUpdateAdapter
  * JD-Core Version:    0.7.0.1
  */

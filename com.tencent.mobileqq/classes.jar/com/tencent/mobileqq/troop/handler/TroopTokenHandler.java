@@ -47,14 +47,13 @@ public class TroopTokenHandler
   extends TroopBaseHandler
   implements ITroopTokenHandler
 {
-  private HashMap<String, Long> a;
   protected Set<String> a;
-  private HashMap<String, ArrayList<stTroopMemberInfo>> b = null;
+  private HashMap<String, Long> b = new HashMap();
+  private HashMap<String, ArrayList<stTroopMemberInfo>> c = null;
   
   public TroopTokenHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -318,11 +317,6 @@ public class TroopTokenHandler
     }
   }
   
-  protected String a()
-  {
-    return "TroopTokenHandler";
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
     Object localObject = new StringBuilder();
@@ -527,19 +521,24 @@ public class TroopTokenHandler
     sendPbReq(makeOIDBPkg("OidbSvc.0xd22_2", 3362, 2, ((Oidb_0xd22.ReqBody)localObject).toByteArray()));
   }
   
+  protected String dv_()
+  {
+    return "TroopTokenHandler";
+  }
+  
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0xd22_1");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0xd22_2");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0xd23_2");
-      this.jdField_a_of_type_JavaUtilSet.add("GroupOpen.CheckJsApiToken");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x88d_75");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x711_127");
+      this.a = new HashSet();
+      this.a.add("OidbSvc.0xd22_1");
+      this.a.add("OidbSvc.0xd22_2");
+      this.a.add("OidbSvc.0xd23_2");
+      this.a.add("GroupOpen.CheckJsApiToken");
+      this.a.add("OidbSvc.0x88d_75");
+      this.a.add("OidbSvc.0x711_127");
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.a;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -563,7 +562,7 @@ public class TroopTokenHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -611,7 +610,7 @@ public class TroopTokenHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopTokenHandler
  * JD-Core Version:    0.7.0.1
  */

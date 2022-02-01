@@ -12,25 +12,25 @@ import java.util.List;
 public class PrinterSubOptionActivity$PrinterItemAdapter
   extends BaseAdapter
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new PrinterSubOptionActivity.PrinterItemAdapter.1(this);
+  private View.OnClickListener b = new PrinterSubOptionActivity.PrinterItemAdapter.1(this);
   
   public PrinterSubOptionActivity$PrinterItemAdapter(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
   
   public int getCount()
   {
-    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size() > 0)) {
-      return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size();
+    if ((this.a.h != null) && (this.a.h.size() > 0)) {
+      return this.a.h.size();
     }
     return 1;
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (paramInt < this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size())) {
-      return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.get(paramInt);
+    if ((this.a.h != null) && (paramInt < this.a.h.size())) {
+      return this.a.h.get(paramInt);
     }
-    PrinterSubOptionActivity localPrinterSubOptionActivity = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity;
-    return new PrinterSubOptionActivity.CloudPrinter(localPrinterSubOptionActivity, 1, 0L, localPrinterSubOptionActivity.jdField_a_of_type_JavaLangString);
+    PrinterSubOptionActivity localPrinterSubOptionActivity = this.a;
+    return new PrinterSubOptionActivity.CloudPrinter(localPrinterSubOptionActivity, 1, 0L, localPrinterSubOptionActivity.e);
   }
   
   public long getItemId(int paramInt)
@@ -40,7 +40,7 @@ public class PrinterSubOptionActivity$PrinterItemAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size() > 0)) {
+    if ((this.a.h != null) && (this.a.h.size() > 0)) {
       return 0;
     }
     return 1;
@@ -48,32 +48,32 @@ public class PrinterSubOptionActivity$PrinterItemAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    String str = ((PrinterSubOptionActivity.CloudPrinter)getItem(paramInt)).jdField_a_of_type_JavaLangString;
+    String str = ((PrinterSubOptionActivity.CloudPrinter)getItem(paramInt)).b;
     int i = getItemViewType(paramInt);
     TextView localTextView = null;
     if (i == 0)
     {
       Object localObject = (PrinterSubOptionActivity.CloudPrinter)getItem(paramInt);
-      if (((PrinterSubOptionActivity.CloudPrinter)localObject).jdField_a_of_type_Int == 1)
+      if (((PrinterSubOptionActivity.CloudPrinter)localObject).c == 1)
       {
-        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559574, null);
-        localTextView = (TextView)paramView.findViewById(2131378475);
+        paramView = this.a.d.inflate(2131625602, null);
+        localTextView = (TextView)paramView.findViewById(2131447089);
       }
-      else if (((PrinterSubOptionActivity.CloudPrinter)localObject).jdField_a_of_type_Int == 2)
+      else if (((PrinterSubOptionActivity.CloudPrinter)localObject).c == 2)
       {
-        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559575, null);
-        localObject = paramView.findViewById(2131364361);
-        localTextView = (TextView)paramView.findViewById(2131364362);
+        paramView = this.a.d.inflate(2131625603, null);
+        localObject = paramView.findViewById(2131430389);
+        localTextView = (TextView)paramView.findViewById(2131430390);
         ((View)localObject).setClickable(true);
         ((View)localObject).setEnabled(true);
-        ((View)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        ((View)localObject).setOnClickListener(this.b);
       }
     }
     else
     {
-      paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559037, null);
-      paramView.findViewById(2131370178).setVisibility(8);
-      localTextView = (TextView)paramView.findViewById(2131370179);
+      paramView = this.a.d.inflate(2131624671, null);
+      paramView.findViewById(2131437344).setVisibility(8);
+      localTextView = (TextView)paramView.findViewById(2131437345);
       localTextView.setTextSize(19.0F);
       localTextView.setTextColor(-16777216);
     }

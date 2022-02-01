@@ -7,19 +7,6 @@ import mqq.app.MobileQQ;
 
 public class ResDownRecordUtil
 {
-  public static int a(String paramString, int paramInt1, int paramInt2)
-  {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("url_down_scene");
-      localStringBuilder.append(paramString);
-      return localSharedPreferences.getInt(localStringBuilder.toString(), paramInt1);
-    }
-    return paramInt1;
-  }
-  
   private static SharedPreferences a(int paramInt)
   {
     if (MobileQQ.sMobileQQ != null)
@@ -57,10 +44,23 @@ public class ResDownRecordUtil
       ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), paramInt1).apply();
     }
   }
+  
+  public static int b(String paramString, int paramInt1, int paramInt2)
+  {
+    SharedPreferences localSharedPreferences = a(paramInt2);
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_down_scene");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.getInt(localStringBuilder.toString(), paramInt1);
+    }
+    return paramInt1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.ResDownRecordUtil
  * JD-Core Version:    0.7.0.1
  */

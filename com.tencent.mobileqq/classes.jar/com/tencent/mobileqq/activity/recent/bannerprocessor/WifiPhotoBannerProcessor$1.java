@@ -13,7 +13,7 @@ class WifiPhotoBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131381140)
+    if (paramView.getId() == 2131450159)
     {
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("string_from", false);
@@ -27,7 +27,7 @@ class WifiPhotoBannerProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.WifiPhotoBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,12 +18,12 @@ class RedPacketManagerImpl$2$1
     {
       Object localObject = new JceOutputStream();
       ((JceOutputStream)localObject).setServerEncoding("utf-8");
-      this.jdField_a_of_type_WalletGetSkinListRsp.writeTo((JceOutputStream)localObject);
+      this.a.writeTo((JceOutputStream)localObject);
       localObject = ((JceOutputStream)localObject).toByteArray();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(MobileQQ.getContext().getFilesDir());
       localStringBuilder.append("skins");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbImplRedPacketManagerImpl$2.a.getCurrentAccountUin());
+      localStringBuilder.append(this.b.b.getCurrentAccountUin());
       FileUtils.writeFile((byte[])localObject, localStringBuilder.toString());
       return;
     }
@@ -35,7 +35,7 @@ class RedPacketManagerImpl$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.RedPacketManagerImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

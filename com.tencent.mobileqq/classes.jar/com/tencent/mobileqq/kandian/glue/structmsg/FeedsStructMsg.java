@@ -3,7 +3,6 @@ package com.tencent.mobileqq.kandian.glue.structmsg;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyUserInfoModule;
 import com.tencent.mobileqq.kandian.repo.common.RIJItemViewTypeUtils;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule;
 import com.tencent.mobileqq.kandian.repo.feeds.HotWordInfo;
@@ -14,7 +13,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.TopicRecommendFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.TopicRecommendFeedsInfo.TopicRecommendInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +41,11 @@ public class FeedsStructMsg
           {
             if (RIJItemViewTypeUtils.e(paramAbsBaseArticleInfo))
             {
-              paramAppInterface = ((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getSingleKDUserInfo(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.a, null);
+              paramAppInterface = ReadInJoyUserInfoModule.a(paramAbsBaseArticleInfo.mSocialFeedInfo.c.a, null);
               if (paramAppInterface != null) {
                 paramAppInterface = paramAppInterface.nick;
               } else {
-                paramAppInterface = ((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getDefaultNickName();
+                paramAppInterface = ReadInJoyUserInfoModule.d();
               }
               localStringBuilder.append(paramAppInterface);
               localStringBuilder.append(" Biu了");
@@ -55,7 +53,7 @@ public class FeedsStructMsg
             }
             else if (paramAbsBaseArticleInfo.mFeedType == 28)
             {
-              localStringBuilder = new StringBuilder(HardCodeUtil.a(2131708749));
+              localStringBuilder = new StringBuilder(HardCodeUtil.a(2131906529));
               paramAppInterface = localStringBuilder;
               if (paramAbsBaseArticleInfo.hotWordInfo.a != null)
               {
@@ -69,7 +67,7 @@ public class FeedsStructMsg
                   j = i + 1;
                   localStringBuilder.append(j);
                   localStringBuilder.append(".");
-                  localStringBuilder.append(((HotWordItem)paramAbsBaseArticleInfo.hotWordInfo.a.get(i)).jdField_a_of_type_JavaLangString);
+                  localStringBuilder.append(((HotWordItem)paramAbsBaseArticleInfo.hotWordInfo.a.get(i)).a);
                   localStringBuilder.append("  ");
                 }
               }
@@ -91,11 +89,11 @@ public class FeedsStructMsg
           }
           else
           {
-            paramAppInterface = ((IReadInJoyUserInfoModule)QRoute.api(IReadInJoyUserInfoModule.class)).getSingleKDUserInfo(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.a, null);
+            paramAppInterface = ReadInJoyUserInfoModule.a(paramAbsBaseArticleInfo.mSocialFeedInfo.c.a, null);
             if (paramAppInterface != null) {
               paramAppInterface = paramAppInterface.nick;
             } else {
-              paramAppInterface = ReadInJoyUserInfoModule.a();
+              paramAppInterface = ReadInJoyUserInfoModule.d();
             }
             localStringBuilder.append(paramAppInterface);
             paramAppInterface = localStringBuilder;
@@ -135,7 +133,7 @@ public class FeedsStructMsg
                   if (paramAbsBaseArticleInfo.isSocialFeed())
                   {
                     localObject1 = str;
-                    paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_JavaLangString;
+                    paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.e;
                     break label322;
                   }
                 }
@@ -151,17 +149,17 @@ public class FeedsStructMsg
           break label325;
         }
         localObject1 = str;
-        if (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a == null) {
+        if (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g == null) {
           break label325;
         }
         localObject1 = str;
-        if (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() <= 0) {
+        if (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.size() <= 0) {
           break label325;
         }
         localObject1 = str;
-        localObject2 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c;
+        localObject2 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.get(0)).d;
         localObject1 = str;
-        localObject3 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).jdField_a_of_type_JavaLangString;
+        localObject3 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.get(0)).b;
         localObject1 = str;
         StringBuilder localStringBuilder = new StringBuilder();
         localObject1 = str;
@@ -202,7 +200,7 @@ public class FeedsStructMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.structmsg.FeedsStructMsg
  * JD-Core Version:    0.7.0.1
  */

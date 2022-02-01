@@ -21,18 +21,18 @@ public class UpdateDiscuss
     if (this.a == null)
     {
       this.a = new UpdateDiscuss.MyDiscussionObserver(this, null);
-      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a);
+      this.mAutomator.k.addObserver(this.a);
     }
-    ((DiscussionHandler)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).f(Long.valueOf(this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
+    ((DiscussionHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).f(Long.valueOf(this.mAutomator.k.getCurrentAccountUin()).longValue());
   }
   
   protected int doStep()
   {
-    boolean bool = this.mAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isDiscussionlistok", false);
-    DiscussionManager localDiscussionManager = (DiscussionManager)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    boolean bool = this.mAutomator.d.getBoolean("isDiscussionlistok", false);
+    DiscussionManager localDiscussionManager = (DiscussionManager)this.mAutomator.k.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     if (bool)
     {
-      FriendListHandler localFriendListHandler = (FriendListHandler)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      FriendListHandler localFriendListHandler = (FriendListHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
       localDiscussionManager.a();
       localFriendListHandler.notifyUI(1000, true, null);
       this.mAutomator.notifyUI(3, true, Integer.valueOf(3));
@@ -47,14 +47,14 @@ public class UpdateDiscuss
   {
     if (this.a != null)
     {
-      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.UpdateDiscuss
  * JD-Core Version:    0.7.0.1
  */

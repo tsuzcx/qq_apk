@@ -20,13 +20,13 @@ class ChatBackgroundManager$1
     paramBundle.append("");
     paramBundle = ChatBackgroundUtil.a(true, paramBundle.toString());
     if (new File(paramBundle).exists()) {
-      ChatBackgroundUtil.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getCurrentUin(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
+      ChatBackgroundUtil.a(this.d.a.getApp().getApplicationContext(), this.d.a.getCurrentUin(), this.a, paramBundle, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.1
  * JD-Core Version:    0.7.0.1
  */

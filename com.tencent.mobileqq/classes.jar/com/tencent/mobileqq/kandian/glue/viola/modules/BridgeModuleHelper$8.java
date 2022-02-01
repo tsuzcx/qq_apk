@@ -15,22 +15,22 @@ final class BridgeModuleHelper$8
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.getViolaInstance().getActivity();
+    Activity localActivity = this.a.getViolaInstance().getActivity();
     if (localActivity != null)
     {
       if (localActivity.isFinishing()) {
         return;
       }
-      if (paramDownloadTask.a == 0)
+      if (paramDownloadTask.c == 0)
       {
-        paramDownloadTask = new File(AbsDownloader.getFilePath(this.jdField_a_of_type_JavaLangString));
+        paramDownloadTask = new File(AbsDownloader.getFilePath(this.b));
         if (paramDownloadTask.exists())
         {
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("shareImageToAIO->downloadFile success: ");
-            localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(this.b);
             QLog.d("BridgeModuleHelper", 2, localStringBuilder.toString());
           }
           localActivity.runOnUiThread(new BridgeModuleHelper.8.1(this, paramDownloadTask));
@@ -41,7 +41,7 @@ final class BridgeModuleHelper$8
       {
         paramDownloadTask = new StringBuilder();
         paramDownloadTask.append("shareImageToAIO->downloadFile failed: ");
-        paramDownloadTask.append(this.jdField_a_of_type_JavaLangString);
+        paramDownloadTask.append(this.b);
         QLog.d("BridgeModuleHelper", 2, paramDownloadTask.toString());
       }
       localActivity.runOnUiThread(new BridgeModuleHelper.8.2(this));
@@ -50,7 +50,7 @@ final class BridgeModuleHelper$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModuleHelper.8
  * JD-Core Version:    0.7.0.1
  */

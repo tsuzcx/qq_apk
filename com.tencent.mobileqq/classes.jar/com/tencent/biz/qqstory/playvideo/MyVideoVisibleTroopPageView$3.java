@@ -24,8 +24,8 @@ class MyVideoVisibleTroopPageView$3
       double d2 = Math.sqrt(paramFloat1 * paramFloat1 + f * f);
       Double.isNaN(d1);
       d1 = Math.abs(Math.asin(d1 / d2));
-      if ((paramFloat2 > 0.0F) && (d1 < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      if ((paramFloat2 > 0.0F) && (d1 < 0.5235987755982988D) && (this.a.c == 0)) {
+        this.a.d.dismiss();
       }
     }
     return false;
@@ -33,7 +33,7 @@ class MyVideoVisibleTroopPageView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView.3
  * JD-Core Version:    0.7.0.1
  */

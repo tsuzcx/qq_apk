@@ -1,47 +1,44 @@
 package com.tencent.aelight.camera.ae.data;
 
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AEMaterialCategory
   implements Cloneable
 {
-  public int a;
-  public String a;
   public List<AEMaterialMetaData> a;
-  public boolean a;
   public int b;
-  public String b;
+  public String c;
+  public String d;
+  public int e = 2;
+  public boolean f = false;
+  public boolean g = true;
+  public ArrayList<MetaCategory> h;
   
-  public AEMaterialCategory()
-  {
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public AEMaterialCategory() {}
   
   public AEMaterialCategory(String paramString)
   {
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public AEMaterialCategory a()
   {
     AEMaterialCategory localAEMaterialCategory = new AEMaterialCategory();
-    localAEMaterialCategory.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localAEMaterialCategory.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localAEMaterialCategory.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localAEMaterialCategory.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localAEMaterialCategory.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localAEMaterialCategory.jdField_a_of_type_JavaUtilList = new ArrayList();
-    localAEMaterialCategory.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    localAEMaterialCategory.d = this.d;
+    localAEMaterialCategory.b = this.b;
+    localAEMaterialCategory.c = this.c;
+    localAEMaterialCategory.e = this.e;
+    localAEMaterialCategory.f = this.f;
+    localAEMaterialCategory.a = new ArrayList();
+    localAEMaterialCategory.a.addAll(this.a);
     return localAEMaterialCategory;
   }
   
   public int hashCode()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     int i;
     if (localList == null) {
       i = 0;
@@ -53,7 +50,7 @@ public class AEMaterialCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEMaterialCategory
  * JD-Core Version:    0.7.0.1
  */

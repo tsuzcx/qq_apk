@@ -12,7 +12,7 @@ class QRCardActivity$8$2
   
   public void onClick(View paramView)
   {
-    TextView localTextView = (TextView)this.a.a.findViewById(2131365169);
+    TextView localTextView = (TextView)this.a.a.findViewById(2131431322);
     if ((localTextView.getText() instanceof String)) {
       this.a.a((String)localTextView.getText());
     }
@@ -21,7 +21,7 @@ class QRCardActivity$8$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRCardActivity.8.2
  * JD-Core Version:    0.7.0.1
  */

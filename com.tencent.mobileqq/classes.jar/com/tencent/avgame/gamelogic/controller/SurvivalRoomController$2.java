@@ -12,8 +12,8 @@ class SurvivalRoomController$2
   public void a()
   {
     super.a();
-    if (SurvivalRoomController.a(this.a) != null) {
-      AVGameHandler.a().a().removeCallbacks(SurvivalRoomController.a(this.a));
+    if (SurvivalRoomController.b(this.a) != null) {
+      AVGameHandler.a().b().removeCallbacks(SurvivalRoomController.b(this.a));
     }
   }
 }

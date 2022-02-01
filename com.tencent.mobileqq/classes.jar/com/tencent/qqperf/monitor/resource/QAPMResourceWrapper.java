@@ -1,5 +1,6 @@
 package com.tencent.qqperf.monitor.resource;
 
+import com.tencent.mobileqq.perf.report.FeatureFlag;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qapmsdk.QAPM;
 import com.tencent.qapmsdk.base.config.DefaultPluginConfig.ResourcePlugin.ResourceType;
@@ -9,6 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.monitor.base.AbstractMagnifierItem;
 import com.tencent.qqperf.monitor.base.IAPMModuleScene;
 import java.util.HashMap;
+import java.util.Map;
 import mqq.app.MobileQQ;
 
 public class QAPMResourceWrapper
@@ -22,22 +24,22 @@ public class QAPMResourceWrapper
   
   public void a(String paramString)
   {
-    if (o_()) {
+    if (dH_()) {
       QAPM.beginScene(paramString, QAPM.ModeResource);
     }
   }
   
-  public void b()
-  {
-    com.tencent.qapmsdk.base.config.SDKConfig.RES_TYPE = DefaultPluginConfig.ResourcePlugin.ResourceType.OUTSIDE_TAG.getValue() | DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_TAG.getValue();
-    QAPM.setProperty(114, this);
-  }
-  
   public void b(String paramString)
   {
-    if (o_()) {
+    if (dH_()) {
       QAPM.endScene(paramString, QAPM.ModeResource);
     }
+  }
+  
+  public void j()
+  {
+    com.tencent.qapmsdk.base.config.SDKConfig.RES_TYPE = DefaultPluginConfig.ResourcePlugin.ResourceType.OUTSIDE_TAG.getValue() | DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_TAG.getValue() | DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_RESOURCE.getValue() | DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_AUTO.getValue();
+    QAPM.setProperty(114, this);
   }
   
   public void onEndScene(SceneMeta paramSceneMeta)
@@ -61,12 +63,13 @@ public class QAPMResourceWrapper
     ((HashMap)localObject).put("memory", String.valueOf(paramSceneMeta.memory));
     ((HashMap)localObject).put("scene", String.valueOf(paramSceneMeta.stage));
     ((HashMap)localObject).put("duration", String.valueOf(paramSceneMeta.duration));
+    FeatureFlag.a((Map)localObject);
     StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance("", "actScenePerf", true, 0L, 0L, (HashMap)localObject, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.resource.QAPMResourceWrapper
  * JD-Core Version:    0.7.0.1
  */

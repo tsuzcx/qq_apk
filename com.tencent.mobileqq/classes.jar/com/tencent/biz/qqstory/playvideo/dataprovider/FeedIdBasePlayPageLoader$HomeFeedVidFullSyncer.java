@@ -21,30 +21,30 @@ import java.util.List;
 class FeedIdBasePlayPageLoader$HomeFeedVidFullSyncer
   implements IGroupPageLoader.IVidFullSyncer
 {
-  private int jdField_a_of_type_Int;
-  private final FeedIdBasePlayPageLoader.FeedBaseGroupId jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId;
-  private IGroupPageLoader.IVidFullSyncer.CallBack jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$IVidFullSyncer$CallBack;
-  private final FeedBasePlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo;
-  private VideoListPageLoader jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader;
   protected final FeedVideoManager a;
+  private final FeedBasePlayInfo b;
+  private final FeedIdBasePlayPageLoader.FeedBaseGroupId c;
+  private VideoListPageLoader d;
+  private IGroupPageLoader.IVidFullSyncer.CallBack e;
+  private int f;
   
   public FeedIdBasePlayPageLoader$HomeFeedVidFullSyncer(FeedIdBasePlayPageLoader.FeedBaseGroupId paramFeedBaseGroupId, FeedBasePlayInfo paramFeedBasePlayInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo = paramFeedBasePlayInfo;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId = paramFeedBaseGroupId;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager = ((FeedVideoManager)SuperManager.a(12));
+    this.b = paramFeedBasePlayInfo;
+    this.c = paramFeedBaseGroupId;
+    this.a = ((FeedVideoManager)SuperManager.a(12));
   }
   
   private void a(ErrorMessage paramErrorMessage, IDataProvider.GroupId paramGroupId)
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramGroupId);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$IVidFullSyncer$CallBack.a(paramErrorMessage, localArrayList);
+    this.e.a(paramErrorMessage, localArrayList);
   }
   
   private void a(List<StoryVideoItem> paramList, VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    if (!paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (!paramGetVideoListEvent.g.isSuccess())
     {
       b(paramList, paramGetVideoListEvent);
       return;
@@ -52,16 +52,16 @@ class FeedIdBasePlayPageLoader$HomeFeedVidFullSyncer
     if (paramGetVideoListEvent.c) {
       paramList.clear();
     }
-    paramList.addAll(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList);
-    SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "add video size:%d", Integer.valueOf(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList.size()));
-    if (!paramGetVideoListEvent.jdField_a_of_type_Boolean)
+    paramList.addAll(paramGetVideoListEvent.h);
+    SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "add video size:%d", Integer.valueOf(paramGetVideoListEvent.h.size()));
+    if (!paramGetVideoListEvent.a)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.f;
       if (i < 20)
       {
-        this.jdField_a_of_type_Int = (i + 1);
-        SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "request from net, count:%d", Integer.valueOf(this.jdField_a_of_type_Int));
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader.c();
+        this.f = (i + 1);
+        SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "request from net, count:%d", Integer.valueOf(this.f));
+        this.d.c();
         return;
       }
     }
@@ -70,66 +70,66 @@ class FeedIdBasePlayPageLoader$HomeFeedVidFullSyncer
   
   private void a(List<StoryVideoItem> paramList, FeedVideoInfo paramFeedVideoInfo)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId.a == null)
+    if (this.c.a == null)
     {
-      a(new ErrorMessage(940001, "group info is null"), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId);
+      a(new ErrorMessage(940001, "group info is null"), this.c);
       return;
     }
     if (paramFeedVideoInfo == null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader = new VideoListPageLoader(1, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId.a.jdField_a_of_type_JavaLangString, 0, -1);
+      this.d = new VideoListPageLoader(1, this.c.a.a, 0, -1);
     }
     else
     {
       paramList.addAll(paramFeedVideoInfo.mVideoItemList);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader = new VideoListPageLoader(1, paramFeedVideoInfo);
+      this.d = new VideoListPageLoader(1, paramFeedVideoInfo);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader.a(new FeedIdBasePlayPageLoader.HomeFeedVidFullSyncer.1(this, paramList));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader.c();
-    SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "request from net, count:%d, %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId);
+    this.d.a(new FeedIdBasePlayPageLoader.HomeFeedVidFullSyncer.1(this, paramList));
+    this.d.c();
+    SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "request from net, count:%d, %s", Integer.valueOf(this.f), this.c);
   }
   
   private void a(List<StoryVideoItem> paramList, String paramString)
   {
-    paramList = FeedIdBasePlayPageLoader.a(paramList, paramString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId);
+    paramList = FeedIdBasePlayPageLoader.a(paramList, paramString, this.c);
     paramString = new ArrayList();
     paramString.add(paramList);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$IVidFullSyncer$CallBack.a(paramString, true);
+    this.e.a(paramString, true);
   }
   
   private void b(List<StoryVideoItem> paramList, VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId.a == null)
+    if (this.c.a == null)
     {
-      a(new ErrorMessage(940001, "group info is null"), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId);
+      a(new ErrorMessage(940001, "group info is null"), this.c);
       return;
     }
-    if (paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo == null)
+    if (paramGetVideoListEvent.i == null)
     {
-      a(paramList, paramGetVideoListEvent.jdField_a_of_type_JavaLangString);
+      a(paramList, paramGetVideoListEvent.e);
       return;
     }
     StoryVideoItem localStoryVideoItem;
-    if (QQStoryContext.a().a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId.a.b))
+    if (QQStoryContext.a().b(this.c.a.c))
     {
-      localObject = FeedIdBasePlayPageLoader.a();
+      localObject = FeedIdBasePlayPageLoader.d();
       boolean bool = true;
       if (localObject == null) {
         FeedIdBasePlayPageLoader.c(((StoryManager)SuperManager.a(5)).a(true));
       }
-      if (FeedIdBasePlayPageLoader.a().size() != 0)
+      if (FeedIdBasePlayPageLoader.d().size() != 0)
       {
-        localObject = FeedIdBasePlayPageLoader.a().iterator();
+        localObject = FeedIdBasePlayPageLoader.d().iterator();
         while (((Iterator)localObject).hasNext())
         {
           localStoryVideoItem = (StoryVideoItem)((Iterator)localObject).next();
-          if (localStoryVideoItem.mPublishDate.equals(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId.a.c))
+          if (localStoryVideoItem.mPublishDate.equals(this.c.a.d))
           {
             SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "add fail video %s", localStoryVideoItem);
             paramList.add(localStoryVideoItem);
           }
         }
-        if (paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.mVideoPullType != 1) {
+        if (paramGetVideoListEvent.i.mVideoPullType != 1) {
           bool = false;
         }
         Collections.sort(paramList, new VideoListHomeFeed.StoryVideoListComp(bool));
@@ -144,22 +144,22 @@ class FeedIdBasePlayPageLoader$HomeFeedVidFullSyncer
         paramList.add(localStoryVideoItem);
       }
     }
-    paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo = ((FeedVideoManager)SuperManager.a(12)).a(1, paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.feedId, paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.mVideoSeq, paramList, paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.mVideoNextCookie, paramGetVideoListEvent.jdField_a_of_type_Boolean, paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo.mVideoPullType, true);
-    a(paramList, paramGetVideoListEvent.jdField_a_of_type_JavaLangString);
+    paramGetVideoListEvent.i = ((FeedVideoManager)SuperManager.a(12)).a(1, paramGetVideoListEvent.i.feedId, paramGetVideoListEvent.i.mVideoSeq, paramList, paramGetVideoListEvent.i.mVideoNextCookie, paramGetVideoListEvent.a, paramGetVideoListEvent.i.mVideoPullType, true);
+    a(paramList, paramGetVideoListEvent.e);
   }
   
   public void a(IGroupPageLoader.IVidFullSyncer.CallBack paramCallBack)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId.a == null)
+    if (this.c.a == null)
     {
-      a(new ErrorMessage(940001, "group info is null"), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId);
+      a(new ErrorMessage(940001, "group info is null"), this.c);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$IVidFullSyncer$CallBack = paramCallBack;
-    int i = FeedIdBasePlayPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo);
+    this.e = paramCallBack;
+    int i = FeedIdBasePlayPageLoader.a(this.c, this.b);
     Object localObject = new ArrayList();
-    paramCallBack = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderFeedIdBasePlayPageLoader$FeedBaseGroupId.a.jdField_a_of_type_JavaLangString, i);
-    if ((paramCallBack != null) && (paramCallBack.mIsVideoEnd) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mForceNotUseVidCache))
+    paramCallBack = this.a.a(this.c.a.a, i);
+    if ((paramCallBack != null) && (paramCallBack.mIsVideoEnd) && (!this.b.mForceNotUseVidCache))
     {
       localObject = paramCallBack.mVideoItemList;
       paramCallBack = paramCallBack.feedId;
@@ -172,7 +172,7 @@ class FeedIdBasePlayPageLoader$HomeFeedVidFullSyncer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.FeedIdBasePlayPageLoader.HomeFeedVidFullSyncer
  * JD-Core Version:    0.7.0.1
  */

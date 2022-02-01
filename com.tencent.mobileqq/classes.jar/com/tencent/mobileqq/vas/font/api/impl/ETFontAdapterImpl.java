@@ -40,8 +40,8 @@ public class ETFontAdapterImpl
     paramPaint.setColor(paramETFont.mFontColor);
     paramInt = paramArrayList.b();
     int i = (int)paramArrayList.b;
-    paramArrayList.jdField_a_of_type_Boolean = false;
-    paramArrayList.draw(paramCanvas, null, 0, 0, paramArrayList.jdField_a_of_type_Float, (int)paramArrayList.b, 0, paramInt + i, paramPaint);
+    paramArrayList.c = false;
+    paramArrayList.draw(paramCanvas, null, 0, 0, paramArrayList.a, (int)paramArrayList.b, 0, paramInt + i, paramPaint);
   }
   
   public String getDIYFontImage(String paramString)
@@ -91,7 +91,7 @@ public class ETFontAdapterImpl
     if ((paramCharacterStyle instanceof SignatureActionSpan))
     {
       paramCharacterStyle = (SignatureActionSpan)paramCharacterStyle;
-      paramCharacterStyle.jdField_a_of_type_Float = paramInt1;
+      paramCharacterStyle.a = paramInt1;
       paramCharacterStyle.b = paramInt2;
     }
   }
@@ -110,14 +110,14 @@ public class ETFontAdapterImpl
       paramPaint.setTextSize(paramInt3);
       paramCharacterStyle = (SignatureActionSpan)paramCharacterStyle;
       paramInt3 = paramCharacterStyle.b();
-      paramCharacterStyle.jdField_a_of_type_Boolean = false;
+      paramCharacterStyle.c = false;
       paramCharacterStyle.draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + paramInt3, paramPaint);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.font.api.impl.ETFontAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

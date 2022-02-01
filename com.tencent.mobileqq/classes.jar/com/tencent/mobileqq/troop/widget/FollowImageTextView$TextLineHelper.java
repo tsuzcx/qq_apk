@@ -9,160 +9,160 @@ import java.util.List;
 
 class FollowImageTextView$TextLineHelper
 {
-  private int jdField_a_of_type_Int;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private FollowImageTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private List<FollowImageTextView.Line> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int b;
+  private List<FollowImageTextView.Line> a = new ArrayList();
+  private CharSequence b;
   private int c;
   private int d;
   private int e;
   private int f;
   private int g;
+  private int h;
+  private int i;
+  private TextPaint j;
+  private FollowImageTextView k;
   
   public FollowImageTextView$TextLineHelper(FollowImageTextView paramFollowImageTextView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView = paramFollowImageTextView;
-  }
-  
-  private int a()
-  {
-    return this.jdField_a_of_type_Int - this.f - this.d;
+    this.k = paramFollowImageTextView;
   }
   
   private int a(CharSequence paramCharSequence)
   {
-    return (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length());
+    return (int)this.j.measureText(paramCharSequence, 0, paramCharSequence.length());
   }
   
   private void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    int n = a();
+    this.a.clear();
+    int i3 = b();
     Object localObject;
-    if (n <= 0)
+    if (i3 <= 0)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("lineWidth=");
-        ((StringBuilder)localObject).append(n);
+        ((StringBuilder)localObject).append(i3);
         QLog.i("FollowImageTextView", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    int i1 = this.jdField_a_of_type_JavaLangCharSequence.length();
-    int i = 0;
-    int k = 0;
-    int j = 0;
-    while (i < i1)
+    int i4 = this.b.length();
+    int m = 0;
+    int i1 = 0;
+    int n = 0;
+    while (m < i4)
     {
-      if (this.jdField_a_of_type_JavaLangCharSequence.charAt(i) == '\n')
+      if (this.b.charAt(m) == '\n')
       {
         localObject = new FollowImageTextView.Line(null);
-        ((FollowImageTextView.Line)localObject).jdField_a_of_type_Int = k;
-        ((FollowImageTextView.Line)localObject).b = (i - 1);
-        ((FollowImageTextView.Line)localObject).c = j;
-        ((FollowImageTextView.Line)localObject).jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i);
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        k = i + 1;
-        j = 0;
+        ((FollowImageTextView.Line)localObject).b = i1;
+        ((FollowImageTextView.Line)localObject).c = (m - 1);
+        ((FollowImageTextView.Line)localObject).d = n;
+        ((FollowImageTextView.Line)localObject).a = this.b.subSequence(i1, m);
+        this.a.add(localObject);
+        i1 = m + 1;
+        n = 0;
       }
       else
       {
-        int m = a(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i + 1));
-        if (m > n)
+        int i2 = a(this.b.subSequence(i1, m + 1));
+        if (i2 > i3)
         {
           localObject = new FollowImageTextView.Line(null);
-          ((FollowImageTextView.Line)localObject).jdField_a_of_type_Int = k;
-          ((FollowImageTextView.Line)localObject).b = (i - 1);
-          ((FollowImageTextView.Line)localObject).c = j;
-          ((FollowImageTextView.Line)localObject).jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i);
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-          if (this.jdField_a_of_type_JavaUtilList.size() >= i1) {
+          ((FollowImageTextView.Line)localObject).b = i1;
+          ((FollowImageTextView.Line)localObject).c = (m - 1);
+          ((FollowImageTextView.Line)localObject).d = n;
+          ((FollowImageTextView.Line)localObject).a = this.b.subSequence(i1, m);
+          this.a.add(localObject);
+          if (this.a.size() >= i4) {
             break;
           }
-          j = 0;
-          k = i;
-          i -= 1;
+          n = 0;
+          i1 = m;
+          m -= 1;
         }
-        else if (i == i1 - 1)
+        else if (m == i4 - 1)
         {
           localObject = new FollowImageTextView.Line(null);
-          ((FollowImageTextView.Line)localObject).jdField_a_of_type_Int = k;
-          ((FollowImageTextView.Line)localObject).b = (i - 1);
-          ((FollowImageTextView.Line)localObject).c = m;
-          ((FollowImageTextView.Line)localObject).jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i1);
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          ((FollowImageTextView.Line)localObject).b = i1;
+          ((FollowImageTextView.Line)localObject).c = (m - 1);
+          ((FollowImageTextView.Line)localObject).d = i2;
+          ((FollowImageTextView.Line)localObject).a = this.b.subSequence(i1, i4);
+          this.a.add(localObject);
         }
         else
         {
-          j = m;
+          n = i2;
         }
       }
-      i += 1;
+      m += 1;
     }
-    if (FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView) != null) {
-      FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).a(this.jdField_a_of_type_JavaUtilList.size());
+    if (FollowImageTextView.e(this.k) != null) {
+      FollowImageTextView.e(this.k).a(this.a.size());
     }
+  }
+  
+  private int b()
+  {
+    return this.c - this.h - this.f;
   }
   
   public void a(int paramInt)
   {
-    FollowImageTextView.FirstTextView localFirstTextView = FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView);
-    this.jdField_a_of_type_JavaLangCharSequence = localFirstTextView.getText();
-    this.jdField_a_of_type_AndroidTextTextPaint = localFirstTextView.getPaint();
-    this.jdField_a_of_type_Int = localFirstTextView.getMeasuredWidth();
-    this.b = localFirstTextView.getLineHeight();
-    this.d = localFirstTextView.getPaddingLeft();
-    this.e = localFirstTextView.getPaddingTop();
-    this.f = localFirstTextView.getPaddingRight();
-    this.g = localFirstTextView.getPaddingBottom();
-    this.c = paramInt;
+    FollowImageTextView.FirstTextView localFirstTextView = FollowImageTextView.d(this.k);
+    this.b = localFirstTextView.getText();
+    this.j = localFirstTextView.getPaint();
+    this.c = localFirstTextView.getMeasuredWidth();
+    this.d = localFirstTextView.getLineHeight();
+    this.f = localFirstTextView.getPaddingLeft();
+    this.g = localFirstTextView.getPaddingTop();
+    this.h = localFirstTextView.getPaddingRight();
+    this.i = localFirstTextView.getPaddingBottom();
+    this.e = paramInt;
     a();
   }
   
   public void a(Canvas paramCanvas)
   {
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = this.c;
-    if ((i > 0) && (i < j)) {
-      i = 1;
+    int n = this.a.size();
+    int m = this.e;
+    if ((m > 0) && (m < n)) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    if (i != 0) {
-      j = this.c;
+    if (m != 0) {
+      n = this.e;
     }
-    int k = 0;
-    while (k < j)
+    int i1 = 0;
+    while (i1 < n)
     {
-      CharSequence localCharSequence = ((FollowImageTextView.Line)this.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaLangCharSequence;
-      float f1 = this.jdField_a_of_type_AndroidTextTextPaint.getTextSize();
-      paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.d + 0, f1 + this.b * k + this.e, this.jdField_a_of_type_AndroidTextTextPaint);
-      k += 1;
+      CharSequence localCharSequence = ((FollowImageTextView.Line)this.a.get(i1)).a;
+      float f1 = this.j.getTextSize();
+      paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.f + 0, f1 + this.d * i1 + this.g, this.j);
+      i1 += 1;
     }
-    if ((i != 0) && (j < this.jdField_a_of_type_JavaUtilList.size()))
+    if ((m != 0) && (n < this.a.size()))
     {
-      paramCanvas = (FollowImageTextView.Line)this.jdField_a_of_type_JavaUtilList.get(j);
-      i = this.jdField_a_of_type_JavaLangCharSequence.length();
-      if ((paramCanvas.jdField_a_of_type_Int > -1) && (paramCanvas.jdField_a_of_type_Int < i))
+      paramCanvas = (FollowImageTextView.Line)this.a.get(n);
+      m = this.b.length();
+      if ((paramCanvas.b > -1) && (paramCanvas.b < m))
       {
-        paramCanvas = this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramCanvas.jdField_a_of_type_Int, i);
-        FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).setText(paramCanvas);
-        FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, true);
+        paramCanvas = this.b.subSequence(paramCanvas.b, m);
+        FollowImageTextView.f(this.k).setText(paramCanvas);
+        FollowImageTextView.a(this.k, true);
         return;
       }
-      FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
+      FollowImageTextView.a(this.k, false);
       return;
     }
-    FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
+    FollowImageTextView.a(this.k, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FollowImageTextView.TextLineHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ class MessageHandler$1
   
   public HashMap<Integer, String[]> a(int paramInt)
   {
-    return this.a.a.getTroopListUin(paramInt);
+    return this.a.n.getTroopListUin(paramInt);
   }
   
   public List<String> a()
   {
-    Object localObject = ((DiscussionManager)this.a.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
+    Object localObject = ((DiscussionManager)this.a.n.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b();
     ArrayList localArrayList = new ArrayList();
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -34,13 +34,13 @@ class MessageHandler$1
   public void a(MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord.msgtype == -1035) && ((paramMessageRecord instanceof MessageForMixedMsg))) {
-      this.a.a.msgFacade.a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 32768, paramMessageRecord.sendFailCode);
+      this.a.n.msgFacade.a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 32768, paramMessageRecord.sendFailCode);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.1
  * JD-Core Version:    0.7.0.1
  */

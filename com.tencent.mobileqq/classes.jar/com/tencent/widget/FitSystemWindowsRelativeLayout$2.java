@@ -17,7 +17,7 @@ class FitSystemWindowsRelativeLayout$2
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.i)
     {
       if ((((ISpriteUtil)QRoute.api(ISpriteUtil.class)).getSpriteContext(FitSystemWindowsRelativeLayout.a(this.a)).a() ^ true))
       {
@@ -27,16 +27,16 @@ class FitSystemWindowsRelativeLayout$2
         }
       }
       paramAnimator = this.a;
-      paramAnimator.jdField_a_of_type_Boolean = false;
-      paramAnimator.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+      paramAnimator.i = false;
+      paramAnimator.a.setImageDrawable(null);
       paramAnimator = this.a;
-      paramAnimator.removeView(paramAnimator.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+      paramAnimator.removeView(paramAnimator.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.FitSystemWindowsRelativeLayout.2
  * JD-Core Version:    0.7.0.1
  */

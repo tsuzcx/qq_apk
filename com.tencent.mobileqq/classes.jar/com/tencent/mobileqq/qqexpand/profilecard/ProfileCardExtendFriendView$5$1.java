@@ -16,17 +16,17 @@ class ProfileCardExtendFriendView$5$1
   {
     if (this.a.a.authState == 1L)
     {
-      QQToast.a(this.a.this$0.getContext(), 0, 1913061378, 1).a();
+      QQToast.makeText(this.a.this$0.getContext(), 0, 1913061381, 1).show();
       return;
     }
     if ((this.a.a.authState == 0L) || (this.a.a.authState == 3L)) {
-      CampusHelper.a((Activity)ProfileCardExtendFriendView.a(this.a.this$0), this.a.a.idx, this.a.a.schoolName, this.a.a.schoolId);
+      CampusHelper.a((Activity)ProfileCardExtendFriendView.i(this.a.this$0), this.a.a.idx, this.a.a.schoolName, this.a.a.schoolId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.profilecard.ProfileCardExtendFriendView.5.1
  * JD-Core Version:    0.7.0.1
  */

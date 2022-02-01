@@ -33,123 +33,134 @@ import com.google.android.material.R.layout;
 public class NavigationMenuPresenter
   implements MenuPresenter
 {
-  int jdField_a_of_type_Int;
-  ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new NavigationMenuPresenter.1(this);
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  MenuBuilder jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder;
-  private MenuPresenter.Callback jdField_a_of_type_AndroidxAppcompatViewMenuMenuPresenter$Callback;
-  NavigationMenuPresenter.NavigationMenuAdapter jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter;
-  private NavigationMenuView jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = true;
-  int d;
+  LinearLayout a;
+  MenuBuilder b;
+  NavigationMenuPresenter.NavigationMenuAdapter c;
+  LayoutInflater d;
   int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i = -1;
+  boolean f;
+  ColorStateList g;
+  ColorStateList h;
+  Drawable i;
+  int j;
+  int k;
+  int l;
+  boolean m;
+  boolean n = true;
+  int o;
+  final View.OnClickListener p = new NavigationMenuPresenter.1(this);
+  private NavigationMenuView q;
+  private MenuPresenter.Callback r;
+  private int s;
+  private int t;
+  private int u;
+  private int v = -1;
   
-  private void a()
+  private void i()
   {
-    int j;
-    if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == 0) && (this.jdField_c_of_type_Boolean)) {
-      j = this.h;
+    int i1;
+    if ((this.a.getChildCount() == 0) && (this.n)) {
+      i1 = this.u;
     } else {
-      j = 0;
+      i1 = 0;
     }
-    NavigationMenuView localNavigationMenuView = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView;
-    localNavigationMenuView.setPadding(0, j, 0, localNavigationMenuView.getPaddingBottom());
+    NavigationMenuView localNavigationMenuView = this.q;
+    localNavigationMenuView.setPadding(0, i1, 0, localNavigationMenuView.getPaddingBottom());
   }
   
-  public View a(@LayoutRes int paramInt)
+  @Nullable
+  public MenuItemImpl a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    a(localView);
-    return localView;
+    return this.c.b();
   }
   
   public void a(int paramInt)
   {
-    this.f = paramInt;
+    this.s = paramInt;
   }
   
   public void a(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.h = paramColorStateList;
     updateMenuView(false);
   }
   
   public void a(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.i = paramDrawable;
     updateMenuView(false);
   }
   
   public void a(@NonNull View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView);
-    paramView = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView;
+    this.a.addView(paramView);
+    paramView = this.q;
     paramView.setPadding(0, 0, 0, paramView.getPaddingBottom());
   }
   
   public void a(@NonNull MenuItemImpl paramMenuItemImpl)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter.a(paramMenuItemImpl);
+    this.c.a(paramMenuItemImpl);
   }
   
   public void a(@NonNull WindowInsetsCompat paramWindowInsetsCompat)
   {
-    int j = paramWindowInsetsCompat.getSystemWindowInsetTop();
-    if (this.h != j)
+    int i1 = paramWindowInsetsCompat.getSystemWindowInsetTop();
+    if (this.u != i1)
     {
-      this.h = j;
-      a();
+      this.u = i1;
+      i();
     }
-    NavigationMenuView localNavigationMenuView = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView;
+    NavigationMenuView localNavigationMenuView = this.q;
     localNavigationMenuView.setPadding(0, localNavigationMenuView.getPaddingTop(), 0, paramWindowInsetsCompat.getSystemWindowInsetBottom());
-    ViewCompat.dispatchApplyWindowInsets(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramWindowInsetsCompat);
+    ViewCompat.dispatchApplyWindowInsets(this.a, paramWindowInsetsCompat);
   }
   
   public void a(boolean paramBoolean)
   {
-    NavigationMenuPresenter.NavigationMenuAdapter localNavigationMenuAdapter = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter;
+    NavigationMenuPresenter.NavigationMenuAdapter localNavigationMenuAdapter = this.c;
     if (localNavigationMenuAdapter != null) {
       localNavigationMenuAdapter.a(paramBoolean);
     }
   }
   
-  public void b(@StyleRes int paramInt)
+  public int b()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = true;
-    updateMenuView(false);
+    return this.a.getChildCount();
+  }
+  
+  public View b(@LayoutRes int paramInt)
+  {
+    View localView = this.d.inflate(paramInt, this.a, false);
+    a(localView);
+    return localView;
   }
   
   public void b(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.g = paramColorStateList;
     updateMenuView(false);
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Boolean != paramBoolean)
+    if (this.n != paramBoolean)
     {
-      this.jdField_c_of_type_Boolean = paramBoolean;
-      a();
+      this.n = paramBoolean;
+      i();
     }
   }
   
-  public void c(int paramInt)
+  @Nullable
+  public ColorStateList c()
   {
-    this.jdField_b_of_type_Int = paramInt;
+    return this.h;
+  }
+  
+  public void c(@StyleRes int paramInt)
+  {
+    this.e = paramInt;
+    this.f = true;
     updateMenuView(false);
   }
   
@@ -158,15 +169,27 @@ public class NavigationMenuPresenter
     return false;
   }
   
+  @Nullable
+  public ColorStateList d()
+  {
+    return this.g;
+  }
+  
   public void d(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.j = paramInt;
     updateMenuView(false);
+  }
+  
+  @Nullable
+  public Drawable e()
+  {
+    return this.i;
   }
   
   public void e(int paramInt)
   {
-    this.g = paramInt;
+    this.k = paramInt;
     updateMenuView(false);
   }
   
@@ -175,14 +198,15 @@ public class NavigationMenuPresenter
     return false;
   }
   
-  public void f(@Dimension int paramInt)
+  public int f()
   {
-    if (this.d != paramInt)
-    {
-      this.d = paramInt;
-      this.jdField_b_of_type_Boolean = true;
-      updateMenuView(false);
-    }
+    return this.j;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.t = paramInt;
+    updateMenuView(false);
   }
   
   public boolean flagActionItems()
@@ -190,50 +214,70 @@ public class NavigationMenuPresenter
     return false;
   }
   
-  public void g(int paramInt)
+  public int g()
   {
-    this.i = paramInt;
-    NavigationMenuView localNavigationMenuView = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView;
-    if (localNavigationMenuView != null) {
-      localNavigationMenuView.setOverScrollMode(paramInt);
+    return this.k;
+  }
+  
+  public void g(@Dimension int paramInt)
+  {
+    if (this.l != paramInt)
+    {
+      this.l = paramInt;
+      this.m = true;
+      updateMenuView(false);
     }
   }
   
   public int getId()
   {
-    return this.f;
+    return this.s;
   }
   
   public MenuView getMenuView(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView == null)
+    if (this.q == null)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView = ((NavigationMenuView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(R.layout.i, paramViewGroup, false));
-      paramViewGroup = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView;
+      this.q = ((NavigationMenuView)this.d.inflate(R.layout.i, paramViewGroup, false));
+      paramViewGroup = this.q;
       paramViewGroup.setAccessibilityDelegateCompat(new NavigationMenuPresenter.NavigationMenuViewAccessibilityDelegate(this, paramViewGroup));
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter == null) {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter = new NavigationMenuPresenter.NavigationMenuAdapter(this);
+      if (this.c == null) {
+        this.c = new NavigationMenuPresenter.NavigationMenuAdapter(this);
       }
-      int j = this.i;
-      if (j != -1) {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView.setOverScrollMode(j);
+      int i1 = this.v;
+      if (i1 != -1) {
+        this.q.setOverScrollMode(i1);
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(R.layout.f, this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView, false));
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView.setAdapter(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter);
+      this.a = ((LinearLayout)this.d.inflate(R.layout.f, this.q, false));
+      this.q.setAdapter(this.c);
     }
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView;
+    return this.q;
+  }
+  
+  public int h()
+  {
+    return this.t;
+  }
+  
+  public void h(int paramInt)
+  {
+    this.v = paramInt;
+    NavigationMenuView localNavigationMenuView = this.q;
+    if (localNavigationMenuView != null) {
+      localNavigationMenuView.setOverScrollMode(paramInt);
+    }
   }
   
   public void initForMenu(@NonNull Context paramContext, @NonNull MenuBuilder paramMenuBuilder)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder = paramMenuBuilder;
-    this.e = paramContext.getResources().getDimensionPixelOffset(R.dimen.n);
+    this.d = LayoutInflater.from(paramContext);
+    this.b = paramMenuBuilder;
+    this.o = paramContext.getResources().getDimensionPixelOffset(R.dimen.n);
   }
   
   public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
-    MenuPresenter.Callback localCallback = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuPresenter$Callback;
+    MenuPresenter.Callback localCallback = this.r;
     if (localCallback != null) {
       localCallback.onCloseMenu(paramMenuBuilder, paramBoolean);
     }
@@ -246,15 +290,15 @@ public class NavigationMenuPresenter
       paramParcelable = (Bundle)paramParcelable;
       Object localObject = paramParcelable.getSparseParcelableArray("android:menu:list");
       if (localObject != null) {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView.restoreHierarchyState((SparseArray)localObject);
+        this.q.restoreHierarchyState((SparseArray)localObject);
       }
       localObject = paramParcelable.getBundle("android:menu:adapter");
       if (localObject != null) {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter.a((Bundle)localObject);
+        this.c.a((Bundle)localObject);
       }
       paramParcelable = paramParcelable.getSparseParcelableArray("android:menu:header");
       if (paramParcelable != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.restoreHierarchyState(paramParcelable);
+        this.a.restoreHierarchyState(paramParcelable);
       }
     }
   }
@@ -263,20 +307,20 @@ public class NavigationMenuPresenter
   public Parcelable onSaveInstanceState()
   {
     Bundle localBundle = new Bundle();
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView != null)
+    if (this.q != null)
     {
       localObject = new SparseArray();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuView.saveHierarchyState((SparseArray)localObject);
+      this.q.saveHierarchyState((SparseArray)localObject);
       localBundle.putSparseParcelableArray("android:menu:list", (SparseArray)localObject);
     }
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter;
+    Object localObject = this.c;
     if (localObject != null) {
-      localBundle.putBundle("android:menu:adapter", ((NavigationMenuPresenter.NavigationMenuAdapter)localObject).a());
+      localBundle.putBundle("android:menu:adapter", ((NavigationMenuPresenter.NavigationMenuAdapter)localObject).c());
     }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    if (this.a != null)
     {
       localObject = new SparseArray();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.saveHierarchyState((SparseArray)localObject);
+      this.a.saveHierarchyState((SparseArray)localObject);
       localBundle.putSparseParcelableArray("android:menu:header", (SparseArray)localObject);
     }
     return localBundle;
@@ -289,12 +333,12 @@ public class NavigationMenuPresenter
   
   public void setCallback(MenuPresenter.Callback paramCallback)
   {
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuPresenter$Callback = paramCallback;
+    this.r = paramCallback;
   }
   
   public void updateMenuView(boolean paramBoolean)
   {
-    NavigationMenuPresenter.NavigationMenuAdapter localNavigationMenuAdapter = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalNavigationMenuPresenter$NavigationMenuAdapter;
+    NavigationMenuPresenter.NavigationMenuAdapter localNavigationMenuAdapter = this.c;
     if (localNavigationMenuAdapter != null) {
       localNavigationMenuAdapter.a();
     }
@@ -302,7 +346,7 @@ public class NavigationMenuPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.NavigationMenuPresenter
  * JD-Core Version:    0.7.0.1
  */

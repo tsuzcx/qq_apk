@@ -12,15 +12,15 @@ class ExtendFriendSendMsgHelper$9
   
   public void run()
   {
-    IExpandManager localIExpandManager = (IExpandManager)ExtendFriendSendMsgHelper.a(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+    IExpandManager localIExpandManager = (IExpandManager)ExtendFriendSendMsgHelper.b(this.this$0).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
     Bundle localBundle = new Bundle();
-    localBundle.putInt("fromType", this.jdField_a_of_type_Int);
-    localIExpandManager.a(this.jdField_a_of_type_JavaLangString, localBundle);
+    localBundle.putInt("fromType", this.a);
+    localIExpandManager.a(this.b, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.ExtendFriendSendMsgHelper.9
  * JD-Core Version:    0.7.0.1
  */

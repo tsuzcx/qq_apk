@@ -8,16 +8,16 @@ import com.google.gson.LongSerializationPolicy;
 
 public class JsonBinder
 {
-  private static JsonBinder jdField_a_of_type_ComTencentBizPubaccountUtilJsonBinder;
-  private static final String jdField_a_of_type_JavaLangString = "com.tencent.biz.pubaccount.util.JsonBinder";
-  private Gson jdField_a_of_type_ComGoogleGsonGson = new GsonBuilder().serializeSpecialFloatingPointValues().setLongSerializationPolicy(LongSerializationPolicy.STRING).create();
+  private static final String a = "com.tencent.biz.pubaccount.util.JsonBinder";
+  private static JsonBinder b;
+  private Gson c = new GsonBuilder().serializeSpecialFloatingPointValues().setLongSerializationPolicy(LongSerializationPolicy.STRING).create();
   
   public static JsonBinder a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountUtilJsonBinder == null) {
-      jdField_a_of_type_ComTencentBizPubaccountUtilJsonBinder = new JsonBinder();
+    if (b == null) {
+      b = new JsonBinder();
     }
-    return jdField_a_of_type_ComTencentBizPubaccountUtilJsonBinder;
+    return b;
   }
   
   public <T> T a(String paramString, Class<T> paramClass)
@@ -44,43 +44,43 @@ public class JsonBinder
     {
       break label21;
     }
-    paramString = this.jdField_a_of_type_ComGoogleGsonGson.fromJson(paramString, paramClass);
+    paramString = this.c.fromJson(paramString, paramClass);
     return paramString;
     label21:
-    paramString = jdField_a_of_type_JavaLangString;
+    paramString = a;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramClass.getName());
     localStringBuilder.append("clazz NumberFormatException error.");
     Log.e(paramString, localStringBuilder.toString());
     break label150;
     label61:
-    paramString = jdField_a_of_type_JavaLangString;
+    paramString = a;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramClass.getName());
     localStringBuilder.append("clazz IllegalAccessException error.");
     Log.e(paramString, localStringBuilder.toString());
     break label150;
     label101:
-    paramString = jdField_a_of_type_JavaLangString;
+    paramString = a;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramClass.getName());
     localStringBuilder.append("clazz new instance instantiation error.");
     Log.e(paramString, localStringBuilder.toString());
     break label150;
     label141:
-    Log.e(jdField_a_of_type_JavaLangString, "form json error.");
+    Log.e(a, "form json error.");
     label150:
     return null;
   }
   
   public String a(Object paramObject)
   {
-    return this.jdField_a_of_type_ComGoogleGsonGson.toJson(paramObject);
+    return this.c.toJson(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.JsonBinder
  * JD-Core Version:    0.7.0.1
  */

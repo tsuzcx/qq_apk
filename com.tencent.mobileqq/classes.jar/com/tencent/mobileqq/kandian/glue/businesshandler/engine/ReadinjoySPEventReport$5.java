@@ -29,21 +29,21 @@ class ReadinjoySPEventReport$5
     }
     int i = 1;
     label77:
-    int j = ReadinjoySPEventReport.a(this.this$0).size();
+    int j = ReadinjoySPEventReport.b(this.this$0).size();
     long l1 = j;
-    if (l1 > ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a())) {
-      for (l1 -= ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a()); l1 > 0L; l1 -= 1L) {
-        if (ReadinjoySPEventReport.a(this.this$0).size() > 1) {
-          ReadinjoySPEventReport.a(this.this$0).remove(1);
+    if (l1 > ReadInJoyHelper.am(RIJQQAppInterfaceUtil.e())) {
+      for (l1 -= ReadInJoyHelper.am(RIJQQAppInterfaceUtil.e()); l1 > 0L; l1 -= 1L) {
+        if (ReadinjoySPEventReport.b(this.this$0).size() > 1) {
+          ReadinjoySPEventReport.b(this.this$0).remove(1);
         }
       }
     }
     ReadinjoySPEventReport.a(this.this$0, false);
     if (j == 0) {
-      ReadinjoySPEventReport.a(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), localObject1));
+      ReadinjoySPEventReport.b(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), localObject1));
     }
-    ReadinjoySPEventReport.a(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.a(this.this$0).get(0)).first).longValue()), Integer.valueOf(this.a)));
-    ReadinjoySPEventReport.a(this.this$0).add(ReadinjoySPEventReport.a(this.this$0));
+    ReadinjoySPEventReport.a(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.b(this.this$0).get(0)).first).longValue()), Integer.valueOf(this.a)));
+    ReadinjoySPEventReport.b(this.this$0).add(ReadinjoySPEventReport.a(this.this$0));
     localObject2 = ReadinjoySPEventReport.class.getSimpleName();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("update msg tab total red pnt change, cnt : ");
@@ -58,46 +58,46 @@ class ReadinjoySPEventReport$5
     if (k > m) {
       j = m;
     }
-    k = ReadinjoySPEventReport.b(this.this$0).size();
+    k = ReadinjoySPEventReport.c(this.this$0).size();
     l1 = k;
-    if (l1 > ReadInJoyHelper.b(RIJQQAppInterfaceUtil.a())) {
-      for (l1 -= ReadInJoyHelper.b(RIJQQAppInterfaceUtil.a()); l1 > 0L; l1 -= 1L) {
-        if (ReadinjoySPEventReport.b(this.this$0).size() > 1) {
-          ReadinjoySPEventReport.b(this.this$0).remove(1);
+    if (l1 > ReadInJoyHelper.an(RIJQQAppInterfaceUtil.e())) {
+      for (l1 -= ReadInJoyHelper.an(RIJQQAppInterfaceUtil.e()); l1 > 0L; l1 -= 1L) {
+        if (ReadinjoySPEventReport.c(this.this$0).size() > 1) {
+          ReadinjoySPEventReport.c(this.this$0).remove(1);
         }
       }
     }
-    if ((ReadinjoySPEventReport.b(this.this$0) != null) && (((Integer)ReadinjoySPEventReport.b(this.this$0).second).intValue() == j)) {
+    if ((ReadinjoySPEventReport.d(this.this$0) != null) && (((Integer)ReadinjoySPEventReport.d(this.this$0).second).intValue() == j)) {
       return;
     }
     if (k == 0) {
-      ReadinjoySPEventReport.b(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), localObject1));
+      ReadinjoySPEventReport.c(this.this$0).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), localObject1));
     }
-    ReadinjoySPEventReport.b(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.b(this.this$0).get(0)).first).longValue()), Integer.valueOf(j)));
-    ReadinjoySPEventReport.b(this.this$0).add(ReadinjoySPEventReport.b(this.this$0));
+    ReadinjoySPEventReport.b(this.this$0, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.c(this.this$0).get(0)).first).longValue()), Integer.valueOf(j)));
+    ReadinjoySPEventReport.c(this.this$0).add(ReadinjoySPEventReport.d(this.this$0));
     localObject1 = ReadinjoySPEventReport.class.getSimpleName();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("update msg tab first screen red pnt change, cnt : ");
     ((StringBuilder)localObject2).append(j);
     QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-    j = ReadInJoyHelper.c();
-    if ((this.a <= j) && (!ReadinjoySPEventReport.a(this.this$0)) && (i == 0))
+    j = ReadInJoyHelper.y();
+    if ((this.a <= j) && (!ReadinjoySPEventReport.e(this.this$0)) && (i == 0))
     {
-      if ((ReadinjoySPEventReport.c(this.this$0) != null) && (ReadinjoySPEventReport.c(this.this$0).size() > 0))
+      if ((ReadinjoySPEventReport.f(this.this$0) != null) && (ReadinjoySPEventReport.f(this.this$0).size() > 0))
       {
-        i = ((Integer)((Pair)ReadinjoySPEventReport.c(this.this$0).get(ReadinjoySPEventReport.c(this.this$0).size() - 1)).second).intValue();
-        l1 = ((Long)((Pair)ReadinjoySPEventReport.c(this.this$0).get(0)).first).longValue();
-        long l2 = ((Long)((Pair)ReadinjoySPEventReport.c(this.this$0).get(ReadinjoySPEventReport.c(this.this$0).size() - 1)).first).longValue();
+        i = ((Integer)((Pair)ReadinjoySPEventReport.f(this.this$0).get(ReadinjoySPEventReport.f(this.this$0).size() - 1)).second).intValue();
+        l1 = ((Long)((Pair)ReadinjoySPEventReport.f(this.this$0).get(0)).first).longValue();
+        long l2 = ((Long)((Pair)ReadinjoySPEventReport.f(this.this$0).get(ReadinjoySPEventReport.f(this.this$0).size() - 1)).first).longValue();
         if ((System.currentTimeMillis() / 1000L - (l1 + l2) <= 600L) && (i == 1))
         {
           ReadinjoySPEventReport.a(this.this$0, true);
           return;
         }
       }
-      if (ReadinjoySPEventReport.a(this.this$0) == null) {
+      if (ReadinjoySPEventReport.g(this.this$0) == null) {
         ReadinjoySPEventReport.a(this.this$0, 0);
       } else {
-        ReadinjoySPEventReport.a(this.this$0);
+        ReadinjoySPEventReport.h(this.this$0);
       }
     }
     ReadinjoySPEventReport.b(this.this$0, false);
@@ -105,7 +105,7 @@ class ReadinjoySPEventReport$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.5
  * JD-Core Version:    0.7.0.1
  */

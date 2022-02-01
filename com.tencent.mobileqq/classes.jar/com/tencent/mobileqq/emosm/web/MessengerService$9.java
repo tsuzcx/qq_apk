@@ -14,9 +14,9 @@ class MessengerService$9
   
   public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    if (this.a.b != null)
+    if (this.a.p != null)
     {
-      this.a.b.putString("cmd", "ipc_signature_setordelete");
+      this.a.p.putString("cmd", "ipc_signature_setordelete");
       paramRichStatus = new Bundle();
       paramRichStatus.putInt("result", paramInt);
       paramRichStatus.putBoolean("hasTipsInfo", false);
@@ -37,22 +37,24 @@ class MessengerService$9
           paramRichStatus.putString("tips_url", paramObject.url);
         }
       }
-      this.a.b.putBundle("response", paramRichStatus);
+      this.a.p.putBundle("response", paramRichStatus);
       paramRichStatus = this.a;
-      paramRichStatus.a(paramRichStatus.b);
-      this.a.b = null;
+      paramRichStatus.a(paramRichStatus.p);
+      this.a.p = null;
     }
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, boolean paramBoolean)
   {
     if (paramInt == -1)
     {
-      if (this.a.a != null) {
-        this.a.a.post(new MessengerService.9.1(this));
+      if (this.a.r != null) {
+        this.a.r.post(new MessengerService.9.1(this));
       }
     }
-    else if (this.a.c != null)
+    else if (this.a.q != null)
     {
       if (QLog.isColorLevel())
       {
@@ -63,18 +65,16 @@ class MessengerService$9
       }
       Object localObject = new Bundle();
       ((Bundle)localObject).putBoolean("isSync", paramBoolean);
-      this.a.c.putBundle("response", (Bundle)localObject);
+      this.a.q.putBundle("response", (Bundle)localObject);
       localObject = this.a;
-      ((MessengerService)localObject).a(((MessengerService)localObject).c);
-      this.a.c = null;
+      ((MessengerService)localObject).a(((MessengerService)localObject).q);
+      this.a.q = null;
     }
   }
-  
-  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.9
  * JD-Core Version:    0.7.0.1
  */

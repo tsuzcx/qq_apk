@@ -39,19 +39,19 @@ class ReadInJoyPrivacyListFragment$1
       if (paramList != null) {
         ReadInJoyPrivacyListFragment.a(this.a).addAll(paramList);
       }
-      if (ReadInJoyPrivacyListFragment.a(this.a) != null) {
-        ReadInJoyPrivacyListFragment.a(this.a).a(ReadInJoyPrivacyListFragment.a(this.a));
+      if (ReadInJoyPrivacyListFragment.b(this.a) != null) {
+        ReadInJoyPrivacyListFragment.b(this.a).a(ReadInJoyPrivacyListFragment.c(this.a));
       }
     }
-    else if (ReadInJoyPrivacyListFragment.a(this.a) != null)
+    else if (ReadInJoyPrivacyListFragment.b(this.a) != null)
     {
-      ReadInJoyPrivacyListFragment.a(this.a).a();
+      ReadInJoyPrivacyListFragment.b(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyPrivacyListFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,20 +31,20 @@ final class RIJCommentNetworkHelper$createFirstCommentForHippy$1
       RIJBiuNetworkHelper.a.a((SimpleCommentData)this.$requestData, (Function2)new RIJCommentNetworkHelper.createFirstCommentForHippy.1.1(this, paramString1));
     }
     RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, 0, System.currentTimeMillis() - this.$requestTime);
-    if (((CharSequence)this.$requestData.c()).length() <= 0) {
+    if (((CharSequence)this.$requestData.d()).length() <= 0) {
       i = 0;
     }
     if (i != 0) {
-      paramString1 = this.$requestData.c();
-    } else {
       paramString1 = this.$requestData.d();
+    } else {
+      paramString1 = this.$requestData.e();
     }
-    RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, this.$requestData.b(), paramString1, "", "", paramString2);
+    RIJCommentNetworkHelper.a(RIJCommentNetworkHelper.a, this.$requestData.c(), paramString1, "", "", paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper.createFirstCommentForHippy.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class ContactSyncJumpActivity$5
   {
     if (paramBoolean1)
     {
-      int i = ContactSyncJumpActivity.a(this.a).getSelfBindState();
+      int i = ContactSyncJumpActivity.i(this.a).getSelfBindState();
       if ((i == 1) || (i == 5))
       {
         ContactSyncJumpActivity localContactSyncJumpActivity = this.a;
@@ -26,7 +26,7 @@ class ContactSyncJumpActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ContactSyncJumpActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public class VipQidHelper
   public static void a(Activity paramActivity, ProfileCardInfo paramProfileCardInfo)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(QVipQidProcessor.c().a);
+    ((StringBuilder)localObject).append(QVipQidProcessor.e().c);
     if (paramProfileCardInfo != null) {
       str = "&from=icon";
     } else {
@@ -29,8 +29,8 @@ public class VipQidHelper
     }
     ((StringBuilder)localObject).append(str);
     String str = ((StringBuilder)localObject).toString();
-    localObject = VasUtil.a().getQQBrowserIntent();
-    ((Intent)localObject).putExtra("uin", VasUtil.a());
+    localObject = VasUtil.b().getQQBrowserIntent();
+    ((Intent)localObject).putExtra("uin", VasUtil.e());
     ((Intent)localObject).putExtra("url", str);
     ((Intent)localObject).putExtra("hide_more_button", true);
     ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
@@ -50,7 +50,7 @@ public class VipQidHelper
   
   public static void a(String paramString, int paramInt)
   {
-    ReportController.b(VasUtil.a(), "dc00898", "", "", "", paramString, 0, 0, String.valueOf(paramInt), "", "", "");
+    ReportController.b(VasUtil.c(), "dc00898", "", "", "", paramString, 0, 0, String.valueOf(paramInt), "", "", "");
     if (QLog.isColorLevel())
     {
       paramString = a;
@@ -76,7 +76,7 @@ public class VipQidHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qid.VipQidHelper
  * JD-Core Version:    0.7.0.1
  */

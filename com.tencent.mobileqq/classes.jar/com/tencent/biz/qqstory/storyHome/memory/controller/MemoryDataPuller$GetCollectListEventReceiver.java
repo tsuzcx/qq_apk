@@ -23,19 +23,19 @@ class MemoryDataPuller$GetCollectListEventReceiver
   
   public void a(MemoryDataPuller paramMemoryDataPuller, DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
   {
-    if (!TextUtils.equals(paramGetCollectionListEvent.jdField_a_of_type_JavaLangString, paramMemoryDataPuller.c)) {
+    if (!TextUtils.equals(paramGetCollectionListEvent.i, paramMemoryDataPuller.d)) {
       return;
     }
-    paramMemoryDataPuller.b(paramMemoryDataPuller.b);
-    if (!paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    paramMemoryDataPuller.b(paramMemoryDataPuller.c);
+    if (!paramGetCollectionListEvent.g.isFail())
     {
-      if (!paramGetCollectionListEvent.e) {
+      if (!paramGetCollectionListEvent.h) {
         return;
       }
       if (paramGetCollectionListEvent.c) {
-        paramMemoryDataPuller.a.clear();
+        paramMemoryDataPuller.f.clear();
       }
-      paramGetCollectionListEvent = paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList;
+      paramGetCollectionListEvent = paramGetCollectionListEvent.e;
       if (paramGetCollectionListEvent != null)
       {
         paramGetCollectionListEvent = paramGetCollectionListEvent.iterator();
@@ -62,7 +62,7 @@ class MemoryDataPuller$GetCollectListEventReceiver
           }
           localObject1 = new BatchHandlerListPuller((List)localObject1);
           ((BatchHandlerListPuller)localObject1).a("Q.qqstory.memories:MemoryDataPuller");
-          paramMemoryDataPuller.a.put(localVideoCollectionItem.collectionId, localObject1);
+          paramMemoryDataPuller.f.put(localVideoCollectionItem.collectionId, localObject1);
         }
       }
     }

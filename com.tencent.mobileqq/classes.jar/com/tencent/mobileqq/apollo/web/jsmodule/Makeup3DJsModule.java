@@ -10,11 +10,14 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.CmShowLauncher;
 import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.apollo.ipc.ApolloIPCModule;
+import com.tencent.mobileqq.apollo.ipc.business.ICMResManager;
 import com.tencent.mobileqq.apollo.ipc.business.ICm3DMakeup;
 import com.tencent.mobileqq.apollo.utils.CmShowCECapabilitiesChecker;
+import com.tencent.mobileqq.apollo.utils.RequestRoute;
 import com.tencent.mobileqq.apollo.web.CmshowWebReqParam;
 import com.tencent.mobileqq.apollo.web.IApolloJsCallBack;
-import com.tencent.mobileqq.emosm.web.RequestRoute;
+import com.tencent.mobileqq.cmshow.engine.CMShowPlatform;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -31,21 +34,29 @@ import org.json.JSONObject;
 public class Makeup3DJsModule
   extends BaseJsModule
 {
-  private String a;
   private String b;
+  private String c;
   
   public Makeup3DJsModule(VasWebviewJsPlugin paramVasWebviewJsPlugin)
   {
     super(paramVasWebviewJsPlugin);
   }
   
-  private IApolloJsCallBack a()
+  private void a(String paramString)
   {
-    WebViewFragment localWebViewFragment = a();
-    if ((localWebViewFragment instanceof IApolloJsCallBack)) {
-      return (IApolloJsCallBack)localWebViewFragment;
+    if (CmShowWnsUtils.i())
+    {
+      a(paramString, "CrossEngine blacklist device");
+      QLog.e("[cmshow]Makeup3DJsModule", 1, "CrossEngine blacklist device");
+      return;
     }
-    return null;
+    if (CmShowCECapabilitiesChecker.b())
+    {
+      b(paramString);
+      return;
+    }
+    a(paramString, "not support CrossEngine");
+    QLog.e("[cmshow]Makeup3DJsModule", 1, "not support CrossEngine");
   }
   
   private void a(boolean paramBoolean, String paramString)
@@ -56,42 +67,34 @@ public class Makeup3DJsModule
     localStringBuilder.append(" message:");
     localStringBuilder.append(paramString);
     QLog.e("[cmshow]Makeup3DJsModule", 1, localStringBuilder.toString());
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.b)) {
       return;
     }
     if (paramBoolean) {
-      a(this.jdField_a_of_type_JavaLangString);
+      b(this.b);
     } else {
-      a(this.jdField_a_of_type_JavaLangString, paramString);
+      a(this.b, paramString);
     }
-    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
   }
   
-  private void b(String paramString)
+  private IApolloJsCallBack g()
   {
-    if (CmShowWnsUtils.h())
-    {
-      a(paramString, "CrossEngine blacklist device");
-      QLog.e("[cmshow]Makeup3DJsModule", 1, "CrossEngine blacklist device");
-      return;
+    WebViewFragment localWebViewFragment = b();
+    if ((localWebViewFragment instanceof IApolloJsCallBack)) {
+      return (IApolloJsCallBack)localWebViewFragment;
     }
-    if (CmShowCECapabilitiesChecker.a())
-    {
-      a(paramString);
-      return;
-    }
-    a(paramString, "not support CrossEngine");
-    QLog.e("[cmshow]Makeup3DJsModule", 1, "not support CrossEngine");
+    return null;
   }
   
   @RequestRoute(a="change3DAvatarComponent")
   private void handleCmShowChange3DAvatarComponent(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowChange3DAvatarComponent]");
-    Object localObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    String str1 = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    Activity localActivity = paramCmshowWebReqParam.jdField_a_of_type_AndroidAppActivity;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
+    Object localObject = paramCmshowWebReqParam.a;
+    String str1 = paramCmshowWebReqParam.b;
+    Activity localActivity = paramCmshowWebReqParam.c;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
     try
     {
       int i = ((JSONObject)localObject).optInt("type");
@@ -125,7 +128,8 @@ public class Makeup3DJsModule
         return;
       }
       localObject = new ArrayList(paramCmshowWebReqParam.keySet());
-      ApolloIPCModule.a((ArrayList)localObject, new Makeup3DJsModule.2(this, System.currentTimeMillis(), (ArrayList)localObject, str1, localActivity, i, paramCmshowWebReqParam));
+      long l = System.currentTimeMillis();
+      ((ICMResManager)ApolloIPCModule.a(ICMResManager.class)).a((ArrayList)localObject, 1, new Makeup3DJsModule.2(this, l, (ArrayList)localObject, str1, localActivity, i, paramCmshowWebReqParam));
       return;
     }
     catch (Throwable paramCmshowWebReqParam)
@@ -140,25 +144,25 @@ public class Makeup3DJsModule
   private void handleCmShowGet3DFace(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowGet3DFace]");
-    Object localObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    String str1 = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
-    paramCmshowWebReqParam = a();
+    Object localObject = paramCmshowWebReqParam.a;
+    String str1 = paramCmshowWebReqParam.b;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
+    paramCmshowWebReqParam = g();
     if (paramCmshowWebReqParam == null)
     {
       a(str1, "No attached UI callback to handle this method!");
       return;
     }
-    paramCmshowWebReqParam = paramCmshowWebReqParam.a();
+    paramCmshowWebReqParam = paramCmshowWebReqParam.c();
     if (paramCmshowWebReqParam != null) {}
     for (;;)
     {
       int i;
       try
       {
-        if (!TextUtils.isEmpty(paramCmshowWebReqParam.b))
+        if (!TextUtils.isEmpty(paramCmshowWebReqParam.c))
         {
-          paramCmshowWebReqParam = new JSONObject(paramCmshowWebReqParam.b);
+          paramCmshowWebReqParam = new JSONObject(paramCmshowWebReqParam.c);
           JSONObject localJSONObject1 = new JSONObject();
           localObject = ((JSONObject)localObject).optJSONArray("keys");
           if (localObject != null)
@@ -202,21 +206,21 @@ public class Makeup3DJsModule
   private void handleCmShowGet3DFaceFull(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowGet3DFaceFull]");
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
-    paramCmshowWebReqParam = a();
+    String str = paramCmshowWebReqParam.b;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
+    paramCmshowWebReqParam = g();
     if (paramCmshowWebReqParam == null)
     {
       a(str, "No attached UI callback to handle this method!");
       return;
     }
-    paramCmshowWebReqParam = paramCmshowWebReqParam.a();
+    paramCmshowWebReqParam = paramCmshowWebReqParam.c();
     if (paramCmshowWebReqParam != null) {}
     try
     {
-      if (!TextUtils.isEmpty(paramCmshowWebReqParam.b))
+      if (!TextUtils.isEmpty(paramCmshowWebReqParam.c))
       {
-        a(str, new JSONObject(paramCmshowWebReqParam.b));
+        a(str, new JSONObject(paramCmshowWebReqParam.c));
         return;
       }
       a(str, "face data is empty!");
@@ -233,22 +237,22 @@ public class Makeup3DJsModule
   private void handleCmShowGetAll3DAvatarComponent(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowGetAll3DAvatarComponent]");
-    Object localObject1 = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    localObject1 = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
+    Object localObject1 = paramCmshowWebReqParam.a;
+    localObject1 = paramCmshowWebReqParam.b;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
     try
     {
-      paramCmshowWebReqParam = a();
+      paramCmshowWebReqParam = g();
       if (paramCmshowWebReqParam == null)
       {
         a((String)localObject1, "No attached UI callback to handle this method!");
         return;
       }
-      Object localObject2 = paramCmshowWebReqParam.a();
-      if ((localObject2 != null) && (((CmShowAssetsData)localObject2).a == null))
+      Object localObject2 = paramCmshowWebReqParam.c();
+      if ((localObject2 != null) && (((CmShowAssetsData)localObject2).b == null))
       {
         paramCmshowWebReqParam = new JSONArray();
-        localObject2 = ((CmShowAssetsData)localObject2).a.values().iterator();
+        localObject2 = ((CmShowAssetsData)localObject2).b.values().iterator();
         while (((Iterator)localObject2).hasNext())
         {
           String str = (String)((Iterator)localObject2).next();
@@ -273,18 +277,18 @@ public class Makeup3DJsModule
   @RequestRoute(a="init3DAvatar")
   private void handleCmShowInit3DAvatar(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
-    JSONObject localJSONObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    String str1 = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
+    Object localObject1 = paramCmshowWebReqParam.a;
+    String str1 = paramCmshowWebReqParam.b;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowInit3DAvatar]");
     try
     {
-      paramCmshowWebReqParam = localJSONObject.optString("faceDataUrl");
-      localJSONObject = localJSONObject.optJSONObject("dressIds");
-      if ((localJSONObject != null) && (!TextUtils.isEmpty(paramCmshowWebReqParam)))
+      paramCmshowWebReqParam = ((JSONObject)localObject1).optString("faceDataUrl");
+      Object localObject2 = ((JSONObject)localObject1).optJSONObject("dressIds");
+      if ((localObject2 != null) && (!TextUtils.isEmpty(paramCmshowWebReqParam)))
       {
-        HashMap localHashMap = new HashMap();
-        Iterator localIterator = localJSONObject.keys();
+        localObject1 = new HashMap();
+        Iterator localIterator = ((JSONObject)localObject2).keys();
         if (localIterator == null)
         {
           QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowInit3DAvatar] dressIds keys is null!");
@@ -294,15 +298,16 @@ public class Makeup3DJsModule
         while (localIterator.hasNext())
         {
           String str2 = (String)localIterator.next();
-          localHashMap.put(Integer.valueOf(localJSONObject.optInt(str2)), str2);
+          ((Map)localObject1).put(Integer.valueOf(((JSONObject)localObject2).optInt(str2)), str2);
         }
-        if (localHashMap.size() == 0)
+        if (((Map)localObject1).size() == 0)
         {
           QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowInit3DAvatar] invalid params!");
           a(str1, "invalid params!");
           return;
         }
-        ApolloIPCModule.a(new ArrayList(localHashMap.keySet()), new Makeup3DJsModule.1(this, localHashMap, paramCmshowWebReqParam, str1));
+        localObject2 = new ArrayList(((Map)localObject1).keySet());
+        ((ICMResManager)ApolloIPCModule.a(ICMResManager.class)).a((ArrayList)localObject2, 1, new Makeup3DJsModule.1(this, (Map)localObject1, paramCmshowWebReqParam, str1));
         return;
       }
       QLog.e("[cmshow]Makeup3DJsModule", 1, "[handleCmShowInit3DAvatar] invalid params!");
@@ -320,9 +325,9 @@ public class Makeup3DJsModule
   private void handleCmShowLoad3DFaceDress(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowLoad3DFaceDress]");
-    JSONObject localJSONObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
+    JSONObject localJSONObject = paramCmshowWebReqParam.a;
+    String str = paramCmshowWebReqParam.b;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
     int i = localJSONObject.optInt("dressId");
     if (i <= 0)
     {
@@ -332,68 +337,68 @@ public class Makeup3DJsModule
     }
     paramCmshowWebReqParam = new ArrayList(1);
     paramCmshowWebReqParam.add(Integer.valueOf(i));
-    ApolloIPCModule.a(paramCmshowWebReqParam, new Makeup3DJsModule.3(this, str, i));
+    ((ICMResManager)ApolloIPCModule.a(ICMResManager.class)).a(paramCmshowWebReqParam, 1, new Makeup3DJsModule.3(this, str, i));
   }
   
   @RequestRoute(a="set3DFace")
   private void handleCmShowSet3DFace(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowSet3DFace]");
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    JSONObject localJSONObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
-    paramCmshowWebReqParam = a();
+    String str = paramCmshowWebReqParam.b;
+    JSONObject localJSONObject = paramCmshowWebReqParam.a;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
+    paramCmshowWebReqParam = g();
     if (paramCmshowWebReqParam == null)
     {
       a(str, "No attached UI callback to handle this method!");
       return;
     }
     CmShowAssetsData localCmShowAssetsData = new CmShowAssetsData();
-    localCmShowAssetsData.b = localJSONObject.toString();
+    localCmShowAssetsData.c = localJSONObject.toString();
     paramCmshowWebReqParam.a(localCmShowAssetsData, 1);
-    a(str);
+    b(str);
   }
   
   @RequestRoute(a="set3DFaceFull")
   private void handleCmShowSet3DFaceFull(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowSet3DFaceFull]");
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    JSONObject localJSONObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
-    paramCmshowWebReqParam = a();
+    String str = paramCmshowWebReqParam.b;
+    JSONObject localJSONObject = paramCmshowWebReqParam.a;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
+    paramCmshowWebReqParam = g();
     if (paramCmshowWebReqParam == null)
     {
       a(str, "No attached UI callback to handle this method!");
       return;
     }
     CmShowAssetsData localCmShowAssetsData = new CmShowAssetsData();
-    localCmShowAssetsData.b = localJSONObject.toString();
+    localCmShowAssetsData.c = localJSONObject.toString();
     paramCmshowWebReqParam.a(localCmShowAssetsData, 0);
-    a(str);
+    b(str);
   }
   
   @RequestRoute(a="set3DModeType")
   private void handleCmShowSet3DModeType(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleCmShowSet3DModeType]");
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    Object localObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
-    paramCmshowWebReqParam = a();
+    String str = paramCmshowWebReqParam.b;
+    Object localObject = paramCmshowWebReqParam.a;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
+    paramCmshowWebReqParam = g();
     if (paramCmshowWebReqParam != null)
     {
       localObject = ((JSONObject)localObject).optString("modeType");
       if ("face".equals(localObject))
       {
         paramCmshowWebReqParam.a(1);
-        a(str);
+        b(str);
         return;
       }
       if ("decorate".equals(localObject))
       {
         paramCmshowWebReqParam.a(0);
-        a(str);
+        b(str);
         return;
       }
       a(str, "invalid params!");
@@ -405,19 +410,19 @@ public class Makeup3DJsModule
   @RequestRoute(a="is3DDressLoaded")
   private void handleIs3DDressLoaded(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
-    paramCmshowWebReqParam = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
+    paramCmshowWebReqParam = paramCmshowWebReqParam.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[handleIs3DDressLoaded] callbackId :");
     localStringBuilder.append(paramCmshowWebReqParam);
     QLog.e("[cmshow]Makeup3DJsModule", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = paramCmshowWebReqParam;
+    this.b = paramCmshowWebReqParam;
   }
   
   @RequestRoute(a="open3DDressUpPage")
   private void handleOpen3DDressUpPage(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    paramCmshowWebReqParam = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
+    String str = paramCmshowWebReqParam.b;
+    paramCmshowWebReqParam = paramCmshowWebReqParam.a;
     if (paramCmshowWebReqParam != null) {
       paramCmshowWebReqParam = paramCmshowWebReqParam.optString("url");
     } else {
@@ -430,10 +435,10 @@ public class Makeup3DJsModule
   private void handleOpenCmShowFaceCamera(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleOpenCmShowFaceCamera]");
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    Activity localActivity = paramCmshowWebReqParam.jdField_a_of_type_AndroidAppActivity;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
-    this.b = str;
+    String str = paramCmshowWebReqParam.b;
+    Activity localActivity = paramCmshowWebReqParam.c;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
+    this.c = str;
     CmShowLauncher.a(localActivity);
   }
   
@@ -441,9 +446,9 @@ public class Makeup3DJsModule
   private void handleSave3DFaceData(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
     QLog.d("[cmshow]Makeup3DJsModule", 1, "[handleSave3DFaceData]");
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    Object localObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
+    String str = paramCmshowWebReqParam.b;
+    Object localObject = paramCmshowWebReqParam.a;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
     paramCmshowWebReqParam = new Bundle();
     paramCmshowWebReqParam.clear();
     localObject = ((JSONObject)localObject).optString("data");
@@ -460,14 +465,14 @@ public class Makeup3DJsModule
   @RequestRoute(a="supportAEKit")
   private void handleSupportAekit(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
-    String str = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
-    b(paramCmshowWebReqParam.b, paramCmshowWebReqParam.jdField_a_of_type_JavaLangString);
-    if (CmShowWnsUtils.w())
+    String str = paramCmshowWebReqParam.b;
+    b(paramCmshowWebReqParam.d, paramCmshowWebReqParam.b);
+    if (CMShowPlatform.a.b(Scene.MAKE_UP_3D))
     {
-      b(str);
+      a(str);
       return;
     }
-    if (CmShowWnsUtils.g())
+    if (CmShowWnsUtils.h())
     {
       a(str, "AEKit blacklist device");
       if (QLog.isColorLevel()) {
@@ -478,7 +483,7 @@ public class Makeup3DJsModule
     {
       if (((IAECMSShow)QRoute.api(IAECMSShow.class)).isCMShowSupported())
       {
-        a(str);
+        b(str);
         return;
       }
       a(str, "not supportAEKit");
@@ -500,12 +505,12 @@ public class Makeup3DJsModule
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("dressMap", new JSONObject(paramString1));
         localJSONObject2.put("face", paramString2);
-        a(this.b, localJSONObject2);
+        a(this.c, localJSONObject2);
         if (QLog.isColorLevel())
         {
           paramString1 = new StringBuilder();
           paramString1.append("callbackId->");
-          paramString1.append(this.b);
+          paramString1.append(this.c);
           paramString1.append(" callbackOk");
           paramString1.append(localJSONObject1.toString());
           QLog.d("[cmshow]Makeup3DJsModule", 2, paramString1.toString());
@@ -521,7 +526,7 @@ public class Makeup3DJsModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.Makeup3DJsModule
  * JD-Core Version:    0.7.0.1
  */

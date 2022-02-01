@@ -15,30 +15,30 @@ class TextItem$4
   {
     paramView = new StringBuilder();
     paramView.append("mData.position:");
-    paramView.append(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.c);
+    paramView.append(this.a.g);
     paramView.append(", text:");
-    paramView.append(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_JavaLangString);
+    paramView.append(this.a.a);
     paramView.append(",onFocusChange:");
     paramView.append(paramBoolean);
     QLog.i("xmediaEditor", 1, paramView.toString());
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setCursorVisible(true);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_Boolean = true;
+      this.b.b.setCursorVisible(true);
+      this.c.c.c(this.b);
+      this.a.c = true;
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setCursorVisible(false);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.d(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
+      this.b.b.setCursorVisible(false);
+      this.c.c.d(this.b);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setFocusable(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setFocusableInTouchMode(paramBoolean);
+    this.b.b.setFocusable(paramBoolean);
+    this.b.b.setFocusableInTouchMode(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.4
  * JD-Core Version:    0.7.0.1
  */

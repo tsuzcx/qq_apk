@@ -11,6 +11,7 @@ import android.net.wifi.WifiManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -60,10 +61,10 @@ public class e
       b = (TelephonyManager)paramContext.getSystemService("phone");
       b.listen(e, 256);
       b.listen(e, 16);
-      if (b.getCellLocation() != null) {
-        e.onCellLocationChanged(b.getCellLocation());
+      if (PhoneInfoMonitor.getCellLocation(b) != null) {
+        e.onCellLocationChanged(PhoneInfoMonitor.getCellLocation(b));
       }
-      paramContext = new Attr(b.getDeviceId(), b.getSubscriberId(), "");
+      paramContext = new Attr(PhoneInfoMonitor.getDeviceId(b), PhoneInfoMonitor.getSubscriberId(b), "");
       if (QLog.isColorLevel()) {
         QLog.i("LocationUtil", 2, paramContext.toString());
       }
@@ -110,7 +111,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.util.e
  * JD-Core Version:    0.7.0.1
  */

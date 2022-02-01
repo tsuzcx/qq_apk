@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelbiz;
 import android.os.Bundle;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public final class WXOpenBusinessView$Req
   extends BaseReq
@@ -13,9 +13,9 @@ public final class WXOpenBusinessView$Req
   public String extInfo;
   public String query;
   
-  public final boolean checkArgs()
+  public boolean checkArgs()
   {
-    if (d.b(this.businessType))
+    if (b.b(this.businessType))
     {
       Log.e("MicroMsg.SDK.WXOpenBusinessView.Req", "businessType is null");
       return false;
@@ -23,7 +23,7 @@ public final class WXOpenBusinessView$Req
     return true;
   }
   
-  public final void fromBundle(Bundle paramBundle)
+  public void fromBundle(Bundle paramBundle)
   {
     super.fromBundle(paramBundle);
     this.businessType = paramBundle.getString("_openbusinessview_businessType");
@@ -31,12 +31,12 @@ public final class WXOpenBusinessView$Req
     this.extInfo = paramBundle.getString("_openbusinessview_extInfo");
   }
   
-  public final int getType()
+  public int getType()
   {
     return 26;
   }
   
-  public final void toBundle(Bundle paramBundle)
+  public void toBundle(Bundle paramBundle)
   {
     super.toBundle(paramBundle);
     paramBundle.putString("_openbusinessview_businessType", this.businessType);
@@ -46,7 +46,7 @@ public final class WXOpenBusinessView$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.WXOpenBusinessView.Req
  * JD-Core Version:    0.7.0.1
  */

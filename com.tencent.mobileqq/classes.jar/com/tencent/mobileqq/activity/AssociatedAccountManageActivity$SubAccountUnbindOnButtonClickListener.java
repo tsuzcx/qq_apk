@@ -8,29 +8,29 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 class AssociatedAccountManageActivity$SubAccountUnbindOnButtonClickListener
   implements ActionSheet.OnButtonClickListener
 {
-  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
+  SubAccountInfo a;
   
   AssociatedAccountManageActivity$SubAccountUnbindOnButtonClickListener(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(SubAccountInfo paramSubAccountInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.menuUnbindDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.menuUnbindDialog.dismiss();
+    this.a = paramSubAccountInfo;
+  }
+  
+  public void onClick(View paramView, int paramInt)
+  {
+    if (this.b.menuUnbindDialog != null) {
+      this.b.menuUnbindDialog.dismiss();
     }
     if (paramInt != 0) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.unbindAccount(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
-  }
-  
-  public void a(SubAccountInfo paramSubAccountInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
+    this.b.unbindAccount(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.SubAccountUnbindOnButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

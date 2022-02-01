@@ -10,15 +10,15 @@ public abstract interface MsgProxyContainer$Callback
   
   public abstract void a(long paramLong, MsgProxyContainer.SessionKey paramSessionKey, MsgProxyContainer paramMsgProxyContainer);
   
-  public abstract void a(MsgProxyContainer paramMsgProxyContainer);
-  
   public abstract void b(long paramLong, MsgProxyContainer.SessionKey paramSessionKey, MsgProxyContainer paramMsgProxyContainer);
   
   public abstract void b(MsgProxyContainer paramMsgProxyContainer);
+  
+  public abstract void c(MsgProxyContainer paramMsgProxyContainer);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyContainer.Callback
  * JD-Core Version:    0.7.0.1
  */

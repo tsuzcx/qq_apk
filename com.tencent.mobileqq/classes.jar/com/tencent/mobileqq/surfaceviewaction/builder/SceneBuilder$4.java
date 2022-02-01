@@ -10,12 +10,12 @@ class SceneBuilder$4
   
   public void a()
   {
-    SceneBuilder.a(this.a).a();
+    SceneBuilder.c(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.4
  * JD-Core Version:    0.7.0.1
  */

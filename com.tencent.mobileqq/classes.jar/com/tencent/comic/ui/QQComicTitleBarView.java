@@ -24,93 +24,93 @@ import org.json.JSONObject;
 public class QQComicTitleBarView
   extends SwiftIphoneTitleBarUI
 {
-  private boolean h = true;
-  private boolean i = true;
-  private boolean j = true;
+  private boolean Q = true;
+  private boolean R = true;
+  private boolean S = true;
   
   public QQComicTitleBarView(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
     super(paramSwiftBrowserUIStyleHandler);
-    paramSwiftBrowserUIStyleHandler = paramSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity.getIntent();
-    int k = paramSwiftBrowserUIStyleHandler.getIntExtra("key_subtab", 0);
+    paramSwiftBrowserUIStyleHandler = paramSwiftBrowserUIStyleHandler.i.getIntent();
+    int i = paramSwiftBrowserUIStyleHandler.getIntExtra("key_subtab", 0);
     paramSwiftBrowserUIStyleHandler.removeExtra("key_subtab");
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_a_of_type_Int != k) {
-      g(k);
+    if (this.b.i != i) {
+      g(i);
     }
   }
   
   public void a()
   {
     super.a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-      ((RefreshView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).a(false);
+    if ((this.a.u instanceof RefreshView)) {
+      ((RefreshView)this.a.u).a(false);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_c_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.D != null) {
+      this.a.D.setVisibility(8);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.f = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_a_of_type_OrgJsonJSONObject != null)
+    this.b.m = true;
+    if (this.b.I != null)
     {
-      this.h = (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_a_of_type_OrgJsonJSONObject.has("txtclr") ^ true);
-      this.i = (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_a_of_type_OrgJsonJSONObject.has("titleclr") ^ true);
-      this.j = (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_a_of_type_OrgJsonJSONObject.has("bgclr") ^ true);
+      this.Q = (this.b.I.has("txtclr") ^ true);
+      this.R = (this.b.I.has("titleclr") ^ true);
+      this.S = (this.b.I.has("bgclr") ^ true);
     }
-    if (this.j)
+    if (this.S)
     {
-      int k = this.jdField_a_of_type_AndroidViewViewGroup.getPaddingTop();
-      int m = this.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom();
-      int n = this.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft();
-      int i1 = this.jdField_a_of_type_AndroidViewViewGroup.getPaddingRight();
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
-      this.jdField_a_of_type_AndroidViewViewGroup.setPadding(n, k, i1, m);
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider != null)
+      int i = this.o.getPaddingTop();
+      int j = this.o.getPaddingBottom();
+      int k = this.o.getPaddingLeft();
+      int m = this.o.getPaddingRight();
+      this.o.setBackgroundColor(-1);
+      this.o.setPadding(k, i, m, j);
+      if (this.a.r != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getWebTitleBarInterface().c(true);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getWebTitleBarInterface().a(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getWebTitleBarInterface().a() == null) {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getWebTitleBarInterface().b(false);
+        this.a.r.getWebTitleBarInterface().d(true);
+        this.a.r.getWebTitleBarInterface().b(true);
+        if (this.a.r.getWebTitleBarInterface().l() == null) {
+          this.a.r.getWebTitleBarInterface().c(false);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getWebTitleBarInterface().a() != null)
+        if (this.a.r.getWebTitleBarInterface().l() != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getWebTitleBarInterface().a().setBackgroundColor(-4210753);
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.i = true;
+          this.a.r.getWebTitleBarInterface().l().setBackgroundColor(-4210753);
+          this.b.r = true;
         }
       }
     }
-    if ((!this.j) || (!this.i) || (!this.h)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_a_of_type_OrgJsonJSONObject, true);
+    if ((!this.S) || (!this.R) || (!this.Q)) {
+      this.a.a(this.b.I, true);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.d & 0x20) != 0L)
+    if ((this.b.g & 0x20) != 0L)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      a("", this.c.getResources().getString(1996881921), "", false, 0, 0, null, null, null);
-      this.c.setOnClickListener(new QQComicTitleBarView.1(this));
+      this.d.setVisibility(4);
+      a("", this.f.getResources().getString(1996881921), "", false, 0, 0, null, null, null);
+      this.f.setOnClickListener(new QQComicTitleBarView.1(this));
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.d & 0x40) != 0L)
+    if ((this.b.g & 0x40) != 0L)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      this.d.setVisibility(4);
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.q.getLayoutParams();
       localLayoutParams.addRule(15);
       localLayoutParams.addRule(9);
-      localLayoutParams.leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), 15.0F);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+      localLayoutParams.leftMargin = DisplayUtil.a(this.q.getContext(), 15.0F);
+      this.q.setLayoutParams(localLayoutParams);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.b == -1)
+    if (this.b.j == -1)
     {
-      if (((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_a_of_type_Long & 0x1000000) <= 0L) && ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.d & 1L) <= 0L)) {
+      if (((this.b.c & 0x1000000) <= 0L) && ((this.b.g & 1L) <= 0L)) {
         b(255);
       } else {
         b(0);
       }
     }
     else {
-      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.b);
+      b(this.b.j);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.b.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.c.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
+    this.d.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.e.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.f.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    if (this.a.v != null) {
+      this.a.v.setVisibility(8);
     }
   }
   
@@ -119,39 +119,39 @@ public class QQComicTitleBarView
     super.a(paramBoolean);
     if (paramBoolean)
     {
-      if (this.h) {
+      if (this.Q) {
         f(-1);
       }
-      if (this.i) {
+      if (this.R) {
         d(-1);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView != null)
+      if (this.N != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130851213, 2130851214, 2130851215);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131167381);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setLeftAndRightPaddingByDp(14);
+        this.N.setButtonBackgroundResource(2130853469, 2130853470, 2130853471);
+        this.N.setButtonTextColorStateList(2131168436);
+        this.N.setLeftAndRightPaddingByDp(14);
       }
     }
     else
     {
-      if (this.h) {
+      if (this.Q) {
         f(-16777216);
       }
-      if (this.i) {
+      if (this.R) {
         d(-16777216);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView != null)
+      if (this.N != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(1996685327, 1996685328, 1996685329);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(1996554241);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setLeftAndRightPaddingByDp(14);
+        this.N.setButtonBackgroundResource(1996685327, 1996685328, 1996685329);
+        this.N.setButtonTextColorStateList(1996554241);
+        this.N.setLeftAndRightPaddingByDp(14);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTitleBarView
  * JD-Core Version:    0.7.0.1
  */

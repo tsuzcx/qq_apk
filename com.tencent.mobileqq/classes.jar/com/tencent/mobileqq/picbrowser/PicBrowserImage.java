@@ -25,34 +25,34 @@ import java.net.URL;
 public class PicBrowserImage
   extends GalleryImage
 {
-  protected Context a;
-  public PicInfo a;
-  int d;
+  protected Context j;
+  public PicInfo k;
+  int l;
   
   public PicBrowserImage(Context paramContext, PicInfo paramPicInfo)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo = paramPicInfo;
+    this.j = paramContext;
+    this.k = paramPicInfo;
   }
   
   public View a(int paramInt, Handler paramHandler, PicBrowserImage.OnLoadListener paramOnLoadListener)
   {
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo;
+    URLImageView localURLImageView = new URLImageView(this.j);
+    Object localObject1 = this.k;
     if (localObject1 == null) {
       return localURLImageView;
     }
-    boolean bool1 = TextUtils.isEmpty(((PicInfo)localObject1).c);
+    boolean bool1 = TextUtils.isEmpty(((PicInfo)localObject1).d);
     File localFile = null;
     Object localObject2 = null;
     URLDrawable localURLDrawable = null;
     if (!bool1)
     {
-      localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.c), null);
+      localObject1 = URLDrawable.getDrawable(new File(this.k.d), null);
     }
-    else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b))
+    else if (!TextUtils.isEmpty(this.k.c))
     {
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b.replaceFirst("http", "nearbyimage");
+      localObject3 = this.k.c.replaceFirst("http", "nearbyimage");
       if (AbsDownloader.hasFile((String)localObject3))
       {
         localObject1 = URLDrawable.getDrawable((String)localObject3, null);
@@ -76,18 +76,18 @@ public class PicBrowserImage
     Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
     ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject1);
-    ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-    ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+    ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = this.j.getResources().getDisplayMetrics().widthPixels;
+    ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = this.j.getResources().getDisplayMetrics().heightPixels;
     boolean bool2 = true;
     ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo;
+    localObject1 = this.k;
     ((URLDrawable.URLDrawableOptions)localObject3).mExtraInfo = localObject1;
-    if (!TextUtils.isEmpty(((PicInfo)localObject1).c))
+    if (!TextUtils.isEmpty(((PicInfo)localObject1).d))
     {
       localObject2 = localURLDrawable;
       try
       {
-        localFile = new File(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.c);
+        localFile = new File(this.k.d);
         localObject2 = localURLDrawable;
         localObject1 = localFile.toURL();
         localObject2 = localURLDrawable;
@@ -121,22 +121,22 @@ public class PicBrowserImage
     else
     {
       localObject1 = localObject2;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.a))
+      if (!TextUtils.isEmpty(this.k.b))
       {
         localObject2 = localFile;
         try
         {
-          localObject1 = NearbyImgDownloader.convertURL(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.a);
+          localObject1 = NearbyImgDownloader.convertURL(this.k.b);
           localObject2 = localFile;
-          this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.a = ((URL)localObject1).toString();
+          this.k.b = ((URL)localObject1).toString();
           localObject2 = localFile;
           localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
           localObject2 = localObject1;
-          ((URLDrawable)localObject1).setDownloadListener(new ImgDownloadListener(this.jdField_a_of_type_AndroidContentContext, "actNearbyPicBrowser"));
+          ((URLDrawable)localObject1).setDownloadListener(new ImgDownloadListener(this.j, "actNearbyPicBrowser"));
           localObject2 = localObject1;
           localURLImageView.setImageDrawable((Drawable)localObject1);
           localObject2 = localObject1;
-          bool1 = AbsDownloader.hasFile(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.a);
+          bool1 = AbsDownloader.hasFile(this.k.b);
         }
         catch (MalformedURLException localMalformedURLException2)
         {
@@ -154,13 +154,13 @@ public class PicBrowserImage
     if ((localObject1 != null) && (((URLDrawable)localObject1).getStatus() != 1) && (((URLDrawable)localObject1).getStatus() != 2) && (((URLDrawable)localObject1).getStatus() != 4))
     {
       localURLImageView.setURLDrawableDownListener(new PicBrowserImage.2(this, paramOnLoadListener, paramInt));
-      long l;
+      long l1;
       if (bool1) {
-        l = 1000L;
+        l1 = 1000L;
       } else {
-        l = 300L;
+        l1 = 300L;
       }
-      paramHandler.postDelayed(new PicBrowserImage.3(this, (URLDrawable)localObject1, paramOnLoadListener, paramInt), l);
+      paramHandler.postDelayed(new PicBrowserImage.3(this, (URLDrawable)localObject1, paramOnLoadListener, paramInt), l1);
       return localURLImageView;
     }
     if (localObject1 == null)
@@ -179,9 +179,9 @@ public class PicBrowserImage
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo;
+    Object localObject = this.k;
     if (localObject != null) {
-      localObject = ((PicInfo)localObject).a;
+      localObject = ((PicInfo)localObject).b;
     }
     try
     {
@@ -189,9 +189,9 @@ public class PicBrowserImage
       if (localObject != null)
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo;
+        localURLDrawableOptions.mExtraInfo = this.k;
         localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
-        ((URLDrawable)localObject).setDownloadListener(new ImgDownloadListener(this.jdField_a_of_type_AndroidContentContext));
+        ((URLDrawable)localObject).setDownloadListener(new ImgDownloadListener(this.j));
         ThreadManager.postImmediately(new PicBrowserImage.1(this, (URLDrawable)localObject), null, true);
       }
       return;
@@ -232,20 +232,20 @@ public class PicBrowserImage
   
   public Drawable getAnimationDrawable()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo == null) {
+    if (this.k == null) {
       return null;
     }
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = URLDrawableHelperConstants.a;
     ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = URLDrawableHelperConstants.a;
     ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo;
+    Object localObject2 = this.k;
     ((URLDrawable.URLDrawableOptions)localObject1).mExtraInfo = localObject2;
-    if (!TextUtils.isEmpty(((PicInfo)localObject2).c))
+    if (!TextUtils.isEmpty(((PicInfo)localObject2).d))
     {
       try
       {
-        localObject1 = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.c).toURL(), (URLDrawable.URLDrawableOptions)localObject1);
+        localObject1 = URLDrawable.getDrawable(new File(this.k.d).toURL(), (URLDrawable.URLDrawableOptions)localObject1);
       }
       catch (MalformedURLException localMalformedURLException1)
       {
@@ -255,11 +255,11 @@ public class PicBrowserImage
       }
       localMalformedURLException1.printStackTrace();
     }
-    else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b))
+    else if (!TextUtils.isEmpty(this.k.c))
     {
       try
       {
-        localObject2 = new URL(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.b);
+        localObject2 = new URL(this.k.c);
         localObject2 = new URL("nearbyimage", ((URL)localObject2).getAuthority(), ((URL)localObject2).getFile());
         URLDrawable localURLDrawable;
         if (AbsDownloader.hasFile(((URL)localObject2).toString()))
@@ -268,7 +268,7 @@ public class PicBrowserImage
         }
         else
         {
-          localObject2 = new URL(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicInfo.a);
+          localObject2 = new URL(this.k.b);
           localURLDrawable = URLDrawable.getDrawable(new URL("nearbyimage", ((URL)localObject2).getAuthority(), ((URL)localObject2).getFile()), localURLDrawable);
         }
       }
@@ -284,12 +284,12 @@ public class PicBrowserImage
     localObject2 = getThumbRect();
     if ((localDrawable != null) && (localObject2 != null))
     {
-      this.d = getCutValue((Rect)localObject2, localDrawable);
+      this.l = getCutValue((Rect)localObject2, localDrawable);
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("getAnimationDrawable ,cutValue = ");
-        ((StringBuilder)localObject2).append(this.d);
+        ((StringBuilder)localObject2).append(this.l);
         QLog.d("PicBrowser", 2, ((StringBuilder)localObject2).toString());
       }
       return localDrawable;
@@ -299,12 +299,12 @@ public class PicBrowserImage
   
   public int getCutValue()
   {
-    return this.d;
+    return this.l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserImage
  * JD-Core Version:    0.7.0.1
  */

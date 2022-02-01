@@ -10,27 +10,27 @@ import java.util.ArrayList;
 public class EssenceMsgSendCallback
   implements ISendMessageCallback
 {
-  public void a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
+  public void afterMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam) {}
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
+  public boolean beforeMessageSend(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam)
   {
     paramAIOContext = (FullScreenInputHelper)paramAIOContext.a(24);
-    if (paramAIOContext.b())
+    if (paramAIOContext.d())
     {
-      paramSendLogicParam.a().k = true;
-      paramAIOContext.b(false);
+      paramSendLogicParam.b().C = true;
+      paramAIOContext.e(false);
     }
     return false;
   }
   
-  public boolean a(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
+  public boolean onMessageSending(AIOContext paramAIOContext, SendLogicParam paramSendLogicParam, ArrayList<AtTroopMemberInfo> paramArrayList)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.EssenceMsgSendCallback
  * JD-Core Version:    0.7.0.1
  */

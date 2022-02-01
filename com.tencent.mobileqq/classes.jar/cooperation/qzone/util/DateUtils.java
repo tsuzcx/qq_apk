@@ -7,22 +7,22 @@ public class DateUtils
 {
   public static final String BEFOREY_YESTERDAY;
   public static final String COLON = ":";
-  public static final String DAY = HardCodeUtil.a(2131703008);
+  public static final String DAY = HardCodeUtil.a(2131900983);
   public static final long DAY_MILLIS_SECOND = 86400000L;
   public static final int DAY_SECOND = 86400;
-  public static final String JUST_MINS = HardCodeUtil.a(2131703012);
+  public static final String JUST_MINS = HardCodeUtil.a(2131900987);
   public static final String MONTH;
   public static final String TODAY;
   public static final long TWO_DAY_MILLIS_SECOND = 172800000L;
   public static final String YEAR;
-  public static final String YESTERDAY = HardCodeUtil.a(2131702984);
+  public static final String YESTERDAY = HardCodeUtil.a(2131900959);
   
   static
   {
-    TODAY = HardCodeUtil.a(2131702966);
-    BEFOREY_YESTERDAY = HardCodeUtil.a(2131703005);
-    YEAR = HardCodeUtil.a(2131702975);
-    MONTH = HardCodeUtil.a(2131702970);
+    TODAY = HardCodeUtil.a(2131900941);
+    BEFOREY_YESTERDAY = HardCodeUtil.a(2131900980);
+    YEAR = HardCodeUtil.a(2131900950);
+    MONTH = HardCodeUtil.a(2131900945);
   }
   
   static String doubleD(int paramInt)
@@ -140,7 +140,7 @@ public class DateUtils
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append((int)(l2 / 86400000L));
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131702993));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131900968));
       return ((StringBuilder)localObject).toString();
     }
     return "";
@@ -162,7 +162,7 @@ public class DateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.util.DateUtils
  * JD-Core Version:    0.7.0.1
  */

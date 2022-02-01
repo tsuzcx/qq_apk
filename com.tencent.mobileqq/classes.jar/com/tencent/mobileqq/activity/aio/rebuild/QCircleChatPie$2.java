@@ -13,20 +13,20 @@ class QCircleChatPie$2
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.b;
+      String str = this.a.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onAddFriend : ");
       localStringBuilder.append(paramString);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if ((this.a.l()) && (paramString != null) && (paramString.equals(this.a.a.a))) {
-      QCircleChatPie.a(this.a);
+    if ((this.a.aY()) && (paramString != null) && (paramString.equals(this.a.ah.b))) {
+      QCircleChatPie.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.QCircleChatPie.2
  * JD-Core Version:    0.7.0.1
  */

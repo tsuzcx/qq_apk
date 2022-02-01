@@ -15,26 +15,26 @@ import java.util.Set;
 class HotPicTab$HotPicTabAdapter
   extends BaseAdapter
 {
-  ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  List<HotPicTagInfo> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
+  List<HotPicTagInfo> a;
+  ArrayList<Integer> b;
+  boolean c;
   
   public HotPicTab$HotPicTabAdapter(List<HotPicTagInfo> paramList, ArrayList<Integer> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramBoolean.clone());
+    this.a = paramArrayList;
+    this.b = ((ArrayList)paramBoolean.clone());
     boolean bool;
-    this.jdField_a_of_type_Boolean = bool;
+    this.c = bool;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -46,9 +46,9 @@ class HotPicTab$HotPicTabAdapter
   {
     if (paramView == null)
     {
-      localObject = new HotPicTab.ViewHolder(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
-      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2131558553, null);
-      ((HotPicTab.ViewHolder)localObject).a = ((TextView)paramView.findViewById(2131368288));
+      localObject = new HotPicTab.ViewHolder(this.d);
+      paramView = LayoutInflater.from(HotPicTab.d(this.d)).inflate(2131624109, null);
+      ((HotPicTab.ViewHolder)localObject).a = ((TextView)paramView.findViewById(2131435161));
       paramView.setTag(localObject);
     }
     else
@@ -63,17 +63,17 @@ class HotPicTab$HotPicTabAdapter
     ((TextView)localObject).setPadding(0, 0, 0, 0);
     ((TextView)localObject).setFocusable(true);
     ((TextView)localObject).setGravity(17);
-    paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
+    paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.b.get(paramInt)).intValue(), -1));
     paramView.setContentDescription(str);
     paramView.setFocusable(true);
     paramView.setOnHoverListener(new HotPicTab.HotPicTabAdapter.1(this));
-    if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
+    if (!HotPicTab.e(this.d).contains(Integer.valueOf(paramInt)))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append("");
       ReportController.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, ((StringBuilder)localObject).toString(), "", str, "");
-      HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
+      HotPicTab.e(this.d).add(Integer.valueOf(paramInt));
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -81,7 +81,7 @@ class HotPicTab$HotPicTabAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicTab.HotPicTabAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ class SegmentView$1
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    int i = this.jdField_a_of_type_Int;
+    paramTransformation = this.a.getLayoutParams();
+    int i = this.b;
     paramTransformation.height = (i - (int)(i * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    this.a.requestLayout();
   }
   
   public void cancel()
   {
     super.cancel();
-    SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentView.a(), "deletedItemViewWithAnimation cancel");
+    SLog.b(this.c.b(), "deletedItemViewWithAnimation cancel");
   }
 }
 

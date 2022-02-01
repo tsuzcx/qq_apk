@@ -12,8 +12,8 @@ public class ReadInjoyNoneImgCell
     Util.a(paramAbsBaseArticleInfo, localJSONObject);
     Util.d(paramAbsBaseArticleInfo, localJSONObject);
     Util.g(paramAbsBaseArticleInfo, localJSONObject);
-    Util.n(paramAbsBaseArticleInfo, localJSONObject);
-    Util.i(paramAbsBaseArticleInfo, localJSONObject);
+    Util.o(paramAbsBaseArticleInfo, localJSONObject);
+    Util.j(paramAbsBaseArticleInfo, localJSONObject);
     localJSONObject.put("style_ID", "ReadInjoy_none_img_cell");
     Util.a(localJSONObject, paramAbsBaseArticleInfo);
     return localJSONObject;
@@ -21,7 +21,7 @@ public class ReadInjoyNoneImgCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ReadInjoyNoneImgCell
  * JD-Core Version:    0.7.0.1
  */

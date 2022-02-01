@@ -10,13 +10,13 @@ class PhoneContactFragment$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneContactStatusCheckView.a(PhoneContactFragment.a(this.this$0));
-    this.this$0.jdField_a_of_type_AndroidOsHandler.post(new PhoneContactFragment.1.1(this));
+    this.this$0.f.a(PhoneContactFragment.a(this.this$0));
+    this.this$0.h.post(new PhoneContactFragment.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment.1
  * JD-Core Version:    0.7.0.1
  */

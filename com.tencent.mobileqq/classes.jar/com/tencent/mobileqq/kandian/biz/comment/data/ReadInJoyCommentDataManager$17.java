@@ -12,19 +12,19 @@ class ReadInJoyCommentDataManager$17
   
   public void a(@NotNull CreateCommentResult paramCreateCommentResult)
   {
-    if (paramCreateCommentResult.b) {
+    if (paramCreateCommentResult.j) {
       ReadInJoyCommentDataManager.a(this.a, paramCreateCommentResult);
     } else {
       ReadInJoyCommentDataManager.b(this.a, paramCreateCommentResult);
     }
-    if (!paramCreateCommentResult.jdField_a_of_type_Boolean) {
-      RIJCommentNetworkHelper.a(paramCreateCommentResult.jdField_a_of_type_Int);
+    if (!paramCreateCommentResult.b) {
+      RIJCommentNetworkHelper.a(paramCreateCommentResult.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.17
  * JD-Core Version:    0.7.0.1
  */

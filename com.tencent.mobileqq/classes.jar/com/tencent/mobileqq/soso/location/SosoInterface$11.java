@@ -12,13 +12,13 @@ final class SosoInterface$11
   public void run()
   {
     if (!TextUtils.isEmpty(this.val$content)) {
-      QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), this.val$content, 1).a();
+      QQToast.makeText(MobileQQ.sMobileQQ.getApplicationContext(), this.val$content, 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.SosoInterface.11
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ class PrinterOptionActivity$2
   {
     if (paramBoolean)
     {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131691369);
+      PrinterOptionActivity.b(this.a).setVisibility(0);
+      PrinterOptionActivity.b(this.a).setText(2131888324);
     }
-    else if (PrinterOptionActivity.b(this.a))
+    else if (PrinterOptionActivity.c(this.a))
     {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131691349);
+      PrinterOptionActivity.b(this.a).setVisibility(0);
+      PrinterOptionActivity.b(this.a).setText(2131888304);
     }
     else
     {
-      PrinterOptionActivity.a(this.a).setVisibility(4);
+      PrinterOptionActivity.b(this.a).setVisibility(4);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }

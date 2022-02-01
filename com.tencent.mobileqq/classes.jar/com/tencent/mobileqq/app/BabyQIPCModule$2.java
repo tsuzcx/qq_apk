@@ -31,10 +31,10 @@ class BabyQIPCModule$2
       if (AppConstants.BABY_Q_UIN.equals(paramObject.uin))
       {
         localObject = this.a;
-        ((BabyQIPCModule)localObject).jdField_a_of_type_ComTencentMobileqqDataCard = paramObject;
-        ((BabyQIPCModule)localObject).jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.card = this.a.jdField_a_of_type_ComTencentMobileqqDataCard;
-        this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.nameArray[0] = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.strNick;
-        this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.nameArray[4] = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.strReMark;
+        ((BabyQIPCModule)localObject).a = paramObject;
+        ((BabyQIPCModule)localObject).b.card = this.a.a;
+        this.a.b.nameArray[0] = this.a.a.strNick;
+        this.a.b.nameArray[4] = this.a.a.strReMark;
       }
     }
     if (BabyQIPCModule.a(this.a).get("getZanVoteCount") != null)
@@ -44,7 +44,7 @@ class BabyQIPCModule$2
       paramObject = paramObject.getString("key_js_callback_id");
       localObject = new Bundle();
       ((Bundle)localObject).putString("key_method_action", "getZanVoteCount");
-      ((Bundle)localObject).putLong("key_get_zan_vote_count", this.a.jdField_a_of_type_ComTencentMobileqqDataCard.lVoteCount);
+      ((Bundle)localObject).putLong("key_get_zan_vote_count", this.a.a.lVoteCount);
       ((Bundle)localObject).putString("web_js_call_back_id", paramObject);
       this.a.callbackResult(i, EIPCResult.createSuccessResult((Bundle)localObject));
       BabyQIPCModule.a(this.a).remove("getZanVoteCount");
@@ -53,7 +53,7 @@ class BabyQIPCModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BabyQIPCModule.2
  * JD-Core Version:    0.7.0.1
  */

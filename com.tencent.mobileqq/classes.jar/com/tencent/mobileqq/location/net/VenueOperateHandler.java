@@ -48,10 +48,10 @@ public class VenueOperateHandler
     ((RoomOperate.ReqAssemblyPointOperation)localObject1).room_key.set(localRoomKey);
     ((RoomOperate.ReqAssemblyPointOperation)localObject1).room_key.setHasFlag(true);
     ((RoomOperate.ReqAssemblyPointOperation)localObject1).point_operation.set(paramInt1);
-    ((RoomOperate.ReqAssemblyPointOperation)localObject1).poi_name.set(ByteStringMicro.copyFrom(paramVenue.b.getBytes()));
-    ((RoomOperate.ReqAssemblyPointOperation)localObject1).poi_address.set(ByteStringMicro.copyFrom(paramVenue.c.getBytes()));
-    ((RoomOperate.ReqAssemblyPointOperation)localObject1).lat.set(paramVenue.a.latitude);
-    ((RoomOperate.ReqAssemblyPointOperation)localObject1).lon.set(paramVenue.a.longitude);
+    ((RoomOperate.ReqAssemblyPointOperation)localObject1).poi_name.set(ByteStringMicro.copyFrom(paramVenue.c.getBytes()));
+    ((RoomOperate.ReqAssemblyPointOperation)localObject1).poi_address.set(ByteStringMicro.copyFrom(paramVenue.d.getBytes()));
+    ((RoomOperate.ReqAssemblyPointOperation)localObject1).lat.set(paramVenue.e.latitude);
+    ((RoomOperate.ReqAssemblyPointOperation)localObject1).lon.set(paramVenue.e.longitude);
     localObject2 = new ToServiceMsg("mobileqq.service", ((AppRuntime)localObject2).getAccount(), "QQLBSShareSvc.assembly_point_operation");
     ((ToServiceMsg)localObject2).extraData.putInt("OPT_VENUE_TYPE", paramInt1);
     ((ToServiceMsg)localObject2).extraData.putInt("uintype", paramInt2);
@@ -81,11 +81,22 @@ public class VenueOperateHandler
       if (paramVenue == null) {
         return;
       }
-      a(1, paramRoomKey.a(), Long.parseLong(paramRoomKey.a()), paramVenue);
+      a(1, paramRoomKey.a(), Long.parseLong(paramRoomKey.b()), paramVenue);
     }
   }
   
-  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  void b(LocationRoom.RoomKey paramRoomKey, LocationRoom.Venue paramVenue)
+  {
+    if (paramRoomKey != null)
+    {
+      if (paramVenue == null) {
+        return;
+      }
+      a(3, paramRoomKey.a(), Long.parseLong(paramRoomKey.b()), paramVenue);
+    }
+  }
+  
+  void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i;
     if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
@@ -119,21 +130,10 @@ public class VenueOperateHandler
     }
     a(-2, "", -10001, -1, (LocationRoom.Venue)paramToServiceMsg.extraData.getParcelable("key_location_venue"));
   }
-  
-  void b(LocationRoom.RoomKey paramRoomKey, LocationRoom.Venue paramVenue)
-  {
-    if (paramRoomKey != null)
-    {
-      if (paramVenue == null) {
-        return;
-      }
-      a(3, paramRoomKey.a(), Long.parseLong(paramRoomKey.a()), paramVenue);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.VenueOperateHandler
  * JD-Core Version:    0.7.0.1
  */

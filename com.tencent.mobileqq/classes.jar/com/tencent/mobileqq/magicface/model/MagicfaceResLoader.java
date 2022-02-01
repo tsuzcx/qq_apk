@@ -47,9 +47,9 @@ public class MagicfaceResLoader
     }
     if ((paramInt != 2) && (paramInt != 3))
     {
-      long l = Math.min(DeviceInfoUtil.g(), DeviceInfoUtil.h());
-      boolean bool = DeviceInfoUtil.d();
-      if (DeviceInfoUtil.b() >= 2) {
+      long l = Math.min(DeviceInfoUtil.B(), DeviceInfoUtil.C());
+      boolean bool = DeviceInfoUtil.L();
+      if (DeviceInfoUtil.h() >= 2) {
         paramInt = i;
       } else {
         paramInt = 0;
@@ -93,7 +93,7 @@ public class MagicfaceResLoader
   }
   
   /* Error */
-  private byte[] a(String paramString)
+  private byte[] d(String paramString)
   {
     // Byte code:
     //   0: new 44	java/lang/StringBuilder
@@ -101,7 +101,7 @@ public class MagicfaceResLoader
     //   4: invokespecial 45	java/lang/StringBuilder:<init>	()V
     //   7: astore 4
     //   9: aload 4
-    //   11: ldc 97
+    //   11: ldc 99
     //   13: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: pop
     //   17: aload 4
@@ -112,46 +112,46 @@ public class MagicfaceResLoader
     //   26: iconst_1
     //   27: aload 4
     //   29: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   35: new 102	java/io/File
+    //   32: invokestatic 102	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: new 104	java/io/File
     //   38: dup
     //   39: aload_1
-    //   40: invokespecial 104	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
     //   43: astore 5
     //   45: aload 5
     //   47: astore 4
     //   49: aload 5
-    //   51: invokevirtual 107	java/io/File:exists	()Z
+    //   51: invokevirtual 109	java/io/File:exists	()Z
     //   54: ifne +31 -> 85
-    //   57: new 102	java/io/File
+    //   57: new 104	java/io/File
     //   60: dup
     //   61: aload_1
-    //   62: ldc 80
-    //   64: ldc 82
-    //   66: invokevirtual 113	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   69: invokespecial 104	java/io/File:<init>	(Ljava/lang/String;)V
+    //   62: ldc 82
+    //   64: ldc 84
+    //   66: invokevirtual 115	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   69: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
     //   72: astore_1
     //   73: aload_1
     //   74: astore 4
     //   76: aload_1
-    //   77: invokevirtual 107	java/io/File:exists	()Z
+    //   77: invokevirtual 109	java/io/File:exists	()Z
     //   80: ifne +5 -> 85
     //   83: aconst_null
     //   84: areturn
-    //   85: new 115	java/io/FileInputStream
+    //   85: new 117	java/io/FileInputStream
     //   88: dup
     //   89: aload 4
-    //   91: invokespecial 118	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   91: invokespecial 120	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   94: astore 4
     //   96: aload 4
-    //   98: invokevirtual 123	java/io/InputStream:available	()I
+    //   98: invokevirtual 125	java/io/InputStream:available	()I
     //   101: istore_2
     //   102: iload_2
     //   103: newarray byte
     //   105: astore_1
     //   106: aload 4
     //   108: aload_1
-    //   109: invokevirtual 127	java/io/InputStream:read	([B)I
+    //   109: invokevirtual 129	java/io/InputStream:read	([B)I
     //   112: istore_3
     //   113: iload_3
     //   114: iload_2
@@ -162,40 +162,40 @@ public class MagicfaceResLoader
     //   125: astore 5
     //   127: aload 5
     //   129: iload_3
-    //   130: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   130: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   133: pop
     //   134: aload 5
-    //   136: ldc 132
+    //   136: ldc 134
     //   138: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: pop
     //   142: aload 5
     //   144: iload_2
-    //   145: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   145: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   148: pop
     //   149: ldc 32
     //   151: iconst_1
     //   152: aload 5
     //   154: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   157: invokestatic 102	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   160: new 44	java/lang/StringBuilder
     //   163: dup
     //   164: invokespecial 45	java/lang/StringBuilder:<init>	()V
     //   167: astore 5
     //   169: aload 5
-    //   171: ldc 134
+    //   171: ldc 136
     //   173: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: pop
     //   177: aload 5
     //   179: iload_3
-    //   180: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   180: invokevirtual 132	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   183: pop
     //   184: ldc 32
     //   186: iconst_1
     //   187: aload 5
     //   189: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   192: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   192: invokestatic 102	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   195: aload 4
-    //   197: invokevirtual 137	java/io/InputStream:close	()V
+    //   197: invokevirtual 139	java/io/InputStream:close	()V
     //   200: aload_1
     //   201: areturn
     //   202: aconst_null
@@ -208,7 +208,7 @@ public class MagicfaceResLoader
     //   213: aload 4
     //   215: ifnull +8 -> 223
     //   218: aload 4
-    //   220: invokevirtual 137	java/io/InputStream:close	()V
+    //   220: invokevirtual 139	java/io/InputStream:close	()V
     //   223: aload_1
     //   224: areturn
     //   225: aconst_null
@@ -216,7 +216,7 @@ public class MagicfaceResLoader
     //   228: aload 4
     //   230: ifnull +8 -> 238
     //   233: aload 4
-    //   235: invokevirtual 137	java/io/InputStream:close	()V
+    //   235: invokevirtual 139	java/io/InputStream:close	()V
     //   238: aconst_null
     //   239: areturn
     //   240: astore_1
@@ -280,13 +280,13 @@ public class MagicfaceResLoader
     localStringBuilder.append(a);
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString1);
-    localMagicfaceData.b = a(localStringBuilder.toString());
+    localMagicfaceData.d = d(localStringBuilder.toString());
     paramString1 = new StringBuilder();
     paramString1.append(this.c);
     paramString1.append(a);
     paramString1.append(File.separator);
     paramString1.append(paramString2);
-    localMagicfaceData.a = a(paramString1.toString());
+    localMagicfaceData.c = d(paramString1.toString());
     return localMagicfaceData;
   }
   
@@ -320,65 +320,65 @@ public class MagicfaceResLoader
     //   4: astore 4
     //   6: aload 4
     //   8: astore_2
-    //   9: new 102	java/io/File
+    //   9: new 104	java/io/File
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 104	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore 6
     //   19: aload 6
     //   21: astore_3
     //   22: aload 4
     //   24: astore_2
     //   25: aload 6
-    //   27: invokevirtual 107	java/io/File:exists	()Z
+    //   27: invokevirtual 109	java/io/File:exists	()Z
     //   30: ifne +36 -> 66
     //   33: aload 4
     //   35: astore_2
-    //   36: new 102	java/io/File
+    //   36: new 104	java/io/File
     //   39: dup
     //   40: aload_1
-    //   41: ldc 80
-    //   43: ldc 82
-    //   45: invokevirtual 113	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   48: invokespecial 104	java/io/File:<init>	(Ljava/lang/String;)V
+    //   41: ldc 82
+    //   43: ldc 84
+    //   45: invokevirtual 115	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   48: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
     //   51: astore_1
     //   52: aload_1
     //   53: astore_3
     //   54: aload 4
     //   56: astore_2
     //   57: aload_1
-    //   58: invokevirtual 107	java/io/File:exists	()Z
+    //   58: invokevirtual 109	java/io/File:exists	()Z
     //   61: ifne +5 -> 66
     //   64: aconst_null
     //   65: areturn
     //   66: aload 4
     //   68: astore_2
-    //   69: new 115	java/io/FileInputStream
+    //   69: new 117	java/io/FileInputStream
     //   72: dup
     //   73: aload_3
-    //   74: invokespecial 118	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   74: invokespecial 120	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   77: astore_1
     //   78: aload_1
-    //   79: invokevirtual 123	java/io/InputStream:available	()I
+    //   79: invokevirtual 125	java/io/InputStream:available	()I
     //   82: newarray byte
     //   84: astore_2
     //   85: aload_1
     //   86: aload_2
-    //   87: invokevirtual 127	java/io/InputStream:read	([B)I
+    //   87: invokevirtual 129	java/io/InputStream:read	([B)I
     //   90: pop
-    //   91: new 109	java/lang/String
+    //   91: new 111	java/lang/String
     //   94: dup
     //   95: aload_2
-    //   96: ldc 158
-    //   98: invokespecial 161	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   96: ldc 160
+    //   98: invokespecial 163	java/lang/String:<init>	([BLjava/lang/String;)V
     //   101: astore_3
     //   102: aload_3
-    //   103: ldc 163
-    //   105: ldc 165
-    //   107: invokevirtual 169	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   103: ldc 165
+    //   105: ldc 167
+    //   107: invokevirtual 171	java/lang/String:replaceFirst	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   110: astore_2
     //   111: aload_1
-    //   112: invokevirtual 137	java/io/InputStream:close	()V
+    //   112: invokevirtual 139	java/io/InputStream:close	()V
     //   115: aload_2
     //   116: areturn
     //   117: astore 4
@@ -411,14 +411,14 @@ public class MagicfaceResLoader
     //   165: aload_1
     //   166: astore_2
     //   167: aload 5
-    //   169: ldc 171
+    //   169: ldc 173
     //   171: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: aload_1
     //   176: astore_2
     //   177: aload 5
     //   179: aload 4
-    //   181: invokevirtual 174	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   181: invokevirtual 176	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   184: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: pop
     //   188: aload_1
@@ -431,13 +431,13 @@ public class MagicfaceResLoader
     //   201: aload_1
     //   202: ifnull +7 -> 209
     //   205: aload_1
-    //   206: invokevirtual 137	java/io/InputStream:close	()V
+    //   206: invokevirtual 139	java/io/InputStream:close	()V
     //   209: aload_3
     //   210: areturn
     //   211: aload_2
     //   212: ifnull +7 -> 219
     //   215: aload_2
-    //   216: invokevirtual 137	java/io/InputStream:close	()V
+    //   216: invokevirtual 139	java/io/InputStream:close	()V
     //   219: aload_3
     //   220: athrow
     //   221: astore_1
@@ -492,7 +492,7 @@ public class MagicfaceResLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicfaceResLoader
  * JD-Core Version:    0.7.0.1
  */

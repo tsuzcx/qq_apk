@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.widget.imageview.CircleBoarderImageView;
 
 class Conversation$17
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  Conversation$17(Conversation paramConversation, String paramString) {}
+  Conversation$17(Conversation paramConversation) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    Conversation localConversation = this.this$0;
-    Conversation.a(localConversation, this.a, ContactUtils.c(localConversation.a(), this.this$0.a().getCurrentUin()));
+    return this.a.Y.ac.performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.17
  * JD-Core Version:    0.7.0.1
  */

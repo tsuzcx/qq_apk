@@ -26,15 +26,15 @@ import org.json.JSONObject;
 public abstract class AbsStructMsg
   implements StructMsgConstants, Externalizable
 {
-  public static final String DEFAULT_MSG_BRIEF = HardCodeUtil.a(2131699944);
-  public static final String PA_DEFAULT_MSG_BRIEF = HardCodeUtil.a(2131699943);
+  public static final String DEFAULT_MSG_BRIEF = HardCodeUtil.a(2131897997);
+  public static final String PA_DEFAULT_MSG_BRIEF = HardCodeUtil.a(2131897996);
   public static int SOURCE_ACCOUNT_TYPE_PA = 7;
   public String adverKey;
   public int adverSign;
   public String currentAccountUin;
   public int dynamicMsgMergeIndex = -1;
   public String dynamicMsgMergeKey = "";
-  public boolean forceDoNotCompress = AppSetting.f();
+  public boolean forceDoNotCompress = AppSetting.n();
   public int forwardID;
   public int fwFlag = 0;
   public String index;
@@ -42,6 +42,7 @@ public abstract class AbsStructMsg
   public String index_type;
   public String mAlgorithmIds = null;
   public String mArticleIds = null;
+  public String mBirthReminder = null;
   public String mCommentText = null;
   public String mCommonData = null;
   public String mCompatibleText = "";
@@ -153,10 +154,10 @@ public abstract class AbsStructMsg
     int i = AIOUtils.b(15.0F, paramOnLongClickAndTouchListener);
     int j = AIOUtils.b(7.5F, paramOnLongClickAndTouchListener);
     paramContext = new RelativeLayout(paramContext);
-    paramContext.setBackgroundResource(2130838253);
+    paramContext.setBackgroundResource(2130838312);
     paramContext.setPadding(i, j, i, j);
     paramContext.addView(paramBundle);
-    paramContext.setId(2131377971);
+    paramContext.setId(2131446458);
     paramOnLongClickAndTouchListener = new RelativeLayout.LayoutParams(-2, -2);
     paramOnLongClickAndTouchListener.addRule(13);
     paramView.addView(paramContext, paramOnLongClickAndTouchListener);
@@ -175,17 +176,17 @@ public abstract class AbsStructMsg
     paramContext.setText(paramString);
     paramContext.setTextSize(2, 16.0F);
     paramContext.setTextColor(Color.parseColor("#000000"));
-    int i = BaseChatItemLayout.o;
-    int j = BaseChatItemLayout.p;
-    paramView.setBackgroundResource(2130838253);
-    paramContext.setPadding(i, BaseChatItemLayout.m, j, BaseChatItemLayout.n);
+    int i = BaseChatItemLayout.getTextPaddingAlignHead();
+    int j = BaseChatItemLayout.getTextPaddingAlignError();
+    paramView.setBackgroundResource(2130838312);
+    paramContext.setPadding(i, BaseChatItemLayout.n, j, BaseChatItemLayout.o);
     paramView.addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
     return paramView;
   }
   
   public static View getVersionExceptionView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle)
   {
-    return getExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle, 2131698599);
+    return getExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle, 2131896546);
   }
   
   public boolean LayoutEquals(Object paramObject)
@@ -333,7 +334,7 @@ public abstract class AbsStructMsg
     {
       this.fwFlag = Integer.parseInt(str1);
     }
-    catch (NumberFormatException localNumberFormatException6)
+    catch (NumberFormatException localNumberFormatException7)
     {
       try
       {
@@ -356,7 +357,7 @@ public abstract class AbsStructMsg
           break label259;
         }
       }
-      catch (NumberFormatException localNumberFormatException6)
+      catch (NumberFormatException localNumberFormatException7)
       {
         try
         {
@@ -366,7 +367,7 @@ public abstract class AbsStructMsg
           this.mPromotionMenus = paramStructMsgNode.a("promotionMenus");
           str2 = paramStructMsgNode.a("promotionMenuDestructiveIndex");
         }
-        catch (NumberFormatException localNumberFormatException6)
+        catch (NumberFormatException localNumberFormatException7)
         {
           try
           {
@@ -391,7 +392,7 @@ public abstract class AbsStructMsg
             this.mSourceThirdName = "";
             str1 = paramStructMsgNode.a("sourceMsgId");
           }
-          catch (NumberFormatException localNumberFormatException6)
+          catch (NumberFormatException localNumberFormatException7)
           {
             try
             {
@@ -402,7 +403,7 @@ public abstract class AbsStructMsg
               this.mSType = paramStructMsgNode.a("sType");
               str1 = paramStructMsgNode.a("accostType");
             }
-            catch (NumberFormatException localNumberFormatException6)
+            catch (NumberFormatException localNumberFormatException7)
             {
               try
               {
@@ -412,7 +413,7 @@ public abstract class AbsStructMsg
                 this.sourceAccoutType = Integer.parseInt(str1);
                 str1 = paramStructMsgNode.a("adverSign");
               }
-              catch (NumberFormatException localNumberFormatException6)
+              catch (NumberFormatException localNumberFormatException7)
               {
                 try
                 {
@@ -440,32 +441,30 @@ public abstract class AbsStructMsg
                     this.mNeedRound = paramStructMsgNode.a("needRoundView");
                     this.mCommonData = paramStructMsgNode.a("msgCommonData");
                     this.mMergeSeq = paramStructMsgNode.a("mergeSeq");
-                    paramStructMsgNode = paramStructMsgNode.a("sortKey");
+                    str1 = paramStructMsgNode.a("sortKey");
                     try
                     {
-                      if (!TextUtils.isEmpty(paramStructMsgNode)) {
-                        this.mSortKey = Long.parseLong(paramStructMsgNode);
+                      if (!TextUtils.isEmpty(str1)) {
+                        this.mSortKey = Long.parseLong(str1);
                       }
                     }
-                    catch (NumberFormatException paramStructMsgNode)
+                    catch (NumberFormatException localNumberFormatException1)
                     {
-                      paramStructMsgNode.printStackTrace();
+                      localNumberFormatException1.printStackTrace();
                     }
                     int i = this.mMsgServiceID;
                     if (((i == 142) || (i == 500)) && (TextUtils.isEmpty(this.mExtraData)) && (!TextUtils.isEmpty(this.mMsgActionData))) {
                       try
                       {
                         this.mExtraData = new JSONObject(this.mMsgActionData).getString("push_ext_data");
-                        return;
                       }
-                      catch (Exception paramStructMsgNode)
+                      catch (Exception localException)
                       {
-                        paramStructMsgNode.getStackTrace();
+                        localException.getStackTrace();
                       }
                     }
+                    this.mBirthReminder = paramStructMsgNode.a("birthReminderMsg");
                     return;
-                    localNumberFormatException1 = localNumberFormatException1;
-                    continue;
                     localNumberFormatException2 = localNumberFormatException2;
                     continue;
                     localNumberFormatException3 = localNumberFormatException3;
@@ -473,10 +472,12 @@ public abstract class AbsStructMsg
                     localNumberFormatException4 = localNumberFormatException4;
                     continue;
                     localNumberFormatException5 = localNumberFormatException5;
+                    continue;
+                    localNumberFormatException6 = localNumberFormatException6;
                   }
-                  localNumberFormatException6 = localNumberFormatException6;
+                  localNumberFormatException7 = localNumberFormatException7;
                 }
-                catch (NumberFormatException localNumberFormatException7)
+                catch (NumberFormatException localNumberFormatException8)
                 {
                   break label458;
                 }
@@ -504,7 +505,7 @@ public abstract class AbsStructMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsg
  * JD-Core Version:    0.7.0.1
  */

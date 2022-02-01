@@ -25,70 +25,70 @@ public class HotChatAnnounceDialog
   extends QQCustomDialog
   implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString;
+  String a;
+  String b;
+  Context c;
+  View d;
+  View e;
+  Button f;
+  TextView g;
+  TextView h;
+  QQAppInterface i;
   
   public HotChatAnnounceDialog(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2)
   {
-    super(paramContext, 2131756189);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    super(paramContext, 2131953338);
+    this.c = paramContext;
+    this.i = paramQQAppInterface;
+    this.a = paramString1;
+    this.b = paramString2;
     a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561119, null);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378837);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378846));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.d = LayoutInflater.from(this.c).inflate(2131627469, null);
+    this.e = this.d.findViewById(2131447534);
+    this.e.setOnClickListener(this);
+    this.h = ((TextView)this.d.findViewById(2131447545));
+    this.h.setOnClickListener(this);
+    if (TextUtils.isEmpty(this.b)) {
+      this.h.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365202));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364711));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131697633));
-    setContentView(this.jdField_a_of_type_AndroidViewView);
+    this.g = ((TextView)this.d.findViewById(2131431367));
+    this.g.setText(this.a);
+    this.f = ((Button)this.d.findViewById(2131430817));
+    this.f.setOnClickListener(this);
+    this.f.setContentDescription(this.c.getString(2131895406));
+    setContentView(this.d);
     setCancelable(true);
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.width = ((int)(((DisplayMetrics)localObject).widthPixels - DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 30.0F)));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    Object localObject = this.c.getResources().getDisplayMetrics();
+    ViewGroup.LayoutParams localLayoutParams = this.d.getLayoutParams();
+    localLayoutParams.width = ((int)(((DisplayMetrics)localObject).widthPixels - DisplayUtils.a(this.c, 30.0F)));
+    this.d.setLayoutParams(localLayoutParams);
     localObject = getWindow().getAttributes();
     ((WindowManager.LayoutParams)localObject).gravity = 48;
-    int i = (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-    ((WindowManager.LayoutParams)localObject).y = (AIOUtils.b(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + i);
+    int j = (int)DisplayUtils.a(this.c, 10.0F);
+    ((WindowManager.LayoutParams)localObject).y = (AIOUtils.b(50.0F, this.c.getResources()) + j);
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131364711)
+    int j = paramView.getId();
+    if (j != 2131430817)
     {
-      if ((i != 2131378837) && (i != 2131378846)) {
+      if ((j != 2131447534) && (j != 2131447545)) {
         return;
       }
-      paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString);
+      paramView = JumpParser.a(this.i, this.c, this.b);
       if (paramView != null)
       {
         paramView.a();
         return;
       }
-      paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      paramView = new Intent(this.c, QQBrowserActivity.class);
+      paramView.putExtra("url", this.b);
+      this.c.startActivity(paramView);
       return;
     }
     dismiss();
@@ -96,7 +96,7 @@ public class HotChatAnnounceDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.widget.HotChatAnnounceDialog
  * JD-Core Version:    0.7.0.1
  */

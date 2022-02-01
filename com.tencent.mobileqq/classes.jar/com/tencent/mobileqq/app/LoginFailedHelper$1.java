@@ -12,12 +12,12 @@ class LoginFailedHelper$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    LoginFailedHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppLoginFailedHelper, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, "0X800B8F6");
+    LoginFailedHelper.a(this.d, this.a, this.b, this.c, "0X800B8F6");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.LoginFailedHelper.1
  * JD-Core Version:    0.7.0.1
  */

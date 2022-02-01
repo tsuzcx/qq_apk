@@ -9,8 +9,8 @@ final class AnchorData$1
   public AnchorData a(Parcel paramParcel)
   {
     AnchorData localAnchorData = new AnchorData();
-    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localAnchorData.a = paramParcel.readString();
+    localAnchorData.b = paramParcel.readString();
     int i = paramParcel.readByte();
     boolean bool2 = true;
     boolean bool1;
@@ -19,13 +19,13 @@ final class AnchorData$1
     } else {
       bool1 = false;
     }
-    localAnchorData.jdField_a_of_type_Boolean = bool1;
+    localAnchorData.c = bool1;
     if (paramParcel.readByte() != 0) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    localAnchorData.jdField_b_of_type_Boolean = bool1;
+    localAnchorData.d = bool1;
     return localAnchorData;
   }
   
@@ -36,7 +36,7 @@ final class AnchorData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.entity.AnchorData.1
  * JD-Core Version:    0.7.0.1
  */

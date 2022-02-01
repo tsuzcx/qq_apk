@@ -25,6 +25,7 @@ import com.tencent.qqmini.miniapp.plugin.EmbeddedWidgetClientFactory;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.Preloadable;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.utils.AppBrandUtil;
 import com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper;
 import com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -441,7 +442,7 @@ public class AppBrandPageContainer
     {
       try
       {
-        String str = com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil.getUrlWithoutParams(paramString);
+        String str = AppBrandUtil.getUrlWithoutParams(paramString);
         if (bool3)
         {
           localObject1 = str;
@@ -484,7 +485,7 @@ public class AppBrandPageContainer
       {
         try
         {
-          Object localObject2 = com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil.getUrlWithoutParams((String)localObject1);
+          Object localObject2 = AppBrandUtil.getUrlWithoutParams((String)localObject1);
           if (bool3) {
             paramString = new File(this.mApkgInfo.getChildFileAbsolutePath((String)localObject2));
           } else {
@@ -786,7 +787,7 @@ public class AppBrandPageContainer
       }
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject1 = com.tencent.qqmini.sdk.core.utils.AppBrandUtil.getAppLaunchInfo((String)localObject2, this.mMiniAppInfo);
+        localObject1 = AppBrandUtil.getAppLaunchInfo((String)localObject2, this.mMiniAppInfo);
         try
         {
           ((JSONObject)localObject1).put("reLaunch", bool1);
@@ -811,7 +812,7 @@ public class AppBrandPageContainer
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("path", paramString);
-      localJSONObject.put("query", com.tencent.qqmini.sdk.core.utils.AppBrandUtil.getQueryJson(paramString));
+      localJSONObject.put("query", AppBrandUtil.getQueryJson(paramString));
       boolean bool2 = true;
       boolean bool1 = bool2;
       if (this.appBrandPages != null)
@@ -1717,7 +1718,7 @@ public class AppBrandPageContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer
  * JD-Core Version:    0.7.0.1
  */

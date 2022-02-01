@@ -13,6 +13,7 @@ import android.os.Process;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -45,11 +46,11 @@ public final class d
     {
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
       if (Build.VERSION.SDK_INT >= 26) {
-        c = paramContext.getImei();
+        c = PhoneInfoMonitor.getImei(paramContext);
       } else {
-        c = paramContext.getDeviceId();
+        c = PhoneInfoMonitor.getDeviceId(paramContext);
       }
-      d = paramContext.getSubscriberId();
+      d = PhoneInfoMonitor.getSubscriberId(paramContext);
     }
     catch (Throwable paramContext)
     {
@@ -255,7 +256,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.d
  * JD-Core Version:    0.7.0.1
  */

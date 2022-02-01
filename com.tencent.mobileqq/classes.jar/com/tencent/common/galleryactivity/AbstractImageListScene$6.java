@@ -7,16 +7,11 @@ class AbstractImageListScene$6
 {
   AbstractImageListScene$6(AbstractImageListScene paramAbstractImageListScene) {}
   
-  public void f()
+  public void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
     }
-    this.a.f();
-  }
-  
-  public void g()
-  {
     this.a.g();
   }
   
@@ -27,15 +22,20 @@ class AbstractImageListScene$6
   
   public void i()
   {
+    this.a.i();
+  }
+  
+  public void j()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
     }
-    this.a.i();
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AbstractImageListScene.6
  * JD-Core Version:    0.7.0.1
  */

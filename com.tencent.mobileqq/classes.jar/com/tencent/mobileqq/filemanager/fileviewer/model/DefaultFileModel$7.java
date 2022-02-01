@@ -12,21 +12,21 @@ class DefaultFileModel$7
   
   public void a()
   {
-    QFileAssistantForwardManager localQFileAssistantForwardManager = new QFileAssistantForwardManager(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    QFileAssistantForwardManager localQFileAssistantForwardManager = new QFileAssistantForwardManager(this.b.a);
     localQFileAssistantForwardManager.a(true);
-    localQFileAssistantForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localQFileAssistantForwardManager.a(this.a);
   }
   
   public void b()
   {
-    QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    QFileUtils.a(this.b.a, this.b.i, this.a);
   }
   
   public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel.7
  * JD-Core Version:    0.7.0.1
  */

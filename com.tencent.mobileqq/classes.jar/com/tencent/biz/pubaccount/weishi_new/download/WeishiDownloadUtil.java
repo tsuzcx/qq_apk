@@ -50,26 +50,14 @@ import mqq.os.MqqHandler;
 
 public class WeishiDownloadUtil
 {
-  private static WSDownloadListenerWrapper jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper;
-  private static WSDownloadParams jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
-  public static final String a;
-  public static HashMap<String, String> a;
-  public static boolean a;
-  private static WSDownloadListenerWrapper jdField_b_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper;
-  private static String jdField_b_of_type_JavaLangString;
-  private static HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131716378);
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static int a()
-  {
-    return LocalMultiProcConfig.getInt("eventId", -1);
-  }
+  public static final String a = HardCodeUtil.a(2131913818);
+  public static boolean b = false;
+  public static HashMap<String, String> c = new HashMap();
+  private static HashMap<String, Integer> d = new HashMap();
+  private static WSDownloadParams e;
+  private static String f;
+  private static WSDownloadListenerWrapper g;
+  private static WSDownloadListenerWrapper h;
   
   public static int a(String paramString)
   {
@@ -115,93 +103,10 @@ public class WeishiDownloadUtil
   
   public static WSDownloadListenerWrapper a(int paramInt1, int paramInt2)
   {
-    if (b()) {
+    if (f()) {
       return c(paramInt1, paramInt2);
     }
     return b(paramInt1, paramInt2);
-  }
-  
-  private static RockDownloadInfo a(ArrayList<RockDownloadInfo> paramArrayList, RockDownloadInfo paramRockDownloadInfo)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
-      if ((localRockDownloadInfo.businessName.equals(paramRockDownloadInfo.businessName)) && (localRockDownloadInfo.packageName.equals(paramRockDownloadInfo.packageName)) && (localRockDownloadInfo.realVersionCode >= paramRockDownloadInfo.versionCode) && (localRockDownloadInfo.versionCode >= paramRockDownloadInfo.versionCode))
-      {
-        WSLog.a("WeishiDownloadUtil", "Rock包版本大于或等于要下载的版本，有效~~~");
-        return localRockDownloadInfo;
-      }
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    return "https://weseeugg.qq.com/download?channelid=204002177";
-  }
-  
-  private static String a(int paramInt)
-  {
-    Object localObject2 = DownloadManagerV2.a().b("com.tencent.weishi", 4);
-    Object localObject1 = localObject2;
-    if (((List)localObject2).size() == 0) {
-      localObject1 = DownloadManagerV2.a().a("com.tencent.weishi", 4);
-    }
-    localObject2 = DownloadManager.a().a("10261931");
-    if (localObject2 != null)
-    {
-      ((DownloadInfo)localObject2).a(4);
-      ((List)localObject1).add(localObject2);
-    }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(">existValidQQDownloadWeishiApk, info:");
-    ((StringBuilder)localObject2).append(localObject1);
-    WSLog.a("WeishiDownloadUtil", ((StringBuilder)localObject2).toString());
-    localObject2 = ((List)localObject1).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject1 = (DownloadInfo)((Iterator)localObject2).next();
-      if (localObject1 != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("downloadInfo 's url: ");
-        localStringBuilder.append(((DownloadInfo)localObject1).d);
-        WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
-        if ((((DownloadInfo)localObject1).a() == 4) && (TextUtils.equals(((DownloadInfo)localObject1).e, "com.tencent.weishi")) && (((DownloadInfo)localObject1).d != null) && (((DownloadInfo)localObject1).d.startsWith(b()))) {
-          if (TextUtils.isEmpty(((DownloadInfo)localObject1).l))
-          {
-            WSLog.a("WeishiDownloadUtil", "QQ下载包filePath为空!!!");
-          }
-          else
-          {
-            int i = a(((DownloadInfo)localObject1).l);
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("判断QQ下载包有没有过期，apkVersionCode：");
-            localStringBuilder.append(i);
-            localStringBuilder.append(",targetVersion:");
-            localStringBuilder.append(paramInt);
-            WSLog.a("WeishiDownloadUtil", localStringBuilder.toString());
-            if (i >= paramInt)
-            {
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("本地包版本(");
-              ((StringBuilder)localObject2).append(i);
-              ((StringBuilder)localObject2).append(")大于或等于要下载的版本");
-              ((StringBuilder)localObject2).append(paramInt);
-              ((StringBuilder)localObject2).append(")，直接安装~~~");
-              WSLog.a("WeishiDownloadUtil", ((StringBuilder)localObject2).toString());
-              return ((DownloadInfo)localObject1).l;
-            }
-          }
-        }
-      }
-      else
-      {
-        WSLog.d("WeishiDownloadUtil", "downloadInfo is null");
-      }
-    }
-    return "";
   }
   
   public static String a(int paramInt1, int paramInt2, int paramInt3)
@@ -222,7 +127,7 @@ public class WeishiDownloadUtil
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(paramInt3);
     localObject = ((StringBuilder)localObject).toString();
-    localObject = (String)jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    localObject = (String)c.get(localObject);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       return localObject;
     }
@@ -275,13 +180,6 @@ public class WeishiDownloadUtil
     return null;
   }
   
-  public static void a()
-  {
-    WSLog.a("WeishiDownloadUtil", "resetDownloadingMark");
-    LocalMultiProcConfig.putBool("weishi_downloading_key", false);
-    LocalMultiProcConfig.putLong("weishi_downloading_start_time_key", 0L);
-  }
-  
   public static void a(int paramInt)
   {
     LocalMultiProcConfig.putInt("eventId", paramInt);
@@ -290,153 +188,18 @@ public class WeishiDownloadUtil
   public static void a(Activity paramActivity, RockDownloadPresenter paramRockDownloadPresenter, WSDownloadParams paramWSDownloadParams, boolean paramBoolean, int paramInt)
   {
     a(paramWSDownloadParams.mEventId, paramInt);
-    WeishiUtils.a(paramWSDownloadParams.mScheme);
+    WeishiUtils.e(paramWSDownloadParams.mScheme);
     a(paramActivity, paramWSDownloadParams, paramBoolean, paramInt);
-  }
-  
-  public static void a(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
-  {
-    if ((paramActivity != null) && (paramWSDownloadParams != null))
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("WSDownloadParams:");
-      ((StringBuilder)localObject).append(paramWSDownloadParams.toString());
-      WSLog.d("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
-      localObject = new RockDownloadPresenter();
-      if (!NetworkUtils.b(paramActivity))
-      {
-        if (a(paramWSDownloadParams, (RockDownloadPresenter)localObject, ((RockDownloadPresenter)localObject).a(), 3)) {
-          return;
-        }
-        QQToast.a(paramActivity, HardCodeUtil.a(2131716377), 0).a();
-        return;
-      }
-      if (c())
-      {
-        a(true);
-        WSLog.d("WeishiDownloadUtil", "当前有正在下载的任务,不响应钩子下载请求,但更改下载类型为主动下载");
-        if ((WSGlobalConfig.a().c()) && (a()))
-        {
-          b(3);
-          return;
-        }
-        a(paramWSDownloadParams.mEventId, 3);
-        WSReportDc00898.a(true, paramWSDownloadParams);
-        WSReportDc00898.a(paramWSDownloadParams, 2);
-        WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, 3, 1, 2, 0, paramWSDownloadParams.mScene);
-        WSDownloadAppDialog.a(paramActivity);
-        return;
-      }
-      if ((WSGlobalConfig.a().b()) && (AppMarketUtils.a(paramActivity)))
-      {
-        WSLog.d("WeishiDownloadUtil", "主动点击 执行厂商下载-----");
-        AppMarketUtils.a(paramActivity);
-        b(3);
-        WeishiUtils.a(paramWSDownloadParams.mScheme);
-        paramWSDownloadParams.mStReportItem = UserActionReportPresenter.a();
-        WSDownloadAppDialog.a(115, paramWSDownloadParams);
-        WSReportDc00898.a(false, paramWSDownloadParams);
-        WSReportDc00898.a(paramWSDownloadParams, 3);
-        WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, 3, 0, 3, 0, paramWSDownloadParams.mScene);
-        DownloadInfoReport.a(paramActivity, paramWSDownloadParams.mScheme, "com.tencent.weishi", "biz_src_jc_gzh_weishi");
-        return;
-      }
-      RockDownloadInfo localRockDownloadInfo = ((RockDownloadPresenter)localObject).a();
-      if (a(paramWSDownloadParams, (RockDownloadPresenter)localObject, localRockDownloadInfo, 3)) {
-        return;
-      }
-      b(3);
-      if ((!WSGlobalConfig.a().a()) && (!a()))
-      {
-        WSLog.a("WeishiDownloadUtil", "服务器关闭了4g开关");
-        WSDownloadAppDialog.b(paramActivity, paramWSDownloadParams);
-        return;
-      }
-      WSLog.a("WeishiDownloadUtil", "服务器打开了4g");
-      if (WSGlobalConfig.a().c())
-      {
-        ((RockDownloadPresenter)localObject).a(paramActivity, localRockDownloadInfo, 3, paramWSDownloadParams, null);
-        return;
-      }
-      WSDownloadAppDialog.a(paramActivity, paramWSDownloadParams);
-      return;
-    }
-    WSLog.a("WeishiDownloadUtil", "rock download activity or params is null");
-  }
-  
-  public static void a(Activity paramActivity, WSDownloadParams paramWSDownloadParams, WSDownloadListenerWrapper paramWSDownloadListenerWrapper, RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
-  {
-    paramWSDownloadListenerWrapper = new RockDownloadPresenter();
-    if (!NetworkUtils.b(paramActivity))
-    {
-      if (a(paramWSDownloadParams, paramWSDownloadListenerWrapper, paramWSDownloadListenerWrapper.a(), 3)) {
-        return;
-      }
-      QQToast.a(paramActivity, HardCodeUtil.a(2131716377), 0).a();
-      return;
-    }
-    if ((WSGlobalConfig.a().b()) && (AppMarketUtils.a(paramActivity)))
-    {
-      WSLog.d("WeishiDownloadUtil", "B链路点击 延迟执行厂商下载");
-      LocalMultiProcConfig.putBool("need_appstore_download", true);
-      if (c())
-      {
-        if ((WSGlobalConfig.a().c()) && (a()))
-        {
-          WSLog.c("WeishiDownloadUtil", "当前有下载的Rock任务,开始中断-----");
-          paramActivity = WSGlobalConfig.a().c();
-          DownloadProxy.a().b(paramActivity, false);
-          return;
-        }
-        paramActivity = WSGlobalConfig.a().d();
-        WSLog.c("WeishiDownloadUtil", "当当前有QQ下载的任务,开始中断~~");
-        DownloadProxy.a().b(paramActivity, false);
-      }
-    }
-    else
-    {
-      paramWSDownloadListenerWrapper = new RockDownloadPresenter();
-      RockDownloadInfo localRockDownloadInfo = paramWSDownloadListenerWrapper.a();
-      if (a(paramWSDownloadParams, paramWSDownloadListenerWrapper, localRockDownloadInfo, 2)) {
-        return;
-      }
-      if ((!WSGlobalConfig.a().a()) && (!a()))
-      {
-        WSLog.d("WeishiDownloadUtil", "不可以在非WIFI环境下，静默下载微视");
-        return;
-      }
-      if (c())
-      {
-        WSLog.d("WeishiDownloadUtil", "当前有正在下载的任务,不响应静默下载请求");
-        if ((WSGlobalConfig.a().c()) && (a()))
-        {
-          b(2);
-          return;
-        }
-        WSReportDc00898.a(true, paramWSDownloadParams);
-        WSReportDc00898.a(paramWSDownloadParams, 2);
-        WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, 2, 1, 2, 0, paramWSDownloadParams.mScene);
-        return;
-      }
-      WSLog.d("WeishiDownloadUtil", "执行QQ或Rock下载");
-      b(2);
-      if (WSGlobalConfig.a().c())
-      {
-        paramWSDownloadListenerWrapper.a(paramActivity, localRockDownloadInfo, 2, paramWSDownloadParams, paramRockDownloadListenerWrapper);
-        return;
-      }
-      a(paramActivity, paramWSDownloadParams, true, 2);
-    }
   }
   
   public static void a(Activity paramActivity, WSDownloadParams paramWSDownloadParams, boolean paramBoolean)
   {
-    a(paramActivity, paramWSDownloadParams);
+    b(paramActivity, paramWSDownloadParams);
   }
   
   private static void a(String paramString, int paramInt)
   {
-    Object localObject2 = DownloadManagerV2.a().a();
+    Object localObject2 = DownloadManagerV2.a().d();
     if (localObject2 == null) {
       return;
     }
@@ -446,8 +209,8 @@ public class WeishiDownloadUtil
     while (localIterator.hasNext())
     {
       localObject2 = (DownloadInfo)localIterator.next();
-      if ((localObject2 != null) && (((DownloadInfo)localObject2).e.equals("com.tencent.weishi")) && (((DownloadInfo)localObject2).d != null) && (((DownloadInfo)localObject2).d.startsWith(b())) && (!((DownloadInfo)localObject2).d.equals(paramString))) {
-        if ((((DownloadInfo)localObject2).a() == 4) && (a(((DownloadInfo)localObject2).l) < paramInt))
+      if ((localObject2 != null) && (((DownloadInfo)localObject2).e.equals("com.tencent.weishi")) && (((DownloadInfo)localObject2).d != null) && (((DownloadInfo)localObject2).d.startsWith(c())) && (!((DownloadInfo)localObject2).d.equals(paramString))) {
+        if ((((DownloadInfo)localObject2).a() == 4) && (a(((DownloadInfo)localObject2).q) < paramInt))
         {
           localArrayList.add(localObject2);
         }
@@ -458,8 +221,8 @@ public class WeishiDownloadUtil
             localObject3 = localObject2;
           }
           localObject1 = localObject3;
-          if (System.currentTimeMillis() - ((DownloadInfo)localObject2).jdField_a_of_type_Long > 2592000000L) {
-            if (((DownloadInfo)localObject2).jdField_a_of_type_Long > localObject3.jdField_a_of_type_Long)
+          if (System.currentTimeMillis() - ((DownloadInfo)localObject2).i > 2592000000L) {
+            if (((DownloadInfo)localObject2).i > localObject3.i)
             {
               localArrayList.add(localObject3);
               localObject1 = localObject2;
@@ -493,7 +256,7 @@ public class WeishiDownloadUtil
   
   public static boolean a()
   {
-    return WSDeviceUtils.a();
+    return WSDeviceUtils.i();
   }
   
   public static boolean a(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
@@ -504,18 +267,18 @@ public class WeishiDownloadUtil
       WSLog.d("WeishiDownloadUtil", "本地已经安装微视app");
       return false;
     }
-    if (!e())
+    if (!m())
     {
       WSLog.d("WeishiDownloadUtil", "预下载开关没打开");
       return false;
     }
     RockDownloadPresenter localRockDownloadPresenter = new RockDownloadPresenter();
-    RockDownloadInfo localRockDownloadInfo = localRockDownloadPresenter.a();
+    RockDownloadInfo localRockDownloadInfo = localRockDownloadPresenter.b();
     b(1);
     if (a(paramWSDownloadParams, localRockDownloadPresenter, localRockDownloadInfo, 1)) {
       return false;
     }
-    if ((WSGlobalConfig.a().c()) && (a()))
+    if ((WSGlobalConfig.a().g()) && (a()))
     {
       localRockDownloadPresenter.a(paramActivity, localRockDownloadInfo, 1, paramWSDownloadParams, null);
       return true;
@@ -534,9 +297,9 @@ public class WeishiDownloadUtil
       ((StringBuilder)localObject).append("downloadWeishi:");
       ((StringBuilder)localObject).append(paramWSDownloadParams);
       WSLog.a(((StringBuilder)localObject).toString());
-      localObject = WSGlobalConfig.a().d();
+      localObject = WSGlobalConfig.a().l();
       a(paramWSDownloadParams.mEventId, paramInt);
-      WeishiUtils.a(paramWSDownloadParams.mScheme);
+      WeishiUtils.e(paramWSDownloadParams.mScheme);
       return a(paramActivity, (String)localObject, paramBoolean, false, paramWSDownloadParams, paramInt);
     }
     WSLog.a("startQQDownload: activity is null Or params is null:");
@@ -546,17 +309,17 @@ public class WeishiDownloadUtil
   private static boolean a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, WSDownloadParams paramWSDownloadParams, int paramInt)
   {
     WSLog.a("WeishiDownloadUtil", String.format("downloadWeishi : autoInstall = %s, showNotification = %s, mDownloadUrlStr = %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
-    b();
+    i();
     Bundle localBundle = new Bundle();
-    localBundle.putString(DownloadConstants.jdField_b_of_type_JavaLangString, "10261931");
-    localBundle.putString(DownloadConstants.l, jdField_a_of_type_JavaLangString);
+    localBundle.putString(DownloadConstants.b, "10261931");
+    localBundle.putString(DownloadConstants.l, a);
     localBundle.putString(DownloadConstants.f, "com.tencent.weishi");
     localBundle.putString(DownloadConstants.j, paramString);
     localBundle.putInt(DownloadConstants.k, 2);
     localBundle.putBoolean(DownloadConstants.h, false);
     localBundle.putBoolean(DownloadConstants.y, paramBoolean2 ^ true);
     DownloadProxy.a().a(paramActivity, localBundle, "biz_src_jc_gzh_weishi", null, 0);
-    jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = paramWSDownloadParams;
+    e = paramWSDownloadParams;
     WSReportDc00898.a(true, paramWSDownloadParams);
     WSReportDc00898.a(paramWSDownloadParams, 2);
     WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, paramInt, 1, 2, 0, paramWSDownloadParams.mScene);
@@ -565,7 +328,7 @@ public class WeishiDownloadUtil
   
   private static boolean a(WSDownloadParams paramWSDownloadParams, int paramInt, String paramString)
   {
-    if (AppUtil.a(CommonDataAdapter.a().a(), paramString, "biz_src_jc_gzh_weishi", ""))
+    if (AppUtil.a(CommonDataAdapter.a().b(), paramString, "biz_src_jc_gzh_weishi", ""))
     {
       WSLog.a("WeishiDownloadUtil", "本地QQ包的版本有效，启动开始安装成功！");
       WSReportDc00898.a(1, 2);
@@ -580,7 +343,7 @@ public class WeishiDownloadUtil
         paramString.mStReportItem = UserActionReportPresenter.a();
       }
       UserActionReportPresenter.a(115, paramString.mStReportItem.pagetype, paramString.mStReportItem.comment_loctaion, null);
-      WeishiUtils.a(paramString.mScheme);
+      WeishiUtils.e(paramString.mScheme);
       return true;
     }
     WSLog.d("WeishiDownloadUtil", "本地QQ包安装失败,重新下载！");
@@ -593,7 +356,7 @@ public class WeishiDownloadUtil
     if (a((ArrayList)localObject, paramRockDownloadInfo))
     {
       WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, paramInt, 1, 1, 0, paramWSDownloadParams.mScene);
-      paramRockDownloadInfo = a((ArrayList)localObject, paramRockDownloadInfo);
+      paramRockDownloadInfo = b((ArrayList)localObject, paramRockDownloadInfo);
       if (paramRockDownloadInfo != null)
       {
         if (paramInt == 1)
@@ -601,21 +364,21 @@ public class WeishiDownloadUtil
           WSLog.c("WeishiDownloadUtil", "预下载包有效也不call安装----------------");
           return true;
         }
-        if (WSGlobalConfig.a().a(1) == 2)
+        if (WSGlobalConfig.a().b(1) == 2)
         {
-          WSRecommendAdapter.b += 1;
+          WSRecommendAdapter.f += 1;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("CCCCCCCCC onDownloadFinish SLIENT WSRecommendAdapter.openDownloadWSCount = ");
-          ((StringBuilder)localObject).append(WSRecommendAdapter.b);
+          ((StringBuilder)localObject).append(WSRecommendAdapter.f);
           WSLog.c("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
         }
         paramRockDownloadPresenter.a(paramRockDownloadInfo, 1);
-        WeishiUtils.a(paramWSDownloadParams.mScheme);
+        WeishiUtils.e(paramWSDownloadParams.mScheme);
         WSLog.d("WeishiDownloadUtil", "本地Rock包的版本有效，直接安装");
         return true;
       }
     }
-    paramRockDownloadPresenter = a(WSGlobalConfig.a().c());
+    paramRockDownloadPresenter = c(WSGlobalConfig.a().m());
     if (!TextUtils.isEmpty(paramRockDownloadPresenter))
     {
       paramRockDownloadInfo = new StringBuilder();
@@ -627,12 +390,12 @@ public class WeishiDownloadUtil
         WSLog.c("WeishiDownloadUtil", "预下载包有效也不call安装----------------");
         return true;
       }
-      if (WSGlobalConfig.a().a(1) == 2)
+      if (WSGlobalConfig.a().b(1) == 2)
       {
-        WSRecommendAdapter.b += 1;
+        WSRecommendAdapter.f += 1;
         paramRockDownloadInfo = new StringBuilder();
         paramRockDownloadInfo.append("DDDDDDDDDDD onDownloadFinish SLIENT WSRecommendAdapter.openDownloadWSCount = ");
-        paramRockDownloadInfo.append(WSRecommendAdapter.b);
+        paramRockDownloadInfo.append(WSRecommendAdapter.f);
         WSLog.c("WeishiDownloadUtil", paramRockDownloadInfo.toString());
       }
       WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, paramInt, 1, 2, 0, paramWSDownloadParams.mScene);
@@ -662,7 +425,7 @@ public class WeishiDownloadUtil
       if (paramArrayList.size() == 0) {
         return false;
       }
-      paramArrayList = a(paramArrayList, paramRockDownloadInfo);
+      paramArrayList = b(paramArrayList, paramRockDownloadInfo);
       if (paramArrayList == null) {
         return false;
       }
@@ -674,43 +437,116 @@ public class WeishiDownloadUtil
     return false;
   }
   
-  public static int b()
-  {
-    return LocalMultiProcConfig.getInt("eventType", -1);
-  }
-  
   private static WSDownloadListenerWrapper b(int paramInt1, int paramInt2)
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper != null)
+    if (g != null)
     {
-      if (!c()) {
+      if (!g()) {
         a(paramInt1);
       }
       b(paramInt2);
-      return jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper;
+      return g;
     }
     a(paramInt1);
     b(paramInt2);
-    jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper = new WeishiDownloadUtil.1();
-    DownloadManagerV2.a().a(jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper);
-    return jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper;
+    g = new WeishiDownloadUtil.1();
+    DownloadManagerV2.a().a(g);
+    return g;
+  }
+  
+  private static RockDownloadInfo b(ArrayList<RockDownloadInfo> paramArrayList, RockDownloadInfo paramRockDownloadInfo)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
+      if ((localRockDownloadInfo.businessName.equals(paramRockDownloadInfo.businessName)) && (localRockDownloadInfo.packageName.equals(paramRockDownloadInfo.packageName)) && (localRockDownloadInfo.realVersionCode >= paramRockDownloadInfo.versionCode) && (localRockDownloadInfo.versionCode >= paramRockDownloadInfo.versionCode))
+      {
+        WSLog.a("WeishiDownloadUtil", "Rock包版本大于或等于要下载的版本，有效~~~");
+        return localRockDownloadInfo;
+      }
+    }
+    return null;
   }
   
   public static String b()
   {
-    return "https://weseeugg.qq.com/download?channelid=";
-  }
-  
-  public static void b()
-  {
-    WSLog.a("WeishiDownloadUtil", "updateDownloadingMark");
-    LocalMultiProcConfig.putBool("weishi_downloading_key", true);
-    LocalMultiProcConfig.putLong("weishi_downloading_start_time_key", System.currentTimeMillis());
+    return "https://weseeugg.qq.com/download?channelid=204002177";
   }
   
   public static void b(int paramInt)
   {
     LocalMultiProcConfig.putInt("eventType", paramInt);
+  }
+  
+  public static void b(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
+  {
+    if ((paramActivity != null) && (paramWSDownloadParams != null))
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WSDownloadParams:");
+      ((StringBuilder)localObject).append(paramWSDownloadParams.toString());
+      WSLog.d("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
+      localObject = new RockDownloadPresenter();
+      if (!NetworkUtils.b(paramActivity))
+      {
+        if (a(paramWSDownloadParams, (RockDownloadPresenter)localObject, ((RockDownloadPresenter)localObject).b(), 3)) {
+          return;
+        }
+        QQToast.makeText(paramActivity, HardCodeUtil.a(2131913817), 0).show();
+        return;
+      }
+      if (g())
+      {
+        a(true);
+        WSLog.d("WeishiDownloadUtil", "当前有正在下载的任务,不响应钩子下载请求,但更改下载类型为主动下载");
+        if ((WSGlobalConfig.a().g()) && (a()))
+        {
+          b(3);
+          return;
+        }
+        a(paramWSDownloadParams.mEventId, 3);
+        WSReportDc00898.a(true, paramWSDownloadParams);
+        WSReportDc00898.a(paramWSDownloadParams, 2);
+        WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, 3, 1, 2, 0, paramWSDownloadParams.mScene);
+        WSDownloadAppDialog.a(paramActivity);
+        return;
+      }
+      if ((WSGlobalConfig.a().f()) && (AppMarketUtils.a(paramActivity)))
+      {
+        WSLog.d("WeishiDownloadUtil", "主动点击 执行厂商下载-----");
+        AppMarketUtils.b(paramActivity);
+        b(3);
+        WeishiUtils.e(paramWSDownloadParams.mScheme);
+        paramWSDownloadParams.mStReportItem = UserActionReportPresenter.a();
+        WSDownloadAppDialog.a(115, paramWSDownloadParams);
+        WSReportDc00898.a(false, paramWSDownloadParams);
+        WSReportDc00898.a(paramWSDownloadParams, 3);
+        WSPublicAccReport.getInstance().reportDownload(paramWSDownloadParams.mEventId, 3, 0, 3, 0, paramWSDownloadParams.mScene);
+        DownloadInfoReport.a(paramActivity, paramWSDownloadParams.mScheme, "com.tencent.weishi", "biz_src_jc_gzh_weishi");
+        return;
+      }
+      RockDownloadInfo localRockDownloadInfo = ((RockDownloadPresenter)localObject).b();
+      if (a(paramWSDownloadParams, (RockDownloadPresenter)localObject, localRockDownloadInfo, 3)) {
+        return;
+      }
+      b(3);
+      if ((!WSGlobalConfig.a().e()) && (!a()))
+      {
+        WSLog.a("WeishiDownloadUtil", "服务器关闭了4g开关");
+        WSDownloadAppDialog.c(paramActivity, paramWSDownloadParams);
+        return;
+      }
+      WSLog.a("WeishiDownloadUtil", "服务器打开了4g");
+      if (WSGlobalConfig.a().g())
+      {
+        ((RockDownloadPresenter)localObject).a(paramActivity, localRockDownloadInfo, 3, paramWSDownloadParams, null);
+        return;
+      }
+      WSDownloadAppDialog.b(paramActivity, paramWSDownloadParams);
+      return;
+    }
+    WSLog.a("WeishiDownloadUtil", "rock download activity or params is null");
   }
   
   private static void b(DownloadInfo paramDownloadInfo, int paramInt)
@@ -721,20 +557,20 @@ public class WeishiDownloadUtil
       return;
     }
     WSLog.d("WeishiDownloadUtil", " 下载器的DB还没准备就绪,重新注册监听，并重试下载一次");
-    if (jdField_b_of_type_JavaUtilHashMap.containsKey(paramDownloadInfo.d))
+    if (d.containsKey(paramDownloadInfo.d))
     {
-      localInteger = (Integer)jdField_b_of_type_JavaUtilHashMap.get(paramDownloadInfo.d);
+      localInteger = (Integer)d.get(paramDownloadInfo.d);
       if (localInteger != null)
       {
         paramInt = localInteger.intValue();
-        jdField_b_of_type_JavaUtilHashMap.put(paramDownloadInfo.d, Integer.valueOf(paramInt + 1));
+        d.put(paramDownloadInfo.d, Integer.valueOf(paramInt + 1));
       }
     }
     else
     {
-      jdField_b_of_type_JavaUtilHashMap.put(paramDownloadInfo.d, Integer.valueOf(1));
+      d.put(paramDownloadInfo.d, Integer.valueOf(1));
     }
-    Integer localInteger = (Integer)jdField_b_of_type_JavaUtilHashMap.get(paramDownloadInfo.d);
+    Integer localInteger = (Integer)d.get(paramDownloadInfo.d);
     if (localInteger != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -777,26 +613,26 @@ public class WeishiDownloadUtil
       }
       else if (paramInt2 == 2)
       {
-        if (WSGlobalConfig.a().a(1) == 2)
+        if (WSGlobalConfig.a().b(1) == 2)
         {
-          WSRecommendAdapter.b += 1;
+          WSRecommendAdapter.f += 1;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramString);
           localStringBuilder.append(" onDownloadFinish SLIENT WSRecommendAdapter.openDownloadWSCount = ");
-          localStringBuilder.append(WSRecommendAdapter.b);
+          localStringBuilder.append(WSRecommendAdapter.f);
           WSLog.b("WeishiDownloadUtil", localStringBuilder.toString());
         }
         else
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("processDownloadFinish, this is maybe DTest silent download,linktype is :");
-          localStringBuilder.append(WSGlobalConfig.a().a(1));
+          localStringBuilder.append(WSGlobalConfig.a().b(1));
           WSLog.a("WeishiDownloadUtil", localStringBuilder.toString());
         }
       }
       else
       {
-        if (!d()) {
+        if (!j()) {
           break label322;
         }
         a(false);
@@ -815,18 +651,18 @@ public class WeishiDownloadUtil
       label357:
       WSReportDC898Vertical.a(paramInt1);
       WSReportDc00898.a(2);
-      WSPublicAccReport.getInstance().reportDownload(a(), paramInt2, 2, 2, 0, d());
-      if (paramDownloadInfo.jdField_a_of_type_Boolean) {
-        WSPublicAccReport.getInstance().reportDownload(a(), paramInt2, 2, 2, 1, d());
+      WSPublicAccReport.getInstance().reportDownload(d(), paramInt2, 2, 2, 0, n());
+      if (paramDownloadInfo.w) {
+        WSPublicAccReport.getInstance().reportDownload(d(), paramInt2, 2, 2, 1, n());
       }
       if (paramInt1 == 8) {
         UserActionReportPresenter.a(132, 10, null);
       } else if (paramInt1 == 401) {
         UserActionReportPresenter.a(138, 1, null);
       }
-      if (jdField_b_of_type_JavaUtilHashMap.containsKey(paramDownloadInfo.d))
+      if (d.containsKey(paramDownloadInfo.d))
       {
-        jdField_b_of_type_JavaUtilHashMap.remove(paramDownloadInfo.d);
+        d.remove(paramDownloadInfo.d);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString);
         localStringBuilder.append(" onDownloadFinish remove retryCount!");
@@ -834,10 +670,10 @@ public class WeishiDownloadUtil
       }
       if (i != 0)
       {
-        paramString = a(WSGlobalConfig.a().c());
-        a(jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams, paramInt2, paramString);
+        paramString = c(WSGlobalConfig.a().m());
+        a(e, paramInt2, paramString);
       }
-      a(paramDownloadInfo.d, WSGlobalConfig.a().c());
+      a(paramDownloadInfo.d, WSGlobalConfig.a().m());
     }
   }
   
@@ -857,18 +693,18 @@ public class WeishiDownloadUtil
       localStringBuilder.append(",packName:");
       localStringBuilder.append(paramString2);
       WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
-      DownloadManagerV2.a().b(jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper);
-      WSRecommendAdapter.b = 0;
+      DownloadManagerV2.a().b(g);
+      WSRecommendAdapter.f = 0;
       if (paramBoolean) {
-        jdField_b_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper = null;
+        h = null;
       } else {
-        jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper = null;
+        g = null;
       }
-      int i = a();
-      int j = b();
+      int i = d();
+      int j = e();
       WSReportDC898Vertical.b(i);
       WSReportDc00898.b(2);
-      WSPublicAccReport.getInstance().reportDownload(i, j, 2, 2, 2, d());
+      WSPublicAccReport.getInstance().reportDownload(i, j, 2, 2, 2, n());
       if (i == 8)
       {
         UserActionReportPresenter.a(133, 10, null);
@@ -880,9 +716,111 @@ public class WeishiDownloadUtil
     }
   }
   
-  public static boolean b()
+  private static boolean b(DownloadInfo paramDownloadInfo)
   {
-    String str = c();
+    return (paramDownloadInfo != null) && (TextUtils.equals(paramDownloadInfo.e, "com.tencent.weishi")) && (paramDownloadInfo.d != null) && (paramDownloadInfo.d.startsWith(c()));
+  }
+  
+  private static WSDownloadListenerWrapper c(int paramInt1, int paramInt2)
+  {
+    WSLog.a("WeishiDownloadUtil", "createQzoneListener~~~");
+    if (h != null)
+    {
+      if (!g()) {
+        a(paramInt1);
+      }
+      b(paramInt2);
+      return h;
+    }
+    a(paramInt1);
+    b(paramInt2);
+    h = new WeishiDownloadUtil.2();
+    DownloadManagerV2.a().a(h);
+    WSLog.a("WeishiDownloadUtil", "qzone registerListener");
+    return h;
+  }
+  
+  public static String c()
+  {
+    return "https://weseeugg.qq.com/download?channelid=";
+  }
+  
+  private static String c(int paramInt)
+  {
+    Object localObject2 = DownloadManagerV2.a().b("com.tencent.weishi", 4);
+    Object localObject1 = localObject2;
+    if (((List)localObject2).size() == 0) {
+      localObject1 = DownloadManagerV2.a().a("com.tencent.weishi", 4);
+    }
+    localObject2 = DownloadManager.b().d("10261931");
+    if (localObject2 != null)
+    {
+      ((DownloadInfo)localObject2).a(4);
+      ((List)localObject1).add(localObject2);
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(">existValidQQDownloadWeishiApk, info:");
+    ((StringBuilder)localObject2).append(localObject1);
+    WSLog.a("WeishiDownloadUtil", ((StringBuilder)localObject2).toString());
+    localObject2 = ((List)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject1 = (DownloadInfo)((Iterator)localObject2).next();
+      if (localObject1 != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("downloadInfo 's url: ");
+        localStringBuilder.append(((DownloadInfo)localObject1).d);
+        WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
+        if ((((DownloadInfo)localObject1).a() == 4) && (TextUtils.equals(((DownloadInfo)localObject1).e, "com.tencent.weishi")) && (((DownloadInfo)localObject1).d != null) && (((DownloadInfo)localObject1).d.startsWith(c()))) {
+          if (TextUtils.isEmpty(((DownloadInfo)localObject1).q))
+          {
+            WSLog.a("WeishiDownloadUtil", "QQ下载包filePath为空!!!");
+          }
+          else
+          {
+            int i = a(((DownloadInfo)localObject1).q);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("判断QQ下载包有没有过期，apkVersionCode：");
+            localStringBuilder.append(i);
+            localStringBuilder.append(",targetVersion:");
+            localStringBuilder.append(paramInt);
+            WSLog.a("WeishiDownloadUtil", localStringBuilder.toString());
+            if (i >= paramInt)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("本地包版本(");
+              ((StringBuilder)localObject2).append(i);
+              ((StringBuilder)localObject2).append(")大于或等于要下载的版本");
+              ((StringBuilder)localObject2).append(paramInt);
+              ((StringBuilder)localObject2).append(")，直接安装~~~");
+              WSLog.a("WeishiDownloadUtil", ((StringBuilder)localObject2).toString());
+              return ((DownloadInfo)localObject1).q;
+            }
+          }
+        }
+      }
+      else
+      {
+        WSLog.d("WeishiDownloadUtil", "downloadInfo is null");
+      }
+    }
+    return "";
+  }
+  
+  public static int d()
+  {
+    return LocalMultiProcConfig.getInt("eventId", -1);
+  }
+  
+  public static int e()
+  {
+    return LocalMultiProcConfig.getInt("eventType", -1);
+  }
+  
+  public static boolean f()
+  {
+    String str = l();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("~~~~~~~~~~~~~~~~~~~~~~~~~currentProcessName:");
     localStringBuilder.append(str);
@@ -890,59 +828,7 @@ public class WeishiDownloadUtil
     return "com.tencent.mobileqq:qzone".equals(str);
   }
   
-  private static boolean b(DownloadInfo paramDownloadInfo)
-  {
-    return (paramDownloadInfo != null) && (TextUtils.equals(paramDownloadInfo.e, "com.tencent.weishi")) && (paramDownloadInfo.d != null) && (paramDownloadInfo.d.startsWith(b()));
-  }
-  
-  private static WSDownloadListenerWrapper c(int paramInt1, int paramInt2)
-  {
-    WSLog.a("WeishiDownloadUtil", "createQzoneListener~~~");
-    if (jdField_b_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper != null)
-    {
-      if (!c()) {
-        a(paramInt1);
-      }
-      b(paramInt2);
-      return jdField_b_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper;
-    }
-    a(paramInt1);
-    b(paramInt2);
-    jdField_b_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper = new WeishiDownloadUtil.2();
-    DownloadManagerV2.a().a(jdField_b_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper);
-    WSLog.a("WeishiDownloadUtil", "qzone registerListener");
-    return jdField_b_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper;
-  }
-  
-  private static String c()
-  {
-    Object localObject = jdField_b_of_type_JavaLangString;
-    if (localObject != null) {
-      return localObject;
-    }
-    int i = Process.myPid();
-    localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if (localObject != null)
-    {
-      if (((List)localObject).size() <= 0) {
-        return null;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-        if (localRunningAppProcessInfo.pid == i)
-        {
-          localObject = localRunningAppProcessInfo.processName;
-          jdField_b_of_type_JavaLangString = (String)localObject;
-          return localObject;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static boolean c()
+  public static boolean g()
   {
     long l = System.currentTimeMillis() - LocalMultiProcConfig.getLong("weishi_downloading_start_time_key", 0L);
     boolean bool1;
@@ -964,29 +850,71 @@ public class WeishiDownloadUtil
     return (bool2) && (!bool1);
   }
   
-  private static int d()
+  public static void h()
   {
-    WSDownloadParams localWSDownloadParams = jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
-    if (localWSDownloadParams != null) {
-      return localWSDownloadParams.mScene;
-    }
-    return 1;
+    WSLog.a("WeishiDownloadUtil", "resetDownloadingMark");
+    LocalMultiProcConfig.putBool("weishi_downloading_key", false);
+    LocalMultiProcConfig.putLong("weishi_downloading_start_time_key", 0L);
   }
   
-  public static boolean d()
+  public static void i()
+  {
+    WSLog.a("WeishiDownloadUtil", "updateDownloadingMark");
+    LocalMultiProcConfig.putBool("weishi_downloading_key", true);
+    LocalMultiProcConfig.putLong("weishi_downloading_start_time_key", System.currentTimeMillis());
+  }
+  
+  public static boolean j()
   {
     WSLog.a("WeishiDownloadUtil", "getPreDownloadingClick");
     return LocalMultiProcConfig.getBool("preDownloadingClick", false);
   }
   
-  private static boolean e()
+  private static String l()
   {
-    return (WSExpABTestManager.a().a()) && (!TextUtils.isEmpty(WSGlobalConfig.a().c())) && (WSGlobalConfig.a().c().startsWith("http"));
+    Object localObject = f;
+    if (localObject != null) {
+      return localObject;
+    }
+    int i = Process.myPid();
+    localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if (localObject != null)
+    {
+      if (((List)localObject).size() <= 0) {
+        return null;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+        if (localRunningAppProcessInfo.pid == i)
+        {
+          localObject = localRunningAppProcessInfo.processName;
+          f = (String)localObject;
+          return localObject;
+        }
+      }
+    }
+    return null;
+  }
+  
+  private static boolean m()
+  {
+    return (WSExpABTestManager.a().e()) && (!TextUtils.isEmpty(WSGlobalConfig.a().k())) && (WSGlobalConfig.a().k().startsWith("http"));
+  }
+  
+  private static int n()
+  {
+    WSDownloadParams localWSDownloadParams = e;
+    if (localWSDownloadParams != null) {
+      return localWSDownloadParams.mScene;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ class AVPreloadTaskManager$2
   
   public void run()
   {
-    AVPreloadTaskManager.a(this.this$0);
-    AVPreloadTaskManager.b(this.this$0);
+    AVPreloadTaskManager.c(this.this$0);
+    AVPreloadTaskManager.d(this.this$0);
     AVPreloadTaskManager localAVPreloadTaskManager = this.this$0;
-    ThreadCenter.postDelayedUITask(localAVPreloadTaskManager, AVPreloadTaskManager.a(localAVPreloadTaskManager), 1000L);
+    ThreadCenter.postDelayedUITask(localAVPreloadTaskManager, AVPreloadTaskManager.b(localAVPreloadTaskManager), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadTaskManager.2
  * JD-Core Version:    0.7.0.1
  */

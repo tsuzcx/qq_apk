@@ -12,7 +12,7 @@ class ReadInJoyDeliverUGCActivity$12
   
   public void run()
   {
-    Iterator localIterator = ReadInJoyDeliverUGCActivity.b(this.this$0).iterator();
+    Iterator localIterator = ReadInJoyDeliverUGCActivity.l(this.this$0).iterator();
     StringBuilder localStringBuilder;
     while (localIterator.hasNext())
     {
@@ -32,7 +32,7 @@ class ReadInJoyDeliverUGCActivity$12
         QLog.d("ReadInJoyDeliverUGCActivity", 2, localStringBuilder.toString());
       }
     }
-    localIterator = ReadInJoyDeliverUGCActivity.c(this.this$0).iterator();
+    localIterator = ReadInJoyDeliverUGCActivity.m(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (String)localIterator.next();
@@ -55,7 +55,7 @@ class ReadInJoyDeliverUGCActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.12
  * JD-Core Version:    0.7.0.1
  */

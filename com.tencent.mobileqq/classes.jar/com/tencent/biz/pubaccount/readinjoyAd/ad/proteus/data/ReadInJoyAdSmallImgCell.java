@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data;
 
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
 import com.tencent.mobileqq.kandian.biz.pts.api.IReadInJoyProteusBindUtil;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
@@ -20,6 +21,7 @@ public class ReadInJoyAdSmallImgCell
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).bindDislikeButton(paramAbsBaseArticleInfo, localJSONObject1);
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).bindSeparator(paramAbsBaseArticleInfo, localJSONObject1);
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).bindCommentNumText(paramAbsBaseArticleInfo, localJSONObject1);
+    ReadInJoyAdUtils.k(paramAbsBaseArticleInfo, localJSONObject1);
     ((IReadInJoyProteusBindUtil)QRoute.api(IReadInJoyProteusBindUtil.class)).bindAdPositionInfoNew(paramAbsBaseArticleInfo, localJSONObject1);
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).hasAddLocationInfo(paramAbsBaseArticleInfo)) {
       localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
@@ -33,7 +35,7 @@ public class ReadInJoyAdSmallImgCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.data.ReadInJoyAdSmallImgCell
  * JD-Core Version:    0.7.0.1
  */

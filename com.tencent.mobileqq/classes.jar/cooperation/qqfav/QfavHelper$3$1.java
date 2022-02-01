@@ -43,7 +43,7 @@ class QfavHelper$3$1
       localStringBuilder.append(" OK.");
       QLog.i("qqfav", 2, localStringBuilder.toString());
     }
-    QfavHelper.a().set(true);
+    QfavHelper.d().set(true);
     try
     {
       ThreadManager.post(this.a.a, 5, null, false);
@@ -54,7 +54,7 @@ class QfavHelper$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ public class SubType0x141
         if (localMsgBody.uint64_tips_seq_id.has()) {
           paramMsgInfo = String.valueOf(localMsgBody.uint64_tips_seq_id.get());
         }
-        ((QQAppInterface)paramOnLinePushMessageProcessor.a()).getMessageFacade().a().a(paramMsgType0x210, paramArrayOfByte, paramMsgInfo, 0, true);
+        ((QQAppInterface)paramOnLinePushMessageProcessor.a()).getMessageFacade().r().a(paramMsgType0x210, paramArrayOfByte, paramMsgInfo, 0, true);
       }
       catch (InvalidProtocolBufferMicroException paramOnLinePushMessageProcessor)
       {
@@ -53,7 +53,7 @@ public class SubType0x141
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x141
  * JD-Core Version:    0.7.0.1
  */

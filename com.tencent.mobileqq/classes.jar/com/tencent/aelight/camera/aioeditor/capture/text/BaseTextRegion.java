@@ -10,9 +10,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class BaseTextRegion
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
+  int a = 0;
   int b = 0;
   int c = 0;
   int d = 0;
@@ -20,14 +18,9 @@ public class BaseTextRegion
   public int f = 0;
   public int g = 0;
   public int h = 0;
-  public int i = 2;
-  
-  public BaseTextRegion()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_AndroidGraphicsTypeface = null;
-  }
+  public Bitmap i = null;
+  public Typeface j = null;
+  public int k = 2;
   
   public int a(float paramFloat)
   {
@@ -37,14 +30,14 @@ public class BaseTextRegion
   public int a(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = 0;
-    while (j < paramInt)
+    int m = 0;
+    while (m < paramInt)
     {
       localStringBuilder.append("我");
-      j += 1;
+      m += 1;
     }
     TextPaint localTextPaint = new TextPaint();
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsTypeface;
+    Object localObject = this.j;
     if (localObject != null) {
       localTextPaint.setTypeface((Typeface)localObject);
     }
@@ -63,7 +56,7 @@ public class BaseTextRegion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.BaseTextRegion
  * JD-Core Version:    0.7.0.1
  */

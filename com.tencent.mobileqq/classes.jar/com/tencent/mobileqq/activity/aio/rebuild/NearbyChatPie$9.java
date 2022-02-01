@@ -1,41 +1,50 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 class NearbyChatPie$9
-  extends FriendListObserver
+  extends NearbyRelevantObserver
 {
   NearbyChatPie$9(NearbyChatPie paramNearbyChatPie) {}
   
-  protected void onAddFriend(String paramString)
+  public void a(String paramString1, String paramString2, Object paramObject)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramString))
+    if (QLog.isDevelopLevel())
     {
-      Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-      ((Intent)localObject).putExtra("uintype", 0);
-      NearbyChatPie.b(this.a, (Intent)localObject);
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.a.b);
-        ((StringBuilder)localObject).append("Q.nearby.follow");
-        localObject = ((StringBuilder)localObject).toString();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onAddFriend, addUin:");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append("|updateSession");
-        QLog.d((String)localObject, 2, localStringBuilder.toString());
-      }
+      String str = this.a.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAutoInput, [");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(",");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append("]");
+      QLog.i(str, 4, localStringBuilder.toString());
+    }
+    if (!"tag_nearby_chat".equals(paramString1)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    if (this.a.Y != null)
+    {
+      this.a.aF();
+      this.a.Y.setText(paramString2);
+      this.a.Y.selectAll();
+      this.a.bk = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.9
  * JD-Core Version:    0.7.0.1
  */

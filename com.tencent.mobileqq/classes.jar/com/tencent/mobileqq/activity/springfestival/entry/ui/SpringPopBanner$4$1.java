@@ -19,35 +19,35 @@ class SpringPopBanner$4$1
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("show PopBanner type=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.b.a);
     ((StringBuilder)localObject).append(" path=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult.filePath);
+    ((StringBuilder)localObject).append(this.a.filePath);
     QLog.d("shua2021_SpringPopBanner", 2, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner.a(true);
+    this.b.c.a(true);
     try
     {
-      SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner).addView(SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner));
-      SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult.filePath);
-      localObject = SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$PathResult.filePath);
-      SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner).setBackgroundDrawable(null);
-      SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner).setBackgroundDrawable((Drawable)localObject);
-      SpringPopBanner.a(SpringPopBanner.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner));
-      SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner).setTag(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_JavaLangString);
+      SpringPopBanner.c(this.b.c).addView(SpringPopBanner.b(this.b.c));
+      SpringPopBanner.a(this.b.c, this.b.a, this.a.filePath);
+      localObject = SpringPopBanner.b(this.b.c, this.b.a, this.a.filePath);
+      SpringPopBanner.a(this.b.c).setBackgroundDrawable(null);
+      SpringPopBanner.a(this.b.c).setBackgroundDrawable((Drawable)localObject);
+      SpringPopBanner.a(SpringPopBanner.d(this.b.c));
+      SpringPopBanner.a(this.b.c).setTag(this.b.b);
     }
     catch (Throwable localThrowable)
     {
       SpringHbMonitorReporter.a(212, localThrowable, new String[0]);
       QLog.d("shua2021_SpringPopBanner", 1, localThrowable.getMessage(), localThrowable);
     }
-    SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner, this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_JavaLangString, true);
+    SpringPopBanner.a(this.b.c, this.b.b, true);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("active_id", this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner$4.jdField_a_of_type_JavaLangString);
+    localHashMap.put("active_id", this.b.b);
     SpringHbReporter.a("event_dachaping", 0, 0, localHashMap, "exp", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.ui.SpringPopBanner.4.1
  * JD-Core Version:    0.7.0.1
  */

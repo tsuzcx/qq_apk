@@ -20,49 +20,49 @@ public class NowQQLiveFocusAdapter
   extends RecyclerView.Adapter<NowQQLiveFocusAdapter.ViewHolder>
   implements FocusLiveStreamListener
 {
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private List<NowQQLiveAnchorInfo> jdField_a_of_type_JavaUtilList;
+  private BaseActivity a;
+  private List<NowQQLiveAnchorInfo> b;
   
   public NowQQLiveFocusAdapter(BaseActivity paramBaseActivity, List<NowQQLiveAnchorInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramBaseActivity;
+    this.b = paramList;
     FocusLiveStreamDataManager.a().a(this);
   }
   
   public NowQQLiveFocusAdapter.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new NowQQLiveFocusAdapter.ViewHolder(View.inflate(paramViewGroup.getContext(), 2131559517, null));
+    return new NowQQLiveFocusAdapter.ViewHolder(View.inflate(paramViewGroup.getContext(), 2131625539, null));
   }
   
   public void a(int paramInt, String paramString) {}
   
   public void a(NowQQLiveFocusAdapter.ViewHolder paramViewHolder, int paramInt)
   {
-    NowQQLiveAnchorInfo localNowQQLiveAnchorInfo = (NowQQLiveAnchorInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localNowQQLiveAnchorInfo.b());
-    ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView, localNowQQLiveAnchorInfo.c(), new ColorDrawable(0), new ColorDrawable(0), 80, 80, null, false);
-    paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView.setAnimationRes(2130841495);
-    paramViewHolder.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView.a();
+    NowQQLiveAnchorInfo localNowQQLiveAnchorInfo = (NowQQLiveAnchorInfo)this.b.get(paramInt);
+    paramViewHolder.b.setText(localNowQQLiveAnchorInfo.d());
+    ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(paramViewHolder.a, localNowQQLiveAnchorInfo.e(), new ColorDrawable(0), new ColorDrawable(0), 80, 80, null, false);
+    paramViewHolder.c.setAnimationRes(2130842337);
+    paramViewHolder.c.a();
     NowQQLiveDataReport.b(String.valueOf(localNowQQLiveAnchorInfo.a()));
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(List<NowQQLiveAnchorInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.b.clear();
+    this.b.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.NowQQLiveFocusAdapter
  * JD-Core Version:    0.7.0.1
  */

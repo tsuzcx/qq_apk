@@ -17,18 +17,17 @@ import mqq.app.MobileQQ;
 public class ArkAppDeviceModule
   extends ArkAppModuleBase
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  protected ArkAppEventObserverManager a;
-  private ArkAppDeviceModule.ConnectionTypeMethod jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$ConnectionTypeMethod = new ArkAppDeviceModule.ConnectionTypeMethod(this, null);
-  private ArkAppDeviceModule.ObserverMethod jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$ObserverMethod = new ArkAppDeviceModule.ObserverMethod(this, null);
-  private ArkAppDeviceModule.ScanCodeMethod jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$ScanCodeMethod = new ArkAppDeviceModule.ScanCodeMethod(this, null);
-  private ArkAppDeviceModule.SystemInfoMethod jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$SystemInfoMethod = new ArkAppDeviceModule.SystemInfoMethod(this, null);
-  private HashMap<String, ArkAppDeviceModule.DeviceMethodWrap> jdField_a_of_type_JavaUtilHashMap = new ArkAppDeviceModule.1(this);
+  protected ArkAppEventObserverManager a = new ArkAppEventObserverManager(this.f);
+  private ArkAppDeviceModule.SystemInfoMethod b = new ArkAppDeviceModule.SystemInfoMethod(this, null);
+  private ArkAppDeviceModule.ConnectionTypeMethod c = new ArkAppDeviceModule.ConnectionTypeMethod(this, null);
+  private ArkAppDeviceModule.ObserverMethod d = new ArkAppDeviceModule.ObserverMethod(this, null);
+  private ArkAppDeviceModule.ScanCodeMethod k = new ArkAppDeviceModule.ScanCodeMethod(this, null);
+  private HashMap<String, ArkAppDeviceModule.DeviceMethodWrap> l = new ArkAppDeviceModule.1(this);
+  private BroadcastReceiver m = null;
   
   public ArkAppDeviceModule(ark.Application paramApplication, int paramInt)
   {
     super(paramApplication, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager = new ArkAppEventObserverManager(this.b);
   }
   
   private void a(long paramLong, String paramString1, String paramString2)
@@ -172,23 +171,23 @@ public class ArkAppDeviceModule
     localVariantWrapper2.Reset();
   }
   
-  private static String b()
+  private static String e()
   {
     return MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin();
   }
   
   public void Destruct()
   {
-    ArkAppEventObserverManager localArkAppEventObserverManager = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager;
+    ArkAppEventObserverManager localArkAppEventObserverManager = this.a;
     if (localArkAppEventObserverManager != null) {
       localArkAppEventObserverManager.a();
     }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
+    if (this.m != null) {}
     try
     {
-      BaseApplication.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      BaseApplication.getContext().unregisterReceiver(this.m);
       label30:
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      this.m = null;
       super.Destruct();
       return;
     }
@@ -205,8 +204,8 @@ public class ArkAppDeviceModule
   
   public boolean HasMethod(String paramString)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    return (localHashMap != null) && (localHashMap.containsKey(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null);
+    HashMap localHashMap = this.l;
+    return (localHashMap != null) && (localHashMap.containsKey(paramString)) && (this.l.get(paramString) != null);
   }
   
   public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
@@ -221,7 +220,7 @@ public class ArkAppDeviceModule
     if (!a(paramString)) {
       return false;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.l;
     if (localObject != null)
     {
       localObject = (ArkAppDeviceModule.DeviceMethodWrap)((HashMap)localObject).get(paramString);
@@ -230,11 +229,6 @@ public class ArkAppDeviceModule
       }
     }
     return false;
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
   
   protected ArkModuleMethod[] a()
@@ -246,10 +240,15 @@ public class ArkAppDeviceModule
   {
     return true;
   }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppDeviceModule
  * JD-Core Version:    0.7.0.1
  */

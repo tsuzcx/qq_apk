@@ -10,19 +10,17 @@ import kotlin.jvm.functions.Function1;
 final class ReprintActionDialog$2
   implements DialogInterface.OnDismissListener
 {
-  ReprintActionDialog$2(ReprintActionDialog paramReprintActionDialog) {}
-  
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
     paramDialogInterface = this.a.a();
     if (paramDialogInterface != null) {
-      paramDialogInterface = (Unit)paramDialogInterface.invoke(Boolean.valueOf(ReprintActionDialog.a(this.a)));
+      paramDialogInterface = (Unit)paramDialogInterface.invoke(Boolean.valueOf(ReprintActionDialog.b(this.a)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.ReprintActionDialog.2
  * JD-Core Version:    0.7.0.1
  */

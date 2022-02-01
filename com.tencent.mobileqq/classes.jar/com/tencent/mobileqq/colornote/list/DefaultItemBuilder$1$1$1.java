@@ -7,14 +7,14 @@ class DefaultItemBuilder$1$1$1
   
   public void run()
   {
-    if (!this.a.a.jdField_a_of_type_Boolean) {
-      DefaultItemBuilder.a(this.a.a.this$0, this.a.a.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$ViewHolder);
+    if (!this.a.a.e) {
+      DefaultItemBuilder.a(this.a.a.this$0, this.a.a.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1.1.1
  * JD-Core Version:    0.7.0.1
  */

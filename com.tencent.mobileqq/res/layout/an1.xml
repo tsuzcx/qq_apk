@@ -4,6 +4,6 @@
     <LinearLayout android:gravity="center_vertical" android:id="@id/l3t" android:background="@drawable/common_tips_bg_white" android:layout_width="fill_parent" android:layout_height="44.0dip">
         <ImageView android:id="@id/dcf" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/bsg" />
         <TextView android:gravity="center|left" android:id="@id/l3u" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/igq" android:layout_weight="1.0" style="@style/mv" />
-        <ImageView android:gravity="center" android:clickable="true" android:layout_width="9.0dip" android:layout_height="14.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/cig" />
+        <ImageView android:gravity="center" android:clickable="true" android:layout_width="9.0dip" android:layout_height="14.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/common_tips_arrow_gray" />
     </LinearLayout>
 </LinearLayout>

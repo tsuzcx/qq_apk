@@ -12,29 +12,29 @@ class AEGIFChunkPreviewAdapter$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFPreviewWrapper.jdField_a_of_type_Int == 13)
+    if (this.a.a == 13)
     {
-      boolean bool = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFPreviewWrapper.a() ^ true;
+      boolean bool = this.a.a() ^ true;
       if (bool)
       {
-        AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter).add(Integer.valueOf(this.jdField_a_of_type_Int));
-        AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter, true);
+        AEGIFChunkPreviewAdapter.a(this.d).add(Integer.valueOf(this.b));
+        AEGIFChunkPreviewAdapter.a(this.d, true);
       }
       else
       {
-        AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter).remove(Integer.valueOf(this.jdField_a_of_type_Int));
-        if (AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter).size() < 1) {
-          AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter, false);
+        AEGIFChunkPreviewAdapter.a(this.d).remove(Integer.valueOf(this.b));
+        if (AEGIFChunkPreviewAdapter.a(this.d).size() < 1) {
+          AEGIFChunkPreviewAdapter.a(this.d, false);
         }
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFPreviewWrapper.a(bool);
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter$ViewHolder.a(bool);
+      this.a.a(bool);
+      this.c.a(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFChunkPreviewAdapter.1
  * JD-Core Version:    0.7.0.1
  */

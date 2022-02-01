@@ -21,20 +21,20 @@ class AddRequestActivity$8
   {
     ReportController.b(this.a.app, "CliOper", "", "", "Verification_msg", "Vfc_answ_clk", 0, 0, "", "", "", "");
     Object localObject1 = this.a;
-    if (AddRequestActivity.a((AddRequestActivity)localObject1) == 3999) {
+    if (AddRequestActivity.c((AddRequestActivity)localObject1) == 3999) {
       i = 3041;
     } else {
-      i = AddRequestActivity.a(this.a);
+      i = AddRequestActivity.c(this.a);
     }
     AddRequestActivity.a((AddRequestActivity)localObject1, i);
     Object localObject2 = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    boolean bool = ((FriendsManager)localObject2).b(this.a.a);
+    boolean bool = ((FriendsManager)localObject2).n(this.a.a);
     localObject1 = AIOUtils.a(new Intent(this.a, SplashActivity.class), null);
     ((Intent)localObject1).putExtra("uin", this.a.a);
-    ((Intent)localObject1).putExtra("add_friend_source_id", AddRequestActivity.a(this.a));
+    ((Intent)localObject1).putExtra("add_friend_source_id", AddRequestActivity.c(this.a));
     if (bool)
     {
-      localObject2 = ((FriendsManager)localObject2).e(this.a.a);
+      localObject2 = ((FriendsManager)localObject2).m(this.a.a);
       if (localObject2 != null)
       {
         ((Intent)localObject1).putExtra("cSpecialFlag", ((Friends)localObject2).cSpecialFlag);
@@ -43,15 +43,15 @@ class AddRequestActivity$8
     }
     else
     {
-      ((Intent)localObject1).putExtra("uinname", this.a.b);
+      ((Intent)localObject1).putExtra("uinname", this.a.l);
       ((Intent)localObject1).putExtra("param_wzry_data", AddRequestActivity.a(this.a));
     }
     int i = 1022;
     if (bool) {
       i = 0;
-    } else if ((AddRequestActivity.a(this.a) != 2007) && (AddRequestActivity.a(this.a) != 3007) && (AddRequestActivity.a(this.a) != 4007))
+    } else if ((AddRequestActivity.c(this.a) != 2007) && (AddRequestActivity.c(this.a) != 3007) && (AddRequestActivity.c(this.a) != 4007))
     {
-      if ((AddRequestActivity.a(this.a) == 2019) || (AddRequestActivity.a(this.a) == 3019)) {
+      if ((AddRequestActivity.c(this.a) == 2019) || (AddRequestActivity.c(this.a) == 3019)) {
         i = 1010;
       }
     }
@@ -65,7 +65,7 @@ class AddRequestActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.view.View.OnTouchListener;
 class ListenTogetherPlayFragment$4
   implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float = 0.0F;
+  float a = 0.0F;
   
   ListenTogetherPlayFragment$4(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
   
@@ -15,19 +15,19 @@ class ListenTogetherPlayFragment$4
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_Float = paramView.getAlpha();
-      paramView.setAlpha(this.jdField_a_of_type_Float * 0.5F);
+      this.a = paramView.getAlpha();
+      paramView.setAlpha(this.a * 0.5F);
     }
     else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
     {
-      paramView.setAlpha(this.jdField_a_of_type_Float);
+      paramView.setAlpha(this.a);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.4
  * JD-Core Version:    0.7.0.1
  */

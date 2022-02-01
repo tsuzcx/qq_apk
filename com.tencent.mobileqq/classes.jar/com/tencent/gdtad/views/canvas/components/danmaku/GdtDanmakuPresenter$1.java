@@ -12,8 +12,8 @@ class GdtDanmakuPresenter$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    GdtDanmakuPresenter.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuPresenter, this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuItemView);
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuPresenter.removeView(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsDanmakuGdtDanmakuItemView);
+    GdtDanmakuPresenter.a(this.b, this.a);
+    this.b.removeView(this.a);
   }
   
   public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
@@ -32,7 +32,7 @@ class GdtDanmakuPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.danmaku.GdtDanmakuPresenter.1
  * JD-Core Version:    0.7.0.1
  */

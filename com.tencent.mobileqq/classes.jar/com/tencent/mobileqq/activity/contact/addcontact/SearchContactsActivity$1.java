@@ -12,9 +12,9 @@ class SearchContactsActivity$1
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    SearchContactsActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity, paramEditable);
-    ImageButton localImageButton = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_AndroidWidgetImageButton;
+    paramEditable = this.b.K.getText().toString();
+    SearchContactsActivity.a(this.b, paramEditable);
+    ImageButton localImageButton = this.b.J;
     int i;
     if (paramEditable.equals("")) {
       i = 8;
@@ -22,8 +22,8 @@ class SearchContactsActivity$1
       i = 0;
     }
     localImageButton.setVisibility(i);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.h != 1)) {
-      ((SearchContactsFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).c(paramEditable);
+    if ((this.a) && (this.b.G != 1)) {
+      ((SearchContactsFragment)this.b.M).d(paramEditable);
     }
   }
   
@@ -33,7 +33,7 @@ class SearchContactsActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity.1
  * JD-Core Version:    0.7.0.1
  */

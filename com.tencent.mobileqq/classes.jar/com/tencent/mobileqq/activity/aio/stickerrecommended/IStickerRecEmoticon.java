@@ -11,33 +11,33 @@ import java.net.URL;
 public abstract interface IStickerRecEmoticon
   extends IEmoticonExposure, IEmoticonSort, IStickerModel
 {
-  public abstract URLDrawable.URLDrawableOptions a();
-  
   public abstract URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions);
-  
-  public abstract String a();
-  
-  public abstract URL a();
   
   public abstract void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt);
   
   public abstract void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo);
   
-  public abstract boolean a();
-  
-  public abstract String b();
-  
   public abstract boolean b();
   
-  public abstract String c();
+  public abstract URLDrawable.URLDrawableOptions c();
   
-  public abstract boolean c();
+  public abstract boolean d();
   
-  public abstract String d();
+  public abstract String e();
+  
+  public abstract String f();
+  
+  public abstract boolean g();
+  
+  public abstract URL k();
+  
+  public abstract String l();
+  
+  public abstract String m();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecEmoticon
  * JD-Core Version:    0.7.0.1
  */

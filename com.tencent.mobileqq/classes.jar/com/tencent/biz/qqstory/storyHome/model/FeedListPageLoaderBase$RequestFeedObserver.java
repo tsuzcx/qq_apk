@@ -15,10 +15,10 @@ public class FeedListPageLoaderBase$RequestFeedObserver
     super.onNext(paramT);
     this.a.b();
     SLog.b("Q.qqstory.home.data.FeedListPageLoaderBase", "refresh data finish %s", paramT);
-    paramT.d = this.a.jdField_a_of_type_Boolean;
-    this.a.a(paramT.a, paramT.c);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.b();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$OnFeedItemPageLoadListener.a(paramT);
+    paramT.d = this.a.a;
+    this.a.a(paramT.e, paramT.c);
+    this.a.g.b();
+    this.a.h.a(paramT);
     this.a.a("Q.qqstory.home.data.FeedListPageLoaderBase");
   }
   
@@ -32,9 +32,9 @@ public class FeedListPageLoaderBase$RequestFeedObserver
   {
     super.onError(paramError);
     paramError = (ErrorMessage)paramError;
-    paramError = this.a.a(paramError);
-    paramError.d = this.a.jdField_a_of_type_Boolean;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$OnFeedItemPageLoadListener.a(paramError);
+    paramError = this.a.b(paramError);
+    paramError.d = this.a.a;
+    this.a.h.a(paramError);
   }
 }
 

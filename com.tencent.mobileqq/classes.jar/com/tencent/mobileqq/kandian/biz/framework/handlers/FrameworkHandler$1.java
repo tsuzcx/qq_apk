@@ -11,12 +11,12 @@ class FrameworkHandler$1
   
   public void a_(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    VideoPlayControlUtils.a(this.a.a(), paramAbsBaseArticleInfo);
+    VideoPlayControlUtils.a(this.a.e(), paramAbsBaseArticleInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.FrameworkHandler.1
  * JD-Core Version:    0.7.0.1
  */

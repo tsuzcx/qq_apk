@@ -19,16 +19,16 @@ import java.lang.ref.WeakReference;
 class InviteUIChecker$CheckTask
   implements Runnable
 {
-  private final long jdField_a_of_type_Long = AudioHelper.b();
-  private final Intent jdField_a_of_type_AndroidContentIntent;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<VideoAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private final long a = AudioHelper.c();
+  private final String b;
+  private final Intent c;
+  private final WeakReference<VideoAppInterface> d;
   
   private InviteUIChecker$CheckTask(String paramString, Intent paramIntent, VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoAppInterface);
+    this.b = paramString;
+    this.c = paramIntent;
+    this.d = new WeakReference(paramVideoAppInterface);
   }
   
   public void a(VideoAppInterface paramVideoAppInterface, Intent paramIntent)
@@ -37,13 +37,13 @@ class InviteUIChecker$CheckTask
     int i = paramIntent.getIntExtra("relationType", 0);
     long l2 = paramIntent.getLongExtra("friendUin", 0L);
     paramIntent = SessionMgr.a(i, String.valueOf(l1), new int[0]);
-    Object localObject = SessionMgr.a().c(paramIntent);
+    Object localObject = SessionMgr.a().d(paramIntent);
     if ((localObject != null) && (((SessionInfo)localObject).h()))
     {
-      i = ((SessionInfo)localObject).k;
-      String str = ((SessionInfo)localObject).e;
+      i = ((SessionInfo)localObject).p;
+      String str = ((SessionInfo)localObject).u;
       Bitmap localBitmap = paramVideoAppInterface.a(i, String.valueOf(l1), str, true, true);
-      localObject = paramVideoAppInterface.a(AVUtil.c(((SessionInfo)localObject).E), String.valueOf(l2), String.valueOf(((SessionInfo)localObject).r));
+      localObject = paramVideoAppInterface.a(AVUtil.d(((SessionInfo)localObject).aQ), String.valueOf(l2), String.valueOf(((SessionInfo)localObject).aW));
       str = paramVideoAppInterface.a(i, String.valueOf(l1), str);
       QAVNotification.a(paramVideoAppInterface).a(true, paramIntent, (String)localObject, localBitmap, String.valueOf(l1), 61, i, 3, str);
       VideoRecoveryReporter.a();
@@ -66,24 +66,24 @@ class InviteUIChecker$CheckTask
     SessionInfo localSessionInfo;
     String str2;
     Object localObject;
-    if (AVUtil.b(i))
+    if (AVUtil.e(i))
     {
       long l1 = paramIntent.getLongExtra("discussId", 0L);
       j = paramIntent.getIntExtra("relationType", 0);
       long l2 = paramIntent.getLongExtra("friendUin", 0L);
       str1 = SessionMgr.a(j, String.valueOf(l1), new int[0]);
-      localSessionInfo = SessionMgr.a().c(str1);
+      localSessionInfo = SessionMgr.a().d(str1);
       paramIntent = str1;
       if (localSessionInfo != null)
       {
         paramIntent = str1;
         if (localSessionInfo.h())
         {
-          str2 = localSessionInfo.e;
+          str2 = localSessionInfo.u;
           paramIntent = paramVideoAppInterface.a(i, String.valueOf(l1), str2, true, true);
-          localObject = paramVideoAppInterface.a(AVUtil.c(localSessionInfo.E), String.valueOf(l2), String.valueOf(localSessionInfo.r));
+          localObject = paramVideoAppInterface.a(AVUtil.d(localSessionInfo.aQ), String.valueOf(l2), String.valueOf(localSessionInfo.aW));
           str2 = paramVideoAppInterface.a(i, String.valueOf(l1), str2);
-          QAVNotification.a(paramVideoAppInterface).a(localSessionInfo.b, (String)localObject, paramIntent, String.valueOf(l1), 57, i, 3, str2);
+          QAVNotification.a(paramVideoAppInterface).a(localSessionInfo.f, (String)localObject, paramIntent, String.valueOf(l1), 57, i, 3, str2);
           paramIntent = str1;
         }
       }
@@ -98,17 +98,17 @@ class InviteUIChecker$CheckTask
       } else {
         paramIntent = SessionMgr.a(3, str1, new int[0]);
       }
-      localSessionInfo = SessionMgr.a().c(paramIntent);
+      localSessionInfo = SessionMgr.a().d(paramIntent);
       if ((localSessionInfo != null) && (localSessionInfo.h()) && (j == 3))
       {
-        str2 = localSessionInfo.e;
+        str2 = localSessionInfo.u;
         localObject = paramVideoAppInterface.a(i, str1, str2, true, true);
         str1 = paramVideoAppInterface.a(i, str1, str2);
         paramVideoAppInterface = QAVNotification.a(paramVideoAppInterface);
-        if ((!localSessionInfo.H) && (!bool)) {
-          paramVideoAppInterface.a(localSessionInfo.b, str1, (Bitmap)localObject, null, 56, i, 2);
+        if ((!localSessionInfo.aK) && (!bool)) {
+          paramVideoAppInterface.a(localSessionInfo.f, str1, (Bitmap)localObject, null, 56, i, 2);
         } else {
-          paramVideoAppInterface.a(localSessionInfo.b, str1, (Bitmap)localObject, null, 55, i, 1);
+          paramVideoAppInterface.a(localSessionInfo.f, str1, (Bitmap)localObject, null, 55, i, 1);
         }
       }
     }
@@ -131,15 +131,15 @@ class InviteUIChecker$CheckTask
     } else {
       paramIntent = SessionMgr.a(3, str1, new int[0]);
     }
-    SessionInfo localSessionInfo = SessionMgr.a().c(paramIntent);
+    SessionInfo localSessionInfo = SessionMgr.a().d(paramIntent);
     if ((localSessionInfo != null) && (localSessionInfo.h()) && (i == 3))
     {
-      i = localSessionInfo.k;
-      String str2 = localSessionInfo.e;
+      i = localSessionInfo.p;
+      String str2 = localSessionInfo.u;
       Bitmap localBitmap = paramVideoAppInterface.a(i, str1, str2, true, true);
       str1 = paramVideoAppInterface.a(i, str1, str2);
       paramVideoAppInterface = QAVNotification.a(paramVideoAppInterface);
-      if (localSessionInfo.H) {
+      if (localSessionInfo.aK) {
         paramVideoAppInterface.a(true, paramIntent, str1, localBitmap, null, 45, i, 1, null);
       } else {
         paramVideoAppInterface.a(true, paramIntent, str1, localBitmap, null, 40, i, 2, null);
@@ -158,7 +158,7 @@ class InviteUIChecker$CheckTask
   
   public void run()
   {
-    Object localObject = (VideoAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (VideoAppInterface)this.d.get();
     if (localObject == null)
     {
       QLog.e("InviteUIChecker", 1, "CheckTask app is null.");
@@ -166,19 +166,19 @@ class InviteUIChecker$CheckTask
     }
     try
     {
-      if (VideoInviteActivity.class.getName().equals(this.jdField_a_of_type_JavaLangString)) {
-        c((VideoAppInterface)localObject, this.jdField_a_of_type_AndroidContentIntent);
-      } else if (GaInviteLockActivity.class.getName().equals(this.jdField_a_of_type_JavaLangString)) {
-        a((VideoAppInterface)localObject, this.jdField_a_of_type_AndroidContentIntent);
-      } else if (MultiIncomingCallsActivity.class.getName().equals(this.jdField_a_of_type_JavaLangString)) {
-        b((VideoAppInterface)localObject, this.jdField_a_of_type_AndroidContentIntent);
+      if (VideoInviteActivity.class.getName().equals(this.b)) {
+        c((VideoAppInterface)localObject, this.c);
+      } else if (GaInviteLockActivity.class.getName().equals(this.b)) {
+        a((VideoAppInterface)localObject, this.c);
+      } else if (MultiIncomingCallsActivity.class.getName().equals(this.b)) {
+        b((VideoAppInterface)localObject, this.c);
       }
       ReportController.b(null, "dc00898", "", "", "0X800A2C4", "0X800A2C4", 0, 0, "", "", "", "");
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("CheckTask className[");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.b);
         ((StringBuilder)localObject).append("]");
         QLog.i("InviteUIChecker", 2, ((StringBuilder)localObject).toString());
         return;
@@ -194,9 +194,9 @@ class InviteUIChecker$CheckTask
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CheckTask{");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

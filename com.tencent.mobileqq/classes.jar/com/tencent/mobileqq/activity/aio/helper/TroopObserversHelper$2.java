@@ -14,22 +14,22 @@ class TroopObserversHelper$2
   
   protected void a(GagStatus paramGagStatus)
   {
-    if ((paramGagStatus.jdField_a_of_type_Int == 2) && (paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopTroopgagDataSelfGagInfo != null))
+    if ((paramGagStatus.b == 2) && (paramGagStatus.d != null))
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onTroopGagStatusChange:");
-        localStringBuilder.append(paramGagStatus.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramGagStatus.a);
         QLog.d("troop_gag", 2, localStringBuilder.toString());
       }
-      if (!TextUtils.isEmpty(TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(TroopObserversHelper.b(this.a).b))
       {
-        if (TextUtils.isEmpty(paramGagStatus.jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(paramGagStatus.a)) {
           return;
         }
-        if (TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString.equals(paramGagStatus.jdField_a_of_type_JavaLangString)) {
-          TroopObserversHelper.a(this.a).a(paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopTroopgagDataSelfGagInfo, true);
+        if (TroopObserversHelper.b(this.a).b.equals(paramGagStatus.a)) {
+          TroopObserversHelper.d(this.a).a(paramGagStatus.d, true);
         }
       }
     }
@@ -37,7 +37,7 @@ class TroopObserversHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.2
  * JD-Core Version:    0.7.0.1
  */

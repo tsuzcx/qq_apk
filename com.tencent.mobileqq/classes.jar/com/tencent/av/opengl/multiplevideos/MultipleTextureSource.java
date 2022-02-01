@@ -8,16 +8,16 @@ import java.util.List;
 public class MultipleTextureSource
   extends ImageSource
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private List<Frame> jdField_a_of_type_JavaUtilList;
+  private final String a;
+  private List<Frame> b;
   
   public MultipleTextureSource()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MultipleTextureSource-");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.a = localStringBuilder.toString();
+    this.b = new LinkedList();
   }
 }
 

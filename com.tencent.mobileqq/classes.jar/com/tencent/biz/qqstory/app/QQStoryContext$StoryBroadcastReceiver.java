@@ -18,22 +18,22 @@ import mqq.app.MobileQQ;
 public class QQStoryContext$StoryBroadcastReceiver
   extends BroadcastReceiver
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final String a;
+  private boolean b = false;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("StoryBroadcastReceiver_");
     localStringBuilder.append(MobileQQ.processName);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public void a(Context paramContext)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("action_fire_create_story");
       localIntentFilter.addAction("action_fire_get_config");
@@ -44,35 +44,35 @@ public class QQStoryContext$StoryBroadcastReceiver
   
   public void b(Context paramContext)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       paramContext.getApplicationContext().unregisterReceiver(this);
     }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SLog.a(jdField_a_of_type_JavaLangString, "onReceive, [context, intent=%s]", paramIntent);
+    SLog.a(a, "onReceive, [context, intent=%s]", paramIntent);
     paramIntent = paramIntent.getAction();
     if ("action_fire_create_story".equals(paramIntent))
     {
       if (TextUtils.equals(paramContext.getPackageName(), MobileQQ.processName)) {
-        Bosses.get().postJob(new QQStoryContext.StoryBroadcastReceiver.1(this, jdField_a_of_type_JavaLangString));
+        Bosses.get().postJob(new QQStoryContext.StoryBroadcastReceiver.1(this, a));
       }
     }
     else
     {
       if ("action_fire_get_config".equals(paramIntent))
       {
-        long l = ((StoryConfigManager)SuperManager.a(10)).b();
+        long l = ((StoryConfigManager)SuperManager.a(10)).k();
         if (Math.abs(System.currentTimeMillis() - l) > 3600000L)
         {
-          SLog.b(jdField_a_of_type_JavaLangString, "fireGetStoryConfig update story config from server.");
-          ((QQStoryHandler)QQStoryContext.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a();
+          SLog.b(a, "fireGetStoryConfig update story config from server.");
+          ((QQStoryHandler)QQStoryContext.j().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a();
           return;
         }
-        SLog.b(jdField_a_of_type_JavaLangString, "fireGetStoryConfig do not need update story config from server.");
+        SLog.b(a, "fireGetStoryConfig do not need update story config from server.");
         return;
       }
       "action_fire_create_video_story".equals(paramIntent);
@@ -81,7 +81,7 @@ public class QQStoryContext$StoryBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

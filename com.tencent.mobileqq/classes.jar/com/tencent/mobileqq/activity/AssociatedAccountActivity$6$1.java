@@ -19,31 +19,31 @@ class AssociatedAccountActivity$6$1
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.isFinishing())
+    if (!this.c.this$0.isFinishing())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.leftView.setText("");
-      AssociatedAccountActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setText(this.jdField_a_of_type_JavaLangString);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        AssociatedAccountActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(8);
+      this.c.this$0.leftView.setText("");
+      AssociatedAccountActivity.access$100(this.c.this$0).setText(this.a);
+      if (TextUtils.isEmpty(this.a)) {
+        AssociatedAccountActivity.access$200(this.c.this$0).setVisibility(8);
       } else {
-        AssociatedAccountActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(0);
+        AssociatedAccountActivity.access$300(this.c.this$0).setVisibility(0);
       }
-      AssociatedAccountActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(4);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.leftView.setContentDescription(this.b);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.leftView.bringToFront();
+      AssociatedAccountActivity.access$400(this.c.this$0).setVisibility(4);
+      this.c.this$0.leftView.setContentDescription(this.b);
+      this.c.this$0.leftView.bringToFront();
       if ("1103".equals(ThemeUtil.curThemeId))
       {
-        ColorStateList localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.getResources().getColorStateList(2131167053);
-        AssociatedAccountActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setTextColor(localColorStateList);
-        AssociatedAccountActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setBackgroundResource(2130838321);
-        AssociatedAccountActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setPadding(ViewUtils.a(8.0F), 0, ViewUtils.a(8.0F), 0);
-        Object localObject = AssociatedAccountActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).height = ViewUtils.a(24.0F);
+        ColorStateList localColorStateList = this.c.this$0.getResources().getColorStateList(2131167990);
+        AssociatedAccountActivity.access$500(this.c.this$0).setTextColor(localColorStateList);
+        AssociatedAccountActivity.access$600(this.c.this$0).setBackgroundResource(2130838369);
+        AssociatedAccountActivity.access$700(this.c.this$0).setPadding(ViewUtils.dip2px(8.0F), 0, ViewUtils.dip2px(8.0F), 0);
+        Object localObject = AssociatedAccountActivity.access$800(this.c.this$0).getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).height = ViewUtils.dip2px(24.0F);
         if ((localObject instanceof RelativeLayout.LayoutParams)) {
-          ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.a(8.0F);
+          ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.dip2px(8.0F);
         }
-        AssociatedAccountActivity.access$900(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).requestLayout();
-        localObject = (GradientDrawable)AssociatedAccountActivity.access$1000(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).getBackground();
+        AssociatedAccountActivity.access$900(this.c.this$0).requestLayout();
+        localObject = (GradientDrawable)AssociatedAccountActivity.access$1000(this.c.this$0).getBackground();
         if (localObject != null)
         {
           if (Build.VERSION.SDK_INT >= 21) {
@@ -59,7 +59,7 @@ class AssociatedAccountActivity$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

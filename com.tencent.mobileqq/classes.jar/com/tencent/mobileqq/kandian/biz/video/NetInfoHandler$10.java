@@ -12,15 +12,15 @@ class NetInfoHandler$10
   public void run()
   {
     NetInfoHandler.a(this.this$0).notifyDataSetChanged();
-    VideoPlayManager localVideoPlayManager = NetInfoHandler.a(this.this$0).a();
-    if ((!localVideoPlayManager.a()) && (!localVideoPlayManager.d())) {
-      NetInfoHandler.a(this.this$0).b(NetInfoHandler.a(this.this$0).a(), 0);
+    VideoPlayManager localVideoPlayManager = NetInfoHandler.b(this.this$0).A();
+    if ((!localVideoPlayManager.g()) && (!localVideoPlayManager.s())) {
+      NetInfoHandler.b(this.this$0).b(NetInfoHandler.b(this.this$0).e(), 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.NetInfoHandler.10
  * JD-Core Version:    0.7.0.1
  */

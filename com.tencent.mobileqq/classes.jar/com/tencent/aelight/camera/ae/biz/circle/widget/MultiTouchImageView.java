@@ -2,6 +2,7 @@ package com.tencent.aelight.camera.ae.biz.circle.widget;
 
 import android.content.Context;
 import android.graphics.Matrix;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
@@ -14,8 +15,8 @@ import com.tencent.image.URLImageView;
 public class MultiTouchImageView
   extends URLImageView
 {
-  private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType;
-  private PhotoViewAttacher jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher;
+  private PhotoViewAttacher a;
+  private ImageView.ScaleType b;
   
   public MultiTouchImageView(Context paramContext)
   {
@@ -35,36 +36,66 @@ public class MultiTouchImageView
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher = new PhotoViewAttacher(this);
+    this.a = new PhotoViewAttacher(this);
     super.setScaleType(ImageView.ScaleType.MATRIX);
-    ImageView.ScaleType localScaleType = this.jdField_a_of_type_AndroidWidgetImageView$ScaleType;
+    ImageView.ScaleType localScaleType = this.b;
     if (localScaleType != null)
     {
       setScaleType(localScaleType);
-      this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = null;
+      this.b = null;
     }
+  }
+  
+  public PhotoViewAttacher getAttacher()
+  {
+    return this.a;
+  }
+  
+  public RectF getDisplayRect()
+  {
+    return this.a.a();
   }
   
   public Matrix getImageMatrix()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a();
+    return this.a.h();
+  }
+  
+  public float getMaximumScale()
+  {
+    return this.a.d();
+  }
+  
+  public float getMediumScale()
+  {
+    return this.a.c();
+  }
+  
+  public float getMinimumScale()
+  {
+    return this.a.b();
+  }
+  
+  public float getScale()
+  {
+    return this.a.e();
   }
   
   public ImageView.ScaleType getScaleType()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a();
+    return this.a.f();
   }
   
   public void setAllowParentInterceptOnEdge(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramBoolean);
+    this.a.a(paramBoolean);
   }
   
   protected boolean setFrame(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     boolean bool = super.setFrame(paramInt1, paramInt2, paramInt3, paramInt4);
     if (bool) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a();
+      this.a.g();
     }
     return bool;
   }
@@ -72,96 +103,96 @@ public class MultiTouchImageView
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    paramDrawable = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher;
+    paramDrawable = this.a;
     if (paramDrawable != null) {
-      paramDrawable.a();
+      paramDrawable.g();
     }
   }
   
   public void setImageResource(int paramInt)
   {
     super.setImageResource(paramInt);
-    PhotoViewAttacher localPhotoViewAttacher = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher;
+    PhotoViewAttacher localPhotoViewAttacher = this.a;
     if (localPhotoViewAttacher != null) {
-      localPhotoViewAttacher.a();
+      localPhotoViewAttacher.g();
     }
   }
   
   public void setImageURI(Uri paramUri)
   {
     super.setImageURI(paramUri);
-    paramUri = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher;
+    paramUri = this.a;
     if (paramUri != null) {
-      paramUri.a();
+      paramUri.g();
     }
   }
   
   public void setMaximumScale(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.e(paramFloat);
+    this.a.e(paramFloat);
   }
   
   public void setMediumScale(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.d(paramFloat);
+    this.a.d(paramFloat);
   }
   
   public void setMinimumScale(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.c(paramFloat);
+    this.a.c(paramFloat);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramOnClickListener);
+    this.a.a(paramOnClickListener);
   }
   
   public void setOnDoubleTapListener(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramOnDoubleTapListener);
+    this.a.a(paramOnDoubleTapListener);
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramOnLongClickListener);
+    this.a.a(paramOnLongClickListener);
   }
   
   public void setRotationBy(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.b(paramFloat);
+    this.a.b(paramFloat);
   }
   
   public void setRotationTo(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramFloat);
+    this.a.a(paramFloat);
   }
   
   public void setScale(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.f(paramFloat);
+    this.a.f(paramFloat);
   }
   
   public void setScale(float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramFloat1, paramFloat2, paramFloat3, paramBoolean);
+    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramBoolean);
   }
   
   public void setScale(float paramFloat, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramFloat, paramBoolean);
+    this.a.a(paramFloat, paramBoolean);
   }
   
   public void setScaleLevels(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramFloat1, paramFloat2, paramFloat3);
+    this.a.a(paramFloat1, paramFloat2, paramFloat3);
   }
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
-    PhotoViewAttacher localPhotoViewAttacher = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher;
+    PhotoViewAttacher localPhotoViewAttacher = this.a;
     if (localPhotoViewAttacher == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
+      this.b = paramScaleType;
       return;
     }
     localPhotoViewAttacher.a(paramScaleType);
@@ -169,17 +200,17 @@ public class MultiTouchImageView
   
   public void setZoomTransitionDuration(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.a(paramInt);
+    this.a.a(paramInt);
   }
   
   public void setZoomable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetPhotoViewAttacher.b(paramBoolean);
+    this.a.b(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.widget.MultiTouchImageView
  * JD-Core Version:    0.7.0.1
  */

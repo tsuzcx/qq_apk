@@ -11,14 +11,14 @@ final class ReadinjoySPEventReport$ForeBackGround$4
     ReadinjoyReportUtils.a(2, true, System.currentTimeMillis(), 0, 0, false);
   }
   
-  public void ax_()
+  public void cU_()
   {
-    ReadinjoyReportUtils.a(2, false, ReadinjoySPEventReport.ForeBackGround.d, 0, 0, false);
+    ReadinjoyReportUtils.a(2, false, ReadinjoySPEventReport.ForeBackGround.e, 0, 0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.ForeBackGround.4
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.os.Build;
 
 public class MobileIssueSettings
 {
-  public static int a = 0;
   public static boolean a = true;
   public static boolean b = true;
   public static boolean c = true;
@@ -18,6 +17,7 @@ public class MobileIssueSettings
   public static boolean k = true;
   public static boolean l = false;
   public static boolean m = false;
+  public static int n;
   
   static
   {
@@ -110,7 +110,7 @@ public class MobileIssueSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings
  * JD-Core Version:    0.7.0.1
  */

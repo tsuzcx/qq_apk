@@ -17,8 +17,8 @@ import org.json.JSONObject;
 public class WidgetModule
   extends DoraemonAPIModule
 {
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
+  private QQCustomDialog b;
+  private ActionSheet c;
   
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
@@ -28,46 +28,46 @@ public class WidgetModule
       if (paramInt != 29) {
         return false;
       }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+      paramString = this.b;
       if ((paramString != null) && (paramString.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        this.b.dismiss();
       }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
+      paramString = this.a.h();
       if ((paramString != null) && (!paramString.isFinishing()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramString, 230);
+        this.b = DialogUtil.a(paramString, 230);
         paramString = paramJSONObject.optString("title");
         if (!TextUtils.isEmpty(paramString)) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(paramString);
+          this.b.setTitle(paramString);
         }
         paramString = paramJSONObject.optString("content");
         if (!TextUtils.isEmpty(paramString)) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString);
+          this.b.setMessage(paramString);
         }
         paramString = new WidgetModule.DialogCallback(paramAPICallback);
         paramAPICallback = paramJSONObject.optString("confirmText");
         if (!TextUtils.isEmpty(paramAPICallback)) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(paramAPICallback, paramString);
+          this.b.setPositiveButton(paramAPICallback, paramString);
         }
         paramJSONObject = paramJSONObject.optString("cancelText");
         if (!TextUtils.isEmpty(paramJSONObject)) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(paramJSONObject, paramString);
+          this.b.setNegativeButton(paramJSONObject, paramString);
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(paramString);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        this.b.setOnCancelListener(paramString);
+        this.b.show();
         return true;
       }
       QLog.e("DoraemonOpenAPI.widget", 1, "execute show dialog activity is null or finish");
       return false;
     }
-    paramString = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    paramString = this.c;
     if ((paramString != null) && (paramString.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.c.dismiss();
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
+    paramString = this.a.h();
     if ((paramString != null) && (!paramString.isFinishing()))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.create(paramString);
+      this.c = ActionSheet.create(paramString);
       paramString = paramJSONObject.optJSONArray("itemList");
       if (paramString == null)
       {
@@ -78,22 +78,22 @@ public class WidgetModule
       for (paramInt = 0; i < j; paramInt = 1)
       {
         String str = paramString.optString(i, "");
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(str);
+        this.c.addButton(str);
         i += 1;
       }
-      paramString = new WidgetModule.ActionSheetCallback(this.jdField_a_of_type_ComTencentWidgetActionSheet, paramAPICallback);
+      paramString = new WidgetModule.ActionSheetCallback(this.c, paramAPICallback);
       paramJSONObject = paramJSONObject.optString("cancelText");
       if (!TextUtils.isEmpty(paramJSONObject))
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(paramJSONObject);
+        this.c.addCancelButton(paramJSONObject);
         paramInt = 1;
       }
       if (paramInt != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(paramString);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnCancelListener(paramString);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(paramString);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+        this.c.setOnButtonClickListener(paramString);
+        this.c.setOnCancelListener(paramString);
+        this.c.setOnDismissListener(paramString);
+        this.c.show();
         return true;
       }
       DoraemonUtil.a(paramAPICallback, -1, "param error");
@@ -105,19 +105,19 @@ public class WidgetModule
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    Object localObject = this.b;
     if ((localObject != null) && (((QQCustomDialog)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.b.dismiss();
     }
-    localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    localObject = this.c;
     if ((localObject != null) && (((ActionSheet)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.c.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.WidgetModule
  * JD-Core Version:    0.7.0.1
  */

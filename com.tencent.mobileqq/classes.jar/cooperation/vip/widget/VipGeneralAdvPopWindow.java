@@ -27,35 +27,35 @@ import java.util.ArrayList;
 public class VipGeneralAdvPopWindow
   extends PopupWindow
 {
-  private static final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(2130851222);
-  private static final SpringConfig jdField_a_of_type_ComTencentComponentAnimationReboundSpringConfig = SpringConfig.fromOrigamiTensionAndFriction(60.0D, 8.0D);
-  private static final Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = a(2130851223);
-  private static final Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(2130706432);
-  private float jdField_a_of_type_Float = 0.1F;
-  private int jdField_a_of_type_Int = 0;
+  private static final SpringConfig g = SpringConfig.fromOrigamiTensionAndFriction(60.0D, 8.0D);
+  private static final Drawable r = a(2130853478);
+  private static final Drawable s = a(2130853479);
+  private static final Drawable t = new ColorDrawable(2130706432);
   public Activity a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
-  private View.OnKeyListener jdField_a_of_type_AndroidViewView$OnKeyListener = new VipGeneralAdvPopWindow.3(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new VipGeneralAdvPopWindow.4(this);
-  private ListView jdField_a_of_type_AndroidWidgetListView = null;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  private Spring jdField_a_of_type_ComTencentComponentAnimationReboundSpring = null;
-  private VipGeneralAdvPopWindow.DropDownMenuAdapter jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$DropDownMenuAdapter;
-  public ArrayList<VipGeneralAdvPopWindow.MenuData> a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int d = 0;
-  private int e = 0;
+  public ArrayList<VipGeneralAdvPopWindow.MenuData> b;
+  private Spring c = null;
+  private ListView d = null;
+  private RelativeLayout e = null;
+  private LayoutInflater f = null;
+  private int h = 0;
+  private int i = 0;
+  private int j = 0;
+  private float k = 0.1F;
+  private float l = 0.0F;
+  private boolean m = false;
+  private boolean n = true;
+  private boolean o = true;
+  private int p = 0;
+  private int q = 0;
+  private VipGeneralAdvPopWindow.DropDownMenuAdapter u;
+  private View.OnKeyListener v = new VipGeneralAdvPopWindow.3(this);
+  private View.OnTouchListener w = new VipGeneralAdvPopWindow.4(this);
   
   public VipGeneralAdvPopWindow(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    f();
+    this.a = paramActivity;
+    j();
   }
   
   public static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5)
@@ -78,32 +78,6 @@ public class VipGeneralAdvPopWindow
     return null;
   }
   
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewLayoutInflater == null)
-    {
-      Activity localActivity = a();
-      if (localActivity == null) {
-        return;
-      }
-      this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(localActivity);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-        return;
-      }
-    }
-    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusableInTouchMode(true);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnKeyListener(this.jdField_a_of_type_AndroidViewView$OnKeyListener);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    ViewUtils.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, jdField_c_of_type_AndroidGraphicsDrawableDrawable);
-    super.setContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-  }
-  
   private void a(View paramView, float paramFloat)
   {
     if (paramView == null) {
@@ -114,63 +88,76 @@ public class VipGeneralAdvPopWindow
     }
   }
   
-  private int c()
+  private void b(int paramInt)
   {
-    if (a() == null) {
-      return 0;
+    if (this.f == null)
+    {
+      Activity localActivity = d();
+      if (localActivity == null) {
+        return;
+      }
+      this.f = LayoutInflater.from(localActivity);
     }
-    Rect localRect = new Rect();
-    a().getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    if (localRect.top > 0) {
-      return localRect.top;
+    if (this.e == null)
+    {
+      this.e = ((RelativeLayout)this.f.inflate(paramInt, null));
+      if (this.e == null) {
+        return;
+      }
     }
-    return ViewUtils.b() - localRect.height();
+    a(this.e, 0.0F);
+    this.e.setFocusable(true);
+    this.e.setFocusableInTouchMode(true);
+    this.e.setOnKeyListener(this.v);
+    this.e.setOnTouchListener(this.w);
+    ViewUtils.setViewBackground(this.e, t);
+    super.setContentView(this.e);
   }
   
-  private void f()
+  private void j()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(2131562658);
+    this.b = new ArrayList();
+    b(2131629089);
     setFocusable(true);
     setBackgroundDrawable(null);
     setWidth(-1);
     setHeight(-1);
-    this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring = SpringSystem.create().createSpring().setSpringConfig(jdField_a_of_type_ComTencentComponentAnimationReboundSpringConfig).addListener(new VipGeneralAdvPopWindow.1(this));
-    this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$DropDownMenuAdapter = new VipGeneralAdvPopWindow.DropDownMenuAdapter(this, this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365988));
-    this.jdField_a_of_type_AndroidWidgetListView.setFooterDividersEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetListView.setHeaderDividersEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$DropDownMenuAdapter);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnTouchListener(new VipGeneralAdvPopWindow.2(this));
+    this.c = SpringSystem.create().createSpring().setSpringConfig(g).addListener(new VipGeneralAdvPopWindow.1(this));
+    this.u = new VipGeneralAdvPopWindow.DropDownMenuAdapter(this, this.a);
+    this.d = ((ListView)this.e.findViewById(2131432258));
+    this.d.setFooterDividersEnabled(false);
+    this.d.setHeaderDividersEnabled(false);
+    this.d.setAdapter(this.u);
+    this.d.setOnTouchListener(new VipGeneralAdvPopWindow.2(this));
   }
   
-  private void g()
+  private void k()
   {
     super.dismiss();
   }
   
-  private void h()
+  private void l()
   {
-    Spring localSpring = this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring;
+    Spring localSpring = this.c;
     if (localSpring == null) {
       return;
     }
     float f2 = (float)localSpring.getCurrentValue();
     float f1 = (float)a(f2, 0.0D, 1.0D, 0.0D, 1.0D);
     if (f2 < 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
+      this.m = true;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      f2 = (float)this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue();
-      f1 = (float)this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue();
+      f2 = (float)this.c.getEndValue();
+      f1 = (float)this.c.getEndValue();
     }
-    else if (this.jdField_b_of_type_Boolean)
+    else if (this.n)
     {
-      f2 = this.jdField_b_of_type_Float;
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + f2);
-      if (this.jdField_b_of_type_Float > 1.0F) {
-        this.jdField_b_of_type_Float = 1.0F;
+      f2 = this.l;
+      this.l = (this.k + f2);
+      if (this.l > 1.0F) {
+        this.l = 1.0F;
       }
     }
     else
@@ -179,58 +166,46 @@ public class VipGeneralAdvPopWindow
       f2 = f1;
       f1 = f3;
     }
-    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, f2);
-    a(this.jdField_a_of_type_AndroidWidgetListView, 1.0F);
-    ViewUtils.b(this.jdField_a_of_type_AndroidWidgetListView, f1);
-    ViewUtils.c(this.jdField_a_of_type_AndroidWidgetListView, f1);
-    if (this.jdField_c_of_type_Boolean)
+    a(this.e, f2);
+    a(this.d, 1.0F);
+    ViewUtils.setScaleX(this.d, f1);
+    ViewUtils.setScaleY(this.d, f1);
+    if (this.o)
     {
-      ViewUtils.e(this.jdField_a_of_type_AndroidWidgetListView, 0.0F);
-      ViewUtils.d(this.jdField_a_of_type_AndroidWidgetListView, this.d);
+      ViewUtils.setPivotY(this.d, 0.0F);
+      ViewUtils.setPivotX(this.d, this.p);
     }
     else
     {
-      ViewUtils.e(this.jdField_a_of_type_AndroidWidgetListView, this.e);
-      ViewUtils.d(this.jdField_a_of_type_AndroidWidgetListView, this.d);
+      ViewUtils.setPivotY(this.d, this.q);
+      ViewUtils.setPivotX(this.d, this.p);
     }
-    if ((!this.jdField_b_of_type_Boolean) && (f1 == 0.0F)) {
-      g();
+    if ((!this.n) && (f1 == 0.0F)) {
+      k();
     }
   }
   
-  public int a()
+  private int m()
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
+    if (d() == null) {
+      return 0;
+    }
+    Rect localRect = new Rect();
+    d().getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (localRect.top > 0) {
+      return localRect.top;
+    }
+    return ViewUtils.getScreenHeight() - localRect.height();
   }
   
   public View a()
   {
-    return a().findViewById(16908290).getRootView();
-  }
-  
-  public void a()
-  {
-    if (isShowing()) {
-      return;
-    }
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
-    ViewUtils.a(this.jdField_a_of_type_AndroidWidgetListView, jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    super.showAtLocation(a(), 17, 0, 0);
-    c();
+    return d().findViewById(16908290).getRootView();
   }
   
   public void a(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    ListView localListView = this.jdField_a_of_type_AndroidWidgetListView;
+    ListView localListView = this.d;
     if ((localListView != null) && (paramOnItemClickListener != null)) {
       localListView.setOnItemClickListener(paramOnItemClickListener);
     }
@@ -238,7 +213,7 @@ public class VipGeneralAdvPopWindow
   
   public void a(VipGeneralAdvPopWindow.MenuData paramMenuData)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if ((localArrayList != null) && (paramMenuData != null)) {
       localArrayList.add(paramMenuData);
     }
@@ -246,41 +221,24 @@ public class VipGeneralAdvPopWindow
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetListView != null))
+    if ((this.e != null) && (this.d != null))
     {
-      paramInt1 = ViewUtils.a() - this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight() * 2;
-      RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams();
+      paramInt1 = ViewUtils.getScreenWidth() - this.e.getPaddingRight() * 2;
+      RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
       RelativeLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
       if (localLayoutParams2 == null) {
-        localLayoutParams1 = new RelativeLayout.LayoutParams(paramInt1, this.jdField_c_of_type_Int);
+        localLayoutParams1 = new RelativeLayout.LayoutParams(paramInt1, this.j);
       }
-      int i = b();
+      int i1 = i();
       localLayoutParams1.width = paramInt1;
-      localLayoutParams1.height = this.jdField_c_of_type_Int;
-      localLayoutParams1.topMargin = (paramInt2 - i - ViewUtils.b(5.0F));
-      this.jdField_a_of_type_AndroidWidgetListView.setLayoutParams(localLayoutParams1);
-      this.e = this.jdField_c_of_type_Int;
-      this.d = (paramInt1 - (this.jdField_a_of_type_Int / 2 - this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight()));
+      localLayoutParams1.height = this.j;
+      localLayoutParams1.topMargin = (paramInt2 - i1 - ViewUtils.dpToPx(5.0F));
+      this.d.setLayoutParams(localLayoutParams1);
+      this.q = this.j;
+      this.p = (paramInt1 - (this.h / 2 - this.e.getPaddingRight()));
       return true;
     }
     return false;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight() > 0)
-    {
-      i = ViewUtils.b() - this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-      if (i <= ViewUtils.b(25.0F)) {
-        return i;
-      }
-    }
-    int j = c();
-    int i = j;
-    if (j <= 0) {
-      i = ViewUtils.b(25.0F);
-    }
-    return i;
   }
   
   public void b()
@@ -288,65 +246,107 @@ public class VipGeneralAdvPopWindow
     if (isShowing()) {
       return;
     }
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0.0F);
-    ViewUtils.a(this.jdField_a_of_type_AndroidWidgetListView, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    ListView localListView = this.jdField_a_of_type_AndroidWidgetListView;
-    if (localListView != null) {
-      localListView.setPadding(localListView.getPaddingLeft(), this.jdField_a_of_type_AndroidWidgetListView.getPaddingTop() + ViewUtils.b(9.0F), this.jdField_a_of_type_AndroidWidgetListView.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetListView.getPaddingBottom());
-    }
+    this.l = 0.0F;
+    this.m = false;
+    this.n = true;
+    this.o = false;
+    a(this.e, 0.0F);
+    ViewUtils.setViewBackground(this.d, r);
     super.showAtLocation(a(), 17, 0, 0);
-    c();
+    e();
   }
   
   public void c()
   {
-    Spring localSpring = this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring;
-    if (localSpring == null) {
+    if (isShowing()) {
       return;
     }
-    if (localSpring.getCurrentValue() != this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue()) {
-      return;
+    this.l = 0.0F;
+    this.m = false;
+    this.n = true;
+    this.o = true;
+    a(this.e, 0.0F);
+    ViewUtils.setViewBackground(this.d, s);
+    ListView localListView = this.d;
+    if (localListView != null) {
+      localListView.setPadding(localListView.getPaddingLeft(), this.d.getPaddingTop() + ViewUtils.dpToPx(9.0F), this.d.getPaddingRight(), this.d.getPaddingBottom());
     }
-    if (this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.getEndValue() == 0.0D)
-    {
-      this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.setEndValue(1.0D);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentComponentAnimationReboundSpring.setEndValue(0.0D);
+    super.showAtLocation(a(), 17, 0, 0);
+    e();
   }
   
-  public void d()
+  public Activity d()
   {
-    dismiss();
+    return this.a;
   }
   
   public void dismiss()
   {
-    this.jdField_b_of_type_Boolean = false;
-    c();
+    this.n = false;
+    e();
   }
   
   public void e()
   {
-    int i = 0;
-    int j = 0;
-    while (i < this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$DropDownMenuAdapter.getCount())
-    {
-      View localView = this.jdField_a_of_type_CooperationVipWidgetVipGeneralAdvPopWindow$DropDownMenuAdapter.getView(i, null, this.jdField_a_of_type_AndroidWidgetListView);
-      localView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-      j += localView.getMeasuredHeight();
-      i += 1;
+    Spring localSpring = this.c;
+    if (localSpring == null) {
+      return;
     }
-    this.jdField_c_of_type_Int = (j + ViewUtils.b(9.0F));
+    if (localSpring.getCurrentValue() != this.c.getEndValue()) {
+      return;
+    }
+    if (this.c.getEndValue() == 0.0D)
+    {
+      this.c.setEndValue(1.0D);
+      return;
+    }
+    this.c.setEndValue(0.0D);
+  }
+  
+  public void f()
+  {
+    dismiss();
+  }
+  
+  public void g()
+  {
+    int i1 = 0;
+    int i2 = 0;
+    while (i1 < this.u.getCount())
+    {
+      View localView = this.u.getView(i1, null, this.d);
+      localView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+      i2 += localView.getMeasuredHeight();
+      i1 += 1;
+    }
+    this.j = (i2 + ViewUtils.dpToPx(9.0F));
+  }
+  
+  public int h()
+  {
+    return this.j;
+  }
+  
+  public int i()
+  {
+    if (this.e.getHeight() > 0)
+    {
+      i1 = ViewUtils.getScreenHeight() - this.e.getHeight();
+      if (i1 <= ViewUtils.dpToPx(25.0F)) {
+        return i1;
+      }
+    }
+    int i2 = m();
+    int i1 = i2;
+    if (i2 <= 0) {
+      i1 = ViewUtils.dpToPx(25.0F);
+    }
+    return i1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.widget.VipGeneralAdvPopWindow
  * JD-Core Version:    0.7.0.1
  */

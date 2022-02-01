@@ -1,39 +1,42 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.audio.TXCAudioEngine;
-
 class TRTCCloudImpl$54
   implements Runnable
 {
-  TRTCCloudImpl$54(TRTCCloudImpl paramTRTCCloudImpl, int paramInt, String paramString) {}
+  TRTCCloudImpl$54(TRTCCloudImpl paramTRTCCloudImpl, String paramString, int paramInt) {}
   
   public void run()
   {
-    int j = this.val$volume;
-    int i = j;
-    if (j < 0) {
-      i = 0;
+    TRTCRoomInfo.UserInfo localUserInfo = this.this$0.mRoomInfo.getUser(this.val$userId);
+    if (localUserInfo == null) {
+      return;
     }
-    j = i;
-    if (i > 100) {
-      j = 100;
+    int i;
+    if (this.val$type == 1) {
+      i = 3;
+    } else {
+      i = 2;
     }
-    Object localObject = this.this$0;
+    if (localUserInfo.streamType == i) {
+      return;
+    }
+    localUserInfo.streamType = i;
+    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setRemoteAudioVolume: userId = ");
+    localStringBuilder.append("setRemoteVideoStreamType ");
     localStringBuilder.append(this.val$userId);
-    localStringBuilder.append(" volume = ");
-    localStringBuilder.append(j);
-    ((TRTCCloudImpl)localObject).apiLog(localStringBuilder.toString());
-    localObject = this.this$0.mRoomInfo.getUser(this.val$userId);
-    if (localObject != null) {
-      TXCAudioEngine.getInstance().setRemotePlayoutVolume(String.valueOf(((TRTCRoomInfo.UserInfo)localObject).tinyID), j);
-    }
+    localStringBuilder.append(", ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(localUserInfo.tinyID);
+    localTRTCCloudImpl.apiLog(localStringBuilder.toString());
+    localTRTCCloudImpl = this.this$0;
+    TRTCCloudImpl.access$3000(localTRTCCloudImpl, localTRTCCloudImpl.mNativeRtcContext, localUserInfo.tinyID, i, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.54
  * JD-Core Version:    0.7.0.1
  */

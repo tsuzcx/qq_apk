@@ -12,21 +12,21 @@ class CommonTabFragment$2
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null)
+    if (this.a.b != null)
     {
-      if (this.a.a.mWebview == null) {
+      if (this.a.b.mWebview == null) {
         return;
       }
-      paramView = this.a.a.mWebview.getPluginEngine();
+      paramView = this.a.b.mWebview.getPluginEngine();
       if (paramView != null) {
-        paramView.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
+        paramView.a(this.a.b.mWebview.getUrl(), 8589934606L, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.CommonTabFragment.2
  * JD-Core Version:    0.7.0.1
  */

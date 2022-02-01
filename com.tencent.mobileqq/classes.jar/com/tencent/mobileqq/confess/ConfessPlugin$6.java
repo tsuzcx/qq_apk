@@ -14,13 +14,13 @@ class ConfessPlugin$6
   
   public void run()
   {
-    String str = this.this$0.c;
+    String str = this.this$0.g;
     if (TextUtils.isEmpty(str))
     {
       ThreadManager.getUIHandler().post(new ConfessPlugin.6.1(this));
       return;
     }
-    Object localObject = CampusCircleIpcClient.a().a(str);
+    Object localObject = CampusCircleIpcClient.a().b(str);
     ThreadManager.getUIHandler().post(new ConfessPlugin.6.2(this));
     if ((localObject != null) && (localObject.length == 3))
     {
@@ -34,7 +34,7 @@ class ConfessPlugin$6
       if (!bool2)
       {
         localObject = this.this$0;
-        ((ConfessPlugin)localObject).callJs(((ConfessPlugin)localObject).d, new String[] { "\"本群成员不能向好友发起加群邀请。\"" });
+        ((ConfessPlugin)localObject).callJs(((ConfessPlugin)localObject).h, new String[] { "\"本群成员不能向好友发起加群邀请。\"" });
         return;
       }
       if ((localObject != null) && (((List)localObject).size() != 0))
@@ -42,25 +42,25 @@ class ConfessPlugin$6
         if (!ConfessPlugin.a(this.this$0, str, bool1, (ArrayList)localObject))
         {
           localObject = this.this$0;
-          ((ConfessPlugin)localObject).callJs(((ConfessPlugin)localObject).d, new String[] { "\"邀请群成员异常。\"" });
+          ((ConfessPlugin)localObject).callJs(((ConfessPlugin)localObject).h, new String[] { "\"邀请群成员异常。\"" });
         }
       }
       else
       {
         localObject = this.this$0;
-        ((ConfessPlugin)localObject).callJs(((ConfessPlugin)localObject).d, new String[] { "\"获取群成员失败，请重试。\"" });
+        ((ConfessPlugin)localObject).callJs(((ConfessPlugin)localObject).h, new String[] { "\"获取群成员失败，请重试。\"" });
       }
     }
     else
     {
       localObject = this.this$0;
-      ((ConfessPlugin)localObject).callJs(((ConfessPlugin)localObject).d, new String[] { "\"邀请群成员异常。\"" });
+      ((ConfessPlugin)localObject).callJs(((ConfessPlugin)localObject).h, new String[] { "\"邀请群成员异常。\"" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.6
  * JD-Core Version:    0.7.0.1
  */

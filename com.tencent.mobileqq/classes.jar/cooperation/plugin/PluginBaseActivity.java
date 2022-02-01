@@ -10,14 +10,14 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class PluginBaseActivity
   extends BasePluginActivity
 {
-  public boolean v = true;
+  public boolean aM = true;
   
-  protected String a()
+  public int L()
   {
-    return getString(2131690706);
+    return getResources().getDimensionPixelSize(2131299920);
   }
   
-  protected boolean a()
+  protected boolean bB_()
   {
     return false;
   }
@@ -31,9 +31,9 @@ public class PluginBaseActivity
     return bool;
   }
   
-  public int g()
+  protected String f()
   {
-    return getResources().getDimensionPixelSize(2131299168);
+    return getString(2131887625);
   }
   
   public final Activity getActivity()
@@ -50,7 +50,7 @@ public class PluginBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity
  * JD-Core Version:    0.7.0.1
  */

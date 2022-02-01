@@ -15,13 +15,17 @@ public class LinearSystem
   public static final boolean FULL_DEBUG = false;
   public static final boolean MEASURE = false;
   public static long OPTIMIZED_ARRAY_ROW_CREATION = 0L;
-  public static boolean OPTIMIZED_ENGINE = true;
+  public static boolean OPTIMIZED_ENGINE = false;
   private static int POOL_SIZE = 1000;
-  static final boolean SIMPLIFY_SYNONYMS = false;
-  private static final boolean USE_SYNONYMS = true;
+  public static boolean SIMPLIFY_SYNONYMS = true;
+  public static boolean SKIP_COLUMNS = true;
+  public static boolean USE_BASIC_SYNONYMS = true;
+  public static boolean USE_DEPENDENCY_ORDERING = false;
+  public static boolean USE_SYNONYMS = true;
   public static Metrics sMetrics;
   private int TABLE_SIZE = 32;
   public boolean graphOptimizer;
+  public boolean hasSimpleDefinition = false;
   private boolean[] mAlreadyTestedCandidates;
   final Cache mCache;
   private LinearSystem.Row mGoal;
@@ -98,21 +102,71 @@ public class LinearSystem
   
   private final void addRow(ArrayRow paramArrayRow)
   {
-    if (OPTIMIZED_ENGINE)
+    int i;
+    if ((SIMPLIFY_SYNONYMS) && (paramArrayRow.isSimpleDefinition))
     {
-      if (this.mRows[this.mNumRows] != null) {
-        this.mCache.optimizedArrayRowPool.release(this.mRows[this.mNumRows]);
+      paramArrayRow.variable.setFinalValue(this, paramArrayRow.constantValue);
+    }
+    else
+    {
+      this.mRows[this.mNumRows] = paramArrayRow;
+      SolverVariable localSolverVariable = paramArrayRow.variable;
+      i = this.mNumRows;
+      localSolverVariable.definitionId = i;
+      this.mNumRows = (i + 1);
+      paramArrayRow.variable.updateReferencesWithNewDefinition(this, paramArrayRow);
+    }
+    if ((SIMPLIFY_SYNONYMS) && (this.hasSimpleDefinition))
+    {
+      int j;
+      for (i = 0; i < this.mNumRows; i = j + 1)
+      {
+        if (this.mRows[i] == null) {
+          System.out.println("WTF");
+        }
+        paramArrayRow = this.mRows;
+        j = i;
+        if (paramArrayRow[i] != null)
+        {
+          j = i;
+          if (paramArrayRow[i].isSimpleDefinition)
+          {
+            paramArrayRow = this.mRows[i];
+            paramArrayRow.variable.setFinalValue(this, paramArrayRow.constantValue);
+            if (OPTIMIZED_ENGINE) {
+              this.mCache.optimizedArrayRowPool.release(paramArrayRow);
+            } else {
+              this.mCache.arrayRowPool.release(paramArrayRow);
+            }
+            this.mRows[i] = null;
+            j = i + 1;
+            int k = j;
+            int m;
+            for (;;)
+            {
+              m = this.mNumRows;
+              if (j >= m) {
+                break;
+              }
+              paramArrayRow = this.mRows;
+              k = j - 1;
+              paramArrayRow[k] = paramArrayRow[j];
+              if (paramArrayRow[k].variable.definitionId == j) {
+                this.mRows[k].variable.definitionId = k;
+              }
+              k = j;
+              j += 1;
+            }
+            if (k < m) {
+              this.mRows[k] = null;
+            }
+            this.mNumRows -= 1;
+            j = i - 1;
+          }
+        }
       }
+      this.hasSimpleDefinition = false;
     }
-    else if (this.mRows[this.mNumRows] != null) {
-      this.mCache.arrayRowPool.release(this.mRows[this.mNumRows]);
-    }
-    this.mRows[this.mNumRows] = paramArrayRow;
-    SolverVariable localSolverVariable = paramArrayRow.variable;
-    int i = this.mNumRows;
-    localSolverVariable.definitionId = i;
-    this.mNumRows = (i + 1);
-    paramArrayRow.variable.updateReferencesWithNewDefinition(paramArrayRow);
   }
   
   private void addSingleError(ArrayRow paramArrayRow, int paramInt)
@@ -211,121 +265,195 @@ public class LinearSystem
     label67:
     if (i != 0)
     {
-      int m = 0;
-      int i5;
-      for (i = 0;; i = i5)
+      int n = 0;
+      i = 0;
+      for (;;)
       {
         j = i;
-        if (m != 0) {
+        if (n != 0) {
           break;
         }
         paramRow = sMetrics;
         if (paramRow != null) {
           paramRow.bfs += 1L;
         }
-        i5 = i + 1;
-        int n = 0;
-        i = -1;
+        int i6 = i + 1;
+        i = 0;
         j = -1;
+        int k = -1;
         float f1 = 3.4028235E+38F;
         int i4;
         Object localObject;
-        for (int k = 0; n < this.mNumRows; k = i4)
+        for (int m = 0; i < this.mNumRows; m = i4)
         {
-          paramRow = this.mRows[n];
+          paramRow = this.mRows[i];
           int i2;
           int i3;
           float f2;
           if (paramRow.variable.mType == SolverVariable.Type.UNRESTRICTED)
           {
-            i2 = i;
-            i3 = j;
+            i2 = j;
+            i3 = k;
             f2 = f1;
-            i4 = k;
+            i4 = m;
           }
           else if (paramRow.isSimpleDefinition)
           {
-            i2 = i;
-            i3 = j;
+            i2 = j;
+            i3 = k;
             f2 = f1;
-            i4 = k;
+            i4 = m;
           }
           else
           {
-            i2 = i;
-            i3 = j;
+            i2 = j;
+            i3 = k;
             f2 = f1;
-            i4 = k;
+            i4 = m;
             if (paramRow.constantValue < 0.0F)
             {
-              int i1 = 1;
-              for (;;)
+              int i1;
+              float f3;
+              if (SKIP_COLUMNS)
               {
-                i2 = i;
+                i4 = paramRow.variables.getCurrentSize();
+                i1 = k;
+                i2 = j;
+                i3 = 0;
+                k = m;
+                j = i1;
+                m = i2;
+                i2 = i3;
+                while (i2 < i4)
+                {
+                  localObject = paramRow.variables.getVariable(i2);
+                  f3 = paramRow.variables.get((SolverVariable)localObject);
+                  if (f3 <= 0.0F)
+                  {
+                    i1 = k;
+                  }
+                  else
+                  {
+                    i1 = k;
+                    i3 = 0;
+                    k = j;
+                    j = i3;
+                    while (j < 9)
+                    {
+                      f2 = localObject.strengthVector[j] / f3;
+                      if ((f2 >= f1) || (j != i1))
+                      {
+                        i3 = i1;
+                        if (j <= i1) {}
+                      }
+                      else
+                      {
+                        k = ((SolverVariable)localObject).id;
+                        m = i;
+                        f1 = f2;
+                        i3 = j;
+                      }
+                      j += 1;
+                      i1 = i3;
+                    }
+                    j = k;
+                  }
+                  i2 += 1;
+                  k = i1;
+                }
+                i2 = m;
                 i3 = j;
                 f2 = f1;
                 i4 = k;
-                if (i1 >= this.mNumColumns) {
-                  break;
-                }
-                localObject = this.mCache.mIndexedVariables[i1];
-                float f3 = paramRow.variables.get((SolverVariable)localObject);
-                if (f3 > 0.0F)
+              }
+              else
+              {
+                i1 = 1;
+                for (;;)
                 {
+                  i2 = j;
                   i3 = k;
-                  i4 = 0;
-                  k = j;
-                  i2 = i;
-                  i = i4;
-                  for (j = i3; i < 9; j = i3)
-                  {
-                    f2 = localObject.strengthVector[i] / f3;
-                    if ((f2 >= f1) || (i != j))
-                    {
-                      i3 = j;
-                      if (i <= j) {}
-                    }
-                    else
-                    {
-                      k = i1;
-                      i2 = n;
-                      f1 = f2;
-                      i3 = i;
-                    }
-                    i += 1;
+                  f2 = f1;
+                  i4 = m;
+                  if (i1 >= this.mNumColumns) {
+                    break;
                   }
-                  i = k;
-                  k = j;
-                  j = i;
-                  i = i2;
+                  localObject = this.mCache.mIndexedVariables[i1];
+                  f3 = paramRow.variables.get((SolverVariable)localObject);
+                  int i5;
+                  if (f3 <= 0.0F)
+                  {
+                    i3 = j;
+                    i4 = k;
+                    f2 = f1;
+                    i5 = m;
+                  }
+                  else
+                  {
+                    i3 = 0;
+                    i2 = j;
+                    j = i3;
+                    for (;;)
+                    {
+                      i3 = i2;
+                      i4 = k;
+                      f2 = f1;
+                      i5 = m;
+                      if (j >= 9) {
+                        break;
+                      }
+                      f2 = localObject.strengthVector[j] / f3;
+                      if ((f2 >= f1) || (j != m))
+                      {
+                        i3 = m;
+                        if (j <= m) {}
+                      }
+                      else
+                      {
+                        k = i1;
+                        i2 = i;
+                        i3 = j;
+                        f1 = f2;
+                      }
+                      j += 1;
+                      m = i3;
+                    }
+                  }
+                  i1 += 1;
+                  j = i3;
+                  k = i4;
+                  f1 = f2;
+                  m = i5;
                 }
-                i1 += 1;
               }
             }
           }
-          n += 1;
-          i = i2;
-          j = i3;
+          i += 1;
+          j = i2;
+          k = i3;
           f1 = f2;
         }
-        if (i != -1)
+        if (j != -1)
         {
-          paramRow = this.mRows[i];
+          paramRow = this.mRows[j];
           paramRow.variable.definitionId = -1;
           localObject = sMetrics;
           if (localObject != null) {
             ((Metrics)localObject).pivots += 1L;
           }
-          paramRow.pivot(this.mCache.mIndexedVariables[j]);
-          paramRow.variable.definitionId = i;
-          paramRow.variable.updateReferencesWithNewDefinition(paramRow);
+          paramRow.pivot(this.mCache.mIndexedVariables[k]);
+          paramRow.variable.definitionId = j;
+          paramRow.variable.updateReferencesWithNewDefinition(this, paramRow);
         }
         else
         {
-          m = 1;
+          n = 1;
         }
-        if (i5 > this.mNumColumns / 2) {
-          m = 1;
+        i = i6;
+        if (i6 > this.mNumColumns / 2)
+        {
+          n = 1;
+          i = i6;
         }
       }
     }
@@ -504,7 +632,7 @@ public class LinearSystem
           }
           localArrayRow.pivot((SolverVariable)localObject);
           localArrayRow.variable.definitionId = k;
-          localArrayRow.variable.updateReferencesWithNewDefinition(localArrayRow);
+          localArrayRow.variable.updateReferencesWithNewDefinition(this, localArrayRow);
           i = n;
         }
       }
@@ -522,33 +650,25 @@ public class LinearSystem
     boolean bool = OPTIMIZED_ENGINE;
     int i = 0;
     int j = 0;
-    Object localObject;
+    ArrayRow localArrayRow;
     if (bool)
     {
       i = j;
-      for (;;)
+      while (i < this.mNumRows)
       {
-        localObject = this.mRows;
-        if (i >= localObject.length) {
-          break;
-        }
-        localObject = localObject[i];
-        if (localObject != null) {
-          this.mCache.optimizedArrayRowPool.release(localObject);
+        localArrayRow = this.mRows[i];
+        if (localArrayRow != null) {
+          this.mCache.optimizedArrayRowPool.release(localArrayRow);
         }
         this.mRows[i] = null;
         i += 1;
       }
     }
-    for (;;)
+    while (i < this.mNumRows)
     {
-      localObject = this.mRows;
-      if (i >= localObject.length) {
-        break;
-      }
-      localObject = localObject[i];
-      if (localObject != null) {
-        this.mCache.arrayRowPool.release(localObject);
+      localArrayRow = this.mRows[i];
+      if (localArrayRow != null) {
+        this.mCache.arrayRowPool.release(localArrayRow);
       }
       this.mRows[i] = null;
       i += 1;
@@ -621,29 +741,39 @@ public class LinearSystem
       {
         localObject = createExtraVariable();
         paramArrayRow.variable = ((SolverVariable)localObject);
+        int k = this.mNumRows;
         addRow(paramArrayRow);
-        this.mTempGoal.initFromRow(paramArrayRow);
-        optimize(this.mTempGoal, true);
-        if (((SolverVariable)localObject).definitionId == -1)
+        i = j;
+        if (this.mNumRows == k + 1)
         {
-          if (paramArrayRow.variable == localObject)
+          this.mTempGoal.initFromRow(paramArrayRow);
+          optimize(this.mTempGoal, true);
+          if (((SolverVariable)localObject).definitionId == -1)
           {
-            localObject = paramArrayRow.pickPivot((SolverVariable)localObject);
-            if (localObject != null)
+            if (paramArrayRow.variable == localObject)
             {
-              Metrics localMetrics = sMetrics;
-              if (localMetrics != null) {
-                localMetrics.pivots += 1L;
+              localObject = paramArrayRow.pickPivot((SolverVariable)localObject);
+              if (localObject != null)
+              {
+                Metrics localMetrics = sMetrics;
+                if (localMetrics != null) {
+                  localMetrics.pivots += 1L;
+                }
+                paramArrayRow.pivot((SolverVariable)localObject);
               }
-              paramArrayRow.pivot((SolverVariable)localObject);
             }
+            if (!paramArrayRow.isSimpleDefinition) {
+              paramArrayRow.variable.updateReferencesWithNewDefinition(this, paramArrayRow);
+            }
+            if (OPTIMIZED_ENGINE) {
+              this.mCache.optimizedArrayRowPool.release(paramArrayRow);
+            } else {
+              this.mCache.arrayRowPool.release(paramArrayRow);
+            }
+            this.mNumRows -= 1;
           }
-          if (!paramArrayRow.isSimpleDefinition) {
-            paramArrayRow.variable.updateReferencesWithNewDefinition(paramArrayRow);
-          }
-          this.mNumRows -= 1;
+          i = 1;
         }
-        i = 1;
       }
       if (!paramArrayRow.hasKeyVariable()) {
         return;
@@ -656,7 +786,7 @@ public class LinearSystem
   
   public ArrayRow addEquality(SolverVariable paramSolverVariable1, SolverVariable paramSolverVariable2, int paramInt1, int paramInt2)
   {
-    if ((paramInt2 == 8) && (paramSolverVariable2.isFinalValue) && (paramSolverVariable1.definitionId == -1))
+    if ((USE_BASIC_SYNONYMS) && (paramInt2 == 8) && (paramSolverVariable2.isFinalValue) && (paramSolverVariable1.definitionId == -1))
     {
       paramSolverVariable1.setFinalValue(this, paramSolverVariable2.computedValue + paramInt1);
       return null;
@@ -672,34 +802,44 @@ public class LinearSystem
   
   public void addEquality(SolverVariable paramSolverVariable, int paramInt)
   {
-    if (paramSolverVariable.definitionId == -1)
+    if ((USE_BASIC_SYNONYMS) && (paramSolverVariable.definitionId == -1))
     {
-      paramSolverVariable.setFinalValue(this, paramInt);
+      float f = paramInt;
+      paramSolverVariable.setFinalValue(this, f);
+      paramInt = 0;
+      while (paramInt < this.mVariablesID + 1)
+      {
+        localObject = this.mCache.mIndexedVariables[paramInt];
+        if ((localObject != null) && (((SolverVariable)localObject).isSynonym) && (((SolverVariable)localObject).synonym == paramSolverVariable.id)) {
+          ((SolverVariable)localObject).setFinalValue(this, ((SolverVariable)localObject).synonymDelta + f);
+        }
+        paramInt += 1;
+      }
       return;
     }
     int i = paramSolverVariable.definitionId;
     if (paramSolverVariable.definitionId != -1)
     {
-      localArrayRow = this.mRows[i];
-      if (localArrayRow.isSimpleDefinition)
+      localObject = this.mRows[i];
+      if (((ArrayRow)localObject).isSimpleDefinition)
       {
-        localArrayRow.constantValue = paramInt;
+        ((ArrayRow)localObject).constantValue = paramInt;
         return;
       }
-      if (localArrayRow.variables.getCurrentSize() == 0)
+      if (((ArrayRow)localObject).variables.getCurrentSize() == 0)
       {
-        localArrayRow.isSimpleDefinition = true;
-        localArrayRow.constantValue = paramInt;
+        ((ArrayRow)localObject).isSimpleDefinition = true;
+        ((ArrayRow)localObject).constantValue = paramInt;
         return;
       }
-      localArrayRow = createRow();
-      localArrayRow.createRowEquals(paramSolverVariable, paramInt);
-      addConstraint(localArrayRow);
+      localObject = createRow();
+      ((ArrayRow)localObject).createRowEquals(paramSolverVariable, paramInt);
+      addConstraint((ArrayRow)localObject);
       return;
     }
-    ArrayRow localArrayRow = createRow();
-    localArrayRow.createRowDefinition(paramSolverVariable, paramInt);
-    addConstraint(localArrayRow);
+    Object localObject = createRow();
+    ((ArrayRow)localObject).createRowDefinition(paramSolverVariable, paramInt);
+    addConstraint((ArrayRow)localObject);
   }
   
   public void addGreaterBarrier(SolverVariable paramSolverVariable1, SolverVariable paramSolverVariable2, int paramInt, boolean paramBoolean)
@@ -759,20 +899,43 @@ public class LinearSystem
     paramArrayRow.addSingleError(createErrorVariable(paramInt2, null), paramInt1);
   }
   
+  public void addSynonym(SolverVariable paramSolverVariable1, SolverVariable paramSolverVariable2, int paramInt)
+  {
+    if ((paramSolverVariable1.definitionId == -1) && (paramInt == 0))
+    {
+      SolverVariable localSolverVariable = paramSolverVariable2;
+      float f;
+      if (paramSolverVariable2.isSynonym)
+      {
+        f = paramSolverVariable2.synonymDelta;
+        localSolverVariable = this.mCache.mIndexedVariables[paramSolverVariable2.synonym];
+      }
+      if (paramSolverVariable1.isSynonym)
+      {
+        f = paramSolverVariable1.synonymDelta;
+        paramSolverVariable1 = this.mCache.mIndexedVariables[paramSolverVariable1.synonym];
+        return;
+      }
+      paramSolverVariable1.setSynonym(this, localSolverVariable, 0.0F);
+      return;
+    }
+    addEquality(paramSolverVariable1, paramSolverVariable2, paramInt, 8);
+  }
+  
   final void cleanupRows()
   {
     int j;
     for (int i = 0; i < this.mNumRows; i = j + 1)
     {
-      Object localObject = this.mRows[i];
-      if (((ArrayRow)localObject).variables.getCurrentSize() == 0) {
-        ((ArrayRow)localObject).isSimpleDefinition = true;
+      ArrayRow localArrayRow = this.mRows[i];
+      if (localArrayRow.variables.getCurrentSize() == 0) {
+        localArrayRow.isSimpleDefinition = true;
       }
       j = i;
-      if (((ArrayRow)localObject).isSimpleDefinition)
+      if (localArrayRow.isSimpleDefinition)
       {
-        ((ArrayRow)localObject).variable.computedValue = ((ArrayRow)localObject).constantValue;
-        ((ArrayRow)localObject).variable.removeFromRow((ArrayRow)localObject);
+        localArrayRow.variable.computedValue = localArrayRow.constantValue;
+        localArrayRow.variable.removeFromRow(localArrayRow);
         int k;
         for (j = i;; j = k)
         {
@@ -780,13 +943,18 @@ public class LinearSystem
           if (j >= k - 1) {
             break;
           }
-          localObject = this.mRows;
+          ArrayRow[] arrayOfArrayRow = this.mRows;
           k = j + 1;
-          localObject[j] = localObject[k];
+          arrayOfArrayRow[j] = arrayOfArrayRow[k];
         }
         this.mRows[(k - 1)] = null;
         this.mNumRows = (k - 1);
         j = i - 1;
+        if (OPTIMIZED_ENGINE) {
+          this.mCache.optimizedArrayRowPool.release(localArrayRow);
+        } else {
+          this.mCache.arrayRowPool.release(localArrayRow);
+        }
       }
     }
   }
@@ -920,12 +1088,17 @@ public class LinearSystem
   public void displayReadableRows()
   {
     displaySolverVariables();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(" num vars ");
+    ((StringBuilder)localObject1).append(this.mVariablesID);
+    ((StringBuilder)localObject1).append("\n");
+    localObject1 = ((StringBuilder)localObject1).toString();
     int j = 0;
-    Object localObject1 = "";
     int i = 0;
-    while (i < this.mVariablesID)
+    SolverVariable localSolverVariable;
+    while (i < this.mVariablesID + 1)
     {
-      SolverVariable localSolverVariable = this.mCache.mIndexedVariables[i];
+      localSolverVariable = this.mCache.mIndexedVariables[i];
       localObject2 = localObject1;
       if (localSolverVariable != null)
       {
@@ -948,6 +1121,38 @@ public class LinearSystem
       localObject1 = localObject2;
     }
     Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("\n");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    i = 0;
+    while (i < this.mVariablesID + 1)
+    {
+      localSolverVariable = this.mCache.mIndexedVariables[i];
+      localObject2 = localObject1;
+      if (localSolverVariable != null)
+      {
+        localObject2 = localObject1;
+        if (localSolverVariable.isSynonym)
+        {
+          localObject2 = this.mCache.mIndexedVariables[localSolverVariable.synonym];
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(" ~[");
+          localStringBuilder.append(i);
+          localStringBuilder.append("] => ");
+          localStringBuilder.append(localSolverVariable);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(localObject2);
+          localStringBuilder.append(" + ");
+          localStringBuilder.append(localSolverVariable.synonymDelta);
+          localStringBuilder.append("\n");
+          localObject2 = localStringBuilder.toString();
+        }
+      }
+      i += 1;
+      localObject1 = localObject2;
+    }
+    localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append("\n\n #  ");
     localObject1 = ((StringBuilder)localObject2).toString();
@@ -1139,6 +1344,11 @@ public class LinearSystem
     if (localMetrics != null) {
       localMetrics.minimize += 1L;
     }
+    if (this.mGoal.isEmpty())
+    {
+      computeValues();
+      return;
+    }
     if ((!this.graphOptimizer) && (!this.newgraphOptimizer))
     {
       minimizeGoal(this.mGoal);
@@ -1155,12 +1365,12 @@ public class LinearSystem
       if (!this.mRows[i].isSimpleDefinition)
       {
         i = j;
-        break label100;
+        break label117;
       }
       i += 1;
     }
     i = 1;
-    label100:
+    label117:
     if (i == 0)
     {
       minimizeGoal(this.mGoal);
@@ -1202,13 +1412,26 @@ public class LinearSystem
           if (i >= j - 1) {
             break;
           }
-          ArrayRow[] arrayOfArrayRow = this.mRows;
+          Object localObject = this.mRows;
           j = i + 1;
-          arrayOfArrayRow[i] = arrayOfArrayRow[j];
+          localObject = localObject[j].variable;
+          if (((SolverVariable)localObject).definitionId == j) {
+            ((SolverVariable)localObject).definitionId = i;
+          }
+          localObject = this.mRows;
+          localObject[i] = localObject[j];
         }
         this.mNumRows = (j - 1);
       }
-      paramArrayRow.variable.setFinalValue(this, paramArrayRow.constantValue);
+      if (!paramArrayRow.variable.isFinalValue) {
+        paramArrayRow.variable.setFinalValue(this, paramArrayRow.constantValue);
+      }
+      if (OPTIMIZED_ENGINE)
+      {
+        this.mCache.optimizedArrayRowPool.release(paramArrayRow);
+        return;
+      }
+      this.mCache.arrayRowPool.release(paramArrayRow);
     }
   }
   
@@ -1236,7 +1459,10 @@ public class LinearSystem
     i = 0;
     while (i < this.mNumRows)
     {
-      this.mRows[i].used = false;
+      localObject = this.mRows;
+      if (localObject[i] != null) {
+        localObject[i].used = false;
+      }
       i += 1;
     }
     releaseRows();
@@ -1251,7 +1477,7 @@ public class LinearSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.solver.LinearSystem
  * JD-Core Version:    0.7.0.1
  */

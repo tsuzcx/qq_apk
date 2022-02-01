@@ -11,15 +11,15 @@ public class AssistantSettingParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new AssistantSettingAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "assistant_setting";
-    paramBaseQQAppInterface.c = "ASSISTANT_SETTING";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "assistant_setting";
+    paramBaseQQAppInterface.e = "ASSISTANT_SETTING";
     return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AssistantSettingParser
  * JD-Core Version:    0.7.0.1
  */

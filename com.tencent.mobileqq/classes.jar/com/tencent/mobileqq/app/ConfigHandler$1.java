@@ -14,9 +14,9 @@ class ConfigHandler$1
   
   public void run()
   {
-    File localFile = new File(this.this$0.a.getApplication().getFilesDir(), "qq_safe_jump_whitelist.zip");
-    Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.downloadData(this.this$0.a, (String)localObject, localFile);
+    File localFile = new File(this.this$0.c.getApplication().getFilesDir(), "qq_safe_jump_whitelist.zip");
+    Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.a);
+    int i = HttpDownloadUtil.downloadData(this.this$0.c, (String)localObject, localFile);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -26,15 +26,15 @@ class ConfigHandler$1
     }
     if (i == 0)
     {
-      JumpFilterHelper.a().a(this.this$0.a, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      JumpFilterHelper.b().a(this.this$0.c, this.b, localFile.getAbsolutePath());
       return;
     }
-    JumpFilterHelper.a().a(this.this$0.a.getApplication());
+    JumpFilterHelper.b().a(this.this$0.c.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.1
  * JD-Core Version:    0.7.0.1
  */

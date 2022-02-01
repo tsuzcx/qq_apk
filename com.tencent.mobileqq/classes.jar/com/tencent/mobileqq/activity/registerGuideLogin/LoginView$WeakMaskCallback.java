@@ -7,44 +7,44 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 import tencent.im.login.GetLocalPhone.MaskPhoneData;
 
-class LoginView$WeakMaskCallback
+public class LoginView$WeakMaskCallback
   implements LocalPhoneModule.MaskPhoneCallback
 {
-  private final WeakReference<LoginView> jdField_a_of_type_MqqUtilWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  private final WeakReference<LoginView> a;
+  private final boolean b;
   
   public LoginView$WeakMaskCallback(LoginView paramLoginView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramLoginView);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = new WeakReference(paramLoginView);
+    this.b = paramBoolean;
   }
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)
+    if (this.a.get() == null)
     {
       QLog.d("LoginActivity.LoginView", 1, "curContextInvalid, fragment is null");
       return true;
     }
-    return LoginView.a((LoginView)this.jdField_a_of_type_MqqUtilWeakReference.get()) ^ true;
+    return ((LoginView)this.a.get()).m() ^ true;
   }
   
   public void a(int paramInt, Exception paramException)
   {
-    QLog.e("LoginActivity.LoginView", 1, new Object[] { "getMaskPhoneNum error : ", Integer.valueOf(paramInt), " exception : ", paramException, " userClick: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    QLog.e("LoginActivity.LoginView", 1, new Object[] { "getMaskPhoneNum error : ", Integer.valueOf(paramInt), " exception : ", paramException, " userClick: ", Boolean.valueOf(this.b) });
     if (a())
     {
       QLog.d("LoginActivity.LoginView", 1, "onException, current context invalid");
       return;
     }
     QuickLoginReporter.a(paramInt, paramException.getMessage());
-    paramException = (LoginView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    LoginView.i(paramException, false);
-    LoginView.a(paramException, 4);
-    if (!this.jdField_a_of_type_Boolean) {
+    paramException = (LoginView)this.a.get();
+    LoginView.h(paramException, false);
+    paramException.b(4);
+    if (!this.b) {
       return;
     }
-    PhoneNumQuickLoginManager.a(paramException.a, LoginView.b(paramException));
+    PhoneNumQuickLoginManager.a(paramException.b, LoginView.B(paramException));
   }
   
   public void a(GetLocalPhone.MaskPhoneData paramMaskPhoneData)
@@ -55,19 +55,19 @@ class LoginView$WeakMaskCallback
       return;
     }
     QuickLoginReporter.a(0, "SUCCESS");
-    LoginView localLoginView = (LoginView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    LoginView.a(localLoginView, 4);
+    LoginView localLoginView = (LoginView)this.a.get();
+    localLoginView.b(4);
     LoginView.a(localLoginView, paramMaskPhoneData);
-    LoginView.i(localLoginView, false);
-    if ((!this.jdField_a_of_type_Boolean) && (LoginView.l(localLoginView))) {
+    LoginView.h(localLoginView, false);
+    if ((!this.b) && (localLoginView.B)) {
       return;
     }
-    LoginView.a(localLoginView, paramMaskPhoneData, this.jdField_a_of_type_Boolean);
+    localLoginView.a(paramMaskPhoneData, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.WeakMaskCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ public class QzoneNuanProfileJsPlugin
     {
       paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
       paramString1 = QZoneHelper.UserInfo.getInstance();
-      paramString1.qzone_uin = this.parentPlugin.mRuntime.a().getAccount();
-      QZoneHelper.forwardToNuanProfile(this.parentPlugin.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
+      paramString1.qzone_uin = this.parentPlugin.mRuntime.b().getAccount();
+      QZoneHelper.forwardToNuanProfile(this.parentPlugin.mRuntime.d(), paramString1, paramJsBridgeListener, -1);
       return true;
     }
     catch (Throwable paramJsBridgeListener) {}
@@ -29,7 +29,7 @@ public class QzoneNuanProfileJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneNuanProfileJsPlugin
  * JD-Core Version:    0.7.0.1
  */

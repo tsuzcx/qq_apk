@@ -14,7 +14,7 @@ class QfileFavFileTabView$2
   {
     FavFileInfo localFavFileInfo;
     if ((paramView.getTag() instanceof QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)) {
-      localFavFileInfo = (FavFileInfo)((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)paramView.getTag()).a;
+      localFavFileInfo = (FavFileInfo)((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)paramView.getTag()).k;
     } else {
       localFavFileInfo = null;
     }
@@ -22,7 +22,7 @@ class QfileFavFileTabView$2
     {
       QfileFavFileTabView localQfileFavFileTabView = this.a;
       boolean bool;
-      if (paramView.getId() == 2131366781) {
+      if (paramView.getId() == 2131433103) {
         bool = true;
       } else {
         bool = false;
@@ -34,7 +34,7 @@ class QfileFavFileTabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView.2
  * JD-Core Version:    0.7.0.1
  */

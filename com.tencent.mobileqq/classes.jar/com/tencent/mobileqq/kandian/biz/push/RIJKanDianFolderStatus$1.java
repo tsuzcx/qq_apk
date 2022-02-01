@@ -17,17 +17,17 @@ final class RIJKanDianFolderStatus$1
     if (localObject == null) {
       return;
     }
-    MessageRecord localMessageRecord = ((QQMessageFacade)localObject).b(AppConstants.KANDIAN_MERGE_UIN, 7220);
+    MessageRecord localMessageRecord = ((QQMessageFacade)localObject).r(AppConstants.KANDIAN_MERGE_UIN, 7220);
     localObject = localMessageRecord;
-    if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a != null) {
+    if (RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.e != null) {
       if (localMessageRecord != null)
       {
         localObject = localMessageRecord;
-        if (localMessageRecord.time > RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a.time) {}
+        if (localMessageRecord.time > RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.e.time) {}
       }
       else
       {
-        localObject = RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.a;
+        localObject = RIJKanDianFolderStatus.RED_PNT_INFO_FOR_REPORT.e;
       }
     }
     RIJKanDianFolderStatus.updateKandianFolderStatus(this.a, (MessageRecord)localObject);
@@ -35,7 +35,7 @@ final class RIJKanDianFolderStatus$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus.1
  * JD-Core Version:    0.7.0.1
  */

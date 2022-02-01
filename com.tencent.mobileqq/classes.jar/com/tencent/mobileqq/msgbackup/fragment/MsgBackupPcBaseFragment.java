@@ -19,9 +19,9 @@ import com.tencent.qphone.base.util.QLog;
 public class MsgBackupPcBaseFragment
   extends MsgBackupBaseFragment
 {
-  protected String a;
-  protected boolean f = false;
-  protected boolean g = false;
+  protected String ab;
+  protected boolean ac = false;
+  protected boolean ad = false;
   
   public static void a(Context paramContext, int paramInt)
   {
@@ -31,27 +31,42 @@ public class MsgBackupPcBaseFragment
     QPublicFragmentActivity.start(paramContext, localIntent, MsgBackupPCTransportFragment.class);
   }
   
-  private void o()
+  private void w()
   {
-    if ((getActivity() != null) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver != null)) {
-      getQBaseActivity().addObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
+    if ((getActivity() != null) && (this.O != null)) {
+      getQBaseActivity().addObserver(this.O);
     }
   }
   
-  private void p()
+  private void x()
   {
-    if ((getActivity() != null) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver != null)) {
-      getQBaseActivity().removeObserver(this.jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupObserver);
+    if ((getActivity() != null) && (this.O != null)) {
+      getQBaseActivity().removeObserver(this.O);
     }
   }
   
-  protected void a()
+  protected void b()
   {
-    super.a();
-    o();
+    super.b();
+    w();
   }
   
-  public void aJ_()
+  protected void c()
+  {
+    super.c();
+    a(getActivity().getString(2131887444));
+    if (MsgBackupAuthProcessor.a().c() == 2) {
+      a(getActivity().getString(2131887441));
+    }
+  }
+  
+  protected void d()
+  {
+    super.d();
+    MsgBackupUtil.a("MsgBackup_MsgBackupPcBaseFragment", "MsgBackupPcBaseFragment bindview is called! biztype = %d, isFromPcHandle = %b", new Object[] { Integer.valueOf(this.K), Boolean.valueOf(this.ac) });
+  }
+  
+  public void de_()
   {
     FragmentActivity localFragmentActivity = getActivity();
     if (localFragmentActivity != null)
@@ -59,20 +74,20 @@ public class MsgBackupPcBaseFragment
       if (localFragmentActivity.isFinishing()) {
         return;
       }
-      Object localObject = HardCodeUtil.a(2131706964);
-      String str1 = HardCodeUtil.a(2131706950);
-      this.jdField_b_of_type_Int = MsgBackupAuthProcessor.a().a();
-      if (this.jdField_b_of_type_Int == 2) {
-        localObject = HardCodeUtil.a(2131706946);
+      Object localObject = HardCodeUtil.a(2131904807);
+      String str1 = HardCodeUtil.a(2131904793);
+      this.K = MsgBackupAuthProcessor.a().c();
+      if (this.K == 2) {
+        localObject = HardCodeUtil.a(2131904789);
       }
-      if (this.jdField_b_of_type_Int == 2) {
-        str1 = HardCodeUtil.a(2131706952);
+      if (this.K == 2) {
+        str1 = HardCodeUtil.a(2131904795);
       }
-      String str2 = HardCodeUtil.a(2131706960);
-      if (this.jdField_b_of_type_Int == 1) {
-        str2 = HardCodeUtil.a(2131706947);
+      String str2 = HardCodeUtil.a(2131904803);
+      if (this.K == 1) {
+        str2 = HardCodeUtil.a(2131904790);
       }
-      localObject = DialogUtil.a(localFragmentActivity, 0, (String)localObject, str2, localFragmentActivity.getString(2131690543), str1, new MsgBackupPcBaseFragment.2(this), new MsgBackupPcBaseFragment.3(this));
+      localObject = DialogUtil.a(localFragmentActivity, 0, (String)localObject, str2, localFragmentActivity.getString(2131887454), str1, new MsgBackupPcBaseFragment.2(this), new MsgBackupPcBaseFragment.3(this));
       if (localFragmentActivity.isFinishing()) {
         return;
       }
@@ -80,26 +95,11 @@ public class MsgBackupPcBaseFragment
     }
   }
   
-  protected void c()
-  {
-    super.c();
-    a(getActivity().getString(2131690533));
-    if (MsgBackupAuthProcessor.a().a() == 2) {
-      a(getActivity().getString(2131690530));
-    }
-  }
-  
-  protected void d()
-  {
-    super.d();
-    MsgBackupUtil.a("MsgBackup_MsgBackupPcBaseFragment", "MsgBackupPcBaseFragment bindview is called! biztype = %d, isFromPcHandle = %b", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(this.f) });
-  }
-  
   protected void e()
   {
     super.e();
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.w.setOnClickListener(this);
+    this.H.setOnClickListener(this);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -111,58 +111,28 @@ public class MsgBackupPcBaseFragment
       boolean bool2 = true;
       if (paramActivity != null)
       {
-        this.jdField_a_of_type_Int = paramActivity.getIntExtra("param_start", -1);
-        this.jdField_b_of_type_Int = paramActivity.getIntExtra("BIZ_TYPE", 1);
-        this.jdField_a_of_type_JavaLangString = paramActivity.getStringExtra("0x11bpush_extra");
+        this.a = paramActivity.getIntExtra("param_start", -1);
+        this.K = paramActivity.getIntExtra("BIZ_TYPE", 1);
+        this.ab = paramActivity.getStringExtra("0x11bpush_extra");
         if (QLog.isColorLevel())
         {
           paramActivity = new StringBuilder();
           paramActivity.append("toPage = ");
-          paramActivity.append(this.jdField_a_of_type_Int);
+          paramActivity.append(this.a);
           paramActivity.append("; mBizType = ");
-          paramActivity.append(this.jdField_b_of_type_Int);
+          paramActivity.append(this.K);
           QLog.d("MsgBackup_MsgBackupPcBaseFragment", 2, paramActivity.toString());
         }
       }
       boolean bool1 = bool2;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (MsgBackupManager.c) {
+      if (TextUtils.isEmpty(this.ab)) {
+        if (MsgBackupManager.s) {
           bool1 = bool2;
         } else {
           bool1 = false;
         }
       }
-      this.f = bool1;
-    }
-  }
-  
-  public void m()
-  {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null)
-    {
-      if (localFragmentActivity.isFinishing()) {
-        return;
-      }
-      String str2 = HardCodeUtil.a(2131694583);
-      this.jdField_b_of_type_Int = MsgBackupAuthProcessor.a().a();
-      String str1 = HardCodeUtil.a(2131706961);
-      if (this.jdField_b_of_type_Int == 1) {
-        str1 = HardCodeUtil.a(2131706951);
-      }
-      DialogUtil.a(localFragmentActivity, 0, null, str1, null, str2, new MsgBackupPcBaseFragment.1(this), null).show();
-    }
-  }
-  
-  protected void n()
-  {
-    if (this.jdField_b_of_type_Int == 1)
-    {
-      MsgBackupCompleteFragment.a(getActivity(), this.c, this.d, this.f);
-      return;
-    }
-    if (this.jdField_b_of_type_Int == 2) {
-      MsgBackupCompleteFragment.i(getActivity(), this.c, this.d);
+      this.ac = bool1;
     }
   }
   
@@ -173,19 +143,49 @@ public class MsgBackupPcBaseFragment
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDestroyView topage = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", bizType = ");
-      localStringBuilder.append(MsgBackupAuthProcessor.a().a());
+      localStringBuilder.append(MsgBackupAuthProcessor.a().c());
       localStringBuilder.append(", sIsShouQiBtnClick = ");
       localStringBuilder.append(MsgBackupManager.a);
       QLog.d("MsgBackup_MsgBackupPcBaseFragment", 2, localStringBuilder.toString());
     }
-    p();
+    x();
+  }
+  
+  public void u()
+  {
+    FragmentActivity localFragmentActivity = getActivity();
+    if (localFragmentActivity != null)
+    {
+      if (localFragmentActivity.isFinishing()) {
+        return;
+      }
+      String str2 = HardCodeUtil.a(2131892267);
+      this.K = MsgBackupAuthProcessor.a().c();
+      String str1 = HardCodeUtil.a(2131904804);
+      if (this.K == 1) {
+        str1 = HardCodeUtil.a(2131904794);
+      }
+      DialogUtil.a(localFragmentActivity, 0, null, str1, null, str2, new MsgBackupPcBaseFragment.1(this), null).show();
+    }
+  }
+  
+  protected void v()
+  {
+    if (this.K == 1)
+    {
+      MsgBackupCompleteFragment.a(getActivity(), this.R, this.S, this.ac);
+      return;
+    }
+    if (this.K == 2) {
+      MsgBackupCompleteFragment.i(getActivity(), this.R, this.S);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPcBaseFragment
  * JD-Core Version:    0.7.0.1
  */

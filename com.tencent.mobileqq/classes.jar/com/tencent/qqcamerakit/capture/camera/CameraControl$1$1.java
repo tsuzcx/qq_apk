@@ -9,14 +9,14 @@ class CameraControl$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraControl$1.a.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraControl$1.a.c = 100;
-    new TakePictureTask(this.jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraControl$1.a).execute(new Void[0]);
+    this.b.b.f = this.a;
+    this.b.b.g = 100;
+    new TakePictureTask(this.b.b).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camera.CameraControl.1.1
  * JD-Core Version:    0.7.0.1
  */

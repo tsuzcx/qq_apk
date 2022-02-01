@@ -10,7 +10,7 @@ public class Formatter
     if (paramLong < 0L) {
       l = 0L;
     }
-    Object localObject1 = HardCodeUtil.a(2131704823);
+    Object localObject1 = HardCodeUtil.a(2131902724);
     if (l < 10000L) {
       return String.valueOf(l);
     }

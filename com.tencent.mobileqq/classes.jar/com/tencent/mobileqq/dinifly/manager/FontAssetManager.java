@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.FontAssetDelegate;
 import com.tencent.mobileqq.dinifly.model.MutablePair;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public class FontAssetManager
     this.delegate = paramFontAssetDelegate;
     if (!(paramCallback instanceof View))
     {
-      Log.w("LOTTIE", "LottieDrawable must be inside of a view for images to work.");
+      Logger.warning("LottieDrawable must be inside of a view for images to work.");
       this.assetManager = null;
       return;
     }
@@ -134,7 +134,7 @@ public class FontAssetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.manager.FontAssetManager
  * JD-Core Version:    0.7.0.1
  */

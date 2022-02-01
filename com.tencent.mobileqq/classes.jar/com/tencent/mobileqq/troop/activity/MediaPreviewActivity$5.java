@@ -29,13 +29,13 @@ class MediaPreviewActivity$5
     }
     paramVarArgs = new StringBuilder();
     paramVarArgs.append(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
-    paramVarArgs.append(Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString()));
+    paramVarArgs.append(Utils.Crc64String(this.a.getURL().toString()));
     String str = paramVarArgs.toString();
     paramVarArgs = str;
     if (!new File(str).exists()) {
       try
       {
-        paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+        paramVarArgs = this.a.saveTo(str);
       }
       catch (IOException paramVarArgs)
       {
@@ -44,9 +44,9 @@ class MediaPreviewActivity$5
       }
     }
     localBundle.putBoolean("forward_urldrawable", true);
-    localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_urldrawable_thumb_url", this.b);
     localBundle.putString("forward_filepath", paramVarArgs);
-    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    localBundle.putString("forward_urldrawable_big_url", this.a.getURL().toString());
     localBundle.putString("forward_extra", paramVarArgs);
     return localBundle;
   }
@@ -55,17 +55,17 @@ class MediaPreviewActivity$5
   {
     if (paramBundle == null)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, HardCodeUtil.a(2131706555), 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
+      QQToast.makeText(this.c, HardCodeUtil.a(2131904411), 0).show(this.c.getTitleBarHeight());
       return;
     }
     Intent localIntent = new Intent();
     localIntent.putExtras(paramBundle);
-    ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
+    ForwardBaseOption.a(this.c, localIntent, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.5
  * JD-Core Version:    0.7.0.1
  */

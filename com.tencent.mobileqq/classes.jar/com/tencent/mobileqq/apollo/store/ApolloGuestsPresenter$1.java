@@ -13,7 +13,7 @@ class ApolloGuestsPresenter$1
 {
   ApolloGuestsPresenter$1(ApolloGuestsPresenter paramApolloGuestsPresenter) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
     if (!paramBoolean)
     {
@@ -27,22 +27,22 @@ class ApolloGuestsPresenter$1
       localStringBuilder.append(paramObject);
       QLog.d("[cmshow]ApolloGuestsPresenter", 2, localStringBuilder.toString());
     }
-    if (ApolloGuestsPresenter.a(this.a) != null) {
-      ApolloGuestsPresenter.a(this.a).onDressChange();
+    if (ApolloGuestsPresenter.b(this.a) != null) {
+      ApolloGuestsPresenter.b(this.a).onDressChange();
     }
     this.a.c();
   }
   
-  protected void e(boolean paramBoolean, Object paramObject) {}
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
-  protected void f(boolean paramBoolean, Object paramObject)
+  protected void g(boolean paramBoolean, Object paramObject)
   {
     if (!paramBoolean)
     {
       QLog.e("[cmshow]ApolloGuestsPresenter", 1, "get zanCount fail ");
       return;
     }
-    if ((paramObject != null) && (ApolloGuestsPresenter.a(this.a) != null))
+    if ((paramObject != null) && (ApolloGuestsPresenter.b(this.a) != null))
     {
       if (QLog.isColorLevel())
       {
@@ -54,12 +54,12 @@ class ApolloGuestsPresenter$1
       Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("apollo_zan_count");
-      ((StringBuilder)localObject2).append(ApolloGuestsPresenter.a(this.a));
+      ((StringBuilder)localObject2).append(ApolloGuestsPresenter.c(this.a));
       int i = ((SharedPreferences)localObject1).getInt(((StringBuilder)localObject2).toString(), 0);
       localObject1 = ((SharedPreferences)localObject1).edit();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("apollo_zan_count");
-      ((StringBuilder)localObject2).append(ApolloGuestsPresenter.a(this.a));
+      ((StringBuilder)localObject2).append(ApolloGuestsPresenter.c(this.a));
       String str = ((StringBuilder)localObject2).toString();
       localObject2 = (Integer)paramObject;
       ((SharedPreferences.Editor)localObject1).putInt(str, ((Integer)localObject2).intValue()).commit();
@@ -76,18 +76,18 @@ class ApolloGuestsPresenter$1
         paramObject.append("+");
         localObject2 = paramObject.toString();
       }
-      ApolloGuestsPresenter.a(this.a).onApprovalGet((String)localObject2, i, ((Integer)localObject1).intValue());
+      ApolloGuestsPresenter.b(this.a).onApprovalGet((String)localObject2, i, ((Integer)localObject1).intValue());
       return;
     }
     QLog.e("[cmshow]ApolloGuestsPresenter", 1, "get zanCount data is null");
   }
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  protected void h(boolean paramBoolean, Object paramObject)
   {
     Object localObject1;
     if ((paramObject != null) && (ApolloGuestsPresenter.a(this.a) != null))
     {
-      if (ApolloGuestsPresenter.a(this.a) == null) {
+      if (ApolloGuestsPresenter.b(this.a) == null) {
         return;
       }
       if (QLog.isColorLevel())
@@ -106,7 +106,7 @@ class ApolloGuestsPresenter$1
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(ApolloGuestsPresenter.a(this.a).getCurrentAccountUin());
         localStringBuilder.append("apollo_today_has_vote");
-        localStringBuilder.append(ApolloGuestsPresenter.a(this.a));
+        localStringBuilder.append(ApolloGuestsPresenter.c(this.a));
         localStringBuilder.append(((Calendar)localObject1).get(1));
         localStringBuilder.append(((Calendar)localObject1).get(2));
         localStringBuilder.append(((Calendar)localObject1).get(5));
@@ -115,7 +115,7 @@ class ApolloGuestsPresenter$1
         if (((Integer)paramObject).intValue() > 99999) {
           localObject1 = Integer.valueOf(99999);
         }
-        ApolloGuestsPresenter.a(this.a).onApprovalSet(((Integer)localObject1).intValue());
+        ApolloGuestsPresenter.b(this.a).onApprovalSet(((Integer)localObject1).intValue());
         return;
       }
       catch (Exception paramObject)
@@ -132,7 +132,7 @@ class ApolloGuestsPresenter$1
         {
           paramObject = new StringBuilder();
           paramObject.append("today has vote to ");
-          paramObject.append(ApolloGuestsPresenter.a(this.a));
+          paramObject.append(ApolloGuestsPresenter.c(this.a));
           QLog.d("[cmshow]ApolloGuestsPresenter", 2, paramObject.toString());
         }
         localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
@@ -141,7 +141,7 @@ class ApolloGuestsPresenter$1
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(ApolloGuestsPresenter.a(this.a).getCurrentAccountUin());
         ((StringBuilder)localObject2).append("apollo_today_has_vote");
-        ((StringBuilder)localObject2).append(ApolloGuestsPresenter.a(this.a));
+        ((StringBuilder)localObject2).append(ApolloGuestsPresenter.c(this.a));
         ((StringBuilder)localObject2).append(paramObject.get(1));
         ((StringBuilder)localObject2).append(paramObject.get(2));
         ((StringBuilder)localObject2).append(paramObject.get(5));
@@ -153,7 +153,7 @@ class ApolloGuestsPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter.1
  * JD-Core Version:    0.7.0.1
  */

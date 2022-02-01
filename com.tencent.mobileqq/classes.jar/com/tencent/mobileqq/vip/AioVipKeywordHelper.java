@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.vip;
 
-import VIP.AIOSendRes;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -8,6 +7,7 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.VIPAioSendHandler;
@@ -25,70 +25,51 @@ import com.tencent.mobileqq.vas.helper.AioVipKeywordConfigHelper;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class AioVipKeywordHelper
 {
-  private static AioVipKeywordHelper jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper;
-  public static String a = "mvip.pt.android.aiocuifei_recikai";
-  public static String b = "mvip.pt.android.aiocuifei_recizeng";
-  public static String c = "mvip.p.a.aio_qunkt";
-  public static String d = "mvip.p.a.aio_qunzs";
-  public static String e = "mvip.p.a.aio_tlzkt";
-  public static String f = "mvip.p.a.aio_tlzzs";
-  public int a;
-  public long a;
-  public SessionInfo a;
-  public MessageRecord a;
-  private AioVipKeywordConfigHelper jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper = AioVipKeywordConfigHelper.a();
-  public List<String> a;
-  public Map<String, Boolean> a;
-  public String[] a;
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public long d;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  
-  public AioVipKeywordHelper()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_Long = 86400L;
-    this.jdField_b_of_type_Long = 86400L;
-    this.jdField_c_of_type_Long = 86400L;
-    this.jdField_d_of_type_Long = 2000L;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public static final String[] a = { HardCodeUtil.a(2131903317), HardCodeUtil.a(2131903313), HardCodeUtil.a(2131903315), HardCodeUtil.a(2131903318), HardCodeUtil.a(2131903316), HardCodeUtil.a(2131903314), HardCodeUtil.a(2131903312) };
+  public static String b = "mvip.pt.android.aiocuifei_recikai";
+  public static String c = "mvip.pt.android.aiocuifei_recizeng";
+  public static String d = "mvip.p.a.aio_qunkt";
+  public static String e = "mvip.p.a.aio_qunzs";
+  public static String f = "mvip.p.a.aio_tlzkt";
+  public static String g = "mvip.p.a.aio_tlzzs";
+  private static AioVipKeywordHelper s;
+  public MessageRecord h;
+  public int i = 1;
+  public int j = 1;
+  public int k = 1;
+  public long l = 86400L;
+  public long m = 86400L;
+  public long n = 86400L;
+  public long o = 2000L;
+  public String[] p;
+  public List<String> q;
+  public Map<String, Boolean> r = new HashMap();
+  private AioVipKeywordConfigHelper t = AioVipKeywordConfigHelper.a();
   
   public static AioVipKeywordHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper == null) {
+    if (s == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper = new AioVipKeywordHelper();
+        if (s == null) {
+          s = new AioVipKeywordHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper;
+    return s;
   }
   
   private void a(JSONObject paramJSONObject)
@@ -96,49 +77,49 @@ public class AioVipKeywordHelper
     paramJSONObject = paramJSONObject.optJSONObject("aioVIPGrayTips");
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("c2cEnable", 1);
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("groupEnable", 1);
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("discussGroupEnable", 1);
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("c2cFreq", 86400L);
-      this.jdField_b_of_type_Long = paramJSONObject.optLong("groupFreq", 86400L);
-      this.jdField_c_of_type_Long = paramJSONObject.optLong("discussGroupFreq", 86400L);
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("fetchWordingTolerateTime", 2000L);
+      this.i = paramJSONObject.optInt("c2cEnable", 1);
+      this.j = paramJSONObject.optInt("groupEnable", 1);
+      this.k = paramJSONObject.optInt("discussGroupEnable", 1);
+      this.l = paramJSONObject.optLong("c2cFreq", 86400L);
+      this.m = paramJSONObject.optLong("groupFreq", 86400L);
+      this.n = paramJSONObject.optLong("discussGroupFreq", 86400L);
+      this.o = paramJSONObject.optLong("fetchWordingTolerateTime", 2000L);
       Object localObject = paramJSONObject.optString("dirtyWords");
       boolean bool = TextUtils.isEmpty((CharSequence)localObject);
-      int m = 0;
+      int i2 = 0;
       ArrayList localArrayList;
-      int n;
-      int k;
+      int i3;
+      int i1;
       if (!bool)
       {
         localArrayList = new ArrayList();
         localObject = ((String)localObject).split(";");
-        n = localObject.length;
-        k = 0;
-        while (k < n)
+        i3 = localObject.length;
+        i1 = 0;
+        while (i1 < i3)
         {
-          CharSequence localCharSequence = localObject[k];
+          CharSequence localCharSequence = localObject[i1];
           if (!TextUtils.isEmpty(localCharSequence)) {
             localArrayList.add(localCharSequence.trim().toLowerCase());
           }
-          k += 1;
+          i1 += 1;
         }
-        this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localArrayList.toArray(new String[localArrayList.size()]));
+        this.p = ((String[])localArrayList.toArray(new String[localArrayList.size()]));
       }
       paramJSONObject = paramJSONObject.optString("groupGrayTail");
       if (!TextUtils.isEmpty(paramJSONObject))
       {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.q = new ArrayList();
         paramJSONObject = paramJSONObject.split(";");
-        n = paramJSONObject.length;
-        k = m;
-        while (k < n)
+        i3 = paramJSONObject.length;
+        i1 = i2;
+        while (i1 < i3)
         {
-          localArrayList = paramJSONObject[k];
+          localArrayList = paramJSONObject[i1];
           if (!TextUtils.isEmpty(localArrayList)) {
-            this.jdField_a_of_type_JavaUtilList.add(localArrayList.trim().toLowerCase());
+            this.q.add(localArrayList.trim().toLowerCase());
           }
-          k += 1;
+          i1 += 1;
         }
       }
     }
@@ -146,23 +127,24 @@ public class AioVipKeywordHelper
   
   private void a(String[] paramArrayOfString, String paramString, ChatMessage paramChatMessage, boolean paramBoolean, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    int k = 0;
-    while (k < paramArrayOfString.length)
+    int i2 = 0;
+    int i1 = 0;
+    while (i1 < paramArrayOfString.length)
     {
-      String str = paramArrayOfString[k];
+      String str = paramArrayOfString[i1];
       if ((!TextUtils.isEmpty(str)) && (paramString.contains(str)))
       {
-        paramArrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        paramArrayOfString = this.p;
         if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
         {
-          k = 0;
+          i1 = i2;
           for (;;)
           {
-            paramArrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-            if (k >= paramArrayOfString.length) {
+            paramArrayOfString = this.p;
+            if (i1 >= paramArrayOfString.length) {
               break;
             }
-            paramArrayOfString = paramArrayOfString[k];
+            paramArrayOfString = paramArrayOfString[i1];
             if ((!TextUtils.isEmpty(paramArrayOfString)) && (paramString.contains(paramArrayOfString)))
             {
               paramString = new StringBuilder();
@@ -173,26 +155,19 @@ public class AioVipKeywordHelper
               QLog.d("AioVipKeywordHelper", 4, paramString.toString());
               return;
             }
-            k += 1;
+            i1 += 1;
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramChatMessage;
+        this.h = paramChatMessage;
         paramArrayOfString = new StringBuilder();
         paramArrayOfString.append("detected Keyword, keyword=");
         paramArrayOfString.append(str);
         QLog.d("AioVipKeywordHelper", 4, paramArrayOfString.toString());
-        if (!paramBoolean)
-        {
-          a(paramQQAppInterface, paramSessionInfo, str, false);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-        this.j = str;
-        ((VIPAioSendHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VIP_AIO_SEND_HANDLER)).a(str);
-        ThreadManager.getUIHandler().postDelayed(new AioVipKeywordHelper.2(this, paramQQAppInterface, paramSessionInfo, str), this.jdField_d_of_type_Long);
+        ((VIPAioSendHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.VIP_AIO_SEND_HANDLER)).a(paramSessionInfo.b, paramSessionInfo.a, str, paramBoolean);
+        a(paramQQAppInterface, paramSessionInfo, str);
         return;
       }
-      k += 1;
+      i1 += 1;
     }
   }
   
@@ -201,32 +176,9 @@ public class AioVipKeywordHelper
     return (paramString != null) && (paramString.length() > 2);
   }
   
-  private String[] a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    int k = 0;
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.jdField_a_of_type_ArrayOfJavaLangString.length >= 1)) {}
-    }
-    else {
-      while ((this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.b == null) || (this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.b.length < 1))
-      {
-        k = 1;
-        break;
-      }
-    }
-    if (k != 0) {
-      a(paramContext, paramString);
-    }
-    if (paramBoolean) {
-      return this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.jdField_a_of_type_ArrayOfJavaLangString;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.b;
-  }
-  
   private void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage, String paramString, Context paramContext, boolean paramBoolean)
   {
-    ThreadManager.executeOnSubThread(new AioVipKeywordHelper.1(this, paramQQAppInterface, paramSessionInfo, paramContext, paramString, paramChatMessage, paramBoolean), true);
+    ThreadManager.executeOnSubThread(new AioVipKeywordHelper.1(this, paramQQAppInterface, paramSessionInfo, paramString, paramChatMessage, paramBoolean), true);
   }
   
   private void b(JSONObject paramJSONObject)
@@ -272,10 +224,10 @@ public class AioVipKeywordHelper
     paramJSONObject = paramJSONObject.optJSONObject("getStrangerInterval");
     if (paramJSONObject != null)
     {
-      AvatarPendantUtil.jdField_a_of_type_Int = paramJSONObject.optInt("interval", 5000);
+      AvatarPendantUtil.h = paramJSONObject.optInt("interval", 5000);
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("getStrangerInterval is ");
-      paramJSONObject.append(AvatarPendantUtil.jdField_a_of_type_Int);
+      paramJSONObject.append(AvatarPendantUtil.h);
       QLog.d("AioVipKeywordHelper", 1, paramJSONObject.toString());
     }
   }
@@ -285,8 +237,8 @@ public class AioVipKeywordHelper
     paramJSONObject = paramJSONObject.optJSONObject("ipProductGrayTips");
     if (paramJSONObject != null)
     {
-      CommercialDrainageManagerConstants.jdField_a_of_type_JavaLangString = paramJSONObject.optString("leftText", CommercialDrainageManagerConstants.jdField_a_of_type_JavaLangString);
-      CommercialDrainageManagerConstants.jdField_b_of_type_JavaLangString = paramJSONObject.optString("linkText", CommercialDrainageManagerConstants.jdField_b_of_type_JavaLangString);
+      CommercialDrainageManagerConstants.i = paramJSONObject.optString("leftText", CommercialDrainageManagerConstants.i);
+      CommercialDrainageManagerConstants.j = paramJSONObject.optString("linkText", CommercialDrainageManagerConstants.j);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ipProductGrayTips: ");
       localStringBuilder.append(paramJSONObject.toString());
@@ -305,7 +257,7 @@ public class AioVipKeywordHelper
       } else {
         bool = false;
       }
-      com.tencent.mobileqq.floatscr.ColorScreenConstants.jdField_a_of_type_Boolean = bool;
+      com.tencent.mobileqq.floatscr.ColorScreenConstants.a = bool;
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("lottieConfig.switch is ");
       paramJSONObject.append(bool);
@@ -319,55 +271,6 @@ public class AioVipKeywordHelper
     if (paramJSONObject != null) {
       EmoticonRecDressup.setRecommendClearTime(paramJSONObject.optLong("interval", 86400L));
     }
-  }
-  
-  public Pair<String, String> a(boolean paramBoolean, int paramInt)
-  {
-    Object localObject2 = "";
-    Object localObject1;
-    if (paramInt != 0)
-    {
-      if ((paramInt != 1) && (paramInt != 3000))
-      {
-        localObject1 = "";
-      }
-      else
-      {
-        if (paramBoolean) {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.i;
-        } else {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.k;
-        }
-        String str;
-        if (paramBoolean)
-        {
-          str = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.j;
-          localObject2 = localObject1;
-          localObject1 = str;
-        }
-        else
-        {
-          str = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.l;
-          localObject2 = localObject1;
-          localObject1 = str;
-        }
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.e;
-      } else {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.f;
-      }
-      localObject2 = localObject1;
-      if (paramBoolean) {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.g;
-      } else {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.h;
-      }
-    }
-    return new Pair(localObject2, localObject1);
   }
   
   public String a(int paramInt)
@@ -396,19 +299,19 @@ public class AioVipKeywordHelper
           return "";
         }
         if (paramBoolean) {
-          return e;
+          return f;
         }
-        return f;
+        return g;
       }
       if (paramBoolean) {
-        return jdField_c_of_type_JavaLangString;
+        return d;
       }
-      return jdField_d_of_type_JavaLangString;
+      return e;
     }
     if (paramBoolean) {
-      return jdField_a_of_type_JavaLangString;
+      return b;
     }
-    return jdField_b_of_type_JavaLangString;
+    return c;
   }
   
   public void a(Context paramContext, String paramString)
@@ -425,7 +328,7 @@ public class AioVipKeywordHelper
     if (TextUtils.isEmpty(paramContext)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.a(paramContext, paramString);
+    this.t.a(paramContext, paramString);
     a(BaseApplicationImpl.getApplication().getRuntime());
   }
   
@@ -444,51 +347,11 @@ public class AioVipKeywordHelper
     paramQQAppInterface.putLong(((StringBuilder)localObject).toString(), paramLong).commit();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, AIOSendRes paramAIOSendRes)
-  {
-    if (paramAIOSendRes != null)
-    {
-      this.g = paramAIOSendRes.sGrayStipMsg;
-      Object localObject;
-      if (paramAIOSendRes.mHighLightMap != null)
-      {
-        localObject = paramAIOSendRes.mHighLightMap.keySet().iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          this.h = ((String)((Iterator)localObject).next());
-          this.i = ((String)paramAIOSendRes.mHighLightMap.get(this.h));
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        paramAIOSendRes = new StringBuilder();
-        paramAIOSendRes.append("fetched tips from server: tips=");
-        paramAIOSendRes.append(this.g);
-        paramAIOSendRes.append(", highlight=");
-        paramAIOSendRes.append(this.h);
-        paramAIOSendRes.append(", openUrl=");
-        paramAIOSendRes.append(this.i);
-        QLog.d("AioVipKeywordHelper", 4, paramAIOSendRes.toString());
-      }
-      paramAIOSendRes = this.j;
-      if (paramAIOSendRes != null)
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-        if (localObject != null)
-        {
-          a(paramQQAppInterface, (SessionInfo)localObject, paramAIOSendRes, true);
-          this.j = null;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-        }
-      }
-    }
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage, String paramString, Context paramContext, boolean paramBoolean)
   {
     if ((paramQQAppInterface != null) && (paramContext != null) && (paramChatMessage != null) && (!TextUtils.isEmpty(paramString)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+      if (this.h != null)
       {
         QLog.d("AioVipKeywordHelper", 4, "keyword has been detected, message is ignored.");
         return;
@@ -502,78 +365,37 @@ public class AioVipKeywordHelper
     QLog.e("AioVipKeywordHelper", 1, "detectKeyword : params error");
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
   {
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+        if (this.h != null)
         {
-          Object localObject2 = a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend(), paramSessionInfo.jdField_a_of_type_Int);
-          Object localObject1;
-          Object localObject3;
-          if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend())
+          String str = paramSessionInfo.b;
+          if (a(str))
           {
-            if (paramBoolean) {
-              localObject1 = this.g;
-            } else {
-              localObject1 = (String)((Pair)localObject2).first;
-            }
-            if (paramBoolean) {
-              localObject2 = this.h;
-            } else {
-              localObject2 = (String)((Pair)localObject2).second;
-            }
-            if (paramBoolean)
+            a(paramQQAppInterface, paramSessionInfo.a, str, System.currentTimeMillis());
+            if (this.h.isSend())
             {
-              str = this.i;
-              localObject3 = localObject1;
-              localObject1 = str;
-            }
-            else
-            {
-              str = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.n;
-              localObject3 = localObject1;
-              localObject1 = str;
+              paramQQAppInterface = "0";
+              VasWebviewUtil.a(paramString, paramQQAppInterface, "0", a(paramSessionInfo.a), str, "", "", "", "", "");
             }
           }
           else
           {
-            localObject3 = (String)((Pair)localObject2).first;
-            localObject2 = (String)((Pair)localObject2).second;
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.m;
-          }
-          String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
-          if (a(str))
-          {
-            a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_Int, str, System.currentTimeMillis());
-            a(paramQQAppInterface, str, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin, paramSessionInfo.jdField_a_of_type_Int, -4021, (String)localObject3, (String)localObject2, (String)localObject1, paramString);
-            if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-              break label294;
-            }
-            paramQQAppInterface = "0";
-            VasWebviewUtil.a(paramString, paramQQAppInterface, "0", a(paramSessionInfo.jdField_a_of_type_Int), str, "", "", "", "", "");
-          }
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
-          if (paramBoolean)
-          {
-            this.i = null;
             this.h = null;
-            this.g = null;
           }
         }
-        return;
+        else
+        {
+          return;
+        }
       }
       finally {}
-      label294:
       paramQQAppInterface = "1";
     }
-  }
-  
-  void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(AppRuntime paramAppRuntime)
@@ -593,7 +415,7 @@ public class AioVipKeywordHelper
       if (localJSONObject.optInt("isChooseStyleClosed", 0) != 1) {
         bool = false;
       }
-      com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity.jdField_a_of_type_Boolean = bool;
+      com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity.a = bool;
     }
     a(paramAppRuntime);
     h(paramAppRuntime);
@@ -608,80 +430,77 @@ public class AioVipKeywordHelper
   
   public boolean a(SessionInfo paramSessionInfo)
   {
-    int k = paramSessionInfo.jdField_a_of_type_Int;
-    if (k != 0)
+    int i1 = paramSessionInfo.a;
+    if (i1 != 0)
     {
-      if ((k != 1) && (k != 3000)) {
+      if ((i1 != 1) && (i1 != 3000)) {
         return false;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.jdField_a_of_type_Boolean)
+      if (this.t.r)
       {
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-          return ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramSessionInfo.jdField_a_of_type_JavaLangString)).booleanValue();
+        if (this.r.containsKey(paramSessionInfo.b)) {
+          return ((Boolean)this.r.get(paramSessionInfo.b)).booleanValue();
         }
-        Object localObject = this.jdField_a_of_type_JavaUtilList;
+        Object localObject = this.q;
         if ((localObject != null) && (!((List)localObject).isEmpty()))
         {
-          localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+          localObject = this.q.iterator();
           while (((Iterator)localObject).hasNext())
           {
             String str = (String)((Iterator)localObject).next();
-            if (paramSessionInfo.jdField_a_of_type_JavaLangString.endsWith(str))
+            if (paramSessionInfo.b.endsWith(str))
             {
-              this.jdField_a_of_type_JavaUtilMap.put(paramSessionInfo.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+              this.r.put(paramSessionInfo.b, Boolean.valueOf(true));
               return true;
             }
           }
         }
-        this.jdField_a_of_type_JavaUtilMap.put(paramSessionInfo.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+        this.r.put(paramSessionInfo.b, Boolean.valueOf(false));
       }
       QLog.d("AioVipKeywordHelper", 4, "current uin is not gray number.");
       return false;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.jdField_a_of_type_Boolean;
+    return this.t.r;
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    if (TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(paramSessionInfo.b))
     {
       QLog.d("AioVipKeywordHelper", 2, "sessionInfo.curFriendUin is empty, need not detect keyword.");
       return false;
     }
-    if (SimpleUIUtil.a()) {
-      return false;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVasHelperAioVipKeywordConfigHelper.jdField_a_of_type_Int == 0) {
+    if (SimpleUIUtil.e()) {
       return false;
     }
     long l1 = 86400L;
-    int k = paramSessionInfo.jdField_a_of_type_Int;
-    if (k != 0)
+    int i1 = paramSessionInfo.a;
+    if (i1 != 0)
     {
-      if (k != 1)
+      if (i1 != 1)
       {
-        if (k != 3000)
+        if (i1 != 3000)
         {
-          k = 0;
+          i1 = 0;
         }
         else
         {
-          k = this.jdField_c_of_type_Int;
-          l1 = this.jdField_c_of_type_Long;
+          i1 = this.k;
+          l1 = this.n;
         }
       }
       else
       {
-        k = this.jdField_b_of_type_Int;
-        l1 = this.jdField_b_of_type_Long;
+        i1 = this.j;
+        l1 = this.m;
       }
     }
     else
     {
-      k = this.jdField_a_of_type_Int;
-      l1 = this.jdField_a_of_type_Long;
+      i1 = this.i;
+      l1 = this.l;
     }
-    if (k == 0)
+    if (i1 == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AioVipKeywordHelper", 4, "VIP Keyword Function is closed.");
@@ -695,9 +514,9 @@ public class AioVipKeywordHelper
     paramQQAppInterface = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("lastShowGrayTipsTime_");
-    ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramSessionInfo.a);
     ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramSessionInfo.b);
     long l2 = paramQQAppInterface.getLong(((StringBuilder)localObject).toString(), 0L);
     if (System.currentTimeMillis() - l2 < 1000L * l1)
     {
@@ -713,7 +532,7 @@ public class AioVipKeywordHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.AioVipKeywordHelper
  * JD-Core Version:    0.7.0.1
  */

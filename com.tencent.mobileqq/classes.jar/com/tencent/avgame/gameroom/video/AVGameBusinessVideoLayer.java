@@ -21,45 +21,63 @@ import java.util.List;
 public class AVGameBusinessVideoLayer
   extends AVGameVideoLayer
 {
-  private GameVideoRecordPresenterWrapper a = new GameVideoRecordPresenterWrapper(paramContext, this);
+  private GameVideoRecordPresenterWrapper R = new GameVideoRecordPresenterWrapper(paramContext, this);
   
   public AVGameBusinessVideoLayer(Context paramContext, AVGameAppInterface paramAVGameAppInterface)
   {
     super(paramContext, paramAVGameAppInterface);
   }
   
-  private boolean a(long paramLong)
+  private boolean b(long paramLong)
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.I.iterator();
     for (boolean bool = false; localIterator.hasNext(); bool = true)
     {
       label13:
       MemberVideoDisplayInfo localMemberVideoDisplayInfo = (MemberVideoDisplayInfo)localIterator.next();
-      if ((localMemberVideoDisplayInfo.jdField_a_of_type_Long != paramLong) || (localMemberVideoDisplayInfo.jdField_a_of_type_Boolean)) {
+      if ((localMemberVideoDisplayInfo.a != paramLong) || (localMemberVideoDisplayInfo.g)) {
         break label13;
       }
     }
     return bool;
   }
   
-  public IStageRecordPresenter a()
+  public IStageRecordPresenter A()
   {
-    return this.a;
+    return this.R;
+  }
+  
+  public void B()
+  {
+    super.B();
+    this.R.c();
+  }
+  
+  public void C()
+  {
+    super.C();
+    this.R.d();
+  }
+  
+  public void D()
+  {
+    super.D();
+    this.R.k();
   }
   
   public void a(IStagePresenter paramIStagePresenter)
   {
-    this.a.a(paramIStagePresenter);
+    this.R.a(paramIStagePresenter);
   }
   
   public void a(String paramString)
   {
     super.a(paramString);
-    if (this.c) {
+    if (this.Q) {
       return;
     }
     ReportController.b(null, "dc00898", "", "", "0X800B0F6", "0X800B0F6", 0, 0, "", "", "", "");
-    this.a.a(paramString);
+    this.R.a(paramString);
   }
   
   public void a(List<MemberVideoDisplayInfo> paramList)
@@ -69,15 +87,15 @@ public class AVGameBusinessVideoLayer
       if (paramList.isEmpty()) {
         return;
       }
-      synchronized (this.b)
+      synchronized (this.I)
       {
-        this.b.clear();
-        this.b.addAll(paramList);
+        this.I.clear();
+        this.I.addAll(paramList);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onMemberVideoDisplayInfoUpdate infoList:=");
         localStringBuilder.append(Arrays.toString(paramList.toArray()));
         AVLog.d("AVGameBusinessVideoLayer", localStringBuilder.toString());
-        AVGameHandler.a().b().post(new AVGameBusinessVideoLayer.1(this));
+        AVGameHandler.a().c().post(new AVGameBusinessVideoLayer.1(this));
         return;
       }
     }
@@ -86,23 +104,23 @@ public class AVGameBusinessVideoLayer
   public void b(String paramString)
   {
     super.b(paramString);
-    if (this.c) {
+    if (this.Q) {
       return;
     }
-    this.a.b(paramString);
+    this.R.b(paramString);
   }
   
   protected void f(GLCanvas paramGLCanvas)
   {
-    if (this.a.a())
+    if (this.R.i())
     {
-      this.a.a(paramGLCanvas);
+      this.R.a(paramGLCanvas);
       return;
     }
     GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glViewport(0, 0, paramGLCanvas.a(), paramGLCanvas.b());
+    GLES20.glViewport(0, 0, paramGLCanvas.b(), paramGLCanvas.c());
     super.f(paramGLCanvas);
-    this.a.g();
+    this.R.j();
   }
   
   public void g(GLCanvas paramGLCanvas)
@@ -110,27 +128,9 @@ public class AVGameBusinessVideoLayer
     super.f(paramGLCanvas);
   }
   
-  public void l()
+  public void z()
   {
-    super.l();
-  }
-  
-  public void m()
-  {
-    super.m();
-    this.a.c();
-  }
-  
-  public void n()
-  {
-    super.n();
-    this.a.d();
-  }
-  
-  public void o()
-  {
-    super.o();
-    this.a.h();
+    super.z();
   }
 }
 

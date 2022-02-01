@@ -17,7 +17,7 @@ public class SDKConfigInfoBuilder
   
   public SDKConfigInfoBuilder()
   {
-    String str2 = AVPathUtil.o();
+    String str2 = AVPathUtil.s();
     int i = Process.myPid();
     Object localObject1 = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses().iterator();
     do

@@ -23,10 +23,10 @@ public class QuickHeartbeatConfigProcessor
     QLog.i("QuickHeartbeatConfigProcessor", 1, "[onParsed] config");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      QuickHeartbeatConfigBean localQuickHeartbeatConfigBean = QuickHeartbeatConfigBean.a(paramArrayOfQConfItem[0].a);
+      QuickHeartbeatConfigBean localQuickHeartbeatConfigBean = QuickHeartbeatConfigBean.a(paramArrayOfQConfItem[0].b);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onParsed ");
-      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      localStringBuilder.append(paramArrayOfQConfItem[0].b);
       QLog.d("QuickHeartbeatConfigProcessor", 1, localStringBuilder.toString());
       return localQuickHeartbeatConfigBean;
     }
@@ -86,7 +86,7 @@ public class QuickHeartbeatConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QuickHeartbeatConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

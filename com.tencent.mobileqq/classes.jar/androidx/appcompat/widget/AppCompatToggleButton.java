@@ -3,25 +3,29 @@ package androidx.appcompat.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ToggleButton;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class AppCompatToggleButton
   extends ToggleButton
 {
-  private final AppCompatTextHelper mTextHelper = new AppCompatTextHelper(this);
+  private final AppCompatTextHelper mTextHelper;
   
-  public AppCompatToggleButton(Context paramContext)
+  public AppCompatToggleButton(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatToggleButton(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatToggleButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 16842827);
   }
   
-  public AppCompatToggleButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatToggleButton(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mTextHelper = new AppCompatTextHelper(this);
     this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);
   }
 }

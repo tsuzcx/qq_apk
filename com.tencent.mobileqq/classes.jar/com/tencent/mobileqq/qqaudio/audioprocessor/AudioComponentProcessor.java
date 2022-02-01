@@ -12,19 +12,19 @@ public class AudioComponentProcessor
   extends InputStream
   implements IAudioProcessor
 {
-  protected int a;
   protected Context a;
-  protected IAudioProcessor.ProcessData a;
-  protected PipedInputStream a;
-  protected PipedOutputStream a;
-  protected byte[] a;
-  protected byte[] b;
-  protected byte[] c;
-  protected byte[] d = new byte[1];
+  protected PipedOutputStream b;
+  protected PipedInputStream c;
+  protected byte[] d;
+  protected byte[] e;
+  protected byte[] f;
+  protected IAudioProcessor.ProcessData g;
+  protected byte[] h = new byte[1];
+  protected int i;
   
   public AudioComponentProcessor(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public int a(byte[] paramArrayOfByte, int paramInt)
@@ -34,29 +34,29 @@ public class AudioComponentProcessor
   
   public IAudioProcessor.ProcessData a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData.jdField_a_of_type_Int = 0;
+    this.g.a = 0;
     while (paramInt2 > 0)
     {
-      int i;
-      if (paramInt2 > 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available()) {
-        i = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
+      int j;
+      if (paramInt2 > 1920 - this.c.available()) {
+        j = 1920 - this.c.available();
       } else {
-        i = paramInt2;
+        j = paramInt2;
       }
-      a(paramArrayOfByte, paramInt1, i);
-      paramInt1 += i;
-      paramInt2 -= i;
+      b(paramArrayOfByte, paramInt1, j);
+      paramInt1 += j;
+      paramInt2 -= j;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData;
+    return this.g;
   }
   
   public void a()
   {
-    PipedOutputStream localPipedOutputStream = this.jdField_a_of_type_JavaIoPipedOutputStream;
+    PipedOutputStream localPipedOutputStream = this.b;
     if (localPipedOutputStream != null)
     {
       localPipedOutputStream.close();
-      this.jdField_a_of_type_JavaIoPipedOutputStream = null;
+      this.b = null;
     }
     close();
   }
@@ -64,47 +64,47 @@ public class AudioComponentProcessor
   @TargetApi(9)
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaIoPipedOutputStream = new PipedOutputStream();
+    this.b = new PipedOutputStream();
     if (Build.VERSION.SDK_INT <= 8)
     {
-      this.jdField_a_of_type_JavaIoPipedInputStream = new QPipedInputStream(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+      this.c = new QPipedInputStream(this.b, 1920);
       return;
     }
-    this.jdField_a_of_type_JavaIoPipedInputStream = new PipedInputStream(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+    this.c = new PipedInputStream(this.b, 1920);
   }
   
-  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  protected void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaIoPipedOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-    while (this.jdField_a_of_type_JavaIoPipedInputStream.available() >= this.jdField_a_of_type_Int)
+    this.b.write(paramArrayOfByte, paramInt1, paramInt2);
+    while (this.c.available() >= this.i)
     {
-      paramInt1 = a(this.c, this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData.jdField_a_of_type_Int);
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData;
-      paramArrayOfByte.jdField_a_of_type_Int += paramInt1;
+      paramInt1 = a(this.f, this.g.a);
+      paramArrayOfByte = this.g;
+      paramArrayOfByte.a += paramInt1;
     }
   }
   
   public void close()
   {
-    PipedInputStream localPipedInputStream = this.jdField_a_of_type_JavaIoPipedInputStream;
+    PipedInputStream localPipedInputStream = this.c;
     if (localPipedInputStream != null)
     {
       localPipedInputStream.close();
-      this.jdField_a_of_type_JavaIoPipedInputStream = null;
+      this.c = null;
     }
   }
   
   public int read()
   {
-    if (read(this.d, 0, 1) == 1) {
-      return this.d[0] & 0xFF;
+    if (read(this.h, 0, 1) == 1) {
+      return this.h[0] & 0xFF;
     }
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioprocessor.AudioComponentProcessor
  * JD-Core Version:    0.7.0.1
  */

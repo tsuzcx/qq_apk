@@ -29,11 +29,11 @@ class AudioRecordPlayer$5
   {
     AudioRecordPlayer.a(this.a).d("AudioRecordPlayer", "iavCoreEventCallback: onAVStart", new Object[0]);
     AudioRecordPlayer.a(this.a, true);
-    if (AudioRecordPlayer.a(this.a)) {
+    if (AudioRecordPlayer.f(this.a)) {
       this.a.a(true);
     }
-    if (AudioRecordPlayer.a(this.a) != null) {
-      AudioRecordPlayer.a(this.a).a();
+    if (AudioRecordPlayer.d(this.a) != null) {
+      AudioRecordPlayer.d(this.a).a();
     }
   }
   
@@ -41,8 +41,8 @@ class AudioRecordPlayer$5
   {
     AudioRecordPlayer.a(this.a).i("AudioRecordPlayer", "audioCoreEventCallback: onAVStop", new Object[0]);
     AudioRecordPlayer.a(this.a, false);
-    if (AudioRecordPlayer.a(this.a) != null) {
-      AudioRecordPlayer.a(this.a).b();
+    if (AudioRecordPlayer.d(this.a) != null) {
+      AudioRecordPlayer.d(this.a).b();
     }
   }
   
@@ -51,11 +51,11 @@ class AudioRecordPlayer$5
     AudioRecordPlayer.a(this.a).i("AudioRecordPlayer", "audioCoreEventCallback: onAVStreamEvent eventId[%d] aUin[%s]", new Object[] { Integer.valueOf(paramInt), paramString });
     if (paramInt == 5)
     {
-      AudioRecordPlayer.a(this.a).a(Long.valueOf(paramString).longValue());
+      AudioRecordPlayer.g(this.a).a(Long.valueOf(paramString).longValue());
       return false;
     }
     if (paramInt == 4) {
-      AudioRecordPlayer.a(this.a).b(Long.valueOf(paramString).longValue());
+      AudioRecordPlayer.g(this.a).b(Long.valueOf(paramString).longValue());
     }
     return false;
   }
@@ -72,7 +72,7 @@ class AudioRecordPlayer$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer.5
  * JD-Core Version:    0.7.0.1
  */

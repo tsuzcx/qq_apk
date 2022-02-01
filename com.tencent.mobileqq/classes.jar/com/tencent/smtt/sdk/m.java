@@ -158,7 +158,7 @@ class m
   File a()
   {
     p.a();
-    File localFile = new File(p.s(b), "tbscoreinstall.txt");
+    File localFile = new File(p.t(b), "tbscoreinstall.txt");
     if (!localFile.exists()) {
       try
       {
@@ -405,7 +405,7 @@ class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.m
  * JD-Core Version:    0.7.0.1
  */

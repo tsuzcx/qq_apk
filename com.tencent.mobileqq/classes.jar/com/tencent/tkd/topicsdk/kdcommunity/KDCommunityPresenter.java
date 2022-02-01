@@ -9,40 +9,40 @@ import org.jetbrains.annotations.NotNull;
 public final class KDCommunityPresenter
   implements KDCommunityContract.IPresenter
 {
+  private KDCommunityContract.IView a;
   @NotNull
-  private final KDCommunityContract.IModel jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IModel;
-  private KDCommunityContract.IView jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IView;
+  private final KDCommunityContract.IModel b;
   
   public KDCommunityPresenter(@NotNull KDCommunityContract.IModel paramIModel)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IModel = paramIModel;
+    this.b = paramIModel;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IView = ((KDCommunityContract.IView)null);
+    this.a = ((KDCommunityContract.IView)null);
   }
   
   public void a(@NotNull KDCommunityContract.IView paramIView)
   {
     Intrinsics.checkParameterIsNotNull(paramIView, "view");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IView = paramIView;
+    this.a = paramIView;
   }
   
   public void b()
   {
-    KDCommunityContract.IView localIView = this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IView;
+    KDCommunityContract.IView localIView = this.a;
     if (localIView != null)
     {
       localIView.e();
       localIView.a();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkKdcommunityKDCommunityContract$IModel.a((Function3)new KDCommunityPresenter.refreshCommunityList.1.1(localIView));
+      this.b.a((Function3)new KDCommunityPresenter.refreshCommunityList.1.1(localIView));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.kdcommunity.KDCommunityPresenter
  * JD-Core Version:    0.7.0.1
  */

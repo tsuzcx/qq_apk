@@ -17,9 +17,9 @@ class ReadInJoyBaseListView$1
     if (((IReadInJoyRefreshOptimizeUtil)QRoute.api(IReadInJoyRefreshOptimizeUtil.class)).isPreloadOptimizeEnable(l))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.f) });
       }
-      if ((this.a.c == 0) && ((!((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.a.d)) || (!this.a.b)))
+      if ((this.a.f == 0) && ((!((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.a.i)) || (!this.a.j)))
       {
         this.a.a(4);
         QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
@@ -28,9 +28,9 @@ class ReadInJoyBaseListView$1
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.f) });
       }
-      if ((!((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.a.d)) || ((this.a.c == 0) && (!this.a.b)))
+      if ((!((IReadInJoyReportUtils)QRoute.api(IReadInJoyReportUtils.class)).isKanDianSubscribe(this.a.i)) || ((this.a.f == 0) && (!this.a.j)))
       {
         this.a.a(4);
         QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
@@ -40,7 +40,7 @@ class ReadInJoyBaseListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyBaseListView.1
  * JD-Core Version:    0.7.0.1
  */

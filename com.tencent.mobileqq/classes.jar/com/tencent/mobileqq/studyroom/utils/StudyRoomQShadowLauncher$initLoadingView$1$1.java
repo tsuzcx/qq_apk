@@ -13,16 +13,16 @@ final class StudyRoomQShadowLauncher$initLoadingView$1$1
   
   public final void onClick(View paramView)
   {
-    if (StudyRoomQShadowLauncher.b(this.a.this$0) != null) {
-      StudyRoomQShadowLauncher.a(this.a.this$0).cancel(true);
+    if (StudyRoomQShadowLauncher.m(this.a.this$0) != null) {
+      StudyRoomQShadowLauncher.l(this.a.this$0).cancel(true);
     }
-    StudyRoomQShadowLauncher.a(this.a.this$0).onCloseLoadingView();
+    StudyRoomQShadowLauncher.j(this.a.this$0).onCloseLoadingView();
     StudyRoomQShadowLauncher.a(this.a.this$0, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomQShadowLauncher.initLoadingView.1.1
  * JD-Core Version:    0.7.0.1
  */

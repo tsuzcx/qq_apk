@@ -16,7 +16,7 @@ public class AiKeywordConfigParser
 {
   private void a(JSONObject paramJSONObject)
   {
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("ark_babyq_no_result_recommend_title");
+    this.q = paramJSONObject.optString("ark_babyq_no_result_recommend_title");
     paramJSONObject = paramJSONObject.optJSONArray("ark_babyq_no_result_recommend_items");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
     {
@@ -27,12 +27,12 @@ public class AiKeywordConfigParser
         if (!TextUtils.isEmpty(str))
         {
           QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_babyq_no_result_recommend_items itemStr = ", str });
-          this.jdField_e_of_type_JavaUtilArrayList.add(str);
+          this.r.add(str);
         }
         i += 1;
       }
     }
-    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqNoResultRecommendItems list size =", Integer.valueOf(this.jdField_e_of_type_JavaUtilArrayList.size()) });
+    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqNoResultRecommendItems list size =", Integer.valueOf(this.r.size()) });
   }
   
   private void b(JSONObject paramJSONObject)
@@ -48,27 +48,27 @@ public class AiKeywordConfigParser
         if (!TextUtils.isEmpty(str))
         {
           QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_babyq_input_hint_text_list itemStr = ", str });
-          this.jdField_d_of_type_JavaUtilArrayList.add(str);
+          this.p.add(str);
         }
         i += 1;
       }
     }
-    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqInputHintTextList list size =", Integer.valueOf(this.jdField_d_of_type_JavaUtilArrayList.size()) });
+    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse mArkBabyqInputHintTextList list size =", Integer.valueOf(this.p.size()) });
   }
   
   private void c(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("singlecontext_singleapp_card_limit", 5);
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("ark_app_limit", 3);
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("ark_each_app_card_limit", 1);
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("ark_input_apps_limit", 3);
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("ark_input_each_context_apps_limit", 3);
-    this.f = paramJSONObject.optInt("ark_babyq_card_limit_total", 10);
-    this.g = paramJSONObject.optInt("ark_babyq_card_limit_per_app", 1);
-    this.h = paramJSONObject.optInt("ark_babyq_guide_count_limit_per_day", 1);
-    this.i = paramJSONObject.optInt("ark_babyq_guide_day_limit_total", 3);
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("ark_babyq_guide_hint_text");
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("ark_babyq_bubble_disappear_duration", 10000L);
+    this.e = paramJSONObject.optInt("singlecontext_singleapp_card_limit", 5);
+    this.f = paramJSONObject.optInt("ark_app_limit", 3);
+    this.g = paramJSONObject.optInt("ark_each_app_card_limit", 1);
+    this.h = paramJSONObject.optInt("ark_input_apps_limit", 3);
+    this.i = paramJSONObject.optInt("ark_input_each_context_apps_limit", 3);
+    this.j = paramJSONObject.optInt("ark_babyq_card_limit_total", 10);
+    this.k = paramJSONObject.optInt("ark_babyq_card_limit_per_app", 1);
+    this.l = paramJSONObject.optInt("ark_babyq_guide_count_limit_per_day", 1);
+    this.m = paramJSONObject.optInt("ark_babyq_guide_day_limit_total", 3);
+    this.n = paramJSONObject.optString("ark_babyq_guide_hint_text");
+    this.o = paramJSONObject.optLong("ark_babyq_bubble_disappear_duration", 10000L);
   }
   
   private void d(JSONObject paramJSONObject)
@@ -88,7 +88,7 @@ public class AiKeywordConfigParser
           localObject = ((JSONObject)localObject).optString("md5");
           QLog.d("AiKeywordConfig", 1, new Object[] { "onParse jscomd5 = ", str1, "ur = ", str2, "md5 = ", localObject });
           if ((str1 != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str2))) {
-            this.jdField_c_of_type_JavaUtilArrayList.add(new ArkJsdebuggerDownload(str1, str2, (String)localObject));
+            this.d.add(new ArkJsdebuggerDownload(str1, str2, (String)localObject));
           }
         }
         i += 1;
@@ -115,13 +115,13 @@ public class AiKeywordConfigParser
           if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (l1 != -1L) && (l2 != -1L))
           {
             localObject = new ArkModuleApiFrequency(str1, str2, l1, l2);
-            this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
+            this.c.add(localObject);
           }
         }
         i += 1;
       }
     }
-    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse,mArkModuleApiFrequencyList list size =", Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) });
+    QLog.d("AiKeywordConfig", 1, new Object[] { "onParse,mArkModuleApiFrequencyList list size =", Integer.valueOf(this.c.size()) });
   }
   
   private void f(JSONObject paramJSONObject)
@@ -133,10 +133,10 @@ public class AiKeywordConfigParser
       while (i < paramJSONObject.length())
       {
         String str = paramJSONObject.optString(i);
-        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
+        if ((!TextUtils.isEmpty(str)) && (!this.b.contains(str)))
         {
           QLog.d("AiKeywordConfig", 1, new Object[] { "onParse ark_navi_msg_appnames appName = ", str });
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
+          this.b.add(str);
         }
         i += 1;
       }
@@ -153,38 +153,38 @@ public class AiKeywordConfigParser
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("ark_ai_match_graytips_visibility");
+      this.a = paramString.optString("ark_ai_match_graytips_visibility");
       f(paramString);
       e(paramString);
       d(paramString);
-      QLog.e("AiKeywordConfig", 1, new Object[] { "mArkJsdebuggerDownloadList list size =", Integer.valueOf(this.jdField_c_of_type_JavaUtilArrayList.size()) });
+      QLog.e("AiKeywordConfig", 1, new Object[] { "mArkJsdebuggerDownloadList list size =", Integer.valueOf(this.d.size()) });
       c(paramString);
       b(paramString);
       a(paramString);
       paramString = new StringBuilder("onParse ark_ai_match_graytips_visibility=");
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.a);
       paramString.append(", singlecontext_singleapp_card_limit=");
-      paramString.append(this.jdField_a_of_type_Int);
+      paramString.append(this.e);
       paramString.append(", ark_app_limit=");
-      paramString.append(this.jdField_b_of_type_Int);
-      paramString.append(", ark_each_app_card_limit=");
-      paramString.append(this.jdField_c_of_type_Int);
-      paramString.append(", ark_input_apps_limit=");
-      paramString.append(this.jdField_d_of_type_Int);
-      paramString.append(", ark_input_each_context_apps_limit=");
-      paramString.append(this.jdField_e_of_type_Int);
-      paramString.append(", ark_babyq_card_limit_total=");
       paramString.append(this.f);
-      paramString.append(", ark_babyq_card_limit_total=");
+      paramString.append(", ark_each_app_card_limit=");
       paramString.append(this.g);
-      paramString.append(", ark_babyq_guide_count_limit_per_day=");
+      paramString.append(", ark_input_apps_limit=");
       paramString.append(this.h);
+      paramString.append(", ark_input_each_context_apps_limit=");
+      paramString.append(this.i);
+      paramString.append(", ark_babyq_card_limit_total=");
+      paramString.append(this.j);
+      paramString.append(", ark_babyq_card_limit_total=");
+      paramString.append(this.k);
+      paramString.append(", ark_babyq_guide_count_limit_per_day=");
+      paramString.append(this.l);
       paramString.append(", ark_babyq_guide_hint_text=");
-      paramString.append(this.jdField_b_of_type_JavaLangString);
+      paramString.append(this.n);
       paramString.append(", ark_babyq_bubble_disappear_duration=");
-      paramString.append(this.jdField_a_of_type_Long);
+      paramString.append(this.o);
       paramString.append(", ark_babyq_no_result_recommend_title=");
-      paramString.append(this.jdField_c_of_type_JavaLangString);
+      paramString.append(this.q);
       QLog.i("AiKeywordConfig", 1, paramString.toString());
       return;
     }
@@ -196,7 +196,7 @@ public class AiKeywordConfigParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.config.AiKeywordConfigParser
  * JD-Core Version:    0.7.0.1
  */

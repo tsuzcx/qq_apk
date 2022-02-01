@@ -12,12 +12,12 @@ class QQGameTroopManager$1
   
   public void run()
   {
-    ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).updateGameData(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfJavaLangString);
+    ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).updateGameData(this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameTroopManager.1
  * JD-Core Version:    0.7.0.1
  */

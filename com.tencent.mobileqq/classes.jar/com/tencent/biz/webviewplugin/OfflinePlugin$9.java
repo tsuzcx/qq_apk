@@ -11,16 +11,16 @@ class OfflinePlugin$9
   
   public void run()
   {
-    if (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null)
+    if (OfflinePlugin.e != null)
     {
-      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.this$0));
-      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.b() == 1))
+      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.e.get(OfflinePlugin.a(this.this$0));
+      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.c() == 1))
       {
-        if (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        if (this.this$0.b != null) {
+          this.this$0.b.setVisibility(8);
         }
-        if (this.this$0.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-          this.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        if (this.this$0.d != null) {
+          this.this$0.d.setVisibility(0);
         }
         localOfflineUpdateStatus.a(2);
       }
@@ -29,7 +29,7 @@ class OfflinePlugin$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.9
  * JD-Core Version:    0.7.0.1
  */

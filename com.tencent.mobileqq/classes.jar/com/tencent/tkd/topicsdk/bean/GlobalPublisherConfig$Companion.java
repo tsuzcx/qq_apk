@@ -1,8 +1,6 @@
 package com.tencent.tkd.topicsdk.bean;
 
 import android.os.Bundle;
-import com.tencent.tkd.topicsdk.bean.globalconfig.ManageTopicConfig;
-import com.tencent.tkd.topicsdk.bean.globalconfig.ManageTopicConfig.Companion;
 import java.util.HashMap;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -10,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig$Companion;", "", "()V", "TAG", "", "parseFromJson", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "eventInfoJson", "Lorg/json/JSONObject;", "eventInfo", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getGlobalConfig", "Landroid/os/Bundle;", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig$Companion;", "", "()V", "TAG", "", "parseFromJson", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "eventInfoJson", "Lorg/json/JSONObject;", "eventInfo", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getGlobalConfig", "Landroid/os/Bundle;", "putGlobalConfig", "", "config", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class GlobalPublisherConfig$Companion
 {
   @Nullable
@@ -37,7 +35,6 @@ public final class GlobalPublisherConfig$Companion
     GlobalPublisherConfig.access$putReprintAuthorityConfig(localGlobalPublisherConfig, paramJSONObject);
     GlobalPublisherConfig.access$putPrivacyConfig(localGlobalPublisherConfig, paramJSONObject);
     GlobalPublisherConfig.access$putColumnConfig(localGlobalPublisherConfig, paramJSONObject);
-    GlobalPublisherConfig.access$putKDCommunityConfig(localGlobalPublisherConfig, paramJSONObject);
     GlobalPublisherConfig.access$putBusinessToastConfig(localGlobalPublisherConfig, paramJSONObject);
     GlobalPublisherConfig.access$putCommodityConfig(localGlobalPublisherConfig, paramJSONObject);
     GlobalPublisherConfig.access$putNeedShowPublishToast(localGlobalPublisherConfig, paramJSONObject);
@@ -46,7 +43,8 @@ public final class GlobalPublisherConfig$Companion
     Object localObject = paramJSONObject.optString("scene");
     Intrinsics.checkExpressionValueIsNotNull(localObject, "eventInfoJson.optString(J_KEY_SCENE)");
     localGlobalPublisherConfig.setScene((String)localObject);
-    localGlobalPublisherConfig.setCountLimit(paramJSONObject.optInt("textCountLimit", 500));
+    localGlobalPublisherConfig.setContentUpperLimit(paramJSONObject.optInt("textCountLimit", 500));
+    localGlobalPublisherConfig.setContentLowerLimit(paramJSONObject.optInt("textCountLowerLimit"));
     if (paramJSONObject.optInt("textTruncation") == 1) {
       bool1 = true;
     } else {
@@ -100,13 +98,19 @@ public final class GlobalPublisherConfig$Companion
     }
     localGlobalPublisherConfig.setEnableSaveDraft(bool1);
     localGlobalPublisherConfig.setMaxImageSize(paramJSONObject.optInt("maxImageSize", 15360));
-    boolean bool1 = bool2;
     if (paramJSONObject.optInt("allowSaveToAlbum") == 1) {
       bool1 = true;
+    } else {
+      bool1 = false;
     }
     localGlobalPublisherConfig.setShowSaveAlbums(bool1);
-    localGlobalPublisherConfig.setTopicConfig(ManageTopicConfig.Companion.a(paramJSONObject));
     localGlobalPublisherConfig.setShowAddLocation(paramJSONObject.optBoolean("showToolBarLBS"));
+    boolean bool1 = bool2;
+    if (paramJSONObject.optInt("showOriginalTag") == 1) {
+      bool1 = true;
+    }
+    localGlobalPublisherConfig.setShowOriginalTag(bool1);
+    localGlobalPublisherConfig.setAllowEmoji(paramJSONObject.optBoolean("allowPublishEmoji"));
     localGlobalPublisherConfig.setEventInfo(paramHashMap);
     localGlobalPublisherConfig.applyValidProtect();
     return localGlobalPublisherConfig;
@@ -114,7 +118,7 @@ public final class GlobalPublisherConfig$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig.Companion
  * JD-Core Version:    0.7.0.1
  */

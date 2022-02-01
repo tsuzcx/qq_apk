@@ -20,7 +20,7 @@ class VSEntranceWidget$1
   {
     if (paramDrawable != null)
     {
-      paramString = this.jdField_a_of_type_AndroidViewView;
+      paramString = this.a;
       if (paramString != null)
       {
         if ((paramString instanceof FrameLayout))
@@ -39,7 +39,7 @@ class VSEntranceWidget$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidget.1
  * JD-Core Version:    0.7.0.1
  */

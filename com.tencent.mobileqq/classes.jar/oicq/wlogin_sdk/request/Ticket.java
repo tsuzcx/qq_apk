@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Map<Ljava.lang.String;[B>;
 import java.util.Set;
-import oicq.wlogin_sdk.report.event.a;
 import oicq.wlogin_sdk.report.event.b;
+import oicq.wlogin_sdk.report.event.c;
 import oicq.wlogin_sdk.tools.util;
 
 public class Ticket
@@ -22,7 +22,7 @@ public class Ticket
 {
   public static final Parcelable.Creator<Ticket> CREATOR = new Ticket.2();
   private static final int EXPIRE_FIELD = 65535;
-  private static final int MAX_PSKEY_SIZE = 100;
+  private static final int MAX_PSKEY_SIZE = 200;
   public long _create_time;
   public long _expire_time;
   public Map<String, Long> _pskey_expire = new HashMap();
@@ -228,7 +228,7 @@ public class Ticket
     Object localObject;
     if (paramInt1 > paramInt2)
     {
-      paramMap1 = new a("wtlogin_alarm", "pskey_net_to_much", String.valueOf(paramInt1));
+      paramMap1 = new b("wtlogin_alarm", "pskey_net_to_much", "").a("size", String.valueOf(paramInt1));
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("limitMapSize net domainCnt=");
       ((StringBuilder)localObject).append(paramInt1);
@@ -242,7 +242,7 @@ public class Ticket
       ((StringBuilder)localObject).append(paramInt1);
       ((StringBuilder)localObject).append(",");
       ((StringBuilder)localObject).append(paramMap.size());
-      localObject = new a("wtlogin_alarm", "pskey_mix_to_much", ((StringBuilder)localObject).toString());
+      localObject = new b("wtlogin_alarm", "pskey_mix_to_much", ((StringBuilder)localObject).toString()).a("size", String.valueOf(paramMap.size() + paramInt1));
       StringBuilder localStringBuilder = new StringBuilder("limitMapSize mix  domainCnt=");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(",localKeyMap=");
@@ -272,7 +272,7 @@ public class Ticket
     if (paramMap != null)
     {
       paramMap.a(true).b(true);
-      b.a(paramMap);
+      c.a(paramMap);
     }
   }
   
@@ -414,8 +414,8 @@ public class Ticket
       int j = paramArrayOfByte.getShort();
       try
       {
-        limitMapSize(j, paramMap1, paramMap2, 100);
-        limitMapSize(j, paramMap3, paramMap4, 100);
+        limitMapSize(j, paramMap1, paramMap2, 200);
+        limitMapSize(j, paramMap3, paramMap4, 200);
       }
       catch (Exception localException)
       {
@@ -533,7 +533,7 @@ public class Ticket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.request.Ticket
  * JD-Core Version:    0.7.0.1
  */

@@ -22,51 +22,51 @@ class MsgTabNodeVidListPullSegment$1
   {
     if ((paramMsgTabNodeVidListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      if (paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
+      if (paramMsgTabNodeVidListResponse.e.video_list.size() == 0)
       {
-        if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int != 5)
+        if (this.a.b != 5)
         {
           paramMsgTabNodeVidListRequest = new StringBuilder();
           paramMsgTabNodeVidListRequest.append("pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=");
-          paramMsgTabNodeVidListRequest.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
+          paramMsgTabNodeVidListRequest.append(this.a);
           paramMsgTabNodeVidListRequest.append(", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, ");
           paramMsgTabNodeVidListRequest.append(paramErrorMessage.getErrorMessage());
           SLog.e("Q.qqstory.msgTab.jobPullVidList", paramMsgTabNodeVidListRequest.toString());
-          MsgTabNodeVidListPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
+          MsgTabNodeVidListPullSegment.b(this.b, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
           return;
         }
-        MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, MsgTabNodeVidListPullSegment.a(paramMsgTabNodeVidListResponse.jdField_a_of_type_JavaUtilList));
+        MsgTabNodeVidListPullSegment.a(this.b, MsgTabNodeVidListPullSegment.a(paramMsgTabNodeVidListResponse.f));
         return;
       }
       if (QLog.isColorLevel())
       {
         paramMsgTabNodeVidListRequest = new StringBuilder();
         paramMsgTabNodeVidListRequest.append("pull succeed, info=");
-        paramMsgTabNodeVidListRequest.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
+        paramMsgTabNodeVidListRequest.append(this.a);
         QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, paramMsgTabNodeVidListRequest.toString());
       }
-      MsgTabStoryManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramMsgTabNodeVidListResponse.jdField_a_of_type_ArrayOfByte);
-      paramMsgTabNodeVidListRequest = MsgTabNodeVidListPullSegment.a(paramMsgTabNodeVidListResponse.jdField_a_of_type_JavaUtilList);
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int;
-      MsgTabNodeVidListPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramMsgTabNodeVidListRequest);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int == 12)
+      MsgTabStoryManager.a(this.a, paramMsgTabNodeVidListResponse.b);
+      paramMsgTabNodeVidListRequest = MsgTabNodeVidListPullSegment.a(paramMsgTabNodeVidListResponse.f);
+      int i = this.a.b;
+      MsgTabNodeVidListPullSegment.b(this.b, paramMsgTabNodeVidListRequest);
+      if (this.a.b == 12)
       {
-        if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a != null)
+        if (this.b.c != null)
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a.c = paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
-          paramMsgTabNodeVidListRequest = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment.a;
+          this.b.c.d = paramMsgTabNodeVidListResponse.e.cookie.get();
+          paramMsgTabNodeVidListRequest = this.b.c;
           boolean bool;
-          if (paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() > 0) {
+          if (paramMsgTabNodeVidListResponse.e.is_end.get() > 0) {
             bool = true;
           } else {
             bool = false;
           }
-          paramMsgTabNodeVidListRequest.a = bool;
+          paramMsgTabNodeVidListRequest.g = bool;
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.i = paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+        this.a.x = paramMsgTabNodeVidListResponse.e.cookie.get();
       }
       if (QLog.isColorLevel()) {
-        SLog.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString, paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
+        SLog.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.a.d, paramMsgTabNodeVidListResponse.e);
       }
       return;
     }
@@ -74,14 +74,14 @@ class MsgTabNodeVidListPullSegment$1
     paramMsgTabNodeVidListRequest.append("pull failed, err=");
     paramMsgTabNodeVidListRequest.append(paramErrorMessage.getErrorMessage());
     paramMsgTabNodeVidListRequest.append(" node:");
-    paramMsgTabNodeVidListRequest.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
+    paramMsgTabNodeVidListRequest.append(this.a);
     SLog.e("Q.qqstory.msgTab.jobPullVidList", paramMsgTabNodeVidListRequest.toString());
-    MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramErrorMessage);
+    MsgTabNodeVidListPullSegment.a(this.b, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListPullSegment.1
  * JD-Core Version:    0.7.0.1
  */

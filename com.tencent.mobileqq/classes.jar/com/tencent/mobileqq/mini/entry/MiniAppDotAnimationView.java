@@ -16,14 +16,14 @@ import java.util.List;
 public class MiniAppDotAnimationView
   extends View
 {
-  private static final int DEFAULT_OFFSET = ViewUtils.b(-20.0F);
+  private static final int DEFAULT_OFFSET = ViewUtils.dpToPx(-20.0F);
   private static final int MARGIN_LEFT_RIGHT;
   private static final int MAX_DOT_SIZE;
   private static final int MIN_DOT_SIZE;
   private static final int SCROLL_ANIMATION_CLOSE_END;
   private static final int SCROLL_ANIMATION_CLOSE_START;
   private static final int SCROLL_ANIMATION_OPEN_END;
-  private static final int SCROLL_ANIMATION_OPEN_START = ViewUtils.b(-20.0F);
+  private static final int SCROLL_ANIMATION_OPEN_START = ViewUtils.dpToPx(-20.0F);
   private static String TAG = "MiniAppDotAnimationView";
   private boolean hasReset = false;
   private List<MiniAppDotAnimationView.Dot> mDots = new ArrayList(3);
@@ -31,12 +31,12 @@ public class MiniAppDotAnimationView
   
   static
   {
-    SCROLL_ANIMATION_OPEN_END = ViewUtils.b(-50.0F);
-    SCROLL_ANIMATION_CLOSE_START = ViewUtils.b(-70.0F);
-    SCROLL_ANIMATION_CLOSE_END = ViewUtils.b(-95.0F);
-    MIN_DOT_SIZE = ViewUtils.b(3.0F);
-    MAX_DOT_SIZE = ViewUtils.b(6.0F);
-    MARGIN_LEFT_RIGHT = ViewUtils.b(30.0F);
+    SCROLL_ANIMATION_OPEN_END = ViewUtils.dpToPx(-50.0F);
+    SCROLL_ANIMATION_CLOSE_START = ViewUtils.dpToPx(-70.0F);
+    SCROLL_ANIMATION_CLOSE_END = ViewUtils.dpToPx(-95.0F);
+    MIN_DOT_SIZE = ViewUtils.dpToPx(3.0F);
+    MAX_DOT_SIZE = ViewUtils.dpToPx(6.0F);
+    MARGIN_LEFT_RIGHT = ViewUtils.dpToPx(30.0F);
   }
   
   public MiniAppDotAnimationView(Context paramContext)
@@ -226,7 +226,7 @@ public class MiniAppDotAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDotAnimationView
  * JD-Core Version:    0.7.0.1
  */

@@ -19,55 +19,55 @@ public class URLImageLoader$URLTask
   extends Task
   implements URLDrawable.URLDrawableListener
 {
-  private URLImageLoader.Config jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private URLImageLoader.Config i;
+  private URLDrawable j;
   
   public URLImageLoader$URLTask(ImageView paramImageView, URLImageLoader.Config paramConfig)
   {
     super(paramImageView);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config = paramConfig;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_JavaLangString;
+    this.i = paramConfig;
   }
   
   public void a()
   {
-    InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "runOnBackGround url= ", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_JavaLangString });
+    InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "runOnBackGround url= ", this.i.a });
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     try
     {
-      new URL(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
+      new URL(this.i.a);
+      this.j = URLDrawable.getDrawable(this.i.a, localURLDrawableOptions);
+      this.j.setURLDrawableListener(this);
+      if (this.j.getStatus() == 1)
       {
         InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "drawable have urlDrawable cache" });
-        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
+        onLoadSuccessed(this.j);
         return;
       }
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 2) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 3))
+      if ((this.j.getStatus() != 2) && (this.j.getStatus() != 3))
       {
         InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "drawable startDownload" });
-        this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
+        this.j.startDownload(true);
         return;
       }
       InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "drawable restartDownload" });
-      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+      this.j.restartDownload();
       return;
     }
     catch (MalformedURLException localMalformedURLException)
     {
       localMalformedURLException.printStackTrace();
       InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { localMalformedURLException.getMessage() });
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      Drawable localDrawable = this.i.e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("url is error:");
       localStringBuilder.append(localMalformedURLException);
       a(localDrawable, localStringBuilder.toString());
     }
+  }
+  
+  public String b()
+  {
+    return this.i.a;
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
@@ -87,19 +87,19 @@ public class URLImageLoader$URLTask
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "onLoadSuccessed url= ", paramURLDrawable.getURL() });
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
       super.a(paramURLDrawable);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation != null)
+    if (this.i.b != null)
     {
-      Bitmap localBitmap = StoryListUtils.a(paramURLDrawable.getCurrDrawable(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.b, UIUtils.a, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation);
+      Bitmap localBitmap = StoryListUtils.a(paramURLDrawable.getCurrDrawable(), this.i.c, this.i.d, UIUtils.e, this.i.b);
       if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        paramURLDrawable = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramURLDrawable = (ImageView)this.d.get();
         if (paramURLDrawable != null) {
-          paramURLDrawable.setTag(2131369673, localBitmap);
+          paramURLDrawable.setTag(2131436783, localBitmap);
         }
         super.a(new BitmapDrawable(localBitmap));
         return;

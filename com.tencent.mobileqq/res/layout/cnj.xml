@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.ScrollView android:background="@drawable/bg_texture" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <EditText android:textSize="14.0dip" android:textColorHint="@color/app" android:gravity="top" android:id="@id/oe7" android:background="@drawable/b8c" android:padding="14.0dip" android:paddingLeft="16.0dip" android:paddingTop="12.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="190.0dip" android:layout_marginTop="12.0dip" android:hint="@string/ymc" android:maxLength="600" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/f9_" />
-        <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/oe8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="600/600字" android:layout_alignRight="@id/oe7" android:layout_alignBottom="@id/oe7" />
-        <com.tencent.mobileqq.troop.widget.PresetWordFlowLayout android:id="@id/oea" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_below="@id/oe7" />
-        <TextView android:textColor="@color/skin_gray3" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="@string/yme" android:layout_below="@id/oea" />
-    </RelativeLayout>
-</com.tencent.widget.ScrollView>
+    <TextView android:textSize="@dimen/07" android:textColor="@color/67" android:id="@id/jq2" android:paddingLeft="@dimen/ba8" android:paddingTop="@dimen/1w" android:paddingRight="@dimen/ba8" android:paddingBottom="@dimen/1z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/06" />
+</LinearLayout>

@@ -11,15 +11,15 @@ class MsgBackupManager$5
   
   public void run()
   {
-    List localList = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).getAllMsgTableData(MsgBackupManager.a(this.this$0));
-    if (MsgBackupManager.a(this.this$0) != null) {
-      MsgBackupManager.a(this.this$0).a(localList);
+    List localList = ((IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class)).getAllMsgTableData(MsgBackupManager.e(this.this$0));
+    if (MsgBackupManager.f(this.this$0) != null) {
+      MsgBackupManager.f(this.this$0).a(localList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupManager.5
  * JD-Core Version:    0.7.0.1
  */

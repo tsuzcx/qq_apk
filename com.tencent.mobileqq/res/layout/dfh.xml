@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:id="@id/odc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.timi.game.liveroom.impl.live.widget.LiveTipsView android:id="@id/odf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.timi.game.liveroom.impl.live.widget.BottomControllerView android:layout_gravity="bottom" android:id="@id/mmx" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.timi.game.liveroom.impl.live.widget.HorBottomControllerView android:layout_gravity="bottom" android:id="@id/mmy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.timi.game.liveroom.impl.live.widget.VolumeView android:layout_gravity="center" android:id="@id/nle" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.timi.game.liveroom.impl.live.widget.TopControllerView android:layout_gravity="top" android:id="@id/qfx" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.timi.game.live.api.DanmakuChooserView android:layout_gravity="bottom|center" android:id="@id/n1v" android:visibility="gone" android:layout_width="343.0dip" android:layout_height="60.0dip" />
+</merge>

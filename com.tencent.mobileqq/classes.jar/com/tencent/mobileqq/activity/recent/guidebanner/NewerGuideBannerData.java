@@ -4,17 +4,17 @@ import android.graphics.drawable.Drawable;
 
 class NewerGuideBannerData
 {
-  final int jdField_a_of_type_Int;
-  final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  final boolean jdField_a_of_type_Boolean;
-  final boolean b;
+  final int a;
+  final Drawable b;
+  final boolean c;
+  final boolean d;
   
   private NewerGuideBannerData(int paramInt, Drawable paramDrawable, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    this.a = paramInt;
+    this.b = paramDrawable;
+    this.c = paramBoolean1;
+    this.d = paramBoolean2;
   }
   
   static NewerGuideBannerData a()
@@ -34,7 +34,7 @@ class NewerGuideBannerData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerData
  * JD-Core Version:    0.7.0.1
  */

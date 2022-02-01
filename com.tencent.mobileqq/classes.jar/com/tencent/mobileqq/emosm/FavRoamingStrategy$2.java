@@ -15,14 +15,14 @@ class FavRoamingStrategy$2
     if (paramList == null) {
       localObject = new ArrayList();
     }
-    if (this.a.a != null) {
-      this.a.a.a((List)localObject);
+    if (this.a.b != null) {
+      this.a.b.a((List)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavRoamingStrategy.2
  * JD-Core Version:    0.7.0.1
  */

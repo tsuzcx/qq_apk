@@ -11,7 +11,7 @@ public class TenDocHistoryTabEmptyTipsProcessor
 {
   public static TenDocHistoryTabEmptyTipsBean a()
   {
-    return (TenDocHistoryTabEmptyTipsBean)QConfigManager.a().a(521);
+    return (TenDocHistoryTabEmptyTipsBean)QConfigManager.b().b(521);
   }
   
   @NonNull
@@ -60,7 +60,7 @@ public class TenDocHistoryTabEmptyTipsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TenDocHistoryTabEmptyTipsProcessor
  * JD-Core Version:    0.7.0.1
  */

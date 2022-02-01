@@ -15,14 +15,14 @@ class GesturePWDGuideActivity$1
   {
     Intent localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
     this.a.startActivityForResult(localIntent, 999);
-    this.a.overridePendingTransition(2130772011, 2130772004);
+    this.a.overridePendingTransition(2130772014, 2130772007);
     ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDGuideActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class TroopRobotPickerActivity$1
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(this.a, CountrySelectActivity.class);
-    localIntent.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    localIntent.putExtra("key_country_code", this.a.f.mLocationCountyCode);
     localIntent.putExtra("key_no_limit_allow", true);
     this.a.startActivityForResult(localIntent, 111);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -22,7 +22,7 @@ class TroopRobotPickerActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRobotPickerActivity.1
  * JD-Core Version:    0.7.0.1
  */

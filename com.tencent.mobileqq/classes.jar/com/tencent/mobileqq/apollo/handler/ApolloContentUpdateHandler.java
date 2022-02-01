@@ -8,9 +8,6 @@ import android.util.SparseArray;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader;
-import com.tencent.mobileqq.apollo.res.api.IApolloResManager;
-import com.tencent.mobileqq.apollo.res.api.impl.ApolloResManagerImpl;
 import com.tencent.mobileqq.apollo.store.webview.api.IApolloSSOConfigHelper;
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
@@ -19,6 +16,10 @@ import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResDownloaderFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -53,23 +54,13 @@ public class ApolloContentUpdateHandler
   implements IApolloContentUpdateHandler
 {
   public static final String a = "com.tencent.mobileqq.apollo.handler.ApolloContentUpdateHandler";
-  protected QQAppInterface a;
-  public AtomicBoolean a;
+  protected QQAppInterface b;
+  public AtomicBoolean c = new AtomicBoolean(false);
   
   public ApolloContentUpdateHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static long a()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("apollo_client_script_");
-    localStringBuilder.append(ApolloConstant.P);
-    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    this.b = paramQQAppInterface;
   }
   
   public static void a(long paramLong)
@@ -77,7 +68,7 @@ public class ApolloContentUpdateHandler
     Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("apollo_client_script_");
-    localStringBuilder.append(ApolloConstant.P);
+    localStringBuilder.append(ApolloConstant.X);
     ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong).commit();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateNewestApolloBaseResVersion version: ");
@@ -113,7 +104,7 @@ public class ApolloContentUpdateHandler
     int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloPanelJsonVer(paramInt);
     if (i == 0)
     {
-      ((ApolloResManagerImpl)paramAppInterface.getRuntimeService(IApolloResManager.class, "all")).checkApolloPanelJsonCfg(true, "checkApolloPanelJsonVer : local ver==0", paramInt);
+      ApolloResManagerFacade.a.a(Scene.AIO).a(true, "checkApolloPanelJsonVer : local ver==0", paramInt);
       QLog.e("[cmshow]ApolloContentUpdateHandler", 1, "checkApolloPanelJsonVer local ver = 0");
       return;
     }
@@ -121,7 +112,7 @@ public class ApolloContentUpdateHandler
     Object localObject1 = paramAppInterface.getCurrentAccountUin();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("8.7.0.5295");
+    localReqBody.str_clientver.set("8.8.17.5770");
     localReqBody.uint_uin.set(Long.parseLong((String)localObject1));
     Object localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();
     ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).uint_version.set(i);
@@ -152,7 +143,7 @@ public class ApolloContentUpdateHandler
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("client_script_config_");
-    localStringBuilder.append(ApolloConstant.P);
+    localStringBuilder.append(ApolloConstant.X);
     return localStringBuilder.toString();
   }
   
@@ -161,7 +152,7 @@ public class ApolloContentUpdateHandler
     Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("apollo_client_script_");
-    localStringBuilder.append(ApolloConstant.M);
+    localStringBuilder.append(ApolloConstant.U);
     ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong).commit();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateApolloBaseResVersion version: ");
@@ -172,44 +163,28 @@ public class ApolloContentUpdateHandler
   private static void b(AppInterface paramAppInterface)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(ApolloConstant.N);
+    ((StringBuilder)localObject).append(ApolloConstant.V);
     ((StringBuilder)localObject).append("base.zip");
     localObject = ((StringBuilder)localObject).toString();
-    ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downLoadCmshowRes(paramAppInterface, (String)localObject, ApolloConstant.L, null, new ApolloContentUpdateHandler.ApolloDownloadListener());
+    ApolloResDownloaderFacade.a.a(paramAppInterface, (String)localObject, ApolloConstant.T, null, new ApolloContentUpdateHandler.ApolloDownloadListener());
   }
   
-  protected ClubContentUpdateInfoPb.ReqAppInfo a()
+  public static long g()
   {
-    int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloPanelJsonVer(1);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("getApolloPanelReqInfo ver: ");
-    ((StringBuilder)localObject).append(i);
-    QLog.i("[cmshow]ApolloContentUpdateHandler", 1, ((StringBuilder)localObject).toString());
-    localObject = (ApolloResManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloResManager.class, "all");
-    if (i == 0)
-    {
-      ((ApolloResManagerImpl)localObject).checkApolloPanelJsonCfg(true, "login : local ver==0", 1);
-      return null;
-    }
-    ((ApolloResManagerImpl)localObject).checkApolloPanelJsonCfg(false, "login : check action", 1);
-    localObject = new ClubContentUpdateInfoPb.ReqItemInfo();
-    ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).str_name.set("tab_list_android_json_v665");
-    ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).uint_version.set(i);
-    ClubContentUpdateInfoPb.ReqAppInfo localReqAppInfo = new ClubContentUpdateInfoPb.ReqAppInfo();
-    localReqAppInfo.uint_appid.set(201);
-    localReqAppInfo.rpt_msg_reqiteminfo.add((MessageMicro)localObject);
-    return localReqAppInfo;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("apollo_client_script_");
+    localStringBuilder.append(ApolloConstant.X);
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
   }
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("client_script_config_");
-    localStringBuilder.append(ApolloConstant.M);
+    localStringBuilder.append(ApolloConstant.U);
     return localStringBuilder.toString();
   }
-  
-  protected void a() {}
   
   protected void a(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
   {
@@ -218,35 +193,34 @@ public class ApolloContentUpdateHandler
       if (paramRspAppInfo.rpt_msg_rspiteminfo.size() == 0) {
         return;
       }
-      Object localObject1 = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.rpt_msg_rspiteminfo.get().get(0);
-      paramRspAppInfo = ((ClubContentUpdateInfoPb.RspItemInfo)localObject1).str_name.get();
-      int i = ((ClubContentUpdateInfoPb.RspItemInfo)localObject1).uint_version.get();
-      String str = ((ClubContentUpdateInfoPb.RspItemInfo)localObject1).str_extend.get();
-      int j = ((ClubContentUpdateInfoPb.RspItemInfo)localObject1).uint_update_flag.get();
-      localObject1 = (ApolloResManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloResManager.class, "all");
+      Object localObject = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.rpt_msg_rspiteminfo.get().get(0);
+      paramRspAppInfo = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).str_name.get();
+      int i = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_version.get();
+      String str = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).str_extend.get();
+      int j = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_update_flag.get();
       if (1 == (j & 0x1)) {
-        ((ApolloResManagerImpl)localObject1).checkApolloPanelJsonCfg(true, "12h update...", 1);
+        ApolloResManagerFacade.a.a(Scene.AIO).a(true, "12h update...", 1);
       } else {
         try
         {
           int k = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloPanelJsonVer(1);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
-          StringBuilder localStringBuilder2 = new StringBuilder();
+          localObject = this.b.getApplication().getSharedPreferences("apollo_sp", 0);
+          localStringBuilder2 = new StringBuilder();
           localStringBuilder2.append("apollo_json_version");
-          localStringBuilder2.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          if (((SharedPreferences)localObject2).getInt(localStringBuilder2.toString(), 0) != k) {
-            ((ApolloResManagerImpl)localObject1).parseActionPanelJSon();
+          localStringBuilder2.append(this.b.getCurrentAccountUin());
+          if (((SharedPreferences)localObject).getInt(localStringBuilder2.toString(), 0) != k) {
+            ApolloResManagerFacade.a.a(Scene.AIO).c();
           }
         }
         catch (Throwable localThrowable)
         {
-          Object localObject2;
+          StringBuilder localStringBuilder2;
           if (QLog.isColorLevel())
           {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("apollo json error");
-            ((StringBuilder)localObject2).append(localThrowable.toString());
-            QLog.e("[cmshow]ApolloContentUpdateHandler", 2, ((StringBuilder)localObject2).toString());
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("apollo json error");
+            localStringBuilder2.append(localThrowable.toString());
+            QLog.e("[cmshow]ApolloContentUpdateHandler", 2, localStringBuilder2.toString());
           }
         }
       }
@@ -287,7 +261,7 @@ public class ApolloContentUpdateHandler
           paramFromServiceMsg.append(paramToServiceMsg.int_result.get());
           QLog.d("[cmshow]ApolloContentUpdateHandler", 2, paramFromServiceMsg.toString());
         }
-        a();
+        f();
         return;
       }
       paramToServiceMsg = ((ArrayList)paramToServiceMsg.rpt_msg_rspappinfo.get()).iterator();
@@ -349,24 +323,24 @@ public class ApolloContentUpdateHandler
     ClubContentUpdateInfoPb.ReqBody localReqBody = new ClubContentUpdateInfoPb.ReqBody();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("8.7.0.5295");
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localReqBody.str_clientver.set("8.8.17.5770");
+    String str = this.b.getCurrentAccountUin();
     localReqBody.uint_uin.set(Long.parseLong(str));
     if (paramArrayList == null)
     {
       paramArrayList = new ArrayList();
-      Object localObject = (IApolloManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-      if (((IApolloManagerService)localObject).isApolloSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+      Object localObject = (IApolloManagerService)this.b.getRuntimeService(IApolloManagerService.class, "all");
+      if (((IApolloManagerService)localObject).isApolloSupport(this.b.getApp()))
       {
-        int i = ((IApolloManagerService)localObject).getApolloStatus(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+        int i = ((IApolloManagerService)localObject).getApolloStatus(this.b.getCurrentUin());
         if (2 != i)
         {
-          paramArrayList.add(b());
-          localObject = a();
+          paramArrayList.add(d());
+          localObject = c();
           if (localObject != null) {
             paramArrayList.add(localObject);
           }
-          localObject = c();
+          localObject = e();
           if (localObject != null) {
             paramArrayList.add(localObject);
           }
@@ -382,8 +356,8 @@ public class ApolloContentUpdateHandler
       }
       else
       {
-        if (FileUtil.b("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/action_v730.json")) {
-          ApolloUtilImpl.checkJsonParse(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        if (FileUtil.d("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/action_v730.json")) {
+          ApolloUtilImpl.checkJsonParse(this.b);
         }
         QLog.d("[cmshow]ApolloContentUpdateHandler", 1, "ApolloFunc close...");
       }
@@ -407,27 +381,6 @@ public class ApolloContentUpdateHandler
     }
   }
   
-  public long b()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("apollo_client_script_");
-    localStringBuilder.append(ApolloConstant.M);
-    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
-  }
-  
-  protected ClubContentUpdateInfoPb.ReqAppInfo b()
-  {
-    int i = BaseApplicationImpl.getContext().getSharedPreferences("sp_apollo_webView", 4).getInt("sp_key_apollo_webView_config_version", 0);
-    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
-    localReqItemInfo.str_name.set("apollo_thunder_json_v670");
-    localReqItemInfo.uint_version.set(i);
-    ClubContentUpdateInfoPb.ReqAppInfo localReqAppInfo = new ClubContentUpdateInfoPb.ReqAppInfo();
-    localReqAppInfo.uint_appid.set(205);
-    localReqAppInfo.rpt_msg_reqiteminfo.add(localReqItemInfo);
-    return localReqAppInfo;
-  }
-  
   protected void b(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
   {
     if ((paramRspAppInfo != null) && (paramRspAppInfo.rpt_msg_rspiteminfo.has()))
@@ -443,7 +396,7 @@ public class ApolloContentUpdateHandler
       String str = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).str_extend.get();
       int j = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_update_flag.get();
       localObject = (IApolloSSOConfigHelper)QRoute.api(IApolloSSOConfigHelper.class);
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.b;
       if (1 == (j & 0x1)) {
         bool = true;
       }
@@ -463,10 +416,10 @@ public class ApolloContentUpdateHandler
   
   public void b(ArrayList<ClubContentUpdateInfoPb.ReqAppInfo> paramArrayList)
   {
-    if (!((IApolloManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getConfigInitDone())
+    if (!((IApolloManagerService)this.b.getRuntimeService(IApolloManagerService.class, "all")).getConfigInitDone())
     {
       QLog.w("[cmshow]ApolloContentUpdateHandler", 1, "sendRequest but apollo config is not done");
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.c.set(true);
       return;
     }
     ClubContentUpdateInfoPb.ReqAppInfo localReqAppInfo = new ClubContentUpdateInfoPb.ReqAppInfo();
@@ -474,13 +427,13 @@ public class ApolloContentUpdateHandler
     ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
     String str1 = a();
     localReqItemInfo.str_name.set(str1);
-    localReqItemInfo.uint_version.set((int)b());
+    localReqItemInfo.uint_version.set((int)h());
     localReqAppInfo.rpt_msg_reqiteminfo.add(localReqItemInfo);
-    if (!TextUtils.isEmpty(ApolloConstant.P))
+    if (!TextUtils.isEmpty(ApolloConstant.X))
     {
       Object localObject = new ClubContentUpdateInfoPb.ReqItemInfo();
       String str2 = b();
-      long l = a();
+      long l = g();
       ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).str_name.set(str2);
       ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).uint_version.set((int)l);
       localReqAppInfo.rpt_msg_reqiteminfo.add((MessageMicro)localObject);
@@ -500,7 +453,197 @@ public class ApolloContentUpdateHandler
     QLog.i("[cmshow]ApolloContentUpdateHandler", 1, paramArrayList.toString());
   }
   
-  public ClubContentUpdateInfoPb.ReqAppInfo c()
+  protected ClubContentUpdateInfoPb.ReqAppInfo c()
+  {
+    int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloPanelJsonVer(1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getApolloPanelReqInfo ver: ");
+    ((StringBuilder)localObject).append(i);
+    QLog.i("[cmshow]ApolloContentUpdateHandler", 1, ((StringBuilder)localObject).toString());
+    localObject = ApolloResManagerFacade.a.a(Scene.AIO);
+    if (i == 0)
+    {
+      ((IApolloResManager)localObject).a(true, "login : local ver==0", 1);
+      return null;
+    }
+    ((IApolloResManager)localObject).a(false, "login : check action", 1);
+    localObject = new ClubContentUpdateInfoPb.ReqItemInfo();
+    ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).str_name.set("tab_list_android_json_v665");
+    ((ClubContentUpdateInfoPb.ReqItemInfo)localObject).uint_version.set(i);
+    ClubContentUpdateInfoPb.ReqAppInfo localReqAppInfo = new ClubContentUpdateInfoPb.ReqAppInfo();
+    localReqAppInfo.uint_appid.set(201);
+    localReqAppInfo.rpt_msg_reqiteminfo.add((MessageMicro)localObject);
+    return localReqAppInfo;
+  }
+  
+  protected void c(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo;
+    if (paramRspAppInfo.rpt_msg_rspiteminfo.has())
+    {
+      if (paramRspAppInfo.rpt_msg_rspiteminfo.size() == 0) {
+        return;
+      }
+      Iterator localIterator = paramRspAppInfo.rpt_msg_rspiteminfo.get().iterator();
+      paramRspAppInfo = this;
+      if (localIterator.hasNext()) {
+        localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)localIterator.next();
+      }
+    }
+    label262:
+    for (;;)
+    {
+      try
+      {
+        int i = Integer.parseInt(localRspItemInfo.str_name.get());
+        int j = localRspItemInfo.uint_version.get();
+        localObject = localRspItemInfo.str_extend.get();
+        int k = localRspItemInfo.uint_update_flag.get();
+        if ((k & 0x1) != 1) {
+          break label262;
+        }
+        ApolloResDownloaderFacade.a.a(paramRspAppInfo.b, paramRspAppInfo.b.getCurrentAccountUin(), null, i, null, -1, -1, true);
+        paramRspAppInfo = new StringBuilder();
+        paramRspAppInfo.append("apollo role: ");
+        paramRspAppInfo.append(i);
+        paramRspAppInfo.append(", ver: ");
+        paramRspAppInfo.append(j);
+        paramRspAppInfo.append(", updateFlag: ");
+        paramRspAppInfo.append(k);
+        paramRspAppInfo.append(", extStr: ");
+        paramRspAppInfo.append((String)localObject);
+        QLog.i("[cmshow]ApolloContentUpdateHandler", 1, paramRspAppInfo.toString());
+      }
+      catch (Exception paramRspAppInfo)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleApolloRoleResponse role id: ");
+        ((StringBuilder)localObject).append(localRspItemInfo.str_name.get());
+        QLog.e("[cmshow]ApolloContentUpdateHandler", 1, ((StringBuilder)localObject).toString(), paramRspAppInfo);
+      }
+      break;
+      return;
+    }
+  }
+  
+  protected ClubContentUpdateInfoPb.ReqAppInfo d()
+  {
+    int i = BaseApplicationImpl.getContext().getSharedPreferences("sp_apollo_webView", 4).getInt("sp_key_apollo_webView_config_version", 0);
+    ClubContentUpdateInfoPb.ReqItemInfo localReqItemInfo = new ClubContentUpdateInfoPb.ReqItemInfo();
+    localReqItemInfo.str_name.set("apollo_thunder_json_v670");
+    localReqItemInfo.uint_version.set(i);
+    ClubContentUpdateInfoPb.ReqAppInfo localReqAppInfo = new ClubContentUpdateInfoPb.ReqAppInfo();
+    localReqAppInfo.uint_appid.set(205);
+    localReqAppInfo.rpt_msg_reqiteminfo.add(localReqItemInfo);
+    return localReqAppInfo;
+  }
+  
+  public void d(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  {
+    if ((paramRspAppInfo != null) && (paramRspAppInfo.rpt_msg_rspiteminfo.has()))
+    {
+      if (paramRspAppInfo.rpt_msg_rspiteminfo.size() == 0) {
+        return;
+      }
+      paramRspAppInfo = paramRspAppInfo.rpt_msg_rspiteminfo.get().iterator();
+      while (paramRspAppInfo.hasNext())
+      {
+        Object localObject = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
+        String str = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).str_name.get();
+        if (!TextUtils.isEmpty(str))
+        {
+          boolean bool1 = str.equals(a());
+          boolean bool3 = false;
+          boolean bool2 = false;
+          int i;
+          int j;
+          Bundle localBundle;
+          if (bool1)
+          {
+            i = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_version.get();
+            j = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_update_flag.get();
+            bool1 = bool2;
+            if (j == 0)
+            {
+              localObject = new File(ApolloConstant.V);
+              if (!((File)localObject).exists()) {}
+              do
+              {
+                do
+                {
+                  bool1 = true;
+                  break;
+                } while (((File)localObject).list() == null);
+                bool1 = bool2;
+              } while (((File)localObject).list().length == 0);
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(ApolloConstant.V);
+            ((StringBuilder)localObject).append("base.zip");
+            localObject = ((StringBuilder)localObject).toString();
+            if ((1 == (j & 0x1)) || (bool1))
+            {
+              localBundle = new Bundle();
+              localBundle.putLong("version", i);
+              ApolloResDownloaderFacade.a.a(this.b, (String)localObject, ApolloConstant.T, localBundle, new ApolloContentUpdateHandler.ApolloDownloadListener());
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("apollo_base_script str_name:");
+            ((StringBuilder)localObject).append(str);
+            ((StringBuilder)localObject).append(",ver: ");
+            ((StringBuilder)localObject).append(i);
+            ((StringBuilder)localObject).append(", updateFlag: ");
+            ((StringBuilder)localObject).append(j);
+            ((StringBuilder)localObject).append(", needUpdate: ");
+            ((StringBuilder)localObject).append(bool1);
+            QLog.i("[cmshow]ApolloContentUpdateHandler", 1, ((StringBuilder)localObject).toString());
+          }
+          else if (str.equals(b()))
+          {
+            i = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_version.get();
+            j = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_update_flag.get();
+            bool1 = bool3;
+            if (j == 0)
+            {
+              localObject = new File(ApolloConstant.Y);
+              if (!((File)localObject).exists()) {}
+              do
+              {
+                do
+                {
+                  bool1 = true;
+                  break;
+                } while (((File)localObject).list() == null);
+                bool1 = bool3;
+              } while (((File)localObject).list().length == 0);
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(ApolloConstant.Y);
+            ((StringBuilder)localObject).append("base.zip");
+            localObject = ((StringBuilder)localObject).toString();
+            if ((1 == (j & 0x1)) || (bool1))
+            {
+              localBundle = new Bundle();
+              localBundle.putLong("version", i);
+              ApolloResDownloaderFacade.a.a(this.b, (String)localObject, ApolloConstant.W, localBundle, new ApolloContentUpdateHandler.ApolloPreDownloadListener());
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("apollo_base_script newest str_name:");
+            ((StringBuilder)localObject).append(str);
+            ((StringBuilder)localObject).append(",ver: ");
+            ((StringBuilder)localObject).append(i);
+            ((StringBuilder)localObject).append(", updateFlag: ");
+            ((StringBuilder)localObject).append(j);
+            ((StringBuilder)localObject).append(", needUpdate: ");
+            ((StringBuilder)localObject).append(bool1);
+            QLog.i("[cmshow]ApolloContentUpdateHandler", 1, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
+    }
+  }
+  
+  public ClubContentUpdateInfoPb.ReqAppInfo e()
   {
     Object localObject1 = new SparseArray(8);
     Object localObject3 = new File(ApolloConstant.a, "/def/role/0/config.json");
@@ -576,159 +719,15 @@ public class ApolloContentUpdateHandler
     return null;
   }
   
-  protected void c(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
-  {
-    ClubContentUpdateInfoPb.RspItemInfo localRspItemInfo;
-    if (paramRspAppInfo.rpt_msg_rspiteminfo.has())
-    {
-      if (paramRspAppInfo.rpt_msg_rspiteminfo.size() == 0) {
-        return;
-      }
-      Iterator localIterator = paramRspAppInfo.rpt_msg_rspiteminfo.get().iterator();
-      paramRspAppInfo = this;
-      if (localIterator.hasNext()) {
-        localRspItemInfo = (ClubContentUpdateInfoPb.RspItemInfo)localIterator.next();
-      }
-    }
-    label270:
-    for (;;)
-    {
-      try
-      {
-        int i = Integer.parseInt(localRspItemInfo.str_name.get());
-        int j = localRspItemInfo.uint_version.get();
-        localObject = localRspItemInfo.str_extend.get();
-        int k = localRspItemInfo.uint_update_flag.get();
-        if ((k & 0x1) != 1) {
-          break label270;
-        }
-        ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downloadApolloResOrder(paramRspAppInfo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRspAppInfo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, i, null, -1, -1, true);
-        paramRspAppInfo = new StringBuilder();
-        paramRspAppInfo.append("apollo role: ");
-        paramRspAppInfo.append(i);
-        paramRspAppInfo.append(", ver: ");
-        paramRspAppInfo.append(j);
-        paramRspAppInfo.append(", updateFlag: ");
-        paramRspAppInfo.append(k);
-        paramRspAppInfo.append(", extStr: ");
-        paramRspAppInfo.append((String)localObject);
-        QLog.i("[cmshow]ApolloContentUpdateHandler", 1, paramRspAppInfo.toString());
-      }
-      catch (Exception paramRspAppInfo)
-      {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("handleApolloRoleResponse role id: ");
-        ((StringBuilder)localObject).append(localRspItemInfo.str_name.get());
-        QLog.e("[cmshow]ApolloContentUpdateHandler", 1, ((StringBuilder)localObject).toString(), paramRspAppInfo);
-      }
-      break;
-      return;
-    }
-  }
+  protected void f() {}
   
-  public void d(ClubContentUpdateInfoPb.RspAppInfo paramRspAppInfo)
+  public long h()
   {
-    if ((paramRspAppInfo != null) && (paramRspAppInfo.rpt_msg_rspiteminfo.has()))
-    {
-      if (paramRspAppInfo.rpt_msg_rspiteminfo.size() == 0) {
-        return;
-      }
-      paramRspAppInfo = paramRspAppInfo.rpt_msg_rspiteminfo.get().iterator();
-      while (paramRspAppInfo.hasNext())
-      {
-        Object localObject = (ClubContentUpdateInfoPb.RspItemInfo)paramRspAppInfo.next();
-        String str = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).str_name.get();
-        if (!TextUtils.isEmpty(str))
-        {
-          boolean bool1 = str.equals(a());
-          boolean bool3 = false;
-          boolean bool2 = false;
-          int i;
-          int j;
-          Bundle localBundle;
-          if (bool1)
-          {
-            i = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_version.get();
-            j = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_update_flag.get();
-            bool1 = bool2;
-            if (j == 0)
-            {
-              localObject = new File(ApolloConstant.N);
-              if (!((File)localObject).exists()) {}
-              do
-              {
-                do
-                {
-                  bool1 = true;
-                  break;
-                } while (((File)localObject).list() == null);
-                bool1 = bool2;
-              } while (((File)localObject).list().length == 0);
-            }
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(ApolloConstant.N);
-            ((StringBuilder)localObject).append("base.zip");
-            localObject = ((StringBuilder)localObject).toString();
-            if ((1 == (j & 0x1)) || (bool1))
-            {
-              localBundle = new Bundle();
-              localBundle.putLong("version", i);
-              ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downLoadCmshowRes(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, ApolloConstant.L, localBundle, new ApolloContentUpdateHandler.ApolloDownloadListener());
-            }
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("apollo_base_script str_name:");
-            ((StringBuilder)localObject).append(str);
-            ((StringBuilder)localObject).append(",ver: ");
-            ((StringBuilder)localObject).append(i);
-            ((StringBuilder)localObject).append(", updateFlag: ");
-            ((StringBuilder)localObject).append(j);
-            ((StringBuilder)localObject).append(", needUpdate: ");
-            ((StringBuilder)localObject).append(bool1);
-            QLog.i("[cmshow]ApolloContentUpdateHandler", 1, ((StringBuilder)localObject).toString());
-          }
-          else if (str.equals(b()))
-          {
-            i = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_version.get();
-            j = ((ClubContentUpdateInfoPb.RspItemInfo)localObject).uint_update_flag.get();
-            bool1 = bool3;
-            if (j == 0)
-            {
-              localObject = new File(ApolloConstant.Q);
-              if (!((File)localObject).exists()) {}
-              do
-              {
-                do
-                {
-                  bool1 = true;
-                  break;
-                } while (((File)localObject).list() == null);
-                bool1 = bool3;
-              } while (((File)localObject).list().length == 0);
-            }
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(ApolloConstant.Q);
-            ((StringBuilder)localObject).append("base.zip");
-            localObject = ((StringBuilder)localObject).toString();
-            if ((1 == (j & 0x1)) || (bool1))
-            {
-              localBundle = new Bundle();
-              localBundle.putLong("version", i);
-              ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).downLoadCmshowRes(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, ApolloConstant.O, localBundle, new ApolloContentUpdateHandler.ApolloPreDownloadListener());
-            }
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("apollo_base_script newest str_name:");
-            ((StringBuilder)localObject).append(str);
-            ((StringBuilder)localObject).append(",ver: ");
-            ((StringBuilder)localObject).append(i);
-            ((StringBuilder)localObject).append(", updateFlag: ");
-            ((StringBuilder)localObject).append(j);
-            ((StringBuilder)localObject).append(", needUpdate: ");
-            ((StringBuilder)localObject).append(bool1);
-            QLog.i("[cmshow]ApolloContentUpdateHandler", 1, ((StringBuilder)localObject).toString());
-          }
-        }
-      }
-    }
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("apollo_client_script_");
+    localStringBuilder.append(ApolloConstant.U);
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -749,7 +748,7 @@ public class ApolloContentUpdateHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.ApolloContentUpdateHandler
  * JD-Core Version:    0.7.0.1
  */

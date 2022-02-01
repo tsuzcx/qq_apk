@@ -22,16 +22,16 @@ public class RIJADSuperMaskPopupStep
   extends BasePopupStep
   implements ReadInJoySuperMaskAdUtil.RIJSuperMaskAdEventListener
 {
-  private SoftReference<Activity> jdField_a_of_type_JavaLangRefSoftReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  private SoftReference<Activity> a;
+  private boolean b = false;
   
   public RIJADSuperMaskPopupStep(@NotNull RIJPopupAutomator paramRIJPopupAutomator, Activity paramActivity)
   {
     super(paramRIJPopupAutomator, "RIJADSuperMaskPopupStep");
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramActivity);
+    this.a = new SoftReference(paramActivity);
   }
   
-  private void i()
+  private void l()
   {
     SuperMaskUIMgr.a.a(new RIJADSuperMaskPopupStep.1(this));
   }
@@ -50,9 +50,9 @@ public class RIJADSuperMaskPopupStep
     }
     int i = -1;
     if (paramInt == 0) {
-      i = SuperMaskConfigMgr.a.c().getAndAdd(1);
+      i = SuperMaskConfigMgr.a.h().getAndAdd(1);
     } else if (((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(paramInt)) {
-      i = SuperMaskConfigMgr.a.d().getAndAdd(1);
+      i = SuperMaskConfigMgr.a.i().getAndAdd(1);
     }
     if (i != 0)
     {
@@ -68,24 +68,35 @@ public class RIJADSuperMaskPopupStep
       SuperMaskUIMgr.a.a(4);
       return;
     }
-    SuperMaskReportMgr.a.a("beginShowMask", "");
-    if (b())
+    if (SuperMaskUIMgr.a.d())
     {
-      SuperMaskUIMgr.a.a(4);
-      SuperMaskReportMgr.a.a("alertManagerShowAfter", "");
-      a(false);
+      SuperMaskReportMgr.a.a("beginShowMask", "");
+      if (j())
+      {
+        SuperMaskUIMgr.a.a(4);
+        SuperMaskReportMgr.a.a("alertManagerShowAfter", "");
+        a(false);
+        return;
+      }
+      SuperMaskReportMgr.a.a("alertManagerShowNow", "");
+      l();
       return;
     }
-    SuperMaskReportMgr.a.a("alertManagerShowNow", "");
-    i();
+    SuperMaskUIMgr.a.a(4);
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("superMask not show, refreshNum = ");
+    localStringBuilder.append(i);
+    localIRIJAdLogService.d("ReadInJoySuperMaskAd", localStringBuilder.toString());
+    a(false);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (SuperMaskUIMgr.a.b())
+    if (SuperMaskUIMgr.a.f())
     {
-      this.jdField_a_of_type_Boolean = (paramBoolean ^ true);
-      if (this.jdField_a_of_type_Boolean) {
+      this.b = (paramBoolean ^ true);
+      if (this.b) {
         a(false);
       }
     }
@@ -96,25 +107,11 @@ public class RIJADSuperMaskPopupStep
     super.a(paramBoolean);
   }
   
-  public boolean a()
-  {
-    return super.a();
-  }
-  
   public void b()
   {
     super.b();
-    ReadInJoySuperMaskAdUtil.a().a();
+    ReadInJoySuperMaskAdUtil.a().b();
     SuperMaskPopStepProxy.a();
-  }
-  
-  public boolean b()
-  {
-    RIJPopupAutomator localRIJPopupAutomator = a();
-    if (localRIJPopupAutomator != null) {
-      return localRIJPopupAutomator.a();
-    }
-    return false;
   }
   
   public void c()
@@ -137,13 +134,27 @@ public class RIJADSuperMaskPopupStep
     super.f();
   }
   
-  protected void g() {}
+  public boolean g()
+  {
+    return super.g();
+  }
   
   protected void h() {}
+  
+  protected void i() {}
+  
+  public boolean j()
+  {
+    RIJPopupAutomator localRIJPopupAutomator = k();
+    if (localRIJPopupAutomator != null) {
+      return localRIJPopupAutomator.i();
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJADSuperMaskPopupStep
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,10 @@ public class TeamWorkExportUtil
   public static FileManagerEntity a(ForwardFileInfo paramForwardFileInfo)
   {
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.fileName = paramForwardFileInfo.d();
+    localFileManagerEntity.fileName = paramForwardFileInfo.i();
     localFileManagerEntity.nFileType = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getFileType(localFileManagerEntity.fileName);
-    localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
-    localFileManagerEntity.cloudType = paramForwardFileInfo.d();
+    localFileManagerEntity.nSessionId = paramForwardFileInfo.e();
+    localFileManagerEntity.cloudType = paramForwardFileInfo.o();
     return localFileManagerEntity;
   }
   
@@ -33,7 +33,7 @@ public class TeamWorkExportUtil
   
   public static String a(int paramInt)
   {
-    String str = HardCodeUtil.a(2131714600);
+    String str = HardCodeUtil.a(2131912109);
     if (paramInt == 3) {
       return "word";
     }
@@ -76,7 +76,7 @@ public class TeamWorkExportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkExportUtil
  * JD-Core Version:    0.7.0.1
  */

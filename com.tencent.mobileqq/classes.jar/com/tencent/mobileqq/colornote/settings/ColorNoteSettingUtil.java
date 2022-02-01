@@ -10,21 +10,19 @@ import java.util.List;
 public class ColorNoteSettingUtil
 {
   @ConfigInject(configPath="Business/ColorNote-impl/src/main/resources/Inject_ColorNoteSettingConfig.yml", version=1)
-  public static ArrayList<Class<? extends IColorNoteSettingCallback>> a;
-  static List<IColorNoteSettingCallback> a;
+  public static ArrayList<Class<? extends IColorNoteSettingCallback>> a = new ArrayList();
+  static List<IColorNoteSettingCallback> b = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(ColorNoteSettingCallback.class);
-    jdField_a_of_type_JavaUtilList = new ArrayList();
+    a.add(ColorNoteSettingCallback.class);
     try
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = a.iterator();
       while (localIterator.hasNext())
       {
         Class localClass = (Class)localIterator.next();
-        jdField_a_of_type_JavaUtilList.add(localClass.newInstance());
+        b.add(localClass.newInstance());
       }
       return;
     }
@@ -36,7 +34,7 @@ public class ColorNoteSettingUtil
   
   public static void a(boolean paramBoolean)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = b.iterator();
     while (localIterator.hasNext()) {
       ((IColorNoteSettingCallback)localIterator.next()).a(paramBoolean);
     }
@@ -44,7 +42,7 @@ public class ColorNoteSettingUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.ColorNoteSettingUtil
  * JD-Core Version:    0.7.0.1
  */

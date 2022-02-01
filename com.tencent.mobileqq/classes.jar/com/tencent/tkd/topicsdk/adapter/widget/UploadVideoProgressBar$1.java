@@ -14,7 +14,7 @@ final class UploadVideoProgressBar$1
   public final void onClick(View paramView)
   {
     paramView = UploadVideoProgressBar.a(this.a);
-    int i = UploadVideoProgressBar.WhenMappings.a[paramView.ordinal()];
+    int i = UploadVideoProgressBar.WhenMappings.$EnumSwitchMapping$0[paramView.ordinal()];
     if (i != 1)
     {
       if (i != 2)
@@ -24,19 +24,19 @@ final class UploadVideoProgressBar$1
           if (i != 4) {
             return;
           }
-          UploadVideoProgressBar.b(this.a);
+          UploadVideoProgressBar.c(this.a);
           UploadVideoProgressBar.a(this.a, ReportEventElement.BUTTON_PROGRESSBAR_RETRY);
         }
       }
       else
       {
-        UploadVideoProgressBar.b(this.a);
+        UploadVideoProgressBar.c(this.a);
         UploadVideoProgressBar.a(this.a, ReportEventElement.BUTTON_PROGRESSBAR_UPLOAD);
       }
     }
     else
     {
-      UploadVideoProgressBar.a(this.a);
+      UploadVideoProgressBar.b(this.a);
       this.a.b();
       UploadVideoProgressBar.a(this.a, ReportEventElement.BUTTON_PROGRESSBAR_PAUSE);
     }
@@ -44,7 +44,7 @@ final class UploadVideoProgressBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.widget.UploadVideoProgressBar.1
  * JD-Core Version:    0.7.0.1
  */

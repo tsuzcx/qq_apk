@@ -9,8 +9,8 @@ import java.io.File;
 
 public class MediaCodecChipConfigManager
 {
-  private static MediaCodecChipConfigManager jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager;
-  private MediaCodecChipConfigInfo jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo;
+  private static MediaCodecChipConfigManager a;
+  private MediaCodecChipConfigInfo b;
   
   private MediaCodecChipConfigManager()
   {
@@ -21,56 +21,21 @@ public class MediaCodecChipConfigManager
   
   public static MediaCodecChipConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager == null)
+        if (a == null)
         {
-          jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager = new MediaCodecChipConfigManager();
-          jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager.a();
+          a = new MediaCodecChipConfigManager();
+          a.c();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvBusinessConfigMediaCodecChipConfigManager;
+    return a;
   }
   
-  private void a() {}
-  
-  public MediaCodecChipConfigInfo a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaCodecChipConfigManager", 2, "getMediaCodecChipConfigInfo");
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo == null) {
-          this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo = MediaCodecChipConfigInfo.a(MediaCodecFileUtils.a(BaseApplication.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config"));
-        }
-        Object localObject1;
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("getMediaCodecChipConfigInfo content:=");
-          if (this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo != null)
-          {
-            localObject1 = this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo.toString();
-            localStringBuilder.append((String)localObject1);
-            QLog.d("MediaCodecChipConfigManager", 2, localStringBuilder.toString());
-          }
-        }
-        else
-        {
-          localObject1 = this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo;
-          return localObject1;
-        }
-      }
-      finally {}
-      Object localObject3 = null;
-    }
-  }
+  private void c() {}
   
   public void a(HardWareCodecSSO.ConfigRsp paramConfigRsp)
   {
@@ -80,7 +45,7 @@ public class MediaCodecChipConfigManager
     paramConfigRsp = MediaCodecChipConfigInfo.a(paramConfigRsp);
     try
     {
-      String str = paramConfigRsp.a();
+      String str = paramConfigRsp.b();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -89,10 +54,45 @@ public class MediaCodecChipConfigManager
         QLog.d("MediaCodecChipConfigManager", 2, localStringBuilder.toString());
       }
       MediaCodecFileUtils.a(str, BaseApplication.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config");
-      this.jdField_a_of_type_ComTencentAvConfigMediaCodecChipConfigInfo = paramConfigRsp;
+      this.b = paramConfigRsp;
       return;
     }
     finally {}
+  }
+  
+  public MediaCodecChipConfigInfo b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaCodecChipConfigManager", 2, "getMediaCodecChipConfigInfo");
+    }
+    for (;;)
+    {
+      try
+      {
+        if (this.b == null) {
+          this.b = MediaCodecChipConfigInfo.a(MediaCodecFileUtils.a(BaseApplication.getContext().getFilesDir().getAbsolutePath(), "av_mediacodec_file_config"));
+        }
+        Object localObject1;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getMediaCodecChipConfigInfo content:=");
+          if (this.b != null)
+          {
+            localObject1 = this.b.toString();
+            localStringBuilder.append((String)localObject1);
+            QLog.d("MediaCodecChipConfigManager", 2, localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          localObject1 = this.b;
+          return localObject1;
+        }
+      }
+      finally {}
+      Object localObject3 = null;
+    }
   }
 }
 

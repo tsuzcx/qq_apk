@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:id="@id/mvk" android:layout_width="113.0dip" android:layout_height="150.0dip" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/mvl" android:background="@drawable/dyi" android:layout_width="113.0dip" android:layout_height="150.0dip" />
-    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:id="@id/mvn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginBottom="7.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_alignBottom="@id/mvk" />
-    <TextView android:textSize="@dimen/aym" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mvo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_below="@id/mvk" />
-    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mvm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_below="@id/mvo" />
-</RelativeLayout>
+<CheckedTextView android:ellipsize="marquee" android:gravity="center|left" android:id="@android:id/text1" android:paddingLeft="@dimen/5o" android:paddingRight="?a04" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?a9t" android:drawablePadding="20.0dip" app:drawableLeftCompat="?android:listChoiceIndicatorSingle" app:drawableStartCompat="?android:listChoiceIndicatorSingle"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

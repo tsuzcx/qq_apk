@@ -16,7 +16,7 @@ class AddFriendVerifyFragment$19
   
   public void onGlobalLayout()
   {
-    if (AddFriendVerifyFragment.b(this.a)) {
+    if (AddFriendVerifyFragment.k(this.a)) {
       return;
     }
     Object localObject = new Rect();
@@ -42,7 +42,7 @@ class AddFriendVerifyFragment$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.19
  * JD-Core Version:    0.7.0.1
  */

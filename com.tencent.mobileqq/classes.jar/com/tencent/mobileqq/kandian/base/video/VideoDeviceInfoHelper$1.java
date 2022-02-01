@@ -28,12 +28,12 @@ final class VideoDeviceInfoHelper$1
       VideoDeviceInfoHelper.a(paramInt);
       try
       {
-        localObject1 = VideoDeviceInfoHelper.a();
+        localObject1 = VideoDeviceInfoHelper.c();
         if (localObject1 != null)
         {
           try
           {
-            VideoDeviceInfoHelper.a().put("simCardType", VideoDeviceInfoHelper.a());
+            VideoDeviceInfoHelper.c().put("simCardType", VideoDeviceInfoHelper.d());
           }
           catch (JSONException localJSONException)
           {
@@ -54,7 +54,7 @@ final class VideoDeviceInfoHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.VideoDeviceInfoHelper.1
  * JD-Core Version:    0.7.0.1
  */

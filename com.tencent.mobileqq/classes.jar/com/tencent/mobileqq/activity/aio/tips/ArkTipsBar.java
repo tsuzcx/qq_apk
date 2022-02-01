@@ -10,16 +10,16 @@ import android.widget.TextView;
 public class ArkTipsBar
   implements TipsBarTask
 {
-  private long jdField_a_of_type_Long = -1L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
+  private Context a;
+  private TipsManager b;
+  private View c;
+  private TextView d;
+  private long e = -1L;
   
   public ArkTipsBar(TipsManager paramTipsManager, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
+    this.a = paramContext;
+    this.b = paramTipsManager;
   }
   
   public int a()
@@ -29,18 +29,18 @@ public class ArkTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558523, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362500));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ArkTipsBar.1(this));
+      this.c = LayoutInflater.from(this.a).inflate(2131624076, null);
+      this.d = ((TextView)this.c.findViewById(2131428109));
+      this.c.setOnClickListener(new ArkTipsBar.1(this));
     }
     if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVarArgs[0]);
-      this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
+      this.d.setText((CharSequence)paramVarArgs[0]);
+      this.e = ((Long)paramVarArgs[1]).longValue();
     }
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.c;
   }
   
   public void a(int paramInt, Object... paramVarArgs)
@@ -50,29 +50,29 @@ public class ArkTipsBar
   
   public void a(Drawable paramDrawable)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      localObject = (ImageView)((View)localObject).findViewById(2131362498);
+      localObject = (ImageView)((View)localObject).findViewById(2131428107);
       if (localObject != null) {
         ((ImageView)localObject).setImageDrawable(paramDrawable);
       }
     }
   }
   
-  public int[] a()
-  {
-    return null;
-  }
-  
   public int b()
   {
     return 16;
   }
+  
+  public int[] c()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.ArkTipsBar
  * JD-Core Version:    0.7.0.1
  */

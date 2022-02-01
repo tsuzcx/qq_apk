@@ -31,20 +31,20 @@ class DynamicAvatarManager$5
     }
     int i;
     label782:
-    synchronized (this.a.c)
+    synchronized (this.a.i)
     {
-      i = this.a.c.size() - 1;
+      i = this.a.i.size() - 1;
       if (i >= 0)
       {
-        ??? = (WeakReference)this.a.c.get(i);
+        ??? = (WeakReference)this.a.i.get(i);
         if ((??? != null) && (((WeakReference)???).get() != null))
         {
-          if (???.equals(((DynamicFaceDrawable)((WeakReference)this.a.c.get(i)).get()).jdField_b_of_type_JavaLangString))
+          if (???.equals(((DynamicFaceDrawable)((WeakReference)this.a.i.get(i)).get()).n))
           {
-            ??? = (WeakReference)this.a.c.remove(i);
+            ??? = (WeakReference)this.a.i.remove(i);
             if (paramBoolean1)
             {
-              this.a.b.add(???);
+              this.a.h.add(???);
               if (QLog.isColorLevel()) {
                 QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish add to wait play list.");
               }
@@ -52,29 +52,29 @@ class DynamicAvatarManager$5
           }
         }
         else {
-          this.a.c.remove(i);
+          this.a.i.remove(i);
         }
       }
       else
       {
-        if (!DynamicFaceDrawable.jdField_b_of_type_Boolean)
+        if (!DynamicFaceDrawable.f)
         {
           ??? = null;
-          synchronized (this.a.d)
+          synchronized (this.a.j)
           {
-            i = this.a.d.size() - 1;
+            i = this.a.j.size() - 1;
             for (;;)
             {
               ??? = (String)???;
               if (i < 0) {
                 break;
               }
-              if ((this.a.d.get(i) != null) && (((WeakReference)this.a.d.get(i)).get() != null))
+              if ((this.a.j.get(i) != null) && (((WeakReference)this.a.j.get(i)).get() != null))
               {
-                ??? = (WeakReference)this.a.d.get(i);
+                ??? = (WeakReference)this.a.j.get(i);
                 break;
               }
-              this.a.d.remove(i);
+              this.a.j.remove(i);
               i -= 1;
             }
             if ((??? != null) && (???.get() != null)) {
@@ -82,32 +82,32 @@ class DynamicAvatarManager$5
             }
           }
         }
-        synchronized (this.a.a)
+        synchronized (this.a.g)
         {
-          i = this.a.a.size() - 1;
+          i = this.a.g.size() - 1;
           if (i >= 0)
           {
-            if (((WeakReference)this.a.a.get(i)).get() == null) {
-              this.a.a.remove(i);
+            if (((WeakReference)this.a.g.get(i)).get() == null) {
+              this.a.g.remove(i);
             }
           }
           else
           {
-            i = this.a.b.size() - 1;
+            i = this.a.h.size() - 1;
             if (i >= 0)
             {
-              ??? = (WeakReference)this.a.b.get(i);
+              ??? = (WeakReference)this.a.h.get(i);
               if ((??? != null) && (((WeakReference)???).get() != null))
               {
-                if (this.a.a.size() < DynamicAvatarManager.a(this.a).a)
+                if (this.a.g.size() < DynamicAvatarManager.b(this.a).j)
                 {
-                  this.a.b.remove(i);
-                  if (this.a.a.contains(???)) {
+                  this.a.h.remove(i);
+                  if (this.a.g.contains(???)) {
                     break label782;
                   }
-                  paramBoolean1 = this.a.a((DynamicFaceDrawable)((WeakReference)???).get());
+                  paramBoolean1 = this.a.c((DynamicFaceDrawable)((WeakReference)???).get());
                   if (paramBoolean1) {
-                    this.a.a.add(???);
+                    this.a.g.add(???);
                   }
                   if (!QLog.isColorLevel()) {
                     break label782;
@@ -116,7 +116,7 @@ class DynamicAvatarManager$5
                   ((StringBuilder)???).append("onFileDownloadFinish to play.02 result : ");
                   ((StringBuilder)???).append(paramBoolean1);
                   ((StringBuilder)???).append(" playing size: ");
-                  ((StringBuilder)???).append(this.a.a.size());
+                  ((StringBuilder)???).append(this.a.g.size());
                   QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)???).toString());
                   break label782;
                 }
@@ -125,11 +125,11 @@ class DynamicAvatarManager$5
                 }
                 ??? = new StringBuilder();
                 ((StringBuilder)???).append("onFileDownloadFinish to play.02 beyond maxPlayingCount : ");
-                ((StringBuilder)???).append(DynamicAvatarManager.a(this.a).a);
+                ((StringBuilder)???).append(DynamicAvatarManager.b(this.a).j);
                 QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)???).toString());
                 break label782;
               }
-              this.a.b.remove(i);
+              this.a.h.remove(i);
               break label782;
             }
             return;
@@ -141,7 +141,7 @@ class DynamicAvatarManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager.5
  * JD-Core Version:    0.7.0.1
  */

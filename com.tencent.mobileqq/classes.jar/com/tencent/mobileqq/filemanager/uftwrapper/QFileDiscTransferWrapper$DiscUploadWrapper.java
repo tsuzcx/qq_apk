@@ -21,22 +21,22 @@ import com.tencent.mobileqq.uftransfer.api.UFTFileUploadBusinessInfo;
 class QFileDiscTransferWrapper$DiscUploadWrapper
   extends QFileDiscTransferWrapper.DiscBaseUploadWrapper
 {
-  final FileManagerEntity a;
+  final FileManagerEntity e;
   
   QFileDiscTransferWrapper$DiscUploadWrapper(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity, QFileDiscTransferWrapper.ITransferWrapperCallback paramITransferWrapperCallback)
   {
     super(paramQQAppInterface, paramITransferWrapperCallback);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.e = paramFileManagerEntity;
   }
   
   public int a(IUFTTransferKey paramIUFTTransferKey, Bundle paramBundle, IUFTUploadSendMsgCallback paramIUFTUploadSendMsgCallback)
   {
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
+    paramBundle = this.e.fileName;
     paramIUFTTransferKey = paramBundle;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 5)
+    if (this.e.nFileType == 5)
     {
       paramIUFTTransferKey = paramBundle;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName))
+      if (!TextUtils.isEmpty(this.e.strApkPackageName))
       {
         paramIUFTTransferKey = paramBundle;
         if (paramBundle.indexOf(".apk") < 0)
@@ -48,133 +48,133 @@ class QFileDiscTransferWrapper$DiscUploadWrapper
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramIUFTTransferKey, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgUid, new QFileDiscTransferWrapper.DiscUploadWrapper.1(this, paramIUFTUploadSendMsgCallback));
+    this.a.getFileTransferHandler().a(this.e.nSessionId, this.e.peerUin, this.a.getCurrentAccountUin(), paramIUFTTransferKey, this.e.fileSize, this.e.Uuid, this.e.uniseq, this.e.msgUid, new QFileDiscTransferWrapper.DiscUploadWrapper.1(this, paramIUFTUploadSendMsgCallback));
     return 0;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    UFTDiscUploadInfo localUFTDiscUploadInfo = new UFTDiscUploadInfo();
-    localUFTDiscUploadInfo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath);
-    localUFTDiscUploadInfo.a(true);
-    localUFTDiscUploadInfo.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
-    localUFTDiscUploadInfo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType);
-    localUFTDiscUploadInfo.a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId));
-    this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey = ((IUFTTransferService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IUFTTransferService.class, "")).uploadDiscFile(localUFTDiscUploadInfo, a(), this);
   }
   
   void a(int paramInt)
   {
     super.a(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 3;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 3, null);
+    this.e.status = 3;
+    this.a.getFileManagerDataCenter().c(this.e);
+    this.a.getFileManagerNotifyCenter().a(true, 3, null);
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    paramIUFTTransferKey = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    paramIUFTTransferKey = this.e;
     paramIUFTTransferKey.fProgress = 0.0F;
     if (paramIUFTTransferKey.status != 2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.e.status = 2;
+      this.a.getFileManagerDataCenter().c(this.e);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+    this.a.getFileManagerNotifyCenter().a(this.e.uniseq, this.e.nSessionId, this.e.peerUin, this.e.peerType, 16, null, 0, null);
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, int paramInt, IUFTUploadCompleteInfo paramIUFTUploadCompleteInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 15, null, paramInt, paramIUFTUploadCompleteInfo.a());
+      this.e.status = 0;
+      this.a.getFileManagerDataCenter().c(this.e);
+      this.a.getFileManagerNotifyCenter().a(this.e.uniseq, this.e.nSessionId, this.e.peerUin, this.e.peerType, 15, null, paramInt, paramIUFTUploadCompleteInfo.b());
     }
     else
     {
       if (paramIUFTUploadCompleteInfo.a())
       {
-        FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, 5, "");
+        FileManagerUtil.b(this.e.nSessionId);
+        this.a.getFileManagerNotifyCenter().a(this.e, 5, "");
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
+        this.e.fProgress = 1.0F;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 14, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), paramIUFTUploadCompleteInfo.b() }, 0, null);
+      this.e.status = 1;
+      this.a.getFileManagerDataCenter().c(this.e);
+      this.a.getFileManagerNotifyCenter().a(this.e.uniseq, this.e.nSessionId, this.e.peerUin, this.e.peerType, 14, new Object[] { this.e.getFilePath(), Long.valueOf(this.e.fileSize), Boolean.valueOf(true), paramIUFTUploadCompleteInfo.c() }, 0, null);
     }
-    paramIUFTTransferKey = this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey.a();
+    paramIUFTTransferKey = this.d.a();
     if ((paramIUFTTransferKey instanceof Long)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileDiscTransferWrapper$ITransferWrapperCallback.a(((Long)paramIUFTTransferKey).longValue());
+      this.c.a(((Long)paramIUFTTransferKey).longValue());
     }
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, long paramLong1, long paramLong2, long paramLong3)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    paramIUFTTransferKey = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    paramIUFTTransferKey = this.e;
     paramIUFTTransferKey.fProgress = ((float)paramLong2 / (float)paramLong1);
     if (paramIUFTTransferKey.status != 2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.e.status = 2;
+      this.a.getFileManagerDataCenter().c(this.e);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+    this.a.getFileManagerNotifyCenter().a(this.e.uniseq, this.e.nSessionId, this.e.peerUin, this.e.peerType, 16, null, 0, null);
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, UFTFileLocalInfo paramUFTFileLocalInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    if (paramUFTFileLocalInfo.a() != null)
+    if (paramUFTFileLocalInfo.b() != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = FileHttpUtils.a(paramUFTFileLocalInfo.a());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.str10Md5 = HexUtil.bytes2HexStr(paramUFTFileLocalInfo.a());
+      this.e.strFileMd5 = FileHttpUtils.a(paramUFTFileLocalInfo.b());
+      this.e.str10Md5 = HexUtil.bytes2HexStr(paramUFTFileLocalInfo.b());
     }
-    if (paramUFTFileLocalInfo.d() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA = FileHttpUtils.a(paramUFTFileLocalInfo.d());
+    if (paramUFTFileLocalInfo.e() != null) {
+      this.e.strFileSHA = FileHttpUtils.a(paramUFTFileLocalInfo.e());
     }
-    if (paramUFTFileLocalInfo.b() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight = paramUFTFileLocalInfo.b();
+    if (paramUFTFileLocalInfo.g() != 0) {
+      this.e.imgHeight = paramUFTFileLocalInfo.g();
     }
-    if (paramUFTFileLocalInfo.a() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth = paramUFTFileLocalInfo.a();
+    if (paramUFTFileLocalInfo.f() != 0) {
+      this.e.imgWidth = paramUFTFileLocalInfo.f();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.getFileManagerDataCenter().c(this.e);
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, UFTFileUploadBusinessInfo paramUFTFileUploadBusinessInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     if (!TextUtils.isEmpty(paramUFTFileUploadBusinessInfo.a())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = paramUFTFileUploadBusinessInfo.a();
+      this.e.Uuid = paramUFTFileUploadBusinessInfo.a();
     }
-    if (!TextUtils.isEmpty(paramUFTFileUploadBusinessInfo.d())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath = paramUFTFileUploadBusinessInfo.d();
+    if (!TextUtils.isEmpty(paramUFTFileUploadBusinessInfo.e())) {
+      this.e.strServerPath = paramUFTFileUploadBusinessInfo.e();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.svrPathIpType = paramUFTFileUploadBusinessInfo.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.e.svrPathIpType = paramUFTFileUploadBusinessInfo.f();
+    this.a.getFileManagerDataCenter().c(this.e);
+  }
+  
+  public void b()
+  {
+    this.b = false;
+    UFTDiscUploadInfo localUFTDiscUploadInfo = new UFTDiscUploadInfo();
+    localUFTDiscUploadInfo.a(this.e.strFilePath);
+    localUFTDiscUploadInfo.a(true);
+    localUFTDiscUploadInfo.b(this.e.peerUin);
+    localUFTDiscUploadInfo.a(this.e.peerType);
+    localUFTDiscUploadInfo.a(Long.valueOf(this.e.nSessionId));
+    this.d = ((IUFTTransferService)this.a.getRuntimeService(IUFTTransferService.class, "")).uploadDiscFile(localUFTDiscUploadInfo, a(), this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileDiscTransferWrapper.DiscUploadWrapper
  * JD-Core Version:    0.7.0.1
  */

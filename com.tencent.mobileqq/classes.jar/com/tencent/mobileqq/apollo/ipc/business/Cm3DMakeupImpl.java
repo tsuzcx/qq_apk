@@ -27,7 +27,7 @@ public class Cm3DMakeupImpl
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface))
     {
-      QLog.i("[cmshow][apollo]Cm3DMakeupImpl", 2, "onRemoteInvoke cannot get QQAppInterface");
+      QLog.i("[cmshow]Cm3DMakeupImpl", 2, "onRemoteInvoke cannot get QQAppInterface");
       return null;
     }
     return (QQAppInterface)localAppRuntime;
@@ -76,7 +76,7 @@ public class Cm3DMakeupImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ipc.business.Cm3DMakeupImpl
  * JD-Core Version:    0.7.0.1
  */

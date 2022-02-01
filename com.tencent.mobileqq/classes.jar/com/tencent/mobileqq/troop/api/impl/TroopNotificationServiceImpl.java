@@ -221,17 +221,17 @@ public class TroopNotificationServiceImpl
   
   public boolean hasUnreadUndealMsg()
   {
-    return ((TroopNotificationRecordMessageController)getController(TroopNotificationRecordMessageController.class)).a();
+    return ((TroopNotificationRecordMessageController)getController(TroopNotificationRecordMessageController.class)).e();
   }
   
   public boolean isTroopNotificaitonGetAll()
   {
-    return ((TroopNotificationRecordMessageController)getController(TroopNotificationRecordMessageController.class)).b();
+    return ((TroopNotificationRecordMessageController)getController(TroopNotificationRecordMessageController.class)).f();
   }
   
   public boolean isTroopSuspiciousNotificaitonGetAll()
   {
-    return ((TroopNotificationRecordMessageController)getController(TroopNotificationRecordMessageController.class)).c();
+    return ((TroopNotificationRecordMessageController)getController(TroopNotificationRecordMessageController.class)).g();
   }
   
   public void notifyNotificationShowNewEntryConfigUpdate(TroopNotificationEntryConfig paramTroopNotificationEntryConfig)
@@ -292,7 +292,7 @@ public class TroopNotificationServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopNotificationServiceImpl
  * JD-Core Version:    0.7.0.1
  */

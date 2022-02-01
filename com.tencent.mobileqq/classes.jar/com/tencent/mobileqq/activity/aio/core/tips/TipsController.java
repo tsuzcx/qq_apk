@@ -10,50 +10,36 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class TipsController
 {
   protected final AIOContext a;
-  private MessageTips jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsMessageTips;
-  private final MsgBox jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsMsgBox;
-  private final TipsUI jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsTipsUI;
-  private final TipsRegister jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTipsTipsRegister;
+  private final TipsRegister b;
+  private final MsgBox c;
+  private final TipsUI d;
+  private MessageTips e;
+  private boolean f;
   
   public TipsController(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTipsTipsRegister = new TipsRegister(paramAIOContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsMsgBox = new MsgBox(paramAIOContext, a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsTipsUI = new TipsUI(paramAIOContext);
-  }
-  
-  public MessageTips a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsMessageTips == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsMessageTips = new MessageTips(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, this);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsMessageTips;
-  }
-  
-  public MsgBox a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsMsgBox;
-  }
-  
-  public TipsUI a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsTipsUI;
+    this.a = paramAIOContext;
+    this.b = new TipsRegister(paramAIOContext);
+    this.c = new MsgBox(paramAIOContext, b());
+    this.d = new TipsUI(paramAIOContext);
   }
   
   public TipsRegister a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTipsTipsRegister;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsMsgBox.a();
+    return this.b;
   }
   
   public void a(MessageRecord paramMessageRecord, Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsMsgBox.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramMessageRecord, paramMessage);
+    if (this.f) {
+      return;
+    }
+    this.c.a(this.a, paramMessageRecord, paramMessage);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.f = paramBoolean;
   }
   
   public boolean a(int paramInt)
@@ -61,20 +47,43 @@ public class TipsController
     return true;
   }
   
-  public void b()
+  public MessageTips b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsMsgBox.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsTipsUI.a();
+    if (this.e == null) {
+      this.e = new MessageTips(this.a, this);
+    }
+    return this.e;
   }
   
-  public void c()
+  public MsgBox c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiTipsMsgBox.b();
+    return this.c;
+  }
+  
+  public TipsUI d()
+  {
+    return this.d;
+  }
+  
+  public void e()
+  {
+    this.c.b();
+  }
+  
+  public void f()
+  {
+    this.c.a(this.a.b());
+    this.d.a();
+  }
+  
+  public void g()
+  {
+    this.c.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.tips.TipsController
  * JD-Core Version:    0.7.0.1
  */

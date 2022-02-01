@@ -17,88 +17,88 @@ import mqq.app.MobileQQ;
 public class GroupNetSearchModelPeopleItem
   extends ISearchResultPositionModel
 {
-  private AccountSearchPb.record jdField_a_of_type_AddcontactsAccountSearchPb$record;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  private CharSequence b;
+  private AccountSearchPb.record a;
+  private String b;
+  private CharSequence c;
+  private CharSequence d;
   
   public GroupNetSearchModelPeopleItem(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_AddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.a = paramrecord;
+    this.b = paramString;
+    this.c = paramCharSequence;
   }
   
-  public int a()
+  public CharSequence a()
   {
-    if (this.jdField_a_of_type_AddcontactsAccountSearchPb$record.uin.get() != 0L) {
+    return HardCodeUtil.a(2131903334);
+  }
+  
+  public void a(View paramView)
+  {
+    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToProfileCardActivity((Activity)paramView.getContext(), new SearchResultItem(this.a), (AppInterface)MobileQQ.sMobileQQ.peekAppRuntime(), true, 1);
+    SearchUtils.a(this.b, 70, 0, paramView);
+    SearchUtils.a(this.b, 70, paramView, false);
+  }
+  
+  public int b()
+  {
+    if (this.a.uin.get() != 0L) {
       return 1;
     }
     return 11;
   }
   
-  public CharSequence a()
+  public String c()
   {
-    return HardCodeUtil.a(2131705446);
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_AddcontactsAccountSearchPb$record.uin.get() != 0L) {
-      return String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.uin.get());
+    if (this.a.uin.get() != 0L) {
+      return String.valueOf(this.a.uin.get());
     }
-    return this.jdField_a_of_type_AddcontactsAccountSearchPb$record.mobile.get();
-  }
-  
-  public void a(View paramView)
-  {
-    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToProfileCardActivity((Activity)paramView.getContext(), new SearchResultItem(this.jdField_a_of_type_AddcontactsAccountSearchPb$record), (AppInterface)MobileQQ.sMobileQQ.peekAppRuntime(), true, 1);
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public CharSequence c()
-  {
-    if (this.b == null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("(");
-      String str;
-      if (this.jdField_a_of_type_AddcontactsAccountSearchPb$record.uin.get() != 0L) {
-        str = String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.uin.get());
-      } else {
-        str = this.jdField_a_of_type_AddcontactsAccountSearchPb$record.mobile.get();
-      }
-      localStringBuilder.append(str);
-      localStringBuilder.append(")");
-      this.b = SearchUtils.a(localStringBuilder.toString(), this.jdField_a_of_type_JavaLangString);
-    }
-    return this.b;
+    return this.a.mobile.get();
   }
   
   public CharSequence d()
   {
+    return this.c;
+  }
+  
+  public CharSequence e()
+  {
+    if (this.d == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("(");
+      String str;
+      if (this.a.uin.get() != 0L) {
+        str = String.valueOf(this.a.uin.get());
+      } else {
+        str = this.a.mobile.get();
+      }
+      localStringBuilder.append(str);
+      localStringBuilder.append(")");
+      this.d = SearchUtils.a(localStringBuilder.toString(), this.b);
+    }
+    return this.d;
+  }
+  
+  public CharSequence f()
+  {
     return null;
+  }
+  
+  public String g()
+  {
+    return this.b;
+  }
+  
+  public boolean h()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.GroupNetSearchModelPeopleItem
  * JD-Core Version:    0.7.0.1
  */

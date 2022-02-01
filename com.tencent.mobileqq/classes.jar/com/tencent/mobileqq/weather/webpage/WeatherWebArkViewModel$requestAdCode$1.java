@@ -20,8 +20,8 @@ public final class WeatherWebArkViewModel$requestAdCode$1
     Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
     QLog.i("WeatherWebArkViewModel", 1, "requestAdCode deny");
-    if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel.a().postValue(new WebPageData(3, null, null, null, 0, 0, 62, null));
+    if (TextUtils.isEmpty((CharSequence)this.c)) {
+      this.a.a().postValue(new WebPageData(3, null, null, null, 0, 0, 62, null));
     }
   }
   
@@ -30,12 +30,12 @@ public final class WeatherWebArkViewModel$requestAdCode$1
     Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
     QLog.i("WeatherWebArkViewModel", 1, "requestAdCode grant");
-    this.jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel.b(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_JavaLangString);
+    this.a.b(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebArkViewModel.requestAdCode.1
  * JD-Core Version:    0.7.0.1
  */

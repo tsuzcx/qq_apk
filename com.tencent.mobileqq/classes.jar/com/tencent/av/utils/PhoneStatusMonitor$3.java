@@ -14,19 +14,19 @@ class PhoneStatusMonitor$3
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkEndCallTask, calling[");
-      localStringBuilder.append(PhoneStatusMonitor.a(this.this$0));
+      localStringBuilder.append(PhoneStatusMonitor.b(this.this$0));
       localStringBuilder.append("], tillEnd[");
-      localStringBuilder.append(PhoneStatusMonitor.a(this.this$0).get());
+      localStringBuilder.append(PhoneStatusMonitor.e(this.this$0).get());
       localStringBuilder.append("]");
       QLog.i("PhoneStatusMonitor", 2, localStringBuilder.toString());
     }
-    if (!PhoneStatusMonitor.a(this.this$0))
+    if (!PhoneStatusMonitor.b(this.this$0))
     {
-      this.this$0.d();
+      this.this$0.e();
       return;
     }
-    if (PhoneStatusMonitor.a(this.this$0).get()) {
-      this.this$0.c();
+    if (PhoneStatusMonitor.e(this.this$0).get()) {
+      this.this$0.d();
     }
   }
 }

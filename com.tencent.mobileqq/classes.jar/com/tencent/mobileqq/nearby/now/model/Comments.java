@@ -11,35 +11,29 @@ public class Comments
 {
   public static final Parcelable.Creator<Comments> CREATOR = new Comments.1();
   public long a;
-  public Comments.LastDeleteInfo a;
-  public List<Comments.Comment> a;
-  public boolean a;
-  public List<Comments.Comment> b = new ArrayList();
+  public boolean b;
+  public List<Comments.Comment> c = new ArrayList();
+  public List<Comments.Comment> d = new ArrayList();
+  public Comments.LastDeleteInfo e = null;
   
-  public Comments()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$LastDeleteInfo = null;
-  }
+  public Comments() {}
   
   public Comments(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$LastDeleteInfo = null;
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.a = paramParcel.readLong();
     boolean bool;
     if (paramParcel.readByte() != 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, Comments.Comment.CREATOR);
+    this.b = bool;
+    paramParcel.readTypedList(this.c, Comments.Comment.CREATOR);
   }
   
   public boolean a(Comments.Comment paramComment)
   {
-    return this.jdField_a_of_type_JavaUtilList.contains(paramComment);
+    return this.c.contains(paramComment);
   }
   
   public int describeContents()
@@ -64,14 +58,14 @@ public class Comments
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeByte((byte)this.b);
+    paramParcel.writeTypedList(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.Comments
  * JD-Core Version:    0.7.0.1
  */

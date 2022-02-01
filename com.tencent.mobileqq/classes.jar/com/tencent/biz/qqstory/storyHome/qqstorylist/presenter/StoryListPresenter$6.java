@@ -14,7 +14,7 @@ class StoryListPresenter$6
   public void onClick(View paramView)
   {
     StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
+    this.a.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

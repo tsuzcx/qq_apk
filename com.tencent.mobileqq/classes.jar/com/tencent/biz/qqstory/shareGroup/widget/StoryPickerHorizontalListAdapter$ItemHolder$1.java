@@ -12,8 +12,8 @@ class StoryPickerHorizontalListAdapter$ItemHolder$1
   public void onClick(View paramView)
   {
     int i = ((Integer)paramView.getTag()).intValue();
-    if (this.a.a.a != null) {
-      this.a.a.a.a(paramView, this.a.a.a(i));
+    if (this.a.c.i != null) {
+      this.a.c.i.a(paramView, this.a.c.a(i));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

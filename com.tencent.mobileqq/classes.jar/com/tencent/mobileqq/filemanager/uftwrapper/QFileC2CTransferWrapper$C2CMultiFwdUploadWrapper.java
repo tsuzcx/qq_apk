@@ -16,89 +16,89 @@ import com.tencent.mobileqq.uftransfer.api.UFTFileUploadBusinessInfo;
 class QFileC2CTransferWrapper$C2CMultiFwdUploadWrapper
   extends QFileC2CTransferWrapper.C2CBaseUploadWrapper
 {
-  int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final QFileC2CTransferWrapper.C2CFileMultiFwdInfo jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CFileMultiFwdInfo;
-  final QFileC2CTransferWrapper.IC2CMultiFwdCallback jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$IC2CMultiFwdCallback;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  final long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
+  final QFileC2CTransferWrapper.IC2CMultiFwdCallback f;
+  final QFileC2CTransferWrapper.C2CFileMultiFwdInfo g;
+  final long h;
+  final long i;
+  String j;
+  String k;
+  String l;
+  int m;
+  int n;
+  int o;
   
   public QFileC2CTransferWrapper$C2CMultiFwdUploadWrapper(QFileC2CTransferWrapper paramQFileC2CTransferWrapper, QQAppInterface paramQQAppInterface, long paramLong, QFileC2CTransferWrapper.C2CFileMultiFwdInfo paramC2CFileMultiFwdInfo, QFileC2CTransferWrapper.ITransferWrapperCallback paramITransferWrapperCallback, QFileC2CTransferWrapper.IC2CMultiFwdCallback paramIC2CMultiFwdCallback)
   {
     super(paramQQAppInterface, paramITransferWrapperCallback);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$IC2CMultiFwdCallback = paramIC2CMultiFwdCallback;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CFileMultiFwdInfo = paramC2CFileMultiFwdInfo;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Long = FileManagerUtil.a(paramC2CFileMultiFwdInfo.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_Boolean = QFileAssistantUtils.a(paramC2CFileMultiFwdInfo.jdField_b_of_type_JavaLangString);
-  }
-  
-  long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    UFTC2CUploadInfo localUFTC2CUploadInfo = new UFTC2CUploadInfo();
-    localUFTC2CUploadInfo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CFileMultiFwdInfo.jdField_a_of_type_JavaLangString);
-    localUFTC2CUploadInfo.a(false);
-    localUFTC2CUploadInfo.b(true);
-    localUFTC2CUploadInfo.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CFileMultiFwdInfo.jdField_b_of_type_JavaLangString);
-    localUFTC2CUploadInfo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CFileMultiFwdInfo.jdField_a_of_type_Int);
-    localUFTC2CUploadInfo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CFileMultiFwdInfo.jdField_a_of_type_Long);
-    localUFTC2CUploadInfo.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CFileMultiFwdInfo.jdField_a_of_type_ArrayOfByte);
-    localUFTC2CUploadInfo.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CFileMultiFwdInfo.jdField_c_of_type_JavaLangString);
-    localUFTC2CUploadInfo.a(Long.valueOf(this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey = ((IUFTTransferService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IUFTTransferService.class, "")).uploadC2CFile(localUFTC2CUploadInfo, a(), this);
+    this.f = paramIC2CMultiFwdCallback;
+    this.g = paramC2CFileMultiFwdInfo;
+    this.h = paramLong;
+    this.i = FileManagerUtil.h(paramC2CFileMultiFwdInfo.a);
+    this.e = QFileAssistantUtils.a(paramC2CFileMultiFwdInfo.c);
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, int paramInt, IUFTUploadCompleteInfo paramIUFTUploadCompleteInfo)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$IC2CMultiFwdCallback != null)
+    if (this.f != null)
     {
       paramIUFTTransferKey = new Bundle();
-      paramIUFTTransferKey.putString("strFileId", this.jdField_a_of_type_JavaLangString);
-      paramIUFTTransferKey.putString("str10MMd5", this.jdField_b_of_type_JavaLangString);
-      paramIUFTTransferKey.putString("strSha", this.jdField_c_of_type_JavaLangString);
-      paramIUFTTransferKey.putInt("width", this.jdField_a_of_type_Int);
-      paramIUFTTransferKey.putInt("height", this.jdField_b_of_type_Int);
-      paramIUFTTransferKey.putInt("duration", this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$IC2CMultiFwdCallback.a(paramInt, true, paramIUFTTransferKey);
+      paramIUFTTransferKey.putString("strFileId", this.j);
+      paramIUFTTransferKey.putString("str10MMd5", this.k);
+      paramIUFTTransferKey.putString("strSha", this.l);
+      paramIUFTTransferKey.putInt("width", this.m);
+      paramIUFTTransferKey.putInt("height", this.n);
+      paramIUFTTransferKey.putInt("duration", this.o);
+      this.f.a(paramInt, true, paramIUFTTransferKey);
     }
-    paramIUFTTransferKey = this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey.a();
+    paramIUFTTransferKey = this.d.a();
     if ((paramIUFTTransferKey instanceof Long)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$ITransferWrapperCallback.a(((Long)paramIUFTTransferKey).longValue());
+      this.c.a(((Long)paramIUFTTransferKey).longValue());
     }
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, UFTFileLocalInfo paramUFTFileLocalInfo)
   {
-    this.jdField_b_of_type_JavaLangString = FileHttpUtils.a(paramUFTFileLocalInfo.a());
-    this.jdField_c_of_type_JavaLangString = FileHttpUtils.a(paramUFTFileLocalInfo.d());
-    this.jdField_a_of_type_Int = paramUFTFileLocalInfo.a();
-    this.jdField_b_of_type_Int = paramUFTFileLocalInfo.b();
-    this.jdField_c_of_type_Int = paramUFTFileLocalInfo.c();
+    this.k = FileHttpUtils.a(paramUFTFileLocalInfo.b());
+    this.l = FileHttpUtils.a(paramUFTFileLocalInfo.e());
+    this.m = paramUFTFileLocalInfo.f();
+    this.n = paramUFTFileLocalInfo.g();
+    this.o = paramUFTFileLocalInfo.h();
   }
   
   public void a(IUFTTransferKey paramIUFTTransferKey, UFTFileUploadBusinessInfo paramUFTFileUploadBusinessInfo)
   {
     if (!TextUtils.isEmpty(paramUFTFileUploadBusinessInfo.a())) {
-      this.jdField_a_of_type_JavaLangString = paramUFTFileUploadBusinessInfo.a();
+      this.j = paramUFTFileUploadBusinessInfo.a();
     }
+  }
+  
+  long b()
+  {
+    return this.i;
+  }
+  
+  void c()
+  {
+    this.b = false;
+    UFTC2CUploadInfo localUFTC2CUploadInfo = new UFTC2CUploadInfo();
+    localUFTC2CUploadInfo.a(this.g.a);
+    localUFTC2CUploadInfo.a(false);
+    localUFTC2CUploadInfo.b(true);
+    localUFTC2CUploadInfo.b(this.g.c);
+    localUFTC2CUploadInfo.a(this.g.b);
+    localUFTC2CUploadInfo.a(this.g.d);
+    localUFTC2CUploadInfo.a(this.g.e);
+    localUFTC2CUploadInfo.c(this.g.f);
+    localUFTC2CUploadInfo.a(Long.valueOf(this.h));
+    this.d = ((IUFTTransferService)this.a.getRuntimeService(IUFTTransferService.class, "")).uploadC2CFile(localUFTC2CUploadInfo, a(), this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileC2CTransferWrapper.C2CMultiFwdUploadWrapper
  * JD-Core Version:    0.7.0.1
  */

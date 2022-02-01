@@ -23,7 +23,7 @@ public class FileCacheUtils
   public static File a(String paramString, int paramInt)
   {
     QQStoryContext.a();
-    paramString = TroopStoryUtil.a(QQStoryContext.a(), paramString);
+    paramString = TroopStoryUtil.a(QQStoryContext.j(), paramString);
     if ((paramString instanceof MessageForShortVideo)) {
       paramString = (MessageForShortVideo)paramString;
     } else {
@@ -57,7 +57,7 @@ public class FileCacheUtils
     if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine())) {
       localObject = a(paramString, localStoryVideoItem.mCreateTime, paramInt, false, paramBoolean2);
     } else {
-      localObject = a(paramString, paramInt, false, paramBoolean2);
+      localObject = b(paramString, paramInt, false, paramBoolean2);
     }
     File localFile = new File((String)localObject);
     if (localFile.exists())
@@ -104,7 +104,7 @@ public class FileCacheUtils
       if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine())) {
         paramString = a(paramString, localStoryVideoItem.mCreateTime, paramInt, true, paramBoolean2);
       } else {
-        paramString = a(paramString, paramInt, true, paramBoolean2);
+        paramString = b(paramString, paramInt, true, paramBoolean2);
       }
       return new File(paramString);
     }
@@ -135,34 +135,6 @@ public class FileCacheUtils
     return ".mp4";
   }
   
-  public static String a(File paramFile)
-  {
-    if (paramFile.exists())
-    {
-      String str = paramFile.getParentFile().getAbsolutePath();
-      Object localObject2 = paramFile.getName();
-      if (((String)localObject2).endsWith(".tmp"))
-      {
-        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 4);
-      }
-      else
-      {
-        localObject1 = localObject2;
-        if (((String)localObject2).endsWith(".stmp")) {
-          localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 5);
-        }
-      }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(str);
-      ((StringBuilder)localObject2).append("/");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      Object localObject1 = ((StringBuilder)localObject2).toString();
-      paramFile.renameTo(new File((String)localObject1));
-      return localObject1;
-    }
-    return "";
-  }
-  
   public static String a(String paramString)
   {
     try
@@ -176,24 +148,14 @@ public class FileCacheUtils
     }
   }
   
-  public static String a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(QQStoryConstant.i);
-    localStringBuilder.append(a(paramString, false, 0L));
-    localStringBuilder.append("/");
-    localStringBuilder.append(b(paramString, paramInt, paramBoolean1, paramBoolean2));
-    return localStringBuilder.toString();
-  }
-  
   public static String a(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     String str;
     if (TroopStoryUtil.a(paramString)) {
-      str = QQStoryConstant.i;
-    } else {
       str = QQStoryConstant.j;
+    } else {
+      str = QQStoryConstant.k;
     }
     localStringBuilder.append(str);
     localStringBuilder.append(a(paramString, true, paramLong));
@@ -300,6 +262,34 @@ public class FileCacheUtils
     return bool1;
   }
   
+  public static String b(File paramFile)
+  {
+    if (paramFile.exists())
+    {
+      String str = paramFile.getParentFile().getAbsolutePath();
+      Object localObject2 = paramFile.getName();
+      if (((String)localObject2).endsWith(".tmp"))
+      {
+        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 4);
+      }
+      else
+      {
+        localObject1 = localObject2;
+        if (((String)localObject2).endsWith(".stmp")) {
+          localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 5);
+        }
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str);
+      ((StringBuilder)localObject2).append("/");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      Object localObject1 = ((StringBuilder)localObject2).toString();
+      paramFile.renameTo(new File((String)localObject1));
+      return localObject1;
+    }
+    return "";
+  }
+  
   public static String b(String paramString)
   {
     paramString = (FileCacheUtils.StringObj)a.a(paramString);
@@ -311,34 +301,12 @@ public class FileCacheUtils
   
   public static String b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = a(paramInt);
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      paramString = a(paramString, false, 0L);
-    }
-    else
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a(paramString, false, 0L));
-      localStringBuilder.append((String)localObject);
-      paramString = localStringBuilder.toString();
-    }
-    localObject = paramString;
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramString);
-        ((StringBuilder)localObject).append(".stmp");
-        return ((StringBuilder)localObject).toString();
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(".tmp");
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    return localObject;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QQStoryConstant.j);
+    localStringBuilder.append(a(paramString, false, 0L));
+    localStringBuilder.append("/");
+    localStringBuilder.append(c(paramString, paramInt, paramBoolean1, paramBoolean2));
+    return localStringBuilder.toString();
   }
   
   public static String b(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -370,10 +338,42 @@ public class FileCacheUtils
     }
     return localObject;
   }
+  
+  public static String c(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject = a(paramInt);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramString = a(paramString, false, 0L);
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a(paramString, false, 0L));
+      localStringBuilder.append((String)localObject);
+      paramString = localStringBuilder.toString();
+    }
+    localObject = paramString;
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(".stmp");
+        return ((StringBuilder)localObject).toString();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(".tmp");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.FileCacheUtils
  * JD-Core Version:    0.7.0.1
  */

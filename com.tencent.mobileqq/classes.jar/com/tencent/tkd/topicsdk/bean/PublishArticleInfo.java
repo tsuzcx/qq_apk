@@ -25,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "Ljava/io/Serializable;", "()V", "allowReprint", "", "getAllowReprint", "()Z", "setAllowReprint", "(Z)V", "circleId", "", "getCircleId", "()Ljava/lang/String;", "setCircleId", "(Ljava/lang/String;)V", "commentAfterPublish", "getCommentAfterPublish", "setCommentAfterPublish", "commodityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "getCommodityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "setCommodityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;)V", "communityId", "getCommunityId", "setCommunityId", "communityName", "getCommunityName", "setCommunityName", "content", "getContent", "contentId", "getContentId", "setContentId", "contentLength", "", "getContentLength", "()I", "setContentLength", "(I)V", "contentList", "", "Lcom/tencent/tkd/weibo/bean/EditObject;", "getContentList", "()Ljava/util/List;", "setContentList", "(Ljava/util/List;)V", "hasUploadFileSize", "", "getHasUploadFileSize", "()J", "setHasUploadFileSize", "(J)V", "imageList", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/topicsdk/bean/ImageInfo;", "Lkotlin/collections/ArrayList;", "getImageList", "()Ljava/util/ArrayList;", "setImageList", "(Ljava/util/ArrayList;)V", "isFromDraft", "setFromDraft", "isPublishing", "setPublishing", "locationInfo", "Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "getLocationInfo", "()Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "setLocationInfo", "(Lcom/tencent/tkd/topicsdk/bean/LocationInfo;)V", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "privacySetting", "getPrivacySetting", "setPrivacySetting", "publishErrorCode", "getPublishErrorCode", "setPublishErrorCode", "publishErrorMsg", "getPublishErrorMsg", "setPublishErrorMsg", "publishId", "getPublishId", "setPublishId", "publishScene", "getPublishScene", "setPublishScene", "scene", "getScene", "setScene", "showPublishToast", "getShowPublishToast", "setShowPublishToast", "topicId", "getTopicId", "setTopicId", "totalFileSize", "getTotalFileSize", "videoInfo", "Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "getVideoInfo", "()Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "setVideoInfo", "(Lcom/tencent/tkd/topicsdk/bean/VideoInfo;)V", "videoUploadKey", "getVideoUploadKey", "setVideoUploadKey", "buildLocalPublishJsonData", "Lorg/json/JSONObject;", "calTotalFileSize", "hasImage", "hasText", "hasVideo", "initMediaByDisplayItems", "", "displayItems", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "putLocalContentInfo", "localPublishData", "putLocalImageData", "putLocalVideoInfo", "putRichContentInfo", "updateImageWH", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "info", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "Ljava/io/Serializable;", "()V", "allowReprint", "", "getAllowReprint", "()Z", "setAllowReprint", "(Z)V", "circleId", "", "getCircleId", "()Ljava/lang/String;", "setCircleId", "(Ljava/lang/String;)V", "commentAfterPublish", "getCommentAfterPublish", "setCommentAfterPublish", "commodityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "getCommodityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "setCommodityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;)V", "communityId", "getCommunityId", "setCommunityId", "communityName", "getCommunityName", "setCommunityName", "content", "getContent", "contentId", "getContentId", "setContentId", "contentLength", "", "getContentLength", "()I", "setContentLength", "(I)V", "contentList", "", "Lcom/tencent/tkd/weibo/bean/EditObject;", "getContentList", "()Ljava/util/List;", "setContentList", "(Ljava/util/List;)V", "hasUploadFileSize", "", "getHasUploadFileSize", "()J", "setHasUploadFileSize", "(J)V", "imageList", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/topicsdk/bean/ImageInfo;", "Lkotlin/collections/ArrayList;", "getImageList", "()Ljava/util/ArrayList;", "setImageList", "(Ljava/util/ArrayList;)V", "invitedManuscriptItem", "Lcom/tencent/tkd/topicsdk/bean/InvitedManuscriptItem;", "getInvitedManuscriptItem", "()Lcom/tencent/tkd/topicsdk/bean/InvitedManuscriptItem;", "setInvitedManuscriptItem", "(Lcom/tencent/tkd/topicsdk/bean/InvitedManuscriptItem;)V", "isFromDraft", "setFromDraft", "isOriginalContent", "setOriginalContent", "isPublishing", "setPublishing", "locationInfo", "Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "getLocationInfo", "()Lcom/tencent/tkd/topicsdk/bean/LocationInfo;", "setLocationInfo", "(Lcom/tencent/tkd/topicsdk/bean/LocationInfo;)V", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "privacySetting", "getPrivacySetting", "setPrivacySetting", "publishErrorCode", "getPublishErrorCode", "setPublishErrorCode", "publishErrorMsg", "getPublishErrorMsg", "setPublishErrorMsg", "publishId", "getPublishId", "setPublishId", "publishScene", "getPublishScene", "setPublishScene", "publishType", "getPublishType", "setPublishType", "scene", "getScene", "setScene", "showPublishToast", "getShowPublishToast", "setShowPublishToast", "topicId", "getTopicId", "setTopicId", "totalFileSize", "getTotalFileSize", "videoInfo", "Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "getVideoInfo", "()Lcom/tencent/tkd/topicsdk/bean/VideoInfo;", "setVideoInfo", "(Lcom/tencent/tkd/topicsdk/bean/VideoInfo;)V", "videoUploadKey", "getVideoUploadKey", "setVideoUploadKey", "buildLocalPublishJsonData", "Lorg/json/JSONObject;", "calTotalFileSize", "hasImage", "hasText", "hasVideo", "initMediaByDisplayItems", "", "displayItems", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "putLocalContentInfo", "localPublishData", "putLocalImageData", "putLocalVideoInfo", "putRichContentInfo", "updateImageWH", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "info", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class PublishArticleInfo
   implements Serializable
 {
@@ -51,7 +51,10 @@ public final class PublishArticleInfo
   private long hasUploadFileSize;
   @Nullable
   private ArrayList<ImageInfo> imageList;
+  @Nullable
+  private InvitedManuscriptItem invitedManuscriptItem;
   private boolean isFromDraft;
+  private boolean isOriginalContent;
   private boolean isPublishing;
   @Nullable
   private LocationInfo locationInfo;
@@ -65,6 +68,7 @@ public final class PublishArticleInfo
   private String publishId = "";
   @NotNull
   private String publishScene = "";
+  private int publishType;
   @NotNull
   private String scene = "";
   private boolean showPublishToast = true;
@@ -115,7 +119,7 @@ public final class PublishArticleInfo
           int k = ((JSONArray)localObject1).length() - 1;
           localObject2 = ((JSONArray)localObject1).get(k);
           if (localObject2 == null) {
-            break label313;
+            break label315;
           }
           localObject2 = (JSONObject)localObject2;
           ((JSONObject)localObject2).putOpt("text", localEditObject.getWording());
@@ -123,7 +127,7 @@ public final class PublishArticleInfo
         }
         i += 1;
         continue;
-        label313:
+        label315:
         throw new TypeCastException("null cannot be cast to non-null type org.json.JSONObject");
       }
       localJSONObject.putOpt("textLevelList", localObject1);
@@ -160,7 +164,7 @@ public final class PublishArticleInfo
         localJSONObject.put("imageUrl", ((ImageInfo)localObject3).getUrl());
         localJSONObject.put("imageSize", ((ImageInfo)localObject3).getSize());
         localJSONObject.put("md5", ((ImageInfo)localObject3).getMd5());
-        localObject3 = FileUtils.a.a(((ImageInfo)localObject3).getFilePath());
+        localObject3 = FileUtils.a.e(((ImageInfo)localObject3).getFilePath());
         Locale localLocale = Locale.getDefault();
         Intrinsics.checkExpressionValueIsNotNull(localLocale, "Locale.getDefault()");
         if (localObject3 != null)
@@ -194,7 +198,7 @@ public final class PublishArticleInfo
       paramJSONObject.put("coverImageHeight", ((VideoInfo)localObject).getCoverHeight());
       paramJSONObject.put("videoMd5", ((VideoInfo)localObject).getFileMd5());
       paramJSONObject.put("title", getContent());
-      localObject = FileUtils.a.a(((VideoInfo)localObject).getFilePath());
+      localObject = FileUtils.a.e(((VideoInfo)localObject).getFilePath());
       Locale localLocale = Locale.getDefault();
       Intrinsics.checkExpressionValueIsNotNull(localLocale, "Locale.getDefault()");
       if (localObject != null)
@@ -315,6 +319,12 @@ public final class PublishArticleInfo
   }
   
   @Nullable
+  public final InvitedManuscriptItem getInvitedManuscriptItem()
+  {
+    return this.invitedManuscriptItem;
+  }
+  
+  @Nullable
   public final LocationInfo getLocationInfo()
   {
     return this.locationInfo;
@@ -352,6 +362,11 @@ public final class PublishArticleInfo
   public final String getPublishScene()
   {
     return this.publishScene;
+  }
+  
+  public final int getPublishType()
+  {
+    return this.publishType;
   }
   
   @NotNull
@@ -431,6 +446,11 @@ public final class PublishArticleInfo
     return this.isFromDraft;
   }
   
+  public final boolean isOriginalContent()
+  {
+    return this.isOriginalContent;
+  }
+  
   public final boolean isPublishing()
   {
     return this.isPublishing;
@@ -501,6 +521,11 @@ public final class PublishArticleInfo
     this.imageList = paramArrayList;
   }
   
+  public final void setInvitedManuscriptItem(@Nullable InvitedManuscriptItem paramInvitedManuscriptItem)
+  {
+    this.invitedManuscriptItem = paramInvitedManuscriptItem;
+  }
+  
   public final void setLocationInfo(@Nullable LocationInfo paramLocationInfo)
   {
     this.locationInfo = paramLocationInfo;
@@ -509,6 +534,11 @@ public final class PublishArticleInfo
   public final void setOriginContentInfo(@Nullable OriginContentInfo paramOriginContentInfo)
   {
     this.originContentInfo = paramOriginContentInfo;
+  }
+  
+  public final void setOriginalContent(boolean paramBoolean)
+  {
+    this.isOriginalContent = paramBoolean;
   }
   
   public final void setPrivacySetting(int paramInt)
@@ -537,6 +567,11 @@ public final class PublishArticleInfo
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
     this.publishScene = paramString;
+  }
+  
+  public final void setPublishType(int paramInt)
+  {
+    this.publishType = paramInt;
   }
   
   public final void setPublishing(boolean paramBoolean)
@@ -580,7 +615,7 @@ public final class PublishArticleInfo
       while (((Iterator)localObject).hasNext())
       {
         ImageInfo localImageInfo = (ImageInfo)((Iterator)localObject).next();
-        Pair localPair = BitmapUtils.a.a(localImageInfo.getFilePath());
+        Pair localPair = BitmapUtils.a.b(localImageInfo.getFilePath());
         localImageInfo.setWidth(((Number)localPair.getFirst()).intValue());
         localImageInfo.setHeight(((Number)localPair.getSecond()).intValue());
       }
@@ -590,7 +625,7 @@ public final class PublishArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.PublishArticleInfo
  * JD-Core Version:    0.7.0.1
  */

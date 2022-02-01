@@ -10,20 +10,20 @@ class ChatHistory$ChatHistoryAdapter$5$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_Int == 0) && ((this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_JavaLangObject))))
+    if ((this.c.a == 0) && ((this.c.c.f.al == null) || (!this.c.c.f.al.a(0, this.a))))
     {
-      Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131718584), 0).show();
+      Toast.makeText(this.c.c.c, this.c.c.f.getString(2131916085), 0).show();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory);
+    if (this.c.c.f.al == null) {
+      this.c.c.f.al = new ChatHistory.PlayingPttHistoryInfo(this.c.c.f);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.a(0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter$5.jdField_a_of_type_JavaLangString);
+    this.c.c.f.al.a(0, this.b, this.a, this.c.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -33,13 +33,13 @@ public class CommentFloatDialogController$GetFeedItemSegment
       return;
     }
     paramString = new DetailFeedItem();
-    Object localObject1 = (CommentLikeFeedItem)((FeedManager)SuperManager.a(11)).a(CommentFloatDialogController.a(this.a));
+    Object localObject1 = (CommentLikeFeedItem)((FeedManager)SuperManager.a(11)).b(CommentFloatDialogController.d(this.a));
     if (localObject1 != null)
     {
       if ((localObject1 instanceof VideoListFeedItem))
       {
         paramJobContext = (VideoListFeedItem)localObject1;
-        localObject2 = ((FeedVideoManager)SuperManager.a(12)).a(CommentFloatDialogController.a(this.a), paramJobContext.mVideoPullType);
+        localObject2 = ((FeedVideoManager)SuperManager.a(12)).a(CommentFloatDialogController.d(this.a), paramJobContext.mVideoPullType);
         if (localObject2 != null)
         {
           paramJobContext.mVideoNextCookie = ((FeedVideoInfo)localObject2).mVideoNextCookie;
@@ -54,15 +54,15 @@ public class CommentFloatDialogController$GetFeedItemSegment
       return;
     }
     localObject1 = new BatchGetFriendStoryFeedInfoRequest();
-    ((BatchGetFriendStoryFeedInfoRequest)localObject1).a = new ArrayList();
-    Object localObject2 = new FeedIdListSeqInfo(CommentFloatDialogController.a(this.a), 0, "", "");
-    ((BatchGetFriendStoryFeedInfoRequest)localObject1).a.add(localObject2);
+    ((BatchGetFriendStoryFeedInfoRequest)localObject1).f = new ArrayList();
+    Object localObject2 = new FeedIdListSeqInfo(CommentFloatDialogController.d(this.a), 0, "", "");
+    ((BatchGetFriendStoryFeedInfoRequest)localObject1).f.add(localObject2);
     CmdTaskManger.a().a((NetworkRequest)localObject1, new CommentFloatDialogController.GetFeedItemSegment.1(this, paramJobContext, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.GetFeedItemSegment
  * JD-Core Version:    0.7.0.1
  */

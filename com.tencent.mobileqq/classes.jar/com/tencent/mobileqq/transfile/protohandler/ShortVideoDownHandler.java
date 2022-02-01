@@ -365,7 +365,7 @@ public class ShortVideoDownHandler
         RichProto.RichProtoReq.ReqCommon localReqCommon = (RichProto.RichProtoReq.ReqCommon)paramRichProtoReq.reqs.get(0);
         if (localReqCommon.uinType == 0) {
           localProtoReq.ssoCmd = "PttCenterSvr.ShortVideoDownReq";
-        } else if ((1 != localReqCommon.uinType) && (3000 != localReqCommon.uinType)) {
+        } else if ((1 != localReqCommon.uinType) && (3000 != localReqCommon.uinType) && (10014 != localReqCommon.uinType)) {
           localProtoReq.ssoCmd = "PttCenterSvr.ShortVideoDownReq";
         } else {
           localProtoReq.ssoCmd = "PttCenterSvr.GroupShortVideoDownReq";
@@ -382,7 +382,7 @@ public class ShortVideoDownHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.ShortVideoDownHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -17,10 +17,10 @@ class StrangerChatPie$3
       if (paramString.length() == 0) {
         return;
       }
-      if (paramString.equals(this.a.a.a))
+      if (paramString.equals(this.a.ah.b))
       {
         paramString = this.a;
-        paramString.m = true;
+        paramString.as = true;
         paramString.a(262144, null, paramLong);
       }
     }
@@ -28,7 +28,7 @@ class StrangerChatPie$3
   
   protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
   {
-    this.a.e(65536);
+    this.a.j(65536);
   }
   
   protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
@@ -38,7 +38,7 @@ class StrangerChatPie$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie.3
  * JD-Core Version:    0.7.0.1
  */

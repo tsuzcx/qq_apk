@@ -2,13 +2,13 @@ package com.tencent.biz.richframework.animation.recyclerview;
 
 public abstract interface EnhanceItemAnimationInterface
 {
-  public abstract void a();
+  public abstract void onChangeFinished(boolean paramBoolean);
   
-  public abstract void a(boolean paramBoolean);
+  public abstract void onChangeStarting(boolean paramBoolean);
   
-  public abstract void b();
+  public abstract void onMoveFinished();
   
-  public abstract void b(boolean paramBoolean);
+  public abstract void onMoveStarting();
 }
 
 

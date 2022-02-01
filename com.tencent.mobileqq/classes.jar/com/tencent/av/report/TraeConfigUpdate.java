@@ -5,40 +5,40 @@ import java.util.Map;
 
 public class TraeConfigUpdate
 {
-  private static volatile TraeConfigUpdate jdField_a_of_type_ComTencentAvReportTraeConfigUpdate;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static volatile TraeConfigUpdate a;
+  private Map<String, String> b = new HashMap();
   
   private TraeConfigUpdate()
   {
-    this.jdField_a_of_type_JavaUtilMap.put("request", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("update", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("load", new String("-1"));
+    this.b.put("request", new String("-1"));
+    this.b.put("update", new String("-1"));
+    this.b.put("load", new String("-1"));
   }
   
   public static TraeConfigUpdate a()
   {
-    if (jdField_a_of_type_ComTencentAvReportTraeConfigUpdate == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvReportTraeConfigUpdate == null) {
-          jdField_a_of_type_ComTencentAvReportTraeConfigUpdate = new TraeConfigUpdate();
+        if (a == null) {
+          a = new TraeConfigUpdate();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvReportTraeConfigUpdate;
+    return a;
   }
   
   public String a(String paramString)
   {
-    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    return (String)this.b.get(paramString);
   }
   
   public void a(String paramString, int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, String.valueOf(paramInt));
+      this.b.put(paramString, String.valueOf(paramInt));
       return;
     }
     catch (Exception paramString)

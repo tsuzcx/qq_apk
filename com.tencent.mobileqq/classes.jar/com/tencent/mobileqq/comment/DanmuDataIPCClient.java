@@ -17,9 +17,9 @@ public class DanmuDataIPCClient
   extends QIPCModule
   implements IDanmakuClearListener
 {
-  private static volatile DanmuDataIPCClient jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient;
   public static boolean a;
-  private List<DanmuDataIPCClient.DanmuCacheObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static volatile DanmuDataIPCClient b;
+  private List<DanmuDataIPCClient.DanmuCacheObserver> c = new ArrayList();
   
   private DanmuDataIPCClient()
   {
@@ -28,25 +28,25 @@ public class DanmuDataIPCClient
   
   public static DanmuDataIPCClient a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient == null) {
-          jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient = new DanmuDataIPCClient();
+        if (b == null) {
+          b = new DanmuDataIPCClient();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient;
+    return b;
   }
   
-  public static void a()
+  public static void b()
   {
     DanmuDataIPCClient localDanmuDataIPCClient = a();
-    if (!jdField_a_of_type_Boolean)
+    if (!a)
     {
       QIPCClientHelper.getInstance().register(localDanmuDataIPCClient);
-      jdField_a_of_type_Boolean = true;
+      a = true;
       QLog.d("DanmuDataIPCClient", 1, "registerModule");
     }
   }
@@ -68,7 +68,7 @@ public class DanmuDataIPCClient
       }
       QLog.d("DanmuDataIPCClient", 2, new Object[] { "get barrage list, msgSeq:", Long.valueOf(l1), " groupUin:", Long.valueOf(l2), " topicType:", Integer.valueOf(i), " peakCached:", Boolean.valueOf(bool) });
       if (bool) {
-        QLog.d("DanmuDataIPCClient", 2, new Object[] { "peak listSize:", Integer.valueOf(((DanmuDataHolder.CacheHolder)localObject).d.size()), ", fullList:", ((DanmuDataHolder.CacheHolder)localObject).d.toString() });
+        QLog.d("DanmuDataIPCClient", 2, new Object[] { "peak listSize:", Integer.valueOf(((DanmuDataHolder.CacheHolder)localObject).i.size()), ", fullList:", ((DanmuDataHolder.CacheHolder)localObject).i.toString() });
       }
       paramBundle.putBoolean("key_barrage_is_update", bool);
       paramBundle.putLong("key_barrage_req_time", System.currentTimeMillis());
@@ -171,13 +171,13 @@ public class DanmuDataIPCClient
         i += 1;
       }
       localObject2 = new DanmuDataContext(l2, l1, k, true);
-      paramBundle.a(localArrayList).b((List)localObject1).a((DanmuDataContext)localObject2).a(null).a();
+      paramBundle.a(localArrayList).b((List)localObject1).a((DanmuDataContext)localObject2).a(null).c();
     }
-    if ((bool) && (paramBundle != null) && (!paramBundle.d.isEmpty()))
+    if ((bool) && (paramBundle != null) && (!paramBundle.i.isEmpty()))
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject1 = this.c.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((DanmuDataIPCClient.DanmuCacheObserver)((Iterator)localObject1).next()).a(l1, String.valueOf(l2), m, paramBundle.d);
+        ((DanmuDataIPCClient.DanmuCacheObserver)((Iterator)localObject1).next()).a(l1, String.valueOf(l2), m, paramBundle.i);
       }
     }
     if (QLog.isColorLevel()) {
@@ -187,22 +187,22 @@ public class DanmuDataIPCClient
   
   public void a(DanmuDataIPCClient.DanmuCacheObserver paramDanmuCacheObserver)
   {
-    if ((paramDanmuCacheObserver != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramDanmuCacheObserver))) {
-      this.jdField_a_of_type_JavaUtilList.add(paramDanmuCacheObserver);
+    if ((paramDanmuCacheObserver != null) && (!this.c.contains(paramDanmuCacheObserver))) {
+      this.c.add(paramDanmuCacheObserver);
     }
-  }
-  
-  public void b()
-  {
-    DanmuDataHolder.a().a();
-    a("qipc_action_clear_cache", null);
   }
   
   public void b(DanmuDataIPCClient.DanmuCacheObserver paramDanmuCacheObserver)
   {
-    if ((paramDanmuCacheObserver != null) && (this.jdField_a_of_type_JavaUtilList.contains(paramDanmuCacheObserver))) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramDanmuCacheObserver);
+    if ((paramDanmuCacheObserver != null) && (this.c.contains(paramDanmuCacheObserver))) {
+      this.c.remove(paramDanmuCacheObserver);
     }
+  }
+  
+  public void c()
+  {
+    DanmuDataHolder.a().b();
+    a("qipc_action_clear_cache", null);
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -217,7 +217,7 @@ public class DanmuDataIPCClient
       paramString = (DanmuItemBean)paramBundle.getParcelable("key_barrage_danmu_msg");
       long l = paramBundle.getLong("key_barrage_msg_seq");
       paramBundle = paramBundle.getString("key_barrage_grp_uin");
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext()) {
         ((DanmuDataIPCClient.DanmuCacheObserver)localIterator.next()).a(l, paramBundle, paramString);
       }
@@ -227,7 +227,7 @@ public class DanmuDataIPCClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuDataIPCClient
  * JD-Core Version:    0.7.0.1
  */

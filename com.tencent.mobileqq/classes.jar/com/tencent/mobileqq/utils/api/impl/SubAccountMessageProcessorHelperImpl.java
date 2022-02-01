@@ -12,6 +12,7 @@ import com.tencent.mobileqq.apollo.utils.api.IApolloMessageUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AppShareID;
 import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.data.MessageForAniSticker;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
 import com.tencent.mobileqq.data.MessageForFuDai;
 import com.tencent.mobileqq.data.MessageForMarketFace;
@@ -19,6 +20,7 @@ import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForPubAccount;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForVideo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PAMessage;
 import com.tencent.mobileqq.data.PAMessage.Item;
@@ -43,127 +45,169 @@ public class SubAccountMessageProcessorHelperImpl
 {
   public String buildBaseMsg(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
-    int i = paramMessageRecord.msgtype;
-    if (i != -5016)
+    switch (paramMessageRecord.msgtype)
     {
-      if ((i != -5004) && (i != -3006))
-      {
-        if (i != -2058)
-        {
-          if (i != -2039)
-          {
-            if (i != -2011)
-            {
-              if (i != -2007)
-              {
-                if (i != -2005)
-                {
-                  if (i != -2002)
-                  {
-                    if (i != -2000) {
-                      return buildBaseMsgForDefault(paramAppInterface, paramMessageRecord, paramString);
-                    }
-                    return buildBaseMsgForMediaPic(paramAppInterface, paramMessageRecord, paramString);
-                  }
-                  return paramAppInterface.getApp().getResources().getString(2131691287);
-                }
-                return buildBaseMsgForMediaFile(paramAppInterface, paramMessageRecord, paramString);
-              }
-              return buildBaseMsgForMediaMarkFace(paramAppInterface, paramMessageRecord, paramString);
-            }
-            return buildBaseMsgForStruct(paramAppInterface, paramMessageRecord, paramString);
-          }
-          return ((IApolloMessageUtil)QRoute.api(IApolloMessageUtil.class)).getApolloMsgTranDec(paramAppInterface, paramMessageRecord);
-        }
-        return paramAppInterface.getApp().getResources().getString(2131719234);
-      }
+    default: 
+      return buildBaseMsgForDefault(paramAppInterface, paramMessageRecord, paramString);
+    case -2000: 
+      return buildBaseMsgForMediaPic(paramAppInterface, paramMessageRecord, paramString);
+    case -2002: 
+      return paramAppInterface.getApp().getResources().getString(2131888237);
+    case -2005: 
+      return buildBaseMsgForMediaFile(paramAppInterface, paramMessageRecord, paramString);
+    case -2007: 
+      return buildBaseMsgForMediaMarkFace(paramAppInterface, paramMessageRecord, paramString);
+    case -2011: 
+      return buildBaseMsgForStruct(paramAppInterface, paramMessageRecord, paramString);
+    case -2039: 
+      return ((IApolloMessageUtil)QRoute.api(IApolloMessageUtil.class)).getApolloMsgTranDec(paramAppInterface, paramMessageRecord);
+    case -2058: 
+      return paramAppInterface.getApp().getResources().getString(2131916786);
+    case -5004: 
+    case -3006: 
       return buildBaseMsgForPublicAccount(paramAppInterface, paramMessageRecord, paramString);
-    }
-    if ((paramMessageRecord instanceof MessageForArkBabyqReply))
-    {
-      paramAppInterface = (MessageForArkBabyqReply)paramMessageRecord;
-      paramAppInterface.parse();
-      paramString = paramAppInterface.babyqReplyText;
+    case -5016: 
+      if ((paramMessageRecord instanceof MessageForArkBabyqReply))
+      {
+        paramAppInterface = (MessageForArkBabyqReply)paramMessageRecord;
+        paramAppInterface.parse();
+        return paramAppInterface.babyqReplyText;
+      }
+      break;
+    case -8018: 
+      paramString = buildBaseMsgForMediaAniSticker(paramAppInterface, paramMessageRecord, paramString);
     }
     return paramString;
   }
   
   String buildBaseMsgForDefault(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
-    Object localObject2;
-    try
+    for (;;)
     {
-      boolean bool = ActionMsgUtil.a(paramMessageRecord.msgtype);
-      Object localObject1 = "";
-      if (bool)
+      Object localObject;
+      try
       {
-        paramMessageRecord = ActionMsgUtil.a(paramMessageRecord.msg);
-        localObject2 = paramString;
-        if (paramMessageRecord != null)
+        boolean bool = ActionMsgUtil.a(paramMessageRecord.msgtype);
+        String str = "";
+        if (bool)
         {
-          if ((paramMessageRecord.actMsgContentValue != null) && (paramMessageRecord.actMsgContentValue.length() > 0)) {
-            return paramMessageRecord.actMsgContentValue;
-          }
-          paramString = ((MessageCache)paramAppInterface.getMsgCache()).a(AppShareIDUtil.a(paramMessageRecord.shareAppID));
-          paramMessageRecord = new StringBuilder();
-          paramMessageRecord.append(paramAppInterface.getApp().getString(2131690096));
-          if (paramString != null)
-          {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(paramString.messagetail);
-            ((StringBuilder)localObject1).append(paramAppInterface.getApp().getString(2131690097));
-            localObject1 = ((StringBuilder)localObject1).toString();
-          }
-          paramMessageRecord.append((String)localObject1);
-          return paramMessageRecord.toString();
-        }
-      }
-      else
-      {
-        if (ActionMsgUtil.b(paramMessageRecord.msgtype)) {
-          return paramString;
-        }
-        localObject2 = paramString;
-        if (paramMessageRecord.msg != null)
-        {
-          localObject2 = paramString;
-          if (paramMessageRecord.msg.indexOf("http://maps.google.com/maps?q=") != -1)
-          {
-            paramString = MessageUtils.a(paramMessageRecord.msg);
-            paramMessageRecord = (MessageRecord)localObject1;
-            if (paramString != null)
+          paramMessageRecord = ActionMsgUtil.a(paramMessageRecord.msg);
+          localObject = paramString;
+          if (paramMessageRecord != null) {
+            if ((paramMessageRecord.actMsgContentValue != null) && (paramMessageRecord.actMsgContentValue.length() > 0))
             {
-              paramMessageRecord = (MessageRecord)localObject1;
-              if (paramString[2] != null) {
-                paramMessageRecord = paramString[2];
+              localObject = paramMessageRecord.actMsgContentValue;
+            }
+            else
+            {
+              paramString = ((MessageCache)paramAppInterface.getMsgCache()).O(AppShareIDUtil.a(paramMessageRecord.shareAppID));
+              paramMessageRecord = new StringBuilder();
+              paramMessageRecord.append(paramAppInterface.getApp().getString(2131886916));
+              if (paramString != null)
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append(paramString.messagetail);
+                ((StringBuilder)localObject).append(paramAppInterface.getApp().getString(2131886917));
+                str = ((StringBuilder)localObject).toString();
+              }
+              paramMessageRecord.append(str);
+              localObject = paramMessageRecord.toString();
+            }
+          }
+        }
+        else if (ActionMsgUtil.b(paramMessageRecord.msgtype))
+        {
+          if (!(paramMessageRecord instanceof MessageForVideo)) {
+            break label396;
+          }
+          paramAppInterface = (MessageForVideo)paramMessageRecord;
+          localObject = paramString;
+          if (paramAppInterface != null)
+          {
+            if (paramMessageRecord.msg == null) {
+              break label401;
+            }
+            paramAppInterface = paramMessageRecord.msg.split("\\|");
+            localObject = paramString;
+            if (paramAppInterface != null)
+            {
+              localObject = paramString;
+              if (paramAppInterface.length > 0) {
+                localObject = paramAppInterface[0].trim();
               }
             }
-            paramString = new StringBuilder();
-            paramString.append("[");
-            paramString.append(paramAppInterface.getApp().getString(2131719740));
-            paramString.append("] ");
-            paramString.append(paramMessageRecord);
-            paramAppInterface = paramString.toString();
-            return paramAppInterface;
+          }
+        }
+        else
+        {
+          localObject = paramString;
+          if (paramMessageRecord.msg != null)
+          {
+            localObject = paramString;
+            if (paramMessageRecord.msg.indexOf("http://maps.google.com/maps?q=") != -1)
+            {
+              paramString = MessageUtils.a(paramMessageRecord.msg);
+              paramMessageRecord = str;
+              if (paramString != null)
+              {
+                paramMessageRecord = str;
+                if (paramString[2] != null) {
+                  paramMessageRecord = paramString[2];
+                }
+              }
+              paramString = new StringBuilder();
+              paramString.append("[");
+              paramString.append(paramAppInterface.getApp().getString(2131917343));
+              paramString.append("] ");
+              paramString.append(paramMessageRecord);
+              localObject = paramString.toString();
+            }
           }
         }
       }
-    }
-    catch (Exception paramMessageRecord)
-    {
-      paramAppInterface = null;
-      paramMessageRecord.printStackTrace();
-      localObject2 = paramAppInterface;
-      if (QLog.isColorLevel())
+      catch (Exception paramAppInterface)
       {
-        paramString = new StringBuilder();
-        paramString.append("subaccount handlerMsgPB, MSG_TYPE_PUBLIC_ACCOUNT error e = ");
-        paramString.append(paramMessageRecord.getMessage());
-        QLog.d("SUB_ACCOUNT", 2, paramString.toString());
-        localObject2 = paramAppInterface;
+        paramAppInterface.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          paramMessageRecord = new StringBuilder();
+          paramMessageRecord.append("subaccount handlerMsgPB, MSG_TYPE_PUBLIC_ACCOUNT error e = ");
+          paramMessageRecord.append(paramAppInterface.getMessage());
+          QLog.d("SUB_ACCOUNT", 2, paramMessageRecord.toString());
+        }
+        return null;
+      }
+      return localObject;
+      label396:
+      paramAppInterface = null;
+      continue;
+      label401:
+      paramAppInterface = null;
+    }
+  }
+  
+  String buildBaseMsgForMediaAniSticker(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString)
+  {
+    paramString = paramAppInterface.getApp().getResources().getString(2131916985);
+    paramAppInterface = paramString;
+    if ((paramMessageRecord instanceof MessageForAniSticker))
+    {
+      paramMessageRecord = (MessageForAniSticker)paramMessageRecord;
+      paramAppInterface = paramString;
+      if (!TextUtils.isEmpty(paramMessageRecord.text))
+      {
+        paramAppInterface = paramString;
+        if (paramMessageRecord.text.length() > 1)
+        {
+          paramAppInterface = new StringBuilder();
+          paramAppInterface.append("[");
+          paramAppInterface.append(paramMessageRecord.text.substring(1));
+          paramAppInterface.append("]");
+          paramAppInterface = paramAppInterface.toString();
+        }
       }
     }
-    return localObject2;
+    return paramAppInterface;
   }
   
   String buildBaseMsgForMediaFile(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString)
@@ -201,13 +245,13 @@ public class SubAccountMessageProcessorHelperImpl
       paramMessageRecord = paramString;
     }
     if (TextUtils.isEmpty(paramMessageRecord)) {
-      return paramAppInterface.getApp().getResources().getString(2131691282);
+      return paramAppInterface.getApp().getResources().getString(2131888232);
     }
-    if (paramMessageRecord.equalsIgnoreCase(paramAppInterface.getApp().getResources().getString(2131691282))) {
+    if (paramMessageRecord.equalsIgnoreCase(paramAppInterface.getApp().getResources().getString(2131888232))) {
       return paramMessageRecord;
     }
     paramString = new StringBuilder();
-    paramString.append(paramAppInterface.getApp().getResources().getString(2131691282));
+    paramString.append(paramAppInterface.getApp().getResources().getString(2131888232));
     paramString.append(paramMessageRecord);
     return paramString.toString();
   }
@@ -225,20 +269,20 @@ public class SubAccountMessageProcessorHelperImpl
         paramAppInterface.append("]");
         return paramAppInterface.toString();
       }
-      return paramAppInterface.getApp().getResources().getString(2131691922);
+      return paramAppInterface.getApp().getResources().getString(2131888889);
     }
-    return paramAppInterface.getApp().getResources().getString(2131691922);
+    return paramAppInterface.getApp().getResources().getString(2131888889);
   }
   
   String buildBaseMsgForMediaPic(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
     if (((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(paramMessageRecord)) {
-      return paramAppInterface.getApp().getResources().getString(2131691283);
+      return paramAppInterface.getApp().getResources().getString(2131888233);
     }
     if ((paramMessageRecord instanceof MessageForPic)) {
       return ((MessageForPic)paramMessageRecord).getSummaryMsg();
     }
-    return paramAppInterface.getApp().getResources().getString(2131691286);
+    return paramAppInterface.getApp().getResources().getString(2131888236);
   }
   
   String buildBaseMsgForPublicAccount(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString)
@@ -291,7 +335,7 @@ public class SubAccountMessageProcessorHelperImpl
     }
     paramMessageRecord = str;
     if (TextUtils.isEmpty(str)) {
-      paramMessageRecord = paramAppInterface.getApp().getResources().getString(2131719333);
+      paramMessageRecord = paramAppInterface.getApp().getResources().getString(2131916885);
     }
     return paramMessageRecord;
   }
@@ -347,7 +391,7 @@ public class SubAccountMessageProcessorHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.api.impl.SubAccountMessageProcessorHelperImpl
  * JD-Core Version:    0.7.0.1
  */

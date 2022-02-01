@@ -8,25 +8,25 @@ import java.util.Set;
 class AVPreloadEngine$AVPreloadPlayListener$BitmapRunnable
   implements Runnable
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Bitmap b;
   
   private AVPreloadEngine$AVPreloadPlayListener$BitmapRunnable(AVPreloadEngine.AVPreloadPlayListener paramAVPreloadPlayListener, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.b = paramBitmap;
   }
   
   public void run()
   {
-    Iterator localIterator = AVPreloadEngine.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener.a).iterator();
+    Iterator localIterator = AVPreloadEngine.a(this.a.a).iterator();
     while (localIterator.hasNext())
     {
       AVPreloadEngine.PreloadResultListener localPreloadResultListener = (AVPreloadEngine.PreloadResultListener)localIterator.next();
       if (localPreloadResultListener != null)
       {
-        AVPreloadTaskInterface localAVPreloadTaskInterface = AVPreloadEngine.AVPreloadPlayListener.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadserviceAVPreloadEngine$AVPreloadPlayListener);
-        Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        AVPreloadTaskInterface localAVPreloadTaskInterface = AVPreloadEngine.AVPreloadPlayListener.a(this.a);
+        Bitmap localBitmap = this.b;
         boolean bool;
-        if (localBitmap.getWidth() > this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) {
+        if (localBitmap.getWidth() > this.b.getHeight()) {
           bool = true;
         } else {
           bool = false;
@@ -34,12 +34,12 @@ class AVPreloadEngine$AVPreloadPlayListener$BitmapRunnable
         localPreloadResultListener.a(localAVPreloadTaskInterface, localBitmap, bool);
       }
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine.AVPreloadPlayListener.BitmapRunnable
  * JD-Core Version:    0.7.0.1
  */

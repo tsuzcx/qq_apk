@@ -18,12 +18,12 @@ class ConfigSettingForDataLine$3
     localStringBuilder.append("_m_str_teamwork_dataline_tips_sp");
     localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     ((SharedPreferences)localObject).edit().putInt("file_str_key_max_count_local", ConfigSettingForDataLine.a(this.this$0)).commit();
-    ((SharedPreferences)localObject).edit().putLong("file_str_lstat_show_time_local", ConfigSettingForDataLine.a(this.this$0)).commit();
+    ((SharedPreferences)localObject).edit().putLong("file_str_lstat_show_time_local", ConfigSettingForDataLine.b(this.this$0)).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.3
  * JD-Core Version:    0.7.0.1
  */

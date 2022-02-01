@@ -14,8 +14,8 @@ import android.os.SystemClock;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.net.utils.MsfPullConfigUtil;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
@@ -606,7 +606,7 @@ public class e
     //   36: lstore 16
     //   38: aload_1
     //   39: aload_2
-    //   40: invokestatic 833	com/tencent/mobileqq/msf/core/c/j:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)J
+    //   40: invokestatic 833	com/tencent/mobileqq/msf/core/d/j:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)J
     //   43: lstore 20
     //   45: aload_2
     //   46: invokevirtual 790	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
@@ -658,10 +658,10 @@ public class e
     //   144: astore 23
     //   146: aload 23
     //   148: getfield 843	com/tencent/msf/service/protocol/push/SvcRespRegister:strClientIP	Ljava/lang/String;
-    //   151: invokestatic 844	com/tencent/mobileqq/msf/core/ac:c	(Ljava/lang/String;)V
+    //   151: invokestatic 844	com/tencent/mobileqq/msf/core/ad:c	(Ljava/lang/String;)V
     //   154: aload 23
     //   156: getfield 847	com/tencent/msf/service/protocol/push/SvcRespRegister:iClientPort	I
-    //   159: invokestatic 849	com/tencent/mobileqq/msf/core/ac:d	(I)V
+    //   159: invokestatic 849	com/tencent/mobileqq/msf/core/ad:d	(I)V
     //   162: aload 23
     //   164: getfield 852	com/tencent/msf/service/protocol/push/SvcRespRegister:bUpdateFlag	B
     //   167: istore 4
@@ -1250,12 +1250,12 @@ public class e
     //   1461: aload_0
     //   1462: getfield 99	com/tencent/mobileqq/msf/core/push/e:f	Lcom/tencent/mobileqq/msf/core/push/g;
     //   1465: getfield 287	com/tencent/mobileqq/msf/core/push/g:c	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1468: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1468: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1471: ifnull +498 -> 1969
     //   1474: aload_0
     //   1475: getfield 99	com/tencent/mobileqq/msf/core/push/e:f	Lcom/tencent/mobileqq/msf/core/push/g;
     //   1478: getfield 287	com/tencent/mobileqq/msf/core/push/g:c	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1481: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1481: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1484: astore 24
     //   1486: aload_2
     //   1487: invokevirtual 1002	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
@@ -1280,7 +1280,7 @@ public class e
     //   1526: lload 20
     //   1528: iload 22
     //   1530: aload 23
-    //   1532: invokevirtual 1005	com/tencent/mobileqq/msf/core/c/j:a	(ZJIJZLjava/lang/String;)V
+    //   1532: invokevirtual 1005	com/tencent/mobileqq/msf/core/d/j:a	(ZJIJZLjava/lang/String;)V
     //   1535: return
     //   1536: astore 24
     //   1538: goto +333 -> 1871
@@ -1403,12 +1403,12 @@ public class e
     //   1800: aload_0
     //   1801: getfield 99	com/tencent/mobileqq/msf/core/push/e:f	Lcom/tencent/mobileqq/msf/core/push/g;
     //   1804: getfield 287	com/tencent/mobileqq/msf/core/push/g:c	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1807: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1807: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1810: ifnull +159 -> 1969
     //   1813: aload_0
     //   1814: getfield 99	com/tencent/mobileqq/msf/core/push/e:f	Lcom/tencent/mobileqq/msf/core/push/g;
     //   1817: getfield 287	com/tencent/mobileqq/msf/core/push/g:c	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1820: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1820: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1823: astore 24
     //   1825: aload_2
     //   1826: invokevirtual 1002	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
@@ -1427,7 +1427,7 @@ public class e
     //   1854: lload 20
     //   1856: iload 22
     //   1858: aload 23
-    //   1860: invokevirtual 1005	com/tencent/mobileqq/msf/core/c/j:a	(ZJIJZLjava/lang/String;)V
+    //   1860: invokevirtual 1005	com/tencent/mobileqq/msf/core/d/j:a	(ZJIJZLjava/lang/String;)V
     //   1863: return
     //   1864: astore 24
     //   1866: goto +5 -> 1871
@@ -1441,12 +1441,12 @@ public class e
     //   1885: aload_0
     //   1886: getfield 99	com/tencent/mobileqq/msf/core/push/e:f	Lcom/tencent/mobileqq/msf/core/push/g;
     //   1889: getfield 287	com/tencent/mobileqq/msf/core/push/g:c	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1892: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1892: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1895: ifnull +56 -> 1951
     //   1898: aload_0
     //   1899: getfield 99	com/tencent/mobileqq/msf/core/push/e:f	Lcom/tencent/mobileqq/msf/core/push/g;
     //   1902: getfield 287	com/tencent/mobileqq/msf/core/push/g:c	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   1905: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/c/j;
+    //   1905: invokevirtual 291	com/tencent/mobileqq/msf/core/MsfCore:getStatReporter	()Lcom/tencent/mobileqq/msf/core/d/j;
     //   1908: astore 23
     //   1910: aload_2
     //   1911: invokevirtual 1002	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailCode	()I
@@ -1467,7 +1467,7 @@ public class e
     //   1942: lload 20
     //   1944: iload 22
     //   1946: aload 25
-    //   1948: invokevirtual 1005	com/tencent/mobileqq/msf/core/c/j:a	(ZJIJZLjava/lang/String;)V
+    //   1948: invokevirtual 1005	com/tencent/mobileqq/msf/core/d/j:a	(ZJIJZLjava/lang/String;)V
     //   1951: aload_0
     //   1952: getfield 99	com/tencent/mobileqq/msf/core/push/e:f	Lcom/tencent/mobileqq/msf/core/push/g;
     //   1955: astore_1
@@ -1716,7 +1716,7 @@ public class e
             this.f.D = (paramFromServiceMsg.uint32_hello_interval.get() * 1000);
           }
           this.f.a(this.f.e());
-          ac.c(paramFromServiceMsg.str_clientip.get());
+          ad.c(paramFromServiceMsg.str_clientip.get());
           return;
         }
         if (this.f.c.getStatReporter() != null) {
@@ -1796,7 +1796,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.e
  * JD-Core Version:    0.7.0.1
  */

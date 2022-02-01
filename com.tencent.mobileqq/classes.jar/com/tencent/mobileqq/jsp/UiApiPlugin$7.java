@@ -43,12 +43,12 @@ class UiApiPlugin$7
             ((StringBuilder)localObject).append(ByteBuffer.wrap(paramBundle).getInt());
             ((StringBuilder)localObject).append("");
             paramBundle = ((StringBuilder)localObject).toString();
-            if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a == null)
+            if (this.d.u == null)
             {
-              this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a = TroopMemberApiClient.a();
-              this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a();
+              this.d.u = TroopMemberApiClient.a();
+              this.d.u.e();
             }
-            this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a(this.jdField_a_of_type_JavaLangInteger, this.jdField_a_of_type_JavaLangString, this.b, new UiApiPlugin.7.1(this, paramBundle));
+            this.d.u.a(this.a, this.b, this.c, new UiApiPlugin.7.1(this, paramBundle));
             return;
           }
         }
@@ -68,7 +68,7 @@ class UiApiPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.7
  * JD-Core Version:    0.7.0.1
  */

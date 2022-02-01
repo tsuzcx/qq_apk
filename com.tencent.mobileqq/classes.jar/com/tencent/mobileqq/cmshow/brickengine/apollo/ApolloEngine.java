@@ -47,7 +47,7 @@ public class ApolloEngine
     ((StringBuilder)localObject2).append(ApolloConstant.a);
     ((StringBuilder)localObject2).append("/");
     localObject2 = ((StringBuilder)localObject2).toString();
-    nativeSetFileHomeDir(ApolloConstant.N, "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/extension/", (String)localObject1, (String)localObject2);
+    nativeSetFileHomeDir(ApolloConstant.V, "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/extension/", (String)localObject1, (String)localObject2);
   }
   
   private void initPipeLog()
@@ -83,7 +83,7 @@ public class ApolloEngine
       ApolloGameStateMachine.a().a(5, "not load lib");
       return false;
     }
-    return ApolloConfigUtils.a();
+    return ApolloConfigUtils.b();
   }
   
   protected static native int nativeSetPipeLog(int paramInt);
@@ -513,7 +513,7 @@ public class ApolloEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine
  * JD-Core Version:    0.7.0.1
  */

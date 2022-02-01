@@ -14,12 +14,12 @@ class TroopGiftToAllSurfaceView$5$1
   
   public void a()
   {
-    TroopGiftToAllSurfaceView.a(this.a.this$0).a(new Action[] { new OpacityAction(600, 0, 255), new SequenceAction(new Action[] { new ScaleAction(300, 0.0F, 1.2F), new ScaleAction(300, 1.2F, 1.0F) }) });
+    TroopGiftToAllSurfaceView.f(this.a.this$0).a(new Action[] { new OpacityAction(600, 0, 255), new SequenceAction(new Action[] { new ScaleAction(300, 0.0F, 1.2F), new ScaleAction(300, 1.2F, 1.0F) }) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.5.1
  * JD-Core Version:    0.7.0.1
  */

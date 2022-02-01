@@ -17,6 +17,7 @@ public final class INTERFACE$StGetDropdownAppListRsp
   public final PBInt32Field freshInternal = PBField.initInt32(0);
   public final PBInt32Field isFinished = PBField.initInt32(0);
   public final PBRepeatMessageField<INTERFACE.StModuleInfo> modules = PBField.initRepeatMessage(INTERFACE.StModuleInfo.class);
+  public INTERFACE.StOperationApp operationApp = new INTERFACE.StOperationApp();
   public final PBInt32Field realRecommdInternal = PBField.initInt32(0);
   public INTERFACE.StSearchModuleInfo searchInfo = new INTERFACE.StSearchModuleInfo();
   public final PBInt32Field showStore = PBField.initInt32(0);
@@ -26,7 +27,7 @@ public final class INTERFACE$StGetDropdownAppListRsp
   static
   {
     Integer localInteger = Integer.valueOf(0);
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 56, 64, 72, 82, 88 }, new String[] { "extInfo", "modules", "cacheLst", "showStore", "showUserAppList", "fixApps", "isFinished", "freshInternal", "realRecommdInternal", "searchInfo", "useOld" }, new Object[] { null, null, null, localInteger, localInteger, null, localInteger, localInteger, localInteger, null, localInteger }, StGetDropdownAppListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 56, 64, 72, 82, 88, 98 }, new String[] { "extInfo", "modules", "cacheLst", "showStore", "showUserAppList", "fixApps", "isFinished", "freshInternal", "realRecommdInternal", "searchInfo", "useOld", "operationApp" }, new Object[] { null, null, null, localInteger, localInteger, null, localInteger, localInteger, localInteger, null, localInteger, null }, StGetDropdownAppListRsp.class);
   }
 }
 

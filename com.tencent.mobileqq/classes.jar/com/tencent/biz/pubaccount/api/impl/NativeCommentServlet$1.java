@@ -57,7 +57,7 @@ final class NativeCommentServlet$1
             paramBundle.append("fetch cmd=");
             paramInt = n;
             i = k;
-            paramBundle.append(this.jdField_a_of_type_JavaLangString);
+            paramBundle.append(this.a);
             paramInt = n;
             i = k;
             paramBundle.append(" str=");
@@ -92,7 +92,7 @@ final class NativeCommentServlet$1
             j = 1;
             paramInt = 1;
             i = k;
-            this.jdField_a_of_type_ComTencentBizPubaccountApiImplNativeCommentServlet$CommentObserver.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramBundle, (String)localObject);
+            this.b.a(this.c, paramBundle, (String)localObject);
             localObject = str;
           }
         }
@@ -119,7 +119,7 @@ final class NativeCommentServlet$1
     for (;;)
     {
       if (j == 0) {
-        this.jdField_a_of_type_ComTencentBizPubaccountApiImplNativeCommentServlet$CommentObserver.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, k, (String)localObject);
+        this.b.a(this.c, k, (String)localObject);
       }
       return;
       label424:
@@ -129,7 +129,7 @@ final class NativeCommentServlet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.NativeCommentServlet.1
  * JD-Core Version:    0.7.0.1
  */

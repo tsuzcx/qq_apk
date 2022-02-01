@@ -13,14 +13,14 @@ class FriendProfileImageActivity$15
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365474)
+    if (paramView.getId() == 2131431689)
     {
-      FriendProfileImageModel.ProfileImageInfo localProfileImageInfo = this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
-      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (localProfileImageInfo != null))
+      FriendProfileImageModel.ProfileImageInfo localProfileImageInfo = this.a.c.c();
+      if ((!this.a.m) && (this.a.l) && (localProfileImageInfo != null))
       {
-        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
-        localActionSheet.addButton(2131693253, 3);
-        localActionSheet.addCancelButton(2131690728);
+        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.a, null);
+        localActionSheet.addButton(2131890801, 3);
+        localActionSheet.addCancelButton(2131887648);
         localActionSheet.setOnButtonClickListener(new FriendProfileImageActivity.15.1(this, localProfileImageInfo, localActionSheet));
         localActionSheet.show();
       }
@@ -30,7 +30,7 @@ class FriendProfileImageActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.15
  * JD-Core Version:    0.7.0.1
  */

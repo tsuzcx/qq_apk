@@ -16,42 +16,42 @@ import java.util.List;
 public class ChatLayoutBubbleBgExecutorImpl
   extends ChatLayoutBubbleBgExecutor
 {
-  public static final int a;
-  public static final int b;
-  public static final int c;
   public static final int d;
   public static final int e;
   public static final int f;
   public static final int g;
-  private static int h;
-  private ChatLayoutBubbleBgExecutor jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor;
-  private List<ChatLayoutBubbleBgExecutor> jdField_a_of_type_JavaUtilList;
-  private ChatLayoutBubbleBgExecutor b;
-  private ChatLayoutBubbleBgExecutor c;
+  public static final int h;
+  public static final int i;
+  public static final int j;
+  private static int k;
+  private List<ChatLayoutBubbleBgExecutor> l;
+  private ChatLayoutBubbleBgExecutor m;
+  private ChatLayoutBubbleBgExecutor n;
+  private ChatLayoutBubbleBgExecutor o;
   
   static
   {
-    int i = h;
-    h = i + 1;
-    jdField_a_of_type_Int = i;
-    i = h;
-    h = i + 1;
-    jdField_b_of_type_Int = i;
-    i = h;
-    h = i + 1;
-    jdField_c_of_type_Int = i;
-    i = h;
-    h = i + 1;
-    d = i;
-    i = h;
-    h = i + 1;
-    e = i;
-    i = h;
-    h = i + 1;
-    f = i;
-    i = h;
-    h = i + 1;
-    g = i;
+    int i1 = k;
+    k = i1 + 1;
+    d = i1;
+    i1 = k;
+    k = i1 + 1;
+    e = i1;
+    i1 = k;
+    k = i1 + 1;
+    f = i1;
+    i1 = k;
+    k = i1 + 1;
+    g = i1;
+    i1 = k;
+    k = i1 + 1;
+    h = i1;
+    i1 = k;
+    k = i1 + 1;
+    i = i1;
+    i1 = k;
+    k = i1 + 1;
+    j = i1;
   }
   
   public ChatLayoutBubbleBgExecutorImpl(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext)
@@ -59,73 +59,73 @@ public class ChatLayoutBubbleBgExecutorImpl
     super(paramQQAppInterface, paramSessionInfo, paramContext);
   }
   
-  private ChatLayoutBubbleBgExecutor a()
+  private ChatLayoutBubbleBgExecutor b()
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor == null) {
-      this.jdField_b_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor = new DefaultMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext);
+    if (this.n == null) {
+      this.n = new DefaultMsgBubbleBgExecutor(this.a, this.b, this.c);
     }
-    return this.jdField_b_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor;
+    return this.n;
   }
   
-  private void a(int paramInt, ChatMessage paramChatMessage)
+  private void b(int paramInt, ChatMessage paramChatMessage)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    if (this.l == null)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new SimpleUIMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_JavaUtilList.add(new ConfessMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_JavaUtilList.add(new QimMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_JavaUtilList.add(new GameMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
+      this.l = new ArrayList();
+      this.l.add(new SimpleUIMsgBubbleBgExecutor(this.a, this.b, this.c));
+      this.l.add(new ConfessMsgBubbleBgExecutor(this.a, this.b, this.c));
+      this.l.add(new QimMsgBubbleBgExecutor(this.a, this.b, this.c));
+      this.l.add(new GameMsgBubbleBgExecutor(this.a, this.b, this.c));
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor = null;
+    this.m = null;
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor = a();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      this.m = b();
+      Iterator localIterator = this.l.iterator();
       while (localIterator.hasNext())
       {
         ChatLayoutBubbleBgExecutor localChatLayoutBubbleBgExecutor = (ChatLayoutBubbleBgExecutor)localIterator.next();
         if (localChatLayoutBubbleBgExecutor.a(paramInt, paramChatMessage)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor = localChatLayoutBubbleBgExecutor;
+          this.m = localChatLayoutBubbleBgExecutor;
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor = b();
+    this.m = c();
   }
   
-  private ChatLayoutBubbleBgExecutor b()
+  private ChatLayoutBubbleBgExecutor c()
   {
-    if (this.jdField_c_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor == null) {
-      this.jdField_c_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor = new NoneBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext);
+    if (this.o == null) {
+      this.o = new NoneBubbleBgExecutor(this.a, this.b, this.c);
     }
-    return this.jdField_c_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor;
+    return this.o;
   }
   
   public int a()
   {
-    ChatLayoutBubbleBgExecutor localChatLayoutBubbleBgExecutor = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor;
+    ChatLayoutBubbleBgExecutor localChatLayoutBubbleBgExecutor = this.m;
     if (localChatLayoutBubbleBgExecutor != null) {
       return localChatLayoutBubbleBgExecutor.a();
     }
-    return h;
+    return k;
   }
   
   public void a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    a(paramInt3, paramChatMessage);
+    b(paramInt3, paramChatMessage);
     if (a(paramInt3, paramChatMessage)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor.a(paramChatMessage, paramViewHolder, paramInt1, paramInt2, paramBoolean, paramInt3);
+      this.m.a(paramChatMessage, paramViewHolder, paramInt1, paramInt2, paramBoolean, paramInt3);
     }
   }
   
   public boolean a(int paramInt, ChatMessage paramChatMessage)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor != null;
+    return this.m != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.bubblebghandlerexecutor.ChatLayoutBubbleBgExecutorImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -18,6 +18,11 @@ public final class CustomScrollView
     super(paramContext, paramAttributeSet);
   }
   
+  public final int getMaxScrollViewHeight()
+  {
+    return this.a;
+  }
+  
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = this.a;
@@ -34,7 +39,7 @@ public final class CustomScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.CustomScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class PasswdRedBagServiceImpl$2
   
   public int a(PasswdRedBagInfo paramPasswdRedBagInfo1, PasswdRedBagInfo paramPasswdRedBagInfo2)
   {
-    return (int)(paramPasswdRedBagInfo2.a - paramPasswdRedBagInfo1.a);
+    return (int)(paramPasswdRedBagInfo2.d - paramPasswdRedBagInfo1.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

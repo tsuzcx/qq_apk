@@ -9,12 +9,12 @@ class GameResultUploadMgrForRemote$2
   
   public void run()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameresultGameResultUploadMgrForRemote$UploadInfo.a = true;
-    GameResultUploadMgrForRemote.a(this.this$0, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.b, 0, str);
+    this.b.c = true;
+    GameResultUploadMgrForRemote.a(this.this$0, this.c, this.d, 0, str);
   }
 }
 

@@ -15,34 +15,34 @@ class VideoController$9
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    String str = VideoController.jdField_a_of_type_JavaLangString;
+    String str = VideoController.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onCompletion, request, mainSession[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvVideoController.a());
+    localStringBuilder.append(this.a.k());
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
     }
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().m())
+    if (!this.a.k().m())
     {
-      this.jdField_a_of_type_Long = 0L;
+      this.b = 0L;
       return;
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.a().a("OnCompletionListener", 6);
-    paramMediaPlayer = this.jdField_a_of_type_ComTencentAvVideoController;
-    long l = this.jdField_a_of_type_Long;
+    this.a.k().a("OnCompletionListener", 6);
+    paramMediaPlayer = this.a;
+    long l = this.b;
     int i;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_Long == 2L) {
+    if (this.a.k().aq == 2L) {
       i = 4;
     } else {
       i = 1;
     }
-    paramMediaPlayer.a(l, 2131230745, i, VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().z), this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_c_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_Long = 0L;
+    paramMediaPlayer.a(l, 2131230813, i, VideoController.a(this.a, this.b));
+    this.a.e.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.a.k().ay), this.a.k().s, Long.valueOf(this.b) });
+    this.b = 0L;
   }
 }
 

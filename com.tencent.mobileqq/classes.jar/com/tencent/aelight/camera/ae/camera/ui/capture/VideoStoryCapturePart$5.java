@@ -16,7 +16,7 @@ class VideoStoryCapturePart$5
     if (paramBoolean == null) {
       return;
     }
-    if ((VideoStoryCapturePart.a(this.a) != null) && (VideoStoryCapturePart.a(this.a) == AECaptureMode.GIF))
+    if ((VideoStoryCapturePart.a(this.a) != null) && (VideoStoryCapturePart.f(this.a) == AECaptureMode.GIF))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("【抠背开关】->observe:");
@@ -28,7 +28,7 @@ class VideoStoryCapturePart$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.capture.VideoStoryCapturePart.5
  * JD-Core Version:    0.7.0.1
  */

@@ -17,46 +17,46 @@ import java.util.List;
 class ColorNoteListAdapter$DeleteListener
   implements View.OnClickListener
 {
-  ColorNoteListAdapter.ViewHolder jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$ViewHolder;
-  ColorNoteListAdapter jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter;
+  ColorNoteListAdapter a;
+  ColorNoteListAdapter.ViewHolder b;
   
   ColorNoteListAdapter$DeleteListener(ColorNoteListAdapter paramColorNoteListAdapter, ColorNoteListAdapter.ViewHolder paramViewHolder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter = paramColorNoteListAdapter;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$ViewHolder = paramViewHolder;
+    this.a = paramColorNoteListAdapter;
+    this.b = paramViewHolder;
   }
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter$ViewHolder.getAdapterPosition();
-    if ((i >= 0) && (i < ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).size()))
+    int i = this.b.getAdapterPosition();
+    if ((i >= 0) && (i < ColorNoteListAdapter.c(this.a).size()))
     {
-      ColorNote localColorNote = (ColorNote)ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).get(i);
-      ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).remove(i);
-      this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.notifyDataSetChanged();
+      ColorNote localColorNote = (ColorNote)ColorNoteListAdapter.c(this.a).get(i);
+      ColorNoteListAdapter.c(this.a).remove(i);
+      this.a.notifyDataSetChanged();
       if (localColorNote.getServiceType() == 16973824) {
         ((IQQPlayer)QRoute.api(IQQPlayer.class)).stopPlayMusic(paramView.getContext());
       }
-      if (ColorNoteUtils.b(localColorNote))
+      if (ColorNoteUtils.d(localColorNote))
       {
         if ((ColorNoteRecentConfigProcessor.a().a()) && (ColorNoteRecentView.a())) {
-          ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).a(paramView);
+          ColorNoteListAdapter.d(this.a).a(paramView);
         }
       }
       else {
         ReportController.b(null, "dc00898", "", "", "0X800A747", "0X800A747", ColorNoteConstants.a(localColorNote.getServiceType()), 0, "", "", "", "");
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter.getItemCount() == 0) && (ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter) != null)) {
-        ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter).b();
+      if ((this.a.getItemCount() == 0) && (ColorNoteListAdapter.b(this.a) != null)) {
+        ColorNoteListAdapter.b(this.a).c();
       }
-      ColorNoteListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqColornoteListColorNoteListAdapter, paramView, localColorNote);
+      ColorNoteListAdapter.a(this.a, paramView, localColorNote);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListAdapter.DeleteListener
  * JD-Core Version:    0.7.0.1
  */

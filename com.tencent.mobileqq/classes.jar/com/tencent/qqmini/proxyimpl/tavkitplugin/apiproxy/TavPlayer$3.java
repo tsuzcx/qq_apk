@@ -11,16 +11,16 @@ class TavPlayer$3
   
   public void onUpdated(Player paramPlayer, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer.a(this.jdField_a_of_type_ComTencentTavCoremediaCMTime);
-    if ((TavPlayer.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer)) && (paramBoolean)) {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer.c();
+    this.b.a(this.a);
+    if ((TavPlayer.b(this.b)) && (paramBoolean)) {
+      this.b.d();
     }
-    TavPlayer.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer, false);
+    TavPlayer.a(this.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavPlayer.3
  * JD-Core Version:    0.7.0.1
  */

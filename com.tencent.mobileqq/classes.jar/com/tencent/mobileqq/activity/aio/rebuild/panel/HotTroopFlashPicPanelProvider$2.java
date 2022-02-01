@@ -14,14 +14,14 @@ class HotTroopFlashPicPanelProvider$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(HotTroopFlashPicPanelProvider.a(this.a).a(), QQBrowserActivity.class);
+    paramDialogInterface = new Intent(HotTroopFlashPicPanelProvider.a(this.a).b(), QQBrowserActivity.class);
     paramDialogInterface.putExtra("url", "https://qun.qq.com/qqweb/m/nearby/charm_level/index.html?_wv=1027&_bid=2747");
-    HotTroopFlashPicPanelProvider.a(this.a).a().startActivity(paramDialogInterface);
+    HotTroopFlashPicPanelProvider.a(this.a).b().startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.HotTroopFlashPicPanelProvider.2
  * JD-Core Version:    0.7.0.1
  */

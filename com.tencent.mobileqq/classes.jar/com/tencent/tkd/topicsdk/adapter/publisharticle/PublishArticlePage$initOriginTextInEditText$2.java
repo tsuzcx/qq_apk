@@ -1,7 +1,7 @@
 package com.tencent.tkd.topicsdk.adapter.publisharticle;
 
 import android.text.Editable;
-import com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout;
+import com.tencent.tkd.topicsdk.adapter.widget.RichEditTextMenuView;
 import com.tencent.tkd.weibo.richEditText.RichEditText;
 import kotlin.Metadata;
 
@@ -13,12 +13,12 @@ final class PublishArticlePage$initOriginTextInEditText$2
   
   public final void run()
   {
-    PublishArticlePage.a(this.this$0).b(PublishArticlePage.a(this.this$0).a() - PublishArticlePage.a(this.this$0).getText().length());
+    PublishArticlePage.k(this.this$0).a(PublishArticlePage.h(this.this$0).getText().length(), PublishArticlePage.h(this.this$0).getCountLimit());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initOriginTextInEditText.2
  * JD-Core Version:    0.7.0.1
  */

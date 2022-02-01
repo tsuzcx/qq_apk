@@ -13,18 +13,18 @@ import java.util.ArrayList;
 class AECirclePhotoListPart$PhotoPagerAdapter
   extends PagerAdapter
 {
-  private Fragment jdField_a_of_type_AndroidAppFragment = null;
-  private FragmentManager jdField_a_of_type_AndroidAppFragmentManager;
-  private FragmentTransaction jdField_a_of_type_AndroidAppFragmentTransaction = null;
+  private FragmentManager b;
+  private FragmentTransaction c = null;
+  private Fragment d = null;
   
   public AECirclePhotoListPart$PhotoPagerAdapter(AECirclePhotoListPart paramAECirclePhotoListPart, Fragment paramFragment)
   {
     if (Build.VERSION.SDK_INT >= 17)
     {
-      this.jdField_a_of_type_AndroidAppFragmentManager = paramFragment.getChildFragmentManager();
+      this.b = paramFragment.getChildFragmentManager();
       return;
     }
-    this.jdField_a_of_type_AndroidAppFragmentManager = paramFragment.getFragmentManager();
+    this.b = paramFragment.getFragmentManager();
   }
   
   private String a(int paramInt, long paramLong)
@@ -37,60 +37,60 @@ class AECirclePhotoListPart$PhotoPagerAdapter
     return localStringBuilder.toString();
   }
   
-  public long a(int paramInt)
+  public Fragment a(int paramInt)
+  {
+    return (Fragment)AECirclePhotoListPart.f(this.a).get(paramInt);
+  }
+  
+  public long b(int paramInt)
   {
     return paramInt;
   }
   
-  public Fragment a(int paramInt)
-  {
-    return (Fragment)AECirclePhotoListPart.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECirclePhotoListPart).get(paramInt);
-  }
-  
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidAppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidAppFragmentTransaction = this.jdField_a_of_type_AndroidAppFragmentManager.beginTransaction();
+    if (this.c == null) {
+      this.c = this.b.beginTransaction();
     }
-    this.jdField_a_of_type_AndroidAppFragmentTransaction.detach((Fragment)paramObject);
+    this.c.detach((Fragment)paramObject);
   }
   
   public void finishUpdate(ViewGroup paramViewGroup)
   {
-    paramViewGroup = this.jdField_a_of_type_AndroidAppFragmentTransaction;
+    paramViewGroup = this.c;
     if (paramViewGroup != null)
     {
       paramViewGroup.commitAllowingStateLoss();
-      this.jdField_a_of_type_AndroidAppFragmentTransaction = null;
-      this.jdField_a_of_type_AndroidAppFragmentManager.executePendingTransactions();
+      this.c = null;
+      this.b.executePendingTransactions();
     }
   }
   
   public int getCount()
   {
-    return AECirclePhotoListPart.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartAECirclePhotoListPart).size();
+    return AECirclePhotoListPart.f(this.a).size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidAppFragmentTransaction == null) {
-      this.jdField_a_of_type_AndroidAppFragmentTransaction = this.jdField_a_of_type_AndroidAppFragmentManager.beginTransaction();
+    if (this.c == null) {
+      this.c = this.b.beginTransaction();
     }
-    long l = a(paramInt);
+    long l = b(paramInt);
     Object localObject = a(paramViewGroup.getId(), l);
-    localObject = this.jdField_a_of_type_AndroidAppFragmentManager.findFragmentByTag((String)localObject);
+    localObject = this.b.findFragmentByTag((String)localObject);
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidAppFragmentTransaction.attach((Fragment)localObject);
+      this.c.attach((Fragment)localObject);
       paramViewGroup = (ViewGroup)localObject;
     }
     else
     {
       localObject = a(paramInt);
-      this.jdField_a_of_type_AndroidAppFragmentTransaction.add(paramViewGroup.getId(), (Fragment)localObject, a(paramViewGroup.getId(), l));
+      this.c.add(paramViewGroup.getId(), (Fragment)localObject, a(paramViewGroup.getId(), l));
       paramViewGroup = (ViewGroup)localObject;
     }
-    if (paramViewGroup != this.jdField_a_of_type_AndroidAppFragment)
+    if (paramViewGroup != this.d)
     {
       paramViewGroup.setMenuVisibility(false);
       paramViewGroup.setUserVisibleHint(false);
@@ -113,20 +113,20 @@ class AECirclePhotoListPart$PhotoPagerAdapter
   public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramViewGroup = (Fragment)paramObject;
-    paramObject = this.jdField_a_of_type_AndroidAppFragment;
+    paramObject = this.d;
     if (paramViewGroup != paramObject)
     {
       if (paramObject != null)
       {
         paramObject.setMenuVisibility(false);
-        this.jdField_a_of_type_AndroidAppFragment.setUserVisibleHint(false);
+        this.d.setUserVisibleHint(false);
       }
       if (paramViewGroup != null)
       {
         paramViewGroup.setMenuVisibility(true);
         paramViewGroup.setUserVisibleHint(true);
       }
-      this.jdField_a_of_type_AndroidAppFragment = paramViewGroup;
+      this.d = paramViewGroup;
     }
   }
   
@@ -134,7 +134,7 @@ class AECirclePhotoListPart$PhotoPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECirclePhotoListPart.PhotoPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

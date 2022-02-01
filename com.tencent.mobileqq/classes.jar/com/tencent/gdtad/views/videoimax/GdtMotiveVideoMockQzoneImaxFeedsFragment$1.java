@@ -30,15 +30,15 @@ class GdtMotiveVideoMockQzoneImaxFeedsFragment$1
   public void onClick(View paramView)
   {
     GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.c = 2;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.getBaseActivity());
+    localParams.q = 2;
+    localParams.r = new WeakReference(this.a.getBaseActivity());
     Object localObject = GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getAd();
     ((GdtAd)localObject).info.product_type.set(1000);
     ((GdtAd)localObject).info.dest_info.dest_type.set(4);
     ((GdtAd)localObject).info.display_info.video_info2.video_url.set(GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getVideoData().getUrl());
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)localObject);
-    localParams.e = true;
-    localParams.jdField_a_of_type_Boolean = true;
+    localParams.a = ((GdtAd)localObject);
+    localParams.i = true;
+    localParams.b = true;
     localObject = new int[2];
     paramView.getLocationInWindow((int[])localObject);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -52,23 +52,23 @@ class GdtMotiveVideoMockQzoneImaxFeedsFragment$1
     localStringBuilder.append(Arrays.toString((int[])localObject));
     localStringBuilder.append("]");
     GdtLog.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", localStringBuilder.toString());
-    localParams.jdField_a_of_type_AndroidGraphicsRect = new Rect(localObject[0], localObject[1], localObject[0] + paramView.getWidth(), localObject[1] + paramView.getHeight());
+    localParams.j = new Rect(localObject[0], localObject[1], localObject[0] + paramView.getWidth(), localObject[1] + paramView.getHeight());
     localObject = this.a.getBaseActivity().getIntent();
     if (TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_ref_source_key"))) {
       localObject = ((Intent)localObject).getStringExtra("big_brother_source_key");
     } else {
       localObject = ((Intent)localObject).getStringExtra("big_brother_ref_source_key");
     }
-    localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", (String)localObject);
-    localParams.f = true;
+    localParams.p = new Bundle();
+    localParams.p.putString("big_brother_ref_source_key", (String)localObject);
+    localParams.l = true;
     GdtHandler.a(localParams);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment.1
  * JD-Core Version:    0.7.0.1
  */

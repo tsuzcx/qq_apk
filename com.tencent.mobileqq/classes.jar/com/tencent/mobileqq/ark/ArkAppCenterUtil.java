@@ -31,84 +31,36 @@ import org.json.JSONObject;
 
 public class ArkAppCenterUtil
 {
-  public static int a;
-  public static DisplayMetrics a;
-  public static boolean a;
-  public static int b;
-  public static int c;
-  public static int d;
-  private static int e;
+  public static int a = BaseChatItemLayout.e;
+  public static int b = BaseChatItemLayout.f;
+  public static int c = BaseChatItemLayout.d;
+  public static int d = BaseChatItemLayout.d;
+  public static boolean e = false;
+  public static DisplayMetrics f;
+  private static int g = 0;
   
   static
   {
-    jdField_a_of_type_Int = BaseChatItemLayout.e;
-    b = BaseChatItemLayout.f;
-    c = BaseChatItemLayout.jdField_d_of_type_Int;
-    jdField_d_of_type_Int = BaseChatItemLayout.jdField_d_of_type_Int;
-    jdField_a_of_type_Boolean = false;
-    e = 0;
-    jdField_a_of_type_AndroidUtilDisplayMetrics = null;
+    f = null;
     a(1);
-  }
-  
-  public static float a()
-  {
-    return BaseChatItemLayout.jdField_d_of_type_Float;
-  }
-  
-  public static String a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      boolean bool = SimpleUIUtil.a();
-      if (bool) {
-        localJSONObject2.put("mode", "concise");
-      } else {
-        localJSONObject2.put("mode", "default");
-      }
-      localJSONObject2.put("themeId", ThemeUtil.getCurrentThemeId());
-      localJSONObject1.put("theme", localJSONObject2);
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("ArkApp.ArkAppCenterUtil", 1, "Exception=", localJSONException);
-    }
-    return localJSONObject1.toString();
-  }
-  
-  public static void a()
-  {
-    String str = a();
-    QLog.d("ArkApp.ArkAppCenterUtil", 1, new Object[] { "onThemeChanged.appconfig=", str });
-    try
-    {
-      ark.arkApplicationSetConfig(null, str);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      QLog.e("ArkApp.ArkAppCenterUtil", 1, "onThemeChanged.ark so not load.e=", localUnsatisfiedLinkError);
-    }
   }
   
   private static void a(int paramInt)
   {
     DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
     int i = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    jdField_d_of_type_Int = i;
-    if (jdField_a_of_type_AndroidUtilDisplayMetrics == null) {
-      jdField_a_of_type_AndroidUtilDisplayMetrics = localDisplayMetrics;
+    d = i;
+    if (f == null) {
+      f = localDisplayMetrics;
     }
     QLog.e("ArkApp.ArkAppCenterUtil", 1, new Object[] { "ArkFold.checkArkSize model=", Build.MODEL, ",screenWidth=", Integer.valueOf(i), ",sDisplayWith=", Integer.valueOf(c), ",scene=", Integer.valueOf(paramInt) });
     if ((i >= 1536) && (c != 840))
     {
-      jdField_a_of_type_Boolean = true;
+      e = true;
       c = 840;
-      jdField_a_of_type_Int = (int)(c - a() * 108.0F);
-      b = jdField_a_of_type_Int - BaseChatItemLayout.j - BaseChatItemLayout.k;
-      QLog.e("ArkApp.ArkAppCenterUtil", 1, new Object[] { "ArkFold.checkArkSize handle fold screen sChatBubbleMaxWidth=", Integer.valueOf(jdField_a_of_type_Int), ",sDisplayWith=", Integer.valueOf(c), ",sChatTextViewMaxWidth=", Integer.valueOf(b) });
+      a = (int)(c - d() * 108.0F);
+      b = a - BaseChatItemLayout.getBubblePaddingAlignHead() - BaseChatItemLayout.getBubblePaddingAlignError();
+      QLog.e("ArkApp.ArkAppCenterUtil", 1, new Object[] { "ArkFold.checkArkSize handle fold screen sChatBubbleMaxWidth=", Integer.valueOf(a), ",sDisplayWith=", Integer.valueOf(c), ",sChatTextViewMaxWidth=", Integer.valueOf(b) });
     }
   }
   
@@ -147,7 +99,7 @@ public class ArkAppCenterUtil
       if (1 == paramMessageForArkApp.istroop)
       {
         i = paramInt;
-        if (AnonymousChatHelper.a(paramMessageForArkApp)) {
+        if (AnonymousChatHelper.c(paramMessageForArkApp)) {
           i = 0;
         }
       }
@@ -163,17 +115,17 @@ public class ArkAppCenterUtil
     localIntent.putExtra("real_msg_sender_uin", paramMessageForArkApp);
     paramContext = (Activity)paramContext;
     paramContext.startActivityForResult(localIntent, 14001);
-    paramContext.overridePendingTransition(2130772021, 0);
+    paramContext.overridePendingTransition(2130772024, 0);
   }
   
   public static void a(Configuration paramConfiguration)
   {
-    if (paramConfiguration.screenWidthDp != e)
+    if (paramConfiguration.screenWidthDp != g)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "ArkFold.BaseChatePie.onConfigurationChanged.mOldScreenDp=", Integer.valueOf(e), ",newScreenDp=", Integer.valueOf(paramConfiguration.screenWidthDp) });
+        QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "ArkFold.BaseChatePie.onConfigurationChanged.mOldScreenDp=", Integer.valueOf(g), ",newScreenDp=", Integer.valueOf(paramConfiguration.screenWidthDp) });
       }
-      e = paramConfiguration.screenWidthDp;
+      g = paramConfiguration.screenWidthDp;
       a(2);
     }
   }
@@ -195,7 +147,7 @@ public class ArkAppCenterUtil
       paramString.append(",SDK=");
       paramString.append(Build.VERSION.SDK_INT);
       paramString.append("\n BaseChatItemLayout.density=");
-      paramString.append(BaseChatItemLayout.jdField_d_of_type_Float);
+      paramString.append(BaseChatItemLayout.w);
       paramString.append("\n application density=");
       paramString.append(localDisplayMetrics.density);
       paramString.append("-");
@@ -222,16 +174,58 @@ public class ArkAppCenterUtil
     if ((BaseActivity.sTopActivity instanceof BaseActivity))
     {
       ChatFragment localChatFragment = (ChatFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if ((localChatFragment != null) && ((localChatFragment.a() instanceof PublicAccountChatPie))) {
+      if ((localChatFragment != null) && ((localChatFragment.k() instanceof PublicAccountChatPie))) {
         return true;
       }
     }
     return false;
   }
+  
+  public static void b()
+  {
+    String str = c();
+    QLog.d("ArkApp.ArkAppCenterUtil", 1, new Object[] { "onThemeChanged.appconfig=", str });
+    try
+    {
+      ark.arkApplicationSetConfig(null, str);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      QLog.e("ArkApp.ArkAppCenterUtil", 1, "onThemeChanged.ark so not load.e=", localUnsatisfiedLinkError);
+    }
+  }
+  
+  public static String c()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      boolean bool = SimpleUIUtil.e();
+      if (bool) {
+        localJSONObject2.put("mode", "concise");
+      } else {
+        localJSONObject2.put("mode", "default");
+      }
+      localJSONObject2.put("themeId", ThemeUtil.getCurrentThemeId());
+      localJSONObject1.put("theme", localJSONObject2);
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("ArkApp.ArkAppCenterUtil", 1, "Exception=", localJSONException);
+    }
+    return localJSONObject1.toString();
+  }
+  
+  public static float d()
+  {
+    return BaseChatItemLayout.w;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAppCenterUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -8,35 +8,35 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemDa
 public class WSVerticalItemBottomSimpleCollectionController
   extends AbsWSVerticalItemBottomSubCollectionController
 {
-  private stCollection a;
+  private stCollection j;
   
   public WSVerticalItemBottomSimpleCollectionController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext, paramWSVerticalVideoHolder);
   }
   
-  protected String a()
-  {
-    return this.a.barText;
-  }
-  
   protected void a()
   {
     super.a();
-    if (a() != null) {
-      this.a = ((WSVerticalItemData)a()).a();
+    if (c() != null) {
+      this.j = ((WSVerticalItemData)c()).h();
     }
   }
   
-  protected boolean a()
+  protected boolean l()
   {
-    stCollection localstCollection = this.a;
+    stCollection localstCollection = this.j;
     return (localstCollection != null) && (!TextUtils.isEmpty(localstCollection.barText));
+  }
+  
+  protected String m()
+  {
+    return this.j.barText;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomSimpleCollectionController
  * JD-Core Version:    0.7.0.1
  */

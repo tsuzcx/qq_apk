@@ -94,7 +94,7 @@ public class C2CPttDownloadProcessor
       {
         ((IStreamDataManager)QRoute.api(IStreamDataManager.class)).removeStreamTaskToMemoryPool((String)((Map.Entry)localObject1).getKey());
         ((StreamFileInfo)localObject2).a(false);
-        localObject1 = ((StreamFileInfo)localObject2).a();
+        localObject1 = ((StreamFileInfo)localObject2).c();
         if ((localObject1 != null) && (((File)localObject1).exists())) {
           return localObject1;
         }
@@ -291,7 +291,7 @@ public class C2CPttDownloadProcessor
             }
             localObject1 = "0X80059B2";
             localObject3 = (TransferRequest.PttDownExtraInfo)this.mUiRequest.mExtraObj;
-            ReportController.b(this.app, "CliOper", "", "", (String)localObject1, (String)localObject1, PttInfoCollectorImpl.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject3).mFromType, ((TransferRequest.PttDownExtraInfo)localObject3).mLayer), 0, "", "", "", "8.7.0");
+            ReportController.b(this.app, "CliOper", "", "", (String)localObject1, (String)localObject1, PttInfoCollectorImpl.mergeDownloadPTTFromType(((TransferRequest.PttDownExtraInfo)localObject3).mFromType, ((TransferRequest.PttDownExtraInfo)localObject3).mLayer), 0, "", "", "", "8.8.17");
           }
         }
         setReportFlag();
@@ -870,7 +870,7 @@ public class C2CPttDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPttDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

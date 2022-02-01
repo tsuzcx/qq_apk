@@ -2,9 +2,9 @@ package com.tencent.biz.subscribe.transition.inter;
 
 public abstract interface ITransAnimInitImpl
 {
-  public abstract int a();
-  
   public abstract int[] a(int paramInt1, int paramInt2);
+  
+  public abstract int h();
 }
 
 

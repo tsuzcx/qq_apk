@@ -13,12 +13,12 @@ class CommentBiuProteusItem$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    paramAnimation = this.a;
     if (paramAnimation != null)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        CommentBiuProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemCommentBiuProteusItem, paramAnimation, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, false);
+        CommentBiuProteusItem.a(this.e, paramAnimation, this.c, this.d, false);
         return;
       }
       paramAnimation.setVisibility(4);
@@ -31,7 +31,7 @@ class CommentBiuProteusItem$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.CommentBiuProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

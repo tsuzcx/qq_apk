@@ -43,50 +43,47 @@ import org.json.JSONObject;
 
 public abstract class BaseAuthorityPresenter
 {
-  protected int a;
-  protected long a;
-  protected final Activity a;
-  protected final Intent a;
-  protected Bundle a;
-  protected Handler a;
-  protected final IBaseView a;
-  protected final ILocalDataSource a;
-  protected AccountInfo a;
-  protected String a;
-  protected List<String> a;
-  protected final AppRuntime a;
-  protected final WtloginManager a;
-  protected boolean a;
-  protected int b;
+  protected final Activity A;
+  protected final Intent B;
+  protected final AppRuntime C;
+  protected final WtloginManager D;
+  protected final ILocalDataSource E;
+  protected Handler a = new Handler(Looper.myLooper());
   protected long b;
-  protected String b;
-  protected boolean b;
-  protected int c;
   protected long c;
-  protected String c;
-  protected boolean c;
   protected long d;
-  protected String d;
-  protected boolean d;
   protected long e;
-  protected boolean e;
   protected long f;
-  protected boolean f;
-  protected boolean g;
-  protected boolean h;
+  protected long g;
+  protected int h;
+  protected String i;
+  protected boolean j;
+  protected boolean k;
+  protected boolean l;
+  protected boolean m;
+  protected boolean n;
+  protected boolean o;
+  protected boolean p;
+  protected boolean q;
+  protected int r = -1;
+  protected int s = 0;
+  protected String t;
+  protected String u;
+  protected String v;
+  protected AccountInfo w;
+  protected List<String> x;
+  protected Bundle y;
+  protected final IBaseView z;
   
   protected BaseAuthorityPresenter(IBaseView paramIBaseView, ILocalDataSource paramILocalDataSource)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.myLooper());
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentOpenAgentAuthIBaseView = paramIBaseView;
-    this.jdField_a_of_type_ComTencentOpenAgentAuthModelILocalDataSource = paramILocalDataSource;
-    this.jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    this.jdField_a_of_type_MqqManagerWtloginManager = ((WtloginManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(1));
-    this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramIBaseView.a(3));
-    this.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    SSOLog.a("BaseAuthorityPresenter", new Object[] { "app=", this.jdField_a_of_type_MqqAppAppRuntime, ", mWtLoginManager=", this.jdField_a_of_type_MqqManagerWtloginManager });
+    this.z = paramIBaseView;
+    this.E = paramILocalDataSource;
+    this.C = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    this.D = ((WtloginManager)this.C.getManager(1));
+    this.A = ((Activity)paramIBaseView.b(3));
+    this.B = this.A.getIntent();
+    SSOLog.a("BaseAuthorityPresenter", new Object[] { "app=", this.C, ", mWtLoginManager=", this.D });
   }
   
   private void a(int paramInt, String paramString1, String paramString2, AccountInfo paramAccountInfo, String paramString3)
@@ -96,27 +93,27 @@ public abstract class BaseAuthorityPresenter
     if (paramInt == 0)
     {
       AuthReporter.a(paramString3, "0X800B65E");
-      AuthReporter.a(paramString3, a(), "6", "0", false);
+      AuthReporter.a(paramString3, l(), "6", "0", false);
       paramString1 = paramAccountInfo;
     }
     else
     {
       AuthReporter.a(paramString3, "0X800B65F");
-      AuthReporter.a(this.jdField_a_of_type_AndroidAppActivity, paramInt, paramString1, paramString3, a(), paramString2);
+      AuthReporter.a(this.A, paramInt, paramString1, paramString3, l(), paramString2);
       paramString1 = "1";
     }
-    AuthReporter.a(paramInt, a(), paramString3);
-    if (AuthParamUtil.a(this.jdField_a_of_type_AndroidContentIntent)) {
-      AuthReporter.a(paramString3, a(), "9", paramString1, true);
+    AuthReporter.a(paramInt, l(), paramString3);
+    if (AuthParamUtil.a(this.B)) {
+      AuthReporter.a(paramString3, l(), "9", paramString1, true);
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_MqqAppAppRuntime.getAccount())) && (!this.jdField_a_of_type_MqqAppAppRuntime.getAccount().equals(paramString3))) {
-      AuthReporter.a(paramString3, a(), "10", paramString1, true);
+    if ((!TextUtils.isEmpty(this.C.getAccount())) && (!this.C.getAccount().equals(paramString3))) {
+      AuthReporter.a(paramString3, l(), "10", paramString1, true);
     }
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.g = true;
+    this.p = true;
     if ((paramInt1 != -1000) && (paramInt1 != 154))
     {
       c(paramString);
@@ -124,64 +121,64 @@ public abstract class BaseAuthorityPresenter
     }
     if (paramInt2 == 1002)
     {
-      paramInt1 = this.jdField_a_of_type_Int;
+      paramInt1 = this.h;
       if (paramInt1 < 2)
       {
-        this.jdField_a_of_type_Int = (paramInt1 + 1);
-        this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+        this.h = (paramInt1 + 1);
+        this.d = SystemClock.elapsedRealtime();
         a(paramString);
         return;
       }
     }
-    this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
-    a(3003, 2131694647);
+    this.d = SystemClock.elapsedRealtime();
+    a(3003, 2131892333);
   }
   
   private void a(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    long l = this.jdField_b_of_type_Long;
+    long l1 = this.c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ret: ");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append(" | error: ");
     localStringBuilder.append(paramString2);
-    AuthReporter.a("agent_login", l, 0L, 0L, paramInt2, paramString1, localStringBuilder.toString());
-    AuthReporter.a(1, "LOGIN_GETTICKT", paramString1, a(), paramInt2, paramString2);
-    paramString2 = a();
+    AuthReporter.a("agent_login", l1, 0L, 0L, paramInt2, paramString1, localStringBuilder.toString());
+    AuthReporter.a(1, "LOGIN_GETTICKT", paramString1, l(), paramInt2, paramString2);
+    paramString2 = l();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(paramInt2);
     AuthReporter.a(paramString1, paramString2, "1", localStringBuilder.toString(), false);
-    paramString2 = a();
+    paramString2 = l();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(paramInt2);
     AuthReporter.a(paramString1, paramString2, "6", localStringBuilder.toString(), false);
     AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramString1, false);
-    AuthReporter.a("KEY_LOGIN_STAGE_1_TOTAL", paramString1, this.jdField_a_of_type_Long, null, false);
+    AuthReporter.a("KEY_LOGIN_STAGE_1_TOTAL", paramString1, this.b, null, false);
   }
   
   private void a(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
-    AuthReporter.a("KEY_LOGIN_STAGE_1_TOTAL", this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, null, true);
+    AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", this.w);
+    AuthReporter.a("KEY_LOGIN_STAGE_1_TOTAL", this.v, this.b, null, true);
     if (!paramBundle.getBoolean("fake_callback"))
     {
       SSOLog.a("BaseAuthorityPresenter", new Object[] { "onRefreshTicketSuccess fake callback" });
       long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_f_of_type_Long;
-      int i = paramBundle.getInt("code");
-      AuthReporter.a(l1 - l2, i, a(), paramString);
-      AuthReporter.a("agent_login", this.jdField_f_of_type_Long, paramString.length(), paramArrayOfByte.length, 0, paramString, null);
-      AuthReporter.a(0, "LOGIN_GETTICKT", paramString, a(), i, null);
-      AuthReporter.a(paramString, a(), "1", "0", false);
+      long l2 = this.g;
+      int i1 = paramBundle.getInt("code");
+      AuthReporter.a(l1 - l2, i1, l(), paramString);
+      AuthReporter.a("agent_login", this.g, paramString.length(), paramArrayOfByte.length, 0, paramString, null);
+      AuthReporter.a(0, "LOGIN_GETTICKT", paramString, l(), i1, null);
+      AuthReporter.a(paramString, l(), "1", "0", false);
     }
   }
   
   private void b(int paramInt, String paramString1, String paramString2)
   {
     b(paramInt, paramString1);
-    byte[] arrayOfByte = FileDataSource.a(a(), this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
+    byte[] arrayOfByte = FileDataSource.a(l(), this.w.a);
     if ((arrayOfByte != null) && (arrayOfByte.length != 0))
     {
       SdkAuthorize.AuthorizeResponse localAuthorizeResponse = new SdkAuthorize.AuthorizeResponse();
@@ -206,25 +203,25 @@ public abstract class BaseAuthorityPresenter
     localStringBuilder.append("refreshTicket uin=");
     localStringBuilder.append(AuthorityUtil.a(paramString));
     SSOLog.a("BaseAuthorityPresenter", new Object[] { localStringBuilder.toString() });
-    this.jdField_f_of_type_Long = System.currentTimeMillis();
-    AccountManage.a().a(paramString, new BaseAuthorityPresenter.3(this), a(), paramInt);
+    this.g = System.currentTimeMillis();
+    AccountManage.a().a(paramString, new BaseAuthorityPresenter.3(this), l(), paramInt);
   }
   
-  private void d(String paramString)
+  private void e(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("send | cmd: g_t_n_p | uin :*");
     localStringBuilder.append(AuthorityUtil.a(paramString));
     SSOLog.a("BaseAuthorityPresenter", new Object[] { localStringBuilder.toString() });
-    this.jdField_a_of_type_ComTencentOpenAgentAuthIBaseView.a(2131694646);
+    this.z.a(2131892332);
     if (TextUtils.isEmpty(paramString))
     {
-      e(paramString);
-      this.jdField_a_of_type_Boolean = true;
+      f(paramString);
+      this.j = true;
       a("wtl_notlogged", "0");
       return;
     }
-    if (AuthorityUtil.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString))
+    if (AuthorityUtil.a(this.D, paramString))
     {
       c(paramString);
       return;
@@ -234,82 +231,57 @@ public abstract class BaseAuthorityPresenter
     b(paramString);
   }
   
-  private void e(String paramString)
+  private void f(String paramString)
   {
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "changeAccountActivity uin=", AuthorityUtil.a(paramString) });
     Intent localIntent = new Intent();
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.x;
     if ((localList != null) && (localList.size() > 1))
     {
-      localIntent.putExtra("third_app_id", a());
+      localIntent.putExtra("third_app_id", l());
       localIntent.putExtra("param_uin", paramString);
       paramString = "/base/switchAccount";
     }
     else
     {
-      localIntent.putExtra("appid", a());
+      localIntent.putExtra("appid", l());
       localIntent.putExtra("is_first_login", true);
       paramString = "/base/openSdkLogin";
     }
     localIntent.putExtra("key_req_src", 1);
-    localIntent.putExtra("param_qr_code_url", this.jdField_a_of_type_AndroidContentIntent.getStringExtra("param_qr_code_url"));
-    RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, paramString, 1);
+    localIntent.putExtra("param_qr_code_url", this.B.getStringExtra("param_qr_code_url"));
+    localIntent.putExtra("oauth_app_name", AuthParamUtil.a(this.y, "oauth_app_name"));
+    RouteUtils.a(this.A, localIntent, paramString, 1);
   }
   
   protected int a(List<IconUrlSize> paramList)
   {
-    int i1 = paramList.size();
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    while (i < i1)
+    int i6 = paramList.size();
+    int i1 = 0;
+    int i2 = 0;
+    int i3 = 0;
+    while (i1 < i6)
     {
-      int n = ParseUtil.a(((IconUrlSize)paramList.get(i)).b.get());
-      if (n >= 100) {
-        return i;
+      int i5 = ParseUtil.b(((IconUrlSize)paramList.get(i1)).b.get());
+      if (i5 >= 100) {
+        return i1;
       }
-      int m = j;
-      if (n > j)
+      int i4 = i2;
+      if (i5 > i2)
       {
-        k = i;
-        m = n;
+        i3 = i1;
+        i4 = i5;
       }
-      i += 1;
-      j = m;
+      i1 += 1;
+      i2 = i4;
     }
-    return k;
-  }
-  
-  protected String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_JavaLangString;
-    }
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  protected String a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return String.format(this.jdField_a_of_type_AndroidAppActivity.getString(2131694636), new Object[] { Integer.valueOf(paramInt) });
-    }
-    return String.format(this.jdField_a_of_type_AndroidAppActivity.getString(2131696495), new Object[] { paramString, Integer.valueOf(paramInt) });
-  }
-  
-  protected WloginSimpleInfo a(String paramString)
-  {
-    WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
-    WtloginManager localWtloginManager = this.jdField_a_of_type_MqqManagerWtloginManager;
-    if (localWtloginManager != null) {
-      localWtloginManager.getBasicUserInfo(paramString, localWloginSimpleInfo);
-    }
-    return localWloginSimpleInfo;
+    return i3;
   }
   
   public void a()
   {
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "doOnPause" });
-    this.jdField_a_of_type_Long = 0L;
+    this.b = 0L;
   }
   
   protected void a(int paramInt1, int paramInt2)
@@ -319,18 +291,18 @@ public abstract class BaseAuthorityPresenter
   
   protected void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new BaseAuthorityPresenter.6(this, paramInt, paramString));
+    this.a.post(new BaseAuthorityPresenter.6(this, paramInt, paramString));
   }
   
   protected void a(int paramInt, String paramString1, String paramString2)
   {
     paramString1 = new BaseAuthorityPresenter.4(this, paramInt, paramString1);
-    AuthUIUtil.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, new BaseAuthorityPresenter.5(this, paramString1));
+    AuthUIUtil.a(this.A, paramString2, new BaseAuthorityPresenter.5(this, paramString1));
   }
   
   protected void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    SSOLog.a("BaseAuthorityPresenter", new Object[] { "setSdkResult, error=", Integer.valueOf(paramInt), ", mCurrentAccount=", AuthorityUtil.a(this.jdField_d_of_type_JavaLangString) });
+    SSOLog.a("BaseAuthorityPresenter", new Object[] { "setSdkResult, error=", Integer.valueOf(paramInt), ", mCurrentAccount=", AuthorityUtil.a(this.v) });
     if ((paramInt != 110405) && (paramInt != 110513)) {
       break label60;
     }
@@ -341,65 +313,65 @@ public abstract class BaseAuthorityPresenter
     localIntent.putExtra("key_error_msg", paramString2);
     localIntent.putExtra("key_error_detail", paramString3);
     localIntent.putExtra("key_response", paramString1);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    a(paramInt, paramString2, paramString3, this.jdField_a_of_type_ComTencentOpenModelAccountInfo, this.jdField_d_of_type_JavaLangString);
+    this.A.setResult(-1, localIntent);
+    this.A.finish();
+    a(paramInt, paramString2, paramString3, this.w, this.v);
   }
   
   protected void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new BaseAuthorityPresenter.1(this, paramBitmap));
+    this.a.post(new BaseAuthorityPresenter.1(this, paramBitmap));
   }
   
   protected void a(AuthResponse paramAuthResponse)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthModelILocalDataSource.a(paramAuthResponse.c.get(), a(), this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenAgentAuthModelILocalDataSource.a(paramAuthResponse.c.get(), paramAuthResponse.e.get());
+    this.E.a(paramAuthResponse.e.get(), l(), this.w.a);
+    this.E.a(paramAuthResponse.e.get(), paramAuthResponse.g.get());
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.j)
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.k) {
         localObject = "wtl_lognback";
       } else {
         localObject = "wtl_lognauthorizenback";
       }
-      a((String)localObject, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
+      a((String)localObject, this.w.a);
     }
     else
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.k) {
         localObject = "wtl_loggednunauthorizedback";
       } else {
         localObject = "wtl_loggednauthorizedback";
       }
-      a((String)localObject, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
+      a((String)localObject, this.w.a);
     }
-    AuthReporter.a(this.jdField_a_of_type_AndroidAppActivity, a(), this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-    if (this.jdField_f_of_type_Boolean)
+    AuthReporter.a(this.A, l(), this.v, this.f, this.j, this.k);
+    if (this.o)
     {
-      AuthReporter.a(paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get(), this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
-      QQLiteStatusUtil.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get() == 0) {
+      AuthReporter.a(paramAuthResponse.a.get(), this.w);
+      QQLiteStatusUtil.a(this.y);
+      if (paramAuthResponse.a.get() == 0) {
         paramAuthResponse = "0X800B65E";
       } else {
         paramAuthResponse = "0X800B65F";
       }
-      AuthReporter.a(this.jdField_d_of_type_JavaLangString, paramAuthResponse);
+      AuthReporter.a(this.v, paramAuthResponse);
       return;
     }
     for (;;)
     {
       try
       {
-        long l1 = this.jdField_c_of_type_Long;
-        long l2 = this.jdField_b_of_type_Long;
-        long l3 = this.jdField_d_of_type_Long;
-        long l4 = this.jdField_e_of_type_Long;
-        if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+        long l1 = this.d;
+        long l2 = this.c;
+        long l3 = this.e;
+        long l4 = this.f;
+        if (!TextUtils.isEmpty(this.u))
         {
           bool = true;
           localObject = AuthorityUtil.a(paramAuthResponse, l1 - l2, l3, l4, bool);
-          a(paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get(), ((JSONObject)localObject).toString(), null, null);
+          a(paramAuthResponse.a.get(), ((JSONObject)localObject).toString(), null, null);
           return;
         }
       }
@@ -427,14 +399,14 @@ public abstract class BaseAuthorityPresenter
   protected void a(String paramString)
   {
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "login uin=", AuthorityUtil.a(paramString) });
-    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthIBaseView.a(true);
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
+    this.c = SystemClock.elapsedRealtime();
+    this.z.a(true);
+    if (!NetworkUtil.isNetworkAvailable(this.A))
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthIBaseView.a(0L);
+      this.z.a(0L);
       return;
     }
-    if ((this.jdField_a_of_type_MqqAppAppRuntime.isLogin()) && (!AuthorityUtil.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString)))
+    if ((this.C.isLogin()) && (!AuthorityUtil.a(this.D, paramString)))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("send | cmd: g_t_n_p | uin : *");
@@ -442,17 +414,17 @@ public abstract class BaseAuthorityPresenter
       SSOLog.a("BaseAuthorityPresenter", new Object[] { localStringBuilder.toString() });
       AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
       c(paramString, 1);
-      this.jdField_a_of_type_ComTencentOpenAgentAuthIBaseView.a(2131694640);
+      this.z.a(2131892324);
       b(paramString);
       return;
     }
-    d(paramString);
+    e(paramString);
   }
   
   protected void a(String paramString, int paramInt)
   {
-    SSOLog.a("BaseAuthorityPresenter", new Object[] { "onAuthFailed ret=", Integer.valueOf(paramInt), ", uin=", AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString) });
-    String str = a(paramInt, paramString);
+    SSOLog.a("BaseAuthorityPresenter", new Object[] { "onAuthFailed ret=", Integer.valueOf(paramInt), ", uin=", AuthorityUtil.a(this.w.a) });
+    String str = c(paramInt, paramString);
     switch (paramInt)
     {
     default: 
@@ -462,15 +434,15 @@ public abstract class BaseAuthorityPresenter
       b(paramInt, paramString, str);
       return;
     case 110537: 
-      AuthUIUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131707857);
-      c(this.jdField_d_of_type_JavaLangString);
+      AuthUIUtil.a(this.A, 2131905671);
+      c(this.v);
       a(paramInt, str);
       return;
     case 110509: 
       j();
       return;
     case 110405: 
-      AuthUIUtil.a(this.jdField_a_of_type_AndroidAppActivity, str, new BaseAuthorityPresenter.7(this));
+      AuthUIUtil.a(this.A, str, new BaseAuthorityPresenter.7(this));
       a(paramInt, str);
       return;
     }
@@ -482,34 +454,34 @@ public abstract class BaseAuthorityPresenter
   
   protected void a(String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    AuthReporter.a(this.jdField_a_of_type_AndroidAppActivity, a(), this.jdField_d_of_type_JavaLangString, paramString1, paramLong, paramString2, paramString3);
+    AuthReporter.a(this.A, l(), this.v, paramString1, paramLong, paramString2, paramString3);
   }
   
   protected void a(String paramString1, String paramString2)
   {
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.C;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
+    localStringBuilder.append(l());
     localStringBuilder.append("|");
     localStringBuilder.append(paramString2);
     localStringBuilder.append("|");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     AuthReporter.a(localAppRuntime, paramString1, localStringBuilder.toString());
   }
   
   protected void a(boolean paramBoolean)
   {
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "onGetApiListSuccess authorized=", Boolean.valueOf(paramBoolean) });
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
     String str;
     if (paramBoolean) {
       str = "wtl_loggednunauthorized";
     } else {
       str = "wtl_loggednauthorized";
     }
-    a(str, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
+    a(str, this.w.a);
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.b;
     if (paramBoolean) {
       str = "auth";
     } else {
@@ -518,45 +490,11 @@ public abstract class BaseAuthorityPresenter
     a("connect_sso_pageview", l1 - l2, "logged", str);
   }
   
-  protected boolean a()
-  {
-    if (!QQLiteStatusUtil.a(MobileQQ.sMobileQQ))
-    {
-      SSOLog.a("BaseAuthorityPresenter", new Object[] { "jumpToPWDUnlock false" });
-      return false;
-    }
-    SSOLog.a("BaseAuthorityPresenter", new Object[] { "jumpToPWDUnlock true" });
-    AuthorityUtil.a(this.jdField_a_of_type_AndroidAppActivity);
-    return true;
-  }
-  
-  protected boolean a(String paramString, boolean paramBoolean)
-  {
-    SSOLog.a("BaseAuthorityPresenter", new Object[] { "changeAccountLogin newUin=", AuthorityUtil.a(paramString), ", canAutoLogin=", Boolean.valueOf(paramBoolean) });
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthIBaseView.a(0L);
-      return false;
-    }
-    if (AuthorityUtil.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString))
-    {
-      c(paramString);
-    }
-    else
-    {
-      AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-      c(paramString, 1);
-      AuthorityUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString);
-    }
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    return true;
-  }
-  
   public void b()
   {
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "doOnResume" });
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (this.b == 0L) {
+      this.b = System.currentTimeMillis();
     }
   }
   
@@ -565,11 +503,11 @@ public abstract class BaseAuthorityPresenter
     if (paramInt == -1)
     {
       if (paramIntent == null) {
-        paramIntent = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
+        paramIntent = this.C.getAccount();
       } else {
         paramIntent = paramIntent.getStringExtra("uin");
       }
-      this.jdField_d_of_type_JavaLangString = paramIntent;
+      this.v = paramIntent;
       i();
       return;
     }
@@ -578,48 +516,48 @@ public abstract class BaseAuthorityPresenter
   
   protected void b(int paramInt, String paramString)
   {
-    AuthReporter.a(this.jdField_a_of_type_AndroidAppActivity, paramInt, paramString, this.jdField_d_of_type_JavaLangString, a());
-    AuthReporter.a(this.jdField_d_of_type_JavaLangString, "0X800B65F");
+    AuthReporter.a(this.A, paramInt, paramString, this.v, l());
+    AuthReporter.a(this.v, "0X800B65F");
   }
   
   protected void b(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_b_of_type_JavaLangString = AuthParamUtil.a(paramBundle, "client_id");
-    this.jdField_c_of_type_JavaLangString = AuthParamUtil.a(paramBundle, "key_proxy_appid");
-    this.jdField_a_of_type_JavaLangString = AuthParamUtil.a(paramBundle, "sdkv");
-    this.jdField_f_of_type_Boolean = AuthParamUtil.a(paramBundle, "key_login_by_qr_scan", false);
-    this.h = AuthParamUtil.a(this.jdField_a_of_type_AndroidContentIntent, "internal_authority", false);
-    this.jdField_e_of_type_Boolean = AuthParamUtil.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilList = SharedPrefs.a();
-    this.jdField_d_of_type_JavaLangString = AuthorityUtil.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidContentIntent);
-    SSOLog.a("BaseAuthorityPresenter", new Object[] { "init internal=", Boolean.valueOf(this.h), ", fromSdk=", Boolean.valueOf(this.jdField_e_of_type_Boolean), ", appId=", this.jdField_b_of_type_JavaLangString, ", fromQr=", Boolean.valueOf(this.jdField_f_of_type_Boolean) });
+    this.y = paramBundle;
+    this.t = AuthParamUtil.a(paramBundle, "client_id");
+    this.u = AuthParamUtil.a(paramBundle, "key_proxy_appid");
+    this.i = AuthParamUtil.a(paramBundle, "sdkv");
+    this.o = AuthParamUtil.a(paramBundle, "key_login_by_qr_scan", false);
+    this.q = AuthParamUtil.a(this.B, "internal_authority", false);
+    this.n = AuthParamUtil.a(this.B);
+    this.b = System.currentTimeMillis();
+    this.x = SharedPrefs.b();
+    this.v = AuthorityUtil.a(this.x, this.B);
+    SSOLog.a("BaseAuthorityPresenter", new Object[] { "init internal=", Boolean.valueOf(this.q), ", fromSdk=", Boolean.valueOf(this.n), ", appId=", this.t, ", fromQr=", Boolean.valueOf(this.o) });
   }
   
   protected void b(AuthResponse paramAuthResponse)
   {
-    int i = paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBUInt32Field.get();
-    SSOLog.a("BaseAuthorityPresenter", new Object[] { "parseAuthorizeResponse ret=", Integer.valueOf(i) });
-    if (i == 0)
+    int i1 = paramAuthResponse.a.get();
+    SSOLog.a("BaseAuthorityPresenter", new Object[] { "parseAuthorizeResponse ret=", Integer.valueOf(i1) });
+    if (i1 == 0)
     {
       a(paramAuthResponse);
       return;
     }
-    a(paramAuthResponse.jdField_a_of_type_ComTencentMobileqqPbPBStringField.get(), i);
+    a(paramAuthResponse.b.get(), i1);
   }
   
   protected abstract void b(String paramString);
   
   protected void b(String paramString, int paramInt)
   {
-    String str1 = this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString;
-    String str2 = a();
+    String str1 = this.w.a;
+    String str2 = l();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(paramInt);
     AuthReporter.a(str1, str2, "6", localStringBuilder.toString(), false);
-    str1 = a(paramInt, paramString);
+    str1 = c(paramInt, paramString);
     switch (paramInt)
     {
     default: 
@@ -628,9 +566,9 @@ public abstract class BaseAuthorityPresenter
       return;
     case 110537: 
       SSOLog.a("BaseAuthorityPresenter", new Object[] { "PRE_AUTH_110537 110537" });
-      AuthUIUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131707857);
-      BaseOpenSdkQIPCClient.a(this.jdField_d_of_type_JavaLangString);
-      c(this.jdField_d_of_type_JavaLangString);
+      AuthUIUtil.a(this.A, 2131905671);
+      BaseOpenSdkQIPCClient.a(this.v);
+      c(this.v);
       return;
     case 110513: 
       a(110513, "", "", "");
@@ -639,27 +577,57 @@ public abstract class BaseAuthorityPresenter
       k();
       return;
     case 110405: 
-      AuthUIUtil.a(this.jdField_a_of_type_AndroidAppActivity, str1, new BaseAuthorityPresenter.8(this));
+      AuthUIUtil.a(this.A, str1, new BaseAuthorityPresenter.8(this));
       a(paramInt, str1);
       return;
     }
-    AuthReporter.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, a(), this.jdField_a_of_type_AndroidOsBundle.getString("packagename"), this.jdField_a_of_type_AndroidOsBundle.getString("packagesign"));
+    AuthReporter.a(this.w.a, l(), this.y.getString("packagename"), this.y.getString("packagesign"));
     a(paramInt, paramString, str1);
     a(paramInt, str1);
   }
   
+  protected boolean b(String paramString, boolean paramBoolean)
+  {
+    SSOLog.a("BaseAuthorityPresenter", new Object[] { "changeAccountLogin newUin=", AuthorityUtil.a(paramString), ", canAutoLogin=", Boolean.valueOf(paramBoolean) });
+    if (!NetworkUtil.isNetworkAvailable(this.A))
+    {
+      this.z.a(0L);
+      return false;
+    }
+    if (AuthorityUtil.a(this.D, paramString))
+    {
+      c(paramString);
+    }
+    else
+    {
+      AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+      c(paramString, 1);
+      AuthorityUtil.a(this.C, paramString);
+    }
+    this.n = paramBoolean;
+    return true;
+  }
+  
+  protected String c(int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return String.format(this.A.getString(2131892320), new Object[] { Integer.valueOf(paramInt) });
+    }
+    return String.format(this.A.getString(2131894269), new Object[] { paramString, Integer.valueOf(paramInt) });
+  }
+  
   public void c()
   {
-    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.A.setResult(0);
+    this.A.finish();
     String str1;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.j) {
       str1 = "notlogged";
     } else {
       str1 = "logged";
     }
     String str2;
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.k) {
       str2 = "auth";
     } else {
       str2 = "uauth";
@@ -673,20 +641,20 @@ public abstract class BaseAuthorityPresenter
     {
       JSONObject localJSONObject = HttpBaseUtil.a(paramIntent.getStringExtra("result_data"));
       AccountInfo localAccountInfo = new AccountInfo();
-      localAccountInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("uin");
-      localAccountInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("skey");
-      localAccountInfo.jdField_a_of_type_ArrayOfByte = paramIntent.getByteArrayExtra("st_temp");
-      localAccountInfo.jdField_b_of_type_ArrayOfByte = paramIntent.getByteArrayExtra("st_temp_key");
-      if ((localAccountInfo.jdField_a_of_type_JavaLangString != null) && (localAccountInfo.jdField_b_of_type_JavaLangString != null))
+      localAccountInfo.a = localJSONObject.getString("uin");
+      localAccountInfo.b = localJSONObject.getString("skey");
+      localAccountInfo.c = paramIntent.getByteArrayExtra("st_temp");
+      localAccountInfo.d = paramIntent.getByteArrayExtra("st_temp_key");
+      if ((localAccountInfo.a != null) && (localAccountInfo.b != null))
       {
-        this.jdField_a_of_type_ComTencentOpenModelAccountInfo = localAccountInfo;
+        this.w = localAccountInfo;
         return;
       }
     }
     catch (JSONException paramIntent)
     {
       SSOLog.c("BaseAuthorityPresenter", "JSONException", paramIntent);
-      a(3004, 2131694630);
+      a(3004, 2131892314);
     }
   }
   
@@ -697,21 +665,32 @@ public abstract class BaseAuthorityPresenter
     ((StringBuilder)localObject).append(AuthorityUtil.a(paramString));
     SSOLog.a("BaseAuthorityPresenter", new Object[] { ((StringBuilder)localObject).toString() });
     localObject = new Intent();
-    ((Intent)localObject).putExtra("appid", a());
-    ((Intent)localObject).putExtra("param_qr_code_url", this.jdField_a_of_type_AndroidContentIntent.getStringExtra("param_qr_code_url"));
+    ((Intent)localObject).putExtra("appid", l());
+    ((Intent)localObject).putExtra("param_qr_code_url", this.B.getStringExtra("param_qr_code_url"));
+    ((Intent)localObject).putExtra("oauth_app_name", AuthParamUtil.a(this.y, "oauth_app_name"));
     ((Intent)localObject).putExtra("param_uin", paramString);
-    RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, "/base/openSdkLogin", 1);
+    RouteUtils.a(this.A, (Intent)localObject, "/base/openSdkLogin", 1);
+  }
+  
+  protected WloginSimpleInfo d(String paramString)
+  {
+    WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
+    WtloginManager localWtloginManager = this.D;
+    if (localWtloginManager != null) {
+      localWtloginManager.getBasicUserInfo(paramString, localWloginSimpleInfo);
+    }
+    return localWloginSimpleInfo;
   }
   
   public void d()
   {
     boolean bool;
-    if (this.jdField_c_of_type_Int == 0) {
+    if (this.s == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_d_of_type_Boolean = bool;
+    this.m = bool;
   }
   
   public void e()
@@ -720,62 +699,83 @@ public abstract class BaseAuthorityPresenter
     Intent localIntent = new Intent();
     localIntent.putExtra("key_req_src", 1);
     localIntent.putExtra("is_first_login", true);
-    localIntent.putExtra("param_qr_code_url", this.jdField_a_of_type_AndroidContentIntent.getStringExtra("param_qr_code_url"));
-    localIntent.putExtra("appid", a());
-    this.jdField_d_of_type_JavaLangString = null;
-    RouteUtils.a(this.jdField_a_of_type_AndroidAppActivity, localIntent, "/base/openSdkLogin", 1);
+    localIntent.putExtra("param_qr_code_url", this.B.getStringExtra("param_qr_code_url"));
+    localIntent.putExtra("oauth_app_name", AuthParamUtil.a(this.y, "oauth_app_name"));
+    localIntent.putExtra("appid", l());
+    this.v = null;
+    RouteUtils.a(this.A, localIntent, "/base/openSdkLogin", 1);
   }
   
   public void f()
   {
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "onAddAccount" });
-    c(this.jdField_d_of_type_JavaLangString);
+    c(this.v);
   }
   
   protected void i()
   {
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "startAccountActivity" });
-    if (SharedPrefs.a())
+    if (SharedPrefs.d())
     {
-      a(this.jdField_d_of_type_JavaLangString);
+      a(this.v);
       return;
     }
-    e(this.jdField_d_of_type_JavaLangString);
-    a("connect_sso_pageview", System.currentTimeMillis() - this.jdField_a_of_type_Long, "notlogged", "uauth");
+    f(this.v);
+    a("connect_sso_pageview", System.currentTimeMillis() - this.b, "notlogged", "uauth");
   }
   
   protected void j()
   {
-    if (this.jdField_b_of_type_Int < 1)
+    if (this.r < 1)
     {
-      this.jdField_b_of_type_Int = 1;
+      this.r = 1;
       AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-      c(this.jdField_d_of_type_JavaLangString, 3);
+      c(this.v, 3);
       return;
     }
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "showLoginActivity AUTHORIZE_DONE 110509" });
-    AuthUIUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131707855);
-    c(this.jdField_d_of_type_JavaLangString);
-    AuthReporter.a(this.jdField_d_of_type_JavaLangString, "0X800B65F");
+    AuthUIUtil.a(this.A, 2131905669);
+    c(this.v);
+    AuthReporter.a(this.v, "0X800B65F");
   }
   
   protected void k()
   {
-    if (this.jdField_b_of_type_Int < 0)
+    if (this.r < 0)
     {
-      this.jdField_b_of_type_Int = 0;
+      this.r = 0;
       AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-      c(this.jdField_d_of_type_JavaLangString, 3);
+      c(this.v, 3);
       return;
     }
     SSOLog.a("BaseAuthorityPresenter", new Object[] { "showLoginActivity GET_API_LIST_DONE 110509" });
-    AuthUIUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131707855);
-    c(this.jdField_d_of_type_JavaLangString);
+    AuthUIUtil.a(this.A, 2131905669);
+    c(this.v);
+  }
+  
+  protected String l()
+  {
+    if (TextUtils.isEmpty(this.u)) {
+      return this.t;
+    }
+    return this.u;
+  }
+  
+  protected boolean m()
+  {
+    if (!QQLiteStatusUtil.a(MobileQQ.sMobileQQ))
+    {
+      SSOLog.a("BaseAuthorityPresenter", new Object[] { "jumpToPWDUnlock false" });
+      return false;
+    }
+    SSOLog.a("BaseAuthorityPresenter", new Object[] { "jumpToPWDUnlock true" });
+    AuthorityUtil.a(this.A);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.BaseAuthorityPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,16 @@ package com.tencent.mobileqq.vpng.util;
 
 public class VPNGUtil
 {
-  private static final byte[] jdField_a_of_type_ArrayOfByte = { -119, 80, 78, 71, 13, 10, 26, 10 };
-  private static final char[] jdField_a_of_type_ArrayOfChar = { 73, 69, 78, 68 };
+  private static final char[] a = { 73, 69, 78, 68 };
   private static final char[] b = { 118, 80, 78, 103 };
+  private static final byte[] c = { -119, 80, 78, 71, 13, 10, 26, 10 };
   
   /* Error */
   public static boolean a(java.lang.String paramString1, java.lang.String paramString2)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 46	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: istore 6
     //   6: iconst_0
     //   7: istore 4
@@ -22,32 +22,32 @@ public class VPNGUtil
     //   14: iload 6
     //   16: ifne +579 -> 595
     //   19: aload_1
-    //   20: invokestatic 46	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   20: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   23: ifeq +5 -> 28
     //   26: iconst_0
     //   27: ireturn
-    //   28: new 48	java/io/RandomAccessFile
+    //   28: new 49	java/io/RandomAccessFile
     //   31: dup
     //   32: aload_0
-    //   33: ldc 50
-    //   35: invokespecial 53	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   33: ldc 51
+    //   35: invokespecial 54	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   38: astore_0
-    //   39: new 55	java/io/FileOutputStream
+    //   39: new 56	java/io/FileOutputStream
     //   42: dup
-    //   43: new 57	java/io/File
+    //   43: new 58	java/io/File
     //   46: dup
     //   47: aload_1
-    //   48: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
-    //   51: invokespecial 63	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   48: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: invokespecial 64	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   54: astore 9
     //   56: aload_0
     //   57: astore 7
     //   59: aload 9
     //   61: astore 8
-    //   63: new 65	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct
+    //   63: new 66	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct
     //   66: dup
     //   67: aconst_null
-    //   68: invokespecial 68	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:<init>	(Lcom/tencent/mobileqq/vpng/util/VPNGUtil$1;)V
+    //   68: invokespecial 69	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:<init>	(Lcom/tencent/mobileqq/vpng/util/VPNGUtil$1;)V
     //   71: astore 10
     //   73: aload_0
     //   74: astore 7
@@ -71,15 +71,15 @@ public class VPNGUtil
     //   107: aload 12
     //   109: iconst_0
     //   110: bipush 8
-    //   112: invokevirtual 72	java/io/RandomAccessFile:read	([BII)I
+    //   112: invokevirtual 73	java/io/RandomAccessFile:read	([BII)I
     //   115: ifle +219 -> 334
     //   118: aload_0
     //   119: astore 7
     //   121: aload 9
     //   123: astore 8
-    //   125: getstatic 28	com/tencent/mobileqq/vpng/util/VPNGUtil:jdField_a_of_type_ArrayOfByte	[B
+    //   125: getstatic 29	com/tencent/mobileqq/vpng/util/VPNGUtil:c	[B
     //   128: aload 12
-    //   130: invokestatic 78	java/util/Arrays:equals	([B[B)Z
+    //   130: invokestatic 79	java/util/Arrays:equals	([B[B)Z
     //   133: ifne +6 -> 139
     //   136: goto +198 -> 334
     //   139: aload_0
@@ -90,7 +90,7 @@ public class VPNGUtil
     //   147: aload 11
     //   149: iconst_0
     //   150: bipush 8
-    //   152: invokevirtual 72	java/io/RandomAccessFile:read	([BII)I
+    //   152: invokevirtual 73	java/io/RandomAccessFile:read	([BII)I
     //   155: pop
     //   156: aload_0
     //   157: astore 7
@@ -98,22 +98,22 @@ public class VPNGUtil
     //   161: astore 8
     //   163: aload 10
     //   165: aload 11
-    //   167: invokestatic 81	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:a	(Lcom/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct;[B)V
+    //   167: invokestatic 82	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:a	(Lcom/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct;[B)V
     //   170: aload_0
     //   171: astore 7
     //   173: aload 9
     //   175: astore 8
-    //   177: getstatic 21	com/tencent/mobileqq/vpng/util/VPNGUtil:b	[C
+    //   177: getstatic 22	com/tencent/mobileqq/vpng/util/VPNGUtil:b	[C
     //   180: aload 10
-    //   182: getfield 82	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:jdField_a_of_type_ArrayOfChar	[C
-    //   185: invokestatic 85	java/util/Arrays:equals	([C[C)Z
+    //   182: getfield 83	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:b	[C
+    //   185: invokestatic 86	java/util/Arrays:equals	([C[C)Z
     //   188: ifeq +65 -> 253
     //   191: aload_0
     //   192: astore 7
     //   194: aload 9
     //   196: astore 8
     //   198: aload 10
-    //   200: getfield 88	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:jdField_a_of_type_Int	I
+    //   200: getfield 89	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:a	I
     //   203: istore_2
     //   204: aload_0
     //   205: astore 7
@@ -130,7 +130,7 @@ public class VPNGUtil
     //   224: aload 10
     //   226: iconst_0
     //   227: iload_2
-    //   228: invokevirtual 72	java/io/RandomAccessFile:read	([BII)I
+    //   228: invokevirtual 73	java/io/RandomAccessFile:read	([BII)I
     //   231: pop
     //   232: aload_0
     //   233: astore 7
@@ -140,7 +140,7 @@ public class VPNGUtil
     //   241: aload 10
     //   243: iconst_0
     //   244: iload_2
-    //   245: invokevirtual 92	java/io/FileOutputStream:write	([BII)V
+    //   245: invokevirtual 93	java/io/FileOutputStream:write	([BII)V
     //   248: iconst_1
     //   249: istore_3
     //   250: goto +28 -> 278
@@ -148,27 +148,27 @@ public class VPNGUtil
     //   254: astore 7
     //   256: aload 9
     //   258: astore 8
-    //   260: getstatic 16	com/tencent/mobileqq/vpng/util/VPNGUtil:jdField_a_of_type_ArrayOfChar	[C
+    //   260: getstatic 17	com/tencent/mobileqq/vpng/util/VPNGUtil:a	[C
     //   263: aload 10
-    //   265: getfield 82	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:jdField_a_of_type_ArrayOfChar	[C
-    //   268: invokestatic 85	java/util/Arrays:equals	([C[C)Z
+    //   265: getfield 83	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:b	[C
+    //   268: invokestatic 86	java/util/Arrays:equals	([C[C)Z
     //   271: istore 6
     //   273: iload 6
     //   275: ifeq +37 -> 312
     //   278: aload_0
-    //   279: invokevirtual 95	java/io/RandomAccessFile:close	()V
+    //   279: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   282: goto +8 -> 290
     //   285: astore_0
     //   286: aload_0
-    //   287: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   287: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   290: iload_3
     //   291: istore 4
     //   293: aload 9
-    //   295: invokevirtual 99	java/io/FileOutputStream:close	()V
+    //   295: invokevirtual 100	java/io/FileOutputStream:close	()V
     //   298: goto +240 -> 538
     //   301: astore_0
     //   302: aload_0
-    //   303: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   303: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   306: iload 4
     //   308: istore_3
     //   309: goto +229 -> 538
@@ -178,25 +178,25 @@ public class VPNGUtil
     //   317: astore 8
     //   319: aload_0
     //   320: aload 10
-    //   322: getfield 88	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:jdField_a_of_type_Int	I
+    //   322: getfield 89	com/tencent/mobileqq/vpng/util/VPNGUtil$PNGStruct:a	I
     //   325: iconst_4
     //   326: iadd
-    //   327: invokevirtual 103	java/io/RandomAccessFile:skipBytes	(I)I
+    //   327: invokevirtual 104	java/io/RandomAccessFile:skipBytes	(I)I
     //   330: pop
     //   331: goto -192 -> 139
     //   334: aload_0
-    //   335: invokevirtual 95	java/io/RandomAccessFile:close	()V
+    //   335: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   338: goto +8 -> 346
     //   341: astore_0
     //   342: aload_0
-    //   343: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   343: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   346: aload 9
-    //   348: invokevirtual 99	java/io/FileOutputStream:close	()V
+    //   348: invokevirtual 100	java/io/FileOutputStream:close	()V
     //   351: iconst_0
     //   352: ireturn
     //   353: astore_0
     //   354: aload_0
-    //   355: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   355: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   358: iconst_0
     //   359: ireturn
     //   360: astore 10
@@ -247,21 +247,21 @@ public class VPNGUtil
     //   439: aload_0
     //   440: astore 8
     //   442: aload 10
-    //   444: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   444: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   447: aload 11
     //   449: ifnull +18 -> 467
     //   452: aload 11
-    //   454: invokevirtual 95	java/io/RandomAccessFile:close	()V
+    //   454: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   457: goto +10 -> 467
     //   460: astore 7
     //   462: aload 7
-    //   464: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   464: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   467: iload 5
     //   469: istore_3
     //   470: aload_0
     //   471: ifnull +67 -> 538
     //   474: aload_0
-    //   475: invokevirtual 99	java/io/FileOutputStream:close	()V
+    //   475: invokevirtual 100	java/io/FileOutputStream:close	()V
     //   478: iload 5
     //   480: istore_3
     //   481: goto +57 -> 538
@@ -275,30 +275,30 @@ public class VPNGUtil
     //   496: aload_0
     //   497: astore 8
     //   499: aload 10
-    //   501: invokevirtual 104	java/io/FileNotFoundException:printStackTrace	()V
+    //   501: invokevirtual 105	java/io/FileNotFoundException:printStackTrace	()V
     //   504: aload 11
     //   506: ifnull +18 -> 524
     //   509: aload 11
-    //   511: invokevirtual 95	java/io/RandomAccessFile:close	()V
+    //   511: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   514: goto +10 -> 524
     //   517: astore 7
     //   519: aload 7
-    //   521: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   521: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   524: iload 5
     //   526: istore_3
     //   527: aload_0
     //   528: ifnull +10 -> 538
     //   531: aload_0
-    //   532: invokevirtual 99	java/io/FileOutputStream:close	()V
+    //   532: invokevirtual 100	java/io/FileOutputStream:close	()V
     //   535: iload 5
     //   537: istore_3
     //   538: iload_3
     //   539: ifne +14 -> 553
-    //   542: new 57	java/io/File
+    //   542: new 58	java/io/File
     //   545: dup
     //   546: aload_1
-    //   547: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
-    //   550: invokevirtual 107	java/io/File:deleteOnExit	()V
+    //   547: invokespecial 61	java/io/File:<init>	(Ljava/lang/String;)V
+    //   550: invokevirtual 108	java/io/File:deleteOnExit	()V
     //   553: iload_3
     //   554: ireturn
     //   555: astore_1
@@ -307,19 +307,19 @@ public class VPNGUtil
     //   559: aload_0
     //   560: ifnull +15 -> 575
     //   563: aload_0
-    //   564: invokevirtual 95	java/io/RandomAccessFile:close	()V
+    //   564: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   567: goto +8 -> 575
     //   570: astore_0
     //   571: aload_0
-    //   572: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   572: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   575: aload 8
     //   577: ifnull +16 -> 593
     //   580: aload 8
-    //   582: invokevirtual 99	java/io/FileOutputStream:close	()V
+    //   582: invokevirtual 100	java/io/FileOutputStream:close	()V
     //   585: goto +8 -> 593
     //   588: astore_0
     //   589: aload_0
-    //   590: invokevirtual 98	java/io/IOException:printStackTrace	()V
+    //   590: invokevirtual 99	java/io/IOException:printStackTrace	()V
     //   593: aload_1
     //   594: athrow
     //   595: iconst_0
@@ -426,7 +426,7 @@ public class VPNGUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.util.VPNGUtil
  * JD-Core Version:    0.7.0.1
  */

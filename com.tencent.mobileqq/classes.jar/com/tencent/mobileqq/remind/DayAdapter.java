@@ -13,18 +13,18 @@ import com.tencent.widget.VerticalGallery.LayoutParams;
 public class DayAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 25;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private int b;
+  private Context a;
+  private int b = 25;
   private int c;
+  private int d;
   
   public DayAdapter(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131167148);
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, paramContext.getDisplayMetrics()));
-    this.c = paramContext.getColor(2131167116);
+    this.a = paramContext;
+    paramContext = this.a.getResources();
+    this.c = paramContext.getColor(2131168129);
+    this.b = ((int)TypedValue.applyDimension(1, paramInt, paramContext.getDisplayMetrics()));
+    this.d = paramContext.getColor(2131168094);
   }
   
   public View a(int paramInt)
@@ -34,7 +34,7 @@ public class DayAdapter
   
   public int getCount()
   {
-    return TimeHelper.jdField_a_of_type_Int;
+    return TimeHelper.a;
   }
   
   public long getItemId(int paramInt)
@@ -47,8 +47,8 @@ public class DayAdapter
     Object localObject1;
     if (paramView == null)
     {
-      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      localObject1 = new WheelTextView(this.a);
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.b));
       paramView = (WheelTextView)localObject1;
     }
     else
@@ -63,17 +63,17 @@ public class DayAdapter
     }
     paramView = TimeHelper.a(paramInt);
     ((WheelTextView)localObject2).setTextSize(20.0F);
-    ((WheelTextView)localObject2).setTextColor(this.b);
+    ((WheelTextView)localObject2).setTextColor(this.c);
     ((WheelTextView)localObject2).setGravity(17);
     ((WheelTextView)localObject2).setText(paramView);
-    ((WheelTextView)localObject2).setBackgroundColor(this.c);
+    ((WheelTextView)localObject2).setBackgroundColor(this.d);
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.remind.DayAdapter
  * JD-Core Version:    0.7.0.1
  */

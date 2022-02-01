@@ -1,0 +1,185 @@
+package com.tencent.luggage.wxa.qw;
+
+import java.util.LinkedList;
+
+public class dz
+  extends gt
+{
+  public String a;
+  public String b;
+  public int c;
+  public String d;
+  public String e;
+  public int f;
+  public int g;
+  public int h;
+  public String i;
+  public String j;
+  public String k;
+  
+  protected final int a(int paramInt, Object... paramVarArgs)
+  {
+    int m = 0;
+    Object localObject1;
+    if (paramInt == 0)
+    {
+      paramVarArgs = (com.tencent.luggage.wxa.tc.a)paramVarArgs[0];
+      if (this.B != null)
+      {
+        paramVarArgs.c(1, this.B.d());
+        this.B.a(paramVarArgs);
+      }
+      localObject1 = this.a;
+      if (localObject1 != null) {
+        paramVarArgs.a(2, (String)localObject1);
+      }
+      localObject1 = this.b;
+      if (localObject1 != null) {
+        paramVarArgs.a(3, (String)localObject1);
+      }
+      paramVarArgs.b(4, this.c);
+      localObject1 = this.d;
+      if (localObject1 != null) {
+        paramVarArgs.a(5, (String)localObject1);
+      }
+      localObject1 = this.e;
+      if (localObject1 != null) {
+        paramVarArgs.a(6, (String)localObject1);
+      }
+      paramVarArgs.b(7, this.f);
+      paramVarArgs.b(8, this.g);
+      paramVarArgs.b(9, this.h);
+      localObject1 = this.i;
+      if (localObject1 != null) {
+        paramVarArgs.a(10, (String)localObject1);
+      }
+      localObject1 = this.j;
+      if (localObject1 != null) {
+        paramVarArgs.a(11, (String)localObject1);
+      }
+      localObject1 = this.k;
+      if (localObject1 != null) {
+        paramVarArgs.a(12, (String)localObject1);
+      }
+      return 0;
+    }
+    if (paramInt == 1)
+    {
+      if (this.B != null) {
+        m = 0 + com.tencent.luggage.wxa.sw.a.c(1, this.B.d());
+      }
+      paramVarArgs = this.a;
+      paramInt = m;
+      if (paramVarArgs != null) {
+        paramInt = m + com.tencent.luggage.wxa.sw.a.a(2, paramVarArgs);
+      }
+      paramVarArgs = this.b;
+      m = paramInt;
+      if (paramVarArgs != null) {
+        m = paramInt + com.tencent.luggage.wxa.sw.a.a(3, paramVarArgs);
+      }
+      m += com.tencent.luggage.wxa.sw.a.b(4, this.c);
+      paramVarArgs = this.d;
+      paramInt = m;
+      if (paramVarArgs != null) {
+        paramInt = m + com.tencent.luggage.wxa.sw.a.a(5, paramVarArgs);
+      }
+      paramVarArgs = this.e;
+      m = paramInt;
+      if (paramVarArgs != null) {
+        m = paramInt + com.tencent.luggage.wxa.sw.a.a(6, paramVarArgs);
+      }
+      m = m + com.tencent.luggage.wxa.sw.a.b(7, this.f) + com.tencent.luggage.wxa.sw.a.b(8, this.g) + com.tencent.luggage.wxa.sw.a.b(9, this.h);
+      paramVarArgs = this.i;
+      paramInt = m;
+      if (paramVarArgs != null) {
+        paramInt = m + com.tencent.luggage.wxa.sw.a.a(10, paramVarArgs);
+      }
+      paramVarArgs = this.j;
+      m = paramInt;
+      if (paramVarArgs != null) {
+        m = paramInt + com.tencent.luggage.wxa.sw.a.a(11, paramVarArgs);
+      }
+      paramVarArgs = this.k;
+      paramInt = m;
+      if (paramVarArgs != null) {
+        paramInt = m + com.tencent.luggage.wxa.sw.a.a(12, paramVarArgs);
+      }
+      return paramInt;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new com.tencent.luggage.wxa.sx.a((byte[])paramVarArgs[0], p);
+      for (paramInt = gt.a(paramVarArgs); paramInt > 0; paramInt = gt.a(paramVarArgs)) {
+        if (!super.a(paramVarArgs, this, paramInt)) {
+          paramVarArgs.b();
+        }
+      }
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject2 = (com.tencent.luggage.wxa.sx.a)paramVarArgs[0];
+      localObject1 = (dz)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        return -1;
+      case 12: 
+        ((dz)localObject1).k = ((com.tencent.luggage.wxa.sx.a)localObject2).c(paramInt);
+        return 0;
+      case 11: 
+        ((dz)localObject1).j = ((com.tencent.luggage.wxa.sx.a)localObject2).c(paramInt);
+        return 0;
+      case 10: 
+        ((dz)localObject1).i = ((com.tencent.luggage.wxa.sx.a)localObject2).c(paramInt);
+        return 0;
+      case 9: 
+        ((dz)localObject1).h = ((com.tencent.luggage.wxa.sx.a)localObject2).b(paramInt);
+        return 0;
+      case 8: 
+        ((dz)localObject1).g = ((com.tencent.luggage.wxa.sx.a)localObject2).b(paramInt);
+        return 0;
+      case 7: 
+        ((dz)localObject1).f = ((com.tencent.luggage.wxa.sx.a)localObject2).b(paramInt);
+        return 0;
+      case 6: 
+        ((dz)localObject1).e = ((com.tencent.luggage.wxa.sx.a)localObject2).c(paramInt);
+        return 0;
+      case 5: 
+        ((dz)localObject1).d = ((com.tencent.luggage.wxa.sx.a)localObject2).c(paramInt);
+        return 0;
+      case 4: 
+        ((dz)localObject1).c = ((com.tencent.luggage.wxa.sx.a)localObject2).b(paramInt);
+        return 0;
+      case 3: 
+        ((dz)localObject1).b = ((com.tencent.luggage.wxa.sx.a)localObject2).c(paramInt);
+        return 0;
+      case 2: 
+        ((dz)localObject1).a = ((com.tencent.luggage.wxa.sx.a)localObject2).c(paramInt);
+        return 0;
+      }
+      paramVarArgs = ((com.tencent.luggage.wxa.sx.a)localObject2).i(paramInt);
+      m = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < m)
+      {
+        Object localObject3 = (byte[])paramVarArgs.get(paramInt);
+        localObject2 = new z();
+        localObject3 = new com.tencent.luggage.wxa.sx.a((byte[])localObject3, p);
+        for (boolean bool = true; bool; bool = ((z)localObject2).a((com.tencent.luggage.wxa.sx.a)localObject3, (com.tencent.luggage.wxa.qu.a)localObject2, gt.a((com.tencent.luggage.wxa.sx.a)localObject3))) {}
+        ((dz)localObject1).B = ((z)localObject2);
+        paramInt += 1;
+      }
+      return 0;
+    }
+    return -1;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.luggage.wxa.qw.dz
+ * JD-Core Version:    0.7.0.1
+ */

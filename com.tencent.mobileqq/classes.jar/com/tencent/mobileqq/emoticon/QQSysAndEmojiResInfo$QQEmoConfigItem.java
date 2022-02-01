@@ -3,6 +3,9 @@ package com.tencent.mobileqq.emoticon;
 public class QQSysAndEmojiResInfo$QQEmoConfigItem
 {
   public String AQLid;
+  public String AniStickerId;
+  public String AniStickerPackId;
+  public int AniStickerType;
   public String EMCode;
   public String QCid;
   public String QDes;
@@ -13,7 +16,7 @@ public class QQSysAndEmojiResInfo$QQEmoConfigItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo.QQEmoConfigItem
  * JD-Core Version:    0.7.0.1
  */

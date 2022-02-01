@@ -34,17 +34,22 @@ public class AECameraBroadcastReceiver
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_CAT.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_DEPTH.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_GENDER.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_AGE.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_GAZE.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_HAND.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_SEG_HAIR.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_SEG_SKY.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_SEG_HEAD.resPrefix);
     localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_SCENE.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_BODY.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_BODY_3D.resPrefix);
+    localIntentFilter.addAction(AEResInfo.LIGHT_RES_BUNDLE_EMOTION.resPrefix);
     return localIntentFilter;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = this.captureUnit.a();
+    paramContext = this.captureUnit.s();
     if (paramContext != null)
     {
       if (paramContext.isFinishing()) {
@@ -60,7 +65,7 @@ public class AECameraBroadcastReceiver
       {
         if ((this.captureUnit instanceof AEPituCameraUnit))
         {
-          paramContext = AEResUtil.c(paramIntent);
+          paramContext = AEResUtil.f(paramIntent);
           paramIntent = paramIntent.agentType;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("AECameraBroadcastReceiver 收到广播 isAdittionPackage: path = ");
@@ -69,7 +74,7 @@ public class AECameraBroadcastReceiver
           localStringBuilder.append(paramIntent);
           AEQLog.a("AECameraReceiver", localStringBuilder.toString());
           ((AEPituCameraUnit)this.captureUnit).b(paramContext, paramIntent);
-          ((AEPituCameraUnit)this.captureUnit).Z();
+          ((AEPituCameraUnit)this.captureUnit).aG();
         }
       }
       else if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
@@ -94,7 +99,7 @@ public class AECameraBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AECameraBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

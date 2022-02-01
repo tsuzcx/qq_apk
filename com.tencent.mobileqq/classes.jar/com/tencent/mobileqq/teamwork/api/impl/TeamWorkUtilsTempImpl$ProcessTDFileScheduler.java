@@ -21,39 +21,39 @@ import org.json.JSONObject;
 
 class TeamWorkUtilsTempImpl$ProcessTDFileScheduler
 {
-  private static ProcessTDFileScheduler jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkUtilsTempImpl$ProcessTDFileScheduler;
-  private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentLinkedQueue<MessageRecord> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private static ProcessTDFileScheduler b;
+  private WeakReference<AppInterface> a;
+  private ConcurrentLinkedQueue<MessageRecord> c = new ConcurrentLinkedQueue();
   
   private TeamWorkUtilsTempImpl$ProcessTDFileScheduler(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+    this.a = new WeakReference(paramAppInterface);
   }
   
   public static ProcessTDFileScheduler a(AppInterface paramAppInterface)
   {
-    if (jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkUtilsTempImpl$ProcessTDFileScheduler == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkUtilsTempImpl$ProcessTDFileScheduler == null) {
-          jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkUtilsTempImpl$ProcessTDFileScheduler = new ProcessTDFileScheduler(paramAppInterface);
+        if (b == null) {
+          b = new ProcessTDFileScheduler(paramAppInterface);
         }
       }
       finally {}
     }
-    jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkUtilsTempImpl$ProcessTDFileScheduler.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-    return jdField_a_of_type_ComTencentMobileqqTeamworkApiImplTeamWorkUtilsTempImpl$ProcessTDFileScheduler;
+    b.a = new WeakReference(paramAppInterface);
+    return b;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0) {
+    if (this.c.size() <= 0) {
       return;
     }
-    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AppInterface localAppInterface = (AppInterface)this.a.get();
     if ((localAppInterface != null) && ((localAppInterface instanceof QQAppInterface)))
     {
-      if (((QQAppInterface)localAppInterface).mAutomator.a() != 1) {
+      if (((QQAppInterface)localAppInterface).mAutomator.f() != 1) {
         return;
       }
       ThreadManager.postImmediately(new TeamWorkUtilsTempImpl.ProcessTDFileScheduler.1(this, localAppInterface), null, true);
@@ -77,7 +77,7 @@ class TeamWorkUtilsTempImpl$ProcessTDFileScheduler
         if (!FMConstants.a(((MessageForStructing)localObject1).structingMsg.mMsgUrl)) {
           return;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+        this.c.add(paramMessageRecord);
       }
     }
     else if ((paramMessageRecord instanceof MessageForArkApp))
@@ -105,7 +105,7 @@ class TeamWorkUtilsTempImpl$ProcessTDFileScheduler
           if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)) || ((!((String)localObject1).equals("1108338344")) && (!((String)localObject1).equals("1108961705"))) || (!FMConstants.a((String)localObject2))) {
             return;
           }
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+          this.c.add(paramMessageRecord);
           return;
         }
         if ("com.tencent.miniapp".equals(((MessageForArkApp)localObject1).ark_app_message.appName))
@@ -122,7 +122,7 @@ class TeamWorkUtilsTempImpl$ProcessTDFileScheduler
           if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)) || ((!((String)localObject1).equals("1108338344")) && (!((String)localObject1).equals("1108961705"))) || (!FMConstants.a((String)localObject2))) {
             return;
           }
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+          this.c.add(paramMessageRecord);
           return;
         }
         if ((!"com.tencent.structmsg".equals(((MessageForArkApp)localObject1).ark_app_message.appName)) || (!((JSONObject)localObject2).has("news"))) {
@@ -137,7 +137,7 @@ class TeamWorkUtilsTempImpl$ProcessTDFileScheduler
         if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject1).equals(String.valueOf(101458937L))) || (!FMConstants.a((String)localObject2))) {
           return;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+        this.c.add(paramMessageRecord);
         return;
       }
       catch (JSONException paramMessageRecord)
@@ -146,17 +146,17 @@ class TeamWorkUtilsTempImpl$ProcessTDFileScheduler
           return;
         }
       }
-      QLog.e(TeamWorkConstants.i, 2, paramMessageRecord.getMessage());
+      QLog.e(TeamWorkConstants.j, 2, paramMessageRecord.getMessage());
     }
     else if (((paramMessageRecord instanceof MessageForText)) && (FMConstants.a(((MessageForText)paramMessageRecord).msg)))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+      this.c.add(paramMessageRecord);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkUtilsTempImpl.ProcessTDFileScheduler
  * JD-Core Version:    0.7.0.1
  */

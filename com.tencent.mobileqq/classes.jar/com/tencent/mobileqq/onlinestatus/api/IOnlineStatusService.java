@@ -2,7 +2,6 @@ package com.tencent.mobileqq.onlinestatus.api;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.onlinestatus.IAccountPanel;
 import com.tencent.mobileqq.onlinestatus.IOnLineStatusPresenter;
@@ -28,6 +27,8 @@ public abstract interface IOnlineStatusService
   public abstract int getBatteryCapacity();
   
   public abstract long getExtOnlineStatus();
+  
+  public abstract void getOlympicMedalEventReq(boolean paramBoolean1, boolean paramBoolean2);
   
   public abstract AppRuntime.Status getOnlineStatus();
   
@@ -61,7 +62,7 @@ public abstract interface IOnlineStatusService
   
   public abstract void setPowerConnect(int paramInt);
   
-  public abstract void showAIOStatusPopupDialog(BaseSessionInfo paramBaseSessionInfo, Activity paramActivity);
+  public abstract void showAIOStatusPopupDialog(String paramString, Activity paramActivity, int paramInt);
   
   public abstract void unRegisterBatteryBroadcastReceiver();
   
@@ -71,7 +72,7 @@ public abstract interface IOnlineStatusService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService
  * JD-Core Version:    0.7.0.1
  */

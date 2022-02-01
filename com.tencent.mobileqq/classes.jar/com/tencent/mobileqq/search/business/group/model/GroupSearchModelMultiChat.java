@@ -7,44 +7,44 @@ import com.tencent.mobileqq.search.model.ISearchResultModel;
 import java.util.List;
 
 public class GroupSearchModelMultiChat
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<ISearchResultModel> jdField_a_of_type_JavaUtilList;
+  private final List<ISearchResultModel> a;
+  private final String b;
+  private int c;
   
   public GroupSearchModelMultiChat(List<ISearchResultModel> paramList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 1;
+    this.a = paramList;
+    this.b = paramString;
+    this.c = paramInt;
   }
   
   public String a()
   {
-    return HardCodeUtil.a(2131705484);
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return HardCodeUtil.a(2131903372);
   }
   
   public void a(View paramView) {}
   
-  public String b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public int d()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.GroupSearchModelMultiChat
  * JD-Core Version:    0.7.0.1
  */

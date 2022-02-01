@@ -60,7 +60,7 @@ public class AccManager
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
     localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "5295");
+    localStatistic.setValue(WnsKeys.Build, "5770");
     localStatistic.setValue(WnsKeys.TimeCost, Integer.valueOf(paramInt2));
     if (paramString2 != null) {
       localStatistic.setValue(WnsKeys.Detail, paramString2);
@@ -104,7 +104,7 @@ public class AccManager
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
     localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "5295");
+    localStatistic.setValue(WnsKeys.Build, "5770");
     if (paramString2 != null) {
       localStatistic.setValue(WnsKeys.Detail, paramString2);
     }
@@ -248,7 +248,7 @@ public class AccManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.statistic.AccManager
  * JD-Core Version:    0.7.0.1
  */

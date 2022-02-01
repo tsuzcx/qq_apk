@@ -1,42 +1,24 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
-import android.content.res.Resources;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.onlinestatus.IAccountPanel;
-import com.tencent.mobileqq.onlinestatus.IAccountPanel.OnStatusChangeByUserListener;
-import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.graphics.Outline;
+import android.view.View;
+import android.view.ViewOutlineProvider;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 class OnlineStatusAIOPopUpWindow$3
-  implements IAccountPanel.OnStatusChangeByUserListener
+  extends ViewOutlineProvider
 {
   OnlineStatusAIOPopUpWindow$3(OnlineStatusAIOPopUpWindow paramOnlineStatusAIOPopUpWindow) {}
   
-  public void a(String paramString)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    if (OnlineStatusAIOPopUpWindow.a(this.a).isShowing())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineStatusAIOPopUpWindow", 2, "close panel onStatueChanged");
-      }
-      ReportHelperKt.a("0X800BBE0", 0, "0", paramString);
-      paramString = MobileQQ.sMobileQQ.getResources().getString(2131698509, new Object[] { paramString });
-      QQToast.a(MobileQQ.sMobileQQ, 2, paramString, 1).a();
-      if (TextUtils.equals(OnlineStatusAIOPopUpWindow.a(this.a).uin, OnlineStatusAIOPopUpWindow.a(this.a).getCurrentUin())) {
-        ThreadManagerV2.getUIHandlerV2().postDelayed(new OnlineStatusAIOPopUpWindow.3.1(this), 500L);
-      }
-    }
+    paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), ViewUtils.dip2px(28.0F));
+    paramOutline.setAlpha(0.3F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.OnlineStatusAIOPopUpWindow.3
  * JD-Core Version:    0.7.0.1
  */

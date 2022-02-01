@@ -18,6 +18,8 @@ import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.acstat.StatConfig;
 import com.tencent.acstat.a.a.i;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
@@ -112,7 +114,7 @@ public class Util
     {
       if (checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
       {
-        paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
+        paramContext = PhoneInfoMonitor.getDeviceId((TelephonyManager)paramContext.getSystemService("phone"));
         if (paramContext != null) {
           return paramContext;
         }
@@ -311,7 +313,7 @@ public class Util
     {
       paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
       if (paramContext != null) {
-        return paramContext.getConnectionInfo();
+        return NetworkMonitor.getConnectionInfo(paramContext);
       }
     }
     return null;
@@ -326,7 +328,7 @@ public class Util
         if (paramContext == null) {
           return "";
         }
-        paramContext = paramContext.getConnectionInfo().getMacAddress();
+        paramContext = NetworkMonitor.getConnectionInfo(paramContext).getMacAddress();
         return paramContext;
       }
       catch (Exception paramContext)

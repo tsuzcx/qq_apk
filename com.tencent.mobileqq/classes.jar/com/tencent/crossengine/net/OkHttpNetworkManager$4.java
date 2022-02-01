@@ -12,34 +12,34 @@ class OkHttpNetworkManager$4
   
   public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentCrossengineNetNetworkManager$WebSocketDelegate.onClose(paramInt, paramString);
+    this.a.onClose(paramInt, paramString);
   }
   
   public void onClosing(WebSocket paramWebSocket, int paramInt, String paramString) {}
   
   public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, Response paramResponse)
   {
-    this.jdField_a_of_type_ComTencentCrossengineNetNetworkManager$WebSocketDelegate.onError(paramThrowable.getMessage());
+    this.a.onError(paramThrowable.getMessage());
   }
   
   public void onMessage(WebSocket paramWebSocket, String paramString)
   {
-    this.jdField_a_of_type_ComTencentCrossengineNetNetworkManager$WebSocketDelegate.onMessage(paramString);
+    this.a.onMessage(paramString);
   }
   
   public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
   {
-    this.jdField_a_of_type_ComTencentCrossengineNetNetworkManager$WebSocketDelegate.onMessage(paramByteString.toByteArray(), paramByteString.size());
+    this.a.onMessage(paramByteString.toByteArray(), paramByteString.size());
   }
   
   public void onOpen(WebSocket paramWebSocket, Response paramResponse)
   {
-    this.jdField_a_of_type_ComTencentCrossengineNetNetworkManager$WebSocketDelegate.onOpen(OkHttpNetworkManager.a(this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager, paramResponse));
+    this.a.onOpen(OkHttpNetworkManager.a(this.b, paramResponse));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.net.OkHttpNetworkManager.4
  * JD-Core Version:    0.7.0.1
  */

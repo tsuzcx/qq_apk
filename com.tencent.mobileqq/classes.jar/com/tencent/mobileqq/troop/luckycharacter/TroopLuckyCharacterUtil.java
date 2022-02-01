@@ -18,32 +18,6 @@ import java.util.HashSet;
 
 public class TroopLuckyCharacterUtil
 {
-  public static String a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
-  {
-    if ((paramQQAppInterface != null) && (paramTroopInfo != null) && (paramTroopInfo.mTroopInfoExtObj != null) && (!TextUtils.isEmpty(paramTroopInfo.troopuin)))
-    {
-      if (!a(paramQQAppInterface, paramTroopInfo)) {
-        return "";
-      }
-      long l = paramTroopInfo.mTroopInfoExtObj.luckyWordId;
-      if (l == 0L) {
-        return "";
-      }
-      int i = paramTroopInfo.mTroopInfoExtObj.lightCharNum;
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("https://gxh.vip.qq.com/xydata/groupluckyword/item/");
-      paramQQAppInterface.append(l);
-      paramQQAppInterface.append("/tinypic-");
-      paramQQAppInterface.append(i);
-      paramQQAppInterface.append(".png");
-      return paramQQAppInterface.toString();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LuckyCharacterUtil", 2, "getLuckyCharacterPicUrl args err");
-    }
-    return "";
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     String str = paramQQAppInterface.getCurrentAccountUin();
@@ -115,10 +89,36 @@ public class TroopLuckyCharacterUtil
     localStringBuilder.append("self_troop_lucky_character_switch");
     return localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
   }
+  
+  public static String b(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
+  {
+    if ((paramQQAppInterface != null) && (paramTroopInfo != null) && (paramTroopInfo.mTroopInfoExtObj != null) && (!TextUtils.isEmpty(paramTroopInfo.troopuin)))
+    {
+      if (!a(paramQQAppInterface, paramTroopInfo)) {
+        return "";
+      }
+      long l = paramTroopInfo.mTroopInfoExtObj.luckyWordId;
+      if (l == 0L) {
+        return "";
+      }
+      int i = paramTroopInfo.mTroopInfoExtObj.lightCharNum;
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("https://gxh.vip.qq.com/xydata/groupluckyword/item/");
+      paramQQAppInterface.append(l);
+      paramQQAppInterface.append("/tinypic-");
+      paramQQAppInterface.append(i);
+      paramQQAppInterface.append(".png");
+      return paramQQAppInterface.toString();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LuckyCharacterUtil", 2, "getLuckyCharacterPicUrl args err");
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.luckycharacter.TroopLuckyCharacterUtil
  * JD-Core Version:    0.7.0.1
  */

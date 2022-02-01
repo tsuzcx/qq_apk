@@ -28,26 +28,15 @@ import java.util.List;
 public class TAVClip
   implements TAVTransitionableAudio, TAVTransitionableVideo, Cloneable
 {
-  private final String TAG;
-  private TAVAudioConfiguration audioConfiguration;
-  private HashMap<String, Object> extraTrackInfoMap;
+  private TAVAudioConfiguration audioConfiguration = new TAVAudioConfiguration();
+  private HashMap<String, Object> extraTrackInfoMap = new HashMap();
   private TAVResource resource;
-  private CMTime startTime;
+  private CMTime startTime = CMTime.CMTimeZero;
   @Nullable
   private TAVTransition transition;
-  private TAVVideoConfiguration videoConfiguration;
+  private TAVVideoConfiguration videoConfiguration = new TAVVideoConfiguration();
   
-  public TAVClip()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("TAVClip@");
-    localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.TAG = localStringBuilder.toString();
-    this.extraTrackInfoMap = new HashMap();
-    this.startTime = CMTime.CMTimeZero;
-    this.audioConfiguration = new TAVAudioConfiguration();
-    this.videoConfiguration = new TAVVideoConfiguration();
-  }
+  public TAVClip() {}
   
   public TAVClip(Asset paramAsset)
   {
@@ -285,7 +274,7 @@ public class TAVClip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.composition.TAVClip
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ import mqq.util.WeakReference;
 
 public class OnLineStatusBlurBg
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  private String jdField_a_of_type_JavaLangString = "";
-  private WeakReference<OnLineStatusBlurBg.OnLineStatusBlurBgListener> jdField_a_of_type_MqqUtilWeakReference;
+  private String a = "";
+  private Bitmap b = null;
+  private WeakReference<OnLineStatusBlurBg.OnLineStatusBlurBgListener> c;
   
   private void a(@NonNull OnLineStatusBlurBg.BlurBgItem paramBlurBgItem, Bitmap paramBitmap, int paramInt1, String paramString, int paramInt2)
   {
@@ -23,10 +23,10 @@ public class OnLineStatusBlurBg
   
   public void a(@NonNull OnLineStatusBlurBg.BlurBgItem paramBlurBgItem, OnLineStatusBlurBg.OnLineStatusBlurBgListener paramOnLineStatusBlurBgListener)
   {
-    if ((paramBlurBgItem.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) && (paramOnLineStatusBlurBgListener != null))
+    if ((paramBlurBgItem.a != null) && (paramOnLineStatusBlurBgListener != null))
     {
       int i;
-      if ((!"1103".equals(QQTheme.a())) && (!"2920".equals(QQTheme.a()))) {
+      if ((!"1103".equals(QQTheme.getCurrentThemeId())) && (!"2920".equals(QQTheme.getCurrentThemeId()))) {
         i = 0;
       } else {
         i = 1;
@@ -34,30 +34,30 @@ public class OnLineStatusBlurBg
       if (Build.VERSION.SDK_INT <= 20)
       {
         if (i != 0) {
-          i = paramBlurBgItem.c;
+          i = paramBlurBgItem.d;
         } else {
-          i = paramBlurBgItem.jdField_a_of_type_Int;
+          i = paramBlurBgItem.b;
         }
         paramOnLineStatusBlurBgListener.a(false, null, i);
         return;
       }
       if (i != 0) {
-        i = paramBlurBgItem.c;
+        i = paramBlurBgItem.d;
       } else {
-        i = paramBlurBgItem.b;
+        i = paramBlurBgItem.c;
       }
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramBlurBgItem.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getActivityName());
+      ((StringBuilder)localObject).append(paramBlurBgItem.a.getActivityName());
       ((StringBuilder)localObject).append("_");
       ((StringBuilder)localObject).append(i);
       localObject = ((StringBuilder)localObject).toString();
-      if (((String)localObject).equals(this.jdField_a_of_type_JavaLangString))
+      if (((String)localObject).equals(this.a))
       {
-        paramOnLineStatusBlurBgListener.a(true, this.jdField_a_of_type_AndroidGraphicsBitmap, i);
+        paramOnLineStatusBlurBgListener.a(true, this.b, i);
         return;
       }
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnLineStatusBlurBgListener);
-      a(paramBlurBgItem, DecorViewHelper.a(paramBlurBgItem.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity), DecorViewHelper.a(paramBlurBgItem.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity), (String)localObject, i);
+      this.c = new WeakReference(paramOnLineStatusBlurBgListener);
+      a(paramBlurBgItem, DecorViewHelper.a(paramBlurBgItem.a), DecorViewHelper.b(paramBlurBgItem.a), (String)localObject, i);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -67,7 +67,7 @@ public class OnLineStatusBlurBg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnLineStatusBlurBg
  * JD-Core Version:    0.7.0.1
  */

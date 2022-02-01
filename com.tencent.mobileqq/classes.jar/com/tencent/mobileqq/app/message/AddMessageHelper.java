@@ -34,7 +34,7 @@ public class AddMessageHelper
     if ((paramBoolean1) && (MsgProxyUtils.a(paramInt)) && (QLog.isColorLevel())) {
       QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
     }
-    long l = MessageCache.a();
+    long l = MessageCache.c();
     int i;
     if (paramBoolean1) {
       i = -5001;
@@ -73,18 +73,18 @@ public class AddMessageHelper
       ((StringBuilder)localObject).append(MessageRecordUtil.a(paramString2));
       QLog.d("AddMessageHelper", 2, ((StringBuilder)localObject).toString());
     }
-    long l = MessageCache.a();
+    long l = MessageCache.c();
     Object localObject = (MessageForGrayTips)MessageRecordFactory.a(-1028);
     ((MessageForGrayTips)localObject).init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
     ((MessageForGrayTips)localObject).isread = true;
-    if (!MessageHandlerUtils.a(paramQQAppInterface, (MessageRecord)localObject)) {
+    if (!MessageHandlerUtils.b(paramQQAppInterface, (MessageRecord)localObject)) {
       paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject, paramQQAppInterface.getCurrentAccountUin());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.AddMessageHelper
  * JD-Core Version:    0.7.0.1
  */

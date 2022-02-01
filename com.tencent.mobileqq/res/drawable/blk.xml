@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-vector android:drawable="@drawable/blj"
+<vector android:height="56.0dip" android:width="56.0dip" android:viewportWidth="56.0" android:viewportHeight="56.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <target android:name="ring_outer" android:animation="@anim/jf" />
-    <target android:name="ring_outer_path" android:animation="@anim/jg" />
-    <target android:name="dot_group" android:animation="@anim/je" />
-</animated-vector>
+    <path android:fillColor="#00000000" android:pathData="M41,37l4.3301,2.5l0,5l-4.3301,2.5l-4.3301,-2.5l0,-5z" android:strokeColor="#ff000000" android:strokeWidth="3.0" android:fillType="evenOdd" />
+    <path android:fillColor="#00000000" android:pathData="M27,20m-11,0a11,11 0,1 1,22 0a11,11 0,1 1,-22 0" android:strokeColor="#ff000000" android:strokeWidth="4.0" android:strokeLineCap="square" android:fillType="evenOdd" />
+    <group>
+        <clip-path android:pathData="M5,34h27v15h-27z" />
+        <path android:fillColor="#00000000" android:pathData="M45,46C40.0108,42.483 33.9662,40.4243 27.4522,40.4243C20.9798,40.4243 14.9707,42.4568 10,45.9328" android:strokeColor="#ff000000" android:strokeWidth="4.0" android:fillType="evenOdd" />
+    </group>
+</vector>

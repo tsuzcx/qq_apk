@@ -35,8 +35,8 @@ public class CommonResourceNameGrabStrategy
       {
         paramView = (SkinnableColorStateList)paramView;
         localObject = new ResourceGrabSkinData(3, paramView.skinData);
-        ((ResourceGrabSkinData)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
-        ((ResourceGrabSkinData)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
+        ((ResourceGrabSkinData)localObject).c = paramView.getStateSpecs();
+        ((ResourceGrabSkinData)localObject).d = paramView.getColors();
         localArrayList.add(localObject);
       }
     }
@@ -45,7 +45,7 @@ public class CommonResourceNameGrabStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.strategy.CommonResourceNameGrabStrategy
  * JD-Core Version:    0.7.0.1
  */

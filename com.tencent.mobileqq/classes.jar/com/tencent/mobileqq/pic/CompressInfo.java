@@ -10,116 +10,98 @@ public class CompressInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<CompressInfo> CREATOR = new CompressInfo.1();
-  public int a;
-  public ThumbWidthHeightDP a;
   public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
+  public int b = -1;
   public boolean c;
-  public int d;
-  public String d;
   public boolean d;
-  public int e;
-  public String e;
   public boolean e;
-  public int f;
   public String f;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public int h = 2;
+  public boolean g = true;
+  public String h;
   public int i;
-  public int j = -1;
+  public int j;
+  public String k;
+  public String l;
+  public int m;
+  public int n;
+  public int o;
+  public int p;
+  public int q = 2;
+  public int r;
+  public String s;
+  public boolean t;
+  public boolean u = false;
+  public int v = -1;
+  public boolean w = false;
+  public ThumbWidthHeightDP x;
   
-  public CompressInfo()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-  }
+  public CompressInfo() {}
   
   private CompressInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
     a(paramParcel);
   }
   
   public CompressInfo(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangString = paramString;
-    this.jdField_g_of_type_Int = paramInt;
+    this.h = paramString;
+    this.p = paramInt;
   }
   
   public CompressInfo(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangString = paramString;
-    this.jdField_g_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.h = paramString;
+    this.p = paramInt1;
+    this.b = paramInt2;
   }
   
   public void a(Parcel paramParcel)
   {
     boolean[] arrayOfBoolean = new boolean[7];
     paramParcel.readBooleanArray(arrayOfBoolean);
-    this.jdField_a_of_type_Boolean = arrayOfBoolean[0];
-    this.jdField_b_of_type_Boolean = arrayOfBoolean[1];
-    this.jdField_a_of_type_Boolean = arrayOfBoolean[0];
-    this.jdField_b_of_type_Boolean = arrayOfBoolean[1];
-    this.jdField_c_of_type_Boolean = arrayOfBoolean[2];
-    this.jdField_d_of_type_Boolean = arrayOfBoolean[3];
-    this.jdField_e_of_type_Boolean = arrayOfBoolean[4];
-    this.jdField_f_of_type_Boolean = arrayOfBoolean[5];
-    this.jdField_g_of_type_Boolean = arrayOfBoolean[6];
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.jdField_g_of_type_Int = paramParcel.readInt();
-    this.h = paramParcel.readInt();
+    this.c = arrayOfBoolean[0];
+    this.d = arrayOfBoolean[1];
+    this.c = arrayOfBoolean[0];
+    this.d = arrayOfBoolean[1];
+    this.e = arrayOfBoolean[2];
+    this.g = arrayOfBoolean[3];
+    this.t = arrayOfBoolean[4];
+    this.u = arrayOfBoolean[5];
+    this.w = arrayOfBoolean[6];
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readInt();
+    this.f = paramParcel.readString();
+    this.h = paramParcel.readString();
     this.i = paramParcel.readInt();
-    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
     this.j = paramParcel.readInt();
+    this.k = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readInt();
+    this.n = paramParcel.readInt();
+    this.o = paramParcel.readInt();
+    this.p = paramParcel.readInt();
+    this.q = paramParcel.readInt();
+    this.r = paramParcel.readInt();
+    this.s = paramParcel.readString();
+    this.v = paramParcel.readInt();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.d = true;
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    int k;
+    int i1;
     if (paramBoolean) {
-      k = 2131691038;
+      i1 = 2131887984;
     } else {
-      k = 2131691034;
+      i1 = 2131887980;
     }
-    this.jdField_b_of_type_JavaLangString = localBaseApplication.getString(k);
+    this.f = localBaseApplication.getString(i1);
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public int describeContents()
@@ -133,82 +115,82 @@ public class CompressInfo
     localStringBuilder.append("\nCompressInfo");
     localStringBuilder.append("\n|-");
     localStringBuilder.append("localUUID:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("isSuccess:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("isOOM:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("isOOS:");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("oomMsg:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("srcPath:");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append("\n|-");
-    localStringBuilder.append("specPath:");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n|-");
-    localStringBuilder.append("destPath:");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n|-");
-    localStringBuilder.append("picType:");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
-    localStringBuilder.append("\n|-");
-    localStringBuilder.append("picQuality:");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
-    localStringBuilder.append("\n|-");
-    localStringBuilder.append("networkType:");
     localStringBuilder.append(this.h);
     localStringBuilder.append("\n|-");
+    localStringBuilder.append("specPath:");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("destPath:");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("picType:");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("picQuality:");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("networkType:");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append("\n|-");
     localStringBuilder.append("sampleCompressCnt:");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.r);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("compressMsg:");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.s);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("isResultOriginal:");
-    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    localStringBuilder.append(this.t);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("uinType:");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.v);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("mCheckJpgQualityAndSize:");
-    localStringBuilder.append(this.jdField_g_of_type_Boolean);
+    localStringBuilder.append(this.w);
     localStringBuilder.append("\n|-");
     localStringBuilder.append("isOverride:");
-    localStringBuilder.append(this.jdField_f_of_type_Boolean);
+    localStringBuilder.append(this.u);
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeBooleanArray(new boolean[] { this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean, this.jdField_f_of_type_Boolean, this.jdField_g_of_type_Boolean });
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeInt(this.jdField_g_of_type_Int);
-    paramParcel.writeInt(this.h);
+    paramParcel.writeBooleanArray(new boolean[] { this.c, this.d, this.e, this.g, this.t, this.u, this.w });
+    paramParcel.writeString(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeString(this.f);
+    paramParcel.writeString(this.h);
     paramParcel.writeInt(this.i);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
     paramParcel.writeInt(this.j);
+    paramParcel.writeString(this.k);
+    paramParcel.writeString(this.l);
+    paramParcel.writeInt(this.m);
+    paramParcel.writeInt(this.n);
+    paramParcel.writeInt(this.o);
+    paramParcel.writeInt(this.p);
+    paramParcel.writeInt(this.q);
+    paramParcel.writeInt(this.r);
+    paramParcel.writeString(this.s);
+    paramParcel.writeInt(this.v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.CompressInfo
  * JD-Core Version:    0.7.0.1
  */

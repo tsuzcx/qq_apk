@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.os.SystemClock;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qphone.base.util.StringUtils;
@@ -30,7 +31,7 @@ public class NativeConfigStore
   {
     try
     {
-      String str = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getDeviceId();
+      String str = PhoneInfoMonitor.getDeviceId((TelephonyManager)BaseApplication.getContext().getSystemService("phone"));
       return str;
     }
     catch (Exception localException)
@@ -172,54 +173,54 @@ public class NativeConfigStore
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_1
-    //   4: invokevirtual 219	com/tencent/msf/boot/config/NativeConfigStore:removeConfigNative	(Ljava/lang/String;)I
+    //   4: invokevirtual 222	com/tencent/msf/boot/config/NativeConfigStore:removeConfigNative	(Ljava/lang/String;)I
     //   7: istore_2
     //   8: goto +22 -> 30
     //   11: astore_1
     //   12: goto +85 -> 97
     //   15: astore_1
-    //   16: getstatic 59	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
+    //   16: getstatic 62	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
     //   19: iconst_2
-    //   20: ldc 221
+    //   20: ldc 224
     //   22: aload_1
-    //   23: invokestatic 223	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   23: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   26: sipush -10000
     //   29: istore_2
     //   30: iload_2
     //   31: ifeq +62 -> 93
-    //   34: new 225	java/util/HashMap
+    //   34: new 228	java/util/HashMap
     //   37: dup
     //   38: bipush 8
-    //   40: invokespecial 228	java/util/HashMap:<init>	(I)V
+    //   40: invokespecial 231	java/util/HashMap:<init>	(I)V
     //   43: astore_1
-    //   44: new 99	java/lang/StringBuilder
+    //   44: new 102	java/lang/StringBuilder
     //   47: dup
-    //   48: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   48: invokespecial 103	java/lang/StringBuilder:<init>	()V
     //   51: astore_3
     //   52: aload_3
     //   53: iload_2
-    //   54: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 186	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   57: pop
     //   58: aload_3
-    //   59: ldc 230
-    //   61: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: ldc 233
+    //   61: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: pop
     //   65: aload_1
-    //   66: ldc 232
+    //   66: ldc 235
     //   68: aload_3
-    //   69: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokevirtual 236	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   69: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   72: invokevirtual 239	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   75: pop
-    //   76: getstatic 242	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   79: getfield 246	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
-    //   82: ldc 248
+    //   76: getstatic 245	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   79: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/d/j;
+    //   82: ldc 251
     //   84: iconst_1
     //   85: lconst_0
     //   86: lconst_0
     //   87: aload_1
     //   88: iconst_0
     //   89: iconst_0
-    //   90: invokevirtual 254	com/tencent/mobileqq/msf/core/c/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
+    //   90: invokevirtual 257	com/tencent/mobileqq/msf/core/d/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
     //   93: aload_0
     //   94: monitorexit
     //   95: iload_2
@@ -255,74 +256,74 @@ public class NativeConfigStore
     //   5: aload_0
     //   6: aload_1
     //   7: aload_2
-    //   8: invokevirtual 257	com/tencent/msf/boot/config/NativeConfigStore:setConfigNative	(Ljava/lang/String;Ljava/lang/String;)I
+    //   8: invokevirtual 260	com/tencent/msf/boot/config/NativeConfigStore:setConfigNative	(Ljava/lang/String;Ljava/lang/String;)I
     //   11: istore_3
     //   12: goto +53 -> 65
     //   15: astore_1
     //   16: goto +132 -> 148
     //   19: astore_1
-    //   20: getstatic 59	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
+    //   20: getstatic 62	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
     //   23: iconst_1
-    //   24: ldc_w 259
+    //   24: ldc_w 262
     //   27: aload_1
-    //   28: invokestatic 223	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   28: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   31: iload 4
     //   33: istore_3
-    //   34: new 261	java/util/Random
+    //   34: new 264	java/util/Random
     //   37: dup
-    //   38: invokespecial 262	java/util/Random:<init>	()V
+    //   38: invokespecial 265	java/util/Random:<init>	()V
     //   41: bipush 100
-    //   43: invokevirtual 266	java/util/Random:nextInt	(I)I
+    //   43: invokevirtual 269	java/util/Random:nextInt	(I)I
     //   46: iconst_1
     //   47: if_icmpge +18 -> 65
-    //   50: invokestatic 272	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   50: invokestatic 275	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   53: aload_1
-    //   54: ldc_w 274
+    //   54: ldc_w 277
     //   57: aconst_null
-    //   58: invokestatic 280	com/tencent/feedback/eup/CrashReport:handleCatchException	(Ljava/lang/Thread;Ljava/lang/Throwable;Ljava/lang/String;[B)Z
+    //   58: invokestatic 283	com/tencent/feedback/eup/CrashReport:handleCatchException	(Ljava/lang/Thread;Ljava/lang/Throwable;Ljava/lang/String;[B)Z
     //   61: pop
     //   62: iload 4
     //   64: istore_3
     //   65: iload_3
     //   66: ifeq +78 -> 144
-    //   69: getstatic 242	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   69: getstatic 245	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
     //   72: ifnull +72 -> 144
-    //   75: getstatic 242	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   78: getfield 246	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
+    //   75: getstatic 245	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   78: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/d/j;
     //   81: ifnull +63 -> 144
-    //   84: new 225	java/util/HashMap
+    //   84: new 228	java/util/HashMap
     //   87: dup
     //   88: bipush 8
-    //   90: invokespecial 228	java/util/HashMap:<init>	(I)V
+    //   90: invokespecial 231	java/util/HashMap:<init>	(I)V
     //   93: astore_1
-    //   94: new 99	java/lang/StringBuilder
+    //   94: new 102	java/lang/StringBuilder
     //   97: dup
-    //   98: invokespecial 100	java/lang/StringBuilder:<init>	()V
+    //   98: invokespecial 103	java/lang/StringBuilder:<init>	()V
     //   101: astore_2
     //   102: aload_2
     //   103: iload_3
-    //   104: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   104: invokevirtual 186	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   107: pop
     //   108: aload_2
-    //   109: ldc 230
-    //   111: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: ldc 233
+    //   111: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: aload_1
-    //   116: ldc 232
+    //   116: ldc 235
     //   118: aload_2
-    //   119: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: invokevirtual 236	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   119: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: invokevirtual 239	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   125: pop
-    //   126: getstatic 242	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   129: getfield 246	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/c/j;
-    //   132: ldc_w 282
+    //   126: getstatic 245	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   129: getfield 249	com/tencent/mobileqq/msf/core/MsfCore:statReporter	Lcom/tencent/mobileqq/msf/core/d/j;
+    //   132: ldc_w 285
     //   135: iconst_1
     //   136: lconst_0
     //   137: lconst_0
     //   138: aload_1
     //   139: iconst_0
     //   140: iconst_0
-    //   141: invokevirtual 254	com/tencent/mobileqq/msf/core/c/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
+    //   141: invokevirtual 257	com/tencent/mobileqq/msf/core/d/j:a	(Ljava/lang/String;ZJJLjava/util/Map;ZZ)V
     //   144: aload_0
     //   145: monitorexit
     //   146: iload_3
@@ -353,7 +354,7 @@ public class NativeConfigStore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.boot.config.NativeConfigStore
  * JD-Core Version:    0.7.0.1
  */

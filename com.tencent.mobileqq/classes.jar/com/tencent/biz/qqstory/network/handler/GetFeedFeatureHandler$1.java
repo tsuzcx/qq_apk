@@ -24,11 +24,11 @@ class GetFeedFeatureHandler$1
     Object localObject3;
     if (GetFeedFeatureHandler.a(this.this$0))
     {
-      localObject1 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
+      localObject1 = this.this$0.c.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        localObject3 = (Long)GetFeedFeatureHandler.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+        localObject3 = (Long)GetFeedFeatureHandler.f.get(localObject2);
         if ((localObject3 != null) && (System.currentTimeMillis() - ((Long)localObject3).longValue() < 30000L))
         {
           ((Iterator)localObject1).remove();
@@ -36,27 +36,27 @@ class GetFeedFeatureHandler$1
         }
         else
         {
-          GetFeedFeatureHandler.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, Long.valueOf(System.currentTimeMillis()));
+          GetFeedFeatureHandler.f.put(localObject2, Long.valueOf(System.currentTimeMillis()));
         }
       }
     }
-    if (this.this$0.jdField_a_of_type_JavaUtilList.size() == 0) {
+    if (this.this$0.c.size() == 0) {
       return;
     }
-    SLog.a("Q.qqstory.home.GetFeedFeatureHandler", "request for feed info:%s", this.this$0.jdField_a_of_type_JavaUtilList);
+    SLog.a("Q.qqstory.home.GetFeedFeatureHandler", "request for feed info:%s", this.this$0.c);
     Object localObject1 = new ArrayList();
-    Object localObject2 = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject2 = this.this$0.c.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (String)((Iterator)localObject2).next();
-      if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a((String)localObject3) == null)
+      if (this.this$0.e.b((String)localObject3) == null)
       {
         if (!TextUtils.isEmpty((CharSequence)localObject3)) {
           ((List)localObject1).add(localObject3);
         }
       }
       else {
-        this.this$0.b.add(localObject3);
+        this.this$0.d.add(localObject3);
       }
     }
     if (!((List)localObject1).isEmpty())
@@ -65,27 +65,27 @@ class GetFeedFeatureHandler$1
         QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedItem: first=", ((List)localObject1).get(0) });
       }
       localObject2 = new BatchGetFriendStoryFeedInfoRequest();
-      ((BatchGetFriendStoryFeedInfoRequest)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
+      ((BatchGetFriendStoryFeedInfoRequest)localObject2).f = new ArrayList();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject3 = new FeedIdListSeqInfo((String)((Iterator)localObject1).next(), 0, "", "");
-        ((BatchGetFriendStoryFeedInfoRequest)localObject2).jdField_a_of_type_JavaUtilList.add(localObject3);
+        ((BatchGetFriendStoryFeedInfoRequest)localObject2).f.add(localObject3);
       }
       CmdTaskManger.a().a((NetworkRequest)localObject2, this.this$0);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedFeature: first=", this.this$0.jdField_a_of_type_JavaUtilList.get(0) });
+      QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request FeedFeature: first=", this.this$0.c.get(0) });
     }
     localObject1 = new GetFeedFeatureRequest();
-    ((GetFeedFeatureRequest)localObject1).jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_JavaUtilList;
+    ((GetFeedFeatureRequest)localObject1).f = this.this$0.c;
     CmdTaskManger.a().a((NetworkRequest)localObject1, this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetFeedFeatureHandler.1
  * JD-Core Version:    0.7.0.1
  */

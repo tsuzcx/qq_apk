@@ -20,7 +20,7 @@ import com.tencent.widget.XEditTextEx;
 public class TroopAIORobotLayout
   extends RobotPanelLayoutBase
 {
-  protected String c;
+  protected String f;
   
   public TroopAIORobotLayout(Context paramContext)
   {
@@ -39,25 +39,25 @@ public class TroopAIORobotLayout
   
   private String a(String paramString1, String paramString2, String paramString3, RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData, ITroopRobotService paramITroopRobotService)
   {
-    boolean bool = paramRobotPanelItemData.jdField_b_of_type_Boolean;
+    boolean bool = paramRobotPanelItemData.d;
     Object localObject = "";
     int i;
     if (bool)
     {
-      paramRobotPanelItemData.jdField_b_of_type_Boolean = false;
+      paramRobotPanelItemData.d = false;
       paramITroopRobotService.closeTalking();
-      i = paramRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.c.indexOf("content=");
+      i = paramRobotPanelItemData.b.c.indexOf("content=");
       paramString3 = (String)localObject;
       if (i > 0) {
-        paramString3 = paramRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.c.substring(i + 8);
+        paramString3 = paramRobotPanelItemData.b.c.substring(i + 8);
       }
-      localObject = paramRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.jdField_a_of_type_JavaLangString;
+      localObject = paramRobotPanelItemData.b.a;
       paramITroopRobotService.report("panel", "talk_out", paramString2, paramString2, "1", "");
     }
     else
     {
-      String str = paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString;
-      paramRobotPanelItemData.jdField_b_of_type_Boolean = true;
+      String str = paramRobotPanelItemData.a.a;
+      paramRobotPanelItemData.d = true;
       paramITroopRobotService.openTalking(paramString1, paramString2, paramString3);
       i = paramRobotPanelItemData.a.c.indexOf("content=");
       paramString3 = (String)localObject;
@@ -97,18 +97,18 @@ public class TroopAIORobotLayout
         return;
       }
       SpannableString localSpannableString = null;
-      if ((paramAIOShortcutBarContext.a() instanceof QQAppInterface)) {
-        localSpannableString = AtTroopMemberSpan.a((QQAppInterface)paramAIOShortcutBarContext.a(), getContext(), paramString1, paramString1, paramString2, false, true);
+      if ((paramAIOShortcutBarContext.c() instanceof QQAppInterface)) {
+        localSpannableString = AtTroopMemberSpan.a((QQAppInterface)paramAIOShortcutBarContext.c(), getContext(), paramString1, paramString1, paramString2, false, true);
       }
       if (localSpannableString != null) {
         if (!paramBoolean) {
-          paramAIOShortcutBarContext.a().setText(localSpannableString);
+          paramAIOShortcutBarContext.k().setText(localSpannableString);
         } else {
-          paramAIOShortcutBarContext.a().append(localSpannableString);
+          paramAIOShortcutBarContext.k().append(localSpannableString);
         }
       }
-      paramAIOShortcutBarContext.a().append(" ");
-      paramAIOShortcutBarContext.a().setSelection(paramAIOShortcutBarContext.a().getText().length());
+      paramAIOShortcutBarContext.k().append(" ");
+      paramAIOShortcutBarContext.k().setSelection(paramAIOShortcutBarContext.k().getText().length());
       paramAIOShortcutBarContext.a(paramString1, paramString2, true, 0);
     }
   }
@@ -121,7 +121,7 @@ public class TroopAIORobotLayout
     } else {
       str1 = "on";
     }
-    int j = b();
+    int j = getItemCount();
     if (j <= 0) {
       return;
     }
@@ -133,18 +133,18 @@ public class TroopAIORobotLayout
       if (i >= j) {
         break;
       }
-      RobotPanelLayoutBase.RobotPanelItemData localRobotPanelItemData = (RobotPanelLayoutBase.RobotPanelItemData)a(i);
-      if ((localRobotPanelItemData != null) && (!TextUtils.isEmpty(localRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.jdField_a_of_type_JavaLangString)))
+      RobotPanelLayoutBase.RobotPanelItemData localRobotPanelItemData = (RobotPanelLayoutBase.RobotPanelItemData)c(i);
+      if ((localRobotPanelItemData != null) && (!TextUtils.isEmpty(localRobotPanelItemData.b.a)))
       {
-        localRobotPanelItemData.jdField_b_of_type_Boolean = paramBoolean;
+        localRobotPanelItemData.d = paramBoolean;
         if (!paramBoolean)
         {
-          i = localRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.c.indexOf("content=");
+          i = localRobotPanelItemData.b.c.indexOf("content=");
           str2 = str1;
           if (i <= 0) {
             break;
           }
-          str2 = localRobotPanelItemData.jdField_b_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$RobotPanelItemInfoData.c.substring(i + 8);
+          str2 = localRobotPanelItemData.b.c.substring(i + 8);
           break;
         }
         i = localRobotPanelItemData.a.c.indexOf("content=");
@@ -170,14 +170,14 @@ public class TroopAIORobotLayout
     catch (Exception paramString1) {}
   }
   
-  private boolean b()
+  private boolean g()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext != null)
+    if (this.c != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a() == null) {
+      if (this.c.k() == null) {
         return true;
       }
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a().getEditableText().toString();
+      String str = this.c.k().getEditableText().toString();
       if (TextUtils.isEmpty(str)) {
         return true;
       }
@@ -191,7 +191,7 @@ public class TroopAIORobotLayout
   
   public String a(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData)
   {
-    Object localObject = a();
+    Object localObject = getTroopRobotService();
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -199,7 +199,7 @@ public class TroopAIORobotLayout
       }
       return null;
     }
-    paramRobotPanelItemData = a(this.c, this.jdField_a_of_type_JavaLangString, this.b, paramRobotPanelItemData, (ITroopRobotService)localObject);
+    paramRobotPanelItemData = a(this.f, this.a, this.b, paramRobotPanelItemData, (ITroopRobotService)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -210,59 +210,17 @@ public class TroopAIORobotLayout
     return paramRobotPanelItemData;
   }
   
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData)
-  {
-    Object localObject = a();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAIORobotLayout", 2, "troopRobotService = null");
-      }
-      return;
-    }
-    if (b())
-    {
-      AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a(52);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a().append(paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString);
-      AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(25);
-      localAIOShortcutBarEvent.a().putBoolean("isSending", true);
-      localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.c();
-      localAIOShortcutBarEvent.a().putBoolean("isSending", false);
-      localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
-      if (!((ITroopRobotService)localObject).isTalking()) {
-        a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext, this.jdField_a_of_type_JavaLangString, this.b, false);
-      }
-    }
-    else
-    {
-      a(getContext(), paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext);
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("send to robot: ");
-      ((StringBuilder)localObject).append(paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString);
-      QLog.d("TroopAIORobotLayout", 2, ((StringBuilder)localObject).toString());
-    }
-  }
-  
   public void a(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a() instanceof QQAppInterface)) {
-      RobotUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a(), "0X8009FA2", this.jdField_a_of_type_JavaLangString, paramString);
+    if ((this.c.c() instanceof QQAppInterface)) {
+      RobotUtils.a((QQAppInterface)this.c.c(), "0X8009FA2", this.a, paramString);
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, AIOShortcutBarContext paramAIOShortcutBarContext, RobotPanelLayoutBase.GetListDataCallback paramGetListDataCallback)
   {
     super.a(paramString1, paramString3, paramAIOShortcutBarContext, paramGetListDataCallback);
-    paramAIOShortcutBarContext = a();
+    paramAIOShortcutBarContext = getTroopRobotService();
     if (paramAIOShortcutBarContext == null)
     {
       if (QLog.isColorLevel()) {
@@ -279,11 +237,11 @@ public class TroopAIORobotLayout
     {
       long l2;
       long l3;
-      label58:
+      label57:
       Context localContext;
       StringBuilder localStringBuilder;
       int i;
-      break label58;
+      break label57;
     }
     try
     {
@@ -292,11 +250,11 @@ public class TroopAIORobotLayout
     }
     catch (Exception localException2)
     {
-      break label61;
+      break label60;
     }
     l2 = 0L;
-    label61:
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramString2))) {
+    label60:
+    if ((!TextUtils.isEmpty(this.a)) && (!this.a.equals(paramString2))) {
       a(false);
     }
     localContext = getContext();
@@ -304,13 +262,63 @@ public class TroopAIORobotLayout
     localStringBuilder.append(paramString1);
     localStringBuilder.append("_");
     localStringBuilder.append(paramString2);
-    i = SharedPreUtils.ak(localContext, localStringBuilder.toString());
+    i = SharedPreUtils.aR(localContext, localStringBuilder.toString());
     paramAIOShortcutBarContext.reqPanelList(l2, l1, i, new TroopAIORobotLayout.1(this, i, paramString2, paramString1, paramString3, paramGetListDataCallback));
+  }
+  
+  public void b()
+  {
+    super.b();
   }
   
   public void b(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData)
   {
-    ITroopRobotService localITroopRobotService = a();
+    Object localObject = getTroopRobotService();
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAIORobotLayout", 2, "troopRobotService = null");
+      }
+      return;
+    }
+    if (g())
+    {
+      AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.c.a(52);
+      this.c.k().append(paramRobotPanelItemData.a.a);
+      AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(25);
+      localAIOShortcutBarEvent.a().putBoolean("isSending", true);
+      localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
+      this.c.l();
+      localAIOShortcutBarEvent.a().putBoolean("isSending", false);
+      localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
+      if (!((ITroopRobotService)localObject).isTalking()) {
+        a(this.c, this.a, this.b, false);
+      }
+    }
+    else
+    {
+      a(getContext(), paramRobotPanelItemData.a.a, this.a, this.b, false, this.c);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("send to robot: ");
+      ((StringBuilder)localObject).append(paramRobotPanelItemData.a.a);
+      QLog.d("TroopAIORobotLayout", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void b(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData, String paramString)
+  {
+    paramRobotPanelItemData = getTroopRobotService();
+    if (paramRobotPanelItemData != null) {
+      paramRobotPanelItemData.report("panel", "clk", this.f, this.a, paramString, "");
+    }
+  }
+  
+  public void c(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData)
+  {
+    ITroopRobotService localITroopRobotService = getTroopRobotService();
     if (localITroopRobotService == null)
     {
       if (QLog.isColorLevel()) {
@@ -320,17 +328,17 @@ public class TroopAIORobotLayout
     }
     try
     {
-      long l1 = Long.parseLong(this.c);
-      long l2 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+      long l1 = Long.parseLong(this.f);
+      long l2 = Long.parseLong(this.a);
       localObject = null;
       int i = paramRobotPanelItemData.a.c.indexOf("content=");
       if (i > 0) {
         localObject = paramRobotPanelItemData.a.c.substring(i + 8);
       }
-      AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a(52);
-      if (b())
+      AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)this.c.a(52);
+      if (g())
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a().append(paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString);
+        this.c.k().append(paramRobotPanelItemData.a.a);
         AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(25);
         if (localAIOShortcutBarHelper != null)
         {
@@ -341,50 +349,42 @@ public class TroopAIORobotLayout
           localAIOShortcutBarEvent.a = 18;
           localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.c();
+        this.c.l();
         localAIOShortcutBarEvent.a().putBoolean("isSending", false);
         localAIOShortcutBarEvent.a = 25;
         if (localAIOShortcutBarHelper != null) {
           localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
         }
         if (!localITroopRobotService.isTalking()) {
-          a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext, this.jdField_a_of_type_JavaLangString, this.b, false);
+          a(this.c, this.a, this.b, false);
         }
       }
       else
       {
-        a(getContext(), paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext);
+        a(getContext(), paramRobotPanelItemData.a.a, this.a, this.b, true, this.c);
       }
       localITroopRobotService.sendContent(l1, l2, (String)localObject, new TroopAIORobotLayout.2(this, paramRobotPanelItemData));
     }
     catch (Exception localException)
     {
       Object localObject;
-      label299:
-      break label299;
+      label301:
+      break label301;
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("send to server: ");
-      ((StringBuilder)localObject).append(paramRobotPanelItemData.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramRobotPanelItemData.a.a);
       QLog.d("TroopAIORobotLayout", 2, ((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public void b(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData, String paramString)
-  {
-    paramRobotPanelItemData = a();
-    if (paramRobotPanelItemData != null) {
-      paramRobotPanelItemData.report("panel", "clk", this.c, this.jdField_a_of_type_JavaLangString, paramString, "");
     }
   }
   
   public void d(RobotPanelLayoutBase.RobotPanelItemData paramRobotPanelItemData, String paramString)
   {
-    paramRobotPanelItemData = a();
+    paramRobotPanelItemData = getTroopRobotService();
     if (paramRobotPanelItemData != null) {
-      paramRobotPanelItemData.report("panel", "clk", this.c, this.jdField_a_of_type_JavaLangString, paramString, "");
+      paramRobotPanelItemData.report("panel", "clk", this.f, this.a, paramString, "");
     }
   }
   
@@ -392,13 +392,13 @@ public class TroopAIORobotLayout
   {
     super.setVisibility(paramInt);
     if (paramInt != 0) {
-      this.c = null;
+      this.f = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAIORobotLayout
  * JD-Core Version:    0.7.0.1
  */

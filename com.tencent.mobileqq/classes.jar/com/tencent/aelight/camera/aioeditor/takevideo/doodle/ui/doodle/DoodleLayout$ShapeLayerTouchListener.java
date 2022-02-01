@@ -11,27 +11,27 @@ import com.tencent.qphone.base.util.QLog;
 class DoodleLayout$ShapeLayerTouchListener
   implements BaseLayer.OnLayerTouchListener<ShapeLayer>
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
+  int a;
   int b;
+  long c;
   
   private DoodleLayout$ShapeLayerTouchListener(DoodleLayout paramDoodleLayout) {}
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.c(10);
-    if (DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout) > System.currentTimeMillis())
+    this.d.setState(10);
+    if (DoodleLayout.s(this.d) > System.currentTimeMillis())
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(10, Boolean.valueOf(false));
+      this.d.a(10, Boolean.valueOf(false));
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(10, Boolean.valueOf(true));
-      if (DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout).getVisibility() == 0) {
-        DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, false, true);
+      this.d.a(10, Boolean.valueOf(true));
+      if (DoodleLayout.n(this.d).getVisibility() == 0) {
+        DoodleLayout.a(this.d, false, true);
       }
     }
-    DoodleLayout.e(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
+    DoodleLayout.k(this.d);
     if (QLog.isColorLevel()) {
       QLog.d("Personality", 2, "LineLayer draw move hide");
     }
@@ -39,21 +39,21 @@ class DoodleLayout$ShapeLayerTouchListener
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h == 10)
+    if (this.d.C == 10)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(9, Boolean.valueOf(true));
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.c(9);
-      DoodleLayout.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
-      DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, true, true);
+      this.d.a(9, Boolean.valueOf(true));
+      this.d.setState(9);
+      DoodleLayout.b(this.d);
+      DoodleLayout.a(this.d, true, true);
       if (QLog.isColorLevel()) {
         QLog.d("Personality", 2, "LineLayer draw up show");
       }
     }
-    else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h == 9)
+    else if (this.d.C == 9)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(9, Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.c(9);
-      DoodleLayout.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
+      this.d.a(9, Boolean.valueOf(false));
+      this.d.setState(9);
+      DoodleLayout.b(this.d);
       if (QLog.isColorLevel()) {
         QLog.d("Personality", 2, "LineLayer draw up show");
       }
@@ -76,35 +76,35 @@ class DoodleLayout$ShapeLayerTouchListener
         }
         else
         {
-          if (((Math.abs(j - this.jdField_a_of_type_Int) >= 3) || (Math.abs(i - this.b) >= 3)) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h != 11) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h != 10)) {
-            if (!paramShapeLayer.c()) {
+          if (((Math.abs(j - this.a) >= 3) || (Math.abs(i - this.b) >= 3)) && (this.d.C != 11) && (this.d.C != 10)) {
+            if (!paramShapeLayer.h()) {
               a();
-            } else if (4 != this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h) {
-              DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, 4);
+            } else if (4 != this.d.C) {
+              DoodleLayout.a(this.d, 4);
             }
           }
-          if (DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout).getVisibility() != 0) {
+          if (DoodleLayout.r(this.d).getVisibility() != 0) {
             break label296;
           }
-          DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
+          DoodleLayout.a(this.d);
           return false;
         }
       }
-      if (paramShapeLayer.b())
+      if (paramShapeLayer.d())
       {
-        DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, paramShapeLayer.a().a());
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h == 10) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.c(9);
+        DoodleLayout.a(this.d, paramShapeLayer.i().i());
+        if (this.d.C == 10) {
+          this.d.setState(9);
         }
-        DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, 12);
+        DoodleLayout.a(this.d, 12);
         return false;
       }
-      DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
-      if (paramShapeLayer.c())
+      DoodleLayout.a(this.d);
+      if (paramShapeLayer.h())
       {
         AEQLog.b("DoodleLayout", "LineLayer--onLayerTouch--ACTION_UP--is passive activation");
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.m();
-        DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, 0);
+        this.d.n();
+        DoodleLayout.a(this.d, 0);
         return false;
       }
       b();
@@ -112,14 +112,14 @@ class DoodleLayout$ShapeLayerTouchListener
     }
     else
     {
-      if (paramShapeLayer.c())
+      if (paramShapeLayer.h())
       {
         AEQLog.a("DoodleLayout", "LineLayer--onLayerTouch--ACTION_DOWN--is passive activation");
         return false;
       }
-      this.jdField_a_of_type_Int = Math.round(paramMotionEvent.getX());
+      this.a = Math.round(paramMotionEvent.getX());
       this.b = Math.round(paramMotionEvent.getY());
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.c = System.currentTimeMillis();
     }
     label296:
     return false;
@@ -127,7 +127,7 @@ class DoodleLayout$ShapeLayerTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.ShapeLayerTouchListener
  * JD-Core Version:    0.7.0.1
  */

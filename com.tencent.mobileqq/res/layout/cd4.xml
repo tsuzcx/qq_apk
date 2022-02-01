@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:id="@id/k60" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="45.0dip" android:text="@string/iv" android:shadowColor="@color/bx" android:shadowDy="2.0" android:shadowRadius="4.0" />
-    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/k6q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:layout_marginRight="15.0dip" android:text="@string/wa1" android:shadowColor="@color/bx" android:shadowDy="2.0" android:shadowRadius="4.0" android:layout_alignParentRight="true" />
-    <RelativeLayout android:id="@id/m6h" android:background="@color/g9" android:layout_width="fill_parent" android:layout_height="@dimen/bbj" android:layout_alignParentBottom="true">
-        <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleColorAndModeView android:id="@id/nfj" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_marginTop="@dimen/bbi" app:needHeader="true" app:needMosaic="false" app:useCase="o7o" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/fp" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:id="@id/cs9" android:background="@color/jo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/krm" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/ie" android:layout_width="fill_parent" android:layout_height="130.0dip" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/46" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/krm">
+        <RelativeLayout android:id="@id/cs7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+            <ImageView android:id="@id/fi" android:layout_width="69.0dip" android:layout_height="69.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/fz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/fi" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ccffffff" android:ellipsize="end" android:gravity="center" android:id="@id/e4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" android:layout_below="@id/fz" android:layout_centerHorizontal="true" />
+            <Button android:textSize="18.0sp" android:textColor="@color/ai2" android:id="@id/g6" android:background="@drawable/nd" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_below="@id/e4" android:layout_centerHorizontal="true" />
+            <FrameLayout android:id="@id/4p" android:layout_width="fill_parent" android:layout_height="9.0dip" />
+            <FrameLayout android:id="@id/nl3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="9.0dip" />
+        </RelativeLayout>
     </RelativeLayout>
-    <FrameLayout android:id="@id/nec" android:visibility="gone" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="16.0dip" android:layout_above="@id/m6h" android:layout_alignParentRight="true">
-        <ImageView android:id="@id/dyq" android:background="@drawable/bix" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.AEDoodlePenWidthSeekBar android:id="@id/ilm" android:layout_width="15.5dip" android:layout_height="270.0dip" android:layout_centerVertical="true" />
-</merge>
+    <include layout="@layout/cdh" />
+    <FrameLayout android:id="@id/r09" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/r08" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/cf4" />
+    <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

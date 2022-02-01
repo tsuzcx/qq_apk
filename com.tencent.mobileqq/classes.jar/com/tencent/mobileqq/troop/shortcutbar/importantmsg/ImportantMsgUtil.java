@@ -48,26 +48,6 @@ import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
 
 public class ImportantMsgUtil
 {
-  public static int a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return -1;
-    }
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr(MessageConstants.F);
-    if (!TextUtils.isEmpty(paramMessageRecord)) {
-      try
-      {
-        int i = Integer.parseInt(paramMessageRecord);
-        return i;
-      }
-      catch (NumberFormatException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return -1;
-  }
-  
   public static ImportantMsgInfo a(ImportantMsgItem.MsgInfo paramMsgInfo)
   {
     if (paramMsgInfo == null) {
@@ -76,7 +56,7 @@ public class ImportantMsgUtil
     if (!paramMsgInfo.msgNeedShow) {
       return null;
     }
-    Object localObject = (ImportantMsgEntryConfig)QConfigManager.a().a(658);
+    Object localObject = (ImportantMsgEntryConfig)QConfigManager.b().b(658);
     if (localObject == null) {
       return null;
     }
@@ -85,12 +65,12 @@ public class ImportantMsgUtil
       return null;
     }
     ImportantMsgInfo localImportantMsgInfo = new ImportantMsgInfo();
-    localImportantMsgInfo.b(((ImportantMsgEntryConfig.EntryConfig)localObject).jdField_a_of_type_JavaLangString);
+    localImportantMsgInfo.b(((ImportantMsgEntryConfig.EntryConfig)localObject).a);
     localImportantMsgInfo.b(paramMsgInfo.msgSeq);
     localImportantMsgInfo.a(paramMsgInfo.msgSummary);
     localImportantMsgInfo.c(paramMsgInfo.msgTime);
     localImportantMsgInfo.c(paramMsgInfo.msgSendUin);
-    localImportantMsgInfo.a(((ImportantMsgEntryConfig.EntryConfig)localObject).jdField_a_of_type_Long);
+    localImportantMsgInfo.a(((ImportantMsgEntryConfig.EntryConfig)localObject).b);
     return localImportantMsgInfo;
   }
   
@@ -106,16 +86,16 @@ public class ImportantMsgUtil
       return "";
     }
     if (paramInt == 1) {
-      return a(paramMessageRecord);
+      return d(paramMessageRecord);
     }
     if (paramInt == 3) {
-      return b(paramMessageRecord);
+      return e(paramMessageRecord);
     }
     if (paramInt == 2) {
-      return c(paramMessageRecord);
+      return f(paramMessageRecord);
     }
     if (paramInt == 4) {
-      return d(paramMessageRecord);
+      return g(paramMessageRecord);
     }
     if (paramInt == 5) {
       return a(paramMessageRecord, false);
@@ -140,7 +120,7 @@ public class ImportantMsgUtil
   
   public static String a(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord, int paramInt)
   {
-    Object localObject = (ImportantMsgEntryConfig)QConfigManager.a().a(658);
+    Object localObject = (ImportantMsgEntryConfig)QConfigManager.b().b(658);
     if (localObject == null) {
       return "";
     }
@@ -148,36 +128,23 @@ public class ImportantMsgUtil
     if (localObject == null) {
       return "";
     }
-    if (((ImportantMsgEntryConfig.EntryConfig)localObject).jdField_a_of_type_Int == 0) {
+    if (((ImportantMsgEntryConfig.EntryConfig)localObject).c == 0) {
       return a(paramQQAppInterface, paramContext, paramInt, paramMessageRecord);
     }
-    if (((ImportantMsgEntryConfig.EntryConfig)localObject).jdField_a_of_type_Int == 1) {
-      return ((ImportantMsgEntryConfig.EntryConfig)localObject).b;
+    if (((ImportantMsgEntryConfig.EntryConfig)localObject).c == 1) {
+      return ((ImportantMsgEntryConfig.EntryConfig)localObject).d;
     }
-    if (((ImportantMsgEntryConfig.EntryConfig)localObject).jdField_a_of_type_Int == 2) {
+    if (((ImportantMsgEntryConfig.EntryConfig)localObject).c == 2) {
       return a(paramQQAppInterface, paramContext, paramMessageRecord);
     }
     return "";
   }
   
-  private static String a(MessageRecord paramMessageRecord)
-  {
-    String str = BaseApplicationImpl.getContext().getResources().getString(2131719897);
-    if ((paramMessageRecord instanceof MessageForTroopFile))
-    {
-      paramMessageRecord = (MessageForTroopFile)paramMessageRecord;
-      if (!TextUtils.isEmpty(paramMessageRecord.fileName)) {
-        return paramMessageRecord.fileName;
-      }
-    }
-    return str;
-  }
-  
   private static String a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    String str = BaseApplicationImpl.getContext().getResources().getString(2131719896);
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131917501);
     if (paramBoolean) {
-      str = BaseApplicationImpl.getContext().getResources().getString(2131719898);
+      str = BaseApplicationImpl.getContext().getResources().getString(2131917503);
     }
     if ((paramMessageRecord instanceof MessageForArkApp))
     {
@@ -248,13 +215,13 @@ public class ImportantMsgUtil
     while (localIterator.hasNext())
     {
       paramList = (MessageRecord)localIterator.next();
-      int j = a(paramList);
+      int j = b(paramList);
       if ((paramBoolean) || ((a(paramList)) && (-1 != j)))
       {
         long l1 = paramList.time;
         long l2 = paramList.shmsgseq;
         String str2 = paramList.senderuin;
-        boolean bool = b(paramList);
+        boolean bool = c(paramList);
         String str1 = "";
         if (bool)
         {
@@ -270,7 +237,7 @@ public class ImportantMsgUtil
           bool = false;
           paramList = "";
           break label312;
-          if (!c(paramList)) {
+          if (!h(paramList)) {
             break;
           }
           paramList = new StringBuilder();
@@ -433,9 +400,54 @@ public class ImportantMsgUtil
     return paramMessageRecord.equals("1");
   }
   
-  private static String b(MessageRecord paramMessageRecord)
+  public static int b(MessageRecord paramMessageRecord)
   {
-    String str = BaseApplicationImpl.getContext().getResources().getString(2131719895);
+    if (paramMessageRecord == null) {
+      return -1;
+    }
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr(MessageConstants.F);
+    if (!TextUtils.isEmpty(paramMessageRecord)) {
+      try
+      {
+        int i = Integer.parseInt(paramMessageRecord);
+        return i;
+      }
+      catch (NumberFormatException paramMessageRecord)
+      {
+        paramMessageRecord.printStackTrace();
+      }
+    }
+    return -1;
+  }
+  
+  public static boolean c(MessageRecord paramMessageRecord)
+  {
+    boolean bool = false;
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    if (paramMessageRecord.msgtype == -2006) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private static String d(MessageRecord paramMessageRecord)
+  {
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131917502);
+    if ((paramMessageRecord instanceof MessageForTroopFile))
+    {
+      paramMessageRecord = (MessageForTroopFile)paramMessageRecord;
+      if (!TextUtils.isEmpty(paramMessageRecord.fileName)) {
+        return paramMessageRecord.fileName;
+      }
+    }
+    return str;
+  }
+  
+  private static String e(MessageRecord paramMessageRecord)
+  {
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131917500);
     if ((paramMessageRecord instanceof MessageForArkApp))
     {
       paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
@@ -476,21 +488,9 @@ public class ImportantMsgUtil
     return str;
   }
   
-  public static boolean b(MessageRecord paramMessageRecord)
+  private static String f(MessageRecord paramMessageRecord)
   {
-    boolean bool = false;
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    if (paramMessageRecord.msgtype == -2006) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private static String c(MessageRecord paramMessageRecord)
-  {
-    String str = BaseApplicationImpl.getContext().getResources().getString(2131719900);
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131917505);
     if ((paramMessageRecord instanceof MessageForArkApp))
     {
       paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
@@ -517,7 +517,31 @@ public class ImportantMsgUtil
     return str;
   }
   
-  private static boolean c(MessageRecord paramMessageRecord)
+  private static String g(MessageRecord paramMessageRecord)
+  {
+    String str = BaseApplicationImpl.getContext().getResources().getString(2131917504);
+    if ((paramMessageRecord instanceof MessageForArkApp))
+    {
+      paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
+      if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramMessageRecord.getSummery()))) {
+        return paramMessageRecord.getSummery();
+      }
+    }
+    else if ((paramMessageRecord instanceof MessageForStructing))
+    {
+      paramMessageRecord = StructMsgFactory.a(paramMessageRecord.msgData);
+      if ((paramMessageRecord != null) && ((paramMessageRecord instanceof StructMsgForGeneralShare)))
+      {
+        paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord;
+        if (!TextUtils.isEmpty(paramMessageRecord.mContentTitle)) {
+          return paramMessageRecord.mContentTitle;
+        }
+      }
+    }
+    return str;
+  }
+  
+  private static boolean h(MessageRecord paramMessageRecord)
   {
     if (paramMessageRecord == null) {
       return false;
@@ -546,34 +570,10 @@ public class ImportantMsgUtil
     }
     return false;
   }
-  
-  private static String d(MessageRecord paramMessageRecord)
-  {
-    String str = BaseApplicationImpl.getContext().getResources().getString(2131719899);
-    if ((paramMessageRecord instanceof MessageForArkApp))
-    {
-      paramMessageRecord = ((MessageForArkApp)paramMessageRecord).ark_app_message;
-      if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramMessageRecord.getSummery()))) {
-        return paramMessageRecord.getSummery();
-      }
-    }
-    else if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      paramMessageRecord = StructMsgFactory.a(paramMessageRecord.msgData);
-      if ((paramMessageRecord != null) && ((paramMessageRecord instanceof StructMsgForGeneralShare)))
-      {
-        paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord;
-        if (!TextUtils.isEmpty(paramMessageRecord.mContentTitle)) {
-          return paramMessageRecord.mContentTitle;
-        }
-      }
-    }
-    return str;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class ExpandAudioPlayerImpl
     String str;
     try
     {
-      if (!FileUtil.b(paramString))
+      if (!FileUtil.d(paramString))
       {
         str = VFSAssistantUtils.getSDKPrivatePath(TransFileUtil.getTransferFilePath(BaseApplicationImpl.sApplication.getRuntime().getCurrentAccountUin(), MD5.toMD5(paramString), 23, null));
         File localFile = new File(str);
@@ -70,12 +70,12 @@ public class ExpandAudioPlayerImpl
       {
         if (this.mPlayer != null)
         {
-          this.mPlayer.e();
+          this.mPlayer.f();
           this.mPlayer = null;
         }
         this.mPlayer = new VoicePlayer(paramString, new Handler(Looper.getMainLooper()), 1);
         this.mPlayer.a(this.mVoicePlayerListener);
-        this.mPlayer.b();
+        this.mPlayer.c();
         this.mStatusManager.onAudioStartPlay(this.mUrl);
         return 1;
       }
@@ -106,7 +106,7 @@ public class ExpandAudioPlayerImpl
         QLog.e("ExpandAudioPlayerImpl", 2, "continueAudioPlay mPlayer is null");
         return;
       }
-      this.mPlayer.b();
+      this.mPlayer.c();
       paramIMethodCallback.setResult(true);
       return;
     }
@@ -125,7 +125,7 @@ public class ExpandAudioPlayerImpl
         paramIMethodCallback.setResult(false);
         return;
       }
-      this.mPlayer.d();
+      this.mPlayer.e();
       paramIMethodCallback.setResult(true);
       return;
     }
@@ -158,7 +158,7 @@ public class ExpandAudioPlayerImpl
       {
         if (this.mPlayer != null)
         {
-          this.mPlayer.e();
+          this.mPlayer.f();
           this.mPlayer = null;
         }
         paramIMethodCallback.setResult(true);
@@ -178,7 +178,7 @@ public class ExpandAudioPlayerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.audio.impl.ExpandAudioPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

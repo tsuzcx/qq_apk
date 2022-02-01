@@ -21,6 +21,7 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.utils.EnvUtils;
+import com.tencent.mobileqq.mini.utils.MiniAppWnsConfig;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -29,6 +30,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
 import com.tencent.mobileqq.soso.location.data.SosoLocation;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.business.base.MobileInfoUtil;
@@ -196,9 +198,9 @@ public class MiniProgramReportHelper
   public static List<COMM.Entry> newAppQualityEntries(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
   {
     if (PERF_LEVEL == null) {
-      PERF_LEVEL = String.valueOf(DeviceInfoUtils.a());
+      PERF_LEVEL = String.valueOf(DeviceInfoUtils.getPerfLevel());
     }
-    COMM.Entry localEntry1 = newEntry("uid", String.valueOf(CommonDataAdapter.a().a()));
+    COMM.Entry localEntry1 = newEntry("uid", String.valueOf(CommonDataAdapter.a().c()));
     COMM.Entry localEntry2 = newEntry("appid", getMiniAppIdSafely(paramMiniAppConfig));
     COMM.Entry localEntry3 = newEntry("launchid", paramString10);
     paramString10 = "";
@@ -215,7 +217,7 @@ public class MiniProgramReportHelper
       paramString3 = "";
     }
     paramString3 = newEntry("attachinfo", paramString3);
-    COMM.Entry localEntry5 = newEntry("appversion", "8.7.0.5295");
+    COMM.Entry localEntry5 = newEntry("appversion", "8.8.17.5770");
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null)) {
       paramString1 = paramMiniAppConfig.config.version;
     } else {
@@ -355,8 +357,8 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newGenericEntries()
   {
-    ArrayList localArrayList = new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("device_platform", "android"), newEntry("device_maker", Build.MANUFACTURER), newEntry("device_model", Build.MODEL), newEntry("device_version", Build.VERSION.RELEASE), newEntry("network_type", getNetworkType()), newEntry("network_gateway_ip", ""), newEntry("network_ssid", NetworkUtil.getCurrentWifiSSID(CommonDataAdapter.a().a())) }));
-    Object localObject = getLocation(CommonDataAdapter.a().a());
+    ArrayList localArrayList = new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("device_platform", "android"), newEntry("device_maker", Build.MANUFACTURER), newEntry("device_model", Build.MODEL), newEntry("device_version", Build.VERSION.RELEASE), newEntry("network_type", getNetworkType()), newEntry("network_gateway_ip", ""), newEntry("network_ssid", NetworkUtil.getCurrentWifiSSID(CommonDataAdapter.a().b())) }));
+    Object localObject = getLocation(CommonDataAdapter.a().b());
     if (localObject != null)
     {
       localObject = ((String)localObject).split("\\*");
@@ -374,10 +376,10 @@ public class MiniProgramReportHelper
     return localArrayList;
   }
   
-  public static List<COMM.Entry> newQQqunInfoBusinessEntries(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static List<COMM.Entry> newQQqunInfoBusinessEntries(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(Arrays.asList(new COMM.Entry[] { newEntry("actiontype", String.valueOf(paramString1)), newEntry("sub_actiontype", String.valueOf(paramString2)), newEntry("reserves_action", String.valueOf(paramString3)), newEntry("reserves2", String.valueOf(paramString4)), newEntry("groupid", String.valueOf(paramString5)) }));
+    localArrayList.addAll(Arrays.asList(new COMM.Entry[] { newEntry("actiontype", String.valueOf(paramString1)), newEntry("sub_actiontype", String.valueOf(paramString2)), newEntry("reserves_action", String.valueOf(paramString3)), newEntry("reserves2", String.valueOf(paramString4)), newEntry("reserves3", String.valueOf(paramString5)), newEntry("reserves4", String.valueOf(paramString6)), newEntry("groupid", String.valueOf(paramString7)) }));
     return localArrayList;
   }
   
@@ -461,7 +463,13 @@ public class MiniProgramReportHelper
   
   public static List<COMM.Entry> newUserInfoEntries()
   {
-    return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(CommonDataAdapter.a().a())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis())), newEntry("qqversion", QUA.getQUA3()), newEntry("imei", MobileInfoUtil.getImei()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", Settings.Secure.getString(CommonDataAdapter.a().a().getContentResolver(), "android_id")) }));
+    String str;
+    if (MiniAppWnsConfig.privacyInfoEnable()) {
+      str = DeviceInfoUtil.j();
+    } else {
+      str = Settings.Secure.getString(CommonDataAdapter.a().b().getContentResolver(), "android_id");
+    }
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { newEntry("uin", String.valueOf(CommonDataAdapter.a().c())), newEntry("touin", ""), newEntry("timestamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis())), newEntry("qqversion", QUA.getQUA3()), newEntry("imei", MobileInfoUtil.getImei()), newEntry("idfa", ""), newEntry("idfv", ""), newEntry("android_id", str) }));
   }
   
   public static List<COMM.Entry> newVersionEntries(MiniAppConfig paramMiniAppConfig)
@@ -570,7 +578,7 @@ public class MiniProgramReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramReportHelper
  * JD-Core Version:    0.7.0.1
  */

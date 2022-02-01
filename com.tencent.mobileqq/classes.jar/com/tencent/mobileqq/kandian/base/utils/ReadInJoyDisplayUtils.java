@@ -20,11 +20,10 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
+import com.tencent.mobileqq.kandian.base.image.ImageManager;
 import com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView;
 import com.tencent.mobileqq.kandian.base.view.widget.ZImageView;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -33,18 +32,6 @@ import java.net.URL;
 public class ReadInJoyDisplayUtils
 {
   private static final Rect a = new Rect();
-  
-  public static float a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = a(paramInt1, paramInt2);
-    if (paramInt1 == 1) {
-      return 0.5625F;
-    }
-    if (paramInt1 == 2) {
-      return 1.333F;
-    }
-    return 1.0F;
-  }
   
   public static float a(View paramView)
   {
@@ -93,22 +80,6 @@ public class ReadInJoyDisplayUtils
   public static int a(int paramInt, Resources paramResources)
   {
     return (paramInt - (AIOUtils.b(24.0F, paramResources) + AIOUtils.b(3.0F, paramResources))) / 2;
-  }
-  
-  public static Drawable a(String paramString)
-  {
-    int i = Color.parseColor(paramString);
-    paramString = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, i & 0x14FFFFFF });
-    paramString.setShape(0);
-    paramString.setGradientType(0);
-    paramString.setBounds(0, 0, 400, 400);
-    return paramString;
-  }
-  
-  public static Pair<Integer, Integer> a()
-  {
-    Resources localResources = BaseApplicationImpl.getApplication().getResources();
-    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.b(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131298830)));
   }
   
   public static String a(int paramInt)
@@ -231,7 +202,7 @@ public class ReadInJoyDisplayUtils
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
       }
-      paramImageView.setImageResource(2130841770);
+      paramImageView.setImageResource(2130842687);
       return;
     }
     if ((paramContext instanceof BaseActivity)) {
@@ -243,14 +214,14 @@ public class ReadInJoyDisplayUtils
     if (localObject != null) {
       bool = SettingCloneUtil.readValue((Context)localObject, ((BaseActivity)localObject).app.getCurrentAccountUin(), null, "qqsetting_kandian_download_pic_flag", false);
     }
-    if ((!NetworkUtil.isWifiConnected(paramContext)) && (bool) && (!((IImageManager)QRoute.api(IImageManager.class)).isLocalFileExist(paramURL)))
+    if ((!NetworkUtil.isWifiConnected(paramContext)) && (bool) && (!ImageManager.get().isLocalFileExist(paramURL)))
     {
-      paramImageView.setImageResource(2130841770);
+      paramImageView.setImageResource(2130842687);
       return;
     }
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130841770);
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130841770);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext.getResources().getDrawable(2130842687);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext.getResources().getDrawable(2130842687);
     paramImageView.setImageDrawable(URLDrawable.getDrawable(paramURL, (URLDrawable.URLDrawableOptions)localObject));
   }
   
@@ -266,31 +237,31 @@ public class ReadInJoyDisplayUtils
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
       }
-      paramKandianUrlImageView.setImageResource(2130841770);
+      paramKandianUrlImageView.setImageResource(2130842687);
       return;
     }
     if (a(paramContext, paramURL))
     {
       if (!paramBoolean)
       {
-        paramKandianUrlImageView.setImageResource(2130841770);
+        paramKandianUrlImageView.setImageResource(2130842687);
         return;
       }
-      paramKandianUrlImageView.setImageDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165327)));
+      paramKandianUrlImageView.setImageDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165564)));
       return;
     }
     if (!paramBoolean)
     {
       if (paramKandianUrlImageView.isRound())
       {
-        paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130840491)).setImage(paramURL);
+        paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130841253)).setImage(paramURL);
         return;
       }
-      paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130841770)).setImage(paramURL);
+      paramKandianUrlImageView.setImagePlaceHolder(paramContext.getResources().getDrawable(2130842687)).setImage(paramURL);
       return;
     }
-    paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165327)));
-    paramKandianUrlImageView.setImagePlaceHolder(new ColorDrawable(paramContext.getResources().getColor(2131165327))).setImage(paramURL);
+    paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165564)));
+    paramKandianUrlImageView.setImagePlaceHolder(new ColorDrawable(paramContext.getResources().getColor(2131165564))).setImage(paramURL);
   }
   
   private static boolean a(Context paramContext)
@@ -307,7 +278,7 @@ public class ReadInJoyDisplayUtils
       if (paramContext.app != null) {
         str = paramContext.app.getCurrentAccountUin();
       } else {
-        str = RIJQQAppInterfaceUtil.a();
+        str = RIJQQAppInterfaceUtil.d();
       }
       bool = SettingCloneUtil.readValue(paramContext, str, null, "qqsetting_kandian_download_pic_flag", false);
     }
@@ -316,42 +287,70 @@ public class ReadInJoyDisplayUtils
   
   public static boolean a(Context paramContext, URL paramURL)
   {
-    return (a(paramContext)) && (!NetworkUtil.isWifiConnected(paramContext)) && (!((IImageManager)QRoute.api(IImageManager.class)).isLocalFileExist(paramURL));
+    return (a(paramContext)) && (!NetworkUtil.isWifiConnected(paramContext)) && (!ImageManager.get().isLocalFileExist(paramURL));
+  }
+  
+  public static float b(int paramInt1, int paramInt2)
+  {
+    paramInt1 = a(paramInt1, paramInt2);
+    if (paramInt1 == 1) {
+      return 0.5625F;
+    }
+    if (paramInt1 == 2) {
+      return 1.333F;
+    }
+    return 1.0F;
+  }
+  
+  public static Drawable b(String paramString)
+  {
+    int i = Color.parseColor(paramString);
+    paramString = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, i & 0x14FFFFFF });
+    paramString.setShape(0);
+    paramString.setGradientType(0);
+    paramString.setBounds(0, 0, 400, 400);
+    return paramString;
   }
   
   public static Pair<Integer, Integer> b()
+  {
+    Resources localResources = BaseApplicationImpl.getApplication().getResources();
+    return new Pair(Integer.valueOf((localResources.getDisplayMetrics().widthPixels - AIOUtils.b(3.0F, localResources)) / 3), Integer.valueOf(localResources.getDimensionPixelSize(2131299547)));
+  }
+  
+  public static Pair<Integer, Integer> c()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
     int i = (localResources.getDisplayMetrics().widthPixels - AIOUtils.b(3.0F, localResources)) / 2;
     return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.33F)));
   }
   
-  public static Pair<Integer, Integer> c()
+  public static Pair<Integer, Integer> d()
   {
     int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
     return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.597F)));
   }
   
-  public static Pair<Integer, Integer> d()
+  public static Pair<Integer, Integer> e()
   {
     Resources localResources = BaseApplicationImpl.getApplication().getResources();
     int i = (localResources.getDisplayMetrics().widthPixels - AIOUtils.b(3.0F, localResources)) / 3;
     return new Pair(Integer.valueOf(i), Integer.valueOf(i));
   }
   
-  public static Pair<Integer, Integer> e()
+  public static Pair<Integer, Integer> f()
   {
     int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
     return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.562F)));
   }
   
-  public static Pair<Integer, Integer> f()
+  public static Pair<Integer, Integer> g()
   {
     int i = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
     return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 0.5625F)));
   }
   
-  public static Pair<Integer, Integer> g()
+  public static Pair<Integer, Integer> h()
   {
     int i = (int)(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels * 0.5F);
     return new Pair(Integer.valueOf(i), Integer.valueOf((int)(i * 1.3333F)));
@@ -359,7 +358,7 @@ public class ReadInJoyDisplayUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.ReadInJoyDisplayUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,10 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.CheckBox;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.TintableBackgroundView;
 import androidx.core.widget.TintableCompoundButton;
@@ -18,22 +20,24 @@ public class AppCompatCheckBox
   implements TintableBackgroundView, TintableCompoundButton
 {
   private final AppCompatBackgroundHelper mBackgroundTintHelper;
-  private final AppCompatCompoundButtonHelper mCompoundButtonHelper = new AppCompatCompoundButtonHelper(this);
+  private final AppCompatCompoundButtonHelper mCompoundButtonHelper;
   private final AppCompatTextHelper mTextHelper;
   
-  public AppCompatCheckBox(Context paramContext)
+  public AppCompatCheckBox(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatCheckBox(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034318);
+    this(paramContext, paramAttributeSet, R.attr.checkboxStyle);
   }
   
-  public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatCheckBox(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mCompoundButtonHelper = new AppCompatCompoundButtonHelper(this);
     this.mCompoundButtonHelper.loadFromAttributes(paramAttributeSet, paramInt);
     this.mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
     this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);

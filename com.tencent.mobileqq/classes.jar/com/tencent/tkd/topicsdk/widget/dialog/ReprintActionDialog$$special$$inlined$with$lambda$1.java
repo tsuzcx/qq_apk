@@ -8,8 +8,6 @@ import kotlin.Metadata;
 final class ReprintActionDialog$$special$$inlined$with$lambda$1
   implements View.OnClickListener
 {
-  ReprintActionDialog$$special$$inlined$with$lambda$1(ReprintActionDialog paramReprintActionDialog) {}
-  
   public final void onClick(View paramView)
   {
     ReprintActionDialog.a(this.a, true);
@@ -18,7 +16,7 @@ final class ReprintActionDialog$$special$$inlined$with$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.ReprintActionDialog..special..inlined.with.lambda.1
  * JD-Core Version:    0.7.0.1
  */

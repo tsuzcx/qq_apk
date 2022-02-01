@@ -17,17 +17,17 @@ public class TabPreloadManager$PreloadInfo
     this.mPreloadScene = 1;
   }
   
-  public void destroyHippyEngine()
+  public void destroyHippyEngine(String paramString)
   {
     HippyQQPreloadEngine localHippyQQPreloadEngine = this.mHippyEngine;
     if (localHippyQQPreloadEngine != null) {
-      localHippyQQPreloadEngine.destoryEngineImmediately();
+      localHippyQQPreloadEngine.destroyEngineImmediately(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.preload.TabPreloadManager.PreloadInfo
  * JD-Core Version:    0.7.0.1
  */

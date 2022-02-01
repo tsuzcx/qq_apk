@@ -32,12 +32,12 @@ class ArkAiAppPanel$4$1
   {
     try
     {
-      if ((ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a) != null) && (ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).size() > 0) && (ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a) < ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).size()))
+      if ((ArkAiAppPanel.d(this.b.a) != null) && (ArkAiAppPanel.d(this.b.a).size() > 0) && (ArkAiAppPanel.c(this.b.a) < ArkAiAppPanel.d(this.b.a).size()))
       {
-        if (ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).get(ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a)) == null) {
+        if (ArkAiAppPanel.d(this.b.a).get(ArkAiAppPanel.c(this.b.a)) == null) {
           return;
         }
-        Object localObject1 = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).get(ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a))).getViewShare();
+        Object localObject1 = ((ArkAioContainerWrapper)ArkAiAppPanel.d(this.b.a).get(ArkAiAppPanel.c(this.b.a))).getViewShare();
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           return;
         }
@@ -64,7 +64,7 @@ class ArkAiAppPanel$4$1
             }
             localObject1 = new ArkAppMessage();
             ((ArkAppMessage)localObject1).appMinVersion = "0.0.0.1";
-            ((ArkAppMessage)localObject1).appName = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).get(ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a))).getAppName();
+            ((ArkAppMessage)localObject1).appName = ((ArkAioContainerWrapper)ArkAiAppPanel.d(this.b.a).get(ArkAiAppPanel.c(this.b.a))).getAppName();
             if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appName)) {
               return;
             }
@@ -81,7 +81,7 @@ class ArkAiAppPanel$4$1
             if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appDesc)) {
               ((ArkAppMessage)localObject1).appDesc = ((ArkAppMessage)localObject1).appName;
             }
-            ((ArkAppMessage)localObject1).promptText = String.format(HardCodeUtil.a(2131700864), new Object[] { ((ArkAppMessage)localObject1).appDesc });
+            ((ArkAppMessage)localObject1).promptText = String.format(HardCodeUtil.a(2131898888), new Object[] { ((ArkAppMessage)localObject1).appDesc });
             localObject2 = MessageForArkApp.getConfigFromXml((Document)localObject2);
             if (!TextUtils.isEmpty((CharSequence)localObject2))
             {
@@ -106,14 +106,14 @@ class ArkAiAppPanel$4$1
               ((JSONObject)localObject2).put("type", "card");
               ((ArkAppMessage)localObject1).config = ((JSONObject)localObject2).toString();
             }
-            if (ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a) != null)
+            if (ArkAiAppPanel.a(this.b.a) != null)
             {
-              localObject2 = (SessionInfo)ArkAiAppPanel.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$4.a).a();
+              localObject2 = (SessionInfo)ArkAiAppPanel.a(this.b.a).O();
               if (localObject2 != null) {
                 ChatActivityFacade.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), (SessionInfo)localObject2, (ArkAppMessage)localObject1);
               }
             }
-            ArkAppDataReport.a(null, this.jdField_a_of_type_JavaLangString, "AIOInputSendMessage", 0, 0, 0L, 0L, 0L, ((ArkAppMessage)localObject1).appName, "");
+            ArkAppDataReport.a(null, this.a, "AIOInputSendMessage", 0, 0, 0L, 0L, 0L, ((ArkAppMessage)localObject1).appName, "");
             return;
           }
         }
@@ -135,7 +135,7 @@ class ArkAiAppPanel$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiAppPanel.4.1
  * JD-Core Version:    0.7.0.1
  */

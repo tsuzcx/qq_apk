@@ -37,6 +37,7 @@ public class NSHippyListView
   private NSHippyListView.AdjustHeightObserver adjustHeightObserver;
   private boolean firstAddView = true;
   HippyRootLayout hippyRootLayout;
+  private boolean isAttached;
   private int mMaxFlingVelocity;
   private int mMinFlingVelocity;
   private final int[] mNestedOffsets = new int[2];
@@ -685,18 +686,21 @@ public class NSHippyListView
     return getScrollingChildHelper().dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt, paramInt5);
   }
   
-  HippyRootLayout ensureHippyRootLayout()
+  void ensureHippyRootLayout()
   {
-    if (this.hippyRootLayout == null) {
-      for (ViewParent localViewParent = getParent(); localViewParent != null; localViewParent = localViewParent.getParent()) {
-        if ((localViewParent instanceof HippyRootLayout))
+    if ((this.isAttached) && (this.hippyRootLayout == null)) {
+      for (Object localObject = getParent(); localObject != null; localObject = ((ViewParent)localObject).getParent()) {
+        if ((localObject instanceof HippyRootLayout))
         {
-          this.hippyRootLayout = ((HippyRootLayout)localViewParent);
-          break;
+          this.hippyRootLayout = ((HippyRootLayout)localObject);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("#ensureHippyRootLayout: hippyRootLayout=");
+          ((StringBuilder)localObject).append(this.hippyRootLayout);
+          QLog.d("NSHippyListView", 1, ((StringBuilder)localObject).toString());
+          return;
         }
       }
     }
-    return this.hippyRootLayout;
   }
   
   public boolean fling(int paramInt1, int paramInt2)
@@ -776,19 +780,26 @@ public class NSHippyListView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.needAdjustHeight)
+    QLog.d("NSHippyListView", 1, "#onAttachedToWindow");
+    this.hippyRootLayout = null;
+    if ((this.needAdjustHeight) && (this.adjustHeightObserver != null))
     {
-      NSHippyListView.AdjustHeightObserver localAdjustHeightObserver = this.adjustHeightObserver;
-      if (localAdjustHeightObserver != null) {
-        NSHippyListView.AdjustHeightObserver.access$000(localAdjustHeightObserver);
-      }
+      QLog.d("NSHippyListView", 1, "#onAttachedToWindow: invoke adjustHeight");
+      this.adjustHeightObserver.adjustHeight();
     }
+    this.isAttached = true;
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
+    QLog.d("NSHippyListView", 1, "#onDetachedFromWindow");
     this.hippyRootLayout = null;
+    NSHippyListView.AdjustHeightObserver localAdjustHeightObserver = this.adjustHeightObserver;
+    if (localAdjustHeightObserver != null) {
+      localAdjustHeightObserver.onDetach();
+    }
+    this.isAttached = false;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -968,13 +979,26 @@ public class NSHippyListView
     this.reflectWrapper.setFieldValue(this, paramString, paramObject);
   }
   
+  public void setListData()
+  {
+    if (this.isAttached) {
+      super.setListData();
+    }
+  }
+  
   public void setNeedAdjustHeight(boolean paramBoolean)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("#setNeedAdjustHeight: needAdjustHeight=");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("NSHippyListView", 1, localStringBuilder.toString());
     this.needAdjustHeight = paramBoolean;
     if (paramBoolean)
     {
-      if (registerAdjustHeightObserver()) {
-        NSHippyListView.AdjustHeightObserver.access$000(this.adjustHeightObserver);
+      if (registerAdjustHeightObserver())
+      {
+        QLog.d("NSHippyListView", 1, "#setNeedAdjustHeight: invoke adjustHeight");
+        this.adjustHeightObserver.adjustHeight();
       }
     }
     else {
@@ -1037,7 +1061,7 @@ public class NSHippyListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.NSHippyListView
  * JD-Core Version:    0.7.0.1
  */

@@ -36,11 +36,11 @@ class SelectMemberFromFriendGroup$ListAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity).inflate(2131560457, null);
+      localView = LayoutInflater.from(this.a.f).inflate(2131626502, null);
       paramView = new SelectMemberFromFriendGroup.ListAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131364613));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367819));
-      paramView.b = ((TextView)localView.findViewById(2131367820));
+      paramView.e = ((CheckBox)localView.findViewById(2131430688));
+      paramView.c = ((TextView)localView.findViewById(2131434398));
+      paramView.d = ((TextView)localView.findViewById(2131434399));
       localView.setTag(paramView);
       localView.setOnClickListener(new SelectMemberFromFriendGroup.ListAdapter.1(this));
     }
@@ -50,42 +50,42 @@ class SelectMemberFromFriendGroup$ListAdapter
       localView = paramView;
       paramView = (View)localObject;
     }
-    paramView.jdField_a_of_type_Int = paramInt;
-    paramView.jdField_a_of_type_ComTencentMobileqqDataGroups = ((Groups)getItem(paramInt));
-    int i = paramView.jdField_a_of_type_ComTencentMobileqqDataGroups.group_friend_count;
-    Object localObject = paramView.b;
+    paramView.a = paramInt;
+    paramView.b = ((Groups)getItem(paramInt));
+    int i = paramView.b.group_friend_count;
+    Object localObject = paramView.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(i);
     ((TextView)localObject).setText(localStringBuilder.toString());
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups.group_name);
-    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramView);
-    if (this.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    paramView.c.setText(paramView.b.group_name);
+    paramView.e.setTag(paramView);
+    if (this.a.a(paramView.b))
     {
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      paramView.e.setEnabled(false);
+      paramView.e.setChecked(false);
     }
     else
     {
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.a.jdField_a_of_type_JavaUtilList.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups));
+      paramView.e.setEnabled(true);
+      paramView.e.setChecked(this.a.a.contains(paramView.b));
     }
     if (SelectMemberFromFriendGroup.a(this.a).size() == 1) {
-      localView.setBackgroundResource(2130839440);
+      localView.setBackgroundResource(2130839629);
     } else if (SelectMemberFromFriendGroup.a(this.a).size() == 2)
     {
       if (paramInt == 0) {
-        localView.setBackgroundResource(2130839449);
+        localView.setBackgroundResource(2130839638);
       } else {
-        localView.setBackgroundResource(2130839440);
+        localView.setBackgroundResource(2130839629);
       }
     }
     else if (paramInt == 0) {
-      localView.setBackgroundResource(2130839449);
+      localView.setBackgroundResource(2130839638);
     } else if (paramInt == SelectMemberFromFriendGroup.a(this.a).size() - 1) {
-      localView.setBackgroundResource(2130839440);
+      localView.setBackgroundResource(2130839629);
     } else {
-      localView.setBackgroundResource(2130839443);
+      localView.setBackgroundResource(2130839632);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -93,7 +93,7 @@ class SelectMemberFromFriendGroup$ListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberFromFriendGroup.ListAdapter
  * JD-Core Version:    0.7.0.1
  */

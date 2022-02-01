@@ -9,8 +9,8 @@ import androidx.viewpager.widget.ViewPager;
 public class PanelViewPage
   extends ViewPager
 {
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = true;
+  private int a = 0;
+  private boolean b = true;
   
   public PanelViewPage(Context paramContext)
   {
@@ -24,7 +24,7 @@ public class PanelViewPage
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return (this.jdField_a_of_type_Boolean) && (super.onInterceptTouchEvent(paramMotionEvent));
+    return (this.b) && (super.onInterceptTouchEvent(paramMotionEvent));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -33,7 +33,7 @@ public class PanelViewPage
     int k = View.MeasureSpec.getSize(paramInt1);
     if (j == 0)
     {
-      i = this.jdField_a_of_type_Int;
+      i = this.a;
       if (i > 0)
       {
         i = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
@@ -46,7 +46,7 @@ public class PanelViewPage
       i = paramInt1;
       if (k > 0)
       {
-        this.jdField_a_of_type_Int = k;
+        this.a = k;
         i = paramInt1;
       }
     }
@@ -56,12 +56,12 @@ public class PanelViewPage
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return (this.jdField_a_of_type_Boolean) && (super.onTouchEvent(paramMotionEvent));
+    return (this.b) && (super.onTouchEvent(paramMotionEvent));
   }
   
   public void setIsPagingEnabled(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
 }
 

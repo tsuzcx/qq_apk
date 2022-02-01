@@ -9,9 +9,9 @@ class OneWayFriendHelper$1
   
   public void a(boolean paramBoolean, OneWayFriendResult paramOneWayFriendResult)
   {
-    if (TextUtils.equals(OneWayFriendHelper.a(this.a), String.valueOf(paramOneWayFriendResult.jdField_a_of_type_Long)))
+    if (TextUtils.equals(OneWayFriendHelper.a(this.a), String.valueOf(paramOneWayFriendResult.a)))
     {
-      if ((paramBoolean) && (paramOneWayFriendResult.jdField_a_of_type_Boolean)) {
+      if ((paramBoolean) && (paramOneWayFriendResult.b)) {
         paramBoolean = true;
       } else {
         paramBoolean = false;
@@ -23,7 +23,7 @@ class OneWayFriendHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHelper.1
  * JD-Core Version:    0.7.0.1
  */

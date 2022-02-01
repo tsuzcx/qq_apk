@@ -183,7 +183,7 @@ class AbsListView$PositionScroller
         if ((k == this.mLastSeenPos) && (k <= this.mTargetPos)) {
           return;
         }
-        if ((AbsListView.access$2300(this.this$0)) && (this.mTargetPos == 0))
+        if ((AbsListView.access$2400(this.this$0)) && (this.mTargetPos == 0))
         {
           m = this.this$0.getChildCount();
           if ((this.this$0.mItemCount > 30) && (k + m - 1 > m * 3 - 1))
@@ -250,7 +250,7 @@ class AbsListView$PositionScroller
       if (i < 0) {
         return;
       }
-      if ((!AbsListView.access$2300(this.this$0)) && (n == this.mLastSeenPos))
+      if ((!AbsListView.access$2400(this.this$0)) && (n == this.mLastSeenPos))
       {
         if (Build.VERSION.SDK_INT >= 16)
         {
@@ -260,7 +260,7 @@ class AbsListView$PositionScroller
         this.this$0.post(this);
         return;
       }
-      if (AbsListView.access$2300(this.this$0))
+      if (AbsListView.access$2400(this.this$0))
       {
         i1 = this.mTargetPos;
         if ((n >= i1) && (k <= i1))
@@ -322,7 +322,7 @@ class AbsListView$PositionScroller
     }
     else
     {
-      if (!AbsListView.access$2300(this.this$0)) {
+      if (!AbsListView.access$2400(this.this$0)) {
         return;
       }
       i = paramInt - i;
@@ -453,14 +453,14 @@ class AbsListView$PositionScroller
   void stop()
   {
     this.this$0.removeCallbacks(this);
-    if (AbsListView.access$1900(this.this$0) != null) {
-      AbsListView.access$1900(this.this$0).stop();
+    if (AbsListView.access$2000(this.this$0) != null) {
+      AbsListView.access$2000(this.this$0).stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AbsListView.PositionScroller
  * JD-Core Version:    0.7.0.1
  */

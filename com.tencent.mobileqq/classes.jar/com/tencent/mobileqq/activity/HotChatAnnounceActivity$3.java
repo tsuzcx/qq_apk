@@ -14,10 +14,10 @@ class HotChatAnnounceActivity$3
     paramEditable = paramEditable.toString();
     if ((paramEditable != null) && (paramEditable.trim().length() > 0))
     {
-      this.a.b.setEnabled(true);
+      this.a.d.setEnabled(true);
       return;
     }
-    this.a.b.setEnabled(false);
+    this.a.d.setEnabled(false);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -26,7 +26,7 @@ class HotChatAnnounceActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.activity.HotChatAnnounceActivity.3
  * JD-Core Version:    0.7.0.1
  */

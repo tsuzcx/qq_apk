@@ -43,26 +43,20 @@ public class TroopCreateLogicActivity
   extends QBaseActivity
   implements ITroopCreateInfoService.TroopCreateCallback
 {
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  ICreateTroopShare jdField_a_of_type_ComTencentMobileqqTroopApiTroopcreateICreateTroopShare;
-  TroopInfoData jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData = new TroopInfoData();
-  ITroopCreateService jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopCreateService = null;
-  TroopManagerBizObserver jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiTroopManagerBizObserver = new TroopCreateLogicActivity.2(this);
-  ITroopShareUtility jdField_a_of_type_ComTencentMobileqqTroopTroopshareTempapiITroopShareUtility;
-  IWXShareHelperListener jdField_a_of_type_ComTencentMobileqqWxapiListenerIWXShareHelperListener = new TroopCreateLogicActivity.1(this);
-  public String a;
-  public boolean a;
-  
-  public TroopCreateLogicActivity()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-  }
+  ITroopCreateService a = null;
+  TroopInfoData b = new TroopInfoData();
+  AppInterface c;
+  ITroopShareUtility d;
+  public boolean e = false;
+  public String f = null;
+  ICreateTroopShare g;
+  IWXShareHelperListener h = new TroopCreateLogicActivity.1(this);
+  TroopManagerBizObserver i = new TroopCreateLogicActivity.2(this);
   
   private void a()
   {
     if (getIntent() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopcreateICreateTroopShare.miniAppShareQQDirectly(getIntent(), this);
+      this.g.miniAppShareQQDirectly(getIntent(), this);
     }
   }
   
@@ -87,13 +81,13 @@ public class TroopCreateLogicActivity
   
   private void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopcreateICreateTroopShare.ShareToQQ(paramJSONObject, this);
+    this.g.ShareToQQ(paramJSONObject, this);
   }
   
   private void b()
   {
     if (getIntent() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopcreateICreateTroopShare.miniAppShareQQDirectlyWithOutDialog(getIntent(), this);
+      this.g.miniAppShareQQDirectlyWithOutDialog(getIntent(), this);
     }
   }
   
@@ -121,22 +115,22 @@ public class TroopCreateLogicActivity
   private void c()
   {
     Object localObject = getIntent();
-    int i = ((Intent)localObject).getIntExtra("chanelId", -1);
+    int j = ((Intent)localObject).getIntExtra("chanelId", -1);
     localObject = ((Intent)localObject).getStringExtra("params");
     try
     {
       localObject = new JSONObject((String)localObject);
-      if (i != 0)
+      if (j != 0)
       {
-        if (i != 1)
+        if (j != 1)
         {
-          if (i != 2)
+          if (j != 2)
           {
-            if (i != 3)
+            if (j != 3)
             {
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("unrecognized channel! shareChanel = ");
-              ((StringBuilder)localObject).append(i);
+              ((StringBuilder)localObject).append(j);
               QLog.e("qqBaseActivity", 1, ((StringBuilder)localObject).toString());
               finish();
               return;
@@ -163,10 +157,10 @@ public class TroopCreateLogicActivity
   {
     if (!NetworkUtil.isNetworkAvailable(this))
     {
-      QQToast.a(this, 1, 2131694424, 1).a();
+      QQToast.makeText(this, 1, 2131892104, 1).show();
       return;
     }
-    this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
+    this.f = String.valueOf(System.currentTimeMillis());
     String str1 = paramJSONObject.optString("shareLink");
     String str2 = paramJSONObject.optString("shareTitle");
     String str3 = paramJSONObject.optString("shareDesc");
@@ -178,10 +172,10 @@ public class TroopCreateLogicActivity
   {
     if (!NetworkUtil.isNetworkAvailable(this))
     {
-      QQToast.a(this, 1, 2131694424, 1).a();
+      QQToast.makeText(this, 1, 2131892104, 1).show();
       return;
     }
-    this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
+    this.f = String.valueOf(System.currentTimeMillis());
     String str1 = paramJSONObject.optString("shareLink");
     String str2 = paramJSONObject.optString("shareTitle");
     String str3 = paramJSONObject.optString("shareDesc");
@@ -196,7 +190,7 @@ public class TroopCreateLogicActivity
       finish();
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject = this.c;
     String str = "";
     localObject = (ITroopInfoService)((AppInterface)localObject).getRuntimeService(ITroopInfoService.class, "");
     if (localObject == null)
@@ -237,7 +231,7 @@ public class TroopCreateLogicActivity
   
   public void b(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!TextUtils.isEmpty(paramString)))
+    if ((this.c != null) && (!TextUtils.isEmpty(paramString)))
     {
       try
       {
@@ -266,21 +260,21 @@ public class TroopCreateLogicActivity
         finish();
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin = str2;
-      paramString = (ITroopInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopInfoService.class, "");
+      this.b.troopUin = str2;
+      paramString = (ITroopInfoService)this.c.getRuntimeService(ITroopInfoService.class, "");
       if (paramString != null)
       {
         paramString = paramString.findTroopInfo(str2);
         if (paramString != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.updateForTroopChatSetting(paramString, getResources(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.isMember = true;
+          this.b.updateForTroopChatSetting(paramString, getResources(), this.c.getCurrentAccountUin());
+          this.b.isMember = true;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopshareTempapiITroopShareUtility == null) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopTroopshareTempapiITroopShareUtility = ((ITroopShareUtility)QRoute.api(ITroopShareUtility.class));
+        if (this.d == null) {
+          this.d = ((ITroopShareUtility)QRoute.api(ITroopShareUtility.class));
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopshareTempapiITroopShareUtility.initTroopShareUtility(this, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData);
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopshareTempapiITroopShareUtility.handleTroopLinkShare(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData);
+        this.d.initTroopShareUtility(this, this.b);
+        this.d.handleTroopLinkShare(this.b);
       }
       return;
     }
@@ -292,30 +286,30 @@ public class TroopCreateLogicActivity
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 291	com/tencent/mobileqq/troop/troopcreate/ui/TroopCreateLogicActivity:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
+    //   1: getfield 297	com/tencent/mobileqq/troop/troopcreate/ui/TroopCreateLogicActivity:c	Lcom/tencent/common/app/AppInterface;
     //   4: astore 5
     //   6: iconst_0
     //   7: istore_2
     //   8: aload 5
     //   10: ifnull +162 -> 172
     //   13: aload_1
-    //   14: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: invokestatic 71	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   17: ifne +155 -> 172
-    //   20: new 121	org/json/JSONObject
+    //   20: new 128	org/json/JSONObject
     //   23: dup
     //   24: aload_1
-    //   25: invokespecial 210	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 216	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   28: astore_1
     //   29: aload_1
-    //   30: ldc_w 365
-    //   33: invokevirtual 368	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   30: ldc_w 371
+    //   33: invokevirtual 374	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   36: astore 6
     //   38: aload_1
-    //   39: ldc_w 404
-    //   42: invokevirtual 368	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   39: ldc_w 410
+    //   42: invokevirtual 374	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   45: astore 7
     //   47: aload 6
-    //   49: invokestatic 374	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   49: invokestatic 380	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   52: lstore_3
     //   53: aload 7
     //   55: astore_1
@@ -349,74 +343,74 @@ public class TroopCreateLogicActivity
     //   105: astore 5
     //   107: goto +57 -> 164
     //   110: astore 7
-    //   112: ldc_w 293
+    //   112: ldc_w 299
     //   115: astore_1
     //   116: aload 6
     //   118: astore 5
     //   120: goto +26 -> 146
     //   123: astore 7
-    //   125: ldc_w 293
+    //   125: ldc_w 299
     //   128: astore_1
     //   129: aload 6
     //   131: astore 5
     //   133: goto +31 -> 164
     //   136: astore 7
-    //   138: ldc_w 293
+    //   138: ldc_w 299
     //   141: astore 5
     //   143: aload 5
     //   145: astore_1
     //   146: aload 7
-    //   148: invokevirtual 405	java/lang/NumberFormatException:printStackTrace	()V
+    //   148: invokevirtual 411	java/lang/NumberFormatException:printStackTrace	()V
     //   151: goto +29 -> 180
     //   154: astore 7
-    //   156: ldc_w 293
+    //   156: ldc_w 299
     //   159: astore 5
     //   161: aload 5
     //   163: astore_1
     //   164: aload 7
-    //   166: invokevirtual 363	org/json/JSONException:printStackTrace	()V
+    //   166: invokevirtual 369	org/json/JSONException:printStackTrace	()V
     //   169: goto +11 -> 180
-    //   172: ldc_w 293
+    //   172: ldc_w 299
     //   175: astore 5
     //   177: aload 5
     //   179: astore_1
     //   180: iload_2
     //   181: ifeq +66 -> 247
-    //   184: new 308	com/tencent/mobileqq/data/troop/TroopInfo
+    //   184: new 314	com/tencent/mobileqq/data/troop/TroopInfo
     //   187: dup
-    //   188: invokespecial 406	com/tencent/mobileqq/data/troop/TroopInfo:<init>	()V
+    //   188: invokespecial 412	com/tencent/mobileqq/data/troop/TroopInfo:<init>	()V
     //   191: astore 6
     //   193: aload 6
     //   195: aload 5
-    //   197: putfield 409	com/tencent/mobileqq/data/troop/TroopInfo:troopuin	Ljava/lang/String;
+    //   197: putfield 415	com/tencent/mobileqq/data/troop/TroopInfo:troopuin	Ljava/lang/String;
     //   200: aload 6
     //   202: aload_1
-    //   203: putfield 334	com/tencent/mobileqq/data/troop/TroopInfo:troopname	Ljava/lang/String;
+    //   203: putfield 340	com/tencent/mobileqq/data/troop/TroopInfo:troopname	Ljava/lang/String;
     //   206: aload 6
     //   208: aload_0
-    //   209: getfield 291	com/tencent/mobileqq/troop/troopcreate/ui/TroopCreateLogicActivity:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   212: invokevirtual 381	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   215: putfield 412	com/tencent/mobileqq/data/troop/TroopInfo:Administrator	Ljava/lang/String;
+    //   209: getfield 297	com/tencent/mobileqq/troop/troopcreate/ui/TroopCreateLogicActivity:c	Lcom/tencent/common/app/AppInterface;
+    //   212: invokevirtual 387	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   215: putfield 418	com/tencent/mobileqq/data/troop/TroopInfo:Administrator	Ljava/lang/String;
     //   218: aload_0
-    //   219: getfield 291	com/tencent/mobileqq/troop/troopcreate/ui/TroopCreateLogicActivity:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   222: ldc_w 295
-    //   225: ldc_w 293
-    //   228: invokevirtual 301	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   231: checkcast 295	com/tencent/mobileqq/troop/api/ITroopInfoService
+    //   219: getfield 297	com/tencent/mobileqq/troop/troopcreate/ui/TroopCreateLogicActivity:c	Lcom/tencent/common/app/AppInterface;
+    //   222: ldc_w 301
+    //   225: ldc_w 299
+    //   228: invokevirtual 307	com/tencent/common/app/AppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   231: checkcast 301	com/tencent/mobileqq/troop/api/ITroopInfoService
     //   234: astore_1
     //   235: aload_1
     //   236: ifnull +11 -> 247
     //   239: aload_1
     //   240: aload 6
-    //   242: invokeinterface 416 2 0
+    //   242: invokeinterface 422 2 0
     //   247: aload_0
-    //   248: invokevirtual 236	com/tencent/mobileqq/troop/troopcreate/ui/TroopCreateLogicActivity:finish	()V
+    //   248: invokevirtual 241	com/tencent/mobileqq/troop/troopcreate/ui/TroopCreateLogicActivity:finish	()V
     //   251: return
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	252	0	this	TroopCreateLogicActivity
     //   0	252	1	paramString	String
-    //   7	174	2	i	int
+    //   7	174	2	j	int
     //   52	9	3	l	long
     //   4	70	5	localObject1	Object
     //   78	6	5	localNumberFormatException1	java.lang.NumberFormatException
@@ -441,10 +435,10 @@ public class TroopCreateLogicActivity
   
   public void d(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopCreateService != null)
+    if (this.a != null)
     {
-      ((ITroopCreateInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopCreateInfoService.class, "")).refreshCreateInfo(paramString, 5);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopCreateService.createTroop(this, this);
+      ((ITroopCreateInfoService)this.c.getRuntimeService(ITroopCreateInfoService.class, "")).refreshCreateInfo(paramString, 5);
+      this.a.createTroop(this, this);
     }
   }
   
@@ -461,7 +455,7 @@ public class TroopCreateLogicActivity
   {
     Object localObject;
     ITroopCreateForStructMsg localITroopCreateForStructMsg;
-    int i;
+    int j;
     if (paramInt1 != 3)
     {
       if (paramInt1 != 1001)
@@ -474,10 +468,10 @@ public class TroopCreateLogicActivity
             localITroopCreateForStructMsg = (ITroopCreateForStructMsg)QRoute.api(ITroopCreateForStructMsg.class);
             localITroopCreateForStructMsg.setAbsStructMsgFromByte((byte[])localObject);
             localObject = paramIntent.getStringExtra("uin");
-            i = paramIntent.getIntExtra("uintype", -1);
+            j = paramIntent.getIntExtra("uintype", -1);
             if ((localITroopCreateForStructMsg != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
             {
-              localITroopCreateForStructMsg.sendStructingMsg(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, i, null);
+              localITroopCreateForStructMsg.sendStructingMsg(this.c, (String)localObject, j, null);
             }
             else if (QLog.isColorLevel())
             {
@@ -500,20 +494,20 @@ public class TroopCreateLogicActivity
     {
       if (paramInt2 == -1)
       {
-        i = getResources().getDimensionPixelSize(2131299168);
-        QQToast.a(this, 2, getString(2131696494), 0).b(i);
+        j = getResources().getDimensionPixelSize(2131299920);
+        QQToast.makeText(this, 2, getString(2131894268), 0).show(j);
         localObject = paramIntent.getByteArrayExtra("stuctmsg_bytes");
         localITroopCreateForStructMsg = (ITroopCreateForStructMsg)QRoute.api(ITroopCreateForStructMsg.class);
         localITroopCreateForStructMsg.setAbsStructMsgFromByte((byte[])localObject);
         if (!localITroopCreateForStructMsg.instanceofImgaeShare())
         {
           localObject = paramIntent.getStringExtra("uin");
-          i = paramIntent.getIntExtra("uintype", -1);
-          localITroopCreateForStructMsg.sendStructingMsg(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject, i, null);
+          j = paramIntent.getIntExtra("uintype", -1);
+          localITroopCreateForStructMsg.sendStructingMsg(this.c, (String)localObject, j, null);
           localITroopCreateForStructMsg.onDestroy();
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.e = false;
       finish();
     }
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
@@ -522,61 +516,61 @@ public class TroopCreateLogicActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)getAppRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopCreateService = ((ITroopCreateService)this.mRuntime.getRuntimeService(ITroopCreateService.class, ""));
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopcreateICreateTroopShare = ((ICreateTroopShare)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ICreateTroopShare.class, ""));
+    this.c = ((AppInterface)getAppRuntime());
+    this.a = ((ITroopCreateService)this.mRuntime.getRuntimeService(ITroopCreateService.class, ""));
+    this.g = ((ICreateTroopShare)this.c.getRuntimeService(ICreateTroopShare.class, ""));
     paramBundle = getIntent();
-    int i = paramBundle.getIntExtra("type", -1);
-    if (i == 1)
+    int j = paramBundle.getIntExtra("type", -1);
+    if (j == 1)
     {
       d(paramBundle.getStringExtra("cfg"));
     }
-    else if (i == 2)
+    else if (j == 2)
     {
       e(paramBundle.getStringExtra("troop_uin"));
     }
-    else if (i == 3)
+    else if (j == 3)
     {
       b(paramBundle.getStringExtra("cfg"));
     }
-    else if (i == 4)
+    else if (j == 4)
     {
       a(paramBundle.getStringExtra("troop_uin"));
     }
-    else if (i == 5)
+    else if (j == 5)
     {
       String str = paramBundle.getStringExtra("troop_location");
       long l = paramBundle.getLongExtra("troop_uin", 0L);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiTroopManagerBizObserver);
-      ((ITroopManagerBizHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopManagerBizHandlerName())).a(l, TextUtils.isEmpty(str), str);
+      this.c.addObserver(this.i);
+      ((ITroopManagerBizHandler)this.c.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopManagerBizHandlerName())).a(l, TextUtils.isEmpty(str), str);
     }
-    else if (i == 6)
+    else if (j == 6)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopCreateService == null)
+      if (this.a == null)
       {
         finish();
       }
       else
       {
         paramBundle = new Intent();
-        paramBundle.putExtra("has_head", ((ITroopCreateInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopCreateInfoService.class, "")).getTroopCreateInfo().hasTroopHead);
+        paramBundle.putExtra("has_head", ((ITroopCreateInfoService)this.c.getRuntimeService(ITroopCreateInfoService.class, "")).getTroopCreateInfo().hasTroopHead);
         setResult(-1, paramBundle);
         finish();
       }
     }
-    else if (i == 7)
+    else if (j == 7)
     {
       c(paramBundle.getStringExtra("cfg"));
     }
-    else if (i == 8)
+    else if (j == 8)
     {
       c();
     }
-    else if (i == 9)
+    else if (j == 9)
     {
       a();
     }
-    else if (i == 10)
+    else if (j == 10)
     {
       b();
     }
@@ -586,7 +580,7 @@ public class TroopCreateLogicActivity
     }
     paramBundle = new StringBuilder();
     paramBundle.append("");
-    paramBundle.append(i);
+    paramBundle.append(j);
     TroopTechReportUtils.a("TroopCreateLogicActivity", new String[] { paramBundle.toString() });
     return true;
   }
@@ -594,20 +588,20 @@ public class TroopCreateLogicActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopCreateService = null;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopTroopshareTempapiITroopShareUtility;
+    this.a = null;
+    Object localObject = this.d;
     if (localObject != null)
     {
       ((ITroopShareUtility)localObject).onDestroy();
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopshareTempapiITroopShareUtility = null;
+      this.d = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiTroopManagerBizObserver;
+    localObject = this.i;
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver((BusinessObserver)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiTroopManagerBizObserver = null;
+      this.c.removeObserver((BusinessObserver)localObject);
+      this.i = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopApiTroopcreateICreateTroopShare;
+    localObject = this.g;
     if (localObject != null) {
       ((ICreateTroopShare)localObject).onDestroy();
     }
@@ -615,7 +609,7 @@ public class TroopCreateLogicActivity
   
   public void e(String paramString)
   {
-    ITroopCreateService localITroopCreateService = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiITroopCreateService;
+    ITroopCreateService localITroopCreateService = this.a;
     if (localITroopCreateService != null) {
       localITroopCreateService.terminateLogic();
     }
@@ -625,7 +619,7 @@ public class TroopCreateLogicActivity
   
   public void finish()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return;
     }
     super.finish();
@@ -638,11 +632,12 @@ public class TroopCreateLogicActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreateTroopCompletely(int paramInt, String paramString)
+  public void onCreateTroopCompletely(int paramInt, String paramString1, String paramString2)
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("retCode", paramInt);
-    localIntent.putExtra("troopUin", paramString);
+    localIntent.putExtra("troopUin", paramString1);
+    localIntent.putExtra("errMsg", paramString2);
     setResult(-1, localIntent);
     finish();
   }
@@ -653,7 +648,7 @@ public class TroopCreateLogicActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.TroopCreateLogicActivity
  * JD-Core Version:    0.7.0.1
  */

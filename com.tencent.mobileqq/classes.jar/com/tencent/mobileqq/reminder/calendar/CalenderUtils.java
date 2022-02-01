@@ -34,22 +34,22 @@ public class CalenderUtils
     return MobileQQ.sMobileQQ.getSharedPreferences(a, 0).getLong(paramString, -1L);
   }
   
-  private static String a(CalendarEntity paramCalendarEntity)
+  private void a(String paramString, Long paramLong)
+  {
+    MobileQQ.sMobileQQ.getSharedPreferences(a, 0).edit().putLong(paramString, paramLong.longValue()).apply();
+  }
+  
+  private void b(String paramString)
+  {
+    MobileQQ.sMobileQQ.getSharedPreferences(a, 0).edit().remove(paramString).apply();
+  }
+  
+  private static String c(CalendarEntity paramCalendarEntity)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://ti.qq.com/remind/calendar?msgid=");
     localStringBuilder.append(paramCalendarEntity.msg_id);
     return localStringBuilder.toString();
-  }
-  
-  private void a(String paramString)
-  {
-    MobileQQ.sMobileQQ.getSharedPreferences(a, 0).edit().remove(paramString).apply();
-  }
-  
-  private void a(String paramString, Long paramLong)
-  {
-    MobileQQ.sMobileQQ.getSharedPreferences(a, 0).edit().putLong(paramString, paramLong.longValue()).apply();
   }
   
   protected int a()
@@ -61,40 +61,12 @@ public class CalenderUtils
       if (QLog.isColorLevel()) {
         QLog.d("QQReminder.CalenderUtils", 2, "getCalendarAccount first time is -1");
       }
-      if (a() >= 0L) {
+      if (c() >= 0L) {
         return b();
       }
       i = -1;
     }
     return i;
-  }
-  
-  protected long a()
-  {
-    Object localObject1 = MobileQQ.sMobileQQ;
-    Object localObject2 = TimeZone.getDefault();
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("name", "QQ");
-    localContentValues.put("account_name", "QQ");
-    localContentValues.put("account_type", "com.tencent.mobileqq");
-    localContentValues.put("calendar_displayName", "QQ");
-    Integer localInteger = Integer.valueOf(1);
-    localContentValues.put("visible", localInteger);
-    localContentValues.put("calendar_color", Integer.valueOf(-16776961));
-    localContentValues.put("calendar_access_level", Integer.valueOf(700));
-    localContentValues.put("sync_events", localInteger);
-    localContentValues.put("calendar_timezone", ((TimeZone)localObject2).getID());
-    localContentValues.put("ownerAccount", "QQ");
-    localContentValues.put("canOrganizerRespond", Integer.valueOf(0));
-    if (Build.VERSION.SDK_INT >= 17) {
-      localContentValues.put("isPrimary", localInteger);
-    }
-    localObject2 = Uri.parse(b).buildUpon().appendQueryParameter("caller_is_syncadapter", "true").appendQueryParameter("account_name", "QQ").appendQueryParameter("account_type", "com.tencent.mobileqq").build();
-    localObject1 = ((Context)localObject1).getContentResolver().insert((Uri)localObject2, localContentValues);
-    if (localObject1 == null) {
-      return -1L;
-    }
-    return ContentUris.parseId((Uri)localObject1);
   }
   
   protected void a(CalendarEntity paramCalendarEntity)
@@ -118,7 +90,7 @@ public class CalenderUtils
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append("\n");
-      ((StringBuilder)localObject3).append(a(paramCalendarEntity));
+      ((StringBuilder)localObject3).append(c(paramCalendarEntity));
       ((ContentValues)localObject2).put("description", ((StringBuilder)localObject3).toString());
       ((ContentValues)localObject2).put("dtstart", Long.valueOf(l));
       ((ContentValues)localObject2).put("dtend", Long.valueOf(l + 7200000L));
@@ -226,7 +198,7 @@ public class CalenderUtils
     {
       QLog.e("QQReminder.CalenderUtils", 1, "deleteCalendar err: ", localThrowable);
     }
-    a(paramCalendarEntity);
+    b(paramCalendarEntity);
   }
   
   public void b(AppActivity paramAppActivity, CalendarEntity paramCalendarEntity)
@@ -240,10 +212,38 @@ public class CalenderUtils
       a(paramAppActivity, new CalenderUtils.2(this, paramCalendarEntity));
     }
   }
+  
+  protected long c()
+  {
+    Object localObject1 = MobileQQ.sMobileQQ;
+    Object localObject2 = TimeZone.getDefault();
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("name", "QQ");
+    localContentValues.put("account_name", "QQ");
+    localContentValues.put("account_type", "com.tencent.mobileqq");
+    localContentValues.put("calendar_displayName", "QQ");
+    Integer localInteger = Integer.valueOf(1);
+    localContentValues.put("visible", localInteger);
+    localContentValues.put("calendar_color", Integer.valueOf(-16776961));
+    localContentValues.put("calendar_access_level", Integer.valueOf(700));
+    localContentValues.put("sync_events", localInteger);
+    localContentValues.put("calendar_timezone", ((TimeZone)localObject2).getID());
+    localContentValues.put("ownerAccount", "QQ");
+    localContentValues.put("canOrganizerRespond", Integer.valueOf(0));
+    if (Build.VERSION.SDK_INT >= 17) {
+      localContentValues.put("isPrimary", localInteger);
+    }
+    localObject2 = Uri.parse(b).buildUpon().appendQueryParameter("caller_is_syncadapter", "true").appendQueryParameter("account_name", "QQ").appendQueryParameter("account_type", "com.tencent.mobileqq").build();
+    localObject1 = ((Context)localObject1).getContentResolver().insert((Uri)localObject2, localContentValues);
+    if (localObject1 == null) {
+      return -1L;
+    }
+    return ContentUris.parseId((Uri)localObject1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.calendar.CalenderUtils
  * JD-Core Version:    0.7.0.1
  */

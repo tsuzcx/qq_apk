@@ -8,28 +8,28 @@ import java.lang.ref.WeakReference;
 class RegisterLHAssistant$MyLayoutChangeListener
   implements View.OnLayoutChangeListener
 {
-  final int jdField_a_of_type_Int;
-  final WeakReference<ScrollView> jdField_a_of_type_JavaLangRefWeakReference;
+  final WeakReference<ScrollView> a;
+  final int b;
   
   private RegisterLHAssistant$MyLayoutChangeListener(ScrollView paramScrollView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramScrollView);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramScrollView);
+    this.b = paramInt;
   }
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ScrollView localScrollView = (ScrollView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ScrollView localScrollView = (ScrollView)this.a.get();
     if ((localScrollView != null) && (paramInt4 - paramInt2 > paramInt8 - paramInt6))
     {
-      localScrollView.smoothScrollTo(0, this.jdField_a_of_type_Int);
+      localScrollView.smoothScrollTo(0, this.b);
       paramView.removeOnLayoutChangeListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.MyLayoutChangeListener
  * JD-Core Version:    0.7.0.1
  */

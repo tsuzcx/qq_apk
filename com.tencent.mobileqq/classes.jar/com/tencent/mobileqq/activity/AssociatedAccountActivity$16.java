@@ -43,7 +43,7 @@ class AssociatedAccountActivity$16
       this.a.mTopRefreshTop.a(0L);
       paramView = this.a;
       paramView.mIsFromPull = true;
-      AssociatedAccountActivity.access$2200(paramView, false, true);
+      AssociatedAccountActivity.access$2300(paramView, false, true);
       return true;
     }
     this.a.mTopRefreshTop.a(1);
@@ -55,7 +55,7 @@ class AssociatedAccountActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.16
  * JD-Core Version:    0.7.0.1
  */

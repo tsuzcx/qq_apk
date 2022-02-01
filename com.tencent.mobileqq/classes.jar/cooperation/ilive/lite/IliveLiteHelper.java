@@ -21,11 +21,11 @@ import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
 import com.tencent.mobileqq.litelivesdk.api.login.BizLoginRequest;
 import com.tencent.mobileqq.litelivesdk.api.login.IBizLoginObserver;
 import com.tencent.mobileqq.litelivesdk.api.login.ILiveLoginTicketListener;
+import com.tencent.mobileqq.litelivesdk.utils.ProcessUtil;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.ilive.config.IliveManagerCfgBean;
 import cooperation.ilive.config.IliveManagerConfProcessor;
 import cooperation.ilive.entity.IliveJumpParams;
-import cooperation.ilive.lite.module.IliveLiteAudienceRoomModules;
 import cooperation.ilive.lite.rommswitch.LiveLiteSwitchRoomBuilder;
 import cooperation.ilive.lite.service.IliveActivityLifeCycleServiceBuilder;
 import cooperation.ilive.lite.service.IliveCustomRoomServiceBuilder;
@@ -36,6 +36,7 @@ import cooperation.ilive.lite.service.IliveMsfChannelServiceBuilder;
 import cooperation.ilive.manager.IliveAuthManager;
 import cooperation.ilive.manager.IliveAuthManager.Callback;
 import cooperation.ilive.util.ElapseStat;
+import cooperation.qqlive.QQLiveAudienceRoomModules;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import org.json.JSONArray;
@@ -43,40 +44,30 @@ import org.json.JSONObject;
 
 public class IliveLiteHelper
 {
-  private static IliveLiteHelper jdField_a_of_type_CooperationIliveLiteIliveLiteHelper;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private IBusinessExpireObserver.IBusinessInitFinish jdField_a_of_type_ComTencentMobileqqLitelivesdkApiIBusinessExpireObserver$IBusinessInitFinish;
-  private IBusinessExpireObserver jdField_a_of_type_ComTencentMobileqqLitelivesdkApiIBusinessExpireObserver = new IliveLiteHelper.1(this);
-  private IBizLoginObserver jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver;
-  private ILiveLoginTicketListener jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginILiveLoginTicketListener = new IliveLiteHelper.2(this);
-  private IliveAuthManager.Callback jdField_a_of_type_CooperationIliveManagerIliveAuthManager$Callback = new IliveLiteHelper.3(this);
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private static IliveLiteHelper a;
+  private static final Object b = new Object();
   private String c;
+  private String d;
+  private String e;
+  private int f;
+  private long g = -1L;
+  private IBizLoginObserver h;
+  private IBusinessExpireObserver.IBusinessInitFinish i;
+  private IBusinessExpireObserver j = new IliveLiteHelper.1(this);
+  private ILiveLoginTicketListener k = new IliveLiteHelper.2(this);
+  private IliveAuthManager.Callback l = new IliveLiteHelper.3(this);
   
   public static IliveLiteHelper a()
   {
-    if (jdField_a_of_type_CooperationIliveLiteIliveLiteHelper == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (a == null) {
+      synchronized (b)
       {
-        if (jdField_a_of_type_CooperationIliveLiteIliveLiteHelper == null) {
-          jdField_a_of_type_CooperationIliveLiteIliveLiteHelper = new IliveLiteHelper();
+        if (a == null) {
+          a = new IliveLiteHelper();
         }
       }
     }
-    return jdField_a_of_type_CooperationIliveLiteIliveLiteHelper;
-  }
-  
-  private String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return "";
-    }
-    JSONArray localJSONArray = new JSONArray();
-    localJSONArray.put(this.jdField_b_of_type_JavaLangString);
-    return Uri.encode(localJSONArray.toString());
+    return a;
   }
   
   private void a(boolean paramBoolean, stAuth paramstAuth)
@@ -92,82 +83,82 @@ public class IliveLiteHelper
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Ilive login ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.f);
     QLog.e("IliveLiteHelper", 1, ((StringBuilder)localObject).toString());
-    int i = this.jdField_a_of_type_Int;
-    if ((i != 2) && (i != 4))
+    int m = this.f;
+    if ((m != 2) && (m != 4))
     {
-      if (i == 3)
+      if (m == 3)
       {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_Int = 1;
-        if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver != null)
+        this.g = System.currentTimeMillis();
+        this.f = 1;
+        if (this.h != null)
         {
           localObject = new BizLoginRequest();
-          ((BizLoginRequest)localObject).jdField_a_of_type_Int = 0;
-          ((BizLoginRequest)localObject).jdField_a_of_type_JavaLangString = "1037";
-          ((BizLoginRequest)localObject).c = paramstAuth.sUid;
-          ((BizLoginRequest)localObject).jdField_d_of_type_JavaLangString = paramstAuth.sSessionKey;
-          ((BizLoginRequest)localObject).jdField_b_of_type_JavaLangString = "1037";
-          this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver.a((BizLoginRequest)localObject);
+          ((BizLoginRequest)localObject).b = 0;
+          ((BizLoginRequest)localObject).a = "1037";
+          ((BizLoginRequest)localObject).d = paramstAuth.sUid;
+          ((BizLoginRequest)localObject).e = paramstAuth.sSessionKey;
+          ((BizLoginRequest)localObject).c = "1037";
+          this.h.a((BizLoginRequest)localObject);
         }
-        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver = null;
+        this.h = null;
       }
     }
     else
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.g = System.currentTimeMillis();
       localObject = new BizLoginRequest();
-      ((BizLoginRequest)localObject).jdField_a_of_type_Int = 0;
-      ((BizLoginRequest)localObject).jdField_a_of_type_JavaLangString = "1037";
-      ((BizLoginRequest)localObject).c = paramstAuth.sUid;
-      ((BizLoginRequest)localObject).jdField_d_of_type_JavaLangString = paramstAuth.sSessionKey;
-      ((BizLoginRequest)localObject).jdField_b_of_type_JavaLangString = "1037";
+      ((BizLoginRequest)localObject).b = 0;
+      ((BizLoginRequest)localObject).a = "1037";
+      ((BizLoginRequest)localObject).d = paramstAuth.sUid;
+      ((BizLoginRequest)localObject).e = paramstAuth.sSessionKey;
+      ((BizLoginRequest)localObject).c = "1037";
       LiteLiveSDKFactory.a().a((BizLoginRequest)localObject);
-      e();
+      g();
     }
   }
   
-  public static void b()
+  public static void c()
   {
-    BusinessConfig localBusinessConfig = LiteLiveSDKFactory.a().a();
-    if ((localBusinessConfig != null) && (localBusinessConfig.jdField_a_of_type_JavaUtilHashMap != null) && (localBusinessConfig.jdField_a_of_type_JavaLangString.equals("1037"))) {
-      localBusinessConfig.jdField_a_of_type_JavaUtilHashMap.remove("closejump");
+    BusinessConfig localBusinessConfig = LiteLiveSDKFactory.a().b();
+    if ((localBusinessConfig != null) && (localBusinessConfig.m != null) && (localBusinessConfig.a.equals("1037"))) {
+      localBusinessConfig.m.remove("closejump");
     }
   }
   
-  private void c()
+  private void d()
   {
-    if (LiteLiveSDKFactory.a().a())
+    if (LiteLiveSDKFactory.a().c())
     {
       QLog.e("EnterInitQuestion", 1, "IliveHelper initLiveSdk isInitSDK = true");
-      localBusinessConfig = LiteLiveSDKFactory.a().a();
-      if ((localBusinessConfig != null) && (localBusinessConfig.jdField_a_of_type_JavaLangString.equals("1037"))) {
+      localBusinessConfig = LiteLiveSDKFactory.a().b();
+      if ((localBusinessConfig != null) && (localBusinessConfig.a.equals("1037"))) {
         return;
       }
     }
     QLog.e("EnterInitQuestion", 1, "IliveHelper initLiveSdk isInitSDK = false");
     BusinessConfig localBusinessConfig = new BusinessConfig();
-    localBusinessConfig.jdField_a_of_type_JavaLangString = "1037";
-    localBusinessConfig.jdField_e_of_type_Int = 0;
-    localBusinessConfig.jdField_b_of_type_JavaLangString = ApkUtils.a(BaseApplicationImpl.getContext());
-    localBusinessConfig.jdField_a_of_type_Int = ApkUtils.a(BaseApplicationImpl.getContext());
-    localBusinessConfig.jdField_d_of_type_Int = 16594;
-    localBusinessConfig.jdField_b_of_type_Int = 1400368383;
+    localBusinessConfig.a = "1037";
+    localBusinessConfig.h = 0;
+    localBusinessConfig.b = ApkUtils.b(BaseApplicationImpl.getContext());
+    localBusinessConfig.c = ApkUtils.a(BaseApplicationImpl.getContext());
+    localBusinessConfig.f = 16594;
+    localBusinessConfig.d = 1400368383;
     Object localObject = IliveManagerConfProcessor.a();
     if (localObject != null)
     {
-      localBusinessConfig.jdField_a_of_type_Boolean = (((IliveManagerCfgBean)localObject).a() ^ true);
-      localBusinessConfig.jdField_b_of_type_Boolean = false;
+      localBusinessConfig.k = (((IliveManagerCfgBean)localObject).a() ^ true);
+      localBusinessConfig.l = false;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("initLiveSdk isUseMutilWeb = ");
-    ((StringBuilder)localObject).append(localBusinessConfig.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(localBusinessConfig.k);
     QLog.e("IliveLiteHelper", 1, ((StringBuilder)localObject).toString());
-    localBusinessConfig.jdField_d_of_type_JavaLangString = "1";
-    localBusinessConfig.jdField_e_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    LiteLiveSDKFactory.a().a("1037", this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiIBusinessExpireObserver);
-    LiteLiveSDKFactory.a().a("1037", 7, IliveLiteAudienceRoomModules.class);
+    localBusinessConfig.i = "1";
+    localBusinessConfig.j = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    LiteLiveSDKFactory.a().a("1037", this.j);
+    LiteLiveSDKFactory.a().a("1037", 7, QQLiveAudienceRoomModules.class);
     LiteLiveSDKFactory.a().a("1037", RoomSwitchInterface.class, LiveLiteSwitchRoomBuilder.class);
     LiteLiveSDKFactory.a().a("1037", RoomServiceInterface.class, IliveCustomRoomServiceBuilder.class);
     LiteLiveSDKFactory.a().a("1037", ActivityLifeCycleService.class, IliveActivityLifeCycleServiceBuilder.class);
@@ -176,28 +167,38 @@ public class IliveLiteHelper
     LiteLiveSDKFactory.a().a("1037", FloatWindowConfigServiceInterface.class, IliveFloatWindowConfigServiceBuilder.class);
     LiteLiveSDKFactory.a().a("1037", MediaPlayerInterface.class, IliveMediaPlayerMgrServiceBuilder.class);
     LiteLiveSDKFactory.a().a(localBusinessConfig);
-    LiteLiveSDKFactory.a().a("1037", this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginILiveLoginTicketListener);
-    d();
-  }
-  
-  private void d()
-  {
-    QLog.e("IliveLiteHelper", 1, "getAuthTicket");
-    ElapseStat.a("Ilive auth");
-    IliveAuthManager.getInstance().getStAuth(this.jdField_a_of_type_CooperationIliveManagerIliveAuthManager$Callback, true);
+    LiteLiveSDKFactory.a().a("1037", this.k);
+    e();
   }
   
   private void e()
   {
+    QLog.e("IliveLiteHelper", 1, "getAuthTicket");
+    ElapseStat.a("Ilive auth");
+    IliveAuthManager.getInstance().getStAuth(this.l, true);
+  }
+  
+  private String f()
+  {
+    if (TextUtils.isEmpty(this.d)) {
+      return "";
+    }
+    JSONArray localJSONArray = new JSONArray();
+    localJSONArray.put(this.d);
+    return Uri.encode(localJSONArray.toString());
+  }
+  
+  private void g()
+  {
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("Ilive login success ");
-    localStringBuilder1.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(this.f);
     QLog.e("IliveLiteHelper", 1, localStringBuilder1.toString());
-    int i = this.jdField_a_of_type_Int;
+    int m = this.f;
     boolean bool2;
-    if (i == 2)
+    if (m == 2)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty(this.c))
       {
         QLog.e("IliveLiteHelper", 1, "enter with empty roomid ");
         return;
@@ -216,7 +217,7 @@ public class IliveLiteHelper
         bool1 = true;
         localStringBuilder1.append(bool1);
         QLog.e("EnterInitQuestion", 1, localStringBuilder1.toString());
-        bool1 = LiteLiveSDKFactory.a().a("1037", this.c);
+        bool1 = LiteLiveSDKFactory.a().a("1037", this.e);
       }
       catch (Exception localException)
       {
@@ -229,12 +230,12 @@ public class IliveLiteHelper
       }
       if (bool1)
       {
-        this.jdField_a_of_type_Int = 1;
+        this.f = 1;
         return;
-        if (i == 4)
+        if (m == 4)
         {
-          this.jdField_a_of_type_Int = 1;
-          IBusinessExpireObserver.IBusinessInitFinish localIBusinessInitFinish = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiIBusinessExpireObserver$IBusinessInitFinish;
+          this.f = 1;
+          IBusinessExpireObserver.IBusinessInitFinish localIBusinessInitFinish = this.i;
           if (localIBusinessInitFinish != null) {
             localIBusinessInitFinish.a();
           }
@@ -246,12 +247,113 @@ public class IliveLiteHelper
     }
   }
   
-  public void a()
+  public void a(IliveJumpParams paramIliveJumpParams)
   {
-    this.jdField_a_of_type_Int = 1;
+    if ((paramIliveJumpParams != null) && (!TextUtils.isEmpty(paramIliveJumpParams.c)))
+    {
+      QLog.e("IliveLiteHelper", 1, "enterRoom");
+      this.f = 2;
+      this.c = paramIliveJumpParams.c;
+      this.d = paramIliveJumpParams.d;
+      if (TextUtils.isEmpty(paramIliveJumpParams.h)) {
+        paramIliveJumpParams.h = "";
+      }
+      if (TextUtils.isEmpty(this.d)) {
+        this.d = "";
+      }
+      if (TextUtils.isEmpty(paramIliveJumpParams.j)) {
+        paramIliveJumpParams.j = "";
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      str3 = ((StringBuilder)localObject).toString();
+    }
     try
     {
-      c();
+      localObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramIliveJumpParams.j)) {
+        localObject = new JSONObject(Uri.decode(paramIliveJumpParams.j));
+      }
+      ((JSONObject)localObject).put("session_id", str3);
+      paramIliveJumpParams.j = ((JSONObject)localObject).toString();
+    }
+    catch (Exception localException)
+    {
+      label196:
+      String str4;
+      boolean bool;
+      String str2;
+      String str1;
+      break label196;
+    }
+    QLog.e("IliveLiteHelper", 1, "");
+    this.e = "mqqapi://now/openroom?roomtype=0&fromid=1037&roomid={roomId}&coverurl=&videoUrl={videoUrl}&pageType=1&starttime={startTime}&nocleartop={nocleartop}&tool_state={tool_state}&closeJump={closeJump}&fromid={fromid}&trace_info={trace_info}&session_id={session_id}&first_click_time={first_click_time}&room_type={room_type}&game_id={game_id}&game_tag_id={game_tag_id}&video_source={video_source}";
+    this.e = this.e.replace("{roomId}", this.c);
+    this.e = this.e.replace("{videoUrl}", f());
+    this.e = this.e.replace("{fromid}", String.valueOf(paramIliveJumpParams.i));
+    this.e = this.e.replace("{startTime}", String.valueOf(System.currentTimeMillis()));
+    str4 = this.e;
+    bool = paramIliveJumpParams.k;
+    str2 = "1";
+    str1 = "0";
+    if (bool) {
+      localObject = "1";
+    } else {
+      localObject = "0";
+    }
+    this.e = str4.replace("{nocleartop}", (CharSequence)localObject);
+    this.e = this.e.replace("{closeJump}", Uri.encode(paramIliveJumpParams.h));
+    this.e = this.e.replace("{trace_info}", Uri.encode(paramIliveJumpParams.j));
+    this.e = this.e.replace("{session_id}", str3);
+    this.e = this.e.replace("{first_click_time}", String.valueOf(IliveLiteMonitorUtil.j()));
+    String str3 = this.e;
+    if (ProcessUtil.a()) {
+      localObject = str2;
+    } else {
+      localObject = "0";
+    }
+    this.e = str3.replace("{tool_state}", (CharSequence)localObject);
+    str2 = this.e;
+    if (paramIliveJumpParams.m == null) {
+      localObject = "0";
+    } else {
+      localObject = paramIliveJumpParams.m;
+    }
+    this.e = str2.replace("{room_type}", (CharSequence)localObject);
+    str2 = this.e;
+    if (paramIliveJumpParams.n == null) {
+      localObject = "0";
+    } else {
+      localObject = paramIliveJumpParams.n;
+    }
+    this.e = str2.replace("{game_id}", (CharSequence)localObject);
+    str2 = this.e;
+    if (paramIliveJumpParams.o == null) {
+      localObject = "0";
+    } else {
+      localObject = paramIliveJumpParams.o;
+    }
+    this.e = str2.replace("{game_tag_id}", (CharSequence)localObject);
+    Object localObject = this.e;
+    if (paramIliveJumpParams.p == null) {
+      paramIliveJumpParams = str1;
+    } else {
+      paramIliveJumpParams = paramIliveJumpParams.p;
+    }
+    this.e = ((String)localObject).replace("{video_source}", paramIliveJumpParams);
+    e();
+    return;
+    QLog.e("IliveLiteHelper", 1, "error enter room id null");
+  }
+  
+  public void b()
+  {
+    this.f = 1;
+    try
+    {
+      d();
       return;
     }
     catch (Throwable localThrowable)
@@ -260,72 +362,10 @@ public class IliveLiteHelper
       QLog.e("IliveLiteHelper", 1, "init exception", localThrowable);
     }
   }
-  
-  public void a(IliveJumpParams paramIliveJumpParams)
-  {
-    Object localObject;
-    String str1;
-    if ((paramIliveJumpParams != null) && (!TextUtils.isEmpty(paramIliveJumpParams.jdField_b_of_type_JavaLangString)))
-    {
-      QLog.e("IliveLiteHelper", 1, "enterRoom");
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = paramIliveJumpParams.jdField_b_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = paramIliveJumpParams.c;
-      if (TextUtils.isEmpty(paramIliveJumpParams.jdField_e_of_type_JavaLangString)) {
-        paramIliveJumpParams.jdField_e_of_type_JavaLangString = "";
-      }
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = "";
-      }
-      if (TextUtils.isEmpty(paramIliveJumpParams.f)) {
-        paramIliveJumpParams.f = "";
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      ((StringBuilder)localObject).append("_");
-      ((StringBuilder)localObject).append(System.currentTimeMillis());
-      str1 = ((StringBuilder)localObject).toString();
-    }
-    try
-    {
-      localObject = new JSONObject();
-      if (!TextUtils.isEmpty(paramIliveJumpParams.f)) {
-        localObject = new JSONObject(Uri.decode(paramIliveJumpParams.f));
-      }
-      ((JSONObject)localObject).put("session_id", str1);
-      paramIliveJumpParams.f = ((JSONObject)localObject).toString();
-    }
-    catch (Exception localException)
-    {
-      label191:
-      String str2;
-      break label191;
-    }
-    QLog.e("IliveLiteHelper", 1, "");
-    this.c = "mqqapi://now/openroom?roomtype=0&fromid=1037&roomid={roomId}&coverurl=&videoUrl={videoUrl}&pageType=1&starttime={startTime}&nocleartop={nocleartop}&closeJump={closeJump}&fromid={fromid}&trace_info={trace_info}&session_id={session_id}&first_click_time={first_click_time}";
-    this.c = this.c.replace("{roomId}", this.jdField_a_of_type_JavaLangString);
-    this.c = this.c.replace("{videoUrl}", a());
-    this.c = this.c.replace("{fromid}", String.valueOf(paramIliveJumpParams.jdField_a_of_type_Int));
-    this.c = this.c.replace("{startTime}", String.valueOf(System.currentTimeMillis()));
-    str2 = this.c;
-    if (paramIliveJumpParams.jdField_b_of_type_Boolean) {
-      localObject = "1";
-    } else {
-      localObject = "0";
-    }
-    this.c = str2.replace("{nocleartop}", (CharSequence)localObject);
-    this.c = this.c.replace("{closeJump}", Uri.encode(paramIliveJumpParams.jdField_e_of_type_JavaLangString));
-    this.c = this.c.replace("{trace_info}", Uri.encode(paramIliveJumpParams.f));
-    this.c = this.c.replace("{session_id}", str1);
-    this.c = this.c.replace("{first_click_time}", String.valueOf(IliveLiteMonitorUtil.a()));
-    d();
-    return;
-    QLog.e("IliveLiteHelper", 1, "error enter room id null");
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.IliveLiteHelper
  * JD-Core Version:    0.7.0.1
  */

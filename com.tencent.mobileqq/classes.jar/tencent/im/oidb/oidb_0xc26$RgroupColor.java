@@ -21,7 +21,7 @@ public final class oidb_0xc26$RgroupColor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xc26.RgroupColor
  * JD-Core Version:    0.7.0.1
  */

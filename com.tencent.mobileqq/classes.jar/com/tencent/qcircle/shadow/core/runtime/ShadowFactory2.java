@@ -9,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.LayoutInflater.Factory2;
 import android.view.View;
 import android.view.ViewStub;
-import com.tencent.qcircle.shadow.core.runtime.skin.entity.AttrFactory;
-import com.tencent.qcircle.shadow.core.runtime.skin.entity.SkinAttr;
-import com.tencent.qcircle.shadow.core.runtime.skin.entity.SkinItem;
-import com.tencent.qcircle.shadow.core.runtime.skin.loader.SkinManager;
+import com.tencent.mobileqq.auto.engine.skin.entity.AttrFactory;
+import com.tencent.mobileqq.auto.engine.skin.entity.SkinAttr;
+import com.tencent.mobileqq.auto.engine.skin.entity.SkinItem;
+import com.tencent.mobileqq.auto.engine.skin.loader.SkinManager;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -337,7 +337,7 @@ public class ShadowFactory2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qcircle.shadow.core.runtime.ShadowFactory2
  * JD-Core Version:    0.7.0.1
  */

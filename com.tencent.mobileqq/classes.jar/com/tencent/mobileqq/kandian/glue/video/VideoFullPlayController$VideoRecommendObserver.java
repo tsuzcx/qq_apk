@@ -23,14 +23,14 @@ class VideoFullPlayController$VideoRecommendObserver
     if (paramBoolean)
     {
       paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      VideoFullPlayController.a(this.a).addAll(VideoFullPlayController.a(this.a).a(paramBundle));
-      this.a.f();
+      VideoFullPlayController.b(this.a).addAll(VideoFullPlayController.a(this.a).a(paramBundle));
+      this.a.j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoFullPlayController.VideoRecommendObserver
  * JD-Core Version:    0.7.0.1
  */

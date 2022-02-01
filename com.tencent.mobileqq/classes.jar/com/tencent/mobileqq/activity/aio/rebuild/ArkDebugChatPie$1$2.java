@@ -10,12 +10,12 @@ class ArkDebugChatPie$1$2
   
   public void run()
   {
-    QQToast.a(this.a.this$0.a, HardCodeUtil.a(2131700881), 0).a();
+    QQToast.makeText(this.a.this$0.e, HardCodeUtil.a(2131898905), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.2
  * JD-Core Version:    0.7.0.1
  */

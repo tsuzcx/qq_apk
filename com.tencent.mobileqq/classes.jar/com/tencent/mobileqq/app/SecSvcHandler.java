@@ -11,9 +11,12 @@ import com.tencent.ims.get_config.ReqBody;
 import com.tencent.ims.get_config.RspBody;
 import com.tencent.ims.wx_msg_opt.ReqBody;
 import com.tencent.ims.wx_msg_opt.RspBody;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneUnityManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -25,11 +28,14 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.qsec.SecSvcHandlerHelper;
 import com.tencent.qqprotect.singleupdate.QPUpdateManager;
 import java.nio.ByteBuffer;
+import java.util.List;
 import tencent.im.oidb.cmd0x614.Oidb_0x614.DeviceManageHead;
 import tencent.im.oidb.cmd0x614.Oidb_0x614.ReNameDeviceNameReqBody;
 import tencent.im.oidb.cmd0x614.Oidb_0x614.ReqBody;
 import tencent.im.oidb.cmd0x614.Oidb_0x614.RspBody;
+import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.PhoneInfo;
 import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.ReqBody;
+import tencent.im.oidb.cmd0xeb8.oidb_0xeb8.RspBody;
 import tencent.im.oidb.cmd0xebd.oidb_0xebd.RspBody;
 import tencent.im.oidb.cmd0xec0.oidb_0xec0.ReqBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
@@ -39,13 +45,13 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xc6.SubMsgType0xc6.MsgBody;
 public class SecSvcHandler
   extends BusinessHandler
 {
-  private int jdField_a_of_type_Int = 1;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int a = 1;
+  private QQAppInterface b;
   
   SecSvcHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private void a(int paramInt, SubMsgType0xc6.AccountExceptionAlertBody paramAccountExceptionAlertBody)
@@ -57,7 +63,7 @@ public class SecSvcHandler
       }
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())
+    if (!this.b.isLogin())
     {
       if (QLog.isColorLevel()) {
         QLog.d("SecSvcHandler", 2, "user not logined, no alert");
@@ -180,6 +186,102 @@ public class SecSvcHandler
     notifyUI(8, false, Integer.valueOf(-1));
   }
   
+  private void a(oidb_0xeb8.RspBody paramRspBody, Bundle paramBundle, boolean paramBoolean)
+  {
+    if (paramRspBody.str_mibao_change_url.has()) {
+      paramBundle.putString("mibao_change_url", paramRspBody.str_mibao_change_url.get());
+    }
+    if (paramRspBody.str_mibao_set_url.has()) {
+      paramBundle.putString("mibao_set_url", paramRspBody.str_mibao_set_url.get());
+    }
+    if (paramRspBody.str_mibao_verify_url.has()) {
+      paramBundle.putString("mibao_verify_url", paramRspBody.str_mibao_verify_url.get());
+    }
+    if (paramRspBody.str_hori_bar_tips.has()) {
+      paramBundle.putString("str_hori_bar_tips", paramRspBody.str_hori_bar_tips.get());
+    }
+    if (paramRspBody.str_red_dot_tips.has()) {
+      paramBundle.putString("str_red_dot_tips", paramRspBody.str_red_dot_tips.get());
+    }
+    if (paramRspBody.bool_is_IOT.get())
+    {
+      paramBundle.putBoolean("bool_is_IOT", true);
+      paramBundle.putString("verify_phone_url", paramRspBody.str_verify_premibao_url.get());
+    }
+    if (paramRspBody.rpt_phone_info.has())
+    {
+      List localList = paramRspBody.rpt_phone_info.get();
+      Bundle[] arrayOfBundle = new Bundle[localList.size()];
+      int i = 0;
+      while (i < localList.size())
+      {
+        oidb_0xeb8.PhoneInfo localPhoneInfo = (oidb_0xeb8.PhoneInfo)localList.get(i);
+        if (localPhoneInfo != null)
+        {
+          Bundle localBundle = new Bundle();
+          int j = -1;
+          int k;
+          if (localPhoneInfo.uint32_phone_type.has())
+          {
+            k = localPhoneInfo.uint32_phone_type.get();
+            localBundle.putInt("phone_type", k);
+            j = k;
+            if (k == 4)
+            {
+              paramBundle.putBoolean("phone_verified", false);
+              paramBundle.putString("phone_unverified_number", localPhoneInfo.str_phone.get());
+              paramBundle.putString("verify_phone_url", paramRspBody.str_verify_premibao_url.get());
+              j = k;
+            }
+          }
+          if (localPhoneInfo.str_country_code.has())
+          {
+            localBundle.putString("country_code", localPhoneInfo.str_country_code.get());
+            if (j == 1) {
+              paramBundle.putString("country_code", localPhoneInfo.str_country_code.get());
+            }
+          }
+          if (localPhoneInfo.str_phone.has())
+          {
+            localBundle.putString("phone", localPhoneInfo.str_phone.get());
+            paramBundle.putString("phone", localPhoneInfo.str_phone.get());
+            if (j == 1) {
+              paramBundle.putString("phone", localPhoneInfo.str_phone.get());
+            }
+          }
+          boolean bool = paramBoolean;
+          if (localPhoneInfo.uint32_phone_status.has())
+          {
+            k = localPhoneInfo.uint32_phone_status.get();
+            localBundle.putInt("status", k);
+            if (j == 1) {
+              paramBundle.putInt("status", k);
+            }
+            bool = paramBoolean;
+            if (k == 4)
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("onGetNewPhoneUnityInfo: get phone type: ");
+              localStringBuilder.append(j);
+              localStringBuilder.append(" fail.");
+              QLog.e("SecSvcHandler", 1, localStringBuilder.toString());
+              bool = false;
+            }
+          }
+          if (localPhoneInfo.bytes_vas_phone.has()) {
+            localBundle.putByteArray("vaskey", localPhoneInfo.bytes_vas_phone.get().toByteArray());
+          }
+          arrayOfBundle[i] = localBundle;
+          paramBoolean = bool;
+        }
+        i += 1;
+      }
+      paramBundle.putParcelableArray("phone_info", arrayOfBundle);
+      ((PhoneUnityManager)this.b.getManager(QQManagerFactory.PHONE_UNITY_MANAGER)).a(paramBundle);
+      paramBundle.putBoolean("is_all_phone_get", paramBoolean);
+    }
+  }
+  
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     Boolean localBoolean = Boolean.valueOf(false);
@@ -201,409 +303,94 @@ public class SecSvcHandler
     notifyUI(10, false, paramToServiceMsg);
   }
   
-  /* Error */
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    // Byte code:
-    //   0: aload_3
-    //   1: ifnull +737 -> 738
-    //   4: aload_2
-    //   5: invokevirtual 134	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   8: ifeq +730 -> 738
-    //   11: new 136	tencent/im/oidb/oidb_sso$OIDBSSOPkg
-    //   14: dup
-    //   15: invokespecial 139	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
-    //   18: astore_3
-    //   19: aload_3
-    //   20: aload_2
-    //   21: invokevirtual 143	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   24: invokevirtual 147	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   27: pop
-    //   28: aload_3
-    //   29: getfield 153	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   32: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   35: ifne +703 -> 738
-    //   38: aload_3
-    //   39: getfield 213	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   42: invokevirtual 216	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   45: ifeq +693 -> 738
-    //   48: new 218	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody
-    //   51: dup
-    //   52: invokespecial 219	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:<init>	()V
-    //   55: astore_1
-    //   56: aload_1
-    //   57: aload_3
-    //   58: getfield 213	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   61: invokevirtual 222	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   64: invokevirtual 227	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   67: invokevirtual 228	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   70: pop
-    //   71: aload_1
-    //   72: getfield 231	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:uint32_check_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   75: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   78: istore 4
-    //   80: iload 4
-    //   82: ifle +656 -> 738
-    //   85: iconst_4
-    //   86: istore 5
-    //   88: iload 4
-    //   90: iconst_4
-    //   91: if_icmpeq +9 -> 100
-    //   94: iconst_1
-    //   95: istore 8
-    //   97: goto +6 -> 103
-    //   100: iconst_0
-    //   101: istore 8
-    //   103: new 149	android/os/Bundle
-    //   106: dup
-    //   107: invokespecial 150	android/os/Bundle:<init>	()V
-    //   110: astore_2
-    //   111: aload_2
-    //   112: ldc 233
-    //   114: iload 4
-    //   116: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   119: iload 4
-    //   121: iconst_3
-    //   122: if_icmpne +630 -> 752
-    //   125: iconst_1
-    //   126: istore 4
-    //   128: goto +3 -> 131
-    //   131: aload_2
-    //   132: ldc 235
-    //   134: iload 4
-    //   136: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   139: aload_1
-    //   140: getfield 238	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_change_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   143: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   146: ifeq +16 -> 162
-    //   149: aload_2
-    //   150: ldc 240
-    //   152: aload_1
-    //   153: getfield 238	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_change_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   156: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   159: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   162: aload_1
-    //   163: getfield 243	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_set_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   166: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   169: ifeq +16 -> 185
-    //   172: aload_2
-    //   173: ldc 245
-    //   175: aload_1
-    //   176: getfield 243	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_set_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   179: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   182: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   185: aload_1
-    //   186: getfield 248	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_verify_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   189: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   192: ifeq +16 -> 208
-    //   195: aload_2
-    //   196: ldc 250
-    //   198: aload_1
-    //   199: getfield 248	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_mibao_verify_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   202: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   205: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   208: aload_1
-    //   209: getfield 254	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:rpt_phone_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   212: invokevirtual 257	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
-    //   215: ifeq +571 -> 786
-    //   218: aload_1
-    //   219: getfield 254	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:rpt_phone_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   222: invokevirtual 260	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   225: astore_3
-    //   226: aload_3
-    //   227: invokeinterface 265 1 0
-    //   232: anewarray 149	android/os/Bundle
-    //   235: astore 10
-    //   237: iconst_0
-    //   238: istore 4
-    //   240: iload 4
-    //   242: aload_3
-    //   243: invokeinterface 265 1 0
-    //   248: if_icmpge +359 -> 607
-    //   251: aload_3
-    //   252: iload 4
-    //   254: invokeinterface 268 2 0
-    //   259: checkcast 270	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo
-    //   262: astore 11
-    //   264: aload 11
-    //   266: ifnonnull +6 -> 272
-    //   269: goto +508 -> 777
-    //   272: new 149	android/os/Bundle
-    //   275: dup
-    //   276: invokespecial 150	android/os/Bundle:<init>	()V
-    //   279: astore 12
-    //   281: aload 11
-    //   283: getfield 273	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:uint32_phone_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   286: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   289: ifeq +469 -> 758
-    //   292: aload 11
-    //   294: getfield 273	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:uint32_phone_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   297: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   300: istore 7
-    //   302: aload 12
-    //   304: ldc_w 275
-    //   307: iload 7
-    //   309: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   312: iload 7
-    //   314: istore 6
-    //   316: iload 7
-    //   318: iload 5
-    //   320: if_icmpne +47 -> 367
-    //   323: aload_2
-    //   324: ldc_w 277
-    //   327: iconst_0
-    //   328: invokevirtual 281	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   331: aload_2
-    //   332: ldc_w 283
-    //   335: aload 11
-    //   337: getfield 286	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_phone	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   340: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   343: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   346: aload_2
-    //   347: ldc_w 288
-    //   350: aload_1
-    //   351: getfield 291	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$RspBody:str_verify_premibao_url	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   354: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   357: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   360: iload 7
-    //   362: istore 6
-    //   364: goto +3 -> 367
-    //   367: aload 11
-    //   369: getfield 294	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_country_code	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   372: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   375: ifeq +40 -> 415
-    //   378: aload 12
-    //   380: ldc_w 296
-    //   383: aload 11
-    //   385: getfield 294	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_country_code	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   388: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   391: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   394: iload 6
-    //   396: iconst_1
-    //   397: if_icmpne +18 -> 415
-    //   400: aload_2
-    //   401: ldc_w 296
-    //   404: aload 11
-    //   406: getfield 294	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_country_code	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   409: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   412: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   415: aload 11
-    //   417: getfield 286	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_phone	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   420: invokevirtual 51	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   423: ifeq +40 -> 463
-    //   426: aload 12
-    //   428: ldc_w 298
-    //   431: aload 11
-    //   433: getfield 286	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_phone	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   436: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   439: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   442: iload 6
-    //   444: iconst_1
-    //   445: if_icmpne +18 -> 463
-    //   448: aload_2
-    //   449: ldc_w 298
-    //   452: aload 11
-    //   454: getfield 286	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:str_phone	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   457: invokevirtual 55	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   460: invokevirtual 168	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   463: aload 11
-    //   465: getfield 301	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:uint32_phone_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   468: invokevirtual 76	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   471: ifeq +296 -> 767
-    //   474: aload 11
-    //   476: getfield 301	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:uint32_phone_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   479: invokevirtual 79	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   482: istore 5
-    //   484: aload 12
-    //   486: ldc_w 303
-    //   489: iload 5
-    //   491: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   494: iload 6
-    //   496: iconst_1
-    //   497: if_icmpne +12 -> 509
-    //   500: aload_2
-    //   501: ldc_w 303
-    //   504: iload 5
-    //   506: invokevirtual 159	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   509: iload 5
-    //   511: iconst_4
-    //   512: if_icmpne +252 -> 764
-    //   515: new 170	java/lang/StringBuilder
-    //   518: dup
-    //   519: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   522: astore 13
-    //   524: aload 13
-    //   526: ldc_w 305
-    //   529: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   532: pop
-    //   533: aload 13
-    //   535: iload 6
-    //   537: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   540: pop
-    //   541: aload 13
-    //   543: ldc_w 310
-    //   546: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   549: pop
-    //   550: aload 13
-    //   552: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   555: astore 13
-    //   557: ldc 27
-    //   559: iconst_1
-    //   560: aload 13
-    //   562: invokestatic 313	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   565: iconst_0
-    //   566: istore 8
-    //   568: goto +3 -> 571
-    //   571: iconst_4
-    //   572: istore 5
-    //   574: aload 11
-    //   576: getfield 316	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:bytes_vas_phone	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   579: invokevirtual 216	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   582: ifeq +188 -> 770
-    //   585: aload 12
-    //   587: ldc_w 318
-    //   590: aload 11
-    //   592: getfield 316	tencent/im/oidb/cmd0xeb8/oidb_0xeb8$PhoneInfo:bytes_vas_phone	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   595: invokevirtual 222	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   598: invokevirtual 227	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   601: invokevirtual 322	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   604: goto +166 -> 770
-    //   607: aload_2
-    //   608: ldc_w 324
-    //   611: aload 10
-    //   613: invokevirtual 328	android/os/Bundle:putParcelableArray	(Ljava/lang/String;[Landroid/os/Parcelable;)V
-    //   616: aload_0
-    //   617: getfield 16	com/tencent/mobileqq/app/SecSvcHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   620: getstatic 333	com/tencent/mobileqq/app/QQManagerFactory:PHONE_UNITY_MANAGER	I
-    //   623: invokevirtual 337	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   626: checkcast 339	com/tencent/mobileqq/activity/contact/phonecontact/PhoneUnityManager
-    //   629: aload_2
-    //   630: invokevirtual 342	com/tencent/mobileqq/activity/contact/phonecontact/PhoneUnityManager:a	(Landroid/os/Bundle;)V
-    //   633: goto +3 -> 636
-    //   636: iconst_1
-    //   637: istore 9
-    //   639: aload_2
-    //   640: ldc_w 344
-    //   643: iload 8
-    //   645: invokevirtual 281	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   648: aload_2
-    //   649: astore_3
-    //   650: goto +93 -> 743
-    //   653: iconst_1
-    //   654: istore 8
-    //   656: astore_1
-    //   657: goto +25 -> 682
-    //   660: astore_1
-    //   661: iconst_1
-    //   662: istore 8
-    //   664: goto +18 -> 682
-    //   667: astore_1
-    //   668: iconst_1
-    //   669: istore 8
-    //   671: aconst_null
-    //   672: astore_2
-    //   673: goto +9 -> 682
-    //   676: astore_1
-    //   677: aconst_null
-    //   678: astore_2
-    //   679: iconst_0
-    //   680: istore 8
-    //   682: iload 8
-    //   684: istore 9
-    //   686: aload_2
-    //   687: astore_3
-    //   688: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   691: ifeq +52 -> 743
-    //   694: new 170	java/lang/StringBuilder
-    //   697: dup
-    //   698: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   701: astore_3
-    //   702: aload_3
-    //   703: ldc_w 346
-    //   706: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   709: pop
-    //   710: aload_3
-    //   711: aload_1
-    //   712: invokevirtual 180	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   715: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   718: pop
-    //   719: ldc 27
-    //   721: iconst_2
-    //   722: aload_3
-    //   723: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   726: invokestatic 33	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   729: iload 8
-    //   731: istore 9
-    //   733: aload_2
-    //   734: astore_3
-    //   735: goto +8 -> 743
-    //   738: aconst_null
-    //   739: astore_3
-    //   740: iconst_0
-    //   741: istore 9
-    //   743: aload_0
-    //   744: iconst_5
-    //   745: iload 9
-    //   747: aload_3
-    //   748: invokevirtual 187	com/tencent/mobileqq/app/SecSvcHandler:notifyUI	(IZLjava/lang/Object;)V
-    //   751: return
-    //   752: iconst_0
-    //   753: istore 4
-    //   755: goto -624 -> 131
-    //   758: iconst_m1
-    //   759: istore 6
-    //   761: goto -394 -> 367
-    //   764: goto -193 -> 571
-    //   767: goto -196 -> 571
-    //   770: aload 10
-    //   772: iload 4
-    //   774: aload 12
-    //   776: aastore
-    //   777: iload 4
-    //   779: iconst_1
-    //   780: iadd
-    //   781: istore 4
-    //   783: goto -543 -> 240
-    //   786: goto -150 -> 636
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	789	0	this	SecSvcHandler
-    //   0	789	1	paramToServiceMsg	ToServiceMsg
-    //   0	789	2	paramFromServiceMsg	FromServiceMsg
-    //   0	789	3	paramObject	Object
-    //   78	704	4	i	int
-    //   86	487	5	j	int
-    //   314	446	6	k	int
-    //   300	61	7	m	int
-    //   95	635	8	bool1	boolean
-    //   637	109	9	bool2	boolean
-    //   235	536	10	arrayOfBundle	Bundle[]
-    //   262	329	11	localPhoneInfo	tencent.im.oidb.cmd0xeb8.oidb_0xeb8.PhoneInfo
-    //   279	496	12	localBundle	Bundle
-    //   522	39	13	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   557	565	653	java/lang/Exception
-    //   574	604	653	java/lang/Exception
-    //   607	633	653	java/lang/Exception
-    //   639	648	653	java/lang/Exception
-    //   111	119	660	java/lang/Exception
-    //   131	162	660	java/lang/Exception
-    //   162	185	660	java/lang/Exception
-    //   185	208	660	java/lang/Exception
-    //   208	237	660	java/lang/Exception
-    //   240	264	660	java/lang/Exception
-    //   272	312	660	java/lang/Exception
-    //   323	360	660	java/lang/Exception
-    //   367	394	660	java/lang/Exception
-    //   400	415	660	java/lang/Exception
-    //   415	442	660	java/lang/Exception
-    //   448	463	660	java/lang/Exception
-    //   463	494	660	java/lang/Exception
-    //   500	509	660	java/lang/Exception
-    //   515	557	660	java/lang/Exception
-    //   103	111	667	java/lang/Exception
-    //   4	80	676	java/lang/Exception
+    boolean bool2 = false;
+    boolean bool3 = false;
+    int i = 0;
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
+    boolean bool1 = bool3;
+    paramToServiceMsg = localObject3;
+    if (paramObject != null)
+    {
+      bool1 = bool3;
+      paramToServiceMsg = localObject3;
+      try
+      {
+        if (!paramFromServiceMsg.isSuccess()) {
+          break label279;
+        }
+        paramObject = new oidb_sso.OIDBSSOPkg();
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        bool1 = bool3;
+        paramToServiceMsg = localObject3;
+        if (paramObject.uint32_result.get() != 0) {
+          break label279;
+        }
+        bool1 = bool3;
+        paramToServiceMsg = localObject3;
+        if (!paramObject.bytes_bodybuffer.has()) {
+          break label279;
+        }
+        paramFromServiceMsg = new oidb_0xeb8.RspBody();
+        paramFromServiceMsg.mergeFrom(paramObject.bytes_bodybuffer.get().toByteArray());
+        int j = paramFromServiceMsg.uint32_check_result.get();
+        bool1 = bool3;
+        paramToServiceMsg = localObject3;
+        if (j <= 0) {
+          break label279;
+        }
+        if (j != 4) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        try
+        {
+          paramToServiceMsg = new Bundle();
+          try
+          {
+            paramToServiceMsg.putInt("check_result", j);
+            if (j == 3) {
+              i = 1;
+            }
+            paramToServiceMsg.putInt("need_unify", i);
+            a(paramFromServiceMsg, paramToServiceMsg, bool1);
+            bool1 = true;
+          }
+          catch (Exception paramObject)
+          {
+            paramFromServiceMsg = paramToServiceMsg;
+            paramToServiceMsg = paramObject;
+          }
+          bool2 = true;
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          paramFromServiceMsg = localObject1;
+        }
+        paramObject = paramToServiceMsg;
+      }
+      catch (Exception paramObject)
+      {
+        paramFromServiceMsg = localObject2;
+      }
+      bool1 = bool2;
+      paramToServiceMsg = paramFromServiceMsg;
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("onGetPhoneBindInfo error:");
+        paramToServiceMsg.append(paramObject.getMessage());
+        QLog.d("SecSvcHandler", 2, paramToServiceMsg.toString());
+        paramToServiceMsg = paramFromServiceMsg;
+        bool1 = bool2;
+      }
+    }
+    label279:
+    notifyUI(5, bool1, paramToServiceMsg);
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1033,7 +820,7 @@ public class SecSvcHandler
         if (QLog.isColorLevel()) {
           QLog.d("SecSvcHandler", 2, "[SFU] Received reply from server.");
         }
-        ((QPUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        ((QPUpdateManager)this.b.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -1051,11 +838,11 @@ public class SecSvcHandler
   public void a()
   {
     wx_msg_opt.ReqBody localReqBody = new wx_msg_opt.ReqBody();
-    localReqBody.uint64_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    localReqBody.uint64_uin.set(this.b.getLongAccountUin());
     localReqBody.uint32_cmd.set(1);
     Object localObject = localReqBody.uint32_seq;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    int i = this.a;
+    this.a = (i + 1);
     ((PBUInt32Field)localObject).set(i);
     localReqBody.uint32_opt.set(1);
     localObject = createToServiceMsg("DevLockAuthSvc.WxMsgOpt");
@@ -1072,7 +859,7 @@ public class SecSvcHandler
     localOIDBSSOPkg.uint32_command.set(3768);
     localOIDBSSOPkg.uint32_service_type.set(1);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xeb8.ReqBody)localObject).toByteArray()));
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "OidbSvc.0xeb8");
+    localObject = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "OidbSvc.0xeb8");
     ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
     sendPbReq((ToServiceMsg)localObject);
   }
@@ -1110,7 +897,7 @@ public class SecSvcHandler
         {
           try
           {
-            ((QPUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).b(i);
+            ((QPUpdateManager)this.b.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).b(i);
             return;
           }
           catch (Exception paramArrayOfByte)
@@ -1202,12 +989,12 @@ public class SecSvcHandler
       QLog.d("SecSvcHandler", 2, "getAntiFraudConfig");
     }
     get_config.ReqBody localReqBody = new get_config.ReqBody();
-    localReqBody.u64_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-    localReqBody.u32_appid.set(AppSetting.a());
+    localReqBody.u64_uin.set(this.b.getLongAccountUin());
+    localReqBody.u32_appid.set(AppSetting.d());
     localReqBody.u32_proto_version.set(1);
     PBUInt32Field localPBUInt32Field = localReqBody.u32_seq;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    int i = this.a;
+    this.a = (i + 1);
     localPBUInt32Field.set(i);
     localReqBody.str_config_name.set(paramString);
     paramString = AntiFraudConfigFileUtil.a().a(paramString, "Version");
@@ -1238,11 +1025,11 @@ public class SecSvcHandler
       QLog.d("SecSvcHandler", 2, "setWXSyncQQMsgOption");
     }
     wx_msg_opt.ReqBody localReqBody = new wx_msg_opt.ReqBody();
-    localReqBody.uint64_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    localReqBody.uint64_uin.set(this.b.getLongAccountUin());
     localReqBody.uint32_cmd.set(2);
     Object localObject = localReqBody.uint32_seq;
-    int j = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (j + 1);
+    int j = this.a;
+    this.a = (j + 1);
     ((PBUInt32Field)localObject).set(j);
     localObject = localReqBody.uint32_opt;
     if (paramBoolean) {
@@ -1263,7 +1050,7 @@ public class SecSvcHandler
     }
     Object localObject = ByteBuffer.allocate(paramArrayOfByte.length + 19);
     ((ByteBuffer)localObject).putShort((short)3);
-    ((ByteBuffer)localObject).putInt((int)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    ((ByteBuffer)localObject).putInt((int)this.b.getLongAccountUin());
     ((ByteBuffer)localObject).put((byte)paramArrayOfByte.length);
     ((ByteBuffer)localObject).put(paramArrayOfByte);
     ((ByteBuffer)localObject).putShort((short)2);
@@ -1277,7 +1064,7 @@ public class SecSvcHandler
     paramArrayOfByte.uint32_command.set(2579);
     paramArrayOfByte.uint32_service_type.set(16);
     paramArrayOfByte.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "OidbSvc.0xa13");
+    localObject = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "OidbSvc.0xa13");
     ((ToServiceMsg)localObject).putWupBuffer(paramArrayOfByte.toByteArray());
     sendPbReq((ToServiceMsg)localObject);
   }
@@ -1286,11 +1073,11 @@ public class SecSvcHandler
   {
     device_lock_query_status.ReqBody localReqBody = new device_lock_query_status.ReqBody();
     Object localObject = localReqBody.u32_seq;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    int i = this.a;
+    this.a = (i + 1);
     ((PBUInt32Field)localObject).set(i);
     localReqBody.u32_sys_type.set(1);
-    localReqBody.u32_app_id.set(AppSetting.a());
+    localReqBody.u32_app_id.set(AppSetting.d());
     localObject = createToServiceMsg("DevLockSecSvc.DevLockQuery");
     ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
     sendPbReq((ToServiceMsg)localObject);
@@ -1310,14 +1097,14 @@ public class SecSvcHandler
     }
     Object localObject = ByteBuffer.allocate(paramArrayOfByte.length + 7);
     ((ByteBuffer)localObject).putShort((short)3);
-    ((ByteBuffer)localObject).putInt((int)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    ((ByteBuffer)localObject).putInt((int)this.b.getLongAccountUin());
     ((ByteBuffer)localObject).put((byte)paramArrayOfByte.length);
     ((ByteBuffer)localObject).put(paramArrayOfByte);
     paramArrayOfByte = new oidb_sso.OIDBSSOPkg();
     paramArrayOfByte.uint32_command.set(1197);
     paramArrayOfByte.uint32_service_type.set(11);
     paramArrayOfByte.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "OidbSvc.0x4ad");
+    localObject = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "OidbSvc.0x4ad");
     ((ToServiceMsg)localObject).putWupBuffer(paramArrayOfByte.toByteArray());
     sendPbReq((ToServiceMsg)localObject);
   }
@@ -1405,7 +1192,7 @@ public class SecSvcHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SecSvcHandler
  * JD-Core Version:    0.7.0.1
  */

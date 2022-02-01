@@ -77,31 +77,25 @@ public class HippyScrollViewController<T extends ViewGroup,  extends HippyScroll
     paramHippyScrollView.setFlingEnabled(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onMomentumScrollBegin")
+  @HippyControllerProps(defaultType="boolean", name="onMomentumScrollBegin")
   public void setMomentumScrollBeginEventEnable(HippyScrollView paramHippyScrollView, boolean paramBoolean)
   {
     paramHippyScrollView.setMomentumScrollBeginEventEnable(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onMomentumScrollEnd")
+  @HippyControllerProps(defaultType="boolean", name="onMomentumScrollEnd")
   public void setMomentumScrollEndEventEnable(HippyScrollView paramHippyScrollView, boolean paramBoolean)
   {
     paramHippyScrollView.setMomentumScrollEndEventEnable(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="pagingEnabled")
+  @HippyControllerProps(defaultType="boolean", name="pagingEnabled")
   public void setPagingEnabled(HippyScrollView paramHippyScrollView, boolean paramBoolean)
   {
     paramHippyScrollView.setPagingEnabled(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onScrollAnimationEnd")
-  public void setScrollAnimationEndEventEnable(HippyScrollView paramHippyScrollView, boolean paramBoolean)
-  {
-    paramHippyScrollView.setScrollAnimationEndEventEnable(paramBoolean);
-  }
-  
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onScrollBeginDrag")
+  @HippyControllerProps(defaultType="boolean", name="onScrollBeginDrag")
   public void setScrollBeginDragEventEnable(HippyScrollView paramHippyScrollView, boolean paramBoolean)
   {
     paramHippyScrollView.setScrollBeginDragEventEnable(paramBoolean);
@@ -113,13 +107,13 @@ public class HippyScrollViewController<T extends ViewGroup,  extends HippyScroll
     paramHippyScrollView.setScrollEnabled(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onScrollEndDrag")
+  @HippyControllerProps(defaultType="boolean", name="onScrollEndDrag")
   public void setScrollEndDragEventEnable(HippyScrollView paramHippyScrollView, boolean paramBoolean)
   {
     paramHippyScrollView.setScrollEndDragEventEnable(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onScrollEnable")
+  @HippyControllerProps(defaultType="boolean", name="onScrollEnable")
   public void setScrollEventEnable(HippyScrollView paramHippyScrollView, boolean paramBoolean)
   {
     paramHippyScrollView.setScrollEventEnable(paramBoolean);
@@ -137,7 +131,7 @@ public class HippyScrollViewController<T extends ViewGroup,  extends HippyScroll
     paramHippyScrollView.setScrollMinOffset(paramInt);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="showScrollIndicator")
+  @HippyControllerProps(defaultType="boolean", name="showScrollIndicator")
   public void setShowScrollIndicator(HippyScrollView paramHippyScrollView, boolean paramBoolean)
   {
     paramHippyScrollView.showScrollIndicator(paramBoolean);
@@ -145,7 +139,7 @@ public class HippyScrollViewController<T extends ViewGroup,  extends HippyScroll
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.scroll.HippyScrollViewController
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,15 @@ class ApolloLottieAnim$1$1
   
   public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (this.a.a.a() == null) {
+    if (this.a.c.a() == null) {
       return null;
     }
-    return (Bitmap)this.a.a.a().get(paramLottieImageAsset.getKey());
+    return (Bitmap)this.a.c.a().get(paramLottieImageAsset.getKey());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ApolloLottieAnim.1.1
  * JD-Core Version:    0.7.0.1
  */

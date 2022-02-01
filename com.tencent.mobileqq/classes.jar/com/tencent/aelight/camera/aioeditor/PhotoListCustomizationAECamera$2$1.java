@@ -18,19 +18,19 @@ class PhotoListCustomizationAECamera$2$1
   
   public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
   {
-    PhotoListCustomizationAECamera.d(this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera$2.a).a.b();
+    PhotoListCustomizationAECamera.g(this.c.c).u.b();
     Bundle localBundle = new Bundle();
     localBundle.putLong("KEY_VIDEO_STORY_CAPTYRE_FRAMES_SIZE", paramLong);
     localBundle.putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
     localBundle.putSerializable("KEY_VIDEO_STORY_CAPTYRE_FRAMES", paramArrayList);
-    PhotoListCustomizationAECamera.d(this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera$2.a).getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
-    PhotoListCustomizationAECamera.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorPhotoListCustomizationAECamera$2.a, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, localBundle);
-    this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
+    PhotoListCustomizationAECamera.h(this.c.c).getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 100);
+    PhotoListCustomizationAECamera.a(this.c.c, this.a, localBundle);
+    this.b.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.PhotoListCustomizationAECamera.2.1
  * JD-Core Version:    0.7.0.1
  */

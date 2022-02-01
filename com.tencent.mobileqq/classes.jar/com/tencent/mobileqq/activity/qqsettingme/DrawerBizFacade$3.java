@@ -15,7 +15,7 @@ class DrawerBizFacade$3
   protected void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (DrawerBizFacade.a(this.a))) {
-      this.a.a("d_avatar").a(false);
+      this.a.b("d_avatar").a(false);
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, String.format("onGetMedal [%b, %b] medalSwitchDisable= ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(DrawerBizFacade.a(this.a)), Boolean.valueOf(paramBoolean2) }));
@@ -33,8 +33,8 @@ class DrawerBizFacade$3
   {
     if ((paramBoolean) && (DrawerBizFacade.a(this.a)))
     {
-      this.a.a("d_avatar").a(false);
-      this.a.a("d_avatar").g();
+      this.a.b("d_avatar").a(false);
+      this.a.b("d_avatar").i();
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, String.format("onSetMedal [%b %b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(DrawerBizFacade.a(this.a)) }));
@@ -44,13 +44,13 @@ class DrawerBizFacade$3
   protected void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
   {
     if ((paramBoolean) && (DrawerBizFacade.a(this.a)) && (this.a.a != null) && (Utils.a(paramString, this.a.a.getCurrentAccountUin()))) {
-      this.a.a("d_avatar").g();
+      this.a.b("d_avatar").i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade.3
  * JD-Core Version:    0.7.0.1
  */

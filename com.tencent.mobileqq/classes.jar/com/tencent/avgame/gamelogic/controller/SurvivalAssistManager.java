@@ -16,31 +16,30 @@ public class SurvivalAssistManager
   implements SurvivalAssistCallback, GameRoomStatusListener
 {
   public static final int a;
-  private static final SparseArray<SurvivalAssistCallback> a;
   public static final int b;
   private static int c;
+  private static final SparseArray<SurvivalAssistCallback> d = new SparseArray(c);
   
   static
   {
     int i = c;
     c = i + 1;
-    jdField_a_of_type_Int = i;
+    a = i;
     i = c;
     c = i + 1;
     b = i;
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(c);
   }
   
   public SurvivalAssistManager()
   {
-    jdField_a_of_type_AndroidUtilSparseArray.put(jdField_a_of_type_Int, new AudioRouter());
-    jdField_a_of_type_AndroidUtilSparseArray.put(b, QRoute.api(IVideoRouter.class));
+    d.put(a, new AudioRouter());
+    d.put(b, QRoute.api(IVideoRouter.class));
   }
   
   public SurvivalAssistCallback a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < c)) {
-      return (SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      return (SurvivalAssistCallback)d.get(paramInt);
     }
     return null;
   }
@@ -69,7 +68,7 @@ public class SurvivalAssistManager
   
   public void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
   {
-    if ((paramBoolean1) && (IGameEngine.a().f()) && (!IGameEngine.a().g()))
+    if ((paramBoolean1) && (IGameEngine.I().A()) && (!IGameEngine.I().B()))
     {
       onEnterSurvivalRoom();
       QLog.d("SurvivalAssistManager", 1, "onSurvivalPoolEnter");
@@ -99,7 +98,7 @@ public class SurvivalAssistManager
   
   public void b(boolean paramBoolean)
   {
-    if ((IGameEngine.a().f()) && (!IGameEngine.a().g()))
+    if ((IGameEngine.I().A()) && (!IGameEngine.I().B()))
     {
       onQuitSurvivalRoom();
       QLog.d("SurvivalAssistManager", 1, "onSurvivalGameOver");
@@ -113,7 +112,7 @@ public class SurvivalAssistManager
   public void c()
   {
     QLog.d("SurvivalAssistManager", 1, "clear");
-    if ((IGameEngine.a().f()) && (!IGameEngine.a().g())) {
+    if ((IGameEngine.I().A()) && (!IGameEngine.I().B())) {
       onQuitSurvivalRoom();
     }
   }
@@ -121,8 +120,6 @@ public class SurvivalAssistManager
   public void c(EngineData paramEngineData, int paramInt) {}
   
   public void c(String paramString, EngineData paramEngineData) {}
-  
-  public void g() {}
   
   public void h() {}
   
@@ -132,12 +129,14 @@ public class SurvivalAssistManager
   
   public void k() {}
   
+  public void l() {}
+  
   public void onEnterSurvivalRoom()
   {
     int i = 0;
-    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < d.size())
     {
-      ((SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).onEnterSurvivalRoom();
+      ((SurvivalAssistCallback)d.valueAt(i)).onEnterSurvivalRoom();
       i += 1;
     }
   }
@@ -145,9 +144,9 @@ public class SurvivalAssistManager
   public void onQuitSurvivalRoom()
   {
     int i = 0;
-    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < d.size())
     {
-      ((SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).onQuitSurvivalRoom();
+      ((SurvivalAssistCallback)d.valueAt(i)).onQuitSurvivalRoom();
       i += 1;
     }
   }

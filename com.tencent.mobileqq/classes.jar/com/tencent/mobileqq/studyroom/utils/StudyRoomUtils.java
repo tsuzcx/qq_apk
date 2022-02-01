@@ -18,26 +18,6 @@ import org.json.JSONObject;
 
 public final class StudyRoomUtils
 {
-  private static String a()
-  {
-    try
-    {
-      str = Environment.getExternalStorageDirectory().getAbsolutePath();
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      String str;
-      label10:
-      StringBuilder localStringBuilder;
-      break label10;
-    }
-    str = "/sdcard";
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("/odapp/odsdk.test");
-    return localStringBuilder.toString();
-  }
-  
   public static String a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -118,12 +98,12 @@ public final class StudyRoomUtils
   
   public static boolean a()
   {
-    return new File(a()).exists();
+    return new File(b()).exists();
   }
   
   public static boolean a(boolean paramBoolean)
   {
-    File localFile = new File(a());
+    File localFile = new File(b());
     if ((!paramBoolean) || (!localFile.exists())) {}
     try
     {
@@ -143,6 +123,26 @@ public final class StudyRoomUtils
     return true;
   }
   
+  private static String b()
+  {
+    try
+    {
+      str = Environment.getExternalStorageDirectory().getAbsolutePath();
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      String str;
+      label10:
+      StringBuilder localStringBuilder;
+      break label10;
+    }
+    str = "/sdcard";
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("/odapp/odsdk.test");
+    return localStringBuilder.toString();
+  }
+  
   public static void b(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
     if ((paramBundle != null) && (!paramBundle.isEmpty()))
@@ -155,18 +155,18 @@ public final class StudyRoomUtils
       String str2 = paramBundle.getString("version", "1.0.0.16");
       Object localObject = paramBundle.getString("summary");
       String str3 = paramBundle.getString("targetUrl");
-      String str4 = paramBundle.getString("tag", paramActivity.getString(2131719276));
-      String str5 = paramBundle.getString("title", paramActivity.getString(2131719277));
+      String str4 = paramBundle.getString("tag", paramActivity.getString(2131916828));
+      String str5 = paramBundle.getString("title", paramActivity.getString(2131916829));
       String str6 = paramBundle.getString("imageUrl");
       String str1 = paramBundle.getString("prompt");
       paramBundle = str1;
       if (TextUtils.isEmpty(str1))
       {
-        paramBundle = paramActivity.getString(2131719274);
+        paramBundle = paramActivity.getString(2131916826);
         if (TextUtils.isEmpty(str7))
         {
           paramBundle = new StringBuilder();
-          paramBundle.append(paramActivity.getString(2131719275));
+          paramBundle.append(paramActivity.getString(2131916827));
           paramBundle.append((String)localObject);
           paramBundle = paramBundle.toString();
         }
@@ -203,7 +203,7 @@ public final class StudyRoomUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomUtils
  * JD-Core Version:    0.7.0.1
  */

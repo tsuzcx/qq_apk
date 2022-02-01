@@ -15,19 +15,16 @@ import org.json.JSONObject;
 public class RecommendAdData
   extends AdData
 {
-  private int B;
-  public int a;
-  private long a;
-  public boolean a;
-  private int b = 184;
-  private JSONObject d;
+  public int a = 2;
+  public boolean b = false;
+  private long c = 0L;
+  private int d = 184;
+  private JSONObject e;
+  private int f;
   
   public RecommendAdData()
   {
     super(9);
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
   }
   
   private String a(String paramString, int paramInt)
@@ -69,24 +66,24 @@ public class RecommendAdData
     return paramString;
   }
   
-  private JSONObject a()
+  private JSONObject b()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      int i = this.B;
+      int i = this.f;
       Object localObject2;
       if (i == 1)
       {
-        if (this.b == 185)
+        if (this.d == 185)
         {
           localJSONObject.put("style_ID", "ReadInjoy_native_author_article_ad_video_cell");
           localObject1 = new JSONObject();
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long / 60L);
+          ((StringBuilder)localObject2).append(this.c / 60L);
           ((StringBuilder)localObject2).append(":");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long % 60L);
+          ((StringBuilder)localObject2).append(this.c % 60L);
           ((JSONObject)localObject1).put("video_time_txt", ((StringBuilder)localObject2).toString());
           localJSONObject.put("video_time", localObject1);
         }
@@ -94,19 +91,19 @@ public class RecommendAdData
         {
           localJSONObject.put("style_ID", "ReadInjoy_native_author_article_ad_small_cell");
         }
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.b) {
           localJSONObject.put("corner_radius_array", new JSONArray(new String[] { "0", "0", "6", "6" }));
         }
       }
-      else if (this.b == 185)
+      else if (this.d == 185)
       {
         localJSONObject.put("style_ID", "ReadInjoy_native_recommend_ad_video_cell");
         localObject1 = new JSONObject();
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long / 60L);
+        ((StringBuilder)localObject2).append(this.c / 60L);
         ((StringBuilder)localObject2).append(":");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long % 60L);
+        ((StringBuilder)localObject2).append(this.c % 60L);
         ((JSONObject)localObject1).put("video_time_txt", ((StringBuilder)localObject2).toString());
         localJSONObject.put("video_time", localObject1);
       }
@@ -114,49 +111,49 @@ public class RecommendAdData
       {
         localJSONObject.put("style_ID", "ReadInjoy_native_recommend_ad_small_cell");
       }
-      boolean bool = TextUtils.isEmpty(this.j);
+      boolean bool = TextUtils.isEmpty(this.l);
       if (!bool)
       {
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("text", this.j);
+        ((JSONObject)localObject1).put("text", this.l);
         localJSONObject.put("id_recommend_title", localObject1);
       }
-      if (!TextUtils.isEmpty(this.l))
+      if (!TextUtils.isEmpty(this.n))
       {
         localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("article_model", this);
         localObject2 = new ReadInJoyAdCommonBlurImageView.BlurDataModel();
-        ((ReadInJoyAdCommonBlurImageView.BlurDataModel)localObject2).jdField_a_of_type_JavaLangString = this.l;
-        ((ReadInJoyAdCommonBlurImageView.BlurDataModel)localObject2).b = this.l;
-        if (this.B == 1) {
-          ((ReadInJoyAdCommonBlurImageView.BlurDataModel)localObject2).jdField_a_of_type_Int = 5;
+        ((ReadInJoyAdCommonBlurImageView.BlurDataModel)localObject2).a = this.n;
+        ((ReadInJoyAdCommonBlurImageView.BlurDataModel)localObject2).b = this.n;
+        if (this.f == 1) {
+          ((ReadInJoyAdCommonBlurImageView.BlurDataModel)localObject2).c = 5;
         }
         ((JSONObject)localObject1).put("article_model", localObject2);
         localJSONObject.put("id_recommend_cover_img", localObject1);
       }
       Object localObject1 = new JSONObject();
-      if (!TextUtils.isEmpty(this.L))
+      if (!TextUtils.isEmpty(this.ah))
       {
-        ((JSONObject)localObject1).put("text", this.L);
+        ((JSONObject)localObject1).put("text", this.ah);
         localJSONObject.put("id_recommend_category_txt", localObject1);
       }
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("detail ad recommend adInconText:");
-        ((StringBuilder)localObject1).append(this.L);
+        ((StringBuilder)localObject1).append(this.ah);
         QLog.d("RecommendAdData", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (!TextUtils.isEmpty(this.u))
+      {
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("text", a(this.u, 22));
+        localJSONObject.put("id_recommend_account_name", localObject1);
       }
       if (!TextUtils.isEmpty(this.q))
       {
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("text", a(this.q, 22));
-        localJSONObject.put("id_recommend_account_name", localObject1);
-      }
-      if (!TextUtils.isEmpty(this.n))
-      {
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("jump_url", this.n);
+        ((JSONObject)localObject1).put("jump_url", this.q);
         localJSONObject.put("id_native_recommend_small_container", localObject1);
       }
       localJSONObject.put("id_ad_dislike_button", new JSONObject());
@@ -171,11 +168,11 @@ public class RecommendAdData
   
   public void a()
   {
-    this.c = a();
+    this.bb = b();
     Object localObject;
     try
     {
-      TemplateBean localTemplateBean = ((ITemplateFactory)QRoute.api(ITemplateFactory.class)).getTemplateBean("native_article", true, this.c);
+      TemplateBean localTemplateBean = ((ITemplateFactory)QRoute.api(ITemplateFactory.class)).getTemplateBean("native_article", true, this.bb);
     }
     catch (JSONException localJSONException)
     {
@@ -183,34 +180,34 @@ public class RecommendAdData
       localObject = null;
     }
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = localObject;
+      this.bd = localObject;
     }
   }
   
   public void a(int paramInt)
   {
-    this.B = paramInt;
-    a(this.d, this.jdField_a_of_type_Int);
+    this.f = paramInt;
+    a(this.e, this.a);
     a();
   }
   
   public boolean a(JSONObject paramJSONObject, int paramInt)
   {
     super.a(paramJSONObject, paramInt);
-    this.d = paramJSONObject;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(this);
+    this.e = paramJSONObject;
+    this.a = paramInt;
+    this.j = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(this);
     if (paramJSONObject != null)
     {
-      this.b = paramJSONObject.optInt("material_id");
-      this.jdField_a_of_type_Long = paramJSONObject.optInt("media_duration");
+      this.d = paramJSONObject.optInt("material_id");
+      this.c = paramJSONObject.optInt("media_duration");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData
  * JD-Core Version:    0.7.0.1
  */

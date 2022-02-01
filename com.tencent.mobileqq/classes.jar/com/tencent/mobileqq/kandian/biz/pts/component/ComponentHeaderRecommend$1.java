@@ -14,7 +14,7 @@ class ComponentHeaderRecommend$1
   
   public void onClick(View paramView)
   {
-    RIJJumpUtils.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+    RIJJumpUtils.a(this.a.getContext(), this.a.a.a.k(), 1, false, 8, false);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -25,7 +25,7 @@ class ComponentHeaderRecommend$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderRecommend.1
  * JD-Core Version:    0.7.0.1
  */

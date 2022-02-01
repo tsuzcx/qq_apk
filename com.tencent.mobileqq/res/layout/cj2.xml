@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/o5a" android:background="@drawable/e47" android:paddingLeft="2.0dip" android:paddingRight="7.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/nss" android:background="@drawable/dqq" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/n3r" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="centerCrop" />
-    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/n3u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="7.0dip" android:maxWidth="100.0dip" android:maxLines="1" />
+    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/nsb" android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip">
+        <include android:layout_gravity="bottom" android:id="@id/search_box" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" layout="@layout/cix" />
+        <com.tencent.mobileqq.guild.privatechannel.GuildPrivateSearchGridView android:gravity="center_vertical" android:layout_gravity="bottom" android:id="@id/q01" android:background="#ffffffff" android:clickable="false" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="14.0dip" android:listSelector="@null" android:horizontalSpacing="2.0dip" android:verticalSpacing="8.0dip" android:numColumns="4" android:minHeight="44.0dip" />
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.guild.privatechannel.BottomSheetListView android:id="@id/oji" android:clipChildren="false" android:clipToPadding="false" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" />
+        <include android:id="@id/pzz" android:visibility="gone" layout="@layout/ci7" />
+    </FrameLayout>
 </LinearLayout>

@@ -17,8 +17,8 @@ class MemoriesVideoCollectionPresenter$GetSimpleInfoListEventReceiver
   public void a(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
   {
     SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramGetSimpleInfoListEvent.toString());
-    if (paramGetSimpleInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
-      MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString, paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList);
+    if (paramGetSimpleInfoListEvent.g.isSuccess()) {
+      MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetSimpleInfoListEvent.a, paramGetSimpleInfoListEvent.b);
     }
   }
   

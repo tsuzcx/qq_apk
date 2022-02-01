@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class ProteusAssetManager
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static final String[] a = new String[0];
+  private Map<String, String[]> b = new HashMap();
   
   public ProteusAssetManager(Context paramContext, String paramString)
   {
@@ -34,7 +34,7 @@ public class ProteusAssetManager
       String[] arrayOfString = paramContext.getAssets().list(paramString);
       if (arrayOfString != null)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, arrayOfString);
+        this.b.put(paramString, arrayOfString);
         int j = arrayOfString.length;
         int i = 0;
         while (i < j)
@@ -61,7 +61,7 @@ public class ProteusAssetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.ProteusAssetManager
  * JD-Core Version:    0.7.0.1
  */

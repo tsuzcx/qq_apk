@@ -211,11 +211,6 @@ public class TroopAddFriendHandler
     }
   }
   
-  protected String a()
-  {
-    return "TroopAddFriendHandler";
-  }
-  
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     String str = paramToServiceMsg.extraData.getString("troopUin");
@@ -423,6 +418,11 @@ public class TroopAddFriendHandler
     sendPbReq((ToServiceMsg)localObject1);
   }
   
+  protected String dv_()
+  {
+    return "TroopAddFriendHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.a == null)
@@ -456,7 +456,7 @@ public class TroopAddFriendHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -489,7 +489,7 @@ public class TroopAddFriendHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopAddFriendHandler
  * JD-Core Version:    0.7.0.1
  */

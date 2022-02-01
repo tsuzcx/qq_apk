@@ -12,17 +12,17 @@ class CommentListPageLoader$1
 {
   public void run()
   {
-    ??? = ((CommentManager)SuperManager.a(17)).a(CommentListPageLoader.a(this.this$0).jdField_a_of_type_JavaLangString, CommentListPageLoader.a(this.this$0).a());
-    CommentListPageLoader.GetFeedCommentEvent localGetFeedCommentEvent = new CommentListPageLoader.GetFeedCommentEvent(new ErrorMessage(), CommentListPageLoader.a(this.this$0).jdField_a_of_type_JavaLangString, CommentListPageLoader.a(this.this$0).jdField_a_of_type_Int);
+    ??? = ((CommentManager)SuperManager.a(17)).a(CommentListPageLoader.a(this.this$0).a, CommentListPageLoader.a(this.this$0).a());
+    CommentListPageLoader.GetFeedCommentEvent localGetFeedCommentEvent = new CommentListPageLoader.GetFeedCommentEvent(new ErrorMessage(), CommentListPageLoader.a(this.this$0).a, CommentListPageLoader.a(this.this$0).c);
     localGetFeedCommentEvent.d = false;
-    localGetFeedCommentEvent.jdField_b_of_type_Boolean = true;
-    localGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = ((List)???);
-    localGetFeedCommentEvent.jdField_b_of_type_Int = -1;
-    localGetFeedCommentEvent.jdField_a_of_type_Boolean = true;
-    localGetFeedCommentEvent.jdField_a_of_type_Int = CommentListPageLoader.a(this.this$0).jdField_b_of_type_Int;
+    localGetFeedCommentEvent.b = true;
+    localGetFeedCommentEvent.k = ((List)???);
+    localGetFeedCommentEvent.i = -1;
+    localGetFeedCommentEvent.a = true;
+    localGetFeedCommentEvent.f = CommentListPageLoader.a(this.this$0).d;
     synchronized (this.this$0)
     {
-      if (!this.this$0.jdField_b_of_type_Boolean)
+      if (!this.this$0.e)
       {
         CommentListPageLoader.a(this.this$0, localGetFeedCommentEvent);
         SLog.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from cache: %s", localGetFeedCommentEvent);

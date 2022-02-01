@@ -16,11 +16,11 @@ class ImageToVideo$1
   
   private boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder != null) && (ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo) > 0) && (ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo) < this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_Long))
+    if ((this.b.e != null) && (ImageToVideo.c(this.b) > 0) && (ImageToVideo.d(this.b) < this.a.d))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.a(3553, ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo), null, null, ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo));
-      ImageToVideo localImageToVideo = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo;
-      ImageToVideo.a(localImageToVideo, ImageToVideo.a(localImageToVideo) + 42000000L);
+      this.b.e.a(3553, ImageToVideo.c(this.b), null, null, ImageToVideo.d(this.b));
+      ImageToVideo localImageToVideo = this.b;
+      ImageToVideo.a(localImageToVideo, ImageToVideo.d(localImageToVideo) + 42000000L);
       return true;
     }
     return false;
@@ -34,20 +34,20 @@ class ImageToVideo$1
       ???.append("onEncodeError, code:");
       ???.append(paramInt);
       ???.append(" taskID:");
-      ???.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+      ???.append(this.a.k);
       ???.append(" run:");
-      ???.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d);
+      ???.append(this.a.j);
       QLog.e("ImageToVideo", 2, ???.toString());
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.notifyAll();
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d)
+      this.b.notifyAll();
+      if (this.a.j)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d = false;
-        ??? = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo;
-        ???.jdField_a_of_type_Int = 7;
-        ???.a(???.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString, null, null, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext);
+        this.a.j = false;
+        ??? = this.b;
+        ???.d = 7;
+        ???.a(???.d, this.a.a, this.b.f, null, null, this.a);
       }
       return;
     }
@@ -61,61 +61,61 @@ class ImageToVideo$1
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onEncodeFinish, taskid:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+      ((StringBuilder)localObject1).append(this.a.k);
       ((StringBuilder)localObject1).append(" run:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d);
+      ((StringBuilder)localObject1).append(this.a.j);
       ((StringBuilder)localObject1).append(" finish cost: ");
-      ((StringBuilder)localObject1).append(l1 - this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_b_of_type_Long);
+      ((StringBuilder)localObject1).append(l1 - this.b.c);
       ((StringBuilder)localObject1).append(" ms");
       QLog.d("ImageToVideo", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d)
+    if (this.a.j)
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("onEncodeFinish, delete old:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append(this.a.k);
         ((StringBuilder)localObject1).append(" file:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b.f);
         QLog.d("ImageToVideo", 2, ((StringBuilder)localObject1).toString());
       }
-      FileUtils.g(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString);
+      FileUtils.k(this.b.f);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("onEncodeFinish, rename start:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append(this.a.k);
         ((StringBuilder)localObject1).append(" file:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b.f);
         QLog.d("ImageToVideo", 2, ((StringBuilder)localObject1).toString());
       }
-      if (FileUtils.a(???, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_Int = 0;
+      if (FileUtils.a(???, this.b.f)) {
+        this.b.d = 0;
       } else {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_Int = 7;
+        this.b.d = 7;
       }
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ???.append("onEncodeFinish, rename end:");
-        ???.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+        ???.append(this.a.k);
         ???.append(" file:");
-        ???.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString);
+        ???.append(this.b.f);
         ???.append(" result:");
-        ???.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_Int);
+        ???.append(this.b.d);
         QLog.d("ImageToVideo", 2, ???.toString());
       }
-      if (FileUtil.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString))
+      if (FileUtil.d(this.b.f))
       {
-        l1 = FileUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString);
+        l1 = FileUtil.f(this.b.f);
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder();
           ???.append("onEncodeFinish, file exist, size:");
           ???.append(l1);
           ???.append(" file:");
-          ???.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString);
+          ???.append(this.b.f);
           QLog.d("ImageToVideo", 2, ???.toString());
         }
       }
@@ -123,40 +123,40 @@ class ImageToVideo$1
       {
         ??? = new StringBuilder();
         ???.append("onEncodeFinish, file not exist:");
-        ???.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+        ???.append(this.a.k);
         ???.append(" file:");
-        ???.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString);
+        ???.append(this.b.f);
         QLog.d("ImageToVideo", 2, ???.toString());
       }
-      ??? = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.a();
+      ??? = this.b.e.d();
       l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_Long;
+      long l2 = this.b.b;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(l1 - l2);
       ((StringBuilder)localObject1).append("");
       StoryReportor.a("actImage2VideoTime", new String[] { ((StringBuilder)localObject1).toString() });
       StoryReportor.a("actImage2VideoResult", new String[] { "0" });
-      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo;
-      ((ImageToVideo)localObject1).a(((ImageToVideo)localObject1).jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_JavaLangString, ???, null, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext);
+      localObject1 = this.b;
+      ((ImageToVideo)localObject1).a(((ImageToVideo)localObject1).d, this.a.a, this.b.f, ???, null, this.a);
     }
     else
     {
       StoryReportor.a("actImage2VideoResult", new String[] { "3" });
-      FileUtils.g(???);
+      FileUtils.k(???);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
+    if (this.b.a != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceDestroyed();
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
+      this.b.a.surfaceDestroyed();
+      this.b.a = null;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder != null)
+    if (this.b.e != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.c();
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder = null;
+      this.b.e.e();
+      this.b.e = null;
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.notifyAll();
+      this.b.notifyAll();
       return;
     }
   }
@@ -164,30 +164,30 @@ class ImageToVideo$1
   public void onEncodeFrame()
   {
     StringBuilder localStringBuilder;
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d)
+    if (!this.a.j)
     {
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onEncodeFrame, mRun is false, tasid.");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+        localStringBuilder.append(this.a.k);
         QLog.d("ImageToVideo", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.b();
+      if (this.b.e != null) {
+        this.b.e.b();
       }
       return;
     }
     if (!a())
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.b();
+      if (this.b.e != null) {
+        this.b.e.b();
       }
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onEncodeFrame, stop recoder, taskid:");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+        localStringBuilder.append(this.a.k);
         QLog.d("ImageToVideo", 2, localStringBuilder.toString());
       }
     }
@@ -195,7 +195,7 @@ class ImageToVideo$1
   
   public void onEncodeStart()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d)
+    if (this.a.j)
     {
       long l1 = System.currentTimeMillis();
       Object localObject;
@@ -203,49 +203,49 @@ class ImageToVideo$1
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onEncodeStart, taskid:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+        ((StringBuilder)localObject).append(this.a.k);
         QLog.d("ImageToVideo", 2, ((StringBuilder)localObject).toString());
       }
-      if (!ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo))
+      if (!ImageToVideo.a(this.b))
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo;
-        ImageToVideo.a((ImageToVideo)localObject, ImageToVideo.a((ImageToVideo)localObject, ImageToVideo.a((ImageToVideo)localObject), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Int));
+        localObject = this.b;
+        ImageToVideo.a((ImageToVideo)localObject, ImageToVideo.a((ImageToVideo)localObject, ImageToVideo.b((ImageToVideo)localObject), this.a.b, this.a.c));
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo;
-        ImageToVideo.a((ImageToVideo)localObject, ImageToVideo.b((ImageToVideo)localObject, ImageToVideo.a((ImageToVideo)localObject), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Int));
+        localObject = this.b;
+        ImageToVideo.a((ImageToVideo)localObject, ImageToVideo.b((ImageToVideo)localObject, ImageToVideo.b((ImageToVideo)localObject), this.a.b, this.a.c));
       }
-      if (ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo) != null)
+      if (ImageToVideo.b(this.b) != null)
       {
-        ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo).recycle();
-        ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo, null);
+        ImageToVideo.b(this.b).recycle();
+        ImageToVideo.a(this.b, null);
       }
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onEncodeStart, taskid:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_b_of_type_Long);
+        ((StringBuilder)localObject).append(this.a.k);
         ((StringBuilder)localObject).append(" run:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d);
+        ((StringBuilder)localObject).append(this.a.j);
         ((StringBuilder)localObject).append(" preProcess cost: ");
         ((StringBuilder)localObject).append(l2 - l1);
         ((StringBuilder)localObject).append(" ms mGpuBlur:");
-        ((StringBuilder)localObject).append(ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo));
+        ((StringBuilder)localObject).append(ImageToVideo.a(this.b));
         QLog.d("ImageToVideo", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_b_of_type_Long = System.currentTimeMillis();
+      this.b.c = System.currentTimeMillis();
       a();
       return;
     }
-    if (ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo) != null)
+    if (ImageToVideo.b(this.b) != null)
     {
-      ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo).recycle();
-      ImageToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo, null);
+      ImageToVideo.b(this.b).recycle();
+      ImageToVideo.a(this.b, null);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreImageToVideo.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.b();
+    if (this.b.e != null) {
+      this.b.e.b();
     }
   }
 }

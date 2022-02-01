@@ -18,13 +18,13 @@ class ProfileLabelEditorActivity$MyLabelGridViewAdapter$1
     if ((localObject instanceof ProfileLabelEditorActivity.Holder))
     {
       localObject = (ProfileLabelEditorActivity.Holder)localObject;
-      if ((((ProfileLabelEditorActivity.Holder)localObject).a >= 0) && (((ProfileLabelEditorActivity.Holder)localObject).a < this.a.a.a.size()))
+      if ((((ProfileLabelEditorActivity.Holder)localObject).b >= 0) && (((ProfileLabelEditorActivity.Holder)localObject).b < this.a.b.l.size()))
       {
-        localObject = (ProfileLabelInfo)this.a.a.a.remove(((ProfileLabelEditorActivity.Holder)localObject).a);
-        this.a.a.a(this.a.a.a.size());
+        localObject = (ProfileLabelInfo)this.a.b.l.remove(((ProfileLabelEditorActivity.Holder)localObject).b);
+        this.a.b.a(this.a.b.l.size());
         this.a.notifyDataSetChanged();
         ProfileLabelEditorActivity.MyLabelGridViewAdapter.a(this.a, (ProfileLabelInfo)localObject);
-        ReportController.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+        ReportController.b(this.a.b.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -32,7 +32,7 @@ class ProfileLabelEditorActivity$MyLabelGridViewAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity.MyLabelGridViewAdapter.1
  * JD-Core Version:    0.7.0.1
  */

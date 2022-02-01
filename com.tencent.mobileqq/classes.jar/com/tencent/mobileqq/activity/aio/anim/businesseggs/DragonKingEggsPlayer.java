@@ -25,20 +25,18 @@ public class DragonKingEggsPlayer
     return 7;
   }
   
-  public void a() {}
-  
-  public void a(QQAppInterface paramQQAppInterface, Handler paramHandler, ChatMessage paramChatMessage, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, AioAnimationRule paramAioAnimationRule)
+  public void a(QQAppInterface paramQQAppInterface, Handler paramHandler, ChatMessage paramChatMessage, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt1, AioAnimationRule paramAioAnimationRule, boolean paramBoolean, ArrayList<AioAnimationRule> paramArrayList, int paramInt2)
   {
-    int j = paramAioAnimationRule.b.size();
-    int i = 0;
+    int i = paramAioAnimationRule.j.size();
+    paramInt2 = 0;
     for (;;)
     {
-      ChatMessage localChatMessage = paramChatMessage;
-      if (i >= j) {
+      paramArrayList = paramChatMessage;
+      if (paramInt2 >= i) {
         break;
       }
-      AioAnimationRule.JumpImage localJumpImage = (AioAnimationRule.JumpImage)paramAioAnimationRule.b.get(i);
-      String str = localChatMessage.frienduin;
+      AioAnimationRule.JumpImage localJumpImage = (AioAnimationRule.JumpImage)paramAioAnimationRule.j.get(paramInt2);
+      String str = paramArrayList.frienduin;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -49,27 +47,26 @@ public class DragonKingEggsPlayer
       if (TextUtils.isEmpty(str)) {
         return;
       }
-      boolean bool2 = AnonymousChatHelper.a().a(str);
-      Object localObject = (TroopDragonKingAnimEntryConfig)QConfigManager.a().a(609);
-      boolean bool1;
-      if ((localObject != null) && (((TroopDragonKingAnimEntryConfig)localObject).a(str))) {
-        bool1 = true;
+      boolean bool = AnonymousChatHelper.a().a(str);
+      Object localObject = (TroopDragonKingAnimEntryConfig)QConfigManager.b().b(609);
+      if ((localObject != null) && (((TroopDragonKingAnimEntryConfig)localObject).b(str))) {
+        paramBoolean = true;
       } else {
-        bool1 = false;
+        paramBoolean = false;
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("bManageOpen : ");
-        ((StringBuilder)localObject).append(bool1);
+        ((StringBuilder)localObject).append(paramBoolean);
         ((StringBuilder)localObject).append(" curTroopUin : ");
         ((StringBuilder)localObject).append(str);
         QLog.d("DragonKingEggsPlayer", 2, ((StringBuilder)localObject).toString());
       }
-      if ((bool1) && (!bool2)) {
-        ((ITroopHonorService)paramQQAppInterface.getRuntimeService(ITroopHonorService.class, "")).asyncGetTroopHonorListByDirect(str, localChatMessage.senderuin, new DragonKingEggsPlayer.1(this, str, paramQQAppInterface, paramChatMessage, paramAioAnimationRule, localJumpImage, paramHandler, paramAIOAnimationConatiner, paramInt));
+      if ((paramBoolean) && (!bool)) {
+        ((ITroopHonorService)paramQQAppInterface.getRuntimeService(ITroopHonorService.class, "")).asyncGetTroopHonorListByDirect(str, paramArrayList.senderuin, new DragonKingEggsPlayer.1(this, str, paramQQAppInterface, paramChatMessage, paramAioAnimationRule, localJumpImage, paramHandler, paramAIOAnimationConatiner, paramInt1));
       }
-      i += 1;
+      paramInt2 += 1;
     }
   }
   
@@ -81,10 +78,12 @@ public class DragonKingEggsPlayer
   {
     return 2;
   }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.DragonKingEggsPlayer
  * JD-Core Version:    0.7.0.1
  */

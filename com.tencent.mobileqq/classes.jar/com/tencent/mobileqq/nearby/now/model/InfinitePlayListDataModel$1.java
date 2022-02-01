@@ -54,29 +54,29 @@ class InfinitePlayListDataModel$1
             }
             bool = true;
             InfinitePlayListDataModel.a(paramBundle, bool);
-            this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+            this.a.a = paramArrayOfByte.total.get();
             InfinitePlayListDataModel.a(this.a, paramArrayOfByte);
             if (!TextUtils.isEmpty(InfinitePlayListDataModel.a(this.a)))
             {
-              int j = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+              int j = this.a.d.size();
               paramInt = 0;
               int i = j;
-              if (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+              if (paramInt < this.a.d.size())
               {
-                if (!InfinitePlayListDataModel.a(this.a).equals(((VideoData)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a)) {
+                if (!InfinitePlayListDataModel.a(this.a).equals(((VideoData)this.a.d.get(paramInt)).c)) {
                   break label397;
                 }
-                this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener.a((VideoData)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+                this.a.e.a((VideoData)this.a.d.get(paramInt));
                 i = paramInt;
               }
-              if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+              if (i < this.a.d.size())
               {
-                this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
+                this.a.d.remove(i);
                 i += 1;
                 continue;
               }
             }
-            paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener;
+            paramBundle = this.a.e;
             if (!paramArrayOfByte.err_code.has()) {
               break label404;
             }
@@ -87,7 +87,7 @@ class InfinitePlayListDataModel$1
           catch (InvalidProtocolBufferMicroException paramArrayOfByte)
           {
             paramArrayOfByte.printStackTrace();
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener.a();
+            this.a.e.a();
             return;
           }
         }
@@ -113,7 +113,7 @@ class InfinitePlayListDataModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.InfinitePlayListDataModel.1
  * JD-Core Version:    0.7.0.1
  */

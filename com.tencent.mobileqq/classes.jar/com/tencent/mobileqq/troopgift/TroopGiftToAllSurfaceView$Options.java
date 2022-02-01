@@ -2,22 +2,22 @@ package com.tencent.mobileqq.troopgift;
 
 public class TroopGiftToAllSurfaceView$Options
 {
-  public float a;
   public int a;
-  public String a;
-  public boolean a;
   public int b;
-  public String b;
-  public int c;
+  public float c;
   public int d;
   public int e;
-  public int f;
+  public boolean f;
   public int g;
   public int h;
+  public int i;
+  public String j;
+  public String k;
+  public int l;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.Options
  * JD-Core Version:    0.7.0.1
  */

@@ -151,7 +151,7 @@ public class TeamWorkHandlerImpl
           int j = paramFromServiceMsg.exp_set_time.get();
           paramFromServiceMsg = new StringBuilder();
           paramFromServiceMsg.append("TeamWorkHandlerImpl");
-          paramFromServiceMsg.append(TeamWorkConstants.i);
+          paramFromServiceMsg.append(TeamWorkConstants.j);
           paramFromServiceMsg = paramFromServiceMsg.toString();
           paramObject = new StringBuilder();
           paramObject.append(" handleGetGroupAuthDocsGrayTips  | policy = ");
@@ -191,7 +191,7 @@ public class TeamWorkHandlerImpl
           }
           else
           {
-            paramToServiceMsg = this.app.getApp().getString(2131719549);
+            paramToServiceMsg = this.app.getApp().getString(2131917112);
             break label605;
           }
         }
@@ -202,7 +202,7 @@ public class TeamWorkHandlerImpl
         }
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("TeamWorkHandlerImpl");
-        paramFromServiceMsg.append(TeamWorkConstants.i);
+        paramFromServiceMsg.append(TeamWorkConstants.j);
         paramFromServiceMsg = paramFromServiceMsg.toString();
         paramObject = new StringBuilder();
         paramObject.append(" handleGetGroupAuthDocsGrayTips. result = ");
@@ -220,7 +220,7 @@ public class TeamWorkHandlerImpl
       {
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("TeamWorkHandlerImpl");
-        paramFromServiceMsg.append(TeamWorkConstants.i);
+        paramFromServiceMsg.append(TeamWorkConstants.j);
         paramFromServiceMsg = paramFromServiceMsg.toString();
         paramObject = new StringBuilder();
         paramObject.append(" handleGetGroupAuthDocsGrayTips exception = ");
@@ -254,7 +254,7 @@ public class TeamWorkHandlerImpl
           int j = paramFromServiceMsg.exp_set_time.get();
           paramFromServiceMsg = new StringBuilder();
           paramFromServiceMsg.append("TeamWorkHandlerImpl");
-          paramFromServiceMsg.append(TeamWorkConstants.i);
+          paramFromServiceMsg.append(TeamWorkConstants.j);
           paramFromServiceMsg = paramFromServiceMsg.toString();
           paramObject = new StringBuilder();
           paramObject.append(" handleGetUserAuthDocsGrayTips  | policy=");
@@ -283,7 +283,7 @@ public class TeamWorkHandlerImpl
           }
           else
           {
-            paramToServiceMsg = this.app.getApp().getString(2131719549);
+            paramToServiceMsg = this.app.getApp().getString(2131917112);
             break label489;
           }
         }
@@ -299,7 +299,7 @@ public class TeamWorkHandlerImpl
         {
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("TeamWorkHandlerImpl");
-          paramToServiceMsg.append(TeamWorkConstants.i);
+          paramToServiceMsg.append(TeamWorkConstants.j);
           paramToServiceMsg = paramToServiceMsg.toString();
           paramFromServiceMsg = new StringBuilder();
           paramFromServiceMsg.append(" handleGetUserAuthDocsGrayTips ,result: ");
@@ -312,7 +312,7 @@ public class TeamWorkHandlerImpl
       {
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("TeamWorkHandlerImpl");
-        paramFromServiceMsg.append(TeamWorkConstants.i);
+        paramFromServiceMsg.append(TeamWorkConstants.j);
         paramFromServiceMsg = paramFromServiceMsg.toString();
         paramObject = new StringBuilder();
         paramObject.append(" handleGetUserAuthDocsGrayTips exception = ");
@@ -329,22 +329,22 @@ public class TeamWorkHandlerImpl
   {
     if (paramReSendCmd != null)
     {
-      int i = responseReTryCount.get(paramReSendCmd.jdField_a_of_type_Int, 0);
+      int i = responseReTryCount.get(paramReSendCmd.a, 0);
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" handleResponseTry retry cmd：");
-      ((StringBuilder)localObject).append(paramReSendCmd.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramReSendCmd.a);
       ((StringBuilder)localObject).append(", retryCount: ");
       ((StringBuilder)localObject).append(i);
       QLog.i("TeamWorkHandlerImpl", 1, ((StringBuilder)localObject).toString());
       if ((paramReSendCmd != null) && (i < 3))
       {
-        responseReTryCount.put(paramReSendCmd.jdField_a_of_type_Int, i + 1);
+        responseReTryCount.put(paramReSendCmd.a, i + 1);
         localObject = getPskeyFromServerAndRetry(paramReSendCmd, true);
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).length() > 0))
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(" handleResponseTry retry to get pskey from SDK success,cmd: ");
-          ((StringBuilder)localObject).append(paramReSendCmd.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(paramReSendCmd.a);
           QLog.i("TeamWorkHandlerImpl", 1, ((StringBuilder)localObject).toString());
         }
         return true;
@@ -382,7 +382,7 @@ public class TeamWorkHandlerImpl
         bool = false;
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("TeamWorkHandlerImpl");
-        paramFromServiceMsg.append(TeamWorkConstants.i);
+        paramFromServiceMsg.append(TeamWorkConstants.j);
         paramFromServiceMsg = paramFromServiceMsg.toString();
         paramObject = new StringBuilder();
         paramObject.append(" handleSetGroupAuthDocsGrayTips. result = ");
@@ -398,7 +398,7 @@ public class TeamWorkHandlerImpl
       }
       catch (Exception paramToServiceMsg) {}
       paramFromServiceMsg.append("TeamWorkHandlerImpl");
-      paramFromServiceMsg.append(TeamWorkConstants.i);
+      paramFromServiceMsg.append(TeamWorkConstants.j);
       paramFromServiceMsg = paramFromServiceMsg.toString();
       paramObject = new StringBuilder();
       paramObject.append(" handleSetGroupAuthDocsGrayTips  exception = ");
@@ -507,7 +507,7 @@ public class TeamWorkHandlerImpl
           }
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("TeamWorkHandlerImpl");
-          paramToServiceMsg.append(TeamWorkConstants.i);
+          paramToServiceMsg.append(TeamWorkConstants.j);
           paramToServiceMsg = paramToServiceMsg.toString();
           paramFromServiceMsg = new StringBuilder();
           paramFromServiceMsg.append(" handleSetUserAuthDocsGrayTips ,result: ");
@@ -520,7 +520,7 @@ public class TeamWorkHandlerImpl
       }
       catch (Exception paramToServiceMsg) {}
       paramFromServiceMsg.append("TeamWorkHandlerImpl");
-      paramFromServiceMsg.append(TeamWorkConstants.i);
+      paramFromServiceMsg.append(TeamWorkConstants.j);
       paramFromServiceMsg = paramFromServiceMsg.toString();
       paramObject = new StringBuilder();
       paramObject.append(" handleSetUserAuthDocsGrayTips  exception = ");
@@ -539,10 +539,10 @@ public class TeamWorkHandlerImpl
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" reTrySendCmd retry cmd：");
-      localStringBuilder.append(paramReSendCmd.jdField_a_of_type_Int);
+      localStringBuilder.append(paramReSendCmd.a);
       QLog.i("TeamWorkHandlerImpl", 1, localStringBuilder.toString());
-      if (paramReSendCmd.jdField_a_of_type_Int == 9) {
-        getPadRightsInfo(paramReSendCmd.d, paramReSendCmd.jdField_a_of_type_JavaLangString);
+      if (paramReSendCmd.a == 9) {
+        getPadRightsInfo(paramReSendCmd.d, paramReSendCmd.e);
       }
     }
   }
@@ -671,15 +671,15 @@ public class TeamWorkHandlerImpl
       {
         localObject1 = MobileQQ.getContext();
         if (TextUtils.isEmpty(paramDocsGrayTipsInfo.l)) {
-          paramDocsGrayTipsInfo = this.app.getApp().getString(2131694424);
+          paramDocsGrayTipsInfo = this.app.getApp().getString(2131892104);
         } else {
           paramDocsGrayTipsInfo = paramDocsGrayTipsInfo.l;
         }
-        QQToast.a((Context)localObject1, paramDocsGrayTipsInfo, 0).a();
+        QQToast.makeText((Context)localObject1, paramDocsGrayTipsInfo, 0).show();
         return;
       }
       localObject1 = new cmd0xbab.GroupGetReq();
-      ((cmd0xbab.GroupGetReq)localObject1).group_code.set(Long.parseLong(paramDocsGrayTipsInfo.jdField_a_of_type_JavaLangString));
+      ((cmd0xbab.GroupGetReq)localObject1).group_code.set(Long.parseLong(paramDocsGrayTipsInfo.a));
       ((cmd0xbab.GroupGetReq)localObject1).doc_url.set(paramDocsGrayTipsInfo.b);
       localObject2 = new cmd0xbab.ReqBody();
       ((cmd0xbab.ReqBody)localObject2).group_get_req.set((MessageMicro)localObject1);
@@ -689,11 +689,11 @@ public class TeamWorkHandlerImpl
       sendPbReq((ToServiceMsg)localObject1);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkHandlerImpl");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("get group auth | uin = ");
-      ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.a);
       ((StringBuilder)localObject2).append(" docUrl = ");
       ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.b);
       ((StringBuilder)localObject2).append(", msgSeq = ");
@@ -705,7 +705,7 @@ public class TeamWorkHandlerImpl
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkHandlerImpl");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("get group auth exception = ");
@@ -809,9 +809,9 @@ public class TeamWorkHandlerImpl
     ((TimDocSSOMsg.GetPadRightInfoReqBody)localObject1).uint32_appid.set(2);
     ((TimDocSSOMsg.GetPadRightInfoReqBody)localObject1).bytes_pad_url.set(ByteStringMicro.copyFromUtf8(paramString));
     ReSendCmd localReSendCmd = new ReSendCmd();
-    localReSendCmd.jdField_a_of_type_Int = 9;
+    localReSendCmd.a = 9;
     localReSendCmd.d = paramInt;
-    localReSendCmd.jdField_a_of_type_JavaLangString = paramString;
+    localReSendCmd.e = paramString;
     Object localObject2 = getLoginInfo("send GetPadRightInfoReqBody", localReSendCmd);
     if (localObject2 == null)
     {
@@ -975,15 +975,15 @@ public class TeamWorkHandlerImpl
       {
         localObject1 = MobileQQ.getContext();
         if (TextUtils.isEmpty(paramDocsGrayTipsInfo.l)) {
-          paramDocsGrayTipsInfo = this.app.getApp().getString(2131694424);
+          paramDocsGrayTipsInfo = this.app.getApp().getString(2131892104);
         } else {
           paramDocsGrayTipsInfo = paramDocsGrayTipsInfo.l;
         }
-        QQToast.a((Context)localObject1, paramDocsGrayTipsInfo, 0).a();
+        QQToast.makeText((Context)localObject1, paramDocsGrayTipsInfo, 0).show();
         return;
       }
       localObject1 = new cmd0xbab.UserGetReq();
-      ((cmd0xbab.UserGetReq)localObject1).uin.set(Long.parseLong(paramDocsGrayTipsInfo.jdField_a_of_type_JavaLangString));
+      ((cmd0xbab.UserGetReq)localObject1).uin.set(Long.parseLong(paramDocsGrayTipsInfo.a));
       ((cmd0xbab.UserGetReq)localObject1).doc_url.set(paramDocsGrayTipsInfo.b);
       localObject2 = new cmd0xbab.ReqBody();
       ((cmd0xbab.ReqBody)localObject2).user_get_req.set((MessageMicro)localObject1);
@@ -993,11 +993,11 @@ public class TeamWorkHandlerImpl
       sendPbReq((ToServiceMsg)localObject1);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkHandlerImpl");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("get user auth | uin = ");
-      ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.a);
       ((StringBuilder)localObject2).append(" docUrl = ");
       ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.b);
       QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
@@ -1007,7 +1007,7 @@ public class TeamWorkHandlerImpl
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkHandlerImpl");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("get user auth exception = ");
@@ -1153,15 +1153,15 @@ public class TeamWorkHandlerImpl
       {
         localObject1 = MobileQQ.getContext();
         if (TextUtils.isEmpty(paramDocsGrayTipsInfo.l)) {
-          paramDocsGrayTipsInfo = this.app.getApp().getString(2131694424);
+          paramDocsGrayTipsInfo = this.app.getApp().getString(2131892104);
         } else {
           paramDocsGrayTipsInfo = paramDocsGrayTipsInfo.l;
         }
-        QQToast.a((Context)localObject1, paramDocsGrayTipsInfo, 0).a();
+        QQToast.makeText((Context)localObject1, paramDocsGrayTipsInfo, 0).show();
         return;
       }
       localObject1 = new cmd0xbab.GroupSetReq();
-      ((cmd0xbab.GroupSetReq)localObject1).group_code.set(Long.parseLong(paramDocsGrayTipsInfo.jdField_a_of_type_JavaLangString));
+      ((cmd0xbab.GroupSetReq)localObject1).group_code.set(Long.parseLong(paramDocsGrayTipsInfo.a));
       ((cmd0xbab.GroupSetReq)localObject1).doc_url.set(paramDocsGrayTipsInfo.b);
       ((cmd0xbab.GroupSetReq)localObject1).policy.set(Integer.valueOf(paramDocsGrayTipsInfo.h).intValue());
       localObject2 = ((cmd0xbab.GroupSetReq)localObject1).only;
@@ -1179,11 +1179,11 @@ public class TeamWorkHandlerImpl
       sendPbReq((ToServiceMsg)localObject1);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkHandlerImpl");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("set group auth | uin = ");
-      ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.a);
       ((StringBuilder)localObject2).append(" docUrl = ");
       ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.b);
       ((StringBuilder)localObject2).append(" setploicy = ");
@@ -1203,7 +1203,7 @@ public class TeamWorkHandlerImpl
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkHandlerImpl");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("set group auth exception = ");
@@ -1259,15 +1259,15 @@ public class TeamWorkHandlerImpl
       {
         localObject1 = MobileQQ.getContext();
         if (TextUtils.isEmpty(paramDocsGrayTipsInfo.l)) {
-          paramDocsGrayTipsInfo = this.app.getApp().getString(2131694424);
+          paramDocsGrayTipsInfo = this.app.getApp().getString(2131892104);
         } else {
           paramDocsGrayTipsInfo = paramDocsGrayTipsInfo.l;
         }
-        QQToast.a((Context)localObject1, paramDocsGrayTipsInfo, 0).a();
+        QQToast.makeText((Context)localObject1, paramDocsGrayTipsInfo, 0).show();
         return;
       }
       localObject1 = new cmd0xbab.UserSetReq();
-      ((cmd0xbab.UserSetReq)localObject1).uin.set(Long.parseLong(paramDocsGrayTipsInfo.jdField_a_of_type_JavaLangString));
+      ((cmd0xbab.UserSetReq)localObject1).uin.set(Long.parseLong(paramDocsGrayTipsInfo.a));
       ((cmd0xbab.UserSetReq)localObject1).doc_url.set(paramDocsGrayTipsInfo.b);
       ((cmd0xbab.UserSetReq)localObject1).policy.set(Integer.valueOf(paramDocsGrayTipsInfo.h).intValue());
       localObject2 = ((cmd0xbab.UserSetReq)localObject1).only;
@@ -1285,11 +1285,11 @@ public class TeamWorkHandlerImpl
       sendPbReq((ToServiceMsg)localObject1);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkHandlerImpl");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("set user auth | uin = ");
-      ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.a);
       ((StringBuilder)localObject2).append(" docUrl = ");
       ((StringBuilder)localObject2).append(paramDocsGrayTipsInfo.b);
       ((StringBuilder)localObject2).append(" setploicy = ");
@@ -1309,7 +1309,7 @@ public class TeamWorkHandlerImpl
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("TeamWorkHandlerImpl");
-      ((StringBuilder)localObject1).append(TeamWorkConstants.i);
+      ((StringBuilder)localObject1).append(TeamWorkConstants.j);
       localObject1 = ((StringBuilder)localObject1).toString();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("set user auth exception = ");
@@ -1320,7 +1320,7 @@ public class TeamWorkHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.TeamWorkHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

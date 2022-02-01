@@ -36,11 +36,11 @@ class OpenIdHelper$1
           {
             localObject = new String(((CustomSigContent)localObject).SigContent);
             OpenID localOpenID = new OpenID();
-            localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+            localOpenID.appID = this.a;
             localOpenID.openID = ((String)localObject);
-            this.jdField_a_of_type_ComTencentMobileqqAddfriendHelperOpenIdHelper.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager().persistOrReplace(localOpenID);
-            this.jdField_a_of_type_ComTencentMobileqqAddfriendHelperOpenIdHelper.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache.a(this.jdField_a_of_type_JavaLangString, localOpenID);
-            this.jdField_a_of_type_ComTencentMobileqqFriendListenersOnOpenIdGetListener.a(true, localOpenID);
+            this.c.b.getEntityManagerFactory().createEntityManager().persistOrReplace(localOpenID);
+            this.c.a.a(this.a, localOpenID);
+            this.b.a(true, localOpenID);
           }
           i += 1;
         }
@@ -52,12 +52,12 @@ class OpenIdHelper$1
     } else {
       paramHashMap = "1";
     }
-    ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAddfriendHelperOpenIdHelper.jdField_a_of_type_MqqAppAppRuntime.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
+    ReportCenter.a().a(this.c.b.getAccount(), "", this.a, "41", "19", paramHashMap, "", "", "4", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.helper.OpenIdHelper.1
  * JD-Core Version:    0.7.0.1
  */

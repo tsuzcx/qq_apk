@@ -15,19 +15,19 @@ class PhotoListCustomizationDefault$3
   {
     if (paramInt == 0)
     {
-      QZLog.d("QQAlbum", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+      QZLog.d("QQAlbum", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.a) });
       ThreadManager.postImmediately(new PhotoListCustomizationDefault.3.1(this), null, true);
       return;
     }
     paramString1 = Message.obtain();
     paramString1.what = 2;
     paramString1.obj = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoListCustomizationDefault.a.a.sendMessage(paramString1);
+    this.e.b.u.sendMessage(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListCustomizationDefault.3
  * JD-Core Version:    0.7.0.1
  */

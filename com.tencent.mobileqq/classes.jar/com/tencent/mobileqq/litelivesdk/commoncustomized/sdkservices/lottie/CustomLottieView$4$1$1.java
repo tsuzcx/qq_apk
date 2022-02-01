@@ -13,32 +13,32 @@ class CustomLottieView$4$1$1
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0.setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
-      if (!this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0.isShown())
+      this.b.a.this$0.setComposition(this.a);
+      if (!this.b.a.this$0.isShown())
       {
-        String str = CustomLottieView.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0);
+        String str = CustomLottieView.a(this.b.a.this$0);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("play CustomLottieView.this.isShown() ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0.isShown());
+        localStringBuilder.append(this.b.a.this$0.isShown());
         QLog.i(str, 1, localStringBuilder.toString());
-        str = CustomLottieView.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0);
+        str = CustomLottieView.a(this.b.a.this$0);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("play CustomLottieView.this.getParent() ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0.getParent());
+        localStringBuilder.append(this.b.a.this$0.getParent());
         QLog.i(str, 1, localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0.setVisibility(0);
-        str = CustomLottieView.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0);
+        this.b.a.this$0.setVisibility(0);
+        str = CustomLottieView.a(this.b.a.this$0);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("play after visible CustomLottieView.this.isShown() ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0.isShown());
+        localStringBuilder.append(this.b.a.this$0.isShown());
         QLog.i(str, 1, localStringBuilder.toString());
-        str = CustomLottieView.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0);
+        str = CustomLottieView.a(this.b.a.this$0);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("play CustomLottieView.this.getParent() ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0.getParent());
+        localStringBuilder.append(this.b.a.this$0.getParent());
         QLog.i(str, 1, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesLottieCustomLottieView$4$1.a.this$0.playAnimation();
+      this.b.a.this$0.playAnimation();
       return;
     }
     catch (Exception localException)
@@ -49,7 +49,7 @@ class CustomLottieView$4$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.lottie.CustomLottieView.4.1.1
  * JD-Core Version:    0.7.0.1
  */

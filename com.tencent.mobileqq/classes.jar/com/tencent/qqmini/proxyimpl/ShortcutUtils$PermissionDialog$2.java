@@ -23,12 +23,12 @@ class ShortcutUtils$PermissionDialog$2
     localIntent.putExtra("hide_left_button", false);
     localIntent.putExtra("show_right_close_button", false);
     localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    ShortcutUtils.PermissionDialog.a(this.a).startActivityForResult(localIntent, 1001);
+    ShortcutUtils.PermissionDialog.b(this.a).startActivityForResult(localIntent, 1001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils.PermissionDialog.2
  * JD-Core Version:    0.7.0.1
  */

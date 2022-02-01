@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.cmshow.brickengine.apollo.utils;
 
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IApolloRunnableTask;
 
 class HttpUtil$3$1
   extends IApolloRunnableTask
@@ -12,12 +12,12 @@ class HttpUtil$3$1
   
   public void run()
   {
-    ((ApolloSurfaceView)this.this$0.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().httpCallBack(this.this$0.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+    ((ApolloSurfaceView)this.this$0.a).getRender().getSavaWrapper().httpCallBack(this.this$0.b, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.HttpUtil.3.1
  * JD-Core Version:    0.7.0.1
  */

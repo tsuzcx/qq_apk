@@ -37,7 +37,7 @@ public class ScribbleDownloaderImpl
   
   private void consumeDownload()
   {
-    if (this.mListManager.a() < 2)
+    if (this.mListManager.b() < 2)
     {
       ScribbleDownloadInfo localScribbleDownloadInfo = this.mListManager.a();
       if (localScribbleDownloadInfo == null)
@@ -203,7 +203,7 @@ public class ScribbleDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.impl.ScribbleDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

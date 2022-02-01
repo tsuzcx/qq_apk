@@ -12,20 +12,20 @@ import tencent.im.troop_search_searchtab.searchtab.RspBody;
 public class AddContactTroopHandler$InfoReqObserver
   implements BusinessObserver
 {
-  protected int a;
   protected WeakReference<AddContactTroopHandler.IGetPopClassAndSearchCB> a;
   protected WeakReference<QQAppInterface> b;
+  protected int c;
   
   public AddContactTroopHandler$InfoReqObserver(AddContactTroopHandler.IGetPopClassAndSearchCB paramIGetPopClassAndSearchCB, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIGetPopClassAndSearchCB);
+    this.a = new WeakReference(paramIGetPopClassAndSearchCB);
     this.b = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    AddContactTroopHandler.IGetPopClassAndSearchCB localIGetPopClassAndSearchCB = (AddContactTroopHandler.IGetPopClassAndSearchCB)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AddContactTroopHandler.IGetPopClassAndSearchCB localIGetPopClassAndSearchCB = (AddContactTroopHandler.IGetPopClassAndSearchCB)this.a.get();
     Object localObject1 = (QQAppInterface)this.b.get();
     Object localObject2;
     if (QLog.isColorLevel())
@@ -34,7 +34,7 @@ public class AddContactTroopHandler$InfoReqObserver
       ((StringBuilder)localObject2).append("InfoReqObserver: type=");
       ((StringBuilder)localObject2).append(paramInt);
       ((StringBuilder)localObject2).append(", reqType=");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(this.c);
       ((StringBuilder)localObject2).append(", isSucc=");
       ((StringBuilder)localObject2).append(paramBoolean);
       ((StringBuilder)localObject2).append(", cbIsNull=");
@@ -62,7 +62,7 @@ public class AddContactTroopHandler$InfoReqObserver
           if (paramBundle != null)
           {
             localObject1 = (AddContactTroopManage)((QQAppInterface)localObject1).getManager(QQManagerFactory.ADDCONTACT_TROOP_SEARCH_POP_MANAGE);
-            if (this.jdField_a_of_type_Int == 1)
+            if (this.c == 1)
             {
               localObject2 = new popclassifc.RspBody();
               ((popclassifc.RspBody)localObject2).mergeFrom(paramBundle);
@@ -70,7 +70,7 @@ public class AddContactTroopHandler$InfoReqObserver
               localIGetPopClassAndSearchCB.a();
               return;
             }
-            if (this.jdField_a_of_type_Int == 2)
+            if (this.c == 2)
             {
               localObject2 = new searchtab.RspBody();
               ((searchtab.RspBody)localObject2).mergeFrom(paramBundle);

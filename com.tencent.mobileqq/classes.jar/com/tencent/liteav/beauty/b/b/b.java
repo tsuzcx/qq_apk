@@ -1,11 +1,11 @@
 package com.tencent.liteav.beauty.b.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.beauty.NativeLoad;
 
 public class b
-  extends h
+  extends j
 {
   private int r = -1;
   private int s = -1;
@@ -37,7 +37,6 @@ public class b
   
   public boolean a()
   {
-    NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(14);
     if ((this.a != 0) && (b())) {
       this.g = true;
@@ -58,8 +57,8 @@ public class b
   public boolean b()
   {
     boolean bool = super.b();
-    this.r = GLES20.glGetUniformLocation(p(), "singleStepOffset");
-    this.s = GLES20.glGetUniformLocation(p(), "beautyParams");
+    this.r = GLES20.glGetUniformLocation(q(), "singleStepOffset");
+    this.s = GLES20.glGetUniformLocation(q(), "beautyParams");
     a(5.0F);
     return bool;
   }
@@ -78,7 +77,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,13 @@ class LottieAnimDirector$2
     localStringBuilder.append("onZipDownloadResult success:");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(" mPaused:");
-    localStringBuilder.append(LottieAnimDirector.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector));
+    localStringBuilder.append(LottieAnimDirector.a(this.b));
     localStringBuilder.append(" mDestroyed:");
-    localStringBuilder.append(LottieAnimDirector.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector));
+    localStringBuilder.append(LottieAnimDirector.b(this.b));
     QLog.i("LottieAnimDirector", 1, localStringBuilder.toString());
-    if (!LottieAnimDirector.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector))
+    if (!LottieAnimDirector.b(this.b))
     {
-      if (LottieAnimDirector.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplLottieAnimDirector)) {
+      if (LottieAnimDirector.a(this.b)) {
         return;
       }
       ThreadManager.getUIHandler().post(new LottieAnimDirector.2.1(this, paramBoolean));
@@ -32,7 +32,7 @@ class LottieAnimDirector$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.LottieAnimDirector.2
  * JD-Core Version:    0.7.0.1
  */

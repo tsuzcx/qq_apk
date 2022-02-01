@@ -14,8 +14,8 @@ final class TroopRobotManager$3
   
   public void onClick(View paramView)
   {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    MttBrowerWrapper.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    String str = URLUtil.guessUrl(this.a);
+    MttBrowerWrapper.a(paramView.getContext(), str, true, true, true, false, this.b);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -26,7 +26,7 @@ final class TroopRobotManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager.3
  * JD-Core Version:    0.7.0.1
  */

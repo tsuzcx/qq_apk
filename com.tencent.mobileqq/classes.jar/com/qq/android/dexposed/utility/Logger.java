@@ -4,18 +4,11 @@ import android.util.Log;
 
 public class Logger
 {
-  private static final boolean DEBUG = false;
-  public static final String preFix = "epic.";
+  public static void a(String paramString1, String paramString2) {}
   
-  public static void d(String paramString1, String paramString2) {}
+  public static void b(String paramString1, String paramString2) {}
   
-  public static void e(String paramString1, String paramString2) {}
-  
-  public static void e(String paramString1, String paramString2, Throwable paramThrowable) {}
-  
-  public static void i(String paramString1, String paramString2) {}
-  
-  public static void w(String paramString1, String paramString2)
+  public static void c(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder("epic.");
     localStringBuilder.append(paramString1);

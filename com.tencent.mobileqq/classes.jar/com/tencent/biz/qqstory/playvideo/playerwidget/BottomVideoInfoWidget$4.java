@@ -11,7 +11,7 @@ class BottomVideoInfoWidget$4
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    this.a.c(false);
   }
 }
 

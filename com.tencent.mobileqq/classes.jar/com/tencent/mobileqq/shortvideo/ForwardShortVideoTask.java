@@ -12,13 +12,13 @@ import com.tencent.mobileqq.transfile.api.ITransFileController;
 class ForwardShortVideoTask
   implements Runnable
 {
-  private final BaseShortVideoUpOperator jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator;
-  ShortVideoForwardInfo jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoForwardInfo;
+  ShortVideoForwardInfo a;
+  private final BaseShortVideoUpOperator b;
   
   public ForwardShortVideoTask(BaseShortVideoUpOperator paramBaseShortVideoUpOperator, ShortVideoForwardInfo paramShortVideoForwardInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator = paramBaseShortVideoUpOperator;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoForwardInfo = paramShortVideoForwardInfo;
+    this.b = paramBaseShortVideoUpOperator;
+    this.a = paramShortVideoForwardInfo;
   }
   
   public TransferRequest a(ShortVideoForwardInfo paramShortVideoForwardInfo, MessageRecord paramMessageRecord)
@@ -32,41 +32,41 @@ class ForwardShortVideoTask
     localTransferRequest.mUniseq = paramMessageRecord.uniseq;
     localTransferRequest.mIsUp = true;
     localTransferRequest.mBusiType = 0;
-    localTransferRequest.mMd5 = paramShortVideoForwardInfo.e;
+    localTransferRequest.mMd5 = paramShortVideoForwardInfo.i;
     paramMessageRecord = new StringBuilder();
-    paramMessageRecord.append(paramShortVideoForwardInfo.h);
+    paramMessageRecord.append(paramShortVideoForwardInfo.p);
     paramMessageRecord.append("QQ_&_MoblieQQ_&_QQ");
-    paramMessageRecord.append(paramShortVideoForwardInfo.i);
+    paramMessageRecord.append(paramShortVideoForwardInfo.q);
     paramMessageRecord.append("QQ_&_MoblieQQ_&_QQ");
-    paramMessageRecord.append(paramShortVideoForwardInfo.j);
+    paramMessageRecord.append(paramShortVideoForwardInfo.u);
     paramMessageRecord.append("QQ_&_MoblieQQ_&_QQ");
-    paramMessageRecord.append(paramShortVideoForwardInfo.g);
+    paramMessageRecord.append(paramShortVideoForwardInfo.k);
     localTransferRequest.mLocalPath = paramMessageRecord.toString();
-    paramShortVideoForwardInfo = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator;
+    paramShortVideoForwardInfo = this.b;
     localTransferRequest.mUpCallBack = paramShortVideoForwardInfo;
-    localTransferRequest.mRec = paramShortVideoForwardInfo.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    localTransferRequest.mRec = paramShortVideoForwardInfo.f;
     return localTransferRequest;
   }
   
   public void a()
   {
-    ShortVideoForwardInfo localShortVideoForwardInfo = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoForwardInfo;
+    ShortVideoForwardInfo localShortVideoForwardInfo = this.a;
     if (localShortVideoForwardInfo == null) {
       return;
     }
     Object localObject = null;
-    long l = localShortVideoForwardInfo.jdField_a_of_type_Long;
-    int i = localShortVideoForwardInfo.p;
+    long l = localShortVideoForwardInfo.g;
+    int i = localShortVideoForwardInfo.G;
     boolean bool;
-    if (localShortVideoForwardInfo.k == 3)
+    if (localShortVideoForwardInfo.w == 3)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator.a(localShortVideoForwardInfo);
+      localObject = this.b.a(localShortVideoForwardInfo);
       bool = true;
     }
     else
     {
-      if (localShortVideoForwardInfo.k == 4) {
-        localObject = (MessageForShortVideo)localShortVideoForwardInfo.jdField_a_of_type_JavaLangObject;
+      if (localShortVideoForwardInfo.w == 4) {
+        localObject = (MessageForShortVideo)localShortVideoForwardInfo.v;
       }
       bool = false;
     }
@@ -79,21 +79,21 @@ class ForwardShortVideoTask
   public void a(ShortVideoForwardInfo paramShortVideoForwardInfo, MessageRecord paramMessageRecord, long paramLong, int paramInt, boolean paramBoolean)
   {
     ((IForwardOrderManager)QRoute.api(IForwardOrderManager.class)).mapUniSeqId(paramMessageRecord.uniseq, paramLong, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.b.f = paramMessageRecord;
     paramLong = System.currentTimeMillis();
     TransferRequest localTransferRequest = a(paramShortVideoForwardInfo, paramMessageRecord);
     a(localTransferRequest);
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator.a(paramMessageRecord, paramShortVideoForwardInfo.b);
+      this.b.a(paramMessageRecord, paramShortVideoForwardInfo.P);
     }
-    paramShortVideoForwardInfo = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator.b;
-    paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator.jdField_a_of_type_JavaLangString;
+    paramShortVideoForwardInfo = this.b.e;
+    paramMessageRecord = this.b.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cost:");
     localStringBuilder.append(System.currentTimeMillis() - paramLong);
     Logger.a(paramShortVideoForwardInfo, paramMessageRecord, "doForwardShortVideo", localStringBuilder.toString());
-    paramShortVideoForwardInfo = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator.b;
-    paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator.jdField_a_of_type_JavaLangString;
+    paramShortVideoForwardInfo = this.b.e;
+    paramMessageRecord = this.b.d;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("TransferRequest: ");
     localStringBuilder.append(localTransferRequest.toString());
@@ -102,7 +102,7 @@ class ForwardShortVideoTask
   
   public void a(TransferRequest paramTransferRequest)
   {
-    ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoUpOperator.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(paramTransferRequest);
+    ((ITransFileController)this.b.a.getRuntimeService(ITransFileController.class)).transferAsync(paramTransferRequest);
   }
   
   public void run()
@@ -112,7 +112,7 @@ class ForwardShortVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ForwardShortVideoTask
  * JD-Core Version:    0.7.0.1
  */

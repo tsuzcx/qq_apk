@@ -1,90 +1,33 @@
 package com.tencent.mobileqq.kandian.biz.daily;
 
-import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.kandian.biz.framework.handlers.FrameworkHandler;
-import com.tencent.mobileqq.kandian.biz.framework.handlers.RIJInvokeHandler;
-import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
-import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelBannerInfo;
-import com.tencent.mobileqq.kandian.repo.feeds.entity.TopBannerInfo;
-import java.util.List;
+import com.tencent.mobileqq.kandian.repo.account.RIJUserLevelModule.UserLevelInfoUpdateListener;
+import com.tencent.mobileqq.kandian.repo.account.UserLevelInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
 class ReadInJoyDailyViewController$1
-  extends ReadInJoyObserver
+  implements RIJUserLevelModule.UserLevelInfoUpdateListener
 {
   ReadInJoyDailyViewController$1(ReadInJoyDailyViewController paramReadInJoyDailyViewController) {}
   
-  public void a(int paramInt, List<Long> paramList)
+  public void a(@NotNull UserLevelInfo paramUserLevelInfo)
   {
-    if ((ReadInJoyDailyViewController.a(this.a) != null) && ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).a(paramInt, paramList);
-    }
-  }
-  
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    if ((ReadInJoyDailyViewController.a(this.a) != null) && ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).a(paramTopBannerInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ReadInJoyDailyViewController.a(this.a) != null) && ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == ReadInJoyDailyViewController.a(this.a)))
+    if ((ReadInJoyDailyViewController.a(this.a)) && (paramUserLevelInfo.level > 0L))
     {
-      ((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-      ReadInJoyDailyViewController.a(this.a);
+      ReadInJoyDailyViewController.b(this.a);
+      return;
     }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((ReadInJoyDailyViewController.a(this.a) != null) && ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ReadInJoyDailyViewController.a(this.a) != null) && ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c()
-  {
-    if ((ReadInJoyDailyViewController.a(this.a) != null) && ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).n();
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((ReadInJoyDailyViewController.a(this.a) != null) && ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).b(paramInt, paramList);
-    }
-  }
-  
-  public void d(int paramInt, List<ChannelBannerInfo> paramList)
-  {
-    if ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup))
-    {
-      FrameworkHandler localFrameworkHandler = (FrameworkHandler)((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).a().a(2);
-      if (localFrameworkHandler != null) {
-        localFrameworkHandler.b(paramInt, paramList);
-      }
-    }
-  }
-  
-  public void j_(int paramInt)
-  {
-    if ((ReadInJoyDailyViewController.a(this.a) != null) && ((ReadInJoyDailyViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ReadInJoyDailyViewController.a(this.a)).a(paramInt);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("userLevelInfoOnUpdate, hasPublisherEntryConfig=");
+    localStringBuilder.append(ReadInJoyDailyViewController.a(this.a));
+    localStringBuilder.append(", level=");
+    localStringBuilder.append(paramUserLevelInfo.level);
+    QLog.i("ReadInJoyDailyViewController", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyViewController.1
  * JD-Core Version:    0.7.0.1
  */

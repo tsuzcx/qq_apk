@@ -13,14 +13,14 @@ class FeedItemCell$1
   
   public void a(View paramView, Map<String, Object> paramMap)
   {
-    if (paramView.getId() == 2131380181)
+    if (paramView.getId() == 2131449096)
     {
-      this.a.a(paramView);
+      this.a.b(paramView);
       return;
     }
-    if (paramView == this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead)
+    if (paramView == this.a.t)
     {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a();
+      paramView = this.a.g.y().a();
       if (paramView != null) {
         paramView.m();
       }
@@ -33,7 +33,7 @@ class FeedItemCell$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCell.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,32 +11,32 @@ import java.util.Set;
 class VideoSetSpeedDialog$OnItemSelectListener
   implements View.OnClickListener
 {
-  float jdField_a_of_type_Float;
+  float a;
   
   public VideoSetSpeedDialog$OnItemSelectListener(VideoSetSpeedDialog paramVideoSetSpeedDialog, float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.a = paramFloat;
   }
   
   public void onClick(View paramView)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.b.a.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       ((TextView)localEntry.getValue()).setSelected(false);
-      ((TextView)localEntry.getValue()).setTextColor(VideoSetSpeedDialog.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog));
+      ((TextView)localEntry.getValue()).setTextColor(VideoSetSpeedDialog.a(this.b));
     }
     paramView.setSelected(true);
-    ((TextView)paramView).setTextColor(VideoSetSpeedDialog.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog));
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog$OnSpeedChangeListener != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog$OnSpeedChangeListener.a(this.jdField_a_of_type_Float);
+    ((TextView)paramView).setTextColor(VideoSetSpeedDialog.b(this.b));
+    if (this.b.c != null) {
+      this.b.c.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.clip.video.VideoSetSpeedDialog.OnItemSelectListener
  * JD-Core Version:    0.7.0.1
  */

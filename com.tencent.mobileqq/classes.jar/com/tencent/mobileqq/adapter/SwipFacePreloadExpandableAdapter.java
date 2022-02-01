@@ -27,20 +27,19 @@ public abstract class SwipFacePreloadExpandableAdapter
   extends PinnedHeaderExpandableListView.ExpandableListAdapter
   implements DecodeTaskCompletionListener, AbsListView.OnScrollListener
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
-  protected ExpandableListView a;
+  private final Context a;
+  private final QQAppInterface b;
+  private IFaceDecoder c = null;
+  protected ExpandableListView r = null;
   
   public SwipFacePreloadExpandableAdapter(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
   {
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-    ImageUtil.f();
+    this.a = paramContext;
+    this.b = paramQQAppInterface;
+    this.r = paramExpandableListView;
+    this.c = ((IQQAvatarService)this.b.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.b);
+    this.c.setDecodeTaskCompletionListener(this);
+    ImageUtil.k();
   }
   
   protected void a(SwipFacePreloadExpandableAdapter.ViewHolder paramViewHolder, Bitmap paramBitmap)
@@ -50,34 +49,34 @@ public abstract class SwipFacePreloadExpandableAdapter
   
   protected void a(SwipFacePreloadExpandableAdapter.ViewHolder paramViewHolder, Bitmap paramBitmap, boolean paramBoolean)
   {
-    if (paramViewHolder.d == null) {
+    if (paramViewHolder.r == null) {
       return;
     }
-    if (AppConstants.DATALINE_PC_UIN.equals(paramViewHolder.a))
+    if (AppConstants.DATALINE_PC_UIN.equals(paramViewHolder.p))
     {
-      paramViewHolder.d.setBackgroundResource(2130844282);
+      paramViewHolder.r.setBackgroundResource(2130845599);
       return;
     }
-    if (AppConstants.DATALINE_IPAD_UIN.equals(paramViewHolder.a))
+    if (AppConstants.DATALINE_IPAD_UIN.equals(paramViewHolder.p))
     {
-      paramViewHolder.d.setBackgroundResource(2130844277);
+      paramViewHolder.r.setBackgroundResource(2130845594);
       return;
     }
-    if (AppConstants.DATALINE_PRINTER_UIN.equals(paramViewHolder.a))
+    if (AppConstants.DATALINE_PRINTER_UIN.equals(paramViewHolder.p))
     {
-      paramViewHolder.d.setBackgroundResource(2130844285);
+      paramViewHolder.r.setBackgroundResource(2130845602);
       return;
     }
-    if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramViewHolder.a))
+    if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramViewHolder.p))
     {
-      paramViewHolder.d.setBackgroundResource(2130839566);
+      paramViewHolder.r.setBackgroundResource(2130839779);
       return;
     }
     Bitmap localBitmap = paramBitmap;
     if (paramBitmap == null) {
-      if ((AppConstants.SMARTDEVICE_UIN.equals(paramViewHolder.a)) && ((paramViewHolder instanceof BuddyListFriends.BuddyChildTag)))
+      if ((AppConstants.SMARTDEVICE_UIN.equals(paramViewHolder.p)) && ((paramViewHolder instanceof BuddyListFriends.BuddyChildTag)))
       {
-        Object localObject = (Friends)((BuddyListFriends.BuddyChildTag)paramViewHolder).a;
+        Object localObject = (Friends)((BuddyListFriends.BuddyChildTag)paramViewHolder).c;
         localBitmap = paramBitmap;
         if (localObject != null) {
           if (DeviceHeadMgr.getInstance().isLostQfindDevice(((Friends)localObject).name))
@@ -85,7 +84,7 @@ public abstract class SwipFacePreloadExpandableAdapter
             localObject = DeviceHeadMgr.getInstance().getDeviceHeadDrawableByDin(((Friends)localObject).name);
             localBitmap = paramBitmap;
             if (localObject != null) {
-              paramViewHolder.d.setBackgroundDrawable((Drawable)localObject);
+              paramViewHolder.r.setBackgroundDrawable((Drawable)localObject);
             }
           }
           else
@@ -96,7 +95,7 @@ public abstract class SwipFacePreloadExpandableAdapter
       }
       else
       {
-        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(paramViewHolder.b, paramViewHolder.a);
+        localBitmap = this.c.getBitmapFromCache(paramViewHolder.q, paramViewHolder.p);
       }
     }
     paramBitmap = localBitmap;
@@ -104,42 +103,42 @@ public abstract class SwipFacePreloadExpandableAdapter
     {
       if (paramBoolean) {
         if ((paramViewHolder instanceof BuddyListTroop.TroopDisChildTag)) {
-          localBitmap = ImageUtil.e();
+          localBitmap = ImageUtil.i();
         } else {
-          localBitmap = ImageUtil.f();
+          localBitmap = ImageUtil.k();
         }
       }
       paramBitmap = localBitmap;
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+      if (!this.c.isPausing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramViewHolder.a, paramViewHolder.b, false);
+        this.c.requestDecodeFace(paramViewHolder.p, paramViewHolder.q, false);
         paramBitmap = localBitmap;
       }
     }
     if (paramBitmap != null)
     {
-      if ((paramViewHolder.b == 1) && ((paramViewHolder.d instanceof DynamicAvatarView)) && ((paramViewHolder instanceof BuddyListFriends.BuddyChildTag)))
+      if ((paramViewHolder.q == 1) && ((paramViewHolder.r instanceof DynamicAvatarView)) && ((paramViewHolder instanceof BuddyListFriends.BuddyChildTag)))
       {
-        if (!((BuddyListFriends.BuddyChildTag)paramViewHolder).b)
+        if (!((BuddyListFriends.BuddyChildTag)paramViewHolder).n)
         {
-          paramViewHolder.d.setBackgroundDrawable(null);
-          ((DynamicAvatarView)paramViewHolder.d).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap), 1, paramViewHolder.a, 100, false, true, 1);
+          paramViewHolder.r.setBackgroundDrawable(null);
+          ((DynamicAvatarView)paramViewHolder.r).setFaceDrawable(this.b, new BitmapDrawable(this.a.getResources(), paramBitmap), 1, paramViewHolder.p, 100, false, true, 1);
           return;
         }
-        paramViewHolder.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+        paramViewHolder.r.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), paramBitmap));
         return;
       }
-      paramViewHolder.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+      paramViewHolder.r.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), paramBitmap));
     }
   }
   
   protected void a(String paramString, Bitmap paramBitmap)
   {
-    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
+    int j = this.r.getChildCount();
     int i = 0;
     while (i < j)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      Object localObject = this.r.getChildAt(i).getTag();
       if ((localObject != null) && ((localObject instanceof SwipFacePreloadExpandableAdapter.ViewHolder)))
       {
         localObject = (SwipFacePreloadExpandableAdapter.ViewHolder)localObject;
@@ -147,22 +146,22 @@ public abstract class SwipFacePreloadExpandableAdapter
         {
           a((SwipFacePreloadExpandableAdapter.ViewHolder)localObject, null, false);
         }
-        else if (paramString.equals(((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).a))
+        else if (paramString.equals(((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).p))
         {
           if (paramBitmap == null) {
             break;
           }
-          if ((((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).b == 1) && ((((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d instanceof DynamicAvatarView)) && ((localObject instanceof BuddyListFriends.BuddyChildTag)))
+          if ((((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).q == 1) && ((((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).r instanceof DynamicAvatarView)) && ((localObject instanceof BuddyListFriends.BuddyChildTag)))
           {
-            if (!((BuddyListFriends.BuddyChildTag)localObject).b)
+            if (!((BuddyListFriends.BuddyChildTag)localObject).n)
             {
-              ((DynamicAvatarView)((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+              ((DynamicAvatarView)((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).r).a(new BitmapDrawable(this.a.getResources(), paramBitmap));
               return;
             }
-            ((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+            ((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).r.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), paramBitmap));
             return;
           }
-          ((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+          ((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).r.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), paramBitmap));
           return;
         }
       }
@@ -172,7 +171,7 @@ public abstract class SwipFacePreloadExpandableAdapter
   
   public void b()
   {
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    IFaceDecoder localIFaceDecoder = this.c;
     if (localIFaceDecoder != null) {
       localIFaceDecoder.destory();
     }
@@ -180,7 +179,7 @@ public abstract class SwipFacePreloadExpandableAdapter
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) && (paramBitmap != null)) {
+    if ((!this.c.isPausing()) && (paramBitmap != null)) {
       a(paramString, paramBitmap);
     }
   }
@@ -191,23 +190,23 @@ public abstract class SwipFacePreloadExpandableAdapter
   {
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
-      DynamicFaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.c.cancelPendingRequests();
+      this.c.pause();
+      DynamicFaceDrawable.a(this.b);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+    if (this.c.isPausing())
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+      this.c.cancelPendingRequests();
+      this.c.resume();
       a(null, null);
     }
-    DynamicFaceDrawable.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    DynamicFaceDrawable.b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.SwipFacePreloadExpandableAdapter
  * JD-Core Version:    0.7.0.1
  */

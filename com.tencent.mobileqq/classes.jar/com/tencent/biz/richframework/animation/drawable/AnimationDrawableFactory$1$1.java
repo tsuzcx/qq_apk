@@ -1,6 +1,6 @@
 package com.tencent.biz.richframework.animation.drawable;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 
 class AnimationDrawableFactory$1$1
   implements Runnable
@@ -10,16 +10,16 @@ class AnimationDrawableFactory$1$1
   public void run()
   {
     QQAnimationDrawable localQQAnimationDrawable = new QQAnimationDrawable();
-    localQQAnimationDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString);
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a() != 0) {
-      localQQAnimationDrawable.a(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a());
-    } else if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.b() != 0) {
-      localQQAnimationDrawable.a(this.jdField_a_of_type_ArrayOfJavaLangString.length * this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.b());
+    localQQAnimationDrawable.a(this.a);
+    if (this.b.b.d() != 0) {
+      localQQAnimationDrawable.a(this.b.b.d());
+    } else if (this.b.b.e() != 0) {
+      localQQAnimationDrawable.a(this.a.length * this.b.b.e());
     }
-    RFLog.d("AnimationDrawableFactory", RFLog.USR, "create animationDrawable success");
-    this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$CreateResultListener.a(true, localQQAnimationDrawable);
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a()) {
-      AnimationDrawableFactory.a(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory, this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$1.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableCreateOption.a(), localQQAnimationDrawable);
+    QLog.d("AnimationDrawableFactory", 1, "create animationDrawable success");
+    this.b.d.a(true, localQQAnimationDrawable);
+    if (this.b.b.b()) {
+      AnimationDrawableFactory.a(this.b.e, this.b.b.a(), localQQAnimationDrawable);
     }
   }
 }

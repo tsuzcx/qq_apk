@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.XmlRes;
+import androidx.core.R.attr;
 import androidx.core.R.styleable;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -111,7 +112,7 @@ public final class ColorStateListInflaterCompat
             if (n != 16843551)
             {
               m = k;
-              if (n != 2131034189)
+              if (n != R.attr.alpha)
               {
                 if (paramAttributeSet.getAttributeBooleanValue(j, false)) {
                   m = n;

@@ -12,12 +12,11 @@ import java.util.List;
 public class GetShareGroupVideoInfoResponse
   extends BaseResponse
 {
-  public List<StoryVideoItem> a;
+  public List<StoryVideoItem> a = new ArrayList();
   
   public GetShareGroupVideoInfoResponse(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
   {
     super(paramRspBatchGetVideoInfo.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     if (paramRspBatchGetVideoInfo.vid_info_list.has())
     {
       paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
@@ -26,7 +25,7 @@ public class GetShareGroupVideoInfoResponse
         qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
         StoryVideoItem localStoryVideoItem = new StoryVideoItem();
         localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
+        this.a.add(localStoryVideoItem);
       }
     }
   }
@@ -35,19 +34,19 @@ public class GetShareGroupVideoInfoResponse
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetShareGroupVideoInfoResponse{errorCode=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", errorMsg='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mVideoItemList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetShareGroupVideoInfoResponse
  * JD-Core Version:    0.7.0.1
  */

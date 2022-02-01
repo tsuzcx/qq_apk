@@ -13,10 +13,10 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.push.RIJLockScreenPushReport;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianDailyManager;
@@ -29,6 +29,7 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.DailyFloatingWindowData;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.KandianRedDotInfo;
 import com.tencent.mobileqq.kandian.repo.reddot.RIJKanDianRedDotUtils;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo;
+import com.tencent.mobileqq.kandian.repo.report.UserOperationModule;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
@@ -46,91 +47,37 @@ import org.json.JSONObject;
 
 public class KandianDailyReportUtils
 {
-  private static volatile int jdField_a_of_type_Int;
   public static long a;
-  public static String a;
-  private static ArrayList<ReportInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public static Map<Long, Pair<Long, Long>> a;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static Map<String, String> b = new HashMap();
+  public static String b;
+  public static Map<Long, Pair<Long, Long>> c;
+  private static Map<String, String> d = new HashMap();
+  private static volatile int e = 0;
+  private static ArrayList<ReportInfo> f = new ArrayList();
+  private static boolean g = false;
   
   static
   {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_JavaUtilMap = new HashMap();
+    a = 0L;
+    b = "";
+    c = new HashMap();
     b();
-  }
-  
-  public static int a()
-  {
-    Object localObject1 = RecentDataListManager.a().a;
-    if (localObject1 == null) {
-      return 2147483647;
-    }
-    localObject1 = new ArrayList((Collection)localObject1);
-    Object localObject2 = ((List)localObject1).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      RecentUserBaseData localRecentUserBaseData = (RecentUserBaseData)((Iterator)localObject2).next();
-      if ((localRecentUserBaseData != null) && (localRecentUserBaseData.mUser != null) && (localRecentUserBaseData.mUser.getType() == 1008) && (ServiceAccountFolderManager.b((QQAppInterface)ReadInJoyUtils.a(), localRecentUserBaseData.mUser.uin))) {
-        ((Iterator)localObject2).remove();
-      }
-    }
-    int i = 0;
-    while (i < ((List)localObject1).size())
-    {
-      localObject2 = (RecentUserBaseData)((List)localObject1).get(i);
-      if ((localObject2 != null) && (((RecentUserBaseData)localObject2).mUser != null) && (((RecentUserBaseData)localObject2).mUser.getType() == 1008) && (TextUtils.equals(((RecentUserBaseData)localObject2).mUser.uin, AppConstants.KANDIAN_DAILY_UIN))) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
   }
   
   public static Pair<Long, Long> a(long paramLong)
   {
-    if (jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      return (Pair)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    if (c.containsKey(Long.valueOf(paramLong))) {
+      return (Pair)c.get(Long.valueOf(paramLong));
     }
     return null;
   }
   
-  public static String a()
-  {
-    Object localObject1 = b;
-    if (localObject1 != null) {
-      localObject1 = (String)((Map)localObject1).get("folder_status");
-    } else {
-      localObject1 = "1";
-    }
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = localObject1;
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    }
-    else
-    {
-      localObject2 = "1";
-    }
-    return localObject2;
-  }
-  
-  public static Map<String, String> a()
-  {
-    return b;
-  }
-  
   public static void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.b();
     if (localQQAppInterface == null) {
       return;
     }
-    MessageRecord localMessageRecord = localQQAppInterface.getMessageFacade().b(AppConstants.KANDIAN_DAILY_UIN, 1008);
+    MessageRecord localMessageRecord = localQQAppInterface.getMessageFacade().r(AppConstants.KANDIAN_DAILY_UIN, 1008);
     if ((localMessageRecord != null) && (!localMessageRecord.isread))
     {
       if (localMessageRecord.extLong != 1) {
@@ -144,9 +91,9 @@ public class KandianDailyReportUtils
   
   public static void a(int paramInt)
   {
-    jdField_a_of_type_Int |= paramInt;
-    if (DailyModeConfigHandler.b(DailyModeConfigHandler.b())) {
-      ReadinjoySPEventReport.e(1);
+    e |= paramInt;
+    if (DailyModeConfigHandler.b(DailyModeConfigHandler.j())) {
+      ReadinjoySPEventReport.i(1);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("set operation flag : ");
@@ -207,7 +154,7 @@ public class KandianDailyReportUtils
     if (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).caculateMsgTabRedPntExcludeSelf(AppConstants.KANDIAN_DAILY_UIN) > 0) {
       i = 1;
     }
-    str1 = KandianDailyManager.jdField_a_of_type_JavaLangString;
+    str1 = KandianDailyManager.a;
     if ((paramMessageRecord instanceof MessageForStructing)) {
       str1 = KandianDailyManager.a((MessageForStructing)paramMessageRecord);
     }
@@ -219,9 +166,9 @@ public class KandianDailyReportUtils
       localJSONObject.put("algorithm_id", localObject2);
       localJSONObject.put("name", str1);
       localJSONObject.put("time", NetConnInfoCenter.getServerTimeMillis());
-      localJSONObject.put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("version", VideoReporter.a);
       localJSONObject.put("os", "1");
-      localJSONObject.put("channel_id", b());
+      localJSONObject.put("channel_id", h());
       if (localKandianRedDotInfo != null)
       {
         if (!TextUtils.isEmpty(localKandianRedDotInfo.rowkey)) {
@@ -237,7 +184,7 @@ public class KandianDailyReportUtils
     {
       localException2.printStackTrace();
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", paramString, paramString, 0, 0, str2, (String)localObject3, (String)localObject4, localJSONObject.toString(), false);
+    PublicAccountReportUtils.a(null, "CliOper", "", "", paramString, paramString, 0, 0, str2, (String)localObject3, (String)localObject4, localJSONObject.toString(), false);
     if (!paramMessageRecord.isread)
     {
       paramString = new ArrayList();
@@ -248,7 +195,7 @@ public class KandianDailyReportUtils
       }
       paramMessageRecord.mOperation = i;
       paramMessageRecord.mOpSource = 16;
-      paramMessageRecord.mUin = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin();
+      paramMessageRecord.mUin = RIJQQAppInterfaceUtil.c();
       try
       {
         paramMessageRecord.mSourceArticleId = Long.valueOf((String)localObject3).longValue();
@@ -271,7 +218,7 @@ public class KandianDailyReportUtils
         localException1.printStackTrace();
       }
       paramString.add(paramMessageRecord);
-      ((IUserOperationModule)QRoute.api(IUserOperationModule.class)).request0x64eUserOperationReport(paramString);
+      UserOperationModule.getInstance().request0x64eUserOperationReport(paramString);
     }
   }
   
@@ -310,7 +257,7 @@ public class KandianDailyReportUtils
     localStringBuilder.append(paramKandianRedDotInfo.strategyID);
     localStringBuilder.append("");
     localHashMap.put("strategy_id", localStringBuilder.toString());
-    b = localHashMap;
+    d = localHashMap;
   }
   
   public static void a(ReportInfo paramReportInfo)
@@ -331,12 +278,12 @@ public class KandianDailyReportUtils
       while (paramList.hasNext())
       {
         AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramList.next();
-        if ((RIJFeedsType.a(localAbsBaseArticleInfo) > 0) && (paramList1.contains(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq))))
+        if ((RIJFeedsType.g(localAbsBaseArticleInfo) > 0) && (paramList1.contains(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq))))
         {
-          Object localObject = jdField_a_of_type_JavaUtilMap;
+          Object localObject = c;
           long l2 = localAbsBaseArticleInfo.mArticleID;
-          long l3 = jdField_a_of_type_Long;
-          jdField_a_of_type_Long = l3 + 1L;
+          long l3 = a;
+          a = l3 + 1L;
           long l1;
           if (paramBoolean) {
             l1 = 1L;
@@ -348,7 +295,7 @@ public class KandianDailyReportUtils
           ((StringBuilder)localObject).append("articleID : ");
           ((StringBuilder)localObject).append(localAbsBaseArticleInfo.mArticleID);
           ((StringBuilder)localObject).append(", pos : ");
-          ((StringBuilder)localObject).append(jdField_a_of_type_Long - 1L);
+          ((StringBuilder)localObject).append(a - 1L);
           ((StringBuilder)localObject).append("\n");
           localStringBuilder.append(((StringBuilder)localObject).toString());
         }
@@ -362,8 +309,8 @@ public class KandianDailyReportUtils
   public static void a(AppRuntime paramAppRuntime)
   {
     long l1 = 0L;
-    jdField_a_of_type_Long = 0L;
-    jdField_a_of_type_JavaUtilMap.clear();
+    a = 0L;
+    c.clear();
     if (paramAppRuntime != null) {
       l1 = paramAppRuntime.getLongAccountUin();
     }
@@ -372,33 +319,100 @@ public class KandianDailyReportUtils
     paramAppRuntime.append(l1);
     paramAppRuntime.append("_");
     paramAppRuntime.append(l2);
-    jdField_a_of_type_JavaLangString = paramAppRuntime.toString();
+    b = paramAppRuntime.toString();
   }
   
-  public static int b()
+  public static void b()
   {
-    return jdField_a_of_type_Int;
+    Map localMap = k();
+    if (localMap != null) {
+      d = localMap;
+    }
   }
   
-  public static String b()
+  public static Map<String, String> c()
+  {
+    return d;
+  }
+  
+  public static int d()
+  {
+    Object localObject1 = RecentDataListManager.a().c;
+    if (localObject1 == null) {
+      return 2147483647;
+    }
+    localObject1 = new ArrayList((Collection)localObject1);
+    Object localObject2 = ((List)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      RecentUserBaseData localRecentUserBaseData = (RecentUserBaseData)((Iterator)localObject2).next();
+      if ((localRecentUserBaseData != null) && (localRecentUserBaseData.mUser != null) && (localRecentUserBaseData.mUser.getType() == 1008) && (ServiceAccountFolderManager.b((QQAppInterface)ReadInJoyUtils.b(), localRecentUserBaseData.mUser.uin))) {
+        ((Iterator)localObject2).remove();
+      }
+    }
+    int i = 0;
+    while (i < ((List)localObject1).size())
+    {
+      localObject2 = (RecentUserBaseData)((List)localObject1).get(i);
+      if ((localObject2 != null) && (((RecentUserBaseData)localObject2).mUser != null) && (((RecentUserBaseData)localObject2).mUser.getType() == 1008) && (TextUtils.equals(((RecentUserBaseData)localObject2).mUser.uin, AppConstants.KANDIAN_DAILY_UIN))) {
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
+  public static String e()
+  {
+    Object localObject1 = d;
+    if (localObject1 != null) {
+      localObject1 = (String)((Map)localObject1).get("folder_status");
+    } else {
+      localObject1 = "1";
+    }
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    }
+    else
+    {
+      localObject2 = "1";
+    }
+    return localObject2;
+  }
+  
+  public static int f()
+  {
+    return e;
+  }
+  
+  public static void g()
+  {
+    e = 0;
+    QLog.d("KandianDailyReportUtils", 2, "reset operation flag : ");
+  }
+  
+  public static String h()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(RIJSPUtils.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505)));
+    localStringBuilder.append(RIJSPUtils.b("readinjoy_daily_mode_channel_id", Integer.valueOf(41505)));
     return localStringBuilder.toString();
   }
   
-  private static Map<String, String> b()
+  private static Map<String, String> k()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("folder_status", "1");
     localHashMap.put("algorithm_id", "0");
     localHashMap.put("strategy_id", "0");
-    Object localObject = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject = (QQAppInterface)ReadInJoyUtils.b();
     if (localObject == null) {
       return localHashMap;
     }
-    localObject = ((QQAppInterface)localObject).getMessageFacade().b(AppConstants.KANDIAN_DAILY_UIN, 1008);
+    localObject = ((QQAppInterface)localObject).getMessageFacade().r(AppConstants.KANDIAN_DAILY_UIN, 1008);
     if (localObject == null) {
       return localHashMap;
     }
@@ -420,24 +434,10 @@ public class KandianDailyReportUtils
     }
     return localHashMap;
   }
-  
-  public static void b()
-  {
-    Map localMap = b();
-    if (localMap != null) {
-      b = localMap;
-    }
-  }
-  
-  public static void c()
-  {
-    jdField_a_of_type_Int = 0;
-    QLog.d("KandianDailyReportUtils", 2, "reset operation flag : ");
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.KandianDailyReportUtils
  * JD-Core Version:    0.7.0.1
  */

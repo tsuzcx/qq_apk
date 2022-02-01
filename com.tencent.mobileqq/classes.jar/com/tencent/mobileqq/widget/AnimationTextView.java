@@ -23,6 +23,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView.BufferType;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
 import com.tencent.mobileqq.activity.selectable.SelectableComponent;
 import com.tencent.mobileqq.activity.selectable.SelectableDelegate;
@@ -111,10 +112,10 @@ public class AnimationTextView
   
   private void dealSmallEmojiClick()
   {
-    float f1 = this.touchL - TextItemBuilder.e;
-    float f2 = this.touchT - TextItemBuilder.a;
-    BubbleInfo localBubbleInfo = (BubbleInfo)getTag(2131364116);
-    Object localObject = (ChatMessage)getTag(2131364568);
+    float f1 = this.touchL - BaseChatItemLayout.getTextBubblePaddingAlignHead();
+    float f2 = this.touchT - TextItemBuilder.y;
+    BubbleInfo localBubbleInfo = (BubbleInfo)getTag(2131430083);
+    Object localObject = (ChatMessage)getTag(2131430627);
     int i = 0;
     boolean bool;
     if (localObject != null) {
@@ -123,7 +124,7 @@ public class AnimationTextView
       bool = false;
     }
     if (bool) {
-      f1 = this.touchL - TextItemBuilder.f;
+      f1 = this.touchL - BaseChatItemLayout.getTextBubblePaddingAlignError();
     }
     localObject = getText();
     if ((localObject instanceof QQText))
@@ -177,9 +178,9 @@ public class AnimationTextView
         {
           localObject = getResources();
           if (bool) {
-            i = 2130850335;
+            i = 2130852126;
           } else {
-            i = 2130850159;
+            i = 2130851944;
           }
           localBubbleInfo.a(this, ((Resources)localObject).getDrawable(i));
         }
@@ -205,7 +206,7 @@ public class AnimationTextView
   private int detectIndexByOffsetSpring(int paramInt1, int paramInt2)
   {
     checkDelegateBound();
-    int i = this.mSelectDelegate.d();
+    int i = this.mSelectDelegate.g();
     if (i == -1)
     {
       if (QLog.isColorLevel()) {
@@ -217,9 +218,9 @@ public class AnimationTextView
     if (localLayout != null)
     {
       if (i == 1) {
-        i = this.mSelectDelegate.b();
+        i = this.mSelectDelegate.e();
       } else {
-        i = this.mSelectDelegate.c();
+        i = this.mSelectDelegate.f();
       }
       int k = localLayout.getLineForVertical(paramInt2);
       int j = i;
@@ -689,7 +690,7 @@ public class AnimationTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationTextView
  * JD-Core Version:    0.7.0.1
  */

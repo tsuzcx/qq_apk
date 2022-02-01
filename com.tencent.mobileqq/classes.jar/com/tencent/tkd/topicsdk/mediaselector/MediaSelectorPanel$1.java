@@ -17,8 +17,8 @@ public final class MediaSelectorPanel$1
 {
   public void onScroll(@Nullable AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramAbsListView = MediaSelectorPanel.a(this.a);
-    paramInt1 = MediaSelectorPanel.a(this.a).getChildCount();
+    paramAbsListView = MediaSelectorPanel.b(this.a);
+    paramInt1 = MediaSelectorPanel.b(this.a).getChildCount();
     boolean bool2 = true;
     paramAbsListView = paramAbsListView.getChildAt(paramInt1 - 1);
     Object localObject;
@@ -31,7 +31,7 @@ public final class MediaSelectorPanel$1
       {
         localObject = (MediaSelectorPanel.ListPhotoViewHolder)localObject;
         localMediaSelectorPanel = this.a;
-        if ((((MediaSelectorPanel.ListPhotoViewHolder)localObject).a() == this.a.a().size() - 1) && (paramAbsListView.getBottom() <= this.a.getHeight())) {
+        if ((((MediaSelectorPanel.ListPhotoViewHolder)localObject).e() == this.a.getMediaList().size() - 1) && (paramAbsListView.getBottom() <= this.a.getHeight())) {
           bool1 = true;
         } else {
           bool1 = false;
@@ -43,7 +43,7 @@ public final class MediaSelectorPanel$1
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.ListPhotoViewHolder");
       }
     }
-    paramAbsListView = MediaSelectorPanel.a(this.a).getChildAt(0);
+    paramAbsListView = MediaSelectorPanel.b(this.a).getChildAt(0);
     if (paramAbsListView != null)
     {
       localObject = paramAbsListView.getTag();
@@ -51,7 +51,7 @@ public final class MediaSelectorPanel$1
       {
         localObject = (MediaSelectorPanel.ListPhotoViewHolder)localObject;
         localMediaSelectorPanel = this.a;
-        if ((((MediaSelectorPanel.ListPhotoViewHolder)localObject).a() == 0) && (paramAbsListView.getTop() == 0)) {
+        if ((((MediaSelectorPanel.ListPhotoViewHolder)localObject).e() == 0) && (paramAbsListView.getTop() == 0)) {
           bool1 = bool2;
         } else {
           bool1 = false;
@@ -70,7 +70,7 @@ public final class MediaSelectorPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.1
  * JD-Core Version:    0.7.0.1
  */

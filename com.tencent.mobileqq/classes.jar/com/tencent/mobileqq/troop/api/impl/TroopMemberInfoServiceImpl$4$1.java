@@ -15,11 +15,11 @@ class TroopMemberInfoServiceImpl$4$1
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopApiImplTroopMemberInfoServiceImpl$4.this$0.mTmiCallBackRefMap;
+    Object localObject1 = this.b.this$0.mTmiCallBackRefMap;
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopApiImplTroopMemberInfoServiceImpl$4.a);
+    ((StringBuilder)localObject2).append(this.b.a);
     ((StringBuilder)localObject2).append("_");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqTroopApiImplTroopMemberInfoServiceImpl$4.b);
+    ((StringBuilder)localObject2).append(this.b.b);
     localObject1 = (List)((Map)localObject1).remove(((StringBuilder)localObject2).toString());
     if (QLog.isColorLevel())
     {
@@ -33,14 +33,14 @@ class TroopMemberInfoServiceImpl$4$1
     {
       localObject2 = (ITroopMemberInfoService.ITroopMemberInfoCallBack)((WeakReference)((Iterator)localObject1).next()).get();
       if (localObject2 != null) {
-        ((ITroopMemberInfoService.ITroopMemberInfoCallBack)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
+        ((ITroopMemberInfoService.ITroopMemberInfoCallBack)localObject2).a(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopMemberInfoServiceImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

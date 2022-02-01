@@ -10,7 +10,7 @@ import java.util.List;
 public class NearbyProfileDisplayPanel$AvatarGridViewAdapter
   extends BaseAdapter
 {
-  private List<PicInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<PicInfo> b = new ArrayList();
   
   public NearbyProfileDisplayPanel$AvatarGridViewAdapter(List<PicInfo> paramList, int paramInt)
   {
@@ -18,19 +18,19 @@ public class NearbyProfileDisplayPanel$AvatarGridViewAdapter
     int i = j;
     while ((i < paramInt.size()) && (i < j + 6))
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt.get(i));
+      this.b.add(paramInt.get(i));
       i += 1;
     }
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -40,12 +40,12 @@ public class NearbyProfileDisplayPanel$AvatarGridViewAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.a.a(paramInt, (PicInfo)this.b.get(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.AvatarGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -478,6 +478,9 @@ public class VACDReportServiceImpl
         this.mReportCacheThread.quit();
         this.mReportCacheThread = null;
       }
+      if (this.mWriteHandler != null) {
+        this.mWriteHandler.removeCallbacksAndMessages(null);
+      }
       if (this.mWriteThread != null)
       {
         this.mWriteThread.quit();
@@ -580,7 +583,7 @@ public class VACDReportServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.VACDReportServiceImpl
  * JD-Core Version:    0.7.0.1
  */

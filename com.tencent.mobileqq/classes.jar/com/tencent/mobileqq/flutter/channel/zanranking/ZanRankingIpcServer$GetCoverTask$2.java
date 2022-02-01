@@ -14,7 +14,7 @@ class ZanRankingIpcServer$GetCoverTask$2
     if ((paramBoolean) && ((paramObject instanceof Card)))
     {
       paramObject = (Card)paramObject;
-      String str = this.a.a.getString("uin");
+      String str = this.a.b.getString("uin");
       if (paramObject.uin.equals(str)) {
         ZanRankingIpcServer.GetCoverTask.a(this.a, paramObject, false);
       }
@@ -23,7 +23,7 @@ class ZanRankingIpcServer$GetCoverTask$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcServer.GetCoverTask.2
  * JD-Core Version:    0.7.0.1
  */

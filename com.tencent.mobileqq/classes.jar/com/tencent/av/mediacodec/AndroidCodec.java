@@ -154,7 +154,7 @@ public class AndroidCodec
   
   private static boolean checkMachinePower(String paramString, MediaCodecChipConfigInfo.ChipAbilityInfo paramChipAbilityInfo, HWCodecAbility paramHWCodecAbility)
   {
-    long l = paramChipAbilityInfo.jdField_a_of_type_Long;
+    long l = paramChipAbilityInfo.b;
     boolean bool = true;
     if (l == 1L)
     {
@@ -167,7 +167,7 @@ public class AndroidCodec
       printsDevelop(paramString, "H264 ENC FAIL");
       return false;
     }
-    if (paramChipAbilityInfo.jdField_a_of_type_Long == 4L)
+    if (paramChipAbilityInfo.b == 4L)
     {
       if (DeviceCheck.d())
       {
@@ -178,7 +178,7 @@ public class AndroidCodec
       printsDevelop(paramString, "H265 ENC FAIL");
       return false;
     }
-    if (paramChipAbilityInfo.jdField_a_of_type_Long == 2L)
+    if (paramChipAbilityInfo.b == 2L)
     {
       if (DeviceCheck.e())
       {
@@ -189,7 +189,7 @@ public class AndroidCodec
       printsDevelop(paramString, "H264 DEC FAIL");
       return false;
     }
-    if (paramChipAbilityInfo.jdField_a_of_type_Long == 8L)
+    if (paramChipAbilityInfo.b == 8L)
     {
       if (DeviceCheck.c())
       {
@@ -200,7 +200,7 @@ public class AndroidCodec
       printsDevelop(paramString, "H265 DEC FAIL");
       return false;
     }
-    if (paramChipAbilityInfo.jdField_a_of_type_Long == 0L) {
+    if (paramChipAbilityInfo.b == 0L) {
       bool = false;
     }
     return bool;
@@ -240,7 +240,7 @@ public class AndroidCodec
       return null;
     }
     localObject = new ArrayList();
-    if (AudioHelper.b()) {
+    if (AudioHelper.e()) {
       QLog.e(paramString, 1, "checkSupportHWCodecAbility start");
     }
     getDecoderAbility(paramString, paramContext, (ArrayList)localObject);
@@ -282,7 +282,7 @@ public class AndroidCodec
   
   public static void getChipHWCodecAbility(String paramString, ArrayList<HWCodecAbility> paramArrayList)
   {
-    Object localObject = MediaCodecChipConfigManager.a().a();
+    Object localObject = MediaCodecChipConfigManager.a().b();
     if ((localObject != null) && (!((MediaCodecChipConfigInfo)localObject).a().isEmpty()))
     {
       if (Build.VERSION.SDK_INT < 19) {
@@ -292,14 +292,14 @@ public class AndroidCodec
       while (((Iterator)localObject).hasNext())
       {
         MediaCodecChipConfigInfo.ChipAbilityInfo localChipAbilityInfo = (MediaCodecChipConfigInfo.ChipAbilityInfo)((Iterator)localObject).next();
-        if (localChipAbilityInfo.jdField_a_of_type_Boolean)
+        if (localChipAbilityInfo.c)
         {
           HWCodecAbility localHWCodecAbility = new HWCodecAbility();
           if (checkMachinePower(paramString, localChipAbilityInfo, localHWCodecAbility))
           {
             localHWCodecAbility.isHWCodec = true;
-            localHWCodecAbility.maxH = localChipAbilityInfo.b;
-            localHWCodecAbility.maxW = localChipAbilityInfo.jdField_a_of_type_Int;
+            localHWCodecAbility.maxH = localChipAbilityInfo.e;
+            localHWCodecAbility.maxW = localChipAbilityInfo.d;
             paramArrayList.add(localHWCodecAbility);
           }
         }
@@ -314,7 +314,7 @@ public class AndroidCodec
       if (DeviceCheck.e())
       {
         paramArrayList.add(new HWCodecAbility(1, true));
-        if (AudioHelper.b()) {
+        if (AudioHelper.e()) {
           QLog.w(paramString, 1, "checkSupportHWCodecAbility, 白名单, 支持H264解码");
         }
       }
@@ -325,7 +325,7 @@ public class AndroidCodec
     }
     else
     {
-      Object localObject = ConfigManager.a(paramContext);
+      Object localObject = ConfigManager.c(paramContext);
       paramContext = (ICodecConfigParser)QRoute.api(ICodecConfigParser.class);
       paramContext.init((IConfigParser)localObject);
       localObject = paramContext.getAVCDecoderAbility();
@@ -334,7 +334,7 @@ public class AndroidCodec
         if (DeviceCheck.e())
         {
           paramArrayList.add(localObject);
-          if (AudioHelper.b())
+          if (AudioHelper.e())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("checkSupportHWCodecAbility, 支持H264解码. maxW = ");
@@ -358,7 +358,7 @@ public class AndroidCodec
         if (DeviceCheck.c())
         {
           paramArrayList.add(paramContext);
-          if (AudioHelper.b())
+          if (AudioHelper.e())
           {
             paramArrayList = new StringBuilder();
             paramArrayList.append("checkSupportHWCodecAbility, 支持H265解码. maxW = ");
@@ -386,7 +386,7 @@ public class AndroidCodec
       if (DeviceCheck.f())
       {
         paramArrayList.add(new HWCodecAbility(2, true));
-        if (AudioHelper.b()) {
+        if (AudioHelper.e()) {
           QLog.w(paramString, 1, "checkSupportHWCodecAbility, 白名单, 支持H264编码");
         }
       }
@@ -397,7 +397,7 @@ public class AndroidCodec
     }
     else
     {
-      Object localObject = ConfigManager.a(paramContext);
+      Object localObject = ConfigManager.c(paramContext);
       paramContext = (ICodecConfigParser)QRoute.api(ICodecConfigParser.class);
       paramContext.init((IConfigParser)localObject);
       localObject = paramContext.getAVCEncoderAbility();
@@ -406,7 +406,7 @@ public class AndroidCodec
         if (DeviceCheck.f())
         {
           paramArrayList.add(localObject);
-          if (AudioHelper.b())
+          if (AudioHelper.e())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("checkSupportHWCodecAbility, 支持H264编码. maxW = ");
@@ -430,7 +430,7 @@ public class AndroidCodec
         if (DeviceCheck.d())
         {
           paramArrayList.add(paramContext);
-          if (AudioHelper.b())
+          if (AudioHelper.e())
           {
             paramArrayList = new StringBuilder();
             paramArrayList.append("checkSupportHWCodecAbility, 支持H265编码. maxW = ");
@@ -715,14 +715,14 @@ public class AndroidCodec
       {
         if (this.mMediaCodec == null)
         {
-          if (AudioHelper.b()) {
+          if (AudioHelper.e()) {
             QLog.e(this.mTAG, 1, "dequeueDecoderOutputBuffer mMediaCodec is null");
           }
           return null;
         }
         if (this.mCodecType != DEC_CODEC)
         {
-          if (AudioHelper.b()) {
+          if (AudioHelper.e()) {
             QLog.e(this.mTAG, 1, "dequeueDecoderOutputBuffer mCodecType isn't Decoder");
           }
           return null;
@@ -804,7 +804,7 @@ public class AndroidCodec
         i = this.mOutputFormat.getInteger("color-format");
         mOutputFormatForReport = i;
         l1 = l2;
-        if (!AudioHelper.b()) {
+        if (!AudioHelper.e()) {
           continue;
         }
         localObject2 = this.mTAG;
@@ -822,12 +822,12 @@ public class AndroidCodec
         continue;
       }
       l1 = l2;
-      if (AudioHelper.b())
+      if (AudioHelper.e())
       {
         QLog.e(this.mTAG, 1, "dequeueDecoderOutputBuffer Exception,INFO_OUTPUT_FORMAT_CHANGED");
         l1 = l2;
         continue;
-        if (AudioHelper.b()) {
+        if (AudioHelper.e()) {
           QLog.e(this.mTAG, 1, "dequeueDecoderOutputBuffer INFO_OUTPUT_BUFFERS_CHANGED");
         }
         this.outputBuffers = this.mMediaCodec.getOutputBuffers();
@@ -855,7 +855,7 @@ public class AndroidCodec
         {
           if (i != -1)
           {
-            if (AudioHelper.b())
+            if (AudioHelper.e())
             {
               String str2 = this.mTAG;
               StringBuilder localStringBuilder2 = new StringBuilder();
@@ -898,7 +898,7 @@ public class AndroidCodec
             }
             return null;
           }
-          if (AudioHelper.b()) {
+          if (AudioHelper.e()) {
             QLog.e(this.mTAG, 1, "dequeueOutputBuffer, INFO_TRY_AGAIN_LATER");
           }
           ((BufferData)localObject1).index = -1;
@@ -916,7 +916,7 @@ public class AndroidCodec
             try
             {
               i = this.mOutputFormat.getInteger("color-format");
-              if (!AudioHelper.b()) {
+              if (!AudioHelper.e()) {
                 break label558;
               }
               localObject1 = this.mTAG;
@@ -930,13 +930,13 @@ public class AndroidCodec
             }
             catch (Exception localException)
             {
-              if (!AudioHelper.b()) {
+              if (!AudioHelper.e()) {
                 break label558;
               }
             }
             QLog.e(this.mTAG, 1, "dequeueOutputBuffer, INFO_OUTPUT_FORMAT_CHANGED, Exception", localException);
           }
-          else if (AudioHelper.b())
+          else if (AudioHelper.e())
           {
             str1 = this.mTAG;
             localStringBuilder1 = new StringBuilder();
@@ -946,7 +946,7 @@ public class AndroidCodec
             QLog.w(str1, 1, localStringBuilder1.toString());
           }
         }
-        else if (AudioHelper.b())
+        else if (AudioHelper.e())
         {
           QLog.e(this.mTAG, 1, "dequeueOutputBuffer, INFO_OUTPUT_FORMAT_CHANGED, null");
         }
@@ -955,7 +955,7 @@ public class AndroidCodec
       {
         this.outputBuffers = this.mMediaCodec.getOutputBuffers();
         str1.index = -3;
-        if (AudioHelper.b()) {
+        if (AudioHelper.e()) {
           QLog.e(this.mTAG, 1, "dequeueOutputBuffer, INFO_OUTPUT_BUFFERS_CHANGED");
         }
       }
@@ -1029,7 +1029,7 @@ public class AndroidCodec
     }
     catch (Exception localException)
     {
-      if (AudioHelper.b()) {
+      if (AudioHelper.e()) {
         QLog.e(this.mTAG, 1, "invoke getInputBuffer exception", localException);
       }
     }
@@ -1045,7 +1045,7 @@ public class AndroidCodec
     }
     catch (Exception localException)
     {
-      if (AudioHelper.b()) {
+      if (AudioHelper.e()) {
         QLog.e(this.mTAG, 1, "invoke getOutputBuffer exception", localException);
       }
     }
@@ -1061,7 +1061,7 @@ public class AndroidCodec
     }
     catch (Exception localException)
     {
-      if (AudioHelper.b()) {
+      if (AudioHelper.e()) {
         QLog.e(this.mTAG, 1, "invoke getOutputFormat exception", localException);
       }
     }
@@ -1210,7 +1210,7 @@ public class AndroidCodec
       }
       catch (Exception localException)
       {
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           String str = this.mTAG;
           StringBuilder localStringBuilder = new StringBuilder();
@@ -1282,7 +1282,7 @@ public class AndroidCodec
         }
         catch (Exception paramMediaCodec)
         {
-          if (AudioHelper.b()) {
+          if (AudioHelper.e()) {
             QLog.w(this.mTAG, 1, "setMediaCodecCallback, Exception", paramMediaCodec);
           }
         }

@@ -10,12 +10,12 @@ class QZoneVideoDownloadActivity$2
   
   public void run()
   {
-    QQToast.a(this.this$0.getApplicationContext(), HardCodeUtil.a(2131712476), 1).a();
+    QQToast.makeText(this.this$0.getApplicationContext(), HardCodeUtil.a(2131910066), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QZoneVideoDownloadActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class WSFollowFriendFeedAdapter
   {
     WSFollowAdapter localWSFollowAdapter = this.a;
     if (localWSFollowAdapter != null) {
-      return localWSFollowAdapter.a();
+      return localWSFollowAdapter.f();
     }
     return null;
   }
@@ -36,7 +36,7 @@ public class WSFollowFriendFeedAdapter
     if (bool)
     {
       WSFollowAdapter localWSFollowAdapter = this.a;
-      if ((localWSFollowAdapter != null) && (localWSFollowAdapter.a().getUserVisibleHint()) && (this.a.a().isResumed())) {
+      if ((localWSFollowAdapter != null) && (localWSFollowAdapter.g().getUserVisibleHint()) && (this.a.g().isResumed())) {
         ((WSFollowFriendFeedHolder)paramBaseViewHolder).b();
       }
     }
@@ -74,7 +74,7 @@ public class WSFollowFriendFeedAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.vas;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/weishi_new/verticalvideo/vas/VasAdvWSVerticalClickAreaId;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "AD_ICON", "HOST_AVATAR", "HOST_NAME", "AD_DESCRIPTION", "AD_IMAGE", "AD_VIDEO", "AD_BUTTON", "INDUSTRY_LABEL", "NEGATIVE_FEEDBACK", "COUNTDOWN_WIDGET", "MARKETING_PENDANT_WIDGET", "DANMAKU_WIDGET", "OTHERS", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/weishi_new/verticalvideo/vas/VasAdvWSVerticalClickAreaId;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "AD_ICON", "HOST_AVATAR", "HOST_NAME", "AD_DESCRIPTION", "AD_IMAGE", "AD_VIDEO", "AD_BUTTON", "INDUSTRY_LABEL", "NEGATIVE_FEEDBACK", "COUNTDOWN_WIDGET", "MARKETING_PENDANT_WIDGET", "DANMAKU_WIDGET", "OTHERS", "qqweishi_impl_release"}, k=1, mv={1, 1, 16})
 public enum VasAdvWSVerticalClickAreaId
 {
   private final int value;
@@ -50,7 +50,7 @@ public enum VasAdvWSVerticalClickAreaId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.vas.VasAdvWSVerticalClickAreaId
  * JD-Core Version:    0.7.0.1
  */

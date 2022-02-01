@@ -14,11 +14,6 @@ public class WSOpenWeiShiHelper
 {
   private static WSOpenWeiShiHelper a;
   
-  private long a(int paramInt)
-  {
-    return paramInt * 24 * 60 * 60 * 1000;
-  }
-  
   private WSOnDialogItemClickListener a(@NonNull Context paramContext, @NonNull WSReportParams paramWSReportParams)
   {
     return new WSOpenWeiShiHelper.1(this, paramWSReportParams, paramContext);
@@ -50,7 +45,7 @@ public class WSOpenWeiShiHelper
   private boolean a(long paramLong1, long paramLong2, int paramInt)
   {
     boolean bool;
-    if (paramLong1 >= a(paramInt) + paramLong2) {
+    if (paramLong1 >= b(paramInt) + paramLong2) {
       bool = true;
     } else {
       bool = false;
@@ -66,6 +61,11 @@ public class WSOpenWeiShiHelper
     localStringBuilder.append(paramInt);
     WSLog.e("WSOpenWeiShiHelper", localStringBuilder.toString());
     return bool;
+  }
+  
+  private long b(int paramInt)
+  {
+    return paramInt * 24 * 60 * 60 * 1000;
   }
   
   private void b(@NonNull Context paramContext, @NonNull WSOpenWeiShiData paramWSOpenWeiShiData, @NonNull WSReportParams paramWSReportParams)
@@ -89,13 +89,13 @@ public class WSOpenWeiShiHelper
       if (paramWSReportParams == null) {
         return;
       }
-      localObject = WSSharePreferencesUtil.a("key_last_open_ws_action", "");
+      localObject = WSSharePreferencesUtil.b("key_last_open_ws_action", "");
       WSLastAction localWSLastAction = WSLastAction.a((String)localObject);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkIfNeedShowOpenWeiShiDialog() lastActionSpString = ");
       localStringBuilder.append((String)localObject);
       WSLog.e("WSOpenWeiShiHelper", localStringBuilder.toString());
-      if ((localWSLastAction.a() != 0) && (localWSLastAction.a() != 0L))
+      if ((localWSLastAction.a() != 0) && (localWSLastAction.b() != 0L))
       {
         long l = System.currentTimeMillis();
         int i = localWSLastAction.a();
@@ -104,19 +104,19 @@ public class WSOpenWeiShiHelper
           if (i != 2) {
             return;
           }
-          if (a(l, localWSLastAction.a(), paramWSOpenWeiShiData.a()))
+          if (a(l, localWSLastAction.b(), paramWSOpenWeiShiData.a()))
           {
             b(paramContext, paramWSOpenWeiShiData, paramWSReportParams);
             return;
           }
           return;
         }
-        if (a(l, localWSLastAction.a(), paramWSOpenWeiShiData.b()))
+        if (a(l, localWSLastAction.b(), paramWSOpenWeiShiData.b()))
         {
           b(paramContext, paramWSOpenWeiShiData, paramWSReportParams);
           return;
         }
-        a(paramContext, paramWSOpenWeiShiData.e());
+        a(paramContext, paramWSOpenWeiShiData.g());
         return;
       }
       b(paramContext, paramWSOpenWeiShiData, paramWSReportParams);
@@ -125,7 +125,7 @@ public class WSOpenWeiShiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.openws.WSOpenWeiShiHelper
  * JD-Core Version:    0.7.0.1
  */

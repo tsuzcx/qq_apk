@@ -15,14 +15,14 @@ class QIMProviderContainerView$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.c.setVisibility(0);
+    this.a.f.setVisibility(0);
     QIMProviderContainerView.a(this.a, true);
-    QIMProviderContainerView.a(this.a);
+    QIMProviderContainerView.c(this.a);
     if (QLog.isColorLevel())
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("panelOpened : ");
-      paramAnimator.append(QIMProviderContainerView.a(this.a));
+      paramAnimator.append(QIMProviderContainerView.d(this.a));
       QLog.d("ProviderContainerView", 2, paramAnimator.toString());
     }
   }
@@ -31,12 +31,12 @@ class QIMProviderContainerView$2
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.a.setVisibility(0);
+    this.a.b.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMProviderContainerView.2
  * JD-Core Version:    0.7.0.1
  */

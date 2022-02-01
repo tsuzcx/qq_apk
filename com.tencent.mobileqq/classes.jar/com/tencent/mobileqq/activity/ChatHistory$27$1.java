@@ -18,17 +18,17 @@ class ChatHistory$27$1
   
   protected Object a(MessageRecord... paramVarArgs)
   {
-    if (this.a.a.d)
+    if (this.a.c.R)
     {
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(paramVarArgs[0], true);
+      if (this.a.c.Q != null) {
+        this.a.c.Q.a(paramVarArgs[0], true);
       }
     }
     else {
-      this.a.a.app.getMessageFacade().a(paramVarArgs[0], true);
+      this.a.c.app.getMessageFacade().a(paramVarArgs[0], true);
     }
     if ((paramVarArgs[0] instanceof IMessageForApollo)) {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.a.app, "chat_history_start_del_msg");
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.c.app, "chat_history_start_del_msg");
     }
     return null;
   }
@@ -36,18 +36,18 @@ class ChatHistory$27$1
   protected void onPostExecute(Object paramObject)
   {
     super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.a.c.W.removeMessages(1);
+    if ((this.a.c.V != null) && (this.a.c.V.isShowing())) {
+      this.a.c.V.dismiss();
     }
-    if (this.a.a.d) {
-      this.a.a.a(11, false);
+    if (this.a.c.R) {
+      this.a.c.a(11, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.27.1
  * JD-Core Version:    0.7.0.1
  */

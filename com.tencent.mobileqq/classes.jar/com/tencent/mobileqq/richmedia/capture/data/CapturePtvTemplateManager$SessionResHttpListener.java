@@ -14,41 +14,41 @@ import java.util.Iterator;
 class CapturePtvTemplateManager$SessionResHttpListener
   implements INetEngineListener
 {
-  CapturePtvTemplateManager.DLItem jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem;
-  CapturePtvTemplateManager.DLSession jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession;
+  CapturePtvTemplateManager.DLSession a;
+  CapturePtvTemplateManager.DLItem b;
   
   public void onResp(NetResp paramNetResp)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, String.format("SessionResHttpListener respCode[%s], resName[%s], resUrl[%s]", new Object[] { Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.c }));
+      QLog.i("CapturePtvTemplateManager", 2, String.format("SessionResHttpListener respCode[%s], resName[%s], resUrl[%s]", new Object[] { Integer.valueOf(paramNetResp.mHttpCode), this.b.a, this.b.c }));
     }
     paramNetResp = (CapturePtvTemplateManager.DLItem)paramNetResp.mReq.getUserData();
     if (paramNetResp == null) {
       return;
     }
     Object localObject;
-    if (paramNetResp.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString))
+    if (paramNetResp.a.equals(this.b.a))
     {
-      if (CapturePtvTemplateManager.b(paramNetResp.jdField_a_of_type_JavaLangString, paramNetResp.jdField_b_of_type_JavaLangString, false)) {
+      if (CapturePtvTemplateManager.b(paramNetResp.a, paramNetResp.b, false)) {
         try
         {
-          ZipUtils.unZipFile(new File(CapturePtvTemplateManager.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString), CapturePtvTemplateManager.jdField_a_of_type_JavaLangString);
+          ZipUtils.unZipFile(new File(CapturePtvTemplateManager.d, this.b.a), CapturePtvTemplateManager.b);
         }
         catch (IOException localIOException)
         {
           localIOException.printStackTrace();
         }
       }
-      if (!paramNetResp.jdField_b_of_type_Boolean)
+      if (!paramNetResp.e)
       {
-        paramNetResp = (CapturePtvTemplateManager.BusinessParam)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a));
+        paramNetResp = (CapturePtvTemplateManager.BusinessParam)this.c.n.get(Integer.valueOf(this.a.d));
         if (paramNetResp != null)
         {
-          paramNetResp = paramNetResp.b.iterator();
+          paramNetResp = paramNetResp.c.iterator();
           while (paramNetResp.hasNext())
           {
             localObject = (CapturePtvTemplateManager.DLSession)paramNetResp.next();
-            if (CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, (CapturePtvTemplateManager.DLSession)localObject, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem)) {
+            if (CapturePtvTemplateManager.a(this.c, (CapturePtvTemplateManager.DLSession)localObject, this.b)) {
               paramNetResp.remove();
             }
           }
@@ -57,24 +57,24 @@ class CapturePtvTemplateManager$SessionResHttpListener
         {
           paramNetResp = new StringBuilder();
           paramNetResp.append("SessionResHttpListener[onResp]: BusinessParam=null  kind=");
-          paramNetResp.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a);
+          paramNetResp.append(this.a.d);
           paramNetResp.append(" mItem.mName=");
-          paramNetResp.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
+          paramNetResp.append(this.b.a);
           QLog.e("CapturePtvTemplateManager", 2, paramNetResp.toString());
         }
       }
       else
       {
-        CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem);
+        CapturePtvTemplateManager.a(this.c, this.a, this.b);
       }
     }
     else if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("SessionResHttpListener[onResp]: download information no match current=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b.a);
       ((StringBuilder)localObject).append(" callback=");
-      ((StringBuilder)localObject).append(paramNetResp.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramNetResp.a);
       QLog.e("CapturePtvTemplateManager", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -86,30 +86,30 @@ class CapturePtvTemplateManager$SessionResHttpListener
       return;
     }
     Object localObject;
-    if (paramNetReq.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString))
+    if (paramNetReq.a.equalsIgnoreCase(this.b.a))
     {
-      localObject = (CapturePtvTemplateManager.BusinessParam)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a));
+      localObject = (CapturePtvTemplateManager.BusinessParam)this.c.n.get(Integer.valueOf(this.a.d));
       if (localObject != null)
       {
-        if (!paramNetReq.jdField_b_of_type_Boolean)
+        if (!paramNetReq.e)
         {
-          paramNetReq = ((CapturePtvTemplateManager.BusinessParam)localObject).b.iterator();
+          paramNetReq = ((CapturePtvTemplateManager.BusinessParam)localObject).c.iterator();
           while (paramNetReq.hasNext())
           {
             localObject = (CapturePtvTemplateManager.DLSession)paramNetReq.next();
-            CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, (CapturePtvTemplateManager.DLSession)localObject, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem, paramLong1, paramLong2);
+            CapturePtvTemplateManager.a(this.c, (CapturePtvTemplateManager.DLSession)localObject, this.b, paramLong1, paramLong2);
           }
         }
-        CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem, paramLong1, paramLong2);
+        CapturePtvTemplateManager.a(this.c, this.a, this.b, paramLong1, paramLong2);
         return;
       }
       if (QLog.isColorLevel())
       {
         paramNetReq = new StringBuilder();
         paramNetReq.append("SessionResHttpListener[Progress]: BusinessParam=null  kind=");
-        paramNetReq.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLSession.a);
+        paramNetReq.append(this.a.d);
         paramNetReq.append(" mItem.mName=");
-        paramNetReq.append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
+        paramNetReq.append(this.b.a);
         QLog.e("CapturePtvTemplateManager", 2, paramNetReq.toString());
       }
     }
@@ -117,16 +117,16 @@ class CapturePtvTemplateManager$SessionResHttpListener
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("SessionResHttpListener[Progress]: download information no match current=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$DLItem.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b.a);
       ((StringBuilder)localObject).append(" callback=");
-      ((StringBuilder)localObject).append(paramNetReq.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramNetReq.a);
       QLog.e("CapturePtvTemplateManager", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.SessionResHttpListener
  * JD-Core Version:    0.7.0.1
  */

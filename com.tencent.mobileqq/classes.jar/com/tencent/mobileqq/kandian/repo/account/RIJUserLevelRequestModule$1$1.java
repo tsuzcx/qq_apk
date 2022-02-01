@@ -10,12 +10,12 @@ class RIJUserLevelRequestModule$1$1
   
   public void a(ReadInJoyObserver paramReadInJoyObserver)
   {
-    paramReadInJoyObserver.a(this.a.jdField_a_of_type_TencentImOidbCmd0xef9Oidb_cmd0xef9$PrivilegeRspBody, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
+    paramReadInJoyObserver.a(this.a.a, this.a.b, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.account.RIJUserLevelRequestModule.1.1
  * JD-Core Version:    0.7.0.1
  */

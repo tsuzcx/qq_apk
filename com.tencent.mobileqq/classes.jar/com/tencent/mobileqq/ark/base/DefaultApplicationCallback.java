@@ -26,10 +26,10 @@ public class DefaultApplicationCallback
     if (localBaseApplication == null) {
       return;
     }
-    a(localBaseApplication.getString(2131690169));
+    b(localBaseApplication.getString(2131887068));
   }
   
-  protected static void a(String paramString)
+  protected static void b(String paramString)
   {
     ArkDispatchTask.getInstance().postToMainThread(new DefaultApplicationCallback.1(paramString));
   }
@@ -59,6 +59,7 @@ public class DefaultApplicationCallback
       localStringBuilder.append(",url=");
       localStringBuilder.append(Util.b(paramString, new String[0]));
       QLog.i("ArkApp.ApplicationCallback", 1, localStringBuilder.toString());
+      ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportResourceURLAccess(paramApplication, paramString, i, 0, "");
       return true;
     }
     if (!a(paramApplication))
@@ -110,7 +111,7 @@ public class DefaultApplicationCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.base.DefaultApplicationCallback
  * JD-Core Version:    0.7.0.1
  */

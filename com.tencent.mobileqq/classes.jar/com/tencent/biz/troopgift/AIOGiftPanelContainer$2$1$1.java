@@ -28,14 +28,14 @@ class AIOGiftPanelContainer$2$1$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDone, time=");
-      ((StringBuilder)localObject).append(l - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(l - this.a);
       ((StringBuilder)localObject).append(", total=");
-      ((StringBuilder)localObject).append(l - this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(l - this.d.d.a);
       QLog.d("TroopGiftPanel.time", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramDownloadTask.jdField_a_of_type_Int == 0)
+    if (paramDownloadTask.c == 0)
     {
-      localObject = paramDownloadTask.a().getString("filePath");
+      localObject = paramDownloadTask.b().getString("filePath");
       try
       {
         paramDownloadTask = new File((String)localObject);
@@ -51,18 +51,18 @@ class AIOGiftPanelContainer$2$1$1
         }
         if (!TextUtils.isEmpty(str))
         {
-          localObject = new TroopGiftAioPanelData(new JSONObject(str), this.jdField_a_of_type_JavaLangString);
-          ((TroopGiftAioPanelData)localObject).a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData = ((TroopGiftAioPanelData)localObject);
-          this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(false);
-          if (!this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {
-            this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_AndroidOsHandler.post(new AIOGiftPanelContainer.2.1.1.1(this));
+          localObject = new TroopGiftAioPanelData(new JSONObject(str), this.b);
+          ((TroopGiftAioPanelData)localObject).a(this.d.d.this$0.b.e, this.d.d.b);
+          this.d.d.this$0.f = ((TroopGiftAioPanelData)localObject);
+          this.d.a.a(this.c, this.d.d.b);
+          this.d.a.a(false);
+          if (!this.d.d.this$0.b.f.isFinishing()) {
+            this.d.d.this$0.d.post(new AIOGiftPanelContainer.2.1.1.1(this));
           }
           paramDownloadTask.deleteOnExit();
         }
-        AIOGiftPanelContainer.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
-        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
+        AIOGiftPanelContainer.a(this.d.d.this$0, true);
+        this.d.d.this$0.a(0);
         return;
       }
       catch (JSONException paramDownloadTask)
@@ -85,9 +85,9 @@ class AIOGiftPanelContainer$2$1$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onError() time =  ");
-      ((StringBuilder)localObject).append(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2$1.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - this.d.b);
       ((StringBuilder)localObject).append(", errorCode = ");
-      ((StringBuilder)localObject).append(paramDownloadTask.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(paramDownloadTask.c);
       QLog.d("AIOGiftPanelContainer", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -99,7 +99,7 @@ class AIOGiftPanelContainer$2$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.AIOGiftPanelContainer.2.1.1
  * JD-Core Version:    0.7.0.1
  */

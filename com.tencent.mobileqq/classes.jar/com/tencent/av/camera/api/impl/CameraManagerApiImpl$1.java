@@ -18,7 +18,7 @@ class CameraManagerApiImpl$1
   public void handleMessage(Message paramMessage)
   {
     long l = SeqUtil.a(paramMessage.obj);
-    boolean bool2 = QQAudioHelper.c();
+    boolean bool2 = QQAudioHelper.f();
     boolean bool1 = true;
     if (bool2)
     {
@@ -65,7 +65,7 @@ class CameraManagerApiImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.camera.api.impl.CameraManagerApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

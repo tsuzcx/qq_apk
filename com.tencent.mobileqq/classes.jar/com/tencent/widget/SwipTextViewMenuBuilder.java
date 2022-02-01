@@ -12,7 +12,7 @@ public abstract class SwipTextViewMenuBuilder
   public static final int TAG_MENU_STR_ID = -2;
   public static final int TAG_POSITION = -1;
   public static final String TAG_SWIP_ICON_MENU_ITEM = "tag_swip_icon_menu_item";
-  protected final int[] MENU_BG_IDS;
+  protected int[] MENU_BG_IDS;
   protected final int MENU_HEIGHT;
   protected final int[] MENU_IDS;
   protected final int[] MENU_STR_IDS;
@@ -36,6 +36,11 @@ public abstract class SwipTextViewMenuBuilder
     paramContext.setTextSize(16.0F);
     paramContext.setTextColor(-1);
     return paramContext;
+  }
+  
+  public void setMENU_BG_IDS(int[] paramArrayOfInt)
+  {
+    this.MENU_BG_IDS = paramArrayOfInt;
   }
   
   public View updateRightMenuItem(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
@@ -80,7 +85,7 @@ public abstract class SwipTextViewMenuBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.SwipTextViewMenuBuilder
  * JD-Core Version:    0.7.0.1
  */

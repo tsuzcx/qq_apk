@@ -18,9 +18,9 @@ class TroopEssenceMsgManager$2
     if (paramMessageRecord == null) {
       return;
     }
-    if ((this.a.a != null) && (paramMessageRecord.istroop == 1))
+    if ((this.a.g != null) && (paramMessageRecord.istroop == 1))
     {
-      if (!this.a.a.contains(new TroopEssenceMsgManager.WaittingEssenceMsgItem(this.a, paramMessageRecord.frienduin, paramMessageRecord.uniseq))) {
+      if (!this.a.g.contains(new TroopEssenceMsgManager.WaittingEssenceMsgItem(this.a, paramMessageRecord.frienduin, paramMessageRecord.uniseq))) {
         return;
       }
       TroopEssenceMsgItem localTroopEssenceMsgItem = new TroopEssenceMsgItem();
@@ -39,13 +39,13 @@ class TroopEssenceMsgManager$2
       localTroopEssenceMsgItem.opType = 1;
       localTroopEssenceMsgItem.msgType = TroopEssenceUtil.a(TroopEssenceMsgManager.a(this.a), (ChatMessage)paramMessageRecord);
       this.a.a(localTroopEssenceMsgItem, 2);
-      this.a.a.remove(new TroopEssenceMsgManager.WaittingEssenceMsgItem(this.a, paramMessageRecord.frienduin, paramMessageRecord.uniseq));
+      this.a.g.remove(new TroopEssenceMsgManager.WaittingEssenceMsgItem(this.a, paramMessageRecord.frienduin, paramMessageRecord.uniseq));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

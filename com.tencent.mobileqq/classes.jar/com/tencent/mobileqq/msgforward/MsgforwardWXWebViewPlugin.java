@@ -21,7 +21,7 @@ public class MsgforwardWXWebViewPlugin
       }
       if (this.mRuntime != null)
       {
-        if (this.mRuntime.a() == null) {
+        if (this.mRuntime.d() == null) {
           return false;
         }
         if (("showForwardToWXMsg".equalsIgnoreCase(paramString3)) && (paramVarArgs != null)) {
@@ -49,7 +49,7 @@ public class MsgforwardWXWebViewPlugin
     }
     QLog.e("MsgforwardWXWebViewPlugin", 1, "MsgforwardWXWebViewPlugin get resid exception!");
     paramJsBridgeListener = "0";
-    paramString1 = this.mRuntime.a();
+    paramString1 = this.mRuntime.d();
     l = paramJsBridgeListener.hashCode();
     paramString2 = new Intent(paramString1, MultiForwardActivity.class);
     paramString2.putExtra("chat_subType", 3);
@@ -65,7 +65,7 @@ public class MsgforwardWXWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.MsgforwardWXWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

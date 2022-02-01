@@ -13,11 +13,6 @@ public abstract class BaseLocalStickerRecEmoticon
 {
   private boolean a;
   
-  public URLDrawable.URLDrawableOptions a()
-  {
-    return URLDrawable.URLDrawableOptions.obtain();
-  }
-  
   public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
     if (paramURL == null) {
@@ -26,39 +21,44 @@ public abstract class BaseLocalStickerRecEmoticon
     return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
   }
   
-  public String a()
-  {
-    return null;
-  }
-  
   public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
     this.a = true;
   }
   
-  public boolean a()
+  public boolean b()
   {
     return true;
   }
   
-  public String b()
+  public URLDrawable.URLDrawableOptions c()
   {
-    return null;
+    return URLDrawable.URLDrawableOptions.obtain();
   }
   
-  public boolean b()
+  public boolean d()
   {
     return this.a;
   }
   
-  public boolean c()
+  public String e()
+  {
+    return null;
+  }
+  
+  public String f()
+  {
+    return null;
+  }
+  
+  public boolean g()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.BaseLocalStickerRecEmoticon
  * JD-Core Version:    0.7.0.1
  */

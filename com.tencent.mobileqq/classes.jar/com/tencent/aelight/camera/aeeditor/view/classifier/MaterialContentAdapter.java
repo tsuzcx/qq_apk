@@ -35,21 +35,21 @@ import mqq.os.MqqHandler;
 public abstract class MaterialContentAdapter
   extends RecyclerView.Adapter<MaterialContentAdapter.ContentItemVH>
 {
-  private final int jdField_a_of_type_Int;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private ApplyMaterialTask jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask;
-  private MaterialContentAdapter.ItemListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter$ItemListener;
-  private QQToast.IToastValidListener jdField_a_of_type_ComTencentMobileqqWidgetQQToast$IToastValidListener;
-  private List<MetaMaterial> jdField_a_of_type_JavaUtilList;
   protected boolean a;
-  private int b = -1;
-  private int c;
-  private final int d;
-  private final int e;
-  private final int f;
-  private final int g;
+  private final int b;
+  private RecyclerView c;
+  private List<MetaMaterial> d;
+  private int e = -1;
+  private int f;
+  private ApplyMaterialTask g;
+  private MaterialContentAdapter.ItemListener h;
+  private QQToast.IToastValidListener i;
+  private final int j;
+  private final int k;
+  private final int l;
+  private final int m;
   @DrawableRes
-  private final int h;
+  private final int n;
   
   public MaterialContentAdapter(@NonNull Context paramContext, int paramInt)
   {
@@ -58,28 +58,28 @@ public abstract class MaterialContentAdapter
   
   public MaterialContentAdapter(@NonNull Context paramContext, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.d = AIOUtils.b(12.0F, paramContext.getResources());
-    this.e = AIOUtils.b(6.0F, paramContext.getResources());
-    this.f = AIOUtils.b(2.0F, paramContext.getResources());
-    this.g = AIOUtils.b(16.0F, paramContext.getResources());
+    this.b = paramInt2;
+    this.d = new ArrayList();
+    this.j = AIOUtils.b(12.0F, paramContext.getResources());
+    this.k = AIOUtils.b(6.0F, paramContext.getResources());
+    this.l = AIOUtils.b(2.0F, paramContext.getResources());
+    this.m = AIOUtils.b(16.0F, paramContext.getResources());
     if (paramInt1 != 2)
     {
-      this.h = 2064056481;
+      this.n = 2130853651;
       return;
     }
-    this.h = 2064056480;
+    this.n = 2063925448;
   }
   
   private void a(@NonNull MetaMaterial paramMetaMaterial, String paramString)
   {
     if (paramMetaMaterial != null)
     {
-      long l = AEQCircleReport.a().a(paramMetaMaterial.id);
-      if (l > 0L)
+      long l1 = AEQCircleReport.a().b(paramMetaMaterial.id);
+      if (l1 > 0L)
       {
-        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).P_MATERIAL_DOWNLOAD_FINISH(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT1(), paramMetaMaterial.id), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT3(), String.valueOf(l)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).KEY_RET_CODE(), paramString) }));
+        ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).pMaterialDownloadFinish(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext1(), paramMetaMaterial.id), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext3(), String.valueOf(l1)), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).keyRetCode(), paramString) }));
         return;
       }
       AEQLog.b("MaterialContentAdapter", "reportMaterialDownloadCost time < 0");
@@ -89,7 +89,7 @@ public abstract class MaterialContentAdapter
   private void a(ApplyMaterialTask.Status paramStatus, int paramInt, MetaMaterial paramMetaMaterial)
   {
     ApplyMaterialTaskHelper.a("onPostDownloadMaterial", paramMetaMaterial, "start");
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask.a(paramStatus, paramInt, paramMetaMaterial, new MaterialContentAdapter.3(this, paramMetaMaterial, paramStatus, paramInt));
+    this.g.a(paramStatus, paramInt, paramMetaMaterial, new MaterialContentAdapter.3(this, paramMetaMaterial, paramStatus, paramInt));
   }
   
   private void b(int paramInt, MetaMaterial paramMetaMaterial)
@@ -97,23 +97,23 @@ public abstract class MaterialContentAdapter
     if (paramMetaMaterial == null) {
       return;
     }
-    if (paramInt == this.b) {
+    if (paramInt == this.e) {
       return;
     }
-    this.c = paramInt;
+    this.f = paramInt;
     c(paramInt, paramMetaMaterial);
   }
   
   private void c(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask == null) {
+    if (this.g == null) {
       return;
     }
     ApplyMaterialTaskHelper.a("onPreExecute", paramMetaMaterial, "start");
     if (paramMetaMaterial != null) {
       AEQCircleReport.a().a(paramMetaMaterial.id);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask.a(paramInt, paramMetaMaterial, new MaterialContentAdapter.2(this, paramMetaMaterial, paramInt));
+    this.g.a(paramInt, paramMetaMaterial, new MaterialContentAdapter.2(this, paramMetaMaterial, paramInt));
   }
   
   private void d(int paramInt, MetaMaterial paramMetaMaterial)
@@ -122,16 +122,15 @@ public abstract class MaterialContentAdapter
     ThreadManager.getUIHandler().post(new MaterialContentAdapter.4(this, paramInt));
   }
   
-  public int a()
-  {
-    return this.b;
-  }
-  
   protected abstract MaterialContentAdapter.ContentItemVH a(ViewGroup paramViewGroup, int paramInt);
   
-  public List<MetaMaterial> a()
+  public Boolean a(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
+    if ((localList != null) && (localList.size() > paramInt) && (paramInt >= 0) && (!TextUtils.isEmpty(paramString))) {
+      return Boolean.valueOf(((MetaMaterial)this.d.get(paramInt)).id.equals(paramString));
+    }
+    return Boolean.valueOf(false);
   }
   
   public void a(int paramInt, MetaMaterial paramMetaMaterial)
@@ -149,94 +148,94 @@ public abstract class MaterialContentAdapter
       localStringBuilder.append(paramInt);
       QLog.i("MaterialContentAdapter", 2, localStringBuilder.toString());
     }
-    if ((paramInt >= 0) && ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager() instanceof LinearLayoutManager))) {
-      if (((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager()).getOrientation() == 0) {
-        AdapterUtil.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.b, paramInt, paramBoolean, false);
+    if ((paramInt >= 0) && ((this.c.getLayoutManager() instanceof LinearLayoutManager))) {
+      if (((LinearLayoutManager)this.c.getLayoutManager()).getOrientation() == 0) {
+        AdapterUtil.a(this.c, this.e, paramInt, paramBoolean, false);
       } else {
-        AdapterUtil.b(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.b, paramInt, paramBoolean, false);
+        AdapterUtil.b(this.c, this.e, paramInt, paramBoolean, false);
       }
     }
-    this.b = paramInt;
+    this.e = paramInt;
     notifyDataSetChanged();
   }
   
   public void a(ApplyMaterialTask paramApplyMaterialTask)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask = paramApplyMaterialTask;
+    this.g = paramApplyMaterialTask;
   }
   
   public final void a(MaterialContentAdapter.ContentItemVH paramContentItemVH, int paramInt)
   {
-    MetaMaterial localMetaMaterial = (MetaMaterial)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter$ItemListener;
+    MetaMaterial localMetaMaterial = (MetaMaterial)this.d.get(paramInt);
+    Object localObject = this.h;
     if (localObject != null) {
       ((MaterialContentAdapter.ItemListener)localObject).a(paramInt, localMetaMaterial);
     }
     if (localMetaMaterial == null) {
       return;
     }
-    int i = this.b;
+    int i1 = this.e;
     boolean bool1 = true;
-    if (i == paramInt) {
-      i = 1;
+    if (i1 == paramInt) {
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    if (!TextUtils.isEmpty(MetaMaterialKt.f(localMetaMaterial)))
+    if (!TextUtils.isEmpty(MetaMaterialKt.l(localMetaMaterial)))
     {
-      paramContentItemVH.a.setVisibility(0);
-      paramContentItemVH.a.setText(MetaMaterialKt.f(localMetaMaterial));
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      paramContentItemVH.d.setVisibility(0);
+      paramContentItemVH.d.setText(MetaMaterialKt.l(localMetaMaterial));
+      paramContentItemVH.c.setVisibility(4);
     }
     else if (TextUtils.isEmpty(localMetaMaterial.thumbUrl))
     {
-      paramContentItemVH.a.setVisibility(4);
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setImageResource(this.h);
+      paramContentItemVH.d.setVisibility(4);
+      paramContentItemVH.c.setVisibility(0);
+      paramContentItemVH.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramContentItemVH.c.setImageResource(this.n);
     }
     else if (localMetaMaterial.thumbUrl.startsWith("http"))
     {
-      paramContentItemVH.a.setVisibility(4);
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      UIUtils.a(paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView, localMetaMaterial.thumbUrl, UIUtils.a(paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.getContext(), 67.0F), UIUtils.a(paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.getContext(), 67.0F), ContextCompat.getDrawable(paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.getContext(), this.h), null);
+      paramContentItemVH.d.setVisibility(4);
+      paramContentItemVH.c.setVisibility(0);
+      paramContentItemVH.c.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      UIUtils.a(paramContentItemVH.c, localMetaMaterial.thumbUrl, UIUtils.a(paramContentItemVH.c.getContext(), 67.0F), UIUtils.a(paramContentItemVH.c.getContext(), 67.0F), ContextCompat.getDrawable(paramContentItemVH.c.getContext(), this.n), null);
     }
     else
     {
-      paramContentItemVH.a.setVisibility(4);
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetImageView.setImageResource(MetaMaterialKt.e(localMetaMaterial));
+      paramContentItemVH.d.setVisibility(4);
+      paramContentItemVH.c.setVisibility(0);
+      paramContentItemVH.c.setScaleType(ImageView.ScaleType.FIT_XY);
+      paramContentItemVH.c.setImageResource(MetaMaterialKt.n(localMetaMaterial));
     }
-    if (paramContentItemVH.jdField_b_of_type_AndroidWidgetTextView != null) {
-      paramContentItemVH.jdField_b_of_type_AndroidWidgetTextView.setText(MetaMaterialKt.a(localMetaMaterial));
+    if (paramContentItemVH.k != null) {
+      paramContentItemVH.k.setText(MetaMaterialKt.a(localMetaMaterial));
     }
-    if (i != 0)
+    if (i1 != 0)
     {
-      paramContentItemVH.d.setVisibility(0);
-      paramContentItemVH.d.setImageResource(MetaMaterialKt.d(localMetaMaterial));
+      paramContentItemVH.f.setVisibility(0);
+      paramContentItemVH.f.setImageResource(MetaMaterialKt.m(localMetaMaterial));
       MaterialContentAdapter.ContentItemVH.a(paramContentItemVH, false, -1);
       MaterialContentAdapter.ContentItemVH.a(paramContentItemVH, false);
     }
     else
     {
-      paramContentItemVH.d.setVisibility(4);
-      if (MetaMaterialKt.c(localMetaMaterial))
+      paramContentItemVH.f.setVisibility(4);
+      if (MetaMaterialKt.i(localMetaMaterial))
       {
-        i = MetaMaterialKt.c(localMetaMaterial);
-        if ((i != -1) && (i != 100))
+        i1 = MetaMaterialKt.k(localMetaMaterial);
+        if ((i1 != -1) && (i1 != 100))
         {
-          MaterialContentAdapter.ContentItemVH.a(paramContentItemVH, true, i);
+          MaterialContentAdapter.ContentItemVH.a(paramContentItemVH, true, i1);
         }
         else
         {
-          MaterialContentAdapter.ContentItemVH.a(paramContentItemVH, false, i);
-          localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask;
+          MaterialContentAdapter.ContentItemVH.a(paramContentItemVH, false, i1);
+          localObject = this.g;
           if (localObject != null)
           {
-            boolean bool2 = ((ApplyMaterialTask)localObject).b(paramInt, localMetaMaterial);
-            if ((i != -1) || (bool2) || (!MetaMaterialKt.a(localMetaMaterial))) {
+            boolean bool2 = ((ApplyMaterialTask)localObject).c(paramInt, localMetaMaterial);
+            if ((i1 != -1) || (bool2) || (!MetaMaterialKt.b(localMetaMaterial))) {
               bool1 = false;
             }
             MaterialContentAdapter.ContentItemVH.a(paramContentItemVH, bool1);
@@ -244,14 +243,14 @@ public abstract class MaterialContentAdapter
         }
       }
     }
-    if (TextUtils.isEmpty(MetaMaterialKt.c(localMetaMaterial)))
+    if (TextUtils.isEmpty(MetaMaterialKt.d(localMetaMaterial)))
     {
-      paramContentItemVH.e.setVisibility(4);
+      paramContentItemVH.g.setVisibility(4);
     }
     else
     {
-      paramContentItemVH.e.setVisibility(0);
-      UIUtils.a(paramContentItemVH.e, MetaMaterialKt.c(localMetaMaterial), UIUtils.a(paramContentItemVH.e.getContext(), 26.0F), UIUtils.a(paramContentItemVH.e.getContext(), 26.0F), null, null);
+      paramContentItemVH.g.setVisibility(0);
+      UIUtils.a(paramContentItemVH.g, MetaMaterialKt.d(localMetaMaterial), UIUtils.a(paramContentItemVH.g.getContext(), 26.0F), UIUtils.a(paramContentItemVH.g.getContext(), 26.0F), null, null);
     }
     paramContentItemVH.itemView.setOnClickListener(new MaterialContentAdapter.1(this, paramInt, localMetaMaterial));
     a(paramContentItemVH, paramInt, localMetaMaterial);
@@ -261,35 +260,35 @@ public abstract class MaterialContentAdapter
   
   public void a(MaterialContentAdapter.ItemListener paramItemListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter$ItemListener = paramItemListener;
+    this.h = paramItemListener;
   }
   
   public void a(QQToast.IToastValidListener paramIToastValidListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast$IToastValidListener = paramIToastValidListener;
+    this.i = paramIToastValidListener;
   }
   
   public final void a(List<MetaMaterial> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
   }
   
   public boolean a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
+      if (this.d == null) {
         return false;
       }
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      int i1 = 0;
+      while (i1 < this.d.size())
       {
-        if ((this.jdField_a_of_type_JavaUtilList.get(i) != null) && (paramString.equals(((MetaMaterial)this.jdField_a_of_type_JavaUtilList.get(i)).id)))
+        if ((this.d.get(i1) != null) && (paramString.equals(((MetaMaterial)this.d.get(i1)).id)))
         {
-          a(i, (MetaMaterial)this.jdField_a_of_type_JavaUtilList.get(i));
+          a(i1, (MetaMaterial)this.d.get(i1));
           return true;
         }
-        i += 1;
+        i1 += 1;
       }
     }
     return false;
@@ -299,18 +298,18 @@ public abstract class MaterialContentAdapter
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
+      if (this.d == null) {
         return false;
       }
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      int i1 = 0;
+      while (i1 < this.d.size())
       {
-        if ((this.jdField_a_of_type_JavaUtilList.get(i) != null) && (paramString.equals(((MetaMaterial)this.jdField_a_of_type_JavaUtilList.get(i)).id)))
+        if ((this.d.get(i1) != null) && (paramString.equals(((MetaMaterial)this.d.get(i1)).id)))
         {
-          a(i, paramBoolean);
+          a(i1, paramBoolean);
           return true;
         }
-        i += 1;
+        i1 += 1;
       }
     }
     return false;
@@ -319,17 +318,22 @@ public abstract class MaterialContentAdapter
   public final MaterialContentAdapter.ContentItemVH b(ViewGroup paramViewGroup, int paramInt)
   {
     paramViewGroup = a(paramViewGroup, paramInt);
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.b == 1)
     {
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramViewGroup.itemView.getLayoutParams();
       if (paramInt == 0) {
-        localLayoutParams.leftMargin = this.d;
+        localLayoutParams.leftMargin = this.j;
       } else if (paramInt == 2) {
-        localLayoutParams.rightMargin = this.d;
+        localLayoutParams.rightMargin = this.j;
       }
     }
-    MaterialContentAdapter.ContentItemVH.a(paramViewGroup, this.e, this.f, this.g);
+    MaterialContentAdapter.ContentItemVH.a(paramViewGroup, this.k, this.l, this.m);
     return paramViewGroup;
+  }
+  
+  public List<MetaMaterial> b()
+  {
+    return this.d;
   }
   
   public void b(int paramInt)
@@ -339,12 +343,17 @@ public abstract class MaterialContentAdapter
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
+  }
+  
+  public int c()
+  {
+    return this.e;
   }
   
   public final int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     if (localList == null) {
       return 0;
     }
@@ -356,7 +365,7 @@ public abstract class MaterialContentAdapter
     if (paramInt == 0) {
       return 0;
     }
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     if ((localList != null) && (paramInt == localList.size() - 1)) {
       return 2;
     }
@@ -366,12 +375,12 @@ public abstract class MaterialContentAdapter
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.c = paramRecyclerView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialContentAdapter
  * JD-Core Version:    0.7.0.1
  */

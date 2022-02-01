@@ -17,7 +17,7 @@ public final class RIJWebArticleReportUtil$ReportR5Builder
   public RIJWebArticleReportUtil$ReportR5Builder()
   {
     JSONObject localJSONObject = this.a;
-    boolean bool = RIJWebArticleUtil.a.b();
+    boolean bool = RIJWebArticleUtil.a.c();
     String str = "1";
     if (bool) {
       localObject = "1";
@@ -26,35 +26,35 @@ public final class RIJWebArticleReportUtil$ReportR5Builder
     }
     localJSONObject.put("param_webviewPoolReuse", localObject);
     localJSONObject = this.a;
-    if (RIJWebArticleUtil.a.c()) {
+    if (RIJWebArticleUtil.a.d()) {
       localObject = "1";
     } else {
       localObject = "0";
     }
     localJSONObject.put("param_useVasSonic", localObject);
     localJSONObject = this.a;
-    if (RIJWebArticleUtil.a.e()) {
+    if (RIJWebArticleUtil.a.f()) {
       localObject = "1";
     } else {
       localObject = "0";
     }
     localJSONObject.put("param_usePreload", localObject);
     localJSONObject = this.a;
-    if (RIJWebArticleUtil.a.f()) {
+    if (RIJWebArticleUtil.a.g()) {
       localObject = "1";
     } else {
       localObject = "0";
     }
     localJSONObject.put("param_warmup_template", localObject);
     localJSONObject = this.a;
-    if (RIJWebArticleUtil.a.g()) {
+    if (RIJWebArticleUtil.a.h()) {
       localObject = "1";
     } else {
       localObject = "0";
     }
     localJSONObject.put("param_use_web_data_preload", localObject);
     localJSONObject = this.a;
-    if (RIJWebArticleUtil.a.h()) {
+    if (RIJWebArticleUtil.a.i()) {
       localObject = "1";
     } else {
       localObject = "0";
@@ -74,7 +74,7 @@ public final class RIJWebArticleReportUtil$ReportR5Builder
     }
     localJSONObject.put("param_isX5", localObject);
     localJSONObject = this.a;
-    if (RIJWebArticleUtil.a.i()) {
+    if (RIJWebArticleUtil.a.j()) {
       localObject = str;
     } else {
       localObject = "0";
@@ -101,7 +101,7 @@ public final class RIJWebArticleReportUtil$ReportR5Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticleReportUtil.ReportR5Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -40,9 +40,9 @@ public class PreDownloadMsg
     {
       VipGiftManager localVipGiftManager = (VipGiftManager)paramQQAppInterface.getManager(QQManagerFactory.VIP_GIF_MANAGER);
       boolean bool = localVipGiftManager.a((MessageForStructing)localObject);
-      localObject = localVipGiftManager.a();
-      if ((bool) && (paramQQAppInterface.mAutomator != null) && (paramQQAppInterface.mAutomator.c()) && (localObject != null) && (((VipGiftDownloadInfo)localObject).d == 0L) && (((VipGiftDownloadInfo)localObject).a != 0L)) {
-        localVipGiftManager.a(((VipGiftDownloadInfo)localObject).a);
+      localObject = localVipGiftManager.e();
+      if ((bool) && (paramQQAppInterface.mAutomator != null) && (paramQQAppInterface.mAutomator.h()) && (localObject != null) && (((VipGiftDownloadInfo)localObject).f == 0L) && (((VipGiftDownloadInfo)localObject).c != 0L)) {
+        localVipGiftManager.c(((VipGiftDownloadInfo)localObject).c);
       }
     }
     else if (((MessageForStructing)localObject).structingMsg.mMsgServiceID == 35)
@@ -121,7 +121,7 @@ public class PreDownloadMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.PreDownloadMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -10,27 +10,27 @@ import org.json.JSONObject;
 
 public class TencentDocConvertConfigBean
 {
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString = "https://eim.connect.qq.com/guide/install.html?install=1";
-  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = -1;
-  private String jdField_c_of_type_JavaLangString = "";
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = -1;
-  private String jdField_d_of_type_JavaLangString = "";
-  private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString = "";
-  private boolean jdField_e_of_type_Boolean;
-  private String jdField_f_of_type_JavaLangString = "";
-  private boolean jdField_f_of_type_Boolean;
-  private String jdField_g_of_type_JavaLangString = "";
-  private boolean jdField_g_of_type_Boolean;
-  private String jdField_h_of_type_JavaLangString = "";
-  private boolean jdField_h_of_type_Boolean;
+  private boolean a;
+  private boolean b;
+  private boolean c;
+  private boolean d;
+  private boolean e;
+  private int f = -1;
+  private String g = "https://eim.connect.qq.com/guide/install.html?install=1";
+  private boolean h;
+  private int i = -1;
+  private String j = "";
+  private String k = "";
+  private String l = "";
+  private String m = "";
+  private int n = -1;
+  private String o = "";
+  private String p = "";
+  private int q = -1;
+  private boolean r;
+  private boolean s;
+  private String t = "";
+  private Map<String, Long> u = new HashMap();
   
   public static TencentDocConvertConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -42,7 +42,7 @@ public class TencentDocConvertConfigBean
     {
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         if (paramArrayOfQConfItem.has("TIMDocs"))
         {
           paramArrayOfQConfItem = paramArrayOfQConfItem.getJSONObject("TIMDocs");
@@ -52,7 +52,7 @@ public class TencentDocConvertConfigBean
               break label591;
             }
             bool = true;
-            localTencentDocConvertConfigBean.jdField_a_of_type_Boolean = bool;
+            localTencentDocConvertConfigBean.a = bool;
           }
           if (paramArrayOfQConfItem.has("openWithSharedDocInTimSwitch"))
           {
@@ -60,7 +60,7 @@ public class TencentDocConvertConfigBean
               break label596;
             }
             bool = true;
-            localTencentDocConvertConfigBean.jdField_b_of_type_Boolean = bool;
+            localTencentDocConvertConfigBean.b = bool;
           }
           if (paramArrayOfQConfItem.has("openFileInTimSwitch"))
           {
@@ -68,7 +68,7 @@ public class TencentDocConvertConfigBean
               break label601;
             }
             bool = true;
-            localTencentDocConvertConfigBean.jdField_c_of_type_Boolean = bool;
+            localTencentDocConvertConfigBean.c = bool;
           }
           if (paramArrayOfQConfItem.has("aioSwitch"))
           {
@@ -76,7 +76,7 @@ public class TencentDocConvertConfigBean
               break label606;
             }
             bool = true;
-            localTencentDocConvertConfigBean.jdField_d_of_type_Boolean = bool;
+            localTencentDocConvertConfigBean.d = bool;
           }
           if (paramArrayOfQConfItem.has("fileViewerMenuSwitch"))
           {
@@ -84,13 +84,13 @@ public class TencentDocConvertConfigBean
               break label611;
             }
             bool = true;
-            localTencentDocConvertConfigBean.jdField_e_of_type_Boolean = bool;
+            localTencentDocConvertConfigBean.e = bool;
           }
           if (paramArrayOfQConfItem.has("openFileInTimEntry")) {
-            localTencentDocConvertConfigBean.jdField_a_of_type_Int = paramArrayOfQConfItem.getInt("openFileInTimEntry");
+            localTencentDocConvertConfigBean.f = paramArrayOfQConfItem.getInt("openFileInTimEntry");
           }
           if (paramArrayOfQConfItem.has("androidURL")) {
-            localTencentDocConvertConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("androidURL");
+            localTencentDocConvertConfigBean.g = paramArrayOfQConfItem.getString("androidURL");
           }
           if (paramArrayOfQConfItem.has("insertGrayTipAfterOpenWithSharedDocInTim"))
           {
@@ -98,34 +98,34 @@ public class TencentDocConvertConfigBean
               break label616;
             }
             bool = true;
-            localTencentDocConvertConfigBean.jdField_f_of_type_Boolean = bool;
+            localTencentDocConvertConfigBean.h = bool;
           }
           if (paramArrayOfQConfItem.has("timVersion")) {
-            localTencentDocConvertConfigBean.jdField_b_of_type_Int = paramArrayOfQConfItem.getInt("timVersion");
+            localTencentDocConvertConfigBean.i = paramArrayOfQConfItem.getInt("timVersion");
           }
           if (paramArrayOfQConfItem.has("saveTipLine0")) {
-            localTencentDocConvertConfigBean.jdField_b_of_type_JavaLangString = paramArrayOfQConfItem.getString("saveTipLine0");
+            localTencentDocConvertConfigBean.j = paramArrayOfQConfItem.getString("saveTipLine0");
           }
           if (paramArrayOfQConfItem.has("saveTipLine1")) {
-            localTencentDocConvertConfigBean.jdField_c_of_type_JavaLangString = paramArrayOfQConfItem.getString("saveTipLine1");
+            localTencentDocConvertConfigBean.k = paramArrayOfQConfItem.getString("saveTipLine1");
           }
           if (paramArrayOfQConfItem.has("saveAndCloseTipLine0")) {
-            localTencentDocConvertConfigBean.jdField_d_of_type_JavaLangString = paramArrayOfQConfItem.getString("saveAndCloseTipLine0");
+            localTencentDocConvertConfigBean.l = paramArrayOfQConfItem.getString("saveAndCloseTipLine0");
           }
           if (paramArrayOfQConfItem.has("saveAndCloseTipLine1")) {
-            localTencentDocConvertConfigBean.jdField_e_of_type_JavaLangString = paramArrayOfQConfItem.getString("saveAndCloseTipLine1");
+            localTencentDocConvertConfigBean.m = paramArrayOfQConfItem.getString("saveAndCloseTipLine1");
           }
           if (paramArrayOfQConfItem.has("saveTipCount")) {
-            localTencentDocConvertConfigBean.jdField_c_of_type_Int = paramArrayOfQConfItem.getInt("saveTipCount");
+            localTencentDocConvertConfigBean.n = paramArrayOfQConfItem.getInt("saveTipCount");
           }
           if (paramArrayOfQConfItem.has("contentEditedTipLine0")) {
-            localTencentDocConvertConfigBean.jdField_f_of_type_JavaLangString = paramArrayOfQConfItem.getString("contentEditedTipLine0");
+            localTencentDocConvertConfigBean.o = paramArrayOfQConfItem.getString("contentEditedTipLine0");
           }
           if (paramArrayOfQConfItem.has("contentEditedTipLine1")) {
-            localTencentDocConvertConfigBean.jdField_g_of_type_JavaLangString = paramArrayOfQConfItem.getString("contentEditedTipLine1");
+            localTencentDocConvertConfigBean.p = paramArrayOfQConfItem.getString("contentEditedTipLine1");
           }
           if (paramArrayOfQConfItem.has("contentEditedTipCount")) {
-            localTencentDocConvertConfigBean.jdField_d_of_type_Int = paramArrayOfQConfItem.getInt("contentEditedTipCount");
+            localTencentDocConvertConfigBean.q = paramArrayOfQConfItem.getInt("contentEditedTipCount");
           }
           if (paramArrayOfQConfItem.has("docListEntryInFileSwitch"))
           {
@@ -133,7 +133,7 @@ public class TencentDocConvertConfigBean
               break label621;
             }
             bool = true;
-            localTencentDocConvertConfigBean.jdField_g_of_type_Boolean = bool;
+            localTencentDocConvertConfigBean.r = bool;
           }
           if (paramArrayOfQConfItem.has("hideDocAuthoritySettingEntry"))
           {
@@ -141,10 +141,10 @@ public class TencentDocConvertConfigBean
               break label626;
             }
             bool = true;
-            localTencentDocConvertConfigBean.jdField_h_of_type_Boolean = bool;
+            localTencentDocConvertConfigBean.s = bool;
           }
           if (paramArrayOfQConfItem.has("docListUrl")) {
-            localTencentDocConvertConfigBean.jdField_h_of_type_JavaLangString = paramArrayOfQConfItem.getString("docListUrl");
+            localTencentDocConvertConfigBean.t = paramArrayOfQConfItem.getString("docListUrl");
           }
           if (paramArrayOfQConfItem.has("editSupport"))
           {
@@ -153,7 +153,7 @@ public class TencentDocConvertConfigBean
             if (localIterator.hasNext())
             {
               String str = (String)localIterator.next();
-              localTencentDocConvertConfigBean.jdField_a_of_type_JavaUtilMap.put(str, Long.valueOf(paramArrayOfQConfItem.getLong(str)));
+              localTencentDocConvertConfigBean.u.put(str, Long.valueOf(paramArrayOfQConfItem.getLong(str)));
               continue;
             }
           }
@@ -191,99 +191,99 @@ public class TencentDocConvertConfigBean
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public Map<String, Long> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public boolean b()
   {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.c;
   }
   
   public boolean c()
   {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
+    return this.d;
   }
   
   public boolean d()
   {
-    return this.jdField_e_of_type_Boolean;
+    return this.e;
   }
   
-  public String e()
+  public int e()
   {
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_f_of_type_Boolean;
+    return this.f;
   }
   
   public String f()
   {
-    return this.jdField_f_of_type_JavaLangString;
+    return this.g;
   }
   
-  public String g()
+  public boolean g()
   {
-    return this.jdField_g_of_type_JavaLangString;
+    return this.h;
   }
   
-  public String h()
+  public int h()
   {
-    return this.jdField_h_of_type_JavaLangString;
+    return this.i;
+  }
+  
+  public String i()
+  {
+    return this.j;
+  }
+  
+  public String j()
+  {
+    return this.k;
+  }
+  
+  public String k()
+  {
+    return this.l;
+  }
+  
+  public String l()
+  {
+    return this.m;
+  }
+  
+  public int m()
+  {
+    return this.n;
+  }
+  
+  public String n()
+  {
+    return this.o;
+  }
+  
+  public String o()
+  {
+    return this.p;
+  }
+  
+  public int p()
+  {
+    return this.q;
+  }
+  
+  public String q()
+  {
+    return this.t;
+  }
+  
+  public Map<String, Long> r()
+  {
+    return this.u;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocConvertConfigBean
  * JD-Core Version:    0.7.0.1
  */

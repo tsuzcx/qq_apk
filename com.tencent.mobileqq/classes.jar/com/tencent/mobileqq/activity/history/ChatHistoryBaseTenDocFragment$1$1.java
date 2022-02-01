@@ -16,26 +16,26 @@ class ChatHistoryBaseTenDocFragment$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1)
+    if (this.a.size() == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment$1.a.a.getMessageFacade().a(((TencentDocItem)this.jdField_a_of_type_JavaUtilList.get(0)).mRecord, false);
+      this.b.b.a.getMessageFacade().a(((TencentDocItem)this.a.get(0)).mRecord, false);
     }
-    else if (this.jdField_a_of_type_JavaUtilList.size() > 1)
+    else if (this.a.size() > 1)
     {
       localObject = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext()) {
         ((List)localObject).add(((TencentDocItem)localIterator.next()).mRecord);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment$1.a.a.getMessageFacade().a((List)localObject, false);
+      this.b.b.a.getMessageFacade().a((List)localObject, false);
     }
-    Object localObject = ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment$1.a).obtainMessage(5678, this.jdField_a_of_type_JavaUtilList);
-    ChatHistoryBaseTenDocFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseTenDocFragment$1.a).sendMessage((Message)localObject);
+    Object localObject = ChatHistoryBaseTenDocFragment.b(this.b.b).obtainMessage(5678, this.a);
+    ChatHistoryBaseTenDocFragment.b(this.b.b).sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

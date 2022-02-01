@@ -100,7 +100,7 @@ class PhotoPreviewActivity$ImageAdapter
       paramView.setImageDrawable(paramViewGroup);
     }
     paramViewGroup = new StringBuilder();
-    paramViewGroup.append(HardCodeUtil.a(2131708144));
+    paramViewGroup.append(HardCodeUtil.a(2131905941));
     paramViewGroup.append(paramInt);
     paramView.setContentDescription(paramViewGroup.toString());
     return paramView;
@@ -225,7 +225,7 @@ class PhotoPreviewActivity$ImageAdapter
     }
     paramView = (URLImageView2)paramView;
     Object localObject = paramView.getDrawable();
-    paramViewGroup = paramView.jdField_a_of_type_ComTencentImageURLDrawable;
+    paramViewGroup = paramView.a;
     if ((localObject instanceof URLDrawable))
     {
       localObject = (URLDrawable)localObject;
@@ -264,9 +264,9 @@ class PhotoPreviewActivity$ImageAdapter
             }
             if (paramViewGroup.getStatus() == 1)
             {
-              paramView.jdField_a_of_type_Boolean = true;
+              paramView.b = true;
               paramView.setImageDrawable(paramViewGroup);
-              paramView.jdField_a_of_type_Boolean = false;
+              paramView.b = false;
               return;
             }
             paramView.setDecodingDrawble(paramViewGroup);
@@ -279,7 +279,7 @@ class PhotoPreviewActivity$ImageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PhotoPreviewActivity.ImageAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,18 @@ import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
 
 public class PGCVideoInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
   public String c;
   public String d;
   public String e;
-  public String f;
-  public String g;
-  public String h;
+  public int f;
+  public int g;
+  public long h;
+  public boolean i;
+  public String j;
+  public String k;
+  public String l;
   
   public PGCVideoInfo() {}
   
@@ -38,65 +38,65 @@ public class PGCVideoInfo
       this.e = paramPGCVideoInfo.bytes_vid.get().toStringUtf8();
     }
     if (paramPGCVideoInfo.bytes_video_url.has()) {
-      this.jdField_b_of_type_JavaLangString = paramPGCVideoInfo.bytes_video_url.get().toStringUtf8();
+      this.b = paramPGCVideoInfo.bytes_video_url.get().toStringUtf8();
     }
     if (paramPGCVideoInfo.bytes_video_md5.has()) {
-      this.jdField_a_of_type_JavaLangString = paramPGCVideoInfo.bytes_video_md5.get().toStringUtf8();
+      this.a = paramPGCVideoInfo.bytes_video_md5.get().toStringUtf8();
     }
     if (paramPGCVideoInfo.uint32_duration.has()) {
-      this.jdField_a_of_type_Int = paramPGCVideoInfo.uint32_duration.get();
+      this.f = paramPGCVideoInfo.uint32_duration.get();
     }
     if (paramPGCVideoInfo.uint32_busi_type.has()) {
-      this.jdField_b_of_type_Int = paramPGCVideoInfo.uint32_busi_type.get();
+      this.g = paramPGCVideoInfo.uint32_busi_type.get();
     }
     if (paramPGCVideoInfo.uint64_play_num.has()) {
-      this.jdField_a_of_type_Long = paramPGCVideoInfo.uint64_play_num.get();
+      this.h = paramPGCVideoInfo.uint64_play_num.get();
     }
     if (paramPGCVideoInfo.video_auto_play.has()) {
-      this.jdField_a_of_type_Boolean = paramPGCVideoInfo.video_auto_play.get();
+      this.i = paramPGCVideoInfo.video_auto_play.get();
     }
     if (paramPGCVideoInfo.title.has()) {
-      this.g = paramPGCVideoInfo.title.get();
+      this.k = paramPGCVideoInfo.title.get();
     }
     if (paramPGCVideoInfo.rowkey.has()) {
-      this.f = paramPGCVideoInfo.rowkey.get();
+      this.j = paramPGCVideoInfo.rowkey.get();
     }
     if (paramPGCVideoInfo.jump_url.has()) {
-      this.h = paramPGCVideoInfo.jump_url.get();
+      this.l = paramPGCVideoInfo.jump_url.get();
     }
   }
   
   public articlesummary.PGCVideoInfo a()
   {
     articlesummary.PGCVideoInfo localPGCVideoInfo = new articlesummary.PGCVideoInfo();
-    if (this.h != null) {
-      localPGCVideoInfo.jump_url.set(this.h);
+    if (this.l != null) {
+      localPGCVideoInfo.jump_url.set(this.l);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localPGCVideoInfo.bytes_video_md5.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.a)) {
+      localPGCVideoInfo.bytes_video_md5.set(ByteStringMicro.copyFromUtf8(this.a));
     }
     if (!TextUtils.isEmpty(this.e)) {
       localPGCVideoInfo.bytes_vid.set(ByteStringMicro.copyFromUtf8(this.e));
     }
-    if (!TextUtils.isEmpty(this.f)) {
-      localPGCVideoInfo.rowkey.set(this.f);
+    if (!TextUtils.isEmpty(this.j)) {
+      localPGCVideoInfo.rowkey.set(this.j);
     }
-    if (!TextUtils.isEmpty(this.g)) {
-      localPGCVideoInfo.title.set(this.g);
+    if (!TextUtils.isEmpty(this.k)) {
+      localPGCVideoInfo.title.set(this.k);
     }
-    localPGCVideoInfo.video_auto_play.set(this.jdField_a_of_type_Boolean);
-    localPGCVideoInfo.uint64_play_num.set(this.jdField_a_of_type_Long);
-    localPGCVideoInfo.uint32_busi_type.set(this.jdField_b_of_type_Int);
+    localPGCVideoInfo.video_auto_play.set(this.i);
+    localPGCVideoInfo.uint64_play_num.set(this.h);
+    localPGCVideoInfo.uint32_busi_type.set(this.g);
     if (!TextUtils.isEmpty(this.c)) {
       localPGCVideoInfo.bytes_pic_md5.set(ByteStringMicro.copyFromUtf8(this.c));
     }
     if (!TextUtils.isEmpty(this.d)) {
       localPGCVideoInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(this.d));
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localPGCVideoInfo.bytes_video_url.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.b)) {
+      localPGCVideoInfo.bytes_video_url.set(ByteStringMicro.copyFromUtf8(this.b));
     }
-    localPGCVideoInfo.uint32_duration.set(this.jdField_a_of_type_Int);
+    localPGCVideoInfo.uint32_duration.set(this.f);
     return localPGCVideoInfo;
   }
   
@@ -104,10 +104,10 @@ public class PGCVideoInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PGCVideoInfo{video_md5='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", video_url='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", picMd5='");
     localStringBuilder.append(this.c);
@@ -119,25 +119,25 @@ public class PGCVideoInfo
     localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", duration='");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", busi_type='");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", playCount='");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", isVideoAutoPlay='");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", rowkey='");
     localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", title='");
+    localStringBuilder.append(", busi_type='");
     localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(", playCount='");
     localStringBuilder.append(this.h);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isVideoAutoPlay='");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", rowkey='");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", title='");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.l);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -145,7 +145,7 @@ public class PGCVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.video.entity.PGCVideoInfo
  * JD-Core Version:    0.7.0.1
  */

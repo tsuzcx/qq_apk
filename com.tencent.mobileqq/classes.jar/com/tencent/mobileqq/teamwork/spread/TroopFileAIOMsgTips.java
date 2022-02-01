@@ -16,7 +16,7 @@ public class TroopFileAIOMsgTips
   
   protected String a()
   {
-    return ((MessageForTroopFile)this.a).fileName;
+    return ((MessageForTroopFile)this.d).fileName;
   }
   
   protected void a(BaseTimAIOTipsProcessor.ListResult paramListResult)
@@ -34,7 +34,7 @@ public class TroopFileAIOMsgTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips
  * JD-Core Version:    0.7.0.1
  */

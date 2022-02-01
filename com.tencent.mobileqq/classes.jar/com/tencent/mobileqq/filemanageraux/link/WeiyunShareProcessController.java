@@ -53,82 +53,56 @@ import mqq.os.MqqHandler;
 final class WeiyunShareProcessController
   implements DialogInterface.OnClickListener, Handler.Callback, View.OnClickListener
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private volatile FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private volatile WeiyunTask jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiyunTask;
-  private final IShareRouter jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private volatile String jdField_a_of_type_JavaLangString;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private final boolean jdField_a_of_type_Boolean;
-  private final View jdField_b_of_type_AndroidViewView;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
-  private final MqqHandler jdField_b_of_type_MqqOsMqqHandler;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private final View jdField_c_of_type_AndroidViewView;
-  private final TextView jdField_c_of_type_AndroidWidgetTextView;
-  private final MqqHandler jdField_c_of_type_MqqOsMqqHandler;
-  private volatile boolean jdField_c_of_type_Boolean;
-  private final View jdField_d_of_type_AndroidViewView;
-  private final TextView jdField_d_of_type_AndroidWidgetTextView;
+  private final IShareRouter a;
+  private final boolean b;
+  private final View c;
+  private final TextView d;
+  private final View e;
+  private final View f;
+  private final TextView g;
+  private final TextView h;
+  private final View i;
+  private final TextView j;
+  private QQCustomDialog k;
+  private final MqqHandler l;
+  private final MqqHandler m;
+  private final MqqHandler n;
+  private volatile boolean o;
+  private volatile WeiyunTask p;
+  private volatile FileManagerEntity q;
+  private volatile String r;
+  private volatile boolean s;
   
   WeiyunShareProcessController(IShareRouter paramIShareRouter, View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter = paramIShareRouter;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131373085);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373084));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131373078);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131373080);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373079));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373081));
-    paramView.findViewById(2131373082).setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131370093);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370108));
-    paramView.findViewById(2131370095).setOnClickListener(this);
-    paramView.findViewById(2131370106).setOnClickListener(this);
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-    this.jdField_b_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(ThreadManagerV2.getFileThreadLooper(), this, false);
-    this.jdField_c_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(ThreadManagerV2.getSubThreadLooper(), this, false);
+    this.a = paramIShareRouter;
+    this.b = paramBoolean;
+    this.c = paramView.findViewById(2131440672);
+    this.d = ((TextView)paramView.findViewById(2131440671));
+    this.e = paramView.findViewById(2131440665);
+    this.f = paramView.findViewById(2131440667);
+    this.g = ((TextView)paramView.findViewById(2131440666));
+    this.h = ((TextView)paramView.findViewById(2131440668));
+    paramView.findViewById(2131440669).setOnClickListener(this);
+    this.i = paramView.findViewById(2131437255);
+    this.j = ((TextView)paramView.findViewById(2131437270));
+    paramView.findViewById(2131437257).setOnClickListener(this);
+    paramView.findViewById(2131437268).setOnClickListener(this);
+    this.l = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+    this.m = new MqqWeakReferenceHandler(ThreadManagerV2.getFileThreadLooper(), this, false);
+    this.n = new MqqWeakReferenceHandler(ThreadManagerV2.getSubThreadLooper(), this, false);
     a();
-  }
-  
-  private String a()
-  {
-    String str = this.jdField_d_of_type_AndroidWidgetTextView.getText().toString();
-    if (!TextUtils.isEmpty(str))
-    {
-      Object localObject2 = this.jdField_d_of_type_AndroidWidgetTextView.getTag();
-      Object localObject1 = str;
-      if ((localObject2 instanceof String))
-      {
-        localObject1 = str;
-        if (!TextUtils.isEmpty((String)localObject2))
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(str);
-          ((StringBuilder)localObject1).append(" ");
-          ((StringBuilder)localObject1).append(BaseApplicationImpl.sApplication.getString(2131698267));
-          ((StringBuilder)localObject1).append(":");
-          ((StringBuilder)localObject1).append(localObject2);
-          localObject1 = ((StringBuilder)localObject1).toString();
-        }
-      }
-      return localObject1;
-    }
-    return null;
   }
   
   private void a(float paramFloat)
   {
-    int i = (int)Math.floor(paramFloat * 100.0F);
-    TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+    int i1 = (int)Math.floor(paramFloat * 100.0F);
+    TextView localTextView = this.h;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i);
+    localStringBuilder.append(i1);
     localStringBuilder.append("%");
     localTextView.setText(localStringBuilder.toString());
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.h.setVisibility(0);
   }
   
   private void a(int paramInt, String paramString)
@@ -136,22 +110,22 @@ final class WeiyunShareProcessController
     a();
     if (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).isSpaceOverErrorCode(paramInt))
     {
-      e();
+      g();
       return;
     }
     if (paramInt == 2) {
-      paramString = BaseApplicationImpl.sApplication.getResources().getString(2131694424);
+      paramString = BaseApplicationImpl.sApplication.getResources().getString(2131892104);
     }
     if (TextUtils.isEmpty(paramString))
     {
       paramString = BaseApplicationImpl.sApplication.getResources();
-      int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = 2131698251;
+      int i1;
+      if (this.b) {
+        i1 = 2131896152;
       } else {
-        i = 2131698252;
+        i1 = 2131896153;
       }
-      paramString = paramString.getString(i, new Object[] { Integer.valueOf(paramInt) });
+      paramString = paramString.getString(i1, new Object[] { Integer.valueOf(paramInt) });
     }
     LinkUtils.a(1, paramString, true);
   }
@@ -164,7 +138,7 @@ final class WeiyunShareProcessController
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a(paramBitmap, paramInt, paramString);
+      this.a.a(paramBitmap, paramInt, paramString);
       if (!paramBitmap.isRecycled()) {
         paramBitmap.recycle();
       }
@@ -174,13 +148,13 @@ final class WeiyunShareProcessController
   
   private void a(FileManagerEntity paramFileManagerEntity, String paramString)
   {
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity().getAppInterface();
+    AppInterface localAppInterface = this.a.getBaseActivity().getAppInterface();
     if ((localAppInterface instanceof QQAppInterface))
     {
       Message localMessage = new Message();
       localMessage.what = 9;
-      localMessage.obj = new Object[] { (QQAppInterface)localAppInterface, paramFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a(), Boolean.valueOf(this.jdField_a_of_type_Boolean), paramString };
-      this.jdField_c_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      localMessage.obj = new Object[] { (QQAppInterface)localAppInterface, paramFileManagerEntity, this.a.a(), Boolean.valueOf(this.b), paramString };
+      this.n.sendMessage(localMessage);
       return;
     }
     throw new IllegalStateException("processCloudFile: need QQAppInterface, must run in main process.");
@@ -188,19 +162,19 @@ final class WeiyunShareProcessController
   
   private void a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    Object localObject = this.q;
     if (localObject != null)
     {
       a((FileManagerEntity)localObject, null);
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity().getAppInterface();
+    localObject = this.a.getBaseActivity().getAppInterface();
     if ((localObject instanceof QQAppInterface))
     {
       Message localMessage = new Message();
       localMessage.what = 8;
       localMessage.obj = new Object[] { (QQAppInterface)localObject, paramString };
-      this.jdField_b_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      this.m.sendMessage(localMessage);
       return;
     }
     throw new IllegalStateException("processLocalFile: need QQAppInterface, must run in main process.");
@@ -208,24 +182,24 @@ final class WeiyunShareProcessController
   
   private void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    if (this.jdField_a_of_type_Boolean)
+    this.r = paramString1;
+    if (this.b)
     {
       Message localMessage = new Message();
       localMessage.what = 10;
       localMessage.obj = new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 };
-      this.jdField_c_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      this.n.sendMessage(localMessage);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698248);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString1);
-    this.jdField_d_of_type_AndroidWidgetTextView.setTag(paramString2);
-    boolean bool = this.jdField_b_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = false;
+    this.d.setText(2131896149);
+    this.e.setVisibility(8);
+    this.i.setVisibility(0);
+    this.j.setText(paramString1);
+    this.j.setTag(paramString2);
+    boolean bool = this.o;
+    this.o = false;
     if (bool) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.b();
+      this.a.h();
     }
   }
   
@@ -245,30 +219,30 @@ final class WeiyunShareProcessController
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)paramArrayOfObject[0];
       paramArrayOfObject = (String)paramArrayOfObject[1];
-      int i;
+      int i1;
       if (NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication))
       {
-        paramArrayOfObject = localQQAppInterface.getFileManagerEngine().a().a(paramArrayOfObject, null, new WeiyunShareProcessController.UploadStatusListener(this, paramArrayOfObject, null));
+        paramArrayOfObject = localQQAppInterface.getFileManagerEngine().d().a(paramArrayOfObject, null, new WeiyunShareProcessController.UploadStatusListener(this, paramArrayOfObject, null));
         if (paramArrayOfObject == null)
         {
-          i = -3;
+          i1 = -3;
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiyunTask = paramArrayOfObject;
-          i = 0;
+          this.p = paramArrayOfObject;
+          i1 = 0;
         }
       }
       else
       {
-        i = 2;
+        i1 = 2;
       }
-      if (i != 0)
+      if (i1 != 0)
       {
         paramArrayOfObject = new Message();
         paramArrayOfObject.what = 1;
-        paramArrayOfObject.obj = new Object[] { Integer.valueOf(i), null };
-        this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramArrayOfObject);
+        paramArrayOfObject.obj = new Object[] { Integer.valueOf(i1), null };
+        this.l.sendMessage(paramArrayOfObject);
       }
       return;
     }
@@ -289,7 +263,7 @@ final class WeiyunShareProcessController
         QLog.i("WeiyunShareProcessController<FileAssistant>", 2, ((StringBuilder)localObject).toString());
       }
       a(1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiyunTask = null;
+      this.p = null;
       Object localObject = new FileManagerEntity();
       ((FileManagerEntity)localObject).setCloudType(2);
       ((FileManagerEntity)localObject).WeiYunFileId = localStatusInfo.fileId;
@@ -299,25 +273,11 @@ final class WeiyunShareProcessController
         paramArrayOfObject = null;
       }
       ((FileManagerEntity)localObject).WeiYunDirKey = paramArrayOfObject;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = ((FileManagerEntity)localObject);
+      this.q = ((FileManagerEntity)localObject);
       a((FileManagerEntity)localObject, null);
       return;
     }
     throw new IllegalArgumentException("handleUploadSucceed: args are invalid");
-  }
-  
-  private void d()
-  {
-    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2131698243;
-    } else {
-      i = 2131698245;
-    }
-    localTextView.setText(i);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText("");
   }
   
   private void d(Object[] paramArrayOfObject)
@@ -330,31 +290,6 @@ final class WeiyunShareProcessController
     throw new IllegalArgumentException("handleUploadProgress: args are invalid");
   }
   
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity(), 2131756189);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131558978);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131698253);
-      QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-      int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = 2131698255;
-      } else {
-        i = 2131698254;
-      }
-      localQQCustomDialog.setMessage(i);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690728, this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131698256, this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(true);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    }
-  }
-  
   private void e(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 5))
@@ -364,39 +299,39 @@ final class WeiyunShareProcessController
       Object localObject2 = (IShareRouter.ShareOptions)paramArrayOfObject[2];
       boolean bool1 = ((Boolean)paramArrayOfObject[3]).booleanValue();
       paramArrayOfObject = (String)paramArrayOfObject[4];
-      int i;
+      int i1;
       if (NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication))
       {
-        long l = LinkUtils.a(((IShareRouter.ShareOptions)localObject2).jdField_a_of_type_Int);
-        if (!FileUtil.a(paramArrayOfObject)) {
+        long l1 = LinkUtils.a(((IShareRouter.ShareOptions)localObject2).a);
+        if (!FileUtil.b(paramArrayOfObject)) {
           paramArrayOfObject = null;
         }
-        WeiYunLogicCenter localWeiYunLogicCenter = ((QQAppInterface)localObject1).getFileManagerEngine().a();
-        if (((IShareRouter.ShareOptions)localObject2).jdField_a_of_type_Boolean) {
-          localObject1 = ((IShareRouter.ShareOptions)localObject2).jdField_a_of_type_JavaLangString;
+        WeiYunLogicCenter localWeiYunLogicCenter = ((QQAppInterface)localObject1).getFileManagerEngine().d();
+        if (((IShareRouter.ShareOptions)localObject2).b) {
+          localObject1 = ((IShareRouter.ShareOptions)localObject2).c;
         } else {
           localObject1 = null;
         }
-        boolean bool2 = ((IShareRouter.ShareOptions)localObject2).jdField_b_of_type_Boolean;
-        i = ((IShareRouter.ShareOptions)localObject2).jdField_a_of_type_Int;
-        if (((IShareRouter.ShareOptions)localObject2).jdField_a_of_type_Boolean) {
-          localObject2 = ((IShareRouter.ShareOptions)localObject2).jdField_a_of_type_JavaLangString;
+        boolean bool2 = ((IShareRouter.ShareOptions)localObject2).d;
+        i1 = ((IShareRouter.ShareOptions)localObject2).a;
+        if (((IShareRouter.ShareOptions)localObject2).b) {
+          localObject2 = ((IShareRouter.ShareOptions)localObject2).c;
         } else {
           localObject2 = null;
         }
-        localWeiYunLogicCenter.a(localFileManagerEntity, l, (String)localObject1, bool2, bool1, new WeiyunShareProcessController.GetShareLinkCallback(this, i, (String)localObject2, paramArrayOfObject, bool1, null));
-        i = 0;
+        localWeiYunLogicCenter.a(localFileManagerEntity, l1, (String)localObject1, bool2, bool1, new WeiyunShareProcessController.GetShareLinkCallback(this, i1, (String)localObject2, paramArrayOfObject, bool1, null));
+        i1 = 0;
       }
       else
       {
-        i = 2;
+        i1 = 2;
       }
-      if (i != 0)
+      if (i1 != 0)
       {
         paramArrayOfObject = new Message();
         paramArrayOfObject.what = 1;
-        paramArrayOfObject.obj = new Object[] { Integer.valueOf(i), null };
-        this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramArrayOfObject);
+        paramArrayOfObject.obj = new Object[] { Integer.valueOf(i1), null };
+        this.l.sendMessage(paramArrayOfObject);
         return;
       }
       return;
@@ -406,38 +341,16 @@ final class WeiyunShareProcessController
   
   private void f()
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a();
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.b();
-    if ((localFileManagerEntity == null) && (TextUtils.isEmpty(str2)))
-    {
-      QLog.w("WeiyunShareProcessController<FileAssistant>", 2, "startProcess: fileEntity and filePath are invalid");
-      return;
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.b();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a();
-    String str1;
-    if (this.jdField_a_of_type_Boolean) {
-      str1 = "0X800A9D7";
+    this.f.setVisibility(0);
+    TextView localTextView = this.g;
+    int i1;
+    if (this.b) {
+      i1 = 2131896144;
     } else {
-      str1 = "0X800A9D6";
+      i1 = 2131896146;
     }
-    String str3 = LinkUtils.b(((IShareRouter.ShareOptions)localObject).jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {
-      localObject = null;
-    } else {
-      localObject = LinkUtils.a(((IShareRouter.ShareOptions)localObject).jdField_a_of_type_Boolean);
-    }
-    LinkUtils.a(str1, str3, (String)localObject);
-    if (LinkUtils.a(localFileManagerEntity, false)) {
-      a(localFileManagerEntity, str2);
-    } else {
-      a(str2);
-    }
-    d();
+    localTextView.setText(i1);
+    this.h.setText("");
   }
   
   private void f(Object[] paramArrayOfObject)
@@ -452,14 +365,26 @@ final class WeiyunShareProcessController
   
   private void g()
   {
-    String str = a();
-    if (!TextUtils.isEmpty(str))
+    if (this.k == null)
     {
-      LinkUtils.a("0X800A9D8", null, null);
-      ClipboardManager localClipboardManager = (ClipboardManager)BaseApplicationImpl.sApplication.getSystemService("clipboard");
-      ClipboardMonitor.setText(localClipboardManager, str);
-      localClipboardManager.setText(str);
-      LinkUtils.a(2, 2131698241, true);
+      this.k = new QQCustomDialog(this.a.getBaseActivity(), 2131953338);
+      this.k.setContentView(2131624611);
+      this.k.setTitle(2131896154);
+      QQCustomDialog localQQCustomDialog = this.k;
+      int i1;
+      if (this.b) {
+        i1 = 2131896156;
+      } else {
+        i1 = 2131896155;
+      }
+      localQQCustomDialog.setMessage(i1);
+      this.k.setNegativeButton(2131887648, this);
+      this.k.setPositiveButton(2131896157, this);
+      this.k.setCancelable(true);
+      this.k.setCanceledOnTouchOutside(false);
+    }
+    if (!this.k.isShowing()) {
+      this.k.show();
     }
   }
   
@@ -468,12 +393,12 @@ final class WeiyunShareProcessController
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 3))
     {
       Object localObject = (String)paramArrayOfObject[0];
-      int i = ((Integer)paramArrayOfObject[1]).intValue();
+      int i1 = ((Integer)paramArrayOfObject[1]).intValue();
       String str = (String)paramArrayOfObject[2];
       paramArrayOfObject = null;
       try
       {
-        localObject = LinkUtils.a((String)localObject, ViewUtils.a(184.0F));
+        localObject = LinkUtils.a((String)localObject, ViewUtils.dip2px(184.0F));
         paramArrayOfObject = (Object[])localObject;
       }
       catch (Throwable localThrowable)
@@ -482,8 +407,8 @@ final class WeiyunShareProcessController
       }
       Message localMessage = new Message();
       localMessage.what = 7;
-      localMessage.obj = new Object[] { paramArrayOfObject, Integer.valueOf(i), str };
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      localMessage.obj = new Object[] { paramArrayOfObject, Integer.valueOf(i1), str };
+      this.l.sendMessage(localMessage);
       return;
     }
     throw new IllegalArgumentException("handleGetQr: args are invalid");
@@ -491,11 +416,38 @@ final class WeiyunShareProcessController
   
   private void h()
   {
-    if (!TextUtils.isEmpty(a()))
+    FileManagerEntity localFileManagerEntity = this.a.c();
+    String str2 = this.a.g();
+    if ((localFileManagerEntity == null) && (TextUtils.isEmpty(str2)))
     {
-      LinkUtils.a("0X800A9D9", null, null);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.a(null);
+      QLog.w("WeiyunShareProcessController<FileAssistant>", 2, "startProcess: fileEntity and filePath are invalid");
+      return;
     }
+    if (this.o) {
+      return;
+    }
+    this.o = true;
+    this.a.h();
+    Object localObject = this.a.a();
+    String str1;
+    if (this.b) {
+      str1 = "0X800A9D7";
+    } else {
+      str1 = "0X800A9D6";
+    }
+    String str3 = LinkUtils.c(((IShareRouter.ShareOptions)localObject).a);
+    if (this.b) {
+      localObject = null;
+    } else {
+      localObject = LinkUtils.a(((IShareRouter.ShareOptions)localObject).b);
+    }
+    LinkUtils.a(str1, str3, (String)localObject);
+    if (LinkUtils.a(localFileManagerEntity, false)) {
+      a(localFileManagerEntity, str2);
+    } else {
+      a(str2);
+    }
+    f();
   }
   
   private void h(Object[] paramArrayOfObject)
@@ -506,6 +458,54 @@ final class WeiyunShareProcessController
       return;
     }
     throw new IllegalArgumentException("handleQrRelay: args are invalid");
+  }
+  
+  private void i()
+  {
+    String str = k();
+    if (!TextUtils.isEmpty(str))
+    {
+      LinkUtils.a("0X800A9D8", null, null);
+      ClipboardManager localClipboardManager = (ClipboardManager)BaseApplicationImpl.sApplication.getSystemService("clipboard");
+      ClipboardMonitor.setText(localClipboardManager, str);
+      localClipboardManager.setText(str);
+      LinkUtils.a(2, 2131896142, true);
+    }
+  }
+  
+  private void j()
+  {
+    if (!TextUtils.isEmpty(k()))
+    {
+      LinkUtils.a("0X800A9D9", null, null);
+      this.a.a(null);
+    }
+  }
+  
+  private String k()
+  {
+    String str = this.j.getText().toString();
+    if (!TextUtils.isEmpty(str))
+    {
+      Object localObject2 = this.j.getTag();
+      Object localObject1 = str;
+      if ((localObject2 instanceof String))
+      {
+        localObject1 = str;
+        if (!TextUtils.isEmpty((String)localObject2))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(str);
+          ((StringBuilder)localObject1).append(" ");
+          ((StringBuilder)localObject1).append(BaseApplicationImpl.sApplication.getString(2131896168));
+          ((StringBuilder)localObject1).append(":");
+          ((StringBuilder)localObject1).append(localObject2);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+      }
+      return localObject1;
+    }
+    return null;
   }
   
   List<ShareActionSheetBuilder.ActionSheetItem> a(Context paramContext)
@@ -520,35 +520,35 @@ final class WeiyunShareProcessController
   
   void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2131698246;
+    this.c.setVisibility(0);
+    this.d.setVisibility(0);
+    TextView localTextView = this.d;
+    int i1;
+    if (this.b) {
+      i1 = 2131896147;
     } else {
-      i = 2131698247;
+      i1 = 2131896148;
     }
-    localTextView.setText(i);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2131698242;
+    localTextView.setText(i1);
+    this.e.setVisibility(0);
+    this.f.setVisibility(8);
+    localTextView = this.g;
+    if (this.b) {
+      i1 = 2131896143;
     } else {
-      i = 2131698244;
+      i1 = 2131896145;
     }
-    localTextView.setText(i);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_d_of_type_AndroidWidgetTextView.setTag(null);
-    boolean bool = this.jdField_b_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = false;
+    localTextView.setText(i1);
+    this.h.setVisibility(8);
+    this.i.setVisibility(8);
+    this.j.setText("");
+    this.j.setTag(null);
+    boolean bool = this.o;
+    this.o = false;
     if (bool) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.b();
+      this.a.h();
     }
-    this.jdField_a_of_type_JavaLangString = null;
+    this.r = null;
   }
   
   void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
@@ -556,36 +556,36 @@ final class WeiyunShareProcessController
     if (paramActionSheetItem == null) {
       return;
     }
-    int j = paramActionSheetItem.action;
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity();
+    int i2 = paramActionSheetItem.action;
+    Object localObject1 = this.a.getBaseActivity();
     if (localObject1 != null)
     {
       if (((BaseActivity)localObject1).isFinishing()) {
         return;
       }
       boolean bool = NetworkUtil.isNetSupport((Context)localObject1);
-      int i = 0;
+      int i1 = 0;
       if (!bool)
       {
-        LinkUtils.a(0, 2131692183, false);
+        LinkUtils.a(0, 2131889169, false);
         if (QLog.isColorLevel()) {
           QLog.i("WeiyunShareProcessController<FileAssistant>", 2, "toShare: net is not supported");
         }
         return;
       }
-      if ((j == 2) || (j == 3) || (j == 9) || (j == 10) || (j == 72))
+      if ((i2 == 2) || (i2 == 3) || (i2 == 9) || (i2 == 10) || (i2 == 72))
       {
-        String str = a();
+        String str = k();
         if (TextUtils.isEmpty(str)) {
           return;
         }
-        if (j != 2)
+        if (i2 != 2)
         {
-          if (j != 3)
+          if (i2 != 3)
           {
-            if ((j != 9) && (j != 10))
+            if ((i2 != 9) && (i2 != 10))
             {
-              if (j != 72) {
+              if (i2 != 72) {
                 return;
               }
               localObject2 = new Bundle();
@@ -600,12 +600,12 @@ final class WeiyunShareProcessController
               ForwardBaseOption.a((Activity)localObject1, paramActionSheetItem, ForwardRecentTranslucentActivity.class, 1, -1, "");
               return;
             }
-            paramActionSheetItem = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.c();
+            paramActionSheetItem = this.a.i();
             localObject1 = WXShareHelper.a();
-            if (j != 9) {
-              i = 1;
+            if (i2 != 9) {
+              i1 = 1;
             }
-            ((WXShareHelper)localObject1).a(str, i, paramActionSheetItem);
+            ((WXShareHelper)localObject1).a(str, i1, paramActionSheetItem);
             return;
           }
           paramActionSheetItem = QZoneHelper.UserInfo.getInstance();
@@ -616,7 +616,7 @@ final class WeiyunShareProcessController
           } else {
             paramActionSheetItem.nickname = null;
           }
-          QZoneHelper.forwardToPublishMood((Activity)localObject1, paramActionSheetItem, "", ((BaseActivity)localObject1).getString(2131692105), str, 2);
+          QZoneHelper.forwardToPublishMood((Activity)localObject1, paramActionSheetItem, "", ((BaseActivity)localObject1).getString(2131889086), str, 2);
           return;
         }
         paramActionSheetItem = new Intent();
@@ -628,48 +628,48 @@ final class WeiyunShareProcessController
     }
   }
   
-  boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
   List<ShareActionSheetBuilder.ActionSheetItem> b(Context paramContext)
   {
     return new ArrayList();
   }
   
-  void b()
+  boolean b()
   {
-    WeiyunTask localWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiyunTask;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiyunTask = null;
+    return this.o;
+  }
+  
+  boolean c()
+  {
+    return this.p != null;
+  }
+  
+  void d()
+  {
+    WeiyunTask localWeiyunTask = this.p;
+    this.p = null;
     if (localWeiyunTask != null) {
       localWeiyunTask.a();
     }
   }
   
-  boolean b()
+  void e()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiyunTask != null;
-  }
-  
-  void c()
-  {
-    this.jdField_c_of_type_Boolean = true;
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    this.s = true;
+    QQCustomDialog localQQCustomDialog = this.k;
     if (localQQCustomDialog != null)
     {
       localQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.k = null;
     }
-    b();
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    this.jdField_c_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    d();
+    this.l.removeCallbacksAndMessages(null);
+    this.m.removeCallbacksAndMessages(null);
+    this.n.removeCallbacksAndMessages(null);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.s) {
       return false;
     }
     switch (paramMessage.what)
@@ -707,14 +707,14 @@ final class WeiyunShareProcessController
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramDialogInterface.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog)) && (paramInt != 0))
+    if ((paramDialogInterface.equals(this.k)) && (paramInt != 0))
     {
       if (paramInt != 1) {
         return;
       }
       IOpenWeiyunVipHelper localIOpenWeiyunVipHelper = (IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class);
-      BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxLinkIShareRouter.getBaseActivity();
-      if (this.jdField_a_of_type_Boolean) {
+      BaseActivity localBaseActivity = this.a.getBaseActivity();
+      if (this.b) {
         paramDialogInterface = "an_qq_qrcode_overcapacity";
       } else {
         paramDialogInterface = "an_qq_link_overcapacity";
@@ -725,28 +725,28 @@ final class WeiyunShareProcessController
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131370095)
+    int i1 = paramView.getId();
+    if (i1 != 2131437257)
     {
-      if (i != 2131370106)
+      if (i1 != 2131437268)
       {
-        if (i == 2131373082) {
-          f();
+        if (i1 == 2131440669) {
+          h();
         }
       }
       else {
-        h();
+        j();
       }
     }
     else {
-      g();
+      i();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.WeiyunShareProcessController
  * JD-Core Version:    0.7.0.1
  */

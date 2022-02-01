@@ -30,7 +30,7 @@ public final class EcshopPublicAccountChatPieTempApiImpl
       localObject2 = ((BaseActivity)localObject2).getChatFragment();
       paramContext = localObject1;
       if (localObject2 != null) {
-        paramContext = ((ChatFragment)localObject2).a();
+        paramContext = ((ChatFragment)localObject2).k();
       }
     }
     return paramContext;
@@ -44,10 +44,10 @@ public final class EcshopPublicAccountChatPieTempApiImpl
     Object localObject1 = localObject2;
     if (localObject3 != null)
     {
-      localObject3 = ((BaseChatPie)localObject3).c;
+      localObject3 = ((BaseChatPie)localObject3).aZ;
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = (ViewGroup)((ViewGroup)localObject3).findViewById(2131362698);
+        localObject1 = (ViewGroup)((ViewGroup)localObject3).findViewById(2131428370);
       }
     }
     return localObject1;
@@ -60,9 +60,9 @@ public final class EcshopPublicAccountChatPieTempApiImpl
     paramContext = getCurrentPie(paramContext);
     if (paramContext != null)
     {
-      paramContext = paramContext.c;
+      paramContext = paramContext.aZ;
       if (paramContext != null) {
-        return (ViewGroup)paramContext.findViewById(2131362698);
+        return (ViewGroup)paramContext.findViewById(2131428370);
       }
     }
     return null;
@@ -89,7 +89,7 @@ public final class EcshopPublicAccountChatPieTempApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.temp.api.impl.EcshopPublicAccountChatPieTempApiImpl
  * JD-Core Version:    0.7.0.1
  */

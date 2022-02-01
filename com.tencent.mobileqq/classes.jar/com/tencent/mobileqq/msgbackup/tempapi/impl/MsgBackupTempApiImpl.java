@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Pair;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.litetransfersdk.ProtocolHelper;
@@ -36,7 +35,6 @@ import com.tencent.mobileqq.mtt.MttBrowerWrapper;
 import com.tencent.mobileqq.multimsg.MultiMsgUtil;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
 import com.tencent.mobileqq.service.message.TransMsgContext;
-import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
 import com.tencent.mobileqq.settings.message.ChatHistorySettingFragment;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.troop.data.TroopFileInfo;
@@ -70,15 +68,15 @@ public class MsgBackupTempApiImpl
     paramBaseQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
     paramString = TroopFileTransferManager.a(paramBaseQQAppInterface, Long.parseLong(paramString));
     paramBaseQQAppInterface = TroopFileUtils.a(paramBaseQQAppInterface, paramMessageForTroopFile);
-    if ((paramString != null) && (paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.jdField_a_of_type_JavaUtilUUID != null)) {
-      return paramString.a(paramBaseQQAppInterface.jdField_a_of_type_JavaUtilUUID);
+    if ((paramString != null) && (paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.a != null)) {
+      return paramString.i(paramBaseQQAppInterface.a);
     }
     return null;
   }
   
   public ChatMessage changeRealChatMessage(ChatMessage paramChatMessage)
   {
-    return FileManagerUtil.a(paramChatMessage);
+    return FileManagerUtil.b(paramChatMessage);
   }
   
   public MessageRecord changeRichTextToTextMsg(BaseQQAppInterface paramBaseQQAppInterface, MessageRecord paramMessageRecord, String paramString, boolean paramBoolean)
@@ -96,7 +94,7 @@ public class MsgBackupTempApiImpl
     RecentFaceDecoder localRecentFaceDecoder = this.mFaceDecoder;
     if (localRecentFaceDecoder != null)
     {
-      localRecentFaceDecoder.a();
+      localRecentFaceDecoder.b();
       this.mFaceDecoder = null;
     }
   }
@@ -108,7 +106,7 @@ public class MsgBackupTempApiImpl
   
   public List getAllMsgTableData(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getMessageFacade().b();
+    return ((QQAppInterface)paramBaseQQAppInterface).getMessageFacade().E();
   }
   
   public MqqHandler getConversationHandler(BaseQQAppInterface paramBaseQQAppInterface)
@@ -120,7 +118,7 @@ public class MsgBackupTempApiImpl
   {
     paramBaseQQAppInterface = getTroopFileInfo(paramBaseQQAppInterface, paramLong, paramMessageForTroopFile);
     if (paramBaseQQAppInterface != null) {
-      return paramBaseQQAppInterface.c;
+      return paramBaseQQAppInterface.d;
     }
     return null;
   }
@@ -145,7 +143,7 @@ public class MsgBackupTempApiImpl
   {
     paramBaseQQAppInterface = getTroopFileInfo(paramBaseQQAppInterface, paramLong, paramMessageForTroopFile);
     if (paramBaseQQAppInterface != null) {
-      return paramBaseQQAppInterface.b.getBytes();
+      return paramBaseQQAppInterface.c.getBytes();
     }
     return null;
   }
@@ -154,7 +152,7 @@ public class MsgBackupTempApiImpl
   {
     paramBaseQQAppInterface = getTroopFileStatusInfo(paramBaseQQAppInterface, paramMessageForTroopFile);
     if (paramBaseQQAppInterface != null) {
-      return paramBaseQQAppInterface.f;
+      return paramBaseQQAppInterface.p;
     }
     return 0;
   }
@@ -163,7 +161,7 @@ public class MsgBackupTempApiImpl
   {
     paramBaseQQAppInterface = getTroopFileStatusInfo(paramBaseQQAppInterface, paramMessageForTroopFile);
     if (paramBaseQQAppInterface != null) {
-      return paramBaseQQAppInterface.e;
+      return paramBaseQQAppInterface.o;
     }
     return 0;
   }
@@ -172,7 +170,7 @@ public class MsgBackupTempApiImpl
   {
     paramBaseQQAppInterface = getTroopFileStatusInfo(paramBaseQQAppInterface, paramMessageRecord);
     if (paramBaseQQAppInterface != null) {
-      return FileManagerUtil.a(paramBaseQQAppInterface.g);
+      return FileManagerUtil.c(paramBaseQQAppInterface.t);
     }
     return 0;
   }
@@ -184,14 +182,14 @@ public class MsgBackupTempApiImpl
   
   public int getInActionLoginB(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).mAutomator.a();
+    return ((QQAppInterface)paramBaseQQAppInterface).mAutomator.f();
   }
   
   public String getLargeThumbPath(BaseQQAppInterface paramBaseQQAppInterface, MessageRecord paramMessageRecord)
   {
     paramBaseQQAppInterface = getTroopFileStatusInfo(paramBaseQQAppInterface, paramMessageRecord);
     if (paramBaseQQAppInterface != null) {
-      return paramBaseQQAppInterface.c;
+      return paramBaseQQAppInterface.m;
     }
     return null;
   }
@@ -209,7 +207,7 @@ public class MsgBackupTempApiImpl
   {
     paramBaseQQAppInterface = getTroopFileStatusInfo(paramBaseQQAppInterface, paramMessageRecord);
     if (paramBaseQQAppInterface != null) {
-      return paramBaseQQAppInterface.jdField_a_of_type_JavaLangString;
+      return paramBaseQQAppInterface.k;
     }
     return null;
   }
@@ -225,7 +223,7 @@ public class MsgBackupTempApiImpl
   
   public MessageRecord getMessageRecord(BaseQQAppInterface paramBaseQQAppInterface, String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getMessageFacade().a(paramString, paramInt1, paramLong, paramInt2);
+    return ((QQAppInterface)paramBaseQQAppInterface).getMessageFacade().c(paramString, paramInt1, paramLong, paramInt2);
   }
   
   public im_msg_body.MsgBody getMultiMsgBody(BaseQQAppInterface paramBaseQQAppInterface, MessageRecord paramMessageRecord)
@@ -260,7 +258,7 @@ public class MsgBackupTempApiImpl
   {
     if (paramMessageRecord.isMultiMsg)
     {
-      paramMessageRecord = (MessageForTroopFile)FileManagerUtil.a((ChatMessage)paramMessageRecord);
+      paramMessageRecord = (MessageForTroopFile)FileManagerUtil.b((ChatMessage)paramMessageRecord);
       return TroopFileUtils.a((QQAppInterface)paramBaseQQAppInterface, paramMessageRecord);
     }
     paramMessageRecord = (MessageForTroopFile)paramMessageRecord;
@@ -280,11 +278,6 @@ public class MsgBackupTempApiImpl
   public String getUnsupportMsgStr(BaseQQAppInterface paramBaseQQAppInterface, MessageRecord paramMessageRecord)
   {
     return MultiMsgUtil.a((QQAppInterface)paramBaseQQAppInterface, (ChatMessage)paramMessageRecord);
-  }
-  
-  public boolean getUseNewSettings(AppInterface paramAppInterface)
-  {
-    return SettingsConfigHelper.a(paramAppInterface);
   }
   
   public void gotoChatHistoryFragment(Context paramContext, Intent paramIntent)
@@ -328,7 +321,7 @@ public class MsgBackupTempApiImpl
   
   public boolean isAnonymousMsg(MessageRecord paramMessageRecord)
   {
-    return AnonymousChatHelper.a(paramMessageRecord);
+    return AnonymousChatHelper.c(paramMessageRecord);
   }
   
   public boolean isBeancurdMsg(ChatMessage paramChatMessage)
@@ -363,7 +356,7 @@ public class MsgBackupTempApiImpl
   
   public FileManagerEntity queryEntityForDbByFileId(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerProxy().a(paramString);
+    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerProxy().c(paramString);
   }
   
   public FileManagerEntity queryFileEntityByUniseq(BaseQQAppInterface paramBaseQQAppInterface, long paramLong, String paramString, int paramInt)
@@ -373,7 +366,7 @@ public class MsgBackupTempApiImpl
   
   public FileManagerEntity queryFileManagerEntityByFileUuidForMemory(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerProxy().e(paramString);
+    return ((QQAppInterface)paramBaseQQAppInterface).getFileManagerProxy().g(paramString);
   }
   
   public void saveItemLargeThrumbPath(BaseQQAppInterface paramBaseQQAppInterface, MessageForTroopFile paramMessageForTroopFile, String paramString)
@@ -407,11 +400,11 @@ public class MsgBackupTempApiImpl
     {
       if (FileUtils.fileExistsAndNotEmpty(paramString1))
       {
-        paramMessageForTroopFile.i = paramString1;
-        paramMessageForTroopFile.e = 11;
+        paramMessageForTroopFile.t = paramString1;
+        paramMessageForTroopFile.p = 11;
       }
       if (FileUtils.fileExistsAndNotEmpty(paramString2)) {
-        paramMessageForTroopFile.k = paramString2;
+        paramMessageForTroopFile.x = paramString2;
       }
       TroopFileTransferManager.a((QQAppInterface)paramBaseQQAppInterface, paramLong).a(paramMessageForTroopFile);
     }
@@ -429,7 +422,7 @@ public class MsgBackupTempApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.tempapi.impl.MsgBackupTempApiImpl
  * JD-Core Version:    0.7.0.1
  */

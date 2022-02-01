@@ -13,14 +13,14 @@ class BindGroupActivity$4$1$1
   {
     if (paramInt == 1)
     {
-      this.a.a.a.a.cancel();
+      this.a.a.a.y.cancel();
       this.a.a.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupActivity.4.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -32,24 +32,24 @@ public class GifTemplatePicker
   public GifTemplatePicker(Context paramContext)
   {
     super(paramContext);
-    a(1);
+    b(1);
   }
   
   public GifTemplatePicker(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(1);
+    b(1);
   }
   
   public GifTemplatePicker(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(1);
+    b(1);
   }
   
   private void b(boolean paramBoolean)
   {
-    a(new GifTemplatePicker.GifTemplatePickerData(2130837948, 0), false);
+    a(new GifTemplatePicker.GifTemplatePickerData(2130837972, 0), false);
     Object localObject = DoodleResHelper.a().a(1);
     if (localObject == null) {
       return;
@@ -70,42 +70,6 @@ public class GifTemplatePicker
     }
   }
   
-  public GifTemplatePicker.ViewHolder a(int paramInt, GifTemplatePicker.GifTemplatePickerData paramGifTemplatePickerData)
-  {
-    GifTemplatePicker.ViewHolder localViewHolder = new GifTemplatePicker.ViewHolder();
-    RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
-    localRelativeLayout.setOnClickListener(this);
-    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(Utils.a(50.0F, getResources()), Utils.a(37.0F, getResources())));
-    localViewHolder.a(localRelativeLayout);
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Utils.a(40.0F, getResources()), Utils.a(27.0F, getResources()));
-    paramInt = Utils.a(5.0F, getResources());
-    localLayoutParams.leftMargin = paramInt;
-    localLayoutParams.topMargin = paramInt;
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    if (paramGifTemplatePickerData.a == 1) {
-      paramGifTemplatePickerData = DoodleResHelper.a().a(1, paramGifTemplatePickerData.b);
-    } else if (paramGifTemplatePickerData.a == 0) {
-      paramGifTemplatePickerData = getContext().getResources().getDrawable(paramGifTemplatePickerData.b);
-    } else {
-      paramGifTemplatePickerData = null;
-    }
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramGifTemplatePickerData);
-    localRelativeLayout.addView(localViewHolder.jdField_a_of_type_AndroidWidgetImageView);
-    localViewHolder.jdField_a_of_type_AndroidViewView = new View(getContext());
-    localViewHolder.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    localViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1427313428);
-    localViewHolder.jdField_a_of_type_AndroidViewView.setClickable(false);
-    localRelativeLayout.addView(localViewHolder.jdField_a_of_type_AndroidViewView, 0);
-    return localViewHolder;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
   public void a(int paramInt, GifTemplatePicker.GifTemplatePickerData paramGifTemplatePickerData)
   {
     if ((this.a != null) && (paramGifTemplatePickerData != null))
@@ -121,39 +85,39 @@ public class GifTemplatePicker
   
   public void a(int paramInt, GifTemplatePicker.GifTemplatePickerData paramGifTemplatePickerData, GifTemplatePicker.ViewHolder paramViewHolder)
   {
-    if (paramViewHolder.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (paramViewHolder.a != null)
     {
       Object localObject = null;
       if (paramGifTemplatePickerData.a == 1) {
-        localObject = DoodleResHelper.a().a(1, paramGifTemplatePickerData.b);
+        localObject = DoodleResHelper.a().g(1, paramGifTemplatePickerData.b);
       } else if (paramGifTemplatePickerData.a == 0) {
         localObject = getContext().getResources().getDrawable(paramGifTemplatePickerData.b);
       }
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      if (AppSetting.d)
+      paramViewHolder.a.setImageDrawable((Drawable)localObject);
+      if (AppSetting.e)
       {
         if (paramInt == 0)
         {
-          localObject = HardCodeUtil.a(2131705358);
+          localObject = HardCodeUtil.a(2131903240);
         }
         else
         {
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(HardCodeUtil.a(2131705357));
+          ((StringBuilder)localObject).append(HardCodeUtil.a(2131903239));
           ((StringBuilder)localObject).append(paramInt);
           localObject = ((StringBuilder)localObject).toString();
         }
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setContentDescription((CharSequence)localObject);
+        paramViewHolder.a.setContentDescription((CharSequence)localObject);
       }
     }
-    if (paramViewHolder.jdField_a_of_type_AndroidViewView != null)
+    if (paramViewHolder.b != null)
     {
       if (paramGifTemplatePickerData.a())
       {
-        paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        paramViewHolder.b.setVisibility(0);
         return;
       }
-      paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramViewHolder.b.setVisibility(8);
     }
   }
   
@@ -165,7 +129,7 @@ public class GifTemplatePicker
       {
         a(false);
         b(false);
-        c();
+        d();
         return;
       }
       if (4 == paramInt2) {
@@ -181,15 +145,51 @@ public class GifTemplatePicker
   public boolean a()
   {
     b(true);
-    c();
+    d();
     return true;
+  }
+  
+  public GifTemplatePicker.ViewHolder b(int paramInt, GifTemplatePicker.GifTemplatePickerData paramGifTemplatePickerData)
+  {
+    GifTemplatePicker.ViewHolder localViewHolder = new GifTemplatePicker.ViewHolder();
+    RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
+    localRelativeLayout.setOnClickListener(this);
+    localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(Utils.a(50.0F, getResources()), Utils.a(37.0F, getResources())));
+    localViewHolder.a(localRelativeLayout);
+    localViewHolder.a = new ImageView(getContext());
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Utils.a(40.0F, getResources()), Utils.a(27.0F, getResources()));
+    paramInt = Utils.a(5.0F, getResources());
+    localLayoutParams.leftMargin = paramInt;
+    localLayoutParams.topMargin = paramInt;
+    localViewHolder.a.setLayoutParams(localLayoutParams);
+    if (paramGifTemplatePickerData.a == 1) {
+      paramGifTemplatePickerData = DoodleResHelper.a().g(1, paramGifTemplatePickerData.b);
+    } else if (paramGifTemplatePickerData.a == 0) {
+      paramGifTemplatePickerData = getContext().getResources().getDrawable(paramGifTemplatePickerData.b);
+    } else {
+      paramGifTemplatePickerData = null;
+    }
+    localViewHolder.a.setOnClickListener(this);
+    localViewHolder.a.setImageDrawable(paramGifTemplatePickerData);
+    localRelativeLayout.addView(localViewHolder.a);
+    localViewHolder.b = new View(getContext());
+    localViewHolder.b.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    localViewHolder.b.setBackgroundColor(-1427313428);
+    localViewHolder.b.setClickable(false);
+    localRelativeLayout.addView(localViewHolder.b, 0);
+    return localViewHolder;
+  }
+  
+  public void b()
+  {
+    this.a = null;
   }
   
   public void onClick(View paramView)
   {
     int i = a(paramView);
     a(i, false);
-    GifTemplatePicker.GifTemplatePickerData localGifTemplatePickerData = (GifTemplatePicker.GifTemplatePickerData)a(i);
+    GifTemplatePicker.GifTemplatePickerData localGifTemplatePickerData = (GifTemplatePicker.GifTemplatePickerData)c(i);
     if (localGifTemplatePickerData != null)
     {
       AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -209,7 +209,7 @@ public class GifTemplatePicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker
  * JD-Core Version:    0.7.0.1
  */

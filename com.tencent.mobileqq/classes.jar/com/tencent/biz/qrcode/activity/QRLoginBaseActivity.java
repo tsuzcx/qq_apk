@@ -17,7 +17,7 @@ import mqq.app.AppRuntime;
 public abstract class QRLoginBaseActivity
   extends IphoneTitleBarActivity
 {
-  protected ImageView b;
+  protected ImageView A;
   
   protected abstract void a();
   
@@ -35,9 +35,9 @@ public abstract class QRLoginBaseActivity
     super.doOnCreate(paramBundle);
     a();
     hideTitleBar();
-    this.b = ((ImageView)super.findViewById(2131369926));
-    this.b.setContentDescription(getText(2131690706));
-    this.b.setOnClickListener(new QRLoginBaseActivity.1(this));
+    this.A = ((ImageView)super.findViewById(2131437067));
+    this.A.setContentDescription(getText(2131887625));
+    this.A.setOnClickListener(new QRLoginBaseActivity.1(this));
     return true;
   }
   
@@ -73,12 +73,12 @@ public abstract class QRLoginBaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131167114);
+        int i = getResources().getColor(2131168092);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
           if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-            this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838739));
+            this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838958));
           } else {
             this.mSystemBarComp.setStatusDrawable(null);
           }

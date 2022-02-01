@@ -18,25 +18,25 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ZimuViewProxy
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  EffectZimuManager jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager = null;
-  ZimuView jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = null;
+  ZimuView a = null;
+  EffectZimuManager b = null;
+  VideoAppInterface c;
+  Context d;
   
   public ZimuViewProxy(VideoAppInterface paramVideoAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramVideoAppInterface;
+    this.d = paramContext;
   }
   
   private boolean a(long paramLong, ViewGroup paramViewGroup)
   {
-    ZimuView localZimuView = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView;
+    ZimuView localZimuView = this.a;
     if (localZimuView != null)
     {
       localZimuView.h();
-      paramViewGroup.removeView(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView);
-      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = null;
+      paramViewGroup.removeView(this.a);
+      this.a = null;
       return true;
     }
     return false;
@@ -44,20 +44,20 @@ public class ZimuViewProxy
   
   private boolean b(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView = ZimuViewFactory.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView;
+    this.a = ZimuViewFactory.a(paramLong, this.c, this.d, paramString);
+    Object localObject = this.a;
     boolean bool1 = false;
     if (localObject != null)
     {
-      float f1 = ((ZimuView)localObject).a();
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
+      float f1 = ((ZimuView)localObject).getViewHeight();
+      localObject = this.d.getResources();
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)f1);
       boolean bool2 = paramString.equals("film");
       float f2 = 0.0F;
       if (bool2)
       {
         f1 = paramInt2;
-        f2 = ((Resources)localObject).getDimension(2131297775);
+        f2 = ((Resources)localObject).getDimension(2131298445);
         localLayoutParams.addRule(12);
         f2 = f1 - f2;
         f1 = 0.0F;
@@ -67,45 +67,27 @@ public class ZimuViewProxy
         f1 = paramInt1;
       }
       localLayoutParams.setMargins(0, (int)f1, 0, (int)f2);
-      paramViewGroup.addView(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView, localLayoutParams);
+      paramViewGroup.addView(this.a, localLayoutParams);
     }
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView != null) {
+    if (this.a != null) {
       bool1 = true;
     }
     return bool1;
   }
   
-  public EffectZimuManager a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager == null) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager = ((EffectZimuManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
-    }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager;
-  }
-  
-  public ZimuItem a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
-    {
-      a();
-      return (ZimuItem)this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager.a();
-    }
-    return null;
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
+    if (this.c.d(0))
     {
-      Object localObject = a();
+      Object localObject = b();
       if (localObject != null)
       {
-        localObject = (ZimuItem)((EffectZimuManager)localObject).a();
+        localObject = (ZimuItem)((EffectZimuManager)localObject).c();
         if (localObject != null)
         {
           localObject = ((ZimuItem)localObject).getId();
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            new ControlUIObserver.ZimuRequest(AudioHelper.b(), "maybeShowZimu", 1, (String)localObject).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+            new ControlUIObserver.ZimuRequest(AudioHelper.c(), "maybeShowZimu", 1, (String)localObject).a(this.c);
           }
         }
       }
@@ -119,7 +101,7 @@ public class ZimuViewProxy
   
   public void a(SentenceInfo paramSentenceInfo)
   {
-    ZimuView localZimuView = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView;
+    ZimuView localZimuView = this.a;
     if (localZimuView != null) {
       localZimuView.a(paramSentenceInfo);
     }
@@ -127,29 +109,29 @@ public class ZimuViewProxy
   
   public void a(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = (RelativeLayout.LayoutParams)((ZimuView)localObject).getLayoutParams();
-      Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.a().equals("film"))
+      Resources localResources = this.d.getResources();
+      if (this.a.getID().equals("film"))
       {
-        if (paramVideoLayerUI.i()) {
-          ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(paramVideoLayerUI.c() - ScreenLayoutDoubleScreen.b(paramVideoLayerUI.b()) + localResources.getDimension(2131297671)));
+        if (paramVideoLayerUI.V()) {
+          ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(paramVideoLayerUI.h() - ScreenLayoutDoubleScreen.c(paramVideoLayerUI.g()) + localResources.getDimension(2131298336)));
         } else {
-          ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(paramInt2 - localResources.getDimension(2131297775)));
+          ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(paramInt2 - localResources.getDimension(2131298445)));
         }
       }
       else {
-        ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)(paramInt1 + localResources.getDimension(2131297789)));
+        ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)(paramInt1 + localResources.getDimension(2131298459)));
       }
-      this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    a();
+    b();
   }
   
   public boolean a(long paramLong, ViewGroup paramViewGroup, boolean paramBoolean)
@@ -164,20 +146,20 @@ public class ZimuViewProxy
       localStringBuilder.append("]");
       QLog.w("ZimuViewProxy", 1, localStringBuilder.toString());
     }
-    a();
+    b();
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager.a(paramLong, null);
+      this.b.a(paramLong, null);
     }
     return a(paramLong, paramViewGroup);
   }
   
   public boolean a(long paramLong, String paramString, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
-    ZimuView localZimuView = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView;
+    ZimuView localZimuView = this.a;
     if (localZimuView == null) {
       return b(paramLong, paramString, paramViewGroup, paramInt1, paramInt2);
     }
-    if (!localZimuView.a().equals(paramString))
+    if (!localZimuView.getID().equals(paramString))
     {
       a(paramLong, paramViewGroup);
       return b(paramLong, paramString, paramViewGroup, paramInt1, paramInt2);
@@ -195,19 +177,37 @@ public class ZimuViewProxy
       localStringBuilder.append("]");
       QLog.w("ZimuViewProxy", 1, localStringBuilder.toString());
     }
-    a();
+    b();
     a(paramLong, paramViewGroup);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager.a(paramLong, null);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager.a("stopZimuView", paramLong);
+    this.b.a(paramLong, null);
+    this.b.a("stopZimuView", paramLong);
     return true;
+  }
+  
+  public EffectZimuManager b()
+  {
+    if (this.b == null) {
+      this.b = ((EffectZimuManager)this.c.c(0));
+    }
+    return this.b;
   }
   
   public void b(boolean paramBoolean)
   {
-    ZimuView localZimuView = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuView;
+    ZimuView localZimuView = this.a;
     if (localZimuView != null) {
       localZimuView.a(paramBoolean);
     }
+  }
+  
+  public ZimuItem c()
+  {
+    if (this.c.d(0))
+    {
+      b();
+      return (ZimuItem)this.b.c();
+    }
+    return null;
   }
 }
 

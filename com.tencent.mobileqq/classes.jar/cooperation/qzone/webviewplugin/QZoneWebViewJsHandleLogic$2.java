@@ -14,7 +14,7 @@ final class QZoneWebViewJsHandleLogic$2
   
   public void run()
   {
-    Object localObject = this.val$runtime.a();
+    Object localObject = this.val$runtime.d();
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
@@ -28,7 +28,7 @@ final class QZoneWebViewJsHandleLogic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic.2
  * JD-Core Version:    0.7.0.1
  */

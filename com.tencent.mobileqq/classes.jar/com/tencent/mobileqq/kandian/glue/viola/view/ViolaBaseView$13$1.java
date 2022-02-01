@@ -12,17 +12,17 @@ class ViolaBaseView$13$1
   
   public void onInfo(long paramLong, double paramDouble)
   {
-    if (ViolaBaseView.a(this.a.this$0) == 0.0D)
+    if (ViolaBaseView.p(this.a.this$0) == 0.0D)
     {
       ViolaBaseView.a(this.a.this$0, paramDouble);
-      ViolaBaseView.a(this.a.this$0).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.a(this.a.this$0)) }));
+      ViolaBaseView.a(this.a.this$0).addReportData(ViolaEnvironment.KEY_FRAME_PAGE, String.format("%.2f", new Object[] { Double.valueOf(ViolaBaseView.p(this.a.this$0)) }));
     }
     new Handler().postDelayed(new ViolaBaseView.13.1.1(this), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.13.1
  * JD-Core Version:    0.7.0.1
  */

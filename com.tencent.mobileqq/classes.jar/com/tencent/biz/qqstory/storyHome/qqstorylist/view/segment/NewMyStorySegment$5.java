@@ -19,19 +19,19 @@ class NewMyStorySegment$5
   
   public void a(StoryPushMsg paramStoryPushMsg)
   {
-    if ((NewMyStorySegment.a(this.a) != null) && (NewMyStorySegment.a(this.a).a != null))
+    if ((NewMyStorySegment.b(this.a) != null) && (NewMyStorySegment.b(this.a).t != null))
     {
-      String str = NewMyStorySegment.a(this.a).a.a;
-      if (!TextUtils.equals(str, paramStoryPushMsg.d))
+      String str = NewMyStorySegment.b(this.a).t.a;
+      if (!TextUtils.equals(str, paramStoryPushMsg.f))
       {
-        SLog.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+        SLog.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.f, str);
         return;
       }
       int i = paramStoryPushMsg.a;
       if ((i != 14) && (i != 15) && (i != 18) && (i != 19)) {
         return;
       }
-      this.a.a(new Step[] { new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a(str)), (Step)this.a.b.a(), new SimpleStep.GetResultSimpleStep(new NewMyStorySegment.5.1(this, str)) });
+      this.a.a(new Step[] { new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a(str)), (Step)this.a.g.b(), new SimpleStep.GetResultSimpleStep(new NewMyStorySegment.5.1(this, str)) });
       return;
     }
     SLog.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");

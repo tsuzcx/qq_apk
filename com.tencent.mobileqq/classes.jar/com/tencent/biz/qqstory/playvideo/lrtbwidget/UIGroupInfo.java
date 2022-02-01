@@ -12,47 +12,47 @@ import java.util.Map;
 public class UIGroupInfo
   extends IDataProvider.GroupInfo
 {
-  public final ErrorMessage a;
   public final boolean a;
-  public final String b;
+  public final String g;
+  public final ErrorMessage h;
   
   public UIGroupInfo(@NonNull ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
     super(new IDataProvider.GroupId(localStringBuilder.toString()));
-    this.b = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("ERROR");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("ERROR", "ERROR");
+    this.g = null;
+    this.h = paramErrorMessage;
+    this.a = paramBoolean;
+    this.c = new ArrayList();
+    this.c.add("ERROR");
+    this.d = new HashMap();
+    this.d.put("ERROR", "ERROR");
   }
   
   public UIGroupInfo(@NonNull String paramString, boolean paramBoolean)
   {
     super(new IDataProvider.GroupId(localStringBuilder.toString()));
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add("LOADING");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilMap.put("LOADING", "LOADING");
+    this.g = paramString;
+    this.h = null;
+    this.a = paramBoolean;
+    this.c = new ArrayList();
+    this.c.add("LOADING");
+    this.d = new HashMap();
+    this.d.put("LOADING", "LOADING");
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
+    return this.h != null;
   }
   
   public boolean c()
   {
-    return this.b != null;
+    return this.g != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.UIGroupInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class TofuMsgHandler
   {
     if ((BeancurdManager.a(paramMessageRecord)) && (!((ITofuManagerNew)paramAppRuntime.getManager(QQManagerFactory.TOFU_NEW_MANAGER)).a(paramMessageRecord)))
     {
-      QLog.d("TofuNew.TofuMsgHandler", 1, new Object[] { "handleMsgInAioList, out of date, msg = ", paramMessageRecord.toString() });
+      QLog.d("TofuNew.TofuMsgHandler", 1, new Object[] { "handleMsgInAioList, out of date, msg = ", paramMessageRecord.getUserLogString() });
       return new Object[] { paramMessageRecord, Boolean.valueOf(true) };
     }
     return new Object[] { paramMessageRecord, Boolean.valueOf(false) };
@@ -24,7 +24,7 @@ public class TofuMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.aiolist.TofuMsgHandler
  * JD-Core Version:    0.7.0.1
  */

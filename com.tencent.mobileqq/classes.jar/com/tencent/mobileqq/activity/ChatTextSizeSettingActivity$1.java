@@ -14,17 +14,17 @@ class ChatTextSizeSettingActivity$1
   {
     switch (paramView.getId())
     {
-    case 2131378596: 
+    case 2131447225: 
     default: 
       this.a.a = 0;
       break;
-    case 2131378598: 
+    case 2131447227: 
       this.a.a = 1;
       break;
-    case 2131378597: 
+    case 2131447226: 
       this.a.a = 2;
       break;
-    case 2131378595: 
+    case 2131447224: 
       this.a.a = 3;
     }
     ChatTextSizeSettingActivity localChatTextSizeSettingActivity = this.a;
@@ -35,7 +35,7 @@ class ChatTextSizeSettingActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatTextSizeSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

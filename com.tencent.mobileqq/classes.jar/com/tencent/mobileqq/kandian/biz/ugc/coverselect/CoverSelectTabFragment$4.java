@@ -18,12 +18,12 @@ class CoverSelectTabFragment$4
       QLog.d("RIJUGC.CoverSelectTabFragment", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.a;
-    CoverSelectTabFragment.a((CoverSelectTabFragment)localObject, paramString, CoverSelectTabFragment.a((CoverSelectTabFragment)localObject).getCurrentItem());
+    CoverSelectTabFragment.a((CoverSelectTabFragment)localObject, paramString, CoverSelectTabFragment.c((CoverSelectTabFragment)localObject).getCurrentItem());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.CoverSelectTabFragment.4
  * JD-Core Version:    0.7.0.1
  */

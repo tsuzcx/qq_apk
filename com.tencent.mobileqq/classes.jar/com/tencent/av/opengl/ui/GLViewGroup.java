@@ -12,42 +12,32 @@ import java.util.Comparator;
 public class GLViewGroup
   extends GLView
 {
-  private ArrayList<GLView> jdField_a_of_type_JavaUtilArrayList;
-  private Comparator<GLView> jdField_a_of_type_JavaUtilComparator = new GLViewGroup.SortComparator(this);
-  private GLView.OnZOrderChangedListener jdField_b_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener = new GLViewGroup.1(this);
-  private GLView jdField_b_of_type_ComTencentAvOpenglUiGLView;
-  protected boolean b;
+  protected boolean H = false;
+  private ArrayList<GLView> I;
+  private GLView J;
+  private GLView.OnZOrderChangedListener K = new GLViewGroup.1(this);
+  private Comparator<GLView> L = new GLViewGroup.SortComparator(this);
   
   public GLViewGroup(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public GLView a(int paramInt)
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (paramInt >= 0) && (paramInt < localArrayList.size())) {
-      return (GLView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    throw new ArrayIndexOutOfBoundsException(paramInt);
   }
   
   public void a(GLCanvas paramGLCanvas)
   {
-    paramGLCanvas.a(b() / 2, c() / 2, 0.0F);
+    paramGLCanvas.a(g() / 2, h() / 2, 0.0F);
     c(paramGLCanvas);
-    paramGLCanvas.a(-b() / 2, -c() / 2, 0.0F);
+    paramGLCanvas.a(-g() / 2, -h() / 2, 0.0F);
     e(paramGLCanvas);
   }
   
   public void a(GLCanvas paramGLCanvas, GLView paramGLView)
   {
-    if (!paramGLView.a()) {
+    if (!paramGLView.c()) {
       return;
     }
-    int i = -this.g;
-    int j = -this.f;
+    int i = -this.o;
+    int j = -this.n;
     paramGLCanvas.a(i, j);
     paramGLView.a(paramGLCanvas);
     paramGLCanvas.a(-i, -j);
@@ -55,17 +45,17 @@ public class GLViewGroup
   
   public void a(GLView paramGLView)
   {
-    if (paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView == null)
+    if (paramGLView.h == null)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      if (this.I == null) {
+        this.I = new ArrayList();
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramGLView);
-      paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView = this;
-      paramGLView.a(this.jdField_b_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener);
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
-      if (this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView != null) {
-        paramGLView.b(this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView);
+      this.I.add(paramGLView);
+      paramGLView.h = this;
+      paramGLView.a(this.K);
+      Collections.sort(this.I, this.L);
+      if (this.g != null) {
+        paramGLView.b(this.g);
       }
       return;
     }
@@ -74,39 +64,15 @@ public class GLViewGroup
   
   protected boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, GLView paramGLView, boolean paramBoolean)
   {
-    Rect localRect = paramGLView.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect = paramGLView.d;
     if ((!paramBoolean) || (localRect.contains(paramInt1, paramInt2)))
     {
       if (paramGLView.b(paramMotionEvent)) {
         return true;
       }
-      if ((this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener != null) && (this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener.a(paramGLView, paramMotionEvent))) {
+      if ((this.x != null) && (this.x.a(paramGLView, paramMotionEvent))) {
         return true;
       }
-    }
-    return false;
-  }
-  
-  public boolean a(GLView paramGLView)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject == null) {
-      return false;
-    }
-    if (((ArrayList)localObject).remove(paramGLView))
-    {
-      if (this.jdField_b_of_type_ComTencentAvOpenglUiGLView == paramGLView)
-      {
-        long l = SystemClock.uptimeMillis();
-        localObject = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-        b((MotionEvent)localObject);
-        ((MotionEvent)localObject).recycle();
-      }
-      paramGLView.d();
-      paramGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView = null;
-      paramGLView.a(null);
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
-      return true;
     }
     return false;
   }
@@ -114,30 +80,30 @@ public class GLViewGroup
   protected void b(int paramInt1, int paramInt2)
   {
     a(paramInt1, paramInt2);
-    int j = e();
+    int j = t();
     int i = 0;
     while (i < j)
     {
-      a(i).a(paramInt1, paramInt2);
+      h(i).a(paramInt1, paramInt2);
       i += 1;
     }
   }
   
   protected void b(GLRootView paramGLRootView)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = paramGLRootView;
-    int j = e();
+    this.g = paramGLRootView;
+    int j = t();
     int i = 0;
     while (i < j)
     {
-      a(i).b(paramGLRootView);
+      h(i).b(paramGLRootView);
       i += 1;
     }
   }
   
   protected void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.H = paramBoolean;
   }
   
   protected boolean b(MotionEvent paramMotionEvent)
@@ -145,33 +111,33 @@ public class GLViewGroup
     int j = (int)paramMotionEvent.getX();
     int k = (int)paramMotionEvent.getY();
     int i = paramMotionEvent.getAction();
-    Object localObject = this.jdField_b_of_type_ComTencentAvOpenglUiGLView;
+    Object localObject = this.J;
     if (localObject != null) {
       if (i == 0)
       {
         localObject = MotionEvent.obtain(paramMotionEvent);
         ((MotionEvent)localObject).setAction(3);
-        a((MotionEvent)localObject, j, k, this.jdField_b_of_type_ComTencentAvOpenglUiGLView, false);
-        this.jdField_b_of_type_ComTencentAvOpenglUiGLView = null;
+        a((MotionEvent)localObject, j, k, this.J, false);
+        this.J = null;
       }
       else
       {
         a(paramMotionEvent, j, k, (GLView)localObject, false);
         if ((i == 3) || (i == 1)) {
-          this.jdField_b_of_type_ComTencentAvOpenglUiGLView = null;
+          this.J = null;
         }
         return true;
       }
     }
     if (i == 0)
     {
-      i = e() - 1;
+      i = t() - 1;
       while (i >= 0)
       {
-        localObject = a(i);
-        if ((((GLView)localObject).a() == 0) && (a(paramMotionEvent, j, k, (GLView)localObject, true)))
+        localObject = h(i);
+        if ((((GLView)localObject).b() == 0) && (a(paramMotionEvent, j, k, (GLView)localObject, true)))
         {
-          this.jdField_b_of_type_ComTencentAvOpenglUiGLView = ((GLView)localObject);
+          this.J = ((GLView)localObject);
           return true;
         }
         i -= 1;
@@ -180,129 +146,162 @@ public class GLViewGroup
     return super.b(paramMotionEvent);
   }
   
-  protected void d()
+  public boolean b(GLView paramGLView)
   {
-    int j = e();
-    int i = 0;
-    while (i < j)
-    {
-      a(i).d();
-      i += 1;
+    Object localObject = this.I;
+    if (localObject == null) {
+      return false;
     }
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = null;
-  }
-  
-  protected void d(GLCanvas paramGLCanvas) {}
-  
-  protected boolean d()
-  {
+    if (((ArrayList)localObject).remove(paramGLView))
+    {
+      if (this.J == paramGLView)
+      {
+        long l = SystemClock.uptimeMillis();
+        localObject = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+        b((MotionEvent)localObject);
+        ((MotionEvent)localObject).recycle();
+      }
+      paramGLView.o();
+      paramGLView.h = null;
+      paramGLView.a(null);
+      Collections.sort(this.I, this.L);
+      return true;
+    }
     return false;
   }
   
-  public int e()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList == null) {
-      return 0;
-    }
-    return localArrayList.size();
-  }
-  
-  protected void e()
-  {
-    int j = e();
-    int i = 0;
-    while (i < j)
-    {
-      a(i).e();
-      i += 1;
-    }
-  }
+  protected void d(GLCanvas paramGLCanvas) {}
   
   protected void e(GLCanvas paramGLCanvas)
   {
     int i;
     int j;
-    if ((!this.jdField_b_of_type_Boolean) && (!d()))
+    if ((!this.H) && (!y()))
     {
       i = 0;
-      j = e();
+      j = t();
     }
     while (i < j)
     {
-      a(paramGLCanvas, a(i));
+      a(paramGLCanvas, h(i));
       i += 1;
       continue;
       d(paramGLCanvas);
     }
   }
   
-  protected void f(int paramInt)
+  protected void g(int paramInt)
   {
-    int j = e();
+    int j = t();
     int i = 0;
     while (i < j)
     {
-      GLView localGLView = a(i);
-      if (localGLView.a() == 0) {
-        localGLView.f(paramInt);
+      GLView localGLView = h(i);
+      if (localGLView.b() == 0) {
+        localGLView.g(paramInt);
       }
       i += 1;
     }
   }
   
-  public void h()
+  public GLView h(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList != null) {
-      Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+    ArrayList localArrayList = this.I;
+    if ((localArrayList != null) && (paramInt >= 0) && (paramInt < localArrayList.size())) {
+      return (GLView)this.I.get(paramInt);
     }
+    throw new ArrayIndexOutOfBoundsException(paramInt);
   }
   
-  public void i()
+  protected void o()
   {
-    int j = e();
+    int j = t();
     int i = 0;
     while (i < j)
     {
-      GLView localGLView = (GLView)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (this.jdField_b_of_type_ComTencentAvOpenglUiGLView == localGLView)
+      h(i).o();
+      i += 1;
+    }
+    this.g = null;
+  }
+  
+  protected void p()
+  {
+    int j = t();
+    int i = 0;
+    while (i < j)
+    {
+      h(i).p();
+      i += 1;
+    }
+  }
+  
+  public int t()
+  {
+    ArrayList localArrayList = this.I;
+    if (localArrayList == null) {
+      return 0;
+    }
+    return localArrayList.size();
+  }
+  
+  public void u()
+  {
+    ArrayList localArrayList = this.I;
+    if (localArrayList != null) {
+      Collections.sort(localArrayList, this.L);
+    }
+  }
+  
+  public void v()
+  {
+    int j = t();
+    int i = 0;
+    while (i < j)
+    {
+      GLView localGLView = (GLView)this.I.get(i);
+      if (this.J == localGLView)
       {
         long l = SystemClock.uptimeMillis();
         MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
         b(localMotionEvent);
         localMotionEvent.recycle();
       }
-      localGLView.d();
-      localGLView.jdField_a_of_type_ComTencentAvOpenglUiGLView = null;
+      localGLView.o();
+      localGLView.h = null;
       localGLView.a(null);
       i += 1;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.I.clear();
   }
   
-  protected void j()
+  protected void w()
   {
-    f();
-    int j = e();
+    q();
+    int j = t();
     int i = 0;
     while (i < j)
     {
-      a(i).f();
+      h(i).q();
       i += 1;
     }
   }
   
-  protected void k()
+  protected void x()
   {
-    g();
-    int j = e();
+    r();
+    int j = t();
     int i = 0;
     while (i < j)
     {
-      a(i).g();
+      h(i).r();
       i += 1;
     }
+  }
+  
+  protected boolean y()
+  {
+    return false;
   }
 }
 

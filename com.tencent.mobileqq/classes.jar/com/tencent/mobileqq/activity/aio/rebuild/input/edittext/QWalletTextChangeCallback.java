@@ -37,13 +37,13 @@ public class QWalletTextChangeCallback
       localStringBuilder.append(i);
       localStringBuilder.append("");
       ReportController.b(localQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "sign", 0, 0, (String)localObject, localStringBuilder.toString(), "", "");
-      TroopGiftUtil.a(paramAIOContext.a(), paramTroopInfo.troopuin, "input", localQQAppInterface);
+      TroopGiftUtil.a(paramAIOContext.b(), paramTroopInfo.troopuin, "input", localQQAppInterface);
     }
   }
   
   private boolean a(AIOContext paramAIOContext, CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    return (paramInt2 == 1) && (a(paramCharSequence, paramInt1)) && (!paramAIOContext.e()) && (!((QWalletAIOLifeCycleHelper)paramAIOContext.a(27)).a);
+    return (paramInt2 == 1) && (a(paramCharSequence, paramInt1)) && (!paramAIOContext.t()) && (!((QWalletAIOLifeCycleHelper)paramAIOContext.a(27)).a);
   }
   
   private boolean a(CharSequence paramCharSequence, int paramInt)
@@ -59,7 +59,7 @@ public class QWalletTextChangeCallback
     if (localQWalletAIOLifeCycleHelper != null)
     {
       localQWalletAIOLifeCycleHelper.a(paramEditable);
-      if (paramAIOContext.a().jdField_a_of_type_Int == 1) {
+      if (paramAIOContext.O().a == 1) {
         localQWalletAIOLifeCycleHelper.b();
       }
     }
@@ -68,13 +68,13 @@ public class QWalletTextChangeCallback
   
   public void b(AIOContext paramAIOContext, CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    BaseSessionInfo localBaseSessionInfo = paramAIOContext.a();
-    if ((localBaseSessionInfo.jdField_a_of_type_Int == 1) && (!localBaseSessionInfo.l) && (localBaseSessionInfo.jdField_a_of_type_Int == 1) && (localBaseSessionInfo.jdField_a_of_type_JavaLangString != null) && (localBaseSessionInfo.jdField_a_of_type_JavaLangString.length() != 0))
+    BaseSessionInfo localBaseSessionInfo = paramAIOContext.O();
+    if ((localBaseSessionInfo.a == 1) && (!localBaseSessionInfo.z) && (localBaseSessionInfo.a == 1) && (localBaseSessionInfo.b != null) && (localBaseSessionInfo.b.length() != 0))
     {
       if (a(paramAIOContext, paramCharSequence, paramInt1, paramInt3))
       {
         TroopManager localTroopManager = (TroopManager)paramAIOContext.a().getManager(QQManagerFactory.TROOP_MANAGER);
-        if (localTroopManager.m(localBaseSessionInfo.jdField_a_of_type_JavaLangString)) {
+        if (localTroopManager.Z(localBaseSessionInfo.b)) {
           return;
         }
         paramInt2 = 0;
@@ -85,10 +85,10 @@ public class QWalletTextChangeCallback
           }
           paramInt2 += 1;
         }
-        a(paramAIOContext, localTroopManager.b(localBaseSessionInfo.jdField_a_of_type_JavaLangString));
+        a(paramAIOContext, localTroopManager.f(localBaseSessionInfo.b));
         return;
       }
-      if ((!paramAIOContext.e()) && (!((QWalletAIOLifeCycleHelper)paramAIOContext.a(27)).a)) {
+      if ((!paramAIOContext.t()) && (!((QWalletAIOLifeCycleHelper)paramAIOContext.a(27)).a)) {
         ((AIOAtHelper)paramAIOContext.a(34)).b(paramCharSequence, paramInt1, paramInt2, paramInt3);
       }
     }
@@ -96,7 +96,7 @@ public class QWalletTextChangeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.edittext.QWalletTextChangeCallback
  * JD-Core Version:    0.7.0.1
  */

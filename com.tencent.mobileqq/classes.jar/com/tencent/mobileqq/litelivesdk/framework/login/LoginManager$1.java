@@ -11,17 +11,17 @@ class LoginManager$1
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginILiveLoginTicketListener.a(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
   
   public void a(BizLoginRequest paramBizLoginRequest)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.a(LoginManager.a(paramBizLoginRequest));
+    this.b.a(LoginManager.a(paramBizLoginRequest));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.login.LoginManager.1
  * JD-Core Version:    0.7.0.1
  */

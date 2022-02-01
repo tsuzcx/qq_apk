@@ -35,6 +35,7 @@ public class TPListenerManager
   private static final int MSG_NOTIFY_M3U8_CONTENT = 2007;
   private static final int MSG_NOTIFY_PLAYER_SWITCH_DEFINITION = 2003;
   private static final int MSG_NOTIFY_SOCKET_FD = 2008;
+  private static final int MSG_PCDN_TS_FAILED = 3003;
   private static final int MSG_PLAY_VIDEO_NOT_FOUND = 101;
   private static final int MSG_PREPARE_FINISH = 50;
   private static final int MSG_PROGRESS = 2;
@@ -150,52 +151,62 @@ public class TPListenerManager
       {
         if (paramInt1 != 3001)
         {
-          if (paramInt1 != 2003)
+          if (paramInt1 != 3003)
           {
-            if (paramInt1 != 2004)
+            if (paramInt1 != 2003)
             {
-              if (paramInt1 != 2006) {
-                if (paramInt1 != 2007) {
-                  switch (paramInt1)
-                  {
+              if (paramInt1 != 2004)
+              {
+                if (paramInt1 != 2006) {
+                  if (paramInt1 != 2007) {
+                    switch (paramInt1)
+                    {
+                    }
                   }
                 }
-              }
-              for (;;)
-              {
-                return;
-                paramITPPlayListener.onDownloadProtocolUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2));
-                continue;
-                paramITPPlayListener.onDownloadStatusUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0));
-                continue;
-                paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
-                l = TPDLProxyUtils.objectToLong(paramObject2, 0L);
-                paramObject2 = new HashMap();
-                if (!TextUtils.isEmpty(paramObject1))
+                for (;;)
                 {
-                  paramObject2.put("exttag", paramObject1);
-                  paramObject2.put("randnum", String.valueOf(l));
+                  return;
+                  paramITPPlayListener.onDownloadProtocolUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2));
+                  continue;
+                  paramITPPlayListener.onDownloadStatusUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0));
+                  continue;
+                  paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
+                  l = TPDLProxyUtils.objectToLong(paramObject2, 0L);
+                  paramObject2 = new HashMap();
+                  if (!TextUtils.isEmpty(paramObject1))
+                  {
+                    paramObject2.put("exttag", paramObject1);
+                    paramObject2.put("randnum", String.valueOf(l));
+                  }
+                  paramITPPlayListener.onDownloadCdnUrlExpired(paramObject2);
+                  continue;
+                  paramITPPlayListener.onDownloadCdnUrlInfoUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), TPDLProxyUtils.byteArrayToString((byte[])paramObject3), TPDLProxyUtils.byteArrayToString((byte[])paramObject4));
+                  continue;
+                  paramITPPlayListener.onDownloadCdnUrlUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
+                  continue;
+                  paramITPPlayListener.onDownloadFinish();
+                  continue;
+                  paramITPPlayListener.onDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L), TPDLProxyUtils.byteArrayToString((byte[])paramObject5));
+                  continue;
+                  paramITPPlayListener.onPlayCallback(4, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
+                  continue;
+                  paramITPPlayListener.onPlayCallback(3, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
                 }
-                paramITPPlayListener.onDownloadCdnUrlExpired(paramObject2);
-                continue;
-                paramITPPlayListener.onDownloadCdnUrlInfoUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), TPDLProxyUtils.byteArrayToString((byte[])paramObject3), TPDLProxyUtils.byteArrayToString((byte[])paramObject4));
-                continue;
-                paramITPPlayListener.onDownloadCdnUrlUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
-                continue;
-                paramITPPlayListener.onDownloadFinish();
-                continue;
-                paramITPPlayListener.onDownloadProgressUpdate(TPDLProxyUtils.objectToInt(paramObject1, 0), TPDLProxyUtils.objectToInt(paramObject2, 0), TPDLProxyUtils.objectToLong(paramObject3, 0L), TPDLProxyUtils.objectToLong(paramObject4, 0L), TPDLProxyUtils.byteArrayToString((byte[])paramObject5));
-                continue;
-                paramITPPlayListener.onPlayCallback(4, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
-                continue;
-                paramITPPlayListener.onPlayCallback(3, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
               }
+              paramInt1 = TPDLProxyUtils.objectToInt(paramObject2, 0);
+              TVKThreadUtil.getScheduledExecutorServiceInstance().execute(new TPListenerManager.3(this, paramInt1));
+              return;
             }
-            paramInt1 = TPDLProxyUtils.objectToInt(paramObject2, 0);
-            TVKThreadUtil.getScheduledExecutorServiceInstance().execute(new TPListenerManager.3(this, paramInt1));
+            paramITPPlayListener.onPlayCallback(2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), Integer.valueOf(TPDLProxyUtils.objectToInt(paramObject3, 0)), null);
             return;
           }
-          paramITPPlayListener.onPlayCallback(2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), Integer.valueOf(TPDLProxyUtils.objectToInt(paramObject3, 0)), null);
+          paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
+          paramObject2 = new StringBuilder();
+          paramObject2.append("onPcdnDownloadFailed: ");
+          paramObject2.append(paramObject1);
+          TPDLProxyLog.i("TPListenerManager", 0, "tpdlnative", paramObject2.toString());
+          paramITPPlayListener.onPcdnDownloadFailed(paramObject1);
           return;
         }
         paramITPPlayListener.onQuicDownloadStatusUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
@@ -230,7 +241,17 @@ public class TPListenerManager
     {
       if (paramInt1 != 4)
       {
-        if (paramInt1 != 50) {
+        if (paramInt1 != 50)
+        {
+          if (paramInt1 != 3003) {
+            return;
+          }
+          paramObject1 = TPDLProxyUtils.byteArrayToString((byte[])paramObject1);
+          paramObject2 = new StringBuilder();
+          paramObject2.append("onPcdnDownloadFailed: ");
+          paramObject2.append(paramObject1);
+          TPDLProxyLog.i("TPListenerManager", 0, "tpdlnative", paramObject2.toString());
+          paramITPPreLoadListener.onPcdnDownloadFailed(paramObject1);
           return;
         }
         paramITPPreLoadListener.onPrepareOK();
@@ -477,7 +498,7 @@ public class TPListenerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager
  * JD-Core Version:    0.7.0.1
  */

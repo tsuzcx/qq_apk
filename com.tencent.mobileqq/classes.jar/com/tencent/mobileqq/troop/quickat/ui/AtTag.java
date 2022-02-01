@@ -2,15 +2,15 @@ package com.tencent.mobileqq.troop.quickat.ui;
 
 import android.text.SpannableString;
 
-class AtTag
+public class AtTag
 {
   public final int a;
-  public final SpannableString a;
+  public final SpannableString b;
   
   public AtTag(int paramInt, SpannableString paramSpannableString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
+    this.a = paramInt;
+    this.b = paramSpannableString;
   }
   
   public boolean equals(Object paramObject)
@@ -24,22 +24,22 @@ class AtTag
         return false;
       }
       paramObject = (AtTag)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+      if (this.a != paramObject.a) {
         return false;
       }
-      SpannableString localSpannableString = this.jdField_a_of_type_AndroidTextSpannableString;
+      SpannableString localSpannableString = this.b;
       if (localSpannableString != null) {
-        return localSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
+        return localSpannableString.equals(paramObject.b);
       }
-      return paramObject.jdField_a_of_type_AndroidTextSpannableString == null;
+      return paramObject.b == null;
     }
     return false;
   }
   
   public int hashCode()
   {
-    int j = this.jdField_a_of_type_Int;
-    SpannableString localSpannableString = this.jdField_a_of_type_AndroidTextSpannableString;
+    int j = this.a;
+    SpannableString localSpannableString = this.b;
     int i;
     if (localSpannableString != null) {
       i = localSpannableString.hashCode();
@@ -53,16 +53,16 @@ class AtTag
   {
     StringBuilder localStringBuilder = new StringBuilder("AtTag{");
     localStringBuilder.append("startIndex=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", atSpan=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidTextSpannableString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtTag
  * JD-Core Version:    0.7.0.1
  */

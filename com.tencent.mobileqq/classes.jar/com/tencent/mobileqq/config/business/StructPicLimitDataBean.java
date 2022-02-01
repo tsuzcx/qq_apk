@@ -5,14 +5,8 @@ import org.json.JSONObject;
 
 public class StructPicLimitDataBean
 {
-  public long a;
-  public boolean a;
-  
-  public StructPicLimitDataBean()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 134217728L;
-  }
+  public boolean a = true;
+  public long b = 134217728L;
   
   public static StructPicLimitDataBean a(String paramString)
   {
@@ -28,8 +22,8 @@ public class StructPicLimitDataBean
         if (paramString.optInt("openSwitch", 0) == 0)
         {
           bool = true;
-          localStructPicLimitDataBean.jdField_a_of_type_Boolean = bool;
-          localStructPicLimitDataBean.jdField_a_of_type_Long = paramString.optLong("picMaxLen", 134217728L);
+          localStructPicLimitDataBean.a = bool;
+          localStructPicLimitDataBean.b = paramString.optLong("picMaxLen", 134217728L);
           return localStructPicLimitDataBean;
         }
       }
@@ -46,7 +40,7 @@ public class StructPicLimitDataBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.StructPicLimitDataBean
  * JD-Core Version:    0.7.0.1
  */

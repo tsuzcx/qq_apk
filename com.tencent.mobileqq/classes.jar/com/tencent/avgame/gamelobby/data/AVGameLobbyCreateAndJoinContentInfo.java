@@ -5,19 +5,17 @@ import androidx.annotation.NonNull;
 public class AVGameLobbyCreateAndJoinContentInfo
   extends AVGameBaseData
 {
-  private int a;
-  public String a;
-  public boolean a;
+  public String a = null;
   public String b = null;
   public String c = null;
   public String d = null;
+  public boolean e = false;
+  private int f;
   
   public AVGameLobbyCreateAndJoinContentInfo(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.f = paramInt;
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
     this.d = paramString4;
@@ -25,11 +23,11 @@ public class AVGameLobbyCreateAndJoinContentInfo
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.f;
   }
   
   @NonNull
-  public int b()
+  public int c()
   {
     return 3;
   }

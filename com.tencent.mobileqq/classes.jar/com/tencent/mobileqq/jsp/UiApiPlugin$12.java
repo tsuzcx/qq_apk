@@ -20,7 +20,7 @@ class UiApiPlugin$12
     if ("onCommentSend".equals(str)) {
       try
       {
-        str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+        str = (String)this.a.get(str);
         localObject1 = paramBundle.getString("commentId", "");
         localObject2 = paramBundle.getString("rowKey", "");
         localObject3 = paramBundle.getString("commentContent", "");
@@ -34,7 +34,7 @@ class UiApiPlugin$12
         ((StringBuilder)localObject1).append("");
         paramBundle.put("firstLevelComment", ((StringBuilder)localObject1).toString());
         paramBundle.put("result", "success");
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { paramBundle.toString() });
+        this.b.callJs(str, new String[] { paramBundle.toString() });
         return;
       }
       catch (JSONException paramBundle)
@@ -46,7 +46,7 @@ class UiApiPlugin$12
     if ("onCommentLike".equals(str)) {
       try
       {
-        str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+        str = (String)this.a.get(str);
         localObject1 = paramBundle.getString("commentId", "");
         localObject2 = paramBundle.getString("rowKey", "");
         paramBundle = paramBundle.getString("likeStatus", "");
@@ -55,7 +55,7 @@ class UiApiPlugin$12
         ((JSONObject)localObject3).put("rowKey", localObject2);
         ((JSONObject)localObject3).put("likeStatus", paramBundle);
         ((JSONObject)localObject3).put("result", "success");
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject3).toString() });
+        this.b.callJs(str, new String[] { ((JSONObject)localObject3).toString() });
         return;
       }
       catch (JSONException paramBundle)
@@ -67,14 +67,14 @@ class UiApiPlugin$12
     if ("onCommentDelete".equals(str)) {
       try
       {
-        str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+        str = (String)this.a.get(str);
         localObject1 = paramBundle.getString("commentId", "");
         paramBundle = paramBundle.getString("rowKey", "");
         localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("commentId", localObject1);
         ((JSONObject)localObject2).put("rowKey", paramBundle);
         ((JSONObject)localObject2).put("result", "success");
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject2).toString() });
+        this.b.callJs(str, new String[] { ((JSONObject)localObject2).toString() });
         return;
       }
       catch (JSONException paramBundle)
@@ -86,12 +86,12 @@ class UiApiPlugin$12
     if ("onPanelClose".equals(str)) {
       try
       {
-        str = (String)this.jdField_a_of_type_JavaUtilMap.get(str);
+        str = (String)this.a.get(str);
         paramBundle = paramBundle.getString("rowKey", "");
         localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("rowKey", paramBundle);
         ((JSONObject)localObject1).put("result", "success");
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { ((JSONObject)localObject1).toString() });
+        this.b.callJs(str, new String[] { ((JSONObject)localObject1).toString() });
         return;
       }
       catch (JSONException paramBundle)
@@ -103,7 +103,7 @@ class UiApiPlugin$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.12
  * JD-Core Version:    0.7.0.1
  */

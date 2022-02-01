@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@id/i0a" android:background="@color/aar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/at3"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/i0_" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/cqp" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <ImageView android:id="@id/i0_" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/icon_recent_xin_kandian" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
     <ImageView android:id="@id/i0b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/cif" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
     <TextView android:textSize="14.0sp" android:textColor="@color/aas" android:gravity="center" android:id="@id/i0c" android:layout_width="fill_parent" android:layout_height="@dimen/at3" android:text="@string/fw7" android:layout_toLeftOf="@id/i0b" android:layout_toRightOf="@id/i0_" />
 </RelativeLayout>

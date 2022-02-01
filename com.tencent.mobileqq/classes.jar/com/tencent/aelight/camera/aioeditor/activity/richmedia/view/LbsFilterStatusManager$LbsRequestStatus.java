@@ -4,22 +4,54 @@ import java.util.ArrayList;
 
 class LbsFilterStatusManager$LbsRequestStatus
 {
-  int jdField_a_of_type_Int = 3;
-  long jdField_a_of_type_Long = 0L;
-  LbsRequestStatus jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus = null;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  boolean jdField_a_of_type_Boolean = false;
+  LbsRequestStatus a = null;
+  boolean b = false;
+  ArrayList<String> c = new ArrayList(1);
+  long d = 0L;
+  int e = 3;
   
   static LbsRequestStatus a()
   {
     LbsRequestStatus localLbsRequestStatus = new LbsRequestStatus();
-    localLbsRequestStatus.a();
+    localLbsRequestStatus.b();
     return localLbsRequestStatus;
   }
   
-  String a()
+  boolean a(String paramString)
   {
-    int i = this.jdField_a_of_type_Int;
+    LbsFilterStatusManager.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.c.toString() }), null);
+    return this.c.contains(paramString);
+  }
+  
+  void b()
+  {
+    if (this.a == null) {
+      this.a = new LbsRequestStatus();
+    }
+  }
+  
+  void c()
+  {
+    this.b = false;
+    this.c.clear();
+    this.d = 0L;
+    this.e = 3;
+  }
+  
+  void d()
+  {
+    LbsRequestStatus localLbsRequestStatus = this.a;
+    localLbsRequestStatus.b = this.b;
+    localLbsRequestStatus.c.clear();
+    this.a.c.addAll(this.c);
+    localLbsRequestStatus = this.a;
+    localLbsRequestStatus.e = this.e;
+    localLbsRequestStatus.d = this.d;
+  }
+  
+  String e()
+  {
+    int i = this.e;
     if (i != 1)
     {
       if (i != 2) {
@@ -29,42 +61,10 @@ class LbsFilterStatusManager$LbsRequestStatus
     }
     return "LBS_REQ_PENDING";
   }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus == null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus = new LbsRequestStatus();
-    }
-  }
-  
-  boolean a(String paramString)
-  {
-    LbsFilterStatusManager.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
-    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  void c()
-  {
-    LbsRequestStatus localLbsRequestStatus = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus;
-    localLbsRequestStatus.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localLbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    localLbsRequestStatus = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus;
-    localLbsRequestStatus.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localLbsRequestStatus.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.view.LbsFilterStatusManager.LbsRequestStatus
  * JD-Core Version:    0.7.0.1
  */

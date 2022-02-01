@@ -14,12 +14,12 @@ class AEGIFStickerListPart$10
   {
     AEQLog.a("AEGIFStickerListPart", "[mTakeSameLoadingDialog.onCancel]");
     AEGIFStickerListPart.a(this.a, null);
-    AEGifMaterialManager.a().a();
+    AEGifMaterialManager.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGIFStickerListPart.10
  * JD-Core Version:    0.7.0.1
  */

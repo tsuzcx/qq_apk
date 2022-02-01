@@ -5,15 +5,9 @@ import org.json.JSONObject;
 
 public class TroopFoldMsgBean
 {
-  public int a;
-  public boolean a;
-  public int b = 15;
-  
-  public TroopFoldMsgBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 5;
-  }
+  public boolean a = false;
+  public int b = 5;
+  public int c = 15;
   
   public static TroopFoldMsgBean a(String paramString)
   {
@@ -29,17 +23,17 @@ public class TroopFoldMsgBean
         if (paramString.optInt("openSwitch", 0) == 1)
         {
           bool = true;
-          localTroopFoldMsgBean.jdField_a_of_type_Boolean = bool;
-          localTroopFoldMsgBean.jdField_a_of_type_Int = paramString.optInt("sameMsgCount", 5);
-          localTroopFoldMsgBean.b = paramString.optInt("loadMoreCount", 15);
-          if (localTroopFoldMsgBean.jdField_a_of_type_Int < 2) {
-            localTroopFoldMsgBean.jdField_a_of_type_Boolean = false;
+          localTroopFoldMsgBean.a = bool;
+          localTroopFoldMsgBean.b = paramString.optInt("sameMsgCount", 5);
+          localTroopFoldMsgBean.c = paramString.optInt("loadMoreCount", 15);
+          if (localTroopFoldMsgBean.b < 2) {
+            localTroopFoldMsgBean.a = false;
           }
-          if (localTroopFoldMsgBean.b < 15) {
-            localTroopFoldMsgBean.b = 15;
+          if (localTroopFoldMsgBean.c < 15) {
+            localTroopFoldMsgBean.c = 15;
           }
-          if (localTroopFoldMsgBean.b > 40) {
-            localTroopFoldMsgBean.b = 40;
+          if (localTroopFoldMsgBean.c > 40) {
+            localTroopFoldMsgBean.c = 40;
           }
           paramString = new StringBuilder();
           paramString.append("confBean = ");
@@ -63,15 +57,15 @@ public class TroopFoldMsgBean
   {
     StringBuilder localStringBuilder = new StringBuilder(50);
     localStringBuilder.append("openSwitch = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",sameMsgCount = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopFoldMsgBean
  * JD-Core Version:    0.7.0.1
  */

@@ -16,19 +16,19 @@ class VasADBannerCountDownManager$2$1
     Object localObject;
     int j;
     int i;
-    if (VasADBannerCountDownManager.c(this.a.this$0) != null)
+    if (VasADBannerCountDownManager.e(this.a.this$0) != null)
     {
-      if (TextUtils.isEmpty(VasADBannerCountDownManager.c(this.a.this$0).getText())) {
+      if (TextUtils.isEmpty(VasADBannerCountDownManager.e(this.a.this$0).getText())) {
         return;
       }
       if (QZLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("count down text = ");
-        ((StringBuilder)localObject).append(VasADBannerCountDownManager.c(this.a.this$0).getText());
+        ((StringBuilder)localObject).append(VasADBannerCountDownManager.e(this.a.this$0).getText());
         QZLog.i("VasADBannerManager", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = VasADBannerCountDownManager.c(this.a.this$0).getText().toString().split(":");
+      localObject = VasADBannerCountDownManager.e(this.a.this$0).getText().toString().split(":");
       if ((localObject != null) && (localObject.length == 2))
       {
         try
@@ -48,10 +48,10 @@ class VasADBannerCountDownManager$2$1
             break label348;
           }
           localObject = str;
-          if (VasADBannerCountDownManager.a(this.a.this$0).a() == null) {
+          if (VasADBannerCountDownManager.a(this.a.this$0).f() == null) {
             break label348;
           }
-          localObject = VasADBannerCountDownManager.a(this.a.this$0).a().f;
+          localObject = VasADBannerCountDownManager.a(this.a.this$0).f().i;
         }
         catch (Exception localException)
         {
@@ -65,14 +65,14 @@ class VasADBannerCountDownManager$2$1
     for (;;)
     {
       VasADBannerCountDownManager.a(this.a.this$0, (String)localObject);
-      VasADBannerCountDownManager.b(this.a.this$0);
+      VasADBannerCountDownManager.g(this.a.this$0);
       return;
-      VasADBannerCountDownManager.b(this.a.this$0);
+      VasADBannerCountDownManager.g(this.a.this$0);
       if (QZLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("stopTimer split error text = ");
-        localStringBuilder.append(VasADBannerCountDownManager.c(this.a.this$0).getText());
+        localStringBuilder.append(VasADBannerCountDownManager.e(this.a.this$0).getText());
         QZLog.i("VasADBannerManager", 2, localStringBuilder.toString());
       }
       return;
@@ -87,7 +87,7 @@ class VasADBannerCountDownManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADBannerCountDownManager.2.1
  * JD-Core Version:    0.7.0.1
  */

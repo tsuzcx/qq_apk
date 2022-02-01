@@ -503,7 +503,7 @@ public class ActivateFriendServlet
     }
     cmd0x82a.ReqBody localReqBody = new cmd0x82a.ReqBody();
     localReqBody.uint32_app_id.set(1001);
-    localReqBody.uint32_inst_id.set(AppSetting.a());
+    localReqBody.uint32_inst_id.set(AppSetting.d());
     ArrayList localArrayList = new ArrayList(((List)localObject1).size());
     int i = 0;
     while (i < ((List)localObject1).size())
@@ -628,7 +628,7 @@ public class ActivateFriendServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet
  * JD-Core Version:    0.7.0.1
  */

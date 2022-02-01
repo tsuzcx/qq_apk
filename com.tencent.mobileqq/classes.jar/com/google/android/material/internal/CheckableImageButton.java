@@ -15,10 +15,10 @@ public class CheckableImageButton
   extends AppCompatImageButton
   implements Checkable
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842912 };
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
+  private static final int[] a = { 16842912 };
+  private boolean b;
   private boolean c = true;
+  private boolean d = true;
   
   public CheckableImageButton(Context paramContext)
   {
@@ -38,18 +38,18 @@ public class CheckableImageButton
   
   public boolean a()
   {
-    return this.b;
+    return this.c;
   }
   
   public boolean isChecked()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return mergeDrawableStates(super.onCreateDrawableState(paramInt + jdField_a_of_type_ArrayOfInt.length), jdField_a_of_type_ArrayOfInt);
+    if (this.b) {
+      return mergeDrawableStates(super.onCreateDrawableState(paramInt + a.length), a);
     }
     return super.onCreateDrawableState(paramInt);
   }
@@ -63,31 +63,31 @@ public class CheckableImageButton
     }
     paramParcelable = (CheckableImageButton.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    setChecked(paramParcelable.jdField_a_of_type_Boolean);
+    setChecked(paramParcelable.a);
   }
   
   @NonNull
   protected Parcelable onSaveInstanceState()
   {
     CheckableImageButton.SavedState localSavedState = new CheckableImageButton.SavedState(super.onSaveInstanceState());
-    localSavedState.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localSavedState.a = this.b;
     return localSavedState;
   }
   
   public void setCheckable(boolean paramBoolean)
   {
-    if (this.b != paramBoolean)
+    if (this.c != paramBoolean)
     {
-      this.b = paramBoolean;
+      this.c = paramBoolean;
       sendAccessibilityEvent(0);
     }
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if ((this.b) && (this.jdField_a_of_type_Boolean != paramBoolean))
+    if ((this.c) && (this.b != paramBoolean))
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.b = paramBoolean;
       refreshDrawableState();
       sendAccessibilityEvent(2048);
     }
@@ -95,24 +95,24 @@ public class CheckableImageButton
   
   public void setPressable(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void setPressed(boolean paramBoolean)
   {
-    if (this.c) {
+    if (this.d) {
       super.setPressed(paramBoolean);
     }
   }
   
   public void toggle()
   {
-    setChecked(this.jdField_a_of_type_Boolean ^ true);
+    setChecked(this.b ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.CheckableImageButton
  * JD-Core Version:    0.7.0.1
  */

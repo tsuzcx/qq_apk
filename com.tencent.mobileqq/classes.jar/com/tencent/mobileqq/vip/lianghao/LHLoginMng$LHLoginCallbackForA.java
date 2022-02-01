@@ -12,20 +12,20 @@ import mqq.observer.AccountObserver;
 class LHLoginMng$LHLoginCallbackForA
   extends AccountObserver
 {
-  final Intent jdField_a_of_type_AndroidContentIntent;
-  final LHLoginMng.OnLockLHUinResult jdField_a_of_type_ComTencentMobileqqVipLianghaoLHLoginMng$OnLockLHUinResult;
-  final String jdField_a_of_type_JavaLangString;
+  final Intent a;
+  final String b;
+  final LHLoginMng.OnLockLHUinResult c;
   
   LHLoginMng$LHLoginCallbackForA(Intent paramIntent, String paramString, LHLoginMng.OnLockLHUinResult paramOnLockLHUinResult)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoLHLoginMng$OnLockLHUinResult = paramOnLockLHUinResult;
+    this.a = paramIntent;
+    this.b = paramString;
+    this.c = paramOnLockLHUinResult;
   }
   
   public void onRegisterCommitPassRespWithLhSig(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
+    Intent localIntent = new Intent(this.a);
     if (paramArrayOfByte2 != null) {
       try
       {
@@ -43,9 +43,9 @@ class LHLoginMng$LHLoginCallbackForA
     }
     if (paramInt == 0)
     {
-      if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.b)))
       {
-        localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("uin", this.b);
         paramBoolean = true;
       }
       else
@@ -61,7 +61,7 @@ class LHLoginMng$LHLoginCallbackForA
     paramBoolean = false;
     label181:
     if (TextUtils.isEmpty(paramArrayOfByte2)) {
-      paramString = HardCodeUtil.a(2131716609);
+      paramString = HardCodeUtil.a(2131914072);
     } else {
       paramString = paramArrayOfByte2;
     }
@@ -72,18 +72,18 @@ class LHLoginMng$LHLoginCallbackForA
     if (QLog.isDevelopLevel()) {
       RegisterLHAssistant.a("LHLoginMng -- onRegisterCommitPassRespWithLhSig", localIntent);
     }
-    paramArrayOfByte1 = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoLHLoginMng$OnLockLHUinResult;
+    paramArrayOfByte1 = this.c;
     if (paramArrayOfByte1 != null) {
-      paramArrayOfByte1.a(localIntent, paramBoolean, this.jdField_a_of_type_JavaLangString, paramArrayOfByte3, paramString);
+      paramArrayOfByte1.a(localIntent, paramBoolean, this.b, paramArrayOfByte3, paramString);
     }
     if (QLog.isColorLevel()) {
-      QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig, lhUin: %s, isSuc: %s, error: %s, code: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
+      QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "onRegisterCommitPassRespWithLhSig, lhUin: %s, isSuc: %s, error: %s, code: %s", new Object[] { this.b, Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.LHLoginMng.LHLoginCallbackForA
  * JD-Core Version:    0.7.0.1
  */

@@ -19,13 +19,13 @@ class DoodleEmojiManager$5
   {
     if (paramGetPoiFacesResponse == null)
     {
-      paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.a.get();
       if (paramGetPoiFacesRequest != null) {
         paramGetPoiFacesRequest.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
       }
       return;
     }
-    paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.a.get();
     if (paramGetPoiFacesRequest != null)
     {
       paramGetPoiFacesRequest.a(0, paramGetPoiFacesResponse.a);
@@ -36,7 +36,7 @@ class DoodleEmojiManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.model.DoodleEmojiManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,19 @@ class JumpActionLegacy$24
   
   public void a()
   {
-    ((QBaseActivity)this.a.a).finish();
+    ((QBaseActivity)this.a.b).finish();
   }
   
   public void b() {}
   
   public void c()
   {
-    ((QBaseActivity)this.a.a).finish();
+    ((QBaseActivity)this.a.b).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.24
  * JD-Core Version:    0.7.0.1
  */

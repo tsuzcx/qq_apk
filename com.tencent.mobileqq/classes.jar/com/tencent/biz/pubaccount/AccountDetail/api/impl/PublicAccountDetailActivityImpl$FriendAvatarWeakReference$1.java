@@ -11,18 +11,18 @@ class PublicAccountDetailActivityImpl$FriendAvatarWeakReference$1
   
   protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl$FriendAvatarWeakReference.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    this.b.b.a(this.a);
     return null;
   }
   
   protected void a(Void paramVoid)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl$FriendAvatarWeakReference.a.a(-1);
+    this.b.b.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.FriendAvatarWeakReference.1
  * JD-Core Version:    0.7.0.1
  */

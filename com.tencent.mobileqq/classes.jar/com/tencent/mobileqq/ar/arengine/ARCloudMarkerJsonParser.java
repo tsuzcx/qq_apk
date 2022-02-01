@@ -41,41 +41,41 @@ public class ARCloudMarkerJsonParser
         localObject1 = new JSONObject(paramString);
         paramString = new ArCloudConfigInfo();
         if (((JSONObject)localObject1).has("BusinessId")) {
-          paramString.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject1).getString("BusinessId"));
+          paramString.a = Integer.parseInt(((JSONObject)localObject1).getString("BusinessId"));
         }
         if (((JSONObject)localObject1).has("SDKVersion")) {
-          paramString.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("SDKVersion");
+          paramString.b = ((JSONObject)localObject1).getString("SDKVersion");
         }
         if (((JSONObject)localObject1).has("CloseCache")) {
-          paramString.jdField_b_of_type_Int = ((JSONObject)localObject1).getInt("CloseCache");
+          paramString.c = ((JSONObject)localObject1).getInt("CloseCache");
         }
         if (((JSONObject)localObject1).has("Type")) {
-          paramString.jdField_d_of_type_Int = ((JSONObject)localObject1).getInt("Type");
+          paramString.e = ((JSONObject)localObject1).getInt("Type");
         }
         Object localObject3;
         Object localObject2;
         if (((JSONObject)localObject1).has("TrackMode"))
         {
-          paramString.jdField_c_of_type_Int = ((JSONObject)localObject1).getInt("TrackMode");
-          if (paramString.jdField_c_of_type_Int == 4) {
-            paramString.jdField_c_of_type_Int = 1;
+          paramString.d = ((JSONObject)localObject1).getInt("TrackMode");
+          if (paramString.d == 4) {
+            paramString.d = 1;
           }
-          if (paramString.jdField_c_of_type_Int == 1)
+          if (paramString.d == 1)
           {
             localObject3 = (SensorManager)BaseApplication.getContext().getSystemService("sensor");
             if (!SensorTrackManager.a()) {
-              break label1968;
+              break label1970;
             }
             i = 15;
             localObject2 = ((SensorManager)localObject3).getSensorList(i);
             localObject3 = ((SensorManager)localObject3).getDefaultSensor(4);
             if ((((List)localObject2).size() > 0) && (localObject3 != null) && (!Build.MODEL.equalsIgnoreCase("GT-I9500")))
             {
-              paramString.jdField_c_of_type_Int = 1;
+              paramString.d = 1;
             }
             else
             {
-              paramString.jdField_c_of_type_Int = 2;
+              paramString.d = 2;
               QLog.i("AREngine_MarkerJsonParser", 1, "no support sensor or GT-I9500. make trackmode 1 to 2");
               localObject2 = new HashMap();
               ((HashMap)localObject2).put("ar_model", Build.MODEL);
@@ -84,15 +84,15 @@ public class ARCloudMarkerJsonParser
               StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidARException", true, 0L, 0L, (HashMap)localObject2, "", true);
             }
           }
-          if (paramString.jdField_d_of_type_Int == 8) {
-            paramString.jdField_c_of_type_Int = 2;
+          if (paramString.e == 8) {
+            paramString.d = 2;
           }
         }
         if (((JSONObject)localObject1).has("PicId")) {
-          paramString.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("PicId");
+          paramString.f = ((JSONObject)localObject1).getString("PicId");
         }
         if (((JSONObject)localObject1).has("LotterySet")) {
-          paramString.e = ((JSONObject)localObject1).getInt("LotterySet");
+          paramString.g = ((JSONObject)localObject1).getInt("LotterySet");
         }
         bool = ((JSONObject)localObject1).has("Award");
         i = 0;
@@ -101,70 +101,70 @@ public class ARCloudMarkerJsonParser
           localObject2 = ((JSONObject)localObject1).getJSONObject("Award");
           localObject3 = new ArAwardInfo();
           if (((JSONObject)localObject2).has("AwardDistance")) {
-            ((ArAwardInfo)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("AwardDistance");
+            ((ArAwardInfo)localObject3).a = ((JSONObject)localObject1).getInt("AwardDistance");
           }
           if (((JSONObject)localObject2).has("BusinessBanner")) {
-            ((ArAwardInfo)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("BusinessBanner");
+            ((ArAwardInfo)localObject3).b = ((JSONObject)localObject1).getString("BusinessBanner");
           }
           if (((JSONObject)localObject2).has("BusinessLogo")) {
-            ((ArAwardInfo)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("BusinessLogo");
+            ((ArAwardInfo)localObject3).c = ((JSONObject)localObject1).getString("BusinessLogo");
           }
           if (((JSONObject)localObject2).has("BusinessName")) {
-            ((ArAwardInfo)localObject3).f = ((JSONObject)localObject1).getString("BusinessName");
+            ((ArAwardInfo)localObject3).h = ((JSONObject)localObject1).getString("BusinessName");
           }
           if (((JSONObject)localObject2).has("BusinessWishing")) {
-            ((ArAwardInfo)localObject3).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).getString("BusinessWishing");
+            ((ArAwardInfo)localObject3).e = ((JSONObject)localObject1).getString("BusinessWishing");
           }
           if (((JSONObject)localObject2).has("NotPlayModel")) {
             if (((JSONObject)localObject1).getInt("NotPlayModel") == 1) {
-              ((ArAwardInfo)localObject3).jdField_b_of_type_Int = 0;
+              ((ArAwardInfo)localObject3).f = 0;
             } else {
-              ((ArAwardInfo)localObject3).jdField_b_of_type_Int = 1;
+              ((ArAwardInfo)localObject3).f = 1;
             }
           }
-          paramString.jdField_a_of_type_ComTencentMobileqqArModelArAwardInfo = ((ArAwardInfo)localObject3);
+          paramString.l = ((ArAwardInfo)localObject3);
         }
         if (((JSONObject)localObject1).has("Feature"))
         {
           localObject2 = ((JSONObject)localObject1).getJSONObject("Feature");
           localObject3 = new ArFeatureInfo();
           if (((JSONObject)localObject2).has("FeatureMD5")) {
-            ((ArFeatureInfo)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("FeatureMD5");
+            ((ArFeatureInfo)localObject3).a = ((JSONObject)localObject2).getString("FeatureMD5");
           }
           if (((JSONObject)localObject2).has("FeatureSize")) {
-            ((ArFeatureInfo)localObject3).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("FeatureSize");
+            ((ArFeatureInfo)localObject3).b = ((JSONObject)localObject2).getLong("FeatureSize");
           }
           if (((JSONObject)localObject2).has("FeatureUrl")) {
-            ((ArFeatureInfo)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("FeatureUrl");
+            ((ArFeatureInfo)localObject3).c = ((JSONObject)localObject2).getString("FeatureUrl");
           }
-          paramString.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = ((ArFeatureInfo)localObject3);
+          paramString.j = ((ArFeatureInfo)localObject3);
         }
         if (((JSONObject)localObject1).has("ModelResource"))
         {
           localObject2 = ((JSONObject)localObject1).getJSONObject("ModelResource");
           localObject3 = new ArModelResource();
           if (((JSONObject)localObject2).has("ModelResourceSize")) {
-            ((ArModelResource)localObject3).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("ModelResourceSize");
+            ((ArModelResource)localObject3).a = ((JSONObject)localObject2).getLong("ModelResourceSize");
           }
           if (((JSONObject)localObject2).has("ModelResourceMD5")) {
-            ((ArModelResource)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("ModelResourceMD5");
+            ((ArModelResource)localObject3).b = ((JSONObject)localObject2).getString("ModelResourceMD5");
           }
           if (((JSONObject)localObject2).has("ModelResourceUrl")) {
-            ((ArModelResource)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("ModelResourceUrl");
+            ((ArModelResource)localObject3).c = ((JSONObject)localObject2).getString("ModelResourceUrl");
           }
           if (((JSONObject)localObject2).has("ModelResourceBgMusic")) {
-            ((ArModelResource)localObject3).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).getString("ModelResourceBgMusic");
+            ((ArModelResource)localObject3).d = ((JSONObject)localObject2).getString("ModelResourceBgMusic");
           }
           if (((JSONObject)localObject2).has("ModelConfigFile")) {
-            ((ArModelResource)localObject3).jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).getString("ModelConfigFile");
+            ((ArModelResource)localObject3).e = ((JSONObject)localObject2).getString("ModelConfigFile");
           }
           if (((JSONObject)localObject2).has("ModelRepeatTimes")) {
-            ((ArModelResource)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("ModelRepeatTimes");
+            ((ArModelResource)localObject3).f = ((JSONObject)localObject2).getInt("ModelRepeatTimes");
           }
           if (((JSONObject)localObject2).has("ModelLayout")) {
-            ((ArModelResource)localObject3).e = ((JSONObject)localObject2).getString("ModelLayout");
+            ((ArModelResource)localObject3).g = ((JSONObject)localObject2).getString("ModelLayout");
           }
-          paramString.jdField_a_of_type_ComTencentMobileqqArModelArModelResource = ((ArModelResource)localObject3);
+          paramString.k = ((ArModelResource)localObject3);
         }
         if (((JSONObject)localObject1).has("Web"))
         {
@@ -173,33 +173,33 @@ public class ARCloudMarkerJsonParser
           if (((JSONObject)localObject2).has("IsUrlAutoJump"))
           {
             if (((JSONObject)localObject2).getInt("IsUrlAutoJump") != 1) {
-              break label1974;
+              break label1976;
             }
             bool = true;
-            ((ArWebInfo)localObject3).jdField_a_of_type_Boolean = bool;
+            ((ArWebInfo)localObject3).a = bool;
           }
           if (((JSONObject)localObject2).has("IsUrlTransparent"))
           {
             if (((JSONObject)localObject2).getInt("IsUrlTransparent") != 1) {
-              break label1979;
+              break label1981;
             }
             bool = true;
-            ((ArWebInfo)localObject3).jdField_b_of_type_Boolean = bool;
+            ((ArWebInfo)localObject3).b = bool;
           }
           if (((JSONObject)localObject2).has("WebJumpUrl")) {
-            ((ArWebInfo)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("WebJumpUrl");
+            ((ArWebInfo)localObject3).c = ((JSONObject)localObject2).getString("WebJumpUrl");
           }
           if (((JSONObject)localObject2).has("HtmlOfflineBid")) {
-            ((ArWebInfo)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("HtmlOfflineBid");
+            ((ArWebInfo)localObject3).d = ((JSONObject)localObject2).getString("HtmlOfflineBid");
           }
-          if ((Build.VERSION.SDK_INT < 16) && (((ArWebInfo)localObject3).jdField_b_of_type_Boolean))
+          if ((Build.VERSION.SDK_INT < 16) && (((ArWebInfo)localObject3).b))
           {
             QLog.i("AREngine_MarkerJsonParser", 1, "isUrlTransparent isUrlTransparent forse to  false");
-            ((ArWebInfo)localObject3).jdField_b_of_type_Boolean = false;
-            ((ArWebInfo)localObject3).jdField_a_of_type_JavaLangString = "";
-            ((ArWebInfo)localObject3).jdField_a_of_type_Boolean = false;
+            ((ArWebInfo)localObject3).b = false;
+            ((ArWebInfo)localObject3).c = "";
+            ((ArWebInfo)localObject3).a = false;
           }
-          paramString.jdField_a_of_type_ComTencentMobileqqArModelArWebInfo = ((ArWebInfo)localObject3);
+          paramString.m = ((ArWebInfo)localObject3);
         }
         if (((JSONObject)localObject1).has("VideoResource"))
         {
@@ -210,43 +210,43 @@ public class ARCloudMarkerJsonParser
             JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
             ArVideoResourceInfo localArVideoResourceInfo = new ArVideoResourceInfo();
             if (localJSONObject.has("VideoConnectType")) {
-              localArVideoResourceInfo.jdField_a_of_type_Int = localJSONObject.getInt("VideoConnectType");
+              localArVideoResourceInfo.a = localJSONObject.getInt("VideoConnectType");
             }
             if (localJSONObject.has("VideoKeyingConfig")) {
-              localArVideoResourceInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("VideoKeyingConfig");
+              localArVideoResourceInfo.c = localJSONObject.getString("VideoKeyingConfig");
             }
             if (localJSONObject.has("VideoSize")) {
-              localArVideoResourceInfo.jdField_a_of_type_Long = localJSONObject.getLong("VideoSize");
+              localArVideoResourceInfo.b = localJSONObject.getLong("VideoSize");
             }
             if (localJSONObject.has("VideoLayout")) {
-              localArVideoResourceInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("VideoLayout");
+              localArVideoResourceInfo.d = localJSONObject.getString("VideoLayout");
             }
             if (localJSONObject.has("VideoMD5")) {
-              localArVideoResourceInfo.jdField_c_of_type_JavaLangString = localJSONObject.getString("VideoMD5");
+              localArVideoResourceInfo.e = localJSONObject.getString("VideoMD5");
             }
             if (localJSONObject.has("VideoRepeatTimes")) {
-              localArVideoResourceInfo.jdField_b_of_type_Int = localJSONObject.getInt("VideoRepeatTimes");
+              localArVideoResourceInfo.f = localJSONObject.getInt("VideoRepeatTimes");
             }
             if (localJSONObject.has("VideoTrackMode")) {
-              localArVideoResourceInfo.jdField_c_of_type_Int = localJSONObject.getInt("VideoTrackMode");
+              localArVideoResourceInfo.g = localJSONObject.getInt("VideoTrackMode");
             }
             if (localJSONObject.has("VideoType")) {
-              localArVideoResourceInfo.jdField_d_of_type_Int = localJSONObject.getInt("VideoType");
+              localArVideoResourceInfo.h = localJSONObject.getInt("VideoType");
             }
             if (localJSONObject.has("VideoUrl")) {
-              localArVideoResourceInfo.jdField_d_of_type_JavaLangString = localJSONObject.getString("VideoUrl");
+              localArVideoResourceInfo.i = localJSONObject.getString("VideoUrl");
             }
             ((ArrayList)localObject3).add(localArVideoResourceInfo);
             i += 1;
             continue;
           }
-          paramString.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject3);
+          paramString.i = ((ArrayList)localObject3);
         }
         if (((JSONObject)localObject1).has("IsRelationShip")) {
-          paramString.g = ((JSONObject)localObject1).getInt("IsRelationShip");
+          paramString.n = ((JSONObject)localObject1).getInt("IsRelationShip");
         }
         if (((JSONObject)localObject1).has("traversing360")) {
-          paramString.jdField_a_of_type_ComTencentMobileqqArARPromotionARTransferDoorConfigInfo = ARTransferDoorConfigInfo.a(((JSONObject)localObject1).getJSONObject("traversing360"));
+          paramString.r = ARTransferDoorConfigInfo.a(((JSONObject)localObject1).getJSONObject("traversing360"));
         }
         if (((JSONObject)localObject1).has("ARRelationShip"))
         {
@@ -254,30 +254,30 @@ public class ARCloudMarkerJsonParser
           localObject3 = new ARRelationShip();
           if (((JSONObject)localObject2).has("TaskId"))
           {
-            paramString.jdField_b_of_type_Int = 1;
-            paramString.jdField_d_of_type_Int = 7;
-            ((ARRelationShip)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("TaskId");
+            paramString.c = 1;
+            paramString.e = 7;
+            ((ARRelationShip)localObject3).a = ((JSONObject)localObject2).getString("TaskId");
           }
           if (((JSONObject)localObject2).has("ARRelationShipResourceUrl")) {
-            ((ARRelationShip)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("ARRelationShipResourceUrl");
+            ((ARRelationShip)localObject3).b = ((JSONObject)localObject2).getString("ARRelationShipResourceUrl");
           }
           if (((JSONObject)localObject2).has("ARRelationShipResourceMd5")) {
-            ((ARRelationShip)localObject3).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).getString("ARRelationShipResourceMd5");
+            ((ARRelationShip)localObject3).c = ((JSONObject)localObject2).getString("ARRelationShipResourceMd5");
           }
           if (((JSONObject)localObject2).has("AIOMsgImageUrl")) {
-            ((ARRelationShip)localObject3).k = ((JSONObject)localObject2).getString("AIOMsgImageUrl");
+            ((ARRelationShip)localObject3).l = ((JSONObject)localObject2).getString("AIOMsgImageUrl");
           }
           if (((JSONObject)localObject2).has("AIOMsgJumpUrl")) {
-            ((ARRelationShip)localObject3).j = ((JSONObject)localObject2).getString("AIOMsgJumpUrl");
+            ((ARRelationShip)localObject3).k = ((JSONObject)localObject2).getString("AIOMsgJumpUrl");
           }
           if (((JSONObject)localObject2).has("AIOMsgSummary")) {
-            ((ARRelationShip)localObject3).i = ((JSONObject)localObject2).getString("AIOMsgSummary");
+            ((ARRelationShip)localObject3).j = ((JSONObject)localObject2).getString("AIOMsgSummary");
           }
           if (((JSONObject)localObject2).has("AIOMsgTitle")) {
-            ((ARRelationShip)localObject3).h = ((JSONObject)localObject2).getString("AIOMsgTitle");
+            ((ARRelationShip)localObject3).i = ((JSONObject)localObject2).getString("AIOMsgTitle");
           }
           if (((JSONObject)localObject2).has("ARRelationShipResourceSize")) {
-            ((ARRelationShip)localObject3).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("ARRelationShipResourceSize");
+            ((ARRelationShip)localObject3).h = ((JSONObject)localObject2).getLong("ARRelationShipResourceSize");
           }
           if (((JSONObject)localObject2).has("GuideWebPageUrl")) {
             ((ARRelationShip)localObject3).g = ((JSONObject)localObject2).getString("GuideWebPageUrl");
@@ -289,31 +289,31 @@ public class ARCloudMarkerJsonParser
             ((ARRelationShip)localObject3).e = ((JSONObject)localObject2).getString("ShareTopicUrl");
           }
           if (((JSONObject)localObject2).has("CardDefaultText")) {
-            ((ARRelationShip)localObject3).l = ((JSONObject)localObject2).getString("CardDefaultText");
+            ((ARRelationShip)localObject3).m = ((JSONObject)localObject2).getString("CardDefaultText");
           }
           if (((JSONObject)localObject2).has("StarUin")) {
-            ((ARRelationShip)localObject3).m = ((JSONObject)localObject2).getString("StarUin");
+            ((ARRelationShip)localObject3).n = ((JSONObject)localObject2).getString("StarUin");
           }
           if (((JSONObject)localObject2).has("StarNickName")) {
-            ((ARRelationShip)localObject3).n = ((JSONObject)localObject2).getString("StarNickName");
+            ((ARRelationShip)localObject3).o = ((JSONObject)localObject2).getString("StarNickName");
           }
-          paramString.jdField_a_of_type_ComTencentMobileqqArModelARRelationShip = ((ARRelationShip)localObject3);
+          paramString.o = ((ARRelationShip)localObject3);
         }
         if (((JSONObject)localObject1).has("LbsActivity"))
         {
           localObject1 = ((JSONObject)localObject1).getJSONObject("LbsActivity");
           localObject2 = new ArLBSActivity();
           if (((JSONObject)localObject1).has("ActivityName")) {
-            ((ArLBSActivity)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("ActivityName");
+            ((ArLBSActivity)localObject2).a = ((JSONObject)localObject1).getString("ActivityName");
           }
           if (((JSONObject)localObject1).has("Logo")) {
-            ((ArLBSActivity)localObject2).jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("Logo");
+            ((ArLBSActivity)localObject2).b = ((JSONObject)localObject1).getString("Logo");
           }
           if (((JSONObject)localObject1).has("MapBackground")) {
-            ((ArLBSActivity)localObject2).jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).getString("MapBackground");
+            ((ArLBSActivity)localObject2).c = ((JSONObject)localObject1).getString("MapBackground");
           }
           if (((JSONObject)localObject1).has("PrizeImage")) {
-            ((ArLBSActivity)localObject2).jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).getString("PrizeImage");
+            ((ArLBSActivity)localObject2).d = ((JSONObject)localObject1).getString("PrizeImage");
           }
           if (((JSONObject)localObject1).has("PrizeName")) {
             ((ArLBSActivity)localObject2).e = ((JSONObject)localObject1).getString("PrizeName");
@@ -327,7 +327,7 @@ public class ARCloudMarkerJsonParser
           if (((JSONObject)localObject1).has("TipsContentForNoLBSLocation")) {
             ((ArLBSActivity)localObject2).h = ((JSONObject)localObject1).getString("TipsContentForNoLBSLocation");
           }
-          paramString.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity = ((ArLBSActivity)localObject2);
+          paramString.q = ((ArLBSActivity)localObject2);
         }
         return paramString;
       }
@@ -339,20 +339,20 @@ public class ARCloudMarkerJsonParser
         QLog.i("AREngine_MarkerJsonParser", 1, ((StringBuilder)localObject1).toString());
       }
       return null;
-      label1968:
+      label1970:
       int i = 11;
       continue;
-      label1974:
+      label1976:
       boolean bool = false;
       continue;
-      label1979:
+      label1981:
       bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudMarkerJsonParser
  * JD-Core Version:    0.7.0.1
  */

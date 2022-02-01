@@ -2,15 +2,15 @@ package com.tencent.biz.qqstory.utils;
 
 public class WeishiGuideUtils$JumpObject
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  String a;
+  String b;
   String c;
-  public String d;
-  String e;
-  public String f;
-  public String g;
+  int d;
+  public String e;
+  String f;
+  int g;
+  public String h;
+  public String i;
 }
 
 

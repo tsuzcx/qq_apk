@@ -42,14 +42,9 @@ import org.jetbrains.annotations.Nullable;
 public final class FriendListReceiver
   extends BaseProtocolReceiver<FriendHandler>
 {
-  public static final FriendListReceiver.Companion a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqFriendHandlerRecevierFriendListReceiver$Companion = new FriendListReceiver.Companion(null);
-  }
+  public static final FriendListReceiver.Companion a = new FriendListReceiver.Companion(null);
+  private int b;
+  private long c;
   
   public FriendListReceiver(@NotNull AppInterface paramAppInterface, @NotNull FriendHandler paramFriendHandler)
   {
@@ -69,7 +64,7 @@ public final class FriendListReceiver
     }
     Object localObject = new ArrayList();
     ArrayList localArrayList = new ArrayList();
-    FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
+    FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)b());
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
@@ -102,17 +97,17 @@ public final class FriendListReceiver
       if (localFriends2 != null)
       {
         int i = localFriends2.gathtertype;
-        byte b = (byte)1;
-        if (i == b)
+        byte b1 = (byte)1;
+        if (i == b1)
         {
-          localFriends1.gathtertype = b;
+          localFriends1.gathtertype = b1;
         }
         else
         {
           i = localFriends2.gathtertype;
-          b = (byte)2;
-          if (i == b) {
-            localFriends1.gathtertype = b;
+          b1 = (byte)2;
+          if (i == b1) {
+            localFriends1.gathtertype = b1;
           }
         }
         localFriends1.age = localFriends2.age;
@@ -123,7 +118,7 @@ public final class FriendListReceiver
       localArrayList.add(new Pair(localFriends1, localFriendInfo));
       ((ArrayList)localObject).add(localFriends1);
     }
-    paramArrayList = ((FriendHandler)a()).a().iterator();
+    paramArrayList = ((FriendHandler)c()).d().iterator();
     while (paramArrayList.hasNext()) {
       ((BaseFriendProcessor)paramArrayList.next()).onBatchUpdateFriendInfo((List)localArrayList, paramLong, paramBoolean);
     }
@@ -148,8 +143,8 @@ public final class FriendListReceiver
     if (QLog.isColorLevel()) {
       QLog.d("IMCore.friend.FriendListReceiver", 2, "updateSelfInfo");
     }
-    FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
-    Object localObject2 = localFriendDataServiceImpl.getFriend(a().getCurrentAccountUin());
+    FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)b());
+    Object localObject2 = localFriendDataServiceImpl.getFriend(b().getCurrentAccountUin());
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new Friends();
@@ -163,7 +158,7 @@ public final class FriendListReceiver
     ((Friends)localObject1).abilityBits = paramFriendInfo.uAbiFlag;
     ((Friends)localObject1).eNetwork = paramFriendInfo.eNetworkType;
     ((Friends)localObject1).groupid = paramFriendInfo.groupId;
-    localObject2 = ((FriendHandler)a()).a().iterator();
+    localObject2 = ((FriendHandler)c()).d().iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((BaseFriendProcessor)((Iterator)localObject2).next()).onUpdateSelfInfo((Friends)localObject1, paramFriendInfo);
     }
@@ -176,7 +171,7 @@ public final class FriendListReceiver
       QLog.d("IMCore.friend.FriendListReceiver", 2, "updateExtensionInfo");
     }
     String str = String.valueOf(paramFriendInfo.friendUin);
-    FriendExtensionServiceImpl localFriendExtensionServiceImpl = FriendExtensionServiceImpl.getService((AppRuntime)a());
+    FriendExtensionServiceImpl localFriendExtensionServiceImpl = FriendExtensionServiceImpl.getService((AppRuntime)b());
     Object localObject2 = localFriendExtensionServiceImpl.getExtensionInfo(str);
     Object localObject1 = localObject2;
     if (localObject2 == null)
@@ -185,7 +180,7 @@ public final class FriendListReceiver
       ((ExtensionInfo)localObject1).uin = str;
     }
     ((ExtensionInfo)localObject1).timestamp = System.currentTimeMillis();
-    localObject2 = ((FriendHandler)a()).a().iterator();
+    localObject2 = ((FriendHandler)c()).d().iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((BaseFriendProcessor)((Iterator)localObject2).next()).onUpdateExtensionInfo((ExtensionInfo)localObject1, paramFriendInfo, paramExtRspData);
     }
@@ -221,7 +216,7 @@ public final class FriendListReceiver
         QLog.d("IMCore.friend.FriendListReceiver", 2, ((StringBuilder)localObject).toString());
       }
     }
-    paramArrayList = FriendDataServiceImpl.getService((AppRuntime)a());
+    paramArrayList = FriendDataServiceImpl.getService((AppRuntime)b());
     if (localArrayList.size() > 0) {
       paramArrayList.saveGroupList((List)localArrayList);
     }
@@ -241,7 +236,7 @@ public final class FriendListReceiver
     }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    FriendExtensionServiceImpl localFriendExtensionServiceImpl = FriendExtensionServiceImpl.getService((AppRuntime)a());
+    FriendExtensionServiceImpl localFriendExtensionServiceImpl = FriendExtensionServiceImpl.getService((AppRuntime)b());
     Iterator localIterator = paramArrayList.iterator();
     while (localIterator.hasNext())
     {
@@ -258,7 +253,7 @@ public final class FriendListReceiver
       localArrayList2.add(new Pair(paramArrayList, localFriendInfo));
       localArrayList1.add(paramArrayList);
     }
-    paramArrayList = ((FriendHandler)a()).a().iterator();
+    paramArrayList = ((FriendHandler)c()).d().iterator();
     while (paramArrayList.hasNext()) {
       ((BaseFriendProcessor)paramArrayList.next()).onBatchUpdateExtensionInfo((List)localArrayList2, paramExtRspData, paramLong, paramBoolean);
     }
@@ -269,7 +264,7 @@ public final class FriendListReceiver
   {
     Object localObject2 = new HashMap();
     long l1 = System.currentTimeMillis();
-    long l2 = ((FriendHandler)a()).a();
+    long l2 = ((FriendHandler)c()).e();
     Map localMap = (Map)localObject2;
     Object localObject1;
     if (paramBoolean) {
@@ -284,27 +279,27 @@ public final class FriendListReceiver
     localMap.put("retryCount", String.valueOf(paramInt4));
     localMap.put("totalConsume", String.valueOf(l1 - l2));
     localMap.put("errorCode", String.valueOf(paramInt3));
-    StatisticCollector.getInstance(a().getApplicationContext()).collectPerformance(null, "QQFriendListReqGetEvent", true, 0L, 0L, (HashMap)localObject2, null);
+    StatisticCollector.getInstance(b().getApplicationContext()).collectPerformance(null, "QQFriendListReqGetEvent", true, 0L, 0L, (HashMap)localObject2, null);
     if (paramBoolean)
     {
-      if ((this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Long > 0L))
+      if ((this.b > 0) && (this.c > 0L))
       {
         l1 = System.currentTimeMillis();
-        l2 = this.jdField_a_of_type_Long;
+        l2 = this.c;
         localObject1 = new HashMap();
         localObject2 = (Map)localObject1;
-        ((Map)localObject2).put("mFriendListFailedCount", String.valueOf(this.jdField_a_of_type_Int));
+        ((Map)localObject2).put("mFriendListFailedCount", String.valueOf(this.b));
         ((Map)localObject2).put("failedTime", String.valueOf(l1 - l2));
-        StatisticCollector.getInstance(a().getApplicationContext()).collectPerformance(null, "QQFriendListReqFailedStatistics", true, 0L, 0L, (HashMap)localObject1, null);
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_a_of_type_Long = 0L;
+        StatisticCollector.getInstance(b().getApplicationContext()).collectPerformance(null, "QQFriendListReqFailedStatistics", true, 0L, 0L, (HashMap)localObject1, null);
+        this.b = 0;
+        this.c = 0L;
       }
     }
     else
     {
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Long = ((FriendHandler)a()).a();
+      this.b += 1;
+      if (this.c == 0L) {
+        this.c = ((FriendHandler)c()).e();
       }
     }
   }
@@ -328,10 +323,10 @@ public final class FriendListReceiver
       if ((paramFromServiceMsg.getResultCode() == 2901) && (k < 2))
       {
         paramToServiceMsg.extraData.putInt("k_resend_cnt", k + 1);
-        ((FriendHandler)a()).a().a(paramToServiceMsg);
+        ((FriendHandler)c()).a().a(paramToServiceMsg);
         return;
       }
-      ((FriendHandler)a()).a(0L);
+      ((FriendHandler)c()).a(0L);
       int j = ((FriendListRequestData)localObject).getTotalFriendCount();
       int m = ((FriendListRequestData)localObject).getFriendStartIndex();
       int i = j;
@@ -345,12 +340,12 @@ public final class FriendListReceiver
       a(paramBoolean, i, m, paramFromServiceMsg.getResultCode(), k);
       if (paramBoolean)
       {
-        ((FriendHandler)a()).notifyUI(1, true, Boolean.valueOf(true));
-        ((FriendHandler)a()).notifyUI(97, true, new Boolean[] { Boolean.valueOf(true), (Boolean)null });
+        ((FriendHandler)c()).notifyUI(1, true, Boolean.valueOf(true));
+        ((FriendHandler)c()).notifyUI(97, true, new Boolean[] { Boolean.valueOf(true), (Boolean)null });
         return;
       }
-      ((FriendHandler)a()).notifyUI(1, false, null);
-      ((FriendHandler)a()).notifyUI(97, false, null);
+      ((FriendHandler)c()).notifyUI(1, false, null);
+      ((FriendHandler)c()).notifyUI(97, false, null);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.friend.data.FriendListRequestData");
@@ -393,7 +388,7 @@ public final class FriendListReceiver
             }
           }
           Object localObject2 = new ExtRspData((GetFriendListResp)localObject3);
-          ((FriendHandler)a()).a().a(((GetFriendListResp)localObject3).cShowPcIcon);
+          ((FriendHandler)c()).b().a(((GetFriendListResp)localObject3).cShowPcIcon);
           if (i == 0)
           {
             l1 = System.currentTimeMillis();
@@ -434,11 +429,11 @@ public final class FriendListReceiver
             paramToServiceMsg.setTotalFriendCount(k);
             paramToServiceMsg.setPullRefresh(((FriendListRequestData)localObject1).isPullRefresh());
             paramToServiceMsg.setShowTermType(1);
-            ((FriendHandler)a()).a(paramToServiceMsg, false);
+            ((FriendHandler)c()).a(paramToServiceMsg, false);
             return;
           }
           a(true, paramToServiceMsg, paramFromServiceMsg, paramObject);
-          paramToServiceMsg = ((FriendHandler)a()).a().iterator();
+          paramToServiceMsg = ((FriendHandler)c()).d().iterator();
           while (paramToServiceMsg.hasNext()) {
             ((BaseFriendProcessor)paramToServiceMsg.next()).onGetFriendListFinish(((FriendListRequestData)localObject1).isPullRefresh(), localArrayList1, (ExtRspData)localObject2);
           }
@@ -461,7 +456,7 @@ public final class FriendListReceiver
       QLog.d("IMCore.friend.FriendListReceiver", 2, "updateFriendInfo");
     }
     Friends localFriends = new Friends();
-    FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)a());
+    FriendDataServiceImpl localFriendDataServiceImpl = FriendDataServiceImpl.getService((AppRuntime)b());
     localFriends.name = paramFriendInfo.nick;
     localFriends.remark = paramFriendInfo.remark;
     localFriends.uin = String.valueOf(paramFriendInfo.friendUin);
@@ -494,7 +489,7 @@ public final class FriendListReceiver
       localFriends.gender = ((Friends)localObject).gender;
       localFriends.recommReason = ((Friends)localObject).recommReason;
     }
-    localObject = ((FriendHandler)a()).a().iterator();
+    localObject = ((FriendHandler)c()).d().iterator();
     while (((Iterator)localObject).hasNext()) {
       ((BaseFriendProcessor)((Iterator)localObject).next()).onUpdateFriendInfo(localFriends, paramFriendInfo);
     }
@@ -515,10 +510,10 @@ public final class FriendListReceiver
         Intrinsics.checkExpressionValueIsNotNull(paramFromServiceMsg, "friendResp");
         b(paramFromServiceMsg);
         a(paramFromServiceMsg, paramObject);
-        if (!((FriendHandler)a()).a()) {
-          ((FriendHandler)a()).notifyUI(1, true, Boolean.valueOf(true));
+        if (!((FriendHandler)c()).f()) {
+          ((FriendHandler)c()).notifyUI(1, true, Boolean.valueOf(true));
         }
-        paramFromServiceMsg = ((FriendHandler)a()).a().iterator();
+        paramFromServiceMsg = ((FriendHandler)c()).d().iterator();
         while (paramFromServiceMsg.hasNext()) {
           ((BaseFriendProcessor)paramFromServiceMsg.next()).onGetFriendInfoFinish(paramToServiceMsg);
         }
@@ -544,11 +539,11 @@ public final class FriendListReceiver
     if ((paramFromServiceMsg.getResultCode() == 2901) && (i < 2))
     {
       paramToServiceMsg.extraData.putInt("k_resend_cnt", i + 1);
-      ((FriendHandler)a()).a().a(paramToServiceMsg);
+      ((FriendHandler)c()).a().a(paramToServiceMsg);
       return;
     }
-    ((FriendHandler)a()).notifyUI(1, false, null);
-    ((FriendHandler)a()).notifyUI(97, false, null);
+    ((FriendHandler)c()).notifyUI(1, false, null);
+    ((FriendHandler)c()).notifyUI(97, false, null);
   }
   
   @NotNull
@@ -577,7 +572,7 @@ public final class FriendListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.FriendListReceiver
  * JD-Core Version:    0.7.0.1
  */

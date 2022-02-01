@@ -26,35 +26,35 @@ import mqq.app.MobileQQ;
 public class CameraEmoSingleSend
   extends EmoAsyncStep
 {
-  private ICameraEmoRoamingHandler jdField_a_of_type_ComTencentMobileqqAppICameraEmoRoamingHandler;
-  private CameraEmotionData jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
-  private ICameraEmoRoamingManagerService jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmoRoamingManagerService;
-  private ICameraEmotionRoamingDBManagerService jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Timer jdField_a_of_type_JavaUtilTimer;
   public boolean a;
-  private boolean b;
-  private boolean c;
+  private final Object b = new Object();
+  private boolean k;
+  private CameraEmotionData l;
+  private ICameraEmotionRoamingDBManagerService m;
+  private ICameraEmoRoamingHandler n;
+  private ICameraEmoRoamingManagerService o;
+  private Timer p;
+  private boolean q;
   
   public CameraEmoSingleSend(CameraEmotionData paramCameraEmotionData, boolean paramBoolean)
   {
-    this.b = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData = paramCameraEmotionData;
-    b();
+    this.k = paramBoolean;
+    this.l = paramCameraEmotionData;
+    c();
   }
   
   private void a(boolean paramBoolean, int paramInt)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
+    Object localObject2 = this.l;
     if (paramBoolean) {
       ??? = "normal";
     } else {
       ??? = "failed";
     }
     ((CameraEmotionData)localObject2).RomaingType = ((String)???);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService.updateCustomEmotion(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService.trimCache();
-    this.jdField_a_of_type_ComTencentMobileqqAppICameraEmoRoamingHandler.notifyUI(5, paramBoolean, Integer.valueOf(14));
+    this.m.updateCustomEmotion(this.l);
+    this.m.trimCache();
+    this.n.notifyUI(5, paramBoolean, Integer.valueOf(14));
     localObject2 = new HashMap();
     if (paramBoolean) {
       ??? = "1";
@@ -63,126 +63,39 @@ public class CameraEmoSingleSend
     }
     ((HashMap)localObject2).put("sucFlag", ???);
     ((HashMap)localObject2).put("retCode", String.valueOf(paramInt));
-    a().collectPerformance(null, "CamEmoUpload", paramBoolean, 0L, 0L, (HashMap)localObject2, null);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    f().collectPerformance(null, "CamEmoUpload", paramBoolean, 0L, 0L, (HashMap)localObject2, null);
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_JavaLangObject.notify();
+      this.b.notify();
       return;
     }
   }
   
   private void a(boolean paramBoolean, String paramString)
   {
-    if (this.c)
+    if (this.q)
     {
-      QLog.d("CameraEmoSingleSend", 1, new Object[] { "upload return, timer canceled, emoPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath });
+      QLog.d("CameraEmoSingleSend", 1, new Object[] { "upload return, timer canceled, emoPath:", this.l.emoPath });
       return;
     }
     if (paramBoolean)
     {
       String str = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      CameraEmotionData localCameraEmotionData = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
+      CameraEmotionData localCameraEmotionData = this.l;
       localCameraEmotionData.emoPath = paramString;
       localCameraEmotionData.md5 = str;
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService.updateCustomEmotion(localCameraEmotionData);
+      this.m.updateCustomEmotion(localCameraEmotionData);
       paramString = new CameraEmoSingleSend.3(this);
-      if (!a())
+      if (!e())
       {
         QLog.d("CameraEmoSingleSend", 1, "uploadCameraEmo, net not support");
-        paramString.a(12, this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+        paramString.a(12, this.l);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmoRoamingManagerService.uploadCameraEmo(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, paramString);
+      this.o.uploadCameraEmo(this.l, paramString);
       return;
     }
     a(false, 14);
-  }
-  
-  protected int a()
-  {
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimer.schedule(new CameraEmoSingleSend.1(this), 90000L);
-    boolean bool1;
-    if (this.b)
-    {
-      boolean bool2;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath != null) && (new File(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath).exists())) {
-        bool2 = true;
-      } else {
-        bool2 = false;
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath != null) && (new File(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath).exists())) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      QLog.d("CameraEmoSingleSend", 1, new Object[] { "resend, hasOriginalFile:", Boolean.valueOf(bool2), " hasMergedFile:", Boolean.valueOf(bool1) });
-      if ((!bool2) && (!bool1))
-      {
-        QLog.d("CameraEmoSingleSend", 1, new Object[] { "resend, emoOriginalPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath, " emoPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath, " emoId:", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoId) });
-        ??? = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
-        ((CameraEmotionData)???).RomaingType = "failed";
-        this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService.updateCustomEmotion((CameraEmotionData)???);
-        this.jdField_a_of_type_ComTencentMobileqqAppICameraEmoRoamingHandler.notifyUI(4, true, null);
-        return 7;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService.updateCustomEmotion(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-    }
-    else
-    {
-      bool1 = false;
-    }
-    if ((this.b) && (bool1))
-    {
-      a(true, this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath);
-    }
-    else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath))
-    {
-      if (new File(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath).exists())
-      {
-        a(true, this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath);
-      }
-      else
-      {
-        QLog.d("CameraEmoSingleSend", 1, new Object[] { "GIF save AIO fail, emoPath not exist, emoPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath });
-        return 7;
-      }
-    }
-    else
-    {
-      long l = System.currentTimeMillis();
-      ??? = a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoOriginalPath);
-      CameraEmoSingleSend.2 local2 = new CameraEmoSingleSend.2(this, ???, l);
-      ((IEmosmService)QRoute.api(IEmosmService.class)).startGIFCreator(???, local2);
-    }
-    if ((!this.c) && (!this.jdField_a_of_type_Boolean)) {}
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.wait(120000L);
-      }
-    }
-    catch (Exception localException)
-    {
-      label458:
-      break label458;
-    }
-    this.jdField_a_of_type_JavaUtilTimer.cancel();
-    return 7;
-    throw localObject2;
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "upload no need wait, timer canceled, emoPath:", this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.emoPath });
-    return 7;
-  }
-  
-  public BaseQQAppInterface a()
-  {
-    return (BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
-  public StatisticCollector a()
-  {
-    return StatisticCollector.getInstance(BaseApplication.getContext());
   }
   
   public Object a(String paramString)
@@ -195,25 +108,112 @@ public class CameraEmoSingleSend
     EmoticonOperateReport.reportEmoticonOperateMonitorAddStatus(paramString, paramInt);
   }
   
-  public boolean a()
+  protected int b()
+  {
+    this.p = new Timer();
+    this.p.schedule(new CameraEmoSingleSend.1(this), 90000L);
+    boolean bool1;
+    if (this.k)
+    {
+      boolean bool2;
+      if ((this.l.emoOriginalPath != null) && (new File(this.l.emoOriginalPath).exists())) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      if ((this.l.emoPath != null) && (new File(this.l.emoPath).exists())) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      QLog.d("CameraEmoSingleSend", 1, new Object[] { "resend, hasOriginalFile:", Boolean.valueOf(bool2), " hasMergedFile:", Boolean.valueOf(bool1) });
+      if ((!bool2) && (!bool1))
+      {
+        QLog.d("CameraEmoSingleSend", 1, new Object[] { "resend, emoOriginalPath:", this.l.emoOriginalPath, " emoPath:", this.l.emoPath, " emoId:", Integer.valueOf(this.l.emoId) });
+        ??? = this.l;
+        ((CameraEmotionData)???).RomaingType = "failed";
+        this.m.updateCustomEmotion((CameraEmotionData)???);
+        this.n.notifyUI(4, true, null);
+        return 7;
+      }
+      this.m.updateCustomEmotion(this.l);
+    }
+    else
+    {
+      bool1 = false;
+    }
+    if ((this.k) && (bool1))
+    {
+      a(true, this.l.emoPath);
+    }
+    else if (!TextUtils.isEmpty(this.l.emoPath))
+    {
+      if (new File(this.l.emoPath).exists())
+      {
+        a(true, this.l.emoPath);
+      }
+      else
+      {
+        QLog.d("CameraEmoSingleSend", 1, new Object[] { "GIF save AIO fail, emoPath not exist, emoPath:", this.l.emoPath });
+        return 7;
+      }
+    }
+    else
+    {
+      long l1 = System.currentTimeMillis();
+      ??? = a(this.l.emoOriginalPath);
+      CameraEmoSingleSend.2 local2 = new CameraEmoSingleSend.2(this, ???, l1);
+      ((IEmosmService)QRoute.api(IEmosmService.class)).startGIFCreator(???, local2);
+    }
+    if ((!this.q) && (!this.a)) {}
+    try
+    {
+      synchronized (this.b)
+      {
+        this.b.wait(120000L);
+      }
+    }
+    catch (Exception localException)
+    {
+      label458:
+      break label458;
+    }
+    this.p.cancel();
+    return 7;
+    throw localObject2;
+    QLog.d("CameraEmoSingleSend", 1, new Object[] { "upload no need wait, timer canceled, emoPath:", this.l.emoPath });
+    return 7;
+  }
+  
+  public void c()
+  {
+    BaseQQAppInterface localBaseQQAppInterface = d();
+    if (localBaseQQAppInterface != null)
+    {
+      this.m = ((ICameraEmotionRoamingDBManagerService)localBaseQQAppInterface.getRuntimeService(ICameraEmotionRoamingDBManagerService.class));
+      this.n = ((ICameraEmoRoamingHandler)localBaseQQAppInterface.getBusinessHandler(CameraEmoRoamingHandler.a));
+      this.o = ((ICameraEmoRoamingManagerService)localBaseQQAppInterface.getRuntimeService(ICameraEmoRoamingManagerService.class));
+    }
+  }
+  
+  public BaseQQAppInterface d()
+  {
+    return (BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public boolean e()
   {
     return NetworkUtil.isNetSupport(BaseApplication.getContext());
   }
   
-  public void b()
+  public StatisticCollector f()
   {
-    BaseQQAppInterface localBaseQQAppInterface = a();
-    if (localBaseQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService = ((ICameraEmotionRoamingDBManagerService)localBaseQQAppInterface.getRuntimeService(ICameraEmotionRoamingDBManagerService.class));
-      this.jdField_a_of_type_ComTencentMobileqqAppICameraEmoRoamingHandler = ((ICameraEmoRoamingHandler)localBaseQQAppInterface.getBusinessHandler(CameraEmoRoamingHandler.a));
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmoRoamingManagerService = ((ICameraEmoRoamingManagerService)localBaseQQAppInterface.getRuntimeService(ICameraEmoRoamingManagerService.class));
-    }
+    return StatisticCollector.getInstance(BaseApplication.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend
  * JD-Core Version:    0.7.0.1
  */

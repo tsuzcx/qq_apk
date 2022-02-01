@@ -10,14 +10,14 @@ import com.tencent.mobileqq.search.business.net.view.NetSearchTemplateBaseView;
 public class NetSearchTemplateAvatarsView
   extends NetSearchTemplateBaseView
 {
-  public LinearLayout a;
   public TextView a;
-  public URLImageView a;
-  public int b;
   public LinearLayout b;
   public int c;
-  public LinearLayout c;
   public LinearLayout d;
+  public int n;
+  public URLImageView o;
+  public LinearLayout p;
+  public LinearLayout q;
   
   public NetSearchTemplateAvatarsView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -26,20 +26,20 @@ public class NetSearchTemplateAvatarsView
   
   protected void a()
   {
-    View localView = a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378784));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368552));
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369956));
-    this.jdField_c_of_type_Int = this.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount();
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368555));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131372731));
-    this.d = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131372732));
+    View localView = b(this.m);
+    this.a = ((TextView)localView.findViewById(2131447463));
+    this.b = ((LinearLayout)localView.findViewById(2131435457));
+    this.c = this.b.getChildCount();
+    this.d = ((LinearLayout)localView.findViewById(2131437106));
+    this.n = this.d.getChildCount();
+    this.o = ((URLImageView)this.d.findViewById(2131435460));
+    this.p = ((LinearLayout)this.d.findViewById(2131440278));
+    this.q = ((LinearLayout)this.d.findViewById(2131440279));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateAvatarsView
  * JD-Core Version:    0.7.0.1
  */

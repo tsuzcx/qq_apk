@@ -12,7 +12,7 @@ class VideoCoverFragment$1
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.a;
     if (localOnPageChangeListener != null) {
       localOnPageChangeListener.onPageScrollStateChanged(paramInt);
     }
@@ -20,7 +20,7 @@ class VideoCoverFragment$1
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.a;
     if (localOnPageChangeListener != null) {
       localOnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
@@ -28,22 +28,22 @@ class VideoCoverFragment$1
   
   public void onPageSelected(int paramInt)
   {
-    VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment, paramInt);
-    ViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$OnPageChangeListener;
+    VideoCoverFragment.a(this.b, paramInt);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.a;
     if (localOnPageChangeListener != null) {
       localOnPageChangeListener.onPageSelected(paramInt);
     }
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
-      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a(paramInt);
+    if (VideoCoverFragment.a(this.b) != null) {
+      VideoCoverFragment.a(this.b).a(paramInt);
     }
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) != null) {
-      VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).a().setProgress(paramInt, 0);
+    if (VideoCoverFragment.b(this.b) != null) {
+      VideoCoverFragment.b(this.b).getSplitedProgressBar().setProgress(paramInt, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -160,7 +160,7 @@ public class TroopOnlineMemberHandler
       paramObject = localRspBody.infos.get();
       if (j == 4)
       {
-        notifyUI(TroopOnlineMemberObserver.g, true, new Object[] { paramToServiceMsg, paramObject });
+        notifyUI(TroopOnlineMemberObserver.h, true, new Object[] { paramToServiceMsg, paramObject });
         return;
       }
       paramFromServiceMsg = new ArrayList();
@@ -181,7 +181,7 @@ public class TroopOnlineMemberHandler
         paramObject.append(i);
         QLog.i("TroopOnlineMemberHandler", 2, paramObject.toString());
       }
-      notifyUI(TroopOnlineMemberObserver.d, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
+      notifyUI(TroopOnlineMemberObserver.e, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
       return;
     }
     paramFromServiceMsg = new StringBuilder();
@@ -190,10 +190,10 @@ public class TroopOnlineMemberHandler
     QLog.i("TroopOnlineMemberHandler", 1, paramFromServiceMsg.toString());
     if (j == 4)
     {
-      notifyUI(TroopOnlineMemberObserver.g, false, new Object[] { paramToServiceMsg, null });
+      notifyUI(TroopOnlineMemberObserver.h, false, new Object[] { paramToServiceMsg, null });
       return;
     }
-    notifyUI(TroopOnlineMemberObserver.d, false, new Object[] { paramToServiceMsg, null });
+    notifyUI(TroopOnlineMemberObserver.e, false, new Object[] { paramToServiceMsg, null });
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -235,19 +235,14 @@ public class TroopOnlineMemberHandler
         paramObject.append(i);
         QLog.i("TroopOnlineMemberHandler", 2, paramObject.toString());
       }
-      notifyUI(TroopOnlineMemberObserver.e, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
+      notifyUI(TroopOnlineMemberObserver.f, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
       return;
     }
     paramFromServiceMsg = new StringBuilder();
     paramFromServiceMsg.append("handleGetAllGameOnlineMemberList, retCode=");
     paramFromServiceMsg.append(i);
     QLog.i("TroopOnlineMemberHandler", 1, paramFromServiceMsg.toString());
-    notifyUI(TroopOnlineMemberObserver.e, false, new Object[] { paramToServiceMsg, null });
-  }
-  
-  protected String a()
-  {
-    return "TroopOnlineMemberHandler";
+    notifyUI(TroopOnlineMemberObserver.f, false, new Object[] { paramToServiceMsg, null });
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -283,17 +278,17 @@ public class TroopOnlineMemberHandler
       {
         oidb_0xa2a.UserInfo localUserInfo = (oidb_0xa2a.UserInfo)((Iterator)localObject3).next();
         TroopOnlineMemberItem localTroopOnlineMemberItem = new TroopOnlineMemberItem();
-        localTroopOnlineMemberItem.jdField_a_of_type_JavaLangString = String.valueOf(localUserInfo.uin.get());
-        localTroopOnlineMemberItem.jdField_c_of_type_JavaLangString = localUserInfo.nick.get();
-        localTroopOnlineMemberItem.jdField_b_of_type_JavaLangString = localUserInfo.tag.get();
-        localTroopOnlineMemberItem.jdField_b_of_type_Int = localUserInfo.tag_color.get();
+        localTroopOnlineMemberItem.b = String.valueOf(localUserInfo.uin.get());
+        localTroopOnlineMemberItem.e = localUserInfo.nick.get();
+        localTroopOnlineMemberItem.c = localUserInfo.tag.get();
+        localTroopOnlineMemberItem.d = localUserInfo.tag_color.get();
         if (j == 3) {
-          localTroopOnlineMemberItem.jdField_a_of_type_Int = 2;
+          localTroopOnlineMemberItem.a = 2;
         } else {
-          localTroopOnlineMemberItem.jdField_a_of_type_Int = 1;
+          localTroopOnlineMemberItem.a = 1;
         }
         if (localUserInfo.score.has()) {
-          localTroopOnlineMemberItem.jdField_c_of_type_Int = localUserInfo.score.get();
+          localTroopOnlineMemberItem.f = localUserInfo.score.get();
         }
         paramObject.add(localTroopOnlineMemberItem);
       }
@@ -324,11 +319,11 @@ public class TroopOnlineMemberHandler
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("handleGetDetailOnlineMemberList, uin=");
-            ((StringBuilder)localObject1).append(((TroopOnlineMemberItem)paramObject.get(i)).jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(((TroopOnlineMemberItem)paramObject.get(i)).b);
             ((StringBuilder)localObject1).append(",name=");
-            ((StringBuilder)localObject1).append(((TroopOnlineMemberItem)paramObject.get(i)).jdField_c_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(((TroopOnlineMemberItem)paramObject.get(i)).e);
             ((StringBuilder)localObject1).append(",tag=");
-            ((StringBuilder)localObject1).append(((TroopOnlineMemberItem)paramObject.get(i)).jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(((TroopOnlineMemberItem)paramObject.get(i)).c);
             QLog.i("TroopOnlineMemberHandler", 2, ((StringBuilder)localObject1).toString());
             i += 1;
           }
@@ -338,14 +333,14 @@ public class TroopOnlineMemberHandler
       {
         QLog.i("TroopOnlineMemberHandler", 2, "getDetailOnlineMemberList, app == null");
       }
-      notifyUI(TroopOnlineMemberObserver.jdField_a_of_type_Int, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
+      notifyUI(TroopOnlineMemberObserver.b, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
       return;
     }
     paramFromServiceMsg = new StringBuilder();
     paramFromServiceMsg.append("handleGetDetailOnlineMemberList error, retCode=");
     paramFromServiceMsg.append(i);
     QLog.i("TroopOnlineMemberHandler", 1, paramFromServiceMsg.toString());
-    notifyUI(TroopOnlineMemberObserver.jdField_a_of_type_Int, false, new Object[] { paramToServiceMsg, "" });
+    notifyUI(TroopOnlineMemberObserver.b, false, new Object[] { paramToServiceMsg, "" });
   }
   
   public void a(String paramString)
@@ -363,7 +358,7 @@ public class TroopOnlineMemberHandler
       if (QLog.isColorLevel()) {
         QLog.i("TroopOnlineMemberHandler", 2, "getDetailOnlineMemberList, too frequency");
       }
-      notifyUI(TroopOnlineMemberObserver.jdField_a_of_type_Int, true, new Object[] { paramString, ((ITroopOnlineMemberService)localObject).getOnlineTip(paramString) });
+      notifyUI(TroopOnlineMemberObserver.b, true, new Object[] { paramString, ((ITroopOnlineMemberService)localObject).getOnlineTip(paramString) });
       return;
     }
     try
@@ -478,7 +473,7 @@ public class TroopOnlineMemberHandler
         paramObject = (ITroopOnlineMemberService)this.appRuntime.getRuntimeService(ITroopOnlineMemberService.class, "");
         if ((j == 5) && (i != paramObject.getOnlineCount(paramToServiceMsg)))
         {
-          notifyUI(TroopOnlineMemberObserver.jdField_b_of_type_Int, true, new Object[] { paramToServiceMsg, Boolean.valueOf(true) });
+          notifyUI(TroopOnlineMemberObserver.c, true, new Object[] { paramToServiceMsg, Boolean.valueOf(true) });
           paramObject.removeDetailOnlineList(paramToServiceMsg);
         }
         paramObject.updateAIOTipsCache(paramToServiceMsg, k, paramFromServiceMsg, j, i);
@@ -486,14 +481,14 @@ public class TroopOnlineMemberHandler
           a(localRspBody.show_game_switch_status.get(), localRspBody.game_switch_status.get(), paramToServiceMsg);
         }
       }
-      notifyUI(TroopOnlineMemberObserver.f, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
+      notifyUI(TroopOnlineMemberObserver.g, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
       return;
     }
     paramFromServiceMsg = new StringBuilder();
     paramFromServiceMsg.append("handleGetOnlineMemberTips, retCode=");
     paramFromServiceMsg.append(i);
     QLog.i("TroopOnlineMemberHandler", 1, paramFromServiceMsg.toString());
-    notifyUI(TroopOnlineMemberObserver.f, false, new Object[] { paramToServiceMsg, null });
+    notifyUI(TroopOnlineMemberObserver.g, false, new Object[] { paramToServiceMsg, null });
   }
   
   public void b(String paramString)
@@ -532,7 +527,7 @@ public class TroopOnlineMemberHandler
       paramFromServiceMsg.append("handleGameOnlineSwitchStatus error, retCode:");
       paramFromServiceMsg.append(i);
       QLog.i("TroopOnlineMemberHandler", 1, paramFromServiceMsg.toString());
-      notifyUI(TroopOnlineMemberObserver.jdField_c_of_type_Int, false, new Object[] { paramToServiceMsg, Boolean.valueOf(false) });
+      notifyUI(TroopOnlineMemberObserver.d, false, new Object[] { paramToServiceMsg, Boolean.valueOf(false) });
       return;
     }
     boolean bool;
@@ -541,7 +536,7 @@ public class TroopOnlineMemberHandler
     } else {
       bool = false;
     }
-    notifyUI(TroopOnlineMemberObserver.jdField_c_of_type_Int, true, new Object[] { paramToServiceMsg, Boolean.valueOf(bool) });
+    notifyUI(TroopOnlineMemberObserver.d, true, new Object[] { paramToServiceMsg, Boolean.valueOf(bool) });
   }
   
   public void c(String paramString)
@@ -559,7 +554,7 @@ public class TroopOnlineMemberHandler
       if (QLog.isColorLevel()) {
         QLog.i("TroopOnlineMemberHandler", 2, "getOnlineMemTips, too frequency");
       }
-      notifyUI(TroopOnlineMemberObserver.f, true, new Object[] { paramString, ((ITroopOnlineMemberService)localObject1).getOnlineTip(paramString) });
+      notifyUI(TroopOnlineMemberObserver.g, true, new Object[] { paramString, ((ITroopOnlineMemberService)localObject1).getOnlineTip(paramString) });
       return;
     }
     try
@@ -600,6 +595,11 @@ public class TroopOnlineMemberHandler
     ThreadManager.post(new TroopOnlineMemberHandler.3(this, paramString), 8, null, true);
   }
   
+  protected String dv_()
+  {
+    return "TroopOnlineMemberHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.a == null)
@@ -635,7 +635,7 @@ public class TroopOnlineMemberHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -678,7 +678,7 @@ public class TroopOnlineMemberHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.onlinemember.handler.TroopOnlineMemberHandler
  * JD-Core Version:    0.7.0.1
  */

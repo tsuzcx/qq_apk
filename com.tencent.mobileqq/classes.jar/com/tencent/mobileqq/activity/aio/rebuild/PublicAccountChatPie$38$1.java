@@ -15,18 +15,18 @@ class PublicAccountChatPie$38$1
   
   public void run()
   {
-    IPublicAccountDetail localIPublicAccountDetail = ((IPublicAccountDetail)QRoute.api(IPublicAccountDetail.class)).init(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie$38.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie$38.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).createEntityManager();
+    IPublicAccountDetail localIPublicAccountDetail = ((IPublicAccountDetail)QRoute.api(IPublicAccountDetail.class)).init(this.a);
+    EntityManager localEntityManager = this.b.a.d.getEntityManagerFactory(this.b.a.d.getAccount()).createEntityManager();
     if (localEntityManager != null) {
       localEntityManager.persistOrReplace(localIPublicAccountDetail.getEntity());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie$38.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(localIPublicAccountDetail, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie$38.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie$38.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.b.a.cl = PublicAccountInfo.createPublicAccount(localIPublicAccountDetail, 0L);
+    this.b.a.a(this.b.a.cl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.38.1
  * JD-Core Version:    0.7.0.1
  */

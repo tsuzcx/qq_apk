@@ -21,7 +21,7 @@ final class VasApngFactoryImpl$getApngURLDrawable$listenerProxy$1$onLoadFialed$1
   
   public final void invoke()
   {
-    this.this$0.a.a().onLoadFialed(this.$d, this.$t);
+    this.this$0.b.j().onLoadFialed(this.$d, this.$t);
     if (QLog.isColorLevel()) {
       QLog.d("VasApngFactory", 2, "onLoadFialed: ");
     }
@@ -29,7 +29,7 @@ final class VasApngFactoryImpl$getApngURLDrawable$listenerProxy$1$onLoadFialed$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.apng.api.impl.VasApngFactoryImpl.getApngURLDrawable.listenerProxy.1.onLoadFialed.1
  * JD-Core Version:    0.7.0.1
  */

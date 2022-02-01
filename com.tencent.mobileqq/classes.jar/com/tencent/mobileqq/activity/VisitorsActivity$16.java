@@ -12,22 +12,22 @@ class VisitorsActivity$16
   
   public void a(ValueAnimation<Integer> paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    paramValueAnimation = this.a.c;
+    paramValueAnimation = this.a.D;
     paramTransformation = new StringBuilder();
     paramTransformation.append(paramInteger);
     paramTransformation.append("");
     paramValueAnimation.setText(paramTransformation.toString());
     if (paramInteger.intValue() > 9999)
     {
-      this.a.c.setTextSize(36.0F);
+      this.a.D.setTextSize(36.0F);
       return;
     }
-    this.a.c.setTextSize(44.0F);
+    this.a.D.setTextSize(44.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.16
  * JD-Core Version:    0.7.0.1
  */

@@ -24,28 +24,28 @@ class TransmissionHelper$TransmissionHostInterfaceImpl$1
   
   public void a(int paramInt, String paramString, WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
+    this.a.onResult(this.b, false, paramInt, paramString);
   }
   
   public void a(WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
   {
     if (paramDiskPicBackupRsp == null)
     {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, HardCodeUtil.a(2131714861));
+      this.a.onResult(this.b, false, 1828004, HardCodeUtil.a(2131912360));
       return;
     }
     Object localObject1 = paramDiskPicBackupRsp.pdir_key.get();
     Object localObject2 = paramDiskPicBackupRsp.ppdir_key.get();
     if (localObject1 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = StringUtils.a((ByteStringMicro)localObject1);
+      this.b.pDirKey = StringUtils.a((ByteStringMicro)localObject1);
     }
     if (localObject2 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = StringUtils.a((ByteStringMicro)localObject2);
+      this.b.pPDirKey = StringUtils.a((ByteStringMicro)localObject2);
     }
     if (!TextUtils.isEmpty(paramDiskPicBackupRsp.backup_path.get())) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirName = paramDiskPicBackupRsp.backup_path.get();
+      this.b.pDirName = paramDiskPicBackupRsp.backup_path.get();
     }
-    localObject2 = this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile;
+    localObject2 = this.b;
     boolean bool = paramDiskPicBackupRsp.file_exist.get();
     String str1 = paramDiskPicBackupRsp.file_id.get();
     String str2 = paramDiskPicBackupRsp.server_name.get();
@@ -55,13 +55,13 @@ class TransmissionHelper$TransmissionHostInterfaceImpl$1
       localObject1 = paramDiskPicBackupRsp.outside_upload_ip;
     }
     ((UploadFile)localObject2).setServerInfo(bool, str1, str2, ((PBStringField)localObject1).get(), paramDiskPicBackupRsp.server_port.get(), Utils.bytes2HexStr(paramDiskPicBackupRsp.check_key.get().toByteArray()).toLowerCase(), paramDiskPicBackupRsp.channel_count.get(), Integer.toString(paramDiskPicBackupRsp.file_version.get()));
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
-    PreferenceUtils.a(MobileQQ.sMobileQQ, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqWeiyunTransmissionHelper$TransmissionHostInterfaceImpl.getCurrentUin()), "upload_coupon_count", String.valueOf(paramDiskPicBackupRsp.coupon_count.get()));
+    this.a.onResult(this.b, true, 0, null);
+    PreferenceUtils.a(MobileQQ.sMobileQQ, String.valueOf(this.c.getCurrentUin()), "upload_coupon_count", String.valueOf(paramDiskPicBackupRsp.coupon_count.get()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.TransmissionHelper.TransmissionHostInterfaceImpl.1
  * JD-Core Version:    0.7.0.1
  */

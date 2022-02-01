@@ -56,7 +56,7 @@ public class OneWayFriendHandler
         long l;
         QLog.e("OneWayFriendHandler", 1, "handleGetOneWayFriendFlag fail.", paramToServiceMsg);
       }
-      localOneWayFriendResult.jdField_a_of_type_Long = l;
+      localOneWayFriendResult.a = l;
       if ((i != 0) || (j == 0)) {
         break label240;
       }
@@ -64,7 +64,7 @@ public class OneWayFriendHandler
     }
     for (;;)
     {
-      localOneWayFriendResult.jdField_a_of_type_Boolean = bool;
+      localOneWayFriendResult.b = bool;
       bool = true;
       break label168;
       label165:
@@ -116,7 +116,7 @@ public class OneWayFriendHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class SDKSetEmotionDialog$1
   
   public void onClick(View paramView)
   {
-    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    DialogInterface.OnClickListener localOnClickListener = this.a;
     if (localOnClickListener != null) {
-      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog, 0);
+      localOnClickListener.onClick(this.b, 0);
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKSetEmotionDialog.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
       label37:
       EventCollector.getInstance().onViewClicked(paramView);
@@ -33,7 +33,7 @@ class SDKSetEmotionDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKSetEmotionDialog.1
  * JD-Core Version:    0.7.0.1
  */

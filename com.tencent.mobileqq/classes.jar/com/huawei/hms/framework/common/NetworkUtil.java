@@ -18,6 +18,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.huawei.android.os.BuildEx.VERSION;
 import com.huawei.android.telephony.ServiceStateEx;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
@@ -492,7 +493,7 @@ public class NetworkUtil
         paramContext = (WifiManager)paramContext;
         try
         {
-          paramContext = paramContext.getConnectionInfo();
+          paramContext = NetworkMonitor.getConnectionInfo(paramContext);
           if ((paramContext != null) && (paramContext.getBSSID() != null))
           {
             int i = paramContext.getRssi();
@@ -604,7 +605,7 @@ public class NetworkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.huawei.hms.framework.common.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

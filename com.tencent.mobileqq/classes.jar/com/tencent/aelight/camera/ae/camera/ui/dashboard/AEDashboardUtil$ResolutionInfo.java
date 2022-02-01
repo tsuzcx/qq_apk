@@ -7,9 +7,7 @@ import java.util.List;
 public class AEDashboardUtil$ResolutionInfo
 {
   public int a;
-  public boolean a;
   public int b;
-  public boolean b;
   public int c;
   public int d;
   public int e;
@@ -22,8 +20,31 @@ public class AEDashboardUtil$ResolutionInfo
   public int l;
   public int m;
   public int n;
+  public boolean o;
+  public boolean p;
   
-  private void a()
+  private String i()
+  {
+    if (this.o) {
+      return j();
+    }
+    return e();
+  }
+  
+  private String j()
+  {
+    if ((this.j != 0) && (this.i != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.j);
+      localStringBuilder.append("*");
+      localStringBuilder.append(this.i);
+      return localStringBuilder.toString();
+    }
+    return "none";
+  }
+  
+  private void k()
   {
     int i1 = this.f;
     double d1 = i1;
@@ -32,9 +53,9 @@ public class AEDashboardUtil$ResolutionInfo
     double d2 = i2;
     Double.isNaN(d2);
     double d4 = d1 * 1.0D / d2;
-    d1 = this.jdField_b_of_type_Int;
+    d1 = this.b;
     Double.isNaN(d1);
-    d2 = this.jdField_a_of_type_Int;
+    d2 = this.a;
     Double.isNaN(d2);
     double d5 = d1 * 1.0D / d2;
     d1 = i2;
@@ -59,48 +80,101 @@ public class AEDashboardUtil$ResolutionInfo
     this.l = ((int)d2);
   }
   
-  private String h()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return i();
-    }
-    return e();
-  }
-  
-  private String i()
-  {
-    if ((this.j != 0) && (this.i != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.j);
-      localStringBuilder.append("*");
-      localStringBuilder.append(this.i);
-      return localStringBuilder.toString();
-    }
-    return "none";
-  }
-  
   public String a()
   {
-    if ((this.jdField_b_of_type_Int != 0) && (this.jdField_a_of_type_Int != 0))
+    if ((this.b != 0) && (this.a != 0))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("*");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       return localStringBuilder.toString();
     }
     return "none";
   }
   
-  public List<String> a()
+  public String b()
   {
-    a();
+    if ((this.d != 0) && (this.c != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("*");
+      localStringBuilder.append(this.c);
+      return localStringBuilder.toString();
+    }
+    return "none";
+  }
+  
+  public String c()
+  {
+    if ((this.f != 0) && (this.e != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.f);
+      localStringBuilder.append("*");
+      localStringBuilder.append(this.e);
+      return localStringBuilder.toString();
+    }
+    return "none";
+  }
+  
+  public String d()
+  {
+    if (this.p) {
+      return i();
+    }
+    return f();
+  }
+  
+  public String e()
+  {
+    if ((this.h != 0) && (this.g != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.h);
+      localStringBuilder.append("*");
+      localStringBuilder.append(this.g);
+      return localStringBuilder.toString();
+    }
+    return "none";
+  }
+  
+  public String f()
+  {
+    k();
+    if ((this.l != 0) && (this.k != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.l);
+      localStringBuilder.append("*");
+      localStringBuilder.append(this.k);
+      return localStringBuilder.toString();
+    }
+    return "none";
+  }
+  
+  public String g()
+  {
+    if ((this.n != 0) && (this.m != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.n);
+      localStringBuilder.append("*");
+      localStringBuilder.append(this.m);
+      return localStringBuilder.toString();
+    }
+    return "none";
+  }
+  
+  public List<String> h()
+  {
+    k();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("取景框大小: ");
-    ((StringBuilder)localObject1).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject1).append(this.b);
     ((StringBuilder)localObject1).append("*");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(this.a);
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("设置的预览分辨率: ");
@@ -140,84 +214,10 @@ public class AEDashboardUtil$ResolutionInfo
     return Arrays.asList(new String[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localStringBuilder.toString(), "预览帧率: TODO" });
   }
   
-  public String b()
-  {
-    if ((this.d != 0) && (this.c != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.d);
-      localStringBuilder.append("*");
-      localStringBuilder.append(this.c);
-      return localStringBuilder.toString();
-    }
-    return "none";
-  }
-  
-  public String c()
-  {
-    if ((this.f != 0) && (this.e != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.f);
-      localStringBuilder.append("*");
-      localStringBuilder.append(this.e);
-      return localStringBuilder.toString();
-    }
-    return "none";
-  }
-  
-  public String d()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return h();
-    }
-    return f();
-  }
-  
-  public String e()
-  {
-    if ((this.h != 0) && (this.g != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.h);
-      localStringBuilder.append("*");
-      localStringBuilder.append(this.g);
-      return localStringBuilder.toString();
-    }
-    return "none";
-  }
-  
-  public String f()
-  {
-    a();
-    if ((this.l != 0) && (this.k != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.l);
-      localStringBuilder.append("*");
-      localStringBuilder.append(this.k);
-      return localStringBuilder.toString();
-    }
-    return "none";
-  }
-  
-  public String g()
-  {
-    if ((this.n != 0) && (this.m != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.n);
-      localStringBuilder.append("*");
-      localStringBuilder.append(this.m);
-      return localStringBuilder.toString();
-    }
-    return "none";
-  }
-  
   @NonNull
   public String toString()
   {
-    List localList = a();
+    List localList = h();
     int i2 = localList.size();
     StringBuilder localStringBuilder = new StringBuilder();
     int i1 = 0;
@@ -234,7 +234,7 @@ public class AEDashboardUtil$ResolutionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.dashboard.AEDashboardUtil.ResolutionInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,10 @@ public final class PngQuantUtils
   
   public static boolean a()
   {
-    if ((!a.get()) && (HtmlOffline.c("1017")) && (HtmlOffline.a("1017", "https://libpngquantandroid.so")))
+    if ((!a.get()) && (HtmlOffline.h("1017")) && (HtmlOffline.c("1017", "https://libpngquantandroid.so")))
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(OfflineEnvHelper.a("1017"));
+      ((StringBuilder)localObject).append(OfflineEnvHelper.b("1017"));
       ((StringBuilder)localObject).append("1017");
       ((StringBuilder)localObject).append(File.separator);
       ((StringBuilder)localObject).append("libpngquantandroid.so");

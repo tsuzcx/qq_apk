@@ -10,7 +10,7 @@ class VideoMsgBroadcastReceiver$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.a.receiveMultiVideoOfflineMsg(this.jdField_a_of_type_AndroidOsBundle);
+    this.a.n.receiveMultiVideoOfflineMsg(this.b);
     if (QLog.isColorLevel()) {
       QLog.d("VideoMsgBroadcastReceiver", 2, "processMultiVideoOfflineMsg, async");
     }

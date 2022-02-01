@@ -9,8 +9,8 @@ final class QidianProfileCardActivity$QidianSimpleProfileItem$1
   public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
   {
     QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
-    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQidianSimpleProfileItem.a = paramParcel.readString();
+    localQidianSimpleProfileItem.b = paramParcel.readString();
     int i = paramParcel.readByte();
     boolean bool2 = true;
     boolean bool1;
@@ -19,23 +19,23 @@ final class QidianProfileCardActivity$QidianSimpleProfileItem$1
     } else {
       bool1 = false;
     }
-    localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
-    localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
-    localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localQidianSimpleProfileItem.c = bool1;
+    localQidianSimpleProfileItem.d = paramParcel.readInt();
+    localQidianSimpleProfileItem.e = paramParcel.readInt();
+    localQidianSimpleProfileItem.f = paramParcel.readString();
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
+    localQidianSimpleProfileItem.g = bool1;
     if (paramParcel.readByte() != 0) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
-    localQidianSimpleProfileItem.jdField_c_of_type_Int = paramParcel.readInt();
+    localQidianSimpleProfileItem.h = bool1;
+    localQidianSimpleProfileItem.i = paramParcel.readInt();
     return localQidianSimpleProfileItem;
   }
   
@@ -46,7 +46,7 @@ final class QidianProfileCardActivity$QidianSimpleProfileItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem.1
  * JD-Core Version:    0.7.0.1
  */

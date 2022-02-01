@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.collect.notifier.IEventNotifier;
 import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCompat;
@@ -201,6 +202,16 @@ class EventNotifyManager
     SimpleTracer.end((String)localObject);
   }
   
+  void onChildViewAdded(View paramView1, View paramView2)
+  {
+    this.mListenerMgr.startNotify(new EventNotifyManager.16(this, paramView1, paramView2));
+  }
+  
+  void onChildViewRemoved(View paramView1, View paramView2)
+  {
+    this.mListenerMgr.startNotify(new EventNotifyManager.15(this, paramView1, paramView2));
+  }
+  
   void onDialogHide(Activity paramActivity, Dialog paramDialog)
   {
     this.mListenerMgr.startNotify(new EventNotifyManager.14(this, paramActivity, paramDialog));
@@ -238,7 +249,7 @@ class EventNotifyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.collect.EventNotifyManager
  * JD-Core Version:    0.7.0.1
  */

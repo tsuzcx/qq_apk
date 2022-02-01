@@ -16,11 +16,11 @@ import java.util.List;
 
 public class CameraAbility
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static CameraAbility jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraAbility;
-  private static int b = -1;
+  private static int b = 0;
   private static int c = -1;
-  private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
+  private static int d = -1;
+  private static CameraAbility f;
+  private Camera.Parameters e;
   
   static
   {
@@ -32,28 +32,28 @@ public class CameraAbility
       {
         SharedPreferences localSharedPreferences = ((Context)localObject).getSharedPreferences("qcamera_local", 0);
         if (localSharedPreferences.contains("localsp_camera_num")) {
-          jdField_a_of_type_Int = localSharedPreferences.getInt("localsp_camera_num", 0);
+          b = localSharedPreferences.getInt("localsp_camera_num", 0);
         }
       }
       int i = j;
-      if (jdField_a_of_type_Int == 0)
+      if (b == 0)
       {
-        jdField_a_of_type_Int = Camera.getNumberOfCameras();
+        b = Camera.getNumberOfCameras();
         i = j;
         if (localObject != null)
         {
-          ((Context)localObject).getSharedPreferences("qcamera_local", 0).edit().putInt("localsp_camera_num", jdField_a_of_type_Int).commit();
+          ((Context)localObject).getSharedPreferences("qcamera_local", 0).edit().putInt("localsp_camera_num", b).commit();
           i = j;
         }
       }
-      while (i < jdField_a_of_type_Int)
+      while (i < b)
       {
         localObject = new Camera.CameraInfo();
         Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
-        if ((((Camera.CameraInfo)localObject).facing == 0) && (b == -1)) {
-          b = i;
-        } else if (1 == ((Camera.CameraInfo)localObject).facing) {
+        if ((((Camera.CameraInfo)localObject).facing == 0) && (c == -1)) {
           c = i;
+        } else if (1 == ((Camera.CameraInfo)localObject).facing) {
+          d = i;
         }
         i += 1;
       }
@@ -64,76 +64,58 @@ public class CameraAbility
       if (QLog.a()) {
         QLog.a("CameraAbility", 2, "", localRuntimeException);
       }
-      jdField_a_of_type_Int = 1;
+      b = 1;
     }
-  }
-  
-  public static int a()
-  {
-    return c;
   }
   
   public static CameraAbility a()
   {
-    if (jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraAbility == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraAbility == null) {
-          jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraAbility = new CameraAbility();
+        if (f == null) {
+          f = new CameraAbility();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqcamerakitCaptureCameraCameraAbility;
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Int > 0;
-  }
-  
-  public static int b()
-  {
-    return b;
+    return f;
   }
   
   public static boolean b()
   {
-    return (a()) && (b != -1);
+    return b > 0;
   }
   
   public static boolean c()
   {
-    return (a()) && (c != -1);
+    return (b()) && (c != -1);
   }
   
-  public List<int[]> a()
+  public static boolean d()
   {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPreviewFpsRange();
-      return localList;
-    }
-    catch (Exception localException)
-    {
-      label34:
-      break label34;
-    }
-    return null;
+    return (b()) && (d != -1);
+  }
+  
+  public static int e()
+  {
+    return d;
+  }
+  
+  public static int f()
+  {
+    return c;
   }
   
   public List<CameraSize> a(boolean paramBoolean)
   {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
+    if ((!a) && (this.e == null)) {
       throw new AssertionError();
     }
     if (paramBoolean) {}
     try
     {
-      localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPictureSizes();
+      localList = this.e.getSupportedPictureSizes();
     }
     catch (Exception localException)
     {
@@ -141,7 +123,7 @@ public class CameraAbility
       QLog.a("CameraAbility", 1, localException, new Object[] { "getPreviewSizes, isPicture: ", Boolean.valueOf(paramBoolean) });
       localIterator = null;
     }
-    localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPreviewSizes();
+    localList = this.e.getSupportedPreviewSizes();
     Iterator localIterator;
     ArrayList localArrayList = new ArrayList();
     if (localIterator != null)
@@ -160,19 +142,14 @@ public class CameraAbility
     return localArrayList;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidHardwareCamera$Parameters = null;
-  }
-  
   public boolean a(int paramInt)
   {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
+    if ((!a) && (this.e == null)) {
       throw new AssertionError();
     }
     try
     {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPreviewFormats();
+      List localList = this.e.getSupportedPreviewFormats();
       if (localList == null) {
         return false;
       }
@@ -185,21 +162,21 @@ public class CameraAbility
   
   public boolean a(Camera paramCamera)
   {
-    a();
+    j();
     boolean bool = false;
     if (paramCamera == null) {
       return false;
     }
     try
     {
-      this.jdField_a_of_type_AndroidHardwareCamera$Parameters = paramCamera.getParameters();
+      this.e = paramCamera.getParameters();
     }
     catch (Exception paramCamera)
     {
       paramCamera.printStackTrace();
-      this.jdField_a_of_type_AndroidHardwareCamera$Parameters = null;
+      this.e = null;
     }
-    if (this.jdField_a_of_type_AndroidHardwareCamera$Parameters != null) {
+    if (this.e != null) {
       bool = true;
     }
     return bool;
@@ -207,12 +184,12 @@ public class CameraAbility
   
   public boolean a(String paramString)
   {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
+    if ((!a) && (this.e == null)) {
       throw new AssertionError();
     }
     try
     {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedFocusModes();
+      List localList = this.e.getSupportedFocusModes();
       if (localList == null) {
         return false;
       }
@@ -223,14 +200,14 @@ public class CameraAbility
     return false;
   }
   
-  public boolean d()
+  public boolean g()
   {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
+    if ((!a) && (this.e == null)) {
       throw new AssertionError();
     }
     try
     {
-      boolean bool = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.isZoomSupported();
+      boolean bool = this.e.isZoomSupported();
       return bool;
     }
     catch (Exception localException)
@@ -241,15 +218,15 @@ public class CameraAbility
     return false;
   }
   
-  public boolean e()
+  public boolean h()
   {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
+    if ((!a) && (this.e == null)) {
       throw new AssertionError();
     }
     boolean bool1 = false;
     try
     {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedFlashModes();
+      List localList = this.e.getSupportedFlashModes();
       if (localList == null) {
         return false;
       }
@@ -262,10 +239,33 @@ public class CameraAbility
     catch (Exception localException) {}
     return false;
   }
+  
+  public List<int[]> i()
+  {
+    if ((!a) && (this.e == null)) {
+      throw new AssertionError();
+    }
+    try
+    {
+      List localList = this.e.getSupportedPreviewFpsRange();
+      return localList;
+    }
+    catch (Exception localException)
+    {
+      label34:
+      break label34;
+    }
+    return null;
+  }
+  
+  public void j()
+  {
+    this.e = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camera.CameraAbility
  * JD-Core Version:    0.7.0.1
  */

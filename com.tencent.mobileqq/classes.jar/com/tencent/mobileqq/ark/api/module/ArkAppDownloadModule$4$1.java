@@ -7,12 +7,12 @@ class ArkAppDownloadModule$4$1
   
   public void run()
   {
-    ArkAppDownloadModule.a(this.a.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Double, this.a.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams);
+    ArkAppDownloadModule.a(this.a.d, this.a.b, this.a.c, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.4.1
  * JD-Core Version:    0.7.0.1
  */

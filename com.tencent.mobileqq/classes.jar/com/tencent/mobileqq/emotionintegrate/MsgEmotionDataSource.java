@@ -34,32 +34,32 @@ public class MsgEmotionDataSource
   extends EmotionDataSource
   implements EmotionDownGIFCallback.UiCallback
 {
-  private long jdField_a_of_type_Long;
-  public SessionInfo a;
-  public MessageRecord a;
   public EmotionDataManager a;
-  private EmotionDownGIFCallback.UiCallback jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDownGIFCallback$UiCallback;
-  private EmotionGallery jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery;
-  private HashMap<MessageForPic, EmotionDownGIFCallback> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
+  public MessageRecord b;
+  public SessionInfo c;
+  private long d;
+  private boolean e;
+  private HashMap<MessageForPic, EmotionDownGIFCallback> f = new HashMap();
+  private EmotionDownGIFCallback.UiCallback g;
+  private EmotionGallery h;
   
   public MsgEmotionDataSource(Intent paramIntent, MsgEmoticonPreviewData paramMsgEmoticonPreviewData, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDataManager = new EmotionDataManager(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMsgEmoticonPreviewData.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Long = paramIntent.getLongExtra("key_multi_forward_seq", 0L);
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_is_multi_forward_msg", false);
+    this.a = new EmotionDataManager(paramSessionInfo.b, paramSessionInfo.a);
+    this.b = paramMsgEmoticonPreviewData.a;
+    this.c = paramSessionInfo;
+    this.d = paramIntent.getLongExtra("key_multi_forward_seq", 0L);
+    this.e = paramIntent.getBooleanExtra("key_is_multi_forward_msg", false);
   }
   
   private IPicTransFile.IPicDownloadPro a(MessageForPic paramMessageForPic)
   {
-    QQAppInterface localQQAppInterface = a();
+    QQAppInterface localQQAppInterface = d();
     if (localQQAppInterface != null)
     {
       PicDownloadInfo localPicDownloadInfo = new PicDownloadInfo();
-      localPicDownloadInfo.e = paramMessageForPic.fileSizeFlag;
-      int i = localPicDownloadInfo.e;
+      localPicDownloadInfo.t = paramMessageForPic.fileSizeFlag;
+      int i = localPicDownloadInfo.t;
       boolean bool = true;
       if (i != 1) {
         bool = false;
@@ -73,20 +73,6 @@ public class MsgEmotionDataSource
     return null;
   }
   
-  public int a()
-  {
-    return 1;
-  }
-  
-  protected QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
   public List<EmoticonPreviewData> a(boolean paramBoolean)
   {
     Object localObject2 = new ArrayList();
@@ -94,14 +80,14 @@ public class MsgEmotionDataSource
     label175:
     do
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localObject1 = this.b;
       long l;
       if ((localObject1 != null) && (((MessageRecord)localObject1).isMultiMsg)) {
-        l = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq;
+        l = this.b.msgseq;
       } else {
         l = -1L;
       }
-      List localList = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDataManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBoolean, l);
+      List localList = this.a.a(this.c.b, this.c.a, paramBoolean, l);
       Object localObject3;
       if (localList != null)
       {
@@ -109,7 +95,7 @@ public class MsgEmotionDataSource
         while (((Iterator)localObject1).hasNext())
         {
           localObject3 = (MessageRecord)((Iterator)localObject1).next();
-          if ((localObject3 != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (((MessageRecord)localObject3).time == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time) && (((((MessageRecord)localObject3).msgtype != 1) && (((MessageRecord)localObject3).msgtype != 3000)) || (((MessageRecord)localObject3).shmsgseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq)))
+          if ((localObject3 != null) && (this.b != null) && (((MessageRecord)localObject3).time == this.b.time) && (((((MessageRecord)localObject3).msgtype != 1) && (((MessageRecord)localObject3).msgtype != 3000)) || (((MessageRecord)localObject3).shmsgseq == this.b.shmsgseq)))
           {
             bool = true;
             break label175;
@@ -134,7 +120,7 @@ public class MsgEmotionDataSource
         ((StringBuilder)localObject3).append(bool);
         QLog.d("MsgEmotionFragmentDataSource", 2, ((StringBuilder)localObject3).toString());
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (localList == null) || (localList.isEmpty())) {
+      if ((this.b == null) || (localList == null) || (localList.isEmpty())) {
         break;
       }
     } while (!bool);
@@ -149,33 +135,16 @@ public class MsgEmotionDataSource
     return localObject1;
   }
   
-  public void a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        IPicTransFile.IPicDownloadPro localIPicDownloadPro = a((MessageForPic)localEntry.getKey());
-        if (localIPicDownloadPro != null) {
-          localIPicDownloadPro.removeDownCallBack((DownCallBack)localEntry.getValue());
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
   public void a(int paramInt, MessageForPic paramMessageForPic)
   {
-    EmoticonPreviewData localEmoticonPreviewData = (EmoticonPreviewData)this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.getSelectedItem();
+    EmoticonPreviewData localEmoticonPreviewData = (EmoticonPreviewData)this.h.getSelectedItem();
     if (!(localEmoticonPreviewData instanceof MsgEmoticonPreviewData)) {
       return;
     }
-    if (((MsgEmoticonPreviewData)localEmoticonPreviewData).jdField_a_of_type_ComTencentMobileqqDataMessageRecord != paramMessageForPic) {
+    if (((MsgEmoticonPreviewData)localEmoticonPreviewData).a != paramMessageForPic) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDownGIFCallback$UiCallback.a(paramInt, paramMessageForPic);
+    this.g.a(paramInt, paramMessageForPic);
   }
   
   public void a(EmotionGallery paramEmotionGallery, Handler paramHandler, EmoticonPreviewData paramEmoticonPreviewData, EmotionDownGIFCallback.UiCallback paramUiCallback)
@@ -184,12 +153,12 @@ public class MsgEmotionDataSource
       return;
     }
     paramEmoticonPreviewData = (MsgEmoticonPreviewData)paramEmoticonPreviewData;
-    if (!(paramEmoticonPreviewData.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) {
+    if (!(paramEmoticonPreviewData.a instanceof MessageForPic)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDownGIFCallback$UiCallback = paramUiCallback;
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery = paramEmotionGallery;
-    paramEmotionGallery = (MessageForPic)paramEmoticonPreviewData.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    this.g = paramUiCallback;
+    this.h = paramEmotionGallery;
+    paramEmotionGallery = (MessageForPic)paramEmoticonPreviewData.a;
     if (QLog.isColorLevel())
     {
       paramEmoticonPreviewData = new StringBuilder();
@@ -198,8 +167,8 @@ public class MsgEmotionDataSource
       QLog.d("MsgEmotionFragmentDataSource", 2, paramEmoticonPreviewData.toString());
     }
     paramHandler = new EmotionDownGIFCallback(paramEmotionGallery, paramHandler, this);
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramEmotionGallery)) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramEmotionGallery, paramHandler);
+    if (!this.f.containsKey(paramEmotionGallery)) {
+      this.f.put(paramEmotionGallery, paramHandler);
     }
     paramEmoticonPreviewData = a(paramEmotionGallery);
     if (paramEmoticonPreviewData != null)
@@ -211,18 +180,18 @@ public class MsgEmotionDataSource
       paramEmoticonPreviewData = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(6, 1536, 1);
       paramEmoticonPreviewData.a(paramEmotionGallery, paramEmotionGallery.getPicDownloadInfo());
       paramEmoticonPreviewData.a(paramHandler);
-      if (a() != null) {
+      if (d() != null) {
         ((IPicBus)QRoute.api(IPicBus.class)).launch(paramEmoticonPreviewData);
       }
     }
-    AIOImageProviderService.a(a(), paramEmotionGallery);
+    AIOImageProviderService.a(d(), paramEmotionGallery);
   }
   
   public void a(EmotionGallery paramEmotionGallery, EmotionAdapter paramEmotionAdapter, long paramLong, EmotionDataSource.DataLoadListener paramDataLoadListener)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramLong == this.jdField_a_of_type_Long))
+    if ((this.e) && (paramLong == this.d))
     {
-      paramDataLoadListener.c();
+      paramDataLoadListener.e();
       return;
     }
     int j = 0;
@@ -239,7 +208,7 @@ public class MsgEmotionDataSource
           break;
         }
         localObject = (EmoticonPreviewData)paramEmotionAdapter.next();
-      } while ((!(localObject instanceof MsgEmoticonPreviewData)) || (((MsgEmoticonPreviewData)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq != paramLong));
+      } while ((!(localObject instanceof MsgEmoticonPreviewData)) || (((MsgEmoticonPreviewData)localObject).a.uniseq != paramLong));
       i = 1;
     }
     if (i == 0)
@@ -257,7 +226,7 @@ public class MsgEmotionDataSource
     if (paramEmotionGallery == null) {
       return;
     }
-    paramEmotionAdapter = ((MsgEmoticonPreviewData)paramEmotionGallery).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    paramEmotionAdapter = ((MsgEmoticonPreviewData)paramEmotionGallery).a;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -278,7 +247,7 @@ public class MsgEmotionDataSource
     }
     if (paramLong == paramEmotionAdapter.uniseq)
     {
-      paramDataLoadListener.c();
+      paramDataLoadListener.e();
       return;
     }
     a(paramDataLoadListener, paramEmotionGallery, true);
@@ -286,16 +255,16 @@ public class MsgEmotionDataSource
   
   public void a(boolean paramBoolean, MessageForPic paramMessageForPic)
   {
-    Object localObject1 = (EmotionDownGIFCallback)this.jdField_a_of_type_JavaUtilHashMap.remove(paramMessageForPic);
+    Object localObject1 = (EmotionDownGIFCallback)this.f.remove(paramMessageForPic);
     Object localObject2 = a(paramMessageForPic);
     if (localObject2 != null) {
       ((IPicTransFile.IPicDownloadPro)localObject2).removeDownCallBack((DownCallBack)localObject1);
     }
-    localObject1 = (EmoticonPreviewData)this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionGallery.getSelectedItem();
+    localObject1 = (EmoticonPreviewData)this.h.getSelectedItem();
     if (!(localObject1 instanceof MsgEmoticonPreviewData)) {
       return;
     }
-    localObject1 = ((MsgEmoticonPreviewData)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    localObject1 = ((MsgEmoticonPreviewData)localObject1).a;
     if ((localObject1 != null) && (paramMessageForPic != null) && (localObject1 != paramMessageForPic))
     {
       if (QLog.isColorLevel())
@@ -309,7 +278,7 @@ public class MsgEmotionDataSource
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDownGIFCallback$UiCallback.a(paramBoolean, paramMessageForPic);
+    this.g.a(paramBoolean, paramMessageForPic);
   }
   
   public boolean a()
@@ -322,7 +291,7 @@ public class MsgEmotionDataSource
     if (!(paramEmoticonPreviewData instanceof MsgEmoticonPreviewData)) {
       return true;
     }
-    paramEmoticonPreviewData = ((MsgEmoticonPreviewData)paramEmoticonPreviewData).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    paramEmoticonPreviewData = ((MsgEmoticonPreviewData)paramEmoticonPreviewData).a;
     if ((paramEmoticonPreviewData instanceof MessageForPic))
     {
       paramEmoticonPreviewData = (MessageForPic)paramEmoticonPreviewData;
@@ -354,10 +323,41 @@ public class MsgEmotionDataSource
     }
     return true;
   }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public void c()
+  {
+    if (!this.f.isEmpty())
+    {
+      Iterator localIterator = this.f.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        IPicTransFile.IPicDownloadPro localIPicDownloadPro = a((MessageForPic)localEntry.getKey());
+        if (localIPicDownloadPro != null) {
+          localIPicDownloadPro.removeDownCallBack((DownCallBack)localEntry.getValue());
+        }
+      }
+    }
+    this.f.clear();
+  }
+  
+  protected QQAppInterface d()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.MsgEmotionDataSource
  * JD-Core Version:    0.7.0.1
  */

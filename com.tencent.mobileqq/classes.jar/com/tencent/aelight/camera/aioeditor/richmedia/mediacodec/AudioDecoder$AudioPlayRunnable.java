@@ -14,93 +14,53 @@ import java.io.File;
 class AudioDecoder$AudioPlayRunnable
   implements Runnable
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
   public boolean a;
-  private float jdField_b_of_type_Float = 0.0F;
-  private volatile int jdField_b_of_type_Int = -1;
   public boolean b;
-  private float jdField_c_of_type_Float = -1.0F;
-  private int jdField_c_of_type_Int = 0;
-  private volatile boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int = 0;
-  private volatile boolean jdField_d_of_type_Boolean = false;
-  private int e = 0;
+  private volatile int c = 0;
+  private volatile int d = -1;
+  private float e = 0.0F;
+  private float f = 0.0F;
+  private int g = 0;
+  private int h = 0;
+  private long i = 0L;
+  private int j = 0;
+  private volatile boolean k = false;
+  private Object l = new Object();
+  private volatile boolean m = false;
+  private float n = -1.0F;
   
   public AudioDecoder$AudioPlayRunnable(AudioDecoder paramAudioDecoder, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-  }
-  
-  private AudioTrack a()
-  {
-    Object localObject = null;
-    for (;;)
-    {
-      try
-      {
-        if (this.this$0.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.e != 1) {
-          break label161;
-        }
-        i = 4;
-        if (this.this$0.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.jdField_b_of_type_Int != 16) {
-          break label167;
-        }
-        j = 2;
-        int k = AudioTrack.getMinBufferSize(this.this$0.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.jdField_d_of_type_Int, i, j);
-        AudioTrack localAudioTrack = new AudioTrack(3, this.this$0.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.jdField_d_of_type_Int, i, j, k, 1);
-        try
-        {
-          localAudioTrack.setStereoVolume(this.this$0.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.jdField_a_of_type_Float, this.this$0.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData.jdField_a_of_type_Float);
-          localAudioTrack.play();
-          return localAudioTrack;
-        }
-        catch (Throwable localThrowable1)
-        {
-          localObject = localAudioTrack;
-        }
-        QLog.e("AudioDecoder", 4, "AudioTrack init fail");
-      }
-      catch (Throwable localThrowable2) {}
-      localThrowable2.printStackTrace();
-      return localObject;
-      label161:
-      int i = 12;
-      continue;
-      label167:
-      int j = 3;
-    }
+    this.e = paramFloat1;
+    this.f = paramFloat2;
   }
   
   /* Error */
   private void a(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc 88
+    //   0: ldc 67
     //   2: iconst_4
-    //   3: ldc 103
-    //   5: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3: ldc 69
+    //   5: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   8: aconst_null
     //   9: astore 7
     //   11: aconst_null
     //   12: astore 8
     //   14: aload_0
-    //   15: invokespecial 107	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:a	()Landroid/media/AudioTrack;
+    //   15: invokespecial 77	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	()Landroid/media/AudioTrack;
     //   18: astore 9
     //   20: aload 9
     //   22: astore 8
     //   24: aload 9
     //   26: astore 7
     //   28: aload 9
-    //   30: invokevirtual 111	android/media/AudioTrack:getSampleRate	()I
+    //   30: invokevirtual 83	android/media/AudioTrack:getSampleRate	()I
     //   33: aload 9
-    //   35: invokevirtual 114	android/media/AudioTrack:getChannelConfiguration	()I
+    //   35: invokevirtual 86	android/media/AudioTrack:getChannelConfiguration	()I
     //   38: aload 9
-    //   40: invokevirtual 117	android/media/AudioTrack:getAudioFormat	()I
-    //   43: invokestatic 75	android/media/AudioTrack:getMinBufferSize	(III)I
+    //   40: invokevirtual 89	android/media/AudioTrack:getAudioFormat	()I
+    //   43: invokestatic 93	android/media/AudioTrack:getMinBufferSize	(III)I
     //   46: iconst_2
     //   47: imul
     //   48: istore 4
@@ -117,13 +77,13 @@ class AudioDecoder$AudioPlayRunnable
     //   70: astore 7
     //   72: aload_0
     //   73: iconst_0
-    //   74: putfield 119	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Boolean	Z
+    //   74: putfield 95	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:a	Z
     //   77: aload 9
     //   79: astore 8
     //   81: aload 9
     //   83: astore 7
     //   85: aload_0
-    //   86: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   86: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   89: aload_1
     //   90: arraylength
     //   91: if_icmpge +723 -> 814
@@ -132,15 +92,15 @@ class AudioDecoder$AudioPlayRunnable
     //   98: aload 9
     //   100: astore 7
     //   102: aload_0
-    //   103: getfield 119	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Boolean	Z
+    //   103: getfield 95	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:a	Z
     //   106: ifne +708 -> 814
     //   109: aload 9
     //   111: astore 8
     //   113: aload 9
     //   115: astore 7
     //   117: aload_0
-    //   118: getfield 50	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Float	F
-    //   121: ldc 48
+    //   118: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:n	F
+    //   121: ldc 57
     //   123: fcmpl
     //   124: ifeq +132 -> 256
     //   127: aload 9
@@ -148,13 +108,13 @@ class AudioDecoder$AudioPlayRunnable
     //   131: aload 9
     //   133: astore 7
     //   135: aload_0
-    //   136: getfield 50	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Float	F
+    //   136: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:n	F
     //   139: aload_0
-    //   140: getfield 41	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	I
+    //   140: getfield 50	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:j	I
     //   143: i2f
     //   144: fmul
     //   145: aload_0
-    //   146: getfield 33	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_b_of_type_Float	F
+    //   146: getfield 42	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:f	F
     //   149: fdiv
     //   150: f2i
     //   151: istore_3
@@ -164,10 +124,10 @@ class AudioDecoder$AudioPlayRunnable
     //   158: astore 7
     //   160: iload_3
     //   161: aload_0
-    //   162: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   165: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   168: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   171: getfield 68	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_b_of_type_Int	I
+    //   162: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   165: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   168: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   171: getfield 108	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:d	I
     //   174: irem
     //   175: istore 5
     //   177: iload_3
@@ -180,10 +140,10 @@ class AudioDecoder$AudioPlayRunnable
     //   190: astore 7
     //   192: iload_3
     //   193: aload_0
-    //   194: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   197: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   200: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   203: getfield 68	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_b_of_type_Int	I
+    //   194: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   197: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   200: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   203: getfield 108	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:d	I
     //   206: iload 5
     //   208: isub
     //   209: iadd
@@ -195,30 +155,30 @@ class AudioDecoder$AudioPlayRunnable
     //   219: aload_0
     //   220: iload_2
     //   221: aload_0
-    //   222: getfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
+    //   222: getfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
     //   225: isub
-    //   226: putfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   226: putfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   229: aload 9
     //   231: astore 8
     //   233: aload 9
     //   235: astore 7
     //   237: aload 9
-    //   239: invokevirtual 122	android/media/AudioTrack:flush	()V
+    //   239: invokevirtual 111	android/media/AudioTrack:flush	()V
     //   242: aload 9
     //   244: astore 8
     //   246: aload 9
     //   248: astore 7
     //   250: aload_0
-    //   251: ldc 48
-    //   253: putfield 50	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Float	F
+    //   251: ldc 57
+    //   253: putfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:n	F
     //   256: aload 9
     //   258: astore 8
     //   260: aload 9
     //   262: astore 7
     //   264: aload_0
-    //   265: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   268: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   271: getfield 123	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_Int	I
+    //   265: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   268: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   271: getfield 112	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:d	I
     //   274: istore_2
     //   275: iload_2
     //   276: iconst_1
@@ -242,19 +202,19 @@ class AudioDecoder$AudioPlayRunnable
     //   308: aload_1
     //   309: arraylength
     //   310: aload_0
-    //   311: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   311: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   314: isub
     //   315: iload 4
-    //   317: invokestatic 129	java/lang/Math:min	(II)I
+    //   317: invokestatic 118	java/lang/Math:min	(II)I
     //   320: istore_3
     //   321: aload 9
     //   323: astore 8
     //   325: aload 9
     //   327: astore 7
     //   329: aload_0
-    //   330: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   333: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   336: getfield 131	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_b_of_type_Boolean	Z
+    //   330: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   333: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   336: getfield 120	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:e	Z
     //   339: ifne +554 -> 893
     //   342: aload 9
     //   344: astore 8
@@ -263,9 +223,9 @@ class AudioDecoder$AudioPlayRunnable
     //   350: aload 9
     //   352: aload_1
     //   353: aload_0
-    //   354: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   354: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   357: iload_3
-    //   358: invokevirtual 135	android/media/AudioTrack:write	([BII)I
+    //   358: invokevirtual 124	android/media/AudioTrack:write	([BII)I
     //   361: pop
     //   362: goto +531 -> 893
     //   365: aload 9
@@ -274,10 +234,10 @@ class AudioDecoder$AudioPlayRunnable
     //   371: astore 7
     //   373: aload_1
     //   374: aload_0
-    //   375: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   375: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   378: aload 10
     //   380: iload 4
-    //   382: invokestatic 140	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:c	([BI[BI)I
+    //   382: invokestatic 129	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:c	([BI[BI)I
     //   385: istore_2
     //   386: goto +512 -> 898
     //   389: aload 9
@@ -286,11 +246,11 @@ class AudioDecoder$AudioPlayRunnable
     //   395: astore 7
     //   397: aload_1
     //   398: aload_0
-    //   399: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   399: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   402: aload 10
     //   404: iload 4
     //   406: iconst_4
-    //   407: invokestatic 143	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:a	([BI[BII)I
+    //   407: invokestatic 132	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:a	([BI[BII)I
     //   410: istore_2
     //   411: goto +487 -> 898
     //   414: aload 9
@@ -299,10 +259,10 @@ class AudioDecoder$AudioPlayRunnable
     //   420: astore 7
     //   422: aload_1
     //   423: aload_0
-    //   424: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   424: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   427: aload 10
     //   429: iload 4
-    //   431: invokestatic 145	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:b	([BI[BI)I
+    //   431: invokestatic 134	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:b	([BI[BI)I
     //   434: istore_2
     //   435: goto +463 -> 898
     //   438: aload 9
@@ -311,11 +271,11 @@ class AudioDecoder$AudioPlayRunnable
     //   444: astore 7
     //   446: aload_1
     //   447: aload_0
-    //   448: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   448: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   451: aload 10
     //   453: iload 4
     //   455: iconst_2
-    //   456: invokestatic 143	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:a	([BI[BII)I
+    //   456: invokestatic 132	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:a	([BI[BII)I
     //   459: istore_2
     //   460: goto +438 -> 898
     //   463: aload 9
@@ -324,10 +284,10 @@ class AudioDecoder$AudioPlayRunnable
     //   469: astore 7
     //   471: aload_1
     //   472: aload_0
-    //   473: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   473: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   476: aload 10
     //   478: iload 4
-    //   480: invokestatic 147	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:a	([BI[BI)I
+    //   480: invokestatic 136	com/tencent/mobileqq/editor/composite/step/AudioDataUtil:a	([BI[BI)I
     //   483: istore_2
     //   484: goto +414 -> 898
     //   487: aload 9
@@ -335,9 +295,9 @@ class AudioDecoder$AudioPlayRunnable
     //   491: aload 9
     //   493: astore 7
     //   495: aload_0
-    //   496: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   499: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   502: getfield 131	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_b_of_type_Boolean	Z
+    //   496: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   499: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   502: getfield 120	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:e	Z
     //   505: ifne +26 -> 531
     //   508: iload_2
     //   509: ifne +22 -> 531
@@ -349,7 +309,7 @@ class AudioDecoder$AudioPlayRunnable
     //   522: aload 10
     //   524: iconst_0
     //   525: iload 4
-    //   527: invokevirtual 135	android/media/AudioTrack:write	([BII)I
+    //   527: invokevirtual 124	android/media/AudioTrack:write	([BII)I
     //   530: pop
     //   531: aload 9
     //   533: astore 8
@@ -357,16 +317,16 @@ class AudioDecoder$AudioPlayRunnable
     //   537: astore 7
     //   539: aload_0
     //   540: aload_0
-    //   541: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   541: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   544: iload_3
     //   545: iadd
-    //   546: putfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   546: putfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   549: aload 9
     //   551: astore 8
     //   553: aload 9
     //   555: astore 7
     //   557: aload_0
-    //   558: getfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   558: getfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   561: aload_1
     //   562: arraylength
     //   563: if_icmplt +147 -> 710
@@ -375,18 +335,18 @@ class AudioDecoder$AudioPlayRunnable
     //   570: aload 9
     //   572: astore 7
     //   574: aload_0
-    //   575: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   578: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   581: getfield 148	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_Boolean	Z
+    //   575: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   578: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   581: getfield 138	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:c	Z
     //   584: ifeq +126 -> 710
     //   587: aload 9
     //   589: astore 8
     //   591: aload 9
     //   593: astore 7
     //   595: aload_0
-    //   596: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   599: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   602: getfield 123	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_Int	I
+    //   596: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   599: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   602: getfield 112	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:d	I
     //   605: iconst_3
     //   606: if_icmpeq +61 -> 667
     //   609: aload 9
@@ -396,19 +356,19 @@ class AudioDecoder$AudioPlayRunnable
     //   617: aload_0
     //   618: monitorenter
     //   619: aload_0
-    //   620: getfield 47	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Boolean	Z
+    //   620: getfield 56	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:m	Z
     //   623: ifne +26 -> 649
     //   626: aload_0
-    //   627: invokevirtual 151	java/lang/Object:wait	()V
+    //   627: invokevirtual 141	java/lang/Object:wait	()V
     //   630: aload_0
     //   631: iconst_0
-    //   632: putfield 47	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Boolean	Z
-    //   635: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   632: putfield 56	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:m	Z
+    //   635: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   638: ifeq +11 -> 649
-    //   641: ldc 88
+    //   641: ldc 67
     //   643: iconst_1
-    //   644: ldc 157
-    //   646: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   644: ldc 147
+    //   646: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   649: aload_0
     //   650: monitorexit
     //   651: goto +16 -> 667
@@ -427,27 +387,27 @@ class AudioDecoder$AudioPlayRunnable
     //   673: astore 7
     //   675: aload_0
     //   676: iconst_0
-    //   677: putfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   677: putfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   680: aload 9
     //   682: astore 8
     //   684: aload 9
     //   686: astore 7
-    //   688: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   688: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   691: ifeq +19 -> 710
     //   694: aload 9
     //   696: astore 8
     //   698: aload 9
     //   700: astore 7
-    //   702: ldc 88
+    //   702: ldc 67
     //   704: iconst_1
-    //   705: ldc 159
-    //   707: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   705: ldc 149
+    //   707: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   710: aload 9
     //   712: astore 8
     //   714: aload 9
     //   716: astore 7
     //   718: aload_0
-    //   719: getfield 43	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Boolean	Z
+    //   719: getfield 52	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:k	Z
     //   722: istore 6
     //   724: iload 6
     //   726: ifeq -649 -> 77
@@ -456,7 +416,7 @@ class AudioDecoder$AudioPlayRunnable
     //   733: aload 9
     //   735: astore 7
     //   737: aload_0
-    //   738: getfield 45	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   738: getfield 54	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:l	Ljava/lang/Object;
     //   741: astore 11
     //   743: aload 9
     //   745: astore 8
@@ -465,8 +425,8 @@ class AudioDecoder$AudioPlayRunnable
     //   751: aload 11
     //   753: monitorenter
     //   754: aload_0
-    //   755: getfield 45	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   758: invokevirtual 151	java/lang/Object:wait	()V
+    //   755: getfield 54	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:l	Ljava/lang/Object;
+    //   758: invokevirtual 141	java/lang/Object:wait	()V
     //   761: aload 11
     //   763: monitorexit
     //   764: goto -687 -> 77
@@ -485,21 +445,21 @@ class AudioDecoder$AudioPlayRunnable
     //   789: aload 9
     //   791: astore 7
     //   793: aload 11
-    //   795: invokevirtual 160	java/lang/InterruptedException:printStackTrace	()V
+    //   795: invokevirtual 152	java/lang/InterruptedException:printStackTrace	()V
     //   798: aload 9
     //   800: astore 8
     //   802: aload 9
     //   804: astore 7
     //   806: aload_0
     //   807: iconst_1
-    //   808: putfield 119	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Boolean	Z
+    //   808: putfield 95	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:a	Z
     //   811: goto -734 -> 77
     //   814: aload 9
     //   816: astore 8
     //   818: aload 9
     //   820: astore 7
     //   822: aload 9
-    //   824: invokevirtual 163	android/media/AudioTrack:stop	()V
+    //   824: invokevirtual 155	android/media/AudioTrack:stop	()V
     //   827: aload 9
     //   829: ifnull +45 -> 874
     //   832: aload 9
@@ -510,23 +470,23 @@ class AudioDecoder$AudioPlayRunnable
     //   843: astore_1
     //   844: aload 7
     //   846: astore 8
-    //   848: ldc 88
+    //   848: ldc 67
     //   850: iconst_4
-    //   851: ldc 165
-    //   853: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   851: ldc 157
+    //   853: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   856: aload 7
     //   858: astore 8
     //   860: aload_1
-    //   861: invokevirtual 98	java/lang/Throwable:printStackTrace	()V
+    //   861: invokevirtual 160	java/lang/Throwable:printStackTrace	()V
     //   864: aload 7
     //   866: ifnull +8 -> 874
     //   869: aload 7
-    //   871: invokevirtual 168	android/media/AudioTrack:release	()V
+    //   871: invokevirtual 163	android/media/AudioTrack:release	()V
     //   874: return
     //   875: aload 8
     //   877: ifnull +8 -> 885
     //   880: aload 8
-    //   882: invokevirtual 168	android/media/AudioTrack:release	()V
+    //   882: invokevirtual 163	android/media/AudioTrack:release	()V
     //   885: goto +5 -> 890
     //   888: aload_1
     //   889: athrow
@@ -543,10 +503,10 @@ class AudioDecoder$AudioPlayRunnable
     //   start	length	slot	name	signature
     //   0	905	0	this	AudioPlayRunnable
     //   0	905	1	paramArrayOfByte	byte[]
-    //   178	724	2	i	int
-    //   151	749	3	j	int
-    //   48	478	4	k	int
-    //   175	34	5	m	int
+    //   178	724	2	i1	int
+    //   151	749	3	i2	int
+    //   48	478	4	i3	int
+    //   175	34	5	i4	int
     //   722	3	6	bool	boolean
     //   9	861	7	localObject1	Object
     //   12	869	8	localObject2	Object
@@ -650,304 +610,22 @@ class AudioDecoder$AudioPlayRunnable
   }
   
   /* Error */
-  private byte[] a()
-  {
-    // Byte code:
-    //   0: invokestatic 179	java/lang/System:currentTimeMillis	()J
-    //   3: lstore_3
-    //   4: new 181	java/io/File
-    //   7: dup
-    //   8: aload_0
-    //   9: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   12: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   15: getfield 184	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   18: invokespecial 187	java/io/File:<init>	(Ljava/lang/String;)V
-    //   21: astore 5
-    //   23: aload_0
-    //   24: aload 5
-    //   26: invokevirtual 190	java/io/File:length	()J
-    //   29: l2i
-    //   30: putfield 41	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	I
-    //   33: aload_0
-    //   34: aload_0
-    //   35: getfield 41	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	I
-    //   38: i2f
-    //   39: aload_0
-    //   40: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Float	F
-    //   43: fmul
-    //   44: f2i
-    //   45: putfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   48: aload_0
-    //   49: getfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   52: aload_0
-    //   53: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   56: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   59: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   62: getfield 68	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_b_of_type_Int	I
-    //   65: irem
-    //   66: istore_2
-    //   67: iload_2
-    //   68: ifeq +27 -> 95
-    //   71: aload_0
-    //   72: aload_0
-    //   73: getfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   76: aload_0
-    //   77: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   80: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   83: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   86: getfield 68	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_b_of_type_Int	I
-    //   89: iload_2
-    //   90: isub
-    //   91: iadd
-    //   92: putfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   95: aload_0
-    //   96: getfield 33	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_b_of_type_Float	F
-    //   99: fstore_1
-    //   100: fload_1
-    //   101: fconst_0
-    //   102: fcmpl
-    //   103: ifne +14 -> 117
-    //   106: aload_0
-    //   107: aload_0
-    //   108: getfield 41	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	I
-    //   111: putfield 37	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Int	I
-    //   114: goto +62 -> 176
-    //   117: aload_0
-    //   118: aload_0
-    //   119: getfield 41	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	I
-    //   122: i2f
-    //   123: fload_1
-    //   124: fmul
-    //   125: f2i
-    //   126: putfield 37	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Int	I
-    //   129: aload_0
-    //   130: getfield 37	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Int	I
-    //   133: aload_0
-    //   134: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   137: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   140: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   143: getfield 68	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_b_of_type_Int	I
-    //   146: irem
-    //   147: istore_2
-    //   148: iload_2
-    //   149: ifeq +27 -> 176
-    //   152: aload_0
-    //   153: aload_0
-    //   154: getfield 37	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Int	I
-    //   157: aload_0
-    //   158: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   161: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   164: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   167: getfield 68	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_b_of_type_Int	I
-    //   170: iload_2
-    //   171: isub
-    //   172: iadd
-    //   173: putfield 37	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Int	I
-    //   176: new 192	java/lang/StringBuilder
-    //   179: dup
-    //   180: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   183: astore 6
-    //   185: aload 6
-    //   187: ldc 195
-    //   189: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: pop
-    //   193: aload 6
-    //   195: aload_0
-    //   196: getfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   199: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   202: pop
-    //   203: aload 6
-    //   205: ldc 204
-    //   207: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   210: pop
-    //   211: aload 6
-    //   213: aload_0
-    //   214: getfield 37	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Int	I
-    //   217: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   220: pop
-    //   221: ldc 88
-    //   223: iconst_4
-    //   224: aload 6
-    //   226: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   229: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   232: aload_0
-    //   233: getfield 37	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Int	I
-    //   236: aload_0
-    //   237: getfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   240: isub
-    //   241: newarray byte
-    //   243: astore 6
-    //   245: goto +36 -> 281
-    //   248: ldc 88
-    //   250: iconst_4
-    //   251: ldc 210
-    //   253: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   256: getstatic 215	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   259: ifnull +9 -> 268
-    //   262: getstatic 215	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   265: invokevirtual 220	android/support/v4/util/MQLruCache:evictAll	()V
-    //   268: aload_0
-    //   269: getfield 37	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Int	I
-    //   272: aload_0
-    //   273: getfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   276: isub
-    //   277: newarray byte
-    //   279: astore 6
-    //   281: new 222	java/io/FileInputStream
-    //   284: dup
-    //   285: aload 5
-    //   287: invokespecial 225	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   290: astore 7
-    //   292: aload 7
-    //   294: astore 5
-    //   296: aload_0
-    //   297: getfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   300: ifeq +18 -> 318
-    //   303: aload 7
-    //   305: astore 5
-    //   307: aload 7
-    //   309: aload_0
-    //   310: getfield 35	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Int	I
-    //   313: i2l
-    //   314: invokevirtual 229	java/io/FileInputStream:skip	(J)J
-    //   317: pop2
-    //   318: aload 7
-    //   320: astore 5
-    //   322: aload 7
-    //   324: aload 6
-    //   326: invokevirtual 233	java/io/FileInputStream:read	([B)I
-    //   329: pop
-    //   330: aload 7
-    //   332: invokevirtual 236	java/io/FileInputStream:close	()V
-    //   335: goto +10 -> 345
-    //   338: astore 5
-    //   340: aload 5
-    //   342: invokevirtual 237	java/io/IOException:printStackTrace	()V
-    //   345: new 192	java/lang/StringBuilder
-    //   348: dup
-    //   349: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   352: astore 5
-    //   354: aload 5
-    //   356: ldc 239
-    //   358: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   361: pop
-    //   362: aload 5
-    //   364: invokestatic 179	java/lang/System:currentTimeMillis	()J
-    //   367: lload_3
-    //   368: lsub
-    //   369: invokevirtual 242	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   372: pop
-    //   373: ldc 88
-    //   375: iconst_4
-    //   376: aload 5
-    //   378: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   381: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   384: aload 6
-    //   386: areturn
-    //   387: astore 8
-    //   389: aload 7
-    //   391: astore 6
-    //   393: goto +16 -> 409
-    //   396: astore 5
-    //   398: aconst_null
-    //   399: astore 6
-    //   401: goto +60 -> 461
-    //   404: astore 8
-    //   406: aconst_null
-    //   407: astore 6
-    //   409: aload 6
-    //   411: astore 5
-    //   413: ldc 88
-    //   415: iconst_4
-    //   416: ldc 165
-    //   418: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   421: aload 6
-    //   423: astore 5
-    //   425: aload 8
-    //   427: invokevirtual 98	java/lang/Throwable:printStackTrace	()V
-    //   430: aload 6
-    //   432: ifnull +17 -> 449
-    //   435: aload 6
-    //   437: invokevirtual 236	java/io/FileInputStream:close	()V
-    //   440: aconst_null
-    //   441: areturn
-    //   442: astore 5
-    //   444: aload 5
-    //   446: invokevirtual 237	java/io/IOException:printStackTrace	()V
-    //   449: aconst_null
-    //   450: areturn
-    //   451: astore 7
-    //   453: aload 5
-    //   455: astore 6
-    //   457: aload 7
-    //   459: astore 5
-    //   461: aload 6
-    //   463: ifnull +18 -> 481
-    //   466: aload 6
-    //   468: invokevirtual 236	java/io/FileInputStream:close	()V
-    //   471: goto +10 -> 481
-    //   474: astore 6
-    //   476: aload 6
-    //   478: invokevirtual 237	java/io/IOException:printStackTrace	()V
-    //   481: aload 5
-    //   483: athrow
-    //   484: astore 6
-    //   486: goto -238 -> 248
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	489	0	this	AudioPlayRunnable
-    //   99	25	1	f	float
-    //   66	106	2	i	int
-    //   3	365	3	l	long
-    //   21	300	5	localObject1	Object
-    //   338	3	5	localIOException1	java.io.IOException
-    //   352	25	5	localStringBuilder	StringBuilder
-    //   396	1	5	localObject2	Object
-    //   411	13	5	localObject3	Object
-    //   442	12	5	localIOException2	java.io.IOException
-    //   459	23	5	localObject4	Object
-    //   183	284	6	localObject5	Object
-    //   474	3	6	localIOException3	java.io.IOException
-    //   484	1	6	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   290	100	7	localFileInputStream	java.io.FileInputStream
-    //   451	7	7	localObject6	Object
-    //   387	1	8	localThrowable1	Throwable
-    //   404	22	8	localThrowable2	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   330	335	338	java/io/IOException
-    //   296	303	387	java/lang/Throwable
-    //   307	318	387	java/lang/Throwable
-    //   322	330	387	java/lang/Throwable
-    //   281	292	396	finally
-    //   281	292	404	java/lang/Throwable
-    //   435	440	442	java/io/IOException
-    //   296	303	451	finally
-    //   307	318	451	finally
-    //   322	330	451	finally
-    //   413	421	451	finally
-    //   425	430	451	finally
-    //   466	471	474	java/io/IOException
-    //   232	245	484	java/lang/OutOfMemoryError
-  }
-  
-  /* Error */
   private byte[] a(String paramString, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 88
+    //   0: ldc 67
     //   2: iconst_4
-    //   3: ldc 247
-    //   5: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   8: invokestatic 179	java/lang/System:currentTimeMillis	()J
+    //   3: ldc 168
+    //   5: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   8: invokestatic 174	java/lang/System:currentTimeMillis	()J
     //   11: lstore 13
-    //   13: new 249	android/media/MediaExtractor
+    //   13: new 176	android/media/MediaExtractor
     //   16: dup
-    //   17: invokespecial 250	android/media/MediaExtractor:<init>	()V
+    //   17: invokespecial 177	android/media/MediaExtractor:<init>	()V
     //   20: astore 22
     //   22: aload 22
     //   24: aload_1
-    //   25: invokevirtual 253	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   25: invokevirtual 181	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
     //   28: lconst_0
     //   29: lstore 11
     //   31: lload 11
@@ -956,1263 +634,1585 @@ class AudioDecoder$AudioPlayRunnable
     //   36: istore_3
     //   37: iload_3
     //   38: aload 22
-    //   40: invokevirtual 256	android/media/MediaExtractor:getTrackCount	()I
-    //   43: if_icmpge +2026 -> 2069
+    //   40: invokevirtual 184	android/media/MediaExtractor:getTrackCount	()I
+    //   43: if_icmpge +2018 -> 2061
     //   46: aload 22
     //   48: iload_3
-    //   49: invokevirtual 260	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   49: invokevirtual 188	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   52: astore 20
     //   54: aload 20
-    //   56: ldc_w 262
-    //   59: invokevirtual 268	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   62: astore 17
-    //   64: aload_0
-    //   65: aload 20
-    //   67: ldc_w 270
-    //   70: invokevirtual 274	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
-    //   73: putfield 39	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Long	J
-    //   76: aload_0
-    //   77: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Float	F
-    //   80: aload_0
-    //   81: getfield 39	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Long	J
-    //   84: l2f
-    //   85: fmul
-    //   86: f2l
-    //   87: lstore 11
-    //   89: aload_0
-    //   90: getfield 33	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_b_of_type_Float	F
-    //   93: aload_0
-    //   94: getfield 39	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Long	J
-    //   97: l2f
-    //   98: fmul
-    //   99: f2l
-    //   100: lstore 15
-    //   102: lload 15
-    //   104: lstore 9
-    //   106: lload 15
-    //   108: lconst_0
-    //   109: lcmp
-    //   110: ifne +9 -> 119
-    //   113: aload_0
-    //   114: getfield 39	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Long	J
-    //   117: lstore 9
-    //   119: aload 17
-    //   121: ldc_w 276
-    //   124: invokevirtual 282	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   127: ifeq +1923 -> 2050
-    //   130: aload 22
-    //   132: iload_3
-    //   133: invokevirtual 286	android/media/MediaExtractor:selectTrack	(I)V
-    //   136: lload 11
-    //   138: lconst_0
-    //   139: lcmp
-    //   140: ifle +11 -> 151
-    //   143: aload 22
-    //   145: lload 11
-    //   147: iconst_0
-    //   148: invokevirtual 290	android/media/MediaExtractor:seekTo	(JI)V
-    //   151: aload 17
-    //   153: invokestatic 296	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
-    //   156: astore 17
-    //   158: aload 17
-    //   160: astore 18
-    //   162: aload 17
-    //   164: astore 19
-    //   166: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   169: ifeq +171 -> 340
-    //   172: aload 17
-    //   174: astore 18
-    //   176: aload 17
-    //   178: astore 19
-    //   180: new 192	java/lang/StringBuilder
-    //   183: dup
-    //   184: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   187: astore 21
-    //   189: aload 17
-    //   191: astore 18
-    //   193: aload 17
-    //   195: astore 19
-    //   197: aload 21
-    //   199: ldc_w 298
-    //   202: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   205: pop
+    //   56: ldc 190
+    //   58: invokevirtual 196	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   61: astore 17
+    //   63: aload_0
+    //   64: aload 20
+    //   66: ldc 198
+    //   68: invokevirtual 202	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
+    //   71: putfield 48	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:i	J
+    //   74: aload_0
+    //   75: getfield 40	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	F
+    //   78: aload_0
+    //   79: getfield 48	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:i	J
+    //   82: l2f
+    //   83: fmul
+    //   84: f2l
+    //   85: lstore 11
+    //   87: aload_0
+    //   88: getfield 42	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:f	F
+    //   91: aload_0
+    //   92: getfield 48	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:i	J
+    //   95: l2f
+    //   96: fmul
+    //   97: f2l
+    //   98: lstore 15
+    //   100: lload 15
+    //   102: lstore 9
+    //   104: lload 15
+    //   106: lconst_0
+    //   107: lcmp
+    //   108: ifne +9 -> 117
+    //   111: aload_0
+    //   112: getfield 48	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:i	J
+    //   115: lstore 9
+    //   117: aload 17
+    //   119: ldc 204
+    //   121: invokevirtual 210	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   124: ifeq +1918 -> 2042
+    //   127: aload 22
+    //   129: iload_3
+    //   130: invokevirtual 214	android/media/MediaExtractor:selectTrack	(I)V
+    //   133: lload 11
+    //   135: lconst_0
+    //   136: lcmp
+    //   137: ifle +11 -> 148
+    //   140: aload 22
+    //   142: lload 11
+    //   144: iconst_0
+    //   145: invokevirtual 218	android/media/MediaExtractor:seekTo	(JI)V
+    //   148: aload 17
+    //   150: invokestatic 224	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   153: astore 17
+    //   155: aload 17
+    //   157: astore 18
+    //   159: aload 17
+    //   161: astore 19
+    //   163: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   166: ifeq +168 -> 334
+    //   169: aload 17
+    //   171: astore 18
+    //   173: aload 17
+    //   175: astore 19
+    //   177: new 226	java/lang/StringBuilder
+    //   180: dup
+    //   181: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   184: astore 21
+    //   186: aload 17
+    //   188: astore 18
+    //   190: aload 17
+    //   192: astore 19
+    //   194: aload 21
+    //   196: ldc 229
+    //   198: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   201: pop
+    //   202: aload 17
+    //   204: astore 18
     //   206: aload 17
-    //   208: astore 18
-    //   210: aload 17
-    //   212: astore 19
-    //   214: aload 21
-    //   216: aload_0
-    //   217: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   220: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   223: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   226: getfield 299	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_c_of_type_Int	I
-    //   229: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   232: pop
+    //   208: astore 19
+    //   210: aload 21
+    //   212: aload_0
+    //   213: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   216: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   219: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   222: getfield 235	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:e	I
+    //   225: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   228: pop
+    //   229: aload 17
+    //   231: astore 18
     //   233: aload 17
-    //   235: astore 18
-    //   237: aload 17
-    //   239: astore 19
-    //   241: aload 21
-    //   243: ldc_w 301
-    //   246: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: pop
-    //   250: aload 17
-    //   252: astore 18
-    //   254: aload 17
-    //   256: astore 19
-    //   258: aload 21
-    //   260: aload_0
-    //   261: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   264: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   267: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   270: getfield 67	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:e	I
-    //   273: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   276: pop
-    //   277: aload 17
-    //   279: astore 18
-    //   281: aload 17
-    //   283: astore 19
-    //   285: aload 21
-    //   287: ldc_w 303
-    //   290: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   293: pop
-    //   294: aload 17
-    //   296: astore 18
-    //   298: aload 17
-    //   300: astore 19
-    //   302: aload 21
-    //   304: aload_0
-    //   305: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   308: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   311: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   314: getfield 69	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_d_of_type_Int	I
-    //   317: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   320: pop
-    //   321: aload 17
-    //   323: astore 18
-    //   325: aload 17
-    //   327: astore 19
-    //   329: ldc 88
-    //   331: iconst_4
-    //   332: aload 21
-    //   334: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   337: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   340: aload 17
-    //   342: astore 18
-    //   344: aload 17
-    //   346: astore 19
-    //   348: aload_0
-    //   349: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   352: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   355: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   358: astore 23
-    //   360: aload 20
-    //   362: astore 21
-    //   364: aload 17
-    //   366: astore 18
-    //   368: aload 17
-    //   370: astore 19
-    //   372: aload 23
-    //   374: aload 21
-    //   376: aload_1
-    //   377: invokestatic 308	com/tencent/biz/qqstory/utils/AudioSampleRateExtract:a	(Landroid/media/MediaFormat;Ljava/lang/String;)I
-    //   380: putfield 67	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:e	I
-    //   383: aload 17
-    //   385: astore 18
-    //   387: aload 17
-    //   389: astore 19
-    //   391: aload_0
-    //   392: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   395: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   398: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   401: aload 21
-    //   403: invokestatic 311	com/tencent/biz/qqstory/utils/AudioSampleRateExtract:a	(Landroid/media/MediaFormat;)I
-    //   406: putfield 69	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_d_of_type_Int	I
-    //   409: goto +20 -> 429
-    //   412: astore_1
-    //   413: goto +4 -> 417
-    //   416: astore_1
-    //   417: aload 17
-    //   419: astore 18
-    //   421: aload 17
-    //   423: astore 19
-    //   425: aload_1
-    //   426: invokevirtual 98	java/lang/Throwable:printStackTrace	()V
-    //   429: aload 17
-    //   431: astore 18
-    //   433: aload 17
-    //   435: astore 19
-    //   437: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   440: ifeq +163 -> 603
-    //   443: aload 17
-    //   445: astore 18
-    //   447: aload 17
-    //   449: astore 19
-    //   451: new 192	java/lang/StringBuilder
-    //   454: dup
-    //   455: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   458: astore_1
-    //   459: aload 17
-    //   461: astore 18
-    //   463: aload 17
-    //   465: astore 19
-    //   467: aload_1
-    //   468: ldc_w 313
-    //   471: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   474: pop
-    //   475: aload 17
-    //   477: astore 18
-    //   479: aload 17
-    //   481: astore 19
-    //   483: aload_1
-    //   484: aload_0
-    //   485: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   488: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   491: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   494: getfield 299	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_c_of_type_Int	I
-    //   497: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   500: pop
-    //   501: aload 17
-    //   503: astore 18
-    //   505: aload 17
-    //   507: astore 19
-    //   509: aload_1
-    //   510: ldc_w 301
-    //   513: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   516: pop
-    //   517: aload 17
-    //   519: astore 18
-    //   521: aload 17
-    //   523: astore 19
-    //   525: aload_1
-    //   526: aload_0
-    //   527: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   530: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   533: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   536: getfield 67	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:e	I
-    //   539: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   542: pop
-    //   543: aload 17
-    //   545: astore 18
-    //   547: aload 17
-    //   549: astore 19
-    //   551: aload_1
-    //   552: ldc_w 303
-    //   555: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   558: pop
-    //   559: aload 17
-    //   561: astore 18
-    //   563: aload 17
-    //   565: astore 19
-    //   567: aload_1
-    //   568: aload_0
-    //   569: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   572: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   575: getfield 64	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
-    //   578: getfield 69	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:jdField_d_of_type_Int	I
-    //   581: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   584: pop
-    //   585: aload 17
-    //   587: astore 18
-    //   589: aload 17
-    //   591: astore 19
-    //   593: ldc 88
-    //   595: iconst_4
-    //   596: aload_1
-    //   597: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   600: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   235: astore 19
+    //   237: aload 21
+    //   239: ldc 240
+    //   241: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: pop
+    //   245: aload 17
+    //   247: astore 18
+    //   249: aload 17
+    //   251: astore 19
+    //   253: aload 21
+    //   255: aload_0
+    //   256: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   259: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   262: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   265: getfield 241	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:g	I
+    //   268: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   271: pop
+    //   272: aload 17
+    //   274: astore 18
+    //   276: aload 17
+    //   278: astore 19
+    //   280: aload 21
+    //   282: ldc 243
+    //   284: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: pop
+    //   288: aload 17
+    //   290: astore 18
+    //   292: aload 17
+    //   294: astore 19
+    //   296: aload 21
+    //   298: aload_0
+    //   299: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   302: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   305: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   308: getfield 245	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:f	I
+    //   311: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   314: pop
+    //   315: aload 17
+    //   317: astore 18
+    //   319: aload 17
+    //   321: astore 19
+    //   323: ldc 67
+    //   325: iconst_4
+    //   326: aload 21
+    //   328: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   331: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   334: aload 17
+    //   336: astore 18
+    //   338: aload 17
+    //   340: astore 19
+    //   342: aload_0
+    //   343: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   346: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   349: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   352: astore 23
+    //   354: aload 20
+    //   356: astore 21
+    //   358: aload 17
+    //   360: astore 18
+    //   362: aload 17
+    //   364: astore 19
+    //   366: aload 23
+    //   368: aload 21
+    //   370: aload_1
+    //   371: invokestatic 254	com/tencent/biz/qqstory/utils/AudioSampleRateExtract:a	(Landroid/media/MediaFormat;Ljava/lang/String;)I
+    //   374: putfield 241	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:g	I
+    //   377: aload 17
+    //   379: astore 18
+    //   381: aload 17
+    //   383: astore 19
+    //   385: aload_0
+    //   386: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   389: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   392: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   395: aload 21
+    //   397: invokestatic 257	com/tencent/biz/qqstory/utils/AudioSampleRateExtract:a	(Landroid/media/MediaFormat;)I
+    //   400: putfield 245	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:f	I
+    //   403: goto +20 -> 423
+    //   406: astore_1
+    //   407: goto +4 -> 411
+    //   410: astore_1
+    //   411: aload 17
+    //   413: astore 18
+    //   415: aload 17
+    //   417: astore 19
+    //   419: aload_1
+    //   420: invokevirtual 160	java/lang/Throwable:printStackTrace	()V
+    //   423: aload 17
+    //   425: astore 18
+    //   427: aload 17
+    //   429: astore 19
+    //   431: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   434: ifeq +161 -> 595
+    //   437: aload 17
+    //   439: astore 18
+    //   441: aload 17
+    //   443: astore 19
+    //   445: new 226	java/lang/StringBuilder
+    //   448: dup
+    //   449: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   452: astore_1
+    //   453: aload 17
+    //   455: astore 18
+    //   457: aload 17
+    //   459: astore 19
+    //   461: aload_1
+    //   462: ldc_w 259
+    //   465: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   468: pop
+    //   469: aload 17
+    //   471: astore 18
+    //   473: aload 17
+    //   475: astore 19
+    //   477: aload_1
+    //   478: aload_0
+    //   479: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   482: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   485: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   488: getfield 235	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:e	I
+    //   491: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   494: pop
+    //   495: aload 17
+    //   497: astore 18
+    //   499: aload 17
+    //   501: astore 19
+    //   503: aload_1
+    //   504: ldc 240
+    //   506: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: pop
+    //   510: aload 17
+    //   512: astore 18
+    //   514: aload 17
+    //   516: astore 19
+    //   518: aload_1
+    //   519: aload_0
+    //   520: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   523: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   526: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   529: getfield 241	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:g	I
+    //   532: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   535: pop
+    //   536: aload 17
+    //   538: astore 18
+    //   540: aload 17
+    //   542: astore 19
+    //   544: aload_1
+    //   545: ldc 243
+    //   547: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   550: pop
+    //   551: aload 17
+    //   553: astore 18
+    //   555: aload 17
+    //   557: astore 19
+    //   559: aload_1
+    //   560: aload_0
+    //   561: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   564: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   567: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   570: getfield 245	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:f	I
+    //   573: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   576: pop
+    //   577: aload 17
+    //   579: astore 18
+    //   581: aload 17
+    //   583: astore 19
+    //   585: ldc 67
+    //   587: iconst_4
+    //   588: aload_1
+    //   589: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   592: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   595: aload 17
+    //   597: astore 18
+    //   599: aload 17
+    //   601: astore 19
     //   603: aload 17
-    //   605: astore 18
-    //   607: aload 17
-    //   609: astore 19
-    //   611: aload 17
-    //   613: aload 20
-    //   615: aconst_null
-    //   616: aconst_null
-    //   617: iconst_0
-    //   618: invokevirtual 317	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   621: goto +26 -> 647
-    //   624: astore_1
-    //   625: goto +7 -> 632
-    //   628: astore_1
-    //   629: aconst_null
-    //   630: astore 17
-    //   632: aload 17
-    //   634: astore 18
-    //   636: aload 17
-    //   638: astore 19
-    //   640: aload_1
-    //   641: invokevirtual 98	java/lang/Throwable:printStackTrace	()V
-    //   644: goto +3 -> 647
-    //   647: aload 17
-    //   649: ifnonnull +59 -> 708
-    //   652: aload 17
-    //   654: astore 18
-    //   656: aload 17
-    //   658: astore 19
-    //   660: ldc 88
-    //   662: iconst_2
-    //   663: ldc_w 319
-    //   666: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   669: aload 17
-    //   671: ifnull +16 -> 687
-    //   674: aload 17
-    //   676: invokevirtual 320	android/media/MediaCodec:stop	()V
-    //   679: aload 17
-    //   681: invokevirtual 321	android/media/MediaCodec:release	()V
-    //   684: goto +3 -> 687
-    //   687: aload 22
-    //   689: invokevirtual 322	android/media/MediaExtractor:release	()V
-    //   692: aconst_null
-    //   693: areturn
-    //   694: ldc 88
-    //   696: iconst_1
-    //   697: aload_1
-    //   698: iconst_0
-    //   699: anewarray 4	java/lang/Object
-    //   702: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   705: goto -13 -> 692
+    //   605: aload 20
+    //   607: aconst_null
+    //   608: aconst_null
+    //   609: iconst_0
+    //   610: invokevirtual 263	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   613: goto +26 -> 639
+    //   616: astore_1
+    //   617: goto +7 -> 624
+    //   620: astore_1
+    //   621: aconst_null
+    //   622: astore 17
+    //   624: aload 17
+    //   626: astore 18
+    //   628: aload 17
+    //   630: astore 19
+    //   632: aload_1
+    //   633: invokevirtual 160	java/lang/Throwable:printStackTrace	()V
+    //   636: goto +3 -> 639
+    //   639: aload 17
+    //   641: ifnonnull +59 -> 700
+    //   644: aload 17
+    //   646: astore 18
+    //   648: aload 17
+    //   650: astore 19
+    //   652: ldc 67
+    //   654: iconst_2
+    //   655: ldc_w 265
+    //   658: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   661: aload 17
+    //   663: ifnull +16 -> 679
+    //   666: aload 17
+    //   668: invokevirtual 266	android/media/MediaCodec:stop	()V
+    //   671: aload 17
+    //   673: invokevirtual 267	android/media/MediaCodec:release	()V
+    //   676: goto +3 -> 679
+    //   679: aload 22
+    //   681: invokevirtual 268	android/media/MediaExtractor:release	()V
+    //   684: aconst_null
+    //   685: areturn
+    //   686: ldc 67
+    //   688: iconst_1
+    //   689: aload_1
+    //   690: iconst_0
+    //   691: anewarray 4	java/lang/Object
+    //   694: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   697: goto -13 -> 684
+    //   700: aload 17
+    //   702: astore 18
+    //   704: aload 17
+    //   706: astore 19
     //   708: aload 17
-    //   710: astore 18
-    //   712: aload 17
-    //   714: astore 19
-    //   716: aload 17
-    //   718: invokevirtual 328	android/media/MediaCodec:start	()V
+    //   710: invokevirtual 274	android/media/MediaCodec:start	()V
+    //   713: aload 17
+    //   715: astore 18
+    //   717: aload 17
+    //   719: astore 19
     //   721: aload 17
-    //   723: astore 18
-    //   725: aload 17
-    //   727: astore 19
-    //   729: aload 17
-    //   731: invokevirtual 332	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
-    //   734: astore 23
+    //   723: invokevirtual 278	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
+    //   726: astore 23
+    //   728: aload 17
+    //   730: astore 18
+    //   732: aload 17
+    //   734: astore 19
     //   736: aload 17
-    //   738: astore 18
-    //   740: aload 17
-    //   742: astore 19
-    //   744: aload 17
-    //   746: invokevirtual 335	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
-    //   749: astore 20
-    //   751: aload 17
-    //   753: astore 18
-    //   755: aload 17
-    //   757: astore 19
-    //   759: new 337	android/media/MediaCodec$BufferInfo
-    //   762: dup
-    //   763: invokespecial 338	android/media/MediaCodec$BufferInfo:<init>	()V
-    //   766: astore 24
-    //   768: iload_2
-    //   769: ifeq +22 -> 791
-    //   772: aload 17
-    //   774: astore 18
-    //   776: aload 17
+    //   738: invokevirtual 281	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
+    //   741: astore 20
+    //   743: aload 17
+    //   745: astore 18
+    //   747: aload 17
+    //   749: astore 19
+    //   751: new 283	android/media/MediaCodec$BufferInfo
+    //   754: dup
+    //   755: invokespecial 284	android/media/MediaCodec$BufferInfo:<init>	()V
+    //   758: astore 24
+    //   760: iload_2
+    //   761: ifeq +22 -> 783
+    //   764: aload 17
+    //   766: astore 18
+    //   768: aload 17
+    //   770: astore 19
+    //   772: aload_0
+    //   773: invokespecial 77	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	()Landroid/media/AudioTrack;
+    //   776: astore_1
+    //   777: aconst_null
     //   778: astore 19
-    //   780: aload_0
-    //   781: invokespecial 107	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:a	()Landroid/media/AudioTrack;
-    //   784: astore_1
-    //   785: aconst_null
-    //   786: astore 19
-    //   788: goto +26 -> 814
-    //   791: aload 17
-    //   793: astore 18
-    //   795: aload 17
-    //   797: astore 19
-    //   799: new 340	java/io/ByteArrayOutputStream
-    //   802: dup
-    //   803: invokespecial 341	java/io/ByteArrayOutputStream:<init>	()V
-    //   806: astore 21
-    //   808: aconst_null
-    //   809: astore_1
-    //   810: aload 21
-    //   812: astore 19
-    //   814: aload 20
-    //   816: astore 18
-    //   818: iconst_0
-    //   819: istore 7
-    //   821: iconst_0
-    //   822: istore 5
-    //   824: iconst_0
-    //   825: istore_3
-    //   826: iload 7
-    //   828: ifne +1319 -> 2147
-    //   831: iload 5
-    //   833: istore 4
-    //   835: iload 5
-    //   837: ifne +134 -> 971
-    //   840: aload 17
-    //   842: ldc2_w 342
-    //   845: invokevirtual 347	android/media/MediaCodec:dequeueInputBuffer	(J)I
-    //   848: istore 6
-    //   850: iload 5
-    //   852: istore 4
-    //   854: iload 6
-    //   856: iflt +115 -> 971
-    //   859: aload 22
-    //   861: aload 23
-    //   863: iload 6
-    //   865: aaload
-    //   866: iconst_0
-    //   867: invokevirtual 351	android/media/MediaExtractor:readSampleData	(Ljava/nio/ByteBuffer;I)I
-    //   870: istore 4
-    //   872: aload 22
-    //   874: invokevirtual 354	android/media/MediaExtractor:getSampleTime	()J
-    //   877: lstore 15
-    //   879: iload 4
-    //   881: iflt +47 -> 928
-    //   884: lload 9
-    //   886: lconst_0
+    //   780: goto +26 -> 806
+    //   783: aload 17
+    //   785: astore 18
+    //   787: aload 17
+    //   789: astore 19
+    //   791: new 286	java/io/ByteArrayOutputStream
+    //   794: dup
+    //   795: invokespecial 287	java/io/ByteArrayOutputStream:<init>	()V
+    //   798: astore 21
+    //   800: aconst_null
+    //   801: astore_1
+    //   802: aload 21
+    //   804: astore 19
+    //   806: aload 20
+    //   808: astore 18
+    //   810: iconst_0
+    //   811: istore 7
+    //   813: iconst_0
+    //   814: istore 5
+    //   816: iconst_0
+    //   817: istore_3
+    //   818: iload 7
+    //   820: ifne +1319 -> 2139
+    //   823: iload 5
+    //   825: istore 4
+    //   827: iload 5
+    //   829: ifne +134 -> 963
+    //   832: aload 17
+    //   834: ldc2_w 288
+    //   837: invokevirtual 293	android/media/MediaCodec:dequeueInputBuffer	(J)I
+    //   840: istore 6
+    //   842: iload 5
+    //   844: istore 4
+    //   846: iload 6
+    //   848: iflt +115 -> 963
+    //   851: aload 22
+    //   853: aload 23
+    //   855: iload 6
+    //   857: aaload
+    //   858: iconst_0
+    //   859: invokevirtual 297	android/media/MediaExtractor:readSampleData	(Ljava/nio/ByteBuffer;I)I
+    //   862: istore 4
+    //   864: aload 22
+    //   866: invokevirtual 300	android/media/MediaExtractor:getSampleTime	()J
+    //   869: lstore 15
+    //   871: iload 4
+    //   873: iflt +47 -> 920
+    //   876: lload 9
+    //   878: lconst_0
+    //   879: lcmp
+    //   880: ifle +14 -> 894
+    //   883: lload 15
+    //   885: lload 9
     //   887: lcmp
-    //   888: ifle +14 -> 902
-    //   891: lload 15
-    //   893: lload 9
-    //   895: lcmp
-    //   896: iflt +6 -> 902
-    //   899: goto +29 -> 928
-    //   902: aload 17
-    //   904: iload 6
-    //   906: iconst_0
-    //   907: iload 4
-    //   909: lload 15
-    //   911: iconst_0
-    //   912: invokevirtual 358	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
-    //   915: aload 22
-    //   917: invokevirtual 361	android/media/MediaExtractor:advance	()Z
-    //   920: pop
-    //   921: iload 5
-    //   923: istore 4
-    //   925: goto +46 -> 971
-    //   928: aload 17
-    //   930: iload 6
-    //   932: iconst_0
-    //   933: iconst_0
-    //   934: lconst_0
-    //   935: iconst_4
-    //   936: invokevirtual 358	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
-    //   939: iconst_1
-    //   940: istore 4
-    //   942: goto +29 -> 971
-    //   945: astore 19
-    //   947: aload_1
+    //   888: iflt +6 -> 894
+    //   891: goto +29 -> 920
+    //   894: aload 17
+    //   896: iload 6
+    //   898: iconst_0
+    //   899: iload 4
+    //   901: lload 15
+    //   903: iconst_0
+    //   904: invokevirtual 304	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   907: aload 22
+    //   909: invokevirtual 307	android/media/MediaExtractor:advance	()Z
+    //   912: pop
+    //   913: iload 5
+    //   915: istore 4
+    //   917: goto +46 -> 963
+    //   920: aload 17
+    //   922: iload 6
+    //   924: iconst_0
+    //   925: iconst_0
+    //   926: lconst_0
+    //   927: iconst_4
+    //   928: invokevirtual 304	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   931: iconst_1
+    //   932: istore 4
+    //   934: goto +29 -> 963
+    //   937: astore 19
+    //   939: aload_1
+    //   940: astore 18
+    //   942: aload 19
+    //   944: astore_1
+    //   945: goto +1036 -> 1981
     //   948: astore 18
-    //   950: aload 19
-    //   952: astore_1
-    //   953: goto +1036 -> 1989
-    //   956: astore 18
-    //   958: aload_1
-    //   959: astore 19
-    //   961: aload 17
-    //   963: astore_1
-    //   964: aload 19
-    //   966: astore 17
-    //   968: goto +946 -> 1914
-    //   971: iload_3
-    //   972: ifne +1147 -> 2119
-    //   975: aload 17
-    //   977: aload 24
-    //   979: ldc2_w 342
-    //   982: invokevirtual 365	android/media/MediaCodec:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
-    //   985: istore 5
-    //   987: iload 5
-    //   989: bipush 253
-    //   991: if_icmpeq +421 -> 1412
-    //   994: iload 5
-    //   996: bipush 254
-    //   998: if_icmpeq +351 -> 1349
-    //   1001: iload 5
-    //   1003: iconst_m1
-    //   1004: if_icmpeq +313 -> 1317
-    //   1007: aload 24
-    //   1009: getfield 368	android/media/MediaCodec$BufferInfo:flags	I
-    //   1012: istore 6
-    //   1014: iload 6
-    //   1016: iconst_4
-    //   1017: iand
-    //   1018: ifeq +23 -> 1041
-    //   1021: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1024: ifeq +12 -> 1036
-    //   1027: ldc 88
-    //   1029: iconst_2
-    //   1030: ldc_w 370
-    //   1033: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1036: iconst_1
-    //   1037: istore_3
-    //   1038: goto +164 -> 1202
-    //   1041: aload 18
-    //   1043: iload 5
-    //   1045: aaload
-    //   1046: astore 20
-    //   1048: aload 20
-    //   1050: ifnonnull +63 -> 1113
-    //   1053: ldc 88
-    //   1055: iconst_1
-    //   1056: ldc_w 372
-    //   1059: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1062: aload 17
-    //   1064: ifnull +16 -> 1080
-    //   1067: aload 17
-    //   1069: invokevirtual 320	android/media/MediaCodec:stop	()V
-    //   1072: aload 17
-    //   1074: invokevirtual 321	android/media/MediaCodec:release	()V
-    //   1077: goto +3 -> 1080
-    //   1080: aload 22
-    //   1082: invokevirtual 322	android/media/MediaExtractor:release	()V
+    //   950: aload_1
+    //   951: astore 19
+    //   953: aload 17
+    //   955: astore_1
+    //   956: aload 19
+    //   958: astore 17
+    //   960: goto +946 -> 1906
+    //   963: iload_3
+    //   964: ifne +1147 -> 2111
+    //   967: aload 17
+    //   969: aload 24
+    //   971: ldc2_w 288
+    //   974: invokevirtual 311	android/media/MediaCodec:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   977: istore 5
+    //   979: iload 5
+    //   981: bipush 253
+    //   983: if_icmpeq +421 -> 1404
+    //   986: iload 5
+    //   988: bipush 254
+    //   990: if_icmpeq +351 -> 1341
+    //   993: iload 5
+    //   995: iconst_m1
+    //   996: if_icmpeq +313 -> 1309
+    //   999: aload 24
+    //   1001: getfield 314	android/media/MediaCodec$BufferInfo:flags	I
+    //   1004: istore 6
+    //   1006: iload 6
+    //   1008: iconst_4
+    //   1009: iand
+    //   1010: ifeq +23 -> 1033
+    //   1013: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1016: ifeq +12 -> 1028
+    //   1019: ldc 67
+    //   1021: iconst_2
+    //   1022: ldc_w 316
+    //   1025: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1028: iconst_1
+    //   1029: istore_3
+    //   1030: goto +164 -> 1194
+    //   1033: aload 18
+    //   1035: iload 5
+    //   1037: aaload
+    //   1038: astore 20
+    //   1040: aload 20
+    //   1042: ifnonnull +63 -> 1105
+    //   1045: ldc 67
+    //   1047: iconst_1
+    //   1048: ldc_w 318
+    //   1051: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1054: aload 17
+    //   1056: ifnull +16 -> 1072
+    //   1059: aload 17
+    //   1061: invokevirtual 266	android/media/MediaCodec:stop	()V
+    //   1064: aload 17
+    //   1066: invokevirtual 267	android/media/MediaCodec:release	()V
+    //   1069: goto +3 -> 1072
+    //   1072: aload 22
+    //   1074: invokevirtual 268	android/media/MediaExtractor:release	()V
+    //   1077: aload_1
+    //   1078: ifnull +11 -> 1089
+    //   1081: aload_1
+    //   1082: invokevirtual 155	android/media/AudioTrack:stop	()V
     //   1085: aload_1
-    //   1086: ifnull +11 -> 1097
-    //   1089: aload_1
-    //   1090: invokevirtual 163	android/media/AudioTrack:stop	()V
-    //   1093: aload_1
-    //   1094: invokevirtual 168	android/media/AudioTrack:release	()V
-    //   1097: aconst_null
-    //   1098: areturn
-    //   1099: ldc 88
-    //   1101: iconst_1
-    //   1102: aload_1
-    //   1103: iconst_0
-    //   1104: anewarray 4	java/lang/Object
-    //   1107: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   1110: goto -13 -> 1097
-    //   1113: aload 24
-    //   1115: getfield 375	android/media/MediaCodec$BufferInfo:size	I
-    //   1118: ifeq +31 -> 1149
-    //   1121: aload 20
-    //   1123: aload 24
-    //   1125: getfield 378	android/media/MediaCodec$BufferInfo:offset	I
-    //   1128: invokevirtual 384	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
-    //   1131: pop
-    //   1132: aload 20
-    //   1134: aload 24
-    //   1136: getfield 378	android/media/MediaCodec$BufferInfo:offset	I
-    //   1139: aload 24
-    //   1141: getfield 375	android/media/MediaCodec$BufferInfo:size	I
-    //   1144: iadd
-    //   1145: invokevirtual 387	java/nio/ByteBuffer:limit	(I)Ljava/nio/Buffer;
-    //   1148: pop
-    //   1149: aload 20
-    //   1151: invokevirtual 390	java/nio/ByteBuffer:remaining	()I
-    //   1154: istore 6
-    //   1156: iload 6
-    //   1158: newarray byte
-    //   1160: astore 21
-    //   1162: aload 20
-    //   1164: aload 21
-    //   1166: iconst_0
-    //   1167: iload 6
-    //   1169: invokevirtual 394	java/nio/ByteBuffer:get	([BII)Ljava/nio/ByteBuffer;
-    //   1172: pop
-    //   1173: iload_2
-    //   1174: ifeq +18 -> 1192
-    //   1177: aload_0
-    //   1178: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   1181: aload_1
-    //   1182: aload 21
-    //   1184: iload 6
-    //   1186: invokestatic 397	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	(Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;Landroid/media/AudioTrack;[BI)V
-    //   1189: goto +13 -> 1202
-    //   1192: aload 19
-    //   1194: aload 21
-    //   1196: iconst_0
-    //   1197: iload 6
-    //   1199: invokevirtual 400	java/io/ByteArrayOutputStream:write	([BII)V
-    //   1202: aload 17
-    //   1204: iload 5
-    //   1206: iconst_0
-    //   1207: invokevirtual 404	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
-    //   1210: iload_3
-    //   1211: istore 6
-    //   1213: aload 18
-    //   1215: astore 20
-    //   1217: goto +223 -> 1440
-    //   1220: aload_1
-    //   1221: astore 19
-    //   1223: new 192	java/lang/StringBuilder
-    //   1226: dup
-    //   1227: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   1230: astore 20
-    //   1232: aload 20
-    //   1234: ldc_w 406
-    //   1237: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1240: pop
-    //   1241: aload 20
-    //   1243: aload 18
-    //   1245: invokevirtual 407	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1248: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1251: pop
-    //   1252: ldc 88
-    //   1254: iconst_1
-    //   1255: aload 20
-    //   1257: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1260: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1263: aload 17
-    //   1265: ifnull +16 -> 1281
-    //   1268: aload 17
-    //   1270: invokevirtual 320	android/media/MediaCodec:stop	()V
-    //   1273: aload 17
-    //   1275: invokevirtual 321	android/media/MediaCodec:release	()V
-    //   1278: goto +3 -> 1281
-    //   1281: aload 22
-    //   1283: invokevirtual 322	android/media/MediaExtractor:release	()V
-    //   1286: aload 19
-    //   1288: ifnull +13 -> 1301
-    //   1291: aload 19
-    //   1293: invokevirtual 163	android/media/AudioTrack:stop	()V
-    //   1296: aload 19
-    //   1298: invokevirtual 168	android/media/AudioTrack:release	()V
-    //   1301: aconst_null
-    //   1302: areturn
-    //   1303: ldc 88
-    //   1305: iconst_1
-    //   1306: aload_1
-    //   1307: iconst_0
-    //   1308: anewarray 4	java/lang/Object
-    //   1311: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   1314: goto -13 -> 1301
-    //   1317: iload_3
-    //   1318: istore 6
-    //   1320: aload 18
-    //   1322: astore 20
-    //   1324: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1327: ifeq +113 -> 1440
-    //   1330: ldc 88
-    //   1332: iconst_2
-    //   1333: ldc_w 409
-    //   1336: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1339: iload_3
-    //   1340: istore 6
-    //   1342: aload 18
-    //   1344: astore 20
-    //   1346: goto +94 -> 1440
-    //   1349: iload_3
-    //   1350: istore 6
-    //   1352: aload 18
-    //   1354: astore 20
-    //   1356: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1359: ifeq +81 -> 1440
-    //   1362: new 192	java/lang/StringBuilder
-    //   1365: dup
-    //   1366: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   1369: astore 20
-    //   1371: aload 20
-    //   1373: ldc_w 411
-    //   1376: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1379: pop
-    //   1380: aload 20
-    //   1382: aload 17
-    //   1384: invokevirtual 415	android/media/MediaCodec:getOutputFormat	()Landroid/media/MediaFormat;
-    //   1387: invokevirtual 418	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1390: pop
-    //   1391: ldc 88
-    //   1393: iconst_2
-    //   1394: aload 20
-    //   1396: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1399: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1402: iload_3
-    //   1403: istore 6
-    //   1405: aload 18
-    //   1407: astore 20
-    //   1409: goto +31 -> 1440
-    //   1412: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1415: ifeq +12 -> 1427
-    //   1418: ldc 88
-    //   1420: iconst_2
-    //   1421: ldc_w 420
-    //   1424: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1427: aload 17
-    //   1429: invokevirtual 335	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
-    //   1432: astore 20
-    //   1434: iload_3
-    //   1435: istore 6
-    //   1437: goto +3 -> 1440
-    //   1440: aload_1
-    //   1441: astore 18
-    //   1443: iload 6
-    //   1445: ifeq +96 -> 1541
-    //   1448: iload_2
-    //   1449: ifeq +214 -> 1663
-    //   1452: aload_0
-    //   1453: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   1456: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   1459: getfield 123	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_Int	I
-    //   1462: iconst_3
-    //   1463: if_icmpeq +47 -> 1510
-    //   1466: aload_0
-    //   1467: monitorenter
-    //   1468: aload_0
-    //   1469: getfield 47	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Boolean	Z
-    //   1472: ifne +26 -> 1498
-    //   1475: aload_0
-    //   1476: invokevirtual 151	java/lang/Object:wait	()V
-    //   1479: aload_0
-    //   1480: iconst_0
-    //   1481: putfield 47	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Boolean	Z
-    //   1484: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1487: ifeq +11 -> 1498
-    //   1490: ldc 88
-    //   1492: iconst_1
-    //   1493: ldc 157
-    //   1495: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1498: aload_0
-    //   1499: monitorexit
-    //   1500: goto +10 -> 1510
-    //   1503: astore 18
-    //   1505: aload_0
-    //   1506: monitorexit
-    //   1507: aload 18
-    //   1509: athrow
-    //   1510: aload 17
-    //   1512: invokevirtual 421	android/media/MediaCodec:flush	()V
-    //   1515: aload 22
-    //   1517: lload 11
-    //   1519: iconst_0
-    //   1520: invokevirtual 290	android/media/MediaExtractor:seekTo	(JI)V
-    //   1523: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1526: ifeq +603 -> 2129
-    //   1529: ldc 88
-    //   1531: iconst_1
-    //   1532: ldc_w 423
-    //   1535: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1538: goto +591 -> 2129
-    //   1541: iload 4
-    //   1543: istore 5
-    //   1545: iload 6
-    //   1547: istore_3
-    //   1548: aload_0
-    //   1549: getfield 29	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_b_of_type_Int	I
-    //   1552: ifne +50 -> 1602
-    //   1555: aload_0
-    //   1556: iconst_m1
-    //   1557: putfield 29	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_b_of_type_Int	I
-    //   1560: aload 17
-    //   1562: invokevirtual 421	android/media/MediaCodec:flush	()V
-    //   1565: aload 22
-    //   1567: lload 11
-    //   1569: iconst_0
-    //   1570: invokevirtual 290	android/media/MediaExtractor:seekTo	(JI)V
-    //   1573: iload 4
-    //   1575: istore 5
-    //   1577: iload 6
-    //   1579: istore_3
-    //   1580: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1583: ifeq +19 -> 1602
-    //   1586: ldc 88
-    //   1588: iconst_1
-    //   1589: ldc_w 425
-    //   1592: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1595: iload 6
-    //   1597: istore_3
-    //   1598: iload 4
-    //   1600: istore 5
-    //   1602: aload_0
-    //   1603: getfield 43	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_c_of_type_Boolean	Z
-    //   1606: istore 8
-    //   1608: iload 8
-    //   1610: ifeq +527 -> 2137
-    //   1613: aload_0
-    //   1614: getfield 45	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   1617: astore 21
-    //   1619: aload 21
-    //   1621: monitorenter
-    //   1622: aload_0
-    //   1623: getfield 45	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   1626: invokevirtual 151	java/lang/Object:wait	()V
+    //   1086: invokevirtual 163	android/media/AudioTrack:release	()V
+    //   1089: aconst_null
+    //   1090: areturn
+    //   1091: ldc 67
+    //   1093: iconst_1
+    //   1094: aload_1
+    //   1095: iconst_0
+    //   1096: anewarray 4	java/lang/Object
+    //   1099: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1102: goto -13 -> 1089
+    //   1105: aload 24
+    //   1107: getfield 321	android/media/MediaCodec$BufferInfo:size	I
+    //   1110: ifeq +31 -> 1141
+    //   1113: aload 20
+    //   1115: aload 24
+    //   1117: getfield 324	android/media/MediaCodec$BufferInfo:offset	I
+    //   1120: invokevirtual 330	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   1123: pop
+    //   1124: aload 20
+    //   1126: aload 24
+    //   1128: getfield 324	android/media/MediaCodec$BufferInfo:offset	I
+    //   1131: aload 24
+    //   1133: getfield 321	android/media/MediaCodec$BufferInfo:size	I
+    //   1136: iadd
+    //   1137: invokevirtual 333	java/nio/ByteBuffer:limit	(I)Ljava/nio/Buffer;
+    //   1140: pop
+    //   1141: aload 20
+    //   1143: invokevirtual 336	java/nio/ByteBuffer:remaining	()I
+    //   1146: istore 6
+    //   1148: iload 6
+    //   1150: newarray byte
+    //   1152: astore 21
+    //   1154: aload 20
+    //   1156: aload 21
+    //   1158: iconst_0
+    //   1159: iload 6
+    //   1161: invokevirtual 340	java/nio/ByteBuffer:get	([BII)Ljava/nio/ByteBuffer;
+    //   1164: pop
+    //   1165: iload_2
+    //   1166: ifeq +18 -> 1184
+    //   1169: aload_0
+    //   1170: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   1173: aload_1
+    //   1174: aload 21
+    //   1176: iload 6
+    //   1178: invokestatic 343	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	(Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;Landroid/media/AudioTrack;[BI)V
+    //   1181: goto +13 -> 1194
+    //   1184: aload 19
+    //   1186: aload 21
+    //   1188: iconst_0
+    //   1189: iload 6
+    //   1191: invokevirtual 346	java/io/ByteArrayOutputStream:write	([BII)V
+    //   1194: aload 17
+    //   1196: iload 5
+    //   1198: iconst_0
+    //   1199: invokevirtual 350	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
+    //   1202: iload_3
+    //   1203: istore 6
+    //   1205: aload 18
+    //   1207: astore 20
+    //   1209: goto +223 -> 1432
+    //   1212: aload_1
+    //   1213: astore 19
+    //   1215: new 226	java/lang/StringBuilder
+    //   1218: dup
+    //   1219: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   1222: astore 20
+    //   1224: aload 20
+    //   1226: ldc_w 352
+    //   1229: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1232: pop
+    //   1233: aload 20
+    //   1235: aload 18
+    //   1237: invokevirtual 353	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1240: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1243: pop
+    //   1244: ldc 67
+    //   1246: iconst_1
+    //   1247: aload 20
+    //   1249: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1252: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1255: aload 17
+    //   1257: ifnull +16 -> 1273
+    //   1260: aload 17
+    //   1262: invokevirtual 266	android/media/MediaCodec:stop	()V
+    //   1265: aload 17
+    //   1267: invokevirtual 267	android/media/MediaCodec:release	()V
+    //   1270: goto +3 -> 1273
+    //   1273: aload 22
+    //   1275: invokevirtual 268	android/media/MediaExtractor:release	()V
+    //   1278: aload 19
+    //   1280: ifnull +13 -> 1293
+    //   1283: aload 19
+    //   1285: invokevirtual 155	android/media/AudioTrack:stop	()V
+    //   1288: aload 19
+    //   1290: invokevirtual 163	android/media/AudioTrack:release	()V
+    //   1293: aconst_null
+    //   1294: areturn
+    //   1295: ldc 67
+    //   1297: iconst_1
+    //   1298: aload_1
+    //   1299: iconst_0
+    //   1300: anewarray 4	java/lang/Object
+    //   1303: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1306: goto -13 -> 1293
+    //   1309: iload_3
+    //   1310: istore 6
+    //   1312: aload 18
+    //   1314: astore 20
+    //   1316: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1319: ifeq +113 -> 1432
+    //   1322: ldc 67
+    //   1324: iconst_2
+    //   1325: ldc_w 355
+    //   1328: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1331: iload_3
+    //   1332: istore 6
+    //   1334: aload 18
+    //   1336: astore 20
+    //   1338: goto +94 -> 1432
+    //   1341: iload_3
+    //   1342: istore 6
+    //   1344: aload 18
+    //   1346: astore 20
+    //   1348: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1351: ifeq +81 -> 1432
+    //   1354: new 226	java/lang/StringBuilder
+    //   1357: dup
+    //   1358: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   1361: astore 20
+    //   1363: aload 20
+    //   1365: ldc_w 357
+    //   1368: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1371: pop
+    //   1372: aload 20
+    //   1374: aload 17
+    //   1376: invokevirtual 361	android/media/MediaCodec:getOutputFormat	()Landroid/media/MediaFormat;
+    //   1379: invokevirtual 364	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1382: pop
+    //   1383: ldc 67
+    //   1385: iconst_2
+    //   1386: aload 20
+    //   1388: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1391: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1394: iload_3
+    //   1395: istore 6
+    //   1397: aload 18
+    //   1399: astore 20
+    //   1401: goto +31 -> 1432
+    //   1404: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1407: ifeq +12 -> 1419
+    //   1410: ldc 67
+    //   1412: iconst_2
+    //   1413: ldc_w 366
+    //   1416: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1419: aload 17
+    //   1421: invokevirtual 281	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
+    //   1424: astore 20
+    //   1426: iload_3
+    //   1427: istore 6
+    //   1429: goto +3 -> 1432
+    //   1432: aload_1
+    //   1433: astore 18
+    //   1435: iload 6
+    //   1437: ifeq +96 -> 1533
+    //   1440: iload_2
+    //   1441: ifeq +214 -> 1655
+    //   1444: aload_0
+    //   1445: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   1448: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   1451: getfield 112	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:d	I
+    //   1454: iconst_3
+    //   1455: if_icmpeq +47 -> 1502
+    //   1458: aload_0
+    //   1459: monitorenter
+    //   1460: aload_0
+    //   1461: getfield 56	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:m	Z
+    //   1464: ifne +26 -> 1490
+    //   1467: aload_0
+    //   1468: invokevirtual 141	java/lang/Object:wait	()V
+    //   1471: aload_0
+    //   1472: iconst_0
+    //   1473: putfield 56	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:m	Z
+    //   1476: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1479: ifeq +11 -> 1490
+    //   1482: ldc 67
+    //   1484: iconst_1
+    //   1485: ldc 147
+    //   1487: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1490: aload_0
+    //   1491: monitorexit
+    //   1492: goto +10 -> 1502
+    //   1495: astore 18
+    //   1497: aload_0
+    //   1498: monitorexit
+    //   1499: aload 18
+    //   1501: athrow
+    //   1502: aload 17
+    //   1504: invokevirtual 367	android/media/MediaCodec:flush	()V
+    //   1507: aload 22
+    //   1509: lload 11
+    //   1511: iconst_0
+    //   1512: invokevirtual 218	android/media/MediaExtractor:seekTo	(JI)V
+    //   1515: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1518: ifeq +603 -> 2121
+    //   1521: ldc 67
+    //   1523: iconst_1
+    //   1524: ldc_w 369
+    //   1527: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1530: goto +591 -> 2121
+    //   1533: iload 4
+    //   1535: istore 5
+    //   1537: iload 6
+    //   1539: istore_3
+    //   1540: aload_0
+    //   1541: getfield 38	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:d	I
+    //   1544: ifne +50 -> 1594
+    //   1547: aload_0
+    //   1548: iconst_m1
+    //   1549: putfield 38	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:d	I
+    //   1552: aload 17
+    //   1554: invokevirtual 367	android/media/MediaCodec:flush	()V
+    //   1557: aload 22
+    //   1559: lload 11
+    //   1561: iconst_0
+    //   1562: invokevirtual 218	android/media/MediaExtractor:seekTo	(JI)V
+    //   1565: iload 4
+    //   1567: istore 5
+    //   1569: iload 6
+    //   1571: istore_3
+    //   1572: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1575: ifeq +19 -> 1594
+    //   1578: ldc 67
+    //   1580: iconst_1
+    //   1581: ldc_w 371
+    //   1584: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1587: iload 6
+    //   1589: istore_3
+    //   1590: iload 4
+    //   1592: istore 5
+    //   1594: aload_0
+    //   1595: getfield 52	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:k	Z
+    //   1598: istore 8
+    //   1600: iload 8
+    //   1602: ifeq +527 -> 2129
+    //   1605: aload_0
+    //   1606: getfield 54	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:l	Ljava/lang/Object;
+    //   1609: astore 21
+    //   1611: aload 21
+    //   1613: monitorenter
+    //   1614: aload_0
+    //   1615: getfield 54	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:l	Ljava/lang/Object;
+    //   1618: invokevirtual 141	java/lang/Object:wait	()V
+    //   1621: aload 21
+    //   1623: monitorexit
+    //   1624: goto +505 -> 2129
+    //   1627: astore 25
     //   1629: aload 21
     //   1631: monitorexit
-    //   1632: goto +505 -> 2137
-    //   1635: astore 25
+    //   1632: aload 25
+    //   1634: athrow
+    //   1635: astore 21
     //   1637: aload 21
-    //   1639: monitorexit
-    //   1640: aload 25
-    //   1642: athrow
-    //   1643: astore 21
-    //   1645: aload 21
-    //   1647: invokevirtual 160	java/lang/InterruptedException:printStackTrace	()V
-    //   1650: aload 18
-    //   1652: astore_1
-    //   1653: iconst_1
-    //   1654: istore 7
-    //   1656: aload 20
-    //   1658: astore 18
-    //   1660: goto -834 -> 826
-    //   1663: aload_1
-    //   1664: astore 18
-    //   1666: new 192	java/lang/StringBuilder
-    //   1669: dup
-    //   1670: invokespecial 193	java/lang/StringBuilder:<init>	()V
-    //   1673: astore 20
-    //   1675: aload 20
-    //   1677: ldc_w 427
-    //   1680: invokevirtual 199	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1683: pop
-    //   1684: aload 20
-    //   1686: invokestatic 179	java/lang/System:currentTimeMillis	()J
-    //   1689: lload 13
-    //   1691: lsub
-    //   1692: invokevirtual 242	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1695: pop
-    //   1696: ldc 88
-    //   1698: iconst_1
-    //   1699: aload 20
-    //   1701: invokevirtual 208	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1704: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1707: aload 19
-    //   1709: ifnonnull +8 -> 1717
-    //   1712: aconst_null
-    //   1713: astore_1
-    //   1714: goto +13 -> 1727
-    //   1717: aload 19
-    //   1719: invokevirtual 430	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   1722: astore 19
-    //   1724: aload 19
-    //   1726: astore_1
-    //   1727: aload 17
-    //   1729: ifnull +16 -> 1745
-    //   1732: aload 17
-    //   1734: invokevirtual 320	android/media/MediaCodec:stop	()V
-    //   1737: aload 17
-    //   1739: invokevirtual 321	android/media/MediaCodec:release	()V
-    //   1742: goto +3 -> 1745
-    //   1745: aload 22
-    //   1747: invokevirtual 322	android/media/MediaExtractor:release	()V
-    //   1750: aload 18
-    //   1752: ifnull +27 -> 1779
-    //   1755: aload 18
-    //   1757: invokevirtual 163	android/media/AudioTrack:stop	()V
-    //   1760: aload 18
-    //   1762: invokevirtual 168	android/media/AudioTrack:release	()V
-    //   1765: aload_1
-    //   1766: areturn
-    //   1767: ldc 88
-    //   1769: iconst_1
-    //   1770: aload 17
-    //   1772: iconst_0
-    //   1773: anewarray 4	java/lang/Object
-    //   1776: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   1779: aload_1
-    //   1780: areturn
-    //   1781: astore 18
-    //   1783: aload_1
-    //   1784: astore 19
-    //   1786: aload 18
-    //   1788: astore_1
-    //   1789: aload 19
-    //   1791: astore 18
-    //   1793: goto +196 -> 1989
-    //   1796: astore 18
-    //   1798: aload_1
-    //   1799: astore 19
-    //   1801: aload 17
+    //   1639: invokevirtual 152	java/lang/InterruptedException:printStackTrace	()V
+    //   1642: aload 18
+    //   1644: astore_1
+    //   1645: iconst_1
+    //   1646: istore 7
+    //   1648: aload 20
+    //   1650: astore 18
+    //   1652: goto -834 -> 818
+    //   1655: aload_1
+    //   1656: astore 18
+    //   1658: new 226	java/lang/StringBuilder
+    //   1661: dup
+    //   1662: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   1665: astore 20
+    //   1667: aload 20
+    //   1669: ldc_w 373
+    //   1672: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1675: pop
+    //   1676: aload 20
+    //   1678: invokestatic 174	java/lang/System:currentTimeMillis	()J
+    //   1681: lload 13
+    //   1683: lsub
+    //   1684: invokevirtual 376	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1687: pop
+    //   1688: ldc 67
+    //   1690: iconst_1
+    //   1691: aload 20
+    //   1693: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1696: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1699: aload 19
+    //   1701: ifnonnull +8 -> 1709
+    //   1704: aconst_null
+    //   1705: astore_1
+    //   1706: goto +13 -> 1719
+    //   1709: aload 19
+    //   1711: invokevirtual 380	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   1714: astore 19
+    //   1716: aload 19
+    //   1718: astore_1
+    //   1719: aload 17
+    //   1721: ifnull +16 -> 1737
+    //   1724: aload 17
+    //   1726: invokevirtual 266	android/media/MediaCodec:stop	()V
+    //   1729: aload 17
+    //   1731: invokevirtual 267	android/media/MediaCodec:release	()V
+    //   1734: goto +3 -> 1737
+    //   1737: aload 22
+    //   1739: invokevirtual 268	android/media/MediaExtractor:release	()V
+    //   1742: aload 18
+    //   1744: ifnull +27 -> 1771
+    //   1747: aload 18
+    //   1749: invokevirtual 155	android/media/AudioTrack:stop	()V
+    //   1752: aload 18
+    //   1754: invokevirtual 163	android/media/AudioTrack:release	()V
+    //   1757: aload_1
+    //   1758: areturn
+    //   1759: ldc 67
+    //   1761: iconst_1
+    //   1762: aload 17
+    //   1764: iconst_0
+    //   1765: anewarray 4	java/lang/Object
+    //   1768: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1771: aload_1
+    //   1772: areturn
+    //   1773: astore 18
+    //   1775: aload_1
+    //   1776: astore 19
+    //   1778: aload 18
+    //   1780: astore_1
+    //   1781: aload 19
+    //   1783: astore 18
+    //   1785: goto +196 -> 1981
+    //   1788: astore 18
+    //   1790: aload_1
+    //   1791: astore 19
+    //   1793: aload 17
+    //   1795: astore_1
+    //   1796: aload 19
+    //   1798: astore 17
+    //   1800: goto +106 -> 1906
     //   1803: astore_1
-    //   1804: aload 19
+    //   1804: aload 18
     //   1806: astore 17
-    //   1808: goto +106 -> 1914
-    //   1811: astore_1
-    //   1812: aload 18
-    //   1814: astore 17
-    //   1816: goto +85 -> 1901
-    //   1819: astore 18
-    //   1821: aload 19
-    //   1823: astore_1
-    //   1824: goto +87 -> 1911
-    //   1827: astore_1
-    //   1828: aload 17
-    //   1830: astore 18
+    //   1808: goto +85 -> 1893
+    //   1811: astore 18
+    //   1813: aload 19
+    //   1815: astore_1
+    //   1816: goto +87 -> 1903
+    //   1819: astore_1
+    //   1820: aload 17
+    //   1822: astore 18
+    //   1824: aload 17
+    //   1826: astore 19
+    //   1828: aload_1
+    //   1829: invokevirtual 160	java/lang/Throwable:printStackTrace	()V
     //   1832: aload 17
-    //   1834: astore 19
-    //   1836: aload_1
-    //   1837: invokevirtual 98	java/lang/Throwable:printStackTrace	()V
-    //   1840: aload 17
-    //   1842: astore 18
-    //   1844: aload 17
-    //   1846: astore 19
-    //   1848: ldc 88
-    //   1850: iconst_2
-    //   1851: ldc_w 432
-    //   1854: aload_1
-    //   1855: invokestatic 435	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1858: aload 17
-    //   1860: ifnull +16 -> 1876
-    //   1863: aload 17
-    //   1865: invokevirtual 320	android/media/MediaCodec:stop	()V
-    //   1868: aload 17
-    //   1870: invokevirtual 321	android/media/MediaCodec:release	()V
-    //   1873: goto +3 -> 1876
-    //   1876: aload 22
-    //   1878: invokevirtual 322	android/media/MediaExtractor:release	()V
-    //   1881: aconst_null
-    //   1882: areturn
-    //   1883: ldc 88
-    //   1885: iconst_1
-    //   1886: aload_1
-    //   1887: iconst_0
-    //   1888: anewarray 4	java/lang/Object
-    //   1891: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   1894: goto -13 -> 1881
-    //   1897: astore_1
-    //   1898: aconst_null
-    //   1899: astore 17
+    //   1834: astore 18
+    //   1836: aload 17
+    //   1838: astore 19
+    //   1840: ldc 67
+    //   1842: iconst_2
+    //   1843: ldc_w 382
+    //   1846: aload_1
+    //   1847: invokestatic 385	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1850: aload 17
+    //   1852: ifnull +16 -> 1868
+    //   1855: aload 17
+    //   1857: invokevirtual 266	android/media/MediaCodec:stop	()V
+    //   1860: aload 17
+    //   1862: invokevirtual 267	android/media/MediaCodec:release	()V
+    //   1865: goto +3 -> 1868
+    //   1868: aload 22
+    //   1870: invokevirtual 268	android/media/MediaExtractor:release	()V
+    //   1873: aconst_null
+    //   1874: areturn
+    //   1875: ldc 67
+    //   1877: iconst_1
+    //   1878: aload_1
+    //   1879: iconst_0
+    //   1880: anewarray 4	java/lang/Object
+    //   1883: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1886: goto -13 -> 1873
+    //   1889: astore_1
+    //   1890: aconst_null
+    //   1891: astore 17
+    //   1893: aconst_null
+    //   1894: astore 18
+    //   1896: goto +85 -> 1981
+    //   1899: astore 18
     //   1901: aconst_null
-    //   1902: astore 18
-    //   1904: goto +85 -> 1989
-    //   1907: astore 18
-    //   1909: aconst_null
-    //   1910: astore_1
-    //   1911: aconst_null
-    //   1912: astore 17
-    //   1914: ldc 88
-    //   1916: iconst_1
-    //   1917: aload 18
-    //   1919: iconst_0
-    //   1920: anewarray 4	java/lang/Object
-    //   1923: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1902: astore_1
+    //   1903: aconst_null
+    //   1904: astore 17
+    //   1906: ldc 67
+    //   1908: iconst_1
+    //   1909: aload 18
+    //   1911: iconst_0
+    //   1912: anewarray 4	java/lang/Object
+    //   1915: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1918: aload_1
+    //   1919: ifnull +14 -> 1933
+    //   1922: aload_1
+    //   1923: invokevirtual 266	android/media/MediaCodec:stop	()V
     //   1926: aload_1
-    //   1927: ifnull +14 -> 1941
-    //   1930: aload_1
-    //   1931: invokevirtual 320	android/media/MediaCodec:stop	()V
-    //   1934: aload_1
-    //   1935: invokevirtual 321	android/media/MediaCodec:release	()V
-    //   1938: goto +3 -> 1941
-    //   1941: aload 22
-    //   1943: invokevirtual 322	android/media/MediaExtractor:release	()V
-    //   1946: aload 17
-    //   1948: ifnull +13 -> 1961
-    //   1951: aload 17
-    //   1953: invokevirtual 163	android/media/AudioTrack:stop	()V
-    //   1956: aload 17
-    //   1958: invokevirtual 168	android/media/AudioTrack:release	()V
-    //   1961: aconst_null
-    //   1962: areturn
-    //   1963: ldc 88
-    //   1965: iconst_1
-    //   1966: aload_1
-    //   1967: iconst_0
-    //   1968: anewarray 4	java/lang/Object
-    //   1971: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   1974: goto -13 -> 1961
-    //   1977: astore 19
-    //   1979: aload 17
-    //   1981: astore 18
-    //   1983: aload_1
-    //   1984: astore 17
-    //   1986: aload 19
-    //   1988: astore_1
-    //   1989: aload 17
-    //   1991: ifnull +16 -> 2007
-    //   1994: aload 17
-    //   1996: invokevirtual 320	android/media/MediaCodec:stop	()V
-    //   1999: aload 17
-    //   2001: invokevirtual 321	android/media/MediaCodec:release	()V
-    //   2004: goto +3 -> 2007
-    //   2007: aload 22
-    //   2009: invokevirtual 322	android/media/MediaExtractor:release	()V
-    //   2012: aload 18
-    //   2014: ifnull +28 -> 2042
-    //   2017: aload 18
-    //   2019: invokevirtual 163	android/media/AudioTrack:stop	()V
-    //   2022: aload 18
-    //   2024: invokevirtual 168	android/media/AudioTrack:release	()V
-    //   2027: goto +15 -> 2042
-    //   2030: ldc 88
-    //   2032: iconst_1
-    //   2033: aload 17
-    //   2035: iconst_0
-    //   2036: anewarray 4	java/lang/Object
-    //   2039: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   2042: goto +5 -> 2047
-    //   2045: aload_1
-    //   2046: athrow
-    //   2047: goto -2 -> 2045
-    //   2050: iload_3
-    //   2051: iconst_1
-    //   2052: iadd
-    //   2053: istore_3
-    //   2054: lload 11
-    //   2056: lstore 15
-    //   2058: lload 9
-    //   2060: lstore 11
-    //   2062: lload 15
-    //   2064: lstore 9
-    //   2066: goto -2029 -> 37
-    //   2069: lload 9
-    //   2071: lstore 15
-    //   2073: aconst_null
-    //   2074: astore 17
-    //   2076: lload 11
-    //   2078: lstore 9
-    //   2080: lload 15
-    //   2082: lstore 11
-    //   2084: goto -1437 -> 647
-    //   2087: astore_1
-    //   2088: goto -1394 -> 694
-    //   2091: astore_1
-    //   2092: goto -993 -> 1099
-    //   2095: astore 18
-    //   2097: goto -877 -> 1220
-    //   2100: astore 18
-    //   2102: goto -882 -> 1220
-    //   2105: astore_1
-    //   2106: goto -803 -> 1303
-    //   2109: astore 18
-    //   2111: goto -328 -> 1783
-    //   2114: astore 18
-    //   2116: goto -318 -> 1798
-    //   2119: iload_3
-    //   2120: istore 6
-    //   2122: aload 18
-    //   2124: astore 20
-    //   2126: goto -686 -> 1440
-    //   2129: iconst_0
-    //   2130: istore 5
-    //   2132: iconst_0
-    //   2133: istore_3
-    //   2134: goto -532 -> 1602
-    //   2137: aload 18
-    //   2139: astore_1
-    //   2140: aload 20
-    //   2142: astore 18
-    //   2144: goto -1318 -> 826
-    //   2147: goto -484 -> 1663
-    //   2150: astore 17
-    //   2152: goto -385 -> 1767
-    //   2155: astore_1
-    //   2156: goto -273 -> 1883
-    //   2159: astore_1
-    //   2160: goto -197 -> 1963
-    //   2163: astore 17
-    //   2165: goto -135 -> 2030
+    //   1927: invokevirtual 267	android/media/MediaCodec:release	()V
+    //   1930: goto +3 -> 1933
+    //   1933: aload 22
+    //   1935: invokevirtual 268	android/media/MediaExtractor:release	()V
+    //   1938: aload 17
+    //   1940: ifnull +13 -> 1953
+    //   1943: aload 17
+    //   1945: invokevirtual 155	android/media/AudioTrack:stop	()V
+    //   1948: aload 17
+    //   1950: invokevirtual 163	android/media/AudioTrack:release	()V
+    //   1953: aconst_null
+    //   1954: areturn
+    //   1955: ldc 67
+    //   1957: iconst_1
+    //   1958: aload_1
+    //   1959: iconst_0
+    //   1960: anewarray 4	java/lang/Object
+    //   1963: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1966: goto -13 -> 1953
+    //   1969: astore 19
+    //   1971: aload 17
+    //   1973: astore 18
+    //   1975: aload_1
+    //   1976: astore 17
+    //   1978: aload 19
+    //   1980: astore_1
+    //   1981: aload 17
+    //   1983: ifnull +16 -> 1999
+    //   1986: aload 17
+    //   1988: invokevirtual 266	android/media/MediaCodec:stop	()V
+    //   1991: aload 17
+    //   1993: invokevirtual 267	android/media/MediaCodec:release	()V
+    //   1996: goto +3 -> 1999
+    //   1999: aload 22
+    //   2001: invokevirtual 268	android/media/MediaExtractor:release	()V
+    //   2004: aload 18
+    //   2006: ifnull +28 -> 2034
+    //   2009: aload 18
+    //   2011: invokevirtual 155	android/media/AudioTrack:stop	()V
+    //   2014: aload 18
+    //   2016: invokevirtual 163	android/media/AudioTrack:release	()V
+    //   2019: goto +15 -> 2034
+    //   2022: ldc 67
+    //   2024: iconst_1
+    //   2025: aload 17
+    //   2027: iconst_0
+    //   2028: anewarray 4	java/lang/Object
+    //   2031: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   2034: goto +5 -> 2039
+    //   2037: aload_1
+    //   2038: athrow
+    //   2039: goto -2 -> 2037
+    //   2042: iload_3
+    //   2043: iconst_1
+    //   2044: iadd
+    //   2045: istore_3
+    //   2046: lload 11
+    //   2048: lstore 15
+    //   2050: lload 9
+    //   2052: lstore 11
+    //   2054: lload 15
+    //   2056: lstore 9
+    //   2058: goto -2021 -> 37
+    //   2061: lload 9
+    //   2063: lstore 15
+    //   2065: aconst_null
+    //   2066: astore 17
+    //   2068: lload 11
+    //   2070: lstore 9
+    //   2072: lload 15
+    //   2074: lstore 11
+    //   2076: goto -1437 -> 639
+    //   2079: astore_1
+    //   2080: goto -1394 -> 686
+    //   2083: astore_1
+    //   2084: goto -993 -> 1091
+    //   2087: astore 18
+    //   2089: goto -877 -> 1212
+    //   2092: astore 18
+    //   2094: goto -882 -> 1212
+    //   2097: astore_1
+    //   2098: goto -803 -> 1295
+    //   2101: astore 18
+    //   2103: goto -328 -> 1775
+    //   2106: astore 18
+    //   2108: goto -318 -> 1790
+    //   2111: iload_3
+    //   2112: istore 6
+    //   2114: aload 18
+    //   2116: astore 20
+    //   2118: goto -686 -> 1432
+    //   2121: iconst_0
+    //   2122: istore 5
+    //   2124: iconst_0
+    //   2125: istore_3
+    //   2126: goto -532 -> 1594
+    //   2129: aload 18
+    //   2131: astore_1
+    //   2132: aload 20
+    //   2134: astore 18
+    //   2136: goto -1318 -> 818
+    //   2139: goto -484 -> 1655
+    //   2142: astore 17
+    //   2144: goto -385 -> 1759
+    //   2147: astore_1
+    //   2148: goto -273 -> 1875
+    //   2151: astore_1
+    //   2152: goto -197 -> 1955
+    //   2155: astore 17
+    //   2157: goto -135 -> 2022
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2168	0	this	AudioPlayRunnable
-    //   0	2168	1	paramString	String
-    //   0	2168	2	paramBoolean	boolean
-    //   36	2098	3	i	int
-    //   833	766	4	j	int
-    //   822	1309	5	k	int
-    //   848	1273	6	m	int
-    //   819	836	7	n	int
-    //   1606	3	8	bool	boolean
-    //   33	2046	9	l1	long
-    //   29	2054	11	l2	long
-    //   11	1679	13	l3	long
-    //   100	1981	15	l4	long
-    //   62	2013	17	localObject1	Object
-    //   2150	1	17	localException1	Exception
-    //   2163	1	17	localException2	Exception
-    //   160	789	18	localObject2	Object
-    //   956	450	18	localException3	Exception
-    //   1441	1	18	str	String
-    //   1503	148	18	localObject3	Object
-    //   1658	103	18	localObject4	Object
-    //   1781	6	18	localObject5	Object
-    //   1791	1	18	localObject6	Object
-    //   1796	17	18	localException4	Exception
-    //   1819	1	18	localException5	Exception
-    //   1830	73	18	localObject7	Object
-    //   1907	11	18	localException6	Exception
-    //   1981	42	18	localObject8	Object
-    //   2095	1	18	localException7	Exception
-    //   2100	1	18	localException8	Exception
-    //   2109	1	18	localObject9	Object
-    //   2114	24	18	localException9	Exception
-    //   2142	1	18	localObject10	Object
-    //   164	649	19	localObject11	Object
-    //   945	6	19	localObject12	Object
-    //   959	888	19	localObject13	Object
-    //   1977	10	19	localObject14	Object
-    //   52	2089	20	localObject15	Object
-    //   187	1451	21	localObject16	Object
-    //   1643	3	21	localInterruptedException	java.lang.InterruptedException
-    //   20	1988	22	localMediaExtractor	android.media.MediaExtractor
-    //   358	504	23	localObject17	Object
-    //   766	374	24	localBufferInfo	android.media.MediaCodec.BufferInfo
-    //   1635	6	25	localObject18	Object
+    //   0	2160	0	this	AudioPlayRunnable
+    //   0	2160	1	paramString	String
+    //   0	2160	2	paramBoolean	boolean
+    //   36	2090	3	i1	int
+    //   825	766	4	i2	int
+    //   814	1309	5	i3	int
+    //   840	1273	6	i4	int
+    //   811	836	7	i5	int
+    //   1598	3	8	bool	boolean
+    //   33	2038	9	l1	long
+    //   29	2046	11	l2	long
+    //   11	1671	13	l3	long
+    //   98	1975	15	l4	long
+    //   61	2006	17	localObject1	Object
+    //   2142	1	17	localException1	Exception
+    //   2155	1	17	localException2	Exception
+    //   157	784	18	localObject2	Object
+    //   948	450	18	localException3	Exception
+    //   1433	1	18	str	String
+    //   1495	148	18	localObject3	Object
+    //   1650	103	18	localObject4	Object
+    //   1773	6	18	localObject5	Object
+    //   1783	1	18	localObject6	Object
+    //   1788	17	18	localException4	Exception
+    //   1811	1	18	localException5	Exception
+    //   1822	73	18	localObject7	Object
+    //   1899	11	18	localException6	Exception
+    //   1973	42	18	localObject8	Object
+    //   2087	1	18	localException7	Exception
+    //   2092	1	18	localException8	Exception
+    //   2101	1	18	localObject9	Object
+    //   2106	24	18	localException9	Exception
+    //   2134	1	18	localObject10	Object
+    //   161	644	19	localObject11	Object
+    //   937	6	19	localObject12	Object
+    //   951	888	19	localObject13	Object
+    //   1969	10	19	localObject14	Object
+    //   52	2081	20	localObject15	Object
+    //   184	1446	21	localObject16	Object
+    //   1635	3	21	localInterruptedException	java.lang.InterruptedException
+    //   20	1980	22	localMediaExtractor	android.media.MediaExtractor
+    //   352	502	23	localObject17	Object
+    //   758	374	24	localBufferInfo	android.media.MediaCodec.BufferInfo
+    //   1627	6	25	localObject18	Object
     // Exception table:
     //   from	to	target	type
-    //   372	383	412	java/lang/Throwable
-    //   391	409	412	java/lang/Throwable
-    //   348	360	416	java/lang/Throwable
-    //   166	172	624	java/lang/Throwable
-    //   180	189	624	java/lang/Throwable
-    //   197	206	624	java/lang/Throwable
-    //   214	233	624	java/lang/Throwable
-    //   241	250	624	java/lang/Throwable
-    //   258	277	624	java/lang/Throwable
-    //   285	294	624	java/lang/Throwable
-    //   302	321	624	java/lang/Throwable
-    //   329	340	624	java/lang/Throwable
-    //   425	429	624	java/lang/Throwable
-    //   437	443	624	java/lang/Throwable
-    //   451	459	624	java/lang/Throwable
-    //   467	475	624	java/lang/Throwable
-    //   483	501	624	java/lang/Throwable
-    //   509	517	624	java/lang/Throwable
-    //   525	543	624	java/lang/Throwable
-    //   551	559	624	java/lang/Throwable
-    //   567	585	624	java/lang/Throwable
-    //   593	603	624	java/lang/Throwable
-    //   611	621	624	java/lang/Throwable
-    //   151	158	628	java/lang/Throwable
-    //   840	850	945	finally
-    //   859	879	945	finally
-    //   902	921	945	finally
-    //   928	939	945	finally
-    //   1021	1036	945	finally
-    //   840	850	956	java/lang/Exception
-    //   859	879	956	java/lang/Exception
-    //   902	921	956	java/lang/Exception
-    //   928	939	956	java/lang/Exception
-    //   1021	1036	956	java/lang/Exception
-    //   1468	1498	1503	finally
-    //   1498	1500	1503	finally
-    //   1505	1507	1503	finally
-    //   1622	1632	1635	finally
-    //   1637	1640	1635	finally
-    //   1613	1622	1643	java/lang/InterruptedException
-    //   1640	1643	1643	java/lang/InterruptedException
-    //   1113	1149	1781	finally
-    //   1149	1173	1781	finally
-    //   1177	1189	1781	finally
-    //   1192	1202	1781	finally
-    //   1202	1210	1781	finally
-    //   1223	1263	1781	finally
-    //   1324	1339	1781	finally
-    //   1356	1402	1781	finally
-    //   1412	1427	1781	finally
-    //   1427	1434	1781	finally
-    //   1452	1468	1781	finally
-    //   1507	1510	1781	finally
-    //   1510	1538	1781	finally
-    //   1548	1573	1781	finally
-    //   1580	1595	1781	finally
-    //   1602	1608	1781	finally
-    //   1613	1622	1781	finally
-    //   1640	1643	1781	finally
-    //   1645	1650	1781	finally
-    //   1666	1707	1781	finally
-    //   1717	1724	1781	finally
-    //   1202	1210	1796	java/lang/Exception
-    //   1223	1263	1796	java/lang/Exception
-    //   1324	1339	1796	java/lang/Exception
-    //   1356	1402	1796	java/lang/Exception
-    //   1412	1427	1796	java/lang/Exception
-    //   1427	1434	1796	java/lang/Exception
-    //   1452	1468	1796	java/lang/Exception
-    //   1507	1510	1796	java/lang/Exception
-    //   1510	1538	1796	java/lang/Exception
-    //   1548	1573	1796	java/lang/Exception
-    //   1580	1595	1796	java/lang/Exception
-    //   1602	1608	1796	java/lang/Exception
-    //   1613	1622	1796	java/lang/Exception
-    //   1640	1643	1796	java/lang/Exception
-    //   1645	1650	1796	java/lang/Exception
-    //   1666	1707	1796	java/lang/Exception
-    //   1717	1724	1796	java/lang/Exception
-    //   166	172	1811	finally
-    //   180	189	1811	finally
-    //   197	206	1811	finally
-    //   214	233	1811	finally
-    //   241	250	1811	finally
-    //   258	277	1811	finally
-    //   285	294	1811	finally
-    //   302	321	1811	finally
-    //   329	340	1811	finally
-    //   348	360	1811	finally
-    //   372	383	1811	finally
-    //   391	409	1811	finally
-    //   425	429	1811	finally
-    //   437	443	1811	finally
-    //   451	459	1811	finally
-    //   467	475	1811	finally
-    //   483	501	1811	finally
-    //   509	517	1811	finally
-    //   525	543	1811	finally
-    //   551	559	1811	finally
-    //   567	585	1811	finally
-    //   593	603	1811	finally
-    //   611	621	1811	finally
-    //   640	644	1811	finally
-    //   660	669	1811	finally
-    //   716	721	1811	finally
-    //   729	736	1811	finally
-    //   744	751	1811	finally
-    //   759	768	1811	finally
-    //   780	785	1811	finally
-    //   799	808	1811	finally
-    //   1836	1840	1811	finally
-    //   1848	1858	1811	finally
-    //   166	172	1819	java/lang/Exception
-    //   180	189	1819	java/lang/Exception
-    //   197	206	1819	java/lang/Exception
-    //   214	233	1819	java/lang/Exception
-    //   241	250	1819	java/lang/Exception
-    //   258	277	1819	java/lang/Exception
-    //   285	294	1819	java/lang/Exception
-    //   302	321	1819	java/lang/Exception
-    //   329	340	1819	java/lang/Exception
-    //   348	360	1819	java/lang/Exception
-    //   372	383	1819	java/lang/Exception
-    //   391	409	1819	java/lang/Exception
-    //   425	429	1819	java/lang/Exception
-    //   437	443	1819	java/lang/Exception
-    //   451	459	1819	java/lang/Exception
-    //   467	475	1819	java/lang/Exception
-    //   483	501	1819	java/lang/Exception
-    //   509	517	1819	java/lang/Exception
-    //   525	543	1819	java/lang/Exception
-    //   551	559	1819	java/lang/Exception
-    //   567	585	1819	java/lang/Exception
-    //   593	603	1819	java/lang/Exception
-    //   611	621	1819	java/lang/Exception
-    //   640	644	1819	java/lang/Exception
-    //   660	669	1819	java/lang/Exception
-    //   716	721	1819	java/lang/Exception
-    //   729	736	1819	java/lang/Exception
-    //   744	751	1819	java/lang/Exception
-    //   759	768	1819	java/lang/Exception
-    //   780	785	1819	java/lang/Exception
-    //   799	808	1819	java/lang/Exception
-    //   1836	1840	1819	java/lang/Exception
-    //   1848	1858	1819	java/lang/Exception
-    //   716	721	1827	java/lang/Throwable
-    //   22	28	1897	finally
-    //   37	102	1897	finally
-    //   113	119	1897	finally
-    //   119	136	1897	finally
-    //   143	151	1897	finally
-    //   151	158	1897	finally
-    //   22	28	1907	java/lang/Exception
-    //   37	102	1907	java/lang/Exception
-    //   113	119	1907	java/lang/Exception
-    //   119	136	1907	java/lang/Exception
-    //   143	151	1907	java/lang/Exception
-    //   151	158	1907	java/lang/Exception
-    //   1914	1926	1977	finally
-    //   674	684	2087	java/lang/Exception
-    //   687	692	2087	java/lang/Exception
-    //   1067	1077	2091	java/lang/Exception
-    //   1080	1085	2091	java/lang/Exception
-    //   1089	1097	2091	java/lang/Exception
-    //   1113	1149	2095	java/lang/Exception
-    //   1149	1173	2095	java/lang/Exception
-    //   1177	1189	2095	java/lang/Exception
-    //   1192	1202	2095	java/lang/Exception
-    //   1053	1062	2100	java/lang/Exception
-    //   1268	1278	2105	java/lang/Exception
-    //   1281	1286	2105	java/lang/Exception
-    //   1291	1301	2105	java/lang/Exception
-    //   975	987	2109	finally
-    //   1007	1014	2109	finally
-    //   1053	1062	2109	finally
-    //   975	987	2114	java/lang/Exception
-    //   1007	1014	2114	java/lang/Exception
-    //   1732	1742	2150	java/lang/Exception
-    //   1745	1750	2150	java/lang/Exception
-    //   1755	1765	2150	java/lang/Exception
-    //   1863	1873	2155	java/lang/Exception
-    //   1876	1881	2155	java/lang/Exception
-    //   1930	1938	2159	java/lang/Exception
-    //   1941	1946	2159	java/lang/Exception
-    //   1951	1961	2159	java/lang/Exception
-    //   1994	2004	2163	java/lang/Exception
-    //   2007	2012	2163	java/lang/Exception
-    //   2017	2027	2163	java/lang/Exception
+    //   366	377	406	java/lang/Throwable
+    //   385	403	406	java/lang/Throwable
+    //   342	354	410	java/lang/Throwable
+    //   163	169	616	java/lang/Throwable
+    //   177	186	616	java/lang/Throwable
+    //   194	202	616	java/lang/Throwable
+    //   210	229	616	java/lang/Throwable
+    //   237	245	616	java/lang/Throwable
+    //   253	272	616	java/lang/Throwable
+    //   280	288	616	java/lang/Throwable
+    //   296	315	616	java/lang/Throwable
+    //   323	334	616	java/lang/Throwable
+    //   419	423	616	java/lang/Throwable
+    //   431	437	616	java/lang/Throwable
+    //   445	453	616	java/lang/Throwable
+    //   461	469	616	java/lang/Throwable
+    //   477	495	616	java/lang/Throwable
+    //   503	510	616	java/lang/Throwable
+    //   518	536	616	java/lang/Throwable
+    //   544	551	616	java/lang/Throwable
+    //   559	577	616	java/lang/Throwable
+    //   585	595	616	java/lang/Throwable
+    //   603	613	616	java/lang/Throwable
+    //   148	155	620	java/lang/Throwable
+    //   832	842	937	finally
+    //   851	871	937	finally
+    //   894	913	937	finally
+    //   920	931	937	finally
+    //   1013	1028	937	finally
+    //   832	842	948	java/lang/Exception
+    //   851	871	948	java/lang/Exception
+    //   894	913	948	java/lang/Exception
+    //   920	931	948	java/lang/Exception
+    //   1013	1028	948	java/lang/Exception
+    //   1460	1490	1495	finally
+    //   1490	1492	1495	finally
+    //   1497	1499	1495	finally
+    //   1614	1624	1627	finally
+    //   1629	1632	1627	finally
+    //   1605	1614	1635	java/lang/InterruptedException
+    //   1632	1635	1635	java/lang/InterruptedException
+    //   1105	1141	1773	finally
+    //   1141	1165	1773	finally
+    //   1169	1181	1773	finally
+    //   1184	1194	1773	finally
+    //   1194	1202	1773	finally
+    //   1215	1255	1773	finally
+    //   1316	1331	1773	finally
+    //   1348	1394	1773	finally
+    //   1404	1419	1773	finally
+    //   1419	1426	1773	finally
+    //   1444	1460	1773	finally
+    //   1499	1502	1773	finally
+    //   1502	1530	1773	finally
+    //   1540	1565	1773	finally
+    //   1572	1587	1773	finally
+    //   1594	1600	1773	finally
+    //   1605	1614	1773	finally
+    //   1632	1635	1773	finally
+    //   1637	1642	1773	finally
+    //   1658	1699	1773	finally
+    //   1709	1716	1773	finally
+    //   1194	1202	1788	java/lang/Exception
+    //   1215	1255	1788	java/lang/Exception
+    //   1316	1331	1788	java/lang/Exception
+    //   1348	1394	1788	java/lang/Exception
+    //   1404	1419	1788	java/lang/Exception
+    //   1419	1426	1788	java/lang/Exception
+    //   1444	1460	1788	java/lang/Exception
+    //   1499	1502	1788	java/lang/Exception
+    //   1502	1530	1788	java/lang/Exception
+    //   1540	1565	1788	java/lang/Exception
+    //   1572	1587	1788	java/lang/Exception
+    //   1594	1600	1788	java/lang/Exception
+    //   1605	1614	1788	java/lang/Exception
+    //   1632	1635	1788	java/lang/Exception
+    //   1637	1642	1788	java/lang/Exception
+    //   1658	1699	1788	java/lang/Exception
+    //   1709	1716	1788	java/lang/Exception
+    //   163	169	1803	finally
+    //   177	186	1803	finally
+    //   194	202	1803	finally
+    //   210	229	1803	finally
+    //   237	245	1803	finally
+    //   253	272	1803	finally
+    //   280	288	1803	finally
+    //   296	315	1803	finally
+    //   323	334	1803	finally
+    //   342	354	1803	finally
+    //   366	377	1803	finally
+    //   385	403	1803	finally
+    //   419	423	1803	finally
+    //   431	437	1803	finally
+    //   445	453	1803	finally
+    //   461	469	1803	finally
+    //   477	495	1803	finally
+    //   503	510	1803	finally
+    //   518	536	1803	finally
+    //   544	551	1803	finally
+    //   559	577	1803	finally
+    //   585	595	1803	finally
+    //   603	613	1803	finally
+    //   632	636	1803	finally
+    //   652	661	1803	finally
+    //   708	713	1803	finally
+    //   721	728	1803	finally
+    //   736	743	1803	finally
+    //   751	760	1803	finally
+    //   772	777	1803	finally
+    //   791	800	1803	finally
+    //   1828	1832	1803	finally
+    //   1840	1850	1803	finally
+    //   163	169	1811	java/lang/Exception
+    //   177	186	1811	java/lang/Exception
+    //   194	202	1811	java/lang/Exception
+    //   210	229	1811	java/lang/Exception
+    //   237	245	1811	java/lang/Exception
+    //   253	272	1811	java/lang/Exception
+    //   280	288	1811	java/lang/Exception
+    //   296	315	1811	java/lang/Exception
+    //   323	334	1811	java/lang/Exception
+    //   342	354	1811	java/lang/Exception
+    //   366	377	1811	java/lang/Exception
+    //   385	403	1811	java/lang/Exception
+    //   419	423	1811	java/lang/Exception
+    //   431	437	1811	java/lang/Exception
+    //   445	453	1811	java/lang/Exception
+    //   461	469	1811	java/lang/Exception
+    //   477	495	1811	java/lang/Exception
+    //   503	510	1811	java/lang/Exception
+    //   518	536	1811	java/lang/Exception
+    //   544	551	1811	java/lang/Exception
+    //   559	577	1811	java/lang/Exception
+    //   585	595	1811	java/lang/Exception
+    //   603	613	1811	java/lang/Exception
+    //   632	636	1811	java/lang/Exception
+    //   652	661	1811	java/lang/Exception
+    //   708	713	1811	java/lang/Exception
+    //   721	728	1811	java/lang/Exception
+    //   736	743	1811	java/lang/Exception
+    //   751	760	1811	java/lang/Exception
+    //   772	777	1811	java/lang/Exception
+    //   791	800	1811	java/lang/Exception
+    //   1828	1832	1811	java/lang/Exception
+    //   1840	1850	1811	java/lang/Exception
+    //   708	713	1819	java/lang/Throwable
+    //   22	28	1889	finally
+    //   37	100	1889	finally
+    //   111	117	1889	finally
+    //   117	133	1889	finally
+    //   140	148	1889	finally
+    //   148	155	1889	finally
+    //   22	28	1899	java/lang/Exception
+    //   37	100	1899	java/lang/Exception
+    //   111	117	1899	java/lang/Exception
+    //   117	133	1899	java/lang/Exception
+    //   140	148	1899	java/lang/Exception
+    //   148	155	1899	java/lang/Exception
+    //   1906	1918	1969	finally
+    //   666	676	2079	java/lang/Exception
+    //   679	684	2079	java/lang/Exception
+    //   1059	1069	2083	java/lang/Exception
+    //   1072	1077	2083	java/lang/Exception
+    //   1081	1089	2083	java/lang/Exception
+    //   1105	1141	2087	java/lang/Exception
+    //   1141	1165	2087	java/lang/Exception
+    //   1169	1181	2087	java/lang/Exception
+    //   1184	1194	2087	java/lang/Exception
+    //   1045	1054	2092	java/lang/Exception
+    //   1260	1270	2097	java/lang/Exception
+    //   1273	1278	2097	java/lang/Exception
+    //   1283	1293	2097	java/lang/Exception
+    //   967	979	2101	finally
+    //   999	1006	2101	finally
+    //   1045	1054	2101	finally
+    //   967	979	2106	java/lang/Exception
+    //   999	1006	2106	java/lang/Exception
+    //   1724	1734	2142	java/lang/Exception
+    //   1737	1742	2142	java/lang/Exception
+    //   1747	1757	2142	java/lang/Exception
+    //   1855	1865	2147	java/lang/Exception
+    //   1868	1873	2147	java/lang/Exception
+    //   1922	1930	2151	java/lang/Exception
+    //   1933	1938	2151	java/lang/Exception
+    //   1943	1953	2151	java/lang/Exception
+    //   1986	1996	2155	java/lang/Exception
+    //   1999	2004	2155	java/lang/Exception
+    //   2009	2019	2155	java/lang/Exception
+  }
+  
+  /* Error */
+  private byte[] d()
+  {
+    // Byte code:
+    //   0: invokestatic 174	java/lang/System:currentTimeMillis	()J
+    //   3: lstore_3
+    //   4: new 391	java/io/File
+    //   7: dup
+    //   8: aload_0
+    //   9: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   12: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   15: getfield 394	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:a	Ljava/lang/String;
+    //   18: invokespecial 396	java/io/File:<init>	(Ljava/lang/String;)V
+    //   21: astore 5
+    //   23: aload_0
+    //   24: aload 5
+    //   26: invokevirtual 399	java/io/File:length	()J
+    //   29: l2i
+    //   30: putfield 50	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:j	I
+    //   33: aload_0
+    //   34: aload_0
+    //   35: getfield 50	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:j	I
+    //   38: i2f
+    //   39: aload_0
+    //   40: getfield 40	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:e	F
+    //   43: fmul
+    //   44: f2i
+    //   45: putfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   48: aload_0
+    //   49: getfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   52: aload_0
+    //   53: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   56: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   59: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   62: getfield 108	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:d	I
+    //   65: irem
+    //   66: istore_2
+    //   67: iload_2
+    //   68: ifeq +27 -> 95
+    //   71: aload_0
+    //   72: aload_0
+    //   73: getfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   76: aload_0
+    //   77: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   80: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   83: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   86: getfield 108	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:d	I
+    //   89: iload_2
+    //   90: isub
+    //   91: iadd
+    //   92: putfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   95: aload_0
+    //   96: getfield 42	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:f	F
+    //   99: fstore_1
+    //   100: fload_1
+    //   101: fconst_0
+    //   102: fcmpl
+    //   103: ifne +14 -> 117
+    //   106: aload_0
+    //   107: aload_0
+    //   108: getfield 50	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:j	I
+    //   111: putfield 46	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:h	I
+    //   114: goto +62 -> 176
+    //   117: aload_0
+    //   118: aload_0
+    //   119: getfield 50	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:j	I
+    //   122: i2f
+    //   123: fload_1
+    //   124: fmul
+    //   125: f2i
+    //   126: putfield 46	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:h	I
+    //   129: aload_0
+    //   130: getfield 46	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:h	I
+    //   133: aload_0
+    //   134: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   137: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   140: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   143: getfield 108	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:d	I
+    //   146: irem
+    //   147: istore_2
+    //   148: iload_2
+    //   149: ifeq +27 -> 176
+    //   152: aload_0
+    //   153: aload_0
+    //   154: getfield 46	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:h	I
+    //   157: aload_0
+    //   158: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   161: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   164: getfield 105	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:b	Lcom/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData;
+    //   167: getfield 108	com/tencent/mobileqq/shortvideo/util/AudioEncoder$AudioData:d	I
+    //   170: iload_2
+    //   171: isub
+    //   172: iadd
+    //   173: putfield 46	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:h	I
+    //   176: new 226	java/lang/StringBuilder
+    //   179: dup
+    //   180: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   183: astore 6
+    //   185: aload 6
+    //   187: ldc_w 401
+    //   190: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: pop
+    //   194: aload 6
+    //   196: aload_0
+    //   197: getfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   200: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   203: pop
+    //   204: aload 6
+    //   206: ldc_w 403
+    //   209: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: pop
+    //   213: aload 6
+    //   215: aload_0
+    //   216: getfield 46	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:h	I
+    //   219: invokevirtual 238	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   222: pop
+    //   223: ldc 67
+    //   225: iconst_4
+    //   226: aload 6
+    //   228: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   231: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   234: aload_0
+    //   235: getfield 46	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:h	I
+    //   238: aload_0
+    //   239: getfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   242: isub
+    //   243: newarray byte
+    //   245: astore 6
+    //   247: goto +37 -> 284
+    //   250: ldc 67
+    //   252: iconst_4
+    //   253: ldc_w 405
+    //   256: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   259: getstatic 410	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   262: ifnull +9 -> 271
+    //   265: getstatic 410	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   268: invokevirtual 415	android/support/v4/util/MQLruCache:evictAll	()V
+    //   271: aload_0
+    //   272: getfield 46	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:h	I
+    //   275: aload_0
+    //   276: getfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   279: isub
+    //   280: newarray byte
+    //   282: astore 6
+    //   284: new 417	java/io/FileInputStream
+    //   287: dup
+    //   288: aload 5
+    //   290: invokespecial 420	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   293: astore 7
+    //   295: aload 7
+    //   297: astore 5
+    //   299: aload_0
+    //   300: getfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   303: ifeq +18 -> 321
+    //   306: aload 7
+    //   308: astore 5
+    //   310: aload 7
+    //   312: aload_0
+    //   313: getfield 44	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:g	I
+    //   316: i2l
+    //   317: invokevirtual 424	java/io/FileInputStream:skip	(J)J
+    //   320: pop2
+    //   321: aload 7
+    //   323: astore 5
+    //   325: aload 7
+    //   327: aload 6
+    //   329: invokevirtual 428	java/io/FileInputStream:read	([B)I
+    //   332: pop
+    //   333: aload 7
+    //   335: invokevirtual 431	java/io/FileInputStream:close	()V
+    //   338: goto +10 -> 348
+    //   341: astore 5
+    //   343: aload 5
+    //   345: invokevirtual 432	java/io/IOException:printStackTrace	()V
+    //   348: new 226	java/lang/StringBuilder
+    //   351: dup
+    //   352: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   355: astore 5
+    //   357: aload 5
+    //   359: ldc_w 434
+    //   362: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   365: pop
+    //   366: aload 5
+    //   368: invokestatic 174	java/lang/System:currentTimeMillis	()J
+    //   371: lload_3
+    //   372: lsub
+    //   373: invokevirtual 376	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   376: pop
+    //   377: ldc 67
+    //   379: iconst_4
+    //   380: aload 5
+    //   382: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   385: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   388: aload 6
+    //   390: areturn
+    //   391: astore 8
+    //   393: aload 7
+    //   395: astore 6
+    //   397: goto +16 -> 413
+    //   400: astore 5
+    //   402: aconst_null
+    //   403: astore 6
+    //   405: goto +60 -> 465
+    //   408: astore 8
+    //   410: aconst_null
+    //   411: astore 6
+    //   413: aload 6
+    //   415: astore 5
+    //   417: ldc 67
+    //   419: iconst_4
+    //   420: ldc 157
+    //   422: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   425: aload 6
+    //   427: astore 5
+    //   429: aload 8
+    //   431: invokevirtual 160	java/lang/Throwable:printStackTrace	()V
+    //   434: aload 6
+    //   436: ifnull +17 -> 453
+    //   439: aload 6
+    //   441: invokevirtual 431	java/io/FileInputStream:close	()V
+    //   444: aconst_null
+    //   445: areturn
+    //   446: astore 5
+    //   448: aload 5
+    //   450: invokevirtual 432	java/io/IOException:printStackTrace	()V
+    //   453: aconst_null
+    //   454: areturn
+    //   455: astore 7
+    //   457: aload 5
+    //   459: astore 6
+    //   461: aload 7
+    //   463: astore 5
+    //   465: aload 6
+    //   467: ifnull +18 -> 485
+    //   470: aload 6
+    //   472: invokevirtual 431	java/io/FileInputStream:close	()V
+    //   475: goto +10 -> 485
+    //   478: astore 6
+    //   480: aload 6
+    //   482: invokevirtual 432	java/io/IOException:printStackTrace	()V
+    //   485: aload 5
+    //   487: athrow
+    //   488: astore 6
+    //   490: goto -240 -> 250
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	493	0	this	AudioPlayRunnable
+    //   99	25	1	f1	float
+    //   66	106	2	i1	int
+    //   3	369	3	l1	long
+    //   21	303	5	localObject1	Object
+    //   341	3	5	localIOException1	java.io.IOException
+    //   355	26	5	localStringBuilder	StringBuilder
+    //   400	1	5	localObject2	Object
+    //   415	13	5	localObject3	Object
+    //   446	12	5	localIOException2	java.io.IOException
+    //   463	23	5	localObject4	Object
+    //   183	288	6	localObject5	Object
+    //   478	3	6	localIOException3	java.io.IOException
+    //   488	1	6	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   293	101	7	localFileInputStream	java.io.FileInputStream
+    //   455	7	7	localObject6	Object
+    //   391	1	8	localThrowable1	Throwable
+    //   408	22	8	localThrowable2	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   333	338	341	java/io/IOException
+    //   299	306	391	java/lang/Throwable
+    //   310	321	391	java/lang/Throwable
+    //   325	333	391	java/lang/Throwable
+    //   284	295	400	finally
+    //   284	295	408	java/lang/Throwable
+    //   439	444	446	java/io/IOException
+    //   299	306	455	finally
+    //   310	321	455	finally
+    //   325	333	455	finally
+    //   417	425	455	finally
+    //   429	434	455	finally
+    //   470	475	478	java/io/IOException
+    //   234	247	488	java/lang/OutOfMemoryError
+  }
+  
+  private AudioTrack e()
+  {
+    Object localObject = null;
+    for (;;)
+    {
+      try
+      {
+        if (this.this$0.a.b.g != 1) {
+          break label162;
+        }
+        i1 = 4;
+        if (this.this$0.a.b.d != 16) {
+          break label168;
+        }
+        i2 = 2;
+        int i3 = AudioTrack.getMinBufferSize(this.this$0.a.b.f, i1, i2);
+        AudioTrack localAudioTrack = new AudioTrack(3, this.this$0.a.b.f, i1, i2, i3, 1);
+        try
+        {
+          localAudioTrack.setStereoVolume(this.this$0.a.b.h, this.this$0.a.b.h);
+          localAudioTrack.play();
+          return localAudioTrack;
+        }
+        catch (Throwable localThrowable1)
+        {
+          localObject = localAudioTrack;
+        }
+        QLog.e("AudioDecoder", 4, "AudioTrack init fail");
+      }
+      catch (Throwable localThrowable2) {}
+      localThrowable2.printStackTrace();
+      return localObject;
+      label162:
+      int i1 = 12;
+      continue;
+      label168:
+      int i2 = 3;
+    }
   }
   
   /* Error */
@@ -2220,30 +2220,30 @@ class AudioDecoder$AudioPlayRunnable
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 22	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
-    //   4: getfield 59	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
-    //   7: getfield 123	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:jdField_a_of_type_Int	I
+    //   1: getfield 31	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:this$0	Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder;
+    //   4: getfield 100	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder:a	Lcom/tencent/mobileqq/videocodec/audio/AudioDecodeConfig;
+    //   7: getfield 112	com/tencent/mobileqq/videocodec/audio/AudioDecodeConfig:d	I
     //   10: iconst_3
     //   11: if_icmpeq +49 -> 60
-    //   14: ldc2_w 436
-    //   17: invokestatic 443	java/lang/Thread:sleep	(J)V
+    //   14: ldc2_w 449
+    //   17: invokestatic 456	java/lang/Thread:sleep	(J)V
     //   20: goto +8 -> 28
     //   23: astore_1
     //   24: aload_1
-    //   25: invokevirtual 160	java/lang/InterruptedException:printStackTrace	()V
+    //   25: invokevirtual 152	java/lang/InterruptedException:printStackTrace	()V
     //   28: aload_0
     //   29: monitorenter
     //   30: aload_0
     //   31: iconst_1
-    //   32: putfield 47	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_d_of_type_Boolean	Z
+    //   32: putfield 56	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:m	Z
     //   35: aload_0
-    //   36: invokevirtual 446	java/lang/Object:notifyAll	()V
+    //   36: invokevirtual 459	java/lang/Object:notifyAll	()V
     //   39: goto +12 -> 51
     //   42: astore_1
     //   43: goto +13 -> 56
     //   46: astore_1
     //   47: aload_1
-    //   48: invokevirtual 447	java/lang/Exception:printStackTrace	()V
+    //   48: invokevirtual 460	java/lang/Exception:printStackTrace	()V
     //   51: aload_0
     //   52: monitorexit
     //   53: goto +7 -> 60
@@ -2253,10 +2253,10 @@ class AudioDecoder$AudioPlayRunnable
     //   59: athrow
     //   60: aload_0
     //   61: iconst_0
-    //   62: putfield 27	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_a_of_type_Int	I
+    //   62: putfield 36	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:c	I
     //   65: aload_0
     //   66: iconst_0
-    //   67: putfield 29	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:jdField_b_of_type_Int	I
+    //   67: putfield 38	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/AudioDecoder$AudioPlayRunnable:d	I
     //   70: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -2278,47 +2278,47 @@ class AudioDecoder$AudioPlayRunnable
   {
     if (this.this$0.a != null)
     {
-      float f = (float)paramLong1 / (float)paramLong2;
-      if ((f >= this.jdField_a_of_type_Float) && (f <= this.jdField_b_of_type_Float))
+      float f1 = (float)paramLong1 / (float)paramLong2;
+      if ((f1 >= this.e) && (f1 <= this.f))
       {
-        if (this.this$0.a.jdField_a_of_type_Int == 5) {
-          this.jdField_c_of_type_Float = (this.jdField_b_of_type_Float - (f - this.jdField_a_of_type_Float));
+        if (this.this$0.a.d == 5) {
+          this.n = (this.f - (f1 - this.e));
         } else {
-          this.jdField_c_of_type_Float = f;
+          this.n = f1;
         }
-        QLog.d("AudioDecoder", 1, new Object[] { "seekToPercent: ", Float.valueOf(this.jdField_c_of_type_Float) });
+        QLog.d("AudioDecoder", 1, new Object[] { "seekToPercent: ", Float.valueOf(this.n) });
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("seek error, timePercent=");
-      localStringBuilder.append(f);
+      localStringBuilder.append(f1);
       QLog.w("AudioDecoder", 1, localStringBuilder.toString());
     }
   }
   
   public void b()
   {
-    this.jdField_c_of_type_Boolean = true;
+    this.k = true;
   }
   
   public void c()
   {
-    this.jdField_c_of_type_Boolean = false;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.k = false;
+    synchronized (this.l)
     {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      this.l.notifyAll();
       return;
     }
   }
   
   public void run()
   {
-    boolean bool2 = this.jdField_b_of_type_Boolean;
+    boolean bool2 = this.b;
     boolean bool1 = true;
-    if ((bool2) && (!TextUtils.isEmpty(this.this$0.a.jdField_b_of_type_JavaLangString))) {}
+    if ((bool2) && (!TextUtils.isEmpty(this.this$0.a.i))) {}
     try
     {
-      localObject = FileUtils.fileToBytes(new File(this.this$0.a.jdField_b_of_type_JavaLangString));
+      localObject = FileUtils.fileToBytes(new File(this.this$0.a.i));
     }
     catch (Exception localException)
     {
@@ -2329,17 +2329,17 @@ class AudioDecoder$AudioPlayRunnable
     QLog.e("AudioDecoder", 1, "bgm music get error");
     localObject = null;
     break label132;
-    if (MimeHelper.validateVideoType(MimeTypesTools.getMimeType(BaseApplication.getContext(), this.this$0.a.jdField_a_of_type_JavaLangString)))
+    if (MimeHelper.validateVideoType(MimeTypesTools.getMimeType(BaseApplication.getContext(), this.this$0.a.a)))
     {
-      localObject = this.this$0.a.jdField_a_of_type_JavaLangString;
-      if (this.this$0.a.jdField_a_of_type_Int == 5) {
+      localObject = this.this$0.a.a;
+      if (this.this$0.a.d == 5) {
         bool1 = false;
       }
       localObject = a((String)localObject, bool1);
     }
     else
     {
-      localObject = a();
+      localObject = d();
     }
     label132:
     if (localObject != null) {
@@ -2349,7 +2349,7 @@ class AudioDecoder$AudioPlayRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.mediacodec.AudioDecoder.AudioPlayRunnable
  * JD-Core Version:    0.7.0.1
  */

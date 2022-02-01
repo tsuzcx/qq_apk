@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.kandian.glue.viola.components;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.DanmakuDetail;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.DanmakuInfo;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.RIJDanmakuManager;
 import com.tencent.mobileqq.kandian.glue.video.report.VideoR5.Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 
@@ -13,26 +12,25 @@ import kotlin.jvm.internal.Intrinsics;
 final class VideoDanmakuComponent$doReport$1
   implements Runnable
 {
-  VideoDanmakuComponent$doReport$1(VideoDanmakuComponent paramVideoDanmakuComponent, DanmakuDetail paramDanmakuDetail, long paramLong, String paramString) {}
+  VideoDanmakuComponent$doReport$1(VideoDanmakuComponent paramVideoDanmakuComponent, String paramString1, long paramLong, DanmakuDetail paramDanmakuDetail, String paramString2) {}
   
   public final void run()
   {
     Object localObject = VideoDanmakuComponent.access$getDanmakuManager$p(this.this$0);
     if (localObject != null) {
-      localObject = ((RIJDanmakuManager)localObject).a();
+      localObject = ((RIJDanmakuManager)localObject).b();
     } else {
       localObject = null;
     }
-    localObject = new VideoR5.Builder("", (String)localObject, "", "").j(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuDetail.a().c()).a("time", Long.valueOf(this.jdField_a_of_type_Long)).a("shown_place", VideoDanmakuComponent.access$getSrcAttr(this.this$0, "shown_place")).a("danmu_id", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuDetail.a().a()).a();
+    localObject = new VideoR5.Builder("", (String)localObject, "", "").k(this.a).b("time", Long.valueOf(this.b)).b("shown_place", VideoDanmakuComponent.access$getSrcAttr(this.this$0, "shown_place")).b("danmu_id", this.c.a().a()).a();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "VideoR5.Builder(\"\", danm…          .toJsonString()");
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
-    String str = this.jdField_a_of_type_JavaLangString;
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", str, str, 0, 0, "", "", this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuDetail.a().c(), (String)localObject, false);
+    String str = this.d;
+    PublicAccountReportUtils.a(null, "", str, str, 0, 0, "", "", this.c.a().f(), (String)localObject, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.components.VideoDanmakuComponent.doReport.1
  * JD-Core Version:    0.7.0.1
  */

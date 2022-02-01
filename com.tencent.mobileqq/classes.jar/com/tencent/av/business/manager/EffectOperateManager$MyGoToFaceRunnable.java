@@ -9,7 +9,7 @@ class EffectOperateManager$MyGoToFaceRunnable
   {
     EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.a.get();
     if (localEffectOperateManager != null) {
-      localEffectOperateManager.e();
+      localEffectOperateManager.g();
     }
   }
 }

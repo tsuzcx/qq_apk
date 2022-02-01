@@ -32,11 +32,11 @@ final class BottomSelectorLayout$addMediaPanel$2
       {
         View localView = (View)((Iterator)localObject).next();
         if (((Intrinsics.areEqual(localView, this.$mediaSelectorView) ^ true)) && ((localView instanceof MediaSelectorPanel))) {
-          ((MediaSelectorPanel)localView).a();
+          ((MediaSelectorPanel)localView).c();
         }
       }
     }
-    Object localObject = this.this$0.a();
+    Object localObject = this.this$0.getOnMediaSelectChangeListener();
     if (localObject != null) {
       paramList = (Unit)((Function1)localObject).invoke(paramList);
     }
@@ -44,7 +44,7 @@ final class BottomSelectorLayout$addMediaPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addMediaPanel.2
  * JD-Core Version:    0.7.0.1
  */

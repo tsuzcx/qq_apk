@@ -7,19 +7,17 @@ import android.view.View.OnTouchListener;
 class MultiVideoCtrlLayerUIBase$5
   implements View.OnTouchListener
 {
-  MultiVideoCtrlLayerUIBase$5(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, View paramView) {}
-  
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0)
     {
       paramView.setAlpha(0.5F);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.5F);
+      this.a.setAlpha(0.5F);
     }
     else if (paramMotionEvent.getAction() == 1)
     {
       paramView.setAlpha(1.0F);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+      this.a.setAlpha(1.0F);
     }
     return false;
   }

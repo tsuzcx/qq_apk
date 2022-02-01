@@ -17,7 +17,7 @@ public class WSFollowSeparateHolder1
   
   private WSFollowSeparateHolder1(ViewGroup paramViewGroup, WSFollowAdapter paramWSFollowAdapter)
   {
-    super(paramViewGroup, 2131560412);
+    super(paramViewGroup, 2131626457);
     b();
   }
   
@@ -28,8 +28,8 @@ public class WSFollowSeparateHolder1
   
   private void b()
   {
-    this.a = ((TextView)getView(2131381243));
-    this.b = ((TextView)getView(2131381244));
+    this.a = ((TextView)getView(2131450291));
+    this.b = ((TextView)getView(2131450292));
   }
   
   public void a()
@@ -66,7 +66,7 @@ public class WSFollowSeparateHolder1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSFollowSeparateHolder1
  * JD-Core Version:    0.7.0.1
  */

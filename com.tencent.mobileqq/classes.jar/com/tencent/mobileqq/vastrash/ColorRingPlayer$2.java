@@ -28,10 +28,10 @@ class ColorRingPlayer$2
       if (QLog.isColorLevel()) {
         QLog.d("ColorRingPlayer", 2, "gained focus");
       }
-      if (this.a.b)
+      if (this.a.h)
       {
         this.a.c();
-        this.a.b = false;
+        this.a.h = false;
       }
     }
     else if (paramInt == -1)
@@ -50,7 +50,7 @@ class ColorRingPlayer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.ColorRingPlayer.2
  * JD-Core Version:    0.7.0.1
  */

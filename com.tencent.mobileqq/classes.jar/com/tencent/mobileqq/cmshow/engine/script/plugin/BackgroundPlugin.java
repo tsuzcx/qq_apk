@@ -18,33 +18,28 @@ public final class BackgroundPlugin
   implements IEventPlugin
 {
   @Deprecated
-  public static final BackgroundPlugin.Companion a;
+  public static final BackgroundPlugin.Companion a = new BackgroundPlugin.Companion(null);
   @NotNull
-  private static final List<String> jdField_a_of_type_JavaUtilList = CollectionsKt.listOf("cs.script_action_status_notify.local");
+  private static final List<String> e = CollectionsKt.listOf("cs.script_action_status_notify.local");
   @NotNull
-  private final PluginCmdConstant.PlugPriority jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  private final WeakReference<IRenderCallback> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBackgroundPlugin$Companion = new BackgroundPlugin.Companion(null);
-  }
+  private final PluginCmdConstant.PlugPriority c;
+  private final WeakReference<IRenderCallback> d;
   
   public BackgroundPlugin(@NotNull WeakReference<IRenderCallback> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.UI;
+    this.d = paramWeakReference;
+    this.c = PluginCmdConstant.PlugPriority.UI;
   }
   
   private final String b(Argument paramArgument)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("handleBackgroundActionStatusChange, argument:");
-    localStringBuilder.append(paramArgument.d());
+    localStringBuilder.append(paramArgument.g());
     QLog.i("[cmshow][BackgroundPlugin]", 1, localStringBuilder.toString());
     try
     {
-      paramArgument = new JSONObject(paramArgument.b());
+      paramArgument = new JSONObject(paramArgument.e());
       int i = paramArgument.optInt("taskId", -1);
       int j = paramArgument.optInt("status", -1);
       if (j != 1)
@@ -52,7 +47,7 @@ public final class BackgroundPlugin
         if (j != 2) {
           return null;
         }
-        paramArgument = (IRenderCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramArgument = (IRenderCallback)this.d.get();
         if (paramArgument != null)
         {
           paramArgument.a(i, 0, null);
@@ -61,10 +56,10 @@ public final class BackgroundPlugin
       }
       else
       {
-        paramArgument = (IRenderCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramArgument = (IRenderCallback)this.d.get();
         if (paramArgument != null)
         {
-          paramArgument.a(i, null);
+          paramArgument.b_(i, null);
           return null;
         }
       }
@@ -79,29 +74,18 @@ public final class BackgroundPlugin
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
+    return this.c;
   }
   
   @Nullable
   public String a(@NotNull Argument paramArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramArgument, "argument");
-    String str = paramArgument.c();
+    String str = paramArgument.f();
     if ((str.hashCode() == -439099872) && (str.equals("cs.script_action_status_notify.local"))) {
       return b(paramArgument);
     }
     return null;
-  }
-  
-  @NotNull
-  public List<String> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return IEventPlugin.DefaultImpls.a(this);
   }
   
   public boolean a(@NotNull String paramString)
@@ -109,10 +93,21 @@ public final class BackgroundPlugin
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IEventPlugin.DefaultImpls.a(this, paramString);
   }
+  
+  @NotNull
+  public List<String> c()
+  {
+    return e;
+  }
+  
+  public boolean d()
+  {
+    return IEventPlugin.DefaultImpls.a(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.BackgroundPlugin
  * JD-Core Version:    0.7.0.1
  */

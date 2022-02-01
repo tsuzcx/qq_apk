@@ -11,13 +11,13 @@ class AuthorityControlAppDetailsFragment$9
   public void run()
   {
     AuthorityControlAppDetailsFragment.a(this.this$0, 2);
-    AuthorityControlAppDetailsFragment.b(this.this$0);
-    QQToast.a(AuthorityControlAppDetailsFragment.a(this.this$0), HardCodeUtil.a(2131694647), 0).a();
+    AuthorityControlAppDetailsFragment.m(this.this$0);
+    QQToast.makeText(AuthorityControlAppDetailsFragment.c(this.this$0), HardCodeUtil.a(2131892333), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.9
  * JD-Core Version:    0.7.0.1
  */

@@ -27,20 +27,20 @@ class WSFollowFragment$2
       WSMonitorUtil.a(this.a.getActivity(), "weishi_follow_list");
     }
     if (RecyclerViewHelper.a(paramRecyclerView)) {
-      ((WSFollowPresenter)this.a.a).d();
+      ((WSFollowPresenter)this.a.b).c();
     }
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    paramRecyclerView = WSFollowFragment.a(this.a).a;
+    paramRecyclerView = WSFollowFragment.a(this.a).b;
     boolean bool2 = false;
     Object localObject;
     boolean bool1;
     if (paramRecyclerView == null)
     {
-      paramInt1 = WSFollowFragment.a(this.a).findFirstVisibleItemPosition();
+      paramInt1 = WSFollowFragment.b(this.a).findFirstVisibleItemPosition();
       paramRecyclerView = WSFollowFragment.a(this.a, paramInt1, false);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mAdapter.mPlayingHolder is null. startPosition:");
@@ -52,7 +52,7 @@ class WSFollowFragment$2
     else
     {
       paramRecyclerView = this.a;
-      localObject = WSFollowFragment.a(paramRecyclerView).a;
+      localObject = WSFollowFragment.a(paramRecyclerView).b;
       if (paramInt2 > 0) {
         bool1 = true;
       } else {
@@ -62,18 +62,18 @@ class WSFollowFragment$2
     }
     if (WSFollowFragment.a(this.a, paramRecyclerView))
     {
-      if (WSFollowFragment.a(this.a))
+      if (WSFollowFragment.c(this.a))
       {
         WSLog.d("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] mIsHandlingBackFromVertical true.");
         return;
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSFollowFragment.java][onScrolled] playVideo title:");
-      ((StringBuilder)localObject).append(paramRecyclerView.a.d);
+      ((StringBuilder)localObject).append(paramRecyclerView.a.g);
       ((StringBuilder)localObject).append(", mPlayingHolder:");
       ((StringBuilder)localObject).append(paramRecyclerView);
       WSLog.g("WSFollowContinuePlayLog", ((StringBuilder)localObject).toString());
-      WSFollowFragment.a(this.a, paramRecyclerView);
+      WSFollowFragment.b(this.a, paramRecyclerView);
       localObject = this.a;
       bool1 = bool2;
       if (paramInt2 > 0) {
@@ -90,7 +90,7 @@ class WSFollowFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSFollowFragment.2
  * JD-Core Version:    0.7.0.1
  */

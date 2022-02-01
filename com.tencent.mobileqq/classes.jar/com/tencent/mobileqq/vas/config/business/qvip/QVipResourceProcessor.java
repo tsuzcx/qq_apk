@@ -20,7 +20,7 @@ public class QVipResourceProcessor
   @NonNull
   public QVipResourceConfig a(QConfItem[] paramArrayOfQConfItem)
   {
-    ((IClubContentUpdateHandler)QRoute.api(IClubContentUpdateHandler.class)).saveQVIPResConfigContent(paramArrayOfQConfItem[0].a);
+    ((IClubContentUpdateHandler)QRoute.api(IClubContentUpdateHandler.class)).saveQVIPResConfigContent(paramArrayOfQConfItem[0].b);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -54,7 +54,7 @@ public class QVipResourceProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipResourceProcessor
  * JD-Core Version:    0.7.0.1
  */

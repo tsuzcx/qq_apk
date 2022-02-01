@@ -21,20 +21,15 @@ import mqq.app.MobileQQ;
 public class TinyIdCache
   extends FullCache
 {
-  private long jdField_a_of_type_Long = 0L;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ConcurrentHashMap<String, Pair<String, String>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private long b = 0L;
+  private ConcurrentHashMap<String, Pair<String, String>> c = new ConcurrentHashMap();
+  private AppInterface d;
   
   public TinyIdCache(AppInterface paramAppInterface, DBDelayManager paramDBDelayManager)
   {
     super(paramAppInterface, paramDBDelayManager, UinToTinyId.class);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.d = paramAppInterface;
     c();
-  }
-  
-  private UinToTinyId a(String paramString)
-  {
-    return (UinToTinyId)findCache(paramString);
   }
   
   private String a(String paramString1, String paramString2, String paramString3)
@@ -42,7 +37,7 @@ public class TinyIdCache
     if (TextUtils.isEmpty(paramString3)) {
       return null;
     }
-    UinToTinyId localUinToTinyId = a(paramString3);
+    UinToTinyId localUinToTinyId = c(paramString3);
     if (localUinToTinyId != null)
     {
       if (QLog.isColorLevel())
@@ -59,8 +54,8 @@ public class TinyIdCache
       return localUinToTinyId.friendUin;
     }
     localUinToTinyId = new UinToTinyId();
-    long l = this.jdField_a_of_type_Long - 1L;
-    this.jdField_a_of_type_Long = l;
+    long l = this.b - 1L;
+    this.b = l;
     localUinToTinyId.friendUin = String.valueOf(l);
     localUinToTinyId.tinyId = paramString3;
     localUinToTinyId.fromTinyId = paramString1;
@@ -83,13 +78,18 @@ public class TinyIdCache
     return localUinToTinyId.friendUin;
   }
   
+  private UinToTinyId c(String paramString)
+  {
+    return (UinToTinyId)findCache(paramString);
+  }
+  
   private void c()
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.c.clear();
       this.cacheMap.clear();
-      Object localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
+      Object localObject1 = this.d.getEntityManagerFactory().createEntityManager();
       Object localObject2 = ((EntityManager)localObject1).query(UinToTinyId.class);
       ((EntityManager)localObject1).close();
       if (localObject2 != null)
@@ -102,19 +102,19 @@ public class TinyIdCache
           this.cacheMap.put(((UinToTinyId)localObject2).tinyId, localObject2);
         }
       }
-      localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getSharedPreferences("sp_name_tinyid_uin_mapping", 0);
-      localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      localObject1 = this.d.getApplication().getSharedPreferences("sp_name_tinyid_uin_mapping", 0);
+      localObject2 = this.d.getCurrentAccountUin();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_last_uin_consume_");
       localStringBuilder.append((String)localObject2);
-      this.jdField_a_of_type_Long = ((SharedPreferences)localObject1).getLong(localStringBuilder.toString(), 9223372036854775807L);
+      this.b = ((SharedPreferences)localObject1).getLong(localStringBuilder.toString(), 9223372036854775807L);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("doInit size = ");
         ((StringBuilder)localObject1).append(this.cacheMap.size());
         ((StringBuilder)localObject1).append(", lastUinConsume = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject1).append(this.b);
         QLog.d("Q.tiny_msg.TinyIdCache", 2, ((StringBuilder)localObject1).toString());
         return;
       }
@@ -127,61 +127,25 @@ public class TinyIdCache
   
   private void d()
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getSharedPreferences("sp_name_tinyid_uin_mapping", 0);
-    Object localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    Object localObject2 = this.d.getApplication().getSharedPreferences("sp_name_tinyid_uin_mapping", 0);
+    Object localObject1 = this.d.getCurrentAccountUin();
     localObject2 = ((SharedPreferences)localObject2).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_last_uin_consume_");
     localStringBuilder.append((String)localObject1);
-    ((SharedPreferences.Editor)localObject2).putLong(localStringBuilder.toString(), this.jdField_a_of_type_Long).apply();
+    ((SharedPreferences.Editor)localObject2).putLong(localStringBuilder.toString(), this.b).apply();
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("persistLastConsumeId lastUinConsume = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.b);
       QLog.d("Q.tiny_msg.TinyIdCache", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
-  public Pair<String, String> a(String paramString)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
-    {
-      paramString = (Pair)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    }
-    else
-    {
-      localObject = this.cacheMap.values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        UinToTinyId localUinToTinyId = (UinToTinyId)((Iterator)localObject).next();
-        if (TextUtils.equals(localUinToTinyId.friendUin, paramString))
-        {
-          localObject = new Pair(localUinToTinyId.fromTinyId, localUinToTinyId.toTinyId);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
-          paramString = (String)localObject;
-          break label105;
-        }
-      }
-      paramString = null;
-    }
-    label105:
-    if ((QLog.isColorLevel()) && (paramString != null))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("findTinyId  from cache fromTinyId = ");
-      ((StringBuilder)localObject).append((String)paramString.first);
-      ((StringBuilder)localObject).append(", toTinyId = ");
-      ((StringBuilder)localObject).append((String)paramString.second);
-      QLog.d("Q.tiny_msg.TinyIdCache", 2, ((StringBuilder)localObject).toString());
-    }
-    return paramString;
-  }
-  
   public String a(String paramString)
   {
-    paramString = a(paramString);
+    paramString = b(paramString);
     if (paramString != null) {
       return (String)paramString.first;
     }
@@ -210,10 +174,46 @@ public class TinyIdCache
     destroy();
   }
   
+  public Pair<String, String> b(String paramString)
+  {
+    Object localObject;
+    if (this.c.containsKey(paramString))
+    {
+      paramString = (Pair)this.c.get(paramString);
+    }
+    else
+    {
+      localObject = this.cacheMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        UinToTinyId localUinToTinyId = (UinToTinyId)((Iterator)localObject).next();
+        if (TextUtils.equals(localUinToTinyId.friendUin, paramString))
+        {
+          localObject = new Pair(localUinToTinyId.fromTinyId, localUinToTinyId.toTinyId);
+          this.c.put(paramString, localObject);
+          paramString = (String)localObject;
+          break label105;
+        }
+      }
+      paramString = null;
+    }
+    label105:
+    if ((QLog.isColorLevel()) && (paramString != null))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("findTinyId  from cache fromTinyId = ");
+      ((StringBuilder)localObject).append((String)paramString.first);
+      ((StringBuilder)localObject).append(", toTinyId = ");
+      ((StringBuilder)localObject).append((String)paramString.second);
+      QLog.d("Q.tiny_msg.TinyIdCache", 2, ((StringBuilder)localObject).toString());
+    }
+    return paramString;
+  }
+  
   public void b()
   {
     this.cacheMap.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.c.clear();
   }
   
   protected void destroy()
@@ -228,7 +228,7 @@ public class TinyIdCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.TinyIdCache
  * JD-Core Version:    0.7.0.1
  */

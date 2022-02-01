@@ -29,44 +29,44 @@ import java.util.List;
 public class AvatarPendantAdapter$PendantGridAdapter
   extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  List<AvatarPendantShopItemInfo> jdField_a_of_type_JavaUtilList;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  List<AvatarPendantShopItemInfo> a;
+  String b;
+  int c;
+  int d;
+  String e;
   
   public AvatarPendantAdapter$PendantGridAdapter(AvatarPendantAdapter paramAvatarPendantAdapter) {}
   
   public void a(AvatarPendantShopSeriesInfo paramAvatarPendantShopSeriesInfo)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.a == null) {
+      this.a = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramAvatarPendantShopSeriesInfo.jdField_a_of_type_JavaUtilList == null) {
+    this.a.clear();
+    if (paramAvatarPendantShopSeriesInfo.h == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramAvatarPendantShopSeriesInfo.d;
-    this.jdField_a_of_type_Int = paramAvatarPendantShopSeriesInfo.jdField_c_of_type_Int;
-    this.jdField_b_of_type_Int = paramAvatarPendantShopSeriesInfo.jdField_b_of_type_Int;
-    this.jdField_b_of_type_JavaLangString = paramAvatarPendantShopSeriesInfo.jdField_c_of_type_JavaLangString;
-    if (this.jdField_b_of_type_JavaLangString == null) {
-      this.jdField_b_of_type_JavaLangString = "";
+    this.b = paramAvatarPendantShopSeriesInfo.f;
+    this.c = paramAvatarPendantShopSeriesInfo.j;
+    this.d = paramAvatarPendantShopSeriesInfo.e;
+    this.e = paramAvatarPendantShopSeriesInfo.d;
+    if (this.e == null) {
+      this.e = "";
     }
-    if ((paramAvatarPendantShopSeriesInfo.e != null) && (paramAvatarPendantShopSeriesInfo.e.equals("actLiTpl"))) {
-      this.jdField_b_of_type_Int = 3;
+    if ((paramAvatarPendantShopSeriesInfo.g != null) && (paramAvatarPendantShopSeriesInfo.g.equals("actLiTpl"))) {
+      this.d = 3;
     }
-    if ((!paramAvatarPendantShopSeriesInfo.jdField_a_of_type_Boolean) && (paramAvatarPendantShopSeriesInfo.jdField_a_of_type_JavaUtilList.size() > 4) && ((paramAvatarPendantShopSeriesInfo.e == null) || (paramAvatarPendantShopSeriesInfo.e.equals("")))) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramAvatarPendantShopSeriesInfo.jdField_a_of_type_JavaUtilList.subList(0, 4));
+    if ((!paramAvatarPendantShopSeriesInfo.i) && (paramAvatarPendantShopSeriesInfo.h.size() > 4) && ((paramAvatarPendantShopSeriesInfo.g == null) || (paramAvatarPendantShopSeriesInfo.g.equals("")))) {
+      this.a.addAll(paramAvatarPendantShopSeriesInfo.h.subList(0, 4));
     } else {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramAvatarPendantShopSeriesInfo.jdField_a_of_type_JavaUtilList);
+      this.a.addAll(paramAvatarPendantShopSeriesInfo.h);
     }
     super.notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.size();
     }
@@ -75,7 +75,7 @@ public class AvatarPendantAdapter$PendantGridAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.get(paramInt);
     }
@@ -92,7 +92,7 @@ public class AvatarPendantAdapter$PendantGridAdapter
     Object localObject2;
     label1290:
     Object localObject4;
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    if (this.a == null)
     {
       localObject2 = paramView;
     }
@@ -103,28 +103,28 @@ public class AvatarPendantAdapter$PendantGridAdapter
       if (paramView == null)
       {
         localGridItemHolder = new AvatarPendantAdapter.PendantGridAdapter.GridItemHolder(this);
-        localObject1 = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext).inflate(2131561872, paramViewGroup, false);
-        localGridItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject1).findViewById(2131372418));
-        localGridItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131372417));
-        localGridItemHolder.b = ((ImageView)((View)localObject1).findViewById(2131372428));
-        localGridItemHolder.c = ((ImageView)((View)localObject1).findViewById(2131372430));
-        localGridItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131372426));
-        localGridItemHolder.d = ((ImageView)((View)localObject1).findViewById(2131372419));
-        localGridItemHolder.e = ((ImageView)((View)localObject1).findViewById(2131372429));
-        paramView = localGridItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+        localObject1 = LayoutInflater.from(this.f.a).inflate(2131628290, paramViewGroup, false);
+        localGridItemHolder.g = ((RelativeLayout)((View)localObject1).findViewById(2131439940));
+        localGridItemHolder.a = ((ImageView)((View)localObject1).findViewById(2131439939));
+        localGridItemHolder.b = ((ImageView)((View)localObject1).findViewById(2131439950));
+        localGridItemHolder.c = ((ImageView)((View)localObject1).findViewById(2131439952));
+        localGridItemHolder.f = ((TextView)((View)localObject1).findViewById(2131439948));
+        localGridItemHolder.d = ((ImageView)((View)localObject1).findViewById(2131439941));
+        localGridItemHolder.e = ((ImageView)((View)localObject1).findViewById(2131439951));
+        paramView = localGridItemHolder.g.getLayoutParams();
         if (paramView != null)
         {
-          paramView.width = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.h;
-          paramView.height = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.i;
+          paramView.width = this.f.p;
+          paramView.height = this.f.q;
         }
         else
         {
           if (QLog.isColorLevel()) {
             QLog.d("AvatarPendantAdapter", 2, "getLayoutParams null, it's sad");
           }
-          paramView = new ViewGroup.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.h, this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.i);
+          paramView = new ViewGroup.LayoutParams(this.f.p, this.f.q);
         }
-        localGridItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+        localGridItemHolder.g.setLayoutParams(paramView);
         ((View)localObject1).setTag(localGridItemHolder);
         paramView = (View)localObject1;
       }
@@ -135,10 +135,10 @@ public class AvatarPendantAdapter$PendantGridAdapter
       AvatarPendantShopItemInfo localAvatarPendantShopItemInfo = (AvatarPendantShopItemInfo)getItem(paramInt);
       if (localAvatarPendantShopItemInfo != null)
       {
-        localGridItemHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(localAvatarPendantShopItemInfo);
-        localGridItemHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localAvatarPendantShopItemInfo.jdField_a_of_type_JavaLangString);
-        paramView.setContentDescription(localAvatarPendantShopItemInfo.jdField_a_of_type_JavaLangString);
-        int i = localAvatarPendantShopItemInfo.e;
+        localGridItemHolder.a.setTag(localAvatarPendantShopItemInfo);
+        localGridItemHolder.f.setText(localAvatarPendantShopItemInfo.c);
+        paramView.setContentDescription(localAvatarPendantShopItemInfo.c);
+        int i = localAvatarPendantShopItemInfo.k;
         if (i != 7)
         {
           if (i != 8)
@@ -148,24 +148,24 @@ public class AvatarPendantAdapter$PendantGridAdapter
           else
           {
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(AvatarPendantUtil.jdField_c_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(AvatarPendantUtil.e);
             ((StringBuilder)localObject1).append("/hot.png");
             localFile = new File(((StringBuilder)localObject1).toString());
-            if ((localFile.exists()) && (!this.jdField_b_of_type_JavaLangString.equals("3")))
+            if ((localFile.exists()) && (!this.e.equals("3")))
             {
               localGridItemHolder.d.setVisibility(0);
-              localObject2 = (URLDrawable)AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_hot.png");
+              localObject2 = (URLDrawable)AvatarPendantAdapter.i.get("key_hot.png");
               localObject1 = localObject2;
               if (localObject2 == null)
               {
                 localObject1 = URLDrawable.URLDrawableOptions.obtain();
-                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.f.v;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.f.v;
                 localObject2 = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject1);
                 localObject1 = localObject2;
                 if (((URLDrawable)localObject2).getStatus() == 1)
                 {
-                  AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_hot.png", localObject2);
+                  AvatarPendantAdapter.i.put("key_hot.png", localObject2);
                   localObject1 = localObject2;
                 }
               }
@@ -180,24 +180,24 @@ public class AvatarPendantAdapter$PendantGridAdapter
         else
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(AvatarPendantUtil.jdField_c_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(AvatarPendantUtil.e);
           ((StringBuilder)localObject1).append("/new.png");
           localFile = new File(((StringBuilder)localObject1).toString());
-          if ((localFile.exists()) && (!this.jdField_b_of_type_JavaLangString.equals("1")))
+          if ((localFile.exists()) && (!this.e.equals("1")))
           {
             localGridItemHolder.d.setVisibility(0);
-            localObject2 = (URLDrawable)AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_new.png");
+            localObject2 = (URLDrawable)AvatarPendantAdapter.i.get("key_new.png");
             localObject1 = localObject2;
             if (localObject2 == null)
             {
               localObject1 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-              ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.f.v;
+              ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.f.v;
               localObject2 = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject1);
               localObject1 = localObject2;
               if (((URLDrawable)localObject2).getStatus() == 1)
               {
-                AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_new.png", localObject2);
+                AvatarPendantAdapter.i.put("key_new.png", localObject2);
                 localObject1 = localObject2;
               }
             }
@@ -208,7 +208,7 @@ public class AvatarPendantAdapter$PendantGridAdapter
             localGridItemHolder.d.setVisibility(8);
           }
         }
-        i = localAvatarPendantShopItemInfo.f;
+        i = localAvatarPendantShopItemInfo.l;
         if (i != 6)
         {
           if (i != 9)
@@ -220,24 +220,24 @@ public class AvatarPendantAdapter$PendantGridAdapter
             else
             {
               localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append(AvatarPendantUtil.jdField_c_of_type_JavaLangString);
+              ((StringBuilder)localObject1).append(AvatarPendantUtil.e);
               ((StringBuilder)localObject1).append("/limit.png");
               localFile = new File(((StringBuilder)localObject1).toString());
               if (localFile.exists())
               {
                 localGridItemHolder.e.setVisibility(0);
-                localObject2 = (URLDrawable)AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_limit.png");
+                localObject2 = (URLDrawable)AvatarPendantAdapter.i.get("key_limit.png");
                 localObject1 = localObject2;
                 if (localObject2 == null)
                 {
                   localObject1 = URLDrawable.URLDrawableOptions.obtain();
-                  ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-                  ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                  ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.f.v;
+                  ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.f.v;
                   localObject2 = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject1);
                   localObject1 = localObject2;
                   if (((URLDrawable)localObject2).getStatus() == 1)
                   {
-                    AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_limit.png", localObject2);
+                    AvatarPendantAdapter.i.put("key_limit.png", localObject2);
                     localObject1 = localObject2;
                   }
                 }
@@ -252,24 +252,24 @@ public class AvatarPendantAdapter$PendantGridAdapter
           else
           {
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(AvatarPendantUtil.jdField_c_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(AvatarPendantUtil.e);
             ((StringBuilder)localObject1).append("/rare.png");
             localFile = new File(((StringBuilder)localObject1).toString());
-            if ((localFile.exists()) && (this.jdField_b_of_type_Int != 5))
+            if ((localFile.exists()) && (this.d != 5))
             {
               localGridItemHolder.e.setVisibility(0);
-              localObject2 = (URLDrawable)AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_rare.png");
+              localObject2 = (URLDrawable)AvatarPendantAdapter.i.get("key_rare.png");
               localObject1 = localObject2;
               if (localObject2 == null)
               {
                 localObject1 = URLDrawable.URLDrawableOptions.obtain();
-                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.f.v;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.f.v;
                 localObject2 = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject1);
                 localObject1 = localObject2;
                 if (((URLDrawable)localObject2).getStatus() == 1)
                 {
-                  AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_rare.png", localObject2);
+                  AvatarPendantAdapter.i.put("key_rare.png", localObject2);
                   localObject1 = localObject2;
                 }
               }
@@ -284,27 +284,27 @@ public class AvatarPendantAdapter$PendantGridAdapter
         else
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(AvatarPendantUtil.jdField_c_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(AvatarPendantUtil.e);
           ((StringBuilder)localObject1).append("/activity.png");
           localFile = new File(((StringBuilder)localObject1).toString());
           if (localFile.exists())
           {
-            i = this.jdField_b_of_type_Int;
+            i = this.d;
             if ((i != 3) && (i != 5))
             {
               localGridItemHolder.e.setVisibility(0);
-              localObject2 = (URLDrawable)AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_activity.png");
+              localObject2 = (URLDrawable)AvatarPendantAdapter.i.get("key_activity.png");
               localObject1 = localObject2;
               if (localObject2 == null)
               {
                 localObject1 = URLDrawable.URLDrawableOptions.obtain();
-                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.f.v;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.f.v;
                 localObject2 = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject1);
                 localObject1 = localObject2;
                 if (((URLDrawable)localObject2).getStatus() == 1)
                 {
-                  AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_activity.png", localObject2);
+                  AvatarPendantAdapter.i.put("key_activity.png", localObject2);
                   localObject1 = localObject2;
                 }
               }
@@ -314,18 +314,18 @@ public class AvatarPendantAdapter$PendantGridAdapter
           }
           localGridItemHolder.e.setVisibility(8);
         }
-        localObject2 = localAvatarPendantShopItemInfo.jdField_b_of_type_JavaLangString;
+        localObject2 = localAvatarPendantShopItemInfo.e;
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.b;
         }
         File localFile = null;
         if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
         {
-          localObject2 = (URLDrawable)AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(localObject1);
+          localObject2 = (URLDrawable)AvatarPendantAdapter.i.get(localObject1);
           if (localObject2 != null)
           {
-            localGridItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+            localGridItemHolder.a.setImageDrawable((Drawable)localObject2);
             if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
               ((URLDrawable)localObject2).restartDownload();
             }
@@ -347,39 +347,39 @@ public class AvatarPendantAdapter$PendantGridAdapter
             if (localObject3 != null)
             {
               URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-              localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.l;
-              localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.m;
-              localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              localURLDrawableOptions.mRequestWidth = this.f.t;
+              localURLDrawableOptions.mRequestHeight = this.f.u;
+              localURLDrawableOptions.mFailedDrawable = this.f.v;
               localURLDrawableOptions.mUseMemoryCache = true;
-              localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              localURLDrawableOptions.mLoadingDrawable = this.f.v;
               localObject3 = URLDrawable.getDrawable((URL)localObject3, localURLDrawableOptions);
-              localGridItemHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
+              localGridItemHolder.a.setImageDrawable((Drawable)localObject3);
               if (((URLDrawable)localObject3).getStatus() == 2) {
                 ((URLDrawable)localObject3).restartDownload();
               } else if (((URLDrawable)localObject3).getStatus() == 1) {
-                AvatarPendantAdapter.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(localObject1, localObject3);
+                AvatarPendantAdapter.i.put(localObject1, localObject3);
               }
             }
           }
         }
-        localGridItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localAvatarPendantShopItemInfo);
-        if (this.jdField_a_of_type_Int == paramInt) {
-          paramView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847635));
+        localGridItemHolder.g.setTag(localAvatarPendantShopItemInfo);
+        if (this.c == paramInt) {
+          paramView.setBackgroundDrawable(this.f.a.getResources().getDrawable(2130849295));
         } else {
           paramView.setBackgroundDrawable(null);
         }
-        if (localAvatarPendantShopItemInfo.jdField_a_of_type_Int != 0)
+        if (localAvatarPendantShopItemInfo.a != 0)
         {
-          if (localAvatarPendantShopItemInfo.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_Long) {
+          if (localAvatarPendantShopItemInfo.a == this.f.g) {
             localGridItemHolder.c.setVisibility(0);
           } else {
             localGridItemHolder.c.setVisibility(8);
           }
-          if (!this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_Boolean)
+          if (!this.f.B)
           {
             try
             {
-              localObject1 = new URL("protocol_pendant_image", "AIO_STATIC", String.valueOf(localAvatarPendantShopItemInfo.jdField_a_of_type_Int));
+              localObject1 = new URL("protocol_pendant_image", "AIO_STATIC", String.valueOf(localAvatarPendantShopItemInfo.a));
             }
             catch (MalformedURLException localMalformedURLException2)
             {
@@ -394,10 +394,10 @@ public class AvatarPendantAdapter$PendantGridAdapter
             if (localObject1 != null)
             {
               localObject4 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.l;
-              ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.m;
-              ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-              ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = this.f.t;
+              ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = this.f.u;
+              ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = this.f.v;
+              ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = this.f.v;
               localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject4);
               localGridItemHolder.b.setImageDrawable((Drawable)localObject1);
               localObject4 = paramView;
@@ -431,7 +431,7 @@ public class AvatarPendantAdapter$PendantGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AvatarPendantAdapter.PendantGridAdapter
  * JD-Core Version:    0.7.0.1
  */

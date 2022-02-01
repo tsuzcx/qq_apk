@@ -13,15 +13,15 @@ import cooperation.ilive.player.AsyncMediaPlayerManager;
 public class IliveMediaPlayerMgrService
   implements MediaPlayerInterface
 {
-  public AVCatonReport4Player a()
-  {
-    return new IliveAVCatonReport();
-  }
-  
   public IMediaPlayerMgr a()
   {
-    AVCatonReportManager.a().a(IliveAVCatonReportManager.a());
+    AVCatonReportManager.a().a(IliveAVCatonReportManager.b());
     return new AsyncMediaPlayerManager(BaseApplicationImpl.getContext());
+  }
+  
+  public AVCatonReport4Player b()
+  {
+    return new IliveAVCatonReport();
   }
   
   public void clearEventOutput() {}
@@ -32,7 +32,7 @@ public class IliveMediaPlayerMgrService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.service.IliveMediaPlayerMgrService
  * JD-Core Version:    0.7.0.1
  */

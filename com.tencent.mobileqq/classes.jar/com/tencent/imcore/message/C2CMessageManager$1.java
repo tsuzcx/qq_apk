@@ -17,12 +17,12 @@ class C2CMessageManager$1
       localStringBuilder.append(this.a.getLogColorContent());
       QLog.d("Q.msg.BaseMessageManager", 2, localStringBuilder.toString());
     }
-    BaseMessageManager.a.a(this.this$0.a, this.a, 15000L);
+    BaseMessageManager.e.a(this.this$0.a, this.a, 15000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

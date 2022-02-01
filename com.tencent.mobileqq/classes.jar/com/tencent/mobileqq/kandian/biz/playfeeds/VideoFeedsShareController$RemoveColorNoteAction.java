@@ -17,17 +17,17 @@ class VideoFeedsShareController$RemoveColorNoteAction
   
   public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if ((VideoFeedsShareController.a(this.a) != null) && (VideoFeedsShareController.a(this.a).isColorNoteExist()))
+    if ((VideoFeedsShareController.l(this.a) != null) && (VideoFeedsShareController.l(this.a).isColorNoteExist()))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690896), 5000).a();
-      VideoFeedsShareController.a(this.a).deleteColorNote();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131887835), 5000).show();
+      VideoFeedsShareController.l(this.a).deleteColorNote();
       QLog.d("VideoFeedsShareController", 2, "mColorNoteController ： delete colorNote");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.RemoveColorNoteAction
  * JD-Core Version:    0.7.0.1
  */

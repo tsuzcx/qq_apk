@@ -136,11 +136,11 @@ public class MultiMsgUpProcessor
     ((im_msg_head.LoginSig)localObject3).bytes_sig.set(ByteStringMicro.copyFrom(this.mSig));
     localObject1 = new String();
     int i = 0;
-    while (i < 5)
+    while (i < 6)
     {
       localObject2 = localObject1;
-      if ("8.7.0".charAt(i) != '.') {
-        localObject2 = ((String)localObject1).concat(Character.toString("8.7.0".charAt(i)));
+      if ("8.8.17".charAt(i) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("8.8.17".charAt(i)));
       }
       i += 1;
       localObject1 = localObject2;
@@ -455,10 +455,10 @@ public class MultiMsgUpProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
-      localSendResult.jdField_a_of_type_Int = -1;
+      localSendResult.a = -1;
       localSendResult.b = this.mProcessorReport.errCode;
-      localSendResult.jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
-      localSendResult.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
+      localSendResult.c = this.mProcessorReport.errDesc;
+      localSendResult.l = Long.valueOf(this.mUiRequest.mUniseq);
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
@@ -554,13 +554,13 @@ public class MultiMsgUpProcessor
     {
       localSendResult = new UpCallBack.SendResult();
       localSendResult.b = 0;
-      localSendResult.jdField_a_of_type_Long = this.mFileSize;
-      localSendResult.d = this.mMd5Str;
-      localSendResult.jdField_a_of_type_JavaLangObject = Long.valueOf(this.mUiRequest.mUniseq);
+      localSendResult.e = this.mFileSize;
+      localSendResult.g = this.mMd5Str;
+      localSendResult.l = Long.valueOf(this.mUiRequest.mUniseq);
     }
     try
     {
-      localSendResult.c = new String(this.mResId, "UTF-8");
+      localSendResult.f = new String(this.mResId, "UTF-8");
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
@@ -572,8 +572,8 @@ public class MultiMsgUpProcessor
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("Failed. Convert ResID to UTF-8 string failed, resID = ");
     localStringBuilder.append(this.mResId.toString());
-    localSendResult.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    logRichMediaEvent("onSuccess", localSendResult.jdField_a_of_type_JavaLangString);
+    localSendResult.c = localStringBuilder.toString();
+    logRichMediaEvent("onSuccess", localSendResult.c);
     this.mUiRequest.mUpCallBack.b(localSendResult);
     sendMessageToUpdate(1003);
   }
@@ -703,7 +703,7 @@ public class MultiMsgUpProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.MultiMsgUpProcessor
  * JD-Core Version:    0.7.0.1
  */

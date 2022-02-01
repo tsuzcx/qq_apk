@@ -20,8 +20,8 @@ class AccountDetailCustomModuleBaseWrapper$1
         QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
       }
       paramView = (IPublicAccountConfigAttr.PaConfigInfo)paramView;
-      if (this.a.a != null) {
-        this.a.a.a(paramView);
+      if (this.a.e != null) {
+        this.a.e.a(paramView);
       }
       this.a.a(paramView);
     }
@@ -29,7 +29,7 @@ class AccountDetailCustomModuleBaseWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailCustomModuleBaseWrapper.1
  * JD-Core Version:    0.7.0.1
  */

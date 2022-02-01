@@ -9,83 +9,58 @@ import java.util.ArrayList;
 
 public class TogetherEntryData
 {
-  static int jdField_a_of_type_Int = 2131699435;
-  static int[] jdField_a_of_type_ArrayOfInt = { 1001, 1003, 1002, 1005, 1004 };
-  static int[] b;
-  static int[] c;
-  static int[] d;
-  static int[] e;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  public int f = 0;
-  
-  static
-  {
-    jdField_b_of_type_ArrayOfInt = new int[] { -8293377, -35897, -42646, -3243777, -16725252 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 2131693641, 2131719151, 2131720347, 2131699416, 2131699418 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 2130846363, 2130846365, 2130846366, 2130844838, 2130846364 };
-    jdField_e_of_type_ArrayOfInt = new int[] { 2131699415, 2131699431, 2131699449, 2131699417, 2131699419 };
-  }
-  
-  public TogetherEntryData()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  static int[] a = { 1001, 1003, 1002, 1005, 1004 };
+  static int[] b = { -8293377, -35897, -42646, -3243777, -16725252 };
+  static int[] c = { 2131891216, 2131916687, 2131917984, 2131897447, 2131897449 };
+  static int[] d = { 2130847836, 2130847838, 2130847839, 2130846272, 2130847837 };
+  static int[] e = { 2131897446, 2131897462, 2131897480, 2131897448, 2131897450 };
+  static int f = 2131897466;
+  public int g;
+  public int h;
+  public String i;
+  public String j;
+  public int k;
+  public String l;
+  public int m;
+  public boolean n = false;
+  public int o = 0;
+  public ArrayList<String> p;
   
   public static Drawable a(Context paramContext, TogetherEntryData paramTogetherEntryData)
   {
-    switch (paramTogetherEntryData.jdField_b_of_type_Int)
+    switch (paramTogetherEntryData.g)
     {
     default: 
       return null;
     case 1005: 
-      return paramContext.getResources().getDrawable(2130844838);
+      return paramContext.getResources().getDrawable(2130846272);
     case 1004: 
-      return paramContext.getResources().getDrawable(2130846364);
+      return paramContext.getResources().getDrawable(2130847837);
     case 1003: 
-      return paramContext.getResources().getDrawable(2130846365);
+      return paramContext.getResources().getDrawable(2130847838);
     case 1002: 
-      return paramContext.getResources().getDrawable(2130846366);
+      return paramContext.getResources().getDrawable(2130847839);
     }
-    return paramContext.getResources().getDrawable(2130846363);
+    return paramContext.getResources().getDrawable(2130847836);
   }
   
   public static ArrayList<TogetherEntryData> a()
   {
     ArrayList localArrayList = new ArrayList(4);
-    int i = 0;
-    while (i < 4)
+    int i1 = 0;
+    while (i1 < 4)
     {
       TogetherEntryData localTogetherEntryData = new TogetherEntryData();
-      localTogetherEntryData.jdField_b_of_type_Int = jdField_a_of_type_ArrayOfInt[i];
-      localTogetherEntryData.jdField_c_of_type_Int = i;
-      localTogetherEntryData.jdField_d_of_type_Int = jdField_b_of_type_ArrayOfInt[i];
-      localTogetherEntryData.jdField_a_of_type_JavaLangString = HardCodeUtil.a(jdField_c_of_type_ArrayOfInt[i]);
-      localTogetherEntryData.jdField_e_of_type_Int = jdField_d_of_type_ArrayOfInt[i];
-      localTogetherEntryData.jdField_b_of_type_JavaLangString = HardCodeUtil.a(jdField_e_of_type_ArrayOfInt[i]);
+      localTogetherEntryData.g = a[i1];
+      localTogetherEntryData.h = i1;
+      localTogetherEntryData.k = b[i1];
+      localTogetherEntryData.i = HardCodeUtil.a(c[i1]);
+      localTogetherEntryData.m = d[i1];
+      localTogetherEntryData.j = HardCodeUtil.a(e[i1]);
       localArrayList.add(localTogetherEntryData);
-      i += 1;
+      i1 += 1;
     }
     return localArrayList;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.f);
-      localStringBuilder.append(HardCodeUtil.a(jdField_a_of_type_Int));
-      return localStringBuilder.toString();
-    }
-    return this.jdField_b_of_type_JavaLangString;
   }
   
   public void a(@Nullable TogetherEntryData paramTogetherEntryData)
@@ -93,14 +68,26 @@ public class TogetherEntryData
     if (paramTogetherEntryData == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramTogetherEntryData.jdField_a_of_type_Boolean;
-    this.f = paramTogetherEntryData.f;
-    this.jdField_a_of_type_JavaUtilArrayList = paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList;
+    this.n = paramTogetherEntryData.n;
+    this.o = paramTogetherEntryData.o;
+    this.p = paramTogetherEntryData.p;
+  }
+  
+  public String b()
+  {
+    if (this.n)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.o);
+      localStringBuilder.append(HardCodeUtil.a(f));
+      return localStringBuilder.toString();
+    }
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherEntryData
  * JD-Core Version:    0.7.0.1
  */

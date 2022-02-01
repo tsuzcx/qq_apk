@@ -1,15 +1,18 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
+import android.app.Activity;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.onlinestatus.OnLineStatusBlurBg;
 import com.tencent.mobileqq.onlinestatus.OnLineStatusHelper;
+import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime.Status;
 
 public class StatusCardViewBuilder
 {
   public static long a(long paramLong)
   {
-    if (OnLineStatusHelper.a(AppRuntime.Status.online, paramLong)) {
+    if (OnLineStatusHelper.c(AppRuntime.Status.online, paramLong)) {
       return 1055L;
     }
     long l = paramLong;
@@ -38,10 +41,21 @@ public class StatusCardViewBuilder
     }
     return null;
   }
+  
+  public static void a(Activity paramActivity, long paramLong, BaseStatusCardView.OnDismissCallback paramOnDismissCallback)
+  {
+    if (OnLineStatusHelper.a().f() == null)
+    {
+      QLog.e("StatusCardViewBuilder", 1, "showOlympicStatusRankView item is null");
+      return;
+    }
+    new OlympicStatusRankView(paramActivity, paramLong, paramOnDismissCallback).show();
+    ReportHelperKt.a("0X800BDA4");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.StatusCardViewBuilder
  * JD-Core Version:    0.7.0.1
  */

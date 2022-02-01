@@ -43,14 +43,14 @@ public class QMessageProtoCodecServiceImpl
   public void processEmotion(QMessageProtoCodec.EncodeRichTextFromStringMsgOne paramEncodeRichTextFromStringMsgOne)
   {
     Object localObject1;
-    if (paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangStringBuilder.length() > 0)
+    if (paramEncodeRichTextFromStringMsgOne.d.length() > 0)
     {
-      localObject1 = paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangStringBuilder.toString();
-      QMessageProtoCodec.a(paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_TencentImMsgIm_msg_body$RichText, (String)localObject1);
-      paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangStringBuilder.delete(0, paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangStringBuilder.length());
-      paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_Int += 1;
+      localObject1 = paramEncodeRichTextFromStringMsgOne.d.toString();
+      QMessageProtoCodec.a(paramEncodeRichTextFromStringMsgOne.a, (String)localObject1);
+      paramEncodeRichTextFromStringMsgOne.d.delete(0, paramEncodeRichTextFromStringMsgOne.d.length());
+      paramEncodeRichTextFromStringMsgOne.c += 1;
     }
-    int j = paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangString.charAt(paramEncodeRichTextFromStringMsgOne.b + 1);
+    int j = paramEncodeRichTextFromStringMsgOne.b.charAt(paramEncodeRichTextFromStringMsgOne.e + 1);
     int i = j;
     if (j == 250) {
       i = 10;
@@ -72,7 +72,7 @@ public class QMessageProtoCodecServiceImpl
         ((im_msg_body.CommonElem)localObject3).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype33)localObject1).toByteArray()));
         localObject1 = new im_msg_body.Elem();
         ((im_msg_body.Elem)localObject1).common_elem.set((MessageMicro)localObject3);
-        paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_TencentImMsgIm_msg_body$RichText.elems.add((MessageMicro)localObject1);
+        paramEncodeRichTextFromStringMsgOne.a.elems.add((MessageMicro)localObject1);
       }
       else
       {
@@ -80,19 +80,19 @@ public class QMessageProtoCodecServiceImpl
         ((im_msg_body.Face)localObject1).index.set(j);
         localObject3 = new im_msg_body.Elem();
         ((im_msg_body.Elem)localObject3).face.set((MessageMicro)localObject1);
-        paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_TencentImMsgIm_msg_body$RichText.elems.add((MessageMicro)localObject3);
+        paramEncodeRichTextFromStringMsgOne.a.elems.add((MessageMicro)localObject3);
       }
-      paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_Int += 1;
-      paramEncodeRichTextFromStringMsgOne.b += 1;
+      paramEncodeRichTextFromStringMsgOne.c += 1;
+      paramEncodeRichTextFromStringMsgOne.e += 1;
       return;
     }
-    if (paramEncodeRichTextFromStringMsgOne.b + 4 < paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangString.length())
+    if (paramEncodeRichTextFromStringMsgOne.e + 4 < paramEncodeRichTextFromStringMsgOne.b.length())
     {
       char[] arrayOfChar = new char[4];
-      arrayOfChar[3] = paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangString.charAt(paramEncodeRichTextFromStringMsgOne.b + 1);
-      arrayOfChar[2] = paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangString.charAt(paramEncodeRichTextFromStringMsgOne.b + 2);
-      arrayOfChar[1] = paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangString.charAt(paramEncodeRichTextFromStringMsgOne.b + 3);
-      arrayOfChar[0] = paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_JavaLangString.charAt(paramEncodeRichTextFromStringMsgOne.b + 4);
+      arrayOfChar[3] = paramEncodeRichTextFromStringMsgOne.b.charAt(paramEncodeRichTextFromStringMsgOne.e + 1);
+      arrayOfChar[2] = paramEncodeRichTextFromStringMsgOne.b.charAt(paramEncodeRichTextFromStringMsgOne.e + 2);
+      arrayOfChar[1] = paramEncodeRichTextFromStringMsgOne.b.charAt(paramEncodeRichTextFromStringMsgOne.e + 3);
+      arrayOfChar[0] = paramEncodeRichTextFromStringMsgOne.b.charAt(paramEncodeRichTextFromStringMsgOne.e + 4);
       i = 0;
       while (i < 4)
       {
@@ -164,15 +164,15 @@ public class QMessageProtoCodecServiceImpl
       }
       localObject4 = new im_msg_body.Elem();
       ((im_msg_body.Elem)localObject4).small_emoji.set((MessageMicro)localObject3);
-      paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_TencentImMsgIm_msg_body$RichText.elems.add((MessageMicro)localObject4);
-      paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_Int += 1;
+      paramEncodeRichTextFromStringMsgOne.a.elems.add((MessageMicro)localObject4);
+      paramEncodeRichTextFromStringMsgOne.c += 1;
       localObject3 = new im_msg_body.Text();
       ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFromUtf8((String)localObject2));
       localObject2 = new im_msg_body.Elem();
       ((im_msg_body.Elem)localObject2).text.set((MessageMicro)localObject3);
-      paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_TencentImMsgIm_msg_body$RichText.elems.add((MessageMicro)localObject2);
-      paramEncodeRichTextFromStringMsgOne.jdField_a_of_type_Int += 1;
-      paramEncodeRichTextFromStringMsgOne.b += 4;
+      paramEncodeRichTextFromStringMsgOne.a.elems.add((MessageMicro)localObject2);
+      paramEncodeRichTextFromStringMsgOne.c += 1;
+      paramEncodeRichTextFromStringMsgOne.e += 4;
     }
   }
   
@@ -185,7 +185,7 @@ public class QMessageProtoCodecServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.api.impl.QMessageProtoCodecServiceImpl
  * JD-Core Version:    0.7.0.1
  */

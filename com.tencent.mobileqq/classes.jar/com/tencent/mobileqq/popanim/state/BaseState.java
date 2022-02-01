@@ -7,15 +7,14 @@ import mqq.app.MobileQQ;
 
 public class BaseState
 {
-  protected Context a;
-  protected ViewGroup a;
-  protected StateContext a;
+  protected Context a = MobileQQ.getContext();
+  protected ViewGroup b;
+  protected StateContext c;
   
   protected BaseState(ViewGroup paramViewGroup, StateContext paramStateContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext = paramStateContext;
+    this.b = paramViewGroup;
+    this.c = paramStateContext;
   }
   
   public void a(BaseState paramBaseState) {}
@@ -29,7 +28,7 @@ public class BaseState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.state.BaseState
  * JD-Core Version:    0.7.0.1
  */

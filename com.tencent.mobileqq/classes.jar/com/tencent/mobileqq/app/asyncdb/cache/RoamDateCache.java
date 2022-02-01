@@ -28,7 +28,7 @@ public class RoamDateCache
     super(paramQQAppInterface, paramDBDelayManager, RoamDate.class);
   }
   
-  private String a(String paramString1, String paramString2)
+  private String b(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
@@ -37,60 +37,24 @@ public class RoamDateCache
     return localStringBuilder.toString();
   }
   
-  public Pair<Calendar, Calendar> a()
-  {
-    Object localObject2 = a();
-    if (!((List)localObject2).isEmpty())
-    {
-      Object localObject1 = (RoamDate)((Map.Entry)((List)localObject2).get(0)).getValue();
-      localObject2 = (RoamDate)((Map.Entry)((List)localObject2).get(((List)localObject2).size() - 1)).getValue();
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.set(11, 0);
-      localCalendar.set(12, 0);
-      localCalendar.set(13, 0);
-      localCalendar.set(14, 0);
-      localCalendar.set(1, ((RoamDate)localObject1).getYear());
-      localCalendar.set(2, ((RoamDate)localObject1).getMonth() - 1);
-      int i = 0;
-      while ((i < ((RoamDate)localObject1).getDays()) && (!a((RoamDate)localObject1, i))) {
-        i += 1;
-      }
-      localCalendar.set(5, i + 1);
-      localObject1 = Calendar.getInstance();
-      ((Calendar)localObject1).set(11, 0);
-      ((Calendar)localObject1).set(12, 0);
-      ((Calendar)localObject1).set(13, 0);
-      ((Calendar)localObject1).set(14, 0);
-      ((Calendar)localObject1).set(1, ((RoamDate)localObject2).getYear());
-      ((Calendar)localObject1).set(2, ((RoamDate)localObject2).getMonth() - 1);
-      i = ((RoamDate)localObject2).getDays() - 1;
-      while ((i >= 0) && (!a((RoamDate)localObject2, i))) {
-        i -= 1;
-      }
-      ((Calendar)localObject1).set(5, i + 1);
-      return new Pair(localCalendar, localObject1);
-    }
-    return null;
-  }
-  
   public RoamDate a(String paramString, int paramInt1, int paramInt2)
   {
-    return (RoamDate)findCache(a(paramString, paramInt1, paramInt2));
+    return (RoamDate)findCache(b(paramString, paramInt1, paramInt2));
   }
   
   public RoamDate a(String paramString1, String paramString2)
   {
-    return (RoamDate)findCache(a(paramString1, paramString2));
+    return (RoamDate)findCache(b(paramString1, paramString2));
   }
   
   public RoamMessagePreloadInfo a(String paramString, Calendar paramCalendar, int paramInt)
   {
     RoamMessagePreloadInfo localRoamMessagePreloadInfo = new RoamMessagePreloadInfo();
     localRoamMessagePreloadInfo.preloadType = paramInt;
-    List localList = a();
+    List localList = f();
     if (paramInt == 0)
     {
-      if (!a(paramString, paramCalendar, localList)) {
+      if (!c(paramString, paramCalendar, localList)) {
         paramCalendar = null;
       }
       localRoamMessagePreloadInfo.curday = paramCalendar;
@@ -120,19 +84,10 @@ public class RoamDateCache
     return localStringBuilder.toString();
   }
   
-  public String a(String paramString, int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("&");
-    localStringBuilder.append(a(paramInt1, paramInt2));
-    return localStringBuilder.toString();
-  }
-  
   public Calendar a(String paramString, Calendar paramCalendar, List<Map.Entry<String, Entity>> paramList)
   {
     if (paramList == null) {
-      paramList = a();
+      paramList = f();
     }
     if (!paramList.isEmpty())
     {
@@ -142,7 +97,7 @@ public class RoamDateCache
       int i = 0;
       while (i < paramList.size())
       {
-        if (((String)((Map.Entry)paramList.get(i)).getKey()).equals(a(paramString, j, k + 1))) {
+        if (((String)((Map.Entry)paramList.get(i)).getKey()).equals(b(paramString, j, k + 1))) {
           break label107;
         }
         i += 1;
@@ -218,13 +173,6 @@ public class RoamDateCache
     }
     paramCalendar = null;
     return paramCalendar;
-  }
-  
-  public List<Map.Entry<String, Entity>> a()
-  {
-    ArrayList localArrayList = new ArrayList(this.cacheMap.entrySet());
-    Collections.sort(localArrayList, new RoamDateCache.1(this));
-    return localArrayList;
   }
   
   public void a()
@@ -339,34 +287,19 @@ public class RoamDateCache
     return (paramRoamDate.getSerState(paramInt) == 2) || (paramRoamDate.getLocState(paramInt) == 3);
   }
   
-  public boolean a(String paramString, Calendar paramCalendar, List<Map.Entry<String, Entity>> paramList)
+  public String b(String paramString, int paramInt1, int paramInt2)
   {
-    if (!paramList.isEmpty())
-    {
-      int j = paramCalendar.get(1);
-      int k = paramCalendar.get(2);
-      int m = paramCalendar.get(5);
-      int i = 0;
-      while (i < paramList.size())
-      {
-        if ((((String)((Map.Entry)paramList.get(i)).getKey()).equals(a(paramString, j, k + 1))) && (a((RoamDate)((Map.Entry)paramList.get(i)).getValue(), m - 1))) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-    return false;
-  }
-  
-  public String[] a(String paramString)
-  {
-    return paramString.split("\\&");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("&");
+    localStringBuilder.append(a(paramInt1, paramInt2));
+    return localStringBuilder.toString();
   }
   
   public Calendar b(String paramString, Calendar paramCalendar, List<Map.Entry<String, Entity>> paramList)
   {
     if (paramList == null) {
-      paramList = a();
+      paramList = f();
     }
     if (!paramList.isEmpty())
     {
@@ -376,7 +309,7 @@ public class RoamDateCache
       int i = 0;
       while (i < paramList.size())
       {
-        if (((String)((Map.Entry)paramList.get(i)).getKey()).equals(a(paramString, j, k + 1))) {
+        if (((String)((Map.Entry)paramList.get(i)).getKey()).equals(b(paramString, j, k + 1))) {
           break label107;
         }
         i += 1;
@@ -478,7 +411,7 @@ public class RoamDateCache
   
   public void b(String paramString)
   {
-    paramString = a(paramString);
+    paramString = c(paramString);
     if (paramString != null)
     {
       if (paramString.length != 2) {
@@ -532,6 +465,30 @@ public class RoamDateCache
     }
   }
   
+  public boolean c(String paramString, Calendar paramCalendar, List<Map.Entry<String, Entity>> paramList)
+  {
+    if (!paramList.isEmpty())
+    {
+      int j = paramCalendar.get(1);
+      int k = paramCalendar.get(2);
+      int m = paramCalendar.get(5);
+      int i = 0;
+      while (i < paramList.size())
+      {
+        if ((((String)((Map.Entry)paramList.get(i)).getKey()).equals(b(paramString, j, k + 1))) && (a((RoamDate)((Map.Entry)paramList.get(i)).getValue(), m - 1))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+    return false;
+  }
+  
+  public String[] c(String paramString)
+  {
+    return paramString.split("\\&");
+  }
+  
   public void d()
   {
     Iterator localIterator = this.cacheMap.entrySet().iterator();
@@ -545,6 +502,49 @@ public class RoamDateCache
   
   protected void destroy() {}
   
+  public Pair<Calendar, Calendar> e()
+  {
+    Object localObject2 = f();
+    if (!((List)localObject2).isEmpty())
+    {
+      Object localObject1 = (RoamDate)((Map.Entry)((List)localObject2).get(0)).getValue();
+      localObject2 = (RoamDate)((Map.Entry)((List)localObject2).get(((List)localObject2).size() - 1)).getValue();
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.set(11, 0);
+      localCalendar.set(12, 0);
+      localCalendar.set(13, 0);
+      localCalendar.set(14, 0);
+      localCalendar.set(1, ((RoamDate)localObject1).getYear());
+      localCalendar.set(2, ((RoamDate)localObject1).getMonth() - 1);
+      int i = 0;
+      while ((i < ((RoamDate)localObject1).getDays()) && (!a((RoamDate)localObject1, i))) {
+        i += 1;
+      }
+      localCalendar.set(5, i + 1);
+      localObject1 = Calendar.getInstance();
+      ((Calendar)localObject1).set(11, 0);
+      ((Calendar)localObject1).set(12, 0);
+      ((Calendar)localObject1).set(13, 0);
+      ((Calendar)localObject1).set(14, 0);
+      ((Calendar)localObject1).set(1, ((RoamDate)localObject2).getYear());
+      ((Calendar)localObject1).set(2, ((RoamDate)localObject2).getMonth() - 1);
+      i = ((RoamDate)localObject2).getDays() - 1;
+      while ((i >= 0) && (!a((RoamDate)localObject2, i))) {
+        i -= 1;
+      }
+      ((Calendar)localObject1).set(5, i + 1);
+      return new Pair(localCalendar, localObject1);
+    }
+    return null;
+  }
+  
+  public List<Map.Entry<String, Entity>> f()
+  {
+    ArrayList localArrayList = new ArrayList(this.cacheMap.entrySet());
+    Collections.sort(localArrayList, new RoamDateCache.1(this));
+    return localArrayList;
+  }
+  
   protected String getKey(Entity paramEntity)
   {
     paramEntity = (RoamDate)paramEntity;
@@ -557,7 +557,7 @@ public class RoamDateCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.asyncdb.cache.RoamDateCache
  * JD-Core Version:    0.7.0.1
  */

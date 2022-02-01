@@ -22,6 +22,7 @@ import com.tencent.mobileqq.app.FlashPicHelper;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
+import com.tencent.mobileqq.guild.pic.api.IGuildPicAIO;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.mobileqq.pic.Logger;
 import com.tencent.mobileqq.pic.PicBusiManager;
@@ -33,6 +34,7 @@ import com.tencent.mobileqq.pic.PicUiInterface;
 import com.tencent.mobileqq.pic.PicUploadInfo;
 import com.tencent.mobileqq.pic.PreDownloadStrategyBeta;
 import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.pic.api.IPicAIO;
 import com.tencent.mobileqq.pic.api.IPicHelper;
 import com.tencent.mobileqq.pic.api.IPicPreDownload;
 import com.tencent.mobileqq.pic.api.impl.PicPreDownloadImpl;
@@ -138,14 +140,14 @@ public class ChatImageDownloader
         localDownloadData.downInfo = ((PicUiInterface)localObject).getPicDownloadInfo();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("uuid:");
-        localStringBuilder.append(localDownloadData.downInfo.g);
+        localStringBuilder.append(localDownloadData.downInfo.n);
         localStringBuilder.append(",md5：");
-        localStringBuilder.append(localDownloadData.downInfo.f);
+        localStringBuilder.append(localDownloadData.downInfo.m);
         log(localDownloadData, "getDownloadData", localStringBuilder.toString());
-        localDownloadData.host = getHost(localDownloadData.downInfo.jdField_b_of_type_Int);
+        localDownloadData.host = getHost(localDownloadData.downInfo.c);
         paramDownloadParams = paramDownloadParams.url.getProtocol();
         boolean bool;
-        if (localDownloadData.downInfo.jdField_e_of_type_Int == 1) {
+        if (localDownloadData.downInfo.t == 1) {
           bool = true;
         } else {
           bool = false;
@@ -155,12 +157,12 @@ public class ChatImageDownloader
         {
           localDownloadData.sendFromLoacal = true;
           localDownloadData.upInfo = ((PicUiInterface)localObject).getPicUploadInfo();
-          localDownloadData.downInfo.jdField_a_of_type_Boolean = true;
+          localDownloadData.downInfo.k = true;
           if (localDownloadData.fileSizeType == 65537)
           {
-            if (localDownloadData.upInfo.c == 10)
+            if (localDownloadData.upInfo.h == 10)
             {
-              localObject = ((PicFowardDbRecordData)localDownloadData.upInfo.jdField_a_of_type_JavaLangObject).fowardThumbPath;
+              localObject = ((PicFowardDbRecordData)localDownloadData.upInfo.i).fowardThumbPath;
               if (localObject != null)
               {
                 paramDownloadParams = (DownloadParams)localObject;
@@ -173,7 +175,7 @@ public class ChatImageDownloader
             }
             else if (localDownloadData.pic.isQzonePic)
             {
-              paramDownloadParams = localDownloadData.upInfo.h;
+              paramDownloadParams = localDownloadData.upInfo.o;
             }
             else
             {
@@ -183,11 +185,11 @@ public class ChatImageDownloader
           }
           else
           {
-            localDownloadData.sendPath = localDownloadData.upInfo.g;
+            localDownloadData.sendPath = localDownloadData.upInfo.n;
           }
           paramDownloadParams = new StringBuilder();
           paramDownloadParams.append("path:");
-          paramDownloadParams.append(localDownloadData.upInfo.g);
+          paramDownloadParams.append(localDownloadData.upInfo.n);
           paramDownloadParams.append(",sendPath：");
           paramDownloadParams.append(localDownloadData.sendPath);
           log(localDownloadData, "getDownloadData", paramDownloadParams.toString());
@@ -300,14 +302,19 @@ public class ChatImageDownloader
     if (FileUtils.fileExists(paramString)) {
       return paramString;
     }
-    if (FileUtils.fileExists(paramDownloadData.upInfo.g))
+    if (FileUtils.fileExists(paramDownloadData.upInfo.n))
     {
-      paramString = new CompressInfo(paramDownloadData.upInfo.g, 0);
-      paramString.jdField_a_of_type_JavaLangString = paramDownloadData.upInfo.jdField_a_of_type_JavaLangString;
+      paramString = new CompressInfo(paramDownloadData.upInfo.n, 0);
+      paramString.a = paramDownloadData.upInfo.a;
       ((ICompressOperator)QRoute.api(ICompressOperator.class)).startThumbnail(paramString);
-      paramString = paramString.jdField_e_of_type_JavaLangString;
+      paramString = paramString.l;
     }
     return paramString;
+  }
+  
+  private boolean limitSizeByGuild(DownloadParams paramDownloadParams)
+  {
+    return ((paramDownloadParams.tag instanceof MessageForPic)) && (((MessageForPic)paramDownloadParams.tag).istroop == 10014) && (!((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion((MessageForPic)paramDownloadParams.tag));
   }
   
   private boolean limitSizeByServer(DownloadParams paramDownloadParams)
@@ -340,13 +347,13 @@ public class ChatImageDownloader
         if (paramObject.upInfo != null)
         {
           i = RichMediaUtil.getFileType(paramObject.fileSizeType);
-          RichMediaUtil.logdLogic(paramObject.upInfo.jdField_b_of_type_Int, false, i, String.valueOf(paramObject.upInfo.jdField_a_of_type_Long), paramString1, paramString2);
+          RichMediaUtil.logdLogic(paramObject.upInfo.c, false, i, String.valueOf(paramObject.upInfo.g), paramString1, paramString2);
           return;
         }
         if (paramObject.downInfo != null)
         {
           i = RichMediaUtil.getFileType(paramObject.fileSizeType);
-          RichMediaUtil.logdLogic(paramObject.downInfo.jdField_b_of_type_Int, false, i, String.valueOf(paramObject.downInfo.jdField_a_of_type_Long), paramString1, paramString2);
+          RichMediaUtil.logdLogic(paramObject.downInfo.c, false, i, String.valueOf(paramObject.downInfo.g), paramString1, paramString2);
           return;
         }
         if (QLog.isColorLevel())
@@ -830,7 +837,7 @@ public class ChatImageDownloader
         localObject1 = paramFile;
         ((StringBuilder)localObject4).append("Q.richmedia.");
         localObject1 = paramFile;
-        ((StringBuilder)localObject4).append(TransFileUtil.getUinDesc(((PicDownloadInfo)localObject3).jdField_b_of_type_Int));
+        ((StringBuilder)localObject4).append(TransFileUtil.getUinDesc(((PicDownloadInfo)localObject3).c));
         localObject1 = paramFile;
         ((StringBuilder)localObject4).append(".dw");
         localObject1 = paramFile;
@@ -840,7 +847,7 @@ public class ChatImageDownloader
         localObject1 = paramFile;
         ((StringBuilder)localObject5).append("id:");
         localObject1 = paramFile;
-        ((StringBuilder)localObject5).append(String.valueOf(((PicDownloadInfo)localObject3).jdField_a_of_type_Long));
+        ((StringBuilder)localObject5).append(String.valueOf(((PicDownloadInfo)localObject3).g));
         localObject1 = paramFile;
         ((StringBuilder)localObject5).append("step: UIDecoder FAIL srcPicMD5:");
         localObject1 = paramFile;
@@ -995,11 +1002,11 @@ public class ChatImageDownloader
     {
       if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
       {
-        if ((Utils.a()) && (Utils.b() < 31457280L))
+        if ((Utils.b()) && (Utils.c() < 31457280L))
         {
           paramOutputStream = new StringBuilder();
           paramOutputStream.append("SD card free space is ");
-          paramOutputStream.append(Utils.b());
+          paramOutputStream.append(Utils.c());
           throw new IOException(paramOutputStream.toString());
         }
         localObject = stepDownload(paramDownloadParams);
@@ -1052,7 +1059,7 @@ public class ChatImageDownloader
       paramOutputStream.append("failed could not call object.wait in Main thread ,sendpath:");
       paramOutputStream.append(paramDownloadParams.sendPath);
       paramOutputStream.append(",uniseq:");
-      paramOutputStream.append(paramDownloadParams.downInfo.jdField_a_of_type_Long);
+      paramOutputStream.append(paramDownloadParams.downInfo.g);
       log(paramDownloadParams, "result", paramOutputStream.toString());
       throw new ChatPicDownloadFailedException(9365, 0L, "param error,could not call object.wait in Main thread", false, false);
     }
@@ -1069,6 +1076,18 @@ public class ChatImageDownloader
       return super.getTryTime(paramURL);
     }
     return 3;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (((paramDownloadParams.tag instanceof MessageForPic)) && (((MessageForPic)paramDownloadParams.tag).istroop == 10014) && ("chatthumb".equals(paramDownloadParams.url.getProtocol())))
+    {
+      File localFile = getFile(((IPicHelper)QRoute.api(IPicHelper.class)).getURL((PicUiInterface)paramDownloadParams.tag, 1, null).toString());
+      if (localFile != null) {
+        return localFile;
+      }
+    }
+    return super.loadImageFile(paramDownloadParams, paramURLDrawableHandler);
   }
   
   void logDecodeFile(DownloadParams paramDownloadParams, File paramFile, String paramString1, BitmapFactory.Options paramOptions, int paramInt, boolean paramBoolean, String paramString2)
@@ -1127,7 +1146,7 @@ public class ChatImageDownloader
     {
       f1 = this.application.getResources().getDisplayMetrics().density;
       i6 = this.application.getResources().getDisplayMetrics().densityDpi;
-      f3 = f1 * 12.0F;
+      f3 = ((IPicAIO)QRoute.api(IPicAIO.class)).getAioImageRoundCorner(paramDownloadParams) * f1;
       boolean bool = PicBusUtil.a(paramDownloadParams.mImgType);
       i = CommonImgThumbHelper.getImgThumbMinPx(bool);
       j = CommonImgThumbHelper.getImgThumbMinPx(bool);
@@ -1145,18 +1164,18 @@ public class ChatImageDownloader
       i1 = paramBitmap.getHeight();
       localObject2 = new Paint(1);
       ((Paint)localObject2).setColor(-16777216);
-      i5 = CommonImgThumbHelper.getImgThumbMinDp(bool);
       i2 = CommonImgThumbHelper.getImgThumbMinDp(bool);
-      i3 = CommonImgThumbHelper.getImgThumbMaxDp(bool);
+      i5 = CommonImgThumbHelper.getImgThumbMinDp(bool);
       i4 = CommonImgThumbHelper.getImgThumbMaxDp(bool);
+      i3 = CommonImgThumbHelper.getImgThumbMaxDp(bool);
       if (!(paramDownloadParams.tag instanceof MessageForPic)) {
-        break label581;
+        break label631;
       }
       MessageForPic localMessageForPic = (MessageForPic)paramDownloadParams.tag;
-      i5 = AIOImgThumbHelper.getThumbWidthHeightDP(localMessageForPic, bool).mMinWidth;
-      i2 = AIOImgThumbHelper.getThumbWidthHeightDP(localMessageForPic, bool).mMinHeight;
-      i3 = AIOImgThumbHelper.getThumbWidthHeightDP(localMessageForPic, bool).mMaxWidth;
-      i4 = AIOImgThumbHelper.getThumbWidthHeightDP(localMessageForPic, bool).mMaxHeight;
+      i2 = AIOImgThumbHelper.getThumbWidthHeightDP(localMessageForPic, bool).mMinWidth;
+      i5 = AIOImgThumbHelper.getThumbWidthHeightDP(localMessageForPic, bool).mMinHeight;
+      i4 = AIOImgThumbHelper.getThumbWidthHeightDP(localMessageForPic, bool).mMaxWidth;
+      i3 = AIOImgThumbHelper.getThumbWidthHeightDP(localMessageForPic, bool).mMaxHeight;
     }
     catch (OutOfMemoryError paramDownloadParams)
     {
@@ -1172,14 +1191,13 @@ public class ChatImageDownloader
         Object localObject2;
         int n;
         int i1;
-        int i5;
         int i2;
-        int i3;
+        int i5;
         int i4;
+        int i3;
         Object localObject1;
-        label494:
         continue;
-        label581:
+        label631:
         float f4 = n;
         float f2 = i1;
         float f5 = f2 * 3.0F;
@@ -1197,10 +1215,11 @@ public class ChatImageDownloader
           }
         }
         continue;
-        if ((n >= i5) && (i1 >= i2)) {
-          if ((n < i3) && (i1 < i4))
+        if ((n >= i2) && (i1 >= i5)) {
+          if ((n < i4) && (i1 < i3))
           {
-            j = (int)(n * f1 + 0.5F);
+            label723:
+            k = (int)(n * f1 + 0.5F);
             i = (int)(i1 * f1 + 0.5F);
           }
           else if (n > i1)
@@ -1213,56 +1232,57 @@ public class ChatImageDownloader
             f1 = m;
             f2 = i1;
             continue;
-            label731:
+            label781:
             f1 = i;
             f2 = n;
             continue;
-            label743:
-            label746:
+            label793:
+            label796:
             k = i;
             i = j;
-            j = k;
           }
         }
       }
     }
-    if (limitSizeByServer(paramDownloadParams))
-    {
+    if (limitSizeByServer(paramDownloadParams)) {
       return new RoundRectBitmap(((ICompressOperator)QRoute.api(ICompressOperator.class)).clip(paramBitmap, ((MessageForPic)paramDownloadParams.tag).thumbWidthHeightDP), f3);
+    }
+    if (limitSizeByGuild(paramDownloadParams))
+    {
+      paramDownloadParams = (MessageForPic)paramDownloadParams.tag;
+      return new RoundRectBitmap(((IGuildPicAIO)QRoute.api(IGuildPicAIO.class)).getThumbBitmap(paramBitmap, (int)paramDownloadParams.width, (int)paramDownloadParams.height), f3);
       f4 = f1 / localObject1;
       if (n <= i1) {
-        break label731;
+        break label781;
       }
       f1 = j;
       f2 = i1;
       f1 /= f2;
       f1 = Math.max(f4, f1);
-      j = (int)(n * f1 + 0.5F);
-      i = (int)(i1 * f1 + 0.5F);
-      break label494;
+      break label723;
       if (n < i1)
       {
         f1 = i / n;
         j = (int)(i1 * f1 + 0.5F);
         if (j <= m) {
-          break label743;
+          break label793;
         }
         j = m;
-        break label746;
+        break label796;
       }
       f1 = j / i1;
       i = (int)(n * f1 + 0.5F);
       if (i <= k) {
-        break label746;
+        break label796;
       }
       i = k;
-      break label746;
-      paramDownloadParams = Bitmap.createBitmap(j, i, paramBitmap.getConfig());
+      break label796;
+      paramDownloadParams = Bitmap.createBitmap(k, i, paramBitmap.getConfig());
       paramDownloadParams.setDensity(i6);
-      new Canvas(paramDownloadParams).drawBitmap(paramBitmap, new Rect(0, 0, n, i1), new Rect(0, 0, j, i), (Paint)localObject2);
+      new Canvas(paramDownloadParams).drawBitmap(paramBitmap, new Rect(0, 0, n, i1), new Rect(0, 0, k, i), (Paint)localObject2);
       paramDownloadParams = new RoundRectBitmap(paramDownloadParams, f3);
       return paramDownloadParams;
-      return new RoundRectBitmap(paramBitmap, 12.0F);
+      return new RoundRectBitmap(paramBitmap, ((IPicAIO)QRoute.api(IPicAIO.class)).getRoundCorner());
     }
   }
   
@@ -1274,17 +1294,17 @@ public class ChatImageDownloader
     if (paramDownloadData.app != null)
     {
       localObject1 = paramDownloadData.downInfo;
-      ((PicDownloadInfo)localObject1).jdField_e_of_type_JavaLangString = paramDownloadData.url.getProtocol();
+      ((PicDownloadInfo)localObject1).l = paramDownloadData.url.getProtocol();
       if (paramDownloadData.pic != null)
       {
-        ((PicDownloadInfo)localObject1).d = paramDownloadData.pic.bEnableEnc;
-        ((PicDownloadInfo)localObject1).c = paramDownloadData.pic.time;
+        ((PicDownloadInfo)localObject1).G = paramDownloadData.pic.bEnableEnc;
+        ((PicDownloadInfo)localObject1).u = paramDownloadData.pic.time;
       }
       Object localObject2 = PicBusiManager.a(5, 1280, 1);
-      ((PicReq)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramDownloadData.pic;
-      ((PicReq)localObject2).jdField_b_of_type_JavaLangString = "PIC_TAG";
-      ((PicReq)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo = ((PicDownloadInfo)localObject1);
-      ((PicReq)localObject2).jdField_a_of_type_JavaLangObject = paramDownloadData.handler;
+      ((PicReq)localObject2).l = paramDownloadData.pic;
+      ((PicReq)localObject2).d = "PIC_TAG";
+      ((PicReq)localObject2).f = ((PicDownloadInfo)localObject1);
+      ((PicReq)localObject2).r = paramDownloadData.handler;
       localObject1 = PicBusiManager.a((PicReq)localObject2);
       if ((localObject1 instanceof DownloadPicOperator))
       {
@@ -1296,18 +1316,18 @@ public class ChatImageDownloader
         localStringBuilder.append(paramDownloadData.downInfo);
         Logger.a("PIC_TAG", (String)localObject2, "stepDownload", localStringBuilder.toString());
         ((AbstractPicOperator)localObject1).a();
-        return ((DownloadPicOperator)localObject1).a();
+        return ((DownloadPicOperator)localObject1).b();
       }
       Logger.a("PIC_TAG", paramDownloadData.logId, "stepDownload", "operator wrong");
       return null;
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("params.app == null ,selfuin:");
-    ((StringBuilder)localObject1).append(paramDownloadData.downInfo.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(paramDownloadData.downInfo.d);
     log(paramDownloadData, "stepDownload", ((StringBuilder)localObject1).toString());
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("stepDownload,params.app == null ,selfuin:");
-    ((StringBuilder)localObject1).append(paramDownloadData.downInfo.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(paramDownloadData.downInfo.d);
     throw new ChatPicDownloadFailedException(9302, 0L, ((StringBuilder)localObject1).toString(), false, false);
   }
   
@@ -1323,7 +1343,7 @@ public class ChatImageDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ChatImageDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ class TroopAioKeywordTipManager$1
     while (localIterator.hasNext())
     {
       localObject2 = (MessageRecord)localIterator.next();
-      List localList = TroopAioKeywordTipManager.a(this.this$0, (MessageRecord)localObject2);
+      List localList = TroopAioKeywordTipManager.b(this.this$0, (MessageRecord)localObject2);
       if (localList != null)
       {
         localObject2 = localObject1;
@@ -42,7 +42,7 @@ class TroopAioKeywordTipManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.1
  * JD-Core Version:    0.7.0.1
  */

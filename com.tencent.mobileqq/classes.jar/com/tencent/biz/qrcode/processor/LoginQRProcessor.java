@@ -27,11 +27,6 @@ public class LoginQRProcessor
     return "LoginQRProcessor";
   }
   
-  public boolean a()
-  {
-    return super.a();
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
     paramString2 = paramString1.toLowerCase();
@@ -47,28 +42,33 @@ public class LoginQRProcessor
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+    if (!(this.a instanceof QQAppInterface)) {
       return false;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
-    paramString2 = (Activity)this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a;
+    paramString2 = (Activity)this.b.d();
     String str = paramString1.toLowerCase();
     if ((QRUtils.j(str)) && (!QRUtils.a(str)))
     {
       if (QrAgentLoginManager.a)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a(true);
-        QrAgentLoginManager.a().a(localQQAppInterface, paramString1, this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback, TextUtils.isEmpty(paramScannerParams.c) ^ true);
+        this.b.a(true);
+        QrAgentLoginManager.a().a(localQQAppInterface, paramString1, this.b, TextUtils.isEmpty(paramScannerParams.d) ^ true);
         return true;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a(true);
-      paramScannerParams = new Intent(this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a(), QRLoginAuthActivity.class);
+      this.b.a(true);
+      paramScannerParams = new Intent(this.b.d(), QRLoginAuthActivity.class);
       paramScannerParams.putExtra("QR_CODE_STRING", paramString1);
       paramString2.startActivity(paramScannerParams);
-      this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.b();
+      this.b.b();
       return true;
     }
     return false;
+  }
+  
+  public boolean b()
+  {
+    return super.b();
   }
 }
 

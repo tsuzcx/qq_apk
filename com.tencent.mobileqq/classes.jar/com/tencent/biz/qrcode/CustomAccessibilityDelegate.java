@@ -9,14 +9,14 @@ import android.view.accessibility.AccessibilityNodeProvider;
 public class CustomAccessibilityDelegate
   extends View.AccessibilityDelegate
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CustomAccessibilityDelegate.CallBack jdField_a_of_type_ComTencentBizQrcodeCustomAccessibilityDelegate$CallBack;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
+  private View a;
+  private CustomAccessibilityDelegate.CallBack b;
+  private Runnable c = new CustomAccessibilityDelegate.1(this);
   
   public CustomAccessibilityDelegate(View paramView, CustomAccessibilityDelegate.CallBack paramCallBack)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentBizQrcodeCustomAccessibilityDelegate$CallBack = paramCallBack;
+    this.a = paramView;
+    this.b = paramCallBack;
   }
   
   public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)

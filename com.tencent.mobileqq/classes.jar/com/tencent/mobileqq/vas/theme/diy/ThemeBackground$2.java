@@ -15,18 +15,18 @@ final class ThemeBackground$2
   
   public Drawable a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ThemeBackground.b.c();
+    if (this.a) {
+      ThemeBackground.i.c();
     }
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("key_use_rect", true);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838740);
-    return VasApngUtil.getApngDrawable(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeBackground.jdField_a_of_type_JavaLangString, "-conversation-", localDrawable, VasApngUtil.converstionTag, this.jdField_a_of_type_JavaLangString, localBundle);
+    Drawable localDrawable = this.b.getResources().getDrawable(2130838959);
+    return VasApngUtil.getApngDrawable(this.c, this.d.a, "-conversation-", localDrawable, VasApngUtil.converstionTag, this.e, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeBackground.2
  * JD-Core Version:    0.7.0.1
  */

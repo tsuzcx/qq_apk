@@ -12,23 +12,23 @@ import com.tencent.qphone.base.util.QLog;
 public class ReadInJoyLottieView
   extends ViewBase
 {
-  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new ReadInJoyLottieView.1(this);
-  private ReadInJoyLottieDrawable jdField_a_of_type_ComTencentMobileqqKandianBaseViewReadInJoyLottieDrawable;
-  private NativeReadInjoyImageView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
-  private boolean jdField_a_of_type_Boolean = false;
+  ViewTreeObserver.OnGlobalLayoutListener a = new ReadInJoyLottieView.1(this);
+  private NativeReadInjoyImageView b;
+  private ReadInJoyLottieDrawable c;
+  private boolean d = false;
   
   public ReadInJoyLottieView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getViewTreeObserver() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    this.b = new NativeReadInjoyImageView(paramVafContext.getContext());
+    if (this.b.getViewTreeObserver() != null) {
+      this.b.getViewTreeObserver().addOnGlobalLayoutListener(this.a);
     }
   }
   
   public void a()
   {
-    ReadInJoyLottieDrawable localReadInJoyLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewReadInJoyLottieDrawable;
+    ReadInJoyLottieDrawable localReadInJoyLottieDrawable = this.c;
     if (localReadInJoyLottieDrawable != null) {
       localReadInJoyLottieDrawable.resumeAnimation();
     }
@@ -36,7 +36,7 @@ public class ReadInJoyLottieView
   
   public void b()
   {
-    ReadInJoyLottieDrawable localReadInJoyLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewReadInJoyLottieDrawable;
+    ReadInJoyLottieDrawable localReadInJoyLottieDrawable = this.c;
     if (localReadInJoyLottieDrawable != null) {
       localReadInJoyLottieDrawable.pauseAnimation();
     }
@@ -44,33 +44,33 @@ public class ReadInJoyLottieView
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getComMeasuredHeight();
+    return this.b.getComMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.getComMeasuredWidth();
+    return this.b.getComMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
+    return this.b;
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.b.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
+    this.b.measureComponent(paramInt1, paramInt2);
   }
   
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setBackgroundColor(this.mBackground);
+    this.b.setBackgroundColor(this.mBackground);
   }
   
   protected boolean setAttribute(int paramInt, String paramString)
@@ -80,8 +80,8 @@ public class ReadInJoyLottieView
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewReadInJoyLottieDrawable = ReadInJoyLottieDrawable.a(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewReadInJoyLottieDrawable);
+      this.c = ReadInJoyLottieDrawable.a(paramString);
+      this.b.setImageDrawable(this.c);
       return true;
     }
     catch (Exception paramString)
@@ -93,7 +93,7 @@ public class ReadInJoyLottieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInJoyLottieView
  * JD-Core Version:    0.7.0.1
  */

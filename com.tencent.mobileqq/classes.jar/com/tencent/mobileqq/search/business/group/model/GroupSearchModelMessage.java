@@ -10,52 +10,47 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
 public class GroupSearchModelMessage
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  public static final String a;
-  private List<ISearchResultModel> a;
-  private String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705487);
-  }
+  public static final String a = HardCodeUtil.a(2131903375);
+  private List<ISearchResultModel> b;
+  private String c;
   
   public GroupSearchModelMessage(List<ISearchResultModel> paramList, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-  }
-  
-  public int a()
-  {
-    return 3;
+    this.b = paramList;
+    this.c = paramString;
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return a;
   }
   
   public void a(View paramView)
   {
-    SearchUtils.a(this.b, 40, 0, paramView);
-    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToMessageSearchActivity(paramView.getContext(), this.b);
+    SearchUtils.a(this.c, 40, 0, paramView);
+    ((ISearchActivityJumpFetcher)QRoute.api(ISearchActivityJumpFetcher.class)).jumpToMessageSearchActivity(paramView.getContext(), this.c);
   }
   
-  public String b()
+  public List<ISearchResultModel> b()
   {
     return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.model.GroupSearchModelMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -19,19 +19,14 @@ import com.tencent.mobileqq.statistics.ReportController;
 public class PCOnlineBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  public long a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.n;
-  }
+  public static final int a = BannerTypeCollections.n;
+  public long b;
+  private long c;
+  private boolean d = false;
+  private String e;
+  private int h;
+  private String i;
+  private String j;
   
   public PCOnlineBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -45,17 +40,12 @@ public class PCOnlineBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130839083));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130839238));
     paramBanner.b(true);
     paramBanner.setCloseListener(new PCOnlineBannerProcessor.1(this));
     paramBanner.setOnClickListener(new PCOnlineBannerProcessor.2(this));
     return paramBanner;
-  }
-  
-  public void a()
-  {
-    b();
   }
   
   public void a(Message paramMessage, long paramLong, boolean paramBoolean)
@@ -65,87 +55,92 @@ public class PCOnlineBannerProcessor
     default: 
       return;
     case 2004: 
-      this.c = null;
+      this.j = null;
       return;
     case 2003: 
-      this.c = paramMessage.getData().getString("pcLoginInfo");
+      this.j = paramMessage.getData().getString("pcLoginInfo");
       return;
     case 2002: 
-      this.jdField_a_of_type_Long = paramMessage.getData().getLong("loginAppType");
+      this.b = paramMessage.getData().getLong("loginAppType");
       return;
     case 2001: 
-      this.jdField_b_of_type_Int = -1;
+      this.h = -1;
       return;
     }
-    this.jdField_a_of_type_JavaLangString = null;
+    this.e = null;
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    if (!(paramBanner.a instanceof TipsBar)) {
+    if (!(paramBanner.c instanceof TipsBar)) {
       return;
     }
-    paramMessage = (TipsBar)paramBanner.a;
-    paramBanner = this.jdField_b_of_type_JavaLangString;
+    paramMessage = (TipsBar)paramBanner.c;
+    paramBanner = this.i;
     if ((paramBanner != null) && ("1600000104".equals(paramBanner.trim())))
     {
-      paramMessage.setTipsText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131690753));
+      paramMessage.setTipsText(this.f.getString(2131887673));
       return;
     }
-    if ((LoginDevicesUtils.b(this.jdField_b_of_type_Int)) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_JavaLangString = "手表QQ已登录";
+    if ((LoginDevicesUtils.b(this.h)) && (TextUtils.isEmpty(this.e))) {
+      this.e = "手表QQ已登录";
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.e))
     {
-      paramMessage.setTipsText(this.jdField_a_of_type_JavaLangString);
+      paramMessage.setTipsText(this.e);
     }
     else
     {
-      if (this.jdField_b_of_type_Long == 77313L) {
+      if (this.c == 77313L) {
         paramBanner = "TIM";
       } else {
         paramBanner = "QQ";
       }
-      paramMessage.setTipsText(String.format(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131694713), new Object[] { paramBanner }));
+      paramMessage.setTipsText(String.format(this.f.getString(2131892410), new Object[] { paramBanner }));
     }
-    int i = this.jdField_b_of_type_Int;
-    if (i == 5) {
-      paramMessage.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130839082));
-    } else if (LoginDevicesUtils.b(i)) {
-      paramMessage.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130839084));
+    int k = this.h;
+    if (k == 5) {
+      paramMessage.setTipsIcon(this.f.getResources().getDrawable(2130839237));
+    } else if (LoginDevicesUtils.b(k)) {
+      paramMessage.setTipsIcon(this.f.getResources().getDrawable(2130839239));
     } else {
-      paramMessage.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130839083));
+      paramMessage.setTipsIcon(this.f.getResources().getDrawable(2130839238));
     }
-    if (this.jdField_b_of_type_Int == 4) {
-      i = 23;
+    if (this.h == 4) {
+      k = 23;
     } else {
-      i = 10;
+      k = 10;
     }
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", i, 0, "", "", "", "");
+    ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", k, 0, "", "", "", "");
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
-  public void b()
+  public void c()
   {
-    if (BannerManager.a().a(jdField_a_of_type_Int))
+    d();
+  }
+  
+  public void d()
+  {
+    if (BannerManager.a().c(a))
     {
-      BannerManager.a().a(jdField_a_of_type_Int, 0);
-      this.c = null;
-      BannerManager.a().b(LoginDevicesBannerProcessor.jdField_a_of_type_Int, 2003);
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_b_of_type_Long = 0L;
+      BannerManager.a().a(a, 0);
+      this.j = null;
+      BannerManager.a().b(LoginDevicesBannerProcessor.a, 2003);
+      this.h = -1;
+      this.e = null;
+      this.c = 0L;
       BannerManager.a().a(-1, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PCOnlineBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

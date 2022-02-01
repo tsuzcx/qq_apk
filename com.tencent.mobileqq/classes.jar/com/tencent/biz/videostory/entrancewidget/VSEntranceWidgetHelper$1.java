@@ -17,12 +17,12 @@ class VSEntranceWidgetHelper$1
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    VSEntranceWidgetHelper.a(this.jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper, this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean, VSEntranceWidgetDownLoadHelper.a().b(this.jdField_a_of_type_JavaLangString));
+    VSEntranceWidgetHelper.a(this.c, this.a, VSEntranceWidgetDownLoadHelper.a().e(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ class RedPacketEmojiFragment$1
     localLottieDrawable.setComposition(paramLottieComposition);
     localLottieDrawable.loop(true);
     localLottieDrawable.playAnimation();
-    this.a.d.setImageDrawable(localLottieDrawable);
+    this.a.k.setImageDrawable(localLottieDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketEmojiFragment.1
  * JD-Core Version:    0.7.0.1
  */

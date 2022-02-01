@@ -23,13 +23,13 @@ public class MySignViewHolder
   public MySignViewHolder(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
     super(paramContext, paramAppInterface, paramView, paramString);
-    this.e = 0;
+    this.u = 0;
   }
   
   public View a(RichStatus paramRichStatus)
   {
     paramRichStatus = super.a(paramRichStatus);
-    l();
+    w();
     return paramRichStatus;
   }
   
@@ -50,11 +50,11 @@ public class MySignViewHolder
         paramOnTopicClickListener.append(paramRichStatus.dataText);
         paramOnTopicClickListener = paramOnTopicClickListener.toString();
       }
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849888);
+      Drawable localDrawable = this.v.getResources().getDrawable(2130851616);
       localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
       ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849881);
-      paramRichStatus = SignatureManagerForTool.a().a(paramRichStatus.actionId);
+      localObject1 = this.v.getResources().getDrawable(2130851609);
+      paramRichStatus = SignatureManagerForTool.a().b(paramRichStatus.actionId);
       if (!TextUtils.isEmpty(paramRichStatus))
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -63,7 +63,7 @@ public class MySignViewHolder
         localURLDrawableOptions.mRequestWidth = paramInt;
         localURLDrawableOptions.mRequestHeight = paramInt;
         paramRichStatus = URLDrawable.getDrawable(paramRichStatus, localURLDrawableOptions);
-        paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
+        paramRichStatus.setCallback(this.p);
       }
       else
       {
@@ -82,25 +82,25 @@ public class MySignViewHolder
     return localObject2;
   }
   
-  protected boolean b()
+  protected void i()
+  {
+    int i = N[6];
+    this.j.setPadding(i, i, i, i);
+  }
+  
+  protected boolean m()
   {
     return false;
   }
   
-  protected boolean d()
+  protected boolean o()
   {
     return false;
-  }
-  
-  protected void e()
-  {
-    int i = jdField_a_of_type_ArrayOfInt[6];
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, i, i, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.MySignViewHolder
  * JD-Core Version:    0.7.0.1
  */

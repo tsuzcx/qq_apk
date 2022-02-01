@@ -19,26 +19,26 @@ class TroopNickRuleFragment$8
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!TextUtils.isEmpty(TroopNickRuleFragment.a(this.a).getText().toString()))
+    if (!TextUtils.isEmpty(TroopNickRuleFragment.c(this.a).getText().toString()))
     {
-      TroopNickRuleFragment.a(this.a).setHint("");
+      TroopNickRuleFragment.c(this.a).setHint("");
       paramInt1 = 0;
     }
     else
     {
-      TroopNickRuleFragment.a(this.a).setHint(2131720009);
+      TroopNickRuleFragment.c(this.a).setHint(2131917614);
       paramInt1 = 1;
     }
-    if ((this.a.a.getChildCount() > 0) && (TroopNickRuleFragment.a(this.a)))
+    if ((this.a.k.getChildCount() > 0) && (TroopNickRuleFragment.d(this.a)))
     {
-      paramCharSequence = (PresetWordsListAdapter.ViewHolder)this.a.a.getChildAt(0).getTag();
+      paramCharSequence = (PresetWordsListAdapter.ViewHolder)this.a.k.getChildAt(0).getTag();
       if (paramCharSequence != null)
       {
-        TextView localTextView = paramCharSequence.a;
+        TextView localTextView = paramCharSequence.b;
         if (paramInt1 != 0) {
-          paramCharSequence = this.a.getString(2131720009);
+          paramCharSequence = this.a.getString(2131917614);
         } else {
-          paramCharSequence = TroopNickRuleFragment.a(this.a).getText();
+          paramCharSequence = TroopNickRuleFragment.c(this.a).getText();
         }
         localTextView.setText(paramCharSequence);
       }
@@ -47,7 +47,7 @@ class TroopNickRuleFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.8
  * JD-Core Version:    0.7.0.1
  */

@@ -30,22 +30,22 @@ class ReadInJoyAtlasManager$1
       {
         paramBundle = new oidb_cmd0xb54.RspBody();
         paramBundle.mergeFrom(paramArrayOfByte);
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl == null) {
+        if (this.b == null) {
           break label200;
         }
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl;
+        paramArrayOfByte = this.b;
         if (!paramBundle.msg_rsp_biu_count.has()) {
           break label201;
         }
         l = paramBundle.msg_rsp_biu_count.uint64_biu_count.get();
-        paramArrayOfByte.a(true, l, 0, this.jdField_a_of_type_JavaLangString);
+        paramArrayOfByte.a(true, l, 0, this.c);
         return;
       }
       catch (Exception paramArrayOfByte)
       {
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl;
+        paramBundle = this.b;
         if (paramBundle != null) {
-          paramBundle.a(false, 0L, paramInt, this.jdField_a_of_type_JavaLangString);
+          paramBundle.a(false, 0L, paramInt, this.c);
         }
         paramBundle = ReadInJoyAtlasManager.TAG;
         localStringBuilder = new StringBuilder();
@@ -54,9 +54,9 @@ class ReadInJoyAtlasManager$1
         QLog.e(paramBundle, 1, localStringBuilder.toString());
         return;
       }
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallbackImpl;
+      paramArrayOfByte = this.b;
       if (paramArrayOfByte != null) {
-        paramArrayOfByte.a(false, 0L, paramInt, this.jdField_a_of_type_JavaLangString);
+        paramArrayOfByte.a(false, 0L, paramInt, this.c);
       }
       label200:
       return;
@@ -67,7 +67,7 @@ class ReadInJoyAtlasManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasManager.1
  * JD-Core Version:    0.7.0.1
  */

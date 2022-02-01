@@ -5,30 +5,30 @@ import java.lang.ref.WeakReference;
 class ApolloLottieAnim$DecoderRunnable
   implements Runnable
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<ApolloLottieAnim> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
   private String b;
+  private boolean c;
+  private WeakReference<ApolloLottieAnim> d;
   
   public void a(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloLottieAnim);
+    this.c = paramBoolean;
+    this.d = new WeakReference(paramApolloLottieAnim);
   }
   
   public void run()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.d;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ApolloLottieAnim.a((ApolloLottieAnim)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+      ApolloLottieAnim.a((ApolloLottieAnim)this.d.get(), this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ApolloLottieAnim.DecoderRunnable
  * JD-Core Version:    0.7.0.1
  */

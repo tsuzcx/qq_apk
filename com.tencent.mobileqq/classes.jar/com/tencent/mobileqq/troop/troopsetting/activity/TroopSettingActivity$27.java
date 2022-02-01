@@ -10,9 +10,9 @@ class TroopSettingActivity$27
   
   public void handleMessage(Message paramMessage)
   {
-    if (!this.a.c)
+    if (!this.a.l)
     {
-      if (this.a.a == null) {
+      if (this.a.i == null) {
         return;
       }
       int i = paramMessage.what;
@@ -31,31 +31,31 @@ class TroopSettingActivity$27
                   if (i != 18) {
                     return;
                   }
-                  TroopSettingActivity.l(this.a);
+                  TroopSettingActivity.o(this.a);
                   return;
                 }
-                TroopSettingActivity.k(this.a);
+                TroopSettingActivity.n(this.a);
                 return;
               }
-              TroopSettingActivity.h(this.a);
+              TroopSettingActivity.k(this.a);
               return;
             }
-            TroopSettingActivity.i(this.a);
+            TroopSettingActivity.l(this.a);
             return;
           }
           TroopSettingActivity.a(this.a, paramMessage);
           return;
         }
-        TroopSettingActivity.j(this.a);
+        TroopSettingActivity.m(this.a);
         return;
       }
-      this.a.c();
+      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.27
  * JD-Core Version:    0.7.0.1
  */

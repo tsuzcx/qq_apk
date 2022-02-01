@@ -11,24 +11,24 @@ import java.lang.reflect.Method;
 
 public class ExtendEmptyViewDirector
 {
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private int jdField_a_of_type_Int = 0;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private final View jdField_b_of_type_AndroidViewView;
-  private final TextView jdField_b_of_type_AndroidWidgetTextView;
+  private static Method a;
+  private final View b;
   private final TextView c;
+  private final View d;
+  private final ImageView e;
+  private final TextView f;
+  private final TextView g;
+  private int h = 0;
+  private String i = "";
   
   public ExtendEmptyViewDirector(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375369);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375371));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131375806);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375805));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375808));
-    this.c = ((TextView)paramView.findViewById(2131375807));
+    this.b = paramView.findViewById(2131443555);
+    this.c = ((TextView)paramView.findViewById(2131443557));
+    this.d = paramView.findViewById(2131443997);
+    this.e = ((ImageView)paramView.findViewById(2131443996));
+    this.f = ((TextView)paramView.findViewById(2131443999));
+    this.g = ((TextView)paramView.findViewById(2131443998));
     try
     {
       ImageLoader.getInstance().downloadImageOnly("https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png", null);
@@ -43,24 +43,24 @@ public class ExtendEmptyViewDirector
   @Nullable
   private static Method a(ImageView paramImageView)
   {
-    Method localMethod = jdField_a_of_type_JavaLangReflectMethod;
+    Method localMethod = a;
     if (localMethod != null) {
       return localMethod;
     }
     try
     {
-      jdField_a_of_type_JavaLangReflectMethod = paramImageView.getClass().getMethod("setAsyncImage", new Class[] { String.class });
+      a = paramImageView.getClass().getMethod("setAsyncImage", new Class[] { String.class });
     }
     catch (Throwable paramImageView)
     {
       QLog.w("ExtendEmptyViewDirector", 1, "getSetAsyncImageMethod: failed", paramImageView);
     }
-    return jdField_a_of_type_JavaLangReflectMethod;
+    return a;
   }
   
   private void a(ImageView paramImageView, @NonNull String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(paramString)) {
+    if (this.i.equals(paramString)) {
       return;
     }
     Method localMethod = a(paramImageView);
@@ -70,7 +70,7 @@ public class ExtendEmptyViewDirector
     try
     {
       localMethod.invoke(paramImageView, new Object[] { paramString });
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.i = paramString;
       return;
     }
     catch (Throwable paramImageView)
@@ -81,65 +81,65 @@ public class ExtendEmptyViewDirector
   
   public void a()
   {
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.h == 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Int = 0;
+    this.b.setVisibility(8);
+    this.d.setVisibility(8);
+    this.h = 0;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.h == 1) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717584);
-    this.jdField_a_of_type_Int = 1;
+    this.b.setVisibility(0);
+    this.d.setVisibility(8);
+    this.c.setText(2131915059);
+    this.h = 1;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Int == 2) {
+    if (this.h == 2) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("刷新失败，请下拉重试");
-    this.jdField_a_of_type_Int = 2;
+    this.b.setVisibility(0);
+    this.d.setVisibility(8);
+    this.c.setText("刷新失败，请下拉重试");
+    this.h = 2;
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Int == 3) {
+    if (this.h == 3) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("什么都没找到哦");
-    this.c.setText("没有搜索到相关内容");
-    a(this.jdField_a_of_type_AndroidWidgetImageView, "https://sola.gtimg.cn/aoi/sola/20200508145045_234LrOf7V4.png");
-    this.jdField_a_of_type_Int = 3;
+    this.b.setVisibility(8);
+    this.d.setVisibility(0);
+    this.f.setText("什么都没找到哦");
+    this.g.setText("没有搜索到相关内容");
+    a(this.e, "https://sola.gtimg.cn/aoi/sola/20200508145045_234LrOf7V4.png");
+    this.h = 3;
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Int == 4) {
+    if (this.h == 4) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("无法连接到互联网");
-    this.c.setText("请关闭飞行模式或检查设备的网络设置");
-    a(this.jdField_a_of_type_AndroidWidgetImageView, "https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png");
-    this.jdField_a_of_type_Int = 4;
+    this.b.setVisibility(8);
+    this.d.setVisibility(0);
+    this.f.setText("无法连接到互联网");
+    this.g.setText("请关闭飞行模式或检查设备的网络设置");
+    a(this.e, "https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png");
+    this.h = 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendEmptyViewDirector
  * JD-Core Version:    0.7.0.1
  */

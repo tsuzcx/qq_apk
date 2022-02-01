@@ -32,7 +32,7 @@ public class PerfRelativeLayout
     super.dispatchDraw(paramCanvas);
     paramCanvas = this.a;
     if (paramCanvas != null) {
-      paramCanvas.b();
+      paramCanvas.d();
     }
     if (QLog.isDevelopLevel())
     {
@@ -48,7 +48,7 @@ public class PerfRelativeLayout
     super.draw(paramCanvas);
     paramCanvas = this.a;
     if (paramCanvas != null) {
-      paramCanvas.b();
+      paramCanvas.d();
     }
     if (QLog.isDevelopLevel())
     {
@@ -66,7 +66,7 @@ public class PerfRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PerfRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

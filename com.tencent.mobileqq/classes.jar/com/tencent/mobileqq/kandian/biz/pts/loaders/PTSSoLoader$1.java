@@ -18,23 +18,23 @@ class PTSSoLoader$1
     QLog.i("PTSSoLoader", 1, paramLoadExtResult.toString());
     if (paramInt == 0)
     {
-      paramLoadExtResult = SoLoadManager.getInstance().getInitVer(this.jdField_a_of_type_JavaLangString);
+      paramLoadExtResult = SoLoadManager.getInstance().getInitVer(this.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[onLoadResult], load so succeeded, name = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", currentVersion = ");
       localStringBuilder.append(paramLoadExtResult);
       QLog.i("PTSSoLoader", 1, localStringBuilder.toString());
-      if (PTSSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersPTSSoLoader, paramLoadExtResult, "1.1.4")) {
-        PTSSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersPTSSoLoader, true);
+      if (PTSSoLoader.a(this.b, paramLoadExtResult, "1.1.4")) {
+        PTSSoLoader.a(this.b, true);
       }
     }
-    PTSSoLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsLoadersPTSSoLoader, this.jdField_a_of_type_JavaLangString, paramInt, SoLoadManager.getInstance().getInitVer(this.jdField_a_of_type_JavaLangString));
+    PTSSoLoader.a(this.b, this.a, paramInt, SoLoadManager.getInstance().getInitVer(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

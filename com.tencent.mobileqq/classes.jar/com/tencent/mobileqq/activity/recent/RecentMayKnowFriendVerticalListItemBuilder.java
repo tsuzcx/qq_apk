@@ -40,14 +40,9 @@ import java.util.List;
 public class RecentMayKnowFriendVerticalListItemBuilder
   extends RecentItemBaseBuilder
 {
-  protected int a;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new RecentMayKnowFriendVerticalListItemBuilder.1(this);
-  private List<String> jdField_a_of_type_JavaUtilList;
-  
-  public RecentMayKnowFriendVerticalListItemBuilder()
-  {
-    this.jdField_a_of_type_Int = 2131562731;
-  }
+  protected int a = 2131629167;
+  View.OnTouchListener b = new RecentMayKnowFriendVerticalListItemBuilder.1(this);
+  private List<String> h;
   
   public int a()
   {
@@ -65,54 +60,54 @@ public class RecentMayKnowFriendVerticalListItemBuilder
     else
     {
       paramView = new RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder();
-      paramViewGroup = a(paramContext, this.jdField_a_of_type_Int, paramView);
-      paramView.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramViewGroup.findViewById(2131361799));
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131371877));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376485));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131362299));
-      paramView.c = ((TextView)paramViewGroup.findViewById(2131376487));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131376477));
-      paramView.d = ((TextView)paramViewGroup.findViewById(2131376248));
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131376260));
-      paramView.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131376249));
-      paramView.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramViewGroup.findViewById(2131379273));
-      paramView.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(1);
-      paramView.e = ((TextView)paramViewGroup.findViewById(2131370723));
+      paramViewGroup = a(paramContext, this.a, paramView);
+      paramView.a = ((RecentDynamicAvatarView)paramViewGroup.findViewById(2131427337));
+      paramView.b = ((SingleLineTextView)paramViewGroup.findViewById(2131439320));
+      paramView.d = ((TextView)paramViewGroup.findViewById(2131444726));
+      paramView.e = ((TextView)paramViewGroup.findViewById(2131427898));
+      paramView.f = ((TextView)paramViewGroup.findViewById(2131444728));
+      paramView.c = ((Button)paramViewGroup.findViewById(2131444718));
+      paramView.g = ((TextView)paramViewGroup.findViewById(2131444456));
+      paramView.h = ((RelativeLayout)paramViewGroup.findViewById(2131444468));
+      paramView.i = ((RelativeLayout)paramViewGroup.findViewById(2131444457));
+      paramView.j = ((TroopLabelLayout)paramViewGroup.findViewById(2131448010));
+      paramView.j.setLabelType(1);
+      paramView.k = ((TextView)paramViewGroup.findViewById(2131438023));
       Object localObject2 = paramContext.getResources();
-      float f = DeviceInfoUtil.a();
-      paramOnDragModeChangedListener = ((Resources)localObject2).getColorStateList(2131167142);
-      localObject1 = ((Resources)localObject2).getColorStateList(2131167063);
-      localObject2 = ((Resources)localObject2).getColorStateList(2131167143);
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor((ColorStateList)localObject1);
+      float f = DeviceInfoUtil.A();
+      paramOnDragModeChangedListener = ((Resources)localObject2).getColorStateList(2131168122);
+      localObject1 = ((Resources)localObject2).getColorStateList(2131168001);
+      localObject2 = ((Resources)localObject2).getColorStateList(2131168123);
+      paramView.b.setTextColor((ColorStateList)localObject1);
       if (ThemeUtil.isNowThemeIsDefault(null, false, null)) {
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject2, 0);
+        paramView.b.setExtendTextColor((ColorStateList)localObject2, 0);
       } else {
-        paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramOnDragModeChangedListener, 0);
+        paramView.b.setExtendTextColor(paramOnDragModeChangedListener, 0);
       }
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(3.0F * f));
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextPadding((int)(f * 5.0F), 2);
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramOnDragModeChangedListener, 2);
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(17.0F, 2);
+      paramView.b.setExtendTextSize(12.0F, 0);
+      paramView.b.setCompoundDrawablePadding((int)(3.0F * f));
+      paramView.b.setIconDrawablePadding((int)(2.0F * f), (int)(1.0F * f));
+      paramView.b.setExtendTextPadding((int)(f * 5.0F), 2);
+      paramView.b.setExtendTextColor(paramOnDragModeChangedListener, 2);
+      paramView.b.setExtendTextSize(17.0F, 2);
       paramViewGroup.setTag(paramView);
     }
     Object localObject1 = paramContext.getResources();
-    paramOnDragModeChangedListener = ((Resources)localObject1).getColorStateList(2131167142);
-    localObject1 = ((Resources)localObject1).getColorStateList(2131167143);
+    paramOnDragModeChangedListener = ((Resources)localObject1).getColorStateList(2131168122);
+    localObject1 = ((Resources)localObject1).getColorStateList(2131168123);
     if (ThemeUtil.isNowThemeIsDefault(null, false, null)) {
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject1, 0);
+      paramView.b.setExtendTextColor((ColorStateList)localObject1, 0);
     } else {
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramOnDragModeChangedListener, 0);
+      paramView.b.setExtendTextColor(paramOnDragModeChangedListener, 0);
     }
-    paramView.d.setOnClickListener(paramOnClickListener);
-    paramView.d.setTag(-1, Integer.valueOf(paramInt));
-    paramView.d.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramOnClickListener);
-    paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setTag(-1, Integer.valueOf(paramInt));
-    paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-    paramView.jdField_a_of_type_AndroidWidgetButton.setTag(-1, Integer.valueOf(paramInt));
-    if (AppSetting.d) {
+    paramView.g.setOnClickListener(paramOnClickListener);
+    paramView.g.setTag(-1, Integer.valueOf(paramInt));
+    paramView.g.setOnTouchListener(this.b);
+    paramView.i.setOnClickListener(paramOnClickListener);
+    paramView.i.setTag(-1, Integer.valueOf(paramInt));
+    paramView.c.setOnClickListener(paramOnClickListener);
+    paramView.c.setTag(-1, Integer.valueOf(paramInt));
+    if (AppSetting.e) {
       paramViewGroup.setContentDescription(null);
     }
     if ((paramObject instanceof RecentBaseData))
@@ -123,13 +118,13 @@ public class RecentMayKnowFriendVerticalListItemBuilder
         localObject1 = ((RecentItemMayKnowFriendVerticalListData)paramObject).mUser;
         if (((RecentUser)localObject1).uin.equals("sp_uin_for_title"))
         {
-          paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-          paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+          paramView.h.setVisibility(0);
+          paramView.i.setVisibility(8);
         }
         else
         {
-          paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-          paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+          paramView.h.setVisibility(8);
+          paramView.i.setVisibility(0);
           paramOnDragModeChangedListener.getRecentUserUin();
           paramOnDragModeChangedListener.getRecentUserType();
           if (paramRecentFaceDecoder != null) {
@@ -144,36 +139,36 @@ public class RecentMayKnowFriendVerticalListItemBuilder
             if (localObject1 != null) {
               if (((MayKnowRecommend)localObject1).friendStatus == 0)
               {
-                paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-                paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-                paramView.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689589));
-                paramView.jdField_a_of_type_AndroidWidgetButton.setTag(localObject1);
-                paramRecentFaceDecoder = paramContext.getResources().getColorStateList(2131167091);
+                paramView.c.setOnClickListener(paramOnClickListener);
+                paramView.c.setVisibility(0);
+                paramView.c.setText(HardCodeUtil.a(2131886199));
+                paramView.c.setTag(localObject1);
+                paramRecentFaceDecoder = paramContext.getResources().getColorStateList(2131168043);
                 if (paramRecentFaceDecoder != null) {
-                  paramView.jdField_a_of_type_AndroidWidgetButton.setTextColor(paramRecentFaceDecoder);
+                  paramView.c.setTextColor(paramRecentFaceDecoder);
                 }
-                paramView.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839314);
-                paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-                if (AppSetting.d) {
-                  paramView.jdField_a_of_type_AndroidWidgetButton.setContentDescription(HardCodeUtil.a(2131689589));
+                paramView.c.setBackgroundResource(2130839494);
+                paramView.d.setVisibility(8);
+                if (AppSetting.e) {
+                  paramView.c.setContentDescription(HardCodeUtil.a(2131886199));
                 }
               }
               else if (((MayKnowRecommend)localObject1).friendStatus == 1)
               {
-                paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-                paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131718222);
-                if (AppSetting.d) {
-                  paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131713126));
+                paramView.c.setVisibility(8);
+                paramView.d.setVisibility(0);
+                paramView.d.setText(2131915704);
+                if (AppSetting.e) {
+                  paramView.d.setContentDescription(HardCodeUtil.a(2131910685));
                 }
               }
               else
               {
-                paramView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-                paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-                paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131689988);
-                if (AppSetting.d) {
-                  paramView.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131713125));
+                paramView.c.setVisibility(8);
+                paramView.d.setVisibility(0);
+                paramView.d.setText(2131886630);
+                if (AppSetting.e) {
+                  paramView.d.setContentDescription(HardCodeUtil.a(2131910684));
                 }
               }
             }
@@ -187,8 +182,8 @@ public class RecentMayKnowFriendVerticalListItemBuilder
     }
     else
     {
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText("");
-      paramView.c.setText("");
+      paramView.b.setText("");
+      paramView.f.setText("");
     }
     a(paramContext, paramViewGroup, paramInt, paramObject, paramView, paramOnClickListener);
     paramViewGroup.setOnClickListener(paramOnClickListener);
@@ -203,16 +198,16 @@ public class RecentMayKnowFriendVerticalListItemBuilder
     {
       int i = paramRecentBaseData.mMenuFlag;
       paramRecentBaseData = paramContext.getResources();
-      paramContext = this.jdField_a_of_type_JavaUtilList;
+      paramContext = this.h;
       if (paramContext == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.h = new ArrayList();
       } else {
         paramContext.clear();
       }
       if ((i & 0xF) == 1) {
-        this.jdField_a_of_type_JavaUtilList.add(paramRecentBaseData.getString(jdField_a_of_type_ArrayOfInt[0]));
+        this.h.add(paramRecentBaseData.getString(c[0]));
       }
-      return this.jdField_a_of_type_JavaUtilList;
+      return this.h;
     }
     return null;
   }
@@ -252,10 +247,10 @@ public class RecentMayKnowFriendVerticalListItemBuilder
         if (i == 103) {
           i = 1;
         }
-        RecentDynamicAvatarView localRecentDynamicAvatarView = ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
+        RecentDynamicAvatarView localRecentDynamicAvatarView = ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).a;
         String str = paramRecentBaseData.getRecentUserUin();
         boolean bool;
-        if (((QQAppInterface)localObject2).mAutomator.a() == 1) {
+        if (((QQAppInterface)localObject2).mAutomator.f() == 1) {
           bool = true;
         } else {
           bool = false;
@@ -264,14 +259,14 @@ public class RecentMayKnowFriendVerticalListItemBuilder
       }
       else
       {
-        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).a.setImageDrawable(paramDrawable);
       }
-      a(((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
-      float f = DeviceInfoUtil.a();
+      a(((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).a);
+      float f = DeviceInfoUtil.A();
       if (paramRecentBaseData.mAuthenIconId != 0)
       {
-        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(f * 3.0F));
-        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, paramRecentBaseData.mAuthenIconId);
+        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setCompoundDrawablePadding((int)(f * 3.0F));
+        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setCompoundDrawablesWithIntrinsicBounds(0, paramRecentBaseData.mAuthenIconId);
         if (QLog.isColorLevel())
         {
           paramContext = new StringBuilder();
@@ -292,12 +287,12 @@ public class RecentMayKnowFriendVerticalListItemBuilder
         }
         if (i == 3)
         {
-          ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(f * 5.0F));
-          ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130847298);
+          ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setCompoundDrawablePadding((int)(f * 5.0F));
+          ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setCompoundDrawablesWithIntrinsicBounds(0, 2130848949);
         }
         else
         {
-          ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+          ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setCompoundDrawablesWithIntrinsicBounds(0, 0);
         }
       }
       else
@@ -305,7 +300,7 @@ public class RecentMayKnowFriendVerticalListItemBuilder
         if (QLog.isColorLevel()) {
           QLog.d("RecentMayKnowFriendVerticalListItemBuilder", 2, "bindView: drawable is null");
         }
-        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setCompoundDrawablesWithIntrinsicBounds(0, 0);
       }
       paramContext = paramRecentBaseData.mExtraInfo;
       if (paramContext != null) {
@@ -313,26 +308,26 @@ public class RecentMayKnowFriendVerticalListItemBuilder
       } else {
         paramContext = "";
       }
-      ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramContext, 2);
-      ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramRecentBaseData.mShowTime, 0);
-      ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleName);
+      ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setExtendText(paramContext, 2);
+      ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setExtendText(paramRecentBaseData.mShowTime, 0);
+      ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setText(paramRecentBaseData.mTitleName);
       if (!TextUtils.isEmpty(paramRecentBaseData.mTitleNameCs)) {
-        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleNameCs);
+        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setText(paramRecentBaseData.mTitleNameCs);
       }
-      ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(null);
+      ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).b.setIconDrawablesWithIntrinsicBounds(null);
       try
       {
-        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).c.setText(paramRecentBaseData.mLastMsg);
+        ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).f.setText(paramRecentBaseData.mLastMsg);
       }
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
       }
       paramContext = (INewFriendApi)QRoute.api(INewFriendApi.class);
-      paramDrawable = ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView;
+      paramDrawable = ((RecentMayKnowFriendVerticalListItemBuilder.RecentMayKnowFriendVerticalListItemBuilderHolder)localObject1).e;
       Object localObject1 = (RecentItemMayKnowFriendVerticalListData)paramRecentBaseData;
       paramContext.showGenderAge(paramDrawable, ((RecentItemMayKnowFriendVerticalListData)localObject1).gender, ((RecentItemMayKnowFriendVerticalListData)localObject1).age, null);
-      if (AppSetting.d) {
+      if (AppSetting.e) {
         paramView.setContentDescription(paramRecentBaseData.mContentDesc);
       }
       return;
@@ -378,10 +373,10 @@ public class RecentMayKnowFriendVerticalListItemBuilder
         if (i == 103) {
           i = 1;
         }
-        RecentDynamicAvatarView localRecentDynamicAvatarView = localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView;
+        RecentDynamicAvatarView localRecentDynamicAvatarView = localRecentMayKnowFriendVerticalListItemBuilderHolder.a;
         String str = paramRecentBaseData.getRecentUserUin();
         boolean bool;
-        if (((QQAppInterface)localObject).mAutomator.a() == 1) {
+        if (((QQAppInterface)localObject).mAutomator.f() == 1) {
           bool = true;
         } else {
           bool = false;
@@ -390,14 +385,14 @@ public class RecentMayKnowFriendVerticalListItemBuilder
       }
       else
       {
-        localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+        localRecentMayKnowFriendVerticalListItemBuilderHolder.a.setImageDrawable(paramDrawable);
       }
-      a(localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView);
-      float f = DeviceInfoUtil.a();
+      a(localRecentMayKnowFriendVerticalListItemBuilderHolder.a);
+      float f = DeviceInfoUtil.A();
       if (paramRecentBaseData.mAuthenIconId != 0)
       {
-        localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(f * 3.0F));
-        localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, paramRecentBaseData.mAuthenIconId);
+        localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setCompoundDrawablePadding((int)(f * 3.0F));
+        localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setCompoundDrawablesWithIntrinsicBounds(0, paramRecentBaseData.mAuthenIconId);
         if (QLog.isColorLevel())
         {
           paramContext = new StringBuilder();
@@ -418,12 +413,12 @@ public class RecentMayKnowFriendVerticalListItemBuilder
         }
         if (i == 3)
         {
-          localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding((int)(f * 5.0F));
-          localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130847298);
+          localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setCompoundDrawablePadding((int)(f * 5.0F));
+          localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setCompoundDrawablesWithIntrinsicBounds(0, 2130848949);
         }
         else
         {
-          localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+          localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setCompoundDrawablesWithIntrinsicBounds(0, 0);
         }
       }
       else
@@ -431,7 +426,7 @@ public class RecentMayKnowFriendVerticalListItemBuilder
         if (QLog.isColorLevel()) {
           QLog.d("RecentMayKnowFriendVerticalListItemBuilder", 2, "bindView: drawable is null");
         }
-        localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+        localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setCompoundDrawablesWithIntrinsicBounds(0, 0);
       }
       paramContext = paramRecentBaseData.mExtraInfo;
       if (paramContext != null) {
@@ -439,23 +434,23 @@ public class RecentMayKnowFriendVerticalListItemBuilder
       } else {
         paramContext = "";
       }
-      localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramContext, 2);
-      localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendText(paramRecentBaseData.mShowTime, 0);
-      localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleName);
+      localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setExtendText(paramContext, 2);
+      localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setExtendText(paramRecentBaseData.mShowTime, 0);
+      localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setText(paramRecentBaseData.mTitleName);
       if (!TextUtils.isEmpty(paramRecentBaseData.mTitleNameCs)) {
-        localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.mTitleNameCs);
+        localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setText(paramRecentBaseData.mTitleNameCs);
       }
-      localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(null);
+      localRecentMayKnowFriendVerticalListItemBuilderHolder.b.setIconDrawablesWithIntrinsicBounds(null);
       try
       {
-        localRecentMayKnowFriendVerticalListItemBuilderHolder.e.setText(paramRecentBaseData.mLastMsg);
+        localRecentMayKnowFriendVerticalListItemBuilderHolder.k.setText(paramRecentBaseData.mLastMsg);
       }
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
       }
-      localRecentMayKnowFriendVerticalListItemBuilderHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.a(RecommendLabel.convertToRecommendLabel(paramMayKnowRecommend.msgLabel), paramMayKnowRecommend.gender, paramMayKnowRecommend.age);
-      if (AppSetting.d) {
+      localRecentMayKnowFriendVerticalListItemBuilderHolder.j.a(RecommendLabel.convertToRecommendLabel(paramMayKnowRecommend.msgLabel), paramMayKnowRecommend.gender, paramMayKnowRecommend.age);
+      if (AppSetting.e) {
         paramView.setContentDescription(paramRecentBaseData.mContentDesc);
       }
       return;
@@ -473,7 +468,7 @@ public class RecentMayKnowFriendVerticalListItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentMayKnowFriendVerticalListItemBuilder
  * JD-Core Version:    0.7.0.1
  */

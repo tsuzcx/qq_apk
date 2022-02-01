@@ -9,18 +9,18 @@ class TroopAssistantActivity$17$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int <= 0)
+    if (this.a <= 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$17.a.setVisibility(4);
+      this.c.b.setVisibility(4);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$17.a.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity$17.a.setContentDescription(this.jdField_a_of_type_JavaLangString);
+    this.c.b.setText(this.b);
+    this.c.b.setContentDescription(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.17.1
  * JD-Core Version:    0.7.0.1
  */

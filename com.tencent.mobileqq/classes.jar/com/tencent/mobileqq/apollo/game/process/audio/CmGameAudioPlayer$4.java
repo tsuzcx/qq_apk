@@ -12,19 +12,19 @@ class CmGameAudioPlayer$4
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameAudioPlayer.a(3);
-    if (CmGameAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameAudioPlayer)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameAudioPlayer.b(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameNativeMethodHandler);
+    this.c.a(3);
+    if (CmGameAudioPlayer.a(this.c)) {
+      this.c.b(this.a, this.b);
     }
-    paramMediaPlayer = this.jdField_a_of_type_OrgJsonJSONObject;
+    paramMediaPlayer = this.a;
     if (paramMediaPlayer != null) {
-      CmGameAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameAudioPlayer, this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameNativeMethodHandler, paramMediaPlayer);
+      CmGameAudioPlayer.a(this.c, this.b, paramMediaPlayer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.audio.CmGameAudioPlayer.4
  * JD-Core Version:    0.7.0.1
  */

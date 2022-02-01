@@ -17,30 +17,30 @@ class PictureAdapter$1
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("height is ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getHeight());
+      ((StringBuilder)localObject1).append(this.a.a.getHeight());
       ((StringBuilder)localObject1).append(" and width is ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getWidth());
+      ((StringBuilder)localObject1).append(this.a.a.getWidth());
       QLog.i("PictureAdapter", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getWidth() > 0)
+    if (this.a.a.getWidth() > 0)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getHeight() > 0)
+      if (this.a.a.getHeight() > 0)
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getHeight();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getWidth();
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.a.a.getHeight();
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.a.a.getWidth();
       }
     }
-    localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.setImageDrawable((Drawable)localObject1);
+    localObject1 = URLDrawable.getDrawable(this.b, (URLDrawable.URLDrawableOptions)localObject1);
+    this.a.a.setImageDrawable((Drawable)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.PictureAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,7 @@ public class QCirclePluginQualityReporter
   
   private static Collection<FeedCloudCommon.Entry> createEntries(QCirclePluginQualityReporter.ReportData paramReportData)
   {
-    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("uin", QCircleHostStubUtil.getCurrentAccount()), QCircleReportHelper.newEntry("qua", paramReportData.getQua()), QCircleReportHelper.newEntry("network_type", paramReportData.getNetWorkTyp()), QCircleReportHelper.newEntry("event_id", paramReportData.getEvent_id()), QCircleReportHelper.newEntry("retcode", String.valueOf(paramReportData.getRetCode())), QCircleReportHelper.newEntry("pluginVersion", String.valueOf(paramReportData.getPluginVersion())), QCircleReportHelper.newEntry("plugintype", paramReportData.getPluginType()), QCircleReportHelper.newEntry("ext1", paramReportData.getExt1()), QCircleReportHelper.newEntry("ext2", paramReportData.getExt2()), QCircleReportHelper.newEntry("timecost", paramReportData.getTimeCost()), QCircleReportHelper.newEntry("device_info", Build.DEVICE) }));
+    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("uin", QCircleHostStubUtil.getCurrentAccount()), QCircleReportHelper.newEntry("qua", paramReportData.getQua()), QCircleReportHelper.newEntry("network_type", paramReportData.getNetWorkTyp()), QCircleReportHelper.newEntry("event_id", paramReportData.getEventId()), QCircleReportHelper.newEntry("retcode", String.valueOf(paramReportData.getRetCode())), QCircleReportHelper.newEntry("pluginVersion", String.valueOf(paramReportData.getPluginVersion())), QCircleReportHelper.newEntry("plugintype", paramReportData.getPluginType()), QCircleReportHelper.newEntry("ext1", paramReportData.getExt1()), QCircleReportHelper.newEntry("ext2", paramReportData.getExt2()), QCircleReportHelper.newEntry("timecost", paramReportData.getTimeCost()), QCircleReportHelper.newEntry("device_info", Build.DEVICE) }));
   }
   
   public static void report(QCirclePluginQualityReporter.ReportData paramReportData)
@@ -53,7 +53,7 @@ public class QCirclePluginQualityReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCirclePluginQualityReporter
  * JD-Core Version:    0.7.0.1
  */

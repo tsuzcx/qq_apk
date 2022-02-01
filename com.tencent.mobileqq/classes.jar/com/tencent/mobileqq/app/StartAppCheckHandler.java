@@ -38,24 +38,24 @@ public class StartAppCheckHandler
   extends BusinessHandler
   implements mqq.observer.BusinessObserver
 {
-  final int jdField_a_of_type_Int = 1;
-  Activity jdField_a_of_type_AndroidAppActivity = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = new StartAppCheckHandler.1(this, Looper.getMainLooper());
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-  BrowserAppInterface jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = null;
-  StartAppCheckHandler.CacheInfo jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo;
-  StartAppCheckHandler.SendingAPP jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP;
-  Runnable jdField_a_of_type_JavaLangRunnable = new StartAppCheckHandler.3(this);
-  Queue<StartAppCheckHandler.PendingAPP> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  boolean jdField_a_of_type_Boolean = false;
-  final int jdField_b_of_type_Int = 2;
-  private Handler jdField_b_of_type_AndroidOsHandler = new StartAppCheckHandler.2(this, Looper.getMainLooper());
-  final int c = 3;
+  Activity a = null;
+  BrowserAppInterface b = null;
+  AppInterface c = null;
+  boolean d = false;
+  Queue<StartAppCheckHandler.PendingAPP> e = new LinkedList();
+  final int f = 1;
+  final int g = 2;
+  final int h = 3;
+  StartAppCheckHandler.SendingAPP i;
+  StartAppCheckHandler.CacheInfo j;
+  Runnable k = new StartAppCheckHandler.3(this);
+  private Handler l = new StartAppCheckHandler.1(this, Looper.getMainLooper());
+  private Handler m = new StartAppCheckHandler.2(this, Looper.getMainLooper());
   
   public StartAppCheckHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
   }
   
   private PackageInfo a(Context paramContext, String paramString)
@@ -115,22 +115,22 @@ public class StartAppCheckHandler
     }
     paramArrayOfByte = ((signature.SignatureResult)localObject2).str_packname.get();
     Object localObject1 = new LinkedList();
-    int i = ((signature.SignatureResult)localObject2).u32_check_result.get();
+    int n = ((signature.SignatureResult)localObject2).u32_check_result.get();
     Object localObject3;
-    if ((i != 0) && (i != 1))
+    if ((n != 0) && (n != 1))
     {
-      if (i == 2) {
-        localObject3 = this.jdField_a_of_type_JavaUtilQueue.iterator();
+      if (n == 2) {
+        localObject3 = this.e.iterator();
       }
     }
     else {
       while (((Iterator)localObject3).hasNext())
       {
         Object localObject4 = (StartAppCheckHandler.PendingAPP)((Iterator)localObject3).next();
-        if (((StartAppCheckHandler.PendingAPP)localObject4).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
+        if (((StartAppCheckHandler.PendingAPP)localObject4).a.equals(paramArrayOfByte))
         {
           ((List)localObject1).add(localObject4);
-          this.jdField_b_of_type_AndroidOsHandler.removeMessages(2, localObject4);
+          this.m.removeMessages(2, localObject4);
           localObject4 = new Intent();
           ((Intent)localObject4).putExtra("type", 9);
           Bundle localBundle = new Bundle();
@@ -141,18 +141,18 @@ public class StartAppCheckHandler
           localBundle.putString("dlg_url", ((signature.SignatureResult)localObject2).str_url.get());
           ((Intent)localObject4).putExtras(localBundle);
           ((Intent)localObject4).setFlags(872415232);
-          RouteUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), (Intent)localObject4, "/base/notification");
+          RouteUtils.a(this.c.getApplication(), (Intent)localObject4, "/base/notification");
           continue;
-          localObject2 = this.jdField_a_of_type_JavaUtilQueue.iterator();
+          localObject2 = this.e.iterator();
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (StartAppCheckHandler.PendingAPP)((Iterator)localObject2).next();
-            if (((StartAppCheckHandler.PendingAPP)localObject3).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
+            if (((StartAppCheckHandler.PendingAPP)localObject3).a.equals(paramArrayOfByte))
             {
               ((List)localObject1).add(localObject3);
-              localObject4 = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(2, localObject3);
-              this.jdField_b_of_type_AndroidOsHandler.removeMessages(2, localObject3);
-              this.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject4);
+              localObject4 = this.m.obtainMessage(2, localObject3);
+              this.m.removeMessages(2, localObject3);
+              this.m.sendMessage((Message)localObject4);
             }
           }
         }
@@ -162,7 +162,7 @@ public class StartAppCheckHandler
     while (paramArrayOfByte.hasNext())
     {
       localObject1 = (StartAppCheckHandler.PendingAPP)paramArrayOfByte.next();
-      this.jdField_a_of_type_JavaUtilQueue.remove(localObject1);
+      this.e.remove(localObject1);
     }
   }
   
@@ -170,30 +170,30 @@ public class StartAppCheckHandler
   {
     if ((paramSignatureResult.has()) && (paramSignatureResult.str_packname.has()) && (paramSignatureResult.str_packname.get() != null) && (paramSignatureResult.u32_check_result.has()) && (!paramSignatureResult.str_packname.get().equalsIgnoreCase("MobileQQ")))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_b_of_type_Long = System.currentTimeMillis();
+      this.j.b = System.currentTimeMillis();
       if (paramSignatureResult.u32_timeout.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_a_of_type_Long = paramSignatureResult.u32_timeout.get();
+        this.j.a = paramSignatureResult.u32_timeout.get();
       }
       if (paramSignatureResult.u32_check_result.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_a_of_type_Int = paramSignatureResult.u32_check_result.get();
+        this.j.f = paramSignatureResult.u32_check_result.get();
       }
       if (paramSignatureResult.str_title.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_c_of_type_JavaLangString = paramSignatureResult.str_title.get();
+        this.j.g = paramSignatureResult.str_title.get();
       }
       if (paramSignatureResult.str_content.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.d = paramSignatureResult.str_content.get();
+        this.j.h = paramSignatureResult.str_content.get();
       }
       if (paramSignatureResult.str_left_button.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.e = paramSignatureResult.str_left_button.get();
+        this.j.i = paramSignatureResult.str_left_button.get();
       }
       if (paramSignatureResult.str_right_button.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.f = paramSignatureResult.str_right_button.get();
+        this.j.j = paramSignatureResult.str_right_button.get();
       }
       if (paramSignatureResult.str_url.has()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.g = paramSignatureResult.str_url.get();
+        this.j.k = paramSignatureResult.str_url.get();
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.b();
-      this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo = null;
+      this.j.b();
+      this.j = null;
       return true;
     }
     if (QLog.isColorLevel()) {
@@ -205,9 +205,9 @@ public class StartAppCheckHandler
   public void a(String paramString, Context paramContext, Intent paramIntent)
   {
     QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)paramContext;
-    this.jdField_a_of_type_AndroidAppActivity = localQQBrowserActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = ((BrowserAppInterface)localQQBrowserActivity.getAppRuntime());
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
+    this.a = localQQBrowserActivity;
+    this.b = ((BrowserAppInterface)localQQBrowserActivity.getAppRuntime());
+    this.c = this.b;
     b(paramString, paramContext, paramIntent);
   }
   
@@ -224,21 +224,21 @@ public class StartAppCheckHandler
     if ((!TextUtils.isEmpty(paramString)) && (paramContext != null) && (paramIntent != null)) {
       a(paramIntent.getStringExtra("report_open_type"), paramIntent.getStringExtra("report_url"), paramString, paramIntent.getStringExtra("report_from"), paramIntent.getStringExtra("report_click_origin"), paramIntent.getStringExtra("report_class_name"));
     }
-    long l;
-    if ((true != this.jdField_a_of_type_Boolean) && (paramString != null))
+    long l1;
+    if ((true != this.d) && (paramString != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP = new StartAppCheckHandler.SendingAPP(this, paramString);
-      this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo = new StartAppCheckHandler.CacheInfo(this, paramString);
-      if (Long.valueOf(System.currentTimeMillis()).longValue() < this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_b_of_type_Long + 86400000L)
+      this.i = new StartAppCheckHandler.SendingAPP(this, paramString);
+      this.j = new StartAppCheckHandler.CacheInfo(this, paramString);
+      if (Long.valueOf(System.currentTimeMillis()).longValue() < this.j.b + 86400000L)
       {
-        localObject = a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_JavaLangString);
+        localObject = a(this.c.getApplication(), this.i.c);
         if (localObject != null)
         {
           String str = SecUtil.getSignatureHash(localObject.signatures[0].toByteArray());
-          l = new File(((PackageInfo)localObject).applicationInfo.sourceDir).lastModified();
-          if ((this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_c_of_type_Long == l) && (this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str)))
+          l1 = new File(((PackageInfo)localObject).applicationInfo.sourceDir).lastModified();
+          if ((this.j.c == l1) && (this.j.d.equalsIgnoreCase(str)))
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_a_of_type_Int != 2)
+            if (this.j.f != 2)
             {
               if ((paramContext != null) && (paramIntent != null)) {
                 paramContext.startActivity(paramIntent);
@@ -249,17 +249,17 @@ public class StartAppCheckHandler
               paramString = new Intent();
               paramString.putExtra("type", 9);
               paramContext = new Bundle();
-              paramContext.putString("dlg_title", this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_c_of_type_JavaLangString);
-              paramContext.putString("dlg_content", this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.d);
-              paramContext.putString("dlg_lbutton", this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.e);
-              paramContext.putString("dlg_rbutton", this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.f);
-              paramContext.putString("dlg_url", this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.g);
+              paramContext.putString("dlg_title", this.j.g);
+              paramContext.putString("dlg_content", this.j.h);
+              paramContext.putString("dlg_lbutton", this.j.i);
+              paramContext.putString("dlg_rbutton", this.j.j);
+              paramContext.putString("dlg_url", this.j.k);
               paramString.putExtras(paramContext);
               paramString.setFlags(872415232);
-              RouteUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramString, "/base/notification");
+              RouteUtils.a(this.c.getApplication(), paramString, "/base/notification");
               try
               {
-                ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), "startAppByCheckValid", this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_b_of_type_JavaLangString, 0, 0, "", "", "", "");
+                ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", this.c.getAccount(), "startAppByCheckValid", this.j.e, 0, 0, "", "", "", "");
                 return;
               }
               catch (Exception paramString)
@@ -274,30 +274,30 @@ public class StartAppCheckHandler
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).longValue();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP;
-      ((StartAppCheckHandler.SendingAPP)localObject).jdField_a_of_type_Int = 1;
-      ((StartAppCheckHandler.SendingAPP)localObject).jdField_a_of_type_JavaLangString = paramString;
+      this.i.a = Long.valueOf(this.c.getAccount()).longValue();
+      localObject = this.i;
+      ((StartAppCheckHandler.SendingAPP)localObject).b = 1;
+      ((StartAppCheckHandler.SendingAPP)localObject).c = paramString;
       paramString = new StartAppCheckHandler.PendingAPP(this, paramString, paramContext, paramIntent);
-      this.jdField_a_of_type_JavaUtilQueue.offer(paramString);
+      this.e.offer(paramString);
       paramContext = new Message();
       paramContext.what = 2;
       paramContext.obj = paramString;
-      this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
-      paramString = this.jdField_a_of_type_AndroidOsHandler;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_a_of_type_Long > 0L) {
-        l = this.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_a_of_type_Long;
+      this.m.sendMessage(paramContext);
+      paramString = this.l;
+      if (this.j.a > 0L) {
+        l1 = this.j.a;
       } else {
-        l = 300L;
+        l1 = 300L;
       }
-      paramString.sendEmptyMessageDelayed(3, l);
-      this.jdField_a_of_type_Boolean = true;
+      paramString.sendEmptyMessageDelayed(3, l1);
+      this.d = true;
       return;
     }
     catch (Exception paramString)
     {
-      label578:
-      break label578;
+      label580:
+      break label580;
     }
     if (QLog.isColorLevel()) {
       QLog.d("AppStartedHandler", 2, "GetAccount Failed!");
@@ -350,7 +350,7 @@ public class StartAppCheckHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.StartAppCheckHandler
  * JD-Core Version:    0.7.0.1
  */

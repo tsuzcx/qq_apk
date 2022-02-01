@@ -9,34 +9,40 @@ import java.util.List;
 
 public class ScaleAdapter
 {
-  private float jdField_a_of_type_Float = 30.0F;
-  private int jdField_a_of_type_Int = 30;
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  private Course jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleCourse = new Course();
-  private SizeParam jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam;
-  private ArrayList<SizeParam> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final List<Scaler> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int = 15;
-  private long jdField_b_of_type_Long;
+  private final List<Scaler> a = new ArrayList();
+  private ArrayList<SizeParam> b = new ArrayList();
+  private long c;
+  private long d;
+  private SizeParam e;
+  private int f = 30;
+  private int g = 15;
+  private float h = 30.0F;
+  private Course i = new Course();
+  private View j;
   
   public ScaleAdapter()
   {
-    c();
+    j();
   }
   
-  private int a(float paramFloat)
+  private void a(SizeParam paramSizeParam)
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam);
-    int j = (int)(this.jdField_a_of_type_Float * paramFloat);
+    this.e = paramSizeParam;
+    h();
+  }
+  
+  private int d(float paramFloat)
+  {
+    int k = this.b.indexOf(this.e);
+    int m = (int)(this.h * paramFloat);
     if (paramFloat > 1.0F)
     {
-      if (j >= this.jdField_a_of_type_Int)
+      if (m >= this.f)
       {
-        i -= 1;
-        if ((i >= 0) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+        k -= 1;
+        if ((k >= 0) && (!this.b.isEmpty()))
         {
-          a((SizeParam)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          a((SizeParam)this.b.get(k));
           return 0;
         }
         return 1;
@@ -45,12 +51,12 @@ public class ScaleAdapter
     }
     if (paramFloat < 1.0F)
     {
-      if (j <= this.jdField_b_of_type_Int)
+      if (m <= this.g)
       {
-        i += 1;
-        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        k += 1;
+        if (k < this.b.size())
         {
-          a((SizeParam)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          a((SizeParam)this.b.get(k));
           return 0;
         }
         return 1;
@@ -60,123 +66,64 @@ public class ScaleAdapter
     return 1;
   }
   
-  private void a(SizeParam paramSizeParam)
+  private void e(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam = paramSizeParam;
-    b();
+    this.h *= paramFloat;
   }
   
-  private int b()
+  private void h()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam;
+    this.a.clear();
+    Object localObject = this.e;
     if (localObject != null)
     {
-      int k = (int)((SizeParam)localObject).a(b() - a());
-      int i = 0;
-      while (i < k + 1)
+      int n = (int)((SizeParam)localObject).a(c() - b());
+      int k = 0;
+      while (k < n + 1)
       {
         localObject = new Scaler();
-        int j;
-        if (i % 2 == 0) {
-          j = 0;
+        int m;
+        if (k % 2 == 0) {
+          m = 0;
         } else {
-          j = 1;
+          m = 1;
         }
-        ((Scaler)localObject).b(j);
-        ((Scaler)localObject).a(i);
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
-        i += 1;
+        ((Scaler)localObject).b(m);
+        ((Scaler)localObject).a(k);
+        this.a.add(localObject);
+        k += 1;
       }
     }
   }
   
-  private void b(float paramFloat)
+  private int i()
   {
-    this.jdField_a_of_type_Float *= paramFloat;
+    return this.g;
   }
   
-  private void c()
+  private void j()
   {
     Object localObject = new FrameSizeParam(1.0F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new FrameSizeParam(1.5F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new FrameSizeParam(2.5F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new FrameSizeParam(5.0F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new FrameSizeParam(7.5F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new SecSizeParam(0.5F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new SecSizeParam(1.0F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new SecSizeParam(1.5F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new SecSizeParam(2.5F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    this.b.add(localObject);
     localObject = new SecSizeParam(5.0F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam = ((SizeParam)this.jdField_a_of_type_JavaUtilArrayList.get(6));
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public float a(long paramLong)
-  {
-    SizeParam localSizeParam = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam;
-    if (localSizeParam != null) {
-      return localSizeParam.a(paramLong);
-    }
-    return 0.0F;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int a(long paramLong)
-  {
-    return (int)(this.jdField_a_of_type_Float * this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam.a(paramLong));
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public long a(float paramFloat)
-  {
-    paramFloat /= this.jdField_a_of_type_Float;
-    return a() + this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam.a(paramFloat);
-  }
-  
-  public long a(Scaler paramScaler)
-  {
-    if (paramScaler == null) {
-      return -1L;
-    }
-    try
-    {
-      long l1 = a();
-      long l2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam.a(paramScaler.a());
-      return l2 + l1;
-    }
-    catch (IllegalArgumentException paramScaler)
-    {
-      paramScaler.printStackTrace();
-    }
-    return -1L;
+    this.b.add(localObject);
+    this.e = ((SizeParam)this.b.get(6));
   }
   
   public String a(Scaler paramScaler)
@@ -186,9 +133,9 @@ public class ScaleAdapter
     }
     try
     {
-      long l1 = a();
-      long l2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam.a(paramScaler.a());
-      paramScaler = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam.a(l1 + l2);
+      long l1 = b();
+      long l2 = this.e.a(paramScaler.a());
+      paramScaler = this.e.b(l1 + l2);
       return paramScaler;
     }
     catch (IllegalArgumentException paramScaler)
@@ -200,101 +147,154 @@ public class ScaleAdapter
   
   public List<Scaler> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null)
-    {
-      Course localCourse = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleCourse;
-      float f2 = this.jdField_a_of_type_Float;
-      float f1 = 0.0F;
-      if (f2 > 0.0F) {
-        f1 = localView.getScrollX() / this.jdField_a_of_type_Float;
-      }
-      localCourse.a(f1);
-    }
+    return this.a;
   }
   
   public void a(float paramFloat)
   {
-    long l = c();
-    int i = a(paramFloat);
-    if (i != 1)
+    long l = d();
+    int k = d(paramFloat);
+    if (k != 1)
     {
-      if (i == 0)
+      if (k == 0)
       {
         if (paramFloat > 1.0F) {
-          this.jdField_a_of_type_Float = b();
+          this.h = i();
         } else {
-          this.jdField_a_of_type_Float = a();
+          this.h = e();
         }
       }
       else {
-        b(paramFloat);
+        e(paramFloat);
       }
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      i = a(l);
-      this.jdField_a_of_type_AndroidViewView.scrollTo(i, 0);
+      this.j.invalidate();
+      k = c(l);
+      this.j.scrollTo(k, 0);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramInt;
+    this.f = paramInt;
+    this.h = paramInt;
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam != null) {
-      this.jdField_b_of_type_Long = paramLong;
+    if (this.e != null) {
+      this.d = paramLong;
     }
-    b();
+    h();
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.j = paramView;
+  }
+  
+  public float b(long paramLong)
+  {
+    SizeParam localSizeParam = this.e;
+    if (localSizeParam != null) {
+      return localSizeParam.a(paramLong);
+    }
+    return 0.0F;
   }
   
   public long b()
   {
-    return this.jdField_b_of_type_Long;
+    return this.c;
   }
   
   public long b(float paramFloat)
   {
-    if ((int)(a() * a(b())) <= paramFloat) {
-      return b();
+    paramFloat /= this.h;
+    return b() + this.e.a(paramFloat);
+  }
+  
+  public long b(Scaler paramScaler)
+  {
+    if (paramScaler == null) {
+      return -1L;
     }
-    paramFloat /= this.jdField_a_of_type_Float;
-    return a() + this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam.a(paramFloat);
+    try
+    {
+      long l1 = b();
+      long l2 = this.e.a(paramScaler.a());
+      return l2 + l1;
+    }
+    catch (IllegalArgumentException paramScaler)
+    {
+      paramScaler.printStackTrace();
+    }
+    return -1L;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.g = paramInt;
+  }
+  
+  public int c(long paramLong)
+  {
+    return (int)(this.h * this.e.a(paramLong));
   }
   
   public long c()
   {
-    return a() + this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleCourse.a());
+    return this.d;
+  }
+  
+  public long c(float paramFloat)
+  {
+    if ((int)(f() * b(c())) <= paramFloat) {
+      return c();
+    }
+    paramFloat /= this.h;
+    return b() + this.e.a(paramFloat);
   }
   
   public void c(int paramInt)
   {
-    if (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+    if (paramInt > this.b.size() - 1) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleSizeSizeParam = ((SizeParam)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    this.e = ((SizeParam)this.b.get(paramInt));
+  }
+  
+  public long d()
+  {
+    return b() + this.e.a(this.i.a());
+  }
+  
+  public int e()
+  {
+    return this.f;
+  }
+  
+  public float f()
+  {
+    return this.h;
+  }
+  
+  public void g()
+  {
+    View localView = this.j;
+    if (localView != null)
+    {
+      Course localCourse = this.i;
+      float f2 = this.h;
+      float f1 = 0.0F;
+      if (f2 > 0.0F) {
+        f1 = localView.getScrollX() / this.h;
+      }
+      localCourse.a(f1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.timebar.scale.ScaleAdapter
  * JD-Core Version:    0.7.0.1
  */

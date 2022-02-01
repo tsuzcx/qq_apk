@@ -16,13 +16,13 @@ class CustomSwitchRoomModule$1
     if (this.this$0.a())
     {
       CustomSwitchRoomModule localCustomSwitchRoomModule = this.this$0;
-      ThreadCenter.postDelayedUITask(localCustomSwitchRoomModule, CustomSwitchRoomModule.a(localCustomSwitchRoomModule), 30000L);
+      ThreadCenter.postDelayedUITask(localCustomSwitchRoomModule, CustomSwitchRoomModule.b(localCustomSwitchRoomModule), 30000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.switchroom.CustomSwitchRoomModule.1
  * JD-Core Version:    0.7.0.1
  */

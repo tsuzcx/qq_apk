@@ -5,25 +5,20 @@ import org.json.JSONObject;
 
 class ConfessManager$GroupChatExtra
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
   public int c;
-  public String c;
   public int d;
-  public String d;
   public int e;
-  public String e;
   public String f;
-  public String g;
-  
-  ConfessManager$GroupChatExtra()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public int g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public long l;
+  public int m;
+  public boolean n = false;
   
   public static GroupChatExtra a(String paramString)
   {
@@ -34,20 +29,20 @@ class ConfessManager$GroupChatExtra
     try
     {
       paramString = new JSONObject(paramString);
-      localGroupChatExtra.jdField_a_of_type_JavaLangString = paramString.optString("strGroupUin");
-      localGroupChatExtra.jdField_b_of_type_JavaLangString = paramString.optString("strSendUin");
-      localGroupChatExtra.jdField_a_of_type_Int = paramString.optInt("nTopicId");
-      localGroupChatExtra.jdField_b_of_type_Int = paramString.optInt("nBGType");
-      localGroupChatExtra.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
-      localGroupChatExtra.jdField_c_of_type_JavaLangString = paramString.optString("strRecNick");
-      localGroupChatExtra.jdField_d_of_type_Int = paramString.optInt("nRecNickType");
-      localGroupChatExtra.jdField_d_of_type_JavaLangString = paramString.optString("strRecUin");
-      localGroupChatExtra.jdField_e_of_type_JavaLangString = paramString.optString("strConfessorUin");
-      localGroupChatExtra.f = paramString.optString("strConfessorDesc");
-      localGroupChatExtra.g = paramString.optString("strConfessorNick");
-      localGroupChatExtra.jdField_e_of_type_Int = paramString.optInt("flag");
-      localGroupChatExtra.jdField_a_of_type_Long = paramString.optInt("confessTime");
-      localGroupChatExtra.jdField_a_of_type_Boolean = paramString.optBoolean("isRandomShmsgseq");
+      localGroupChatExtra.a = paramString.optString("strGroupUin");
+      localGroupChatExtra.b = paramString.optString("strSendUin");
+      localGroupChatExtra.c = paramString.optInt("nTopicId");
+      localGroupChatExtra.d = paramString.optInt("nBGType");
+      localGroupChatExtra.e = paramString.optInt("nConfessorSex");
+      localGroupChatExtra.f = paramString.optString("strRecNick");
+      localGroupChatExtra.g = paramString.optInt("nRecNickType");
+      localGroupChatExtra.h = paramString.optString("strRecUin");
+      localGroupChatExtra.i = paramString.optString("strConfessorUin");
+      localGroupChatExtra.j = paramString.optString("strConfessorDesc");
+      localGroupChatExtra.k = paramString.optString("strConfessorNick");
+      localGroupChatExtra.m = paramString.optInt("flag");
+      localGroupChatExtra.l = paramString.optInt("confessTime");
+      localGroupChatExtra.n = paramString.optBoolean("isRandomShmsgseq");
       return localGroupChatExtra;
     }
     catch (Exception paramString) {}
@@ -59,20 +54,20 @@ class ConfessManager$GroupChatExtra
     try
     {
       Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("strGroupUin", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strSendUin", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
-      ((JSONObject)localObject).put("strRecNick", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject).put("nRecNickType", this.jdField_d_of_type_Int);
-      ((JSONObject)localObject).put("strRecUin", this.jdField_d_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorUin", this.jdField_e_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorDesc", this.f);
-      ((JSONObject)localObject).put("strConfessorNick", this.g);
-      ((JSONObject)localObject).put("flag", this.jdField_e_of_type_Int);
-      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("isRandomShmsgseq", this.jdField_a_of_type_Boolean);
+      ((JSONObject)localObject).put("strGroupUin", this.a);
+      ((JSONObject)localObject).put("strSendUin", this.b);
+      ((JSONObject)localObject).put("nTopicId", this.c);
+      ((JSONObject)localObject).put("nBGType", this.d);
+      ((JSONObject)localObject).put("nConfessorSex", this.e);
+      ((JSONObject)localObject).put("strRecNick", this.f);
+      ((JSONObject)localObject).put("nRecNickType", this.g);
+      ((JSONObject)localObject).put("strRecUin", this.h);
+      ((JSONObject)localObject).put("strConfessorUin", this.i);
+      ((JSONObject)localObject).put("strConfessorDesc", this.j);
+      ((JSONObject)localObject).put("strConfessorNick", this.k);
+      ((JSONObject)localObject).put("flag", this.m);
+      ((JSONObject)localObject).put("confessTime", this.l);
+      ((JSONObject)localObject).put("isRandomShmsgseq", this.n);
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
@@ -85,7 +80,7 @@ class ConfessManager$GroupChatExtra
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessManager.GroupChatExtra
  * JD-Core Version:    0.7.0.1
  */

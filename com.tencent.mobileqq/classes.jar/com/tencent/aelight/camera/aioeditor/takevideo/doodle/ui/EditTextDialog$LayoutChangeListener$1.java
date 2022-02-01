@@ -7,13 +7,13 @@ class EditTextDialog$LayoutChangeListener$1
   
   public void run()
   {
-    this.a.a.a.a(this.a.a.a());
-    this.a.a.a.a(this.a.a.c(), this.a.a.d());
+    this.a.a.g.a(this.a.a.a());
+    this.a.a.g.a(this.a.a.c(), this.a.a.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog.LayoutChangeListener.1
  * JD-Core Version:    0.7.0.1
  */

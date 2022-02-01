@@ -13,17 +13,17 @@ import com.tencent.qphone.base.util.QLog;
 class AvatarOnGestureListener$TroopMemberInfoCallBack
   implements TroopManager.ITroopMemberInfoCallBack
 {
-  private AvatarOnGestureListener jdField_a_of_type_ComTencentMobileqqActivityAioAvatardoubletapAvatarOnGestureListener;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  private VasAvatar jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar;
+  private AvatarOnGestureListener a;
+  private ChatMessage b;
+  private VasAvatar c;
+  private QQAppInterface d;
   
   AvatarOnGestureListener$TroopMemberInfoCallBack(VasAvatar paramVasAvatar, ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, AvatarOnGestureListener paramAvatarOnGestureListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar = paramVasAvatar;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAvatardoubletapAvatarOnGestureListener = paramAvatarOnGestureListener;
+    this.c = paramVasAvatar;
+    this.b = paramChatMessage;
+    this.d = paramQQAppInterface;
+    this.a = paramAvatarOnGestureListener;
   }
   
   public void a(TroopMemberInfo paramTroopMemberInfo)
@@ -31,25 +31,25 @@ class AvatarOnGestureListener$TroopMemberInfoCallBack
     if (paramTroopMemberInfo == null)
     {
       int i;
-      if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        i = 2131694690;
+      if (TextUtils.equals(this.b.senderuin, this.d.getCurrentAccountUin())) {
+        i = 2131892382;
       } else {
-        i = 2131694691;
+        i = 2131892383;
       }
-      QQToast.a(BaseApplicationImpl.getContext(), 0, i, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 0, i, 0).show();
       if (QLog.isColorLevel()) {
         QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() isKicked");
       }
     }
     else
     {
-      AvatarOnGestureListener.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAvatardoubletapAvatarOnGestureListener, this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      AvatarOnGestureListener.a(this.a, this.c, this.b, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.AvatarOnGestureListener.TroopMemberInfoCallBack
  * JD-Core Version:    0.7.0.1
  */

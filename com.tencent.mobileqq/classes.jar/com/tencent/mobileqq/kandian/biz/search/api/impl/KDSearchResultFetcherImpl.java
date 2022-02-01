@@ -9,6 +9,7 @@ import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.kandian.biz.search.api.IKDSearchResultFetcher;
 import com.tencent.mobileqq.kandian.biz.search.searchresult.KDSearchResultFragment;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.URLUtil;
 
@@ -24,7 +25,7 @@ public class KDSearchResultFetcherImpl
       } else {
         paramString2 = URLUtil.a(paramString2, "searchbox", "native");
       }
-      paramString1 = KDSearchResultFragment.a(paramContext, paramString1, URLUtil.a(URLUtil.a(paramString2, "q"), "q", paramString1));
+      paramString1 = KDSearchResultFragment.a(paramContext, paramString1, SearchUtils.e(paramString2));
       paramString2 = Aladdin.getConfig(313);
       if (paramString2 != null) {
         paramString1.putExtra("searchbox_style", paramString2.getIntegerFromString("SearchBox_SearchStyle", -1));
@@ -48,7 +49,7 @@ public class KDSearchResultFetcherImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.search.api.impl.KDSearchResultFetcherImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,12 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.kandian.biz.pts.ui.PTSImageView;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.FastBlurDecoder;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class PTSImageUtil
 {
+  private static HashMap<String, Drawable> a = new HashMap();
+  
   private static int a(Context paramContext, String paramString)
   {
     if ((paramContext != null) && (paramContext.getResources() != null) && (!TextUtils.isEmpty(paramString))) {
@@ -34,7 +37,7 @@ public class PTSImageUtil
       if (a(paramString))
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        paramContext = paramContext.getResources().getDrawable(2130841770);
+        paramContext = paramContext.getResources().getDrawable(2130842687);
         ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramContext;
         ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramContext;
         paramContext = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
@@ -66,6 +69,21 @@ public class PTSImageUtil
     return localObject1;
   }
   
+  private static String a(String paramString, PTSImageView paramPTSImageView)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramPTSImageView != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramPTSImageView.getWidth());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramPTSImageView.getHeight());
+      return localStringBuilder.toString();
+    }
+    return "";
+  }
+  
   public static void a(PTSImageView paramPTSImageView, String paramString)
   {
     if (paramPTSImageView != null)
@@ -73,13 +91,18 @@ public class PTSImageUtil
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      Object localObject;
       if (QLog.isDebugVersion())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[setLocalImageDrawable], localPath = ");
         ((StringBuilder)localObject).append(paramString);
         QLog.i("PTSImageUtil", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = (Drawable)a.get(a(paramString, paramPTSImageView));
+      if (localObject != null)
+      {
+        paramPTSImageView.setImageDrawable((Drawable)localObject);
+        return;
       }
       try
       {
@@ -99,6 +122,7 @@ public class PTSImageUtil
           return;
         }
         paramPTSImageView.setImageResource(i);
+        a.put(a(paramString, paramPTSImageView), paramPTSImageView.getDrawable());
         return;
       }
       catch (Exception paramString)
@@ -135,7 +159,7 @@ public class PTSImageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSImageUtil
  * JD-Core Version:    0.7.0.1
  */

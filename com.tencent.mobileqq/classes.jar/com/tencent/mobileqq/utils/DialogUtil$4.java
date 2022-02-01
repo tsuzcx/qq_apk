@@ -8,8 +8,8 @@ import android.widget.TextView;
 final class DialogUtil$4
   extends QQCustomDialog
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private int b = this.jdField_a_of_type_Int;
+  private Handler d = new Handler(Looper.getMainLooper());
+  private int e = this.a;
   
   DialogUtil$4(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
@@ -23,21 +23,21 @@ final class DialogUtil$4
   
   private void a(Runnable paramRunnable)
   {
-    if (this.b > 0)
+    if (this.e > 0)
     {
-      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b) }));
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, 1000L);
+      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.c, Integer.valueOf(this.e) }));
+      this.d.postDelayed(paramRunnable, 1000L);
       return;
     }
-    this.lBtn.setText(this.jdField_a_of_type_JavaLangString);
-    this.b = this.jdField_a_of_type_Int;
+    this.lBtn.setText(this.c);
+    this.e = this.a;
     this.lBtn.setEnabled(true);
   }
   
   public void dismiss()
   {
     super.dismiss();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.d.removeCallbacksAndMessages(null);
   }
   
   public void onBackPressed() {}
@@ -45,17 +45,17 @@ final class DialogUtil$4
   public void show()
   {
     super.show();
-    if ((this.jdField_a_of_type_Boolean) && (this.b > 0))
+    if ((this.b) && (this.e > 0))
     {
-      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b) }));
+      this.lBtn.setText(String.format("%s(%d)", new Object[] { this.c, Integer.valueOf(this.e) }));
       this.lBtn.setEnabled(false);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(a(), 1000L);
+      this.d.postDelayed(a(), 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DialogUtil.4
  * JD-Core Version:    0.7.0.1
  */

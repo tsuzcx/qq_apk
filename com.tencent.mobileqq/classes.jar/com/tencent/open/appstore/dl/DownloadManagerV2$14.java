@@ -12,7 +12,7 @@ class DownloadManagerV2$14
   {
     try
     {
-      DownloadManagerV2.a(this.this$0).pauseDownloadTask(this.a);
+      DownloadManagerV2.e(this.this$0).pauseDownloadTask(this.a);
       return;
     }
     catch (Exception localException)
@@ -23,7 +23,7 @@ class DownloadManagerV2$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.14
  * JD-Core Version:    0.7.0.1
  */

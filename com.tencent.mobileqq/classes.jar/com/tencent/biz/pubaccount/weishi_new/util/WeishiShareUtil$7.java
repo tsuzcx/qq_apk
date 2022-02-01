@@ -13,13 +13,13 @@ final class WeishiShareUtil$7
   
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    WeishiShareUtil.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newShareWSShareParam);
+    WeishiShareUtil.a(this.a, paramActionSheetItem, this.b);
     paramShareActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WeishiShareUtil.7
  * JD-Core Version:    0.7.0.1
  */

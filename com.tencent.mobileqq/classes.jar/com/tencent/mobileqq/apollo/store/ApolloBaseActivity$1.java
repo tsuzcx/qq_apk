@@ -17,7 +17,7 @@ class ApolloBaseActivity$1
   
   public void run()
   {
-    ReportController.b(null, "P_CliOper", "WebStatusReport", "", "", this.jdField_a_of_type_JavaLangString, 0, 1, this.this$0.mCurrentStep, this.this$0.mCurrentUrl, Build.VERSION.RELEASE, String.valueOf(this.this$0.mCurrentStepTime - this.this$0.mClickTime), String.valueOf(System.currentTimeMillis() - this.this$0.mClickTime));
+    ReportController.b(null, "P_CliOper", "WebStatusReport", "", "", this.a, 0, 1, this.this$0.mCurrentStep, this.this$0.mCurrentUrl, Build.VERSION.RELEASE, String.valueOf(this.this$0.mCurrentStepTime - this.this$0.mClickTime), String.valueOf(System.currentTimeMillis() - this.this$0.mClickTime));
     Object localObject1 = ApolloBaseActivity.access$000(this.this$0).getAll();
     Object localObject2;
     if (QLog.isColorLevel())
@@ -31,7 +31,7 @@ class ApolloBaseActivity$1
       ((StringBuilder)localObject2).append(this.this$0.mCurrentStep);
       QLog.d("[cmshow]ApolloBaseActivity", 2, ((StringBuilder)localObject2).toString());
     }
-    if (this.jdField_a_of_type_Int != 1)
+    if (this.b != 1)
     {
       if (localObject1 != null)
       {
@@ -60,7 +60,7 @@ class ApolloBaseActivity$1
         if (!((String)((Map.Entry)localObject2).getKey()).equalsIgnoreCase(String.valueOf(this.this$0.mOnCreateMilliTimeStamp)))
         {
           localObject2 = String.valueOf(((Map.Entry)localObject2).getValue());
-          ReportController.b(null, "P_CliOper", "WebStatusReport", "", "hard code unknown", this.jdField_a_of_type_JavaLangString, 0, 1, 100, (String)localObject2, Build.VERSION.RELEASE, "100", "200");
+          ReportController.b(null, "P_CliOper", "WebStatusReport", "", "hard code unknown", this.a, 0, 1, 100, (String)localObject2, Build.VERSION.RELEASE, "100", "200");
         }
       }
     }
@@ -69,7 +69,7 @@ class ApolloBaseActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloBaseActivity.1
  * JD-Core Version:    0.7.0.1
  */

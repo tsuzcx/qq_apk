@@ -11,7 +11,7 @@ public class TenDocGroupListEntryConfigProcessor
 {
   public static TenDocGroupListEntryConfigBean a()
   {
-    return (TenDocGroupListEntryConfigBean)QConfigManager.a().a(500);
+    return (TenDocGroupListEntryConfigBean)QConfigManager.b().b(500);
   }
   
   @NonNull
@@ -60,7 +60,7 @@ public class TenDocGroupListEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TenDocGroupListEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

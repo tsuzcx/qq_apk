@@ -9,26 +9,26 @@ import java.util.ArrayList;
 class AIOPictureView$3
   implements Runnable
 {
-  AIOPictureView$3(AIOPictureView paramAIOPictureView, File paramFile, ArrayList paramArrayList) {}
+  AIOPictureView$3(AIOPictureView paramAIOPictureView, File paramFile, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
   public void run()
   {
     if (((IBrowserDepend)QRoute.api(IBrowserDepend.class)).scanQrCodeNeedBlock()) {
       return;
     }
-    if ((this.this$0.b != null) && (this.this$0.b.equals(this.jdField_a_of_type_JavaIoFile.getPath())))
+    if ((this.this$0.q != null) && (this.this$0.q.equals(this.a.getPath())))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("file://");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      ((StringBuilder)localObject).append(this.a.getAbsolutePath());
       localObject = Uri.parse(((StringBuilder)localObject).toString());
-      AIOPictureView.a(this.this$0, (Uri)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+      AIOPictureView.a(this.this$0, (Uri)localObject, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOPictureView.3
  * JD-Core Version:    0.7.0.1
  */

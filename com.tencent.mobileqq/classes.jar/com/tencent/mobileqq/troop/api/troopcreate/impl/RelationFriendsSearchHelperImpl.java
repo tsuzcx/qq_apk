@@ -45,7 +45,7 @@ public class RelationFriendsSearchHelperImpl
     {
       Object localObject1 = new HashMap();
       long l2 = NetConnInfoCenter.getServerTime() + 100L;
-      Object localObject4 = ((QQAppInterface)localObject2).getProxyManager().a();
+      Object localObject4 = ((QQAppInterface)localObject2).getProxyManager().g();
       int j = 0;
       int i = 0;
       long l1 = 0L;
@@ -54,7 +54,7 @@ public class RelationFriendsSearchHelperImpl
         localObject3 = (TroopIndex)paramAppInterface.get(j);
         if (!((HashMap)localObject1).containsKey(((TroopIndex)localObject3).mTroopUin))
         {
-          localObject5 = ((RecentUserProxy)localObject4).a(((TroopIndex)localObject3).mTroopUin, 1);
+          localObject5 = ((RecentUserProxy)localObject4).b(((TroopIndex)localObject3).mTroopUin, 1);
           if ((localObject5 != null) && (((RecentUser)localObject5).lastmsgtime > 0L))
           {
             l3 = l2 - ((RecentUser)localObject5).lastmsgtime;
@@ -127,17 +127,17 @@ public class RelationFriendsSearchHelperImpl
               {
                 RelationFriendsSearchHelperImpl.MemberScore localMemberScore = new RelationFriendsSearchHelperImpl.MemberScore(f2);
                 localMemberScore.b = f1;
-                localMemberScore.jdField_a_of_type_Int = 1;
-                RecentUser localRecentUser = ((RecentUserProxy)localObject4).a(((TroopIndex)localObject6).mMemberUin, 0);
+                localMemberScore.c = 1;
+                RecentUser localRecentUser = ((RecentUserProxy)localObject4).b(((TroopIndex)localObject6).mMemberUin, 0);
                 if (localRecentUser != null) {
-                  localMemberScore.jdField_a_of_type_Long = localRecentUser.lastmsgtime;
+                  localMemberScore.d = localRecentUser.lastmsgtime;
                 }
                 ((HashMap)localObject5).put(((TroopIndex)localObject6).mMemberUin, localMemberScore);
               }
               else
               {
                 localObject6 = (RelationFriendsSearchHelperImpl.MemberScore)((HashMap)localObject5).get(((TroopIndex)localObject6).mMemberUin);
-                ((RelationFriendsSearchHelperImpl.MemberScore)localObject6).jdField_a_of_type_Int += 1;
+                ((RelationFriendsSearchHelperImpl.MemberScore)localObject6).c += 1;
                 ((RelationFriendsSearchHelperImpl.MemberScore)localObject6).b += f1;
               }
             }
@@ -191,15 +191,15 @@ public class RelationFriendsSearchHelperImpl
           {
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append("top20:uin");
-            ((StringBuilder)localObject4).append(StringUtil.e(((Friends)localObject2).uin));
+            ((StringBuilder)localObject4).append(StringUtil.getSimpleUinForPrint(((Friends)localObject2).uin));
             ((StringBuilder)localObject4).append(",scores:");
             ((StringBuilder)localObject4).append(((RelationFriendsSearchHelperImpl.MemberScore)localObject1).a());
             ((StringBuilder)localObject4).append(",frequency:");
-            ((StringBuilder)localObject4).append(((RelationFriendsSearchHelperImpl.MemberScore)localObject1).jdField_a_of_type_Int);
+            ((StringBuilder)localObject4).append(((RelationFriendsSearchHelperImpl.MemberScore)localObject1).c);
             ((StringBuilder)localObject4).append(",activefactor:");
             ((StringBuilder)localObject4).append(((RelationFriendsSearchHelperImpl.MemberScore)localObject1).b);
             ((StringBuilder)localObject4).append(",c2clastmsgtime:");
-            ((StringBuilder)localObject4).append(((RelationFriendsSearchHelperImpl.MemberScore)localObject1).jdField_a_of_type_Long);
+            ((StringBuilder)localObject4).append(((RelationFriendsSearchHelperImpl.MemberScore)localObject1).d);
             QLog.i("RelationFriendsSearchHelperImpl", 2, ((StringBuilder)localObject4).toString());
           }
         }
@@ -217,7 +217,7 @@ public class RelationFriendsSearchHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.troopcreate.impl.RelationFriendsSearchHelperImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,12 @@ class ApolloPanelTips$1
       return;
     }
     View.OnClickListener localOnClickListener = (View.OnClickListener)localPopupWindowData.a.get();
-    this.a.a(ApolloPanelTips.PopupWindowData.a(localPopupWindowData), ApolloPanelTips.PopupWindowData.a(localPopupWindowData), ApolloPanelTips.PopupWindowData.a(localPopupWindowData), ApolloPanelTips.PopupWindowData.b(localPopupWindowData), localOnClickListener);
+    this.a.a(ApolloPanelTips.PopupWindowData.a(localPopupWindowData), ApolloPanelTips.PopupWindowData.b(localPopupWindowData), ApolloPanelTips.PopupWindowData.c(localPopupWindowData), ApolloPanelTips.PopupWindowData.d(localPopupWindowData), localOnClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanelTips.1
  * JD-Core Version:    0.7.0.1
  */

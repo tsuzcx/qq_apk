@@ -60,20 +60,15 @@ public final class TofuAskAnonymouslyItemBuilder
   extends AbstractChatItemBuilder
   implements DecodeTaskCompletionListener
 {
-  public static final TofuAskAnonymouslyItemBuilder.Companion a;
-  private int jdField_a_of_type_Int;
-  private TofuAskAnonymouslyItemBuilder.Holder jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder = new TofuAskAnonymouslyItemBuilder.Holder();
-  private TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$LatestAnonymousInfo = new TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo(false, null, 0L, false, 0L, 0L, 63, null);
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private MessageForTofuAskAnonymously jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously = new MessageForTofuAskAnonymously();
-  private final AnonymousObserver jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver = (AnonymousObserver)new TofuAskAnonymouslyItemBuilder.mAnonymousObserver.1(this);
-  private String jdField_a_of_type_JavaLangString = "";
-  private final HashMap<String, ImageView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Companion = new TofuAskAnonymouslyItemBuilder.Companion(null);
-  }
+  public static final TofuAskAnonymouslyItemBuilder.Companion e = new TofuAskAnonymouslyItemBuilder.Companion(null);
+  private int f;
+  private IFaceDecoder g;
+  private final HashMap<String, ImageView> h = new HashMap();
+  private TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo i = new TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo(false, null, 0L, false, 0L, 0L, 63, null);
+  private String j = "";
+  private TofuAskAnonymouslyItemBuilder.Holder k = new TofuAskAnonymouslyItemBuilder.Holder();
+  private MessageForTofuAskAnonymously l = new MessageForTofuAskAnonymously();
+  private final AnonymousObserver m = (AnonymousObserver)new TofuAskAnonymouslyItemBuilder.mAnonymousObserver.1(this);
   
   public TofuAskAnonymouslyItemBuilder(@NotNull QQAppInterface paramQQAppInterface, @NotNull BaseAdapter paramBaseAdapter, @NotNull Context paramContext, @NotNull SessionInfo paramSessionInfo)
   {
@@ -81,14 +76,14 @@ public final class TofuAskAnonymouslyItemBuilder
     double d1 = Math.random();
     double d2 = AnonymousConstant.HEAD_BG_COLOR.length;
     Double.isNaN(d2);
-    this.jdField_a_of_type_Int = ((int)(d1 * d2));
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance((AppInterface)paramQQAppInterface);
-    paramBaseAdapter = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    this.f = ((int)(d1 * d2));
+    this.g = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance((AppInterface)paramQQAppInterface);
+    paramBaseAdapter = this.g;
     if (paramBaseAdapter == null) {
       Intrinsics.throwNpe();
     }
     paramBaseAdapter.setDecodeTaskCompletionListener((DecodeTaskCompletionListener)this);
-    paramQQAppInterface.addObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
+    paramQQAppInterface.addObserver((BusinessObserver)this.m);
   }
   
   private final View a(View paramView, TofuAskAnonymouslyItemBuilder.Holder paramHolder)
@@ -96,65 +91,65 @@ public final class TofuAskAnonymouslyItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558833, null);
+      paramView = LayoutInflater.from(this.c).inflate(2131624453, null);
       if (paramHolder != null) {
-        paramHolder.a((ViewGroup)paramView.findViewById(2131374156));
+        paramHolder.a((ViewGroup)paramView.findViewById(2131442251));
       }
       if (paramHolder != null) {
-        paramHolder.b((ViewGroup)paramView.findViewById(2131374161));
+        paramHolder.b((ViewGroup)paramView.findViewById(2131442256));
       }
       if (paramHolder != null) {
-        paramHolder.c((ViewGroup)paramView.findViewById(2131374155));
+        paramHolder.c((ViewGroup)paramView.findViewById(2131442250));
       }
       if (paramHolder != null) {
-        paramHolder.a((ImageView)paramView.findViewById(2131374159));
+        paramHolder.a((ImageView)paramView.findViewById(2131442254));
       }
       if (paramHolder != null) {
-        paramHolder.b((ImageView)paramView.findViewById(2131374160));
+        paramHolder.b((ImageView)paramView.findViewById(2131442255));
       }
       if (paramHolder != null) {
-        paramHolder.c((ImageView)paramView.findViewById(2131374153));
+        paramHolder.c((ImageView)paramView.findViewById(2131442248));
       }
       if (paramHolder != null) {
-        paramHolder.d((ImageView)paramView.findViewById(2131374152));
+        paramHolder.d((ImageView)paramView.findViewById(2131442247));
       }
       if (paramHolder != null) {
-        paramHolder.e((ImageView)paramView.findViewById(2131374154));
+        paramHolder.e((ImageView)paramView.findViewById(2131442249));
       }
       if (paramHolder != null) {
-        paramHolder.a((TextView)paramView.findViewById(2131374167));
+        paramHolder.a((TextView)paramView.findViewById(2131442262));
       }
       if (paramHolder != null) {
-        paramHolder.d((ViewGroup)paramView.findViewById(2131374157));
+        paramHolder.d((ViewGroup)paramView.findViewById(2131442252));
       }
       if (paramHolder != null) {
-        paramHolder.g((ImageView)paramView.findViewById(2131374147));
+        paramHolder.g((ImageView)paramView.findViewById(2131442242));
       }
       if (paramHolder != null) {
-        paramHolder.f((ImageView)paramView.findViewById(2131374148));
+        paramHolder.f((ImageView)paramView.findViewById(2131442243));
       }
       if (paramHolder != null) {
-        paramHolder.b((TextView)paramView.findViewById(2131374163));
+        paramHolder.b((TextView)paramView.findViewById(2131442258));
       }
       if (paramHolder != null) {
-        paramHolder.h((ImageView)paramView.findViewById(2131374149));
+        paramHolder.h((ImageView)paramView.findViewById(2131442244));
       }
       if (paramHolder != null) {
-        paramHolder.c((TextView)paramView.findViewById(2131374164));
+        paramHolder.c((TextView)paramView.findViewById(2131442259));
       }
       if (paramHolder != null) {
-        paramHolder.d((TextView)paramView.findViewById(2131374166));
+        paramHolder.d((TextView)paramView.findViewById(2131442261));
       }
       if (paramHolder != null) {
-        paramHolder.i((ImageView)paramView.findViewById(2131374151));
+        paramHolder.i((ImageView)paramView.findViewById(2131442246));
       }
       if (paramHolder != null) {
-        paramHolder.e((TextView)paramView.findViewById(2131374165));
+        paramHolder.e((TextView)paramView.findViewById(2131442260));
       }
       localView = paramView;
       if (paramHolder != null)
       {
-        paramHolder.j((ImageView)paramView.findViewById(2131374150));
+        paramHolder.j((ImageView)paramView.findViewById(2131442245));
         localView = paramView;
       }
     }
@@ -164,39 +159,39 @@ public final class TofuAskAnonymouslyItemBuilder
   private final void a(AnonymousQuestion paramAnonymousQuestion, TofuAskAnonymouslyItemBuilder.Holder paramHolder)
   {
     paramAnonymousQuestion = (View.OnClickListener)new TofuAskAnonymouslyItemBuilder.bindEventListener.listener.1(this, paramAnonymousQuestion, paramHolder);
-    Object localObject = paramHolder.d();
+    Object localObject = paramHolder.q();
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener(paramAnonymousQuestion);
     }
-    localObject = paramHolder.i();
+    localObject = paramHolder.r();
     if (localObject != null) {
       ((ImageView)localObject).setOnClickListener(paramAnonymousQuestion);
     }
-    localObject = paramHolder.e();
+    localObject = paramHolder.s();
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener(paramAnonymousQuestion);
     }
-    localObject = paramHolder.j();
+    localObject = paramHolder.t();
     if (localObject != null) {
       ((ImageView)localObject).setOnClickListener(paramAnonymousQuestion);
     }
-    localObject = paramHolder.c();
+    localObject = paramHolder.p();
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener(paramAnonymousQuestion);
     }
-    localObject = paramHolder.h();
+    localObject = paramHolder.o();
     if (localObject != null) {
       ((ImageView)localObject).setOnClickListener(paramAnonymousQuestion);
     }
-    localObject = paramHolder.e();
+    localObject = paramHolder.s();
     if (localObject != null) {
       ((TextView)localObject).setOnTouchListener((View.OnTouchListener)UITools.a);
     }
-    localObject = paramHolder.j();
+    localObject = paramHolder.t();
     if (localObject != null) {
       ((ImageView)localObject).setOnTouchListener((View.OnTouchListener)UITools.a);
     }
-    paramHolder = paramHolder.a();
+    paramHolder = paramHolder.c();
     if (paramHolder != null) {
       paramHolder.setOnClickListener(paramAnonymousQuestion);
     }
@@ -204,18 +199,18 @@ public final class TofuAskAnonymouslyItemBuilder
   
   private final void a(boolean paramBoolean, TextView paramTextView, ImageView paramImageView, long paramLong)
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject1 = this.c;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "mContext");
-    localObject1 = ((Context)localObject1).getResources().getDrawable(2130845981);
+    localObject1 = ((Context)localObject1).getResources().getDrawable(2130847451);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "mContext.resources.getDr…e_achivement_like_normal)");
-    int i = Color.parseColor("#FFB0B3BF");
+    int n = Color.parseColor("#FFB0B3BF");
     if (paramBoolean)
     {
-      localObject1 = this.jdField_a_of_type_AndroidContentContext;
+      localObject1 = this.c;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "mContext");
       localObject1 = ((Context)localObject1).getResources().getDrawable(AnonymousConstant.LIKE_IV_DRAWABLE);
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "mContext.resources.getDr…onstant.LIKE_IV_DRAWABLE)");
-      i = AnonymousConstant.LIKE_IV_COLOR;
+      n = AnonymousConstant.LIKE_IV_COLOR;
     }
     if (QLog.isColorLevel())
     {
@@ -226,8 +221,8 @@ public final class TofuAskAnonymouslyItemBuilder
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "java.lang.String.format(format, *args)");
       QLog.d("TofuAskAnonymouslyItemBuilder", 2, (String)localObject2);
     }
-    paramTextView.setText((CharSequence)Utils.b((int)paramLong));
-    paramTextView.setTextColor(i);
+    paramTextView.setText((CharSequence)Utils.e((int)paramLong));
+    paramTextView.setTextColor(n);
     paramImageView.setImageDrawable((Drawable)localObject1);
   }
   
@@ -239,67 +234,67 @@ public final class TofuAskAnonymouslyItemBuilder
       return false;
     }
     bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$LatestAnonymousInfo.a())
+    if (this.i.a())
     {
       bool1 = bool2;
-      if (StringsKt.equals$default(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$LatestAnonymousInfo.a(), false, 2, null)) {
+      if (StringsKt.equals$default(paramString, this.i.b(), false, 2, null)) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  private final void b()
+  private final void c()
   {
-    if (a(this.jdField_a_of_type_JavaLangString))
+    if (a(this.j))
     {
-      AnonymousQuestion localAnonymousQuestion = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously.getAskAnonymouslyQuestion();
+      AnonymousQuestion localAnonymousQuestion = this.l.getAskAnonymouslyQuestion();
       if (localAnonymousQuestion != null) {
-        localAnonymousQuestion.mPraised = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$LatestAnonymousInfo.b();
+        localAnonymousQuestion.mPraised = this.i.d();
       }
-      localAnonymousQuestion = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously.getAskAnonymouslyQuestion();
+      localAnonymousQuestion = this.l.getAskAnonymouslyQuestion();
       if (localAnonymousQuestion != null) {
-        localAnonymousQuestion.mTotalPraiseCount = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$LatestAnonymousInfo.a();
+        localAnonymousQuestion.mTotalPraiseCount = this.i.c();
       }
-      localAnonymousQuestion = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously.getAskAnonymouslyQuestion();
+      localAnonymousQuestion = this.l.getAskAnonymouslyQuestion();
       if (localAnonymousQuestion != null) {
-        localAnonymousQuestion.mTotalCommentCount = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$LatestAnonymousInfo.b();
+        localAnonymousQuestion.mTotalCommentCount = this.i.e();
       }
-      localAnonymousQuestion = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously.getAskAnonymouslyQuestion();
+      localAnonymousQuestion = this.l.getAskAnonymouslyQuestion();
       if (localAnonymousQuestion != null) {
-        localAnonymousQuestion.mTotalViewCount = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$LatestAnonymousInfo.c();
+        localAnonymousQuestion.mTotalViewCount = this.i.f();
       }
     }
   }
   
-  private final void c()
+  private final void d()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously.getAskAnonymouslyQuestion();
+    Object localObject1 = this.l.getAskAnonymouslyQuestion();
     if (localObject1 != null)
     {
       boolean bool = ((AnonymousQuestion)localObject1).mPraised;
-      TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.d();
+      TextView localTextView = this.k.q();
       if (localTextView == null) {
         Intrinsics.throwNpe();
       }
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.i();
+      Object localObject2 = this.k.r();
       if (localObject2 == null) {
         Intrinsics.throwNpe();
       }
       a(bool, localTextView, (ImageView)localObject2, ((AnonymousQuestion)localObject1).mTotalPraiseCount);
-      localTextView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.e();
+      localTextView = this.k.s();
       if (localTextView != null) {
-        localTextView.setText((CharSequence)Utils.b((int)((AnonymousQuestion)localObject1).mTotalCommentCount));
+        localTextView.setText((CharSequence)Utils.e((int)((AnonymousQuestion)localObject1).mTotalCommentCount));
       }
-      localTextView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.c();
+      localTextView = this.k.p();
       if (localTextView != null)
       {
         localObject2 = StringCompanionObject.INSTANCE;
-        localObject2 = this.jdField_a_of_type_AndroidContentContext.getString(2131698623);
+        localObject2 = this.c.getString(2131896570);
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "mContext.getString(R.str…q_anonymous_browse_count)");
         Object[] arrayOfObject = new Object[1];
         if (((AnonymousQuestion)localObject1).mTotalViewCount > 0L) {
-          localObject1 = Utils.b((int)((AnonymousQuestion)localObject1).mTotalViewCount);
+          localObject1 = Utils.e((int)((AnonymousQuestion)localObject1).mTotalViewCount);
         } else {
           localObject1 = Long.valueOf(((AnonymousQuestion)localObject1).mTotalViewCount);
         }
@@ -318,7 +313,7 @@ public final class TofuAskAnonymouslyItemBuilder
     {
       try
       {
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+        Object localObject = this.g;
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
@@ -326,18 +321,18 @@ public final class TofuAskAnonymouslyItemBuilder
         if (localObject != null) {
           return localObject;
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+        localObject = this.g;
         if (localObject == null) {
           Intrinsics.throwNpe();
         }
         if (!((IFaceDecoder)localObject).isPausing())
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+          localObject = this.g;
           if (localObject == null) {
             Intrinsics.throwNpe();
           }
           ((IFaceDecoder)localObject).requestDecodeFace(paramString, 200, true);
-          localObject = (Map)this.jdField_a_of_type_JavaUtilHashMap;
+          localObject = (Map)this.h;
           if (paramString == null) {
             Intrinsics.throwNpe();
           }
@@ -348,7 +343,7 @@ public final class TofuAskAnonymouslyItemBuilder
       {
         paramString.printStackTrace();
       }
-      return ImageUtil.f();
+      return ImageUtil.k();
     }
     return null;
   }
@@ -358,45 +353,45 @@ public final class TofuAskAnonymouslyItemBuilder
   {
     if (paramMessageRecord != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously = ((MessageForTofuAskAnonymously)paramMessageRecord);
+      this.l = ((MessageForTofuAskAnonymously)paramMessageRecord);
       if (paramViewHolder != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder = ((TofuAskAnonymouslyItemBuilder.Holder)paramViewHolder);
-        paramViewHolder = a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously.uniseq);
-        paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder;
-        paramView = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously.frienduin;
+        this.k = ((TofuAskAnonymouslyItemBuilder.Holder)paramViewHolder);
+        paramViewHolder = a(paramView, this.k);
+        this.k.a(this.l.uniseq);
+        paramMessageRecord = this.k;
+        paramView = this.l.frienduin;
         Intrinsics.checkExpressionValueIsNotNull(paramView, "mMsg.frienduin");
         paramMessageRecord.a(paramView);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTofuAskAnonymously.getAskAnonymouslyQuestion();
+        paramView = this.l.getAskAnonymouslyQuestion();
         if (paramView != null)
         {
-          paramView.mOwnerUin = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a());
+          paramView.mOwnerUin = Long.parseLong(this.k.a());
           paramMessageRecord = paramView.mId;
           Intrinsics.checkExpressionValueIsNotNull(paramMessageRecord, "it.mId");
-          this.jdField_a_of_type_JavaLangString = paramMessageRecord;
-          b();
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a();
+          this.j = paramMessageRecord;
+          c();
+          paramMessageRecord = this.k.j();
           if (paramMessageRecord != null) {
             paramMessageRecord.setText((CharSequence)new QQText((CharSequence)QzoneEmotionUtils.emCodesToQQcodes(paramView.mQuest), 3, 16));
           }
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.b();
+          paramMessageRecord = this.k.n();
           if (paramMessageRecord != null) {
             paramMessageRecord.setText((CharSequence)new QQText((CharSequence)QzoneEmotionUtils.emCodesToQQcodes(paramView.mAnswer), 3, 16));
           }
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.g();
+          paramMessageRecord = this.k.m();
           if (paramMessageRecord != null) {
-            paramMessageRecord.setImageBitmap(a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.g()));
+            paramMessageRecord.setImageBitmap(a(this.k.a(), this.k.m()));
           }
-          paramLinearLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.c();
+          paramLinearLayout = this.k.p();
           if (paramLinearLayout != null)
           {
             paramMessageRecord = StringCompanionObject.INSTANCE;
-            paramOnLongClickAndTouchListener = this.jdField_a_of_type_AndroidContentContext.getString(2131698623);
+            paramOnLongClickAndTouchListener = this.c.getString(2131896570);
             Intrinsics.checkExpressionValueIsNotNull(paramOnLongClickAndTouchListener, "mContext.getString(R.str…q_anonymous_browse_count)");
             Object[] arrayOfObject = new Object[1];
             if (paramView.mTotalViewCount > 0L) {
-              paramMessageRecord = Utils.b((int)paramView.mTotalViewCount);
+              paramMessageRecord = Utils.e((int)paramView.mTotalViewCount);
             } else {
               paramMessageRecord = Long.valueOf(paramView.mTotalViewCount);
             }
@@ -405,106 +400,106 @@ public final class TofuAskAnonymouslyItemBuilder
             Intrinsics.checkExpressionValueIsNotNull(paramMessageRecord, "java.lang.String.format(format, *args)");
             paramLinearLayout.setText((CharSequence)paramMessageRecord);
           }
-          if ((ThemeUtil.isSimpleDayTheme(false)) && (!ThemeUtil.isNowThemeIsNight((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)))
+          if ((ThemeUtil.isSimpleDayTheme(false)) && (!ThemeUtil.isNowThemeIsNight((AppRuntime)this.a, false, null)))
           {
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.b();
+            paramMessageRecord = this.k.d();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setBackgroundResource(2130844849);
+              paramMessageRecord.setBackgroundResource(2130846283);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.c();
+            paramMessageRecord = this.k.l();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setBackgroundResource(2130844848);
+              paramMessageRecord.setBackgroundResource(2130846282);
             }
           }
-          if (ThemeUtil.isInNightMode((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+          if (ThemeUtil.isInNightMode((AppRuntime)this.a))
           {
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.b();
+            paramMessageRecord = this.k.d();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setBackgroundResource(2130845909);
+              paramMessageRecord.setBackgroundResource(2130847379);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.c();
+            paramMessageRecord = this.k.l();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setBackgroundResource(2130845898);
+              paramMessageRecord.setBackgroundResource(2130847368);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a();
+            paramMessageRecord = this.k.e();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130844822);
+              paramMessageRecord.setImageResource(2130846256);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.b();
+            paramMessageRecord = this.k.f();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130844823);
+              paramMessageRecord.setImageResource(2130846257);
             }
           }
-          if (SimpleUIUtil.a())
+          if (SimpleUIUtil.e())
           {
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.d();
+            paramMessageRecord = this.k.h();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130845915);
+              paramMessageRecord.setImageResource(2130847385);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.c();
+            paramMessageRecord = this.k.g();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130845912);
+              paramMessageRecord.setImageResource(2130847382);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.e();
+            paramMessageRecord = this.k.i();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130845914);
+              paramMessageRecord.setImageResource(2130847384);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.f();
+            paramMessageRecord = this.k.k();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130845900);
+              paramMessageRecord.setImageResource(2130847370);
             }
           }
           else
           {
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.d();
+            paramMessageRecord = this.k.h();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130845910);
+              paramMessageRecord.setImageResource(2130847380);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.c();
+            paramMessageRecord = this.k.g();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130845911);
+              paramMessageRecord.setImageResource(2130847381);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.e();
+            paramMessageRecord = this.k.i();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130845913);
+              paramMessageRecord.setImageResource(2130847383);
             }
-            paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.f();
+            paramMessageRecord = this.k.k();
             if (paramMessageRecord != null) {
-              paramMessageRecord.setImageResource(2130845899);
+              paramMessageRecord.setImageResource(2130847369);
             }
           }
-          int i = this.jdField_a_of_type_Int;
-          int j = AnonymousConstant.HEAD_BG_COLOR.length;
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.c();
+          int n = this.f;
+          int i1 = AnonymousConstant.HEAD_BG_COLOR.length;
+          paramMessageRecord = this.k.g();
           if (paramMessageRecord != null) {
             paramMessageRecord.clearColorFilter();
           }
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.c();
+          paramMessageRecord = this.k.g();
           if (paramMessageRecord != null) {
-            paramMessageRecord.setColorFilter(AnonymousConstant.HEAD_BG_COLOR[(i % j)]);
+            paramMessageRecord.setColorFilter(AnonymousConstant.HEAD_BG_COLOR[(n % i1)]);
           }
           boolean bool = paramView.mPraised;
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.d();
+          paramMessageRecord = this.k.q();
           if (paramMessageRecord == null) {
             Intrinsics.throwNpe();
           }
-          paramLinearLayout = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.i();
+          paramLinearLayout = this.k.r();
           if (paramLinearLayout == null) {
             Intrinsics.throwNpe();
           }
           a(bool, paramMessageRecord, paramLinearLayout, paramView.mTotalPraiseCount);
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.e();
+          paramMessageRecord = this.k.s();
           if (paramMessageRecord != null) {
-            paramMessageRecord.setText((CharSequence)Utils.b((int)paramView.mTotalCommentCount));
+            paramMessageRecord.setText((CharSequence)Utils.e((int)paramView.mTotalCommentCount));
           }
-          a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder);
-          paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER);
+          a(paramView, this.k);
+          paramMessageRecord = this.a.getBusinessHandler(BusinessHandlerFactory.ANONYMOUS_ANSWER_HANDLER);
           if (paramMessageRecord != null)
           {
             paramMessageRecord = (AnonymousHandler)paramMessageRecord;
-            if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a())
+            if (!this.k.b())
             {
-              this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a(true);
+              this.k.a(true);
               ThreadManagerV2.excute((Runnable)new TofuAskAnonymouslyItemBuilder.getItemView..inlined.let.lambda.1(this), 128, null, true);
               try
               {
@@ -517,7 +512,7 @@ public final class TofuAskAnonymouslyItemBuilder
                 paramView.append(paramMessageRecord);
                 QLog.e("TofuAskAnonymouslyItemBuilder", 1, paramView.toString());
               }
-              ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTofuAskAnonymouslyItemBuilder$Holder.a(), "0X800B5C0", "0X800B5C0", 0, 0, "", "", "", "");
+              ReportController.b(null, "dc00898", "", this.k.a(), "0X800B5C0", "0X800B5C0", 0, 0, "", "", "", "");
               return paramViewHolder;
             }
           }
@@ -539,10 +534,16 @@ public final class TofuAskAnonymouslyItemBuilder
     return (AbstractChatItemBuilder.ViewHolder)new TofuAskAnonymouslyItemBuilder.Holder();
   }
   
-  public void a()
+  @NotNull
+  public QQCustomMenuItem[] a(@Nullable View paramView)
   {
-    super.a();
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    return new QQCustomMenuItem[0];
+  }
+  
+  public void b()
+  {
+    super.b();
+    IFaceDecoder localIFaceDecoder = this.g;
     if (localIFaceDecoder != null)
     {
       if (localIFaceDecoder == null) {
@@ -550,19 +551,13 @@ public final class TofuAskAnonymouslyItemBuilder
       }
       localIFaceDecoder.destory();
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
-  }
-  
-  @NotNull
-  public QQCustomMenuItem[] a(@Nullable View paramView)
-  {
-    return new QQCustomMenuItem[0];
+    this.h.clear();
+    this.a.removeObserver((BusinessObserver)this.m);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, @Nullable String paramString, @Nullable Bitmap paramBitmap)
   {
-    paramString = (ImageView)((Map)this.jdField_a_of_type_JavaUtilHashMap).get(paramString);
+    paramString = (ImageView)((Map)this.h).get(paramString);
     if (paramString != null) {
       paramString.setImageBitmap(paramBitmap);
     }
@@ -570,7 +565,7 @@ public final class TofuAskAnonymouslyItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAskAnonymouslyItemBuilder
  * JD-Core Version:    0.7.0.1
  */

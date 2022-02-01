@@ -9,37 +9,36 @@ import java.util.List;
 public class CommentListPageLoader$GetFeedCommentEvent
   extends BasePageLoaderEvent
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
-  public int c;
+  public String e;
+  public int f;
+  public String h;
+  public int i;
+  public int j;
+  public List<CommentEntry> k = new ArrayList(0);
   
   public CommentListPageLoader$GetFeedCommentEvent(ErrorMessage paramErrorMessage, String paramString, int paramInt)
   {
     super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt;
+    this.e = paramString;
+    this.j = paramInt;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetFeedCommentEvent{feedId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", mSource=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", mCommentEntries=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(this.k.size());
     localStringBuilder.append(", mTotalCount=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", isEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

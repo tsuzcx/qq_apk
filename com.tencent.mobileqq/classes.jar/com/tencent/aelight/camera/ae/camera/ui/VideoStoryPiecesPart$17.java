@@ -1,10 +1,10 @@
 package com.tencent.aelight.camera.ae.camera.ui;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.aelight.camera.aebase.QIMCameraUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
 
 class VideoStoryPiecesPart$17
   implements Runnable
@@ -13,24 +13,25 @@ class VideoStoryPiecesPart$17
   
   public void run()
   {
-    try
+    View localView = VideoStoryPiecesPart.Y(this.this$0).findViewById(2063990903);
+    if (localView != null)
     {
-      VideoStoryPiecesPart.a(this.this$0, QIMCameraUtil.a(VideoStoryPiecesPart.j(this.this$0), true));
-      if ((VideoStoryPiecesPart.a(this.this$0) != null) && (!VideoStoryPiecesPart.a(this.this$0).isRecycled())) {
-        VideoStoryPiecesPart.a(this.this$0, ImageUtil.b(VideoStoryPiecesPart.a(this.this$0), ViewUtils.a(3.0F), VideoStoryPiecesPart.a(this.this$0).getWidth(), VideoStoryPiecesPart.a(this.this$0).getHeight()));
+      ViewGroup.LayoutParams localLayoutParams = VideoStoryPiecesPart.Z(this.this$0).getLayoutParams();
+      if ((localLayoutParams instanceof RelativeLayout.LayoutParams))
+      {
+        Rect localRect = new Rect();
+        localView.getGlobalVisibleRect(localRect);
+        int i = VideoStoryPiecesPart.Z(this.this$0).getMeasuredWidth();
+        ((RelativeLayout.LayoutParams)localLayoutParams).leftMargin = ((localRect.left + localRect.right) / 2 - i / 2);
+        VideoStoryPiecesPart.Z(this.this$0).setLayoutParams(localLayoutParams);
+        VideoStoryPiecesPart.Z(this.this$0).setVisibility(0);
       }
-      VideoStoryPiecesPart.k(this.this$0).runOnUiThread(new VideoStoryPiecesPart.17.1(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.VideoStoryPiecesPart.17
  * JD-Core Version:    0.7.0.1
  */

@@ -27,33 +27,29 @@ import mqq.app.MobileQQ;
 
 public class GdtMVEndcardWebController
 {
-  public long a;
-  public View a;
-  public FrameLayout a;
-  public TouchWebView a;
-  public GdtMotiveVideoModel a;
-  private final GdtMvElementsHelper jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsHelper = new GdtMvElementsHelper();
-  public GdtThirdProcessorProxy a;
-  public GdtWebViewProxy a;
   public IGdtWebView a;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  public String a;
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("/*(\\w+)/*(\\w+)/*(\\w+)/*");
-  public boolean a;
-  private long b;
-  public View b;
-  public boolean b;
-  public View c;
-  public boolean c;
-  private boolean d = false;
+  public TouchWebView b;
+  public FrameLayout c;
+  public String d;
+  public GdtMotiveVideoModel e;
+  public long f;
+  public boolean g = false;
+  public boolean h = false;
+  public boolean i = false;
+  public View j;
+  public View k;
+  public View l;
+  public GdtThirdProcessorProxy m;
+  public GdtWebViewProxy n = new GdtWebViewProxy();
+  private Integer o;
+  private Pattern p = Pattern.compile("/*(\\w+)/*(\\w+)/*(\\w+)/*");
+  private long q;
+  private boolean r = false;
+  private final GdtMvElementsHelper s = new GdtMvElementsHelper();
   
   public GdtMVEndcardWebController(GdtThirdProcessorProxy paramGdtThirdProcessorProxy)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentGdtadInjectGdtWebViewProxy = new GdtWebViewProxy();
-    this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy = paramGdtThirdProcessorProxy;
+    this.m = paramGdtThirdProcessorProxy;
   }
   
   private boolean a(WebView paramWebView, String paramString)
@@ -63,16 +59,16 @@ public class GdtMVEndcardWebController
     {
       if (paramString.startsWith("gdtmsg://e.qq.com/reportClickRewardAd/rewardAD/"))
       {
-        if ((this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel != null) && (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a() != null) && (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().getUrlForClick())))
+        if ((this.e != null) && (this.e.d() != null) && (this.e.b() != null) && (!TextUtils.isEmpty(this.e.d().getUrlForClick())))
         {
-          Object localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().getUrlForClick();
-          this.jdField_a_of_type_ComTencentGdtadInjectGdtThirdProcessorProxy.a(1, 0, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a());
+          Object localObject = this.e.d().getUrlForClick();
+          this.m.a(1, 0, this.e.b());
           GdtReporter.doCgiReport((String)localObject);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("handleSchema url= ");
           ((StringBuilder)localObject).append(paramString);
           QLog.i("EndCardWebGdtMVEndcardWebController", 1, ((StringBuilder)localObject).toString());
-          this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvElementsHelper.a(paramWebView, paramString);
+          this.s.a(paramWebView, paramString);
           return true;
         }
         QLog.i("EndCardWebGdtMVEndcardWebController", 1, "handleSchema urlForClick is Empty");
@@ -93,88 +89,38 @@ public class GdtMVEndcardWebController
   public void a()
   {
     QLog.i("EndCardWebGdtMVEndcardWebController", 1, "onWebError");
-    this.jdField_b_of_type_Boolean = true;
-    FrameLayout localFrameLayout = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    this.h = true;
+    FrameLayout localFrameLayout = this.c;
     if ((localFrameLayout != null) && (localFrameLayout.getVisibility() == 0)) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      this.c.setVisibility(8);
     }
   }
   
   public void a(long paramLong)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.i) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.g) {
       return;
     }
-    long l = this.jdField_a_of_type_Long;
-    if (l <= 0L) {
+    long l1 = this.f;
+    if (l1 <= 0L) {
       return;
     }
-    if (paramLong / 1000L > l) {
+    if (paramLong / 1000L > l1) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("preLoadUrl   ");
     localStringBuilder.append(paramLong);
     QLog.i("EndCardWebGdtMVEndcardWebController", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+    this.c.setVisibility(4);
+    if (this.b != null)
     {
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void a(Activity paramActivity, GdtMotiveVideoModel paramGdtMotiveVideoModel, boolean paramBoolean)
-  {
-    int j;
-    int i;
-    if ((paramActivity != null) && (paramGdtMotiveVideoModel != null) && (paramGdtMotiveVideoModel.a() != null))
-    {
-      j = paramGdtMotiveVideoModel.a().getEndcardDirection();
-      if (paramBoolean) {
-        i = 1;
-      } else {
-        i = 2;
-      }
-      paramGdtMotiveVideoModel = new StringBuilder();
-      paramGdtMotiveVideoModel.append("changeScreenOrientation endcard = ");
-      paramGdtMotiveVideoModel.append(j);
-      paramGdtMotiveVideoModel.append(",curr = ");
-      paramGdtMotiveVideoModel.append(i);
-      QLog.i("EndCardWebGdtMVEndcardWebController", 1, paramGdtMotiveVideoModel.toString());
-      if ((j != 1) && (j != 2)) {
-        return;
-      }
-      if (j == i) {
-        return;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        d();
-        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramActivity.getRequestedOrientation());
-        if (j != 1) {
-          break label161;
-        }
-        i = 1;
-        paramActivity.setRequestedOrientation(i);
-        return;
-      }
-      catch (Exception paramActivity)
-      {
-        QLog.e("EndCardWebGdtMVEndcardWebController", 1, "changeScreenOrientation", paramActivity);
-        return;
-      }
-      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "changeScreenOrientation error");
-      return;
-      label161:
-      i = 0;
+      this.q = System.currentTimeMillis();
+      this.b.loadUrl(this.d);
+      this.g = true;
     }
   }
   
@@ -182,7 +128,7 @@ public class GdtMVEndcardWebController
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)
+      if (this.b == null)
       {
         QLog.i("EndCardWebGdtMVEndcardWebController", 1, "fitSpecialScreen webview == null");
         return;
@@ -192,12 +138,12 @@ public class GdtMVEndcardWebController
         QLog.i("EndCardWebGdtMVEndcardWebController", 1, "fitSpecialScreen !isPortait");
         return;
       }
-      localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizUiTouchWebView.getLayoutParams();
-      LiuHaiUtils.a(paramActivity);
+      localObject = (FrameLayout.LayoutParams)this.b.getLayoutParams();
+      LiuHaiUtils.f(paramActivity);
       if (LiuHaiUtils.b())
       {
-        ((FrameLayout.LayoutParams)localObject).topMargin = LiuHaiUtils.b(paramActivity);
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        ((FrameLayout.LayoutParams)localObject).topMargin = LiuHaiUtils.e(paramActivity);
+        this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
         paramActivity = new StringBuilder();
         paramActivity.append("fitSpecialScreen addHeight = ");
         paramActivity.append(((FrameLayout.LayoutParams)localObject).topMargin);
@@ -216,18 +162,18 @@ public class GdtMVEndcardWebController
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367581);
-    paramView = this.jdField_a_of_type_AndroidViewView;
+    this.j = paramView.findViewById(2131434124);
+    paramView = this.j;
     if (paramView == null)
     {
       QLog.i("EndCardWebGdtMVEndcardWebController", 1, "initLoadingContainer container == null");
       return;
     }
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131367582);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131367583);
-    if ((this.jdField_c_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
+    this.l = paramView.findViewById(2131434125);
+    this.k = this.j.findViewById(2131434126);
+    if ((this.l != null) && (this.k != null))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.j.setVisibility(8);
       return;
     }
     QLog.i("EndCardWebGdtMVEndcardWebController", 1, "initLoadingContainer view == null");
@@ -245,8 +191,8 @@ public class GdtMVEndcardWebController
       QLog.i("EndCardWebGdtMVEndcardWebController", 1, "initWebView model == null");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131381066));
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
+    this.c = ((FrameLayout)paramView.findViewById(2131450077));
+    if (this.c == null)
     {
       QLog.i("EndCardWebGdtMVEndcardWebController", 1, "initWebView webFrameLayout == null");
       return;
@@ -262,32 +208,32 @@ public class GdtMVEndcardWebController
       QLog.i("EndCardWebGdtMVEndcardWebController", 1, "TextUtils.isEmpty(data.endcardUrl)");
       return;
     }
-    this.jdField_a_of_type_JavaLangString = localGdtMotiveVideoPageData.endcardUrl;
+    this.d = localGdtMotiveVideoPageData.endcardUrl;
     a(paramBoolean);
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel = paramGdtMotiveVideoModel;
-    this.jdField_a_of_type_Long = localGdtMotiveVideoPageData.endcardLoadTime;
+    this.e = paramGdtMotiveVideoModel;
+    this.f = localGdtMotiveVideoPageData.endcardLoadTime;
     a(paramView);
     try
     {
       paramGdtMotiveVideoModel = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(paramActivity);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-      this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView = this.jdField_a_of_type_ComTencentGdtadInjectGdtWebViewProxy.a();
-      if (this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView != null)
+      this.b = new TouchWebView(paramActivity);
+      this.b.setBackgroundColor(0);
+      this.c.addView(this.b);
+      this.a = this.n.a();
+      if (this.a != null)
       {
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.a(paramActivity, paramActivity, null, paramGdtMotiveVideoModel, new GdtMVEndcardWebController.1(this));
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.a(null);
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.a(null, paramGdtMotiveVideoModel, null);
+        this.a.a(paramActivity, paramActivity, null, paramGdtMotiveVideoModel, new GdtMVEndcardWebController.1(this));
+        this.a.a(this.b);
+        this.a.a(null);
+        this.a.a(null, paramGdtMotiveVideoModel, null);
       }
-      this.jdField_c_of_type_Boolean = true;
+      this.i = true;
       a(paramActivity, paramBoolean);
       paramGdtMotiveVideoModel = new StringBuilder();
       paramGdtMotiveVideoModel.append("initWebView url = ");
-      paramGdtMotiveVideoModel.append(this.jdField_a_of_type_JavaLangString);
+      paramGdtMotiveVideoModel.append(this.d);
       paramGdtMotiveVideoModel.append(",time = ");
-      paramGdtMotiveVideoModel.append(this.jdField_a_of_type_Long);
+      paramGdtMotiveVideoModel.append(this.f);
       QLog.i("EndCardWebGdtMVEndcardWebController", 1, paramGdtMotiveVideoModel.toString());
       return;
     }
@@ -299,25 +245,135 @@ public class GdtMVEndcardWebController
   
   public void a(boolean paramBoolean)
   {
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    String str2 = this.d;
     String str1;
     if (paramBoolean) {
       str1 = "vertical";
     } else {
       str1 = "horizontal";
     }
-    this.jdField_a_of_type_JavaLangString = URLUtil.a(str2, "direction", str1);
+    this.d = URLUtil.a(str2, "direction", str1);
   }
   
-  public boolean a()
+  public boolean a(Activity paramActivity, GdtMotiveVideoModel paramGdtMotiveVideoModel, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    if (!this.i)
+    {
+      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showEndCardWeb !mHasInit");
+      return false;
+    }
+    if (this.h)
+    {
+      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showEndCardWeb mHasError");
+      return false;
+    }
+    if (this.c == null)
+    {
+      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showEndCardWeb mWebViewContainer == null");
+      return false;
+    }
+    QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showEndCardWeb");
+    this.c.setVisibility(0);
+    if (!this.g) {
+      this.b.loadUrl(this.d);
+    }
+    b(paramActivity, paramGdtMotiveVideoModel, paramBoolean);
+    return true;
+  }
+  
+  public void b(Activity paramActivity, GdtMotiveVideoModel paramGdtMotiveVideoModel, boolean paramBoolean)
+  {
+    int i2;
+    int i1;
+    if ((paramActivity != null) && (paramGdtMotiveVideoModel != null) && (paramGdtMotiveVideoModel.d() != null))
+    {
+      i2 = paramGdtMotiveVideoModel.d().getEndcardDirection();
+      if (paramBoolean) {
+        i1 = 1;
+      } else {
+        i1 = 2;
+      }
+      paramGdtMotiveVideoModel = new StringBuilder();
+      paramGdtMotiveVideoModel.append("changeScreenOrientation endcard = ");
+      paramGdtMotiveVideoModel.append(i2);
+      paramGdtMotiveVideoModel.append(",curr = ");
+      paramGdtMotiveVideoModel.append(i1);
+      QLog.i("EndCardWebGdtMVEndcardWebController", 1, paramGdtMotiveVideoModel.toString());
+      if ((i2 != 1) && (i2 != 2)) {
+        return;
+      }
+      if (i2 == i1) {
+        return;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        e();
+        this.o = Integer.valueOf(paramActivity.getRequestedOrientation());
+        if (i2 != 1) {
+          break label165;
+        }
+        i1 = 1;
+        paramActivity.setRequestedOrientation(i1);
+        return;
+      }
+      catch (Exception paramActivity)
+      {
+        QLog.e("EndCardWebGdtMVEndcardWebController", 1, "changeScreenOrientation", paramActivity);
+        return;
+      }
+      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "changeScreenOrientation error");
+      return;
+      label165:
+      i1 = 0;
+    }
+  }
+  
+  public void b(Activity paramActivity, boolean paramBoolean)
+  {
+    try
+    {
+      if (this.a != null)
+      {
+        this.a.c();
+        this.a = null;
+      }
+      Object localObject;
+      if (this.b != null)
+      {
+        localObject = this.b.getParent();
+        if ((localObject != null) && ((localObject instanceof ViewGroup))) {
+          ((ViewGroup)localObject).removeAllViewsInLayout();
+        }
+        this.b = null;
+      }
+      if ((this.o != null) && (paramBoolean) && (paramActivity != null))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDestroy setRequestedOrientation ");
+        ((StringBuilder)localObject).append(this.o);
+        QLog.i("EndCardWebGdtMVEndcardWebController", 1, ((StringBuilder)localObject).toString());
+        paramActivity.setRequestedOrientation(this.o.intValue());
+        return;
+      }
+    }
+    catch (Exception paramActivity)
+    {
+      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "onDestroy", paramActivity);
+    }
+  }
+  
+  public boolean b()
+  {
+    Object localObject = this.c;
     if ((localObject != null) && (((FrameLayout)localObject).getVisibility() == 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+      localObject = this.b;
       if ((localObject != null) && (((TouchWebView)localObject).canGoBack()))
       {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.goBack();
+        this.b.goBack();
         bool = true;
         break label46;
       }
@@ -331,106 +387,46 @@ public class GdtMVEndcardWebController
     return bool;
   }
   
-  public boolean a(Activity paramActivity, GdtMotiveVideoModel paramGdtMotiveVideoModel, boolean paramBoolean)
+  public void c()
   {
-    if (!this.jdField_c_of_type_Boolean)
-    {
-      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showEndCardWeb !mHasInit");
-      return false;
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showEndCardWeb mHasError");
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
-    {
-      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showEndCardWeb mWebViewContainer == null");
-      return false;
-    }
-    QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showEndCardWeb");
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-    }
-    a(paramActivity, paramGdtMotiveVideoModel, paramBoolean);
-    return true;
-  }
-  
-  public void b()
-  {
-    IGdtWebView localIGdtWebView = this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView;
+    IGdtWebView localIGdtWebView = this.a;
     if (localIGdtWebView != null) {
       localIGdtWebView.a();
     }
   }
   
-  public void b(Activity paramActivity, boolean paramBoolean)
+  public void d()
   {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView != null)
-      {
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView.c();
-        this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView = null;
-      }
-      Object localObject;
-      if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
-      {
-        localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getParent();
-        if ((localObject != null) && ((localObject instanceof ViewGroup))) {
-          ((ViewGroup)localObject).removeAllViewsInLayout();
-        }
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView = null;
-      }
-      if ((this.jdField_a_of_type_JavaLangInteger != null) && (paramBoolean) && (paramActivity != null))
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("onDestroy setRequestedOrientation ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangInteger);
-        QLog.i("EndCardWebGdtMVEndcardWebController", 1, ((StringBuilder)localObject).toString());
-        paramActivity.setRequestedOrientation(this.jdField_a_of_type_JavaLangInteger.intValue());
-        return;
-      }
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.i("EndCardWebGdtMVEndcardWebController", 1, "onDestroy", paramActivity);
-    }
-  }
-  
-  public void c()
-  {
-    IGdtWebView localIGdtWebView = this.jdField_a_of_type_ComTencentGdtadInjectIGdtWebView;
+    IGdtWebView localIGdtWebView = this.a;
     if (localIGdtWebView != null) {
       localIGdtWebView.b();
     }
   }
   
-  public void d()
+  public void e()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if ((localView != null) && (this.jdField_c_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
+    View localView = this.j;
+    if ((localView != null) && (this.l != null) && (this.k != null))
     {
       localView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.l.setVisibility(8);
+      this.k.setVisibility(0);
       QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showLoadingContainer");
       return;
     }
     QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showLoadingContainer error");
   }
   
-  public void e()
+  public void f()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if ((localView != null) && (this.jdField_c_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
+    View localView = this.j;
+    if ((localView != null) && (this.l != null) && (this.k != null))
     {
       if (localView.getVisibility() != 0) {
         return;
       }
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.l.setVisibility(0);
+      this.k.setVisibility(8);
       QLog.i("EndCardWebGdtMVEndcardWebController", 1, "showLoadingError");
       return;
     }
@@ -439,7 +435,7 @@ public class GdtMVEndcardWebController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.web.endcrad.GdtMVEndcardWebController
  * JD-Core Version:    0.7.0.1
  */

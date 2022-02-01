@@ -11,6 +11,7 @@ public class ExpandUserInfo
   public static final int FROM_CHAT = 3;
   public static final int FROM_SIGNAL = 4;
   public static final int FROM_VOICE = 2;
+  private static final int SUB_ID_OTHERS = 11;
   public int fromType;
   @unique
   public String uin;
@@ -32,6 +33,32 @@ public class ExpandUserInfo
       i = 10;
     }
     return i;
+  }
+  
+  public static int getReportSubId(int paramInt)
+  {
+    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3) && (paramInt != 4)) {
+      if (paramInt != 5)
+      {
+        if ((paramInt != 12) && (paramInt != 102) && (paramInt != 105) && (paramInt != 106))
+        {
+          switch (paramInt)
+          {
+          default: 
+            return 11;
+          case 303: 
+            return 17;
+          case 302: 
+            return 18;
+          }
+          return 20;
+        }
+      }
+      else {
+        return 16;
+      }
+    }
+    return 15;
   }
   
   public static int subIDToFromType(int paramInt)
@@ -71,7 +98,7 @@ public class ExpandUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.profile.ExpandUserInfo
  * JD-Core Version:    0.7.0.1
  */

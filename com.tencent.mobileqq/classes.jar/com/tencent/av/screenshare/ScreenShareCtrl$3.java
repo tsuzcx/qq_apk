@@ -15,11 +15,11 @@ class ScreenShareCtrl$3
   
   public void run()
   {
-    if ((!this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) && (!this.jdField_a_of_type_ComTencentAvUiAVActivity.isDestroyed()))
+    if ((!this.a.isFinishing()) && (!this.a.isDestroyed()))
     {
-      SessionInfo localSessionInfo = ScreenShareCtrl.a(this.this$0).a();
-      if ((localSessionInfo.p()) && (!localSessionInfo.e()) && (TextUtils.equals(this.jdField_a_of_type_ComTencentAvAppSessionInfo.b, localSessionInfo.b))) {
-        QQToast.a(BaseApplicationImpl.getApplication(), 0, 2131695850, 1).a();
+      SessionInfo localSessionInfo = ScreenShareCtrl.a(this.this$0).k();
+      if ((localSessionInfo.p()) && (!localSessionInfo.e()) && (TextUtils.equals(this.b.f, localSessionInfo.f))) {
+        QQToast.makeText(BaseApplicationImpl.getApplication(), 0, 2131893609, 1).show();
       }
       if (QLog.isColorLevel())
       {

@@ -1,16 +1,16 @@
 package com.tencent.liteav.screencapture;
 
-import com.tencent.liteav.basic.util.h.a;
+import com.tencent.liteav.basic.util.j.a;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
 class c$2
-  implements h.a
+  implements j.a
 {
   c$2(c paramc) {}
   
-  public void a()
+  public void onTimeout()
   {
     Object localObject = this.a;
     boolean bool = c.a((c)localObject, c.b((c)localObject));
@@ -30,7 +30,7 @@ class c$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.screencapture.c.2
  * JD-Core Version:    0.7.0.1
  */

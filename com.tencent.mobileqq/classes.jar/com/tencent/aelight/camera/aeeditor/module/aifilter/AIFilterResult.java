@@ -6,21 +6,21 @@ public abstract class AIFilterResult
 {
   public boolean a = false;
   
-  public abstract float a();
-  
   public abstract String a();
-  
-  public abstract HashMap<String, String> a();
-  
-  public abstract float b();
   
   public abstract String b();
   
   public abstract float c();
+  
+  public abstract HashMap<String, String> d();
+  
+  public abstract float e();
+  
+  public abstract float f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.AIFilterResult
  * JD-Core Version:    0.7.0.1
  */

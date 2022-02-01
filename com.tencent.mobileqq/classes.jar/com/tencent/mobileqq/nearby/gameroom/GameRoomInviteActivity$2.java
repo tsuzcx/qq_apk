@@ -14,7 +14,7 @@ class GameRoomInviteActivity$2
   {
     if (!NetworkUtils.isNetworkAvailable(this.a))
     {
-      QQToast.a(this.a, 1, 2131694424, 1).a();
+      QQToast.makeText(this.a, 1, 2131892104, 1).show();
       return;
     }
     this.a.exitInvite();
@@ -23,7 +23,7 @@ class GameRoomInviteActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.2
  * JD-Core Version:    0.7.0.1
  */

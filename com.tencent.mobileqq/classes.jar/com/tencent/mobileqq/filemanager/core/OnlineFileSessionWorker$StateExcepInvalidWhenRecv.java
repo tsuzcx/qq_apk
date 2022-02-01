@@ -21,21 +21,21 @@ class OnlineFileSessionWorker$StateExcepInvalidWhenRecv
   
   protected void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    Object localObject = this.a.c;
     int i = 1;
     if (localObject == null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("OLfilesession[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a.b);
       ((StringBuilder)localObject).append("]. onFileRequestBeHandledByPC entity is null");
       QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
     }
     if (5 != paramInt) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.d();
+      this.a.d();
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.b();
+      this.a.b();
     }
     StringBuilder localStringBuilder;
     if (paramInt != 1)
@@ -50,203 +50,203 @@ class OnlineFileSessionWorker$StateExcepInvalidWhenRecv
             {
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("OLfile session[");
-              localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+              localStringBuilder.append(this.a.b);
               localStringBuilder.append("]  is not foud . handledbypc type error:");
               localStringBuilder.append(paramInt);
               QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
             }
             else
             {
-              OnlineFileSessionWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
-              OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 11);
-              OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 14);
+              OnlineFileSessionWorker.b(this.a);
+              OnlineFileSessionWorker.b(this.a, 11, 11);
+              OnlineFileSessionWorker.c(this.a, 11, 14);
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("OLfilesession[");
-              localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+              localStringBuilder.append(this.a.b);
               localStringBuilder.append("] state change :(");
-              localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase.a());
+              localStringBuilder.append(this.b.a());
               localStringBuilder.append("->StateUploadingWhenChangeToOff)");
               QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
-              this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateUploadingWhenChangeToOff(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+              this.b = new OnlineFileSessionWorker.StateUploadingWhenChangeToOff(this.a);
             }
             paramInt = 0;
           }
           else
           {
-            OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
-            OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
+            OnlineFileSessionWorker.b(this.a, 11, 7);
+            OnlineFileSessionWorker.c(this.a, 11, 7);
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("OLfilesession[");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+            localStringBuilder.append(this.a.b);
             localStringBuilder.append("] state change :(");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase.a());
+            localStringBuilder.append(this.b.a());
             localStringBuilder.append("->StateSaveToWeiYunByPC)");
             QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateSaveToWeiYunByPC(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+            this.b = new OnlineFileSessionWorker.StateSaveToWeiYunByPC(this.a);
             paramInt = i;
           }
         }
         else
         {
-          OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
-          OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
+          OnlineFileSessionWorker.b(this.a, 11, 8);
+          OnlineFileSessionWorker.c(this.a, 11, 8);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("OLfilesession[");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+          localStringBuilder.append(this.a.b);
           localStringBuilder.append("] state change :(");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase.a());
+          localStringBuilder.append(this.b.a());
           localStringBuilder.append("->StateSenderCancelSend)");
           QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateSenderCancelSend(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+          this.b = new OnlineFileSessionWorker.StateSenderCancelSend(this.a);
           paramInt = i;
         }
       }
       else
       {
-        OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
-        OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 6);
+        OnlineFileSessionWorker.b(this.a, 11, 6);
+        OnlineFileSessionWorker.c(this.a, 11, 6);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("OLfilesession[");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+        localStringBuilder.append(this.a.b);
         localStringBuilder.append("] state change :(");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase.a());
+        localStringBuilder.append(this.b.a());
         localStringBuilder.append("->StateRefuseByPC)");
         QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateRefuseByPC(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+        this.b = new OnlineFileSessionWorker.StateRefuseByPC(this.a);
         paramInt = i;
       }
     }
     else
     {
-      OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
-      OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
+      OnlineFileSessionWorker.b(this.a, 11, 5);
+      OnlineFileSessionWorker.c(this.a, 11, 5);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("OLfilesession[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a.b);
       localStringBuilder.append("] state change :(");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase.a());
+      localStringBuilder.append(this.b.a());
       localStringBuilder.append("->StateAcceptByPC)");
       QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateAcceptByPC(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+      this.b = new OnlineFileSessionWorker.StateAcceptByPC(this.a);
       paramInt = i;
     }
     if (paramInt != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(((FileManagerEntity)localObject).uniseq, ((FileManagerEntity)localObject).nSessionId, ((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, 12, null, 0, null);
+      this.a.a.getFileManagerNotifyCenter().a(((FileManagerEntity)localObject).uniseq, ((FileManagerEntity)localObject).nSessionId, ((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, 12, null, 0, null);
     }
   }
   
   protected void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    Object localObject = this.a.c;
     if (localObject == null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("OLfilesession[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a.b);
       ((StringBuilder)localObject).append("]. recvOnLineFile entity is null");
       QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
     }
     b(paramInt1, paramInt2);
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 9, 11);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 9, 11);
+    OnlineFileSessionWorker.b(this.a, 9, 11);
+    OnlineFileSessionWorker.c(this.a, 9, 11);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OLfilesession[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a.b);
     localStringBuilder.append("] state change :(");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase.a());
+    localStringBuilder.append(this.b.a());
     localStringBuilder.append("->StateLocalFailedWhenRecv)");
     QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateLocalFailedWhenRecv(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(((FileManagerEntity)localObject).uniseq, ((FileManagerEntity)localObject).nSessionId, ((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, 12, null, 6, null);
+    this.b = new OnlineFileSessionWorker.StateLocalFailedWhenRecv(this.a);
+    this.a.a.getFileManagerNotifyCenter().a(((FileManagerEntity)localObject).uniseq, ((FileManagerEntity)localObject).nSessionId, ((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, 12, null, 6, null);
   }
   
   protected void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (this.a.c == null)
     {
       paramString = new StringBuilder();
       paramString.append("OLfilesession[");
-      paramString.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+      paramString.append(this.a.b);
       paramString.append("]. recvOnLineFile entity is null");
       QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, paramString.toString());
       return;
     }
-    OnlineFileSessionWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 9, 12, true);
+    OnlineFileSessionWorker.a(this.a, 9, 12, true);
     a("StateExcepInvalidWhenRecv");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new StateExcepInvalidWhenRecv(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    this.b = new StateExcepInvalidWhenRecv(this.a);
   }
   
   protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    FileManagerEntity localFileManagerEntity = this.a.c;
     if (localFileManagerEntity == null)
     {
       paramString = new StringBuilder();
       paramString.append("OLfilesession[");
-      paramString.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+      paramString.append(this.a.b);
       paramString.append("]. recvOnLineFile entity is null");
       QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, paramString.toString());
       return false;
     }
     localFileManagerEntity.Uuid = new String(paramString);
     localFileManagerEntity.fProgress = 0.0F;
-    if ((FileManagerUtil.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity, 5);
+    if ((FileManagerUtil.c(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.a.a.getFileManagerEngine().a(localFileManagerEntity, 5);
     }
     localFileManagerEntity.setCloudType(1);
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 1, 0);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 1, 0);
+    OnlineFileSessionWorker.b(this.a, 1, 0);
+    OnlineFileSessionWorker.c(this.a, 1, 0);
     paramString = new StringBuilder();
     paramString.append("OLfilesession[");
-    paramString.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+    paramString.append(this.a.b);
     paramString.append("] state change :(");
-    paramString.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase.a());
+    paramString.append(this.b.a());
     paramString.append("->StateGotoOffFileProcess)");
     QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, paramString.toString());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateGotoOffFileProcess(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    this.a.a.getFileManagerNotifyCenter().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.b = new OnlineFileSessionWorker.StateGotoOffFileProcess(this.a);
     return true;
   }
   
-  protected void b()
+  protected void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    if (this.a.c == null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("OLfilesession[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a.b);
       localStringBuilder.append("]. recvOnLineFile entity is null");
       QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, localStringBuilder.toString());
       return;
     }
-    OnlineFileSessionWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 9, true);
+    OnlineFileSessionWorker.a(this.a, 11, 9, true);
     a("StateCancelUploadWhenRecv");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateCancelUploadWhenRecv(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    this.b = new OnlineFileSessionWorker.StateCancelUploadWhenRecv(this.a);
   }
   
-  protected void d()
+  protected void g()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    Object localObject = this.a.c;
     if (localObject == null)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("OLfilesession[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a.b);
       ((StringBuilder)localObject).append("]. onFailedOfLocalSomeThingHappen entity is null");
       QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    OnlineFileSessionWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
-    OnlineFileSessionWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 9, 11, true);
+    OnlineFileSessionWorker.b(this.a);
+    OnlineFileSessionWorker.a(this.a, 9, 11, true);
     a("StateLocalFailedWhenRecv");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker$StateBase = new OnlineFileSessionWorker.StateLocalFailedWhenRecv(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(((FileManagerEntity)localObject).uniseq, ((FileManagerEntity)localObject).nSessionId, ((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, 12, null, 6, null);
+    this.b = new OnlineFileSessionWorker.StateLocalFailedWhenRecv(this.a);
+    this.a.a.getFileManagerNotifyCenter().a(((FileManagerEntity)localObject).uniseq, ((FileManagerEntity)localObject).nSessionId, ((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, 12, null, 6, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker.StateExcepInvalidWhenRecv
  * JD-Core Version:    0.7.0.1
  */

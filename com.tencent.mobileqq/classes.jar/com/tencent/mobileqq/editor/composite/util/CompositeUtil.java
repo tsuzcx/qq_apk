@@ -95,7 +95,7 @@ public class CompositeUtil
     return 0L;
   }
   
-  public static ArrayList<DynamicStickerData> a(String paramString)
+  public static ArrayList<DynamicStickerData> b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -116,7 +116,7 @@ public class CompositeUtil
             {
               JSONObject localJSONObject = paramString.getJSONObject(i);
               if (localJSONObject == null) {
-                break label337;
+                break label338;
               }
               DynamicStickerData localDynamicStickerData = new DynamicStickerData();
               localDynamicStickerData.centerP = new PointF((float)localJSONObject.optDouble("centerP_x"), (float)localJSONObject.optDouble("centerP_y"));
@@ -133,7 +133,7 @@ public class CompositeUtil
               localDynamicStickerData.data = localJSONObject.optString("data", "");
               localDynamicStickerData.mGifDecoder = InjectGifDecoder.a(localDynamicStickerData);
               ((ArrayList)localObject).add(localDynamicStickerData);
-              break label337;
+              break label338;
             }
             if (QLog.isColorLevel())
             {
@@ -158,14 +158,14 @@ public class CompositeUtil
         }
       }
       return null;
-      label337:
+      label338:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.util.CompositeUtil
  * JD-Core Version:    0.7.0.1
  */

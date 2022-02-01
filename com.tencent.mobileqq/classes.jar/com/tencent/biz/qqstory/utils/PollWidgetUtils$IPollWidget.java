@@ -9,15 +9,15 @@ public abstract interface PollWidgetUtils$IPollWidget
   
   public abstract PollWidgetUtils.OptionElement a(int paramInt);
   
-  public abstract PollWidgetUtils.QuestionElement a();
-  
-  public abstract void a();
-  
   public abstract void a(StoryVideoItem.PollLayout paramPollLayout, float paramFloat1, float paramFloat2);
   
   public abstract void a(boolean paramBoolean);
   
   public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract PollWidgetUtils.QuestionElement b();
+  
+  public abstract void c();
 }
 
 

@@ -9,34 +9,26 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class ExtDataInfo
   extends MessageNano
 {
-  private static volatile ExtDataInfo[] a;
+  private static volatile ExtDataInfo[] c;
   public long a;
-  public ExtDataItem[] a;
+  public ExtDataItem[] b;
   
   public ExtDataInfo()
   {
-    a();
+    b();
   }
   
   public static ExtDataInfo[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo == null) {
+    if (c == null) {
       synchronized (InternalNano.LAZY_INIT_LOCK)
       {
-        if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo == null) {
-          jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo = new ExtDataInfo[0];
+        if (c == null) {
+          c = new ExtDataInfo[0];
         }
       }
     }
-    return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataInfo;
-  }
-  
-  public ExtDataInfo a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem = ExtDataItem.a();
-    this.cachedSize = -1;
-    return this;
+    return c;
   }
   
   public ExtDataInfo a(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -58,7 +50,7 @@ public final class ExtDataInfo
         else
         {
           int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-          ExtDataItem[] arrayOfExtDataItem = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem;
+          ExtDataItem[] arrayOfExtDataItem = this.b;
           if (arrayOfExtDataItem == null) {
             i = 0;
           } else {
@@ -68,7 +60,7 @@ public final class ExtDataInfo
           j = i;
           if (i != 0)
           {
-            System.arraycopy(this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem, 0, arrayOfExtDataItem, 0, i);
+            System.arraycopy(this.b, 0, arrayOfExtDataItem, 0, i);
             j = i;
           }
           while (j < arrayOfExtDataItem.length - 1)
@@ -80,25 +72,33 @@ public final class ExtDataInfo
           }
           arrayOfExtDataItem[j] = new ExtDataItem();
           paramCodedInputByteBufferNano.readMessage(arrayOfExtDataItem[j]);
-          this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem = arrayOfExtDataItem;
+          this.b = arrayOfExtDataItem;
         }
       }
       else {
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+        this.a = paramCodedInputByteBufferNano.readUInt64();
       }
     }
+    return this;
+  }
+  
+  public ExtDataInfo b()
+  {
+    this.a = 0L;
+    this.b = ExtDataItem.a();
+    this.cachedSize = -1;
     return this;
   }
   
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     int i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem;
+    Object localObject = this.b;
     int k = i;
     if (localObject != null)
     {
@@ -108,7 +108,7 @@ public final class ExtDataInfo
         j = 0;
         for (;;)
         {
-          localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem;
+          localObject = this.b;
           k = i;
           if (j >= localObject.length) {
             break;
@@ -128,17 +128,17 @@ public final class ExtDataInfo
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem;
+    Object localObject = this.b;
     if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
       for (;;)
       {
-        localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem;
+        localObject = this.b;
         if (i >= localObject.length) {
           break;
         }
@@ -154,7 +154,7 @@ public final class ExtDataInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.ExtDataInfo
  * JD-Core Version:    0.7.0.1
  */

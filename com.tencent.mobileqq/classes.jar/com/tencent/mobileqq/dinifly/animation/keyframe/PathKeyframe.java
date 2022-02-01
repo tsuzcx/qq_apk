@@ -2,7 +2,7 @@ package com.tencent.mobileqq.dinifly.animation.keyframe;
 
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.utils.Utils;
 import com.tencent.mobileqq.dinifly.value.Keyframe;
@@ -16,7 +16,7 @@ public class PathKeyframe
   
   public PathKeyframe(LottieComposition paramLottieComposition, Keyframe<PointF> paramKeyframe)
   {
-    super(paramLottieComposition, paramKeyframe.startValue, paramKeyframe.endValue, paramKeyframe.interpolator, paramKeyframe.startFrame, paramKeyframe.endFrame);
+    super(paramLottieComposition, paramKeyframe.startValue, paramKeyframe.endValue, paramKeyframe.interpolator, paramKeyframe.xInterpolator, paramKeyframe.yInterpolator, paramKeyframe.startFrame, paramKeyframe.endFrame);
     this.pointKeyFrame = paramKeyframe;
     createPath();
   }
@@ -29,7 +29,7 @@ public class PathKeyframe
     } else {
       i = 0;
     }
-    if ((this.endValue != null) && (i == 0) && (this.startValue != null)) {
+    if ((this.startValue != null) && (this.endValue != null) && (i == 0)) {
       this.path = Utils.createPath((PointF)this.startValue, (PointF)this.endValue, this.pointKeyFrame.pathCp1, this.pointKeyFrame.pathCp2);
     }
   }
@@ -42,7 +42,7 @@ public class PathKeyframe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframe
  * JD-Core Version:    0.7.0.1
  */

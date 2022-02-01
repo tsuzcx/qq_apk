@@ -18,30 +18,30 @@ import mqq.os.MqqHandler;
 public class GroupCache
   implements ICache<Integer, Groups>
 {
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private LinkedList<Groups> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private ConcurrentHashMap<Integer, Groups> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(16);
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private EntityManager a;
+  private volatile boolean b = false;
+  private final Object c = new Object();
+  private LinkedList<Groups> d = new LinkedList();
+  private ConcurrentHashMap<Integer, Groups> e = new ConcurrentHashMap(16);
   
   public GroupCache(EntityManager paramEntityManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
+    this.a = paramEntityManager;
   }
   
-  private void c()
+  private void d()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       a();
     }
   }
   
   public Groups a(Integer paramInteger)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      Groups localGroups = (Groups)this.e.remove(paramInteger);
+      Iterator localIterator = this.d.iterator();
       while (localIterator.hasNext()) {
         if (((Groups)localIterator.next()).group_id == paramInteger.intValue()) {
           localIterator.remove();
@@ -64,16 +64,10 @@ public class GroupCache
     }
   }
   
-  public List<Groups> a()
-  {
-    c();
-    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList);
-  }
-  
   public List<Groups> a(GetGroupListCallback paramGetGroupListCallback)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList);
+    if (this.b) {
+      return new ArrayList(this.d);
     }
     ThreadManager.getSubThreadHandler().post(new GroupCache.1(this, paramGetGroupListCallback));
     return null;
@@ -83,25 +77,25 @@ public class GroupCache
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.b;
       if (bool) {
         return;
       }
       long l1 = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_Boolean = true;
-      List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(Groups.class, false, "group_id>=?", new String[] { "0" }, null, null, "seqid asc", null);
+      this.b = true;
+      List localList = this.a.query(Groups.class, false, "group_id>=?", new String[] { "0" }, null, null, "seqid asc", null);
       if ((localList != null) && (!localList.isEmpty())) {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.c)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+          this.e.clear();
           Iterator localIterator = localList.iterator();
           while (localIterator.hasNext())
           {
             Groups localGroups = (Groups)localIterator.next();
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localGroups.group_id), localGroups);
+            this.e.put(Integer.valueOf(localGroups.group_id), localGroups);
           }
-          this.jdField_a_of_type_JavaUtilLinkedList.clear();
-          this.jdField_a_of_type_JavaUtilLinkedList.addAll(localList);
+          this.d.clear();
+          this.d.addAll(localList);
         }
       }
       QLog.d("IMCore.friend.GroupCache", 1, "init| groupList is empty!");
@@ -110,7 +104,7 @@ public class GroupCache
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("init| group size: ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilLinkedList.size());
+        ((StringBuilder)???).append(this.d.size());
         ((StringBuilder)???).append(", cost: ");
         ((StringBuilder)???).append(l2 - l1);
         QLog.d("IMCore.friend.GroupCache", 2, ((StringBuilder)???).toString());
@@ -129,11 +123,11 @@ public class GroupCache
     if (paramGroups == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramGroups.group_id), paramGroups);
+      this.e.put(Integer.valueOf(paramGroups.group_id), paramGroups);
       int j = 0;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      Iterator localIterator = this.d.iterator();
       Groups localGroups;
       do
       {
@@ -147,7 +141,7 @@ public class GroupCache
       localGroups.group_name = paramGroups.group_name;
       localGroups.group_friend_count = paramGroups.group_friend_count;
       if (i == 0) {
-        this.jdField_a_of_type_JavaUtilLinkedList = FriendSorter.a(this.jdField_a_of_type_JavaUtilLinkedList, paramGroups);
+        this.d = FriendSorter.a(this.d, paramGroups);
       }
       if (QLog.isColorLevel())
       {
@@ -164,7 +158,173 @@ public class GroupCache
     }
   }
   
-  public void a(List<Groups> arg1)
+  /* Error */
+  public boolean a(List<Groups> paramList)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: aload_1
+    //   3: ifnull +281 -> 284
+    //   6: aload_1
+    //   7: invokeinterface 211 1 0
+    //   12: ifne +6 -> 18
+    //   15: goto +269 -> 284
+    //   18: new 113	java/util/ArrayList
+    //   21: dup
+    //   22: invokespecial 212	java/util/ArrayList:<init>	()V
+    //   25: astore 5
+    //   27: aload_0
+    //   28: getfield 42	com/tencent/mobileqq/friend/cache/GroupCache:a	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   31: invokevirtual 216	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   34: astore 4
+    //   36: aload 4
+    //   38: invokevirtual 221	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   41: aload_1
+    //   42: invokeinterface 164 1 0
+    //   47: astore 6
+    //   49: iconst_1
+    //   50: istore_2
+    //   51: aload 6
+    //   53: invokeinterface 66 1 0
+    //   58: ifeq +43 -> 101
+    //   61: aload 6
+    //   63: invokeinterface 70 1 0
+    //   68: checkcast 56	com/tencent/mobileqq/data/Groups
+    //   71: astore 7
+    //   73: iload_2
+    //   74: aload_0
+    //   75: aload 7
+    //   77: invokevirtual 224	com/tencent/mobileqq/friend/cache/GroupCache:b	(Lcom/tencent/mobileqq/data/Groups;)Z
+    //   80: iand
+    //   81: istore_2
+    //   82: aload 5
+    //   84: aload 7
+    //   86: getfield 74	com/tencent/mobileqq/data/Groups:group_id	I
+    //   89: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   92: invokeinterface 228 2 0
+    //   97: pop
+    //   98: goto -47 -> 51
+    //   101: new 113	java/util/ArrayList
+    //   104: dup
+    //   105: aload_0
+    //   106: getfield 40	com/tencent/mobileqq/friend/cache/GroupCache:e	Ljava/util/concurrent/ConcurrentHashMap;
+    //   109: invokevirtual 232	java/util/concurrent/ConcurrentHashMap:values	()Ljava/util/Collection;
+    //   112: invokespecial 116	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   115: invokeinterface 164 1 0
+    //   120: astore 6
+    //   122: aload 6
+    //   124: invokeinterface 66 1 0
+    //   129: ifeq +49 -> 178
+    //   132: aload 6
+    //   134: invokeinterface 70 1 0
+    //   139: checkcast 56	com/tencent/mobileqq/data/Groups
+    //   142: astore 7
+    //   144: aload 5
+    //   146: aload 7
+    //   148: getfield 74	com/tencent/mobileqq/data/Groups:group_id	I
+    //   151: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   154: invokeinterface 235 2 0
+    //   159: ifne -37 -> 122
+    //   162: aload_0
+    //   163: aload 7
+    //   165: getfield 74	com/tencent/mobileqq/data/Groups:group_id	I
+    //   168: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   171: invokevirtual 237	com/tencent/mobileqq/friend/cache/GroupCache:c	(Ljava/lang/Integer;)Lcom/tencent/mobileqq/data/Groups;
+    //   174: pop
+    //   175: goto -53 -> 122
+    //   178: aload 4
+    //   180: invokevirtual 240	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   183: aload 4
+    //   185: invokevirtual 243	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   188: goto +26 -> 214
+    //   191: astore_1
+    //   192: goto +85 -> 277
+    //   195: astore 5
+    //   197: ldc 103
+    //   199: iconst_1
+    //   200: ldc 245
+    //   202: aload 5
+    //   204: invokestatic 248	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   207: aload 4
+    //   209: invokevirtual 243	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   212: iload_3
+    //   213: istore_2
+    //   214: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   217: ifeq +58 -> 275
+    //   220: new 89	java/lang/StringBuilder
+    //   223: dup
+    //   224: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   227: astore 4
+    //   229: aload 4
+    //   231: ldc 250
+    //   233: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: pop
+    //   237: aload 4
+    //   239: aload_1
+    //   240: invokeinterface 211 1 0
+    //   245: invokevirtual 187	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   248: pop
+    //   249: aload 4
+    //   251: ldc 252
+    //   253: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   256: pop
+    //   257: aload 4
+    //   259: iload_2
+    //   260: invokevirtual 255	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   263: pop
+    //   264: ldc 103
+    //   266: iconst_2
+    //   267: aload 4
+    //   269: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   272: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   275: iload_2
+    //   276: ireturn
+    //   277: aload 4
+    //   279: invokevirtual 243	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   282: aload_1
+    //   283: athrow
+    //   284: ldc 103
+    //   286: iconst_1
+    //   287: ldc_w 257
+    //   290: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   293: iconst_0
+    //   294: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	295	0	this	GroupCache
+    //   0	295	1	paramList	List<Groups>
+    //   50	226	2	bool1	boolean
+    //   1	212	3	bool2	boolean
+    //   34	244	4	localObject	Object
+    //   25	120	5	localArrayList	ArrayList
+    //   195	8	5	localException	java.lang.Exception
+    //   47	86	6	localIterator	Iterator
+    //   71	93	7	localGroups	Groups
+    // Exception table:
+    //   from	to	target	type
+    //   36	49	191	finally
+    //   51	98	191	finally
+    //   101	122	191	finally
+    //   122	175	191	finally
+    //   178	183	191	finally
+    //   197	207	191	finally
+    //   36	49	195	java/lang/Exception
+    //   51	98	195	java/lang/Exception
+    //   101	122	195	java/lang/Exception
+    //   122	175	195	java/lang/Exception
+    //   178	183	195	java/lang/Exception
+  }
+  
+  public Groups b(Integer paramInteger)
+  {
+    d();
+    return (Groups)this.e.get(paramInteger);
+  }
+  
+  public void b() {}
+  
+  public void b(List<Groups> arg1)
   {
     Object localObject1 = ???;
     if (??? == null)
@@ -172,18 +332,18 @@ public class GroupCache
       localObject1 = new ArrayList();
       QLog.d("IMCore.friend.GroupCache", 1, "saveToCache| groupList == null");
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.d.clear();
+      this.e.clear();
       Iterator localIterator = ((List)localObject1).iterator();
       while (localIterator.hasNext())
       {
         Groups localGroups = (Groups)localIterator.next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localGroups.group_id), localGroups);
-        this.jdField_a_of_type_JavaUtilLinkedList.add(localGroups);
+        this.e.put(Integer.valueOf(localGroups.group_id), localGroups);
+        this.d.add(localGroups);
       }
-      Collections.sort(this.jdField_a_of_type_JavaUtilLinkedList, FriendSorter.a);
+      Collections.sort(this.d, FriendSorter.a);
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
@@ -199,25 +359,25 @@ public class GroupCache
     }
   }
   
-  public boolean a(Groups paramGroups)
+  public boolean b(Groups paramGroups)
   {
     boolean bool = false;
     if (paramGroups == null) {
       return false;
     }
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
+    if (this.a.isOpen())
     {
       if (paramGroups.getStatus() == 1000)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramGroups);
+        this.a.persistOrReplace(paramGroups);
         if (paramGroups.getStatus() == 1001) {
           bool = true;
         }
       }
       else if ((paramGroups.getStatus() == 1001) || (paramGroups.getStatus() == 1002))
       {
-        bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramGroups);
+        bool = this.a.update(paramGroups);
       }
     }
     else
@@ -237,177 +397,11 @@ public class GroupCache
     return bool;
   }
   
-  /* Error */
-  public boolean a(List<Groups> paramList)
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aload_1
-    //   3: ifnull +284 -> 287
-    //   6: aload_1
-    //   7: invokeinterface 227 1 0
-    //   12: ifne +6 -> 18
-    //   15: goto +272 -> 287
-    //   18: new 111	java/util/ArrayList
-    //   21: dup
-    //   22: invokespecial 209	java/util/ArrayList:<init>	()V
-    //   25: astore 5
-    //   27: aload_0
-    //   28: getfield 38	com/tencent/mobileqq/friend/cache/GroupCache:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   31: invokevirtual 254	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   34: astore 4
-    //   36: aload 4
-    //   38: invokevirtual 259	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   41: aload_1
-    //   42: invokeinterface 164 1 0
-    //   47: astore 6
-    //   49: iconst_1
-    //   50: istore_2
-    //   51: aload 6
-    //   53: invokeinterface 63 1 0
-    //   58: ifeq +43 -> 101
-    //   61: aload 6
-    //   63: invokeinterface 67 1 0
-    //   68: checkcast 53	com/tencent/mobileqq/data/Groups
-    //   71: astore 7
-    //   73: iload_2
-    //   74: aload_0
-    //   75: aload 7
-    //   77: invokevirtual 261	com/tencent/mobileqq/friend/cache/GroupCache:a	(Lcom/tencent/mobileqq/data/Groups;)Z
-    //   80: iand
-    //   81: istore_2
-    //   82: aload 5
-    //   84: aload 7
-    //   86: getfield 71	com/tencent/mobileqq/data/Groups:group_id	I
-    //   89: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   92: invokeinterface 262 2 0
-    //   97: pop
-    //   98: goto -47 -> 51
-    //   101: new 111	java/util/ArrayList
-    //   104: dup
-    //   105: aload_0
-    //   106: getfield 36	com/tencent/mobileqq/friend/cache/GroupCache:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   109: invokevirtual 266	java/util/concurrent/ConcurrentHashMap:values	()Ljava/util/Collection;
-    //   112: invokespecial 114	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   115: invokeinterface 164 1 0
-    //   120: astore 6
-    //   122: aload 6
-    //   124: invokeinterface 63 1 0
-    //   129: ifeq +49 -> 178
-    //   132: aload 6
-    //   134: invokeinterface 67 1 0
-    //   139: checkcast 53	com/tencent/mobileqq/data/Groups
-    //   142: astore 7
-    //   144: aload 5
-    //   146: aload 7
-    //   148: getfield 71	com/tencent/mobileqq/data/Groups:group_id	I
-    //   151: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   154: invokeinterface 269 2 0
-    //   159: ifne -37 -> 122
-    //   162: aload_0
-    //   163: aload 7
-    //   165: getfield 71	com/tencent/mobileqq/data/Groups:group_id	I
-    //   168: invokestatic 168	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   171: invokevirtual 271	com/tencent/mobileqq/friend/cache/GroupCache:c	(Ljava/lang/Integer;)Lcom/tencent/mobileqq/data/Groups;
-    //   174: pop
-    //   175: goto -53 -> 122
-    //   178: aload 4
-    //   180: invokevirtual 274	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   183: aload 4
-    //   185: invokevirtual 277	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   188: goto +27 -> 215
-    //   191: astore_1
-    //   192: goto +88 -> 280
-    //   195: astore 5
-    //   197: ldc 100
-    //   199: iconst_1
-    //   200: ldc_w 279
-    //   203: aload 5
-    //   205: invokestatic 283	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   208: aload 4
-    //   210: invokevirtual 277	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   213: iload_3
-    //   214: istore_2
-    //   215: invokestatic 84	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   218: ifeq +60 -> 278
-    //   221: new 86	java/lang/StringBuilder
-    //   224: dup
-    //   225: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   228: astore 4
-    //   230: aload 4
-    //   232: ldc_w 285
-    //   235: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: pop
-    //   239: aload 4
-    //   241: aload_1
-    //   242: invokeinterface 227 1 0
-    //   247: invokevirtual 187	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   250: pop
-    //   251: aload 4
-    //   253: ldc_w 287
-    //   256: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: pop
-    //   260: aload 4
-    //   262: iload_2
-    //   263: invokevirtual 290	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   266: pop
-    //   267: ldc 100
-    //   269: iconst_2
-    //   270: aload 4
-    //   272: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: invokestatic 108	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   278: iload_2
-    //   279: ireturn
-    //   280: aload 4
-    //   282: invokevirtual 277	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   285: aload_1
-    //   286: athrow
-    //   287: ldc 100
-    //   289: iconst_1
-    //   290: ldc_w 292
-    //   293: invokestatic 108	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   296: iconst_0
-    //   297: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	298	0	this	GroupCache
-    //   0	298	1	paramList	List<Groups>
-    //   50	229	2	bool1	boolean
-    //   1	213	3	bool2	boolean
-    //   34	247	4	localObject	Object
-    //   25	120	5	localArrayList	ArrayList
-    //   195	9	5	localException	java.lang.Exception
-    //   47	86	6	localIterator	Iterator
-    //   71	93	7	localGroups	Groups
-    // Exception table:
-    //   from	to	target	type
-    //   36	49	191	finally
-    //   51	98	191	finally
-    //   101	122	191	finally
-    //   122	175	191	finally
-    //   178	183	191	finally
-    //   197	208	191	finally
-    //   36	49	195	java/lang/Exception
-    //   51	98	195	java/lang/Exception
-    //   101	122	195	java/lang/Exception
-    //   122	175	195	java/lang/Exception
-    //   178	183	195	java/lang/Exception
-  }
-  
-  public Groups b(Integer paramInteger)
-  {
-    c();
-    return (Groups)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramInteger);
-  }
-  
-  public void b() {}
-  
   public Groups c(Integer paramInteger)
   {
-    Groups localGroups = (Groups)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(Groups.class, String.valueOf(paramInteger));
+    Groups localGroups = (Groups)this.a.find(Groups.class, String.valueOf(paramInteger));
     if (localGroups != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localGroups);
+      this.a.remove(localGroups);
     }
     if (QLog.isColorLevel())
     {
@@ -421,6 +415,12 @@ public class GroupCache
     return localGroups;
   }
   
+  public List<Groups> c()
+  {
+    d();
+    return new ArrayList(this.d);
+  }
+  
   public Groups d(Integer paramInteger)
   {
     if (QLog.isColorLevel())
@@ -430,14 +430,14 @@ public class GroupCache
       localStringBuilder.append(paramInteger);
       QLog.d("IMCore.friend.GroupCache", 2, localStringBuilder.toString());
     }
-    paramInteger = (Groups)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(Groups.class, String.valueOf(paramInteger));
+    paramInteger = (Groups)this.a.find(Groups.class, String.valueOf(paramInteger));
     a(paramInteger);
     return paramInteger;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.cache.GroupCache
  * JD-Core Version:    0.7.0.1
  */

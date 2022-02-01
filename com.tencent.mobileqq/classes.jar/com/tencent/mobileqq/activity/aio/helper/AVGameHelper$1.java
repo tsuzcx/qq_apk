@@ -20,25 +20,25 @@ class AVGameHelper$1
   
   public void a(int paramInt, String paramString1, String paramString2)
   {
-    if ((paramString1 != null) && (AVGameHelper.a(this.a).a.equals(paramString1)))
+    if ((paramString1 != null) && (AVGameHelper.a(this.a).b.equals(paramString1)))
     {
-      paramString1 = (IAvGameManager)AVGameHelper.a(this.a).getRuntimeService(IAvGameManager.class, "");
+      paramString1 = (IAvGameManager)AVGameHelper.c(this.a).getRuntimeService(IAvGameManager.class, "");
       if (paramString1 != null) {
-        paramString1.requestGameRoomListForGroup(AVGameHelper.a(this.a).a, 0, 1);
+        paramString1.requestGameRoomListForGroup(AVGameHelper.a(this.a).b, 0, 1);
       }
     }
   }
   
   public void b(int paramInt, String paramString1, String paramString2)
   {
-    if ((paramString2 != null) && (AVGameHelper.a(this.a).a.equals(paramString2)) && (AVGameHelper.a(this.a) != null)) {
+    if ((paramString2 != null) && (AVGameHelper.a(this.a).b.equals(paramString2)) && (AVGameHelper.b(this.a) != null)) {
       ThreadManager.getUIHandler().post(new AVGameHelper.1.2(this, paramInt));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1
  * JD-Core Version:    0.7.0.1
  */

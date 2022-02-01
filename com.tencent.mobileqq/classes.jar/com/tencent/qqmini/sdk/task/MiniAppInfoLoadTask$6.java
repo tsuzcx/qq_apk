@@ -16,14 +16,14 @@ class MiniAppInfoLoadTask$6
     if (localSpecialProxy != null)
     {
       Bundle localBundle = new Bundle();
-      localBundle.putParcelable("mini_appinfo", this.val$appInfo);
+      localBundle.putParcelable("mini_appinfo", this.val$miniAppInfo);
       localSpecialProxy.sendEventToHost(1, localBundle, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.MiniAppInfoLoadTask.6
  * JD-Core Version:    0.7.0.1
  */

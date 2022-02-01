@@ -32,89 +32,67 @@ import mqq.os.MqqHandler;
 
 public class PokeItemAnimationManager
 {
-  public static long a;
-  private static PokeItemAnimationManager jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeItemAnimationManager;
-  public static final String a;
-  public static long b;
-  public static final String b;
+  public static final String b = VFSAssistantUtils.getSDKPrivatePath("Tencent/MobileQQ/poke/");
+  public static final String c;
+  public static long j = 1500L;
+  public static long k = 0L;
+  private static PokeItemAnimationManager l;
   public Handler a;
-  public HandlerThread a;
-  HashMap<String, PokeItemAnimationManager.AioInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  public MqqHandler a;
-  PokeItemAnimationManager.DoubleHitInfo[] jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioItemPokeItemAnimationManager$DoubleHitInfo = null;
-  private ArrayList[] jdField_a_of_type_ArrayOfJavaUtilArrayList = new ArrayList[6];
-  public HandlerThread b;
-  public MqqHandler b;
-  private ArrayList[] b;
+  public HandlerThread d = null;
+  public MqqHandler e = null;
+  public HandlerThread f = null;
+  public MqqHandler g = null;
+  PokeItemAnimationManager.DoubleHitInfo[] h = null;
+  HashMap<String, PokeItemAnimationManager.AioInfo> i = new HashMap();
+  private ArrayList[] m = new ArrayList[6];
+  private ArrayList[] n = new ArrayList[6];
   
   static
   {
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath("Tencent/MobileQQ/poke/");
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("/dazhao_motion/dazhao_move.png");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Long = 1500L;
-    jdField_b_of_type_Long = 0L;
+    c = localStringBuilder.toString();
   }
   
   private PokeItemAnimationManager()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = null;
-    this.jdField_a_of_type_MqqOsMqqHandler = null;
-    this.jdField_b_of_type_AndroidOsHandlerThread = null;
-    this.jdField_b_of_type_MqqOsMqqHandler = null;
-    this.jdField_b_of_type_ArrayOfJavaUtilArrayList = new ArrayList[6];
-    int j = 0;
-    int i = 0;
+    int i2 = 0;
+    int i1 = 0;
     for (;;)
     {
-      localObject = this.jdField_a_of_type_ArrayOfJavaUtilArrayList;
-      if (i >= localObject.length) {
+      localObject = this.m;
+      if (i1 >= localObject.length) {
         break;
       }
-      localObject[i] = null;
-      i += 1;
+      localObject[i1] = null;
+      i1 += 1;
     }
-    i = 0;
+    i1 = 0;
     for (;;)
     {
-      localObject = this.jdField_b_of_type_ArrayOfJavaUtilArrayList;
-      if (i >= localObject.length) {
+      localObject = this.n;
+      if (i1 >= localObject.length) {
         break;
       }
-      localObject[i] = null;
-      i += 1;
+      localObject[i1] = null;
+      i1 += 1;
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioItemPokeItemAnimationManager$DoubleHitInfo = new PokeItemAnimationManager.DoubleHitInfo[6];
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioItemPokeItemAnimationManager$DoubleHitInfo;
-    int k = localObject.length;
-    i = j;
-    while (i < k)
+    this.h = new PokeItemAnimationManager.DoubleHitInfo[6];
+    Object localObject = this.h;
+    int i3 = localObject.length;
+    i1 = i2;
+    while (i1 < i3)
     {
-      PokeItemAnimationManager.DoubleHitInfo localDoubleHitInfo = localObject[i];
+      PokeItemAnimationManager.DoubleHitInfo localDoubleHitInfo = localObject[i1];
       localDoubleHitInfo = new PokeItemAnimationManager.DoubleHitInfo(this);
-      localDoubleHitInfo.jdField_a_of_type_Int = 1;
-      localDoubleHitInfo.jdField_a_of_type_Long = -1L;
-      i += 1;
+      localDoubleHitInfo.a = 1;
+      localDoubleHitInfo.b = -1L;
+      i1 += 1;
     }
-    this.jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("PokeAIOAnimThread");
-    this.jdField_b_of_type_AndroidOsHandlerThread.start();
-    this.jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_b_of_type_AndroidOsHandlerThread.getLooper());
-  }
-  
-  public static PokeItemAnimationManager a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeItemAnimationManager == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeItemAnimationManager == null) {
-          jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeItemAnimationManager = new PokeItemAnimationManager();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeItemAnimationManager;
+    this.f = new HandlerThread("PokeAIOAnimThread");
+    this.f.start();
+    this.g = new MqqHandler(this.f.getLooper());
   }
   
   private void a(String paramString, Context paramContext)
@@ -123,11 +101,11 @@ public class PokeItemAnimationManager
     if ((localFile.exists()) && (localFile.isDirectory()))
     {
       String[] arrayOfString = localFile.list();
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+      int i2 = arrayOfString.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        String str = arrayOfString[i];
+        String str = arrayOfString[i1];
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
@@ -173,7 +151,7 @@ public class PokeItemAnimationManager
           ((StringBuilder)localObject1).append(str);
           FileUtils.delete(((StringBuilder)localObject1).toString(), true);
         }
-        i += 1;
+        i1 += 1;
       }
     }
   }
@@ -184,27 +162,27 @@ public class PokeItemAnimationManager
     if (paramArrayOfStrengthInfo[paramInt3] == null)
     {
       paramArrayOfStrengthInfo[paramInt3] = new PokeItemAnimationManager.StrengthInfo(this);
-      paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int = 0;
-      paramArrayOfStrengthInfo[paramInt3].jdField_b_of_type_Int = 0;
-      paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Long = -1L;
+      paramArrayOfStrengthInfo[paramInt3].a = 0;
+      paramArrayOfStrengthInfo[paramInt3].b = 0;
+      paramArrayOfStrengthInfo[paramInt3].c = -1L;
     }
     if (paramInt1 != -1)
     {
-      paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int = paramInt1;
-      paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Long = l1;
-      paramAioInfo.jdField_a_of_type_Int = paramInt3;
+      paramArrayOfStrengthInfo[paramInt3].a = paramInt1;
+      paramArrayOfStrengthInfo[paramInt3].c = l1;
+      paramAioInfo.a = paramInt3;
       return true;
     }
     StringBuilder localStringBuilder;
-    if ((paramInt2 != -1) && (paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Long != -1L))
+    if ((paramInt2 != -1) && (paramArrayOfStrengthInfo[paramInt3].c != -1L))
     {
-      long l2 = paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Long;
-      paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Long = l1;
+      long l2 = paramArrayOfStrengthInfo[paramInt3].c;
+      paramArrayOfStrengthInfo[paramInt3].c = l1;
       if (paramInt2 != paramInt3)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
-        localStringBuilder.append(paramArrayOfStrengthInfo[paramInt2].jdField_b_of_type_Int);
+        localStringBuilder.append(paramArrayOfStrengthInfo[paramInt2].b);
         ReportController.b(paramAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, localStringBuilder.toString(), "", "", "");
         if (QLog.isColorLevel())
         {
@@ -212,28 +190,28 @@ public class PokeItemAnimationManager
           paramAppInterface.append("Strength click,type:");
           paramAppInterface.append(paramInt3);
           paramAppInterface.append(".with status ");
-          paramAppInterface.append(paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int);
+          paramAppInterface.append(paramArrayOfStrengthInfo[paramInt3].a);
           paramAppInterface.append("to 0");
           QLog.d("PokeMsg", 2, paramAppInterface.toString());
         }
-        paramAioInfo.jdField_a_of_type_Int = paramInt3;
-        paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int = 0;
-        paramArrayOfStrengthInfo[paramInt3].jdField_b_of_type_Int = 1;
+        paramAioInfo.a = paramInt3;
+        paramArrayOfStrengthInfo[paramInt3].a = 0;
+        paramArrayOfStrengthInfo[paramInt3].b = 1;
         return true;
       }
-      if (l1 - l2 < jdField_b_of_type_Long)
+      if (l1 - l2 < k)
       {
         paramAppInterface = paramArrayOfStrengthInfo[paramInt3];
-        paramAppInterface.jdField_a_of_type_Int += 1;
+        paramAppInterface.a += 1;
         paramAppInterface = paramArrayOfStrengthInfo[paramInt3];
-        paramAppInterface.jdField_b_of_type_Int += 1;
+        paramAppInterface.b += 1;
         if (QLog.isColorLevel())
         {
           paramAppInterface = new StringBuilder();
           paramAppInterface.append("Strength click ,type:");
           paramAppInterface.append(paramInt3);
           paramAppInterface.append(".with status ");
-          paramAppInterface.append(paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int);
+          paramAppInterface.append(paramArrayOfStrengthInfo[paramInt3].a);
           QLog.d("PokeMsg", 2, paramAppInterface.toString());
         }
       }
@@ -241,17 +219,17 @@ public class PokeItemAnimationManager
       {
         paramAioInfo = new StringBuilder();
         paramAioInfo.append("");
-        paramAioInfo.append(paramArrayOfStrengthInfo[paramInt2].jdField_b_of_type_Int);
+        paramAioInfo.append(paramArrayOfStrengthInfo[paramInt2].b);
         ReportController.b(paramAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, paramAioInfo.toString(), "", "", "");
-        paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int = 0;
-        paramArrayOfStrengthInfo[paramInt3].jdField_b_of_type_Int = 1;
+        paramArrayOfStrengthInfo[paramInt3].a = 0;
+        paramArrayOfStrengthInfo[paramInt3].b = 1;
         if (QLog.isColorLevel())
         {
           paramAppInterface = new StringBuilder();
           paramAppInterface.append("Strength click,type:");
           paramAppInterface.append(paramInt3);
           paramAppInterface.append(".with status ");
-          paramAppInterface.append(paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int);
+          paramAppInterface.append(paramArrayOfStrengthInfo[paramInt3].a);
           paramAppInterface.append(",out of time");
           QLog.d("PokeMsg", 2, paramAppInterface.toString());
         }
@@ -262,23 +240,37 @@ public class PokeItemAnimationManager
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(paramArrayOfStrengthInfo[paramInt2].jdField_b_of_type_Int);
+      localStringBuilder.append(paramArrayOfStrengthInfo[paramInt2].b);
       ReportController.b(paramAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, localStringBuilder.toString(), "", "", "");
     }
-    paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Long = l1;
+    paramArrayOfStrengthInfo[paramInt3].c = l1;
     if (QLog.isColorLevel())
     {
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("Strength first click,type:");
       paramAppInterface.append(paramInt3);
       paramAppInterface.append(".with status ");
-      paramAppInterface.append(paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int);
+      paramAppInterface.append(paramArrayOfStrengthInfo[paramInt3].a);
       QLog.d("PokeMsg", 2, paramAppInterface.toString());
     }
-    paramAioInfo.jdField_a_of_type_Int = paramInt3;
-    paramArrayOfStrengthInfo[paramInt3].jdField_a_of_type_Int = 0;
-    paramArrayOfStrengthInfo[paramInt3].jdField_b_of_type_Int = 1;
+    paramAioInfo.a = paramInt3;
+    paramArrayOfStrengthInfo[paramInt3].a = 0;
+    paramArrayOfStrengthInfo[paramInt3].b = 1;
     return true;
+  }
+  
+  public static PokeItemAnimationManager c()
+  {
+    if (l == null) {
+      try
+      {
+        if (l == null) {
+          l = new PokeItemAnimationManager();
+        }
+      }
+      finally {}
+    }
+    return l;
   }
   
   public int a(AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -287,7 +279,7 @@ public class PokeItemAnimationManager
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("Strength D_HIT_TIME_MS");
-      ((StringBuilder)localObject1).append(jdField_b_of_type_Long);
+      ((StringBuilder)localObject1).append(k);
       ((StringBuilder)localObject1).append("curFriendUin");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append("type");
@@ -297,7 +289,7 @@ public class PokeItemAnimationManager
       QLog.d("PokeMsg", 2, ((StringBuilder)localObject1).toString());
     }
     StringBuilder localStringBuilder;
-    if (jdField_b_of_type_Long == 0L)
+    if (k == 0L)
     {
       localObject1 = PreferenceManager.getDefaultSharedPreferences(paramAppInterface.getApp());
       localObject2 = paramAppInterface.getAccount();
@@ -305,9 +297,9 @@ public class PokeItemAnimationManager
       localStringBuilder.append((String)localObject2);
       localStringBuilder.append("_");
       localStringBuilder.append("aio_poke_strength_rule_interval");
-      long l = ((SharedPreferences)localObject1).getLong(localStringBuilder.toString(), 0L) * 1000L;
-      jdField_b_of_type_Long = l;
-      if (l == 0L)
+      long l1 = ((SharedPreferences)localObject1).getLong(localStringBuilder.toString(), 0L) * 1000L;
+      k = l1;
+      if (l1 == 0L)
       {
         if (QLog.isColorLevel()) {
           QLog.d("PokeMsg", 2, "Strength D_HIT_TIME_MS is not ready");
@@ -318,13 +310,13 @@ public class PokeItemAnimationManager
     if (TextUtils.isEmpty(paramString)) {
       return 0;
     }
-    if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) || (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) == null))
+    if ((!this.i.containsKey(paramString)) || (this.i.get(paramString) == null))
     {
       localObject1 = new PokeItemAnimationManager.AioInfo(this);
-      ((PokeItemAnimationManager.AioInfo)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioItemPokeItemAnimationManager$StrengthInfo = new PokeItemAnimationManager.StrengthInfo[6];
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject1);
+      ((PokeItemAnimationManager.AioInfo)localObject1).b = new PokeItemAnimationManager.StrengthInfo[6];
+      this.i.put(paramString, localObject1);
     }
-    Object localObject1 = (PokeItemAnimationManager.AioInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    Object localObject1 = (PokeItemAnimationManager.AioInfo)this.i.get(paramString);
     if (localObject1 == null)
     {
       paramAppInterface = new HashMap();
@@ -332,8 +324,8 @@ public class PokeItemAnimationManager
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "pokeStrengthNullPoint", false, 0L, 0L, paramAppInterface, "");
       return 0;
     }
-    Object localObject2 = ((PokeItemAnimationManager.AioInfo)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioItemPokeItemAnimationManager$StrengthInfo;
-    paramInt2 = ((PokeItemAnimationManager.AioInfo)localObject1).jdField_a_of_type_Int;
+    Object localObject2 = ((PokeItemAnimationManager.AioInfo)localObject1).b;
+    paramInt2 = ((PokeItemAnimationManager.AioInfo)localObject1).a;
     paramInt1 -= 1;
     if (paramInt1 == -1) {
       paramInt1 = 0;
@@ -341,55 +333,44 @@ public class PokeItemAnimationManager
     if ((paramInt1 >= 0) && (paramInt1 < 6))
     {
       if (a(paramAppInterface, paramString, paramInt3, (PokeItemAnimationManager.AioInfo)localObject1, (PokeItemAnimationManager.StrengthInfo[])localObject2, paramInt2, paramInt1)) {
-        return localObject2[paramInt1].jdField_a_of_type_Int;
+        return localObject2[paramInt1].a;
       }
-      if (localObject2[paramInt1].jdField_a_of_type_Int > 3) {
-        localObject2[paramInt1].jdField_a_of_type_Int = 3;
+      if (localObject2[paramInt1].a > 3) {
+        localObject2[paramInt1].a = 3;
       }
-      return localObject2[paramInt1].jdField_a_of_type_Int;
+      return localObject2[paramInt1].a;
     }
     if (paramInt2 != -1)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(localObject2[paramInt2].jdField_b_of_type_Int);
+      localStringBuilder.append(localObject2[paramInt2].b);
       ReportController.b(paramAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, localStringBuilder.toString(), "", "", "");
-      ((PokeItemAnimationManager.AioInfo)localObject1).jdField_a_of_type_Int = -1;
+      ((PokeItemAnimationManager.AioInfo)localObject1).a = -1;
     }
     return 0;
   }
   
-  public MqqHandler a()
-  {
-    if ((this.jdField_b_of_type_MqqOsMqqHandler == null) || (this.jdField_b_of_type_AndroidOsHandlerThread == null))
-    {
-      this.jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("PokeAIOAnimThread");
-      this.jdField_b_of_type_AndroidOsHandlerThread.start();
-      this.jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_b_of_type_AndroidOsHandlerThread.getLooper());
-    }
-    return this.jdField_b_of_type_MqqOsMqqHandler;
-  }
-  
   public void a()
   {
-    MqqHandler localMqqHandler = this.jdField_b_of_type_MqqOsMqqHandler;
+    MqqHandler localMqqHandler = this.g;
     if (localMqqHandler != null) {
       localMqqHandler.removeCallbacksAndMessages(null);
     }
-    if (this.jdField_b_of_type_AndroidOsHandlerThread != null) {
+    if (this.f != null) {
       if (Build.VERSION.SDK_INT >= 18) {
-        this.jdField_b_of_type_AndroidOsHandlerThread.quitSafely();
+        this.f.quitSafely();
       } else {
-        this.jdField_b_of_type_AndroidOsHandlerThread.quit();
+        this.f.quit();
       }
     }
-    this.jdField_b_of_type_AndroidOsHandlerThread = null;
-    this.jdField_b_of_type_MqqOsMqqHandler = null;
+    this.f = null;
+    this.g = null;
   }
   
   public void a(int paramInt)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.a;
     if (localHandler != null) {
       localHandler.sendEmptyMessage(paramInt);
     }
@@ -397,7 +378,7 @@ public class PokeItemAnimationManager
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((Handler)localObject).obtainMessage();
@@ -408,63 +389,63 @@ public class PokeItemAnimationManager
       } else {
         ((Message)localObject).arg2 = 0;
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.a.sendMessage((Message)localObject);
     }
   }
   
   public void a(int paramInt, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((Handler)localObject).obtainMessage();
       ((Message)localObject).what = paramInt;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, paramLong);
+      this.a.sendMessageDelayed((Message)localObject, paramLong);
     }
   }
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((Handler)localObject).obtainMessage();
       ((Message)localObject).what = paramInt;
       ((Message)localObject).obj = Boolean.valueOf(paramBoolean);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, paramLong);
+      this.a.sendMessageDelayed((Message)localObject, paramLong);
     }
   }
   
   public void a(View paramView)
   {
-    paramView = AIOUtils.a(paramView);
+    paramView = AIOUtils.b(paramView);
     if (GivingHeartItemBuilder.Holder.class.isInstance(paramView))
     {
       Object localObject = (GivingHeartItemBuilder.Holder)paramView;
       if (QLog.isColorLevel()) {
-        QLog.d("GivingHeart", 2, new Object[] { "==>to be remove obj:", Integer.valueOf(((GivingHeartItemBuilder.Holder)localObject).jdField_b_of_type_Int) });
+        QLog.d("GivingHeart", 2, new Object[] { "==>to be remove obj:", Integer.valueOf(((GivingHeartItemBuilder.Holder)localObject).l) });
       }
-      if ((((GivingHeartItemBuilder.Holder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForPoke))
+      if ((((GivingHeartItemBuilder.Holder)localObject).q instanceof MessageForPoke))
       {
-        paramView = (MessageForPoke)((GivingHeartItemBuilder.Holder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-        if (!PokeItemHelper.a(paramView.interactType)) {
+        paramView = (MessageForPoke)((GivingHeartItemBuilder.Holder)localObject).q;
+        if (!PokeItemHelper.d(paramView.interactType)) {
           return;
         }
         if (paramView.interactType == 6)
         {
-          if (((GivingHeartItemBuilder.Holder)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.a())
+          if (((GivingHeartItemBuilder.Holder)localObject).d.b())
           {
-            localObject = ((GivingHeartItemBuilder.Holder)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.a();
-            paramView.mUnlimitedState.jdField_a_of_type_Int = ((UnlimitedBladeWorks.UnlimitedState)localObject).jdField_a_of_type_Int;
-            paramView.mUnlimitedState.jdField_b_of_type_Int = ((UnlimitedBladeWorks.UnlimitedState)localObject).jdField_b_of_type_Int;
-            paramView.mUnlimitedState.jdField_a_of_type_Long = ((UnlimitedBladeWorks.UnlimitedState)localObject).jdField_a_of_type_Long;
-            paramView.mFrameState.c = ((UnlimitedBladeWorks.UnlimitedState)localObject).jdField_b_of_type_Boolean;
-            paramView.mFrameState.jdField_a_of_type_Boolean = ((UnlimitedBladeWorks.UnlimitedState)localObject).jdField_a_of_type_Boolean;
+            localObject = ((GivingHeartItemBuilder.Holder)localObject).d.e();
+            paramView.mUnlimitedState.a = ((UnlimitedBladeWorks.UnlimitedState)localObject).a;
+            paramView.mUnlimitedState.b = ((UnlimitedBladeWorks.UnlimitedState)localObject).b;
+            paramView.mUnlimitedState.c = ((UnlimitedBladeWorks.UnlimitedState)localObject).c;
+            paramView.mFrameState.h = ((UnlimitedBladeWorks.UnlimitedState)localObject).e;
+            paramView.mFrameState.d = ((UnlimitedBladeWorks.UnlimitedState)localObject).d;
           }
         }
         else
         {
-          localObject = ((GivingHeartItemBuilder.Holder)localObject).jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getBackground();
+          localObject = ((GivingHeartItemBuilder.Holder)localObject).c.getBackground();
           if ((localObject instanceof CustomFrameAnimationDrawable))
           {
             localObject = (CustomFrameAnimationDrawable)localObject;
@@ -473,10 +454,10 @@ public class PokeItemAnimationManager
             if (QLog.isColorLevel()) {
               QLog.d("GivingHeart", 2, "drawble pause");
             }
-            if (paramView.mFrameState.jdField_a_of_type_Int == ((CustomFrameAnimationDrawable)localObject).b())
+            if (paramView.mFrameState.c == ((CustomFrameAnimationDrawable)localObject).k())
             {
-              paramView.mFrameState.jdField_a_of_type_Boolean = false;
-              paramView.mFrameState.c = true;
+              paramView.mFrameState.d = false;
+              paramView.mFrameState.h = true;
             }
           }
         }
@@ -486,12 +467,23 @@ public class PokeItemAnimationManager
   
   public void a(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), paramFitSystemWindowsRelativeLayout);
+    this.a = new WeakReferenceHandler(Looper.getMainLooper(), paramFitSystemWindowsRelativeLayout);
+  }
+  
+  public MqqHandler b()
+  {
+    if ((this.g == null) || (this.f == null))
+    {
+      this.f = new HandlerThread("PokeAIOAnimThread");
+      this.f.start();
+      this.g = new MqqHandler(this.f.getLooper());
+    }
+    return this.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager
  * JD-Core Version:    0.7.0.1
  */

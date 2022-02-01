@@ -30,7 +30,7 @@ class QCircleChatPie$1
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = (MessageRecord)paramList.get(0);
-      if ((!paramList.isSendFromLocal()) && (!(paramList instanceof MessageForUniteGrayTip)) && (paramList.frienduin != null) && (paramList.frienduin.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+      if ((!paramList.isSendFromLocal()) && (!(paramList instanceof MessageForUniteGrayTip)) && (paramList.frienduin != null) && (paramList.frienduin.equals(this.a.ah.b)))
       {
         QCircleChatPie.a(this.a);
         QCircleChatPie.a(this.a, paramList);
@@ -42,7 +42,7 @@ class QCircleChatPie$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.b;
+      String str = this.a.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onSendResult, isSucc:");
       localStringBuilder.append(paramBoolean);
@@ -57,12 +57,12 @@ class QCircleChatPie$1
       if (paramString.length() == 0) {
         return;
       }
-      if (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+      if (paramString.equals(this.a.ah.b))
       {
         paramString = this.a;
-        paramString.m = true;
+        paramString.as = true;
         paramString.a(262144, null, paramLong);
-        if ((paramBoolean) && (!((FriendsManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+        if ((paramBoolean) && (!((FriendsManager)this.a.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(this.a.ah.b))) {
           QCircleChatPie.a(this.a);
         }
       }
@@ -83,7 +83,7 @@ class QCircleChatPie$1
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
-          String str = this.a.b;
+          String str = this.a.c;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(",exception:");
           localStringBuilder.append(localInvalidProtocolBufferMicroException.toString());
@@ -91,32 +91,32 @@ class QCircleChatPie$1
         }
         int i = paramTransSvrInfo.int32_ret_code.get();
         paramTransSvrInfo = paramTransSvrInfo.str_err_msg.get();
-        QLog.d(this.a.b, 2, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",retCode:", Integer.valueOf(i), ",tips:", paramTransSvrInfo });
+        QLog.d(this.a.c, 2, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",retCode:", Integer.valueOf(i), ",tips:", paramTransSvrInfo });
         if ((i == 0) && (!TextUtils.isEmpty(paramTransSvrInfo)))
         {
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 0, paramTransSvrInfo, 0).a();
-          QLog.d(this.a.b, 2, new Object[] { "onSendResultWithTransInfo Show Toast,tips:", paramTransSvrInfo });
+          QQToast.makeText(this.a.e, 0, paramTransSvrInfo, 0).show();
+          QLog.d(this.a.c, 2, new Object[] { "onSendResultWithTransInfo Show Toast,tips:", paramTransSvrInfo });
         }
       }
     }
     else
     {
-      QLog.d(this.a.b, 1, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",transSvrInfo is empty!" });
+      QLog.d(this.a.c, 1, new Object[] { "onSendResultWithTransInfo isSuc:", Boolean.valueOf(paramBoolean), ",transSvrInfo is empty!" });
     }
   }
   
   protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
   {
-    this.a.e(65536);
+    this.a.j(65536);
   }
   
   protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if ((paramString1 != null) && (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    if ((paramString1 != null) && (paramString1.equals(this.a.ah.b)) && (paramInt1 == this.a.ah.a))
     {
       if (QLog.isColorLevel())
       {
-        paramSendMessageHandler = this.a.b;
+        paramSendMessageHandler = this.a.c;
         paramString2 = new StringBuilder();
         paramString2.append("onUpdateSendMsgError uin ");
         paramString2.append(paramString1);
@@ -128,12 +128,12 @@ class QCircleChatPie$1
         paramString2.append(paramInt2);
         QLog.d(paramSendMessageHandler, 2, paramString2.toString());
       }
-      this.a.e(196608);
+      this.a.j(196608);
       return;
     }
     if (QLog.isColorLevel())
     {
-      paramSendMessageHandler = this.a.b;
+      paramSendMessageHandler = this.a.c;
       paramString2 = new StringBuilder();
       paramString2.append("onUpdateSendMsgError exception uin ");
       paramString2.append(paramString1);
@@ -147,7 +147,7 @@ class QCircleChatPie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.QCircleChatPie.1
  * JD-Core Version:    0.7.0.1
  */

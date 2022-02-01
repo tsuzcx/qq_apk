@@ -25,7 +25,7 @@ public class QQVipHeadLayout
   
   protected int getLayoutId()
   {
-    return 2131561845;
+    return 2131628224;
   }
   
   public boolean isPined()
@@ -40,7 +40,7 @@ public class QQVipHeadLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipHeadLayout
  * JD-Core Version:    0.7.0.1
  */

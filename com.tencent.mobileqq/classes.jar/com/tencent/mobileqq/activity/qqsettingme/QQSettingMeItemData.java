@@ -6,43 +6,43 @@ import com.tencent.mobileqq.tianshu.ui.RedTouch;
 
 public class QQSettingMeItemData
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private RedTouchTextView jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView;
-  private RedTouch jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+  private View a;
+  private RedTouch b;
+  private RedTouchTextView c;
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public RedTouchTextView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView;
-  }
-  
-  public RedTouch a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+    return this.a;
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
   
   public void a(RedTouchTextView paramRedTouchTextView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView = paramRedTouchTextView;
+    this.c = paramRedTouchTextView;
   }
   
   public void a(RedTouch paramRedTouch)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = paramRedTouch;
+    this.b = paramRedTouch;
+  }
+  
+  public RedTouch b()
+  {
+    return this.b;
+  }
+  
+  public RedTouchTextView c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeItemData
  * JD-Core Version:    0.7.0.1
  */

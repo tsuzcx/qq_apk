@@ -27,10 +27,10 @@ class Face2FaceAddFriendActivity$12
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString;
+      localObject = Face2FaceAddFriendActivity.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onRecvTroopPush, from_type=");
-      localStringBuilder.append(this.a.jdField_b_of_type_Int);
+      localStringBuilder.append(this.a.e);
       localStringBuilder.append(",groupProfile isNull=");
       boolean bool;
       if (paramFace2FaceGroupProfile == null) {
@@ -42,10 +42,10 @@ class Face2FaceAddFriendActivity$12
       localStringBuilder.append(",show_type=");
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if ((this.a.jdField_b_of_type_Int == 0) && (paramFace2FaceGroupProfile != null) && (!this.a.jdField_b_of_type_JavaUtilList.contains(paramFace2FaceGroupProfile)))
+    if ((this.a.e == 0) && (paramFace2FaceGroupProfile != null) && (!this.a.n.contains(paramFace2FaceGroupProfile)))
     {
-      this.a.jdField_b_of_type_JavaUtilList.add(paramFace2FaceGroupProfile);
-      if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == this.a.jdField_d_of_type_JavaUtilList.size())
+      this.a.n.add(paramFace2FaceGroupProfile);
+      if (this.a.q.size() == this.a.p.size())
       {
         Face2FaceAddFriendActivity.a(this.a, paramFace2FaceGroupProfile);
       }
@@ -57,7 +57,7 @@ class Face2FaceAddFriendActivity$12
         Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(10, 5000L);
       }
       paramFace2FaceGroupProfile = this.a;
-      paramFace2FaceGroupProfile.k += 1;
+      paramFace2FaceGroupProfile.H += 1;
     }
   }
   
@@ -66,12 +66,12 @@ class Face2FaceAddFriendActivity$12
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString;
+      localObject = Face2FaceAddFriendActivity.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onRecvMemberPush, from_type=");
-      localStringBuilder.append(this.a.jdField_b_of_type_Int);
+      localStringBuilder.append(this.a.e);
       localStringBuilder.append(",fromTroopUin=");
-      localStringBuilder.append(this.a.jdField_d_of_type_JavaLangString);
+      localStringBuilder.append(this.a.f);
       localStringBuilder.append(",userProfile isNull=");
       boolean bool;
       if (paramFace2FaceUserProfile == null) {
@@ -81,47 +81,47 @@ class Face2FaceAddFriendActivity$12
       }
       localStringBuilder.append(bool);
       localStringBuilder.append("total:");
-      localStringBuilder.append(this.a.jdField_a_of_type_JavaUtilList.size() + 1);
+      localStringBuilder.append(this.a.m.size() + 1);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if (paramFace2FaceUserProfile == null) {
       return;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.a.jdField_f_of_type_Long;
-    if ((this.a.jdField_f_of_type_Long != 0L) && (l2 < 1000L) && (paramFace2FaceUserProfile.a == 0L))
+    long l2 = l1 - this.a.aF;
+    if ((this.a.aF != 0L) && (l2 < 1000L) && (paramFace2FaceUserProfile.g == 0L))
     {
       localObject = Message.obtain();
       ((Message)localObject).what = 16;
       ((Message)localObject).obj = paramFace2FaceUserProfile;
       long l3 = 1000L - l2;
       Face2FaceAddFriendActivity.a(this.a).sendMessageDelayed((Message)localObject, l3);
-      paramFace2FaceUserProfile.a = l1;
-      this.a.jdField_f_of_type_Long = (l1 + l3);
+      paramFace2FaceUserProfile.g = l1;
+      this.a.aF = (l1 + l3);
       if (QLog.isColorLevel())
       {
-        paramFace2FaceUserProfile = Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString;
+        paramFace2FaceUserProfile = Face2FaceAddFriendActivity.b;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onRecvMemberPush, delay=");
         ((StringBuilder)localObject).append(l2);
         ((StringBuilder)localObject).append(", delayed=");
         ((StringBuilder)localObject).append(l3);
         ((StringBuilder)localObject).append(",mLastToopMemberPushStamp=");
-        ((StringBuilder)localObject).append(this.a.jdField_f_of_type_Long);
+        ((StringBuilder)localObject).append(this.a.aF);
         QLog.d(paramFace2FaceUserProfile, 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    if (paramFace2FaceUserProfile.a == 0L) {
-      this.a.jdField_f_of_type_Long = l1;
+    if (paramFace2FaceUserProfile.g == 0L) {
+      this.a.aF = l1;
     }
-    if ((this.a.jdField_b_of_type_Int == 1) && (!this.a.jdField_a_of_type_JavaUtilList.contains(paramFace2FaceUserProfile)))
+    if ((this.a.e == 1) && (!this.a.m.contains(paramFace2FaceUserProfile)))
     {
-      this.a.jdField_a_of_type_JavaUtilList.add(paramFace2FaceUserProfile);
-      if ((this.a.l) && (this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceTroopFriendListAdapter != null))
+      this.a.m.add(paramFace2FaceUserProfile);
+      if ((this.a.am) && (this.a.N != null))
       {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()));
-        this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceTroopFriendListAdapter.a(paramFace2FaceUserProfile);
+        this.a.M.setText(String.valueOf(this.a.m.size()));
+        this.a.N.a(paramFace2FaceUserProfile);
         return;
       }
       Face2FaceAddFriendActivity.a(this.a, paramFace2FaceUserProfile);
@@ -135,7 +135,7 @@ class Face2FaceAddFriendActivity$12
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      str = Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString;
+      str = Face2FaceAddFriendActivity.b;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onCloseFace2faceTroop, respHead isNull=");
       boolean bool;
@@ -156,7 +156,7 @@ class Face2FaceAddFriendActivity$12
     paramBusiRespHead = paramBusiRespHead.str_result.get();
     if (QLog.isColorLevel())
     {
-      str = Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString;
+      str = Face2FaceAddFriendActivity.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onCloseFace2faceTroop, ret=");
       localStringBuilder.append(i);
@@ -167,26 +167,26 @@ class Face2FaceAddFriendActivity$12
       localStringBuilder.append(",errInfo=");
       localStringBuilder.append(paramBusiRespHead);
       localStringBuilder.append(",from_type=");
-      localStringBuilder.append(this.a.jdField_b_of_type_Int);
+      localStringBuilder.append(this.a.e);
       localStringBuilder.append(",fromTroopUin=");
-      localStringBuilder.append(this.a.jdField_d_of_type_JavaLangString);
+      localStringBuilder.append(this.a.f);
       QLog.d(str, 2, localStringBuilder.toString());
     }
   }
   
   public void a(nearfield_group.BusiRespHead paramBusiRespHead, String paramString)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+    if ((this.a.aG != null) && (this.a.aG.isShowing()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.a.aG.dismiss();
+      this.a.aG = null;
     }
     if (paramBusiRespHead == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceTroopDetailView.a(-1, "", paramString, this.a.isFinishing());
+      this.a.J.a(-1, "", paramString, this.a.isFinishing());
       if (QLog.isColorLevel())
       {
-        paramBusiRespHead = Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString;
+        paramBusiRespHead = Face2FaceAddFriendActivity.b;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("onJoinTroop, respHead isNull=true, troopCode=");
         ((StringBuilder)localObject1).append(paramString);
@@ -201,7 +201,7 @@ class Face2FaceAddFriendActivity$12
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      paramBusiRespHead = Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString;
+      paramBusiRespHead = Face2FaceAddFriendActivity.b;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onJoinTroop, ret=");
       ((StringBuilder)localObject2).append(i);
@@ -214,45 +214,45 @@ class Face2FaceAddFriendActivity$12
       ((StringBuilder)localObject2).append(",troopCode=");
       ((StringBuilder)localObject2).append(paramString);
       ((StringBuilder)localObject2).append(",from_type=");
-      ((StringBuilder)localObject2).append(this.a.jdField_b_of_type_Int);
+      ((StringBuilder)localObject2).append(this.a.e);
       ((StringBuilder)localObject2).append(",fromTroopUin=");
-      ((StringBuilder)localObject2).append(this.a.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.a.f);
       QLog.d(paramBusiRespHead, 2, ((StringBuilder)localObject2).toString());
     }
-    if (this.a.jdField_b_of_type_Int == 0)
+    if (this.a.e == 0)
     {
       if (i == 0)
       {
-        localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_a_of_type_JavaUtilList.iterator();
+        localObject2 = this.a.Z.k.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           paramBusiRespHead = (Face2FaceFriendBubbleView)((Iterator)localObject2).next();
-          if ((paramBusiRespHead != null) && (paramBusiRespHead.a() == 2) && (paramString.equals(paramBusiRespHead.b())))
+          if ((paramBusiRespHead != null) && (paramBusiRespHead.getUinType() == 2) && (paramString.equals(paramBusiRespHead.getUin())))
           {
             paramBusiRespHead.setStatusWithAnimation(2);
-            paramBusiRespHead = paramBusiRespHead.a();
+            paramBusiRespHead = paramBusiRespHead.getBindFriendInfo();
             if ((paramBusiRespHead instanceof Face2FaceGroupProfile))
             {
               StringBuilder localStringBuilder = new StringBuilder();
-              localStringBuilder.append(paramBusiRespHead.e);
+              localStringBuilder.append(paramBusiRespHead.f);
               localStringBuilder.append("_");
-              localStringBuilder.append(((Face2FaceGroupProfile)paramBusiRespHead).jdField_b_of_type_JavaLangString);
+              localStringBuilder.append(((Face2FaceGroupProfile)paramBusiRespHead).b);
               paramBusiRespHead = localStringBuilder.toString();
             }
             else
             {
               paramBusiRespHead = paramString;
             }
-            this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.a(paramBusiRespHead);
+            this.a.Z.b(paramBusiRespHead);
             paramBusiRespHead = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
             paramBusiRespHead.what = 11;
             paramBusiRespHead.arg1 = 2;
-            Face2FaceAddFriendActivity.a(this.a).sendMessageDelayed(paramBusiRespHead, this.a.a());
+            Face2FaceAddFriendActivity.a(this.a).sendMessageDelayed(paramBusiRespHead, this.a.k());
           }
         }
-        ReportController.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_guest", "suc_join", 0, 0, paramString, "8.7.0", "", this.a.app.getCurrentAccountUin());
+        ReportController.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_guest", "suc_join", 0, 0, paramString, "8.8.17", "", this.a.app.getCurrentAccountUin());
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceTroopDetailView.a(i, (String)localObject1, paramString, this.a.isFinishing());
+      this.a.J.a(i, (String)localObject1, paramString, this.a.isFinishing());
     }
   }
   
@@ -268,7 +268,7 @@ class Face2FaceAddFriendActivity$12
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      str = Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString;
+      str = Face2FaceAddFriendActivity.b;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onOpenFace2faceTroop, respHead isNull=");
       if (paramBusiRespHead == null) {
@@ -290,12 +290,12 @@ class Face2FaceAddFriendActivity$12
     if (paramBusiRespHead == null)
     {
       paramBusiRespHead = this.a;
-      paramBusiRespHead.jdField_f_of_type_Int = 2;
-      Face2FaceAddFriendActivity.d(paramBusiRespHead);
-      if (this.a.jdField_b_of_type_Int == 1)
+      paramBusiRespHead.u = 2;
+      Face2FaceAddFriendActivity.g(paramBusiRespHead);
+      if (this.a.e == 1)
       {
         paramBusiRespHead = this.a;
-        DialogUtil.a(paramBusiRespHead, 230, paramBusiRespHead.getString(2131719632), HardCodeUtil.a(2131704408), 2131690728, 2131692081, new Face2FaceAddFriendActivity.12.1(this), null).show();
+        DialogUtil.a(paramBusiRespHead, 230, paramBusiRespHead.getString(2131917233), HardCodeUtil.a(2131902321), 2131887648, 2131889053, new Face2FaceAddFriendActivity.12.1(this), null).show();
       }
       return;
     }
@@ -305,7 +305,7 @@ class Face2FaceAddFriendActivity$12
     paramBusiRespHead = paramBusiRespHead.str_result.get();
     if (QLog.isColorLevel())
     {
-      str = Face2FaceAddFriendActivity.jdField_b_of_type_JavaLangString;
+      str = Face2FaceAddFriendActivity.b;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onOpenFace2faceTroop, ret=");
       localStringBuilder.append(i);
@@ -316,16 +316,16 @@ class Face2FaceAddFriendActivity$12
       localStringBuilder.append(",errInfo=");
       localStringBuilder.append(paramBusiRespHead);
       localStringBuilder.append(",from_type=");
-      localStringBuilder.append(this.a.jdField_b_of_type_Int);
+      localStringBuilder.append(this.a.e);
       localStringBuilder.append(",fromTroopUin=");
-      localStringBuilder.append(this.a.jdField_d_of_type_JavaLangString);
+      localStringBuilder.append(this.a.f);
       QLog.d(str, 2, localStringBuilder.toString());
     }
     if (i == 0)
     {
       paramBusiRespHead = this.a;
-      paramBusiRespHead.jdField_f_of_type_Int = 1;
-      if (paramBusiRespHead.jdField_b_of_type_Int == 0)
+      paramBusiRespHead.u = 1;
+      if (paramBusiRespHead.e == 0)
       {
         if ((paramList != null) && (paramList.size() > 0))
         {
@@ -333,33 +333,33 @@ class Face2FaceAddFriendActivity$12
           while (paramBusiRespHead.hasNext())
           {
             paramList = (Face2FaceUserData)paramBusiRespHead.next();
-            if (this.a.jdField_b_of_type_JavaUtilList.contains(paramList)) {
+            if (this.a.n.contains(paramList)) {
               break;
             }
-            this.a.jdField_b_of_type_JavaUtilList.add(paramList);
+            this.a.n.add(paramList);
           }
         }
         paramBusiRespHead = this.a;
-        paramBusiRespHead.c = true;
-        Face2FaceAddFriendActivity.d(paramBusiRespHead);
+        paramBusiRespHead.s = true;
+        Face2FaceAddFriendActivity.g(paramBusiRespHead);
       }
     }
     else
     {
       paramBusiRespHead = this.a;
-      paramBusiRespHead.jdField_f_of_type_Int = 2;
-      Face2FaceAddFriendActivity.d(paramBusiRespHead);
-      if (this.a.jdField_b_of_type_Int == 1)
+      paramBusiRespHead.u = 2;
+      Face2FaceAddFriendActivity.g(paramBusiRespHead);
+      if (this.a.e == 1)
       {
         paramBusiRespHead = this.a;
-        DialogUtil.a(paramBusiRespHead, 230, paramBusiRespHead.getString(2131719632), HardCodeUtil.a(2131704401), 2131690728, 2131692081, new Face2FaceAddFriendActivity.12.2(this), null).show();
+        DialogUtil.a(paramBusiRespHead, 230, paramBusiRespHead.getString(2131917233), HardCodeUtil.a(2131902314), 2131887648, 2131889053, new Face2FaceAddFriendActivity.12.2(this), null).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.12
  * JD-Core Version:    0.7.0.1
  */

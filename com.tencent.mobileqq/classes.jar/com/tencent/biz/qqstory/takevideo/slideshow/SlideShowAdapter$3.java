@@ -15,21 +15,21 @@ class SlideShowAdapter$3
   
   public void run()
   {
-    int i = this.a.a.getWidth();
-    int j = this.a.a.getHeight();
+    int i = this.a.c.getWidth();
+    int j = this.a.c.getHeight();
     if (i != 0)
     {
       if (j == 0) {
         return;
       }
-      if (SlideShowAdapter.a(this.this$0) == null)
+      if (SlideShowAdapter.c(this.this$0) == null)
       {
-        int k = DisplayUtil.a(SlideShowAdapter.a(this.this$0), 1.0F);
-        new Paint().setTextSize(DisplayUtil.a(SlideShowAdapter.a(this.this$0), 11.0F));
-        int m = DisplayUtil.a(SlideShowAdapter.a(this.this$0), 2.0F);
+        int k = DisplayUtil.a(SlideShowAdapter.d(this.this$0), 1.0F);
+        new Paint().setTextSize(DisplayUtil.a(SlideShowAdapter.d(this.this$0), 11.0F));
+        int m = DisplayUtil.a(SlideShowAdapter.d(this.this$0), 2.0F);
         SlideShowAdapter.a(this.this$0, GridListAdapter.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
       }
-      this.a.a.setBackgroundDrawable(new BitmapDrawable(SlideShowAdapter.a(this.this$0).getResources(), SlideShowAdapter.a(this.this$0)));
+      this.a.c.setBackgroundDrawable(new BitmapDrawable(SlideShowAdapter.d(this.this$0).getResources(), SlideShowAdapter.c(this.this$0)));
     }
   }
 }

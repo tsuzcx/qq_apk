@@ -16,13 +16,13 @@ public class SmallScreenGLContentView
   extends GLSurfaceView
   implements GLSurfaceView.Renderer
 {
-  private int jdField_a_of_type_Int = 20;
-  private long jdField_a_of_type_Long = 0L;
-  private WatchTogetherSurfaceLifeCallback jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SmallScreenGLContentView.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private volatile boolean jdField_b_of_type_Boolean = false;
+  private int a = 20;
+  private int b = 0;
+  private long c = 0L;
+  private boolean d = false;
+  private volatile boolean e = false;
+  private WatchTogetherSurfaceLifeCallback f;
+  private Runnable g = new SmallScreenGLContentView.1(this);
   
   public SmallScreenGLContentView(Context paramContext)
   {
@@ -48,15 +48,15 @@ public class SmallScreenGLContentView
   {
     try
     {
-      if (this.jdField_b_of_type_Int > 0) {
-        this.jdField_b_of_type_Int -= 1;
+      if (this.b > 0) {
+        this.b -= 1;
       }
-      this.jdField_b_of_type_Boolean = false;
-      WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback;
+      this.e = false;
+      WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.f;
       if (localWatchTogetherSurfaceLifeCallback != null) {
         localWatchTogetherSurfaceLifeCallback.onDrawFrame(paramGL10);
       }
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.c = SystemClock.elapsedRealtime();
       return;
     }
     finally {}
@@ -70,7 +70,7 @@ public class SmallScreenGLContentView
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback;
+    WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.f;
     if (localWatchTogetherSurfaceLifeCallback != null) {
       localWatchTogetherSurfaceLifeCallback.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
     }
@@ -78,7 +78,7 @@ public class SmallScreenGLContentView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback;
+    WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.f;
     if (localWatchTogetherSurfaceLifeCallback != null) {
       localWatchTogetherSurfaceLifeCallback.onSurfaceCreated(paramGL10, paramEGLConfig);
     }
@@ -87,30 +87,30 @@ public class SmallScreenGLContentView
   
   public void requestRender()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.e) {
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
-    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    if ((l > 0L) && (l < this.jdField_a_of_type_Int)) {
+    this.e = true;
+    long l = SystemClock.elapsedRealtime() - this.c;
+    if ((l > 0L) && (l < this.a)) {
       try
       {
-        if (this.jdField_b_of_type_Int >= 2) {
+        if (this.b >= 2) {
           return;
         }
-        this.jdField_b_of_type_Int += 1;
-        super.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int - l);
+        this.b += 1;
+        super.postDelayed(this.g, this.a - l);
         return;
       }
       finally {}
     }
-    ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
+    ThreadManager.getUIHandler().post(this.g);
   }
   
   public void setVideoRender(WatchTogetherSurfaceLifeCallback paramWatchTogetherSurfaceLifeCallback)
   {
-    this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback = paramWatchTogetherSurfaceLifeCallback;
-    this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback.a(this);
+    this.f = paramWatchTogetherSurfaceLifeCallback;
+    this.f.a(this);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
@@ -121,7 +121,7 @@ public class SmallScreenGLContentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.SmallScreenGLContentView
  * JD-Core Version:    0.7.0.1
  */

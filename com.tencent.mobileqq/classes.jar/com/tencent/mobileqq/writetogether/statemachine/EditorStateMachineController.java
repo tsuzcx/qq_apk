@@ -14,50 +14,31 @@ import mqq.app.AppRuntime;
 public class EditorStateMachineController
   implements ISchedulerCallback
 {
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private TroopPushObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver = new EditorStateMachineController.1(this);
-  private IScheduler jdField_a_of_type_ComTencentMobileqqWritetogetherClientIScheduler;
-  private StateMachine<EditorState> jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine;
-  private DocRefresher jdField_a_of_type_ComTencentMobileqqWritetogetheruiDocRefresher;
-  private EditableModifier jdField_a_of_type_ComTencentMobileqqWritetogetheruiEditableModifier;
-  private String jdField_a_of_type_JavaLangString;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private AppRuntime a;
+  private QBaseActivity b;
+  private EditableModifier c;
+  private StateMachine<EditorState> d;
+  private IScheduler e;
+  private DocRefresher f;
+  private String g;
+  private TroopPushObserver h = new EditorStateMachineController.1(this);
   
   public EditorStateMachineController(AppRuntime paramAppRuntime, QBaseActivity paramQBaseActivity, EditableModifier paramEditableModifier)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiEditableModifier = paramEditableModifier;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
+    this.a = paramAppRuntime;
+    this.b = paramQBaseActivity;
+    this.c = paramEditableModifier;
+    this.b.addObserver(this.h);
   }
   
   public EditorState a()
   {
-    return (EditorState)this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine = new StateMachine(EditorState.UNLOADED, "EditorStateMachineContr");
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.EditableStateProcessor(this, EditorState.UNLOADED, Collections.singletonList(EditorState.OPEN_BY_ADMIN)));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.2(this, EditorState.CREATING, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.EditableStateProcessor(this, EditorState.READY, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL, EditorState.ROOM_FULL, EditorState.OPEN_BY_ADMIN })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.3(this, EditorState.LIMITED, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.4(this, EditorState.GAG_OR_ANONYMOUS_ON_ENTER, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL, EditorState.ROOM_FULL, EditorState.OPEN_BY_ADMIN })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.5(this, EditorState.ACTIVATED, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.NET_AVAIL, EditorState.OPEN_BY_ADMIN })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.6(this, EditorState.NET_ERR, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.NET_AVAIL, EditorState.CREATING, EditorState.OPEN_BY_ADMIN })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.ToastUneditableStateProcessor(this, EditorState.BLOCKED, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.UNLOADED, EditorState.NET_AVAIL })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.ShowToastWhenMoveToStateProcessor(this, EditorState.GAG, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.UNLOADED, EditorState.NET_AVAIL })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.7(this, EditorState.NET_AVAIL, Collections.singletonList(EditorState.NET_ERR)));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.DialogUneditableStateProcessor(this, EditorState.NOT_MEMBER, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.UNLOADED, EditorState.NET_AVAIL })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.8(this, EditorState.CLOSED_BY_ADMIN, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.NET_ERR, EditorState.UNLOADED, EditorState.ROOM_FULL, EditorState.OVER_SIZE })));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.9(this, EditorState.OPEN_BY_ADMIN, Collections.singletonList(EditorState.CLOSED_BY_ADMIN)));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(new EditorStateMachineController.10(this, EditorState.ROOM_FULL, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL, EditorState.OPEN_BY_ADMIN, EditorState.READY, EditorState.ACTIVATED })));
+    return (EditorState)this.d.a();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(paramInt);
+    this.d.a(paramInt);
   }
   
   public void a(int paramInt, String paramString)
@@ -100,42 +81,61 @@ public class EditorStateMachineController
   
   public void a(EditorState paramEditorState)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(paramEditorState);
+    this.d.a(paramEditorState);
   }
   
   public void a(EditorState paramEditorState, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine.a(paramEditorState, paramString);
+    this.d.a(paramEditorState, paramString);
   }
   
   public void a(DocRefresher paramDocRefresher)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiDocRefresher = paramDocRefresher;
+    this.f = paramDocRefresher;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiDocRefresher.aU_();
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIScheduler.a(1, 60000);
-    }
-    return false;
+    this.g = paramString;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
+    this.d = new StateMachine(EditorState.UNLOADED, "EditorStateMachineContr");
+    this.d.a(new EditorStateMachineController.EditableStateProcessor(this, EditorState.UNLOADED, Collections.singletonList(EditorState.OPEN_BY_ADMIN)));
+    this.d.a(new EditorStateMachineController.2(this, EditorState.CREATING, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL })));
+    this.d.a(new EditorStateMachineController.EditableStateProcessor(this, EditorState.READY, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL, EditorState.ROOM_FULL, EditorState.OPEN_BY_ADMIN })));
+    this.d.a(new EditorStateMachineController.3(this, EditorState.LIMITED, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL })));
+    this.d.a(new EditorStateMachineController.4(this, EditorState.GAG_OR_ANONYMOUS_ON_ENTER, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL, EditorState.ROOM_FULL, EditorState.OPEN_BY_ADMIN })));
+    this.d.a(new EditorStateMachineController.5(this, EditorState.ACTIVATED, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.NET_AVAIL, EditorState.OPEN_BY_ADMIN })));
+    this.d.a(new EditorStateMachineController.6(this, EditorState.NET_ERR, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.NET_AVAIL, EditorState.CREATING, EditorState.OPEN_BY_ADMIN })));
+    this.d.a(new EditorStateMachineController.ToastUneditableStateProcessor(this, EditorState.BLOCKED, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.UNLOADED, EditorState.NET_AVAIL })));
+    this.d.a(new EditorStateMachineController.ShowToastWhenMoveToStateProcessor(this, EditorState.GAG, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.UNLOADED, EditorState.NET_AVAIL })));
+    this.d.a(new EditorStateMachineController.7(this, EditorState.NET_AVAIL, Collections.singletonList(EditorState.NET_ERR)));
+    this.d.a(new EditorStateMachineController.DialogUneditableStateProcessor(this, EditorState.NOT_MEMBER, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.UNLOADED, EditorState.NET_AVAIL })));
+    this.d.a(new EditorStateMachineController.8(this, EditorState.CLOSED_BY_ADMIN, Arrays.asList(new EditorState[] { EditorState.READY, EditorState.ACTIVATED, EditorState.NET_ERR, EditorState.UNLOADED, EditorState.ROOM_FULL, EditorState.OVER_SIZE })));
+    this.d.a(new EditorStateMachineController.9(this, EditorState.OPEN_BY_ADMIN, Collections.singletonList(EditorState.CLOSED_BY_ADMIN)));
+    this.d.a(new EditorStateMachineController.10(this, EditorState.ROOM_FULL, Arrays.asList(new EditorState[] { EditorState.UNLOADED, EditorState.NET_AVAIL, EditorState.OPEN_BY_ADMIN, EditorState.READY, EditorState.ACTIVATED })));
+  }
+  
+  public void c()
+  {
+    this.b.removeObserver(this.h);
+  }
+  
+  public boolean c(int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      this.f.c();
+      this.e.a(1, 60000);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController
  * JD-Core Version:    0.7.0.1
  */

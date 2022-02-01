@@ -11,7 +11,7 @@ class GameRoomFragment$16
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     GameRoomFragment.a(this.a, true, "1");
-    GameRoomFragment.d(this.a);
+    GameRoomFragment.i(this.a);
   }
 }
 

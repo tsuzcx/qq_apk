@@ -19,6 +19,7 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.VisibleForTesting;
 import com.tencent.qqmini.sdk.launcher.MiniProcessorConfig;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.ProcessType;
@@ -608,18 +609,21 @@ public class GameLaunchStrategy
       Intrinsics.checkParameterIsNotNull(paramMiniAppInfo, "appConfig");
       cleanOldGameIfNeed();
       localObject3 = Companion.findExistedProcessForGame$lib_miniserver_internalRelease(Companion.toId$lib_miniserver_internalRelease((MiniAppBaseInfo)paramMiniAppInfo), (List)this.runningProcess);
-      localObject1 = localObject3;
       if (localObject3 != null) {}
     }
     finally
     {
       Object localObject3;
+      label65:
       Object localObject1;
-      label68:
-      List localList;
-      Iterator localIterator;
+      Object localObject4;
+      Object localObject5;
       label147:
-      label167:
+      label169:
+      label242:
+      GameLaunchConfig localGameLaunchConfig;
+      AppIdentity localAppIdentity;
+      label329:
       int i;
       for (;;)
       {
@@ -632,64 +636,76 @@ public class GameLaunchStrategy
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      break label68;
+      break label65;
       Object localObject2 = null;
       if (localObject2 == null) {
         break label147;
       }
-      break label167;
+      break label169;
+      bool = false;
+      break label329;
     }
     localObject3 = ((GameLaunchStrategy.RunningProcessInfo)CollectionsKt.last((List)this.runningProcess)).getConfig();
     localObject1 = Companion;
-    localList = (List)this.runningProcess;
-    localIterator = ((Iterable)localList).iterator();
+    localObject4 = (List)this.runningProcess;
+    localObject5 = ((Iterable)localObject4).iterator();
     do
     {
-      if (!localIterator.hasNext()) {
+      if (!((Iterator)localObject5).hasNext()) {
         break;
       }
-      localObject1 = localIterator.next();
+      localObject1 = ((Iterator)localObject5).next();
     } while (!Intrinsics.areEqual(((GameLaunchStrategy.RunningProcessInfo)localObject1).getConfig(), localObject3));
-    break label375;
+    break label430;
     localObject1 = new GameLaunchStrategy.RunningProcessInfo(this, (MiniProcessorConfig)localObject3);
-    localList.add(0, localObject1);
-    localObject1 = (GameLaunchStrategy.RunningProcessInfo)localObject1;
-    ((GameLaunchStrategy.RunningProcessInfo)localObject1).addApp(Companion.toId$lib_miniserver_internalRelease((MiniAppBaseInfo)paramMiniAppInfo));
-    localObject3 = Companion;
-    localObject3 = (List)this.runningProcess;
-    ((List)localObject3).remove(localObject1);
-    ((List)localObject3).add(0, localObject1);
-    localObject3 = new StringBuilder();
-    ((StringBuilder)localObject3).append("Start ");
-    ((StringBuilder)localObject3).append(Companion.toId$lib_miniserver_internalRelease((MiniAppBaseInfo)paramMiniAppInfo));
-    logCurrentState(((StringBuilder)localObject3).toString());
-    localObject3 = Companion.createLaunchIntent$lib_miniserver_internalRelease(this.context, this.gameLaunchConfig, (GameLaunchStrategy.RunningProcessInfo)localObject1, Companion.toId$lib_miniserver_internalRelease((MiniAppBaseInfo)paramMiniAppInfo));
-    paramMiniAppInfo = ((GameLaunchStrategy.RunningProcessInfo)localObject1).getState();
-    i = GameLaunchStrategy.WhenMappings.$EnumSwitchMapping$0[paramMiniAppInfo.ordinal()];
-    if (i != 1)
+    ((List)localObject4).add(0, localObject1);
+    localObject3 = (GameLaunchStrategy.RunningProcessInfo)localObject1;
+    localObject1 = ((GameLaunchStrategy.RunningProcessInfo)localObject3).getState();
+    ((GameLaunchStrategy.RunningProcessInfo)localObject3).addApp(Companion.toId$lib_miniserver_internalRelease((MiniAppBaseInfo)paramMiniAppInfo));
+    localObject4 = Companion;
+    localObject4 = (List)this.runningProcess;
+    ((List)localObject4).remove(localObject3);
+    ((List)localObject4).add(0, localObject3);
+    break label242;
+    localObject1 = ((GameLaunchStrategy.RunningProcessInfo)localObject3).getState();
+    localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append("Start ");
+    ((StringBuilder)localObject4).append(Companion.toId$lib_miniserver_internalRelease((MiniAppBaseInfo)paramMiniAppInfo));
+    logCurrentState(((StringBuilder)localObject4).toString());
+    localObject4 = Companion;
+    localObject5 = this.context;
+    localGameLaunchConfig = this.gameLaunchConfig;
+    localAppIdentity = Companion.toId$lib_miniserver_internalRelease((MiniAppBaseInfo)paramMiniAppInfo);
+    if (paramMiniAppInfo.launchParam.forceReload != 0)
     {
-      if (i != 2)
+      bool = true;
+      localObject3 = ((GameLaunchStrategy.Companion)localObject4).createLaunchIntent$lib_miniserver_internalRelease((Context)localObject5, localGameLaunchConfig, (GameLaunchStrategy.RunningProcessInfo)localObject3, localAppIdentity, bool);
+      i = GameLaunchStrategy.WhenMappings.$EnumSwitchMapping$0[localObject1.ordinal()];
+      if (i != 1)
       {
-        if (i == 3) {
-          paramMiniAppInfo = ProcessState.PRELOADED;
-        } else {
-          throw new NoWhenBranchMatchedException();
+        if (i != 2)
+        {
+          if (i == 3) {
+            paramMiniAppInfo = ProcessState.PRELOADED;
+          } else {
+            throw new NoWhenBranchMatchedException();
+          }
+        }
+        else {
+          paramMiniAppInfo = ProcessState.REUSE;
         }
       }
       else {
-        paramMiniAppInfo = ProcessState.REUSE;
+        paramMiniAppInfo = ProcessState.EMPTY;
       }
+      paramMiniAppInfo = new LaunchStrategy.LaunchData((Intent)localObject3, paramMiniAppInfo);
+      return paramMiniAppInfo;
     }
-    else {
-      paramMiniAppInfo = ProcessState.EMPTY;
-    }
-    paramMiniAppInfo = new LaunchStrategy.LaunchData((Intent)localObject3, paramMiniAppInfo);
-    return paramMiniAppInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.GameLaunchStrategy
  * JD-Core Version:    0.7.0.1
  */

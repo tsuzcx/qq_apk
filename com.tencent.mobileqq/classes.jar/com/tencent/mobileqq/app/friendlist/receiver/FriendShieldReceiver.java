@@ -71,15 +71,15 @@ public class FriendShieldReceiver
       }
       if (j == 0)
       {
-        localObject2 = ((FriendsManager)localObject1).e(String.valueOf(l1));
+        localObject2 = ((FriendsManager)localObject1).m(String.valueOf(l1));
         paramRspBody = paramToServiceMsg;
         if (localObject2 != null)
         {
           ((Friends)localObject2).setShieldFlag(true);
           ((FriendsManager)localObject1).a((Friends)localObject2);
           paramRspBody = this.a.getCurrentAccountUin();
-          localObject1 = HardCodeUtil.a(2131704975);
-          l2 = MessageCache.a();
+          localObject1 = HardCodeUtil.a(2131902866);
+          l2 = MessageCache.c();
           localObject2 = MessageRecordFactory.a(-2012);
           ((MessageRecord)localObject2).init(paramRspBody, String.valueOf(l1), paramRspBody, (String)localObject1, l2, 0, 0, l2);
           ((MessageRecord)localObject2).msgtype = -2012;
@@ -125,15 +125,15 @@ public class FriendShieldReceiver
       }
       if (j == 0)
       {
-        localObject2 = ((FriendsManager)localObject1).e(String.valueOf(l1));
+        localObject2 = ((FriendsManager)localObject1).m(String.valueOf(l1));
         paramRspBody = paramToServiceMsg;
         if (localObject2 != null)
         {
           ((Friends)localObject2).setShieldFlag(false);
           ((FriendsManager)localObject1).a((Friends)localObject2);
           paramRspBody = this.a.getCurrentAccountUin();
-          localObject1 = HardCodeUtil.a(2131704978);
-          l2 = MessageCache.a();
+          localObject1 = HardCodeUtil.a(2131902869);
+          l2 = MessageCache.c();
           localObject2 = MessageRecordFactory.a(-2012);
           ((MessageRecord)localObject2).init(paramRspBody, String.valueOf(l1), paramRspBody, (String)localObject1, l2, 0, 0, l2);
           ((MessageRecord)localObject2).msgtype = -2012;
@@ -273,7 +273,7 @@ public class FriendShieldReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.FriendShieldReceiver
  * JD-Core Version:    0.7.0.1
  */

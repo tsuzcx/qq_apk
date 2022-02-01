@@ -8,7 +8,7 @@ public class RoamDateInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if ("MessageRoamDate".equals(a(paramChain))) {
+    if ("MessageRoamDate".equals(b(paramChain))) {
       return RoamDate.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class RoamDateInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.RoamDateInterceptor
  * JD-Core Version:    0.7.0.1
  */

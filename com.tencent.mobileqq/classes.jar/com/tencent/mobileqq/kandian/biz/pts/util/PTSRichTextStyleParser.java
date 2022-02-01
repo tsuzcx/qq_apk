@@ -7,14 +7,14 @@ import org.json.JSONArray;
 public class PTSRichTextStyleParser
 {
   public static int a;
-  private static TruncateAttr a;
   public static int b;
   public static int c;
   public static int d;
+  private static TruncateAttr e;
   
   public static int a()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
   public static void a(Object paramObject, SpannableStringBuilder paramSpannableStringBuilder)
@@ -40,7 +40,7 @@ public class PTSRichTextStyleParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSRichTextStyleParser
  * JD-Core Version:    0.7.0.1
  */

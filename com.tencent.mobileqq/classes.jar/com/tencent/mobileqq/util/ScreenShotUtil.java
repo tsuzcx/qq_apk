@@ -27,8 +27,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class ScreenShotUtil
 {
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
+  private static Method b;
   
   public static Bitmap a(int paramInt1, int paramInt2)
   {
@@ -132,51 +132,51 @@ public final class ScreenShotUtil
     //   9: aload_1
     //   10: ifnull +174 -> 184
     //   13: aload_2
-    //   14: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: invokestatic 174	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   17: ifeq +5 -> 22
     //   20: aconst_null
     //   21: areturn
     //   22: aload_1
-    //   23: invokevirtual 178	java/io/File:exists	()Z
+    //   23: invokevirtual 179	java/io/File:exists	()Z
     //   26: ifne +8 -> 34
     //   29: aload_1
-    //   30: invokevirtual 181	java/io/File:mkdirs	()Z
+    //   30: invokevirtual 182	java/io/File:mkdirs	()Z
     //   33: pop
-    //   34: new 175	java/io/File
+    //   34: new 176	java/io/File
     //   37: dup
     //   38: aload_1
     //   39: aload_2
-    //   40: invokespecial 184	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   40: invokespecial 185	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   43: astore 5
     //   45: aload 4
     //   47: astore_1
-    //   48: new 186	java/io/BufferedOutputStream
+    //   48: new 187	java/io/BufferedOutputStream
     //   51: dup
-    //   52: new 188	java/io/FileOutputStream
+    //   52: new 189	java/io/FileOutputStream
     //   55: dup
     //   56: aload 5
-    //   58: invokespecial 191	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   61: invokespecial 194	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   58: invokespecial 192	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   61: invokespecial 195	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   64: astore_2
     //   65: aload_0
-    //   66: getstatic 200	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   66: getstatic 201	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   69: bipush 100
     //   71: aload_2
-    //   72: invokevirtual 204	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   72: invokevirtual 205	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   75: pop
     //   76: aload_2
-    //   77: invokevirtual 209	java/io/OutputStream:flush	()V
+    //   77: invokevirtual 210	java/io/OutputStream:flush	()V
     //   80: aload_2
-    //   81: invokevirtual 212	java/io/OutputStream:close	()V
+    //   81: invokevirtual 213	java/io/OutputStream:close	()V
     //   84: goto +13 -> 97
     //   87: astore_0
-    //   88: ldc 31
+    //   88: ldc 32
     //   90: iconst_1
-    //   91: ldc 214
+    //   91: ldc 215
     //   93: aload_0
-    //   94: invokestatic 39	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   94: invokestatic 40	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   97: aload 5
-    //   99: invokevirtual 217	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   99: invokevirtual 218	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   102: areturn
     //   103: astore_0
     //   104: aload_2
@@ -195,37 +195,37 @@ public final class ScreenShotUtil
     //   123: astore_0
     //   124: aload_0
     //   125: astore_1
-    //   126: ldc 31
+    //   126: ldc 32
     //   128: iconst_1
     //   129: aload_2
     //   130: iconst_0
     //   131: anewarray 4	java/lang/Object
-    //   134: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   134: invokestatic 221	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   137: aload_0
     //   138: ifnull +20 -> 158
     //   141: aload_0
-    //   142: invokevirtual 212	java/io/OutputStream:close	()V
-    //   145: ldc 222
+    //   142: invokevirtual 213	java/io/OutputStream:close	()V
+    //   145: ldc 223
     //   147: areturn
     //   148: astore_0
-    //   149: ldc 31
+    //   149: ldc 32
     //   151: iconst_1
-    //   152: ldc 214
+    //   152: ldc 215
     //   154: aload_0
-    //   155: invokestatic 39	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   158: ldc 222
+    //   155: invokestatic 40	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   158: ldc 223
     //   160: areturn
     //   161: aload_1
     //   162: ifnull +20 -> 182
     //   165: aload_1
-    //   166: invokevirtual 212	java/io/OutputStream:close	()V
+    //   166: invokevirtual 213	java/io/OutputStream:close	()V
     //   169: goto +13 -> 182
     //   172: astore_1
-    //   173: ldc 31
+    //   173: ldc 32
     //   175: iconst_1
-    //   176: ldc 214
+    //   176: ldc 215
     //   178: aload_1
-    //   179: invokestatic 39	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   179: invokestatic 40	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   182: aload_0
     //   183: athrow
     //   184: aconst_null
@@ -248,42 +248,6 @@ public final class ScreenShotUtil
     //   48	65	121	java/lang/Throwable
     //   141	145	148	java/io/IOException
     //   165	169	172	java/io/IOException
-  }
-  
-  public static <T> void a(WebView paramWebView, ScreenShotUtil.ScreenLongShotCallback<T> paramScreenLongShotCallback)
-  {
-    QLog.d("ScreenShotUtil", 1, "webViewFragmentScreenLongShot start");
-    if (paramWebView == null)
-    {
-      QLog.e("ScreenShotUtil", 1, "webviewFragmentScreenLongShot error, mWebView is null");
-      paramScreenLongShotCallback.a(new NullPointerException("mWebView is null"));
-      return;
-    }
-    Object localObject1 = paramWebView.getContext();
-    if (localObject1 == null)
-    {
-      QLog.e("ScreenShotUtil", 1, "webviewFragmentScreenLongShot error, context is null");
-      paramScreenLongShotCallback.a(new NullPointerException("context is null"));
-      return;
-    }
-    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
-    localObject1 = new TDProgressDialog((Context)localObject1);
-    ((TDProgressDialog)localObject1).a(HardCodeUtil.a(2131699205));
-    ((TDProgressDialog)localObject1).a(true);
-    ((TDProgressDialog)localObject1).a(new ScreenShotUtil.3(localAtomicBoolean, (TDProgressDialog)localObject1));
-    ((TDProgressDialog)localObject1).show();
-    ValueAnimator localValueAnimator1 = ObjectAnimator.ofInt(new int[] { 0, 90 });
-    localValueAnimator1.setDuration(2000L);
-    ValueAnimator localValueAnimator2 = ObjectAnimator.ofInt(new int[] { 90, 99 });
-    localValueAnimator2.setDuration(10000L);
-    Object localObject2 = new ScreenShotUtil.4((TDProgressDialog)localObject1);
-    localValueAnimator1.addUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject2);
-    localValueAnimator2.addUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject2);
-    localObject2 = new AnimatorSet();
-    ((AnimatorSet)localObject2).playSequentially(new Animator[] { localValueAnimator1, localValueAnimator2 });
-    ((AnimatorSet)localObject2).start();
-    ((TDProgressDialog)localObject1).setOnDismissListener(new ScreenShotUtil.5((AnimatorSet)localObject2));
-    a(paramWebView, new ScreenShotUtil.6(localAtomicBoolean, (TDProgressDialog)localObject1, paramScreenLongShotCallback, paramWebView, (AnimatorSet)localObject2));
   }
   
   public static void a(WebView paramWebView, ScreenShotUtil.ScreenshotCallback paramScreenshotCallback)
@@ -310,9 +274,9 @@ public final class ScreenShotUtil
         localCanvas = new Canvas(localBitmap);
         if (paramWebView.getX5WebViewExtension() != null)
         {
-          boolean bool = jdField_a_of_type_Boolean;
+          boolean bool = a;
           j = 1;
-          if ((!bool) && (jdField_a_of_type_JavaLangReflectMethod == null))
+          if ((!bool) && (b == null))
           {
             Class[] arrayOfClass = paramWebView.getX5WebViewExtension().getClass().getInterfaces();
             int k = arrayOfClass.length;
@@ -323,7 +287,7 @@ public final class ScreenShotUtil
               if ("com.tencent.smtt.export.internal.interfaces.IX5WebView".equals(((Class)localObject).getName())) {
                 try
                 {
-                  jdField_a_of_type_JavaLangReflectMethod = ((Class)localObject).getDeclaredMethod("snapshotVisibleWithBitmap", new Class[] { Bitmap.class, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Float.TYPE, Float.TYPE, Runnable.class });
+                  b = ((Class)localObject).getDeclaredMethod("snapshotVisibleWithBitmap", new Class[] { Bitmap.class, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Float.TYPE, Float.TYPE, Runnable.class });
                   if (!QLog.isColorLevel()) {
                     break;
                   }
@@ -338,12 +302,12 @@ public final class ScreenShotUtil
                     ((StringBuilder)localObject).append(localException1.getMessage());
                     QLog.i("ScreenShotUtil", 2, ((StringBuilder)localObject).toString());
                   }
-                  jdField_a_of_type_JavaLangReflectMethod = null;
+                  b = null;
                 }
               }
               i += 1;
             }
-            jdField_a_of_type_Boolean = true;
+            a = true;
           }
           i = j;
         }
@@ -351,19 +315,19 @@ public final class ScreenShotUtil
     }
     try
     {
-      if (jdField_a_of_type_JavaLangReflectMethod == null) {
-        break label364;
+      if (b == null) {
+        break label363;
       }
-      jdField_a_of_type_JavaLangReflectMethod.invoke(paramWebView.getX5WebViewExtension(), new Object[] { localBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new ScreenShotUtil.1(paramScreenshotCallback, localBitmap) });
+      b.invoke(paramWebView.getX5WebViewExtension(), new Object[] { localBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new ScreenShotUtil.1(paramScreenshotCallback, localBitmap) });
       i = j;
     }
     catch (Exception localException2)
     {
-      label362:
-      break label362;
+      label361:
+      break label361;
     }
     int i = 0;
-    label364:
+    label363:
     if (i == 0)
     {
       localCanvas.setDrawFilter(new PaintFlagsDrawFilter(134, 64));
@@ -399,7 +363,7 @@ public final class ScreenShotUtil
       if (j > 20000)
       {
         QLog.e("ScreenShotUtil", 1, "height > 20000, out of height limit");
-        paramScreenLongShotCallback.a(new IllegalStateException(HardCodeUtil.a(2131718549)));
+        paramScreenLongShotCallback.a(new IllegalStateException(HardCodeUtil.a(2131916048)));
         return false;
       }
     }
@@ -416,20 +380,56 @@ public final class ScreenShotUtil
     }
     catch (OutOfMemoryError paramWebView)
     {
-      label180:
-      break label180;
+      label181:
+      break label181;
     }
     QLog.e("ScreenShotUtil", 1, "createBitmap out of memory");
-    paramScreenLongShotCallback.a(new IllegalStateException(HardCodeUtil.a(2131718549)));
+    paramScreenLongShotCallback.a(new IllegalStateException(HardCodeUtil.a(2131916048)));
     return false;
     QLog.e("ScreenShotUtil", 1, "measuredWidth <= 0 || contentWidth <= 0 || contentHeight <= 0");
     paramScreenLongShotCallback.a(new IllegalStateException("measuredWidth <= 0 || contentWidth <= 0 || contentHeight <= 0"));
     return false;
   }
+  
+  public static <T> void b(WebView paramWebView, ScreenShotUtil.ScreenLongShotCallback<T> paramScreenLongShotCallback)
+  {
+    QLog.d("ScreenShotUtil", 1, "webViewFragmentScreenLongShot start");
+    if (paramWebView == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "webviewFragmentScreenLongShot error, mWebView is null");
+      paramScreenLongShotCallback.a(new NullPointerException("mWebView is null"));
+      return;
+    }
+    Object localObject1 = paramWebView.getContext();
+    if (localObject1 == null)
+    {
+      QLog.e("ScreenShotUtil", 1, "webviewFragmentScreenLongShot error, context is null");
+      paramScreenLongShotCallback.a(new NullPointerException("context is null"));
+      return;
+    }
+    AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
+    localObject1 = new TDProgressDialog((Context)localObject1);
+    ((TDProgressDialog)localObject1).a(HardCodeUtil.a(2131897221));
+    ((TDProgressDialog)localObject1).a(true);
+    ((TDProgressDialog)localObject1).a(new ScreenShotUtil.3(localAtomicBoolean, (TDProgressDialog)localObject1));
+    ((TDProgressDialog)localObject1).show();
+    ValueAnimator localValueAnimator1 = ObjectAnimator.ofInt(new int[] { 0, 90 });
+    localValueAnimator1.setDuration(2000L);
+    ValueAnimator localValueAnimator2 = ObjectAnimator.ofInt(new int[] { 90, 99 });
+    localValueAnimator2.setDuration(10000L);
+    Object localObject2 = new ScreenShotUtil.4((TDProgressDialog)localObject1);
+    localValueAnimator1.addUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject2);
+    localValueAnimator2.addUpdateListener((ValueAnimator.AnimatorUpdateListener)localObject2);
+    localObject2 = new AnimatorSet();
+    ((AnimatorSet)localObject2).playSequentially(new Animator[] { localValueAnimator1, localValueAnimator2 });
+    ((AnimatorSet)localObject2).start();
+    ((TDProgressDialog)localObject1).setOnDismissListener(new ScreenShotUtil.5((AnimatorSet)localObject2));
+    a(paramWebView, new ScreenShotUtil.6(localAtomicBoolean, (TDProgressDialog)localObject1, paramScreenLongShotCallback, paramWebView, (AnimatorSet)localObject2));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil
  * JD-Core Version:    0.7.0.1
  */

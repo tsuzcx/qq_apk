@@ -51,28 +51,28 @@ public class ReadInJoyXListView
   extends ReadInJoyBaseListView
   implements ReadInJoyOverScrollViewListener
 {
-  public long a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private IReadInJoyListItemLifeCycle jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyListItemLifeCycle;
-  private IAnimManager.OnRefreshPullDistanceListener jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$OnRefreshPullDistanceListener;
-  private IAnimManager jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-  private ThreadLocal<Integer> jdField_a_of_type_JavaLangThreadLocal = new ReadInJoyXListView.1(this);
-  public float[] a;
-  public long b;
-  public float[] b;
-  protected boolean d;
-  protected int e;
-  protected boolean e;
-  protected int f;
-  private boolean f;
-  public int g;
-  private boolean g;
-  public int h;
-  private boolean h;
-  private int jdField_i_of_type_Int = 0;
-  private boolean jdField_i_of_type_Boolean = true;
-  private int j = -1;
+  private View A;
+  private boolean B = false;
+  private IAnimManager.OnRefreshPullDistanceListener C;
+  private ThreadLocal<Integer> D = new ReadInJoyXListView.1(this);
+  private int E = 0;
+  private IReadInJoyListItemLifeCycle F;
+  private int G = -1;
+  private boolean H = true;
+  protected boolean m;
+  protected int n = 0;
+  protected int o = 0;
+  public int p = -1;
+  public int q = -1;
+  public float[] r = new float[2];
+  public float[] s = new float[2];
+  public long t = 0L;
+  public long u = 0L;
+  protected boolean v = false;
+  private Handler w;
+  private boolean x;
+  private boolean y;
+  private IAnimManager z;
   
   public ReadInJoyXListView(Context paramContext)
   {
@@ -82,129 +82,89 @@ public class ReadInJoyXListView
   public ReadInJoyXListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = -1;
-    this.jdField_h_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfFloat = new float[2];
-    this.jdField_b_of_type_ArrayOfFloat = new float[2];
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = false;
   }
   
   public ReadInJoyXListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_g_of_type_Int = -1;
-    this.jdField_h_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfFloat = new float[2];
-    this.jdField_b_of_type_ArrayOfFloat = new float[2];
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = false;
   }
   
   private void a(long paramLong)
   {
-    if (this.jdField_f_of_type_Boolean)
+    if (this.x)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, paramLong);
+      this.w.removeMessages(1);
+      this.w.sendEmptyMessageDelayed(1, paramLong);
     }
   }
   
-  private void c(boolean paramBoolean)
+  private void e(int paramInt)
   {
-    this.jdField_f_of_type_Boolean = paramBoolean;
-    Object localObject = Aladdin.getConfig(214);
-    if (localObject != null)
+    if (!this.x)
     {
-      int k = ((AladdinConfig)localObject).getIntegerFromString("feeds_loading", 0);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[setIsTopRefreshIng], isOpen = ");
-      ((StringBuilder)localObject).append(k);
-      QLog.i("ReadInJoyXListView", 1, ((StringBuilder)localObject).toString());
-      if (k == 0)
-      {
-        QLog.i("ReadInJoyXListView", 1, "[setIsTopRefreshIng], do not switch layer type.");
+      if (this.B) {
         return;
       }
-    }
-    RIJThreadHandler.b().post(new ReadInJoyXListView.3(this, paramBoolean));
-  }
-  
-  private void d(int paramInt)
-  {
-    if (!this.jdField_f_of_type_Boolean)
-    {
-      if (this.jdField_h_of_type_Boolean) {
-        return;
-      }
-      this.jdField_a_of_type_JavaLangThreadLocal.set(Integer.valueOf(paramInt));
+      this.D.set(Integer.valueOf(paramInt));
       Object localObject = ((IReadInJoyRefreshManagerService)QRoute.api(IReadInJoyRefreshManagerService.class)).getRefreshData(getContext(), 0);
-      int m = 1;
-      int k;
+      int j = 1;
+      int i;
       if (localObject != null) {
-        k = 1;
+        i = 1;
       } else {
-        k = 0;
+        i = 0;
       }
-      if (((this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager instanceof IReadInJoySkinAnimManager)) && ((paramInt == 2) || (paramInt == 3)) && (this.jdField_d_of_type_Int == 0) && (k != 0)) {
-        k = m;
+      if (((this.z instanceof IReadInJoySkinAnimManager)) && ((paramInt == 2) || (paramInt == 3)) && (this.i == 0) && (i != 0)) {
+        i = j;
       } else {
-        k = 0;
+        i = 0;
       }
-      int n = k;
-      if (k != 0)
+      int k = i;
+      if (i != 0)
       {
-        this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.getPullRefreshAreaHeight();
-        m = k;
+        this.z.getPullRefreshAreaHeight();
+        j = i;
         if (((IRefreshRes)QRoute.api(IRefreshRes.class)).getRefreshLengthType())
         {
-          m = Aladdin.getConfig(189).getIntegerFromString("banner_refresh_length", 0);
-          if (m > 0)
+          j = Aladdin.getConfig(189).getIntegerFromString("banner_refresh_length", 0);
+          if (j > 0)
           {
-            setOverScrollHeight((int)(DeviceInfoUtil.e() / 160.0F * m));
-            m = k;
+            setOverScrollHeight((int)(DeviceInfoUtil.J() / 160.0F * j));
+            j = i;
           }
           else
           {
-            m = 0;
+            j = 0;
           }
         }
-        n = m;
+        k = j;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("changeRefreshAreaHeight with refreshType：");
           ((StringBuilder)localObject).append(paramInt);
           QLog.d("ReadInJoyXListView", 2, ((StringBuilder)localObject).toString());
-          n = m;
+          k = j;
         }
       }
       showOverScrollHeader();
-      if (!this.jdField_e_of_type_Boolean)
+      if (!this.v)
       {
-        localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
+        localObject = this.z;
         if (localObject != null) {
           ((IAnimManager)localObject).showPullRefresh();
         }
       }
-      localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-      if ((localObject != null) && (n != 0)) {
+      localObject = this.z;
+      if ((localObject != null) && (k != 0)) {
         setOverScrollHeight(((IAnimManager)localObject).getPullRefreshAreaHeight());
       }
     }
   }
   
-  private void e(int paramInt)
+  private void f(int paramInt)
   {
-    if (this.jdField_g_of_type_Boolean)
+    if (this.y)
     {
       if (this.mFirstPosition == 0)
       {
@@ -212,8 +172,8 @@ public class ReadInJoyXListView
         localStringBuilder.append("scroll2Top : stop on top,refresh ! from : ");
         localStringBuilder.append(paramInt);
         QLog.d("ReadInJoyXListView", 2, localStringBuilder.toString());
-        d(1);
-        this.jdField_g_of_type_Boolean = false;
+        e(1);
+        this.y = false;
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
@@ -222,29 +182,29 @@ public class ReadInJoyXListView
       QLog.d("ReadInJoyXListView", 2, localStringBuilder.toString());
       if (paramInt != 3)
       {
-        this.jdField_g_of_type_Boolean = false;
+        this.y = false;
         if ((getAdapter() instanceof HeaderViewListAdapter)) {
           setAdapter(((HeaderViewListAdapter)getAdapter()).getWrappedAdapter());
         } else {
           setAdapter(getAdapter());
         }
-        d(1);
+        e(1);
         return;
       }
-      f();
+      g();
     }
   }
   
-  private void j()
+  private void k()
   {
-    IAnimManager localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-    if ((localIAnimManager != null) && (!this.jdField_h_of_type_Boolean))
+    IAnimManager localIAnimManager = this.z;
+    if ((localIAnimManager != null) && (!this.B))
     {
-      this.jdField_a_of_type_AndroidViewView = localIAnimManager.getRefreshView(this);
-      setOverScrollHeader(this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.getRefreshView(this));
+      this.A = localIAnimManager.getRefreshView(this);
+      setOverScrollHeader(this.z.getRefreshView(this));
       setOverScrollListener(this);
-      setOverScrollHeight(this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.getPullRefreshAreaHeight());
-      if ((this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager instanceof IReadInJoySkinAnimManager))
+      setOverScrollHeight(this.z.getPullRefreshAreaHeight());
+      if ((this.z instanceof IReadInJoySkinAnimManager))
       {
         setOverscrollHeader(new ColorDrawable(Color.parseColor("#F7F7F7")));
         return;
@@ -253,14 +213,74 @@ public class ReadInJoyXListView
     }
   }
   
-  public int a()
+  private void setIsTopRefreshIng(boolean paramBoolean)
   {
-    return this.mTouchMode;
+    this.x = paramBoolean;
+    Object localObject = Aladdin.getConfig(214);
+    if (localObject != null)
+    {
+      int i = ((AladdinConfig)localObject).getIntegerFromString("feeds_loading", 0);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[setIsTopRefreshIng], isOpen = ");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("ReadInJoyXListView", 1, ((StringBuilder)localObject).toString());
+      if (i == 0)
+      {
+        QLog.i("ReadInJoyXListView", 1, "[setIsTopRefreshIng], do not switch layer type.");
+        return;
+      }
+    }
+    RIJThreadHandler.b().post(new ReadInJoyXListView.3(this, paramBoolean));
   }
   
-  public IAnimManager a(int paramInt)
+  protected void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    if (this.j == paramInt) {
+    super.a(paramContext, paramAttributeSet);
+    paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.bk);
+    this.m = paramContext.getBoolean(R.styleable.bm, false);
+    paramContext.recycle();
+    this.o = ((int)DeviceInfoUtil.E());
+    this.E = getLayerType();
+  }
+  
+  public void a(IAnimManager.PullRefreshComplete paramPullRefreshComplete)
+  {
+    IAnimManager localIAnimManager = this.z;
+    if (localIAnimManager != null) {
+      localIAnimManager.registerRefreshCompleteListener(paramPullRefreshComplete);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.l = true;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if ((this.c != null) && (this.a != null) && (this.b != null))
+      {
+        this.c.setVisibility(0);
+        this.b.setVisibility(4);
+        setFooterView(true);
+        this.a.setText(paramString);
+      }
+    }
+    else if (this.c != null) {
+      removeFooterView(this.c);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if ((this.z != null) && (this.x))
+    {
+      a(Aladdin.getConfig(222).getIntegerFromString("refresh_bar_animation_total_time", 1000));
+      this.z.showRefreshResult(paramBoolean, paramString);
+    }
+  }
+  
+  public IAnimManager b(int paramInt)
+  {
+    if (this.G == paramInt) {
       return null;
     }
     if (QLog.isColorLevel())
@@ -270,195 +290,145 @@ public class ReadInJoyXListView
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("ReadInJoyXListView", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
+    Object localObject = this.z;
     if ((localObject != null) && ((localObject instanceof IReadInJoySkinAnimManager))) {
       ((IAnimManager)localObject).onDestroy();
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager = ((IReadInJoyRefreshAnimFactory)QRoute.api(IReadInJoyRefreshAnimFactory.class)).getAnimManger(getContext(), paramInt);
-    localObject = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$OnRefreshPullDistanceListener;
+    this.z = ((IReadInJoyRefreshAnimFactory)QRoute.api(IReadInJoyRefreshAnimFactory.class)).getAnimManger(getContext(), paramInt);
+    localObject = this.C;
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.setRefreshPullDistanceListener((IAnimManager.OnRefreshPullDistanceListener)localObject);
+      this.z.setRefreshPullDistanceListener((IAnimManager.OnRefreshPullDistanceListener)localObject);
     }
-    if (this.jdField_d_of_type_Boolean) {
-      j();
+    if (this.m) {
+      k();
     }
-    return this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-  }
-  
-  protected void a(Context paramContext, AttributeSet paramAttributeSet)
-  {
-    super.a(paramContext, paramAttributeSet);
-    paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.bc);
-    this.jdField_d_of_type_Boolean = paramContext.getBoolean(R.styleable.jdField_b_of_type_Int, false);
-    paramContext.recycle();
-    this.jdField_f_of_type_Int = ((int)DeviceInfoUtil.j());
-    this.jdField_i_of_type_Int = getLayerType();
-  }
-  
-  public void a(IAnimManager.PullRefreshComplete paramPullRefreshComplete)
-  {
-    IAnimManager localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-    if (localIAnimManager != null) {
-      localIAnimManager.registerRefreshCompleteListener(paramPullRefreshComplete);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.c = true;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_AndroidWidgetProgressBar != null))
-      {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-        setFooterView(true);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      }
-    }
-    else if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager != null) && (this.jdField_f_of_type_Boolean))
-    {
-      a(Aladdin.getConfig(222).getIntegerFromString("refresh_bar_animation_total_time", 1000));
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.showRefreshResult(paramBoolean, paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    QLog.d("ReadInJoyXListView", 1, new Object[] { "beginRefresh, refreshType = ", Integer.valueOf(paramInt), ", mIsTopRefreshing = ", Boolean.valueOf(this.jdField_f_of_type_Boolean) });
-    if (this.jdField_f_of_type_Boolean) {
-      return;
-    }
-    post(new ReadInJoyXListView.2(this, paramInt));
+    return this.z;
   }
   
   public void b(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      e(2);
+      f(2);
     }
-  }
-  
-  public void c()
-  {
-    IAnimManager localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-    if (localIAnimManager != null)
-    {
-      localIAnimManager.onDestroy();
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager = null;
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
   }
   
   public void c(int paramInt)
   {
-    if (this.jdField_f_of_type_Boolean) {
+    QLog.d("ReadInJoyXListView", 1, new Object[] { "beginRefresh, refreshType = ", Integer.valueOf(paramInt), ", mIsTopRefreshing = ", Boolean.valueOf(this.x) });
+    if (this.x) {
+      return;
+    }
+    post(new ReadInJoyXListView.2(this, paramInt));
+  }
+  
+  public boolean c()
+  {
+    return this.x;
+  }
+  
+  public void d()
+  {
+    IAnimManager localIAnimManager = this.z;
+    if (localIAnimManager != null)
+    {
+      localIAnimManager.onDestroy();
+      this.z = null;
+    }
+    this.A = null;
+  }
+  
+  public void d(int paramInt)
+  {
+    if (this.x) {
       return;
     }
     smoothScrollBy(0, 0);
     setSelection(0);
-    d(paramInt);
+    e(paramInt);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("scroll2TopAndRefresh needScroll : ");
     localStringBuilder.append(true);
     QLog.d("ReadInJoyXListView", 2, localStringBuilder.toString());
   }
   
-  public void d()
-  {
-    IAnimManager localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-    if ((localIAnimManager != null) && ((localIAnimManager instanceof IReadInJoySkinAnimManager))) {
-      ((IReadInJoySkinAnimManager)localIAnimManager).a();
-    }
-  }
-  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int k = paramMotionEvent.getAction();
-    if (k != 0)
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-      if ((k == 1) || (k == 3))
+      if ((i == 1) || (i == 3))
       {
-        this.jdField_h_of_type_Int = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY() + getScrollY());
-        this.jdField_b_of_type_ArrayOfFloat[0] = paramMotionEvent.getX();
-        this.jdField_b_of_type_ArrayOfFloat[1] = paramMotionEvent.getY();
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        this.q = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY() + getScrollY());
+        this.s[0] = paramMotionEvent.getX();
+        this.s[1] = paramMotionEvent.getY();
+        this.u = System.currentTimeMillis();
         if (FluencyOptUtils.a.c())
         {
-          k = (int)Math.abs(this.jdField_b_of_type_ArrayOfFloat[0] - this.jdField_a_of_type_ArrayOfFloat[0]);
-          int m = (int)Math.abs(this.jdField_b_of_type_ArrayOfFloat[1] - this.jdField_a_of_type_ArrayOfFloat[1]);
+          i = (int)Math.abs(this.s[0] - this.r[0]);
+          int j = (int)Math.abs(this.s[1] - this.r[1]);
           IReportR5Builder localIReportR5Builder = ((IReportR5Builder)QRoute.api(IReportR5Builder.class)).create();
-          localIReportR5Builder.addStringNotThrow("downX", String.valueOf(this.jdField_a_of_type_ArrayOfFloat[0])).addStringNotThrow("downY", String.valueOf(this.jdField_a_of_type_ArrayOfFloat[1])).addStringNotThrow("upX", String.valueOf(this.jdField_b_of_type_ArrayOfFloat[0])).addStringNotThrow("upY", String.valueOf(this.jdField_b_of_type_ArrayOfFloat[1])).addStringNotThrow("xOffsetRate", String.valueOf(k * 100 / ViewUtils.a())).addStringNotThrow("yOffsetRate", String.valueOf(m * 100 / ViewUtils.b())).addStringNotThrow("duration", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
+          localIReportR5Builder.addStringNotThrow("downX", String.valueOf(this.r[0])).addStringNotThrow("downY", String.valueOf(this.r[1])).addStringNotThrow("upX", String.valueOf(this.s[0])).addStringNotThrow("upY", String.valueOf(this.s[1])).addStringNotThrow("xOffsetRate", String.valueOf(i * 100 / ViewUtils.getScreenWidth())).addStringNotThrow("yOffsetRate", String.valueOf(j * 100 / ViewUtils.getScreenHeight())).addStringNotThrow("duration", String.valueOf(this.u - this.t));
           ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X800AFD1", localIReportR5Builder.build());
         }
       }
     }
     else
     {
-      this.jdField_g_of_type_Int = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY() + getScrollY());
-      this.jdField_a_of_type_ArrayOfFloat[0] = paramMotionEvent.getX();
-      this.jdField_a_of_type_ArrayOfFloat[1] = paramMotionEvent.getY();
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.p = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY() + getScrollY());
+      this.r[0] = paramMotionEvent.getX();
+      this.r[1] = paramMotionEvent.getY();
+      this.t = System.currentTimeMillis();
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void e()
   {
-    IAnimManager localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
+    IAnimManager localIAnimManager = this.z;
     if ((localIAnimManager != null) && ((localIAnimManager instanceof IReadInJoySkinAnimManager))) {
-      ((IReadInJoySkinAnimManager)localIAnimManager).b();
+      ((IReadInJoySkinAnimManager)localIAnimManager).a();
     }
   }
   
   public void f()
   {
-    c(1);
+    IAnimManager localIAnimManager = this.z;
+    if ((localIAnimManager != null) && ((localIAnimManager instanceof IReadInJoySkinAnimManager))) {
+      ((IReadInJoySkinAnimManager)localIAnimManager).b();
+    }
   }
   
   public void g()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager != null) && (this.jdField_f_of_type_Boolean)) {
-      a(0L);
-    }
+    d(1);
+  }
+  
+  public int getTouchMode()
+  {
+    return this.mTouchMode;
   }
   
   public void h()
   {
-    c(false);
-    springBackOverScrollHeaderView();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$RefreshCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$RefreshCallback.a();
-    }
-    if (!this.jdField_f_of_type_Boolean)
-    {
-      IAnimManager localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-      if ((localIAnimManager != null) && (!this.jdField_e_of_type_Boolean)) {
-        localIAnimManager.endOfRefresh();
-      }
+    if ((this.z != null) && (this.x)) {
+      a(0L);
     }
   }
   
   public void i()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null) {
-      localView.setVisibility(8);
+    setIsTopRefreshIng(false);
+    springBackOverScrollHeaderView();
+    if (this.g != null) {
+      this.g.a();
     }
-    this.jdField_h_of_type_Boolean = true;
-    setOverScrollHeight(0);
+    if (!this.x)
+    {
+      IAnimManager localIAnimManager = this.z;
+      if ((localIAnimManager != null) && (!this.v)) {
+        localIAnimManager.endOfRefresh();
+      }
+    }
   }
   
   public void initPaddingManual()
@@ -487,12 +457,22 @@ public class ReadInJoyXListView
     }
   }
   
+  public void j()
+  {
+    View localView = this.A;
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+    this.B = true;
+    setOverScrollHeight(0);
+  }
+  
   protected void onAttachChildView(View paramView)
   {
     if ((paramView instanceof IReadInJoyLifeCycleView))
     {
       IReadInJoyLifeCycleView localIReadInJoyLifeCycleView = (IReadInJoyLifeCycleView)paramView;
-      if (!localIReadInJoyLifeCycleView.a())
+      if (!localIReadInJoyLifeCycleView.c())
       {
         localIReadInJoyLifeCycleView.setIsResume(true);
         localIReadInJoyLifeCycleView.a();
@@ -501,9 +481,9 @@ public class ReadInJoyXListView
     if ((paramView instanceof IProteusItemView))
     {
       paramView = (IProteusItemView)paramView;
-      if ((paramView.a() != null) && (paramView.a().a() != null) && (paramView.a().a().mResolvedFeedType == 123))
+      if ((paramView.getModel() != null) && (paramView.getModel().k() != null) && (paramView.getModel().k().mResolvedFeedType == 123))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyListItemLifeCycle;
+        paramView = this.F;
         if (paramView != null) {
           paramView.a();
         }
@@ -516,7 +496,7 @@ public class ReadInJoyXListView
     if ((paramView instanceof IReadInJoyLifeCycleView))
     {
       IReadInJoyLifeCycleView localIReadInJoyLifeCycleView = (IReadInJoyLifeCycleView)paramView;
-      if (localIReadInJoyLifeCycleView.a())
+      if (localIReadInJoyLifeCycleView.c())
       {
         localIReadInJoyLifeCycleView.setIsResume(false);
         localIReadInJoyLifeCycleView.b();
@@ -525,9 +505,9 @@ public class ReadInJoyXListView
     if ((paramView instanceof IProteusItemView))
     {
       paramView = (IProteusItemView)paramView;
-      if ((paramView.a() != null) && (paramView.a().a() != null) && (paramView.a().a().mResolvedFeedType == 123))
+      if ((paramView.getModel() != null) && (paramView.getModel().k() != null) && (paramView.getModel().k().mResolvedFeedType == 123))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyListItemLifeCycle;
+        paramView = this.F;
         if (paramView != null) {
           paramView.b();
         }
@@ -538,16 +518,16 @@ public class ReadInJoyXListView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new ReadInJoyXListView.UICallBack(this));
+    this.w = new Handler(new ReadInJoyXListView.UICallBack(this));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_i_of_type_Boolean)
+    if (this.H)
     {
       ((IPublicTracker)QRoute.api(IPublicTracker.class)).trackAIO("KANDIAN_NEW_FEEDS_LOAD_ARTICLE_FINISH_TO_MEASURE", null);
       ((IPublicTracker)QRoute.api(IPublicTracker.class)).trackAIO(null, "KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW");
-      this.jdField_i_of_type_Boolean = false;
+      this.H = false;
     }
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -559,9 +539,9 @@ public class ReadInJoyXListView
     if (paramListView != this) {
       return;
     }
-    paramListView = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-    if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)) && (!this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.onPullRefreshing(paramInt2, this.jdField_f_of_type_Boolean);
+    paramListView = this.z;
+    if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)) && (!this.v)) {
+      this.z.onPullRefreshing(paramInt2, this.x);
     }
   }
   
@@ -582,7 +562,7 @@ public class ReadInJoyXListView
     super.onScrollStateChanged(paramAbsListView, paramInt);
     if (paramInt == 0)
     {
-      e(3);
+      f(3);
       if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInReadInJoyNewFeedsActivity((Activity)getContext()))
       {
         ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).setOperationFlag(getContext(), 8);
@@ -603,41 +583,41 @@ public class ReadInJoyXListView
     if (paramListView != this) {
       return;
     }
-    paramListView = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-    if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)) && (!this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.onTouchPullDistance(paramInt, this.mTouchMode);
+    paramListView = this.z;
+    if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)) && (!this.v)) {
+      this.z.onTouchPullDistance(paramInt, this.mTouchMode);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_g_of_type_Boolean)
+    if (this.y)
     {
       QLog.d("ReadInJoyXListView", 2, "scroll2Top catch user touch event!");
       return true;
     }
-    int k = paramMotionEvent.getAction();
-    if (k != 0)
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-      if (k != 1)
+      if (i != 1)
       {
-        if (k == 2) {
-          this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY() - this.jdField_e_of_type_Int);
+        if (i == 2) {
+          this.e = ((int)paramMotionEvent.getRawY() - this.n);
         }
       }
       else
       {
         ((IFrameHelperActivity)QRoute.api(IFrameHelperActivity.class)).setDrawerFrameEnable(true);
-        localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-        if ((localIAnimManager != null) && ((localIAnimManager instanceof IReadInJoySkinAnimManager)) && (((IReadInJoySkinAnimManager)localIAnimManager).a())) {
+        localIAnimManager = this.z;
+        if ((localIAnimManager != null) && ((localIAnimManager instanceof IReadInJoySkinAnimManager)) && (((IReadInJoySkinAnimManager)localIAnimManager).c())) {
           return true;
         }
       }
     }
     else {
-      this.jdField_e_of_type_Int = ((int)paramMotionEvent.getRawY());
+      this.n = ((int)paramMotionEvent.getRawY());
     }
-    IAnimManager localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
+    IAnimManager localIAnimManager = this.z;
     if ((localIAnimManager != null) && (localIAnimManager.onTouchEvent(paramMotionEvent))) {
       return true;
     }
@@ -649,9 +629,9 @@ public class ReadInJoyXListView
     if (paramListView != this) {
       return;
     }
-    paramListView = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-    if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)) && (!this.jdField_f_of_type_Boolean) && (!this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.onPullRefreshing(100, false);
+    paramListView = this.z;
+    if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)) && (!this.x) && (!this.v)) {
+      this.z.onPullRefreshing(100, false);
     }
   }
   
@@ -660,27 +640,27 @@ public class ReadInJoyXListView
     if (paramListView != this) {
       return true;
     }
-    paramInt = ((Integer)this.jdField_a_of_type_JavaLangThreadLocal.get()).intValue();
-    paramListView = this.jdField_a_of_type_JavaLangThreadLocal;
+    paramInt = ((Integer)this.D.get()).intValue();
+    paramListView = this.D;
     boolean bool = false;
     paramListView.set(Integer.valueOf(0));
-    if (!this.jdField_f_of_type_Boolean)
+    if (!this.x)
     {
-      paramListView = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
+      paramListView = this.z;
       if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)))
       {
-        if (!this.jdField_e_of_type_Boolean)
+        if (!this.v)
         {
-          paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
+          paramView = this.z;
           if (paramInt != 0) {
             bool = true;
           }
           paramView.onPullRefreshComplete(bool);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$RefreshCallback != null)
+        if (this.g != null)
         {
-          c(true);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListView$RefreshCallback.a(this, paramInt);
+          setIsTopRefreshIng(true);
+          this.g.a(this, paramInt);
         }
       }
     }
@@ -689,11 +669,11 @@ public class ReadInJoyXListView
   
   public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    if (!this.jdField_f_of_type_Boolean)
+    if (!this.x)
     {
-      paramListView = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
-      if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)) && (!this.jdField_e_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager.onPullRefreshCancel();
+      paramListView = this.z;
+      if ((paramListView != null) && (paramView == paramListView.getRefreshView(this)) && (!this.v)) {
+        this.z.onPullRefreshCancel();
       }
     }
   }
@@ -701,25 +681,25 @@ public class ReadInJoyXListView
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      e(1);
+      f(1);
     }
   }
   
   public void setNeedShowHeaderView(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    j();
+    this.m = paramBoolean;
+    k();
   }
   
   public void setNoteCardLifeCycle(IReadInJoyListItemLifeCycle paramIReadInJoyListItemLifeCycle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonBaseuiIReadInJoyListItemLifeCycle = paramIReadInJoyListItemLifeCycle;
+    this.F = paramIReadInJoyListItemLifeCycle;
   }
   
   public void setRefreshPullDistanceListener(IAnimManager.OnRefreshPullDistanceListener paramOnRefreshPullDistanceListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager$OnRefreshPullDistanceListener = paramOnRefreshPullDistanceListener;
-    IAnimManager localIAnimManager = this.jdField_a_of_type_ComTencentWidgetPull2refreshAnimIAnimManager;
+    this.C = paramOnRefreshPullDistanceListener;
+    IAnimManager localIAnimManager = this.z;
     if (localIAnimManager != null) {
       localIAnimManager.setRefreshPullDistanceListener(paramOnRefreshPullDistanceListener);
     }
@@ -727,7 +707,7 @@ public class ReadInJoyXListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyXListView
  * JD-Core Version:    0.7.0.1
  */

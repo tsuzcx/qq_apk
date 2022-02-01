@@ -19,20 +19,20 @@ class SubScribeDraftItemView$1
   {
     if (!FastClickUtils.a("subscribe_draft_click"))
     {
-      boolean bool = SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView);
+      boolean bool = SubScribeDraftItemView.a(this.b);
       Intent localIntent = new Intent();
-      localIntent.putExtra("postUin", SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView));
+      localIntent.putExtra("postUin", SubScribeDraftItemView.b(this.b));
       localIntent.putExtra("has_shop", bool);
-      localIntent.putExtra("subscribeDraftID", String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
-      QZoneHelper.forwardToQQPublicAccountPublishPage((Activity)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), localIntent, 0);
-      VSReporter.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
+      localIntent.putExtra("subscribeDraftID", String.valueOf(this.a.getDraftId()));
+      QZoneHelper.forwardToQQPublicAccountPublishPage((Activity)this.b.getContext(), localIntent, 0);
+      VSReporter.b(SubScribeDraftItemView.c(this.b), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView.1
  * JD-Core Version:    0.7.0.1
  */

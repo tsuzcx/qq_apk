@@ -15,17 +15,17 @@ class RIJSkinOperationPopupStep$3
   
   public void onClick(View paramView)
   {
-    RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep));
-    RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep, null);
-    if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == this.jdField_a_of_type_Int) {
-      SharedPreUtils.o(RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+    RIJSkinOperationPopupStep.b(this.d).a();
+    this.a.removeView(RIJSkinOperationPopupStep.b(this.d));
+    RIJSkinOperationPopupStep.a(this.d, null);
+    if (QQManagerFactory.READ_INJOY_SKIN_MANAGER == this.b) {
+      SharedPreUtils.u(RIJSkinOperationPopupStep.a(this.d), this.c.getCurrentAccountUin(), null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJSkinOperationPopupStep.3
  * JD-Core Version:    0.7.0.1
  */

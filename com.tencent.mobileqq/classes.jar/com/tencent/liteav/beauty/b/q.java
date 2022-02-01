@@ -1,11 +1,11 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
 
 public class q
-  extends h
+  extends j
 {
   private static String v = "GPUSharpen";
   private int r;
@@ -45,16 +45,16 @@ public class q
   public boolean b()
   {
     boolean bool = super.b();
-    this.r = GLES20.glGetUniformLocation(p(), "sharpness");
-    this.t = GLES20.glGetUniformLocation(p(), "imageWidthFactor");
-    this.u = GLES20.glGetUniformLocation(p(), "imageHeightFactor");
+    this.r = GLES20.glGetUniformLocation(q(), "sharpness");
+    this.t = GLES20.glGetUniformLocation(q(), "imageWidthFactor");
+    this.u = GLES20.glGetUniformLocation(q(), "imageHeightFactor");
     a(this.s);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.q
  * JD-Core Version:    0.7.0.1
  */

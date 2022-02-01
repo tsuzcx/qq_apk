@@ -53,7 +53,6 @@ import com.tencent.mobileqq.avatar.observer.AvatarObserver;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.dating.DatingProxyManager;
-import com.tencent.mobileqq.dating.NearbyCGIReporter;
 import com.tencent.mobileqq.dating.widget.VoteEventMgr;
 import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
 import com.tencent.mobileqq.friend.observer.FriendObserver;
@@ -72,6 +71,9 @@ import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
 import com.tencent.mobileqq.nearby.widget.BlueButtonInfo;
 import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog;
 import com.tencent.mobileqq.nearby.widget.NearbyPublishMenuHelper;
+import com.tencent.mobileqq.newnearby.INearbyCGIReporter;
+import com.tencent.mobileqq.newnearby.INearbyVersionControl;
+import com.tencent.mobileqq.newnearby.util.NearbyStatusBarHelper;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.picbrowser.PicInfo;
@@ -136,7 +138,7 @@ public class NearbyPeopleProfileActivity
   protected ConditionSearchManager.IConfigListener mAddressListener = new NearbyPeopleProfileActivity.21(this);
   String mAlbumId;
   Dialog mCancelAlertDialog = null;
-  private NearbyPeopleCard mCard;
+  NearbyPeopleCard mCard;
   INearbyCardHandler mCardHandler;
   ConditionSearchManager mConditionSearchManager;
   ConditionSearchManager.IConfigListener mConfigListener = new NearbyPeopleProfileActivity.20(this);
@@ -208,6 +210,11 @@ public class NearbyPeopleProfileActivity
       return true;
     }
     return (paramInt >= 7) && (paramInt <= 12) && (paramInt != 11);
+  }
+  
+  private boolean isNewVersion()
+  {
+    return ((INearbyVersionControl)QRoute.api(INearbyVersionControl.class)).getVersion() == 2;
   }
   
   private boolean noValidTinyIdAndUin()
@@ -288,7 +295,7 @@ public class NearbyPeopleProfileActivity
       localJSONObject.put("module", "overall_page");
       localJSONObject.put("action", "view");
       this.needReport = false;
-      new NearbyCGIReporter().a(localJSONObject);
+      ((INearbyCGIReporter)QRoute.api(INearbyCGIReporter.class)).reportByJson(localJSONObject);
       return;
     }
     catch (JSONException localJSONException) {}
@@ -310,7 +317,7 @@ public class NearbyPeopleProfileActivity
     boolean bool = this.isFriend;
     FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localFriendsManager != null) {
-      bool = localFriendsManager.b(this.mCard.uin);
+      bool = localFriendsManager.n(this.mCard.uin);
     }
     if (bool != this.isFriend)
     {
@@ -324,6 +331,9 @@ public class NearbyPeopleProfileActivity
     if (isFromTribe(paramInt)) {
       return new NearbyProfileDisplayTribePanel(this);
     }
+    if (((INearbyVersionControl)QRoute.api(INearbyVersionControl.class)).getVersion() == 2) {
+      return new NewNearbyProfileDisplayPanel(this);
+    }
     return new NearbyProfileDisplayPanel(this);
   }
   
@@ -331,6 +341,9 @@ public class NearbyPeopleProfileActivity
   {
     if (isFromTribe(paramInt)) {
       return new NearbyProfileEditTribePanel(this);
+    }
+    if (((INearbyVersionControl)QRoute.api(INearbyVersionControl.class)).getVersion() == 2) {
+      return new NewNearbyProfileEditPanel(this);
     }
     return new NearbyProfileEditPanel(this);
   }
@@ -399,7 +412,7 @@ public class NearbyPeopleProfileActivity
     if ((this.app.isLogin()) && (this.mEnterProfileIntent != null)) {}
     try
     {
-      super.setContentView(2131561212);
+      super.setContentView(2131627564);
       getWindow().setBackgroundDrawable(null);
       this.mDensity = getResources().getDisplayMetrics().density;
       this.mTitleBarHeight = getTitleBarHeight();
@@ -411,16 +424,16 @@ public class NearbyPeopleProfileActivity
       this.mConditionSearchManager.a(this);
       this.mConditionSearchManager.c(this.mAddressListener);
       this.mDynamicAvatarManager = ((DynamicAvatarManager)this.app.getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER));
-      this.mDynamicAvatarDownloadManager = this.mDynamicAvatarManager.a();
-      if ((this.mDynamicAvatarManager.a(4)) && (this.mDynamicAvatarManager.a())) {
+      this.mDynamicAvatarDownloadManager = this.mDynamicAvatarManager.e();
+      if ((this.mDynamicAvatarManager.a(4)) && (this.mDynamicAvatarManager.c())) {
         bool = true;
       } else {
         bool = false;
       }
       this.mIsPlayDynamicAvatar = bool;
-      if (this.mDynamicAvatarManager.a() != null)
+      if (this.mDynamicAvatarManager.b() != null)
       {
-        this.mDynamicAvatarFPS = this.mDynamicAvatarManager.a().d;
+        this.mDynamicAvatarFPS = this.mDynamicAvatarManager.b().m;
         i = this.mDynamicAvatarFPS;
         if ((i < 0) || (i > 30)) {
           this.mDynamicAvatarFPS = 18;
@@ -470,7 +483,7 @@ public class NearbyPeopleProfileActivity
       this.mTinyId = this.mEnterProfileIntent.getLongExtra("param_tiny_id", 0L);
       this.mNowId = this.mEnterProfileIntent.getLongExtra("now_id", 0L);
       this.mNowUserType = this.mEnterProfileIntent.getIntExtra("now_id_type", 0);
-      this.mRootContainer = ((ViewGroup)findViewById(2131365132));
+      this.mRootContainer = ((ViewGroup)findViewById(2131431280));
       if (this.mMode == 1)
       {
         this.mEditModel = createNearbyEditPanel(this.from);
@@ -486,7 +499,7 @@ public class NearbyPeopleProfileActivity
         this.mIsPub = this.mEnterProfileIntent.getBooleanExtra("param_dating_pub", false);
         this.mDisplayModel = createNearbyDisplayPanel(this.from);
         this.mDisplayPanel = this.mDisplayModel.a();
-        this.mDisplayModel.a();
+        this.mDisplayModel.c();
         paramBundle = this.mDisplayPanel;
         if ((paramBundle instanceof PerfRelativeLayout)) {
           ((PerfRelativeLayout)paramBundle).setOnDrawCompleteListener(this.mDrawComLis);
@@ -497,15 +510,15 @@ public class NearbyPeopleProfileActivity
       if (paramBundle != null) {
         paramBundle.a(this.mVideoHeadDownloadListener);
       }
-      showWaitingDialog(HardCodeUtil.a(2131707272));
+      showWaitingDialog(HardCodeUtil.a(2131905098));
       ThreadManager.post(new NearbyPeopleProfileActivity.1(this), 5, null, false);
       if ((localObject != null) && (((ProfilePerformanceReport)localObject).a())) {
         ((ProfilePerformanceReport)localObject).a(4);
       }
       ThreadManager.post(new NearbyPeopleProfileActivity.2(this, (ProfilePerformanceReport)localObject), 8, null, false);
       paramBundle = (DatingProxyManager)this.app.getManager(QQManagerFactory.DATING_PROXY_MANAGER);
-      if (paramBundle.a().a() > 0) {
-        paramBundle.a().a();
+      if (paramBundle.a().c() > 0) {
+        paramBundle.a().b();
       }
       paramBundle = this.allinone;
       if ((paramBundle != null) && (paramBundle.profileEntryType != 999)) {
@@ -544,13 +557,13 @@ public class NearbyPeopleProfileActivity
     }
     localObject = this.mEditModel;
     if (localObject != null) {
-      ((NearbyProfileEditBasePanel)localObject).a();
+      ((NearbyProfileEditBasePanel)localObject).c();
     }
-    localObject = NearbyManagerHelper.a(this.app).a();
+    localObject = NearbyManagerHelper.a(this.app).g();
     int k = 0;
     int i;
     if (localObject != null) {
-      i = NearbyManagerHelper.a(this.app).a().size();
+      i = NearbyManagerHelper.a(this.app).g().size();
     } else {
       i = 0;
     }
@@ -558,8 +571,8 @@ public class NearbyPeopleProfileActivity
     int j;
     if (localObject != null)
     {
-      j = ((NearbyProfileDisplayBasePanel)localObject).b();
-      this.mDisplayModel.g();
+      j = ((NearbyProfileDisplayBasePanel)localObject).e();
+      this.mDisplayModel.k();
     }
     else
     {
@@ -587,13 +600,13 @@ public class NearbyPeopleProfileActivity
     }
     localObject = this.mDisplayModel;
     if (localObject != null) {
-      ((NearbyProfileDisplayBasePanel)localObject).b();
+      ((NearbyProfileDisplayBasePanel)localObject).d();
     }
     localObject = ViewExposeUtil.a(getClass(), hashCode());
     if (localObject != null)
     {
-      ReportController.b(this.app, "CliOper", "", "", ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_Int, 0, String.valueOf(this.mTinyId), Long.toString(SystemClock.elapsedRealtime() - ((ViewExposeUtil.ViewExposeUnit)localObject).b), "", "");
-      m = (int)(SystemClock.elapsedRealtime() - ((ViewExposeUtil.ViewExposeUnit)localObject).b) / 1000;
+      ReportController.b(this.app, "CliOper", "", "", ((ViewExposeUtil.ViewExposeUnit)localObject).d, ((ViewExposeUtil.ViewExposeUnit)localObject).d, ((ViewExposeUtil.ViewExposeUnit)localObject).e, 0, String.valueOf(this.mTinyId), Long.toString(SystemClock.elapsedRealtime() - ((ViewExposeUtil.ViewExposeUnit)localObject).c), "", "");
+      m = (int)(SystemClock.elapsedRealtime() - ((ViewExposeUtil.ViewExposeUnit)localObject).c) / 1000;
       if (NearbyProxy.a(this.allinone.profileEntryType, this.mMode)) {
         ((NearbyProxy)NearbyManagerHelper.a(this.app)).a(this.mTinyId, m, i, j);
       }
@@ -637,10 +650,10 @@ public class NearbyPeopleProfileActivity
         this.mAlbumId = null;
         while (i < paramIntent.size())
         {
-          if (this.mPicInfo.size() < NearbyProfileCardConstants.jdField_a_of_type_Int)
+          if (this.mPicInfo.size() < NearbyProfileCardConstants.a)
           {
             localObject = new PicInfo();
-            ((PicInfo)localObject).c = ((String)paramIntent.get(i));
+            ((PicInfo)localObject).d = ((String)paramIntent.get(i));
             if (this.mEditModel.a((PicInfo)localObject)) {
               this.mHandler.sendEmptyMessageDelayed(100, 1000L);
             }
@@ -654,7 +667,7 @@ public class NearbyPeopleProfileActivity
         paramIntent.qzone_uin = this.app.getCurrentAccountUin();
         paramIntent.nickname = this.app.getCurrentNickname();
         localObject = new Bundle();
-        ((Bundle)localObject).putString("key_title", getString(2131717454));
+        ((Bundle)localObject).putString("key_title", getString(2131914927));
         ((Bundle)localObject).putInt("key_personal_album_enter_model", 2);
         ((Bundle)localObject).putBoolean("show_album", false);
         ((Bundle)localObject).putString("key_jump_album_id", this.mAlbumId);
@@ -664,6 +677,9 @@ public class NearbyPeopleProfileActivity
     }
     else
     {
+      if (this.mDisplayModel.a(paramIntent)) {
+        return;
+      }
       NearbyPublishMenuHelper.a(this, 1000, -1, paramIntent);
     }
   }
@@ -683,7 +699,7 @@ public class NearbyPeopleProfileActivity
     AbstractVideoImage.pauseAll();
     localObject = this.mDisplayModel;
     if (localObject != null) {
-      ((NearbyProfileDisplayBasePanel)localObject).e();
+      ((NearbyProfileDisplayBasePanel)localObject).i();
     }
     super.doOnPause();
   }
@@ -692,7 +708,7 @@ public class NearbyPeopleProfileActivity
   {
     Object localObject = this.mDisplayModel;
     if (localObject != null) {
-      ((NearbyProfileDisplayBasePanel)localObject).d();
+      ((NearbyProfileDisplayBasePanel)localObject).h();
     }
     this.app.addObserver(this.friendListObserver);
     this.app.addObserver(this.friendObserver);
@@ -709,10 +725,10 @@ public class NearbyPeopleProfileActivity
     this.mResumeFlag = true;
     localObject = (INearbyCardManager)this.app.getManager(QQManagerFactory.NEARBY_CARD_MANAGER);
     NearbyProfileDisplayBasePanel localNearbyProfileDisplayBasePanel = this.mDisplayModel;
-    if ((localNearbyProfileDisplayBasePanel != null) && (localNearbyProfileDisplayBasePanel.a))
+    if ((localNearbyProfileDisplayBasePanel != null) && (localNearbyProfileDisplayBasePanel.c))
     {
-      ((INearbyCardManager)localObject).a().put(this.app.getCurrentAccountUin(), Integer.valueOf(1));
-      this.mDisplayModel.a = false;
+      ((INearbyCardManager)localObject).f().put(this.app.getCurrentAccountUin(), Integer.valueOf(1));
+      this.mDisplayModel.c = false;
     }
     this.mIsNeedUpdateProfile = ((INearbyCardManager)localObject).a(this.mCard);
     if (QLog.isColorLevel())
@@ -739,6 +755,9 @@ public class NearbyPeopleProfileActivity
         }
       }
       this.mResumeFromStop = false;
+      if (((INearbyVersionControl)QRoute.api(INearbyVersionControl.class)).getVersion() == 2) {
+        NearbyStatusBarHelper.a(this.mDisplayPanel);
+      }
       return;
     }
     this.mIsForceUpdateOnResume = false;
@@ -752,7 +771,7 @@ public class NearbyPeopleProfileActivity
     reportProfileCardShow();
     NearbyProfileDisplayBasePanel localNearbyProfileDisplayBasePanel = this.mDisplayModel;
     if (localNearbyProfileDisplayBasePanel != null) {
-      localNearbyProfileDisplayBasePanel.c();
+      localNearbyProfileDisplayBasePanel.g();
     }
   }
   
@@ -764,15 +783,15 @@ public class NearbyPeopleProfileActivity
     if (this.mMode == 2)
     {
       localObject = this.mDisplayModel;
-      if ((localObject != null) && (((NearbyProfileDisplayBasePanel)localObject).a()))
+      if ((localObject != null) && (((NearbyProfileDisplayBasePanel)localObject).f()))
       {
-        this.mDisplayModel.h();
+        this.mDisplayModel.l();
         localObject = this.mCard;
         if ((localObject != null) && (((NearbyPeopleCard)localObject).uRoomid != 0L))
         {
           localObject = this.mDisplayModel;
           if (localObject != null) {
-            ((NearbyProfileDisplayBasePanel)localObject).i();
+            ((NearbyProfileDisplayBasePanel)localObject).m();
           }
         }
       }
@@ -783,7 +802,7 @@ public class NearbyPeopleProfileActivity
     }
     localObject = this.mDisplayModel;
     if (localObject != null) {
-      ((NearbyProfileDisplayBasePanel)localObject).f();
+      ((NearbyProfileDisplayBasePanel)localObject).j();
     }
   }
   
@@ -859,7 +878,7 @@ public class NearbyPeopleProfileActivity
     if ((paramBoolean1) && (paramNearbyPeopleCard != null))
     {
       this.mNeedClearPhotoWallWhenCancel = false;
-      showToast(2, HardCodeUtil.a(2131707274));
+      showToast(2, HardCodeUtil.a(2131905100));
       if (!TextUtils.equals(this.mCard.college, paramNearbyPeopleCard.college))
       {
         ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.app.getCurrentAccountUin(), "school_name", paramNearbyPeopleCard.college);
@@ -879,7 +898,7 @@ public class NearbyPeopleProfileActivity
       }
       this.mVideoInfo = this.mCard.videoInfo;
       if (paramBoolean2) {
-        NearbyCardManager.b(this.app);
+        NearbyCardManager.c(this.app);
       }
       if (this.mIsProfileOk != 1) {
         onFirstEditeNearbyProfileSuccess();
@@ -891,7 +910,7 @@ public class NearbyPeopleProfileActivity
       }
       paramNearbyPeopleCard = this.mDisplayModel;
       if (paramNearbyPeopleCard != null) {
-        paramNearbyPeopleCard.j();
+        paramNearbyPeopleCard.n();
       }
       this.mEnterProfileIntent.putExtra("param_mode", 2);
       switchToDisplayPanel();
@@ -927,19 +946,20 @@ public class NearbyPeopleProfileActivity
     else
     {
       if (TextUtils.isEmpty(paramString)) {
-        showToast(1, HardCodeUtil.a(2131707271));
+        showToast(1, HardCodeUtil.a(2131905097));
       } else {
         showToast(1, paramString);
       }
       this.mLostGodFlag = false;
     }
+    this.mDisplayModel.b(paramBoolean1);
   }
   
   public void finish()
   {
     super.finish();
     if (this.mABPFlag) {
-      overridePendingTransition(2130772002, 2130772003);
+      overridePendingTransition(2130772005, 2130772006);
     }
   }
   
@@ -1034,9 +1054,9 @@ public class NearbyPeopleProfileActivity
       this.mCard.aioDistanceAndTime = this.allinone.distanceTime;
     }
     if (this.mCard.godFlag) {
-      NearbyProfileCardConstants.jdField_a_of_type_Int = 18;
+      NearbyProfileCardConstants.a = 18;
     } else {
-      NearbyProfileCardConstants.jdField_a_of_type_Int = 12;
+      NearbyProfileCardConstants.a = 12;
     }
     if (this.mCard.godFlag) {
       if (this.mCard.gender == 0) {
@@ -1069,7 +1089,7 @@ public class NearbyPeopleProfileActivity
       {
         paramNearbyPeopleCard = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
         if (paramNearbyPeopleCard != null) {
-          this.isFriend = paramNearbyPeopleCard.b(this.mCard.getSafetyUin());
+          this.isFriend = paramNearbyPeopleCard.n(this.mCard.getSafetyUin());
         }
       }
     }
@@ -1128,19 +1148,19 @@ public class NearbyPeopleProfileActivity
     int i = this.mEnterProfileIntent.getIntExtra("param_mode", 0);
     if (i == 1)
     {
-      showCancelAlertDialog(2131699028);
+      showCancelAlertDialog(2131897037);
       return true;
     }
     if ((i == 2) && (this.mMode == 1))
     {
       if (this.mIsProfileOk == 0)
       {
-        showCancelAlertDialog(2131699028);
+        showCancelAlertDialog(2131897037);
         return true;
       }
-      if (this.mEditModel.a())
+      if (this.mEditModel.d())
       {
-        showCancelAlertDialog(2131699024);
+        showCancelAlertDialog(2131897033);
         return true;
       }
       quitEditWithoutSaving();
@@ -1166,7 +1186,7 @@ public class NearbyPeopleProfileActivity
     boolean bool;
     if ((getIntent().getBooleanExtra("from_newer_guide", false)) && (this.mCard != null))
     {
-      localObject = this.app.getMessageFacade().b(this.mCard.uin, 1001);
+      localObject = this.app.getMessageFacade().o(this.mCard.uin, 1001);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
@@ -1194,7 +1214,7 @@ public class NearbyPeopleProfileActivity
     localObject = this.mCard;
     if (localObject != null)
     {
-      if ((((NearbyPeopleCard)localObject).videoInfo != null) && (!TextUtils.isEmpty(this.mCard.videoInfo.d))) {
+      if ((((NearbyPeopleCard)localObject).videoInfo != null) && (!TextUtils.isEmpty(this.mCard.videoInfo.e))) {
         bool = true;
       } else {
         bool = false;
@@ -1268,7 +1288,7 @@ public class NearbyPeopleProfileActivity
       if (paramPicInfo2 == null) {
         return false;
       }
-      return paramPicInfo1.jdField_a_of_type_Int == paramPicInfo2.jdField_a_of_type_Int;
+      return paramPicInfo1.a == paramPicInfo2.a;
     }
     return false;
   }
@@ -1281,7 +1301,7 @@ public class NearbyPeopleProfileActivity
     this.mPicInfoBackup.clear();
     Object localObject = this.mDisplayModel;
     if (localObject != null) {
-      ((NearbyProfileDisplayBasePanel)localObject).j();
+      ((NearbyProfileDisplayBasePanel)localObject).n();
     }
     if (this.mNeedClearPhotoWallWhenCancel)
     {
@@ -1344,7 +1364,7 @@ public class NearbyPeopleProfileActivity
     localUserInfo.qzone_uin = this.app.getCurrentAccountUin();
     localUserInfo.nickname = this.app.getCurrentNickname();
     Bundle localBundle = new Bundle();
-    localBundle.putString("key_title", getString(2131717454));
+    localBundle.putString("key_title", getString(2131914927));
     localBundle.putInt("key_personal_album_enter_model", 2);
     localBundle.putBoolean("show_album", false);
     localBundle.putBoolean("key_need_change_to_jpg", true);
@@ -1451,7 +1471,7 @@ public class NearbyPeopleProfileActivity
   
   void showCancelAlertDialog(int paramInt)
   {
-    this.mCancelAlertDialog = DialogUtil.a(this, 0, getString(paramInt), 2131699023, 2131699022, new NearbyPeopleProfileActivity.5(this), new NearbyPeopleProfileActivity.6(this));
+    this.mCancelAlertDialog = DialogUtil.a(this, 0, getString(paramInt), 2131897032, 2131897031, new NearbyPeopleProfileActivity.5(this), new NearbyPeopleProfileActivity.6(this));
     if ((this.mCancelAlertDialog != null) && (!isFinishing())) {
       this.mCancelAlertDialog.show();
     }
@@ -1459,7 +1479,7 @@ public class NearbyPeopleProfileActivity
   
   void showPromptDialog()
   {
-    this.mPromptDialog = DialogUtil.a(this, 2131699027, getString(2131699026), 2131690728, 2131699025, new NearbyPeopleProfileActivity.7(this), new NearbyPeopleProfileActivity.8(this));
+    this.mPromptDialog = DialogUtil.a(this, 2131897036, getString(2131897035), 2131887648, 2131897034, new NearbyPeopleProfileActivity.7(this), new NearbyPeopleProfileActivity.8(this));
     if ((this.mPromptDialog != null) && (!isFinishing())) {
       this.mPromptDialog.show();
     }
@@ -1467,12 +1487,12 @@ public class NearbyPeopleProfileActivity
   
   public void showToast(int paramInt, String paramString)
   {
-    QQToast.a(BaseApplication.getContext(), paramInt, paramString, 0).b(this.mTitleBarHeight);
+    QQToast.makeText(BaseApplication.getContext(), paramInt, paramString, 0).show(this.mTitleBarHeight);
   }
   
   public void showToast(String paramString)
   {
-    QQToast.a(BaseApplication.getContext(), paramString, 0).b(this.mTitleBarHeight);
+    QQToast.makeText(BaseApplication.getContext(), paramString, 0).show(this.mTitleBarHeight);
   }
   
   void showUploadPhotoActionSheet()
@@ -1515,9 +1535,9 @@ public class NearbyPeopleProfileActivity
     paramImageView.setImageDrawable(paramDrawable);
     paramDrawable = (INearbyLikeLimitManager)this.app.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, UIUtils.a(this, 150.0F));
-    new NearbyCustomDialog(this).a(paramImageView, localLayoutParams).a(HardCodeUtil.a(2131707275)).b(paramDrawable.a()).a(new BlueButtonInfo(HardCodeUtil.a(2131707270), new NearbyPeopleProfileActivity.18(this))).show();
+    new NearbyCustomDialog(this).a(paramImageView, localLayoutParams).a(HardCodeUtil.a(2131905101)).b(paramDrawable.a()).a(new BlueButtonInfo(HardCodeUtil.a(2131905096), new NearbyPeopleProfileActivity.18(this))).show();
     this.voteTipDrawable = null;
-    paramDrawable.a();
+    paramDrawable.c();
   }
   
   void showWaitingDialog(String paramString)
@@ -1537,6 +1557,9 @@ public class NearbyPeopleProfileActivity
   
   protected void switchToDisplayPanel()
   {
+    if (isNewVersion()) {
+      NearbyProfileReportKt.a(this, this.dataReportSource);
+    }
     if (this.mMode == 2)
     {
       localObject = this.mDisplayModel;
@@ -1548,7 +1571,7 @@ public class NearbyPeopleProfileActivity
     this.mMode = 2;
     Object localObject = this.mEditModel;
     if (localObject != null) {
-      ((NearbyProfileEditBasePanel)localObject).a = false;
+      ((NearbyProfileEditBasePanel)localObject).c = false;
     }
     localObject = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject).setDuration(300L);
@@ -1578,18 +1601,19 @@ public class NearbyPeopleProfileActivity
       label67:
       localObject = this.mEditModel;
       if (localObject != null) {
-        ((NearbyProfileEditBasePanel)localObject).a();
+        ((NearbyProfileEditBasePanel)localObject).c();
       }
       this.mEditPanel = null;
       this.mEditModel = null;
       this.mEditModel = createNearbyEditPanel(this.from);
       this.mEditPanel = this.mEditModel.a();
       this.mRootContainer.addView(this.mEditPanel, new FrameLayout.LayoutParams(-1, -1));
-      localObject = (BounceScrollView)this.mEditPanel.findViewById(2131366074);
+      localObject = (BounceScrollView)this.mEditPanel.findViewById(2131432350);
       ((BounceScrollView)localObject).setOnInterceptTouchEventListener(this);
-      ((BounceScrollView)localObject).post(new NearbyPeopleProfileActivity.10(this, (BounceScrollView)localObject, this.mDisplayPanel.findViewById(2131363784).getScrollY()));
+      ((BounceScrollView)localObject).post(new NearbyPeopleProfileActivity.10(this, (BounceScrollView)localObject, this.mDisplayPanel.findViewById(2131429717).getScrollY()));
       this.mEditPanel.startAnimation(localAlphaAnimation);
       backupPhotoWall();
+      this.mDisplayModel.q();
       return;
     }
     catch (Exception localException)
@@ -1605,7 +1629,7 @@ public class NearbyPeopleProfileActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity
  * JD-Core Version:    0.7.0.1
  */

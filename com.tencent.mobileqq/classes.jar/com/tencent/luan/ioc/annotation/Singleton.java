@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 public @interface Singleton {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.luan.ioc.annotation.Singleton
  * JD-Core Version:    0.7.0.1
  */

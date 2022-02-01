@@ -25,9 +25,9 @@ class FoldOverTextItem$2
     ((StringBuilder)localObject).append(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
     ((StringBuilder)localObject).append(paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString());
     localObject = ((StringBuilder)localObject).toString();
-    String str1 = TroopFileUtils.b((String)localObject);
-    String str2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextFoldOverTextItem.a(str1);
-    this.jdField_a_of_type_Int = (((String)localObject).length() - str1.length() + 20);
+    String str1 = TroopFileUtils.c((String)localObject);
+    String str2 = this.a.a(str1);
+    this.b = (((String)localObject).length() - str1.length() + 20);
     localObject = str2.split("\n");
     int m = localObject.length;
     int j = 0;
@@ -48,7 +48,7 @@ class FoldOverTextItem$2
     if (TextUtils.equals(paramCharSequence, "\n")) {
       j = i + 1;
     }
-    if (j > FoldOverTextItem.a().length)
+    if (j > FoldOverTextItem.u().length)
     {
       if (!TextUtils.equals("", paramCharSequence)) {
         a();
@@ -60,7 +60,7 @@ class FoldOverTextItem$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.FoldOverTextItem.2
  * JD-Core Version:    0.7.0.1
  */

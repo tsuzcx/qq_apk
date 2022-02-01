@@ -12,9 +12,9 @@ class StructMsgItemButton$1
   
   public boolean onLongClick(View paramView)
   {
-    if (this.a.a != null)
+    if (this.a.ar != null)
     {
-      OnLongClickAndTouchListener localOnLongClickAndTouchListener = (OnLongClickAndTouchListener)this.a.a.get();
+      OnLongClickAndTouchListener localOnLongClickAndTouchListener = (OnLongClickAndTouchListener)this.a.ar.get();
       if (localOnLongClickAndTouchListener != null) {
         return localOnLongClickAndTouchListener.onLongClick(paramView);
       }
@@ -24,7 +24,7 @@ class StructMsgItemButton$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemButton.1
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class MediaUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 63	com/tencent/biz/qqstory/utils/FileUtils:e	(Ljava/lang/String;)Z
+    //   1: invokestatic 63	com/tencent/biz/qqstory/utils/FileUtils:i	(Ljava/lang/String;)Z
     //   4: istore_2
     //   5: aconst_null
     //   6: astore 5
@@ -69,7 +69,7 @@ public class MediaUtil
     //   55: aload_3
     //   56: aload 4
     //   58: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 86	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   61: invokestatic 87	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   64: aconst_null
     //   65: areturn
     //   66: new 24	android/media/MediaMetadataRetriever
@@ -86,10 +86,10 @@ public class MediaUtil
     //   87: aload 4
     //   89: iload_1
     //   90: i2l
-    //   91: ldc2_w 87
+    //   91: ldc2_w 88
     //   94: lmul
     //   95: iconst_0
-    //   96: invokevirtual 92	android/media/MediaMetadataRetriever:getFrameAtTime	(JI)Landroid/graphics/Bitmap;
+    //   96: invokevirtual 93	android/media/MediaMetadataRetriever:getFrameAtTime	(JI)Landroid/graphics/Bitmap;
     //   99: astore_0
     //   100: aload_0
     //   101: astore_3
@@ -116,9 +116,9 @@ public class MediaUtil
     //   132: astore_3
     //   133: getstatic 43	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil:a	Ljava/lang/String;
     //   136: iconst_1
-    //   137: ldc 94
+    //   137: ldc 95
     //   139: aload 4
-    //   141: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   141: invokestatic 101	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   144: aload_0
     //   145: ifnull +9 -> 154
     //   148: aload 5
@@ -168,21 +168,21 @@ public class MediaUtil
     //   6: aconst_null
     //   7: astore 17
     //   9: aload_1
-    //   10: getfield 111	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   10: getfield 112	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   13: istore 6
     //   15: aload_1
-    //   16: getfield 114	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   16: getfield 115	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
     //   19: istore 7
     //   21: aload_1
-    //   22: getfield 117	com/tencent/mobileqq/activity/photo/LocalMediaInfo:rotation	I
+    //   22: getfield 118	com/tencent/mobileqq/activity/photo/LocalMediaInfo:rotation	I
     //   25: sipush 180
     //   28: irem
     //   29: ifeq +15 -> 44
     //   32: aload_1
-    //   33: getfield 114	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
+    //   33: getfield 115	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaHeight	I
     //   36: istore 6
     //   38: aload_1
-    //   39: getfield 111	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
+    //   39: getfield 112	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mediaWidth	I
     //   42: istore 7
     //   44: iconst_0
     //   45: istore 9
@@ -190,18 +190,18 @@ public class MediaUtil
     //   48: iload 6
     //   50: iload 7
     //   52: iconst_0
-    //   53: invokestatic 122	com/tencent/mobileqq/activity/richmedia/trimvideo/video/utils/ThumbnailUtils:a	(Ljava/lang/String;IIZ)I
+    //   53: invokestatic 123	com/tencent/mobileqq/activity/richmedia/trimvideo/video/utils/ThumbnailUtils:a	(Ljava/lang/String;IIZ)I
     //   56: ifne +401 -> 457
-    //   59: invokestatic 128	com/tencent/maxvideo/trim/TrimNative:isGetFrameReady	()Z
+    //   59: invokestatic 129	com/tencent/maxvideo/trim/TrimNative:isGetFrameReady	()Z
     //   62: istore 15
     //   64: goto +3 -> 67
     //   67: iload 15
     //   69: ifeq +16 -> 85
     //   72: lload_2
     //   73: lload_2
-    //   74: ldc2_w 129
+    //   74: ldc2_w 130
     //   77: lsub
-    //   78: invokestatic 133	com/tencent/mobileqq/activity/richmedia/trimvideo/video/utils/ThumbnailUtils:a	(JJ)Landroid/graphics/Bitmap;
+    //   78: invokestatic 134	com/tencent/mobileqq/activity/richmedia/trimvideo/video/utils/ThumbnailUtils:a	(JJ)Landroid/graphics/Bitmap;
     //   81: astore_1
     //   82: goto +5 -> 87
     //   85: aconst_null
@@ -211,17 +211,17 @@ public class MediaUtil
     //   90: aload_1
     //   91: ifnull +231 -> 322
     //   94: aload_1
-    //   95: invokevirtual 139	android/graphics/Bitmap:getHeight	()I
+    //   95: invokevirtual 140	android/graphics/Bitmap:getHeight	()I
     //   98: aload_1
-    //   99: invokevirtual 142	android/graphics/Bitmap:getRowBytes	()I
+    //   99: invokevirtual 143	android/graphics/Bitmap:getRowBytes	()I
     //   102: imul
-    //   103: invokestatic 148	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   103: invokestatic 149	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
     //   106: astore 16
     //   108: aload_1
     //   109: aload 16
-    //   111: invokevirtual 152	android/graphics/Bitmap:copyPixelsToBuffer	(Ljava/nio/Buffer;)V
+    //   111: invokevirtual 153	android/graphics/Bitmap:copyPixelsToBuffer	(Ljava/nio/Buffer;)V
     //   114: aload 16
-    //   116: invokevirtual 156	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   116: invokevirtual 157	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
     //   119: pop
     //   120: iload 6
     //   122: iload 7
@@ -234,16 +234,16 @@ public class MediaUtil
     //   135: iload 13
     //   137: if_icmpge +141 -> 278
     //   140: aload 16
-    //   142: invokevirtual 160	java/nio/ByteBuffer:get	()B
+    //   142: invokevirtual 161	java/nio/ByteBuffer:get	()B
     //   145: istore 12
     //   147: aload 16
-    //   149: invokevirtual 160	java/nio/ByteBuffer:get	()B
+    //   149: invokevirtual 161	java/nio/ByteBuffer:get	()B
     //   152: istore 8
     //   154: aload 16
-    //   156: invokevirtual 160	java/nio/ByteBuffer:get	()B
+    //   156: invokevirtual 161	java/nio/ByteBuffer:get	()B
     //   159: istore 6
     //   161: aload 16
-    //   163: invokevirtual 160	java/nio/ByteBuffer:get	()B
+    //   163: invokevirtual 161	java/nio/ByteBuffer:get	()B
     //   166: istore 14
     //   168: iload 12
     //   170: istore 10
@@ -275,7 +275,7 @@ public class MediaUtil
     //   220: fmul
     //   221: fload 5
     //   223: fdiv
-    //   224: ldc 161
+    //   224: ldc 162
     //   226: fmul
     //   227: f2i
     //   228: istore 10
@@ -285,7 +285,7 @@ public class MediaUtil
     //   234: fmul
     //   235: fload 5
     //   237: fdiv
-    //   238: ldc 161
+    //   238: ldc 162
     //   240: fmul
     //   241: f2i
     //   242: istore 7
@@ -295,7 +295,7 @@ public class MediaUtil
     //   248: fmul
     //   249: fload 5
     //   251: fdiv
-    //   252: ldc 161
+    //   252: ldc 162
     //   254: fmul
     //   255: f2i
     //   256: istore 12
@@ -309,11 +309,11 @@ public class MediaUtil
     //   275: goto +188 -> 463
     //   278: aload 20
     //   280: aload_1
-    //   281: invokevirtual 164	android/graphics/Bitmap:getWidth	()I
+    //   281: invokevirtual 165	android/graphics/Bitmap:getWidth	()I
     //   284: aload_1
-    //   285: invokevirtual 139	android/graphics/Bitmap:getHeight	()I
-    //   288: getstatic 170	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   291: invokestatic 174	android/graphics/Bitmap:createBitmap	([IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   285: invokevirtual 140	android/graphics/Bitmap:getHeight	()I
+    //   288: getstatic 171	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   291: invokestatic 175	android/graphics/Bitmap:createBitmap	([IIILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   294: astore 16
     //   296: goto +26 -> 322
     //   299: astore 16
@@ -323,9 +323,9 @@ public class MediaUtil
     //   307: astore_1
     //   308: getstatic 43	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil:a	Ljava/lang/String;
     //   311: iconst_1
-    //   312: ldc 176
+    //   312: ldc 177
     //   314: aload 16
-    //   316: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   316: invokestatic 179	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   319: aload_1
     //   320: astore 16
     //   322: aload 16
@@ -340,11 +340,11 @@ public class MediaUtil
     //   341: aload_0
     //   342: invokevirtual 29	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   345: aload 17
-    //   347: ldc2_w 87
+    //   347: ldc2_w 88
     //   350: lload_2
     //   351: lmul
     //   352: iconst_3
-    //   353: invokevirtual 92	android/media/MediaMetadataRetriever:getFrameAtTime	(JI)Landroid/graphics/Bitmap;
+    //   353: invokevirtual 93	android/media/MediaMetadataRetriever:getFrameAtTime	(JI)Landroid/graphics/Bitmap;
     //   356: astore_0
     //   357: aload 17
     //   359: invokevirtual 36	android/media/MediaMetadataRetriever:release	()V
@@ -375,9 +375,9 @@ public class MediaUtil
     //   401: astore_1
     //   402: getstatic 43	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil:a	Ljava/lang/String;
     //   405: iconst_1
-    //   406: ldc 180
+    //   406: ldc 181
     //   408: aload 17
-    //   410: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   410: invokestatic 179	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   413: aload_0
     //   414: ifnull +40 -> 454
     //   417: goto +20 -> 437
@@ -385,9 +385,9 @@ public class MediaUtil
     //   421: astore_1
     //   422: getstatic 43	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil:a	Ljava/lang/String;
     //   425: iconst_1
-    //   426: ldc 176
+    //   426: ldc 177
     //   428: aload 17
-    //   430: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   430: invokestatic 179	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   433: aload_0
     //   434: ifnull +20 -> 454
     //   437: aload_0
@@ -432,14 +432,14 @@ public class MediaUtil
     //   517: iload 10
     //   519: bipush 16
     //   521: ishl
-    //   522: ldc 181
+    //   522: ldc 182
     //   524: iand
-    //   525: ldc 182
+    //   525: ldc 183
     //   527: ior
     //   528: iload 11
     //   530: bipush 8
     //   532: ishl
-    //   533: ldc 183
+    //   533: ldc 184
     //   535: iand
     //   536: ior
     //   537: iload 7
@@ -505,24 +505,24 @@ public class MediaUtil
   }
   
   /* Error */
-  public static MediaUtil.FrameWithoutBlackResult a(String paramString, int paramInt)
+  public static MediaUtil.FrameWithoutBlackResult b(String paramString, int paramInt)
   {
     // Byte code:
     //   0: new 4	java/lang/Object
     //   3: dup
     //   4: invokespecial 14	java/lang/Object:<init>	()V
     //   7: astore_2
-    //   8: new 188	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$FrameWithoutBlackResult
+    //   8: new 190	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$FrameWithoutBlackResult
     //   11: dup
-    //   12: invokespecial 189	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$FrameWithoutBlackResult:<init>	()V
+    //   12: invokespecial 191	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$FrameWithoutBlackResult:<init>	()V
     //   15: astore_3
-    //   16: new 191	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator
+    //   16: new 193	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator
     //   19: dup
-    //   20: invokespecial 192	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:<init>	()V
+    //   20: invokespecial 194	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:<init>	()V
     //   23: astore 4
     //   25: aload 4
-    //   27: invokestatic 198	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
-    //   30: invokevirtual 201	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:a	(Landroid/os/Looper;)V
+    //   27: invokestatic 200	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
+    //   30: invokevirtual 203	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:a	(Landroid/os/Looper;)V
     //   33: aload 4
     //   35: aload_0
     //   36: aconst_null
@@ -532,26 +532,26 @@ public class MediaUtil
     //   42: sipush 10000
     //   45: iconst_1
     //   46: iconst_1
-    //   47: new 203	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$1
+    //   47: new 205	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$1
     //   50: dup
     //   51: aload_2
-    //   52: invokespecial 206	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$1:<init>	(Ljava/lang/Object;)V
-    //   55: new 208	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$2
+    //   52: invokespecial 208	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$1:<init>	(Ljava/lang/Object;)V
+    //   55: new 210	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$2
     //   58: dup
     //   59: aload_3
-    //   60: invokespecial 211	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$2:<init>	(Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$FrameWithoutBlackResult;)V
-    //   63: invokevirtual 214	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:a	(Ljava/lang/String;Ljava/lang/String;ZIIIIZLcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/baoutils/common/Callbacks$Callback;Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/baoutils/common/Callbacks$Callback;)V
+    //   60: invokespecial 213	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$2:<init>	(Lcom/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil$FrameWithoutBlackResult;)V
+    //   63: invokevirtual 216	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:a	(Ljava/lang/String;Ljava/lang/String;ZIIIIZLcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/baoutils/common/Callbacks$Callback;Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/baoutils/common/Callbacks$Callback;)V
     //   66: aload_2
     //   67: monitorenter
     //   68: aload_2
-    //   69: ldc2_w 215
-    //   72: invokevirtual 220	java/lang/Object:wait	(J)V
+    //   69: ldc2_w 217
+    //   72: invokevirtual 222	java/lang/Object:wait	(J)V
     //   75: goto +12 -> 87
     //   78: astore_0
     //   79: goto +12 -> 91
     //   82: astore_0
     //   83: aload_0
-    //   84: invokevirtual 221	java/lang/InterruptedException:printStackTrace	()V
+    //   84: invokevirtual 223	java/lang/InterruptedException:printStackTrace	()V
     //   87: aload_2
     //   88: monitorexit
     //   89: aload_3
@@ -578,7 +578,7 @@ public class MediaUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.mediacodec.utils.MediaUtil
  * JD-Core Version:    0.7.0.1
  */

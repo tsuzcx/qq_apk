@@ -114,12 +114,12 @@ public class SendMsgResp
     if ("MessageSvc.PbSendMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
     {
       int i = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
-      if (MessageHandlerUtils.a(i, paramMessageHandler.a)) {
+      if (MessageHandlerUtils.a(i, paramMessageHandler.n)) {
         b(paramMessageHandler, paramToServiceMsg, paramFromServiceMsg, paramObject);
       } else if (i == 9) {
-        paramMessageHandler.a().a(7002, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
+        paramMessageHandler.D().a(7002, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
       } else if (i == 13) {
-        paramMessageHandler.a().a(7003, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
+        paramMessageHandler.D().a(7003, new Object[] { paramToServiceMsg, paramFromServiceMsg, paramObject });
       } else if (i == 4) {
         paramMessageHandler.e(paramToServiceMsg, paramFromServiceMsg, paramObject);
       } else if (i == 2) {
@@ -131,7 +131,7 @@ public class SendMsgResp
   
   public static void a(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, String paramString1, long paramLong1, String paramString2, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, msg_svc.PbSendMsgResp paramPbSendMsgResp, SendMessageHandler paramSendMessageHandler)
   {
-    Object localObject = paramMessageHandler.a.getMsgCache().a(paramString1, paramInt2, paramLong1);
+    Object localObject = paramMessageHandler.n.getMsgCache().b(paramString1, paramInt2, paramLong1);
     paramToServiceMsg.extraData.putBoolean("isJuhuaExist", MessageCache.a((MessageCache.MsgSendingInfo)localObject));
     long l1;
     if (paramPbSendMsgResp.send_time.has())
@@ -148,10 +148,11 @@ public class SendMsgResp
         QLog.d("Q.msg.MessageHandler", 2, paramString2.toString());
       }
     }
-    if ((paramPbSendMsgResp.trans_svr_info.has()) && (paramInt2 == 10008)) {
+    if ((paramPbSendMsgResp.trans_svr_info.has()) && ((paramInt2 == 10008) || (paramInt2 == 10013))) {
       paramMessageHandler.notifyUI(8046, true, paramPbSendMsgResp.trans_svr_info.get());
     }
-    localObject = paramMessageHandler.a.getMessageFacade().b(paramString1, paramInt2, paramLong1);
+    localObject = paramMessageHandler.n.getMessageFacade().b(paramString1, paramInt2, paramLong1);
+    paramMessageHandler.a(paramPbSendMsgResp, paramString1, (MessageRecord)localObject, paramInt2, paramLong1);
     if (paramPbSendMsgResp.uint32_msg_info_flag.has())
     {
       int i = paramPbSendMsgResp.uint32_msg_info_flag.get();
@@ -163,7 +164,7 @@ public class SendMsgResp
         QLog.d("Q.msg.MessageHandler", 2, paramString2.toString());
       }
       ((MessageRecord)localObject).saveExtInfoToExtStr("key_message_extra_info_flag", String.valueOf(i));
-      paramMessageHandler.a.getMessageFacade().a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
+      paramMessageHandler.n.getMessageFacade().a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
     }
     if ((localObject instanceof RecommendCommonMessage))
     {
@@ -181,38 +182,46 @@ public class SendMsgResp
       }
       ((MessageRecord)localObject).saveExtInfoToExtStr("ark_text_analysis_flag", paramString2);
     }
-    long l3 = paramToServiceMsg.extraData.getLong("msg_request_time", 0L);
-    if ((l3 > 0L) && (paramInt2 == 0))
+    paramString2 = paramToServiceMsg.extraData;
+    long l2 = 0L;
+    long l4 = paramString2.getLong("msg_request_time", 0L);
+    if ((l4 > 0L) && (paramInt2 == 0))
     {
       paramString2 = paramFromServiceMsg;
-      if ((paramString2.getAttribute("__timestamp_msf2net") != null) && (paramString2.getAttribute("__timestamp_net2msf") != null))
+      l1 = l2;
+      if (paramString2.getAttribute("__timestamp_msf2net") != null)
       {
-        long l2 = ((Long)paramString2.getAttribute("__timestamp_net2msf")).longValue() - ((Long)paramString2.getAttribute("__timestamp_msf2net")).longValue();
         l1 = l2;
-        if (l2 < 0L) {
-          l1 = 0L;
-        }
-        if (l1 <= 2147483647L) {
-          break label502;
+        if (paramString2.getAttribute("__timestamp_net2msf") != null)
+        {
+          long l3 = ((Long)paramString2.getAttribute("__timestamp_net2msf")).longValue() - ((Long)paramString2.getAttribute("__timestamp_msf2net")).longValue();
+          l1 = l3;
+          if (l3 < 0L) {
+            l1 = 0L;
+          }
+          if (l1 > 2147483647L) {
+            l1 = l2;
+          }
         }
       }
-      l1 = 0L;
-      label502:
       paramPbSendMsgResp = new MessageHandlerConstants.MsgSendCostParams();
-      paramPbSendMsgResp.jdField_c_of_type_Long = l1;
+      paramPbSendMsgResp.c = l1;
       paramPbSendMsgResp.d = System.currentTimeMillis();
-      paramPbSendMsgResp.jdField_b_of_type_Long = (paramPbSendMsgResp.d - l3);
-      paramPbSendMsgResp.jdField_a_of_type_Long = paramToServiceMsg.extraData.getLong("msg_send_to_request_cost", 0L);
-      paramPbSendMsgResp.jdField_a_of_type_Int = 0;
-      paramPbSendMsgResp.jdField_a_of_type_Boolean = ((Boolean)paramString2.getAttribute("conn_cross_oper_flag", Boolean.valueOf(false))).booleanValue();
-      paramPbSendMsgResp.jdField_b_of_type_Boolean = ((Boolean)paramString2.getAttribute("attr_quick_send_by_xg", Boolean.valueOf(false))).booleanValue();
-      paramPbSendMsgResp.jdField_c_of_type_Boolean = ((Boolean)paramString2.getAttribute("attr_weaknet_sent_flag", Boolean.valueOf(false))).booleanValue();
+      paramPbSendMsgResp.b = (paramPbSendMsgResp.d - l4);
+      paramPbSendMsgResp.a = paramToServiceMsg.extraData.getLong("msg_send_to_request_cost", 0L);
+      paramPbSendMsgResp.f = 0;
+      paramPbSendMsgResp.h = ((Boolean)paramString2.getAttribute("conn_cross_oper_flag", Boolean.valueOf(false))).booleanValue();
+      paramPbSendMsgResp.i = ((Boolean)paramString2.getAttribute("attr_quick_send_by_xg", Boolean.valueOf(false))).booleanValue();
+      paramPbSendMsgResp.j = ((Boolean)paramString2.getAttribute("attr_weaknet_sent_flag", Boolean.valueOf(false))).booleanValue();
+      if (localObject != null) {
+        paramPbSendMsgResp.g = ((MessageRecord)localObject).msgtype;
+      }
       paramString2 = new StringBuilder();
       paramString2.append(paramLong1);
       paramString2.append("");
       paramMessageHandler.notifyUI(6003, true, new Object[] { paramString1, paramString2.toString(), paramPbSendMsgResp });
     }
-    else if (UinTypeUtil.a(paramInt2) == 1032)
+    else if (UinTypeUtil.e(paramInt2) == 1032)
     {
       paramMessageHandler.notifyUI(8035, true, new Object[] { paramString1, Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Integer.valueOf(paramInt3) });
     }
@@ -231,14 +240,14 @@ public class SendMsgResp
       paramMessageHandler.a(paramString1, paramInt2, paramLong1, true);
     }
     Report.c(paramMessageHandler, paramToServiceMsg, paramFromServiceMsg, true);
-    paramMessageHandler.a(paramLong2);
+    paramMessageHandler.c(paramLong2);
     if ((paramInt2 == 1025) || (paramInt2 == 1024))
     {
       paramLong1 = paramSendMessageHandler.a(System.currentTimeMillis());
-      ((QidianHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(paramString1, paramLong1);
+      ((QidianHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER)).a(paramString1, paramLong1);
     }
     paramMessageHandler.a((MessageRecord)localObject);
-    Report.a(paramMessageHandler.a, paramInt2, paramString1);
+    Report.a(paramMessageHandler.n, paramInt2, paramString1);
   }
   
   public static void b(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -255,13 +264,13 @@ public class SendMsgResp
     int i1 = paramToServiceMsg.extraData.getInt("retryIndex", 0);
     int n = paramToServiceMsg.extraData.getInt("msgtype");
     int i2 = paramToServiceMsg.extraData.getInt("ROUNTING_TYPE");
-    int i = MessageProtoCodec.a(i2, paramMessageHandler.a);
+    int i = MessageProtoCodec.a(i2, paramMessageHandler.n);
     if (i == 1024) {
       i = paramToServiceMsg.extraData.getInt("uintype", i);
     }
     boolean bool1 = false;
     int k;
-    if (UinTypeUtil.a(i) == 1032) {
+    if (UinTypeUtil.e(i) == 1032) {
       k = paramToServiceMsg.extraData.getInt("key_confess_topicid", 0);
     } else {
       k = 0;
@@ -304,8 +313,8 @@ public class SendMsgResp
     ((StringBuilder)localObject).append(i2);
     QLog.i("Q.msg.MessageHandler", 1, ((StringBuilder)localObject).toString());
     paramFromServiceMsg.extraData.putLong("ServerReplyCode", j);
-    paramMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-    localObject = paramMessageHandler.a(l2);
+    paramMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
+    localObject = paramMessageHandler.b(l2);
     if (localObject == null)
     {
       paramToServiceMsg = new StringBuilder();
@@ -313,7 +322,7 @@ public class SendMsgResp
       paramToServiceMsg.append(str2);
       paramToServiceMsg.append(",no SendMessageHandler found.");
       QLog.e("Q.msg.MessageHandler", 1, paramToServiceMsg.toString());
-      ForwardOrderManager.a().a(paramMessageHandler.a, l1);
+      ForwardOrderManager.a().a(paramMessageHandler.n, l1);
       return;
     }
     int m;
@@ -325,10 +334,10 @@ public class SendMsgResp
     if ((m != 0) && (paramMessageHandler.a((SendMessageHandler)localObject, "server"))) {
       return;
     }
-    int j = a(paramMessageHandler.a, str1, i, j);
+    int j = a(paramMessageHandler.n, str1, i, j);
     if ((j != 0) && (j != 241))
     {
-      paramFromServiceMsg = new HandleSendC2CMessageRespPBReplyBranch2(paramMessageHandler, paramToServiceMsg, paramFromServiceMsg, str1, l1, l2, l3, i1, n, i2, i, false, k, bool2, j, paramObject, (SendMessageHandler)localObject).a();
+      paramFromServiceMsg = new HandleSendC2CMessageRespPBReplyBranch2(paramMessageHandler, paramToServiceMsg, paramFromServiceMsg, str1, l1, l2, l3, i1, n, i2, i, false, k, bool2, j, paramObject, (SendMessageHandler)localObject).c();
       if (paramFromServiceMsg.a()) {
         return;
       }
@@ -338,16 +347,16 @@ public class SendMsgResp
     {
       a(paramMessageHandler, paramToServiceMsg, paramFromServiceMsg, str1, l1, str3, l2, i1, i, k, bool2, paramObject, (SendMessageHandler)localObject);
     }
-    ((LongTextMsgManager)paramMessageHandler.a.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(str1, i, l1, j, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("startTime", 0L));
-    ((IVideoReporter)QRoute.api(IVideoReporter.class)).reportVideoStructMsgSendSuc(paramMessageHandler.a, n, str1, i, l1);
+    ((LongTextMsgManager)paramMessageHandler.n.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER)).a(str1, i, l1, j, System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("startTime", 0L));
+    ((IVideoReporter)QRoute.api(IVideoReporter.class)).reportVideoStructMsgSendSuc(paramMessageHandler.n, n, str1, i, l1);
     if (!bool1) {
-      ForwardOrderManager.a().a(paramMessageHandler.a, l1);
+      ForwardOrderManager.a().a(paramMessageHandler.n, l1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.SendMsgResp
  * JD-Core Version:    0.7.0.1
  */

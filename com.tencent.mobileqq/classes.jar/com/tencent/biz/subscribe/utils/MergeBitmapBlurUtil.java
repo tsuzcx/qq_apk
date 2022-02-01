@@ -40,7 +40,7 @@ public class MergeBitmapBlurUtil
         }
         localCanvas.setBitmap((Bitmap)localObject);
         localCanvas.drawColor(Color.parseColor("#3F000000"), PorterDuff.Mode.SRC_OVER);
-        Object localObject = VideoUtils.a(paramBitmap.getWidth(), paramBitmap.getHeight(), paramImageView.getWidth(), paramImageView.getHeight());
+        Object localObject = VideoUtils.b(paramBitmap.getWidth(), paramBitmap.getHeight(), paramImageView.getWidth(), paramImageView.getHeight());
         paramBitmap = BitmapUtils.a(BitmapUtils.a(localBitmap, ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), true), paramBitmap);
         b(paramBitmap, paramImageView);
         CommonImageCacheHelper.a(paramString, paramBitmap);

@@ -25,14 +25,14 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.UniteSearchHandler;
 import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.kandian.base.utils.RIJLogUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.framework.CallHotwordChange;
 import com.tencent.mobileqq.kandian.biz.search.entity.ReadInJoySearchWord;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.glue.report.dt.RIJDtParamBuilder;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.HotWordSearchEntryModel;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
@@ -52,95 +52,91 @@ import org.json.JSONException;
 public class ReadInJoyTabTopSearchHeaderController
   implements View.OnClickListener, CallHotwordChange
 {
-  private int jdField_a_of_type_Int = 1;
-  protected BroadcastReceiver a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  protected UniteSearchObserver a;
-  protected HotWordSearchEntryDataModel.HotSearchItem a;
-  HotWordSearchEntryDataModel jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel;
-  String jdField_a_of_type_JavaLangString = "search_word_prefix_search_change_times";
-  protected boolean a;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  String jdField_b_of_type_JavaLangString = "search_word_prefix_refresh_times";
-  protected boolean b;
-  private boolean c = false;
+  protected boolean a = false;
+  HotWordSearchEntryDataModel b;
+  protected UniteSearchObserver c = new ReadInJoyTabTopSearchHeaderController.1(this);
+  protected HotWordSearchEntryDataModel.HotSearchItem d;
+  protected boolean e = true;
+  String f = "search_word_prefix_search_change_times";
+  String g = "search_word_prefix_refresh_times";
+  protected BroadcastReceiver h = new ReadInJoyTabTopSearchHeaderController.7(this);
+  private Context i;
+  private ViewGroup j;
+  private TextView k;
+  private TextView l;
+  private URLImageView m;
+  private boolean n = false;
+  private int o = 1;
   
   public ReadInJoyTabTopSearchHeaderController(Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ReadInJoyTabTopSearchHeaderController.1(this);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ReadInJoyTabTopSearchHeaderController.7(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379868));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379867));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363504));
+    this.i = paramContext;
+    this.j = paramViewGroup;
+    this.j.setOnClickListener(this);
+    this.k = ((TextView)this.j.findViewById(2131448726));
+    this.l = ((TextView)this.j.findViewById(2131448725));
+    this.m = ((URLImageView)this.j.findViewById(2131429406));
     paramViewGroup = Aladdin.getConfig(182);
-    if ((paramViewGroup != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    if ((paramViewGroup != null) && (this.i != null))
     {
-      int i = paramViewGroup.getIntegerFromString("search_text_size", 14);
+      int i1 = paramViewGroup.getIntegerFromString("search_text_size", 14);
       paramViewGroup = paramViewGroup.getString("search_text_colour", "#737373");
       try
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramViewGroup));
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramViewGroup));
+        this.k.setTextColor(Color.parseColor(paramViewGroup));
+        this.l.setTextColor(Color.parseColor(paramViewGroup));
       }
       catch (Exception paramViewGroup)
       {
         paramViewGroup.printStackTrace();
       }
-      paramViewGroup = this.jdField_a_of_type_AndroidWidgetTextView;
-      float f = i;
-      paramViewGroup.setTextSize(f);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(f);
+      paramViewGroup = this.k;
+      float f1 = i1;
+      paramViewGroup.setTextSize(f1);
+      this.l.setTextSize(f1);
     }
     paramViewGroup = Aladdin.getConfig(313);
     if (paramViewGroup != null) {
-      SearchEntryConfigManager.jdField_b_of_type_JavaLangString = paramViewGroup.getString("SBWord_Source", "Hot_word");
+      SearchEntryConfigManager.c = paramViewGroup.getString("SBWord_Source", "Hot_word");
     }
-    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver);
+    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.c);
     b(false, -1, -1);
     paramViewGroup = new IntentFilter("mqq.intent.action.ACCOUNT_CHANGED");
-    paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramViewGroup);
+    paramContext.registerReceiver(this.h, paramViewGroup);
     f();
   }
   
   private static void a(String paramString1, String paramString2)
   {
-    String str = RIJQQAppInterfaceUtil.a();
-    QLog.d("ReadInJoyTabTopSearchHeaderController", 1, new Object[] { "actionName = ", paramString1, "\n", "r2 = ", str, " r5 = ", paramString2 });
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString1, paramString1, 0, 0, str, "", "", paramString2, false);
+    String str = RIJQQAppInterfaceUtil.d();
+    QLog.d("ReadInJoyTabTopSearchHeaderController", 1, new Object[] { "actionName = ", paramString1, "\n", "r2 = ", RIJLogUtil.a.a(str), " r5 = ", paramString2 });
+    PublicAccountReportUtils.a(null, "", paramString1, paramString1, 0, 0, str, "", "", paramString2, false);
   }
   
   private void f()
   {
-    VideoReport.setElementId(this.jdField_a_of_type_AndroidViewViewGroup, "search_box_button");
-    VideoReport.setElementParams(this.jdField_a_of_type_AndroidViewViewGroup, new RIJDtParamBuilder().a("14").a().b("search_box").c("click_search_box").a());
-    VideoReport.setElementReportPolicy(this.jdField_a_of_type_AndroidViewViewGroup, ReportPolicy.REPORT_POLICY_CLICK);
+    VideoReport.setElementId(this.j, "search_box_button");
+    VideoReport.setElementParams(this.j, new RIJDtParamBuilder().a("14").a().b("search_box").c("click_search_box").c());
+    VideoReport.setElementReportPolicy(this.j, ReportPolicy.REPORT_POLICY_CLICK);
   }
   
   protected void a()
   {
-    HotWordSearchEntryDataModel.HotSearchItem localHotSearchItem = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem;
+    HotWordSearchEntryDataModel.HotSearchItem localHotSearchItem = this.d;
     if (localHotSearchItem != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(localHotSearchItem.title);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title);
+      this.l.setText(localHotSearchItem.title);
+      this.k.setText(this.d.title);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718623);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718623);
+      this.k.setText(2131916124);
+      this.l.setText(2131916124);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTranslationY(Utils.dp2px(43.0D));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTranslationY(0.0F);
+    this.l.setVisibility(8);
+    this.k.setVisibility(0);
+    this.l.setTranslationY(Utils.dp2px(43.0D));
+    this.k.setTranslationY(0.0F);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -154,42 +150,42 @@ public class ReadInJoyTabTopSearchHeaderController
   {
     Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Object localObject2 = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-    if (this.c) {
+    if (this.n) {
       return;
     }
     long l1 = ((SharedPreferences)localObject2).getLong("search_hotword_show_lasttime", 0L);
-    long l2 = this.jdField_a_of_type_Int * 1000;
+    long l2 = this.o * 1000;
     if (System.currentTimeMillis() - l1 < l2) {
       return;
     }
-    this.jdField_a_of_type_Int = 1;
+    this.o = 1;
     localObject2 = Aladdin.getConfig(313);
     if (localObject2 != null) {
-      this.jdField_a_of_type_Int = ((AladdinConfig)localObject2).getIntegerFromString("SearchBox_CarouselTime", 1);
+      this.o = ((AladdinConfig)localObject2).getIntegerFromString("SearchBox_CarouselTime", 1);
     }
     boolean bool = HotWordSearchEntryDataModel.a(10, false);
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel;
+    localObject2 = this.b;
     Object localObject3;
-    if ((localObject2 != null) && (((HotWordSearchEntryDataModel)localObject2).jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != 0) && (!bool))
+    if ((localObject2 != null) && (((HotWordSearchEntryDataModel)localObject2).b != null) && (this.b.b.size() != 0) && (!bool))
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-      this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem = ((HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(ReadInJoySearchWord.jdField_a_of_type_Int % i));
+      int i1 = this.b.b.size();
+      this.d = ((HotWordSearchEntryDataModel.HotSearchItem)this.b.b.get(ReadInJoySearchWord.a % i1));
       if (!SearchEntryConfigManager.a((AppInterface)localObject1))
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718623);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718623);
+        this.k.setText(2131916124);
+        this.l.setText(2131916124);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.showType == 3)
+      if (this.d.showType == 3)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.detailText;
-        if (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.showCount == 0) {
-          i = 1;
+        localObject2 = this.d.detailText;
+        if (this.d.showCount == 0) {
+          i1 = 1;
         } else {
-          i = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.showCount;
+          i1 = this.d.showCount;
         }
-        bool = SearchEntryConfigManager.a((AppInterface)localObject1, (String)localObject2, i);
-        if (((!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) || (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.imgBgUrl))) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.imgUrl))) {}
+        bool = SearchEntryConfigManager.a((AppInterface)localObject1, (String)localObject2, i1);
+        if (((!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) || (!TextUtils.isEmpty(this.d.imgBgUrl))) && (!TextUtils.isEmpty(this.d.imgUrl))) {}
       }
       else
       {
@@ -201,16 +197,16 @@ public class ReadInJoyTabTopSearchHeaderController
       }
       else
       {
-        this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+        this.m.setVisibility(8);
         if (paramBoolean)
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title);
-          localObject2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "translationY", new float[] { 0.0F, -Utils.dp2px(43.0D) });
+          this.l.setVisibility(0);
+          this.k.setVisibility(0);
+          this.l.setText(this.d.title);
+          localObject2 = ObjectAnimator.ofFloat(this.k, "translationY", new float[] { 0.0F, -Utils.dp2px(43.0D) });
           ((ObjectAnimator)localObject2).setDuration(200L);
           ((ObjectAnimator)localObject2).start();
-          localObject3 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetTextView, "translationY", new float[] { Utils.dp2px(43.0D), 0.0F });
+          localObject3 = ObjectAnimator.ofFloat(this.l, "translationY", new float[] { Utils.dp2px(43.0D), 0.0F });
           ((ObjectAnimator)localObject3).setDuration(200L);
           ((ObjectAnimator)localObject3).start();
           ((ObjectAnimator)localObject2).addListener(new ReadInJoyTabTopSearchHeaderController.3(this));
@@ -220,9 +216,9 @@ public class ReadInJoyTabTopSearchHeaderController
           a();
         }
       }
-      ReadInJoySearchWord.jdField_a_of_type_Int += 1;
-      UniteSearchReportController.a(null, new ReportModelDC02528().module("search_box").action("exp_default_word").ver2(UniteSearchReportController.a(25)).ver4(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title).ver7(SearchEntryConfigManager.jdField_b_of_type_JavaLangString));
-      new UniteSearchHandler((QQAppInterface)localObject1).b((QQAppInterface)localObject1, "exp_default_word", "search_box", UniteSearchReportController.a(25), this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.sAppend, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.title, SearchEntryConfigManager.jdField_b_of_type_JavaLangString);
+      ReadInJoySearchWord.a += 1;
+      UniteSearchReportController.a(null, new ReportModelDC02528().module("search_box").action("exp_default_word").ver2(UniteSearchReportController.a(25)).ver4(this.d.title).ver7(SearchEntryConfigManager.c));
+      new UniteSearchHandler((QQAppInterface)localObject1).b((QQAppInterface)localObject1, "exp_default_word", "search_box", UniteSearchReportController.a(25), this.d.sAppend, this.d.title, SearchEntryConfigManager.c);
       if ((paramInt1 != -1) && (paramInt2 != -1))
       {
         localObject3 = new ReportModelDC02528().module("hot_list").action("feeds_hotword_wording");
@@ -237,7 +233,7 @@ public class ReadInJoyTabTopSearchHeaderController
         ((StringBuilder)localObject3).append(paramInt2);
         ((StringBuilder)localObject3).append("");
         UniteSearchReportController.a(null, ((ReportModelDC02528)localObject1).obj3(((StringBuilder)localObject3).toString()));
-        localObject3 = RIJTransMergeKanDianReport.a();
+        localObject3 = RIJTransMergeKanDianReport.g();
       }
     }
     try
@@ -263,35 +259,35 @@ public class ReadInJoyTabTopSearchHeaderController
     a("0X800A4C5", ((RIJTransMergeKanDianReport.ReportR5Builder)localObject3).build());
     PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putLong("search_hotword_show_lasttime", System.currentTimeMillis()).commit();
     return;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718623);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131718623);
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem = null;
+    this.k.setText(2131916124);
+    this.l.setText(2131916124);
+    this.d = null;
   }
   
   protected void b()
   {
-    this.c = true;
+    this.n = true;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     ReadInJoyTabTopSearchHeaderController.2 local2 = new ReadInJoyTabTopSearchHeaderController.2(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-    HotWordSearchEntryModel.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.imgUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.imgBgUrl, local2);
-    SearchEntryConfigManager.a(localQQAppInterface, BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.detailText, 0);
-    UniteSearchReportController.a(null, new ReportModelDC02528().module("search_light").action("exp_search_light").ver2(UniteSearchReportController.a(25)).ver4(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.detailText).ver7(SearchEntryConfigManager.jdField_b_of_type_JavaLangString));
-    new UniteSearchHandler(localQQAppInterface).b(localQQAppInterface, "exp_search_light", "search_light", UniteSearchReportController.a(25), this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.sAppend, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.detailText, SearchEntryConfigManager.jdField_b_of_type_JavaLangString);
+    this.m.setVisibility(8);
+    HotWordSearchEntryModel.a(this.i, this.m, this.d.imgUrl, this.d.imgBgUrl, local2);
+    SearchEntryConfigManager.a(localQQAppInterface, BaseApplicationImpl.getContext(), this.d.detailText, 0);
+    UniteSearchReportController.a(null, new ReportModelDC02528().module("search_light").action("exp_search_light").ver2(UniteSearchReportController.a(25)).ver4(this.d.detailText).ver7(SearchEntryConfigManager.c));
+    new UniteSearchHandler(localQQAppInterface).b(localQQAppInterface, "exp_search_light", "search_light", UniteSearchReportController.a(25), this.d.sAppend, this.d.detailText, SearchEntryConfigManager.c);
   }
   
   protected void b(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = new HotWordSearchEntryDataModel(localQQAppInterface, SearchEntryConfigManager.b(), 10, false);
+    this.b = new HotWordSearchEntryDataModel(localQQAppInterface, SearchEntryConfigManager.d(), 10, false);
     ThreadManager.post(new ReadInJoyTabTopSearchHeaderController.6(this, paramBoolean, paramInt1, paramInt2, localQQAppInterface), 5, null, true);
   }
   
   public void c()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.e)
     {
-      this.jdField_b_of_type_Boolean = false;
+      this.e = false;
     }
     else
     {
@@ -305,32 +301,32 @@ public class ReadInJoyTabTopSearchHeaderController
   public void d()
   {
     AbstractGifImage.pauseAll();
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-    this.c = false;
+    this.m.setVisibility(8);
+    this.n = false;
   }
   
   public void e()
   {
-    this.jdField_b_of_type_Boolean = false;
+    this.e = false;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver);
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_Boolean = true;
+    localQQAppInterface.removeObserver(this.c);
+    this.i.unregisterReceiver(this.h);
+    this.a = true;
     SharedPreUtils.a(localQQAppInterface.getCurrentAccountUin(), 10, 0);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131379023) {
+    if (paramView.getId() != 2131447745) {
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem;
+    paramView = this.d;
     if ((paramView != null) && (paramView.showType == 3)) {
-      SearchEntryConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.detailText, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem.showCount);
+      SearchEntryConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext(), this.d.detailText, this.d.showCount);
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Object localObject2 = new ReportModelDC02528().module("search_box").action("clk_default_word");
-    paramView = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem;
+    paramView = this.d;
     Object localObject1 = "";
     if (paramView == null) {
       paramView = "";
@@ -340,43 +336,43 @@ public class ReadInJoyTabTopSearchHeaderController
     paramView = ((ReportModelDC02528)localObject2).ver4(paramView);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("{experiment_id:");
-    ((StringBuilder)localObject2).append(UniteSearchReportController.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(UniteSearchReportController.b);
     ((StringBuilder)localObject2).append(",source:");
-    ((StringBuilder)localObject2).append(SearchEntryConfigManager.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(SearchEntryConfigManager.c);
     ((StringBuilder)localObject2).append("}");
     UniteSearchReportController.a(localQQAppInterface, paramView.ver7(((StringBuilder)localObject2).toString()));
     UniteSearchReportController.a(null, 0, 25, "0X8009D15", 0, 0, null, null);
     localObject2 = new UniteSearchHandler(localQQAppInterface);
     String str = UniteSearchReportController.a(25);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem;
+    paramView = this.d;
     if (paramView == null) {
       paramView = "";
     } else {
       paramView = paramView.sAppend;
     }
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem;
+    Object localObject3 = this.d;
     if (localObject3 != null) {
       localObject1 = ((HotWordSearchEntryDataModel.HotSearchItem)localObject3).title;
     }
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("{experiment_id:");
-    ((StringBuilder)localObject3).append(UniteSearchReportController.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(UniteSearchReportController.b);
     ((StringBuilder)localObject3).append(",source:");
-    ((StringBuilder)localObject3).append(SearchEntryConfigManager.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject3).append(SearchEntryConfigManager.c);
     ((StringBuilder)localObject3).append("}");
     ((UniteSearchHandler)localObject2).b(localQQAppInterface, "clk_default_word", "search_box", str, paramView, (String)localObject1, ((StringBuilder)localObject3).toString());
-    this.jdField_a_of_type_Int = 1;
+    this.o = 1;
     paramView = null;
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel;
+    localObject1 = this.b;
     if (localObject1 != null) {
-      paramView = ((HotWordSearchEntryDataModel)localObject1).jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo;
+      paramView = ((HotWordSearchEntryDataModel)localObject1).d;
     }
-    UniteSearchActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, null, 25, 0L, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$HotSearchItem, 0, paramView);
+    UniteSearchActivity.a((Activity)this.i, null, 25, 0L, this.d, 0, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyTabTopSearchHeaderController
  * JD-Core Version:    0.7.0.1
  */

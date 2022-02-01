@@ -9,22 +9,22 @@ import mqq.os.MqqHandler;
 class WeiyunAIOUtils$WeiyunCallbackImpl
   implements WeiyunCallback
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public MqqHandler a;
+  private int b;
+  private Context c;
+  private QQAppInterface d;
   
   public WeiyunAIOUtils$WeiyunCallbackImpl(MqqHandler paramMqqHandler, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramMqqHandler;
+    this.b = paramInt;
+    this.c = paramContext;
+    this.d = paramQQAppInterface;
   }
   
   public void a(int paramInt, String paramString)
   {
-    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+    MqqHandler localMqqHandler = this.a;
     if (localMqqHandler != null)
     {
       localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(101, paramInt, 0, paramString), 1500L);
@@ -35,7 +35,7 @@ class WeiyunAIOUtils$WeiyunCallbackImpl
   
   public void a(Object paramObject)
   {
-    paramObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    paramObject = this.a;
     if (paramObject != null)
     {
       paramObject.sendEmptyMessageDelayed(100, 1500L);
@@ -46,7 +46,7 @@ class WeiyunAIOUtils$WeiyunCallbackImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl
  * JD-Core Version:    0.7.0.1
  */

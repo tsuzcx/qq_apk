@@ -7,26 +7,19 @@ import java.util.List;
 
 public class VasPalette$OcTree
 {
-  public SparseArray<List<VasPalette.OcNode>> a;
-  VasPalette.OcNode a;
-  public List<VasPalette.OcNode> a;
-  
-  public VasPalette$OcTree()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_ComTencentMobileqqVasVasPalette$OcNode = VasPalette.OcNode.a();
-  }
+  VasPalette.OcNode a = VasPalette.OcNode.a();
+  public List<VasPalette.OcNode> b = new ArrayList();
+  public SparseArray<List<VasPalette.OcNode>> c = new SparseArray();
   
   public VasPalette.OcNode a(int paramInt)
   {
-    VasPalette.OcNode localOcNode1 = this.jdField_a_of_type_ComTencentMobileqqVasVasPalette$OcNode;
+    VasPalette.OcNode localOcNode1 = this.a;
     int m = Color.red(paramInt);
     int n = Color.green(paramInt);
     int i1 = Color.blue(paramInt);
     paramInt = 128;
-    byte b = 1;
-    while (b <= 8)
+    byte b1 = 1;
+    while (b1 <= 8)
     {
       boolean bool = false;
       if ((m & paramInt) == 0) {
@@ -47,39 +40,39 @@ public class VasPalette$OcTree
         k = 1;
       }
       int i = i * 4 + j * 2 + k;
-      if (localOcNode1.jdField_a_of_type_AndroidUtilSparseArray == null) {
-        localOcNode1.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      if (localOcNode1.g == null) {
+        localOcNode1.g = new SparseArray();
       }
-      if (localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.get(i) == null)
+      if (localOcNode1.g.get(i) == null)
       {
-        VasPalette.OcNode localOcNode2 = VasPalette.OcNode.a(i, b);
-        localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.put(i, localOcNode2);
-        if (b == 8) {
+        VasPalette.OcNode localOcNode2 = VasPalette.OcNode.a(i, b1);
+        localOcNode1.g.put(i, localOcNode2);
+        if (b1 == 8) {
           bool = true;
         }
-        localOcNode2.jdField_a_of_type_Boolean = bool;
-        if (localOcNode2.jdField_a_of_type_Boolean)
+        localOcNode2.h = bool;
+        if (localOcNode2.h)
         {
-          this.jdField_a_of_type_JavaUtilList.add(localOcNode2);
+          this.b.add(localOcNode2);
         }
         else
         {
-          if (this.jdField_a_of_type_AndroidUtilSparseArray.get(b) == null) {
-            this.jdField_a_of_type_AndroidUtilSparseArray.put(b, new ArrayList());
+          if (this.c.get(b1) == null) {
+            this.c.put(b1, new ArrayList());
           }
-          ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(b)).add(localOcNode2);
+          ((List)this.c.get(b1)).add(localOcNode2);
         }
       }
-      localOcNode1 = (VasPalette.OcNode)localOcNode1.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-      if (localOcNode1.jdField_a_of_type_Boolean)
+      localOcNode1 = (VasPalette.OcNode)localOcNode1.g.get(i);
+      if (localOcNode1.h)
       {
-        localOcNode1.jdField_a_of_type_Long += m;
+        localOcNode1.a += m;
         localOcNode1.b += n;
         localOcNode1.c += i1;
-        localOcNode1.jdField_a_of_type_Int += 1;
+        localOcNode1.d += 1;
         return localOcNode1;
       }
-      b = (byte)(b + 1);
+      b1 = (byte)(b1 + 1);
       paramInt >>= 1;
     }
     return localOcNode1;
@@ -88,10 +81,10 @@ public class VasPalette$OcTree
   public void a()
   {
     int i = 7;
-    while ((i > 0) && (((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).isEmpty())) {
+    while ((i > 0) && (((List)this.c.get(i)).isEmpty())) {
       i -= 1;
     }
-    Object localObject = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    Object localObject = (List)this.c.get(i);
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       VasPalette.OcNode localOcNode = (VasPalette.OcNode)((List)localObject).get(((List)localObject).size() - 1);
@@ -99,27 +92,27 @@ public class VasPalette$OcTree
       i = 0;
       while (i < 8)
       {
-        localObject = (VasPalette.OcNode)localOcNode.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        localObject = (VasPalette.OcNode)localOcNode.g.get(i);
         if (localObject != null)
         {
-          localOcNode.jdField_a_of_type_Long += ((VasPalette.OcNode)localObject).jdField_a_of_type_Long;
+          localOcNode.a += ((VasPalette.OcNode)localObject).a;
           localOcNode.b += ((VasPalette.OcNode)localObject).b;
           localOcNode.c += ((VasPalette.OcNode)localObject).c;
-          localOcNode.jdField_a_of_type_Int += ((VasPalette.OcNode)localObject).jdField_a_of_type_Int;
-          this.jdField_a_of_type_JavaUtilList.remove(localObject);
+          localOcNode.d += ((VasPalette.OcNode)localObject).d;
+          this.b.remove(localObject);
         }
         i += 1;
       }
-      localOcNode.jdField_a_of_type_AndroidUtilSparseArray.clear();
-      localOcNode.jdField_a_of_type_AndroidUtilSparseArray = null;
-      localOcNode.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaUtilList.add(localOcNode);
+      localOcNode.g.clear();
+      localOcNode.g = null;
+      localOcNode.h = true;
+      this.b.add(localOcNode);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasPalette.OcTree
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ class VideoChatRoomUIContoller$ChatRoomUIObserver
     }
     paramObject = (VideoChatRoomUIContoller)this.a.get();
     if ((paramObject != null) && (paramObservable.length >= 2) && ((paramObservable[1] instanceof Boolean)) && (!((Boolean)paramObservable[1]).booleanValue())) {
-      paramObject.a();
+      paramObject.e();
     }
   }
 }

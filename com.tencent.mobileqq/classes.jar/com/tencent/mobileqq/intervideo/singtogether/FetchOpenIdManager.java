@@ -17,20 +17,20 @@ import mqq.manager.Manager;
 public class FetchOpenIdManager
   implements Manager
 {
-  private int jdField_a_of_type_Int = -1;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new FetchOpenIdManager.3(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FetchOpenIdObserver jdField_a_of_type_ComTencentMobileqqIntervideoSingtogetherFetchOpenIdObserver = new FetchOpenIdManager.2(this);
-  private HashMap<Long, HashMap<Long, String>> jdField_a_of_type_JavaUtilHashMap;
-  private List<OpenIdItem> jdField_a_of_type_JavaUtilList;
+  private QQAppInterface a;
+  private HashMap<Long, HashMap<Long, String>> b;
+  private int c = -1;
+  private List<OpenIdItem> d;
+  private FetchOpenIdObserver e = new FetchOpenIdManager.2(this);
+  private FriendListObserver f = new FetchOpenIdManager.3(this);
   
   public FetchOpenIdManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqIntervideoSingtogetherFetchOpenIdObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.a = paramQQAppInterface;
+    this.b = new HashMap();
+    this.d = new ArrayList();
+    this.a.registObserver(this.e);
+    this.a.addObserver(this.f);
     a(paramQQAppInterface);
   }
   
@@ -38,7 +38,7 @@ public class FetchOpenIdManager
   {
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.d.iterator();
       while (localIterator.hasNext())
       {
         OpenIdItem localOpenIdItem = (OpenIdItem)localIterator.next();
@@ -63,7 +63,7 @@ public class FetchOpenIdManager
           return localOpenIdItem;
         }
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramOpenIdItem);
+      this.d.add(paramOpenIdItem);
       return paramOpenIdItem;
     }
     finally {}
@@ -77,9 +77,9 @@ public class FetchOpenIdManager
   {
     try
     {
-      if (this.jdField_a_of_type_Int == -1)
+      if (this.c == -1)
       {
-        this.jdField_a_of_type_Int = 0;
+        this.c = 0;
         ThreadManagerV2.excute(new FetchOpenIdManager.1(this, paramQQAppInterface), 16, null, true);
       }
       return;
@@ -95,12 +95,12 @@ public class FetchOpenIdManager
   {
     try
     {
-      HashMap localHashMap2 = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1));
+      HashMap localHashMap2 = (HashMap)this.b.get(Long.valueOf(paramLong1));
       HashMap localHashMap1 = localHashMap2;
       if (localHashMap2 == null)
       {
         localHashMap1 = new HashMap();
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), localHashMap1);
+        this.b.put(Long.valueOf(paramLong1), localHashMap1);
       }
       localHashMap1.put(Long.valueOf(paramLong2), paramString);
       return;
@@ -112,7 +112,7 @@ public class FetchOpenIdManager
   {
     try
     {
-      Object localObject2 = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong2));
+      Object localObject2 = (HashMap)this.b.get(Long.valueOf(paramLong2));
       String str = "";
       if (localObject2 != null) {
         str = (String)((HashMap)localObject2).get(Long.valueOf(paramLong1));
@@ -125,19 +125,19 @@ public class FetchOpenIdManager
         ((StringBuilder)localObject2).append(" uin=");
         ((StringBuilder)localObject2).append(paramLong1);
         ((StringBuilder)localObject2).append(" state= ");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(this.c);
         QLog.d("FetchOpenIdManager", 2, ((StringBuilder)localObject2).toString());
       }
       boolean bool = TextUtils.isEmpty(str);
       if (!bool) {
         return str;
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.c;
       if (i == 0) {
         return str;
       }
       if (paramBoolean) {
-        FetchOpenIdServlet.a(paramLong1, paramLong2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        FetchOpenIdServlet.a(paramLong1, paramLong2, this.a);
       }
       return str;
     }
@@ -159,14 +159,14 @@ public class FetchOpenIdManager
         ((StringBuilder)localObject1).append(paramString);
         QLog.d("FetchOpenIdManager", 2, ((StringBuilder)localObject1).toString());
       }
-      Object localObject2 = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1));
+      Object localObject2 = (HashMap)this.b.get(Long.valueOf(paramLong1));
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new HashMap();
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), localObject1);
+        this.b.put(Long.valueOf(paramLong1), localObject1);
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject2 = this.a.getEntityManagerFactory().createEntityManager();
       ((HashMap)localObject1).put(Long.valueOf(paramLong2), paramString);
       localObject1 = new OpenIdItem();
       ((OpenIdItem)localObject1).appId = paramLong1;
@@ -188,7 +188,7 @@ public class FetchOpenIdManager
   {
     try
     {
-      localObject1 = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1));
+      localObject1 = (HashMap)this.b.get(Long.valueOf(paramLong1));
       boolean bool2 = false;
       bool1 = bool2;
       if (localObject1 != null)
@@ -213,7 +213,7 @@ public class FetchOpenIdManager
         boolean bool1 = true;
       }
     }
-    localObject3 = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject3 = this.d.iterator();
     while (((Iterator)localObject3).hasNext())
     {
       localObject1 = (OpenIdItem)((Iterator)localObject3).next();
@@ -230,8 +230,8 @@ public class FetchOpenIdManager
           ((StringBuilder)localObject3).append(((OpenIdItem)localObject1).openId);
           QLog.d("FetchOpenIdManager", 2, ((StringBuilder)localObject3).toString());
         }
-        this.jdField_a_of_type_JavaUtilList.remove(localObject1);
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        this.d.remove(localObject1);
+        localObject3 = this.a.getEntityManagerFactory().createEntityManager();
         ((EntityManager)localObject3).remove((Entity)localObject1);
         ((EntityManager)localObject3).close();
         return bool1;
@@ -244,11 +244,11 @@ public class FetchOpenIdManager
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqIntervideoSingtogetherFetchOpenIdObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      this.jdField_a_of_type_Int = -1;
+      this.b.clear();
+      this.d.clear();
+      this.a.unRegistObserver(this.e);
+      this.a.removeObserver(this.f);
+      this.c = -1;
       return;
     }
     finally
@@ -260,7 +260,7 @@ public class FetchOpenIdManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.FetchOpenIdManager
  * JD-Core Version:    0.7.0.1
  */

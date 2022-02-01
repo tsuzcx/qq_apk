@@ -4,12 +4,13 @@ import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
 import com.tencent.qqlive.module.videoreport.IEventDynamicParams;
 import com.tencent.qqlive.module.videoreport.IInnerReporter;
 import com.tencent.qqlive.module.videoreport.IReporter;
-import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.reportdata.FinalData;
+import com.tencent.qqlive.module.videoreport.staging.EventStashManager;
 import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
 import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
 import com.tencent.qqlive.module.videoreport.utils.ReportUtils;
@@ -89,12 +90,17 @@ public class FinalDataTarget
   
   public static void handle(Object paramObject, @Nullable FinalData paramFinalData)
   {
-    innerHandler(paramObject, paramFinalData, false);
+    innerHandler(paramObject, paramFinalData, false, false);
   }
   
   public static void handleInMainThread(Object paramObject, @Nullable FinalData paramFinalData)
   {
-    innerHandler(paramObject, paramFinalData, true);
+    innerHandler(paramObject, paramFinalData, true, false);
+  }
+  
+  public static void handleWithStash(Object paramObject, @Nullable FinalData paramFinalData)
+  {
+    innerHandler(paramObject, paramFinalData, false, true);
   }
   
   public static void handleWithoutFormat(Object paramObject, @Nullable FinalData paramFinalData, String paramString)
@@ -108,7 +114,7 @@ public class FinalDataTarget
     ThreadUtils.execTask(new FinalDataTarget.2(localArrayMap, paramString, paramFinalData, paramObject), false);
   }
   
-  private static void innerHandler(Object paramObject, @Nullable FinalData paramFinalData, boolean paramBoolean)
+  private static void innerHandler(Object paramObject, @Nullable FinalData paramFinalData, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramFinalData == null) {
       return;
@@ -116,12 +122,8 @@ public class FinalDataTarget
     ArrayMap localArrayMap = new ArrayMap();
     addRealtimeExternalParams(localArrayMap);
     addRealtimeInnerParam(localArrayMap);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("innner handler ");
-    localStringBuilder.append(paramFinalData.eventKey);
-    Log.e("jack", localStringBuilder.toString());
     notifyListener(paramObject, paramFinalData, localArrayMap);
-    ThreadUtils.execTask(new FinalDataTarget.3(localArrayMap, paramFinalData, paramObject), paramBoolean);
+    ThreadUtils.execTask(new FinalDataTarget.3(localArrayMap, paramFinalData, paramBoolean2, paramObject), paramBoolean1);
   }
   
   private static void notifyListener(Object paramObject, @NonNull FinalData paramFinalData, @NonNull Map<String, Object> paramMap)
@@ -129,6 +131,7 @@ public class FinalDataTarget
     FinalDataTarget.NotifyCallbackImpl localNotifyCallbackImpl = (FinalDataTarget.NotifyCallbackImpl)sNotifyCallbacks.get();
     localNotifyCallbackImpl.setNotifyData(paramObject, paramFinalData, paramMap);
     sListenerMgr.startNotify(localNotifyCallbackImpl);
+    localNotifyCallbackImpl.reset();
   }
   
   private static void recycleObject(@NonNull FinalData paramFinalData)
@@ -165,10 +168,31 @@ public class FinalDataTarget
       }
     }
   }
+  
+  private static void reportEvent(Object paramObject, String paramString1, Map<String, Object> paramMap, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      reportByOuter(paramObject, paramString1, paramMap);
+    } else {
+      reportByInner(paramObject, paramString1, paramMap, paramString2);
+    }
+    EventStashManager.getInstance().cancelStashEvent(paramString1, paramMap);
+  }
+  
+  public static void reportStashEvent(Object paramObject, String paramString1, Map<String, Object> paramMap, String paramString2)
+  {
+    addStatisticsInnerParam(paramString2, paramString1, paramMap);
+    reportEvent(paramObject, paramString1, paramMap, paramString2);
+  }
+  
+  private static void stashEvent(String paramString1, Map<String, Object> paramMap, String paramString2)
+  {
+    EventStashManager.getInstance().stashEvent(paramString1, paramMap, paramString2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.FinalDataTarget
  * JD-Core Version:    0.7.0.1
  */

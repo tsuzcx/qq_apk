@@ -18,16 +18,16 @@ final class NearbyUtilsReal$1
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("targetuin", Long.parseLong(this.jdField_a_of_type_JavaLangString));
-      ((JSONObject)localObject).put("type", this.jdField_a_of_type_Int);
-      NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), ProtoServlet.class);
+      ((JSONObject)localObject).put("targetuin", Long.parseLong(this.a));
+      ((JSONObject)localObject).put("type", this.b);
+      NewIntent localNewIntent = new NewIntent(this.c.getApplication().getApplicationContext(), ProtoServlet.class);
       localNewIntent.putExtra("cmd", "NearbySvr.get_chat_signature");
       WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
       localObject = ((JSONObject)localObject).toString();
       localWebSsoRequestBody.data.set((String)localObject);
       localNewIntent.putExtra("data", localWebSsoRequestBody.toByteArray());
       localNewIntent.setObserver(new NearbyUtilsReal.1.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+      this.c.startServlet(localNewIntent);
       return;
     }
     catch (Exception localException) {}
@@ -35,7 +35,7 @@ final class NearbyUtilsReal$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyUtilsReal.1
  * JD-Core Version:    0.7.0.1
  */

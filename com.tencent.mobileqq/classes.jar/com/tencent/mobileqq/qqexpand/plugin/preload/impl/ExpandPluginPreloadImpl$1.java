@@ -18,14 +18,14 @@ class ExpandPluginPreloadImpl$1
     {
       ShadowPluginsProcessService.a(MobileQQ.sMobileQQ);
       if (ExpandPreloadUtils.a(ExpandModuleKey.ExpandPluginPreload)) {
-        ExpandPluginLauncher.a().a();
+        ExpandPluginLauncher.d().a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.preload.impl.ExpandPluginPreloadImpl.1
  * JD-Core Version:    0.7.0.1
  */

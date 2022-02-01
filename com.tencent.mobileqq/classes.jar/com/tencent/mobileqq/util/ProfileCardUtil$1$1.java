@@ -63,11 +63,11 @@ class ProfileCardUtil$1$1
     } else {
       bool = false;
     }
-    Object localObject = (CardHandler)this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    Object localObject = (CardHandler)this.c.c.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
     if (localObject != null) {
-      ((CardHandler)localObject).a(bool, this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramSendResult.b);
+      ((CardHandler)localObject).a(bool, this.c.c.getCurrentAccountUin(), paramSendResult.b);
     } else {
-      FaceUtil.a(null);
+      FaceUtil.e(null);
     }
     if (!bool)
     {
@@ -75,21 +75,21 @@ class ProfileCardUtil$1$1
     }
     else
     {
-      if (((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
-        ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(1));
+      if (((Integer)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.c.c.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
+        ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.c.c.getAccount(), "qq_avatar_type", Integer.valueOf(1));
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         ThreadManager.getUIHandler().post(new ProfileCardUtil.1.1.1(this));
       }
-      if (SharedPreUtils.ad(this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != 2)
+      if (SharedPreUtils.aG(this.c.c.getApp(), this.c.c.getCurrentAccountUin()) != 2)
       {
-        paramSendResult = (AvatarHistoryNumProcessor)ProfileCommonUtils.a(AvatarHistoryNumProcessor.class, this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramSendResult = (AvatarHistoryNumProcessor)ProfileCommonUtils.a(AvatarHistoryNumProcessor.class, this.c.c);
         if (paramSendResult != null) {
           paramSendResult.a();
         }
       }
     }
-    if ("FROM_MINI_APP".equals(this.jdField_a_of_type_JavaLangString))
+    if ("FROM_MINI_APP".equals(this.b))
     {
       if (bool) {
         i = j;
@@ -101,15 +101,15 @@ class ProfileCardUtil$1$1
       } else {
         paramSendResult = "upload failed";
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_AndroidContentIntent.putExtra("param_result_code", i);
-      this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_AndroidContentIntent.putExtra("param_result_desc", paramSendResult);
-      CommonModule.a().a(this.jdField_a_of_type_ComTencentMobileqqUtilProfileCardUtil$1.jdField_a_of_type_AndroidContentIntent);
+      this.c.b.putExtra("param_result_code", i);
+      this.c.b.putExtra("param_result_desc", paramSendResult);
+      CommonModule.a().a(this.c.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

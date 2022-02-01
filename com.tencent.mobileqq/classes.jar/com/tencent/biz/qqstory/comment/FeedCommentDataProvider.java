@@ -10,24 +10,17 @@ import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 public class FeedCommentDataProvider
   extends LegoDataProvider
 {
-  public static final String a;
+  public static final String a = StoryApi.a("StorySvc.add_feed_comment");
   public static final String b = StoryApi.a("StorySvc.del_feed_comment");
   public static final String c = StoryApi.a("StorySvc.get_comment_list");
-  protected int a;
-  protected FeedCommentLego a;
-  protected boolean a;
-  private String d;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.add_feed_comment");
-  }
+  protected FeedCommentLego d;
+  protected boolean e = false;
+  protected int f = 0;
+  private String g;
   
   public FeedCommentDataProvider(FeedCommentLego paramFeedCommentLego)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego = paramFeedCommentLego;
+    this.d = paramFeedCommentLego;
   }
   
   public static void a(CommentEntry paramCommentEntry, LegoResponseCallBack paramLegoResponseCallBack)
@@ -46,7 +39,7 @@ public class FeedCommentDataProvider
   
   public void a()
   {
-    a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a.feedId, 0);
+    a(this.d.g.feedId, 0);
   }
   
   public void a(String paramString, int paramInt)
@@ -58,7 +51,7 @@ public class FeedCommentDataProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider
  * JD-Core Version:    0.7.0.1
  */

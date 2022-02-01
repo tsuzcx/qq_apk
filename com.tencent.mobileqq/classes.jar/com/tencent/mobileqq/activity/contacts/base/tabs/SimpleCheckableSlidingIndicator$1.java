@@ -10,13 +10,13 @@ class SimpleCheckableSlidingIndicator$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    SimpleCheckableSlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import android.widget.TextView;
 
 class HomeWorkTroopSelectorFragment$HwTroopAdapter$ViewHolder
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  CheckBox a;
+  TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment.HwTroopAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

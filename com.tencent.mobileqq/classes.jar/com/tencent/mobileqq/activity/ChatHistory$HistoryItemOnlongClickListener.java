@@ -17,14 +17,11 @@ import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 public class ChatHistory$HistoryItemOnlongClickListener
   implements View.OnClickListener, OnLongClickAndTouchListener, BubblePopupWindow.OnDismissListener
 {
-  protected PointF a;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  protected PointF a = new PointF();
+  BubblePopupWindow b;
+  MessageRecord c;
   
-  protected ChatHistory$HistoryItemOnlongClickListener(ChatHistory paramChatHistory)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  }
+  protected ChatHistory$HistoryItemOnlongClickListener(ChatHistory paramChatHistory) {}
   
   void a(View paramView)
   {
@@ -35,35 +32,35 @@ public class ChatHistory$HistoryItemOnlongClickListener
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365480) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    if (paramView.getId() == 2131431695) {
+      this.d.a(this.c);
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
+    this.c = null;
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+    this.b = null;
   }
   
   public boolean onLongClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    Object localObject = this.b;
     if ((localObject != null) && (((BubblePopupWindow)localObject).isShowing()))
     {
       a(paramView);
       return false;
     }
     localObject = new QQCustomMenu();
-    ((QQCustomMenu)localObject).a(2131365480, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690788), 2130838907);
-    if (((QQCustomMenu)localObject).a() > 0)
+    ((QQCustomMenu)localObject).a(2131431695, this.d.getString(2131887718), 2130839061);
+    if (((QQCustomMenu)localObject).b() > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((ChatHistory.Holder)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
+      this.c = ((ChatHistory.Holder)ChatHistory.a(paramView)).a;
+      int i = (int)this.a.y;
       int j = AIOUtils.b(10.0F, paramView.getResources());
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, (QQCustomMenu)localObject, this, null);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOnDismissListener(this);
+      this.b = BubbleContextMenu.a(paramView, (int)this.a.x, i - j, (QQCustomMenu)localObject, this, null);
+      this.b.setOnDismissListener(this);
       a(paramView);
       return true;
     }
@@ -75,15 +72,15 @@ public class ChatHistory$HistoryItemOnlongClickListener
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+      this.a.x = paramMotionEvent.getRawX();
+      this.a.y = paramMotionEvent.getRawY();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.HistoryItemOnlongClickListener
  * JD-Core Version:    0.7.0.1
  */

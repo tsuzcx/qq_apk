@@ -26,33 +26,33 @@ class VideoFeedsShareController$ShortVideoMqqHandler
         if (i != 3) {
           return;
         }
-        if (VideoFeedsShareController.a(this.a) != null)
+        if (VideoFeedsShareController.e(this.a) != null)
         {
-          if (VideoFeedsShareController.a(this.a).jdField_a_of_type_Int != 0) {
+          if (VideoFeedsShareController.e(this.a).a != 0) {
             return;
           }
-          paramMessage = SVUtils.a(VideoFeedsShareController.a(this.a).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-          DialogUtil.a(VideoFeedsShareController.a(this.a), 232, VideoFeedsShareController.a(this.a).getResources().getString(2131719107), VideoFeedsShareController.a(this.a).getResources().getString(2131719106), 2131719090, 2131718205, new VideoFeedsShareController.ShortVideoMqqHandler.1(this, paramMessage), new VideoFeedsShareController.ShortVideoMqqHandler.2(this)).show();
+          paramMessage = SVUtils.a(VideoFeedsShareController.e(this.a).aQ, "mp4");
+          DialogUtil.a(VideoFeedsShareController.f(this.a), 232, VideoFeedsShareController.f(this.a).getResources().getString(2131916643), VideoFeedsShareController.f(this.a).getResources().getString(2131916642), 2131916626, 2131915687, new VideoFeedsShareController.ShortVideoMqqHandler.1(this, paramMessage), new VideoFeedsShareController.ShortVideoMqqHandler.2(this)).show();
           return;
         }
         return;
       }
-      String str = VideoFeedsShareController.a(this.a).getString(2131719076);
+      String str = VideoFeedsShareController.f(this.a).getString(2131916612);
       paramMessage = (String)paramMessage.obj;
-      Activity localActivity = VideoFeedsShareController.a(this.a);
+      Activity localActivity = VideoFeedsShareController.f(this.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
       localStringBuilder.append(paramMessage);
-      QQToast.a(localActivity, 2, localStringBuilder.toString(), 0).a();
-      ImageUtil.a(VideoFeedsShareController.a(this.a), paramMessage);
+      QQToast.makeText(localActivity, 2, localStringBuilder.toString(), 0).show();
+      ImageUtil.b(VideoFeedsShareController.f(this.a), paramMessage);
       return;
     }
-    QQToast.a(VideoFeedsShareController.a(this.a), 2131719075, 0).a();
+    QQToast.makeText(VideoFeedsShareController.f(this.a), 2131916611, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.ShortVideoMqqHandler
  * JD-Core Version:    0.7.0.1
  */

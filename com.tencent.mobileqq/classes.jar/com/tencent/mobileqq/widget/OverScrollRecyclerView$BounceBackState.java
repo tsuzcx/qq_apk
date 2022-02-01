@@ -14,64 +14,63 @@ public class OverScrollRecyclerView$BounceBackState
   extends D8SafeAnimatorListener
   implements ValueAnimator.AnimatorUpdateListener, OverScrollRecyclerView.IDecoratorState
 {
-  protected final float a;
-  protected final Interpolator a;
-  protected final OverScrollRecyclerView.AnimationAttributes a;
   protected final OverScrollRecyclerView.OverScrollStateManager a;
-  protected final float b;
+  protected final Interpolator b = new DecelerateInterpolator();
+  protected final float c;
+  protected final float d;
+  protected final OverScrollRecyclerView.AnimationAttributes e;
   
   public OverScrollRecyclerView$BounceBackState(OverScrollRecyclerView.OverScrollStateManager paramOverScrollStateManager, float paramFloat)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager = paramOverScrollStateManager;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = (paramFloat * 2.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$AnimationAttributes = new OverScrollRecyclerView.AnimationAttributes();
+    this.a = paramOverScrollStateManager;
+    this.c = paramFloat;
+    this.d = (paramFloat * 2.0F);
+    this.e = new OverScrollRecyclerView.AnimationAttributes();
   }
   
   protected Animator a()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.a();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$IOverScrollDecor;
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStartAttributes;
-    float f3 = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.jdField_a_of_type_Float;
-    ((OverScrollRecyclerView.IOverScrollDecor)localObject2).a((View)localObject1, this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$AnimationAttributes);
+    Object localObject1 = this.a.b();
+    Object localObject2 = this.a.b;
+    Object localObject3 = this.a.c;
+    float f3 = this.a.d;
+    ((OverScrollRecyclerView.IOverScrollDecor)localObject2).a((View)localObject1, this.e);
     float f1 = 0.0F;
-    if ((f3 != 0.0F) && ((f3 >= 0.0F) || (!((OverScrollRecyclerView.OverScrollStartAttributes)localObject3).jdField_a_of_type_Boolean)) && ((f3 <= 0.0F) || (((OverScrollRecyclerView.OverScrollStartAttributes)localObject3).jdField_a_of_type_Boolean)))
+    if ((f3 != 0.0F) && ((f3 >= 0.0F) || (!((OverScrollRecyclerView.OverScrollStartAttributes)localObject3).c)) && ((f3 <= 0.0F) || (((OverScrollRecyclerView.OverScrollStartAttributes)localObject3).c)))
     {
       float f4 = -f3;
-      float f2 = f4 / this.jdField_a_of_type_Float;
+      float f2 = f4 / this.c;
       if (f2 >= 0.0F) {
         f1 = f2;
       }
-      f2 = f4 * f3 / this.b;
-      f2 = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$AnimationAttributes.jdField_a_of_type_Float + f2;
+      f2 = f4 * f3 / this.d;
+      f2 = this.e.b + f2;
       localObject1 = a((View)localObject1, (int)f1, f2);
       localObject2 = a(f2);
       localObject3 = new AnimatorSet();
       ((AnimatorSet)localObject3).playSequentially(new Animator[] { localObject1, localObject2 });
       return localObject3;
     }
-    return a(this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$AnimationAttributes.jdField_a_of_type_Float);
+    return a(this.e.b);
   }
   
   protected ObjectAnimator a(float paramFloat)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.a();
-    OverScrollRecyclerView.OverScrollStartAttributes localOverScrollStartAttributes = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStartAttributes;
-    paramFloat = Math.abs(paramFloat) / this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$AnimationAttributes.b;
-    localObject = ObjectAnimator.ofFloat(localObject, this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$AnimationAttributes.jdField_a_of_type_AndroidUtilProperty, new float[] { localOverScrollStartAttributes.jdField_a_of_type_Float });
+    Object localObject = this.a.b();
+    OverScrollRecyclerView.OverScrollStartAttributes localOverScrollStartAttributes = this.a.c;
+    paramFloat = Math.abs(paramFloat) / this.e.c;
+    localObject = ObjectAnimator.ofFloat(localObject, this.e.a, new float[] { localOverScrollStartAttributes.b });
     ((ObjectAnimator)localObject).setDuration(Math.max((int)(paramFloat * 800.0F), 200));
-    ((ObjectAnimator)localObject).setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+    ((ObjectAnimator)localObject).setInterpolator(this.b);
     ((ObjectAnimator)localObject).addUpdateListener(this);
     return localObject;
   }
   
   protected ObjectAnimator a(View paramView, int paramInt, float paramFloat)
   {
-    paramView = ObjectAnimator.ofFloat(paramView, this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$AnimationAttributes.jdField_a_of_type_AndroidUtilProperty, new float[] { paramFloat });
+    paramView = ObjectAnimator.ofFloat(paramView, this.e.a, new float[] { paramFloat });
     paramView.setDuration(paramInt);
-    paramView.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+    paramView.setInterpolator(this.b);
     paramView.addUpdateListener(this);
     return paramView;
   }
@@ -97,8 +96,8 @@ public class OverScrollRecyclerView$BounceBackState
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$OverScrollStateManager;
-    paramAnimator.a(paramAnimator.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$IdleState);
+    paramAnimator = this.a;
+    paramAnimator.a(paramAnimator.e);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -109,7 +108,7 @@ public class OverScrollRecyclerView$BounceBackState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollRecyclerView.BounceBackState
  * JD-Core Version:    0.7.0.1
  */

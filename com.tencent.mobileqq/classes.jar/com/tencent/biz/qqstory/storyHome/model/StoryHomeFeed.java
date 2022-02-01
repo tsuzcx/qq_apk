@@ -12,13 +12,13 @@ import java.util.List;
 
 public abstract class StoryHomeFeed<T extends FeedItem>
 {
-  protected T a;
-  public boolean b;
+  protected T f;
+  public boolean g;
   
   public StoryHomeFeed(@NonNull T paramT)
   {
     AssertUtils.checkNotNull(paramT);
-    this.a = paramT;
+    this.f = paramT;
   }
   
   public static StoryHomeFeed a(int paramInt)
@@ -30,23 +30,13 @@ public abstract class StoryHomeFeed<T extends FeedItem>
     return localFeedItem.generateHomeFeed();
   }
   
-  public T a()
-  {
-    return this.a;
-  }
-  
-  public abstract void a();
-  
   public abstract void a(int paramInt, BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp paramGetFriendStoryFeedInfoResp, BatchGetFeedCommentRequest.BatchGetFeedCommentResp paramBatchGetFeedCommentResp, BatchGetFeedLikeRequest.BatchGetFeedLikeResp paramBatchGetFeedLikeResp);
   
   public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
   
   public abstract void b();
   
-  public List<StoryVideoItem> d()
-  {
-    return new ArrayList(0);
-  }
+  public abstract void e();
   
   public boolean equals(Object paramObject)
   {
@@ -59,27 +49,37 @@ public abstract class StoryHomeFeed<T extends FeedItem>
         return false;
       }
       paramObject = (StoryHomeFeed)paramObject;
-      FeedItem localFeedItem = this.a;
+      FeedItem localFeedItem = this.f;
       if (localFeedItem != null) {
-        return localFeedItem.equals(paramObject.a);
+        return localFeedItem.equals(paramObject.f);
       }
-      return paramObject.a == null;
+      return paramObject.f == null;
     }
     return false;
   }
   
+  public T g()
+  {
+    return this.f;
+  }
+  
   public int hashCode()
   {
-    FeedItem localFeedItem = this.a;
+    FeedItem localFeedItem = this.f;
     if (localFeedItem != null) {
       return localFeedItem.hashCode();
     }
     return 0;
   }
   
+  public List<StoryVideoItem> j()
+  {
+    return new ArrayList(0);
+  }
+  
   public String toString()
   {
-    return this.a.toString();
+    return this.f.toString();
   }
 }
 

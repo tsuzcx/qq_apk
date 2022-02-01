@@ -21,7 +21,7 @@ public class AEOldShortVideoResManager$SVConfigItem
   
   public boolean check64BitReady()
   {
-    return (!StringUtil.a(this.arm64v8a_md5)) && (!StringUtil.a(this.arm64v8a_url));
+    return (!StringUtil.isEmpty(this.arm64v8a_md5)) && (!StringUtil.isEmpty(this.arm64v8a_url));
   }
   
   public String getSignature()
@@ -87,7 +87,7 @@ public class AEOldShortVideoResManager$SVConfigItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoResManager.SVConfigItem
  * JD-Core Version:    0.7.0.1
  */

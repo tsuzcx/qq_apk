@@ -21,22 +21,21 @@ import java.io.File;
 public class PicBrowserGalleryScene
   extends AbstractGalleryScene
 {
-  protected PicBrowserActivity a;
   protected PicBrowserGalleryAdapter a;
-  public PicBrowserGalleryScene.SceneCallback a;
-  protected PicBrowserModel a;
-  protected boolean a;
-  private boolean b = false;
+  protected PicBrowserActivity b;
+  protected PicBrowserModel c;
+  protected boolean d = false;
+  public PicBrowserGalleryScene.SceneCallback e;
+  private boolean f = false;
   
   public PicBrowserGalleryScene(PicBrowserActivity paramPicBrowserActivity, AbstractImageListModel paramAbstractImageListModel)
   {
     super(paramPicBrowserActivity, paramAbstractImageListModel);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity = paramPicBrowserActivity;
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel = ((PicBrowserModel)paramAbstractImageListModel);
-    paramPicBrowserActivity = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity.getIntent();
+    this.b = paramPicBrowserActivity;
+    this.c = ((PicBrowserModel)paramAbstractImageListModel);
+    paramPicBrowserActivity = this.b.getIntent();
     if (paramPicBrowserActivity != null) {
-      this.jdField_a_of_type_Boolean = paramPicBrowserActivity.getBooleanExtra("is_forbid_action_sheet", false);
+      this.d = paramPicBrowserActivity.getBooleanExtra("is_forbid_action_sheet", false);
     }
   }
   
@@ -46,109 +45,16 @@ public class PicBrowserGalleryScene
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.setClass(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity, ForwardRecentActivity.class);
+    localIntent.setClass(this.b, ForwardRecentActivity.class);
     localIntent.putExtra("forward_type", 1);
     localIntent.putExtra("forward_thumb", paramString);
     localIntent.putExtra("key_flag_from_plugin", true);
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity.startActivityForResult(localIntent, 1001);
+    this.b.startActivityForResult(localIntent, 1001);
   }
   
-  protected RelativeLayout a()
+  public void E()
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561219, null);
-  }
-  
-  protected AbstractImageAdapter a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter = new PicBrowserGalleryAdapter(paramContext);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter;
-  }
-  
-  public void a()
-  {
-    PicBrowserImage localPicBrowserImage = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a();
-    if (localPicBrowserImage != null)
-    {
-      localPicBrowserImage.thubmRect = ((Rect)this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity.getIntent().getParcelableExtra("KEY_THUMBNAL_BOUND"));
-      localPicBrowserImage.isImgCenterCropMode = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity.getIntent().getBooleanExtra("extra_is_image_center_crop", false);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (82 == paramKeyEvent.getKeyCode())
-    {
-      b(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.b());
-      return true;
-    }
-    return super.a(paramInt, paramKeyEvent);
-  }
-  
-  protected void b(int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity.isFinishing()) {
-        return;
-      }
-      String str;
-      File localFile;
-      if ((this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(paramInt) != null) && (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(paramInt).a != null))
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(paramInt).a.c))
-        {
-          str = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(paramInt).a.c;
-          localFile = new File(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(paramInt).a.c);
-        }
-        else
-        {
-          str = AbsDownloader.getFilePath(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(paramInt).a.a);
-          localFile = AbsDownloader.getFile(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(paramInt).a.a);
-        }
-      }
-      else
-      {
-        str = "";
-        localFile = null;
-      }
-      if (localFile == null) {
-        return;
-      }
-      ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity);
-      localActionSheet.addButton(HardCodeUtil.a(2131708148));
-      localActionSheet.addButton("发送给QQ好友");
-      localActionSheet.addCancelButton(HardCodeUtil.a(2131708149));
-      localActionSheet.setOnButtonClickListener(new PicBrowserGalleryScene.1(this, localActionSheet, localFile, str));
-      localActionSheet.show();
-    }
-  }
-  
-  public void c()
-  {
-    PicBrowserModel localPicBrowserModel = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel;
-    if ((localPicBrowserModel instanceof PicBrowserModel))
-    {
-      localPicBrowserModel.a();
-      this.b = true;
-    }
-    super.c();
-  }
-  
-  public void d()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel;
+    Object localObject1 = this.c;
     int j = -1;
     Object localObject2 = null;
     PicBrowserGalleryAdapter localPicBrowserGalleryAdapter = null;
@@ -156,20 +62,20 @@ public class PicBrowserGalleryScene
     if (localObject1 != null)
     {
       k = ((PicBrowserModel)localObject1).b();
-      int m = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a();
+      int m = this.c.a();
       int i;
       if (m == 1)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.b(k);
+        localObject1 = this.c.d(k);
         i = j;
       }
       else
       {
         if (k == m - 1)
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.b(k);
+          localObject1 = this.c.d(k);
           i = k - 1;
-          this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(i);
+          this.c.b(i);
         }
         for (;;)
         {
@@ -184,12 +90,12 @@ public class PicBrowserGalleryScene
           if (k >= m) {
             break;
           }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.b(k);
-          this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a(k);
+          localObject1 = this.c.d(k);
+          this.c.b(k);
           i = k;
         }
       }
-      localPicBrowserGalleryAdapter = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter;
+      localPicBrowserGalleryAdapter = this.a;
       k = i;
       localObject2 = localObject1;
       if (localPicBrowserGalleryAdapter != null)
@@ -199,39 +105,132 @@ public class PicBrowserGalleryScene
         k = i;
       }
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryScene$SceneCallback;
+    localObject1 = this.e;
     if (localObject1 != null) {
       ((PicBrowserGalleryScene.SceneCallback)localObject1).a(localObject2, k);
     }
   }
   
-  public boolean f()
+  public void L_()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void h_()
-  {
-    if (((this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel instanceof PicBrowserModel)) && (this.b))
+    if (((this.c instanceof PicBrowserModel)) && (this.f))
     {
-      PicBrowserGalleryAdapter localPicBrowserGalleryAdapter = this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter;
+      PicBrowserGalleryAdapter localPicBrowserGalleryAdapter = this.a;
       if (localPicBrowserGalleryAdapter != null) {
         localPicBrowserGalleryAdapter.notifyDataSetChanged();
       }
     }
-    this.b = false;
-    super.h_();
+    this.f = false;
+    super.L_();
   }
   
-  public void i()
+  protected RelativeLayout a()
   {
-    super.i();
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserActivity.hideImmersTitleBar();
+    return (RelativeLayout)LayoutInflater.from(this.w).inflate(2131627573, null);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (82 == paramKeyEvent.getKeyCode())
+    {
+      b(this.c.b());
+      return true;
+    }
+    return super.a(paramInt, paramKeyEvent);
+  }
+  
+  protected AbstractImageAdapter b(Context paramContext)
+  {
+    if (this.a == null) {
+      this.a = new PicBrowserGalleryAdapter(paramContext);
+    }
+    return this.a;
+  }
+  
+  public void b()
+  {
+    PicBrowserImage localPicBrowserImage = this.c.c();
+    if (localPicBrowserImage != null)
+    {
+      localPicBrowserImage.thubmRect = ((Rect)this.b.getIntent().getParcelableExtra("KEY_THUMBNAL_BOUND"));
+      localPicBrowserImage.isImgCenterCropMode = this.b.getIntent().getBooleanExtra("extra_is_image_center_crop", false);
+    }
+  }
+  
+  protected void b(int paramInt)
+  {
+    if (!this.d)
+    {
+      if (this.b.isFinishing()) {
+        return;
+      }
+      String str;
+      File localFile;
+      if ((this.c.a(paramInt) != null) && (this.c.a(paramInt).k != null))
+      {
+        if (!TextUtils.isEmpty(this.c.a(paramInt).k.d))
+        {
+          str = this.c.a(paramInt).k.d;
+          localFile = new File(this.c.a(paramInt).k.d);
+        }
+        else
+        {
+          str = AbsDownloader.getFilePath(this.c.a(paramInt).k.b);
+          localFile = AbsDownloader.getFile(this.c.a(paramInt).k.b);
+        }
+      }
+      else
+      {
+        str = "";
+        localFile = null;
+      }
+      if (localFile == null) {
+        return;
+      }
+      ActionSheet localActionSheet = ActionSheet.create(this.b);
+      localActionSheet.addButton(HardCodeUtil.a(2131905945));
+      localActionSheet.addButton("发送给QQ好友");
+      localActionSheet.addCancelButton(HardCodeUtil.a(2131898212));
+      localActionSheet.setOnButtonClickListener(new PicBrowserGalleryScene.1(this, localActionSheet, localFile, str));
+      localActionSheet.show();
+    }
+  }
+  
+  public void d()
+  {
+    PicBrowserModel localPicBrowserModel = this.c;
+    if ((localPicBrowserModel instanceof PicBrowserModel))
+    {
+      localPicBrowserModel.e();
+      this.f = true;
+    }
+    super.d();
+  }
+  
+  public boolean f()
+  {
+    return this.d;
   }
   
   public void j()
   {
     super.j();
+    this.b.hideImmersTitleBar();
+  }
+  
+  public void k()
+  {
+    super.k();
   }
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -242,7 +241,7 @@ public class PicBrowserGalleryScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserGalleryScene
  * JD-Core Version:    0.7.0.1
  */

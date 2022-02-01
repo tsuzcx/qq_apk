@@ -18,15 +18,15 @@ class WatchTogetherManager$1
       }
       paramString = new StringBuilder();
       paramString.append("onGetPlayState  groupuin = ");
-      paramString.append(paramTogetherSession.e);
+      paramString.append(paramTogetherSession.n);
       QLog.i("WatchTogetherManager", 1, paramString.toString());
       if ((paramTogetherSession instanceof WatchTogetherSession))
       {
         paramString = WatchTogetherManager.a(this.a, (WatchTogetherSession)paramTogetherSession);
         if (paramString != null)
         {
-          this.a.b(paramTogetherSession.e, paramString);
-          paramInt = paramString.a;
+          this.a.b(paramTogetherSession.n, paramString);
+          paramInt = paramString.c;
           this.a.a("100", paramInt, null);
         }
       }
@@ -35,7 +35,7 @@ class WatchTogetherManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherManager.1
  * JD-Core Version:    0.7.0.1
  */

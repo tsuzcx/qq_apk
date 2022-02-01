@@ -24,9 +24,9 @@ class ArkAppDownloadModule$7
   {
     QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.onNetNone2Mobile", paramString });
     paramString = BaseActivity.sTopActivity;
-    if ((ArkAppDownloadModule.a(this.a)) && (!ArkAppDownloadModule.b(this.a)) && (paramString != null))
+    if ((ArkAppDownloadModule.i(this.a)) && (!ArkAppDownloadModule.j(this.a)) && (paramString != null))
     {
-      paramString = paramString.getString(2131690156);
+      paramString = paramString.getString(2131887055);
       if (ArkAppDownloadModule.a(this.a, paramString)) {
         ArkAppDownloadModule.b(this.a, true);
       }
@@ -50,7 +50,7 @@ class ArkAppDownloadModule$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.7
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ class NewFriendNotifyPokeMsgHelper$2$1
     if ((paramImageView != null) && (paramImageView.getAnimation() != null)) {
       paramImageView.getAnimation().cancel();
     }
-    NewFriendNotifyPokeMsgHelper.a(paramObject, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    NewFriendNotifyPokeMsgHelper.a(paramObject, this.a.c);
   }
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    a(this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_JavaLangObject);
+    a(this.a.a, this.a.b);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    a(this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_JavaLangObject);
+    a(this.a.a, this.a.b);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -34,7 +34,7 @@ class NewFriendNotifyPokeMsgHelper$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.poke.NewFriendNotifyPokeMsgHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

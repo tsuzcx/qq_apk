@@ -1,9 +1,9 @@
 package cooperation.qqcircle.report.outbox;
 
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
 import com.tencent.biz.richframework.network.request.BaseRequest;
+import com.tencent.qphone.base.util.QLog;
 import qqcircle.QQCircleReport.StDataReportRsp;
 
 final class QCircleNetDetectHelper$1
@@ -15,7 +15,6 @@ final class QCircleNetDetectHelper$1
   {
     if (((!paramBoolean) || (paramLong != 0L) || (paramStDataReportRsp == null)) && (!TextUtils.isEmpty(paramString)))
     {
-      int i = RFLog.USR;
       paramStDataReportRsp = new StringBuilder();
       paramStDataReportRsp.append("detect net connection blocked retcode:");
       paramStDataReportRsp.append(paramLong);
@@ -23,9 +22,9 @@ final class QCircleNetDetectHelper$1
       paramStDataReportRsp.append(paramString);
       paramStDataReportRsp.append(",traceId:");
       paramStDataReportRsp.append(paramBaseRequest.getTraceId());
-      RFLog.e("QCircleNetCheckHelper", i, paramStDataReportRsp.toString());
+      QLog.e("QCircleNetCheckHelper", 1, paramStDataReportRsp.toString());
     }
-    RFLog.d("QCircleNetCheckHelper", RFLog.CLR, "detect net connection success!");
+    QLog.d("QCircleNetCheckHelper", 2, "detect net connection success!");
     paramBaseRequest = this.val$listener;
     if (paramBaseRequest != null) {
       paramBaseRequest.onDetectResult(paramBoolean, paramLong, paramString);
@@ -34,7 +33,7 @@ final class QCircleNetDetectHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleNetDetectHelper.1
  * JD-Core Version:    0.7.0.1
  */

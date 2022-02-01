@@ -33,7 +33,7 @@ class AvatarPendantJsPlugin$1
         }
         if (this.this$0.mRuntime != null)
         {
-          localObject = this.this$0.mRuntime.a();
+          localObject = this.this$0.mRuntime.d();
           if (localObject != null)
           {
             ((Activity)localObject).runOnUiThread(new AvatarPendantJsPlugin.1.1(this, localJSONObject));
@@ -55,7 +55,7 @@ class AvatarPendantJsPlugin$1
       String str = localJSONException.getMessage();
       if (this.this$0.mRuntime != null)
       {
-        localObject = this.this$0.mRuntime.a();
+        localObject = this.this$0.mRuntime.d();
         if (localObject != null) {
           ((Activity)localObject).runOnUiThread(new AvatarPendantJsPlugin.1.2(this, str));
         }
@@ -65,7 +65,7 @@ class AvatarPendantJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

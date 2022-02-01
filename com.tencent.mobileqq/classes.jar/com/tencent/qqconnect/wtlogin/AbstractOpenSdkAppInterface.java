@@ -13,34 +13,29 @@ import mqq.app.MobileQQ;
 public abstract class AbstractOpenSdkAppInterface
   extends BaseOpenSDKAppInterface
 {
-  private AuthMemoryCache jdField_a_of_type_ComTencentOpenAgentEntityAuthMemoryCache = new AuthMemoryCache();
-  private List<IEventListener> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<IEventListener> a = new ArrayList();
+  private AuthMemoryCache b = new AuthMemoryCache();
   
   public AbstractOpenSdkAppInterface(MobileQQ paramMobileQQ, String paramString)
   {
     super(paramMobileQQ, paramString);
   }
   
-  public static AbstractOpenSdkAppInterface a()
+  public static AbstractOpenSdkAppInterface c()
   {
     return (AbstractOpenSdkAppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
   }
   
   public AuthMemoryCache a()
   {
-    return this.jdField_a_of_type_ComTencentOpenAgentEntityAuthMemoryCache;
+    return this.b;
   }
   
   public abstract Object a(QQLiteBridgeParam paramQQLiteBridgeParam);
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
   public void a(int paramInt, Object paramObject)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((IEventListener)localIterator.next()).a(paramInt, paramObject);
     }
@@ -49,8 +44,13 @@ public abstract class AbstractOpenSdkAppInterface
   public void a(IEventListener paramIEventListener)
   {
     if (paramIEventListener != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramIEventListener);
+      this.a.add(paramIEventListener);
     }
+  }
+  
+  public void b()
+  {
+    this.a.clear();
   }
   
   public BaseApplication getApp()
@@ -75,7 +75,7 @@ public abstract class AbstractOpenSdkAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.AbstractOpenSdkAppInterface
  * JD-Core Version:    0.7.0.1
  */

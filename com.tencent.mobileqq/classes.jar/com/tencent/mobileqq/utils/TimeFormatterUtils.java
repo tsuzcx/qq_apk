@@ -22,12 +22,12 @@ import java.util.TimeZone;
 
 public class TimeFormatterUtils
 {
-  private static int jdField_a_of_type_Int;
-  private static StringBuffer jdField_a_of_type_JavaLangStringBuffer;
-  private static java.text.DateFormat jdField_a_of_type_JavaTextDateFormat;
-  private static Calendar jdField_a_of_type_JavaUtilCalendar;
-  private static int jdField_b_of_type_Int;
-  private static java.text.DateFormat jdField_b_of_type_JavaTextDateFormat;
+  private static Calendar a;
+  private static StringBuffer b;
+  private static int c;
+  private static int d;
+  private static java.text.DateFormat e;
+  private static java.text.DateFormat f;
   
   private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
@@ -38,8 +38,8 @@ public class TimeFormatterUtils
   
   public static int a(long paramLong)
   {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong + jdField_b_of_type_Int);
-    return jdField_a_of_type_JavaUtilCalendar.get(11);
+    a.setTimeInMillis(paramLong + d);
+    return a.get(11);
   }
   
   public static int a(long paramLong, Calendar paramCalendar)
@@ -53,20 +53,20 @@ public class TimeFormatterUtils
     int k = localTime.yearDay;
     int m = paramCalendar.year;
     int n = localTime.year;
-    int i = 2131699669;
+    int i = 2131897702;
     if (m == n)
     {
       if (localTime.yearDay < paramCalendar.yearDay) {
         return -1;
       }
       if (localTime.yearDay == paramCalendar.yearDay) {
-        return 2131699695;
+        return 2131897728;
       }
       if (paramCalendar.yearDay != j) {}
     }
     do
     {
-      return 2131699703;
+      return 2131897736;
       if ((paramCalendar.yearDay >= j) || (paramCalendar.yearDay <= k - 7)) {
         break;
       }
@@ -88,35 +88,21 @@ public class TimeFormatterUtils
     default: 
       break;
     case 5: 
-      return 2131699601;
+      return 2131897634;
     case 4: 
-      return 2131699694;
+      return 2131897727;
     case 3: 
-      return 2131699700;
+      return 2131897733;
     case 2: 
-      return 2131699699;
+      return 2131897732;
     case 1: 
-      return 2131699604;
+      return 2131897637;
     case 0: 
-      return 2131699692;
+      return 2131897725;
       label301:
       i = -1;
     }
     return i;
-  }
-  
-  public static long a(long paramLong)
-  {
-    long l = paramLong;
-    if (paramLong == 0L) {
-      l = System.currentTimeMillis();
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l / 1000L * 1000L);
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    return localCalendar.getTimeInMillis();
   }
   
   public static long a(String paramString)
@@ -153,7 +139,7 @@ public class TimeFormatterUtils
     StringBuilder localStringBuilder = new StringBuilder();
     try
     {
-      localSimpleDateFormat = (SimpleDateFormat)a();
+      localSimpleDateFormat = (SimpleDateFormat)b();
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
@@ -168,7 +154,7 @@ public class TimeFormatterUtils
       paramContext = new StringBuilder();
       localStringBuilder.append(" ");
       paramContext.append(android.text.format.DateFormat.format(localStringBuilder.toString(), paramLong));
-      paramContext.append(b().format(Long.valueOf(paramLong)));
+      paramContext.append(c().format(Long.valueOf(paramLong)));
       return paramContext.toString();
     }
     return a(paramContext, paramLong, localStringBuilder, localSimpleDateFormat, paramInt, paramBoolean);
@@ -176,13 +162,13 @@ public class TimeFormatterUtils
   
   public static CharSequence a(Context paramContext, long paramLong)
   {
-    if (jdField_a_of_type_JavaUtilCalendar == null) {
-      jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+    if (a == null) {
+      a = Calendar.getInstance();
     }
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    int i = jdField_a_of_type_JavaUtilCalendar.get(2);
-    int j = jdField_a_of_type_JavaUtilCalendar.get(5);
-    return String.format("%s%s%s%s", new Object[] { Integer.valueOf(i + 1), paramContext.getString(2131699605), Integer.valueOf(j), paramContext.getString(2131699597) });
+    a.setTimeInMillis(paramLong);
+    int i = a.get(2);
+    int j = a.get(5);
+    return String.format("%s%s%s%s", new Object[] { Integer.valueOf(i + 1), paramContext.getString(2131897638), Integer.valueOf(j), paramContext.getString(2131897630) });
   }
   
   private static CharSequence a(Context paramContext, long paramLong, StringBuilder paramStringBuilder, SimpleDateFormat paramSimpleDateFormat, int paramInt, boolean paramBoolean)
@@ -234,26 +220,26 @@ public class TimeFormatterUtils
       {
         if ((n == 1) && (j != 0))
         {
-          paramStringBuilder.append(paramContext.getString(2131699703));
+          paramStringBuilder.append(paramContext.getString(2131897736));
           paramStringBuilder.append(" ");
           if (!paramBoolean) {
             return paramStringBuilder.toString().trim();
           }
           paramContext = new StringBuilder();
           paramContext.append(paramStringBuilder.toString());
-          paramContext.append(b().format(Long.valueOf(paramLong)));
+          paramContext.append(c().format(Long.valueOf(paramLong)));
           return paramContext.toString();
         }
         if ((n == 2) && (paramInt != 0))
         {
-          paramStringBuilder.append(paramContext.getString(2131699590));
+          paramStringBuilder.append(paramContext.getString(2131897621));
           paramStringBuilder.append(" ");
           if (!paramBoolean) {
             return paramStringBuilder.toString().trim();
           }
           paramContext = new StringBuilder();
           paramContext.append(paramStringBuilder.toString());
-          paramContext.append(b().format(Long.valueOf(paramLong)));
+          paramContext.append(c().format(Long.valueOf(paramLong)));
           return paramContext.toString();
         }
         if ((n > 1) && (n < 7) && (i != 0))
@@ -285,7 +271,7 @@ public class TimeFormatterUtils
     }
     paramContext = new StringBuilder();
     paramContext.append(android.text.format.DateFormat.format(paramStringBuilder.toString(), paramLong));
-    paramContext.append(b().format(Long.valueOf(paramLong)));
+    paramContext.append(c().format(Long.valueOf(paramLong)));
     return paramContext.toString();
   }
   
@@ -294,59 +280,18 @@ public class TimeFormatterUtils
     if (paramInt >= 86400000) {
       return "unknown";
     }
-    float f = paramInt;
-    int i = (int)(f / 3600000.0F);
-    int j = (int)(f % 3600000.0F / 60000.0F);
+    float f1 = paramInt;
+    int i = (int)(f1 / 3600000.0F);
+    int j = (int)(f1 % 3600000.0F / 60000.0F);
     if (paramBoolean) {
-      paramInt = Math.round(f % 60000.0F / 1000.0F);
+      paramInt = Math.round(f1 % 60000.0F / 1000.0F);
     } else {
-      paramInt = (int)(f % 60000.0F / 1000.0F);
+      paramInt = (int)(f1 % 60000.0F / 1000.0F);
     }
     if (i > 0) {
       return String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt) });
     }
     return String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
-  }
-  
-  public static String a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    int i = jdField_a_of_type_Int;
-    i = (int)((l + i) / 86400000L) - (int)((i + paramLong) / 86400000L);
-    Object localObject;
-    if (i > 365)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(i / 365);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131699672));
-      return ((StringBuilder)localObject).toString();
-    }
-    if (i > 30)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(i / 30);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131699677));
-      return ((StringBuilder)localObject).toString();
-    }
-    if (i >= 1)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131699676));
-      return ((StringBuilder)localObject).toString();
-    }
-    try
-    {
-      localObject = a(paramLong, "HH:mm");
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeFormatterUtils", 2, localException.getMessage());
-      }
-    }
-    return "";
   }
   
   public static String a(long paramLong, String paramString)
@@ -360,61 +305,17 @@ public class TimeFormatterUtils
   
   public static String a(long paramLong, boolean paramBoolean, String paramString)
   {
-    return a(jdField_a_of_type_JavaLangStringBuffer, paramLong, paramBoolean, paramString);
-  }
-  
-  public static String a(Context paramContext, long paramLong)
-  {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
-    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
-    int k = jdField_a_of_type_JavaUtilCalendar.get(5);
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    i = a(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(5));
-    if (i == 0) {}
-    try
-    {
-      i = Settings.System.getInt(paramContext.getContentResolver(), "time_12_24");
-    }
-    catch (Settings.SettingNotFoundException localSettingNotFoundException)
-    {
-      label90:
-      String str;
-      break label90;
-    }
-    i = 0;
-    if (i == 12)
-    {
-      if (jdField_a_of_type_JavaUtilCalendar.get(11) < 12) {
-        i = 2131699670;
-      } else {
-        i = 2131699585;
-      }
-      str = paramContext.getString(i);
-      paramContext = new SimpleDateFormat("hh:mm", paramContext.getResources().getConfiguration().locale);
-      if (((ILocalManagerApi)QRoute.api(ILocalManagerApi.class)).isLocaleCN()) {
-        return String.format("%s %s", new Object[] { str, paramContext.format(new Date(paramLong)) });
-      }
-      return String.format("%s %s", new Object[] { paramContext.format(new Date(paramLong)), str });
-    }
-    return new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-    if (i == 1) {
-      return paramContext.getString(2131699703);
-    }
-    if ((i < 7) && (i > 1)) {
-      return new SimpleDateFormat("E", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
-    }
-    return a().format(new Date(paramLong));
+    return a(b, paramLong, paramBoolean, paramString);
   }
   
   public static String a(Context paramContext, long paramLong, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
-    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
-    int k = jdField_a_of_type_JavaUtilCalendar.get(6);
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    i = b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6));
+    a.setTimeInMillis(System.currentTimeMillis());
+    int i = a.get(1);
+    int j = a.get(2);
+    int k = a.get(6);
+    a.setTimeInMillis(paramLong);
+    i = b(i, j, k, a.get(1), a.get(2), a.get(6));
     String str = "HH:mm:ss";
     if (i != 1)
     {
@@ -445,13 +346,13 @@ public class TimeFormatterUtils
           str = "HH:mm";
         }
         paramContext = new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale);
-        return String.format("%s %s", new Object[] { HardCodeUtil.a(2131699685), paramContext.format(new Date(paramLong)) });
+        return String.format("%s %s", new Object[] { HardCodeUtil.a(2131897718), paramContext.format(new Date(paramLong)) });
       }
       if (!paramBoolean) {
         str = "HH:mm";
       }
       paramContext = new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale);
-      return String.format("%s %s", new Object[] { HardCodeUtil.a(2131699679), paramContext.format(new Date(paramLong)) });
+      return String.format("%s %s", new Object[] { HardCodeUtil.a(2131897712), paramContext.format(new Date(paramLong)) });
     }
     if (!paramBoolean) {
       str = "HH:mm";
@@ -476,7 +377,7 @@ public class TimeFormatterUtils
       {
         j = 1;
         i = j;
-        if (k != 2131699695)
+        if (k != 2131897728)
         {
           paramStringBuffer.append(BaseApplication.getContext().getString(k));
           i = j;
@@ -488,17 +389,17 @@ public class TimeFormatterUtils
       if (i != 0)
       {
         boolean bool = android.text.format.DateFormat.is24HourFormat(BaseApplication.getContext());
-        if (k == 2131699695)
+        if (k == 2131897728)
         {
           if (!bool)
           {
-            localObject1 = BaseApplication.getContext().getString(2131699585);
+            localObject1 = BaseApplication.getContext().getString(2131897616);
             paramString = (String)localObject1;
             if (n >= 0)
             {
               paramString = (String)localObject1;
               if (n < 12) {
-                paramString = BaseApplication.getContext().getString(2131699670);
+                paramString = BaseApplication.getContext().getString(2131897703);
               }
             }
             if (n == 12) {
@@ -585,28 +486,15 @@ public class TimeFormatterUtils
     return null;
   }
   
-  private static java.text.DateFormat a()
-  {
-    try
-    {
-      if (jdField_b_of_type_JavaTextDateFormat == null) {
-        jdField_b_of_type_JavaTextDateFormat = android.text.format.DateFormat.getDateFormat(BaseApplication.getContext());
-      }
-      java.text.DateFormat localDateFormat = jdField_b_of_type_JavaTextDateFormat;
-      return localDateFormat;
-    }
-    finally {}
-  }
-  
   public static void a()
   {
     TimeZone localTimeZone1 = TimeZone.getTimeZone("GMT+8");
     TimeZone localTimeZone2 = TimeZone.getDefault();
-    jdField_a_of_type_Int = localTimeZone1.getRawOffset();
+    c = localTimeZone1.getRawOffset();
     int i = localTimeZone2.getRawOffset();
-    jdField_b_of_type_Int = jdField_a_of_type_Int - i;
-    jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-    jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
+    d = c - i;
+    a = Calendar.getInstance();
+    b = new StringBuffer();
   }
   
   private static int b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -628,28 +516,62 @@ public class TimeFormatterUtils
   
   public static int b(long paramLong)
   {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong + jdField_b_of_type_Int);
-    return jdField_a_of_type_JavaUtilCalendar.get(12);
-  }
-  
-  public static String b(long paramLong)
-  {
-    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(paramLong));
+    a.setTimeInMillis(paramLong + d);
+    return a.get(12);
   }
   
   public static String b(Context paramContext, long paramLong)
   {
-    return a(paramContext, paramLong, false);
+    a.setTimeInMillis(System.currentTimeMillis());
+    int i = a.get(1);
+    int j = a.get(2);
+    int k = a.get(5);
+    a.setTimeInMillis(paramLong);
+    i = a(i, j, k, a.get(1), a.get(2), a.get(5));
+    if (i == 0) {}
+    try
+    {
+      i = Settings.System.getInt(paramContext.getContentResolver(), "time_12_24");
+    }
+    catch (Settings.SettingNotFoundException localSettingNotFoundException)
+    {
+      label90:
+      String str;
+      break label90;
+    }
+    i = 0;
+    if (i == 12)
+    {
+      if (a.get(11) < 12) {
+        i = 2131897703;
+      } else {
+        i = 2131897616;
+      }
+      str = paramContext.getString(i);
+      paramContext = new SimpleDateFormat("hh:mm", paramContext.getResources().getConfiguration().locale);
+      if (((ILocalManagerApi)QRoute.api(ILocalManagerApi.class)).isLocaleCN()) {
+        return String.format("%s %s", new Object[] { str, paramContext.format(new Date(paramLong)) });
+      }
+      return String.format("%s %s", new Object[] { paramContext.format(new Date(paramLong)), str });
+    }
+    return new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+    if (i == 1) {
+      return paramContext.getString(2131897736);
+    }
+    if ((i < 7) && (i > 1)) {
+      return new SimpleDateFormat("E", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    return b().format(new Date(paramLong));
   }
   
   private static java.text.DateFormat b()
   {
     try
     {
-      if (jdField_a_of_type_JavaTextDateFormat == null) {
-        jdField_a_of_type_JavaTextDateFormat = android.text.format.DateFormat.getTimeFormat(BaseApplication.getContext());
+      if (f == null) {
+        f = android.text.format.DateFormat.getDateFormat(BaseApplication.getContext());
       }
-      java.text.DateFormat localDateFormat = jdField_a_of_type_JavaTextDateFormat;
+      java.text.DateFormat localDateFormat = f;
       return localDateFormat;
     }
     finally {}
@@ -658,29 +580,66 @@ public class TimeFormatterUtils
   public static int c(long paramLong)
   {
     long l = System.currentTimeMillis();
-    int j = jdField_a_of_type_Int;
+    int j = c;
     int i = (int)((l + j) / 86400000L);
     j = (int)((paramLong + j) / 86400000L);
     if (j == i) {
-      return 2131699695;
+      return 2131897728;
     }
     if (j == i - 1) {
-      return 2131699703;
+      return 2131897736;
     }
     if (j == i - 2) {
-      return 2131699590;
+      return 2131897621;
     }
     return -1;
   }
   
   public static String c(Context paramContext, long paramLong)
   {
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
-    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
-    int k = jdField_a_of_type_JavaUtilCalendar.get(6);
-    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    i = b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6));
+    return a(paramContext, paramLong, false);
+  }
+  
+  private static java.text.DateFormat c()
+  {
+    try
+    {
+      if (e == null) {
+        e = android.text.format.DateFormat.getTimeFormat(BaseApplication.getContext());
+      }
+      java.text.DateFormat localDateFormat = e;
+      return localDateFormat;
+    }
+    finally {}
+  }
+  
+  public static int d(long paramLong)
+  {
+    try
+    {
+      a.setTimeInMillis(System.currentTimeMillis());
+      int i = a.get(1);
+      int j = a.get(2);
+      int k = a.get(6);
+      a.setTimeInMillis(paramLong);
+      i = b(i, j, k, a.get(1), a.get(2), a.get(6));
+      return i;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("calTimeInterval", 2, localException.getMessage());
+    }
+    return -1;
+  }
+  
+  public static String d(Context paramContext, long paramLong)
+  {
+    a.setTimeInMillis(System.currentTimeMillis());
+    int i = a.get(1);
+    int j = a.get(2);
+    int k = a.get(6);
+    a.setTimeInMillis(paramLong);
+    i = b(i, j, k, a.get(1), a.get(2), a.get(6));
     if (i != 1)
     {
       if (i != 2)
@@ -697,37 +656,78 @@ public class TimeFormatterUtils
           return new SimpleDateFormat("MM-dd HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
         }
         paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
-        return String.format("%s %s", new Object[] { HardCodeUtil.a(2131699681), paramContext.format(new Date(paramLong)) });
+        return String.format("%s %s", new Object[] { HardCodeUtil.a(2131897714), paramContext.format(new Date(paramLong)) });
       }
       paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
-      return String.format("%s %s", new Object[] { HardCodeUtil.a(2131699687), paramContext.format(new Date(paramLong)) });
+      return String.format("%s %s", new Object[] { HardCodeUtil.a(2131897720), paramContext.format(new Date(paramLong)) });
     }
     paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
-    return String.format("%s %s", new Object[] { HardCodeUtil.a(2131699680), paramContext.format(new Date(paramLong)) });
+    return String.format("%s %s", new Object[] { HardCodeUtil.a(2131897713), paramContext.format(new Date(paramLong)) });
   }
   
-  public static int d(long paramLong)
+  public static String e(long paramLong)
   {
+    long l = System.currentTimeMillis();
+    int i = c;
+    i = (int)((l + i) / 86400000L) - (int)((i + paramLong) / 86400000L);
+    Object localObject;
+    if (i > 365)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i / 365);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131897705));
+      return ((StringBuilder)localObject).toString();
+    }
+    if (i > 30)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i / 30);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131897710));
+      return ((StringBuilder)localObject).toString();
+    }
+    if (i >= 1)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131897709));
+      return ((StringBuilder)localObject).toString();
+    }
     try
     {
-      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-      int i = jdField_a_of_type_JavaUtilCalendar.get(1);
-      int j = jdField_a_of_type_JavaUtilCalendar.get(2);
-      int k = jdField_a_of_type_JavaUtilCalendar.get(6);
-      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-      i = b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6));
-      return i;
+      localObject = a(paramLong, "HH:mm");
+      return localObject;
     }
     catch (Exception localException)
     {
-      QLog.e("calTimeInterval", 2, localException.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.d("TimeFormatterUtils", 2, localException.getMessage());
+      }
     }
-    return -1;
+    return "";
+  }
+  
+  public static String f(long paramLong)
+  {
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(paramLong));
+  }
+  
+  public static long g(long paramLong)
+  {
+    long l = paramLong;
+    if (paramLong == 0L) {
+      l = System.currentTimeMillis();
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(l / 1000L * 1000L);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    return localCalendar.getTimeInMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TimeFormatterUtils
  * JD-Core Version:    0.7.0.1
  */

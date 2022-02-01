@@ -24,11 +24,11 @@ class AsyncFileDownloader$InnerBaseDownloader$1
     if ((localObject != null) && ((localObject instanceof DownloadTask)))
     {
       localObject = (DownloadTask)localObject;
-      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((DownloadTask)localObject).jdField_a_of_type_JavaLangString);
-      ((DownloadTask)localObject).jdField_b_of_type_Long = (System.currentTimeMillis() - ((DownloadTask)localObject).jdField_a_of_type_Long);
-      if (((DownloadTask)localObject).jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult != null)
+      this.a.a.d.remove(((DownloadTask)localObject).a);
+      ((DownloadTask)localObject).q = (System.currentTimeMillis() - ((DownloadTask)localObject).p);
+      if (((DownloadTask)localObject).m != null)
       {
-        AsyncFileDownloader.DownloadResult localDownloadResult = ((DownloadTask)localObject).jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult;
+        AsyncFileDownloader.DownloadResult localDownloadResult = ((DownloadTask)localObject).m;
         if (paramNetResp.mResult == 0) {
           paramNetResp = new ErrorMessage(0, "");
         } else {
@@ -52,14 +52,14 @@ class AsyncFileDownloader$InnerBaseDownloader$1
       int i = (int)(d1 / d2 * 100.0D);
       synchronized (PreloadDownloader.a)
       {
-        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
+        if (this.a.a.a != null)
         {
-          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+          Iterator localIterator = this.a.a.a.iterator();
           while (localIterator.hasNext())
           {
             IVideoPreloader.OnPreloadListener localOnPreloadListener = (IVideoPreloader.OnPreloadListener)((WeakReference)localIterator.next()).get();
             if (localOnPreloadListener != null) {
-              localOnPreloadListener.a(localDownloadTask.jdField_b_of_type_JavaLangString, localDownloadTask.jdField_a_of_type_Int, i, localDownloadTask);
+              localOnPreloadListener.a(localDownloadTask.b, localDownloadTask.c, i, localDownloadTask);
             }
           }
         }
@@ -70,7 +70,7 @@ class AsyncFileDownloader$InnerBaseDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerBaseDownloader.1
  * JD-Core Version:    0.7.0.1
  */

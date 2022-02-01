@@ -1,10 +1,10 @@
 package com.tencent.aelight.camera.aeeditor.module.edit;
 
-import com.tencent.tavcut.aekit.AEKitModel;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import com.tencent.tavcut.view.ext.OnLongPressListener;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
+import com.tencent.qcircle.tavcut.aekit.AEKitModel;
+import com.tencent.qcircle.tavcut.session.TAVCutImageSession;
+import com.tencent.qcircle.tavcut.view.ext.OnLongPressListener;
+import com.tencent.qcircle.weseevideo.model.MediaModel;
+import com.tencent.qcircle.weseevideo.model.effect.MediaEffectModel;
 import java.util.List;
 
 class AEEditorImagePagerAdapter$6
@@ -12,22 +12,22 @@ class AEEditorImagePagerAdapter$6
 {
   AEEditorImagePagerAdapter$6(AEEditorImagePagerAdapter paramAEEditorImagePagerAdapter, int paramInt) {}
   
-  public void a()
+  public void onLongPress()
   {
-    AEEditorImagePagerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter).toggleAEKit(this.jdField_a_of_type_Int, false);
+    AEEditorImagePagerAdapter.b(this.b).toggleAEKit(this.a, false);
   }
   
-  public void b()
+  public void onLongPressRelease()
   {
-    AEKitModel localAEKitModel = ((MediaModel)AEEditorImagePagerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter).getMediaModels().get(this.jdField_a_of_type_Int)).getMediaEffectModel().getAeKitModel();
+    AEKitModel localAEKitModel = ((MediaModel)AEEditorImagePagerAdapter.b(this.b).getMediaModels().get(this.a)).getMediaEffectModel().getAeKitModel();
     if ((localAEKitModel != null) && (localAEKitModel.isDisable())) {
-      AEEditorImagePagerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImagePagerAdapter).toggleAEKit(this.jdField_a_of_type_Int, true);
+      AEEditorImagePagerAdapter.b(this.b).toggleAEKit(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImagePagerAdapter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -10,81 +10,77 @@ import java.util.List;
 public class OcrImageTextBean
   extends OcrGestureBeanInfo
 {
-  public float a;
-  public Bitmap a;
-  public Rect a;
-  public String a;
-  public float b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public int f;
-  public int g;
-  public int h = -1;
-  public int i = -1;
-  public int j = -1;
-  public int k = -1;
-  public int l = -1;
-  public int m = -1;
+  public Bitmap h;
+  public String i;
+  public int j;
+  public int k;
+  public float l = -1.0F;
+  public boolean m;
   public int n = -1;
   public int o = -1;
+  public int p = -1;
+  public Rect q;
+  public int r = -1;
+  public int s = -1;
+  public int t = -1;
+  public boolean u = false;
+  public int v = -1;
+  public int w = -1;
+  public boolean x = false;
+  public float y = -1.0F;
   
   public OcrImageTextBean(PicOcrResultBean paramPicOcrResultBean)
   {
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Float = -1.0F;
-    this.jdField_a_of_type_JavaLangString = paramPicOcrResultBean.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_Int = paramPicOcrResultBean.a();
-    this.h = paramPicOcrResultBean.jdField_b_of_type_Int;
-    this.j = 0;
-    this.m = paramPicOcrResultBean.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (!paramPicOcrResultBean.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramPicOcrResultBean.jdField_a_of_type_JavaUtilArrayList);
+    this.i = paramPicOcrResultBean.a;
+    this.q = new Rect();
+    this.c = paramPicOcrResultBean.a();
+    this.n = paramPicOcrResultBean.d;
+    this.p = 0;
+    this.t = paramPicOcrResultBean.b;
+    this.a.clear();
+    if (!paramPicOcrResultBean.c.isEmpty()) {
+      this.a.addAll(paramPicOcrResultBean.c);
     }
-    paramPicOcrResultBean = (Point)this.jdField_a_of_type_JavaUtilList.get(0);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    paramPicOcrResultBean = (Point)this.a.get(0);
+    Object localObject = this.a;
     boolean bool = true;
     localObject = (Point)((List)localObject).get(1);
     if (paramPicOcrResultBean.x <= ((Point)localObject).x) {
       bool = false;
     }
-    this.jdField_c_of_type_Boolean = bool;
+    this.u = bool;
   }
   
   public Point a()
   {
-    return (Point)this.jdField_a_of_type_JavaUtilList.get(0);
+    return (Point)this.a.get(0);
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
     int i1 = 0;
-    while (i1 < this.jdField_a_of_type_JavaUtilList.size())
+    while (i1 < this.a.size())
     {
-      Point localPoint = (Point)this.jdField_a_of_type_JavaUtilList.get(i1);
+      Point localPoint = (Point)this.a.get(i1);
       localPoint = new Point((int)(localPoint.x * paramFloat1), (int)(localPoint.y * paramFloat2));
-      this.jdField_b_of_type_Int = Math.max(this.jdField_b_of_type_Int, localPoint.x);
-      this.jdField_c_of_type_Int = Math.max(this.jdField_c_of_type_Int, localPoint.y);
-      this.jdField_d_of_type_Int = Math.min(this.jdField_d_of_type_Int, localPoint.x);
-      this.e = Math.min(this.e, localPoint.y);
+      this.d = Math.max(this.d, localPoint.x);
+      this.e = Math.max(this.e, localPoint.y);
+      this.f = Math.min(this.f, localPoint.x);
+      this.g = Math.min(this.g, localPoint.y);
       if (localPoint.x < 0) {
         localPoint.x = 0;
       }
       if (localPoint.y < 0) {
         localPoint.y = 0;
       }
-      this.jdField_a_of_type_JavaUtilList.set(i1, localPoint);
+      this.a.set(i1, localPoint);
       i1 += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.OcrImageTextBean
  * JD-Core Version:    0.7.0.1
  */

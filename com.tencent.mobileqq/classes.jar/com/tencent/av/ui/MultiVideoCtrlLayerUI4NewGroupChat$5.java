@@ -1,13 +1,16 @@
 package com.tencent.av.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class MultiVideoCtrlLayerUI4NewGroupChat$5
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   MultiVideoCtrlLayerUI4NewGroupChat$5(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.this$0.r();
+    MultiVideoCtrlLayerUI4NewGroupChat.a(this.a);
   }
 }
 

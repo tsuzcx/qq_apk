@@ -11,63 +11,63 @@ import java.util.Map;
 
 public final class GathererConfig$Builder
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IExecutor jdField_a_of_type_ComTencentGatherergaCoreIExecutor;
-  private ILog jdField_a_of_type_ComTencentGatherergaCoreILog;
-  private GathererHTTP jdField_a_of_type_ComTencentGatherergaCoreInternalComponentGathererHTTP;
-  private ProviderResultCache jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCacheProviderResultCache;
-  private String jdField_a_of_type_JavaLangString = "";
-  private Map<Integer, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b;
-  private String c = "Gatherer";
+  private Context a;
+  private String b = "";
+  private int c;
+  private String d;
+  private String e = "Gatherer";
+  private GathererHTTP f;
+  private boolean g = false;
+  private IExecutor h;
+  private ProviderResultCache i;
+  private ILog j;
+  private Map<Integer, Boolean> k = new HashMap();
   
   private GathererConfig$Builder(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramContext.getApplicationContext();
+    this.c = paramInt;
   }
   
   public final Builder a(IExecutor paramIExecutor)
   {
-    this.jdField_a_of_type_ComTencentGatherergaCoreIExecutor = paramIExecutor;
+    this.h = paramIExecutor;
     return this;
   }
   
   public final Builder a(ILog paramILog)
   {
-    this.jdField_a_of_type_ComTencentGatherergaCoreILog = paramILog;
+    this.j = paramILog;
     return this;
   }
   
   public final Builder a(GathererHTTP paramGathererHTTP)
   {
-    this.jdField_a_of_type_ComTencentGatherergaCoreInternalComponentGathererHTTP = paramGathererHTTP;
+    this.f = paramGathererHTTP;
     return this;
   }
   
   public final Builder a(ProviderResultCache paramProviderResultCache)
   {
-    this.jdField_a_of_type_ComTencentGatherergaCoreInternalComponentCacheProviderResultCache = paramProviderResultCache;
+    this.i = paramProviderResultCache;
     return this;
   }
   
   public final Builder a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public final Builder a(Map<Integer, Boolean> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.k = paramMap;
     return this;
   }
   
   public final Builder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     return this;
   }
   
@@ -78,21 +78,21 @@ public final class GathererConfig$Builder
   
   public final Builder b(String paramString)
   {
-    this.b = paramString;
+    this.d = paramString;
     return this;
   }
   
   public final Builder c(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      this.c = paramString;
+      this.e = paramString;
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.sdk.GathererConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

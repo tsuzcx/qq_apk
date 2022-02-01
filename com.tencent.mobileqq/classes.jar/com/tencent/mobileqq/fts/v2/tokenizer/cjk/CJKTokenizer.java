@@ -8,205 +8,205 @@ import java.io.Reader;
 public final class CJKTokenizer
   extends Tokenizer
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "word";
-  private boolean jdField_a_of_type_Boolean = false;
-  private final char[] jdField_a_of_type_ArrayOfChar = new char['ÿ'];
-  private int jdField_b_of_type_Int = 0;
-  private final char[] jdField_b_of_type_ArrayOfChar = new char[1024];
+  private int b = 0;
   private int c = 0;
   private int d = 0;
+  private int e = 0;
+  private final char[] f = new char['ÿ'];
+  private final char[] g = new char[1024];
+  private String h = "word";
+  private boolean i = false;
   
   public CJKTokenizer(Reader paramReader, int paramInt)
   {
-    this.jdField_a_of_type_JavaIoReader = paramReader;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramReader;
+    this.b = paramInt;
   }
   
   public final Token a()
   {
-    int m = this.jdField_b_of_type_Int;
-    int k;
+    int n = this.c;
+    int m;
     label8:
-    int n;
+    int i1;
     for (;;)
     {
-      k = 0;
+      m = 0;
       label444:
       label592:
       label638:
       do
       {
-        this.jdField_b_of_type_Int += 1;
-        if (this.c >= this.d)
+        this.c += 1;
+        if (this.d >= this.e)
         {
-          this.d = this.jdField_a_of_type_JavaIoReader.read(this.jdField_b_of_type_ArrayOfChar);
-          this.c = 0;
+          this.e = this.a.read(this.g);
+          this.d = 0;
         }
-        if (this.d == -1) {
-          if (k > 0)
+        if (this.e == -1) {
+          if (m > 0)
           {
-            n = m;
-            if (this.jdField_a_of_type_Boolean != true) {
+            i1 = n;
+            if (this.i != true) {
               break label662;
             }
-            this.jdField_a_of_type_Boolean = false;
+            this.i = false;
           }
         }
         for (;;)
         {
-          k = 0;
-          n = m;
+          m = 0;
+          i1 = n;
           break label662;
           return null;
-          Object localObject = this.jdField_b_of_type_ArrayOfChar;
-          n = this.c;
-          this.c = (n + 1);
-          int j = localObject[n];
-          localObject = Character.UnicodeBlock.of(j);
+          Object localObject = this.g;
+          i1 = this.d;
+          this.d = (i1 + 1);
+          int k = localObject[i1];
+          localObject = Character.UnicodeBlock.of(k);
           if ((localObject != Character.UnicodeBlock.BASIC_LATIN) && (localObject != Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS))
           {
-            if (Character.isLetter(j))
+            if (Character.isLetter(k))
             {
-              if (k == 0)
+              if (m == 0)
               {
-                m = this.jdField_b_of_type_Int - 1;
-                this.jdField_a_of_type_ArrayOfChar[k] = j;
-                this.jdField_a_of_type_JavaLangString = "double";
-                k += 1;
+                n = this.c - 1;
+                this.f[m] = k;
+                this.h = "double";
+                m += 1;
                 break label8;
               }
-              if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "letter")) && (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "digit")))
+              if ((!TextUtils.equals(this.h, "letter")) && (!TextUtils.equals(this.h, "digit")))
               {
-                localObject = this.jdField_a_of_type_ArrayOfChar;
-                n = k + 1;
-                localObject[k] = j;
-                this.jdField_a_of_type_JavaLangString = "double";
-                if (n == 2)
+                localObject = this.f;
+                i1 = m + 1;
+                localObject[m] = k;
+                this.h = "double";
+                if (i1 == 2)
                 {
-                  this.jdField_b_of_type_Int -= 1;
                   this.c -= 1;
-                  this.jdField_a_of_type_Boolean = true;
-                  k = n;
-                  n = m;
+                  this.d -= 1;
+                  this.i = true;
+                  m = i1;
+                  i1 = n;
                   break label662;
                 }
-                k = n;
+                m = i1;
                 break label8;
               }
-              this.jdField_b_of_type_Int -= 1;
               this.c -= 1;
-              n = m;
+              this.d -= 1;
+              i1 = n;
               break label662;
             }
-            if (k <= 0) {
+            if (m <= 0) {
               break label8;
             }
-            n = m;
-            if (this.jdField_a_of_type_Boolean != true) {
+            i1 = n;
+            if (this.i != true) {
               break label662;
             }
-            this.jdField_a_of_type_Boolean = false;
+            this.i = false;
             break;
           }
-          int i = j;
+          int j = k;
           char c1;
           if (localObject == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS) {
-            c1 = (char)(j - 65248);
+            c1 = (char)(k - 65248);
           }
           if (Character.isLetter(c1))
           {
-            if (k == 0)
+            if (m == 0)
             {
-              n = this.jdField_b_of_type_Int - 1;
+              i1 = this.c - 1;
             }
             else
             {
-              if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "double")) {
+              if (TextUtils.equals(this.h, "double")) {
                 break label444;
               }
-              n = m;
-              if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "digit")) {
+              i1 = n;
+              if (TextUtils.equals(this.h, "digit")) {
                 break label444;
               }
             }
-            localObject = this.jdField_a_of_type_ArrayOfChar;
-            m = k + 1;
-            localObject[k] = Character.toLowerCase(c1);
-            this.jdField_a_of_type_JavaLangString = "letter";
-            if (m == 255)
+            localObject = this.f;
+            n = m + 1;
+            localObject[m] = Character.toLowerCase(c1);
+            this.h = "letter";
+            if (n == 255)
             {
-              k = m;
+              m = n;
               break label662;
             }
-            k = m;
             m = n;
+            n = i1;
             break label8;
-            this.jdField_b_of_type_Int -= 1;
             this.c -= 1;
-            this.jdField_a_of_type_JavaLangString = "letter";
-            n = m;
-            if (this.jdField_a_of_type_Boolean != true) {
+            this.d -= 1;
+            this.h = "letter";
+            i1 = n;
+            if (this.i != true) {
               break label662;
             }
-            this.jdField_a_of_type_Boolean = false;
+            this.i = false;
             continue;
           }
           if (!Character.isDigit(c1)) {
             break label638;
           }
-          if (k == 0)
+          if (m == 0)
           {
-            n = this.jdField_b_of_type_Int - 1;
+            i1 = this.c - 1;
           }
           else
           {
-            if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "double")) {
+            if (TextUtils.equals(this.h, "double")) {
               break label592;
             }
-            n = m;
-            if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "letter")) {
+            i1 = n;
+            if (TextUtils.equals(this.h, "letter")) {
               break label592;
             }
           }
-          localObject = this.jdField_a_of_type_ArrayOfChar;
-          m = k + 1;
-          localObject[k] = Character.toLowerCase(c1);
-          this.jdField_a_of_type_JavaLangString = "digit";
-          if (m == 255)
+          localObject = this.f;
+          n = m + 1;
+          localObject[m] = Character.toLowerCase(c1);
+          this.h = "digit";
+          if (n == 255)
           {
-            k = m;
+            m = n;
             break label662;
           }
-          k = m;
           m = n;
+          n = i1;
           break label8;
-          this.jdField_b_of_type_Int -= 1;
           this.c -= 1;
-          this.jdField_a_of_type_JavaLangString = "digit";
-          n = m;
-          if (this.jdField_a_of_type_Boolean != true) {
+          this.d -= 1;
+          this.h = "digit";
+          i1 = n;
+          if (this.i != true) {
             break label662;
           }
-          this.jdField_a_of_type_Boolean = false;
+          this.i = false;
         }
-      } while (k <= 0);
-      n = m;
-      if (this.jdField_a_of_type_Boolean != true) {
+      } while (m <= 0);
+      i1 = n;
+      if (this.i != true) {
         break;
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.i = false;
     }
     label662:
-    if ((n == this.jdField_a_of_type_Int - 1) && (k == 0)) {
+    if ((i1 == this.b - 1) && (m == 0)) {
       return null;
     }
-    return new Token(new String(this.jdField_a_of_type_ArrayOfChar, 0, k), n, k + n, this.jdField_a_of_type_JavaLangString);
+    return new Token(new String(this.f, 0, m), i1, m + i1, this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v2.tokenizer.cjk.CJKTokenizer
  * JD-Core Version:    0.7.0.1
  */

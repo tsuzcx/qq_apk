@@ -11,20 +11,20 @@ class ThemeDiyModule$1
   
   public void a(ThemeLocator paramThemeLocator)
   {
-    if ((paramThemeLocator != null) && (paramThemeLocator.b()))
+    if ((paramThemeLocator != null) && (paramThemeLocator.i()))
     {
-      if (ThemeDiyModule.a(this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule) != null) {
-        ThemeDiyModule.a(this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule).diyThemeSetup(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
+      if (ThemeDiyModule.a(this.c) != null) {
+        ThemeDiyModule.a(this.c).diyThemeSetup(this.a, this.b);
       }
     }
-    else if (ThemeDiyModule.a(this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule) != null) {
-      ThemeDiyModule.a(this.jdField_a_of_type_ComTencentMobileqqVasThemeDiyThemeDiyModule).startDownload(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_JavaLangString);
+    else if (ThemeDiyModule.a(this.c) != null) {
+      ThemeDiyModule.a(this.c).startDownload(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeDiyModule.1
  * JD-Core Version:    0.7.0.1
  */

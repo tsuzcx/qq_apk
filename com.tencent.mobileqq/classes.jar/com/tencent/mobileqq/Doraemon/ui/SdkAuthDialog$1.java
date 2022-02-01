@@ -16,13 +16,13 @@ class SdkAuthDialog$1
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetSupport(SdkAuthDialog.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonUiSdkAuthDialog)))
+    if (!NetworkUtil.isNetSupport(SdkAuthDialog.a(this.b)))
     {
-      QQToast.a(SdkAuthDialog.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonUiSdkAuthDialog), SdkAuthDialog.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonUiSdkAuthDialog).getString(2131694422), 0).a();
+      QQToast.makeText(SdkAuthDialog.a(this.b), SdkAuthDialog.a(this.b).getString(2131892102), 0).show();
     }
     else
     {
-      View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      View.OnClickListener localOnClickListener = this.a;
       if (localOnClickListener == null)
       {
         QLog.e("SdkAuthDialog", 1, "positiveListener is null");
@@ -38,7 +38,7 @@ class SdkAuthDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.ui.SdkAuthDialog.1
  * JD-Core Version:    0.7.0.1
  */

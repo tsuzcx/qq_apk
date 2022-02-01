@@ -37,7 +37,7 @@ public class ZhituTextChangeCallback
   
   public void a(AIOContext paramAIOContext, @Nullable String paramString)
   {
-    if ((paramAIOContext.a().a == 0) && (PokeItemHelper.c(paramAIOContext.a())))
+    if ((paramAIOContext.O().a == 0) && (PokeItemHelper.f(paramAIOContext.a())))
     {
       if (((ReceiptHelper)paramAIOContext.a(118)).a) {
         return;
@@ -45,26 +45,26 @@ public class ZhituTextChangeCallback
       if (QLog.isColorLevel()) {
         QLog.d("ZhituTextChangeCallback", 2, String.format("showStickerBubbleQuickButtonIfNeeded  peInputSwitch :%dentryType:%d,viewType:%d ", new Object[] { Integer.valueOf(PokeItemHelper.b(paramAIOContext.a(), 9)), Integer.valueOf(PokeItemHelper.b(paramAIOContext.a(), 4)), Integer.valueOf(PokeItemHelper.b(paramAIOContext.a(), 11)) }));
       }
-      Object localObject1 = paramAIOContext.a().a().a();
+      Object localObject1 = paramAIOContext.p().d().f();
       if (paramString == null) {
         paramString = ((EditTextUI)localObject1).a().toString();
       }
       if ((paramString.isEmpty()) && (StickerBubbleAnimationHelper.a(paramAIOContext.a().getCurrentUin()) > 0))
       {
-        Object localObject2 = paramAIOContext.a().a().a().a();
-        paramString = paramAIOContext.a().a().a().a();
+        Object localObject2 = paramAIOContext.p().d().c().a();
+        paramString = paramAIOContext.p().d().c().b();
         ((View)localObject2).setVisibility(0);
-        ABTestController.a().a("exp_qq_msg_marketface_input_icon").a();
-        paramString.setImageDrawable(StickerBubbleAnimationHelper.a(paramAIOContext.a().getCurrentUin()));
+        ABTestController.a().a("exp_qq_msg_marketface_input_icon").h();
+        paramString.setImageDrawable(StickerBubbleAnimationHelper.b(paramAIOContext.a().getCurrentUin()));
         int j = ((View)localObject2).getWidth();
         int i;
         if (j == 0) {
-          i = AIOUtils.b(37.0F, paramAIOContext.a().getResources());
+          i = AIOUtils.b(37.0F, paramAIOContext.b().getResources());
         } else {
           i = j;
         }
-        if (((EditTextUI)localObject1).a() < i) {
-          ((EditTextUI)localObject1).a(((EditTextUI)localObject1).b(), ((EditTextUI)localObject1).c(), i, ((EditTextUI)localObject1).d());
+        if (((EditTextUI)localObject1).d() < i) {
+          ((EditTextUI)localObject1).a(((EditTextUI)localObject1).e(), ((EditTextUI)localObject1).f(), i, ((EditTextUI)localObject1).g());
         }
         if (QLog.isDevelopLevel())
         {
@@ -74,13 +74,13 @@ public class ZhituTextChangeCallback
           ((StringBuilder)localObject2).append(" ,pr = ");
           ((StringBuilder)localObject2).append(j);
           ((StringBuilder)localObject2).append(",input.getPaddingRight() = ");
-          ((StringBuilder)localObject2).append(((EditTextUI)localObject1).a());
+          ((StringBuilder)localObject2).append(((EditTextUI)localObject1).d());
           QLog.d("ZhituManager", 4, ((StringBuilder)localObject2).toString());
         }
-        if (AppSetting.d)
+        if (AppSetting.e)
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701183));
+          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131899198));
           ((StringBuilder)localObject1).append(PEPanelHelper.a(StickerBubbleAnimationHelper.a(paramAIOContext.a().getCurrentUin())));
           paramString.setContentDescription(((StringBuilder)localObject1).toString());
         }
@@ -96,7 +96,7 @@ public class ZhituTextChangeCallback
   public boolean a(AIOContext paramAIOContext, Editable paramEditable)
   {
     AIODraftHelper localAIODraftHelper = (AIODraftHelper)paramAIOContext.a(111);
-    if (localAIODraftHelper.b)
+    if (localAIODraftHelper.f)
     {
       boolean bool;
       if (paramEditable.length() > 0) {
@@ -104,7 +104,7 @@ public class ZhituTextChangeCallback
       } else {
         bool = false;
       }
-      localAIODraftHelper.b = bool;
+      localAIODraftHelper.f = bool;
     }
     ((AIOInputRightHelper)paramAIOContext.a(117)).a(paramEditable);
     a(paramAIOContext, paramEditable.toString());
@@ -116,7 +116,7 @@ public class ZhituTextChangeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.edittext.ZhituTextChangeCallback
  * JD-Core Version:    0.7.0.1
  */

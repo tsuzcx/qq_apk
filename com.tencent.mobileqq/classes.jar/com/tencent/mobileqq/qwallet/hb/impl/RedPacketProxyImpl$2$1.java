@@ -10,12 +10,12 @@ class RedPacketProxyImpl$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbImplRedPacketProxyImpl$2.a.onGetSkin(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemRedPacketInfoBase);
+    this.b.a.onGetSkin(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.RedPacketProxyImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,20 +4,20 @@ import com.tencent.mobileqq.utils.RecordParams.RecorderParam;
 
 public class VoicePttInfo
 {
-  public long a;
-  public RecordParams.RecorderParam a;
   public String a;
+  public long b;
+  public RecordParams.RecorderParam c;
   
   public VoicePttInfo(String paramString, long paramLong, RecordParams.RecorderParam paramRecorderParam)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam = paramRecorderParam;
+    this.a = paramString;
+    this.b = paramLong;
+    this.c = paramRecorderParam;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.data.VoicePttInfo
  * JD-Core Version:    0.7.0.1
  */

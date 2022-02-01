@@ -21,7 +21,7 @@ final class IPluginManager$6
     {
       if (paramPluginParams.b == 1)
       {
-        QShadow.getInstance().startService(paramPluginParams.c, paramPluginParams.f, paramPluginParams.a.getExtras(), new IPluginManager.6.1(this, paramPluginParams));
+        QShadow.getInstance().startService(paramPluginParams.e, paramPluginParams.h, paramPluginParams.j.getExtras(), new IPluginManager.6.1(this, paramPluginParams));
         return;
       }
       if (paramPluginParams.b == 2)
@@ -37,7 +37,7 @@ final class IPluginManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.6
  * JD-Core Version:    0.7.0.1
  */

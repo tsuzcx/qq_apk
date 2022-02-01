@@ -47,24 +47,10 @@ public class DynamicTextItem$TextMap
     }
   }
   
-  public int a()
-  {
-    Iterator localIterator = this.a.entrySet().iterator();
-    int i = -1;
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((Integer)localEntry.getKey()).intValue() > i) {
-        i = ((Integer)localEntry.getKey()).intValue();
-      }
-    }
-    return i + 1;
-  }
-  
   @NonNull
   public String a(int paramInt)
   {
-    int i = a();
+    int i = b();
     if (i == 0) {
       return "";
     }
@@ -89,7 +75,7 @@ public class DynamicTextItem$TextMap
   public List<String> a()
   {
     ArrayList localArrayList = new ArrayList();
-    int j = a();
+    int j = b();
     int i = 0;
     while (i < j)
     {
@@ -117,6 +103,20 @@ public class DynamicTextItem$TextMap
       }
     }
     return true;
+  }
+  
+  public int b()
+  {
+    Iterator localIterator = this.a.entrySet().iterator();
+    int i = -1;
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((Integer)localEntry.getKey()).intValue() > i) {
+        i = ((Integer)localEntry.getKey()).intValue();
+      }
+    }
+    return i + 1;
   }
   
   public int describeContents()
@@ -162,7 +162,7 @@ public class DynamicTextItem$TextMap
   
   public String toString()
   {
-    int j = a();
+    int j = b();
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < j)
@@ -188,7 +188,7 @@ public class DynamicTextItem$TextMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.DynamicTextItem.TextMap
  * JD-Core Version:    0.7.0.1
  */

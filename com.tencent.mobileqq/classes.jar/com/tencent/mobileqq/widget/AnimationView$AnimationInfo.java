@@ -106,12 +106,12 @@ public class AnimationView$AnimationInfo
       if (TextUtils.isEmpty(paramFile)) {
         return null;
       }
-      return a(paramFile);
+      return b(paramFile);
     }
     return null;
   }
   
-  protected static AnimationInfo a(String paramString)
+  protected static AnimationInfo b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -141,7 +141,7 @@ public class AnimationView$AnimationInfo
         {
           localObject = new AnimationInfo(j, k, m);
           ((AnimationInfo)localObject).mPlay = paramString;
-          ((AnimationInfo)localObject).a();
+          ((AnimationInfo)localObject).b();
           return localObject;
         }
       }
@@ -291,7 +291,7 @@ public class AnimationView$AnimationInfo
         localArrayList.add(new AnimationView.PlayItem(paramInt2));
         localAnimationInfo.mFrames.append(paramInt2, paramArrayList.get(paramInt1));
       }
-      localAnimationInfo.a();
+      localAnimationInfo.b();
       return localAnimationInfo;
     }
     return null;
@@ -339,7 +339,7 @@ public class AnimationView$AnimationInfo
     return localArrayList;
   }
   
-  protected void a()
+  protected void b()
   {
     this.mInfiniteFromInOnCycle = -1;
     this.mInfiniteToInOnCycle = -1;
@@ -396,7 +396,7 @@ public class AnimationView$AnimationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView.AnimationInfo
  * JD-Core Version:    0.7.0.1
  */

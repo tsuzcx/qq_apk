@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.msgTabNode.view;
 
 class DotAnimationView$Dot
 {
-  float jdField_a_of_type_Float;
+  float a;
   float b;
   float c;
   
@@ -10,7 +10,7 @@ class DotAnimationView$Dot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView.Dot
  * JD-Core Version:    0.7.0.1
  */

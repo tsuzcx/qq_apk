@@ -62,6 +62,11 @@ public class EmoticonMainPanel
     EmojiListenerManager.a().addEmoticonPackageDownloadListener(paramEmoticonPackageDownloadListener);
   }
   
+  public void addTabListAdditionalView(boolean paramBoolean, View paramView)
+  {
+    this.mEmoController.addTabListAdditionalView(paramBoolean, paramView);
+  }
+  
   public void deleteEmoticonClick()
   {
     this.mEmoController.deleteEmoticonClick();
@@ -422,7 +427,7 @@ public class EmoticonMainPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonMainPanel
  * JD-Core Version:    0.7.0.1
  */

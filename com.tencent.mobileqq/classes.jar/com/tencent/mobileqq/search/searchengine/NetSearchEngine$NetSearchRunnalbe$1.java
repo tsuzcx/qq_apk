@@ -15,8 +15,8 @@ class NetSearchEngine$NetSearchRunnalbe$1
   
   protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong, int paramInt3, List<ISearchResultGroupModel> paramList)
   {
-    if (this.a.a != null) {
-      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
+    if (this.a.b != null) {
+      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.b);
     }
     if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {
       return;
@@ -29,18 +29,18 @@ class NetSearchEngine$NetSearchRunnalbe$1
       if (paramBoolean1)
       {
         if ((paramObject instanceof ArrayList)) {
-          ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
+          ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.b(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.c(this.a)), 10, null, true);
         }
       }
-      else if (NetSearchEngine.NetSearchRunnalbe.a(this.a) != null) {
-        NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
+      else if (NetSearchEngine.NetSearchRunnalbe.c(this.a) != null) {
+        NetSearchEngine.NetSearchRunnalbe.c(this.a).a(null, 1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,10 +20,10 @@ class NewFriendMoreSysMsgAdapter$10
     if (paramLong == 0L) {
       return;
     }
-    if (this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)))
+    if (this.a.b.containsKey(Long.valueOf(paramLong)))
     {
-      String str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-      String str2 = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getDiscussionNameCanNull(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, String.valueOf(paramLong));
+      String str1 = (String)this.a.b.get(Long.valueOf(paramLong));
+      String str2 = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getDiscussionNameCanNull(this.a.a, String.valueOf(paramLong));
       if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
         NewFriendMoreSysMsgAdapter.a(this.a, false);
       }
@@ -79,7 +79,7 @@ class NewFriendMoreSysMsgAdapter$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.NewFriendMoreSysMsgAdapter.10
  * JD-Core Version:    0.7.0.1
  */

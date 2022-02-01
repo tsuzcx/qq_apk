@@ -14,9 +14,9 @@ import com.tencent.mobileqq.qroute.QRoute;
 public class PrinterSendBarManager
   extends QFileCustomBottomBarManager
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new PrinterSendBarManager.1(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  private TextView g;
+  private TextView h;
+  private View.OnClickListener i = new PrinterSendBarManager.1(this);
   
   public PrinterSendBarManager(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
@@ -26,24 +26,24 @@ public class PrinterSendBarManager
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377187));
-    this.b = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371932));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.g = ((TextView)this.c.a(2131445568));
+    this.h = ((TextView)this.c.a(2131439377));
+    this.g.setOnClickListener(this.i);
   }
   
   public void a()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692266));
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692531));
+    ((StringBuilder)localObject1).append(this.a.getString(2131889253));
+    ((StringBuilder)localObject1).append(this.a.getString(2131889554));
     ((StringBuilder)localObject1).append(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount());
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692532));
+    ((StringBuilder)localObject1).append(this.a.getString(2131889555));
     Object localObject2 = ((StringBuilder)localObject1).toString();
     long l = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedFileSize();
     if (l > 0L)
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692333));
+      ((StringBuilder)localObject1).append(this.a.getString(2131889321));
       ((StringBuilder)localObject1).append(FileUtil.a(l));
       localObject1 = ((StringBuilder)localObject1).toString();
     }
@@ -51,8 +51,8 @@ public class PrinterSendBarManager
     {
       localObject1 = "";
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-    localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.g.setText((CharSequence)localObject2);
+    localObject2 = this.g;
     boolean bool;
     if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount() > 0L) {
       bool = true;
@@ -60,18 +60,18 @@ public class PrinterSendBarManager
       bool = false;
     }
     ((TextView)localObject2).setEnabled(bool);
-    this.b.setText((CharSequence)localObject1);
+    this.h.setText((CharSequence)localObject1);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.sendbar.PrinterSendBarManager
  * JD-Core Version:    0.7.0.1
  */

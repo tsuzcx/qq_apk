@@ -12,12 +12,12 @@ class AIOIceBreakShow$5
   
   public void run()
   {
-    ((IceBreakingMng)AIOIceBreakShow.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).i(AIOIceBreakShow.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((IceBreakingMng)AIOIceBreakShow.e(this.this$0).d.getManager(QQManagerFactory.ICE_BREAKING_MNG)).o(AIOIceBreakShow.e(this.this$0).ah.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow.5
  * JD-Core Version:    0.7.0.1
  */

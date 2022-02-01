@@ -10,6 +10,7 @@ public class QCircleFrameEvent
   public static final int REFRESH_TAB_INDEX_FOLLOW = 2;
   public static final int REFRESH_TAB_INDEX_NEARBY = 3;
   public static final int REFRESH_TAB_INDEX_RECOMMEND = 1;
+  public boolean mAddTab = false;
   public String mBackgroundColor = "#FAFAFB";
   public boolean mIsNeedExposeTab = false;
   public boolean mIsRefreshRedNum = false;
@@ -26,7 +27,7 @@ public class QCircleFrameEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.event.QCircleFrameEvent
  * JD-Core Version:    0.7.0.1
  */

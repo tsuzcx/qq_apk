@@ -7,17 +7,17 @@ class EditVideoDoodle$7
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Int == 2) {
-      this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.g();
-    } else if (this.this$0.jdField_a_of_type_Int == 3) {
-      this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.t();
+    if (this.this$0.e == 2) {
+      this.this$0.t.o();
+    } else if (this.this$0.e == 3) {
+      this.this$0.t.E();
     }
-    this.this$0.jdField_a_of_type_Int = 1;
+    this.this$0.e = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoDoodle.7
  * JD-Core Version:    0.7.0.1
  */

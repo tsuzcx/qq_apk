@@ -18,13 +18,13 @@ import org.jetbrains.annotations.Nullable;
 public final class RoundProgressView
   extends TextView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b = 100;
-  private int c;
+  private final Paint a = new Paint();
+  private int b;
+  private float c;
+  private int d = 100;
+  private RectF e;
+  private int f;
+  private boolean g = true;
   
   public RoundProgressView(@NotNull Context paramContext)
   {
@@ -34,48 +34,58 @@ public final class RoundProgressView
   public RoundProgressView(@NotNull Context paramContext, @NotNull AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.k);
-    this.jdField_a_of_type_Int = paramContext.getColor(R.styleable.H, -16776961);
-    this.jdField_a_of_type_Float = paramContext.getDimension(R.styleable.I, 4.0F);
-    setCurrentProgress(paramContext.getInteger(R.styleable.F, 0));
-    this.b = paramContext.getInteger(R.styleable.G, 100);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.P);
+    this.b = paramContext.getColor(R.styleable.S, -16776961);
+    this.c = paramContext.getDimension(R.styleable.T, 4.0F);
+    setCurrentProgress(paramContext.getInteger(R.styleable.Q, 0));
+    this.d = paramContext.getInteger(R.styleable.R, 100);
     paramContext.recycle();
+  }
+  
+  public final int getCurrentProgress()
+  {
+    return this.f;
+  }
+  
+  public final boolean getNeedNumProgress()
+  {
+    return this.g;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.a.setStrokeWidth(this.c);
+    this.a.setColor(this.b);
+    this.a.setStyle(Paint.Style.STROKE);
+    this.a.setAntiAlias(true);
   }
   
   protected void onDraw(@Nullable Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     float f2 = getWidth() / 2;
-    float f3 = f2 - this.jdField_a_of_type_Float / 2;
-    if (this.jdField_a_of_type_AndroidGraphicsRectF == null)
+    float f3 = f2 - this.c / 2;
+    if (this.e == null)
     {
       f1 = f2 - f3;
       f2 += f3;
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f1, f1, f2, f2);
+      this.e = new RectF(f1, f1, f2, f2);
     }
-    float f1 = this.c * 360.0F / this.b;
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f1 = this.f * 360.0F / this.d;
+    RectF localRectF = this.e;
     if ((localRectF != null) && (paramCanvas != null)) {
-      paramCanvas.drawArc(localRectF, -90.0F, f1, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawArc(localRectF, -90.0F, f1, false, this.a);
     }
   }
   
   public final void setCurrentProgress(int paramInt)
   {
-    this.c = paramInt;
+    this.f = paramInt;
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
-      paramInt = this.c * 100 / this.b;
+      paramInt = this.f * 100 / this.d;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append('%');
@@ -90,12 +100,12 @@ public final class RoundProgressView
   
   public final void setNeedNumProgress(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(this.f);
       ((StringBuilder)localObject).append('%');
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -108,7 +118,7 @@ public final class RoundProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.RoundProgressView
  * JD-Core Version:    0.7.0.1
  */

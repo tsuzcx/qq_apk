@@ -5,56 +5,45 @@ import com.tencent.mobileqq.jsonconverter.Alias;
 public class ResInfo
 {
   @Alias(a="resType")
-  public int a;
-  @Alias(a="sourceUrl")
-  public String a;
-  @Alias(a="downloading")
-  public boolean a;
+  public int a = 0;
   @Alias(a="sourceId")
-  public int b;
+  public int b = 0;
+  @Alias(a="sourceUrl")
+  public String c = "";
   @Alias(a="sourceMd5")
-  public String b;
-  @Alias(a="predownload")
-  public int c;
+  public String d = "";
   @Alias(a="name")
-  public String c;
+  public String e = "";
+  @Alias(a="predownload")
+  public int f = 1;
+  @Alias(a="downloading")
+  public boolean g = false;
   @Alias(a="isShow")
-  public int d = 1;
+  public int h = 1;
   @Alias(a="showInApp")
-  public int e;
+  public int i;
   @Alias(a="orderIndex")
-  public int f = 0;
-  
-  public ResInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public int j = 0;
   
   ResInfo a(ResInfo paramResInfo)
   {
     ResInfo localResInfo = new ResInfo();
-    localResInfo.jdField_a_of_type_Int = paramResInfo.jdField_a_of_type_Int;
-    localResInfo.jdField_b_of_type_Int = paramResInfo.jdField_b_of_type_Int;
-    localResInfo.jdField_a_of_type_JavaLangString = paramResInfo.jdField_a_of_type_JavaLangString;
-    localResInfo.jdField_b_of_type_JavaLangString = paramResInfo.jdField_b_of_type_JavaLangString;
-    localResInfo.jdField_c_of_type_JavaLangString = paramResInfo.jdField_c_of_type_JavaLangString;
-    localResInfo.jdField_c_of_type_Int = paramResInfo.jdField_c_of_type_Int;
-    localResInfo.jdField_a_of_type_Boolean = paramResInfo.jdField_a_of_type_Boolean;
+    localResInfo.a = paramResInfo.a;
+    localResInfo.b = paramResInfo.b;
+    localResInfo.c = paramResInfo.c;
     localResInfo.d = paramResInfo.d;
     localResInfo.e = paramResInfo.e;
     localResInfo.f = paramResInfo.f;
+    localResInfo.g = paramResInfo.g;
+    localResInfo.h = paramResInfo.h;
+    localResInfo.i = paramResInfo.i;
+    localResInfo.j = paramResInfo.j;
     return localResInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ResInfo
  * JD-Core Version:    0.7.0.1
  */

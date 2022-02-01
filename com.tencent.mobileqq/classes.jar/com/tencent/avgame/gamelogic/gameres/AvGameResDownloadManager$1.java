@@ -23,8 +23,8 @@ class AvGameResDownloadManager$1
     }
     if (paramInt == 0)
     {
-      localObject = AvGameConfigUtil.a().a();
-      String str = AvGameConfigUtil.a().b();
+      localObject = AvGameConfigUtil.a().b();
+      String str = AvGameConfigUtil.a().c();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();

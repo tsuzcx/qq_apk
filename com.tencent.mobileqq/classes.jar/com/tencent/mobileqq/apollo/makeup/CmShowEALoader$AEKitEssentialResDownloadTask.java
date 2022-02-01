@@ -22,16 +22,6 @@ public final class CmShowEALoader$AEKitEssentialResDownloadTask
     super(paramContext);
   }
   
-  @NotNull
-  public final String a()
-  {
-    String str = this.a;
-    if (str == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("materialPath");
-    }
-    return str;
-  }
-  
   public void a()
   {
     long l = System.currentTimeMillis();
@@ -46,10 +36,20 @@ public final class CmShowEALoader$AEKitEssentialResDownloadTask
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
     this.a = paramString;
   }
+  
+  @NotNull
+  public final String b()
+  {
+    String str = this.a;
+    if (str == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("materialPath");
+    }
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowEALoader.AEKitEssentialResDownloadTask
  * JD-Core Version:    0.7.0.1
  */

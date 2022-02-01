@@ -29,6 +29,7 @@ public class AdClickUtil$Params
   public boolean videoPlayForced = false;
   public boolean videoSpliceSupported = false;
   public long videoStartPositionMillis = 0L;
+  public String widthHeightRatioOfVerticalVideoCeiling;
   
   public boolean isValid()
   {

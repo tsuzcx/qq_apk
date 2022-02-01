@@ -9,7 +9,7 @@ class ForwardPreviewTroopMemberController$TroopMemberRecyclerViewAdapter$1
   
   public int getSpanSize(int paramInt)
   {
-    if (this.a.getItemViewType(paramInt) == ForwardPreviewTroopMemberController.b) {
+    if (this.a.getItemViewType(paramInt) == ForwardPreviewTroopMemberController.f) {
       return 5;
     }
     return 1;
@@ -17,7 +17,7 @@ class ForwardPreviewTroopMemberController$TroopMemberRecyclerViewAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.TroopMemberRecyclerViewAdapter.1
  * JD-Core Version:    0.7.0.1
  */

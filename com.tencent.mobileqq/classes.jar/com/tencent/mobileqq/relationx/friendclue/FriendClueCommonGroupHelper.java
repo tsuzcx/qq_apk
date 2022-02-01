@@ -24,61 +24,61 @@ import java.util.ArrayList;
 public class FriendClueCommonGroupHelper
   implements Handler.Callback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IntimateInfo jdField_a_of_type_ComTencentMobileqqDataIntimateInfo;
-  private IntimateInfoHandler jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler;
-  IntimateInfoObserver jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver = new FriendClueCommonGroupHelper.2(this);
-  private String jdField_a_of_type_JavaLangString;
+  IntimateInfoObserver a = new FriendClueCommonGroupHelper.2(this);
+  private IntimateInfoHandler b;
+  private Context c;
+  private String d;
+  private IntimateInfo e;
+  private QQAppInterface f;
+  private Handler g;
   
   public FriendClueCommonGroupHelper(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.c = paramContext;
+    this.f = paramQQAppInterface;
+    this.g = new Handler(Looper.getMainLooper(), this);
   }
   
   void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.commonTroopInfoList != null)
+    if (this.e.commonTroopInfoList != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("FriendClueCommonGroupHelper", 2, "get intimateInfo finished");
       }
       localObject = new Intent();
       ((Intent)localObject).addFlags(268435456);
-      ((Intent)localObject).putParcelableArrayListExtra("common_troop_list", (ArrayList)this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.commonTroopInfoList);
+      ((Intent)localObject).putParcelableArrayListExtra("common_troop_list", (ArrayList)this.e.commonTroopInfoList);
       ((Intent)localObject).putExtra("report_friend_type", 1);
-      PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, CommonTroopListActivity.class);
+      PublicFragmentActivity.a(this.c, (Intent)localObject, CommonTroopListActivity.class);
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.d;
     if (localObject != null)
     {
       TroopWithCommonFriendsFragment.a((String)localObject);
-      TroopWithCommonFriendsFragment.a(this.jdField_a_of_type_AndroidContentContext, 2);
+      TroopWithCommonFriendsFragment.a(this.c, 2);
     }
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+      if (NetworkUtil.isNetworkAvailable(this.c))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler == null) {
-          this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler = ((IntimateInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER));
+        if (this.b == null) {
+          this.b = ((IntimateInfoHandler)this.f.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER));
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver);
-        this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoHandler.a(paramString, false);
-        paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        this.f.addObserver(this.a);
+        this.b.a(paramString, false);
+        paramString = this.g.obtainMessage();
         paramString.what = 1;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, 10000L);
+        this.g.sendMessageDelayed(paramString, 10000L);
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new FriendClueCommonGroupHelper.1(this));
+      this.g.post(new FriendClueCommonGroupHelper.1(this));
       if (QLog.isColorLevel()) {
         QLog.d("FriendClueCommonGroupHelper", 1, String.format("requestIntimateInfo network is not available, uin: %s", new Object[] { paramString }));
       }
@@ -87,7 +87,7 @@ public class FriendClueCommonGroupHelper
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver);
+    this.f.removeObserver(this.a);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -95,15 +95,15 @@ public class FriendClueCommonGroupHelper
     if (paramMessage.what != 1) {
       return true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoObserver);
-    paramMessage = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693432);
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, paramMessage, 1).a();
+    this.f.removeObserver(this.a);
+    paramMessage = this.c.getResources().getString(2131890981);
+    QQToast.makeText(this.c, 1, paramMessage, 1).show();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueCommonGroupHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,14 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
+import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.adapter.image.HippyDrawable;
 import com.tencent.mtt.hippy.adapter.image.HippyImageLoader;
 import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.uimanager.HippyViewEvent;
 import com.tencent.mtt.hippy.utils.UIThreadUtils;
 import com.tencent.mtt.hippy.utils.UrlUtils;
+import com.tencent.mtt.hippy.views.image.HippyImageView.ImageEvent;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 
@@ -27,24 +30,19 @@ public class c
   private int c;
   private int d;
   private String e;
-  private WeakReference<ImageNode> f;
+  private final WeakReference<ImageNode> f;
   private int g = 0;
   private int h;
-  private HippyImageLoader i;
-  private Movie j = null;
-  private int k = -1;
+  private final HippyImageLoader i;
+  private final HippyEngineContext j;
+  private Movie k = null;
   private int l = 0;
-  private int m = 0;
-  private int n = 0;
-  private float o = 1.0F;
-  private float p = 1.0F;
-  private boolean q = false;
-  private int r = 0;
-  private long s = -1L;
+  private long m = -1L;
   
-  public c(Drawable paramDrawable, String paramString, ImageNode paramImageNode, HippyImageLoader paramHippyImageLoader)
+  public c(Drawable paramDrawable, String paramString, ImageNode paramImageNode, HippyImageLoader paramHippyImageLoader, HippyEngineContext paramHippyEngineContext)
   {
     super(paramDrawable, paramString, paramImageNode.getVerticalAlignment());
+    this.j = paramHippyEngineContext;
     this.f = new WeakReference(paramImageNode);
     this.i = paramHippyImageLoader;
     b(paramString);
@@ -58,24 +56,24 @@ public class c
       localObject = (ImageNode)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        int i3 = Math.round(((ImageNode)localObject).getStyleWidth());
-        int i4 = Math.round(((ImageNode)localObject).getStyleHeight());
+        int i2 = Math.round(((ImageNode)localObject).getStyleWidth());
+        int i3 = Math.round(((ImageNode)localObject).getStyleHeight());
         float f1 = ((ImageNode)localObject).getPosition(1);
-        int i2 = 0;
+        int i1 = 0;
         float f2 = ((ImageNode)localObject).getPosition(0);
-        int i1;
-        if (f2 == (0.0F / 0.0F)) {
-          i1 = 0;
+        int n;
+        if (Float.isNaN(f2)) {
+          n = 0;
         } else {
-          i1 = Math.round(f2);
+          n = Math.round(f2);
         }
-        if (f1 != (0.0F / 0.0F)) {
-          i2 = Math.round(f1);
+        if (!Float.isNaN(f1)) {
+          i1 = Math.round(f1);
         }
-        this.a = i1;
-        this.b = i2;
-        this.c = i3;
-        this.d = i4;
+        this.a = n;
+        this.b = i1;
+        this.c = i2;
+        this.d = i3;
         this.h = ((ImageNode)localObject).getVerticalAlignment();
       }
     }
@@ -90,7 +88,7 @@ public class c
       if (localObject != null)
       {
         localObject = ((ImageNode)localObject).getParent();
-        if ((localObject != null) && ((localObject instanceof TextNode))) {
+        if ((localObject instanceof TextNode)) {
           ((TextNode)localObject).postInvalidateDelayed(paramLong);
         }
       }
@@ -99,41 +97,39 @@ public class c
   
   private void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    Movie localMovie = this.j;
+    Movie localMovie = this.k;
     if (localMovie == null) {
       return;
     }
-    int i2 = localMovie.duration();
-    int i1 = i2;
-    if (i2 == 0) {
-      i1 = 1000;
+    int i1 = localMovie.duration();
+    int n = i1;
+    if (i1 == 0) {
+      n = 1000;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.s;
+    long l2 = this.m;
     if (l2 != -1L)
     {
-      this.r = ((int)(this.r + (l1 - l2)));
-      if (this.r > i1) {
-        this.r = 0;
+      this.l = ((int)(this.l + (l1 - l2)));
+      if (this.l > n) {
+        this.l = 0;
       }
     }
-    this.s = l1;
-    this.o = (paramInt1 / this.j.width());
-    this.p = (paramInt2 / this.j.height());
-    float f2 = this.o;
+    this.m = l1;
+    float f2 = paramInt1 / this.k.width();
+    float f3 = paramInt2 / this.k.height();
     float f1 = paramFloat1;
     if (f2 != 0.0F) {
       f1 = paramFloat1 / f2;
     }
-    f2 = this.p;
     paramFloat1 = paramFloat2;
-    if (f2 != 0.0F) {
-      paramFloat1 = paramFloat2 / f2;
+    if (f3 != 0.0F) {
+      paramFloat1 = paramFloat2 / f3;
     }
-    this.j.setTime(this.r);
+    this.k.setTime(this.l);
     paramCanvas.save();
-    paramCanvas.scale(this.o, this.p);
-    this.j.draw(paramCanvas, f1, paramFloat1);
+    paramCanvas.scale(f2, f3);
+    this.k.draw(paramCanvas, f1, paramFloat1);
     paramCanvas.restore();
     a(40L);
   }
@@ -146,17 +142,17 @@ public class c
       if (localObject != null)
       {
         paramHippyDrawable = new BitmapDrawable((Bitmap)localObject);
-        int i2 = this.c;
-        int i1 = i2;
+        int i1 = this.c;
+        int n = i1;
+        if (i1 == 0) {
+          n = paramHippyDrawable.getIntrinsicWidth();
+        }
+        int i2 = this.d;
+        i1 = i2;
         if (i2 == 0) {
-          i1 = paramHippyDrawable.getIntrinsicWidth();
+          i1 = paramHippyDrawable.getIntrinsicHeight();
         }
-        int i3 = this.d;
-        i2 = i3;
-        if (i3 == 0) {
-          i2 = paramHippyDrawable.getIntrinsicHeight();
-        }
-        paramHippyDrawable.setBounds(0, 0, i1, i2);
+        paramHippyDrawable.setBounds(0, 0, n, i1);
         try
         {
           localObject = ImageSpan.class.getDeclaredField("mDrawable");
@@ -175,12 +171,43 @@ public class c
           paramHippyDrawable.printStackTrace();
         }
       }
-      else if (paramHippyDrawable.isAnimated())
+      else
       {
-        this.j = paramHippyDrawable.getGIF();
+        if (!paramHippyDrawable.isAnimated()) {
+          break label151;
+        }
+        this.k = paramHippyDrawable.getGIF();
       }
-      a(0L);
       this.g = 2;
+      break label156;
+      label151:
+      this.g = 0;
+      label156:
+      a(0L);
+      return;
+    }
+    this.g = 0;
+  }
+  
+  private void a(HippyImageView.ImageEvent paramImageEvent)
+  {
+    Object localObject = this.f;
+    if (localObject == null) {
+      return;
+    }
+    ImageNode localImageNode = (ImageNode)((WeakReference)localObject).get();
+    if (localImageNode == null) {
+      return;
+    }
+    if (paramImageEvent == HippyImageView.ImageEvent.ONLOAD) {
+      localObject = "onLoad";
+    } else if (paramImageEvent == HippyImageView.ImageEvent.ONERROR) {
+      localObject = "onError";
+    } else {
+      localObject = null;
+    }
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (localImageNode.isEnableImageEvent(paramImageEvent))) {
+      new HippyViewEvent((String)localObject).send(localImageNode.getId(), this.j, null);
     }
   }
   
@@ -192,24 +219,24 @@ public class c
   
   private void c(String paramString)
   {
-    if ((TextUtils.isEmpty(this.e)) || (!this.e.equals(paramString)))
+    if ((!TextUtils.isEmpty(this.e)) && (this.e.equals(paramString)) && (this.g != 0)) {
+      return;
+    }
+    this.e = paramString;
+    this.g = 0;
+    a();
+    if (this.i != null)
     {
-      this.e = paramString;
-      this.g = 0;
-      a();
-      if (this.i != null)
+      if (a(this.e))
       {
-        if (a(this.e))
-        {
-          paramString = new HippyMap();
-          paramString.pushBoolean("isGif", false);
-          paramString.pushInt("width", this.c);
-          paramString.pushInt("height", this.d);
-          a(this.e, paramString, this.i);
-          return;
-        }
-        a(this.i.getImage(this.e, null));
+        paramString = new HippyMap();
+        paramString.pushBoolean("isGif", false);
+        paramString.pushInt("width", this.c);
+        paramString.pushInt("height", this.d);
+        a(this.e, paramString, this.i);
+        return;
       }
+      a(this.i.getImage(this.e, null));
     }
   }
   
@@ -220,6 +247,9 @@ public class c
   
   public void b(String paramString)
   {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
     if (UIThreadUtils.isOnUiThread())
     {
       c(paramString);
@@ -231,7 +261,7 @@ public class c
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
     Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-    Movie localMovie = this.j;
+    Movie localMovie = this.k;
     if (localMovie != null)
     {
       paramInt2 = this.c;
@@ -242,7 +272,7 @@ public class c
       paramInt3 = this.d;
       paramInt2 = paramInt3;
       if (paramInt3 == 0) {
-        paramInt2 = this.j.height();
+        paramInt2 = this.k.height();
       }
       paramInt3 = (localFontMetricsInt.descent + paramInt4 + paramInt4 + localFontMetricsInt.ascent) / 2;
       paramInt4 = paramInt2 / 2;
@@ -265,7 +295,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.c
  * JD-Core Version:    0.7.0.1
  */

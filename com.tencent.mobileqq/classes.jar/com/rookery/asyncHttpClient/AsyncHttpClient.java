@@ -43,22 +43,22 @@ import org.apache.http.protocol.SyncBasicHttpContext;
 
 public class AsyncHttpClient
 {
-  private static int jdField_a_of_type_Int = 6;
-  private static String jdField_a_of_type_JavaLangString = "UTF-8";
-  private static int jdField_b_of_type_Int = 10000;
-  private final Map<Context, List<WeakReference<Future<?>>>> jdField_a_of_type_JavaUtilMap;
-  private ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  private final DefaultHttpClient jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient;
-  private final HttpContext jdField_a_of_type_OrgApacheHttpProtocolHttpContext;
-  private final Map<String, String> jdField_b_of_type_JavaUtilMap;
+  private static String a = "UTF-8";
+  private static int b = 6;
+  private static int c = 10000;
+  private final DefaultHttpClient d;
+  private final HttpContext e;
+  private ThreadPoolExecutor f;
+  private final Map<Context, List<WeakReference<Future<?>>>> g;
+  private final Map<String, String> h;
   
   public AsyncHttpClient()
   {
     BasicHttpParams localBasicHttpParams = new BasicHttpParams();
-    ConnManagerParams.setTimeout(localBasicHttpParams, jdField_b_of_type_Int);
+    ConnManagerParams.setTimeout(localBasicHttpParams, c);
     try
     {
-      ConnManagerParams.setMaxConnectionsPerRoute(localBasicHttpParams, new ConnPerRouteBean(jdField_a_of_type_Int));
+      ConnManagerParams.setMaxConnectionsPerRoute(localBasicHttpParams, new ConnPerRouteBean(b));
       ConnManagerParams.setMaxTotalConnections(localBasicHttpParams, 6);
     }
     catch (NoSuchMethodError localNoSuchMethodError1)
@@ -67,8 +67,8 @@ public class AsyncHttpClient
       {
         for (;;)
         {
-          HttpConnectionParams.setSoTimeout(localBasicHttpParams, jdField_b_of_type_Int);
-          HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, jdField_b_of_type_Int);
+          HttpConnectionParams.setSoTimeout(localBasicHttpParams, c);
+          HttpConnectionParams.setConnectionTimeout(localBasicHttpParams, c);
           HttpConnectionParams.setTcpNoDelay(localBasicHttpParams, true);
           HttpConnectionParams.setSocketBufferSize(localBasicHttpParams, 8192);
           HttpProtocolParams.setVersion(localBasicHttpParams, HttpVersion.HTTP_1_1);
@@ -99,14 +99,14 @@ public class AsyncHttpClient
             ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
           }
           localObject1 = new ThreadSafeClientConnManager(localBasicHttpParams, (SchemeRegistry)localObject1);
-          this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext = new SyncBasicHttpContext(new BasicHttpContext());
-          this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient = new DefaultHttpClient((ClientConnectionManager)localObject1, localBasicHttpParams);
-          this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addRequestInterceptor(new AsyncHttpClient.2(this));
-          this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addResponseInterceptor(new AsyncHttpClient.3(this));
-          this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.setHttpRequestRetryHandler(new RetryHandler(3));
-          this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = ((ThreadPoolExecutor)Executors.newCachedThreadPool());
-          this.jdField_a_of_type_JavaUtilMap = new WeakHashMap();
-          this.jdField_b_of_type_JavaUtilMap = new HashMap();
+          this.e = new SyncBasicHttpContext(new BasicHttpContext());
+          this.d = new DefaultHttpClient((ClientConnectionManager)localObject1, localBasicHttpParams);
+          this.d.addRequestInterceptor(new AsyncHttpClient.2(this));
+          this.d.addResponseInterceptor(new AsyncHttpClient.3(this));
+          this.d.setHttpRequestRetryHandler(new RetryHandler(3));
+          this.f = ((ThreadPoolExecutor)Executors.newCachedThreadPool());
+          this.g = new WeakHashMap();
+          this.h = new HashMap();
           return;
           localNoSuchMethodError1 = localNoSuchMethodError1;
         }
@@ -130,7 +130,7 @@ public class AsyncHttpClient
         Pair localPair = (Pair)paramList.next();
         ((List)localObject).add(new BasicNameValuePair((String)localPair.first, (String)localPair.second));
       }
-      paramList = URLEncodedUtils.format((List)localObject, jdField_a_of_type_JavaLangString);
+      paramList = URLEncodedUtils.format((List)localObject, a);
       if (paramString.indexOf("?") == -1)
       {
         localObject = new StringBuilder();
@@ -154,7 +154,7 @@ public class AsyncHttpClient
     if (paramArrayOfHeader != null) {
       paramString.setHeaders(paramArrayOfHeader);
     }
-    a(this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext, paramString, null, paramAsyncHttpResponseHandler, paramContext);
+    a(this.d, this.e, paramString, null, paramAsyncHttpResponseHandler, paramContext);
   }
   
   public void a(Context paramContext, String paramString1, Header[] paramArrayOfHeader, HttpEntity paramHttpEntity, String paramString2, AsyncHttpResponseHandler paramAsyncHttpResponseHandler)
@@ -166,12 +166,12 @@ public class AsyncHttpClient
     if (paramArrayOfHeader != null) {
       paramString1.setHeaders(paramArrayOfHeader);
     }
-    a(this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext, paramString1, paramString2, paramAsyncHttpResponseHandler, paramContext);
+    a(this.d, this.e, paramString1, paramString2, paramAsyncHttpResponseHandler, paramContext);
   }
   
   public void a(Context paramContext, boolean paramBoolean)
   {
-    Object localObject = (List)this.jdField_a_of_type_JavaUtilMap.get(paramContext);
+    Object localObject = (List)this.g.get(paramContext);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -191,7 +191,7 @@ public class AsyncHttpClient
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilMap.remove(paramContext);
+    this.g.remove(paramContext);
   }
   
   protected void a(DefaultHttpClient paramDefaultHttpClient, HttpContext paramHttpContext, HttpUriRequest paramHttpUriRequest, String paramString, AsyncHttpResponseHandler paramAsyncHttpResponseHandler, Context paramContext)
@@ -199,15 +199,15 @@ public class AsyncHttpClient
     if (paramString != null) {
       paramHttpUriRequest.addHeader("Content-Type", paramString);
     }
-    paramHttpUriRequest = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(new AsyncHttpRequest(paramDefaultHttpClient, paramHttpContext, paramHttpUriRequest, paramAsyncHttpResponseHandler));
+    paramHttpUriRequest = this.f.submit(new AsyncHttpRequest(paramDefaultHttpClient, paramHttpContext, paramHttpUriRequest, paramAsyncHttpResponseHandler));
     if (paramContext != null)
     {
-      paramHttpContext = (List)this.jdField_a_of_type_JavaUtilMap.get(paramContext);
+      paramHttpContext = (List)this.g.get(paramContext);
       paramDefaultHttpClient = paramHttpContext;
       if (paramHttpContext == null)
       {
         paramDefaultHttpClient = new LinkedList();
-        this.jdField_a_of_type_JavaUtilMap.put(paramContext, paramDefaultHttpClient);
+        this.g.put(paramContext, paramDefaultHttpClient);
       }
       paramDefaultHttpClient.add(new WeakReference(paramHttpUriRequest));
     }

@@ -20,13 +20,13 @@ public class FriendChooser$GridViewAdapter
   
   public int getCount()
   {
-    return this.a.b.size();
+    return this.a.B.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
-      return this.a.b.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.B.size())) {
+      return this.a.B.get(paramInt);
     }
     return null;
   }
@@ -38,8 +38,8 @@ public class FriendChooser$GridViewAdapter
     if (paramView == null)
     {
       localObject = new FriendChooser.ViewHolder();
-      paramView = this.a.getLayoutInflater().inflate(2131559277, null);
-      ((FriendChooser.ViewHolder)localObject).a = ((ImageView)paramView.findViewById(2131366401));
+      paramView = this.a.getLayoutInflater().inflate(2131625198, null);
+      ((FriendChooser.ViewHolder)localObject).c = ((ImageView)paramView.findViewById(2131432714));
       paramView.setTag(localObject);
     }
     else
@@ -53,18 +53,18 @@ public class FriendChooser$GridViewAdapter
     else
     {
       if ((localFriend.d == null) || ("".equals(localFriend.d))) {
-        localFriend.d = QZonePortraitData.a(this.a.a(), localFriend.a);
+        localFriend.d = QZonePortraitData.a(this.a.i(), localFriend.a);
       }
       Bitmap localBitmap = ImageLoader.a().a(localFriend.d);
       if (localBitmap == null)
       {
-        ((FriendChooser.ViewHolder)localObject).a.setImageResource(2130840321);
-        localObject = ((FriendChooser.ViewHolder)localObject).a;
+        ((FriendChooser.ViewHolder)localObject).c.setImageResource(2130841060);
+        localObject = ((FriendChooser.ViewHolder)localObject).c;
         ImageLoader.a().a(localFriend.d, new FriendChooser.GridViewAdapter.1(this, (ImageView)localObject));
       }
       else
       {
-        ((FriendChooser.ViewHolder)localObject).a.setImageBitmap(localBitmap);
+        ((FriendChooser.ViewHolder)localObject).c.setImageBitmap(localBitmap);
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
@@ -73,7 +73,7 @@ public class FriendChooser$GridViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.FriendChooser.GridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

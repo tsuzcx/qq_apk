@@ -1,12 +1,12 @@
 package com.tencent.mm.opensdk.openapi;
 
+import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build.VERSION;
@@ -15,7 +15,6 @@ import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.channel.a.a;
 import com.tencent.mm.opensdk.channel.a.a.a;
-import com.tencent.mm.opensdk.channel.a.b;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelbiz.AddCardToWXCardPackage.Resp;
@@ -28,12 +27,22 @@ import com.tencent.mm.opensdk.modelbiz.SubscribeMessage.Req;
 import com.tencent.mm.opensdk.modelbiz.SubscribeMessage.Resp;
 import com.tencent.mm.opensdk.modelbiz.SubscribeMiniProgramMsg.Req;
 import com.tencent.mm.opensdk.modelbiz.SubscribeMiniProgramMsg.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenFeed.Req;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenFeed.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenLive.Req;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenLive.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenProfile.Req;
+import com.tencent.mm.opensdk.modelbiz.WXChannelOpenProfile.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXChannelShareVideo.Req;
+import com.tencent.mm.opensdk.modelbiz.WXChannelShareVideo.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXInvoiceAuthInsert.Req;
 import com.tencent.mm.opensdk.modelbiz.WXInvoiceAuthInsert.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Req;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgramWithToken.Req;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgramWithToken.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXLaunchWxaRedirectingPage.Req;
+import com.tencent.mm.opensdk.modelbiz.WXLaunchWxaRedirectingPage.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXNontaxPay.Req;
 import com.tencent.mm.opensdk.modelbiz.WXNontaxPay.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXOpenBusinessView.Req;
@@ -44,11 +53,14 @@ import com.tencent.mm.opensdk.modelbiz.WXPayInsurance.Req;
 import com.tencent.mm.opensdk.modelbiz.WXPayInsurance.Resp;
 import com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgram.Req;
 import com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgram.Resp;
+import com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgramEnvironment.Req;
+import com.tencent.mm.opensdk.modelbiz.WXPreloadMiniProgramEnvironment.Resp;
 import com.tencent.mm.opensdk.modelmsg.GetMessageFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.LaunchFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.SendAuth.Resp;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Resp;
+import com.tencent.mm.opensdk.modelmsg.SendTdiAuth.Resp;
 import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
@@ -59,8 +71,10 @@ import com.tencent.mm.opensdk.modelpay.PayResp;
 import com.tencent.mm.opensdk.modelpay.WXJointPay.JointPayResp;
 import com.tencent.mm.opensdk.utils.ILog;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -76,19 +90,24 @@ class BaseWXApiImplV10
   protected boolean checkSignature = false;
   protected Context context;
   protected boolean detached = false;
+  private int launchMode = 2;
   private int wxSdkVersion;
   
-  BaseWXApiImplV10(Context paramContext, String paramString, boolean paramBoolean)
+  BaseWXApiImplV10(Context paramContext, String paramString, boolean paramBoolean, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("<init>, appId = ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<init>, appId = ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(", checkSignature = ");
     localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", launchMode = ");
+    localStringBuilder.append(paramInt);
     Log.d("MicroMsg.SDK.WXApiImplV10", localStringBuilder.toString());
     this.context = paramContext;
     this.appId = paramString;
     this.checkSignature = paramBoolean;
-    d.D = paramContext.getApplicationContext();
+    this.launchMode = paramInt;
+    b.a = paramContext.getApplicationContext();
   }
   
   private boolean checkSumConsistent(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -124,11 +143,12 @@ class BaseWXApiImplV10
   
   private String getTokenFromWX(Context paramContext)
   {
-    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/genTokenForOpenSdk"), null, null, new String[] { this.appId, "621086464" }, null);
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/genTokenForOpenSdk"), null, null, new String[] { this.appId, "637992960" }, null);
     if ((paramContext != null) && (paramContext.moveToFirst()))
     {
       String str = paramContext.getString(0);
-      StringBuilder localStringBuilder = new StringBuilder("getTokenFromWX token is ");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTokenFromWX token is ");
       localStringBuilder.append(str);
       Log.i("MicroMsg.SDK.WXApiImplV10", localStringBuilder.toString());
       paramContext.close();
@@ -139,17 +159,19 @@ class BaseWXApiImplV10
   
   private boolean handleWxInternalRespType(String paramString, IWXAPIEventHandler paramIWXAPIEventHandler)
   {
-    Object localObject1 = new StringBuilder("handleWxInternalRespType, extInfo = ");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("handleWxInternalRespType, extInfo = ");
     ((StringBuilder)localObject1).append(paramString);
     Log.i("MicroMsg.SDK.WXApiImplV10", ((StringBuilder)localObject1).toString());
     try
     {
       paramString = Uri.parse(paramString);
       localObject1 = paramString.getQueryParameter("wx_internal_resptype");
-      Object localObject2 = new StringBuilder("handleWxInternalRespType, respType = ");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("handleWxInternalRespType, respType = ");
       ((StringBuilder)localObject2).append((String)localObject1);
       Log.i("MicroMsg.SDK.WXApiImplV10", ((StringBuilder)localObject2).toString());
-      if (d.b((String)localObject1))
+      if (b.b((String)localObject1))
       {
         Log.e("MicroMsg.SDK.WXApiImplV10", "handleWxInternalRespType fail, respType is null");
         return false;
@@ -160,11 +182,11 @@ class BaseWXApiImplV10
         localObject1 = new SubscribeMessage.Resp();
         localObject2 = paramString.getQueryParameter("ret");
         if ((localObject2 != null) && (((String)localObject2).length() > 0)) {
-          ((SubscribeMessage.Resp)localObject1).errCode = d.c((String)localObject2);
+          ((BaseResp)localObject1).errCode = b.a((String)localObject2, 0);
         }
-        ((SubscribeMessage.Resp)localObject1).openId = paramString.getQueryParameter("openid");
+        ((BaseResp)localObject1).openId = paramString.getQueryParameter("openid");
         ((SubscribeMessage.Resp)localObject1).templateID = paramString.getQueryParameter("template_id");
-        ((SubscribeMessage.Resp)localObject1).scene = d.c(paramString.getQueryParameter("scene"));
+        ((SubscribeMessage.Resp)localObject1).scene = b.a(paramString.getQueryParameter("scene"), 0);
         ((SubscribeMessage.Resp)localObject1).action = paramString.getQueryParameter("action");
         ((SubscribeMessage.Resp)localObject1).reserved = paramString.getQueryParameter("reserved");
         paramIWXAPIEventHandler.onResp((BaseResp)localObject1);
@@ -176,7 +198,7 @@ class BaseWXApiImplV10
         localObject1 = new WXInvoiceAuthInsert.Resp();
         localObject2 = paramString.getQueryParameter("ret");
         if ((localObject2 != null) && (((String)localObject2).length() > 0)) {
-          ((WXInvoiceAuthInsert.Resp)localObject1).errCode = d.c((String)localObject2);
+          ((BaseResp)localObject1).errCode = b.a((String)localObject2, 0);
         }
         ((WXInvoiceAuthInsert.Resp)localObject1).wxOrderId = paramString.getQueryParameter("wx_order_id");
         paramIWXAPIEventHandler.onResp((BaseResp)localObject1);
@@ -187,7 +209,7 @@ class BaseWXApiImplV10
         localObject1 = new WXPayInsurance.Resp();
         localObject2 = paramString.getQueryParameter("ret");
         if ((localObject2 != null) && (((String)localObject2).length() > 0)) {
-          ((WXPayInsurance.Resp)localObject1).errCode = d.c((String)localObject2);
+          ((BaseResp)localObject1).errCode = b.a((String)localObject2, 0);
         }
         ((WXPayInsurance.Resp)localObject1).wxOrderId = paramString.getQueryParameter("wx_order_id");
         paramIWXAPIEventHandler.onResp((BaseResp)localObject1);
@@ -198,7 +220,7 @@ class BaseWXApiImplV10
         localObject1 = new WXNontaxPay.Resp();
         localObject2 = paramString.getQueryParameter("ret");
         if ((localObject2 != null) && (((String)localObject2).length() > 0)) {
-          ((WXNontaxPay.Resp)localObject1).errCode = d.c((String)localObject2);
+          ((BaseResp)localObject1).errCode = b.a((String)localObject2, 0);
         }
         ((WXNontaxPay.Resp)localObject1).wxOrderId = paramString.getQueryParameter("wx_order_id");
         paramIWXAPIEventHandler.onResp((BaseResp)localObject1);
@@ -212,18 +234,19 @@ class BaseWXApiImplV10
       localObject1 = new SubscribeMiniProgramMsg.Resp();
       localObject2 = paramString.getQueryParameter("ret");
       if ((localObject2 != null) && (((String)localObject2).length() > 0)) {
-        ((SubscribeMiniProgramMsg.Resp)localObject1).errCode = d.c((String)localObject2);
+        ((BaseResp)localObject1).errCode = b.a((String)localObject2, 0);
       }
-      ((SubscribeMiniProgramMsg.Resp)localObject1).openId = paramString.getQueryParameter("openid");
+      ((BaseResp)localObject1).openId = paramString.getQueryParameter("openid");
       ((SubscribeMiniProgramMsg.Resp)localObject1).unionId = paramString.getQueryParameter("unionid");
       ((SubscribeMiniProgramMsg.Resp)localObject1).nickname = paramString.getQueryParameter("nickname");
-      ((SubscribeMiniProgramMsg.Resp)localObject1).errStr = paramString.getQueryParameter("errmsg");
+      ((BaseResp)localObject1).errStr = paramString.getQueryParameter("errmsg");
       paramIWXAPIEventHandler.onResp((BaseResp)localObject1);
       return true;
     }
     catch (Exception paramString)
     {
-      paramIWXAPIEventHandler = new StringBuilder("handleWxInternalRespType fail, ex = ");
+      paramIWXAPIEventHandler = new StringBuilder();
+      paramIWXAPIEventHandler.append("handleWxInternalRespType fail, ex = ");
       paramIWXAPIEventHandler.append(paramString.getMessage());
       Log.e("MicroMsg.SDK.WXApiImplV10", paramIWXAPIEventHandler.toString());
     }
@@ -242,11 +265,41 @@ class BaseWXApiImplV10
   
   private void launchWXIfNeed()
   {
-    if (Build.VERSION.SDK_INT >= 28)
+    if ((Build.VERSION.SDK_INT >= 29) && (this.launchMode == 2))
     {
-      Log.i("MicroMsg.SDK.WXApiImplV10", "openWXApp before api call");
-      openWXApp();
+      launchWXUsingPendingIntent();
+      return;
     }
+    openWXApp();
+  }
+  
+  private void launchWXUsingPendingIntent()
+  {
+    if (!this.detached)
+    {
+      if (!isWXAppInstalled())
+      {
+        Log.e("MicroMsg.SDK.WXApiImplV10", "openWXApp failed, not installed or signature check failed");
+        return;
+      }
+      try
+      {
+        Log.i("MicroMsg.SDK.WXApiImplV10", "launchWXUsingPendingIntent");
+        Intent localIntent = this.context.getPackageManager().getLaunchIntentForPackage("com.tencent.mm");
+        PendingIntent.getActivity(this.context, 1, localIntent, 134217728).send(this.context, 2, null, new BaseWXApiImplV10.2(this), null);
+        return;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("launchWXUsingPendingIntent pendingIntent send failed: ");
+        localStringBuilder.append(localException.getMessage());
+        Log.e("MicroMsg.SDK.WXApiImplV10", localStringBuilder.toString());
+        openWXApp();
+        return;
+      }
+    }
+    throw new IllegalStateException("openWXApp fail, WXMsgImpl has been detached");
   }
   
   private boolean sendAddCardToWX(Context paramContext, Bundle paramBundle)
@@ -263,6 +316,54 @@ class BaseWXApiImplV10
   {
     launchWXIfNeed();
     paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/chooseCardFromWX"), null, null, new String[] { paramBundle.getString("_wxapi_choose_card_from_wx_card_app_id"), paramBundle.getString("_wxapi_choose_card_from_wx_card_location_id"), paramBundle.getString("_wxapi_choose_card_from_wx_card_sign_type"), paramBundle.getString("_wxapi_choose_card_from_wx_card_card_sign"), paramBundle.getString("_wxapi_choose_card_from_wx_card_time_stamp"), paramBundle.getString("_wxapi_choose_card_from_wx_card_nonce_str"), paramBundle.getString("_wxapi_choose_card_from_wx_card_card_id"), paramBundle.getString("_wxapi_choose_card_from_wx_card_card_type"), paramBundle.getString("_wxapi_choose_card_from_wx_card_can_multi_select"), paramBundle.getString("_wxapi_basereq_transaction") }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    return true;
+  }
+  
+  private boolean sendFinderOpenFeed(Context paramContext, BaseReq paramBaseReq)
+  {
+    launchWXIfNeed();
+    Log.i("MicroMsg.SDK.WXApiImplV10", "sendFinderOpenFeed");
+    paramBaseReq = (WXChannelOpenFeed.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/finderOpenFeed"), null, null, new String[] { this.appId, paramBaseReq.feedID, paramBaseReq.nonceID, String.valueOf(paramBaseReq.notGetReleatedList) }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    return true;
+  }
+  
+  private boolean sendFinderOpenLive(Context paramContext, BaseReq paramBaseReq)
+  {
+    launchWXIfNeed();
+    Log.i("MicroMsg.SDK.WXApiImplV10", "sendFinderOpenLive");
+    paramBaseReq = (WXChannelOpenLive.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/finderOpenLive"), null, null, new String[] { this.appId, paramBaseReq.feedID, paramBaseReq.nonceID }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    return true;
+  }
+  
+  private boolean sendFinderOpenProfile(Context paramContext, BaseReq paramBaseReq)
+  {
+    launchWXIfNeed();
+    Log.i("MicroMsg.SDK.WXApiImplV10", "sendFinderOpenProfile");
+    paramBaseReq = (WXChannelOpenProfile.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/finderOpenProfile"), null, null, new String[] { this.appId, paramBaseReq.userName }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    return true;
+  }
+  
+  private boolean sendFinderShareVideo(Context paramContext, BaseReq paramBaseReq)
+  {
+    launchWXIfNeed();
+    Log.i("MicroMsg.SDK.WXApiImplV10", "sendFinderShareVideo");
+    paramBaseReq = (WXChannelShareVideo.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/finderShareVideo"), null, null, new String[] { this.appId, paramBaseReq.videoPath, paramBaseReq.title, paramBaseReq.url, paramBaseReq.extData }, null);
     if (paramContext != null) {
       paramContext.close();
     }
@@ -286,7 +387,7 @@ class BaseWXApiImplV10
     paramContext = paramContext.getContentResolver();
     Uri localUri = Uri.parse("content://com.tencent.mm.sdk.comm.provider/openTypeWebview");
     paramBaseReq = URLEncoder.encode(String.format("url=%s", new Object[] { URLEncoder.encode(paramBaseReq.url) }));
-    paramContext = paramContext.query(localUri, null, null, new String[] { this.appId, "2", paramBaseReq }, null);
+    paramContext = paramContext.query(localUri, null, null, new String[] { this.appId, String.valueOf(2), paramBaseReq }, null);
     if (paramContext != null) {
       paramContext.close();
     }
@@ -314,6 +415,7 @@ class BaseWXApiImplV10
     String str3 = paramBaseReq.path;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramBaseReq.miniprogramType);
+    localStringBuilder.append("");
     paramContext = paramContext.query(localUri, null, null, new String[] { str1, str2, str3, localStringBuilder.toString(), paramBaseReq.extData }, null);
     if (paramContext != null) {
       paramContext.close();
@@ -339,7 +441,7 @@ class BaseWXApiImplV10
     paramContext = paramContext.getContentResolver();
     Uri localUri = Uri.parse("content://com.tencent.mm.sdk.comm.provider/openTypeWebview");
     paramBaseReq = URLEncoder.encode(String.format("url=%s", new Object[] { URLEncoder.encode(paramBaseReq.url) }));
-    paramContext = paramContext.query(localUri, null, null, new String[] { this.appId, "3", paramBaseReq }, null);
+    paramContext = paramContext.query(localUri, null, null, new String[] { this.appId, String.valueOf(3), paramBaseReq }, null);
     if (paramContext != null) {
       paramContext.close();
     }
@@ -360,7 +462,7 @@ class BaseWXApiImplV10
   {
     launchWXIfNeed();
     paramBaseReq = (WXOpenBusinessView.Req)paramBaseReq;
-    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/openBusinessView"), null, null, new String[] { this.appId, paramBaseReq.businessType, paramBaseReq.query, paramBaseReq.extInfo, paramBaseReq.transaction }, null);
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/openBusinessView"), null, null, new String[] { this.appId, paramBaseReq.businessType, paramBaseReq.query, paramBaseReq.extInfo, paramBaseReq.transaction, paramBaseReq.openId }, null);
     if (paramContext != null) {
       paramContext.close();
     }
@@ -373,7 +475,8 @@ class BaseWXApiImplV10
     paramBaseReq = (WXOpenBusinessWebview.Req)paramBaseReq;
     ContentResolver localContentResolver = paramContext.getContentResolver();
     Uri localUri = Uri.parse("content://com.tencent.mm.sdk.comm.provider/openBusinessWebview");
-    if ((paramBaseReq.queryInfo != null) && (paramBaseReq.queryInfo.size() > 0)) {
+    paramContext = paramBaseReq.queryInfo;
+    if ((paramContext != null) && (paramContext.size() > 0)) {
       paramContext = new JSONObject(paramBaseReq.queryInfo).toString();
     } else {
       paramContext = "";
@@ -381,6 +484,7 @@ class BaseWXApiImplV10
     String str = this.appId;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramBaseReq.businessType);
+    localStringBuilder.append("");
     paramContext = localContentResolver.query(localUri, null, null, new String[] { str, localStringBuilder.toString(), paramContext }, null);
     if (paramContext != null) {
       paramContext.close();
@@ -415,7 +519,7 @@ class BaseWXApiImplV10
     paramContext = paramContext.getContentResolver();
     Uri localUri = Uri.parse("content://com.tencent.mm.sdk.comm.provider/openTypeWebview");
     paramBaseReq = URLEncoder.encode(String.format("url=%s", new Object[] { URLEncoder.encode(paramBaseReq.url) }));
-    paramContext = paramContext.query(localUri, null, null, new String[] { this.appId, "4", paramBaseReq }, null);
+    paramContext = paramContext.query(localUri, null, null, new String[] { this.appId, String.valueOf(4), paramBaseReq }, null);
     if (paramContext != null) {
       paramContext.close();
     }
@@ -427,7 +531,8 @@ class BaseWXApiImplV10
     if (wxappPayEntryClassname == null)
     {
       wxappPayEntryClassname = new MMSharedPreferences(paramContext).getString("_wxapp_pay_entry_classname_", null);
-      StringBuilder localStringBuilder1 = new StringBuilder("pay, set wxappPayEntryClassname = ");
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("pay, set wxappPayEntryClassname = ");
       localStringBuilder1.append(wxappPayEntryClassname);
       Log.d("MicroMsg.SDK.WXApiImplV10", localStringBuilder1.toString());
       if (wxappPayEntryClassname == null) {
@@ -437,7 +542,8 @@ class BaseWXApiImplV10
         }
         catch (Exception localException)
         {
-          StringBuilder localStringBuilder2 = new StringBuilder("get from metaData failed : ");
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("get from metaData failed : ");
           localStringBuilder2.append(localException.getMessage());
           Log.e("MicroMsg.SDK.WXApiImplV10", localStringBuilder2.toString());
         }
@@ -452,7 +558,18 @@ class BaseWXApiImplV10
     localArgs.bundle = paramBundle;
     localArgs.targetPkgName = "com.tencent.mm";
     localArgs.targetClassName = wxappPayEntryClassname;
+    localArgs.launchMode = this.launchMode;
     return MMessageActV2.send(paramContext, localArgs);
+  }
+  
+  private boolean sendPreloadWXMiniProgramEnvironment(Context paramContext, BaseReq paramBaseReq)
+  {
+    paramBaseReq = (WXPreloadMiniProgramEnvironment.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/preloadWXMiniprogramEnvironment"), null, null, new String[] { this.appId, paramBaseReq.extData }, null);
+    if (paramContext != null) {
+      paramContext.close();
+    }
+    return true;
   }
   
   private boolean sendPreloadWXMiniprogram(Context paramContext, BaseReq paramBaseReq)
@@ -465,6 +582,7 @@ class BaseWXApiImplV10
     String str3 = paramBaseReq.path;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramBaseReq.miniprogramType);
+    localStringBuilder.append("");
     paramContext = paramContext.query(localUri, null, null, new String[] { str1, str2, str3, localStringBuilder.toString(), paramBaseReq.extData }, null);
     if (paramContext != null) {
       paramContext.close();
@@ -476,7 +594,7 @@ class BaseWXApiImplV10
   {
     launchWXIfNeed();
     paramBaseReq = (SubscribeMessage.Req)paramBaseReq;
-    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/openTypeWebview"), null, null, new String[] { this.appId, "1", String.valueOf(paramBaseReq.scene), paramBaseReq.templateID, paramBaseReq.reserved }, null);
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/openTypeWebview"), null, null, new String[] { this.appId, String.valueOf(1), String.valueOf(paramBaseReq.scene), paramBaseReq.templateID, paramBaseReq.reserved }, null);
     if (paramContext != null) {
       paramContext.close();
     }
@@ -487,11 +605,31 @@ class BaseWXApiImplV10
   {
     launchWXIfNeed();
     paramBaseReq = (SubscribeMiniProgramMsg.Req)paramBaseReq;
-    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/openTypeWebview"), null, null, new String[] { this.appId, "5", paramBaseReq.miniProgramAppId }, null);
+    paramContext = paramContext.getContentResolver().query(Uri.parse("content://com.tencent.mm.sdk.comm.provider/openTypeWebview"), null, null, new String[] { this.appId, String.valueOf(5), paramBaseReq.miniProgramAppId }, null);
     if (paramContext != null) {
       paramContext.close();
     }
     return true;
+  }
+  
+  private boolean sendToWxaRedirectingPage(Context paramContext, BaseReq paramBaseReq)
+  {
+    launchWXIfNeed();
+    paramBaseReq = (WXLaunchWxaRedirectingPage.Req)paramBaseReq;
+    paramContext = paramContext.getContentResolver();
+    Uri localUri = Uri.parse("content://com.tencent.mm.sdk.comm.provider/launchWxaOpenApiRedirectingPage");
+    try
+    {
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(0, this.appId);
+      localArrayList.addAll(Arrays.asList(paramBaseReq.toArray()));
+      paramContext = paramContext.query(localUri, null, null, (String[])localArrayList.toArray(new String[0]), null);
+      if (paramContext != null) {
+        paramContext.close();
+      }
+      return true;
+    }
+    finally {}
   }
   
   public void detach()
@@ -512,7 +650,7 @@ class BaseWXApiImplV10
       }
       this.wxSdkVersion = 0;
       CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      d.E.submit(new BaseWXApiImplV10.1(this, localCountDownLatch));
+      b.e.submit(new BaseWXApiImplV10.1(this, localCountDownLatch));
       try
       {
         localCountDownLatch.await(1000L, TimeUnit.MILLISECONDS);
@@ -521,20 +659,23 @@ class BaseWXApiImplV10
       {
         Log.w("MicroMsg.SDK.WXApiImplV10", localInterruptedException.getMessage());
       }
-      StringBuilder localStringBuilder1 = new StringBuilder("wxSdkVersion = ");
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("wxSdkVersion = ");
       localStringBuilder1.append(this.wxSdkVersion);
       Log.d("MicroMsg.SDK.WXApiImplV10", localStringBuilder1.toString());
       if (this.wxSdkVersion == 0) {
         try
         {
           this.wxSdkVersion = this.context.getPackageManager().getApplicationInfo("com.tencent.mm", 128).metaData.getInt("com.tencent.mm.BuildInfo.OPEN_SDK_VERSION", 0);
-          localStringBuilder1 = new StringBuilder("OPEN_SDK_VERSION = ");
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("OPEN_SDK_VERSION = ");
           localStringBuilder1.append(this.wxSdkVersion);
           Log.d("MicroMsg.SDK.WXApiImplV10", localStringBuilder1.toString());
         }
         catch (Exception localException)
         {
-          StringBuilder localStringBuilder2 = new StringBuilder("get from metaData failed : ");
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("get from metaData failed : ");
           localStringBuilder2.append(localException.getMessage());
           Log.e("MicroMsg.SDK.WXApiImplV10", localStringBuilder2.toString());
         }
@@ -565,19 +706,41 @@ class BaseWXApiImplV10
           localObject2 = paramIntent.getStringExtra("_mmessage_appPackage");
           if ((localObject2 != null) && (((String)localObject2).length() != 0))
           {
-            if (!checkSumConsistent(paramIntent.getByteArrayExtra("_mmessage_checksum"), b.a((String)localObject1, i, (String)localObject2)))
+            if (!checkSumConsistent(paramIntent.getByteArrayExtra("_mmessage_checksum"), a.a((String)localObject1, i, (String)localObject2)))
             {
               Log.e("MicroMsg.SDK.WXApiImplV10", "checksum fail");
               return false;
             }
             i = paramIntent.getIntExtra("_wxapi_command_type", 0);
-            localObject1 = new StringBuilder("handleIntent, cmd = ");
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("handleIntent, cmd = ");
             ((StringBuilder)localObject1).append(i);
             Log.i("MicroMsg.SDK.WXApiImplV10", ((StringBuilder)localObject1).toString());
           }
         }
         switch (i)
         {
+        case 36: 
+          paramIWXAPIEventHandler.onResp(new WXChannelOpenFeed.Resp(paramIntent.getExtras()));
+          return true;
+        case 35: 
+          paramIWXAPIEventHandler.onResp(new WXChannelOpenLive.Resp(paramIntent.getExtras()));
+          return true;
+        case 34: 
+          paramIWXAPIEventHandler.onResp(new WXChannelOpenProfile.Resp(paramIntent.getExtras()));
+          return true;
+        case 33: 
+          paramIWXAPIEventHandler.onResp(new WXChannelShareVideo.Resp(paramIntent.getExtras()));
+          return true;
+        case 32: 
+          paramIWXAPIEventHandler.onResp(new WXPreloadMiniProgramEnvironment.Resp(paramIntent.getExtras()));
+          return true;
+        case 31: 
+          paramIWXAPIEventHandler.onResp(new SendTdiAuth.Resp(paramIntent.getExtras()));
+          return true;
+        case 30: 
+          paramIWXAPIEventHandler.onResp(new WXLaunchWxaRedirectingPage.Resp(paramIntent.getExtras()));
+          return true;
         case 29: 
           paramIWXAPIEventHandler.onResp(new WXLaunchMiniProgramWithToken.Resp(paramIntent.getExtras()));
           return true;
@@ -630,7 +793,8 @@ class BaseWXApiImplV10
           if ((localObject2 != null) && (((String)localObject2).contains("wx_internal_resptype")))
           {
             bool = handleWxInternalRespType((String)localObject2, paramIWXAPIEventHandler);
-            paramIntent = new StringBuilder("handleIntent, extInfo contains wx_internal_resptype, ret = ");
+            paramIntent = new StringBuilder();
+            paramIntent.append("handleIntent, extInfo contains wx_internal_resptype, ret = ");
             paramIntent.append(bool);
             Log.i("MicroMsg.SDK.WXApiImplV10", paramIntent.toString());
             return bool;
@@ -647,24 +811,26 @@ class BaseWXApiImplV10
                   localObject2 = new WXOpenBusinessWebview.Resp();
                   String str = ((Uri)localObject1).getQueryParameter("ret");
                   if ((str != null) && (str.length() > 0)) {
-                    ((WXOpenBusinessWebview.Resp)localObject2).errCode = d.c(str);
+                    ((BaseResp)localObject2).errCode = b.a(str, 0);
                   }
                   ((WXOpenBusinessWebview.Resp)localObject2).resultInfo = ((Uri)localObject1).getQueryParameter("resultInfo");
-                  ((WXOpenBusinessWebview.Resp)localObject2).errStr = ((Uri)localObject1).getQueryParameter("errmsg");
+                  ((BaseResp)localObject2).errStr = ((Uri)localObject1).getQueryParameter("errmsg");
                   localObject1 = ((Uri)localObject1).getQueryParameter("type");
                   if ((localObject1 != null) && (((String)localObject1).length() > 0)) {
-                    ((WXOpenBusinessWebview.Resp)localObject2).businessType = d.c((String)localObject1);
+                    ((WXOpenBusinessWebview.Resp)localObject2).businessType = b.a((String)localObject1, 0);
                   }
                   paramIWXAPIEventHandler.onResp((BaseResp)localObject2);
                   return true;
                 }
-                localObject1 = new StringBuilder("not openbusinesswebview %");
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("not openbusinesswebview %");
                 ((StringBuilder)localObject1).append((String)localObject2);
                 Log.d("MicroMsg.SDK.WXApiImplV10", ((StringBuilder)localObject1).toString());
               }
               catch (Exception localException)
               {
-                localObject2 = new StringBuilder("parse fail, ex = ");
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("parse fail, ex = ");
                 ((StringBuilder)localObject2).append(localException.getMessage());
                 Log.e("MicroMsg.SDK.WXApiImplV10", ((StringBuilder)localObject2).toString());
               }
@@ -681,7 +847,8 @@ class BaseWXApiImplV10
         case 1: 
           paramIWXAPIEventHandler.onResp(new SendAuth.Resp(paramIntent.getExtras()));
           return true;
-          paramIntent = new StringBuilder("unknown cmd = ");
+          paramIntent = new StringBuilder();
+          paramIntent.append("unknown cmd = ");
           paramIntent.append(i);
           Log.e("MicroMsg.SDK.WXApiImplV10", paramIntent.toString());
           return false;
@@ -692,7 +859,8 @@ class BaseWXApiImplV10
       }
       catch (Exception paramIntent)
       {
-        paramIWXAPIEventHandler = new StringBuilder("handleIntent fail, ex = ");
+        paramIWXAPIEventHandler = new StringBuilder();
+        paramIWXAPIEventHandler.append("handleIntent fail, ex = ");
         paramIWXAPIEventHandler.append(paramIntent.getMessage());
         Log.e("MicroMsg.SDK.WXApiImplV10", paramIWXAPIEventHandler.toString());
         return false;
@@ -712,7 +880,7 @@ class BaseWXApiImplV10
       boolean bool = WXApiImplComm.validateAppSignature(this.context, localPackageInfo.signatures, this.checkSignature);
       return bool;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    catch (Exception localException) {}
     throw new IllegalStateException("isWXAppInstalled fail, WXMsgImpl has been detached");
     return false;
   }
@@ -736,7 +904,8 @@ class BaseWXApiImplV10
         }
         catch (Exception localException)
         {
-          StringBuilder localStringBuilder = new StringBuilder("startActivity fail, exception = ");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startActivity fail, exception = ");
           localStringBuilder.append(localException.getMessage());
           localObject = localStringBuilder.toString();
         }
@@ -763,28 +932,32 @@ class BaseWXApiImplV10
         Log.e("MicroMsg.SDK.WXApiImplV10", "register app failed for wechat app signature check failed");
         return false;
       }
-      StringBuilder localStringBuilder = new StringBuilder("registerApp, appId = ");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registerApp, appId = ");
       localStringBuilder.append(paramString);
       Log.d("MicroMsg.SDK.WXApiImplV10", localStringBuilder.toString());
       if (paramString != null) {
         this.appId = paramString;
       }
-      localStringBuilder = new StringBuilder("registerApp, appId = ");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registerApp, appId = ");
       localStringBuilder.append(paramString);
       Log.d("MicroMsg.SDK.WXApiImplV10", localStringBuilder.toString());
       if (paramString != null) {
         this.appId = paramString;
       }
-      paramString = new StringBuilder("register app ");
+      paramString = new StringBuilder();
+      paramString.append("register app ");
       paramString.append(this.context.getPackageName());
       Log.d("MicroMsg.SDK.WXApiImplV10", paramString.toString());
       paramString = new a.a();
       paramString.a = "com.tencent.mm";
-      paramString.action = "com.tencent.mm.plugin.openapi.Intent.ACTION_HANDLE_APP_REGISTER";
-      localStringBuilder = new StringBuilder("weixin://registerapp?appid=");
+      paramString.b = "com.tencent.mm.plugin.openapi.Intent.ACTION_HANDLE_APP_REGISTER";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("weixin://registerapp?appid=");
       localStringBuilder.append(this.appId);
-      paramString.content = localStringBuilder.toString();
-      paramString.b = paramLong;
+      paramString.c = localStringBuilder.toString();
+      paramString.d = paramLong;
       return a.a(this.context, paramString);
     }
     throw new IllegalStateException("registerApp fail, WXMsgImpl has been detached");
@@ -803,7 +976,8 @@ class BaseWXApiImplV10
           break;
         }
       }
-      Object localObject = new StringBuilder("sendReq, req type = ");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendReq, req type = ");
       ((StringBuilder)localObject).append(paramBaseReq.getType());
       Log.i("MicroMsg.SDK.WXApiImplV10", ((StringBuilder)localObject).toString());
       Bundle localBundle = new Bundle();
@@ -852,8 +1026,26 @@ class BaseWXApiImplV10
         if (paramBaseReq.getType() == 19) {
           return sendLaunchWXMiniprogram(this.context, paramBaseReq);
         }
+        if (paramBaseReq.getType() == 32) {
+          return sendPreloadWXMiniProgramEnvironment(this.context, paramBaseReq);
+        }
+        if (paramBaseReq.getType() == 30) {
+          return sendToWxaRedirectingPage(this.context, paramBaseReq);
+        }
         if (paramBaseReq.getType() == 26) {
           return sendOpenBusinessView(this.context, paramBaseReq);
+        }
+        if (paramBaseReq.getType() == 33) {
+          return sendFinderShareVideo(this.context, paramBaseReq);
+        }
+        if (paramBaseReq.getType() == 34) {
+          return sendFinderOpenProfile(this.context, paramBaseReq);
+        }
+        if (paramBaseReq.getType() == 35) {
+          return sendFinderOpenLive(this.context, paramBaseReq);
+        }
+        if (paramBaseReq.getType() == 36) {
+          return sendFinderOpenFeed(this.context, paramBaseReq);
         }
         if (paramBaseReq.getType() == 20) {
           return sendInvoiceAuthInsert(this.context, paramBaseReq);
@@ -871,14 +1063,14 @@ class BaseWXApiImplV10
         {
           SendMessageToWX.Req localReq = (SendMessageToWX.Req)paramBaseReq;
           int i = localReq.message.getType();
-          if (d.a(i))
+          if (b.a(i))
           {
             if (getWXAppSupportAPI() < 620756993) {}
             for (localObject = new WXWebpageObject();; localObject = new WXWebpageObject())
             {
               ((WXWebpageObject)localObject).webpageUrl = localBundle.getString("_wxminiprogram_webpageurl");
               localReq.message.mediaObject = ((WXMediaMessage.IMediaObject)localObject);
-              break label731;
+              break label850;
               if ((i != 46) || (getWXAppSupportAPI() >= 620953856)) {
                 break;
               }
@@ -889,7 +1081,7 @@ class BaseWXApiImplV10
             ((StringBuilder)localObject).append("@app");
             localWXMiniProgramObject.userName = ((StringBuilder)localObject).toString();
             localObject = localWXMiniProgramObject.path;
-            if (!d.b((String)localObject))
+            if (!b.b((String)localObject))
             {
               localObject = ((String)localObject).split("\\?");
               if (localObject.length > 1)
@@ -908,8 +1100,9 @@ class BaseWXApiImplV10
               localStringBuilder.append((String)localObject);
               localWXMiniProgramObject.path = localStringBuilder.toString();
             }
-            label731:
-            if (localReq.scene != 3) {
+            label850:
+            i = localReq.scene;
+            if ((i != 3) && (i != 1)) {
               localReq.scene = 0;
             }
             paramBaseReq.toBundle(localBundle);
@@ -917,11 +1110,13 @@ class BaseWXApiImplV10
         }
         localObject = new MMessageActV2.Args();
         ((MMessageActV2.Args)localObject).bundle = localBundle;
-        StringBuilder localStringBuilder = new StringBuilder("weixin://sendreq?appid=");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("weixin://sendreq?appid=");
         localStringBuilder.append(this.appId);
         ((MMessageActV2.Args)localObject).content = localStringBuilder.toString();
         ((MMessageActV2.Args)localObject).targetPkgName = "com.tencent.mm";
         ((MMessageActV2.Args)localObject).targetClassName = "com.tencent.mm.plugin.base.stub.WXEntryActivity";
+        ((MMessageActV2.Args)localObject).launchMode = this.launchMode;
         if (paramBaseReq.getType() == 2) {
           try
           {
@@ -929,7 +1124,8 @@ class BaseWXApiImplV10
           }
           catch (Exception paramBaseReq)
           {
-            localStringBuilder = new StringBuilder("getTokenFromWX fail, exception = ");
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getTokenFromWX fail, exception = ");
             localStringBuilder.append(paramBaseReq.getMessage());
             Log.e("MicroMsg.SDK.WXApiImplV10", localStringBuilder.toString());
           }
@@ -962,7 +1158,8 @@ class BaseWXApiImplV10
       paramBaseResp.toBundle((Bundle)localObject);
       paramBaseResp = new MMessageActV2.Args();
       paramBaseResp.bundle = ((Bundle)localObject);
-      localObject = new StringBuilder("weixin://sendresp?appid=");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("weixin://sendresp?appid=");
       ((StringBuilder)localObject).append(this.appId);
       paramBaseResp.content = ((StringBuilder)localObject).toString();
       paramBaseResp.targetPkgName = "com.tencent.mm";
@@ -990,21 +1187,24 @@ class BaseWXApiImplV10
         Log.e("MicroMsg.SDK.WXApiImplV10", "unregister app failed for wechat app signature check failed");
         return;
       }
-      Object localObject = new StringBuilder("unregisterApp, appId = ");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unregisterApp, appId = ");
       ((StringBuilder)localObject).append(this.appId);
       Log.d("MicroMsg.SDK.WXApiImplV10", ((StringBuilder)localObject).toString());
       localObject = this.appId;
       if ((localObject != null) && (((String)localObject).length() != 0))
       {
-        localObject = new StringBuilder("unregister app ");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("unregister app ");
         ((StringBuilder)localObject).append(this.context.getPackageName());
         Log.d("MicroMsg.SDK.WXApiImplV10", ((StringBuilder)localObject).toString());
         localObject = new a.a();
         ((a.a)localObject).a = "com.tencent.mm";
-        ((a.a)localObject).action = "com.tencent.mm.plugin.openapi.Intent.ACTION_HANDLE_APP_UNREGISTER";
-        StringBuilder localStringBuilder = new StringBuilder("weixin://unregisterapp?appid=");
+        ((a.a)localObject).b = "com.tencent.mm.plugin.openapi.Intent.ACTION_HANDLE_APP_UNREGISTER";
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("weixin://unregisterapp?appid=");
         localStringBuilder.append(this.appId);
-        ((a.a)localObject).content = localStringBuilder.toString();
+        ((a.a)localObject).c = localStringBuilder.toString();
         a.a(this.context, (a.a)localObject);
         return;
       }
@@ -1016,7 +1216,7 @@ class BaseWXApiImplV10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.BaseWXApiImplV10
  * JD-Core Version:    0.7.0.1
  */

@@ -65,7 +65,7 @@ public class EmotionHotPicSearchAdapter
     localURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     localURLImageView.setAdjustViewBounds(false);
     localURLImageView.setLayoutParams(localLayoutParams);
-    localURLImageView.setContentDescription(this.mContext.getString(2131699753));
+    localURLImageView.setContentDescription(this.mContext.getString(2131897786));
     return localURLImageView;
   }
   
@@ -117,18 +117,18 @@ public class EmotionHotPicSearchAdapter
       EmoticonInfo localEmoticonInfo = (EmoticonInfo)paramEmotionPanelData;
       paramView.setTag(localEmoticonInfo);
       paramView.setVisibility(0);
-      if ((QLog.isColorLevel()) && (!StringUtil.a(localEmoticonInfo.action)))
+      if ((QLog.isColorLevel()) && (!StringUtil.isEmpty(localEmoticonInfo.action)))
       {
         paramView = new StringBuilder();
         paramView.append("updateUI info = ");
         paramView.append(localEmoticonInfo.action);
         QLog.d("EmotionHotPicSearchAdapter", 2, paramView.toString());
       }
-      if (localURLImageView.getTag(2131380884) == paramEmotionPanelData) {
+      if (localURLImageView.getTag(2131449867) == paramEmotionPanelData) {
         return;
       }
       reportExposeEvent(paramEmotionPanelData, paramInt);
-      localURLImageView.setTag(2131380884, paramEmotionPanelData);
+      localURLImageView.setTag(2131449867, paramEmotionPanelData);
       localURLImageView.setVisibility(0);
       localURLImageView.setURLDrawableDownListener(null);
       paramView = localEmoticonInfo.getBigDrawable(this.mContext, this.density);
@@ -355,7 +355,7 @@ public class EmotionHotPicSearchAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionHotPicSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

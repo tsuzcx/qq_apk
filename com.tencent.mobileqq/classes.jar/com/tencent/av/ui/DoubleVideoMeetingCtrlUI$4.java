@@ -7,7 +7,7 @@ class DoubleVideoMeetingCtrlUI$4
   
   public void run()
   {
-    QavInOutAnimation localQavInOutAnimation = this.this$0.a;
+    QavInOutAnimation localQavInOutAnimation = this.this$0.f;
     if (localQavInOutAnimation != null) {
       localQavInOutAnimation.a(new DoubleVideoMeetingCtrlUI.4.1(this));
     }

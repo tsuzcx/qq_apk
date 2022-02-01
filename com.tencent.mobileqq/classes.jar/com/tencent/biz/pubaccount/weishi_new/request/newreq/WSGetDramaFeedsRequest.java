@@ -18,19 +18,19 @@ public class WSGetDramaFeedsRequest
     super("GetDramaFeeds");
     stGetDramaFeedsReq localstGetDramaFeedsReq = new stGetDramaFeedsReq();
     String str;
-    if (paramWSDramaEpisodeParams.a() == null) {
+    if (paramWSDramaEpisodeParams.c() == null) {
       str = "";
     } else {
-      str = paramWSDramaEpisodeParams.a();
+      str = paramWSDramaEpisodeParams.c();
     }
     localstGetDramaFeedsReq.dramaID = str;
-    if (paramWSDramaEpisodeParams.b() == null) {
+    if (paramWSDramaEpisodeParams.d() == null) {
       str = "";
     } else {
-      str = paramWSDramaEpisodeParams.b();
+      str = paramWSDramaEpisodeParams.d();
     }
     localstGetDramaFeedsReq.curFeedID = str;
-    localstGetDramaFeedsReq.refresh = (paramWSDramaEpisodeParams.c() ^ true);
+    localstGetDramaFeedsReq.refresh = (paramWSDramaEpisodeParams.e() ^ true);
     paramWSDramaEpisodeParams = paramString;
     if (paramString == null) {
       paramWSDramaEpisodeParams = "";
@@ -46,7 +46,7 @@ public class WSGetDramaFeedsRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.newreq.WSGetDramaFeedsRequest
  * JD-Core Version:    0.7.0.1
  */

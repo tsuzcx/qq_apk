@@ -1,6 +1,7 @@
 package com.tencent.open.agent.util;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.mobileqq.utils.HexUtil;
 import java.security.MessageDigest;
@@ -112,6 +113,25 @@ public class OpenSdkDESUtils
     return null;
   }
   
+  public static String a(String[] paramArrayOfString, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramArrayOfString[i];
+      if (!TextUtils.isEmpty(str)) {
+        localStringBuilder.append(str);
+      }
+      i += 1;
+    }
+    return a(paramString, localStringBuilder.toString());
+  }
+  
   public static byte[] a(String paramString)
   {
     try
@@ -130,7 +150,7 @@ public class OpenSdkDESUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.util.OpenSdkDESUtils
  * JD-Core Version:    0.7.0.1
  */

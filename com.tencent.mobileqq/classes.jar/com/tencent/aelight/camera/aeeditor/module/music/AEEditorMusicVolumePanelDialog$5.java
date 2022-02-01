@@ -11,13 +11,13 @@ class AEEditorMusicVolumePanelDialog$5
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (AEEditorMusicVolumePanelDialog.a(this.a) != null) {
-      AEEditorMusicVolumePanelDialog.a(this.a).a(paramInt / 100.0F);
+    if (AEEditorMusicVolumePanelDialog.d(this.a) != null) {
+      AEEditorMusicVolumePanelDialog.d(this.a).a(paramInt / 100.0F);
     }
     if (paramBoolean) {
-      AEEditorMusicVolumePanelDialog.a(this.a, paramInt);
+      AEEditorMusicVolumePanelDialog.b(this.a, paramInt);
     }
-    AEReportUtils.b(7);
+    AEReportUtils.a(7);
   }
   
   public void onStartTrackingTouch(SeekBar paramSeekBar) {}
@@ -26,7 +26,7 @@ class AEEditorMusicVolumePanelDialog$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicVolumePanelDialog.5
  * JD-Core Version:    0.7.0.1
  */

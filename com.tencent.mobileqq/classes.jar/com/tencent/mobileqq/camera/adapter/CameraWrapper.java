@@ -15,38 +15,37 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(9)
 public class CameraWrapper
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static CameraWrapper jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraWrapper;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  private static CameraWrapper a;
+  private static int b = -1;
   private volatile boolean c;
+  private volatile boolean d = true;
+  private volatile boolean e;
   
   private CameraWrapper()
   {
-    this.jdField_b_of_type_Boolean = true;
     a(false);
   }
   
   public static CameraWrapper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraWrapper == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraWrapper == null) {
-          jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraWrapper = new CameraWrapper();
+        if (a == null) {
+          a = new CameraWrapper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraWrapper;
+    return a;
   }
   
-  private boolean e()
+  private boolean i()
   {
     boolean bool;
     try
     {
-      int j = b();
+      int j = f();
       Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
       int i = 0;
       while (i < j)
@@ -64,7 +63,7 @@ public class CameraWrapper
       try
       {
         label53:
-        CameraUtils.b(BaseApplicationImpl.getContext()).edit().putBoolean("local_sp_camera_back_exist", this.jdField_b_of_type_Boolean).commit();
+        CameraUtils.c(BaseApplicationImpl.getContext()).edit().putBoolean("local_sp_camera_back_exist", this.d).commit();
       }
       catch (Exception localException1) {}
       QLog.i("Q.camera.CameraWrapper", 1, "getBlackCameraExistBySysCall fail", localException2);
@@ -79,11 +78,6 @@ public class CameraWrapper
     return bool;
   }
   
-  public int a()
-  {
-    return 21;
-  }
-  
   public int a(int paramInt1, int paramInt2)
   {
     Object localObject = new StringBuilder();
@@ -95,7 +89,7 @@ public class CameraWrapper
     localObject = new Camera.CameraInfo();
     Camera.getCameraInfo(paramInt1, (Camera.CameraInfo)localObject);
     paramInt1 = ((Camera.CameraInfo)localObject).orientation;
-    CameraAttrs.a().d();
+    CameraAttrs.a().e();
     if (((Camera.CameraInfo)localObject).facing == 1)
     {
       if (QLog.isColorLevel())
@@ -111,36 +105,36 @@ public class CameraWrapper
         {
           if (paramInt2 != 180)
           {
-            if ((paramInt2 == 270) && (CameraAttrs.a().e != -1))
+            if ((paramInt2 == 270) && (CameraAttrs.a().m != -1))
             {
-              paramInt1 = CameraAttrs.a().e;
+              paramInt1 = CameraAttrs.a().m;
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("reset FRONT Cam frontCamRotate270 = ");
               ((StringBuilder)localObject).append(paramInt1);
               QLog.d("Q.camera.CameraWrapper", 2, ((StringBuilder)localObject).toString());
             }
           }
-          else if (CameraAttrs.a().d != -1)
+          else if (CameraAttrs.a().l != -1)
           {
-            paramInt1 = CameraAttrs.a().d;
+            paramInt1 = CameraAttrs.a().l;
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("reset FRONT Cam frontCamRotate180 = ");
             ((StringBuilder)localObject).append(paramInt1);
             QLog.d("Q.camera.CameraWrapper", 2, ((StringBuilder)localObject).toString());
           }
         }
-        else if (CameraAttrs.a().jdField_c_of_type_Int != -1)
+        else if (CameraAttrs.a().k != -1)
         {
-          paramInt1 = CameraAttrs.a().jdField_c_of_type_Int;
+          paramInt1 = CameraAttrs.a().k;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("reset FRONT Cam frontCamRotate90 = ");
           ((StringBuilder)localObject).append(paramInt1);
           QLog.d("Q.camera.CameraWrapper", 2, ((StringBuilder)localObject).toString());
         }
       }
-      else if (CameraAttrs.a().jdField_b_of_type_Int != -1)
+      else if (CameraAttrs.a().j != -1)
       {
-        paramInt1 = CameraAttrs.a().jdField_b_of_type_Int;
+        paramInt1 = CameraAttrs.a().j;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("reset FRONT Cam frontCamRotate0 = ");
         ((StringBuilder)localObject).append(paramInt1);
@@ -162,36 +156,36 @@ public class CameraWrapper
         {
           if (paramInt2 != 180)
           {
-            if ((paramInt2 == 270) && (CameraAttrs.a().i != -1))
+            if ((paramInt2 == 270) && (CameraAttrs.a().q != -1))
             {
-              paramInt1 = CameraAttrs.a().i;
+              paramInt1 = CameraAttrs.a().q;
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("reset BACK Cam backCamRotate270 = ");
               ((StringBuilder)localObject).append(paramInt1);
               QLog.d("Q.camera.CameraWrapper", 2, ((StringBuilder)localObject).toString());
             }
           }
-          else if (CameraAttrs.a().h != -1)
+          else if (CameraAttrs.a().p != -1)
           {
-            paramInt1 = CameraAttrs.a().h;
+            paramInt1 = CameraAttrs.a().p;
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("reset BACK Cam backCamRotate180 = ");
             ((StringBuilder)localObject).append(paramInt1);
             QLog.d("Q.camera.CameraWrapper", 2, ((StringBuilder)localObject).toString());
           }
         }
-        else if (CameraAttrs.a().jdField_g_of_type_Int != -1)
+        else if (CameraAttrs.a().o != -1)
         {
-          paramInt1 = CameraAttrs.a().jdField_g_of_type_Int;
+          paramInt1 = CameraAttrs.a().o;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("reset BACK Cam backCamRotate90 = ");
           ((StringBuilder)localObject).append(paramInt1);
           QLog.d("Q.camera.CameraWrapper", 2, ((StringBuilder)localObject).toString());
         }
       }
-      else if (CameraAttrs.a().f != -1)
+      else if (CameraAttrs.a().n != -1)
       {
-        paramInt1 = CameraAttrs.a().f;
+        paramInt1 = CameraAttrs.a().n;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("reset BACK Cam backCamRotate0 = ");
         ((StringBuilder)localObject).append(paramInt1);
@@ -210,35 +204,35 @@ public class CameraWrapper
   
   public void a(boolean paramBoolean)
   {
-    CameraAttrs.a().a(CameraUtils.a(BaseApplicationImpl.getContext()), paramBoolean);
+    CameraAttrs.a().a(CameraUtils.b(BaseApplicationImpl.getContext()), paramBoolean);
   }
   
-  public boolean a()
+  public boolean b()
   {
     Object localObject1;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("[isSysVersionValid] ENTER sysCamerOn=");
-      ((StringBuilder)localObject1).append(CameraAttrs.a().jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject1).append(CameraAttrs.a().c);
       ((StringBuilder)localObject1).append(" sysMinVersion=");
-      ((StringBuilder)localObject1).append(CameraAttrs.a().a);
+      ((StringBuilder)localObject1).append(CameraAttrs.a().d);
       ((StringBuilder)localObject1).append(" sysMaxVersion=");
-      ((StringBuilder)localObject1).append(CameraAttrs.a().jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(CameraAttrs.a().e);
       ((StringBuilder)localObject1).append(" currVersion=");
       ((StringBuilder)localObject1).append(Build.VERSION.RELEASE);
       QLog.i("Q.camera.CameraWrapper", 2, ((StringBuilder)localObject1).toString());
     }
-    CameraAttrs.a().a();
-    boolean bool1 = CameraAttrs.a().jdField_b_of_type_Boolean;
+    CameraAttrs.a().b();
+    boolean bool1 = CameraAttrs.a().c;
     boolean bool2 = false;
     if (bool1) {}
     for (;;)
     {
       try
       {
-        String[] arrayOfString1 = CameraAttrs.a().a.split("\\.");
-        String[] arrayOfString2 = CameraAttrs.a().jdField_b_of_type_JavaLangString.split("\\.");
+        String[] arrayOfString1 = CameraAttrs.a().d.split("\\.");
+        String[] arrayOfString2 = CameraAttrs.a().e.split("\\.");
         if (Build.VERSION.RELEASE == null) {
           break label401;
         }
@@ -291,20 +285,37 @@ public class CameraWrapper
     }
   }
   
-  public int b()
+  public boolean c()
   {
-    if (jdField_a_of_type_Int != -1)
+    CameraAttrs.a().f();
+    return CameraAttrs.a().r;
+  }
+  
+  public boolean d()
+  {
+    CameraAttrs.a().c();
+    return CameraAttrs.a().f;
+  }
+  
+  public int e()
+  {
+    return 21;
+  }
+  
+  public int f()
+  {
+    if (b != -1)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[getNumberOfCameras] sNumberOfCameras = ");
-        ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(b);
         QLog.d("Q.camera.CameraWrapper", 2, ((StringBuilder)localObject).toString());
       }
-      return jdField_a_of_type_Int;
+      return b;
     }
-    Object localObject = CameraUtils.b(BaseApplicationImpl.getContext());
+    Object localObject = CameraUtils.c(BaseApplicationImpl.getContext());
     int i;
     if (((SharedPreferences)localObject).contains("local_sp_camera_num"))
     {
@@ -318,56 +329,44 @@ public class CameraWrapper
     }
     else
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.c)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.c = true;
         ThreadManager.excute(new CameraWrapper.1(this, (SharedPreferences)localObject), 64, null, false);
       }
       i = 2;
     }
-    jdField_a_of_type_Int = i;
+    b = i;
     if (QLog.isColorLevel()) {
-      QLog.d("Q.camera.CameraWrapper", 2, new Object[] { "getNumberOfCameras, return ", Integer.valueOf(jdField_a_of_type_Int) });
+      QLog.d("Q.camera.CameraWrapper", 2, new Object[] { "getNumberOfCameras, return ", Integer.valueOf(b) });
     }
     return i;
   }
   
-  public boolean b()
+  public boolean g()
   {
-    CameraAttrs.a().e();
-    return CameraAttrs.a().jdField_g_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    CameraAttrs.a().b();
-    return CameraAttrs.a().jdField_c_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      return this.jdField_b_of_type_Boolean;
+    if (this.e) {
+      return this.d;
     }
-    SharedPreferences localSharedPreferences = CameraUtils.b(BaseApplicationImpl.getContext());
+    SharedPreferences localSharedPreferences = CameraUtils.c(BaseApplicationImpl.getContext());
     if (localSharedPreferences.contains("local_sp_camera_back_exist"))
     {
-      this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean("local_sp_camera_back_exist", false);
+      this.d = localSharedPreferences.getBoolean("local_sp_camera_back_exist", false);
     }
     else
     {
-      this.jdField_c_of_type_Boolean = true;
+      this.e = true;
       ThreadManager.excute(new CameraWrapper.2(this), 64, null, false);
     }
-    if ((!this.jdField_b_of_type_Boolean) && (QLog.isColorLevel())) {
+    if ((!this.d) && (QLog.isColorLevel())) {
       QLog.i("Q.camera.CameraWrapper", 1, "check back camera exist, return false");
     }
-    return this.jdField_b_of_type_Boolean;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.camera.adapter.CameraWrapper
  * JD-Core Version:    0.7.0.1
  */

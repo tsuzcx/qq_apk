@@ -11,13 +11,13 @@ class AEEditorMultiCutEditFragment$20$1
   @RequiresApi(api=16)
   public void run()
   {
-    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditMultiAEEditorMultiCutEditFragment$20.a, true);
-    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditMultiAEEditorMultiCutEditFragment$20.a, this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIDragView);
+    AEEditorMultiCutEditFragment.a(this.b.a, true);
+    AEEditorMultiCutEditFragment.a(this.b.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.20.1
  * JD-Core Version:    0.7.0.1
  */

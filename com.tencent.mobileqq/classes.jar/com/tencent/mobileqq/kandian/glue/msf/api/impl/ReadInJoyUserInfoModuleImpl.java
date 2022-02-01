@@ -21,7 +21,7 @@ public final class ReadInJoyUserInfoModuleImpl
   @Nullable
   public String getDefaultNickName()
   {
-    return ReadInJoyUserInfoModule.a();
+    return ReadInJoyUserInfoModule.d();
   }
   
   @Nullable
@@ -44,7 +44,7 @@ public final class ReadInJoyUserInfoModuleImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.msf.api.impl.ReadInJoyUserInfoModuleImpl
  * JD-Core Version:    0.7.0.1
  */

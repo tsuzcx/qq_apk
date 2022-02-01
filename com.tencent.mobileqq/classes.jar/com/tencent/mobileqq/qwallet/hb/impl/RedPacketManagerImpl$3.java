@@ -13,10 +13,10 @@ class RedPacketManagerImpl$3
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     Object localObject = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, paramBoolean, paramBundle);
+    this.a.onReceive(paramInt, paramBoolean, paramBundle);
     if (QLog.isColorLevel())
     {
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqQwalletHbImplRedPacketManagerImpl.TAG;
+      paramBundle = this.b.TAG;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setSelectedSkin2ServerIfChanged onReceive isSuccess:");
       ((StringBuilder)localObject).append(paramBoolean);
@@ -26,7 +26,7 @@ class RedPacketManagerImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.impl.RedPacketManagerImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,14 +21,14 @@ class ColorNoteSmallScreenRelativeLayout$6$1
     }
     LottieDrawable localLottieDrawable = new LottieDrawable();
     localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImagesAssetsFolder(this.a.b);
+    localLottieDrawable.setImagesAssetsFolder(this.a.c);
     ColorNoteSmallScreenRelativeLayout.a(this.a.this$0, localLottieDrawable);
     ThreadManagerV2.getUIHandlerV2().post(new ColorNoteSmallScreenRelativeLayout.6.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6.1
  * JD-Core Version:    0.7.0.1
  */

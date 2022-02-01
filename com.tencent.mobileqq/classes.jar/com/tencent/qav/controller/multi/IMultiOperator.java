@@ -4,8 +4,6 @@ import com.tencent.qav.QavDef.MultiParams;
 
 public abstract interface IMultiOperator
 {
-  public abstract int a();
-  
   public abstract int a(QavDef.MultiParams paramMultiParams);
   
   public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
@@ -16,17 +14,19 @@ public abstract interface IMultiOperator
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract void c();
-  
-  public abstract void d();
-  
   public abstract void e();
   
   public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract int i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.controller.multi.IMultiOperator
  * JD-Core Version:    0.7.0.1
  */

@@ -9,16 +9,16 @@ class EditLocalVideoActivity$12$1
   
   public void run()
   {
-    if (EditLocalVideoActivity.a(this.a.a) != null)
+    if (EditLocalVideoActivity.q(this.a.b) != null)
     {
-      EditLocalVideoActivity.a(this.a.a).seekTo(0);
-      EditLocalVideoActivity.a(this.a.a).start();
+      EditLocalVideoActivity.q(this.a.b).seekTo(0);
+      EditLocalVideoActivity.q(this.a.b).start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.12.1
  * JD-Core Version:    0.7.0.1
  */

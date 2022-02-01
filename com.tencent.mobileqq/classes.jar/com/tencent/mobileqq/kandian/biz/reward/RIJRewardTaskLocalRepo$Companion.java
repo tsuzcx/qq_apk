@@ -11,14 +11,14 @@ public final class RIJRewardTaskLocalRepo$Companion
   @NotNull
   public final RIJRewardTaskLocalRepo a()
   {
-    RIJRewardTaskLocalRepo localRIJRewardTaskLocalRepo = RIJRewardTaskLocalRepo.a();
+    RIJRewardTaskLocalRepo localRIJRewardTaskLocalRepo = RIJRewardTaskLocalRepo.e();
     if (localRIJRewardTaskLocalRepo != null) {
       return localRIJRewardTaskLocalRepo;
     }
     try
     {
       localRIJRewardTaskLocalRepo = new RIJRewardTaskLocalRepo(null);
-      RIJRewardTaskLocalRepo.a(localRIJRewardTaskLocalRepo);
+      RIJRewardTaskLocalRepo.b(localRIJRewardTaskLocalRepo);
       return localRIJRewardTaskLocalRepo;
     }
     finally
@@ -30,7 +30,7 @@ public final class RIJRewardTaskLocalRepo$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJRewardTaskLocalRepo.Companion
  * JD-Core Version:    0.7.0.1
  */

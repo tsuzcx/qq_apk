@@ -12,12 +12,12 @@ public class PicSelectAdapter$DateItemViewHolder
   PicSelectAdapter$DateItemViewHolder(View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131380042));
+    this.a = ((TextView)paramView.findViewById(2131448948));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter.DateItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

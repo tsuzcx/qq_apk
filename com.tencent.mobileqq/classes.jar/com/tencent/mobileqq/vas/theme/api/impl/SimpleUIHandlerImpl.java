@@ -43,7 +43,7 @@ public final class SimpleUIHandlerImpl
   
   public long sendSwitchAndSetSimpleUI(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    boolean bool = StudyModeManager.a();
+    boolean bool = StudyModeManager.h();
     Object localObject = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
     localObject = ((BaseApplicationImpl)localObject).getRuntime();
@@ -78,7 +78,7 @@ public final class SimpleUIHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.api.impl.SimpleUIHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

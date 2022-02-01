@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:focusableInTouchMode="true" android:layout_width="227.0dip" android:layout_height="128.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="129.0dip" android:layout_height="128.0dip">
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/6u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/cli" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="98.0dip" android:layout_height="128.0dip">
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/6w" android:layout_width="fill_parent" android:layout_height="64.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/cli" />
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/6v" android:layout_width="fill_parent" android:layout_height="64.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/cli" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/6x" android:background="@drawable/f37" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignParentBottom="true" layout="@layout/5g" />
+</RelativeLayout>

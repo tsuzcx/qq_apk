@@ -259,7 +259,7 @@ public class MessageForLongMsg
                         m = i;
                         n = j;
                         bool3 = bool1;
-                        bool2 = MQPSensitiveMsgUtil.a().a((String)localObject1);
+                        bool2 = MQPSensitiveMsgUtil.a().b((String)localObject1);
                         if (!bool2) {
                           bool1 = true;
                         }
@@ -384,7 +384,7 @@ public class MessageForLongMsg
   
   public boolean isSupportFTS()
   {
-    return MsgProxyUtils.m(this.istroop);
+    return MsgProxyUtils.n(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -564,7 +564,7 @@ public class MessageForLongMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLongMsg
  * JD-Core Version:    0.7.0.1
  */

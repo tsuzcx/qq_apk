@@ -19,32 +19,32 @@ import mqq.app.NewIntent;
 
 public class LBSDetetor
 {
-  private static LBSDetetor jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new LBSDetetor.1(this));
-  private LBSDetetor.LBSDetectorObserver jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor$LBSDetectorObserver = new LBSDetetor.LBSDetectorObserver(this, null);
-  private LBSDetetor.LBSTemplateListener jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor$LBSTemplateListener;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private static LBSDetetor e;
+  private AppInterface a;
+  private LBSDetetor.LBSTemplateListener b;
+  private LBSDetetor.LBSDetectorObserver c = new LBSDetetor.LBSDetectorObserver(this, null);
+  private Handler d = new Handler(Looper.getMainLooper(), new LBSDetetor.1(this));
   
   private LBSDetetor(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    paramAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    this.a = paramAppInterface;
+    paramAppInterface = this.a;
     if (paramAppInterface != null) {
-      paramAppInterface.registObserver(this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor$LBSDetectorObserver);
+      paramAppInterface.registObserver(this.c);
     }
   }
   
   public static LBSDetetor a(AppInterface paramAppInterface)
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor == null) {
-      jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor = new LBSDetetor(paramAppInterface);
+    if (e == null) {
+      e = new LBSDetetor(paramAppInterface);
     }
-    return jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor;
+    return e;
   }
   
   private void a(double paramDouble1, double paramDouble2, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -81,7 +81,7 @@ public class LBSDetetor
       i = 1;
     }
     ((NewIntent)localObject).putExtra("key_lbs_template_network_type", i);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet((NewIntent)localObject);
+    this.a.startServlet((NewIntent)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -109,14 +109,14 @@ public class LBSDetetor
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("LBSDetetor", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor$LBSTemplateListener != null)
+    this.d.removeMessages(paramInt);
+    if (this.b != null)
     {
       localObject = paramArrayList;
       if (paramArrayList == null) {
         localObject = new ArrayList(1);
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor$LBSTemplateListener.a(paramInt, paramBoolean, (ArrayList)localObject);
+      this.b.a(paramInt, paramBoolean, (ArrayList)localObject);
     }
   }
   
@@ -182,13 +182,13 @@ public class LBSDetetor
         ((StringBuilder)localObject2).append(bool3);
         QLog.d("LBSDetetor", 2, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+      this.d.removeMessages(paramInt);
       if (bool3)
       {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
+        this.d.sendEmptyMessageDelayed(paramInt, 30000L);
         ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new LBSDetetor.LBSLocationListener(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
       }
-      Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor$LBSTemplateListener;
+      Object localObject2 = this.b;
       if (localObject2 != null) {
         ((LBSDetetor.LBSTemplateListener)localObject2).a(paramInt, bool3);
       }
@@ -200,12 +200,12 @@ public class LBSDetetor
   
   public void a(LBSDetetor.LBSTemplateListener paramLBSTemplateListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorActivityRichmediaLBSDetetor$LBSTemplateListener = paramLBSTemplateListener;
+    this.b = paramLBSTemplateListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.LBSDetetor
  * JD-Core Version:    0.7.0.1
  */

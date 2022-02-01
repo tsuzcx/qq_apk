@@ -9,8 +9,8 @@ class BaseGuessActionStageView$2
   
   public void run()
   {
-    if (this.this$0.b != null) {
-      this.this$0.b.setVisibility(8);
+    if (this.this$0.k != null) {
+      this.this$0.k.setVisibility(8);
     }
   }
 }

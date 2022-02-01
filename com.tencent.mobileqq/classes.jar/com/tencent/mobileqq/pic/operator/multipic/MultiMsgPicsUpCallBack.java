@@ -27,18 +27,18 @@ public class MultiMsgPicsUpCallBack
   extends MultiPicsBaseClass
   implements UpCallBack
 {
-  final int jdField_a_of_type_Int;
-  final Rect jdField_a_of_type_AndroidGraphicsRect;
-  final PicFowardInfo jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo;
-  final PicResult jdField_a_of_type_ComTencentMobileqqPicPicResult;
+  final int a;
+  final PicResult b;
+  final PicFowardInfo c;
+  final Rect d;
   
   public MultiMsgPicsUpCallBack(MultiPicsOperator.MultiPicsUploadTask paramMultiPicsUploadTask, WeakReference<AppInterface> paramWeakReference, int paramInt, String paramString)
   {
     super(paramMultiPicsUploadTask, paramWeakReference);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPicPicResult = ((PicResult)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo = ((PicFowardInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    this.jdField_a_of_type_AndroidGraphicsRect = a(paramString);
+    this.a = paramInt;
+    this.b = ((PicResult)this.h.get(this.a));
+    this.c = ((PicFowardInfo)this.i.get(paramInt));
+    this.d = a(paramString);
   }
   
   private Rect a(String paramString)
@@ -109,57 +109,57 @@ public class MultiMsgPicsUpCallBack
         if (???.not_online_image.has())
         {
           ??? = (im_msg_body.NotOnlineImage)???.not_online_image.get();
-          ???.uint32_thumb_width.set(this.jdField_a_of_type_AndroidGraphicsRect.right);
-          ???.uint32_thumb_height.set(this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-          if ((this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.b != 1) && (this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.b != 3000)) {
-            synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+          ???.uint32_thumb_width.set(this.d.right);
+          ???.uint32_thumb_height.set(this.d.bottom);
+          if ((this.c.c.c != 1) && (this.c.c.c != 3000)) {
+            synchronized (this.h)
             {
-              this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_Int = 0;
-              this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_JavaLangObject = ???;
-              ??? = this.b;
-              localObject3 = this.jdField_a_of_type_JavaLangString;
+              this.b.a = 0;
+              this.b.d = ???;
+              ??? = this.f;
+              localObject3 = this.e;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("[");
-              localStringBuilder.append(this.jdField_a_of_type_Int);
+              localStringBuilder.append(this.a);
               localStringBuilder.append("] OK, ");
-              localStringBuilder.append(a(???));
+              localStringBuilder.append(b(???));
               Logger.a((String)???, (String)localObject3, "uploadForwardMultiMsgPics.attachRichText2Msg", localStringBuilder.toString());
               if (!QLog.isColorLevel()) {
                 break label918;
               }
               ??? = new StringBuilder();
               ???.append("[uploadForwardMultiMsgPics] upload [");
-              ???.append(this.jdField_a_of_type_Int);
+              ???.append(this.a);
               ???.append("] OK");
               QLog.d("MultiPicsOperator", 2, ???.toString());
             }
           }
-          ??? = this.b;
-          localObject3 = this.jdField_a_of_type_JavaLangString;
+          ??? = this.f;
+          localObject3 = this.e;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("convert2CustomFace for [");
-          localStringBuilder.append(this.jdField_a_of_type_Int);
+          localStringBuilder.append(this.a);
           localStringBuilder.append("] ");
           Logger.a((String)???, (String)localObject3, "uploadForwardMultiMsgPics.attachRichText2Msg", localStringBuilder.toString());
           ??? = a(???);
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+          synchronized (this.h)
           {
-            this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_Int = 0;
-            this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_JavaLangObject = ???;
-            ??? = this.b;
-            localObject3 = this.jdField_a_of_type_JavaLangString;
+            this.b.a = 0;
+            this.b.d = ???;
+            ??? = this.f;
+            localObject3 = this.e;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("[");
-            localStringBuilder.append(this.jdField_a_of_type_Int);
+            localStringBuilder.append(this.a);
             localStringBuilder.append("] OK, ");
-            localStringBuilder.append(a(???));
+            localStringBuilder.append(b(???));
             Logger.a((String)???, (String)localObject3, "uploadForwardMultiMsgPics.attachRichText2Msg", localStringBuilder.toString());
             if (!QLog.isColorLevel()) {
               break label918;
             }
             ??? = new StringBuilder();
             ???.append("[uploadForwardMultiMsgPics] upload [");
-            ???.append(this.jdField_a_of_type_Int);
+            ???.append(this.a);
             ???.append("] OK");
             QLog.d("MultiPicsOperator", 2, ???.toString());
           }
@@ -167,57 +167,57 @@ public class MultiMsgPicsUpCallBack
         if (???.custom_face.has())
         {
           ??? = (im_msg_body.CustomFace)???.custom_face.get();
-          ???.uint32_thumb_width.set(this.jdField_a_of_type_AndroidGraphicsRect.right);
-          ???.uint32_thumb_height.set(this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-          if ((this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.b != 1) && (this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.b != 3000))
+          ???.uint32_thumb_width.set(this.d.right);
+          ???.uint32_thumb_height.set(this.d.bottom);
+          if ((this.c.c.c != 1) && (this.c.c.c != 3000))
           {
-            ??? = this.b;
-            localObject3 = this.jdField_a_of_type_JavaLangString;
+            ??? = this.f;
+            localObject3 = this.e;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("convert2NotOnlineImage for [");
-            localStringBuilder.append(this.jdField_a_of_type_Int);
+            localStringBuilder.append(this.a);
             localStringBuilder.append("] ");
             Logger.a((String)???, (String)localObject3, "uploadForwardMultiMsgPics.attachRichText2Msg", localStringBuilder.toString());
             ??? = a(???);
-            synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+            synchronized (this.h)
             {
-              this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_Int = 0;
-              this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_JavaLangObject = ???;
-              ??? = this.b;
-              localObject3 = this.jdField_a_of_type_JavaLangString;
+              this.b.a = 0;
+              this.b.d = ???;
+              ??? = this.f;
+              localObject3 = this.e;
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("[");
-              localStringBuilder.append(this.jdField_a_of_type_Int);
+              localStringBuilder.append(this.a);
               localStringBuilder.append("] OK, ");
-              localStringBuilder.append(a(???));
+              localStringBuilder.append(b(???));
               Logger.a((String)???, (String)localObject3, "uploadForwardMultiMsgPics.attachRichText2Msg", localStringBuilder.toString());
               if (QLog.isColorLevel())
               {
                 ??? = new StringBuilder();
                 ???.append("[uploadForwardMultiMsgPics] upload [");
-                ???.append(this.jdField_a_of_type_Int);
+                ???.append(this.a);
                 ???.append("] OK");
                 QLog.d("MultiPicsOperator", 2, ???.toString());
               }
             }
           }
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+          synchronized (this.h)
           {
-            this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_Int = 0;
-            this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_JavaLangObject = ???;
-            ??? = this.b;
-            localObject3 = this.jdField_a_of_type_JavaLangString;
+            this.b.a = 0;
+            this.b.d = ???;
+            ??? = this.f;
+            localObject3 = this.e;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("[");
-            localStringBuilder.append(this.jdField_a_of_type_Int);
+            localStringBuilder.append(this.a);
             localStringBuilder.append("] OK, ");
-            localStringBuilder.append(a(???));
+            localStringBuilder.append(b(???));
             Logger.a((String)???, (String)localObject3, "uploadForwardMultiMsgPics.attachRichText2Msg", localStringBuilder.toString());
             if (QLog.isColorLevel())
             {
               ??? = new StringBuilder();
               ???.append("[uploadForwardMultiMsgPics] upload [");
-              ???.append(this.jdField_a_of_type_Int);
+              ???.append(this.a);
               ???.append("] OK");
               QLog.d("MultiPicsOperator", 2, ???.toString());
             }
@@ -225,73 +225,73 @@ public class MultiMsgPicsUpCallBack
             i = 1;
           }
         }
-        ??? = this.b;
-        ??? = this.jdField_a_of_type_JavaLangString;
+        ??? = this.f;
+        ??? = this.e;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("[");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject3).append(this.a);
         ((StringBuilder)localObject3).append("] failed, elem.not_online_image and elem.custom_face are null");
         Logger.b(???, (String)???, "uploadForwardMultiMsgPics.attachRichText2Msg", ((StringBuilder)localObject3).toString());
       }
       else
       {
-        ??? = this.b;
-        ??? = this.jdField_a_of_type_JavaLangString;
+        ??? = this.f;
+        ??? = this.e;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("[");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject3).append(this.a);
         ((StringBuilder)localObject3).append("] failed, richText.elems is null");
         Logger.b(???, (String)???, "uploadForwardMultiMsgPics.attachRichText2Msg", ((StringBuilder)localObject3).toString());
       }
     }
     else
     {
-      ??? = this.b;
-      ??? = this.jdField_a_of_type_JavaLangString;
+      ??? = this.f;
+      ??? = this.e;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("[");
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject3).append(this.a);
       ((StringBuilder)localObject3).append("] failed, richText is null or richText.elems is null");
       Logger.b(???, (String)???, "uploadForwardMultiMsgPics.attachRichText2Msg", ((StringBuilder)localObject3).toString());
     }
     if (i == 0) {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      synchronized (this.h)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_Int = -1;
-        this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = new PicInfoInterface.ErrInfo();
-        this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_Int = -1;
-        ??? = this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo;
+        this.b.a = -1;
+        this.b.b = new PicInfoInterface.ErrInfo();
+        this.b.b.c = -1;
+        ??? = this.b.b;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("Get target pic filepath of [");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject3).append(this.a);
         ((StringBuilder)localObject3).append("] failed");
         ((PicInfoInterface.ErrInfo)???).b = ((StringBuilder)localObject3).toString();
-        if ((this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.b != 1) && (this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.b != 3000)) {
-          this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_JavaLangObject = a(null, null, this.jdField_a_of_type_Int);
+        if ((this.c.c.c != 1) && (this.c.c.c != 3000)) {
+          this.b.d = a(null, null, this.a);
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_JavaLangObject = a(null, null, this.jdField_a_of_type_Int);
+          this.b.d = a(null, null, this.a);
         }
-        ??? = this.b;
-        localObject3 = this.jdField_a_of_type_JavaLangString;
+        ??? = this.f;
+        localObject3 = this.e;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a);
         localStringBuilder.append("] failed, errDec ＝ ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b);
+        localStringBuilder.append(this.b.b.b);
         Logger.b((String)???, (String)localObject3, "uploadForwardMultiMsgPics.attachRichText2Msg", localStringBuilder.toString());
         if (QLog.isColorLevel())
         {
           ??? = new StringBuilder();
           ((StringBuilder)???).append("[uploadForwardMultiMsgPics] upload [");
-          ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)???).append(this.a);
           ((StringBuilder)???).append("] failed, errDec ＝ ");
-          ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b);
+          ((StringBuilder)???).append(this.b.b.b);
           QLog.e("MultiPicsOperator", 2, ((StringBuilder)???).toString());
         }
       }
     }
     a();
-    if (a() == 0) {
+    if (c() == 0) {
       b();
     }
     return null;
@@ -301,38 +301,38 @@ public class MultiMsgPicsUpCallBack
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.h)
     {
-      if (paramSendResult.jdField_a_of_type_Int != 0)
+      if (paramSendResult.a != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_Int = -1;
-        this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = new PicInfoInterface.ErrInfo();
-        this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b = paramSendResult.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_Int = paramSendResult.b;
-        if ((this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.b != 1) && (this.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.b != 3000)) {
-          this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_JavaLangObject = a(null, null, this.jdField_a_of_type_Int);
+        this.b.a = -1;
+        this.b.b = new PicInfoInterface.ErrInfo();
+        this.b.b.b = paramSendResult.c;
+        this.b.b.c = paramSendResult.b;
+        if ((this.c.c.c != 1) && (this.c.c.c != 3000)) {
+          this.b.d = a(null, null, this.a);
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_JavaLangObject = a(null, null, this.jdField_a_of_type_Int);
+          this.b.d = a(null, null, this.a);
         }
-        paramSendResult = this.b;
-        String str = this.jdField_a_of_type_JavaLangString;
+        paramSendResult = this.f;
+        String str = this.e;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a);
         localStringBuilder.append("] failed, errDec = ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b);
+        localStringBuilder.append(this.b.b.b);
         Logger.a(paramSendResult, str, "uploadForwardMultiMsgPics.onSend", localStringBuilder.toString());
         if (QLog.isColorLevel())
         {
           paramSendResult = new StringBuilder();
           paramSendResult.append("[uploadForwardMultiMsgPics] upload [");
-          paramSendResult.append(this.jdField_a_of_type_Int);
+          paramSendResult.append(this.a);
           paramSendResult.append("] failed, errDec ＝ ");
-          paramSendResult.append(this.jdField_a_of_type_ComTencentMobileqqPicPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b);
+          paramSendResult.append(this.b.b.b);
           QLog.e("MultiPicsOperator", 2, paramSendResult.toString());
         }
         a();
-        if (a() == 0) {
+        if (c() == 0) {
           b();
         }
       }
@@ -342,7 +342,7 @@ public class MultiMsgPicsUpCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.multipic.MultiMsgPicsUpCallBack
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 public class GetUserGuideInfoStep$Request
   extends NetworkRequest<GetUserGuideInfoStep.Response>
 {
-  public static final String a = StoryApi.a("StorySvc.get_user_guide");
+  public static final String e = StoryApi.a("StorySvc.get_user_guide");
   
   public GetUserGuideInfoStep.Response a(byte[] paramArrayOfByte)
   {
@@ -29,10 +29,10 @@ public class GetUserGuideInfoStep$Request
   
   public String a()
   {
-    return a;
+    return e;
   }
   
-  protected byte[] a()
+  protected byte[] c()
   {
     return new qqstory_service.ReqGetUserGuide().toByteArray();
   }

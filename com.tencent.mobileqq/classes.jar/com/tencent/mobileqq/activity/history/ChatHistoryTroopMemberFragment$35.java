@@ -19,7 +19,7 @@ class ChatHistoryTroopMemberFragment$35
       int i = ((Integer)localObject).intValue();
       if (i >= 0)
       {
-        localObject = paramView.findViewById(2131379771);
+        localObject = paramView.findViewById(2131448581);
         boolean bool2 = false;
         boolean bool1 = bool2;
         if (((View)localObject).getTag() != null)
@@ -31,24 +31,24 @@ class ChatHistoryTroopMemberFragment$35
         }
         if (bool1)
         {
-          localObject = (ChatHistoryTroopMemberFragment.ATroopMember)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$SearchResultAdapter.getItem(i);
+          localObject = (ChatHistoryTroopMemberFragment.ATroopMember)this.a.ad.getItem(i);
           this.a.a((ChatHistoryTroopMemberFragment.ATroopMember)localObject);
-          if ((this.a.jdField_d_of_type_AndroidAppDialog != null) && (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())) {
-            this.a.jdField_d_of_type_AndroidAppDialog.dismiss();
+          if ((this.a.bm != null) && (this.a.bm.isShowing())) {
+            this.a.bm.dismiss();
           }
-          if (this.a.jdField_d_of_type_Int == 11) {
-            ReportController.b(this.a.b, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
+          if (this.a.az == 11) {
+            ReportController.b(this.a.bc, "CliOper", "", "", "0X8006218", "0X8006218", 0, 0, "", "", "", "");
           }
         }
         else
         {
-          localObject = (ChatHistoryTroopMemberFragment.ATroopMember)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.getItem(i);
+          localObject = (ChatHistoryTroopMemberFragment.ATroopMember)this.a.K.getItem(i);
           this.a.a((ChatHistoryTroopMemberFragment.ATroopMember)localObject);
-          if (this.a.jdField_d_of_type_Int == 11) {
-            ReportController.b(this.a.b, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
+          if (this.a.az == 11) {
+            ReportController.b(this.a.bc, "CliOper", "", "", "0X8006219", "0X8006219", 0, 0, "", "", "", "");
           }
-          if (this.a.jdField_d_of_type_Int == 18) {
-            ReportController.b(this.a.b, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.c, "", "", "");
+          if (this.a.az == 18) {
+            ReportController.b(this.a.bc, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "mber_clk", 0, 0, this.a.w, "", "", "");
           }
         }
       }
@@ -58,7 +58,7 @@ class ChatHistoryTroopMemberFragment$35
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.35
  * JD-Core Version:    0.7.0.1
  */

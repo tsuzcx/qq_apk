@@ -12,26 +12,26 @@ import java.util.List;
 
 public class PngsTextDrawer
 {
-  private static String jdField_a_of_type_JavaLangString = "GIFCreator";
-  private int jdField_a_of_type_Int = 320;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private AEGIFTextDrawer jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextDrawer;
-  private PngsTextDrawer.Callback jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsTextDrawer$Callback;
-  private int jdField_b_of_type_Int = 320;
-  private String jdField_b_of_type_JavaLangString = AEPath.GIF.CACHE.jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int d;
+  private static String a = "GIFCreator";
+  private String b = AEPath.GIF.CACHE.b;
+  private Handler c;
+  private int d = 320;
+  private int e = 320;
+  private int f;
+  private int g;
+  private String h;
+  private AEGIFTextDrawer i;
+  private PngsTextDrawer.Callback j;
   
   public PngsTextDrawer(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.h = paramString;
     paramString = new StringBuilder();
     paramString.append("PngsTextDrawerHT");
     paramString.append(System.currentTimeMillis());
     paramString = new HandlerThread(paramString.toString());
     paramString.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
+    this.c = new Handler(paramString.getLooper());
   }
   
   private List<String> a(String paramString)
@@ -39,36 +39,36 @@ public class PngsTextDrawer
     String[] arrayOfString = new File(paramString).list();
     Arrays.sort(arrayOfString);
     ArrayList localArrayList = new ArrayList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    int m = arrayOfString.length;
+    int k = 0;
+    while (k < m)
     {
-      String str = arrayOfString[i];
+      String str = arrayOfString[k];
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
       localStringBuilder.append(File.separator);
       localStringBuilder.append(str);
       localArrayList.add(localStringBuilder.toString());
-      i += 1;
+      k += 1;
     }
     return localArrayList;
   }
   
   public void a(PngsTextDrawer.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifVideoPngsTextDrawer$Callback = paramCallback;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "start add text to png");
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsTextDrawer.2(this, paramCallback));
+    this.j = paramCallback;
+    QLog.d(a, 4, "start add text to png");
+    this.c.post(new PngsTextDrawer.2(this, paramCallback));
   }
   
   public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, String paramString4, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsTextDrawer.1(this, paramFloat3, paramFloat4, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramFloat1, paramFloat2));
+    this.c.post(new PngsTextDrawer.1(this, paramFloat3, paramFloat4, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramString4, paramFloat1, paramFloat2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsTextDrawer
  * JD-Core Version:    0.7.0.1
  */

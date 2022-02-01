@@ -23,28 +23,18 @@ public class ImportantMsgManager
   extends Observable
   implements Manager
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private TroopShortcutBarObserver jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver;
-  private HashMap<Long, ImportantMsgItem> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ConcurrentHashMap<Long, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private QQAppInterface a;
+  private EntityManager b;
+  private ConcurrentHashMap<Long, Integer> c = new ConcurrentHashMap();
+  private HashMap<Long, ImportantMsgItem> d = new HashMap();
+  private TroopShortcutBarObserver e;
   
   public ImportantMsgManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver = new ImportantMsgManager.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver);
-  }
-  
-  private void a(long paramLong)
-  {
-    ImportantMsgItem localImportantMsgItem = (ImportantMsgItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if (localImportantMsgItem != null)
-    {
-      setChanged();
-      notifyObservers(localImportantMsgItem);
-    }
+    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.e = new ImportantMsgManager.1(this);
+    this.a.addObserver(this.e);
   }
   
   private void a(long paramLong, ArrayList<Long> paramArrayList)
@@ -54,7 +44,7 @@ public class ImportantMsgManager
   
   private void a(long paramLong, ArrayList<ImportantMsgItem.MsgInfo> paramArrayList, List<Long> paramList)
   {
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+    if (!this.d.containsKey(Long.valueOf(paramLong)))
     {
       paramArrayList = new StringBuilder();
       paramArrayList.append("handlerRspImportantMsg mImportantDataMap notcontains troopUin:");
@@ -62,7 +52,7 @@ public class ImportantMsgManager
       QLog.i("ImportantMsgManager", 1, paramArrayList.toString());
       return;
     }
-    paramList = (ImportantMsgItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    paramList = (ImportantMsgItem)this.d.get(Long.valueOf(paramLong));
     if ((paramArrayList != null) && (!paramArrayList.isEmpty())) {
       paramList.addMsgInfos(paramArrayList);
     }
@@ -74,7 +64,7 @@ public class ImportantMsgManager
     paramArrayList.append(a(paramLong));
     QLog.i("ImportantMsgManager", 1, paramArrayList.toString());
     a(paramList.clone());
-    a(paramLong);
+    c(paramLong);
   }
   
   private void a(long paramLong, boolean paramBoolean, List<oidb_0xea3.BackMsg> paramList, List<Long> paramList1)
@@ -103,27 +93,6 @@ public class ImportantMsgManager
     return i > paramLong2;
   }
   
-  private boolean a(Entity paramEntity)
-  {
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen();
-    boolean bool1 = false;
-    if (bool2)
-    {
-      if (paramEntity.getStatus() == 1000)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-        if (paramEntity.getStatus() == 1001) {
-          bool1 = true;
-        }
-        return bool1;
-      }
-      if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
-        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
-      }
-    }
-    return false;
-  }
-  
   private void b(long paramLong, ArrayList<ImportantMsgItem.MsgInfo> paramArrayList)
   {
     if (paramArrayList != null)
@@ -135,35 +104,43 @@ public class ImportantMsgManager
     }
   }
   
-  public int a(long paramLong)
+  private boolean b(Entity paramEntity)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong))).intValue();
-    }
-    return 0;
-  }
-  
-  protected ImportantMsgItem a(long paramLong)
-  {
-    ImportantMsgItem localImportantMsgItem = new ImportantMsgItem();
-    try
+    boolean bool2 = this.b.isOpen();
+    boolean bool1 = false;
+    if (bool2)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(ImportantMsgItem.class, false, "troopUin=?", new String[] { String.valueOf(paramLong) }, null, null, null, null);
-      if ((localObject != null) && (((List)localObject).size() > 0))
+      if (paramEntity.getStatus() == 1000)
       {
-        localObject = (ImportantMsgItem)((List)localObject).get(0);
-        return localObject;
+        this.b.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
+        return this.b.update(paramEntity);
       }
     }
-    catch (Exception localException)
+    return false;
+  }
+  
+  private void c(long paramLong)
+  {
+    ImportantMsgItem localImportantMsgItem = (ImportantMsgItem)this.d.get(Long.valueOf(paramLong));
+    if (localImportantMsgItem != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("readEntity exception + ");
-      localStringBuilder.append(localException.getMessage());
-      QLog.e("ImportantMsgManager", 1, localStringBuilder.toString(), localException);
-      localImportantMsgItem.troopUin = paramLong;
+      setChanged();
+      notifyObservers(localImportantMsgItem);
     }
-    return localImportantMsgItem;
+  }
+  
+  public int a(long paramLong)
+  {
+    if (this.c.containsKey(Long.valueOf(paramLong))) {
+      return ((Integer)this.c.get(Long.valueOf(paramLong))).intValue();
+    }
+    return 0;
   }
   
   public void a(long paramLong, ImportantMsgManager.callbackInMainThread paramcallbackInMainThread)
@@ -171,9 +148,9 @@ public class ImportantMsgManager
     if (paramcallbackInMainThread == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+    if (this.d.containsKey(Long.valueOf(paramLong)))
     {
-      paramcallbackInMainThread.a(paramLong, (ImportantMsgItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
+      paramcallbackInMainThread.a(paramLong, (ImportantMsgItem)this.d.get(Long.valueOf(paramLong)));
       return;
     }
     ThreadManager.post(new ImportantMsgManager.6(this, paramLong, paramcallbackInMainThread), 5, null, false);
@@ -181,7 +158,7 @@ public class ImportantMsgManager
   
   public void a(long paramLong, ArrayList<Long> paramArrayList, int paramInt)
   {
-    ((ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).a(paramLong, new ImportantMsgManager.5(this, paramArrayList, paramInt));
+    ((ImportantMsgManager)this.a.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).a(paramLong, new ImportantMsgManager.5(this, paramArrayList, paramInt));
   }
   
   public void a(long paramLong, List<oidb_0xea3.BackMsg> paramList, List<Long> paramList1)
@@ -194,13 +171,13 @@ public class ImportantMsgManager
       {
         oidb_0xea3.BackMsg localBackMsg = (oidb_0xea3.BackMsg)paramList.next();
         ArrayList localArrayList2 = new ArrayList();
-        ImportantMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBackMsg, localArrayList2);
+        ImportantMsgUtil.a(this.a, localBackMsg, localArrayList2);
         if (!localArrayList2.isEmpty()) {
           localArrayList1.add(localArrayList2.get(0));
         }
       }
     }
-    a(paramLong, ImportantMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong, localArrayList1, true), paramList1);
+    a(paramLong, ImportantMsgUtil.a(this.a, paramLong, localArrayList1, true), paramList1);
   }
   
   protected void a(Entity paramEntity)
@@ -213,7 +190,7 @@ public class ImportantMsgManager
     if (paramImportantMsgItem == null) {
       return;
     }
-    TroopShortcutBarHandler localTroopShortcutBarHandler = (TroopShortcutBarHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+    TroopShortcutBarHandler localTroopShortcutBarHandler = (TroopShortcutBarHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
     if (localTroopShortcutBarHandler == null) {
       return;
     }
@@ -232,22 +209,45 @@ public class ImportantMsgManager
     }
   }
   
+  protected ImportantMsgItem b(long paramLong)
+  {
+    ImportantMsgItem localImportantMsgItem = new ImportantMsgItem();
+    try
+    {
+      Object localObject = this.b.query(ImportantMsgItem.class, false, "troopUin=?", new String[] { String.valueOf(paramLong) }, null, null, null, null);
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = (ImportantMsgItem)((List)localObject).get(0);
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readEntity exception + ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("ImportantMsgManager", 1, localStringBuilder.toString(), localException);
+      localImportantMsgItem.troopUin = paramLong;
+    }
+    return localImportantMsgItem;
+  }
+  
   public void onDestroy()
   {
-    TroopShortcutBarObserver localTroopShortcutBarObserver = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver;
+    TroopShortcutBarObserver localTroopShortcutBarObserver = this.e;
     if (localTroopShortcutBarObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localTroopShortcutBarObserver);
-      this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver = null;
+      this.a.removeObserver(localTroopShortcutBarObserver);
+      this.e = null;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.c.clear();
+    this.d.clear();
+    this.b.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgManager
  * JD-Core Version:    0.7.0.1
  */

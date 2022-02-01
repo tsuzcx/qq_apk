@@ -8,14 +8,14 @@ import com.tencent.common.app.AppInterface;
 public class ShortVideoGuideUtilImpl
   implements IShortVideoGuideUtil
 {
-  public boolean isAllResourceReady(AppInterface paramAppInterface)
+  public boolean isAllResourceReady()
   {
-    return ShortVideoGuideUtil.a(paramAppInterface);
+    return ShortVideoGuideUtil.a();
   }
   
   public boolean isResourceReady(AppInterface paramAppInterface)
   {
-    return ShortVideoGuideUtil.b(paramAppInterface);
+    return ShortVideoGuideUtil.a(paramAppInterface);
   }
   
   public boolean startPTVActivity(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt)
@@ -25,7 +25,7 @@ public class ShortVideoGuideUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.ShortVideoGuideUtilImpl
  * JD-Core Version:    0.7.0.1
  */

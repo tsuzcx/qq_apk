@@ -42,21 +42,21 @@ public class ReplyMsgSender
   {
     MessageForReplyText localMessageForReplyText = new MessageForReplyText();
     localMessageForReplyText.msg = paramString1;
-    localMessageForReplyText.istroop = paramBaseSessionInfo.jdField_a_of_type_Int;
+    localMessageForReplyText.istroop = paramBaseSessionInfo.a;
     localMessageForReplyText.msgtype = -1049;
     localMessageForReplyText.atInfoList = paramArrayList1;
-    localMessageForReplyText.mSourceMsgInfo = paramSendMsgParams.a;
+    localMessageForReplyText.mSourceMsgInfo = paramSendMsgParams.h;
     localMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
-    localMessageForReplyText.isBarrageMsg = paramSendMsgParams.jdField_d_of_type_Boolean;
-    localMessageForReplyText.barrageTimeLocation = paramSendMsgParams.b;
-    localMessageForReplyText.barrageSourceMsgType = paramSendMsgParams.jdField_d_of_type_Int;
+    localMessageForReplyText.isBarrageMsg = paramSendMsgParams.i;
+    localMessageForReplyText.barrageTimeLocation = paramSendMsgParams.j;
+    localMessageForReplyText.barrageSourceMsgType = paramSendMsgParams.k;
     if ((!TextUtils.isEmpty(paramString2)) && (paramArrayList2 != null) && (!paramArrayList2.isEmpty()))
     {
       localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_msg", paramString2);
       localMessageForReplyText.saveExtInfoToExtStr("sens_reply_special_at_list", AtTroopMemberSpan.a(paramArrayList2));
     }
     int i;
-    if ((paramSendMsgParams.a != null) && (!TextUtils.isEmpty(paramSendMsgParams.a.mSourceMsgTroopName))) {
+    if ((paramSendMsgParams.h != null) && (!TextUtils.isEmpty(paramSendMsgParams.h.mSourceMsgTroopName))) {
       i = 0;
     } else {
       i = 2;
@@ -91,14 +91,14 @@ public class ReplyMsgSender
     ArrayList localArrayList = new ArrayList(1);
     localArrayList.add(paramChatMessage);
     paramChatMessage = new MultiMsgRequest();
-    paramChatMessage.jdField_a_of_type_Int = paramInt1;
-    paramChatMessage.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = ((SessionInfo)paramBaseSessionInfo);
-    paramChatMessage.jdField_a_of_type_JavaUtilList = localArrayList;
-    paramChatMessage.jdField_a_of_type_JavaUtilMap = null;
-    paramChatMessage.g = paramInt2;
-    paramChatMessage.b = 8;
-    paramChatMessage.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
-    paramChatMessage.jdField_a_of_type_Boolean = paramBoolean;
+    paramChatMessage.h = paramInt1;
+    paramChatMessage.a = ((SessionInfo)paramBaseSessionInfo);
+    paramChatMessage.b = localArrayList;
+    paramChatMessage.c = null;
+    paramChatMessage.n = paramInt2;
+    paramChatMessage.i = 8;
+    paramChatMessage.e = new MessageForStructing();
+    paramChatMessage.o = paramBoolean;
     new ReplyMsgController(paramQQAppInterface).e(paramChatMessage);
   }
   
@@ -113,12 +113,12 @@ public class ReplyMsgSender
       ArrayList localArrayList = new ArrayList(1);
       localArrayList.add(paramMessageForMixedMsg);
       paramMessageForMixedMsg = new MultiMsgRequest();
-      paramMessageForMixedMsg.jdField_a_of_type_Int = 0;
-      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilList = localArrayList;
-      paramMessageForMixedMsg.jdField_a_of_type_JavaUtilMap = null;
-      paramMessageForMixedMsg.b = 9;
-      paramMessageForMixedMsg.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = new MessageForStructing();
+      paramMessageForMixedMsg.h = 0;
+      paramMessageForMixedMsg.a = paramSessionInfo;
+      paramMessageForMixedMsg.b = localArrayList;
+      paramMessageForMixedMsg.c = null;
+      paramMessageForMixedMsg.i = 9;
+      paramMessageForMixedMsg.e = new MessageForStructing();
       new MixMsgController(paramQQAppInterface).e(paramMessageForMixedMsg);
       return;
     }
@@ -127,7 +127,7 @@ public class ReplyMsgSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.replymsg.ReplyMsgSender
  * JD-Core Version:    0.7.0.1
  */

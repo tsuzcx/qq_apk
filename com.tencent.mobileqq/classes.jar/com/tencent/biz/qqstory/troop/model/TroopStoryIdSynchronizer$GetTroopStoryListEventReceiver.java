@@ -11,19 +11,19 @@ public class TroopStoryIdSynchronizer$GetTroopStoryListEventReceiver
 {
   public void a(@NonNull TroopStoryIdSynchronizer paramTroopStoryIdSynchronizer, @NonNull GetTroopStoryListHandler.GetTroopStoryListEvent paramGetTroopStoryListEvent)
   {
-    if (!paramTroopStoryIdSynchronizer.b.equals(paramGetTroopStoryListEvent.jdField_a_of_type_JavaLangString)) {
+    if (!paramTroopStoryIdSynchronizer.j.equals(paramGetTroopStoryListEvent.l)) {
       return;
     }
-    List localList = paramGetTroopStoryListEvent.jdField_a_of_type_JavaUtilList;
-    if ((paramGetTroopStoryListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (localList != null) && (!localList.isEmpty()))
+    List localList = paramGetTroopStoryListEvent.e;
+    if ((paramGetTroopStoryListEvent.g.isSuccess()) && (localList != null) && (!localList.isEmpty()))
     {
       paramTroopStoryIdSynchronizer.a(localList);
-      paramTroopStoryIdSynchronizer.jdField_a_of_type_JavaUtilList.addAll(localList);
-      paramTroopStoryIdSynchronizer.jdField_d_of_type_Boolean = paramGetTroopStoryListEvent.jdField_a_of_type_Boolean;
-      paramTroopStoryIdSynchronizer.jdField_d_of_type_Int = paramGetTroopStoryListEvent.jdField_a_of_type_Int;
+      paramTroopStoryIdSynchronizer.g.addAll(localList);
+      paramTroopStoryIdSynchronizer.l = paramGetTroopStoryListEvent.a;
+      paramTroopStoryIdSynchronizer.k = paramGetTroopStoryListEvent.h;
       paramTroopStoryIdSynchronizer.a();
     }
-    paramTroopStoryIdSynchronizer.c = false;
+    paramTroopStoryIdSynchronizer.h = false;
   }
   
   public Class acceptEventClass()

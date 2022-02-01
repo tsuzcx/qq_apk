@@ -17,10 +17,10 @@ final class AttribPool$2
   {
     paramType = paramJsonElement.getAsJsonObject();
     paramJsonElement = new AttribPool();
-    paramJsonElement.jdField_a_of_type_Int = paramType.get("nextNum").getAsInt();
+    paramJsonElement.c = paramType.get("nextNum").getAsInt();
     paramType = paramType.get("numToAttrib").getAsJsonObject();
     int i = 0;
-    while (i < paramJsonElement.jdField_a_of_type_Int)
+    while (i < paramJsonElement.c)
     {
       paramJsonDeserializationContext = new StringBuilder();
       paramJsonDeserializationContext.append(i);
@@ -28,8 +28,8 @@ final class AttribPool$2
       Object localObject = paramType.get(paramJsonDeserializationContext.toString()).getAsJsonArray();
       paramJsonDeserializationContext = ((JsonArray)localObject).get(0).getAsString();
       localObject = ((JsonArray)localObject).get(1).getAsString();
-      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, new Pair(paramJsonDeserializationContext, localObject));
-      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(AttribPool.a(paramJsonDeserializationContext, (String)localObject), Integer.valueOf(i));
+      paramJsonElement.a.put(i, new Pair(paramJsonDeserializationContext, localObject));
+      paramJsonElement.b.put(AttribPool.a(paramJsonDeserializationContext, (String)localObject), Integer.valueOf(i));
       i += 1;
     }
     return paramJsonElement;
@@ -37,7 +37,7 @@ final class AttribPool$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.AttribPool.2
  * JD-Core Version:    0.7.0.1
  */

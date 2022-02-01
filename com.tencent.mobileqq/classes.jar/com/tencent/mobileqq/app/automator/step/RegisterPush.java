@@ -13,8 +13,8 @@ public class RegisterPush
   
   protected int doStep()
   {
-    this.mAutomator.a.getMsgHandler().m();
-    this.mAutomator.a.sendRegisterPush();
+    this.mAutomator.k.getMsgHandler().r();
+    this.mAutomator.k.sendRegisterPush();
     return 2;
   }
   
@@ -26,14 +26,14 @@ public class RegisterPush
       this.mCountRetry = 10;
     }
     this.a = new RegisterPush.MyAccountObserver(this, null);
-    this.mAutomator.a.registObserver(this.a);
+    this.mAutomator.k.registObserver(this.a);
   }
   
   public void onDestroy()
   {
     if (this.a != null)
     {
-      this.mAutomator.a.unRegistObserver(this.a);
+      this.mAutomator.k.unRegistObserver(this.a);
       this.a = null;
     }
     if ((this.mStepId == 12) && (this.mResult == 6)) {
@@ -43,7 +43,7 @@ public class RegisterPush
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.RegisterPush
  * JD-Core Version:    0.7.0.1
  */

@@ -20,81 +20,75 @@ public class LocalFileViewerAdapter
     this.a = paramFileInfo;
   }
   
-  public int a()
-  {
-    if (this.a.a() == 5) {
-      return 5;
-    }
-    return FileManagerUtil.a(this.a.d());
-  }
-  
   public long a()
   {
     return -1L;
   }
   
-  public FileManagerEntity a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getEntity should not be called on LocalFileViewAdapter");
-    }
-    return QQFileManagerUtil.a(this.a);
-  }
-  
-  public WeiYunFileInfo a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("LocalFileViewerAdapter", 4, "getWeiyunInfo should not be called on LocalFileViewAdapter");
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a.d();
-  }
-  
   public void a(String paramString) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public long b()
-  {
-    return this.a.a();
-  }
   
   public String b()
   {
-    if ((this.a.a() == 5) && (FileUtil.a(this.a.c()))) {
-      return this.a.c();
-    }
-    return null;
-  }
-  
-  public int c()
-  {
-    return 3;
+    return this.a.e();
   }
   
   public long c()
   {
-    return MessageCache.a() * 1000L;
+    return this.a.f();
   }
   
-  public String c()
+  public int d()
+  {
+    if (this.a.l() == 5) {
+      return 5;
+    }
+    return FileManagerUtil.c(this.a.e());
+  }
+  
+  public long e()
+  {
+    return MessageCache.c() * 1000L;
+  }
+  
+  public int f()
+  {
+    return 0;
+  }
+  
+  public String g()
+  {
+    if ((this.a.l() == 5) && (FileUtil.b(this.a.d()))) {
+      return this.a.d();
+    }
+    return null;
+  }
+  
+  public String h()
   {
     return null;
   }
   
-  public int d()
+  public String i()
+  {
+    return null;
+  }
+  
+  public String j()
+  {
+    return null;
+  }
+  
+  public boolean k()
+  {
+    return false;
+  }
+  
+  public int m()
+  {
+    return 3;
+  }
+  
+  public int n()
   {
     if (QLog.isDevelopLevel()) {
       QLog.w("LocalFileViewerAdapter", 4, "getFileStatus: has not status");
@@ -102,12 +96,17 @@ public class LocalFileViewerAdapter
     return -1;
   }
   
-  public String d()
+  public String o()
   {
-    return null;
+    return this.a.d();
   }
   
-  public int e()
+  public String p()
+  {
+    return this.a.d();
+  }
+  
+  public int q()
   {
     if (QLog.isDevelopLevel()) {
       QLog.w("LocalFileViewerAdapter", 4, "getOpType: has not opType");
@@ -115,24 +114,25 @@ public class LocalFileViewerAdapter
     return -1;
   }
   
-  public String e()
+  public FileManagerEntity r()
   {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("LocalFileViewerAdapter", 4, "getEntity should not be called on LocalFileViewAdapter");
+    }
+    return QQFileManagerUtil.a(this.a);
+  }
+  
+  public WeiYunFileInfo s()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("LocalFileViewerAdapter", 4, "getWeiyunInfo should not be called on LocalFileViewAdapter");
+    }
     return null;
-  }
-  
-  public String g()
-  {
-    return this.a.c();
-  }
-  
-  public String h()
-  {
-    return this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileViewAdapter.LocalFileViewerAdapter
  * JD-Core Version:    0.7.0.1
  */

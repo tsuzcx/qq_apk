@@ -42,10 +42,10 @@ public class FileMultiMsgProcessor
           if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
           {
             Object localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131692262));
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131889249));
             ((StringBuilder)localObject).append(localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"));
             localObject = ((StringBuilder)localObject).toString();
-            localArrayList.set(i, this.a.getProxyManager().a().a(localMessageRecord, (String)localObject, true));
+            localArrayList.set(i, this.a.getProxyManager().b().a(localMessageRecord, (String)localObject, true));
           }
           i += 1;
         }
@@ -58,9 +58,9 @@ public class FileMultiMsgProcessor
     if (paramMultiMsgRequest == null) {
       return;
     }
-    if ((paramMultiMsgRequest.b != 8) && (paramMultiMsgRequest.b != 9))
+    if ((paramMultiMsgRequest.i != 8) && (paramMultiMsgRequest.i != 9))
     {
-      if (paramMultiMsgRequest.b == 2)
+      if (paramMultiMsgRequest.i == 2)
       {
         a(paramHashMap);
         paramIMultiMsgRichUploadCallback.a(0, 2, paramMultiMsgRequest);
@@ -72,12 +72,12 @@ public class FileMultiMsgProcessor
     {
       paramMultiMsgRequest = new ReplyMsgForwardRequest(this.a, paramMultiMsgRequest, paramHashMap, paramIMultiMsgRichUploadCallback);
     }
-    this.a.getFileManagerEngine().a().a(paramMultiMsgRequest, paramHashMap);
+    this.a.getFileManagerEngine().e().a(paramMultiMsgRequest, paramHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.FileMultiMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -42,9 +42,9 @@ public class JoinTroopSecurityTipsConfig
             if (localObject2 != null)
             {
               JoinTroopSecurityTipsItem localJoinTroopSecurityTipsItem = new JoinTroopSecurityTipsItem();
-              localJoinTroopSecurityTipsItem.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("id", 0);
-              localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("title", "");
-              localJoinTroopSecurityTipsItem.b = ((JSONObject)localObject2).optString("text", "");
+              localJoinTroopSecurityTipsItem.a = ((JSONObject)localObject2).optInt("id", 0);
+              localJoinTroopSecurityTipsItem.b = ((JSONObject)localObject2).optString("title", "");
+              localJoinTroopSecurityTipsItem.c = ((JSONObject)localObject2).optString("text", "");
               localObject2 = ((JSONObject)localObject2).getJSONArray("btns");
               if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
               {
@@ -57,14 +57,14 @@ public class JoinTroopSecurityTipsConfig
                   }
                   localJoinTroopSecurityTipsItem.getClass();
                   JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = new JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn(localJoinTroopSecurityTipsItem);
-                  localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString = localJSONObject.optString("text", "");
+                  localJoinTroopSecurityTipsBtn.a = localJSONObject.optString("text", "");
                   localJoinTroopSecurityTipsBtn.b = localJSONObject.optString("action", "");
                   localJoinTroopSecurityTipsBtn.c = localJSONObject.optString("url", "");
-                  localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.add(localJoinTroopSecurityTipsBtn);
+                  localJoinTroopSecurityTipsItem.d.add(localJoinTroopSecurityTipsBtn);
                   break label320;
                 }
               }
-              ((HashMap)localObject1).put(Integer.valueOf(localJoinTroopSecurityTipsItem.jdField_a_of_type_Int), localJoinTroopSecurityTipsItem);
+              ((HashMap)localObject1).put(Integer.valueOf(localJoinTroopSecurityTipsItem.a), localJoinTroopSecurityTipsItem);
             }
             i += 1;
             continue;
@@ -84,23 +84,23 @@ public class JoinTroopSecurityTipsConfig
   
   private boolean a(JoinTroopSecurityTipsItem paramJoinTroopSecurityTipsItem)
   {
-    if ((paramJoinTroopSecurityTipsItem != null) && (!TextUtils.isEmpty(paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString)))
+    if ((paramJoinTroopSecurityTipsItem != null) && (!TextUtils.isEmpty(paramJoinTroopSecurityTipsItem.b)))
     {
-      if (TextUtils.isEmpty(paramJoinTroopSecurityTipsItem.b)) {
+      if (TextUtils.isEmpty(paramJoinTroopSecurityTipsItem.c)) {
         return true;
       }
-      if (paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList != null)
+      if (paramJoinTroopSecurityTipsItem.d != null)
       {
-        if (paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.size() == 0) {
+        if (paramJoinTroopSecurityTipsItem.d.size() == 0) {
           return true;
         }
         int i = 0;
-        while (i < paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.size())
+        while (i < paramJoinTroopSecurityTipsItem.d.size())
         {
-          JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = (JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)paramJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.get(i);
+          JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = (JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn)paramJoinTroopSecurityTipsItem.d.get(i);
           if (localJoinTroopSecurityTipsBtn != null)
           {
-            if (TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString)) {
+            if (TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.a)) {
               return true;
             }
             return ("web".equals(localJoinTroopSecurityTipsBtn.b)) && (TextUtils.isEmpty(localJoinTroopSecurityTipsBtn.c));
@@ -129,19 +129,19 @@ public class JoinTroopSecurityTipsConfig
   public JoinTroopSecurityTipsItem a(Context paramContext)
   {
     JoinTroopSecurityTipsItem localJoinTroopSecurityTipsItem = new JoinTroopSecurityTipsItem();
-    localJoinTroopSecurityTipsItem.jdField_a_of_type_Int = 0;
-    localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131693516);
-    localJoinTroopSecurityTipsItem.b = paramContext.getString(2131693515);
+    localJoinTroopSecurityTipsItem.a = 0;
+    localJoinTroopSecurityTipsItem.b = paramContext.getString(2131891070);
+    localJoinTroopSecurityTipsItem.c = paramContext.getString(2131891069);
     localJoinTroopSecurityTipsItem.getClass();
     JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn localJoinTroopSecurityTipsBtn = new JoinTroopSecurityTipsItem.JoinTroopSecurityTipsBtn(localJoinTroopSecurityTipsItem);
-    localJoinTroopSecurityTipsBtn.jdField_a_of_type_JavaLangString = paramContext.getString(2131693514);
-    localJoinTroopSecurityTipsItem.jdField_a_of_type_JavaUtilList.add(localJoinTroopSecurityTipsBtn);
+    localJoinTroopSecurityTipsBtn.a = paramContext.getString(2131891068);
+    localJoinTroopSecurityTipsItem.d.add(localJoinTroopSecurityTipsBtn);
     return localJoinTroopSecurityTipsItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jointroopsecuritytips.JoinTroopSecurityTipsConfig
  * JD-Core Version:    0.7.0.1
  */

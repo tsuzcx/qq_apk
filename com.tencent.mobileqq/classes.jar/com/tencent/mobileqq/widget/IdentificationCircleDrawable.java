@@ -14,77 +14,77 @@ import android.graphics.drawable.Drawable;
 public class IdentificationCircleDrawable
   extends Drawable
 {
-  private float jdField_a_of_type_Float;
-  private ColorMatrixColorFilter jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  private Paint c;
+  private Paint a = new Paint();
+  private Paint b;
+  private Path c;
+  private Path d;
+  private RectF e = new RectF();
+  private ColorMatrixColorFilter f;
+  private Paint g;
+  private float h;
   
   public IdentificationCircleDrawable()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.argb(200, 0, 0, 0));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-    this.c = new Paint();
-    this.c.setAntiAlias(true);
-    this.c.setStyle(Paint.Style.FILL);
-    this.c.setColor(0);
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.FILL);
+    this.b = new Paint();
+    this.b.setAntiAlias(true);
+    this.b.setStyle(Paint.Style.FILL);
+    this.b.setColor(Color.argb(200, 0, 0, 0));
+    this.a.setColor(-1);
+    this.c = new Path();
+    this.d = new Path();
+    this.g = new Paint();
+    this.g.setAntiAlias(true);
+    this.g.setStyle(Paint.Style.FILL);
+    this.g.setColor(0);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_b_of_type_AndroidGraphicsPath.reset();
+    this.c.reset();
+    this.d.reset();
     Object localObject = getBounds();
     int i = ((Rect)localObject).width();
     int j = ((Rect)localObject).height();
-    if (this.jdField_a_of_type_Float > Math.min(i, j)) {
+    if (this.h > Math.min(i, j)) {
       return;
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    localObject = this.e;
     float f1 = j;
     float f2 = f1 / 2.0F;
-    float f3 = this.jdField_a_of_type_Float;
+    float f3 = this.h;
     ((RectF)localObject).bottom = (f2 + f3);
     ((RectF)localObject).top = (f2 - f3);
     float f4 = i;
     float f5 = f4 / 2.0F;
     ((RectF)localObject).left = (f5 - f3);
     ((RectF)localObject).right = (f3 + f5);
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, f2);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f4, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f4, f2);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.right, f2);
-    this.jdField_a_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, -180.0F, true);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.left, f2);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    this.jdField_b_of_type_AndroidGraphicsPath.moveTo(0.0F, f2);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(0.0F, f1);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(f4, f1);
-    this.jdField_b_of_type_AndroidGraphicsPath.lineTo(f4, f2);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.right, f2);
-    this.jdField_b_of_type_AndroidGraphicsPath.arcTo(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, 180.0F, true);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsRectF.left, f2);
-    this.jdField_b_of_type_AndroidGraphicsPath.close();
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.c.getColor() != 0) {
-      paramCanvas.drawCircle(f5, f2, this.jdField_a_of_type_Float, this.c);
+    this.c.moveTo(0.0F, f2);
+    this.c.lineTo(0.0F, 0.0F);
+    this.c.lineTo(f4, 0.0F);
+    this.c.lineTo(f4, f2);
+    this.c.lineTo(this.e.right, f2);
+    this.c.arcTo(this.e, 0.0F, -180.0F, true);
+    this.c.lineTo(this.e.left, f2);
+    this.c.close();
+    this.d.moveTo(0.0F, f2);
+    this.d.lineTo(0.0F, f1);
+    this.d.lineTo(f4, f1);
+    this.d.lineTo(f4, f2);
+    this.c.lineTo(this.e.right, f2);
+    this.d.arcTo(this.e, 0.0F, 180.0F, true);
+    this.c.lineTo(this.e.left, f2);
+    this.d.close();
+    paramCanvas.drawPath(this.c, this.a);
+    paramCanvas.drawPath(this.d, this.a);
+    if (this.g.getColor() != 0) {
+      paramCanvas.drawCircle(f5, f2, this.h, this.g);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsColorMatrixColorFilter != null)
+    if (this.f != null)
     {
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(this.c, this.b);
+      paramCanvas.drawPath(this.d, this.b);
     }
   }
   
@@ -99,7 +99,7 @@ public class IdentificationCircleDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IdentificationCircleDrawable
  * JD-Core Version:    0.7.0.1
  */

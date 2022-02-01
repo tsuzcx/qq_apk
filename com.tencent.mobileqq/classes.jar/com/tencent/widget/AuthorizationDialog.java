@@ -21,16 +21,16 @@ public class AuthorizationDialog
   extends ActionSheet
   implements View.OnClickListener
 {
-  private GdtUserInfoAuthorizationHelper.UserInfoCallback jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback;
-  private final GdtUserInfoAuthorizationHelper.UserInfoEntity jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity;
-  private final List<AuthorizationItem.ItemType> jdField_a_of_type_JavaUtilList;
+  private final List<AuthorizationItem.ItemType> a;
+  private final GdtUserInfoAuthorizationHelper.UserInfoEntity b;
+  private GdtUserInfoAuthorizationHelper.UserInfoCallback c;
   
   public AuthorizationDialog(Activity paramActivity, GdtUserInfoAuthorizationHelper.UserInfoEntity paramUserInfoEntity, GdtUserInfoAuthorizationHelper.UserInfoCallback paramUserInfoCallback, List<AuthorizationItem.ItemType> paramList)
   {
     super(paramActivity);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity = paramUserInfoEntity;
-    this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback = paramUserInfoCallback;
+    this.a = paramList;
+    this.b = paramUserInfoEntity;
+    this.c = paramUserInfoCallback;
     a();
   }
   
@@ -41,16 +41,16 @@ public class AuthorizationDialog
   
   private void a()
   {
-    LinearLayout localLinearLayout1 = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559052, null);
-    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131369009);
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    LinearLayout localLinearLayout1 = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131624704, null);
+    LinearLayout localLinearLayout2 = (LinearLayout)localLinearLayout1.findViewById(2131435969);
+    List localList = this.a;
     if ((localList != null) && (localList.size() > 0))
     {
-      int k = this.jdField_a_of_type_JavaUtilList.size();
+      int k = this.a.size();
       int j = 0;
       while (j < k)
       {
-        if ((AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(j) != AuthorizationItem.d)
+        if ((AuthorizationItem.ItemType)this.a.get(j) != AuthorizationItem.d)
         {
           int i = 2;
           if (k == 1)
@@ -76,15 +76,15 @@ public class AuthorizationDialog
             }
           }
           label129:
-          localLinearLayout2.addView(a((AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(j), i, this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity.a(((AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(j)).b)));
+          localLinearLayout2.addView(a((AuthorizationItem.ItemType)this.a.get(j), i, this.b.a(((AuthorizationItem.ItemType)this.a.get(j)).b)));
         }
         j += 1;
       }
     }
     addView(localLinearLayout1);
-    localLinearLayout1.findViewById(2131363867).setOnClickListener(this);
-    localLinearLayout1.findViewById(2131363894).setOnClickListener(this);
-    localLinearLayout1.findViewById(2131369392).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131429815).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131429844).setOnClickListener(this);
+    localLinearLayout1.findViewById(2131436425).setOnClickListener(this);
   }
   
   public void onClick(View paramView)
@@ -92,7 +92,7 @@ public class AuthorizationDialog
     int i = paramView.getId();
     Object localObject1;
     Object localObject2;
-    if (i == 2131369392)
+    if (i == 2131436425)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ActionSheet", 2, "onClick to show authorize description");
@@ -100,35 +100,35 @@ public class AuthorizationDialog
       localObject1 = new AuthorizationDescriptionDialog(getContext());
       localObject2 = ((AuthorizationDescriptionDialog)localObject1).getWindow();
       if (localObject2 != null) {
-        ((Window)localObject2).setWindowAnimations(2131755012);
+        ((Window)localObject2).setWindowAnimations(2131951622);
       }
       ((AuthorizationDescriptionDialog)localObject1).show();
     }
-    else if (i == 2131363867)
+    else if (i == 2131429815)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ActionSheet", 2, "onClick to cancel authorize dialog");
       }
-      localObject1 = this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback;
+      localObject1 = this.c;
       if (localObject1 != null)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity;
-        ((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2).a = 2;
+        localObject2 = this.b;
+        ((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2).d = 2;
         ((GdtUserInfoAuthorizationHelper.UserInfoCallback)localObject1).a((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2);
       }
       dismiss();
     }
-    else if (i == 2131363894)
+    else if (i == 2131429844)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ActionSheet", 2, "onClick to confirm authorize user info");
       }
       localObject1 = PreferenceManager.getDefaultSharedPreferences(getContext().getApplicationContext());
       i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (i < this.a.size())
       {
-        localObject2 = (AuthorizationItem.ItemType)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity.a(((AuthorizationItem.ItemType)localObject2).b)))
+        localObject2 = (AuthorizationItem.ItemType)this.a.get(i);
+        if (!TextUtils.isEmpty(this.b.a(((AuthorizationItem.ItemType)localObject2).b)))
         {
           ((SharedPreferences)localObject1).edit().putBoolean(((AuthorizationItem.ItemType)localObject2).b, true).apply();
           if (QLog.isColorLevel())
@@ -142,11 +142,11 @@ public class AuthorizationDialog
         }
         i += 1;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback;
+      localObject1 = this.c;
       if (localObject1 != null)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoEntity;
-        ((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2).a = 0;
+        localObject2 = this.b;
+        ((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2).d = 0;
         ((GdtUserInfoAuthorizationHelper.UserInfoCallback)localObject1).a((GdtUserInfoAuthorizationHelper.UserInfoEntity)localObject2);
       }
       dismiss();
@@ -156,7 +156,7 @@ public class AuthorizationDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AuthorizationDialog
  * JD-Core Version:    0.7.0.1
  */

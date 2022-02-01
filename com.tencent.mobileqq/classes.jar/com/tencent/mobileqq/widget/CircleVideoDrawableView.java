@@ -13,12 +13,17 @@ public class CircleVideoDrawableView
   implements VideoDrawable.OnAudioPlayOnceListener
 {
   public URLDrawable a;
-  CircleVideoDrawableView.VideoListener a;
-  public String a;
+  public String d;
+  CircleVideoDrawableView.VideoListener v;
   
   public CircleVideoDrawableView(Context paramContext)
   {
     super(paramContext);
+  }
+  
+  public String getVideoPath()
+  {
+    return this.d;
   }
   
   public void onFinish()
@@ -26,7 +31,7 @@ public class CircleVideoDrawableView
     if (QLog.isColorLevel()) {
       QLog.d("BlessPTVActivity", 2, " onFinish ");
     }
-    CircleVideoDrawableView.VideoListener localVideoListener = this.jdField_a_of_type_ComTencentMobileqqWidgetCircleVideoDrawableView$VideoListener;
+    CircleVideoDrawableView.VideoListener localVideoListener = this.v;
     if (localVideoListener != null) {
       localVideoListener.b();
     }
@@ -34,7 +39,7 @@ public class CircleVideoDrawableView
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramURLDrawable == this.jdField_a_of_type_ComTencentImageURLDrawable)
+    if (paramURLDrawable == this.a)
     {
       setURLDrawable(paramURLDrawable);
       return;
@@ -45,18 +50,18 @@ public class CircleVideoDrawableView
   @TargetApi(11)
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramURLDrawable == this.jdField_a_of_type_ComTencentImageURLDrawable) {
+    if (paramURLDrawable == this.a) {
       setURLDrawable(paramURLDrawable);
     }
     super.onLoadSuccessed(paramURLDrawable);
-    paramURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+    paramURLDrawable = this.a.getCurrDrawable();
     if ((paramURLDrawable != null) && ((paramURLDrawable instanceof VideoDrawable)))
     {
       paramURLDrawable = (VideoDrawable)paramURLDrawable;
       paramURLDrawable.resetAndPlayAudioOnce();
       paramURLDrawable.setOnAudioPlayOnceListener(this);
     }
-    paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqWidgetCircleVideoDrawableView$VideoListener;
+    paramURLDrawable = this.v;
     if (paramURLDrawable != null) {
       paramURLDrawable.a();
     }
@@ -72,11 +77,11 @@ public class CircleVideoDrawableView
   
   public void setURLDrawable(URLDrawable paramURLDrawable)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    Object localObject = this.a;
     if (localObject != null)
     {
       ((URLDrawable)localObject).setURLDrawableListener(null);
-      localObject = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+      localObject = this.a.getCurrDrawable();
       if ((localObject != null) && ((localObject instanceof VideoDrawable)))
       {
         localObject = (VideoDrawable)localObject;
@@ -86,8 +91,8 @@ public class CircleVideoDrawableView
     }
     paramURLDrawable.setURLDrawableListener(this);
     setImageDrawable(paramURLDrawable);
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    paramURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+    this.a = paramURLDrawable;
+    paramURLDrawable = this.a.getCurrDrawable();
     if ((paramURLDrawable != null) && ((paramURLDrawable instanceof VideoDrawable))) {
       ((VideoDrawable)paramURLDrawable).setOnAudioPlayOnceListener(this);
     }
@@ -95,17 +100,17 @@ public class CircleVideoDrawableView
   
   public void setVideoListener(CircleVideoDrawableView.VideoListener paramVideoListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleVideoDrawableView$VideoListener = paramVideoListener;
+    this.v = paramVideoListener;
   }
   
   public void setVideoPath(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleVideoDrawableView
  * JD-Core Version:    0.7.0.1
  */

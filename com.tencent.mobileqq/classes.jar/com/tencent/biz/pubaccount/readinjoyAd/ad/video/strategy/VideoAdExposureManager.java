@@ -34,45 +34,37 @@ import org.json.JSONObject;
 public class VideoAdExposureManager
   implements IVideoAdExposureManager
 {
-  private int jdField_a_of_type_Int = 78888888;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private SparseArray<VideoInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private SparseBooleanArray jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-  private FixPosArticleInterface.FixPosArticleAsyncListener jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiFixPosArticleInterface$FixPosArticleAsyncListener;
-  private IVideoFeedsAdapter jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter;
-  private VideoFeedsRecyclerView jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewVideoFeedsRecyclerView;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<VideoInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 78888889;
-  private SparseArray<VideoInfo> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-  private SparseBooleanArray jdField_b_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-  private ArrayList<VideoInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 0;
-  private SparseBooleanArray jdField_c_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-  private int jdField_d_of_type_Int = 0;
-  private SparseBooleanArray jdField_d_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-  private int e = 0;
-  private int f = 0;
-  private int g = 1;
+  private int a = 78888888;
+  private int b = 78888889;
+  private IVideoFeedsAdapter c;
+  private List<VideoInfo> d;
+  private VideoFeedsRecyclerView e;
+  private Handler f;
+  private int g = 0;
+  private int h = 0;
+  private int i = 0;
+  private int j = 0;
+  private FixPosArticleInterface.FixPosArticleAsyncListener k;
+  private SparseBooleanArray l = new SparseBooleanArray();
+  private SparseBooleanArray m = new SparseBooleanArray();
+  private SparseArray<VideoInfo> n = new SparseArray();
+  private SparseBooleanArray o = new SparseBooleanArray();
+  private SparseBooleanArray p = new SparseBooleanArray();
+  private ArrayList<Integer> q = new ArrayList();
+  private boolean r;
+  private boolean s;
+  private int t = 1;
+  private SparseArray<VideoInfo> u = new SparseArray();
+  private ArrayList<VideoInfo> v = new ArrayList();
   
   public VideoAdExposureManager(IVideoFeedsAdapter paramIVideoFeedsAdapter, List<VideoInfo> paramList, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, Handler paramHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter = paramIVideoFeedsAdapter;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewVideoFeedsRecyclerView = paramVideoFeedsRecyclerView;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.c = paramIVideoFeedsAdapter;
+    this.d = paramList;
+    this.e = paramVideoFeedsRecyclerView;
+    this.f = paramHandler;
     ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiFixPosArticleInterface$FixPosArticleAsyncListener = new VideoAdExposureManager.PosListener(this);
-  }
-  
-  private int a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == -1) {
-      return paramInt1 + 1;
-    }
-    return Math.max(paramInt2 + VideoAdStrategyManager.h + 1, paramInt1 + 1);
+    this.k = new VideoAdExposureManager.PosListener(this);
   }
   
   public static VideoInfo a(AdvertisementInfo paramAdvertisementInfo, boolean paramBoolean)
@@ -82,38 +74,38 @@ public class VideoAdExposureManager
   
   private void a(int paramInt, ArrayList<VideoInfo> paramArrayList)
   {
-    int j = a(paramInt);
-    int k = a(paramInt, j);
-    d(k);
+    int i2 = g(paramInt);
+    int i3 = b(paramInt, i2);
+    f(i3);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onVideoReplayOnLoop , lastAdPos =");
-      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(i2);
       ((StringBuilder)localObject).append(" ，recordAdPos =");
-      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(i3);
       QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (k >= paramArrayList.size()) {
+    if (i3 >= paramArrayList.size()) {
       return;
     }
-    int i = paramInt;
-    while (i < paramArrayList.size())
+    int i1 = paramInt;
+    while (i1 < paramArrayList.size())
     {
-      if (((VideoInfo)paramArrayList.get(i)).r) {
+      if (((VideoInfo)paramArrayList.get(i1)).aq) {
         break label126;
       }
-      i += 1;
+      i1 += 1;
     }
-    i = -1;
+    i1 = -1;
     label126:
     Object localObject = null;
-    if (i == -1)
+    if (i1 == -1)
     {
-      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+      if (this.v.size() > 0)
       {
-        localObject = (VideoInfo)this.jdField_b_of_type_JavaUtilArrayList.get(0);
-        this.jdField_b_of_type_JavaUtilArrayList.remove(0);
+        localObject = (VideoInfo)this.v.get(0);
+        this.v.remove(0);
       }
     }
     else
@@ -122,28 +114,28 @@ public class VideoAdExposureManager
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onVideoReplayOnLoop , findPos =");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(i1);
         ((StringBuilder)localObject).append(" ，startPos =");
         ((StringBuilder)localObject).append(paramInt);
         QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = (VideoInfo)paramArrayList.get(i);
-      paramArrayList.remove(i);
+      localObject = (VideoInfo)paramArrayList.get(i1);
+      paramArrayList.remove(i1);
     }
-    if ((localObject == null) && (j != -1) && (j < paramArrayList.size()))
+    if ((localObject == null) && (i2 != -1) && (i2 < paramArrayList.size()))
     {
       ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("VIDEO_LINK", "fetchChangePosAd : 当前广告位置后面没有广告");
-      a((VideoInfo)paramArrayList.get(j), k);
+      a((VideoInfo)paramArrayList.get(i2), i3);
       return;
     }
-    a((VideoInfo)localObject, paramArrayList, k);
+    a((VideoInfo)localObject, paramArrayList, i3);
   }
   
   private void a(AdvertisementInfo paramAdvertisementInfo)
   {
     paramAdvertisementInfo = a(paramAdvertisementInfo, true);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_c_of_type_Int, paramAdvertisementInfo);
-    this.jdField_c_of_type_Int = 0;
+    this.n.put(this.g, paramAdvertisementInfo);
+    this.g = 0;
   }
   
   private void a(AdvertisementInfo paramAdvertisementInfo, int paramInt1, int paramInt2, int paramInt3)
@@ -151,23 +143,23 @@ public class VideoAdExposureManager
     if (paramAdvertisementInfo == null) {
       return;
     }
-    if (paramInt2 == this.jdField_b_of_type_Int)
+    if (paramInt2 == this.b)
     {
-      this.e = paramInt1;
-      this.f = paramAdvertisementInfo.mAdKdPos;
+      this.i = paramInt1;
+      this.j = paramAdvertisementInfo.mAdKdPos;
     }
     else
     {
-      this.jdField_c_of_type_Int = paramInt1;
-      this.jdField_d_of_type_Int = paramAdvertisementInfo.mAdKdPos;
+      this.g = paramInt1;
+      this.h = paramAdvertisementInfo.mAdKdPos;
     }
     AdRequestData localAdRequestData = new AdRequestData();
-    localAdRequestData.jdField_a_of_type_Int = paramAdvertisementInfo.mAdMaterialId;
-    localAdRequestData.jdField_b_of_type_Int = 1;
-    localAdRequestData.jdField_c_of_type_Int = paramAdvertisementInfo.mAdKdPos;
-    localAdRequestData.jdField_a_of_type_Long = paramAdvertisementInfo.mAdPosID;
-    localAdRequestData.jdField_a_of_type_Boolean = true;
-    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).setFixPosArticleAsyncListener(paramInt2, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsApiFixPosArticleInterface$FixPosArticleAsyncListener);
+    localAdRequestData.a = paramAdvertisementInfo.mAdMaterialId;
+    localAdRequestData.b = 1;
+    localAdRequestData.c = paramAdvertisementInfo.mAdKdPos;
+    localAdRequestData.d = paramAdvertisementInfo.mAdPosID;
+    localAdRequestData.e = true;
+    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).setFixPosArticleAsyncListener(paramInt2, this.k);
     ThreadManager.executeOnSubThread(new VideoAdExposureManager.1(this, paramInt3, paramInt2, localAdRequestData));
   }
   
@@ -177,7 +169,7 @@ public class VideoAdExposureManager
       return;
     }
     paramArrayList.add(paramInt, paramVideoInfo);
-    paramVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter;
+    paramVideoInfo = this.c;
     if (QLog.isColorLevel()) {
       QLog.d("VideoAdExposureManager", 2, "onVideoReplayOnLoop , move!!! and notify!!! ");
     }
@@ -189,20 +181,20 @@ public class VideoAdExposureManager
       return;
     }
     Object localObject1 = (VideoInfo)paramArrayList.get(paramInt);
-    if ((localObject1 != null) && (((VideoInfo)localObject1).r) && (((VideoInfo)localObject1).a != null))
+    if ((localObject1 != null) && (((VideoInfo)localObject1).aq) && (((VideoInfo)localObject1).as != null))
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter;
-      if ((localObject2 != null) && (((IVideoFeedsAdapter)localObject2).a(((VideoInfo)localObject1).a.h)))
+      Object localObject2 = this.c;
+      if ((localObject2 != null) && (((IVideoFeedsAdapter)localObject2).e(((VideoInfo)localObject1).as.m)))
       {
-        localObject2 = (VideoInfo)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+        localObject2 = (VideoInfo)this.u.get(paramInt);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = localObject2;
-          if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+          if (this.v.size() > 0)
           {
-            localObject1 = (VideoInfo)this.jdField_b_of_type_JavaUtilArrayList.get(0);
-            this.jdField_b_of_type_JavaUtilArrayList.remove(0);
+            localObject1 = (VideoInfo)this.v.get(0);
+            this.v.remove(0);
           }
         }
         if (localObject1 != null)
@@ -218,7 +210,7 @@ public class VideoAdExposureManager
   
   private boolean a(int paramInt1, int paramInt2)
   {
-    return ((paramInt1 == -1) && (paramInt2 < VideoAdStrategyManager.f) && (this.g >= VideoAdStrategyManager.f)) || (this.g >= VideoAdStrategyManager.g);
+    return ((paramInt1 == -1) && (paramInt2 < VideoAdStrategyManager.g) && (this.t >= VideoAdStrategyManager.g)) || (this.t >= VideoAdStrategyManager.h);
   }
   
   private boolean a(VideoPlayParam paramVideoPlayParam)
@@ -226,26 +218,34 @@ public class VideoAdExposureManager
     if ((VideoAdStrategyManager.b()) && (VideoAdStrategyManager.d())) {
       return false;
     }
-    paramVideoPlayParam = paramVideoPlayParam.a;
+    paramVideoPlayParam = paramVideoPlayParam.c;
     if (paramVideoPlayParam != null)
     {
-      if (paramVideoPlayParam.r) {
+      if (paramVideoPlayParam.aq) {
         return false;
       }
-      if ((VideoAdStrategyManager.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
+      if ((VideoAdStrategyManager.j) && (!this.r)) {
         return true;
       }
       if (QLog.isColorLevel())
       {
-        if (!VideoAdStrategyManager.jdField_a_of_type_Boolean) {
+        if (!VideoAdStrategyManager.j) {
           QLog.d("VideoAdExposureManager", 2, "命中 调整广告位置的开关关闭 ");
         }
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.r) {
           QLog.d("VideoAdExposureManager", 2, "该位置已经 触发过判断的情况");
         }
       }
     }
     return false;
+  }
+  
+  private int b(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == -1) {
+      return paramInt1 + 1;
+    }
+    return Math.max(paramInt2 + VideoAdStrategyManager.i + 1, paramInt1 + 1);
   }
   
   private void b(AdvertisementInfo paramAdvertisementInfo)
@@ -254,30 +254,30 @@ public class VideoAdExposureManager
       return;
     }
     paramAdvertisementInfo = a(paramAdvertisementInfo, false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewVideoFeedsRecyclerView != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter != null) && ((this.e < this.jdField_a_of_type_JavaUtilList.size()) || (this.e <= 0)))
+    if ((this.e != null) && (this.c != null) && ((this.i < this.d.size()) || (this.i <= 0)))
     {
-      VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_JavaUtilList.get(this.e);
-      int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsViewVideoFeedsRecyclerView.a();
-      this.jdField_b_of_type_JavaUtilArrayList.add(paramAdvertisementInfo);
-      if ((localVideoInfo != null) && (!localVideoInfo.r) && (this.e > i))
+      VideoInfo localVideoInfo = (VideoInfo)this.d.get(this.i);
+      int i1 = this.e.getCurrentAdpaterPosition();
+      this.v.add(paramAdvertisementInfo);
+      if ((localVideoInfo != null) && (!localVideoInfo.aq) && (this.i > i1))
       {
-        this.jdField_b_of_type_JavaUtilArrayList.remove(paramAdvertisementInfo);
-        this.jdField_a_of_type_JavaUtilList.add(this.e, paramAdvertisementInfo);
+        this.v.remove(paramAdvertisementInfo);
+        this.d.add(this.i, paramAdvertisementInfo);
         IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onAsyncDataReady add at =");
-        localStringBuilder.append(this.e);
+        localStringBuilder.append(this.i);
         localStringBuilder.append(", currentAdpaterPosition=");
-        localStringBuilder.append(i);
+        localStringBuilder.append(i1);
         localIRIJAdLogService.d("AdVideoDataLink", localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.notifyItemInserted(this.e);
-        this.e = 0;
+        this.c.notifyItemInserted(this.i);
+        this.i = 0;
       }
-      if ((localVideoInfo != null) && (localVideoInfo.r) && (localVideoInfo.a != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a(localVideoInfo.a.h)))
+      if ((localVideoInfo != null) && (localVideoInfo.aq) && (localVideoInfo.as != null) && (this.c.e(localVideoInfo.as.m)))
       {
-        this.jdField_b_of_type_JavaUtilArrayList.remove(paramAdvertisementInfo);
-        b(paramAdvertisementInfo, this.e);
-        this.e = 0;
+        this.v.remove(paramAdvertisementInfo);
+        b(paramAdvertisementInfo, this.i);
+        this.i = 0;
       }
     }
   }
@@ -287,12 +287,12 @@ public class VideoAdExposureManager
     if ((VideoAdStrategyManager.b()) && (VideoAdStrategyManager.d())) {
       return;
     }
-    this.jdField_d_of_type_AndroidUtilSparseBooleanArray.put(paramInt, true);
-    this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt, paramVideoInfo);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.notifyItemChanged(paramInt);
+    this.p.put(paramInt, true);
+    this.u.put(paramInt, paramVideoInfo);
+    this.c.notifyItemChanged(paramInt);
   }
   
-  private void e(int paramInt)
+  private void j(int paramInt)
   {
     try
     {
@@ -303,18 +303,18 @@ public class VideoAdExposureManager
         ((StringBuilder)localObject1).append(paramInt);
         QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject1).toString());
       }
-      int i;
-      if (paramInt == this.jdField_b_of_type_Int)
+      int i1;
+      if (paramInt == this.b)
       {
-        i = this.f;
-        this.f = 0;
+        i1 = this.j;
+        this.j = 0;
       }
       else
       {
-        i = this.jdField_d_of_type_Int;
-        this.jdField_d_of_type_Int = 0;
+        i1 = this.h;
+        this.h = 0;
       }
-      Object localObject1 = (AdvertisementInfo)((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).getAdvertisementInfo(paramInt, i);
+      Object localObject1 = (AdvertisementInfo)((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).getAdvertisementInfo(paramInt, i1);
       if (localObject1 == null)
       {
         if (QLog.isColorLevel()) {
@@ -322,8 +322,8 @@ public class VideoAdExposureManager
         }
         return;
       }
-      ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).removeAdvertisementInfo(paramInt, i);
-      if (paramInt == this.jdField_b_of_type_Int) {
+      ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).removeAdvertisementInfo(paramInt, i1);
+      if (paramInt == this.b) {
         b((AdvertisementInfo)localObject1);
       } else {
         a((AdvertisementInfo)localObject1);
@@ -333,53 +333,10 @@ public class VideoAdExposureManager
     finally {}
   }
   
-  public int a(int paramInt)
-  {
-    int j = -1;
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localInteger.intValue() >= paramInt) {
-        break;
-      }
-      j = localInteger.intValue();
-      i += 1;
-    }
-    return j;
-  }
-  
-  public VideoInfo a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAdExposureManager", 2, "getVideoInfo");
-    }
-    VideoInfo localVideoInfo = (VideoInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localVideoInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoAdExposureManager", 2, "getVideoInfo ,not get fetch data!!!??");
-      }
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAdExposureManager", 2, "getVideoInfo ,videoInfo");
-    }
-    return localVideoInfo;
-  }
-  
   public void a()
   {
-    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).removeFixPosArticleAsyncListener(this.jdField_a_of_type_Int);
-    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).removeFixPosArticleAsyncListener(this.jdField_b_of_type_Int);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_b_of_type_AndroidUtilSparseBooleanArray.put(paramInt, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAdExposureManager", 2, "hasShowAnotherAd");
-    }
+    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).removeFixPosArticleAsyncListener(this.a);
+    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).removeFixPosArticleAsyncListener(this.b);
   }
   
   public void a(int paramInt1, int paramInt2, VideoInfo paramVideoInfo)
@@ -387,22 +344,22 @@ public class VideoAdExposureManager
     if ((VideoAdStrategyManager.b()) && (VideoAdStrategyManager.d())) {
       return;
     }
-    int m = this.jdField_a_of_type_JavaUtilList.size();
-    int k = 0;
-    int i = 0;
-    int j;
+    int i4 = this.d.size();
+    int i3 = 0;
+    int i1 = 0;
+    int i2;
     for (;;)
     {
-      j = k;
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+      i2 = i3;
+      if (i1 >= this.d.size()) {
         break;
       }
-      if ((((VideoInfo)this.jdField_a_of_type_JavaUtilList.get(i)).r) && (i != paramInt1))
+      if ((((VideoInfo)this.d.get(i1)).aq) && (i1 != paramInt1))
       {
-        j = i;
+        i2 = i1;
         break;
       }
-      i += 1;
+      i1 += 1;
     }
     if (QLog.isColorLevel())
     {
@@ -410,13 +367,13 @@ public class VideoAdExposureManager
       localStringBuilder.append("adapterPosition = ");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(" ,size = ");
-      localStringBuilder.append(m);
+      localStringBuilder.append(i4);
       localStringBuilder.append(" ,nextAdPosition = ");
-      localStringBuilder.append(j);
+      localStringBuilder.append(i2);
       QLog.d("VideoAdExposureManager", 2, localStringBuilder.toString());
     }
-    a(paramInt2);
-    c(paramInt2);
+    b(paramInt2);
+    e(paramInt2);
     b(paramVideoInfo, paramInt1);
   }
   
@@ -431,25 +388,25 @@ public class VideoAdExposureManager
     if ((VideoAdStrategyManager.b()) && (VideoAdStrategyManager.d())) {
       return;
     }
-    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.a != null))
+    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.c != null))
     {
-      if (!VideoAdStrategyManager.jdField_a_of_type_Boolean) {
+      if (!VideoAdStrategyManager.j) {
         return;
       }
-      if (!paramVideoPlayParam.a.r)
+      if (!paramVideoPlayParam.c.aq)
       {
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("checkAndInsert , mPlayVmCount=");
-          localStringBuilder.append(this.g);
+          localStringBuilder.append(this.t);
           QLog.d("VideoAdExposureManager", 2, localStringBuilder.toString());
         }
         b(paramInt, paramVideoPlayParam, paramArrayList);
       }
       else
       {
-        this.g = 0;
+        this.t = 0;
         if (QLog.isColorLevel()) {
           QLog.d("VideoAdExposureManager", 2, "checkAndInsert , mPlayVmCount= 0 ");
         }
@@ -458,7 +415,7 @@ public class VideoAdExposureManager
       {
         paramVideoPlayParam = new StringBuilder();
         paramVideoPlayParam.append("onVideoStart , mPlayVmCount =");
-        paramVideoPlayParam.append(this.g);
+        paramVideoPlayParam.append(this.t);
         QLog.d("VideoAdExposureManager", 2, paramVideoPlayParam.toString());
       }
     }
@@ -471,12 +428,12 @@ public class VideoAdExposureManager
     }
     if (paramVideoAdInfo != null)
     {
-      Object localObject = (VideoInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-      boolean bool1 = this.jdField_a_of_type_AndroidUtilSparseBooleanArray.get(paramInt);
-      boolean bool2 = this.jdField_c_of_type_AndroidUtilSparseBooleanArray.get(paramInt);
+      Object localObject = (VideoInfo)this.n.get(paramInt);
+      boolean bool1 = this.l.get(paramInt);
+      boolean bool2 = this.o.get(paramInt);
       if ((!bool1) && (localObject == null) && (!bool2))
       {
-        this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(paramInt, true);
+        this.l.put(paramInt, true);
         paramVideoAdInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoAdInfo);
         if (QLog.isColorLevel())
         {
@@ -485,7 +442,7 @@ public class VideoAdExposureManager
           ((StringBuilder)localObject).append(paramInt);
           QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject).toString());
         }
-        a(paramVideoAdInfo, paramInt, this.jdField_a_of_type_Int, 5);
+        a(paramVideoAdInfo, paramInt, this.a, 5);
       }
     }
   }
@@ -501,12 +458,12 @@ public class VideoAdExposureManager
           return;
         }
       }
-      if (VideoAdStrategyManager.jdField_a_of_type_Boolean)
+      if (VideoAdStrategyManager.j)
       {
-        this.jdField_a_of_type_Boolean = false;
-        if ((paramIBaseVideoItemHolder != null) && (paramIBaseVideoItemHolder.a()))
+        this.r = false;
+        if ((paramIBaseVideoItemHolder != null) && (paramIBaseVideoItemHolder.L()))
         {
-          d(paramIBaseVideoItemHolder.getPosition());
+          f(paramIBaseVideoItemHolder.getPosition());
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -528,7 +485,7 @@ public class VideoAdExposureManager
     }
     if (paramVideoInfo != null)
     {
-      if (paramVideoInfo.a == null) {
+      if (paramVideoInfo.as == null) {
         return;
       }
       if (QLog.isColorLevel())
@@ -538,14 +495,14 @@ public class VideoAdExposureManager
         localStringBuilder.append(paramInt);
         QLog.d("VideoAdExposureManager", 2, localStringBuilder.toString());
       }
-      paramVideoInfo = paramVideoInfo.a;
-      a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo), paramInt, this.jdField_b_of_type_Int, 6);
+      paramVideoInfo = paramVideoInfo.as;
+      a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoInfo), paramInt, this.b, 6);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.s = paramBoolean;
   }
   
   public void a(boolean paramBoolean, int paramInt, Object paramObject)
@@ -561,14 +518,14 @@ public class VideoAdExposureManager
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("checkAdPos , hasQueryParam= ");
-        ((StringBuilder)localObject1).append(VideoAdStrategyManager.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject1).append(VideoAdStrategyManager.k);
         ((StringBuilder)localObject1).append(" ,needChangeAdPos =");
-        ((StringBuilder)localObject1).append(VideoAdStrategyManager.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject1).append(VideoAdStrategyManager.j);
         QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject1).toString());
       }
-      if (VideoAdStrategyManager.jdField_b_of_type_Boolean)
+      if (VideoAdStrategyManager.k)
       {
-        boolean bool = VideoAdStrategyManager.jdField_a_of_type_Boolean;
+        boolean bool = VideoAdStrategyManager.j;
         if (!bool) {
           return;
         }
@@ -585,21 +542,21 @@ public class VideoAdExposureManager
       if ((!paramBoolean) || (paramInt <= 1)) {
         break label1214;
       }
-      j = paramArrayList.size();
-      i = j - paramInt;
-      paramInt = i;
+      i2 = paramArrayList.size();
+      i1 = i2 - paramInt;
+      paramInt = i1;
     }
     finally
     {
       for (;;)
       {
         Object localObject1;
-        int j;
-        int i;
+        int i2;
+        int i1;
         Object localObject2;
         Object localObject3;
         StringBuilder localStringBuilder;
-        int k;
+        int i3;
         for (;;)
         {
           label1214:
@@ -614,14 +571,14 @@ public class VideoAdExposureManager
       }
     }
     if (paramInt < paramArrayList.size()) {
-      if ((((VideoInfo)paramArrayList.get(paramInt)).r) && (((VideoInfo)paramArrayList.get(paramInt)).a != null))
+      if ((((VideoInfo)paramArrayList.get(paramInt)).aq) && (((VideoInfo)paramArrayList.get(paramInt)).as != null))
       {
         if (paramInt == -1)
         {
           if (QLog.isColorLevel()) {
             QLog.d("VideoAdExposureManager", 2, "checkAdPos can not find Ad !!");
           }
-          VideoAdStrategyManager.a();
+          VideoAdStrategyManager.g();
           return;
         }
         if (QLog.isColorLevel())
@@ -632,83 +589,83 @@ public class VideoAdExposureManager
           QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject1).toString());
         }
         localObject1 = (VideoInfo)paramArrayList.get(paramInt);
-        if (!VideoAdStrategyManager.jdField_b_of_type_Boolean)
+        if (!VideoAdStrategyManager.k)
         {
-          VideoAdStrategyManager.jdField_b_of_type_Boolean = true;
-          if ((!ReadInJoyAdSwitchUtil.f(((VideoInfo)localObject1).a)) || (!this.jdField_b_of_type_Boolean)) {
+          VideoAdStrategyManager.k = true;
+          if ((!ReadInJoyAdSwitchUtil.f(((VideoInfo)localObject1).as)) || (!this.s)) {
             break label1240;
           }
           paramBoolean = true;
-          VideoAdStrategyManager.jdField_a_of_type_Boolean = paramBoolean;
-          localObject2 = ((VideoInfo)localObject1).a.v;
+          VideoAdStrategyManager.j = paramBoolean;
+          localObject2 = ((VideoInfo)localObject1).as.R;
           try
           {
             localObject2 = new JSONObject((String)localObject2);
             if (((JSONObject)localObject2).has("strategy"))
             {
-              VideoAdStrategyManager.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("strategy", 0);
-              if (VideoAdStrategyManager.jdField_a_of_type_Int == 3) {
-                VideoAdStrategyManager.jdField_c_of_type_Boolean = true;
+              VideoAdStrategyManager.b = ((JSONObject)localObject2).optInt("strategy", 0);
+              if (VideoAdStrategyManager.b == 3) {
+                VideoAdStrategyManager.m = true;
               }
             }
             else
             {
-              VideoAdStrategyManager.jdField_a_of_type_Int = 2;
+              VideoAdStrategyManager.b = 2;
             }
-            VideoAdStrategyManager.f = ((JSONObject)localObject2).optInt("ad_first_pos", 3);
-            VideoAdStrategyManager.g = ((JSONObject)localObject2).optInt("ad_interval", 3);
-            VideoAdStrategyManager.h = ((JSONObject)localObject2).optInt("ad_protect_interval", 2);
-            VideoAdStrategyManager.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("ad_first_time", 10);
-            VideoAdStrategyManager.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("ad_interval_time", 25);
-            VideoAdStrategyManager.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("ad_pre_req", 2);
-            VideoAdStrategyManager.e = ((JSONObject)localObject2).optInt("ad_protect_gap", 2);
-            VideoAdStrategyManager.i = ((JSONObject)localObject2).optInt("first_stay_time", 3);
-            VideoAdStrategyManager.j = ((JSONObject)localObject2).optInt("ad_vv_interval_first", 0);
-            VideoAdStrategyManager.k = ((JSONObject)localObject2).optInt("ad_vv_interval_second", 0);
-            VideoAdStrategyManager.l = ((JSONObject)localObject2).optInt("ad_vv_interval_other", 0);
-            if ((VideoAdStrategyManager.jdField_a_of_type_Int == 3) && (VideoAdStrategyManager.jdField_b_of_type_Int <= VideoAdStrategyManager.i)) {
-              VideoAdStrategyManager.jdField_a_of_type_Int = 2;
+            VideoAdStrategyManager.g = ((JSONObject)localObject2).optInt("ad_first_pos", 3);
+            VideoAdStrategyManager.h = ((JSONObject)localObject2).optInt("ad_interval", 3);
+            VideoAdStrategyManager.i = ((JSONObject)localObject2).optInt("ad_protect_interval", 2);
+            VideoAdStrategyManager.c = ((JSONObject)localObject2).optInt("ad_first_time", 10);
+            VideoAdStrategyManager.d = ((JSONObject)localObject2).optInt("ad_interval_time", 25);
+            VideoAdStrategyManager.e = ((JSONObject)localObject2).optInt("ad_pre_req", 2);
+            VideoAdStrategyManager.f = ((JSONObject)localObject2).optInt("ad_protect_gap", 2);
+            VideoAdStrategyManager.l = ((JSONObject)localObject2).optInt("first_stay_time", 3);
+            VideoAdStrategyManager.o = ((JSONObject)localObject2).optInt("ad_vv_interval_first", 0);
+            VideoAdStrategyManager.p = ((JSONObject)localObject2).optInt("ad_vv_interval_second", 0);
+            VideoAdStrategyManager.q = ((JSONObject)localObject2).optInt("ad_vv_interval_other", 0);
+            if ((VideoAdStrategyManager.b == 3) && (VideoAdStrategyManager.c <= VideoAdStrategyManager.l)) {
+              VideoAdStrategyManager.b = 2;
             }
           }
           catch (JSONException localJSONException)
           {
             localJSONException.printStackTrace();
-            VideoAdStrategyManager.jdField_a_of_type_Boolean = false;
+            VideoAdStrategyManager.j = false;
           }
           localObject3 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("setAdStrategyFromServer: strategy = ");
-          localStringBuilder.append(VideoAdStrategyManager.jdField_a_of_type_Int);
+          localStringBuilder.append(VideoAdStrategyManager.b);
           localStringBuilder.append(" adFirstTime = ");
-          localStringBuilder.append(VideoAdStrategyManager.jdField_b_of_type_Int);
+          localStringBuilder.append(VideoAdStrategyManager.c);
           localStringBuilder.append(" adIntervalTime = ");
-          localStringBuilder.append(VideoAdStrategyManager.jdField_c_of_type_Int);
+          localStringBuilder.append(VideoAdStrategyManager.d);
           localStringBuilder.append(" adPreReq = ");
-          localStringBuilder.append(VideoAdStrategyManager.jdField_d_of_type_Int);
-          localStringBuilder.append(" adProtectGap = ");
           localStringBuilder.append(VideoAdStrategyManager.e);
-          localStringBuilder.append(" adFirstPos = ");
+          localStringBuilder.append(" adProtectGap = ");
           localStringBuilder.append(VideoAdStrategyManager.f);
-          localStringBuilder.append(" adIntervalPos = ");
+          localStringBuilder.append(" adFirstPos = ");
           localStringBuilder.append(VideoAdStrategyManager.g);
-          localStringBuilder.append(" adProtectInterval = ");
+          localStringBuilder.append(" adIntervalPos = ");
           localStringBuilder.append(VideoAdStrategyManager.h);
+          localStringBuilder.append(" adProtectInterval = ");
+          localStringBuilder.append(VideoAdStrategyManager.i);
           localStringBuilder.append(" adVvFirst = ");
-          localStringBuilder.append(VideoAdStrategyManager.j);
+          localStringBuilder.append(VideoAdStrategyManager.o);
           localStringBuilder.append(" adSecond = ");
-          localStringBuilder.append(VideoAdStrategyManager.k);
+          localStringBuilder.append(VideoAdStrategyManager.p);
           localStringBuilder.append(" adOther = ");
-          localStringBuilder.append(VideoAdStrategyManager.l);
+          localStringBuilder.append(VideoAdStrategyManager.q);
           ((IRIJAdLogService)localObject3).d("VideoAdStrategy", localStringBuilder.toString());
-          VideoAdStrategyManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
-          if (VideoAdStrategyManager.jdField_a_of_type_Int == 1)
+          VideoAdStrategyManager.a.compareAndSet(false, true);
+          if (VideoAdStrategyManager.b == 1)
           {
             localObject3 = VideoAdTimeLoadManager.a(paramArrayList);
             if (localObject3 != null) {
               paramArrayList.removeAll((Collection)localObject3);
             }
           }
-          if (VideoAdStrategyManager.jdField_a_of_type_Int == 3) {
+          if (VideoAdStrategyManager.b == 3) {
             VideoAdTimeLoadManager.a(paramArrayList);
           }
         }
@@ -716,7 +673,7 @@ public class VideoAdExposureManager
         {
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("checkAdPos needChangeAdPos = ");
-          ((StringBuilder)localObject3).append(VideoAdStrategyManager.jdField_a_of_type_Boolean);
+          ((StringBuilder)localObject3).append(VideoAdStrategyManager.j);
           QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject3).toString());
         }
         if (VideoAdStrategyManager.b())
@@ -726,19 +683,19 @@ public class VideoAdExposureManager
             return;
           }
         }
-        if (VideoAdStrategyManager.jdField_a_of_type_Boolean)
+        if (VideoAdStrategyManager.j)
         {
-          if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+          if (this.q.isEmpty())
           {
             if (QLog.isColorLevel()) {
               QLog.d("VideoAdExposureManager", 2, "mInsertAdPos.isEmpty()");
             }
             return;
           }
-          k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1)).intValue();
-          if ((j - 1 > k) && (k >= i))
+          i3 = ((Integer)this.q.get(this.q.size() - 1)).intValue();
+          if ((i2 - 1 > i3) && (i3 >= i1))
           {
-            if (paramInt != k)
+            if (paramInt != i3)
             {
               if (QLog.isColorLevel())
               {
@@ -746,21 +703,21 @@ public class VideoAdExposureManager
                 ((StringBuilder)localObject3).append("checkAdPos change findAdIndex=");
                 ((StringBuilder)localObject3).append(paramInt);
                 ((StringBuilder)localObject3).append(", lastNeedInsertAdPos=");
-                ((StringBuilder)localObject3).append(k);
+                ((StringBuilder)localObject3).append(i3);
                 QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject3).toString());
               }
-              i = paramArrayList.size();
-              if (k >= i) {
+              i1 = paramArrayList.size();
+              if (i3 >= i1) {
                 return;
               }
-              paramArrayList.set(paramInt, (VideoInfo)paramArrayList.get(k));
-              paramArrayList.set(k, localObject1);
+              paramArrayList.set(paramInt, (VideoInfo)paramArrayList.get(i3));
+              paramArrayList.set(i3, localObject1);
             }
           }
-          else if (((VideoInfo)localObject1).a != null)
+          else if (((VideoInfo)localObject1).as != null)
           {
-            i = VideoAdStrategyManager.h + k;
-            if (i > paramInt)
+            i1 = VideoAdStrategyManager.i + i3;
+            if (i1 > paramInt)
             {
               if (QLog.isColorLevel())
               {
@@ -768,18 +725,18 @@ public class VideoAdExposureManager
                 ((StringBuilder)localObject3).append("checkAdPos change findAdIndex=");
                 ((StringBuilder)localObject3).append(paramInt);
                 ((StringBuilder)localObject3).append(", lastNeedInsertAdPos=");
-                ((StringBuilder)localObject3).append(k);
+                ((StringBuilder)localObject3).append(i3);
                 ((StringBuilder)localObject3).append(", minAdIndex=");
-                ((StringBuilder)localObject3).append(i);
+                ((StringBuilder)localObject3).append(i1);
                 QLog.d("VideoAdExposureManager", 2, ((StringBuilder)localObject3).toString());
               }
-              j = paramArrayList.size();
-              if (i >= j) {
+              i2 = paramArrayList.size();
+              if (i1 >= i2) {
                 return;
               }
-              paramArrayList.set(paramInt, (VideoInfo)paramArrayList.get(i));
-              paramArrayList.set(i, localObject1);
-              d(i);
+              paramArrayList.set(paramInt, (VideoInfo)paramArrayList.get(i1));
+              paramArrayList.set(i1, localObject1);
+              f(i1);
             }
           }
         }
@@ -790,7 +747,7 @@ public class VideoAdExposureManager
   
   public boolean a(int paramInt)
   {
-    boolean bool = this.jdField_b_of_type_AndroidUtilSparseBooleanArray.get(paramInt);
+    boolean bool = this.m.get(paramInt);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -803,52 +760,11 @@ public class VideoAdExposureManager
     return bool;
   }
   
-  public int b(int paramInt)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localInteger.intValue() > paramInt) {
-        return localInteger.intValue();
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  public VideoInfo b(int paramInt)
-  {
-    if ((VideoAdStrategyManager.b()) && (VideoAdStrategyManager.d())) {
-      return null;
-    }
-    boolean bool = this.jdField_d_of_type_AndroidUtilSparseBooleanArray.get(paramInt);
-    VideoInfo localVideoInfo = (VideoInfo)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
-    if ((bool) && (localVideoInfo != null))
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("onAsyncDataReady replace at =");
-        localStringBuilder.append(this.e);
-        localStringBuilder.append(", currentAdpaterPosition=");
-        localStringBuilder.append(paramInt);
-        QLog.d("VideoAdExposureManager", 2, localStringBuilder.toString());
-      }
-      this.jdField_d_of_type_AndroidUtilSparseBooleanArray.put(paramInt, false);
-      this.jdField_b_of_type_AndroidUtilSparseArray.remove(paramInt);
-      return localVideoInfo;
-    }
-    return null;
-  }
-  
   public void b(int paramInt)
   {
-    if ((VideoAdStrategyManager.b()) && (VideoAdStrategyManager.d())) {
-      return;
-    }
-    if ((VideoInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
-      this.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(paramInt, false);
+    this.m.put(paramInt, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoAdExposureManager", 2, "hasShowAnotherAd");
     }
   }
   
@@ -869,34 +785,34 @@ public class VideoAdExposureManager
         if (!bool) {
           return;
         }
-        this.g += 1;
-        int j = b(paramInt);
-        if (j != -1)
+        this.t += 1;
+        int i2 = h(paramInt);
+        if (i2 != -1)
         {
-          i = 1;
+          i1 = 1;
           if (QLog.isColorLevel())
           {
             paramVideoPlayParam = new StringBuilder();
             paramVideoPlayParam.append("nextAdPos =");
-            paramVideoPlayParam.append(j);
+            paramVideoPlayParam.append(i2);
             paramVideoPlayParam.append(", insertAd , mPlayVmCount=");
-            paramVideoPlayParam.append(this.g);
+            paramVideoPlayParam.append(this.t);
             QLog.d("VideoAdExposureManager", 2, paramVideoPlayParam.toString());
           }
-          if (i == 0)
+          if (i1 == 0)
           {
-            k = paramArrayList.size();
-            int m = paramInt + 1;
-            if (k > m)
+            i3 = paramArrayList.size();
+            int i4 = paramInt + 1;
+            if (i3 > i4)
             {
-              bool = ((VideoInfo)paramArrayList.get(m)).r;
+              bool = ((VideoInfo)paramArrayList.get(i4)).aq;
               if (bool) {
                 return;
               }
             }
           }
-          int k = a(paramInt);
-          bool = a(k, paramInt);
+          int i3 = g(paramInt);
+          bool = a(i3, paramInt);
           if (QLog.isColorLevel())
           {
             paramVideoPlayParam = new StringBuilder();
@@ -905,37 +821,66 @@ public class VideoAdExposureManager
             paramVideoPlayParam.append(",position =");
             paramVideoPlayParam.append(paramInt);
             paramVideoPlayParam.append(",lastAdPos1 =");
-            paramVideoPlayParam.append(k);
+            paramVideoPlayParam.append(i3);
             QLog.d("VideoAdExposureManager", 2, paramVideoPlayParam.toString());
           }
           if (!bool) {
             return;
           }
-          this.g = 0;
-          this.jdField_a_of_type_Boolean = true;
-          if (i == 0) {
+          this.t = 0;
+          this.r = true;
+          if (i1 == 0) {
             a(paramInt, paramArrayList);
           } else {
-            a(paramArrayList, j);
+            a(paramArrayList, i2);
           }
           return;
         }
       }
       finally {}
-      int i = 0;
+      int i1 = 0;
     }
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    this.jdField_c_of_type_AndroidUtilSparseBooleanArray.put(paramInt, true);
+    if ((VideoAdStrategyManager.b()) && (VideoAdStrategyManager.d())) {
+      return;
+    }
+    if ((VideoInfo)this.n.get(paramInt) == null) {
+      this.l.put(paramInt, false);
+    }
+  }
+  
+  public VideoInfo d(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoAdExposureManager", 2, "getVideoInfo");
+    }
+    VideoInfo localVideoInfo = (VideoInfo)this.n.get(paramInt);
+    if (localVideoInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoAdExposureManager", 2, "getVideoInfo ,not get fetch data!!!??");
+      }
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoAdExposureManager", 2, "getVideoInfo ,videoInfo");
+    }
+    return localVideoInfo;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.n.remove(paramInt);
+    this.o.put(paramInt, true);
     if (QLog.isColorLevel()) {
       QLog.d("VideoAdExposureManager", 2, "removeCacheVideoInfo ");
     }
   }
   
-  public void d(int paramInt)
+  public void f(int paramInt)
   {
     try
     {
@@ -946,7 +891,7 @@ public class VideoAdExposureManager
           return;
         }
       }
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)))
+      if (!this.q.contains(Integer.valueOf(paramInt)))
       {
         if (QLog.isColorLevel())
         {
@@ -955,16 +900,71 @@ public class VideoAdExposureManager
           localStringBuilder.append(paramInt);
           QLog.d("VideoAdExposureManager", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt));
+        this.q.add(Integer.valueOf(paramInt));
       }
       return;
     }
     finally {}
   }
+  
+  public int g(int paramInt)
+  {
+    int i2 = -1;
+    int i1 = 0;
+    while (i1 < this.q.size())
+    {
+      Integer localInteger = (Integer)this.q.get(i1);
+      if (localInteger.intValue() >= paramInt) {
+        break;
+      }
+      i2 = localInteger.intValue();
+      i1 += 1;
+    }
+    return i2;
+  }
+  
+  public int h(int paramInt)
+  {
+    int i1 = 0;
+    while (i1 < this.q.size())
+    {
+      Integer localInteger = (Integer)this.q.get(i1);
+      if (localInteger.intValue() > paramInt) {
+        return localInteger.intValue();
+      }
+      i1 += 1;
+    }
+    return -1;
+  }
+  
+  public VideoInfo i(int paramInt)
+  {
+    if ((VideoAdStrategyManager.b()) && (VideoAdStrategyManager.d())) {
+      return null;
+    }
+    boolean bool = this.p.get(paramInt);
+    VideoInfo localVideoInfo = (VideoInfo)this.u.get(paramInt);
+    if ((bool) && (localVideoInfo != null))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onAsyncDataReady replace at =");
+        localStringBuilder.append(this.i);
+        localStringBuilder.append(", currentAdpaterPosition=");
+        localStringBuilder.append(paramInt);
+        QLog.d("VideoAdExposureManager", 2, localStringBuilder.toString());
+      }
+      this.p.put(paramInt, false);
+      this.u.remove(paramInt);
+      return localVideoInfo;
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdExposureManager
  * JD-Core Version:    0.7.0.1
  */

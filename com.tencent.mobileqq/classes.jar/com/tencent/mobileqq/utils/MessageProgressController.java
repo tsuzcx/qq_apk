@@ -27,15 +27,22 @@ public class MessageProgressController
     return null;
   }
   
-  public void a()
+  public void a(String paramString, RefreshProgressRunnable paramRefreshProgressRunnable)
   {
-    Iterator localIterator = this.a.keySet().iterator();
-    while (localIterator.hasNext()) {
-      a((String)localIterator.next());
+    if (!TextUtils.isEmpty(paramString)) {
+      this.a.put(paramString, paramRefreshProgressRunnable);
     }
   }
   
-  public void a(String paramString)
+  public void b()
+  {
+    Iterator localIterator = this.a.keySet().iterator();
+    while (localIterator.hasNext()) {
+      b((String)localIterator.next());
+    }
+  }
+  
+  public void b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
@@ -66,17 +73,10 @@ public class MessageProgressController
       }
     }
   }
-  
-  public void a(String paramString, RefreshProgressRunnable paramRefreshProgressRunnable)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.a.put(paramString, paramRefreshProgressRunnable);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.MessageProgressController
  * JD-Core Version:    0.7.0.1
  */

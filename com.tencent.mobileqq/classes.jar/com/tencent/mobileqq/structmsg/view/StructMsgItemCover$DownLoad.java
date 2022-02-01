@@ -13,9 +13,9 @@ import java.net.URL;
 public class StructMsgItemCover$DownLoad
   extends AsyncTask<String, Integer, Boolean>
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  Bitmap a;
+  ImageView b;
+  Context c;
   
   protected Boolean a(String... paramVarArgs)
   {
@@ -38,7 +38,7 @@ public class StructMsgItemCover$DownLoad
       paramVarArgs.setReadTimeout(30000);
       paramVarArgs.connect();
       paramVarArgs = paramVarArgs.getInputStream();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(paramVarArgs);
+      this.a = BitmapFactory.decodeStream(paramVarArgs);
       paramVarArgs.close();
       return Boolean.valueOf(true);
     }
@@ -59,9 +59,9 @@ public class StructMsgItemCover$DownLoad
   {
     if (paramBoolean.booleanValue())
     {
-      paramBoolean = StructMsgItemCover.a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap));
+      paramBoolean = StructMsgItemCover.a(new BitmapDrawable(this.c.getResources(), this.a));
       if (paramBoolean != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBoolean);
+        this.b.setImageBitmap(paramBoolean);
       }
     }
   }
@@ -72,7 +72,7 @@ public class StructMsgItemCover$DownLoad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemCover.DownLoad
  * JD-Core Version:    0.7.0.1
  */

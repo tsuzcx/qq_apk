@@ -8,15 +8,15 @@ import java.util.List;
 
 public class SubscribeBaseBottomPersonalFragment$BottomData
 {
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
-  public CertifiedAccountRead.StGetMainPageRsp a;
-  public COMM.StCommonExt a;
   public String a;
-  public List<CertifiedAccountMeta.StFeed> a;
-  public boolean a;
-  public String b;
   public boolean b;
+  public COMM.StCommonExt c;
+  public List<CertifiedAccountMeta.StFeed> d;
+  public CertifiedAccountMeta.StFeed e;
+  public CertifiedAccountMeta.StUser f;
+  public boolean g;
+  public CertifiedAccountRead.StGetMainPageRsp h;
+  public String i;
 }
 
 

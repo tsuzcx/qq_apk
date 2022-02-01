@@ -14,16 +14,16 @@ final class GalleryView$mAdapter$1$instantiateItem$1
   
   public final boolean onLongClick(View paramView)
   {
-    paramView = GalleryView.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorGalleryView$mAdapter$1.a);
+    paramView = GalleryView.c(this.a.a);
     if (paramView != null) {
-      paramView = (Unit)paramView.invoke(Integer.valueOf(this.jdField_a_of_type_Int));
+      paramView = (Unit)paramView.invoke(Integer.valueOf(this.b));
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.GalleryView.mAdapter.1.instantiateItem.1
  * JD-Core Version:    0.7.0.1
  */

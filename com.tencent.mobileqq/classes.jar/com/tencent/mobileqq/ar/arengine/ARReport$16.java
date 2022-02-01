@@ -12,9 +12,9 @@ class ARReport$16
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("alltime", String.valueOf(this.a));
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("");
     localHashMap.put("result", localStringBuilder.toString());
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AREngineinitAR", true, 0L, 0L, localHashMap, "");
@@ -22,7 +22,7 @@ class ARReport$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.16
  * JD-Core Version:    0.7.0.1
  */

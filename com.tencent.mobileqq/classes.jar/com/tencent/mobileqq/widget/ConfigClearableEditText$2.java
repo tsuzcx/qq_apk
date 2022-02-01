@@ -19,7 +19,7 @@ class ConfigClearableEditText$2
     {
       if ((paramCharSequence != null) && (paramCharSequence.length() != 0))
       {
-        if ((!ConfigClearableEditText.b(this.a)) && (!ConfigClearableEditText.c(this.a)))
+        if ((!ConfigClearableEditText.d(this.a)) && (!ConfigClearableEditText.e(this.a)))
         {
           this.a.setClearButtonVisible(false);
           return;
@@ -33,7 +33,7 @@ class ConfigClearableEditText$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ConfigClearableEditText.2
  * JD-Core Version:    0.7.0.1
  */

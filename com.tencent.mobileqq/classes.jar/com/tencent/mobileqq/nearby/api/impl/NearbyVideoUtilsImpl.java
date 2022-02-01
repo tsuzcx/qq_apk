@@ -12,12 +12,12 @@ public class NearbyVideoUtilsImpl
 {
   public void disableShowGuideDialog(Object paramObject)
   {
-    NearbyVideoUtils.a((QQAppInterface)paramObject);
+    NearbyVideoUtils.b((QQAppInterface)paramObject);
   }
   
   public String getVideoThumb(String paramString)
   {
-    return NearbyVideoUtils.a(paramString);
+    return NearbyVideoUtils.b(paramString);
   }
   
   public boolean isAuthVideoEnable()
@@ -72,7 +72,7 @@ public class NearbyVideoUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.NearbyVideoUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

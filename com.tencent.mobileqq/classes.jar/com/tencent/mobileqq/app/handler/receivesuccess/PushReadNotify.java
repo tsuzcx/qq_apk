@@ -37,9 +37,9 @@ public class PushReadNotify
       {
         Object localObject = (GroupMsgReadedNotify)paramSvcRequestPushReadedNotify.next();
         paramList = String.valueOf(((GroupMsgReadedNotify)localObject).lGroupCode);
-        if (paramMessageHandler.a.getMsgCache().a(paramList) == 1)
+        if (paramMessageHandler.n.getMsgCache().b(paramList) == 1)
         {
-          paramMessageHandler.a.getMsgCache().a(paramList, (GroupMsgReadedNotify)localObject);
+          paramMessageHandler.n.getMsgCache().a(paramList, (GroupMsgReadedNotify)localObject);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
@@ -66,7 +66,7 @@ public class PushReadNotify
       Object localObject1;
       if (paramBoolean)
       {
-        paramList = (ISubAccountService)paramMessageHandler.a.getRuntimeService(ISubAccountService.class, null);
+        paramList = (ISubAccountService)paramMessageHandler.n.getRuntimeService(ISubAccountService.class, null);
         paramSvcRequestPushReadedNotify = paramSvcRequestPushReadedNotify.vC2CReadedNotify.iterator();
         int i = 0;
         while (paramSvcRequestPushReadedNotify.hasNext())
@@ -91,9 +91,9 @@ public class PushReadNotify
           }
           if (i != 0)
           {
-            paramMessageHandler.a.getConversationFacade().d((String)localObject1, 7000, i);
-            if (paramMessageHandler.a.isLogin()) {
-              ((IAppBadgeService)paramMessageHandler.a.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
+            paramMessageHandler.n.getConversationFacade().e((String)localObject1, 7000, i);
+            if (paramMessageHandler.n.isLogin()) {
+              ((IAppBadgeService)paramMessageHandler.n.getRuntimeService(IAppBadgeService.class, "")).refreshAppBadge();
             }
             if (QLog.isColorLevel())
             {
@@ -105,7 +105,7 @@ public class PushReadNotify
               QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject2).toString());
             }
           }
-          paramMessageHandler.a.getMessageFacade().a(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, localObject1 });
+          paramMessageHandler.n.getMessageFacade().a(new String[] { AppConstants.SUBACCOUNT_ASSISTANT_UIN, localObject1 });
         }
       }
       paramList.addAll(paramSvcRequestPushReadedNotify.vC2CReadedNotify);
@@ -187,9 +187,9 @@ public class PushReadNotify
       {
         Object localObject = (DisMsgReadedNotify)paramSvcRequestPushReadedNotify.next();
         paramList = String.valueOf(((DisMsgReadedNotify)localObject).lDisUin);
-        if (paramMessageHandler.a.getMsgCache().b(paramList) == 1)
+        if (paramMessageHandler.n.getMsgCache().D(paramList) == 1)
         {
-          paramMessageHandler.a.getMsgCache().a(paramList, (DisMsgReadedNotify)localObject);
+          paramMessageHandler.n.getMsgCache().a(paramList, (DisMsgReadedNotify)localObject);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
@@ -208,7 +208,7 @@ public class PushReadNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.PushReadNotify
  * JD-Core Version:    0.7.0.1
  */

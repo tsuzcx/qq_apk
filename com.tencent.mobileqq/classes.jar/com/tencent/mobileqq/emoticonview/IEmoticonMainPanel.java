@@ -29,6 +29,8 @@ public abstract interface IEmoticonMainPanel
   public static final String SP_KEY_SEND_H5_MAGIC_FACE_TIME = "sp_key_send_h5_magic_face_time";
   public static final String SP_USER_FILE_NAME = "emoticon_panel_";
   
+  public abstract void addTabListAdditionalView(boolean paramBoolean, View paramView);
+  
   public abstract void deleteEmoticonClick();
   
   public abstract void doAutoDownload(int paramInt);
@@ -128,7 +130,7 @@ public abstract interface IEmoticonMainPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.IEmoticonMainPanel
  * JD-Core Version:    0.7.0.1
  */

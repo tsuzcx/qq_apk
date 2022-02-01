@@ -10,12 +10,12 @@ class SubAccountApiImpl$6
   
   protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountApi$FriendListObserverCallback.a(paramString, paramBoolean);
+    this.a.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountApiImpl.6
  * JD-Core Version:    0.7.0.1
  */

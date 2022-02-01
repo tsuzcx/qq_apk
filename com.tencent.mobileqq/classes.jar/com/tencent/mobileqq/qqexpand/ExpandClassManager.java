@@ -20,7 +20,7 @@ public class ExpandClassManager
     return null;
   }
   
-  public static String a()
+  public static String b()
   {
     try
     {
@@ -34,7 +34,7 @@ public class ExpandClassManager
     return null;
   }
   
-  public static Class b()
+  public static Class c()
   {
     try
     {
@@ -50,7 +50,7 @@ public class ExpandClassManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.ExpandClassManager
  * JD-Core Version:    0.7.0.1
  */

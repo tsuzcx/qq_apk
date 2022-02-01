@@ -14,20 +14,20 @@ import java.util.List;
 class NativeGridImageView$Adapter
   extends BaseAdapter
 {
-  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<URL> a = new ArrayList();
   List<SquareCornerTextImageView.PicInfo> b = new ArrayList();
   
   public NativeGridImageView$Adapter(NativeGridImageView paramNativeGridImageView) {}
   
   public List<URL> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(NativeGridImageView.GridImageModel paramGridImageModel)
   {
     this.b = paramGridImageModel.a();
-    this.jdField_a_of_type_JavaUtilList = paramGridImageModel.b();
+    this.a = paramGridImageModel.b();
   }
   
   public int getCount()
@@ -60,7 +60,7 @@ class NativeGridImageView$Adapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeGridImageView.Adapter
  * JD-Core Version:    0.7.0.1
  */

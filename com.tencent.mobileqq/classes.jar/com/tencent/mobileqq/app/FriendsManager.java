@@ -27,7 +27,6 @@ import com.tencent.mobileqq.data.SpecialCareInfo;
 import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.mobileqq.friend.api.IFriendExtensionService;
 import com.tencent.mobileqq.friend.status.OnlineStatusUtils;
-import com.tencent.mobileqq.javahook.DetectContactDelete;
 import com.tencent.mobileqq.mutualmark.info.ExtensionMutualMarkData;
 import com.tencent.mobileqq.mutualmark.oldlogic.HotReactiveHelper;
 import com.tencent.mobileqq.onlinestatus.api.IOnLineStatueHelperApi;
@@ -72,90 +71,200 @@ import tencent.im.oidb.cmd0x7c4.cmd0x7c4.RecommendReason;
 public class FriendsManager
   implements Manager
 {
-  public int a;
-  private MQLruCache<String, DateNickNameInfo> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(500);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IFriendDataService jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService;
-  private IFriendExtensionService jdField_a_of_type_ComTencentMobileqqFriendApiIFriendExtensionService;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private final AddFrdStateMng jdField_a_of_type_ComTencentMobileqqRelationxAddFrdAddFrdStateMng = new AddFrdStateMng();
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(6);
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new FriendsManager.1(this);
-  public volatile boolean a;
-  public int b;
-  private ArrayList<String> jdField_b_of_type_JavaUtilArrayList;
-  private ConcurrentHashMap<String, Entity> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new QQConcurrentHashMap(1012, 0, 400);
-  public boolean b;
-  public int c;
-  private ConcurrentHashMap<String, SpecialCareInfo> c;
-  public boolean c;
-  public int d;
-  private ConcurrentHashMap<String, String> jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = null;
-  private volatile boolean jdField_d_of_type_Boolean = false;
-  public int e;
-  private boolean e;
-  public int f;
-  private boolean f;
-  public int g;
-  private boolean g;
-  public int h = 30;
-  public int i = 3;
-  public int j = 30;
-  public int k = 5;
-  public int l = 7;
-  public int m = 30;
-  public int n = 7;
-  public int o = 30;
-  public int p = 6;
-  public int q = -1;
-  private int r = 0;
+  private MQLruCache<String, DateNickNameInfo> A = new MQLruCache(500);
+  private ConcurrentHashMap<String, SpecialCareInfo> B = new ConcurrentHashMap();
+  private final AddFrdStateMng C = new AddFrdStateMng();
+  private boolean D = false;
+  private boolean E = false;
+  private IFriendDataService F;
+  private IFriendExtensionService G;
+  private AccountObserver H = new FriendsManager.1(this);
+  private ConcurrentHashMap<String, String> I = null;
+  private boolean J = false;
+  private int K = 0;
+  private ArrayList<String> L;
+  private ArrayList<String> M;
+  public volatile boolean a = false;
+  public int b = 3;
+  public int c = 30;
+  public int d = 7;
+  public int e = 30;
+  public int f = 3;
+  public int g = 30;
+  public int h = 3;
+  public int i = 30;
+  public int j = 3;
+  public int k = 30;
+  public int l = 5;
+  public int m = 7;
+  public int n = 30;
+  public int o = 7;
+  public int p = 30;
+  public int q = 6;
+  public int r = -1;
+  public boolean s = false;
+  public boolean t = true;
+  ConcurrentHashMap<String, String> u = new ConcurrentHashMap(6);
+  private QQAppInterface v;
+  private EntityManager w;
+  private volatile boolean x = false;
+  private AtomicBoolean y = new AtomicBoolean(false);
+  private ConcurrentHashMap<String, Entity> z = new QQConcurrentHashMap(1012, 0, 400);
   
   @Deprecated
-  public FriendsManager()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_b_of_type_Int = 30;
-    this.jdField_c_of_type_Int = 7;
-    this.jdField_d_of_type_Int = 30;
-    this.jdField_e_of_type_Int = 3;
-    this.jdField_f_of_type_Int = 30;
-    this.jdField_g_of_type_Int = 3;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_g_of_type_Boolean = false;
-  }
+  public FriendsManager() {}
   
   public FriendsManager(QQAppInterface paramQQAppInterface, EntityManager paramEntityManager)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_b_of_type_Int = 30;
-    this.jdField_c_of_type_Int = 7;
-    this.jdField_d_of_type_Int = 30;
-    this.jdField_e_of_type_Int = 3;
-    this.jdField_f_of_type_Int = 30;
-    this.jdField_g_of_type_Int = 3;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
-    g();
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService = ((IFriendDataService)paramQQAppInterface.getRuntimeService(IFriendDataService.class, ""));
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendExtensionService = ((IFriendExtensionService)paramQQAppInterface.getRuntimeService(IFriendExtensionService.class, ""));
+    this.v = paramQQAppInterface;
+    paramQQAppInterface.registObserver(this.H);
+    this.w = paramEntityManager;
+    B();
+    this.F = ((IFriendDataService)paramQQAppInterface.getRuntimeService(IFriendDataService.class, ""));
+    this.G = ((IFriendExtensionService)paramQQAppInterface.getRuntimeService(IFriendExtensionService.class, ""));
   }
   
-  private ConcurrentHashMap<String, ArrayList<Entity>> a(boolean paramBoolean)
+  private void B()
+  {
+    ThreadManager.executeOnSubThread(new FriendsManager.2(this));
+  }
+  
+  private boolean B(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.contacttab.", 2, "isValidUin empty uin");
+      }
+    }
+    else
+    {
+      if (paramString.length() >= 4) {
+        break label71;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isValidUin uin=");
+        localStringBuilder.append(paramString);
+        QLog.e("Q.contacttab.", 2, localStringBuilder.toString());
+      }
+    }
+    return false;
+    label71:
+    return true;
+  }
+  
+  private void C()
+  {
+    MessageNotificationSettingManager localMessageNotificationSettingManager = MessageNotificationSettingManager.a(this.v);
+    boolean bool = localMessageNotificationSettingManager.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.", 2, new Object[] { "doResetRingIdOfExtensionInfo: invoked. ", " hasResetGrayUserRingId: ", Boolean.valueOf(bool) });
+    }
+    if (!bool)
+    {
+      localMessageNotificationSettingManager.a(this.G.getAllExtensionInfo());
+      localMessageNotificationSettingManager.a();
+    }
+  }
+  
+  private void D()
+  {
+    ??? = (ArrayList)this.w.query(NoC2CExtensionInfo.class);
+    if (??? != null)
+    {
+      Iterator localIterator = ((ArrayList)???).iterator();
+      while (localIterator.hasNext())
+      {
+        NoC2CExtensionInfo localNoC2CExtensionInfo = (NoC2CExtensionInfo)localIterator.next();
+        if ((localNoC2CExtensionInfo != null) && (localNoC2CExtensionInfo.uin != null)) {
+          synchronized (this.z)
+          {
+            String str = NoC2CExtensionInfo.getNoC2Ckey(localNoC2CExtensionInfo.type, localNoC2CExtensionInfo.uin);
+            this.z.put(str, localNoC2CExtensionInfo);
+          }
+        }
+      }
+    }
+  }
+  
+  private void E()
+  {
+    Object localObject1 = this.F.getAllFriends();
+    if (localObject1 != null)
+    {
+      if (((List)localObject1).size() <= 0) {
+        return;
+      }
+      localObject1 = ((List)localObject1).iterator();
+      int i1 = 0;
+      int i2;
+      Object localObject2;
+      do
+      {
+        do
+        {
+          i2 = i1;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          localObject2 = (Friends)((Iterator)localObject1).next();
+        } while (!((Friends)localObject2).isFriend());
+        localObject2 = d(((Friends)localObject2).uin, false);
+        i2 = i1;
+        if (localObject2 != null)
+        {
+          i2 = i1;
+          if (((ExtensionInfo)localObject2).hiddenChatSwitch == 1) {
+            i2 = i1 + 1;
+          }
+        }
+        i1 = i2;
+      } while (i2 < 50);
+      if ((i2 >= 50) && (SharedPreUtils.f(this.v.getApp()) == 0))
+      {
+        localObject1 = new RuntimeException("isOverLoadExtensionDataError");
+        ((RuntimeException)localObject1).fillInStackTrace();
+        QLog.d("Q.contacttab.extension", 1, "isOverLoadExtensionDataError():overload 50 friend extensionInfo data error:", (Throwable)localObject1);
+        localObject2 = new HashMap();
+        if (!TextUtils.isEmpty(this.v.getCurrentUin())) {
+          ((HashMap)localObject2).put("detailEventUin", this.v.getCurrentUin());
+        }
+        ((HashMap)localObject2).put("detailEventDes", "isOverLoadExtensionDataError():overload 50 friend extensionInfo data error");
+        ((HashMap)localObject2).put("stackInfo", QLog.getStackTraceString((Throwable)localObject1));
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "OVERLOAD_EXTENSION_INFO_DATA_ERROR", true, 0L, 0L, (HashMap)localObject2, "", false);
+        SharedPreUtils.c(this.v.getApp(), 1);
+      }
+    }
+  }
+  
+  private void a(long paramLong, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap(10);
+    Object localObject = Looper.myLooper();
+    Looper localLooper = Looper.getMainLooper();
+    String str = "1";
+    if (localObject == localLooper) {
+      localObject = "1";
+    } else {
+      localObject = "0";
+    }
+    localHashMap.put("param_IsMainThread", localObject);
+    localHashMap.put("param_OptType", paramString1);
+    localHashMap.put("param_bustag", paramString2);
+    if (paramBoolean) {
+      paramString1 = str;
+    } else {
+      paramString1 = "0";
+    }
+    localHashMap.put("param_intrans", paramString1);
+    localHashMap.put("param_OptTotalCost", String.valueOf(paramLong));
+    localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.WAL_ENABLE));
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "actFriendSqliteOpt", true, paramLong, 0L, localHashMap, null, false);
+  }
+  
+  private ConcurrentHashMap<String, ArrayList<Entity>> c(boolean paramBoolean)
   {
     try
     {
@@ -165,7 +274,7 @@ public class FriendsManager
       int i1 = 0;
       ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap(6);
       Object localObject4 = new ConcurrentHashMap(4);
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends();
+      Object localObject1 = this.F.getAllFriends();
       int i3 = ((List)localObject1).size();
       Iterator localIterator1 = ((List)localObject1).iterator();
       Object localObject3;
@@ -207,7 +316,7 @@ public class FriendsManager
         {
           localObject3 = new ArrayList();
           localConcurrentHashMap.put(str, localObject3);
-          Iterator localIterator2 = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getGroupList().iterator();
+          Iterator localIterator2 = this.F.getGroupList().iterator();
           do
           {
             localObject1 = localObject3;
@@ -275,403 +384,62 @@ public class FriendsManager
     }
   }
   
-  private void a(long paramLong, boolean paramBoolean, String paramString1, String paramString2)
+  public int A()
   {
-    HashMap localHashMap = new HashMap(10);
-    Object localObject = Looper.myLooper();
-    Looper localLooper = Looper.getMainLooper();
-    String str = "1";
-    if (localObject == localLooper) {
-      localObject = "1";
-    } else {
-      localObject = "0";
-    }
-    localHashMap.put("param_IsMainThread", localObject);
-    localHashMap.put("param_OptType", paramString1);
-    localHashMap.put("param_bustag", paramString2);
-    if (paramBoolean) {
-      paramString1 = str;
-    } else {
-      paramString1 = "0";
-    }
-    localHashMap.put("param_intrans", paramString1);
-    localHashMap.put("param_OptTotalCost", String.valueOf(paramLong));
-    localHashMap.put("param_WalSwitch", String.valueOf(SQLiteOpenHelper.WAL_ENABLE));
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, "actFriendSqliteOpt", true, paramLong, 0L, localHashMap, null, false);
-  }
-  
-  private boolean f(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    Object localObject1 = new ArrayList();
+    ((ArrayList)localObject1).addAll(this.F.getAllFriends());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localObject1 = ((ArrayList)localObject1).iterator();
+    int i1 = 0;
+    while (((Iterator)localObject1).hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.contacttab.", 2, "isValidUin empty uin");
-      }
-    }
-    else
-    {
-      if (paramString.length() >= 4) {
-        break label73;
-      }
-      if (QLog.isColorLevel())
+      Object localObject2 = (Friends)((Iterator)localObject1).next();
+      if (((Friends)localObject2).isFriend())
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("isValidUin uin=");
-        localStringBuilder.append(paramString);
-        QLog.e("Q.contacttab.", 2, localStringBuilder.toString());
-      }
-    }
-    return false;
-    label73:
-    return true;
-  }
-  
-  private void g()
-  {
-    ThreadManager.executeOnSubThread(new FriendsManager.2(this));
-  }
-  
-  private void h()
-  {
-    MessageNotificationSettingManager localMessageNotificationSettingManager = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    boolean bool = localMessageNotificationSettingManager.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.", 2, new Object[] { "doResetRingIdOfExtensionInfo: invoked. ", " hasResetGrayUserRingId: ", Boolean.valueOf(bool) });
-    }
-    if (!bool)
-    {
-      localMessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendExtensionService.getAllExtensionInfo());
-      localMessageNotificationSettingManager.a();
-    }
-  }
-  
-  private void i()
-  {
-    ??? = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(NoC2CExtensionInfo.class);
-    if (??? != null)
-    {
-      Iterator localIterator = ((ArrayList)???).iterator();
-      while (localIterator.hasNext())
-      {
-        NoC2CExtensionInfo localNoC2CExtensionInfo = (NoC2CExtensionInfo)localIterator.next();
-        if ((localNoC2CExtensionInfo != null) && (localNoC2CExtensionInfo.uin != null)) {
-          synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
+        localObject2 = x(((Friends)localObject2).uin);
+        if ((localObject2 != null) && (IntimateUtil.a(((ExtensionInfo)localObject2).intimate_type)))
+        {
+          int i2 = i1 + 1;
+          i1 = i2;
+          if (QLog.isColorLevel())
           {
-            String str = NoC2CExtensionInfo.getNoC2Ckey(localNoC2CExtensionInfo.type, localNoC2CExtensionInfo.uin);
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localNoC2CExtensionInfo);
+            localStringBuilder.append("\nuin:");
+            localStringBuilder.append(((ExtensionInfo)localObject2).uin);
+            localStringBuilder.append(" type:");
+            localStringBuilder.append(((ExtensionInfo)localObject2).intimate_type);
+            localStringBuilder.append(" level:");
+            localStringBuilder.append(((ExtensionInfo)localObject2).intimate_level);
+            i1 = i2;
           }
         }
       }
     }
-  }
-  
-  private void j()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends();
-    if (localObject1 != null)
+    if (QLog.isColorLevel())
     {
-      if (((List)localObject1).size() <= 0) {
-        return;
-      }
-      localObject1 = ((List)localObject1).iterator();
-      int i1 = 0;
-      int i2;
-      Object localObject2;
-      do
-      {
-        do
-        {
-          i2 = i1;
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject2 = (Friends)((Iterator)localObject1).next();
-        } while (!((Friends)localObject2).isFriend());
-        localObject2 = a(((Friends)localObject2).uin, false);
-        i2 = i1;
-        if (localObject2 != null)
-        {
-          i2 = i1;
-          if (((ExtensionInfo)localObject2).hiddenChatSwitch == 1) {
-            i2 = i1 + 1;
-          }
-        }
-        i1 = i2;
-      } while (i2 < 50);
-      if ((i2 >= 50) && (SharedPreUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()) == 0))
-      {
-        localObject1 = new RuntimeException("isOverLoadExtensionDataError");
-        ((RuntimeException)localObject1).fillInStackTrace();
-        QLog.d("Q.contacttab.extension", 1, "isOverLoadExtensionDataError():overload 50 friend extensionInfo data error:", (Throwable)localObject1);
-        localObject2 = new HashMap();
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) {
-          ((HashMap)localObject2).put("detailEventUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-        }
-        ((HashMap)localObject2).put("detailEventDes", "isOverLoadExtensionDataError():overload 50 friend extensionInfo data error");
-        ((HashMap)localObject2).put("stackInfo", QLog.getStackTraceString((Throwable)localObject1));
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "OVERLOAD_EXTENSION_INFO_DATA_ERROR", true, 0L, 0L, (HashMap)localObject2, "", false);
-        SharedPreUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1);
-      }
+      localStringBuilder.append("\ncount:");
+      localStringBuilder.append(i1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getBindIntimateRelationshipFriendCount ");
+      ((StringBuilder)localObject1).append(localStringBuilder.toString());
+      QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject1).toString());
     }
+    return i1;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriendCount();
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = b(paramString);
-    if ((paramString != null) && (paramString.isFriend())) {
-      return paramString.friendType;
-    }
-    return 0;
-  }
-  
-  public Card a(String paramString)
-  {
-    return ((IProfileDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IProfileDataService.class, "all")).getProfileCard(paramString, false);
-  }
-  
-  public Card a(String paramString, boolean paramBoolean)
-  {
-    return ((IProfileDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IProfileDataService.class, "all")).getProfileCard(paramString, paramBoolean);
-  }
-  
-  public DateNickNameInfo a(String paramString)
+  public DateNickNameInfo A(String paramString)
   {
     if (!Friends.isValidUin(paramString)) {
       return null;
     }
-    if (!this.jdField_g_of_type_Boolean) {
+    if (!this.J) {
       ThreadManager.postImmediately(new FriendsManager.5(this), null, false);
     }
-    return (DateNickNameInfo)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
+    return (DateNickNameInfo)this.A.get(paramString);
   }
   
-  public ExtensionInfo a(String paramString)
+  public Card a(String paramString, boolean paramBoolean)
   {
-    return a(paramString, true);
-  }
-  
-  public ExtensionInfo a(String paramString, boolean paramBoolean)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendExtensionService.getExtensionInfo(paramString, paramBoolean);
-  }
-  
-  public Friends a(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString);
-  }
-  
-  public Friends a(String paramString1, String paramString2)
-  {
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString1, true, true, true);
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1.name = paramString2;
-      paramString1.datetime = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveFriendCache(paramString1);
-    }
-    return paramString1;
-  }
-  
-  public Groups a(String paramString)
-  {
-    try
-    {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getGroup(Integer.parseInt(paramString), true);
-      return paramString;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public KplCard a(String paramString)
-  {
-    long l1;
-    if (StatisticCollector.getSqliteSwitchBySample(7))
-    {
-      l1 = SystemClock.uptimeMillis();
-      DetectContactDelete.a();
-    }
-    else
-    {
-      l1 = 0L;
-    }
-    paramString = (KplCard)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(KplCard.class, paramString);
-    if (l1 != 0L) {
-      a(SystemClock.uptimeMillis() - l1, false, "query", "Card");
-    }
-    if (paramString != null) {
-      paramString.transStringToList();
-    }
-    if ((QLog.isColorLevel()) && (paramString != null))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("findFriendCardByUin qqNick=");
-      localStringBuilder.append(paramString.qqNick);
-      localStringBuilder.append(",gameNick=");
-      localStringBuilder.append(paramString.gameNick);
-      localStringBuilder.append(",uin = ");
-      localStringBuilder.append(paramString.uin);
-      QLog.d("Q.contacttab.", 2, localStringBuilder.toString());
-    }
-    return paramString;
-  }
-  
-  public NoC2CExtensionInfo a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    String str = NoC2CExtensionInfo.getNoC2Ckey(paramInt, paramString);
-    NoC2CExtensionInfo localNoC2CExtensionInfo = (NoC2CExtensionInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-    ??? = localNoC2CExtensionInfo;
-    if (localNoC2CExtensionInfo == null)
-    {
-      ??? = localNoC2CExtensionInfo;
-      if (paramBoolean)
-      {
-        ??? = localNoC2CExtensionInfo;
-        if (!this.jdField_d_of_type_Boolean)
-        {
-          paramString = (NoC2CExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(NoC2CExtensionInfo.class, "type=? and uin=?", new String[] { String.valueOf(paramInt), paramString });
-          ??? = paramString;
-          if (paramString != null) {
-            synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
-            {
-              this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString);
-              return paramString;
-            }
-          }
-        }
-      }
-    }
-    return ???;
-  }
-  
-  public SpecialCareInfo a(String paramString)
-  {
-    boolean bool = TextUtils.isEmpty(paramString);
-    Object localObject = null;
-    SpecialCareInfo localSpecialCareInfo = null;
-    if (!bool)
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        return null;
-      }
-      localObject = this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
-      if (localObject != null) {
-        try
-        {
-          localSpecialCareInfo = (SpecialCareInfo)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        }
-        finally {}
-      }
-      localObject = localSpecialCareInfo;
-      if (localSpecialCareInfo != null) {
-        return (SpecialCareInfo)localSpecialCareInfo.clone();
-      }
-    }
-    return localObject;
-  }
-  
-  public EntityTransaction a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-  }
-  
-  public AddFrdStateMng a()
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRelationxAddFrdAddFrdStateMng.jdField_a_of_type_Boolean) {
-      ThreadManager.excute(new FriendsManager.6(this), 16, null, true);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqRelationxAddFrdAddFrdStateMng;
-  }
-  
-  public String a(int paramInt)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(String.valueOf(paramInt));
-  }
-  
-  public String a(String paramString)
-  {
-    Friends localFriends = e(paramString);
-    String str = paramString;
-    if (localFriends != null)
-    {
-      str = paramString;
-      if (localFriends.alias != null)
-      {
-        str = paramString;
-        if (localFriends.alias.length() > 0) {
-          str = localFriends.alias;
-        }
-      }
-    }
-    return str;
-  }
-  
-  public ArrayList<Friends> a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends();
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      ArrayList localArrayList = new ArrayList(10);
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Friends localFriends = (Friends)((Iterator)localObject).next();
-        if (localFriends.isShield()) {
-          localArrayList.add(localFriends);
-        }
-      }
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public ArrayList<Friends> a(String paramString)
-  {
-    try
-    {
-      paramString = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriendList(Integer.parseInt(paramString));
-      return paramString;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return new ArrayList();
-  }
-  
-  @UiThread
-  public List<Groups> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.asyncGetGroupList(new FriendsManager.3(this));
-  }
-  
-  public ConcurrentHashMap<String, ArrayList<Entity>> a()
-  {
-    return a(false);
-  }
-  
-  protected void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.", 2, "init begin");
-    }
-    c();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.", 2, "init end");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.moveGroup(paramInt, 0);
+    return ((IProfileDataService)this.v.getRuntimeService(IProfileDataService.class, "all")).getProfileCard(paramString, paramBoolean);
   }
   
   public void a(long paramLong)
@@ -679,7 +447,7 @@ public class FriendsManager
     if (!Friends.isValidUin(paramLong)) {
       return;
     }
-    Friends localFriends = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(String.valueOf(paramLong));
+    Friends localFriends = this.F.getFriend(String.valueOf(paramLong));
     if (localFriends != null)
     {
       int i1 = OnlineStatusUtils.a(localFriends.detalStatusFlag, localFriends.iTermType);
@@ -691,19 +459,14 @@ public class FriendsManager
   
   public void a(ExtensionInfo paramExtensionInfo)
   {
-    a(paramExtensionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendExtensionService.saveExtensionInfo(paramExtensionInfo);
-    j();
-  }
-  
-  public void a(Friends paramFriends)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveFriend(paramFriends);
+    b(paramExtensionInfo);
+    this.G.saveExtensionInfo(paramExtensionInfo);
+    E();
   }
   
   public void a(Groups paramGroups)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveGroup(paramGroups);
+    this.F.saveGroup(paramGroups);
   }
   
   public void a(NearbyPeopleCard paramNearbyPeopleCard)
@@ -719,7 +482,7 @@ public class FriendsManager
           } else {
             paramNearbyPeopleCard = paramNearbyPeopleCard.uin;
           }
-          this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramNearbyPeopleCard, localDateNickNameInfo);
+          this.A.put(paramNearbyPeopleCard, localDateNickNameInfo);
           return;
         }
       }
@@ -734,12 +497,12 @@ public class FriendsManager
       if (paramNoC2CExtensionInfo.uin == null) {
         return;
       }
-      ConcurrentHashMap localConcurrentHashMap = this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+      ConcurrentHashMap localConcurrentHashMap = this.z;
       if (localConcurrentHashMap != null) {
         try
         {
           String str = NoC2CExtensionInfo.getNoC2Ckey(paramNoC2CExtensionInfo.type, paramNoC2CExtensionInfo.uin);
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramNoC2CExtensionInfo);
+          this.z.put(str, paramNoC2CExtensionInfo);
           if (paramBoolean)
           {
             a(paramNoC2CExtensionInfo);
@@ -762,11 +525,11 @@ public class FriendsManager
         ((StringBuilder)localObject).append(paramSpecialCareInfo.toString());
         QLog.d("Q.contacttab.friend", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
+      Object localObject = this.B;
       if (localObject != null) {
         try
         {
-          this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramSpecialCareInfo.uin, paramSpecialCareInfo);
+          this.B.put(paramSpecialCareInfo.uin, paramSpecialCareInfo);
         }
         finally {}
       }
@@ -780,25 +543,25 @@ public class FriendsManager
   
   public void a(String paramString)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    SharedPreferences localSharedPreferences = this.v.getApp().getSharedPreferences(this.v.getCurrentAccountUin(), 0);
     if (localSharedPreferences.getInt("hotDisableInteractive", 1) == 1) {
-      this.jdField_b_of_type_Boolean = true;
+      this.s = true;
     } else {
-      this.jdField_b_of_type_Boolean = false;
+      this.s = false;
     }
     String[] arrayOfString = paramString.split("\\|");
     if (arrayOfString.length >= 9) {
       try
       {
-        this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-        this.jdField_b_of_type_Int = Integer.valueOf(arrayOfString[1]).intValue();
-        this.jdField_e_of_type_Int = Integer.valueOf(arrayOfString[2]).intValue();
-        this.jdField_f_of_type_Int = Integer.valueOf(arrayOfString[3]).intValue();
-        this.jdField_g_of_type_Int = Integer.valueOf(arrayOfString[4]).intValue();
-        this.h = Integer.valueOf(arrayOfString[5]).intValue();
-        this.i = Integer.valueOf(arrayOfString[6]).intValue();
-        this.j = Integer.valueOf(arrayOfString[7]).intValue();
-        this.k = Integer.valueOf(arrayOfString[8]).intValue();
+        this.b = Integer.valueOf(arrayOfString[0]).intValue();
+        this.c = Integer.valueOf(arrayOfString[1]).intValue();
+        this.f = Integer.valueOf(arrayOfString[2]).intValue();
+        this.g = Integer.valueOf(arrayOfString[3]).intValue();
+        this.h = Integer.valueOf(arrayOfString[4]).intValue();
+        this.i = Integer.valueOf(arrayOfString[5]).intValue();
+        this.j = Integer.valueOf(arrayOfString[6]).intValue();
+        this.k = Integer.valueOf(arrayOfString[7]).intValue();
+        this.l = Integer.valueOf(arrayOfString[8]).intValue();
       }
       catch (Exception localException2)
       {
@@ -810,8 +573,8 @@ public class FriendsManager
     if (arrayOfString.length >= 11) {
       try
       {
-        this.jdField_c_of_type_Int = Integer.valueOf(arrayOfString[9]).intValue();
-        this.jdField_d_of_type_Int = Integer.valueOf(arrayOfString[10]).intValue();
+        this.d = Integer.valueOf(arrayOfString[9]).intValue();
+        this.e = Integer.valueOf(arrayOfString[10]).intValue();
       }
       catch (Exception localException3)
       {
@@ -823,8 +586,8 @@ public class FriendsManager
     if (arrayOfString.length >= 13) {
       try
       {
-        this.l = Integer.valueOf(arrayOfString[11]).intValue();
-        this.m = Integer.valueOf(arrayOfString[12]).intValue();
+        this.m = Integer.valueOf(arrayOfString[11]).intValue();
+        this.n = Integer.valueOf(arrayOfString[12]).intValue();
       }
       catch (Exception localException1)
       {
@@ -847,14 +610,14 @@ public class FriendsManager
       localStringBuilder.append(paramInt);
       QLog.d("Q.contacttab.", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.moveFriendToNewGroup(paramString, paramInt);
+    this.F.moveFriendToNewGroup(paramString, paramInt);
   }
   
   public void a(String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
     if (paramGetOnlineInfoResp != null)
     {
-      Friends localFriends = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString);
+      Friends localFriends = this.F.getFriend(paramString);
       if (localFriends == null) {
         return;
       }
@@ -874,9 +637,9 @@ public class FriendsManager
       CustomOnlineStatusPb.CustomOnlineStatusMsg localCustomOnlineStatusMsg = new CustomOnlineStatusPb.CustomOnlineStatusMsg();
       try
       {
-        CustomOnlineStatusManager.a().a(paramString);
+        CustomOnlineStatusManager.a().b(paramString);
         localCustomOnlineStatusMsg.mergeFrom(paramGetOnlineInfoResp.strCustomOnlineStatusDesc.getBytes());
-        localFriends.customOnlineStatusType = CustomOnlineStatusManager.Utils.b(localCustomOnlineStatusMsg);
+        localFriends.customOnlineStatusType = CustomOnlineStatusManager.Utils.d(localCustomOnlineStatusMsg);
         localFriends.customOnlineStatus = CustomOnlineStatusManager.Utils.a(localCustomOnlineStatusMsg);
         localFriends.customModel = CustomOnlineStatusManager.Utils.b(localCustomOnlineStatusMsg);
         if (QLog.isDevelopLevel())
@@ -901,15 +664,15 @@ public class FriendsManager
   
   public void a(String paramString1, String paramString2)
   {
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString1, true, true, true);
+    paramString1 = this.F.getFriend(paramString1, true, true, true);
     paramString1.name = paramString2;
     paramString1.datetime = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveFriend(paramString1);
+    this.F.saveFriend(paramString1);
   }
   
   public void a(String paramString1, String paramString2, byte paramByte)
   {
-    NearbyPeopleCard localNearbyPeopleCard2 = (NearbyPeopleCard)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(NearbyPeopleCard.class, "uin=?", new String[] { paramString1 });
+    NearbyPeopleCard localNearbyPeopleCard2 = (NearbyPeopleCard)this.w.find(NearbyPeopleCard.class, "uin=?", new String[] { paramString1 });
     NearbyPeopleCard localNearbyPeopleCard1 = localNearbyPeopleCard2;
     if (localNearbyPeopleCard2 == null)
     {
@@ -930,7 +693,7 @@ public class FriendsManager
     if ((CrmUtils.a(paramByte1)) && (!QidianManager.b(paramByte1))) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService;
+    Object localObject = this.F;
     byte b1 = 1;
     paramString1 = ((IFriendDataService)localObject).getFriend(paramString1, true, true, true);
     paramString1.cSpecialFlag = paramByte1;
@@ -954,12 +717,7 @@ public class FriendsManager
     paramString1.gender = paramByte1;
     paramString1.age = paramByte2;
     paramString1.datetime = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveFriend(paramString1);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    ((IAddFriendServiceApi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAddFriendServiceApi.class)).setAddFriendReqStatus(paramString, paramBoolean);
+    this.F.saveFriend(paramString1);
   }
   
   public void a(ArrayList<SimpleOnlineFriendInfo> paramArrayList)
@@ -976,7 +734,7 @@ public class FriendsManager
       {
         SimpleOnlineFriendInfo localSimpleOnlineFriendInfo = (SimpleOnlineFriendInfo)paramArrayList.next();
         String str = String.valueOf(localSimpleOnlineFriendInfo.friendUin);
-        Friends localFriends = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(str);
+        Friends localFriends = this.F.getFriend(str);
         if (localFriends != null)
         {
           localFriends.detalStatusFlag = localSimpleOnlineFriendInfo.detalStatusFlag;
@@ -1002,7 +760,7 @@ public class FriendsManager
       if (QLog.isColorLevel()) {
         QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject).toString());
       }
-      paramArrayList = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends();
+      paramArrayList = this.F.getAllFriends();
       if (paramArrayList != null)
       {
         paramArrayList = paramArrayList.iterator();
@@ -1024,209 +782,209 @@ public class FriendsManager
   public void a(@android.support.annotation.NonNull ArrayList<Friends> paramArrayList, int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +141 -> 144
-    //   6: new 229	java/lang/StringBuilder
+    //   6: new 225	java/lang/StringBuilder
     //   9: dup
     //   10: aload_1
-    //   11: invokevirtual 309	java/util/ArrayList:size	()I
+    //   11: invokevirtual 516	java/util/ArrayList:size	()I
     //   14: bipush 12
     //   16: imul
     //   17: bipush 48
     //   19: iadd
-    //   20: invokespecial 294	java/lang/StringBuilder:<init>	(I)V
+    //   20: invokespecial 501	java/lang/StringBuilder:<init>	(I)V
     //   23: astore_3
     //   24: aload_3
-    //   25: ldc_w 996
-    //   28: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: ldc_w 895
+    //   28: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   31: pop
     //   32: aload_3
     //   33: aload_1
-    //   34: invokevirtual 309	java/util/ArrayList:size	()I
-    //   37: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 516	java/util/ArrayList:size	()I
+    //   37: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   40: pop
     //   41: aload_3
-    //   42: ldc_w 998
-    //   45: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: ldc_w 897
+    //   45: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: pop
     //   49: aload_3
     //   50: iload_2
-    //   51: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: aload_3
-    //   56: ldc_w 1000
-    //   59: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: ldc_w 899
+    //   59: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: pop
     //   63: aload_1
-    //   64: invokevirtual 434	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   64: invokevirtual 279	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   67: astore 4
     //   69: aload 4
-    //   71: invokeinterface 203 1 0
+    //   71: invokeinterface 284 1 0
     //   76: ifeq +57 -> 133
     //   79: aload 4
-    //   81: invokeinterface 207 1 0
-    //   86: checkcast 209	com/tencent/mobileqq/data/Friends
+    //   81: invokeinterface 288 1 0
+    //   86: checkcast 316	com/tencent/mobileqq/data/Friends
     //   89: astore 5
-    //   91: new 229	java/lang/StringBuilder
+    //   91: new 225	java/lang/StringBuilder
     //   94: dup
-    //   95: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   95: invokespecial 226	java/lang/StringBuilder:<init>	()V
     //   98: astore 6
     //   100: aload 6
     //   102: aload 5
-    //   104: getfield 450	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   107: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: getfield 320	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   107: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: pop
     //   111: aload 6
-    //   113: ldc_w 1002
-    //   116: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: ldc_w 901
+    //   116: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: pop
     //   120: aload_3
     //   121: aload 6
-    //   123: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   126: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: pop
     //   130: goto -61 -> 69
-    //   133: ldc_w 1004
+    //   133: ldc_w 903
     //   136: iconst_2
     //   137: aload_3
-    //   138: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   138: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   141: invokestatic 441	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   144: aload_1
-    //   145: invokevirtual 309	java/util/ArrayList:size	()I
+    //   145: invokevirtual 516	java/util/ArrayList:size	()I
     //   148: ifle +41 -> 189
     //   151: aload_0
-    //   152: getfield 144	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   155: invokevirtual 461	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   152: getfield 164	com/tencent/mobileqq/app/FriendsManager:v	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   155: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   158: aload_0
-    //   159: getfield 144	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   162: invokevirtual 1007	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   159: getfield 164	com/tencent/mobileqq/app/FriendsManager:v	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   162: invokevirtual 906	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
     //   165: iconst_0
-    //   166: invokevirtual 761	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   169: invokeinterface 1011 1 0
-    //   174: ldc_w 1013
+    //   166: invokevirtual 645	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   169: invokeinterface 910 1 0
+    //   174: ldc_w 912
     //   177: iconst_1
-    //   178: invokeinterface 1019 3 0
-    //   183: invokeinterface 1022 1 0
+    //   178: invokeinterface 918 3 0
+    //   183: invokeinterface 921 1 0
     //   188: pop
     //   189: aload_0
-    //   190: getfield 152	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   193: invokevirtual 639	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   190: getfield 172	com/tencent/mobileqq/app/FriendsManager:w	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   193: invokevirtual 925	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   196: astore_3
     //   197: aload_3
-    //   198: invokevirtual 1027	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   198: invokevirtual 930	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   201: iload_2
     //   202: ifne +97 -> 299
     //   205: aload_0
-    //   206: getfield 164	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService	Lcom/tencent/mobileqq/friend/api/IFriendDataService;
-    //   209: invokeinterface 188 1 0
-    //   214: invokeinterface 198 1 0
+    //   206: getfield 184	com/tencent/mobileqq/app/FriendsManager:F	Lcom/tencent/mobileqq/friend/api/IFriendDataService;
+    //   209: invokeinterface 308 1 0
+    //   214: invokeinterface 314 1 0
     //   219: astore 4
     //   221: aload 4
-    //   223: invokeinterface 203 1 0
+    //   223: invokeinterface 284 1 0
     //   228: ifeq +71 -> 299
     //   231: aload 4
-    //   233: invokeinterface 207 1 0
-    //   238: checkcast 209	com/tencent/mobileqq/data/Friends
+    //   233: invokeinterface 288 1 0
+    //   238: checkcast 316	com/tencent/mobileqq/data/Friends
     //   241: astore 5
     //   243: aload 5
-    //   245: getfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   245: getfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   248: iconst_1
     //   249: if_icmpne -28 -> 221
     //   252: aload 5
     //   254: iconst_0
-    //   255: putfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   255: putfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   258: aload_0
     //   259: aload 5
-    //   261: invokevirtual 1029	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   261: invokevirtual 932	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   264: pop
     //   265: aload_0
-    //   266: getfield 1031	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   266: getfield 934	com/tencent/mobileqq/app/FriendsManager:L	Ljava/util/ArrayList;
     //   269: ifnonnull +14 -> 283
     //   272: aload_0
-    //   273: new 250	java/util/ArrayList
+    //   273: new 275	java/util/ArrayList
     //   276: dup
-    //   277: invokespecial 251	java/util/ArrayList:<init>	()V
-    //   280: putfield 1031	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   277: invokespecial 463	java/util/ArrayList:<init>	()V
+    //   280: putfield 934	com/tencent/mobileqq/app/FriendsManager:L	Ljava/util/ArrayList;
     //   283: aload_0
-    //   284: getfield 1031	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   284: getfield 934	com/tencent/mobileqq/app/FriendsManager:L	Ljava/util/ArrayList;
     //   287: aload 5
-    //   289: getfield 450	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   292: invokevirtual 279	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   289: getfield 320	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   292: invokevirtual 487	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   295: pop
     //   296: goto -75 -> 221
     //   299: aload_1
-    //   300: invokevirtual 434	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   300: invokevirtual 279	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   303: astore_1
     //   304: aload_1
-    //   305: invokeinterface 203 1 0
+    //   305: invokeinterface 284 1 0
     //   310: ifeq +125 -> 435
     //   313: aload_1
-    //   314: invokeinterface 207 1 0
-    //   319: checkcast 209	com/tencent/mobileqq/data/Friends
+    //   314: invokeinterface 288 1 0
+    //   319: checkcast 316	com/tencent/mobileqq/data/Friends
     //   322: astore 4
     //   324: aload_0
-    //   325: getfield 164	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService	Lcom/tencent/mobileqq/friend/api/IFriendDataService;
+    //   325: getfield 184	com/tencent/mobileqq/app/FriendsManager:F	Lcom/tencent/mobileqq/friend/api/IFriendDataService;
     //   328: aload 4
-    //   330: getfield 450	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   333: invokeinterface 545 2 0
+    //   330: getfield 320	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   333: invokeinterface 582 2 0
     //   338: astore 5
     //   340: aload 5
     //   342: ifnonnull +6 -> 348
     //   345: goto -41 -> 304
     //   348: aload 5
     //   350: iconst_1
-    //   351: putfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   351: putfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   354: aload 5
     //   356: aload 4
-    //   358: getfield 950	com/tencent/mobileqq/data/Friends:age	I
-    //   361: putfield 950	com/tencent/mobileqq/data/Friends:age	I
+    //   358: getfield 858	com/tencent/mobileqq/data/Friends:age	I
+    //   361: putfield 858	com/tencent/mobileqq/data/Friends:age	I
     //   364: aload 5
     //   366: aload 4
-    //   368: getfield 1034	com/tencent/mobileqq/data/Friends:smartRemark	Ljava/lang/String;
-    //   371: putfield 1034	com/tencent/mobileqq/data/Friends:smartRemark	Ljava/lang/String;
+    //   368: getfield 937	com/tencent/mobileqq/data/Friends:smartRemark	Ljava/lang/String;
+    //   371: putfield 937	com/tencent/mobileqq/data/Friends:smartRemark	Ljava/lang/String;
     //   374: aload 5
     //   376: aload 4
-    //   378: getfield 947	com/tencent/mobileqq/data/Friends:gender	B
-    //   381: putfield 947	com/tencent/mobileqq/data/Friends:gender	B
+    //   378: getfield 855	com/tencent/mobileqq/data/Friends:gender	B
+    //   381: putfield 855	com/tencent/mobileqq/data/Friends:gender	B
     //   384: aload 5
     //   386: aload 4
-    //   388: getfield 1037	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
-    //   391: putfield 1037	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
+    //   388: getfield 940	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
+    //   391: putfield 940	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
     //   394: aload_0
     //   395: aload 5
-    //   397: invokevirtual 1029	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   397: invokevirtual 932	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   400: pop
     //   401: aload_0
-    //   402: getfield 1039	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   402: getfield 942	com/tencent/mobileqq/app/FriendsManager:M	Ljava/util/ArrayList;
     //   405: ifnonnull +14 -> 419
     //   408: aload_0
-    //   409: new 250	java/util/ArrayList
+    //   409: new 275	java/util/ArrayList
     //   412: dup
-    //   413: invokespecial 251	java/util/ArrayList:<init>	()V
-    //   416: putfield 1039	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   413: invokespecial 463	java/util/ArrayList:<init>	()V
+    //   416: putfield 942	com/tencent/mobileqq/app/FriendsManager:M	Ljava/util/ArrayList;
     //   419: aload_0
-    //   420: getfield 1039	com/tencent/mobileqq/app/FriendsManager:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   420: getfield 942	com/tencent/mobileqq/app/FriendsManager:M	Ljava/util/ArrayList;
     //   423: aload 5
-    //   425: getfield 450	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   428: invokevirtual 279	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   425: getfield 320	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   428: invokevirtual 487	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   431: pop
     //   432: goto -128 -> 304
     //   435: aload_3
-    //   436: invokevirtual 1041	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   436: invokevirtual 944	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   439: goto +18 -> 457
     //   442: astore_1
     //   443: goto +19 -> 462
     //   446: astore_1
-    //   447: ldc 179
+    //   447: ldc 212
     //   449: iconst_1
-    //   450: ldc_w 1043
+    //   450: ldc_w 946
     //   453: aload_1
-    //   454: invokestatic 780	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   454: invokestatic 664	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   457: aload_3
-    //   458: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   458: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   461: return
     //   462: aload_3
-    //   463: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   463: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   466: goto +5 -> 471
     //   469: aload_1
     //   470: athrow
@@ -1269,14 +1027,14 @@ public class FriendsManager
     ((StringBuilder)localObject).append("queryFriends_");
     ((StringBuilder)localObject).append(paramList.size());
     TraceUtils.traceBegin(((StringBuilder)localObject).toString());
-    paramList = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.preloadPartFriendCache(paramList);
+    paramList = this.F.preloadPartFriendCache(paramList);
     if (paramList != null)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         localObject = (Friends)paramList.next();
-        QidianManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Friends)localObject);
+        QidianManager.a(this.v, (Friends)localObject);
       }
     }
     TraceUtils.traceEnd();
@@ -1291,48 +1049,48 @@ public class FriendsManager
     //   3: aload_1
     //   4: ifnull +14 -> 18
     //   7: aload_1
-    //   8: invokeinterface 194 1 0
+    //   8: invokeinterface 313 1 0
     //   13: istore 5
     //   15: goto +6 -> 21
     //   18: iconst_0
     //   19: istore 5
-    //   21: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   21: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   24: ifeq +74 -> 98
-    //   27: new 229	java/lang/StringBuilder
+    //   27: new 225	java/lang/StringBuilder
     //   30: dup
-    //   31: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   31: invokespecial 226	java/lang/StringBuilder:<init>	()V
     //   34: astore 8
     //   36: aload 8
-    //   38: ldc_w 1069
-    //   41: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: ldc_w 972
+    //   41: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: pop
     //   45: aload 8
     //   47: iload 5
-    //   49: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   52: pop
     //   53: aload 8
-    //   55: ldc_w 308
-    //   58: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: ldc_w 515
+    //   58: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: aload 8
     //   64: lload_2
-    //   65: invokevirtual 982	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 881	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: aload 8
-    //   71: ldc_w 308
-    //   74: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: ldc_w 515
+    //   74: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: pop
     //   78: aload 8
     //   80: iload 4
-    //   82: invokevirtual 1072	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 975	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   85: pop
-    //   86: ldc_w 315
+    //   86: ldc_w 522
     //   89: iconst_2
     //   90: aload 8
-    //   92: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   92: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 441	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   98: aload_0
-    //   99: getfield 76	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   99: getfield 96	com/tencent/mobileqq/app/FriendsManager:B	Ljava/util/concurrent/ConcurrentHashMap;
     //   102: astore 8
     //   104: aload 8
     //   106: ifnull +131 -> 237
@@ -1344,16 +1102,16 @@ public class FriendsManager
     //   117: iload 5
     //   119: if_icmpge +42 -> 161
     //   122: aload_0
-    //   123: getfield 76	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   123: getfield 96	com/tencent/mobileqq/app/FriendsManager:B	Ljava/util/concurrent/ConcurrentHashMap;
     //   126: aload_1
     //   127: iload 6
-    //   129: invokeinterface 1075 2 0
-    //   134: checkcast 632	com/tencent/mobileqq/data/SpecialCareInfo
-    //   137: getfield 745	com/tencent/mobileqq/data/SpecialCareInfo:uin	Ljava/lang/String;
+    //   129: invokeinterface 978 2 0
+    //   134: checkcast 628	com/tencent/mobileqq/data/SpecialCareInfo
+    //   137: getfield 629	com/tencent/mobileqq/data/SpecialCareInfo:uin	Ljava/lang/String;
     //   140: aload_1
     //   141: iload 6
-    //   143: invokeinterface 1075 2 0
-    //   148: invokevirtual 255	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   143: invokeinterface 978 2 0
+    //   148: invokevirtual 305	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   151: pop
     //   152: iload 6
     //   154: iconst_1
@@ -1363,24 +1121,24 @@ public class FriendsManager
     //   161: iload 4
     //   163: ifeq +63 -> 226
     //   166: aload_0
-    //   167: getfield 76	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   170: invokevirtual 1078	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   173: invokeinterface 306 1 0
+    //   167: getfield 96	com/tencent/mobileqq/app/FriendsManager:B	Ljava/util/concurrent/ConcurrentHashMap;
+    //   170: invokevirtual 981	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
+    //   173: invokeinterface 513 1 0
     //   178: astore 9
     //   180: aload 9
-    //   182: invokeinterface 203 1 0
+    //   182: invokeinterface 284 1 0
     //   187: ifeq +39 -> 226
     //   190: aload 9
-    //   192: invokeinterface 207 1 0
-    //   197: checkcast 1080	java/util/Map$Entry
-    //   200: invokeinterface 1083 1 0
-    //   205: checkcast 632	com/tencent/mobileqq/data/SpecialCareInfo
-    //   208: getfield 1086	com/tencent/mobileqq/data/SpecialCareInfo:dateTime	J
+    //   192: invokeinterface 288 1 0
+    //   197: checkcast 983	java/util/Map$Entry
+    //   200: invokeinterface 986 1 0
+    //   205: checkcast 628	com/tencent/mobileqq/data/SpecialCareInfo
+    //   208: getfield 989	com/tencent/mobileqq/data/SpecialCareInfo:dateTime	J
     //   211: lload_2
     //   212: lcmp
     //   213: ifge -33 -> 180
     //   216: aload 9
-    //   218: invokeinterface 1089 1 0
+    //   218: invokeinterface 992 1 0
     //   223: goto -43 -> 180
     //   226: aload 8
     //   228: monitorexit
@@ -1390,11 +1148,11 @@ public class FriendsManager
     //   235: aload_1
     //   236: athrow
     //   237: aload_0
-    //   238: getfield 152	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   241: invokevirtual 639	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   238: getfield 172	com/tencent/mobileqq/app/FriendsManager:w	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   241: invokevirtual 925	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   244: astore 8
     //   246: aload 8
-    //   248: invokevirtual 1027	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   248: invokevirtual 930	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   251: iload 7
     //   253: istore 6
     //   255: iload 6
@@ -1403,9 +1161,9 @@ public class FriendsManager
     //   262: aload_0
     //   263: aload_1
     //   264: iload 6
-    //   266: invokeinterface 1075 2 0
-    //   271: checkcast 436	com/tencent/mobileqq/persistence/Entity
-    //   274: invokevirtual 743	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   266: invokeinterface 978 2 0
+    //   271: checkcast 290	com/tencent/mobileqq/persistence/Entity
+    //   274: invokevirtual 625	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   277: pop
     //   278: iload 6
     //   280: iconst_1
@@ -1414,73 +1172,73 @@ public class FriendsManager
     //   284: goto -29 -> 255
     //   287: iload 4
     //   289: ifeq +120 -> 409
-    //   292: ldc_w 632
-    //   295: invokevirtual 1094	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   298: checkcast 632	com/tencent/mobileqq/data/SpecialCareInfo
-    //   301: invokevirtual 1097	com/tencent/mobileqq/data/SpecialCareInfo:getTableName	()Ljava/lang/String;
+    //   292: ldc_w 628
+    //   295: invokevirtual 997	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   298: checkcast 628	com/tencent/mobileqq/data/SpecialCareInfo
+    //   301: invokevirtual 1000	com/tencent/mobileqq/data/SpecialCareInfo:getTableName	()Ljava/lang/String;
     //   304: astore_1
     //   305: aload_0
-    //   306: getfield 152	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   306: getfield 172	com/tencent/mobileqq/app/FriendsManager:w	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   309: astore 9
-    //   311: new 229	java/lang/StringBuilder
+    //   311: new 225	java/lang/StringBuilder
     //   314: dup
-    //   315: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   315: invokespecial 226	java/lang/StringBuilder:<init>	()V
     //   318: astore 10
     //   320: aload 10
-    //   322: ldc_w 1099
-    //   325: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: ldc_w 1002
+    //   325: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   328: pop
     //   329: aload 10
     //   331: lload_2
-    //   332: invokevirtual 982	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   332: invokevirtual 881	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   335: pop
     //   336: aload 9
     //   338: aload_1
     //   339: aload 10
-    //   341: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   341: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   344: aconst_null
-    //   345: invokevirtual 1103	com/tencent/mobileqq/persistence/EntityManager:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   345: invokevirtual 1006	com/tencent/mobileqq/persistence/EntityManager:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   348: istore 5
-    //   350: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   350: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   353: ifeq +56 -> 409
-    //   356: new 229	java/lang/StringBuilder
+    //   356: new 225	java/lang/StringBuilder
     //   359: dup
-    //   360: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   360: invokespecial 226	java/lang/StringBuilder:<init>	()V
     //   363: astore 9
     //   365: aload 9
-    //   367: ldc_w 1105
-    //   370: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   367: ldc_w 1008
+    //   370: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   373: pop
     //   374: aload 9
     //   376: aload_1
-    //   377: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   377: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   380: pop
     //   381: aload 9
-    //   383: ldc_w 1107
-    //   386: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   383: ldc_w 1010
+    //   386: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: pop
     //   390: aload 9
     //   392: iload 5
-    //   394: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   394: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   397: pop
-    //   398: ldc 179
+    //   398: ldc 212
     //   400: iconst_2
     //   401: aload 9
-    //   403: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   406: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   403: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   406: invokestatic 441	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   409: aload 8
-    //   411: invokevirtual 1041	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   411: invokevirtual 944	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   414: goto +12 -> 426
     //   417: astore_1
     //   418: goto +14 -> 432
     //   421: astore_1
     //   422: aload_1
-    //   423: invokevirtual 1108	java/lang/Exception:printStackTrace	()V
+    //   423: invokevirtual 1013	java/lang/Exception:printStackTrace	()V
     //   426: aload 8
-    //   428: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   428: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   431: return
     //   432: aload 8
-    //   434: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   434: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   437: goto +5 -> 442
     //   440: aload_1
     //   441: athrow
@@ -1517,42 +1275,36 @@ public class FriendsManager
     //   232	235	445	finally
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putBoolean("show_vip_red_name", paramBoolean).commit();
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean1;
-    this.jdField_f_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_e_of_type_Int = paramInt3;
-    this.jdField_f_of_type_Int = paramInt4;
-    this.jdField_g_of_type_Int = paramInt5;
-    this.h = paramInt6;
-    this.i = paramInt7;
-    this.j = paramInt8;
-    this.k = paramInt11;
-    this.l = paramInt9;
-    this.m = paramInt10;
+    this.D = paramBoolean1;
+    this.E = paramBoolean2;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.f = paramInt3;
+    this.g = paramInt4;
+    this.h = paramInt5;
+    this.i = paramInt6;
+    this.j = paramInt7;
+    this.k = paramInt8;
+    this.l = paramInt11;
+    this.m = paramInt9;
+    this.n = paramInt10;
   }
   
   public boolean a()
   {
-    boolean bool = b();
-    a();
-    this.jdField_e_of_type_Boolean = SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    this.jdField_f_of_type_Boolean = SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1);
-    a(SharedPreUtils.k(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+    boolean bool = e();
+    b();
+    this.D = SharedPreUtils.q(this.v.getApp(), this.v.getCurrentAccountUin(), 0);
+    this.E = SharedPreUtils.q(this.v.getApp(), this.v.getCurrentAccountUin(), 1);
+    a(SharedPreUtils.N(this.v.getApp()));
     return bool;
   }
   
   public boolean a(int paramInt)
   {
-    if (((paramInt == 0) && (!this.jdField_e_of_type_Boolean)) || ((paramInt == 1) && (!this.jdField_f_of_type_Boolean)))
+    if (((paramInt == 0) && (!this.D)) || ((paramInt == 1) && (!this.E)))
     {
       if (QLog.isColorLevel())
       {
@@ -1568,62 +1320,30 @@ public class FriendsManager
   
   public boolean a(Card paramCard)
   {
-    return ((IProfileDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IProfileDataService.class, "all")).saveProfileCard(paramCard);
-  }
-  
-  public boolean a(ExtensionInfo paramExtensionInfo)
-  {
-    if (paramExtensionInfo == null) {
-      return false;
-    }
-    if (paramExtensionInfo.hiddenChatSwitch == 1)
-    {
-      ExtensionInfo localExtensionInfo = a(paramExtensionInfo.uin, false);
-      if ((localExtensionInfo == null) || (paramExtensionInfo.hiddenChatSwitch != localExtensionInfo.hiddenChatSwitch))
-      {
-        RuntimeException localRuntimeException = new RuntimeException("isMaybeSingleExtensionDataError");
-        localRuntimeException.fillInStackTrace();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("uin:");
-        localStringBuilder.append(MobileQQ.getShortUinStr(paramExtensionInfo.uin));
-        localStringBuilder.append("extensionInfo new.hiddenChatSwitch: ");
-        localStringBuilder.append(paramExtensionInfo.hiddenChatSwitch);
-        localStringBuilder.append(", old.hiddenChatSwitch: ");
-        if (localExtensionInfo == null) {
-          paramExtensionInfo = "null";
-        } else {
-          paramExtensionInfo = Integer.valueOf(localExtensionInfo.hiddenChatSwitch);
-        }
-        localStringBuilder.append(paramExtensionInfo);
-        localStringBuilder.append(", isMaybeExtensionDataError():");
-        QLog.d("Q.contacttab.extension", 1, localStringBuilder.toString(), localRuntimeException);
-        return true;
-      }
-    }
-    return false;
+    return ((IProfileDataService)this.v.getRuntimeService(IProfileDataService.class, "all")).saveProfileCard(paramCard);
   }
   
   public boolean a(Friends paramFriends)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveFriend(paramFriends);
+    return this.F.saveFriend(paramFriends);
   }
   
   protected boolean a(Entity paramEntity)
   {
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen();
+    boolean bool2 = this.w.isOpen();
     boolean bool1 = false;
     if (bool2)
     {
       if (paramEntity.getStatus() == 1000)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+        this.w.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
         return bool1;
       }
       if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
-        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+        return this.w.update(paramEntity);
       }
     }
     if (QLog.isColorLevel())
@@ -1636,74 +1356,45 @@ public class FriendsManager
     return false;
   }
   
-  public boolean a(String paramString)
-  {
-    if (this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap == null)
-    {
-      this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.contacttab.friend", 2, "initBlackList begin");
-      }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(Groups.class, false, "group_id=?", new String[] { "-1002" }, null, null, null, null);
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Friends localFriends = (Friends)((Iterator)localObject).next();
-          this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(localFriends.uin, "");
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("initBlackList end, size=");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-        QLog.d("Q.contacttab.friend", 2, ((StringBuilder)localObject).toString());
-      }
-    }
-    return this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-  }
-  
   /* Error */
   protected boolean a(String paramString, int paramInt, boolean paramBoolean)
   {
     // Byte code:
-    //   0: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +72 -> 75
-    //   6: new 229	java/lang/StringBuilder
+    //   6: new 225	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 226	java/lang/StringBuilder:<init>	()V
     //   13: astore 12
     //   15: aload 12
-    //   17: ldc_w 1182
-    //   20: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc_w 1055
+    //   20: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload 12
     //   26: aload_1
-    //   27: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: pop
     //   31: aload 12
-    //   33: ldc_w 308
-    //   36: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: ldc_w 515
+    //   36: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: pop
     //   40: aload 12
     //   42: iload_2
-    //   43: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload 12
-    //   49: ldc_w 308
-    //   52: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: ldc_w 515
+    //   52: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: pop
     //   56: aload 12
     //   58: iload_3
-    //   59: invokevirtual 1072	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 975	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   62: pop
-    //   63: ldc_w 1184
+    //   63: ldc_w 1057
     //   66: iconst_2
     //   67: aload 12
-    //   69: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   72: invokestatic 441	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   75: aconst_null
     //   76: astore 14
     //   78: aconst_null
@@ -1717,44 +1408,44 @@ public class FriendsManager
     //   90: iconst_0
     //   91: istore 4
     //   93: aload_0
-    //   94: getfield 152	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   97: invokevirtual 639	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   94: getfield 172	com/tencent/mobileqq/app/FriendsManager:w	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   97: invokevirtual 925	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   100: astore 12
     //   102: aload 12
     //   104: astore 13
     //   106: aload 12
     //   108: astore 14
     //   110: aload 12
-    //   112: invokevirtual 1027	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   112: invokevirtual 930	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   115: aload 12
     //   117: astore 13
     //   119: aload 12
     //   121: astore 14
     //   123: aload_0
     //   124: aload_1
-    //   125: invokevirtual 1186	com/tencent/mobileqq/app/FriendsManager:d	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   125: invokevirtual 1059	com/tencent/mobileqq/app/FriendsManager:e	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   128: astore 15
     //   130: aload 12
     //   132: astore 13
     //   134: aload 12
     //   136: astore 14
-    //   138: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   138: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   141: ifeq +108 -> 249
     //   144: aload 12
     //   146: astore 13
     //   148: aload 12
     //   150: astore 14
-    //   152: new 229	java/lang/StringBuilder
+    //   152: new 225	java/lang/StringBuilder
     //   155: dup
-    //   156: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   156: invokespecial 226	java/lang/StringBuilder:<init>	()V
     //   159: astore 16
     //   161: aload 12
     //   163: astore 13
     //   165: aload 12
     //   167: astore 14
     //   169: aload 16
-    //   171: ldc_w 1188
-    //   174: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: ldc_w 1061
+    //   174: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: pop
     //   178: aload 12
     //   180: astore 13
@@ -1762,15 +1453,15 @@ public class FriendsManager
     //   184: astore 14
     //   186: aload 16
     //   188: aload_1
-    //   189: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: pop
     //   193: aload 12
     //   195: astore 13
     //   197: aload 12
     //   199: astore 14
     //   201: aload 16
-    //   203: ldc_w 1190
-    //   206: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: ldc_w 1063
+    //   206: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   209: pop
     //   210: aload 12
     //   212: astore 13
@@ -1778,25 +1469,25 @@ public class FriendsManager
     //   216: astore 14
     //   218: aload 16
     //   220: aload 15
-    //   222: getfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
-    //   225: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   222: getfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   225: invokevirtual 458	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   228: pop
     //   229: aload 12
     //   231: astore 13
     //   233: aload 12
     //   235: astore 14
-    //   237: ldc_w 1004
+    //   237: ldc_w 903
     //   240: iconst_2
     //   241: aload 16
-    //   243: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   246: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   243: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   246: invokestatic 441	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   249: aload 12
     //   251: astore 13
     //   253: aload 12
     //   255: astore 14
     //   257: aload_0
     //   258: aload_1
-    //   259: invokevirtual 1192	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Z
+    //   259: invokevirtual 1065	com/tencent/mobileqq/app/FriendsManager:k	(Ljava/lang/String;)Z
     //   262: ifeq +16 -> 278
     //   265: aload 12
     //   267: astore 13
@@ -1804,13 +1495,13 @@ public class FriendsManager
     //   271: astore 14
     //   273: aload_0
     //   274: aload_1
-    //   275: invokevirtual 1194	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)V
+    //   275: invokevirtual 1067	com/tencent/mobileqq/app/FriendsManager:l	(Ljava/lang/String;)V
     //   278: aload 12
     //   280: astore 13
     //   282: aload 12
     //   284: astore 14
     //   286: aload 15
-    //   288: getfield 233	com/tencent/mobileqq/data/Friends:groupid	I
+    //   288: getfield 455	com/tencent/mobileqq/data/Friends:groupid	I
     //   291: istore 9
     //   293: iconst_m1
     //   294: istore 7
@@ -1823,7 +1514,7 @@ public class FriendsManager
     //   308: astore 14
     //   310: aload 15
     //   312: iload_2
-    //   313: putfield 233	com/tencent/mobileqq/data/Friends:groupid	I
+    //   313: putfield 455	com/tencent/mobileqq/data/Friends:groupid	I
     //   316: iconst_1
     //   317: istore 10
     //   319: goto +35 -> 354
@@ -1832,7 +1523,7 @@ public class FriendsManager
     //   326: aload 12
     //   328: astore 14
     //   330: aload 15
-    //   332: getfield 233	com/tencent/mobileqq/data/Friends:groupid	I
+    //   332: getfield 455	com/tencent/mobileqq/data/Friends:groupid	I
     //   335: istore 7
     //   337: aload 12
     //   339: astore 13
@@ -1840,7 +1531,7 @@ public class FriendsManager
     //   343: astore 14
     //   345: aload 15
     //   347: iload_2
-    //   348: putfield 233	com/tencent/mobileqq/data/Friends:groupid	I
+    //   348: putfield 455	com/tencent/mobileqq/data/Friends:groupid	I
     //   351: iconst_0
     //   352: istore 10
     //   354: iload 8
@@ -1848,8 +1539,8 @@ public class FriendsManager
     //   358: aload 12
     //   360: astore 13
     //   362: aload 15
-    //   364: invokestatic 558	java/lang/System:currentTimeMillis	()J
-    //   367: putfield 562	com/tencent/mobileqq/data/Friends:datetime	J
+    //   364: invokestatic 815	java/lang/System:currentTimeMillis	()J
+    //   367: putfield 818	com/tencent/mobileqq/data/Friends:datetime	J
     //   370: iload_3
     //   371: ifeq +148 -> 519
     //   374: iload 8
@@ -1857,7 +1548,7 @@ public class FriendsManager
     //   378: aload 12
     //   380: astore 13
     //   382: aload 15
-    //   384: getfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   384: getfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   387: istore 5
     //   389: iload 5
     //   391: iconst_1
@@ -1871,26 +1562,26 @@ public class FriendsManager
     //   406: astore 13
     //   408: aload 15
     //   410: iconst_1
-    //   411: putfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   411: putfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   414: aload 12
     //   416: astore 13
     //   418: aload 15
-    //   420: ldc_w 1195
-    //   423: invokestatic 1199	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   426: putfield 1037	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
+    //   420: ldc_w 1068
+    //   423: invokestatic 1073	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   426: putfield 940	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
     //   429: aload 12
     //   431: astore 13
     //   433: aload_0
     //   434: aload 15
-    //   436: getfield 450	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   439: invokevirtual 1201	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   436: getfield 320	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   439: invokevirtual 1076	com/tencent/mobileqq/app/FriendsManager:f	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   442: astore 14
     //   444: aload 14
     //   446: ifnull +62 -> 508
     //   449: aload 12
     //   451: astore 13
     //   453: aload 14
-    //   455: getfield 1207	com/tencent/mobileqq/data/Card:shGender	S
+    //   455: getfield 1082	com/tencent/mobileqq/data/Card:shGender	S
     //   458: ifne +9 -> 467
     //   461: iconst_1
     //   462: istore 4
@@ -1898,7 +1589,7 @@ public class FriendsManager
     //   467: aload 12
     //   469: astore 13
     //   471: aload 14
-    //   473: getfield 1207	com/tencent/mobileqq/data/Card:shGender	S
+    //   473: getfield 1082	com/tencent/mobileqq/data/Card:shGender	S
     //   476: iconst_1
     //   477: if_icmpne +6 -> 483
     //   480: iconst_2
@@ -1907,13 +1598,13 @@ public class FriendsManager
     //   485: astore 13
     //   487: aload 15
     //   489: iload 4
-    //   491: putfield 947	com/tencent/mobileqq/data/Friends:gender	B
+    //   491: putfield 855	com/tencent/mobileqq/data/Friends:gender	B
     //   494: aload 12
     //   496: astore 13
     //   498: aload 15
     //   500: aload 14
-    //   502: getfield 1209	com/tencent/mobileqq/data/Card:age	B
-    //   505: putfield 950	com/tencent/mobileqq/data/Friends:age	I
+    //   502: getfield 1084	com/tencent/mobileqq/data/Card:age	B
+    //   505: putfield 858	com/tencent/mobileqq/data/Friends:age	I
     //   508: goto +11 -> 519
     //   511: astore 15
     //   513: iload 5
@@ -1925,7 +1616,7 @@ public class FriendsManager
     //   525: astore 13
     //   527: aload_0
     //   528: aload 15
-    //   530: invokevirtual 743	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   530: invokevirtual 625	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   533: pop
     //   534: iload 5
     //   536: istore 6
@@ -1933,8 +1624,8 @@ public class FriendsManager
     //   540: astore 13
     //   542: aload_0
     //   543: iload_2
-    //   544: invokestatic 624	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   547: invokevirtual 1211	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
+    //   544: invokestatic 1086	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   547: invokevirtual 1089	com/tencent/mobileqq/app/FriendsManager:u	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
     //   550: astore 14
     //   552: aload 14
     //   554: ifnull +41 -> 595
@@ -1944,18 +1635,18 @@ public class FriendsManager
     //   563: astore 13
     //   565: aload 14
     //   567: aload 14
-    //   569: getfield 266	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   569: getfield 474	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   572: iconst_1
     //   573: iadd
-    //   574: putfield 266	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   574: putfield 474	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   577: iload 5
     //   579: istore 6
     //   581: aload 12
     //   583: astore 13
     //   585: aload_0
-    //   586: getfield 152	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   586: getfield 172	com/tencent/mobileqq/app/FriendsManager:w	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   589: aload 14
-    //   591: invokevirtual 1162	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   591: invokevirtual 1049	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   594: pop
     //   595: iload 10
     //   597: ifne +73 -> 670
@@ -1970,8 +1661,8 @@ public class FriendsManager
     //   617: astore 13
     //   619: aload_0
     //   620: iload 7
-    //   622: invokestatic 624	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   625: invokevirtual 1211	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
+    //   622: invokestatic 1086	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   625: invokevirtual 1089	com/tencent/mobileqq/app/FriendsManager:u	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Groups;
     //   628: astore 14
     //   630: aload 14
     //   632: ifnull +38 -> 670
@@ -1981,24 +1672,24 @@ public class FriendsManager
     //   641: astore 13
     //   643: aload 14
     //   645: aload 14
-    //   647: getfield 266	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   647: getfield 474	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   650: iconst_1
     //   651: isub
-    //   652: putfield 266	com/tencent/mobileqq/data/Groups:group_friend_count	I
+    //   652: putfield 474	com/tencent/mobileqq/data/Groups:group_friend_count	I
     //   655: iload 5
     //   657: istore 6
     //   659: aload 12
     //   661: astore 13
     //   663: aload_0
     //   664: aload 14
-    //   666: invokevirtual 743	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   666: invokevirtual 625	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   669: pop
     //   670: iload 5
     //   672: istore 6
     //   674: aload 12
     //   676: astore 13
     //   678: aload 12
-    //   680: invokevirtual 1041	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   680: invokevirtual 944	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   683: iload 5
     //   685: istore 6
     //   687: iload 10
@@ -2008,7 +1699,7 @@ public class FriendsManager
     //   696: iload 5
     //   698: istore_2
     //   699: aload 12
-    //   701: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   701: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   704: iload_2
     //   705: istore 6
     //   707: iload 10
@@ -2029,15 +1720,15 @@ public class FriendsManager
     //   736: astore 12
     //   738: aload 12
     //   740: astore 13
-    //   742: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   742: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   745: ifeq +19 -> 764
     //   748: aload 12
     //   750: astore 13
-    //   752: ldc_w 1184
+    //   752: ldc_w 1057
     //   755: iconst_2
-    //   756: ldc_w 1213
+    //   756: ldc_w 1091
     //   759: aload 15
-    //   761: invokestatic 780	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   761: invokestatic 664	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   764: iload_2
     //   765: istore 6
     //   767: iload 10
@@ -2050,15 +1741,15 @@ public class FriendsManager
     //   783: iload 6
     //   785: ifeq +11 -> 796
     //   788: aload_0
-    //   789: getfield 144	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   789: getfield 164	com/tencent/mobileqq/app/FriendsManager:v	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   792: aload_1
-    //   793: invokestatic 1218	com/tencent/mobileqq/activity/aio/tips/GatherContactsTipsHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)V
+    //   793: invokestatic 1096	com/tencent/mobileqq/activity/aio/tips/GatherContactsTipsHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)V
     //   796: iload 11
     //   798: ireturn
     //   799: aload 13
     //   801: ifnull +8 -> 809
     //   804: aload 13
-    //   806: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   806: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   809: goto +5 -> 814
     //   812: aload_1
     //   813: athrow
@@ -2157,17 +1848,241 @@ public class FriendsManager
     //   345	351	726	java/lang/Exception
   }
   
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    return ((IAddFriendServiceApi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAddFriendServiceApi.class)).hasSendAddFriendReq(paramString, paramBoolean, false);
-  }
-  
   public boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return ((IAddFriendServiceApi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAddFriendServiceApi.class)).hasSendAddFriendReq(paramString, paramBoolean1, paramBoolean2);
+    return ((IAddFriendServiceApi)this.v.getRuntimeService(IAddFriendServiceApi.class)).hasSendAddFriendReq(paramString, paramBoolean1, paramBoolean2);
   }
   
-  public boolean a(List<ExtensionInfo> paramList)
+  public boolean a(boolean paramBoolean)
+  {
+    boolean bool2 = this.s;
+    int i1 = this.r;
+    boolean bool1;
+    Object localObject;
+    if (i1 == -1)
+    {
+      bool1 = bool2;
+      if (paramBoolean)
+      {
+        localObject = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.v, TempGetProfileDetailProcessor.class);
+        bool1 = bool2;
+        if (localObject != null)
+        {
+          ((TempGetProfileDetailProcessor)localObject).getCalReactiveSwitch();
+          bool1 = bool2;
+        }
+      }
+    }
+    else if (i1 == 1)
+    {
+      bool1 = true;
+    }
+    else
+    {
+      bool1 = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getEnableReactive disableReactive");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append("IsDisableInteractive=");
+      ((StringBuilder)localObject).append(this.r);
+      QLog.d("FriendReactive", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool1;
+  }
+  
+  public boolean a(Friends[] paramArrayOfFriends, int paramInt)
+  {
+    if ((paramArrayOfFriends != null) && (paramArrayOfFriends.length != 0))
+    {
+      paramArrayOfFriends = new ArrayList(Arrays.asList(paramArrayOfFriends));
+      return this.F.saveFriendList(paramArrayOfFriends);
+    }
+    return true;
+  }
+  
+  public Friends b(String paramString)
+  {
+    return this.F.getFriend(paramString);
+  }
+  
+  public NoC2CExtensionInfo b(String paramString, int paramInt, boolean paramBoolean)
+  {
+    String str = NoC2CExtensionInfo.getNoC2Ckey(paramInt, paramString);
+    NoC2CExtensionInfo localNoC2CExtensionInfo = (NoC2CExtensionInfo)this.z.get(str);
+    ??? = localNoC2CExtensionInfo;
+    if (localNoC2CExtensionInfo == null)
+    {
+      ??? = localNoC2CExtensionInfo;
+      if (paramBoolean)
+      {
+        ??? = localNoC2CExtensionInfo;
+        if (!this.x)
+        {
+          paramString = (NoC2CExtensionInfo)this.w.find(NoC2CExtensionInfo.class, "type=? and uin=?", new String[] { String.valueOf(paramInt), paramString });
+          ??? = paramString;
+          if (paramString != null) {
+            synchronized (this.z)
+            {
+              this.z.put(str, paramString);
+              return paramString;
+            }
+          }
+        }
+      }
+    }
+    return ???;
+  }
+  
+  protected void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.", 2, "init begin");
+    }
+    d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.", 2, "init end");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.F.moveGroup(paramInt, 0);
+  }
+  
+  public void b(Friends paramFriends)
+  {
+    this.F.saveFriend(paramFriends);
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if (paramString2 != null)
+    {
+      if (paramString1 == null) {
+        return;
+      }
+      Friends localFriends = this.F.getFriend(paramString1, true, true, true);
+      localFriends.alias = paramString2;
+      localFriends.datetime = System.currentTimeMillis();
+      if (paramString1.equals(this.v.getAccount()))
+      {
+        MobileQQ localMobileQQ = this.v.getApplication();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(Constants.PropertiesKey.uinDisplayName.toString());
+        localStringBuilder.append(paramString1);
+        localMobileQQ.setProperty(localStringBuilder.toString(), paramString2);
+      }
+      this.F.saveFriend(localFriends);
+    }
+  }
+  
+  public void b(List<ExtensionInfo> paramList)
+  {
+    c(paramList);
+    this.G.saveExtensionInfoList(paramList);
+    E();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.v.getApp().getSharedPreferences(this.v.getAccount(), 0).edit().putBoolean("show_vip_red_name", paramBoolean).commit();
+    this.t = paramBoolean;
+  }
+  
+  public boolean b(ExtensionInfo paramExtensionInfo)
+  {
+    if (paramExtensionInfo == null) {
+      return false;
+    }
+    if (paramExtensionInfo.hiddenChatSwitch == 1)
+    {
+      ExtensionInfo localExtensionInfo = d(paramExtensionInfo.uin, false);
+      if ((localExtensionInfo == null) || (paramExtensionInfo.hiddenChatSwitch != localExtensionInfo.hiddenChatSwitch))
+      {
+        RuntimeException localRuntimeException = new RuntimeException("isMaybeSingleExtensionDataError");
+        localRuntimeException.fillInStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("uin:");
+        localStringBuilder.append(MobileQQ.getShortUinStr(paramExtensionInfo.uin));
+        localStringBuilder.append("extensionInfo new.hiddenChatSwitch: ");
+        localStringBuilder.append(paramExtensionInfo.hiddenChatSwitch);
+        localStringBuilder.append(", old.hiddenChatSwitch: ");
+        if (localExtensionInfo == null) {
+          paramExtensionInfo = "null";
+        } else {
+          paramExtensionInfo = Integer.valueOf(localExtensionInfo.hiddenChatSwitch);
+        }
+        localStringBuilder.append(paramExtensionInfo);
+        localStringBuilder.append(", isMaybeExtensionDataError():");
+        QLog.d("Q.contacttab.extension", 1, localStringBuilder.toString(), localRuntimeException);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean b(String paramString, boolean paramBoolean)
+  {
+    return ((IAddFriendServiceApi)this.v.getRuntimeService(IAddFriendServiceApi.class)).hasSendAddFriendReq(paramString, paramBoolean, false);
+  }
+  
+  public Friends c(String paramString)
+  {
+    return this.F.getFriend(paramString, true);
+  }
+  
+  public Friends c(String paramString1, String paramString2)
+  {
+    paramString1 = this.F.getFriend(paramString1, true, true, true);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1.name = paramString2;
+      paramString1.datetime = System.currentTimeMillis();
+      this.F.saveFriendCache(paramString1);
+    }
+    return paramString1;
+  }
+  
+  public String c(int paramInt)
+  {
+    return (String)this.u.get(String.valueOf(paramInt));
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.friend", 2, "initExtensionInfoCache begin");
+    }
+    if (!this.x)
+    {
+      if (this.x) {
+        return;
+      }
+      this.G.initCache();
+      D();
+    }
+    try
+    {
+      C();
+      label48:
+      this.x = true;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label48;
+    }
+  }
+  
+  public void c(String paramString, boolean paramBoolean)
+  {
+    ((IAddFriendServiceApi)this.v.getRuntimeService(IAddFriendServiceApi.class)).setAddFriendReqStatus(paramString, paramBoolean);
+  }
+  
+  public boolean c(List<ExtensionInfo> paramList)
   {
     if (paramList != null)
     {
@@ -2182,7 +2097,7 @@ public class FriendsManager
         paramList = (ExtensionInfo)((Iterator)localObject).next();
         if (paramList.hiddenChatSwitch == 1)
         {
-          ExtensionInfo localExtensionInfo = a(paramList.uin, false);
+          ExtensionInfo localExtensionInfo = d(paramList.uin, false);
           if ((localExtensionInfo == null) || (paramList.hiddenChatSwitch != localExtensionInfo.hiddenChatSwitch))
           {
             localObject = new StringBuilder();
@@ -2207,87 +2122,19 @@ public class FriendsManager
     return false;
   }
   
-  public boolean a(boolean paramBoolean)
+  public ExtensionInfo d(String paramString, boolean paramBoolean)
   {
-    boolean bool2 = this.jdField_b_of_type_Boolean;
-    int i1 = this.q;
-    boolean bool1;
-    Object localObject;
-    if (i1 == -1)
-    {
-      bool1 = bool2;
-      if (paramBoolean)
-      {
-        localObject = (TempGetProfileDetailProcessor)ProfileServiceUtils.getBusinessProcessor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, TempGetProfileDetailProcessor.class);
-        bool1 = bool2;
-        if (localObject != null)
-        {
-          ((TempGetProfileDetailProcessor)localObject).getCalReactiveSwitch();
-          bool1 = bool2;
-        }
-      }
-    }
-    else if (i1 == 1)
-    {
-      bool1 = true;
-    }
-    else
-    {
-      bool1 = false;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getEnableReactive disableReactive");
-      ((StringBuilder)localObject).append(bool1);
-      ((StringBuilder)localObject).append("IsDisableInteractive=");
-      ((StringBuilder)localObject).append(this.q);
-      QLog.d("FriendReactive", 2, ((StringBuilder)localObject).toString());
-    }
-    return bool1;
+    return this.G.getExtensionInfo(paramString, paramBoolean);
   }
   
-  public boolean a(Friends[] paramArrayOfFriends, int paramInt)
+  public Friends d(String paramString)
   {
-    if ((paramArrayOfFriends != null) && (paramArrayOfFriends.length != 0))
-    {
-      paramArrayOfFriends = new ArrayList(Arrays.asList(paramArrayOfFriends));
-      return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveFriendList(paramArrayOfFriends);
-    }
-    return true;
+    return b(paramString);
   }
   
-  public int b()
+  public Friends d(String paramString1, String paramString2)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends(true);
-    if (localList != null) {
-      return localList.size();
-    }
-    return 0;
-  }
-  
-  public int b(String paramString)
-  {
-    paramString = e(paramString);
-    if (paramString != null) {
-      return paramString.detalStatusFlag;
-    }
-    return 10;
-  }
-  
-  public Card b(String paramString)
-  {
-    return ((IProfileDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IProfileDataService.class, "all")).getProfileCard(paramString, true);
-  }
-  
-  public Friends b(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString, true);
-  }
-  
-  public Friends b(String paramString1, String paramString2)
-  {
-    Friends localFriends = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString1, true, true, true);
+    Friends localFriends = this.F.getFriend(paramString1, true, true, true);
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
@@ -2296,227 +2143,67 @@ public class FriendsManager
     {
       localFriends.remark = paramString1;
       localFriends.datetime = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveFriend(localFriends);
+      this.F.saveFriend(localFriends);
     }
     return localFriends;
   }
   
-  public ArrayList<Entity> b()
-  {
-    new ConcurrentHashMap(4);
-    ConcurrentHashMap localConcurrentHashMap = a(true);
-    ArrayList localArrayList = new ArrayList(16);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getGroupList();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        List localList = (List)localConcurrentHashMap.get(String.valueOf(((Groups)((Iterator)localObject).next()).group_id));
-        if (localList != null) {
-          localArrayList.addAll(localList);
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public List<Groups> b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getGroupList();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.friend", 2, "initExtensionInfoCache begin");
-    }
-    if (!this.jdField_d_of_type_Boolean)
-    {
-      if (this.jdField_d_of_type_Boolean) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendExtensionService.initCache();
-      i();
-    }
-    try
-    {
-      h();
-      label48:
-      this.jdField_d_of_type_Boolean = true;
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      break label48;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (paramString.length() > 3))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("add friend to black list ");
-      ((StringBuilder)localObject).append(paramString.substring(0, 2));
-      QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap;
-    if (localObject != null) {
-      ((ConcurrentHashMap)localObject).put(paramString, "");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.moveFriendToNewGroup(paramString, -1002);
-  }
-  
-  protected void b(String paramString1, String paramString2)
-  {
-    if (paramString2 != null)
-    {
-      if (paramString1 == null) {
-        return;
-      }
-      Friends localFriends = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString1, true, true, true);
-      localFriends.alias = paramString2;
-      localFriends.datetime = System.currentTimeMillis();
-      if (paramString1.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()))
-      {
-        MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(Constants.PropertiesKey.uinDisplayName.toString());
-        localStringBuilder.append(paramString1);
-        localMobileQQ.setProperty(localStringBuilder.toString(), paramString2);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.saveFriend(localFriends);
-    }
-  }
-  
-  public void b(List<ExtensionInfo> paramList)
-  {
-    a(paramList);
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendExtensionService.saveExtensionInfoList(paramList);
-    j();
-  }
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.initFriendCache();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Friends localFriends = (Friends)((Iterator)localObject).next();
-        QidianManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFriends);
-      }
-    }
-    return true;
-  }
-  
-  public boolean b(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.isFriend(paramString);
-  }
-  
-  public int c()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends().iterator();
-    int i1 = 0;
-    while (((Iterator)localObject).hasNext()) {
-      if (((Friends)((Iterator)localObject).next()).gathtertype == 1) {
-        i1 += 1;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getGatheredFriendsCount| gatherFriendCount: ");
-      ((StringBuilder)localObject).append(i1);
-      QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject).toString());
-    }
-    return i1;
-  }
-  
-  public Card c(String paramString)
-  {
-    return ((IProfileDataService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IProfileDataService.class, "all")).getProfileCardFromCache(paramString);
-  }
-  
-  public Friends c(String paramString)
-  {
-    return a(paramString);
-  }
-  
-  public List<Friends> c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends();
-  }
-  
-  protected void c()
+  protected void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.contacttab.friend", 2, "initGroupList begin");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.initGroupCache();
-  }
-  
-  public void c(String paramString)
-  {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap;
-    if (localConcurrentHashMap != null) {
-      localConcurrentHashMap.remove(paramString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.moveFriendToNewGroup(paramString, -1);
+    this.F.initGroupCache();
   }
   
   /* Error */
-  public void c(List<SpecialCareInfo> paramList)
+  public void d(List<SpecialCareInfo> paramList)
   {
     // Byte code:
     //   0: aload_1
     //   1: ifnull +285 -> 286
     //   4: aload_1
-    //   5: invokeinterface 194 1 0
+    //   5: invokeinterface 313 1 0
     //   10: ifne +6 -> 16
     //   13: goto +273 -> 286
     //   16: aload_1
-    //   17: invokeinterface 194 1 0
+    //   17: invokeinterface 313 1 0
     //   22: iconst_1
     //   23: if_icmpne +18 -> 41
     //   26: aload_0
     //   27: aload_1
     //   28: iconst_0
-    //   29: invokeinterface 1075 2 0
-    //   34: checkcast 632	com/tencent/mobileqq/data/SpecialCareInfo
-    //   37: invokevirtual 1336	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/SpecialCareInfo;)V
+    //   29: invokeinterface 978 2 0
+    //   34: checkcast 628	com/tencent/mobileqq/data/SpecialCareInfo
+    //   37: invokevirtual 1240	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/SpecialCareInfo;)V
     //   40: return
     //   41: aload_0
-    //   42: getfield 76	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   42: getfield 96	com/tencent/mobileqq/app/FriendsManager:B	Ljava/util/concurrent/ConcurrentHashMap;
     //   45: astore_2
     //   46: aload_2
     //   47: ifnull +71 -> 118
     //   50: aload_2
     //   51: monitorenter
     //   52: aload_1
-    //   53: invokeinterface 198 1 0
+    //   53: invokeinterface 314 1 0
     //   58: astore_3
     //   59: aload_3
-    //   60: invokeinterface 203 1 0
+    //   60: invokeinterface 284 1 0
     //   65: ifeq +43 -> 108
     //   68: aload_3
-    //   69: invokeinterface 207 1 0
-    //   74: checkcast 632	com/tencent/mobileqq/data/SpecialCareInfo
+    //   69: invokeinterface 288 1 0
+    //   74: checkcast 628	com/tencent/mobileqq/data/SpecialCareInfo
     //   77: astore 4
     //   79: aload 4
-    //   81: getfield 745	com/tencent/mobileqq/data/SpecialCareInfo:uin	Ljava/lang/String;
-    //   84: invokestatic 383	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   81: getfield 629	com/tencent/mobileqq/data/SpecialCareInfo:uin	Ljava/lang/String;
+    //   84: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   87: ifne -28 -> 59
     //   90: aload_0
-    //   91: getfield 76	com/tencent/mobileqq/app/FriendsManager:jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   91: getfield 96	com/tencent/mobileqq/app/FriendsManager:B	Ljava/util/concurrent/ConcurrentHashMap;
     //   94: aload 4
-    //   96: getfield 745	com/tencent/mobileqq/data/SpecialCareInfo:uin	Ljava/lang/String;
+    //   96: getfield 629	com/tencent/mobileqq/data/SpecialCareInfo:uin	Ljava/lang/String;
     //   99: aload 4
-    //   101: invokevirtual 255	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   101: invokevirtual 305	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   104: pop
     //   105: goto -46 -> 59
     //   108: aload_2
@@ -2528,89 +2215,89 @@ public class FriendsManager
     //   116: aload_1
     //   117: athrow
     //   118: aload_0
-    //   119: getfield 152	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   122: invokevirtual 639	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   119: getfield 172	com/tencent/mobileqq/app/FriendsManager:w	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   122: invokevirtual 925	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   125: astore_2
     //   126: aload_2
-    //   127: invokevirtual 1027	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   127: invokevirtual 930	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   130: aload_1
-    //   131: invokeinterface 198 1 0
+    //   131: invokeinterface 314 1 0
     //   136: astore_1
     //   137: aload_1
-    //   138: invokeinterface 203 1 0
+    //   138: invokeinterface 284 1 0
     //   143: ifeq +78 -> 221
     //   146: aload_1
-    //   147: invokeinterface 207 1 0
-    //   152: checkcast 632	com/tencent/mobileqq/data/SpecialCareInfo
+    //   147: invokeinterface 288 1 0
+    //   152: checkcast 628	com/tencent/mobileqq/data/SpecialCareInfo
     //   155: astore_3
     //   156: aload_3
-    //   157: getfield 745	com/tencent/mobileqq/data/SpecialCareInfo:uin	Ljava/lang/String;
-    //   160: invokestatic 383	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   157: getfield 629	com/tencent/mobileqq/data/SpecialCareInfo:uin	Ljava/lang/String;
+    //   160: invokestatic 204	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   163: ifne -26 -> 137
     //   166: aload_0
     //   167: aload_3
-    //   168: invokevirtual 743	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   168: invokevirtual 625	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   171: pop
-    //   172: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   172: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   175: ifeq -38 -> 137
-    //   178: new 229	java/lang/StringBuilder
+    //   178: new 225	java/lang/StringBuilder
     //   181: dup
-    //   182: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   182: invokespecial 226	java/lang/StringBuilder:<init>	()V
     //   185: astore 4
     //   187: aload 4
-    //   189: ldc_w 1338
-    //   192: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: ldc_w 1242
+    //   192: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   195: pop
     //   196: aload 4
     //   198: aload_3
-    //   199: invokevirtual 748	com/tencent/mobileqq/data/SpecialCareInfo:toString	()Ljava/lang/String;
-    //   202: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: invokevirtual 632	com/tencent/mobileqq/data/SpecialCareInfo:toString	()Ljava/lang/String;
+    //   202: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   205: pop
-    //   206: ldc_w 315
+    //   206: ldc_w 522
     //   209: iconst_2
     //   210: aload 4
-    //   212: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   215: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   212: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   215: invokestatic 441	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   218: goto -81 -> 137
     //   221: aload_2
-    //   222: invokevirtual 1041	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   222: invokevirtual 944	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   225: goto +50 -> 275
     //   228: astore_1
     //   229: goto +51 -> 280
     //   232: astore_1
-    //   233: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   233: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   236: ifeq +39 -> 275
-    //   239: new 229	java/lang/StringBuilder
+    //   239: new 225	java/lang/StringBuilder
     //   242: dup
-    //   243: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   243: invokespecial 226	java/lang/StringBuilder:<init>	()V
     //   246: astore_3
     //   247: aload_3
-    //   248: ldc_w 1340
-    //   251: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: ldc_w 1244
+    //   251: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   254: pop
     //   255: aload_3
     //   256: aload_1
-    //   257: invokevirtual 1343	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   260: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: invokevirtual 1247	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   260: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   263: pop
-    //   264: ldc_w 479
+    //   264: ldc_w 350
     //   267: iconst_2
     //   268: aload_3
-    //   269: invokevirtual 244	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   272: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   269: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   272: invokestatic 441	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   275: aload_2
-    //   276: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   276: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   279: return
     //   280: aload_2
-    //   281: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   281: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   284: aload_1
     //   285: athrow
-    //   286: invokestatic 177	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   286: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   289: ifeq +13 -> 302
-    //   292: ldc_w 315
+    //   292: ldc_w 522
     //   295: iconst_2
-    //   296: ldc_w 1345
-    //   299: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   296: ldc_w 1249
+    //   299: invokestatic 441	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   302: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -2634,195 +2321,80 @@ public class FriendsManager
     //   221	225	232	java/lang/Exception
   }
   
-  public boolean c()
+  public Friends e(String paramString)
   {
-    List localList1 = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends();
-    List localList2 = this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getGroupList();
-    int i1;
-    if (localList1 != null) {
-      i1 = localList1.size();
-    } else {
-      i1 = 0;
-    }
-    return (localList2 != null) && ((i1 > 0) || (localList2.size() > 0));
-  }
-  
-  public boolean c(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.isFriend(paramString, false);
-  }
-  
-  public int d()
-  {
-    Object localObject1 = new ArrayList();
-    ((ArrayList)localObject1).addAll(this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getAllFriends());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localObject1 = ((ArrayList)localObject1).iterator();
-    int i1 = 0;
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (Friends)((Iterator)localObject1).next();
-      if (((Friends)localObject2).isFriend())
-      {
-        localObject2 = a(((Friends)localObject2).uin);
-        if ((localObject2 != null) && (IntimateUtil.a(((ExtensionInfo)localObject2).intimate_type)))
-        {
-          int i2 = i1 + 1;
-          i1 = i2;
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder.append("\nuin:");
-            localStringBuilder.append(((ExtensionInfo)localObject2).uin);
-            localStringBuilder.append(" type:");
-            localStringBuilder.append(((ExtensionInfo)localObject2).intimate_type);
-            localStringBuilder.append(" level:");
-            localStringBuilder.append(((ExtensionInfo)localObject2).intimate_level);
-            i1 = i2;
-          }
-        }
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder.append("\ncount:");
-      localStringBuilder.append(i1);
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getBindIntimateRelationshipFriendCount ");
-      ((StringBuilder)localObject1).append(localStringBuilder.toString());
-      QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject1).toString());
-    }
-    return i1;
-  }
-  
-  public Friends d(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString, true, true, true);
-  }
-  
-  public List<Groups> d()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getGroupList();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.friend", 2, "initSpecialCareInfoCache begin");
-    }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      Object localObject2 = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(SpecialCareInfo.class, false, "globalSwitch!=?", new String[] { "0" }, null, null, null, null);
-      if (localObject2 != null) {
-        synchronized (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap)
-        {
-          localObject2 = ((ArrayList)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            SpecialCareInfo localSpecialCareInfo = (SpecialCareInfo)((Iterator)localObject2).next();
-            if ((localSpecialCareInfo != null) && (localSpecialCareInfo.uin != null)) {
-              this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(localSpecialCareInfo.uin, localSpecialCareInfo);
-            }
-          }
-        }
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
-    if (QLog.isColorLevel())
-    {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("initSpecialCareInfoCache end: ");
-      ((StringBuilder)???).append(this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-      QLog.d("Q.contacttab.friend", 2, ((StringBuilder)???).toString());
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.deleteFriend(paramString);
-    if (QvipSpecialCareUtil.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      QvipSpecialCareUtil.b(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    if (QvipSpecialCareUtil.b(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      QvipSpecialCareUtil.c(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    e(paramString);
-    paramString = a(paramString);
-    if (paramString != null)
-    {
-      ExtensionMutualMarkData.c(paramString);
-      a(paramString);
-    }
+    return this.F.getFriend(paramString, true, true, true);
   }
   
   /* Error */
-  public void d(List<String> paramList)
+  public void e(List<String> paramList)
   {
     // Byte code:
     //   0: aload_1
     //   1: ifnull +144 -> 145
     //   4: aload_1
-    //   5: invokeinterface 194 1 0
+    //   5: invokeinterface 313 1 0
     //   10: ifgt +4 -> 14
     //   13: return
-    //   14: new 250	java/util/ArrayList
+    //   14: new 275	java/util/ArrayList
     //   17: dup
-    //   18: invokespecial 251	java/util/ArrayList:<init>	()V
+    //   18: invokespecial 463	java/util/ArrayList:<init>	()V
     //   21: astore_3
     //   22: aload_0
-    //   23: getfield 152	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   26: invokevirtual 639	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   23: getfield 172	com/tencent/mobileqq/app/FriendsManager:w	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   26: invokevirtual 925	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   29: astore_2
     //   30: aload_2
-    //   31: invokevirtual 1027	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   31: invokevirtual 930	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   34: aload_1
-    //   35: invokeinterface 198 1 0
+    //   35: invokeinterface 314 1 0
     //   40: astore_1
     //   41: aload_1
-    //   42: invokeinterface 203 1 0
+    //   42: invokeinterface 284 1 0
     //   47: ifeq +63 -> 110
     //   50: aload_1
-    //   51: invokeinterface 207 1 0
+    //   51: invokeinterface 288 1 0
     //   56: checkcast 219	java/lang/String
     //   59: astore 4
     //   61: aload_0
-    //   62: getfield 164	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService	Lcom/tencent/mobileqq/friend/api/IFriendDataService;
+    //   62: getfield 184	com/tencent/mobileqq/app/FriendsManager:F	Lcom/tencent/mobileqq/friend/api/IFriendDataService;
     //   65: aload 4
-    //   67: invokeinterface 545 2 0
+    //   67: invokeinterface 582 2 0
     //   72: astore 5
     //   74: aload 5
     //   76: ifnull -35 -> 41
     //   79: aload 5
-    //   81: getfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   81: getfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   84: ifeq +10 -> 94
     //   87: aload_3
     //   88: aload 4
-    //   90: invokevirtual 279	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   90: invokevirtual 487	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   93: pop
     //   94: aload 5
     //   96: iconst_0
-    //   97: putfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   97: putfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   100: aload_0
     //   101: aload 5
-    //   103: invokevirtual 1029	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   103: invokevirtual 932	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   106: pop
     //   107: goto -66 -> 41
     //   110: aload_2
-    //   111: invokevirtual 1041	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   111: invokevirtual 944	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   114: goto +12 -> 126
     //   117: astore_1
     //   118: goto +21 -> 139
     //   121: astore_1
     //   122: aload_1
-    //   123: invokevirtual 1108	java/lang/Exception:printStackTrace	()V
+    //   123: invokevirtual 1013	java/lang/Exception:printStackTrace	()V
     //   126: aload_2
-    //   127: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   127: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   130: aload_0
-    //   131: getfield 144	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   131: getfield 164	com/tencent/mobileqq/app/FriendsManager:v	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   134: aload_3
-    //   135: invokestatic 1405	com/tencent/mobileqq/activity/aio/tips/GatherContactsTipsHelper:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
+    //   135: invokestatic 1253	com/tencent/mobileqq/activity/aio/tips/GatherContactsTipsHelper:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
     //   138: return
     //   139: aload_2
-    //   140: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   140: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   143: aload_1
     //   144: athrow
     //   145: return
@@ -2849,206 +2421,99 @@ public class FriendsManager
     //   110	114	121	java/lang/Exception
   }
   
-  public boolean d()
+  public boolean e()
   {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public boolean d(String paramString)
-  {
-    return ((IAddFriendServiceApi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IAddFriendServiceApi.class)).hasSendAddFriendReq(paramString, false);
-  }
-  
-  public Friends e(String paramString)
-  {
-    if (!f(paramString)) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService.getFriend(paramString, true, true);
-  }
-  
-  public List<SpecialCareInfo> e()
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap != null))
+    this.F.initFriendCache();
+    Object localObject = this.F.getAllFriends();
+    if (localObject != null)
     {
-      ArrayList localArrayList = new ArrayList();
-      synchronized (this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap)
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Iterator localIterator = this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-        while (localIterator.hasNext())
+        Friends localFriends = (Friends)((Iterator)localObject).next();
+        QidianManager.a(this.v, localFriends);
+      }
+    }
+    return true;
+  }
+  
+  public Card f(String paramString)
+  {
+    return ((IProfileDataService)this.v.getRuntimeService(IProfileDataService.class, "all")).getProfileCard(paramString, false);
+  }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.friend", 2, "initSpecialCareInfoCache begin");
+    }
+    if (!this.y.get())
+    {
+      Object localObject2 = (ArrayList)this.w.query(SpecialCareInfo.class, false, "globalSwitch!=?", new String[] { "0" }, null, null, null, null);
+      if (localObject2 != null) {
+        synchronized (this.B)
         {
-          SpecialCareInfo localSpecialCareInfo = (SpecialCareInfo)localIterator.next();
-          if (localSpecialCareInfo.globalSwitch != 0) {
-            localArrayList.add((SpecialCareInfo)localSpecialCareInfo.clone());
+          localObject2 = ((ArrayList)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            SpecialCareInfo localSpecialCareInfo = (SpecialCareInfo)((Iterator)localObject2).next();
+            if ((localSpecialCareInfo != null) && (localSpecialCareInfo.uin != null)) {
+              this.B.put(localSpecialCareInfo.uin, localSpecialCareInfo);
+            }
           }
         }
-        if (QLog.isColorLevel())
-        {
-          ??? = new StringBuilder();
-          ((StringBuilder)???).append("getSpecailCareInfos: size=");
-          ((StringBuilder)???).append(localArrayList.size());
-          QLog.d("Q.contacttab.friend", 2, ((StringBuilder)???).toString());
-        }
-        return localArrayList;
       }
+      this.y.set(true);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.", 2, "getSpecailCareInfos isSpecialCareInfoCacheInited is false or specailCareInfoCache is null");
-    }
-    return null;
-  }
-  
-  public void e()
-  {
-    try
-    {
-      boolean bool = this.jdField_g_of_type_Boolean;
-      if (bool) {
-        return;
-      }
-      l1 = System.currentTimeMillis();
-      localObject1 = null;
-      i2 = 0;
-    }
-    finally
-    {
-      long l1;
-      Object localObject1;
-      int i2;
-      Object localObject3;
-      label152:
-      for (;;)
-      {
-        label70:
-        throw localObject2;
-      }
-    }
-    try
-    {
-      localObject3 = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(NearbyPeopleCard.class, false, "lastUpdateNickTime>?", new String[] { "0" }, null, null, "_id desc", String.valueOf(100));
-      localObject1 = localObject3;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      break label70;
-      i1 += 1;
-      break label152;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.drop(NearbyPeopleCard.class.getSimpleName());
     if (QLog.isColorLevel())
     {
-      if (localObject1 == null) {
-        i1 = 0;
-      } else {
-        i1 = ((ArrayList)localObject1).size();
-      }
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("nearby people card count = ");
-      ((StringBuilder)localObject3).append(i1);
-      QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject3).toString());
-    }
-    i1 = i2;
-    if (localObject1 == null) {
-      return;
-    }
-    if (i1 < ((ArrayList)localObject1).size())
-    {
-      localObject3 = (NearbyPeopleCard)((ArrayList)localObject1).get(i1);
-      if (localObject3 != null) {
-        a((NearbyPeopleCard)localObject3);
-      }
-    }
-    else
-    {
-      this.jdField_g_of_type_Boolean = true;
-      if (QLog.isDevelopLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("initDateNickNameCache cost time:");
-        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
-        QLog.d("Q.contacttab.", 4, ((StringBuilder)localObject1).toString());
-      }
-      return;
-    }
-  }
-  
-  public void e(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("deleteSpecialCareInfo: uin=");
-      ((StringBuilder)localObject1).append(paramString);
-      QLog.d("Q.contacttab.friend", 2, ((StringBuilder)localObject1).toString());
-    }
-    Object localObject1 = null;
-    Object localObject2 = this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
-    if (localObject2 != null) {
-      try
-      {
-        localObject1 = (SpecialCareInfo)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      }
-      finally {}
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = (SpecialCareInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(SpecialCareInfo.class, paramString);
-    }
-    if (localObject2 != null)
-    {
-      long l1;
-      if (StatisticCollector.getSqliteSwitchBySample(10)) {
-        l1 = SystemClock.uptimeMillis();
-      } else {
-        l1 = 0L;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject2);
-      if (l1 != 0L) {
-        a(SystemClock.uptimeMillis() - l1, false, "delete", "SpecialCare");
-      }
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("initSpecialCareInfoCache end: ");
+      ((StringBuilder)???).append(this.B.size());
+      QLog.d("Q.contacttab.friend", 2, ((StringBuilder)???).toString());
     }
   }
   
   /* Error */
-  public void e(List<String> paramList)
+  public void f(List<String> paramList)
   {
     // Byte code:
     //   0: aload_1
     //   1: ifnull +253 -> 254
     //   4: aload_1
-    //   5: invokeinterface 194 1 0
+    //   5: invokeinterface 313 1 0
     //   10: ifgt +4 -> 14
     //   13: return
-    //   14: new 250	java/util/ArrayList
+    //   14: new 275	java/util/ArrayList
     //   17: dup
-    //   18: invokespecial 251	java/util/ArrayList:<init>	()V
+    //   18: invokespecial 463	java/util/ArrayList:<init>	()V
     //   21: astore 5
     //   23: aload_0
-    //   24: getfield 152	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   27: invokevirtual 639	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   24: getfield 172	com/tencent/mobileqq/app/FriendsManager:w	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   27: invokevirtual 925	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   30: astore 4
     //   32: aload 4
-    //   34: invokevirtual 1027	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   34: invokevirtual 930	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
     //   37: aload_1
-    //   38: invokeinterface 198 1 0
+    //   38: invokeinterface 314 1 0
     //   43: astore_1
     //   44: aload_1
-    //   45: invokeinterface 203 1 0
+    //   45: invokeinterface 284 1 0
     //   50: ifeq +165 -> 215
     //   53: aload_1
-    //   54: invokeinterface 207 1 0
+    //   54: invokeinterface 288 1 0
     //   59: checkcast 219	java/lang/String
     //   62: astore 7
     //   64: aload_0
-    //   65: getfield 164	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService	Lcom/tencent/mobileqq/friend/api/IFriendDataService;
+    //   65: getfield 184	com/tencent/mobileqq/app/FriendsManager:F	Lcom/tencent/mobileqq/friend/api/IFriendDataService;
     //   68: aload 7
-    //   70: invokeinterface 545 2 0
+    //   70: invokeinterface 582 2 0
     //   75: astore 6
     //   77: aload 6
     //   79: ifnonnull +6 -> 85
     //   82: goto -38 -> 44
     //   85: aload 6
-    //   87: getfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   87: getfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   90: istore_3
     //   91: iconst_2
     //   92: istore_2
@@ -3056,73 +2521,73 @@ public class FriendsManager
     //   94: iconst_2
     //   95: if_icmpeq +11 -> 106
     //   98: aload 6
-    //   100: getfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   100: getfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   103: ifne -59 -> 44
     //   106: aload 6
-    //   108: getfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   108: getfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   111: ifne +14 -> 125
     //   114: aload 6
-    //   116: ldc_w 1453
-    //   119: invokestatic 1199	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   122: putfield 1037	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
+    //   116: ldc_w 1271
+    //   119: invokestatic 1073	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   122: putfield 940	com/tencent/mobileqq/data/Friends:recommReason	Ljava/lang/String;
     //   125: aload 6
-    //   127: getfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   127: getfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   130: iconst_1
     //   131: if_icmpeq +11 -> 142
     //   134: aload 5
     //   136: aload 7
-    //   138: invokevirtual 279	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   138: invokevirtual 487	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   141: pop
     //   142: aload 6
     //   144: iconst_1
-    //   145: putfield 213	com/tencent/mobileqq/data/Friends:gathtertype	B
+    //   145: putfield 444	com/tencent/mobileqq/data/Friends:gathtertype	B
     //   148: aload_0
     //   149: aload 6
-    //   151: getfield 450	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
-    //   154: invokevirtual 1201	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   151: getfield 320	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   154: invokevirtual 1076	com/tencent/mobileqq/app/FriendsManager:f	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   157: astore 7
     //   159: aload 7
     //   161: ifnull +44 -> 205
     //   164: aload 7
-    //   166: getfield 1207	com/tencent/mobileqq/data/Card:shGender	S
+    //   166: getfield 1082	com/tencent/mobileqq/data/Card:shGender	S
     //   169: ifne +8 -> 177
     //   172: iconst_1
     //   173: istore_2
     //   174: goto +15 -> 189
     //   177: aload 7
-    //   179: getfield 1207	com/tencent/mobileqq/data/Card:shGender	S
+    //   179: getfield 1082	com/tencent/mobileqq/data/Card:shGender	S
     //   182: iconst_1
     //   183: if_icmpne +72 -> 255
     //   186: goto +3 -> 189
     //   189: aload 6
     //   191: iload_2
-    //   192: putfield 947	com/tencent/mobileqq/data/Friends:gender	B
+    //   192: putfield 855	com/tencent/mobileqq/data/Friends:gender	B
     //   195: aload 6
     //   197: aload 7
-    //   199: getfield 1209	com/tencent/mobileqq/data/Card:age	B
-    //   202: putfield 950	com/tencent/mobileqq/data/Friends:age	I
+    //   199: getfield 1084	com/tencent/mobileqq/data/Card:age	B
+    //   202: putfield 858	com/tencent/mobileqq/data/Friends:age	I
     //   205: aload_0
     //   206: aload 6
-    //   208: invokevirtual 1029	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
+    //   208: invokevirtual 932	com/tencent/mobileqq/app/FriendsManager:a	(Lcom/tencent/mobileqq/data/Friends;)Z
     //   211: pop
     //   212: goto -168 -> 44
     //   215: aload 4
-    //   217: invokevirtual 1041	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   217: invokevirtual 944	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
     //   220: goto +12 -> 232
     //   223: astore_1
     //   224: goto +23 -> 247
     //   227: astore_1
     //   228: aload_1
-    //   229: invokevirtual 1108	java/lang/Exception:printStackTrace	()V
+    //   229: invokevirtual 1013	java/lang/Exception:printStackTrace	()V
     //   232: aload 4
-    //   234: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   234: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   237: aload_0
-    //   238: getfield 144	com/tencent/mobileqq/app/FriendsManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   238: getfield 164	com/tencent/mobileqq/app/FriendsManager:v	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   241: aload 5
-    //   243: invokestatic 1455	com/tencent/mobileqq/activity/aio/tips/GatherContactsTipsHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
+    //   243: invokestatic 1273	com/tencent/mobileqq/activity/aio/tips/GatherContactsTipsHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/List;)V
     //   246: return
     //   247: aload 4
-    //   249: invokevirtual 1046	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   249: invokevirtual 949	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   252: aload_1
     //   253: athrow
     //   254: return
@@ -3168,62 +2633,31 @@ public class FriendsManager
     //   215	220	227	java/lang/Exception
   }
   
-  public boolean e()
+  public Card g(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return ((IProfileDataService)this.v.getRuntimeService(IProfileDataService.class, "all")).getProfileCard(paramString, true);
   }
   
-  public boolean e(String paramString)
+  public ArrayList<Friends> g()
   {
-    paramString = e(paramString);
-    if (paramString != null) {
-      return paramString.isShield();
-    }
-    return false;
-  }
-  
-  public List<SpecialCareInfo> f()
-  {
-    List localList = e();
-    if (localList != null) {
-      Collections.sort(localList, new FriendsManager.4(this));
-    }
-    return localList;
-  }
-  
-  public void f()
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilArrayList;
-    String str;
-    if (localObject != null)
+    Object localObject = this.F.getAllFriends();
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      localObject = ((ArrayList)localObject).iterator();
+      ArrayList localArrayList = new ArrayList(10);
+      localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        str = (String)((Iterator)localObject).next();
-        ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-        if ((localArrayList != null) && (localArrayList.contains(str))) {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(str);
-        } else {
-          GatherContactsTipsHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+        Friends localFriends = (Friends)((Iterator)localObject).next();
+        if (localFriends.isShield()) {
+          localArrayList.add(localFriends);
         }
       }
+      return localArrayList;
     }
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        str = (String)((Iterator)localObject).next();
-        GatherContactsTipsHelper.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_JavaUtilArrayList = null;
+    return null;
   }
   
-  public void f(List<cmd0x7c4.RecommendReason> paramList)
+  public void g(List<cmd0x7c4.RecommendReason> paramList)
   {
     if (paramList != null)
     {
@@ -3236,7 +2670,7 @@ public class FriendsManager
         Object localObject = (cmd0x7c4.RecommendReason)paramList.next();
         String str = String.valueOf(((cmd0x7c4.RecommendReason)localObject).uint32_reason_id.get());
         localObject = ((cmd0x7c4.RecommendReason)localObject).bytes_recommend_reason.get().toStringUtf8();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
+        this.u.put(str, localObject);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -3250,9 +2684,189 @@ public class FriendsManager
     }
   }
   
-  public boolean f()
+  public Card h(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).getBoolean("show_vip_red_name", true);
+    return ((IProfileDataService)this.v.getRuntimeService(IProfileDataService.class, "all")).getProfileCardFromCache(paramString);
+  }
+  
+  @UiThread
+  public List<Groups> h()
+  {
+    return this.F.asyncGetGroupList(new FriendsManager.3(this));
+  }
+  
+  public KplCard i(String paramString)
+  {
+    long l1;
+    if (StatisticCollector.getSqliteSwitchBySample(7)) {
+      l1 = SystemClock.uptimeMillis();
+    } else {
+      l1 = 0L;
+    }
+    paramString = (KplCard)this.w.find(KplCard.class, paramString);
+    if (l1 != 0L) {
+      a(SystemClock.uptimeMillis() - l1, false, "query", "Card");
+    }
+    if (paramString != null) {
+      paramString.transStringToList();
+    }
+    if ((QLog.isColorLevel()) && (paramString != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("findFriendCardByUin qqNick=");
+      localStringBuilder.append(paramString.qqNick);
+      localStringBuilder.append(",gameNick=");
+      localStringBuilder.append(paramString.gameNick);
+      localStringBuilder.append(",uin = ");
+      localStringBuilder.append(paramString.uin);
+      QLog.d("Q.contacttab.", 2, localStringBuilder.toString());
+    }
+    return paramString;
+  }
+  
+  public List<Groups> i()
+  {
+    return this.F.getGroupList();
+  }
+  
+  public List<Friends> j()
+  {
+    return this.F.getAllFriends();
+  }
+  
+  public void j(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (paramString.length() > 3))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("add friend to black list ");
+      ((StringBuilder)localObject).append(paramString.substring(0, 2));
+      QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.I;
+    if (localObject != null) {
+      ((ConcurrentHashMap)localObject).put(paramString, "");
+    }
+    this.F.moveFriendToNewGroup(paramString, -1002);
+  }
+  
+  public List<Groups> k()
+  {
+    return this.F.getGroupList();
+  }
+  
+  public boolean k(String paramString)
+  {
+    if (this.I == null)
+    {
+      this.I = new ConcurrentHashMap();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.contacttab.friend", 2, "initBlackList begin");
+      }
+      Object localObject = this.w.query(Groups.class, false, "group_id=?", new String[] { "-1002" }, null, null, null, null);
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          Friends localFriends = (Friends)((Iterator)localObject).next();
+          this.I.put(localFriends.uin, "");
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initBlackList end, size=");
+        ((StringBuilder)localObject).append(this.I.size());
+        QLog.d("Q.contacttab.friend", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    return this.I.containsKey(paramString);
+  }
+  
+  public void l(String paramString)
+  {
+    ConcurrentHashMap localConcurrentHashMap = this.I;
+    if (localConcurrentHashMap != null) {
+      localConcurrentHashMap.remove(paramString);
+    }
+    this.F.moveFriendToNewGroup(paramString, -1);
+  }
+  
+  public boolean l()
+  {
+    List localList1 = this.F.getAllFriends();
+    List localList2 = this.F.getGroupList();
+    int i1;
+    if (localList1 != null) {
+      i1 = localList1.size();
+    } else {
+      i1 = 0;
+    }
+    return (localList2 != null) && ((i1 > 0) || (localList2.size() > 0));
+  }
+  
+  public Friends m(String paramString)
+  {
+    if (!B(paramString)) {
+      return null;
+    }
+    return this.F.getFriend(paramString, true, true);
+  }
+  
+  public boolean m()
+  {
+    return this.x;
+  }
+  
+  public List<SpecialCareInfo> n()
+  {
+    if ((this.y.get()) && (this.B != null))
+    {
+      ArrayList localArrayList = new ArrayList();
+      synchronized (this.B)
+      {
+        Iterator localIterator = this.B.values().iterator();
+        while (localIterator.hasNext())
+        {
+          SpecialCareInfo localSpecialCareInfo = (SpecialCareInfo)localIterator.next();
+          if (localSpecialCareInfo.globalSwitch != 0) {
+            localArrayList.add((SpecialCareInfo)localSpecialCareInfo.clone());
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("getSpecailCareInfos: size=");
+          ((StringBuilder)???).append(localArrayList.size());
+          QLog.d("Q.contacttab.friend", 2, ((StringBuilder)???).toString());
+        }
+        return localArrayList;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.", 2, "getSpecailCareInfos isSpecialCareInfoCacheInited is false or specailCareInfoCache is null");
+    }
+    return null;
+  }
+  
+  public boolean n(String paramString)
+  {
+    return this.F.isFriend(paramString);
+  }
+  
+  public List<SpecialCareInfo> o()
+  {
+    List localList = n();
+    if (localList != null) {
+      Collections.sort(localList, new FriendsManager.4(this));
+    }
+    return localList;
+  }
+  
+  public boolean o(String paramString)
+  {
+    return this.F.isFriend(paramString, false);
   }
   
   public void onDestroy()
@@ -3260,12 +2874,363 @@ public class FriendsManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.contacttab.", 2, "FriendsManager onDestory");
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.w.close();
+  }
+  
+  public int p(String paramString)
+  {
+    paramString = c(paramString);
+    if ((paramString != null) && (paramString.isFriend())) {
+      return paramString.friendType;
+    }
+    return 0;
+  }
+  
+  public boolean p()
+  {
+    return this.y.get();
+  }
+  
+  public String q(String paramString)
+  {
+    Friends localFriends = m(paramString);
+    String str = paramString;
+    if (localFriends != null)
+    {
+      str = paramString;
+      if (localFriends.alias != null)
+      {
+        str = paramString;
+        if (localFriends.alias.length() > 0) {
+          str = localFriends.alias;
+        }
+      }
+    }
+    return str;
+  }
+  
+  public void q()
+  {
+    try
+    {
+      boolean bool = this.J;
+      if (bool) {
+        return;
+      }
+      l1 = System.currentTimeMillis();
+      localObject1 = null;
+      i2 = 0;
+    }
+    finally
+    {
+      long l1;
+      Object localObject1;
+      int i2;
+      Object localObject3;
+      label152:
+      for (;;)
+      {
+        label70:
+        throw localObject2;
+      }
+    }
+    try
+    {
+      localObject3 = (ArrayList)this.w.query(NearbyPeopleCard.class, false, "lastUpdateNickTime>?", new String[] { "0" }, null, null, "_id desc", String.valueOf(100));
+      localObject1 = localObject3;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      break label70;
+      i1 += 1;
+      break label152;
+    }
+    this.w.drop(NearbyPeopleCard.class.getSimpleName());
+    if (QLog.isColorLevel())
+    {
+      if (localObject1 == null) {
+        i1 = 0;
+      } else {
+        i1 = ((ArrayList)localObject1).size();
+      }
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("nearby people card count = ");
+      ((StringBuilder)localObject3).append(i1);
+      QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject3).toString());
+    }
+    i1 = i2;
+    if (localObject1 == null) {
+      return;
+    }
+    if (i1 < ((ArrayList)localObject1).size())
+    {
+      localObject3 = (NearbyPeopleCard)((ArrayList)localObject1).get(i1);
+      if (localObject3 != null) {
+        a((NearbyPeopleCard)localObject3);
+      }
+    }
+    else
+    {
+      this.J = true;
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("initDateNickNameCache cost time:");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
+        QLog.d("Q.contacttab.", 4, ((StringBuilder)localObject1).toString());
+      }
+      return;
+    }
+  }
+  
+  public int r(String paramString)
+  {
+    paramString = m(paramString);
+    if (paramString != null) {
+      return paramString.detalStatusFlag;
+    }
+    return 10;
+  }
+  
+  public EntityTransaction r()
+  {
+    return this.w.getTransaction();
+  }
+  
+  public void s()
+  {
+    Object localObject = this.M;
+    String str;
+    if (localObject != null)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        str = (String)((Iterator)localObject).next();
+        ArrayList localArrayList = this.L;
+        if ((localArrayList != null) && (localArrayList.contains(str))) {
+          this.L.remove(str);
+        } else {
+          GatherContactsTipsHelper.a(this.v, str);
+        }
+      }
+    }
+    localObject = this.L;
+    if (localObject != null)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        str = (String)((Iterator)localObject).next();
+        GatherContactsTipsHelper.c(this.v, str);
+      }
+    }
+    this.L = null;
+    this.M = null;
+  }
+  
+  public void s(String paramString)
+  {
+    this.F.deleteFriend(paramString);
+    if (QvipSpecialCareUtil.d(paramString, this.v)) {
+      QvipSpecialCareUtil.b(paramString, this.v);
+    }
+    if (QvipSpecialCareUtil.e(paramString, this.v)) {
+      QvipSpecialCareUtil.c(paramString, this.v);
+    }
+    z(paramString);
+    paramString = x(paramString);
+    if (paramString != null)
+    {
+      ExtensionMutualMarkData.c(paramString);
+      a(paramString);
+    }
+  }
+  
+  public ArrayList<Friends> t(String paramString)
+  {
+    try
+    {
+      paramString = (ArrayList)this.F.getFriendList(Integer.parseInt(paramString));
+      return paramString;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return new ArrayList();
+  }
+  
+  public ConcurrentHashMap<String, ArrayList<Entity>> t()
+  {
+    return c(false);
+  }
+  
+  public int u()
+  {
+    return this.F.getFriendCount();
+  }
+  
+  public Groups u(String paramString)
+  {
+    try
+    {
+      paramString = this.F.getGroup(Integer.parseInt(paramString), true);
+      return paramString;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public int v()
+  {
+    List localList = this.F.getAllFriends(true);
+    if (localList != null) {
+      return localList.size();
+    }
+    return 0;
+  }
+  
+  public boolean v(String paramString)
+  {
+    return ((IAddFriendServiceApi)this.v.getRuntimeService(IAddFriendServiceApi.class)).hasSendAddFriendReq(paramString, false);
+  }
+  
+  public int w()
+  {
+    Object localObject = this.F.getAllFriends().iterator();
+    int i1 = 0;
+    while (((Iterator)localObject).hasNext()) {
+      if (((Friends)((Iterator)localObject).next()).gathtertype == 1) {
+        i1 += 1;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getGatheredFriendsCount| gatherFriendCount: ");
+      ((StringBuilder)localObject).append(i1);
+      QLog.d("Q.contacttab.", 2, ((StringBuilder)localObject).toString());
+    }
+    return i1;
+  }
+  
+  public boolean w(String paramString)
+  {
+    paramString = m(paramString);
+    if (paramString != null) {
+      return paramString.isShield();
+    }
+    return false;
+  }
+  
+  public ExtensionInfo x(String paramString)
+  {
+    return d(paramString, true);
+  }
+  
+  public ArrayList<Entity> x()
+  {
+    new ConcurrentHashMap(4);
+    ConcurrentHashMap localConcurrentHashMap = c(true);
+    ArrayList localArrayList = new ArrayList(16);
+    Object localObject = this.F.getGroupList();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        List localList = (List)localConcurrentHashMap.get(String.valueOf(((Groups)((Iterator)localObject).next()).group_id));
+        if (localList != null) {
+          localArrayList.addAll(localList);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public SpecialCareInfo y(String paramString)
+  {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject = null;
+    SpecialCareInfo localSpecialCareInfo = null;
+    if (!bool)
+    {
+      if (!this.y.get()) {
+        return null;
+      }
+      localObject = this.B;
+      if (localObject != null) {
+        try
+        {
+          localSpecialCareInfo = (SpecialCareInfo)this.B.get(paramString);
+        }
+        finally {}
+      }
+      localObject = localSpecialCareInfo;
+      if (localSpecialCareInfo != null) {
+        return (SpecialCareInfo)localSpecialCareInfo.clone();
+      }
+    }
+    return localObject;
+  }
+  
+  public boolean y()
+  {
+    return this.v.getApp().getSharedPreferences(this.v.getAccount(), 0).getBoolean("show_vip_red_name", true);
+  }
+  
+  public AddFrdStateMng z()
+  {
+    if (!this.C.c) {
+      ThreadManager.excute(new FriendsManager.6(this), 16, null, true);
+    }
+    return this.C;
+  }
+  
+  public void z(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("deleteSpecialCareInfo: uin=");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("Q.contacttab.friend", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = null;
+    Object localObject2 = this.B;
+    if (localObject2 != null) {
+      try
+      {
+        localObject1 = (SpecialCareInfo)this.B.remove(paramString);
+      }
+      finally {}
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = (SpecialCareInfo)this.w.find(SpecialCareInfo.class, paramString);
+    }
+    if (localObject2 != null)
+    {
+      long l1;
+      if (StatisticCollector.getSqliteSwitchBySample(10)) {
+        l1 = SystemClock.uptimeMillis();
+      } else {
+        l1 = 0L;
+      }
+      this.w.remove((Entity)localObject2);
+      if (l1 != 0L) {
+        a(SystemClock.uptimeMillis() - l1, false, "delete", "SpecialCare");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager
  * JD-Core Version:    0.7.0.1
  */

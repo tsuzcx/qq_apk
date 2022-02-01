@@ -8,68 +8,78 @@ import com.tencent.qphone.base.util.QLog;
 
 class FunnyPicHelper$CalcPath
 {
-  private CustomEmotionData jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
-  private IVipComicMqqManagerService jdField_a_of_type_ComTencentMobileqqEmosmApiIVipComicMqqManagerService;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private IVipComicMqqManagerService a;
+  private CustomEmotionData b;
+  private String c;
+  private boolean d;
   
   public FunnyPicHelper$CalcPath(IVipComicMqqManagerService paramIVipComicMqqManagerService, CustomEmotionData paramCustomEmotionData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmApiIVipComicMqqManagerService = paramIVipComicMqqManagerService;
-    this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData = paramCustomEmotionData;
+    this.a = paramIVipComicMqqManagerService;
+    this.b = paramCustomEmotionData;
   }
   
-  public CalcPath a()
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangString = AppConstants.SDCARD_IMG_FAVORITE;
-    this.jdField_a_of_type_Boolean = false;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmApiIVipComicMqqManagerService;
-    if ((localObject != null) && (((IVipComicMqqManagerService)localObject).isComicEmoticon(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData)))
+    return this.c;
+  }
+  
+  public boolean b()
+  {
+    return this.d;
+  }
+  
+  public CalcPath c()
+  {
+    this.c = AppConstants.SDCARD_IMG_FAVORITE;
+    this.d = false;
+    Object localObject = this.a;
+    if ((localObject != null) && (((IVipComicMqqManagerService)localObject).isComicEmoticon(this.b)))
     {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)) && (this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath.startsWith(AppConstants.SDCARD_IMG_FAVORITE)))
+      if ((!TextUtils.isEmpty(this.b.emoPath)) && (this.b.emoPath.startsWith(AppConstants.SDCARD_IMG_FAVORITE)))
       {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath;
+        this.c = this.b.emoPath;
         return this;
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5))
+      if (!TextUtils.isEmpty(this.b.md5))
       {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqEmosmApiIVipComicMqqManagerService.getFilePath(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+        this.c = this.a.getFilePath(this.b.md5);
         return this;
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.resid))
+      if (!TextUtils.isEmpty(this.b.resid))
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(DiySecureFileHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.resid));
-        this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+        ((StringBuilder)localObject).append(this.c);
+        ((StringBuilder)localObject).append(DiySecureFileHelper.a(this.b.resid));
+        this.c = ((StringBuilder)localObject).toString();
         return this;
       }
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.url.substring(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.url.lastIndexOf("/") + 1));
-      this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(this.b.url.substring(this.b.url.lastIndexOf("/") + 1));
+      this.c = ((StringBuilder)localObject).toString();
       return this;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.url.contains("qto_"))
+    if (this.b.url.contains("qto_"))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(FunnyPicHelperConstant.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.url));
-      this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(FunnyPicHelperConstant.a(this.b.url));
+      this.c = ((StringBuilder)localObject).toString();
       return this;
     }
-    if (!TextUtils.isEmpty(FunnyPicHelperConstant.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId)))
+    if (!TextUtils.isEmpty(FunnyPicHelperConstant.a(this.b.eId)))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId);
-      this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-      this.jdField_a_of_type_Boolean = true;
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(this.b.eId);
+      this.c = ((StringBuilder)localObject).toString();
+      this.d = true;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("emotion is FunnyPic path download from server->");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId);
+        ((StringBuilder)localObject).append(this.b.eId);
         QLog.d("FunyPicHelper", 2, ((StringBuilder)localObject).toString());
         return this;
       }
@@ -77,26 +87,16 @@ class FunnyPicHelper$CalcPath
     else
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.resid);
-      this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(this.b.resid);
+      this.c = ((StringBuilder)localObject).toString();
     }
     return this;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FunnyPicHelper.CalcPath
  * JD-Core Version:    0.7.0.1
  */

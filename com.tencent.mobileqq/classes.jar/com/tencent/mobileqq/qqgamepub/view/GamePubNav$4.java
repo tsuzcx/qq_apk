@@ -1,26 +1,28 @@
 package com.tencent.mobileqq.qqgamepub.view;
 
-import android.view.ViewPropertyAnimator;
+import android.animation.Animator;
 import android.widget.LinearLayout;
-import com.tencent.gamecenter.wadl.biz.entity.WadlReportBuilder;
-import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class GamePubNav$4
-  implements Runnable
+  extends D8SafeAnimatorListener
 {
-  GamePubNav$4(GamePubNav paramGamePubNav, String paramString) {}
+  GamePubNav$4(GamePubNav paramGamePubNav) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    GamePubNav.a(this.this$0).setAlpha(0.0F);
-    GamePubNav.a(this.this$0).setVisibility(0);
-    GamePubNav.a(this.this$0).animate().alpha(1.0F).setDuration(500L).start();
-    GamePubAccountHelper.b(GamePubAccountHelper.a()).h("770").e("1").f("160").d("77002").c("208126").a(2, this.a).a(4, "8").i(GamePubNav.c(this.this$0)).b(GamePubNav.b(this.this$0)).a();
+    GamePubNav.b(this.a).setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.GamePubNav.4
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ final class XALottieView$decor$1$bindData$1
   
   public final void run()
   {
-    this.this$0.a.a(this.jdField_a_of_type_JavaLangString, (String)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element, this.jdField_a_of_type_ComTencentXactionOpenapiApiIXAEngine);
+    this.this$0.a.load(this.a, (String)this.b.element, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.XALottieView.decor.1.bindData.1
  * JD-Core Version:    0.7.0.1
  */

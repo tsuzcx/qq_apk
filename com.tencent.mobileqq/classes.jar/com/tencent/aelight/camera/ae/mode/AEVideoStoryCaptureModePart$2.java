@@ -18,45 +18,45 @@ class AEVideoStoryCaptureModePart$2
     }
     paramAECaptureModeChangingEvent = paramAECaptureModeChangingEvent.b;
     AEVideoStoryCaptureModePart.a(this.a, paramAECaptureModeChangingEvent);
-    Object localObject = AECaptureMode.NORMAL;
-    boolean bool = false;
-    if (paramAECaptureModeChangingEvent != localObject) {
-      AEVideoStoryCaptureModePart.a(this.a).a(196616, new Object[0]);
+    if (paramAECaptureModeChangingEvent != AECaptureMode.NORMAL) {
+      AEVideoStoryCaptureModePart.a(this.a).b(196616, new Object[0]);
     }
-    if (AEVideoStoryCaptureModePart.a(this.a) != null)
+    if (AEVideoStoryCaptureModePart.b(this.a) != null)
     {
       i = 0;
-      while (i < AEVideoStoryCaptureModePart.a(this.a).length)
+      while (i < AEVideoStoryCaptureModePart.b(this.a).length)
       {
-        if (paramAECaptureModeChangingEvent == AEVideoStoryCaptureModePart.a(this.a)[i]) {
-          break label97;
+        if (paramAECaptureModeChangingEvent == AEVideoStoryCaptureModePart.b(this.a)[i]) {
+          break label91;
         }
         i += 1;
       }
     }
     int i = -1;
-    label97:
+    label91:
+    boolean bool = true;
     if (i != -1) {
-      AEVideoStoryCaptureModePart.a(this.a).setCurrentItem(i, true);
+      AEVideoStoryCaptureModePart.c(this.a).setCurrentItem(i, true);
     }
-    localObject = this.a;
-    if (paramAECaptureModeChangingEvent == AECaptureMode.GIF) {
-      bool = true;
+    AEVideoStoryCaptureModePart localAEVideoStoryCaptureModePart = this.a;
+    if (paramAECaptureModeChangingEvent != AECaptureMode.GIF) {
+      bool = false;
     }
-    AEVideoStoryCaptureModePart.a((AEVideoStoryCaptureModePart)localObject, bool);
-    AEVideoStoryCaptureModePart.a(this.a).notifyDataSetChanged();
-    paramAECaptureModeChangingEvent = AEVideoStoryCaptureModePart.a(this.a);
-    if (AEVideoStoryCaptureModePart.a(this.a)) {
-      i = 2064056341;
+    AEVideoStoryCaptureModePart.a(localAEVideoStoryCaptureModePart, bool);
+    AEVideoStoryCaptureModePart.d(this.a).notifyDataSetChanged();
+    AEVideoStoryCaptureModePart.e(this.a).setVisibility(0);
+    paramAECaptureModeChangingEvent = AEVideoStoryCaptureModePart.e(this.a);
+    if (AEVideoStoryCaptureModePart.f(this.a)) {
+      i = 2063925278;
     } else {
-      i = 2064056342;
+      i = 2063925279;
     }
     paramAECaptureModeChangingEvent.setImageResource(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.mode.AEVideoStoryCaptureModePart.2
  * JD-Core Version:    0.7.0.1
  */

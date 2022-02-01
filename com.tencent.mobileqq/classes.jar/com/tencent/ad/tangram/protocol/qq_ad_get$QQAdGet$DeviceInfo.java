@@ -6,6 +6,7 @@ public final class qq_ad_get$QQAdGet$DeviceInfo
   public String android_id;
   public int app_version_id = 0;
   public String brand;
+  public String cached_idfa;
   public int carrier_code = 0;
   public String client_ip;
   public String client_ipv4;

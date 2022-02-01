@@ -9,12 +9,12 @@ import java.util.HashMap;
 
 public class JniSimpleInfoMng
 {
-  private final VcControllerImpl jdField_a_of_type_ComTencentAvCoreVcControllerImpl;
-  private final HashMap<Long, HashMap<String, Object>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final VcControllerImpl a;
+  private final HashMap<Long, HashMap<String, Object>> b = new HashMap();
   
   JniSimpleInfoMng(VcControllerImpl paramVcControllerImpl)
   {
-    this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl = paramVcControllerImpl;
+    this.a = paramVcControllerImpl;
   }
   
   private int a(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
@@ -46,7 +46,7 @@ public class JniSimpleInfoMng
       localObject = null;
       try
       {
-        String str = this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.getAVSDKInfo(paramLong, paramString);
+        String str = this.a.getAVSDKInfo(paramLong, paramString);
         localObject = str;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -111,7 +111,7 @@ public class JniSimpleInfoMng
     }
     try
     {
-      long l = CharacterUtil.a(paramString);
+      long l = CharacterUtil.b(paramString);
       return l;
     }
     catch (Throwable paramString)
@@ -124,25 +124,6 @@ public class JniSimpleInfoMng
       QLog.i("JniSimpleInfoMng", 1, "parseUin", paramString);
     }
     return -1L;
-  }
-  
-  private HashMap<String, Object> a(long paramLong)
-  {
-    Object localObject = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if (localObject == null) {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        HashMap localHashMap1 = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-        localObject = localHashMap1;
-        if (localHashMap1 == null)
-        {
-          localObject = new HashMap();
-          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localObject);
-        }
-        return localObject;
-      }
-    }
-    return localHashMap;
   }
   
   private void a(String paramString, UnsatisfiedLinkError paramUnsatisfiedLinkError)
@@ -158,6 +139,25 @@ public class JniSimpleInfoMng
   private boolean a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     return (paramBoolean1) || ((!paramBoolean2) && (!paramBoolean3));
+  }
+  
+  private HashMap<String, Object> b(long paramLong)
+  {
+    Object localObject = (HashMap)this.b.get(Long.valueOf(paramLong));
+    if (localObject == null) {
+      synchronized (this.b)
+      {
+        HashMap localHashMap1 = (HashMap)this.b.get(Long.valueOf(paramLong));
+        localObject = localHashMap1;
+        if (localHashMap1 == null)
+        {
+          localObject = new HashMap();
+          this.b.put(Long.valueOf(paramLong), localObject);
+        }
+        return localObject;
+      }
+    }
+    return localHashMap;
   }
   
   private boolean b(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -180,12 +180,12 @@ public class JniSimpleInfoMng
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return a(paramLong).get(paramString);
+    return b(paramLong).get(paramString);
   }
   
   void a(long paramLong)
   {
-    Object localObject = a(paramLong);
+    Object localObject = b(paramLong);
     if (localObject != null) {
       ((HashMap)localObject).clear();
     }
@@ -204,7 +204,7 @@ public class JniSimpleInfoMng
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    a(paramLong).put(paramString, paramObject);
+    b(paramLong).put(paramString, paramObject);
   }
   
   public void a(String paramString, int paramInt, boolean paramBoolean)
@@ -214,7 +214,7 @@ public class JniSimpleInfoMng
     if (paramBoolean) {
       try
       {
-        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.setAVSDKInfo(l, "WatchTogetherFlag", String.valueOf(paramInt));
+        this.a.setAVSDKInfo(l, "WatchTogetherFlag", String.valueOf(paramInt));
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {

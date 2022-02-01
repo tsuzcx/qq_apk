@@ -65,33 +65,33 @@ public class Chip
   extends AppCompatCheckBox
   implements ChipDrawable.Delegate, Shapeable
 {
-  private static final int jdField_a_of_type_Int = R.style.w;
-  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842913 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 16842911 };
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private static final int a = R.style.y;
+  private static final Rect b = new Rect();
+  private static final int[] c = { 16842913 };
+  private static final int[] d = { 16842911 };
   @Nullable
-  private InsetDrawable jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable;
+  private ChipDrawable e;
   @Nullable
-  private RippleDrawable jdField_a_of_type_AndroidGraphicsDrawableRippleDrawable;
+  private InsetDrawable f;
   @Nullable
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private RippleDrawable g;
   @Nullable
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  @NonNull
-  private final Chip.ChipTouchHelper jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper;
+  private View.OnClickListener h;
   @Nullable
-  private ChipDrawable jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-  private final TextAppearanceFontCallback jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearanceFontCallback = new Chip.1(this);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private final Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_b_of_type_Boolean;
+  private CompoundButton.OnCheckedChangeListener i;
+  private boolean j;
+  private boolean k;
+  private boolean l;
+  private boolean m;
+  private boolean n;
+  private int o;
   @Dimension(unit=1)
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
+  private int p;
+  @NonNull
+  private final Chip.ChipTouchHelper q;
+  private final Rect r = new Rect();
+  private final RectF s = new RectF();
+  private final TextAppearanceFontCallback t = new Chip.1(this);
   
   public Chip(Context paramContext)
   {
@@ -100,77 +100,57 @@ public class Chip
   
   public Chip(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.h);
+    this(paramContext, paramAttributeSet, R.attr.k);
   }
   
   public Chip(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
     paramContext = getContext();
     a(paramAttributeSet);
-    ChipDrawable localChipDrawable = ChipDrawable.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int);
+    ChipDrawable localChipDrawable = ChipDrawable.a(paramContext, paramAttributeSet, paramInt, a);
     a(paramContext, paramAttributeSet, paramInt);
     setChipDrawable(localChipDrawable);
     localChipDrawable.r(ViewCompat.getElevation(this));
-    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.j, paramInt, jdField_a_of_type_Int, new int[0]);
+    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.aI, paramInt, a, new int[0]);
     if (Build.VERSION.SDK_INT < 23) {
-      setTextColor(MaterialResources.a(paramContext, paramAttributeSet, R.styleable.ae));
+      setTextColor(MaterialResources.a(paramContext, paramAttributeSet, R.styleable.aL));
     }
-    boolean bool = paramAttributeSet.hasValue(R.styleable.aN);
+    boolean bool = paramAttributeSet.hasValue(R.styleable.bu);
     paramAttributeSet.recycle();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper = new Chip.ChipTouchHelper(this, this);
-    b();
+    this.q = new Chip.ChipTouchHelper(this, this);
+    g();
     if (!bool) {
-      d();
+      i();
     }
-    setChecked(this.jdField_a_of_type_Boolean);
-    setText(localChipDrawable.a());
-    setEllipsize(localChipDrawable.a());
-    h();
-    if (!this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.e())
+    setChecked(this.j);
+    setText(localChipDrawable.n());
+    setEllipsize(localChipDrawable.p());
+    o();
+    if (!this.e.L())
     {
       setLines(1);
       setHorizontallyScrolling(true);
     }
     setGravity(8388627);
-    c();
-    if (d()) {
-      setMinHeight(this.jdField_c_of_type_Int);
+    h();
+    if (e()) {
+      setMinHeight(this.p);
     }
-    this.jdField_b_of_type_Int = ViewCompat.getLayoutDirection(this);
-  }
-  
-  @NonNull
-  private RectF a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsRectF.setEmpty();
-    if ((e()) && (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-    }
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
-  }
-  
-  @Nullable
-  private TextAppearance a()
-  {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-    if (localChipDrawable != null) {
-      return localChipDrawable.a();
-    }
-    return null;
+    this.o = ViewCompat.getLayoutDirection(this);
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable = new InsetDrawable(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable, paramInt1, paramInt2, paramInt3, paramInt4);
+    this.f = new InsetDrawable(this.e, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   private void a(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.j, paramInt, jdField_a_of_type_Int, new int[0]);
-    this.e = paramContext.getBoolean(R.styleable.aI, false);
-    float f = (float)Math.ceil(ViewUtils.a(getContext(), 48));
-    this.jdField_c_of_type_Int = ((int)Math.ceil(paramContext.getDimension(R.styleable.aw, f)));
+    paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.aI, paramInt, a, new int[0]);
+    this.n = paramContext.getBoolean(R.styleable.bp, false);
+    float f1 = (float)Math.ceil(ViewUtils.a(getContext(), 48));
+    this.p = ((int)Math.ceil(paramContext.getDimension(R.styleable.bd, f1)));
     paramContext.recycle();
   }
   
@@ -215,15 +195,6 @@ public class Chip
     }
   }
   
-  private void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      refreshDrawableState();
-    }
-  }
-  
   @SuppressLint({"PrivateApi"})
   private boolean a(@NonNull MotionEvent paramMotionEvent)
   {
@@ -232,11 +203,11 @@ public class Chip
       {
         paramMotionEvent = ExploreByTouchHelper.class.getDeclaredField("mHoveredVirtualViewId");
         paramMotionEvent.setAccessible(true);
-        if (((Integer)paramMotionEvent.get(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper)).intValue() != -2147483648)
+        if (((Integer)paramMotionEvent.get(this.q)).intValue() != -2147483648)
         {
           paramMotionEvent = ExploreByTouchHelper.class.getDeclaredMethod("updateHoveredVirtualView", new Class[] { Integer.TYPE });
           paramMotionEvent.setAccessible(true);
-          paramMotionEvent.invoke(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper, new Object[] { Integer.valueOf(-2147483648) });
+          paramMotionEvent.invoke(this.q, new Object[] { Integer.valueOf(-2147483648) });
           return true;
         }
       }
@@ -263,290 +234,263 @@ public class Chip
     return false;
   }
   
-  @NonNull
-  private int[] a()
-  {
-    boolean bool = isEnabled();
-    int k = 0;
-    if (bool) {
-      j = 1;
-    } else {
-      j = 0;
-    }
-    int i = j;
-    if (this.d) {
-      i = j + 1;
-    }
-    int j = i;
-    if (this.jdField_c_of_type_Boolean) {
-      j = i + 1;
-    }
-    i = j;
-    if (this.jdField_b_of_type_Boolean) {
-      i = j + 1;
-    }
-    j = i;
-    if (isChecked()) {
-      j = i + 1;
-    }
-    int[] arrayOfInt = new int[j];
-    j = k;
-    if (isEnabled())
-    {
-      arrayOfInt[0] = 16842910;
-      j = 1;
-    }
-    i = j;
-    if (this.d)
-    {
-      arrayOfInt[j] = 16842908;
-      i = j + 1;
-    }
-    j = i;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      arrayOfInt[i] = 16843623;
-      j = i + 1;
-    }
-    i = j;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      arrayOfInt[j] = 16842919;
-      i = j + 1;
-    }
-    if (isChecked()) {
-      arrayOfInt[i] = 16842913;
-    }
-    return arrayOfInt;
-  }
-  
-  @NonNull
-  private Rect b()
-  {
-    RectF localRectF = a();
-    this.jdField_b_of_type_AndroidGraphicsRect.set((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
-    return this.jdField_b_of_type_AndroidGraphicsRect;
-  }
-  
-  private void b()
-  {
-    if ((e()) && (b()) && (this.jdField_a_of_type_AndroidViewView$OnClickListener != null))
-    {
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper);
-      return;
-    }
-    ViewCompat.setAccessibilityDelegate(this, null);
-  }
-  
   private void b(@NonNull ChipDrawable paramChipDrawable)
   {
     paramChipDrawable.a(this);
   }
   
-  private void b(boolean paramBoolean)
+  private void g()
   {
-    if (this.jdField_c_of_type_Boolean != paramBoolean)
+    if ((n()) && (c()) && (this.h != null))
     {
-      this.jdField_c_of_type_Boolean = paramBoolean;
-      refreshDrawableState();
+      ViewCompat.setAccessibilityDelegate(this, this.q);
+      return;
     }
+    ViewCompat.setAccessibilityDelegate(this, null);
   }
   
-  private void c()
+  @NonNull
+  private RectF getCloseIconTouchBounds()
+  {
+    this.s.setEmpty();
+    if ((n()) && (this.h != null)) {
+      this.e.a(this.s);
+    }
+    return this.s;
+  }
+  
+  @NonNull
+  private Rect getCloseIconTouchBoundsInt()
+  {
+    RectF localRectF = getCloseIconTouchBounds();
+    this.r.set((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
+    return this.r;
+  }
+  
+  @Nullable
+  private TextAppearance getTextAppearance()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.o();
+    }
+    return null;
+  }
+  
+  private void h()
   {
     if (!TextUtils.isEmpty(getText()))
     {
-      Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+      Object localObject = this.e;
       if (localObject == null) {
         return;
       }
-      int k = (int)(((ChipDrawable)localObject).h() + this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.g() + this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.b());
-      int m = (int)(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.e() + this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.f() + this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a());
-      int j = k;
-      int i = m;
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable != null)
+      int i3 = (int)(((ChipDrawable)localObject).K() + this.e.H() + this.e.d());
+      int i4 = (int)(this.e.D() + this.e.G() + this.e.c());
+      int i2 = i3;
+      int i1 = i4;
+      if (this.f != null)
       {
         localObject = new Rect();
-        this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable.getPadding((Rect)localObject);
-        i = m + ((Rect)localObject).left;
-        j = k + ((Rect)localObject).right;
+        this.f.getPadding((Rect)localObject);
+        i1 = i4 + ((Rect)localObject).left;
+        i2 = i3 + ((Rect)localObject).right;
       }
-      ViewCompat.setPaddingRelative(this, i, getPaddingTop(), j, getPaddingBottom());
+      ViewCompat.setPaddingRelative(this, i1, getPaddingTop(), i2, getPaddingBottom());
     }
   }
   
-  private void d()
+  private void i()
   {
     if (Build.VERSION.SDK_INT >= 21) {
       setOutlineProvider(new Chip.2(this));
     }
   }
   
-  private void e()
+  private void j()
   {
-    if (RippleUtils.jdField_a_of_type_Boolean)
+    if (RippleUtils.a)
     {
-      g();
+      l();
       return;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a(true);
-    ViewCompat.setBackground(this, a());
-    c();
-    f();
+    this.e.a(true);
+    ViewCompat.setBackground(this, getBackgroundDrawable());
+    h();
+    k();
   }
   
-  private boolean e()
+  private void k()
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-    return (localChipDrawable != null) && (localChipDrawable.b() != null);
-  }
-  
-  private void f()
-  {
-    if ((a() == this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable) && (this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.getCallback() == null)) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable);
+    if ((getBackgroundDrawable() == this.f) && (this.e.getCallback() == null)) {
+      this.e.setCallback(this.f);
     }
   }
   
-  private void g()
+  private void l()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableRippleDrawable = new RippleDrawable(RippleUtils.b(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a()), a(), null);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a(false);
-    ViewCompat.setBackground(this, this.jdField_a_of_type_AndroidGraphicsDrawableRippleDrawable);
-    c();
-  }
-  
-  private void h()
-  {
-    TextPaint localTextPaint = getPaint();
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-    if (localObject != null) {
-      localTextPaint.drawableState = ((ChipDrawable)localObject).getState();
-    }
-    localObject = a();
-    if (localObject != null) {
-      ((TextAppearance)localObject).b(getContext(), localTextPaint, this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearanceFontCallback);
-    }
-  }
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable = null;
-      setMinWidth(0);
-      setMinHeight((int)a());
-      e();
-    }
-  }
-  
-  public float a()
-  {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-    if (localChipDrawable != null) {
-      return localChipDrawable.c();
-    }
-    return 0.0F;
-  }
-  
-  @Nullable
-  public Drawable a()
-  {
-    InsetDrawable localInsetDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable;
-    Object localObject = localInsetDrawable;
-    if (localInsetDrawable == null) {
-      localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-    }
-    return localObject;
+    this.g = new RippleDrawable(RippleUtils.b(this.e.m()), getBackgroundDrawable(), null);
+    this.e.a(false);
+    ViewCompat.setBackground(this, this.g);
+    h();
   }
   
   @NonNull
-  public ShapeAppearanceModel a()
+  private int[] m()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a();
+    boolean bool = isEnabled();
+    int i3 = 0;
+    if (bool) {
+      i2 = 1;
+    } else {
+      i2 = 0;
+    }
+    int i1 = i2;
+    if (this.m) {
+      i1 = i2 + 1;
+    }
+    int i2 = i1;
+    if (this.l) {
+      i2 = i1 + 1;
+    }
+    i1 = i2;
+    if (this.k) {
+      i1 = i2 + 1;
+    }
+    i2 = i1;
+    if (isChecked()) {
+      i2 = i1 + 1;
+    }
+    int[] arrayOfInt = new int[i2];
+    i2 = i3;
+    if (isEnabled())
+    {
+      arrayOfInt[0] = 16842910;
+      i2 = 1;
+    }
+    i1 = i2;
+    if (this.m)
+    {
+      arrayOfInt[i2] = 16842908;
+      i1 = i2 + 1;
+    }
+    i2 = i1;
+    if (this.l)
+    {
+      arrayOfInt[i1] = 16843623;
+      i2 = i1 + 1;
+    }
+    i1 = i2;
+    if (this.k)
+    {
+      arrayOfInt[i2] = 16842919;
+      i1 = i2 + 1;
+    }
+    if (isChecked()) {
+      arrayOfInt[i1] = 16842913;
+    }
+    return arrayOfInt;
   }
   
-  @Nullable
-  public CharSequence a()
+  private boolean n()
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-    if (localChipDrawable != null) {
-      return localChipDrawable.b();
+    ChipDrawable localChipDrawable = this.e;
+    return (localChipDrawable != null) && (localChipDrawable.u() != null);
+  }
+  
+  private void o()
+  {
+    TextPaint localTextPaint = getPaint();
+    Object localObject = this.e;
+    if (localObject != null) {
+      localTextPaint.drawableState = ((ChipDrawable)localObject).getState();
     }
-    return null;
+    localObject = getTextAppearance();
+    if (localObject != null) {
+      ((TextAppearance)localObject).b(getContext(), localTextPaint, this.t);
+    }
+  }
+  
+  private void p()
+  {
+    if (this.f != null)
+    {
+      this.f = null;
+      setMinWidth(0);
+      setMinHeight((int)getChipMinHeight());
+      j();
+    }
+  }
+  
+  private void setCloseIconHovered(boolean paramBoolean)
+  {
+    if (this.l != paramBoolean)
+    {
+      this.l = paramBoolean;
+      refreshDrawableState();
+    }
+  }
+  
+  private void setCloseIconPressed(boolean paramBoolean)
+  {
+    if (this.k != paramBoolean)
+    {
+      this.k = paramBoolean;
+      refreshDrawableState();
+    }
   }
   
   public void a()
   {
-    a(this.jdField_c_of_type_Int);
+    a(this.p);
     requestLayout();
     if (Build.VERSION.SDK_INT >= 21) {
       invalidateOutline();
     }
   }
   
-  void a(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = paramOnCheckedChangeListener;
-  }
-  
-  @CallSuper
-  public boolean a()
-  {
-    boolean bool = false;
-    playSoundEffect(0);
-    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
-    if (localOnClickListener != null)
-    {
-      localOnClickListener.onClick(this);
-      bool = true;
-    }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper.sendEventForVirtualView(1, 1);
-    return bool;
-  }
-  
   public boolean a(@Dimension int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    boolean bool = d();
-    int j = 0;
+    this.p = paramInt;
+    boolean bool = e();
+    int i2 = 0;
     if (!bool)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable != null)
+      if (this.f != null)
       {
-        i();
+        p();
         return false;
       }
-      e();
+      j();
       return false;
     }
-    int k = Math.max(0, paramInt - this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.getIntrinsicHeight());
-    int i = Math.max(0, paramInt - this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.getIntrinsicWidth());
-    if ((i <= 0) && (k <= 0))
+    int i3 = Math.max(0, paramInt - this.e.getIntrinsicHeight());
+    int i1 = Math.max(0, paramInt - this.e.getIntrinsicWidth());
+    if ((i1 <= 0) && (i3 <= 0))
     {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable != null)
+      if (this.f != null)
       {
-        i();
+        p();
         return false;
       }
-      e();
+      j();
       return false;
     }
-    if (i > 0) {
-      i /= 2;
+    if (i1 > 0) {
+      i1 /= 2;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    if (k > 0) {
-      j = k / 2;
+    if (i3 > 0) {
+      i2 = i3 / 2;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable != null)
+    if (this.f != null)
     {
       Rect localRect = new Rect();
-      this.jdField_a_of_type_AndroidGraphicsDrawableInsetDrawable.getPadding(localRect);
-      if ((localRect.top == j) && (localRect.bottom == j) && (localRect.left == i) && (localRect.right == i))
+      this.f.getPadding(localRect);
+      if ((localRect.top == i2) && (localRect.bottom == i2) && (localRect.left == i1) && (localRect.right == i1))
       {
-        e();
+        j();
         return true;
       }
     }
@@ -564,36 +508,46 @@ public class Chip
       setMinHeight(paramInt);
       setMinWidth(paramInt);
     }
-    a(i, j, i, j);
-    e();
+    a(i1, i2, i1, i2);
+    j();
     return true;
   }
   
+  @CallSuper
   public boolean b()
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-    return (localChipDrawable != null) && (localChipDrawable.c());
+    boolean bool = false;
+    playSoundEffect(0);
+    View.OnClickListener localOnClickListener = this.h;
+    if (localOnClickListener != null)
+    {
+      localOnClickListener.onClick(this);
+      bool = true;
+    }
+    this.q.sendEventForVirtualView(1, 1);
+    return bool;
   }
   
   public boolean c()
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
-    return (localChipDrawable != null) && (localChipDrawable.d());
+    ChipDrawable localChipDrawable = this.e;
+    return (localChipDrawable != null) && (localChipDrawable.t());
   }
   
   public boolean d()
   {
-    return this.e;
+    ChipDrawable localChipDrawable = this.e;
+    return (localChipDrawable != null) && (localChipDrawable.y());
   }
   
   protected boolean dispatchHoverEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    return (a(paramMotionEvent)) || (this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper.dispatchHoverEvent(paramMotionEvent)) || (super.dispatchHoverEvent(paramMotionEvent));
+    return (a(paramMotionEvent)) || (this.q.dispatchHoverEvent(paramMotionEvent)) || (super.dispatchHoverEvent(paramMotionEvent));
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper.dispatchKeyEvent(paramKeyEvent)) && (this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper.getKeyboardFocusedVirtualViewId() != -2147483648)) {
+    if ((this.q.dispatchKeyEvent(paramKeyEvent)) && (this.q.getKeyboardFocusedVirtualViewId() != -2147483648)) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -602,10 +556,10 @@ public class Chip
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     boolean bool;
-    if ((localChipDrawable != null) && (localChipDrawable.b())) {
-      bool = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a(a());
+    if ((localChipDrawable != null) && (localChipDrawable.e())) {
+      bool = this.e.a(m());
     } else {
       bool = false;
     }
@@ -614,40 +568,311 @@ public class Chip
     }
   }
   
+  public boolean e()
+  {
+    return this.n;
+  }
+  
+  @Nullable
+  public Drawable getBackgroundDrawable()
+  {
+    InsetDrawable localInsetDrawable = this.f;
+    Object localObject = localInsetDrawable;
+    if (localInsetDrawable == null) {
+      localObject = this.e;
+    }
+    return localObject;
+  }
+  
+  @Nullable
+  public Drawable getCheckedIcon()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.z();
+    }
+    return null;
+  }
+  
+  @Nullable
+  public ColorStateList getCheckedIconTint()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.A();
+    }
+    return null;
+  }
+  
+  @Nullable
+  public ColorStateList getChipBackgroundColor()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.h();
+    }
+    return null;
+  }
+  
+  public float getChipCornerRadius()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    float f1 = 0.0F;
+    if (localChipDrawable != null) {
+      f1 = Math.max(0.0F, localChipDrawable.j());
+    }
+    return f1;
+  }
+  
+  public Drawable getChipDrawable()
+  {
+    return this.e;
+  }
+  
+  public float getChipEndPadding()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.K();
+    }
+    return 0.0F;
+  }
+  
+  @Nullable
+  public Drawable getChipIcon()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.q();
+    }
+    return null;
+  }
+  
+  public float getChipIconSize()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.s();
+    }
+    return 0.0F;
+  }
+  
+  @Nullable
+  public ColorStateList getChipIconTint()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.r();
+    }
+    return null;
+  }
+  
+  public float getChipMinHeight()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.i();
+    }
+    return 0.0F;
+  }
+  
+  public float getChipStartPadding()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.D();
+    }
+    return 0.0F;
+  }
+  
+  @Nullable
+  public ColorStateList getChipStrokeColor()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.k();
+    }
+    return null;
+  }
+  
+  public float getChipStrokeWidth()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.l();
+    }
+    return 0.0F;
+  }
+  
+  @Deprecated
+  public CharSequence getChipText()
+  {
+    return getText();
+  }
+  
+  @Nullable
+  public Drawable getCloseIcon()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.u();
+    }
+    return null;
+  }
+  
+  @Nullable
+  public CharSequence getCloseIconContentDescription()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.x();
+    }
+    return null;
+  }
+  
+  public float getCloseIconEndPadding()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.J();
+    }
+    return 0.0F;
+  }
+  
+  public float getCloseIconSize()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.w();
+    }
+    return 0.0F;
+  }
+  
+  public float getCloseIconStartPadding()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.I();
+    }
+    return 0.0F;
+  }
+  
+  @Nullable
+  public ColorStateList getCloseIconTint()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.v();
+    }
+    return null;
+  }
+  
   @Nullable
   public TextUtils.TruncateAt getEllipsize()
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
-      return localChipDrawable.a();
+      return localChipDrawable.p();
     }
     return null;
   }
   
   public void getFocusedRect(@NonNull Rect paramRect)
   {
-    if ((this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper.getKeyboardFocusedVirtualViewId() != 1) && (this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper.getAccessibilityFocusedVirtualViewId() != 1))
+    if ((this.q.getKeyboardFocusedVirtualViewId() != 1) && (this.q.getAccessibilityFocusedVirtualViewId() != 1))
     {
       super.getFocusedRect(paramRect);
       return;
     }
-    paramRect.set(b());
+    paramRect.set(getCloseIconTouchBoundsInt());
+  }
+  
+  @Nullable
+  public MotionSpec getHideMotionSpec()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.C();
+    }
+    return null;
+  }
+  
+  public float getIconEndPadding()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.F();
+    }
+    return 0.0F;
+  }
+  
+  public float getIconStartPadding()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.E();
+    }
+    return 0.0F;
+  }
+  
+  @Nullable
+  public ColorStateList getRippleColor()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.m();
+    }
+    return null;
+  }
+  
+  @NonNull
+  public ShapeAppearanceModel getShapeAppearanceModel()
+  {
+    return this.e.getShapeAppearanceModel();
+  }
+  
+  @Nullable
+  public MotionSpec getShowMotionSpec()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.B();
+    }
+    return null;
+  }
+  
+  public float getTextEndPadding()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.H();
+    }
+    return 0.0F;
+  }
+  
+  public float getTextStartPadding()
+  {
+    ChipDrawable localChipDrawable = this.e;
+    if (localChipDrawable != null) {
+      return localChipDrawable.G();
+    }
+    return 0.0F;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    MaterialShapeUtils.a(this, this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable);
+    MaterialShapeUtils.a(this, this.e);
   }
   
   protected int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 2);
     if (isChecked()) {
-      mergeDrawableStates(arrayOfInt, jdField_a_of_type_ArrayOfInt);
+      mergeDrawableStates(arrayOfInt, c);
     }
-    if (c()) {
-      mergeDrawableStates(arrayOfInt, jdField_b_of_type_ArrayOfInt);
+    if (d()) {
+      mergeDrawableStates(arrayOfInt, d);
     }
     return arrayOfInt;
   }
@@ -655,20 +880,20 @@ public class Chip
   protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChip$ChipTouchHelper.onFocusChanged(paramBoolean, paramInt, paramRect);
+    this.q.onFocusChanged(paramBoolean, paramInt, paramRect);
   }
   
   public boolean onHoverEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (i != 7)
+    int i1 = paramMotionEvent.getActionMasked();
+    if (i1 != 7)
     {
-      if (i == 10) {
-        b(false);
+      if (i1 == 10) {
+        setCloseIconHovered(false);
       }
     }
     else {
-      b(a().contains(paramMotionEvent.getX(), paramMotionEvent.getY()));
+      setCloseIconHovered(getCloseIconTouchBounds().contains(paramMotionEvent.getX(), paramMotionEvent.getY()));
     }
     return super.onHoverEvent(paramMotionEvent);
   }
@@ -677,32 +902,32 @@ public class Chip
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     Object localObject;
-    if ((!c()) && (!isClickable()))
+    if ((!d()) && (!isClickable()))
     {
       paramAccessibilityNodeInfo.setClassName("android.view.View");
     }
     else
     {
-      if (c()) {
+      if (d()) {
         localObject = "android.widget.CompoundButton";
       } else {
         localObject = "android.widget.Button";
       }
       paramAccessibilityNodeInfo.setClassName((CharSequence)localObject);
     }
-    paramAccessibilityNodeInfo.setCheckable(c());
+    paramAccessibilityNodeInfo.setCheckable(d());
     paramAccessibilityNodeInfo.setClickable(isClickable());
     if ((getParent() instanceof ChipGroup))
     {
       localObject = (ChipGroup)getParent();
       paramAccessibilityNodeInfo = AccessibilityNodeInfoCompat.wrap(paramAccessibilityNodeInfo);
-      int i;
-      if (((ChipGroup)localObject).a()) {
-        i = ((ChipGroup)localObject).a(this);
+      int i1;
+      if (((ChipGroup)localObject).b()) {
+        i1 = ((ChipGroup)localObject).a(this);
       } else {
-        i = -1;
+        i1 = -1;
       }
-      paramAccessibilityNodeInfo.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(((ChipGroup)localObject).b(this), 1, i, 1, false, isChecked()));
+      paramAccessibilityNodeInfo.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(((ChipGroup)localObject).b(this), 1, i1, 1, false, isChecked()));
     }
   }
   
@@ -710,7 +935,7 @@ public class Chip
   @Nullable
   public PointerIcon onResolvePointerIcon(@NonNull MotionEvent paramMotionEvent, int paramInt)
   {
-    if ((a().contains(paramMotionEvent.getX(), paramMotionEvent.getY())) && (isEnabled())) {
+    if ((getCloseIconTouchBounds().contains(paramMotionEvent.getX(), paramMotionEvent.getY())) && (isEnabled())) {
       return PointerIcon.getSystemIcon(getContext(), 1002);
     }
     return null;
@@ -720,50 +945,50 @@ public class Chip
   public void onRtlPropertiesChanged(int paramInt)
   {
     super.onRtlPropertiesChanged(paramInt);
-    if (this.jdField_b_of_type_Int != paramInt)
+    if (this.o != paramInt)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      c();
+      this.o = paramInt;
+      h();
     }
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getActionMasked();
-    boolean bool2 = a().contains(paramMotionEvent.getX(), paramMotionEvent.getY());
+    int i1 = paramMotionEvent.getActionMasked();
+    boolean bool2 = getCloseIconTouchBounds().contains(paramMotionEvent.getX(), paramMotionEvent.getY());
     boolean bool1 = false;
-    if (i != 0)
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i != 3) {
+          if (i1 != 3) {
             break label108;
           }
         }
         else
         {
-          if (!this.jdField_b_of_type_Boolean) {
+          if (!this.k) {
             break label108;
           }
           if (bool2) {
             break label103;
           }
-          a(false);
+          setCloseIconPressed(false);
           break label103;
         }
       }
-      else if (this.jdField_b_of_type_Boolean)
+      else if (this.k)
       {
-        a();
-        i = 1;
+        b();
+        i1 = 1;
         break label85;
       }
-      i = 0;
+      i1 = 0;
       label85:
-      a(false);
+      setCloseIconPressed(false);
       break label110;
     }
     else
@@ -771,15 +996,15 @@ public class Chip
       if (!bool2) {
         break label108;
       }
-      a(true);
+      setCloseIconPressed(true);
     }
     label103:
-    i = 1;
+    i1 = 1;
     break label110;
     label108:
-    i = 0;
+    i1 = 0;
     label110:
-    if ((i != 0) || (super.onTouchEvent(paramMotionEvent))) {
+    if ((i1 != 0) || (super.onTouchEvent(paramMotionEvent))) {
       bool1 = true;
     }
     return bool1;
@@ -787,7 +1012,7 @@ public class Chip
   
   public void setBackground(Drawable paramDrawable)
   {
-    if ((paramDrawable != a()) && (paramDrawable != this.jdField_a_of_type_AndroidGraphicsDrawableRippleDrawable))
+    if ((paramDrawable != getBackgroundDrawable()) && (paramDrawable != this.g))
     {
       Log.w("Chip", "Do not set the background; Chip manages its own background drawable.");
       return;
@@ -802,7 +1027,7 @@ public class Chip
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    if ((paramDrawable != a()) && (paramDrawable != this.jdField_a_of_type_AndroidGraphicsDrawableRippleDrawable))
+    if ((paramDrawable != getBackgroundDrawable()) && (paramDrawable != this.g))
     {
       Log.w("Chip", "Do not set the background drawable; Chip manages its own background drawable.");
       return;
@@ -827,7 +1052,7 @@ public class Chip
   
   public void setCheckable(boolean paramBoolean)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.d(paramBoolean);
     }
@@ -835,7 +1060,7 @@ public class Chip
   
   public void setCheckableResource(@BoolRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.o(paramInt);
     }
@@ -843,19 +1068,19 @@ public class Chip
   
   public void setChecked(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    Object localObject = this.e;
     if (localObject == null)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.j = paramBoolean;
       return;
     }
-    if (((ChipDrawable)localObject).d())
+    if (((ChipDrawable)localObject).y())
     {
       boolean bool = isChecked();
       super.setChecked(paramBoolean);
       if (bool != paramBoolean)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
+        localObject = this.i;
         if (localObject != null) {
           ((CompoundButton.OnCheckedChangeListener)localObject).onCheckedChanged(this, paramBoolean);
         }
@@ -865,7 +1090,7 @@ public class Chip
   
   public void setCheckedIcon(@Nullable Drawable paramDrawable)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.c(paramDrawable);
     }
@@ -885,7 +1110,7 @@ public class Chip
   
   public void setCheckedIconResource(@DrawableRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.q(paramInt);
     }
@@ -893,7 +1118,7 @@ public class Chip
   
   public void setCheckedIconTint(@Nullable ColorStateList paramColorStateList)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.f(paramColorStateList);
     }
@@ -901,7 +1126,7 @@ public class Chip
   
   public void setCheckedIconTintResource(@ColorRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.r(paramInt);
     }
@@ -909,7 +1134,7 @@ public class Chip
   
   public void setCheckedIconVisible(@BoolRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.p(paramInt);
     }
@@ -917,7 +1142,7 @@ public class Chip
   
   public void setCheckedIconVisible(boolean paramBoolean)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.e(paramBoolean);
     }
@@ -925,7 +1150,7 @@ public class Chip
   
   public void setChipBackgroundColor(@Nullable ColorStateList paramColorStateList)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.a(paramColorStateList);
     }
@@ -933,7 +1158,7 @@ public class Chip
   
   public void setChipBackgroundColorResource(@ColorRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.a(paramInt);
     }
@@ -942,7 +1167,7 @@ public class Chip
   @Deprecated
   public void setChipCornerRadius(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.b(paramFloat);
     }
@@ -951,7 +1176,7 @@ public class Chip
   @Deprecated
   public void setChipCornerRadiusResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.c(paramInt);
     }
@@ -959,20 +1184,20 @@ public class Chip
   
   public void setChipDrawable(@NonNull ChipDrawable paramChipDrawable)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != paramChipDrawable)
     {
       a(localChipDrawable);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable = paramChipDrawable;
-      this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.f(false);
-      b(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable);
-      a(this.jdField_c_of_type_Int);
+      this.e = paramChipDrawable;
+      this.e.f(false);
+      b(this.e);
+      a(this.p);
     }
   }
   
   public void setChipEndPadding(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.m(paramFloat);
     }
@@ -980,7 +1205,7 @@ public class Chip
   
   public void setChipEndPaddingResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.B(paramInt);
     }
@@ -988,7 +1213,7 @@ public class Chip
   
   public void setChipIcon(@Nullable Drawable paramDrawable)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.a(paramDrawable);
     }
@@ -1008,7 +1233,7 @@ public class Chip
   
   public void setChipIconResource(@DrawableRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.i(paramInt);
     }
@@ -1016,7 +1241,7 @@ public class Chip
   
   public void setChipIconSize(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.d(paramFloat);
     }
@@ -1024,7 +1249,7 @@ public class Chip
   
   public void setChipIconSizeResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.k(paramInt);
     }
@@ -1032,7 +1257,7 @@ public class Chip
   
   public void setChipIconTint(@Nullable ColorStateList paramColorStateList)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.d(paramColorStateList);
     }
@@ -1040,7 +1265,7 @@ public class Chip
   
   public void setChipIconTintResource(@ColorRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.j(paramInt);
     }
@@ -1048,7 +1273,7 @@ public class Chip
   
   public void setChipIconVisible(@BoolRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.h(paramInt);
     }
@@ -1056,7 +1281,7 @@ public class Chip
   
   public void setChipIconVisible(boolean paramBoolean)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.b(paramBoolean);
     }
@@ -1064,7 +1289,7 @@ public class Chip
   
   public void setChipMinHeight(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.a(paramFloat);
     }
@@ -1072,7 +1297,7 @@ public class Chip
   
   public void setChipMinHeightResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.b(paramInt);
     }
@@ -1080,7 +1305,7 @@ public class Chip
   
   public void setChipStartPadding(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.f(paramFloat);
     }
@@ -1088,7 +1313,7 @@ public class Chip
   
   public void setChipStartPaddingResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.u(paramInt);
     }
@@ -1096,7 +1321,7 @@ public class Chip
   
   public void setChipStrokeColor(@Nullable ColorStateList paramColorStateList)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.b(paramColorStateList);
     }
@@ -1104,7 +1329,7 @@ public class Chip
   
   public void setChipStrokeColorResource(@ColorRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.d(paramInt);
     }
@@ -1112,7 +1337,7 @@ public class Chip
   
   public void setChipStrokeWidth(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.c(paramFloat);
     }
@@ -1120,7 +1345,7 @@ public class Chip
   
   public void setChipStrokeWidthResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.e(paramInt);
     }
@@ -1140,16 +1365,16 @@ public class Chip
   
   public void setCloseIcon(@Nullable Drawable paramDrawable)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.b(paramDrawable);
     }
-    b();
+    g();
   }
   
   public void setCloseIconContentDescription(@Nullable CharSequence paramCharSequence)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.b(paramCharSequence);
     }
@@ -1169,7 +1394,7 @@ public class Chip
   
   public void setCloseIconEndPadding(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.l(paramFloat);
     }
@@ -1177,7 +1402,7 @@ public class Chip
   
   public void setCloseIconEndPaddingResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.A(paramInt);
     }
@@ -1185,16 +1410,16 @@ public class Chip
   
   public void setCloseIconResource(@DrawableRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.l(paramInt);
     }
-    b();
+    g();
   }
   
   public void setCloseIconSize(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.e(paramFloat);
     }
@@ -1202,7 +1427,7 @@ public class Chip
   
   public void setCloseIconSizeResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.n(paramInt);
     }
@@ -1210,7 +1435,7 @@ public class Chip
   
   public void setCloseIconStartPadding(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.k(paramFloat);
     }
@@ -1218,7 +1443,7 @@ public class Chip
   
   public void setCloseIconStartPaddingResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.z(paramInt);
     }
@@ -1226,7 +1451,7 @@ public class Chip
   
   public void setCloseIconTint(@Nullable ColorStateList paramColorStateList)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.e(paramColorStateList);
     }
@@ -1234,7 +1459,7 @@ public class Chip
   
   public void setCloseIconTintResource(@ColorRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.m(paramInt);
     }
@@ -1247,11 +1472,11 @@ public class Chip
   
   public void setCloseIconVisible(boolean paramBoolean)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.c(paramBoolean);
     }
-    b();
+    g();
   }
   
   public void setCompoundDrawables(@Nullable Drawable paramDrawable1, @Nullable Drawable paramDrawable2, @Nullable Drawable paramDrawable3, @Nullable Drawable paramDrawable4)
@@ -1342,7 +1567,7 @@ public class Chip
   public void setElevation(float paramFloat)
   {
     super.setElevation(paramFloat);
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.r(paramFloat);
     }
@@ -1350,13 +1575,13 @@ public class Chip
   
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable == null) {
+    if (this.e == null) {
       return;
     }
     if (paramTruncateAt != TextUtils.TruncateAt.MARQUEE)
     {
       super.setEllipsize(paramTruncateAt);
-      ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+      ChipDrawable localChipDrawable = this.e;
       if (localChipDrawable != null) {
         localChipDrawable.a(paramTruncateAt);
       }
@@ -1367,8 +1592,8 @@ public class Chip
   
   public void setEnsureMinTouchTargetSize(boolean paramBoolean)
   {
-    this.e = paramBoolean;
-    a(this.jdField_c_of_type_Int);
+    this.n = paramBoolean;
+    a(this.p);
   }
   
   public void setGravity(int paramInt)
@@ -1383,7 +1608,7 @@ public class Chip
   
   public void setHideMotionSpec(@Nullable MotionSpec paramMotionSpec)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.b(paramMotionSpec);
     }
@@ -1391,7 +1616,7 @@ public class Chip
   
   public void setHideMotionSpecResource(@AnimatorRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.t(paramInt);
     }
@@ -1399,7 +1624,7 @@ public class Chip
   
   public void setIconEndPadding(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.h(paramFloat);
     }
@@ -1407,7 +1632,7 @@ public class Chip
   
   public void setIconEndPaddingResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.w(paramInt);
     }
@@ -1415,7 +1640,7 @@ public class Chip
   
   public void setIconStartPadding(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.g(paramFloat);
     }
@@ -1423,7 +1648,7 @@ public class Chip
   
   public void setIconStartPaddingResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.v(paramInt);
     }
@@ -1431,7 +1656,7 @@ public class Chip
   
   public void setLayoutDirection(int paramInt)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable == null) {
+    if (this.e == null) {
       return;
     }
     if (Build.VERSION.SDK_INT >= 17) {
@@ -1462,7 +1687,7 @@ public class Chip
   public void setMaxWidth(@Px int paramInt)
   {
     super.setMaxWidth(paramInt);
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.C(paramInt);
     }
@@ -1478,43 +1703,48 @@ public class Chip
     throw new UnsupportedOperationException("Chip does not support multi-line text");
   }
   
+  void setOnCheckedChangeListenerInternal(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
+  {
+    this.i = paramOnCheckedChangeListener;
+  }
+  
   public void setOnCloseIconClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    b();
+    this.h = paramOnClickListener;
+    g();
   }
   
   public void setRippleColor(@Nullable ColorStateList paramColorStateList)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.c(paramColorStateList);
     }
-    if (!this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a()) {
-      g();
+    if (!this.e.a()) {
+      l();
     }
   }
   
   public void setRippleColorResource(@ColorRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null)
     {
       localChipDrawable.f(paramInt);
-      if (!this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.a()) {
-        g();
+      if (!this.e.a()) {
+        l();
       }
     }
   }
   
   public void setShapeAppearanceModel(@NonNull ShapeAppearanceModel paramShapeAppearanceModel)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.setShapeAppearanceModel(paramShapeAppearanceModel);
+    this.e.setShapeAppearanceModel(paramShapeAppearanceModel);
   }
   
   public void setShowMotionSpec(@Nullable MotionSpec paramMotionSpec)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.a(paramMotionSpec);
     }
@@ -1522,7 +1752,7 @@ public class Chip
   
   public void setShowMotionSpecResource(@AnimatorRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.s(paramInt);
     }
@@ -1540,20 +1770,20 @@ public class Chip
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable == null) {
+    if (this.e == null) {
       return;
     }
     Object localObject = paramCharSequence;
     if (paramCharSequence == null) {
       localObject = "";
     }
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable.e()) {
+    if (this.e.L()) {
       paramCharSequence = null;
     } else {
       paramCharSequence = (CharSequence)localObject;
     }
     super.setText(paramCharSequence, paramBufferType);
-    paramCharSequence = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    paramCharSequence = this.e;
     if (paramCharSequence != null) {
       paramCharSequence.a((CharSequence)localObject);
     }
@@ -1562,30 +1792,30 @@ public class Chip
   public void setTextAppearance(int paramInt)
   {
     super.setTextAppearance(paramInt);
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.g(paramInt);
     }
-    h();
+    o();
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    paramContext = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    paramContext = this.e;
     if (paramContext != null) {
       paramContext.g(paramInt);
     }
-    h();
+    o();
   }
   
   public void setTextAppearance(@Nullable TextAppearance paramTextAppearance)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.a(paramTextAppearance);
     }
-    h();
+    o();
   }
   
   public void setTextAppearanceResource(@StyleRes int paramInt)
@@ -1595,7 +1825,7 @@ public class Chip
   
   public void setTextEndPadding(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.j(paramFloat);
     }
@@ -1603,7 +1833,7 @@ public class Chip
   
   public void setTextEndPaddingResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.y(paramInt);
     }
@@ -1611,7 +1841,7 @@ public class Chip
   
   public void setTextStartPadding(float paramFloat)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.i(paramFloat);
     }
@@ -1619,7 +1849,7 @@ public class Chip
   
   public void setTextStartPaddingResource(@DimenRes int paramInt)
   {
-    ChipDrawable localChipDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipDrawable;
+    ChipDrawable localChipDrawable = this.e;
     if (localChipDrawable != null) {
       localChipDrawable.x(paramInt);
     }
@@ -1627,7 +1857,7 @@ public class Chip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.chip.Chip
  * JD-Core Version:    0.7.0.1
  */

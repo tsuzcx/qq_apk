@@ -9,16 +9,16 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class PayLikeFloatViewBuilder$AnimationView
   extends TextView
 {
-  protected AnimationDrawable a;
-  protected QQAppInterface a;
   protected BaseFloatViewBuilder a;
+  protected QQAppInterface b;
+  protected AnimationDrawable c;
   
   public PayLikeFloatViewBuilder$AnimationView(Context paramContext, QQAppInterface paramQQAppInterface, BaseFloatViewBuilder paramBaseFloatViewBuilder)
   {
     super(paramContext);
     super.setGravity(17);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder = paramBaseFloatViewBuilder;
+    this.b = paramQQAppInterface;
+    this.a = paramBaseFloatViewBuilder;
     if (super.getVisibility() == 0) {
       setVisibility(0);
     }
@@ -27,44 +27,44 @@ public class PayLikeFloatViewBuilder$AnimationView
   public void a()
   {
     super.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((AnimationDrawable)localObject).stop();
       int i = 0;
-      while (i < this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames())
+      while (i < this.c.getNumberOfFrames())
       {
-        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getFrame(i);
+        localObject = this.c.getFrame(i);
         if (localObject != null) {
           ((Drawable)localObject).setCallback(null);
         }
         i += 1;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setCallback(null);
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
+      this.c.setCallback(null);
+      this.c = null;
     }
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
+    Object localObject = this.c;
     if ((localObject == null) || (((AnimationDrawable)localObject).getNumberOfFrames() != 20))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = new AnimationDrawable();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.c = new AnimationDrawable();
+      localObject = this.a.a(this.b);
       if (localObject == null) {
         return;
       }
       int i = 0;
       while (i < 20)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(localObject[i], 50);
+        this.c.addFrame(localObject[i], 50);
         i += 1;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setOneShot(false);
-      super.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable, null, null);
+      this.c.setOneShot(false);
+      super.setCompoundDrawablesWithIntrinsicBounds(null, this.c, null, null);
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+    this.c.start();
   }
   
   public void setVisibility(int paramInt)
@@ -82,7 +82,7 @@ public class PayLikeFloatViewBuilder$AnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder.AnimationView
  * JD-Core Version:    0.7.0.1
  */

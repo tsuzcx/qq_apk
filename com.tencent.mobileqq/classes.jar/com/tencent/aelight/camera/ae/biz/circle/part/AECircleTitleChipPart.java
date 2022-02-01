@@ -15,50 +15,50 @@ public class AECircleTitleChipPart
   extends AECircleBasePart
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean;
+  private View a;
+  private TextView b;
+  private long f;
+  private boolean g;
   
   public AECircleTitleChipPart(AECirclePhotoListLogic paramAECirclePhotoListLogic)
   {
     super(paramAECirclePhotoListLogic);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a(this);
-  }
-  
-  public String a()
-  {
-    return "AECircleTitleChipPart";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedPhotoList.size() + this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().initialHasPickedNum < 1)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.c.a(this);
   }
   
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064122287);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122288));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a = paramView.findViewById(2063991165);
+    this.b = ((TextView)paramView.findViewById(2063991166));
+    this.a.setVisibility(0);
+    this.a.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    if (this.g) {
+      this.b.setVisibility(0);
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.b.setVisibility(8);
     }
-    a();
+    d();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
+  }
+  
+  public String b()
+  {
+    return "AECircleTitleChipPart";
+  }
+  
+  protected void d()
+  {
+    if (this.c.e().selectedPhotoList.size() + this.c.g().initialHasPickedNum < 1)
+    {
+      this.b.setEnabled(false);
+      return;
+    }
+    this.b.setEnabled(true);
   }
   
   public ArrayList<Class> getEventClass()
@@ -70,34 +70,34 @@ public class AECircleTitleChipPart
   
   public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
+    if (System.currentTimeMillis() - this.f < 1000L) {
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic == null) {
+    this.f = System.currentTimeMillis();
+    if (this.c == null) {
       return;
     }
     int i = paramView.getId();
-    if (i == 2064122287)
+    if (i == 2063991165)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a(paramView);
+      this.c.a(paramView);
       return;
     }
-    if (i == 2064122288) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.e();
+    if (i == 2063991166) {
+      this.c.m();
     }
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if ((paramSimpleBaseEvent instanceof AECircleSelectChangeEvent)) {
-      a();
+      d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECircleTitleChipPart
  * JD-Core Version:    0.7.0.1
  */

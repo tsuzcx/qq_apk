@@ -14,28 +14,28 @@ class DynamicAvatarManager$7
   {
     int i;
     label249:
-    synchronized (this.this$0.a)
+    synchronized (this.this$0.g)
     {
-      if (!this.this$0.a.remove(this.a.b)) {
+      if (!this.this$0.g.remove(this.a.x)) {
         return;
       }
-      i = this.this$0.a.size() - 1;
+      i = this.this$0.g.size() - 1;
       if (i >= 0)
       {
-        if (((WeakReference)this.this$0.a.get(i)).get() == null) {
-          this.this$0.a.remove(i);
+        if (((WeakReference)this.this$0.g.get(i)).get() == null) {
+          this.this$0.g.remove(i);
         }
       }
       else
       {
-        i = this.this$0.b.size() - 1;
+        i = this.this$0.h.size() - 1;
         if (i >= 0)
         {
-          WeakReference localWeakReference = (WeakReference)this.this$0.b.remove(i);
-          if ((localWeakReference == null) || (localWeakReference.get() == null) || (this.this$0.a.contains(localWeakReference))) {
+          WeakReference localWeakReference = (WeakReference)this.this$0.h.remove(i);
+          if ((localWeakReference == null) || (localWeakReference.get() == null) || (this.this$0.g.contains(localWeakReference))) {
             break label249;
           }
-          boolean bool = this.this$0.a((DynamicFaceDrawable)localWeakReference.get());
+          boolean bool = this.this$0.c((DynamicFaceDrawable)localWeakReference.get());
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -44,7 +44,7 @@ class DynamicAvatarManager$7
             QLog.i("Q.dynamicAvatar", 2, localStringBuilder.toString());
           }
           if (bool) {
-            this.this$0.a.add(localWeakReference);
+            this.this$0.g.add(localWeakReference);
           }
           return;
         }
@@ -55,7 +55,7 @@ class DynamicAvatarManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager.7
  * JD-Core Version:    0.7.0.1
  */

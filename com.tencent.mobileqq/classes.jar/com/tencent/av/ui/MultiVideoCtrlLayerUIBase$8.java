@@ -11,12 +11,12 @@ class MultiVideoCtrlLayerUIBase$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d()))
+    if ((this.b.am != null) && (this.b.F()))
     {
-      MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.i(this.jdField_a_of_type_Long, 16777215);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().ag = true;
+      MultiVideoCtrlLayerUIBase.a(this.b, true);
+      this.b.K();
+      this.b.f(this.a, 16777215);
+      this.b.am.k().bA = true;
     }
     paramDialogInterface.dismiss();
   }

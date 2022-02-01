@@ -64,13 +64,13 @@ class ReadInJoyWebRenderEngine$1
       paramBundle.append("]");
       QLog.i("viola.ReadInJoyWebRenderEngine", 1, paramBundle.toString());
     }
-    RIJStatisticCollectorReport.a(ReadInJoyUtils.a(), true, j, System.currentTimeMillis() - l);
+    RIJStatisticCollectorReport.a(ReadInJoyUtils.b(), true, j, System.currentTimeMillis() - l);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyWebRenderEngine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public final class VideoCapturePresenter$saveBitmapToLocal$1$$special$$inlined$a
     localStringBuilder.append(this.a.$relativePath);
     localStringBuilder.append('.');
     Log.d("VideoCapturePresenter", localStringBuilder.toString());
-    if (VideoCapturePresenter.a(this.a.this$0)) {
+    if (VideoCapturePresenter.b(this.a.this$0)) {
       VideoCapturePresenter.a(this.a.this$0, this.a.$relativePath);
     }
   }
@@ -34,7 +34,7 @@ public final class VideoCapturePresenter$saveBitmapToLocal$1$$special$$inlined$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCapturePresenter.saveBitmapToLocal.1..special..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

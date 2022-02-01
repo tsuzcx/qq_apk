@@ -39,64 +39,64 @@ class AppletsSettingFragment$3
         while (paramList.hasNext())
         {
           Object localObject2 = (AppletsSetting)paramList.next();
-          Object localObject3 = ((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList;
+          Object localObject3 = ((AppletsSetting)localObject2).b;
           boolean bool = true;
-          if ((localObject3 != null) && (((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList.size() > 0) && (((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList.get(0) != null) && (((AppletItem)((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList.get(0)).a() == 1L))
+          if ((localObject3 != null) && (((AppletsSetting)localObject2).b.size() > 0) && (((AppletsSetting)localObject2).b.get(0) != null) && (((AppletItem)((AppletsSetting)localObject2).b.get(0)).a() == 1L))
           {
-            AppletsSettingFragment.a(this.a, (AppletItem)((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList.get(0));
-            if (!TextUtils.isEmpty(AppletsSettingFragment.a(this.a).a()))
+            AppletsSettingFragment.a(this.a, (AppletItem)((AppletsSetting)localObject2).b.get(0));
+            if (!TextUtils.isEmpty(AppletsSettingFragment.b(this.a).b()))
             {
-              AppletsSettingFragment.a(this.a).setText(AppletsSettingFragment.a(this.a).a());
-              this.a.a.e(AppletsSettingFragment.a(this.a).a());
+              AppletsSettingFragment.c(this.a).setText(AppletsSettingFragment.b(this.a).b());
+              this.a.a.g(AppletsSettingFragment.b(this.a).b());
             }
             localObject3 = this.a;
-            if (AppletsSettingFragment.a((AppletsSettingFragment)localObject3).b() == 1) {
+            if (AppletsSettingFragment.b((AppletsSettingFragment)localObject3).e() == 1) {
               paramBoolean = true;
             } else {
               paramBoolean = false;
             }
             AppletsSettingFragment.a((AppletsSettingFragment)localObject3, paramBoolean);
-            localObject3 = AppletsSettingFragment.a(this.a);
-            if (AppletsSettingFragment.a(this.a).b() == 1) {
+            localObject3 = AppletsSettingFragment.d(this.a);
+            if (AppletsSettingFragment.b(this.a).e() == 1) {
               paramBoolean = true;
             } else {
               paramBoolean = false;
             }
             ((Switch)localObject3).setChecked(paramBoolean);
             localObject3 = this.a.a;
-            if (AppletsSettingFragment.a(this.a).b() == 1) {
+            if (AppletsSettingFragment.b(this.a).e() == 1) {
               paramBoolean = bool;
             } else {
               paramBoolean = false;
             }
-            ((AppletsFolderManager)localObject3).a(paramBoolean);
-            if (!TextUtils.isEmpty(((AppletsSetting)localObject2).jdField_a_of_type_JavaLangString))
+            ((AppletsFolderManager)localObject3).b(paramBoolean);
+            if (!TextUtils.isEmpty(((AppletsSetting)localObject2).a))
             {
-              AppletsSettingFragment.b(this.a).setText(((AppletsSetting)localObject2).jdField_a_of_type_JavaLangString);
-              this.a.a.a(((AppletsSetting)localObject2).jdField_a_of_type_JavaLangString);
+              AppletsSettingFragment.e(this.a).setText(((AppletsSetting)localObject2).a);
+              this.a.a.c(((AppletsSetting)localObject2).a);
             }
           }
           else
           {
-            if (!TextUtils.isEmpty(((AppletsSetting)localObject2).jdField_a_of_type_JavaLangString))
+            if (!TextUtils.isEmpty(((AppletsSetting)localObject2).a))
             {
-              AppletsSettingFragment.c(this.a).setText(((AppletsSetting)localObject2).jdField_a_of_type_JavaLangString);
-              this.a.a.b(((AppletsSetting)localObject2).jdField_a_of_type_JavaLangString);
+              AppletsSettingFragment.f(this.a).setText(((AppletsSetting)localObject2).a);
+              this.a.a.d(((AppletsSetting)localObject2).a);
             }
-            if ((((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList != null) && (((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList.size() > 0))
+            if ((((AppletsSetting)localObject2).b != null) && (((AppletsSetting)localObject2).b.size() > 0))
             {
-              AppletsSettingFragment.a(this.a).clear();
-              localObject2 = ((AppletsSetting)localObject2).jdField_a_of_type_JavaUtilList.iterator();
+              AppletsSettingFragment.g(this.a).clear();
+              localObject2 = ((AppletsSetting)localObject2).b.iterator();
               while (((Iterator)localObject2).hasNext())
               {
                 localObject3 = (AppletItem)((Iterator)localObject2).next();
-                AppletsSettingFragment.a(this.a).put(AppletsSettingFragment.a(this.a, (AppletItem)localObject3), localObject3);
-                if ((((AppletItem)localObject3).a() != 1L) && (((AppletItem)localObject3).b() != 1)) {
+                AppletsSettingFragment.g(this.a).put(AppletsSettingFragment.b(this.a, (AppletItem)localObject3), localObject3);
+                if ((((AppletItem)localObject3).a() != 1L) && (((AppletItem)localObject3).e() != 1)) {
                   ((Set)localObject1).add(String.valueOf(((AppletItem)localObject3).a()));
                 }
               }
               localObject2 = this.a;
-              AppletsSettingFragment.a((AppletsSettingFragment)localObject2, new ArrayList(AppletsSettingFragment.a((AppletsSettingFragment)localObject2).values()));
+              AppletsSettingFragment.a((AppletsSettingFragment)localObject2, new ArrayList(AppletsSettingFragment.g((AppletsSettingFragment)localObject2).values()));
             }
           }
         }
@@ -104,7 +104,7 @@ class AppletsSettingFragment$3
       this.a.a.a((Set)localObject1);
       return;
     }
-    this.a.a(2131690105);
+    this.a.a(2131886999);
   }
   
   protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
@@ -127,16 +127,16 @@ class AppletsSettingFragment$3
         int i = 0;
         ((AppletsSettingFragment)localObject2).a(false);
         if (!paramBoolean) {
-          this.a.a(2131690106);
+          this.a.a(2131887000);
         }
         long l = ((AppletItem)localObject1).a();
         boolean bool2 = true;
         if (l == 1L)
         {
-          localObject2 = AppletsSettingFragment.a(this.a);
+          localObject2 = AppletsSettingFragment.b(this.a);
           if (paramBoolean) {
-            i = ((AppletItem)localObject1).b();
-          } else if (((AppletItem)localObject1).b() == 1) {
+            i = ((AppletItem)localObject1).e();
+          } else if (((AppletItem)localObject1).e() == 1) {
             i = 0;
           } else {
             i = 1;
@@ -144,14 +144,14 @@ class AppletsSettingFragment$3
           ((AppletItem)localObject2).a(i);
           localObject1 = this.a;
           boolean bool1;
-          if (AppletsSettingFragment.a((AppletsSettingFragment)localObject1).b() == 1) {
+          if (AppletsSettingFragment.b((AppletsSettingFragment)localObject1).e() == 1) {
             bool1 = true;
           } else {
             bool1 = false;
           }
           AppletsSettingFragment.a((AppletsSettingFragment)localObject1, bool1);
-          localObject1 = AppletsSettingFragment.a(this.a);
-          if (AppletsSettingFragment.a(this.a).b() == 1) {
+          localObject1 = AppletsSettingFragment.d(this.a);
+          if (AppletsSettingFragment.b(this.a).e() == 1) {
             bool1 = true;
           } else {
             bool1 = false;
@@ -160,35 +160,35 @@ class AppletsSettingFragment$3
           if (this.a.a != null)
           {
             localObject1 = this.a.a;
-            if (AppletsSettingFragment.a(this.a).b() == 1) {
+            if (AppletsSettingFragment.b(this.a).e() == 1) {
               bool1 = bool2;
             } else {
               bool1 = false;
             }
-            ((AppletsFolderManager)localObject1).a(bool1);
+            ((AppletsFolderManager)localObject1).b(bool1);
           }
         }
         else
         {
-          localObject2 = AppletsSettingFragment.a(this.a, (AppletItem)localObject1);
-          localObject2 = (AppletItem)AppletsSettingFragment.a(this.a).get(localObject2);
+          localObject2 = AppletsSettingFragment.b(this.a, (AppletItem)localObject1);
+          localObject2 = (AppletItem)AppletsSettingFragment.g(this.a).get(localObject2);
           if (localObject2 != null)
           {
             if (paramBoolean) {
-              i = ((AppletItem)localObject1).b();
-            } else if (((AppletItem)localObject1).b() != 1) {
+              i = ((AppletItem)localObject1).e();
+            } else if (((AppletItem)localObject1).e() != 1) {
               i = 1;
             }
             ((AppletItem)localObject2).a(i);
           }
-          AppletsSettingFragment.a(this.a);
+          AppletsSettingFragment.h(this.a);
           localObject1 = this.a;
-          AppletsSettingFragment.a((AppletsSettingFragment)localObject1, new ArrayList(AppletsSettingFragment.a((AppletsSettingFragment)localObject1).values()));
+          AppletsSettingFragment.a((AppletsSettingFragment)localObject1, new ArrayList(AppletsSettingFragment.g((AppletsSettingFragment)localObject1).values()));
           if ((this.a.a != null) && (localObject2 != null)) {
-            if (((AppletItem)localObject2).b() == 0) {
-              this.a.a.c(String.valueOf(((AppletItem)localObject2).a()));
+            if (((AppletItem)localObject2).e() == 0) {
+              this.a.a.e(String.valueOf(((AppletItem)localObject2).a()));
             } else {
-              this.a.a.d(String.valueOf(((AppletItem)localObject2).a()));
+              this.a.a.f(String.valueOf(((AppletItem)localObject2).a()));
             }
           }
         }
@@ -198,7 +198,7 @@ class AppletsSettingFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.AppletsSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

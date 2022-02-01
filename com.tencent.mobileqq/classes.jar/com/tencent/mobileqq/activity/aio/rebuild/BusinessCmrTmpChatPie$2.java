@@ -21,7 +21,7 @@ class BusinessCmrTmpChatPie$2
     if (paramInt == 0)
     {
       paramObject = this.a;
-      paramObject.c(paramObject.a.getIntent());
+      paramObject.d(paramObject.f.getIntent());
     }
   }
   
@@ -30,7 +30,7 @@ class BusinessCmrTmpChatPie$2
     if (paramInt == 0)
     {
       paramObject = this.a;
-      paramObject.c(paramObject.a.getIntent());
+      paramObject.d(paramObject.f.getIntent());
     }
   }
   
@@ -39,13 +39,13 @@ class BusinessCmrTmpChatPie$2
     if (paramBoolean)
     {
       BusinessCmrTmpChatPie localBusinessCmrTmpChatPie = this.a;
-      localBusinessCmrTmpChatPie.c(localBusinessCmrTmpChatPie.a.getIntent());
+      localBusinessCmrTmpChatPie.d(localBusinessCmrTmpChatPie.f.getIntent());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class RvPolymericContainer$3$1
   public void a()
   {
     QLog.d("RvPolymericContainer", 2, "stopScroll as videoplayer start");
-    RvPolymericContainer.b(this.a.a);
+    RvPolymericContainer.c(this.a.a);
   }
   
   public void b()
   {
     QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer stop");
-    if (RvPolymericContainer.a(this.a.a) != null) {
-      RvPolymericContainer.a(this.a.a, RvPolymericContainer.a(this.a.a).a());
+    if (RvPolymericContainer.d(this.a.a) != null) {
+      RvPolymericContainer.a(this.a.a, RvPolymericContainer.d(this.a.a).c());
     }
   }
   
@@ -31,7 +31,7 @@ class RvPolymericContainer$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.RvPolymericContainer.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import java.util.Map;
 class FrameFragment$2
   implements QQBlur.OnDrawBgListener
 {
-  private Map<View, ArrayList<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<View, ArrayList<View>> b = new HashMap();
   
   FrameFragment$2(FrameFragment paramFrameFragment) {}
   
@@ -41,14 +41,14 @@ class FrameFragment$2
   
   private void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.a.getCurrentView();
-    Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(localView);
+    View localView = this.a.s.getCurrentView();
+    Object localObject2 = (ArrayList)this.b.get(localView);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ArrayList();
       a(localView, (ArrayList)localObject1);
-      this.jdField_a_of_type_JavaUtilMap.put(localView, localObject1);
+      this.b.put(localView, localObject1);
     }
     localObject1 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -74,7 +74,7 @@ class FrameFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameFragment.2
  * JD-Core Version:    0.7.0.1
  */

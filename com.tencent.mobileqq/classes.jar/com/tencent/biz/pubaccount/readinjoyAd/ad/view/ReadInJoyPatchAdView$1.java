@@ -26,9 +26,9 @@ class ReadInJoyPatchAdView$1
     {
     default: 
     case 1203: 
-      if (this.a.a != null)
+      if (this.a.b != null)
       {
-        this.a.a.b(ReadInJoyPatchAdView.a(this.a), ReadInJoyPatchAdView.a(this.a));
+        this.a.b.b(ReadInJoyPatchAdView.b(this.a), ReadInJoyPatchAdView.c(this.a));
         return;
       }
       break;
@@ -46,7 +46,7 @@ class ReadInJoyPatchAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView.1
  * JD-Core Version:    0.7.0.1
  */

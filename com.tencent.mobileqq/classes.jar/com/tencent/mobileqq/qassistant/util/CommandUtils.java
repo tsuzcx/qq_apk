@@ -42,75 +42,6 @@ import mqq.app.MobileQQ;
 
 public class CommandUtils
 {
-  public static int a()
-  {
-    int i = 15;
-    try
-    {
-      String str = QBaseActivity.sTopActivity.getActivityName();
-      if ("SplashActivity_MainFragment".equals(str))
-      {
-        if (QQSettingMe.a()) {
-          return 8;
-        }
-        int j = ((IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class)).getMainFragmentCurrentTab();
-        if (j == BaseFrameControllerUtil.jdField_a_of_type_Int) {
-          return 1;
-        }
-        if (j == BaseFrameControllerUtil.c) {
-          return 2;
-        }
-        if (j == BaseFrameControllerUtil.g) {
-          return 9;
-        }
-        if (j == BaseFrameControllerUtil.d) {
-          return 10;
-        }
-      }
-      else
-      {
-        if ("SplashActivity_ChatFragment".equals(str))
-        {
-          i = ((IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class)).getChatFragmentCurrentType();
-          if (i == 0) {
-            break label182;
-          }
-          if (i == 1) {
-            break label180;
-          }
-          if (i == 3000) {
-            break label177;
-          }
-          return 5;
-        }
-        if ("FriendProfileCardActivity".equals(str)) {
-          return 7;
-        }
-        if ("UniteSearchActivity".equals(str)) {
-          return 12;
-        }
-      }
-      if ("QQSettingSettingActivity".equals(str)) {
-        return 13;
-      }
-      boolean bool = "AssistantSettingActivity".equals(str);
-      if (bool) {
-        i = 14;
-      }
-      return i;
-    }
-    catch (Exception localException)
-    {
-      return 15;
-    }
-    label177:
-    return 6;
-    label180:
-    return 3;
-    label182:
-    return 4;
-  }
-  
   public static int a(long paramLong)
   {
     Time localTime = new Time();
@@ -143,8 +74,8 @@ public class CommandUtils
       } else {
         localForwardFileInfo.f(localFileManagerEntity.strThumbPath);
       }
-      paramArrayList1.add(Uri.parse(localFileInfo.c()));
-      l += localForwardFileInfo.d();
+      paramArrayList1.add(Uri.parse(localFileInfo.d()));
+      l += localForwardFileInfo.j();
       paramArrayList.add(localForwardFileInfo);
     }
     return l;
@@ -152,12 +83,12 @@ public class CommandUtils
   
   public static CommandInfo a()
   {
-    return new CommandInfo(12, MobileQQ.sMobileQQ.getString(2131720326));
+    return new CommandInfo(12, MobileQQ.sMobileQQ.getString(2131917961));
   }
   
   public static CommandInfo a(ConfirmSendInfo paramConfirmSendInfo)
   {
-    return new CommandInfo(9, MobileQQ.sMobileQQ.getString(2131720337), paramConfirmSendInfo);
+    return new CommandInfo(9, MobileQQ.sMobileQQ.getString(2131917972), paramConfirmSendInfo);
   }
   
   public static CommandInfo a(FriendItemInfo paramFriendItemInfo, boolean paramBoolean1, boolean paramBoolean2)
@@ -165,30 +96,30 @@ public class CommandUtils
     if (paramFriendItemInfo != null)
     {
       JumpInfo localJumpInfo = new JumpInfo(115);
-      localJumpInfo.jdField_a_of_type_JavaLangString = paramFriendItemInfo.jdField_a_of_type_JavaLangString;
-      localJumpInfo.jdField_b_of_type_JavaLangString = paramFriendItemInfo.jdField_b_of_type_JavaLangString;
-      localJumpInfo.jdField_b_of_type_Int = paramFriendItemInfo.jdField_a_of_type_Int;
-      localJumpInfo.jdField_a_of_type_Boolean = false;
-      localJumpInfo.jdField_b_of_type_Boolean = paramBoolean1;
-      localJumpInfo.c = paramBoolean2;
-      String str = String.format(MobileQQ.sMobileQQ.getString(2131720319), new Object[] { paramFriendItemInfo.jdField_b_of_type_JavaLangString });
+      localJumpInfo.b = paramFriendItemInfo.a;
+      localJumpInfo.c = paramFriendItemInfo.b;
+      localJumpInfo.d = paramFriendItemInfo.c;
+      localJumpInfo.e = false;
+      localJumpInfo.f = paramBoolean1;
+      localJumpInfo.g = paramBoolean2;
+      String str = String.format(MobileQQ.sMobileQQ.getString(2131917954), new Object[] { paramFriendItemInfo.b });
       Object localObject = str;
       if (paramBoolean1) {
-        if (paramFriendItemInfo.jdField_a_of_type_Boolean)
+        if (paramFriendItemInfo.d)
         {
-          localObject = String.format(MobileQQ.sMobileQQ.getString(2131720316), new Object[] { paramFriendItemInfo.jdField_b_of_type_JavaLangString });
+          localObject = String.format(MobileQQ.sMobileQQ.getString(2131917951), new Object[] { paramFriendItemInfo.b });
         }
         else
         {
           localObject = str;
-          if (paramFriendItemInfo.jdField_a_of_type_Float < FriendSortHelper.a()) {
-            localObject = String.format(MobileQQ.sMobileQQ.getString(2131719395), new Object[] { paramFriendItemInfo.jdField_b_of_type_JavaLangString });
+          if (paramFriendItemInfo.h < FriendSortHelper.a()) {
+            localObject = String.format(MobileQQ.sMobileQQ.getString(2131916951), new Object[] { paramFriendItemInfo.b });
           }
         }
       }
       localObject = new CommandInfo(1, (String)localObject, localJumpInfo);
-      ((CommandInfo)localObject).jdField_a_of_type_JavaUtilList = new ArrayList();
-      ((CommandInfo)localObject).jdField_a_of_type_JavaUtilList.add(paramFriendItemInfo);
+      ((CommandInfo)localObject).d = new ArrayList();
+      ((CommandInfo)localObject).d.add(paramFriendItemInfo);
       return localObject;
     }
     return null;
@@ -204,8 +135,8 @@ public class CommandUtils
     paramString = new CommandInfo(4, paramString);
     if (paramCommandInfo != null)
     {
-      paramString.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo = paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo;
-      paramString.jdField_a_of_type_JavaUtilList = paramCommandInfo.jdField_a_of_type_JavaUtilList;
+      paramString.f = paramCommandInfo.f;
+      paramString.d = paramCommandInfo.d;
     }
     return paramString;
   }
@@ -214,40 +145,27 @@ public class CommandUtils
   {
     paramString1 = new RecordInfo(paramString1, paramString2, paramString3);
     paramString2 = new CommandInfo(5, "");
-    paramString2.jdField_a_of_type_ComTencentMobileqqQassistantDataRecordInfo = paramString1;
+    paramString2.e = paramString1;
     return paramString2;
   }
   
   public static CommandInfo a(String paramString, List<FriendItemInfo> paramList)
   {
-    return new CommandInfo(7, String.format(MobileQQ.sMobileQQ.getString(2131720320), new Object[] { paramString }), paramList);
+    return new CommandInfo(7, String.format(MobileQQ.sMobileQQ.getString(2131917955), new Object[] { paramString }), paramList);
   }
   
   public static CommandInfo a(String paramString, boolean paramBoolean)
   {
     paramString = new CommandInfo(3, paramString);
-    paramString.jdField_a_of_type_Boolean = paramBoolean;
+    paramString.c = paramBoolean;
     return paramString;
   }
   
   public static CommandInfo a(boolean paramBoolean)
   {
     CommandInfo localCommandInfo = new CommandInfo(10, "");
-    localCommandInfo.jdField_b_of_type_Boolean = paramBoolean;
+    localCommandInfo.g = paramBoolean;
     return localCommandInfo;
-  }
-  
-  public static String a(long paramLong)
-  {
-    Time localTime = new Time();
-    localTime.set(paramLong);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(localTime.year);
-    localStringBuilder.append("-");
-    localStringBuilder.append(localTime.month + 1);
-    localStringBuilder.append("-");
-    localStringBuilder.append(localTime.monthDay);
-    return localStringBuilder.toString();
   }
   
   public static List<String> a(String paramString, int paramInt)
@@ -308,26 +226,26 @@ public class CommandUtils
         localIntent.putExtras(localBundle);
         localIntent.putExtra("foward_editbar", true);
         localIntent.putExtra("forward_type", 0);
-        paramList = HardCodeUtil.a(2131709609);
+        paramList = HardCodeUtil.a(2131907336);
         int i = localArrayList.size();
         if (i == 1)
         {
           paramList = new StringBuilder();
-          paramList.append(HardCodeUtil.a(2131709611));
-          paramList.append(QQFileManagerUtil.b(((ForwardFileInfo)localArrayList.get(0)).d()));
-          paramList.append(HardCodeUtil.a(2131709608));
-          paramList.append(FileUtil.a(((ForwardFileInfo)localArrayList.get(0)).d()));
+          paramList.append(HardCodeUtil.a(2131907338));
+          paramList.append(QQFileManagerUtil.b(((ForwardFileInfo)localArrayList.get(0)).i()));
+          paramList.append(HardCodeUtil.a(2131907335));
+          paramList.append(FileUtil.a(((ForwardFileInfo)localArrayList.get(0)).j()));
           paramList.append("。");
           paramList = paramList.toString();
         }
         else if (localArrayList.size() > 1)
         {
           paramList = new StringBuilder();
-          paramList.append(HardCodeUtil.a(2131709612));
-          paramList.append(QQFileManagerUtil.b(((ForwardFileInfo)localArrayList.get(0)).d()));
-          paramList.append(HardCodeUtil.a(2131709613));
+          paramList.append(HardCodeUtil.a(2131907339));
+          paramList.append(QQFileManagerUtil.b(((ForwardFileInfo)localArrayList.get(0)).i()));
+          paramList.append(HardCodeUtil.a(2131907340));
           paramList.append(localArrayList.size());
-          paramList.append(HardCodeUtil.a(2131709614));
+          paramList.append(HardCodeUtil.a(2131907341));
           paramList.append(FileUtil.a(l));
           paramList.append("。");
           paramList = paramList.toString();
@@ -346,7 +264,20 @@ public class CommandUtils
   
   public static CommandInfo b()
   {
-    return new CommandInfo(6, MobileQQ.sMobileQQ.getString(2131720337));
+    return new CommandInfo(6, MobileQQ.sMobileQQ.getString(2131917972));
+  }
+  
+  public static String b(long paramLong)
+  {
+    Time localTime = new Time();
+    localTime.set(paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localTime.year);
+    localStringBuilder.append("-");
+    localStringBuilder.append(localTime.month + 1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(localTime.monthDay);
+    return localStringBuilder.toString();
   }
   
   public static void b(List<String> paramList, Activity paramActivity)
@@ -358,8 +289,8 @@ public class CommandUtils
     long l2 = l1 - 600000L;
     Object localObject1 = String.format("%02d", new Object[] { Integer.valueOf(a(l2)) });
     paramList = String.format("%02d", new Object[] { Integer.valueOf(a(l1)) });
-    Object localObject2 = a(l2);
-    paramActivity = a(l1);
+    Object localObject2 = b(l2);
+    paramActivity = b(l1);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject2);
     localStringBuilder.append("-");
@@ -375,12 +306,81 @@ public class CommandUtils
   
   public static CommandInfo c()
   {
-    return new CommandInfo(0, MobileQQ.sMobileQQ.getString(2131720327));
+    return new CommandInfo(0, MobileQQ.sMobileQQ.getString(2131917962));
+  }
+  
+  public static int d()
+  {
+    int i = 15;
+    try
+    {
+      String str = QBaseActivity.sTopActivity.getActivityName();
+      if ("SplashActivity_MainFragment".equals(str))
+      {
+        if (QQSettingMe.i()) {
+          return 8;
+        }
+        int j = ((IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class)).getMainFragmentCurrentTab();
+        if (j == BaseFrameControllerUtil.a) {
+          return 1;
+        }
+        if (j == BaseFrameControllerUtil.c) {
+          return 2;
+        }
+        if (j == BaseFrameControllerUtil.g) {
+          return 9;
+        }
+        if (j == BaseFrameControllerUtil.d) {
+          return 10;
+        }
+      }
+      else
+      {
+        if ("SplashActivity_ChatFragment".equals(str))
+        {
+          i = ((IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class)).getChatFragmentCurrentType();
+          if (i == 0) {
+            break label190;
+          }
+          if (i == 1) {
+            break label188;
+          }
+          if (i == 3000) {
+            break label185;
+          }
+          return 5;
+        }
+        if ("FriendProfileCardActivity".equals(str)) {
+          return 7;
+        }
+        if ("UniteSearchActivity".equals(str)) {
+          return 12;
+        }
+      }
+      if ("QQSettingSettingActivity".equals(str)) {
+        return 13;
+      }
+      boolean bool = "AssistantSettingActivity".equals(str);
+      if (bool) {
+        i = 14;
+      }
+      return i;
+    }
+    catch (Exception localException)
+    {
+      return 15;
+    }
+    label185:
+    return 6;
+    label188:
+    return 3;
+    label190:
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.util.CommandUtils
  * JD-Core Version:    0.7.0.1
  */

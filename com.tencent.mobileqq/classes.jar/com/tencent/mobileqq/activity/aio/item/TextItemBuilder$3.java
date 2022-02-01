@@ -14,16 +14,16 @@ class TextItemBuilder$3
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_AndroidViewView.getMeasuredWidth() < DisplayUtil.a(this.this$0.jdField_a_of_type_AndroidContentContext, 70.0F)) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend())) {
-      TextItemBuilder.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d);
+    if ((this.a.h.getMeasuredWidth() < DisplayUtil.a(this.this$0.e, 70.0F)) && (this.b.isSend())) {
+      TextItemBuilder.a(this.this$0, this.a.A);
     } else {
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, null, this.b, 0, null);
+      this.this$0.a(this.a.A, this.a.j, null, this.c, 0, null);
     }
-    QQAppInterface localQQAppInterface = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$Holder.d;
+    QQAppInterface localQQAppInterface = this.this$0.d;
+    View localView = this.a.A;
     String str;
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      str = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    if (this.this$0.f != null) {
+      str = this.this$0.f.b;
     } else {
       str = null;
     }
@@ -32,7 +32,7 @@ class TextItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

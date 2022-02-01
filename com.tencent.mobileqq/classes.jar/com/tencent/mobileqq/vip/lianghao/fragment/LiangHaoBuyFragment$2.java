@@ -10,14 +10,14 @@ class LiangHaoBuyFragment$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!LiangHaoBuyFragment.a(this.a)) {
-      LiangHaoBuyFragment.b(this.a);
+    if (!LiangHaoBuyFragment.b(this.a)) {
+      LiangHaoBuyFragment.c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment.2
  * JD-Core Version:    0.7.0.1
  */

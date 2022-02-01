@@ -12,17 +12,17 @@ import unite.DynamicSearch.ResultItem;
 public class NetSearchTemplateUpdatesItem
   extends NetSearchTemplateBaseItem
 {
-  public double a;
   public int a;
-  public CharSequence a;
-  public String a;
-  public List<ImageItem> a;
-  public double b;
-  public int b;
   public CharSequence b;
-  public boolean b;
-  public CharSequence c;
-  public boolean c;
+  public String c;
+  public CharSequence d;
+  public CharSequence e;
+  public List<ImageItem> f;
+  public double t;
+  public int u;
+  public double v;
+  public boolean w;
+  public boolean x;
   
   public NetSearchTemplateUpdatesItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
@@ -47,47 +47,52 @@ public class NetSearchTemplateUpdatesItem
     return i;
   }
   
-  public void a(String paramString)
+  public boolean i()
+  {
+    return true;
+  }
+  
+  public void o_(String paramString)
   {
     for (;;)
     {
       try
       {
         paramString = new JSONObject(paramString);
-        this.i = paramString.optString("leftImageURL");
+        this.s = paramString.optString("leftImageURL");
         boolean bool2 = true;
-        this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-        this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_JavaLangCharSequence = SearchUtils.a(paramString.optString("headText"));
-        this.jdField_a_of_type_JavaLangString = paramString.optString("headLineIconURL");
-        this.jdField_b_of_type_JavaLangCharSequence = SearchUtils.a(paramString.optString("descLineText"));
-        this.jdField_c_of_type_JavaLangCharSequence = SearchUtils.a(paramString.optString("firstLineText"));
+        this.a = paramString.optInt("leftImageType", 1);
+        this.a = a(this.a);
+        this.b = SearchUtils.b(paramString.optString("headText"));
+        this.c = paramString.optString("headLineIconURL");
+        this.d = SearchUtils.b(paramString.optString("descLineText"));
+        this.e = SearchUtils.b(paramString.optString("firstLineText"));
         JSONArray localJSONArray = paramString.optJSONArray("imageList");
         if (localJSONArray != null)
         {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
+          this.f = new ArrayList(localJSONArray.length());
           int i = 0;
           if (i < localJSONArray.length())
           {
             Object localObject = localJSONArray.optJSONObject(i);
             localObject = new ImageItem(((JSONObject)localObject).optString("url"), ((JSONObject)localObject).optInt("type"));
-            this.jdField_a_of_type_JavaUtilList.add(localObject);
+            this.f.add(localObject);
             i += 1;
             continue;
           }
         }
-        this.jdField_a_of_type_Double = paramString.optDouble("imageAspectRatio", 1.0D);
-        this.jdField_b_of_type_Double = paramString.optDouble("singleImageScale", 1.0D);
-        this.jdField_b_of_type_Int = paramString.optInt("imageTotalCount");
+        this.t = paramString.optDouble("imageAspectRatio", 1.0D);
+        this.v = paramString.optDouble("singleImageScale", 1.0D);
+        this.u = paramString.optInt("imageTotalCount");
         if (paramString.optInt("topNeedHigherMargin", 0) == 1)
         {
           bool1 = true;
-          this.jdField_b_of_type_Boolean = bool1;
+          this.w = bool1;
           if (paramString.optInt("needCornerRadius", 0) != 1) {
             break label271;
           }
           bool1 = bool2;
-          this.jdField_c_of_type_Boolean = bool1;
+          this.x = bool1;
           return;
         }
       }
@@ -102,15 +107,10 @@ public class NetSearchTemplateUpdatesItem
       bool1 = false;
     }
   }
-  
-  public boolean b()
-  {
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateUpdatesItem
  * JD-Core Version:    0.7.0.1
  */

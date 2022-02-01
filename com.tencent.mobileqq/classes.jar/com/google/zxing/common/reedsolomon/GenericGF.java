@@ -2,92 +2,87 @@ package com.google.zxing.common.reedsolomon;
 
 public final class GenericGF
 {
-  public static final GenericGF a;
-  private final int jdField_a_of_type_Int;
-  private GenericGFPoly jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGFPoly;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private final int jdField_b_of_type_Int;
-  private GenericGFPoly jdField_b_of_type_ComGoogleZxingCommonReedsolomonGenericGFPoly;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  
-  static
-  {
-    jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF = new GenericGF(285, 256);
-  }
+  public static final GenericGF a = new GenericGF(285, 256);
+  private int[] b;
+  private int[] c;
+  private GenericGFPoly d;
+  private GenericGFPoly e;
+  private final int f;
+  private final int g;
+  private boolean h = false;
   
   public GenericGF(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.g = paramInt1;
+    this.f = paramInt2;
     if (paramInt2 <= 0) {
-      a();
+      b();
     }
   }
   
-  static int a(int paramInt1, int paramInt2)
+  static int b(int paramInt1, int paramInt2)
   {
     return paramInt1 ^ paramInt2;
   }
   
-  private void a()
+  private void b()
   {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ArrayOfInt = new int[i];
-    this.jdField_b_of_type_ArrayOfInt = new int[i];
+    int i = this.f;
+    this.b = new int[i];
+    this.c = new int[i];
     int j = 0;
     i = 1;
     for (;;)
     {
-      int m = this.jdField_a_of_type_Int;
+      int m = this.f;
       if (j >= m) {
         break;
       }
-      this.jdField_a_of_type_ArrayOfInt[j] = i;
+      this.b[j] = i;
       int k = i << 1;
       i = k;
       if (k >= m) {
-        i = (k ^ this.jdField_b_of_type_Int) & m - 1;
+        i = (k ^ this.g) & m - 1;
       }
       j += 1;
     }
     i = 0;
-    while (i < this.jdField_a_of_type_Int - 1)
+    while (i < this.f - 1)
     {
-      this.jdField_b_of_type_ArrayOfInt[this.jdField_a_of_type_ArrayOfInt[i]] = i;
+      this.c[this.b[i]] = i;
       i += 1;
     }
-    this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGFPoly = new GenericGFPoly(this, new int[] { 0 });
-    this.jdField_b_of_type_ComGoogleZxingCommonReedsolomonGenericGFPoly = new GenericGFPoly(this, new int[] { 1 });
-    this.jdField_a_of_type_Boolean = true;
+    this.d = new GenericGFPoly(this, new int[] { 0 });
+    this.e = new GenericGFPoly(this, new int[] { 1 });
+    this.h = true;
   }
   
-  private void b()
+  private void c()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      a();
+    if (!this.h) {
+      b();
     }
   }
   
   int a(int paramInt)
   {
-    b();
-    return this.jdField_a_of_type_ArrayOfInt[paramInt];
+    c();
+    return this.b[paramInt];
   }
   
   GenericGFPoly a()
   {
-    b();
-    return this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGFPoly;
+    c();
+    return this.d;
   }
   
   GenericGFPoly a(int paramInt1, int paramInt2)
   {
-    b();
+    c();
     if (paramInt1 >= 0)
     {
       if (paramInt2 == 0) {
-        return this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGFPoly;
+        return this.d;
       }
       int[] arrayOfInt = new int[paramInt1 + 1];
       arrayOfInt[0] = paramInt2;
@@ -98,37 +93,37 @@ public final class GenericGF
   
   int b(int paramInt)
   {
-    b();
+    c();
     if (paramInt != 0) {
-      return this.jdField_b_of_type_ArrayOfInt[paramInt];
+      return this.c[paramInt];
     }
     throw new IllegalArgumentException();
   }
   
-  int b(int paramInt1, int paramInt2)
-  {
-    b();
-    if ((paramInt1 != 0) && (paramInt2 != 0))
-    {
-      int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
-      int[] arrayOfInt2 = this.jdField_b_of_type_ArrayOfInt;
-      return arrayOfInt1[((arrayOfInt2[paramInt1] + arrayOfInt2[paramInt2]) % (this.jdField_a_of_type_Int - 1))];
-    }
-    return 0;
-  }
-  
   int c(int paramInt)
   {
-    b();
+    c();
     if (paramInt != 0) {
-      return this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_Int - this.jdField_b_of_type_ArrayOfInt[paramInt] - 1)];
+      return this.b[(this.f - this.c[paramInt] - 1)];
     }
     throw new ArithmeticException();
+  }
+  
+  int c(int paramInt1, int paramInt2)
+  {
+    c();
+    if ((paramInt1 != 0) && (paramInt2 != 0))
+    {
+      int[] arrayOfInt1 = this.b;
+      int[] arrayOfInt2 = this.c;
+      return arrayOfInt1[((arrayOfInt2[paramInt1] + arrayOfInt2[paramInt2]) % (this.f - 1))];
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.common.reedsolomon.GenericGF
  * JD-Core Version:    0.7.0.1
  */

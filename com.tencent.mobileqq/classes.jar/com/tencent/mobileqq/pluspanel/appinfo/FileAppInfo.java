@@ -29,42 +29,48 @@ public class FileAppInfo
   
   private void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     Object localObject = (SmartDeviceProxyMgr)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     long l;
     try
     {
-      l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      l = Long.parseLong(paramSessionInfo.b);
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
       l = 0L;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramSessionInfo.a == 1)
     {
       ReportController.b(localQQAppInterface, "CliOper", "", "", "0X800407E", "0X800407E", 0, 0, "", "", "", "");
-      PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
+      PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.aX(), paramSessionInfo);
     }
-    else if ((paramSessionInfo.jdField_a_of_type_Int == 9501) && (localObject != null) && (((SmartDeviceProxyMgr)localObject).c(l)))
+    else if ((paramSessionInfo.a == 9501) && (localObject != null) && (((SmartDeviceProxyMgr)localObject).c(l)))
     {
-      PlusPanelUtils.c(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
+      PlusPanelUtils.c(localQQAppInterface, paramBaseChatPie.aX(), paramSessionInfo);
     }
     else
     {
-      AIOPanelUtiles.a(localQQAppInterface, "0X800407C", paramSessionInfo.jdField_a_of_type_Int);
+      AIOPanelUtiles.a(localQQAppInterface, "0X800407C", paramSessionInfo.a);
       localObject = new FileManagerReporter.FileAssistantReportData();
       ((FileManagerReporter.FileAssistantReportData)localObject).b = "send_file";
-      ((FileManagerReporter.FileAssistantReportData)localObject).jdField_a_of_type_Int = 1;
+      ((FileManagerReporter.FileAssistantReportData)localObject).c = 1;
       FileManagerReporter.a(localQQAppInterface.getCurrentAccountUin(), (FileManagerReporter.FileAssistantReportData)localObject);
-      PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo);
+      PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.aX(), paramSessionInfo);
     }
-    paramBaseChatPie.a().setCanLock(false);
+    paramBaseChatPie.aX().setCanLock(false);
   }
   
   public int defaultDrawableID()
   {
-    return 2130839146;
+    if (isGuildLiveChannel()) {
+      return 2130840914;
+    }
+    if (isGuild()) {
+      return 2130840808;
+    }
+    return 2130839302;
   }
   
   public int getAppID()
@@ -73,6 +79,14 @@ public class FileAppInfo
       return 206;
     }
     return 1104864066;
+  }
+  
+  public String getDTElementId()
+  {
+    if (isGuild()) {
+      return "em_sgrp_aio_plus_file";
+    }
+    return "";
   }
   
   public int getManageConfigID()
@@ -93,14 +107,14 @@ public class FileAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690830);
+    return BaseApplicationImpl.getContext().getString(2131887765);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.a()))
+    if (!CheckPermission.isHasStoragePermission(paramBaseChatPie.aX()))
     {
-      CheckPermission.requestSDCardPermission(paramBaseChatPie.a(), new FileAppInfo.1(this, paramBaseChatPie, paramSessionInfo));
+      CheckPermission.requestSDCardPermission(paramBaseChatPie.aX(), new FileAppInfo.1(this, paramBaseChatPie, paramSessionInfo));
       return;
     }
     a(paramBaseChatPie, paramSessionInfo);
@@ -108,7 +122,7 @@ public class FileAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.FileAppInfo
  * JD-Core Version:    0.7.0.1
  */

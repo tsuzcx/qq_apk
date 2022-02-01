@@ -24,13 +24,6 @@ public final class VasAdvService
 {
   public static final VasAdvService a = new VasAdvService();
   
-  private final adv_report.MobileAdvReportRsp a(byte[] paramArrayOfByte)
-  {
-    adv_report.MobileAdvReportRsp localMobileAdvReportRsp = new adv_report.MobileAdvReportRsp();
-    localMobileAdvReportRsp.mergeFrom(paramArrayOfByte);
-    return localMobileAdvReportRsp;
-  }
-  
   private final vac_adv_get.VacAdvRsp a(byte[] paramArrayOfByte)
   {
     vac_adv_get.VacAdvRsp localVacAdvRsp = new vac_adv_get.VacAdvRsp();
@@ -101,6 +94,13 @@ public final class VasAdvService
     return paramVacAdvRsp.err_code.get() == 0;
   }
   
+  private final adv_report.MobileAdvReportRsp b(byte[] paramArrayOfByte)
+  {
+    adv_report.MobileAdvReportRsp localMobileAdvReportRsp = new adv_report.MobileAdvReportRsp();
+    localMobileAdvReportRsp.mergeFrom(paramArrayOfByte);
+    return localMobileAdvReportRsp;
+  }
+  
   public final void a(@NotNull AdvPush.AdvPushReq paramAdvPushReq, @NotNull VasAdvBizCallback<AdvPush.AdvPushRsp> paramVasAdvBizCallback)
   {
     Intrinsics.checkParameterIsNotNull(paramAdvPushReq, "request");
@@ -154,7 +154,7 @@ public final class VasAdvService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.service.VasAdvService
  * JD-Core Version:    0.7.0.1
  */

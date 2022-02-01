@@ -12,11 +12,11 @@ class RecommendADVideoFeedsManager$2
   
   public void run()
   {
-    ViewBase localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-    if ((localViewBase != null) && (localViewBase.getNativeView() != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().setVisibility(0);
+    ViewBase localViewBase = this.a;
+    if ((localViewBase != null) && (localViewBase.getNativeView() != null) && (this.b)) {
+      this.a.getNativeView().setVisibility(0);
     }
-    localViewBase = ((IProteusItemView)this.jdField_a_of_type_AndroidViewView).a().getVirtualView().findViewBaseByName("id_large_video_duration");
+    localViewBase = ((IProteusItemView)this.c).getContainer().getVirtualView().findViewBaseByName("id_large_video_duration");
     if ((localViewBase != null) && (localViewBase.getNativeView() != null)) {
       localViewBase.getNativeView().setVisibility(0);
     }
@@ -24,7 +24,7 @@ class RecommendADVideoFeedsManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.RecommendADVideoFeedsManager.2
  * JD-Core Version:    0.7.0.1
  */

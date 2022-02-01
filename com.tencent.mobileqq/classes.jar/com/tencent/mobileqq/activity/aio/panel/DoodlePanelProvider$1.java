@@ -12,12 +12,12 @@ class DoodlePanelProvider$1
   
   public void a(Bitmap paramBitmap, DoodleItem paramDoodleItem, int paramInt)
   {
-    this.a.a.Q();
+    this.a.b.aw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.DoodlePanelProvider.1
  * JD-Core Version:    0.7.0.1
  */

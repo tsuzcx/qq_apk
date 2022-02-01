@@ -32,7 +32,7 @@ public class DarkModeConfigProcessor
   
   private static boolean b()
   {
-    Object localObject2 = (DarkModeConfigProcessor.DarkModeConfigBean)QConfigManager.a().a(531);
+    Object localObject2 = (DarkModeConfigProcessor.DarkModeConfigBean)QConfigManager.b().b(531);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -69,10 +69,10 @@ public class DarkModeConfigProcessor
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed : ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("DarkModeConfigProcessor", 2, localStringBuilder.toString());
       }
-      return DarkModeConfigProcessor.DarkModeConfigBean.a(paramArrayOfQConfItem[0].a);
+      return DarkModeConfigProcessor.DarkModeConfigBean.a(paramArrayOfQConfItem[0].b);
     }
     return new DarkModeConfigProcessor.DarkModeConfigBean();
   }
@@ -125,7 +125,7 @@ public class DarkModeConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.DarkModeConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

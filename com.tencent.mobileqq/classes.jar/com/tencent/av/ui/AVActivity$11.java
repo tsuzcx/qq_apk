@@ -1,25 +1,27 @@
 package com.tencent.av.ui;
 
-import android.os.Handler;
+import android.view.View;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.vas.vipav.VipFunCallMediaListener;
+import com.tencent.av.redtouch.AVRedTouchUtil;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
 
 class AVActivity$11
-  extends VipFunCallMediaListener
+  implements Runnable
 {
-  AVActivity$11(AVActivity paramAVActivity) {}
+  AVActivity$11(AVActivity paramAVActivity, View paramView) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a().postDelayed(new AVActivity.11.1(this), 0L);
+    VideoAppInterface localVideoAppInterface = this.this$0.H;
+    if (localVideoAppInterface == null) {
+      return;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.a != null) {
-      this.a.a.a().post(new AVActivity.11.2(this));
+    if ((this.this$0.ah == null) && (!this.this$0.isDestroyed()))
+    {
+      this.this$0.ah = AVRedTouchUtil.a(localVideoAppInterface, this.a, 1);
+      if ((this.a.getVisibility() == 8) && (this.this$0.ah != null)) {
+        this.this$0.ah.setVisibility(8);
+      }
     }
   }
 }

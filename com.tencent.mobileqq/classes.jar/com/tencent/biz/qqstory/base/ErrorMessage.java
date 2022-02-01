@@ -56,7 +56,7 @@ public class ErrorMessage
     }
     else
     {
-      str = HardCodeUtil.a(2131704326);
+      str = HardCodeUtil.a(2131902240);
     }
     return String.format("%s(%d)", new Object[] { str, Integer.valueOf(this.errorCode) });
   }
@@ -94,7 +94,7 @@ public class ErrorMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.ErrorMessage
  * JD-Core Version:    0.7.0.1
  */

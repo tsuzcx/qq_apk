@@ -26,10 +26,12 @@ public abstract interface ShortVideoConstants
   public static final String FAV_ID = "fav_id";
   public static final int FILETYPE_SHORTVIDEO_C2C = 1001;
   public static final int FILETYPE_SHORTVIDEO_DISCUSS = 1005;
+  public static final int FILETYPE_SHORTVIDEO_GUILD = 1007;
   public static final int FILETYPE_SHORTVIDEO_TROOP = 1003;
   public static final int FILETYPE_THUMB_C2C = 1002;
   public static final int FILETYPE_THUMB_DISCUSS = 1006;
   public static final int FILETYPE_THUMB_TROOP = 1004;
+  public static final int FILETYPE_THUME_GUILD = 1008;
   public static final String FILE_FORMAT = "file_format";
   public static final String FILE_HEIGHT = "file_height";
   public static final String FILE_IS_MERGED_LOCAL = "file_is_merged_local";
@@ -37,6 +39,7 @@ public abstract interface ShortVideoConstants
   public static final String FILE_RAW_SIZE = "file_raw_size";
   public static final String FILE_SEND_BUSINESS_TYPE = "file_send_business_type";
   public static final String FILE_SEND_DURATION = "file_send_duration";
+  public static final String FILE_SEND_IS_PHOTO = "file_send_is_photo";
   public static final String FILE_SEND_PATH = "file_send_path";
   public static final String FILE_SEND_SIZE = "file_send_size";
   public static final String FILE_SHORTVIDEO_LOCAL_MD5 = "file_shortvideo_local_md5";
@@ -77,9 +80,9 @@ public abstract interface ShortVideoConstants
   public static final int MAX_LENGTH_DEFAULT = 1280;
   public static final long MAX_SIZE_DEFAULT = 754974720L;
   public static final String MEDIA_INFO = "media_info";
-  public static final String MESSAGEFORSHORTVIDEO_MSG = HardCodeUtil.a(2131713911);
+  public static final String MESSAGEFORSHORTVIDEO_MSG = HardCodeUtil.a(2131911442);
   public static final String MESSAGE_CLICK_START = "message_click_start";
-  public static final String MESSAGE_FOR_SHORT_VIDEO_PTV = HardCodeUtil.a(2131713937);
+  public static final String MESSAGE_FOR_SHORT_VIDEO_PTV = HardCodeUtil.a(2131911468);
   public static final long MIN_BITRATE_DEFAULT = 1048576L;
   public static final double MIN_DENSITY_DEFAULT = 0.067D;
   public static final String MSG_TAIL_TYPE = "short_video_msg_tail_type";
@@ -213,7 +216,7 @@ public abstract interface ShortVideoConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoConstants
  * JD-Core Version:    0.7.0.1
  */

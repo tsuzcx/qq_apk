@@ -41,16 +41,16 @@ public class StoryPickerFragment
   extends QQStoryBaseFragment
   implements View.OnClickListener, StoryPickerHorizontalListView.OnCheckBoxClickListener, StoryPickerHorizontalListView.OnHorizontalItemClickListener
 {
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView;
-  StoryPickerListAdapter jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter;
-  MemoryDataPuller jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller;
-  QQStoryPullToRefreshListView jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView;
-  String jdField_a_of_type_JavaLangString;
-  LinkedHashSet<String> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
-  boolean jdField_a_of_type_Boolean = false;
-  String b;
+  QQStoryPullToRefreshListView a;
+  StoryPickerListAdapter b;
+  View c;
+  String d;
+  MemoryDataPuller e;
+  LinkedHashSet<String> f = new LinkedHashSet();
+  boolean g = false;
+  String h;
+  int i;
+  private long q;
   
   static Intent a(Activity paramActivity, LinkedHashSet<String> paramLinkedHashSet, String paramString, boolean paramBoolean, int paramInt)
   {
@@ -73,59 +73,59 @@ public class StoryPickerFragment
   
   void a()
   {
-    this.leftView.setText(getString(2131690706));
+    this.leftView.setText(getString(2131887625));
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131714335));
-    ((StringBuilder)localObject).append(QQStoryConstant.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131911849));
+    ((StringBuilder)localObject).append(QQStoryConstant.a);
     super.setTitle(((StringBuilder)localObject).toString());
-    localObject = HardCodeUtil.a(2131714337);
-    int i = 1;
-    super.a(String.format((String)localObject, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
-    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1) {
-      i = 0;
+    localObject = HardCodeUtil.a(2131911851);
+    int j = 1;
+    super.a(String.format((String)localObject, new Object[] { Integer.valueOf(this.f.size()) }), this);
+    if (this.f.size() < 1) {
+      j = 0;
     }
-    super.setRightViewTextDisable(i);
-    this.jdField_a_of_type_AndroidViewView = super.a(2131366238);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter = new StoryPickerListAdapter(getBaseActivity());
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(new StoryPickerFragment.1(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)super.a(2131370153));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new StoryPickerFragment.2(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new StoryPickerFragment.3(this));
+    super.setRightViewTextDisable(j);
+    this.c = super.a(2131432530);
+    this.b = new StoryPickerListAdapter(getBaseActivity());
+    this.b.a(new StoryPickerFragment.1(this));
+    this.b.a(this);
+    this.b.a(this);
+    this.a = ((QQStoryPullToRefreshListView)super.a(2131437317));
+    this.a.setAdapter(this.b);
+    this.a.setPullToRefreshListener(new StoryPickerFragment.2(this));
+    this.a.j.a(new StoryPickerFragment.3(this));
   }
   
   public void a(View paramView, VideoCollectionItem.FakeVideoUIItem paramFakeVideoUIItem)
   {
-    if ((this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) && (!paramFakeVideoUIItem.b))
+    if ((this.f.size() >= 20) && (!paramFakeVideoUIItem.d))
     {
       paramView = DialogUtil.a(getBaseActivity(), 230);
-      paramView.setMessage(String.format(HardCodeUtil.a(2131714339), new Object[] { Integer.valueOf(20), QQStoryConstant.jdField_a_of_type_JavaLangString }));
-      paramView.setPositiveButton(HardCodeUtil.a(2131714338), new StoryPickerFragment.4(this));
+      paramView.setMessage(String.format(HardCodeUtil.a(2131911853), new Object[] { Integer.valueOf(20), QQStoryConstant.a }));
+      paramView.setPositiveButton(HardCodeUtil.a(2131911852), new StoryPickerFragment.4(this));
       paramView.show();
       return;
     }
-    paramFakeVideoUIItem.jdField_a_of_type_Boolean ^= true;
+    paramFakeVideoUIItem.c ^= true;
     paramView = (ImageView)paramView;
-    int i;
-    if (paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
-      i = 2130840575;
+    int j;
+    if (paramFakeVideoUIItem.c) {
+      j = 2130841341;
     } else {
-      i = 2130840571;
+      j = 2130841337;
     }
-    paramView.setImageResource(i);
-    if (paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_JavaUtilLinkedHashSet.add(paramFakeVideoUIItem.jdField_a_of_type_JavaLangString);
+    paramView.setImageResource(j);
+    if (paramFakeVideoUIItem.c) {
+      this.f.add(paramFakeVideoUIItem.a);
     } else {
-      this.jdField_a_of_type_JavaUtilLinkedHashSet.remove(paramFakeVideoUIItem.jdField_a_of_type_JavaLangString);
+      this.f.remove(paramFakeVideoUIItem.a);
     }
     c();
   }
   
   public void a(String paramString, int paramInt, View paramView, VideoCollectionItem.FakeVideoUIItem paramFakeVideoUIItem)
   {
-    if (paramFakeVideoUIItem.b) {
+    if (paramFakeVideoUIItem.d) {
       Bosses.get().postJob(new StoryPickerFragment.6(this, "StoryPickerFragment", paramString, paramFakeVideoUIItem, paramInt, paramView));
     }
   }
@@ -140,63 +140,63 @@ public class StoryPickerFragment
   
   void b()
   {
-    this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller = new MemoryDataPuller(QQStoryContext.a().b(), this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a();
+    this.d = String.valueOf(System.currentTimeMillis());
+    this.e = new MemoryDataPuller(QQStoryContext.a().i(), this.d);
+    this.e.b();
     super.startTitleProgress();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.c();
+    this.e.e();
   }
   
   void c()
   {
-    super.a(String.format(HardCodeUtil.a(2131714336), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()) }), this);
-    int i;
-    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 1) {
-      i = 0;
+    super.a(String.format(HardCodeUtil.a(2131911850), new Object[] { Integer.valueOf(this.f.size()) }), this);
+    int j;
+    if (this.f.size() < 1) {
+      j = 0;
     } else {
-      i = 1;
+      j = 1;
     }
-    setRightViewTextDisable(i);
-    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20)
+    setRightViewTextDisable(j);
+    if (this.f.size() >= 20)
     {
-      List localList = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a();
-      i = 0;
-      while (i < localList.size())
+      List localList = this.b.a();
+      j = 0;
+      while (j < localList.size())
       {
-        Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
+        Iterator localIterator = ((VideoCollectionItem)localList.get(j)).collectionVideoUIItemList.iterator();
         while (localIterator.hasNext())
         {
           VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localIterator.next();
-          if (localFakeVideoUIItem.jdField_a_of_type_Boolean) {
-            localFakeVideoUIItem.b = true;
+          if (localFakeVideoUIItem.c) {
+            localFakeVideoUIItem.d = true;
           } else {
-            localFakeVideoUIItem.b = false;
+            localFakeVideoUIItem.d = false;
           }
         }
-        i += 1;
+        j += 1;
       }
     }
-    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() < 20) {
+    if (this.f.size() < 20) {
       d();
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.notifyDataSetChanged();
+    this.b.notifyDataSetChanged();
   }
   
   void d()
   {
-    List localList = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a();
-    int i = 0;
-    while (i < localList.size())
+    List localList = this.b.a();
+    int j = 0;
+    while (j < localList.size())
     {
-      Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
+      Iterator localIterator = ((VideoCollectionItem)localList.get(j)).collectionVideoUIItemList.iterator();
       while (localIterator.hasNext())
       {
         VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localIterator.next();
-        if (!localFakeVideoUIItem.b) {
-          localFakeVideoUIItem.b = true;
+        if (!localFakeVideoUIItem.d) {
+          localFakeVideoUIItem.d = true;
         }
       }
-      i += 1;
+      j += 1;
     }
   }
   
@@ -209,18 +209,18 @@ public class StoryPickerFragment
   
   protected int getContentLayoutId()
   {
-    return 2131561776;
+    return 2131628155;
   }
   
   protected void init(Bundle paramBundle)
   {
     super.init(paramBundle);
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("extra_alert_for_result", false);
-    this.b = paramBundle.getString("extra_sharegroup_name");
-    this.jdField_a_of_type_Int = paramBundle.getInt("extra_from");
+    this.g = paramBundle.getBoolean("extra_alert_for_result", false);
+    this.h = paramBundle.getString("extra_sharegroup_name");
+    this.i = paramBundle.getInt("extra_from");
     paramBundle = (LinkedHashSet)paramBundle.getSerializable("extra_checked_vidset");
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramBundle);
+      this.f.addAll(paramBundle);
     }
   }
   
@@ -231,22 +231,22 @@ public class StoryPickerFragment
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedHashSet.size() > 0)
+    if (this.f.size() > 0)
     {
       Object localObject;
-      if (this.jdField_a_of_type_Boolean)
+      if (this.g)
       {
         localObject = new StoryPickerFragment.5(this);
         QQCustomDialog localQQCustomDialog = DialogUtil.a(getBaseActivity(), 230);
-        localQQCustomDialog.setMessage(getString(2131699925, new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashSet.size()), this.b }));
-        localQQCustomDialog.setNegativeButton(2131690728, (DialogInterface.OnClickListener)localObject);
-        localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131689589), (DialogInterface.OnClickListener)localObject);
+        localQQCustomDialog.setMessage(getString(2131897978, new Object[] { Integer.valueOf(this.f.size()), this.h }));
+        localQQCustomDialog.setNegativeButton(2131887648, (DialogInterface.OnClickListener)localObject);
+        localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131886199), (DialogInterface.OnClickListener)localObject);
         localQQCustomDialog.show();
       }
       else
       {
         localObject = new Intent();
-        ((Intent)localObject).putExtra("extra_checked_vidset", this.jdField_a_of_type_JavaUtilLinkedHashSet);
+        ((Intent)localObject).putExtra("extra_checked_vidset", this.f);
         getBaseActivity().setResult(-1, (Intent)localObject);
         getBaseActivity().finish();
       }
@@ -257,23 +257,23 @@ public class StoryPickerFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    MemoryDataPuller localMemoryDataPuller = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller;
+    MemoryDataPuller localMemoryDataPuller = this.e;
     if (localMemoryDataPuller != null) {
-      localMemoryDataPuller.b();
+      localMemoryDataPuller.c();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    StoryReportor.a(18, this.jdField_a_of_type_Long);
+    StoryReportor.a(18, this.q);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    StoryReportor.a("share_story", "exp_all_story", this.jdField_a_of_type_Int, 0, new String[0]);
+    this.q = SystemClock.uptimeMillis();
+    StoryReportor.a("share_story", "exp_all_story", this.i, 0, new String[0]);
   }
 }
 

@@ -1,25 +1,22 @@
 package com.tencent.aelight.camera.ae;
 
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModelProvider;
-import com.tencent.aelight.camera.ae.gif.AEExpressionRecognizer.RecommendTextCallback;
-import com.tencent.aelight.camera.ae.gif.RecognizedEmotionBean;
-import com.tencent.aelight.camera.ae.gif.giftext.viewmodel.AEGIFRecommandTextViewModel;
-import com.tencent.aelight.camera.aebase.lifecycle.GlobalViewModelFactory;
+import com.tencent.aelight.camera.ae.camera.ui.tips.AETipsViewController;
 
 class AEPituCameraUnit$44
-  implements AEExpressionRecognizer.RecommendTextCallback
+  implements Runnable
 {
-  AEPituCameraUnit$44(AEPituCameraUnit paramAEPituCameraUnit) {}
+  AEPituCameraUnit$44(AEPituCameraUnit paramAEPituCameraUnit, String paramString, int paramInt) {}
   
-  public void a(RecognizedEmotionBean paramRecognizedEmotionBean)
+  public void run()
   {
-    ((AEGIFRecommandTextViewModel)AEViewModelProviders.a(this.a, GlobalViewModelFactory.a()).get(AEGIFRecommandTextViewModel.class)).a().postValue(paramRecognizedEmotionBean);
+    if (AEPituCameraUnit.f(this.this$0) != null) {
+      AEPituCameraUnit.f(this.this$0).a(this.a, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.44
  * JD-Core Version:    0.7.0.1
  */

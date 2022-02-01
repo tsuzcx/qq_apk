@@ -14,7 +14,7 @@ class MusicPlayerActivity$3
   
   public void a(int paramInt)
   {
-    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
+    Message.obtain(MusicPlayerActivity.b(this.a), 50, paramInt, 0).sendToTarget();
   }
   
   public void a(SongInfo paramSongInfo)
@@ -35,21 +35,21 @@ class MusicPlayerActivity$3
         localObject = MusicPlayerActivity.a(this.a);
         int i;
         if (localObject != null) {
-          i = ((IQQPlayerService)localObject).c();
+          i = ((IQQPlayerService)localObject).i();
         } else {
           i = 0;
         }
         localObject = this.a;
         localObject = MusicPlayerActivity.a((MusicPlayerActivity)localObject, MusicPlayerActivity.a((MusicPlayerActivity)localObject), paramSongInfo, -1L);
-        MusicPlayerActivity.a(this.a, paramSongInfo.c, paramSongInfo.h, paramSongInfo.e, (String)localObject, false, false);
-        MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.c, paramSongInfo.h, paramSongInfo.g, String.valueOf(paramSongInfo.a), paramSongInfo.d, i);
+        MusicPlayerActivity.a(this.a, paramSongInfo.e, paramSongInfo.j, paramSongInfo.g, (String)localObject, false, false);
+        MusicPlayerActivity.c(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.e, paramSongInfo.j, paramSongInfo.i, String.valueOf(paramSongInfo.a), paramSongInfo.f, i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.3
  * JD-Core Version:    0.7.0.1
  */

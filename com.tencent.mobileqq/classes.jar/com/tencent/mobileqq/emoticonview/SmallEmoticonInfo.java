@@ -70,8 +70,8 @@ public class SmallEmoticonInfo
       try
       {
         paramString = BaseApplication.getContext().getResources();
-        this.mDefault = paramString.getDrawable(2130837970);
-        this.mFailed = paramString.getDrawable(2130843910);
+        this.mDefault = paramString.getDrawable(2130837994);
+        this.mFailed = paramString.getDrawable(2130844865);
         return;
       }
       catch (OutOfMemoryError paramString)
@@ -326,7 +326,7 @@ public class SmallEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SmallEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

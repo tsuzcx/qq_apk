@@ -56,26 +56,26 @@ class MessengerService$6
       ((StringBuilder)localObject).append(i);
       QLog.d("Q.emoji.web.MessengerService", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a.a != null)
+    if (this.a.l != null)
     {
       localObject = new Bundle();
-      this.a.a.putString("cmd", "card_setSummaryCard");
+      this.a.l.putString("cmd", "card_setSummaryCard");
       ((Bundle)localObject).putInt("result", i);
       ((Bundle)localObject).putString("message", str);
       if (TextUtils.isEmpty(paramObject)) {
         ((Bundle)localObject).putString("aid", paramObject);
       }
       ((Bundle)localObject).putInt("payType", j);
-      this.a.a.putBundle("response", (Bundle)localObject);
+      this.a.l.putBundle("response", (Bundle)localObject);
       paramObject = this.a;
-      paramObject.a(paramObject.a);
-      this.a.a = null;
+      paramObject.a(paramObject.l);
+      this.a.l = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.6
  * JD-Core Version:    0.7.0.1
  */

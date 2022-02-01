@@ -9,29 +9,29 @@ class AEFilterManager$3
   
   public void onHideNormalTip()
   {
-    if (AEFilterManager.access$400(this.this$0) != null) {
-      AEFilterManager.access$400(this.this$0).onHideNormalTip();
+    if (AEFilterManager.access$500(this.this$0) != null) {
+      AEFilterManager.access$500(this.this$0).onHideNormalTip();
     }
   }
   
   public void onHidePagTip()
   {
-    if (AEFilterManager.access$400(this.this$0) != null) {
-      AEFilterManager.access$400(this.this$0).onHidePagTip();
+    if (AEFilterManager.access$500(this.this$0) != null) {
+      AEFilterManager.access$500(this.this$0).onHidePagTip();
     }
   }
   
   public void onShowNormalTip(String paramString1, String paramString2, int paramInt)
   {
-    if (AEFilterManager.access$400(this.this$0) != null) {
-      AEFilterManager.access$400(this.this$0).onShowNormalTip(paramString1, paramString2, paramInt);
+    if (AEFilterManager.access$500(this.this$0) != null) {
+      AEFilterManager.access$500(this.this$0).onShowNormalTip(paramString1, paramString2, paramInt);
     }
   }
   
   public void onShowPagTip(String paramString, int paramInt)
   {
-    if (AEFilterManager.access$400(this.this$0) != null) {
-      AEFilterManager.access$400(this.this$0).onShowPagTip(paramString, paramInt);
+    if (AEFilterManager.access$500(this.this$0) != null) {
+      AEFilterManager.access$500(this.this$0).onShowPagTip(paramString, paramInt);
     }
   }
 }

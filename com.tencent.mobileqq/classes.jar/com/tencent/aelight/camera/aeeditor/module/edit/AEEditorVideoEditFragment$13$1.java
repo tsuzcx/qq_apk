@@ -11,12 +11,12 @@ class AEEditorVideoEditFragment$13$1
   
   public void onDismiss()
   {
-    ThreadManager.getUIHandler().removeCallbacks(AEEditorVideoEditFragment.a(this.a.this$0));
+    ThreadManager.getUIHandler().removeCallbacks(AEEditorVideoEditFragment.o(this.a.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.13.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,9 +22,11 @@ import java.util.List;
 
 public class TransitionHelper
 {
+  protected List<TAVTransitionAutomaticEffect> applyTransitions;
   private ExtraData extraData;
   private List<FaceTransition> faceTransitions;
   protected String templateDir;
+  private int transitionApplyType = 0;
   protected List<TransitionEffectModel> transitionEffectModels = new ArrayList();
   protected List<TAVSticker> transitionStickers;
   protected List<TAVTransitionAutomaticEffect> transitions;
@@ -59,8 +61,9 @@ public class TransitionHelper
       paramTransitionStruct.totalDurationMsInTimeLine = (paramTransitionStruct.totalDurationMsInTimeLine - l + paramTransitionStruct.curClip.getDuration().getTimeUs() / 1000L);
       localObject = new CMTimeRange((CMTime)localObject, new CMTime(l, 1000));
       FaceTransition localFaceTransition = new FaceTransition();
-      localFaceTransition.timeRange = ((CMTimeRange)localObject);
-      localFaceTransition.procMethod = paramTAVTransitionAutomaticEffect.getProcMethod();
+      localFaceTransition.setTimeRange((CMTimeRange)localObject);
+      localFaceTransition.setProcMethod(paramTAVTransitionAutomaticEffect.getProcMethod());
+      localFaceTransition.setPosition(paramTransitionStruct.index - 1);
       this.faceTransitions.add(localFaceTransition);
       addExtraInfoToClip(paramTransitionStruct.curClip);
       addExtraInfoToClip(paramTransitionStruct.lastClip);
@@ -136,7 +139,10 @@ public class TransitionHelper
       paramTransitionStruct.channels.add(paramTransitionStruct.curChannel);
       return;
     }
-    TAVTransitionAutomaticEffect localTAVTransitionAutomaticEffect = randomTransition(this.transitions);
+    if (paramTransitionStruct.index > this.applyTransitions.size()) {
+      return;
+    }
+    TAVTransitionAutomaticEffect localTAVTransitionAutomaticEffect = (TAVTransitionAutomaticEffect)this.applyTransitions.get(paramTransitionStruct.index - 1);
     if (localTAVTransitionAutomaticEffect.isFaceTransition())
     {
       applyFaceTransitionsToChannel(paramTransitionStruct, localTAVTransitionAutomaticEffect);
@@ -159,6 +165,7 @@ public class TransitionHelper
     localTransitionStruct.lastClip = null;
     localTransitionStruct.channels = paramList1;
     this.transitionEffectModels.clear();
+    this.applyTransitions = TransitionUtils.randomTransitionEffects(this.transitions, paramList.size(), this.transitionApplyType);
     int i = 0;
     while (i < paramList.size())
     {
@@ -313,6 +320,11 @@ public class TransitionHelper
     double d2 = paramList.size();
     Double.isNaN(d2);
     return (TAVTransitionAutomaticEffect)paramList.get((int)(d1 * d2));
+  }
+  
+  public void setTransitionApplyType(int paramInt)
+  {
+    this.transitionApplyType = paramInt;
   }
   
   public void setTransitionEffectModels(List<TransitionEffectModel> paramList)

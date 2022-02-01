@@ -43,16 +43,16 @@ class NearbyPeopleProfileActivity$17
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString)
   {
-    if (NearbyPeopleProfileActivity.access$500(this.a) != null)
+    if (NearbyPeopleProfileActivity.access$400(this.a) != null)
     {
-      if (NearbyPeopleProfileActivity.access$300(this.a) == null) {
+      if (this.a.mCard == null) {
         return;
       }
-      NearbyPeopleProfileActivity.access$300(this.a).charm = paramInt3;
-      NearbyPeopleProfileActivity.access$300(this.a).charmLevel = paramInt4;
-      NearbyPeopleProfileActivity.access$300(this.a).curThreshold = paramInt5;
-      NearbyPeopleProfileActivity.access$300(this.a).nextThreshold = paramInt6;
-      NearbyPeopleProfileActivity.access$500(this.a).a(NearbyPeopleProfileActivity.access$300(this.a));
+      this.a.mCard.charm = paramInt3;
+      this.a.mCard.charmLevel = paramInt4;
+      this.a.mCard.curThreshold = paramInt5;
+      this.a.mCard.nextThreshold = paramInt6;
+      NearbyPeopleProfileActivity.access$400(this.a).a(this.a.mCard);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -60,8 +60,8 @@ class NearbyPeopleProfileActivity$17
         ((StringBuilder)localObject).append(this.a.app.getCurrentAccountUin());
         QLog.d("Charm", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = StringUtil.a(paramString, "<head>", "</head>");
-      paramString = StringUtil.a(paramString, "<body>", "</body>");
+      Object localObject = StringUtil.substring(paramString, "<head>", "</head>");
+      paramString = StringUtil.substring(paramString, "<body>", "</body>");
       if (this.a.isResume()) {
         QQUtils.a(this.a, (String)localObject, paramString, paramInt3 - paramInt1).show();
       }
@@ -70,16 +70,16 @@ class NearbyPeopleProfileActivity$17
   
   public void a(String paramString, int paramInt)
   {
-    if (NearbyPeopleProfileActivity.access$400(this.a) != null) {
-      NearbyPeopleProfileActivity.access$400(this.a).a(paramString, paramInt);
+    if (NearbyPeopleProfileActivity.access$300(this.a) != null) {
+      NearbyPeopleProfileActivity.access$300(this.a).a(paramString, paramInt);
     }
     this.a.mSchoolNameValidState = paramInt;
   }
   
   public void a(boolean paramBoolean, int paramInt, List<Object> paramList, List<String> paramList1)
   {
-    if (NearbyPeopleProfileActivity.access$500(this.a) != null) {
-      NearbyPeopleProfileActivity.access$500(this.a).a(paramBoolean, paramInt, paramList);
+    if (NearbyPeopleProfileActivity.access$400(this.a) != null) {
+      NearbyPeopleProfileActivity.access$400(this.a).a(paramBoolean, paramInt, paramList);
     }
   }
   
@@ -110,16 +110,16 @@ class NearbyPeopleProfileActivity$17
       if (paramBoolean2)
       {
         DatingUtil.c(NearbyPeopleProfileActivity.class.getSimpleName(), new Object[] { "onGetShowLoveLimit , can chat, someting is wrong" });
-        NearbyPeopleProfileActivity.access$500(this.a).l();
+        NearbyPeopleProfileActivity.access$400(this.a).p();
       }
       else if (paramBoolean3)
       {
-        if (NearbyPeopleProfileActivity.access$300(this.a) != null)
+        if (this.a.mCard != null)
         {
-          paramArrayOfByte = NearbyPeopleProfileActivity.access$300(this.a).uin;
-          paramArrayOfByte = NearbyPeopleProfileActivity.access$300(this.a).nickname;
-          int i = NearbyPeopleProfileActivity.access$300(this.a).gender;
-          ProfileCardUtil.a(this.a.allinone);
+          paramArrayOfByte = this.a.mCard.uin;
+          paramArrayOfByte = this.a.mCard.nickname;
+          int i = this.a.mCard.gender;
+          ProfileCardUtil.b(this.a.allinone);
           QLog.d("NearbyPeopleProfileActivity", 1, "ShowLoveEditorActivity 已在725下架");
         }
       }
@@ -132,13 +132,13 @@ class NearbyPeopleProfileActivity$17
         DatingUtil.c(paramArrayOfByte, new Object[] { localStringBuilder.toString() });
         paramArrayOfByte = paramString;
         if (TextUtils.isEmpty(paramString)) {
-          paramArrayOfByte = ((Activity)localObject).getResources().getString(2131699192);
+          paramArrayOfByte = ((Activity)localObject).getResources().getString(2131897208);
         }
         DatingUtil.a(this.a, paramArrayOfByte);
       }
     }
     else {
-      DatingUtil.a((Activity)localObject, ((Activity)localObject).getString(2131699191));
+      DatingUtil.a((Activity)localObject, ((Activity)localObject).getString(2131897207));
     }
     this.a.waitingForSayhelloLimit = false;
   }
@@ -163,14 +163,14 @@ class NearbyPeopleProfileActivity$17
         QLog.d("NearbyPeopleProfileActivity", 2, "onUpdateNearbyPeopleAuthVideo , headInfo is null");
       }
     }
-    paramObject = NearbyPeopleProfileActivity.access$300(this.a).vSeed;
-    long l = NearbyPeopleProfileActivity.access$300(this.a).feedPreviewTime;
+    paramObject = this.a.mCard.vSeed;
+    long l = this.a.mCard.feedPreviewTime;
     if (this.a.mTinyId > 0L)
     {
       NearbyProfileUtil.a(this.a.mCardHandler, this.a.app, this.a.mTinyId, null, this.a.fetchFromType, paramObject, l, true, this.a.allinone.likeSource, NearbyPeopleProfileActivity.isFromTribe(this.a.from), NearbyPeopleProfileActivity.access$100(this.a), NearbyPeopleProfileActivity.access$000(this.a));
       return;
     }
-    if (!StringUtil.a(this.a.allinone.uin)) {
+    if (!StringUtil.isEmpty(this.a.allinone.uin)) {
       NearbyProfileUtil.a(this.a.mCardHandler, this.a.app, 0L, this.a.allinone.uin, this.a.fetchFromType, paramObject, l, true, this.a.allinone.likeSource, NearbyPeopleProfileActivity.isFromTribe(this.a.from), NearbyPeopleProfileActivity.access$100(this.a), NearbyPeopleProfileActivity.access$000(this.a));
     }
   }
@@ -182,7 +182,7 @@ class NearbyPeopleProfileActivity$17
       return;
     }
     this.a.dismissWaittingDialog();
-    if (!NearbyPeopleProfileActivity.access$900(this.a)) {
+    if (!NearbyPeopleProfileActivity.access$800(this.a)) {
       return;
     }
     paramObject = ProfilePerformanceReport.a;
@@ -340,7 +340,7 @@ class NearbyPeopleProfileActivity$17
       ((INearbyLikeLimitManager)this.a.app.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER)).a(localNearbyPeopleCard.getSafetyUin(), false);
       if (TextUtils.equals(localNearbyPeopleCard.getSafetyUin(), this.a.app.getCurrentAccountUin()))
       {
-        if ((localNearbyPeopleCard.videoInfo == null) || (TextUtils.isEmpty(localNearbyPeopleCard.videoInfo.d)) || (TextUtils.isEmpty(localNearbyPeopleCard.videoInfo.a))) {
+        if ((localNearbyPeopleCard.videoInfo == null) || (TextUtils.isEmpty(localNearbyPeopleCard.videoInfo.e)) || (TextUtils.isEmpty(localNearbyPeopleCard.videoInfo.b))) {
           paramBoolean1 = false;
         }
         SharedPreUtils.a(this.a, paramBoolean1);
@@ -349,7 +349,7 @@ class NearbyPeopleProfileActivity$17
       return;
     }
     if (!paramBoolean2) {
-      this.a.showToast(HardCodeUtil.a(2131707273));
+      this.a.showToast(HardCodeUtil.a(2131905099));
     }
   }
   
@@ -370,7 +370,7 @@ class NearbyPeopleProfileActivity$17
       if (this.a.mPicInfo.size() > 1) {
         this.a.mHasNewPhoto = true;
       }
-      NearbyPeopleProfileActivity.access$1008(this.a);
+      NearbyPeopleProfileActivity.access$908(this.a);
       if (this.a.isFaceInfoChange)
       {
         this.a.mCardHandler.a(true);
@@ -386,10 +386,10 @@ class NearbyPeopleProfileActivity$17
     if (paramBoolean)
     {
       paramString = (INearbyLikeLimitManager)this.a.app.getManager(QQManagerFactory.NEARBY_LIKE_LIMIT_MANAGER);
-      if (NearbyPeopleProfileActivity.access$500(this.a) != null) {
-        NearbyPeopleProfileActivity.access$500(this.a).h();
+      if (NearbyPeopleProfileActivity.access$400(this.a) != null) {
+        NearbyPeopleProfileActivity.access$400(this.a).l();
       }
-      if ((this.a.mMode != 1) && (paramString.a()) && (!this.a.isHasRequestShowPayFirstTip) && (NearbyPeopleProfileActivity.isFromTribe(this.a.from)))
+      if ((this.a.mMode != 1) && (paramString.b()) && (!this.a.isHasRequestShowPayFirstTip) && (NearbyPeopleProfileActivity.isFromTribe(this.a.from)))
       {
         paramString = this.a;
         paramString.isHasRequestShowPayFirstTip = true;
@@ -411,36 +411,36 @@ class NearbyPeopleProfileActivity$17
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((NearbyPeopleProfileActivity.access$300(this.a) != null) && (!TextUtils.isEmpty(NearbyPeopleProfileActivity.access$300(this.a).uin)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
+    if ((this.a.mCard != null) && (!TextUtils.isEmpty(this.a.mCard.uin)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
     {
       if (Utils.a(paramString2, paramString1)) {
         return;
       }
-      if ((Utils.a(paramString2, NearbyPeopleProfileActivity.access$300(this.a).uin)) && (Utils.a(paramString1, this.a.app.getCurrentAccountUin())))
+      if ((Utils.a(paramString2, this.a.mCard.uin)) && (Utils.a(paramString1, this.a.app.getCurrentAccountUin())))
       {
         if (!paramBoolean)
         {
           paramString1 = this.a;
-          paramString1.showToast(paramString1.getResources().getString(2131693371));
-          paramString1 = NearbyPeopleProfileActivity.access$300(this.a);
+          paramString1.showToast(paramString1.getResources().getString(2131890920));
+          paramString1 = this.a.mCard;
           paramString1.likeCount -= 1;
-          NearbyPeopleProfileActivity.access$300(this.a).bVoted = 0;
-          paramString1 = NearbyPeopleProfileActivity.access$300(this.a);
+          this.a.mCard.bVoted = 0;
+          paramString1 = this.a.mCard;
           paramString1.bAvailVoteCnt = ((short)(paramString1.bAvailVoteCnt + paramInt1));
-          NearbyPeopleProfileActivity.access$500(this.a).h();
+          NearbyPeopleProfileActivity.access$400(this.a).l();
           return;
         }
         if (paramInt2 == 1)
         {
-          paramString1 = NearbyPeopleProfileActivity.access$300(this.a);
+          paramString1 = this.a.mCard;
           paramString1.likeCount += paramInt1;
-          NearbyPeopleProfileActivity.access$300(this.a).bVoted = 1;
-          paramString1 = NearbyPeopleProfileActivity.access$300(this.a);
+          this.a.mCard.bVoted = 1;
+          paramString1 = this.a.mCard;
           paramString1.bAvailVoteCnt = ((short)(paramString1.bAvailVoteCnt - paramInt1));
-          if (NearbyPeopleProfileActivity.access$300(this.a).bAvailVoteCnt < 0) {
-            NearbyPeopleProfileActivity.access$300(this.a).bAvailVoteCnt = 0;
+          if (this.a.mCard.bAvailVoteCnt < 0) {
+            this.a.mCard.bAvailVoteCnt = 0;
           }
-          NearbyPeopleProfileActivity.access$500(this.a).h();
+          NearbyPeopleProfileActivity.access$400(this.a).l();
         }
       }
     }
@@ -454,20 +454,20 @@ class NearbyPeopleProfileActivity$17
     if (paramBoolean)
     {
       this.a.dismissWaittingDialog();
-      this.a.showToast(2, HardCodeUtil.a(2131707278));
+      this.a.showToast(2, HardCodeUtil.a(2131905104));
       return;
     }
     this.a.dismissWaittingDialog();
     paramString1 = this.a;
     paramList = new StringBuilder();
-    paramList.append(HardCodeUtil.a(2131707269));
+    paramList.append(HardCodeUtil.a(2131905095));
     paramList.append(paramString2);
     paramString1.showToast(1, paramList.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.17
  * JD-Core Version:    0.7.0.1
  */

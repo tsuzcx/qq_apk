@@ -50,8 +50,8 @@ public class WSVerticalForMiniAppPresenter
     if ((paramViewHolder instanceof WSVerticalVideoHolder))
     {
       paramViewHolder = (WSVerticalVideoHolder)paramViewHolder;
-      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.a = 1;
-      paramViewHolder = new WSCommentEvent(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.a });
+      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.f = 1;
+      paramViewHolder = new WSCommentEvent(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.e });
       StoryDispatcher.a().dispatch(paramViewHolder);
     }
   }
@@ -62,7 +62,7 @@ public class WSVerticalForMiniAppPresenter
     WeishiBusinessLooper.a().a(paramString);
   }
   
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public boolean b(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     a(this.a, this, System.currentTimeMillis());
     return true;
@@ -70,7 +70,7 @@ public class WSVerticalForMiniAppPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForMiniAppPresenter
  * JD-Core Version:    0.7.0.1
  */

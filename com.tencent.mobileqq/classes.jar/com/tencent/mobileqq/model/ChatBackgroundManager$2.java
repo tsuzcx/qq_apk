@@ -12,24 +12,24 @@ class ChatBackgroundManager$2
   
   public void run()
   {
-    ChatBackgroundManager.c = this.this$0.c(null);
-    Message localMessage = ChatBackgroundManager.a.obtainMessage();
+    ChatBackgroundManager.i = this.this$0.d(null);
+    Message localMessage = ChatBackgroundManager.k.obtainMessage();
     localMessage.what = 1;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
+    localMessage.obj = new Object[] { this.a, this.b };
     if (QLog.isColorLevel())
     {
       QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initCurrChatBgNameForReport is:");
-      localStringBuilder.append(ChatBackgroundManager.c);
+      localStringBuilder.append(ChatBackgroundManager.i);
       QLog.d("ThemeDownloadTrace", 2, localStringBuilder.toString());
     }
-    ChatBackgroundManager.a.sendMessage(localMessage);
+    ChatBackgroundManager.k.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.2
  * JD-Core Version:    0.7.0.1
  */

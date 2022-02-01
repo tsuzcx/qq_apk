@@ -10,12 +10,12 @@ class QQViewBridgeImpl$GifUi$1$1
   
   public void run()
   {
-    QQViewBridgeImpl.a(this.a.a.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseBridgeimplQQViewBridgeImpl).onAddGif(ReadInJoyDeliverUGCActivity.a(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData));
+    QQViewBridgeImpl.a(this.a.a.b).onAddGif(ReadInJoyDeliverUGCActivity.b(this.a.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.base.bridgeimpl.QQViewBridgeImpl.GifUi.1.1
  * JD-Core Version:    0.7.0.1
  */

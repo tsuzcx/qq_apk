@@ -21,22 +21,22 @@ import mqq.os.MqqHandler;
 
 public class FeedsPreloadManager
 {
-  private static volatile FeedsPreloadManager jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadManager;
-  private IForeBackGroundCallback jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsIForeBackGroundCallback = new FeedsPreloadManager.1(this);
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
+  private static volatile FeedsPreloadManager a;
+  private ExecutorService b = MonitorTimeExecutor.a();
+  private IForeBackGroundCallback c = new FeedsPreloadManager.1(this);
   
   public static FeedsPreloadManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadManager == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadManager = new FeedsPreloadManager();
+        if (a == null) {
+          a = new FeedsPreloadManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadManager;
+    return a;
   }
   
   private void a(FeedsPreloadDataModule.PreloadCache paramPreloadCache, long paramLong)
@@ -45,9 +45,9 @@ public class FeedsPreloadManager
     RIJThreadHandler.b().post(paramPreloadCache);
   }
   
-  private void c()
+  private void d()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     Object localObject1 = (KandianMergeManager)localQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
     if (localObject1 == null)
     {
@@ -55,7 +55,7 @@ public class FeedsPreloadManager
       return;
     }
     int i = -1;
-    Object localObject2 = ((KandianMergeManager)localObject1).a();
+    Object localObject2 = ((KandianMergeManager)localObject1).g();
     long l2 = 0L;
     long l1;
     if ((localObject2 != null) && (((List)localObject2).size() > 2))
@@ -63,7 +63,7 @@ public class FeedsPreloadManager
       l2 = ((Long)((List)localObject2).get(((List)localObject2).size() - 2)).longValue();
       l1 = ((Long)((List)localObject2).get(((List)localObject2).size() - 1)).longValue();
       localObject2 = ((List)localObject2).subList(0, ((List)localObject2).size() - 2);
-      localObject1 = ((KandianMergeManager)localObject1).a();
+      localObject1 = ((KandianMergeManager)localObject1).h();
       i = 1;
     }
     else
@@ -86,18 +86,18 @@ public class FeedsPreloadManager
     if (localFeedsPreloadDataModule != null)
     {
       FeedsPreloadDataModule.PreloadCache localPreloadCache = localFeedsPreloadDataModule.a(paramRequest0x68bParams);
-      localFeedsPreloadDataModule.b();
+      localFeedsPreloadDataModule.c();
       boolean bool = true;
       if (localPreloadCache != null)
       {
         QLog.d("FeedsPreloadManager", 1, "getFeedsPreloadCache, hit cache.");
         int i;
-        if (localPreloadCache.jdField_a_of_type_JavaUtilList != null) {
-          i = localPreloadCache.jdField_a_of_type_JavaUtilList.size();
+        if (localPreloadCache.d != null) {
+          i = localPreloadCache.d.size();
         } else {
           i = 0;
         }
-        if ((paramRequest0x68bParams.b == null) || (paramRequest0x68bParams.b.size() <= 0)) {
+        if ((paramRequest0x68bParams.i == null) || (paramRequest0x68bParams.i.size() <= 0)) {
           bool = false;
         }
         FeedsPreloadDataReport.a(bool, i);
@@ -108,26 +108,13 @@ public class FeedsPreloadManager
     return null;
   }
   
-  public void a()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.a();
-    if ((localQQAppInterface != null) && (localQQAppInterface.isLogin()))
-    {
-      QLog.d("FeedsPreloadManager", 1, "start, feeds preload.");
-      a(false);
-      ThreadManager.getSubThreadHandler().postDelayed(new FeedsPreloadManager.2(this), 3000L);
-      return;
-    }
-    QLog.d("FeedsPreloadManager", 1, "app is null or not login, don't do feeds preload.");
-  }
-  
   public void a(FeedsPreloadDataModule.PreloadCache paramPreloadCache)
   {
     boolean bool2 = false;
     QLog.d("FeedsPreloadManager", 1, new Object[] { "handleFeedsPreloadRequest, cache = ", paramPreloadCache });
     if (paramPreloadCache != null)
     {
-      Object localObject = paramPreloadCache.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
+      Object localObject = paramPreloadCache.a;
       long l = 0L;
       localObject = (Long)((ToServiceMsg)localObject).getAttribute("recPackageSize");
       if (localObject != null) {
@@ -136,13 +123,13 @@ public class FeedsPreloadManager
       a(paramPreloadCache, l);
       FeedsPreloadHelper.b();
       int i;
-      if (paramPreloadCache.jdField_a_of_type_JavaUtilList != null) {
-        i = paramPreloadCache.jdField_a_of_type_JavaUtilList.size();
+      if (paramPreloadCache.d != null) {
+        i = paramPreloadCache.d.size();
       } else {
         i = 0;
       }
-      if (paramPreloadCache.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null) {
-        paramPreloadCache = (List)paramPreloadCache.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("SubscriptionArticles");
+      if (paramPreloadCache.a != null) {
+        paramPreloadCache = (List)paramPreloadCache.a.getAttribute("SubscriptionArticles");
       } else {
         paramPreloadCache = null;
       }
@@ -160,12 +147,12 @@ public class FeedsPreloadManager
   
   public void a(Runnable paramRunnable)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isTerminated()))
+    if ((this.b.isShutdown()) || (this.b.isTerminated()))
     {
       QLog.d("FeedsPreloadManager", 1, "runOnSingleThreadPool, executorService is not available, init a new one.");
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
+      this.b = MonitorTimeExecutor.a();
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
+    this.b.execute(paramRunnable);
   }
   
   public void a(boolean paramBoolean)
@@ -175,14 +162,27 @@ public class FeedsPreloadManager
   
   public void b()
   {
+    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.e();
+    if ((localQQAppInterface != null) && (localQQAppInterface.isLogin()))
+    {
+      QLog.d("FeedsPreloadManager", 1, "start, feeds preload.");
+      a(false);
+      ThreadManager.getSubThreadHandler().postDelayed(new FeedsPreloadManager.2(this), 3000L);
+      return;
+    }
+    QLog.d("FeedsPreloadManager", 1, "app is null or not login, don't do feeds preload.");
+  }
+  
+  public void c()
+  {
     QLog.d("FeedsPreloadManager", 1, "reset, feeds preload.");
-    if (jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadManager != null) {
+    if (a != null) {
       try
       {
-        jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadManager.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdownNow();
-        jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadManager.jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
+        a.b.shutdownNow();
+        a.b = MonitorTimeExecutor.a();
         QLog.d("FeedsPreloadManager", 1, "remove foreground, background callback.");
-        ReadinjoySPEventReport.ForeBackGround.b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsIForeBackGroundCallback);
+        ReadinjoySPEventReport.ForeBackGround.b(this.c);
         return;
       }
       finally {}
@@ -191,7 +191,7 @@ public class FeedsPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.preload.FeedsPreloadManager
  * JD-Core Version:    0.7.0.1
  */

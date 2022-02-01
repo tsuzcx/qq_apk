@@ -10,22 +10,22 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 public class OnArticleWrapperClickListener
   implements ViewBase.OnClickListener
 {
-  private ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private AbsBaseArticleInfo a;
+  private ReadInJoyBaseAdapter b;
   
   public OnArticleWrapperClickListener(AbsBaseArticleInfo paramAbsBaseArticleInfo, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = paramReadInJoyBaseAdapter;
+    this.a = paramAbsBaseArticleInfo;
+    this.b = paramReadInJoyBaseAdapter;
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a();
+    paramViewBase = this.b.y().c();
     if (paramViewBase != null) {
-      paramViewBase.a(null, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 2);
+      paramViewBase.a(null, this.a, 2);
     }
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    paramViewBase = this.a;
     if (paramViewBase != null) {
       paramViewBase.invalidateProteusTemplateBean();
     }
@@ -33,7 +33,7 @@ public class OnArticleWrapperClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnArticleWrapperClickListener
  * JD-Core Version:    0.7.0.1
  */

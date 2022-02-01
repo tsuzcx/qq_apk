@@ -49,7 +49,7 @@ public class MessageForTroopSign
       if ((localObject1 instanceof StructMsgItemLayout2))
       {
         Object localObject2 = (StructMsgItemLayout2)localObject1;
-        localObject1 = ((StructMsgItemLayout2)localObject2).a;
+        localObject1 = ((StructMsgItemLayout2)localObject2).ax;
         Object localObject3;
         try
         {
@@ -57,12 +57,12 @@ public class MessageForTroopSign
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("doParse, mCommonData=");
-            ((StringBuilder)localObject3).append(((StructMsgItemLayout2)localObject2).i);
+            ((StringBuilder)localObject3).append(((StructMsgItemLayout2)localObject2).k);
             QLog.d("MessageForTroopSign", 2, ((StringBuilder)localObject3).toString());
           }
-          if (!TextUtils.isEmpty(((StructMsgItemLayout2)localObject2).i))
+          if (!TextUtils.isEmpty(((StructMsgItemLayout2)localObject2).k))
           {
-            localObject2 = new JSONObject(((StructMsgItemLayout2)localObject2).i);
+            localObject2 = new JSONObject(((StructMsgItemLayout2)localObject2).k);
             this.markType = ((JSONObject)localObject2).getInt("markType");
             this.positonType = ((JSONObject)localObject2).getInt("positonType");
             this.markIconUrl = ((JSONObject)localObject2).getString("markIconUrl");
@@ -85,21 +85,21 @@ public class MessageForTroopSign
         while (((Iterator)localObject1).hasNext())
         {
           AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject1).next();
-          localObject3 = localAbsStructMsgElement.a;
+          localObject3 = localAbsStructMsgElement.b;
           if ("vote".equals(localObject3))
           {
             if ((localAbsStructMsgElement instanceof StructMsgItemCover)) {
-              this.msgCoverUrl = ((StructMsgItemCover)localAbsStructMsgElement).ac;
+              this.msgCoverUrl = ((StructMsgItemCover)localAbsStructMsgElement).av;
             }
           }
           else if ("summary".equals(localObject3))
           {
             if ((localAbsStructMsgElement instanceof StructMsgItemSummary)) {
-              this.msgContent = ((StructMsgItemSummary)localAbsStructMsgElement).b();
+              this.msgContent = ((StructMsgItemSummary)localAbsStructMsgElement).e();
             }
           }
           else if (("title".equals(localObject3)) && ((localAbsStructMsgElement instanceof StructMsgItemTitle))) {
-            this.msgTitle = ((StructMsgItemTitle)localAbsStructMsgElement).b();
+            this.msgTitle = ((StructMsgItemTitle)localAbsStructMsgElement).e();
           }
         }
       }
@@ -117,7 +117,7 @@ public class MessageForTroopSign
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msgBrief)) {
-      this.msgBrief = HardCodeUtil.a(2131706637);
+      this.msgBrief = HardCodeUtil.a(2131904488);
     }
     return this.msgBrief;
   }
@@ -162,7 +162,7 @@ public class MessageForTroopSign
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopSign
  * JD-Core Version:    0.7.0.1
  */

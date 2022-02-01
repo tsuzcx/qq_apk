@@ -11,39 +11,39 @@ class MultiIncomingCallsActivity$13
   
   protected void a(long paramLong, int paramInt, String paramString)
   {
-    String str = this.a.b;
+    String str = this.b.l;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VideoObserver_onClose, reason[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], peerUin[");
     localStringBuilder.append(paramString);
     localStringBuilder.append("], mPeerUin[");
-    localStringBuilder.append(this.a.c);
+    localStringBuilder.append(this.b.u);
     localStringBuilder.append("], seq[");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    if (TextUtils.equals(this.a.c, paramString))
+    if (TextUtils.equals(this.b.u, paramString))
     {
-      this.a.b("VideoObserver_onClose");
-      this.a.a(paramLong, paramInt);
+      this.b.b("VideoObserver_onClose");
+      this.b.a(paramLong, paramInt);
     }
   }
   
   protected void a(String paramString, boolean paramBoolean)
   {
-    String str = this.a.b;
+    String str = this.b.l;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VideoObserver_onDestroyUI, peerUin[");
     localStringBuilder.append(paramString);
     localStringBuilder.append("], isQuit[");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("], mPeerUin[");
-    localStringBuilder.append(this.a.c);
+    localStringBuilder.append(this.b.u);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    if (TextUtils.equals(this.a.c, paramString)) {
-      this.a.b("VideoObserver_onDestroyUI");
+    if (TextUtils.equals(this.b.u, paramString)) {
+      this.b.b("VideoObserver_onDestroyUI");
     }
   }
 }

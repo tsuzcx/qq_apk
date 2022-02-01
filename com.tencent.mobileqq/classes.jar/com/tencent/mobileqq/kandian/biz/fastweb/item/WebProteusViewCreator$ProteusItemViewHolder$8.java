@@ -15,18 +15,18 @@ class WebProteusViewCreator$ProteusItemViewHolder$8
   
   public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    if (((WebProteusViewCreator.a(this.a.a) instanceof WebFastAdapter)) && ((paramContext instanceof FastWebActivity)))
+    if (((WebProteusViewCreator.b(this.a.a) instanceof WebFastAdapter)) && ((paramContext instanceof FastWebActivity)))
     {
       if (WebProteusViewCreator.ProteusItemViewHolder.a(this.a) == null) {
         WebProteusViewCreator.ProteusItemViewHolder.a(this.a, new ArrayList());
       }
-      FastWebImageItemUtils.a(paramProteusItemData.b, paramProteusItemData.a, (FastWebActivity)paramContext, paramProteusItemData.c, ((WebFastAdapter)WebProteusViewCreator.a(this.a.a)).a(), WebProteusViewCreator.ProteusItemViewHolder.a(this.a));
+      FastWebImageItemUtils.a(paramProteusItemData.aQ, paramProteusItemData.aR, (FastWebActivity)paramContext, paramProteusItemData.bb, ((WebFastAdapter)WebProteusViewCreator.b(this.a.a)).f(), WebProteusViewCreator.ProteusItemViewHolder.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.8
  * JD-Core Version:    0.7.0.1
  */

@@ -5,16 +5,16 @@ final class AVSoundHelper$1
 {
   public void run()
   {
-    if (AVSoundHelper.a() != null)
+    if (AVSoundHelper.j() != null)
     {
-      AVSoundHelper.a().a();
-      AVSoundHelper.a().d();
+      AVSoundHelper.j().a();
+      AVSoundHelper.j().d();
       AVSoundHelper.a(null);
     }
-    if (AVSoundHelper.a() != null)
+    if (AVSoundHelper.k() != null)
     {
-      AVSoundHelper.a().c();
-      AVSoundHelper.a().d();
+      AVSoundHelper.k().c();
+      AVSoundHelper.k().d();
       AVSoundHelper.a(null);
     }
     AVSoundHelper.a(false);

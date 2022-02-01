@@ -37,13 +37,13 @@ import tencent.im.nearfield_discuss.nearfield_discuss.RespJoinDiscuss;
 public class NearFieldDiscussHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  byte[] jdField_a_of_type_ArrayOfByte;
+  byte[] a;
+  private QQAppInterface b;
   
   NearFieldDiscussHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -121,7 +121,7 @@ public class NearFieldDiscussHandler
           break label611;
         }
         long l = Utils.a(localRespJoinDiscuss.uint32_discuss_id.get());
-        ((DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(l);
+        ((DiscussionHandler)this.b.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a(l);
         paramFromServiceMsg = String.valueOf(l);
         k = j;
         try
@@ -135,8 +135,8 @@ public class NearFieldDiscussHandler
           try
           {
             paramToServiceMsg = paramToServiceMsg.extraData.getString("FACE_TO_FACE_ID");
-            ((ITroopCreateGrayMsg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopCreateGrayMsg.class, "")).addCreateNewTroopGrayTips(paramFromServiceMsg, false, paramToServiceMsg);
-            paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            ((ITroopCreateGrayMsg)this.b.getRuntimeService(ITroopCreateGrayMsg.class, "")).addCreateNewTroopGrayTips(paramFromServiceMsg, false, paramToServiceMsg);
+            paramToServiceMsg = this.b;
             paramObject = new StringBuilder();
             paramObject.append("");
             paramObject.append(paramFromServiceMsg);
@@ -147,8 +147,8 @@ public class NearFieldDiscussHandler
             ReportController.b(paramToServiceMsg, "dc00899", "Grp_create_new", "", "suc_create", "face_create", 0, 0, paramObject, ((StringBuilder)localObject).toString(), "", "");
             if (m == 2)
             {
-              paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy();
-              if (paramToServiceMsg.b(paramFromServiceMsg, 1) != null)
+              paramToServiceMsg = this.b.getRecentUserProxy();
+              if (paramToServiceMsg.c(paramFromServiceMsg, 1) != null)
               {
                 if (QLog.isColorLevel()) {
                   QLog.d("NearFieldDiscussHandler", 2, "handleGetFaceToFaceDiscussInfo ru alreadyintab");
@@ -156,13 +156,13 @@ public class NearFieldDiscussHandler
               }
               else
               {
-                paramObject = paramToServiceMsg.a(paramFromServiceMsg, 1);
-                RecentUtil.a(paramObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade());
+                paramObject = paramToServiceMsg.b(paramFromServiceMsg, 1);
+                RecentUtil.a(paramObject, this.b.getMessageFacade());
                 paramObject.uin = paramFromServiceMsg;
-                paramObject.lastmsgtime = MessageCache.a();
+                paramObject.lastmsgtime = MessageCache.c();
                 paramObject.type = 1;
                 paramToServiceMsg.b(paramObject);
-                paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+                paramToServiceMsg = this.b.getHandler(Conversation.class);
                 if (paramToServiceMsg != null) {
                   paramToServiceMsg.sendMessage(paramToServiceMsg.obtainMessage(1009));
                 }
@@ -317,7 +317,7 @@ public class NearFieldDiscussHandler
           i = paramToServiceMsg.int32_update_interval.get();
         }
         if (paramToServiceMsg.bytes_cookie.has()) {
-          this.jdField_a_of_type_ArrayOfByte = paramToServiceMsg.bytes_cookie.get().toByteArray();
+          this.a = paramToServiceMsg.bytes_cookie.get().toByteArray();
         }
         if (paramToServiceMsg.uint32_session_id.has()) {
           j = paramToServiceMsg.uint32_session_id.get();
@@ -410,8 +410,8 @@ public class NearFieldDiscussHandler
     }
     localReqGetList.str_number.set(paramString);
     localReqGetList.uint32_session_id.set(paramInt);
-    if ((!paramBoolean) && (this.jdField_a_of_type_ArrayOfByte != null)) {
-      localReqGetList.bytes_cookie.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
+    if ((!paramBoolean) && (this.a != null)) {
+      localReqGetList.bytes_cookie.set(ByteStringMicro.copyFrom(this.a));
     }
     ((ToServiceMsg)localObject).putWupBuffer(localReqGetList.toByteArray());
     ((ToServiceMsg)localObject).setTimeout(30000L);
@@ -485,7 +485,7 @@ public class NearFieldDiscussHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearFieldDiscussHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class MsgTabCameraConfBean
         i = 0;
         if (i < j)
         {
-          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].a);
+          JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].b);
           if (!localJSONObject.has("cameraSwitchOnMessageTab")) {
             break label117;
           }
@@ -48,7 +48,7 @@ public class MsgTabCameraConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MsgTabCameraConfBean
  * JD-Core Version:    0.7.0.1
  */

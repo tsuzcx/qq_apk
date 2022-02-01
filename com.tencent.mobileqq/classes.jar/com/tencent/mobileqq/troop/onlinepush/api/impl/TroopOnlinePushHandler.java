@@ -96,13 +96,8 @@ public class TroopOnlinePushHandler
         paramSubCmd0x4UpdateApp.append((String)localObject);
         QLog.i("TroopOnlinePushHandler", 2, paramSubCmd0x4UpdateApp.toString());
       }
-      a(TroopRedDotObserver.f, true, new Object[] { localObject, Boolean.valueOf(true), Boolean.valueOf(true) });
+      a(TroopRedDotObserver.g, true, new Object[] { localObject, Boolean.valueOf(true), Boolean.valueOf(true) });
     }
-  }
-  
-  protected String a()
-  {
-    return "TroopOnlinePushHandler";
   }
   
   public void a(String paramString1, String paramString2)
@@ -276,25 +271,25 @@ public class TroopOnlinePushHandler
           int i = 0;
           while (localIterator.hasNext())
           {
-            TroopOnlinePushHandler.HandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum localHandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum = new TroopOnlinePushHandler.HandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum(this, bool, (List)localObject, paramArrayOfByte, i, localStringBuilder, (submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum)localIterator.next()).a();
+            TroopOnlinePushHandler.HandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum localHandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum = new TroopOnlinePushHandler.HandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum(this, bool, (List)localObject, paramArrayOfByte, i, localStringBuilder, (submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum)localIterator.next()).e();
             if (!localHandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum.a())
             {
               bool = localHandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum.b();
-              paramArrayOfByte = localHandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum.a();
-              i = localHandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum.a();
+              paramArrayOfByte = localHandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum.c();
+              i = localHandleTroopNewsOnlinePushDecode0x1UpdateAppUnreadNum.d();
             }
           }
           if (QLog.isDevelopLevel()) {
             QLog.i("TroopOnlinePushHandler", 4, localStringBuilder.toString());
           }
           if (i != 0) {
-            a(TroopRedDotObserver.e, true, new Object[] { Boolean.valueOf(true), localObject, Integer.valueOf(-1) });
+            a(TroopRedDotObserver.f, true, new Object[] { Boolean.valueOf(true), localObject, Integer.valueOf(-1) });
           } else {
-            a(TroopRedDotObserver.e, true, new Object[] { Boolean.valueOf(true), localObject, Integer.valueOf(0) });
+            a(TroopRedDotObserver.f, true, new Object[] { Boolean.valueOf(true), localObject, Integer.valueOf(0) });
           }
           if (bool)
           {
-            a(TroopRedDotObserver.f, true, new Object[] { paramArrayOfByte.a, Boolean.valueOf(false), Boolean.valueOf(true) });
+            a(TroopRedDotObserver.g, true, new Object[] { paramArrayOfByte.b, Boolean.valueOf(false), Boolean.valueOf(true) });
             return;
           }
         }
@@ -345,14 +340,14 @@ public class TroopOnlinePushHandler
       UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(paramString1, paramString1, "", 1, 2024, 131073, l);
       localMessageForUniteGrayTip.frienduin = paramString1;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131715499));
+      localStringBuilder.append(HardCodeUtil.a(2131912972));
       localStringBuilder.append(paramString3);
       localStringBuilder.append("\"");
       paramString3 = localStringBuilder.toString();
       if (str.equals(paramString2))
       {
         paramString1 = new StringBuilder();
-        paramString1.append(HardCodeUtil.a(2131715500));
+        paramString1.append(HardCodeUtil.a(2131912973));
         paramString1.append(paramString3);
         paramString1 = paramString1.toString();
       }
@@ -369,7 +364,7 @@ public class TroopOnlinePushHandler
         paramString3.putBoolean("need_update_nick", false);
         localUniteGrayTipParam.a(0, str.length(), paramString3);
       }
-      localUniteGrayTipParam.c = paramString1;
+      localUniteGrayTipParam.g = paramString1;
       localMessageForUniteGrayTip.initGrayTipMsg(this.appRuntime, localUniteGrayTipParam);
       if (QLog.isColorLevel())
       {
@@ -382,6 +377,11 @@ public class TroopOnlinePushHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopOnlinePushHandler";
+  }
+  
   protected Class<? extends BusinessObserver> observerClass()
   {
     return TroopOnlinePushObserver.class;
@@ -391,7 +391,7 @@ public class TroopOnlinePushHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.onlinepush.api.impl.TroopOnlinePushHandler
  * JD-Core Version:    0.7.0.1
  */

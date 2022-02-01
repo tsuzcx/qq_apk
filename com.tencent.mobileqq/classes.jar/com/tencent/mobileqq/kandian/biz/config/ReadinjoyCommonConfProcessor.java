@@ -57,11 +57,11 @@ public class ReadinjoyCommonConfProcessor
   
   public int migrateOldVersion()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     if (localQQAppInterface != null)
     {
       String str = localQQAppInterface.getCurrentUin();
-      return SharedPreUtils.K(localQQAppInterface.getApp(), str);
+      return SharedPreUtils.U(localQQAppInterface.getApp(), str);
     }
     return 0;
   }
@@ -80,7 +80,7 @@ public class ReadinjoyCommonConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.config.ReadinjoyCommonConfProcessor
  * JD-Core Version:    0.7.0.1
  */

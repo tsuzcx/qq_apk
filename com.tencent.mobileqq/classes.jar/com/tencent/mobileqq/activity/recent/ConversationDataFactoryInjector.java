@@ -11,7 +11,7 @@ public class ConversationDataFactoryInjector
     if (paramQQAppInterface.mAutomator != null)
     {
       i = paramInt;
-      if (paramQQAppInterface.mAutomator.b())
+      if (paramQQAppInterface.mAutomator.g())
       {
         i = paramInt;
         if (paramInt > 90)
@@ -28,7 +28,7 @@ public class ConversationDataFactoryInjector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.ConversationDataFactoryInjector
  * JD-Core Version:    0.7.0.1
  */

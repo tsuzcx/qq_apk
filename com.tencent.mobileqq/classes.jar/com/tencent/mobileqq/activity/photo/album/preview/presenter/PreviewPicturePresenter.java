@@ -19,13 +19,13 @@ public class PreviewPicturePresenter
   public void a()
   {
     if ((this.mainBrowserPresenter instanceof PreviewPresenter)) {
-      ((PreviewPresenter)this.mainBrowserPresenter).a.e(100);
+      ((PreviewPresenter)this.mainBrowserPresenter).e.e(100);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.presenter.PreviewPicturePresenter
  * JD-Core Version:    0.7.0.1
  */

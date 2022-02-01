@@ -12,9 +12,14 @@ import com.tencent.mobileqq.pb.PBBytesField;
 public class GetTroopAssistantFeedIdListRequest
   extends NetworkRequest
 {
-  public String a;
+  public String e;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StoryGroupSvc.get_dynamic_group_feedid_list");
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
     try
@@ -28,21 +33,16 @@ public class GetTroopAssistantFeedIdListRequest
     return new GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse(localRspGroupStoryFeedIdList);
   }
   
-  public String a()
-  {
-    return StoryApi.a("StoryGroupSvc.get_dynamic_group_feedid_list");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
-    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.e));
     return localReqGroupStoryFeedIdList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest
  * JD-Core Version:    0.7.0.1
  */

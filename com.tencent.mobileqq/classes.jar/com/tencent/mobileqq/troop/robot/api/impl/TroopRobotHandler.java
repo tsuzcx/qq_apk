@@ -93,7 +93,7 @@ public class TroopRobotHandler
         int j = paramToServiceMsg.max_robot_num.get();
         paramToServiceMsg = (ITroopRobotService)this.appRuntime.getRuntimeService(ITroopRobotService.class, "all");
         paramToServiceMsg.onGetAllRobot(l, paramFromServiceMsg, j);
-        notifyUI(TroopRobotObserver.b, true, new Object[] { Integer.valueOf(i), Long.valueOf(l), paramToServiceMsg.getTroopRobotData(l) });
+        notifyUI(TroopRobotObserver.c, true, new Object[] { Integer.valueOf(i), Long.valueOf(l), paramToServiceMsg.getTroopRobotData(l) });
         return;
       }
       if (QLog.isColorLevel())
@@ -103,7 +103,7 @@ public class TroopRobotHandler
         paramToServiceMsg.append(i);
         QLog.i("TroopRobotHandler", 2, paramToServiceMsg.toString());
       }
-      notifyUI(TroopRobotObserver.b, false, new Object[] { Integer.valueOf(i), Long.valueOf(l), null });
+      notifyUI(TroopRobotObserver.c, false, new Object[] { Integer.valueOf(i), Long.valueOf(l), null });
     }
   }
   
@@ -150,7 +150,7 @@ public class TroopRobotHandler
           a(l1);
         }
       }
-      int k = TroopRobotObserver.c;
+      int k = TroopRobotObserver.d;
       boolean bool;
       if (j == 0) {
         bool = true;
@@ -165,11 +165,6 @@ public class TroopRobotHandler
   {
     paramString = new TroopRobotHandler.1(this, paramString);
     this.appRuntime.addDefaultObservers(paramString);
-  }
-  
-  protected String a()
-  {
-    return "TroopRobotHandler";
   }
   
   public void a(long paramLong)
@@ -221,7 +216,7 @@ public class TroopRobotHandler
           }
         }
         ((ITroopRobotService)this.appRuntime.getRuntimeService(ITroopRobotService.class, "all")).onGetAddedRobot(l, paramFromServiceMsg);
-        notifyUI(TroopRobotObserver.d, true, new Object[] { Integer.valueOf(i), Long.valueOf(l), paramFromServiceMsg });
+        notifyUI(TroopRobotObserver.e, true, new Object[] { Integer.valueOf(i), Long.valueOf(l), paramFromServiceMsg });
         return;
       }
       if (QLog.isColorLevel())
@@ -231,7 +226,7 @@ public class TroopRobotHandler
         paramToServiceMsg.append(i);
         QLog.i("TroopRobotHandler", 2, paramToServiceMsg.toString());
       }
-      notifyUI(TroopRobotObserver.d, false, new Object[] { Integer.valueOf(i), Long.valueOf(l), null });
+      notifyUI(TroopRobotObserver.e, false, new Object[] { Integer.valueOf(i), Long.valueOf(l), null });
     }
   }
   
@@ -274,7 +269,7 @@ public class TroopRobotHandler
       localStringBuilder.append(paramBoolean);
       QLog.d("TroopRobotHandlerRobotMemberChange", 2, localStringBuilder.toString());
     }
-    notifyUI(TroopRobotObserver.e, true, new Object[] { paramBoolean, paramString1, paramString2, paramString3 });
+    notifyUI(TroopRobotObserver.f, true, new Object[] { paramBoolean, paramString1, paramString2, paramString3 });
   }
   
   public void b(long paramLong)
@@ -314,6 +309,11 @@ public class TroopRobotHandler
     sendPbReq((ToServiceMsg)localObject);
   }
   
+  protected String dv_()
+  {
+    return "TroopRobotHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -348,7 +348,7 @@ public class TroopRobotHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -386,7 +386,7 @@ public class TroopRobotHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.api.impl.TroopRobotHandler
  * JD-Core Version:    0.7.0.1
  */

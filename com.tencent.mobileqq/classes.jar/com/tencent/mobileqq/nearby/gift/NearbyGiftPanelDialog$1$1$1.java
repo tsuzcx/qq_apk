@@ -10,13 +10,13 @@ class NearbyGiftPanelDialog$1$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1$1.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.a.setGiftData(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData, true);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1$1.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.a.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog$1$1.a.jdField_a_of_type_Int);
+    this.b.b.e.c.setGiftData(this.a, true);
+    this.b.b.e.c.b(this.b.b.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog.1.1.1
  * JD-Core Version:    0.7.0.1
  */

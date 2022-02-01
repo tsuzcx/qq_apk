@@ -10,15 +10,15 @@ final class TroopUtils$2
   
   public void run()
   {
-    TroopShareUtility localTroopShareUtility = this.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility;
+    TroopShareUtility localTroopShareUtility = this.a;
     if (localTroopShareUtility != null) {
-      localTroopShareUtility.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData);
+      localTroopShareUtility.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -21,15 +21,15 @@ import com.tencent.widget.AbsSpinner;
 public class HorizontalItemIndicator
   extends ViewGroup
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private HorizontalItemIndicator.OnItemChanged jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged;
+  private int a;
   private int b;
   private int c;
   private int d;
   private int e;
   private int f;
+  private HorizontalItemIndicator.OnItemChanged g;
+  private Paint h = new Paint();
+  private Scroller i = new Scroller(getContext());
   
   public HorizontalItemIndicator(Context paramContext)
   {
@@ -47,13 +47,13 @@ public class HorizontalItemIndicator
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.HorizontalItemIndicator, paramInt, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramContext.getColor(1, -1711276033);
+      this.a = paramContext.getColor(1, -1711276033);
       this.b = paramContext.getDimensionPixelSize(2, 28);
       this.d = paramContext.getColor(0, -1);
       paramContext.recycle();
       this.c = this.b;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      this.h.setStyle(Paint.Style.FILL);
+      this.h.setColor(-1);
       setWillNotDraw(false);
       return;
     }
@@ -70,37 +70,47 @@ public class HorizontalItemIndicator
   
   public void dispatchDraw(Canvas paramCanvas)
   {
-    int i;
+    int j;
     Object localObject;
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    if (this.i.computeScrollOffset())
     {
-      i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+      j = this.i.getCurrX();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("currMid is ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(j);
       Log.i("tmp", ((StringBuilder)localObject).toString());
       postInvalidate();
     }
     else
     {
-      i = getChildAt(this.e).getMeasuredWidth() / 2 + getChildAt(this.e).getLeft();
-      j = this.f;
-      if (j != this.e)
+      j = getChildAt(this.e).getMeasuredWidth() / 2 + getChildAt(this.e).getLeft();
+      k = this.f;
+      if (k != this.e)
       {
-        localObject = a(j);
+        localObject = a(k);
         ((TextView)localObject).setTextSize(0, this.b);
-        ((TextView)localObject).setTextColor(this.jdField_a_of_type_Int);
+        ((TextView)localObject).setTextColor(this.a);
       }
       localObject = a(this.e);
       ((TextView)localObject).setTextSize(0, this.c);
       ((TextView)localObject).setTextColor(this.d);
     }
-    int j = getMeasuredWidth() / 2;
+    int k = getMeasuredWidth() / 2;
     paramCanvas.save();
-    paramCanvas.translate(j - i, 0.0F);
+    paramCanvas.translate(k - j, 0.0F);
     super.dispatchDraw(paramCanvas);
     paramCanvas.restore();
-    paramCanvas.drawCircle(j, getChildAt(0).getBottom() + 8 + 6, 6.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(k, getChildAt(0).getBottom() + 8 + 6, 6.0F, this.h);
+  }
+  
+  public int getCurrItem()
+  {
+    return this.e;
+  }
+  
+  public HorizontalItemIndicator.OnItemChanged getOnItemChanged()
+  {
+    return this.g;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -111,14 +121,14 @@ public class HorizontalItemIndicator
     while (paramInt1 < paramInt3)
     {
       View localView = getChildAt(paramInt1);
-      int i = localView.getMeasuredWidth();
+      int j = localView.getMeasuredWidth();
       paramInt4 = localView.getMeasuredHeight();
       ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
       paramInt2 += localMarginLayoutParams.leftMargin;
-      int j = getPaddingTop() + localMarginLayoutParams.topMargin;
-      i += paramInt2;
-      localView.layout(paramInt2, j, i, paramInt4 + j);
-      paramInt2 = localMarginLayoutParams.rightMargin + i;
+      int k = getPaddingTop() + localMarginLayoutParams.topMargin;
+      j += paramInt2;
+      localView.layout(paramInt2, k, j, paramInt4 + k);
+      paramInt2 = localMarginLayoutParams.rightMargin + j;
       paramInt1 += 1;
     }
   }
@@ -126,39 +136,39 @@ public class HorizontalItemIndicator
   @TargetApi(11)
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i1 = getChildCount();
+    int i2 = getChildCount();
     measureChildren(paramInt1, paramInt2);
+    int m = 0;
     int k = 0;
-    int j = 0;
-    for (int i = 0; k < i1; i = m)
+    for (int j = 0; m < i2; j = n)
     {
-      View localView = getChildAt(k);
+      View localView = getChildAt(m);
+      i1 = k;
       n = j;
-      m = i;
       if (localView.getVisibility() != 8)
       {
         ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-        n = j + (localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin + localView.getMeasuredWidth());
-        m = Math.max(i, localMarginLayoutParams.topMargin + localMarginLayoutParams.bottomMargin + localView.getMeasuredHeight());
+        i1 = k + (localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin + localView.getMeasuredWidth());
+        n = Math.max(j, localMarginLayoutParams.topMargin + localMarginLayoutParams.bottomMargin + localView.getMeasuredHeight());
       }
-      k += 1;
-      j = n;
+      m += 1;
+      k = i1;
     }
-    int n = getPaddingLeft();
-    i1 = getPaddingRight();
-    k = getPaddingTop();
-    int m = getPaddingBottom();
-    j = Math.max(j + (n + i1), getSuggestedMinimumWidth());
-    i = Math.max(i + (k + m), getSuggestedMinimumHeight());
+    int i1 = getPaddingLeft();
+    i2 = getPaddingRight();
+    m = getPaddingTop();
+    int n = getPaddingBottom();
+    k = Math.max(k + (i1 + i2), getSuggestedMinimumWidth());
+    j = Math.max(j + (m + n), getSuggestedMinimumHeight());
     if (Build.VERSION.SDK_INT >= 11)
     {
-      paramInt1 = resolveSizeAndState(j, paramInt1, 0);
-      paramInt2 = resolveSizeAndState(i, paramInt2, 0);
+      paramInt1 = resolveSizeAndState(k, paramInt1, 0);
+      paramInt2 = resolveSizeAndState(j, paramInt2, 0);
     }
     else
     {
-      paramInt1 = AbsSpinner.doResolveSizeAndState(j, paramInt1, 0);
-      paramInt2 = AbsSpinner.doResolveSizeAndState(i, paramInt2, 0);
+      paramInt1 = AbsSpinner.doResolveSizeAndState(k, paramInt1, 0);
+      paramInt2 = AbsSpinner.doResolveSizeAndState(j, paramInt2, 0);
     }
     setMeasuredDimension(paramInt1, paramInt2);
   }
@@ -170,15 +180,15 @@ public class HorizontalItemIndicator
       if (paramInt >= getChildCount()) {
         return;
       }
-      if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
+      if (!this.i.isFinished()) {
         return;
       }
-      int i = this.e;
-      if (paramInt != i)
+      int j = this.e;
+      if (paramInt != j)
       {
-        this.f = i;
+        this.f = j;
         this.e = paramInt;
-        HorizontalItemIndicator.OnItemChanged localOnItemChanged = this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged;
+        HorizontalItemIndicator.OnItemChanged localOnItemChanged = this.g;
         if (localOnItemChanged != null) {
           localOnItemChanged.a(paramInt);
         }
@@ -189,30 +199,30 @@ public class HorizontalItemIndicator
   
   public void setNextItem()
   {
-    int i = this.e + 1;
-    if (i >= getChildCount()) {
+    int j = this.e + 1;
+    if (j >= getChildCount()) {
       return;
     }
-    setCurrItem(i);
+    setCurrItem(j);
   }
   
   public void setOnItemChanged(HorizontalItemIndicator.OnItemChanged paramOnItemChanged)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged = paramOnItemChanged;
+    this.g = paramOnItemChanged;
   }
   
   public void setPrevItem()
   {
-    int i = this.e - 1;
-    if (i < 0) {
+    int j = this.e - 1;
+    if (j < 0) {
       return;
     }
-    setCurrItem(i);
+    setCurrItem(j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.HorizontalItemIndicator
  * JD-Core Version:    0.7.0.1
  */

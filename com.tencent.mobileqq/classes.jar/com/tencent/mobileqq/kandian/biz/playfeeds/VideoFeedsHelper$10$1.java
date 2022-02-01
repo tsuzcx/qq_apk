@@ -9,14 +9,14 @@ class VideoFeedsHelper$10$1
   
   public void run()
   {
-    if (Integer.valueOf(this.this$0.jdField_a_of_type_Int).equals(this.this$0.jdField_a_of_type_AndroidWidgetTextView.getTag(50331903))) {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(this.a);
+    if (Integer.valueOf(this.this$0.a).equals(this.this$0.c.getTag(50331903))) {
+      this.this$0.c.setText(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper.10.1
  * JD-Core Version:    0.7.0.1
  */

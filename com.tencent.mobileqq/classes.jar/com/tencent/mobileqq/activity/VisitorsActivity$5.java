@@ -20,10 +20,10 @@ class VisitorsActivity$5
     if (QLog.isColorLevel()) {
       QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
     }
-    if ((this.a.app != null) && (VasUtil.a(this.a.app).getVipStatus().isSVip()))
+    if ((this.a.app != null) && (VasUtil.b(this.a.app).getVipStatus().isSVip()))
     {
-      this.a.a(true);
       this.a.b(true);
+      this.a.c(true);
       if (VisitorsActivity.b(this.a).compareAndSet(true, false))
       {
         if (VisitorsActivity.a(this.a).get())
@@ -31,17 +31,17 @@ class VisitorsActivity$5
           if (QLog.isColorLevel()) {
             QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
           }
-          DialogUtil.a(this.a, 232, null, HardCodeUtil.a(2131716300), null, HardCodeUtil.a(2131716297), new VisitorsActivity.5.1(this), null).show();
+          DialogUtil.a(this.a, 232, null, HardCodeUtil.a(2131913742), null, HardCodeUtil.a(2131913739), new VisitorsActivity.5.1(this), null).show();
         }
         VisitorsActivity localVisitorsActivity = this.a;
-        localVisitorsActivity.removeObserver(VisitorsActivity.a(localVisitorsActivity));
+        localVisitorsActivity.removeObserver(VisitorsActivity.c(localVisitorsActivity));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.5
  * JD-Core Version:    0.7.0.1
  */

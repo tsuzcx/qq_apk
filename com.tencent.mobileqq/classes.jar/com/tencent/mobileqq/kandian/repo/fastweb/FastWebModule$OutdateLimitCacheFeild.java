@@ -2,46 +2,46 @@ package com.tencent.mobileqq.kandian.repo.fastweb;
 
 class FastWebModule$OutdateLimitCacheFeild<T>
 {
-  private long jdField_a_of_type_Long;
-  T jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  T a;
+  public boolean b;
+  private long d;
+  private long e;
   
   public FastWebModule$OutdateLimitCacheFeild(T paramT)
   {
     this(paramT, localObject, 600000L);
     if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
   }
   
   public FastWebModule$OutdateLimitCacheFeild(T paramT, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangObject = paramLong;
-    this.b = System.currentTimeMillis();
+    this.a = paramLong;
+    this.e = System.currentTimeMillis();
     Object localObject;
-    this.jdField_a_of_type_Long = localObject;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
+    this.d = localObject;
   }
   
   public void a(T paramT)
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.b = System.currentTimeMillis();
+    this.a = paramT;
+    this.e = System.currentTimeMillis();
   }
   
   public boolean a()
   {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    return System.currentTimeMillis() - this.e >= this.d;
+  }
+  
+  public T b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.fastweb.FastWebModule.OutdateLimitCacheFeild
  * JD-Core Version:    0.7.0.1
  */

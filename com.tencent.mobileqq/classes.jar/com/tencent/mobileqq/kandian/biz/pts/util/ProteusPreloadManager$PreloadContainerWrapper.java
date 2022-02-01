@@ -9,38 +9,38 @@ import org.jetbrains.annotations.NotNull;
 public final class ProteusPreloadManager$PreloadContainerWrapper
 {
   @NotNull
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private Number a;
   @NotNull
-  private Number jdField_a_of_type_JavaLangNumber;
+  private Container b;
   
   public ProteusPreloadManager$PreloadContainerWrapper(@NotNull Container paramContainer)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramContainer;
-    this.jdField_a_of_type_JavaLangNumber = ((Number)Integer.valueOf(UIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext())));
-  }
-  
-  @NotNull
-  public final Container a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+    this.b = paramContainer;
+    this.a = ((Number)Integer.valueOf(UIUtils.c(this.b.getContext())));
   }
   
   @NotNull
   public final Number a()
   {
-    return this.jdField_a_of_type_JavaLangNumber;
+    return this.a;
   }
   
-  public final boolean a()
+  public final boolean b()
   {
-    int i = UIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
-    Number localNumber = this.jdField_a_of_type_JavaLangNumber;
+    int i = UIUtils.c(this.b.getContext());
+    Number localNumber = this.a;
     return ((localNumber instanceof Integer)) && (i == ((Integer)localNumber).intValue());
+  }
+  
+  @NotNull
+  public final Container c()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.ProteusPreloadManager.PreloadContainerWrapper
  * JD-Core Version:    0.7.0.1
  */

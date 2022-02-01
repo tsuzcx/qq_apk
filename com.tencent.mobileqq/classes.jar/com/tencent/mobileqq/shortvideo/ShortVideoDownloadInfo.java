@@ -5,20 +5,15 @@ import android.text.TextUtils;
 public class ShortVideoDownloadInfo
   extends ShortVideoBaseInfo
 {
-  public long b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public String h;
-  public String i;
-  
-  public ShortVideoDownloadInfo()
-  {
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public int l;
+  public int m;
+  public long n;
+  public String o;
+  public String p;
+  public int q;
+  public int r;
+  public int s;
+  public boolean t = false;
   
   public String a()
   {
@@ -26,22 +21,22 @@ public class ShortVideoDownloadInfo
     localStringBuilder.append("\nShortVideoDownloadInfo");
     localStringBuilder.append("\n |-");
     localStringBuilder.append("md5:");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("uuid:");
     localStringBuilder.append(this.a);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("fileType:");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.q);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("format:");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("mRequestType:");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.r);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("mSceneType:");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.s);
     return localStringBuilder.toString();
   }
   
@@ -53,16 +48,21 @@ public class ShortVideoDownloadInfo
       {
         if (paramInt1 == 3000)
         {
-          this.jdField_e_of_type_Int = 1005;
+          this.q = 1005;
           return;
         }
-        if (paramInt1 == 1) {
-          this.jdField_e_of_type_Int = 1003;
+        if (paramInt1 == 1)
+        {
+          this.q = 1003;
+          return;
+        }
+        if (paramInt1 == 10014) {
+          this.q = 1007;
         }
       }
       else
       {
-        this.jdField_e_of_type_Int = 1001;
+        this.q = 1001;
       }
     }
     else if (1 == paramInt2) {
@@ -70,21 +70,26 @@ public class ShortVideoDownloadInfo
       {
         if (paramInt1 == 3000)
         {
-          this.jdField_e_of_type_Int = 1006;
+          this.q = 1006;
           return;
         }
-        if (paramInt1 == 1) {
-          this.jdField_e_of_type_Int = 1004;
+        if (paramInt1 == 1)
+        {
+          this.q = 1004;
+          return;
+        }
+        if (paramInt1 == 10014) {
+          this.q = 1008;
         }
       }
       else
       {
-        this.jdField_e_of_type_Int = 1002;
+        this.q = 1002;
       }
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
     StringBuilder localStringBuilder;
     if (TextUtils.isEmpty(this.a))
@@ -95,15 +100,15 @@ public class ShortVideoDownloadInfo
       a("ShortVideoDownloadInfo.check", localStringBuilder.toString());
       return false;
     }
-    if (this.jdField_b_of_type_JavaLangString == null)
+    if (this.d == null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("selfUin invalid,selfUin:");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       a("ShortVideoDownloadInfo", localStringBuilder.toString());
       return false;
     }
-    return super.a();
+    return super.b();
   }
   
   public String toString()
@@ -116,7 +121,7 @@ public class ShortVideoDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

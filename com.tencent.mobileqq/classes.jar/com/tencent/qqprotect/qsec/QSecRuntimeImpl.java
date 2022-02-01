@@ -7,19 +7,18 @@ public class QSecRuntimeImpl
   implements IQSecRuntime
 {
   public static IQSecRuntime a;
-  private HashMap<String, IRuntimeInterface> a;
+  private HashMap<String, IRuntimeInterface> b = new HashMap();
   
   public QSecRuntimeImpl()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
+    a = this;
   }
   
   public void a(IRuntimeInterface paramIRuntimeInterface)
   {
     String str = paramIRuntimeInterface.getInterfaceName();
-    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
+    if ((str != null) && (!this.b.containsKey(str))) {
+      this.b.put(str, paramIRuntimeInterface);
     }
   }
   
@@ -43,7 +42,7 @@ public class QSecRuntimeImpl
     if (paramString == null) {
       return null;
     }
-    IRuntimeInterface localIRuntimeInterface = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    IRuntimeInterface localIRuntimeInterface = (IRuntimeInterface)this.b.get(paramString);
     if ((localIRuntimeInterface != null) && (!paramString.equals(localIRuntimeInterface.getInterfaceName()))) {
       return null;
     }
@@ -52,7 +51,7 @@ public class QSecRuntimeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecRuntimeImpl
  * JD-Core Version:    0.7.0.1
  */

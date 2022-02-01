@@ -22,12 +22,15 @@ import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendCardUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.qqexpand.bean.chat.ExpandFriendData;
 import com.tencent.mobileqq.qqexpand.manager.ExtendFriendLimitChatManager;
 import com.tencent.mobileqq.qqexpand.manager.IExpandManager;
 import com.tencent.mobileqq.qqexpand.manager.config.LimitChatOnPlusConfProcessor;
 import com.tencent.mobileqq.qqexpand.manager.config.limitChatOnPlusConfBean;
+import com.tencent.mobileqq.qqexpand.network.IExpandCmdHandler;
 import com.tencent.mobileqq.qqexpand.network.IExpandHandler;
 import com.tencent.mobileqq.qqexpand.utils.IExpandReportUtils;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -35,6 +38,7 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.trpcprotocol.qqexpand.entrance.entrance.Entrance.EntranceGetReq;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -45,7 +49,7 @@ import org.json.JSONObject;
 
 public class ExpandChatUtil
 {
-  public static final int a = ArkAppCenterUtil.d - BaseChatItemLayout.t - BaseChatItemLayout.u;
+  public static final int a = ArkAppCenterUtil.d - BaseChatItemLayout.s - BaseChatItemLayout.t;
   
   public static int a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
@@ -59,14 +63,6 @@ public class ExpandChatUtil
       i = paramBaseQQAppInterface.getInt(localStringBuilder.toString(), 0);
     }
     return i;
-  }
-  
-  public static long a(List<ChatMessage> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      return ((ChatMessage)paramList.get(paramList.size() - 1)).shmsgseq + 1L;
-    }
-    return Math.abs(new Random().nextInt());
   }
   
   public static SharedPreferences a(AppInterface paramAppInterface)
@@ -162,77 +158,12 @@ public class ExpandChatUtil
     return localObject1;
   }
   
-  public static ExpandFriendData a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
-  {
-    if ((paramBaseQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramBaseQQAppInterface = (ExtendFriendLimitChatManager)paramBaseQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
-      if (paramBaseQQAppInterface != null)
-      {
-        ExpandFriendData localExpandFriendData = paramBaseQQAppInterface.a(paramString, true);
-        paramBaseQQAppInterface = localExpandFriendData;
-        if (localExpandFriendData == null) {
-          paramBaseQQAppInterface = new ExpandFriendData(paramString);
-        }
-        return paramBaseQQAppInterface;
-      }
-      QLog.w("ExpandFriendChatUtil", 1, "getInstance error get ExtendFriendLimitChatManager failed");
-      return null;
-    }
-    QLog.w("ExpandFriendChatUtil", 1, "getInstance error app or matchUin is invalid");
-    return null;
-  }
-  
-  public static String a(AppInterface paramAppInterface)
-  {
-    paramAppInterface = a(paramAppInterface);
-    if (paramAppInterface == null) {
-      return "";
-    }
-    paramAppInterface = paramAppInterface.getString("sp_limit_chat_on_plus_panel_name", "");
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getLimitChatOnPlusName: ");
-      localStringBuilder.append(paramAppInterface);
-      QLog.d("ExpandFriendChatUtil", 2, localStringBuilder.toString());
-    }
-    return paramAppInterface;
-  }
-  
-  public static String a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
-  {
-    SharedPreferences localSharedPreferences = a(paramBaseQQAppInterface);
-    paramBaseQQAppInterface = "0";
-    if (localSharedPreferences != null)
-    {
-      paramBaseQQAppInterface = new StringBuilder();
-      paramBaseQQAppInterface.append("sp_match_chat_algorithm_id");
-      paramBaseQQAppInterface.append(paramString);
-      paramBaseQQAppInterface = localSharedPreferences.getString(paramBaseQQAppInterface.toString(), "0");
-    }
-    return paramBaseQQAppInterface;
-  }
-  
-  public static void a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    paramBaseQQAppInterface = a(paramBaseQQAppInterface);
-    if (paramBaseQQAppInterface != null) {
-      paramBaseQQAppInterface.edit().clear().commit();
-    }
-  }
-  
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, ExpandFriendData paramExpandFriendData)
   {
     paramBaseQQAppInterface = (ExtendFriendLimitChatManager)paramBaseQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
     if (paramBaseQQAppInterface != null) {
       paramBaseQQAppInterface.a(paramExpandFriendData);
     }
-  }
-  
-  public static void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new ExpandChatUtil.3(paramBaseQQAppInterface, paramString));
   }
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString, int paramInt)
@@ -263,7 +194,7 @@ public class ExpandChatUtil
     }
     paramBaseQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
     boolean bool1 = a(paramBaseQQAppInterface, paramString, paramInt1);
-    boolean bool2 = b(paramBaseQQAppInterface, paramString);
+    boolean bool2 = c(paramBaseQQAppInterface, paramString);
     if (!bool1)
     {
       if (bool2) {
@@ -272,33 +203,14 @@ public class ExpandChatUtil
       if (a(paramBaseQQAppInterface, paramString))
       {
         a(paramBaseQQAppInterface, Long.valueOf(Long.parseLong(paramString)), paramBusinessObserver);
-        a(paramBaseQQAppInterface, paramString);
+        b(paramBaseQQAppInterface, paramString);
       }
     }
   }
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString, int paramInt, Object paramObject)
   {
-    ThreadManager.getSubThreadHandler().post(new ExpandChatUtil.2(paramBaseQQAppInterface, paramString, paramInt, paramObject));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("ExpandFriendChatUtil", 2, "ExtendFriendLimitChat checkAndUpdateLimiteChatSetting app null");
-      return;
-    }
-    if (a(paramQQAppInterface))
-    {
-      paramQQAppInterface = (IExpandHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.a(true);
-        return;
-      }
-      QLog.e("ExpandFriendChatUtil", 2, "ExtendFriendLimitChat handler null");
-    }
+    ThreadManager.getSubThreadHandler().post(new ExpandChatUtil.3(paramBaseQQAppInterface, paramString, paramInt, paramObject));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Long paramLong, BusinessObserver paramBusinessObserver)
@@ -322,11 +234,6 @@ public class ExpandChatUtil
     localIArkAppSSO.a("QQExpand.Prompt.GetIceBreakingTopic", paramQQAppInterface, 30000, 31, paramBusinessObserver);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    ThreadManager.getSubThreadHandler().post(new ExpandChatUtil.4(paramQQAppInterface, paramString));
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
     paramQQAppInterface = a(paramQQAppInterface);
@@ -337,6 +244,27 @@ public class ExpandChatUtil
       localStringBuilder.append("sp_match_chat_algorithm_id");
       localStringBuilder.append(paramString1);
       paramQQAppInterface.putString(localStringBuilder.toString(), paramString2).commit();
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    int j = 1;
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("ExpandFriendChatUtil", 1, "checkAndUpdateExpandContactsEntrance app == null");
+      return;
+    }
+    int i = j;
+    if (!paramBoolean) {
+      if (ExtendFriendCardUtils.c(paramQQAppInterface)) {
+        i = j;
+      } else {
+        i = 0;
+      }
+    }
+    if (i != 0) {
+      c(paramQQAppInterface);
     }
   }
   
@@ -395,51 +323,7 @@ public class ExpandChatUtil
       QLog.e("ExpandFriendChatUtil", 2, "reportInSubThread UIN EMPTY");
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new ExpandChatUtil.1(paramString));
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    paramAppInterface = a(paramAppInterface);
-    if (paramAppInterface == null) {
-      return false;
-    }
-    boolean bool = paramAppInterface.getBoolean("sp_limit_chat_on_plus_panel_be_show", false);
-    if (QLog.isColorLevel())
-    {
-      paramAppInterface = new StringBuilder();
-      paramAppInterface.append("needShowLimitChatOnPlus: ");
-      paramAppInterface.append(bool);
-      QLog.d("ExpandFriendChatUtil", 2, paramAppInterface.toString());
-    }
-    return bool;
-  }
-  
-  public static boolean a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    limitChatOnPlusConfBean locallimitChatOnPlusConfBean = LimitChatOnPlusConfProcessor.a();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (locallimitChatOnPlusConfBean != null)
-    {
-      bool1 = bool2;
-      if (locallimitChatOnPlusConfBean.a())
-      {
-        bool1 = bool2;
-        if (a(paramBaseQQAppInterface))
-        {
-          bool1 = bool2;
-          if (locallimitChatOnPlusConfBean.b())
-          {
-            bool1 = bool2;
-            if (!StudyModeManager.a()) {
-              bool1 = true;
-            }
-          }
-        }
-      }
-    }
-    return bool1;
+    ThreadManager.getSubThreadHandler().post(new ExpandChatUtil.2(paramString));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
@@ -527,15 +411,24 @@ public class ExpandChatUtil
   
   public static long b(List<ChatMessage> paramList)
   {
-    long l1;
     if ((paramList != null) && (!paramList.isEmpty())) {
-      l1 = ((ChatMessage)paramList.get(0)).time;
+      return ((ChatMessage)paramList.get(paramList.size() - 1)).shmsgseq + 1L;
     }
-    for (long l2 = LimitChatUtil.a.longValue();; l2 = LimitChatUtil.a.longValue())
+    return Math.abs(new Random().nextInt());
+  }
+  
+  public static String b(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
+  {
+    SharedPreferences localSharedPreferences = a(paramBaseQQAppInterface);
+    paramBaseQQAppInterface = "0";
+    if (localSharedPreferences != null)
     {
-      return l1 - l2;
-      l1 = System.currentTimeMillis() / 1000L;
+      paramBaseQQAppInterface = new StringBuilder();
+      paramBaseQQAppInterface.append("sp_match_chat_algorithm_id");
+      paramBaseQQAppInterface.append(paramString);
+      paramBaseQQAppInterface = localSharedPreferences.getString(paramBaseQQAppInterface.toString(), "0");
     }
+    return paramBaseQQAppInterface;
   }
   
   public static void b(BaseQQAppInterface paramBaseQQAppInterface, String paramString, int paramInt, Object paramObject)
@@ -548,14 +441,63 @@ public class ExpandChatUtil
         return;
       }
       QQAppInterface localQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
-      paramString = a(localQQAppInterface, paramString, a(localQQAppInterface.getMessageFacade().b(paramString, paramInt)), paramInt, paramObject);
+      paramString = a(localQQAppInterface, paramString, b(localQQAppInterface.getMessageFacade().o(paramString, paramInt)), paramInt, paramObject);
       localQQAppInterface.getMessageFacade().a(paramString, paramBaseQQAppInterface.getCurrentAccountUin());
       return;
     }
     QLog.w("ExpandFriendChatUtil", 1, "insertIcebreakerTopic but matchUin or app is empty");
   }
   
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("ExpandFriendChatUtil", 2, "ExtendFriendLimitChat checkAndUpdateLimiteChatSetting app null");
+      return;
+    }
+    if (a(paramQQAppInterface))
+    {
+      paramQQAppInterface = (IExpandHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface.a(true);
+        return;
+      }
+      QLog.e("ExpandFriendChatUtil", 2, "ExtendFriendLimitChat handler null");
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new ExpandChatUtil.5(paramQQAppInterface, paramString));
+  }
+  
   public static boolean b(AppInterface paramAppInterface)
+  {
+    SharedPreferences localSharedPreferences = a(paramAppInterface);
+    boolean bool2 = false;
+    if (localSharedPreferences == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (localSharedPreferences.getBoolean("sp_limit_chat_on_plus_panel_be_show", false))
+    {
+      bool1 = bool2;
+      if (!ExtendFriendCardUtils.a(paramAppInterface)) {
+        bool1 = true;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramAppInterface = new StringBuilder();
+      paramAppInterface.append("needShowLimitChatOnPlus: ");
+      paramAppInterface.append(bool1);
+      QLog.d("ExpandFriendChatUtil", 2, paramAppInterface.toString());
+    }
+    return bool1;
+  }
+  
+  public static boolean b(BaseQQAppInterface paramBaseQQAppInterface)
   {
     limitChatOnPlusConfBean locallimitChatOnPlusConfBean = LimitChatOnPlusConfProcessor.a();
     boolean bool2 = false;
@@ -566,13 +508,13 @@ public class ExpandChatUtil
       if (locallimitChatOnPlusConfBean.a())
       {
         bool1 = bool2;
-        if (a(paramAppInterface))
+        if (b(paramBaseQQAppInterface))
         {
           bool1 = bool2;
-          if (!locallimitChatOnPlusConfBean.b())
+          if (locallimitChatOnPlusConfBean.b())
           {
             bool1 = bool2;
-            if (!StudyModeManager.a()) {
+            if (!StudyModeManager.h()) {
               bool1 = true;
             }
           }
@@ -582,14 +524,112 @@ public class ExpandChatUtil
     return bool1;
   }
   
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  public static long c(List<ChatMessage> paramList)
+  {
+    long l1;
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      l1 = ((ChatMessage)paramList.get(0)).time;
+    }
+    for (long l2 = LimitChatUtil.a.longValue();; l2 = LimitChatUtil.a.longValue())
+    {
+      return l1 - l2;
+      l1 = System.currentTimeMillis() / 1000L;
+    }
+  }
+  
+  public static String c(AppInterface paramAppInterface)
+  {
+    paramAppInterface = a(paramAppInterface);
+    if (paramAppInterface == null) {
+      return "";
+    }
+    paramAppInterface = paramAppInterface.getString("sp_limit_chat_on_plus_panel_name", "");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLimitChatOnPlusName: ");
+      localStringBuilder.append(paramAppInterface);
+      QLog.d("ExpandFriendChatUtil", 2, localStringBuilder.toString());
+    }
+    return paramAppInterface;
+  }
+  
+  public static void c(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    paramBaseQQAppInterface = a(paramBaseQQAppInterface);
+    if (paramBaseQQAppInterface != null) {
+      paramBaseQQAppInterface.edit().clear().commit();
+    }
+  }
+  
+  public static void c(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new ExpandChatUtil.4(paramBaseQQAppInterface, paramString));
+  }
+  
+  private static void c(QQAppInterface paramQQAppInterface)
+  {
+    Entrance.EntranceGetReq localEntranceGetReq = new Entrance.EntranceGetReq();
+    localEntranceGetReq.uin.set(paramQQAppInterface.getLongAccountUin());
+    ((IExpandCmdHandler)QRoute.api(IExpandCmdHandler.class)).sendSSORequest(paramQQAppInterface, "trpc.qqexpand.entrance.svc.get", localEntranceGetReq.toByteArray(), new ExpandChatUtil.1(paramQQAppInterface));
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface, String paramString)
   {
     return ExpandFriendData.getHasShowIcebreakerTopic(paramQQAppInterface, paramString);
+  }
+  
+  public static ExpandFriendData d(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
+  {
+    if ((paramBaseQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramBaseQQAppInterface = (ExtendFriendLimitChatManager)paramBaseQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
+      if (paramBaseQQAppInterface != null)
+      {
+        ExpandFriendData localExpandFriendData = paramBaseQQAppInterface.a(paramString, true);
+        paramBaseQQAppInterface = localExpandFriendData;
+        if (localExpandFriendData == null) {
+          paramBaseQQAppInterface = new ExpandFriendData(paramString);
+        }
+        return paramBaseQQAppInterface;
+      }
+      QLog.w("ExpandFriendChatUtil", 1, "getInstance error get ExtendFriendLimitChatManager failed");
+      return null;
+    }
+    QLog.w("ExpandFriendChatUtil", 1, "getInstance error app or matchUin is invalid");
+    return null;
+  }
+  
+  public static boolean d(AppInterface paramAppInterface)
+  {
+    limitChatOnPlusConfBean locallimitChatOnPlusConfBean = LimitChatOnPlusConfProcessor.a();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (locallimitChatOnPlusConfBean != null)
+    {
+      bool1 = bool2;
+      if (locallimitChatOnPlusConfBean.a())
+      {
+        bool1 = bool2;
+        if (b(paramAppInterface))
+        {
+          bool1 = bool2;
+          if (!locallimitChatOnPlusConfBean.b())
+          {
+            bool1 = bool2;
+            if (!StudyModeManager.h()) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.utils.ExpandChatUtil
  * JD-Core Version:    0.7.0.1
  */

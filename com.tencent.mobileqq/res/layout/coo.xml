@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="@dimen/bik"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_width="fill_parent" android:layout_height="60.0dip" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.widget.pull2refresh.XRecyclerView android:orientation="vertical" android:id="@id/or1" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <include android:id="@id/n6y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/acb" />
-        <include android:id="@id/eep" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/acc" />
-        <FrameLayout android:id="@id/n_l" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-</LinearLayout>
+    <LinearLayout android:layout_gravity="top" android:orientation="horizontal" android:id="@id/os5" android:paddingLeft="@dimen/bih" android:paddingRight="@dimen/bih" android:layout_width="fill_parent" android:layout_height="@dimen/bik" android:baselineAligned="false" style="?aa0">
+        <FrameLayout android:id="@id/os7" android:paddingLeft="@dimen/bin" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <include layout="@layout/cor" />
+            <include layout="@layout/coq" />
+        </FrameLayout>
+        <include layout="@layout/cos" />
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="@dimen/bij" style="?a_z" />
+</merge>

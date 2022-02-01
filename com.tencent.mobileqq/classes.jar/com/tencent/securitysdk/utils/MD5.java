@@ -7,11 +7,6 @@ public class MD5
 {
   public static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
   
-  public static String a(String paramString)
-  {
-    return a(a(paramString));
-  }
-  
   public static String a(byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 16))
@@ -59,10 +54,15 @@ public class MD5
       paramString.printStackTrace();
     }
   }
+  
+  public static String b(String paramString)
+  {
+    return a(a(paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securitysdk.utils.MD5
  * JD-Core Version:    0.7.0.1
  */

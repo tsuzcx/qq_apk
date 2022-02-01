@@ -16,25 +16,25 @@ class EmoticonFromGroupDBManagerServiceImpl$2
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("db operation start single. opType: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       QLog.i("EmoticonFromGroup_DBManager", 2, localStringBuilder.toString());
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 1)
     {
-      if ((i == 2) && (!this.this$0.mEntityManager.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity)) && (QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.getStatus() != 1000))
+      if ((i == 2) && (!this.this$0.mEntityManager.remove(this.b)) && (QLog.isColorLevel()) && (this.b.getStatus() != 1000))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("remove error, e.md5=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.md5);
+        localStringBuilder.append(this.b.md5);
         QLog.e("EmoticonFromGroup_DBManager.dberror", 2, localStringBuilder.toString());
       }
     }
-    else if ((!this.this$0.updateEntity(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity)) && (QLog.isColorLevel()))
+    else if ((!this.this$0.updateEntity(this.b)) && (QLog.isColorLevel()))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateEntity error, e.md5=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.md5);
+      localStringBuilder.append(this.b.md5);
       QLog.e("EmoticonFromGroup_DBManager.dberror", 2, localStringBuilder.toString());
     }
     if (QLog.isColorLevel()) {
@@ -44,7 +44,7 @@ class EmoticonFromGroupDBManagerServiceImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmoticonFromGroupDBManagerServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

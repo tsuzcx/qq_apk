@@ -15,7 +15,7 @@ class GetConfig$MyResourcePluginListener
     if (this.a.mStepId == 44)
     {
       if (paramByte != 2) {}
-      ((ILebaHelperService)this.a.mAutomator.a.getRuntimeService(ILebaHelperService.class, "")).removeLebaListener(GetConfig.a(this.a));
+      ((ILebaHelperService)this.a.mAutomator.k.getRuntimeService(ILebaHelperService.class, "")).removeLebaListener(GetConfig.a(this.a));
       this.a.setResult(7);
     }
   }
@@ -23,12 +23,12 @@ class GetConfig$MyResourcePluginListener
   public void b(byte paramByte)
   {
     if (paramByte != 2) {}
-    this.a.mAutomator.a.removeAboutListener(this);
+    this.a.mAutomator.k.removeAboutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetConfig.MyResourcePluginListener
  * JD-Core Version:    0.7.0.1
  */

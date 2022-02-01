@@ -20,7 +20,7 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
   
   QIMMusicConfigManager.GetSongListStepTask a()
   {
-    return new QIMMusicConfigManager.GetSongListStepTask(this.this$0, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager);
+    return new QIMMusicConfigManager.GetSongListStepTask(this.this$0, this.b);
   }
   
   public void onResp(NetResp paramNetResp)
@@ -31,16 +31,16 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
       {
         localObject = a();
         ((QIMMusicConfigManager.GetSongListStepTask)localObject).a = new String(paramNetResp.mRespData);
-        ((QIMMusicConfigManager.GetSongListStepTask)localObject).a();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a(0, true, ((QIMMusicConfigManager.GetSongListStepTask)localObject).a);
+        ((QIMMusicConfigManager.GetSongListStepTask)localObject).b();
+        this.b.a(0, true, ((QIMMusicConfigManager.GetSongListStepTask)localObject).a);
         return;
       }
       QIMMusicConfigManager.a(this.this$0, false);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a(0, false, "Have no data.");
+      this.b.a(0, false, "Have no data.");
       return;
     }
     QIMMusicConfigManager.a(this.this$0, false);
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager;
+    Object localObject = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Http Request fail, code=");
     localStringBuilder.append(paramNetResp.mHttpCode);
@@ -54,14 +54,14 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
     localHttpNetReq.mPrioty = 1;
     localHttpNetReq.mCallback = this;
     long l = System.currentTimeMillis() / 1000L;
-    Object localObject = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
+    Object localObject = ((TicketManagerImpl)this.c.getManager(2)).getSkey(this.e);
     HashMap localHashMap = new HashMap();
     localHashMap.put("app_id", "2000000228");
     localHashMap.put("app_key", "TCOHANTCNlddnsTY");
-    localHashMap.put("device_id", DeviceInfoUtil.a());
+    localHashMap.put("device_id", DeviceInfoUtil.b());
     localHashMap.put("timestamp", String.valueOf(l));
     localHashMap.put("sign", a(l));
-    localHashMap.putAll(a(this.c, (String)localObject));
+    localHashMap.putAll(a(this.e, (String)localObject));
     localHttpNetReq.mReqUrl = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_self.fcg", localHashMap);
     if (QLog.isColorLevel())
     {
@@ -70,12 +70,12 @@ final class QIMMusicConfigManager$GetQQMusicSongListTask
       ((StringBuilder)localObject).append(localHttpNetReq.mReqUrl);
       QLog.d("QIMMusicConfigManager", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq(localHttpNetReq);
+    this.f.sendReq(localHttpNetReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.QIMMusicConfigManager.GetQQMusicSongListTask
  * JD-Core Version:    0.7.0.1
  */

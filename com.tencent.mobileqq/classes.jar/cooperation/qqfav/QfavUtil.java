@@ -83,41 +83,6 @@ public final class QfavUtil
     return 2;
   }
   
-  public static long a(List<byte[]> paramList)
-  {
-    if (paramList != null)
-    {
-      if (paramList.size() == 0) {
-        return -1L;
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        long l = a((byte[])paramList.next());
-        if (l > 0L) {
-          return l;
-        }
-      }
-    }
-    return -1L;
-  }
-  
-  public static long a(byte[] paramArrayOfByte)
-  {
-    long l = -1L;
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length <= 16) {
-        return -1L;
-      }
-      if (a(paramArrayOfByte, 8) != 5L) {
-        return -1L;
-      }
-      l = a(paramArrayOfByte, 16);
-    }
-    return l;
-  }
-  
   private static long a(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
@@ -143,7 +108,7 @@ public final class QfavUtil
     if (paramBoolean) {
       i = 3;
     } else {
-      i = FileManagerUtil.a(paramFileManagerEntity);
+      i = FileManagerUtil.h(paramFileManagerEntity);
     }
     String str1;
     if (i == 5)
@@ -169,7 +134,7 @@ public final class QfavUtil
     }
     if (paramString.length >= 256)
     {
-      new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692202));
+      new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131889189));
       return null;
     }
     if (i != 1)
@@ -179,20 +144,20 @@ public final class QfavUtil
         {
           if (i != 5)
           {
-            new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692204));
+            new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131889191));
             return null;
           }
         }
         else if ((104 == paramFileManagerEntity.busId) && (paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
         {
-          new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692201));
+          new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131889188));
           return null;
         }
       }
     }
     else if ((paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
     {
-      new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692201));
+      new ContentValues().put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131889188));
       return null;
     }
     if (paramFileManagerEntity != null)
@@ -276,13 +241,13 @@ public final class QfavUtil
     Object localObject;
     if (TextUtils.isEmpty(paramWeiYunFileInfo.b))
     {
-      localObject = paramWeiYunFileInfo.jdField_a_of_type_JavaLangString;
+      localObject = paramWeiYunFileInfo.a;
     }
     else
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramWeiYunFileInfo.b);
-      ((StringBuilder)localObject).append(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramWeiYunFileInfo.a);
       localObject = ((StringBuilder)localObject).toString();
     }
     if (TextUtils.isEmpty((CharSequence)localObject)) {
@@ -291,14 +256,14 @@ public final class QfavUtil
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("fileCloudType", Integer.valueOf(2));
     localContentValues.put("fileUuId", (String)localObject);
-    localContentValues.put("fileSize", Long.valueOf(paramWeiYunFileInfo.jdField_a_of_type_Long));
+    localContentValues.put("fileSize", Long.valueOf(paramWeiYunFileInfo.d));
     localContentValues.put("fileName", paramWeiYunFileInfo.c);
-    localContentValues.put("fileMd5", paramWeiYunFileInfo.i);
-    localContentValues.put("filePath", paramWeiYunFileInfo.h);
+    localContentValues.put("fileMd5", paramWeiYunFileInfo.m);
+    localContentValues.put("filePath", paramWeiYunFileInfo.l);
     localContentValues.put("fileThumbPath", "");
     localContentValues.put("filePeerType", Integer.valueOf(0));
     localContentValues.put("fileBid", Integer.valueOf(25));
-    localContentValues.put("fileSha1", paramWeiYunFileInfo.j);
+    localContentValues.put("fileSha1", paramWeiYunFileInfo.n);
     return localContentValues;
   }
   
@@ -420,25 +385,6 @@ public final class QfavUtil
     return localContentValues;
   }
   
-  public static ContentValues a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length <= 16) {
-        return null;
-      }
-      if (a(paramArrayOfByte, 8) != 3L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
-        }
-        return null;
-      }
-      return a(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
-    }
-    return null;
-  }
-  
   public static ContentValues a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     if (paramArrayOfByte == null) {
@@ -464,11 +410,11 @@ public final class QfavUtil
       Entity localEntity = (Entity)Class.forName(paramString1).newInstance();
       paramString1 = localEntity;
       if (localEntity == null) {
-        break label625;
+        break label626;
       }
       paramString1 = localEntity;
       if (paramContentValues == null) {
-        break label625;
+        break label626;
       }
       paramString1 = a(localEntity).iterator();
       while (paramString1.hasNext())
@@ -564,52 +510,12 @@ public final class QfavUtil
     }
     catch (Exception paramContentValues)
     {
-      label623:
-      label625:
-      break label623;
+      label624:
+      label626:
+      break label624;
     }
     paramString1 = null;
     return paramString1;
-  }
-  
-  public static AbsStructMsg a(List<byte[]> paramList)
-  {
-    if (paramList != null)
-    {
-      if (paramList.size() == 0) {
-        return null;
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        AbsStructMsg localAbsStructMsg = a((byte[])paramList.next());
-        if (localAbsStructMsg != null) {
-          return localAbsStructMsg;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static AbsStructMsg a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length <= 16) {
-        return null;
-      }
-      if (a(paramArrayOfByte, 8) != 2L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
-        }
-        return null;
-      }
-      byte[] arrayOfByte = new byte[paramArrayOfByte.length - 16];
-      System.arraycopy(paramArrayOfByte, 16, arrayOfByte, 0, paramArrayOfByte.length - 16);
-      return StructMsgFactory.a(arrayOfByte);
-    }
-    return null;
   }
   
   public static StructMsgItemImage a(StructMsgForImageShare paramStructMsgForImageShare)
@@ -620,45 +526,9 @@ public final class QfavUtil
       if ((paramStructMsgForImageShare instanceof StructMsgItemLayoutDefault))
       {
         paramStructMsgForImageShare = (StructMsgItemLayoutDefault)paramStructMsgForImageShare;
-        if ((paramStructMsgForImageShare.a.size() > 0) && ((paramStructMsgForImageShare.a.get(0) instanceof StructMsgItemImage))) {
-          return (StructMsgItemImage)paramStructMsgForImageShare.a.get(0);
+        if ((paramStructMsgForImageShare.ax.size() > 0) && ((paramStructMsgForImageShare.ax.get(0) instanceof StructMsgItemImage))) {
+          return (StructMsgItemImage)paramStructMsgForImageShare.ax.get(0);
         }
-      }
-    }
-    return null;
-  }
-  
-  public static QfavMergeData.MessageData a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length <= 16) {
-        return null;
-      }
-      if (a(paramArrayOfByte, 8) != 1L) {
-        return null;
-      }
-      Object localObject2 = Parcel.obtain();
-      ((Parcel)localObject2).unmarshall(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
-      ((Parcel)localObject2).setDataPosition(0);
-      Object localObject1 = (Bundle)Bundle.CREATOR.createFromParcel((Parcel)localObject2);
-      ((Parcel)localObject2).recycle();
-      paramArrayOfByte = ((Bundle)localObject1).getString("entityNickName");
-      localObject2 = ((Bundle)localObject1).getString("sEntityClassName");
-      localObject2 = a((ContentValues)((Bundle)localObject1).getParcelable("cvEntityContents"), (String)localObject2);
-      if ((localObject2 instanceof ChatMessage))
-      {
-        if ((localObject2 instanceof MessageForStructing))
-        {
-          localObject1 = ((Bundle)localObject1).getByteArray("sEntityData");
-          if (localObject1 != null)
-          {
-            localObject1 = StructMsgFactory.a((byte[])localObject1);
-            ((MessageForStructing)localObject2).structingMsg = ((AbsStructMsg)localObject1);
-          }
-          return new QfavMergeData.MessageData((ChatMessage)localObject2, paramArrayOfByte);
-        }
-        return new QfavMergeData.MessageData((ChatMessage)localObject2, paramArrayOfByte);
       }
     }
     return null;
@@ -725,44 +595,6 @@ public final class QfavUtil
     return paramEntity;
   }
   
-  public static List<QfavMergeData> a(List<byte[]> paramList)
-  {
-    if ((paramList != null) && (paramList.size() != 0))
-    {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = (byte[])paramList.next();
-        long l1 = a((byte[])localObject, 8);
-        if (l1 != 2L)
-        {
-          long l2;
-          if (l1 == 1L)
-          {
-            l2 = a((byte[])localObject, 0);
-            localObject = a((byte[])localObject);
-            if (localObject != null) {
-              localArrayList.add(new QfavMergeData(l2, l1, ((QfavMergeData.MessageData)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, ((QfavMergeData.MessageData)localObject).jdField_a_of_type_JavaLangString));
-            } else if (QLog.isColorLevel()) {
-              QLog.i("qqfav", 2, "unparcelMergeMsg is null");
-            }
-          }
-          else if (l1 == 3L)
-          {
-            l2 = a((byte[])localObject, 0);
-            localObject = a((byte[])localObject);
-            if (localObject != null) {
-              localArrayList.add(new QfavMergeData(l2, l1, (ContentValues)localObject));
-            }
-          }
-        }
-      }
-      return localArrayList;
-    }
-    return null;
-  }
-  
   public static Map<String, String> a(List<byte[]> paramList)
   {
     if (paramList != null)
@@ -773,51 +605,13 @@ public final class QfavUtil
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        Map localMap = a((byte[])paramList.next());
+        Map localMap = d((byte[])paramList.next());
         if (localMap != null) {
           return localMap;
         }
       }
     }
     return null;
-  }
-  
-  public static Map<String, String> a(byte[] paramArrayOfByte)
-  {
-    Object localObject = null;
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length <= 16) {
-        return null;
-      }
-      if (a(paramArrayOfByte, 8) != 4L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
-        }
-        return null;
-      }
-      localObject = Parcel.obtain();
-      ((Parcel)localObject).unmarshall(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
-      ((Parcel)localObject).setDataPosition(0);
-      ContentValues localContentValues = (ContentValues)ContentValues.CREATOR.createFromParcel((Parcel)localObject);
-      ((Parcel)localObject).recycle();
-      if (localContentValues == null) {
-        return null;
-      }
-      paramArrayOfByte = new HashMap();
-      Iterator localIterator = localContentValues.keySet().iterator();
-      for (;;)
-      {
-        localObject = paramArrayOfByte;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (String)localIterator.next();
-        paramArrayOfByte.put(localObject, localContentValues.getAsString((String)localObject));
-      }
-    }
-    return localObject;
   }
   
   private static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong, String paramString6, String paramString7)
@@ -856,7 +650,7 @@ public final class QfavUtil
       while (paramList1.hasNext())
       {
         QfavMergeData localQfavMergeData = (QfavMergeData)paramList1.next();
-        if (localQfavMergeData.b == paramLong) {
+        if (localQfavMergeData.d == paramLong) {
           paramList2.add(localQfavMergeData);
         }
       }
@@ -865,28 +659,28 @@ public final class QfavUtil
   
   public static void a(Context paramContext, int paramInt1, int paramInt2)
   {
-    QQToast localQQToast = QQToast.a(paramContext, paramInt2, paramInt1, 2000);
-    paramInt1 = paramContext.getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(paramContext, 5.0F);
+    QQToast localQQToast = QQToast.makeText(paramContext, paramInt2, paramInt1, 2000);
+    paramInt1 = paramContext.getResources().getDimensionPixelSize(2131299920) - (int)DisplayUtils.a(paramContext, 5.0F);
     paramContext = Looper.getMainLooper();
     if (Thread.currentThread() != paramContext.getThread())
     {
       new Handler(paramContext).post(new QfavUtil.1(localQQToast, paramInt1));
       return;
     }
-    localQQToast.b(paramInt1);
+    localQQToast.show(paramInt1);
   }
   
   public static void a(Context paramContext, String paramString, int paramInt)
   {
-    paramString = QQToast.a(paramContext, paramInt, paramString, 2000);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(paramContext, 5.0F);
+    paramString = QQToast.makeText(paramContext, paramInt, paramString, 2000);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131299920) - (int)DisplayUtils.a(paramContext, 5.0F);
     paramContext = Looper.getMainLooper();
     if (Thread.currentThread() != paramContext.getThread())
     {
       new Handler(paramContext).post(new QfavUtil.2(paramString, paramInt));
       return;
     }
-    paramString.b(paramInt);
+    paramString.show(paramInt);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageForStructing paramMessageForStructing, List<ChatMessage> paramList, Map<String, String> paramMap, ArrayList<byte[]> paramArrayList)
@@ -912,7 +706,7 @@ public final class QfavUtil
           ChatMessage localChatMessage = (ChatMessage)localIterator.next();
           if (paramMap != null)
           {
-            paramList = (String)paramMap.get(MsgProxyUtils.a(localChatMessage));
+            paramList = (String)paramMap.get(MsgProxyUtils.d(localChatMessage));
             paramArrayList.add(a(paramQQAppInterface, paramMessageForStructing.uniseq, localChatMessage, paramList));
             if (!a(localChatMessage)) {
               continue;
@@ -984,7 +778,7 @@ public final class QfavUtil
       if (QLog.isColorLevel()) {
         QLog.d("qqfav", 2, "dumpFileInfo， entity");
       }
-      a(FileManagerUtil.a(paramFileManagerEntity), paramFileManagerEntity.busId, paramFileManagerEntity.Uuid, paramFileManagerEntity.strTroopFilePath, paramFileManagerEntity.WeiYunDirKey, paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.strFileMd5, paramFileManagerEntity.getFilePath());
+      a(FileManagerUtil.h(paramFileManagerEntity), paramFileManagerEntity.busId, paramFileManagerEntity.Uuid, paramFileManagerEntity.strTroopFilePath, paramFileManagerEntity.WeiYunDirKey, paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramFileManagerEntity.strFileMd5, paramFileManagerEntity.getFilePath());
     }
   }
   
@@ -1084,12 +878,12 @@ public final class QfavUtil
   {
     if (!SystemUtil.a())
     {
-      a(paramActivity, 2131693771, 1);
+      a(paramActivity, 2131891346, 1);
       return false;
     }
-    if (SystemUtil.a() < 500L)
+    if (SystemUtil.b() < 500L)
     {
-      a(paramActivity, 2131693770, 1);
+      a(paramActivity, 2131891345, 1);
       return false;
     }
     return true;
@@ -1115,22 +909,6 @@ public final class QfavUtil
       }
     }
     return bool1;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    int i;
-    if (Build.VERSION.SDK_INT > 10) {
-      i = 4;
-    } else {
-      i = 0;
-    }
-    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("mobileQQ", i);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("qfav_unsupport_msg_dialog_flag_");
-    localStringBuilder.append(paramString);
-    return ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
   }
   
   public static boolean a(String paramString, long paramLong)
@@ -1270,36 +1048,230 @@ public final class QfavUtil
     return paramArrayOfByte;
   }
   
+  public static int b(int paramInt)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 3000) {
+        return 3;
+      }
+      return 5;
+    }
+    return 4;
+  }
+  
+  public static long b(List<byte[]> paramList)
+  {
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return -1L;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        long l = e((byte[])paramList.next());
+        if (l > 0L) {
+          return l;
+        }
+      }
+    }
+    return -1L;
+  }
+  
+  public static void b(String paramString)
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
+    }
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("mobileQQ", i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qfav_unsupport_msg_dialog_flag_");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
+    if (!((SharedPreferences)localObject).getBoolean(paramString, false)) {
+      ((SharedPreferences)localObject).edit().putBoolean(paramString, true).commit();
+    }
+  }
+  
+  public static boolean b(ChatMessage paramChatMessage)
+  {
+    boolean bool2 = false;
+    if (paramChatMessage == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if ((paramChatMessage instanceof MessageForStructing))
+    {
+      paramChatMessage = (MessageForStructing)paramChatMessage;
+      bool1 = bool2;
+      if (paramChatMessage.structingMsg != null)
+      {
+        bool1 = bool2;
+        if (paramChatMessage.structingMsg.mMsgServiceID == 14) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static byte[] b(QQAppInterface paramQQAppInterface, long paramLong, ChatMessage paramChatMessage, String paramString)
+  {
+    boolean bool = paramChatMessage instanceof MessageForTroopFile;
+    FileManagerEntity localFileManagerEntity = null;
+    if ((!bool) && (!(paramChatMessage instanceof MessageForFile))) {
+      return null;
+    }
+    QfavBuilder localQfavBuilder = new QfavBuilder(3);
+    if ((paramChatMessage instanceof MessageForFile))
+    {
+      localObject = (MessageForFile)paramChatMessage;
+      a((MessageForFile)localObject);
+      if (paramChatMessage.isMultiMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "parcelFileMsg create new entity");
+        }
+        localObject = MultiFavoriteHelper.b(paramQQAppInterface, paramChatMessage);
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "parcelFileMsg get entity from db");
+        }
+        localObject = FileManagerUtil.a(paramQQAppInterface, (MessageForFile)localObject);
+      }
+      a((FileManagerEntity)localObject);
+      if (localObject != null) {
+        localQfavBuilder.a(paramQQAppInterface, null, (FileManagerEntity)localObject, paramChatMessage, true);
+      } else if (QLog.isColorLevel()) {
+        QLog.d("qqfav", 2, "entity == null");
+      }
+    }
+    else if (bool)
+    {
+      MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramChatMessage;
+      a(localMessageForTroopFile);
+      if (paramChatMessage.isMultiMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "parcelFileMsg, isMultiMsg T, create new entity");
+        }
+        localObject = MultiFavoriteHelper.b(paramQQAppInterface, paramChatMessage);
+      }
+      for (;;)
+      {
+        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "parcelFileMsg, isMultiMsg T, find in db");
+        }
+        localObject = TroopFileUtils.a(paramQQAppInterface, localMessageForTroopFile);
+        if (localObject != null)
+        {
+          localFileManagerEntity = MultiFavoriteHelper.a((TroopFileStatusInfo)localObject);
+          localObject = TroopFileManager.a(paramQQAppInterface, ((TroopFileStatusInfo)localObject).d);
+          if ((localObject != null) && (localFileManagerEntity != null) && (!TextUtils.isEmpty(localFileManagerEntity.strTroopFilePath)))
+          {
+            TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject).a(localFileManagerEntity.strTroopFilePath);
+            localObject = localFileManagerEntity;
+            if (localTroopFileInfo != null)
+            {
+              localFileManagerEntity.lastTime = localTroopFileInfo.j;
+              localFileManagerEntity.selfUin = String.valueOf(localTroopFileInfo.g);
+              localObject = localFileManagerEntity;
+            }
+          }
+          else
+          {
+            localObject = localFileManagerEntity;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("qqfav", 2, "troopFileManager != null or fileManagerEntity4Favorite.strTroopFilePath == null");
+              localObject = localFileManagerEntity;
+            }
+          }
+        }
+        else
+        {
+          localObject = localFileManagerEntity;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("qqfav", 2, "info == null");
+            localObject = localFileManagerEntity;
+          }
+        }
+      }
+      a((FileManagerEntity)localObject);
+      MultiFavoriteHelper.a((FileManagerEntity)localObject, localMessageForTroopFile);
+      if (localObject != null) {
+        localQfavBuilder.a(paramQQAppInterface, null, (FileManagerEntity)localObject, localMessageForTroopFile, true);
+      } else if (QLog.isColorLevel()) {
+        QLog.d("qqfav", 2, "fileManagerEntity4Favorite == null");
+      }
+    }
+    else if ((paramChatMessage instanceof MessageForDLFile))
+    {
+      localObject = (MessageForDLFile)paramChatMessage;
+      int i = ((MessageForDLFile)localObject).deviceType;
+      l = ((MessageForDLFile)localObject).associatedId;
+      localObject = paramQQAppInterface.getMessageFacade().d(i).a(l);
+      if (localObject != null) {
+        localObject = ((DataLineMsgRecord)localObject).path;
+      } else {
+        localObject = "";
+      }
+      if (!FileUtils.fileExistsAndNotEmpty((String)localObject)) {
+        localQfavBuilder.a(paramQQAppInterface, null, (String)localObject);
+      }
+    }
+    paramQQAppInterface = new ContentValues();
+    Object localObject = (ContentValues)localQfavBuilder.b().getExtras().getParcelable("fileContents");
+    if (localObject != null) {
+      paramQQAppInterface.put("fileContents", a((ContentValues)localObject));
+    }
+    localObject = MsgProxyUtils.d(paramChatMessage);
+    long l = paramChatMessage.time;
+    paramQQAppInterface.put("sUin", (String)localObject);
+    paramQQAppInterface.put("time", Long.valueOf(l));
+    paramQQAppInterface.put("entityNickName", paramString);
+    return a(paramLong, 3L, paramQQAppInterface);
+  }
+  
   /* Error */
-  public static String[] a(byte[] paramArrayOfByte)
+  public static String[] b(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: invokestatic 945	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   0: invokestatic 1022	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
     //   3: astore 5
     //   5: aload 5
-    //   7: invokevirtual 949	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
-    //   10: new 951	java/io/ByteArrayInputStream
+    //   7: invokevirtual 1026	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   10: new 1028	java/io/ByteArrayInputStream
     //   13: dup
     //   14: aload_0
-    //   15: invokespecial 954	java/io/ByteArrayInputStream:<init>	([B)V
-    //   18: invokevirtual 960	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
-    //   21: invokeinterface 966 1 0
+    //   15: invokespecial 1031	java/io/ByteArrayInputStream:<init>	([B)V
+    //   18: invokevirtual 1037	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   21: invokeinterface 1043 1 0
     //   26: astore 5
     //   28: aconst_null
-    //   29: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   29: invokestatic 27	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   32: ifeq +17 -> 49
     //   35: aload 5
-    //   37: ldc_w 968
-    //   40: invokeinterface 973 2 0
+    //   37: ldc_w 1045
+    //   40: invokeinterface 1050 2 0
     //   45: astore_0
     //   46: goto +5 -> 51
     //   49: aconst_null
     //   50: astore_0
     //   51: aload 5
-    //   53: invokeinterface 974 1 0
+    //   53: invokeinterface 1051 1 0
     //   58: astore 18
     //   60: aload 18
-    //   62: invokeinterface 563 1 0
+    //   62: invokeinterface 488 1 0
     //   67: istore_3
     //   68: aconst_null
     //   69: astore 8
@@ -1330,17 +1302,17 @@ public final class QfavUtil
     //   114: if_icmpge +1004 -> 1118
     //   117: aload 18
     //   119: iload_1
-    //   120: invokeinterface 567 2 0
+    //   120: invokeinterface 492 2 0
     //   125: astore 15
     //   127: aload 15
-    //   129: invokeinterface 977 1 0
+    //   129: invokeinterface 1054 1 0
     //   134: astore 16
     //   136: aload 16
-    //   138: ldc_w 978
-    //   141: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   138: ldc_w 1055
+    //   141: invokevirtual 1058	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   144: ifeq +664 -> 808
     //   147: aload 15
-    //   149: invokeinterface 558 1 0
+    //   149: invokeinterface 483 1 0
     //   154: astore 19
     //   156: aload 6
     //   158: astore 10
@@ -1358,7 +1330,7 @@ public final class QfavUtil
     //   180: astore 13
     //   182: iload_2
     //   183: aload 19
-    //   185: invokeinterface 563 1 0
+    //   185: invokeinterface 488 1 0
     //   190: if_icmpge +556 -> 746
     //   193: aload 5
     //   195: astore 11
@@ -1368,7 +1340,7 @@ public final class QfavUtil
     //   203: astore 13
     //   205: aload 19
     //   207: iload_2
-    //   208: invokeinterface 567 2 0
+    //   208: invokeinterface 492 2 0
     //   213: astore 10
     //   215: aload 5
     //   217: astore 11
@@ -1377,9 +1349,9 @@ public final class QfavUtil
     //   223: aload 5
     //   225: astore 13
     //   227: aload 10
-    //   229: invokeinterface 977 1 0
-    //   234: ldc_w 983
-    //   237: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   229: invokeinterface 1054 1 0
+    //   234: ldc_w 1060
+    //   237: invokevirtual 1058	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   240: istore 4
     //   242: iload 4
     //   244: ifeq +88 -> 332
@@ -1398,7 +1370,7 @@ public final class QfavUtil
     //   271: aload 5
     //   273: astore 13
     //   275: aload 5
-    //   277: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   277: invokestatic 27	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   280: ifeq +443 -> 723
     //   283: aload 5
     //   285: astore 11
@@ -1407,10 +1379,10 @@ public final class QfavUtil
     //   291: aload 5
     //   293: astore 13
     //   295: aload 10
-    //   297: invokeinterface 987 1 0
-    //   302: ldc_w 989
-    //   305: invokeinterface 995 2 0
-    //   310: invokeinterface 554 1 0
+    //   297: invokeinterface 1064 1 0
+    //   302: ldc_w 1066
+    //   305: invokeinterface 1072 2 0
+    //   310: invokeinterface 479 1 0
     //   315: astore 14
     //   317: aload 8
     //   319: astore 15
@@ -1426,9 +1398,9 @@ public final class QfavUtil
     //   340: aload 5
     //   342: astore 13
     //   344: aload 10
-    //   346: invokeinterface 977 1 0
-    //   351: ldc_w 997
-    //   354: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   346: invokeinterface 1054 1 0
+    //   351: ldc_w 1074
+    //   354: invokevirtual 1058	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   357: ifeq +73 -> 430
     //   360: aload 8
     //   362: astore 15
@@ -1445,7 +1417,7 @@ public final class QfavUtil
     //   384: aload 5
     //   386: astore 13
     //   388: aload 8
-    //   390: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   390: invokestatic 27	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   393: ifeq +330 -> 723
     //   396: aload 5
     //   398: astore 11
@@ -1454,7 +1426,7 @@ public final class QfavUtil
     //   404: aload 5
     //   406: astore 13
     //   408: aload 10
-    //   410: invokestatic 999	cooperation/qqfav/QfavUtil:a	(Lorg/w3c/dom/Node;)Ljava/lang/String;
+    //   410: invokestatic 1076	cooperation/qqfav/QfavUtil:a	(Lorg/w3c/dom/Node;)Ljava/lang/String;
     //   413: astore 15
     //   415: aload 7
     //   417: astore 16
@@ -1470,9 +1442,9 @@ public final class QfavUtil
     //   438: aload 5
     //   440: astore 13
     //   442: aload 10
-    //   444: invokeinterface 977 1 0
-    //   449: ldc_w 1001
-    //   452: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   444: invokeinterface 1054 1 0
+    //   449: ldc_w 1078
+    //   452: invokevirtual 1058	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   455: ifeq +73 -> 528
     //   458: aload 8
     //   460: astore 15
@@ -1489,7 +1461,7 @@ public final class QfavUtil
     //   482: aload 5
     //   484: astore 13
     //   486: aload 7
-    //   488: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   488: invokestatic 27	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   491: ifeq +232 -> 723
     //   494: aload 5
     //   496: astore 11
@@ -1498,7 +1470,7 @@ public final class QfavUtil
     //   502: aload 5
     //   504: astore 13
     //   506: aload 10
-    //   508: invokestatic 999	cooperation/qqfav/QfavUtil:a	(Lorg/w3c/dom/Node;)Ljava/lang/String;
+    //   508: invokestatic 1076	cooperation/qqfav/QfavUtil:a	(Lorg/w3c/dom/Node;)Ljava/lang/String;
     //   511: astore 16
     //   513: aload 8
     //   515: astore 15
@@ -1522,9 +1494,9 @@ public final class QfavUtil
     //   552: aload 5
     //   554: astore 13
     //   556: aload 10
-    //   558: invokeinterface 977 1 0
-    //   563: ldc_w 1003
-    //   566: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   558: invokeinterface 1054 1 0
+    //   563: ldc_w 1080
+    //   566: invokevirtual 1058	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   569: ifeq +154 -> 723
     //   572: aload 5
     //   574: astore 11
@@ -1533,7 +1505,7 @@ public final class QfavUtil
     //   580: aload 5
     //   582: astore 13
     //   584: aload 10
-    //   586: invokeinterface 987 1 0
+    //   586: invokeinterface 1064 1 0
     //   591: astore 20
     //   593: aload 5
     //   595: astore 10
@@ -1544,7 +1516,7 @@ public final class QfavUtil
     //   605: aload 5
     //   607: astore 13
     //   609: aload 5
-    //   611: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   611: invokestatic 27	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   614: ifeq +32 -> 646
     //   617: aload 5
     //   619: astore 11
@@ -1553,9 +1525,9 @@ public final class QfavUtil
     //   625: aload 5
     //   627: astore 13
     //   629: aload 20
-    //   631: ldc_w 989
-    //   634: invokeinterface 995 2 0
-    //   639: invokeinterface 554 1 0
+    //   631: ldc_w 1066
+    //   634: invokeinterface 1072 2 0
+    //   639: invokeinterface 479 1 0
     //   644: astore 10
     //   646: aload 8
     //   648: astore 15
@@ -1572,7 +1544,7 @@ public final class QfavUtil
     //   670: aload 10
     //   672: astore 13
     //   674: aload 6
-    //   676: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   676: invokestatic 27	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   679: ifeq +44 -> 723
     //   682: aload 10
     //   684: astore 11
@@ -1581,9 +1553,9 @@ public final class QfavUtil
     //   690: aload 10
     //   692: astore 13
     //   694: aload 20
-    //   696: ldc_w 1005
-    //   699: invokeinterface 995 2 0
-    //   704: invokeinterface 554 1 0
+    //   696: ldc_w 1082
+    //   699: invokeinterface 1072 2 0
+    //   704: invokeinterface 479 1 0
     //   709: astore 17
     //   711: aload 10
     //   713: astore 14
@@ -1644,8 +1616,8 @@ public final class QfavUtil
     //   824: aload 5
     //   826: astore 14
     //   828: aload 16
-    //   830: ldc_w 1007
-    //   833: invokevirtual 981	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   830: ldc_w 1084
+    //   833: invokevirtual 1058	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   836: ifeq +69 -> 905
     //   839: aload 8
     //   841: astore 10
@@ -1658,13 +1630,13 @@ public final class QfavUtil
     //   855: aload 5
     //   857: astore 14
     //   859: aload 9
-    //   861: invokestatic 61	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   861: invokestatic 27	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   864: ifeq +41 -> 905
     //   867: aload 15
-    //   869: invokeinterface 987 1 0
-    //   874: ldc_w 1009
-    //   877: invokeinterface 995 2 0
-    //   882: invokeinterface 554 1 0
+    //   869: invokeinterface 1064 1 0
+    //   874: ldc_w 1086
+    //   877: invokeinterface 1072 2 0
+    //   882: invokeinterface 479 1 0
     //   887: astore 11
     //   889: aload 5
     //   891: astore 14
@@ -1715,7 +1687,7 @@ public final class QfavUtil
     //   980: aload 6
     //   982: astore 5
     //   984: aload 10
-    //   986: invokevirtual 1010	java/io/IOException:printStackTrace	()V
+    //   986: invokevirtual 1087	java/io/IOException:printStackTrace	()V
     //   989: aload_0
     //   990: astore 10
     //   992: aload 8
@@ -1743,7 +1715,7 @@ public final class QfavUtil
     //   1033: aload 6
     //   1035: astore 5
     //   1037: aload 10
-    //   1039: invokevirtual 1011	org/xml/sax/SAXException:printStackTrace	()V
+    //   1039: invokevirtual 1088	org/xml/sax/SAXException:printStackTrace	()V
     //   1042: aload_0
     //   1043: astore 10
     //   1045: aload 8
@@ -1771,7 +1743,7 @@ public final class QfavUtil
     //   1086: aload 6
     //   1088: astore 5
     //   1090: aload 10
-    //   1092: invokevirtual 1012	javax/xml/parsers/ParserConfigurationException:printStackTrace	()V
+    //   1092: invokevirtual 1089	javax/xml/parsers/ParserConfigurationException:printStackTrace	()V
     //   1095: aload 5
     //   1097: astore 15
     //   1099: aload 6
@@ -1785,7 +1757,7 @@ public final class QfavUtil
     //   1115: aload_0
     //   1116: astore 10
     //   1118: bipush 6
-    //   1120: anewarray 90	java/lang/String
+    //   1120: anewarray 57	java/lang/String
     //   1123: dup
     //   1124: iconst_0
     //   1125: aload 11
@@ -1920,19 +1892,45 @@ public final class QfavUtil
     //   5	46	1068	javax/xml/parsers/ParserConfigurationException
   }
   
-  public static int b(int paramInt)
+  public static ContentValues c(byte[] paramArrayOfByte)
   {
-    if (paramInt != 1)
+    if (paramArrayOfByte != null)
     {
-      if (paramInt != 3000) {
-        return 3;
+      if (paramArrayOfByte.length <= 16) {
+        return null;
       }
-      return 5;
+      if (a(paramArrayOfByte, 8) != 3L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
+        }
+        return null;
+      }
+      return a(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
     }
-    return 4;
+    return null;
   }
   
-  public static void b(String paramString)
+  public static AbsStructMsg c(List<byte[]> paramList)
+  {
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return null;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        AbsStructMsg localAbsStructMsg = f((byte[])paramList.next());
+        if (localAbsStructMsg != null) {
+          return localAbsStructMsg;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static boolean c(String paramString)
   {
     Object localObject = BaseApplicationImpl.getApplication();
     int i;
@@ -1945,159 +1943,161 @@ public final class QfavUtil
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("qfav_unsupport_msg_dialog_flag_");
     localStringBuilder.append(paramString);
-    paramString = localStringBuilder.toString();
-    if (!((SharedPreferences)localObject).getBoolean(paramString, false)) {
-      ((SharedPreferences)localObject).edit().putBoolean(paramString, true).commit();
-    }
+    return ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false);
   }
   
-  public static boolean b(ChatMessage paramChatMessage)
+  public static List<QfavMergeData> d(List<byte[]> paramList)
   {
-    boolean bool2 = false;
-    if (paramChatMessage == null) {
-      return false;
-    }
-    boolean bool1 = bool2;
-    if ((paramChatMessage instanceof MessageForStructing))
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      paramChatMessage = (MessageForStructing)paramChatMessage;
-      bool1 = bool2;
-      if (paramChatMessage.structingMsg != null)
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        bool1 = bool2;
-        if (paramChatMessage.structingMsg.mMsgServiceID == 14) {
-          bool1 = true;
+        Object localObject = (byte[])paramList.next();
+        long l1 = a((byte[])localObject, 8);
+        if (l1 != 2L)
+        {
+          long l2;
+          if (l1 == 1L)
+          {
+            l2 = a((byte[])localObject, 0);
+            localObject = g((byte[])localObject);
+            if (localObject != null) {
+              localArrayList.add(new QfavMergeData(l2, l1, ((QfavMergeData.MessageData)localObject).a, ((QfavMergeData.MessageData)localObject).b));
+            } else if (QLog.isColorLevel()) {
+              QLog.i("qqfav", 2, "unparcelMergeMsg is null");
+            }
+          }
+          else if (l1 == 3L)
+          {
+            l2 = a((byte[])localObject, 0);
+            localObject = c((byte[])localObject);
+            if (localObject != null) {
+              localArrayList.add(new QfavMergeData(l2, l1, (ContentValues)localObject));
+            }
+          }
         }
       }
+      return localArrayList;
     }
-    return bool1;
+    return null;
   }
   
-  public static byte[] b(QQAppInterface paramQQAppInterface, long paramLong, ChatMessage paramChatMessage, String paramString)
+  public static Map<String, String> d(byte[] paramArrayOfByte)
   {
-    boolean bool = paramChatMessage instanceof MessageForTroopFile;
-    FileManagerEntity localFileManagerEntity = null;
-    if ((!bool) && (!(paramChatMessage instanceof MessageForFile))) {
-      return null;
-    }
-    QfavBuilder localQfavBuilder = new QfavBuilder(3);
-    if ((paramChatMessage instanceof MessageForFile))
+    Object localObject = null;
+    if (paramArrayOfByte != null)
     {
-      localObject = (MessageForFile)paramChatMessage;
-      a((MessageForFile)localObject);
-      if (paramChatMessage.isMultiMsg)
+      if (paramArrayOfByte.length <= 16) {
+        return null;
+      }
+      if (a(paramArrayOfByte, 8) != 4L)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "parcelFileMsg create new entity");
+          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
         }
-        localObject = MultiFavoriteHelper.a(paramQQAppInterface, paramChatMessage);
+        return null;
       }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "parcelFileMsg get entity from db");
-        }
-        localObject = FileManagerUtil.a(paramQQAppInterface, (MessageForFile)localObject);
+      localObject = Parcel.obtain();
+      ((Parcel)localObject).unmarshall(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
+      ((Parcel)localObject).setDataPosition(0);
+      ContentValues localContentValues = (ContentValues)ContentValues.CREATOR.createFromParcel((Parcel)localObject);
+      ((Parcel)localObject).recycle();
+      if (localContentValues == null) {
+        return null;
       }
-      a((FileManagerEntity)localObject);
-      if (localObject != null) {
-        localQfavBuilder.a(paramQQAppInterface, null, (FileManagerEntity)localObject, paramChatMessage, true);
-      } else if (QLog.isColorLevel()) {
-        QLog.d("qqfav", 2, "entity == null");
-      }
-    }
-    else if (bool)
-    {
-      MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)paramChatMessage;
-      a(localMessageForTroopFile);
-      if (paramChatMessage.isMultiMsg)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "parcelFileMsg, isMultiMsg T, create new entity");
-        }
-        localObject = MultiFavoriteHelper.a(paramQQAppInterface, paramChatMessage);
-      }
+      paramArrayOfByte = new HashMap();
+      Iterator localIterator = localContentValues.keySet().iterator();
       for (;;)
       {
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("qqfav", 2, "parcelFileMsg, isMultiMsg T, find in db");
+        localObject = paramArrayOfByte;
+        if (!localIterator.hasNext()) {
+          break;
         }
-        localObject = TroopFileUtils.a(paramQQAppInterface, localMessageForTroopFile);
-        if (localObject != null)
-        {
-          localFileManagerEntity = MultiFavoriteHelper.a((TroopFileStatusInfo)localObject);
-          localObject = TroopFileManager.a(paramQQAppInterface, ((TroopFileStatusInfo)localObject).b);
-          if ((localObject != null) && (localFileManagerEntity != null) && (!TextUtils.isEmpty(localFileManagerEntity.strTroopFilePath)))
-          {
-            TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject).a(localFileManagerEntity.strTroopFilePath);
-            localObject = localFileManagerEntity;
-            if (localTroopFileInfo != null)
-            {
-              localFileManagerEntity.lastTime = localTroopFileInfo.c;
-              localFileManagerEntity.selfUin = String.valueOf(localTroopFileInfo.b);
-              localObject = localFileManagerEntity;
-            }
-          }
-          else
-          {
-            localObject = localFileManagerEntity;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("qqfav", 2, "troopFileManager != null or fileManagerEntity4Favorite.strTroopFilePath == null");
-              localObject = localFileManagerEntity;
-            }
-          }
-        }
-        else
-        {
-          localObject = localFileManagerEntity;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("qqfav", 2, "info == null");
-            localObject = localFileManagerEntity;
-          }
-        }
-      }
-      a((FileManagerEntity)localObject);
-      MultiFavoriteHelper.a((FileManagerEntity)localObject, localMessageForTroopFile);
-      if (localObject != null) {
-        localQfavBuilder.a(paramQQAppInterface, null, (FileManagerEntity)localObject, localMessageForTroopFile, true);
-      } else if (QLog.isColorLevel()) {
-        QLog.d("qqfav", 2, "fileManagerEntity4Favorite == null");
+        localObject = (String)localIterator.next();
+        paramArrayOfByte.put(localObject, localContentValues.getAsString((String)localObject));
       }
     }
-    else if ((paramChatMessage instanceof MessageForDLFile))
+    return localObject;
+  }
+  
+  public static long e(byte[] paramArrayOfByte)
+  {
+    long l = -1L;
+    if (paramArrayOfByte != null)
     {
-      localObject = (MessageForDLFile)paramChatMessage;
-      int i = ((MessageForDLFile)localObject).deviceType;
-      l = ((MessageForDLFile)localObject).associatedId;
-      localObject = paramQQAppInterface.getMessageFacade().a(i).a(l);
-      if (localObject != null) {
-        localObject = ((DataLineMsgRecord)localObject).path;
-      } else {
-        localObject = "";
+      if (paramArrayOfByte.length <= 16) {
+        return -1L;
       }
-      if (!FileUtils.fileExistsAndNotEmpty((String)localObject)) {
-        localQfavBuilder.a(paramQQAppInterface, null, (String)localObject);
+      if (a(paramArrayOfByte, 8) != 5L) {
+        return -1L;
+      }
+      l = a(paramArrayOfByte, 16);
+    }
+    return l;
+  }
+  
+  public static AbsStructMsg f(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length <= 16) {
+        return null;
+      }
+      if (a(paramArrayOfByte, 8) != 2L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("qqfav", 2, "unParcelStructMsg, is not structMsg");
+        }
+        return null;
+      }
+      byte[] arrayOfByte = new byte[paramArrayOfByte.length - 16];
+      System.arraycopy(paramArrayOfByte, 16, arrayOfByte, 0, paramArrayOfByte.length - 16);
+      return StructMsgFactory.a(arrayOfByte);
+    }
+    return null;
+  }
+  
+  public static QfavMergeData.MessageData g(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length <= 16) {
+        return null;
+      }
+      if (a(paramArrayOfByte, 8) != 1L) {
+        return null;
+      }
+      Object localObject2 = Parcel.obtain();
+      ((Parcel)localObject2).unmarshall(paramArrayOfByte, 16, paramArrayOfByte.length - 16);
+      ((Parcel)localObject2).setDataPosition(0);
+      Object localObject1 = (Bundle)Bundle.CREATOR.createFromParcel((Parcel)localObject2);
+      ((Parcel)localObject2).recycle();
+      paramArrayOfByte = ((Bundle)localObject1).getString("entityNickName");
+      localObject2 = ((Bundle)localObject1).getString("sEntityClassName");
+      localObject2 = a((ContentValues)((Bundle)localObject1).getParcelable("cvEntityContents"), (String)localObject2);
+      if ((localObject2 instanceof ChatMessage))
+      {
+        if ((localObject2 instanceof MessageForStructing))
+        {
+          localObject1 = ((Bundle)localObject1).getByteArray("sEntityData");
+          if (localObject1 != null)
+          {
+            localObject1 = StructMsgFactory.a((byte[])localObject1);
+            ((MessageForStructing)localObject2).structingMsg = ((AbsStructMsg)localObject1);
+          }
+          return new QfavMergeData.MessageData((ChatMessage)localObject2, paramArrayOfByte);
+        }
+        return new QfavMergeData.MessageData((ChatMessage)localObject2, paramArrayOfByte);
       }
     }
-    paramQQAppInterface = new ContentValues();
-    Object localObject = (ContentValues)localQfavBuilder.a().getExtras().getParcelable("fileContents");
-    if (localObject != null) {
-      paramQQAppInterface.put("fileContents", a((ContentValues)localObject));
-    }
-    localObject = MsgProxyUtils.a(paramChatMessage);
-    long l = paramChatMessage.time;
-    paramQQAppInterface.put("sUin", (String)localObject);
-    paramQQAppInterface.put("time", Long.valueOf(l));
-    paramQQAppInterface.put("entityNickName", paramString);
-    return a(paramLong, 3L, paramQQAppInterface);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ public class TroopCardGroup$CMyAdapter
 {
   public int getCount()
   {
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      return this.a.jdField_a_of_type_JavaUtilList.size();
+    if (this.a.e != null) {
+      return this.a.e.size();
     }
     return 0;
   }
@@ -36,22 +36,22 @@ public class TroopCardGroup$CMyAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    searchtab.Item1 localItem1 = (searchtab.Item1)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    searchtab.Item1 localItem1 = (searchtab.Item1)this.a.e.get(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = GroupViewAdapter.a(this.a.jdField_a_of_type_AndroidContentContext, paramViewGroup, 5, true, 1);
+      localView = GroupViewAdapter.a(this.a.b, paramViewGroup, 5, true, 1);
     }
-    GroupViewAdapter.a(localView, this.a.jdField_a_of_type_AndroidContentContext, localItem1);
+    GroupViewAdapter.a(localView, this.a.b, localItem1);
     paramView = (FacePreloadHolder.ViewHolder)localView.getTag();
     localView.setTag(-1, localItem1);
     if (!TextUtils.isEmpty(localItem1.str_img_url.get()))
     {
-      paramView.c.setImageDrawable(URLDrawable.getDrawable(localItem1.str_img_url.get(), paramView.c.getWidth(), paramView.c.getHeight()));
+      paramView.A.setImageDrawable(URLDrawable.getDrawable(localItem1.str_img_url.get(), paramView.A.getWidth(), paramView.A.getHeight()));
     }
     else if (localItem1.uint64_group_code.get() > 0L)
     {
-      paramView.a = String.valueOf(localItem1.uint64_group_code.get());
-      paramView.c.setImageBitmap(a(4, String.valueOf(localItem1.uint64_group_code.get())));
+      paramView.y = String.valueOf(localItem1.uint64_group_code.get());
+      paramView.A.setImageBitmap(a(4, String.valueOf(localItem1.uint64_group_code.get())));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;

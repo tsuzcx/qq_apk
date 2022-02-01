@@ -10,18 +10,18 @@ class RMVideoRecordState$3
   public void run()
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.b())
+    if (!localRMVideoStateMgr.c())
     {
       SLog.c("RMRecordState", "run record finish, but state is not right");
       return;
     }
     this.this$0.b();
-    localRMVideoStateMgr.a.g();
+    localRMVideoStateMgr.v.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.3
  * JD-Core Version:    0.7.0.1
  */

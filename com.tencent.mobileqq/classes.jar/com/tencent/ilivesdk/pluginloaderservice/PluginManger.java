@@ -17,15 +17,15 @@ import java.util.concurrent.Future;
 
 public class PluginManger
 {
-  private static HashMap<String, Future> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static ConcurrentHashMap<String, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static ConcurrentHashMap<String, Object> a = new ConcurrentHashMap();
   private static HashMap<String, Future> b = new HashMap();
+  private static HashMap<String, Future> c = new HashMap();
   
   public static void a(Plugin paramPlugin, PluginInstallListener paramPluginInstallListener)
   {
-    if ((paramPlugin != null) && (!paramPlugin.a()))
+    if ((paramPlugin != null) && (!paramPlugin.l()))
     {
-      String str = paramPlugin.c();
+      String str = paramPlugin.e();
       if (TextUtils.isEmpty(str))
       {
         LogUtil.b("PluginManger", "install plugin name is null.", new Object[0]);
@@ -42,23 +42,10 @@ public class PluginManger
   
   private static void a(String paramString, Future paramFuture)
   {
-    synchronized (jdField_a_of_type_JavaUtilHashMap)
+    synchronized (b)
     {
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, paramFuture);
+      b.put(paramString, paramFuture);
       return;
-    }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaUtilHashMap)
-    {
-      if ((Future)jdField_a_of_type_JavaUtilHashMap.get(paramString) != null)
-      {
-        LogUtil.b("PluginManger", "isInstalling: the plugin is installing.", new Object[0]);
-        return true;
-      }
-      return false;
     }
   }
   
@@ -67,78 +54,91 @@ public class PluginManger
     return new PluginInstaller().a((AbstractPlugin)paramIPlugin).a(paramFile).a();
   }
   
-  private static IPluginClassLoader b(IPlugin paramIPlugin)
-  {
-    return new PluginLoader(paramIPlugin).a();
-  }
-  
-  private static File b(IPlugin paramIPlugin)
-  {
-    return new PluginDownloader(null).a(paramIPlugin).a();
-  }
-  
   private static Future<IPlugin> b(Plugin paramPlugin)
   {
-    String str = paramPlugin.c();
-    Object localObject2 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+    String str = paramPlugin.e();
+    Object localObject2 = a.get(str);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new Object();
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject1);
+      a.put(str, localObject1);
     }
-    if (a(str))
+    if (c(str))
     {
       LogUtil.b("PluginManger", "install plugin in installing.", new Object[0]);
-      return (Future)jdField_a_of_type_JavaUtilHashMap.get(str);
+      return (Future)b.get(str);
     }
     try
     {
-      if (a(str))
+      if (c(str))
       {
         LogUtil.b("PluginManger", "install plugin in installing.", new Object[0]);
-        paramPlugin = (Future)jdField_a_of_type_JavaUtilHashMap.get(str);
+        paramPlugin = (Future)b.get(str);
         return paramPlugin;
       }
       localObject2 = ThreadManagerExecutor.a().submit(new PluginManger.2(str, paramPlugin));
-      a(paramPlugin.c(), (Future)localObject2);
+      a(paramPlugin.e(), (Future)localObject2);
       return localObject2;
     }
     finally {}
   }
   
-  private static void b(IPlugin paramIPlugin)
+  private static void b(String paramString)
   {
-    if (b.containsKey(paramIPlugin.c()))
-    {
-      LogUtil.b("PluginManger", "updaterPlugin: on updating plugin[%s]", new Object[] { paramIPlugin.c() });
-      return;
-    }
     synchronized (b)
     {
-      if (b.containsKey(paramIPlugin.c()))
-      {
-        LogUtil.b("PluginManger", "updaterPlugin: on updating plugin[%s]", new Object[] { paramIPlugin.c() });
-        return;
-      }
-      Future localFuture = ThreadManagerExecutor.a().submit(new PluginManger.3(paramIPlugin));
-      b.put(paramIPlugin.c(), localFuture);
+      b.remove(paramString);
       return;
     }
   }
   
-  private static void b(String paramString)
+  private static boolean c(String paramString)
   {
-    synchronized (jdField_a_of_type_JavaUtilHashMap)
+    synchronized (b)
     {
-      jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+      if ((Future)b.get(paramString) != null)
+      {
+        LogUtil.b("PluginManger", "isInstalling: the plugin is installing.", new Object[0]);
+        return true;
+      }
+      return false;
+    }
+  }
+  
+  private static File d(IPlugin paramIPlugin)
+  {
+    return new PluginDownloader(null).a(paramIPlugin).a();
+  }
+  
+  private static IPluginClassLoader e(IPlugin paramIPlugin)
+  {
+    return new PluginLoader(paramIPlugin).a();
+  }
+  
+  private static void f(IPlugin paramIPlugin)
+  {
+    if (c.containsKey(paramIPlugin.e()))
+    {
+      LogUtil.b("PluginManger", "updaterPlugin: on updating plugin[%s]", new Object[] { paramIPlugin.e() });
+      return;
+    }
+    synchronized (c)
+    {
+      if (c.containsKey(paramIPlugin.e()))
+      {
+        LogUtil.b("PluginManger", "updaterPlugin: on updating plugin[%s]", new Object[] { paramIPlugin.e() });
+        return;
+      }
+      Future localFuture = ThreadManagerExecutor.a().submit(new PluginManger.3(paramIPlugin));
+      c.put(paramIPlugin.e(), localFuture);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.PluginManger
  * JD-Core Version:    0.7.0.1
  */

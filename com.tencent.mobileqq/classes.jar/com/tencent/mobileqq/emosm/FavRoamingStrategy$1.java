@@ -20,19 +20,19 @@ class FavRoamingStrategy$1
     }
     QLog.d("FavEmoRoamingHandler", 1, new Object[] { "fav emoticon size:", Integer.valueOf(((List)localObject).size()) });
     if (((List)localObject).size() >= FavEmoConstant.a) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
+      ReportController.b(this.a.a, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
     }
     if (((List)localObject).size() >= FavEmoConstant.b) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
+      ReportController.b(this.a.a, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.b((List)localObject);
+    if (this.a.b != null) {
+      this.a.b.b((List)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavRoamingStrategy.1
  * JD-Core Version:    0.7.0.1
  */

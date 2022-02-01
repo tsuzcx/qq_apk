@@ -8,21 +8,6 @@ public class ClipUtils
 {
   private static final Matrix a = new Matrix();
   
-  public static CropHomeing a(RectF paramRectF1, RectF paramRectF2)
-  {
-    CropHomeing localCropHomeing = new CropHomeing(0.0F, 0.0F, 1.0F, 0.0F);
-    if (paramRectF1.equals(paramRectF2)) {
-      return localCropHomeing;
-    }
-    localCropHomeing.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
-    RectF localRectF = new RectF();
-    a.setScale(localCropHomeing.c, localCropHomeing.c, paramRectF2.centerX(), paramRectF2.centerY());
-    a.mapRect(localRectF, paramRectF2);
-    localCropHomeing.a += paramRectF1.centerX() - localRectF.centerX();
-    localCropHomeing.b += paramRectF1.centerY() - localRectF.centerY();
-    return localCropHomeing;
-  }
-  
   public static CropHomeing a(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
   {
     CropHomeing localCropHomeing = new CropHomeing(0.0F, 0.0F, 1.0F, 0.0F);
@@ -97,6 +82,21 @@ public class ClipUtils
     }
   }
   
+  public static CropHomeing b(RectF paramRectF1, RectF paramRectF2)
+  {
+    CropHomeing localCropHomeing = new CropHomeing(0.0F, 0.0F, 1.0F, 0.0F);
+    if (paramRectF1.equals(paramRectF2)) {
+      return localCropHomeing;
+    }
+    localCropHomeing.c = Math.max(paramRectF1.width() / paramRectF2.width(), paramRectF1.height() / paramRectF2.height());
+    RectF localRectF = new RectF();
+    a.setScale(localCropHomeing.c, localCropHomeing.c, paramRectF2.centerX(), paramRectF2.centerY());
+    a.mapRect(localRectF, paramRectF2);
+    localCropHomeing.a += paramRectF1.centerX() - localRectF.centerX();
+    localCropHomeing.b += paramRectF1.centerY() - localRectF.centerY();
+    return localCropHomeing;
+  }
+  
   public static CropHomeing b(RectF paramRectF1, RectF paramRectF2, float paramFloat1, float paramFloat2)
   {
     CropHomeing localCropHomeing = new CropHomeing(0.0F, 0.0F, 1.0F, 0.0F);
@@ -127,7 +127,7 @@ public class ClipUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.Clip.ClipUtils
  * JD-Core Version:    0.7.0.1
  */

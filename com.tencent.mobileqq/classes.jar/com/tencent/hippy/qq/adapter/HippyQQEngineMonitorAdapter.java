@@ -5,6 +5,7 @@ import com.tencent.mtt.hippy.HippyRootView;
 import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorAdapter;
 import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorEvent;
 import com.tencent.qqlive.module.videoreport.VideoReport;
+import java.util.HashMap;
 import java.util.List;
 
 public class HippyQQEngineMonitorAdapter
@@ -20,7 +21,7 @@ public class HippyQQEngineMonitorAdapter
   public void reportClickEvent(Object paramObject, boolean paramBoolean)
   {
     if (((paramObject instanceof View)) && (paramBoolean)) {
-      VideoReport.reportEvent("clck", (View)paramObject, null);
+      VideoReport.reportEvent("clck", (View)paramObject, new HashMap());
     }
   }
   
@@ -36,7 +37,7 @@ public class HippyQQEngineMonitorAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQEngineMonitorAdapter
  * JD-Core Version:    0.7.0.1
  */

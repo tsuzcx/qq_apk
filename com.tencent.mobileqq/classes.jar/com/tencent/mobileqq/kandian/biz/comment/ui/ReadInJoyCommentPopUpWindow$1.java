@@ -9,14 +9,14 @@ class ReadInJoyCommentPopUpWindow$1
   public void onDismiss()
   {
     ReadInJoyCommentPopUpWindow.a(this.a);
-    if (ReadInJoyCommentPopUpWindow.a(this.a) != null) {
-      ReadInJoyCommentPopUpWindow.a(this.a).c();
+    if (ReadInJoyCommentPopUpWindow.b(this.a) != null) {
+      ReadInJoyCommentPopUpWindow.b(this.a).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.ReadInJoyCommentPopUpWindow.1
  * JD-Core Version:    0.7.0.1
  */

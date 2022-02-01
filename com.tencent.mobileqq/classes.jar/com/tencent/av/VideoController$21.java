@@ -12,14 +12,14 @@ class VideoController$21
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopVideoRecv() != 0)
+    if (this.this$0.U.stopVideoRecv() != 0)
     {
-      if (this.this$0.a().c.size() == 0) {
-        this.this$0.a().a(this.a, "StopGVideo", false, true);
+      if (this.this$0.k().bi.size() == 0) {
+        this.this$0.k().a(this.a, "StopGVideo", false, true);
       }
     }
     else if (QLog.isColorLevel()) {
-      QLog.e(VideoController.jdField_a_of_type_JavaLangString, 2, "StopGVideo-->Stop GVideo Failed.The Cmd Did Not Send Suc");
+      QLog.e(VideoController.a, 2, "StopGVideo-->Stop GVideo Failed.The Cmd Did Not Send Suc");
     }
   }
 }

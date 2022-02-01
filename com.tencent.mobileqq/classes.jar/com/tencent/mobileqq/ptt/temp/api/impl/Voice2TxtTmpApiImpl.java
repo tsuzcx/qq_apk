@@ -24,12 +24,12 @@ public class Voice2TxtTmpApiImpl
 {
   public int getCustomTitleViewBottom(BaseAIOContext paramBaseAIOContext)
   {
-    return paramBaseAIOContext.e();
+    return paramBaseAIOContext.N();
   }
   
   public PopupWindow getTopMask()
   {
-    return AudioPanel.a();
+    return AudioPanel.getTopMask();
   }
   
   public int getWaveViewLen(Context paramContext, int paramInt1, float paramFloat, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
@@ -41,7 +41,7 @@ public class Voice2TxtTmpApiImpl
   {
     Object localObject = (ChatDrawerHelper)paramBaseAIOContext.a(124);
     if (localObject != null) {
-      ((ChatDrawerHelper)localObject).a(false);
+      ((ChatDrawerHelper)localObject).b(false);
     }
     localObject = (IApolloAIOHelper)paramBaseAIOContext.a(8);
     if (localObject != null) {
@@ -49,20 +49,20 @@ public class Voice2TxtTmpApiImpl
     }
     paramBaseAIOContext = (AIOShortcutBarHelper)paramBaseAIOContext.a(52);
     if (paramBaseAIOContext != null) {
-      paramBaseAIOContext.c(11);
+      paramBaseAIOContext.d(11);
     }
   }
   
   public void hideSoftInput(BaseAIOContext paramBaseAIOContext)
   {
-    paramBaseAIOContext.f();
+    paramBaseAIOContext.M();
   }
   
   public void restoreChatPieOtherFunction(BaseAIOContext paramBaseAIOContext)
   {
     Object localObject = (ChatDrawerHelper)paramBaseAIOContext.a(124);
     if (localObject != null) {
-      ((ChatDrawerHelper)localObject).a(true);
+      ((ChatDrawerHelper)localObject).b(true);
     }
     localObject = (IApolloAIOHelper)paramBaseAIOContext.a(8);
     if (localObject != null) {
@@ -70,7 +70,7 @@ public class Voice2TxtTmpApiImpl
     }
     paramBaseAIOContext = (AIOShortcutBarHelper)paramBaseAIOContext.a(52);
     if (paramBaseAIOContext != null) {
-      paramBaseAIOContext.c(12);
+      paramBaseAIOContext.d(12);
     }
   }
   
@@ -88,12 +88,12 @@ public class Voice2TxtTmpApiImpl
   
   public void setCustomTitleVisiable(BaseAIOContext paramBaseAIOContext, int paramInt)
   {
-    paramBaseAIOContext.b(paramInt);
+    paramBaseAIOContext.e(paramInt);
   }
   
   public void setIsInVoiceTxt(boolean paramBoolean)
   {
-    com.tencent.mobileqq.activity.aio.item.PttConstants.b = paramBoolean;
+    com.tencent.mobileqq.activity.aio.item.PttConstants.c = paramBoolean;
   }
   
   public PopupWindow showTopMaskPanel(Context paramContext, int paramInt1, int paramInt2, View paramView, int paramInt3, int paramInt4, int paramInt5)
@@ -103,7 +103,7 @@ public class Voice2TxtTmpApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.temp.api.impl.Voice2TxtTmpApiImpl
  * JD-Core Version:    0.7.0.1
  */

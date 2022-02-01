@@ -30,22 +30,19 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskReportMgr;", "", "()V", "CLICK_POS_AD_AREA", "", "DOWNLOAD_KEY", "", "FETCH_KEY", "NORMAL_TYPE", "SUPER_TYPE", "USE_KEY", "feedsExposeCache", "Ljava/util/concurrent/CopyOnWriteArraySet;", "strictExposeCache", "Ljava/util/concurrent/atomic/AtomicBoolean;", "bigTR5", "clearStrictExposeCache", "", "fillSuperMaskReportData", "advertisementInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "funcExtDataJson", "Lorg/json/JSONObject;", "funcExt", "type", "origin", "exposeMode", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;Lorg/json/JSONObject;Lorg/json/JSONObject;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V", "getCurrentAdShouldStrictExpose", "", "onPreloadAction", "adId", "action", "version", "onShowAction", "traceId", "adCount", "reportClick", "clickPos", "adInfo", "reportExpose", "reportSuperMaskAdEvent", "setCurrentAdShouldStrictExpose", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskReportMgr;", "", "()V", "BID_TYPE", "", "CLICK_POS_AD_AREA", "", "DOWNLOAD_KEY", "FETCH_KEY", "NORMAL_TYPE", "SUPER_TYPE", "USE_KEY", "feedsExposeCache", "Ljava/util/concurrent/CopyOnWriteArraySet;", "strictExposeCache", "Ljava/util/concurrent/atomic/AtomicBoolean;", "bigTR5", "clearStrictExposeCache", "", "fillSuperMaskReportData", "advertisementInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "funcExtDataJson", "Lorg/json/JSONObject;", "funcExt", "type", "origin", "exposeMode", "(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;Lorg/json/JSONObject;Lorg/json/JSONObject;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V", "getCurrentAdShouldStrictExpose", "", "onPreloadAction", "adId", "action", "version", "onShowAction", "traceId", "adCount", "reportClick", "clickPos", "adInfo", "reportExpose", "reportSuperMaskAdEvent", "setCurrentAdShouldStrictExpose", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class SuperMaskReportMgr
 {
-  public static final SuperMaskReportMgr a;
-  private static final CopyOnWriteArraySet<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet;
-  private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  public static final SuperMaskReportMgr a = new SuperMaskReportMgr();
+  private static final AtomicBoolean b = new AtomicBoolean(false);
+  private static final CopyOnWriteArraySet<String> c = new CopyOnWriteArraySet();
   
   static
   {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskReportMgr = new SuperMaskReportMgr();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
     UserAction.registerTunnel(new TunnelInfo("000000EYXY3ATYB3"));
   }
   
-  private final String a()
+  private final String d()
   {
     try
     {
@@ -62,7 +59,7 @@ public final class SuperMaskReportMgr
   
   public final void a()
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+    b.compareAndSet(false, true);
   }
   
   public final void a(int paramInt, @Nullable Object paramObject)
@@ -80,16 +77,16 @@ public final class SuperMaskReportMgr
       }
       if (paramInt == 2)
       {
-        a(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskReportMgr, "successShowMask", null, 2, null);
+        a(a, "successShowMask", null, 2, null);
         return;
       }
-      a(jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskReportMgr, "exposeMask", null, 2, null);
+      a(a, "exposeMask", null, 2, null);
     }
   }
   
   public final void a(@Nullable AdvertisementInfo paramAdvertisementInfo, int paramInt1, int paramInt2)
   {
-    if (!ReadInJoyAdUtils.h(paramAdvertisementInfo)) {
+    if (!ReadInJoyAdUtils.l(paramAdvertisementInfo)) {
       return;
     }
     if (paramInt1 != 37) {
@@ -97,10 +94,10 @@ public final class SuperMaskReportMgr
     }
     if (paramInt2 != 2)
     {
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009819", "0X8009819", 0, 0, "", "", "", a(), false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8009819", "0X8009819", 0, 0, "", "", "", d(), false);
       return;
     }
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).reportReadinjoyADEvent(null, "0X8008C80", "0X8008C80", 0, 0, "", "", "", a());
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).reportReadinjoyADEvent(null, "0X8008C80", "0X8008C80", 0, 0, "", "", "", d());
   }
   
   public final void a(@Nullable AdvertisementInfo paramAdvertisementInfo, @Nullable JSONObject paramJSONObject1, @Nullable JSONObject paramJSONObject2, @Nullable Integer paramInteger1, @Nullable Integer paramInteger2, @Nullable Integer paramInteger3)
@@ -110,12 +107,12 @@ public final class SuperMaskReportMgr
       if (paramInteger3 == null) {
         return;
       }
-      if (!ReadInJoyAdUtils.h(paramAdvertisementInfo)) {
+      if (!ReadInJoyAdUtils.l(paramAdvertisementInfo)) {
         return;
       }
-      if ((paramInteger2.intValue() != 37) && (paramInteger1.intValue() == 2) && (!jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(paramAdvertisementInfo.mAdTraceId)))
+      if ((paramInteger2.intValue() != 37) && (paramInteger1.intValue() == 2) && (!c.contains(paramAdvertisementInfo.mAdTraceId)))
       {
-        jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramAdvertisementInfo.mAdTraceId);
+        c.add(paramAdvertisementInfo.mAdTraceId);
         String str = paramAdvertisementInfo.mAdTraceId;
         Intrinsics.checkExpressionValueIsNotNull(str, "advertisementInfo.mAdTraceId");
         a("feedsMaskExpose", str);
@@ -167,16 +164,6 @@ public final class SuperMaskReportMgr
     ReadInJoyAdLog.a("ReadInJoySuperMaskAd", ((StringBuilder)localObject1).toString());
   }
   
-  public final boolean a()
-  {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public final void b()
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
-  }
-  
   public final void b(int paramInt, @Nullable Object paramObject)
   {
     if (!(paramObject instanceof AdvertisementInfo)) {
@@ -221,68 +208,85 @@ public final class SuperMaskReportMgr
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "QRoute.api(IRIJSuperMaskService::class.java)");
     localObject1 = ((IRIJSuperMaskService)localObject1).getAdData();
     boolean bool = localObject1 instanceof AdvertisementInfo;
-    Object localObject3 = null;
+    Object localObject2 = null;
     if (!bool) {
       localObject1 = null;
     }
     AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localObject1;
+    String str;
     if (localAdvertisementInfo != null)
     {
-      localObject1 = String.valueOf(localAdvertisementInfo.mAdAid);
-      if (localObject1 != null) {}
+      str = String.valueOf(localAdvertisementInfo.mAdAid);
+      if (str != null) {}
     }
     else
     {
-      localObject1 = "";
+      str = "";
     }
-    if (ReadInJoyAdUtils.i(localAdvertisementInfo)) {
-      localObject2 = "1";
-    } else {
-      localObject2 = "0";
+    if (ReadInJoyAdUtils.m(localAdvertisementInfo))
+    {
+      if (ReadInJoyAdUtils.n(localAdvertisementInfo)) {
+        localObject1 = "2";
+      } else {
+        localObject1 = "1";
+      }
+    }
+    else {
+      localObject1 = "0";
     }
     HashMap localHashMap = new HashMap();
-    localHashMap.put("adId", localObject1);
+    localHashMap.put("adId", str);
     localHashMap.put("action", paramString1);
-    localHashMap.put("type", localObject2);
-    Object localObject2 = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication()");
-    localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication().runtime");
-    localHashMap.put("lQQ", ((AppRuntime)localObject2).getAccount());
+    localHashMap.put("type", localObject1);
+    localObject1 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
+    localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication().runtime");
+    localHashMap.put("lQQ", ((AppRuntime)localObject1).getAccount());
     if (paramInt >= 0)
     {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(paramInt);
-      localHashMap.put("adCount", ((StringBuilder)localObject2).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(paramInt);
+      localHashMap.put("adCount", ((StringBuilder)localObject1).toString());
     }
     if (localAdvertisementInfo != null) {
       localHashMap.put("traceId", localAdvertisementInfo.mAdTraceId);
     } else {
       localHashMap.put("traceId", paramString2);
     }
-    localObject2 = ((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
-    paramString2 = localObject3;
-    if (localObject2 != null) {
-      paramString2 = ((AppRuntime)localObject2).getApplication();
+    localObject1 = ((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
+    paramString2 = localObject2;
+    if (localObject1 != null) {
+      paramString2 = ((AppRuntime)localObject1).getApplication();
     }
     paramString2 = StatisticCollector.getInstance((Context)paramString2);
-    localObject2 = BaseApplicationImpl.getApplication();
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication()");
-    localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication().runtime");
-    paramString2.collectPerformance("000000EYXY3ATYB3", ((AppRuntime)localObject2).getAccount(), "actKandianAdSuperMask", true, 0L, 0L, localHashMap, null);
+    localObject1 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
+    localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication().runtime");
+    paramString2.collectPerformance("000000EYXY3ATYB3", ((AppRuntime)localObject1).getAccount(), "actKandianAdSuperMask", true, 0L, 0L, localHashMap, null);
     paramString2 = new StringBuilder();
     paramString2.append("[actKandianAdSuperMask] action = ");
     paramString2.append(paramString1);
     paramString2.append("  adId = ");
-    paramString2.append((String)localObject1);
+    paramString2.append(str);
     ReadInJoyAdLog.a("ReadInJoySuperMaskAd", paramString2.toString());
+  }
+  
+  public final boolean b()
+  {
+    return b.get();
+  }
+  
+  public final void c()
+  {
+    b.compareAndSet(true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskReportMgr
  * JD-Core Version:    0.7.0.1
  */

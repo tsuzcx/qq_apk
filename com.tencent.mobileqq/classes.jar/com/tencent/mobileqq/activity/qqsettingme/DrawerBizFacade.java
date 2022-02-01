@@ -52,56 +52,50 @@ public class DrawerBizFacade
   implements IProcessorDispatcher
 {
   @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_QQSettingMe_processor.yml", version=2)
-  private static ArrayList<Class<? extends IQQSettingMeProcessor>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public final MutableLiveData<BusinessInfoCheckUpdate.AppInfo> a;
-  private final CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new DrawerBizFacade.3(this);
-  private final FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new DrawerBizFacade.5(this);
-  private final VipInfoObserver jdField_a_of_type_ComTencentMobileqqAppVipInfoObserver = new DrawerBizFacade.1(this);
-  private final GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new DrawerBizFacade.2(this);
-  private final AnonymousObserver jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver = new DrawerBizFacade.4(this);
-  private final ProfileCardObserver jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver = new DrawerBizFacade.6(this);
-  public MemoryClearManager.IClearMemoryListener a;
-  private final HashMap<String, IQQSettingMeProcessor> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final ConcurrentHashMap<String, UpSideDownDrawable> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private WeakReference<FrameHelperActivity> jdField_a_of_type_MqqUtilWeakReference = new WeakReference(null);
-  private boolean jdField_a_of_type_Boolean;
-  private final ArrayList<String> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
+  private static ArrayList<Class<? extends IQQSettingMeProcessor>> f = new ArrayList();
+  public final MutableLiveData<BusinessInfoCheckUpdate.AppInfo> d = new MutableLiveData();
+  public MemoryClearManager.IClearMemoryListener e = new DrawerBizFacade.ClearDynamicDrawable(this);
+  private final HashMap<String, IQQSettingMeProcessor> g = new HashMap();
+  private final ArrayList<String> h = new ArrayList();
+  private final ConcurrentHashMap<String, UpSideDownDrawable> i = new ConcurrentHashMap();
+  private boolean j;
+  private boolean k;
+  private WeakReference<FrameHelperActivity> l = new WeakReference(null);
+  private final VipInfoObserver m = new DrawerBizFacade.1(this);
+  private final GameCenterObserver n = new DrawerBizFacade.2(this);
+  private final CardObserver o = new DrawerBizFacade.3(this);
+  private final AnonymousObserver p = new DrawerBizFacade.4(this);
+  private final FriendListObserver q = new DrawerBizFacade.5(this);
+  private final ProfileCardObserver r = new DrawerBizFacade.6(this);
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeDrawerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeDailyProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeQRCodeProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeApolloProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeShoppingProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeWalletProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeMiniGameProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeLoveZoneProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeKingCardProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeFileProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeQFavProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMePhotoProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeSettingProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeWeatherProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeNightModeProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeDocumentProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeDressUpProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeSignatureProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeProfileBubbleProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeAvatarProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeHeadVipProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeNicknameProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeSuperMemberProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMePrettyNumProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeVideoProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQSettingMeQQCircleProcessor.class);
-  }
-  
-  public DrawerBizFacade()
-  {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager$IClearMemoryListener = new DrawerBizFacade.ClearDynamicDrawable(this);
+    f.add(QQSettingMeDrawerProcessor.class);
+    f.add(QQSettingMeDailyProcessor.class);
+    f.add(QQSettingMeQRCodeProcessor.class);
+    f.add(QQSettingMeApolloProcessor.class);
+    f.add(QQSettingMeShoppingProcessor.class);
+    f.add(QQSettingMeWalletProcessor.class);
+    f.add(QQSettingMeMiniGameProcessor.class);
+    f.add(QQSettingMeLoveZoneProcessor.class);
+    f.add(QQSettingMeKingCardProcessor.class);
+    f.add(QQSettingMeFileProcessor.class);
+    f.add(QQSettingMeQFavProcessor.class);
+    f.add(QQSettingMePhotoProcessor.class);
+    f.add(QQSettingMeSettingProcessor.class);
+    f.add(QQSettingMeWeatherProcessor.class);
+    f.add(QQSettingMeNightModeProcessor.class);
+    f.add(QQSettingMeDocumentProcessor.class);
+    f.add(QQSettingMeDressUpProcessor.class);
+    f.add(QQSettingMeSignatureProcessor.class);
+    f.add(QQSettingMeProfileBubbleProcessor.class);
+    f.add(QQSettingMeAvatarProcessor.class);
+    f.add(QQSettingMeHeadVipProcessor.class);
+    f.add(QQSettingMeNicknameProcessor.class);
+    f.add(QQSettingMeSuperMemberProcessor.class);
+    f.add(QQSettingMePrettyNumProcessor.class);
+    f.add(QQSettingMeVideoProcessor.class);
+    f.add(QQSettingMeQQCircleProcessor.class);
   }
   
   private IQQSettingMeProcessor a(Class<? extends IQQSettingMeProcessor> paramClass)
@@ -128,18 +122,18 @@ public class DrawerBizFacade
     return localIQQSettingMeProcessor;
   }
   
-  private void a(Class<? extends IQQSettingMeProcessor> paramClass)
+  private void b(Class<? extends IQQSettingMeProcessor> paramClass)
   {
     paramClass = a(paramClass);
     if (paramClass == null) {
       return;
     }
-    if ((!QQSettingMeConstant.a(paramClass.a())) || ((QQSettingMeConstant.a(paramClass.a())) && (this.jdField_b_of_type_JavaUtilArrayList.contains(paramClass.a())))) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
+    if ((!QQSettingMeConstant.a(paramClass.b())) || ((QQSettingMeConstant.a(paramClass.b())) && (this.h.contains(paramClass.b())))) {
+      this.g.put(paramClass.b(), paramClass);
     }
   }
   
-  private void k()
+  private void l()
   {
     Object localObject;
     try
@@ -152,11 +146,11 @@ public class DrawerBizFacade
       localObject = null;
     }
     if (localObject != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject);
+      this.l = new WeakReference(localObject);
     }
   }
   
-  private void l()
+  private void m()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQSettingRedesign", 2, "preloadSonicSession");
@@ -164,20 +158,20 @@ public class DrawerBizFacade
     if (!((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).enablePreloadSonic()) {
       return;
     }
-    long l = System.currentTimeMillis();
-    Object localObject1 = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue();
-    int i = 0;
+    long l1 = System.currentTimeMillis();
+    Object localObject1 = this.d.getValue();
+    int i1 = 0;
     Object localObject4 = null;
-    if ((localObject1 != null) && (((BusinessInfoCheckUpdate.AppInfo)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue()).iNewFlag.get() != 0)) {
-      localObject3 = new SonicParserInfo(((BusinessInfoCheckUpdate.AppInfo)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue()).buffer.get(), 0L, 0);
+    if ((localObject1 != null) && (((BusinessInfoCheckUpdate.AppInfo)this.d.getValue()).iNewFlag.get() != 0)) {
+      localObject3 = new SonicParserInfo(((BusinessInfoCheckUpdate.AppInfo)this.d.getValue()).buffer.get(), 0L, 0);
     } else {
       localObject3 = null;
     }
-    QQSettingMeSuperMemberProcessor localQQSettingMeSuperMemberProcessor = (QQSettingMeSuperMemberProcessor)a("d_vip_identity");
+    QQSettingMeSuperMemberProcessor localQQSettingMeSuperMemberProcessor = (QQSettingMeSuperMemberProcessor)b("d_vip_identity");
     BusinessInfoCheckUpdate.AppInfo localAppInfo;
     if (localQQSettingMeSuperMemberProcessor != null)
     {
-      localAppInfo = localQQSettingMeSuperMemberProcessor.b().jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo;
+      localAppInfo = localQQSettingMeSuperMemberProcessor.l().a;
       if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() != 0)) {
         localObject1 = new SonicParserInfo(localAppInfo.buffer.get(), localAppInfo.preload_ts.get(), 1000);
       } else {
@@ -189,10 +183,10 @@ public class DrawerBizFacade
       localAppInfo = null;
       localObject1 = localAppInfo;
     }
-    Object localObject2 = (QQSettingMeDressUpProcessor)a("d_decoration");
+    Object localObject2 = (QQSettingMeDressUpProcessor)b("d_decoration");
     if (localObject2 != null)
     {
-      localObject2 = (BusinessInfoCheckUpdate.AppInfo)((QQSettingMeDressUpProcessor)localObject2).jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue();
+      localObject2 = (BusinessInfoCheckUpdate.AppInfo)((QQSettingMeDressUpProcessor)localObject2).a.getValue();
       if ((localObject2 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() != 0)) {
         localObject4 = new SonicParserInfo(((BusinessInfoCheckUpdate.AppInfo)localObject2).buffer.get(), ((BusinessInfoCheckUpdate.AppInfo)localObject2).preload_ts.get(), 1001);
       }
@@ -210,23 +204,23 @@ public class DrawerBizFacade
     if ((localObject3 != null) && (((SparseArray)localObject3).size() > 0))
     {
       localObject1 = localObject3;
-      while (i < ((SparseArray)localObject1).size())
+      while (i1 < ((SparseArray)localObject1).size())
       {
-        localObject3 = (SonicPreloadData)((SparseArray)localObject1).valueAt(i);
-        if (1000 == ((SonicPreloadData)localObject3).jdField_a_of_type_Int)
+        localObject3 = (SonicPreloadData)((SparseArray)localObject1).valueAt(i1);
+        if (1000 == ((SonicPreloadData)localObject3).a)
         {
           if (localQQSettingMeSuperMemberProcessor != null)
           {
-            ((SonicPreloadData)localObject3).jdField_a_of_type_JavaLangString = localQQSettingMeSuperMemberProcessor.b().jdField_a_of_type_JavaLangString;
+            ((SonicPreloadData)localObject3).b = localQQSettingMeSuperMemberProcessor.l().b;
             ((ArrayList)localObject4).add(localObject3);
           }
         }
-        else if (1001 == ((SonicPreloadData)localObject3).jdField_a_of_type_Int)
+        else if (1001 == ((SonicPreloadData)localObject3).a)
         {
-          ((SonicPreloadData)localObject3).jdField_a_of_type_JavaLangString = IndividuationUrlHelper.a("personalIndex");
+          ((SonicPreloadData)localObject3).b = IndividuationUrlHelper.a("personalIndex");
           ((ArrayList)localObject4).add(localObject3);
         }
-        i += 1;
+        i1 += 1;
       }
     }
     if ((localSparseArray1 != null) && (localSparseArray1.size() > 0))
@@ -234,19 +228,19 @@ public class DrawerBizFacade
       localObject1 = (SonicPreloadData)localSparseArray1.valueAt(0);
       if (localQQSettingMeSuperMemberProcessor != null)
       {
-        ((SonicPreloadData)localObject1).jdField_a_of_type_JavaLangString = localQQSettingMeSuperMemberProcessor.b().jdField_a_of_type_JavaLangString;
+        ((SonicPreloadData)localObject1).b = localQQSettingMeSuperMemberProcessor.l().b;
         localArrayList1.add(localObject1);
       }
     }
     if ((localSparseArray2 != null) && (localSparseArray2.size() > 0))
     {
       localObject1 = (SonicPreloadData)localSparseArray2.valueAt(0);
-      ((SonicPreloadData)localObject1).jdField_a_of_type_JavaLangString = IndividuationUrlHelper.a("personalIndex");
+      ((SonicPreloadData)localObject1).b = IndividuationUrlHelper.a("personalIndex");
       localArrayList2.add(localObject1);
     }
-    localObject1 = (IWebProcessManagerService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IWebProcessManagerService.class, "");
+    localObject1 = (IWebProcessManagerService)this.a.getRuntimeService(IWebProcessManagerService.class, "");
     if (((IWebProcessManagerService)localObject1).preloadSonicSession((ArrayList)localObject4)) {
-      ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick("200010.200012");
+      ((IRedTouchManager)this.a.getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick("200010.200012");
     }
     if ((((IWebProcessManagerService)localObject1).preloadSonicSession(localArrayList1)) && (localAppInfo != null)) {
       localAppInfo.preload_ts.set(System.currentTimeMillis());
@@ -258,50 +252,16 @@ public class DrawerBizFacade
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("preloadSonicSession parse cost: ");
-      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
       QLog.d("QQSettingRedesign", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
-  public int a()
-  {
-    int k = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-    int i = 0;
-    int j = 0;
-    if (k > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-      i = j;
-      while (localIterator.hasNext())
-      {
-        Bitmap localBitmap = ((UpSideDownDrawable)localIterator.next()).getBitmap();
-        if (localBitmap != null) {
-          i += Utils.a(localBitmap);
-        }
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-    return i;
-  }
-  
-  public IQQSettingMeProcessor a(String paramString)
-  {
-    return (IQQSettingMeProcessor)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public UpSideDownDrawable a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return (UpSideDownDrawable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
-      ((IQQSettingMeProcessor)localIterator.next()).a();
+      ((IQQSettingMeProcessor)localIterator.next()).c();
     }
     ThreadManagerV2.executeOnSubThread(new DrawerBizFacade.7(this));
     ThreadManager.getUIHandler().postDelayed(new DrawerBizFacade.8(this), 5000L);
@@ -309,7 +269,7 @@ public class DrawerBizFacade
   
   public void a(QQSettingMe paramQQSettingMe)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
       ((IQQSettingMeProcessor)localIterator.next()).a(paramQQSettingMe);
     }
@@ -319,7 +279,7 @@ public class DrawerBizFacade
   {
     if (QQSettingMeConstant.a(paramString))
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(paramString);
+      this.h.add(paramString);
       return;
     }
     IQQSettingMeProcessor localIQQSettingMeProcessor = a(QQSettingMeBaseMenuProcessor.class);
@@ -327,7 +287,7 @@ public class DrawerBizFacade
       return;
     }
     localIQQSettingMeProcessor.a(paramString);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localIQQSettingMeProcessor);
+    this.g.put(paramString, localIQQSettingMeProcessor);
   }
   
   public void a(String paramString, UpSideDownDrawable paramUpSideDownDrawable)
@@ -339,41 +299,41 @@ public class DrawerBizFacade
       }
     }
     else {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramUpSideDownDrawable);
+      this.i.put(paramString, paramUpSideDownDrawable);
     }
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_MqqAppAppRuntime != null))
+    if ((this.j) && (this.a != null))
     {
-      this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppVipInfoObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
-      MemoryClearManager.a().b(this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager$IClearMemoryListener);
+      this.a.unRegistObserver(this.n);
+      ((QQAppInterface)this.a).removeObserver(this.o);
+      ((QQAppInterface)this.a).removeObserver(this.q);
+      ((QQAppInterface)this.a).removeObserver(this.r);
+      ((QQAppInterface)this.a).removeObserver(this.m);
+      ((QQAppInterface)this.a).removeObserver(this.p);
+      MemoryClearManager.b().b(this.e);
     }
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    if (this.jdField_a_of_type_MqqAppAppRuntime != null)
+    this.a = paramAppRuntime;
+    if (this.a != null)
     {
-      this.jdField_a_of_type_MqqAppAppRuntime.registObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver, true);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver, true);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppVipInfoObserver, true);
-      MemoryClearManager.a().a(this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager$IClearMemoryListener);
+      this.a.registObserver(this.n);
+      ((QQAppInterface)this.a).addObserver(this.o);
+      ((QQAppInterface)this.a).addObserver(this.p);
+      ((QQAppInterface)this.a).addObserver(this.q, true);
+      ((QQAppInterface)this.a).addObserver(this.r, true);
+      ((QQAppInterface)this.a).addObserver(this.m, true);
+      MemoryClearManager.b().a(this.e);
     }
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
+    if (this.a == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "fillData(), app == null");
       }
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
       ((IQQSettingMeProcessor)localIterator.next()).a(paramAppRuntime);
     }
@@ -382,15 +342,15 @@ public class DrawerBizFacade
   public void a(AppRuntime paramAppRuntime, QBaseActivity paramQBaseActivity)
   {
     super.a(paramAppRuntime, paramQBaseActivity);
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = f.iterator();
     while (localIterator.hasNext()) {
-      a((Class)localIterator.next());
+      b((Class)localIterator.next());
     }
-    localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
       ((IQQSettingMeProcessor)localIterator.next()).a(paramAppRuntime, paramQBaseActivity);
     }
-    k();
+    l();
   }
   
   public void a(boolean paramBoolean)
@@ -398,112 +358,146 @@ public class DrawerBizFacade
     ThreadManager.excute(new DrawerBizFacade.9(this, paramBoolean), 16, null, false);
   }
   
+  public IQQSettingMeProcessor b(String paramString)
+  {
+    return (IQQSettingMeProcessor)this.g.get(paramString);
+  }
+  
   public void b()
   {
     super.b();
     SceneTracker.a().a("QQSettingMe");
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.j)
     {
-      this.jdField_a_of_type_MqqAppAppRuntime.registObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver, true);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver, true);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppVipInfoObserver, true);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver, true);
-      MemoryClearManager.a().a(this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager$IClearMemoryListener);
-      this.jdField_a_of_type_Boolean = true;
+      this.a.registObserver(this.n);
+      ((QQAppInterface)this.a).addObserver(this.o, true);
+      ((QQAppInterface)this.a).addObserver(this.q, true);
+      ((QQAppInterface)this.a).addObserver(this.r, true);
+      ((QQAppInterface)this.a).addObserver(this.m, true);
+      ((QQAppInterface)this.a).addObserver(this.p, true);
+      MemoryClearManager.b().a(this.e);
+      this.j = true;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
-      ((IQQSettingMeProcessor)localIterator.next()).b();
+      ((IQQSettingMeProcessor)localIterator.next()).d();
     }
     a(true);
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
-      k();
+    if (this.l.get() == null) {
+      l();
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.k = true;
+  }
+  
+  public UpSideDownDrawable c(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return (UpSideDownDrawable)this.i.get(paramString);
   }
   
   public void c()
   {
     super.c();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
-      ((IQQSettingMeProcessor)localIterator.next()).c();
+      ((IQQSettingMeProcessor)localIterator.next()).e();
     }
     SceneTracker.a().b("QQSettingMe");
-    this.jdField_b_of_type_Boolean = false;
+    this.k = false;
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_MqqAppAppRuntime != null))
+    if ((this.j) && (this.a != null))
     {
-      this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardObserverProfileCardObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppVipInfoObserver);
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessAnonymousHandlerAnonymousObserver);
+      this.a.unRegistObserver(this.n);
+      ((QQAppInterface)this.a).removeObserver(this.o);
+      ((QQAppInterface)this.a).removeObserver(this.q);
+      ((QQAppInterface)this.a).removeObserver(this.r);
+      ((QQAppInterface)this.a).removeObserver(this.m);
+      ((QQAppInterface)this.a).removeObserver(this.p);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      MemoryClearManager.a().b(this.jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryClearManager$IClearMemoryListener);
+    if (this.j) {
+      MemoryClearManager.b().b(this.e);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
-      ((IQQSettingMeProcessor)localIterator.next()).d();
+      ((IQQSettingMeProcessor)localIterator.next()).f();
     }
   }
   
   public void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
-      ((IQQSettingMeProcessor)localIterator.next()).e();
+      ((IQQSettingMeProcessor)localIterator.next()).g();
     }
   }
   
   public void f()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
-      ((IQQSettingMeProcessor)localIterator.next()).f();
+      ((IQQSettingMeProcessor)localIterator.next()).h();
     }
-    ((IRedTouchServer)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchServer.class, "")).notifyUI(4, true, null);
+    ((IRedTouchServer)this.a.getRuntimeService(IRedTouchServer.class, "")).notifyUI(4, true, null);
   }
   
   public void g()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
-      ((IQQSettingMeProcessor)localIterator.next()).h();
+      ((IQQSettingMeProcessor)localIterator.next()).j();
     }
   }
   
   public void h()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Iterator localIterator = this.g.values().iterator();
     while (localIterator.hasNext()) {
-      ((IQQSettingMeProcessor)localIterator.next()).i();
+      ((IQQSettingMeProcessor)localIterator.next()).k();
     }
   }
   
   public void i()
   {
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.h.clear();
+    this.g.clear();
   }
   
   public void j()
   {
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath("200010.200012");
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)this.a.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath("200010.200012");
     QQSettingMeRedTouchUtil.a(localAppInfo);
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(localAppInfo);
+    this.d.postValue(localAppInfo);
+  }
+  
+  public int k()
+  {
+    int i3 = this.i.size();
+    int i1 = 0;
+    int i2 = 0;
+    if (i3 > 0)
+    {
+      Iterator localIterator = this.i.values().iterator();
+      i1 = i2;
+      while (localIterator.hasNext())
+      {
+        Bitmap localBitmap = ((UpSideDownDrawable)localIterator.next()).getBitmap();
+        if (localBitmap != null) {
+          i1 += Utils.a(localBitmap);
+        }
+      }
+      this.i.clear();
+    }
+    return i1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade
  * JD-Core Version:    0.7.0.1
  */

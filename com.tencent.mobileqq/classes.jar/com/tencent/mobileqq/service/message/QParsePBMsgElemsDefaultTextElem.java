@@ -4,85 +4,88 @@ import android.support.annotation.Nullable;
 import com.tencent.mobileqq.data.AtTroopMemberInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
+import tencent.im.msg.hummer.resv1.TextMsgExtPb.ResvAttr;
 import tencent.im.msg.im_msg_body.Elem;
 import tencent.im.msg.im_msg_body.Text;
 
 public class QParsePBMsgElemsDefaultTextElem
 {
-  protected long a;
-  private AtTroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo;
-  protected MessageInfo a;
-  protected StringBuilder a;
-  private ArrayList<AtTroopMemberInfo> jdField_a_of_type_JavaUtilArrayList;
-  protected AppRuntime a;
-  protected im_msg_body.Elem a;
-  protected boolean a;
-  protected byte[] a;
-  private AtTroopMemberInfo b;
+  private ArrayList<AtTroopMemberInfo> a;
   protected StringBuilder b;
+  protected long c;
+  protected MessageInfo d;
+  protected byte[] e;
+  protected StringBuilder f;
+  protected boolean g;
+  protected im_msg_body.Elem h;
+  protected AppRuntime i;
+  private AtTroopMemberInfo j;
+  private AtTroopMemberInfo k;
   
   public QParsePBMsgElemsDefaultTextElem(AppRuntime paramAppRuntime, StringBuilder paramStringBuilder1, long paramLong, MessageInfo paramMessageInfo, ArrayList<AtTroopMemberInfo> paramArrayList, AtTroopMemberInfo paramAtTroopMemberInfo1, AtTroopMemberInfo paramAtTroopMemberInfo2, byte[] paramArrayOfByte, StringBuilder paramStringBuilder2, boolean paramBoolean, im_msg_body.Elem paramElem)
   {
-    this.jdField_a_of_type_JavaLangStringBuilder = paramStringBuilder1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo = paramMessageInfo;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo = paramAtTroopMemberInfo1;
-    this.jdField_b_of_type_ComTencentMobileqqDataAtTroopMemberInfo = paramAtTroopMemberInfo2;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_b_of_type_JavaLangStringBuilder = paramStringBuilder2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem = paramElem;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.b = paramStringBuilder1;
+    this.c = paramLong;
+    this.d = paramMessageInfo;
+    this.a = paramArrayList;
+    this.j = paramAtTroopMemberInfo1;
+    this.k = paramAtTroopMemberInfo2;
+    this.e = paramArrayOfByte;
+    this.f = paramStringBuilder2;
+    this.g = paramBoolean;
+    this.h = paramElem;
+    this.i = paramAppRuntime;
   }
   
   private void a(int paramInt, byte[] paramArrayOfByte)
   {
-    int j = 0;
-    int n = PkgTools.getShortData(paramArrayOfByte, 0);
-    int i = 2;
-    while ((j < n) && (i < 2048))
+    int n = 0;
+    int i3 = PkgTools.getShortData(paramArrayOfByte, 0);
+    int m = 2;
+    while ((n < i3) && (m < 2048))
     {
       AtTroopMemberInfo localAtTroopMemberInfo1 = new AtTroopMemberInfo();
-      if ((j == 0) && (this.jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo == null)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo = localAtTroopMemberInfo1;
+      if ((n == 0) && (this.j == null)) {
+        this.j = localAtTroopMemberInfo1;
       }
-      if (!localAtTroopMemberInfo1.readFrom(paramArrayOfByte, i)) {
+      if (!localAtTroopMemberInfo1.readFrom(paramArrayOfByte, m)) {
         return;
       }
-      int k = i + localAtTroopMemberInfo1.length();
+      int i1 = m + localAtTroopMemberInfo1.length();
       localAtTroopMemberInfo1.startPos = ((short)(localAtTroopMemberInfo1.startPos + paramInt));
-      int m = (short)(j + 1);
+      int i2 = (short)(n + 1);
       if (localAtTroopMemberInfo1.isIncludingAll()) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.b(13, this.jdField_a_of_type_Long);
+        this.d.c.c(13, this.c);
       }
-      j = m;
-      i = k;
-      if (localAtTroopMemberInfo1.isIncludingMe(this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin()))
+      n = i2;
+      m = i1;
+      if (localAtTroopMemberInfo1.isIncludingMe(this.i.getLongAccountUin()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.b(24, this.jdField_a_of_type_Long);
-        AtTroopMemberInfo localAtTroopMemberInfo2 = this.jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo;
-        j = m;
-        i = k;
+        this.d.c.c(24, this.c);
+        AtTroopMemberInfo localAtTroopMemberInfo2 = this.j;
+        n = i2;
+        m = i1;
         if (localAtTroopMemberInfo1 != localAtTroopMemberInfo2)
         {
-          j = m;
-          i = k;
-          if (this.jdField_b_of_type_ComTencentMobileqqDataAtTroopMemberInfo == null)
+          n = i2;
+          m = i1;
+          if (this.k == null)
           {
-            j = m;
-            i = k;
-            if (localAtTroopMemberInfo2.isIncludingMe(this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin()))
+            n = i2;
+            m = i1;
+            if (localAtTroopMemberInfo2.isIncludingMe(this.i.getLongAccountUin()))
             {
-              this.jdField_b_of_type_ComTencentMobileqqDataAtTroopMemberInfo = localAtTroopMemberInfo1;
-              j = m;
-              i = k;
+              this.k = localAtTroopMemberInfo1;
+              n = i2;
+              m = i1;
             }
           }
         }
@@ -90,82 +93,155 @@ public class QParsePBMsgElemsDefaultTextElem
     }
   }
   
-  @Nullable
-  private QParsePBMsgElemsDefaultTextElem b()
+  private void a(ByteStringMicro paramByteStringMicro, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      this.jdField_a_of_type_JavaLangStringBuilder.append("elemType:Text;\n");
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return this;
-    }
-    Object localObject1 = (im_msg_body.Text)this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.text.get();
-    int i = this.jdField_b_of_type_JavaLangStringBuilder.length();
-    if (((im_msg_body.Text)localObject1).str.has())
-    {
-      localObject2 = QMessageUtils.a(((im_msg_body.Text)localObject1).str.get().toStringUtf8(), false);
-      this.jdField_b_of_type_JavaLangStringBuilder.append((String)localObject2);
-    }
-    if (!((im_msg_body.Text)localObject1).attr_6_buf.has()) {
-      return null;
-    }
-    localObject1 = ((im_msg_body.Text)localObject1).attr_6_buf.get();
-    if (localObject1 != null) {
-      localObject1 = ((ByteStringMicro)localObject1).toByteArray();
+    if (paramByteStringMicro != null) {
+      paramByteStringMicro = paramByteStringMicro.toByteArray();
     } else {
-      localObject1 = null;
+      paramByteStringMicro = null;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo;
-    if ((localObject2 != null) && ((((MessageInfo)localObject2).jdField_a_of_type_Int == 3000) || (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo.jdField_a_of_type_Int == 1)) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (localObject1 != null) && (localObject1.length != 0)) {
-      b(i, (byte[])localObject1);
+    MessageInfo localMessageInfo = this.d;
+    if ((localMessageInfo != null) && ((localMessageInfo.b == 3000) || (this.d.b == 1)) && (this.a != null) && (paramByteStringMicro != null) && (paramByteStringMicro.length != 0)) {
+      b(paramInt, paramByteStringMicro);
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo;
-    if (localObject2 != null)
+    localMessageInfo = this.d;
+    if (localMessageInfo != null)
     {
-      if ((!((MessageInfo)localObject2).jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(24, this.jdField_a_of_type_Long)) && (!this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(13, this.jdField_a_of_type_Long)) && (this.jdField_b_of_type_ComTencentMobileqqDataAtTroopMemberInfo != null)) {
-        return null;
+      if ((!localMessageInfo.c.a(24, this.c)) && (!this.d.c.a(13, this.c)) && (this.k != null)) {
+        return;
       }
-      if (localObject1 != null)
+      if (paramByteStringMicro != null)
       {
-        if (localObject1.length == 0) {
-          return null;
+        if (paramByteStringMicro.length == 0) {
+          return;
         }
-        a(i, (byte[])localObject1);
+        a(paramInt, paramByteStringMicro);
       }
     }
-    return null;
+  }
+  
+  private void a(ByteStringMicro paramByteStringMicro, int paramInt, short paramShort)
+  {
+    for (;;)
+    {
+      try
+      {
+        TextMsgExtPb.ResvAttr localResvAttr = new TextMsgExtPb.ResvAttr();
+        localResvAttr.mergeFrom(paramByteStringMicro.toByteArray());
+        paramByteStringMicro = new AtTroopMemberInfo();
+        paramByteStringMicro.isResvAttr = true;
+        if (localResvAttr.at_type.get() != 1) {
+          break label222;
+        }
+        b1 = 1;
+        paramByteStringMicro.flag = b1;
+        paramByteStringMicro.startPos = ((short)(paramByteStringMicro.startPos + paramInt));
+        paramByteStringMicro.textLen = paramShort;
+        paramByteStringMicro.uin = localResvAttr.at_member_tinyid.get();
+        if (this.a != null) {
+          this.a.add(paramByteStringMicro);
+        }
+        if (this.d != null)
+        {
+          if ((!this.d.c.a(24, this.c)) && (!this.d.c.a(13, this.c))) {
+            return;
+          }
+          if (paramByteStringMicro.isIncludingAll()) {
+            this.d.c.c(13, this.c);
+          }
+          if (paramByteStringMicro.isIncludingMeTid(this.i)) {
+            this.d.c.c(24, this.c);
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramByteStringMicro)
+      {
+        QLog.e("QParsePBMsgElemsDefaultTextElem", 1, new Object[] { "decodePbReserve error, ", paramByteStringMicro.getMessage() });
+      }
+      return;
+      label222:
+      byte b1 = 0;
+    }
   }
   
   private void b(int paramInt, byte[] paramArrayOfByte)
   {
-    int i = 0;
-    int k = PkgTools.getShortData(paramArrayOfByte, 0);
-    int j = 2;
-    while ((i < k) && (j < 2048))
+    int m = 0;
+    int i1 = PkgTools.getShortData(paramArrayOfByte, 0);
+    int n = 2;
+    while ((m < i1) && (n < 2048))
     {
       AtTroopMemberInfo localAtTroopMemberInfo = new AtTroopMemberInfo();
-      if (!localAtTroopMemberInfo.readFrom(paramArrayOfByte, j)) {
+      if (!localAtTroopMemberInfo.readFrom(paramArrayOfByte, n)) {
         return;
       }
-      j += localAtTroopMemberInfo.length();
+      n += localAtTroopMemberInfo.length();
       localAtTroopMemberInfo.startPos = ((short)(localAtTroopMemberInfo.startPos + paramInt));
-      i = (short)(i + 1);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localAtTroopMemberInfo);
+      m = (short)(m + 1);
+      this.a.add(localAtTroopMemberInfo);
     }
   }
   
-  public AtTroopMemberInfo a()
+  @Nullable
+  private QParsePBMsgElemsDefaultTextElem g()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo;
+    if (QLog.isColorLevel()) {
+      this.b.append("elemType:Text;\n");
+    }
+    boolean bool = this.g;
+    short s = 0;
+    if (bool)
+    {
+      this.g = false;
+      return this;
+    }
+    im_msg_body.Text localText = (im_msg_body.Text)this.h.text.get();
+    int m = this.f.length();
+    if (localText.str.has())
+    {
+      String str = QMessageUtils.a(localText.str.get().toStringUtf8(), false);
+      this.f.append(str);
+      s = (short)str.length();
+    }
+    if (localText.attr_6_buf.has()) {
+      a(localText.attr_6_buf.get(), m);
+    } else if (localText.bytes_pb_reserve.has()) {
+      a(localText.bytes_pb_reserve.get(), m, s);
+    }
+    return null;
   }
   
-  public QParsePBMsgElemsDefaultTextElem a()
+  protected void a() {}
+  
+  public AtTroopMemberInfo b()
   {
-    if (this.jdField_a_of_type_TencentImMsgIm_msg_body$Elem.text.has())
+    return this.j;
+  }
+  
+  public AtTroopMemberInfo c()
+  {
+    return this.k;
+  }
+  
+  public byte[] d()
+  {
+    return this.e;
+  }
+  
+  public boolean e()
+  {
+    return this.g;
+  }
+  
+  public QParsePBMsgElemsDefaultTextElem f()
+  {
+    if (this.h.text.has())
     {
-      QParsePBMsgElemsDefaultTextElem localQParsePBMsgElemsDefaultTextElem = b();
+      QParsePBMsgElemsDefaultTextElem localQParsePBMsgElemsDefaultTextElem = g();
       if (localQParsePBMsgElemsDefaultTextElem != null) {
         return localQParsePBMsgElemsDefaultTextElem;
       }
@@ -176,27 +252,10 @@ public class QParsePBMsgElemsDefaultTextElem
     }
     return this;
   }
-  
-  protected void a() {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public AtTroopMemberInfo b()
-  {
-    return this.jdField_b_of_type_ComTencentMobileqqDataAtTroopMemberInfo;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.QParsePBMsgElemsDefaultTextElem
  * JD-Core Version:    0.7.0.1
  */

@@ -46,79 +46,79 @@ import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 public class ADVideoItemDelegate
   extends CommonVideoItemDelegate
 {
-  private ADVideoItemHolder jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder;
-  private boolean jdField_a_of_type_Boolean;
+  private ADVideoItemHolder a;
+  private boolean e;
   
   public ADVideoItemDelegate(ADVideoItemHolder paramADVideoItemHolder, IVideoFeedsRecommendPresenter paramIVideoFeedsRecommendPresenter, IVideoFeedsAdapter paramIVideoFeedsAdapter)
   {
     super(paramADVideoItemHolder, paramIVideoFeedsRecommendPresenter, paramIVideoFeedsAdapter);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder = paramADVideoItemHolder;
-    this.jdField_a_of_type_Boolean = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isVideoFeedsTiktokStyle();
-    if ((paramADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup != null) && (((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).isFullScreenDisplay(paramIVideoFeedsAdapter.a())))
+    this.a = paramADVideoItemHolder;
+    this.e = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isVideoFeedsTiktokStyle();
+    if ((paramADVideoItemHolder.aN != null) && (((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).isFullScreenDisplay(paramIVideoFeedsAdapter.j())))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.e)
       {
-        paramADVideoItemHolder.jdField_d_of_type_Int = AIOUtils.b(50.0F, paramADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup.getResources());
+        paramADVideoItemHolder.aD = AIOUtils.b(50.0F, paramADVideoItemHolder.aN.getResources());
         return;
       }
       if (Aladdin.getConfig(324).getIntegerFromString("videodetail_videogravity_style", 0) == 1) {
-        paramADVideoItemHolder.jdField_d_of_type_Int = AIOUtils.b(41.5F, paramADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup.getResources());
+        paramADVideoItemHolder.aD = AIOUtils.b(41.5F, paramADVideoItemHolder.aN.getResources());
       }
     }
   }
   
-  private boolean a(VideoInfo paramVideoInfo)
+  private boolean d(VideoInfo paramVideoInfo)
   {
-    return (paramVideoInfo != null) && (paramVideoInfo.a != null) && (!paramVideoInfo.a.d) && (ReadInJoyAdSwitchUtil.g(paramVideoInfo.a)) && (ReadInJoyAdUtils.a(paramVideoInfo.a));
+    return (paramVideoInfo != null) && (paramVideoInfo.as != null) && (!paramVideoInfo.as.an) && (ReadInJoyAdSwitchUtil.g(paramVideoInfo.as)) && (ReadInJoyAdUtils.b(paramVideoInfo.as));
   }
   
-  private void l(boolean paramBoolean)
+  private void m(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.g.getLayoutParams();
-      localMarginLayoutParams.bottomMargin = AIOUtils.b(0.0F, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a().getResources());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.g.setLayoutParams(localMarginLayoutParams);
+      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.a.ap.getLayoutParams();
+      localMarginLayoutParams.bottomMargin = AIOUtils.b(0.0F, this.b.v().getResources());
+      this.a.ap.setLayoutParams(localMarginLayoutParams);
       return;
     }
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.g.getLayoutParams();
-    localMarginLayoutParams.bottomMargin = (AIOUtils.b(15.0F, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a().getResources()) - 20);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.g.setLayoutParams(localMarginLayoutParams);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.a.ap.getLayoutParams();
+    localMarginLayoutParams.bottomMargin = (AIOUtils.b(15.0F, this.b.v().getResources()) - 20);
+    this.a.ap.setLayoutParams(localMarginLayoutParams);
   }
   
   public int a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2130843259;
+      return 2130844213;
     }
-    return 2130843262;
+    return 2130844216;
   }
   
   public void a()
   {
-    VideoFeedsHardAdBarManager localVideoFeedsHardAdBarManager = (VideoFeedsHardAdBarManager)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b();
+    VideoFeedsHardAdBarManager localVideoFeedsHardAdBarManager = (VideoFeedsHardAdBarManager)this.c.k();
     boolean bool2 = true;
     boolean bool1 = true;
-    if ((localVideoFeedsHardAdBarManager != null) && (localVideoFeedsHardAdBarManager.a()) && (!localVideoFeedsHardAdBarManager.c()))
+    if ((localVideoFeedsHardAdBarManager != null) && (localVideoFeedsHardAdBarManager.e()) && (!localVideoFeedsHardAdBarManager.g()))
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidViewView.getVisibility() != 0) {
+      if (this.a.y.getVisibility() != 0) {
         bool1 = false;
       }
       localVideoFeedsHardAdBarManager.c(bool1);
-      b(bool1);
+      c(bool1);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 8) {
+    if (this.a.af.getVisibility() == 8) {
       bool1 = bool2;
     } else {
       bool1 = false;
     }
-    b(bool1);
+    c(bool1);
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a(paramInt1, paramInt2);
+    this.c.a(paramInt1, paramInt2);
     if (paramBoolean) {
       f();
     }
@@ -129,246 +129,133 @@ public class ADVideoItemDelegate
     if (paramADVideoItemHolder == null) {
       return;
     }
-    if (a(paramVideoInfo))
+    if (d(paramVideoInfo))
     {
-      paramADVideoItemHolder = paramADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup;
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b() == 0) && (paramADVideoItemHolder != null) && (paramADVideoItemHolder.getLayoutParams() != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.d(paramADVideoItemHolder.getLayoutParams().height);
+      paramADVideoItemHolder = paramADVideoItemHolder.aN;
+      if ((this.c.m() == 0) && (paramADVideoItemHolder != null) && (paramADVideoItemHolder.getLayoutParams() != null)) {
+        this.c.d(paramADVideoItemHolder.getLayoutParams().height);
       }
     }
     else
     {
-      paramADVideoItemHolder = paramADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b() == 0) && (paramADVideoItemHolder != null) && (paramADVideoItemHolder.getLayoutParams() != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.d(paramADVideoItemHolder.getLayoutParams().height);
+      paramADVideoItemHolder = paramADVideoItemHolder.U;
+      if ((this.c.m() == 0) && (paramADVideoItemHolder != null) && (paramADVideoItemHolder.getLayoutParams() != null)) {
+        this.c.d(paramADVideoItemHolder.getLayoutParams().height);
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.b());
+    if (this.c.l() == 0) {
+      this.c.c(this.b.r());
     }
   }
   
   public void a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
     super.a(paramVideoInfo, paramBoolean);
-    Object localObject1 = (VideoFeedsHardAdBarManager)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b();
+    Object localObject1 = (VideoFeedsHardAdBarManager)this.c.k();
     if (localObject1 != null) {
       ((VideoFeedsHardAdBarManager)localObject1).a(false);
     }
     Object localObject2;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView != null)
+    if (this.a.h != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView.setTag(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder);
+      this.a.h.setTag(this.a);
       localObject2 = new GestureDetector(new ADVideoItemDelegate.1(this));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView.setOnTouchListener(new ADVideoItemDelegate.2(this, (GestureDetector)localObject2));
+      this.a.h.setOnTouchListener(new ADVideoItemDelegate.2(this, (GestureDetector)localObject2));
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b.setProgress(0);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-    ((VideoFeedsHardAdBarManager)localObject1).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder);
-    AdVideoPendantUIUtils.a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter);
-    if (paramVideoInfo.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a()))
+    this.a.aj.setProgress(0);
+    this.a.ai.setProgress(0);
+    ((VideoFeedsHardAdBarManager)localObject1).a(false, this.a);
+    AdVideoPendantUIUtils.a(false, this.a, this.e, this.c);
+    if (paramVideoInfo.a(this.b.v()))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+      this.a.t.setImageDrawable(null);
     }
-    else if (paramVideoInfo.a() != null)
+    else if (paramVideoInfo.t() != null)
     {
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
       localObject2 = new ColorDrawable(-16777216);
       ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
       ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
-      paramVideoInfo = URLDrawable.getDrawable(paramVideoInfo.a(), (URLDrawable.URLDrawableOptions)localObject1);
-      paramVideoInfo.setDecodeHandler(URLDrawableDecodeHandler.v);
+      paramVideoInfo = URLDrawable.getDrawable(paramVideoInfo.t(), (URLDrawable.URLDrawableOptions)localObject1);
+      paramVideoInfo.setDecodeHandler(URLDrawableDecodeHandler.w);
       paramVideoInfo.setAlpha(80);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramVideoInfo);
+      this.a.t.setImageDrawable(paramVideoInfo);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
-      AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.j);
-      AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setHeadImgByUin(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
-      AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsFollowButton.a());
+      AdVideoButtonUIUtils.a(this.a.aH);
+      AdVideoButtonUIUtils.a(this.a.aN);
+      this.a.P.setHeadImgByUin(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+      AdVideoButtonUIUtils.b(this.a.aL.getView());
       return;
     }
-    AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup);
-    AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.p);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    VideoFeedsHardAdBarManager localVideoFeedsHardAdBarManager = (VideoFeedsHardAdBarManager)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b();
-    b(false);
-    if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_Int == 7)) && (!paramBoolean))
-    {
-      localVideoFeedsHardAdBarManager.a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder);
-      AdVideoPendantUIUtils.a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b.setProgress(0);
-      }
-    }
+    AdVideoButtonUIUtils.b(this.a.aN);
+    AdVideoButtonUIUtils.b(this.a.aM);
   }
   
   public void a_(VideoInfo paramVideoInfo)
   {
-    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).commonSetCountToTextViewAsync(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.w, paramVideoInfo.e, "评论");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.k.setImageResource(2130843258);
-    if ((this.jdField_a_of_type_Boolean) && (AdVideoButtonUIUtils.b()))
+    ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).commonSetCountToTextViewAsync(this.a.aQ, paramVideoInfo.p, "评论");
+    this.a.aP.setImageResource(2130844212);
+    if ((this.e) && (AdVideoButtonUIUtils.b()))
     {
-      AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.k);
-      AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.w.setTextColor(Color.parseColor("#C6C6C6"));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.y.setTextColor(Color.parseColor("#C6C6C6"));
+      AdVideoButtonUIUtils.a(this.a.aP);
+      AdVideoButtonUIUtils.a(this.a.aR);
+      this.a.aQ.setTextColor(Color.parseColor("#C6C6C6"));
+      this.a.aU.setTextColor(Color.parseColor("#C6C6C6"));
     }
   }
   
   public void b()
   {
-    ADVideoItemHolder localADVideoItemHolder = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder;
-    if ((localADVideoItemHolder != null) && (localADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a != null))
+    ADVideoItemHolder localADVideoItemHolder = this.a;
+    if ((localADVideoItemHolder != null) && (localADVideoItemHolder.az != null) && (this.a.az.c != null))
     {
-      if (TextUtils.isEmpty(ADVideoAppDownloadData.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.a))) {
+      if (TextUtils.isEmpty(ADVideoAppDownloadData.a(this.a.az.c.as))) {
         return;
       }
-      AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder);
+      AdVideoButtonUIUtils.a(this.b.v(), this.a);
     }
   }
   
   public void b(VideoInfo paramVideoInfo)
   {
-    Object localObject = (VideoFeedsHardAdBarManager)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b();
+    Object localObject = (VideoFeedsHardAdBarManager)this.c.k();
     ((VideoFeedsHardAdBarManager)localObject).a(false);
     ((VideoFeedsHardAdBarManager)localObject).d(false);
-    AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetIReadInJoyHeadImageView.a());
-    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder, paramVideoInfo);
-    AdVideoRefreshMenuUIUtils.a.a((QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.a(), paramVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter, this.jdField_a_of_type_Boolean);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_Int != 4) && (paramVideoInfo.r))
+    AdVideoButtonUIUtils.a(this.a.aK.getView());
+    a(this.a, paramVideoInfo);
+    AdVideoRefreshMenuUIUtils.a.a((QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime(), this.b.v(), this.c.n(), paramVideoInfo, this.a, this.c, this.e);
+    if ((this.a.X != 4) && (paramVideoInfo.aq))
     {
-      AdVideoRefreshMenuUIUtils.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a(), paramVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder, new ADVideoItemDelegate.3(this, paramVideoInfo, (VideoFeedsHardAdBarManager)localObject));
-      ((VideoFeedsHardAdBarManager)localObject).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder);
-      AdVideoPendantUIUtils.a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter);
-      AdVideoRefreshMenuUIUtils.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a(), paramVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter, this.jdField_a_of_type_Boolean, new ADVideoItemDelegate.4(this, (VideoFeedsHardAdBarManager)localObject));
+      AdVideoRefreshMenuUIUtils.a.a(this.b.v(), paramVideoInfo, this.a, new ADVideoItemDelegate.3(this, paramVideoInfo, (VideoFeedsHardAdBarManager)localObject));
+      ((VideoFeedsHardAdBarManager)localObject).a(false, this.a);
+      AdVideoPendantUIUtils.a(false, this.a, this.e, this.c);
+      AdVideoRefreshMenuUIUtils.a.a(this.b.v(), paramVideoInfo, this.a, this.c, this.e, new ADVideoItemDelegate.4(this, (VideoFeedsHardAdBarManager)localObject));
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.b();
-    ADVideoItemHolder localADVideoItemHolder = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder;
-    if ((localObject == localADVideoItemHolder) && (localADVideoItemHolder.jdField_a_of_type_Int == 4) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.b()))
+    localObject = this.b.u();
+    ADVideoItemHolder localADVideoItemHolder = this.a;
+    if ((localObject == localADVideoItemHolder) && (localADVideoItemHolder.X == 4) && (this.b.e()))
     {
-      AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.j);
-      AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidViewViewGroup);
+      AdVideoButtonUIUtils.b(this.a.aH);
+      AdVideoButtonUIUtils.b(this.a.aN);
     }
-    AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_h_of_type_AndroidViewViewGroup);
-    if (this.jdField_a_of_type_Boolean) {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder, paramVideoInfo);
+    AdVideoButtonUIUtils.b(this.a.at);
+    if (this.e) {
+      a(this.a, paramVideoInfo);
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    VideoFeedsHardAdBarManager localVideoFeedsHardAdBarManager = (VideoFeedsHardAdBarManager)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView != null)
+    VideoFeedsHardAdBarManager localVideoFeedsHardAdBarManager = (VideoFeedsHardAdBarManager)this.c.k();
+    c(false);
+    if (((this.a.X == 5) || (this.a.X == 7)) && (!paramBoolean))
     {
-      boolean bool;
-      if (!paramBoolean)
-      {
-        if (!localVideoFeedsHardAdBarManager.a()) {
-          AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b);
-        } else {
-          AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b);
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.p);
-        }
-        if ((localVideoFeedsHardAdBarManager.a()) && (!localVideoFeedsHardAdBarManager.c()))
-        {
-          if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidViewView.getVisibility() == 8) && (!localVideoFeedsHardAdBarManager.b()))
-          {
-            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_h_of_type_AndroidViewView != null)
-            {
-              localVideoFeedsHardAdBarManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder);
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_h_of_type_AndroidViewView.setVisibility(0);
-            }
-            ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).changeVisibilityWithObjectAnimator(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidViewView, 0);
-          }
-          bool = paramBoolean;
-          if (localVideoFeedsHardAdBarManager.b()) {
-            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 8)
-            {
-              bool = true;
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.setVisibility(0);
-            }
-            else
-            {
-              bool = paramBoolean;
-              if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 0)
-              {
-                this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
-                bool = paramBoolean;
-              }
-            }
-          }
-        }
-        else
-        {
-          if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView.getVisibility() == 8) && (!localVideoFeedsHardAdBarManager.b())) {
-            ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).changeVisibilityWithObjectAnimator(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView, 0);
-          }
-          bool = paramBoolean;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 0)
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
-            bool = paramBoolean;
-          }
-        }
-      }
-      else
-      {
-        AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b);
-        AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.p);
-        if ((localVideoFeedsHardAdBarManager.a()) && (!localVideoFeedsHardAdBarManager.c()))
-        {
-          bool = paramBoolean;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidViewView.getVisibility() == 0)
-          {
-            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_h_of_type_AndroidViewView != null) {
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_h_of_type_AndroidViewView.setVisibility(8);
-            }
-            ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).changeVisibilityWithObjectAnimator(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_l_of_type_AndroidViewView, 8);
-            bool = paramBoolean;
-          }
-        }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-            ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).changeVisibilityWithObjectAnimator(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView, 8);
-          }
-          bool = paramBoolean;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 8)
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.setVisibility(0);
-            bool = paramBoolean;
-          }
-        }
-      }
-      super.b(bool);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        if ((!bool) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_Boolean) && (!localVideoFeedsHardAdBarManager.a()))
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b.setVisibility(0);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b.setVisibility(4);
-      }
-    }
-    else
-    {
-      super.b(paramBoolean);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        if ((!paramBoolean) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_Boolean) && (!localVideoFeedsHardAdBarManager.a()))
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b.setVisibility(0);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b.setVisibility(4);
+      localVideoFeedsHardAdBarManager.a(false, this.a);
+      AdVideoPendantUIUtils.a(false, this.a, this.e, this.c);
+      if (this.a.aj != null) {
+        this.a.aj.setProgress(0);
       }
     }
   }
@@ -378,11 +265,124 @@ public class ADVideoItemDelegate
     super.c(paramVideoInfo);
   }
   
-  public void c(boolean paramBoolean) {}
-  
-  public void d(boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
-    VideoFeedsHardAdBarManager localVideoFeedsHardAdBarManager = (VideoFeedsHardAdBarManager)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsAdapter.b();
+    VideoFeedsHardAdBarManager localVideoFeedsHardAdBarManager = (VideoFeedsHardAdBarManager)this.c.k();
+    if (this.a.h != null)
+    {
+      boolean bool;
+      if (!paramBoolean)
+      {
+        if (!localVideoFeedsHardAdBarManager.e()) {
+          AdVideoButtonUIUtils.a(this.a.aj);
+        } else {
+          AdVideoButtonUIUtils.b(this.a.aj);
+        }
+        if (this.e) {
+          AdVideoButtonUIUtils.a(this.a.aM);
+        }
+        if ((localVideoFeedsHardAdBarManager.e()) && (!localVideoFeedsHardAdBarManager.g()))
+        {
+          if ((this.a.y.getVisibility() == 8) && (!localVideoFeedsHardAdBarManager.f()))
+          {
+            if (this.a.u != null)
+            {
+              localVideoFeedsHardAdBarManager.a(this.a);
+              this.a.u.setVisibility(0);
+            }
+            ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).changeVisibilityWithObjectAnimator(this.a.y, 0);
+          }
+          bool = paramBoolean;
+          if (localVideoFeedsHardAdBarManager.f()) {
+            if (this.a.af.getVisibility() == 8)
+            {
+              bool = true;
+              this.a.af.setVisibility(0);
+            }
+            else
+            {
+              bool = paramBoolean;
+              if (this.a.af.getVisibility() == 0)
+              {
+                this.a.af.setVisibility(8);
+                bool = paramBoolean;
+              }
+            }
+          }
+        }
+        else
+        {
+          if ((this.a.h.getVisibility() == 8) && (!localVideoFeedsHardAdBarManager.f())) {
+            ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).changeVisibilityWithObjectAnimator(this.a.h, 0);
+          }
+          bool = paramBoolean;
+          if (this.a.af.getVisibility() == 0)
+          {
+            this.a.af.setVisibility(8);
+            bool = paramBoolean;
+          }
+        }
+      }
+      else
+      {
+        AdVideoButtonUIUtils.b(this.a.aj);
+        AdVideoButtonUIUtils.b(this.a.aM);
+        if ((localVideoFeedsHardAdBarManager.e()) && (!localVideoFeedsHardAdBarManager.g()))
+        {
+          bool = paramBoolean;
+          if (this.a.y.getVisibility() == 0)
+          {
+            if (this.a.u != null) {
+              this.a.u.setVisibility(8);
+            }
+            ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).changeVisibilityWithObjectAnimator(this.a.y, 8);
+            bool = paramBoolean;
+          }
+        }
+        else
+        {
+          if (this.a.h.getVisibility() == 0) {
+            ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).changeVisibilityWithObjectAnimator(this.a.h, 8);
+          }
+          bool = paramBoolean;
+          if (this.a.af.getVisibility() == 8)
+          {
+            this.a.af.setVisibility(0);
+            bool = paramBoolean;
+          }
+        }
+      }
+      super.c(bool);
+      if (!this.e)
+      {
+        if ((!bool) && (!this.a.g) && (!localVideoFeedsHardAdBarManager.e()))
+        {
+          this.a.aj.setVisibility(0);
+          return;
+        }
+        this.a.aj.setVisibility(4);
+      }
+    }
+    else
+    {
+      super.c(paramBoolean);
+      if (!this.e)
+      {
+        if ((!paramBoolean) && (!this.a.g) && (!localVideoFeedsHardAdBarManager.e()))
+        {
+          this.a.aj.setVisibility(0);
+          return;
+        }
+        this.a.aj.setVisibility(4);
+      }
+    }
+  }
+  
+  public void d(boolean paramBoolean) {}
+  
+  public void e(boolean paramBoolean)
+  {
+    VideoFeedsHardAdBarManager localVideoFeedsHardAdBarManager = (VideoFeedsHardAdBarManager)this.c.k();
     if (paramBoolean)
     {
       localVideoFeedsHardAdBarManager.b(true);
@@ -395,40 +395,40 @@ public class ADVideoItemDelegate
     }
     if (paramBoolean)
     {
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a()))
+      if (!this.a.az.c.a(this.b.v()))
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).calculateCommentViewGroupHeight(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a()));
-        l(true);
+        this.a.aa.setPadding(0, 0, 0, ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).calculateCommentViewGroupHeight(this.b.v()));
+        m(true);
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 0) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.setVisibility(8);
+      if (this.a.af.getVisibility() == 0) {
+        this.a.af.setVisibility(8);
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView != null)
+      if (this.a.h != null)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        AdVideoButtonUIUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b);
+        this.a.h.setVisibility(8);
+        AdVideoButtonUIUtils.b(this.a.aj);
       }
     }
-    else if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsRecommendPresenter.a()))
+    else if (!this.a.az.c.a(this.b.v()))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, 0, 0, 0);
-      l(false);
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 8) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView != null))
+      this.a.aa.setPadding(0, 0, 0, 0);
+      m(false);
+      if ((this.a.af != null) && (this.a.af.getVisibility() == 8) && (this.a.h != null))
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b);
+        this.a.h.setVisibility(0);
+        AdVideoButtonUIUtils.a(this.a.aj);
       }
     }
-    else if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_d_of_type_AndroidViewViewGroup.getVisibility() == 8) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView != null))
+    else if ((this.a.af != null) && (this.a.af.getVisibility() == 8) && (this.a.h != null))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      AdVideoButtonUIUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemHolder.b);
+      this.a.h.setVisibility(0);
+      AdVideoButtonUIUtils.a(this.a.aj);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.videofeeds.ADVideoItemDelegate
  * JD-Core Version:    0.7.0.1
  */

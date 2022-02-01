@@ -13,7 +13,7 @@ class ExtendFriendReport$1
   {
     try
     {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
       return;
     }
     catch (Exception localException) {}
@@ -21,7 +21,7 @@ class ExtendFriendReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport.1
  * JD-Core Version:    0.7.0.1
  */

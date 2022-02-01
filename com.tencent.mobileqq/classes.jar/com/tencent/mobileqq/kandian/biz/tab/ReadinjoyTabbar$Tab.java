@@ -5,19 +5,19 @@ import com.tencent.mobileqq.kandian.biz.common.fragment.ReadInJoyBaseFragment;
 
 public class ReadinjoyTabbar$Tab
 {
-  public BaseTabbar.TabHolder a;
-  ReadInJoyBaseFragment jdField_a_of_type_ComTencentMobileqqKandianBizCommonFragmentReadInJoyBaseFragment;
-  boolean jdField_a_of_type_Boolean = false;
-  public boolean b = false;
+  ReadInJoyBaseFragment a;
+  boolean b = false;
+  public BaseTabbar.TabHolder c;
+  public boolean d = false;
   
   public ReadInJoyBaseFragment a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonFragmentReadInJoyBaseFragment;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabbar.Tab
  * JD-Core Version:    0.7.0.1
  */

@@ -9,35 +9,37 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/webplugin/jsMethodAction/ReadInJoyJsMethodActionController;", "", "()V", "mWebPlugin", "Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;", "map", "Ljava/util/HashMap;", "", "Lcom/tencent/mobileqq/kandian/glue/webplugin/jsMethodAction/JsMethodAction;", "Lkotlin/collections/HashMap;", "callBackToWebView", "", "jsCallbackFunc", "jsMethodModel", "Lcom/tencent/mobileqq/kandian/glue/webplugin/jsMethodAction/JsMethodModel;", "retCode", "", "msg", "data", "Lorg/json/JSONObject;", "func", "jsonObject", "getActionByName", "name", "init", "webViewPlugin", "registerAction", "action", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/webplugin/jsMethodAction/ReadInJoyJsMethodActionController;", "", "()V", "mWebPlugin", "Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;", "map", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "callBackToWebView", "", "jsCallbackFunc", "jsMethodModel", "Lcom/tencent/mobileqq/kandian/glue/webplugin/jsMethodAction/JsMethodModel;", "retCode", "", "msg", "data", "Lorg/json/JSONObject;", "func", "jsonObject", "getActionByName", "Lcom/tencent/mobileqq/kandian/glue/webplugin/jsMethodAction/JsMethodAction;", "name", "init", "webViewPlugin", "registerAction", "action", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class ReadInJoyJsMethodActionController
 {
-  public static final ReadInJoyJsMethodActionController a;
-  private static WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
-  private static final HashMap<String, JsMethodAction> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueWebpluginJsMethodActionReadInJoyJsMethodActionController = new ReadInJoyJsMethodActionController();
-  }
+  public static final ReadInJoyJsMethodActionController a = new ReadInJoyJsMethodActionController();
+  private static WebViewPlugin b;
+  private static final HashMap<String, String> c = new HashMap();
   
   @Nullable
   public final JsMethodAction a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "name");
-    return (JsMethodAction)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (!c.containsKey(paramString)) {
+      return null;
+    }
+    return (JsMethodAction)Class.forName((String)c.get(paramString)).newInstance();
   }
   
   public final void a(@NotNull JsMethodAction paramJsMethodAction)
   {
     Intrinsics.checkParameterIsNotNull(paramJsMethodAction, "action");
-    ((Map)jdField_a_of_type_JavaUtilHashMap).put(paramJsMethodAction.a(), paramJsMethodAction);
+    Map localMap = (Map)c;
+    String str = paramJsMethodAction.a();
+    paramJsMethodAction = paramJsMethodAction.getClass().getName();
+    Intrinsics.checkExpressionValueIsNotNull(paramJsMethodAction, "action.javaClass.name");
+    localMap.put(str, paramJsMethodAction);
   }
   
   public final void a(@NotNull WebViewPlugin paramWebViewPlugin)
   {
     Intrinsics.checkParameterIsNotNull(paramWebViewPlugin, "webViewPlugin");
-    jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramWebViewPlugin;
+    b = paramWebViewPlugin;
   }
   
   public final void a(@NotNull String paramString1, int paramInt, @NotNull String paramString2, @Nullable JSONObject paramJSONObject)
@@ -58,7 +60,7 @@ public final class ReadInJoyJsMethodActionController
   {
     Intrinsics.checkParameterIsNotNull(paramString, "func");
     Intrinsics.checkParameterIsNotNull(paramJSONObject, "jsonObject");
-    WebViewPlugin localWebViewPlugin = jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
+    WebViewPlugin localWebViewPlugin = b;
     if (localWebViewPlugin != null) {
       localWebViewPlugin.callJs(paramString, new String[] { paramJSONObject.toString() });
     }
@@ -66,7 +68,7 @@ public final class ReadInJoyJsMethodActionController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.webplugin.jsMethodAction.ReadInJoyJsMethodActionController
  * JD-Core Version:    0.7.0.1
  */

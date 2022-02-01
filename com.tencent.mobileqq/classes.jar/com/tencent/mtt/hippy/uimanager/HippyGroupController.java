@@ -6,7 +6,7 @@ import com.tencent.mtt.hippy.annotation.HippyControllerProps;
 public abstract class HippyGroupController<T extends ViewGroup,  extends HippyViewBase>
   extends HippyViewController<T>
 {
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onInterceptPullUpEvent")
+  @HippyControllerProps(defaultType="boolean", name="onInterceptPullUpEvent")
   public void setInterceptPullUp(T paramT, boolean paramBoolean)
   {
     if (!handleGestureBySelf()) {
@@ -14,7 +14,7 @@ public abstract class HippyGroupController<T extends ViewGroup,  extends HippyVi
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onInterceptTouchEvent")
+  @HippyControllerProps(defaultType="boolean", name="onInterceptTouchEvent")
   public void setInterceptTouch(T paramT, boolean paramBoolean)
   {
     if (!handleGestureBySelf()) {
@@ -24,7 +24,7 @@ public abstract class HippyGroupController<T extends ViewGroup,  extends HippyVi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.HippyGroupController
  * JD-Core Version:    0.7.0.1
  */

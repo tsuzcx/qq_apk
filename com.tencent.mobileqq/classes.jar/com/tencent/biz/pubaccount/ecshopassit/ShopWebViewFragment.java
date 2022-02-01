@@ -60,99 +60,99 @@ public class ShopWebViewFragment
   extends WebViewFragment
   implements DragFrameLayout.OnDragModeChangedListener
 {
-  int jdField_a_of_type_Int;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ShopWebViewFragment.4(this);
-  View jdField_a_of_type_AndroidViewView;
-  public ViewGroup a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  EcshopCacheTool jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool;
-  public ShopFolderAdapter a;
-  DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  SosoInterfaceOnLocationListener jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener = new ShopWebViewFragment.5(this, 0, true, false, 600000L, false, false, "ecshop");
-  RedTouch jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
-  SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  public List<RecentShopParcel> a;
-  boolean jdField_a_of_type_Boolean;
-  String[] jdField_a_of_type_ArrayOfJavaLangString = new String[4];
-  int jdField_b_of_type_Int = 0;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  public TextView b;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  public ImageView c;
-  public TextView c;
-  boolean jdField_c_of_type_Boolean;
-  int jdField_d_of_type_Int;
-  public TextView d;
-  boolean jdField_d_of_type_Boolean;
+  boolean a;
+  boolean b;
+  boolean c;
+  boolean d;
+  int e;
+  public List<RecentShopParcel> f;
+  EcshopCacheTool g;
+  String[] h = new String[4];
+  DragFrameLayout i;
+  SwipListView j;
+  public ShopFolderAdapter k;
+  int l = 0;
+  int m;
+  int n;
+  View o;
+  ImageView p;
+  TextView q;
+  ImageView r;
+  public TextView s;
+  public TextView t;
+  public TextView u;
+  public ImageView v;
+  public ViewGroup w;
+  BroadcastReceiver x = new ShopWebViewFragment.4(this);
+  SosoInterfaceOnLocationListener y = new ShopWebViewFragment.5(this, 0, true, false, 600000L, false, false, "ecshop");
+  RedTouch z;
   
   void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = new FadeIconImageView(getQBaseActivity());
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getQBaseActivity());
+    this.p = new FadeIconImageView(getQBaseActivity());
+    this.q = new TextView(getQBaseActivity());
     Object localObject2;
-    int i;
-    if (!this.jdField_a_of_type_Boolean)
+    int i1;
+    if (!this.a)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713877));
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131369563);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130851067);
-      localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131376755);
+      this.t.setText(HardCodeUtil.a(2131911410));
+      this.s.setVisibility(8);
+      this.p.setId(2131436666);
+      this.p.setOnClickListener(this);
+      this.p.setImageResource(2130853298);
+      localObject1 = (RelativeLayout)this.w.findViewById(2131445048);
       localObject2 = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject2).addRule(15);
       ((RelativeLayout.LayoutParams)localObject2).leftMargin = AIOUtils.b(10.0F, getResources());
-      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject2);
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131379476);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167394));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 17.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130837943);
-      this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-      i = AIOUtils.b(3.0F, getResources());
-      int j = AIOUtils.b(4.0F, getResources());
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
+      ((RelativeLayout)localObject1).addView(this.p, (ViewGroup.LayoutParams)localObject2);
+      this.q.setId(2131448219);
+      this.q.setOnClickListener(this);
+      this.q.setTextColor(getResources().getColor(2131168464));
+      this.q.setTextSize(1, 17.0F);
+      this.q.setBackgroundResource(2130837967);
+      this.q.setGravity(17);
+      i1 = AIOUtils.b(3.0F, getResources());
+      int i2 = AIOUtils.b(4.0F, getResources());
+      this.q.setPadding(i1, 0, i1, 0);
       localObject2 = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject2).addRule(15);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131369563);
-      ((RelativeLayout.LayoutParams)localObject2).leftMargin = j;
-      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject2);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131436666);
+      ((RelativeLayout.LayoutParams)localObject2).leftMargin = i2;
+      ((RelativeLayout)localObject1).addView(this.q, (ViewGroup.LayoutParams)localObject2);
     }
     else
     {
-      i = AIOUtils.b(30.0F, getResources());
-      this.jdField_b_of_type_AndroidWidgetImageView = new FadeIconImageView(getQBaseActivity());
-      this.jdField_b_of_type_AndroidWidgetImageView.setId(2131369221);
-      this.jdField_b_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER);
-      localObject1 = new RelativeLayout.LayoutParams(i, i);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131369216);
-      ((RelativeLayout)this.jdField_c_of_type_AndroidWidgetImageView.getParent()).addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
+      i1 = AIOUtils.b(30.0F, getResources());
+      this.r = new FadeIconImageView(getQBaseActivity());
+      this.r.setId(2131436199);
+      this.r.setScaleType(ImageView.ScaleType.CENTER);
+      localObject1 = new RelativeLayout.LayoutParams(i1, i1);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131436194);
+      ((RelativeLayout)this.v.getParent()).addView(this.r, (ViewGroup.LayoutParams)localObject1);
     }
     Object localObject1 = new int[4][];
     localObject1[0] = { 16842919 };
     localObject1[1] = { 16842912 };
     localObject1[2] = { 16842913 };
     localObject1[3] = new int[0];
-    if (this.jdField_c_of_type_Boolean)
+    if (this.c)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.a)
       {
-        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130850434);
-        localObject2 = getResources().getColorStateList(2131167054);
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject2);
+        this.w.setBackgroundResource(2130852229);
+        localObject2 = getResources().getColorStateList(2131167991);
+        this.t.setTextColor((ColorStateList)localObject2);
         localObject2 = new ColorStateList((int[][])localObject1, new int[] { 2147483647, 2147483647, 2147483647, -1 });
-        this.jdField_d_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject2);
+        this.u.setTextColor((ColorStateList)localObject2);
         getQBaseActivity().setStatusBarBlue();
       }
       if (Build.VERSION.SDK_INT >= 19) {
-        break label745;
+        break label746;
       }
     }
     try
     {
-      localObject2 = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      localObject2 = (ViewGroup.MarginLayoutParams)this.w.getLayoutParams();
       ((ViewGroup.MarginLayoutParams)localObject2).topMargin = (ScreenUtil.dip2px(29.0F) - ImmersiveUtils.getStatusBarHeight(getQBaseActivity().getApplicationContext()));
       if (QLog.isColorLevel())
       {
@@ -161,236 +161,236 @@ public class ShopWebViewFragment
         localStringBuilder.append(((ViewGroup.MarginLayoutParams)localObject2).topMargin);
         QLog.d("WebLog_WebViewFragment", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      this.w.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
     catch (Throwable localThrowable)
     {
-      label594:
-      break label594;
+      label595:
+      break label595;
     }
-    break label745;
-    if ((this.webViewSurface.b()) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-      if (getWebTitleBarInterface().a() != null)
+    break label746;
+    if ((this.webViewSurface.f()) && (ImmersiveUtils.isSupporImmersive() == 1)) {
+      if (getWebTitleBarInterface().l() != null)
       {
-        if ((getUIStyle() != null) && (getUIStyle().a != null))
+        if ((getUIStyle() != null) && (getUIStyle().R != null))
         {
-          getWebTitleBarInterface().a().setBackgroundColor(getUIStyle().a.jdField_b_of_type_Int);
-          SimpleUIUtil.a(true, getUIStyle().a.jdField_b_of_type_Int, getHostActivity().getWindow());
+          getWebTitleBarInterface().l().setBackgroundColor(getUIStyle().R.b);
+          SimpleUIUtil.a(true, getUIStyle().R.b, getHostActivity().getWindow());
         }
         else
         {
-          getWebTitleBarInterface().a().setBackgroundColor(getResources().getColor(2131167114));
-          SimpleUIUtil.a(false, getResources().getColor(2131167114), getHostActivity().getWindow());
+          getWebTitleBarInterface().l().setBackgroundColor(getResources().getColor(2131168092));
+          SimpleUIUtil.a(false, getResources().getColor(2131168092), getHostActivity().getWindow());
         }
       }
       else {
-        getWebTitleBarInterface().b(false);
+        getWebTitleBarInterface().c(false);
       }
     }
-    label745:
-    if (this.jdField_a_of_type_Boolean)
+    label746:
+    if (this.a)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(0);
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-1);
+      this.w.setBackgroundResource(0);
+      this.w.setBackgroundColor(-1);
       ImmersiveUtils.setStatusBarDarkMode(getActivity().getWindow(), true);
-      if (getWebTitleBarInterface().a() != null) {
-        getWebTitleBarInterface().a().setBackgroundResource(2130851328);
+      if (getWebTitleBarInterface().l() != null) {
+        getWebTitleBarInterface().l().setBackgroundResource(2130853592);
       }
-      i = AIOUtils.b(3.0F, getResources());
+      i1 = AIOUtils.b(3.0F, getResources());
       localObject1 = new ColorStateList((int[][])localObject1, new int[] { 2130706432, 2130706432, 2130706432, -16777216 });
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130849814);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetImageView.setPadding(i, i, i, i);
-      this.jdField_b_of_type_AndroidWidgetImageView.setPadding(i, i, i, i);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.a(2130847344, getQBaseActivity()));
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(ImageUtil.a(2130847345, getQBaseActivity()));
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      i = AIOUtils.b(4.0F, getResources());
-      ((RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams()).rightMargin = i;
+      this.t.setTextColor((ColorStateList)localObject1);
+      this.s.setTextColor((ColorStateList)localObject1);
+      this.s.setBackgroundResource(2130851519);
+      this.v.setVisibility(0);
+      this.r.setVisibility(0);
+      this.v.setPadding(i1, i1, i1, i1);
+      this.r.setPadding(i1, i1, i1, i1);
+      this.r.setImageDrawable(ImageUtil.a(2130848995, getQBaseActivity()));
+      this.v.setImageDrawable(ImageUtil.a(2130848996, getQBaseActivity()));
+      this.v.setOnClickListener(this);
+      this.r.setOnClickListener(this);
+      i1 = AIOUtils.b(4.0F, getResources());
+      ((RelativeLayout.LayoutParams)this.v.getLayoutParams()).rightMargin = i1;
     }
     else
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713878));
-      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
+      this.u.setText(HardCodeUtil.a(2131911411));
+      this.u.setVisibility(0);
+      this.u.setOnClickListener(this);
     }
     b();
   }
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_b_of_type_AndroidWidgetImageView;
+    Object localObject = this.r;
     if (localObject == null) {
       return;
     }
     if ((paramInt == 1) && (localObject != null))
     {
       ((ImageView)localObject).setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(getQBaseActivity(), this.jdField_b_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.b(53);
-      this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a();
+      this.z = new RedTouch(getQBaseActivity(), this.r);
+      this.z.c(53);
+      this.z.a();
       localObject = new BusinessInfoCheckUpdate.RedTypeInfo();
       ((BusinessInfoCheckUpdate.RedTypeInfo)localObject).red_type.set(0);
-      this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a((BusinessInfoCheckUpdate.RedTypeInfo)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(0);
+      this.z.a((BusinessInfoCheckUpdate.RedTypeInfo)localObject);
+      this.z.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(4);
+    this.z.setVisibility(4);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     Object localObject;
-    if ((paramInt1 == 0) && (this.jdField_b_of_type_Int == 1))
+    if ((paramInt1 == 0) && (this.l == 1))
     {
-      this.jdField_b_of_type_Int = 0;
-      localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView;
+      this.l = 0;
+      localObject = this.j;
       if (localObject != null) {
         ((SwipListView)localObject).setVisibility(8);
       }
     }
-    else if ((paramInt1 == 1) && (this.jdField_b_of_type_Int == 0))
+    else if ((paramInt1 == 1) && (this.l == 0))
     {
-      this.jdField_b_of_type_Int = 1;
-      localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView;
+      this.l = 1;
+      localObject = this.j;
       if (localObject == null)
       {
         a(LayoutInflater.from(getQBaseActivity()));
         localObject = (RelativeLayout)this.webView.getParent();
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
         localLayoutParams.topMargin = paramInt2;
-        ((RelativeLayout)localObject).addView(this.jdField_a_of_type_ComTencentWidgetSwipListView, localLayoutParams);
+        ((RelativeLayout)localObject).addView(this.j, localLayoutParams);
       }
       else
       {
         ((RelativeLayout.LayoutParams)((SwipListView)localObject).getLayoutParams()).topMargin = paramInt2;
-        this.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a(this.jdField_a_of_type_JavaUtilList);
-        this.jdField_a_of_type_ComTencentWidgetSwipListView.requestLayout();
+        this.j.setVisibility(0);
+        this.k.a(this.f);
+        this.j.requestLayout();
       }
-      localObject = this.jdField_a_of_type_AndroidViewView;
+      localObject = this.o;
       if (localObject != null) {
         ((View)localObject).bringToFront();
       }
     }
     else if (paramInt1 == 1)
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetSwipListView;
+      localObject = this.j;
       if (localObject != null)
       {
         ((RelativeLayout.LayoutParams)((SwipListView)localObject).getLayoutParams()).topMargin = paramInt2;
-        this.jdField_a_of_type_ComTencentWidgetSwipListView.requestLayout();
+        this.j.requestLayout();
       }
     }
   }
   
   void a(LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramLayoutInflater.inflate(2131559975, null));
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561895, null);
-    paramLayoutInflater.findViewById(2131363908).setOnClickListener(new ShopWebViewFragment.1(this));
-    if (this.jdField_a_of_type_Boolean)
+    this.j = ((SwipListView)paramLayoutInflater.inflate(2131626018, null));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131628313, null);
+    paramLayoutInflater.findViewById(2131429860).setOnClickListener(new ShopWebViewFragment.1(this));
+    if (this.a)
     {
-      localObject = paramLayoutInflater.findViewById(2131378999);
-      View localView = paramLayoutInflater.findViewById(2131363908);
+      localObject = paramLayoutInflater.findViewById(2131447717);
+      View localView = paramLayoutInflater.findViewById(2131429860);
       if (localObject != null) {
         ((View)localObject).setBackgroundColor(Color.parseColor("#FFFFFFFF"));
       }
       if (localView != null) {
-        localView.setBackgroundResource(2130847334);
+        localView.setBackgroundResource(2130848985);
       }
-      localObject = (TextView)paramLayoutInflater.findViewById(2131364094);
+      localObject = (TextView)paramLayoutInflater.findViewById(2131430057);
       ((TextView)localObject).setTextColor(Color.parseColor("#FF000000"));
-      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838775, 0);
-      paramLayoutInflater.findViewById(2131365759).setBackgroundColor(Color.parseColor("#FFF9F9FB"));
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131166247);
+      ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838997, 0);
+      paramLayoutInflater.findViewById(2131432003).setBackgroundColor(Color.parseColor("#FFF9F9FB"));
+      this.j.setBackgroundResource(2131166980);
     }
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(paramLayoutInflater);
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter = new ShopFolderAdapter(getQBaseActivity(), this.jdField_a_of_type_ComTencentWidgetSwipListView, this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter);
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
+    this.j.addHeaderView(paramLayoutInflater);
+    this.k = new ShopFolderAdapter(getQBaseActivity(), this.j, this.g, this.h[0]);
+    this.j.setAdapter(this.k);
+    this.k.a(this.f);
+    this.k.a(this.i);
+    this.j.setDragEnable(true);
     if ((getQBaseActivity() instanceof SwipListView.RightIconMenuListener)) {
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener((SwipListView.RightIconMenuListener)getQBaseActivity());
+      this.j.setRightIconMenuListener((SwipListView.RightIconMenuListener)getQBaseActivity());
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return;
     }
     paramLayoutInflater = new JSONObject();
     Object localObject = new JSONObject();
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnTouchListener(new ShopWebViewFragment.2(this, paramLayoutInflater, (JSONObject)localObject));
+    this.j.setOnTouchListener(new ShopWebViewFragment.2(this, paramLayoutInflater, (JSONObject)localObject));
   }
   
   void b()
   {
-    Object localObject1 = this.jdField_b_of_type_AndroidWidgetTextView;
+    Object localObject1 = this.s;
     if (localObject1 != null)
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = this.q;
       if (localTextView != null)
       {
         if (localTextView == null) {
           return;
         }
-        if ((this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+        if ((this.c) && (!this.a))
         {
           ((TextView)localObject1).setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+          this.p.setVisibility(0);
+          this.q.setVisibility(0);
+          localTextView = this.q;
         }
         else
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-          localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+          this.s.setVisibility(0);
+          this.p.setVisibility(8);
+          this.q.setVisibility(8);
+          localTextView = this.s;
         }
         if (localTextView != null)
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(this.e);
           localObject1 = ((StringBuilder)localObject1).toString();
-          if ((this.jdField_c_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+          if ((this.c) && (!this.a))
           {
-            if (this.jdField_a_of_type_Int > 99) {
+            if (this.e > 99) {
               localObject1 = "99+";
             }
           }
           else
           {
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(getString(2131719442));
+            ((StringBuilder)localObject1).append(getString(2131917002));
             ((StringBuilder)localObject1).append("(");
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+            ((StringBuilder)localObject1).append(this.e);
             ((StringBuilder)localObject1).append(")");
             localObject1 = ((StringBuilder)localObject1).toString();
-            if (this.jdField_a_of_type_Int > 99)
+            if (this.e > 99)
             {
               localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append(getString(2131719442));
+              ((StringBuilder)localObject1).append(getString(2131917002));
               ((StringBuilder)localObject1).append("(99+)");
               localObject1 = ((StringBuilder)localObject1).toString();
             }
           }
           Object localObject2 = localObject1;
-          if (this.jdField_a_of_type_Int <= 0)
+          if (this.e <= 0)
           {
             localObject2 = localObject1;
-            if (!this.jdField_d_of_type_Boolean)
+            if (!this.d)
             {
-              localObject1 = getString(2131719442);
+              localObject1 = getString(2131917002);
               localObject2 = localObject1;
-              if (this.jdField_c_of_type_Boolean)
+              if (this.c)
               {
                 localObject2 = localObject1;
-                if (!this.jdField_a_of_type_Boolean)
+                if (!this.a)
                 {
                   localTextView.setVisibility(8);
                   return;
@@ -399,21 +399,21 @@ public class ShopWebViewFragment
             }
           }
           localObject1 = localTextView;
-          if (this.jdField_d_of_type_Boolean)
+          if (this.d)
           {
-            if (this.jdField_a_of_type_Boolean)
+            if (this.a)
             {
-              this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.p.setVisibility(8);
             }
             else
             {
-              this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-              this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-              this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-              localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+              this.p.setVisibility(0);
+              this.s.setVisibility(0);
+              this.q.setVisibility(8);
+              localTextView = this.s;
               localTextView.setBackgroundResource(0);
             }
-            localObject2 = getResources().getString(2131690706);
+            localObject2 = getResources().getString(2131887625);
             localObject1 = localTextView;
           }
           ((TextView)localObject1).setText((CharSequence)localObject2);
@@ -424,27 +424,27 @@ public class ShopWebViewFragment
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      int i = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
+      int i1 = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
       this.webViewSurface.a(new View(super.getActivity()));
-      getWebTitleBarInterface().a().setId(2131377853);
-      getWebTitleBarInterface().a().setBackgroundResource(2130850433);
-      paramBundle = new RelativeLayout.LayoutParams(-1, i);
+      getWebTitleBarInterface().l().setId(2131446329);
+      getWebTitleBarInterface().l().setBackgroundResource(2130852228);
+      paramBundle = new RelativeLayout.LayoutParams(-1, i1);
       paramBundle.addRule(10, -1);
-      this.contentView.addView(getWebTitleBarInterface().a(), paramBundle);
-      LayoutInflater.from(getQBaseActivity()).inflate(2131558726, this.contentView);
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.contentView.findViewById(2131376636));
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130850433);
-      ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams()).topMargin = i;
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369202));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369249));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369233));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369216));
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371243);
+      this.contentView.addView(getWebTitleBarInterface().l(), paramBundle);
+      LayoutInflater.from(getQBaseActivity()).inflate(2131624346, this.contentView);
+      this.w = ((ViewGroup)this.contentView.findViewById(2131444897));
+      this.w.setBackgroundResource(2130852228);
+      ((RelativeLayout.LayoutParams)this.w.getLayoutParams()).topMargin = i1;
+      this.s = ((TextView)this.w.findViewById(2131436180));
+      this.s.setOnClickListener(this);
+      this.t = ((TextView)this.w.findViewById(2131436227));
+      this.u = ((TextView)this.w.findViewById(2131436211));
+      this.v = ((ImageView)this.w.findViewById(2131436194));
+      this.u.setOnClickListener(this);
+      this.v.setOnClickListener(this);
+      paramBundle = this.w.findViewById(2131438587);
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
@@ -461,12 +461,12 @@ public class ShopWebViewFragment
   
   public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131380207))
+    if ((this.i.getMode() == -1) && (paramDragFrameLayout.getDragView() != null) && (paramDragFrameLayout.getDragView().getId() == 2131449123))
     {
-      paramDragFrameLayout = (RecentShopParcel)paramDragFrameLayout.a().getTag(2131374762);
+      paramDragFrameLayout = (RecentShopParcel)paramDragFrameLayout.getDragView().getTag(2131442952);
       if (paramDragFrameLayout != null)
       {
-        paramDragFrameLayout.jdField_b_of_type_Int = 0;
+        paramDragFrameLayout.g = 0;
         Intent localIntent = new Intent("action_shop_set_read");
         localIntent.putExtra("uin", paramDragFrameLayout.a);
         localIntent.putExtra("needDelete", false);
@@ -483,22 +483,22 @@ public class ShopWebViewFragment
     default: 
       super.onClick(paramView);
       break;
-    case 2131369221: 
-    case 2131369233: 
+    case 2131436199: 
+    case 2131436211: 
       if (this.webView != null)
       {
         localObject = WebViewPlugin.toJsScript("onEnterUserInfo", new JSONObject(), new JSONObject());
         this.webView.callJs((String)localObject);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+      localObject = this.z;
       if (localObject != null) {
-        ((RedTouch)localObject).d();
+        ((RedTouch)localObject).g();
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.b(getQBaseActivity(), this.jdField_a_of_type_ArrayOfJavaLangString[3]);
+      this.g.b(getQBaseActivity(), this.h[3]);
     }
     try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopReportHandler.a(134248547, null, null, null, null, 0L, false);
+      this.g.f.a(134248547, null, null, null, null, 0L, false);
     }
     catch (Exception localException)
     {
@@ -523,38 +523,38 @@ public class ShopWebViewFragment
     if (getAppRuntime() == null) {
       this.mApp = getQBaseActivity().getAppRuntime();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool = new EcshopCacheTool((AppInterface)getAppRuntime(), this);
+    this.g = new EcshopCacheTool((AppInterface)getAppRuntime(), this);
     boolean bool1 = this.intent.hasExtra("bundle");
-    int i = 0;
+    int i1 = 0;
     long l1;
     if (bool1)
     {
       paramBundle = this.intent.getBundleExtra("bundle");
       paramBundle.setClassLoader(RecentShopParcel.class.getClassLoader());
-      this.jdField_a_of_type_Boolean = paramBundle.getBoolean("is_tab_show", false);
+      this.a = paramBundle.getBoolean("is_tab_show", false);
       l1 = 0L;
       long l2 = paramBundle.getLong("click_time", 0L);
       bool1 = paramBundle.getBoolean("is_tool_exist", false);
       if (l2 != 0L) {
         l1 = System.currentTimeMillis() - l2;
       }
-      this.jdField_a_of_type_ArrayOfJavaLangString = paramBundle.getStringArray("urls");
-      this.jdField_a_of_type_JavaUtilList = paramBundle.getParcelableArrayList("datas");
-      this.jdField_b_of_type_Boolean = paramBundle.getBoolean("hasUnread", false);
-      this.jdField_a_of_type_Int = paramBundle.getInt("unReadNum", 0);
-      this.jdField_c_of_type_Boolean = paramBundle.getBoolean("isDefaultTheme", true);
-      this.jdField_d_of_type_Boolean = paramBundle.getBoolean("from_search", false);
-      paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool;
-      boolean bool2 = this.jdField_a_of_type_Boolean;
-      paramBundle.jdField_a_of_type_Boolean = bool2;
+      this.h = paramBundle.getStringArray("urls");
+      this.f = paramBundle.getParcelableArrayList("datas");
+      this.b = paramBundle.getBoolean("hasUnread", false);
+      this.e = paramBundle.getInt("unReadNum", 0);
+      this.c = paramBundle.getBoolean("isDefaultTheme", true);
+      this.d = paramBundle.getBoolean("from_search", false);
+      paramBundle = this.g;
+      boolean bool2 = this.a;
+      paramBundle.g = bool2;
       if (!bool2) {}
     }
     for (;;)
     {
       try
       {
-        paramBundle.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopReportHandler.a(134248544, null, null, null, null, 0L, false);
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopReportHandler;
+        paramBundle.f.a(134248544, null, null, null, null, 0L, false);
+        localObject = this.g.f;
         if (!bool1) {
           break label378;
         }
@@ -565,13 +565,13 @@ public class ShopWebViewFragment
       {
         try
         {
-          getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-          paramBundle = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool;
+          getActivity().registerReceiver(this.x, paramBundle);
+          paramBundle = this.g;
           Object localObject = getAppRuntime();
-          if (this.jdField_a_of_type_JavaUtilList != null) {
-            i = this.jdField_a_of_type_JavaUtilList.size();
+          if (this.f != null) {
+            i1 = this.f.size();
           }
-          paramBundle.a((AppRuntime)localObject, i);
+          paramBundle.a((AppRuntime)localObject, i1);
           return;
         }
         catch (Exception paramBundle)
@@ -581,8 +581,8 @@ public class ShopWebViewFragment
         paramBundle = paramBundle;
         continue;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(getQBaseActivity());
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
+      this.i = DragFrameLayout.a(getQBaseActivity());
+      this.i.a(this, false);
       paramBundle = new IntentFilter();
       paramBundle.addAction("action_decode_finish");
       paramBundle.addAction("action_on_shop_msg_receive");
@@ -594,13 +594,13 @@ public class ShopWebViewFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      this.jdField_b_of_type_Int = 1;
+      this.l = 1;
       a(LayoutInflater.from(getQBaseActivity()));
       paramViewGroup = new RelativeLayout.LayoutParams(-1, -1);
-      paramViewGroup.addRule(3, 2131376666);
-      this.contentView.addView(this.jdField_a_of_type_ComTencentWidgetSwipListView, paramViewGroup);
+      paramViewGroup.addRule(3, 2131444932);
+      this.contentView.addView(this.j, paramViewGroup);
     }
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -611,15 +611,15 @@ public class ShopWebViewFragment
     super.onDestroy();
     try
     {
-      getQBaseActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      getQBaseActivity().unregisterReceiver(this.x);
       label15:
-      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter;
+      Object localObject = this.k;
       if (localObject != null)
       {
         ((ShopFolderAdapter)localObject).a();
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter = null;
+        this.k = null;
       }
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool;
+      localObject = this.g;
       if (localObject != null) {
         ((EcshopCacheTool)localObject).a();
       }
@@ -634,28 +634,28 @@ public class ShopWebViewFragment
   public void onResume()
   {
     super.onResume();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.f;
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      int k = Build.VERSION.SDK_INT;
-      int j = 1;
-      int i = 1;
-      if (k >= 23)
+      int i3 = Build.VERSION.SDK_INT;
+      int i2 = 1;
+      int i1 = 1;
+      if (i3 >= 23)
       {
         if (getQBaseActivity().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0) {
-          i = 0;
+          i1 = 0;
         }
-        j = i;
-        if (i == 0)
+        i2 = i1;
+        if (i1 == 0)
         {
           getQBaseActivity().requestPermissions("android.permission.ACCESS_FINE_LOCATION", 10, new String[0]);
-          j = i;
+          i2 = i1;
         }
       }
-      if (j != 0) {
-        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+      if (i2 != 0) {
+        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.y);
       }
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter;
+      localObject = this.k;
       if (localObject != null) {
         ((ShopFolderAdapter)localObject).notifyDataSetChanged();
       }
@@ -664,7 +664,7 @@ public class ShopWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

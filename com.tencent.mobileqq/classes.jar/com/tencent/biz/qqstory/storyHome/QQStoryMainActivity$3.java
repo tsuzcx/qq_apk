@@ -9,7 +9,7 @@ class QQStoryMainActivity$3
   
   public void run()
   {
-    QQStoryMainActivity.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString);
+    QQStoryMainActivity.a(this.this$0, this.a, this.b);
   }
 }
 

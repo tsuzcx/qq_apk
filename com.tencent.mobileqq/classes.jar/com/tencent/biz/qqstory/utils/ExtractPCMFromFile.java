@@ -13,8 +13,8 @@ import java.nio.ByteOrder;
 @TargetApi(16)
 public class ExtractPCMFromFile
 {
-  private int jdField_a_of_type_Int;
-  private ByteOrder jdField_a_of_type_JavaNioByteOrder = ByteOrder.nativeOrder();
+  private int a;
+  private ByteOrder b = ByteOrder.nativeOrder();
   
   public static void a(MediaFormat paramMediaFormat)
   {
@@ -35,25 +35,25 @@ public class ExtractPCMFromFile
   public static void a(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +38 -> 41
-    //   6: new 35	java/lang/StringBuilder
+    //   6: new 36	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 37	java/lang/StringBuilder:<init>	()V
     //   13: astore 6
     //   15: aload 6
-    //   17: ldc 78
-    //   19: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc 79
+    //   19: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: pop
     //   23: aload 6
     //   25: iload_1
-    //   26: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 46	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   29: pop
-    //   30: ldc 49
+    //   30: ldc 50
     //   32: iconst_2
     //   33: aload 6
-    //   35: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   41: aconst_null
     //   42: astore 8
     //   44: aconst_null
@@ -84,13 +84,13 @@ public class ExtractPCMFromFile
     //   81: goto -20 -> 61
     //   84: aload 7
     //   86: astore 6
-    //   88: new 84	java/io/BufferedOutputStream
+    //   88: new 85	java/io/BufferedOutputStream
     //   91: dup
-    //   92: new 86	java/io/FileOutputStream
+    //   92: new 87	java/io/FileOutputStream
     //   95: dup
     //   96: aload_0
-    //   97: invokespecial 87	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   100: invokespecial 90	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   97: invokespecial 88	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   100: invokespecial 91	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   103: astore_0
     //   104: lconst_0
     //   105: lstore 4
@@ -101,7 +101,7 @@ public class ExtractPCMFromFile
     //   112: ifge +18 -> 130
     //   115: aload_0
     //   116: aload 9
-    //   118: invokevirtual 94	java/io/BufferedOutputStream:write	([B)V
+    //   118: invokevirtual 95	java/io/BufferedOutputStream:write	([B)V
     //   121: lload 4
     //   123: lconst_1
     //   124: ladd
@@ -114,7 +114,7 @@ public class ExtractPCMFromFile
     //   135: istore_2
     //   136: iload_1
     //   137: i2f
-    //   138: ldc 95
+    //   138: ldc 96
     //   140: fmul
     //   141: f2i
     //   142: iconst_2
@@ -143,16 +143,16 @@ public class ExtractPCMFromFile
     //   171: if_icmpge +15 -> 186
     //   174: aload_0
     //   175: iconst_m1
-    //   176: invokevirtual 98	java/io/BufferedOutputStream:write	(I)V
+    //   176: invokevirtual 99	java/io/BufferedOutputStream:write	(I)V
     //   179: iload_1
     //   180: iconst_1
     //   181: iadd
     //   182: istore_1
     //   183: goto -14 -> 169
     //   186: aload_0
-    //   187: invokevirtual 101	java/io/BufferedOutputStream:flush	()V
+    //   187: invokevirtual 102	java/io/BufferedOutputStream:flush	()V
     //   190: aload_0
-    //   191: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   191: invokevirtual 105	java/io/BufferedOutputStream:close	()V
     //   194: return
     //   195: astore 7
     //   197: aload_0
@@ -169,28 +169,28 @@ public class ExtractPCMFromFile
     //   219: astore_0
     //   220: aload_0
     //   221: astore 6
-    //   223: ldc 49
+    //   223: ldc 50
     //   225: iconst_1
     //   226: aload 7
-    //   228: invokevirtual 105	java/lang/Exception:toString	()Ljava/lang/String;
-    //   231: invokestatic 107	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   228: invokevirtual 106	java/lang/Exception:toString	()Ljava/lang/String;
+    //   231: invokestatic 108	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   234: aload_0
     //   235: ifnull +13 -> 248
     //   238: aload_0
-    //   239: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   239: invokevirtual 105	java/io/BufferedOutputStream:close	()V
     //   242: return
     //   243: astore_0
     //   244: aload_0
-    //   245: invokevirtual 110	java/io/IOException:printStackTrace	()V
+    //   245: invokevirtual 111	java/io/IOException:printStackTrace	()V
     //   248: return
     //   249: aload 6
     //   251: ifnull +18 -> 269
     //   254: aload 6
-    //   256: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   256: invokevirtual 105	java/io/BufferedOutputStream:close	()V
     //   259: goto +10 -> 269
     //   262: astore 6
     //   264: aload 6
-    //   266: invokevirtual 110	java/io/IOException:printStackTrace	()V
+    //   266: invokevirtual 111	java/io/IOException:printStackTrace	()V
     //   269: goto +5 -> 274
     //   272: aload_0
     //   273: athrow
@@ -255,8 +255,8 @@ public class ExtractPCMFromFile
       if ((i != j) && (paramString != null))
       {
         paramString.getInteger("channel-count");
-        this.jdField_a_of_type_Int = AudioSampleRateExtract.a(paramString);
-        paramSlideItemInfo.c = this.jdField_a_of_type_Int;
+        this.a = AudioSampleRateExtract.a(paramString);
+        paramSlideItemInfo.n = this.a;
         localMediaExtractor.release();
         return;
       }
@@ -265,7 +265,7 @@ public class ExtractPCMFromFile
       paramString.append(localFile);
       QLog.w("ExtractPCMFromFile", 1, paramString.toString());
       localMediaExtractor.release();
-      paramSlideItemInfo.a = false;
+      paramSlideItemInfo.m = false;
       return;
     }
     catch (IOException paramString)
@@ -275,7 +275,7 @@ public class ExtractPCMFromFile
       localStringBuilder.append(localFile);
       QLog.w("ExtractPCMFromFile", 1, localStringBuilder.toString(), paramString);
       localMediaExtractor.release();
-      paramSlideItemInfo.a = false;
+      paramSlideItemInfo.m = false;
     }
   }
   
@@ -290,12 +290,12 @@ public class ExtractPCMFromFile
     //   9: new 117	java/io/File
     //   12: dup
     //   13: aload_1
-    //   14: getfield 189	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   14: getfield 190	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
     //   17: invokespecial 118	java/io/File:<init>	(Ljava/lang/String;)V
     //   20: astore 21
     //   22: aload 20
     //   24: aload_1
-    //   25: getfield 189	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   25: getfield 190	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
     //   28: invokevirtual 121	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
     //   31: aload 20
     //   33: invokevirtual 125	android/media/MediaExtractor:getTrackCount	()I
@@ -339,24 +339,24 @@ public class ExtractPCMFromFile
     //   112: ifnonnull +6 -> 118
     //   115: goto +763 -> 878
     //   118: aload 16
-    //   120: invokestatic 191	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:a	(Landroid/media/MediaFormat;)V
+    //   120: invokestatic 192	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:a	(Landroid/media/MediaFormat;)V
     //   123: iload_2
     //   124: ifle +15 -> 139
     //   127: aload 20
     //   129: iload_2
     //   130: i2l
-    //   131: ldc2_w 192
+    //   131: ldc2_w 193
     //   134: lmul
     //   135: iconst_2
-    //   136: invokevirtual 197	android/media/MediaExtractor:seekTo	(JI)V
+    //   136: invokevirtual 198	android/media/MediaExtractor:seekTo	(JI)V
     //   139: aload 16
-    //   141: ldc 199
-    //   143: invokevirtual 203	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
+    //   141: ldc 200
+    //   143: invokevirtual 204	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
     //   146: lstore 12
     //   148: iload_3
     //   149: i2f
     //   150: aload_1
-    //   151: getfield 207	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
+    //   151: getfield 208	com/tencent/mobileqq/activity/photo/LocalMediaInfo:mDuration	J
     //   154: l2f
     //   155: fdiv
     //   156: fstore 7
@@ -387,78 +387,78 @@ public class ExtractPCMFromFile
     //   200: lstore 12
     //   202: aload 16
     //   204: aload_1
-    //   205: getfield 189	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
-    //   208: invokestatic 210	com/tencent/biz/qqstory/utils/AudioSampleRateExtract:a	(Landroid/media/MediaFormat;Ljava/lang/String;)I
+    //   205: getfield 190	com/tencent/mobileqq/activity/photo/LocalMediaInfo:path	Ljava/lang/String;
+    //   208: invokestatic 211	com/tencent/biz/qqstory/utils/AudioSampleRateExtract:a	(Landroid/media/MediaFormat;Ljava/lang/String;)I
     //   211: istore 10
     //   213: aload_0
     //   214: aload 16
     //   216: invokestatic 153	com/tencent/biz/qqstory/utils/AudioSampleRateExtract:a	(Landroid/media/MediaFormat;)I
-    //   219: putfield 155	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:jdField_a_of_type_Int	I
+    //   219: putfield 155	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:a	I
     //   222: aload 5
     //   224: aload_0
-    //   225: getfield 155	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:jdField_a_of_type_Int	I
-    //   228: putfield 160	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:c	I
+    //   225: getfield 155	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:a	I
+    //   228: putfield 160	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:n	I
     //   231: aload 16
     //   233: ldc 131
     //   235: invokevirtual 135	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   238: invokestatic 216	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   238: invokestatic 217	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
     //   241: astore 21
     //   243: aload 21
     //   245: aload 16
     //   247: aconst_null
     //   248: aconst_null
     //   249: iconst_0
-    //   250: invokevirtual 220	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   250: invokevirtual 221	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
     //   253: aload 21
-    //   255: invokevirtual 223	android/media/MediaCodec:start	()V
-    //   258: new 225	android/media/MediaCodec$BufferInfo
+    //   255: invokevirtual 224	android/media/MediaCodec:start	()V
+    //   258: new 226	android/media/MediaCodec$BufferInfo
     //   261: dup
-    //   262: invokespecial 226	android/media/MediaCodec$BufferInfo:<init>	()V
+    //   262: invokespecial 227	android/media/MediaCodec$BufferInfo:<init>	()V
     //   265: astore 16
     //   267: aload 19
     //   269: astore_1
-    //   270: new 84	java/io/BufferedOutputStream
+    //   270: new 85	java/io/BufferedOutputStream
     //   273: dup
-    //   274: new 86	java/io/FileOutputStream
+    //   274: new 87	java/io/FileOutputStream
     //   277: dup
     //   278: aload 4
-    //   280: invokespecial 87	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   283: invokespecial 90	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   280: invokespecial 88	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   283: invokespecial 91	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   286: astore 5
     //   288: iconst_2
-    //   289: invokestatic 232	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   289: invokestatic 233	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
     //   292: aload_0
-    //   293: getfield 22	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:jdField_a_of_type_JavaNioByteOrder	Ljava/nio/ByteOrder;
-    //   296: invokevirtual 236	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   293: getfield 23	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:b	Ljava/nio/ByteOrder;
+    //   296: invokevirtual 237	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
     //   299: astore 18
     //   301: aload 18
-    //   303: invokevirtual 240	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   303: invokevirtual 241	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
     //   306: astore 19
     //   308: iconst_0
     //   309: istore_2
     //   310: aload 17
     //   312: astore 4
     //   314: aload 21
-    //   316: ldc2_w 241
-    //   319: invokevirtual 246	android/media/MediaCodec:dequeueInputBuffer	(J)I
+    //   316: ldc2_w 242
+    //   319: invokevirtual 247	android/media/MediaCodec:dequeueInputBuffer	(J)I
     //   322: istore 9
     //   324: iload 9
     //   326: iflt +76 -> 402
     //   329: aload 21
-    //   331: invokevirtual 250	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
+    //   331: invokevirtual 251	android/media/MediaCodec:getInputBuffers	()[Ljava/nio/ByteBuffer;
     //   334: iload 9
     //   336: aaload
     //   337: astore_1
     //   338: aload_1
-    //   339: invokevirtual 254	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   339: invokevirtual 255	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   342: pop
     //   343: aload 20
     //   345: aload_1
     //   346: iconst_0
-    //   347: invokevirtual 258	android/media/MediaExtractor:readSampleData	(Ljava/nio/ByteBuffer;I)I
+    //   347: invokevirtual 259	android/media/MediaExtractor:readSampleData	(Ljava/nio/ByteBuffer;I)I
     //   350: istore_3
     //   351: aload 20
-    //   353: invokevirtual 262	android/media/MediaExtractor:getSampleTime	()J
+    //   353: invokevirtual 263	android/media/MediaExtractor:getSampleTime	()J
     //   356: lstore 14
     //   358: iload_3
     //   359: iflt +622 -> 981
@@ -477,87 +477,87 @@ public class ExtractPCMFromFile
     //   385: iload_3
     //   386: lload 14
     //   388: iload 8
-    //   390: invokevirtual 266	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   390: invokevirtual 267	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
     //   393: aload 20
-    //   395: invokevirtual 269	android/media/MediaExtractor:advance	()Z
+    //   395: invokevirtual 270	android/media/MediaExtractor:advance	()Z
     //   398: pop
     //   399: goto +50 -> 449
-    //   402: invokestatic 76	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   402: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   405: ifeq +44 -> 449
-    //   408: new 35	java/lang/StringBuilder
+    //   408: new 36	java/lang/StringBuilder
     //   411: dup
-    //   412: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   412: invokespecial 37	java/lang/StringBuilder:<init>	()V
     //   415: astore_1
     //   416: aload_1
-    //   417: ldc_w 271
-    //   420: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   417: ldc_w 272
+    //   420: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   423: pop
     //   424: aload_1
     //   425: iload 9
-    //   427: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   427: invokevirtual 46	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   430: pop
     //   431: aload_1
-    //   432: ldc_w 273
-    //   435: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   432: ldc_w 274
+    //   435: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   438: pop
-    //   439: ldc 49
+    //   439: ldc 50
     //   441: iconst_2
     //   442: aload_1
-    //   443: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   446: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   443: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   446: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   449: aload 21
     //   451: aload 16
-    //   453: ldc2_w 241
-    //   456: invokevirtual 277	android/media/MediaCodec:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   453: ldc2_w 242
+    //   456: invokevirtual 278	android/media/MediaCodec:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
     //   459: istore 11
     //   461: iload 11
     //   463: iflt +238 -> 701
     //   466: aload 16
-    //   468: getfield 280	android/media/MediaCodec$BufferInfo:size	I
+    //   468: getfield 281	android/media/MediaCodec$BufferInfo:size	I
     //   471: ifle +192 -> 663
     //   474: aload 4
     //   476: ifnonnull +15 -> 491
     //   479: aload 16
-    //   481: getfield 280	android/media/MediaCodec$BufferInfo:size	I
-    //   484: invokestatic 232	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   481: getfield 281	android/media/MediaCodec$BufferInfo:size	I
+    //   484: invokestatic 233	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
     //   487: astore_1
     //   488: goto +28 -> 516
     //   491: aload 4
     //   493: astore_1
     //   494: aload 4
-    //   496: invokevirtual 283	java/nio/ByteBuffer:capacity	()I
+    //   496: invokevirtual 284	java/nio/ByteBuffer:capacity	()I
     //   499: aload 16
-    //   501: getfield 280	android/media/MediaCodec$BufferInfo:size	I
+    //   501: getfield 281	android/media/MediaCodec$BufferInfo:size	I
     //   504: if_icmpge +12 -> 516
     //   507: aload 16
-    //   509: getfield 280	android/media/MediaCodec$BufferInfo:size	I
-    //   512: invokestatic 232	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   509: getfield 281	android/media/MediaCodec$BufferInfo:size	I
+    //   512: invokestatic 233	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
     //   515: astore_1
     //   516: aload_1
-    //   517: invokevirtual 286	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   517: invokevirtual 287	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
     //   520: pop
     //   521: aload 21
-    //   523: invokevirtual 289	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
+    //   523: invokevirtual 290	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
     //   526: iload 11
     //   528: aaload
     //   529: aload_1
-    //   530: invokevirtual 293	java/nio/ByteBuffer:array	()[B
+    //   530: invokevirtual 294	java/nio/ByteBuffer:array	()[B
     //   533: iconst_0
     //   534: aload 16
-    //   536: getfield 280	android/media/MediaCodec$BufferInfo:size	I
-    //   539: invokevirtual 297	java/nio/ByteBuffer:get	([BII)Ljava/nio/ByteBuffer;
+    //   536: getfield 281	android/media/MediaCodec$BufferInfo:size	I
+    //   539: invokevirtual 298	java/nio/ByteBuffer:get	([BII)Ljava/nio/ByteBuffer;
     //   542: pop
     //   543: aload_1
     //   544: aload_0
-    //   545: getfield 22	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:jdField_a_of_type_JavaNioByteOrder	Ljava/nio/ByteOrder;
-    //   548: invokevirtual 236	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   551: invokevirtual 240	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   545: getfield 23	com/tencent/biz/qqstory/utils/ExtractPCMFromFile:b	Ljava/nio/ByteOrder;
+    //   548: invokevirtual 237	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   551: invokevirtual 241	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
     //   554: astore 4
     //   556: iconst_0
     //   557: istore_3
     //   558: iload_3
     //   559: aload 16
-    //   561: getfield 280	android/media/MediaCodec$BufferInfo:size	I
+    //   561: getfield 281	android/media/MediaCodec$BufferInfo:size	I
     //   564: if_icmpge +83 -> 647
     //   567: iconst_0
     //   568: istore 8
@@ -568,7 +568,7 @@ public class ExtractPCMFromFile
     //   577: if_icmpge +22 -> 599
     //   580: iload 9
     //   582: aload 4
-    //   584: invokevirtual 302	java/nio/ShortBuffer:get	()S
+    //   584: invokevirtual 303	java/nio/ShortBuffer:get	()S
     //   587: iadd
     //   588: istore 9
     //   590: iload 8
@@ -581,20 +581,20 @@ public class ExtractPCMFromFile
     //   603: idiv
     //   604: istore 8
     //   606: aload 19
-    //   608: invokevirtual 303	java/nio/ShortBuffer:rewind	()Ljava/nio/Buffer;
+    //   608: invokevirtual 304	java/nio/ShortBuffer:rewind	()Ljava/nio/Buffer;
     //   611: pop
     //   612: aload 19
     //   614: iload 8
     //   616: i2s
-    //   617: invokevirtual 307	java/nio/ShortBuffer:put	(S)Ljava/nio/ShortBuffer;
+    //   617: invokevirtual 308	java/nio/ShortBuffer:put	(S)Ljava/nio/ShortBuffer;
     //   620: pop
     //   621: aload 19
-    //   623: invokevirtual 303	java/nio/ShortBuffer:rewind	()Ljava/nio/Buffer;
+    //   623: invokevirtual 304	java/nio/ShortBuffer:rewind	()Ljava/nio/Buffer;
     //   626: pop
     //   627: aload 5
     //   629: aload 18
-    //   631: invokevirtual 293	java/nio/ByteBuffer:array	()[B
-    //   634: invokevirtual 94	java/io/BufferedOutputStream:write	([B)V
+    //   631: invokevirtual 294	java/nio/ByteBuffer:array	()[B
+    //   634: invokevirtual 95	java/io/BufferedOutputStream:write	([B)V
     //   637: iload_3
     //   638: iload 10
     //   640: iconst_2
@@ -605,39 +605,39 @@ public class ExtractPCMFromFile
     //   647: aload_1
     //   648: astore 4
     //   650: aload 16
-    //   652: getfield 310	android/media/MediaCodec$BufferInfo:flags	I
+    //   652: getfield 311	android/media/MediaCodec$BufferInfo:flags	I
     //   655: iconst_4
     //   656: iand
     //   657: ifeq +21 -> 678
     //   660: goto +334 -> 994
-    //   663: ldc 49
+    //   663: ldc 50
     //   665: iconst_2
-    //   666: ldc_w 312
-    //   669: invokestatic 107	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   666: ldc_w 313
+    //   669: invokestatic 108	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   672: aload 4
     //   674: astore_1
     //   675: goto +319 -> 994
     //   678: aload 21
-    //   680: invokevirtual 289	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
+    //   680: invokevirtual 290	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
     //   683: iload 11
     //   685: aaload
-    //   686: invokevirtual 254	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   686: invokevirtual 255	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   689: pop
     //   690: aload 21
     //   692: iload 11
     //   694: iconst_0
-    //   695: invokevirtual 316	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
+    //   695: invokevirtual 317	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
     //   698: goto +3 -> 701
     //   701: iload_2
     //   702: ifeq +25 -> 727
     //   705: aload 20
     //   707: invokevirtual 163	android/media/MediaExtractor:release	()V
     //   710: aload 21
-    //   712: invokevirtual 319	android/media/MediaCodec:stop	()V
+    //   712: invokevirtual 320	android/media/MediaCodec:stop	()V
     //   715: aload 21
-    //   717: invokevirtual 320	android/media/MediaCodec:release	()V
+    //   717: invokevirtual 321	android/media/MediaCodec:release	()V
     //   720: aload 5
-    //   722: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   722: invokevirtual 105	java/io/BufferedOutputStream:close	()V
     //   725: iconst_1
     //   726: ireturn
     //   727: goto -413 -> 314
@@ -660,111 +660,111 @@ public class ExtractPCMFromFile
     //   760: astore 4
     //   762: aload 4
     //   764: astore_1
-    //   765: ldc 49
+    //   765: ldc 50
     //   767: iconst_2
     //   768: aload 5
-    //   770: invokevirtual 321	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   773: invokestatic 107	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   770: invokevirtual 322	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   773: invokestatic 108	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   776: aload 20
     //   778: invokevirtual 163	android/media/MediaExtractor:release	()V
     //   781: aload 21
-    //   783: invokevirtual 319	android/media/MediaCodec:stop	()V
+    //   783: invokevirtual 320	android/media/MediaCodec:stop	()V
     //   786: aload 21
-    //   788: invokevirtual 320	android/media/MediaCodec:release	()V
+    //   788: invokevirtual 321	android/media/MediaCodec:release	()V
     //   791: aload 4
     //   793: ifnull +30 -> 823
     //   796: aload 4
-    //   798: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   798: invokevirtual 105	java/io/BufferedOutputStream:close	()V
     //   801: goto +22 -> 823
     //   804: astore_1
-    //   805: ldc 49
+    //   805: ldc 50
     //   807: iconst_1
-    //   808: ldc_w 323
+    //   808: ldc_w 324
     //   811: aload_1
-    //   812: invokestatic 325	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   812: invokestatic 326	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   815: goto +8 -> 823
     //   818: astore_1
     //   819: aload_1
-    //   820: invokevirtual 110	java/io/IOException:printStackTrace	()V
+    //   820: invokevirtual 111	java/io/IOException:printStackTrace	()V
     //   823: iconst_0
     //   824: ireturn
     //   825: aload 20
     //   827: invokevirtual 163	android/media/MediaExtractor:release	()V
     //   830: aload 21
-    //   832: invokevirtual 319	android/media/MediaCodec:stop	()V
+    //   832: invokevirtual 320	android/media/MediaCodec:stop	()V
     //   835: aload 21
-    //   837: invokevirtual 320	android/media/MediaCodec:release	()V
+    //   837: invokevirtual 321	android/media/MediaCodec:release	()V
     //   840: aload 5
     //   842: ifnull +34 -> 876
     //   845: aload 5
-    //   847: invokevirtual 104	java/io/BufferedOutputStream:close	()V
+    //   847: invokevirtual 105	java/io/BufferedOutputStream:close	()V
     //   850: goto +26 -> 876
     //   853: astore 4
-    //   855: ldc 49
+    //   855: ldc 50
     //   857: iconst_1
-    //   858: ldc_w 323
+    //   858: ldc_w 324
     //   861: aload 4
-    //   863: invokestatic 325	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   863: invokestatic 326	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   866: goto +10 -> 876
     //   869: astore 4
     //   871: aload 4
-    //   873: invokevirtual 110	java/io/IOException:printStackTrace	()V
+    //   873: invokevirtual 111	java/io/IOException:printStackTrace	()V
     //   876: aload_1
     //   877: athrow
-    //   878: new 35	java/lang/StringBuilder
+    //   878: new 36	java/lang/StringBuilder
     //   881: dup
-    //   882: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   882: invokespecial 37	java/lang/StringBuilder:<init>	()V
     //   885: astore_1
     //   886: aload_1
     //   887: ldc 165
-    //   889: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   889: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   892: pop
     //   893: aload_1
     //   894: aload 21
     //   896: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   899: pop
-    //   900: ldc 49
+    //   900: ldc 50
     //   902: iconst_1
     //   903: aload_1
-    //   904: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   904: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   907: invokestatic 171	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   910: aload 20
     //   912: invokevirtual 163	android/media/MediaExtractor:release	()V
     //   915: aload 5
     //   917: iconst_0
-    //   918: putfield 174	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:a	Z
+    //   918: putfield 175	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:m	Z
     //   921: iconst_0
     //   922: ireturn
     //   923: astore_1
-    //   924: new 35	java/lang/StringBuilder
+    //   924: new 36	java/lang/StringBuilder
     //   927: dup
-    //   928: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   928: invokespecial 37	java/lang/StringBuilder:<init>	()V
     //   931: astore 4
     //   933: aload 4
-    //   935: ldc_w 327
-    //   938: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   935: ldc_w 328
+    //   938: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   941: pop
     //   942: aload 4
     //   944: aload 21
     //   946: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   949: pop
-    //   950: ldc 49
+    //   950: ldc 50
     //   952: iconst_1
     //   953: aload 4
-    //   955: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   955: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   958: aload_1
-    //   959: invokestatic 178	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   959: invokestatic 179	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   962: aload 20
     //   964: invokevirtual 163	android/media/MediaExtractor:release	()V
     //   967: aload 5
     //   969: iconst_0
-    //   970: putfield 174	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:a	Z
+    //   970: putfield 175	com/tencent/biz/qqstory/takevideo/slideshow/SlideItemInfo:m	Z
     //   973: iconst_0
     //   974: ireturn
     //   975: iconst_0
     //   976: istore 8
     //   978: goto -598 -> 380
-    //   981: ldc2_w 328
+    //   981: ldc2_w 329
     //   984: lstore 14
     //   986: iconst_0
     //   987: istore_3
@@ -848,7 +848,7 @@ public class ExtractPCMFromFile
   {
     try
     {
-      paramSlideItemInfo.a = true;
+      paramSlideItemInfo.m = true;
       b(paramString, paramSlideItemInfo);
       return;
     }
@@ -864,7 +864,7 @@ public class ExtractPCMFromFile
   {
     try
     {
-      paramSlideItemInfo.a = true;
+      paramSlideItemInfo.m = true;
       boolean bool = b(paramLocalMediaInfo, paramInt1, paramInt2, paramString, paramSlideItemInfo);
       return bool;
     }

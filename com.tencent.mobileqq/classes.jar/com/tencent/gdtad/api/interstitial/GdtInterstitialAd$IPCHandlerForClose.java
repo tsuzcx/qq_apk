@@ -24,7 +24,7 @@ final class GdtInterstitialAd$IPCHandlerForClose
         localObject = GdtInterstitialManager.a().a(str);
         if ((localObject != null) && (((WeakReference)localObject).get() != null))
         {
-          GdtInterstitialNotifyReg.c(BaseApplication.getContext(), ((GdtInterstitialFragment)((WeakReference)localObject).get()).a(), ((GdtInterstitialFragment)((WeakReference)localObject).get()).a());
+          GdtInterstitialNotifyReg.c(BaseApplication.getContext(), ((GdtInterstitialFragment)((WeakReference)localObject).get()).d(), ((GdtInterstitialFragment)((WeakReference)localObject).get()).e());
           localResult.success = true;
           AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialAd.IPCHandlerForClose.1(this, str), 0, 2000L);
         }
@@ -45,7 +45,7 @@ final class GdtInterstitialAd$IPCHandlerForClose
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialAd.IPCHandlerForClose
  * JD-Core Version:    0.7.0.1
  */

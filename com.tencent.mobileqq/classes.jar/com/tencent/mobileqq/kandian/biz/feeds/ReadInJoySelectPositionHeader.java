@@ -10,10 +10,10 @@ import android.widget.TextView;
 public class ReadInJoySelectPositionHeader
   extends RelativeLayout
 {
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ReadInJoySelectPositionHeader.ISelectCityListener jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader$ISelectCityListener;
+  private TextView a;
   private TextView b;
+  private RelativeLayout c;
+  private ReadInJoySelectPositionHeader.ISelectCityListener d;
   
   public ReadInJoySelectPositionHeader(Context paramContext)
   {
@@ -35,11 +35,11 @@ public class ReadInJoySelectPositionHeader
   
   private void a(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131560277, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377176));
-    this.b = ((TextView)localView.findViewById(2131367766));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131367767));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ReadInJoySelectPositionHeader.1(this, paramContext));
+    View localView = LayoutInflater.from(paramContext).inflate(2131626324, this, true);
+    this.a = ((TextView)localView.findViewById(2131445554));
+    this.b = ((TextView)localView.findViewById(2131434333));
+    this.c = ((RelativeLayout)localView.findViewById(2131434334));
+    this.c.setOnClickListener(new ReadInJoySelectPositionHeader.1(this, paramContext));
   }
   
   public void setGPSCity(String paramString)
@@ -49,17 +49,17 @@ public class ReadInJoySelectPositionHeader
   
   public void setSelectCityListener(ReadInJoySelectPositionHeader.ISelectCityListener paramISelectCityListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader$ISelectCityListener = paramISelectCityListener;
+    this.d = paramISelectCityListener;
   }
   
   public void setSelectedCity(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.a.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ReadInJoySelectPositionHeader
  * JD-Core Version:    0.7.0.1
  */

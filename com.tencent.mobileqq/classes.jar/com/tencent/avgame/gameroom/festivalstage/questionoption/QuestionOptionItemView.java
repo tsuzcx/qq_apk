@@ -22,16 +22,16 @@ import com.tencent.qphone.base.util.QLog;
 public class QuestionOptionItemView
   extends FrameLayout
 {
-  private static String jdField_a_of_type_JavaLangString = "avgame_click_btn_normal@2x.png";
+  private static String a = "avgame_click_btn_normal@2x.png";
   private static String b = "avgame_click_btn_select@2x.png";
   private static String c = "avgame_click_btn_succ@2x.png";
   private static String d = "avgame_click_btn_fail@2x.png";
   private static String e = "avgame_click_btn_press@2x.png";
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private OverlappingImgLayout jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionOverlappingImgLayout;
-  private QuestionOptionItemConfig jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private TextView f;
+  private OverlappingImgLayout g;
+  private FrameLayout h;
+  private QuestionOptionItemConfig i = null;
+  private boolean j = false;
   
   public QuestionOptionItemView(Context paramContext)
   {
@@ -43,37 +43,37 @@ public class QuestionOptionItemView
     super(paramContext, paramAttributeSet);
   }
   
-  private void a(Bitmap paramBitmap)
+  private void setBackground(Bitmap paramBitmap)
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackground(new BitmapDrawable(paramBitmap));
+      this.h.setBackground(new BitmapDrawable(paramBitmap));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+    this.h.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372196));
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig;
+    this.f = ((TextView)findViewById(2131439683));
+    Object localObject = this.i;
     if (localObject == null)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig = new QuestionOptionItemConfig(14.0F, Color.parseColor("#9A7030"), Color.parseColor("#FFF5E6"), 14, Color.parseColor("#FFFFFF"), 14, Color.parseColor("#FFFFFF"));
+      this.i = new QuestionOptionItemConfig(14.0F, Color.parseColor("#9A7030"), Color.parseColor("#FFF5E6"), 14, Color.parseColor("#FFFFFF"), 14, Color.parseColor("#FFFFFF"));
     }
     else
     {
-      if ((!this.jdField_a_of_type_Boolean) && (((QuestionOptionItemConfig)localObject).a() > 0.0F)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a());
+      if ((!this.j) && (((QuestionOptionItemConfig)localObject).a() > 0.0F)) {
+        this.f.setTextSize(this.i.a());
       }
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a() != 0)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a());
+      if ((!this.j) && (this.i.b() != 0)) {
+        this.f.setTextColor(this.i.b());
       }
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionOverlappingImgLayout = ((OverlappingImgLayout)findViewById(2131372197));
-    localObject = (UserInfoHandler)((AppInterface)IGameEngine.a()).getBusinessHandler(HandlerFactory.b);
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionOverlappingImgLayout.a(14, 14, (UserInfoHandler)localObject);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131372195));
+    this.g = ((OverlappingImgLayout)findViewById(2131439684));
+    localObject = (UserInfoHandler)((AppInterface)IGameEngine.K()).getBusinessHandler(HandlerFactory.b);
+    this.g.a(14, 14, (UserInfoHandler)localObject);
+    this.h = ((FrameLayout)findViewById(2131439682));
   }
   
   public void a(QuestionOptionInfo paramQuestionOptionInfo)
@@ -81,10 +81,10 @@ public class QuestionOptionItemView
     setSelectBg(false);
     if (paramQuestionOptionInfo == null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.f.setText("");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramQuestionOptionInfo.a());
+    this.f.setText(paramQuestionOptionInfo.a());
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -93,65 +93,65 @@ public class QuestionOptionItemView
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addFaceAndResult getSuccTextSize=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.d());
+      localStringBuilder.append(this.i.e());
       localStringBuilder.append(" getSuccTextColor=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.d());
+      localStringBuilder.append(this.i.e());
       localStringBuilder.append(" getFailTextSize=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.e());
+      localStringBuilder.append(this.i.f());
       localStringBuilder.append(" getFailTextColor=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.f());
+      localStringBuilder.append(this.i.g());
       QLog.d("QuestionOptionItemView", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionOverlappingImgLayout.a(paramString);
+    this.j = paramBoolean2;
+    this.g.a(paramString);
     if (paramBoolean1)
     {
-      paramString = AVGameUtil.a(c);
+      paramString = AVGameUtil.c(c);
       if (paramString != null) {
-        a(paramString);
+        setBackground(paramString);
       } else {
-        setBackgroundColor(getResources().getColor(2131165370));
+        setBackgroundColor(getResources().getColor(2131165643));
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.c());
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.d());
+      this.f.setTextSize(this.i.d());
+      this.f.setTextColor(this.i.e());
       return;
     }
-    paramString = AVGameUtil.a(d);
+    paramString = AVGameUtil.c(d);
     if (paramString != null) {
-      a(paramString);
+      setBackground(paramString);
     } else {
-      setBackgroundColor(getResources().getColor(2131165694));
+      setBackgroundColor(getResources().getColor(2131166157));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.e());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.f());
+    this.f.setTextSize(this.i.f());
+    this.f.setTextColor(this.i.g());
   }
   
   public void b()
   {
     setSelectBg(false);
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionOverlappingImgLayout.a();
+    this.g.a();
   }
   
   public void setBackground(Drawable paramDrawable)
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackground(paramDrawable);
+      this.h.setBackground(paramDrawable);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(paramDrawable);
+    this.h.setBackgroundDrawable(paramDrawable);
   }
   
   public void setConfig(QuestionOptionItemConfig paramQuestionOptionItemConfig)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig = paramQuestionOptionItemConfig;
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a() > 0.0F)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a());
+    this.i = paramQuestionOptionItemConfig;
+    if ((!this.j) && (this.i.a() > 0.0F)) {
+      this.f.setTextSize(this.i.a());
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a() != 0)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a());
+    if ((!this.j) && (this.i.b() != 0)) {
+      this.f.setTextColor(this.i.b());
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.j = false;
   }
   
   public void setSelectBg(boolean paramBoolean)
@@ -159,27 +159,27 @@ public class QuestionOptionItemView
     Object localObject;
     if (paramBoolean)
     {
-      localObject = AVGameUtil.a(b);
+      localObject = AVGameUtil.c(b);
       if (localObject != null) {
-        a((Bitmap)localObject);
+        setBackground((Bitmap)localObject);
       } else {
-        setBackgroundColor(getResources().getColor(2131165358));
+        setBackgroundColor(getResources().getColor(2131165604));
       }
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.b() != 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.b());
+      if (this.i.c() != 0) {
+        this.f.setTextColor(this.i.c());
       }
     }
     else
     {
-      localObject = AVGameUtil.a(jdField_a_of_type_JavaLangString);
+      localObject = AVGameUtil.c(a);
       if (localObject != null) {
         localObject = new BitmapDrawable((Bitmap)localObject);
       } else {
-        localObject = new ColorDrawable(getContext().getResources().getColor(2131167394));
+        localObject = new ColorDrawable(getContext().getResources().getColor(2131168464));
       }
       setSelector((Drawable)localObject);
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a() != 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionItemConfig.a());
+      if (this.i.b() != 0) {
+        this.f.setTextColor(this.i.b());
       }
     }
   }
@@ -187,7 +187,7 @@ public class QuestionOptionItemView
   public void setSelector(Drawable paramDrawable)
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    Object localObject = AVGameUtil.a(e);
+    Object localObject = AVGameUtil.c(e);
     if (localObject != null)
     {
       localObject = new BitmapDrawable((Bitmap)localObject);

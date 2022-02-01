@@ -13,8 +13,8 @@ class NearbyHybridFragment$4
   
   public void run()
   {
-    boolean bool = WebSoService.a().a(this.this$0.c);
-    int i = this.this$0.b();
+    boolean bool = WebSoService.a().c(this.this$0.T);
+    int i = this.this$0.q();
     StringBuilder localStringBuilder1;
     if (QLog.isColorLevel())
     {
@@ -24,21 +24,21 @@ class NearbyHybridFragment$4
       localStringBuilder1.append(", initTab=");
       localStringBuilder1.append(i);
       localStringBuilder1.append(", url=");
-      localStringBuilder1.append(this.this$0.c);
+      localStringBuilder1.append(this.this$0.T);
       QLog.d("nearby.NearbyHybridFragment.webloading", 2, localStringBuilder1.toString());
     }
     if (bool) {
-      this.this$0.a.removeMessages(3);
+      this.this$0.l.removeMessages(3);
     }
     if (i != -1) {
       try
       {
-        WebSoUtils.a(Uri.parse(this.this$0.c));
+        WebSoUtils.f(Uri.parse(this.this$0.T));
         if (QLog.isColorLevel())
         {
           localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("cleanWebSoData: hasCacheData=");
-          localStringBuilder1.append(WebSoService.a().a(this.this$0.c));
+          localStringBuilder1.append(WebSoService.a().c(this.this$0.T));
           QLog.d("nearby.NearbyHybridFragment.webloading", 2, localStringBuilder1.toString());
         }
       }
@@ -53,12 +53,12 @@ class NearbyHybridFragment$4
         }
       }
     }
-    WebSoService.a().a(this.this$0.c, null);
+    WebSoService.a().b(this.this$0.T, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.4
  * JD-Core Version:    0.7.0.1
  */

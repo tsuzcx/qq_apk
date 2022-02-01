@@ -20,7 +20,7 @@ final class FeedManager$1
     ((CommentManager)localObject).a(new ArrayList(0), this.a, false, true);
     ((CommentManager)localObject).a(new ArrayList(0), this.a, true, true);
     localObject = (FeedManager)SuperManager.a(11);
-    FeedItem localFeedItem = ((FeedManager)localObject).a(this.a);
+    FeedItem localFeedItem = ((FeedManager)localObject).b(this.a);
     if (localFeedItem != null)
     {
       localFeedItem.reset();

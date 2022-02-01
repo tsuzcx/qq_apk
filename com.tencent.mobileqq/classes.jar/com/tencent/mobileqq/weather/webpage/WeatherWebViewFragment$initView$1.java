@@ -19,15 +19,15 @@ final class WeatherWebViewFragment$initView$1
       paramView.append("showPreview scrollChangedListener  y: ");
       paramView.append(paramInt2);
       paramView.append(", arkLoadState：");
-      paramView.append(WeatherWebViewFragment.a(this.a));
+      paramView.append(WeatherWebViewFragment.b(this.a));
       QLog.d("WeatherWebViewFragment", 2, paramView.toString());
     }
-    WeatherWebViewFragment.a(this.a).scrollTo(0, paramInt2);
+    WeatherWebViewFragment.c(this.a).scrollTo(0, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebViewFragment.initView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ class IntimateContentItemCommonTroopView$1
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilList != null) && (!this.a.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((this.a.i != null) && (!this.a.i.isEmpty()))
     {
-      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a());
+      TroopWithCommonFriendsFragment.a(this.a.h.k());
       TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
       ReportController.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
     }
@@ -26,7 +26,7 @@ class IntimateContentItemCommonTroopView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemCommonTroopView.1
  * JD-Core Version:    0.7.0.1
  */

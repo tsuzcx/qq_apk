@@ -13,13 +13,13 @@ class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null)
+    if (this.this$0.z != null)
     {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a("Small_RequestVideoTimeOutRunnable");
-      TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-      TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
-      TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1030, 2131695880);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().b(this.this$0.jdField_a_of_type_Long, true, true);
+      this.this$0.z.f("Small_RequestVideoTimeOutRunnable");
+      TipsUtil.b(this.this$0.y, 1036);
+      TipsUtil.b(this.this$0.y, 1037);
+      TipsUtil.a(this.this$0.y, 1030, 2131893640);
+      this.this$0.z.k().b(this.this$0.f, true, true);
       this.this$0.a(true, false, true);
       if (this.this$0.d == 2) {
         ReportController.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
@@ -33,7 +33,7 @@ class SmallScreenMultiVideoControlUI$RequestVideoTimeOutRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.RequestVideoTimeOutRunnable
  * JD-Core Version:    0.7.0.1
  */

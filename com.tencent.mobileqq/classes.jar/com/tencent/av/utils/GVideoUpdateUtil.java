@@ -28,7 +28,7 @@ public class GVideoUpdateUtil
   
   static void a(Context paramContext, String paramString1, String paramString2, String paramString3, GVideoUpdateUtil.OnGVideoUpdateListener paramOnGVideoUpdateListener)
   {
-    DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131695611, 2131695613, new GVideoUpdateUtil.2(paramContext), new GVideoUpdateUtil.3(paramOnGVideoUpdateListener, paramContext, paramString3)).show();
+    DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131893370, 2131893372, new GVideoUpdateUtil.2(paramContext), new GVideoUpdateUtil.3(paramOnGVideoUpdateListener, paramContext, paramString3)).show();
   }
 }
 

@@ -28,20 +28,20 @@ class PhotoListCustomizationAECamera$3
     paramRetCode = new MediaMetadataRetriever();
     try
     {
-      paramRetCode.setDataSource(this.jdField_a_of_type_JavaLangString);
+      paramRetCode.setDataSource(this.a);
       localLocalMediaInfo = new LocalMediaInfo();
-      localLocalMediaInfo.path = this.jdField_a_of_type_JavaLangString;
+      localLocalMediaInfo.path = this.a;
       localLocalMediaInfo.mDuration = Integer.parseInt(paramRetCode.extractMetadata(9));
       localLocalMediaInfo.mediaWidth = Integer.parseInt(paramRetCode.extractMetadata(18));
       localLocalMediaInfo.mediaHeight = Integer.parseInt(paramRetCode.extractMetadata(19));
       localLocalMediaInfo.rotation = Integer.parseInt(paramRetCode.extractMetadata(24));
       localLocalMediaInfo.mMediaType = 1;
       localLocalMediaInfo.mMimeType = "video/mp4";
-      localLocalMediaInfo.latitude = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.latitude;
-      localLocalMediaInfo.longitude = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.longitude;
-      localLocalMediaInfo.addedDate = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.addedDate;
+      localLocalMediaInfo.latitude = this.b.latitude;
+      localLocalMediaInfo.longitude = this.b.longitude;
+      localLocalMediaInfo.addedDate = this.b.addedDate;
       paramRetCode.release();
-      Bitmap localBitmap = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
+      Bitmap localBitmap = BitmapManager.a(this.b.path);
       localCopyOnWriteArrayList = new CopyOnWriteArrayList();
       if ((localBitmap == null) || (localBitmap.isRecycled())) {
         break label309;
@@ -78,7 +78,7 @@ class PhotoListCustomizationAECamera$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.PhotoListCustomizationAECamera.3
  * JD-Core Version:    0.7.0.1
  */

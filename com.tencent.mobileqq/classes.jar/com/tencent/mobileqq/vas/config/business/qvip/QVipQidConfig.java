@@ -7,18 +7,10 @@ import org.json.JSONObject;
 
 public class QVipQidConfig
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  
-  public QVipQidConfig()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/qid/mine?_wv=16777218&_proxy=1";
-    this.jdField_b_of_type_JavaLangString = "https://club.vip.qq.com/qid/card?wv=16781315&_proxy=1";
-  }
+  public boolean a = false;
+  public boolean b = true;
+  public String c = "https://club.vip.qq.com/qid/mine?_wv=16777218&_proxy=1";
+  public String d = "https://club.vip.qq.com/qid/card?wv=16781315&_proxy=1";
   
   public static QVipQidConfig a(String paramString)
   {
@@ -36,9 +28,9 @@ public class QVipQidConfig
       paramString = new JSONObject(paramString);
       try
       {
-        localQVipQidConfig.jdField_a_of_type_Boolean = paramString.optBoolean("isEnable", false);
-        localQVipQidConfig.jdField_a_of_type_JavaLangString = paramString.optString("homePageUrl", "https://club.vip.qq.com/qid/mine?_wv=16777218&_proxy=1");
-        localQVipQidConfig.jdField_b_of_type_JavaLangString = paramString.optString("qidProfileUrl", "https://club.vip.qq.com/qid/card?wv=16781315&_proxy=1");
+        localQVipQidConfig.a = paramString.optBoolean("isEnable", false);
+        localQVipQidConfig.c = paramString.optString("homePageUrl", "https://club.vip.qq.com/qid/mine?_wv=16777218&_proxy=1");
+        localQVipQidConfig.d = paramString.optString("qidProfileUrl", "https://club.vip.qq.com/qid/card?wv=16781315&_proxy=1");
         localObject = paramString;
       }
       catch (JSONException localJSONException1) {}
@@ -58,7 +50,7 @@ public class QVipQidConfig
     }
     try
     {
-      localQVipQidConfig.jdField_b_of_type_Boolean = ((JSONObject)localObject).optBoolean("qidProfileEnable", true);
+      localQVipQidConfig.b = ((JSONObject)localObject).optBoolean("qidProfileEnable", true);
       return localQVipQidConfig;
     }
     catch (Exception paramString)
@@ -70,7 +62,7 @@ public class QVipQidConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipQidConfig
  * JD-Core Version:    0.7.0.1
  */

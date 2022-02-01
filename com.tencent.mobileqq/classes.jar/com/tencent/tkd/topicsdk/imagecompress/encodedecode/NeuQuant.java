@@ -5,277 +5,204 @@ import com.tencent.tkd.topicsdk.framework.TLog;
 class NeuQuant
 {
   protected int a;
-  protected byte[] a;
-  protected int[] a;
-  protected int[][] a;
-  protected int b;
-  protected int[] b;
+  protected byte[] b;
   protected int c;
-  protected int[] c;
-  protected int[] d = new int[32];
+  protected int d;
+  protected int[][] e;
+  protected int[] f = new int[256];
+  protected int[] g = new int[256];
+  protected int[] h = new int[256];
+  protected int[] i = new int[32];
   
   public NeuQuant(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[256];
-    this.jdField_b_of_type_ArrayOfInt = new int[256];
-    this.jdField_c_of_type_ArrayOfInt = new int[256];
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Array2dOfInt = new int[256][];
+    this.b = paramArrayOfByte;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = new int[256][];
     paramInt1 = 0;
     while (paramInt1 < 256)
     {
-      paramArrayOfByte = this.jdField_a_of_type_Array2dOfInt;
+      paramArrayOfByte = this.e;
       paramArrayOfByte[paramInt1] = new int[4];
       paramArrayOfByte = paramArrayOfByte[paramInt1];
       paramInt2 = (paramInt1 << 12) / 256;
       paramArrayOfByte[2] = paramInt2;
       paramArrayOfByte[1] = paramInt2;
       paramArrayOfByte[0] = paramInt2;
-      this.jdField_c_of_type_ArrayOfInt[paramInt1] = 256;
-      this.jdField_b_of_type_ArrayOfInt[paramInt1] = 0;
+      this.h[paramInt1] = 256;
+      this.g[paramInt1] = 0;
       paramInt1 += 1;
     }
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i2 = this.jdField_a_of_type_ArrayOfInt[paramInt2];
-    int i = i2 - 1;
-    int j = -1;
-    int k = 1000;
+    int i3 = this.f[paramInt2];
+    int j = i3 - 1;
+    int k = -1;
+    int m = 1000;
     for (;;)
     {
-      if ((i2 >= 256) && (i < 0)) {
-        return j;
+      if ((i3 >= 256) && (j < 0)) {
+        return k;
       }
-      int m = i2;
-      int i1 = j;
-      int n = k;
+      int n = i3;
+      int i2 = k;
+      int i1 = m;
       int[] arrayOfInt;
-      int i3;
-      if (i2 < 256)
+      int i4;
+      if (i3 < 256)
       {
-        arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i2];
-        n = arrayOfInt[1] - paramInt2;
-        if (n >= k)
+        arrayOfInt = this.e[i3];
+        i1 = arrayOfInt[1] - paramInt2;
+        if (i1 >= m)
         {
-          m = 256;
-          i1 = j;
-          n = k;
+          n = 256;
+          i2 = k;
+          i1 = m;
         }
         else
         {
-          i2 += 1;
-          m = n;
-          if (n < 0) {
-            m = -n;
-          }
-          i1 = arrayOfInt[0] - paramInt1;
+          i3 += 1;
           n = i1;
           if (i1 < 0) {
             n = -i1;
           }
-          i3 = m + n;
-          m = i2;
-          i1 = j;
-          n = k;
-          if (i3 < k)
+          i2 = arrayOfInt[0] - paramInt1;
+          i1 = i2;
+          if (i2 < 0) {
+            i1 = -i2;
+          }
+          i4 = n + i1;
+          n = i3;
+          i2 = k;
+          i1 = m;
+          if (i4 < m)
           {
-            n = arrayOfInt[2] - paramInt3;
-            m = n;
-            if (n < 0) {
-              m = -n;
+            i1 = arrayOfInt[2] - paramInt3;
+            n = i1;
+            if (i1 < 0) {
+              n = -i1;
             }
-            i3 += m;
-            m = i2;
-            i1 = j;
-            n = k;
-            if (i3 < k)
+            i4 += n;
+            n = i3;
+            i2 = k;
+            i1 = m;
+            if (i4 < m)
             {
-              i1 = arrayOfInt[3];
+              i2 = arrayOfInt[3];
+              i1 = i4;
               n = i3;
-              m = i2;
             }
           }
         }
       }
-      i2 = m;
-      j = i1;
-      k = n;
-      if (i >= 0)
+      i3 = n;
+      k = i2;
+      m = i1;
+      if (j >= 0)
       {
-        arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i];
-        j = paramInt2 - arrayOfInt[1];
-        if (j >= n)
+        arrayOfInt = this.e[j];
+        k = paramInt2 - arrayOfInt[1];
+        if (k >= i1)
         {
-          i = -1;
-          i2 = m;
-          j = i1;
-          k = n;
+          j = -1;
+          i3 = n;
+          k = i2;
+          m = i1;
         }
         else
         {
-          i3 = i - 1;
-          i = j;
-          if (j < 0) {
-            i = -j;
-          }
-          k = arrayOfInt[0] - paramInt1;
+          i4 = j - 1;
           j = k;
           if (k < 0) {
             j = -k;
           }
-          int i4 = i + j;
-          i2 = m;
-          i = i3;
-          j = i1;
-          k = n;
-          if (i4 < n)
+          m = arrayOfInt[0] - paramInt1;
+          k = m;
+          if (m < 0) {
+            k = -m;
+          }
+          int i5 = j + k;
+          i3 = n;
+          j = i4;
+          k = i2;
+          m = i1;
+          if (i5 < i1)
           {
-            j = arrayOfInt[2] - paramInt3;
-            i = j;
-            if (j < 0) {
-              i = -j;
+            k = arrayOfInt[2] - paramInt3;
+            j = k;
+            if (k < 0) {
+              j = -k;
             }
-            i4 = i + i4;
-            i2 = m;
-            i = i3;
-            j = i1;
-            k = n;
-            if (i4 < n)
+            i5 = j + i5;
+            i3 = n;
+            j = i4;
+            k = i2;
+            m = i1;
+            if (i5 < i1)
             {
-              j = arrayOfInt[3];
-              k = i4;
-              i2 = m;
-              i = i3;
+              k = arrayOfInt[3];
+              m = i5;
+              i3 = n;
+              j = i4;
             }
           }
         }
       }
-    }
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    int j = 0;
-    int m;
-    for (int i1 = 0; i < 256; i1 = m)
-    {
-      int[] arrayOfInt1 = this.jdField_a_of_type_Array2dOfInt[i];
-      int k = arrayOfInt1[1];
-      int n = i + 1;
-      m = i;
-      int i2 = n;
-      int i3 = m;
-      m = i2;
-      while (m < 256)
-      {
-        arrayOfInt2 = this.jdField_a_of_type_Array2dOfInt[m];
-        i2 = k;
-        if (arrayOfInt2[1] < k)
-        {
-          i2 = arrayOfInt2[1];
-          i3 = m;
-        }
-        m += 1;
-        k = i2;
-      }
-      int[] arrayOfInt2 = this.jdField_a_of_type_Array2dOfInt[i3];
-      if (i != i3)
-      {
-        m = arrayOfInt2[0];
-        arrayOfInt2[0] = arrayOfInt1[0];
-        arrayOfInt1[0] = m;
-        m = arrayOfInt2[1];
-        arrayOfInt2[1] = arrayOfInt1[1];
-        arrayOfInt1[1] = m;
-        m = arrayOfInt2[2];
-        arrayOfInt2[2] = arrayOfInt1[2];
-        arrayOfInt1[2] = m;
-        m = arrayOfInt2[3];
-        arrayOfInt2[3] = arrayOfInt1[3];
-        arrayOfInt1[3] = m;
-      }
-      i2 = j;
-      m = i1;
-      if (k != j)
-      {
-        this.jdField_a_of_type_ArrayOfInt[j] = (i1 + i >> 1);
-        for (;;)
-        {
-          j += 1;
-          if (j >= k) {
-            break;
-          }
-          this.jdField_a_of_type_ArrayOfInt[j] = i;
-        }
-        m = i;
-        i2 = k;
-      }
-      i = n;
-      j = i2;
-    }
-    this.jdField_a_of_type_ArrayOfInt[j] = (i1 + 255 >> 1);
-    i = j + 1;
-    while (i < 256)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = 255;
-      i += 1;
     }
   }
   
   protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int i = paramInt2 - paramInt1;
-    int j = -1;
-    if (i < -1) {
-      i = j;
+    int j = paramInt2 - paramInt1;
+    int k = -1;
+    if (j < -1) {
+      j = k;
     }
-    j = paramInt2 + paramInt1;
+    k = paramInt2 + paramInt1;
     paramInt1 = 256;
-    if (j > 256) {
-      j = paramInt1;
+    if (k > 256) {
+      k = paramInt1;
     }
     paramInt1 = paramInt2 + 1;
     paramInt2 -= 1;
-    int m;
-    for (int k = 1;; k = m)
+    int n;
+    for (int m = 1;; m = n)
     {
-      if ((paramInt1 >= j) && (paramInt2 <= i)) {
+      if ((paramInt1 >= k) && (paramInt2 <= j)) {
         return;
       }
-      Object localObject = this.d;
-      m = k + 1;
-      int n = localObject[k];
-      if (paramInt1 < j)
+      Object localObject = this.i;
+      n = m + 1;
+      int i1 = localObject[m];
+      if (paramInt1 < k)
       {
-        localObject = this.jdField_a_of_type_Array2dOfInt;
-        k = paramInt1 + 1;
+        localObject = this.e;
+        m = paramInt1 + 1;
         localObject = localObject[paramInt1];
         try
         {
-          localObject[0] -= (localObject[0] - paramInt3) * n / 262144;
-          localObject[1] -= (localObject[1] - paramInt4) * n / 262144;
-          localObject[2] -= (localObject[2] - paramInt5) * n / 262144;
-          paramInt1 = k;
+          localObject[0] -= (localObject[0] - paramInt3) * i1 / 262144;
+          localObject[1] -= (localObject[1] - paramInt4) * i1 / 262144;
+          localObject[2] -= (localObject[2] - paramInt5) * i1 / 262144;
+          paramInt1 = m;
         }
         catch (Exception localException1)
         {
           TLog.d("NeuQuant", localException1.toString());
-          paramInt1 = k;
+          paramInt1 = m;
         }
       }
-      if (paramInt2 > i)
+      if (paramInt2 > j)
       {
-        int[] arrayOfInt = this.jdField_a_of_type_Array2dOfInt[paramInt2];
+        int[] arrayOfInt = this.e[paramInt2];
         try
         {
-          arrayOfInt[0] -= (arrayOfInt[0] - paramInt3) * n / 262144;
-          arrayOfInt[1] -= (arrayOfInt[1] - paramInt4) * n / 262144;
-          arrayOfInt[2] -= n * (arrayOfInt[2] - paramInt5) / 262144;
+          arrayOfInt[0] -= (arrayOfInt[0] - paramInt3) * i1 / 262144;
+          arrayOfInt[1] -= (arrayOfInt[1] - paramInt4) * i1 / 262144;
+          arrayOfInt[2] -= i1 * (arrayOfInt[2] - paramInt5) / 262144;
         }
         catch (Exception localException2)
         {
@@ -290,203 +217,273 @@ class NeuQuant
   {
     byte[] arrayOfByte = new byte[768];
     int[] arrayOfInt = new int[256];
-    int i = 0;
-    while (i < 256)
-    {
-      arrayOfInt[this.jdField_a_of_type_Array2dOfInt[i][3]] = i;
-      i += 1;
-    }
-    i = 0;
     int j = 0;
-    while (i < 256)
+    while (j < 256)
     {
-      int k = arrayOfInt[i];
-      int m = j + 1;
-      int[][] arrayOfInt1 = this.jdField_a_of_type_Array2dOfInt;
-      arrayOfByte[j] = ((byte)arrayOfInt1[k][0]);
-      j = m + 1;
-      arrayOfByte[m] = ((byte)arrayOfInt1[k][1]);
-      arrayOfByte[j] = ((byte)arrayOfInt1[k][2]);
-      i += 1;
+      arrayOfInt[this.e[j][3]] = j;
       j += 1;
+    }
+    j = 0;
+    int k = 0;
+    while (j < 256)
+    {
+      int m = arrayOfInt[j];
+      int n = k + 1;
+      int[][] arrayOfInt1 = this.e;
+      arrayOfByte[k] = ((byte)arrayOfInt1[m][0]);
+      k = n + 1;
+      arrayOfByte[n] = ((byte)arrayOfInt1[m][1]);
+      arrayOfByte[k] = ((byte)arrayOfInt1[m][2]);
+      j += 1;
+      k += 1;
     }
     return arrayOfByte;
   }
   
   protected int b(int paramInt1, int paramInt2, int paramInt3)
   {
-    int n = -1;
-    int i = 0;
-    int k = -1;
-    int m = 2147483647;
-    int i2;
-    for (int j = 2147483647; i < 256; j = i2)
+    int i1 = -1;
+    int j = 0;
+    int m = -1;
+    int n = 2147483647;
+    int i3;
+    for (int k = 2147483647; j < 256; k = i3)
     {
-      arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i];
-      i2 = arrayOfInt[0] - paramInt1;
-      int i1 = i2;
-      if (i2 < 0) {
-        i1 = -i2;
-      }
-      int i3 = arrayOfInt[1] - paramInt2;
-      i2 = i3;
+      arrayOfInt = this.e[j];
+      i3 = arrayOfInt[0] - paramInt1;
+      int i2 = i3;
       if (i3 < 0) {
         i2 = -i3;
       }
-      int i4 = arrayOfInt[2] - paramInt3;
+      int i4 = arrayOfInt[1] - paramInt2;
       i3 = i4;
       if (i4 < 0) {
         i3 = -i4;
       }
-      i2 = i1 + i2 + i3;
-      i1 = m;
-      if (i2 < m)
-      {
-        n = i;
-        i1 = i2;
+      int i5 = arrayOfInt[2] - paramInt3;
+      i4 = i5;
+      if (i5 < 0) {
+        i4 = -i5;
       }
-      m = i2 - (this.jdField_b_of_type_ArrayOfInt[i] >> 12);
-      i2 = j;
-      if (m < j)
+      i3 = i2 + i3 + i4;
+      i2 = n;
+      if (i3 < n)
       {
-        k = i;
-        i2 = m;
+        i1 = j;
+        i2 = i3;
       }
-      arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
-      j = arrayOfInt[i] >> 10;
-      arrayOfInt[i] -= j;
-      arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
-      arrayOfInt[i] += (j << 10);
-      i += 1;
-      m = i1;
+      n = i3 - (this.g[j] >> 12);
+      i3 = k;
+      if (n < k)
+      {
+        m = j;
+        i3 = n;
+      }
+      arrayOfInt = this.h;
+      k = arrayOfInt[j] >> 10;
+      arrayOfInt[j] -= k;
+      arrayOfInt = this.g;
+      arrayOfInt[j] += (k << 10);
+      j += 1;
+      n = i2;
     }
-    int[] arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
-    arrayOfInt[n] += 64;
-    arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
-    arrayOfInt[n] -= 65536;
-    return k;
+    int[] arrayOfInt = this.h;
+    arrayOfInt[i1] += 64;
+    arrayOfInt = this.g;
+    arrayOfInt[i1] -= 65536;
+    return m;
   }
   
   public void b()
   {
-    if (this.jdField_b_of_type_Int < 1509) {
-      this.jdField_c_of_type_Int = 1;
-    }
-    int i = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Int = ((i - 1) / 3 + 30);
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    int i7 = this.jdField_b_of_type_Int;
-    int i8 = i7 / (i * 3);
-    int i1 = i8 / 100;
-    i = 0;
-    while (i < 32)
+    int j = 0;
+    int k = 0;
+    int n;
+    for (int i2 = 0; j < 256; i2 = n)
     {
-      this.d[i] = (1024 * ((1024 - i * i) * 256 / 1024));
-      i += 1;
-    }
-    i = this.jdField_b_of_type_Int;
-    if (i < 1509) {
-      i = 3;
-    } else if (i % 499 != 0) {
-      i = 1497;
-    } else if (i % 491 != 0) {
-      i = 1473;
-    } else if (i % 487 != 0) {
-      i = 1461;
-    } else {
-      i = 1509;
-    }
-    int i3 = 0;
-    int i4 = 0;
-    int m = 1024;
-    int n = 32;
-    int k = 2048;
-    while (i3 < i8)
-    {
-      int j = (arrayOfByte[(i4 + 0)] & 0xFF) << 4;
-      int i2 = (arrayOfByte[(i4 + 1)] & 0xFF) << 4;
-      int i5 = (arrayOfByte[(i4 + 2)] & 0xFF) << 4;
-      int i6 = b(j, i2, i5);
-      b(m, i6, j, i2, i5);
-      if (n != 0) {
-        a(n, i6, j, i2, i5);
-      }
-      i2 = i4 + i;
-      j = i2;
-      if (i2 >= i7) {
-        j = i2 - this.jdField_b_of_type_Int;
-      }
-      i5 = i3 + 1;
-      i2 = i1;
-      if (i1 == 0) {
-        i2 = 1;
-      }
-      i3 = i5;
-      i4 = j;
-      i1 = i2;
-      if (i5 % i2 == 0)
+      int[] arrayOfInt1 = this.e[j];
+      int m = arrayOfInt1[1];
+      int i1 = j + 1;
+      n = j;
+      int i3 = i1;
+      int i4 = n;
+      n = i3;
+      while (n < 256)
       {
-        n = m - m / this.jdField_a_of_type_Int;
-        i6 = k - k / 30;
-        m = i6 >> 6;
-        k = m;
-        if (m <= 1) {
-          k = 0;
-        }
-        m = 0;
-        while (m < k)
+        arrayOfInt2 = this.e[n];
+        i3 = m;
+        if (arrayOfInt2[1] < m)
         {
-          int[] arrayOfInt = this.d;
-          i1 = k * k;
-          arrayOfInt[m] = ((i1 - m * m) * 256 / i1 * n);
-          m += 1;
+          i3 = arrayOfInt2[1];
+          i4 = n;
         }
-        i3 = i5;
-        i4 = j;
-        m = n;
-        n = k;
-        i1 = i2;
-        k = i6;
+        n += 1;
+        m = i3;
       }
+      int[] arrayOfInt2 = this.e[i4];
+      if (j != i4)
+      {
+        n = arrayOfInt2[0];
+        arrayOfInt2[0] = arrayOfInt1[0];
+        arrayOfInt1[0] = n;
+        n = arrayOfInt2[1];
+        arrayOfInt2[1] = arrayOfInt1[1];
+        arrayOfInt1[1] = n;
+        n = arrayOfInt2[2];
+        arrayOfInt2[2] = arrayOfInt1[2];
+        arrayOfInt1[2] = n;
+        n = arrayOfInt2[3];
+        arrayOfInt2[3] = arrayOfInt1[3];
+        arrayOfInt1[3] = n;
+      }
+      i3 = k;
+      n = i2;
+      if (m != k)
+      {
+        this.f[k] = (i2 + j >> 1);
+        for (;;)
+        {
+          k += 1;
+          if (k >= m) {
+            break;
+          }
+          this.f[k] = j;
+        }
+        n = j;
+        i3 = m;
+      }
+      j = i1;
+      k = i3;
+    }
+    this.f[k] = (i2 + 255 >> 1);
+    j = k + 1;
+    while (j < 256)
+    {
+      this.f[j] = 255;
+      j += 1;
     }
   }
   
   protected void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int[] arrayOfInt = this.jdField_a_of_type_Array2dOfInt[paramInt2];
+    int[] arrayOfInt = this.e[paramInt2];
     arrayOfInt[0] -= (arrayOfInt[0] - paramInt3) * paramInt1 / 1024;
     arrayOfInt[1] -= (arrayOfInt[1] - paramInt4) * paramInt1 / 1024;
     arrayOfInt[2] -= paramInt1 * (arrayOfInt[2] - paramInt5) / 1024;
   }
   
-  public byte[] b()
+  public void c()
   {
-    b();
+    if (this.c < 1509) {
+      this.d = 1;
+    }
+    int j = this.d;
+    this.a = ((j - 1) / 3 + 30);
+    byte[] arrayOfByte = this.b;
+    int i8 = this.c;
+    int i9 = i8 / (j * 3);
+    int i2 = i9 / 100;
+    j = 0;
+    while (j < 32)
+    {
+      this.i[j] = (1024 * ((1024 - j * j) * 256 / 1024));
+      j += 1;
+    }
+    j = this.c;
+    if (j < 1509) {
+      j = 3;
+    } else if (j % 499 != 0) {
+      j = 1497;
+    } else if (j % 491 != 0) {
+      j = 1473;
+    } else if (j % 487 != 0) {
+      j = 1461;
+    } else {
+      j = 1509;
+    }
+    int i4 = 0;
+    int i5 = 0;
+    int n = 1024;
+    int i1 = 32;
+    int m = 2048;
+    while (i4 < i9)
+    {
+      int k = (arrayOfByte[(i5 + 0)] & 0xFF) << 4;
+      int i3 = (arrayOfByte[(i5 + 1)] & 0xFF) << 4;
+      int i6 = (arrayOfByte[(i5 + 2)] & 0xFF) << 4;
+      int i7 = b(k, i3, i6);
+      b(n, i7, k, i3, i6);
+      if (i1 != 0) {
+        a(i1, i7, k, i3, i6);
+      }
+      i3 = i5 + j;
+      k = i3;
+      if (i3 >= i8) {
+        k = i3 - this.c;
+      }
+      i6 = i4 + 1;
+      i3 = i2;
+      if (i2 == 0) {
+        i3 = 1;
+      }
+      i4 = i6;
+      i5 = k;
+      i2 = i3;
+      if (i6 % i3 == 0)
+      {
+        i1 = n - n / this.a;
+        i7 = m - m / 30;
+        n = i7 >> 6;
+        m = n;
+        if (n <= 1) {
+          m = 0;
+        }
+        n = 0;
+        while (n < m)
+        {
+          int[] arrayOfInt = this.i;
+          i2 = m * m;
+          arrayOfInt[n] = ((i2 - n * n) * 256 / i2 * i1);
+          n += 1;
+        }
+        i4 = i6;
+        i5 = k;
+        n = i1;
+        i1 = m;
+        i2 = i3;
+        m = i7;
+      }
+    }
+  }
+  
+  public byte[] d()
+  {
     c();
-    a();
+    e();
+    b();
     return a();
   }
   
-  public void c()
+  public void e()
   {
-    int i = 0;
-    while (i < 256)
+    int j = 0;
+    while (j < 256)
     {
-      int[][] arrayOfInt = this.jdField_a_of_type_Array2dOfInt;
-      int[] arrayOfInt1 = arrayOfInt[i];
+      int[][] arrayOfInt = this.e;
+      int[] arrayOfInt1 = arrayOfInt[j];
       arrayOfInt1[0] >>= 4;
-      arrayOfInt1 = arrayOfInt[i];
+      arrayOfInt1 = arrayOfInt[j];
       arrayOfInt1[1] >>= 4;
-      arrayOfInt1 = arrayOfInt[i];
+      arrayOfInt1 = arrayOfInt[j];
       arrayOfInt1[2] >>= 4;
-      arrayOfInt[i][3] = i;
-      i += 1;
+      arrayOfInt[j][3] = j;
+      j += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.NeuQuant
  * JD-Core Version:    0.7.0.1
  */

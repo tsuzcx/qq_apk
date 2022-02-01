@@ -11,6 +11,7 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.model.GuildInfoManager;
 import com.tencent.mobileqq.model.TroopInfoManager;
 import com.tencent.mobileqq.nearby.api.IHotChatUtil;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -32,33 +33,45 @@ class InComingMsgProcessor
       int i;
       if (paramMessage.istroop == 1)
       {
-        paramAddMessageContext = ((TroopInfoManager)paramAddMessageContext.jdField_a_of_type_MqqManagerManager).a(paramMessage.frienduin);
+        paramAddMessageContext = ((TroopInfoManager)paramAddMessageContext.i).a(paramMessage.frienduin);
         i = j;
         if (paramAddMessageContext != null)
         {
           i = j;
-          if (paramAddMessageContext.a() == paramMessage.shmsgseq) {
+          if (paramAddMessageContext.b() == paramMessage.shmsgseq) {
             i = paramAddMessageContext.a();
+          }
+        }
+      }
+      else if (paramMessage.istroop == 3000)
+      {
+        paramAddMessageContext = (TroopInfoManager)paramAddMessageContext.i;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramMessage.frienduin);
+        localStringBuilder.append("&");
+        localStringBuilder.append(3000);
+        paramAddMessageContext = paramAddMessageContext.a(localStringBuilder.toString());
+        i = j;
+        if (paramAddMessageContext != null)
+        {
+          i = j;
+          if (paramAddMessageContext.b() == paramMessage.shmsgseq) {
+            i = paramAddMessageContext.c();
           }
         }
       }
       else
       {
         i = j;
-        if (paramMessage.istroop == 3000)
+        if (paramMessage.istroop == 10014)
         {
-          paramAddMessageContext = (TroopInfoManager)paramAddMessageContext.jdField_a_of_type_MqqManagerManager;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(paramMessage.frienduin);
-          localStringBuilder.append("&");
-          localStringBuilder.append(3000);
-          paramAddMessageContext = paramAddMessageContext.a(localStringBuilder.toString());
+          paramAddMessageContext = ((GuildInfoManager)paramAddMessageContext.j).a(paramMessage.frienduin);
           i = j;
           if (paramAddMessageContext != null)
           {
             i = j;
-            if (paramAddMessageContext.a() == paramMessage.shmsgseq) {
-              i = paramAddMessageContext.b();
+            if (paramAddMessageContext.b() == paramMessage.shmsgseq) {
+              i = paramAddMessageContext.a();
             }
           }
         }
@@ -71,7 +84,7 @@ class InComingMsgProcessor
   {
     ((IHotChatUtil)QRoute.api(IHotChatUtil.class)).checkIsHCRecentUser(paramQQAppInterface, paramRecentUser);
     RecentUtil.a(paramRecentUser, paramQQMessageFacade);
-    paramAddMessageContext.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy.b(paramRecentUser);
+    paramAddMessageContext.k.b(paramRecentUser);
     if (paramRecentUser.getType() == 1038) {
       ((AppletsFolderManager)paramQQAppInterface.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a(paramRecentUser);
     }
@@ -79,7 +92,7 @@ class InComingMsgProcessor
     {
       if (paramMessage.istroop == 3000)
       {
-        paramQQMessageFacade = (TroopInfoManager)paramAddMessageContext.jdField_a_of_type_MqqManagerManager;
+        paramQQMessageFacade = (TroopInfoManager)paramAddMessageContext.i;
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(paramRecentUser.uin);
         paramQQAppInterface.append("&");
@@ -87,19 +100,21 @@ class InComingMsgProcessor
         paramQQMessageFacade.b(paramQQAppInterface.toString());
         return;
       }
-      ((TroopInfoManager)paramAddMessageContext.jdField_a_of_type_MqqManagerManager).b(paramRecentUser.uin);
+      if (paramMessage.istroop != 10014) {
+        ((TroopInfoManager)paramAddMessageContext.i).b(paramRecentUser.uin);
+      }
     }
   }
   
   public void a(QQMessageFacade paramQQMessageFacade, QQAppInterface paramQQAppInterface, List<MessageRecord> paramList, BaseMessageManager.AddMessageContext paramAddMessageContext, boolean paramBoolean)
   {
-    paramList = paramQQMessageFacade.a();
+    paramList = paramQQMessageFacade.B();
     a(paramAddMessageContext, paramList);
-    Iterator localIterator = paramAddMessageContext.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = paramAddMessageContext.a.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (RecentUser)paramAddMessageContext.jdField_a_of_type_JavaUtilMap.get(localObject);
+      localObject = (RecentUser)paramAddMessageContext.a.get(localObject);
       try
       {
         a(paramQQMessageFacade, paramQQAppInterface, paramAddMessageContext, paramList, (RecentUser)localObject);
@@ -117,7 +132,7 @@ class InComingMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.add.inner.end.InComingMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

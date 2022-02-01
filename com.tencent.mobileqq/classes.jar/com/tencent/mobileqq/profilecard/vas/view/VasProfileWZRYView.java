@@ -91,41 +91,41 @@ public class VasProfileWZRYView
       } else {
         localObject1 = null;
       }
-      VipWZRYTemplateConfig.WZRYHonorItem localWZRYHonorItem = (VipWZRYTemplateConfig.WZRYHonorItem)paramVipWZRYTemplateConfig.jdField_a_of_type_AndroidUtilSparseArray.get(((summaryCardWzryInfo)localObject2).honorId);
+      VipWZRYTemplateConfig.WZRYHonorItem localWZRYHonorItem = (VipWZRYTemplateConfig.WZRYHonorItem)paramVipWZRYTemplateConfig.b.get(((summaryCardWzryInfo)localObject2).honorId);
       if (localWZRYHonorItem != null)
       {
-        View localView = this.mInflater.inflate(2131562038, null);
-        ImageView localImageView = (ImageView)localView.findViewById(2131381288);
-        TextView localTextView1 = (TextView)localView.findViewById(2131381290);
-        TextView localTextView2 = (TextView)localView.findViewById(2131381289);
+        View localView = this.mInflater.inflate(2131628464, null);
+        ImageView localImageView = (ImageView)localView.findViewById(2131450340);
+        TextView localTextView1 = (TextView)localView.findViewById(2131450342);
+        TextView localTextView2 = (TextView)localView.findViewById(2131450341);
         if (ProfileCardTemplate.wzryTTFChn != null)
         {
           localTextView1.setTypeface(ProfileCardTemplate.wzryTTFChn);
           localTextView2.setTypeface(ProfileCardTemplate.wzryTTFChn);
         }
         int i;
-        if (localWZRYHonorItem.jdField_b_of_type_Int == 2) {
+        if (localWZRYHonorItem.d == 2) {
           i = 1;
         } else {
           i = 0;
         }
         if (i != 0) {
-          localObject2 = localWZRYHonorItem.jdField_b_of_type_JavaLangString;
+          localObject2 = localWZRYHonorItem.c;
         } else {
-          localObject2 = localWZRYHonorItem.jdField_a_of_type_JavaLangString;
+          localObject2 = localWZRYHonorItem.b;
         }
         if (i != 0) {
-          localObject3 = localWZRYHonorItem.jdField_a_of_type_JavaLangString;
+          localObject3 = localWZRYHonorItem.b;
         } else {
-          localObject3 = localWZRYHonorItem.jdField_b_of_type_JavaLangString;
+          localObject3 = localWZRYHonorItem.c;
         }
         localTextView1.setText(getSpannableString((String)localObject2, (String[])localObject1, calcTopNumTextSize(localTextView1, paramInt2, (String)localObject2, (String[])localObject1), 0.0F, paramColorStateList2));
         localTextView2.setText(getSpannableString((String)localObject3, (String[])localObject1, paramInt1, localTextView2.getTextSize(), paramColorStateList1));
-        if ((localWZRYHonorItem.jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig$WZRYResourceItem != null) && (!TextUtils.isEmpty(localWZRYHonorItem.jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig$WZRYResourceItem.jdField_a_of_type_JavaLangString)))
+        if ((localWZRYHonorItem.e != null) && (!TextUtils.isEmpty(localWZRYHonorItem.e.a)))
         {
           localImageView.setVisibility(0);
           localTextView1.setVisibility(8);
-          localObject2 = localWZRYHonorItem.jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig$WZRYResourceItem.jdField_a_of_type_JavaLangString;
+          localObject2 = localWZRYHonorItem.e.a;
           localObject1 = localObject2;
           if (((String)localObject2).contains("/")) {
             localObject1 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/"));
@@ -151,12 +151,12 @@ public class VasProfileWZRYView
   private View initMainView()
   {
     this.mInflater = LayoutInflater.from(getContext());
-    return this.mInflater.inflate(2131562037, this, true);
+    return this.mInflater.inflate(2131628463, this, true);
   }
   
   private void prepareForEnterAnimation()
   {
-    int i = getResources().getDimensionPixelSize(2131297080);
+    int i = getResources().getDimensionPixelSize(2131297461);
     int j = ProfileCardUtil.a(getResources());
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mBlankView.getLayoutParams();
     localLayoutParams.height = ((int)this.mScreenHeight - ProfileCardUtil.b(this.mActivity, 160) - i - j);
@@ -178,22 +178,22 @@ public class VasProfileWZRYView
   
   private void updateAvatarArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131381281);
+    AvatarLayout localAvatarLayout = (AvatarLayout)paramView.findViewById(2131450333);
     localAvatarLayout.setVisibility(0);
     DataTag localDataTag = new DataTag(1, null);
     localAvatarLayout.setTag(localDataTag);
     localAvatarLayout.setOnClickListener(this.mOnClickListener);
     String str;
     if (paramProfileCardInfo.allInOne.pa == 0) {
-      str = getContext().getString(2131691197);
+      str = getContext().getString(2131888143);
     } else {
-      str = getContext().getString(2131691196);
+      str = getContext().getString(2131888142);
     }
     localAvatarLayout.setContentDescription(str);
-    localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363438), false);
+    localAvatarLayout.a(0, localAvatarLayout.findViewById(2131429335), false);
     this.mHeaderChildMap.put("map_key_face", localAvatarLayout);
     super.updateAvatar(paramProfileCardInfo.allInOne);
-    paramView = (ImageView)paramView.findViewById(2131381279);
+    paramView = (ImageView)paramView.findViewById(2131450331);
     paramView.setVisibility(4);
     paramView.setOnClickListener(this.mOnClickListener);
     paramView.setTag(localDataTag);
@@ -203,14 +203,14 @@ public class VasProfileWZRYView
   
   private void updateBaseInfoArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (TextView)paramView.findViewById(2131381285);
+    paramView = (TextView)paramView.findViewById(2131450337);
     this.mHeaderChildMap.put("map_key_sex_age_area", paramView);
     super.updateSexAgeArea(paramProfileCardInfo);
   }
   
   private void updateHeadArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    paramView = (ProfileNameView)paramView.findViewById(2131381283);
+    paramView = (ProfileNameView)paramView.findViewById(2131450335);
     paramView.setVisibility(0);
     paramView.setClickable(true);
     paramView.setClickListener(this.mOnClickListener);
@@ -220,9 +220,9 @@ public class VasProfileWZRYView
   
   private void updateLikeArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    HeartLayout localHeartLayout = (HeartLayout)paramView.findViewById(2131381277);
+    HeartLayout localHeartLayout = (HeartLayout)paramView.findViewById(2131450329);
     localHeartLayout.setEnabled(false);
-    paramView = (VoteView)paramView.findViewById(2131381292);
+    paramView = (VoteView)paramView.findViewById(2131450344);
     paramView.setHeartLayout(this.mApp, localHeartLayout);
     this.mHeaderChildMap.put("map_key_like", paramView);
     super.updateLike(paramProfileCardInfo);
@@ -230,10 +230,10 @@ public class VasProfileWZRYView
   
   private void updateLogoArea(ProfileCardInfo paramProfileCardInfo, View paramView)
   {
-    this.mLogo = ((ImageView)paramView.findViewById(2131381286));
+    this.mLogo = ((ImageView)paramView.findViewById(2131450338));
     this.templateUtils.updateViewAttr(this.mLogo, "apngDrawable", paramProfileCardInfo.currentTemplate, "wzryLogo");
     ApngImage.playByTag(7);
-    this.mLogoBg = ((ImageView)paramView.findViewById(2131381287));
+    this.mLogoBg = ((ImageView)paramView.findViewById(2131450339));
     this.templateUtils.updateViewAttr(this.mLogoBg, "background", paramProfileCardInfo.currentTemplate, "wzryLogoBg");
   }
   
@@ -399,10 +399,10 @@ public class VasProfileWZRYView
     this.mOldScreenHeight = this.mScreenHeight;
     Object localObject = initMainView();
     updateLogoArea(paramProfileCardInfo, (View)localObject);
-    this.mBlankView = ((View)localObject).findViewById(2131381280);
-    this.mGameInfoShimmerLayout = ((ShimmerLinearLayout)((View)localObject).findViewById(2131381275));
-    this.mAddIcon = ((ImageView)((View)localObject).findViewById(2131381274));
-    this.mGameInfoLayout = ((HorizontalScrollView)((View)localObject).findViewById(2131381276));
+    this.mBlankView = ((View)localObject).findViewById(2131450332);
+    this.mGameInfoShimmerLayout = ((ShimmerLinearLayout)((View)localObject).findViewById(2131450327));
+    this.mAddIcon = ((ImageView)((View)localObject).findViewById(2131450326));
+    this.mGameInfoLayout = ((HorizontalScrollView)((View)localObject).findViewById(2131450328));
     this.templateUtils.updateViewAttr(this.mGameInfoLayout, "background", paramProfileCardInfo.currentTemplate, "wzryGameInfoBackground");
     prepareForEnterAnimation();
     updateAvatarArea(paramProfileCardInfo, (View)localObject);
@@ -458,11 +458,11 @@ public class VasProfileWZRYView
     ((RelativeLayout.LayoutParams)localObject).height = (this.mOriginalBlankViewHeight - ProfileCardUtil.b(this.mActivity, 132));
     localObject = new LinearLayout.LayoutParams(-2, -2);
     ((LinearLayout.LayoutParams)localObject).setMargins(0, 0, DisplayUtil.a(getContext(), 5.0F), 0);
-    VipWZRYTemplateConfig localVipWZRYTemplateConfig = VipWZRYTemplateConfig.jdField_a_of_type_ComTencentMobileqqProfileVipWZRYTemplateConfig;
-    int i = getResources().getDimensionPixelSize(2131299321);
-    int j = getResources().getDimensionPixelSize(2131299323);
-    ColorStateList localColorStateList1 = getResources().getColorStateList(2131167439);
-    ColorStateList localColorStateList2 = getResources().getColorStateList(2131167441);
+    VipWZRYTemplateConfig localVipWZRYTemplateConfig = VipWZRYTemplateConfig.a;
+    int i = getResources().getDimensionPixelSize(2131300116);
+    int j = getResources().getDimensionPixelSize(2131300118);
+    ColorStateList localColorStateList1 = getResources().getColorStateList(2131168535);
+    ColorStateList localColorStateList2 = getResources().getColorStateList(2131168537);
     if (localVipWZRYTemplateConfig != null) {
       addHonorView(paramProfileCardInfo, localArrayList, (LinearLayout.LayoutParams)localObject, localVipWZRYTemplateConfig, i, j, localColorStateList1, localColorStateList2);
     }
@@ -480,7 +480,7 @@ public class VasProfileWZRYView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView
  * JD-Core Version:    0.7.0.1
  */

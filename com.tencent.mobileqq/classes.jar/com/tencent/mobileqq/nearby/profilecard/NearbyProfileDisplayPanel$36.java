@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.nearby.now.NowSmallVideoObserver;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class NearbyProfileDisplayPanel$36
-  extends NowSmallVideoObserver
+  implements Runnable
 {
-  NearbyProfileDisplayPanel$36(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  NearbyProfileDisplayPanel$36(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, int paramInt) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    NearbyProfileDisplayPanel.a(this.a, paramBoolean);
-    NearbyProfileDisplayPanel.a(this.a, 1, 60);
+    ReportController.b(this.this$0.e.app, "CliOper", "", "", NearbyProfileDisplayPanel.am[(this.a - 1)], NearbyProfileDisplayPanel.am[(this.a - 1)], 0, 0, "", "", "", "");
+    ReportController.b(this.this$0.e.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.36
  * JD-Core Version:    0.7.0.1
  */

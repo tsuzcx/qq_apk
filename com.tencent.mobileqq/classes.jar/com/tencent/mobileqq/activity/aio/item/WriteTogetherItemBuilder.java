@@ -41,8 +41,8 @@ import org.jetbrains.annotations.NotNull;
 public class WriteTogetherItemBuilder
   extends TextItemBuilder
 {
-  private boolean f;
-  private boolean g;
+  private boolean a;
+  private boolean w;
   
   public WriteTogetherItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
@@ -52,13 +52,13 @@ public class WriteTogetherItemBuilder
   
   private int a(String paramString, Context paramContext)
   {
-    int i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 55.0F);
-    int j = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-    int k = paramContext.getResources().getDimensionPixelOffset(2131299300);
-    int m = paramContext.getResources().getDimensionPixelOffset(2131299300);
+    int i = DisplayUtil.a(this.e, 55.0F);
+    int j = DisplayUtil.a(this.e, 5.0F);
+    int k = paramContext.getResources().getDimensionPixelOffset(2131300095);
+    int m = paramContext.getResources().getDimensionPixelOffset(2131300095);
     paramContext = new Paint();
     paramContext.setColor(-1);
-    paramContext.setTextSize(ViewUtils.d(12.0F));
+    paramContext.setTextSize(ViewUtils.spToPx(12.0F));
     return i + j + k + (int)paramContext.measureText(paramString) + m;
   }
   
@@ -73,14 +73,14 @@ public class WriteTogetherItemBuilder
       ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
       ((TextView)localObject).setTextColor(-1);
       ((TextView)localObject).setTextSize(2, 12.0F);
-      ((TextView)localObject).setBackgroundResource(2130838346);
+      ((TextView)localObject).setBackgroundResource(2130838395);
     }
     paramView = (TextView)localObject;
     paramView.setEnabled(paramBoolean);
     paramView.setText(paramString);
-    paramView.setId(2131364549);
-    int i = paramContext.getResources().getDimensionPixelOffset(2131299300);
-    int j = paramContext.getResources().getDimensionPixelOffset(2131299301);
+    paramView.setId(2131430607);
+    int i = paramContext.getResources().getDimensionPixelOffset(2131300095);
+    int j = paramContext.getResources().getDimensionPixelOffset(2131300096);
     paramView.setPadding(i, j, i, j);
     ((View)localObject).setTag(paramMessageRecord);
     ((View)localObject).setOnClickListener(paramOnClickListener);
@@ -94,7 +94,7 @@ public class WriteTogetherItemBuilder
     if (paramRelativeLayout == null)
     {
       localRelativeLayout = new RelativeLayout(paramBaseChatItemLayout.getContext());
-      localRelativeLayout.setId(2131381207);
+      localRelativeLayout.setId(2131450255);
       localRelativeLayout.setVisibility(8);
       paramBaseChatItemLayout.addView(localRelativeLayout, new RelativeLayout.LayoutParams(-2, -2));
     }
@@ -185,12 +185,12 @@ public class WriteTogetherItemBuilder
         return;
       }
       a(localLayoutParams);
-      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296383);
-      int j = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-      localLayoutParams.addRule(7, 2131364521);
-      localLayoutParams.addRule(3, 2131364521);
+      int i = this.e.getResources().getDimensionPixelSize(2131296615);
+      int j = DisplayUtil.a(this.e, 10.0F);
+      localLayoutParams.addRule(7, 2131430578);
+      localLayoutParams.addRule(3, 2131430578);
       localLayoutParams.topMargin = -4;
-      localLayoutParams.rightMargin = (i + j + DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 3.0F));
+      localLayoutParams.rightMargin = (i + j + DisplayUtil.a(this.e, 3.0F));
       paramView.setLayoutParams(localLayoutParams);
       localLayoutParams = (RelativeLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
       if (localLayoutParams == null)
@@ -200,9 +200,9 @@ public class WriteTogetherItemBuilder
         return;
       }
       a(localLayoutParams);
-      localLayoutParams.rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-      localLayoutParams.addRule(3, 2131364521);
-      localLayoutParams.addRule(0, 2131379201);
+      localLayoutParams.rightMargin = DisplayUtil.a(this.e, 5.0F);
+      localLayoutParams.addRule(3, 2131430578);
+      localLayoutParams.addRule(0, 2131447938);
       localLayoutParams.addRule(1, 0);
       paramRelativeLayout.setLayoutParams(localLayoutParams);
       paramRelativeLayout.setVisibility(0);
@@ -212,24 +212,24 @@ public class WriteTogetherItemBuilder
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new WriteTogetherItemBuilder.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick = new WriteTogetherItemBuilder.ChildDoubleClickListener(this, paramQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext);
+    this.C = new WriteTogetherItemBuilder.1(this);
+    this.E = new WriteTogetherItemBuilder.ChildDoubleClickListener(this, paramQQAppInterface, (Activity)this.e);
   }
   
   private void a(ChatMessage paramChatMessage, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))
+    if ((this.e instanceof BaseActivity))
     {
-      Object localObject = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      Object localObject = ((BaseActivity)this.e).getChatFragment();
       if (localObject == null)
       {
         QLog.e("WriteTogetherItemBuilder", 1, "[launchWriteTogether] ChatFragment is null");
         return;
       }
-      localObject = ((ChatFragment)localObject).a();
+      localObject = ((ChatFragment)localObject).k();
       if (localObject != null)
       {
-        localObject = (WriteTogetherHelper)((BaseChatPie)localObject).a(74);
+        localObject = (WriteTogetherHelper)((BaseChatPie)localObject).q(74);
         if ((localObject != null) && ((paramChatMessage instanceof MessageForWriteTogether))) {
           ((WriteTogetherHelper)localObject).a(((MessageForWriteTogether)paramChatMessage).padId, paramInt);
         }
@@ -251,8 +251,8 @@ public class WriteTogetherItemBuilder
       }
       paramBaseChatItemLayout = paramBaseChatItemLayout.getResources();
       localLayoutParams1.topMargin = AIOUtils.b(-2.0F, paramBaseChatItemLayout);
-      localLayoutParams1.addRule(5, 2131364521);
-      localLayoutParams1.addRule(3, 2131364521);
+      localLayoutParams1.addRule(5, 2131430578);
+      localLayoutParams1.addRule(3, 2131430578);
       if ((paramChatMessage.isSend() ^ true)) {
         localLayoutParams1.leftMargin = AIOUtils.b(11.0F, paramBaseChatItemLayout);
       } else {
@@ -265,15 +265,15 @@ public class WriteTogetherItemBuilder
   
   private void a(ChatMessage paramChatMessage, TextItemBuilder.Holder paramHolder)
   {
-    if ((paramHolder.jdField_a_of_type_AndroidViewView != null) && (paramHolder.jdField_d_of_type_AndroidViewView != null))
+    if ((paramHolder.h != null) && (paramHolder.A != null))
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131381207);
-      localRelativeLayout = a(paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, localRelativeLayout);
+      RelativeLayout localRelativeLayout = (RelativeLayout)paramHolder.j.findViewById(2131450255);
+      localRelativeLayout = a(paramHolder.j, localRelativeLayout);
       if (localRelativeLayout == null) {
         return;
       }
-      a(this.jdField_a_of_type_AndroidContentContext, paramChatMessage, localRelativeLayout);
-      int j = a("1000人一起写", this.jdField_a_of_type_AndroidContentContext);
+      a(this.e, paramChatMessage, localRelativeLayout);
+      int j = a("1000人一起写", this.e);
       Object localObject = localRelativeLayout.getChildAt(0);
       int i = j;
       if ((localObject instanceof TextView))
@@ -281,16 +281,11 @@ public class WriteTogetherItemBuilder
         localObject = ((TextView)localObject).getText().toString();
         i = j;
         if (!android.text.TextUtils.isEmpty((CharSequence)localObject)) {
-          i = a((String)localObject, this.jdField_a_of_type_AndroidContentContext);
+          i = a((String)localObject, this.e);
         }
       }
-      paramHolder.jdField_a_of_type_AndroidViewView.post(new WriteTogetherItemBuilder.2(this, paramHolder, i, paramChatMessage, localRelativeLayout, paramChatMessage));
+      paramHolder.h.post(new WriteTogetherItemBuilder.2(this, paramHolder, i, paramChatMessage, localRelativeLayout, paramChatMessage));
     }
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return super.a(paramChatMessage);
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -319,16 +314,16 @@ public class WriteTogetherItemBuilder
     Object localObject3 = (TextItemBuilder.Holder)paramViewHolder;
     MessageForWriteTogether localMessageForWriteTogether = (MessageForWriteTogether)paramChatMessage;
     localMessageForWriteTogether.parse();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null)) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    if ((this.f != null) && (this.f.b != null)) {
+      localObject1 = this.f.b;
     } else {
       localObject1 = "";
     }
-    bool = TroopEssenceUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage, (String)localObject1);
+    bool = TroopEssenceUtil.a(this.d, paramChatMessage, (String)localObject1);
     if ((!bool) || (localMessageForWriteTogether.isLongMsg))
     {
-      localObject1 = ((TextItemBuilder.Holder)localObject3).jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-      a(localContext, paramChatMessage, (BaseChatItemLayout)localObject1, (RelativeLayout)((BaseChatItemLayout)localObject1).findViewById(2131381207));
+      localObject1 = ((TextItemBuilder.Holder)localObject3).j;
+      a(localContext, paramChatMessage, (BaseChatItemLayout)localObject1, (RelativeLayout)((BaseChatItemLayout)localObject1).findViewById(2131450255));
     }
     if (!localMessageForWriteTogether.isLongMsg)
     {
@@ -337,18 +332,18 @@ public class WriteTogetherItemBuilder
       } else {
         paramViewHolder = super.a(paramChatMessage, paramViewHolder, null, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
       }
-      if (((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidWidgetTextView != null) {
-        ((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
+      if (((TextItemBuilder.Holder)localObject3).v != null) {
+        ((TextItemBuilder.Holder)localObject3).v.setPadding(0, 0, 0, 0);
       }
-      ((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidViewView = super.a(((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidViewView, (BaseBubbleBuilder.ViewHolder)localObject3, ((TextItemBuilder.Holder)localObject3).jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, paramChatMessage, -2, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 21.0F));
-      if ((((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidViewView != null) && (bool))
+      ((TextItemBuilder.Holder)localObject3).A = super.a(((TextItemBuilder.Holder)localObject3).A, (BaseBubbleBuilder.ViewHolder)localObject3, ((TextItemBuilder.Holder)localObject3).j, paramChatMessage, -2, DisplayUtil.a(this.e, 21.0F));
+      if ((((TextItemBuilder.Holder)localObject3).A != null) && (bool))
       {
         a(paramChatMessage, (TextItemBuilder.Holder)localObject3);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        paramBaseChatItemLayout = ((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidViewView;
+        paramView = this.d;
+        paramBaseChatItemLayout = ((TextItemBuilder.Holder)localObject3).A;
         paramChatMessage = (ChatMessage)localObject2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-          paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (this.f != null) {
+          paramChatMessage = this.f.b;
         }
         TroopEssenceReportUtil.a(paramView, paramBaseChatItemLayout, paramChatMessage);
       }
@@ -361,33 +356,33 @@ public class WriteTogetherItemBuilder
     else
     {
       paramView = localContext.getResources();
-      paramViewHolder = (RelativeLayout)LayoutInflater.from(localContext).inflate(2131563070, null);
+      paramViewHolder = (RelativeLayout)LayoutInflater.from(localContext).inflate(2131629708, null);
       localObject1 = new RelativeLayout.LayoutParams(BaseChatItemLayout.e, -2);
-      int i = paramView.getDimensionPixelSize(2131299072);
+      int i = paramView.getDimensionPixelSize(2131299800);
       ((RelativeLayout.LayoutParams)localObject1).setMargins(i, 0, i, 0);
       paramViewHolder.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      paramView = (LinearLayout)paramViewHolder.findViewById(2131381205);
+      paramView = (LinearLayout)paramViewHolder.findViewById(2131450253);
       paramView.setLayoutParams(new RelativeLayout.LayoutParams(BaseChatItemLayout.f, -2));
       paramView.setOrientation(1);
-      paramView = paramViewHolder.findViewById(2131381259);
+      paramView = paramViewHolder.findViewById(2131450307);
       localObject1 = paramView.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject1).width = BaseChatItemLayout.f;
-      ((ViewGroup.LayoutParams)localObject1).height = localContext.getResources().getDimensionPixelSize(2131299286);
+      ((ViewGroup.LayoutParams)localObject1).height = localContext.getResources().getDimensionPixelSize(2131300081);
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      paramView = (TextView)paramViewHolder.findViewById(2131381208);
+      paramView = (TextView)paramViewHolder.findViewById(2131450256);
       paramView.setTextColor(-16777216);
       com.tencent.mobileqq.text.TextUtils.fixTextViewANRForAnd10(paramView);
-      ((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidWidgetTextView = paramView;
+      ((TextItemBuilder.Holder)localObject3).v = paramView;
     }
-    localObject2 = paramViewHolder.findViewById(2131381205);
-    paramView = (TextView)paramViewHolder.findViewById(2131381208);
-    Object localObject1 = (TextView)paramViewHolder.findViewById(2131381206);
+    localObject2 = paramViewHolder.findViewById(2131450253);
+    paramView = (TextView)paramViewHolder.findViewById(2131450256);
+    Object localObject1 = (TextView)paramViewHolder.findViewById(2131450254);
     if (!android.text.TextUtils.isEmpty(localMessageForWriteTogether.sb))
     {
       if (!android.text.TextUtils.isEmpty(localMessageForWriteTogether.sb2)) {
-        ((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidWidgetTextView.setText(localMessageForWriteTogether.sb2);
+        ((TextItemBuilder.Holder)localObject3).v.setText(localMessageForWriteTogether.sb2);
       } else {
-        ((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidWidgetTextView.setText(localMessageForWriteTogether.sb);
+        ((TextItemBuilder.Holder)localObject3).v.setText(localMessageForWriteTogether.sb);
       }
     }
     else {
@@ -404,12 +399,12 @@ public class WriteTogetherItemBuilder
     paramView.setTypeface(paramOnLongClickAndTouchListener);
     ((TextView)localObject1).setTypeface(paramOnLongClickAndTouchListener);
     ((TextView)localObject1).setTextColor(paramView.getTextColors());
-    ((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidViewView = super.a(((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidViewView, (BaseBubbleBuilder.ViewHolder)localObject3, ((TextItemBuilder.Holder)localObject3).jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, paramChatMessage, -2, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 21.0F));
-    super.a(((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidViewView, paramBaseChatItemLayout, Integer.valueOf(2131381205), paramChatMessage, -4, Boolean.valueOf(true));
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    paramBaseChatItemLayout = ((TextItemBuilder.Holder)localObject3).jdField_d_of_type_AndroidViewView;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    ((TextItemBuilder.Holder)localObject3).A = super.a(((TextItemBuilder.Holder)localObject3).A, (BaseBubbleBuilder.ViewHolder)localObject3, ((TextItemBuilder.Holder)localObject3).j, paramChatMessage, -2, DisplayUtil.a(this.e, 21.0F));
+    super.a(((TextItemBuilder.Holder)localObject3).A, paramBaseChatItemLayout, Integer.valueOf(2131450253), paramChatMessage, -4, Boolean.valueOf(true));
+    paramView = this.d;
+    paramBaseChatItemLayout = ((TextItemBuilder.Holder)localObject3).A;
+    if (this.f != null) {
+      paramChatMessage = this.f.b;
     } else {
       paramChatMessage = null;
     }
@@ -422,14 +417,9 @@ public class WriteTogetherItemBuilder
     return super.a();
   }
   
-  protected String a(ChatMessage paramChatMessage)
-  {
-    return super.a(paramChatMessage);
-  }
-  
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131381261)
+    if (paramInt == 2131450309)
     {
       a(paramChatMessage, 8);
       return;
@@ -460,17 +450,27 @@ public class WriteTogetherItemBuilder
     }
   }
   
-  protected boolean b()
+  public int c(ChatMessage paramChatMessage)
   {
-    return super.b();
+    return super.c(paramChatMessage);
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    return super.d(paramChatMessage);
+  }
+  
+  protected boolean h()
+  {
+    return super.h();
   }
   
   public void onClick(View paramView)
   {
     ChatMessage localChatMessage = AIOUtils.a(paramView);
-    if (paramView.getId() == 2131381205) {
+    if (paramView.getId() == 2131450253) {
       a(localChatMessage, 6);
-    } else if (paramView.getId() == 2131381207) {
+    } else if (paramView.getId() == 2131450255) {
       a(localChatMessage, 5);
     }
     super.onClick(paramView);
@@ -479,7 +479,7 @@ public class WriteTogetherItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder
  * JD-Core Version:    0.7.0.1
  */

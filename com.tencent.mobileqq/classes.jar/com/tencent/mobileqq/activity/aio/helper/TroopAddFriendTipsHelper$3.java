@@ -12,17 +12,17 @@ class TroopAddFriendTipsHelper$3
   public void run()
   {
     ITroopBatchAddFriendService localITroopBatchAddFriendService = (ITroopBatchAddFriendService)TroopAddFriendTipsHelper.a(this.this$0).getRuntimeService(ITroopBatchAddFriendService.class, "");
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      localITroopBatchAddFriendService.getTroopBatchAddFriendMgr().c(this.jdField_a_of_type_JavaLangString);
+      localITroopBatchAddFriendService.getTroopBatchAddFriendMgr().o(this.b);
       return;
     }
-    localITroopBatchAddFriendService.getTroopBatchAddFriendMgr().d(this.jdField_a_of_type_JavaLangString);
+    localITroopBatchAddFriendService.getTroopBatchAddFriendMgr().n(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.3
  * JD-Core Version:    0.7.0.1
  */

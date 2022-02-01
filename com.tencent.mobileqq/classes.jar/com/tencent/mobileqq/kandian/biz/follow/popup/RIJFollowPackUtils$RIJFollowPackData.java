@@ -12,35 +12,35 @@ import org.jetbrains.annotations.Nullable;
 public final class RIJFollowPackUtils$RIJFollowPackData
 {
   @NotNull
-  private final TemplateBean jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
+  private final TemplateBean a;
   @NotNull
-  private final ViewBase jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+  private final ViewBase b;
   @NotNull
-  private final AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private final AbsBaseArticleInfo c;
   
   public RIJFollowPackUtils$RIJFollowPackData(@NotNull TemplateBean paramTemplateBean, @NotNull ViewBase paramViewBase, @NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = paramTemplateBean;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramViewBase;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    this.a = paramTemplateBean;
+    this.b = paramViewBase;
+    this.c = paramAbsBaseArticleInfo;
   }
   
   @NotNull
   public final TemplateBean a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
+    return this.a;
   }
   
   @NotNull
-  public final ViewBase a()
+  public final ViewBase b()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+    return this.b;
   }
   
   @NotNull
-  public final AbsBaseArticleInfo a()
+  public final AbsBaseArticleInfo c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    return this.c;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -49,7 +49,7 @@ public final class RIJFollowPackUtils$RIJFollowPackData
       if ((paramObject instanceof RIJFollowPackData))
       {
         paramObject = (RIJFollowPackData)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, paramObject.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramObject.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c))) {}
       }
       else
       {
@@ -61,7 +61,7 @@ public final class RIJFollowPackUtils$RIJFollowPackData
   
   public int hashCode()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
+    Object localObject = this.a;
     int k = 0;
     int i;
     if (localObject != null) {
@@ -69,14 +69,14 @@ public final class RIJFollowPackUtils$RIJFollowPackData
     } else {
       i = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+    localObject = this.b;
     int j;
     if (localObject != null) {
       j = localObject.hashCode();
     } else {
       j = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    localObject = this.c;
     if (localObject != null) {
       k = localObject.hashCode();
     }
@@ -88,18 +88,18 @@ public final class RIJFollowPackUtils$RIJFollowPackData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RIJFollowPackData(templateBean=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", container=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", articleInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.popup.RIJFollowPackUtils.RIJFollowPackData
  * JD-Core Version:    0.7.0.1
  */

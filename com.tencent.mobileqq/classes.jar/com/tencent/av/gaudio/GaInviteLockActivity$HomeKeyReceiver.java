@@ -32,7 +32,7 @@ class GaInviteLockActivity$HomeKeyReceiver
       }
       if (QLog.isColorLevel())
       {
-        paramContext = this.a.b;
+        paramContext = this.a.l;
         paramIntent = new StringBuilder();
         paramIntent.append("ACTION_SCREEN_OFF, isScreenLocked[");
         paramIntent.append(bool);

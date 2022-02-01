@@ -12,7 +12,7 @@ class DynamicNowManager$CustomizedReportImpl
   
   public void onReport(Bundle paramBundle)
   {
-    NowDataReporter localNowDataReporter = PluginManagerInterfaceImpl.a().a();
+    NowDataReporter localNowDataReporter = PluginManagerInterfaceImpl.a().d();
     if (localNowDataReporter != null) {
       localNowDataReporter.a(paramBundle);
     }
@@ -22,7 +22,7 @@ class DynamicNowManager$CustomizedReportImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.CustomizedReportImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -37,33 +37,23 @@ public class DetailCommentSegment
   extends SegmentView
 {
   public static final String KEY = "DetailCommentSegment";
-  private DetailEventCallback jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailEventCallback;
   public DetailFeedItem a;
-  private DetailCommentSegment.ClickNickCallback jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback = new DetailCommentSegment.ClickNickCallback(1);
-  private DetailCommentSegment.CommentTextOnTouchListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener = new DetailCommentSegment.CommentTextOnTouchListener();
-  private DetailCommentSegment.OnChildViewClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$OnChildViewClickListener = new DetailCommentSegment.OnChildViewClickListener(this);
   private boolean b;
+  private DetailEventCallback c;
+  private DetailCommentSegment.ClickNickCallback d = new DetailCommentSegment.ClickNickCallback(1);
+  private DetailCommentSegment.CommentTextOnTouchListener e = new DetailCommentSegment.CommentTextOnTouchListener();
+  private DetailCommentSegment.OnChildViewClickListener f = new DetailCommentSegment.OnChildViewClickListener(this);
   
   public DetailCommentSegment(Context paramContext)
   {
     super(paramContext);
   }
   
-  public void P_()
-  {
-    if (((StoryDetailListView)a()).a())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
   public int a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+      DetailFeedItem localDetailFeedItem = this.a;
       if (localDetailFeedItem != null) {
         return localDetailFeedItem.a(this.b).size();
       }
@@ -73,22 +63,22 @@ public class DetailCommentSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+    paramViewGroup = this.a;
     if ((paramViewGroup != null) && (paramInt <= paramViewGroup.a(this.b).size()))
     {
-      CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).get(paramInt);
+      CommentEntry localCommentEntry = (CommentEntry)this.a.a(this.b).get(paramInt);
       if (localCommentEntry == null)
       {
         SLog.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. data is null.");
         return paramBaseViewHolder.a();
       }
-      ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131363135);
-      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371862);
-      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131364942);
-      paramViewGroup = (LinearLayout)paramBaseViewHolder.a(2131364936);
-      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131370353);
-      ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131364953);
-      ProgressBar localProgressBar = (ProgressBar)paramBaseViewHolder.a(2131364974);
+      ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131428988);
+      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131439303);
+      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131431067);
+      paramViewGroup = (LinearLayout)paramBaseViewHolder.a(2131431059);
+      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131437615);
+      ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131431079);
+      ProgressBar localProgressBar = (ProgressBar)paramBaseViewHolder.a(2131431101);
       if (localCommentEntry.type == 1)
       {
         localImageView2.setVisibility(8);
@@ -105,7 +95,7 @@ public class DetailCommentSegment
         paramViewGroup.append(localCommentEntry.commentId);
         paramViewGroup.append(localCommentEntry.feedId);
         paramViewGroup.append(localCommentEntry.status);
-        paramViewGroup.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback.hashCode());
+        paramViewGroup.append(this.d.hashCode());
         paramViewGroup.append("bubble_style");
         paramViewGroup = paramViewGroup.toString();
         Object localObject = StoryQQTextCacher.a().a(paramViewGroup);
@@ -115,12 +105,12 @@ public class DetailCommentSegment
         }
         else
         {
-          localObject = SpannableStringUtils.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, localCommentEntry, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback);
+          localObject = SpannableStringUtils.b(this.l, this.a.a, localCommentEntry, this.d);
           localTextView2.setText((CharSequence)localObject);
           StoryQQTextCacher.a().a(paramViewGroup, (CharSequence)localObject);
         }
         paramViewGroup = ((UserManager)SuperManager.a(2)).c(localCommentEntry.authorUnionId);
-        Drawable localDrawable = ImageUtil.e();
+        Drawable localDrawable = ImageUtil.j();
         String str = "";
         if (paramViewGroup == null) {
           localObject = "";
@@ -140,7 +130,7 @@ public class DetailCommentSegment
           if ((!paramViewGroup.isVipButNoFriend()) && (!paramViewGroup.isNotDovUser()))
           {
             if (!TextUtils.isEmpty(paramViewGroup.qq)) {
-              localImageView2.setImageDrawable(FaceDrawable.getFaceDrawable(PlayModeUtils.a(), 1, paramViewGroup.qq, 3, localDrawable, localDrawable));
+              localImageView2.setImageDrawable(FaceDrawable.getFaceDrawable(PlayModeUtils.b(), 1, paramViewGroup.qq, 3, localDrawable, localDrawable));
             } else if (HttpUtil.isValidUrl(paramViewGroup.headUrl)) {
               UIUtils.b(localImageView2, paramViewGroup.headUrl, 60, 60, localDrawable, "QQStory_player");
             } else {
@@ -183,16 +173,16 @@ public class DetailCommentSegment
             localProgressBar.setVisibility(8);
           }
         }
-        localTextView2.setOnTouchListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener);
+        localTextView2.setOnTouchListener(this.e);
         localTextView2.setSpannableFactory(QQText.SPANNABLE_FACTORY);
         localTextView2.setTextColor(-16777216);
       }
-      if (QQStoryContext.a())
+      if (QQStoryContext.e())
       {
-        localTextView2.setBackgroundResource(2130846688);
-        localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166528));
-        localTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166528));
-        localTextView3.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166526));
+        localTextView2.setBackgroundResource(2130848240);
+        localTextView1.setTextColor(this.l.getResources().getColor(2131167385));
+        localTextView2.setTextColor(this.l.getResources().getColor(2131167385));
+        localTextView3.setBackgroundColor(this.l.getResources().getColor(2131167383));
       }
       return paramBaseViewHolder.a();
     }
@@ -202,41 +192,51 @@ public class DetailCommentSegment
   
   public CommentEntry a(int paramInt)
   {
-    DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+    DetailFeedItem localDetailFeedItem = this.a;
     if ((localDetailFeedItem != null) && (paramInt < localDetailFeedItem.a(this.b).size())) {
-      return (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).get(paramInt);
+      return (CommentEntry)this.a.a(this.b).get(paramInt);
     }
     return null;
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561659, paramViewGroup, false));
-    paramViewGroup.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$OnChildViewClickListener);
-    paramViewGroup.a(2131363135).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131371862).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131364943).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131364943).setOnLongClickListener(paramViewGroup);
-    paramViewGroup.a(2131370353).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131370353).setOnLongClickListener(paramViewGroup);
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628038, paramViewGroup, false));
+    paramViewGroup.a(this.f);
+    paramViewGroup.a(2131428988).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131439303).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131431068).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131431068).setOnLongClickListener(paramViewGroup);
+    paramViewGroup.a(2131437615).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131437615).setOnLongClickListener(paramViewGroup);
     return paramViewGroup;
-  }
-  
-  public String a()
-  {
-    return "DetailCommentSegment";
   }
   
   public void a(DetailEventCallback paramDetailEventCallback)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailEventCallback = paramDetailEventCallback;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback.a(paramDetailEventCallback);
+    this.c = paramDetailEventCallback;
+    this.d.a(paramDetailEventCallback);
   }
   
   public void a(DetailFeedItem paramDetailFeedItem, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
+    this.a = paramDetailFeedItem;
     this.b = paramBoolean;
+  }
+  
+  public String b()
+  {
+    return "DetailCommentSegment";
+  }
+  
+  public void br_()
+  {
+    if (((StoryDetailListView)w()).b())
+    {
+      this.m = true;
+      return;
+    }
+    this.m = false;
   }
 }
 

@@ -2,35 +2,35 @@ package com.tencent.qqmini.sdk.launcher;
 
 public final class R$drawable
 {
-  public static final int mini_sdk_about = 2130841096;
-  public static final int mini_sdk_browser_report = 2130841139;
-  public static final int mini_sdk_channel_qq = 2130841140;
-  public static final int mini_sdk_channel_qzone = 2130841141;
-  public static final int mini_sdk_channel_wx_friend = 2130841142;
-  public static final int mini_sdk_channel_wx_moment = 2130841143;
-  public static final int mini_sdk_favorite = 2130841186;
-  public static final int mini_sdk_restart_miniapp = 2130841250;
-  public static final int mini_sdk_skin_switch_thumb_activited = 2130841261;
-  public static final int mini_sdk_skin_switch_thumb_activited_pressed = 2130841262;
-  public static final int mini_sdk_skin_switch_thumb_disabled = 2130841263;
-  public static final int mini_sdk_skin_switch_thumb_disabled_pressed = 2130841264;
-  public static final int mini_sdk_skin_switch_track = 2130841265;
-  public static final int mini_sdk_skin_switch_track_activited = 2130841266;
-  public static final int mini_sdk_skin_tips_newmessage = 2130841267;
-  public static final int mini_sdk_switch_inner = 2130841273;
-  public static final int mini_sdk_switch_track = 2130841274;
-  public static final int mini_sdk_top_btns_close_normal = 2130841279;
-  public static final int mini_sdk_top_btns_close_press = 2130841280;
-  public static final int mini_sdk_top_btns_close_white_normal = 2130841282;
-  public static final int mini_sdk_top_btns_close_white_press = 2130841283;
-  public static final int mini_sdk_top_btns_more_normal = 2130841285;
-  public static final int mini_sdk_top_btns_more_press = 2130841286;
-  public static final int mini_sdk_top_btns_more_white_normal = 2130841288;
-  public static final int mini_sdk_top_btns_more_white_press = 2130841289;
+  public static final int mini_sdk_about = com.tencent.qqmini.R.drawable.a;
+  public static final int mini_sdk_browser_report = com.tencent.qqmini.R.drawable.R;
+  public static final int mini_sdk_channel_qq = com.tencent.qqmini.R.drawable.S;
+  public static final int mini_sdk_channel_qzone = com.tencent.qqmini.R.drawable.T;
+  public static final int mini_sdk_channel_wx_friend = com.tencent.qqmini.R.drawable.U;
+  public static final int mini_sdk_channel_wx_moment = com.tencent.qqmini.R.drawable.V;
+  public static final int mini_sdk_favorite = com.tencent.qqmini.R.drawable.aM;
+  public static final int mini_sdk_restart_miniapp = com.tencent.qqmini.R.drawable.bX;
+  public static final int mini_sdk_skin_switch_thumb_activited = com.tencent.qqmini.R.drawable.ci;
+  public static final int mini_sdk_skin_switch_thumb_activited_pressed = com.tencent.qqmini.R.drawable.cj;
+  public static final int mini_sdk_skin_switch_thumb_disabled = com.tencent.qqmini.R.drawable.ck;
+  public static final int mini_sdk_skin_switch_thumb_disabled_pressed = com.tencent.qqmini.R.drawable.cl;
+  public static final int mini_sdk_skin_switch_track = com.tencent.qqmini.R.drawable.cm;
+  public static final int mini_sdk_skin_switch_track_activited = com.tencent.qqmini.R.drawable.cn;
+  public static final int mini_sdk_skin_tips_newmessage = com.tencent.qqmini.R.drawable.co;
+  public static final int mini_sdk_switch_inner = com.tencent.qqmini.R.drawable.cu;
+  public static final int mini_sdk_switch_track = com.tencent.qqmini.R.drawable.cv;
+  public static final int mini_sdk_top_btns_close_normal = com.tencent.qqmini.R.drawable.cA;
+  public static final int mini_sdk_top_btns_close_press = com.tencent.qqmini.R.drawable.cB;
+  public static final int mini_sdk_top_btns_close_white_normal = com.tencent.qqmini.R.drawable.cD;
+  public static final int mini_sdk_top_btns_close_white_press = com.tencent.qqmini.R.drawable.cE;
+  public static final int mini_sdk_top_btns_more_normal = com.tencent.qqmini.R.drawable.cG;
+  public static final int mini_sdk_top_btns_more_press = com.tencent.qqmini.R.drawable.cH;
+  public static final int mini_sdk_top_btns_more_white_normal = com.tencent.qqmini.R.drawable.cJ;
+  public static final int mini_sdk_top_btns_more_white_press = com.tencent.qqmini.R.drawable.cK;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.R.drawable
  * JD-Core Version:    0.7.0.1
  */

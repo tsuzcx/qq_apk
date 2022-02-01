@@ -27,31 +27,31 @@ class TroopInteractGiftAnimationController$2
       localStringBuilder.append("reportInteract: errorCode = ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", times = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", giftID = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       QLog.d("TroopInteractGiftAnimationController", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
+    this.c.interactState = paramRspBody.uint32_play_state.get();
+    this.c.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
+    this.c.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
+    if ((this.c.interactState == 2) && (paramRspBody.msg_finish_info.has()))
     {
       paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
+      this.c.interactText = paramRspBody.bytes_text.get().toStringUtf8();
+      this.c.participateNum = paramRspBody.uint32_participate_num.get();
+      this.c.interactFirstUin = paramRspBody.uint64_first_uin.get();
+      this.c.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
+      this.c.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a.a.getEntityManagerFactory().createEntityManager().update(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
+    if ((this.e.a != null) && (this.d)) {
+      this.e.a.d.getEntityManagerFactory().createEntityManager().update(this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.2
  * JD-Core Version:    0.7.0.1
  */

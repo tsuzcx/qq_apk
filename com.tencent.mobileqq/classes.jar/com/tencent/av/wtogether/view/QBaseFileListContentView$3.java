@@ -9,12 +9,12 @@ class QBaseFileListContentView$3
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.e != null)
     {
       int i = 0;
       while (i < this.a)
       {
-        this.this$0.a.expandGroup(i);
+        this.this$0.e.expandGroup(i);
         i += 1;
       }
     }
@@ -22,7 +22,7 @@ class QBaseFileListContentView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QBaseFileListContentView.3
  * JD-Core Version:    0.7.0.1
  */

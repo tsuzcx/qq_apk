@@ -20,7 +20,7 @@ public final class Oidb_0x66b$RspLikeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0x66b.Oidb_0x66b.RspLikeInfo
  * JD-Core Version:    0.7.0.1
  */

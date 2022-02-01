@@ -9,39 +9,39 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalUtils
 public class WSVerticalPageChatTopAreaController
   extends AbsWsUIGroup<Object>
 {
-  private final WSVerticalPageFragment a;
+  private final WSVerticalPageFragment g;
   
   public WSVerticalPageChatTopAreaController(WSVerticalPageFragment paramWSVerticalPageFragment)
   {
     super(paramWSVerticalPageFragment.getContext());
-    this.a = paramWSVerticalPageFragment;
+    this.g = paramWSVerticalPageFragment;
   }
   
   protected void a() {}
   
-  protected int b()
-  {
-    return 2131560008;
-  }
-  
   protected void b() {}
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    if (this.a == null) {
+    return 2131626051;
+  }
+  
+  protected void j()
+  {
+    if (this.g == null) {
       return;
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380469);
-    WSVerticalUtils.a(this.a.getBaseActivity(), localRelativeLayout);
-    a(2131380470).setOnClickListener(new WSVerticalPageChatTopAreaController.1(this));
-    a(2131380471).setOnClickListener(new WSVerticalPageChatTopAreaController.2(this));
+    RelativeLayout localRelativeLayout = (RelativeLayout)c(2131449422);
+    WSVerticalUtils.a(this.g.getBaseActivity(), localRelativeLayout);
+    c(2131449423).setOnClickListener(new WSVerticalPageChatTopAreaController.1(this));
+    c(2131449424).setOnClickListener(new WSVerticalPageChatTopAreaController.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageChatTopAreaController
  * JD-Core Version:    0.7.0.1
  */

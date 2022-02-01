@@ -14,45 +14,28 @@ import org.jetbrains.annotations.Nullable;
 public class CompressVideoTaskStep
   extends BaseStep
 {
-  @Nullable
-  private VideoCompressTask jdField_a_of_type_ComTencentMobileqqKandianBaseVideoCompressVideoCompressTask;
-  @Nullable
-  private IPublishTaskCallback jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskIPublishTaskCallback;
   @NotNull
-  private PublishTaskAutomator jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator;
+  private PublishTaskAutomator a;
+  @Nullable
+  private IPublishTaskCallback b;
+  private volatile boolean c = false;
+  private volatile boolean d = false;
   @NotNull
-  private RIJUgcVideoPublishManager jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskRIJUgcVideoPublishManager;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private volatile boolean b = false;
+  private RIJUgcVideoPublishManager e;
+  @Nullable
+  private VideoCompressTask f;
   
   public CompressVideoTaskStep(@NotNull QQAppInterface paramQQAppInterface, @NotNull PublishTaskAutomator paramPublishTaskAutomator, @Nullable IPublishTaskCallback paramIPublishTaskCallback)
   {
     super(paramPublishTaskAutomator, true, "UploadCoverTaskStep");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskRIJUgcVideoPublishManager = ((RIJUgcVideoPublishManager)paramQQAppInterface.getManager(QQManagerFactory.RIJ_UGC_VIDEO_PUBLISH_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator = paramPublishTaskAutomator;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskIPublishTaskCallback = paramIPublishTaskCallback;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.b = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoCompressVideoCompressTask;
-    if (localObject != null) {
-      ((VideoCompressTask)localObject).a();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator.a();
-    ((UgcVideo)localObject).status = UgcVideo.STATUS_PAUSE;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskRIJUgcVideoPublishManager.d((UgcVideo)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskIPublishTaskCallback;
-    if (localObject != null) {
-      ((IPublishTaskCallback)localObject).a(1, true, false, null);
-    }
+    this.e = ((RIJUgcVideoPublishManager)paramQQAppInterface.getManager(QQManagerFactory.RIJ_UGC_VIDEO_PUBLISH_MANAGER));
+    this.a = paramPublishTaskAutomator;
+    this.b = paramIPublishTaskCallback;
   }
   
   public boolean a()
   {
-    UgcVideo localUgcVideo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator.a();
+    UgcVideo localUgcVideo = this.a.e();
     String str = localUgcVideo.compressPath;
     boolean bool2 = false;
     int i;
@@ -95,12 +78,12 @@ public class CompressVideoTaskStep
     }
     if (i != 0)
     {
-      this.b = false;
+      this.d = false;
       localUgcVideo.startCompressTime = System.currentTimeMillis();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskIPublishTaskCallback.a(1, true, true, null);
+      this.b.a(1, true, true, null);
     }
     boolean bool1 = bool2;
     if (super.a())
@@ -115,20 +98,37 @@ public class CompressVideoTaskStep
   
   public boolean b()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      this.jdField_a_of_type_Boolean = true;
-      UgcVideo localUgcVideo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskAutomator.a();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoCompressVideoCompressTask = new VideoCompressTask(BaseApplicationImpl.getContext(), new CompressVideoTaskStep.1(this, localUgcVideo));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoCompressVideoCompressTask.execute(new String[] { localUgcVideo.filePath });
+      this.c = true;
+      UgcVideo localUgcVideo = this.a.e();
+      this.f = new VideoCompressTask(BaseApplicationImpl.getContext(), new CompressVideoTaskStep.1(this, localUgcVideo));
+      this.f.execute(new String[] { localUgcVideo.filePath });
       localUgcVideo.uploadVideoStatus = UgcVideo.SUBSTATUS_COMPRESS_VIDEO;
     }
     return false;
   }
+  
+  public void c()
+  {
+    super.c();
+    this.d = true;
+    Object localObject = this.f;
+    if (localObject != null) {
+      ((VideoCompressTask)localObject).a();
+    }
+    localObject = this.a.e();
+    ((UgcVideo)localObject).status = UgcVideo.STATUS_PAUSE;
+    this.e.d((UgcVideo)localObject);
+    localObject = this.b;
+    if (localObject != null) {
+      ((IPublishTaskCallback)localObject).a(1, true, false, null);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.CompressVideoTaskStep
  * JD-Core Version:    0.7.0.1
  */

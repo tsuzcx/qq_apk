@@ -47,10 +47,10 @@ public class CameraEmoticonInfoSender
       String str2 = paramCameraEmoticonInfo.path;
       String str3 = paramCameraEmoticonInfo.contextKey;
       lastTime = l;
-      if (((paramContext instanceof QBaseActivity)) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramEditText.jdField_a_of_type_Int, paramEditText.jdField_a_of_type_JavaLangString)))
+      if (((paramContext instanceof QBaseActivity)) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramEditText.a, paramEditText.b)))
       {
         paramCameraEmoticonInfo = (QBaseActivity)paramContext;
-        QQToast.a(paramAppRuntime.getApp(), HardCodeUtil.a(2131701523), 0).b(paramCameraEmoticonInfo.getTitleBarHeight());
+        QQToast.makeText(paramAppRuntime.getApp(), HardCodeUtil.a(2131899546), 0).show(paramCameraEmoticonInfo.getTitleBarHeight());
         return;
       }
       paramCameraEmoticonInfo = null;
@@ -68,7 +68,7 @@ public class CameraEmoticonInfoSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.sender.CameraEmoticonInfoSender
  * JD-Core Version:    0.7.0.1
  */

@@ -20,22 +20,22 @@ public class PttBufferImpl
   private void clearBufferTask(String paramString, boolean paramBoolean)
   {
     localBufferTask = (IPttBuffer.BufferTask)S_TASK_MAP.get(paramString);
-    if ((localBufferTask == null) || (localBufferTask.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    if ((localBufferTask == null) || (localBufferTask.b != null)) {}
     try
     {
-      localBufferTask.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      localBufferTask.b.close();
     }
     catch (Exception localException1)
     {
       try
       {
-        localBufferTask.jdField_a_of_type_JavaIoFileOutputStream.close();
-        localBufferTask.jdField_a_of_type_JavaIoFileOutputStream = null;
-        if ((!paramBoolean) || (localBufferTask.jdField_a_of_type_JavaIoFile == null)) {
+        localBufferTask.d.close();
+        localBufferTask.d = null;
+        if ((!paramBoolean) || (localBufferTask.c == null)) {
           break label77;
         }
-        localBufferTask.jdField_a_of_type_JavaIoFile.delete();
-        localBufferTask.jdField_a_of_type_JavaIoFile = null;
+        localBufferTask.c.delete();
+        localBufferTask.c = null;
         S_TASK_MAP.remove(paramString);
         return;
         localException1 = localException1;
@@ -45,50 +45,50 @@ public class PttBufferImpl
         break label48;
       }
     }
-    if (localBufferTask.jdField_a_of_type_JavaIoFileOutputStream == null) {}
+    if (localBufferTask.d == null) {}
   }
   
   private void writeBufferToFile(IPttBuffer.BufferTask paramBufferTask, boolean paramBoolean)
   {
-    if ((paramBufferTask != null) && (paramBufferTask.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
+    if ((paramBufferTask != null) && (paramBufferTask.b != null))
     {
       Object localObject;
-      if (paramBufferTask.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
+      if (paramBufferTask.b.size() > 0)
       {
-        if (paramBufferTask.jdField_a_of_type_JavaIoFile == null)
+        if (paramBufferTask.c == null)
         {
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(paramBufferTask.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramBufferTask.a);
           ((StringBuilder)localObject).append("~tmp");
           localObject = new File(((StringBuilder)localObject).toString());
           if (!((File)localObject).exists()) {
             ((File)localObject).createNewFile();
           }
-          paramBufferTask.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream((File)localObject);
-          paramBufferTask.jdField_a_of_type_JavaIoFile = ((File)localObject);
+          paramBufferTask.d = new FileOutputStream((File)localObject);
+          paramBufferTask.c = ((File)localObject);
         }
-        paramBufferTask.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramBufferTask.jdField_a_of_type_JavaIoFileOutputStream);
+        paramBufferTask.b.writeTo(paramBufferTask.d);
       }
       if (paramBoolean)
       {
-        if (paramBufferTask.jdField_a_of_type_JavaIoFileOutputStream != null)
+        if (paramBufferTask.d != null)
         {
-          paramBufferTask.jdField_a_of_type_JavaIoFileOutputStream.flush();
-          paramBufferTask.jdField_a_of_type_JavaIoFileOutputStream.close();
-          paramBufferTask.jdField_a_of_type_JavaIoFileOutputStream = null;
+          paramBufferTask.d.flush();
+          paramBufferTask.d.close();
+          paramBufferTask.d = null;
         }
-        if (paramBufferTask.jdField_a_of_type_JavaIoFile != null)
+        if (paramBufferTask.c != null)
         {
-          localObject = new File(paramBufferTask.jdField_a_of_type_JavaLangString);
+          localObject = new File(paramBufferTask.a);
           if (((File)localObject).exists()) {
             ((File)localObject).delete();
           }
-          if (!paramBufferTask.jdField_a_of_type_JavaIoFile.renameTo((File)localObject))
+          if (!paramBufferTask.c.renameTo((File)localObject))
           {
-            FileUtils.copyFile(paramBufferTask.jdField_a_of_type_JavaIoFile, (File)localObject);
-            paramBufferTask.jdField_a_of_type_JavaIoFile.delete();
+            FileUtils.copyFile(paramBufferTask.c, (File)localObject);
+            paramBufferTask.c.delete();
           }
-          paramBufferTask.jdField_a_of_type_JavaIoFile = null;
+          paramBufferTask.c = null;
         }
       }
     }
@@ -99,17 +99,17 @@ public class PttBufferImpl
     paramString = (IPttBuffer.BufferTask)S_TASK_MAP.get(paramString);
     if (paramString != null)
     {
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
-        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
+      if (paramString.b == null) {
+        paramString.b = new ByteArrayOutputStream(paramInt << 1);
       }
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
-      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < sMaxBufferSize) {}
+      paramString.b.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.b.size() < sMaxBufferSize) {}
     }
     try
     {
       writeBufferToFile(paramString, false);
       label67:
-      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      paramString.b.reset();
       return true;
     }
     catch (IOException paramArrayOfByte)
@@ -128,7 +128,7 @@ public class PttBufferImpl
     if ((IPttBuffer.BufferTask)S_TASK_MAP.get(paramString) == null)
     {
       IPttBuffer.BufferTask localBufferTask = new IPttBuffer.BufferTask();
-      localBufferTask.jdField_a_of_type_JavaLangString = paramString;
+      localBufferTask.a = paramString;
       S_TASK_MAP.put(paramString, localBufferTask);
     }
     return true;
@@ -137,12 +137,12 @@ public class PttBufferImpl
   public boolean flush(String paramString)
   {
     IPttBuffer.BufferTask localBufferTask = (IPttBuffer.BufferTask)S_TASK_MAP.get(paramString);
-    if ((localBufferTask != null) && (localBufferTask.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    if ((localBufferTask != null) && (localBufferTask.b != null)) {}
     try
     {
       writeBufferToFile(localBufferTask, true);
       label30:
-      localBufferTask.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      localBufferTask.b.reset();
       clearBufferTask(paramString, true);
       return true;
     }
@@ -164,7 +164,7 @@ public class PttBufferImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pttlogic.api.impl.PttBufferImpl
  * JD-Core Version:    0.7.0.1
  */

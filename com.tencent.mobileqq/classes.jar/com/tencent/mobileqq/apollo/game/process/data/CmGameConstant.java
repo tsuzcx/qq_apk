@@ -1,18 +1,9 @@
 package com.tencent.mobileqq.apollo.game.process.data;
 
-public class CmGameConstant
-{
-  public static String a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return "apollo_router_game.ltgame_redpkg_plankinfo_linkcmd_check_game";
-    }
-    return "ltgame_redpkg_plankinfo.check_game";
-  }
-}
+public class CmGameConstant {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.data.CmGameConstant
  * JD-Core Version:    0.7.0.1
  */

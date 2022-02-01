@@ -16,25 +16,25 @@ class EditTextDialog$4
   {
     if ((paramDynamicTextItem != null) && (paramInt > -1))
     {
-      paramView = paramDynamicTextItem.a(paramInt);
+      paramView = paramDynamicTextItem.b(paramInt);
       if (paramView != null)
       {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
-        if (paramView.equals(DynamicTextBuilder.a(paramDynamicTextItem.c(), paramInt)))
+        this.a.d.setText(paramView);
+        this.a.d.setSelection(this.a.d.length());
+        if (paramView.equals(DynamicTextBuilder.a(paramDynamicTextItem.k(), paramInt)))
         {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(EditTextDialog.a(this.a));
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-          if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-            this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
+          this.a.d.setOnClickListener(EditTextDialog.b(this.a));
+          this.a.d.setSelectAllOnFocus(true);
+          if (this.a.d.hasFocus()) {
+            this.a.d.selectAll();
           }
         }
         else
         {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
+          this.a.d.setOnClickListener(null);
         }
-        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(34);
+        if (this.a.c != null) {
+          this.a.c.a(34);
         }
       }
     }
@@ -46,7 +46,7 @@ class EditTextDialog$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog.4
  * JD-Core Version:    0.7.0.1
  */

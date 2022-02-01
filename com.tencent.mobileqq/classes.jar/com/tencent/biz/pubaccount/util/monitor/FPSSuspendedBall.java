@@ -14,9 +14,9 @@ import android.widget.TextView;
 class FPSSuspendedBall
   extends TextView
 {
-  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
-  private boolean jdField_a_of_type_Boolean;
+  private WindowManager.LayoutParams a;
+  private WindowManager b;
+  private boolean c;
   
   public FPSSuspendedBall(Context paramContext)
   {
@@ -36,18 +36,18 @@ class FPSSuspendedBall
   
   private void a(Context paramContext)
   {
-    setId(2131371443);
-    setBackgroundColor(paramContext.getResources().getColor(2131165338));
+    setId(2131438809);
+    setBackgroundColor(paramContext.getResources().getColor(2131165580));
     setText("60.00");
     setTextColor(-16711936);
     setGravity(17);
     setOnTouchListener(new FPSSuspendedBall.SuspendedBallTouchListener(this, null));
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams(-2, -2, 1000, 8, -3);
-    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    this.a = new WindowManager.LayoutParams(-2, -2, 1000, 8, -3);
+    paramContext = this.a;
     paramContext.gravity = 53;
     paramContext.y = 250;
     float f = getTextSize();
-    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    paramContext = this.a;
     paramContext.width = ((int)(5.0F * f));
     double d = f;
     Double.isNaN(d);
@@ -78,7 +78,7 @@ class FPSSuspendedBall
       i = (int)(d1 * 1.5D) + 0;
     }
     int j = i;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       localStringBuilder.append("\n");
       localStringBuilder.append(paramLong1);
@@ -92,11 +92,11 @@ class FPSSuspendedBall
       Double.isNaN(d1);
       j = (int)(d1 + d2 * 2.5D);
     }
-    if (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height != j)
+    if (this.a.height != j)
     {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = j;
+      this.a.height = j;
       if (getParent() != null) {
-        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        this.b.updateViewLayout(this, this.a);
       }
     }
     setText(localStringBuilder.toString());
@@ -104,18 +104,18 @@ class FPSSuspendedBall
   
   public void a(Activity paramActivity, WindowManager paramWindowManager)
   {
-    this.jdField_a_of_type_AndroidViewWindowManager = paramWindowManager;
+    this.b = paramWindowManager;
     paramActivity.getWindow().getDecorView().post(new FPSSuspendedBall.1(this, paramWindowManager));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall
  * JD-Core Version:    0.7.0.1
  */

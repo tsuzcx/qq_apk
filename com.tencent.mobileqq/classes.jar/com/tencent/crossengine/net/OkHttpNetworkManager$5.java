@@ -10,22 +10,22 @@ class OkHttpNetworkManager$5
   
   public void close(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Okhttp3WebSocket.close(paramInt, paramString);
+    this.a.close(paramInt, paramString);
   }
   
   public void sendMessage(String paramString)
   {
-    this.jdField_a_of_type_Okhttp3WebSocket.send(paramString);
+    this.a.send(paramString);
   }
   
   public void sendMessage(byte[] paramArrayOfByte, int paramInt)
   {
-    this.jdField_a_of_type_Okhttp3WebSocket.send(ByteString.of(paramArrayOfByte, 0, paramInt));
+    this.a.send(ByteString.of(paramArrayOfByte, 0, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.net.OkHttpNetworkManager.5
  * JD-Core Version:    0.7.0.1
  */

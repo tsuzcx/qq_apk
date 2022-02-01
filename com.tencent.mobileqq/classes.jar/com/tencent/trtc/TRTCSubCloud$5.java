@@ -15,7 +15,7 @@ class TRTCSubCloud$5
   {
     if (this.a != null)
     {
-      TRTCRoomInfo.UserInfo localUserInfo = TRTCSubCloud.access$5300(this.d).getUser(this.a);
+      TRTCRoomInfo.UserInfo localUserInfo = TRTCSubCloud.access$5400(this.d).getUser(this.a);
       StringBuilder localStringBuilder = null;
       Object localObject;
       if (this.b == 2)
@@ -33,7 +33,7 @@ class TRTCSubCloud$5
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("snapshotRemoteSubStreamView->userId: ");
               localStringBuilder.append(this.a);
-              TRTCSubCloud.access$5400((TRTCSubCloud)localObject, localStringBuilder.toString());
+              TRTCSubCloud.access$5500((TRTCSubCloud)localObject, localStringBuilder.toString());
               localObject = localUserInfo.subRender.render.getVideoRender();
             }
           }
@@ -54,7 +54,7 @@ class TRTCSubCloud$5
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("snapshotRemoteView->userId: ");
               localStringBuilder.append(this.a);
-              TRTCSubCloud.access$5500((TRTCSubCloud)localObject, localStringBuilder.toString());
+              TRTCSubCloud.access$5600((TRTCSubCloud)localObject, localStringBuilder.toString());
               localObject = localUserInfo.mainRender.render.getVideoRender();
             }
           }
@@ -65,7 +65,7 @@ class TRTCSubCloud$5
         ((e)localObject).a(new TRTCSubCloud.5.1(this));
         return;
       }
-      TRTCSubCloud.access$5700(this.d, new TRTCSubCloud.5.2(this));
+      TRTCSubCloud.access$5800(this.d, new TRTCSubCloud.5.2(this));
     }
   }
 }

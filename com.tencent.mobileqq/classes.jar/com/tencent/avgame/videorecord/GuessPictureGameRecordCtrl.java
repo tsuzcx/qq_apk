@@ -29,23 +29,23 @@ public class GuessPictureGameRecordCtrl
   extends GameVideoRecordBaseCtrl
   implements IGuessPictureGameRecordCtrl
 {
-  private long jdField_a_of_type_Long;
-  private QavVideoAudioRecorder jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
-  private GuessPictureGamePaintLogic jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic = new GuessPictureGamePaintLogic();
-  private GuessPictureGameResultMgr jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr = new GuessPictureGameResultMgr();
-  private IGuessPictureGameRecordCtrl.GameImageDataProvider jdField_a_of_type_ComTencentAvgameQavVideorecordIGuessPictureGameRecordCtrl$GameImageDataProvider;
-  private EncodeConfig jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private volatile boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private volatile boolean jdField_e_of_type_Boolean;
-  private int f;
+  private GuessPictureGamePaintLogic f = new GuessPictureGamePaintLogic();
+  private GuessPictureGameResultMgr g = new GuessPictureGameResultMgr();
+  private QavVideoAudioRecorder h;
+  private IGuessPictureGameRecordCtrl.GameImageDataProvider i;
+  private boolean j;
+  private long k;
+  private long l;
+  private boolean m;
+  private volatile boolean n;
+  private volatile boolean o;
+  private Runnable p;
+  private int q;
+  private int r;
+  private int s;
+  private int t;
+  private int u;
+  private EncodeConfig v;
   
   public GuessPictureGameRecordCtrl(Context paramContext)
   {
@@ -56,290 +56,58 @@ public class GuessPictureGameRecordCtrl
   {
     if (paramInt1 < 720)
     {
-      this.jdField_b_of_type_Int = paramInt1;
-      this.jdField_c_of_type_Int = paramInt2;
+      this.q = paramInt1;
+      this.r = paramInt2;
     }
     else
     {
-      this.jdField_b_of_type_Int = 720;
-      this.jdField_c_of_type_Int = ((int)(paramInt2 * (720.0F / paramInt1)));
+      this.q = 720;
+      this.r = ((int)(paramInt2 * (720.0F / paramInt1)));
     }
-    this.jdField_b_of_type_Int = ((ICaptureUtil)QRoute.api(ICaptureUtil.class)).alainSize(this.jdField_b_of_type_Int);
-    this.jdField_c_of_type_Int = ((ICaptureUtil)QRoute.api(ICaptureUtil.class)).alainSize(this.jdField_c_of_type_Int);
+    this.q = ((ICaptureUtil)QRoute.api(ICaptureUtil.class)).alainSize(this.q);
+    this.r = ((ICaptureUtil)QRoute.api(ICaptureUtil.class)).alainSize(this.r);
   }
   
   private void b(IGuessPictureGameRecordCtrl.GameImageDataProvider paramGameImageDataProvider, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentAvgameQavVideorecordIGuessPictureGameRecordCtrl$GameImageDataProvider = paramGameImageDataProvider;
+    this.i = paramGameImageDataProvider;
     a(paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr.a(b(), c(), this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic);
-    this.jdField_a_of_type_JavaLangRunnable = new GuessPictureGameRecordCtrl.1(this);
+    this.f.a(paramInt1, paramInt2, this.q, this.r);
+    this.g.a(o(), p(), this.f);
+    this.p = new GuessPictureGameRecordCtrl.1(this);
   }
   
-  private boolean f()
+  private boolean w()
   {
-    return GameEngine.a().a().c() == 2;
+    return GameEngine.a().s().o() == 2;
   }
   
-  private boolean g()
+  private boolean x()
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameQavVideorecordIGuessPictureGameRecordCtrl$GameImageDataProvider.b()) || (this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.b()))
+    if ((this.i.f()) || (this.f.b()))
     {
-      ArrayList localArrayList = this.jdField_a_of_type_ComTencentAvgameQavVideorecordIGuessPictureGameRecordCtrl$GameImageDataProvider.a();
-      this.f = this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.a(localArrayList);
-      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr.a(localArrayList);
-      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.a();
+      ArrayList localArrayList = this.i.g();
+      this.u = this.f.a(localArrayList);
+      this.g.a(localArrayList);
+      this.f.c();
       if (QLog.isColorLevel()) {
         QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "addNextFrame, dataList size:", Integer.valueOf(localArrayList.size()) });
       }
     }
-    if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder != null) && (this.f > 0) && (System.currentTimeMillis() - this.jdField_b_of_type_Long < this.jdField_e_of_type_Int))
+    if ((this.h != null) && (this.u > 0) && (System.currentTimeMillis() - this.l < this.t))
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a(3553, this.f, null, null, SystemClock.elapsedRealtimeNanos());
+      this.h.a(3553, this.u, null, null, SystemClock.elapsedRealtimeNanos());
       return true;
     }
     return false;
   }
   
-  protected String a()
-  {
-    return "GuessPictureGameRecordCtrl";
-  }
-  
-  public void a(int paramInt, Throwable paramThrowable)
-  {
-    this.jdField_c_of_type_Boolean = true;
-    k();
-    QLog.e("GuessPictureGameRecordCtrl", 1, paramThrowable, new Object[] { "onEncodeError, errorCode", Integer.valueOf(paramInt) });
-  }
-  
-  public void a(View paramView, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onAnswerViewShow, isRecording:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    }
-    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.a(paramView, paramInt, paramBoolean);
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr.a(paramBoolean);
-    }
-  }
-  
-  public void a(IGuessPictureGameRecordCtrl.GameImageDataProvider paramGameImageDataProvider, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameRecordCtrl", 2, "scheduleStartRecord");
-    }
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = true;
-      b(paramGameImageDataProvider, paramInt1, paramInt2);
-      long l = RecordUtils.b().jdField_b_of_type_Int * 1000;
-      paramGameImageDataProvider = GameEngine.a().a().a();
-      if ((f()) && (paramGameImageDataProvider.startGameTimeMills > 0L))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "scheduleStartRecord, gameRecordInfo:", paramGameImageDataProvider });
-        }
-        if ((paramGameImageDataProvider.videoFilePath != null) && (new File(paramGameImageDataProvider.videoFilePath).exists()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("GuessPictureGameRecordCtrl", 2, "scheduleStartRecord return, video file exists");
-          }
-          return;
-        }
-        this.jdField_a_of_type_Long = paramGameImageDataProvider.startGameTimeMills;
-        l = Math.min(Math.max(System.currentTimeMillis() - this.jdField_a_of_type_Long, l), 0L);
-      }
-      else
-      {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-      }
-      GameEngine.a().a().a(null, null, this.jdField_a_of_type_Long);
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "scheduleStartRecord indeed, delayTime:", Long.valueOf(l) });
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      boolean bool2 = QLog.isColorLevel();
-      boolean bool1 = false;
-      if (bool2) {
-        QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onEncodeFinish, mRecordStopped:", Boolean.valueOf(this.jdField_e_of_type_Boolean) });
-      }
-      this.jdField_d_of_type_Boolean = true;
-      if ((this.jdField_d_of_type_Boolean) && (this.jdField_e_of_type_Boolean))
-      {
-        paramString = this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr;
-        if (!this.jdField_c_of_type_Boolean) {
-          bool1 = true;
-        }
-        paramString.a(bool1, this.jdField_a_of_type_Long);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(ArrayList<GameImageData> paramArrayList)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr.a(paramArrayList);
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
-      if ((localQavVideoAudioRecorder != null) && (paramArrayOfByte != null)) {
-        localQavVideoAudioRecorder.a(paramArrayOfByte, SystemClock.elapsedRealtimeNanos() / 1000L);
-      }
-    }
-  }
-  
-  public void c(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onAnswerViewDismiss, isRecording:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    }
-    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGamePaintLogic.a(paramView);
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onActivityStop, mIsRecording:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    }
-    m();
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onGameOver, mIsRecording:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    }
-    m();
-  }
-  
-  public boolean e()
-  {
-    super.e();
-    n();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = new QavVideoAudioRecorder();
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig, this);
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameRecordCtrl", 2, "startRecord");
-    }
-    return true;
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onEncodeStart, mIsRecording:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      g();
-    }
-  }
-  
-  public void h()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QLog.e("GuessPictureGameRecordCtrl", 1, "onEncodeVideoFrame, mIsRecording false");
-      k();
-      return;
-    }
-    if (!g())
-    {
-      k();
-      if (QLog.isColorLevel()) {
-        QLog.e("GuessPictureGameRecordCtrl", 2, "onEncodeVideoFrame, stop record");
-      }
-    }
-  }
-  
-  public void i() {}
-  
-  public void k()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QLog.e("GuessPictureGameRecordCtrl", 1, new Object[] { "endRecord, mIsRecording:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      return;
-    }
-    super.k();
-    QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
-    if (localQavVideoAudioRecorder != null)
-    {
-      localQavVideoAudioRecorder.a();
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.b();
-    }
-  }
-  
-  public void m()
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool2 = QLog.isColorLevel();
-        bool1 = true;
-        if (bool2) {
-          QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "stopScheduledRecord, mEncodeFinished:", Boolean.valueOf(this.jdField_d_of_type_Boolean) });
-        }
-        this.jdField_e_of_type_Boolean = true;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-          if ((this.jdField_d_of_type_Boolean) && (this.jdField_e_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
-          {
-            GuessPictureGameResultMgr localGuessPictureGameResultMgr = this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr;
-            if (this.jdField_c_of_type_Boolean) {
-              break label125;
-            }
-            localGuessPictureGameResultMgr.a(bool1, this.jdField_a_of_type_Long);
-          }
-        }
-        else
-        {
-          k();
-        }
-        this.jdField_b_of_type_Boolean = false;
-        return;
-      }
-      finally {}
-      label125:
-      boolean bool1 = false;
-    }
-  }
-  
-  public void n()
-  {
-    this.jdField_d_of_type_Int = 5120000;
-    this.jdField_e_of_type_Int = (RecordUtils.b().jdField_c_of_type_Int * 1000);
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEncodeConfig = new EncodeConfig(this.jdField_a_of_type_ComTencentAvgameQavVideorecordGuessPictureGameResultMgr.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 1, false, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "initRecordCodecParams, bitRate:", Integer.valueOf(this.jdField_d_of_type_Int) });
-    }
-  }
-  
-  public void o()
+  public void F()
   {
     if (QLog.isColorLevel()) {
       QLog.d("GuessPictureGameRecordCtrl", 2, "onVideoMuxerWaiting");
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
       try
       {
@@ -351,7 +119,239 @@ public class GuessPictureGameRecordCtrl
           QLog.e("GuessPictureGameRecordCtrl", 2, new Object[] { "onVideoMuxerWaiting", localException.getMessage() });
         }
       }
-      g();
+      x();
+    }
+  }
+  
+  public void a(int paramInt, Throwable paramThrowable)
+  {
+    this.m = true;
+    m();
+    QLog.e("GuessPictureGameRecordCtrl", 1, paramThrowable, new Object[] { "onEncodeError, errorCode", Integer.valueOf(paramInt) });
+  }
+  
+  public void a(View paramView, int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onAnswerViewShow, isRecording:", Boolean.valueOf(this.d) });
+    }
+    this.f.a(paramView, paramInt, paramBoolean);
+    if ((!this.d) && (this.g.a)) {
+      this.g.a(paramBoolean);
+    }
+  }
+  
+  public void a(IGuessPictureGameRecordCtrl.GameImageDataProvider paramGameImageDataProvider, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessPictureGameRecordCtrl", 2, "scheduleStartRecord");
+    }
+    if (!this.j)
+    {
+      this.j = true;
+      b(paramGameImageDataProvider, paramInt1, paramInt2);
+      long l1 = RecordUtils.b().b * 1000;
+      paramGameImageDataProvider = GameEngine.a().s().v();
+      if ((w()) && (paramGameImageDataProvider.startGameTimeMills > 0L))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "scheduleStartRecord, gameRecordInfo:", paramGameImageDataProvider });
+        }
+        if ((paramGameImageDataProvider.videoFilePath != null) && (new File(paramGameImageDataProvider.videoFilePath).exists()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("GuessPictureGameRecordCtrl", 2, "scheduleStartRecord return, video file exists");
+          }
+          return;
+        }
+        this.k = paramGameImageDataProvider.startGameTimeMills;
+        l1 = Math.min(Math.max(System.currentTimeMillis() - this.k, l1), 0L);
+      }
+      else
+      {
+        this.k = System.currentTimeMillis();
+      }
+      GameEngine.a().s().a(null, null, this.k);
+      ThreadManager.getSubThreadHandler().postDelayed(this.p, l1);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "scheduleStartRecord indeed, delayTime:", Long.valueOf(l1) });
+      }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      boolean bool2 = QLog.isColorLevel();
+      boolean bool1 = false;
+      if (bool2) {
+        QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onEncodeFinish, mRecordStopped:", Boolean.valueOf(this.o) });
+      }
+      this.n = true;
+      if ((this.n) && (this.o))
+      {
+        paramString = this.g;
+        if (!this.m) {
+          bool1 = true;
+        }
+        paramString.a(bool1, this.k);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(ArrayList<GameImageData> paramArrayList)
+  {
+    if ((!this.d) && (this.g.a)) {
+      this.g.a(paramArrayList);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.d)
+    {
+      QavVideoAudioRecorder localQavVideoAudioRecorder = this.h;
+      if ((localQavVideoAudioRecorder != null) && (paramArrayOfByte != null)) {
+        localQavVideoAudioRecorder.a(paramArrayOfByte, SystemClock.elapsedRealtimeNanos() / 1000L);
+      }
+    }
+  }
+  
+  public void c(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onAnswerViewDismiss, isRecording:", Boolean.valueOf(this.d) });
+    }
+    this.f.a(paramView);
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onActivityStop, mIsRecording:", Boolean.valueOf(this.d) });
+    }
+    u();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onGameOver, mIsRecording:", Boolean.valueOf(this.d) });
+    }
+    u();
+  }
+  
+  protected String g()
+  {
+    return "GuessPictureGameRecordCtrl";
+  }
+  
+  public boolean l()
+  {
+    super.l();
+    v();
+    this.m = false;
+    this.l = System.currentTimeMillis();
+    this.h = new QavVideoAudioRecorder();
+    this.h.a(this.v, this);
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessPictureGameRecordCtrl", 2, "startRecord");
+    }
+    return true;
+  }
+  
+  public void m()
+  {
+    if (!this.d)
+    {
+      QLog.e("GuessPictureGameRecordCtrl", 1, new Object[] { "endRecord, mIsRecording:", Boolean.valueOf(this.d) });
+      return;
+    }
+    super.m();
+    QavVideoAudioRecorder localQavVideoAudioRecorder = this.h;
+    if (localQavVideoAudioRecorder != null)
+    {
+      localQavVideoAudioRecorder.a();
+      this.h.d();
+    }
+  }
+  
+  public void q()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "onEncodeStart, mIsRecording:", Boolean.valueOf(this.d) });
+    }
+    if (this.d) {
+      x();
+    }
+  }
+  
+  public void r()
+  {
+    if (!this.d)
+    {
+      QLog.e("GuessPictureGameRecordCtrl", 1, "onEncodeVideoFrame, mIsRecording false");
+      m();
+      return;
+    }
+    if (!x())
+    {
+      m();
+      if (QLog.isColorLevel()) {
+        QLog.e("GuessPictureGameRecordCtrl", 2, "onEncodeVideoFrame, stop record");
+      }
+    }
+  }
+  
+  public void s() {}
+  
+  public void u()
+  {
+    for (;;)
+    {
+      try
+      {
+        boolean bool2 = QLog.isColorLevel();
+        bool1 = true;
+        if (bool2) {
+          QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "stopScheduledRecord, mEncodeFinished:", Boolean.valueOf(this.n) });
+        }
+        this.o = true;
+        if (!this.d)
+        {
+          ThreadManager.getSubThreadHandler().removeCallbacks(this.p);
+          if ((this.n) && (this.o) && (this.j))
+          {
+            GuessPictureGameResultMgr localGuessPictureGameResultMgr = this.g;
+            if (this.m) {
+              break label125;
+            }
+            localGuessPictureGameResultMgr.a(bool1, this.k);
+          }
+        }
+        else
+        {
+          m();
+        }
+        this.j = false;
+        return;
+      }
+      finally {}
+      label125:
+      boolean bool1 = false;
+    }
+  }
+  
+  public void v()
+  {
+    this.s = 5120000;
+    this.t = (RecordUtils.b().c * 1000);
+    this.v = new EncodeConfig(this.g.b, this.q, this.r, this.s, 1, false, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("GuessPictureGameRecordCtrl", 2, new Object[] { "initRecordCodecParams, bitRate:", Integer.valueOf(this.s) });
     }
   }
 }

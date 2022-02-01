@@ -22,9 +22,9 @@ public class QQRegisterAction
     super(paramQQAppInterface, paramContext);
   }
   
-  private Class a()
+  private Class c()
   {
-    ILoginRegisterApi localILoginRegisterApi = a();
+    ILoginRegisterApi localILoginRegisterApi = b();
     Class localClass = localILoginRegisterApi.getRegisterPhoneNumActivityClass();
     int i = BaseApplicationImpl.getApplication().appActivities.size() - 1;
     while (i >= 0)
@@ -59,29 +59,24 @@ public class QQRegisterAction
     return localClass;
   }
   
-  private boolean c()
+  private boolean d()
   {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid");
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "CliOper", "", "", "0X80077DE", "0X80077DE", 0, 0, (String)localObject, "", "", "");
-    localObject = a();
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, (Class)localObject);
-    if (a().getRegisterPhoneNumActivityClass() == localObject) {
+    Object localObject = (String)this.f.get("appid");
+    ReportController.b(this.a, "CliOper", "", "", "0X80077DE", "0X80077DE", 0, 0, (String)localObject, "", "", "");
+    localObject = c();
+    Intent localIntent = new Intent(this.b, (Class)localObject);
+    if (b().getRegisterPhoneNumActivityClass() == localObject) {
       localIntent.putExtra("key_report_extra_from", 5);
     }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    this.b.startActivity(localIntent);
     return true;
-  }
-  
-  protected ILoginRegisterApi a()
-  {
-    return (ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class);
   }
   
   public boolean a()
   {
     try
     {
-      boolean bool = c();
+      boolean bool = d();
       return bool;
     }
     catch (Exception localException)
@@ -90,14 +85,19 @@ public class QQRegisterAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QQRegisterAction", 1, localStringBuilder.toString());
-      b_("QQRegisterAction");
+      h_("QQRegisterAction");
     }
     return false;
+  }
+  
+  protected ILoginRegisterApi b()
+  {
+    return (ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQRegisterAction
  * JD-Core Version:    0.7.0.1
  */

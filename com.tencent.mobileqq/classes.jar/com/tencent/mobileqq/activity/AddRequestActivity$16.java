@@ -12,19 +12,19 @@ class AddRequestActivity$16
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = this.a;
-    if (AddRequestActivity.c(paramDialogInterface, AddRequestActivity.e(paramDialogInterface)))
+    if (AddRequestActivity.c(paramDialogInterface, AddRequestActivity.k(paramDialogInterface)))
     {
-      AddRequestActivity.b(this.a, 2131718766, 1000L, false);
+      AddRequestActivity.b(this.a, 2131916272, 1000L, false);
       paramDialogInterface = this.a;
-      AddRequestActivity.a(paramDialogInterface, AddRequestActivity.e(paramDialogInterface));
+      AddRequestActivity.a(paramDialogInterface, AddRequestActivity.k(paramDialogInterface));
     }
-    AddRequestActivity.a(this.a).dismiss();
+    AddRequestActivity.l(this.a).dismiss();
     AddRequestActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.16
  * JD-Core Version:    0.7.0.1
  */

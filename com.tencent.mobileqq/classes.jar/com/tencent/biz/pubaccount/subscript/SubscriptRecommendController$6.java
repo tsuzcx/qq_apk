@@ -17,20 +17,20 @@ class SubscriptRecommendController$6
   
   public void onClick(View paramView)
   {
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
+    ReportController.b(this.a.f, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
+    ReportController.b(this.a.f, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
     Object localObject = this.a;
-    ((SubscriptRecommendController)localObject).jdField_a_of_type_Boolean = false;
-    ((SubscriptRecommendController)localObject).jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
+    ((SubscriptRecommendController)localObject).i = false;
+    ((SubscriptRecommendController)localObject).h.setEnabled(false);
     ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
-    if (this.a.jdField_a_of_type_Int == 1)
+    if (this.a.j == 1)
     {
       SubscriptRecommendController.a(this.a);
     }
-    else if (this.a.jdField_a_of_type_Int == 3)
+    else if (this.a.j == 3)
     {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-      if ((localObject != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
+      localObject = this.a.f.getHandler(SubscriptFeedsActivity.class);
+      if ((localObject != null) && (this.a.e.get() != null) && ((this.a.e.get() instanceof SubscriptFeedsActivity))) {
         ((MqqHandler)localObject).sendEmptyMessage(1006);
       }
     }
@@ -39,7 +39,7 @@ class SubscriptRecommendController$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6
  * JD-Core Version:    0.7.0.1
  */

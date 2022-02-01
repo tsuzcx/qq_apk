@@ -4,20 +4,26 @@ import android.graphics.Rect;
 
 public class ApngDrawableWrapper$ScaleRectSet
 {
-  public Rect a;
-  public String a;
+  public Rect a = new Rect();
   public Rect b = new Rect();
+  public String c;
   
-  public ApngDrawableWrapper$ScaleRectSet()
+  public static String a(Rect paramRect1, Rect paramRect2, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramRect1.hashCode());
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramRect2.hashCode());
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
-  public static ScaleRectSet a(Rect paramRect1, Rect paramRect2, int paramInt)
+  public static ScaleRectSet b(Rect paramRect1, Rect paramRect2, int paramInt)
   {
     ScaleRectSet localScaleRectSet = new ScaleRectSet();
-    localScaleRectSet.jdField_a_of_type_JavaLangString = a(paramRect1, paramRect2, paramInt);
-    localScaleRectSet.jdField_a_of_type_AndroidGraphicsRect.set(paramRect1);
+    localScaleRectSet.c = a(paramRect1, paramRect2, paramInt);
+    localScaleRectSet.a.set(paramRect1);
     localScaleRectSet.b.set(paramRect2);
     if ((paramInt != 0) && (paramRect1.width() != 0) && (paramRect1.height() != 0) && (paramRect2.width() != 0))
     {
@@ -34,14 +40,14 @@ public class ApngDrawableWrapper$ScaleRectSet
         if (f1 > f2)
         {
           paramInt = (int)(paramRect1.height() * f2);
-          localScaleRectSet.jdField_a_of_type_AndroidGraphicsRect.left = ((paramRect1.width() - paramInt) / 2);
-          paramRect1 = localScaleRectSet.jdField_a_of_type_AndroidGraphicsRect;
+          localScaleRectSet.a.left = ((paramRect1.width() - paramInt) / 2);
+          paramRect1 = localScaleRectSet.a;
           paramRect1.right = (paramRect1.left + paramInt);
           return localScaleRectSet;
         }
         paramInt = (int)(paramRect1.width() / f2);
-        localScaleRectSet.jdField_a_of_type_AndroidGraphicsRect.top = ((paramRect1.height() - paramInt) / 2);
-        paramRect1 = localScaleRectSet.jdField_a_of_type_AndroidGraphicsRect;
+        localScaleRectSet.a.top = ((paramRect1.height() - paramInt) / 2);
+        paramRect1 = localScaleRectSet.a;
         paramRect1.bottom = (paramRect1.top + paramInt);
         return localScaleRectSet;
       }
@@ -63,21 +69,10 @@ public class ApngDrawableWrapper$ScaleRectSet
     }
     return localScaleRectSet;
   }
-  
-  public static String a(Rect paramRect1, Rect paramRect2, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramRect1.hashCode());
-    localStringBuilder.append(",");
-    localStringBuilder.append(paramRect2.hashCode());
-    localStringBuilder.append(",");
-    localStringBuilder.append(paramInt);
-    return localStringBuilder.toString();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.apng.ApngDrawableWrapper.ScaleRectSet
  * JD-Core Version:    0.7.0.1
  */

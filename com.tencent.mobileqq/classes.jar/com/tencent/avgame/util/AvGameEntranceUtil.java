@@ -38,12 +38,12 @@ public class AvGameEntranceUtil
       default: 
         return null;
       case 105: 
-        return paramContext.getResources().getString(2131690356);
+        return paramContext.getResources().getString(2131887267);
       case 104: 
-        return paramContext.getResources().getString(2131690355);
+        return paramContext.getResources().getString(2131887266);
       }
     }
-    return paramContext.getResources().getString(2131690357);
+    return paramContext.getResources().getString(2131887268);
   }
   
   public static String a(boolean paramBoolean, Context paramContext, int paramInt, long paramLong, String paramString)
@@ -57,20 +57,20 @@ public class AvGameEntranceUtil
           if ((!TextUtils.isEmpty(paramString)) && (!a(paramInt))) {
             break;
           }
-          return paramContext.getResources().getString(2131690493);
+          return paramContext.getResources().getString(2131887404);
         case 120: 
-          return paramContext.getResources().getString(2131690320);
+          return paramContext.getResources().getString(2131887231);
         case 119: 
-          return paramContext.getResources().getString(2131690313);
+          return paramContext.getResources().getString(2131887224);
         case 117: 
-          return String.format(paramContext.getResources().getString(2131690312), new Object[] { new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(paramLong * 1000L)) });
+          return String.format(paramContext.getResources().getString(2131887223), new Object[] { new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(paramLong * 1000L)) });
         case 116: 
-          return paramContext.getResources().getString(2131690318);
+          return paramContext.getResources().getString(2131887229);
         case 115: 
-          return paramContext.getResources().getString(2131690317);
+          return paramContext.getResources().getString(2131887228);
         }
       } else {
-        return paramContext.getResources().getString(2131690319);
+        return paramContext.getResources().getString(2131887230);
       }
     }
     else if (paramInt != 112)
@@ -85,25 +85,25 @@ public class AvGameEntranceUtil
             if ((!TextUtils.isEmpty(paramString)) && (!a(paramInt))) {
               break;
             }
-            return paramContext.getResources().getString(2131690501);
+            return paramContext.getResources().getString(2131887412);
           case 119: 
-            return paramContext.getResources().getString(2131690313);
+            return paramContext.getResources().getString(2131887224);
           case 117: 
-            return String.format(paramContext.getResources().getString(2131690312), new Object[] { new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(paramLong * 1000L)) });
+            return String.format(paramContext.getResources().getString(2131887223), new Object[] { new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(paramLong * 1000L)) });
           case 116: 
-            return paramContext.getResources().getString(2131690318);
+            return paramContext.getResources().getString(2131887229);
           }
           break;
         case 104: 
         case 105: 
-          return paramContext.getResources().getString(2131690491);
+          return paramContext.getResources().getString(2131887402);
         }
       } else {
-        return paramContext.getResources().getString(2131690503);
+        return paramContext.getResources().getString(2131887414);
       }
     }
     else {
-      paramString = paramContext.getResources().getString(2131690319);
+      paramString = paramContext.getResources().getString(2131887230);
     }
     return paramString;
   }
@@ -113,7 +113,7 @@ public class AvGameEntranceUtil
     if ((paramContext != null) && (paramString != null))
     {
       paramContext = DialogUtil.a(paramContext, 230);
-      paramContext.setMessage(paramString).setPositiveButton(2131690499, new AvGameEntranceUtil.1());
+      paramContext.setMessage(paramString).setPositiveButton(2131887410, new AvGameEntranceUtil.1());
       paramContext.show();
       return;
     }

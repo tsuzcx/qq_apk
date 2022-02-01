@@ -7,7 +7,7 @@ class MultiViewBlock$1$4
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.a().notifyItemRangeInserted(this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.c(this.jdField_a_of_type_Int), this.b);
+    this.c.a.B().notifyItemRangeInserted(this.c.a.f(this.a), this.b);
   }
 }
 

@@ -1,62 +1,27 @@
 package com.qq.android.dexposed.callbacks;
 
-import com.qq.android.dexposed.DexposedBridge;
-
 public abstract class XCallback
   implements Comparable<XCallback>
 {
-  public static final int PRIORITY_DEFAULT = 50;
-  public static final int PRIORITY_HIGHEST = 10000;
-  public static final int PRIORITY_LOWEST = -10000;
-  public final int priority;
+  public final int b;
   
   public XCallback()
   {
-    this.priority = 50;
+    this.b = 50;
   }
   
   public XCallback(int paramInt)
   {
-    this.priority = paramInt;
+    this.b = paramInt;
   }
   
-  public static final void callAll(XCallback.Param paramParam)
-  {
-    if (paramParam.callbacks != null)
-    {
-      int i = 0;
-      for (;;)
-      {
-        if (i >= paramParam.callbacks.length) {
-          return;
-        }
-        try
-        {
-          ((XCallback)paramParam.callbacks[i]).call(paramParam);
-        }
-        catch (Throwable localThrowable)
-        {
-          DexposedBridge.log(localThrowable);
-        }
-        i += 1;
-      }
-    }
-    paramParam = new IllegalStateException("This object was not created for use with callAll");
-    for (;;)
-    {
-      throw paramParam;
-    }
-  }
-  
-  protected void call(XCallback.Param paramParam) {}
-  
-  public int compareTo(XCallback paramXCallback)
+  public int a(XCallback paramXCallback)
   {
     if (this == paramXCallback) {
       return 0;
     }
-    int i = paramXCallback.priority;
-    int j = this.priority;
+    int i = paramXCallback.b;
+    int j = this.b;
     if (i != j) {
       return i - j;
     }

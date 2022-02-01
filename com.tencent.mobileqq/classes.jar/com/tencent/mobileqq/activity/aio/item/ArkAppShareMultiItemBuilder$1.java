@@ -22,7 +22,7 @@ class ArkAppShareMultiItemBuilder$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = (MessageForArkApp)MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    paramDialogInterface = (MessageForArkApp)MessageRecordFactory.a(this.a);
     if (paramDialogInterface.msgData == null)
     {
       if (paramDialogInterface.ark_app_message == null)
@@ -32,16 +32,16 @@ class ArkAppShareMultiItemBuilder$1
       }
       paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppShareMultiItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    if (this.b.f != null)
     {
-      if ((paramDialogInterface.ark_app_message.containStructMsg == null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg != null)) {
-        paramDialogInterface.ark_app_message.containStructMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg;
+      if ((paramDialogInterface.ark_app_message.containStructMsg == null) && (this.a.ark_app_message.containStructMsg != null)) {
+        paramDialogInterface.ark_app_message.containStructMsg = this.a.ark_app_message.containStructMsg;
       }
       paramInt = paramDialogInterface.getProcessState();
       if (QLog.isColorLevel()) {
-        QLog.d("ArkAppShareMultiItemBuilder", 2, new Object[] { "AAShare.get multiItem resend msg stat=", Integer.valueOf(paramInt), ", old.uniseq=", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq), ", new uniseq=", Long.valueOf(paramDialogInterface.uniseq) });
+        QLog.d("ArkAppShareMultiItemBuilder", 2, new Object[] { "AAShare.get multiItem resend msg stat=", Integer.valueOf(paramInt), ", old.uniseq=", Long.valueOf(this.a.uniseq), ", new uniseq=", Long.valueOf(paramDialogInterface.uniseq) });
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppShareMultiItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppShareMultiItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppShareMultiItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+      this.b.d.getMessageFacade().h(this.b.f.b, this.b.f.a, this.a.uniseq);
       if ((paramInt != 1002) && (paramInt != 0))
       {
         AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
@@ -51,14 +51,14 @@ class ArkAppShareMultiItemBuilder$1
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppShareMultiItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramDialogInterface, null, true);
+        this.b.d.getMessageFacade().a(paramDialogInterface, null, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppShareMultiItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

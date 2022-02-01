@@ -7,8 +7,8 @@ class VideoController$11
   
   public void run()
   {
-    if (this.this$0.b != null) {
-      this.this$0.b.onCompletion(null);
+    if (this.this$0.H != null) {
+      this.this$0.H.onCompletion(null);
     }
     VideoController.a(this.this$0, null);
   }

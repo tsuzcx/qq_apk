@@ -19,23 +19,6 @@ import java.util.Map;
 
 public class PGCShortContentUtils
 {
-  private static String a(String paramString)
-  {
-    paramString = JumpParser.a(RIJQQAppInterfaceUtil.a(), BaseApplicationImpl.getContext(), paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.a;
-      if (paramString != null)
-      {
-        paramString = (String)paramString.get("target");
-        if (!TextUtils.isEmpty(paramString)) {
-          return paramString;
-        }
-      }
-    }
-    return null;
-  }
-  
   public static String a(String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -48,7 +31,7 @@ public class PGCShortContentUtils
     {
       do
       {
-        paramString2 = a(paramString1);
+        paramString2 = b(paramString1);
         if (TextUtils.isEmpty(paramString2)) {
           break;
         }
@@ -93,10 +76,10 @@ public class PGCShortContentUtils
     if (paramAbsBaseArticleInfo.isCardJumpUrlAvailable == 1)
     {
       paramAbsBaseArticleInfo.clickJumpTarget = a(paramAbsBaseArticleInfo.getCardJumpUrl(), "-1");
-      RIJJumpUtils.a(paramContext, paramAbsBaseArticleInfo.getCardJumpUrl());
+      RIJJumpUtils.c(paramContext, paramAbsBaseArticleInfo.getCardJumpUrl());
       return;
     }
-    paramAbsBaseArticleInfo.clickJumpTarget = a(ReadInJoyConstants.e, "-1");
+    paramAbsBaseArticleInfo.clickJumpTarget = a(ReadInJoyConstants.f, "-1");
     RIJJumpUtils.a(paramContext, paramAbsBaseArticleInfo, paramBoolean);
   }
   
@@ -104,7 +87,7 @@ public class PGCShortContentUtils
   {
     if (paramKandianUrlImageView != null)
     {
-      if ((paramURL2 != null) && (paramURL1 != null) && (paramURL2.hashCode() == paramURL1.hashCode()) && (paramKandianUrlImageView.mController != null) && (paramKandianUrlImageView.mController.a != null)) {
+      if ((paramURL2 != null) && (paramURL1 != null) && (paramURL2.hashCode() == paramURL1.hashCode()) && (paramKandianUrlImageView.mController != null) && (paramKandianUrlImageView.mController.e != null)) {
         return;
       }
       paramKandianUrlImageView.setPublicAccountImageDownListener(new PGCShortContentUtils.1(paramRunnable));
@@ -119,19 +102,36 @@ public class PGCShortContentUtils
       Object localObject = JumpParser.a(RIJQQAppInterfaceUtil.a(), BaseApplicationImpl.getContext(), paramString);
       if (localObject != null)
       {
-        localObject = ((JumpAction)localObject).a;
+        localObject = ((JumpAction)localObject).f;
         if ((localObject != null) && ("6".equals((String)((Map)localObject).get("target"))) && (((Map)localObject).containsKey("v_url_base64"))) {
           return true;
         }
       }
-      return ViolaAccessHelper.c(ViolaAccessHelper.c(paramString));
+      return ViolaAccessHelper.e(ViolaAccessHelper.f(paramString));
     }
     return false;
+  }
+  
+  private static String b(String paramString)
+  {
+    paramString = JumpParser.a(RIJQQAppInterfaceUtil.a(), BaseApplicationImpl.getContext(), paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.f;
+      if (paramString != null)
+      {
+        paramString = (String)paramString.get("target");
+        if (!TextUtils.isEmpty(paramString)) {
+          return paramString;
+        }
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PGCShortContentUtils
  * JD-Core Version:    0.7.0.1
  */

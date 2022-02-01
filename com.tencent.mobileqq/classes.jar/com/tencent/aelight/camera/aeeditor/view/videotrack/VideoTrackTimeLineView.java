@@ -26,43 +26,43 @@ import com.tencent.aelight.camera.aeeditor.view.timeline.TimeLineViewListener;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.qcircle.api.IQCircleRFWApi;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.tavcut.util.SpeedUtil;
-import com.tencent.tavcut.util.TimeFormatUtil;
+import com.tencent.qcircle.tavcut.util.SpeedUtil;
+import com.tencent.qcircle.tavcut.util.TimeFormatUtil;
+import com.tencent.qcircle.weishi.module.edit.widget.playtrack.provider.IPlayTrackViewBitmapProvider;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.CutModelKt;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
+import com.tencent.qcircle.weseevideo.camera.mvauto.redo.VideoResourceModelKt.Companion;
+import com.tencent.qcircle.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.tavsticker.utils.ViewUtils;
-import com.tencent.weishi.module.edit.widget.playtrack.provider.IPlayTrackViewBitmapProvider;
-import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
-import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
-import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt.Companion;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
 
 public class VideoTrackTimeLineView
   extends EffectTimelineView
 {
-  private float jdField_a_of_type_Float;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private PlayTrackExpandWidthView jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView;
-  private RoundFrameLayout jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout;
-  private VideoTrackTimeLineView.OnSlideChangedListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackTimeLineView$OnSlideChangedListener;
-  private IPlayTrackViewBitmapProvider jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderIPlayTrackViewBitmapProvider = new VideoTrackTimeLineView.1(this);
-  private CutModelKt jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt;
-  private VideoResourceModel jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float = 0.0F;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean = true;
-  private float jdField_c_of_type_Float = 0.0F;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int d;
-  protected long h = 0L;
-  protected long i = 0L;
-  protected long j = 0L;
-  private long k = 0L;
-  private long l = 0L;
+  private TextView A;
+  private TextView B;
+  private boolean C = true;
+  private boolean D = true;
+  private boolean E = true;
+  private View F;
+  private RoundFrameLayout G;
+  private View H;
+  private long I = 0L;
+  private long J = 0L;
+  private VideoTrackTimeLineView.OnSlideChangedListener K;
+  private int L = 0;
+  private int M;
+  private ObjectAnimator N;
+  private IPlayTrackViewBitmapProvider O = new VideoTrackTimeLineView.1(this);
+  protected long q = 0L;
+  protected long r = 0L;
+  protected long s = 0L;
+  private Context t;
+  private float u;
+  private float v = 0.0F;
+  private float w = 0.0F;
+  private CutModelKt x;
+  private VideoResourceModel y;
+  private PlayTrackExpandWidthView z;
   
   @RequiresApi(api=16)
   public VideoTrackTimeLineView(@NonNull Context paramContext)
@@ -80,61 +80,159 @@ public class VideoTrackTimeLineView
   public VideoTrackTimeLineView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.t = paramContext;
     this.f = -1L;
     this.g = -1L;
-    g();
-  }
-  
-  private long a(long paramLong)
-  {
-    long l1 = ((float)(b() - this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.c()) - (float)paramLong / this.jdField_a_of_type_Float);
-    if ((this.jdField_b_of_type_Boolean) && (Math.abs(l1) < this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(l())) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getScaleDuration() > c()))
-    {
-      AEQLog.b("miles", "第一次满足左侧吸附条件");
-      performHapticFeedback(0, 2);
-      this.jdField_b_of_type_Boolean = false;
-      return ((float)Math.max(b() - this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.c(), c()) * this.jdField_a_of_type_Float);
-    }
-    if (Math.abs(l1) >= this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(l()))
-    {
-      this.jdField_b_of_type_Boolean = true;
-      return paramLong;
-    }
-    return this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration();
+    m();
   }
   
   private void a(long paramLong)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.A;
     if (localTextView != null)
     {
       localTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(TimeFormatUtil.getDurationSecondsEnglish(paramLong));
+      this.A.setText(TimeFormatUtil.getDurationSecondsEnglish(paramLong));
     }
   }
   
   private long b(long paramLong)
   {
-    long l1 = ((float)(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.c() - a()) - (float)paramLong / this.jdField_a_of_type_Float);
-    if ((this.jdField_c_of_type_Boolean) && (Math.abs(l1) < this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(l())) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getScaleDuration() > c()))
+    long l = ((float)(getEndValue() - this.i.d()) - (float)paramLong / this.u);
+    if ((this.D) && (Math.abs(l) < this.i.b(getAttractDistance())) && (this.y.getScaleDuration() > getMinValue()))
+    {
+      AEQLog.b("miles", "第一次满足左侧吸附条件");
+      performHapticFeedback(0, 2);
+      this.D = false;
+      return ((float)Math.max(getEndValue() - this.i.d(), getMinValue()) * this.u);
+    }
+    if (Math.abs(l) >= this.i.b(getAttractDistance()))
+    {
+      this.D = true;
+      return paramLong;
+    }
+    return this.y.getSelectTimeDuration();
+  }
+  
+  private long c(long paramLong)
+  {
+    long l = ((float)(this.i.d() - getStartValue()) - (float)paramLong / this.u);
+    if ((this.E) && (Math.abs(l) < this.i.b(getAttractDistance())) && (this.y.getScaleDuration() > getMinValue()))
     {
       Log.i("miles", "第一次满足左侧吸附条件");
       performHapticFeedback(0, 2);
-      this.jdField_c_of_type_Boolean = false;
-      return ((float)Math.max(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.c() - a(), c()) * this.jdField_a_of_type_Float);
+      this.E = false;
+      return ((float)Math.max(this.i.d() - getStartValue(), getMinValue()) * this.u);
     }
-    if (Math.abs(l1) >= this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(l()))
+    if (Math.abs(l) >= this.i.b(getAttractDistance()))
     {
-      this.jdField_c_of_type_Boolean = true;
+      this.E = true;
       return paramLong;
     }
-    return this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration();
+    return this.y.getSelectTimeDuration();
   }
   
-  private boolean b()
+  private int getAttractDistance()
   {
-    CutModelKt localCutModelKt = this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt;
+    if (this.i != null) {}
+    for (float f = this.i.f() / 4.0F;; f = getResources().getDimension(2063859752)) {
+      return (int)f;
+    }
+  }
+  
+  @RequiresApi(api=16)
+  private void m()
+  {
+    this.z = new PlayTrackExpandWidthView(getContext());
+    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
+    this.G.addView(this.z, localLayoutParams);
+    if (this.M == 0) {
+      this.M = ViewUtils.dip2px(40.0F);
+    }
+    this.L = ((int)getResources().getDimension(2063859741));
+    this.z.setPixelPerBitmap(this.M);
+    this.z.setVideoThumbProvider(this.O);
+    n();
+    o();
+    p();
+  }
+  
+  private void n()
+  {
+    this.F = new View(getContext());
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+    this.F.setBackgroundResource(2131168485);
+    this.F.setVisibility(4);
+    this.G.addView(this.F, localLayoutParams);
+  }
+  
+  private void o()
+  {
+    this.A = new TextView(getContext());
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, (int)getResources().getDimension(2063859763));
+    localLayoutParams.leftMargin = ((int)getResources().getDimension(2063859737));
+    localLayoutParams.bottomMargin = ((int)getResources().getDimension(2063859741));
+    localLayoutParams.gravity = 83;
+    this.A.setTextSize(0, getResources().getDimension(2063859759));
+    this.A.setTextColor(-1);
+    this.A.setShadowLayer(4.0F, 1.0F, 3.0F, 2131165578);
+    this.A.setIncludeFontPadding(false);
+    this.A.setSingleLine();
+    this.A.setGravity(80);
+    this.A.setPadding((int)getResources().getDimension(2063859740), 0, (int)getResources().getDimension(2063859740), 0);
+    this.A.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.G.addView(this.A, localLayoutParams);
+  }
+  
+  @RequiresApi(api=16)
+  private void p()
+  {
+    this.B = new TextView(getContext());
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)getResources().getDimension(2063859775), (int)getResources().getDimension(2063859761));
+    localLayoutParams.leftMargin = ((int)getResources().getDimension(2063859745));
+    localLayoutParams.topMargin = ((int)getResources().getDimension(2063859740));
+    localLayoutParams.gravity = 51;
+    this.B.setTextSize(0, getResources().getDimension(2063859752));
+    this.B.setTextColor(-1);
+    this.B.setSingleLine();
+    this.A.setIncludeFontPadding(false);
+    this.B.setGravity(17);
+    this.B.setBackground(this.t.getResources().getDrawable(2063925510));
+    this.B.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.G.addView(this.B, localLayoutParams);
+  }
+  
+  private void q()
+  {
+    if (this.B == null) {
+      return;
+    }
+    if (r())
+    {
+      this.B.setVisibility(0);
+      float f = this.y.getSpeed();
+      if (SpeedFloatUtil.a(f, 0.75F))
+      {
+        localTextView = this.B;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(SpeedUtil.getPreciseValue(f, 2));
+        localStringBuilder.append("x");
+        localTextView.setText(localStringBuilder.toString());
+        return;
+      }
+      TextView localTextView = this.B;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(SpeedUtil.getPreciseValue(f, 1));
+      localStringBuilder.append("x");
+      localTextView.setText(localStringBuilder.toString());
+      return;
+    }
+    this.B.setVisibility(8);
+  }
+  
+  private boolean r()
+  {
+    CutModelKt localCutModelKt = this.x;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localCutModelKt != null)
@@ -143,7 +241,7 @@ public class VideoTrackTimeLineView
       if (localCutModelKt.getResource() != null)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt.getResource().getScaleDuration() != this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt.getResource().getSelectTimeDuration()) {
+        if (this.x.getResource().getScaleDuration() != this.x.getResource().getSelectTimeDuration()) {
           bool1 = true;
         }
       }
@@ -151,180 +249,58 @@ public class VideoTrackTimeLineView
     return bool1;
   }
   
-  @RequiresApi(api=16)
-  private void g()
+  private void s()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView = new PlayTrackExpandWidthView(getContext());
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout.addView(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView, localLayoutParams);
-    if (this.d == 0) {
-      this.d = ViewUtils.dip2px(40.0F);
-    }
-    this.jdField_c_of_type_Int = ((int)getResources().getDimension(2063990814));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView.setPixelPerBitmap(this.d);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView.setVideoThumbProvider(this.jdField_a_of_type_ComTencentWeishiModuleEditWidgetPlaytrackProviderIPlayTrackViewBitmapProvider);
-    h();
-    i();
-    j();
-  }
-  
-  private void h()
-  {
-    this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131167408);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-  }
-  
-  private void i()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, (int)getResources().getDimension(2063990836));
-    localLayoutParams.leftMargin = ((int)getResources().getDimension(2063990810));
-    localLayoutParams.bottomMargin = ((int)getResources().getDimension(2063990814));
-    localLayoutParams.gravity = 83;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, getResources().getDimension(2063990832));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(4.0F, 1.0F, 3.0F, 2131165336);
-    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(80);
-    this.jdField_a_of_type_AndroidWidgetTextView.setPadding((int)getResources().getDimension(2063990813), 0, (int)getResources().getDimension(2063990813), 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-  }
-  
-  @RequiresApi(api=16)
-  private void j()
-  {
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)getResources().getDimension(2063990848), (int)getResources().getDimension(2063990834));
-    localLayoutParams.leftMargin = ((int)getResources().getDimension(2063990818));
-    localLayoutParams.topMargin = ((int)getResources().getDimension(2063990813));
-    localLayoutParams.gravity = 51;
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, getResources().getDimension(2063990825));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2064056551));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
-  }
-  
-  private void k()
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-      return;
-    }
-    if (b())
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      float f = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSpeed();
-      if (SpeedFloatUtil.a(f, 0.75F))
-      {
-        localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(SpeedUtil.getPreciseValue(f, 2));
-        localStringBuilder.append("x");
-        localTextView.setText(localStringBuilder.toString());
-        return;
-      }
-      TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(SpeedUtil.getPreciseValue(f, 1));
-      localStringBuilder.append("x");
-      localTextView.setText(localStringBuilder.toString());
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  private int l()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter != null) {}
-    for (float f = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a() / 4.0F;; f = getResources().getDimension(2063990825)) {
-      return (int)f;
-    }
-  }
-  
-  private void l()
-  {
-    float f = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
+    float f = this.i.c(((float)this.y.getSelectTimeDuration() / this.u));
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();
-    localMarginLayoutParams.width = ((int)(f + h() * 2));
+    localMarginLayoutParams.width = ((int)(f + getSliderWidth() * 2));
     setLayoutParams(localMarginLayoutParams);
   }
   
-  private void m()
+  private void t()
   {
-    this.h = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeStart();
-    this.i = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration();
-    this.j = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSourceTimeDuration();
-  }
-  
-  protected ViewGroup a()
-  {
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(getContext()).inflate(2064318593, null);
-    this.jdField_b_of_type_AndroidViewView = localViewGroup.findViewById(2064121979);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout = ((RoundFrameLayout)localViewGroup.findViewById(2064122060));
-    return localViewGroup;
-  }
-  
-  public PlayTrackExpandWidthView a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView;
-  }
-  
-  public CutModelKt a()
-  {
-    CutModelKt localCutModelKt = this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt;
-    return localCutModelKt.copy(localCutModelKt.getUuid(), VideoResourceModelKt.Companion.from(this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel), this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt.getVideoConfiguration(), this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt.getAudioConfiguration());
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getPath();
+    this.q = this.y.getSelectTimeStart();
+    this.r = this.y.getSelectTimeDuration();
+    this.s = this.y.getSourceTimeDuration();
   }
   
   public void a()
   {
     super.a();
-    m();
-    this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
+    t();
+    this.w = this.v;
   }
   
   protected void a(float paramFloat)
   {
     AEQLog.a("VideoTrackTimeLineView", "[handleLeftSliderMove]");
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackTimeLineView$OnSlideChangedListener;
+    Object localObject = this.K;
     if (localObject != null) {
       ((VideoTrackTimeLineView.OnSlideChangedListener)localObject).a(true);
     }
-    if ((paramFloat < this.jdField_b_of_type_Float) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a()))
+    if ((paramFloat < this.v) && (this.j.b()))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a();
-      this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
-      m();
+      this.j.a();
+      this.w = this.v;
+      t();
     }
-    else if ((paramFloat > this.jdField_b_of_type_Float) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.b()))
+    else if ((paramFloat > this.v) && (this.j.c()))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a();
-      this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
-      m();
+      this.j.a();
+      this.w = this.v;
+      t();
     }
     else
     {
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a()) || (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.b())) {
+      if ((this.j.b()) || (this.j.c())) {
         break label448;
       }
     }
-    paramFloat -= this.jdField_c_of_type_Float;
-    if (((paramFloat < 0.0F) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeStart() > 0L)) || ((paramFloat > 0.0F) && ((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float > (float)c())) || ((paramFloat > 0.0F) && (paramFloat < this.jdField_b_of_type_Float)))
+    paramFloat -= this.w;
+    if (((paramFloat < 0.0F) && (this.y.getSelectTimeStart() > 0L)) || ((paramFloat > 0.0F) && ((float)this.y.getSelectTimeDuration() / this.u > (float)getMinValue())) || ((paramFloat > 0.0F) && (paramFloat < this.v)))
     {
-      long l2 = ((float)this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramFloat) * this.jdField_a_of_type_Float);
-      long l1 = this.h;
+      long l2 = ((float)this.i.b(paramFloat) * this.u);
+      long l1 = this.q;
       if (l2 <= -l1)
       {
         l1 = -l1;
@@ -332,103 +308,103 @@ public class VideoTrackTimeLineView
       else
       {
         l1 = l2;
-        if ((float)l2 > (float)this.i - (float)c() * this.jdField_a_of_type_Float) {
-          l1 = ((float)this.i - (float)c() * this.jdField_a_of_type_Float);
+        if ((float)l2 > (float)this.r - (float)getMinValue() * this.u) {
+          l1 = ((float)this.r - (float)getMinValue() * this.u);
         }
       }
-      l1 = a(this.i - l1);
-      l1 = this.i - l1;
-      this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeStartUs((this.h + l1) * 1000L);
-      this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeDurationUs((this.i - l1) * 1000L);
-      localObject = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
-      ((VideoResourceModel)localObject).setScaleDuration(((float)((VideoResourceModel)localObject).getSelectTimeDuration() / this.jdField_a_of_type_Float));
-      l();
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener.a(this, this.jdField_b_of_type_Long, ((float)l1 / this.jdField_a_of_type_Float));
+      l1 = b(this.r - l1);
+      l1 = this.r - l1;
+      this.y.setSelectTimeStartUs((this.q + l1) * 1000L);
+      this.y.setSelectTimeDurationUs((this.r - l1) * 1000L);
+      localObject = this.y;
+      ((VideoResourceModel)localObject).setScaleDuration(((float)((VideoResourceModel)localObject).getSelectTimeDuration() / this.u));
+      s();
+      if (this.l != null) {
+        this.l.a(this, this.b, ((float)l1 / this.u));
       }
-      a(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
+      a(((float)this.y.getSelectTimeDuration() / this.u));
     }
-    this.jdField_b_of_type_Float = (paramFloat + this.jdField_c_of_type_Float);
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackTimeLineView$OnSlideChangedListener;
+    this.v = (paramFloat + this.w);
+    localObject = this.K;
     if (localObject != null) {
-      ((VideoTrackTimeLineView.OnSlideChangedListener)localObject).e();
+      ((VideoTrackTimeLineView.OnSlideChangedListener)localObject).g();
     }
     return;
     label448:
     AEQLog.b("miles", "滚动中，直接return");
-    this.jdField_b_of_type_Float = paramFloat;
+    this.v = paramFloat;
   }
   
   public void a(int paramInt)
   {
-    VideoResourceModel localVideoResourceModel = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
+    VideoResourceModel localVideoResourceModel = this.y;
     float f = paramInt;
-    localVideoResourceModel.setSelectTimeStartUs((this.jdField_a_of_type_Float * f) * 1000L);
-    this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeDurationUs(((float)(this.h + this.i) - f * this.jdField_a_of_type_Float) * 1000L);
-    localVideoResourceModel = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
-    localVideoResourceModel.setScaleDuration(((float)localVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
-    l();
+    localVideoResourceModel.setSelectTimeStartUs((this.u * f) * 1000L);
+    this.y.setSelectTimeDurationUs(((float)(this.q + this.r) - f * this.u) * 1000L);
+    localVideoResourceModel = this.y;
+    localVideoResourceModel.setScaleDuration(((float)localVideoResourceModel.getSelectTimeDuration() / this.u));
+    s();
   }
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.a(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView.invalidate();
+    this.z.invalidate();
   }
   
   public void a(boolean paramBoolean)
   {
     AEQLog.a("VideoTrackTimeLineView", "[onSliderMoveEnd]");
-    VideoTrackTimeLineView.OnSlideChangedListener localOnSlideChangedListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackTimeLineView$OnSlideChangedListener;
+    VideoTrackTimeLineView.OnSlideChangedListener localOnSlideChangedListener = this.K;
     if (localOnSlideChangedListener != null) {
       localOnSlideChangedListener.a(false);
     }
     super.a(paramBoolean);
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Float = 0.0F;
-    m();
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
+    this.v = 0.0F;
+    this.w = 0.0F;
+    t();
+    this.D = true;
+    this.E = true;
   }
   
   public void b()
   {
     super.b();
-    m();
+    t();
   }
   
   protected void b(float paramFloat)
   {
     AEQLog.a("VideoTrackTimeLineView", "[handleRightSliderMove]");
-    VideoTrackTimeLineView.OnSlideChangedListener localOnSlideChangedListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackTimeLineView$OnSlideChangedListener;
+    VideoTrackTimeLineView.OnSlideChangedListener localOnSlideChangedListener = this.K;
     if (localOnSlideChangedListener != null) {
       localOnSlideChangedListener.a(true);
     }
-    if ((paramFloat < this.jdField_b_of_type_Float) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a()))
+    if ((paramFloat < this.v) && (this.j.b()))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a();
-      this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
-      m();
+      this.j.a();
+      this.w = this.v;
+      t();
     }
-    else if ((paramFloat > this.jdField_b_of_type_Float) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.b()))
+    else if ((paramFloat > this.v) && (this.j.c()))
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a();
-      this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
-      m();
+      this.j.a();
+      this.w = this.v;
+      t();
     }
     else
     {
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a()) || (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.b())) {
+      if ((this.j.b()) || (this.j.c())) {
         break label438;
       }
     }
-    paramFloat -= this.jdField_c_of_type_Float;
-    if (((paramFloat < 0.0F) && ((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float > (float)c())) || ((paramFloat > 0.0F) && (this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeStart() + this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() < this.j)))
+    paramFloat -= this.w;
+    if (((paramFloat < 0.0F) && ((float)this.y.getSelectTimeDuration() / this.u > (float)getMinValue())) || ((paramFloat > 0.0F) && (this.y.getSelectTimeStart() + this.y.getSelectTimeDuration() < this.s)))
     {
-      long l2 = ((float)this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramFloat) * this.jdField_a_of_type_Float);
-      long l1 = this.j;
-      long l4 = this.h;
-      long l3 = this.i;
+      long l2 = ((float)this.i.b(paramFloat) * this.u);
+      long l1 = this.s;
+      long l4 = this.q;
+      long l3 = this.r;
       if (l2 >= l1 - l4 - l3)
       {
         l1 = l1 - l4 - l3;
@@ -436,155 +412,199 @@ public class VideoTrackTimeLineView
       else
       {
         l1 = l2;
-        if ((float)l2 <= -((float)l3 - (float)c() * this.jdField_a_of_type_Float)) {
-          l1 = -((float)this.i - (float)c() * this.jdField_a_of_type_Float);
+        if ((float)l2 <= -((float)l3 - (float)getMinValue() * this.u)) {
+          l1 = -((float)this.r - (float)getMinValue() * this.u);
         }
       }
-      l1 = b(this.i + l1);
-      l2 = this.i;
-      this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeDurationUs(1000L * l1);
-      this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setScaleDuration(((float)l1 / this.jdField_a_of_type_Float));
-      l();
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener.b(this, this.jdField_c_of_type_Long, ((float)(l1 - l2) / this.jdField_a_of_type_Float));
+      l1 = c(this.r + l1);
+      l2 = this.r;
+      this.y.setSelectTimeDurationUs(1000L * l1);
+      this.y.setScaleDuration(((float)l1 / this.u));
+      s();
+      if (this.l != null) {
+        this.l.b(this, this.c, ((float)(l1 - l2) / this.u));
       }
-      a(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
+      a(((float)this.y.getSelectTimeDuration() / this.u));
     }
-    this.jdField_b_of_type_Float = (paramFloat + this.jdField_c_of_type_Float);
-    localOnSlideChangedListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackTimeLineView$OnSlideChangedListener;
+    this.v = (paramFloat + this.w);
+    localOnSlideChangedListener = this.K;
     if (localOnSlideChangedListener != null) {
-      localOnSlideChangedListener.e();
+      localOnSlideChangedListener.g();
     }
     return;
     label438:
     AEQLog.b("miles", "滚动中，直接return");
-    this.jdField_b_of_type_Float = paramFloat;
+    this.v = paramFloat;
   }
   
   public void b(int paramInt)
   {
-    VideoResourceModel localVideoResourceModel = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
-    float f1 = (float)(this.h + this.i);
+    VideoResourceModel localVideoResourceModel = this.y;
+    float f1 = (float)(this.q + this.r);
     float f2 = paramInt;
-    localVideoResourceModel.setSelectTimeStartUs((f1 - this.jdField_a_of_type_Float * f2 - (float)c()) * 1000L);
-    this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeDurationUs((f2 * this.jdField_a_of_type_Float + (float)c()) * 1000L);
-    localVideoResourceModel = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
-    localVideoResourceModel.setScaleDuration(((float)localVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
-    l();
+    localVideoResourceModel.setSelectTimeStartUs((f1 - this.u * f2 - (float)getMinValue()) * 1000L);
+    this.y.setSelectTimeDurationUs((f2 * this.u + (float)getMinValue()) * 1000L);
+    localVideoResourceModel = this.y;
+    localVideoResourceModel.setScaleDuration(((float)localVideoResourceModel.getSelectTimeDuration() / this.u));
+    s();
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeStartUs(this.h * 1000L);
-    VideoResourceModel localVideoResourceModel = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
-    long l1 = paramInt;
-    localVideoResourceModel.setSelectTimeDurationUs(((float)(c() + l1) * this.jdField_a_of_type_Float) * 1000L);
-    this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setScaleDuration(l1 + c());
-    l();
-  }
-  
-  protected int d()
-  {
-    return getResources().getDimensionPixelOffset(2063990842);
-  }
-  
-  public long d()
-  {
-    return ((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float);
-  }
-  
-  public void d()
-  {
-    long l1 = this.l;
-    if (l1 > 0L) {
-      setRedMaskViewShowTimeRange(this.k, l1);
-    }
+    this.y.setSelectTimeStartUs(this.q * 1000L);
+    VideoResourceModel localVideoResourceModel = this.y;
+    long l = paramInt;
+    localVideoResourceModel.setSelectTimeDurationUs(((float)(getMinValue() + l) * this.u) * 1000L);
+    this.y.setScaleDuration(l + getMinValue());
+    s();
   }
   
   public void d(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeStartUs(this.h * 1000L);
-    this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.setSelectTimeDurationUs(((float)(this.j - this.h) - paramInt * this.jdField_a_of_type_Float) * 1000L);
-    VideoResourceModel localVideoResourceModel = this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel;
-    localVideoResourceModel.setScaleDuration(((float)localVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
-    l();
+    this.y.setSelectTimeStartUs(this.q * 1000L);
+    this.y.setSelectTimeDurationUs(((float)(this.s - this.q) - paramInt * this.u) * 1000L);
+    VideoResourceModel localVideoResourceModel = this.y;
+    localVideoResourceModel.setScaleDuration(((float)localVideoResourceModel.getSelectTimeDuration() / this.u));
+    s();
   }
   
-  protected int e()
+  protected ViewGroup e()
+  {
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(getContext()).inflate(2064056465, null);
+    this.H = localViewGroup.findViewById(2063990906);
+    this.G = ((RoundFrameLayout)localViewGroup.findViewById(2063990979));
+    return localViewGroup;
+  }
+  
+  public String getAssetPath()
+  {
+    return this.y.getPath();
+  }
+  
+  protected int getContentMargin()
+  {
+    return getResources().getDimensionPixelOffset(2063859769);
+  }
+  
+  protected int getContentPadding()
   {
     return 0;
   }
   
-  public long e()
+  public long getCurrentDuration()
   {
-    return ((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeStart() / this.jdField_a_of_type_Float);
+    return ((float)this.y.getSelectTimeDuration() / this.u);
   }
   
-  public void e()
+  public long getLeftToLeftCanMoveValue()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView.postInvalidate();
+    return ((float)this.y.getSelectTimeStart() / this.u);
   }
   
-  public long f()
+  public long getLeftToRightCanMoveValue()
   {
-    return ((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float - (float)c());
+    return ((float)this.y.getSelectTimeDuration() / this.u - (float)getMinValue());
+  }
+  
+  public CutModelKt getMediaClipModel()
+  {
+    CutModelKt localCutModelKt = this.x;
+    return localCutModelKt.copy(localCutModelKt.getUuid(), VideoResourceModelKt.Companion.from(this.y), this.x.getVideoConfiguration(), this.x.getAudioConfiguration());
+  }
+  
+  public long getRawSelectedTimeStart()
+  {
+    return this.q;
+  }
+  
+  public long getRightToLeftCanMoveValue()
+  {
+    return ((float)this.y.getSelectTimeDuration() / this.u - (float)getMinValue());
+  }
+  
+  public long getRightToRightCanMoveValue()
+  {
+    return ((float)(this.s - this.y.getSelectTimeDuration() - this.y.getSelectTimeStart()) / this.u);
+  }
+  
+  public long getSelectedTimeDuration()
+  {
+    return this.y.getSelectTimeDuration();
+  }
+  
+  public long getSelectedTimeStart()
+  {
+    return this.y.getSelectTimeStart();
+  }
+  
+  public float getSpeed()
+  {
+    return this.u;
+  }
+  
+  public PlayTrackExpandWidthView getVideoThumbnailView()
+  {
+    return this.z;
+  }
+  
+  public void j()
+  {
+    long l = this.J;
+    if (l > 0L) {
+      setRedMaskViewShowTimeRange(this.I, l);
+    }
+  }
+  
+  public void k()
+  {
+    this.z.postInvalidate();
   }
   
   @RequiresApi(api=17)
-  public void f()
+  public void l()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+    Object localObject = this.N;
     if (localObject != null)
     {
       localObject = (View)((ObjectAnimator)localObject).getTarget();
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout.removeView((View)localObject);
+        this.G.removeView((View)localObject);
       }
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.removeAllListeners();
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+      this.N.removeAllListeners();
+      this.N.cancel();
     }
     localObject = new View(getContext());
     ((View)localObject).setAlpha(0.0F);
     if (Build.VERSION.SDK_INT >= 17) {
       ((View)localObject).setId(View.generateViewId());
     }
-    ((View)localObject).setBackgroundColor(getContext().getResources().getColor(2063925255));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 0.0F, 0.3F }).setDuration(200L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setStartDelay(500L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(4);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatMode(2);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new VideoTrackTimeLineView.2(this, (View)localObject));
+    ((View)localObject).setBackgroundColor(getContext().getResources().getColor(2063794183));
+    this.N = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 0.0F, 0.3F }).setDuration(200L);
+    this.N.setStartDelay(500L);
+    this.N.setRepeatCount(4);
+    this.N.setRepeatMode(2);
+    this.N.addListener(new VideoTrackTimeLineView.2(this, (View)localObject));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout.addView((View)localObject, localLayoutParams);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-  }
-  
-  public long g()
-  {
-    return ((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float - (float)c());
-  }
-  
-  public long h()
-  {
-    return ((float)(this.j - this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() - this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeStart()) / this.jdField_a_of_type_Float);
+    this.G.addView((View)localObject, localLayoutParams);
+    this.N.start();
   }
   
   public void setBitmapWidth(int paramInt)
   {
-    this.d = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView.setPixelPerBitmap(this.d);
+    this.M = paramInt;
+    this.z.setPixelPerBitmap(this.M);
   }
   
   public void setCornerRadius(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    RoundFrameLayout localRoundFrameLayout = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout;
+    this.L = paramInt;
+    RoundFrameLayout localRoundFrameLayout = this.G;
     if (localRoundFrameLayout != null)
     {
       if (isSelected()) {
         paramInt = 0;
       } else {
-        paramInt = this.jdField_c_of_type_Int;
+        paramInt = this.L;
       }
       localRoundFrameLayout.setRadius(paramInt);
     }
@@ -600,14 +620,14 @@ public class VideoTrackTimeLineView
   
   public void setMediaClipModel(CutModelKt paramCutModelKt)
   {
-    this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt = paramCutModelKt;
-    this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel = paramCutModelKt.getResource().convert();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt.getResource().getScaleSpeed();
+    this.x = paramCutModelKt;
+    this.y = paramCutModelKt.getResource().convert();
+    this.u = this.x.getResource().getScaleSpeed();
   }
   
   public void setOnSlideChangedListener(VideoTrackTimeLineView.OnSlideChangedListener paramOnSlideChangedListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackTimeLineView$OnSlideChangedListener = paramOnSlideChangedListener;
+    this.K = paramOnSlideChangedListener;
   }
   
   public void setRedMaskViewShowTimeRange(long paramLong1, long paramLong2)
@@ -617,82 +637,82 @@ public class VideoTrackTimeLineView
       if (paramLong2 <= 0L) {
         return;
       }
-      this.k = paramLong1;
-      this.l = paramLong2;
+      this.I = paramLong1;
+      this.J = paramLong2;
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-      localLayoutParams.leftMargin = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramLong1);
-      localLayoutParams.width = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramLong2);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      localLayoutParams.leftMargin = this.i.c(paramLong1);
+      localLayoutParams.width = this.i.c(paramLong2);
+      this.F.setLayoutParams(localLayoutParams);
+      this.F.setVisibility(0);
     }
   }
   
   public void setScaleModel(ScaleAdapter paramScaleAdapter)
   {
     super.setScaleModel(paramScaleAdapter);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewPlaytrackViewPlayTrackExpandWidthView.setScaleAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter);
+    this.z.setScaleAdapter(this.i);
   }
   
   public void setSelected(boolean paramBoolean)
   {
     super.setSelected(paramBoolean);
-    a(((float)this.jdField_a_of_type_ComTencentWeseevideoModelResourceVideoResourceModel.getSelectTimeDuration() / this.jdField_a_of_type_Float));
-    k();
-    if (this.jdField_b_of_type_Int == 1)
+    a(((float)this.y.getSelectTimeDuration() / this.u));
+    q();
+    if (this.p == 1)
     {
-      this.jdField_b_of_type_AndroidViewView.setSelected(paramBoolean);
+      this.H.setSelected(paramBoolean);
       return;
     }
-    if (this.jdField_b_of_type_Int == 0)
+    if (this.p == 0)
     {
-      RoundFrameLayout localRoundFrameLayout = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackRoundFrameLayout;
-      int m;
+      RoundFrameLayout localRoundFrameLayout = this.G;
+      int i;
       if (paramBoolean) {
-        m = 0;
+        i = 0;
       } else {
-        m = this.jdField_c_of_type_Int;
+        i = this.L;
       }
-      localRoundFrameLayout.setRadius(m);
+      localRoundFrameLayout.setRadius(i);
     }
   }
   
   public void setSelectedStyle(int paramInt)
   {
     super.setSelectedStyle(paramInt);
-    if (this.jdField_b_of_type_Int == 1)
+    if (this.p == 1)
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.H.setVisibility(0);
       return;
     }
-    if (this.jdField_b_of_type_Int == 0) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    if (this.p == 0) {
+      this.H.setVisibility(8);
     }
   }
   
   public void setShowSliderView(boolean paramBoolean)
   {
-    SliderView localSliderView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView;
-    int n = 0;
-    int m;
+    SliderView localSliderView = this.m;
+    int j = 0;
+    int i;
     if (localSliderView != null)
     {
-      localSliderView = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView;
+      localSliderView = this.m;
       if (paramBoolean) {
-        m = 0;
+        i = 0;
       } else {
-        m = 4;
+        i = 4;
       }
-      localSliderView.setVisibility(m);
+      localSliderView.setVisibility(i);
     }
-    if (this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView != null)
+    if (this.n != null)
     {
-      localSliderView = this.jdField_b_of_type_ComTencentAelightCameraAeeditorViewTimelineSliderView;
+      localSliderView = this.n;
       if (paramBoolean) {
-        m = n;
+        i = j;
       } else {
-        m = 4;
+        i = 4;
       }
-      localSliderView.setVisibility(m);
+      localSliderView.setVisibility(i);
     }
   }
   
@@ -706,7 +726,7 @@ public class VideoTrackTimeLineView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackTimeLineView
  * JD-Core Version:    0.7.0.1
  */

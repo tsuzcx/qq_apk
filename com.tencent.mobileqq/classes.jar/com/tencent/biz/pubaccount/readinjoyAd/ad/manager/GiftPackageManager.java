@@ -167,7 +167,7 @@ public class GiftPackageManager
     if (paramString1 == null) {
       paramString1 = "";
     } else {
-      paramString1 = a(paramString1);
+      paramString1 = b(paramString1);
     }
     localStringBuilder.append("&g_tk=");
     localStringBuilder.append(paramString1);
@@ -215,18 +215,6 @@ public class GiftPackageManager
     return new Pair(Boolean.valueOf(bool3), paramString1);
   }
   
-  public static String a(String paramString)
-  {
-    long l = 5381L;
-    int i = 0;
-    while (i < paramString.length())
-    {
-      l += (l << 5) + paramString.charAt(i);
-      i += 1;
-    }
-    return String.valueOf(l & 0x7FFFFFFF);
-  }
-  
   public static List<GiftServiceBean> a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     localArrayList = new ArrayList();
@@ -257,7 +245,7 @@ public class GiftPackageManager
     if (paramString1 == null) {
       paramString1 = "";
     } else {
-      paramString1 = a(paramString1);
+      paramString1 = b(paramString1);
     }
     localStringBuilder.append("&g_tk=");
     localStringBuilder.append(paramString1);
@@ -277,7 +265,7 @@ public class GiftPackageManager
           paramString3.t = paramString2.optString("nick");
           paramString3.ck = paramString2.optString("role_id");
           if ((!TextUtils.isEmpty(paramString3.ck)) && (TextUtils.isEmpty(paramString3.t))) {
-            paramString3.t = HardCodeUtil.a(2131705362);
+            paramString3.t = HardCodeUtil.a(2131903244);
           }
           localArrayList.add(paramString3);
           i += 1;
@@ -289,40 +277,6 @@ public class GiftPackageManager
     {
       paramString1.printStackTrace();
     }
-  }
-  
-  @NonNull
-  public static JSONObject a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("business", 2);
-    localJSONObject.put("op_timestamp", System.currentTimeMillis());
-    localJSONObject.put("net_type", String.valueOf(PublicAccountAdUtil.a()));
-    localJSONObject.put("plat_id", 1);
-    localJSONObject.put("imei", AdDeviceInfoUtil.a());
-    if (!TextUtils.isEmpty(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount())) {
-      localJSONObject.put("uin", Long.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount()));
-    }
-    localJSONObject.put("oper_type", paramInt1);
-    localJSONObject.put("game_pkg", paramString1);
-    if (!TextUtils.isEmpty(paramString2)) {
-      localJSONObject.put("app_id", paramString2);
-    }
-    localJSONObject.put("gc_version", "");
-    localJSONObject.put("idfa", "");
-    localJSONObject.put("guid", "");
-    localJSONObject.put("channel_id", "");
-    localJSONObject.put("adtag", "");
-    if (paramInt2 > 0) {
-      localJSONObject.put("oper_module", paramInt2);
-    }
-    if (paramInt3 > 0) {
-      localJSONObject.put("oper_id", paramInt3);
-    }
-    if (paramInt4 > 0) {
-      localJSONObject.put("page_id", paramInt4);
-    }
-    return localJSONObject;
   }
   
   public static JSONObject a(AdvertisementInfo paramAdvertisementInfo, long paramLong, int paramInt)
@@ -343,10 +297,10 @@ public class GiftPackageManager
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("com_id", paramLong);
         localJSONObject2.put("type", paramInt);
-        if (!TextUtils.isEmpty(localGameAdComData.B)) {
-          localJSONObject2.put("nfa_chainid", localGameAdComData.B);
+        if (!TextUtils.isEmpty(localGameAdComData.C)) {
+          localJSONObject2.put("nfa_chainid", localGameAdComData.C);
         }
-        localJSONObject2.put("appid", localGameAdComData.g);
+        localJSONObject2.put("appid", localGameAdComData.h);
         if (!paramAdvertisementInfo.isKolGame) {
           break label146;
         }
@@ -428,10 +382,56 @@ public class GiftPackageManager
     }
     return bool1;
   }
+  
+  public static String b(String paramString)
+  {
+    long l = 5381L;
+    int i = 0;
+    while (i < paramString.length())
+    {
+      l += (l << 5) + paramString.charAt(i);
+      i += 1;
+    }
+    return String.valueOf(l & 0x7FFFFFFF);
+  }
+  
+  @NonNull
+  public static JSONObject b(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("business", 2);
+    localJSONObject.put("op_timestamp", System.currentTimeMillis());
+    localJSONObject.put("net_type", String.valueOf(PublicAccountAdUtil.a()));
+    localJSONObject.put("plat_id", 1);
+    localJSONObject.put("imei", AdDeviceInfoUtil.a());
+    if (!TextUtils.isEmpty(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount())) {
+      localJSONObject.put("uin", Long.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount()));
+    }
+    localJSONObject.put("oper_type", paramInt1);
+    localJSONObject.put("game_pkg", paramString1);
+    if (!TextUtils.isEmpty(paramString2)) {
+      localJSONObject.put("app_id", paramString2);
+    }
+    localJSONObject.put("gc_version", "");
+    localJSONObject.put("idfa", "");
+    localJSONObject.put("guid", "");
+    localJSONObject.put("channel_id", "");
+    localJSONObject.put("adtag", "");
+    if (paramInt2 > 0) {
+      localJSONObject.put("oper_module", paramInt2);
+    }
+    if (paramInt3 > 0) {
+      localJSONObject.put("oper_id", paramInt3);
+    }
+    if (paramInt4 > 0) {
+      localJSONObject.put("page_id", paramInt4);
+    }
+    return localJSONObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.GiftPackageManager
  * JD-Core Version:    0.7.0.1
  */

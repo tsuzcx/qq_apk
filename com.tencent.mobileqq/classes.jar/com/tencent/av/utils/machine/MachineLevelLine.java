@@ -9,20 +9,20 @@ public class MachineLevelLine
 {
   public MachineLevelLine(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramFloat1;
+    this.d = paramFloat2;
   }
   
   public MachineLevelLine(MachineLevelLine paramMachineLevelLine)
   {
     if (paramMachineLevelLine != null)
     {
-      this.jdField_a_of_type_Int = paramMachineLevelLine.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = paramMachineLevelLine.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Float = paramMachineLevelLine.jdField_a_of_type_Float;
-      this.jdField_b_of_type_Float = paramMachineLevelLine.jdField_b_of_type_Float;
+      this.a = paramMachineLevelLine.a;
+      this.b = paramMachineLevelLine.b;
+      this.c = paramMachineLevelLine.c;
+      this.d = paramMachineLevelLine.d;
     }
   }
   
@@ -51,11 +51,11 @@ public class MachineLevelLine
                 localStringBuilder.append("MemoryLimit:  ");
                 localStringBuilder.append(f);
                 QLog.i("MachineLevelLine", 2, localStringBuilder.toString());
-                this.jdField_b_of_type_Float = f;
+                this.d = f;
               }
               else if ("CpuNumLimit".equalsIgnoreCase(str))
               {
-                this.jdField_b_of_type_Int = ((int)f);
+                this.b = ((int)f);
                 localStringBuilder = new StringBuilder();
                 localStringBuilder.append("CpuNumLimit:  ");
                 localStringBuilder.append(f);
@@ -67,7 +67,7 @@ public class MachineLevelLine
                 localStringBuilder.append("CpuFreqLimit:  ");
                 localStringBuilder.append(f);
                 QLog.i("MachineLevelLine", 2, localStringBuilder.toString());
-                this.jdField_a_of_type_Float = f;
+                this.c = f;
               }
               else if ("APILevelLimit".equalsIgnoreCase(str))
               {
@@ -75,7 +75,7 @@ public class MachineLevelLine
                 localStringBuilder.append("APILevelLimit:  ");
                 localStringBuilder.append(f);
                 QLog.i("MachineLevelLine", 2, localStringBuilder.toString());
-                this.jdField_a_of_type_Int = ((int)f);
+                this.a = ((int)f);
               }
             }
             catch (Throwable localThrowable)
@@ -91,7 +91,7 @@ public class MachineLevelLine
   
   public boolean a(@NonNull MachineInfo paramMachineInfo)
   {
-    return (this.jdField_a_of_type_Int <= paramMachineInfo.jdField_a_of_type_Int) && (this.jdField_b_of_type_Int <= paramMachineInfo.jdField_b_of_type_Int) && (this.jdField_a_of_type_Float <= paramMachineInfo.jdField_a_of_type_Float) && (this.jdField_b_of_type_Float <= paramMachineInfo.jdField_b_of_type_Float);
+    return (this.a <= paramMachineInfo.a) && (this.b <= paramMachineInfo.b) && (this.c <= paramMachineInfo.c) && (this.d <= paramMachineInfo.d);
   }
 }
 

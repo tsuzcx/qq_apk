@@ -17,22 +17,22 @@ import org.apache.http.protocol.HttpContext;
 class RetryHandler
   implements HttpRequestRetryHandler
 {
-  private static HashSet<Class<?>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private static HashSet<Class<?>> a = new HashSet();
   private static HashSet<Class<?>> b = new HashSet();
-  private final int jdField_a_of_type_Int;
+  private final int c;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashSet.add(NoHttpResponseException.class);
-    jdField_a_of_type_JavaUtilHashSet.add(UnknownHostException.class);
-    jdField_a_of_type_JavaUtilHashSet.add(SocketException.class);
+    a.add(NoHttpResponseException.class);
+    a.add(UnknownHostException.class);
+    a.add(SocketException.class);
     b.add(InterruptedIOException.class);
     b.add(SSLException.class);
   }
   
   public RetryHandler(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   protected boolean a(HashSet<Class<?>> paramHashSet, Throwable paramThrowable)
@@ -59,9 +59,9 @@ class RetryHandler
     }
     Object localObject = (Boolean)paramHttpContext.getAttribute("http.request_sent");
     boolean bool1 = false;
-    if (((localObject == null) || (((Boolean)localObject).booleanValue())) || ((paramInt <= this.jdField_a_of_type_Int) && (!a(b, paramIOException))))
+    if (((localObject == null) || (((Boolean)localObject).booleanValue())) || ((paramInt <= this.c) && (!a(b, paramIOException))))
     {
-      a(jdField_a_of_type_JavaUtilHashSet, paramIOException);
+      a(a, paramIOException);
       bool1 = true;
     }
     boolean bool2 = bool1;

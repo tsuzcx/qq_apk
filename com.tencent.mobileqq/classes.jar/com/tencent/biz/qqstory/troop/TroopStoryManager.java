@@ -15,36 +15,35 @@ import mqq.manager.Manager;
 public class TroopStoryManager
   implements Manager
 {
-  static final String jdField_a_of_type_JavaLangString = StoryApi.a("StoryGroupSvc.do_video_delete");
-  ProtoUtils.StoryProtocolObserver jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new TroopStoryManager.1(this);
-  public TroopDynamicConfig a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  protected Map<String, Long> a;
+  static final String a = StoryApi.a("StoryGroupSvc.do_video_delete");
+  QQAppInterface b;
+  EntityManager c;
+  public TroopDynamicConfig d;
+  protected Map<String, Long> e = new ConcurrentHashMap();
+  ProtoUtils.StoryProtocolObserver f = new TroopStoryManager.1(this);
   
   public TroopStoryManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopTroopDynamicConfig = new TroopDynamicConfig(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+    this.b = paramQQAppInterface;
+    this.c = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.d = new TroopDynamicConfig(this.b.getApp(), paramQQAppInterface.getCurrentAccountUin());
   }
   
   public Long a(String paramString)
   {
-    return (Long)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    return (Long)this.e.get(paramString);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.e.clear();
   }
   
   public void a(MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord instanceof MessageForTroopStory))
     {
-      a(((MessageForTroopStory)paramMessageRecord).storyId, 1, this.jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver);
+      a(((MessageForTroopStory)paramMessageRecord).storyId, 1, this.f);
       return;
     }
     if (QLog.isColorLevel())
@@ -68,12 +67,12 @@ public class TroopStoryManager
   
   public void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+    this.e.put(paramString, Long.valueOf(paramLong));
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.c.close();
   }
 }
 

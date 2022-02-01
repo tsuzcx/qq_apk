@@ -11,11 +11,11 @@ class Face2FaceAddContactFragment$2
   
   public void onClick(View paramView)
   {
-    int i = Face2FaceAddContactFragment.a(this.a).length();
+    int i = Face2FaceAddContactFragment.g(this.a).length();
     if (i < 4)
     {
       Face2FaceAddContactFragment.a(this.a, paramView, i);
-      i = Face2FaceAddContactFragment.a(this.a).length();
+      i = Face2FaceAddContactFragment.g(this.a).length();
       Face2FaceAddContactFragment.a(this.a, i);
       Face2FaceAddContactFragment.b(this.a, i);
     }
@@ -24,7 +24,7 @@ class Face2FaceAddContactFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment.2
  * JD-Core Version:    0.7.0.1
  */

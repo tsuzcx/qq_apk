@@ -9,12 +9,12 @@ class FastWebRequestUtil$6$2
   
   public void run()
   {
-    this.this$0.a.b(false, this.a.toString());
+    this.this$0.b.b(false, this.a.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebRequestUtil.6.2
  * JD-Core Version:    0.7.0.1
  */

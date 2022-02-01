@@ -13,7 +13,7 @@ import java.util.ArrayList;
 class QQVoiceWebViewBuilder$InnerAbsWebView
   extends AbsWebView
 {
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean b = false;
   
   public QQVoiceWebViewBuilder$InnerAbsWebView(QQVoiceWebViewBuilder paramQQVoiceWebViewBuilder, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
@@ -29,13 +29,13 @@ class QQVoiceWebViewBuilder$InnerAbsWebView
   public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
     super.bindJavaScript(paramArrayList);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomWebviewQQVoiceWebViewBuilder.addJavaScript(localArrayList);
+    this.a.addJavaScript(localArrayList);
     paramArrayList.addAll(localArrayList);
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public void onCreate()
@@ -51,13 +51,13 @@ class QQVoiceWebViewBuilder$InnerAbsWebView
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomWebviewQQVoiceWebViewBuilder.onPageFinished((QQVoiceWebView)paramWebView, paramString);
+    this.a.onPageFinished((QQVoiceWebView)paramWebView, paramString);
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomWebviewQQVoiceWebViewBuilder.onPageStarted((QQVoiceWebView)paramWebView, paramString);
+    this.a.onPageStarted((QQVoiceWebView)paramWebView, paramString);
   }
   
   public void onPause()
@@ -68,7 +68,7 @@ class QQVoiceWebViewBuilder$InnerAbsWebView
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomWebviewQQVoiceWebViewBuilder.onReceivedError((QQVoiceWebView)paramWebView, paramString2, paramInt, paramString1);
+    this.a.onReceivedError((QQVoiceWebView)paramWebView, paramString2, paramInt, paramString1);
   }
   
   public void onResume()
@@ -78,7 +78,7 @@ class QQVoiceWebViewBuilder$InnerAbsWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.webview.QQVoiceWebViewBuilder.InnerAbsWebView
  * JD-Core Version:    0.7.0.1
  */

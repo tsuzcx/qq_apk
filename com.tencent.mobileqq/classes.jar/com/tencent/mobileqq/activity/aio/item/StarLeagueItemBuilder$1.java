@@ -18,7 +18,7 @@ class StarLeagueItemBuilder$1
   
   public void onClick(View paramView)
   {
-    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((StarLeagueItemBuilder.Holder)AIOUtils.a(paramView)).a;
+    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((StarLeagueItemBuilder.Holder)AIOUtils.b(paramView)).q;
     if (!MiniAppJumpUtil.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
     {
       Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
@@ -30,7 +30,7 @@ class StarLeagueItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StarLeagueItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

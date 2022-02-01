@@ -33,20 +33,12 @@ public class HippyPullFooterViewController
   {
     super.dispatchFunction(paramHippyPullFooterView, paramString, paramHippyArray);
     paramHippyPullFooterView = paramHippyPullFooterView.getParentView();
-    if ((paramHippyPullFooterView != null) && ((paramHippyPullFooterView instanceof HippyListView)))
-    {
-      int i = -1;
-      if ((paramString.hashCode() == -307375155) && (paramString.equals("collapsePullFooter"))) {
-        i = 0;
-      }
-      if (i != 0) {
-        return;
-      }
+    if (((paramHippyPullFooterView instanceof HippyListView)) && ("collapsePullFooter".equals(paramString))) {
       ((HippyListView)paramHippyPullFooterView).onFooterRefreshFinish();
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="sticky")
+  @HippyControllerProps(defaultType="boolean", name="sticky")
   public void setStickEnabled(HippyPullFooterView paramHippyPullFooterView, boolean paramBoolean)
   {
     paramHippyPullFooterView.setStickEnabled(paramBoolean);
@@ -54,7 +46,7 @@ public class HippyPullFooterViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.refresh.HippyPullFooterViewController
  * JD-Core Version:    0.7.0.1
  */

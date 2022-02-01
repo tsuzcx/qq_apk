@@ -28,7 +28,7 @@ class MsgBackupSettingFragment$7
       MsgBackupSettingFragment.a(this.a, paramMsgBackupQryStateRsp);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onQueryStateResponse called! qrStateResponse = ");
-      localStringBuilder.append(MsgBackupSettingFragment.a(this.a));
+      localStringBuilder.append(MsgBackupSettingFragment.i(this.a));
       QLog.d("MsgBackup", 1, localStringBuilder.toString());
     }
     else
@@ -42,10 +42,10 @@ class MsgBackupSettingFragment$7
   {
     if ((paramBoolean) && ((paramObject instanceof MsgBackupGetQrRsp)))
     {
-      MsgBackupSettingFragment.a = (MsgBackupGetQrRsp)paramObject;
+      MsgBackupSettingFragment.e = (MsgBackupGetQrRsp)paramObject;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onGetQrResponse called! qrResponse = ");
-      localStringBuilder.append(MsgBackupSettingFragment.a);
+      localStringBuilder.append(MsgBackupSettingFragment.e);
       QLog.d("MsgBackup", 1, localStringBuilder.toString());
     }
     else
@@ -72,7 +72,7 @@ class MsgBackupSettingFragment$7
       MsgBackupSettingFragment.a(this.a, (MsgBackupConfirmQrRsp)paramObject);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onConfirmQrResponse called! qrConfirmReponse = ");
-      localStringBuilder.append(MsgBackupSettingFragment.a(this.a));
+      localStringBuilder.append(MsgBackupSettingFragment.h(this.a));
       QLog.d("MsgBackup", 1, localStringBuilder.toString());
     }
     else
@@ -84,7 +84,7 @@ class MsgBackupSettingFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MsgBackupSettingFragment.7
  * JD-Core Version:    0.7.0.1
  */

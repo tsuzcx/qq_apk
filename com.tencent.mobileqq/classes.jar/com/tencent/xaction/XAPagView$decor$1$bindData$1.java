@@ -14,6 +14,7 @@ import com.tencent.xaction.openapi.api.IXAEngine;
 import java.io.File;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
+import org.libpag.PAGComposition;
 import org.libpag.PAGFile;
 import org.libpag.PAGView.PAGViewListener;
 
@@ -27,9 +28,9 @@ final class XAPagView$decor$1$bindData$1
   {
     try
     {
-      QLog.a(XAPagView.a(this.this$0.a), 2, "XAPagView.bindData().execute");
+      QLog.a(XAPagView.access$getTAG$p(this.this$0.a), 2, "XAPagView.bindData().execute");
       Object localObject1;
-      if (FileUtil.a.a(this.a))
+      if (FileUtil.a.b(this.a))
       {
         localObject1 = this.this$0.a.getResources();
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "resources");
@@ -38,7 +39,7 @@ final class XAPagView$decor$1$bindData$1
       }
       else
       {
-        localObject1 = FilePathUtil.a.a(this.a, "$PARENT_ROOT", this.this$0.a());
+        localObject1 = FilePathUtil.a.a(this.a, "$PARENT_ROOT", this.this$0.d());
         if (!new File((String)localObject1).exists()) {
           return;
         }
@@ -46,8 +47,8 @@ final class XAPagView$decor$1$bindData$1
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "PAGFile.Load(filePath)");
       }
       this.this$0.a.addListener((PAGView.PAGViewListener)new XAPagView.decor.1.bindData.1.1(this));
-      this.this$0.a.setFile((PAGFile)localObject1);
-      Object localObject2 = this.this$0.a();
+      this.this$0.a.setComposition((PAGComposition)localObject1);
+      Object localObject2 = this.this$0.e();
       if (localObject2 == null) {
         Intrinsics.throwNpe();
       }
@@ -58,19 +59,19 @@ final class XAPagView$decor$1$bindData$1
       else
       {
         localObject2 = this.this$0.a;
-        localViewData = this.this$0.a();
+        localViewData = this.this$0.e();
         if (localViewData == null) {
           Intrinsics.throwNpe();
         }
         ((XAPagView)localObject2).setRepeatCount(localViewData.getTp().getRc() + 1);
       }
       localObject2 = this.this$0.a;
-      ViewData localViewData = this.this$0.a();
+      ViewData localViewData = this.this$0.e();
       if (localViewData == null) {
         Intrinsics.throwNpe();
       }
       ((XAPagView)localObject2).setPAGScaleMode(localViewData, this.this$0.a);
-      localObject2 = this.this$0.a();
+      localObject2 = this.this$0.e();
       if (localObject2 == null) {
         Intrinsics.throwNpe();
       }
@@ -78,25 +79,25 @@ final class XAPagView$decor$1$bindData$1
         this.this$0.a.post((Runnable)new XAPagView.decor.1.bindData.1.2(this));
       }
       localObject2 = this.this$0.a;
-      localViewData = this.this$0.a();
+      localViewData = this.this$0.e();
       if (localViewData == null) {
         Intrinsics.throwNpe();
       }
-      IXAEngine localIXAEngine = this.this$0.a();
+      IXAEngine localIXAEngine = this.this$0.d();
       if (localIXAEngine == null) {
         Intrinsics.throwNpe();
       }
-      ((XAPagView)localObject2).b(localViewData, localIXAEngine, this.this$0.a, (PAGFile)localObject1);
+      ((XAPagView)localObject2).replacePagText(localViewData, localIXAEngine, this.this$0.a, (PAGFile)localObject1);
       localObject2 = this.this$0.a;
-      localViewData = this.this$0.a();
+      localViewData = this.this$0.e();
       if (localViewData == null) {
         Intrinsics.throwNpe();
       }
-      localIXAEngine = this.this$0.a();
+      localIXAEngine = this.this$0.d();
       if (localIXAEngine == null) {
         Intrinsics.throwNpe();
       }
-      ((XAPagView)localObject2).a(localViewData, localIXAEngine, this.this$0.a, (PAGFile)localObject1);
+      ((XAPagView)localObject2).replacePagImage(localViewData, localIXAEngine, this.this$0.a, (PAGFile)localObject1);
       return;
     }
     catch (Exception localException)
@@ -107,7 +108,7 @@ final class XAPagView$decor$1$bindData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.XAPagView.decor.1.bindData.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,22 +10,12 @@ import com.tencent.mobileqq.utils.ViewUtils;
 public class QQUIDelegate
 {
   public static boolean a = false;
-  public static boolean b = AppSetting.d;
-  public static boolean c = AppSetting.e;
-  
-  public static int a(Context paramContext)
-  {
-    return DisplayUtils.b(paramContext);
-  }
+  public static boolean b = AppSetting.e;
+  public static boolean c = AppSetting.f;
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return ViewUtils.a(paramFloat);
-  }
-  
-  public static String a()
-  {
-    return QQTheme.a();
+    return ViewUtils.dip2px(paramFloat);
   }
   
   public static String a(int paramInt)
@@ -35,22 +25,32 @@ public class QQUIDelegate
   
   public static boolean a()
   {
-    return QQTheme.b();
+    return QQTheme.isDefaultOrDIYTheme();
   }
   
   public static boolean a(Context paramContext)
   {
-    return (DisplayUtils.a(paramContext)) && (DisplayUtils.b(paramContext));
+    return (DisplayUtils.b(paramContext)) && (DisplayUtils.c(paramContext));
   }
   
-  public static boolean b()
+  public static int b(Context paramContext)
   {
-    return QQTheme.a();
+    return DisplayUtils.d(paramContext);
+  }
+  
+  public static String b()
+  {
+    return QQTheme.getCurrentThemeId();
+  }
+  
+  public static boolean c()
+  {
+    return QQTheme.isNowThemeIsNight();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQUIDelegate
  * JD-Core Version:    0.7.0.1
  */

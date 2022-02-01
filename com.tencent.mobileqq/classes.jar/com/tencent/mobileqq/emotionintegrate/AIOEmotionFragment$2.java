@@ -11,14 +11,14 @@ class AIOEmotionFragment$2
   
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.a.a.dismiss();
+    this.a.F.dismiss();
     int i = paramActionSheetItem.action;
     this.a.a(i, paramActionSheetItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.2
  * JD-Core Version:    0.7.0.1
  */

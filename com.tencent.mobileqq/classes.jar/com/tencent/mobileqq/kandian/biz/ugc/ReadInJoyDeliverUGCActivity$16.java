@@ -10,28 +10,28 @@ class ReadInJoyDeliverUGCActivity$16
   public void run()
   {
     QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic");
-    if (ReadInJoyDeliverUGCActivity.a(this.this$0, this.jdField_a_of_type_JavaLangObject)) {
+    if (ReadInJoyDeliverUGCActivity.a(this.this$0, this.a)) {
       return;
     }
-    String str = ReadInJoyDeliverUGCActivity.a(this.this$0, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Int);
+    String str = ReadInJoyDeliverUGCActivity.a(this.this$0, this.a, this.b);
     if (str == null) {
       return;
     }
-    Object localObject = new ReadInJoyDeliverUGCActivity.UploadImage(this.this$0, str, this.jdField_a_of_type_Int).a();
+    Object localObject = new ReadInJoyDeliverUGCActivity.UploadImage(this.this$0, str, this.b).c();
     if (((ReadInJoyDeliverUGCActivity.UploadImage)localObject).a()) {
       return;
     }
-    long l = ((ReadInJoyDeliverUGCActivity.UploadImage)localObject).a();
-    localObject = new ReadInJoyDeliverUGCActivity.CompressFile(this.this$0, str, l).a();
+    long l = ((ReadInJoyDeliverUGCActivity.UploadImage)localObject).b();
+    localObject = new ReadInJoyDeliverUGCActivity.CompressFile(this.this$0, str, l).e();
     if (((ReadInJoyDeliverUGCActivity.CompressFile)localObject).a()) {
       return;
     }
-    ReadInJoyDeliverUGCActivity.a(this.this$0, str, l, (ReadInJoyDeliverUGCActivity.CompressFile)localObject, this.jdField_a_of_type_Int);
+    ReadInJoyDeliverUGCActivity.a(this.this$0, str, l, (ReadInJoyDeliverUGCActivity.CompressFile)localObject, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.16
  * JD-Core Version:    0.7.0.1
  */

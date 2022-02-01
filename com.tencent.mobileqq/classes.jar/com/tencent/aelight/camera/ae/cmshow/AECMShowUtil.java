@@ -9,16 +9,6 @@ import org.light.device.DeviceInstance;
 
 public class AECMShowUtil
 {
-  public static String a()
-  {
-    if (!AEResUtil.b(AEResInfo.LIGHT_RES_BASE_PACKAGE))
-    {
-      AEQLog.d("AECMShowUtil", "[getLightAssetsDir]: LightBasePackage not exist, return asset path!");
-      return "assets://camera/cmshow";
-    }
-    return AEResUtil.d();
-  }
-  
   public static void a()
   {
     try
@@ -33,11 +23,11 @@ public class AECMShowUtil
     }
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     try
     {
-      DeviceSupportUtil.init(a());
+      DeviceSupportUtil.init(c());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[isCMShowSupported] 厘米秀设备屏蔽判断，设备名：");
       localStringBuilder.append(DeviceInstance.getInstance().getDeviceName());
@@ -52,14 +42,24 @@ public class AECMShowUtil
     return false;
   }
   
-  public static boolean b()
+  public static String c()
   {
-    return (AEResUtil.b(AEResInfo.AE_RES_BASE_PACKAGE)) && (AEResUtil.b(AEResInfo.LIGHT_RES_BASE_PACKAGE)) && (AEResUtil.b(AEResInfo.LIGHT_RES_BUNDLE_ACE3D)) && (AEResUtil.b(AEResInfo.LIGHT_RES_BUNDLE_3DMM));
+    if (!AEResUtil.d(AEResInfo.LIGHT_RES_BASE_PACKAGE))
+    {
+      AEQLog.d("AECMShowUtil", "[getLightAssetsDir]: LightBasePackage not exist, return asset path!");
+      return "assets://camera/cmshow";
+    }
+    return AEResUtil.k();
+  }
+  
+  public static boolean d()
+  {
+    return (AEResUtil.d(AEResInfo.AE_RES_BASE_PACKAGE)) && (AEResUtil.d(AEResInfo.LIGHT_RES_BASE_PACKAGE)) && (AEResUtil.d(AEResInfo.LIGHT_RES_BUNDLE_ACE3D)) && (AEResUtil.d(AEResInfo.LIGHT_RES_BUNDLE_3DMM));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowUtil
  * JD-Core Version:    0.7.0.1
  */

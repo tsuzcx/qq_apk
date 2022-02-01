@@ -13,7 +13,7 @@ class LocationPlugin$1
   @QQPermissionDenied(1)
   public void denied()
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginLocationPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.b.callJs(this.a, new String[] { "-3", "{}" });
   }
   
   @QQPermissionGrant(1)
@@ -27,7 +27,7 @@ class LocationPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.LocationPlugin.1
  * JD-Core Version:    0.7.0.1
  */

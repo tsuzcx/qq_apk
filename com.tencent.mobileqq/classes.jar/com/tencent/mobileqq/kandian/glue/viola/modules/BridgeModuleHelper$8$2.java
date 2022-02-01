@@ -12,12 +12,12 @@ class BridgeModuleHelper$8$2
   
   public void run()
   {
-    QQToast.a(ReadInJoyUtils.a().getApplication(), 1, HardCodeUtil.a(2131701403), 0).a();
+    QQToast.makeText(ReadInJoyUtils.b().getApplication(), 1, HardCodeUtil.a(2131899430), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModuleHelper.8.2
  * JD-Core Version:    0.7.0.1
  */

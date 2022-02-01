@@ -24,18 +24,10 @@ public class WSVerticalDataUtil
 {
   public static int a(@Nullable WSVerticalItemData paramWSVerticalItemData)
   {
-    if ((paramWSVerticalItemData != null) && (paramWSVerticalItemData.a() != null)) {
-      return paramWSVerticalItemData.a().a();
+    if ((paramWSVerticalItemData != null) && (paramWSVerticalItemData.g() != null)) {
+      return paramWSVerticalItemData.g().c();
     }
     return 0;
-  }
-  
-  public static stCollection a(@Nullable WSVerticalItemData paramWSVerticalItemData)
-  {
-    if (paramWSVerticalItemData == null) {
-      return null;
-    }
-    return paramWSVerticalItemData.a();
   }
   
   @NonNull
@@ -53,15 +45,15 @@ public class WSVerticalDataUtil
   {
     if (paramWSDramaItemData != null)
     {
-      Object localObject = paramWSDramaItemData.a();
+      Object localObject = paramWSDramaItemData.g();
       if (localObject != null)
       {
         WSVerticalItemData localWSVerticalItemData = new WSVerticalItemData();
-        localObject = new WSDramaEpisodeInfo(paramWSDramaItemData.a(), a(paramWSDramaItemData.a()), ((stDramaFeed)localObject).num);
-        ((WSDramaEpisodeInfo)localObject).a(paramWSDramaItemData.a());
-        localWSVerticalItemData.b(paramWSDramaItemData.b());
+        localObject = new WSDramaEpisodeInfo(paramWSDramaItemData.b(), a(paramWSDramaItemData.f()), ((stDramaFeed)localObject).num);
+        ((WSDramaEpisodeInfo)localObject).a(paramWSDramaItemData.f());
+        localWSVerticalItemData.b(paramWSDramaItemData.j());
         localWSVerticalItemData.a((WSDramaEpisodeInfo)localObject);
-        localWSVerticalItemData.a(paramWSDramaItemData.a());
+        localWSVerticalItemData.a(paramWSDramaItemData.i());
         return localWSVerticalItemData;
       }
     }
@@ -70,9 +62,9 @@ public class WSVerticalDataUtil
   
   public static String a()
   {
-    WeishiManager localWeishiManager = WeishiUtils.a();
+    WeishiManager localWeishiManager = WeishiUtils.d();
     if (localWeishiManager != null) {
-      return localWeishiManager.c();
+      return localWeishiManager.d();
     }
     return "";
   }
@@ -86,15 +78,6 @@ public class WSVerticalDataUtil
       if (paramstDrama != null) {
         return paramstDrama;
       }
-    }
-    return "";
-  }
-  
-  @NonNull
-  public static String a(@Nullable WSVerticalItemData paramWSVerticalItemData)
-  {
-    if ((paramWSVerticalItemData != null) && (paramWSVerticalItemData.a() != null) && (paramWSVerticalItemData.a().id != null)) {
-      return paramWSVerticalItemData.a().id;
     }
     return "";
   }
@@ -141,8 +124,8 @@ public class WSVerticalDataUtil
       while (paramList.hasNext())
       {
         WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)paramList.next();
-        if ((localWSVerticalItemData != null) && (localWSVerticalItemData.a() != null)) {
-          localArrayList.add(localWSVerticalItemData.a().id);
+        if ((localWSVerticalItemData != null) && (localWSVerticalItemData.b() != null)) {
+          localArrayList.add(localWSVerticalItemData.b().id);
         }
       }
     }
@@ -189,9 +172,9 @@ public class WSVerticalDataUtil
   {
     if ((paramstSimpleMetaFeed.gdt_ad_type == 1) && (paramstSimpleMetaFeed.gdt_ad_info != null))
     {
-      GdtAdUtil.a(paramstSimpleMetaFeed);
+      GdtAdUtil.c(paramstSimpleMetaFeed);
       GdtAdUtil.a(BaseApplicationImpl.getContext(), paramstSimpleMetaFeed);
-      paramWSVerticalItemData.a(GdtAdUtil.a(paramstSimpleMetaFeed));
+      paramWSVerticalItemData.a(GdtAdUtil.b(paramstSimpleMetaFeed));
     }
   }
   
@@ -199,17 +182,17 @@ public class WSVerticalDataUtil
   {
     if (paramWSDramaItemData != null)
     {
-      paramWSDramaItemData = paramWSDramaItemData.a();
+      paramWSDramaItemData = paramWSDramaItemData.g();
       if ((paramWSDramaItemData != null) && (paramWSVerticalItemData != null))
       {
-        WSDramaEpisodeInfo localWSDramaEpisodeInfo = paramWSVerticalItemData.a();
+        WSDramaEpisodeInfo localWSDramaEpisodeInfo = paramWSVerticalItemData.g();
         if (localWSDramaEpisodeInfo != null)
         {
-          paramWSVerticalItemData = paramWSVerticalItemData.a();
+          paramWSVerticalItemData = paramWSVerticalItemData.b();
           if (paramWSVerticalItemData == null) {
             return;
           }
-          paramWSDramaItemData.num = localWSDramaEpisodeInfo.a();
+          paramWSDramaItemData.num = localWSDramaEpisodeInfo.c();
           paramWSDramaItemData.feed = paramWSVerticalItemData;
           paramWSDramaItemData.id = paramWSVerticalItemData.id;
         }
@@ -217,10 +200,18 @@ public class WSVerticalDataUtil
     }
   }
   
+  public static stCollection b(@Nullable WSVerticalItemData paramWSVerticalItemData)
+  {
+    if (paramWSVerticalItemData == null) {
+      return null;
+    }
+    return paramWSVerticalItemData.h();
+  }
+  
   public static String b()
   {
-    WSRedDotPushMsg localWSRedDotPushMsg = WeishiUtils.a();
-    WeishiManager localWeishiManager = WeishiUtils.a();
+    WSRedDotPushMsg localWSRedDotPushMsg = WeishiUtils.g();
+    WeishiManager localWeishiManager = WeishiUtils.d();
     if (localWeishiManager != null) {
       localWeishiManager.a(null);
     }
@@ -240,16 +231,25 @@ public class WSVerticalDataUtil
     while (i < paramList.size())
     {
       if ((paramList.get(i) instanceof WSVerticalItemData)) {
-        localArrayList.add(((WSVerticalItemData)paramList.get(i)).a());
+        localArrayList.add(((WSVerticalItemData)paramList.get(i)).b());
       }
       i += 1;
     }
     return localArrayList;
   }
+  
+  @NonNull
+  public static String c(@Nullable WSVerticalItemData paramWSVerticalItemData)
+  {
+    if ((paramWSVerticalItemData != null) && (paramWSVerticalItemData.b() != null) && (paramWSVerticalItemData.b().id != null)) {
+      return paramWSVerticalItemData.b().id;
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataUtil
  * JD-Core Version:    0.7.0.1
  */

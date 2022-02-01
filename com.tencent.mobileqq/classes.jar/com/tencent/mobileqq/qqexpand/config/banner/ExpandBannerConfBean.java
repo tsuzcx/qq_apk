@@ -19,9 +19,9 @@ public class ExpandBannerConfBean
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("parse taskid->");
-        ((StringBuilder)localObject).append(paramQConfItem.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramQConfItem.a);
         ((StringBuilder)localObject).append(" content->");
-        ((StringBuilder)localObject).append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramQConfItem.b);
         QLog.d("ExtendFriendBannerConfBean", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -30,7 +30,7 @@ public class ExpandBannerConfBean
       int i;
       try
       {
-        paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString).optJSONArray("appList");
+        paramQConfItem = new JSONObject(paramQConfItem.b).optJSONArray("appList");
         if (paramQConfItem != null)
         {
           localObject = new ArrayList(2);
@@ -89,7 +89,7 @@ public class ExpandBannerConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.config.banner.ExpandBannerConfBean
  * JD-Core Version:    0.7.0.1
  */

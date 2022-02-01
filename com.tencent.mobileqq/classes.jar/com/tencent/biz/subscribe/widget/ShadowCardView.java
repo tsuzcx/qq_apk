@@ -46,8 +46,8 @@ public class ShadowCardView
   {
     try
     {
-      int k = getResources().getColor(2131167394);
-      int m = getResources().getColor(2131167014);
+      int k = getResources().getColor(2131168464);
+      int m = getResources().getColor(2131167950);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.shadowCardView);
       this.a = paramContext.getDimensionPixelSize(8, 0);
       this.b = paramContext.getColor(5, m);
@@ -95,10 +95,25 @@ public class ShadowCardView
   {
     super.onMeasure(paramInt1, paramInt2);
   }
+  
+  public void setShadowBlur(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void setShadowCardColor(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void setShadowColor(int paramInt)
+  {
+    this.b = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.ShadowCardView
  * JD-Core Version:    0.7.0.1
  */

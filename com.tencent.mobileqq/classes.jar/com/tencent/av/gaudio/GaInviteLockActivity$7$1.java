@@ -10,10 +10,10 @@ class GaInviteLockActivity$7$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity$7.this$0.c()) {
+    if (this.b.this$0.e()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity$7.this$0.a.setDisPlayList(this.jdField_a_of_type_JavaUtilArrayList);
+    this.b.this$0.N.setDisPlayList(this.a);
   }
 }
 

@@ -11,8 +11,8 @@ import mqq.os.MqqHandler;
 public class DiskStorageManager
   implements DiskStorageManagerInterface
 {
-  private int jdField_a_of_type_Int = 0;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
+  private MqqHandler a = ThreadManager.getSubThreadHandler();
+  private int b = 0;
   
   public DiskStorageManager()
   {
@@ -23,7 +23,7 @@ public class DiskStorageManager
   {
     if (paramInt > 0)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.b = paramInt;
       return;
     }
     throw new IllegalArgumentException("Max count must be positive number!");
@@ -32,7 +32,7 @@ public class DiskStorageManager
   private void a(List<File> paramList)
   {
     int i = paramList.size();
-    if (i <= this.jdField_a_of_type_Int)
+    if (i <= this.b)
     {
       QLog.d("DiskStorageManager", 2, "trim directly return data");
       return;
@@ -67,17 +67,17 @@ public class DiskStorageManager
   
   public void a(File paramFile)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new DiskStorageManager.TouchCallable(this, paramFile));
+    this.a.post(new DiskStorageManager.TouchCallable(this, paramFile));
   }
   
   protected boolean a(File paramFile, long paramLong, int paramInt)
   {
-    return paramInt <= this.jdField_a_of_type_Int;
+    return paramInt <= this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.DiskStorageManager
  * JD-Core Version:    0.7.0.1
  */

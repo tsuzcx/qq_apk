@@ -5,15 +5,10 @@ import org.json.JSONObject;
 
 public class AEEditorDataModel
 {
-  public static final String a;
-  public JSONObject a;
+  public static final String a = AEEditorDataModel.class.toString();
   public String b;
   public String c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = AEEditorDataModel.class.toString();
-  }
+  public JSONObject d;
   
   public AEEditorDataModel() {}
   
@@ -21,7 +16,7 @@ public class AEEditorDataModel
   {
     this.b = paramString1;
     this.c = paramString2;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.d = paramJSONObject;
   }
   
   public static AEEditorDataModel a(JSONObject paramJSONObject)
@@ -34,12 +29,12 @@ public class AEEditorDataModel
       AEEditorDataModel localAEEditorDataModel = new AEEditorDataModel();
       localAEEditorDataModel.b = paramJSONObject.optString("orifilepath");
       localAEEditorDataModel.c = paramJSONObject.optString("outfilepath");
-      localAEEditorDataModel.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject.optJSONObject("effect");
+      localAEEditorDataModel.d = paramJSONObject.optJSONObject("effect");
       return localAEEditorDataModel;
     }
     catch (Exception paramJSONObject)
     {
-      AEQLog.a(jdField_a_of_type_JavaLangString, paramJSONObject);
+      AEQLog.a(a, paramJSONObject);
     }
     return null;
   }
@@ -51,19 +46,19 @@ public class AEEditorDataModel
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.putOpt("orifilepath", this.b);
       localJSONObject.putOpt("outfilepath", this.c);
-      localJSONObject.putOpt("effect", this.jdField_a_of_type_OrgJsonJSONObject);
+      localJSONObject.putOpt("effect", this.d);
       return localJSONObject;
     }
     catch (Exception localException)
     {
-      AEQLog.a(jdField_a_of_type_JavaLangString, localException);
+      AEQLog.a(a, localException);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.record.AEEditorDataModel
  * JD-Core Version:    0.7.0.1
  */

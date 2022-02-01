@@ -22,7 +22,7 @@ class RelativeFeedsAdapter$3
         paramRecyclerView.computeVerticalScrollExtent(new RecyclerView.State());
         int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
         paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
-        if ((this.a.b(arrayOfInt[0]) <= 0) && (!RelativeFeedsAdapter.b(this.a)))
+        if ((this.a.e(arrayOfInt[0]) <= 0) && (!RelativeFeedsAdapter.g(this.a)))
         {
           RelativeFeedsAdapter.a(this.a, true);
           paramRecyclerView.invalidateSpanAssignments();

@@ -19,7 +19,7 @@ class AccountManageActivity$1
         FriendsManager localFriendsManager = (FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
         if (localFriendsManager != null)
         {
-          AccountManageActivity.a(this.this$0, localFriendsManager.a(this.this$0.app.getCurrentAccountUin()));
+          AccountManageActivity.a(this.this$0, localFriendsManager.f(this.this$0.app.getCurrentAccountUin()));
           return;
         }
       }
@@ -35,7 +35,7 @@ class AccountManageActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.1
  * JD-Core Version:    0.7.0.1
  */

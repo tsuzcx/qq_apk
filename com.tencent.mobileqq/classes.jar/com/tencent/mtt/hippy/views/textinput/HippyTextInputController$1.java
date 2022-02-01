@@ -24,7 +24,7 @@ class HippyTextInputController$1
       localStringBuilder.append(bool);
       LogUtils.d("InputText", localStringBuilder.toString());
     }
-    if ((this.val$var.getObject(0) == null) || (this.val$var.getBoolean(0) == true)) {
+    if ((this.val$var.getObject(0) == null) || (this.val$var.getBoolean(0))) {
       this.val$view.showInputMethodManager();
     }
     return false;
@@ -32,7 +32,7 @@ class HippyTextInputController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.HippyTextInputController.1
  * JD-Core Version:    0.7.0.1
  */

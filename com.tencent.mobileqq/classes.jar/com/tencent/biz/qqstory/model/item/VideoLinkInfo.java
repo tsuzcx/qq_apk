@@ -17,28 +17,28 @@ public class VideoLinkInfo
 {
   @JsonORM.Column(a="type")
   public int a;
-  @JsonORM.Column(a="capture")
-  public VideoCaptureInfo a;
-  @JsonORM.Column(a="comp")
-  public VideoCompInfo a;
-  @JsonORM.Column(a="gameinfo")
-  public VideoGameInfo a;
-  @JsonORM.Column(a="game")
-  public VideoLinkGameInfo a;
-  @JsonORM.Column(a="videoShare")
-  public VideoLinkInfo.VipFrwrdLinkInfo a;
   @JsonORM.Column(a="linkUrl")
-  public String a;
-  @JsonORM.Column(a="parseState")
-  public int b;
-  @JsonORM.Column(a="title")
   public String b;
-  @JsonORM.Column(a="body")
+  @JsonORM.Column(a="title")
   public String c;
-  @JsonORM.Column(a="picUrl")
+  @JsonORM.Column(a="body")
   public String d;
-  @JsonORM.Column(a="app")
+  @JsonORM.Column(a="picUrl")
   public String e;
+  @JsonORM.Column(a="app")
+  public String f;
+  @JsonORM.Column(a="parseState")
+  public int g;
+  @JsonORM.Column(a="videoShare")
+  public VideoLinkInfo.VipFrwrdLinkInfo h;
+  @JsonORM.Column(a="game")
+  public VideoLinkGameInfo i;
+  @JsonORM.Column(a="gameinfo")
+  public VideoGameInfo j;
+  @JsonORM.Column(a="comp")
+  public VideoCompInfo k;
+  @JsonORM.Column(a="capture")
+  public VideoCaptureInfo l;
   
   @Nullable
   public static VideoLinkInfo a(String paramString)
@@ -65,14 +65,14 @@ public class VideoLinkInfo
   
   public String a()
   {
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    String str2 = this.b;
     Object localObject = str2;
     if (Patterns.d.matcher(str2).find())
     {
       String str1 = null;
-      int i = str2.lastIndexOf("#");
-      if (i > 0) {
-        str1 = str2.substring(i);
+      int m = str2.lastIndexOf("#");
+      if (m > 0) {
+        str1 = str2.substring(m);
       }
       str2 = URLUtil.guessUrl(str2);
       localObject = str2;
@@ -105,26 +105,21 @@ public class VideoLinkInfo
     return "";
   }
   
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo$VipFrwrdLinkInfo != null);
-  }
-  
   public String b()
   {
-    String str1 = this.b;
+    String str1 = this.c;
     String str2 = "";
     if (str1 != null) {
       str1 = str1.trim();
     } else {
       str1 = "";
     }
-    String str3 = this.c;
+    String str3 = this.d;
     if (str3 != null) {
       str2 = str3.trim();
     }
     if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2))) {
-      return this.jdField_a_of_type_JavaLangString;
+      return this.b;
     }
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
       return String.format("%s-%s", new Object[] { str1, str2 });
@@ -134,10 +129,15 @@ public class VideoLinkInfo
     }
     return str2;
   }
+  
+  public boolean c()
+  {
+    return (this.a == 5) && (this.h != null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.VideoLinkInfo
  * JD-Core Version:    0.7.0.1
  */

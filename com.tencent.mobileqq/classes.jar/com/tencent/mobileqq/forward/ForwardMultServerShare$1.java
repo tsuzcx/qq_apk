@@ -23,7 +23,7 @@ class ForwardMultServerShare$1
   {
     if ((paramSendResult != null) && (QLog.isColorLevel()))
     {
-      String str = ForwardMultServerShare.a();
+      String str = ForwardMultServerShare.d();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestNormalShare updateMsg info =");
       localStringBuilder.append(paramSendResult);
@@ -33,7 +33,7 @@ class ForwardMultServerShare$1
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    Object localObject2 = ForwardMultServerShare.a(this.a).getString("uin");
+    Object localObject2 = this.a.a.getString("uin");
     HashMap localHashMap = new HashMap();
     if (ForwardMultServerShare.a(this.a)) {
       localObject1 = "1";
@@ -46,14 +46,14 @@ class ForwardMultServerShare$1
       localObject1 = "";
     }
     ForwardStatisticsReporter.a("KEY_STAGE_2_SEND_MSG_BY_SERVER", (String)localObject1, localHashMap, ForwardUtils.a(paramSendResult));
-    QLog.d(ForwardMultServerShare.a(), 1, new Object[] { "requestNormalShare onSend result =", paramSendResult, ", isTimeOut=", Boolean.valueOf(ForwardMultServerShare.a(this.a)) });
+    QLog.d(ForwardMultServerShare.d(), 1, new Object[] { "requestNormalShare onSend result =", paramSendResult, ", isTimeOut=", Boolean.valueOf(ForwardMultServerShare.a(this.a)) });
     if (ForwardMultServerShare.a(this.a)) {
       return;
     }
     if (ForwardUtils.a(paramSendResult))
     {
-      paramSendResult = (String[])paramSendResult.jdField_a_of_type_JavaLangObject;
-      localObject1 = ForwardMultServerShare.a();
+      paramSendResult = (String[])paramSendResult.l;
+      localObject1 = ForwardMultServerShare.d();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("requestNormalShare onSend urls=");
       ((StringBuilder)localObject2).append(paramSendResult[0]);
@@ -64,10 +64,10 @@ class ForwardMultServerShare$1
       return;
     }
     int i = paramSendResult.b;
-    boolean bool = ForwardUtils.a(ForwardMultServerShare.a(this.a));
-    localObject1 = (String[])paramSendResult.jdField_a_of_type_JavaLangObject;
-    localObject2 = ForwardMultServerShare.a();
-    int j = paramSendResult.jdField_a_of_type_Int;
+    boolean bool = ForwardUtils.a(ForwardMultServerShare.b(this.a));
+    localObject1 = (String[])paramSendResult.l;
+    localObject2 = ForwardMultServerShare.d();
+    int j = paramSendResult.a;
     paramSendResult = new StringBuilder();
     paramSendResult.append(", errCode=");
     paramSendResult.append(i);
@@ -79,12 +79,12 @@ class ForwardMultServerShare$1
       ForwardMultServerShare.a(this.a, localObject1[0], localObject1[1]);
       return;
     }
-    ForwardMultServerShare.a(this.a);
+    ForwardMultServerShare.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMultServerShare.1
  * JD-Core Version:    0.7.0.1
  */

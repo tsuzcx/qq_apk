@@ -35,38 +35,21 @@ import java.util.List;
 public class EditPicSave
   extends EditVideoPart
 {
-  int jdField_a_of_type_Int;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private SendPanelItemInfo jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelItemInfo;
-  ThreadExcutor.IThreadListener jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new EditPicSave.1(this);
-  ProgressPieDrawable jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int = 20;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = true;
+  int a;
+  boolean b;
+  int c = 20;
+  ProgressPieDrawable d;
+  ThreadExcutor.IThreadListener e = new EditPicSave.1(this);
+  private Dialog f;
+  private String g;
+  private boolean h = false;
+  private boolean i = true;
+  private int j = 0;
+  private SendPanelItemInfo k;
   
   public EditPicSave(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
     super(paramEditVideoPartManager);
-  }
-  
-  private ProgressPieDrawable a()
-  {
-    ProgressPieDrawable localProgressPieDrawable = new ProgressPieDrawable(a());
-    localProgressPieDrawable.a(AIOUtils.b(50.0F, a()));
-    localProgressPieDrawable.a(true);
-    localProgressPieDrawable.c(false);
-    localProgressPieDrawable.g(-1);
-    localProgressPieDrawable.f(0);
-    localProgressPieDrawable.d(-15550475);
-    localProgressPieDrawable.i(3);
-    localProgressPieDrawable.jdField_f_of_type_Boolean = true;
-    localProgressPieDrawable.jdField_f_of_type_Int = 2;
-    localProgressPieDrawable.e(true);
-    localProgressPieDrawable.a(new EditPicSave.5(this));
-    return localProgressPieDrawable;
   }
   
   private String a(Context paramContext)
@@ -77,50 +60,67 @@ public class EditPicSave
     return "";
   }
   
-  private void h()
+  private void i()
   {
-    Object localObject1 = new GenerateContext(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams);
-    ((GenerateContext)localObject1).b = PublishFileManager.a(2);
-    ((GenerateContext)localObject1).a = new GeneratePicArgs(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a.a());
-    Object localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject1 = new GenerateContext(this.t.I);
+    ((GenerateContext)localObject1).p = PublishFileManager.a(2);
+    ((GenerateContext)localObject1).l = new GeneratePicArgs(this.t.I.e.a());
+    Object localObject2 = this.t.J.iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((EditVideoPart)((Iterator)localObject2).next()).a(0, (GenerateContext)localObject1);
     }
     SLog.d("EditPicSave", "PUBLISH start ...");
-    a(HardCodeUtil.a(2131703847), false, 0);
+    a(HardCodeUtil.a(2131901793), false, 0);
     a(20);
-    localObject1 = Stream.of(localObject1).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction("EditPicSave", 2));
+    localObject1 = Stream.of(localObject1).map(new GenerateEditPicDoodleSegment((EditDoodleExport)b(EditDoodleExport.class), null)).map(new ThreadOffFunction("EditPicSave", 2));
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(EditPicConstants.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(EditPicConstants.a);
     ((StringBuilder)localObject2).append("qq_pic_merged_");
     ((StringBuilder)localObject2).append(System.currentTimeMillis());
     ((StringBuilder)localObject2).append(".jpg");
     ((Stream)localObject1).map(new MergePicSegment(((StringBuilder)localObject2).toString(), true, null)).map(new UIThreadOffFunction(this)).subscribe(new EditPicSave.2(this));
   }
   
+  private ProgressPieDrawable k()
+  {
+    ProgressPieDrawable localProgressPieDrawable = new ProgressPieDrawable(u());
+    localProgressPieDrawable.a(AIOUtils.b(50.0F, s()));
+    localProgressPieDrawable.a(true);
+    localProgressPieDrawable.c(false);
+    localProgressPieDrawable.h(-1);
+    localProgressPieDrawable.g(0);
+    localProgressPieDrawable.e(-15550475);
+    localProgressPieDrawable.j(3);
+    localProgressPieDrawable.D = true;
+    localProgressPieDrawable.A = 2;
+    localProgressPieDrawable.e(true);
+    localProgressPieDrawable.a(new EditPicSave.5(this));
+    return localProgressPieDrawable;
+  }
+  
   public void a(int paramInt)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable;
+    Object localObject = this.d;
     if (localObject == null) {
       return;
     }
-    ((ProgressPieDrawable)localObject).a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(paramInt);
+    ((ProgressPieDrawable)localObject).b();
+    this.d.d(paramInt);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[setProgress] current:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.a());
+      ((StringBuilder)localObject).append(this.d.c());
       ((StringBuilder)localObject).append(", progress:");
       ((StringBuilder)localObject).append(paramInt);
       QLog.w("EditPicSave", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.d(false);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable;
+    this.d.b(true);
+    this.d.d(false);
+    localObject = this.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(String.valueOf(paramInt));
     localStringBuilder.append("%");
@@ -136,34 +136,34 @@ public class EditPicSave
         if (paramInt != 20) {
           return;
         }
-        this.jdField_c_of_type_Int = paramInt;
+        this.j = paramInt;
         if ((paramObject instanceof SendPanelItemInfo)) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelItemInfo = ((SendPanelItemInfo)paramObject);
+          this.k = ((SendPanelItemInfo)paramObject);
         }
       }
       else
       {
-        VideoEditReport.b("0X80080E1", VideoEditReport.a);
-        h();
+        VideoEditReport.b("0X80080E1", VideoEditReport.c);
+        i();
       }
     }
     else
     {
-      this.jdField_c_of_type_Int = paramInt;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelItemInfo = null;
+      this.j = paramInt;
+      this.k = null;
     }
   }
   
   @TargetApi(14)
   public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new Dialog(a());
-      Object localObject = this.jdField_a_of_type_AndroidAppDialog.getWindow();
+      this.f = new Dialog(u());
+      Object localObject = this.f.getWindow();
       if (localObject != null)
       {
         ((Window)localObject).setBackgroundDrawable(new ColorDrawable());
@@ -171,45 +171,45 @@ public class EditPicSave
           ((Window)localObject).setDimAmount(0.0F);
         }
       }
-      this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131561828);
-      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131373123);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable = a();
-      ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
+      this.f.requestWindowFeature(1);
+      this.f.setContentView(2131628207);
+      localObject = (ImageView)this.f.findViewById(2131440726);
+      this.d = k();
+      ((ImageView)localObject).setImageDrawable(this.d);
     }
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131371529)).setText(paramString);
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(paramBoolean);
-    this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(0);
-    a().getRootView().postDelayed(new EditPicSave.3(this), paramInt);
+    ((TextView)this.f.findViewById(2131438908)).setText(paramString);
+    this.f.setCancelable(paramBoolean);
+    this.f.setCanceledOnTouchOutside(paramBoolean);
+    this.d.d(0);
+    t().getRootView().postDelayed(new EditPicSave.3(this), paramInt);
   }
   
-  void b()
+  void c()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getRootView().postDelayed(new EditPicSave.4(this), 1000L);
+    this.u.getRootView().postDelayed(new EditPicSave.4(this), 1000L);
   }
   
-  public void e()
+  public void d()
   {
-    this.jdField_b_of_type_Boolean = true;
-    g();
-    super.e();
-  }
-  
-  public void g()
-  {
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    Dialog localDialog = this.f;
     if (localDialog != null) {
       localDialog.dismiss();
     }
   }
+  
+  public void g()
+  {
+    this.h = true;
+    d();
+    super.g();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicSave
  * JD-Core Version:    0.7.0.1
  */

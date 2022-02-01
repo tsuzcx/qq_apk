@@ -18,15 +18,15 @@ class PopViewAnimationDrawableHelper$LoopingRunnable
     Object localObject = (PopViewAnimationDrawableHelper)this.a.get();
     if (localObject != null)
     {
-      PopViewAnimationDrawableHelper.OnInnerFrameAnimationListener localOnInnerFrameAnimationListener = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
+      PopViewAnimationDrawableHelper.OnInnerFrameAnimationListener localOnInnerFrameAnimationListener = PopViewAnimationDrawableHelper.e((PopViewAnimationDrawableHelper)localObject);
       if (localOnInnerFrameAnimationListener != null)
       {
-        if (PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject) > 0)
+        if (PopViewAnimationDrawableHelper.f((PopViewAnimationDrawableHelper)localObject) > 0)
         {
           localOnInnerFrameAnimationListener.a();
           return;
         }
-        localObject = PopViewAnimationDrawableHelper.a((PopViewAnimationDrawableHelper)localObject);
+        localObject = PopViewAnimationDrawableHelper.g((PopViewAnimationDrawableHelper)localObject);
         if ((localObject != null) && (((AnimationDrawable)localObject).getFrame(((AnimationDrawable)localObject).getNumberOfFrames() - 1) != ((AnimationDrawable)localObject).getCurrent()))
         {
           localOnInnerFrameAnimationListener.b();

@@ -37,21 +37,10 @@ class FileSelectorSearchFragment$FileSelectorSearchAdapter
     }
     ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
   }
-  
-  public void a(List<ISearchResultModel> paramList, boolean paramBoolean)
-  {
-    super.a(paramList, paramBoolean);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
-      return;
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

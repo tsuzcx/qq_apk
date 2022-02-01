@@ -17,7 +17,7 @@ class Achilles$1$1
     paramString.append("query predownload info fail: ");
     paramString.append(paramRockDownloadInfo);
     QLog.d("Achilles", 1, paramString.toString());
-    Achilles.a(this.jdField_a_of_type_ComTencentMobileqqDataRockDownloadInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoAladdinConfigAchillesParams);
+    Achilles.a(this.a, this.b);
   }
   
   public void a(ArrayList<RockDownloadInfo> paramArrayList)
@@ -30,7 +30,7 @@ class Achilles$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.Achilles.1.1
  * JD-Core Version:    0.7.0.1
  */

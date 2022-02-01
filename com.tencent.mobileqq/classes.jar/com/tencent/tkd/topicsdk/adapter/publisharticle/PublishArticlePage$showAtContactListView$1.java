@@ -36,7 +36,7 @@ final class PublishArticlePage$showAtContactListView$1
     {
       if (this.$hasInputAtInEditText)
       {
-        localObject = PublishArticlePage.a(this.this$0);
+        localObject = PublishArticlePage.h(this.this$0);
         if ((((RichEditText)localObject).getText().length() > ((RichEditText)localObject).getSelectionStart() - 1) && (((RichEditText)localObject).getText().charAt(((RichEditText)localObject).getSelectionStart() - 1) == '@')) {
           ((RichEditText)localObject).getText().delete(((RichEditText)localObject).getSelectionStart() - 1, ((RichEditText)localObject).getSelectionStart());
         }
@@ -46,17 +46,17 @@ final class PublishArticlePage$showAtContactListView$1
       {
         EditObject localEditObject = (EditObject)((Iterator)localObject).next();
         JSONObject localJSONObject = RichEditTextEvent.a.a(1);
-        PublishArticlePage.a(this.this$0).a(localEditObject, localJSONObject);
+        PublishArticlePage.h(this.this$0).a(localEditObject, localJSONObject);
       }
     }
     if ((paramArrayList != null) || ((paramBundle != null) && (paramBundle.getBoolean("isSoftInputActive") == true))) {
-      InputMethodUtils.a.a((Context)this.$activity, (View)PublishArticlePage.a(this.this$0));
+      InputMethodUtils.a.a((Context)this.$activity, (View)PublishArticlePage.h(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.showAtContactListView.1
  * JD-Core Version:    0.7.0.1
  */

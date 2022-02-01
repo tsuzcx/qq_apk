@@ -39,74 +39,74 @@ class ZipFilesListAdapter$1
     Object localObject3 = (ZipFilesListAdapter.FilesViewHolder)paramView.getTag();
     Object localObject1;
     Object localObject2;
-    if (((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_a_of_type_Boolean)
+    if (((ZipFilesListAdapter.FilesViewHolder)localObject3).e.a)
     {
-      localObject1 = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, TroopFileZipPreviewActivity.class);
-      ((Intent)localObject1).putExtra("str_download_dns", this.a.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("int32_server_port", this.a.jdField_b_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("string_download_url", this.a.c);
-      ((Intent)localObject1).putExtra("str_cookie_val", this.a.d);
+      localObject1 = new Intent(this.a.a, TroopFileZipPreviewActivity.class);
+      ((Intent)localObject1).putExtra("str_download_dns", this.a.c);
+      ((Intent)localObject1).putExtra("int32_server_port", this.a.d);
+      ((Intent)localObject1).putExtra("string_download_url", this.a.e);
+      ((Intent)localObject1).putExtra("str_cookie_val", this.a.f);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.a.e);
-      ((StringBuilder)localObject2).append(((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.a.g);
+      ((StringBuilder)localObject2).append(((ZipFilesListAdapter.FilesViewHolder)localObject3).e.c);
       ((Intent)localObject1).putExtra("filepath", ((StringBuilder)localObject2).toString());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("");
-      ((StringBuilder)localObject2).append(((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(((ZipFilesListAdapter.FilesViewHolder)localObject3).e.c);
       ((Intent)localObject1).putExtra("filename", ((StringBuilder)localObject2).toString());
-      ((Intent)localObject1).putExtra("nSessionId", this.a.jdField_b_of_type_Long);
+      ((Intent)localObject1).putExtra("nSessionId", this.a.i);
       ((Intent)localObject1).putExtra("isHttps", ZipFilesListAdapter.a(this.a));
-      if (!TextUtils.isEmpty(ZipFilesListAdapter.a(this.a))) {
-        ((Intent)localObject1).putExtra("httpsDomain", ZipFilesListAdapter.a(this.a));
+      if (!TextUtils.isEmpty(ZipFilesListAdapter.b(this.a))) {
+        ((Intent)localObject1).putExtra("httpsDomain", ZipFilesListAdapter.b(this.a));
       }
-      ((Intent)localObject1).putExtra("httpsPort", ZipFilesListAdapter.a(this.a));
-      ((Intent)localObject1).putExtra("troop_uin", this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_AndroidAppActivity.startActivityForResult((Intent)localObject1, 10099);
+      ((Intent)localObject1).putExtra("httpsPort", ZipFilesListAdapter.c(this.a));
+      ((Intent)localObject1).putExtra("troop_uin", this.a.h);
+      this.a.a.startActivityForResult((Intent)localObject1, 10099);
     }
     else
     {
       ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-      localForwardFileInfo.b(((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_b_of_type_Long);
-      localForwardFileInfo.d(((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_a_of_type_JavaLangString);
-      localForwardFileInfo.d(((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_a_of_type_Long);
+      localForwardFileInfo.b(((ZipFilesListAdapter.FilesViewHolder)localObject3).e.d);
+      localForwardFileInfo.d(((ZipFilesListAdapter.FilesViewHolder)localObject3).e.c);
+      localForwardFileInfo.d(((ZipFilesListAdapter.FilesViewHolder)localObject3).e.b);
       localForwardFileInfo.b("");
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       Object localObject4;
-      if (this.a.jdField_a_of_type_Long == 0L)
+      if (this.a.h == 0L)
       {
-        localObject4 = localQQAppInterface.getFileManagerDataCenter().b(((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_b_of_type_Long);
-        localObject2 = localQQAppInterface.getFileManagerDataCenter().e(((FileManagerEntity)localObject4).zipInnerPath);
+        localObject4 = localQQAppInterface.getFileManagerDataCenter().b(((ZipFilesListAdapter.FilesViewHolder)localObject3).e.d);
+        localObject2 = localQQAppInterface.getFileManagerDataCenter().f(((FileManagerEntity)localObject4).zipInnerPath);
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = localQQAppInterface.getFileManagerRSCenter().a((String)((FileManagerEntity)localObject4).mContext, ((FileManagerEntity)localObject4).zipInnerPath);
         }
         if (localObject1 != null)
         {
-          ((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_b_of_type_Long = ((FileManagerEntity)localObject1).nSessionId;
+          ((ZipFilesListAdapter.FilesViewHolder)localObject3).e.d = ((FileManagerEntity)localObject1).nSessionId;
           ((FileManagerEntity)localObject1).isZipInnerFile = true;
         }
-        localForwardFileInfo.b(((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_b_of_type_Long);
-        if (localForwardFileInfo.d() == 0L)
+        localForwardFileInfo.b(((ZipFilesListAdapter.FilesViewHolder)localObject3).e.d);
+        if (localForwardFileInfo.j() == 0L)
         {
-          FMToastUtil.a(HardCodeUtil.a(2131716515));
+          FMToastUtil.a(HardCodeUtil.a(2131913948));
         }
         else if ((localObject1 != null) && (((FileManagerEntity)localObject1).nFileType != 0) && (((FileManagerEntity)localObject1).nFileType != 2))
         {
           localObject1 = new FileModelAdapter(localQQAppInterface, (FileManagerEntity)localObject1);
           localObject2 = new FileBrowserParam().a(7);
-          ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.a.jdField_a_of_type_AndroidAppActivity, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
+          ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.a.a, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
         }
         else
         {
           localObject3 = new ArrayList();
-          localObject4 = this.a.jdField_a_of_type_JavaUtilList.iterator();
+          localObject4 = this.a.b.iterator();
           while (((Iterator)localObject4).hasNext())
           {
             ZipFilePresenter.FileData localFileData = (ZipFilePresenter.FileData)((Iterator)localObject4).next();
-            if ((FileManagerUtil.a(localFileData.jdField_a_of_type_JavaLangString) == 0) && (localFileData.jdField_a_of_type_Long != 0L))
+            if ((FileManagerUtil.c(localFileData.c) == 0) && (localFileData.b != 0L))
             {
-              FileManagerEntity localFileManagerEntity = localQQAppInterface.getFileManagerDataCenter().b(localFileData.jdField_b_of_type_Long);
-              localObject2 = localQQAppInterface.getFileManagerDataCenter().e(localFileManagerEntity.zipInnerPath);
+              FileManagerEntity localFileManagerEntity = localQQAppInterface.getFileManagerDataCenter().b(localFileData.d);
+              localObject2 = localQQAppInterface.getFileManagerDataCenter().f(localFileManagerEntity.zipInnerPath);
               localObject1 = localObject2;
               if (localObject2 == null) {
                 localObject1 = localQQAppInterface.getFileManagerRSCenter().a((String)localFileManagerEntity.mContext, localFileManagerEntity.zipInnerPath);
@@ -114,51 +114,51 @@ class ZipFilesListAdapter$1
               if (localObject1 != null)
               {
                 ((FileManagerEntity)localObject1).mContext = localFileManagerEntity.mContext;
-                localFileData.jdField_b_of_type_Long = ((FileManagerEntity)localObject1).nSessionId;
+                localFileData.d = ((FileManagerEntity)localObject1).nSessionId;
               }
-              ((ArrayList)localObject3).add(Long.valueOf(localFileData.jdField_b_of_type_Long));
+              ((ArrayList)localObject3).add(Long.valueOf(localFileData.d));
             }
           }
           localForwardFileInfo.a((ArrayList)localObject3);
           localForwardFileInfo.d(1);
           localForwardFileInfo.b(10001);
-          localObject1 = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, FileBrowserActivity.class);
+          localObject1 = new Intent(this.a.a, FileBrowserActivity.class);
           ((Intent)localObject1).putExtra("fileinfo", localForwardFileInfo);
           ((Intent)localObject1).putExtra("last_time", 0);
           ((Intent)localObject1).putExtra("is_in_zip", true);
-          this.a.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject1);
+          this.a.a.startActivity((Intent)localObject1);
         }
       }
       else
       {
         localObject1 = new ArrayList();
-        localObject2 = this.a.jdField_a_of_type_JavaUtilList.iterator();
+        localObject2 = this.a.b.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject4 = (ZipFilePresenter.FileData)((Iterator)localObject2).next();
-          if (FileManagerUtil.a(((ZipFilePresenter.FileData)localObject4).jdField_a_of_type_JavaLangString) == 0) {
-            ((ArrayList)localObject1).add(Long.valueOf(((ZipFilePresenter.FileData)localObject4).jdField_b_of_type_Long));
+          if (FileManagerUtil.c(((ZipFilePresenter.FileData)localObject4).c) == 0) {
+            ((ArrayList)localObject1).add(Long.valueOf(((ZipFilePresenter.FileData)localObject4).d));
           }
         }
         localForwardFileInfo.a((ArrayList)localObject1);
-        localObject1 = localQQAppInterface.getFileManagerDataCenter().a(((ZipFilesListAdapter.FilesViewHolder)localObject3).a.jdField_b_of_type_Long);
+        localObject1 = localQQAppInterface.getFileManagerDataCenter().a(((ZipFilesListAdapter.FilesViewHolder)localObject3).e.d);
         if ((localObject1 != null) && (((FileManagerEntity)localObject1).nFileType != 0) && (((FileManagerEntity)localObject1).nFileType != 2))
         {
           localObject1 = new FileModelAdapter(localQQAppInterface, (FileManagerEntity)localObject1, 2);
           localObject2 = new FileBrowserParam().a(7);
-          ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.a.jdField_a_of_type_AndroidAppActivity, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
+          ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.a.a, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
         }
         else
         {
           localForwardFileInfo.d(4);
           localForwardFileInfo.b(10000);
-          localObject1 = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, TroopFileDetailBrowserActivity.class);
+          localObject1 = new Intent(this.a.a, TroopFileDetailBrowserActivity.class);
           ((Intent)localObject1).putExtra("fileinfo", localForwardFileInfo);
           ((Intent)localObject1).putExtra("forward_from_troop_file", true);
           ((Intent)localObject1).putExtra("not_forward", true);
           ((Intent)localObject1).putExtra("last_time", 0);
           ((Intent)localObject1).putExtra("is_in_zip", true);
-          this.a.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject1);
+          this.a.a.startActivity((Intent)localObject1);
         }
       }
     }
@@ -167,7 +167,7 @@ class ZipFilesListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.file.ZipFilesListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

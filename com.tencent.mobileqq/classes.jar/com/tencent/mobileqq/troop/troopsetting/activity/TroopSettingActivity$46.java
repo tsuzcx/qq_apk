@@ -14,13 +14,13 @@ class TroopSettingActivity$46
     if (QLog.isColorLevel()) {
       QLog.d("Q.chatopttroop", 2, "setTroopUinTextViewClickListener onLongClick");
     }
-    TroopSettingActivity.u(this.a);
+    TroopSettingActivity.x(this.a);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.46
  * JD-Core Version:    0.7.0.1
  */

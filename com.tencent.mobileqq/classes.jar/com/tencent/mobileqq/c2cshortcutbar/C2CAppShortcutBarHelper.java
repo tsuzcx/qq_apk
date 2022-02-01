@@ -18,14 +18,14 @@ import java.util.List;
 public class C2CAppShortcutBarHelper
   extends TroopAppShortcutBarHelper
 {
-  private long jdField_a_of_type_Long;
-  private C2CShortcutBarAdapter.ItemExposeListener jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter$ItemExposeListener = new C2CAppShortcutBarHelper.1(this);
-  private C2CShortcutBarAdapter jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter;
-  private C2CShortcutBarJumpController jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarJumpController;
-  C2CShortcutBarObserver jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarObserver = new C2CAppShortcutBarHelper.2(this);
-  private OverScrollCallbackHorizontalListView jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView;
-  private List<C2CShortcutAppInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean c;
+  C2CShortcutBarObserver k = new C2CAppShortcutBarHelper.2(this);
+  private OverScrollCallbackHorizontalListView l;
+  private C2CShortcutBarAdapter m;
+  private long n;
+  private boolean o;
+  private List<C2CShortcutAppInfo> p = new ArrayList();
+  private C2CShortcutBarAdapter.ItemExposeListener q = new C2CAppShortcutBarHelper.1(this);
+  private C2CShortcutBarJumpController r;
   
   public C2CAppShortcutBarHelper(IAIOShortcutBarLogic paramIAIOShortcutBarLogic)
   {
@@ -37,23 +37,23 @@ public class C2CAppShortcutBarHelper
     if (paramC2CShortcutAppInfo == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramC2CShortcutAppInfo)) {
+    if (this.p.contains(paramC2CShortcutAppInfo)) {
       return;
     }
-    ReportController.b(null, "dc00898", "", "", "0X800B329", "0X800B329", C2CShortcutBarManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(String.valueOf(this.jdField_a_of_type_Long)), 0, paramC2CShortcutAppInfo.a, String.valueOf(paramInt), "", "");
-    this.jdField_a_of_type_JavaUtilList.add(paramC2CShortcutAppInfo);
+    ReportController.b(null, "dc00898", "", "", "0X800B329", "0X800B329", C2CShortcutBarManager.a((QQAppInterface)this.g).a(String.valueOf(this.n)), 0, paramC2CShortcutAppInfo.a, String.valueOf(paramInt), "", "");
+    this.p.add(paramC2CShortcutAppInfo);
   }
   
-  private void k()
+  private void y()
   {
-    if (!C2CShortcutBarSwitcher.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, String.valueOf(this.jdField_a_of_type_Long), d()))
+    if (!C2CShortcutBarSwitcher.a((QQAppInterface)this.g, String.valueOf(this.n), x()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("C2CShortcutBarAIOHelper", 2, "tryRequestAppList return for switch limit");
       }
       return;
     }
-    if (!C2CShortcutBarManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(Long.valueOf(this.jdField_a_of_type_Long)))
+    if (!C2CShortcutBarManager.a((QQAppInterface)this.g).b(Long.valueOf(this.n)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("C2CShortcutBarAIOHelper", 2, "tryRequestAppList return for ts limit");
@@ -63,29 +63,12 @@ public class C2CAppShortcutBarHelper
     if (QLog.isColorLevel()) {
       QLog.d("C2CShortcutBarAIOHelper", 2, "tryRequestAppList ");
     }
-    C2CShortcutBarManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a().a(this.jdField_a_of_type_Long, d(), false, 0, "");
-  }
-  
-  protected int a()
-  {
-    return ViewUtils.a(14.0F);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView;
-  }
-  
-  public ViewGroup.LayoutParams a()
-  {
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.a(39.0F));
-    localLayoutParams.addRule(2, 2131368875);
-    return localLayoutParams;
+    C2CShortcutBarManager.a((QQAppInterface)this.g).b().a(this.n, x(), false, 0, "");
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
+    if (this.g == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("C2CShortcutBarAIOHelper", 2, "init mChatPie.app is null");
@@ -94,7 +77,7 @@ public class C2CAppShortcutBarHelper
     }
     try
     {
-      this.jdField_a_of_type_Long = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      this.n = Long.parseLong(this.i.b);
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -102,75 +85,128 @@ public class C2CAppShortcutBarHelper
         QLog.e("C2CShortcutBarAIOHelper", 2, "init Exception", localNumberFormatException);
       }
     }
-    List localList = C2CShortcutBarManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(Long.valueOf(this.jdField_a_of_type_Long));
+    List localList = C2CShortcutBarManager.a((QQAppInterface)this.g).c(Long.valueOf(this.n));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("init friendUin = ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.n);
       localStringBuilder.append(",appListSize = ");
       localStringBuilder.append(localList.size());
       QLog.d("C2CShortcutBarAIOHelper", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter = new C2CShortcutBarAdapter(this.jdField_a_of_type_AndroidContentContext, localList, this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter$ItemExposeListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView = new OverScrollCallbackHorizontalListView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setId(2131377004);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOnItemClickListener(new C2CAppShortcutBarHelper.3(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setOverScrollMode(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setDividerWidth(ViewUtils.a(8.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setPadding(ViewUtils.a(14.0F), ViewUtils.a(10.0F), 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView.setClipToPadding(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarIAIOShortcutBarLogic.a(1);
-    ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarObserver);
-    k();
+    this.m = new C2CShortcutBarAdapter(this.f, localList, this.q);
+    this.l = new OverScrollCallbackHorizontalListView(this.f);
+    this.l.setId(2131445368);
+    this.l.setAdapter(this.m);
+    this.l.setOnItemClickListener(new C2CAppShortcutBarHelper.3(this));
+    this.l.setOverScrollMode(0);
+    this.l.setDividerWidth(ViewUtils.dip2px(8.0F));
+    this.l.setPadding(ViewUtils.dip2px(14.0F), ViewUtils.dip2px(10.0F), 0, 0);
+    this.l.setClipToPadding(false);
+    this.d.a(1);
+    ((QQAppInterface)this.g).addObserver(this.k);
+    y();
   }
   
-  protected boolean a()
+  public View b()
   {
-    return (d()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarIAIOShortcutBarLogic.b(1));
+    return this.l;
   }
   
-  protected int b()
+  public ViewGroup.LayoutParams c()
   {
-    return ViewUtils.a(14.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.dip2px(39.0F));
+    localLayoutParams.addRule(2, 2131435809);
+    return localLayoutParams;
   }
   
-  protected View b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView;
-  }
-  
-  protected boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarIAIOShortcutBarLogic.a(1);
-  }
-  
-  protected int c()
-  {
-    return ViewUtils.a(10.0F);
-  }
-  
-  protected void c()
+  protected void e()
   {
     if (QLog.isColorLevel()) {
       QLog.d("C2CShortcutBarAIOHelper", 2, "onChatPieResume");
     }
-    super.c();
-    g();
+    super.e();
+    m();
   }
   
-  public int d()
+  public void g()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a() == 5) {
-      return 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarAIOHelper", 2, "onChatPieDestroy");
     }
-    return 1;
+    ((QQAppInterface)this.g).removeObserver(this.k);
+    this.o = false;
+    this.p.clear();
+    Object localObject = this.r;
+    if (localObject != null) {
+      ((C2CShortcutBarJumpController)localObject).a();
+    }
+    localObject = this.l;
+    if ((localObject != null) && (((OverScrollCallbackHorizontalListView)localObject).getParent() != null) && (QLog.isColorLevel())) {
+      QLog.d("C2CShortcutBarAIOHelper", 2, "onChatPieDestroy remove shortcutContainer");
+    }
+    super.g();
   }
   
-  public boolean d()
+  public void h()
   {
-    boolean bool2 = C2CShortcutBarSwitcher.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, String.valueOf(this.jdField_a_of_type_Long), d());
+    super.h();
+    i().setPadding(j(), l(), k(), 0);
+  }
+  
+  protected View i()
+  {
+    return this.l;
+  }
+  
+  protected int j()
+  {
+    return ViewUtils.dip2px(14.0F);
+  }
+  
+  protected int k()
+  {
+    return ViewUtils.dip2px(14.0F);
+  }
+  
+  protected int l()
+  {
+    return ViewUtils.dip2px(10.0F);
+  }
+  
+  public void m()
+  {
+    if (!C2CShortcutBarSwitcher.a((QQAppInterface)this.g, String.valueOf(this.n), x()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarAIOHelper", 2, "resumeAppShorcutBar return for switch off");
+      }
+      return;
+    }
+    if ((x() == 1) && (this.e.o()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarAIOHelper", 2, "resumeAppShorcutBar return for one way friend");
+      }
+      return;
+    }
+    super.m();
+  }
+  
+  protected boolean n()
+  {
+    return (u()) && (this.d.b(1));
+  }
+  
+  protected boolean p()
+  {
+    return this.d.a(1);
+  }
+  
+  public boolean u()
+  {
+    boolean bool2 = C2CShortcutBarSwitcher.a((QQAppInterface)this.g, String.valueOf(this.n), x());
     boolean bool1 = false;
     if (!bool2)
     {
@@ -179,14 +215,14 @@ public class C2CAppShortcutBarHelper
       }
       return false;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       if (QLog.isColorLevel()) {
         QLog.e("C2CShortcutBarAIOHelper", 2, "isShortcutBarVisibleOrGoingToBeVisible return false for AIOIceBreakViewShowing");
       }
       return false;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter.getCount();
+    int i = this.m.getCount();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -200,53 +236,17 @@ public class C2CAppShortcutBarHelper
     return bool1;
   }
   
-  public void e()
+  public int x()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarAIOHelper", 2, "onChatPieDestroy");
+    if (this.e.a() == 5) {
+      return 2;
     }
-    ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarObserver);
-    this.c = false;
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarJumpController;
-    if (localObject != null) {
-      ((C2CShortcutBarJumpController)localObject).a();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollCallbackHorizontalListView;
-    if ((localObject != null) && (((OverScrollCallbackHorizontalListView)localObject).getParent() != null) && (QLog.isColorLevel())) {
-      QLog.d("C2CShortcutBarAIOHelper", 2, "onChatPieDestroy remove shortcutContainer");
-    }
-    super.e();
-  }
-  
-  public void f()
-  {
-    super.f();
-    b().setPadding(a(), c(), b(), 0);
-  }
-  
-  public void g()
-  {
-    if (!C2CShortcutBarSwitcher.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, String.valueOf(this.jdField_a_of_type_Long), d()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CShortcutBarAIOHelper", 2, "resumeAppShorcutBar return for switch off");
-      }
-      return;
-    }
-    if ((d() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.c()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CShortcutBarAIOHelper", 2, "resumeAppShorcutBar return for one way friend");
-      }
-      return;
-    }
-    super.g();
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CAppShortcutBarHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ class ArkAiAppPanel$4
   
   public void onClick(View paramView)
   {
-    if ((ArkAiAppPanel.a(this.a) != null) && (ArkAiAppPanel.a(this.a).size() > 0) && (ArkAiAppPanel.a(this.a) < ArkAiAppPanel.a(this.a).size()) && (ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a)) != null))
+    if ((ArkAiAppPanel.d(this.a) != null) && (ArkAiAppPanel.d(this.a).size() > 0) && (ArkAiAppPanel.c(this.a) < ArkAiAppPanel.d(this.a).size()) && (ArkAiAppPanel.d(this.a).get(ArkAiAppPanel.c(this.a)) != null))
     {
-      String str = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a))).getAppName();
+      String str = ((ArkAioContainerWrapper)ArkAiAppPanel.d(this.a).get(ArkAiAppPanel.c(this.a))).getAppName();
       ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(str, new ArkAiAppPanel.4.1(this, str));
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -25,7 +25,7 @@ class ArkAiAppPanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiAppPanel.4
  * JD-Core Version:    0.7.0.1
  */

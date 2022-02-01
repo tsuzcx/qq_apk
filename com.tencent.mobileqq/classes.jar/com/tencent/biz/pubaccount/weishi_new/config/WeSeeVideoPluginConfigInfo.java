@@ -5,15 +5,15 @@ import org.json.JSONObject;
 public class WeSeeVideoPluginConfigInfo
   extends BaseConfigInfo
 {
-  public long a;
   public boolean a;
+  public long b;
   
   public WeSeeVideoPluginConfigInfo(JSONObject paramJSONObject)
   {
     super(paramJSONObject);
   }
   
-  public static WeSeeVideoPluginConfigInfo a(JSONObject paramJSONObject)
+  public static WeSeeVideoPluginConfigInfo b(JSONObject paramJSONObject)
   {
     return new WeSeeVideoPluginConfigInfo(paramJSONObject);
   }
@@ -22,28 +22,28 @@ public class WeSeeVideoPluginConfigInfo
   {
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
+      this.a = paramJSONObject.optBoolean("isPreloadVideoPlugin");
+      this.b = paramJSONObject.optLong("queryPluginTimeInterval");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 3600L;
+    this.a = true;
+    this.b = 3600L;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mQueryPluginTimeInterval=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.WeSeeVideoPluginConfigInfo
  * JD-Core Version:    0.7.0.1
  */

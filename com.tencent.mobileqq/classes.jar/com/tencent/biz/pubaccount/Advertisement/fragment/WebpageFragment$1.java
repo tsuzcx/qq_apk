@@ -21,17 +21,17 @@ class WebpageFragment$1
   
   public void onShowPreview(Bundle paramBundle)
   {
-    if (this.a.getUIStyleHandler().c) {
+    if (this.a.getUIStyleHandler().t) {
       return;
     }
-    Util.a("Web_qqbrowser_ShowPreview");
+    Util.f("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
     this.a.getUIStyleHandler().a(WebpageFragment.a(this.a));
-    this.a.getUIStyle().c = 0L;
-    this.a.contentView.a(this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.D);
-    this.a.getWebTitleBarInterface().c(true);
-    this.a.getWebTitleBarInterface().a(false);
+    this.a.getUIStyle().e = 0L;
+    this.a.contentView.a(this.a.getUIStyleHandler().f.O);
+    this.a.getWebTitleBarInterface().d(true);
     this.a.getWebTitleBarInterface().b(false);
+    this.a.getWebTitleBarInterface().c(false);
     if (QLog.isColorLevel())
     {
       paramBundle = new StringBuilder();
@@ -39,17 +39,17 @@ class WebpageFragment$1
       paramBundle.append((System.nanoTime() - l) / 1000000L);
       QLog.d("WebpageFragment", 2, paramBundle.toString());
     }
-    this.a.getUIStyleHandler().c = true;
-    this.a.getUIStyleHandler().jdField_a_of_type_AndroidWidgetProgressBar = this.a.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
-    this.a.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.a.getUIStyleHandler().a(WebpageFragment.a(this.a));
-    this.a.getUIStyleHandler().b = false;
-    Util.b("Web_qqbrowser_ShowPreview");
+    this.a.getUIStyleHandler().t = true;
+    this.a.getUIStyleHandler().B = this.a.contentView.b;
+    this.a.contentView.a.setVisibility(8);
+    this.a.getUIStyleHandler().b(WebpageFragment.b(this.a));
+    this.a.getUIStyleHandler().d = false;
+    Util.g("Web_qqbrowser_ShowPreview");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment.1
  * JD-Core Version:    0.7.0.1
  */

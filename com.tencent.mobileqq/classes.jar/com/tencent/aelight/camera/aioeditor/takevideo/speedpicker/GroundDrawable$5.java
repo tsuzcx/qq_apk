@@ -12,7 +12,7 @@ class GroundDrawable$5
   
   public Float a(GroundDrawable paramGroundDrawable)
   {
-    return Float.valueOf(GroundDrawable.b(paramGroundDrawable));
+    return Float.valueOf(GroundDrawable.e(paramGroundDrawable));
   }
   
   public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
@@ -22,7 +22,7 @@ class GroundDrawable$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.GroundDrawable.5
  * JD-Core Version:    0.7.0.1
  */

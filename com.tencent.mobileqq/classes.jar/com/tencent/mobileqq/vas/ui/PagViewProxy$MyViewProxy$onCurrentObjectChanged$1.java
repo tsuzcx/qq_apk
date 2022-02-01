@@ -12,12 +12,12 @@ final class PagViewProxy$MyViewProxy$onCurrentObjectChanged$1
   public final void run()
   {
     PagViewProxy.MyViewProxy localMyViewProxy = this.this$0;
-    PagViewProxy.MyViewProxy.a(localMyViewProxy, (View)localMyViewProxy.a());
+    PagViewProxy.MyViewProxy.a(localMyViewProxy, (View)localMyViewProxy.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.PagViewProxy.MyViewProxy.onCurrentObjectChanged.1
  * JD-Core Version:    0.7.0.1
  */

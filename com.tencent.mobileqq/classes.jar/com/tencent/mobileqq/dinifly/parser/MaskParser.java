@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
-import android.util.Log;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableIntegerValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableShapeValue;
 import com.tencent.mobileqq.dinifly.model.content.Mask;
 import com.tencent.mobileqq.dinifly.model.content.Mask.MaskMode;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 
 class MaskParser
 {
@@ -81,15 +81,25 @@ class MaskParser
         {
           if (i != 105)
           {
-            if (i != 115)
+            if (i != 110)
             {
-              i = j;
+              if (i != 115)
+              {
+                i = j;
+              }
+              else
+              {
+                i = j;
+                if (((String)localObject1).equals("s")) {
+                  i = 1;
+                }
+              }
             }
             else
             {
               i = j;
-              if (((String)localObject1).equals("s")) {
-                i = 1;
+              if (((String)localObject1).equals("n")) {
+                i = 2;
               }
             }
           }
@@ -97,7 +107,7 @@ class MaskParser
           {
             i = j;
             if (((String)localObject1).equals("i")) {
-              i = 2;
+              i = 3;
             }
           }
         }
@@ -114,17 +124,23 @@ class MaskParser
           {
             if (i != 2)
             {
-              localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append("Unknown mask mode ");
-              ((StringBuilder)localObject1).append(str);
-              ((StringBuilder)localObject1).append(". Defaulting to Add.");
-              Log.w("LOTTIE", ((StringBuilder)localObject1).toString());
-              localObject1 = Mask.MaskMode.MASK_MODE_ADD;
+              if (i != 3)
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("Unknown mask mode ");
+                ((StringBuilder)localObject1).append(str);
+                ((StringBuilder)localObject1).append(". Defaulting to Add.");
+                Logger.warning(((StringBuilder)localObject1).toString());
+                localObject1 = Mask.MaskMode.MASK_MODE_ADD;
+              }
+              else
+              {
+                paramLottieComposition.addWarning("Animation contains intersect masks. They are not supported but will be treated like add masks.");
+                localObject1 = Mask.MaskMode.MASK_MODE_INTERSECT;
+              }
             }
-            else
-            {
-              paramLottieComposition.addWarning("Animation contains intersect masks. They are not supported but will be treated like add masks.");
-              localObject1 = Mask.MaskMode.MASK_MODE_INTERSECT;
+            else {
+              localObject1 = Mask.MaskMode.MASK_MODE_NONE;
             }
           }
           else {
@@ -142,7 +158,7 @@ class MaskParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.MaskParser
  * JD-Core Version:    0.7.0.1
  */

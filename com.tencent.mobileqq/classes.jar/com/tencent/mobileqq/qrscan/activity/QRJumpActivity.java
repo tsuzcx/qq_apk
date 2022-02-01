@@ -19,7 +19,7 @@ public class QRJumpActivity
   extends QBaseActivity
 {
   protected QQProgressDialog a;
-  private AppRuntime a;
+  private AppRuntime b;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -33,7 +33,7 @@ public class QRJumpActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_MqqAppAppRuntime = getAppRuntime();
+    this.b = getAppRuntime();
     String str1 = super.getIntent().getStringExtra("url");
     String str4 = super.getIntent().getStringExtra("attr_original_url");
     if (TextUtils.isEmpty(str1))
@@ -44,10 +44,10 @@ public class QRJumpActivity
     if (isFinishing()) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131716722);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new QRJumpActivity.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.a = new QQProgressDialog(this, super.getTitleBarHeight());
+    this.a.c(2131914194);
+    this.a.setOnCancelListener(new QRJumpActivity.1(this));
+    this.a.show();
     paramBundle = null;
     Object localObject4 = null;
     Object localObject3 = null;
@@ -127,7 +127,7 @@ public class QRJumpActivity
         QLog.i("IQRScanConst_QRJumpActivity", 2, String.format("JumpUrl authSig=%s oriUrl=%s", new Object[] { paramBundle, str4 }));
       }
       paramBundle = new QRJumpActivity.2(this, str2, paramBundle, this, (String)localObject2);
-      ((IQRDataApi)QRoute.api(IQRDataApi.class)).requestUrlDecode(this.jdField_a_of_type_MqqAppAppRuntime, (String)localObject2, null, null, paramBundle);
+      ((IQRDataApi)QRoute.api(IQRDataApi.class)).requestUrlDecode(this.b, (String)localObject2, null, null, paramBundle);
       return true;
       label375:
       String str3 = str4;
@@ -136,11 +136,11 @@ public class QRJumpActivity
   
   protected void doOnDestroy()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.a;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.a.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+    this.a = null;
     super.doOnDestroy();
   }
   
@@ -153,7 +153,7 @@ public class QRJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.activity.QRJumpActivity
  * JD-Core Version:    0.7.0.1
  */

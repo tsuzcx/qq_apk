@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.data;
 
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDelSessionRecord;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDelSessionRecord;
 
 final class GameDelSessionDataHelper$1
   implements Runnable
@@ -9,17 +9,17 @@ final class GameDelSessionDataHelper$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataIDataVisitor == null) {
+    if (this.a == null) {
       return;
     }
     GameDelSessionRecord localGameDelSessionRecord = new GameDelSessionRecord();
-    localGameDelSessionRecord.mUin = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataIDataVisitor.c(localGameDelSessionRecord);
+    localGameDelSessionRecord.mUin = this.b;
+    this.a.c(localGameDelSessionRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.GameDelSessionDataHelper.1
  * JD-Core Version:    0.7.0.1
  */

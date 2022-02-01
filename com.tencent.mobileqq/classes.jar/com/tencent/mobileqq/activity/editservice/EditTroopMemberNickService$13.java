@@ -10,12 +10,12 @@ class EditTroopMemberNickService$13
   public void a()
   {
     EditTroopMemberNickService localEditTroopMemberNickService = this.a;
-    EditTroopMemberNickService.b(localEditTroopMemberNickService, EditTroopMemberNickService.c(localEditTroopMemberNickService));
+    EditTroopMemberNickService.e(localEditTroopMemberNickService, EditTroopMemberNickService.l(localEditTroopMemberNickService));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.13
  * JD-Core Version:    0.7.0.1
  */

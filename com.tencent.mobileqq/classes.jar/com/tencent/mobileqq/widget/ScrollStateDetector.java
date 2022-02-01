@@ -11,57 +11,57 @@ import java.lang.ref.WeakReference;
 public class ScrollStateDetector
   implements Handler.Callback, ScrollListener
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  ScrollStateDetector.OnScrollListener jdField_a_of_type_ComTencentMobileqqWidgetScrollStateDetector$OnScrollListener = null;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int = 10;
-  boolean jdField_b_of_type_Boolean = false;
+  Handler a = null;
+  ScrollStateDetector.OnScrollListener b = null;
+  int c = 0;
+  boolean d;
+  WeakReference<View> e;
+  boolean f = false;
+  int g = 10;
   
   public ScrollStateDetector(ScrollStateDetector.OnScrollListener paramOnScrollListener, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetScrollStateDetector$OnScrollListener = paramOnScrollListener;
-    this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.b = paramOnScrollListener;
+    this.g = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
   void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.c;
     if (paramInt != i)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollStateDetector$OnScrollListener != null)
+      this.c = paramInt;
+      if (this.b != null)
       {
-        Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+        Object localObject = this.e;
         if (localObject == null) {
           localObject = null;
         } else {
           localObject = (View)((WeakReference)localObject).get();
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetScrollStateDetector$OnScrollListener.a((View)localObject, i, paramInt);
+        this.b.a((View)localObject, i, paramInt);
       }
     }
   }
   
   void a(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.e;
     if (localObject == null) {
       localObject = null;
     } else {
       localObject = (View)((WeakReference)localObject).get();
     }
     if (localObject != paramView) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+      this.e = new WeakReference(paramView);
     }
   }
   
   public void fling(View paramView, int paramInt)
   {
     a(paramView);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.d = true;
+    this.a.removeMessages(0);
     a(2);
   }
   
@@ -69,8 +69,8 @@ public class ScrollStateDetector
   {
     if (paramMessage.what == 0)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_Boolean = false;
+      this.a.removeMessages(0);
+      this.d = false;
       a(0);
     }
     return true;
@@ -79,15 +79,15 @@ public class ScrollStateDetector
   public void onFingerDown(View paramView, float paramFloat1, float paramFloat2)
   {
     a(paramView);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+    this.f = true;
+    this.d = false;
   }
   
   public void onFingerUpOrCancel(View paramView, float paramFloat1, float paramFloat2)
   {
     a(paramView);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 100L);
+    this.f = false;
+    this.a.sendEmptyMessageDelayed(0, 100L);
   }
   
   public void onScrollChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -99,30 +99,30 @@ public class ScrollStateDetector
     } else {
       paramInt1 = 1;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    if ((paramInt1 != 0) && (!this.jdField_b_of_type_Boolean))
+    this.a.removeMessages(0);
+    if ((paramInt1 != 0) && (!this.f))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       a(0);
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      if (paramInt3 <= this.jdField_b_of_type_Int) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 50L);
+      if (paramInt3 <= this.g) {
+        this.a.sendEmptyMessageDelayed(0, 50L);
       }
       a(2);
       return;
     }
-    if ((!this.jdField_b_of_type_Boolean) && (paramInt3 <= this.jdField_b_of_type_Int)) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 50L);
+    if ((!this.f) && (paramInt3 <= this.g)) {
+      this.a.sendEmptyMessageDelayed(0, 50L);
     }
     a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScrollStateDetector
  * JD-Core Version:    0.7.0.1
  */

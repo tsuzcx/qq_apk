@@ -14,18 +14,18 @@ class AudioRecordPlayer$2
   {
     if (paramIOpenSdk != null)
     {
-      if (AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer) != null) {
+      if (AudioRecordPlayer.e(this.b) != null) {
         return;
       }
-      AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer, paramIOpenSdk);
+      AudioRecordPlayer.a(this.b, paramIOpenSdk);
       paramIOpenSdk.attachContext(paramContext);
-      AudioRecordPlayer.a(this.jdField_a_of_type_ComTencentIlivesdkAudiomediaservicePlayerAudioRecordPlayer, paramIOpenSdk, this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesAudioEnterRoomParam);
+      AudioRecordPlayer.a(this.b, paramIOpenSdk, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer.2
  * JD-Core Version:    0.7.0.1
  */

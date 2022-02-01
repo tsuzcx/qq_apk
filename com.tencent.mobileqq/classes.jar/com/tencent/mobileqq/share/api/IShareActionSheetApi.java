@@ -3,6 +3,8 @@ package com.tencent.mobileqq.share.api;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.mobileqq.qroute.annotation.QRouteFactory;
@@ -24,6 +26,10 @@ public abstract interface IShareActionSheetApi
   
   public abstract void setCancelListener(DialogInterface.OnCancelListener paramOnCancelListener);
   
+  public abstract void setExtras(Bundle paramBundle);
+  
+  public abstract void setIntentForStartForwardRecentActivity(Intent paramIntent);
+  
   public abstract void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener);
   
   public abstract void setQCircleActionSheetClickListener(QCircleActionSheetClickListener paramQCircleActionSheetClickListener);
@@ -34,7 +40,7 @@ public abstract interface IShareActionSheetApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.share.api.IShareActionSheetApi
  * JD-Core Version:    0.7.0.1
  */

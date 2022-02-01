@@ -29,45 +29,36 @@ import mqq.util.WeakReference;
 
 public class QavAvatarHelper
 {
-  private static QavAvatarHelper jdField_a_of_type_ComTencentAvAvatarQavAvatarHelper;
-  private final QQLruCache<String, Drawable> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(10002, 10, 5);
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  private Drawable a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache)
-    {
-      paramString = (Drawable)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
-      return paramString;
-    }
-  }
+  private static QavAvatarHelper a;
+  private final Object b = new Object();
+  private final ArrayList<String> c = new ArrayList();
+  private final QQLruCache<String, Drawable> d = new QQLruCache(10002, 10, 5);
   
   public static QavAvatarHelper a()
   {
-    if (jdField_a_of_type_ComTencentAvAvatarQavAvatarHelper == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvAvatarQavAvatarHelper == null) {
-          jdField_a_of_type_ComTencentAvAvatarQavAvatarHelper = new QavAvatarHelper();
+        if (a == null) {
+          a = new QavAvatarHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvAvatarQavAvatarHelper;
+    return a;
   }
   
   public static String a(AvatarParam paramAvatarParam, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(paramAvatarParam.jdField_a_of_type_Int);
-    localStringBuilder.append("_");
-    localStringBuilder.append(paramAvatarParam.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramAvatarParam.a);
     localStringBuilder.append("_");
     localStringBuilder.append(paramAvatarParam.b);
     localStringBuilder.append("_");
-    if (paramAvatarParam.jdField_a_of_type_Boolean) {
+    localStringBuilder.append(paramAvatarParam.c);
+    localStringBuilder.append("_");
+    if (paramAvatarParam.d) {
       paramAvatarParam = "0";
     } else {
       paramAvatarParam = "1";
@@ -86,7 +77,7 @@ public class QavAvatarHelper
     } else {
       paramWeakReference = null;
     }
-    if (!FileUtil.b(paramString))
+    if (!FileUtil.d(paramString))
     {
       if (QLog.isDevelopLevel())
       {
@@ -105,7 +96,7 @@ public class QavAvatarHelper
     {
       localObject1 = BitmapFactory.decodeFile(paramString);
       paramString = (String)localObject1;
-      if (paramAvatarParam.jdField_a_of_type_Boolean)
+      if (paramAvatarParam.d)
       {
         paramString = (String)localObject1;
         if (localObject1 != null)
@@ -167,12 +158,12 @@ public class QavAvatarHelper
   
   private void a(Drawable paramDrawable, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      synchronized (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache)
+      this.c.add(paramString);
+      synchronized (this.d)
       {
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString, paramDrawable);
+        this.d.put(paramString, paramDrawable);
         return;
       }
     }
@@ -183,7 +174,7 @@ public class QavAvatarHelper
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    String str = FaceUtil.b(paramAvatarParam.jdField_a_of_type_JavaLangString);
+    String str = FaceUtil.c(paramAvatarParam.b);
     Object localObject1 = new File(str);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(((File)localObject1).getPath());
@@ -195,7 +186,7 @@ public class QavAvatarHelper
       bool1 = true;
     }
     if (bool1) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.b)
       {
         if (((File)localObject2).exists()) {
           bool1 = ((File)localObject2).renameTo((File)localObject1);
@@ -213,7 +204,7 @@ public class QavAvatarHelper
         }
         bool2 = bool1;
         if (!bool1) {
-          break label339;
+          break label338;
         }
         a(paramVideoAppInterface.getApp().getResources(), paramAvatarParam, paramInt, str, paramWeakReference);
         bool2 = bool1;
@@ -234,7 +225,7 @@ public class QavAvatarHelper
       ((File)localObject2).delete();
     }
     boolean bool2 = bool1;
-    label339:
+    label338:
     if (!bool2)
     {
       if (paramWeakReference != null) {
@@ -268,6 +259,15 @@ public class QavAvatarHelper
     }
     localQavAvatarCallback.a(paramAvatarParam, null);
     ThreadManager.getSubThreadHandler().postDelayed(new QavAvatarHelper.1(this, paramVideoAppInterface, paramAvatarParam, paramWeakReference, paramInt), 5000L);
+  }
+  
+  private Drawable b(String paramString)
+  {
+    synchronized (this.d)
+    {
+      paramString = (Drawable)this.d.get(paramString);
+      return paramString;
+    }
   }
   
   private void b(VideoAppInterface paramVideoAppInterface, AvatarParam paramAvatarParam, WeakReference<QavAvatarCallback> paramWeakReference, int paramInt)
@@ -307,7 +307,7 @@ public class QavAvatarHelper
     } else {
       localObject = null;
     }
-    if (!QavAvatarUtil.a(paramAvatarParam.jdField_a_of_type_Int))
+    if (!QavAvatarUtil.a(paramAvatarParam.a))
     {
       if (QLog.isDevelopLevel())
       {
@@ -321,7 +321,7 @@ public class QavAvatarHelper
       }
       return;
     }
-    Drawable localDrawable = a(a(paramAvatarParam, 640));
+    Drawable localDrawable = b(a(paramAvatarParam, 640));
     if (localDrawable != null)
     {
       if (localObject != null) {
@@ -336,8 +336,8 @@ public class QavAvatarHelper
       }
       return;
     }
-    Object localObject = FaceUtil.b(paramAvatarParam.jdField_a_of_type_JavaLangString);
-    if (FileUtil.b((String)localObject))
+    Object localObject = FaceUtil.c(paramAvatarParam.b);
+    if (FileUtil.d((String)localObject))
     {
       a(paramVideoAppInterface.getApp().getResources(), paramAvatarParam, 640, (String)localObject, paramWeakReference);
       return;
@@ -347,9 +347,9 @@ public class QavAvatarHelper
   
   public void a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      Object localObject4 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject4 = this.c.iterator();
       Object localObject1 = null;
       while (((Iterator)localObject4).hasNext())
       {
@@ -370,9 +370,9 @@ public class QavAvatarHelper
         while (((Iterator)???).hasNext())
         {
           localObject4 = (String)((Iterator)???).next();
-          synchronized (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache)
+          synchronized (this.d)
           {
-            this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.remove(localObject4);
+            this.d.remove(localObject4);
           }
         }
       }

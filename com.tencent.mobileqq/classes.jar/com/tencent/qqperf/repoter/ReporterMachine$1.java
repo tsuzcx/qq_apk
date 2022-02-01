@@ -7,14 +7,14 @@ final class ReporterMachine$1
 {
   public void a(int paramInt)
   {
-    if (MagnifierSDK.a != null) {
-      MagnifierSDK.a.a("result_objects", paramInt, 2);
+    if (MagnifierSDK.e != null) {
+      MagnifierSDK.e.a("result_objects", paramInt, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.repoter.ReporterMachine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -99,6 +99,8 @@ public class FileMsg
   public static final int TRANSFILE_TYPE_BULUO_AUDIO_SILK = 25;
   public static final int TRANSFILE_TYPE_C2B_UPLOAD_FILE = 34;
   public static final int TRANSFILE_TYPE_CIRCLE = 131077;
+  public static final int TRANSFILE_TYPE_EXTEND_FRIEND_AVATAR = 68;
+  public static final int TRANSFILE_TYPE_EXTEND_FRIEND_PHOTO_WALL = 67;
   public static final int TRANSFILE_TYPE_EXTEND_FRIEND_SOUND = 23;
   public static final int TRANSFILE_TYPE_FILE = 0;
   public static final int TRANSFILE_TYPE_FRESH_NEWS_PHOTO = 21;
@@ -132,8 +134,10 @@ public class FileMsg
   public static final int TRANSFILE_TYPE_SHORT_VIDEO_DEVICE = 19;
   public static final int TRANSFILE_TYPE_SHORT_VIDEO_DISUSS = 17;
   public static final int TRANSFILE_TYPE_SHORT_VIDEO_FORWARD = 20;
+  public static final int TRANSFILE_TYPE_SHORT_VIDEO_GUILD = 67;
   public static final int TRANSFILE_TYPE_SHORT_VIDEO_THUMB_C2C = 7;
   public static final int TRANSFILE_TYPE_SHORT_VIDEO_THUMB_DISUSS = 18;
+  public static final int TRANSFILE_TYPE_SHORT_VIDEO_THUMB_GUILD = 68;
   public static final int TRANSFILE_TYPE_SHORT_VIDEO_THUMB_TROOP = 16;
   public static final int TRANSFILE_TYPE_SHORT_VIDEO_TROOP = 9;
   public static final int TRANSFILE_TYPE_SM_LONGMESSAGE = 131079;
@@ -276,25 +280,25 @@ public class FileMsg
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc2_w 527
-    //   6: invokestatic 534	java/lang/Thread:sleep	(J)V
+    //   3: ldc2_w 533
+    //   6: invokestatic 540	java/lang/Thread:sleep	(J)V
     //   9: goto +12 -> 21
     //   12: astore_2
     //   13: goto +39 -> 52
     //   16: astore_2
     //   17: aload_2
-    //   18: invokevirtual 535	java/lang/InterruptedException:printStackTrace	()V
-    //   21: invokestatic 473	java/lang/System:currentTimeMillis	()J
+    //   18: invokevirtual 541	java/lang/InterruptedException:printStackTrace	()V
+    //   21: invokestatic 479	java/lang/System:currentTimeMillis	()J
     //   24: lstore_0
-    //   25: new 537	java/text/SimpleDateFormat
+    //   25: new 543	java/text/SimpleDateFormat
     //   28: dup
-    //   29: ldc_w 539
-    //   32: invokespecial 540	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
-    //   35: new 542	java/util/Date
+    //   29: ldc_w 545
+    //   32: invokespecial 546	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
+    //   35: new 548	java/util/Date
     //   38: dup
     //   39: lload_0
-    //   40: invokespecial 544	java/util/Date:<init>	(J)V
-    //   43: invokevirtual 548	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
+    //   40: invokespecial 550	java/util/Date:<init>	(J)V
+    //   43: invokevirtual 554	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
     //   46: astore_2
     //   47: ldc 2
     //   49: monitorexit
@@ -561,7 +565,7 @@ public class FileMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FileMsg
  * JD-Core Version:    0.7.0.1
  */

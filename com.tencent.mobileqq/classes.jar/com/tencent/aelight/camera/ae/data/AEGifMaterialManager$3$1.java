@@ -23,21 +23,21 @@ class AEGifMaterialManager$3$1
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onResp url: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a.packageUrl);
+      localStringBuilder.append(this.b.a.packageUrl);
       localStringBuilder.append(" resultcode: ");
       localStringBuilder.append(paramNetResp.mHttpCode);
       QLog.i("AEGifMaterialManager", 2, localStringBuilder.toString());
     }
-    if (AEGifMaterialManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.this$0, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a)) {
+    if (AEGifMaterialManager.a(this.b.this$0, this.b.a)) {
       try
       {
-        paramNetResp = new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a.id);
+        paramNetResp = new File(this.a, this.b.a.id);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(AEPath.CAMERA.FILES.i);
         localStringBuilder.append(File.separator);
         ZipUtils.unZipFile(paramNetResp, localStringBuilder.toString());
-        AEGifMaterialManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.this$0, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a);
-        AEGifMaterialManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.this$0).remove(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a.id);
+        AEGifMaterialManager.b(this.b.this$0, this.b.a);
+        AEGifMaterialManager.c(this.b.this$0).remove(this.b.a.id);
         return;
       }
       catch (IOException paramNetResp)
@@ -51,15 +51,15 @@ class AEGifMaterialManager$3$1
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    AEGifMaterialManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.this$0, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a, (int)(paramLong1 / paramLong2 * 100L));
-    if (!AEGifMaterialManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.this$0).containsKey(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a.id)) {
-      AEGifMaterialManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.this$0).put(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a.id, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager$3.a);
+    AEGifMaterialManager.a(this.b.this$0, this.b.a, (int)(paramLong1 / paramLong2 * 100L));
+    if (!AEGifMaterialManager.c(this.b.this$0).containsKey(this.b.a.id)) {
+      AEGifMaterialManager.c(this.b.this$0).put(this.b.a.id, this.b.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEGifMaterialManager.3.1
  * JD-Core Version:    0.7.0.1
  */

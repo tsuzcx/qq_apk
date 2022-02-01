@@ -15,27 +15,27 @@ class DevShortVideoItemBuilder$3
 {
   DevShortVideoItemBuilder$3(DevShortVideoItemBuilder paramDevShortVideoItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+      this.d.a(this.a);
       if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder;
-        if ((paramView != null) && (paramView.a != null))
+        paramView = this.b;
+        if ((paramView != null) && (paramView.j != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.a.setFailedIconVisable(false, this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevShortVideoItemBuilder);
-          DevShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevShortVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, ShortVideoUtils.getDisplayProgress(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, 10), true);
+          this.b.j.setFailedIconVisable(false, this.d);
+          DevShortVideoItemBuilder.a(this.d, this.b, ShortVideoUtils.getDisplayProgress(this.a.videoFileProgress, 10), true);
         }
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevShortVideoItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

@@ -26,9 +26,9 @@ public class FlexNode
   private float mBorderTop = 0.0F;
   private List<FlexNode> mChildren;
   private Object mData;
-  private boolean mDirty = true;
+  private final boolean mDirty = true;
   private int mEdgeSetFlag = 0;
-  protected FlexNodeStyle mFlexNodeStyle = null;
+  protected FlexNodeStyle mFlexNodeStyle;
   private boolean mHasNewLayout = true;
   private boolean mHasSetPosition = false;
   private float mHeight = (0.0F / 0.0F);
@@ -38,7 +38,7 @@ public class FlexNode
   private float mMarginRight = 0.0F;
   private float mMarginTop = 0.0F;
   private g.a mMeasureFunction = null;
-  private long mNativeFlexNode = nativeFlexNodeNew();
+  private final long mNativeFlexNode = nativeFlexNodeNew();
   private float mPaddingBottom = 0.0F;
   private float mPaddingLeft = 0.0F;
   private float mPaddingRight = 0.0F;
@@ -768,7 +768,7 @@ public class FlexNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.flexbox.FlexNode
  * JD-Core Version:    0.7.0.1
  */

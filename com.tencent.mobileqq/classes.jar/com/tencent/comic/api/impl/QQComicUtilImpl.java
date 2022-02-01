@@ -84,8 +84,8 @@ public class QQComicUtilImpl
   public Intent getBackgroundQQComicIntent(AppRuntime paramAppRuntime)
   {
     VipComicJumpActivity.ComicParam localComicParam = new VipComicJumpActivity.ComicParam();
-    localComicParam.jdField_a_of_type_Int = -1001;
-    localComicParam.jdField_a_of_type_Long = System.currentTimeMillis();
+    localComicParam.c = -1001;
+    localComicParam.a = System.currentTimeMillis();
     return VipComicJumpActivity.getBackgroundQQComicIntent(paramAppRuntime, localComicParam);
   }
   
@@ -150,8 +150,8 @@ public class QQComicUtilImpl
   
   public void notifyFirstInObservableChanged(Context paramContext)
   {
-    if (QQComicPluginBridge.a != null) {
-      QQComicPluginBridge.a.a(paramContext);
+    if (QQComicPluginBridge.d != null) {
+      QQComicPluginBridge.d.a(paramContext);
     }
   }
   
@@ -216,7 +216,7 @@ public class QQComicUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.api.impl.QQComicUtilImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ final class DevVideoMsgProcessor$1
     ShortVideoReq localShortVideoReq = SVBusiUtil.a(0, 1);
     Object localObject = new Intent();
     ((Intent)localObject).addFlags(603979776);
-    ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_JavaLangString);
+    ((Intent)localObject).putExtra("uin", this.a);
     ((Intent)localObject).putExtra("uintype", 9501);
     ((Intent)localObject).putExtra("file_send_business_type", 1);
     ((Intent)localObject).putExtra("file_send_path", this.b);
@@ -32,12 +32,12 @@ final class DevVideoMsgProcessor$1
       QLog.i("DeviceShortVideo", 2, localStringBuilder.toString());
     }
     localShortVideoReq.a((ShortVideoUploadInfo)localObject);
-    ShortVideoBusiManager.a(localShortVideoReq, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ShortVideoBusiManager.a(localShortVideoReq, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.file.DevVideoMsgProcessor.1
  * JD-Core Version:    0.7.0.1
  */

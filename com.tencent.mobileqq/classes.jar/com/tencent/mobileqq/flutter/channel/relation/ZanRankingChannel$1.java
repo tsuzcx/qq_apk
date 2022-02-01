@@ -15,7 +15,7 @@ class ZanRankingChannel$1
   
   protected void a(String paramString, MethodChannel.Result paramResult)
   {
-    Integer localInteger = Integer.valueOf(ZanRankingChannel.a.incrementAndGet());
+    Integer localInteger = Integer.valueOf(ZanRankingChannel.d.incrementAndGet());
     ZanRankingChannel.a(this.a).put(localInteger, paramResult);
     ZanRankingIpcClient.a().a(localInteger.intValue(), paramString, true);
   }
@@ -35,7 +35,7 @@ class ZanRankingChannel$1
   
   protected void b(String paramString, MethodChannel.Result paramResult)
   {
-    Integer localInteger = Integer.valueOf(ZanRankingChannel.a.incrementAndGet());
+    Integer localInteger = Integer.valueOf(ZanRankingChannel.d.incrementAndGet());
     ZanRankingChannel.a(this.a).put(localInteger, paramResult);
     ZanRankingIpcClient.a().a(localInteger.intValue(), paramString, false);
   }
@@ -47,7 +47,7 @@ class ZanRankingChannel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.ZanRankingChannel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,17 +19,17 @@ class FraudHelper$1
       }
       if (paramInt2 == 0)
       {
-        UinFraudInfo.a().a(paramLong);
+        UinFraudInfo.a().c(paramLong);
         return;
       }
       UinFraudInfo.a().a(paramLong, paramInt2);
-      FraudHelper.a(this.a).a().runOnUiThread(new FraudHelper.1.1(this, paramLong));
+      FraudHelper.b(this.a).b().runOnUiThread(new FraudHelper.1.1(this, paramLong));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FraudHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class ArNativeSoManager$4
   
   public void a()
   {
-    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.b(this.b, this.a.a);
     if (localARResourceDownloadCallback != null) {
       localARResourceDownloadCallback.a();
     }
@@ -20,7 +20,7 @@ class ArNativeSoManager$4
   
   public void a(long paramLong1, long paramLong2)
   {
-    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.b(this.b, this.a.a);
     if (localARResourceDownloadCallback != null) {
       localARResourceDownloadCallback.a(paramLong1, paramLong2);
     }
@@ -32,23 +32,23 @@ class ArNativeSoManager$4
     ((StringBuilder)localObject).append("downloadSoRes onARResourceDownloadComplete. result = ");
     ((StringBuilder)localObject).append(paramBoolean);
     ((StringBuilder)localObject).append(", name = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    ((StringBuilder)localObject).append(this.a.a);
     ((StringBuilder)localObject).append(", filename = ");
-    ((StringBuilder)localObject).append(paramDownloadInfo.c);
+    ((StringBuilder)localObject).append(paramDownloadInfo.d);
     ((StringBuilder)localObject).append(", url = ");
-    ((StringBuilder)localObject).append(paramDownloadInfo.a);
+    ((StringBuilder)localObject).append(paramDownloadInfo.b);
     QLog.i("AREngine_ArNativeSoManager", 1, ((StringBuilder)localObject).toString());
     if (paramBoolean)
     {
-      if (!ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c, paramDownloadInfo.b))
+      if (!ArNativeSoManager.a(this.b, paramDownloadInfo.d, paramDownloadInfo.c))
       {
-        ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c);
+        ArNativeSoManager.a(this.b, paramDownloadInfo.d);
         QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager.a(paramDownloadInfo.d, paramDownloadInfo.c, paramDownloadInfo.b);
+      this.b.a(paramDownloadInfo.e, paramDownloadInfo.d, paramDownloadInfo.c);
     }
-    localObject = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    localObject = ArNativeSoManager.b(this.b, this.a.a);
     if (localObject != null) {
       ((ARPreSoResourceDownload.ARResourceDownloadCallback)localObject).a(paramBoolean, paramDownloadInfo);
     }
@@ -56,7 +56,7 @@ class ArNativeSoManager$4
   
   public void b()
   {
-    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.b(this.b, this.a.a);
     if (localARResourceDownloadCallback != null) {
       localARResourceDownloadCallback.b();
     }
@@ -64,7 +64,7 @@ class ArNativeSoManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoManager.4
  * JD-Core Version:    0.7.0.1
  */

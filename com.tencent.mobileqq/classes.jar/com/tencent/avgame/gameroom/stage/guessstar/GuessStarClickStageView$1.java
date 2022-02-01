@@ -15,26 +15,26 @@ class GuessStarClickStageView$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_JavaUtilArrayList != null) && (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size()))
+    if ((this.this$0.q != null) && (this.this$0.r < this.this$0.q.size()))
     {
-      if ((this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 8))
+      if ((this.this$0.g != null) && (this.this$0.g.getVisibility() == 8))
       {
-        this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.this$0.g.setVisibility(0);
+        this.this$0.e.setVisibility(0);
       }
       Object localObject = this.this$0;
-      ((GuessStarClickStageView)localObject).a((String)((Pair)((GuessStarClickStageView)localObject).jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int)).second);
-      if (this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStageRecordPresenter != null) {
-        this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStageRecordPresenter.b(this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout);
+      ((GuessStarClickStageView)localObject).a((String)((Pair)((GuessStarClickStageView)localObject).q.get(this.this$0.r)).second);
+      if (this.this$0.d != null) {
+        this.this$0.d.b(this.this$0.g);
       }
-      if (this.this$0.jdField_a_of_type_Int < this.this$0.jdField_a_of_type_JavaUtilArrayList.size() - 1)
+      if (this.this$0.r < this.this$0.q.size() - 1)
       {
         localObject = ThreadManager.getUIHandlerV2();
-        ArrayList localArrayList = this.this$0.jdField_a_of_type_JavaUtilArrayList;
+        ArrayList localArrayList = this.this$0.q;
         GuessStarClickStageView localGuessStarClickStageView = this.this$0;
-        int i = localGuessStarClickStageView.jdField_a_of_type_Int + 1;
-        localGuessStarClickStageView.jdField_a_of_type_Int = i;
-        ((Handler)localObject).postDelayed(this, (((Integer)((Pair)localArrayList.get(i)).first).intValue() - ((Integer)((Pair)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int - 1)).first).intValue()) * 1000);
+        int i = localGuessStarClickStageView.r + 1;
+        localGuessStarClickStageView.r = i;
+        ((Handler)localObject).postDelayed(this, (((Integer)((Pair)localArrayList.get(i)).first).intValue() - ((Integer)((Pair)this.this$0.q.get(this.this$0.r - 1)).first).intValue()) * 1000);
       }
     }
   }

@@ -1,13 +1,12 @@
 package com.tencent.tav.extractor;
 
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaFormat;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import com.tencent.tav.ResourceLoadUtil;
 import com.tencent.tav.coremedia.CGSize;
-import com.tencent.tav.decoder.DecoderUtils;
+import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.wrapper.ExtractorLoader;
 import com.tencent.tav.extractor.wrapper.ExtractorWrapperPool;
 import java.io.FileDescriptor;
@@ -25,33 +24,35 @@ public class AssetExtractor
   public static final int SEEK_TO_CLOSEST_SYNC = 2;
   public static final int SEEK_TO_NEXT_SYNC = 1;
   public static final int SEEK_TO_PREVIOUS_SYNC = 0;
+  private final String TAG;
   @Nullable
-  private IAssetExtractorDelegate delegate;
-  private long duration = 0L;
-  private long mNativeContext = 0L;
-  private int preferRotation = -1;
-  private boolean released = false;
-  private CGSize size = null;
-  private String sourcePath = "";
+  private IExtractorDelegate delegate;
+  private long duration;
+  private long mNativeContext;
+  private int preferRotation;
+  private boolean released;
+  private CGSize size;
+  private String sourcePath;
   
   static
   {
     if (ResourceLoadUtil.isLoaded())
     {
       nativeInit();
-      return;
     }
-    System.out.println("loadlibrary : tav start");
-    try
+    else
     {
-      System.loadLibrary("tav");
-      ResourceLoadUtil.setLoaded(true);
-      nativeInit();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+      System.out.println("loadlibrary : tav start");
+      try
+      {
+        System.loadLibrary("tav");
+        ResourceLoadUtil.setLoaded(true);
+        nativeInit();
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
   
@@ -62,8 +63,18 @@ public class AssetExtractor
   
   public AssetExtractor(boolean paramBoolean)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AssetExtractor@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
+    this.released = false;
+    this.mNativeContext = 0L;
+    this.sourcePath = "";
+    this.duration = 0L;
+    this.size = null;
+    this.preferRotation = -1;
     if (paramBoolean) {
-      this.delegate = new ApiAssetExtractorDelegate();
+      this.delegate = ExtractorDelegateFactory.createDelegate();
     }
   }
   
@@ -130,7 +141,13 @@ public class AssetExtractor
       if (bool) {
         return;
       }
-      if ((!this.released) && (this.delegate == null)) {
+      if ((!this.released) && (this.delegate == null))
+      {
+        String str = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("dispose: sourcePath = ");
+        localStringBuilder.append(this.sourcePath);
+        Logger.i(str, localStringBuilder.toString());
         releaseNative();
       }
       return;
@@ -162,7 +179,7 @@ public class AssetExtractor
   {
     try
     {
-      long l = DecoderUtils.getAudioDuration(this);
+      long l = ExtractorUtils.getAudioDuration(this);
       return l;
     }
     finally
@@ -177,7 +194,7 @@ public class AssetExtractor
     try
     {
       if (this.duration == 0L) {
-        this.duration = DecoderUtils.getDuration(this);
+        this.duration = ExtractorUtils.getDuration(this);
       }
       long l = this.duration;
       return l;
@@ -205,14 +222,26 @@ public class AssetExtractor
     try
     {
       long l;
+      String str;
+      StringBuilder localStringBuilder;
       if (this.delegate != null)
       {
         l = this.delegate.getSampleTime();
+        str = this.TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSampleTime(delegate) :");
+        localStringBuilder.append(l);
+        Logger.v(str, localStringBuilder.toString());
         return l;
       }
       if (!this.released)
       {
         l = getSampleTimeNative();
+        str = this.TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSampleTime: ");
+        localStringBuilder.append(l);
+        Logger.v(str, localStringBuilder.toString());
         return l;
       }
       return -1L;
@@ -283,27 +312,52 @@ public class AssetExtractor
   {
     try
     {
-      if (this.delegate != null)
-      {
-        localMediaFormat = this.delegate.getTrackFormat(paramInt);
-        return localMediaFormat;
+      Object localObject1 = this.delegate;
+      if (localObject1 != null) {
+        try
+        {
+          localObject1 = this.delegate.getTrackFormat(paramInt);
+          localObject3 = this.TAG;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("getTrackFormat(delegate): index = ");
+          ((StringBuilder)localObject4).append(paramInt);
+          ((StringBuilder)localObject4).append(", format = ");
+          ((StringBuilder)localObject4).append(localObject1);
+          Logger.v((String)localObject3, ((StringBuilder)localObject4).toString());
+          return localObject1;
+        }
+        catch (Exception localException1)
+        {
+          localObject3 = this.TAG;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("delegate.getTrackFormat: ");
+          ((StringBuilder)localObject4).append(localException1.getMessage());
+          Logger.w((String)localObject3, ((StringBuilder)localObject4).toString());
+        }
       }
       MediaFormat localMediaFormat = new MediaFormat();
       boolean bool = this.released;
       if (bool) {
         return localMediaFormat;
       }
-      Map localMap = getTrackFormatNative(paramInt);
+      Object localObject3 = getTrackFormatNative(paramInt);
       try
       {
-        Field localField = MediaFormat.class.getDeclaredField("mMap");
-        localField.setAccessible(true);
-        localField.set(localMediaFormat, localMap);
+        localObject4 = MediaFormat.class.getDeclaredField("mMap");
+        ((Field)localObject4).setAccessible(true);
+        ((Field)localObject4).set(localMediaFormat, localObject3);
       }
-      catch (Exception localException)
+      catch (Exception localException2)
       {
-        Log.e("VideoCore", localException.getMessage());
+        Log.e("VideoCore", localException2.getMessage());
       }
+      String str = this.TAG;
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("getTrackFormat: index = ");
+      ((StringBuilder)localObject4).append(paramInt);
+      ((StringBuilder)localObject4).append(", format = ");
+      ((StringBuilder)localObject4).append(localMediaFormat);
+      Logger.v(str, ((StringBuilder)localObject4).toString());
       return localMediaFormat;
     }
     finally {}
@@ -314,18 +368,43 @@ public class AssetExtractor
     return this.released;
   }
   
+  public boolean needMirror()
+  {
+    IExtractorDelegate localIExtractorDelegate = this.delegate;
+    if (localIExtractorDelegate != null) {
+      return localIExtractorDelegate.needMirror();
+    }
+    return true;
+  }
+  
   public int readSampleData(@NonNull ByteBuffer paramByteBuffer, int paramInt)
   {
     try
     {
+      String str;
+      StringBuilder localStringBuilder;
       if (this.delegate != null)
       {
         paramInt = this.delegate.readSampleData(paramByteBuffer, paramInt);
+        str = this.TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("readSampleData(delegate): ret = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", buf = ");
+        localStringBuilder.append(paramByteBuffer);
+        Logger.v(str, localStringBuilder.toString());
         return paramInt;
       }
       if (!this.released)
       {
         paramInt = readSampleDataNative(paramByteBuffer, paramInt);
+        str = this.TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("readSampleData: ret = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", buf = ");
+        localStringBuilder.append(paramByteBuffer);
+        Logger.v(str, localStringBuilder.toString());
         return paramInt;
       }
       return -1;
@@ -357,6 +436,14 @@ public class AssetExtractor
   {
     try
     {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seekTo() called with: timeUs = [");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("], mode = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      Logger.v(str, localStringBuilder.toString());
       if (this.delegate != null)
       {
         this.delegate.seekTo(paramLong, paramInt);
@@ -374,48 +461,26 @@ public class AssetExtractor
   {
     try
     {
-      if (this.delegate != null)
-      {
-        this.delegate.selectTrack(paramInt);
-        return;
+      IExtractorDelegate localIExtractorDelegate = this.delegate;
+      if (localIExtractorDelegate != null) {
+        try
+        {
+          this.delegate.selectTrack(paramInt);
+          return;
+        }
+        catch (Exception localException)
+        {
+          String str = this.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("delegate.selectTrack: ");
+          localStringBuilder.append(localException.getMessage());
+          Logger.w(str, localStringBuilder.toString());
+          this.delegate = null;
+        }
       }
       if (!this.released) {
         selectTrackNative(paramInt);
       }
-      return;
-    }
-    finally {}
-  }
-  
-  public final void setDataSource(@NonNull AssetFileDescriptor paramAssetFileDescriptor)
-  {
-    try
-    {
-      if (this.delegate != null)
-      {
-        this.delegate.setDataSource(paramAssetFileDescriptor);
-        return;
-      }
-      if (paramAssetFileDescriptor.getDeclaredLength() < 0L) {
-        setDataSource(paramAssetFileDescriptor.getFileDescriptor());
-      } else {
-        setDataSource(paramAssetFileDescriptor.getFileDescriptor(), paramAssetFileDescriptor.getStartOffset(), paramAssetFileDescriptor.getDeclaredLength());
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public final void setDataSource(@NonNull FileDescriptor paramFileDescriptor)
-  {
-    try
-    {
-      if (this.delegate != null)
-      {
-        this.delegate.setDataSource(paramFileDescriptor);
-        return;
-      }
-      setDataSource(paramFileDescriptor, 0L, 576460752303423487L);
       return;
     }
     finally {}
@@ -427,8 +492,21 @@ public class AssetExtractor
   {
     try
     {
-      if (this.delegate != null) {
-        this.delegate.setDataSource(paramString);
+      IExtractorDelegate localIExtractorDelegate = this.delegate;
+      if (localIExtractorDelegate != null) {
+        try
+        {
+          this.delegate.setDataSource(paramString);
+        }
+        catch (Exception localException)
+        {
+          String str = this.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("delegate.setDataSource: ");
+          localStringBuilder.append(localException.getMessage());
+          Logger.w(str, localStringBuilder.toString());
+          this.delegate = null;
+        }
       }
       this.sourcePath = paramString;
       if (ExtractorWrapperPool.contains(paramString)) {
@@ -475,7 +553,7 @@ public class AssetExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.extractor.AssetExtractor
  * JD-Core Version:    0.7.0.1
  */

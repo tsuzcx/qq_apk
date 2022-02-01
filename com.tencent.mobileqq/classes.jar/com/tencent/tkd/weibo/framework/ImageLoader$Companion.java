@@ -19,7 +19,7 @@ public final class ImageLoader$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.ImageLoader.Companion
  * JD-Core Version:    0.7.0.1
  */

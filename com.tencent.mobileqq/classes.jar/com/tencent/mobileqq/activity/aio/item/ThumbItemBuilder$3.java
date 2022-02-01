@@ -35,16 +35,16 @@ class ThumbItemBuilder$3
       localStringBuilder.append(paramDownloadTask);
       QLog.d("ChatItemBuilder", 2, localStringBuilder.toString());
     }
-    if (paramDownloadTask.b()) {
+    if (paramDownloadTask.f()) {
       return;
     }
-    paramDownloadTask.a().getInt("type");
-    if (paramDownloadTask.a() == -1) {
+    paramDownloadTask.b().getInt("type");
+    if (paramDownloadTask.e() == -1) {
       return;
     }
     paramDownloadTask = new Message();
-    paramDownloadTask.what = ThumbItemBuilder.jdField_a_of_type_Int;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramDownloadTask);
+    paramDownloadTask.what = ThumbItemBuilder.f;
+    this.a.e.sendMessage(paramDownloadTask);
   }
   
   public boolean onStart(DownloadTask paramDownloadTask)
@@ -61,7 +61,7 @@ class ThumbItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

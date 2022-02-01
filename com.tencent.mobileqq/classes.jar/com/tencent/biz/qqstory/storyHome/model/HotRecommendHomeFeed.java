@@ -28,8 +28,8 @@ public class HotRecommendHomeFeed
   public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
     Object localObject1 = (qqstory_struct.MultiRecommend)paramStoryFeed.multi_recommend_feed.get();
-    ((HotRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.MultiRecommend)localObject1);
-    ((HotRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    ((HotRecommendFeedItem)this.f).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.MultiRecommend)localObject1);
+    ((HotRecommendFeedItem)this.f).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
     paramStoryFeed = (UserManager)SuperManager.a(2);
     ArrayList localArrayList = new ArrayList();
     localObject1 = ((qqstory_struct.MultiRecommend)localObject1).recommend_feed.get().iterator();
@@ -49,13 +49,13 @@ public class HotRecommendHomeFeed
     return true ^ localArrayList.isEmpty();
   }
   
-  public void b()
+  public void e()
   {
-    super.b();
+    super.e();
     UserManager localUserManager = (UserManager)SuperManager.a(2);
-    if (!this.c.isEmpty())
+    if (!this.h.isEmpty())
     {
-      Iterator localIterator = this.c.iterator();
+      Iterator localIterator = this.h.iterator();
       while (localIterator.hasNext())
       {
         StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();

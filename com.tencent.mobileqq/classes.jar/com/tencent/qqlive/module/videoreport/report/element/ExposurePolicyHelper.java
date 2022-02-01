@@ -18,9 +18,9 @@ public class ExposurePolicyHelper
     getEleExposureMap(paramObject).clear();
   }
   
-  private static EleExposeInfo getCacheEleExposeInfo(Object paramObject, View paramView, String paramString)
+  private static EleExposeInfo getCacheEleExposeInfo(Object paramObject, View paramView, String paramString, boolean paramBoolean)
   {
-    paramView = getReExposeKey(paramObject, paramView, paramString);
+    paramView = getReExposeKey(paramObject, paramView, paramString, paramBoolean);
     paramObject = getEleExposureMap(paramObject).get(paramView);
     if ((paramObject instanceof EleExposeInfo)) {
       return (EleExposeInfo)paramObject;
@@ -29,13 +29,13 @@ public class ExposurePolicyHelper
   }
   
   @Nullable
-  public static EleExposeInfo getEleExposeInfo(Object paramObject, View paramView, String paramString)
+  public static EleExposeInfo getEleExposeInfo(Object paramObject, View paramView, String paramString, boolean paramBoolean)
   {
     paramObject = getPageOrContainer(paramObject, paramView);
     if (paramObject == null) {
       return null;
     }
-    return getCacheEleExposeInfo(paramObject, paramView, paramString);
+    return getCacheEleExposeInfo(paramObject, paramView, paramString, paramBoolean);
   }
   
   @NonNull
@@ -67,7 +67,7 @@ public class ExposurePolicyHelper
     return localObject;
   }
   
-  public static String getReExposeKey(Object paramObject, View paramView, String paramString)
+  public static String getReExposeKey(Object paramObject, View paramView, String paramString, boolean paramBoolean)
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString))
@@ -81,19 +81,27 @@ public class ExposurePolicyHelper
         str = paramString.toString();
       }
     }
-    paramView = new StringBuilder();
-    paramView.append(paramObject.hashCode());
-    paramView.append(str);
-    return paramView.toString();
+    paramView = str;
+    if (paramBoolean)
+    {
+      paramView = new StringBuilder();
+      paramView.append("identifier_scroll");
+      paramView.append(str);
+      paramView = paramView.toString();
+    }
+    paramString = new StringBuilder();
+    paramString.append(paramObject.hashCode());
+    paramString.append(paramView);
+    return paramString.toString();
   }
   
-  public static void putEleExposeInfo(Object paramObject, View paramView, String paramString, EleExposeInfo paramEleExposeInfo)
+  public static void putEleExposeInfo(Object paramObject, View paramView, String paramString, EleExposeInfo paramEleExposeInfo, boolean paramBoolean)
   {
     paramObject = getPageOrContainer(paramObject, paramView);
     if (paramObject == null) {
       return;
     }
-    putEleExposeInfo(paramObject, getReExposeKey(paramObject, paramView, paramString), paramEleExposeInfo);
+    putEleExposeInfo(paramObject, getReExposeKey(paramObject, paramView, paramString, paramBoolean), paramEleExposeInfo);
   }
   
   private static void putEleExposeInfo(Object paramObject, String paramString, EleExposeInfo paramEleExposeInfo)
@@ -103,7 +111,7 @@ public class ExposurePolicyHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ExposurePolicyHelper
  * JD-Core Version:    0.7.0.1
  */

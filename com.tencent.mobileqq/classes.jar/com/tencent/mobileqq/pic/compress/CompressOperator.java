@@ -24,19 +24,19 @@ import mqq.app.MobileQQ;
 
 public class CompressOperator
 {
-  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getString(2131691040);
   @ConfigInject(configPath="Business/qqpic-api/src/main/resources/Inject_InitCompressPicType.yml", version=1)
   public static HashMap<String, Class<? extends AbstractPicType>> a;
-  private static List<String> jdField_a_of_type_JavaUtilList;
+  private static List<String> b;
+  private static final String c = BaseApplication.getContext().getString(2131887986);
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("2", PicTypeGif.class);
-    jdField_a_of_type_JavaUtilHashMap.put("1", PicTypeLong.class);
-    jdField_a_of_type_JavaUtilHashMap.put("0", PicTypeNormal.class);
-    jdField_a_of_type_JavaUtilHashMap.put("0_1036", PicTypeKandian.class);
-    jdField_a_of_type_JavaUtilHashMap.put("0_1035", PicTypeTroopBar.class);
+    a = new HashMap();
+    a.put("2", PicTypeGif.class);
+    a.put("1", PicTypeLong.class);
+    a.put("0", PicTypeNormal.class);
+    a.put("0_1036", PicTypeKandian.class);
+    a.put("0_1035", PicTypeTroopBar.class);
   }
   
   public static int a(int paramInt)
@@ -51,169 +51,35 @@ public class CompressOperator
     return 0;
   }
   
-  static AbstractPicType a(CompressInfo paramCompressInfo)
-  {
-    if (paramCompressInfo != null)
-    {
-      Object localObject1 = jdField_a_of_type_JavaUtilHashMap;
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramCompressInfo.jdField_f_of_type_Int);
-      ((StringBuilder)localObject2).append("_");
-      ((StringBuilder)localObject2).append(paramCompressInfo.jdField_a_of_type_Int);
-      localObject2 = (Class)((HashMap)localObject1).get(((StringBuilder)localObject2).toString());
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(paramCompressInfo.jdField_f_of_type_Int);
-        ((StringBuilder)localObject1).append("");
-        localObject1 = ((StringBuilder)localObject1).toString();
-        localObject1 = (Class)jdField_a_of_type_JavaUtilHashMap.get(localObject1);
-      }
-      if (localObject1 != null) {
-        try
-        {
-          localObject1 = ((Class)localObject1).getDeclaredConstructor(new Class[] { CompressInfo.class });
-          ((Constructor)localObject1).setAccessible(true);
-          paramCompressInfo = (AbstractPicType)((Constructor)localObject1).newInstance(new Object[] { paramCompressInfo });
-          return paramCompressInfo;
-        }
-        catch (Exception paramCompressInfo)
-        {
-          Logger.b("CompressOperator", " picTypeFactory", paramCompressInfo.getMessage());
-        }
-      }
-    }
-    return null;
-  }
-  
-  private static void a(CompressInfo paramCompressInfo, boolean paramBoolean)
-  {
-    if ((paramCompressInfo != null) && (!TextUtils.isEmpty(paramCompressInfo.c)) && (!TextUtils.isEmpty(paramCompressInfo.jdField_e_of_type_JavaLangString)))
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(" checkAndLog()");
-      Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), paramCompressInfo.toString());
-      if (paramCompressInfo.jdField_a_of_type_Boolean)
-      {
-        if (!paramBoolean)
-        {
-          long l1 = Utils.a(paramCompressInfo.c);
-          long l2 = Utils.a(paramCompressInfo.jdField_e_of_type_JavaLangString);
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-          ((StringBuilder)localObject).append(" checkAndLog()");
-          localObject = ((StringBuilder)localObject).toString();
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("src File size:");
-          localStringBuilder.append(l1);
-          Logger.a("CompressOperator", (String)localObject, localStringBuilder.toString());
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-          ((StringBuilder)localObject).append(" checkAndLog()");
-          localObject = ((StringBuilder)localObject).toString();
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("dest File size:");
-          localStringBuilder.append(l2);
-          Logger.a("CompressOperator", (String)localObject, localStringBuilder.toString());
-          if ((l1 > 0L) && (l2 > l1))
-          {
-            if (PhotoIncompatibleBase.b(paramCompressInfo.c))
-            {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-              ((StringBuilder)localObject).append(" checkAndLog()");
-              Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), "src is incompatible ,keep compress file");
-              return;
-            }
-            if (l1 > 1024L)
-            {
-              FileUtils.estimateFileType(paramCompressInfo.c);
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-              ((StringBuilder)localObject).append(" checkAndLog()");
-              Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), jdField_a_of_type_JavaLangString);
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("CompressOperator");
-              ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-              ((StringBuilder)localObject).append(" checkAndLog()");
-              ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-              paramCompressInfo.jdField_f_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-              FileUtils.deleteFile(paramCompressInfo.jdField_e_of_type_JavaLangString);
-              if (jdField_a_of_type_JavaUtilList == null) {
-                jdField_a_of_type_JavaUtilList = new ArrayList();
-              }
-              localObject = jdField_a_of_type_JavaUtilList;
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append(paramBoolean);
-              localStringBuilder.append(paramCompressInfo.c);
-              if (!((List)localObject).contains(localStringBuilder.toString()))
-              {
-                localObject = jdField_a_of_type_JavaUtilList;
-                localStringBuilder = new StringBuilder();
-                localStringBuilder.append(paramBoolean);
-                localStringBuilder.append(paramCompressInfo.c);
-                ((List)localObject).add(localStringBuilder.toString());
-              }
-              paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-              ((StringBuilder)localObject).append(" checkAndLog()");
-              Logger.b("CompressOperator", ((StringBuilder)localObject).toString(), " destSize > srcSize, info.destPath = info.srcPath");
-              return;
-            }
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-            ((StringBuilder)localObject).append(" checkAndLog()");
-            Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), "src length is too small");
-            paramBoolean = "MI 6".equals(Build.MODEL);
-            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "SendPicSrcProblem", paramBoolean, 0L, l1, null, "");
-          }
-        }
-      }
-      else
-      {
-        paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
-        ((StringBuilder)localObject).append(" checkAndLog()");
-        Logger.b("CompressOperator", ((StringBuilder)localObject).toString(), "info.isSuccess = false, info.destPath = info.srcPath");
-      }
-      return;
-    }
-    Logger.b("CompressOperator", " checkAndLog()", "info == null || TextUtils.isEmpty(info.srcPath) || TextUtils.isEmpty(info.destPath)");
-  }
-  
   public static boolean a(CompressInfo paramCompressInfo)
   {
     if (paramCompressInfo == null) {
       return false;
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramCompressInfo.a);
     ((StringBuilder)localObject).append(" CompressOperator.start()");
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("processName = ");
     localStringBuilder.append(MobileQQ.sMobileQQ.getQQProcessName());
     localStringBuilder.append(",srcPath = ");
-    localStringBuilder.append(paramCompressInfo.c);
+    localStringBuilder.append(paramCompressInfo.h);
     Logger.a("CompressOperator", (String)localObject, localStringBuilder.toString());
     long l1 = System.currentTimeMillis();
-    int i = HardCoderManager.a().a(0, 1, 1, Process.myTid(), 2000, 203, 128L, Process.myTid(), "sendPic", true);
+    int i = HardCoderManager.getInstance().start(0, 1, 1, Process.myTid(), 2000, 203, 128L, Process.myTid(), "sendPic", true);
     boolean bool = a(paramCompressInfo, false);
     long l2 = System.currentTimeMillis();
     paramCompressInfo = null;
-    if (HardCoderManager.a().a())
+    if (HardCoderManager.getInstance().isSupported())
     {
       paramCompressInfo = new HashMap();
-      paramCompressInfo.put("hcState", String.valueOf(HardCoderManager.a().a()));
+      paramCompressInfo.put("hcState", String.valueOf(HardCoderManager.getInstance().getState()));
       paramCompressInfo.put("model", Build.MODEL);
     }
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "AIOPicCompress", bool, l2 - l1, 0L, paramCompressInfo, "");
     if (i != 0) {
-      HardCoderManager.a().a(i);
+      HardCoderManager.getInstance().stop(i);
     }
     if (QLog.isColorLevel())
     {
@@ -228,42 +94,42 @@ public class CompressOperator
   private static boolean a(CompressInfo paramCompressInfo, boolean paramBoolean)
   {
     Object localObject;
-    if ((paramCompressInfo != null) && (FileUtils.fileExistsAndNotEmpty(paramCompressInfo.c)))
+    if ((paramCompressInfo != null) && (FileUtils.fileExistsAndNotEmpty(paramCompressInfo.h)))
     {
-      localObject = jdField_a_of_type_JavaUtilList;
+      localObject = b;
       if (localObject != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramBoolean);
-        localStringBuilder.append(paramCompressInfo.c);
+        localStringBuilder.append(paramCompressInfo.h);
         if (((List)localObject).contains(localStringBuilder.toString()))
         {
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramCompressInfo.a);
           ((StringBuilder)localObject).append(" startImpl()");
-          Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), jdField_a_of_type_JavaLangString);
+          Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), c);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("CompressOperator");
-          ((StringBuilder)localObject).append(paramCompressInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramCompressInfo.a);
           ((StringBuilder)localObject).append(" startImpl()");
-          ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-          paramCompressInfo.jdField_f_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-          paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
+          ((StringBuilder)localObject).append(c);
+          paramCompressInfo.s = ((StringBuilder)localObject).toString();
+          paramCompressInfo.l = paramCompressInfo.h;
           localObject = new BitmapFactory.Options();
           ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-          BitmapFactory.decodeFile(paramCompressInfo.jdField_e_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-          paramCompressInfo.d = ((BitmapFactory.Options)localObject).outWidth;
-          paramCompressInfo.jdField_e_of_type_Int = ((BitmapFactory.Options)localObject).outHeight;
+          BitmapFactory.decodeFile(paramCompressInfo.l, (BitmapFactory.Options)localObject);
+          paramCompressInfo.m = ((BitmapFactory.Options)localObject).outWidth;
+          paramCompressInfo.n = ((BitmapFactory.Options)localObject).outHeight;
           return true;
         }
       }
-      paramCompressInfo.h = NetworkUtil.getNetworkType(BaseApplication.getContext());
-      if (BaseImageUtil.b(paramCompressInfo.c)) {
-        paramCompressInfo.jdField_f_of_type_Int = 2;
-      } else if (a(paramCompressInfo.c)) {
-        paramCompressInfo.jdField_f_of_type_Int = 1;
+      paramCompressInfo.q = NetworkUtil.getNetworkType(BaseApplication.getContext());
+      if (BaseImageUtil.c(paramCompressInfo.h)) {
+        paramCompressInfo.o = 2;
+      } else if (a(paramCompressInfo.h)) {
+        paramCompressInfo.o = 1;
       } else {
-        paramCompressInfo.jdField_f_of_type_Int = 0;
+        paramCompressInfo.o = 0;
       }
       if (QLog.isColorLevel())
       {
@@ -272,16 +138,16 @@ public class CompressOperator
         ((StringBuilder)localObject).append(paramCompressInfo);
         Logger.a("CompressOperator", " startImpl()", ((StringBuilder)localObject).toString());
       }
-      localObject = a(paramCompressInfo);
+      localObject = c(paramCompressInfo);
       boolean bool;
       if (paramBoolean) {
         bool = ((AbstractPicType)localObject).a();
       } else {
         bool = ((AbstractPicType)localObject).b();
       }
-      paramCompressInfo.jdField_a_of_type_Boolean = bool;
-      a(paramCompressInfo, paramBoolean);
-      if (paramCompressInfo.jdField_e_of_type_JavaLangString != null)
+      paramCompressInfo.c = bool;
+      b(paramCompressInfo, paramBoolean);
+      if (paramCompressInfo.l != null)
       {
         localObject = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
@@ -289,10 +155,10 @@ public class CompressOperator
     }
     try
     {
-      BaseImageUtil.a(paramCompressInfo.jdField_e_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-      paramCompressInfo.d = ((BitmapFactory.Options)localObject).outWidth;
-      paramCompressInfo.jdField_e_of_type_Int = ((BitmapFactory.Options)localObject).outHeight;
-      return paramCompressInfo.jdField_a_of_type_Boolean;
+      BaseImageUtil.a(paramCompressInfo.l, (BitmapFactory.Options)localObject);
+      paramCompressInfo.m = ((BitmapFactory.Options)localObject).outWidth;
+      paramCompressInfo.n = ((BitmapFactory.Options)localObject).outHeight;
+      return paramCompressInfo.c;
     }
     catch (OutOfMemoryError paramCompressInfo) {}
     Logger.b("CompressOperator", " startImpl()", "info == null || TextUtils.isEmpty(info.srcPath)");
@@ -342,21 +208,155 @@ public class CompressOperator
     return false;
   }
   
+  private static void b(CompressInfo paramCompressInfo, boolean paramBoolean)
+  {
+    if ((paramCompressInfo != null) && (!TextUtils.isEmpty(paramCompressInfo.h)) && (!TextUtils.isEmpty(paramCompressInfo.l)))
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramCompressInfo.a);
+      ((StringBuilder)localObject).append(" checkAndLog()");
+      Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), paramCompressInfo.toString());
+      if (paramCompressInfo.c)
+      {
+        if (!paramBoolean)
+        {
+          long l1 = Utils.a(paramCompressInfo.h);
+          long l2 = Utils.a(paramCompressInfo.l);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramCompressInfo.a);
+          ((StringBuilder)localObject).append(" checkAndLog()");
+          localObject = ((StringBuilder)localObject).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("src File size:");
+          localStringBuilder.append(l1);
+          Logger.a("CompressOperator", (String)localObject, localStringBuilder.toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramCompressInfo.a);
+          ((StringBuilder)localObject).append(" checkAndLog()");
+          localObject = ((StringBuilder)localObject).toString();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("dest File size:");
+          localStringBuilder.append(l2);
+          Logger.a("CompressOperator", (String)localObject, localStringBuilder.toString());
+          if ((l1 > 0L) && (l2 > l1))
+          {
+            if (PhotoIncompatibleBase.b(paramCompressInfo.h))
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramCompressInfo.a);
+              ((StringBuilder)localObject).append(" checkAndLog()");
+              Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), "src is incompatible ,keep compress file");
+              return;
+            }
+            if (l1 > 1024L)
+            {
+              FileUtils.estimateFileType(paramCompressInfo.h);
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramCompressInfo.a);
+              ((StringBuilder)localObject).append(" checkAndLog()");
+              Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), c);
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("CompressOperator");
+              ((StringBuilder)localObject).append(paramCompressInfo.a);
+              ((StringBuilder)localObject).append(" checkAndLog()");
+              ((StringBuilder)localObject).append(c);
+              paramCompressInfo.s = ((StringBuilder)localObject).toString();
+              FileUtils.deleteFile(paramCompressInfo.l);
+              if (b == null) {
+                b = new ArrayList();
+              }
+              localObject = b;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(paramBoolean);
+              localStringBuilder.append(paramCompressInfo.h);
+              if (!((List)localObject).contains(localStringBuilder.toString()))
+              {
+                localObject = b;
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append(paramBoolean);
+                localStringBuilder.append(paramCompressInfo.h);
+                ((List)localObject).add(localStringBuilder.toString());
+              }
+              paramCompressInfo.l = paramCompressInfo.h;
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramCompressInfo.a);
+              ((StringBuilder)localObject).append(" checkAndLog()");
+              Logger.b("CompressOperator", ((StringBuilder)localObject).toString(), " destSize > srcSize, info.destPath = info.srcPath");
+              return;
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramCompressInfo.a);
+            ((StringBuilder)localObject).append(" checkAndLog()");
+            Logger.a("CompressOperator", ((StringBuilder)localObject).toString(), "src length is too small");
+            paramBoolean = "MI 6".equals(Build.MODEL);
+            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "SendPicSrcProblem", paramBoolean, 0L, l1, null, "");
+          }
+        }
+      }
+      else
+      {
+        paramCompressInfo.l = paramCompressInfo.h;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramCompressInfo.a);
+        ((StringBuilder)localObject).append(" checkAndLog()");
+        Logger.b("CompressOperator", ((StringBuilder)localObject).toString(), "info.isSuccess = false, info.destPath = info.srcPath");
+      }
+      return;
+    }
+    Logger.b("CompressOperator", " checkAndLog()", "info == null || TextUtils.isEmpty(info.srcPath) || TextUtils.isEmpty(info.destPath)");
+  }
+  
   public static boolean b(CompressInfo paramCompressInfo)
   {
     if (paramCompressInfo == null) {
       return false;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramCompressInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramCompressInfo.a);
     localStringBuilder.append(" startThumbnail()");
     Logger.a("CompressOperator", localStringBuilder.toString(), "");
     return a(paramCompressInfo, true);
   }
+  
+  static AbstractPicType c(CompressInfo paramCompressInfo)
+  {
+    if (paramCompressInfo != null)
+    {
+      Object localObject1 = a;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramCompressInfo.o);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(paramCompressInfo.b);
+      localObject2 = (Class)((HashMap)localObject1).get(((StringBuilder)localObject2).toString());
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramCompressInfo.o);
+        ((StringBuilder)localObject1).append("");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        localObject1 = (Class)a.get(localObject1);
+      }
+      if (localObject1 != null) {
+        try
+        {
+          localObject1 = ((Class)localObject1).getDeclaredConstructor(new Class[] { CompressInfo.class });
+          ((Constructor)localObject1).setAccessible(true);
+          paramCompressInfo = (AbstractPicType)((Constructor)localObject1).newInstance(new Object[] { paramCompressInfo });
+          return paramCompressInfo;
+        }
+        catch (Exception paramCompressInfo)
+        {
+          Logger.b("CompressOperator", " picTypeFactory", paramCompressInfo.getMessage());
+        }
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.CompressOperator
  * JD-Core Version:    0.7.0.1
  */

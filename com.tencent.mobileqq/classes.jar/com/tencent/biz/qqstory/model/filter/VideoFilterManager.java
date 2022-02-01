@@ -32,41 +32,34 @@ public class VideoFilterManager
 {
   public static final String a;
   public static final String b;
-  @GuardedBy("filterItemList")
-  private int jdField_a_of_type_Int = 0;
-  @GuardedBy("filterItemList")
-  private long jdField_a_of_type_Long = 0L;
-  private final Downloader jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloader = new DownloaderImp();
-  @GuardedBy("filterItemList")
-  private FilterItem jdField_a_of_type_ComTencentBizQqstoryModelFilterFilterItem = null;
-  @GuardedBy("get list process")
-  protected final List<FilterItem> a;
-  protected Map<String, PictureFilterConfig> a;
-  @GuardedBy("filterItemList")
-  private Queue<FilterItem> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  @GuardedBy("filterItemList")
-  protected final List<FilterItem> b;
   @GuardedBy("get list process")
   protected String c = "";
+  @GuardedBy("get list process")
+  protected final List<FilterItem> d = new ArrayList();
+  @GuardedBy("filterItemList")
+  protected final List<FilterItem> e = new ArrayList();
+  protected Map<String, PictureFilterConfig> f = new HashMap();
+  private AtomicBoolean g = new AtomicBoolean(false);
+  @GuardedBy("filterItemList")
+  private long h = 0L;
+  @GuardedBy("filterItemList")
+  private int i = 0;
+  private final Downloader j = new DownloaderImp();
+  @GuardedBy("filterItemList")
+  private Queue<FilterItem> k = new LinkedList();
+  @GuardedBy("filterItemList")
+  private FilterItem l = null;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(QQStoryConstant.h);
+    localStringBuilder.append(QQStoryConstant.i);
     localStringBuilder.append("filter");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("list_cache");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  public VideoFilterManager()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    b = localStringBuilder.toString();
   }
   
   public static String a(FilterItem paramFilterItem)
@@ -74,7 +67,7 @@ public class VideoFilterManager
     if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.filterConfigMd5)))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append("/");
       localStringBuilder.append(paramFilterItem.filterConfigMd5);
       return localStringBuilder.toString();
@@ -93,34 +86,78 @@ public class VideoFilterManager
     }
   }
   
+  public static boolean a(String paramString, boolean paramBoolean)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      File localFile = new File(paramString);
+      if ((localFile.exists()) && (localFile.isDirectory()))
+      {
+        localFile = new File(paramString, "config.json");
+        if ((localFile.exists()) && (localFile.isFile())) {
+          return true;
+        }
+        if (paramBoolean) {
+          SLog.d("VideoFilterManager", "remove illegal filter folder : %s", new Object[] { paramString });
+        }
+      }
+    }
+    try
+    {
+      FileUtils.e(paramString);
+      return false;
+    }
+    catch (Exception paramString) {}
+    return false;
+  }
+  
+  public static boolean b(FilterItem paramFilterItem)
+  {
+    return a(a(paramFilterItem), false);
+  }
+  
+  private static String c(FilterItem paramFilterItem)
+  {
+    if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.filterConfigMd5)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a);
+      localStringBuilder.append("/");
+      localStringBuilder.append(paramFilterItem.filterConfigMd5);
+      localStringBuilder.append(".zip");
+      return localStringBuilder.toString();
+    }
+    return null;
+  }
+  
   /* Error */
   @GuardedBy("filterItemList")
-  private boolean a()
+  private boolean f()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
     //   3: aconst_null
     //   4: astore 5
-    //   6: new 31	java/lang/StringBuilder
+    //   6: new 40	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 43	java/lang/StringBuilder:<init>	()V
     //   13: astore_1
     //   14: aload_1
-    //   15: getstatic 55	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   18: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: getstatic 63	com/tencent/biz/qqstory/model/filter/VideoFilterManager:b	Ljava/lang/String;
+    //   18: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: pop
     //   22: aload_1
-    //   23: ldc 111
-    //   25: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: ldc 119
+    //   25: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: pop
     //   29: aload_1
-    //   30: ldc 153
-    //   32: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: ldc 183
+    //   32: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_1
-    //   37: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokestatic 158	com/tencent/biz/qqstory/utils/FileUtils:d	(Ljava/lang/String;)Z
+    //   37: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokestatic 172	com/tencent/biz/qqstory/utils/FileUtils:e	(Ljava/lang/String;)Z
     //   43: pop
     //   44: goto +23 -> 67
     //   47: astore_1
@@ -137,89 +174,89 @@ public class VideoFilterManager
     //   60: aload 5
     //   62: astore 4
     //   64: goto +234 -> 298
-    //   67: new 160	java/io/ByteArrayOutputStream
+    //   67: new 185	java/io/ByteArrayOutputStream
     //   70: dup
     //   71: sipush 4096
-    //   74: invokespecial 163	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   74: invokespecial 188	java/io/ByteArrayOutputStream:<init>	(I)V
     //   77: astore_3
-    //   78: new 165	java/io/ObjectOutputStream
+    //   78: new 190	java/io/ObjectOutputStream
     //   81: dup
     //   82: aload_3
-    //   83: invokespecial 168	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   83: invokespecial 193	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   86: astore_2
     //   87: aload_2
     //   88: aload_0
-    //   89: getfield 75	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_a_of_type_Long	J
-    //   92: invokevirtual 172	java/io/ObjectOutputStream:writeLong	(J)V
+    //   89: getfield 83	com/tencent/biz/qqstory/model/filter/VideoFilterManager:h	J
+    //   92: invokevirtual 197	java/io/ObjectOutputStream:writeLong	(J)V
     //   95: aload_2
     //   96: aload_0
-    //   97: getfield 77	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_a_of_type_Int	I
-    //   100: invokevirtual 175	java/io/ObjectOutputStream:writeInt	(I)V
+    //   97: getfield 85	com/tencent/biz/qqstory/model/filter/VideoFilterManager:i	I
+    //   100: invokevirtual 200	java/io/ObjectOutputStream:writeInt	(I)V
     //   103: aload_2
     //   104: aload_0
-    //   105: getfield 79	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   108: invokevirtual 179	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   105: getfield 87	com/tencent/biz/qqstory/model/filter/VideoFilterManager:e	Ljava/util/List;
+    //   108: invokevirtual 204	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   111: aload_2
-    //   112: invokevirtual 182	java/io/ObjectOutputStream:flush	()V
+    //   112: invokevirtual 207	java/io/ObjectOutputStream:flush	()V
     //   115: aload_2
-    //   116: invokevirtual 185	java/io/ObjectOutputStream:close	()V
-    //   119: new 31	java/lang/StringBuilder
+    //   116: invokevirtual 210	java/io/ObjectOutputStream:close	()V
+    //   119: new 40	java/lang/StringBuilder
     //   122: dup
-    //   123: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   123: invokespecial 43	java/lang/StringBuilder:<init>	()V
     //   126: astore_1
     //   127: aload_1
-    //   128: getstatic 55	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   131: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: getstatic 63	com/tencent/biz/qqstory/model/filter/VideoFilterManager:b	Ljava/lang/String;
+    //   131: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: pop
     //   135: aload_1
-    //   136: ldc 111
-    //   138: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: ldc 119
+    //   138: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: pop
     //   142: aload_1
-    //   143: ldc 153
-    //   145: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: ldc 183
+    //   145: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   148: pop
-    //   149: new 187	java/io/FileOutputStream
+    //   149: new 212	java/io/FileOutputStream
     //   152: dup
     //   153: aload_1
-    //   154: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: invokespecial 188	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   154: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokespecial 213	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   160: astore 5
     //   162: aload_3
     //   163: aload 5
-    //   165: invokevirtual 191	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
+    //   165: invokevirtual 216	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
     //   168: aload_3
-    //   169: invokevirtual 192	java/io/ByteArrayOutputStream:flush	()V
+    //   169: invokevirtual 217	java/io/ByteArrayOutputStream:flush	()V
     //   172: aload_3
-    //   173: invokevirtual 193	java/io/ByteArrayOutputStream:close	()V
+    //   173: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
     //   176: aload 5
-    //   178: invokevirtual 194	java/io/FileOutputStream:close	()V
-    //   181: ldc 122
-    //   183: ldc 196
+    //   178: invokevirtual 219	java/io/FileOutputStream:close	()V
+    //   181: ldc 130
+    //   183: ldc 221
     //   185: aload_0
-    //   186: getfield 79	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   189: invokeinterface 202 1 0
-    //   194: invokestatic 207	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   197: invokestatic 210	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   186: getfield 87	com/tencent/biz/qqstory/model/filter/VideoFilterManager:e	Ljava/util/List;
+    //   189: invokeinterface 227 1 0
+    //   194: invokestatic 232	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   197: invokestatic 235	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
     //   200: aload_3
-    //   201: invokevirtual 193	java/io/ByteArrayOutputStream:close	()V
+    //   201: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
     //   204: goto +8 -> 212
     //   207: astore_1
     //   208: aload_1
-    //   209: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   209: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   212: aload_2
-    //   213: invokevirtual 185	java/io/ObjectOutputStream:close	()V
+    //   213: invokevirtual 210	java/io/ObjectOutputStream:close	()V
     //   216: goto +8 -> 224
     //   219: astore_1
     //   220: aload_1
-    //   221: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   221: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   224: aload 5
-    //   226: invokevirtual 194	java/io/FileOutputStream:close	()V
+    //   226: invokevirtual 219	java/io/FileOutputStream:close	()V
     //   229: iconst_1
     //   230: ireturn
     //   231: astore_1
     //   232: aload_1
-    //   233: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   233: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   236: iconst_1
     //   237: ireturn
     //   238: astore_1
@@ -259,34 +296,34 @@ public class VideoFilterManager
     //   293: astore_2
     //   294: aload 5
     //   296: astore 4
-    //   298: ldc 122
-    //   300: ldc 215
+    //   298: ldc 130
+    //   300: ldc 240
     //   302: aload_1
-    //   303: invokestatic 218	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   303: invokestatic 243	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   306: aload 4
     //   308: ifnull +16 -> 324
     //   311: aload 4
-    //   313: invokevirtual 193	java/io/ByteArrayOutputStream:close	()V
+    //   313: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
     //   316: goto +8 -> 324
     //   319: astore_1
     //   320: aload_1
-    //   321: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   321: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   324: aload_2
     //   325: ifnull +15 -> 340
     //   328: aload_2
-    //   329: invokevirtual 185	java/io/ObjectOutputStream:close	()V
+    //   329: invokevirtual 210	java/io/ObjectOutputStream:close	()V
     //   332: goto +8 -> 340
     //   335: astore_1
     //   336: aload_1
-    //   337: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   337: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   340: aload_3
     //   341: ifnull +15 -> 356
     //   344: aload_3
-    //   345: invokevirtual 194	java/io/FileOutputStream:close	()V
+    //   345: invokevirtual 219	java/io/FileOutputStream:close	()V
     //   348: goto +8 -> 356
     //   351: astore_1
     //   352: aload_1
-    //   353: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   353: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   356: iconst_0
     //   357: ireturn
     //   358: astore 5
@@ -301,27 +338,27 @@ public class VideoFilterManager
     //   371: aload_3
     //   372: ifnull +15 -> 387
     //   375: aload_3
-    //   376: invokevirtual 193	java/io/ByteArrayOutputStream:close	()V
+    //   376: invokevirtual 218	java/io/ByteArrayOutputStream:close	()V
     //   379: goto +8 -> 387
     //   382: astore_3
     //   383: aload_3
-    //   384: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   384: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   387: aload_2
     //   388: ifnull +15 -> 403
     //   391: aload_2
-    //   392: invokevirtual 185	java/io/ObjectOutputStream:close	()V
+    //   392: invokevirtual 210	java/io/ObjectOutputStream:close	()V
     //   395: goto +8 -> 403
     //   398: astore_2
     //   399: aload_2
-    //   400: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   400: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   403: aload 4
     //   405: ifnull +16 -> 421
     //   408: aload 4
-    //   410: invokevirtual 194	java/io/FileOutputStream:close	()V
+    //   410: invokevirtual 219	java/io/FileOutputStream:close	()V
     //   413: goto +8 -> 421
     //   416: astore_2
     //   417: aload_2
-    //   418: invokevirtual 213	java/io/IOException:printStackTrace	()V
+    //   418: invokevirtual 238	java/io/IOException:printStackTrace	()V
     //   421: aload_1
     //   422: athrow
     //   423: astore_1
@@ -380,53 +417,9 @@ public class VideoFilterManager
     //   6	44	423	java/lang/Exception
   }
   
-  public static boolean a(FilterItem paramFilterItem)
-  {
-    return a(a(paramFilterItem), false);
-  }
-  
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      File localFile = new File(paramString);
-      if ((localFile.exists()) && (localFile.isDirectory()))
-      {
-        localFile = new File(paramString, "config.json");
-        if ((localFile.exists()) && (localFile.isFile())) {
-          return true;
-        }
-        if (paramBoolean) {
-          SLog.d("VideoFilterManager", "remove illegal filter folder : %s", new Object[] { paramString });
-        }
-      }
-    }
-    try
-    {
-      FileUtils.d(paramString);
-      return false;
-    }
-    catch (Exception paramString) {}
-    return false;
-  }
-  
-  private static String b(FilterItem paramFilterItem)
-  {
-    if ((paramFilterItem != null) && (!TextUtils.isEmpty(paramFilterItem.filterConfigMd5)))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("/");
-      localStringBuilder.append(paramFilterItem.filterConfigMd5);
-      localStringBuilder.append(".zip");
-      return localStringBuilder.toString();
-    }
-    return null;
-  }
-  
   /* Error */
   @GuardedBy("filterItemList")
-  private boolean b()
+  private boolean g()
   {
     // Byte code:
     //   0: aconst_null
@@ -435,74 +428,74 @@ public class VideoFilterManager
     //   4: astore 4
     //   6: aconst_null
     //   7: astore_3
-    //   8: new 31	java/lang/StringBuilder
+    //   8: new 40	java/lang/StringBuilder
     //   11: dup
-    //   12: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   12: invokespecial 43	java/lang/StringBuilder:<init>	()V
     //   15: astore_2
     //   16: aload_2
-    //   17: getstatic 55	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   20: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: getstatic 63	com/tencent/biz/qqstory/model/filter/VideoFilterManager:b	Ljava/lang/String;
+    //   20: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
     //   24: aload_2
-    //   25: ldc 111
-    //   27: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: ldc 119
+    //   27: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: pop
     //   31: aload_2
-    //   32: ldc 153
-    //   34: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: ldc 183
+    //   34: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: pop
-    //   38: new 239	java/io/ByteArrayInputStream
+    //   38: new 246	java/io/ByteArrayInputStream
     //   41: dup
-    //   42: new 114	java/io/File
+    //   42: new 122	java/io/File
     //   45: dup
     //   46: aload_2
-    //   47: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokespecial 116	java/io/File:<init>	(Ljava/lang/String;)V
-    //   53: invokestatic 242	com/tencent/biz/qqstory/utils/FileUtils:b	(Ljava/io/File;)[B
-    //   56: invokespecial 245	java/io/ByteArrayInputStream:<init>	([B)V
+    //   47: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   50: invokespecial 124	java/io/File:<init>	(Ljava/lang/String;)V
+    //   53: invokestatic 249	com/tencent/biz/qqstory/utils/FileUtils:b	(Ljava/io/File;)[B
+    //   56: invokespecial 252	java/io/ByteArrayInputStream:<init>	([B)V
     //   59: astore_2
-    //   60: new 247	java/io/ObjectInputStream
+    //   60: new 254	java/io/ObjectInputStream
     //   63: dup
     //   64: aload_2
-    //   65: invokespecial 250	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   65: invokespecial 257	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   68: astore_3
     //   69: aload_0
-    //   70: getfield 79	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   73: invokeinterface 253 1 0
+    //   70: getfield 87	com/tencent/biz/qqstory/model/filter/VideoFilterManager:e	Ljava/util/List;
+    //   73: invokeinterface 260 1 0
     //   78: aload_0
     //   79: aload_3
-    //   80: invokevirtual 257	java/io/ObjectInputStream:readLong	()J
-    //   83: putfield 75	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_a_of_type_Long	J
+    //   80: invokevirtual 264	java/io/ObjectInputStream:readLong	()J
+    //   83: putfield 83	com/tencent/biz/qqstory/model/filter/VideoFilterManager:h	J
     //   86: aload_0
     //   87: aload_3
-    //   88: invokevirtual 260	java/io/ObjectInputStream:readInt	()I
-    //   91: putfield 77	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_a_of_type_Int	I
+    //   88: invokevirtual 267	java/io/ObjectInputStream:readInt	()I
+    //   91: putfield 85	com/tencent/biz/qqstory/model/filter/VideoFilterManager:i	I
     //   94: aload_3
-    //   95: invokevirtual 264	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   98: checkcast 198	java/util/List
+    //   95: invokevirtual 271	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   98: checkcast 223	java/util/List
     //   101: astore 4
     //   103: aload 4
     //   105: ifnull +15 -> 120
     //   108: aload_0
-    //   109: getfield 79	com/tencent/biz/qqstory/model/filter/VideoFilterManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   109: getfield 87	com/tencent/biz/qqstory/model/filter/VideoFilterManager:e	Ljava/util/List;
     //   112: aload 4
-    //   114: invokeinterface 268 2 0
+    //   114: invokeinterface 275 2 0
     //   119: pop
     //   120: aload 4
     //   122: ifnull +254 -> 376
     //   125: aload 4
-    //   127: invokeinterface 202 1 0
+    //   127: invokeinterface 227 1 0
     //   132: istore_1
     //   133: goto +3 -> 136
-    //   136: ldc 122
-    //   138: ldc_w 270
+    //   136: ldc 130
+    //   138: ldc_w 277
     //   141: iload_1
-    //   142: invokestatic 207	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   145: invokestatic 210	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   142: invokestatic 232	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   145: invokestatic 235	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
     //   148: aload_2
-    //   149: invokevirtual 271	java/io/ByteArrayInputStream:close	()V
+    //   149: invokevirtual 278	java/io/ByteArrayInputStream:close	()V
     //   152: aload_3
-    //   153: invokevirtual 272	java/io/ObjectInputStream:close	()V
+    //   153: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   156: iconst_1
     //   157: ireturn
     //   158: astore 5
@@ -549,19 +542,19 @@ public class VideoFilterManager
     //   227: astore 4
     //   229: aconst_null
     //   230: astore_2
-    //   231: ldc 122
-    //   233: ldc_w 274
+    //   231: ldc 130
+    //   233: ldc_w 281
     //   236: aload 4
-    //   238: invokestatic 218	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   238: invokestatic 243	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   241: aload_3
     //   242: ifnull +10 -> 252
     //   245: aload_3
-    //   246: invokevirtual 271	java/io/ByteArrayInputStream:close	()V
+    //   246: invokevirtual 278	java/io/ByteArrayInputStream:close	()V
     //   249: goto +3 -> 252
     //   252: aload_2
     //   253: ifnull +55 -> 308
     //   256: aload_2
-    //   257: invokevirtual 272	java/io/ObjectInputStream:close	()V
+    //   257: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   260: iconst_0
     //   261: ireturn
     //   262: astore 5
@@ -574,30 +567,30 @@ public class VideoFilterManager
     //   274: astore 4
     //   276: aload 5
     //   278: astore_3
-    //   279: ldc 122
-    //   281: ldc_w 276
-    //   284: invokestatic 278	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   279: ldc 130
+    //   281: ldc_w 283
+    //   284: invokestatic 285	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   287: aload_3
     //   288: ifnull +10 -> 298
     //   291: aload_3
-    //   292: invokevirtual 271	java/io/ByteArrayInputStream:close	()V
+    //   292: invokevirtual 278	java/io/ByteArrayInputStream:close	()V
     //   295: goto +3 -> 298
     //   298: aload 4
     //   300: ifnull +8 -> 308
     //   303: aload 4
-    //   305: invokevirtual 272	java/io/ObjectInputStream:close	()V
+    //   305: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   308: iconst_0
     //   309: ireturn
     //   310: astore_2
     //   311: aload_3
     //   312: ifnull +10 -> 322
     //   315: aload_3
-    //   316: invokevirtual 271	java/io/ByteArrayInputStream:close	()V
+    //   316: invokevirtual 278	java/io/ByteArrayInputStream:close	()V
     //   319: goto +3 -> 322
     //   322: aload 4
     //   324: ifnull +8 -> 332
     //   327: aload 4
-    //   329: invokevirtual 272	java/io/ObjectInputStream:close	()V
+    //   329: invokevirtual 279	java/io/ObjectInputStream:close	()V
     //   332: aload_2
     //   333: athrow
     //   334: astore_2
@@ -630,7 +623,7 @@ public class VideoFilterManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	381	0	this	VideoFilterManager
-    //   132	246	1	i	int
+    //   132	246	1	m	int
     //   15	194	2	localObject1	Object
     //   213	1	2	localObject2	Object
     //   230	40	2	localObject3	Object
@@ -696,9 +689,9 @@ public class VideoFilterManager
   {
     if ((paramFile.exists()) && (paramFile.isFile()) && (paramFile.canRead()))
     {
-      long l = SystemClock.uptimeMillis();
+      long l1 = SystemClock.uptimeMillis();
       paramFile = (PictureFilterConfig)JsonORM.a(new JSONObject(new String(FileUtils.a(paramFile), "UTF-8")), PictureFilterConfig.class);
-      SLog.a("VideoFilterManager", "parseFilterConfigFile success, cost = %d ms", Long.valueOf(SystemClock.uptimeMillis() - l));
+      SLog.a("VideoFilterManager", "parseFilterConfigFile success, cost = %d ms", Long.valueOf(SystemClock.uptimeMillis() - l1));
       return paramFile;
     }
     SLog.d("VideoFilterManager", "parseFilterConfigFile failed, file is illegal %s", new Object[] { paramFile });
@@ -708,11 +701,11 @@ public class VideoFilterManager
   public void a()
   {
     SLog.d("VideoFilterManager", "onInit");
-    a(jdField_a_of_type_JavaLangString);
-    a(jdField_b_of_type_JavaLangString);
-    synchronized (this.jdField_b_of_type_JavaUtilList)
+    a(a);
+    a(b);
+    synchronized (this.e)
     {
-      b();
+      g();
       return;
     }
   }
@@ -721,29 +714,29 @@ public class VideoFilterManager
   protected void a(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean) {
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      synchronized (this.e)
       {
-        SLog.a("VideoFilterManager", "fireGetFilterListFinish, filter count %d -> %d", Integer.valueOf(this.jdField_b_of_type_JavaUtilList.size()), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-        this.jdField_b_of_type_JavaUtilList.clear();
-        this.jdField_b_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_Int = paramInt;
-        a();
-        this.jdField_a_of_type_JavaUtilQueue.clear();
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        SLog.a("VideoFilterManager", "fireGetFilterListFinish, filter count %d -> %d", Integer.valueOf(this.e.size()), Integer.valueOf(this.d.size()));
+        this.e.clear();
+        this.e.addAll(this.d);
+        this.h = System.currentTimeMillis();
+        this.i = paramInt;
+        f();
+        this.k.clear();
+        Iterator localIterator = this.e.iterator();
         while (localIterator.hasNext())
         {
           FilterItem localFilterItem = (FilterItem)localIterator.next();
-          if ((!localFilterItem.isLocalType()) && (!a(localFilterItem))) {
-            this.jdField_a_of_type_JavaUtilQueue.offer(localFilterItem);
+          if ((!localFilterItem.isLocalType()) && (!b(localFilterItem))) {
+            this.k.offer(localFilterItem);
           }
         }
-        SLog.a("VideoFilterManager", "fireGetFilterListFinish, download pending list size = %d", Integer.valueOf(this.jdField_a_of_type_JavaUtilQueue.size()));
+        SLog.a("VideoFilterManager", "fireGetFilterListFinish, download pending list size = %d", Integer.valueOf(this.k.size()));
         d();
       }
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.d.clear();
+    this.g.set(false);
   }
   
   public void b()
@@ -763,16 +756,16 @@ public class VideoFilterManager
   {
     for (;;)
     {
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      synchronized (this.e)
       {
-        if (this.jdField_a_of_type_ComTencentBizQqstoryModelFilterFilterItem == null)
+        if (this.l == null)
         {
-          FilterItem localFilterItem = (FilterItem)this.jdField_a_of_type_JavaUtilQueue.poll();
-          this.jdField_a_of_type_ComTencentBizQqstoryModelFilterFilterItem = localFilterItem;
+          FilterItem localFilterItem = (FilterItem)this.k.poll();
+          this.l = localFilterItem;
           if (localFilterItem != null)
           {
             SLog.d("VideoFilterManager", "start to download filter resource : %s", new Object[] { localFilterItem });
-            new VideoFilterManager.1(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloader).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(localFilterItem.filterConfigUrl, b(localFilterItem), localFilterItem.filterConfigMd5) });
+            new VideoFilterManager.1(this, this.j).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(localFilterItem.filterConfigUrl, c(localFilterItem), localFilterItem.filterConfigMd5) });
           }
           return;
         }
@@ -783,21 +776,21 @@ public class VideoFilterManager
   
   public void e()
   {
-    synchronized (this.jdField_b_of_type_JavaUtilList)
+    synchronized (this.e)
     {
-      SLog.a("VideoFilterManager", "trimMemory, download pending list %d", Integer.valueOf(this.jdField_a_of_type_JavaUtilQueue.size()));
-      this.jdField_a_of_type_JavaUtilQueue.clear();
-      SLog.a("VideoFilterManager", "trimMemory, filter list %d", Integer.valueOf(this.jdField_b_of_type_JavaUtilList.size()));
-      this.jdField_b_of_type_JavaUtilList.clear();
-      SLog.a("VideoFilterManager", "trimMemory, picture config cache %d", Integer.valueOf(this.jdField_a_of_type_JavaUtilMap.size()));
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      SLog.a("VideoFilterManager", "trimMemory, download pending list %d", Integer.valueOf(this.k.size()));
+      this.k.clear();
+      SLog.a("VideoFilterManager", "trimMemory, filter list %d", Integer.valueOf(this.e.size()));
+      this.e.clear();
+      SLog.a("VideoFilterManager", "trimMemory, picture config cache %d", Integer.valueOf(this.f.size()));
+      this.f.clear();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.filter.VideoFilterManager
  * JD-Core Version:    0.7.0.1
  */

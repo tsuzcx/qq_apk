@@ -36,7 +36,7 @@ public class ExpandServlet
       localObject = null;
     }
     if (localObject != null) {
-      ((ExpandManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a().a(paramIntent, paramFromServiceMsg);
+      ((ExpandManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).p().a(paramIntent, paramFromServiceMsg);
     }
   }
   
@@ -60,7 +60,7 @@ public class ExpandServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.ExpandServlet
  * JD-Core Version:    0.7.0.1
  */

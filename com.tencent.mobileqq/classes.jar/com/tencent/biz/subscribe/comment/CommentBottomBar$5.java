@@ -26,16 +26,16 @@ class CommentBottomBar$5
     if ((paramBoolean) && (paramLong == 0L) && (paramStDoLikeRsp != null))
     {
       if (paramStDoLikeRsp.like.status.get() == 1) {
-        i = CommentBottomBar.a(this.a).likeInfo.count.get() + 1;
+        i = CommentBottomBar.f(this.a).likeInfo.count.get() + 1;
       } else {
-        i = CommentBottomBar.a(this.a).likeInfo.count.get() - 1;
+        i = CommentBottomBar.f(this.a).likeInfo.count.get() - 1;
       }
-      if (CommentBottomBar.a(this.a) != null)
+      if (CommentBottomBar.f(this.a) != null)
       {
-        CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
-        CommentBottomBar.a(this.a).likeInfo.count.set(i);
+        CommentBottomBar.f(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
+        CommentBottomBar.f(this.a).likeInfo.count.set(i);
       }
-      SimpleEventBus.getInstance().dispatchEvent(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
+      SimpleEventBus.getInstance().dispatchEvent(new PraisedUpdateEvents(CommentBottomBar.f(this.a).id.get(), paramStDoLikeRsp.like.status.get(), i));
       int i = j;
       if (BaseApplicationImpl.sProcessId == 1) {
         i = 1;
@@ -43,14 +43,14 @@ class CommentBottomBar$5
       if (i == 0)
       {
         paramBaseRequest = new Bundle();
-        paramBaseRequest.putString("feed_id", CommentBottomBar.a(this.a).id.get());
+        paramBaseRequest.putString("feed_id", CommentBottomBar.f(this.a).id.get());
         paramBaseRequest.putInt("feed_like_status", paramStDoLikeRsp.like.status.get());
         paramBaseRequest.putInt("feed_like_num", paramStDoLikeRsp.like.count.get());
         QIPCClientHelper.getInstance().callServer(SimpleEventBus.IPC_SERVICE_MODULE_NAME, SimpleEventBus.ACTION_PRAISED_UPDATE, paramBaseRequest, null);
       }
       return;
     }
-    QQToast.a(this.a.getContext(), 1, paramString, 0).a();
+    QQToast.makeText(this.a.getContext(), 1, paramString, 0).show();
   }
 }
 

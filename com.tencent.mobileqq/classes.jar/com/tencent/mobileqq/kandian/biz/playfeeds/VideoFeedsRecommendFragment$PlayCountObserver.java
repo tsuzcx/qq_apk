@@ -23,18 +23,18 @@ class VideoFeedsRecommendFragment$PlayCountObserver
       if (localObject == null) {
         return;
       }
-      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
+      localObject = VideoFeedsRecommendFragment.d(this.a).c((String)localObject);
       if (localObject != null)
       {
-        ((VideoInfo)localObject).q = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-        VideoFeedsRecommendFragment.a(this.a).a((VideoInfo)localObject);
+        ((VideoInfo)localObject).aj = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
+        VideoFeedsRecommendFragment.d(this.a).a((VideoInfo)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.PlayCountObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -17,21 +17,16 @@ import java.util.List;
 public class UpdateCollectionViewCountRequest
   extends NetworkRequest<UpdateCollectionViewCountResponse>
 {
-  public static final String a;
-  public List<UpdateCollectionViewCountHandler.CollectionID> a;
-  public String b;
+  public static final String e = StoryApi.a("StorySvc.get_colleciton_view_count");
+  public String f;
+  public List<UpdateCollectionViewCountHandler.CollectionID> g = new ArrayList();
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.get_colleciton_view_count");
+    return e;
   }
   
-  public UpdateCollectionViewCountRequest()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspCollectionViewCount localRspCollectionViewCount = new qqstory_service.RspCollectionViewCount();
     try
@@ -42,18 +37,13 @@ public class UpdateCollectionViewCountRequest
     {
       SLog.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
     }
-    return new UpdateCollectionViewCountResponse(this.b, localRspCollectionViewCount);
+    return new UpdateCollectionViewCountResponse(this.f, localRspCollectionViewCount);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext())
     {
       UpdateCollectionViewCountHandler.CollectionID localCollectionID = (UpdateCollectionViewCountHandler.CollectionID)localIterator.next();
@@ -66,14 +56,14 @@ public class UpdateCollectionViewCountRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UpdateCollectionViewCountRequest{mIdList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.UpdateCollectionViewCountRequest
  * JD-Core Version:    0.7.0.1
  */

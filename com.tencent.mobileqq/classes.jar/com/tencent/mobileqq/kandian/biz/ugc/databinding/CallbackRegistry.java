@@ -6,39 +6,15 @@ import java.util.List;
 public class CallbackRegistry<C, T, A>
   implements Cloneable
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private final CallbackRegistry.NotifierCallback<C, T, A> jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingCallbackRegistry$NotifierCallback;
-  private List<C> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private long[] jdField_a_of_type_ArrayOfLong;
+  private List<C> a = new ArrayList();
+  private long b = 0L;
+  private long[] c;
+  private int d;
+  private final CallbackRegistry.NotifierCallback<C, T, A> e;
   
   public CallbackRegistry(CallbackRegistry.NotifierCallback<C, T, A> paramNotifierCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingCallbackRegistry$NotifierCallback = paramNotifierCallback;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (paramInt < 64)
-    {
-      this.jdField_a_of_type_Long = (1L << paramInt | this.jdField_a_of_type_Long);
-      return;
-    }
-    int i = paramInt / 64 - 1;
-    long[] arrayOfLong1 = this.jdField_a_of_type_ArrayOfLong;
-    if (arrayOfLong1 == null)
-    {
-      this.jdField_a_of_type_ArrayOfLong = new long[this.jdField_a_of_type_JavaUtilList.size() / 64];
-    }
-    else if (arrayOfLong1.length < i)
-    {
-      arrayOfLong1 = new long[this.jdField_a_of_type_JavaUtilList.size() / 64];
-      long[] arrayOfLong2 = this.jdField_a_of_type_ArrayOfLong;
-      System.arraycopy(arrayOfLong2, 0, arrayOfLong1, 0, arrayOfLong2.length);
-      this.jdField_a_of_type_ArrayOfLong = arrayOfLong1;
-    }
-    arrayOfLong1 = this.jdField_a_of_type_ArrayOfLong;
-    arrayOfLong1[i] = (1L << paramInt % 64 | arrayOfLong1[i]);
+    this.e = paramNotifierCallback;
   }
   
   private void a(int paramInt, long paramLong)
@@ -48,7 +24,7 @@ public class CallbackRegistry<C, T, A>
     while (i >= paramInt)
     {
       if ((paramLong & l) != 0L) {
-        this.jdField_a_of_type_JavaUtilList.remove(i);
+        this.a.remove(i);
       }
       l >>>= 1;
       i -= 1;
@@ -62,9 +38,9 @@ public class CallbackRegistry<C, T, A>
       b(paramT, paramInt1, paramA);
       return;
     }
-    long l = this.jdField_a_of_type_ArrayOfLong[paramInt2];
+    long l = this.c[paramInt2];
     int i = (paramInt2 + 1) * 64;
-    int j = Math.min(this.jdField_a_of_type_JavaUtilList.size(), i + 64);
+    int j = Math.min(this.a.size(), i + 64);
     a(paramT, paramInt1, paramA, paramInt2 - 1);
     a(paramT, paramInt1, paramA, i, j, l);
   }
@@ -75,7 +51,7 @@ public class CallbackRegistry<C, T, A>
     while (paramInt2 < paramInt3)
     {
       if ((paramLong & l) == 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcDatabindingCallbackRegistry$NotifierCallback.a(this.jdField_a_of_type_JavaUtilList.get(paramInt2), paramT, paramInt1, paramA);
+        this.e.a(this.a.get(paramInt2), paramT, paramInt1, paramA);
       }
       l <<= 1;
       paramInt2 += 1;
@@ -85,9 +61,9 @@ public class CallbackRegistry<C, T, A>
   private boolean a(int paramInt)
   {
     if (paramInt < 64) {
-      return (1L << paramInt & this.jdField_a_of_type_Long) != 0L;
+      return (1L << paramInt & this.b) != 0L;
     }
-    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    long[] arrayOfLong = this.c;
     if (arrayOfLong == null) {
       return false;
     }
@@ -98,15 +74,39 @@ public class CallbackRegistry<C, T, A>
     return (1L << paramInt % 64 & arrayOfLong[i]) != 0L;
   }
   
+  private void b(int paramInt)
+  {
+    if (paramInt < 64)
+    {
+      this.b = (1L << paramInt | this.b);
+      return;
+    }
+    int i = paramInt / 64 - 1;
+    long[] arrayOfLong1 = this.c;
+    if (arrayOfLong1 == null)
+    {
+      this.c = new long[this.a.size() / 64];
+    }
+    else if (arrayOfLong1.length < i)
+    {
+      arrayOfLong1 = new long[this.a.size() / 64];
+      long[] arrayOfLong2 = this.c;
+      System.arraycopy(arrayOfLong2, 0, arrayOfLong1, 0, arrayOfLong2.length);
+      this.c = arrayOfLong1;
+    }
+    arrayOfLong1 = this.c;
+    arrayOfLong1[i] = (1L << paramInt % 64 | arrayOfLong1[i]);
+  }
+  
   private void b(T paramT, int paramInt, A paramA)
   {
-    a(paramT, paramInt, paramA, 0, Math.min(64, this.jdField_a_of_type_JavaUtilList.size()), this.jdField_a_of_type_Long);
+    a(paramT, paramInt, paramA, 0, Math.min(64, this.a.size()), this.b);
   }
   
   private void c(T paramT, int paramInt, A paramA)
   {
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    int j = this.a.size();
+    long[] arrayOfLong = this.c;
     int i;
     if (arrayOfLong == null) {
       i = -1;
@@ -124,28 +124,28 @@ public class CallbackRegistry<C, T, A>
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 90	java/lang/Object:clone	()Ljava/lang/Object;
+    //   3: invokespecial 92	java/lang/Object:clone	()Ljava/lang/Object;
     //   6: checkcast 2	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry
     //   9: astore_3
     //   10: aload_3
     //   11: lconst_0
-    //   12: putfield 27	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:jdField_a_of_type_Long	J
+    //   12: putfield 31	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:b	J
     //   15: aload_3
     //   16: aconst_null
-    //   17: putfield 35	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:jdField_a_of_type_ArrayOfLong	[J
+    //   17: putfield 51	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:c	[J
     //   20: iconst_0
     //   21: istore_1
     //   22: aload_3
     //   23: iconst_0
-    //   24: putfield 92	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:jdField_a_of_type_Int	I
+    //   24: putfield 94	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:d	I
     //   27: aload_3
-    //   28: new 22	java/util/ArrayList
+    //   28: new 26	java/util/ArrayList
     //   31: dup
-    //   32: invokespecial 23	java/util/ArrayList:<init>	()V
-    //   35: putfield 25	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   32: invokespecial 27	java/util/ArrayList:<init>	()V
+    //   35: putfield 29	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:a	Ljava/util/List;
     //   38: aload_0
-    //   39: getfield 25	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   42: invokeinterface 41 1 0
+    //   39: getfield 29	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:a	Ljava/util/List;
+    //   42: invokeinterface 55 1 0
     //   47: istore_2
     //   48: aload_3
     //   49: astore 4
@@ -154,15 +154,15 @@ public class CallbackRegistry<C, T, A>
     //   53: if_icmpge +59 -> 112
     //   56: aload_0
     //   57: iload_1
-    //   58: invokespecial 94	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:a	(I)Z
+    //   58: invokespecial 96	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:a	(I)Z
     //   61: ifne +23 -> 84
     //   64: aload_3
-    //   65: getfield 25	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   65: getfield 29	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:a	Ljava/util/List;
     //   68: aload_0
-    //   69: getfield 25	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   69: getfield 29	com/tencent/mobileqq/kandian/biz/ugc/databinding/CallbackRegistry:a	Ljava/util/List;
     //   72: iload_1
-    //   73: invokeinterface 74 2 0
-    //   78: invokeinterface 98 2 0
+    //   73: invokeinterface 70 2 0
+    //   78: invokeinterface 100 2 0
     //   83: pop
     //   84: iload_1
     //   85: iconst_1
@@ -177,7 +177,7 @@ public class CallbackRegistry<C, T, A>
     //   102: aconst_null
     //   103: astore_3
     //   104: aload 4
-    //   106: invokevirtual 101	java/lang/CloneNotSupportedException:printStackTrace	()V
+    //   106: invokevirtual 103	java/lang/CloneNotSupportedException:printStackTrace	()V
     //   109: aload_3
     //   110: astore 4
     //   112: aload_0
@@ -220,9 +220,9 @@ public class CallbackRegistry<C, T, A>
     if (paramC != null) {
       try
       {
-        int i = this.jdField_a_of_type_JavaUtilList.lastIndexOf(paramC);
+        int i = this.a.lastIndexOf(paramC);
         if ((i < 0) || (a(i))) {
-          this.jdField_a_of_type_JavaUtilList.add(paramC);
+          this.a.add(paramC);
         }
         return;
       }
@@ -240,29 +240,29 @@ public class CallbackRegistry<C, T, A>
   {
     try
     {
-      this.jdField_a_of_type_Int += 1;
+      this.d += 1;
       c(paramT, paramInt, paramA);
-      this.jdField_a_of_type_Int -= 1;
-      if (this.jdField_a_of_type_Int == 0)
+      this.d -= 1;
+      if (this.d == 0)
       {
-        if (this.jdField_a_of_type_ArrayOfLong != null)
+        if (this.c != null)
         {
-          paramInt = this.jdField_a_of_type_ArrayOfLong.length - 1;
+          paramInt = this.c.length - 1;
           if (paramInt >= 0)
           {
-            long l = this.jdField_a_of_type_ArrayOfLong[paramInt];
+            long l = this.c[paramInt];
             if (l == 0L) {
               break label129;
             }
             a((paramInt + 1) * 64, l);
-            this.jdField_a_of_type_ArrayOfLong[paramInt] = 0L;
+            this.c[paramInt] = 0L;
             break label129;
           }
         }
-        if (this.jdField_a_of_type_Long != 0L)
+        if (this.b != 0L)
         {
-          a(0, this.jdField_a_of_type_Long);
-          this.jdField_a_of_type_Long = 0L;
+          a(0, this.b);
+          this.b = 0L;
         }
       }
       return;
@@ -285,15 +285,15 @@ public class CallbackRegistry<C, T, A>
   {
     try
     {
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.d == 0)
       {
-        this.jdField_a_of_type_JavaUtilList.remove(paramC);
+        this.a.remove(paramC);
       }
       else
       {
-        int i = this.jdField_a_of_type_JavaUtilList.lastIndexOf(paramC);
+        int i = this.a.lastIndexOf(paramC);
         if (i >= 0) {
-          a(i);
+          b(i);
         }
       }
       return;
@@ -303,7 +303,7 @@ public class CallbackRegistry<C, T, A>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.databinding.CallbackRegistry
  * JD-Core Version:    0.7.0.1
  */

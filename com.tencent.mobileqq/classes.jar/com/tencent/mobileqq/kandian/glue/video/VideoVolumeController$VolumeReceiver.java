@@ -58,7 +58,8 @@ class VideoVolumeController$VolumeReceiver
             QLog.d("VideoVolumeController", 2, "volume change shield ");
             return;
           }
-          paramContext = VideoVolumeController.access$800(this.a).iterator();
+          VideoVolumeController.access$802(this.a, true);
+          paramContext = VideoVolumeController.access$900(this.a).iterator();
           while (paramContext.hasNext()) {
             ((IVideoVolumeController.EventListener)paramContext.next()).onSystemVolumeChanged(i);
           }
@@ -66,17 +67,17 @@ class VideoVolumeController$VolumeReceiver
         if (paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"))
         {
           boolean bool = VideoVolumeController.access$300(this.a).isWiredHeadsetOn();
-          if (VideoVolumeController.access$900(this.a))
+          if (VideoVolumeController.access$1000(this.a))
           {
-            VideoVolumeController.access$902(this.a, false);
+            VideoVolumeController.access$1002(this.a, false);
             return;
           }
           VideoVolumeController.access$702(this.a, true);
-          paramContext = VideoVolumeController.access$800(this.a).iterator();
+          paramContext = VideoVolumeController.access$900(this.a).iterator();
           while (paramContext.hasNext()) {
             ((IVideoVolumeController.EventListener)paramContext.next()).onHeadsetStateChanged(bool);
           }
-          VideoVolumeController.access$1000(this.a).postDelayed(new VideoVolumeController.VolumeReceiver.1(this), 200L);
+          VideoVolumeController.access$1100(this.a).postDelayed(new VideoVolumeController.VolumeReceiver.1(this), 200L);
           return;
         }
       }
@@ -89,7 +90,7 @@ class VideoVolumeController$VolumeReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoVolumeController.VolumeReceiver
  * JD-Core Version:    0.7.0.1
  */

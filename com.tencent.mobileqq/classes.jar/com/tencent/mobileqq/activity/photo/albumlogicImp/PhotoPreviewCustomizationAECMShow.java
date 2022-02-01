@@ -21,18 +21,18 @@ public class PhotoPreviewCustomizationAECMShow
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size() > 0)
+    if (this.f.selectedPhotoList.size() > 0)
     {
-      a().a.setEnabled(true);
+      s().l.setEnabled(true);
       return;
     }
-    a().a.setEnabled(false);
+    s().l.setEnabled(false);
   }
   
   public void a()
   {
     super.a();
-    a().a.setOnClickListener(new PhotoPreviewCustomizationAECMShow.1(this));
+    s().l.setOnClickListener(new PhotoPreviewCustomizationAECMShow.1(this));
     d();
   }
   
@@ -48,15 +48,15 @@ public class PhotoPreviewCustomizationAECMShow
     d();
   }
   
-  public void g()
+  public void i()
   {
     ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportCmShowPhotoPreviewClickBackBtn();
-    super.g();
+    super.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationAECMShow
  * JD-Core Version:    0.7.0.1
  */

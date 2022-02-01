@@ -15,8 +15,8 @@ class AEFilterManager$4
     localStringBuilder.append("OnAssetProcessing: ");
     localStringBuilder.append(paramHashMap);
     Log.d("AEFilterManager", localStringBuilder.toString());
-    if (AEFilterManager.access$500(this.this$0) != null) {
-      AEFilterManager.access$500(this.this$0).OnAssetProcessing(paramHashMap);
+    if (AEFilterManager.access$600(this.this$0) != null) {
+      AEFilterManager.access$600(this.this$0).OnAssetProcessing(paramHashMap);
     }
   }
   
@@ -26,8 +26,8 @@ class AEFilterManager$4
     localStringBuilder.append("OnLoadAssetError: ");
     localStringBuilder.append(paramInt);
     Log.d("AEFilterManager", localStringBuilder.toString());
-    if (AEFilterManager.access$500(this.this$0) != null) {
-      AEFilterManager.access$500(this.this$0).OnLoadAssetError(paramInt);
+    if (AEFilterManager.access$600(this.this$0) != null) {
+      AEFilterManager.access$600(this.this$0).OnLoadAssetError(paramInt);
     }
   }
 }

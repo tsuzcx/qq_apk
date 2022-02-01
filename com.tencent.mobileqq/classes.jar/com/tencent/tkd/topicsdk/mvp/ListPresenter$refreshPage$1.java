@@ -1,6 +1,6 @@
 package com.tencent.tkd.topicsdk.mvp;
 
-import com.tencent.tkd.topicsdk.framework.TLog;
+import android.util.Log;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.Unit;
@@ -37,14 +37,14 @@ final class ListPresenter$refreshPage$1
       paramList.append(paramInt2);
       paramList.append(", errorMsg= ");
       paramList.append(paramString);
-      TLog.a("ListPresenter", paramList.toString());
+      Log.i("ListPresenter", paramList.toString());
       localIListView.setHeaderError(paramInt2, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mvp.ListPresenter.refreshPage.1
  * JD-Core Version:    0.7.0.1
  */

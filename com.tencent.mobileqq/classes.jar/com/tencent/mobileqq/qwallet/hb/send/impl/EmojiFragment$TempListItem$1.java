@@ -10,14 +10,14 @@ class EmojiFragment$TempListItem$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TempListItem.a.d = 0;
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TempListItem.a.a.addHbUploadData("phiz.wrappacket.choosephiz");
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TempListItem.a.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TemplateInfo, EmojiFragment.TempListItem.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplEmojiFragment$TempListItem));
+    this.b.a.t = 0;
+    this.b.a.f.addHbUploadData("phiz.wrappacket.choosephiz");
+    this.b.a.a(this.a, EmojiFragment.TempListItem.a(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.EmojiFragment.TempListItem.1
  * JD-Core Version:    0.7.0.1
  */

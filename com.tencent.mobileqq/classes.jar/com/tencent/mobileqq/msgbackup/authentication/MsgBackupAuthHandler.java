@@ -95,7 +95,7 @@ public class MsgBackupAuthHandler
         if (((oidb_cmd0xcde.GetDecryptKeyRsp)localObject2).dncrypt_key.has())
         {
           localObject2 = ((oidb_cmd0xcde.GetDecryptKeyRsp)localObject2).dncrypt_key.get().toStringUtf8();
-          MsgBackupManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
+          MsgBackupManager.e.put(paramString, localObject2);
           if (QLog.isDevelopLevel())
           {
             paramString = new StringBuilder();
@@ -290,7 +290,7 @@ public class MsgBackupAuthHandler
         if (paramOIDBSSOPkg.encrypt_key.has())
         {
           localObject2 = paramOIDBSSOPkg.encrypt_key.get().toStringUtf8();
-          MsgBackupManager.b = (String)localObject2;
+          MsgBackupManager.c = (String)localObject2;
           if (QLog.isDevelopLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -306,7 +306,7 @@ public class MsgBackupAuthHandler
         if (paramOIDBSSOPkg.file_meta.has())
         {
           paramOIDBSSOPkg = paramOIDBSSOPkg.file_meta.get().toStringUtf8();
-          MsgBackupManager.jdField_a_of_type_JavaLangString = paramOIDBSSOPkg;
+          MsgBackupManager.b = paramOIDBSSOPkg;
           if (QLog.isDevelopLevel())
           {
             localObject2 = new StringBuilder();
@@ -393,16 +393,16 @@ public class MsgBackupAuthHandler
           QLog.d("MsgBackup.MsgBackupAuthHandler", 2, ((StringBuilder)localObject2).toString());
         }
         MsgBackupReporter.a();
-        MsgBackupReporter.a.a = true;
-        MsgBackupReporter.a.c = 0;
+        MsgBackupReporter.a.c = true;
+        MsgBackupReporter.a.d = 0;
         notifyUI(2, true, paramOIDBSSOPkg);
       }
     }
     else
     {
       MsgBackupReporter.a();
-      MsgBackupReporter.a.a = false;
-      MsgBackupReporter.a.c = i;
+      MsgBackupReporter.a.c = false;
+      MsgBackupReporter.a.d = i;
       notifyUI(2, false, Integer.valueOf(i));
     }
   }
@@ -472,16 +472,16 @@ public class MsgBackupAuthHandler
           QLog.d("MsgBackup.MsgBackupAuthHandler", 2, ((StringBuilder)localObject2).toString());
         }
         MsgBackupReporter.a();
-        MsgBackupReporter.a.a = true;
-        MsgBackupReporter.a.c = 0;
+        MsgBackupReporter.a.c = true;
+        MsgBackupReporter.a.d = 0;
         notifyUI(1, true, paramOIDBSSOPkg);
       }
     }
     else
     {
       MsgBackupReporter.a();
-      MsgBackupReporter.a.a = false;
-      MsgBackupReporter.a.c = i;
+      MsgBackupReporter.a.c = false;
+      MsgBackupReporter.a.d = i;
       notifyUI(1, false, Integer.valueOf(i));
     }
   }
@@ -535,20 +535,20 @@ public class MsgBackupAuthHandler
     localGetQrReq.push.set(paramBoolean);
     oidb_cmd0xcdd.UserData localUserData = new oidb_cmd0xcdd.UserData();
     localUserData.ip.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.a()));
-    localUserData.port.set(paramMsgBackupUserData.a());
-    Object localObject = paramMsgBackupUserData.b();
+    localUserData.port.set(paramMsgBackupUserData.b());
+    Object localObject = paramMsgBackupUserData.c();
     PBBytesField localPBBytesField = localUserData.ssid;
     if (localObject == null) {
       localObject = "";
     }
     localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
-    localObject = paramMsgBackupUserData.c();
+    localObject = paramMsgBackupUserData.d();
     localPBBytesField = localUserData.bssid;
     if (localObject == null) {
       localObject = "";
     }
     localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
-    localUserData.platform.set(paramMsgBackupUserData.a());
+    localUserData.platform.set(paramMsgBackupUserData.e());
     localGetQrReq.user_data.set(localUserData);
     localGetQrReq.biz_type.set(paramInt);
     localReqBody.get_qr_req.set(localGetQrReq);
@@ -570,14 +570,14 @@ public class MsgBackupAuthHandler
     localConfirmQrReq.qr_sig.set(ByteStringMicro.copyFromUtf8(paramString));
     paramString = new oidb_cmd0xcdd.UserData();
     paramString.ip.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.a()));
-    paramString.port.set(paramMsgBackupUserData.a());
-    if (paramMsgBackupUserData.b() != null) {
-      paramString.ssid.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.b()));
-    }
+    paramString.port.set(paramMsgBackupUserData.b());
     if (paramMsgBackupUserData.c() != null) {
-      paramString.bssid.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.c()));
+      paramString.ssid.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.c()));
     }
-    paramString.platform.set(paramMsgBackupUserData.a());
+    if (paramMsgBackupUserData.d() != null) {
+      paramString.bssid.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.d()));
+    }
+    paramString.platform.set(paramMsgBackupUserData.e());
     localConfirmQrReq.user_data.set(paramString);
     localConfirmQrReq.biz_type.set(paramInt);
     localReqBody.confirm_qr_req.set(localConfirmQrReq);
@@ -779,7 +779,7 @@ public class MsgBackupAuthHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthHandler
  * JD-Core Version:    0.7.0.1
  */

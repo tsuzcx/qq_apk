@@ -10,17 +10,17 @@ public final class XALottieView$Companion
   @Nullable
   public final MQLruCache<String, Object> a()
   {
-    return XALottieView.a();
+    return XALottieView.access$getMqLruCache$cp();
   }
   
   public final void a(@Nullable MQLruCache<String, Object> paramMQLruCache)
   {
-    XALottieView.a(paramMQLruCache);
+    XALottieView.access$setMqLruCache$cp(paramMQLruCache);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.XALottieView.Companion
  * JD-Core Version:    0.7.0.1
  */

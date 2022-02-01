@@ -24,14 +24,14 @@ public class IdentifierWebJumpAction
   {
     try
     {
-      String str = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
-      if ((!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("appid"))) && (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openid"))))
+      String str = h((String)this.f.get("url"));
+      if ((!TextUtils.isEmpty((CharSequence)this.f.get("appid"))) && (!TextUtils.isEmpty((CharSequence)this.f.get("openid"))))
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", "", "0X80097E8", "0X80097E8", 0, 0, "", "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid"), "");
+        ReportController.b(this.a, "dc00898", "", "", "0X80097E8", "0X80097E8", 0, 0, "", "", (String)this.f.get("appid"), "");
         ((IIdentificationApi)QRoute.api(IIdentificationApi.class)).preResDownload();
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localObject = new Intent(this.b, QQBrowserActivity.class);
         ((Intent)localObject).putExtra("url", str);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+        this.b.startActivity((Intent)localObject);
         return true;
       }
       QLog.e("IdentifierWebJumpAction", 1, "identification with illegal params");
@@ -43,14 +43,14 @@ public class IdentifierWebJumpAction
       ((StringBuilder)localObject).append("doAction error: ");
       ((StringBuilder)localObject).append(localException.getMessage());
       QLog.e("IdentifierWebJumpAction", 1, ((StringBuilder)localObject).toString());
-      b_("IdentifierWebJumpAction");
+      h_("IdentifierWebJumpAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.IdentifierWebJumpAction
  * JD-Core Version:    0.7.0.1
  */

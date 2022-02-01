@@ -8,19 +8,14 @@ import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
 public class GdtActionReporter$Params
 {
   public Ad a;
-  public landing_page_collect_data.LandingPageCollectData a;
-  
-  public GdtActionReporter$Params()
-  {
-    this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData = new landing_page_collect_data.LandingPageCollectData();
-  }
+  public landing_page_collect_data.LandingPageCollectData b = new landing_page_collect_data.LandingPageCollectData();
   
   public boolean a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAdTangramAd;
-    if ((localObject != null) && (!TextUtils.isEmpty(((Ad)localObject).getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAdTangramAd.getTraceId())))
+    Object localObject = this.a;
+    if ((localObject != null) && (!TextUtils.isEmpty(((Ad)localObject).getUrlForAction())) && (!TextUtils.isEmpty(this.a.getTraceId())))
     {
-      localObject = this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData;
+      localObject = this.b;
       if ((localObject != null) && (((landing_page_collect_data.LandingPageCollectData)localObject).landing_page_action_type.has())) {
         return true;
       }
@@ -30,7 +25,7 @@ public class GdtActionReporter$Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtActionReporter.Params
  * JD-Core Version:    0.7.0.1
  */

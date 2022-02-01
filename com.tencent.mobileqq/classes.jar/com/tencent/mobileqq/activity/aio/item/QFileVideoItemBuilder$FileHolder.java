@@ -7,12 +7,12 @@ import com.tencent.mobileqq.widget.MessageProgressView;
 public class QFileVideoItemBuilder$FileHolder
   extends QFileItemBuilder.QFileBaseHolder
 {
-  public RelativeLayout a;
   public BubbleImageView a;
-  public MessageProgressView a;
-  public RelativeLayout b;
+  public MessageProgressView b;
+  public RelativeLayout c;
+  public int d;
   public int e;
-  public int f;
+  public RelativeLayout f;
   
   public QFileVideoItemBuilder$FileHolder(QFileVideoItemBuilder paramQFileVideoItemBuilder)
   {
@@ -21,7 +21,7 @@ public class QFileVideoItemBuilder$FileHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QFileVideoItemBuilder.FileHolder
  * JD-Core Version:    0.7.0.1
  */

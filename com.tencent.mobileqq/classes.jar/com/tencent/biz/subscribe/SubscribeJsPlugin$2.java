@@ -22,8 +22,8 @@ class SubscribeJsPlugin$2
         try
         {
           String str1 = this.a.getJSONObject(i).getString("uin");
-          Bitmap localBitmap = SubscribeJsPlugin.a(this.this$0).a(str1, true, null);
-          String str2 = this.this$0.TAG;
+          Bitmap localBitmap = SubscribeJsPlugin.b(this.this$0).a(str1, true, null);
+          String str2 = this.this$0.mTAG;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("handleGetAvatar  uin: ");
           localStringBuilder.append(str1);

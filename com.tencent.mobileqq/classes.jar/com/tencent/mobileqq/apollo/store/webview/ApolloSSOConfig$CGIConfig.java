@@ -11,15 +11,9 @@ import java.util.List;
 public class ApolloSSOConfig$CGIConfig
 {
   public String a;
-  public final HashMap<String, String> a;
-  public final List<ApolloSSOConfig.CmdParameter> a;
   public String b;
-  
-  public ApolloSSOConfig$CGIConfig()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public final HashMap<String, String> c = new HashMap();
+  public final List<ApolloSSOConfig.CmdParameter> d = new ArrayList();
   
   public String a(boolean paramBoolean)
   {
@@ -29,27 +23,27 @@ public class ApolloSSOConfig$CGIConfig
     localStringBuilder = new StringBuilder();
     try
     {
-      int j = this.jdField_a_of_type_JavaUtilList.size();
+      int j = this.d.size();
       int i = 0;
       while (i < j)
       {
-        ApolloSSOConfig.CmdParameter localCmdParameter = (ApolloSSOConfig.CmdParameter)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localCmdParameter != null) && (!TextUtils.isEmpty(localCmdParameter.jdField_a_of_type_JavaLangString)))
+        ApolloSSOConfig.CmdParameter localCmdParameter = (ApolloSSOConfig.CmdParameter)this.d.get(i);
+        if ((localCmdParameter != null) && (!TextUtils.isEmpty(localCmdParameter.a)))
         {
-          int k = localCmdParameter.jdField_a_of_type_Int;
-          if ((k != 6) && (localCmdParameter.jdField_a_of_type_Int != 7))
+          int k = localCmdParameter.c;
+          if ((k != 6) && (localCmdParameter.c != 7))
           {
-            if (localCmdParameter.jdField_a_of_type_Int == 8)
+            if (localCmdParameter.c == 8)
             {
               if (paramBoolean)
               {
-                localStringBuilder.append(URLUtil.a(localCmdParameter.jdField_a_of_type_JavaLangString));
+                localStringBuilder.append(URLUtil.c(localCmdParameter.a));
                 localStringBuilder.append("=");
                 localStringBuilder.append(System.currentTimeMillis());
               }
               else
               {
-                localStringBuilder.append(localCmdParameter.jdField_a_of_type_JavaLangString);
+                localStringBuilder.append(localCmdParameter.a);
                 localStringBuilder.append("=");
                 localStringBuilder.append(System.currentTimeMillis());
               }
@@ -61,13 +55,13 @@ public class ApolloSSOConfig$CGIConfig
             {
               if (paramBoolean)
               {
-                localStringBuilder.append(URLUtil.a(localCmdParameter.jdField_a_of_type_JavaLangString));
+                localStringBuilder.append(URLUtil.c(localCmdParameter.a));
                 localStringBuilder.append("=");
-                localStringBuilder.append(URLUtil.a(localCmdParameter.b));
+                localStringBuilder.append(URLUtil.c(localCmdParameter.b));
               }
               else
               {
-                localStringBuilder.append(localCmdParameter.jdField_a_of_type_JavaLangString);
+                localStringBuilder.append(localCmdParameter.a);
                 localStringBuilder.append("=");
                 localStringBuilder.append(localCmdParameter.b);
               }
@@ -76,17 +70,17 @@ public class ApolloSSOConfig$CGIConfig
               }
             }
           }
-          else if (!TextUtils.isEmpty(Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter(localCmdParameter.b)))
+          else if (!TextUtils.isEmpty(Uri.parse(this.a).getQueryParameter(localCmdParameter.b)))
           {
             if (paramBoolean)
             {
-              localStringBuilder.append(URLUtil.a(localCmdParameter.jdField_a_of_type_JavaLangString));
+              localStringBuilder.append(URLUtil.c(localCmdParameter.a));
               localStringBuilder.append("=");
-              localStringBuilder.append(URLUtil.a(localCmdParameter.b));
+              localStringBuilder.append(URLUtil.c(localCmdParameter.b));
             }
             else
             {
-              localStringBuilder.append(localCmdParameter.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append(localCmdParameter.a);
               localStringBuilder.append("=");
               localStringBuilder.append(localCmdParameter.b);
             }
@@ -110,29 +104,29 @@ public class ApolloSSOConfig$CGIConfig
   
   public boolean a()
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b));
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("CGIConfig{");
     localStringBuffer.append("mUrl='");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.a);
     localStringBuffer.append('\'');
     localStringBuffer.append(", mMethod='");
     localStringBuffer.append(this.b);
     localStringBuffer.append('\'');
     localStringBuffer.append(", mHeaders=");
-    localStringBuffer.append(this.jdField_a_of_type_JavaUtilHashMap);
+    localStringBuffer.append(this.c);
     localStringBuffer.append(", mParameters=");
-    localStringBuffer.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(this.d);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.CGIConfig
  * JD-Core Version:    0.7.0.1
  */

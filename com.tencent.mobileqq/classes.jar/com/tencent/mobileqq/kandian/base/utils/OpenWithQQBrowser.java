@@ -25,33 +25,33 @@ import java.util.Set;
 public class OpenWithQQBrowser
   implements Handler.Callback
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private OpenWithQQBrowser.UiCallback jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsOpenWithQQBrowser$UiCallback;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Activity a;
+  private OpenWithQQBrowser.UiCallback b;
+  private boolean c = false;
+  private Handler d = null;
   
   public OpenWithQQBrowser(Activity paramActivity, OpenWithQQBrowser.UiCallback paramUiCallback)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsOpenWithQQBrowser$UiCallback = paramUiCallback;
+    this.a = paramActivity;
+    this.b = paramUiCallback;
   }
   
   private void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+    this.c = true;
+    if (this.a.isFinishing())
     {
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsOpenWithQQBrowser$UiCallback;
+      paramContext = this.b;
       if (paramContext != null) {
         paramContext.a();
       }
     }
     else
     {
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsOpenWithQQBrowser$UiCallback;
+      paramContext = this.b;
       if (paramContext != null) {
         paramContext.b();
       }
@@ -143,16 +143,16 @@ public class OpenWithQQBrowser
     localHttpURLConnection.disconnect();
     localObject1 = paramString;
     label299:
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+    if (this.d == null) {
       try
       {
-        if (this.jdField_a_of_type_AndroidOsHandler == null) {
-          this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+        if (this.d == null) {
+          this.d = new WeakReferenceHandler(Looper.getMainLooper(), this);
         }
       }
       finally {}
     }
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 101, localObject1).sendToTarget();
+    Message.obtain(this.d, 101, localObject1).sendToTarget();
   }
   
   public boolean a(String paramString)
@@ -170,25 +170,25 @@ public class OpenWithQQBrowser
     Object localObject = new HashMap();
     ((HashMap)localObject).put("KEY_PID", String.valueOf(50079));
     ((HashMap)localObject).put("KEY_EUSESTAT", String.valueOf(5));
-    ((HashMap)localObject).put("ChannelID", this.jdField_a_of_type_AndroidAppActivity.getApplicationInfo().processName);
+    ((HashMap)localObject).put("ChannelID", this.a.getApplicationInfo().processName);
     ((HashMap)localObject).put("PosID", Integer.toString(paramInt));
-    String str = MttLoader.getValidQBUrl(this.jdField_a_of_type_AndroidAppActivity, paramString1);
-    paramInt = MttLoader.loadUrl(this.jdField_a_of_type_AndroidAppActivity, str, (HashMap)localObject, null);
+    String str = MttLoader.getValidQBUrl(this.a, paramString1);
+    paramInt = MttLoader.loadUrl(this.a, str, (HashMap)localObject, null);
     if (paramBoolean) {
       if (4 == paramInt)
       {
-        localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131689477);
-        a(this.jdField_a_of_type_AndroidAppActivity, paramString1, (String)localObject, 2131689483, paramString2);
+        localObject = this.a.getResources().getString(2131886085);
+        a(this.a, paramString1, (String)localObject, 2131886091, paramString2);
       }
       else if (5 == paramInt)
       {
-        localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131689476);
-        a(this.jdField_a_of_type_AndroidAppActivity, paramString1, (String)localObject, 2131689487, paramString2);
+        localObject = this.a.getResources().getString(2131886084);
+        a(this.a, paramString1, (String)localObject, 2131886095, paramString2);
       }
       else if (paramInt != 0)
       {
-        localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131689477);
-        a(this.jdField_a_of_type_AndroidAppActivity, paramString1, (String)localObject, 2131689483, paramString2);
+        localObject = this.a.getResources().getString(2131886085);
+        a(this.a, paramString1, (String)localObject, 2131886091, paramString2);
       }
     }
     paramBoolean = bool1;
@@ -203,12 +203,12 @@ public class OpenWithQQBrowser
     if (paramMessage.what != 101) {
       return false;
     }
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+    if (!this.a.isFinishing())
     {
       paramMessage = (Bundle)paramMessage.obj;
       if (paramMessage != null)
       {
-        Object localObject = this.jdField_a_of_type_AndroidAppActivity.getSharedPreferences("qb_info", 0);
+        Object localObject = this.a.getSharedPreferences("qb_info", 0);
         if (localObject != null)
         {
           paramMessage.putString("param_content_memo", ((SharedPreferences)localObject).getString("content_memo", null));
@@ -218,21 +218,21 @@ public class OpenWithQQBrowser
         if ((localObject != null) && (((String)localObject).length() != 0))
         {
           paramMessage.remove("qb_param_url");
-          UniformDownload.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, paramMessage);
+          UniformDownload.a(this.a, (String)localObject, paramMessage);
         }
       }
     }
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqKandianBaseUtilsOpenWithQQBrowser$UiCallback;
+    paramMessage = this.b;
     if (paramMessage != null) {
       paramMessage.a();
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.OpenWithQQBrowser
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ final class AccountDetailBaseInfoModel$1
       ((StringBuilder)localObject1).append(String.valueOf(paramBoolean));
       QLog.d("AccountDetailBaseInfoModel", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = (PublicAccountHandlerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
+    Object localObject1 = (PublicAccountHandlerImpl)this.a.getBusinessHandler(BusinessHandlerFactory.HANDLER_PUBLIC_ACCOUNT);
     boolean bool = false;
     if (paramBoolean) {}
     try
@@ -45,43 +45,43 @@ final class AccountDetailBaseInfoModel$1
           if (QLog.isColorLevel()) {
             QLog.d("AccountDetailBaseInfoModel", 2, "sendSetFunctionFlagRequest success");
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.d = this.jdField_a_of_type_Int;
+          this.b.f = this.c;
           paramBundle = null;
-          localObject2 = (IPublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
+          localObject2 = (IPublicAccountDataManager)this.a.getRuntimeService(IPublicAccountDataManager.class, "all");
           if (localObject2 != null) {
-            paramBundle = (PublicAccountDetailImpl)((IPublicAccountDataManager)localObject2).findAccountDetailInfo(this.jdField_a_of_type_JavaLangString);
+            paramBundle = (PublicAccountDetailImpl)((IPublicAccountDataManager)localObject2).findAccountDetailInfo(this.d);
           }
           if (paramBundle != null)
           {
-            if (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.e == 6)
+            if (this.b.g == 6)
             {
-              if (this.jdField_a_of_type_Int == 1) {
-                paramBundle.mShowMsgFlag = this.jdField_a_of_type_Int;
+              if (this.c == 1) {
+                paramBundle.mShowMsgFlag = this.c;
               }
             }
-            else if (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.e == 3)
+            else if (this.b.g == 3)
             {
               paramBundle.isSyncLbs = true;
               paramBoolean = bool;
-              if (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.d == 1) {
+              if (this.b.f == 1) {
                 paramBoolean = true;
               }
               paramBundle.isAgreeSyncLbs = paramBoolean;
             }
             ThreadManager.getSubThreadHandler().postDelayed(new AccountDetailBaseInfoModel.1.1(this, paramBundle), 10L);
-            ((PublicAccountHandlerImpl)localObject1).notifyUI(109, true, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo);
+            ((PublicAccountHandlerImpl)localObject1).notifyUI(109, true, this.b);
           }
         }
         else
         {
-          ((PublicAccountHandlerImpl)localObject1).notifyUI(109, false, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo);
+          ((PublicAccountHandlerImpl)localObject1).notifyUI(109, false, this.b);
         }
       }
       else
       {
-        ((PublicAccountHandlerImpl)localObject1).notifyUI(109, false, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo);
+        ((PublicAccountHandlerImpl)localObject1).notifyUI(109, false, this.b);
         return;
-        ((PublicAccountHandlerImpl)localObject1).notifyUI(109, false, this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo);
+        ((PublicAccountHandlerImpl)localObject1).notifyUI(109, false, this.b);
       }
       return;
     }
@@ -90,7 +90,7 @@ final class AccountDetailBaseInfoModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailBaseInfoModel.1
  * JD-Core Version:    0.7.0.1
  */

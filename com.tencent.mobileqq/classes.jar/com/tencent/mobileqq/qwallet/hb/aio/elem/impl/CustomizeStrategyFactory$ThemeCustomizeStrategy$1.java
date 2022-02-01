@@ -26,7 +26,7 @@ class CustomizeStrategyFactory$ThemeCustomizeStrategy$1
         CustomizeStrategyFactory.ThemeCustomizeStrategy.a(this.this$0).getFilePath((String)localObject, new CustomizeStrategyFactory.ThemeCustomizeStrategy.1.1(this));
         return;
       }
-      CustomizeStrategyFactory.a().a(this.a);
+      CustomizeStrategyFactory.d().a(this.a);
       return;
     }
     catch (Throwable localThrowable)
@@ -37,7 +37,7 @@ class CustomizeStrategyFactory$ThemeCustomizeStrategy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.ThemeCustomizeStrategy.1
  * JD-Core Version:    0.7.0.1
  */

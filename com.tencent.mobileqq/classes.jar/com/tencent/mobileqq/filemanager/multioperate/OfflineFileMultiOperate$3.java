@@ -13,15 +13,15 @@ class OfflineFileMultiOperate$3
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext())
     {
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
       if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.c(localFileManagerEntity);
+        this.b.h(localFileManagerEntity);
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+    localObject = this.c;
     if (localObject != null) {
       ((QFileMultiOperateCallback)localObject).a(1, 0);
     }
@@ -29,7 +29,7 @@ class OfflineFileMultiOperate$3
   
   public void b()
   {
-    QFileMultiOperateCallback localQFileMultiOperateCallback = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+    QFileMultiOperateCallback localQFileMultiOperateCallback = this.c;
     if (localQFileMultiOperateCallback != null) {
       localQFileMultiOperateCallback.a(1, 1);
     }
@@ -37,7 +37,7 @@ class OfflineFileMultiOperate$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate.3
  * JD-Core Version:    0.7.0.1
  */

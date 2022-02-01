@@ -9,20 +9,20 @@ import mqq.app.NewIntent;
 @Deprecated
 public class WeishiProtocolService
 {
-  private static WeishiProtocolService jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static Object a = new Object();
+  private static WeishiProtocolService b;
   
   public static WeishiProtocolService a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (b == null) {
+      synchronized (a)
       {
-        if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService == null) {
-          jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService = new WeishiProtocolService();
+        if (b == null) {
+          b = new WeishiProtocolService();
         }
       }
     }
-    return jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService;
+    return b;
   }
   
   public int a(WeishiRequest paramWeishiRequest, IWeishiProtocolListener paramIWeishiProtocolListener)
@@ -31,16 +31,16 @@ public class WeishiProtocolService
       return 1000004;
     }
     paramWeishiRequest.a(paramIWeishiProtocolListener);
-    paramWeishiRequest.a = System.currentTimeMillis();
+    paramWeishiRequest.g = System.currentTimeMillis();
     try
     {
       Object localObject = new WeishiIntent(BaseApplication.getContext(), WeishiServlet.class);
       ((WeishiIntent)localObject).setWithouLogin(true);
       ((WeishiIntent)localObject).a = ((WeishiTask)paramIWeishiProtocolListener);
-      ((WeishiIntent)localObject).putExtra("timeout", paramWeishiRequest.f);
+      ((WeishiIntent)localObject).putExtra("timeout", paramWeishiRequest.p);
       if (((WeishiIntent)localObject).a != null)
       {
-        if (((WeishiIntent)localObject).a.a == null) {
+        if (((WeishiIntent)localObject).a.g == null) {
           return 1000004;
         }
         paramIWeishiProtocolListener = BaseApplicationImpl.getApplication().getRuntime();
@@ -51,7 +51,7 @@ public class WeishiProtocolService
           ((StringBuilder)localObject).append("cmd=");
           ((StringBuilder)localObject).append(paramWeishiRequest.uniKey());
           ((StringBuilder)localObject).append(", pkgId=");
-          ((StringBuilder)localObject).append(paramWeishiRequest.a());
+          ((StringBuilder)localObject).append(paramWeishiRequest.h());
           ((StringBuilder)localObject).append(" submit to MSF, isLogin: ");
           ((StringBuilder)localObject).append(paramIWeishiProtocolListener.isLogin());
           Log.i("weishi", ((StringBuilder)localObject).toString());
@@ -78,7 +78,7 @@ public class WeishiProtocolService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiProtocolService
  * JD-Core Version:    0.7.0.1
  */

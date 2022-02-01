@@ -30,13 +30,13 @@ class TroopAvatarWallEditActivity$6
         QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "QR Check Start!");
       }
       localObject2 = new Bundle();
-      Object localObject1 = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-      if (this.this$0.a == null)
+      Object localObject1 = this.a.getURL().toString();
+      if (this.this$0.r == null)
       {
         CookieSyncManager.createInstance(this.this$0.getApplicationContext());
-        this.this$0.a = CookieManager.getInstance();
+        this.this$0.r = CookieManager.getInstance();
       }
-      Object localObject3 = this.this$0.a.getCookie((String)localObject1);
+      Object localObject3 = this.this$0.r.getCookie((String)localObject1);
       if (localObject3 != null)
       {
         ((Bundle)localObject2).putString("Cookie", (String)localObject3);
@@ -58,8 +58,8 @@ class TroopAvatarWallEditActivity$6
         ((StringBuilder)localObject3).append((String)localObject2);
         QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, ((StringBuilder)localObject3).toString());
       }
-      this.this$0.c = ((String)localObject2);
-      com.tencent.qbar.QbarCrashCollector.a = Util.b((String)localObject1, new String[0]);
+      this.this$0.x = ((String)localObject2);
+      com.tencent.qbar.QbarCrashCollector.sCurrentUrl = Util.b((String)localObject1, new String[0]);
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         localObject1 = new StringBuilder();
@@ -67,7 +67,7 @@ class TroopAvatarWallEditActivity$6
         ((StringBuilder)localObject1).append(new File((String)localObject2).getAbsolutePath());
         localObject1 = Uri.parse(((StringBuilder)localObject1).toString());
         localObject1 = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeQQCodeFromFile((Uri)localObject1, this.this$0, 1, false);
-        if ((localObject1 != null) && (((ScannerResult)localObject1).d()))
+        if ((localObject1 != null) && (((ScannerResult)localObject1).h()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "has QRCode ");
@@ -79,7 +79,7 @@ class TroopAvatarWallEditActivity$6
       {
         QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "no QRCode ");
       }
-      com.tencent.qbar.QbarCrashCollector.a = null;
+      com.tencent.qbar.QbarCrashCollector.sCurrentUrl = null;
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -108,7 +108,7 @@ class TroopAvatarWallEditActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.6
  * JD-Core Version:    0.7.0.1
  */

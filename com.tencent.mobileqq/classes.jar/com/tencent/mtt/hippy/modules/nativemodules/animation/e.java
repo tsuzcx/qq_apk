@@ -23,7 +23,7 @@ public class e
   protected float e;
   protected int f;
   protected String g;
-  protected ValueAnimator h = new ValueAnimator();
+  protected final ValueAnimator h = new ValueAnimator();
   protected String i;
   protected int j = 0;
   protected f k;
@@ -205,7 +205,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.e
  * JD-Core Version:    0.7.0.1
  */

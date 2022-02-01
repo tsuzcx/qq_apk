@@ -16,12 +16,12 @@ final class QQCustomMenuItemPriorityHelper$2
     if (paramQQCustomMenuItem2 == null) {
       return -1;
     }
-    return paramQQCustomMenuItem2.c - paramQQCustomMenuItem1.c;
+    return paramQQCustomMenuItem2.d - paramQQCustomMenuItem1.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItemPriorityHelper.2
  * JD-Core Version:    0.7.0.1
  */

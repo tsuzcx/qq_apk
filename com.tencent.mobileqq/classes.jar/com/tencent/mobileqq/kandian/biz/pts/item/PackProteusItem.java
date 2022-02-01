@@ -58,7 +58,7 @@ public class PackProteusItem
           ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mGroupSubArticleList.size());
           QLog.d("PackProteusItem", 2, ((StringBuilder)localObject).toString());
           localObject = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.mGroupSubArticleList.get(0);
-          int i = RIJItemViewTypeUtils.d((AbsBaseArticleInfo)localObject);
+          int i = RIJItemViewTypeUtils.G((AbsBaseArticleInfo)localObject);
           localObject = a((AbsBaseArticleInfo)localObject, paramInt);
           try
           {
@@ -112,11 +112,11 @@ public class PackProteusItem
         {
           localObject1 = localObject3;
           l1 = l2;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null)
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null)
           {
-            l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a;
+            l1 = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
             localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(ReadInJoyConstants.g);
+            ((StringBuilder)localObject1).append(ReadInJoyConstants.h);
             ((StringBuilder)localObject1).append(Base64Util.encodeToString(String.valueOf(l1).getBytes(), 2));
             localObject1 = ((StringBuilder)localObject1).toString();
           }
@@ -142,7 +142,7 @@ public class PackProteusItem
           l1 = l2;
         }
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(ReadInJoyConstants.k);
+        ((StringBuilder)localObject2).append(ReadInJoyConstants.l);
         ((StringBuilder)localObject2).append(Base64Util.encodeToString(String.valueOf(l1).getBytes(), 2));
         localObject2 = ((StringBuilder)localObject2).toString();
       }
@@ -165,16 +165,16 @@ public class PackProteusItem
           QLog.i("PackProteusItem", 1, ((StringBuilder)localObject2).toString());
         }
         paramAbsBaseArticleInfo = new StringBuilder();
-        paramAbsBaseArticleInfo.append(ReadInJoyConstants.k);
+        paramAbsBaseArticleInfo.append(ReadInJoyConstants.l);
         paramAbsBaseArticleInfo.append(Base64Util.encodeToString(String.valueOf(l1).getBytes(), 2));
         localObject3 = paramAbsBaseArticleInfo.toString();
         l2 = l1;
       }
-      else if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null))
+      else if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null))
       {
-        l2 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a;
+        l2 = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
         paramAbsBaseArticleInfo = new StringBuilder();
-        paramAbsBaseArticleInfo.append(ReadInJoyConstants.g);
+        paramAbsBaseArticleInfo.append(ReadInJoyConstants.h);
         paramAbsBaseArticleInfo.append(Base64Util.encodeToString(String.valueOf(l2).getBytes(), 2));
         localObject3 = paramAbsBaseArticleInfo.toString();
       }
@@ -186,11 +186,11 @@ public class PackProteusItem
         {
           localObject3 = localObject2;
           l2 = l1;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null)
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null)
           {
-            l2 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.a;
+            l2 = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
             paramAbsBaseArticleInfo = new StringBuilder();
-            paramAbsBaseArticleInfo.append(ReadInJoyConstants.g);
+            paramAbsBaseArticleInfo.append(ReadInJoyConstants.h);
             paramAbsBaseArticleInfo.append(Base64Util.encodeToString(String.valueOf(l2).getBytes(), 2));
             localObject3 = paramAbsBaseArticleInfo.toString();
           }
@@ -232,7 +232,7 @@ public class PackProteusItem
   {
     if ((paramViewBase != null) && (paramIReadInJoyModel != null))
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.k() == null) {
         return;
       }
       paramViewBase = paramViewBase.findViewBaseByName("id_topic_avator");
@@ -243,14 +243,14 @@ public class PackProteusItem
         }
         paramViewBase = paramViewBase.getNativeView();
         Context localContext = paramViewBase.getContext();
-        paramViewBase.setOnClickListener(new PackProteusItem.1(this, paramIReadInJoyModel.a(), localContext));
+        paramViewBase.setOnClickListener(new PackProteusItem.1(this, paramIReadInJoyModel.k(), localContext));
       }
     }
   }
   
   private void a(IReadInJoyModel paramIReadInJoyModel, Context paramContext, ComponentPolymericView paramComponentPolymericView)
   {
-    if (paramIReadInJoyModel.c() == 56)
+    if (paramIReadInJoyModel.m() == 56)
     {
       paramComponentPolymericView.setDividerWidth(AIOUtils.b(3.0F, paramContext.getResources()));
       paramComponentPolymericView.setPadding(DisplayUtil.a(paramContext, 6.0F), 0, DisplayUtil.a(paramContext, 6.0F), DisplayUtil.a(paramContext, 5.0F));
@@ -258,7 +258,7 @@ public class PackProteusItem
     else
     {
       paramComponentPolymericView.setDividerWidth(AIOUtils.b(3.0F, paramContext.getResources()));
-      if (RIJFeedsType.D(paramIReadInJoyModel.a())) {
+      if (RIJFeedsType.J(paramIReadInJoyModel.k())) {
         paramComponentPolymericView.setPadding(DisplayUtil.a(paramContext, 6.0F), 0, DisplayUtil.a(paramContext, 12.0F), DisplayUtil.a(paramContext, 2.0F));
       } else {
         paramComponentPolymericView.setPadding(DisplayUtil.a(paramContext, 6.0F), 0, DisplayUtil.a(paramContext, 12.0F), 0);
@@ -317,7 +317,7 @@ public class PackProteusItem
     if (paramInt == 79) {
       return ((ProteusItemDataBuilder)localObject).c(paramAbsBaseArticleInfo).j(paramAbsBaseArticleInfo).r(paramAbsBaseArticleInfo).z(paramAbsBaseArticleInfo).a("ReadInjoy_pack_topic_cell").a();
     }
-    if ((!RIJFeedsType.F(paramAbsBaseArticleInfo)) && (!RIJFeedsType.G(paramAbsBaseArticleInfo)))
+    if ((!RIJFeedsType.L(paramAbsBaseArticleInfo)) && (!RIJFeedsType.M(paramAbsBaseArticleInfo)))
     {
       long l2;
       if (paramInt == 76)
@@ -326,8 +326,8 @@ public class PackProteusItem
         if (paramAbsBaseArticleInfo.mSocialFeedInfo != null)
         {
           l2 = l1;
-          if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null) {
-            l2 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a;
+          if (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null) {
+            l2 = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
           }
         }
         paramAbsBaseArticleInfo = a((ProteusItemDataBuilder)localObject, paramInt, paramAbsBaseArticleInfo).b(paramAbsBaseArticleInfo).r(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, l2).g(paramAbsBaseArticleInfo).f(paramAbsBaseArticleInfo).i(paramAbsBaseArticleInfo).j(paramAbsBaseArticleInfo).k(paramAbsBaseArticleInfo).z(paramAbsBaseArticleInfo).a("ReadInjoy_pack_cell").a();
@@ -378,7 +378,7 @@ public class PackProteusItem
     if (localObject1 != null)
     {
       localObject2 = (NativeMiddleBodyView)((ReadInJoyMiddleBodyView)localObject1).getNativeView();
-      if (((NativeMiddleBodyView)localObject2).a() == null)
+      if (((NativeMiddleBodyView)localObject2).getContent() == null)
       {
         localObject3 = new ComponentPolymericPullAnimatorView(paramContainer.getContext(), paramIReadInJoyModel);
         if ((((View)localObject3).getLayoutParams() instanceof RelativeLayout.LayoutParams)) {
@@ -386,16 +386,16 @@ public class PackProteusItem
         } else {
           localObject1 = new RelativeLayout.LayoutParams(-1, -2);
         }
-        a(paramIReadInJoyModel, paramContainer.getContext(), ((ComponentPolymericPullAnimatorView)localObject3).a());
+        a(paramIReadInJoyModel, paramContainer.getContext(), ((ComponentPolymericPullAnimatorView)localObject3).getPolyMericView());
         ((NativeMiddleBodyView)localObject2).a((View)localObject3, (RelativeLayout.LayoutParams)localObject1);
       }
       a(paramIReadInJoyModel, (NativeMiddleBodyView)localObject2);
     }
-    localObject1 = paramIReadInJoyModel.a();
-    if (!RIJFeedsType.L((AbsBaseArticleInfo)localObject1))
+    localObject1 = paramIReadInJoyModel.k();
+    if (!RIJFeedsType.S((AbsBaseArticleInfo)localObject1))
     {
       BindViewHelper.f(localViewBase, paramIReadInJoyModel);
-      BindViewHelper.a(localViewBase, paramIReadInJoyModel.a());
+      BindViewHelper.a(localViewBase, paramIReadInJoyModel.k());
       if (paramInt1 == 76) {
         Util.a(localViewBase, paramIReadInJoyModel);
       }
@@ -404,10 +404,10 @@ public class PackProteusItem
     {
       a(localViewBase, paramIReadInJoyModel);
       localObject3 = (NativeText)localViewBase.findViewBaseByName("id_topic_recommend_biu_time");
-      if ((localObject3 != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a.size() > 0))
+      if ((localObject3 != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g != null) && (((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g.size() > 0))
       {
-        localObject2 = (TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.a.get(0);
-        ((NativeText)localObject3).setText(String.format(paramContainer.getContext().getString(2131718064), new Object[] { ReadInJoyHelper.b(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject2).b) }));
+        localObject2 = (TopicRecommendFeedsInfo.TopicRecommendInfo)((AbsBaseArticleInfo)localObject1).mTopicRecommendFeedsInfo.g.get(0);
+        ((NativeText)localObject3).setText(String.format(paramContainer.getContext().getString(2131915541), new Object[] { ReadInJoyHelper.d(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject2).e) }));
         if (QLog.isColorLevel())
         {
           paramContainer = new StringBuilder();
@@ -416,7 +416,7 @@ public class PackProteusItem
           paramContainer.append(", mRecommendSeq =");
           paramContainer.append(((AbsBaseArticleInfo)localObject1).mRecommendSeq);
           paramContainer.append("，followType=");
-          paramContainer.append(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject2).c);
+          paramContainer.append(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject2).g);
           QLog.d("PackProteusItem", 2, paramContainer.toString());
         }
       }
@@ -430,14 +430,14 @@ public class PackProteusItem
   
   protected void a(IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView)
   {
-    if (paramNativeMiddleBodyView.a() != null)
+    if (paramNativeMiddleBodyView.getContent() != null)
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.u() == null) {
         return;
       }
-      paramNativeMiddleBodyView = (ComponentPolymericPullAnimatorView)paramNativeMiddleBodyView.a();
+      paramNativeMiddleBodyView = (ComponentPolymericPullAnimatorView)paramNativeMiddleBodyView.getContent();
       paramNativeMiddleBodyView.a();
-      paramNativeMiddleBodyView.a().a(paramIReadInJoyModel);
+      paramNativeMiddleBodyView.getPolyMericView().a(paramIReadInJoyModel);
     }
   }
   
@@ -448,7 +448,7 @@ public class PackProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PackProteusItem
  * JD-Core Version:    0.7.0.1
  */

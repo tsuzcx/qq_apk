@@ -16,10 +16,10 @@ import java.util.List;
 class TavMixerEffect$DispatcherFilter
   implements TAVVideoMixEffect.Filter
 {
-  BaseEffectNode.Filter jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyBaseEffectNode$Filter;
-  final ImageParams jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams = new ImageParams();
-  final List<BaseEffectNode.Filter> jdField_a_of_type_JavaUtilList = new ArrayList();
-  final List<BaseEffectNode.Filter> b;
+  final ImageParams a = new ImageParams();
+  final List<BaseEffectNode.Filter> b = new ArrayList();
+  final List<BaseEffectNode.Filter> c;
+  BaseEffectNode.Filter d;
   
   TavMixerEffect$DispatcherFilter(TavMixerEffect paramTavMixerEffect)
   {
@@ -31,69 +31,69 @@ class TavMixerEffect$DispatcherFilter
       while (localIterator.hasNext())
       {
         localBaseEffectNode = (BaseEffectNode)localIterator.next();
-        this.jdField_a_of_type_JavaUtilList.add(localBaseEffectNode.a());
+        this.b.add(localBaseEffectNode.a());
       }
     }
-    this.b = new ArrayList();
+    this.c = new ArrayList();
     if (TavMixerEffect.b(paramTavMixerEffect) != null)
     {
       localIterator = TavMixerEffect.b(paramTavMixerEffect).iterator();
       while (localIterator.hasNext())
       {
         localBaseEffectNode = (BaseEffectNode)localIterator.next();
-        this.b.add(localBaseEffectNode.a());
+        this.c.add(localBaseEffectNode.a());
       }
     }
-    if (TavMixerEffect.a(paramTavMixerEffect) != null) {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyBaseEffectNode$Filter = TavMixerEffect.a(paramTavMixerEffect).a();
+    if (TavMixerEffect.c(paramTavMixerEffect) != null) {
+      this.d = TavMixerEffect.c(paramTavMixerEffect).a();
     }
   }
   
   public CIImage apply(TAVVideoMixEffect paramTAVVideoMixEffect, ImageCollection paramImageCollection, RenderInfo paramRenderInfo)
   {
-    this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams.jdField_a_of_type_JavaUtilList.clear();
+    this.a.a.clear();
     paramTAVVideoMixEffect = paramImageCollection.getVideoChannelImages().iterator();
     while (paramTAVVideoMixEffect.hasNext())
     {
       ImageCollection.TrackImagePair localTrackImagePair = (ImageCollection.TrackImagePair)paramTAVVideoMixEffect.next();
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams.jdField_a_of_type_JavaUtilList.add(new ImageParams.ImageTrackPair(localTrackImagePair.getImage(), localTrackImagePair.getTrack()));
+      this.a.a.add(new ImageParams.ImageTrackPair(localTrackImagePair.getImage(), localTrackImagePair.getTrack()));
     }
     paramTAVVideoMixEffect = paramImageCollection.getOverlayImages().iterator();
     while (paramTAVVideoMixEffect.hasNext())
     {
       paramImageCollection = (ImageCollection.TrackImagePair)paramTAVVideoMixEffect.next();
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams.jdField_a_of_type_JavaUtilList.add(new ImageParams.ImageTrackPair(paramImageCollection.getImage(), paramImageCollection.getTrack()));
+      this.a.a.add(new ImageParams.ImageTrackPair(paramImageCollection.getImage(), paramImageCollection.getTrack()));
+    }
+    paramTAVVideoMixEffect = this.c.iterator();
+    while (paramTAVVideoMixEffect.hasNext()) {
+      ((BaseEffectNode.Filter)paramTAVVideoMixEffect.next()).a(this.a, paramRenderInfo);
+    }
+    paramTAVVideoMixEffect = this.d;
+    if (paramTAVVideoMixEffect != null) {
+      paramTAVVideoMixEffect.a(this.a, paramRenderInfo);
     }
     paramTAVVideoMixEffect = this.b.iterator();
     while (paramTAVVideoMixEffect.hasNext()) {
-      ((BaseEffectNode.Filter)paramTAVVideoMixEffect.next()).a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams, paramRenderInfo);
+      ((BaseEffectNode.Filter)paramTAVVideoMixEffect.next()).a(this.a, paramRenderInfo);
     }
-    paramTAVVideoMixEffect = this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyBaseEffectNode$Filter;
-    if (paramTAVVideoMixEffect != null) {
-      paramTAVVideoMixEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams, paramRenderInfo);
-    }
-    paramTAVVideoMixEffect = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramTAVVideoMixEffect.hasNext()) {
-      ((BaseEffectNode.Filter)paramTAVVideoMixEffect.next()).a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams, paramRenderInfo);
-    }
-    if (this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams.jdField_a_of_type_JavaUtilList.size() > 0) {
-      return ((ImageParams.ImageTrackPair)this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams.jdField_a_of_type_JavaUtilList.get(0)).a().imageApplyFillInFrame(new CGRect(new PointF(), paramRenderInfo.getRenderSize()), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit);
+    if (this.a.a.size() > 0) {
+      return ((ImageParams.ImageTrackPair)this.a.a.get(0)).b().imageApplyFillInFrame(new CGRect(new PointF(), paramRenderInfo.getRenderSize()), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit);
     }
     return null;
   }
   
   public void release()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((BaseEffectNode.Filter)localIterator.next()).a();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavMixerEffect.DispatcherFilter
  * JD-Core Version:    0.7.0.1
  */

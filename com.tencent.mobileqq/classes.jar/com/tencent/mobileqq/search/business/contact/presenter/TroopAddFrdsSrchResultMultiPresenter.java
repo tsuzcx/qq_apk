@@ -21,37 +21,37 @@ public class TroopAddFrdsSrchResultMultiPresenter
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.a(paramISearchResultModel, paramISearchResultView);
-    if (paramISearchResultView.c() != null)
+    if (paramISearchResultView.d() != null)
     {
       paramISearchResultModel = (ContactSearchModelTroopMember)paramISearchResultModel;
       Set localSet = this.a;
       int j = 0;
       int i;
-      if ((localSet != null) && (this.a.contains(paramISearchResultModel.a()))) {
+      if ((localSet != null) && (this.a.contains(paramISearchResultModel.c()))) {
         i = 1;
       } else {
         i = 0;
       }
       if (!TextUtils.isEmpty(paramISearchResultModel.a()))
       {
-        paramISearchResultView.c().setText(paramISearchResultModel.a());
+        paramISearchResultView.d().setText(paramISearchResultModel.a());
         i = 1;
       }
-      paramISearchResultModel = paramISearchResultView.c();
+      paramISearchResultModel = paramISearchResultView.d();
       if (i == 0) {
         j = 8;
       }
       paramISearchResultModel.setVisibility(j);
-      paramISearchResultView.a().setClickable(i ^ 0x1);
+      paramISearchResultView.h().setClickable(i ^ 0x1);
     }
-    if (paramISearchResultView.a() != null) {
-      paramISearchResultView.a().setVisibility(8);
+    if (paramISearchResultView.f() != null) {
+      paramISearchResultView.f().setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.presenter.TroopAddFrdsSrchResultMultiPresenter
  * JD-Core Version:    0.7.0.1
  */

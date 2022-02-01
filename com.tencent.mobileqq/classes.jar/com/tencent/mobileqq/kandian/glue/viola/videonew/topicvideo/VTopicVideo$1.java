@@ -22,23 +22,23 @@ class VTopicVideo$1
       paramIEvent = (ComponentAppearEvent)paramIEvent;
       if (paramIEvent.event.equals("didDisappear"))
       {
-        this.a.getVideoLifeCycleChangeListener().aI_();
+        this.a.getVideoLifeCycleChangeListener().dd_();
         return;
       }
       if (paramIEvent.event.equals("willAppear"))
       {
-        this.a.getVideoLifeCycleChangeListener().aG_();
+        this.a.getVideoLifeCycleChangeListener().db_();
         return;
       }
       if (paramIEvent.event.equals("didAppear")) {
-        this.a.getVideoLifeCycleChangeListener().aH_();
+        this.a.getVideoLifeCycleChangeListener().dc_();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.topicvideo.VTopicVideo.1
  * JD-Core Version:    0.7.0.1
  */

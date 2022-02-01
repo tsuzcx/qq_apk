@@ -1,22 +1,18 @@
 package com.tencent.mobileqq.activity.main;
 
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-
 class MainAssistObserver$11
-  extends ConfigObserver
+  implements Runnable
 {
-  MainAssistObserver$11(MainAssistObserver paramMainAssistObserver) {}
+  MainAssistObserver$11(MainAssistObserver paramMainAssistObserver, boolean paramBoolean, int paramInt) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void run()
   {
-    MainAssistObserver.a(this.a, paramUpgradeDetailWrapper);
-    this.a.e();
+    MainAssistObserver.a(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.11
  * JD-Core Version:    0.7.0.1
  */

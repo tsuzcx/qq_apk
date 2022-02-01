@@ -7,9 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.SystemClock;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Pair;
@@ -25,6 +22,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.tencent.aelight.camera.ae.album.data.AEAlbumLogicData;
 import com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic;
 import com.tencent.aelight.camera.ae.biz.circle.event.AECircleShowPhotoPreviewEvent;
@@ -66,56 +66,43 @@ public class PhotoGridAdapter
   extends RecyclerView.Adapter<PhotoGridAdapter.PhotoVH>
   implements URLDrawableDownListener, MediaScanner.OnMediaScannerListener
 {
-  public int a;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  public ColorDrawable a;
-  public Drawable a;
-  GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  public LayoutInflater a;
-  AECirclePhotoListLogic jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic;
-  public ArrayList<LocalMediaInfo> a;
-  boolean jdField_a_of_type_Boolean;
-  public int b;
-  private boolean b;
-  int c;
-  int d = 0;
-  public int e = 1;
+  public ArrayList<LocalMediaInfo> a = new ArrayList();
+  public Drawable b;
+  public ColorDrawable c = new ColorDrawable(570425344);
+  public LayoutInflater d;
+  public int e;
+  public int f;
+  int g;
+  int h = 0;
+  boolean i;
+  RecyclerView j;
+  AECirclePhotoListLogic k;
+  GridLayoutManager l;
+  public int m = 1;
+  private final Context n;
+  private boolean o = true;
   
   public PhotoGridAdapter(Context paramContext, RecyclerView paramRecyclerView, AECirclePhotoListLogic paramAECirclePhotoListLogic)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = ((GridLayoutManager)paramRecyclerView.getLayoutManager());
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic = paramAECirclePhotoListLogic;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.n = paramContext;
+    this.j = paramRecyclerView;
+    this.l = ((GridLayoutManager)paramRecyclerView.getLayoutManager());
+    this.k = paramAECirclePhotoListLogic;
+    this.d = LayoutInflater.from(this.n);
     paramContext = paramContext.getResources();
-    int i = paramContext.getDisplayMetrics().widthPixels;
-    this.c = paramContext.getDimensionPixelSize(2131296692);
-    this.jdField_a_of_type_Int = ((i - this.c * 2) / 3);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.setSpanSizeLookup(new PhotoGridAdapter.1(this));
-  }
-  
-  private int a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().maxSelectNum;
-  }
-  
-  private int a(int paramInt)
-  {
-    return paramInt + 1 + c();
+    int i1 = paramContext.getDisplayMetrics().widthPixels;
+    this.g = paramContext.getDimensionPixelSize(2131297020);
+    this.e = ((i1 - this.g * 2) / 3);
+    this.f = this.e;
+    this.l.setSpanSizeLookup(new PhotoGridAdapter.1(this));
   }
   
   private void a(int paramInt, PhotoGridAdapter.PhotoVH paramPhotoVH, LocalMediaInfo paramLocalMediaInfo)
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
-      paramLocalMediaInfo = QAlbumUtil.createContentDescriptionWithCheckBox(QAlbumUtil.getMediaType(paramLocalMediaInfo), paramLocalMediaInfo, paramInt, paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.isChecked());
-      paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setContentDescription(paramLocalMediaInfo);
+      paramLocalMediaInfo = QAlbumUtil.createContentDescriptionWithCheckBox(QAlbumUtil.getMediaType(paramLocalMediaInfo), paramLocalMediaInfo, paramInt, paramPhotoVH.d.isChecked());
+      paramPhotoVH.d.setContentDescription(paramLocalMediaInfo);
     }
   }
   
@@ -125,32 +112,38 @@ public class PhotoGridAdapter
     localStringBuilder.append("[setSelected], path=");
     localStringBuilder.append(paramLocalMediaInfo.path);
     AEQLog.a("PhotoGridAdapter", localStringBuilder.toString());
-    paramPhotoVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoItemClickListener.onClick(paramPhotoVH.jdField_a_of_type_AndroidViewView);
-    paramLocalMediaInfo = paramPhotoVH.jdField_b_of_type_AndroidWidgetImageView;
+    paramPhotoVH.i.onClick(paramPhotoVH.g);
+    paramLocalMediaInfo = paramPhotoVH.b;
     boolean bool = false;
     paramLocalMediaInfo.setVisibility(0);
-    if (c() > 0) {
+    paramLocalMediaInfo = this.k;
+    if (paramLocalMediaInfo != null) {
+      paramLocalMediaInfo = paramLocalMediaInfo.i();
+    } else {
+      paramLocalMediaInfo = "";
+    }
+    if (n() > 0) {
       bool = true;
     }
-    AEReportUtils.a(bool, true, getItemViewType(paramInt), paramInt);
+    AEReportUtils.a(bool, true, getItemViewType(paramInt), paramInt, paramLocalMediaInfo);
   }
   
   private void a(PhotoGridAdapter.PhotoVH paramPhotoVH, LocalMediaInfo paramLocalMediaInfo, int paramInt)
   {
-    if (a(paramInt))
+    if (d(paramInt))
     {
-      paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setCheckedNumber(a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedPhotoList.indexOf(paramLocalMediaInfo.path)));
-      paramPhotoVH.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramPhotoVH.d.setCheckedNumber(e(this.k.e().selectedPhotoList.indexOf(paramLocalMediaInfo.path)));
+      paramPhotoVH.b.setVisibility(0);
       return;
     }
     if (paramInt == 3)
     {
-      paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
-      paramPhotoVH.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramPhotoVH.d.setChecked(false);
+      paramPhotoVH.b.setVisibility(8);
       return;
     }
-    paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
-    paramPhotoVH.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramPhotoVH.d.setChecked(false);
+    paramPhotoVH.b.setVisibility(8);
   }
   
   private void a(List<LocalMediaInfo> paramList, int paramInt)
@@ -159,29 +152,14 @@ public class PhotoGridAdapter
     SimpleEventBus.getInstance().dispatchEvent(paramList);
   }
   
-  private boolean a()
-  {
-    return b() >= a();
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  private int b()
-  {
-    return d() + c();
-  }
-  
   private void b(int paramInt, PhotoGridAdapter.PhotoVH paramPhotoVH)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("handlePhotoItemClick, position = ");
     ((StringBuilder)localObject).append(paramInt);
     AEQLog.a("PhotoGridAdapter", ((StringBuilder)localObject).toString());
-    localObject = (LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.isChecked())
+    localObject = (LocalMediaInfo)this.a.get(paramInt);
+    if (!paramPhotoVH.d.isChecked())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("没有选中，点击后变选中, position = ");
@@ -199,89 +177,95 @@ public class PhotoGridAdapter
   
   private void b(int paramInt, LocalMediaInfo paramLocalMediaInfo, PhotoGridAdapter.PhotoVH paramPhotoVH)
   {
-    paramPhotoVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoItemClickListener.onClick(paramPhotoVH.jdField_a_of_type_AndroidViewView);
+    paramPhotoVH.i.onClick(paramPhotoVH.g);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cancelSelected path = ");
     localStringBuilder.append(paramLocalMediaInfo.path);
     AEQLog.a("PhotoGridAdapter", localStringBuilder.toString());
-    paramPhotoVH.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramPhotoVH.b.setVisibility(8);
+    paramLocalMediaInfo = this.k;
+    if (paramLocalMediaInfo != null) {
+      paramLocalMediaInfo = paramLocalMediaInfo.i();
+    } else {
+      paramLocalMediaInfo = "";
+    }
     boolean bool;
-    if (c() > 0) {
+    if (n() > 0) {
       bool = true;
     } else {
       bool = false;
     }
-    AEReportUtils.a(bool, false, getItemViewType(paramInt), paramInt);
+    AEReportUtils.a(bool, false, getItemViewType(paramInt), paramInt, paramLocalMediaInfo);
   }
   
   private void b(PhotoGridAdapter.PhotoVH paramPhotoVH)
   {
-    if ((paramPhotoVH != null) && (paramPhotoVH.jdField_a_of_type_AndroidWidgetImageView != null))
+    if ((paramPhotoVH != null) && (paramPhotoVH.a != null))
     {
-      if (paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox == null) {
+      if (paramPhotoVH.d == null) {
         return;
       }
-      paramPhotoVH.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-      paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setActivated(false);
+      paramPhotoVH.a.setAlpha(1.0F);
+      paramPhotoVH.d.setActivated(false);
     }
-  }
-  
-  private int c()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().initialHasPickedNum;
   }
   
   private void c(int paramInt, PhotoGridAdapter.PhotoVH paramPhotoVH)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().canPickVideo)
+    if (this.k.g().canPickVideo)
     {
-      LocalMediaInfo localLocalMediaInfo = a(paramInt);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a(this.jdField_a_of_type_AndroidContentContext, localLocalMediaInfo)) {
+      LocalMediaInfo localLocalMediaInfo = b(paramInt);
+      if (this.k.a(this.n, localLocalMediaInfo)) {
         a(paramInt, paramPhotoVH);
       }
     }
     else
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2064515225), 0).a();
+      QQToast.makeText(this.n, HardCodeUtil.a(2064187572), 0).show();
     }
   }
   
   private void c(PhotoGridAdapter.PhotoVH paramPhotoVH)
   {
-    if ((paramPhotoVH != null) && (paramPhotoVH.jdField_a_of_type_AndroidWidgetImageView != null))
+    if ((paramPhotoVH != null) && (paramPhotoVH.a != null))
     {
-      if (paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox == null) {
+      if (paramPhotoVH.d == null) {
         return;
       }
-      paramPhotoVH.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.3F);
-      paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setActivated(true);
+      paramPhotoVH.a.setAlpha(0.3F);
+      paramPhotoVH.d.setActivated(true);
     }
   }
   
-  private int d()
+  private boolean d(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedPhotoList.size();
+    return paramInt == 1;
   }
   
-  private void d()
+  private int e(int paramInt)
   {
-    int i = this.e;
+    return paramInt + 1 + n();
+  }
+  
+  private void i()
+  {
+    int i1 = this.m;
     Object localObject;
-    if (i == 1)
+    if (i1 == 1)
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.o)
       {
         localObject = new LocalMediaInfo();
         ((LocalMediaInfo)localObject).mMimeType = "mobileqq/camera";
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, localObject);
+        this.a.add(0, localObject);
       }
     }
     else
     {
       LocalMediaInfo localLocalMediaInfo;
-      if (i == 2)
+      if (i1 == 2)
       {
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject = this.a.iterator();
         while (((Iterator)localObject).hasNext())
         {
           localLocalMediaInfo = (LocalMediaInfo)((Iterator)localObject).next();
@@ -290,9 +274,9 @@ public class PhotoGridAdapter
           }
         }
       }
-      if (i == 3)
+      if (i1 == 3)
       {
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject = this.a.iterator();
         while (((Iterator)localObject).hasNext())
         {
           localLocalMediaInfo = (LocalMediaInfo)((Iterator)localObject).next();
@@ -304,36 +288,36 @@ public class PhotoGridAdapter
     }
   }
   
-  private void e()
+  private void j()
   {
-    boolean bool = a();
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findFirstVisibleItemPosition();
-    int k = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findLastVisibleItemPosition();
-    if (j != -1)
+    boolean bool = k();
+    int i2 = this.l.findFirstVisibleItemPosition();
+    int i3 = this.l.findLastVisibleItemPosition();
+    if (i2 != -1)
     {
-      if (k == -1) {
+      if (i3 == -1) {
         return;
       }
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("notifyLimitState,startPosition:");
-      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append(i2);
       ((StringBuilder)localObject1).append("，endPosition:");
-      ((StringBuilder)localObject1).append(k);
+      ((StringBuilder)localObject1).append(i3);
       QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject1).toString());
-      int i = j;
-      while (i <= k)
+      int i1 = i2;
+      while (i1 <= i3)
       {
-        if (getItemViewType(i) != 2)
+        if (getItemViewType(i1) != 2)
         {
-          Object localObject2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i - j);
-          localObject1 = a(i);
+          Object localObject2 = this.j.getChildAt(i1 - i2);
+          localObject1 = b(i1);
           if (localObject2 == null)
           {
             if (QLog.isColorLevel())
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("notifyLimitState view = null at ");
-              ((StringBuilder)localObject1).append(i);
+              ((StringBuilder)localObject1).append(i1);
               QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject1).toString());
             }
           }
@@ -343,43 +327,61 @@ public class PhotoGridAdapter
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("notifyLimitState info = null at ");
-              ((StringBuilder)localObject1).append(i);
+              ((StringBuilder)localObject1).append(i1);
               QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject1).toString());
             }
           }
           else
           {
-            localObject2 = (PhotoGridAdapter.PhotoVH)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject2);
-            if (((!bool) || (a(((LocalMediaInfo)localObject1).selectStatus))) && (!a((LocalMediaInfo)localObject1)) && (!b((LocalMediaInfo)localObject1))) {
+            localObject2 = (PhotoGridAdapter.PhotoVH)this.j.getChildViewHolder((View)localObject2);
+            if (((!bool) || (d(((LocalMediaInfo)localObject1).selectStatus))) && (!a((LocalMediaInfo)localObject1)) && (!b((LocalMediaInfo)localObject1))) {
               b((PhotoGridAdapter.PhotoVH)localObject2);
             } else {
               c((PhotoGridAdapter.PhotoVH)localObject2);
             }
           }
         }
-        i += 1;
+        i1 += 1;
       }
     }
   }
   
-  public View a()
+  private boolean k()
   {
-    FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, ViewUtils.b(42.0F)));
-    return localFrameLayout;
+    return m() >= l();
+  }
+  
+  private int l()
+  {
+    return this.k.e().maxSelectNum;
+  }
+  
+  private int m()
+  {
+    return o() + n();
+  }
+  
+  private int n()
+  {
+    return this.k.g().initialHasPickedNum;
+  }
+  
+  private int o()
+  {
+    return this.k.e().selectedPhotoList.size();
   }
   
   public TextView a()
   {
-    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    TextView localTextView = new TextView(this.n);
     localTextView.setGravity(17);
     localTextView.setTextSize(11.0F);
     localTextView.setTextColor(-1);
     GradientDrawable localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setShape(0);
-    localGradientDrawable.setSize(ViewUtils.b(26.0F), ViewUtils.b(16.0F));
-    float f = ViewUtils.b(4.0F);
-    localGradientDrawable.setCornerRadii(new float[] { f, f, f, f, f, f, f, f });
+    localGradientDrawable.setSize(ViewUtils.dpToPx(26.0F), ViewUtils.dpToPx(16.0F));
+    float f1 = ViewUtils.dpToPx(4.0F);
+    localGradientDrawable.setCornerRadii(new float[] { f1, f1, f1, f1, f1, f1, f1, f1 });
     localGradientDrawable.setColor(1291845632);
     localTextView.setBackgroundDrawable(localGradientDrawable);
     return localTextView;
@@ -392,89 +394,18 @@ public class PhotoGridAdapter
       if (paramInt != 1)
       {
         if (paramInt != 2) {
-          return new PhotoGridAdapter.PhotoVH(this, a());
+          return new PhotoGridAdapter.PhotoVH(this, d());
         }
-        return new PhotoGridAdapter.PhotoVH(this, d());
+        return new PhotoGridAdapter.PhotoVH(this, g());
       }
-      return new PhotoGridAdapter.PhotoVH(this, c());
+      return new PhotoGridAdapter.PhotoVH(this, f());
     }
-    return new PhotoGridAdapter.PhotoVH(this, b());
-  }
-  
-  public LocalMediaInfo a(int paramInt)
-  {
-    if (ArrayUtils.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) {
-      return null;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      if ((localArrayList != null) && (this.d != localArrayList.size()) && (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size() / 2))
-      {
-        this.d = this.jdField_a_of_type_JavaUtilArrayList.size();
-        this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.g();
-      }
-    }
-    return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  protected String a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694856, new Object[] { Integer.valueOf(a()) });
-  }
-  
-  public void a()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.selectedPhotoList;
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findFirstVisibleItemPosition();
-    int k = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findLastVisibleItemPosition();
-    if (j != -1)
-    {
-      if (k == -1) {
-        return;
-      }
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("notifyCheckBox,startPosition:");
-      ((StringBuilder)localObject).append(j);
-      ((StringBuilder)localObject).append("，endPosition:");
-      ((StringBuilder)localObject).append(k);
-      QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject).toString());
-      int i = j;
-      while (i <= k)
-      {
-        localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i - j);
-        if (localObject != null)
-        {
-          localObject = (PhotoGridAdapter.PhotoVH)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
-          if ((localObject != null) && (((PhotoGridAdapter.PhotoVH)localObject).jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox != null) && (((PhotoGridAdapter.PhotoVH)localObject).jdField_b_of_type_AndroidWidgetImageView != null))
-          {
-            LocalMediaInfo localLocalMediaInfo = a(i);
-            if (localLocalMediaInfo != null)
-            {
-              int m = localArrayList.indexOf(localLocalMediaInfo.path);
-              if (m >= 0)
-              {
-                ((PhotoGridAdapter.PhotoVH)localObject).jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setCheckedNumber(a(m));
-                ((PhotoGridAdapter.PhotoVH)localObject).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-                a(i, (PhotoGridAdapter.PhotoVH)localObject, localLocalMediaInfo);
-              }
-              else
-              {
-                ((PhotoGridAdapter.PhotoVH)localObject).jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
-                ((PhotoGridAdapter.PhotoVH)localObject).jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-              }
-            }
-          }
-        }
-        i += 1;
-      }
-      e();
-    }
+    return new PhotoGridAdapter.PhotoVH(this, e());
   }
   
   public void a(int paramInt)
   {
-    this.e = paramInt;
+    this.m = paramInt;
   }
   
   protected void a(int paramInt, PhotoGridAdapter.PhotoVH paramPhotoVH)
@@ -483,8 +414,8 @@ public class PhotoGridAdapter
     ((StringBuilder)localObject).append("handleVideoItemClickForMix, position = ");
     ((StringBuilder)localObject).append(paramInt);
     AEQLog.a("PhotoGridAdapter", ((StringBuilder)localObject).toString());
-    localObject = (LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.isChecked())
+    localObject = (LocalMediaInfo)this.a.get(paramInt);
+    if (!paramPhotoVH.d.isChecked())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("没有选中，点击后变选中, position = ");
@@ -502,41 +433,41 @@ public class PhotoGridAdapter
   
   public void a(int paramInt, PhotoGridAdapter.PhotoVH paramPhotoVH, PhotoGridAdapter.PhotoItemClickListener paramPhotoItemClickListener)
   {
-    paramPhotoVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoItemClickListener = paramPhotoItemClickListener;
-    if (paramPhotoVH.jdField_a_of_type_AndroidViewView != null) {
-      paramPhotoVH.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramPhotoVH.i = paramPhotoItemClickListener;
+    if (paramPhotoVH.g != null) {
+      paramPhotoVH.g.setVisibility(0);
     }
-    paramPhotoVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoItemClickListener.a(paramInt);
-    paramPhotoVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoItemClickListener.a(paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox);
-    paramPhotoItemClickListener = paramPhotoVH.jdField_a_of_type_AndroidWidgetImageView;
+    paramPhotoVH.i.a(paramInt);
+    paramPhotoVH.i.a(paramPhotoVH.d);
+    paramPhotoItemClickListener = paramPhotoVH.a;
     paramPhotoItemClickListener.setAdjustViewBounds(false);
-    LocalMediaInfo localLocalMediaInfo = a(paramInt);
+    LocalMediaInfo localLocalMediaInfo = b(paramInt);
     Object localObject = QAlbumUtil.createContentDescription(0, localLocalMediaInfo, paramInt);
     paramPhotoVH.itemView.setContentDescription((CharSequence)localObject);
     if (localLocalMediaInfo != null)
     {
       if (a(localLocalMediaInfo))
       {
-        if (paramPhotoVH.jdField_b_of_type_AndroidWidgetTextView == null)
+        if (paramPhotoVH.h == null)
         {
-          paramPhotoVH.jdField_b_of_type_AndroidWidgetTextView = a();
-          paramPhotoVH.jdField_b_of_type_AndroidWidgetTextView.setText("GIF");
+          paramPhotoVH.h = a();
+          paramPhotoVH.h.setText("GIF");
           localObject = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject).addRule(11);
           ((RelativeLayout.LayoutParams)localObject).addRule(12);
-          ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, ViewUtils.b(4.0F), ViewUtils.b(4.0F));
-          ((RelativeLayout)paramPhotoVH.itemView).addView(paramPhotoVH.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+          ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, ViewUtils.dpToPx(4.0F), ViewUtils.dpToPx(4.0F));
+          ((RelativeLayout)paramPhotoVH.itemView).addView(paramPhotoVH.h, (ViewGroup.LayoutParams)localObject);
         }
-        paramPhotoVH.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramPhotoVH.h.setVisibility(0);
       }
-      else if (paramPhotoVH.jdField_b_of_type_AndroidWidgetTextView != null)
+      else if (paramPhotoVH.h != null)
       {
-        paramPhotoVH.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramPhotoVH.h.setVisibility(8);
       }
-      int i = AlbumThumbDownloader.THUMB_WIDHT;
-      localLocalMediaInfo.thumbHeight = i;
-      localLocalMediaInfo.thumbWidth = i;
-      localObject = paramPhotoVH.jdField_a_of_type_ComTencentImageURLDrawable;
+      int i1 = AlbumThumbDownloader.THUMB_WIDHT;
+      localLocalMediaInfo.thumbHeight = i1;
+      localLocalMediaInfo.thumbWidth = i1;
+      localObject = paramPhotoVH.e;
       StringBuilder localStringBuilder = new StringBuilder("albumthumb");
       localStringBuilder.append("://");
       localStringBuilder.append(localLocalMediaInfo.path);
@@ -550,48 +481,48 @@ public class PhotoGridAdapter
           localStringBuilder.append(((URL)localObject).toString());
           QLog.d("PhotoGridAdapter", 2, localStringBuilder.toString());
         }
-        localObject = URLDrawableHelper.getDrawable((URL)localObject, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        localObject = URLDrawableHelper.getDrawable((URL)localObject, this.c, this.b);
         ((URLDrawable)localObject).setTag(localLocalMediaInfo);
         paramPhotoItemClickListener.setImageDrawable((Drawable)localObject);
         ((URLImageView)paramPhotoItemClickListener).setURLDrawableDownListener(this);
-        paramPhotoVH.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
+        paramPhotoVH.e = ((URLDrawable)localObject);
       }
       localLocalMediaInfo.visableTime = SystemClock.uptimeMillis();
       localLocalMediaInfo.listViewPosition = paramInt;
-      i = localLocalMediaInfo.selectStatus;
-      a(paramPhotoVH, localLocalMediaInfo, i);
+      i1 = localLocalMediaInfo.selectStatus;
+      a(paramPhotoVH, localLocalMediaInfo, i1);
       a(paramInt, paramPhotoVH, localLocalMediaInfo);
-      if (((a()) && (!a(i))) || (a(localLocalMediaInfo))) {
+      if (((k()) && (!d(i1))) || (a(localLocalMediaInfo))) {
         c(paramPhotoVH);
       } else {
         b(paramPhotoVH);
       }
       paramPhotoVH.itemView.setOnClickListener(new PhotoGridAdapter.3(this, localLocalMediaInfo, paramInt));
       paramPhotoItemClickListener = new PhotoGridAdapter.4(this, localLocalMediaInfo, paramPhotoVH, paramInt);
-      paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setOnClickListener(paramPhotoItemClickListener);
-      paramPhotoVH.jdField_a_of_type_AndroidViewView.setOnClickListener(paramPhotoItemClickListener);
+      paramPhotoVH.d.setOnClickListener(paramPhotoItemClickListener);
+      paramPhotoVH.g.setOnClickListener(paramPhotoItemClickListener);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.selectedPhotoList;
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findFirstVisibleItemPosition();
-    int k = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findLastVisibleItemPosition();
-    int i = j;
-    while (i <= k)
+    ArrayList localArrayList = this.k.c.selectedPhotoList;
+    int i2 = this.l.findFirstVisibleItemPosition();
+    int i3 = this.l.findLastVisibleItemPosition();
+    int i1 = i2;
+    while (i1 <= i3)
     {
-      if ((!paramBoolean) || (paramInt == i))
+      if ((!paramBoolean) || (paramInt == i1))
       {
-        Object localObject2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i - j);
-        Object localObject1 = a(i);
+        Object localObject2 = this.j.getChildAt(i1 - i2);
+        Object localObject1 = b(i1);
         if (localObject2 == null)
         {
           if (QLog.isColorLevel())
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("updateCheckbox view = null at ");
-            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(i1);
             QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject1).toString());
           }
         }
@@ -601,132 +532,132 @@ public class PhotoGridAdapter
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("updateCheckbox info = null at ");
-            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(i1);
             QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject1).toString());
           }
         }
         else
         {
-          int m;
-          if (paramInt != i)
+          int i4;
+          if (paramInt != i1)
           {
-            m = localArrayList.indexOf(((LocalMediaInfo)localObject1).path);
-            if (m >= 0)
+            i4 = localArrayList.indexOf(((LocalMediaInfo)localObject1).path);
+            if (i4 >= 0)
             {
-              localObject1 = (PhotoGridAdapter.PhotoVH)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject2);
-              if ((localObject1 != null) && (((PhotoGridAdapter.PhotoVH)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox != null)) {
-                ((PhotoGridAdapter.PhotoVH)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setCheckedNumber(a(m));
+              localObject1 = (PhotoGridAdapter.PhotoVH)this.j.getChildViewHolder((View)localObject2);
+              if ((localObject1 != null) && (((PhotoGridAdapter.PhotoVH)localObject1).d != null)) {
+                ((PhotoGridAdapter.PhotoVH)localObject1).d.setCheckedNumber(e(i4));
               }
             }
           }
           else
           {
-            m = QAlbumUtil.getMediaType((LocalMediaInfo)localObject1);
-            if ((m == 0) || (m == 1))
+            i4 = QAlbumUtil.getMediaType((LocalMediaInfo)localObject1);
+            if ((i4 == 0) || (i4 == 1))
             {
-              localObject2 = (PhotoGridAdapter.PhotoVH)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject2);
-              if (a(((LocalMediaInfo)localObject1).selectStatus)) {
-                ((PhotoGridAdapter.PhotoVH)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setCheckedNumber(a(localArrayList.indexOf(((LocalMediaInfo)localObject1).path)));
+              localObject2 = (PhotoGridAdapter.PhotoVH)this.j.getChildViewHolder((View)localObject2);
+              if (d(((LocalMediaInfo)localObject1).selectStatus)) {
+                ((PhotoGridAdapter.PhotoVH)localObject2).d.setCheckedNumber(e(localArrayList.indexOf(((LocalMediaInfo)localObject1).path)));
               } else {
-                ((PhotoGridAdapter.PhotoVH)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setChecked(false);
+                ((PhotoGridAdapter.PhotoVH)localObject2).d.setChecked(false);
               }
-              a(i, (PhotoGridAdapter.PhotoVH)localObject2, (LocalMediaInfo)localObject1);
+              a(i1, (PhotoGridAdapter.PhotoVH)localObject2, (LocalMediaInfo)localObject1);
             }
           }
         }
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
   public void a(View paramView, int paramInt, CheckBox paramCheckBox)
   {
     boolean bool1 = QLog.isColorLevel();
-    int i = 2;
+    int i1 = 2;
     if (bool1)
     {
       paramView = new StringBuilder();
       paramView.append("current select count:");
-      paramView.append(d());
+      paramView.append(o());
       QLog.d("PhotoGridAdapter", 2, paramView.toString());
     }
-    paramView = a(paramInt);
-    int j = paramView.selectStatus;
-    if ((!a(j)) && (a()))
+    paramView = b(paramInt);
+    int i2 = paramView.selectStatus;
+    if ((!d(i2)) && (k()))
     {
-      long l = System.currentTimeMillis();
-      if (l - this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().b >= 1000L)
+      long l1 = System.currentTimeMillis();
+      if (l1 - this.k.f().H >= 1000L)
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, a(paramView), 0).a();
+        QQToast.makeText(this.n, c(paramView), 0).show();
         paramCheckBox.setChecked(false);
-        this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().b = l;
+        this.k.f().H = l1;
       }
       return;
     }
-    boolean bool2 = a(j);
+    boolean bool2 = d(i2);
     bool1 = true;
     bool2 ^= true;
     if (bool2) {
-      i = 1;
+      i1 = 1;
     }
-    paramView.selectStatus = i;
+    paramView.selectStatus = i1;
     String str = paramView.path;
     paramCheckBox = PresendPicMgr.a();
     if (bool2)
     {
       paramCheckBox = MimeHelper.getMimeType(paramView.mMimeType);
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().n) && (paramCheckBox != null) && ("video".equals(paramCheckBox[0])))
+      if ((this.k.f().B) && (paramCheckBox != null) && ("video".equals(paramCheckBox[0])))
       {
-        paramCheckBox = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a();
-        paramCheckBox.c += 1;
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().c == 1) {
-          this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().a = paramView;
+        paramCheckBox = this.k.f();
+        paramCheckBox.C += 1;
+        if (this.k.f().C == 1) {
+          this.k.f().E = paramView;
         }
       }
       if ((!TextUtils.isEmpty(paramView.mMimeType)) && ("image/gif".equals(paramView.mMimeType)))
       {
-        paramCheckBox = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a();
-        paramCheckBox.d += 1;
+        paramCheckBox = this.k.f();
+        paramCheckBox.D += 1;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedPhotoList.add(str);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedIndex.add(paramView.position);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedMediaInfoHashMap.put(str, paramView);
-      paramCheckBox = (LinkedHashMap)AlbumUtil.sSelectItemPosMap.get(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().albumId);
+      this.k.e().selectedPhotoList.add(str);
+      this.k.e().selectedIndex.add(paramView.position);
+      this.k.e().selectedMediaInfoHashMap.put(str, paramView);
+      paramCheckBox = (LinkedHashMap)AlbumUtil.sSelectItemPosMap.get(this.k.e().albumId);
       paramView = paramCheckBox;
       if (paramCheckBox == null)
       {
         paramView = new LinkedHashMap();
-        AlbumUtil.sSelectItemPosMap.put(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().albumId, paramView);
+        AlbumUtil.sSelectItemPosMap.put(this.k.e().albumId, paramView);
       }
-      paramView.put(str, Integer.valueOf(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findFirstVisibleItemPosition()));
+      paramView.put(str, Integer.valueOf(this.l.findFirstVisibleItemPosition()));
       paramView = AlbumUtil.sSelectItemAlbum;
       if (!paramView.containsKey(str)) {
-        paramView.put(str, new Pair(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().albumId, this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().albumName));
+        paramView.put(str, new Pair(this.k.e().albumId, this.k.e().albumName));
       }
     }
     else
     {
       Object localObject = MimeHelper.getMimeType(paramView.mMimeType);
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().n) && (localObject != null) && ("video".equals(localObject[0])))
+      if ((this.k.f().B) && (localObject != null) && ("video".equals(localObject[0])))
       {
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a();
-        ((PhotoListBaseData)localObject).c -= 1;
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().c == 1) {
-          this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().a = paramView;
+        localObject = this.k.f();
+        ((PhotoListBaseData)localObject).C -= 1;
+        if (this.k.f().C == 1) {
+          this.k.f().E = paramView;
         }
       }
       if ((!TextUtils.isEmpty(paramView.mMimeType)) && ("image/gif".equals(paramView.mMimeType)))
       {
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a();
-        ((PhotoListBaseData)localObject).d -= 1;
+        localObject = this.k.f();
+        ((PhotoListBaseData)localObject).D -= 1;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedPhotoList.remove(str);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedIndex.remove(paramView.position);
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedMediaInfoHashMap.remove(str);
+      this.k.e().selectedPhotoList.remove(str);
+      this.k.e().selectedIndex.remove(paramView.position);
+      this.k.e().selectedMediaInfoHashMap.remove(str);
       if (paramCheckBox != null) {
         paramCheckBox.b(str, 1013);
       }
-      paramView = (HashMap)AlbumUtil.sSelectItemPosMap.get(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().albumId);
+      paramView = (HashMap)AlbumUtil.sSelectItemPosMap.get(this.k.e().albumId);
       if (paramView != null) {
         paramView.remove(str);
       }
@@ -750,12 +681,12 @@ public class PhotoGridAdapter
   public void a(PhotoGridAdapter.PhotoVH paramPhotoVH, int paramInt)
   {
     PhotoGridAdapter.PhotoItemClickListener localPhotoItemClickListener = new PhotoGridAdapter.PhotoItemClickListener(this);
-    int i = getItemViewType(paramInt);
-    if (i != 0)
+    int i1 = getItemViewType(paramInt);
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2) {
+        if (i1 != 2) {
           return;
         }
         a(paramPhotoVH);
@@ -772,15 +703,15 @@ public class PhotoGridAdapter
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    d();
+    this.a.clear();
+    this.a.addAll(paramList);
+    i();
     ThreadManager.getUIHandler().post(new PhotoGridAdapter.2(this));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.o = paramBoolean;
   }
   
   public boolean a(LocalMediaInfo paramLocalMediaInfo)
@@ -788,56 +719,87 @@ public class PhotoGridAdapter
     return (paramLocalMediaInfo != null) && ("image/gif".equals(paramLocalMediaInfo.mMimeType));
   }
   
-  public View b()
+  public LocalMediaInfo b(int paramInt)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2064318479, null);
-    localView.setLayoutParams(new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-    return localView;
+    if (ArrayUtils.isOutOfArrayIndex(paramInt, this.a)) {
+      return null;
+    }
+    if (this.i)
+    {
+      ArrayList localArrayList = this.a;
+      if ((localArrayList != null) && (this.h != localArrayList.size()) && (paramInt > this.a.size() / 2))
+      {
+        this.h = this.a.size();
+        this.k.o();
+      }
+    }
+    return (LocalMediaInfo)this.a.get(paramInt);
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null)
+    ArrayList localArrayList = this.k.c.selectedPhotoList;
+    int i2 = this.l.findFirstVisibleItemPosition();
+    int i3 = this.l.findLastVisibleItemPosition();
+    if (i2 != -1)
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if (i3 == -1) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("notifyCheckBox,startPosition:");
+      ((StringBuilder)localObject).append(i2);
+      ((StringBuilder)localObject).append("，endPosition:");
+      ((StringBuilder)localObject).append(i3);
+      QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject).toString());
+      int i1 = i2;
+      while (i1 <= i3)
       {
-        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)((Iterator)localObject).next();
-        if (localLocalMediaInfo != null) {
-          localLocalMediaInfo.selectStatus = 2;
+        localObject = this.j.getChildAt(i1 - i2);
+        if (localObject != null)
+        {
+          localObject = (PhotoGridAdapter.PhotoVH)this.j.getChildViewHolder((View)localObject);
+          if ((localObject != null) && (((PhotoGridAdapter.PhotoVH)localObject).d != null) && (((PhotoGridAdapter.PhotoVH)localObject).b != null))
+          {
+            LocalMediaInfo localLocalMediaInfo = b(i1);
+            if (localLocalMediaInfo != null)
+            {
+              int i4 = localArrayList.indexOf(localLocalMediaInfo.path);
+              if (i4 >= 0)
+              {
+                ((PhotoGridAdapter.PhotoVH)localObject).d.setCheckedNumber(e(i4));
+                ((PhotoGridAdapter.PhotoVH)localObject).b.setVisibility(0);
+                a(i1, (PhotoGridAdapter.PhotoVH)localObject, localLocalMediaInfo);
+              }
+              else
+              {
+                ((PhotoGridAdapter.PhotoVH)localObject).d.setChecked(false);
+                ((PhotoGridAdapter.PhotoVH)localObject).b.setVisibility(8);
+              }
+            }
+          }
         }
+        i1 += 1;
       }
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.e != 1)
-    {
-      AECirclePhotoListLogic localAECirclePhotoListLogic = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic;
-      if (localAECirclePhotoListLogic != null) {
-        localAECirclePhotoListLogic.g();
-      }
+      j();
     }
   }
   
   public void b(int paramInt, PhotoGridAdapter.PhotoVH paramPhotoVH, PhotoGridAdapter.PhotoItemClickListener paramPhotoItemClickListener)
   {
-    if (paramPhotoVH.jdField_a_of_type_AndroidViewView != null) {
-      paramPhotoVH.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (paramPhotoVH.g != null) {
+      paramPhotoVH.g.setVisibility(0);
     }
-    paramPhotoVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoItemClickListener = paramPhotoItemClickListener;
+    paramPhotoVH.i = paramPhotoItemClickListener;
     paramPhotoItemClickListener = new PhotoGridAdapter.5(this, paramInt, paramPhotoVH);
-    paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox.setOnClickListener(paramPhotoItemClickListener);
-    paramPhotoVH.jdField_a_of_type_AndroidViewView.setOnClickListener(paramPhotoItemClickListener);
+    paramPhotoVH.d.setOnClickListener(paramPhotoItemClickListener);
+    paramPhotoVH.g.setOnClickListener(paramPhotoItemClickListener);
     paramPhotoVH.itemView.setOnClickListener(new PhotoGridAdapter.6(this, paramInt));
-    paramPhotoVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoItemClickListener.a(paramInt);
-    paramPhotoVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPhotoGridAdapter$PhotoItemClickListener.a(paramPhotoVH.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox);
-    ImageView localImageView = paramPhotoVH.jdField_a_of_type_AndroidWidgetImageView;
+    paramPhotoVH.i.a(paramInt);
+    paramPhotoVH.i.a(paramPhotoVH.d);
+    ImageView localImageView = paramPhotoVH.a;
     localImageView.setAdjustViewBounds(false);
-    LocalMediaInfo localLocalMediaInfo = a(paramInt);
+    LocalMediaInfo localLocalMediaInfo = b(paramInt);
     paramPhotoItemClickListener = QAlbumUtil.createContentDescription(1, localLocalMediaInfo, paramInt);
     paramPhotoVH.itemView.setContentDescription(paramPhotoItemClickListener);
     if (localLocalMediaInfo.isSystemMeidaStore) {
@@ -845,10 +807,10 @@ public class PhotoGridAdapter
     } else {
       paramPhotoItemClickListener = QAlbumUtil.generateAlbumThumbURL(localLocalMediaInfo, "APP_VIDEO");
     }
-    int i = AlbumThumbDownloader.THUMB_WIDHT;
-    localLocalMediaInfo.thumbHeight = i;
-    localLocalMediaInfo.thumbWidth = i;
-    Object localObject = paramPhotoVH.jdField_a_of_type_ComTencentImageURLDrawable;
+    int i1 = AlbumThumbDownloader.THUMB_WIDHT;
+    localLocalMediaInfo.thumbHeight = i1;
+    localLocalMediaInfo.thumbWidth = i1;
+    Object localObject = paramPhotoVH.e;
     if ((localObject == null) || (!((URLDrawable)localObject).getURL().equals(paramPhotoItemClickListener)))
     {
       if (QLog.isColorLevel())
@@ -858,13 +820,13 @@ public class PhotoGridAdapter
         ((StringBuilder)localObject).append(paramPhotoItemClickListener.toString());
         QLog.d("PhotoListActivity", 2, ((StringBuilder)localObject).toString());
       }
-      paramPhotoItemClickListener = URLDrawableHelper.getDrawable(paramPhotoItemClickListener, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramPhotoItemClickListener = URLDrawableHelper.getDrawable(paramPhotoItemClickListener, this.c, this.b);
       paramPhotoItemClickListener.setTag(localLocalMediaInfo);
       localImageView.setImageDrawable(paramPhotoItemClickListener);
       ((URLImageView)localImageView).setURLDrawableDownListener(this);
-      paramPhotoVH.jdField_a_of_type_ComTencentImageURLDrawable = paramPhotoItemClickListener;
+      paramPhotoVH.e = paramPhotoItemClickListener;
     }
-    paramPhotoItemClickListener = paramPhotoVH.jdField_a_of_type_AndroidWidgetTextView;
+    paramPhotoItemClickListener = paramPhotoVH.f;
     if ((!localLocalMediaInfo.isSystemMeidaStore) && (localLocalMediaInfo.mDuration <= 0L))
     {
       paramPhotoItemClickListener.setVisibility(8);
@@ -881,9 +843,9 @@ public class PhotoGridAdapter
       }
       paramPhotoItemClickListener.setText(QAlbumUtil.formatTimeToString(localLocalMediaInfo.mDuration));
     }
-    i = localLocalMediaInfo.selectStatus;
-    a(paramPhotoVH, localLocalMediaInfo, i);
-    if (((a()) && (!a(i))) || (!this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().canPickVideo)) {
+    i1 = localLocalMediaInfo.selectStatus;
+    a(paramPhotoVH, localLocalMediaInfo, i1);
+    if (((k()) && (!d(i1))) || (!this.k.g().canPickVideo)) {
       c(paramPhotoVH);
     } else {
       b(paramPhotoVH);
@@ -894,40 +856,40 @@ public class PhotoGridAdapter
   
   public void b(boolean paramBoolean)
   {
-    int k = b();
-    int i = a();
-    int j = 1;
-    if (k == i)
+    int i3 = m();
+    int i1 = l();
+    int i2 = 1;
+    if (i3 == i1)
     {
-      i = j;
+      i1 = i2;
       if (!paramBoolean) {}
     }
-    else if ((k == a() - 1) && (paramBoolean))
+    else if ((i3 == l() - 1) && (paramBoolean))
     {
-      i = j;
+      i1 = i2;
     }
     else
     {
-      i = 0;
+      i1 = 0;
     }
-    if (i != 0)
+    if (i1 != 0)
     {
-      j = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findFirstVisibleItemPosition();
-      k = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findLastVisibleItemPosition();
-      i = j;
-      while (i <= k)
+      i2 = this.l.findFirstVisibleItemPosition();
+      i3 = this.l.findLastVisibleItemPosition();
+      i1 = i2;
+      while (i1 <= i3)
       {
-        if (getItemViewType(i) != 2)
+        if (getItemViewType(i1) != 2)
         {
-          Object localObject2 = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildAt(i - j);
-          Object localObject1 = a(i);
+          Object localObject2 = this.j.getChildAt(i1 - i2);
+          Object localObject1 = b(i1);
           if (localObject2 == null)
           {
             if (QLog.isColorLevel())
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("updateCheckbox view = null at ");
-              ((StringBuilder)localObject1).append(i);
+              ((StringBuilder)localObject1).append(i1);
               QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject1).toString());
             }
           }
@@ -937,51 +899,93 @@ public class PhotoGridAdapter
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("updateCheckbox info = null at ");
-              ((StringBuilder)localObject1).append(i);
+              ((StringBuilder)localObject1).append(i1);
               QLog.d("PhotoGridAdapter", 2, ((StringBuilder)localObject1).toString());
             }
           }
           else
           {
-            localObject2 = (PhotoGridAdapter.PhotoVH)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject2);
-            if (((paramBoolean) || (a(((LocalMediaInfo)localObject1).selectStatus))) && (!a((LocalMediaInfo)localObject1))) {
+            localObject2 = (PhotoGridAdapter.PhotoVH)this.j.getChildViewHolder((View)localObject2);
+            if (((paramBoolean) || (d(((LocalMediaInfo)localObject1).selectStatus))) && (!a((LocalMediaInfo)localObject1))) {
               b((PhotoGridAdapter.PhotoVH)localObject2);
             } else {
               c((PhotoGridAdapter.PhotoVH)localObject2);
             }
           }
         }
-        i += 1;
+        i1 += 1;
       }
     }
   }
   
   public boolean b(LocalMediaInfo paramLocalMediaInfo)
   {
-    return (QAlbumUtil.getMediaType(paramLocalMediaInfo) == 1) && (!this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().canPickVideo);
+    return (QAlbumUtil.getMediaType(paramLocalMediaInfo) == 1) && (!this.k.g().canPickVideo);
   }
   
-  public View c()
+  protected String c(LocalMediaInfo paramLocalMediaInfo)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2064318482, null);
-    localView.setLayoutParams(new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-    return localView;
+    return this.n.getResources().getString(2131892559, new Object[] { Integer.valueOf(l()) });
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = false;
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)((Iterator)localObject).next();
+        if (localLocalMediaInfo != null) {
+          localLocalMediaInfo.selectStatus = 2;
+        }
+      }
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.i = true;
+    if (this.m != 1)
+    {
+      AECirclePhotoListLogic localAECirclePhotoListLogic = this.k;
+      if (localAECirclePhotoListLogic != null) {
+        localAECirclePhotoListLogic.o();
+      }
+    }
   }
   
   public View d()
   {
-    FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    localFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
+    FrameLayout localFrameLayout = new FrameLayout(this.n);
+    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, ViewUtils.dpToPx(42.0F)));
+    return localFrameLayout;
+  }
+  
+  public View e()
+  {
+    View localView = LayoutInflater.from(this.n).inflate(2064056339, null);
+    localView.setLayoutParams(new ViewGroup.LayoutParams(this.e, this.f));
+    return localView;
+  }
+  
+  public View f()
+  {
+    View localView = LayoutInflater.from(this.n).inflate(2064056342, null);
+    localView.setLayoutParams(new ViewGroup.LayoutParams(this.e, this.f));
+    return localView;
+  }
+  
+  public View g()
+  {
+    FrameLayout localFrameLayout = new FrameLayout(this.n);
+    localFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(this.e, this.f));
     localFrameLayout.setBackgroundColor(-1315856);
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageResource(2064056659);
+    ImageView localImageView = new ImageView(this.n);
+    localImageView.setImageResource(2130853650);
     localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.b(40.0F), ViewUtils.b(40.0F));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.dpToPx(40.0F), ViewUtils.dpToPx(40.0F));
     localLayoutParams.gravity = 17;
     localFrameLayout.addView(localImageView, localLayoutParams);
     return localFrameLayout;
@@ -989,15 +993,20 @@ public class PhotoGridAdapter
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
+    return this.a.size() + 1;
   }
   
   public int getItemViewType(int paramInt)
   {
-    if (ArrayUtils.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) {
+    if (ArrayUtils.isOutOfArrayIndex(paramInt, this.a)) {
       return -1;
     }
-    return QAlbumUtil.getMediaType((LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    return QAlbumUtil.getMediaType((LocalMediaInfo)this.a.get(paramInt));
+  }
+  
+  public void h()
+  {
+    this.i = false;
   }
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
@@ -1012,8 +1021,8 @@ public class PhotoGridAdapter
   {
     new Rect();
     paramView = (LocalMediaInfo)paramURLDrawable.getTag();
-    int i = paramView.listViewPosition;
-    if (i != -1)
+    int i1 = paramView.listViewPosition;
+    if (i1 != -1)
     {
       if (paramView.visableTime == 0L) {
         return;
@@ -1024,7 +1033,7 @@ public class PhotoGridAdapter
       {
         paramURLDrawable = new StringBuilder();
         paramURLDrawable.append("onLoadSuccessed,no next ,listViewPositon:");
-        paramURLDrawable.append(i);
+        paramURLDrawable.append(i1);
         paramURLDrawable.append(" costTime:");
         paramURLDrawable.append(l1 - l2);
         paramURLDrawable.append(" imageInfo;");
@@ -1038,7 +1047,7 @@ public class PhotoGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.adapter.PhotoGridAdapter
  * JD-Core Version:    0.7.0.1
  */

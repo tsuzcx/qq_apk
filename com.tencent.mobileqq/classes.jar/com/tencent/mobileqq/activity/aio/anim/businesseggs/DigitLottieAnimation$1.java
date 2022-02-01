@@ -15,8 +15,10 @@ class DigitLottieAnimation$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.d("DigitLottieAnimation", 2, "onAnimationEnd");
-    DigitLottieAnimation.a(this.a).remove();
+    QLog.d("DigitLottieAnimation", 1, "onAnimationEnd");
+    if (!DigitLottieAnimation.a(this.a).isEmpty()) {
+      DigitLottieAnimation.a(this.a).remove();
+    }
     if (DigitLottieAnimation.a(this.a).isEmpty())
     {
       this.a.c();
@@ -27,11 +29,14 @@ class DigitLottieAnimation$1
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    QLog.d("DigitLottieAnimation", 1, "onAnimationStart");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.DigitLottieAnimation.1
  * JD-Core Version:    0.7.0.1
  */

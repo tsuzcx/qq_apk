@@ -10,23 +10,18 @@ import com.tencent.mobileqq.filemanager.fileviewer.sendbar.QlinkSendBarManager;
 
 public class QFileCustomBottomBarManager
 {
-  public static final int[] a;
+  public static final int[] f = { 1, 5 };
   protected Context a;
-  protected Bundle a;
-  protected QQAppInterface a;
-  protected QFileSendBottomView a;
-  protected boolean a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 5 };
-  }
+  protected QQAppInterface b;
+  protected QFileSendBottomView c;
+  protected Bundle d;
+  protected boolean e;
   
   public QFileCustomBottomBarManager(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView = paramQFileSendBottomView;
+    this.b = paramQQAppInterface;
+    this.a = paramContext;
+    this.c = paramQFileSendBottomView;
   }
   
   public static QFileCustomBottomBarManager a(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView, Bundle paramBundle)
@@ -54,7 +49,7 @@ public class QFileCustomBottomBarManager
       paramIntent = new Intent();
     }
     paramIntent.putExtra("qfile_send_bottom_bar_finish_result_code", -1);
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    Activity localActivity = (Activity)this.a;
     localActivity.setResult(paramInt, paramIntent);
     localActivity.finish();
   }
@@ -68,18 +63,18 @@ public class QFileCustomBottomBarManager
   {
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-      this.jdField_a_of_type_Boolean = true;
+      this.d = paramBundle;
+      this.e = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileCustomBottomBarManager
  * JD-Core Version:    0.7.0.1
  */

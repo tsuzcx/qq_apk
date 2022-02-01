@@ -40,46 +40,26 @@ import org.jetbrains.annotations.NotNull;
 public class CommonStickerRecPresenter
   implements IStickerPresenter
 {
-  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private static List<StickerRecCacheEntity> jdField_a_of_type_JavaUtilList = new ArrayList();
-  int jdField_a_of_type_Int;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  public AppInterface a;
-  private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new CommonStickerRecPresenter.1(this);
-  BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  public BaseAIOContext a;
-  IStickerRecEmoticon jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon;
-  CommonStickerRecView jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView;
-  public QBaseActivity a;
-  String jdField_a_of_type_JavaLangString;
+  private static List<StickerRecCacheEntity> a = new ArrayList();
+  private static HashSet<String> b = new HashSet();
+  CommonStickerRecView c;
+  IStickerRecEmoticon d;
+  public AppInterface e;
+  public QBaseActivity f;
+  public BaseAIOContext g;
+  EditText h;
+  BaseSessionInfo i;
+  String j;
+  int k;
+  private URLDrawableDownListener l = new CommonStickerRecPresenter.1(this);
   
   public CommonStickerRecPresenter(AppInterface paramAppInterface, QBaseActivity paramQBaseActivity, BaseAIOContext paramBaseAIOContext, EditText paramEditText)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = paramBaseAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseAIOContext.a();
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-  }
-  
-  @NotNull
-  private URLDrawable.URLDrawableOptions a(IStickerRecEmoticon paramIStickerRecEmoticon)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramIStickerRecEmoticon.a();
-    paramIStickerRecEmoticon = localURLDrawableOptions;
-    if (localURLDrawableOptions == null) {
-      paramIStickerRecEmoticon = URLDrawable.URLDrawableOptions.obtain();
-    }
-    paramIStickerRecEmoticon.mLoadingDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.a();
-    paramIStickerRecEmoticon.mFailedDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.a();
-    paramIStickerRecEmoticon.mGifRoundCorner = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.c;
-    paramIStickerRecEmoticon.mPlayGifImage = true;
-    return paramIStickerRecEmoticon;
-  }
-  
-  public static List<StickerRecCacheEntity> a()
-  {
-    return new ArrayList(jdField_a_of_type_JavaUtilList);
+    this.e = paramAppInterface;
+    this.f = paramQBaseActivity;
+    this.g = paramBaseAIOContext;
+    this.i = paramBaseAIOContext.O();
+    this.h = paramEditText;
   }
   
   private void a(URLDrawable paramURLDrawable)
@@ -108,48 +88,35 @@ public class CommonStickerRecPresenter
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "StickerRecImgLoad", true, paramLong, 0L, localHashMap, "");
   }
   
-  public static void c()
+  @NotNull
+  private URLDrawable.URLDrawableOptions b(IStickerRecEmoticon paramIStickerRecEmoticon)
   {
-    jdField_a_of_type_JavaUtilHashSet.clear();
-    jdField_a_of_type_JavaUtilList.clear();
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramIStickerRecEmoticon.c();
+    paramIStickerRecEmoticon = localURLDrawableOptions;
+    if (localURLDrawableOptions == null) {
+      paramIStickerRecEmoticon = URLDrawable.URLDrawableOptions.obtain();
+    }
+    paramIStickerRecEmoticon.mLoadingDrawable = this.c.e();
+    paramIStickerRecEmoticon.mFailedDrawable = this.c.e();
+    paramIStickerRecEmoticon.mGifRoundCorner = this.c.d;
+    paramIStickerRecEmoticon.mPlayGifImage = true;
+    return paramIStickerRecEmoticon;
   }
   
-  public int a()
+  public static void e()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon;
-    if (localObject == null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.b;
-    }
-    if (StickerRecManagerImpl.isStickerRecFromLocal((IStickerRecEmoticon)localObject)) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.b;
-    }
-    if (!StickerRecManagerImpl.isStickerRecFromRemote(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon)) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.b;
-    }
-    localObject = (StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon;
-    float f1 = ((StickerRecData)localObject).g();
-    float f2 = ((StickerRecData)localObject).h();
-    float f3 = f1 / f2;
-    if ((f3 <= 1.777778F) && (f3 >= 0.5625F))
-    {
-      int j = (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.jdField_a_of_type_Int * f1 / f2);
-      int i = j;
-      if (j == 0) {
-        i = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.b;
-      }
-      return i;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.b;
+    b.clear();
+    a.clear();
+  }
+  
+  public static List<StickerRecCacheEntity> f()
+  {
+    return new ArrayList(a);
   }
   
   public IStickerModel a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.d;
   }
   
   protected void a(IStickerRecEmoticon paramIStickerRecEmoticon)
@@ -160,24 +127,24 @@ public class CommonStickerRecPresenter
     if (paramIStickerRecEmoticon == null) {
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    int i = this.jdField_a_of_type_Int;
-    int j = 1;
+    Object localObject2 = this.j;
+    int m = this.k;
+    int n = 1;
     Object localObject1 = localObject2;
     Object localObject3;
-    if (i == 1)
+    if (m == 1)
     {
-      localObject3 = ScenesRecommendManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppAppInterface).findScenesRecItemByID(this.jdField_a_of_type_JavaLangString);
+      localObject3 = ScenesRecommendManagerImpl.get(this.e).findScenesRecItemByID(this.j);
       localObject1 = localObject2;
       if (localObject3 != null) {
         localObject1 = ((ScenesRecommendItem)localObject3).c();
       }
     }
-    StickerRecManagerImpl.get(this.jdField_a_of_type_ComTencentCommonAppAppInterface).setCurrentText((String)localObject1);
+    StickerRecManagerImpl.get(this.e).setCurrentText((String)localObject1);
     if (StickerRecManagerImpl.isStickerRecFromLocal(paramIStickerRecEmoticon))
     {
-      paramIStickerRecEmoticon.a((BaseQQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-      paramIStickerRecEmoticon = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(getClass());
+      paramIStickerRecEmoticon.a((BaseQQAppInterface)this.e, this.f, this.i);
+      paramIStickerRecEmoticon = this.e.getHandler(getClass());
       if (paramIStickerRecEmoticon != null) {
         paramIStickerRecEmoticon.sendMessage(paramIStickerRecEmoticon.obtainMessage(92));
       }
@@ -186,38 +153,38 @@ public class CommonStickerRecPresenter
     paramIStickerRecEmoticon = (StickerRecData)paramIStickerRecEmoticon;
     localObject1 = new Intent();
     localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(paramIStickerRecEmoticon.m());
+    ((ArrayList)localObject2).add(paramIStickerRecEmoticon.B());
     ((Intent)localObject1).putStringArrayListExtra("PhotoConst.PHOTO_PATHS", (ArrayList)localObject2);
     ((Intent)localObject1).putExtra("PicContants.NEED_COMPRESS", false);
-    ((Intent)localObject1).putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
-    ((Intent)localObject1).putExtra("uintype", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
-    ((Intent)localObject1).putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.b);
-    ((Intent)localObject1).putExtra("key_confess_topicid", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.e);
+    ((Intent)localObject1).putExtra("uin", this.i.b);
+    ((Intent)localObject1).putExtra("uintype", this.i.a);
+    ((Intent)localObject1).putExtra("troop_uin", this.i.c);
+    ((Intent)localObject1).putExtra("key_confess_topicid", this.i.v);
     ((Intent)localObject1).putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
     ((Intent)localObject1).putExtra("send_in_background", true);
     ((Intent)localObject1).putExtra("PhotoConst.SINGLE_PHOTO_PATH", (Serializable)localObject2);
     ((Intent)localObject1).putExtra("PicContants.NEED_COMPRESS", false);
-    ((Intent)localObject1).putExtra("quick_send_original_md5", paramIStickerRecEmoticon.c());
-    ((Intent)localObject1).putExtra("quick_send_original_size", paramIStickerRecEmoticon.b());
-    ((Intent)localObject1).putExtra("quick_send_thumb_md5", paramIStickerRecEmoticon.g());
+    ((Intent)localObject1).putExtra("quick_send_original_md5", paramIStickerRecEmoticon.l());
+    ((Intent)localObject1).putExtra("quick_send_original_size", paramIStickerRecEmoticon.q());
+    ((Intent)localObject1).putExtra("quick_send_thumb_md5", paramIStickerRecEmoticon.p());
     ((Intent)localObject1).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1047);
     ((Intent)localObject1).putExtra("HOT_PIC_HAS_EXTRA", true);
-    i = j;
-    if (!TextUtils.isEmpty(paramIStickerRecEmoticon.i())) {
-      if (paramIStickerRecEmoticon.i().length() <= 100) {
-        i = j;
+    m = n;
+    if (!TextUtils.isEmpty(paramIStickerRecEmoticon.u())) {
+      if (paramIStickerRecEmoticon.u().length() <= 100) {
+        m = n;
       } else {
-        i = 0;
+        m = 0;
       }
     }
-    if (i != 0)
+    if (m != 0)
     {
-      ((Intent)localObject1).putExtra("key_emotion_source_from", paramIStickerRecEmoticon.e());
-      ((Intent)localObject1).putExtra("key_emotion_source_info", paramIStickerRecEmoticon.h());
-      ((Intent)localObject1).putExtra("key_emotion_source_weburl", paramIStickerRecEmoticon.i());
+      ((Intent)localObject1).putExtra("key_emotion_source_from", paramIStickerRecEmoticon.s());
+      ((Intent)localObject1).putExtra("key_emotion_source_info", paramIStickerRecEmoticon.t());
+      ((Intent)localObject1).putExtra("key_emotion_source_weburl", paramIStickerRecEmoticon.u());
       ((Intent)localObject1).putExtra("key_emotion_source_iconurl", "");
-      ((Intent)localObject1).putExtra("key_emotion_source_packagename", paramIStickerRecEmoticon.j());
-      ((Intent)localObject1).putExtra("key_emotion_source_epid", paramIStickerRecEmoticon.f());
+      ((Intent)localObject1).putExtra("key_emotion_source_packagename", paramIStickerRecEmoticon.v());
+      ((Intent)localObject1).putExtra("key_emotion_source_epid", paramIStickerRecEmoticon.w());
     }
     else
     {
@@ -230,21 +197,21 @@ public class CommonStickerRecPresenter
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("md5:");
-      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.c());
+      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.l());
       ((StringBuilder)localObject3).append("srcfrom:");
-      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.e());
+      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.s());
       ((StringBuilder)localObject3).append(", desc:");
-      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.h());
+      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.t());
       ((StringBuilder)localObject3).append(", webUrl:");
-      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.i());
+      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.u());
       ((StringBuilder)localObject3).append(", pack:");
-      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.j());
+      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.v());
       ((StringBuilder)localObject3).append(", epid:");
-      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.f());
+      ((StringBuilder)localObject3).append(paramIStickerRecEmoticon.w());
       QLog.i("CommonStickerRec", 2, ((StringBuilder)localObject3).toString());
     }
-    ((IEmosmService)QRoute.api(IEmosmService.class)).sendRecEmoPic(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext, this.jdField_a_of_type_AndroidWidgetEditText.getEditableText(), (Intent)localObject1, (ArrayList)localObject2);
-    paramIStickerRecEmoticon = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHandler(getClass());
+    ((IEmosmService)QRoute.api(IEmosmService.class)).sendRecEmoPic(this.e, this.f, this.g, this.h.getEditableText(), (Intent)localObject1, (ArrayList)localObject2);
+    paramIStickerRecEmoticon = this.e.getHandler(getClass());
     if (paramIStickerRecEmoticon != null) {
       paramIStickerRecEmoticon.sendMessage(paramIStickerRecEmoticon.obtainMessage(92));
     }
@@ -260,65 +227,85 @@ public class CommonStickerRecPresenter
     if (!a(paramIStickerModel))
     {
       QLog.e("CommonStickerRec", 1, "binding model error!");
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.a(false);
+      this.c.a(false);
       return;
     }
-    paramIStickerView = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon.a();
+    paramIStickerView = this.d.k();
     if (paramIStickerView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.a(false);
+      this.c.a(false);
       return;
     }
-    paramIStickerModel = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon;
-    paramIStickerView = paramIStickerModel.a(paramIStickerView, a(paramIStickerModel));
+    paramIStickerModel = this.d;
+    paramIStickerView = paramIStickerModel.a(paramIStickerView, b(paramIStickerModel));
     paramIStickerView.setDecodeHandler(StickerDrawableDownloader.a);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.jdField_a_of_type_ComTencentImageURLImageView.setTag(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon);
+    this.c.e.setTag(this.d);
     if (paramIStickerView.getStatus() != 1)
     {
-      paramIStickerView.addHeader("my_uin", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount());
+      paramIStickerView.addHeader("my_uin", this.e.getAccount());
       paramIStickerView.addHeader("emo_big", "true");
       paramIStickerView.addHeader("report_key_start_download", String.valueOf(System.currentTimeMillis()));
       if ((paramIStickerView.getStatus() == 2) || (paramIStickerView.getStatus() == 3)) {
         paramIStickerView.restartDownload();
       }
     }
-    else if ((StickerRecManagerImpl.isStickerRecFromRemote(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon)) && (!jdField_a_of_type_JavaUtilHashSet.contains(((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).k())))
+    else if ((StickerRecManagerImpl.isStickerRecFromRemote(this.d)) && (!b.contains(((StickerRecData)this.d).x())))
     {
-      jdField_a_of_type_JavaUtilHashSet.add(((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).k());
-      paramIStickerModel = ((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).m();
-      jdField_a_of_type_JavaUtilList.add(new StickerRecCacheEntity(paramIStickerModel, System.currentTimeMillis(), ((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).k()));
+      b.add(((StickerRecData)this.d).x());
+      paramIStickerModel = ((StickerRecData)this.d).B();
+      a.add(new StickerRecCacheEntity(paramIStickerModel, System.currentTimeMillis(), ((StickerRecData)this.d).x()));
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramIStickerView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.jdField_a_of_type_ComTencentImageURLImageView.setFocusableInTouchMode(true);
-    if (StickerRecManagerImpl.isStickerRecFromRemote(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon))
+    this.c.e.setImageDrawable(paramIStickerView);
+    this.c.e.setURLDrawableDownListener(this.l);
+    this.c.e.setFocusable(true);
+    this.c.e.setFocusableInTouchMode(true);
+    if (StickerRecManagerImpl.isStickerRecFromRemote(this.d))
     {
-      ((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).a(true);
+      ((StickerRecData)this.d).a(true);
       if (QLog.isColorLevel())
       {
         paramIStickerView = new StringBuilder();
         paramIStickerView.append("md5:");
-        paramIStickerView.append(((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).c());
+        paramIStickerView.append(((StickerRecData)this.d).l());
         QLog.e("CommonStickerRec", 2, paramIStickerView.toString());
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.a(true);
+    this.c.a(true);
   }
   
   public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.j = paramString;
+    this.k = paramInt;
   }
   
-  public boolean a()
+  public boolean a(IStickerModel paramIStickerModel)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.jdField_a_of_type_ComTencentImageURLImageView.getDrawable() instanceof URLDrawable))
+    if ((paramIStickerModel instanceof IStickerRecEmoticon))
     {
-      if (((URLDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView.jdField_a_of_type_ComTencentImageURLImageView.getDrawable()).getStatus() == 1)
+      this.d = ((IStickerRecEmoticon)paramIStickerModel);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(IStickerView paramIStickerView)
+  {
+    if ((paramIStickerView instanceof CommonStickerRecView))
+    {
+      this.c = ((CommonStickerRecView)paramIStickerView);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean c()
+  {
+    if ((this.c.e.getDrawable() instanceof URLDrawable))
+    {
+      if (((URLDrawable)this.c.e.getDrawable()).getStatus() == 1)
       {
-        a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon);
+        a(this.d);
         bool = true;
         break label66;
       }
@@ -330,54 +317,67 @@ public class CommonStickerRecPresenter
     label66:
     if (bool)
     {
-      IStickerRecEmoticon localIStickerRecEmoticon = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon;
+      IStickerRecEmoticon localIStickerRecEmoticon = this.d;
       if ((localIStickerRecEmoticon != null) && (StickerRecManagerImpl.isStickerRecFromRemote(localIStickerRecEmoticon))) {
-        ((StickerRecData)this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon).b(true);
+        ((StickerRecData)this.d).b(true);
       }
     }
     return bool;
   }
   
-  public boolean a(IStickerModel paramIStickerModel)
+  public int g()
   {
-    if ((paramIStickerModel instanceof IStickerRecEmoticon))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon = ((IStickerRecEmoticon)paramIStickerModel);
-      return true;
+    Object localObject = this.d;
+    if (localObject == null) {
+      return this.c.c;
     }
-    return false;
-  }
-  
-  public boolean a(IStickerView paramIStickerView)
-  {
-    if ((paramIStickerView instanceof CommonStickerRecView))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedAdapterMvpCommonStickerRecView = ((CommonStickerRecView)paramIStickerView);
-      return true;
+    if (StickerRecManagerImpl.isStickerRecFromLocal((IStickerRecEmoticon)localObject)) {
+      return this.c.c;
     }
-    return false;
+    if (!StickerRecManagerImpl.isStickerRecFromRemote(this.d)) {
+      return this.c.c;
+    }
+    localObject = (StickerRecData)this.d;
+    float f1 = ((StickerRecData)localObject).z();
+    float f2 = ((StickerRecData)localObject).A();
+    float f3 = f1 / f2;
+    if ((f3 <= 1.777778F) && (f3 >= 0.5625F))
+    {
+      int n = (int)(this.c.b * f1 / f2);
+      int m = n;
+      if (n == 0) {
+        m = this.c.c;
+      }
+      return m;
+    }
+    return this.c.c;
   }
   
-  public boolean b()
+  public boolean h()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon instanceof StickerRecCameraData;
+    return this.d instanceof StickerRecCameraData;
   }
   
-  public boolean c()
+  public boolean i()
   {
-    IStickerRecEmoticon localIStickerRecEmoticon = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedIStickerRecEmoticon;
+    IStickerRecEmoticon localIStickerRecEmoticon = this.d;
     if ((localIStickerRecEmoticon instanceof StickerRecLocalData)) {
-      return ((StickerRecLocalData)localIStickerRecEmoticon).d();
+      return ((StickerRecLocalData)localIStickerRecEmoticon).n();
     }
     if ((localIStickerRecEmoticon instanceof StickerRecFavoriteData)) {
-      return ((StickerRecFavoriteData)localIStickerRecEmoticon).d();
+      return ((StickerRecFavoriteData)localIStickerRecEmoticon).n();
     }
     return false;
+  }
+  
+  public String j()
+  {
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.adapter.mvp.CommonStickerRecPresenter
  * JD-Core Version:    0.7.0.1
  */

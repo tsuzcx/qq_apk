@@ -12,14 +12,14 @@ class SubscribeQRCodeShareHelper$3$1
   
   public void onClick(View paramView)
   {
-    SubscribeQRCodeShareHelper.a(this.a.this$0).dismiss();
+    SubscribeQRCodeShareHelper.g(this.a.this$0).dismiss();
     SubscribeQRCodeShareHelper.a(this.a.this$0, null);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

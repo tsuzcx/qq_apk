@@ -12,7 +12,7 @@ class GLViewGroup$SortComparator
   {
     if ((paramGLView1 != null) && (paramGLView2 != null))
     {
-      if (paramGLView1.d() >= paramGLView2.d()) {
+      if (paramGLView1.j() >= paramGLView2.j()) {
         return 1;
       }
       return -1;

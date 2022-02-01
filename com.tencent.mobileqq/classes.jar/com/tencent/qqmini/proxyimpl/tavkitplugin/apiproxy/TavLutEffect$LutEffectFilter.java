@@ -20,14 +20,14 @@ import org.jetbrains.annotations.NotNull;
 class TavLutEffect$LutEffectFilter
   implements BaseEffectNode.Filter
 {
-  private TextureInfo jdField_a_of_type_ComTencentTavCoremediaTextureInfo;
-  private BaseEffect jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect;
+  private BaseEffect b;
+  private TextureInfo c;
   
   TavLutEffect$LutEffectFilter(TavLutEffect paramTavLutEffect)
   {
     if ((TavLutEffect.a(paramTavLutEffect) != null) && (!TavLutEffect.a(paramTavLutEffect).isRecycled()))
     {
-      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect = new LookupFilter(TavLutEffect.a(paramTavLutEffect), TavLutEffect.a(paramTavLutEffect));
+      this.b = new LookupFilter(TavLutEffect.a(paramTavLutEffect), TavLutEffect.b(paramTavLutEffect));
       return;
     }
     b();
@@ -41,13 +41,13 @@ class TavLutEffect$LutEffectFilter
   
   private void b()
   {
-    if (TextUtils.isEmpty(TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect))) {
+    if (TextUtils.isEmpty(TavLutEffect.c(this.a))) {
       return;
     }
-    TavLutEffect localTavLutEffect = this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect;
-    TavLutEffect.a(localTavLutEffect, BitmapFactory.decodeFile(TavLutEffect.a(localTavLutEffect)));
-    if (TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect) != null) {
-      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect = new LookupFilter(TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect));
+    TavLutEffect localTavLutEffect = this.a;
+    TavLutEffect.a(localTavLutEffect, BitmapFactory.decodeFile(TavLutEffect.c(localTavLutEffect)));
+    if (TavLutEffect.a(this.a) != null) {
+      this.b = new LookupFilter(TavLutEffect.a(this.a));
     }
   }
   
@@ -59,24 +59,24 @@ class TavLutEffect$LutEffectFilter
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect;
+    Object localObject = this.b;
     if (localObject != null)
     {
       ((BaseEffect)localObject).release();
-      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect = null;
+      this.b = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo;
+    localObject = this.c;
     if ((localObject != null) && (!((TextureInfo)localObject).isReleased())) {
-      this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.release();
+      this.c.release();
     }
   }
   
   public void a(@NotNull ImageParams paramImageParams, @NotNull RenderInfo paramRenderInfo)
   {
-    if (this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect == null) {
+    if (this.b == null) {
       return;
     }
-    if ((TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect) != null) && (!TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect).containsTime(paramRenderInfo.getTime()))) {
+    if ((TavLutEffect.d(this.a) != null) && (!TavLutEffect.d(this.a).containsTime(paramRenderInfo.getTime()))) {
       return;
     }
     paramRenderInfo = paramRenderInfo.getCiContext();
@@ -84,26 +84,26 @@ class TavLutEffect$LutEffectFilter
     while (i < paramImageParams.a.size())
     {
       ImageParams.ImageTrackPair localImageTrackPair = (ImageParams.ImageTrackPair)paramImageParams.a.get(i);
-      Object localObject = localImageTrackPair.a();
+      Object localObject = localImageTrackPair.b();
       int j = (int)((CIImage)localObject).getSize().width;
       int k = (int)((CIImage)localObject).getSize().height;
-      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.setRendererWidth(j);
-      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.setRendererHeight(k);
-      if (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo == null)
+      this.b.setRendererWidth(j);
+      this.b.setRendererHeight(k);
+      if (this.c == null)
       {
         paramRenderInfo.getRenderContext().makeCurrent();
-        this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo = CIContext.newTextureInfo(j, k);
+        this.c = CIContext.newTextureInfo(j, k);
       }
-      if ((this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.width != j) || (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.height != k))
+      if ((this.c.width != j) || (this.c.height != k))
       {
         paramRenderInfo.getRenderContext().makeCurrent();
-        this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.release();
-        this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo = CIContext.newTextureInfo(j, k);
+        this.c.release();
+        this.c = CIContext.newTextureInfo(j, k);
       }
-      paramRenderInfo.convertImageToTexture((CIImage)localObject, this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo);
-      localObject = a(this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo);
-      localObject = a(this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.applyFilter((TAVTextureInfo)localObject));
-      ((TextureInfo)localObject).setTextureMatrix(this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.getTextureMatrix());
+      paramRenderInfo.convertImageToTexture((CIImage)localObject, this.c);
+      localObject = a(this.c);
+      localObject = a(this.b.applyFilter((TAVTextureInfo)localObject));
+      ((TextureInfo)localObject).setTextureMatrix(this.c.getTextureMatrix());
       localImageTrackPair.a(new CIImage((TextureInfo)localObject));
       i += 1;
     }
@@ -111,7 +111,7 @@ class TavLutEffect$LutEffectFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavLutEffect.LutEffectFilter
  * JD-Core Version:    0.7.0.1
  */

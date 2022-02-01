@@ -22,19 +22,19 @@ class GetMyStoryVideoListStep$1
 {
   public void a(@NonNull CommonRequest paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = new GetMyStoryVideoListStep.Result(paramErrorMessage.errorCode, null);
+    this.a.c = new GetMyStoryVideoListStep.Result(paramErrorMessage.errorCode, null);
     if (paramErrorMessage.isFail())
     {
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack.a(paramErrorMessage);
+      if (this.a.b != null) {
+        this.a.b.a(paramErrorMessage);
       }
       return;
     }
     if (paramCommonResponse == null)
     {
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
+      if (this.a.a != null)
       {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.a.a());
+        this.a.a.a(this.a.c());
         return;
       }
       SLog.d("GetMyStoryVideoListStep", "finish callBack is null");
@@ -43,13 +43,13 @@ class GetMyStoryVideoListStep$1
     paramCommonRequest = new qqstory_service.RspGetBatchUserVidList();
     try
     {
-      paramCommonRequest.mergeFrom(paramCommonResponse.a);
+      paramCommonRequest.mergeFrom(paramCommonResponse.b);
     }
     catch (InvalidProtocolBufferMicroException paramCommonResponse)
     {
       SLog.c("GetMyStoryVideoListStep", "协议返回错误, RspGetBatchUserVidList", paramCommonResponse);
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = new GetMyStoryVideoListStep.Result(paramCommonRequest.result.error_code.get(), paramCommonRequest.user_vid_list);
+    this.a.c = new GetMyStoryVideoListStep.Result(paramCommonRequest.result.error_code.get(), paramCommonRequest.user_vid_list);
     paramCommonRequest = paramCommonRequest.user_vid_list;
     int k = paramCommonRequest.size();
     int i = 0;
@@ -60,14 +60,14 @@ class GetMyStoryVideoListStep$1
       int j = 0;
       while (j < m)
       {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.a.add(((ByteStringMicro)paramCommonResponse.get(j)).toStringUtf8());
+        this.a.c.d.add(((ByteStringMicro)paramCommonResponse.get(j)).toStringUtf8());
         j += 1;
       }
       i += 1;
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
+    if (this.a.a != null)
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.a.a());
+      this.a.a.a(this.a.c());
       return;
     }
     SLog.d("GetMyStoryVideoListStep", "finish callBack is null");

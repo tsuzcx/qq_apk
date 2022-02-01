@@ -28,11 +28,11 @@ final class XALottieView$mListener$1
     if (paramLottieComposition == null) {
       return;
     }
-    if (XALottieView.a(this.a))
+    if (XALottieView.access$getMIsStop$p(this.a))
     {
       paramLottieComposition = new StringBuilder();
       paramLottieComposition.append("onCompositionLoaded: mIsStop ");
-      paramLottieComposition.append(XALottieView.a(this.a));
+      paramLottieComposition.append(XALottieView.access$getMIsStop$p(this.a));
       QLog.a("XALottieView", 1, paramLottieComposition.toString());
       return;
     }
@@ -40,13 +40,13 @@ final class XALottieView$mListener$1
     this.a.setComposition(paramLottieComposition);
     this.a.setProgress(0.0F);
     paramLottieComposition = this.a;
-    Object localObject = paramLottieComposition.a().getStyle();
+    Object localObject = paramLottieComposition.getDecor().getStyle();
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
     paramLottieComposition.setRepeatCount(((ViewData)localObject).getTp().getRc());
     this.a.setVisibility(0);
-    paramLottieComposition = this.a.a().getStyle();
+    paramLottieComposition = this.a.getDecor().getStyle();
     if (paramLottieComposition == null) {
       Intrinsics.throwNpe();
     }
@@ -57,7 +57,7 @@ final class XALottieView$mListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.XALottieView.mListener.1
  * JD-Core Version:    0.7.0.1
  */

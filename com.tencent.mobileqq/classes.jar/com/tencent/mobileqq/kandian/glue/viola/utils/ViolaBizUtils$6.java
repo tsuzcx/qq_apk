@@ -16,17 +16,17 @@ final class ViolaBizUtils$6
   {
     if (!paramList.isEmpty())
     {
-      ViolaBizUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule, this.jdField_a_of_type_Long, paramList, this.jdField_a_of_type_JavaLangString, 0, "");
+      ViolaBizUtils.a(this.a, this.b, paramList, this.c, 0, "");
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.i(ViolaBizUtils.jdField_a_of_type_JavaLangString, 2, "getUploadingVideoList,ugcVideoList.isEmpty");
+      QLog.i(ViolaBizUtils.a, 2, "getUploadingVideoList,ugcVideoList.isEmpty");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.utils.ViolaBizUtils.6
  * JD-Core Version:    0.7.0.1
  */

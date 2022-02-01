@@ -20,6 +20,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
@@ -42,23 +43,23 @@ import org.w3c.dom.NodeList;
 public class KandianConfigServlet
   extends MSFServlet
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static long b;
-  private static long c;
+  private static Class<?> a;
+  private static boolean c = false;
   private static long d;
   private static long e;
-  private long jdField_a_of_type_Long = 0L;
+  private static long f;
+  private static long g;
+  private long b = 0L;
   
   private void a(long paramLong, QQAppInterface paramQQAppInterface)
   {
     long l = System.currentTimeMillis();
-    e = l - paramLong;
-    Object localObject = jdField_a_of_type_JavaLangClass;
+    g = l - paramLong;
+    Object localObject = a;
     if (localObject != null)
     {
       localObject = paramQQAppInterface.getHandler((Class)localObject);
-      if ((localObject != null) && (e <= 800L))
+      if ((localObject != null) && (g <= 800L))
       {
         Message localMessage = Message.obtain();
         localMessage.what = 2005;
@@ -69,12 +70,12 @@ public class KandianConfigServlet
       {
         QLog.d("KandianConfigServlet", 1, "give up send login next msg!");
       }
-      jdField_a_of_type_JavaLangClass = null;
+      a = null;
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramQQAppInterface.getAccount());
+    ((StringBuilder)localObject).append(b(paramQQAppInterface.getAccount()));
     ((StringBuilder)localObject).append(" notifyLoginNext, all cost:");
-    ((StringBuilder)localObject).append(e);
+    ((StringBuilder)localObject).append(g);
     ((StringBuilder)localObject).append("  nowTime:");
     ((StringBuilder)localObject).append(l);
     ((StringBuilder)localObject).append("  startTime:");
@@ -83,9 +84,9 @@ public class KandianConfigServlet
     localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("totalCost", String.valueOf(e));
+      ((JSONObject)localObject).put("totalCost", String.valueOf(g));
       ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).addExtraInfoInJson((JSONObject)localObject);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramQQAppInterface.getAccount(), "0X800965D", "0X800965D", 0, 0, String.valueOf(b), String.valueOf(c), String.valueOf(d), ((JSONObject)localObject).toString(), false);
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramQQAppInterface.getAccount(), "0X800965D", "0X800965D", 0, 0, String.valueOf(d), String.valueOf(e), String.valueOf(f), ((JSONObject)localObject).toString(), false);
       return;
     }
     catch (JSONException paramQQAppInterface)
@@ -248,24 +249,24 @@ public class KandianConfigServlet
           bool1 = bool2;
           if (!TextUtils.isEmpty(str))
           {
-            int i = SharedPreUtils.K((Context)localObject, str);
+            int i = SharedPreUtils.U((Context)localObject, str);
             if (i == 0)
             {
-              jdField_a_of_type_JavaLangClass = paramClass;
+              a = paramClass;
               paramClass = new NewIntent((Context)localObject, KandianConfigServlet.class);
               paramClass.putExtra("k_cmd_type", new int[] { 92 });
               paramClass.putExtra("configkandiantab", true);
               paramClass.putExtra("startTime", paramLong);
               paramClass.putExtra("needNotifyNext", paramBoolean);
-              if (!StringUtil.a(str)) {
+              if (!StringUtil.isEmpty(str)) {
                 paramClass.putExtra("key_uin", str);
               }
-              b = System.currentTimeMillis() - paramLong;
+              d = System.currentTimeMillis() - paramLong;
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("getKandianTabConfig, currentUin : ");
-              ((StringBuilder)localObject).append(str);
+              ((StringBuilder)localObject).append(b(str));
               ((StringBuilder)localObject).append("  cost time：");
-              ((StringBuilder)localObject).append(b);
+              ((StringBuilder)localObject).append(d);
               QLog.d("KandianConfigServlet", 1, ((StringBuilder)localObject).toString());
               paramAppRuntime.startServlet(paramClass);
               bool1 = true;
@@ -309,6 +310,14 @@ public class KandianConfigServlet
     byte[] arrayOfByte = new byte[i];
     PkgTools.copyData(arrayOfByte, 0, paramArrayOfByte, 4, i);
     return arrayOfByte;
+  }
+  
+  private static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    return Base64Util.encodeToString(paramString.getBytes(), 0);
   }
   
   public void a(ConfigurationService.Config paramConfig, long paramLong)
@@ -393,10 +402,10 @@ public class KandianConfigServlet
     label426:
     for (;;)
     {
-      d = System.currentTimeMillis() - l;
+      f = System.currentTimeMillis() - l;
       paramConfig = new StringBuilder();
       paramConfig.append("handleReadTabConfig parse cost : ");
-      paramConfig.append(d);
+      paramConfig.append(f);
       QLog.d("KandianConfigServlet", 1, paramConfig.toString());
       return;
       if (i == 0)
@@ -410,10 +419,10 @@ public class KandianConfigServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     long l = System.currentTimeMillis();
-    c = l - this.jdField_a_of_type_Long;
+    e = l - this.b;
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("onReceive  request cost:");
-    ((StringBuilder)localObject1).append(c);
+    ((StringBuilder)localObject1).append(e);
     QLog.i("KandianConfigServlet", 1, ((StringBuilder)localObject1).toString());
     localObject1 = (QQAppInterface)getAppRuntime();
     int[] arrayOfInt = paramIntent.getIntArrayExtra("k_cmd_type");
@@ -423,7 +432,7 @@ public class KandianConfigServlet
     ((StringBuilder)localObject2).append(" onReceive   nowTime:");
     ((StringBuilder)localObject2).append(l);
     ((StringBuilder)localObject2).append("   requestCost:");
-    ((StringBuilder)localObject2).append(c);
+    ((StringBuilder)localObject2).append(e);
     ((StringBuilder)localObject2).append(" success:");
     ((StringBuilder)localObject2).append(bool);
     ((StringBuilder)localObject2).append("  code");
@@ -479,9 +488,9 @@ public class KandianConfigServlet
         return;
       }
       a(localQQAppInterface, paramIntent, arrayOfInt, paramPacket);
-      if (!jdField_a_of_type_Boolean)
+      if (!c)
       {
-        jdField_a_of_type_Boolean = false;
+        c = false;
         try
         {
           ThreadManager.executeOnSubThread(new KandianConfigServlet.1(this));
@@ -494,11 +503,11 @@ public class KandianConfigServlet
           QLog.i("KandianConfigServlet", 1, paramPacket.toString());
         }
       }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.b = System.currentTimeMillis();
       paramIntent = new StringBuilder();
       paramIntent.append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount());
       paramIntent.append(" onSend   mRequestStartTime:");
-      paramIntent.append(this.jdField_a_of_type_Long);
+      paramIntent.append(this.b);
       paramIntent.append("  cmds:");
       paramIntent.append(arrayOfInt);
       QLog.d("KandianConfigServlet", 1, paramIntent.toString());
@@ -507,7 +516,7 @@ public class KandianConfigServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.KandianConfigServlet
  * JD-Core Version:    0.7.0.1
  */

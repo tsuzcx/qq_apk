@@ -13,7 +13,7 @@ class VideoControlUI$2
   public void onClick(View paramView)
   {
     DataReport.c(paramView.getId());
-    AVActivity localAVActivity = this.a.a();
+    AVActivity localAVActivity = this.a.U();
     if (localAVActivity != null) {
       localAVActivity.BtnOnClick(paramView);
     }

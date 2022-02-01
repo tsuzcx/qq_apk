@@ -19,19 +19,19 @@ class EditTroopMemberNickService$15
   {
     if ((!paramBoolean) && (paramUniCheckRsp != null) && (paramUniCheckRsp.uniBusinessItemList != null) && (paramUniCheckRsp.uniBusinessItemList.size() == 1))
     {
-      paramUniCheckRsp = this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditTroopMemberNickService;
-      paramUniCheckRsp.jdField_c_of_type_Boolean = false;
-      EditTroopMemberNickService.a(paramUniCheckRsp).loadingProgress(false);
-      TroopNickAuthRequest.a(EditTroopMemberNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditTroopMemberNickService));
+      paramUniCheckRsp = this.b;
+      paramUniCheckRsp.m = false;
+      EditTroopMemberNickService.d(paramUniCheckRsp).loadingProgress(false);
+      TroopNickAuthRequest.a(EditTroopMemberNickService.f(this.b));
       return;
     }
-    ((IApolloExtensionHandler)EditTroopMemberNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditTroopMemberNickService).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditTroopMemberNickService.jdField_c_of_type_JavaLangString, ((ColorClearableEditText)this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditTroopMemberNickService.a).a(), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditTroopMemberNickService.jdField_c_of_type_Boolean = true;
+    ((IApolloExtensionHandler)EditTroopMemberNickService.b(this.b).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(this.b.j, ((ColorClearableEditText)this.b.a).getParagraphs(), this.a);
+    this.b.m = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.15
  * JD-Core Version:    0.7.0.1
  */

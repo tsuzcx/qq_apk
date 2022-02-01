@@ -17,24 +17,19 @@ import org.json.JSONObject;
 public class GdtMvMiniAppReportHelper
   implements View.OnTouchListener
 {
-  private long a;
   public String a;
-  private long b;
   public String b;
-  
-  protected long a(long paramLong)
-  {
-    return paramLong + NetConnInfoCenter.servetTimeSecondInterv * 1000L;
-  }
+  private long c;
+  private long d;
   
   protected JSONObject a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a))
     {
       QLog.i("GdtMvMiniAppReportHelper", 1, "buildComonSpamParams miniAppAntiSpamParams is empty");
       return null;
     }
-    Object localObject = URLUtil.a(this.jdField_b_of_type_JavaLangString);
+    Object localObject = URLUtil.a(this.b);
     if (localObject != null) {
       localObject = (String)((Map)localObject).get("viewid");
     } else {
@@ -48,7 +43,7 @@ public class GdtMvMiniAppReportHelper
     JSONObject localJSONObject2;
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(this.a);
     }
     catch (Throwable localThrowable2)
     {
@@ -74,8 +69,8 @@ public class GdtMvMiniAppReportHelper
   
   public void a(int paramInt, long paramLong)
   {
-    long l1 = this.jdField_b_of_type_Long;
-    long l2 = this.jdField_a_of_type_Long;
+    long l1 = this.d;
+    long l2 = this.c;
     a(paramInt, paramLong, l1 - l2, l2);
   }
   
@@ -90,8 +85,8 @@ public class GdtMvMiniAppReportHelper
       localJSONObject.put("cb", paramInt);
       localJSONObject.put("pi", Math.abs(paramLong2));
       localJSONObject.put("pd", paramLong1);
-      localJSONObject.put("cct", a(paramLong3));
-      localJSONObject.put("ct", a(System.currentTimeMillis()));
+      localJSONObject.put("cct", b(paramLong3));
+      localJSONObject.put("ct", b(System.currentTimeMillis()));
       localJSONObject.put("lt", 3);
     }
     catch (Throwable localThrowable)
@@ -144,10 +139,10 @@ public class GdtMvMiniAppReportHelper
   
   public void a(GdtMotiveVideoModel paramGdtMotiveVideoModel)
   {
-    if ((paramGdtMotiveVideoModel != null) && (paramGdtMotiveVideoModel.a() != null) && (paramGdtMotiveVideoModel.a() != null))
+    if ((paramGdtMotiveVideoModel != null) && (paramGdtMotiveVideoModel.a() != null) && (paramGdtMotiveVideoModel.d() != null))
     {
-      this.jdField_a_of_type_JavaLangString = paramGdtMotiveVideoModel.a().antiSpamParams;
-      this.jdField_b_of_type_JavaLangString = paramGdtMotiveVideoModel.a().getUrlForClick();
+      this.a = paramGdtMotiveVideoModel.a().antiSpamParams;
+      this.b = paramGdtMotiveVideoModel.d().getUrlForClick();
       return;
     }
     QLog.i("GdtMvMiniAppReportHelper", 1, "init error");
@@ -172,7 +167,7 @@ public class GdtMvMiniAppReportHelper
       localJSONObject.put("pi", paramJSONObject.optInt("pi"));
       localJSONObject.put("pd", paramJSONObject.optInt("pd"));
       localJSONObject.put("cct", paramJSONObject.optInt("cct"));
-      localJSONObject.put("ct", a(System.currentTimeMillis()));
+      localJSONObject.put("ct", b(System.currentTimeMillis()));
       localJSONObject.put("lt", 3);
     }
     catch (Throwable paramJSONObject)
@@ -186,24 +181,29 @@ public class GdtMvMiniAppReportHelper
     GdtReportForAntiSpam.b(localJSONObject);
   }
   
+  protected long b(long paramLong)
+  {
+    return paramLong + NetConnInfoCenter.servetTimeSecondInterv * 1000L;
+  }
+  
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
     if (i != 0)
     {
       if (i == 1) {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        this.d = System.currentTimeMillis();
       }
     }
     else {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.c = System.currentTimeMillis();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.report.GdtMvMiniAppReportHelper
  * JD-Core Version:    0.7.0.1
  */

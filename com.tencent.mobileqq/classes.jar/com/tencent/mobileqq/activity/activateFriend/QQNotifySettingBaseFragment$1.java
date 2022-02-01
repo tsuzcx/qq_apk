@@ -28,19 +28,19 @@ class QQNotifySettingBaseFragment$1
         QQNotifySettingBaseFragment.a(localQQNotifySettingBaseFragment, QQNotifySettingBaseFragment.a(localQQNotifySettingBaseFragment, paramBundle));
         if (paramBundle != null)
         {
-          QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+          QQNotifySettingBaseFragment.b(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
           return;
         }
-        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+        QQNotifySettingBaseFragment.b(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
         return;
       }
-      this.a.a();
+      this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

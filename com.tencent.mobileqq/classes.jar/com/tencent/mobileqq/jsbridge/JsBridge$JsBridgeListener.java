@@ -7,15 +7,15 @@ import org.json.JSONObject;
 
 public class JsBridge$JsBridgeListener
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<WebView> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<WebView> a;
+  long b;
+  String c;
   
   public JsBridge$JsBridgeListener(WebView paramWebView, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = new WeakReference(paramWebView);
+    this.b = paramLong;
+    this.c = paramString;
   }
   
   public void a()
@@ -23,20 +23,20 @@ public class JsBridge$JsBridgeListener
     if (QLog.isDevelopLevel()) {
       QLog.d("JB", 4, "onNoMatchMethod");
     }
-    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WebView localWebView = (WebView)this.a.get();
     if (localWebView == null) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("javascript:window.JsBridge&&JsBridge.callback(");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",{'r':1,'result':'no such method'})");
     localWebView.loadUrl(localStringBuilder.toString());
   }
   
   public void a(Object paramObject)
   {
-    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WebView localWebView = (WebView)this.a.get();
     if (localWebView == null) {
       return;
     }
@@ -44,7 +44,7 @@ public class JsBridge$JsBridgeListener
     {
       paramObject = new StringBuilder();
       paramObject.append("javascript:window.JsBridge&&JsBridge.callback(");
-      paramObject.append(this.jdField_a_of_type_Long);
+      paramObject.append(this.b);
       paramObject.append(",{'r':0});");
       localWebView.loadUrl(paramObject.toString());
       return;
@@ -63,7 +63,7 @@ public class JsBridge$JsBridgeListener
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("javascript:window.JsBridge&&JsBridge.callback(");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",{'r':0,'result':");
     localStringBuilder.append(paramObject);
     localStringBuilder.append("});");
@@ -72,7 +72,7 @@ public class JsBridge$JsBridgeListener
   
   public void a(String paramString)
   {
-    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WebView localWebView = (WebView)this.a.get();
     if (localWebView != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -87,12 +87,12 @@ public class JsBridge$JsBridgeListener
     if (QLog.isDevelopLevel()) {
       QLog.d("JB", 4, "onPermissionDenied");
     }
-    WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WebView localWebView = (WebView)this.a.get();
     if (localWebView != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("javascript:window.JsBridge&&JsBridge.callback(");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(",{'r':2,'result':'Permission denied'})");
       localWebView.loadUrl(localStringBuilder.toString());
     }
@@ -100,7 +100,7 @@ public class JsBridge$JsBridgeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsbridge.JsBridge.JsBridgeListener
  * JD-Core Version:    0.7.0.1
  */

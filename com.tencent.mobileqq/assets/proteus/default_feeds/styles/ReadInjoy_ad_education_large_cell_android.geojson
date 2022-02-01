@@ -299,6 +299,9 @@
 				},
 				"subviews": [
 					{
+						"$includeComponet": "componet/android/ad_info_warning.geojson"
+					},
+					{
 						"$includeComponet": "componet/separator_normal_bottom.geojson"
 					}
 				]

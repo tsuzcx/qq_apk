@@ -10,7 +10,7 @@ class SlideShowPhotoListManager$2
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, 0).a();
+    QQToast.makeText(this.a, this.b, 0).show();
   }
 }
 

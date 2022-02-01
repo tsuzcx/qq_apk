@@ -4,36 +4,36 @@ import java.util.List;
 
 public class SwitchManageController
 {
-  private SwitchManageController.ISwitchManageView jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageController$ISwitchManageView;
-  private SwitchManageModel jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageModel;
+  private SwitchManageController.ISwitchManageView a;
+  private SwitchManageModel b;
   
   public SwitchManageController(SwitchManageController.ISwitchManageView paramISwitchManageView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageController$ISwitchManageView = paramISwitchManageView;
-    this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageModel = new SwitchManageModel(this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageController$ISwitchManageView.a());
+    this.a = paramISwitchManageView;
+    this.b = new SwitchManageModel(this.a.a());
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageModel.a();
+    this.b.a();
     b();
   }
   
   public void a(String paramString)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageModel.a(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageController$ISwitchManageView.a(paramString);
+    paramString = this.b.a(paramString);
+    this.a.a(paramString);
   }
   
   public void b()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageModel.a();
-    this.jdField_a_of_type_ComTencentMobileqqQqfeatureswitchFragmentSwitchManageController$ISwitchManageView.a(localList);
+    List localList = this.b.b();
+    this.a.a(localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfeatureswitch.fragment.SwitchManageController
  * JD-Core Version:    0.7.0.1
  */

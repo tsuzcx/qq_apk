@@ -61,6 +61,8 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.adv.extfriend.api.IVasAdExtendFriendApi;
 import com.tencent.mobileqq.vas.api.IJce;
 import com.tencent.mobileqq.vas.api.IJce.Util;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.pb.extendfriend.ExtendFriendSquareInfo.GPS;
 import com.tencent.pb.extendfriend.ExtendFriendSquareInfo.LBSInfo;
@@ -82,6 +84,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import mqq.util.LogUtil;
 import msf.msgsvc.msg_svc.PbC2CReadedReportReq;
 import msf.msgsvc.msg_svc.PbC2CReadedReportReq.UinPairReadInfo;
 import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
@@ -118,20 +121,15 @@ public class ExpandHandlerImpl
   extends BusinessHandler
   implements IExpandHandler
 {
-  public static AtomicInteger a;
-  private final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
+  public static AtomicInteger a = new AtomicInteger(0);
+  private final QQAppInterface b;
+  private final AppInterface c;
   
   public ExpandHandlerImpl(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
+    this.c = paramQQAppInterface;
   }
   
   private int a(int paramInt)
@@ -190,8 +188,8 @@ public class ExpandHandlerImpl
       QLog.e("ExpandHandlerImpl", 1, "saveExtendFriendInfo uin is null");
       return null;
     }
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Card localCard = localFriendsManager.b(paramString1);
+    FriendsManager localFriendsManager = (FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Card localCard = localFriendsManager.g(paramString1);
     localCard.declaration = paramString2;
     localCard.voiceUrl = paramString3;
     if (paramInt1 != 0) {
@@ -211,8 +209,8 @@ public class ExpandHandlerImpl
       QLog.e("ExpandHandlerImpl", 1, "saveExtendFriendInfo uin is null");
       return null;
     }
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Card localCard = localFriendsManager.b(paramString1);
+    FriendsManager localFriendsManager = (FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Card localCard = localFriendsManager.g(paramString1);
     localCard.declaration = paramString2;
     localCard.voiceUrl = paramString3;
     localCard.fontId = paramInt3;
@@ -300,13 +298,13 @@ public class ExpandHandlerImpl
       {
         localObject1 = "";
       }
-      paramChatFriendInfo.jdField_b_of_type_JavaLangString = ((String)localObject1);
+      paramChatFriendInfo.b = ((String)localObject1);
       if (paramMatchUinData.bytes_constellation.has()) {
         localObject1 = paramMatchUinData.bytes_constellation.get().toStringUtf8();
       } else {
         localObject1 = "";
       }
-      paramChatFriendInfo.jdField_c_of_type_JavaLangString = ((String)localObject1);
+      paramChatFriendInfo.c = ((String)localObject1);
       if (paramMatchUinData.bytes_city.has()) {
         localObject1 = paramMatchUinData.bytes_city.get().toStringUtf8();
       } else {
@@ -324,19 +322,19 @@ public class ExpandHandlerImpl
       } else {
         localObject1 = "";
       }
-      paramChatFriendInfo.jdField_f_of_type_JavaLangString = ((String)localObject1);
+      paramChatFriendInfo.g = ((String)localObject1);
       if (paramMatchUinData.bytes_declaration.has()) {
         localObject1 = paramMatchUinData.bytes_declaration.get().toStringUtf8();
       } else {
         localObject1 = "";
       }
-      paramChatFriendInfo.jdField_g_of_type_JavaLangString = ((String)localObject1);
+      paramChatFriendInfo.i = ((String)localObject1);
       if (paramMatchUinData.bytes_voice_url.has()) {
         localObject1 = paramMatchUinData.bytes_voice_url.get().toStringUtf8();
       } else {
         localObject1 = "";
       }
-      paramChatFriendInfo.h = ((String)localObject1);
+      paramChatFriendInfo.j = ((String)localObject1);
       bool = paramMatchUinData.uint32_voice_duration.has();
       int j = 0;
       if (bool) {
@@ -344,22 +342,22 @@ public class ExpandHandlerImpl
       } else {
         i = 0;
       }
-      paramChatFriendInfo.jdField_b_of_type_Int = i;
+      paramChatFriendInfo.k = i;
       if (paramMatchUinData.bytes_long_nick.has()) {
         localObject1 = paramMatchUinData.bytes_long_nick.get().toByteArray();
       } else {
         localObject1 = null;
       }
       if (localObject1 != null) {
-        paramChatFriendInfo.i = RichStatus.parseStatus((byte[])localObject1).getPlainText();
+        paramChatFriendInfo.l = RichStatus.parseStatus((byte[])localObject1).getPlainText();
       }
       if (paramMatchUinData.uint32_sex.has())
       {
-        paramChatFriendInfo.jdField_a_of_type_Int = paramMatchUinData.uint32_sex.get();
+        paramChatFriendInfo.h = paramMatchUinData.uint32_sex.get();
       }
       else
       {
-        paramChatFriendInfo.jdField_a_of_type_Int = 0;
+        paramChatFriendInfo.h = 0;
         QLog.e("ExpandHandlerImplExtendFriendLimitChat", 2, "mGender  is null. set 0  ");
       }
       long l;
@@ -368,7 +366,7 @@ public class ExpandHandlerImpl
       } else {
         l = 0L;
       }
-      paramChatFriendInfo.jdField_a_of_type_Long = l;
+      paramChatFriendInfo.p = l;
       Object localObject1 = new ArrayList();
       Object localObject2;
       Object localObject3;
@@ -392,7 +390,7 @@ public class ExpandHandlerImpl
           i += 1;
         }
       }
-      paramChatFriendInfo.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+      paramChatFriendInfo.q = ((ArrayList)localObject1);
       localObject1 = new ArrayList();
       if (paramMatchUinData.rpt_tag.has())
       {
@@ -404,14 +402,14 @@ public class ExpandHandlerImpl
             j = ((oidb_0xe03.ProfileTagInfo)paramMatchUinData.rpt_tag.get(i)).uint32_same_flag.get();
             localObject2 = ((oidb_0xe03.ProfileTagInfo)paramMatchUinData.rpt_tag.get(i)).bytes_tag.get().toStringUtf8();
             localObject3 = new PersonalTag();
-            ((PersonalTag)localObject3).jdField_a_of_type_Int = j;
-            ((PersonalTag)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject2);
+            ((PersonalTag)localObject3).a = j;
+            ((PersonalTag)localObject3).b = ((String)localObject2);
             ((ArrayList)localObject1).add(localObject3);
           }
           i += 1;
         }
       }
-      paramChatFriendInfo.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+      paramChatFriendInfo.f = ((ArrayList)localObject1);
       bool = paramMatchUinData.uint32_distance.has();
       j = -1;
       if (bool) {
@@ -419,23 +417,23 @@ public class ExpandHandlerImpl
       } else {
         i = -1;
       }
-      paramChatFriendInfo.jdField_f_of_type_Int = i;
+      paramChatFriendInfo.r = i;
       int i = j;
       if (paramMatchUinData.uint32_match_pool.has()) {
         i = paramMatchUinData.uint32_match_pool.get();
       }
-      paramChatFriendInfo.jdField_g_of_type_Int = i;
+      paramChatFriendInfo.s = i;
       if (paramMatchUinData.str_from_city_name.has()) {
         localObject1 = paramMatchUinData.str_from_city_name.get();
       } else {
         localObject1 = "";
       }
-      paramChatFriendInfo.j = ((String)localObject1);
+      paramChatFriendInfo.t = ((String)localObject1);
       localObject1 = str;
       if (paramMatchUinData.str_to_city_name.has()) {
         localObject1 = paramMatchUinData.str_to_city_name.get();
       }
-      paramChatFriendInfo.k = ((String)localObject1);
+      paramChatFriendInfo.u = ((String)localObject1);
       if (QLog.isColorLevel())
       {
         paramMatchUinData = new StringBuilder();
@@ -461,9 +459,9 @@ public class ExpandHandlerImpl
       String str4 = (String)paramArrayOfObject[6];
       String str5 = (String)paramArrayOfObject[7];
       boolean bool = ((Boolean)paramArrayOfObject[8]).booleanValue();
-      paramArrayOfObject = ColdPalaceHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramArrayOfObject.a(i);
-      paramArrayOfObject.b(j);
+      paramArrayOfObject = ColdPalaceHelper.a(this.b);
+      paramArrayOfObject.b(i);
+      paramArrayOfObject.c(j);
       paramArrayOfObject.a(l, NetConnInfoCenter.getServerTime());
       paramArrayOfObject.a(bool);
       paramArrayOfObject.a(0, str1);
@@ -547,13 +545,13 @@ public class ExpandHandlerImpl
     Object localObject1;
     try
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      localObject2 = this.b;
       localObject1 = null;
       if (localObject2 == null) {
         break label413;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+      localObject1 = this.b.getMsgCache();
+      localObject2 = this.b.getCurrentUin();
     }
     catch (Exception paramList1) {}
     paramInt2 = Math.min(i - paramInt1, paramInt2);
@@ -630,7 +628,7 @@ public class ExpandHandlerImpl
     boolean bool1;
     if (i == 0)
     {
-      paramFromServiceMsg = (IExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      paramFromServiceMsg = (IExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
       bool1 = bool2;
       if (paramFromServiceMsg != null)
       {
@@ -672,7 +670,7 @@ public class ExpandHandlerImpl
     boolean bool;
     if (i == 0)
     {
-      paramObject = (ExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      paramObject = (ExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
       if (paramObject != null) {
         paramObject.a(paramToServiceMsg, paramFromServiceMsg, localRspBody);
       }
@@ -794,9 +792,9 @@ public class ExpandHandlerImpl
       if (i == 0)
       {
         localObject = ((oidb_0xe51.RspBody)localObject).bytes_sig.get().toByteArray();
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache() != null))
+        if ((this.b != null) && (this.b.getMsgCache() != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(paramFromServiceMsg, paramObject, (byte[])localObject, false);
+          this.b.getMsgCache().a(paramFromServiceMsg, paramObject, (byte[])localObject, false);
           if (QLog.isColorLevel()) {
             QLog.d("ExpandHandlerImpl", 2, "handleGetSigByOxb4cCode() success -> addMatchChatSessionKey");
           }
@@ -843,7 +841,7 @@ public class ExpandHandlerImpl
         }
         try
         {
-          if (!((IExpandManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).b()) {
+          if (!((IExpandManager)this.b.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).n()) {
             break label206;
           }
           paramToServiceMsg = "1";
@@ -896,11 +894,11 @@ public class ExpandHandlerImpl
       paramFromServiceMsg = ((oidb_0xeae.RspBody)localObject).str_black_times_used_up_title.get();
       paramObject = ((oidb_0xeae.RspBody)localObject).str_black_times_used_up_tips.get();
       localObject = ((oidb_0xeae.RspBody)localObject).str_black_times_tips.get();
-      ColdPalaceHelper localColdPalaceHelper = ColdPalaceHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ColdPalaceHelper localColdPalaceHelper = ColdPalaceHelper.a(this.b);
       localColdPalaceHelper.a(1, paramFromServiceMsg);
       localColdPalaceHelper.a(2, paramObject);
       localColdPalaceHelper.a(0, (String)localObject);
-      localColdPalaceHelper.a(k);
+      localColdPalaceHelper.b(k);
       boolean bool1;
       if (j == 33) {
         bool1 = true;
@@ -928,7 +926,7 @@ public class ExpandHandlerImpl
       paramToServiceMsg.append((String)localObject);
       paramToServiceMsg.append("|");
       if (j == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(AppConstants.MATCH_CHAT_UIN, i, str, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        this.b.getMessageFacade().a(AppConstants.MATCH_CHAT_UIN, i, str, this.b.getCurrentAccountUin());
       }
       boolean bool2;
       if (j == 0) {
@@ -947,15 +945,10 @@ public class ExpandHandlerImpl
     }
   }
   
-  public int a()
-  {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-  }
-  
   public int a(String paramString, boolean paramBoolean)
   {
     QLog.i("ExpandHandlerImpl", 1, String.format("getExtendFriendInfo uin=%s", new Object[] { paramString }));
-    int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    int i = a.incrementAndGet();
     try
     {
       localObject = new GetExtendFriendInfo.ReqBody();
@@ -980,7 +973,7 @@ public class ExpandHandlerImpl
   
   public void a()
   {
-    if (!MatchChatMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    if (!MatchChatMsgUtil.a(this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.i("ExpandHandlerImpl", 2, "calcMatchChatBoxUnreadCount isMatchChatRedPointSwitchOn false");
@@ -1004,16 +997,16 @@ public class ExpandHandlerImpl
         if (paramMessageRecord != null)
         {
           localObject = new MatchNotifyInfo();
-          ((MatchNotifyInfo)localObject).jdField_a_of_type_Boolean = paramMessageRecord.bEnterMsg;
-          ((MatchNotifyInfo)localObject).jdField_a_of_type_Int = paramMessageRecord.leaveChatType;
-          ((MatchNotifyInfo)localObject).jdField_a_of_type_Long = paramMessageRecord.timeStamp;
-          ((MatchNotifyInfo)localObject).jdField_a_of_type_JavaLangString = paramMessageRecord.frienduin;
-          ((MatchNotifyInfo)localObject).jdField_b_of_type_JavaLangString = paramMessageRecord.SenderNickName;
-          ((MatchNotifyInfo)localObject).d = paramMessageRecord.c2cExpiredTime;
-          ((MatchNotifyInfo)localObject).jdField_b_of_type_Int = paramMessageRecord.leftChatTime;
-          ((MatchNotifyInfo)localObject).jdField_c_of_type_JavaLangString = paramMessageRecord.tipsWording;
-          ((MatchNotifyInfo)localObject).jdField_c_of_type_Int = paramMessageRecord.matchExpiredTime;
-          ((MatchNotifyInfo)localObject).jdField_b_of_type_Long = paramMessageRecord.readyTs;
+          ((MatchNotifyInfo)localObject).c = paramMessageRecord.bEnterMsg;
+          ((MatchNotifyInfo)localObject).d = paramMessageRecord.leaveChatType;
+          ((MatchNotifyInfo)localObject).f = paramMessageRecord.timeStamp;
+          ((MatchNotifyInfo)localObject).a = paramMessageRecord.frienduin;
+          ((MatchNotifyInfo)localObject).b = paramMessageRecord.SenderNickName;
+          ((MatchNotifyInfo)localObject).h = paramMessageRecord.c2cExpiredTime;
+          ((MatchNotifyInfo)localObject).e = paramMessageRecord.leftChatTime;
+          ((MatchNotifyInfo)localObject).i = paramMessageRecord.tipsWording;
+          ((MatchNotifyInfo)localObject).g = paramMessageRecord.matchExpiredTime;
+          ((MatchNotifyInfo)localObject).j = paramMessageRecord.readyTs;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("HandleC2CConfirmOrCancelMsg  info：");
           localStringBuilder.append(((MatchNotifyInfo)localObject).toString());
@@ -1024,7 +1017,7 @@ public class ExpandHandlerImpl
         {
           i = 0;
         }
-        if (!MessageRecordInfo.b(paramMessageRecord.issend))
+        if (!MessageRecordInfo.c(paramMessageRecord.issend))
         {
           long l1 = paramMessageRecord.time;
           try
@@ -1046,13 +1039,13 @@ public class ExpandHandlerImpl
               ((msg_svc.PbC2CReadedReportReq.UinPairReadInfo)localObject).last_read_time.set((int)l1);
               paramMessageRecord = new msg_svc.PbC2CReadedReportReq();
               paramMessageRecord.pair_info.add((MessageMicro)localObject);
-              localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a();
+              localObject = this.b.getMsgHandler().l().e();
               if (localObject != null) {
                 paramMessageRecord.sync_cookie.set(ByteStringMicro.copyFrom((byte[])localObject));
               }
               localObject = new msg_svc.PbMsgReadedReportReq();
               ((msg_svc.PbMsgReadedReportReq)localObject).c2c_read_report.set(paramMessageRecord);
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a("c2c_processor").a((msg_svc.PbMsgReadedReportReq)localObject);
+              this.b.getMsgHandler().a("c2c_processor").a((msg_svc.PbMsgReadedReportReq)localObject);
             }
             else
             {
@@ -1188,8 +1181,8 @@ public class ExpandHandlerImpl
     if (paramObject != null)
     {
       Object localObject2 = new MatchInfo();
-      ((MatchInfo)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-      ((MatchInfo)localObject2).jdField_a_of_type_ArrayOfByte = paramObject.bytes_sig.get().toByteArray();
+      ((MatchInfo)localObject2).a = this.b.getCurrentUin();
+      ((MatchInfo)localObject2).b = paramObject.bytes_sig.get().toByteArray();
       boolean bool2 = paramObject.uint64_match_uin.has();
       String str = "0";
       if (bool2) {
@@ -1197,45 +1190,45 @@ public class ExpandHandlerImpl
       } else {
         localObject1 = "0";
       }
-      ((MatchInfo)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
+      ((MatchInfo)localObject2).c = ((String)localObject1);
       if (paramObject.bytes_tips_wording.has()) {
         localObject1 = paramObject.bytes_tips_wording.get().toStringUtf8();
       } else {
         localObject1 = "";
       }
-      ((MatchInfo)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1);
+      ((MatchInfo)localObject2).d = ((String)localObject1);
       if (paramObject.uint64_time_stamp.has()) {
         paramLong = paramObject.uint64_time_stamp.get();
       } else {
         paramLong = 0L;
       }
-      ((MatchInfo)localObject2).jdField_a_of_type_Long = paramLong;
+      ((MatchInfo)localObject2).e = paramLong;
       int i;
       if (paramObject.uint32_match_expired_time.has()) {
         i = paramObject.uint32_match_expired_time.get();
       } else {
         i = 0;
       }
-      ((MatchInfo)localObject2).jdField_a_of_type_Int = i;
+      ((MatchInfo)localObject2).f = i;
       if (paramObject.bytes_nick.has()) {
         localObject1 = paramObject.bytes_nick.get().toStringUtf8();
       } else {
         localObject1 = "";
       }
-      ((MatchInfo)localObject2).d = ((String)localObject1);
+      ((MatchInfo)localObject2).g = ((String)localObject1);
       if ((paramObject.msg_tag.has()) && (paramObject.msg_tag.uint32_tag_id.has()))
       {
-        ((MatchInfo)localObject2).jdField_b_of_type_Int = paramObject.msg_tag.uint32_tag_id.get();
+        ((MatchInfo)localObject2).i = paramObject.msg_tag.uint32_tag_id.get();
         if (paramObject.msg_tag.bytes_tag.has()) {
           localObject1 = paramObject.msg_tag.bytes_tag.get().toStringUtf8();
         } else {
           localObject1 = "";
         }
-        ((MatchInfo)localObject2).jdField_f_of_type_JavaLangString = ((String)localObject1);
+        ((MatchInfo)localObject2).j = ((String)localObject1);
       }
       else
       {
-        ((MatchInfo)localObject2).jdField_b_of_type_Int = 1;
+        ((MatchInfo)localObject2).i = 1;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("msg_tag id empty in push bUnlimitMatchPush：");
         ((StringBuilder)localObject1).append(bool1);
@@ -1243,9 +1236,9 @@ public class ExpandHandlerImpl
       }
       if (paramObject.msg_match_uin_data.has())
       {
-        ((MatchInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo = new ChatFriendInfo();
-        ((MatchInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_a_of_type_JavaLangString = ((MatchInfo)localObject2).jdField_b_of_type_JavaLangString;
-        a(paramObject.msg_match_uin_data, ((MatchInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo);
+        ((MatchInfo)localObject2).k = new ChatFriendInfo();
+        ((MatchInfo)localObject2).k.a = ((MatchInfo)localObject2).c;
+        a(paramObject.msg_match_uin_data, ((MatchInfo)localObject2).k);
       }
       else
       {
@@ -1254,9 +1247,9 @@ public class ExpandHandlerImpl
         ((StringBuilder)localObject1).append(bool1);
         QLog.e("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject1).toString());
       }
-      if (((MatchInfo)localObject2).jdField_b_of_type_Int != 10000)
+      if (((MatchInfo)localObject2).i != 10000)
       {
-        localObject2 = (ExtendFriendLimitChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
+        localObject2 = (ExtendFriendLimitChatManager)this.b.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
         localObject1 = str;
         if (paramObject.uint64_match_uin.has()) {
           localObject1 = String.valueOf(paramObject.uint64_match_uin.get());
@@ -1264,7 +1257,7 @@ public class ExpandHandlerImpl
         paramObject = paramObject.bytes_sig.get().toByteArray();
         if (paramObject != null)
         {
-          ((ExtendFriendLimitChatManager)localObject2).a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramObject);
+          ((ExtendFriendLimitChatManager)localObject2).a((String)localObject1, this.b.getCurrentAccountUin(), paramObject);
           return;
         }
         paramObject = new StringBuilder();
@@ -1287,7 +1280,7 @@ public class ExpandHandlerImpl
         QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, paramObject.toString());
         localObject1 = "0";
       }
-      ((MatchInfo)localObject2).e = ((String)localObject1);
+      ((MatchInfo)localObject2).h = ((String)localObject1);
       if (QLog.isColorLevel())
       {
         paramObject = new StringBuilder();
@@ -1296,17 +1289,17 @@ public class ExpandHandlerImpl
         paramObject.append(bool1);
         QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, new Object[] { "handleGetUnlimitMatchOfflinePush push matchInfo = ", paramObject.toString() });
       }
-      paramObject = (ExtendFriendLimitChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
+      paramObject = (ExtendFriendLimitChatManager)this.b.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
       if (paramObject != null) {
-        paramObject.a();
+        paramObject.c();
       }
       if (bool1)
       {
         notifyUI(16, true, new Object[] { localObject2 });
         return;
       }
-      ((ExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a((MatchInfo)localObject2);
-      notifyUI(23, true, new Object[] { ((MatchInfo)localObject2).jdField_b_of_type_JavaLangString });
+      ((ExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a((MatchInfo)localObject2);
+      notifyUI(23, true, new Object[] { ((MatchInfo)localObject2).c });
       return;
     }
     paramObject = new StringBuilder();
@@ -1381,9 +1374,9 @@ public class ExpandHandlerImpl
   public void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     QLog.i("ExpandHandlerImpl", 1, String.format("editExtendFriendInfo uin=%s, declaration=%s, url=%s, duration=%d", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1) }));
-    if (!NetworkState.isNetworkConnected(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+    if (!NetworkState.isNetworkConnected(this.b.getApp()))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131694422, 0).a();
+      QQToast.makeText(this.b.getApp(), 1, 2131892102, 0).show();
       notifyUI(1, false, null);
       return;
     }
@@ -1392,7 +1385,7 @@ public class ExpandHandlerImpl
       paramInt4 = 0;
       paramInt2 = 0;
     }
-    ((IJce)QRoute.api(IJce.class)).build("QC.UniBusinessLogicServer.UniBusinessLogicObj", "QCUniBusinessLogic.UniSetExtFriend").request("UniSetExtFriend", new UniSetExtFriendReq(IJce.Util.a(), new UniBusinessItem(304, paramInt4, ""), new ExtendFriend(paramInt2)), new UniSetExtFriendRsp(), new ExpandHandlerImpl.1(this, paramString1, paramInt4, paramInt2), true);
+    VasUtil.a().getJceRequset().build("QC.UniBusinessLogicServer.UniBusinessLogicObj", "QCUniBusinessLogic.UniSetExtFriend").request("UniSetExtFriend", new UniSetExtFriendReq(IJce.Util.a(), new UniBusinessItem(304, paramInt4, ""), new ExtendFriend(paramInt2)), new UniSetExtFriendRsp(), new ExpandHandlerImpl.1(this, paramString1, paramInt4, paramInt2), true);
     try
     {
       Object localObject = new EditExtendFriendInfo.ReqBody();
@@ -1514,7 +1507,7 @@ public class ExpandHandlerImpl
     }
     if (paramInt == 0)
     {
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramString1 = this.b;
       if (!paramBoolean) {
         break label455;
       }
@@ -1557,49 +1550,11 @@ public class ExpandHandlerImpl
     }
   }
   
-  public boolean a()
-  {
-    try
-    {
-      Object localObject1 = new oidb_0xe67.ReqBody();
-      ((oidb_0xe67.ReqBody)localObject1).uint32_action.set(0);
-      localObject2 = (IExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-      if (localObject2 != null)
-      {
-        localObject2 = ((IExpandManager)localObject2).a();
-        if (localObject2 != null)
-        {
-          oidb_0xe67.LBSInfo localLBSInfo = new oidb_0xe67.LBSInfo();
-          oidb_0xe67.GPS localGPS = new oidb_0xe67.GPS();
-          localGPS.int32_lon.set(((ExtendFriendLocationInfo)localObject2).jdField_b_of_type_Int);
-          localGPS.int32_lat.set(((ExtendFriendLocationInfo)localObject2).jdField_a_of_type_Int);
-          localGPS.int32_alt.set(((ExtendFriendLocationInfo)localObject2).jdField_c_of_type_Int);
-          localGPS.int32_type.set(((ExtendFriendLocationInfo)localObject2).d);
-          localLBSInfo.msg_gps.set(localGPS);
-          ((oidb_0xe67.ReqBody)localObject1).msg_lbs_info.set(localLBSInfo);
-          QLog.d("ExpandHandlerImpl", 1, "QuitExtendFriend. with msg_lbs_info info ");
-        }
-      }
-      localObject1 = makeOIDBPkg("OidbSvc.0xe67", 3687, 1, ((oidb_0xe67.ReqBody)localObject1).toByteArray());
-      ((ToServiceMsg)localObject1).extraData.putInt("uint32_action", 0);
-      sendPbReq((ToServiceMsg)localObject1);
-      return true;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("QuitExtendFriend. error = ");
-      ((StringBuilder)localObject2).append(localNumberFormatException);
-      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject2).toString());
-    }
-    return false;
-  }
-  
   public boolean a(int paramInt, ExtendFriendLocationInfo paramExtendFriendLocationInfo)
   {
     Object localObject1 = paramExtendFriendLocationInfo;
     if (paramExtendFriendLocationInfo == null) {
-      localObject1 = ((ExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a();
+      localObject1 = ((ExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).V();
     }
     paramExtendFriendLocationInfo = new StringBuilder();
     paramExtendFriendLocationInfo.append("openSignalBomb  Match.   Type= ");
@@ -1607,19 +1562,19 @@ public class ExpandHandlerImpl
     QLog.e("ExpandHandlerImplExtendFriendLimitChat", 2, paramExtendFriendLocationInfo.toString());
     try
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      Object localObject2 = this.c.getCurrentAccountUin();
       paramExtendFriendLocationInfo = new oidb_0xe03.ReqBody();
       paramExtendFriendLocationInfo.uint64_uin.set(a((String)localObject2, "openSignalBomb"));
       paramExtendFriendLocationInfo.enum_matchopcode.set(6);
       paramExtendFriendLocationInfo.uint32_tag_id.set(0);
       paramExtendFriendLocationInfo.uint32_sex.set(paramInt);
-      if (((IExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER) != null) && (localObject1 != null))
+      if (((IExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER) != null) && (localObject1 != null))
       {
         localObject2 = new oidb_0xe03.LBSInfo();
         oidb_0xe03.GPS localGPS = new oidb_0xe03.GPS();
-        localGPS.int32_lon.set(((ExtendFriendLocationInfo)localObject1).jdField_b_of_type_Int);
-        localGPS.int32_lat.set(((ExtendFriendLocationInfo)localObject1).jdField_a_of_type_Int);
-        localGPS.int32_alt.set(((ExtendFriendLocationInfo)localObject1).jdField_c_of_type_Int);
+        localGPS.int32_lon.set(((ExtendFriendLocationInfo)localObject1).b);
+        localGPS.int32_lat.set(((ExtendFriendLocationInfo)localObject1).a);
+        localGPS.int32_alt.set(((ExtendFriendLocationInfo)localObject1).c);
         localGPS.int32_type.set(((ExtendFriendLocationInfo)localObject1).d);
         ((oidb_0xe03.LBSInfo)localObject2).msg_gps.set(localGPS);
         paramExtendFriendLocationInfo.msg_lbs_info.set((MessageMicro)localObject2);
@@ -1650,9 +1605,9 @@ public class ExpandHandlerImpl
       {
         oidb_0xe67.LBSInfo localLBSInfo = new oidb_0xe67.LBSInfo();
         oidb_0xe67.GPS localGPS = new oidb_0xe67.GPS();
-        localGPS.int32_lon.set(paramExtendFriendLocationInfo.jdField_b_of_type_Int);
-        localGPS.int32_lat.set(paramExtendFriendLocationInfo.jdField_a_of_type_Int);
-        localGPS.int32_alt.set(paramExtendFriendLocationInfo.jdField_c_of_type_Int);
+        localGPS.int32_lon.set(paramExtendFriendLocationInfo.b);
+        localGPS.int32_lat.set(paramExtendFriendLocationInfo.a);
+        localGPS.int32_alt.set(paramExtendFriendLocationInfo.c);
         localGPS.int32_type.set(paramExtendFriendLocationInfo.d);
         localLBSInfo.msg_gps.set(localGPS);
         ((oidb_0xe67.ReqBody)localObject).msg_lbs_info.set(localLBSInfo);
@@ -1673,41 +1628,11 @@ public class ExpandHandlerImpl
     return false;
   }
   
-  public boolean a(String paramString)
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("cancleUnlimitMatch. uin = ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject).toString());
-    }
-    try
-    {
-      localObject = new oidb_0xe03.ReqBody();
-      ((oidb_0xe03.ReqBody)localObject).uint64_uin.set(a(paramString, "cancleUnlimitMatch"));
-      ((oidb_0xe03.ReqBody)localObject).enum_matchopcode.set(2);
-      paramString = makeOIDBPkg("OidbSvc.0xe03", 3587, 0, ((oidb_0xe03.ReqBody)localObject).toByteArray());
-      paramString.extraData.putInt("match_op", 2);
-      sendPbReq(paramString);
-      return true;
-    }
-    catch (NumberFormatException paramString)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("requestMatch. error = ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject).toString());
-    }
-    return false;
-  }
-  
   public boolean a(String paramString, int paramInt1, int paramInt2)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("request Unlimit Match. uin = ");
-    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(LogUtil.wrapLogUin(paramString));
     ((StringBuilder)localObject).append(" Type= ");
     ((StringBuilder)localObject).append(paramInt1);
     ((StringBuilder)localObject).append(" tag:");
@@ -1772,44 +1697,6 @@ public class ExpandHandlerImpl
     return false;
   }
   
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("setUnlimitMatchStatus. uin = ");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(" bopen: ");
-      ((StringBuilder)localObject).append(paramBoolean);
-      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject).toString());
-    }
-    try
-    {
-      localObject = new oidb_0xe03.ReqBody();
-      ((oidb_0xe03.ReqBody)localObject).uint64_uin.set(a(paramString, "setUnlimitMatchStatus"));
-      if (paramBoolean) {
-        ((oidb_0xe03.ReqBody)localObject).uint32_switch.set(1);
-      } else {
-        ((oidb_0xe03.ReqBody)localObject).uint32_switch.set(0);
-      }
-      ((oidb_0xe03.ReqBody)localObject).enum_matchopcode.set(4);
-      paramString = makeOIDBPkg("OidbSvc.0xe03", 3587, 0, ((oidb_0xe03.ReqBody)localObject).toByteArray());
-      paramString.extraData.putInt("match_op", 4);
-      paramString.extraData.putBoolean("open", paramBoolean);
-      sendPbReq(paramString);
-      return true;
-    }
-    catch (NumberFormatException paramString)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("requestMatch. error = ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject).toString());
-    }
-    return false;
-  }
-  
   public boolean a(List<Long> paramList)
   {
     return a(paramList, 0);
@@ -1825,45 +1712,45 @@ public class ExpandHandlerImpl
   
   public void b()
   {
-    notifyUI(17, true, Integer.valueOf(MatchChatMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)));
+    notifyUI(17, true, Integer.valueOf(MatchChatMsgUtil.b(this.b)));
   }
   
   /* Error */
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     // Byte code:
-    //   0: new 1575	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody
+    //   0: new 1588	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody
     //   3: dup
-    //   4: invokespecial 1576	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:<init>	()V
+    //   4: invokespecial 1589	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:<init>	()V
     //   7: astore 23
     //   9: aload_2
     //   10: aload_3
     //   11: aload 23
-    //   13: invokestatic 649	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:parseOIDBPkg	(Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Lcom/tencent/mobileqq/pb/MessageMicro;)I
+    //   13: invokestatic 656	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:parseOIDBPkg	(Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Lcom/tencent/mobileqq/pb/MessageMicro;)I
     //   16: istore 4
     //   18: aload_1
-    //   19: getfield 663	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   22: ldc_w 1351
+    //   19: getfield 670	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   22: ldc_w 1378
     //   25: lconst_0
-    //   26: invokevirtual 1580	android/os/Bundle:getLong	(Ljava/lang/String;J)J
+    //   26: invokevirtual 1593	android/os/Bundle:getLong	(Ljava/lang/String;J)J
     //   29: lstore 9
     //   31: aload_1
-    //   32: getfield 663	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   35: ldc_w 1357
+    //   32: getfield 670	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   35: ldc_w 1384
     //   38: aconst_null
-    //   39: invokevirtual 676	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   39: invokevirtual 683	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   42: astore_1
-    //   43: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   43: invokestatic 380	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   46: ifeq +39 -> 85
-    //   49: ldc 45
+    //   49: ldc 47
     //   51: iconst_2
-    //   52: ldc_w 1582
+    //   52: ldc_w 1595
     //   55: iconst_3
-    //   56: anewarray 121	java/lang/Object
+    //   56: anewarray 123	java/lang/Object
     //   59: dup
     //   60: iconst_0
     //   61: iload 4
-    //   63: invokestatic 129	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   63: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   66: aastore
     //   67: dup
     //   68: iconst_1
@@ -1872,52 +1759,52 @@ public class ExpandHandlerImpl
     //   71: dup
     //   72: iconst_2
     //   73: lload 9
-    //   75: invokestatic 132	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   75: invokestatic 134	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   78: aastore
-    //   79: invokestatic 528	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   82: invokestatic 382	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   79: invokestatic 535	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   82: invokestatic 385	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   85: iload 4
     //   87: ifne +2342 -> 2429
     //   90: aload 23
-    //   92: getfield 1585	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_over	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   95: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   92: getfield 1598	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_over	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   95: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   98: iconst_1
     //   99: if_icmpne +2367 -> 2466
     //   102: iconst_1
     //   103: istore 15
     //   105: goto +3 -> 108
     //   108: aload 23
-    //   110: getfield 1588	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:bytes_rsp_page_cookies	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   113: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   116: invokevirtual 311	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   110: getfield 1601	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:bytes_rsp_page_cookies	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   113: invokevirtual 264	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   116: invokevirtual 312	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   119: astore 21
     //   121: aload 23
-    //   123: getfield 1591	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_is_profile_complete	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   126: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   123: getfield 1604	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_is_profile_complete	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   126: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   129: iconst_1
     //   130: if_icmpne +2342 -> 2472
     //   133: iconst_1
     //   134: istore 17
     //   136: goto +3 -> 139
     //   139: aload 23
-    //   141: getfield 1594	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_is_show_card	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   144: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   141: getfield 1607	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_is_show_card	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   144: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   147: iconst_1
     //   148: if_icmpne +2330 -> 2478
     //   151: iconst_1
     //   152: istore 18
     //   154: goto +3 -> 157
     //   157: aload 23
-    //   159: getfield 1597	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_friend_max_votes	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   162: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   159: getfield 1610	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_friend_max_votes	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   162: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   165: istore 4
     //   167: aload 23
-    //   169: getfield 1600	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:rpt_msg_stranger_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   172: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   169: getfield 1613	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:rpt_msg_stranger_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   172: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   175: astore 20
-    //   177: new 339	java/util/ArrayList
+    //   177: new 342	java/util/ArrayList
     //   180: dup
-    //   181: invokespecial 340	java/util/ArrayList:<init>	()V
+    //   181: invokespecial 343	java/util/ArrayList:<init>	()V
     //   184: astore 22
     //   186: iload 15
     //   188: istore 16
@@ -1942,14 +1829,14 @@ public class ExpandHandlerImpl
     //   225: aload_1
     //   226: astore_3
     //   227: aload 20
-    //   229: invokeinterface 522 1 0
+    //   229: invokeinterface 529 1 0
     //   234: ifle +1595 -> 1829
     //   237: lload 9
     //   239: lstore 13
     //   241: aload_1
     //   242: astore_3
     //   243: aload 20
-    //   245: invokeinterface 554 1 0
+    //   245: invokeinterface 561 1 0
     //   250: astore 20
     //   252: iload 15
     //   254: istore 16
@@ -1964,23 +1851,23 @@ public class ExpandHandlerImpl
     //   271: aload_1
     //   272: astore_3
     //   273: aload 20
-    //   275: invokeinterface 559 1 0
+    //   275: invokeinterface 566 1 0
     //   280: ifeq +1549 -> 1829
     //   283: lload 9
     //   285: lstore 13
     //   287: aload_1
     //   288: astore_3
     //   289: aload 20
-    //   291: invokeinterface 563 1 0
-    //   296: checkcast 1602	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo
+    //   291: invokeinterface 570 1 0
+    //   296: checkcast 1615	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo
     //   299: astore 24
     //   301: lload 9
     //   303: lstore 13
     //   305: aload_1
     //   306: astore_3
-    //   307: new 1604	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo
+    //   307: new 1617	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo
     //   310: dup
-    //   311: invokespecial 1605	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:<init>	()V
+    //   311: invokespecial 1618	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:<init>	()V
     //   314: astore 25
     //   316: lload 9
     //   318: lstore 13
@@ -1988,36 +1875,36 @@ public class ExpandHandlerImpl
     //   321: astore_3
     //   322: aload 25
     //   324: aload 24
-    //   326: getfield 1606	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   329: invokevirtual 179	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   332: invokestatic 1094	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   335: putfield 1609	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mUin	Ljava/lang/String;
+    //   326: getfield 1619	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint64_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   329: invokevirtual 181	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   332: invokestatic 1104	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   335: putfield 1622	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mUin	Ljava/lang/String;
     //   338: lload 9
     //   340: lstore 13
     //   342: aload_1
     //   343: astore_3
     //   344: aload 25
     //   346: aload 24
-    //   348: getfield 1610	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   351: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   354: invokevirtual 267	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   357: putfield 1613	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mNickName	Ljava/lang/String;
+    //   348: getfield 1623	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   351: invokevirtual 264	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   354: invokevirtual 269	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   357: putfield 1626	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mNickName	Ljava/lang/String;
     //   360: lload 9
     //   362: lstore 13
     //   364: aload_1
     //   365: astore_3
     //   366: aload 25
     //   368: aload 24
-    //   370: getfield 1616	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_gender	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   373: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   376: putfield 1619	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mGender	I
+    //   370: getfield 1629	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_gender	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   373: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   376: putfield 1632	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mGender	I
     //   379: lload 9
     //   381: lstore 13
     //   383: aload_1
     //   384: astore_3
     //   385: aload 24
-    //   387: getfield 1622	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_is_my_like	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   390: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   387: getfield 1635	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_is_my_like	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   390: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   393: istore 5
     //   395: iload 5
     //   397: iconst_1
@@ -2029,15 +1916,15 @@ public class ExpandHandlerImpl
     //   408: istore 16
     //   410: aload 25
     //   412: iload 16
-    //   414: putfield 1625	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mLiked	Z
+    //   414: putfield 1638	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mLiked	Z
     //   417: aload 25
     //   419: aload 24
-    //   421: getfield 1628	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_my_left_like_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   424: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   427: putfield 1631	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAvailLikeCount	I
+    //   421: getfield 1641	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_my_left_like_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   424: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   427: putfield 1644	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAvailLikeCount	I
     //   430: aload 24
-    //   432: getfield 1634	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_addfri_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   435: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   432: getfield 1647	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_addfri_status	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   435: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   438: iconst_1
     //   439: if_icmpne +2045 -> 2484
     //   442: iconst_1
@@ -2045,84 +1932,84 @@ public class ExpandHandlerImpl
     //   445: goto +3 -> 448
     //   448: aload 25
     //   450: iload 16
-    //   452: putfield 1637	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAddFriendVerified	Z
+    //   452: putfield 1650	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAddFriendVerified	Z
     //   455: aload 25
     //   457: aload 24
-    //   459: getfield 1638	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_popularity	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   462: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   465: putfield 1641	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mPopularity	I
+    //   459: getfield 1651	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_popularity	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   462: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   465: putfield 1654	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mPopularity	I
     //   468: aload 25
     //   470: aload 24
-    //   472: getfield 1642	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_declaration	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   475: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   478: invokevirtual 267	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   481: putfield 1645	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
+    //   472: getfield 1655	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_declaration	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   475: invokevirtual 264	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   478: invokevirtual 269	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   481: putfield 1658	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
     //   484: aload 25
     //   486: aload 24
-    //   488: getfield 1646	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_voice_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   491: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   494: invokevirtual 267	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   497: putfield 1649	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVoiceUrl	Ljava/lang/String;
+    //   488: getfield 1659	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_voice_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   491: invokevirtual 264	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   494: invokevirtual 269	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   497: putfield 1662	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVoiceUrl	Ljava/lang/String;
     //   500: aload 25
     //   502: aload 24
-    //   504: getfield 1650	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_voice_duration	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   507: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   510: putfield 1653	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVoiceDuration	I
+    //   504: getfield 1663	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_voice_duration	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   507: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   510: putfield 1666	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVoiceDuration	I
     //   513: aload 24
-    //   515: getfield 1656	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_vote_switch	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   518: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   515: getfield 1669	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_vote_switch	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   518: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   521: ifne +1969 -> 2490
     //   524: iconst_1
     //   525: istore 16
     //   527: goto +3 -> 530
     //   530: aload 25
     //   532: iload 16
-    //   534: putfield 1659	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mbAllowStrangerVote	Z
+    //   534: putfield 1672	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mbAllowStrangerVote	Z
     //   537: aload 25
     //   539: aload 24
-    //   541: getfield 1662	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:str_recom_trace	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   544: invokevirtual 193	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   547: putfield 1665	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mStrRecomTrace	Ljava/lang/String;
+    //   541: getfield 1675	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:str_recom_trace	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   544: invokevirtual 195	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   547: putfield 1678	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mStrRecomTrace	Ljava/lang/String;
     //   550: aload 25
     //   552: aload 24
-    //   554: getfield 1668	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_voice_code	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   557: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   560: invokevirtual 311	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   563: putfield 1671	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:voiceCode	[B
-    //   566: new 1673	com/tencent/pb/personal/PersonalInfo$ReqBody
+    //   554: getfield 1681	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_voice_code	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   557: invokevirtual 264	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   560: invokevirtual 312	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   563: putfield 1684	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:voiceCode	[B
+    //   566: new 1686	com/tencent/pb/personal/PersonalInfo$ReqBody
     //   569: dup
-    //   570: invokespecial 1674	com/tencent/pb/personal/PersonalInfo$ReqBody:<init>	()V
+    //   570: invokespecial 1687	com/tencent/pb/personal/PersonalInfo$ReqBody:<init>	()V
     //   573: astore_3
     //   574: aload_3
     //   575: aload 24
-    //   577: getfield 1677	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_personalization	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   580: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   583: invokevirtual 311	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   586: invokevirtual 1681	com/tencent/pb/personal/PersonalInfo$ReqBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   577: getfield 1690	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_personalization	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   580: invokevirtual 264	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   583: invokevirtual 312	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   586: invokevirtual 1694	com/tencent/pb/personal/PersonalInfo$ReqBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   589: pop
     //   590: aload 25
     //   592: aload_3
-    //   593: getfield 1684	com/tencent/pb/personal/PersonalInfo$ReqBody:fontid	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   596: invokevirtual 1685	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   599: putfield 1686	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:fontId	I
+    //   593: getfield 1697	com/tencent/pb/personal/PersonalInfo$ReqBody:fontid	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   596: invokevirtual 1698	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   599: putfield 1699	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:fontId	I
     //   602: aload 25
     //   604: aload_3
-    //   605: getfield 1689	com/tencent/pb/personal/PersonalInfo$ReqBody:fonttype	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   608: invokevirtual 1685	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   611: putfield 1690	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:fontType	I
+    //   605: getfield 1702	com/tencent/pb/personal/PersonalInfo$ReqBody:fonttype	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   608: invokevirtual 1698	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   611: putfield 1703	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:fontType	I
     //   614: aload 25
     //   616: aload_3
-    //   617: getfield 1693	com/tencent/pb/personal/PersonalInfo$ReqBody:itemid	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   620: invokevirtual 1685	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   623: putfield 1694	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:clothesId	I
+    //   617: getfield 1706	com/tencent/pb/personal/PersonalInfo$ReqBody:itemid	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   620: invokevirtual 1698	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   623: putfield 1707	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:clothesId	I
     //   626: aload 25
-    //   628: getfield 1645	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
-    //   631: invokestatic 77	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   628: getfield 1658	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
+    //   631: invokestatic 79	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   634: istore 16
     //   636: iload 16
     //   638: ifne +60 -> 698
     //   641: aload 25
-    //   643: getfield 1645	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
+    //   643: getfield 1658	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
     //   646: astore_3
     //   647: lload 9
     //   649: lstore 13
@@ -2134,17 +2021,17 @@ public class ExpandHandlerImpl
     //   660: aload_3
     //   661: bipush 10
     //   663: bipush 32
-    //   665: invokevirtual 1698	java/lang/String:replace	(CC)Ljava/lang/String;
-    //   668: putfield 1645	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
+    //   665: invokevirtual 1711	java/lang/String:replace	(CC)Ljava/lang/String;
+    //   668: putfield 1658	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
     //   671: aload_1
     //   672: astore 19
     //   674: lload 13
     //   676: lstore 11
     //   678: aload 25
     //   680: aload 25
-    //   682: getfield 1645	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
-    //   685: invokevirtual 1329	java/lang/String:trim	()Ljava/lang/String;
-    //   688: putfield 1645	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
+    //   682: getfield 1658	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
+    //   685: invokevirtual 1350	java/lang/String:trim	()Ljava/lang/String;
+    //   688: putfield 1658	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mDeclaration	Ljava/lang/String;
     //   691: goto +7 -> 698
     //   694: astore_3
     //   695: goto +1689 -> 2384
@@ -2153,8 +2040,8 @@ public class ExpandHandlerImpl
     //   700: lload 9
     //   702: lstore 11
     //   704: aload 24
-    //   706: getfield 1701	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_show_vip_info_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   709: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   706: getfield 1714	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_show_vip_info_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   709: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   712: ifne +1784 -> 2496
     //   715: iconst_1
     //   716: istore 16
@@ -2165,14 +2052,14 @@ public class ExpandHandlerImpl
     //   725: lstore 11
     //   727: aload 25
     //   729: iload 16
-    //   731: putfield 1704	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVipHide	Z
+    //   731: putfield 1717	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVipHide	Z
     //   734: aload_1
     //   735: astore_3
     //   736: lload 9
     //   738: lstore 11
     //   740: aload 24
-    //   742: getfield 1707	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_bigvip_open	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   745: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   742: getfield 1720	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_bigvip_open	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   745: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   748: ifne +1754 -> 2502
     //   751: iconst_1
     //   752: istore 16
@@ -2183,50 +2070,50 @@ public class ExpandHandlerImpl
     //   761: lstore 11
     //   763: aload 25
     //   765: iload 16
-    //   767: putfield 1710	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mBigVipHide	Z
+    //   767: putfield 1723	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mBigVipHide	Z
     //   770: aload_1
     //   771: astore_3
     //   772: lload 9
     //   774: lstore 11
     //   776: aload 25
     //   778: aload 24
-    //   780: getfield 1713	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_bigvip_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   783: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   786: putfield 1716	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mBigVipLevel	I
+    //   780: getfield 1726	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_bigvip_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   783: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   786: putfield 1729	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mBigVipLevel	I
     //   789: aload_1
     //   790: astore_3
     //   791: lload 9
     //   793: lstore 11
     //   795: aload 25
     //   797: aload 24
-    //   799: getfield 1719	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_vip_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   802: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   805: putfield 1722	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVipType	I
+    //   799: getfield 1732	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_vip_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   802: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   805: putfield 1735	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVipType	I
     //   808: aload_1
     //   809: astore_3
     //   810: lload 9
     //   812: lstore 11
     //   814: aload 25
     //   816: aload 24
-    //   818: getfield 1725	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_svip_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   821: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   824: putfield 1728	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVipLevel	I
+    //   818: getfield 1738	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_svip_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   821: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   824: putfield 1741	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mVipLevel	I
     //   827: aload_1
     //   828: astore_3
     //   829: lload 9
     //   831: lstore 11
     //   833: aload 25
     //   835: aload 24
-    //   837: getfield 1731	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_vipicon_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   840: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   843: putfield 1734	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mTemplateId	I
+    //   837: getfield 1744	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_vipicon_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   840: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   843: putfield 1747	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mTemplateId	I
     //   846: aload_1
     //   847: astore_3
     //   848: lload 9
     //   850: lstore 11
     //   852: aload 24
-    //   854: getfield 1737	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_ad_content	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   857: invokevirtual 259	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   854: getfield 1750	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_ad_content	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   857: invokevirtual 261	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   860: istore 16
     //   862: iload 16
     //   864: ifeq +31 -> 895
@@ -2235,10 +2122,10 @@ public class ExpandHandlerImpl
     //   870: lload 9
     //   872: lstore 11
     //   874: aload 24
-    //   876: getfield 1737	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_ad_content	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   879: invokevirtual 262	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   882: invokevirtual 311	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   885: invokestatic 1743	com/tencent/mobileqq/vas/adv/common/data/AlumBasicData:createFrombyte	([B)Lcom/tencent/mobileqq/vas/adv/common/data/AlumBasicData;
+    //   876: getfield 1750	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:bytes_ad_content	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   879: invokevirtual 264	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   882: invokevirtual 312	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   885: invokestatic 1756	com/tencent/mobileqq/vas/adv/common/data/AlumBasicData:createFrombyte	([B)Lcom/tencent/mobileqq/vas/adv/common/data/AlumBasicData;
     //   888: astore_3
     //   889: aload_3
     //   890: astore 19
@@ -2251,32 +2138,32 @@ public class ExpandHandlerImpl
     //   902: lstore 11
     //   904: aload 25
     //   906: aload 19
-    //   908: putfield 1747	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAlumbasicdata	Lcom/tencent/mobileqq/vas/adv/common/data/AlumBasicData;
+    //   908: putfield 1760	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAlumbasicdata	Lcom/tencent/mobileqq/vas/adv/common/data/AlumBasicData;
     //   911: aload_1
     //   912: astore_3
     //   913: lload 9
     //   915: lstore 11
     //   917: aload 25
     //   919: aload 24
-    //   921: getfield 1748	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_age	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   924: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   927: putfield 1751	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAge	I
+    //   921: getfield 1761	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_age	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   924: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   927: putfield 1764	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAge	I
     //   930: aload_1
     //   931: astore_3
     //   932: lload 9
     //   934: lstore 11
     //   936: aload 25
-    //   938: new 339	java/util/ArrayList
+    //   938: new 342	java/util/ArrayList
     //   941: dup
-    //   942: invokespecial 340	java/util/ArrayList:<init>	()V
-    //   945: putfield 1755	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mLabelInfos	Ljava/util/List;
+    //   942: invokespecial 343	java/util/ArrayList:<init>	()V
+    //   945: putfield 1768	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mLabelInfos	Ljava/util/List;
     //   948: aload_1
     //   949: astore_3
     //   950: lload 9
     //   952: lstore 11
     //   954: aload 24
-    //   956: getfield 1758	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   959: invokevirtual 347	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   956: getfield 1771	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   959: invokevirtual 350	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
     //   962: istore 16
     //   964: iload 4
     //   966: istore 5
@@ -2292,17 +2179,17 @@ public class ExpandHandlerImpl
     //   985: lstore 11
     //   987: iload 6
     //   989: aload 24
-    //   991: getfield 1758	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   994: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   997: invokeinterface 522 1 0
+    //   991: getfield 1771	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   994: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   997: invokeinterface 529 1 0
     //   1002: if_icmpge +166 -> 1168
     //   1005: aload_1
     //   1006: astore 19
     //   1008: lload 9
     //   1010: lstore 11
-    //   1012: new 1760	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$LabelInfo
+    //   1012: new 1773	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$LabelInfo
     //   1015: dup
-    //   1016: invokespecial 1761	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$LabelInfo:<init>	()V
+    //   1016: invokespecial 1774	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$LabelInfo:<init>	()V
     //   1019: astore 26
     //   1021: aload_1
     //   1022: astore 19
@@ -2310,39 +2197,39 @@ public class ExpandHandlerImpl
     //   1026: lstore 11
     //   1028: aload 26
     //   1030: aload 24
-    //   1032: getfield 1758	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1035: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1032: getfield 1771	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1035: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   1038: iload 6
-    //   1040: invokeinterface 1764 2 0
-    //   1045: checkcast 1766	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo
-    //   1048: getfield 1769	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo:uint64_label_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1051: invokevirtual 179	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   1054: putfield 1770	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$LabelInfo:jdField_a_of_type_Long	J
+    //   1040: invokeinterface 1777 2 0
+    //   1045: checkcast 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo
+    //   1048: getfield 1782	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo:uint64_label_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1051: invokevirtual 181	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   1054: putfield 1784	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$LabelInfo:a	J
     //   1057: aload_1
     //   1058: astore 19
     //   1060: lload 9
     //   1062: lstore 11
     //   1064: aload 24
-    //   1066: getfield 1758	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1069: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1066: getfield 1771	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1069: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   1072: iload 6
-    //   1074: invokeinterface 1764 2 0
-    //   1079: checkcast 1766	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo
-    //   1082: getfield 1773	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo:str_label_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1085: invokevirtual 359	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   1074: invokeinterface 1777 2 0
+    //   1079: checkcast 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo
+    //   1082: getfield 1787	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo:str_label_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1085: invokevirtual 362	com/tencent/mobileqq/pb/PBStringField:has	()Z
     //   1088: ifeq +1420 -> 2508
     //   1091: aload_1
     //   1092: astore 19
     //   1094: lload 9
     //   1096: lstore 11
     //   1098: aload 24
-    //   1100: getfield 1758	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1103: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1100: getfield 1771	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_label_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1103: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   1106: iload 6
-    //   1108: invokeinterface 1764 2 0
-    //   1113: checkcast 1766	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo
-    //   1116: getfield 1773	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo:str_label_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1119: invokevirtual 193	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1108: invokeinterface 1777 2 0
+    //   1113: checkcast 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo
+    //   1116: getfield 1787	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$labelInfo:str_label_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1119: invokevirtual 195	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   1122: astore_3
     //   1123: goto +3 -> 1126
     //   1126: aload_1
@@ -2351,15 +2238,15 @@ public class ExpandHandlerImpl
     //   1131: lstore 11
     //   1133: aload 26
     //   1135: aload_3
-    //   1136: putfield 1774	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$LabelInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1136: putfield 1788	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$LabelInfo:b	Ljava/lang/String;
     //   1139: aload_1
     //   1140: astore 19
     //   1142: lload 9
     //   1144: lstore 11
     //   1146: aload 25
-    //   1148: getfield 1755	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mLabelInfos	Ljava/util/List;
+    //   1148: getfield 1768	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mLabelInfos	Ljava/util/List;
     //   1151: aload 26
-    //   1153: invokeinterface 1775 2 0
+    //   1153: invokeinterface 1789 2 0
     //   1158: pop
     //   1159: iload 6
     //   1161: iconst_1
@@ -2371,10 +2258,10 @@ public class ExpandHandlerImpl
     //   1170: lload 9
     //   1172: lstore 11
     //   1174: aload 25
-    //   1176: new 339	java/util/ArrayList
+    //   1176: new 342	java/util/ArrayList
     //   1179: dup
-    //   1180: invokespecial 340	java/util/ArrayList:<init>	()V
-    //   1183: putfield 1778	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mSchoolInfos	Ljava/util/List;
+    //   1180: invokespecial 343	java/util/ArrayList:<init>	()V
+    //   1183: putfield 1792	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mSchoolInfos	Ljava/util/List;
     //   1186: iload 15
     //   1188: istore 16
     //   1190: aload_1
@@ -2382,8 +2269,8 @@ public class ExpandHandlerImpl
     //   1192: lload 9
     //   1194: lstore 11
     //   1196: aload 24
-    //   1198: getfield 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1201: invokevirtual 347	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   1198: getfield 1793	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1201: invokevirtual 350	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
     //   1204: ifeq +381 -> 1585
     //   1207: iconst_0
     //   1208: istore 4
@@ -2395,17 +2282,17 @@ public class ExpandHandlerImpl
     //   1218: lstore 11
     //   1220: iload 4
     //   1222: aload 24
-    //   1224: getfield 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1227: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   1230: invokeinterface 522 1 0
+    //   1224: getfield 1793	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1227: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1230: invokeinterface 529 1 0
     //   1235: if_icmpge +350 -> 1585
     //   1238: aload_1
     //   1239: astore_3
     //   1240: lload 9
     //   1242: lstore 11
-    //   1244: new 1781	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo
+    //   1244: new 1795	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo
     //   1247: dup
-    //   1248: invokespecial 1782	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:<init>	()V
+    //   1248: invokespecial 1796	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:<init>	()V
     //   1251: astore 26
     //   1253: aload_1
     //   1254: astore_3
@@ -2413,40 +2300,40 @@ public class ExpandHandlerImpl
     //   1257: lstore 11
     //   1259: aload 26
     //   1261: aload 24
-    //   1263: getfield 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1266: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1263: getfield 1793	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1266: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   1269: iload 4
-    //   1271: invokeinterface 1764 2 0
-    //   1276: checkcast 1784	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo
-    //   1279: getfield 1785	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo:str_school_id	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1282: invokevirtual 193	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1285: putfield 1786	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1271: invokeinterface 1777 2 0
+    //   1276: checkcast 1798	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo
+    //   1279: getfield 1799	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo:str_school_id	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1282: invokevirtual 195	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1285: putfield 1800	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:a	Ljava/lang/String;
     //   1288: aload_1
     //   1289: astore_3
     //   1290: lload 9
     //   1292: lstore 11
     //   1294: aload 26
     //   1296: aload 24
-    //   1298: getfield 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1301: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1298: getfield 1793	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1301: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   1304: iload 4
-    //   1306: invokeinterface 1764 2 0
-    //   1311: checkcast 1784	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo
-    //   1314: getfield 1787	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo:uint64_state	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   1317: invokevirtual 179	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   1320: putfield 1788	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:jdField_a_of_type_Long	J
+    //   1306: invokeinterface 1777 2 0
+    //   1311: checkcast 1798	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo
+    //   1314: getfield 1801	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo:uint64_state	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1317: invokevirtual 181	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   1320: putfield 1803	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:b	J
     //   1323: aload_1
     //   1324: astore_3
     //   1325: lload 9
     //   1327: lstore 11
     //   1329: aload 24
-    //   1331: getfield 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1334: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1331: getfield 1793	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1334: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   1337: iload 4
-    //   1339: invokeinterface 1764 2 0
-    //   1344: checkcast 1784	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo
-    //   1347: getfield 1789	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo:str_school_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1350: invokevirtual 359	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   1339: invokeinterface 1777 2 0
+    //   1344: checkcast 1798	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo
+    //   1347: getfield 1804	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo:str_school_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1350: invokevirtual 362	com/tencent/mobileqq/pb/PBStringField:has	()Z
     //   1353: istore 16
     //   1355: iload 16
     //   1357: ifeq +41 -> 1398
@@ -2455,13 +2342,13 @@ public class ExpandHandlerImpl
     //   1363: lload 9
     //   1365: lstore 11
     //   1367: aload 24
-    //   1369: getfield 1779	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1372: invokevirtual 714	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1369: getfield 1793	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:rpt_school_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1372: invokevirtual 721	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   1375: iload 4
-    //   1377: invokeinterface 1764 2 0
-    //   1382: checkcast 1784	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo
-    //   1385: getfield 1789	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo:str_school_name	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1388: invokevirtual 193	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1377: invokeinterface 1777 2 0
+    //   1382: checkcast 1798	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo
+    //   1385: getfield 1804	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$schoolInfo:str_school_name	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1388: invokevirtual 195	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   1391: astore_3
     //   1392: aload_3
     //   1393: astore 19
@@ -2474,28 +2361,28 @@ public class ExpandHandlerImpl
     //   1405: lstore 11
     //   1407: aload 26
     //   1409: aload 19
-    //   1411: putfield 1790	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1411: putfield 1805	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:c	Ljava/lang/String;
     //   1414: aload_1
     //   1415: astore_3
     //   1416: lload 9
     //   1418: lstore 11
-    //   1420: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1420: invokestatic 380	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1423: ifeq +1090 -> 2513
     //   1426: aload_1
     //   1427: astore_3
     //   1428: lload 9
     //   1430: lstore 11
-    //   1432: new 32	java/lang/StringBuilder
+    //   1432: new 34	java/lang/StringBuilder
     //   1435: dup
-    //   1436: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   1436: invokespecial 36	java/lang/StringBuilder:<init>	()V
     //   1439: astore 19
     //   1441: aload_1
     //   1442: astore_3
     //   1443: lload 9
     //   1445: lstore 11
     //   1447: aload 19
-    //   1449: ldc_w 1792
-    //   1452: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1449: ldc_w 1807
+    //   1452: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1455: pop
     //   1456: aload_1
     //   1457: astore_3
@@ -2503,16 +2390,16 @@ public class ExpandHandlerImpl
     //   1460: lstore 11
     //   1462: aload 19
     //   1464: aload 26
-    //   1466: getfield 1786	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1469: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1466: getfield 1800	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:a	Ljava/lang/String;
+    //   1469: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1472: pop
     //   1473: aload_1
     //   1474: astore_3
     //   1475: lload 9
     //   1477: lstore 11
     //   1479: aload 19
-    //   1481: ldc_w 1794
-    //   1484: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1481: ldc_w 1809
+    //   1484: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1487: pop
     //   1488: aload_1
     //   1489: astore_3
@@ -2520,16 +2407,16 @@ public class ExpandHandlerImpl
     //   1492: lstore 11
     //   1494: aload 19
     //   1496: aload 26
-    //   1498: getfield 1790	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1501: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1498: getfield 1805	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:c	Ljava/lang/String;
+    //   1501: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1504: pop
     //   1505: aload_1
     //   1506: astore_3
     //   1507: lload 9
     //   1509: lstore 11
     //   1511: aload 19
-    //   1513: ldc_w 1796
-    //   1516: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1513: ldc_w 1811
+    //   1516: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1519: pop
     //   1520: aload_1
     //   1521: astore_3
@@ -2537,27 +2424,27 @@ public class ExpandHandlerImpl
     //   1524: lstore 11
     //   1526: aload 19
     //   1528: aload 26
-    //   1530: getfield 1788	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:jdField_a_of_type_Long	J
-    //   1533: invokevirtual 498	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1530: getfield 1803	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo$SchoolInfo:b	J
+    //   1533: invokevirtual 505	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1536: pop
     //   1537: aload_1
     //   1538: astore_3
     //   1539: lload 9
     //   1541: lstore 11
-    //   1543: ldc 45
+    //   1543: ldc 47
     //   1545: iconst_2
     //   1546: aload 19
-    //   1548: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1551: invokestatic 382	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1548: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1551: invokestatic 385	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1554: goto +3 -> 1557
     //   1557: aload_1
     //   1558: astore_3
     //   1559: lload 9
     //   1561: lstore 11
     //   1563: aload 25
-    //   1565: getfield 1778	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mSchoolInfos	Ljava/util/List;
+    //   1565: getfield 1792	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mSchoolInfos	Ljava/util/List;
     //   1568: aload 26
-    //   1570: invokeinterface 1775 2 0
+    //   1570: invokeinterface 1789 2 0
     //   1575: pop
     //   1576: iload 4
     //   1578: iconst_1
@@ -2568,23 +2455,23 @@ public class ExpandHandlerImpl
     //   1586: astore_3
     //   1587: lload 9
     //   1589: lstore 11
-    //   1591: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1591: invokestatic 380	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1594: ifeq +137 -> 1731
     //   1597: aload_1
     //   1598: astore_3
     //   1599: lload 9
     //   1601: lstore 11
-    //   1603: new 32	java/lang/StringBuilder
+    //   1603: new 34	java/lang/StringBuilder
     //   1606: dup
-    //   1607: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   1607: invokespecial 36	java/lang/StringBuilder:<init>	()V
     //   1610: astore 19
     //   1612: aload_1
     //   1613: astore_3
     //   1614: lload 9
     //   1616: lstore 11
     //   1618: aload 19
-    //   1620: ldc_w 1798
-    //   1623: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1620: ldc_w 1813
+    //   1623: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1626: pop
     //   1627: aload_1
     //   1628: astore_3
@@ -2592,16 +2479,16 @@ public class ExpandHandlerImpl
     //   1631: lstore 11
     //   1633: aload 19
     //   1635: aload 25
-    //   1637: getfield 1609	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mUin	Ljava/lang/String;
-    //   1640: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1637: getfield 1622	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mUin	Ljava/lang/String;
+    //   1640: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1643: pop
     //   1644: aload_1
     //   1645: astore_3
     //   1646: lload 9
     //   1648: lstore 11
     //   1650: aload 19
-    //   1652: ldc_w 474
-    //   1655: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1652: ldc_w 481
+    //   1655: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1658: pop
     //   1659: aload_1
     //   1660: astore_3
@@ -2609,17 +2496,17 @@ public class ExpandHandlerImpl
     //   1663: lstore 11
     //   1665: aload 19
     //   1667: aload 24
-    //   1669: getfield 1719	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_vip_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1672: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1675: invokevirtual 43	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1669: getfield 1732	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_vip_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1672: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1675: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1678: pop
     //   1679: aload_1
     //   1680: astore_3
     //   1681: lload 9
     //   1683: lstore 11
     //   1685: aload 19
-    //   1687: ldc_w 474
-    //   1690: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1687: ldc_w 481
+    //   1690: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1693: pop
     //   1694: aload_1
     //   1695: astore_3
@@ -2627,57 +2514,57 @@ public class ExpandHandlerImpl
     //   1698: lstore 11
     //   1700: aload 19
     //   1702: aload 24
-    //   1704: getfield 1725	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_svip_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1707: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1710: invokevirtual 43	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1704: getfield 1738	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$StrangerInfo:uint32_svip_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1707: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1710: invokevirtual 45	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1713: pop
     //   1714: aload_1
     //   1715: astore_3
     //   1716: lload 9
     //   1718: lstore 11
-    //   1720: ldc 45
+    //   1720: ldc 47
     //   1722: iconst_2
     //   1723: aload 19
-    //   1725: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1728: invokestatic 382	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1725: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1728: invokestatic 385	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1731: aload_1
     //   1732: astore_3
     //   1733: lload 9
     //   1735: lstore 11
     //   1737: aload 25
-    //   1739: getfield 1613	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mNickName	Ljava/lang/String;
-    //   1742: invokestatic 77	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1739: getfield 1626	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mNickName	Ljava/lang/String;
+    //   1742: invokestatic 79	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1745: ifeq +65 -> 1810
     //   1748: aload_1
     //   1749: astore_3
     //   1750: lload 9
     //   1752: lstore 11
     //   1754: aload 25
-    //   1756: getfield 1747	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAlumbasicdata	Lcom/tencent/mobileqq/vas/adv/common/data/AlumBasicData;
+    //   1756: getfield 1760	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mAlumbasicdata	Lcom/tencent/mobileqq/vas/adv/common/data/AlumBasicData;
     //   1759: ifnull +6 -> 1765
     //   1762: goto +48 -> 1810
     //   1765: aload_1
     //   1766: astore_3
     //   1767: lload 9
     //   1769: lstore 11
-    //   1771: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1771: invokestatic 380	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1774: ifeq +742 -> 2516
     //   1777: aload_1
     //   1778: astore_3
     //   1779: lload 9
     //   1781: lstore 11
-    //   1783: ldc 45
+    //   1783: ldc 47
     //   1785: iconst_2
-    //   1786: ldc_w 1800
+    //   1786: ldc_w 1815
     //   1789: iconst_1
-    //   1790: anewarray 121	java/lang/Object
+    //   1790: anewarray 123	java/lang/Object
     //   1793: dup
     //   1794: iconst_0
     //   1795: aload 25
-    //   1797: getfield 1609	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mUin	Ljava/lang/String;
+    //   1797: getfield 1622	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mUin	Ljava/lang/String;
     //   1800: aastore
-    //   1801: invokestatic 528	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1804: invokestatic 605	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1801: invokestatic 535	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1804: invokestatic 612	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   1807: goto +709 -> 2516
     //   1810: aload_1
     //   1811: astore_3
@@ -2685,7 +2572,7 @@ public class ExpandHandlerImpl
     //   1814: lstore 11
     //   1816: aload 22
     //   1818: aload 25
-    //   1820: invokeinterface 1775 2 0
+    //   1820: invokeinterface 1789 2 0
     //   1825: pop
     //   1826: goto +690 -> 2516
     //   1829: lload 11
@@ -2696,9 +2583,9 @@ public class ExpandHandlerImpl
     //   1837: astore_3
     //   1838: lload 9
     //   1840: lstore 11
-    //   1842: new 1802	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo
+    //   1842: new 1817	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo
     //   1845: dup
-    //   1846: invokespecial 1803	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:<init>	()V
+    //   1846: invokespecial 1818	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:<init>	()V
     //   1849: astore 20
     //   1851: aload_1
     //   1852: astore_3
@@ -2706,41 +2593,41 @@ public class ExpandHandlerImpl
     //   1855: lstore 11
     //   1857: aload 20
     //   1859: aload 23
-    //   1861: getfield 1806	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_match_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1864: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1867: putfield 1807	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:jdField_a_of_type_Int	I
+    //   1861: getfield 1821	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_match_count	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1864: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1867: putfield 1822	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:a	I
     //   1870: aload_1
     //   1871: astore_3
     //   1872: lload 9
     //   1874: lstore 11
     //   1876: aload 20
     //   1878: aload 23
-    //   1880: getfield 1810	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_match_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1883: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1886: putfield 1811	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:jdField_b_of_type_Int	I
+    //   1880: getfield 1825	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_match_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1883: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1886: putfield 1826	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:b	I
     //   1889: aload_1
     //   1890: astore_3
     //   1891: lload 9
     //   1893: lstore 11
     //   1895: aload 20
     //   1897: aload 23
-    //   1899: getfield 1814	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_online_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1902: invokevirtual 214	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1905: putfield 1815	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:jdField_c_of_type_Int	I
+    //   1899: getfield 1829	com/tencent/pb/extendfriend/ExtendFriendSquareInfo$RspBody:uint32_online_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1902: invokevirtual 216	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1905: putfield 1830	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:d	I
     //   1908: aload_1
     //   1909: astore_3
     //   1910: lload 9
     //   1912: lstore 11
-    //   1914: new 339	java/util/ArrayList
+    //   1914: new 342	java/util/ArrayList
     //   1917: dup
-    //   1918: invokespecial 340	java/util/ArrayList:<init>	()V
+    //   1918: invokespecial 343	java/util/ArrayList:<init>	()V
     //   1921: astore 19
     //   1923: aload_1
     //   1924: astore_3
     //   1925: lload 9
     //   1927: lstore 11
     //   1929: aload 22
-    //   1931: invokeinterface 522 1 0
+    //   1931: invokeinterface 529 1 0
     //   1936: istore 8
     //   1938: iload 8
     //   1940: bipush 12
@@ -2751,16 +2638,16 @@ public class ExpandHandlerImpl
     //   1949: lstore 11
     //   1951: aload 19
     //   1953: aload 22
-    //   1955: invokeinterface 737 2 0
+    //   1955: invokeinterface 744 2 0
     //   1960: pop
     //   1961: goto +597 -> 2558
     //   1964: aload_1
     //   1965: astore_3
     //   1966: lload 9
     //   1968: lstore 11
-    //   1970: new 1817	java/util/Random
+    //   1970: new 1832	java/util/Random
     //   1973: dup
-    //   1974: invokespecial 1818	java/util/Random:<init>	()V
+    //   1974: invokespecial 1833	java/util/Random:<init>	()V
     //   1977: astore 23
     //   1979: iconst_0
     //   1980: istore 4
@@ -2779,7 +2666,7 @@ public class ExpandHandlerImpl
     //   2005: iload 8
     //   2007: iload 4
     //   2009: isub
-    //   2010: invokevirtual 1821	java/util/Random:nextInt	(I)I
+    //   2010: invokevirtual 1836	java/util/Random:nextInt	(I)I
     //   2013: iload 6
     //   2015: if_icmpge +530 -> 2545
     //   2018: aload_1
@@ -2789,8 +2676,8 @@ public class ExpandHandlerImpl
     //   2024: aload 19
     //   2026: aload 22
     //   2028: iload 4
-    //   2030: invokeinterface 1764 2 0
-    //   2035: invokeinterface 1775 2 0
+    //   2030: invokeinterface 1777 2 0
+    //   2035: invokeinterface 1789 2 0
     //   2040: pop
     //   2041: iload 6
     //   2043: iconst_1
@@ -2803,20 +2690,20 @@ public class ExpandHandlerImpl
     //   2054: lstore 11
     //   2056: iload 4
     //   2058: aload 19
-    //   2060: invokeinterface 522 1 0
+    //   2060: invokeinterface 529 1 0
     //   2065: if_icmpge +44 -> 2109
     //   2068: aload_1
     //   2069: astore_3
     //   2070: lload 9
     //   2072: lstore 11
     //   2074: aload 20
-    //   2076: getfield 1823	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   2076: getfield 1838	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:c	Ljava/util/List;
     //   2079: aload 19
     //   2081: iload 4
-    //   2083: invokeinterface 1764 2 0
-    //   2088: checkcast 1604	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo
-    //   2091: getfield 1609	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mUin	Ljava/lang/String;
-    //   2094: invokeinterface 1775 2 0
+    //   2083: invokeinterface 1777 2 0
+    //   2088: checkcast 1617	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo
+    //   2091: getfield 1622	com/tencent/mobileqq/qqexpand/bean/feed/StrangerInfo:mUin	Ljava/lang/String;
+    //   2094: invokeinterface 1789 2 0
     //   2099: pop
     //   2100: iload 4
     //   2102: iconst_1
@@ -2830,39 +2717,39 @@ public class ExpandHandlerImpl
     //   2114: lload 9
     //   2116: lstore 11
     //   2118: aload_3
-    //   2119: getfield 27	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   2119: getfield 29	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:b	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   2122: ifnull +29 -> 2151
     //   2125: aload_1
     //   2126: astore 19
     //   2128: lload 9
     //   2130: lstore 11
     //   2132: aload_3
-    //   2133: getfield 27	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   2136: getstatic 1143	com/tencent/mobileqq/app/QQManagerFactory:EXTEND_FRIEND_LIMIT_CHAT_MANAGER	I
-    //   2139: invokevirtual 91	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   2142: checkcast 1145	com/tencent/mobileqq/qqexpand/manager/ExtendFriendLimitChatManager
+    //   2133: getfield 29	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:b	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   2136: getstatic 1156	com/tencent/mobileqq/app/QQManagerFactory:EXTEND_FRIEND_LIMIT_CHAT_MANAGER	I
+    //   2139: invokevirtual 93	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   2142: checkcast 1158	com/tencent/mobileqq/qqexpand/manager/ExtendFriendLimitChatManager
     //   2145: iconst_1
     //   2146: aload 20
-    //   2148: invokevirtual 1826	com/tencent/mobileqq/qqexpand/manager/ExtendFriendLimitChatManager:a	(ZLcom/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo;)V
+    //   2148: invokevirtual 1841	com/tencent/mobileqq/qqexpand/manager/ExtendFriendLimitChatManager:a	(ZLcom/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo;)V
     //   2151: aload_1
     //   2152: astore 19
     //   2154: lload 9
     //   2156: lstore 11
-    //   2158: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2158: invokestatic 380	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2161: ifeq +114 -> 2275
     //   2164: aload_1
     //   2165: astore 19
     //   2167: lload 9
     //   2169: lstore 11
-    //   2171: ldc_w 330
+    //   2171: ldc_w 332
     //   2174: iconst_2
-    //   2175: ldc_w 1828
+    //   2175: ldc_w 1843
     //   2178: bipush 9
-    //   2180: anewarray 121	java/lang/Object
+    //   2180: anewarray 123	java/lang/Object
     //   2183: dup
     //   2184: iconst_0
     //   2185: iload 16
-    //   2187: invokestatic 224	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2187: invokestatic 226	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   2190: aastore
     //   2191: dup
     //   2192: iconst_1
@@ -2871,44 +2758,44 @@ public class ExpandHandlerImpl
     //   2196: dup
     //   2197: iconst_2
     //   2198: iload 17
-    //   2200: invokestatic 224	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2200: invokestatic 226	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   2203: aastore
     //   2204: dup
     //   2205: iconst_3
     //   2206: iload 18
-    //   2208: invokestatic 224	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2208: invokestatic 226	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   2211: aastore
     //   2212: dup
     //   2213: iconst_4
     //   2214: iload 5
-    //   2216: invokestatic 129	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2216: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2219: aastore
     //   2220: dup
     //   2221: iconst_5
     //   2222: aload 22
-    //   2224: invokeinterface 522 1 0
-    //   2229: invokestatic 129	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2224: invokeinterface 529 1 0
+    //   2229: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2232: aastore
     //   2233: dup
     //   2234: bipush 6
     //   2236: aload 20
-    //   2238: getfield 1807	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:jdField_a_of_type_Int	I
-    //   2241: invokestatic 129	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2238: getfield 1822	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:a	I
+    //   2241: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2244: aastore
     //   2245: dup
     //   2246: bipush 7
     //   2248: aload 20
-    //   2250: getfield 1811	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:jdField_b_of_type_Int	I
-    //   2253: invokestatic 129	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2250: getfield 1826	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:b	I
+    //   2253: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2256: aastore
     //   2257: dup
     //   2258: bipush 8
     //   2260: aload 20
-    //   2262: getfield 1815	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:jdField_c_of_type_Int	I
-    //   2265: invokestatic 129	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2262: getfield 1830	com/tencent/mobileqq/qqexpand/bean/match/MatchFeedInfo:d	I
+    //   2265: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2268: aastore
-    //   2269: invokestatic 528	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   2272: invokestatic 382	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2269: invokestatic 535	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   2272: invokestatic 385	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2275: aload_1
     //   2276: astore 19
     //   2278: lload 9
@@ -2917,11 +2804,11 @@ public class ExpandHandlerImpl
     //   2283: iconst_2
     //   2284: iconst_1
     //   2285: bipush 9
-    //   2287: anewarray 121	java/lang/Object
+    //   2287: anewarray 123	java/lang/Object
     //   2290: dup
     //   2291: iconst_0
     //   2292: lload 9
-    //   2294: invokestatic 132	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2294: invokestatic 134	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   2297: aastore
     //   2298: dup
     //   2299: iconst_1
@@ -2930,7 +2817,7 @@ public class ExpandHandlerImpl
     //   2302: dup
     //   2303: iconst_2
     //   2304: iload 16
-    //   2306: invokestatic 224	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2306: invokestatic 226	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   2309: aastore
     //   2310: dup
     //   2311: iconst_3
@@ -2939,17 +2826,17 @@ public class ExpandHandlerImpl
     //   2315: dup
     //   2316: iconst_4
     //   2317: iload 17
-    //   2319: invokestatic 224	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2319: invokestatic 226	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   2322: aastore
     //   2323: dup
     //   2324: iconst_5
     //   2325: iload 18
-    //   2327: invokestatic 224	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2327: invokestatic 226	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   2330: aastore
     //   2331: dup
     //   2332: bipush 6
     //   2334: iload 5
-    //   2336: invokestatic 129	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2336: invokestatic 131	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2339: aastore
     //   2340: dup
     //   2341: bipush 7
@@ -2959,7 +2846,7 @@ public class ExpandHandlerImpl
     //   2347: bipush 8
     //   2349: aload 20
     //   2351: aastore
-    //   2352: invokevirtual 516	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:notifyUI	(IZLjava/lang/Object;)V
+    //   2352: invokevirtual 523	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:notifyUI	(IZLjava/lang/Object;)V
     //   2355: goto +96 -> 2451
     //   2358: astore_3
     //   2359: aload 19
@@ -2976,52 +2863,52 @@ public class ExpandHandlerImpl
     //   2379: astore_3
     //   2380: goto +4 -> 2384
     //   2383: astore_3
-    //   2384: invokestatic 377	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2384: invokestatic 380	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2387: ifeq +17 -> 2404
-    //   2390: ldc 45
+    //   2390: ldc 47
     //   2392: iconst_2
     //   2393: aload_3
-    //   2394: invokevirtual 875	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   2394: invokevirtual 882	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   2397: aload_3
-    //   2398: invokestatic 1830	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2398: invokestatic 1845	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   2401: goto +3 -> 2404
     //   2404: aload_0
     //   2405: iconst_2
     //   2406: iconst_0
     //   2407: iconst_2
-    //   2408: anewarray 121	java/lang/Object
+    //   2408: anewarray 123	java/lang/Object
     //   2411: dup
     //   2412: iconst_0
     //   2413: lload 9
-    //   2415: invokestatic 132	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2415: invokestatic 134	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   2418: aastore
     //   2419: dup
     //   2420: iconst_1
     //   2421: aload_1
     //   2422: aastore
-    //   2423: invokevirtual 516	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:notifyUI	(IZLjava/lang/Object;)V
+    //   2423: invokevirtual 523	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:notifyUI	(IZLjava/lang/Object;)V
     //   2426: goto +25 -> 2451
     //   2429: aload_0
     //   2430: iconst_2
     //   2431: iconst_0
     //   2432: iconst_2
-    //   2433: anewarray 121	java/lang/Object
+    //   2433: anewarray 123	java/lang/Object
     //   2436: dup
     //   2437: iconst_0
     //   2438: lload 9
-    //   2440: invokestatic 132	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2440: invokestatic 134	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   2443: aastore
     //   2444: dup
     //   2445: iconst_1
     //   2446: aload_1
     //   2447: aastore
-    //   2448: invokevirtual 516	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:notifyUI	(IZLjava/lang/Object;)V
-    //   2451: invokestatic 1835	com/tencent/mobileqq/extendfriend/utils/ExtendFriendReport:a	()Lcom/tencent/mobileqq/extendfriend/utils/ExtendFriendReport;
+    //   2448: invokevirtual 523	com/tencent/mobileqq/qqexpand/network/impl/ExpandHandlerImpl:notifyUI	(IZLjava/lang/Object;)V
+    //   2451: invokestatic 1850	com/tencent/mobileqq/extendfriend/utils/ExtendFriendReport:a	()Lcom/tencent/mobileqq/extendfriend/utils/ExtendFriendReport;
     //   2454: aload_2
-    //   2455: invokevirtual 1838	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   2455: invokevirtual 1853	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
     //   2458: aload_2
-    //   2459: invokevirtual 1015	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   2462: invokevirtual 1841	com/tencent/mobileqq/extendfriend/utils/ExtendFriendReport:c	(ZI)V
+    //   2459: invokevirtual 1025	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   2462: invokevirtual 1856	com/tencent/mobileqq/extendfriend/utils/ExtendFriendReport:c	(ZI)V
     //   2465: return
     //   2466: iconst_0
     //   2467: istore 15
@@ -3197,50 +3084,75 @@ public class ExpandHandlerImpl
   
   public boolean b(String paramString)
   {
-    Object localObject1;
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getUnlimitMatchBaseInfo. uin = ");
-      ((StringBuilder)localObject1).append(paramString);
-      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject1).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cancleUnlimitMatch. uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      localObject1 = new oidb_0xe03.ReqBody();
-      ((oidb_0xe03.ReqBody)localObject1).uint64_uin.set(a(paramString, "getUnlimitMatchBaseInfo"));
-      ((oidb_0xe03.ReqBody)localObject1).enum_matchopcode.set(3);
-      ((oidb_0xe03.ReqBody)localObject1).uint64_client_version.set(833L);
-      paramString = (ExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-      if (paramString != null)
-      {
-        Object localObject2 = paramString.a();
-        if (localObject2 != null)
-        {
-          paramString = new oidb_0xe03.GPS();
-          paramString.int32_lon.set(((ExtendFriendLocationInfo)localObject2).jdField_b_of_type_Int);
-          paramString.int32_lat.set(((ExtendFriendLocationInfo)localObject2).jdField_a_of_type_Int);
-          paramString.int32_alt.set(((ExtendFriendLocationInfo)localObject2).jdField_c_of_type_Int);
-          paramString.int32_type.set(((ExtendFriendLocationInfo)localObject2).d);
-          localObject2 = new oidb_0xe03.LBSInfo();
-          ((oidb_0xe03.LBSInfo)localObject2).msg_gps.set(paramString);
-          ((oidb_0xe03.ReqBody)localObject1).msg_lbs_info.set((MessageMicro)localObject2);
-          QLog.d("ExpandHandlerImpl", 1, "getUnlimitMatchBaseInfo. with msg_lbs_info info ");
-        }
-      }
-      paramString = makeOIDBPkg("OidbSvc.0xe03", 3587, 0, ((oidb_0xe03.ReqBody)localObject1).toByteArray());
-      paramString.extraData.putInt("match_op", 3);
+      localObject = new oidb_0xe03.ReqBody();
+      ((oidb_0xe03.ReqBody)localObject).uint64_uin.set(a(paramString, "cancleUnlimitMatch"));
+      ((oidb_0xe03.ReqBody)localObject).enum_matchopcode.set(2);
+      paramString = makeOIDBPkg("OidbSvc.0xe03", 3587, 0, ((oidb_0xe03.ReqBody)localObject).toByteArray());
+      paramString.extraData.putInt("match_op", 2);
       sendPbReq(paramString);
       return true;
     }
     catch (NumberFormatException paramString)
     {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("requestMatch. error = ");
-      ((StringBuilder)localObject1).append(paramString);
-      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject1).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestMatch. error = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject).toString());
     }
     return false;
+  }
+  
+  public boolean b(String paramString, boolean paramBoolean)
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setUnlimitMatchStatus. uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" bopen: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject).toString());
+    }
+    try
+    {
+      localObject = new oidb_0xe03.ReqBody();
+      ((oidb_0xe03.ReqBody)localObject).uint64_uin.set(a(paramString, "setUnlimitMatchStatus"));
+      if (paramBoolean) {
+        ((oidb_0xe03.ReqBody)localObject).uint32_switch.set(1);
+      } else {
+        ((oidb_0xe03.ReqBody)localObject).uint32_switch.set(0);
+      }
+      ((oidb_0xe03.ReqBody)localObject).enum_matchopcode.set(4);
+      paramString = makeOIDBPkg("OidbSvc.0xe03", 3587, 0, ((oidb_0xe03.ReqBody)localObject).toByteArray());
+      paramString.extraData.putInt("match_op", 4);
+      paramString.extraData.putBoolean("open", paramBoolean);
+      sendPbReq(paramString);
+      return true;
+    }
+    catch (NumberFormatException paramString)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestMatch. error = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject).toString());
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    return a.incrementAndGet();
   }
   
   public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -3374,9 +3286,9 @@ public class ExpandHandlerImpl
                 {
                   paramFromServiceMsg.mSchoolInfos = new ArrayList();
                   paramObject = new StrangerInfo.SchoolInfo();
-                  paramObject.jdField_b_of_type_JavaLangString = str1;
-                  paramObject.jdField_a_of_type_JavaLangString = str2;
-                  paramObject.jdField_a_of_type_Long = l2;
+                  paramObject.c = str1;
+                  paramObject.a = str2;
+                  paramObject.b = l2;
                 }
                 paramFromServiceMsg.mLabelInfos = new ArrayList();
                 if (localRspBody.rpt_label_info.has())
@@ -3385,12 +3297,12 @@ public class ExpandHandlerImpl
                   if (i < localRspBody.rpt_label_info.get().size())
                   {
                     localObject1 = new StrangerInfo.LabelInfo();
-                    ((StrangerInfo.LabelInfo)localObject1).jdField_a_of_type_Long = ((GetExtendFriendInfo.labelInfo)localRspBody.rpt_label_info.get().get(i)).uint64_label_id.get();
+                    ((StrangerInfo.LabelInfo)localObject1).a = ((GetExtendFriendInfo.labelInfo)localRspBody.rpt_label_info.get().get(i)).uint64_label_id.get();
                     if (!((GetExtendFriendInfo.labelInfo)localRspBody.rpt_label_info.get().get(i)).str_label_name.has()) {
                       break label1314;
                     }
                     paramObject = ((GetExtendFriendInfo.labelInfo)localRspBody.rpt_label_info.get().get(i)).str_label_name.get();
-                    ((StrangerInfo.LabelInfo)localObject1).jdField_a_of_type_JavaLangString = paramObject;
+                    ((StrangerInfo.LabelInfo)localObject1).b = paramObject;
                     paramFromServiceMsg.mLabelInfos.add(localObject1);
                     i += 1;
                     continue;
@@ -3483,6 +3395,54 @@ public class ExpandHandlerImpl
     }
   }
   
+  public boolean c(String paramString)
+  {
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getUnlimitMatchBaseInfo. uin = ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject1).toString());
+    }
+    try
+    {
+      localObject1 = new oidb_0xe03.ReqBody();
+      ((oidb_0xe03.ReqBody)localObject1).uint64_uin.set(a(paramString, "getUnlimitMatchBaseInfo"));
+      ((oidb_0xe03.ReqBody)localObject1).enum_matchopcode.set(3);
+      ((oidb_0xe03.ReqBody)localObject1).uint64_client_version.set(833L);
+      paramString = (ExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if (paramString != null)
+      {
+        Object localObject2 = paramString.V();
+        if (localObject2 != null)
+        {
+          paramString = new oidb_0xe03.GPS();
+          paramString.int32_lon.set(((ExtendFriendLocationInfo)localObject2).b);
+          paramString.int32_lat.set(((ExtendFriendLocationInfo)localObject2).a);
+          paramString.int32_alt.set(((ExtendFriendLocationInfo)localObject2).c);
+          paramString.int32_type.set(((ExtendFriendLocationInfo)localObject2).d);
+          localObject2 = new oidb_0xe03.LBSInfo();
+          ((oidb_0xe03.LBSInfo)localObject2).msg_gps.set(paramString);
+          ((oidb_0xe03.ReqBody)localObject1).msg_lbs_info.set((MessageMicro)localObject2);
+          QLog.d("ExpandHandlerImpl", 1, "getUnlimitMatchBaseInfo. with msg_lbs_info info ");
+        }
+      }
+      paramString = makeOIDBPkg("OidbSvc.0xe03", 3587, 0, ((oidb_0xe03.ReqBody)localObject1).toByteArray());
+      paramString.extraData.putInt("match_op", 3);
+      sendPbReq(paramString);
+      return true;
+    }
+    catch (NumberFormatException paramString)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("requestMatch. error = ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject1).toString());
+    }
+    return false;
+  }
+  
   public void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramObject != null))
@@ -3498,6 +3458,44 @@ public class ExpandHandlerImpl
       return;
     }
     QLog.d("ExpandHandlerImpl", 1, "handleReportUserResponse error!");
+  }
+  
+  public boolean d()
+  {
+    try
+    {
+      Object localObject1 = new oidb_0xe67.ReqBody();
+      ((oidb_0xe67.ReqBody)localObject1).uint32_action.set(0);
+      localObject2 = (IExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if (localObject2 != null)
+      {
+        localObject2 = ((IExpandManager)localObject2).V();
+        if (localObject2 != null)
+        {
+          oidb_0xe67.LBSInfo localLBSInfo = new oidb_0xe67.LBSInfo();
+          oidb_0xe67.GPS localGPS = new oidb_0xe67.GPS();
+          localGPS.int32_lon.set(((ExtendFriendLocationInfo)localObject2).b);
+          localGPS.int32_lat.set(((ExtendFriendLocationInfo)localObject2).a);
+          localGPS.int32_alt.set(((ExtendFriendLocationInfo)localObject2).c);
+          localGPS.int32_type.set(((ExtendFriendLocationInfo)localObject2).d);
+          localLBSInfo.msg_gps.set(localGPS);
+          ((oidb_0xe67.ReqBody)localObject1).msg_lbs_info.set(localLBSInfo);
+          QLog.d("ExpandHandlerImpl", 1, "QuitExtendFriend. with msg_lbs_info info ");
+        }
+      }
+      localObject1 = makeOIDBPkg("OidbSvc.0xe67", 3687, 1, ((oidb_0xe67.ReqBody)localObject1).toByteArray());
+      ((ToServiceMsg)localObject1).extraData.putInt("uint32_action", 0);
+      sendPbReq((ToServiceMsg)localObject1);
+      return true;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("QuitExtendFriend. error = ");
+      ((StringBuilder)localObject2).append(localNumberFormatException);
+      QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, ((StringBuilder)localObject2).toString());
+    }
+    return false;
   }
   
   public void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -3549,7 +3547,7 @@ public class ExpandHandlerImpl
       } else {
         bool2 = false;
       }
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramObject = this.b;
       if (paramObject != null) {
         if (bool1)
         {
@@ -3558,7 +3556,7 @@ public class ExpandHandlerImpl
           {
             notifyUI(18, true, null);
             QLog.i("ExpandHandlerImplexpand.enter.", 1, " refresh entry");
-            ((IExpandManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            ((IExpandManager)this.b.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).a(this.b);
           }
         }
         else
@@ -3575,7 +3573,7 @@ public class ExpandHandlerImpl
       } else {
         bool3 = false;
       }
-      ExtendFriendLimitChatManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Boolean.valueOf(bool3));
+      ExtendFriendLimitChatManager.b(this.b, Boolean.valueOf(bool3));
       if (QLog.isColorLevel())
       {
         paramObject = new StringBuilder();
@@ -3685,19 +3683,19 @@ public class ExpandHandlerImpl
             {
               localObject1 = new TagInfo();
               localObject2 = (oidb_0xe03.TagInfo)localRspBody.rpt_tag.get(k);
-              ((TagInfo)localObject1).jdField_a_of_type_Int = ((oidb_0xe03.TagInfo)localObject2).uint32_tag_id.get();
+              ((TagInfo)localObject1).a = ((oidb_0xe03.TagInfo)localObject2).uint32_tag_id.get();
               if (((oidb_0xe03.TagInfo)localObject2).bytes_tag.has()) {
                 paramToServiceMsg = ((oidb_0xe03.TagInfo)localObject2).bytes_tag.get().toStringUtf8();
               } else {
                 paramToServiceMsg = "";
               }
-              ((TagInfo)localObject1).jdField_a_of_type_JavaLangString = paramToServiceMsg;
+              ((TagInfo)localObject1).b = paramToServiceMsg;
               if (((oidb_0xe03.TagInfo)localObject2).uint32_hot_flag.has()) {
                 m = ((oidb_0xe03.TagInfo)localObject2).uint32_hot_flag.get();
               } else {
                 m = 0;
               }
-              ((TagInfo)localObject1).jdField_b_of_type_Int = m;
+              ((TagInfo)localObject1).c = m;
               paramObject.add(localObject1);
               k += 1;
             }
@@ -3746,9 +3744,9 @@ public class ExpandHandlerImpl
             bool3 = false;
           }
           notifyUI(13, true, new Object[] { paramObject, Boolean.valueOf(bool1), Integer.valueOf(k), paramToServiceMsg, Boolean.valueOf(bool3) });
-          ExtendFriendLimitChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Boolean.valueOf(bool1));
-          ExtendFriendLimitChatManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Boolean.valueOf(bool2));
-          ExtendFriendLimitChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject);
+          ExtendFriendLimitChatManager.a(this.b, Boolean.valueOf(bool1));
+          ExtendFriendLimitChatManager.b(this.b, Boolean.valueOf(bool2));
+          ExtendFriendLimitChatManager.a(this.b, paramObject);
           if (QLog.isColorLevel())
           {
             localObject1 = new StringBuilder();
@@ -3772,7 +3770,7 @@ public class ExpandHandlerImpl
           if (QLog.isColorLevel()) {
             QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, new Object[] { "handleMatchResponse. TYPE_SET_UNLIMIT_SWITCH uin = ", str, ", open = ", Boolean.valueOf(bool1) });
           }
-          ExtendFriendLimitChatManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Boolean.valueOf(bool1));
+          ExtendFriendLimitChatManager.a(this.b, Boolean.valueOf(bool1));
           notifyUI(14, true, null);
         }
         else
@@ -3797,7 +3795,7 @@ public class ExpandHandlerImpl
         }
         else if (m == 25)
         {
-          ((IExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).g();
+          ((IExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).W();
           if (QLog.isColorLevel())
           {
             QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, new Object[] { "handleMatchResponse. TYPE_CLOSE_SIGNAL_BOMB   match_op = ", Integer.valueOf(i) });
@@ -3813,7 +3811,7 @@ public class ExpandHandlerImpl
             } else {
               paramObject = "";
             }
-            paramToServiceMsg = (ExpandManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+            paramToServiceMsg = (ExpandManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
             if (paramToServiceMsg != null) {
               paramToServiceMsg.a(localRspBody);
             }
@@ -3821,38 +3819,38 @@ public class ExpandHandlerImpl
             {
               oidb_0xe03.MatchInfo localMatchInfo = (oidb_0xe03.MatchInfo)localRspBody.msg_match_info.get();
               localObject2 = new MatchInfo();
-              ((MatchInfo)localObject2).jdField_a_of_type_JavaLangString = String.valueOf(localRspBody.uint64_uin.get());
-              ((MatchInfo)localObject2).jdField_a_of_type_ArrayOfByte = localMatchInfo.bytes_sig.get().toByteArray();
+              ((MatchInfo)localObject2).a = String.valueOf(localRspBody.uint64_uin.get());
+              ((MatchInfo)localObject2).b = localMatchInfo.bytes_sig.get().toByteArray();
               if (localMatchInfo.uint64_match_uin.has()) {
                 paramToServiceMsg = String.valueOf(localMatchInfo.uint64_match_uin.get());
               } else {
                 paramToServiceMsg = "0";
               }
-              ((MatchInfo)localObject2).jdField_b_of_type_JavaLangString = paramToServiceMsg;
+              ((MatchInfo)localObject2).c = paramToServiceMsg;
               if (localMatchInfo.bytes_tips_wording.has()) {
                 paramToServiceMsg = localMatchInfo.bytes_tips_wording.get().toStringUtf8();
               } else {
                 paramToServiceMsg = "";
               }
-              ((MatchInfo)localObject2).jdField_c_of_type_JavaLangString = paramToServiceMsg;
+              ((MatchInfo)localObject2).d = paramToServiceMsg;
               if (localMatchInfo.uint64_time_stamp.has()) {
                 l1 = localMatchInfo.uint64_time_stamp.get();
               } else {
                 l1 = -1L;
               }
-              ((MatchInfo)localObject2).jdField_a_of_type_Long = l1;
+              ((MatchInfo)localObject2).e = l1;
               if (localMatchInfo.uint32_match_expired_time.has()) {
                 k = localMatchInfo.uint32_match_expired_time.get();
               } else {
                 k = 30;
               }
-              ((MatchInfo)localObject2).jdField_a_of_type_Int = k;
+              ((MatchInfo)localObject2).f = k;
               if (localMatchInfo.bytes_nick.has()) {
                 paramToServiceMsg = localMatchInfo.bytes_nick.get().toStringUtf8();
               } else {
                 paramToServiceMsg = "";
               }
-              ((MatchInfo)localObject2).d = paramToServiceMsg;
+              ((MatchInfo)localObject2).g = paramToServiceMsg;
               paramToServiceMsg = (ToServiceMsg)localObject1;
               if (localMatchInfo.string_report_id.has()) {
                 paramToServiceMsg = localMatchInfo.string_report_id.get();
@@ -3863,16 +3861,16 @@ public class ExpandHandlerImpl
                 QLog.d("ExpandHandlerImplExtendFriendLimitChat", 2, "string_report_id EMPTY");
                 localObject1 = "0";
               }
-              ((MatchInfo)localObject2).e = ((String)localObject1);
+              ((MatchInfo)localObject2).h = ((String)localObject1);
               if (localRspBody.msg_match_info.msg_tag.has())
               {
                 if (localRspBody.msg_match_info.msg_tag.uint32_tag_id.has()) {
-                  ((MatchInfo)localObject2).jdField_b_of_type_Int = localRspBody.msg_match_info.msg_tag.uint32_tag_id.get();
+                  ((MatchInfo)localObject2).i = localRspBody.msg_match_info.msg_tag.uint32_tag_id.get();
                 } else {
                   QLog.e("ExpandHandlerImpl", 2, "msg_tag pi pei zhu ti  ID IS NULL");
                 }
                 if (localRspBody.msg_match_info.msg_tag.bytes_tag.has()) {
-                  ((MatchInfo)localObject2).jdField_f_of_type_JavaLangString = localRspBody.msg_match_info.msg_tag.bytes_tag.get().toStringUtf8();
+                  ((MatchInfo)localObject2).j = localRspBody.msg_match_info.msg_tag.bytes_tag.get().toStringUtf8();
                 }
               }
               else
@@ -3881,12 +3879,12 @@ public class ExpandHandlerImpl
               }
               if (localRspBody.msg_match_info.msg_match_uin_data.has())
               {
-                if (((MatchInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo == null)
+                if (((MatchInfo)localObject2).k == null)
                 {
-                  ((MatchInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo = new ChatFriendInfo();
-                  ((MatchInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_a_of_type_JavaLangString = ((MatchInfo)localObject2).jdField_b_of_type_JavaLangString;
+                  ((MatchInfo)localObject2).k = new ChatFriendInfo();
+                  ((MatchInfo)localObject2).k.a = ((MatchInfo)localObject2).c;
                 }
-                a(localRspBody.msg_match_info.msg_match_uin_data, ((MatchInfo)localObject2).jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo);
+                a(localRspBody.msg_match_info.msg_match_uin_data, ((MatchInfo)localObject2).k);
               }
               else
               {
@@ -4035,7 +4033,7 @@ public class ExpandHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.impl.ExpandHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

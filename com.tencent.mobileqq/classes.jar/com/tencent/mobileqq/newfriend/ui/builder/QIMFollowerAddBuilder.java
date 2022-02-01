@@ -31,13 +31,8 @@ public class QIMFollowerAddBuilder
   public QIMFollowerAddBuilder(Context paramContext, AppInterface paramAppInterface, SystemMsgListAdapter paramSystemMsgListAdapter, NewFriendMessage paramNewFriendMessage)
   {
     super(paramContext, paramAppInterface, paramSystemMsgListAdapter, paramNewFriendMessage);
-    this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder = a(paramContext);
-    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297483);
-  }
-  
-  protected int a()
-  {
-    return 1;
+    this.f = a(paramContext);
+    this.h = this.c.getResources().getDimensionPixelSize(2131298134);
   }
   
   public View a(int paramInt, View paramView)
@@ -50,44 +45,44 @@ public class QIMFollowerAddBuilder
     else
     {
       localQIMFollowerAddHolder = new QIMFollowerAddBuilder.QIMFollowerAddHolder();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561509, localQIMFollowerAddHolder);
-      a(paramView, this.b);
-      localQIMFollowerAddHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361799));
-      localQIMFollowerAddHolder.h = ((TextView)paramView.findViewById(2131371877));
-      localQIMFollowerAddHolder.i = ((TextView)paramView.findViewById(2131376487));
-      localQIMFollowerAddHolder.l = ((TextView)paramView.findViewById(2131362299));
-      localQIMFollowerAddHolder.j = ((TextView)paramView.findViewById(2131377726));
-      localQIMFollowerAddHolder.k = ((TextView)paramView.findViewById(2131376485));
-      localQIMFollowerAddHolder.a = ((Button)paramView.findViewById(2131376477));
-      b(localQIMFollowerAddHolder.jdField_f_of_type_AndroidWidgetImageView);
+      paramView = a(this.c, 2131627870, localQIMFollowerAddHolder);
+      a(paramView, this.h);
+      localQIMFollowerAddHolder.w = ((ImageView)paramView.findViewById(2131427337));
+      localQIMFollowerAddHolder.x = ((TextView)paramView.findViewById(2131439320));
+      localQIMFollowerAddHolder.y = ((TextView)paramView.findViewById(2131444728));
+      localQIMFollowerAddHolder.C = ((TextView)paramView.findViewById(2131427898));
+      localQIMFollowerAddHolder.z = ((TextView)paramView.findViewById(2131446184));
+      localQIMFollowerAddHolder.B = ((TextView)paramView.findViewById(2131444726));
+      localQIMFollowerAddHolder.A = ((Button)paramView.findViewById(2131444718));
+      b(localQIMFollowerAddHolder.w);
       paramView.setTag(localQIMFollowerAddHolder);
     }
     localQIMFollowerAddHolder.leftView.setTag(localQIMFollowerAddHolder);
     localQIMFollowerAddHolder.leftView.setOnClickListener(this);
-    a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage, localQIMFollowerAddHolder, this);
-    localQIMFollowerAddHolder.leftView.setBackgroundResource(2130839390);
-    QIMFollwerAdd localQIMFollwerAdd = ((QIMFollowMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a;
+    a(this.c, paramView, paramInt, this.g, localQIMFollowerAddHolder, this);
+    localQIMFollowerAddHolder.leftView.setBackgroundResource(2130839574);
+    QIMFollwerAdd localQIMFollwerAdd = ((QIMFollowMessage)this.g).a;
     if (!TextUtils.isEmpty(localQIMFollwerAdd.smartRemark))
     {
-      localQIMFollowerAddHolder.h.setVisibility(0);
-      localQIMFollowerAddHolder.h.setText(localQIMFollwerAdd.smartRemark);
+      localQIMFollowerAddHolder.x.setVisibility(0);
+      localQIMFollowerAddHolder.x.setText(localQIMFollwerAdd.smartRemark);
     }
     else
     {
-      localQIMFollowerAddHolder.h.setVisibility(8);
+      localQIMFollowerAddHolder.x.setVisibility(8);
     }
-    NewFriendUtil.a(localQIMFollowerAddHolder.leftView, this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage.a() ^ true);
+    NewFriendUtil.a(localQIMFollowerAddHolder.leftView, this.g.b() ^ true);
     Object localObject = new StringBuilder(256);
-    ((INewFriendApi)QRoute.api(INewFriendApi.class)).showGenderAge(localQIMFollowerAddHolder.l, localQIMFollwerAdd.gender, 0, (StringBuilder)localObject);
+    ((INewFriendApi)QRoute.api(INewFriendApi.class)).showGenderAge(localQIMFollowerAddHolder.C, localQIMFollwerAdd.gender, 0, (StringBuilder)localObject);
     if (TextUtils.isEmpty(localQIMFollwerAdd.longNick))
     {
-      localQIMFollowerAddHolder.i.setVisibility(8);
+      localQIMFollowerAddHolder.y.setVisibility(8);
     }
     else
     {
-      localQIMFollowerAddHolder.i.setVisibility(0);
-      localQIMFollowerAddHolder.i.setText(localQIMFollwerAdd.longNick);
-      if (AppSetting.d)
+      localQIMFollowerAddHolder.y.setVisibility(0);
+      localQIMFollowerAddHolder.y.setText(localQIMFollwerAdd.longNick);
+      if (AppSetting.e)
       {
         ((StringBuilder)localObject).append(",");
         ((StringBuilder)localObject).append(localQIMFollwerAdd.longNick);
@@ -95,20 +90,20 @@ public class QIMFollowerAddBuilder
     }
     if (!TextUtils.isEmpty(localQIMFollwerAdd.source))
     {
-      localObject = String.format(Locale.getDefault(), HardCodeUtil.a(2131707525), new Object[] { localQIMFollwerAdd.source });
-      localQIMFollowerAddHolder.j.setText((CharSequence)localObject);
-      localQIMFollowerAddHolder.j.setVisibility(0);
+      localObject = String.format(Locale.getDefault(), HardCodeUtil.a(2131905340), new Object[] { localQIMFollwerAdd.source });
+      localQIMFollowerAddHolder.z.setText((CharSequence)localObject);
+      localQIMFollowerAddHolder.z.setVisibility(0);
     }
     else
     {
-      localQIMFollowerAddHolder.j.setVisibility(8);
+      localQIMFollowerAddHolder.z.setVisibility(8);
     }
-    localQIMFollowerAddHolder.k.setVisibility(8);
-    localQIMFollowerAddHolder.a.setText(HardCodeUtil.a(2131707521));
-    localQIMFollowerAddHolder.a.setVisibility(0);
-    localQIMFollowerAddHolder.a.setOnClickListener(this);
-    localQIMFollowerAddHolder.jdField_f_of_type_JavaLangString = String.valueOf(localQIMFollwerAdd.uin);
-    localQIMFollowerAddHolder.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.a(1, String.valueOf(localQIMFollwerAdd.uin)));
+    localQIMFollowerAddHolder.B.setVisibility(8);
+    localQIMFollowerAddHolder.A.setText(HardCodeUtil.a(2131905336));
+    localQIMFollowerAddHolder.A.setVisibility(0);
+    localQIMFollowerAddHolder.A.setOnClickListener(this);
+    localQIMFollowerAddHolder.D = String.valueOf(localQIMFollwerAdd.uin);
+    localQIMFollowerAddHolder.w.setImageBitmap(this.e.a(1, String.valueOf(localQIMFollwerAdd.uin)));
     return paramView;
   }
   
@@ -117,12 +112,17 @@ public class QIMFollowerAddBuilder
     ThreadManager.postImmediately(new QIMFollowerAddBuilder.1(this), null, true);
   }
   
+  protected int b()
+  {
+    return 1;
+  }
+  
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131376644) {
-      if (i == 2131376477) {
-        ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).clickQIMSource(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (i != 2131444905) {
+      if (i == 2131444718) {
+        ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).clickQIMSource(this.c, null, this.d);
       } else {
         a(paramView);
       }
@@ -132,7 +132,7 @@ public class QIMFollowerAddBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.QIMFollowerAddBuilder
  * JD-Core Version:    0.7.0.1
  */

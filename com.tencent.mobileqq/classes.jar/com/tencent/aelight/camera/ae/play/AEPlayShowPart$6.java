@@ -25,7 +25,7 @@ class AEPlayShowPart$6
         if (localAEMaterialCategory != null)
         {
           String str = this.val$tabName;
-          if ((str != null) && (str.equals(localAEMaterialCategory.b)))
+          if ((str != null) && (str.equals(localAEMaterialCategory.d)))
           {
             AEPlayShowPart.access$600(this.this$0, i);
             if (AEPlayShowPart.access$700(this.this$0).getCurrentPageView() != null) {
@@ -40,7 +40,7 @@ class AEPlayShowPart$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEPlayShowPart.6
  * JD-Core Version:    0.7.0.1
  */

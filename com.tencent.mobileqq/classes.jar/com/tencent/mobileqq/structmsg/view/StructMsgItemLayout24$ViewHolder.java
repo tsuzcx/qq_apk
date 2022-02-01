@@ -5,27 +5,21 @@ import android.widget.TextView;
 
 class StructMsgItemLayout24$ViewHolder
 {
-  public View a;
-  public TextView a;
+  public View a = null;
   public TextView b = null;
-  
-  private StructMsgItemLayout24$ViewHolder()
-  {
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-  }
+  public TextView c = null;
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.a;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.b;
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
-    localObject = this.b;
+    localObject = this.c;
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
@@ -33,7 +27,7 @@ class StructMsgItemLayout24$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout24.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

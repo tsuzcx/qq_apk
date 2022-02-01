@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class UserActionCollector$GestureEvent
 {
-  public float a;
   public int a;
-  public long a;
-  public String a;
-  public ArrayList<UserActionCollector.FeedScrollStateInfo> a;
   public long b;
-  public String b;
   public long c;
+  public long d;
+  public float e;
+  public String f;
+  public String g;
+  public ArrayList<UserActionCollector.FeedScrollStateInfo> h;
   
   public UserActionCollector$GestureEvent(UserActionCollector paramUserActionCollector) {}
   
@@ -19,30 +19,30 @@ public class UserActionCollector$GestureEvent
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nGestureEvent{direction=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", deltaFromLastScroll=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", scrollDistance=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", scrollMills=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", scrollMills=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", scrollSpeed=");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", scrollDownAndUpCoordinate='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", clickCoordinate='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", scrollStateInfos=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.h);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.UserActionCollector.GestureEvent
  * JD-Core Version:    0.7.0.1
  */

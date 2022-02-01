@@ -31,11 +31,11 @@ public class TeamWorkFileImportJobForFile2Form
     long l3;
     long l2;
     long l1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo != null) && (paramAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler != null))
+    if ((this.b != null) && (paramAppInterface != null) && (this.c != null))
     {
-      localObject1 = CommonUtils.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
-      localObject4 = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.n;
-      if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Int != 6000) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Int != 6003))
+      localObject1 = CommonUtils.a(this.b);
+      localObject4 = this.b.G;
+      if ((this.b.a != 6000) && (this.b.a != 6003))
       {
         localObject3 = localObject1;
         localObject1 = "";
@@ -52,7 +52,7 @@ public class TeamWorkFileImportJobForFile2Form
           if (!TextUtils.isEmpty((CharSequence)localObject4)) {
             break label159;
           }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.c;
+          localObject1 = this.b.d;
           if (!new File((String)localObject1).exists()) {
             break;
           }
@@ -60,24 +60,24 @@ public class TeamWorkFileImportJobForFile2Form
         }
         localObject1 = "";
       }
-      i = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Int;
+      i = this.b.a;
       l3 = 0L;
       if (i == 1)
       {
         i = 3;
-        l3 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString).longValue();
+        l3 = Long.valueOf(this.b.b).longValue();
         l2 = 0L;
         l1 = l2;
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Int == 3000)
+      else if (this.b.a == 3000)
       {
-        l2 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString).longValue();
+        l2 = Long.valueOf(this.b.b).longValue();
         i = 2;
         l1 = 0L;
       }
       else
       {
-        localObject4 = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).queryMsgItemByUniseq(paramAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Long);
+        localObject4 = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).queryMsgItemByUniseq(paramAppInterface, this.b.b, this.b.a, this.b.e);
         if ((localObject4 != null) && (((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).isInstanceMessageForFile((MessageRecord)localObject4))) {
           l1 = Long.valueOf(((MessageRecord)localObject4).senderuin).longValue();
         } else {
@@ -99,14 +99,14 @@ public class TeamWorkFileImportJobForFile2Form
           break label625;
         }
         paramAppInterface.put("fileid", localObject1);
-        paramAppInterface.put("filename", this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-        paramAppInterface.put("filesize", this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.d);
+        paramAppInterface.put("filename", this.b.c);
+        paramAppInterface.put("filesize", this.b.K);
         paramAppInterface.put("filetype", i);
-        paramAppInterface.put("businesstype", this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_b_of_type_Int);
+        paramAppInterface.put("businesstype", this.b.h);
         paramAppInterface.put("groupuin", l3);
         paramAppInterface.put("senderuin", l1);
         paramAppInterface.put("discussuin", l2);
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.h;
+        boolean bool = this.b.I;
         if (bool) {
           paramAppInterface.put("ownertype", 1);
         } else {
@@ -120,20 +120,20 @@ public class TeamWorkFileImportJobForFile2Form
         ((StringBuilder)localObject4).append(localJSONException.toString());
         QLog.e("TeamWorkFileImportJobForFile2Form", 2, ((StringBuilder)localObject4).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
-      if ((TextUtils.isEmpty((CharSequence)localObject3)) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g == 0))
+      this.b.m = true;
+      if ((TextUtils.isEmpty((CharSequence)localObject3)) && (this.b.B == 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.addToFileImportingMap(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.importFormWithLocalFile(paramAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+        this.c.addToFileImportingMap(this.b);
+        this.c.importFormWithLocalFile(paramAppInterface, this.b);
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g == 0)
+      if (this.b.B == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.addToFileImportingMap(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.importFormWithUrl(paramAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+        this.c.addToFileImportingMap(this.b);
+        this.c.importFormWithUrl(paramAppInterface, this.b);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.checkFormCache(paramAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
+      this.c.checkFormCache(paramAppInterface, this.b);
       return;
       label625:
       Object localObject2 = localObject3;
@@ -142,7 +142,7 @@ public class TeamWorkFileImportJobForFile2Form
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForFile2Form
  * JD-Core Version:    0.7.0.1
  */

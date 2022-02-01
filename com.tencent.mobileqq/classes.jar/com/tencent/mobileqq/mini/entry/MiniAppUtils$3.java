@@ -22,7 +22,7 @@ final class MiniAppUtils$3
     if ((paramMessage.obj instanceof WebSoCgiService.WebSoCgiState))
     {
       WebSoCgiService.WebSoCgiState localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
-      if (localWebSoCgiState.c == 0)
+      if (localWebSoCgiState.i == 0)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("handleMessage() called with: msg = [");
@@ -36,7 +36,7 @@ final class MiniAppUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.3
  * JD-Core Version:    0.7.0.1
  */

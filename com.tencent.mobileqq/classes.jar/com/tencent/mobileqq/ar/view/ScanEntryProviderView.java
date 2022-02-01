@@ -18,29 +18,26 @@ import com.tencent.mobileqq.utils.AlbumUtil;
 public abstract class ScanEntryProviderView
   extends FrameLayout
 {
-  protected Context a;
-  protected AppInterface a;
-  protected AbstractSession a;
-  protected ScanEntryContainerViewListener a;
-  private boolean a;
-  protected View b;
-  public boolean k = false;
-  protected boolean l = false;
-  protected boolean m = false;
+  protected AppInterface C;
+  public boolean D = false;
+  protected Context E;
+  protected View F;
+  protected AbstractSession G;
+  protected ScanEntryContainerViewListener H;
+  protected boolean I = false;
+  protected boolean J = false;
+  private boolean a = true;
   
   public ScanEntryProviderView(Context paramContext, ScanEntryContainerViewListener paramScanEntryContainerViewListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener = paramScanEntryContainerViewListener;
+    this.E = paramContext;
+    this.H = paramScanEntryContainerViewListener;
   }
   
   public abstract void a(Bundle paramBundle);
   
   public void a(ARCommonConfigInfo paramARCommonConfigInfo) {}
-  
-  public void a(String paramString) {}
   
   public boolean a()
   {
@@ -49,75 +46,70 @@ public abstract class ScanEntryProviderView
   
   public void c()
   {
-    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    AbstractSession localAbstractSession = this.G;
     if (localAbstractSession != null) {
-      localAbstractSession.g();
+      localAbstractSession.k();
     }
   }
   
   public void c(boolean paramBoolean) {}
   
-  public boolean c()
-  {
-    return ((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext).isResume();
-  }
-  
   public void d()
   {
-    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    AbstractSession localAbstractSession = this.G;
     if (localAbstractSession != null) {
-      localAbstractSession.h();
+      localAbstractSession.m();
     }
   }
   
   public void e()
   {
-    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    AbstractSession localAbstractSession = this.G;
     if (localAbstractSession != null) {
-      localAbstractSession.j();
+      localAbstractSession.o();
     }
   }
   
   public void f()
   {
-    this.m = true;
-    this.l = false;
-    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    this.J = true;
+    this.I = false;
+    AbstractSession localAbstractSession = this.G;
     if (localAbstractSession != null) {
-      localAbstractSession.g();
-    }
-  }
-  
-  protected void f(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      ScanEntryContainerViewListener localScanEntryContainerViewListener = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener;
-      if (localScanEntryContainerViewListener != null) {
-        localScanEntryContainerViewListener.a(paramBoolean);
-      }
+      localAbstractSession.k();
     }
   }
   
   public void g()
   {
-    this.m = false;
-    this.l = true;
-    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    this.J = false;
+    this.I = true;
+    AbstractSession localAbstractSession = this.G;
     if (localAbstractSession != null) {
-      localAbstractSession.h();
+      localAbstractSession.m();
     }
   }
   
-  public void l()
+  public boolean getShowEntryFlag()
   {
-    ((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext).a(false);
+    return this.a;
   }
   
-  public void m()
+  public void i_(String paramString) {}
+  
+  public boolean n()
   {
-    ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext;
+    return ((ScanTorchActivity)this.E).isResume();
+  }
+  
+  public void o()
+  {
+    ((ScanTorchActivity)this.E).doOnBackPressed(false);
+  }
+  
+  public void p()
+  {
+    ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.E;
     Intent localIntent = new Intent(localScanTorchActivity, NewPhotoListActivity.class);
     localIntent.putExtra("enter_from", 45);
     localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationScanEntry.a);
@@ -131,16 +123,28 @@ public abstract class ScanEntryProviderView
     AlbumUtil.anim(localScanTorchActivity, false, true);
   }
   
+  protected void setAllowShowEntry(boolean paramBoolean)
+  {
+    if (this.a != paramBoolean)
+    {
+      this.a = paramBoolean;
+      ScanEntryContainerViewListener localScanEntryContainerViewListener = this.H;
+      if (localScanEntryContainerViewListener != null) {
+        localScanEntryContainerViewListener.a(paramBoolean);
+      }
+    }
+  }
+  
   public void setAppInterface(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.C = paramAppInterface;
   }
   
   public void setRectAreas(Rect paramRect) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderView
  * JD-Core Version:    0.7.0.1
  */

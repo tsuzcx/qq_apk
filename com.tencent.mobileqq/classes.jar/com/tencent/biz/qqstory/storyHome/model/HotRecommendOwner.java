@@ -8,7 +8,7 @@ public class HotRecommendOwner
   extends BaseUIItem
   implements IFeedOwner
 {
-  public String mName = HardCodeUtil.a(2131705702);
+  public String mName = HardCodeUtil.a(2131903587);
   public long mRecommendId;
   
   public String getName()

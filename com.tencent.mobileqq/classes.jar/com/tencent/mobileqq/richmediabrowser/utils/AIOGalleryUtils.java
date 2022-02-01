@@ -57,7 +57,7 @@ public class AIOGalleryUtils
       b(paramActivity, paramFile, paramString, paramOnSavePhoto);
       return;
     }
-    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131718393)).setMessage(paramActivity.getString(2131694907)).setPositiveButton(paramActivity.getString(2131718205), new AIOGalleryUtils.2(paramActivity, paramFile, paramString, paramOnSavePhoto)).setNegativeButton(paramActivity.getString(2131694460), new AIOGalleryUtils.1()).show();
+    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131915885)).setMessage(paramActivity.getString(2131892633)).setPositiveButton(paramActivity.getString(2131915687), new AIOGalleryUtils.2(paramActivity, paramFile, paramString, paramOnSavePhoto)).setNegativeButton(paramActivity.getString(2131892140), new AIOGalleryUtils.1()).show();
   }
   
   public static void a(Activity paramActivity, String paramString, int paramInt)
@@ -91,7 +91,7 @@ public class AIOGalleryUtils
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
       localUserInfo.qzone_uin = paramString1;
       AIOPictureData localAIOPictureData = (AIOPictureData)paramParcelable;
-      paramString1 = localAIOPictureData.a;
+      paramString1 = localAIOPictureData.j;
       if (!paramString1.endsWith("_hd"))
       {
         paramParcelable = new StringBuilder();
@@ -102,11 +102,11 @@ public class AIOGalleryUtils
           paramString1 = paramParcelable;
         }
       }
-      paramParcelable = localAIOPictureData.jdField_e_of_type_JavaLangString;
-      long l2 = localAIOPictureData.jdField_e_of_type_Long;
+      paramParcelable = localAIOPictureData.r;
+      long l2 = localAIOPictureData.s;
       long l1;
       if (paramBoolean) {
-        l1 = localAIOPictureData.f;
+        l1 = localAIOPictureData.t;
       } else {
         l1 = 0L;
       }
@@ -226,7 +226,7 @@ public class AIOGalleryUtils
   {
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      QZoneHelper.forwardToUploadPhoto(paramActivity, paramString, 0, 0, paramArrayList, paramActivity.getResources().getString(2131717648), paramInt);
+      QZoneHelper.forwardToUploadPhoto(paramActivity, paramString, 0, 0, paramArrayList, paramActivity.getResources().getString(2131915123), paramInt);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -241,7 +241,7 @@ public class AIOGalleryUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.utils.AIOGalleryUtils
  * JD-Core Version:    0.7.0.1
  */

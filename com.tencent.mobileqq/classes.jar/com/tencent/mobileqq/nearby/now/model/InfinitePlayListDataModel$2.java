@@ -53,31 +53,31 @@ class InfinitePlayListDataModel$2
               break label457;
             }
             bool = true;
-            paramBundle.jdField_a_of_type_Boolean = bool;
-            this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+            paramBundle.b = bool;
+            this.a.a = paramArrayOfByte.total.get();
             InfinitePlayListDataModel.a(this.a, paramArrayOfByte);
             if (!TextUtils.isEmpty(InfinitePlayListDataModel.a(this.a)))
             {
               int j = -1;
               paramInt = 0;
               int i = j;
-              if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+              if (paramInt >= this.a.d.size()) {
                 break label470;
               }
-              if (!InfinitePlayListDataModel.a(this.a).equals(((VideoData)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a)) {
+              if (!InfinitePlayListDataModel.a(this.a).equals(((VideoData)this.a.d.get(paramInt)).c)) {
                 break label463;
               }
-              this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener.a((VideoData)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+              this.a.e.a((VideoData)this.a.d.get(paramInt));
               i = paramInt;
               break label470;
               if (paramInt <= i)
               {
-                this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
+                this.a.d.remove(0);
                 paramInt += 1;
                 continue;
               }
             }
-            paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener;
+            paramBundle = this.a.e;
             if (!paramArrayOfByte.err_code.has()) {
               break label475;
             }
@@ -88,18 +88,18 @@ class InfinitePlayListDataModel$2
           catch (InvalidProtocolBufferMicroException paramArrayOfByte)
           {
             QLog.e("InfinitePlayListDataModel", 1, paramArrayOfByte, new Object[0]);
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener.a();
+            this.a.e.a();
             return;
           }
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener.a();
+        this.a.e.a();
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
         paramArrayOfByte.printStackTrace();
         QLog.e("InfinitePlayListDataModel", 1, paramArrayOfByte, new Object[0]);
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener.a();
+        this.a.e.a();
         return;
       }
       paramBundle = new StringBuilder();
@@ -125,7 +125,7 @@ class InfinitePlayListDataModel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.InfinitePlayListDataModel.2
  * JD-Core Version:    0.7.0.1
  */

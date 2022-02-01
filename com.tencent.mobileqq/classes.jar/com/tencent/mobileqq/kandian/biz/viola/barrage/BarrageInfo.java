@@ -12,25 +12,25 @@ public class BarrageInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<BarrageInfo> CREATOR = new BarrageInfo.1();
-  public int a;
-  public BarrageInfo.Sender a;
-  public QQText a;
   public String a;
-  public QQText b;
-  public String b;
+  public int b;
   public String c;
   public String d;
+  public BarrageInfo.Sender e;
+  public String f;
+  public QQText g;
+  public QQText h;
   
   public BarrageInfo() {}
   
   protected BarrageInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readInt();
     this.c = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender = ((BarrageInfo.Sender)paramParcel.readParcelable(BarrageInfo.Sender.class.getClassLoader()));
     this.d = paramParcel.readString();
+    this.e = ((BarrageInfo.Sender)paramParcel.readParcelable(BarrageInfo.Sender.class.getClassLoader()));
+    this.f = paramParcel.readString();
   }
   
   private static String a(String paramString)
@@ -101,16 +101,16 @@ public class BarrageInfo
   
   public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqTextQQText = new QQText(EmotionCodecUtils.b(BarrageItemView.a.a(a(this.jdField_b_of_type_JavaLangString))), 7, 15);
+    if (!TextUtils.isEmpty(this.c)) {
+      this.g = new QQText(EmotionCodecUtils.c(BarrageItemView.a.b(a(this.c))), 7, 15);
     }
   }
   
   public void b()
   {
-    BarrageInfo.Sender localSender = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender;
-    if ((localSender != null) && (!TextUtils.isEmpty(localSender.jdField_b_of_type_JavaLangString))) {
-      this.jdField_b_of_type_ComTencentMobileqqTextQQText = new QQText(EmotionCodecUtils.b(a(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender.jdField_b_of_type_JavaLangString)), 7, 15);
+    BarrageInfo.Sender localSender = this.e;
+    if ((localSender != null) && (!TextUtils.isEmpty(localSender.b))) {
+      this.h = new QQText(EmotionCodecUtils.c(a(this.e.b)), 7, 15);
     }
   }
   
@@ -123,18 +123,18 @@ public class BarrageInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("BarrageInfo{id='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", comment='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", commentCornerUrl='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
+    localStringBuilder.append(", commentCornerUrl='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
     localStringBuilder.append(", sender=");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender;
+    Object localObject = this.e;
     if (localObject != null) {
       localObject = ((BarrageInfo.Sender)localObject).toString();
     } else {
@@ -142,7 +142,7 @@ public class BarrageInfo
     }
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(", uin=");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -150,17 +150,17 @@ public class BarrageInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeInt(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender, paramInt);
     paramParcel.writeString(this.d);
+    paramParcel.writeParcelable(this.e, paramInt);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageInfo
  * JD-Core Version:    0.7.0.1
  */

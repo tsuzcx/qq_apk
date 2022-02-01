@@ -8,6 +8,10 @@ import java.util.HashMap;
 public abstract interface IHippyLibrary
   extends QRouteApi
 {
+  public abstract void downloadWhenSoInfoUpdated();
+  
+  public abstract long getCoreJsFileLength(String paramString);
+  
   public abstract String getCoreJsFilePath(String paramString);
   
   public abstract int getHippyLibrayId();
@@ -24,7 +28,7 @@ public abstract interface IHippyLibrary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.api.IHippyLibrary
  * JD-Core Version:    0.7.0.1
  */

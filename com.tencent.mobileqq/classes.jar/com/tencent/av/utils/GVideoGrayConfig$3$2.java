@@ -12,7 +12,7 @@ class GVideoGrayConfig$3$2
   {
     paramDialogInterface.dismiss();
     paramDialogInterface = this.a;
-    GVideoGrayConfig.3.a(paramDialogInterface, paramDialogInterface.a);
+    GVideoGrayConfig.3.a(paramDialogInterface, paramDialogInterface.b);
   }
 }
 

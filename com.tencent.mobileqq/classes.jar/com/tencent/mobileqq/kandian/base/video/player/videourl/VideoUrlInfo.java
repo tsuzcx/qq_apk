@@ -2,12 +2,11 @@ package com.tencent.mobileqq.kandian.base.video.player.videourl;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,20 +19,14 @@ import tencent.im.oidb.ac.ArticleCenter.VideoInfo;
 public class VideoUrlInfo
   extends AbsVideoUrlInfo
 {
-  public ArrayList<VideoUrlInfo> a;
-  public int d;
+  public int m = 0;
+  public ArrayList<VideoUrlInfo> n = new ArrayList();
   
-  public VideoUrlInfo()
-  {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public VideoUrlInfo() {}
   
   public VideoUrlInfo(String paramString)
   {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public static VideoUrlInfo a(String paramString, ArticleCenter.VideoInfo paramVideoInfo)
@@ -41,7 +34,7 @@ public class VideoUrlInfo
     VideoUrlInfo localVideoUrlInfo = new VideoUrlInfo();
     if (paramVideoInfo != null)
     {
-      localVideoUrlInfo.jdField_b_of_type_JavaLangString = paramString;
+      localVideoUrlInfo.b = paramString;
       paramString = paramVideoInfo.url.get();
       String str = "";
       if (paramString != null) {
@@ -49,20 +42,20 @@ public class VideoUrlInfo
       } else {
         paramString = "";
       }
-      localVideoUrlInfo.jdField_a_of_type_JavaLangString = paramString;
+      localVideoUrlInfo.a = paramString;
       int i = paramVideoInfo.encode_type.get();
       boolean bool = true;
       if (i != 1) {
         bool = false;
       }
-      localVideoUrlInfo.jdField_a_of_type_Boolean = bool;
+      localVideoUrlInfo.c = bool;
       paramString = str;
       if (paramVideoInfo.rate.get() != null) {
         paramString = paramVideoInfo.rate.get().toStringUtf8();
       }
-      localVideoUrlInfo.jdField_c_of_type_JavaLangString = paramString;
-      localVideoUrlInfo.jdField_a_of_type_Int = paramVideoInfo.width.get();
-      localVideoUrlInfo.jdField_b_of_type_Int = paramVideoInfo.height.get();
+      localVideoUrlInfo.e = paramString;
+      localVideoUrlInfo.i = paramVideoInfo.width.get();
+      localVideoUrlInfo.j = paramVideoInfo.height.get();
     }
     return localVideoUrlInfo;
   }
@@ -159,12 +152,12 @@ public class VideoUrlInfo
               }
             }
             localObject = localGetUrlByVidResponse;
-            ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009824", "0X8009824", 0, 0, "", "", "", "", false);
+            PublicAccountReportUtils.a(null, null, "0X8009824", "0X8009824", 0, 0, "", "", "", "", false);
             return localGetUrlByVidResponse;
           }
         }
         localObject = localException2;
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8009825", "0X8009825", 0, 0, "", "", "", "", false);
+        PublicAccountReportUtils.a(null, null, "0X8009825", "0X8009825", 0, 0, "", "", "", "", false);
         return null;
       }
       return null;
@@ -180,9 +173,9 @@ public class VideoUrlInfo
   
   static boolean a(ArticleCenter.GetUrlByVidResponse paramGetUrlByVidResponse, VideoUrlInfo paramVideoUrlInfo)
   {
-    paramVideoUrlInfo.jdField_a_of_type_JavaLangString = RIJPBFieldUtils.b(paramGetUrlByVidResponse.url);
-    paramVideoUrlInfo.jdField_c_of_type_Int = paramGetUrlByVidResponse.ret_info.ret_code.get();
-    paramVideoUrlInfo.jdField_d_of_type_Int = paramGetUrlByVidResponse.video_type.get();
+    paramVideoUrlInfo.a = RIJPBFieldUtils.d(paramGetUrlByVidResponse.url);
+    paramVideoUrlInfo.k = paramGetUrlByVidResponse.ret_info.ret_code.get();
+    paramVideoUrlInfo.m = paramGetUrlByVidResponse.video_type.get();
     int i = paramGetUrlByVidResponse.encode_type.get();
     boolean bool2 = false;
     if (i == 1) {
@@ -190,24 +183,24 @@ public class VideoUrlInfo
     } else {
       bool1 = false;
     }
-    paramVideoUrlInfo.jdField_a_of_type_Boolean = bool1;
-    paramVideoUrlInfo.jdField_a_of_type_Int = paramGetUrlByVidResponse.width.get();
-    paramVideoUrlInfo.jdField_b_of_type_Int = paramGetUrlByVidResponse.height.get();
-    paramVideoUrlInfo.jdField_c_of_type_JavaLangString = RIJPBFieldUtils.b(paramGetUrlByVidResponse.rate);
-    paramVideoUrlInfo.jdField_a_of_type_Long = paramGetUrlByVidResponse.file_size.get();
-    if (paramVideoUrlInfo.jdField_a_of_type_Boolean) {
-      paramVideoUrlInfo.e = a(paramGetUrlByVidResponse);
+    paramVideoUrlInfo.c = bool1;
+    paramVideoUrlInfo.i = paramGetUrlByVidResponse.width.get();
+    paramVideoUrlInfo.j = paramGetUrlByVidResponse.height.get();
+    paramVideoUrlInfo.e = RIJPBFieldUtils.d(paramGetUrlByVidResponse.rate);
+    paramVideoUrlInfo.f = paramGetUrlByVidResponse.file_size.get();
+    if (paramVideoUrlInfo.c) {
+      paramVideoUrlInfo.h = a(paramGetUrlByVidResponse);
     }
-    Object localObject1 = RIJPBFieldUtils.b(paramGetUrlByVidResponse.json_video_detail);
+    Object localObject1 = RIJPBFieldUtils.d(paramGetUrlByVidResponse.json_video_detail);
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     try
     {
       Object localObject2 = new JSONObject((String)localObject1);
-      if (paramVideoUrlInfo.jdField_a_of_type_Boolean) {
-        paramVideoUrlInfo.jdField_b_of_type_Boolean = ((JSONObject)localObject2).optBoolean("isH265HWCodec", true);
+      if (paramVideoUrlInfo.c) {
+        paramVideoUrlInfo.d = ((JSONObject)localObject2).optBoolean("isH265HWCodec", true);
       }
-      paramVideoUrlInfo.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("reportInfo", "");
+      paramVideoUrlInfo.g = ((JSONObject)localObject2).optString("reportInfo", "");
       bool1 = bool2;
       if (!QLog.isColorLevel()) {
         break label240;
@@ -232,8 +225,8 @@ public class VideoUrlInfo
       while (paramGetUrlByVidResponse.hasNext())
       {
         localObject1 = (ArticleCenter.VideoInfo)paramGetUrlByVidResponse.next();
-        localObject1 = a(paramVideoUrlInfo.jdField_b_of_type_JavaLangString, (ArticleCenter.VideoInfo)localObject1);
-        paramVideoUrlInfo.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+        localObject1 = a(paramVideoUrlInfo.b, (ArticleCenter.VideoInfo)localObject1);
+        paramVideoUrlInfo.n.add(localObject1);
       }
     }
     return bool1;
@@ -241,44 +234,44 @@ public class VideoUrlInfo
   
   public boolean a(long paramLong)
   {
-    return (paramLong - this.jdField_b_of_type_Long > 0L) && (paramLong - this.jdField_b_of_type_Long < 7200L);
+    return (paramLong - this.l > 0L) && (paramLong - this.l < 7200L);
   }
   
   public boolean a(long paramLong1, long paramLong2)
   {
-    return (paramLong1 - this.jdField_b_of_type_Long > 0L) && (paramLong1 - this.jdField_b_of_type_Long < paramLong2);
+    return (paramLong1 - this.l > 0L) && (paramLong1 - this.l < paramLong2);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VidUrl {\n vid: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n url: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n errorCode: ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.k);
     localStringBuilder.append("\n width: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("\n height: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("\n isH265: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\n fileBitRate: ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append("\n isHWCodec: ");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("\n videoReportInfo:");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n hwBackupURL:");
     localStringBuilder.append(this.e);
+    localStringBuilder.append("\n isHWCodec: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\n videoReportInfo:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("\n hwBackupURL:");
+    localStringBuilder.append(this.h);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.videourl.VideoUrlInfo
  * JD-Core Version:    0.7.0.1
  */

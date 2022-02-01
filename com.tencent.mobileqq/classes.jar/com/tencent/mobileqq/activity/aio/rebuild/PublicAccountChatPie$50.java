@@ -19,10 +19,10 @@ class PublicAccountChatPie$50
   
   public void run()
   {
-    if (((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMsgID(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) != 0L) {
+    if (((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getMsgID(this.this$0.d, this.this$0.ah.b) != 0L) {
       return;
     }
-    Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    Object localObject1 = this.this$0.d.getMessageFacade().o(this.this$0.ah.b, this.this$0.ah.a);
     if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
       localObject1 = ((List)localObject1).iterator();
     }
@@ -45,7 +45,7 @@ class PublicAccountChatPie$50
           long l = Long.parseLong((String)localObject2);
           if (l > 0L)
           {
-            ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).setMsgID(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, l);
+            ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).setMsgID(this.this$0.d, this.this$0.ah.b, l);
             return;
           }
         }
@@ -56,7 +56,7 @@ class PublicAccountChatPie$50
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.50
  * JD-Core Version:    0.7.0.1
  */

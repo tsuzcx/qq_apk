@@ -14,13 +14,13 @@ class QfileBaseRecentFileTabView$RecentFileItemLongClickListener
   
   public boolean onLongClick(View paramView)
   {
-    if ((paramView != null) && (!QfileBaseRecentFileTabView.a(this.a)))
+    if ((paramView != null) && (!QfileBaseRecentFileTabView.g(this.a)))
     {
       paramView.setSelected(true);
       QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-      localQQCustomMenu.a(2131367183, paramView.getContext().getString(2131692545));
-      localQQCustomMenu.a(2131365474, paramView.getContext().getString(2131692543));
-      this.a.a = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).showAsDropDown(paramView, localQQCustomMenu, new QfileBaseRecentFileTabView.RecentFileItemLongClickListener.1(this, paramView), new QfileBaseRecentFileTabView.RecentFileItemLongClickListener.2(this, paramView));
+      localQQCustomMenu.a(2131433639, paramView.getContext().getString(2131889568));
+      localQQCustomMenu.a(2131431689, paramView.getContext().getString(2131889566));
+      this.a.r = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).showAsDropDown(paramView, localQQCustomMenu, new QfileBaseRecentFileTabView.RecentFileItemLongClickListener.1(this, paramView), new QfileBaseRecentFileTabView.RecentFileItemLongClickListener.2(this, paramView));
       return true;
     }
     return false;
@@ -28,7 +28,7 @@ class QfileBaseRecentFileTabView$RecentFileItemLongClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.RecentFileItemLongClickListener
  * JD-Core Version:    0.7.0.1
  */

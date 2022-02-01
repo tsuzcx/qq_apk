@@ -18,7 +18,7 @@ class KandianMergeManager$37
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = RIJSPUtils.a(KandianMergeManager.a(this.this$0), true, false).edit();
+    SharedPreferences.Editor localEditor = RIJSPUtils.a(KandianMergeManager.c(this.this$0), true, false).edit();
     Object localObject = new ByteArrayOutputStream();
     try
     {
@@ -45,7 +45,7 @@ class KandianMergeManager$37
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.37
  * JD-Core Version:    0.7.0.1
  */

@@ -15,18 +15,18 @@ class AIOMessageSpreadManager$1$1
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
-      float f1 = (float)TencentDocTipsConfigProcessor.a().a();
+      float f1 = (float)TencentDocTipsConfigProcessor.a().e();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         String str = (String)paramList.next();
-        float f2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_JavaLangString, str);
+        float f2 = AIOMessageSpreadManager.a(this.b.this$0, this.a, str);
         StringBuilder localStringBuilder;
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("file[");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.a);
           localStringBuilder.append("] and [");
           localStringBuilder.append(str);
           localStringBuilder.append("], precentage[");
@@ -36,14 +36,14 @@ class AIOMessageSpreadManager$1$1
         }
         if (f2 - f1 > 0.0F)
         {
-          str = TencentDocTipsConfigProcessor.a().a();
-          paramList = TencentDocTipsConfigProcessor.a().b();
+          str = TencentDocTipsConfigProcessor.a().f();
+          paramList = TencentDocTipsConfigProcessor.a().g();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append(str);
           localStringBuilder.append("。");
           localStringBuilder.append(paramList);
           str = localStringBuilder.toString();
-          AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.a, str, paramList, "precent", null);
+          AIOMessageSpreadManager.a(this.b.this$0, this.b.a, str, paramList, "precent", null);
         }
       }
       return;
@@ -61,7 +61,7 @@ class AIOMessageSpreadManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1.1
  * JD-Core Version:    0.7.0.1
  */

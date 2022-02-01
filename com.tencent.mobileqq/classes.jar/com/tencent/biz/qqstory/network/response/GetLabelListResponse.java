@@ -13,21 +13,20 @@ import java.util.List;
 public class GetLabelListResponse
   extends BaseResponse
 {
-  public String a;
-  public List<String> a;
-  public boolean a;
+  public List<String> a = new ArrayList();
+  public boolean b;
+  public String e;
   
   public GetLabelListResponse(qqstory_service.RspGetLabelList paramRspGetLabelList)
   {
     super(paramRspGetLabelList.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramRspGetLabelList.next_cookie.get().toStringUtf8();
+    this.e = paramRspGetLabelList.next_cookie.get().toStringUtf8();
     int i = paramRspGetLabelList.is_end.get();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
     paramRspGetLabelList = paramRspGetLabelList.label_list.get();
     if (paramRspGetLabelList != null)
     {
@@ -35,7 +34,7 @@ public class GetLabelListResponse
       while (paramRspGetLabelList.hasNext())
       {
         ByteStringMicro localByteStringMicro = (ByteStringMicro)paramRspGetLabelList.next();
-        this.jdField_a_of_type_JavaUtilList.add(localByteStringMicro.toStringUtf8());
+        this.a.add(localByteStringMicro.toStringUtf8());
       }
     }
   }
@@ -44,11 +43,11 @@ public class GetLabelListResponse
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetLabelListResponse{isEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", labelList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(this.a.size());
     localStringBuilder.append(", nextCookie='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -56,7 +55,7 @@ public class GetLabelListResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetLabelListResponse
  * JD-Core Version:    0.7.0.1
  */

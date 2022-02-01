@@ -4,13 +4,7 @@ import android.view.View;
 
 public abstract interface IVideoView
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
   public abstract View a();
-  
-  public abstract void a();
   
   public abstract void a(long paramLong);
   
@@ -26,19 +20,25 @@ public abstract interface IVideoView
   
   public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
   
-  public abstract boolean a();
-  
-  public abstract long b();
-  
   public abstract void b();
   
   public abstract void c();
   
-  public abstract void d();
+  public abstract long d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract long g();
+  
+  public abstract int h();
+  
+  public abstract boolean i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.IVideoView
  * JD-Core Version:    0.7.0.1
  */

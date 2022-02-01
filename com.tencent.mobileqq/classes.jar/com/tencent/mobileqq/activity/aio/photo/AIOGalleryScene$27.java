@@ -9,12 +9,12 @@ class AIOGalleryScene$27
   
   public void run()
   {
-    AIOGalleryScene.a(this.this$0).show();
+    AIOGalleryScene.P(this.this$0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.27
  * JD-Core Version:    0.7.0.1
  */

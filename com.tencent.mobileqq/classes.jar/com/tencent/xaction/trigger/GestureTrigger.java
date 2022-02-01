@@ -98,18 +98,18 @@ public final class GestureTrigger
     Intrinsics.checkParameterIsNotNull(paramViewData, "data");
     Intrinsics.checkParameterIsNotNull(paramIView, "iview");
     super.monitor(paramViewData, paramIView);
-    paramViewData = paramIView.getDecor().getProxy();
-    if (paramViewData == null) {
-      Intrinsics.throwNpe();
+    paramViewData = paramIView.getDecor().b();
+    if (paramViewData != null)
+    {
+      paramIView = paramViewData.getContext();
+      Intrinsics.checkExpressionValueIsNotNull(paramIView, "view.context");
+      initGesture(paramIView);
+      paramIView = this.gestureRecognizer;
+      if (paramIView != null) {
+        paramIView.a((GestureListener)new GestureTrigger.monitor.1(this, paramViewData));
+      }
+      TouchEventHelper.a.a(paramViewData, (View.OnTouchListener)new GestureTrigger.monitor.2(this));
     }
-    paramIView = paramViewData.getContext();
-    Intrinsics.checkExpressionValueIsNotNull(paramIView, "view.context");
-    initGesture(paramIView);
-    paramIView = this.gestureRecognizer;
-    if (paramIView != null) {
-      paramIView.a((GestureListener)new GestureTrigger.monitor.1(this, paramViewData));
-    }
-    TouchEventHelper.a.a(paramViewData, (View.OnTouchListener)new GestureTrigger.monitor.2(this));
   }
   
   public final void setPath(@Nullable String paramString)
@@ -129,7 +129,7 @@ public final class GestureTrigger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.trigger.GestureTrigger
  * JD-Core Version:    0.7.0.1
  */

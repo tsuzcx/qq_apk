@@ -5,7 +5,9 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
 import android.view.View;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
@@ -19,7 +21,6 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.kandian.biz.common.baseui.IReadInJoyBaseAdapter;
 import com.tencent.mobileqq.kandian.biz.pts.ProteusItem;
 import com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyImageView;
-import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
 import com.tencent.mobileqq.utils.CommonImageCacheHelper;
@@ -35,11 +36,10 @@ import org.json.JSONObject;
 public class AdLiveExpandCardProteusItem
   implements ProteusItem
 {
-  private int jdField_a_of_type_Int = 0;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new AdLiveExpandCardProteusItem.1(this, Looper.getMainLooper());
-  private ReadInjoyImageView jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private String a;
+  private ReadInjoyImageView b;
+  private int c = 0;
+  private final Handler d = new AdLiveExpandCardProteusItem.1(this, Looper.getMainLooper());
   
   private InputStream a(Bitmap paramBitmap)
   {
@@ -50,10 +50,10 @@ public class AdLiveExpandCardProteusItem
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView != null)
+    if (this.b != null)
     {
-      Bitmap localBitmap = CommonImageCacheHelper.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView.setBitmap(localBitmap, true);
+      Bitmap localBitmap = CommonImageCacheHelper.a(this.a);
+      this.b.setBitmap(localBitmap, true);
     }
   }
   
@@ -145,21 +145,43 @@ public class AdLiveExpandCardProteusItem
   private void a(IReadInJoyModel paramIReadInJoyModel, URLDrawable paramURLDrawable)
   {
     paramURLDrawable = ImageUtil.a(paramURLDrawable.getCurrDrawable(), 750, 674);
-    if ((paramURLDrawable != null) && (paramIReadInJoyModel != null) && (paramIReadInJoyModel.a() != null))
+    if ((paramURLDrawable != null) && (paramIReadInJoyModel != null) && (paramIReadInJoyModel.u() != null))
     {
-      if (paramIReadInJoyModel.a().a() == null) {
+      if (paramIReadInJoyModel.u().a() == null) {
         return;
       }
-      int i = ViewUtils.a(44.0F) + ImmersiveUtils.getStatusBarHeight(paramIReadInJoyModel.a().a());
-      int j = ViewUtils.a(260.0F);
+      int i = ViewUtils.dip2px(44.0F) + ImmersiveUtils.getStatusBarHeight(paramIReadInJoyModel.u().a());
+      int j = ViewUtils.dip2px(260.0F);
       float f2 = i;
       float f1 = j + i;
       f2 /= f1;
       f1 = j / f1;
       i = (int)(paramURLDrawable.getHeight() * f2);
-      a(this.jdField_a_of_type_JavaLangString, f1, i, paramURLDrawable.getHeight(), paramURLDrawable.getWidth(), paramURLDrawable);
-      a(this.b, f2, 0, paramURLDrawable.getHeight(), paramURLDrawable.getWidth(), paramURLDrawable);
+      a(this.a, f1, i, paramURLDrawable.getHeight(), paramURLDrawable.getWidth(), paramURLDrawable);
     }
+  }
+  
+  private void b(AdvertisementInfo paramAdvertisementInfo, ViewBase paramViewBase)
+  {
+    TextView localTextView = (TextView)paramViewBase.findViewBaseByName("id_ad_fu_title_text").getNativeView();
+    localTextView.setMaxEms(15);
+    localTextView.setSingleLine();
+    localTextView.setMaxLines(1);
+    localTextView.setEllipsize(TextUtils.TruncateAt.END);
+    if (paramAdvertisementInfo.mAdvertisementExtInfo == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementExtInfo.J)) {
+      return;
+    }
+    paramAdvertisementInfo = paramViewBase.findViewBaseByName("id_ad_fu_social_container_right");
+    if (paramAdvertisementInfo != null)
+    {
+      paramAdvertisementInfo.setVisibility(0);
+      localTextView.setMaxEms(10);
+      return;
+    }
+    paramAdvertisementInfo.setVisibility(8);
   }
   
   private void b(ViewBase paramViewBase, boolean paramBoolean)
@@ -222,10 +244,10 @@ public class AdLiveExpandCardProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    if ((paramIReadInJoyModel.a() != null) && (!(paramIReadInJoyModel.a() instanceof AdvertisementInfo))) {
+    if ((paramIReadInJoyModel.k() != null) && (!(paramIReadInJoyModel.k() instanceof AdvertisementInfo))) {
       return;
     }
-    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramIReadInJoyModel.a();
+    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramIReadInJoyModel.k();
     if (localAdvertisementInfo != null)
     {
       if (paramContainer == null) {
@@ -236,32 +258,26 @@ public class AdLiveExpandCardProteusItem
         return;
       }
       a(localAdvertisementInfo, (ViewBase)localObject);
+      b(localAdvertisementInfo, (ViewBase)localObject);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ad_expand_bottom");
       localStringBuilder.append(localAdvertisementInfo.mAdAid);
-      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("ad_expand_top");
-      localStringBuilder.append(localAdvertisementInfo.mAdAid);
-      this.b = localStringBuilder.toString();
+      this.a = localStringBuilder.toString();
       if (localAdvertisementInfo.isSmallCard)
       {
         a((ViewBase)localObject, paramContainer, true);
-        ReadInJoyLogicEngineEventDispatcher.a().a(null);
         return;
       }
       a((ViewBase)localObject, paramContainer, false);
       paramContainer = URLDrawable.URLDrawableOptions.obtain();
-      paramContainer = URLDrawable.getDrawable(localAdvertisementInfo.mAdvertisementExtInfo.k, paramContainer);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView = ((ReadInjoyImageView)((ViewBase)localObject).findViewBaseByName("id_ad_expand_back"));
-      if ((CommonImageCacheHelper.a(this.jdField_a_of_type_JavaLangString) != null) && (CommonImageCacheHelper.a(this.b) != null))
+      paramContainer = URLDrawable.getDrawable(localAdvertisementInfo.mAdvertisementExtInfo.I, paramContainer);
+      this.b = ((ReadInjoyImageView)((ViewBase)localObject).findViewBaseByName("id_ad_expand_back"));
+      if (CommonImageCacheHelper.a(this.a) != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView.setBitmap(CommonImageCacheHelper.a(this.jdField_a_of_type_JavaLangString), true);
-        paramContainer = CommonImageCacheHelper.a(this.b);
-        ReadInJoyLogicEngineEventDispatcher.a().a(paramContainer);
+        this.b.setBitmap(CommonImageCacheHelper.a(this.a), true);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInjoyImageView.setImageDrawable(paramContainer, true);
+      this.b.setImageDrawable(paramContainer, true);
       if ((paramContainer.getStatus() == 1) || (paramContainer.getStatus() == 4))
       {
         localObject = new StringBuilder();
@@ -286,7 +302,7 @@ public class AdLiveExpandCardProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdLiveExpandCardProteusItem
  * JD-Core Version:    0.7.0.1
  */

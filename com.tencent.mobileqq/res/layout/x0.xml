@@ -21,6 +21,6 @@
     <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:id="@id/ipi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:text="@string/ppo" android:layout_below="@id/vr" />
     <com.tencent.widget.ListView android:id="@id/fle" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="16.0dip" android:cacheColorHint="@null" android:divider="#ffebedf5" android:dividerHeight="0.5dip" android:layout_above="@id/agk" android:layout_below="@id/ipi" android:footerDividersEnabled="false" />
     <LinearLayout android:orientation="vertical" android:id="@id/agk" android:background="#ffffffff" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="64.0dip" android:layout_alignParentBottom="true">
-        <Button android:textSize="17.0sp" android:id="@id/b7p" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/x1u" style="@style/b9" />
+        <Button android:textSize="17.0sp" android:id="@id/b7p" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/xk2" style="@style/b9" />
     </LinearLayout>
 </RelativeLayout>

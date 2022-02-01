@@ -28,23 +28,23 @@ class DeviceInfoPlugin$1
       try
       {
         localJSONObject.put("guid", paramEIPCResult);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(localJSONObject);
+        this.a.ok(localJSONObject);
         return;
       }
       catch (JSONException paramEIPCResult)
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramEIPCResult.getMessage());
+        this.a.fail(paramEIPCResult.getMessage());
         QLog.e("DeviceInfoPlugin", 1, new Object[] { "evaluateCallback error : ", paramEIPCResult.getMessage() });
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(String.valueOf(-102));
+    this.a.fail(String.valueOf(-102));
     QLog.e("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO failed, code return error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.DeviceInfoPlugin.1
  * JD-Core Version:    0.7.0.1
  */

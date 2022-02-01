@@ -13,12 +13,12 @@ class RecentAdapter$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((CardHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).m(false);
+    ((CardHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).l(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.5
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ class ConditionSearchManager$4$1
     {
       try
       {
-        if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+        if (this.a.this$0.g != null)
         {
-          Card localCard = this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard;
+          Card localCard = this.a.this$0.g;
           Object localObject1 = localCard.strLocationCodes;
           String str = "";
           Object localObject2;
@@ -31,7 +31,7 @@ class ConditionSearchManager$4$1
               ((StringBuilder)localObject2).append(localCard.strLocationCodes);
               QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject2).toString());
             }
-            localObject2 = this.a.this$0.a((String[])localObject1);
+            localObject2 = this.a.this$0.d((String[])localObject1);
             localObject1 = localObject2;
             if (((String)localObject2).equals("不限")) {
               localObject1 = "";
@@ -48,13 +48,13 @@ class ConditionSearchManager$4$1
               ((StringBuilder)localObject1).append(localCard.strHometownCodes);
               QLog.d("ConditionSearch.Manager", 2, ((StringBuilder)localObject1).toString());
             }
-            localObject1 = this.a.this$0.a((String[])localObject2);
+            localObject1 = this.a.this$0.d((String[])localObject2);
             if (!((String)localObject1).equals("不限")) {
               break label366;
             }
             localObject1 = str;
             localCard.strHometownDesc = ((String)localObject1);
-            localObject1 = this.a.this$0.a((String[])localObject2);
+            localObject1 = this.a.this$0.f((String[])localObject2);
             if ((localObject1 != null) && (localObject1.length == 4))
             {
               localCard.strHometownCountry = localObject1[0];
@@ -67,9 +67,9 @@ class ConditionSearchManager$4$1
         }
         else
         {
-          this.a.this$0.d = false;
-          this.a.this$0.jdField_a_of_type_ComTencentMobileqqDataCard = null;
-          this.a.this$0.b(this.a.this$0.jdField_a_of_type_JavaLangObject);
+          this.a.this$0.f = false;
+          this.a.this$0.g = null;
+          this.a.this$0.b(this.a.this$0.h);
           return;
         }
       }
@@ -83,7 +83,7 @@ class ConditionSearchManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.4.1
  * JD-Core Version:    0.7.0.1
  */

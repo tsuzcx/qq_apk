@@ -11,13 +11,13 @@ import oicq.wlogin_sdk.tools.ErrMsg;
 class ConfigSetting$LocalWtTicketPromise
   implements WtTicketPromise
 {
-  private TencentDocTipsConfigBean jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean;
-  private WeakReference<ConfigSetting> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ConfigSetting> a;
+  private TencentDocTipsConfigBean b;
   
   public ConfigSetting$LocalWtTicketPromise(ConfigSetting paramConfigSetting, TencentDocTipsConfigBean paramTencentDocTipsConfigBean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramConfigSetting);
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean = paramTencentDocTipsConfigBean;
+    this.a = new WeakReference(paramConfigSetting);
+    this.b = paramTencentDocTipsConfigBean;
   }
   
   public void Done(Ticket paramTicket)
@@ -27,7 +27,7 @@ class ConfigSetting$LocalWtTicketPromise
       ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
       return;
     }
-    paramTicket = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean;
+    paramTicket = this.b;
     if (paramTicket != null) {
       paramTicket.a(false);
     }
@@ -37,7 +37,7 @@ class ConfigSetting$LocalWtTicketPromise
   public void Failed(ErrMsg paramErrMsg)
   {
     QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
-    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean;
+    paramErrMsg = this.b;
     if (paramErrMsg != null) {
       paramErrMsg.a(false);
     }
@@ -45,7 +45,7 @@ class ConfigSetting$LocalWtTicketPromise
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocTipsConfigBean;
+    paramErrMsg = this.b;
     if (paramErrMsg != null) {
       paramErrMsg.a(false);
     }
@@ -54,7 +54,7 @@ class ConfigSetting$LocalWtTicketPromise
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise
  * JD-Core Version:    0.7.0.1
  */

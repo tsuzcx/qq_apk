@@ -21,15 +21,15 @@ import java.util.Map;
 public abstract class FeedIdBasePlayPageLoader<INFO extends FeedBasePlayInfo>
   extends IGroupPageLoader.BaseGroupPageLoader
 {
-  private static List<StoryVideoItem> jdField_a_of_type_JavaUtilList;
-  private int jdField_a_of_type_Int = 0;
-  final INFO jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo;
-  public FeedListPageLoaderBase.FeedIdListCache a;
+  private static List<StoryVideoItem> d;
+  final INFO a;
+  public FeedListPageLoaderBase.FeedIdListCache b;
+  private int c = 0;
   
   public FeedIdBasePlayPageLoader(INFO paramINFO)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo = paramINFO;
-    AssertUtils.checkNotNull(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo);
+    this.a = paramINFO;
+    AssertUtils.checkNotNull(this.a);
   }
   
   private static int b(FeedIdBasePlayPageLoader.FeedBaseGroupId paramFeedBaseGroupId, FeedBasePlayInfo paramFeedBasePlayInfo)
@@ -37,11 +37,11 @@ public abstract class FeedIdBasePlayPageLoader<INFO extends FeedBasePlayInfo>
     if (paramFeedBaseGroupId.a == null) {
       return 0;
     }
-    int k = paramFeedBaseGroupId.a.b;
+    int k = paramFeedBaseGroupId.a.h;
     int i = k;
     int j;
     if (k == -1) {
-      j = DateUtils.a(paramFeedBaseGroupId.a.c) ^ true;
+      j = DateUtils.a(paramFeedBaseGroupId.a.d) ^ true;
     }
     k = j;
     if (paramFeedBasePlayInfo.mForcePlayVidFromOld2New)
@@ -73,8 +73,8 @@ public abstract class FeedIdBasePlayPageLoader<INFO extends FeedBasePlayInfo>
       i += 1;
     }
     paramList = new IDataProvider.GroupInfo(paramFeedBaseGroupId);
-    paramList.jdField_a_of_type_JavaUtilList = localArrayList;
-    paramList.jdField_a_of_type_JavaUtilMap = localHashMap;
+    paramList.c = localArrayList;
+    paramList.d = localHashMap;
     SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "return group=%s vid %d, list %s", paramFeedBaseGroupId, Integer.valueOf(localArrayList.size()), localArrayList);
     return paramList;
   }
@@ -87,80 +87,13 @@ public abstract class FeedIdBasePlayPageLoader<INFO extends FeedBasePlayInfo>
     while (paramList.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)paramList.next();
-      if (localFeedIdListSeqInfo.jdField_a_of_type_Boolean) {
-        localArrayList.add(new FeedIdBasePlayPageLoader.FeedBaseGroupId(localFeedIdListSeqInfo.jdField_a_of_type_JavaLangString, localFeedIdListSeqInfo));
+      if (localFeedIdListSeqInfo.f) {
+        localArrayList.add(new FeedIdBasePlayPageLoader.FeedBaseGroupId(localFeedIdListSeqInfo.a, localFeedIdListSeqInfo));
       } else {
-        SLog.d("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "ignore feed:%s for not playable", new Object[] { localFeedIdListSeqInfo.jdField_a_of_type_JavaLangString });
+        SLog.d("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "ignore feed:%s for not playable", new Object[] { localFeedIdListSeqInfo.a });
       }
     }
     return localArrayList;
-  }
-  
-  public IDataProvider.StartInfo a()
-  {
-    boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId);
-    Object localObject4 = null;
-    FeedIdBasePlayPageLoader.FeedBaseGroupId localFeedBaseGroupId;
-    if (!bool) {
-      localFeedBaseGroupId = new FeedIdBasePlayPageLoader.FeedBaseGroupId(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId, a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId));
-    } else {
-      localFeedBaseGroupId = null;
-    }
-    Object localObject5 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mStartVid;
-    Object localObject3 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mStartVideoFeedId;
-    Object localObject2 = localObject5;
-    Object localObject1 = localObject3;
-    if (TextUtils.isEmpty((CharSequence)localObject5))
-    {
-      localObject2 = localObject5;
-      localObject1 = localObject3;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mForcePlayVidFromOld2New)
-      {
-        FeedVideoInfo localFeedVideoInfo = ((FeedVideoManager)SuperManager.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId, 1);
-        localObject2 = localObject5;
-        localObject1 = localObject3;
-        if (localFeedVideoInfo != null)
-        {
-          localObject2 = ((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mVid;
-          localObject1 = localObject3;
-          if (TextUtils.isEmpty((CharSequence)localObject3)) {
-            if (!TextUtils.isEmpty(((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mAttachedFeedId)) {
-              localObject1 = ((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mAttachedFeedId;
-            } else {
-              localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId;
-            }
-          }
-          SLog.d("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "fast start vid:%s feedId:%s", new Object[] { localObject2, localObject1 });
-        }
-      }
-    }
-    localObject3 = localObject4;
-    if (localFeedBaseGroupId != null)
-    {
-      localObject3 = localObject4;
-      if (localFeedBaseGroupId.a != null)
-      {
-        int i = b(localFeedBaseGroupId, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo);
-        localObject5 = ((FeedVideoManager)SuperManager.a(12)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mFeedFeedId, i);
-        localObject3 = localObject4;
-        if (localObject5 != null)
-        {
-          localObject3 = localObject4;
-          if (((FeedVideoInfo)localObject5).mIsVideoEnd)
-          {
-            localObject3 = localObject4;
-            if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo.mForceNotUseVidCache)
-            {
-              localObject3 = b(((FeedVideoInfo)localObject5).mVideoItemList, ((FeedVideoInfo)localObject5).feedId, localFeedBaseGroupId);
-              SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "fast start hit group info cache %s", localObject3);
-            }
-          }
-        }
-      }
-    }
-    localObject1 = new IDataProvider.StartInfo(localFeedBaseGroupId, (String)localObject2, (String)localObject1);
-    ((IDataProvider.StartInfo)localObject1).a = ((IDataProvider.GroupInfo)localObject3);
-    return localObject1;
   }
   
   public FeedIdListSeqInfo a(String paramString)
@@ -173,7 +106,7 @@ public abstract class FeedIdBasePlayPageLoader<INFO extends FeedBasePlayInfo>
     ArrayList localArrayList = new ArrayList(paramList.size());
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localArrayList.add(new FeedIdBasePlayPageLoader.HomeFeedVidFullSyncer((FeedIdBasePlayPageLoader.FeedBaseGroupId)paramList.next(), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceFeedBasePlayInfo));
+      localArrayList.add(new FeedIdBasePlayPageLoader.HomeFeedVidFullSyncer((FeedIdBasePlayPageLoader.FeedBaseGroupId)paramList.next(), this.a));
     }
     return localArrayList;
   }
@@ -183,22 +116,89 @@ public abstract class FeedIdBasePlayPageLoader<INFO extends FeedBasePlayInfo>
   public void a(int paramInt, IGroupPageLoader.CallBack paramCallBack)
   {
     boolean bool;
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.c == 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Int += 1;
+    this.c += 1;
     a(bool, paramInt, paramCallBack);
   }
   
   public abstract void a(boolean paramBoolean, int paramInt, IGroupPageLoader.CallBack paramCallBack);
   
   public void b() {}
+  
+  public IDataProvider.StartInfo c()
+  {
+    boolean bool = TextUtils.isEmpty(this.a.mFeedFeedId);
+    Object localObject4 = null;
+    FeedIdBasePlayPageLoader.FeedBaseGroupId localFeedBaseGroupId;
+    if (!bool) {
+      localFeedBaseGroupId = new FeedIdBasePlayPageLoader.FeedBaseGroupId(this.a.mFeedFeedId, a(this.a.mFeedFeedId));
+    } else {
+      localFeedBaseGroupId = null;
+    }
+    Object localObject5 = this.a.mStartVid;
+    Object localObject3 = this.a.mStartVideoFeedId;
+    Object localObject2 = localObject5;
+    Object localObject1 = localObject3;
+    if (TextUtils.isEmpty((CharSequence)localObject5))
+    {
+      localObject2 = localObject5;
+      localObject1 = localObject3;
+      if (this.a.mForcePlayVidFromOld2New)
+      {
+        FeedVideoInfo localFeedVideoInfo = ((FeedVideoManager)SuperManager.a(12)).a(this.a.mFeedFeedId, 1);
+        localObject2 = localObject5;
+        localObject1 = localObject3;
+        if (localFeedVideoInfo != null)
+        {
+          localObject2 = ((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mVid;
+          localObject1 = localObject3;
+          if (TextUtils.isEmpty((CharSequence)localObject3)) {
+            if (!TextUtils.isEmpty(((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mAttachedFeedId)) {
+              localObject1 = ((StoryVideoItem)localFeedVideoInfo.mVideoItemList.get(0)).mAttachedFeedId;
+            } else {
+              localObject1 = this.a.mFeedFeedId;
+            }
+          }
+          SLog.d("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "fast start vid:%s feedId:%s", new Object[] { localObject2, localObject1 });
+        }
+      }
+    }
+    localObject3 = localObject4;
+    if (localFeedBaseGroupId != null)
+    {
+      localObject3 = localObject4;
+      if (localFeedBaseGroupId.a != null)
+      {
+        int i = b(localFeedBaseGroupId, this.a);
+        localObject5 = ((FeedVideoManager)SuperManager.a(12)).a(this.a.mFeedFeedId, i);
+        localObject3 = localObject4;
+        if (localObject5 != null)
+        {
+          localObject3 = localObject4;
+          if (((FeedVideoInfo)localObject5).mIsVideoEnd)
+          {
+            localObject3 = localObject4;
+            if (!this.a.mForceNotUseVidCache)
+            {
+              localObject3 = b(((FeedVideoInfo)localObject5).mVideoItemList, ((FeedVideoInfo)localObject5).feedId, localFeedBaseGroupId);
+              SLog.a("Q.qqstory.player.data.FeedIdBasePlayPageLoader", "fast start hit group info cache %s", localObject3);
+            }
+          }
+        }
+      }
+    }
+    localObject1 = new IDataProvider.StartInfo(localFeedBaseGroupId, (String)localObject2, (String)localObject1);
+    ((IDataProvider.StartInfo)localObject1).d = ((IDataProvider.GroupInfo)localObject3);
+    return localObject1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.FeedIdBasePlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

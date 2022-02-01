@@ -37,6 +37,11 @@ public class MediaGifView
   
   public void d() {}
   
+  public int getMediaType()
+  {
+    return 0;
+  }
+  
   public boolean isPlaying()
   {
     return false;
@@ -57,7 +62,7 @@ public class MediaGifView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.media.MediaGifView
  * JD-Core Version:    0.7.0.1
  */

@@ -47,7 +47,7 @@ class FilePreviewActivity$16
     }
     QLog.i("<FileAssistant>FilePreviewActivity", 1, "js call loadFinish process Over");
     paramString = this.a;
-    paramString.jdField_g_of_type_Boolean = true;
+    paramString.M = true;
     paramString.a(1000);
   }
   
@@ -61,7 +61,7 @@ class FilePreviewActivity$16
     }
     this.a.runOnUiThread(new FilePreviewActivity.16.2(this, paramInt1, bool, paramInt2, paramString));
     paramString = this.a;
-    paramString.jdField_g_of_type_Boolean = (paramBoolean ^ true);
+    paramString.M = (paramBoolean ^ true);
     paramString.a(1000);
   }
   
@@ -71,45 +71,45 @@ class FilePreviewActivity$16
     {
       localObject1 = new Intent(this.a, FilePreviewActivity.class);
       ((Intent)localObject1).putExtra("offline_file_type", 1);
-      ((Intent)localObject1).putExtra("offline_file_name", this.a.jdField_b_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("offline_file_url", this.a.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("offline_file_bZip", this.a.jdField_a_of_type_Boolean);
-      ((Intent)localObject1).putExtra("offline_file_domain", this.a.jdField_g_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("offline_file_port", this.a.h);
-      ((Intent)localObject1).putExtra("offline_file_domain_key", this.a.e);
-      ((Intent)localObject1).putExtra("offline_file_type_key", this.a.jdField_b_of_type_Int);
+      ((Intent)localObject1).putExtra("offline_file_name", this.a.f);
+      ((Intent)localObject1).putExtra("offline_file_url", this.a.e);
+      ((Intent)localObject1).putExtra("offline_file_bZip", this.a.l);
+      ((Intent)localObject1).putExtra("offline_file_domain", this.a.p);
+      ((Intent)localObject1).putExtra("offline_file_port", this.a.q);
+      ((Intent)localObject1).putExtra("offline_file_domain_key", this.a.m);
+      ((Intent)localObject1).putExtra("offline_file_type_key", this.a.j);
       ((Intent)localObject1).putExtra("OfflinePreZipPath", paramString2);
       ((Intent)localObject1).putExtra("OfflinePreZipDirName", paramString1);
-      ((Intent)localObject1).putExtra("OfflinePreZipUUID", this.a.j);
-      if (!TextUtils.isEmpty(this.a.f)) {
-        ((Intent)localObject1).putExtra("COOKIE", this.a.f);
+      ((Intent)localObject1).putExtra("OfflinePreZipUUID", this.a.E);
+      if (!TextUtils.isEmpty(this.a.n)) {
+        ((Intent)localObject1).putExtra("COOKIE", this.a.n);
       }
       QLog.i("<FileAssistant>FilePreviewActivity", 1, "open zip dic,open new activity");
       this.a.startActivityForResult((Intent)localObject1, 0);
       return;
     }
     Object localObject1 = null;
-    if (!TextUtils.isEmpty(this.a.j))
+    if (!TextUtils.isEmpty(this.a.E))
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.a.j);
+      ((StringBuilder)localObject1).append(this.a.E);
       ((StringBuilder)localObject1).append(paramString2);
       ((StringBuilder)localObject1).append(paramString1);
       localObject3 = MD5.toMD5(((StringBuilder)localObject1).toString());
       localObject4 = this.a.app.getFileManagerDataCenter().b((String)localObject3);
       localObject1 = localObject3;
       if (localObject4 != null) {
-        if (!FileUtil.a(((FileManagerEntity)localObject4).getFilePath()))
+        if (!FileUtil.b(((FileManagerEntity)localObject4).getFilePath()))
         {
           localObject1 = localObject3;
         }
         else
         {
           paramString1 = new FileManagerReporter.FileAssistantReportData();
-          paramString1.jdField_b_of_type_JavaLangString = "file_viewer_in";
-          paramString1.jdField_a_of_type_Int = 73;
-          paramString1.c = FileUtil.a(((FileManagerEntity)localObject4).fileName);
-          paramString1.jdField_a_of_type_Long = ((FileManagerEntity)localObject4).fileSize;
+          paramString1.b = "file_viewer_in";
+          paramString1.c = 73;
+          paramString1.d = FileUtil.a(((FileManagerEntity)localObject4).fileName);
+          paramString1.e = ((FileManagerEntity)localObject4).fileSize;
           FileManagerReporter.a(this.a.app.getCurrentAccountUin(), paramString1);
           FileManagerReporter.a("0X8004AE4");
           paramString1 = new ForwardFileInfo();
@@ -150,19 +150,19 @@ class FilePreviewActivity$16
     Object localObject5 = new Bundle();
     ((Bundle)localObject5).putString("FILE_TMP_SERVER_PATH", localFileNotFoundException);
     ((Bundle)localObject5).putInt("FILE_FROM", 190);
-    if (!TextUtils.isEmpty(this.a.f)) {
-      ((Bundle)localObject5).putString("COOKIE", this.a.f);
+    if (!TextUtils.isEmpty(this.a.n)) {
+      ((Bundle)localObject5).putString("COOKIE", this.a.n);
     }
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("set cookies:");
-      ((StringBuilder)localObject2).append(this.a.f);
+      ((StringBuilder)localObject2).append(this.a.n);
       QLog.i("<FileAssistant>FilePreviewActivity", 1, ((StringBuilder)localObject2).toString());
     }
     ((Bundle)localObject4).putBundle("_user_data", (Bundle)localObject5);
     Object localObject2 = this.a;
-    localObject5 = ((FilePreviewActivity)localObject2).getString(2131718405);
+    localObject5 = ((FilePreviewActivity)localObject2).getString(2131915897);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("是否下载文件:\n");
     localStringBuilder.append(paramString1);
@@ -186,7 +186,7 @@ class FilePreviewActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.16
  * JD-Core Version:    0.7.0.1
  */

@@ -21,41 +21,41 @@ class HealthBusinessPlugin$11
   
   public void onClick(View paramView)
   {
-    Object localObject3 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.e.get(this.jdField_a_of_type_JavaLangString);
-    Object localObject1 = (SeekBar)((FrameLayout)localObject3).findViewById(2131377124);
-    Object localObject2 = (TextView)((FrameLayout)localObject3).findViewById(2131374359);
-    TextView localTextView1 = (TextView)((FrameLayout)localObject3).findViewById(2131374358);
-    ImageView localImageView1 = (ImageView)((FrameLayout)localObject3).findViewById(2131374357);
-    ImageView localImageView2 = (ImageView)((FrameLayout)localObject3).findViewById(2131374356);
-    TextView localTextView2 = (TextView)((FrameLayout)localObject3).findViewById(2131374355);
+    Object localObject3 = (FrameLayout)this.c.m.get(this.a);
+    Object localObject1 = (SeekBar)((FrameLayout)localObject3).findViewById(2131445496);
+    Object localObject2 = (TextView)((FrameLayout)localObject3).findViewById(2131442521);
+    TextView localTextView1 = (TextView)((FrameLayout)localObject3).findViewById(2131442520);
+    ImageView localImageView1 = (ImageView)((FrameLayout)localObject3).findViewById(2131442519);
+    ImageView localImageView2 = (ImageView)((FrameLayout)localObject3).findViewById(2131442518);
+    TextView localTextView2 = (TextView)((FrameLayout)localObject3).findViewById(2131442517);
     localObject3 = new HealthBusinessPlugin.11.1(this, (SeekBar)localObject1, (TextView)localObject2, localTextView1, localImageView1, localImageView2, localTextView2);
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_Boolean;
-    int i = 2130849461;
+    boolean bool = this.c.J;
+    int i = 2130851145;
     if (!bool)
     {
-      if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaLangString)).isPlaying()) {
-        i = 2130848894;
+      if (((ISuperPlayer)this.c.l.get(this.a)).isPlaying()) {
+        i = 2130850561;
       }
       localImageView1.setImageResource(i);
       localImageView1.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_Boolean = true;
+      this.c.J = true;
       ((SeekBar)localObject1).setVisibility(0);
       ((TextView)localObject2).setVisibility(0);
       localTextView1.setVisibility(0);
       localImageView2.setVisibility(4);
       localTextView2.setVisibility(4);
-      if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
+      if (((ISuperPlayer)this.c.l.get(this.a)).isPlaying())
       {
-        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_b_of_type_AndroidOsHandler.postDelayed((Runnable)localObject3, 3000L);
+        this.c.K.removeCallbacksAndMessages(null);
+        this.c.K.postDelayed((Runnable)localObject3, 3000L);
       }
     }
-    else if (((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaLangString)).isPlaying())
+    else if (((ISuperPlayer)this.c.l.get(this.a)).isPlaying())
     {
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaLangString)).pause();
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_b_of_type_Boolean = true;
-      localImageView1.setImageResource(2130849461);
+      this.c.K.removeCallbacksAndMessages(null);
+      ((ISuperPlayer)this.c.l.get(this.a)).pause();
+      this.c.A = true;
+      localImageView1.setImageResource(2130851145);
       localImageView1.setVisibility(0);
       if (QLog.isColorLevel()) {
         QLog.d("HealthBusinessPlugin", 2, "play onclick in video ");
@@ -63,26 +63,26 @@ class HealthBusinessPlugin$11
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin;
-      ((HealthBusinessPlugin)localObject1).jdField_b_of_type_Boolean = false;
-      ((HealthBusinessPlugin)localObject1).jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_b_of_type_AndroidOsHandler.postDelayed((Runnable)localObject3, 3000L);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_JavaUtilHashMap.keySet().iterator();
+      localObject1 = this.c;
+      ((HealthBusinessPlugin)localObject1).A = false;
+      ((HealthBusinessPlugin)localObject1).K.removeCallbacksAndMessages(null);
+      this.c.K.postDelayed((Runnable)localObject3, 3000L);
+      localObject1 = this.c.l.keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_JavaUtilHashMap.get(localObject2)).pause();
+        ((ISuperPlayer)this.c.l.get(localObject2)).pause();
       }
-      ((ISuperPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_d_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaLangString)).start();
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin$SportVideoLayoutHolder.a.setImageResource(2130848894);
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin$SportVideoLayoutHolder.a.setVisibility(0);
+      ((ISuperPlayer)this.c.l.get(this.a)).start();
+      this.b.a.setImageResource(2130850561);
+      this.b.a.setVisibility(0);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.11
  * JD-Core Version:    0.7.0.1
  */

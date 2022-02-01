@@ -15,23 +15,23 @@ class TroopMemberApiService$10
   {
     paramObject = (TroopFileStatusInfo)paramObject;
     Bundle localBundle = new Bundle();
-    localBundle.putLong("ProgressTotal", paramObject.jdField_c_of_type_Long);
-    localBundle.putLong("ProgressValue", paramObject.jdField_d_of_type_Long);
-    localBundle.putString("FileName", paramObject.g);
-    localBundle.putString("FilePath", paramObject.e);
-    localBundle.putString("LocalFile", paramObject.a);
-    localBundle.putString("ThumbnailFile_Middle", paramObject.jdField_d_of_type_JavaLangString);
-    localBundle.putString("ThumbnailFile_Large", paramObject.jdField_c_of_type_JavaLangString);
-    localBundle.putInt("Status", paramObject.b);
-    if ((paramObject.b != 8) && ((paramObject.b != 11) || (!FileUtils.fileExists(paramObject.e))))
+    localBundle.putLong("ProgressTotal", paramObject.i);
+    localBundle.putLong("ProgressValue", paramObject.j);
+    localBundle.putString("FileName", paramObject.t);
+    localBundle.putString("FilePath", paramObject.r);
+    localBundle.putString("LocalFile", paramObject.k);
+    localBundle.putString("ThumbnailFile_Middle", paramObject.n);
+    localBundle.putString("ThumbnailFile_Large", paramObject.m);
+    localBundle.putInt("Status", paramObject.e);
+    if ((paramObject.e != 8) && ((paramObject.e != 11) || (!FileUtils.fileExists(paramObject.r))))
     {
-      if (!TextUtils.isEmpty(paramObject.jdField_c_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramObject.m))
       {
         localBundle.putInt("size", 640);
         this.a.a(58, localBundle);
         return;
       }
-      if (!TextUtils.isEmpty(paramObject.jdField_d_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramObject.n))
       {
         localBundle.putInt("size", 383);
         this.a.a(58, localBundle);
@@ -45,7 +45,7 @@ class TroopMemberApiService$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.10
  * JD-Core Version:    0.7.0.1
  */

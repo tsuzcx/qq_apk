@@ -112,6 +112,16 @@ public class MiniSDKImpl
     }
   }
   
+  public void preDownloadPkg(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
+  {
+    if (AppLoaderFactory.g().isMainProcess())
+    {
+      AppLoaderFactory.g().getMiniServer().preDownloadPkg(paramMiniAppInfo, paramResultReceiver);
+      return;
+    }
+    AppLoaderFactory.g().getAppBrandProxy().preloadDownloadPackage(paramMiniAppInfo, paramResultReceiver);
+  }
+  
   public void preloadMiniApp(Context paramContext, Bundle paramBundle)
   {
     QMLog.i("minisdk-start_MiniSDKImpl", "preloadMiniApp");
@@ -190,7 +200,7 @@ public class MiniSDKImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniSDKImpl
  * JD-Core Version:    0.7.0.1
  */

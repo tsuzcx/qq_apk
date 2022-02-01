@@ -13,50 +13,6 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"FILTER_ID_AI_PHOTO", "", "FILTER_ID_AI_VIDEO", "FILTER_ID_CYBERPUNK_A", "FILTER_ID_CYBERPUNK_B", "FILTER_ID_CYBERPUNK_VIDEO_A", "FILTER_ID_CYBERPUNK_VIDEO_B", "NONE_FILTER_INDEX", "", "SCHEME_FILTER_ID_AI", "SCHEME_FILTER_ID_CYBERPUNK_A", "SCHEME_FILTER_ID_CYBERPUNK_B", "value", "", "adjustParams", "Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;", "getAdjustParams", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)Ljava/util/Map;", "setAdjustParams", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;Ljava/util/Map;)V", "", "defaultEffectAlpha", "getDefaultEffectAlpha", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)F", "setDefaultEffectAlpha", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;F)V", "Lcom/tencent/aelight/camera/aeeditor/module/filter/EffectType;", "effectType", "getEffectType", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)Lcom/tencent/aelight/camera/aeeditor/module/filter/EffectType;", "setEffectType", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;Lcom/tencent/aelight/camera/aeeditor/module/filter/EffectType;)V", "glowStrength", "getGlowStrength", "setGlowStrength", "imageShowLevel", "getImageShowLevel", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)I", "setImageShowLevel", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;I)V", "", "isDisableForImage", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)Z", "setDisableForImage", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;Z)V", "isDisableForVideo", "setDisableForVideo", "isEffectExtendReady", "setEffectExtendReady", "isEnableAdjustAlpha", "setEnableAdjustAlpha", "isEnableApplyAll", "setEnableApplyAll", "isFilterReady", "setFilterReady", "lutID", "getLutID", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;)Ljava/lang/String;", "setLutID", "(Lcamera/XEFFECT_MATERIALS_GENERAL_DATASTRUCT/MetaMaterial;Ljava/lang/String;)V", "motionID", "getMotionID", "setMotionID", "netStylizeType", "getNetStylizeType", "setNetStylizeType", "uploadMaxSize", "getUploadMaxSize", "setUploadMaxSize", "videoShowLevel", "getVideoShowLevel", "setVideoShowLevel", "convertMaterialIdFromSchemeToFilterId", "materialIdFromScheme", "isImageMode", "aelight_impl_release"}, k=2, mv={1, 1, 16})
 public final class FilterMetaMaterialKt
 {
-  public static final float a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$defaultEffectAlpha");
-    return MetaMaterialKt.a(paramMetaMaterial, "defaultEffectAlpha");
-  }
-  
-  public static final int a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$imageShowLevel");
-    return MetaMaterialKt.a(paramMetaMaterial, "imageShowLevel");
-  }
-  
-  @NotNull
-  public static final EffectType a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$effectType");
-    try
-    {
-      paramMetaMaterial = MetaMaterialKt.a(paramMetaMaterial, "effectType");
-      Locale localLocale = Locale.getDefault();
-      Intrinsics.checkExpressionValueIsNotNull(localLocale, "Locale.getDefault()");
-      if (paramMetaMaterial != null)
-      {
-        paramMetaMaterial = paramMetaMaterial.toUpperCase(localLocale);
-        Intrinsics.checkExpressionValueIsNotNull(paramMetaMaterial, "(this as java.lang.String).toUpperCase(locale)");
-        return EffectType.valueOf(paramMetaMaterial);
-      }
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-    }
-    catch (Exception paramMetaMaterial)
-    {
-      label54:
-      break label54;
-    }
-    return EffectType.CLIENT;
-  }
-  
-  @NotNull
-  public static final String a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$lutID");
-    return MetaMaterialKt.a(paramMetaMaterial, "lutID");
-  }
-  
   @NotNull
   public static final String a(@NotNull String paramString, boolean paramBoolean)
   {
@@ -105,13 +61,6 @@ public final class FilterMetaMaterialKt
     return str;
   }
   
-  @Nullable
-  public static final Map<String, String> a(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$adjustParams");
-    return MetaMaterialKt.a(paramMetaMaterial, "adjustParams");
-  }
-  
   public static final void a(@NotNull MetaMaterial paramMetaMaterial, float paramFloat)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$defaultEffectAlpha");
@@ -139,26 +88,7 @@ public final class FilterMetaMaterialKt
   public static final boolean a(@NotNull MetaMaterial paramMetaMaterial)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isFilterReady");
-    return MetaMaterialKt.a(paramMetaMaterial, "exFilterReady") == 1;
-  }
-  
-  public static final float b(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$glowStrength");
-    return MetaMaterialKt.a(paramMetaMaterial, "glowStrength");
-  }
-  
-  public static final int b(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$videoShowLevel");
-    return MetaMaterialKt.a(paramMetaMaterial, "videoShowLevel");
-  }
-  
-  @NotNull
-  public static final String b(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$motionID");
-    return MetaMaterialKt.a(paramMetaMaterial, "motionID");
+    return MetaMaterialKt.e(paramMetaMaterial, "exFilterReady") == 1;
   }
   
   public static final void b(@NotNull MetaMaterial paramMetaMaterial, float paramFloat)
@@ -182,48 +112,118 @@ public final class FilterMetaMaterialKt
   public static final boolean b(@NotNull MetaMaterial paramMetaMaterial)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isEffectExtendReady");
-    return MetaMaterialKt.a(paramMetaMaterial, "isEffectExtendReady") == 1;
+    return MetaMaterialKt.e(paramMetaMaterial, "isEffectExtendReady") == 1;
   }
   
-  public static final int c(@NotNull MetaMaterial paramMetaMaterial)
+  @NotNull
+  public static final EffectType c(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$uploadMaxSize");
-    return MetaMaterialKt.a(paramMetaMaterial, "uploadMaxSize");
-  }
-  
-  public static final boolean c(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isEnableApplyAll");
-    return MetaMaterialKt.a(paramMetaMaterial, "hideApplyAll") == 0;
-  }
-  
-  public static final int d(@NotNull MetaMaterial paramMetaMaterial)
-  {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$netStylizeType");
-    return MetaMaterialKt.a(paramMetaMaterial, "netStylizeType");
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$effectType");
+    try
+    {
+      paramMetaMaterial = MetaMaterialKt.d(paramMetaMaterial, "effectType");
+      Locale localLocale = Locale.getDefault();
+      Intrinsics.checkExpressionValueIsNotNull(localLocale, "Locale.getDefault()");
+      if (paramMetaMaterial != null)
+      {
+        paramMetaMaterial = paramMetaMaterial.toUpperCase(localLocale);
+        Intrinsics.checkExpressionValueIsNotNull(paramMetaMaterial, "(this as java.lang.String).toUpperCase(locale)");
+        return EffectType.valueOf(paramMetaMaterial);
+      }
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+    }
+    catch (Exception paramMetaMaterial)
+    {
+      label54:
+      break label54;
+    }
+    return EffectType.CLIENT;
   }
   
   public static final boolean d(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isEnableAdjustAlpha");
-    return MetaMaterialKt.a(paramMetaMaterial, "hideAlphaBar") == 0;
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isEnableApplyAll");
+    return MetaMaterialKt.e(paramMetaMaterial, "hideApplyAll") == 0;
   }
   
   public static final boolean e(@NotNull MetaMaterial paramMetaMaterial)
   {
-    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isDisableForImage");
-    return MetaMaterialKt.a(paramMetaMaterial, "disableForImage") == 1;
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isEnableAdjustAlpha");
+    return MetaMaterialKt.e(paramMetaMaterial, "hideAlphaBar") == 0;
   }
   
   public static final boolean f(@NotNull MetaMaterial paramMetaMaterial)
   {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isDisableForImage");
+    return MetaMaterialKt.e(paramMetaMaterial, "disableForImage") == 1;
+  }
+  
+  public static final boolean g(@NotNull MetaMaterial paramMetaMaterial)
+  {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$isDisableForVideo");
-    return MetaMaterialKt.a(paramMetaMaterial, "disableForVideo") == 1;
+    return MetaMaterialKt.e(paramMetaMaterial, "disableForVideo") == 1;
+  }
+  
+  public static final int h(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$imageShowLevel");
+    return MetaMaterialKt.e(paramMetaMaterial, "imageShowLevel");
+  }
+  
+  public static final int i(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$videoShowLevel");
+    return MetaMaterialKt.e(paramMetaMaterial, "videoShowLevel");
+  }
+  
+  public static final float j(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$defaultEffectAlpha");
+    return MetaMaterialKt.f(paramMetaMaterial, "defaultEffectAlpha");
+  }
+  
+  public static final int k(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$uploadMaxSize");
+    return MetaMaterialKt.e(paramMetaMaterial, "uploadMaxSize");
+  }
+  
+  public static final int l(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$netStylizeType");
+    return MetaMaterialKt.e(paramMetaMaterial, "netStylizeType");
+  }
+  
+  @NotNull
+  public static final String m(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$lutID");
+    return MetaMaterialKt.d(paramMetaMaterial, "lutID");
+  }
+  
+  public static final float n(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$glowStrength");
+    return MetaMaterialKt.f(paramMetaMaterial, "glowStrength");
+  }
+  
+  @NotNull
+  public static final String o(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$motionID");
+    return MetaMaterialKt.d(paramMetaMaterial, "motionID");
+  }
+  
+  @Nullable
+  public static final Map<String, String> p(@NotNull MetaMaterial paramMetaMaterial)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$adjustParams");
+    return MetaMaterialKt.g(paramMetaMaterial, "adjustParams");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.FilterMetaMaterialKt
  * JD-Core Version:    0.7.0.1
  */

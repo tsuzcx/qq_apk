@@ -18,12 +18,11 @@ public class AppStoreApkFilePresenter
   extends SimpleFilePresenter
   implements View.OnClickListener
 {
-  private final IFileBrowserModel.OnAppStorePromoteListener a;
+  private final IFileBrowserModel.OnAppStorePromoteListener a = new AppStoreApkFilePresenter.1(this);
   
   public AppStoreApkFilePresenter(IFileBrowserModel paramIFileBrowserModel, Activity paramActivity)
   {
     super(paramIFileBrowserModel, paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel$OnAppStorePromoteListener = new AppStoreApkFilePresenter.1(this);
     a(new SimpleFileBrowserView(paramActivity));
   }
   
@@ -33,59 +32,59 @@ public class AppStoreApkFilePresenter
     if (QLog.isColorLevel()) {
       QLog.i("AppStoreApkFilePresenter", 1, "FileBrowserPresenter init: type = preview simple");
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.e();
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.e(2130844325);
+    String str = this.c.q();
+    this.b.e(2130845642);
     if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.g(str);
+      this.b.g(str);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.f(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.e());
+      this.b.f(this.d.j());
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.c())) && (16 != this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.h(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.c());
+    if ((!TextUtils.isEmpty(this.c.i())) && (16 != this.d.g())) {
+      this.b.h(this.c.i());
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.g(false);
+      this.b.g(false);
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.c())) && (16 != this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.h(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.c());
+    if ((!TextUtils.isEmpty(this.c.i())) && (16 != this.d.g())) {
+      this.b.h(this.c.i());
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.g(false);
+      this.b.g(false);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.d() == 16) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131692353));
-    } else if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.d()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.d(this.jdField_a_of_type_AndroidContentContext.getString(2131692559));
+    if (this.d.g() == 16) {
+      this.b.d(this.f.getString(2131889341));
+    } else if (this.c.p()) {
+      this.b.d(this.f.getString(2131889582));
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.e(true ^ this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.b());
-    str = this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.g();
+    this.b.e(true ^ this.c.n());
+    str = this.c.s();
     if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.e(str);
+      this.b.e(str);
+    }
+  }
+  
+  protected void ce_()
+  {
+    String str = this.c.a(this.f);
+    if (str != null)
+    {
+      this.b.b(str, this);
+      ReportController.b(null, "dc00898", "", "", "0X800AE3B", "0X800AE3B", 0, 0, "", "", "", "");
     }
   }
   
   protected void f()
   {
     super.f();
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.c();
+    int i = this.c.k();
     if ((i != 6) && (i != 2) && (i != 4) && (i != 5))
     {
-      this.c = true;
-      SimpleFileBrowserView localSimpleFileBrowserView = this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView;
+      this.i = true;
+      SimpleFileBrowserView localSimpleFileBrowserView = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692704));
+      localStringBuilder.append(this.f.getString(2131889775));
       localStringBuilder.append("(");
-      localStringBuilder.append(FileSizeFormat.a(this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a()));
+      localStringBuilder.append(FileSizeFormat.a(this.d.b()));
       localStringBuilder.append(")");
       localSimpleFileBrowserView.a(localStringBuilder.toString(), new AppStoreApkFilePresenter.2(this));
-    }
-  }
-  
-  protected void g()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.a(this.jdField_a_of_type_AndroidContentContext);
-    if (str != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewSimpleFileBrowserView.b(str, this);
-      ReportController.b(null, "dc00898", "", "", "0X800AE3B", "0X800AE3B", 0, 0, "", "", "", "");
     }
   }
   
@@ -94,13 +93,13 @@ public class AppStoreApkFilePresenter
   public void onClick(View paramView)
   {
     ReportController.b(null, "dc00898", "", "", "0X800AE3C", "0X800AE3C", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.a(this.jdField_a_of_type_AndroidAppActivity);
+    this.c.b(this.e);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.AppStoreApkFilePresenter
  * JD-Core Version:    0.7.0.1
  */

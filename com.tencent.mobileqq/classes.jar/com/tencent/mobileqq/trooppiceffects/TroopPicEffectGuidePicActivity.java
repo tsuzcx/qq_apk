@@ -26,9 +26,9 @@ public class TroopPicEffectGuidePicActivity
   implements View.OnClickListener
 {
   protected ImageButton a;
-  protected ImageView a;
-  protected URLImageView a;
   protected ImageButton b;
+  protected URLImageView c;
+  protected ImageView d;
   
   protected void a(View paramView)
   {
@@ -48,41 +48,41 @@ public class TroopPicEffectGuidePicActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
-    setContentView(2131562995);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131379342));
-    this.b = ((ImageButton)findViewById(2131379343));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131379344));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379346));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
+    setContentView(2131629603);
+    this.a = ((ImageButton)findViewById(2131448079));
+    this.b = ((ImageButton)findViewById(2131448080));
+    this.c = ((URLImageView)findViewById(2131448081));
+    this.d = ((ImageView)findViewById(2131448083));
+    this.a.setOnClickListener(this);
     this.b.setOnClickListener(this);
-    a(this.jdField_a_of_type_AndroidWidgetImageButton);
+    a(this.a);
     a(this.b);
     paramBundle = URLDrawable.URLDrawableOptions.obtain();
     Object localObject = new ColorDrawable(0);
     paramBundle.mFailedDrawable = ((Drawable)localObject);
     paramBundle.mLoadingDrawable = ((Drawable)localObject);
     paramBundle = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/groupgift/troop_effect_pic_preview_img.png", paramBundle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBundle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.c.setImageDrawable(paramBundle);
+    this.c.setScaleType(ImageView.ScaleType.FIT_CENTER);
     paramBundle = URLDrawable.URLDrawableOptions.obtain();
-    localObject = getResources().getDrawable(2130851146);
+    localObject = getResources().getDrawable(2130853381);
     paramBundle.mFailedDrawable = ((Drawable)localObject);
     paramBundle.mLoadingDrawable = ((Drawable)localObject);
     paramBundle = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_select_pic_button.png", paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundDrawable(paramBundle);
+    this.a.setBackgroundDrawable(paramBundle);
     paramBundle = URLDrawable.URLDrawableOptions.obtain();
     localObject = new ColorDrawable(0);
     paramBundle.mFailedDrawable = ((Drawable)localObject);
     paramBundle.mLoadingDrawable = ((Drawable)localObject);
     paramBundle = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_select_pic_wording.png", paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramBundle);
+    this.d.setBackgroundDrawable(paramBundle);
     TroopPicEffectsController.a("app_entry_guide", "page_exp");
     return true;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageButton)
+    if (paramView == this.a)
     {
       TroopPicEffectsEditActivity.a(this, getIntent().getStringExtra("friendUin"), getIntent().getStringExtra("troopUin"));
       finish();
@@ -114,7 +114,7 @@ public class TroopPicEffectGuidePicActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity
  * JD-Core Version:    0.7.0.1
  */

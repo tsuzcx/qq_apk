@@ -9,18 +9,13 @@ import org.json.JSONObject;
 public class PluginConfig
 {
   public int a;
-  public PluginConfig.FileInfo a;
-  public File a;
-  public String a;
-  public Map<String, PluginConfig.PluginFileInfo> a;
-  public int[] a;
-  public PluginConfig.FileInfo b;
-  public String b;
-  
-  public PluginConfig()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public int[] b;
+  public String c;
+  public String d;
+  public PluginConfig.FileInfo e;
+  public PluginConfig.FileInfo f;
+  public Map<String, PluginConfig.PluginFileInfo> g = new HashMap();
+  public File h;
   
   private static PluginConfig.FileInfo a(JSONObject paramJSONObject, File paramFile)
   {
@@ -29,38 +24,33 @@ public class PluginConfig
     return new PluginConfig.FileInfo(new File(paramFile, str), paramJSONObject);
   }
   
-  private static PluginConfig.PluginFileInfo a(JSONObject paramJSONObject, File paramFile)
-  {
-    return new PluginConfig.PluginFileInfo(paramJSONObject.optString("businessName", ""), a(paramJSONObject, paramFile), a(paramJSONObject, "dependsOn"), a(paramJSONObject, "hostWhiteList"));
-  }
-  
   public static PluginConfig a(String paramString, File paramFile)
   {
     Object localObject1 = new JSONObject(paramString);
     paramString = new PluginConfig();
-    paramString.jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("version");
+    paramString.a = ((JSONObject)localObject1).getInt("version");
     Object localObject2 = ((JSONObject)localObject1).optJSONArray("compact_version");
     int j = 0;
     int i;
     if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
     {
-      paramString.jdField_a_of_type_ArrayOfInt = new int[((JSONArray)localObject2).length()];
+      paramString.b = new int[((JSONArray)localObject2).length()];
       i = 0;
       while (i < ((JSONArray)localObject2).length())
       {
-        paramString.jdField_a_of_type_ArrayOfInt[i] = ((JSONArray)localObject2).getInt(i);
+        paramString.b[i] = ((JSONArray)localObject2).getInt(i);
         i += 1;
       }
     }
-    paramString.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).getString("UUID");
-    paramString.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).getString("UUID_NickName");
+    paramString.c = ((JSONObject)localObject1).getString("UUID");
+    paramString.d = ((JSONObject)localObject1).getString("UUID_NickName");
     localObject2 = ((JSONObject)localObject1).optJSONObject("pluginLoader");
     if (localObject2 != null) {
-      paramString.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInstallPluginConfig$FileInfo = a((JSONObject)localObject2, paramFile);
+      paramString.e = a((JSONObject)localObject2, paramFile);
     }
     localObject2 = ((JSONObject)localObject1).optJSONObject("runtime");
     if (localObject2 != null) {
-      paramString.jdField_b_of_type_ComTencentIlivesdkPluginloaderserviceInstallPluginConfig$FileInfo = a((JSONObject)localObject2, paramFile);
+      paramString.f = a((JSONObject)localObject2, paramFile);
     }
     localObject1 = ((JSONObject)localObject1).optJSONArray("plugins");
     if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
@@ -70,11 +60,11 @@ public class PluginConfig
       {
         localObject2 = ((JSONArray)localObject1).getJSONObject(i);
         String str = ((JSONObject)localObject2).getString("partKey");
-        paramString.jdField_a_of_type_JavaUtilMap.put(str, a((JSONObject)localObject2, paramFile));
+        paramString.g.put(str, b((JSONObject)localObject2, paramFile));
         i += 1;
       }
     }
-    paramString.jdField_a_of_type_JavaIoFile = paramFile;
+    paramString.h = paramFile;
     return paramString;
   }
   
@@ -98,10 +88,15 @@ public class PluginConfig
     paramJSONObject = new String[0];
     return paramJSONObject;
   }
+  
+  private static PluginConfig.PluginFileInfo b(JSONObject paramJSONObject, File paramFile)
+  {
+    return new PluginConfig.PluginFileInfo(paramJSONObject.optString("businessName", ""), a(paramJSONObject, paramFile), a(paramJSONObject, "dependsOn"), a(paramJSONObject, "hostWhiteList"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.install.PluginConfig
  * JD-Core Version:    0.7.0.1
  */

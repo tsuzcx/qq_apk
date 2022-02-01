@@ -94,7 +94,7 @@ public class RecentItemTroopAssistantBaseData
       if (localObject2 == null) {
         return;
       }
-      localObject1 = TroopAssistantManagerProxy.a(paramBaseQQAppInterface);
+      localObject1 = TroopAssistantManagerProxy.b(paramBaseQQAppInterface);
       if (localObject1 != null)
       {
         if (TextUtils.isEmpty(((TroopAssistantDataStub)localObject1).getTroopUin())) {
@@ -129,7 +129,7 @@ public class RecentItemTroopAssistantBaseData
   public final void dealStatus(BaseQQAppInterface paramBaseQQAppInterface)
   {
     this.mStatus = 0;
-    TroopAssistantDataStub localTroopAssistantDataStub = TroopAssistantManagerProxy.a(paramBaseQQAppInterface);
+    TroopAssistantDataStub localTroopAssistantDataStub = TroopAssistantManagerProxy.b(paramBaseQQAppInterface);
     if (localTroopAssistantDataStub != null)
     {
       if (TextUtils.isEmpty(localTroopAssistantDataStub.getTroopUin())) {
@@ -188,7 +188,7 @@ public class RecentItemTroopAssistantBaseData
         localObject1 = localObject2;
         if (localQQMessageFacadeStub != null)
         {
-          TroopAssistantDataStub localTroopAssistantDataStub = TroopAssistantManagerProxy.a(paramBaseQQAppInterface);
+          TroopAssistantDataStub localTroopAssistantDataStub = TroopAssistantManagerProxy.b(paramBaseQQAppInterface);
           localObject1 = localObject2;
           if (localTroopAssistantDataStub != null) {
             localObject1 = localQQMessageFacadeStub.getLastMessage(localTroopAssistantDataStub.getTroopUin(), 1);
@@ -204,7 +204,7 @@ public class RecentItemTroopAssistantBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopAssistantBaseData
  * JD-Core Version:    0.7.0.1
  */

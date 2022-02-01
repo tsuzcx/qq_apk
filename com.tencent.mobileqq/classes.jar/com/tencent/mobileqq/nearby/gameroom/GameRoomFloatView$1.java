@@ -18,38 +18,38 @@ class GameRoomFloatView$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a, SplashActivity.class);
+      paramView = new Intent(this.f.c, SplashActivity.class);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("");
       paramView.putExtra("uin", localStringBuilder.toString());
       paramView.putExtra("uintype", 1);
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("");
       paramView.putExtra("troop_uin", localStringBuilder.toString());
-      paramView.putExtra("uinname", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("uinname", this.c);
       paramView.putExtra("isGameRoom", true);
       paramView = AIOUtils.a(paramView, new int[] { 1, 2 });
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a.startActivity(paramView);
-      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a instanceof ChatActivity)) {
-        ((ChatActivity)this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a).finish();
+      this.f.c.startActivity(paramView);
+      if ((this.f.c instanceof ChatActivity)) {
+        ((ChatActivity)this.f.c).finish();
       }
       ReportController.b(null, "dc00899", "Grp_wolf", "", "in_game", "active_ball", 0, 0, "", "", "", "");
       return;
     }
     paramView = AIOUtils.a(new Intent(), new int[] { 2 });
-    paramView.putExtra("inviteId", this.jdField_b_of_type_JavaLangString);
-    paramView.putExtra("roomNum", this.jdField_b_of_type_Int);
+    paramView.putExtra("inviteId", this.d);
+    paramView.putExtra("roomNum", this.e);
     RouteUtils.a(BaseApplicationImpl.getContext(), paramView, "/nearby/gameroom/invite");
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a();
+    this.f.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView.1
  * JD-Core Version:    0.7.0.1
  */

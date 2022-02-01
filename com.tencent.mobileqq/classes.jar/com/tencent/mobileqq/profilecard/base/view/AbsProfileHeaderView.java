@@ -180,7 +180,7 @@ public abstract class AbsProfileHeaderView
       paramProfileCardInfo = null;
       try
       {
-        paramSpannableString = BitmapFactory.decodeResource(getResources(), 2130846045);
+        paramSpannableString = BitmapFactory.decodeResource(getResources(), 2130847515);
         paramProfileCardInfo = paramSpannableString;
       }
       catch (Throwable paramSpannableString)
@@ -232,7 +232,7 @@ public abstract class AbsProfileHeaderView
         i = 0;
       }
       if ((bool) && (i != 0)) {
-        localList.add(new SpannableString(this.mActivity.getString(2131699164)));
+        localList.add(new SpannableString(this.mActivity.getString(2131897180)));
       }
       if (!localList.isEmpty())
       {
@@ -350,7 +350,7 @@ public abstract class AbsProfileHeaderView
         return;
       }
       paramLinearLayout.removeAllViews();
-      List localList = ProfileCardUtil.a(this.mActivity, paramProfileCardInfo);
+      List localList = ProfileCardUtil.c(this.mActivity, paramProfileCardInfo);
       boolean bool = localList.isEmpty();
       int i;
       if ((paramProfileCardInfo.allInOne != null) && (paramProfileCardInfo.allInOne.pa == 0)) {
@@ -359,7 +359,7 @@ public abstract class AbsProfileHeaderView
         i = 0;
       }
       if ((bool) && (i != 0)) {
-        localList.add(android.util.Pair.create(this.mActivity.getString(2131699164), ""));
+        localList.add(android.util.Pair.create(this.mActivity.getString(2131897180), ""));
       }
       if (!localList.isEmpty())
       {
@@ -371,17 +371,17 @@ public abstract class AbsProfileHeaderView
           String str1 = (String)localPair.first;
           TextView localTextView = new TextView(this.mActivity);
           localTextView.setText(str1);
-          localTextView.setTextColor(getResources().getColor(2131167056));
+          localTextView.setTextColor(getResources().getColor(2131167993));
           if (!TextUtils.isEmpty((CharSequence)localPair.second))
           {
-            localTextView.setBackgroundResource(2130844138);
-            localTextView.setPadding(ViewUtils.b(8.0F), ViewUtils.b(4.5F), ViewUtils.b(8.0F), ViewUtils.b(4.5F));
+            localTextView.setBackgroundResource(2130845249);
+            localTextView.setPadding(ViewUtils.dpToPx(8.0F), ViewUtils.dpToPx(4.5F), ViewUtils.dpToPx(8.0F), ViewUtils.dpToPx(4.5F));
           }
           localTextView.setTextSize(14.0F);
           paramLinearLayout.addView(localTextView);
           try
           {
-            ((LinearLayout.LayoutParams)localTextView.getLayoutParams()).rightMargin = ViewUtils.b(6.0F);
+            ((LinearLayout.LayoutParams)localTextView.getLayoutParams()).rightMargin = ViewUtils.dpToPx(6.0F);
           }
           catch (Exception localException)
           {
@@ -437,7 +437,7 @@ public abstract class AbsProfileHeaderView
       Object localObject3;
       if (paramProfileCardInfo.isTroopMemberCard)
       {
-        localObject1 = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramProfileCardInfo.troopUin, localCard.uin);
+        localObject1 = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramProfileCardInfo.troopUin, localCard.uin);
         if ((localObject1 != null) && (TextUtils.isEmpty(((TroopMemberInfo)localObject1).troopnick)) && (!TextUtils.isEmpty(localCard.strReMark))) {
           localObject2 = localCard.strNick;
         } else if (TextUtils.isEmpty(localCard.strReMark)) {
@@ -449,7 +449,7 @@ public abstract class AbsProfileHeaderView
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           localObject1 = ContactUtils.a(this.mApp, localCard.uin, false);
         }
-        if (((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).m(paramProfileCardInfo.troopUin))
+        if (((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).Z(paramProfileCardInfo.troopUin))
         {
           localObject3 = localObject1;
           localObject2 = localObject1;
@@ -524,30 +524,30 @@ public abstract class AbsProfileHeaderView
       paramView.setVisibility(8);
       return;
     }
-    if (!SigTopicManager.a().c(this.mApp))
+    if (!SigTopicManager.a().e(this.mApp))
     {
       paramView.setVisibility(8);
       return;
     }
     Object localObject = SigTopicConfProcessor.a();
-    if ((localObject != null) && (!((SigTopicConfBean)localObject).a()))
+    if ((localObject != null) && (!((SigTopicConfBean)localObject).b()))
     {
       int i = 0;
       paramView.setVisibility(0);
-      TextView localTextView = (TextView)paramView.findViewById(2131379733);
-      ImageView localImageView = (ImageView)paramView.findViewById(2131369319);
+      TextView localTextView = (TextView)paramView.findViewById(2131448538);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131436318);
       int j = -1;
-      ArrayList localArrayList = ((SigTopicConfBean)localObject).a().a;
+      ArrayList localArrayList = ((SigTopicConfBean)localObject).a().b;
       localTextView.setText(SigTopicManager.a().a((SigTopicConfBean)localObject));
-      while (i < ((SigTopicConfBean)localObject).a().a.size()) {
-        if (TextUtils.isEmpty(((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString))
+      while (i < ((SigTopicConfBean)localObject).a().b.size()) {
+        if (TextUtils.isEmpty(((SigTopicConfBean.TopicInfo)localArrayList.get(i)).b))
         {
           i += 1;
         }
         else
         {
-          j = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_Int;
-          localObject = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString;
+          j = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).a;
+          localObject = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).b;
           i = j;
           break label202;
         }
@@ -572,7 +572,7 @@ public abstract class AbsProfileHeaderView
     Object localObject2 = (View)this.mHeaderChildMap.get("map_key_tips_set_card");
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = View.inflate(this.mActivity, 2131562020, null);
+      localObject1 = View.inflate(this.mActivity, 2131628446, null);
     }
     if ((localObject1 != null) && (paramProfileCardInfo != null) && (paramProfileCardInfo.card != null))
     {
@@ -595,8 +595,8 @@ public abstract class AbsProfileHeaderView
         QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
       }
       paramProfileCardInfo = getResources();
-      localObject2 = (TextView)((View)localObject1).findViewById(2131367926);
-      Object localObject3 = (ImageView)((View)localObject1).findViewById(2131367911);
+      localObject2 = (TextView)((View)localObject1).findViewById(2131434514);
+      Object localObject3 = (ImageView)((View)localObject1).findViewById(2131434499);
       Object localObject4 = this.mApp.getPreferences();
       boolean bool;
       if (localObject4 != null) {
@@ -621,11 +621,11 @@ public abstract class AbsProfileHeaderView
         ((SharedPreferences)localObject4).edit().putBoolean("svip_profile_use_guide_shown_flag", true).commit();
         localObject4 = this.mActivity;
         if (101107 == i) {
-          paramProfileCardInfo = paramProfileCardInfo.getString(2131695136);
+          paramProfileCardInfo = paramProfileCardInfo.getString(2131892864);
         } else {
-          paramProfileCardInfo = paramProfileCardInfo.getString(2131719393);
+          paramProfileCardInfo = paramProfileCardInfo.getString(2131916948);
         }
-        paramProfileCardInfo = ((QBaseActivity)localObject4).getString(2131718137, new Object[] { paramProfileCardInfo });
+        paramProfileCardInfo = ((QBaseActivity)localObject4).getString(2131915615, new Object[] { paramProfileCardInfo });
         ((TextView)localObject2).setText(paramProfileCardInfo);
         ((ImageView)localObject3).setContentDescription(paramProfileCardInfo);
         ((View)localObject1).setTag(new DataTag(24, Integer.valueOf(i)));
@@ -650,7 +650,7 @@ public abstract class AbsProfileHeaderView
         paramTextView.post(new AbsProfileHeaderView.5(this, paramRichStatus, paramTextView, paramInt));
       }
       SigTopicManager.a().a(this.mApp, paramRichStatus);
-      bool2 = SigTopicManager.a().b(this.mApp);
+      bool2 = SigTopicManager.a().d(this.mApp);
       if (paramView != null)
       {
         if (paramProfileCardInfo.allInOne.pa == 0) {
@@ -658,8 +658,8 @@ public abstract class AbsProfileHeaderView
         } else {
           bool1 = false;
         }
-        paramTextView = (TextView)paramView.findViewById(2131379733);
-        paramRichStatus = (ImageView)paramView.findViewById(2131369319);
+        paramTextView = (TextView)paramView.findViewById(2131448538);
+        paramRichStatus = (ImageView)paramView.findViewById(2131436318);
         paramSpannableString = new oidb_0xd9f.RspBody();
         if ((paramProfileCardInfo.card == null) || (paramProfileCardInfo.card.vLongNickTopicInfo == null)) {}
       }
@@ -674,19 +674,19 @@ public abstract class AbsProfileHeaderView
           break label433;
         }
         paramProfileCardInfo = paramProfileCardInfo.rpt_topic_item.get();
-        if ((!bool2) && (!SigTopicManager.a().a(this.mApp, SigTopicManager.a().a(paramProfileCardInfo))))
+        if ((!bool2) && (!SigTopicManager.a().b(this.mApp, SigTopicManager.a().d(paramProfileCardInfo))))
         {
           recommendTopicViewControl(paramView, bool1);
           return;
         }
-        if ((paramProfileCardInfo != null) && (paramProfileCardInfo.size() > 0) && (SigTopicManager.a().a(paramProfileCardInfo) > 0))
+        if ((paramProfileCardInfo != null) && (paramProfileCardInfo.size() > 0) && (SigTopicManager.a().c(paramProfileCardInfo) > 0))
         {
-          paramView.setTag(new DataTag(97, SigTopicManager.a().a(paramProfileCardInfo)));
+          paramView.setTag(new DataTag(97, SigTopicManager.a().b(paramProfileCardInfo)));
           paramView.setOnClickListener(this.mOnClickListener);
           paramSpannableString = new StringBuilder();
-          paramSpannableString.append(HardCodeUtil.a(2131708484));
-          paramSpannableString.append(SigTopicManager.a().a(paramProfileCardInfo));
-          paramSpannableString.append(HardCodeUtil.a(2131708482));
+          paramSpannableString.append(HardCodeUtil.a(2131906270));
+          paramSpannableString.append(SigTopicManager.a().c(paramProfileCardInfo));
+          paramSpannableString.append(HardCodeUtil.a(2131906268));
           paramTextView.setText(paramSpannableString.toString());
           paramRichStatus.setOnClickListener(new AbsProfileHeaderView.6(this, paramView));
           paramView.setVisibility(0);
@@ -713,7 +713,7 @@ public abstract class AbsProfileHeaderView
   
   private void updateStaticAvatarInner(int paramInt, AllInOne paramAllInOne, String paramString)
   {
-    int i = getResources().getDimensionPixelSize(2131297229);
+    int i = getResources().getDimensionPixelSize(2131297660);
     Object localObject1 = (AvatarLayout)this.mHeaderChildMap.get("map_key_face");
     Object localObject2 = null;
     BitmapFactory.Options localOptions = null;
@@ -721,11 +721,11 @@ public abstract class AbsProfileHeaderView
     if (localObject1 == null) {
       localObject1 = null;
     } else {
-      localObject1 = ((AvatarLayout)localObject1).a(0);
+      localObject1 = ((AvatarLayout)localObject1).b(0);
     }
     localObject1 = (ImageView)localObject1;
     if ((3 != paramInt) && ((localObject1 instanceof DynamicAvatarView))) {
-      ((DynamicAvatarView)localObject1).e = "";
+      ((DynamicAvatarView)localObject1).G = "";
     }
     if (paramInt == 0)
     {
@@ -733,12 +733,12 @@ public abstract class AbsProfileHeaderView
       if (paramAllInOne.pa == 0)
       {
         localObject1 = localObject2;
-        if (FaceUtil.a())
+        if (FaceUtil.b())
         {
           paramAllInOne = localBitmap;
           try
           {
-            localObject1 = FaceUtil.b();
+            localObject1 = FaceUtil.c();
             paramAllInOne = localBitmap;
             localObject2 = new File((String)localObject1);
             paramAllInOne = localBitmap;
@@ -785,17 +785,17 @@ public abstract class AbsProfileHeaderView
       if ((localObject1 instanceof DynamicAvatarView))
       {
         paramAllInOne = (DynamicAvatarView)localObject1;
-        paramAllInOne.e = ContactUtils.a(this.mCardInfo.allInOne.contactName);
-        if (ContactUtils.a(paramAllInOne.e)) {
-          paramAllInOne.setTextSize(getContext().getResources().getDimensionPixelSize(2131299121));
+        paramAllInOne.G = ContactUtils.b(this.mCardInfo.allInOne.contactName);
+        if (ContactUtils.a(paramAllInOne.G)) {
+          paramAllInOne.setTextSize(getContext().getResources().getDimensionPixelSize(2131299858));
         } else {
-          paramAllInOne.setTextSize(getContext().getResources().getDimensionPixelSize(2131299122));
+          paramAllInOne.setTextSize(getContext().getResources().getDimensionPixelSize(2131299859));
         }
       }
     }
     try
     {
-      paramAllInOne = BitmapFactory.decodeResource(getContext().getResources(), 2130842159);
+      paramAllInOne = BitmapFactory.decodeResource(getContext().getResources(), 2130843087);
     }
     catch (OutOfMemoryError paramAllInOne)
     {
@@ -805,9 +805,9 @@ public abstract class AbsProfileHeaderView
     paramAllInOne = localOptions;
     break label432;
     if (2 == paramInt) {
-      paramAllInOne = ImageUtil.b();
+      paramAllInOne = ImageUtil.c();
     } else {
-      paramAllInOne = ImageUtil.f();
+      paramAllInOne = ImageUtil.k();
     }
     label432:
     if (paramAllInOne != null) {
@@ -1069,18 +1069,18 @@ public abstract class AbsProfileHeaderView
   {
     Object localObject1 = (View)this.mHeaderChildMap.get("map_key_profile_nick_name");
     if (localObject1 != null) {
-      ((View)localObject1).setBackgroundResource(2130845924);
+      ((View)localObject1).setBackgroundResource(2130847394);
     }
     if ((localObject1 instanceof TextView))
     {
       TextView localTextView = (TextView)localObject1;
       Object localObject2 = paramProfileCardInfo.allInOne;
-      localObject1 = paramProfileCardInfo.profileName.a.jdField_a_of_type_JavaLangString;
+      localObject1 = paramProfileCardInfo.profileName.a.b;
       if (QLog.isColorLevel())
       {
         paramProfileCardInfo = new StringBuilder();
         paramProfileCardInfo.append("updateHead titleName = ");
-        paramProfileCardInfo.append(Utils.a((String)localObject1));
+        paramProfileCardInfo.append(Utils.i((String)localObject1));
         QLog.i("Q.profilecard.FrdProfileCard", 2, paramProfileCardInfo.toString());
       }
       if (localObject1 != null)
@@ -1098,7 +1098,7 @@ public abstract class AbsProfileHeaderView
       }
       localTextView.setText(paramProfileCardInfo);
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.mActivity.getString(2131691173));
+      ((StringBuilder)localObject1).append(this.mActivity.getString(2131888119));
       ((StringBuilder)localObject1).append(":");
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = new StringBuilder();
@@ -1136,7 +1136,7 @@ public abstract class AbsProfileHeaderView
   public void updateLike(ProfileCardInfo paramProfileCardInfo)
   {
     Object localObject = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((paramProfileCardInfo.isTroopMemberCard) && (((TroopManager)localObject).m(paramProfileCardInfo.troopUin))) {
+    if ((paramProfileCardInfo.isTroopMemberCard) && (((TroopManager)localObject).Z(paramProfileCardInfo.troopUin))) {
       return;
     }
     localObject = (View)this.mHeaderChildMap.get("map_key_like");
@@ -1155,7 +1155,7 @@ public abstract class AbsProfileHeaderView
         int i;
         if (paramProfileCardInfo.card == null)
         {
-          paramProfileCardInfo = this.mActivity.getString(2131691244);
+          paramProfileCardInfo = this.mActivity.getString(2131888190);
           bool1 = false;
           j = 0;
           i = 0;
@@ -1167,14 +1167,14 @@ public abstract class AbsProfileHeaderView
           }
           j = (int)paramProfileCardInfo.card.lVoteCount;
           i = paramProfileCardInfo.card.iVoteIncrement;
-          this.mNewVoteAnimHelper.a = paramProfileCardInfo.card.getLastPraiseInfoList();
-          if (i <= this.mNewVoteAnimHelper.a.size())
+          this.mNewVoteAnimHelper.g = paramProfileCardInfo.card.getLastPraiseInfoList();
+          if (i <= this.mNewVoteAnimHelper.g.size())
           {
             localObject = this.mNewVoteAnimHelper;
-            ((NewVoteAnimHelper)localObject).a = ((NewVoteAnimHelper)localObject).a.subList(0, i);
+            ((NewVoteAnimHelper)localObject).g = ((NewVoteAnimHelper)localObject).g.subList(0, i);
           }
           localObject = this.mNewVoteAnimHelper;
-          ((NewVoteAnimHelper)localObject).a = PraiseConfigHelper.a(((NewVoteAnimHelper)localObject).a);
+          ((NewVoteAnimHelper)localObject).g = PraiseConfigHelper.a(((NewVoteAnimHelper)localObject).g);
           if (1 == paramProfileCardInfo.card.bVoted) {
             bool1 = true;
           } else {
@@ -1183,11 +1183,11 @@ public abstract class AbsProfileHeaderView
           localObject = new DataTag(10, paramProfileCardInfo.card);
           if (bool2)
           {
-            paramProfileCardInfo = String.format(this.mActivity.getString(2131691242), new Object[] { String.valueOf(j) });
+            paramProfileCardInfo = String.format(this.mActivity.getString(2131888188), new Object[] { String.valueOf(j) });
           }
           else
           {
-            String str = String.format(this.mActivity.getString(2131691155), new Object[] { String.valueOf(j) });
+            String str = String.format(this.mActivity.getString(2131888101), new Object[] { String.valueOf(j) });
             if (paramProfileCardInfo.card.bAvailVoteCnt == 0) {
               localVoteView.a();
             }
@@ -1215,14 +1215,14 @@ public abstract class AbsProfileHeaderView
       }
       long l = paramLong;
       if (paramLong == -1L) {
-        l = ((VoteView)localObject).jdField_a_of_type_Int;
+        l = ((VoteView)localObject).f;
       }
       if ((paramProfileCardInfo.card != null) && (paramProfileCardInfo.card.bAvailVoteCnt == 0)) {
         ((VoteView)localObject).a();
       }
       ((VoteView)localObject).a(false, true, (int)l, 0, null, paramBoolean);
       ((VoteView)localObject).setOnClickListener(this.mOnClickListener);
-      ((VoteView)localObject).setContentDescription(String.format(this.mActivity.getString(2131691167), new Object[] { String.valueOf(l) }));
+      ((VoteView)localObject).setContentDescription(String.format(this.mActivity.getString(2131888113), new Object[] { String.valueOf(l) }));
     }
   }
   
@@ -1242,12 +1242,12 @@ public abstract class AbsProfileHeaderView
     {
       localObject = (TextView)localObject;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.mActivity.getString(2131693338));
+      localStringBuilder.append(this.mActivity.getString(2131890887));
       localStringBuilder.append(paramString);
       ((TextView)localObject).setText(localStringBuilder.toString());
       paramString = (View)this.mHeaderChildMap.get("map_key_profile_nick_name");
       if ((paramString instanceof ProfileNameView)) {
-        ((TextView)localObject).setTextColor(((ProfileNameView)paramString).a());
+        ((TextView)localObject).setTextColor(((ProfileNameView)paramString).getTextColor());
       }
     }
   }
@@ -1269,17 +1269,17 @@ public abstract class AbsProfileHeaderView
     if ((localObject instanceof TextView))
     {
       localObject = (TextView)localObject;
-      String str = ProfileCardUtil.c(this.mActivity, paramProfileCardInfo);
+      String str = ProfileCardUtil.d(this.mActivity, paramProfileCardInfo);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateSexAgeArea strInfo=");
-        localStringBuilder.append(Utils.a(str));
+        localStringBuilder.append(Utils.i(str));
         QLog.d("Q.profilecard.FrdProfileCard", 2, localStringBuilder.toString());
       }
       if (paramProfileCardInfo.allInOne.pa == 33)
       {
-        paramProfileCardInfo = this.mActivity.getString(2131699155);
+        paramProfileCardInfo = this.mActivity.getString(2131897171);
         if (((TextView)localObject).getVisibility() != 0) {
           ((TextView)localObject).setVisibility(0);
         }
@@ -1296,7 +1296,7 @@ public abstract class AbsProfileHeaderView
         ((TextView)localObject).setPadding(0, 0, 0, 0);
         ((TextView)localObject).setText(str);
         paramProfileCardInfo = new StringBuilder();
-        paramProfileCardInfo.append(this.mActivity.getString(2131691152));
+        paramProfileCardInfo.append(this.mActivity.getString(2131888098));
         paramProfileCardInfo.append(":");
         paramProfileCardInfo.append(str);
         ((TextView)localObject).setContentDescription(paramProfileCardInfo.toString());
@@ -1312,7 +1312,7 @@ public abstract class AbsProfileHeaderView
   public void updateSign(ProfileCardInfo paramProfileCardInfo)
   {
     Object localObject1 = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.isTroopMemberCard) && (((TroopManager)localObject1).m(paramProfileCardInfo.troopUin))) {
+    if ((paramProfileCardInfo != null) && (paramProfileCardInfo.isTroopMemberCard) && (((TroopManager)localObject1).Z(paramProfileCardInfo.troopUin))) {
       return;
     }
     localObject1 = (View)this.mHeaderChildMap.get("map_key_sign");
@@ -1353,7 +1353,7 @@ public abstract class AbsProfileHeaderView
           {
             try
             {
-              localObject1 = BitmapFactory.decodeResource(getResources(), 2130849881);
+              localObject1 = BitmapFactory.decodeResource(getResources(), 2130851609);
             }
             catch (Throwable localThrowable)
             {
@@ -1372,7 +1372,7 @@ public abstract class AbsProfileHeaderView
           ((OffsetableImageSpan)localObject2).setOffset(-0.1F);
           localSpannableStringBuilder.setSpan(localObject2, 0, 3, 17);
           if (paramProfileCardInfo.allInOne.pa == 0) {
-            localTextView.setCompoundDrawablesWithIntrinsicBounds(2130846045, 0, 0, 0);
+            localTextView.setCompoundDrawablesWithIntrinsicBounds(2130847515, 0, 0, 0);
           }
           localTextView.setText(new QQText(localSpannableStringBuilder, 1, 14));
         }
@@ -1388,10 +1388,10 @@ public abstract class AbsProfileHeaderView
           localTextView.setOnClickListener(this.mOnClickListener);
         }
         if ((ProfilePAUtils.isPaTypeFriend(paramProfileCardInfo.allInOne)) && (paramProfileCardInfo.allInOne.pa != 0)) {
-          localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130846046, 0);
+          localTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130847516, 0);
         }
         Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(this.mActivity.getString(2131691233));
+        ((StringBuilder)localObject2).append(this.mActivity.getString(2131888179));
         ((StringBuilder)localObject2).append(":");
         paramProfileCardInfo = str;
         if (!TextUtils.isEmpty(localSpannableString)) {
@@ -1403,12 +1403,12 @@ public abstract class AbsProfileHeaderView
       }
       if (paramProfileCardInfo.allInOne.pa == 0)
       {
-        localTextView.setCompoundDrawablesWithIntrinsicBounds(2130846045, 0, 0, 0);
-        localTextView.setText(HardCodeUtil.a(2131708485));
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(2130847515, 0, 0, 0);
+        localTextView.setText(HardCodeUtil.a(2131906271));
         localTextView.setVisibility(0);
         localTextView.setTag(new DataTag(3, ""));
         localTextView.setOnClickListener(this.mOnClickListener);
-        localTextView.setContentDescription(this.mActivity.getString(2131691233));
+        localTextView.setContentDescription(this.mActivity.getString(2131888179));
         recommendTopicViewControl(localView, true);
         return;
       }
@@ -1459,7 +1459,7 @@ public abstract class AbsProfileHeaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView
  * JD-Core Version:    0.7.0.1
  */

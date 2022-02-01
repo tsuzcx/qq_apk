@@ -15,10 +15,10 @@ class ForwardSDKB77AIOHelper$3
   {
     if (paramInt == 1)
     {
-      ForwardSdkBaseOption.a(ForwardSDKB77AIOHelper.a(this.a), false, "shareToQQ", ForwardSDKB77AIOHelper.a(this.a));
+      ForwardSdkBaseOption.a(ForwardSDKB77AIOHelper.a(this.a), false, "shareToQQ", ForwardSDKB77AIOHelper.b(this.a));
       Util.a(ForwardSDKB77AIOHelper.a(this.a), 0, "", "");
-      if (ForwardSDKB77AIOHelper.a(this.a) != null) {
-        ForwardSDKB77AIOHelper.a(this.a).b(1);
+      if (ForwardSDKB77AIOHelper.c(this.a) != null) {
+        ForwardSDKB77AIOHelper.c(this.a).f(1);
       }
       ForwardSDKB77AIOHelper.a(this.a).moveTaskToBack(true);
     }
@@ -26,7 +26,7 @@ class ForwardSDKB77AIOHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSDKB77AIOHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.kandian.repo.feeds;
 import android.text.TextUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.msf.ReadInJoyMSFHandlerUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
@@ -15,7 +15,6 @@ import com.tencent.mobileqq.kandian.repo.ugc.srt.BackOffInfoWithArticleInfo;
 import com.tencent.mobileqq.kandian.repo.ugc.srtutils.ReadInJoySrtHandler;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
@@ -47,8 +46,8 @@ public final class ArticleInfoModuleUtils$CommonChannelDataHandle
         return null;
       }
       List localList = ReadInJoyMSFHandlerUtils.a(paramRspChannelArticle, paramPBRepeatMessageField.get(), paramInt1, paramInt2, paramInt3);
-      if (ReadInJoyProteusFamilyUtil.a()) {
-        ReadInJoyProteusFamilyUtil.a().a(paramPBRepeatMessageField.get(), localList, paramInt1);
+      if (ReadInJoyProteusFamilyUtil.e()) {
+        ReadInJoyProteusFamilyUtil.c().a(paramPBRepeatMessageField.get(), localList, paramInt1);
       }
       paramToServiceMsg = paramToServiceMsg.getAttributes().get("SubscriptionArticles");
       if ((paramToServiceMsg instanceof List))
@@ -72,7 +71,7 @@ public final class ArticleInfoModuleUtils$CommonChannelDataHandle
             QLog.d("ArticleInfoModule", 1, paramRspChannelArticle);
             if ((Intrinsics.areEqual(paramToServiceMsg.get(0), Long.valueOf(((AbsBaseArticleInfo)localList.get(0)).mArticleID)) ^ true))
             {
-              paramPBRepeatMessageField = RIJTransMergeKanDianReport.a();
+              paramPBRepeatMessageField = RIJTransMergeKanDianReport.g();
               paramRspChannelArticle = paramToServiceMsg.get(0);
               paramToServiceMsg = paramRspChannelArticle;
               if (!(paramRspChannelArticle instanceof Long)) {
@@ -87,7 +86,7 @@ public final class ArticleInfoModuleUtils$CommonChannelDataHandle
               }
               paramPBRepeatMessageField.addStringNotThrow("red_article", l);
               paramPBRepeatMessageField.addStringNotThrow("feed_first_article", ((AbsBaseArticleInfo)localList.get(0)).mArticleID);
-              ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "0X8009650", "0X8009650", "", 0, 0, "", "", "", paramPBRepeatMessageField.toString(), false);
+              PublicAccountReportUtils.a(null, "0X8009650", "0X8009650", "", 0, 0, "", "", "", paramPBRepeatMessageField.toString(), false);
             }
           }
         }
@@ -121,15 +120,15 @@ public final class ArticleInfoModuleUtils$CommonChannelDataHandle
     {
       BackOffInfoWithArticleInfo localBackOffInfoWithArticleInfo = new BackOffInfoWithArticleInfo();
       localBackOffInfoWithArticleInfo.b = paramList;
-      localBackOffInfoWithArticleInfo.jdField_a_of_type_JavaUtilList = paramPBRepeatMessageField.get();
-      localBackOffInfoWithArticleInfo.jdField_a_of_type_Int = paramInt;
-      ReadInJoySrtHandler.a().a(localBackOffInfoWithArticleInfo, ReadInJoySrtHandler.jdField_a_of_type_Int);
+      localBackOffInfoWithArticleInfo.a = paramPBRepeatMessageField.get();
+      localBackOffInfoWithArticleInfo.c = paramInt;
+      ReadInJoySrtHandler.a().a(localBackOffInfoWithArticleInfo, ReadInJoySrtHandler.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticleInfoModuleUtils.CommonChannelDataHandle
  * JD-Core Version:    0.7.0.1
  */

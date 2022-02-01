@@ -12,16 +12,16 @@ class PhotoListCustomizationAECamera$3$2
   
   public void run()
   {
-    if (!PhotoListCustomizationAECamera.f(this.a.a).isFinishing())
+    if (!PhotoListCustomizationAECamera.l(this.a.c).isFinishing())
     {
-      PhotoListCustomizationAECamera.g(this.a.a).a.b();
+      PhotoListCustomizationAECamera.m(this.a.c).u.b();
       Log.d("Q.videostory.capture", "failed");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.PhotoListCustomizationAECamera.3.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1023,7 +1023,7 @@ public class BasePicDownloadProcessor
       localObject = "&rf=other";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("cldver=8.7.0.5295");
+    localStringBuilder.append("cldver=8.8.17.5770");
     localStringBuilder.append((String)localObject);
     Object localObject = localStringBuilder.toString();
     paramInt = paramString.indexOf("?");
@@ -1353,7 +1353,7 @@ public class BasePicDownloadProcessor
         }
       }
     }
-    else if (DeviceInfoUtil.e() >= 240)
+    else if (DeviceInfoUtil.J() >= 240)
     {
       if (((IMsgMixed)QRoute.api(IMsgMixed.class)).isMessageForMixedMsg((MessageRecord)localObject2))
       {
@@ -1507,7 +1507,7 @@ public class BasePicDownloadProcessor
         try
         {
           localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(StringUtil.b(((ServerAddr)localObject2).mIp));
+          ((StringBuilder)localObject3).append(StringUtil.toHexString(((ServerAddr)localObject2).mIp));
           ((StringBuilder)localObject3).append(",");
           ((StringBuffer)localObject1).append(((StringBuilder)localObject3).toString());
         }
@@ -1632,9 +1632,9 @@ public class BasePicDownloadProcessor
       {
         localObject3 = (DownCallBack)((Iterator)localObject1).next();
         DownCallBack.DownResult localDownResult = new DownCallBack.DownResult();
-        localDownResult.jdField_a_of_type_Int = -1;
-        localDownResult.jdField_b_of_type_Int = this.mProcessorReport.errCode;
-        localDownResult.jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+        localDownResult.a = -1;
+        localDownResult.b = this.mProcessorReport.errCode;
+        localDownResult.c = this.mProcessorReport.errDesc;
         ((DownCallBack)localObject3).a(localDownResult);
         if (QLog.isColorLevel()) {
           QLog.d("PIC_TAG", 2, "onError ");
@@ -1808,11 +1808,11 @@ public class BasePicDownloadProcessor
         }
         localObject4 = (DownCallBack)((Iterator)localObject1).next();
         localObject3 = new DownCallBack.DownResult();
-        ((DownCallBack.DownResult)localObject3).jdField_a_of_type_Int = 0;
-        ((DownCallBack.DownResult)localObject3).jdField_b_of_type_JavaLangString = this.mUiRequest.mOutFilePath;
-        ((DownCallBack.DownResult)localObject3).jdField_c_of_type_JavaLangString = this.mUiRequest.mMd5;
-        ((DownCallBack.DownResult)localObject3).jdField_c_of_type_Int = this.mUiRequest.mFileType;
-        ((DownCallBack.DownResult)localObject3).d = this.mUiRequest.mDownMode;
+        ((DownCallBack.DownResult)localObject3).a = 0;
+        ((DownCallBack.DownResult)localObject3).e = this.mUiRequest.mOutFilePath;
+        ((DownCallBack.DownResult)localObject3).g = this.mUiRequest.mMd5;
+        ((DownCallBack.DownResult)localObject3).h = this.mUiRequest.mFileType;
+        ((DownCallBack.DownResult)localObject3).i = this.mUiRequest.mDownMode;
         if (i == 2) {
           continue;
         }
@@ -1828,7 +1828,7 @@ public class BasePicDownloadProcessor
         boolean bool1 = true;
         continue;
       }
-      ((DownCallBack.DownResult)localObject3).jdField_a_of_type_Boolean = bool1;
+      ((DownCallBack.DownResult)localObject3).j = bool1;
       ((DownCallBack)localObject4).a((DownCallBack.DownResult)localObject3);
       if ((this.mUiRequest.mFileType == 131075) && (QLog.isDevelopLevel()))
       {
@@ -1836,7 +1836,7 @@ public class BasePicDownloadProcessor
         ((StringBuilder)localObject4).append("BasePicDownloadProcessor.onSuccess():");
         ((StringBuilder)localObject4).append(this.mUiRequest.mOutFilePath);
         ((StringBuilder)localObject4).append(", isPart ");
-        ((StringBuilder)localObject4).append(((DownCallBack.DownResult)localObject3).jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject4).append(((DownCallBack.DownResult)localObject3).j);
         QLog.d("peak_pgjpeg", 4, ((StringBuilder)localObject4).toString());
       }
       if (QLog.isColorLevel()) {
@@ -1859,7 +1859,7 @@ public class BasePicDownloadProcessor
   {
     // Byte code:
     //   0: lload_2
-    //   1: ldc2_w 1125
+    //   1: ldc2_w 1130
     //   4: lmul
     //   5: lload 4
     //   7: ldiv
@@ -1867,20 +1867,20 @@ public class BasePicDownloadProcessor
     //   9: istore 6
     //   11: iload 6
     //   13: aload_0
-    //   14: getfield 1129	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mLastProgress	I
+    //   14: getfield 1134	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mLastProgress	I
     //   17: if_icmple +33 -> 50
     //   20: aload_0
     //   21: iload 6
-    //   23: putfield 1129	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mLastProgress	I
+    //   23: putfield 1134	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mLastProgress	I
     //   26: aload_0
     //   27: getfield 422	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mPicDownExtra	Lcom/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo;
-    //   30: getfield 1133	com/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo:mHandler	Lcom/tencent/image/URLDrawableHandler;
+    //   30: getfield 1138	com/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo:mHandler	Lcom/tencent/image/URLDrawableHandler;
     //   33: ifnull +17 -> 50
     //   36: aload_0
     //   37: getfield 422	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mPicDownExtra	Lcom/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo;
-    //   40: getfield 1133	com/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo:mHandler	Lcom/tencent/image/URLDrawableHandler;
+    //   40: getfield 1138	com/tencent/mobileqq/transfile/TransferRequest$PicDownExtraInfo:mHandler	Lcom/tencent/image/URLDrawableHandler;
     //   43: iload 6
-    //   45: invokeinterface 1138 2 0
+    //   45: invokeinterface 1143 2 0
     //   50: aload_0
     //   51: monitorenter
     //   52: aload_0
@@ -1894,7 +1894,7 @@ public class BasePicDownloadProcessor
     //   70: getfield 155	com/tencent/mobileqq/transfile/BasePicDownloadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
     //   73: astore 14
     //   75: aload 14
-    //   77: getfield 1141	com/tencent/mobileqq/transfile/TransferRequest:mRequestDisplayLength	I
+    //   77: getfield 1146	com/tencent/mobileqq/transfile/TransferRequest:mRequestDisplayLength	I
     //   80: istore 7
     //   82: aload 14
     //   84: getfield 187	com/tencent/mobileqq/transfile/TransferRequest:mRequestOffset	I
@@ -1908,12 +1908,12 @@ public class BasePicDownloadProcessor
     //   100: iload 7
     //   102: ifle +456 -> 558
     //   105: aload 14
-    //   107: getfield 1100	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   107: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
     //   110: ifnull +448 -> 558
     //   113: new 234	java/io/File
     //   116: dup
     //   117: aload 14
-    //   119: getfield 1100	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   119: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
     //   122: invokespecial 237	java/io/File:<init>	(Ljava/lang/String;)V
     //   125: astore 15
     //   127: new 234	java/io/File
@@ -1945,11 +1945,11 @@ public class BasePicDownloadProcessor
     //   178: astore 12
     //   180: aload 12
     //   182: aload 14
-    //   184: getfield 1100	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   184: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
     //   187: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: pop
     //   191: aload 12
-    //   193: ldc_w 1143
+    //   193: ldc_w 1148
     //   196: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   199: pop
     //   200: new 234	java/io/File
@@ -1966,7 +1966,7 @@ public class BasePicDownloadProcessor
     //   221: aload 16
     //   223: iconst_0
     //   224: iload 7
-    //   226: invokestatic 1147	com/tencent/mobileqq/utils/FileUtils:copyFileUsingFileChannels	(Ljava/io/File;Ljava/io/File;II)J
+    //   226: invokestatic 1152	com/tencent/mobileqq/utils/FileUtils:copyFileUsingFileChannels	(Ljava/io/File;Ljava/io/File;II)J
     //   229: lstore 4
     //   231: lload 4
     //   233: lload_2
@@ -2008,7 +2008,7 @@ public class BasePicDownloadProcessor
     //   297: invokevirtual 283	java/io/RandomAccessFile:close	()V
     //   300: aload 16
     //   302: aload 15
-    //   304: invokestatic 1151	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   304: invokestatic 1156	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   307: pop
     //   308: iload 11
     //   310: istore 9
@@ -2019,12 +2019,12 @@ public class BasePicDownloadProcessor
     //   322: invokespecial 178	java/lang/StringBuilder:<init>	()V
     //   325: astore_1
     //   326: aload_1
-    //   327: ldc_w 1153
+    //   327: ldc_w 1158
     //   330: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   333: pop
     //   334: aload_1
     //   335: aload 14
-    //   337: getfield 1100	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   337: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
     //   340: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   343: pop
     //   344: ldc_w 258
@@ -2059,7 +2059,7 @@ public class BasePicDownloadProcessor
     //   403: invokevirtual 283	java/io/RandomAccessFile:close	()V
     //   406: aload 16
     //   408: aload 15
-    //   410: invokestatic 1151	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   410: invokestatic 1156	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   413: pop
     //   414: invokestatic 246	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   417: ifeq +54 -> 471
@@ -2068,12 +2068,12 @@ public class BasePicDownloadProcessor
     //   424: invokespecial 178	java/lang/StringBuilder:<init>	()V
     //   427: astore 12
     //   429: aload 12
-    //   431: ldc_w 1153
+    //   431: ldc_w 1158
     //   434: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   437: pop
     //   438: aload 12
     //   440: aload 14
-    //   442: getfield 1100	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   442: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
     //   445: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   448: pop
     //   449: ldc_w 258
@@ -2093,7 +2093,7 @@ public class BasePicDownloadProcessor
     //   478: invokevirtual 283	java/io/RandomAccessFile:close	()V
     //   481: aload 16
     //   483: aload 15
-    //   485: invokestatic 1151	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   485: invokestatic 1156	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   488: pop
     //   489: iload 11
     //   491: istore 9
@@ -2104,12 +2104,12 @@ public class BasePicDownloadProcessor
     //   503: invokespecial 178	java/lang/StringBuilder:<init>	()V
     //   506: astore_1
     //   507: aload_1
-    //   508: ldc_w 1153
+    //   508: ldc_w 1158
     //   511: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   514: pop
     //   515: aload_1
     //   516: aload 14
-    //   518: getfield 1100	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
+    //   518: getfield 1102	com/tencent/mobileqq/transfile/TransferRequest:mDisplayOutFilePath	Ljava/lang/String;
     //   521: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   524: pop
     //   525: ldc_w 258
@@ -2142,7 +2142,7 @@ public class BasePicDownloadProcessor
     //   584: checkcast 982	com/tencent/mobileqq/pic/DownCallBack
     //   587: iload 6
     //   589: iload 9
-    //   591: invokeinterface 1156 3 0
+    //   591: invokeinterface 1161 3 0
     //   596: goto -27 -> 569
     //   599: aload_0
     //   600: monitorexit
@@ -2215,21 +2215,41 @@ public class BasePicDownloadProcessor
   
   void receiveFile(boolean paramBoolean) {}
   
+  protected void refreshURLDrawable(MessageForPic paramMessageForPic, URL paramURL, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (GlobalImageCache.a.get(paramURL.toString()) != null))
+    {
+      GlobalImageCache.a.remove(paramURL.toString());
+      paramURL = URLDrawable.getDrawable(paramURL);
+      if (paramURL != null)
+      {
+        if (paramMessageForPic.thumbWidthHeightDP == null)
+        {
+          paramURL.downloadImediatly(true);
+          return;
+        }
+        paramURL.invalidateSelf();
+      }
+    }
+  }
+  
   void sendRequest() {}
   
   public void updateThumb(MessageForPic paramMessageForPic)
   {
-    boolean bool;
-    if (paramMessageForPic.fileSizeFlag == 1) {
-      bool = true;
+    int i = paramMessageForPic.fileSizeFlag;
+    boolean bool2 = true;
+    boolean bool1;
+    if (i == 1) {
+      bool1 = true;
     } else {
-      bool = false;
+      bool1 = false;
     }
-    if (this.mUiRequest.mFileType == ((IPicHelper)QRoute.api(IPicHelper.class)).getFileSizeType("chatimg", bool))
+    if (this.mUiRequest.mFileType == ((IPicHelper)QRoute.api(IPicHelper.class)).getFileSizeType("chatimg", bool1))
     {
       CompressInfo localCompressInfo = new CompressInfo(this.mUiRequest.mOutFilePath, 0);
       URL localURL = ((IPicHelper)QRoute.api(IPicHelper.class)).getURL(paramMessageForPic, 65537, null);
-      localCompressInfo.f = true;
+      localCompressInfo.u = true;
       Object localObject = AbsDownloader.getFilePath(localURL.toString());
       if (!((String)localObject).endsWith("_hd"))
       {
@@ -2244,31 +2264,17 @@ public class BasePicDownloadProcessor
           localStringBuilder.append("_hd");
           localObject = localStringBuilder.toString();
         }
-        localCompressInfo.e = ((String)localObject);
-        localCompressInfo.a = paramMessageForPic.thumbWidthHeightDP;
+        localCompressInfo.l = ((String)localObject);
+        localCompressInfo.x = paramMessageForPic.thumbWidthHeightDP;
         ((ICompressOperator)QRoute.api(ICompressOperator.class)).startThumbnail(localCompressInfo);
-        if (localCompressInfo.e != null)
+        if (localCompressInfo.l != null)
         {
           localObject = new File((String)localObject);
-          if (localCompressInfo.e.equals(localCompressInfo.jdField_c_of_type_JavaLangString)) {
-            bool = FileUtils.copyFile(new File(localCompressInfo.jdField_c_of_type_JavaLangString), (File)localObject);
-          } else {
-            bool = true;
+          bool1 = bool2;
+          if (localCompressInfo.l.equals(localCompressInfo.h)) {
+            bool1 = FileUtils.copyFile(new File(localCompressInfo.h), (File)localObject);
           }
-          if ((bool) && (GlobalImageCache.a.get(localURL.toString()) != null))
-          {
-            GlobalImageCache.a.remove(localURL.toString());
-            localObject = URLDrawable.getDrawable(localURL);
-            if (localObject != null)
-            {
-              if (paramMessageForPic.thumbWidthHeightDP == null)
-              {
-                ((URLDrawable)localObject).downloadImediatly(true);
-                return;
-              }
-              ((URLDrawable)localObject).invalidateSelf();
-            }
-          }
+          refreshURLDrawable(paramMessageForPic, localURL, bool1);
         }
       }
     }
@@ -2276,7 +2282,7 @@ public class BasePicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BasePicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -18,121 +18,6 @@ import java.util.List;
 
 public class TroopAioNotifyManager
 {
-  /* Error */
-  public static List<TroopAIONotifyItem> a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: new 15	java/util/ArrayList
-    //   6: dup
-    //   7: invokespecial 16	java/util/ArrayList:<init>	()V
-    //   10: astore_3
-    //   11: aload_0
-    //   12: invokevirtual 22	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   15: invokevirtual 28	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   18: astore_0
-    //   19: iconst_0
-    //   20: istore_2
-    //   21: aload_0
-    //   22: ldc 30
-    //   24: iconst_0
-    //   25: ldc 32
-    //   27: iconst_1
-    //   28: anewarray 34	java/lang/String
-    //   31: dup
-    //   32: iconst_0
-    //   33: aload_1
-    //   34: aastore
-    //   35: aconst_null
-    //   36: aconst_null
-    //   37: aconst_null
-    //   38: aconst_null
-    //   39: invokevirtual 40	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   42: astore_1
-    //   43: aload_0
-    //   44: invokevirtual 43	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   47: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   50: ifeq +48 -> 98
-    //   53: new 51	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   60: astore_0
-    //   61: aload_0
-    //   62: ldc 54
-    //   64: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: pop
-    //   68: aload_1
-    //   69: ifnonnull +6 -> 75
-    //   72: goto +10 -> 82
-    //   75: aload_1
-    //   76: invokeinterface 64 1 0
-    //   81: istore_2
-    //   82: aload_0
-    //   83: iload_2
-    //   84: invokevirtual 67	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   87: pop
-    //   88: ldc 69
-    //   90: iconst_2
-    //   91: aload_0
-    //   92: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 77	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   98: aload_1
-    //   99: ifnull +49 -> 148
-    //   102: ldc 2
-    //   104: monitorexit
-    //   105: aload_1
-    //   106: areturn
-    //   107: astore_0
-    //   108: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   111: ifeq +37 -> 148
-    //   114: new 51	java/lang/StringBuilder
-    //   117: dup
-    //   118: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   121: astore_1
-    //   122: aload_1
-    //   123: ldc 79
-    //   125: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: pop
-    //   129: aload_1
-    //   130: aload_0
-    //   131: invokevirtual 80	java/lang/Exception:toString	()Ljava/lang/String;
-    //   134: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: pop
-    //   138: ldc 69
-    //   140: iconst_2
-    //   141: aload_1
-    //   142: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   148: ldc 2
-    //   150: monitorexit
-    //   151: aload_3
-    //   152: areturn
-    //   153: astore_0
-    //   154: ldc 2
-    //   156: monitorexit
-    //   157: aload_0
-    //   158: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	159	0	paramQQAppInterface	QQAppInterface
-    //   0	159	1	paramString	String
-    //   20	64	2	i	int
-    //   10	142	3	localArrayList	ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   11	19	107	java/lang/Exception
-    //   21	68	107	java/lang/Exception
-    //   75	82	107	java/lang/Exception
-    //   82	98	107	java/lang/Exception
-    //   3	11	153	finally
-    //   11	19	153	finally
-    //   21	68	153	finally
-    //   75	82	153	finally
-    //   82	98	153	finally
-    //   108	148	153	finally
-  }
-  
   public static List<TroopAIONotifyItem> a(QQAppInterface paramQQAppInterface, List<TroopAIONotifyItem> paramList1, List<TroopAIONotifyItem> paramList2)
   {
     try
@@ -411,6 +296,121 @@ public class TroopAioNotifyManager
     }
   }
   
+  /* Error */
+  public static List<TroopAIONotifyItem> b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: new 13	java/util/ArrayList
+    //   6: dup
+    //   7: invokespecial 14	java/util/ArrayList:<init>	()V
+    //   10: astore_3
+    //   11: aload_0
+    //   12: invokevirtual 202	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   15: invokevirtual 208	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   18: astore_0
+    //   19: iconst_0
+    //   20: istore_2
+    //   21: aload_0
+    //   22: ldc 26
+    //   24: iconst_0
+    //   25: ldc 239
+    //   27: iconst_1
+    //   28: anewarray 241	java/lang/String
+    //   31: dup
+    //   32: iconst_0
+    //   33: aload_1
+    //   34: aastore
+    //   35: aconst_null
+    //   36: aconst_null
+    //   37: aconst_null
+    //   38: aconst_null
+    //   39: invokevirtual 245	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   42: astore_1
+    //   43: aload_0
+    //   44: invokevirtual 224	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   47: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   50: ifeq +48 -> 98
+    //   53: new 34	java/lang/StringBuilder
+    //   56: dup
+    //   57: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   60: astore_0
+    //   61: aload_0
+    //   62: ldc 247
+    //   64: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: pop
+    //   68: aload_1
+    //   69: ifnonnull +6 -> 75
+    //   72: goto +10 -> 82
+    //   75: aload_1
+    //   76: invokeinterface 20 1 0
+    //   81: istore_2
+    //   82: aload_0
+    //   83: iload_2
+    //   84: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: ldc 86
+    //   90: iconst_2
+    //   91: aload_0
+    //   92: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 164	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   98: aload_1
+    //   99: ifnull +49 -> 148
+    //   102: ldc 2
+    //   104: monitorexit
+    //   105: aload_1
+    //   106: areturn
+    //   107: astore_0
+    //   108: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   111: ifeq +37 -> 148
+    //   114: new 34	java/lang/StringBuilder
+    //   117: dup
+    //   118: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   121: astore_1
+    //   122: aload_1
+    //   123: ldc 249
+    //   125: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: pop
+    //   129: aload_1
+    //   130: aload_0
+    //   131: invokevirtual 232	java/lang/Exception:toString	()Ljava/lang/String;
+    //   134: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: pop
+    //   138: ldc 86
+    //   140: iconst_2
+    //   141: aload_1
+    //   142: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   148: ldc 2
+    //   150: monitorexit
+    //   151: aload_3
+    //   152: areturn
+    //   153: astore_0
+    //   154: ldc 2
+    //   156: monitorexit
+    //   157: aload_0
+    //   158: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	159	0	paramQQAppInterface	QQAppInterface
+    //   0	159	1	paramString	String
+    //   20	64	2	i	int
+    //   10	142	3	localArrayList	ArrayList
+    // Exception table:
+    //   from	to	target	type
+    //   11	19	107	java/lang/Exception
+    //   21	68	107	java/lang/Exception
+    //   75	82	107	java/lang/Exception
+    //   82	98	107	java/lang/Exception
+    //   3	11	153	finally
+    //   11	19	153	finally
+    //   21	68	153	finally
+    //   75	82	153	finally
+    //   82	98	153	finally
+    //   108	148	153	finally
+  }
+  
   public static void b(QQAppInterface paramQQAppInterface, List<TroopAIONotifyItem> paramList)
   {
     if (paramList != null) {
@@ -456,7 +456,7 @@ public class TroopAioNotifyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAioNotifyManager
  * JD-Core Version:    0.7.0.1
  */

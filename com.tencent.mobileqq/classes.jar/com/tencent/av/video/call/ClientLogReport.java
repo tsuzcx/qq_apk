@@ -40,7 +40,7 @@ public class ClientLogReport
   private static final int LOG_SEND_RET_PENDING = 2;
   private static final String NEW_GACS_REPORT = "dc02085";
   private static final String NEW_GACS_REPORT_2 = "dc02207";
-  private static final String REPORT_FAIL_LOG_DIR = AVPathUtil.n();
+  private static final String REPORT_FAIL_LOG_DIR = AVPathUtil.r();
   private static final long REPORT_FAIL_RETRY_MAX_INTERVAL = 86400000L;
   private static final String REPORT_RECORD_IS_RETRY = "report_record_is_retry";
   private static final String REPORT_RECORD_SEQ = "report_record_seq";
@@ -161,7 +161,7 @@ public class ClientLogReport
       this.mAppId = paramInt;
       this.mMsfSub = MsfServiceSdk.get();
       boolean bool;
-      if (QavRecordDpc.a().q == 1) {
+      if (QavRecordDpc.a().r == 1) {
         bool = true;
       } else {
         bool = false;

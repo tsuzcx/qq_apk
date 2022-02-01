@@ -17,22 +17,22 @@ class QQSettingCleanActivity$RefreshHandler
       if (i != 1) {
         return;
       }
-      if ((this.a.a != null) && (this.a.a.isShowing()))
+      if ((this.a.c != null) && (this.a.c.isShowing()))
       {
-        this.a.a.cancel();
-        this.a.a.a(this.a.getString(2131690861));
-        this.a.a.c(true);
-        this.a.a.a(false);
-        this.a.a.b(true);
+        this.a.c.cancel();
+        this.a.c.a(this.a.getString(2131887798));
+        this.a.c.c(true);
+        this.a.c.a(false);
+        this.a.c.b(true);
       }
     }
     else
     {
       if (!this.a.isFinishing())
       {
-        this.a.a.a(this.a.getString(2131690859));
-        this.a.a.d(2130850009);
-        this.a.a.b(false);
+        this.a.c.a(this.a.getString(2131887796));
+        this.a.c.d(2130851772);
+        this.a.c.b(false);
       }
       sendEmptyMessageDelayed(1, 1000L);
     }
@@ -40,7 +40,7 @@ class QQSettingCleanActivity$RefreshHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingCleanActivity.RefreshHandler
  * JD-Core Version:    0.7.0.1
  */

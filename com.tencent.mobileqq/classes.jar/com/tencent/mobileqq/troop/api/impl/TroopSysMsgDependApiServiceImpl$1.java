@@ -11,7 +11,7 @@ class TroopSysMsgDependApiServiceImpl$1
   
   protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    ITroopSysMsgDependApiService.ITransitTroopProtocolOnFollowObserver localITransitTroopProtocolOnFollowObserver = this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopSysMsgDependApiService$ITransitTroopProtocolOnFollowObserver;
+    ITroopSysMsgDependApiService.ITransitTroopProtocolOnFollowObserver localITransitTroopProtocolOnFollowObserver = this.a;
     if (localITransitTroopProtocolOnFollowObserver != null) {
       localITransitTroopProtocolOnFollowObserver.a(paramBoolean, paramBundle);
     }
@@ -19,7 +19,7 @@ class TroopSysMsgDependApiServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopSysMsgDependApiServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

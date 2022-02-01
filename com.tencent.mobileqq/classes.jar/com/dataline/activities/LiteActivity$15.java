@@ -12,13 +12,13 @@ final class LiteActivity$15
   
   public void run()
   {
-    if (ChatBackgroundManager.a(new File(this.jdField_a_of_type_JavaLangString)))
+    if (ChatBackgroundManager.a(new File(this.a)))
     {
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$GetBackgroundCB.a(null, true);
+      this.b.a(null, true);
       return;
     }
-    Bitmap localBitmap = BitmapManager.a(this.jdField_a_of_type_JavaLangString);
-    LiteActivity.GetBackgroundCB localGetBackgroundCB = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity$GetBackgroundCB;
+    Bitmap localBitmap = BitmapManager.a(this.a);
+    LiteActivity.GetBackgroundCB localGetBackgroundCB = this.b;
     if (localGetBackgroundCB != null) {
       localGetBackgroundCB.a(localBitmap, false);
     }

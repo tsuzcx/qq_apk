@@ -9,13 +9,13 @@ import java.io.File;
 public class FileDownloadTask
   extends AsyncTask<FileDownloadTask.Input, FileDownloadTask.Progress, FileDownloadTask.Output>
 {
-  public final Downloader a;
+  public final Downloader b;
   
   public FileDownloadTask(Downloader paramDownloader)
   {
     if (paramDownloader != null)
     {
-      this.a = paramDownloader;
+      this.b = paramDownloader;
       return;
     }
     throw new IllegalArgumentException("downloader should not be null");
@@ -28,21 +28,21 @@ public class FileDownloadTask
     //   0: sipush 1024
     //   3: newarray byte
     //   5: astore_3
-    //   6: new 29	java/io/FileInputStream
+    //   6: new 30	java/io/FileInputStream
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 30	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 31	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   14: astore_2
     //   15: aload_2
     //   16: astore_0
-    //   17: ldc 32
-    //   19: invokestatic 38	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   17: ldc 33
+    //   19: invokestatic 39	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   22: astore 4
     //   24: aload_2
     //   25: astore_0
     //   26: aload_2
     //   27: aload_3
-    //   28: invokevirtual 44	java/io/InputStream:read	([B)I
+    //   28: invokevirtual 45	java/io/InputStream:read	([B)I
     //   31: istore_1
     //   32: iload_1
     //   33: ifle +16 -> 49
@@ -52,16 +52,16 @@ public class FileDownloadTask
     //   40: aload_3
     //   41: iconst_0
     //   42: iload_1
-    //   43: invokevirtual 48	java/security/MessageDigest:update	([BII)V
+    //   43: invokevirtual 49	java/security/MessageDigest:update	([BII)V
     //   46: goto -22 -> 24
     //   49: aload_2
     //   50: astore_0
     //   51: aload 4
-    //   53: invokevirtual 52	java/security/MessageDigest:digest	()[B
-    //   56: invokestatic 55	com/tencent/biz/qqstory/model/pendant/FileDownloadTask:a	([B)Ljava/lang/String;
+    //   53: invokevirtual 53	java/security/MessageDigest:digest	()[B
+    //   56: invokestatic 56	com/tencent/biz/qqstory/model/pendant/FileDownloadTask:a	([B)Ljava/lang/String;
     //   59: astore_3
     //   60: aload_2
-    //   61: invokevirtual 58	java/io/InputStream:close	()V
+    //   61: invokevirtual 59	java/io/InputStream:close	()V
     //   64: aload_3
     //   65: areturn
     //   66: astore_2
@@ -72,20 +72,20 @@ public class FileDownloadTask
     //   73: astore_2
     //   74: aload_2
     //   75: astore_0
-    //   76: ldc 60
-    //   78: ldc 62
-    //   80: invokestatic 67	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: ldc 61
+    //   78: ldc 63
+    //   80: invokestatic 68	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   83: aload_2
     //   84: ifnull +7 -> 91
     //   87: aload_2
-    //   88: invokevirtual 58	java/io/InputStream:close	()V
+    //   88: invokevirtual 59	java/io/InputStream:close	()V
     //   91: aconst_null
     //   92: areturn
     //   93: astore_2
     //   94: aload_0
     //   95: ifnull +7 -> 102
     //   98: aload_0
-    //   99: invokevirtual 58	java/io/InputStream:close	()V
+    //   99: invokevirtual 59	java/io/InputStream:close	()V
     //   102: goto +5 -> 107
     //   105: aload_2
     //   106: athrow
@@ -179,11 +179,6 @@ public class FileDownloadTask
     return localStringBuilder.toString();
   }
   
-  private static void a(String paramString)
-  {
-    SLog.b("FileDownloadTask", paramString);
-  }
-  
   public static boolean a(String paramString1, String paramString2)
   {
     Object localObject = new File(paramString1);
@@ -208,26 +203,31 @@ public class FileDownloadTask
     return paramString2.equalsIgnoreCase(paramString1);
   }
   
+  private static void b(String paramString)
+  {
+    SLog.b("FileDownloadTask", paramString);
+  }
+  
   protected FileDownloadTask.Output a(FileDownloadTask.Input... paramVarArgs)
   {
     paramVarArgs = paramVarArgs[0];
     if (a(paramVarArgs.b, paramVarArgs.c))
     {
-      a("already has local file, don't need download");
+      b("already has local file, don't need download");
       return new FileDownloadTask.Output(paramVarArgs, 0, "has local file already");
     }
-    this.a.a(new FileDownloadTask.1(this, paramVarArgs));
-    int i = this.a.a(paramVarArgs.a, paramVarArgs.b, 0L);
+    this.b.a(new FileDownloadTask.1(this, paramVarArgs));
+    int i = this.b.a(paramVarArgs.a, paramVarArgs.b, 0L);
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("download finish : ");
     localStringBuilder1.append(i);
-    a(localStringBuilder1.toString());
+    b(localStringBuilder1.toString());
     if ((i == 0) && (!a(paramVarArgs.b, paramVarArgs.c)))
     {
-      a("delete the downloaded file because of md5 mismatch");
+      b("delete the downloaded file because of md5 mismatch");
       try
       {
-        FileUtils.d(paramVarArgs.b);
+        FileUtils.e(paramVarArgs.b);
       }
       catch (Exception localException)
       {
@@ -243,7 +243,7 @@ public class FileDownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.pendant.FileDownloadTask
  * JD-Core Version:    0.7.0.1
  */

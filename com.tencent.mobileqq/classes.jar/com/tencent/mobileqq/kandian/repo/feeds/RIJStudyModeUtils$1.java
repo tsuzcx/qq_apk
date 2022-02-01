@@ -7,12 +7,12 @@ final class RIJStudyModeUtils$1
   
   public void a(ReadInJoyObserver paramReadInJoyObserver)
   {
-    paramReadInJoyObserver.e_(this.a);
+    paramReadInJoyObserver.l_(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJStudyModeUtils.1
  * JD-Core Version:    0.7.0.1
  */

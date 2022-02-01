@@ -23,7 +23,7 @@ final class UiApiPlugin$14
     }
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
+      this.a.put("isGrayscaleUser", bool);
     }
     catch (JSONException paramEIPCResult)
     {
@@ -36,12 +36,12 @@ final class UiApiPlugin$14
     paramEIPCResult.append("webGetCommentAladdinConfig is ");
     paramEIPCResult.append(bool);
     QLog.e("UiApiPlugin", 1, paramEIPCResult.toString());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.b.a(this.c, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.14
  * JD-Core Version:    0.7.0.1
  */

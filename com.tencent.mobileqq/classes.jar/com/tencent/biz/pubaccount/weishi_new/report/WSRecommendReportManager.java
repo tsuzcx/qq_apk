@@ -22,21 +22,21 @@ public class WSRecommendReportManager
     return "";
   }
   
-  public void a()
-  {
-    this.a.clear();
-  }
-  
   public void a(String paramString, Map<String, String> paramMap)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramMap != null)) {
       this.a.put(paramString, new Gson().toJson(paramMap));
     }
   }
+  
+  public void b()
+  {
+    this.a.clear();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSRecommendReportManager
  * JD-Core Version:    0.7.0.1
  */

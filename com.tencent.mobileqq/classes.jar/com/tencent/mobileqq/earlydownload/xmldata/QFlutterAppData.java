@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
 import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.business.qflutter.QFlutterResConfig;
 import com.tencent.mobileqq.config.business.qflutter.QFlutterResConfigProcessor;
 import com.tencent.mobileqq.flutter.download.QFlutterDownloader;
 import com.tencent.mobileqq.flutter.download.QFlutterDownloader.DownloadConfig;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +23,7 @@ public class QFlutterAppData
   public static final String LIB_LOG_NAME = "libQFlutterLog.so";
   public static final String LIB_RESOURCE_LOADER_NAME = "libqflutter-resource-loader.so";
   public static final String SP_NAME = "qflutter_app_downloader_sp";
-  public static final String STR_RES_NAME = "qq.android.flutter.app.v8.7.0_release";
+  public static final String STR_RES_NAME;
   public static final String TAG = "QFlutterAppData";
   @saveInSP(a=true, b=true)
   public String assetResMD5 = "";
@@ -34,9 +36,37 @@ public class QFlutterAppData
   @saveInSP(a=true, b=true)
   public String libSkinSoMD5 = "";
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qq.android.flutter.");
+    localStringBuilder.append(getMidfix());
+    localStringBuilder.append(getPostfixName());
+    STR_RES_NAME = localStringBuilder.toString();
+  }
+  
   public static QFlutterDownloader<QFlutterAppData> createDownloader(QQAppInterface paramQQAppInterface)
   {
-    return new QFlutterDownloader("qq.android.flutter.app.v8.7.0_release", paramQQAppInterface, new QFlutterDownloader.DownloadConfig(QFlutterAppData.class, QFlutterAppData.class.getSimpleName(), 10093, "prd", 1));
+    QFlutterDownloader.DownloadConfig localDownloadConfig = new QFlutterDownloader.DownloadConfig(QFlutterAppData.class, QFlutterAppData.class.getSimpleName(), 10093, "prd", 1);
+    return new QFlutterDownloader(STR_RES_NAME, paramQQAppInterface, localDownloadConfig);
+  }
+  
+  private static String getMidfix()
+  {
+    return "app.";
+  }
+  
+  public static String getPostfixName()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("publish_");
+    ((StringBuilder)localObject).append(AppSetting.a(BaseApplication.getContext()));
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getPostfixName] ");
+    localStringBuilder.append((String)localObject);
+    QLog.d("QFlutterAppData", 1, localStringBuilder.toString());
+    return localObject;
   }
   
   public String[] filesList()
@@ -46,7 +76,7 @@ public class QFlutterAppData
   
   public Map<String, String> filesValidateMap()
   {
-    String str = QFlutterResConfigProcessor.a().a("qq.android.flutter.app.v8.7.0_release");
+    String str = QFlutterResConfigProcessor.a().a(STR_RES_NAME);
     HashMap localHashMap = new HashMap();
     if (!TextUtils.equals(this.strPkgName, str))
     {
@@ -69,12 +99,16 @@ public class QFlutterAppData
   
   public String getStrResName()
   {
-    return "qq.android.flutter.app.v8.7.0_release";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getStrResName] ");
+    localStringBuilder.append(STR_RES_NAME);
+    QLog.d("QFlutterAppData", 1, localStringBuilder.toString());
+    return STR_RES_NAME;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData
  * JD-Core Version:    0.7.0.1
  */

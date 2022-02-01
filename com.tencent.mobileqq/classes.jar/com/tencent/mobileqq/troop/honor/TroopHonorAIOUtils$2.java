@@ -8,10 +8,10 @@ final class TroopHonorAIOUtils$2
 {
   public int a(TroopHonor paramTroopHonor1, TroopHonor paramTroopHonor2)
   {
-    if (paramTroopHonor1.b < paramTroopHonor2.b) {
+    if (paramTroopHonor1.d < paramTroopHonor2.d) {
       return -1;
     }
-    if (paramTroopHonor1.b > paramTroopHonor2.b) {
+    if (paramTroopHonor1.d > paramTroopHonor2.d) {
       return 1;
     }
     return 0;
@@ -19,7 +19,7 @@ final class TroopHonorAIOUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.TroopHonorAIOUtils.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,8 @@ import org.json.JSONObject;
 public class HbEventPlugin
   extends WebViewPlugin
 {
-  private static int jdField_a_of_type_Int = 1;
-  private SparseArray<WeakReference<HbEventPlugin.DataReceiver>> jdField_a_of_type_AndroidUtilSparseArray = null;
+  private static int b = 1;
+  private SparseArray<WeakReference<HbEventPlugin.DataReceiver>> a = null;
   
   public HbEventPlugin()
   {
@@ -26,8 +26,8 @@ public class HbEventPlugin
   
   private static int a()
   {
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
+    int i = b;
+    b = i + 1;
     return i;
   }
   
@@ -37,8 +37,8 @@ public class HbEventPlugin
     paramString1.putExtra("portal_type_key", paramInt1);
     paramString1.putExtra("portal_agrs", paramString2);
     paramString1.putExtra("bc_seq", paramInt2);
-    if (this.mRuntime.a() != null) {
-      this.mRuntime.a().sendBroadcast(paramString1, "com.tencent.msg.permission.pushnotify");
+    if (this.mRuntime.d() != null) {
+      this.mRuntime.d().sendBroadcast(paramString1, "com.tencent.msg.permission.pushnotify");
     }
   }
   
@@ -64,21 +64,21 @@ public class HbEventPlugin
   
   HbEventPlugin.DataReceiver a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(12);
+    if (this.a == null) {
+      this.a = new SparseArray(12);
     }
     Object localObject = new HbEventPlugin.DataReceiver(this, null);
-    ((HbEventPlugin.DataReceiver)localObject).jdField_a_of_type_Int = paramInt;
+    ((HbEventPlugin.DataReceiver)localObject).c = paramInt;
     localObject = new WeakReference(localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+    this.a.put(paramInt, localObject);
     return (HbEventPlugin.DataReceiver)((WeakReference)localObject).get();
   }
   
   void a(BroadcastReceiver paramBroadcastReceiver, String paramString)
   {
     paramString = new IntentFilter(paramString);
-    if (this.mRuntime.a() != null) {
-      this.mRuntime.a().registerReceiver(paramBroadcastReceiver, paramString, "com.tencent.msg.permission.pushnotify", null);
+    if (this.mRuntime.d() != null) {
+      this.mRuntime.d().registerReceiver(paramBroadcastReceiver, paramString, "com.tencent.msg.permission.pushnotify", null);
     }
   }
   
@@ -87,12 +87,12 @@ public class HbEventPlugin
     callJs(paramString, paramVarArgs);
   }
   
-  boolean a(int paramInt)
+  boolean b(int paramInt)
   {
     if (paramInt <= 0) {
       return false;
     }
-    Object localObject = this.jdField_a_of_type_AndroidUtilSparseArray;
+    Object localObject = this.a;
     if (localObject == null) {
       return false;
     }
@@ -106,7 +106,7 @@ public class HbEventPlugin
     }
     try
     {
-      this.mRuntime.a().unregisterReceiver((BroadcastReceiver)localObject);
+      this.mRuntime.d().unregisterReceiver((BroadcastReceiver)localObject);
     }
     catch (Exception localException)
     {
@@ -139,7 +139,7 @@ public class HbEventPlugin
           if (paramVarArgs.length > 0)
           {
             paramString1 = new JSONObject(paramVarArgs[0]);
-            paramJsBridgeListener.jdField_a_of_type_JavaLangString = paramString1.getString("callback");
+            paramJsBridgeListener.a = paramString1.getString("callback");
             paramJsBridgeListener.b = paramString1.getJSONObject("params").toString();
           }
         }
@@ -157,15 +157,15 @@ public class HbEventPlugin
   protected void onDestroy()
   {
     super.onDestroy();
-    Object localObject = this.jdField_a_of_type_AndroidUtilSparseArray;
+    Object localObject = this.a;
     if ((localObject != null) && (((SparseArray)localObject).size() > 0))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+      while (i < this.a.size())
       {
-        localObject = (HbEventPlugin.DataReceiver)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).get();
+        localObject = (HbEventPlugin.DataReceiver)((WeakReference)this.a.get(i)).get();
         if (localObject != null) {
-          a(((HbEventPlugin.DataReceiver)localObject).jdField_a_of_type_Int);
+          b(((HbEventPlugin.DataReceiver)localObject).c);
         }
         i += 1;
       }
@@ -174,7 +174,7 @@ public class HbEventPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HbEventPlugin
  * JD-Core Version:    0.7.0.1
  */

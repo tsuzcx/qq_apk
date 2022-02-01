@@ -27,7 +27,12 @@ public class MovieController
   
   public native void replaceLUTAsset(String paramString, LUTAsset paramLUTAsset);
   
-  public native void setClipAssets(ClipAsset[] paramArrayOfClipAsset, String paramString);
+  public void setClipAssets(ClipAsset[] paramArrayOfClipAsset, String paramString)
+  {
+    setClipAssets(paramArrayOfClipAsset, paramString, true);
+  }
+  
+  public native void setClipAssets(ClipAsset[] paramArrayOfClipAsset, String paramString, boolean paramBoolean);
   
   public int type()
   {
@@ -36,7 +41,7 @@ public class MovieController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.MovieController
  * JD-Core Version:    0.7.0.1
  */

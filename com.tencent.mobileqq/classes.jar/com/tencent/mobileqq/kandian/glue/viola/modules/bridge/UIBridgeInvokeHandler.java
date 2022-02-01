@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.kandian.glue.viola.modules.bridge;
 
-import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.common.danmaku.edit.EditDanmakuDialog;
+import com.tencent.common.danmaku.edit.listener.EditDanmakuListener;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyLegacyUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.CallCommentJs;
 import com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule;
-import com.tencent.tkd.topicsdk.widget.dialog.SimpleMessageDialog;
 import cooperation.liveroom.LiveRoomProxyActivity;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function2;
@@ -33,7 +32,7 @@ public final class UIBridgeInvokeHandler
     } else {
       paramJSONObject = null;
     }
-    paramString = (Activity)QBaseActivity.sTopActivity;
+    paramString = d().getActivity();
     if ((paramString != null) && (paramJSONObject != null))
     {
       int i;
@@ -54,7 +53,7 @@ public final class UIBridgeInvokeHandler
     {
       if (paramJSONObject.optBoolean("isAlbum", true))
       {
-        a().arouseReadInJoyNativeCommentView(paramJSONObject, paramString);
+        d().arouseReadInJoyNativeCommentView(paramJSONObject, paramString);
         return;
       }
       String str;
@@ -74,12 +73,12 @@ public final class UIBridgeInvokeHandler
   
   private final void d(JSONObject paramJSONObject, String paramString)
   {
-    UiApiPlugin.a(paramJSONObject, paramString, a());
+    UiApiPlugin.a(paramJSONObject, paramString, c());
   }
   
   private final void e(JSONObject paramJSONObject, String paramString)
   {
-    Object localObject = a();
+    Object localObject = c();
     if (localObject != null)
     {
       int i;
@@ -108,19 +107,14 @@ public final class UIBridgeInvokeHandler
       {
         str2 = "";
       }
-      localObject = new SimpleMessageDialog((Context)localObject);
-      ((SimpleMessageDialog)localObject).a(i);
-      ((SimpleMessageDialog)localObject).a(str1);
-      ((SimpleMessageDialog)localObject).b(str2);
-      ((SimpleMessageDialog)localObject).a((Function2)new UIBridgeInvokeHandler.arouseTkdBarragePublisher..inlined.let.lambda.1(i, str1, str2, this, paramJSONObject, paramString));
-      ((SimpleMessageDialog)localObject).show();
+      localObject = new EditDanmakuDialog((Context)localObject);
+      ((EditDanmakuDialog)localObject).a(i);
+      ((EditDanmakuDialog)localObject).a(str1);
+      ((EditDanmakuDialog)localObject).b(str2);
+      ((EditDanmakuDialog)localObject).c("#02CAFC");
+      ((EditDanmakuDialog)localObject).a((EditDanmakuListener)new UIBridgeInvokeHandler.arouseTkdBarragePublisher..inlined.let.lambda.1(i, str1, str2, this, paramJSONObject, paramString));
+      ((EditDanmakuDialog)localObject).show();
     }
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "ui";
   }
   
   public void a()
@@ -152,10 +146,16 @@ public final class UIBridgeInvokeHandler
     a("disableSwitcher", (Function2)new UIBridgeInvokeHandler.register.24(this));
     a("getCurrentTotalConsumeTime", (Function2)new UIBridgeInvokeHandler.register.25(this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "ui";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.UIBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

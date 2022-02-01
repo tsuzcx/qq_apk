@@ -8,61 +8,61 @@ import java.util.Arrays;
 
 public final class Palette$Swatch
 {
-  private final int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  @Nullable
-  private float[] jdField_a_of_type_ArrayOfFloat;
+  private final int a;
   private final int b;
   private final int c;
   private final int d;
   private final int e;
-  private int f;
+  private boolean f;
   private int g;
+  private int h;
+  @Nullable
+  private float[] i;
   
   public Palette$Swatch(@ColorInt int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = Color.red(paramInt1);
+    this.a = Color.red(paramInt1);
     this.b = Color.green(paramInt1);
     this.c = Color.blue(paramInt1);
     this.d = paramInt1;
     this.e = paramInt2;
   }
   
-  private void a()
+  private void f()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
-      int i = ColorUtils.a(-1, this.d, 4.5F);
-      int j = ColorUtils.a(-1, this.d, 3.0F);
-      if ((i != -1) && (j != -1))
+      int j = ColorUtils.a(-1, this.d, 4.5F);
+      int k = ColorUtils.a(-1, this.d, 3.0F);
+      if ((j != -1) && (k != -1))
       {
-        this.g = ColorUtils.b(-1, i);
-        this.f = ColorUtils.b(-1, j);
-        this.jdField_a_of_type_Boolean = true;
+        this.h = ColorUtils.c(-1, j);
+        this.g = ColorUtils.c(-1, k);
+        this.f = true;
         return;
       }
-      int m = ColorUtils.a(-16777216, this.d, 4.5F);
-      int k = ColorUtils.a(-16777216, this.d, 3.0F);
-      if ((m != -1) && (k != -1))
+      int n = ColorUtils.a(-16777216, this.d, 4.5F);
+      int m = ColorUtils.a(-16777216, this.d, 3.0F);
+      if ((n != -1) && (m != -1))
       {
-        this.g = ColorUtils.b(-16777216, m);
-        this.f = ColorUtils.b(-16777216, k);
-        this.jdField_a_of_type_Boolean = true;
+        this.h = ColorUtils.c(-16777216, n);
+        this.g = ColorUtils.c(-16777216, m);
+        this.f = true;
         return;
       }
-      if (i != -1) {
-        i = ColorUtils.b(-1, i);
-      } else {
-        i = ColorUtils.b(-16777216, m);
-      }
-      this.g = i;
       if (j != -1) {
-        i = ColorUtils.b(-1, j);
+        j = ColorUtils.c(-1, j);
       } else {
-        i = ColorUtils.b(-16777216, k);
+        j = ColorUtils.c(-16777216, n);
       }
-      this.f = i;
-      this.jdField_a_of_type_Boolean = true;
+      this.h = j;
+      if (k != -1) {
+        j = ColorUtils.c(-1, k);
+      } else {
+        j = ColorUtils.c(-16777216, m);
+      }
+      this.g = j;
+      this.f = true;
     }
   }
   
@@ -73,32 +73,32 @@ public final class Palette$Swatch
   }
   
   @NonNull
-  public float[] a()
+  public float[] b()
   {
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[3];
+    if (this.i == null) {
+      this.i = new float[3];
     }
-    ColorUtils.a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ArrayOfFloat);
-    return this.jdField_a_of_type_ArrayOfFloat;
+    ColorUtils.a(this.a, this.b, this.c, this.i);
+    return this.i;
   }
   
-  public int b()
+  public int c()
   {
     return this.e;
   }
   
   @ColorInt
-  public int c()
+  public int d()
   {
-    a();
-    return this.f;
+    f();
+    return this.g;
   }
   
   @ColorInt
-  public int d()
+  public int e()
   {
-    a();
-    return this.g;
+    f();
+    return this.h;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -130,23 +130,23 @@ public final class Palette$Swatch
     localStringBuilder.append(Integer.toHexString(a()));
     localStringBuilder.append(']');
     localStringBuilder.append(" [HSL: ");
-    localStringBuilder.append(Arrays.toString(a()));
+    localStringBuilder.append(Arrays.toString(b()));
     localStringBuilder.append(']');
     localStringBuilder.append(" [Population: ");
     localStringBuilder.append(this.e);
     localStringBuilder.append(']');
     localStringBuilder.append(" [Title Text: #");
-    localStringBuilder.append(Integer.toHexString(c()));
+    localStringBuilder.append(Integer.toHexString(d()));
     localStringBuilder.append(']');
     localStringBuilder.append(" [Body Text: #");
-    localStringBuilder.append(Integer.toHexString(d()));
+    localStringBuilder.append(Integer.toHexString(e()));
     localStringBuilder.append(']');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Palette.Swatch
  * JD-Core Version:    0.7.0.1
  */

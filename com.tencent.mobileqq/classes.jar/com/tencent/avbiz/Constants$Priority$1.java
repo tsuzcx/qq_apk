@@ -9,8 +9,8 @@ final class Constants$Priority$1
 {
   Constants$Priority$1()
   {
-    put(Long.valueOf(1L), Constants.Priority.a);
-    put(Long.valueOf(2L), Constants.Priority.b);
+    put(Long.valueOf(1L), Constants.Priority.AUDIO_PRIORITY_LIST);
+    put(Long.valueOf(2L), Constants.Priority.CAMERA_PRIORITY_LIST);
   }
 }
 

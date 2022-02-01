@@ -10,15 +10,15 @@ class FramePerformanceMonitor$CurrentRunnable
     try
     {
       while (this.a) {
-        if (FramePerformanceMonitor.a(this.this$0).a() == 0)
+        if (FramePerformanceMonitor.a(this.this$0).b() == 0)
         {
-          Thread.sleep(FramePerformanceMonitor.a(this.this$0));
+          Thread.sleep(FramePerformanceMonitor.b(this.this$0));
         }
         else
         {
           GapDataCollector.RefreshData localRefreshData = FramePerformanceMonitor.a(this.this$0).a();
-          FramePerformanceMonitor.a(this.this$0).a(localRefreshData);
-          Thread.sleep(FramePerformanceMonitor.a(this.this$0));
+          FramePerformanceMonitor.c(this.this$0).a(localRefreshData);
+          Thread.sleep(FramePerformanceMonitor.b(this.this$0));
         }
       }
       return;
@@ -31,7 +31,7 @@ class FramePerformanceMonitor$CurrentRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FramePerformanceMonitor.CurrentRunnable
  * JD-Core Version:    0.7.0.1
  */

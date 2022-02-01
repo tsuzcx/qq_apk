@@ -390,23 +390,23 @@ public class BuddyTransfileProcessor
   
   private void handleUploadStreamPttFinished(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct)
   {
-    int i = paramUploadStreamStruct.jdField_a_of_type_Short;
-    short s1 = (short)paramUploadStreamStruct.jdField_a_of_type_Int;
-    Object localObject = paramUploadStreamStruct.jdField_a_of_type_JavaLangString;
+    int i = paramUploadStreamStruct.b;
+    short s1 = (short)paramUploadStreamStruct.c;
+    Object localObject = paramUploadStreamStruct.a;
     short s2 = 0;
     int k;
     int m;
     long l;
     if (paramBoolean)
     {
-      if (paramUploadStreamStruct.b != 0)
+      if (paramUploadStreamStruct.e != 0)
       {
-        this.respCode = paramUploadStreamStruct.b;
+        this.respCode = paramUploadStreamStruct.e;
         updateSendMessageErrorDb(this.friendUin, 0, this.file.uniseq, this.respCode);
         onError();
-        StreamDataManager.b((String)localObject);
+        StreamDataManager.f((String)localObject);
         ((IStreamDataManager)QRoute.api(IStreamDataManager.class)).removeStreamTaskToMemoryPool((String)localObject);
-        if (paramUploadStreamStruct.b == 58) {
+        if (paramUploadStreamStruct.e == 58) {
           insertFriendShieldTips();
         }
         if (QLog.isColorLevel())
@@ -422,34 +422,34 @@ public class BuddyTransfileProcessor
         if (i == -1)
         {
           this.isStreamPttSuccess = true;
-          this.file.stepTrans.extraInfo.put("param_sliceNum", String.valueOf(StreamDataManager.b((String)localObject)));
+          this.file.stepTrans.extraInfo.put("param_sliceNum", String.valueOf(StreamDataManager.g((String)localObject)));
           this.file.fileSize = new File(this.file.filePath).length();
           ((IStreamDataManager)QRoute.api(IStreamDataManager.class)).removeStreamTaskToMemoryPool((String)localObject);
-          this.file.serverPath = paramUploadStreamStruct.jdField_a_of_type_QQServiceStreamInfo.fileKey;
-          if (paramUploadStreamStruct.jdField_a_of_type_QQServiceStreamInfo.pttTransFlag == 1) {
+          this.file.serverPath = paramUploadStreamStruct.d.fileKey;
+          if (paramUploadStreamStruct.d.pttTransFlag == 1) {
             s2 = 1;
           }
           this.streamPttFlag = s2;
-          this.pttTimeStamp = paramUploadStreamStruct.jdField_a_of_type_QQServiceStreamInfo.msgTime;
+          this.pttTimeStamp = paramUploadStreamStruct.d.msgTime;
           onSuccess();
           return;
         }
         if (this.isStreamPttSuccess) {
           return;
         }
-        s2 = StreamDataManager.a((String)localObject);
+        s2 = StreamDataManager.e((String)localObject);
         if (s2 > 10)
         {
           if (QLog.isColorLevel()) {
             QLog.d("streamptt.send", 2, "handleUploadStreamPttFinished: preLayer > 10");
           }
           onError();
-          StreamDataManager.b((String)localObject);
+          StreamDataManager.f((String)localObject);
           ((IStreamDataManager)QRoute.api(IStreamDataManager.class)).removeStreamTaskToMemoryPool((String)localObject);
           return;
         }
-        k = StreamDataManager.c((String)localObject);
-        m = StreamDataManager.b((String)localObject);
+        k = StreamDataManager.h((String)localObject);
+        m = StreamDataManager.g((String)localObject);
         this.severAckSlice = i;
         if (QLog.isColorLevel())
         {
@@ -492,9 +492,9 @@ public class BuddyTransfileProcessor
       if (this.isStreamPttSuccess) {
         return;
       }
-      int j = StreamDataManager.c((String)localObject);
-      k = StreamDataManager.a((String)localObject);
-      if (paramUploadStreamStruct.jdField_a_of_type_Int < k)
+      int j = StreamDataManager.h((String)localObject);
+      k = StreamDataManager.e((String)localObject);
+      if (paramUploadStreamStruct.c < k)
       {
         if (QLog.isColorLevel()) {
           QLog.d("streamptt.send", 2, "handleUploadStreamPttFinished: info.layer < flowlayer");
@@ -552,8 +552,8 @@ public class BuddyTransfileProcessor
   private void insertFriendShieldTips()
   {
     String str1 = this.app.getCurrentAccountUin();
-    String str2 = HardCodeUtil.a(2131701440);
-    long l = MessageCache.a();
+    String str2 = HardCodeUtil.a(2131899465);
+    long l = MessageCache.c();
     MessageRecord localMessageRecord = MessageRecordFactory.a(-2012);
     localMessageRecord.init(str1, this.friendUin, str1, str2, l, 0, 0, l);
     localMessageRecord.msgtype = -2012;
@@ -580,7 +580,7 @@ public class BuddyTransfileProcessor
   private void updateSendMessageErrorDb(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
     Message localMessage = this.app.getMessageFacade().getLastMessage(paramString, paramInt1);
-    this.app.getMsgCache().a(paramString, paramInt1, paramLong);
+    this.app.getMsgCache().b(paramString, paramInt1, paramLong);
     if ((localMessage != null) && (localMessage.uniseq == paramLong)) {
       localMessage.extraflag = 32768;
     }
@@ -615,12 +615,12 @@ public class BuddyTransfileProcessor
     if (((File)localObject2).exists())
     {
       ((MessageForPtt)localObject1).fileSize = ((File)localObject2).length();
-      ReportController.b(this.app, "CliOper", "", "", "0X800610E", "0X800610E", 1, 0, "", "", "", "8.7.0");
+      ReportController.b(this.app, "CliOper", "", "", "0X800610E", "0X800610E", 1, 0, "", "", "", "8.8.17");
     }
     else
     {
       ((MessageForPtt)localObject1).fileSize = 1000L;
-      ReportController.b(this.app, "CliOper", "", "", "0X800610E", "0X800610E", 2, 0, "", "", "", "8.7.0");
+      ReportController.b(this.app, "CliOper", "", "", "0X800610E", "0X800610E", 2, 0, "", "", "", "8.8.17");
     }
     ((MessageForPtt)localObject1).itemType = 2;
     ((MessageForPtt)localObject1).isread = false;
@@ -679,7 +679,7 @@ public class BuddyTransfileProcessor
       paramStreamInfo.append(((MessageForPtt)localObject1).msgUid);
       QLog.e("streamptt.recv", 2, paramStreamInfo.toString());
     }
-    paramStreamInfo = this.app.getMessageFacade().a(((MessageForPtt)localObject1).frienduin, ((MessageForPtt)localObject1).istroop);
+    paramStreamInfo = this.app.getMessageFacade().h(((MessageForPtt)localObject1).frienduin, ((MessageForPtt)localObject1).istroop);
     if ((paramStreamInfo != null) && (paramStreamInfo.size() > 0))
     {
       paramStreamInfo = paramStreamInfo.iterator();
@@ -880,7 +880,7 @@ public class BuddyTransfileProcessor
     }
     if ((Environment.getExternalStorageState().equals("mounted")) && (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() >= 1))
     {
-      int i = StreamDataManager.a(this.file.serverPath);
+      int i = StreamDataManager.e(this.file.serverPath);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -899,13 +899,13 @@ public class BuddyTransfileProcessor
       StreamDataManager.c(this.file.serverPath, paramLong1);
       if (i != paramStreamInfo.shFlowLayer)
       {
-        this.app.getMsgHandler().a(this.selfUin, this.peerUin, this.file.serverPath, StreamDataManager.c(this.file.serverPath), paramLong1);
+        this.app.getMsgHandler().a(this.selfUin, this.peerUin, this.file.serverPath, StreamDataManager.j(this.file.serverPath), paramLong1);
         return;
       }
-      if (StreamDataManager.a(this.file.serverPath, paramStreamData.shPackSeq))
+      if (StreamDataManager.c(this.file.serverPath, paramStreamData.shPackSeq))
       {
         this.file.logEvent(2, 2);
-        short s = (short)(StreamDataManager.a(this.file.serverPath) + 1);
+        short s = (short)(StreamDataManager.e(this.file.serverPath) + 1);
         StreamDataManager.a(this.file.serverPath, s);
         if (QLog.isColorLevel())
         {
@@ -914,7 +914,7 @@ public class BuddyTransfileProcessor
           paramStreamInfo.append(s);
           QLog.d("streamptt.recv", 2, paramStreamInfo.toString());
         }
-        this.app.getMsgHandler().a(this.selfUin, this.peerUin, this.file.serverPath, StreamDataManager.c(this.file.serverPath), paramLong1);
+        this.app.getMsgHandler().a(this.selfUin, this.peerUin, this.file.serverPath, StreamDataManager.j(this.file.serverPath), paramLong1);
         return;
       }
       if (paramStreamInfo.oprType == 1) {
@@ -976,14 +976,14 @@ public class BuddyTransfileProcessor
           localStringBuilder.append(paramStreamData);
           QLog.d("streamptt.recv", 2, localStringBuilder.toString());
         }
-        if (StreamDataManager.d(paramStreamData))
+        if (StreamDataManager.m(paramStreamData))
         {
           if (QLog.isColorLevel()) {
             QLog.d("streamptt.recv", 2, "find stream offline duplicate,stop stream recv");
           }
           return;
         }
-        StreamDataManager.b(paramStreamData);
+        StreamDataManager.k(paramStreamData);
         if (QLog.isColorLevel())
         {
           paramStreamData = new StringBuilder();
@@ -1165,7 +1165,7 @@ public class BuddyTransfileProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BuddyTransfileProcessor
  * JD-Core Version:    0.7.0.1
  */

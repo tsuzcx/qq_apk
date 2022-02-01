@@ -55,7 +55,7 @@ public class KandianMergeProcessor
   
   public RecentUser a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
-    if ((paramRecentUser.getType() == 7220) && ((paramBaseQQAppInterface instanceof QQAppInterface)) && (!((QQAppInterface)paramBaseQQAppInterface).getRecentUserProxy().a(paramRecentUser)))
+    if ((paramRecentUser.getType() == 7220) && ((paramBaseQQAppInterface instanceof QQAppInterface)) && (!((QQAppInterface)paramBaseQQAppInterface).getRecentUserProxy().c(paramRecentUser)))
     {
       int i = ((IKanDianMergeManager)paramBaseQQAppInterface.getRuntimeService(IKanDianMergeManager.class)).getStickyStatus();
       if (i != -1)
@@ -85,7 +85,7 @@ public class KandianMergeProcessor
     }
   }
   
-  public boolean a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
+  public boolean b(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
     if ((!TextUtils.equals(paramRecentUser.uin, AppConstants.NEW_KANDIAN_UIN)) && (!TextUtils.equals(paramRecentUser.uin, AppConstants.TROOP_BAR_ASSISTANT_UIN)))
     {
@@ -105,7 +105,7 @@ public class KandianMergeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.KandianMergeProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -9,49 +9,44 @@ import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
-import com.tencent.mobileqq.gamecenter.message.RoleIdUtil;
+import com.tencent.mobileqq.gamecenter.util.RoleIdUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 
 public class GameChatMessageHeadIconController
   extends BaseBubbleBuilderHeadIconController
 {
-  private View.OnClickListener a()
+  private View.OnClickListener k()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity))
+    if ((this.c instanceof BaseActivity))
     {
-      Object localObject = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      Object localObject = ((BaseActivity)this.c).getChatFragment();
       if (localObject != null)
       {
-        localObject = ((ChatFragment)localObject).a();
+        localObject = ((ChatFragment)localObject).k();
         if ((localObject instanceof GameMsgChatPie))
         {
           localObject = (GameMsgChatPie)localObject;
-          if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend()) {
+          if (this.a.isSend()) {
             return ((GameMsgChatPie)localObject).a();
           }
-          return ((GameMsgChatPie)localObject).b();
+          return ((GameMsgChatPie)localObject).bz();
         }
       }
     }
     return null;
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop == 10007;
-  }
-  
   protected void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend()) {
-      localObject = RoleIdUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    if (this.a.isSend()) {
+      localObject = RoleIdUtil.a(this.a);
     } else {
-      localObject = RoleIdUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      localObject = RoleIdUtil.b(this.a);
     }
-    Object localObject = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getGameUsrDrawable(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
+    Object localObject = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getGameUsrDrawable(this.c, this.b, (String)localObject);
     if (localObject == null)
     {
-      b(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840321));
+      b(this.c.getResources().getDrawable(2130841060));
       return;
     }
     b(localObject);
@@ -59,7 +54,7 @@ public class GameChatMessageHeadIconController
   
   protected void c()
   {
-    a(a());
+    a(k());
   }
   
   protected void d()
@@ -69,12 +64,17 @@ public class GameChatMessageHeadIconController
   
   protected void g()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    a(this.a);
+  }
+  
+  public boolean h()
+  {
+    return this.a.istroop == 10007;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.GameChatMessageHeadIconController
  * JD-Core Version:    0.7.0.1
  */

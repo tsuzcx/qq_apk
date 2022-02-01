@@ -87,29 +87,6 @@ public class NearFieldTroopHandler
     }
   }
   
-  public void a(long paramLong, int paramInt)
-  {
-    Object localObject = new ToServiceMsg("mobileqq.service", this.appRuntime.getAccount(), "NearfieldGroupSvr.ReqExit");
-    nearfield_group.BusiReqHead localBusiReqHead = new nearfield_group.BusiReqHead();
-    localBusiReqHead.int32_seq.set(paramInt);
-    localBusiReqHead.int32_version.set(1);
-    nearfield_group.ReqExit localReqExit = new nearfield_group.ReqExit();
-    localReqExit.msg_head.set(localBusiReqHead);
-    localReqExit.uint64_group_code.set(paramLong);
-    ((ToServiceMsg)localObject).putWupBuffer(localReqExit.toByteArray());
-    ((ToServiceMsg)localObject).setTimeout(10000L);
-    sendPbReq((ToServiceMsg)localObject);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("closeFace2faceTroop, troopCode:");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append(", seqNo:");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.d("NearFieldTroopHandler", 2, ((StringBuilder)localObject).toString());
-    }
-  }
-  
   public void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     Object localObject = new ToServiceMsg("mobileqq.service", this.appRuntime.getAccount(), "NearfieldGroupSvr.ReqJoinGroup");
@@ -234,6 +211,29 @@ public class NearFieldTroopHandler
       QLog.d("NearFieldTroopHandler", 2, ((StringBuilder)localObject).toString());
     }
     return true;
+  }
+  
+  public void b(long paramLong, int paramInt)
+  {
+    Object localObject = new ToServiceMsg("mobileqq.service", this.appRuntime.getAccount(), "NearfieldGroupSvr.ReqExit");
+    nearfield_group.BusiReqHead localBusiReqHead = new nearfield_group.BusiReqHead();
+    localBusiReqHead.int32_seq.set(paramInt);
+    localBusiReqHead.int32_version.set(1);
+    nearfield_group.ReqExit localReqExit = new nearfield_group.ReqExit();
+    localReqExit.msg_head.set(localBusiReqHead);
+    localReqExit.uint64_group_code.set(paramLong);
+    ((ToServiceMsg)localObject).putWupBuffer(localReqExit.toByteArray());
+    ((ToServiceMsg)localObject).setTimeout(10000L);
+    sendPbReq((ToServiceMsg)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("closeFace2faceTroop, troopCode:");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", seqNo:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("NearFieldTroopHandler", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   protected void b(boolean paramBoolean, Object paramObject)
@@ -379,7 +379,7 @@ public class NearFieldTroopHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearFieldTroopHandler
  * JD-Core Version:    0.7.0.1
  */

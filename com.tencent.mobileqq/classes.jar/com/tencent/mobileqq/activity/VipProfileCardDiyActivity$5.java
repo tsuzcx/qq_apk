@@ -12,13 +12,13 @@ class VipProfileCardDiyActivity$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.n();
+    this.a.o();
     VasWebviewUtil.a("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), "2", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.5
  * JD-Core Version:    0.7.0.1
  */

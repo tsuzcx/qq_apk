@@ -7,12 +7,12 @@ class SensorAPIJavaScript$9$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript$9.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
+    this.c.a.callJs(this.a, new String[] { this.b });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.9.1
  * JD-Core Version:    0.7.0.1
  */

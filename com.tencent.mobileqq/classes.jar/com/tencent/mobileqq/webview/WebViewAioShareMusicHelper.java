@@ -22,35 +22,23 @@ import org.json.JSONObject;
 
 public class WebViewAioShareMusicHelper
 {
-  private int jdField_a_of_type_Int;
-  private WebViewFragment jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
   public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
+  private WebViewFragment b;
+  private String c;
+  private int d;
+  private boolean e;
+  private String f;
+  private int g;
+  private String h;
+  private int i;
+  private int j;
+  private boolean k;
+  private boolean l;
+  private boolean m;
   
   public WebViewAioShareMusicHelper(WebViewFragment paramWebViewFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment = paramWebViewFragment;
-  }
-  
-  private void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) {
-      QQToast.a(BaseApplicationImpl.getApplication(), paramString, 1).a();
-    }
-  }
-  
-  private boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getAppRuntime().getAccount().equals(this.jdField_d_of_type_JavaLangString));
+    this.b = paramWebViewFragment;
   }
   
   private boolean a(String paramString)
@@ -58,7 +46,7 @@ public class WebViewAioShareMusicHelper
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getAppRuntime().getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getAppRuntime().getAccount()).createEntityManager();
+    Object localObject = this.b.getAppRuntime().getEntityManagerFactory(this.b.getAppRuntime().getAccount()).createEntityManager();
     paramString = (TroopInfo)((EntityManager)localObject).find(TroopInfo.class, paramString);
     ((EntityManager)localObject).close();
     if (paramString != null)
@@ -70,7 +58,7 @@ public class WebViewAioShareMusicHelper
         ((StringBuilder)localObject).append(paramString.isAdmin());
         QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, ((StringBuilder)localObject).toString());
       }
-      if ((paramString.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getAppRuntime().getAccount())) || (paramString.isAdmin())) {
+      if ((paramString.isTroopOwner(this.b.getAppRuntime().getAccount())) || (paramString.isAdmin())) {
         return true;
       }
     }
@@ -79,10 +67,14 @@ public class WebViewAioShareMusicHelper
   
   private void b(String paramString)
   {
-    WebViewFragment localWebViewFragment = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
-    if ((localWebViewFragment != null) && (localWebViewFragment.getQBaseActivity() != null)) {
-      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getQBaseActivity(), 230).setMessage(paramString).setPositiveButton(2131693825, new WebViewAioShareMusicHelper.3(this)).show();
+    if (this.b != null) {
+      QQToast.makeText(BaseApplicationImpl.getApplication(), paramString, 1).show();
     }
+  }
+  
+  private boolean b()
+  {
+    return (!TextUtils.isEmpty(this.h)) && (this.b.getAppRuntime().getAccount().equals(this.h));
   }
   
   private void c(Intent paramIntent)
@@ -95,28 +87,28 @@ public class WebViewAioShareMusicHelper
       {
         localObject1 = new JSONObject((String)localObject1).getJSONObject("music");
         Object localObject3 = paramIntent.getExtras();
-        if (this.jdField_a_of_type_Int != 0) {
+        if (this.d != 0) {
           break label344;
         }
         paramIntent = "friend_uin";
         Object localObject2 = ((Bundle)localObject3).getString(paramIntent, "");
-        if (this.jdField_a_of_type_Int != 0) {
-          break label351;
+        if (this.d != 0) {
+          break label350;
         }
         paramIntent = "h5_ark_url_web_sender_uin";
         paramIntent = ((Bundle)localObject3).getString(paramIntent);
-        int j = ((JSONObject)localObject1).getInt("appid");
+        int i1 = ((JSONObject)localObject1).getInt("appid");
         Object localObject4 = ((JSONObject)localObject1).getString("title");
         localObject3 = ((JSONObject)localObject1).getString("musicUrl");
         String str = ((JSONObject)localObject1).getString("desc");
         localObject1 = new JSONObject();
-        if (this.jdField_a_of_type_Int != 0) {
-          break label358;
+        if (this.d != 0) {
+          break label356;
         }
-        i = 2;
-        ((JSONObject)localObject1).put("enum_aio_type", i);
+        n = 2;
+        ((JSONObject)localObject1).put("enum_aio_type", n);
         ((JSONObject)localObject1).put("uint64_id", localObject2);
-        ((JSONObject)localObject1).put("uint32_share_appid", j);
+        ((JSONObject)localObject1).put("uint32_share_appid", i1);
         ((JSONObject)localObject1).put("bytes_song_name", localObject4);
         localObject2 = new JSONArray();
         localObject4 = new JSONObject();
@@ -124,11 +116,11 @@ public class WebViewAioShareMusicHelper
         ((JSONArray)localObject2).put(localObject4);
         ((JSONObject)localObject1).put("rpt_bytes_singer", localObject2);
         ((JSONObject)localObject1).put("bytes_song_url", localObject3);
-        ((JSONObject)localObject1).put("bool_cut_song", this.jdField_a_of_type_Boolean);
-        ((JSONObject)localObject1).put("str_song_id", this.jdField_c_of_type_JavaLangString);
-        ((JSONObject)localObject1).put("uint32_duration", this.jdField_b_of_type_Int);
+        ((JSONObject)localObject1).put("bool_cut_song", this.e);
+        ((JSONObject)localObject1).put("str_song_id", this.f);
+        ((JSONObject)localObject1).put("uint32_duration", this.g);
         ((JSONObject)localObject1).put("uint64_sharer_uin", paramIntent);
-        ((JSONObject)localObject1).put("bytes_cover", this.jdField_b_of_type_JavaLangString);
+        ((JSONObject)localObject1).put("bytes_cover", this.c);
         if (QLog.isColorLevel())
         {
           paramIntent = new StringBuilder();
@@ -147,17 +139,25 @@ public class WebViewAioShareMusicHelper
       label344:
       paramIntent = "groupUin";
       continue;
-      label351:
+      label350:
       paramIntent = "friendUin";
       continue;
-      label358:
-      int i = 1;
+      label356:
+      int n = 1;
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    WebViewFragment localWebViewFragment = this.b;
+    if ((localWebViewFragment != null) && (localWebViewFragment.getQBaseActivity() != null)) {
+      DialogUtil.a(this.b.getQBaseActivity(), 230).setMessage(paramString).setPositiveButton(2131891401, new WebViewAioShareMusicHelper.3(this)).show();
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment = null;
+    this.b = null;
   }
   
   public void a(Intent paramIntent)
@@ -170,14 +170,14 @@ public class WebViewAioShareMusicHelper
       return;
     }
     String str = paramIntent.getStringExtra("forward_ark_app_view");
-    this.jdField_a_of_type_Int = paramIntent.getIntExtra("uinType", 0);
-    int j;
-    int i;
+    this.d = paramIntent.getIntExtra("uinType", 0);
+    int i1;
+    int n;
     if ("music".equalsIgnoreCase(str))
     {
-      j = this.jdField_a_of_type_Int;
-      i = 1;
-      if ((j == 0) || (j == 1))
+      i1 = this.d;
+      n = 1;
+      if ((i1 == 0) || (i1 == 1))
       {
         str = paramIntent.getStringExtra("forward_ark_app_meta");
         if (TextUtils.isEmpty(str)) {}
@@ -188,23 +188,23 @@ public class WebViewAioShareMusicHelper
       try
       {
         JSONObject localJSONObject = new JSONObject(str).getJSONObject("music");
-        if (this.jdField_a_of_type_Int != 0) {
+        if (this.d != 0) {
           break label405;
         }
         str = "friend_uin";
         Object localObject1 = paramIntent.getStringExtra(str);
-        j = localJSONObject.getInt("appid");
+        i1 = localJSONObject.getInt("appid");
         Object localObject2 = localJSONObject.getString("title");
         paramIntent = localJSONObject.getString("musicUrl");
         str = localJSONObject.getString("desc");
-        this.jdField_b_of_type_JavaLangString = localJSONObject.getString("preview");
+        this.c = localJSONObject.getString("preview");
         localJSONObject = new JSONObject();
-        if (this.jdField_a_of_type_Int == 0) {
-          i = 2;
+        if (this.d == 0) {
+          n = 2;
         }
-        localJSONObject.put("enum_aio_type", i);
+        localJSONObject.put("enum_aio_type", n);
         localJSONObject.put("uint64_id", localObject1);
-        localJSONObject.put("uint32_share_appid", j);
+        localJSONObject.put("uint32_share_appid", i1);
         localJSONObject.put("bytes_song_name", localObject2);
         localJSONObject.put("uint32_duration", 0);
         localObject1 = new JSONArray();
@@ -234,7 +234,7 @@ public class WebViewAioShareMusicHelper
         paramIntent.append(" type is not music just return, ShareType = ");
         paramIntent.append(str);
         paramIntent.append(" mAioType = ");
-        paramIntent.append(this.jdField_a_of_type_Int);
+        paramIntent.append(this.d);
         QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, paramIntent.toString());
       }
       return;
@@ -260,18 +260,18 @@ public class WebViewAioShareMusicHelper
       if (bool)
       {
         bool = paramJSONObject.getBoolean("bool_show_icon");
-        this.jdField_c_of_type_Int = paramJSONObject.getInt("enum_aio_state");
-        this.jdField_d_of_type_Int = paramJSONObject.getInt("enum_media_type");
-        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("str_song_id");
-        this.jdField_b_of_type_Int = paramJSONObject.getInt("uint32_duration");
-        this.jdField_d_of_type_JavaLangString = String.valueOf(paramJSONObject.getLong("uint64_create_uin"));
-        this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("bool_song_existed");
-        this.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("bool_allow_member_start");
-        this.jdField_d_of_type_Boolean = paramJSONObject.getBoolean("bool_allow_member_add");
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("current_song_id");
-        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getQBaseActivity() != null))
+        this.i = paramJSONObject.getInt("enum_aio_state");
+        this.j = paramJSONObject.getInt("enum_media_type");
+        this.f = paramJSONObject.getString("str_song_id");
+        this.g = paramJSONObject.getInt("uint32_duration");
+        this.h = String.valueOf(paramJSONObject.getLong("uint64_create_uin"));
+        this.k = paramJSONObject.getBoolean("bool_song_existed");
+        this.l = paramJSONObject.getBoolean("bool_allow_member_start");
+        this.m = paramJSONObject.getBoolean("bool_allow_member_add");
+        this.a = paramJSONObject.getString("current_song_id");
+        if ((this.b != null) && (this.b.getQBaseActivity() != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getQBaseActivity().runOnUiThread(new WebViewAioShareMusicHelper.1(this, bool));
+          this.b.getQBaseActivity().runOnUiThread(new WebViewAioShareMusicHelper.1(this, bool));
           return;
         }
       }
@@ -284,77 +284,77 @@ public class WebViewAioShareMusicHelper
   
   public void b(Intent paramIntent)
   {
-    if ((paramIntent != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null))
+    if ((paramIntent != null) && (this.b != null))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.e = true;
       String str4 = paramIntent.getStringExtra("groupUin");
       String str1;
-      if (this.jdField_a_of_type_Int == 0) {
+      if (this.d == 0) {
         str1 = "c2c_AIO";
       } else {
         str1 = "Grp_AIO";
       }
       String str2;
-      if (this.jdField_a_of_type_Int == 0) {
+      if (this.d == 0) {
         str2 = "clk_share_c2c";
       } else {
         str2 = "clk_share_grp";
       }
       String str3;
-      if (this.jdField_a_of_type_Int == 0) {
+      if (this.d == 0) {
         str3 = "";
       } else {
         str3 = str4;
       }
       ReportController.b(null, "dc00899", str1, "", "music_tab", str2, 0, 0, str3, "", "", "");
-      int i = this.jdField_d_of_type_Int;
-      if ((i != 1) && (this.jdField_c_of_type_Int != 3))
+      int n = this.j;
+      if ((n != 1) && (this.i != 3))
       {
-        if (i == 2)
+        if (n == 2)
         {
-          paramIntent = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
-          i = 2131698622;
+          paramIntent = this.b;
+          n = 2131896569;
         }
         else
         {
-          paramIntent = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
-          i = 2131698597;
+          paramIntent = this.b;
+          n = 2131896544;
         }
-        paramIntent = paramIntent.getString(i);
-        a(String.format(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693677), new Object[] { paramIntent }));
+        paramIntent = paramIntent.getString(n);
+        b(String.format(this.b.getString(2131891252), new Object[] { paramIntent }));
         return;
       }
-      if ((this.jdField_c_of_type_Int != 3) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_c_of_type_JavaLangString)))
+      if ((this.i != 3) && (this.a.equals(this.f)))
       {
-        a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693675));
+        b(this.b.getString(2131891250));
         return;
       }
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.d == 1)
       {
         boolean bool = a(str4);
-        if ((this.jdField_c_of_type_Int == 3) && (!bool) && (!this.jdField_c_of_type_Boolean))
+        if ((this.i == 3) && (!bool) && (!this.l))
         {
-          b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693673));
+          c(this.b.getString(2131891248));
           return;
         }
-        if ((this.jdField_c_of_type_Int == 3) && (!bool) && (this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
+        if ((this.i == 3) && (!bool) && (this.l) && (!this.m))
         {
-          b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693674));
+          c(this.b.getString(2131891249));
           return;
         }
-        if ((this.jdField_c_of_type_Int != 3) && (!bool) && (!this.jdField_d_of_type_Boolean))
+        if ((this.i != 3) && (!bool) && (!this.m))
         {
-          b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693672));
+          c(this.b.getString(2131891247));
           return;
         }
-        if ((this.jdField_c_of_type_Int != 3) && (!a()) && (!bool) && (this.jdField_d_of_type_Boolean))
+        if ((this.i != 3) && (!b()) && (!bool) && (this.m))
         {
-          if (this.jdField_b_of_type_Boolean)
+          if (this.k)
           {
-            a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693676));
+            b(this.b.getString(2131891251));
             return;
           }
-          this.jdField_a_of_type_Boolean = false;
+          this.e = false;
         }
       }
       c(paramIntent);
@@ -369,39 +369,39 @@ public class WebViewAioShareMusicHelper
   {
     for (;;)
     {
-      int i;
+      int n;
       try
       {
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
+        Object localObject = this.b;
         boolean bool;
-        if ((localObject != null) && (paramJSONObject != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getQBaseActivity() != null))
+        if ((localObject != null) && (paramJSONObject != null) && (this.b.getQBaseActivity() != null))
         {
           bool = paramJSONObject.getBoolean("isSuccess");
           if (!bool)
           {
-            i = paramJSONObject.getInt("uint32_result");
+            n = paramJSONObject.getInt("uint32_result");
             localObject = paramJSONObject.getString("bytes_errmsg");
-            if ((TextUtils.isEmpty((CharSequence)localObject)) || (i == 0)) {
+            if ((TextUtils.isEmpty((CharSequence)localObject)) || (n == 0)) {
               continue;
             }
           }
         }
-        switch (i)
+        switch (n)
         {
         case 10001: 
+          c((String)localObject);
+          continue;
           b((String)localObject);
           continue;
-          a((String)localObject);
-          continue;
-          a(String.format(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693677), new Object[] { localObject }));
+          b(String.format(this.b.getString(2131891252), new Object[] { localObject }));
           break;
         case 10002: 
         case 10003: 
         case 10004: 
-          a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131694667));
+          b(this.b.getString(2131892359));
           continue;
-          a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693676));
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getQBaseActivity().runOnUiThread(new WebViewAioShareMusicHelper.2(this));
+          b(this.b.getString(2131891251));
+          this.b.getQBaseActivity().runOnUiThread(new WebViewAioShareMusicHelper.2(this));
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
@@ -417,7 +417,7 @@ public class WebViewAioShareMusicHelper
               ((StringBuilder)localObject).append("handleCheckAioShareMusic()  data  = ");
               ((StringBuilder)localObject).append(paramJSONObject);
               ((StringBuilder)localObject).append(" mWebViewFragment = ");
-              ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment);
+              ((StringBuilder)localObject).append(this.b);
               QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, ((StringBuilder)localObject).toString());
             }
             return;
@@ -430,7 +430,7 @@ public class WebViewAioShareMusicHelper
         paramJSONObject.printStackTrace();
       }
       return;
-      switch (i)
+      switch (n)
       {
       }
     }
@@ -438,7 +438,7 @@ public class WebViewAioShareMusicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewAioShareMusicHelper
  * JD-Core Version:    0.7.0.1
  */

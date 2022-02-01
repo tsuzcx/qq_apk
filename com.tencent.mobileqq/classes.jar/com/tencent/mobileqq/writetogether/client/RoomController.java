@@ -16,59 +16,59 @@ import mqq.os.MqqHandler;
 public class RoomController
   implements IWriteTogetherObserver, Runnable
 {
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private IQQWriteTogetherService jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService;
-  private RoomController.OnEnterRoomListener jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener;
-  private WriteTogetherWebSocketEngine jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketEngine;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  int a;
+  private WriteTogetherWebSocketEngine b;
   private String c;
+  private long d;
+  private String e;
+  private String f;
+  private IQQWriteTogetherService g;
+  private RoomController.OnEnterRoomListener h;
+  private boolean i;
   
   public RoomController(AppRuntime paramAppRuntime, WriteTogetherWebSocketEngine paramWriteTogetherWebSocketEngine, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketEngine = paramWriteTogetherWebSocketEngine;
-    this.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    this.b = paramWriteTogetherWebSocketEngine;
+    this.c = paramAppRuntime.getAccount();
     try
     {
-      this.jdField_a_of_type_Long = Long.parseLong(paramString1);
+      this.d = Long.parseLong(paramString1);
     }
     catch (NumberFormatException paramWriteTogetherWebSocketEngine)
     {
       QLog.e("RoomController", 1, paramWriteTogetherWebSocketEngine, new Object[0]);
     }
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService = ((IQQWriteTogetherService)paramAppRuntime.getRuntimeService(IQQWriteTogetherService.class, ""));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.addObservers(this);
+    this.e = paramString2;
+    this.a = paramInt;
+    this.f = paramString3;
+    this.g = ((IQQWriteTogetherService)paramAppRuntime.getRuntimeService(IQQWriteTogetherService.class, ""));
+    this.g.addObservers(this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketEngine.a(new ClientReadyReqMsg(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.c));
+    this.b.a(new ClientReadyReqMsg(this.c, this.e, this.d, this.a, this.f));
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(RoomController.OnEnterRoomListener paramOnEnterRoomListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener = paramOnEnterRoomListener;
+    this.h = paramOnEnterRoomListener;
   }
   
   public void a(Type paramType, boolean paramBoolean, Object paramObject)
   {
-    int i = RoomController.1.a[paramType.ordinal()];
-    if (i != 1)
+    int j = RoomController.1.a[paramType.ordinal()];
+    if (j != 1)
     {
-      if (i != 2) {
+      if (j != 2) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener.a();
+      this.h.a();
       return;
     }
     paramType = ((OnPostWrapper)((ClientReadyRespMsg)paramObject).body).onpost;
@@ -81,7 +81,7 @@ public class RoomController
       paramObject.append(paramType.result);
       QLog.d("RoomController", 2, paramObject.toString());
     }
-    paramObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientRoomController$OnEnterRoomListener;
+    paramObject = this.h;
     if (paramObject != null) {
       paramObject.a(paramBoolean, paramType.result);
     }
@@ -92,13 +92,13 @@ public class RoomController
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.removeObserver(this);
-    this.jdField_a_of_type_Boolean = true;
+    this.g.removeObserver(this);
+    this.i = true;
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.i) {
       return;
     }
     a();
@@ -106,7 +106,7 @@ public class RoomController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.client.RoomController
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,18 +48,18 @@ import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 public class BottomNavigationView
   extends FrameLayout
 {
-  private static final int jdField_a_of_type_Int = R.style.i;
-  @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private MenuInflater jdField_a_of_type_AndroidViewMenuInflater;
-  @NonNull
-  private final MenuBuilder jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder;
+  private static final int b = R.style.k;
   @NonNull
   @VisibleForTesting
-  final BottomNavigationMenuView jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView;
-  private final BottomNavigationPresenter jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter = new BottomNavigationPresenter();
-  private BottomNavigationView.OnNavigationItemReselectedListener jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationView$OnNavigationItemReselectedListener;
-  private BottomNavigationView.OnNavigationItemSelectedListener jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationView$OnNavigationItemSelectedListener;
+  final BottomNavigationMenuView a;
+  @NonNull
+  private final MenuBuilder c;
+  private final BottomNavigationPresenter d = new BottomNavigationPresenter();
+  @Nullable
+  private ColorStateList e;
+  private MenuInflater f;
+  private BottomNavigationView.OnNavigationItemSelectedListener g;
+  private BottomNavigationView.OnNavigationItemReselectedListener h;
   
   public BottomNavigationView(@NonNull Context paramContext)
   {
@@ -67,77 +68,69 @@ public class BottomNavigationView
   
   public BottomNavigationView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.d);
+    this(paramContext, paramAttributeSet, R.attr.f);
   }
   
   public BottomNavigationView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, b), paramAttributeSet, paramInt);
     paramContext = getContext();
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder = new BottomNavigationMenu(paramContext);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView = new BottomNavigationMenuView(paramContext);
+    this.c = new BottomNavigationMenu(paramContext);
+    this.a = new BottomNavigationMenuView(paramContext);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.a(1);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setPresenter(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter);
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.addMenuPresenter(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.initForMenu(getContext(), this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder);
-    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.g, paramInt, R.style.i, new int[] { R.styleable.L, R.styleable.K });
-    if (paramAttributeSet.hasValue(R.styleable.I))
+    this.a.setLayoutParams(localLayoutParams);
+    this.d.a(this.a);
+    this.d.a(1);
+    this.a.setPresenter(this.d);
+    this.c.addMenuPresenter(this.d);
+    this.d.initForMenu(getContext(), this.c);
+    paramAttributeSet = ThemeEnforcement.b(paramContext, paramAttributeSet, R.styleable.af, paramInt, R.style.k, new int[] { R.styleable.ao, R.styleable.an });
+    if (paramAttributeSet.hasValue(R.styleable.al))
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setIconTintList(paramAttributeSet.getColorStateList(R.styleable.I));
+      this.a.setIconTintList(paramAttributeSet.getColorStateList(R.styleable.al));
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView;
+      localObject = this.a;
       ((BottomNavigationMenuView)localObject).setIconTintList(((BottomNavigationMenuView)localObject).a(16842808));
     }
-    setItemIconSize(paramAttributeSet.getDimensionPixelSize(R.styleable.H, getResources().getDimensionPixelSize(R.dimen.e)));
-    if (paramAttributeSet.hasValue(R.styleable.L)) {
-      setItemTextAppearanceInactive(paramAttributeSet.getResourceId(R.styleable.L, 0));
+    setItemIconSize(paramAttributeSet.getDimensionPixelSize(R.styleable.ak, getResources().getDimensionPixelSize(R.dimen.e)));
+    if (paramAttributeSet.hasValue(R.styleable.ao)) {
+      setItemTextAppearanceInactive(paramAttributeSet.getResourceId(R.styleable.ao, 0));
     }
-    if (paramAttributeSet.hasValue(R.styleable.K)) {
-      setItemTextAppearanceActive(paramAttributeSet.getResourceId(R.styleable.K, 0));
+    if (paramAttributeSet.hasValue(R.styleable.an)) {
+      setItemTextAppearanceActive(paramAttributeSet.getResourceId(R.styleable.an, 0));
     }
-    if (paramAttributeSet.hasValue(R.styleable.M)) {
-      setItemTextColor(paramAttributeSet.getColorStateList(R.styleable.M));
+    if (paramAttributeSet.hasValue(R.styleable.ap)) {
+      setItemTextColor(paramAttributeSet.getColorStateList(R.styleable.ap));
     }
     if ((getBackground() == null) || ((getBackground() instanceof ColorDrawable))) {
       ViewCompat.setBackground(this, a(paramContext));
     }
-    if (paramAttributeSet.hasValue(R.styleable.E)) {
-      setElevation(paramAttributeSet.getDimensionPixelSize(R.styleable.E, 0));
+    if (paramAttributeSet.hasValue(R.styleable.ah)) {
+      setElevation(paramAttributeSet.getDimensionPixelSize(R.styleable.ah, 0));
     }
-    Object localObject = MaterialResources.a(paramContext, paramAttributeSet, R.styleable.D);
+    Object localObject = MaterialResources.a(paramContext, paramAttributeSet, R.styleable.ag);
     DrawableCompat.setTintList(getBackground().mutate(), (ColorStateList)localObject);
-    setLabelVisibilityMode(paramAttributeSet.getInteger(R.styleable.N, -1));
-    setItemHorizontalTranslationEnabled(paramAttributeSet.getBoolean(R.styleable.G, true));
-    paramInt = paramAttributeSet.getResourceId(R.styleable.F, 0);
+    setLabelVisibilityMode(paramAttributeSet.getInteger(R.styleable.aq, -1));
+    setItemHorizontalTranslationEnabled(paramAttributeSet.getBoolean(R.styleable.aj, true));
+    paramInt = paramAttributeSet.getResourceId(R.styleable.ai, 0);
     if (paramInt != 0) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemBackgroundRes(paramInt);
+      this.a.setItemBackgroundRes(paramInt);
     } else {
-      setItemRippleColor(MaterialResources.a(paramContext, paramAttributeSet, R.styleable.J));
+      setItemRippleColor(MaterialResources.a(paramContext, paramAttributeSet, R.styleable.am));
     }
-    if (paramAttributeSet.hasValue(R.styleable.O)) {
-      a(paramAttributeSet.getResourceId(R.styleable.O, 0));
+    if (paramAttributeSet.hasValue(R.styleable.ar)) {
+      a(paramAttributeSet.getResourceId(R.styleable.ar, 0));
     }
     paramAttributeSet.recycle();
-    addView(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView, localLayoutParams);
-    if (a()) {
-      a(paramContext);
+    addView(this.a, localLayoutParams);
+    if (b()) {
+      b(paramContext);
     }
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.setCallback(new BottomNavigationView.1(this));
+    this.c.setCallback(new BottomNavigationView.1(this));
     a();
-  }
-  
-  private MenuInflater a()
-  {
-    if (this.jdField_a_of_type_AndroidViewMenuInflater == null) {
-      this.jdField_a_of_type_AndroidViewMenuInflater = new SupportMenuInflater(getContext());
-    }
-    return this.jdField_a_of_type_AndroidViewMenuInflater;
   }
   
   @NonNull
@@ -157,31 +150,104 @@ public class BottomNavigationView
     ViewUtils.a(this, new BottomNavigationView.2(this));
   }
   
-  private void a(Context paramContext)
+  private void b(Context paramContext)
   {
     View localView = new View(paramContext);
-    localView.setBackgroundColor(ContextCompat.getColor(paramContext, R.color.jdField_a_of_type_Int));
+    localView.setBackgroundColor(ContextCompat.getColor(paramContext, R.color.a));
     localView.setLayoutParams(new FrameLayout.LayoutParams(-1, getResources().getDimensionPixelSize(R.dimen.i)));
     addView(localView);
   }
   
-  private boolean a()
+  private boolean b()
   {
     return (Build.VERSION.SDK_INT < 21) && (!(getBackground() instanceof MaterialShapeDrawable));
   }
   
-  @IdRes
-  public int a()
+  private MenuInflater getMenuInflater()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.b();
+    if (this.f == null) {
+      this.f = new SupportMenuInflater(getContext());
+    }
+    return this.f;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.a(true);
-    a().inflate(paramInt, this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.a(false);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.updateMenuView(true);
+    this.d.a(true);
+    getMenuInflater().inflate(paramInt, this.c);
+    this.d.a(false);
+    this.d.updateMenuView(true);
+  }
+  
+  @Nullable
+  public Drawable getItemBackground()
+  {
+    return this.a.getItemBackground();
+  }
+  
+  @Deprecated
+  @DrawableRes
+  public int getItemBackgroundResource()
+  {
+    return this.a.getItemBackgroundRes();
+  }
+  
+  @Dimension
+  public int getItemIconSize()
+  {
+    return this.a.getItemIconSize();
+  }
+  
+  @Nullable
+  public ColorStateList getItemIconTintList()
+  {
+    return this.a.getIconTintList();
+  }
+  
+  @Nullable
+  public ColorStateList getItemRippleColor()
+  {
+    return this.e;
+  }
+  
+  @StyleRes
+  public int getItemTextAppearanceActive()
+  {
+    return this.a.getItemTextAppearanceActive();
+  }
+  
+  @StyleRes
+  public int getItemTextAppearanceInactive()
+  {
+    return this.a.getItemTextAppearanceInactive();
+  }
+  
+  @Nullable
+  public ColorStateList getItemTextColor()
+  {
+    return this.a.getItemTextColor();
+  }
+  
+  public int getLabelVisibilityMode()
+  {
+    return this.a.getLabelVisibilityMode();
+  }
+  
+  public int getMaxItemCount()
+  {
+    return 5;
+  }
+  
+  @NonNull
+  public Menu getMenu()
+  {
+    return this.c;
+  }
+  
+  @IdRes
+  public int getSelectedItemId()
+  {
+    return this.a.getSelectedItemId();
   }
   
   protected void onAttachedToWindow()
@@ -199,14 +265,14 @@ public class BottomNavigationView
     }
     paramParcelable = (BottomNavigationView.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.restorePresenterStates(paramParcelable.a);
+    this.c.restorePresenterStates(paramParcelable.a);
   }
   
   protected Parcelable onSaveInstanceState()
   {
     BottomNavigationView.SavedState localSavedState = new BottomNavigationView.SavedState(super.onSaveInstanceState());
     localSavedState.a = new Bundle();
-    this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.savePresenterStates(localSavedState.a);
+    this.c.savePresenterStates(localSavedState.a);
     return localSavedState;
   }
   
@@ -220,28 +286,28 @@ public class BottomNavigationView
   
   public void setItemBackground(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemBackground(paramDrawable);
-    this.jdField_a_of_type_AndroidContentResColorStateList = null;
+    this.a.setItemBackground(paramDrawable);
+    this.e = null;
   }
   
   public void setItemBackgroundResource(@DrawableRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemBackgroundRes(paramInt);
-    this.jdField_a_of_type_AndroidContentResColorStateList = null;
+    this.a.setItemBackgroundRes(paramInt);
+    this.e = null;
   }
   
   public void setItemHorizontalTranslationEnabled(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.a() != paramBoolean)
+    if (this.a.a() != paramBoolean)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemHorizontalTranslationEnabled(paramBoolean);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.updateMenuView(false);
+      this.a.setItemHorizontalTranslationEnabled(paramBoolean);
+      this.d.updateMenuView(false);
     }
   }
   
   public void setItemIconSize(@Dimension int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemIconSize(paramInt);
+    this.a.setItemIconSize(paramInt);
   }
   
   public void setItemIconSizeRes(@DimenRes int paramInt)
@@ -251,87 +317,87 @@ public class BottomNavigationView
   
   public void setItemIconTintList(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setIconTintList(paramColorStateList);
+    this.a.setIconTintList(paramColorStateList);
   }
   
   public void setItemOnTouchListener(int paramInt, @Nullable View.OnTouchListener paramOnTouchListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemOnTouchListener(paramInt, paramOnTouchListener);
+    this.a.setItemOnTouchListener(paramInt, paramOnTouchListener);
   }
   
   public void setItemRippleColor(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList == paramColorStateList)
+    if (this.e == paramColorStateList)
     {
-      if ((paramColorStateList == null) && (this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.a() != null)) {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemBackground(null);
+      if ((paramColorStateList == null) && (this.a.getItemBackground() != null)) {
+        this.a.setItemBackground(null);
       }
       return;
     }
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.e = paramColorStateList;
     if (paramColorStateList == null)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemBackground(null);
+      this.a.setItemBackground(null);
       return;
     }
     paramColorStateList = RippleUtils.a(paramColorStateList);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemBackground(new RippleDrawable(paramColorStateList, null, null));
+      this.a.setItemBackground(new RippleDrawable(paramColorStateList, null, null));
       return;
     }
     Object localObject = new GradientDrawable();
     ((GradientDrawable)localObject).setCornerRadius(1.0E-005F);
     localObject = DrawableCompat.wrap((Drawable)localObject);
     DrawableCompat.setTintList((Drawable)localObject, paramColorStateList);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemBackground((Drawable)localObject);
+    this.a.setItemBackground((Drawable)localObject);
   }
   
   public void setItemTextAppearanceActive(@StyleRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemTextAppearanceActive(paramInt);
+    this.a.setItemTextAppearanceActive(paramInt);
   }
   
   public void setItemTextAppearanceInactive(@StyleRes int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemTextAppearanceInactive(paramInt);
+    this.a.setItemTextAppearanceInactive(paramInt);
   }
   
   public void setItemTextColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setItemTextColor(paramColorStateList);
+    this.a.setItemTextColor(paramColorStateList);
   }
   
   public void setLabelVisibilityMode(int paramInt)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.a() != paramInt)
+    if (this.a.getLabelVisibilityMode() != paramInt)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationMenuView.setLabelVisibilityMode(paramInt);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter.updateMenuView(false);
+      this.a.setLabelVisibilityMode(paramInt);
+      this.d.updateMenuView(false);
     }
   }
   
   public void setOnNavigationItemReselectedListener(@Nullable BottomNavigationView.OnNavigationItemReselectedListener paramOnNavigationItemReselectedListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationView$OnNavigationItemReselectedListener = paramOnNavigationItemReselectedListener;
+    this.h = paramOnNavigationItemReselectedListener;
   }
   
   public void setOnNavigationItemSelectedListener(@Nullable BottomNavigationView.OnNavigationItemSelectedListener paramOnNavigationItemSelectedListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationView$OnNavigationItemSelectedListener = paramOnNavigationItemSelectedListener;
+    this.g = paramOnNavigationItemSelectedListener;
   }
   
   public void setSelectedItemId(@IdRes int paramInt)
   {
-    MenuItem localMenuItem = this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.findItem(paramInt);
-    if ((localMenuItem != null) && (!this.jdField_a_of_type_AndroidxAppcompatViewMenuMenuBuilder.performItemAction(localMenuItem, this.jdField_a_of_type_ComGoogleAndroidMaterialBottomnavigationBottomNavigationPresenter, 0))) {
+    MenuItem localMenuItem = this.c.findItem(paramInt);
+    if ((localMenuItem != null) && (!this.c.performItemAction(localMenuItem, this.d, 0))) {
       localMenuItem.setChecked(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomnavigation.BottomNavigationView
  * JD-Core Version:    0.7.0.1
  */

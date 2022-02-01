@@ -19,102 +19,80 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/qqexpand/utils/ColdPalaceHelper;", "", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "(Lcom/tencent/mobileqq/app/QQAppInterface;)V", "getApp", "()Lcom/tencent/mobileqq/app/QQAppInterface;", "needWarnMeInColdPalace", "", "getNeedWarnMeInColdPalace", "()Z", "setNeedWarnMeInColdPalace", "(Z)V", "sp", "Landroid/content/SharedPreferences;", "getSp", "()Landroid/content/SharedPreferences;", "sp$delegate", "Lkotlin/Lazy;", "strSkillTip", "", "getStrSkillTip", "()Ljava/lang/String;", "strSkillTip$delegate", "strSkillUseupTip", "getStrSkillUseupTip", "strSkillUseupTip$delegate", "strWarnMeForbbiden", "getStrWarnMeForbbiden", "strWarnMeForbbiden$delegate", "strWarnMeFreeTime", "getStrWarnMeFreeTime", "strWarnMeFreeTime$delegate", "strWarnMeInColdPalace", "getStrWarnMeInColdPalace", "strWarnMeInColdPalace$delegate", "svrMeInColdPalaceTimes", "", "getSvrMeInColdPalaceTimes", "()I", "setSvrMeInColdPalaceTimes", "(I)V", "svrPunishLeftTime", "", "getSvrPunishLeftTime", "()J", "setSvrPunishLeftTime", "(J)V", "svrPunishTimeSince", "getSvrPunishTimeSince", "setSvrPunishTimeSince", "svrShowGrayTipEntry", "getSvrShowGrayTipEntry", "setSvrShowGrayTipEntry", "svrSkillTimesLeft", "getSvrSkillTimesLeft", "setSvrSkillTimesLeft", "svrStrSkillTip", "getSvrStrSkillTip", "setSvrStrSkillTip", "(Ljava/lang/String;)V", "svrStrSkillUseupTip", "getSvrStrSkillUseupTip", "setSvrStrSkillUseupTip", "svrStrSkillUseupTitle", "getSvrStrSkillUseupTitle", "setSvrStrSkillUseupTitle", "svrStrWarnMeForbbiden", "getSvrStrWarnMeForbbiden", "setSvrStrWarnMeForbbiden", "svrStrWarnMeInColdPalace", "getSvrStrWarnMeInColdPalace", "setSvrStrWarnMeInColdPalace", "addMeBlockedGrayTip", "", "frdUin", "uinType", "getMeInColdPalaceTimes", "getPunishLeftTime", "nowTs", "getSkillTimesLeft", "getWording", "type", "needWarnMePunish", "onGetWording", "wording", "setMeInColdPalaceTimes", "times", "setNeedShowGrayTipEntry", "show", "setPunishLeftTime", "time", "setSkillTimesLeft", "Companion", "qqexpand_impl_release"}, k=1, mv={1, 1, 16})
 public final class ColdPalaceHelper
 {
-  public static final ColdPalaceHelper.Companion a;
-  private volatile int jdField_a_of_type_Int;
-  private volatile long jdField_a_of_type_Long;
-  @NotNull
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public static final ColdPalaceHelper.Companion f = new ColdPalaceHelper.Companion(null);
   @NotNull
   public volatile String a;
   @NotNull
-  private final Lazy jdField_a_of_type_KotlinLazy;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile int jdField_b_of_type_Int;
-  private volatile long jdField_b_of_type_Long;
-  @NotNull
   public volatile String b;
-  @NotNull
-  private final Lazy jdField_b_of_type_KotlinLazy;
-  private volatile boolean jdField_b_of_type_Boolean;
   @NotNull
   public volatile String c;
   @NotNull
-  private final Lazy c;
-  @NotNull
   public volatile String d;
-  @NotNull
-  private final Lazy d;
   @NotNull
   public volatile String e;
   @NotNull
-  private final Lazy e;
+  private final Lazy g;
   @NotNull
-  private final Lazy f;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqQqexpandUtilsColdPalaceHelper$Companion = new ColdPalaceHelper.Companion(null);
-  }
+  private final Lazy h;
+  @NotNull
+  private final Lazy i;
+  @NotNull
+  private final Lazy j;
+  @NotNull
+  private final Lazy k;
+  private volatile long l;
+  private volatile long m;
+  private volatile int n;
+  private volatile int o;
+  private volatile boolean p;
+  private volatile boolean q;
+  @NotNull
+  private final Lazy r;
+  @NotNull
+  private final QQAppInterface s;
   
   public ColdPalaceHelper(@NotNull QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new ColdPalaceHelper.strSkillTip.2(this));
-    this.jdField_b_of_type_KotlinLazy = LazyKt.lazy((Function0)new ColdPalaceHelper.strSkillUseupTip.2(this));
-    this.jdField_c_of_type_KotlinLazy = LazyKt.lazy((Function0)new ColdPalaceHelper.strWarnMeInColdPalace.2(this));
-    this.jdField_d_of_type_KotlinLazy = LazyKt.lazy((Function0)new ColdPalaceHelper.strWarnMeForbbiden.2(this));
-    this.jdField_e_of_type_KotlinLazy = LazyKt.lazy((Function0)new ColdPalaceHelper.strWarnMeFreeTime.2(this));
-    this.jdField_a_of_type_Int = -2147483648;
-    this.f = LazyKt.lazy((Function0)new ColdPalaceHelper.sp.2(this));
-    paramQQAppInterface = a().getString("key_skill_tip", "");
+    this.s = paramQQAppInterface;
+    this.g = LazyKt.lazy((Function0)new ColdPalaceHelper.strSkillTip.2(this));
+    this.h = LazyKt.lazy((Function0)new ColdPalaceHelper.strSkillUseupTip.2(this));
+    this.i = LazyKt.lazy((Function0)new ColdPalaceHelper.strWarnMeInColdPalace.2(this));
+    this.j = LazyKt.lazy((Function0)new ColdPalaceHelper.strWarnMeForbbiden.2(this));
+    this.k = LazyKt.lazy((Function0)new ColdPalaceHelper.strWarnMeFreeTime.2(this));
+    this.n = -2147483648;
+    this.r = LazyKt.lazy((Function0)new ColdPalaceHelper.sp.2(this));
+    paramQQAppInterface = g().getString("key_skill_tip", "");
     Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "sp.getString(SP_KEY_SKILL_TIP, \"\")");
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface;
-    paramQQAppInterface = a().getString("key_skill_useup_tip", "");
+    this.a = paramQQAppInterface;
+    paramQQAppInterface = g().getString("key_skill_useup_tip", "");
     Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "sp.getString(SP_KEY_SKILL_USEUP_TIP, \"\")");
-    this.jdField_b_of_type_JavaLangString = paramQQAppInterface;
-    paramQQAppInterface = a().getString("key_skill_useup_title", "");
+    this.b = paramQQAppInterface;
+    paramQQAppInterface = g().getString("key_skill_useup_title", "");
     Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "sp.getString(SP_KEY_SKILL_USEUP_TITLE, \"\")");
-    this.jdField_c_of_type_JavaLangString = paramQQAppInterface;
-    paramQQAppInterface = a().getString("key_warn_me_in_coldpalace", "");
+    this.c = paramQQAppInterface;
+    paramQQAppInterface = g().getString("key_warn_me_in_coldpalace", "");
     Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "sp.getString(SP_KEY_WARN_ME_IN_COLDPALACE, \"\")");
-    this.jdField_d_of_type_JavaLangString = paramQQAppInterface;
-    paramQQAppInterface = a().getString("key_warn_me_forbbiden", "");
+    this.d = paramQQAppInterface;
+    paramQQAppInterface = g().getString("key_warn_me_forbbiden", "");
     Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "sp.getString(SP_KEY_WARN_ME_FORBBIDEN, \"\")");
-    this.jdField_e_of_type_JavaLangString = paramQQAppInterface;
-    this.jdField_a_of_type_Long = a().getLong("key_punish_left_time", 0L);
-    this.jdField_b_of_type_Long = a().getLong("key_punish_time_since", 0L);
-    this.jdField_b_of_type_Boolean = a().getBoolean("key_show_gray_tip_entry", this.jdField_b_of_type_Boolean);
-    this.jdField_b_of_type_Int = a().getInt("key_me_in_cold_palace_times", 0);
+    this.e = paramQQAppInterface;
+    this.l = g().getLong("key_punish_left_time", 0L);
+    this.m = g().getLong("key_punish_time_since", 0L);
+    this.q = g().getBoolean("key_show_gray_tip_entry", this.q);
+    this.o = g().getInt("key_me_in_cold_palace_times", 0);
   }
   
   @JvmStatic
   @NotNull
   public static final ColdPalaceHelper a(@NotNull BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return jdField_a_of_type_ComTencentMobileqqQqexpandUtilsColdPalaceHelper$Companion.a(paramBaseQQAppInterface);
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @NotNull
-  public final SharedPreferences a()
-  {
-    return (SharedPreferences)this.f.getValue();
-  }
-  
-  @NotNull
-  public final QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    return f.a(paramBaseQQAppInterface);
   }
   
   @NotNull
   public final String a()
   {
-    return (String)this.jdField_a_of_type_KotlinLazy.getValue();
+    return (String)this.g.getValue();
   }
   
   @NotNull
@@ -146,7 +124,7 @@ public final class ColdPalaceHelper
             localObject1 = StringCompanionObject.INSTANCE;
             localObject1 = d();
             localObject2 = new Object[1];
-            str = this.jdField_e_of_type_JavaLangString;
+            str = this.e;
             if (str == null) {
               Intrinsics.throwUninitializedPropertyAccessException("svrStrWarnMeForbbiden");
             }
@@ -158,7 +136,7 @@ public final class ColdPalaceHelper
           localObject1 = StringCompanionObject.INSTANCE;
           localObject1 = c();
           localObject2 = new Object[1];
-          str = this.jdField_d_of_type_JavaLangString;
+          str = this.d;
           if (str == null) {
             Intrinsics.throwUninitializedPropertyAccessException("svrStrWarnMeInColdPalace");
           }
@@ -170,7 +148,7 @@ public final class ColdPalaceHelper
         localObject1 = StringCompanionObject.INSTANCE;
         localObject1 = b();
         localObject2 = new Object[1];
-        str = this.jdField_b_of_type_JavaLangString;
+        str = this.b;
         if (str == null) {
           Intrinsics.throwUninitializedPropertyAccessException("svrStrSkillUseupTip");
         }
@@ -179,7 +157,7 @@ public final class ColdPalaceHelper
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
         return localObject1;
       }
-      localObject2 = this.jdField_c_of_type_JavaLangString;
+      localObject2 = this.c;
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -192,7 +170,7 @@ public final class ColdPalaceHelper
       localObject1 = StringCompanionObject.INSTANCE;
       localObject1 = a();
       localObject2 = new Object[1];
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.a;
       if (str == null) {
         Intrinsics.throwUninitializedPropertyAccessException("svrStrSkillTip");
       }
@@ -201,11 +179,6 @@ public final class ColdPalaceHelper
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
     }
     return localObject1;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
   }
   
   public final void a(int paramInt, @Nullable String paramString)
@@ -224,33 +197,33 @@ public final class ColdPalaceHelper
             if (paramInt != 4) {
               return;
             }
-            this.jdField_e_of_type_JavaLangString = paramString;
-            a().edit().putString("key_warn_me_forbbiden", paramString).apply();
+            this.e = paramString;
+            g().edit().putString("key_warn_me_forbbiden", paramString).apply();
             return;
           }
-          this.jdField_d_of_type_JavaLangString = paramString;
-          a().edit().putString("key_warn_me_in_coldpalace", paramString).apply();
+          this.d = paramString;
+          g().edit().putString("key_warn_me_in_coldpalace", paramString).apply();
           return;
         }
-        this.jdField_b_of_type_JavaLangString = paramString;
-        a().edit().putString("key_skill_useup_tip", paramString).apply();
+        this.b = paramString;
+        g().edit().putString("key_skill_useup_tip", paramString).apply();
         return;
       }
-      this.jdField_c_of_type_JavaLangString = paramString;
-      a().edit().putString("key_skill_useup_title", paramString).apply();
+      this.c = paramString;
+      g().edit().putString("key_skill_useup_title", paramString).apply();
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    a().edit().putString("key_skill_tip", paramString).apply();
+    this.a = paramString;
+    g().edit().putString("key_skill_tip", paramString).apply();
   }
   
   public final void a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    a().edit().putLong("key_punish_left_time", paramLong1);
-    a().edit().putLong("key_punish_time_since", paramLong2);
-    a().edit().apply();
+    this.l = paramLong1;
+    this.m = paramLong2;
+    g().edit().putLong("key_punish_left_time", paramLong1);
+    g().edit().putLong("key_punish_time_since", paramLong2);
+    g().edit().apply();
   }
   
   public final void a(@NotNull String paramString, int paramInt)
@@ -261,54 +234,76 @@ public final class ColdPalaceHelper
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    a().edit().putBoolean("key_show_gray_tip_entry", this.jdField_b_of_type_Boolean).apply();
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.q = paramBoolean;
+    g().edit().putBoolean("key_show_gray_tip_entry", this.q).apply();
   }
   
   @NotNull
   public final String b()
   {
-    return (String)this.jdField_b_of_type_KotlinLazy.getValue();
+    return (String)this.h.getValue();
   }
   
   public final void b(int paramInt)
   {
-    if ((paramInt > 0) && (paramInt != this.jdField_b_of_type_Int)) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt <= 0) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    this.jdField_b_of_type_Int = paramInt;
-    a().edit().putInt("key_me_in_cold_palace_times", paramInt);
+    this.n = paramInt;
   }
   
   @NotNull
   public final String c()
   {
-    return (String)this.jdField_c_of_type_KotlinLazy.getValue();
+    return (String)this.i.getValue();
+  }
+  
+  public final void c(int paramInt)
+  {
+    if ((paramInt > 0) && (paramInt != this.o)) {
+      this.p = true;
+    }
+    if (paramInt <= 0) {
+      this.p = false;
+    }
+    this.o = paramInt;
+    g().edit().putInt("key_me_in_cold_palace_times", paramInt);
   }
   
   @NotNull
   public final String d()
   {
-    return (String)this.jdField_d_of_type_KotlinLazy.getValue();
+    return (String)this.j.getValue();
   }
   
   @NotNull
   public final String e()
   {
-    return (String)this.jdField_e_of_type_KotlinLazy.getValue();
+    return (String)this.k.getValue();
+  }
+  
+  public final boolean f()
+  {
+    return this.q;
+  }
+  
+  @NotNull
+  public final SharedPreferences g()
+  {
+    return (SharedPreferences)this.r.getValue();
+  }
+  
+  public final int h()
+  {
+    return this.n;
+  }
+  
+  @NotNull
+  public final QQAppInterface i()
+  {
+    return this.s;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ColdPalaceHelper
  * JD-Core Version:    0.7.0.1
  */

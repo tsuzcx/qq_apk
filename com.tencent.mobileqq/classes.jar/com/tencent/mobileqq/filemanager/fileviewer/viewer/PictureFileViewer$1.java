@@ -15,20 +15,20 @@ class PictureFileViewer$1
   public void onContentMove(float paramFloat)
   {
     PictureFileViewer.a(this.a, true);
-    if (PictureFileViewer.a(this.a) != null)
+    if (PictureFileViewer.c(this.a) != null)
     {
-      Drawable localDrawable = PictureFileViewer.a(this.a).getBackground();
+      Drawable localDrawable = PictureFileViewer.c(this.a).getBackground();
       if (localDrawable != null) {
         localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
       }
     }
     if (paramFloat < 0.8F)
     {
-      if (PictureFileViewer.a(this.a) != null) {
-        PictureFileViewer.a(this.a).setVisibility(8);
+      if (PictureFileViewer.d(this.a) != null) {
+        PictureFileViewer.d(this.a).setVisibility(8);
       }
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      if (this.a.d != null) {
+        this.a.d.setVisibility(8);
       }
     }
   }
@@ -36,7 +36,7 @@ class PictureFileViewer$1
   public void onGestureFinish()
   {
     PictureFileViewer.a(this.a, false);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerFileBrowserViewBase$CloseFileBrowserCallback.o();
+    this.a.j.s();
   }
   
   public void onResetPosition()
@@ -52,7 +52,7 @@ class PictureFileViewer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.PictureFileViewer.1
  * JD-Core Version:    0.7.0.1
  */

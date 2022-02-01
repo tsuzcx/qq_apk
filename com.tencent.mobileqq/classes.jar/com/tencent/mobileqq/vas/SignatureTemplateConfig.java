@@ -30,7 +30,7 @@ public class SignatureTemplateConfig
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT);
     localStringBuilder.append("sign_tpl.json");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public static SignatureTemplateInfo a(AppRuntime paramAppRuntime, int paramInt)
@@ -110,7 +110,7 @@ public class SignatureTemplateConfig
   {
     try
     {
-      Color.parseColor(paramSignatureTemplateInfo.jdField_e_of_type_JavaLangString);
+      Color.parseColor(paramSignatureTemplateInfo.j);
       return;
     }
     catch (Exception localException)
@@ -118,7 +118,7 @@ public class SignatureTemplateConfig
       label9:
       break label9;
     }
-    paramSignatureTemplateInfo.jdField_e_of_type_JavaLangString = "";
+    paramSignatureTemplateInfo.j = "";
   }
   
   private static void a(SignatureTemplateInfo paramSignatureTemplateInfo, JSONArray paramJSONArray)
@@ -147,14 +147,14 @@ public class SignatureTemplateConfig
       } else {
         j = i - 1;
       }
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[j].jdField_a_of_type_Int = i;
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[j].jdField_a_of_type_JavaLangString = ((String)a(paramJSONObject.has("pngZip"), paramJSONObject.getString("pngZip"), ""));
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[j].jdField_a_of_type_Float = ((Float)a(paramJSONObject.has("posX"), paramJSONObject.getString("posX"), Integer.valueOf(0))).floatValue();
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[j].jdField_b_of_type_Float = ((Float)a(paramJSONObject.has("posY"), paramJSONObject.getString("posY"), Integer.valueOf(0))).floatValue();
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[j].jdField_c_of_type_Float = ((Float)a(paramJSONObject.has("width"), paramJSONObject.getString("width"), Integer.valueOf(0))).floatValue();
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[j].d = ((Float)a(paramJSONObject.has("height"), paramJSONObject.getString("height"), Integer.valueOf(0))).floatValue();
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[j].jdField_b_of_type_Int = ((Integer)a(paramJSONObject.has("repeatTimes"), paramJSONObject.getString("repeatTimes"), Integer.valueOf(0))).intValue();
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[j].jdField_c_of_type_Int = ((Integer)a(paramJSONObject.has("interval"), paramJSONObject.getString("interval"), Integer.valueOf(0))).intValue();
+      paramSignatureTemplateInfo.v[j].a = i;
+      paramSignatureTemplateInfo.v[j].b = ((String)a(paramJSONObject.has("pngZip"), paramJSONObject.getString("pngZip"), ""));
+      paramSignatureTemplateInfo.v[j].c = ((Float)a(paramJSONObject.has("posX"), paramJSONObject.getString("posX"), Integer.valueOf(0))).floatValue();
+      paramSignatureTemplateInfo.v[j].d = ((Float)a(paramJSONObject.has("posY"), paramJSONObject.getString("posY"), Integer.valueOf(0))).floatValue();
+      paramSignatureTemplateInfo.v[j].e = ((Float)a(paramJSONObject.has("width"), paramJSONObject.getString("width"), Integer.valueOf(0))).floatValue();
+      paramSignatureTemplateInfo.v[j].f = ((Float)a(paramJSONObject.has("height"), paramJSONObject.getString("height"), Integer.valueOf(0))).floatValue();
+      paramSignatureTemplateInfo.v[j].g = ((Integer)a(paramJSONObject.has("repeatTimes"), paramJSONObject.getString("repeatTimes"), Integer.valueOf(0))).intValue();
+      paramSignatureTemplateInfo.v[j].h = ((Integer)a(paramJSONObject.has("interval"), paramJSONObject.getString("interval"), Integer.valueOf(0))).intValue();
     }
   }
   
@@ -173,31 +173,31 @@ public class SignatureTemplateConfig
           paramSignatureTemplateInfo.a();
           return;
         }
-        paramSignatureTemplateInfo.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("qqVer", "0.0.0");
-        if (AppSetting.a(paramSignatureTemplateInfo.jdField_f_of_type_JavaLangString) < 0)
+        paramSignatureTemplateInfo.k = ((JSONObject)localObject).optString("qqVer", "0.0.0");
+        if (AppSetting.b(paramSignatureTemplateInfo.k) < 0)
         {
           paramSignatureTemplateInfo.a();
           return;
         }
-        paramSignatureTemplateInfo.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("name", HardCodeUtil.a(2131713985));
-        paramSignatureTemplateInfo.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("type", -1);
-        paramSignatureTemplateInfo.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("feeType", 1);
-        paramSignatureTemplateInfo.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("actUrl", null);
-        paramSignatureTemplateInfo.jdField_c_of_type_Int = ((JSONObject)localObject).optInt("newOrHot", 0);
-        paramSignatureTemplateInfo.jdField_d_of_type_Int = ((JSONObject)localObject).optInt("platId");
-        paramSignatureTemplateInfo.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).optString("fontColor", "");
-        paramSignatureTemplateInfo.jdField_g_of_type_Int = ((JSONObject)localObject).optInt("signType", 0);
+        paramSignatureTemplateInfo.c = ((JSONObject)localObject).optString("name", HardCodeUtil.a(2131911516));
+        paramSignatureTemplateInfo.e = ((JSONObject)localObject).optInt("type", -1);
+        paramSignatureTemplateInfo.d = ((JSONObject)localObject).optInt("feeType", 1);
+        paramSignatureTemplateInfo.f = ((JSONObject)localObject).optString("actUrl", null);
+        paramSignatureTemplateInfo.g = ((JSONObject)localObject).optInt("newOrHot", 0);
+        paramSignatureTemplateInfo.i = ((JSONObject)localObject).optInt("platId");
+        paramSignatureTemplateInfo.j = ((JSONObject)localObject).optString("fontColor", "");
+        paramSignatureTemplateInfo.E = ((JSONObject)localObject).optInt("signType", 0);
         a(paramSignatureTemplateInfo);
-        paramSignatureTemplateInfo.n = ((JSONObject)localObject).optString("defText", "");
-        paramSignatureTemplateInfo.o = ((JSONObject)localObject).optString("defTextColor", "");
+        paramSignatureTemplateInfo.s = ((JSONObject)localObject).optString("defText", "");
+        paramSignatureTemplateInfo.t = ((JSONObject)localObject).optString("defTextColor", "");
       }
     }
     catch (Exception paramString)
     {
       Object localObject;
       int i;
-      label214:
-      label244:
+      label216:
+      label246:
       paramSignatureTemplateInfo = new StringBuilder();
       paramSignatureTemplateInfo.append("getSignatureTemplateInfoFromFile error: ");
       paramSignatureTemplateInfo.append(paramString.getMessage());
@@ -205,38 +205,38 @@ public class SignatureTemplateConfig
     }
     try
     {
-      Color.parseColor(paramSignatureTemplateInfo.o);
+      Color.parseColor(paramSignatureTemplateInfo.t);
     }
     catch (Exception localException1)
     {
-      break label214;
+      break label216;
     }
-    paramSignatureTemplateInfo.o = "";
-    paramSignatureTemplateInfo.p = ((JSONObject)localObject).optString("timeAndLocation", "");
+    paramSignatureTemplateInfo.t = "";
+    paramSignatureTemplateInfo.u = ((JSONObject)localObject).optString("timeAndLocation", "");
     try
     {
-      Color.parseColor(paramSignatureTemplateInfo.p);
+      Color.parseColor(paramSignatureTemplateInfo.u);
     }
     catch (Exception localException2)
     {
-      break label244;
+      break label246;
     }
-    paramSignatureTemplateInfo.p = "";
-    paramSignatureTemplateInfo.jdField_e_of_type_Int = ((JSONObject)localObject).optInt("isLimited", 1);
-    paramSignatureTemplateInfo.q = ((JSONObject)localObject).optString("startTime");
-    paramSignatureTemplateInfo.r = ((JSONObject)localObject).optString("endTime");
-    paramSignatureTemplateInfo.s = ((JSONObject)localObject).optString("dot9png");
-    paramSignatureTemplateInfo.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("cover");
-    paramSignatureTemplateInfo.jdField_g_of_type_JavaLangString = ((JSONObject)localObject).optString("aio_2");
-    paramSignatureTemplateInfo.h = ((JSONObject)localObject).optString("aio_3");
-    paramSignatureTemplateInfo.i = ((JSONObject)localObject).optString("aio_4");
-    paramSignatureTemplateInfo.j = ((JSONObject)localObject).optString("icon");
-    paramSignatureTemplateInfo.k = ((JSONObject)localObject).optString("view");
-    paramSignatureTemplateInfo.l = ((JSONObject)localObject).optString("action_off");
-    paramSignatureTemplateInfo.m = ((JSONObject)localObject).optString("action_on");
-    paramSignatureTemplateInfo.t = ((JSONObject)localObject).optString("backgroundColor");
-    paramSignatureTemplateInfo.u = ((JSONObject)localObject).optString("shadowColor");
-    paramSignatureTemplateInfo.jdField_f_of_type_Int = ((JSONObject)localObject).optInt("materialVersion");
+    paramSignatureTemplateInfo.u = "";
+    paramSignatureTemplateInfo.w = ((JSONObject)localObject).optInt("isLimited", 1);
+    paramSignatureTemplateInfo.x = ((JSONObject)localObject).optString("startTime");
+    paramSignatureTemplateInfo.y = ((JSONObject)localObject).optString("endTime");
+    paramSignatureTemplateInfo.z = ((JSONObject)localObject).optString("dot9png");
+    paramSignatureTemplateInfo.h = ((JSONObject)localObject).optString("cover");
+    paramSignatureTemplateInfo.l = ((JSONObject)localObject).optString("aio_2");
+    paramSignatureTemplateInfo.m = ((JSONObject)localObject).optString("aio_3");
+    paramSignatureTemplateInfo.n = ((JSONObject)localObject).optString("aio_4");
+    paramSignatureTemplateInfo.o = ((JSONObject)localObject).optString("icon");
+    paramSignatureTemplateInfo.p = ((JSONObject)localObject).optString("view");
+    paramSignatureTemplateInfo.q = ((JSONObject)localObject).optString("action_off");
+    paramSignatureTemplateInfo.r = ((JSONObject)localObject).optString("action_on");
+    paramSignatureTemplateInfo.A = ((JSONObject)localObject).optString("backgroundColor");
+    paramSignatureTemplateInfo.C = ((JSONObject)localObject).optString("shadowColor");
+    paramSignatureTemplateInfo.B = ((JSONObject)localObject).optInt("materialVersion");
     if (paramString.has("dynamicItem")) {
       localObject = paramString.getJSONArray("dynamicItem");
     }
@@ -268,9 +268,9 @@ public class SignatureTemplateConfig
         a(paramIterator, ((JSONObject)localObject).getJSONArray("dynamicItem"));
       }
       c(paramIterator, (JSONObject)localObject);
-      localObject = (SignatureTemplateConfig.SignatureTemplateType)paramMap.get(Integer.valueOf(paramIterator.jdField_b_of_type_Int));
+      localObject = (SignatureTemplateConfig.SignatureTemplateType)paramMap.get(Integer.valueOf(paramIterator.e));
       if (localObject != null) {
-        ((SignatureTemplateConfig.SignatureTemplateType)localObject).jdField_a_of_type_JavaUtilArrayList.add(paramIterator);
+        ((SignatureTemplateConfig.SignatureTemplateType)localObject).c.add(paramIterator);
       }
       i += 1;
     }
@@ -281,7 +281,7 @@ public class SignatureTemplateConfig
     try
     {
       paramAppRuntime = new LinkedHashMap();
-      localObject1 = a(new File(jdField_a_of_type_JavaLangString));
+      localObject1 = a(new File(a));
       if (localObject1 == null) {
         return null;
       }
@@ -292,9 +292,9 @@ public class SignatureTemplateConfig
       {
         JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
         SignatureTemplateConfig.SignatureTemplateType localSignatureTemplateType = new SignatureTemplateConfig.SignatureTemplateType();
-        localSignatureTemplateType.jdField_a_of_type_Int = localJSONObject.getInt("sigId");
-        localSignatureTemplateType.jdField_a_of_type_JavaLangString = localJSONObject.getString("sigType");
-        paramAppRuntime.put(Integer.valueOf(localSignatureTemplateType.jdField_a_of_type_Int), localSignatureTemplateType);
+        localSignatureTemplateType.a = localJSONObject.getInt("sigId");
+        localSignatureTemplateType.b = localJSONObject.getString("sigType");
+        paramAppRuntime.put(Integer.valueOf(localSignatureTemplateType.a), localSignatureTemplateType);
         i += 1;
       }
       localObject1 = ((JSONObject)localObject1).getJSONObject("items");
@@ -304,7 +304,7 @@ public class SignatureTemplateConfig
       }
       localObject1 = paramAppRuntime.entrySet().iterator();
       while (((Iterator)localObject1).hasNext()) {
-        if (((SignatureTemplateConfig.SignatureTemplateType)((Map.Entry)((Iterator)localObject1).next()).getValue()).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+        if (((SignatureTemplateConfig.SignatureTemplateType)((Map.Entry)((Iterator)localObject1).next()).getValue()).c.size() == 0) {
           ((Iterator)localObject1).remove();
         }
       }
@@ -314,7 +314,7 @@ public class SignatureTemplateConfig
     }
     catch (Exception paramAppRuntime)
     {
-      Object localObject1 = new File(jdField_a_of_type_JavaLangString);
+      Object localObject1 = new File(a);
       if ((((File)localObject1).exists()) && (((File)localObject1).isFile())) {
         ((File)localObject1).delete();
       }
@@ -337,47 +337,47 @@ public class SignatureTemplateConfig
       JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
       if (localJSONObject.getInt("platId") != 1)
       {
-        paramSignatureTemplateInfo.jdField_f_of_type_JavaLangString = localJSONObject.getString("qqVer");
-        if (AppSetting.a(paramSignatureTemplateInfo.jdField_f_of_type_JavaLangString) >= 0)
+        paramSignatureTemplateInfo.k = localJSONObject.getString("qqVer");
+        if (AppSetting.b(paramSignatureTemplateInfo.k) >= 0)
         {
-          paramSignatureTemplateInfo.jdField_b_of_type_JavaLangString = ((String)a(localJSONObject.has("name"), localJSONObject.getString("name"), HardCodeUtil.a(2131713985)));
-          paramSignatureTemplateInfo.jdField_b_of_type_Int = ((Integer)a(localJSONObject.has("type"), Integer.valueOf(localJSONObject.getInt("type")), Integer.valueOf(-1))).intValue();
-          paramSignatureTemplateInfo.jdField_a_of_type_Int = ((Integer)a(localJSONObject.has("feeType"), Integer.valueOf(localJSONObject.getInt("feeType")), Integer.valueOf(1))).intValue();
-          paramSignatureTemplateInfo.jdField_c_of_type_JavaLangString = ((String)a(localJSONObject.has("actUrl"), localJSONObject.getString("actUrl"), null));
-          paramSignatureTemplateInfo.jdField_c_of_type_Int = ((Integer)a(localJSONObject.has("newOrHot"), localJSONObject.getString("newOrHot"), Integer.valueOf(0))).intValue();
-          paramSignatureTemplateInfo.jdField_d_of_type_Int = localJSONObject.getInt("platId");
-          paramSignatureTemplateInfo.jdField_e_of_type_JavaLangString = ((String)a(localJSONObject.has("fontColor"), localJSONObject.getString("fontColor"), ""));
+          paramSignatureTemplateInfo.c = ((String)a(localJSONObject.has("name"), localJSONObject.getString("name"), HardCodeUtil.a(2131911516)));
+          paramSignatureTemplateInfo.e = ((Integer)a(localJSONObject.has("type"), Integer.valueOf(localJSONObject.getInt("type")), Integer.valueOf(-1))).intValue();
+          paramSignatureTemplateInfo.d = ((Integer)a(localJSONObject.has("feeType"), Integer.valueOf(localJSONObject.getInt("feeType")), Integer.valueOf(1))).intValue();
+          paramSignatureTemplateInfo.f = ((String)a(localJSONObject.has("actUrl"), localJSONObject.getString("actUrl"), null));
+          paramSignatureTemplateInfo.g = ((Integer)a(localJSONObject.has("newOrHot"), localJSONObject.getString("newOrHot"), Integer.valueOf(0))).intValue();
+          paramSignatureTemplateInfo.i = localJSONObject.getInt("platId");
+          paramSignatureTemplateInfo.j = ((String)a(localJSONObject.has("fontColor"), localJSONObject.getString("fontColor"), ""));
           a(paramSignatureTemplateInfo);
-          paramSignatureTemplateInfo.n = ((String)a(localJSONObject.has("defText"), localJSONObject.getString("defText"), ""));
-          paramSignatureTemplateInfo.o = ((String)a(localJSONObject.has("defTextColor"), localJSONObject.getString("defTextColor"), ""));
+          paramSignatureTemplateInfo.s = ((String)a(localJSONObject.has("defText"), localJSONObject.getString("defText"), ""));
+          paramSignatureTemplateInfo.t = ((String)a(localJSONObject.has("defTextColor"), localJSONObject.getString("defTextColor"), ""));
         }
       }
       try
       {
-        Color.parseColor(paramSignatureTemplateInfo.o);
+        Color.parseColor(paramSignatureTemplateInfo.t);
       }
       catch (Exception localException1)
       {
-        label300:
-        label343:
-        break label300;
+        label304:
+        label347:
+        break label304;
       }
-      paramSignatureTemplateInfo.o = "";
-      paramSignatureTemplateInfo.p = ((String)a(localJSONObject.has("timeAndLocation"), localJSONObject.getString("timeAndLocation"), ""));
+      paramSignatureTemplateInfo.t = "";
+      paramSignatureTemplateInfo.u = ((String)a(localJSONObject.has("timeAndLocation"), localJSONObject.getString("timeAndLocation"), ""));
       try
       {
-        Color.parseColor(paramSignatureTemplateInfo.p);
+        Color.parseColor(paramSignatureTemplateInfo.u);
       }
       catch (Exception localException2)
       {
-        break label343;
+        break label347;
       }
-      paramSignatureTemplateInfo.p = "";
-      paramSignatureTemplateInfo.jdField_e_of_type_Int = ((Integer)a(localJSONObject.has("isLimited"), localJSONObject.getString("isLimited"), Integer.valueOf(1))).intValue();
-      paramSignatureTemplateInfo.q = ((String)a(localJSONObject.has("startTime"), localJSONObject.getString("startTime"), ""));
-      paramSignatureTemplateInfo.r = ((String)a(localJSONObject.has("endTime"), localJSONObject.getString("endTime"), ""));
-      paramSignatureTemplateInfo.s = ((String)a(localJSONObject.has("dot9png"), localJSONObject.getString("dot9png"), ""));
-      paramSignatureTemplateInfo.t = ((String)a(localJSONObject.has("backgroundColor"), localJSONObject.getString("backgroundColor"), ""));
+      paramSignatureTemplateInfo.u = "";
+      paramSignatureTemplateInfo.w = ((Integer)a(localJSONObject.has("isLimited"), localJSONObject.getString("isLimited"), Integer.valueOf(1))).intValue();
+      paramSignatureTemplateInfo.x = ((String)a(localJSONObject.has("startTime"), localJSONObject.getString("startTime"), ""));
+      paramSignatureTemplateInfo.y = ((String)a(localJSONObject.has("endTime"), localJSONObject.getString("endTime"), ""));
+      paramSignatureTemplateInfo.z = ((String)a(localJSONObject.has("dot9png"), localJSONObject.getString("dot9png"), ""));
+      paramSignatureTemplateInfo.A = ((String)a(localJSONObject.has("backgroundColor"), localJSONObject.getString("backgroundColor"), ""));
       b(paramSignatureTemplateInfo, localJSONObject);
       i += 1;
     }
@@ -386,28 +386,28 @@ public class SignatureTemplateConfig
   private static void b(SignatureTemplateInfo paramSignatureTemplateInfo, JSONObject paramJSONObject)
   {
     if (paramJSONObject.has("cover")) {
-      paramSignatureTemplateInfo.jdField_d_of_type_JavaLangString = paramJSONObject.getString("cover");
+      paramSignatureTemplateInfo.h = paramJSONObject.getString("cover");
     }
     if (paramJSONObject.has("aio_2")) {
-      paramSignatureTemplateInfo.jdField_g_of_type_JavaLangString = paramJSONObject.getString("aio_2");
+      paramSignatureTemplateInfo.l = paramJSONObject.getString("aio_2");
     }
     if (paramJSONObject.has("aio_3")) {
-      paramSignatureTemplateInfo.h = paramJSONObject.getString("aio_3");
+      paramSignatureTemplateInfo.m = paramJSONObject.getString("aio_3");
     }
     if (paramJSONObject.has("aio_4")) {
-      paramSignatureTemplateInfo.i = paramJSONObject.getString("aio_4");
+      paramSignatureTemplateInfo.n = paramJSONObject.getString("aio_4");
     }
     if (paramJSONObject.has("icon")) {
-      paramSignatureTemplateInfo.j = paramJSONObject.getString("icon");
+      paramSignatureTemplateInfo.o = paramJSONObject.getString("icon");
     }
     if (paramJSONObject.has("view")) {
-      paramSignatureTemplateInfo.k = paramJSONObject.getString("view");
+      paramSignatureTemplateInfo.p = paramJSONObject.getString("view");
     }
     if (paramJSONObject.has("action_off")) {
-      paramSignatureTemplateInfo.l = paramJSONObject.getString("action_off");
+      paramSignatureTemplateInfo.q = paramJSONObject.getString("action_off");
     }
     if (paramJSONObject.has("action_on")) {
-      paramSignatureTemplateInfo.m = paramJSONObject.getString("action_on");
+      paramSignatureTemplateInfo.r = paramJSONObject.getString("action_on");
     }
   }
   
@@ -419,12 +419,12 @@ public class SignatureTemplateConfig
       paramJSONObject = paramJSONObject.getJSONObject(0);
       paramSignatureTemplateInfo.getClass();
       SignatureTemplateInfo.ImageItem localImageItem = new SignatureTemplateInfo.ImageItem(paramSignatureTemplateInfo);
-      localImageItem.jdField_b_of_type_JavaLangString = paramJSONObject.optString("content");
-      localImageItem.jdField_a_of_type_JavaLangString = paramJSONObject.optString("img");
-      localImageItem.jdField_a_of_type_Int = paramJSONObject.optInt("imgWidth");
-      localImageItem.jdField_b_of_type_Int = paramJSONObject.optInt("imgHeight");
-      localImageItem.jdField_c_of_type_JavaLangString = paramJSONObject.optString("imgCover");
-      paramSignatureTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem = localImageItem;
+      localImageItem.d = paramJSONObject.optString("content");
+      localImageItem.a = paramJSONObject.optString("img");
+      localImageItem.b = paramJSONObject.optInt("imgWidth");
+      localImageItem.c = paramJSONObject.optInt("imgHeight");
+      localImageItem.e = paramJSONObject.optString("imgCover");
+      paramSignatureTemplateInfo.D = localImageItem;
     }
   }
   
@@ -439,20 +439,20 @@ public class SignatureTemplateConfig
       } else {
         i = j - 1;
       }
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i].jdField_a_of_type_Int = j;
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i].jdField_a_of_type_JavaLangString = paramJSONObject.optString("pngZip");
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i].jdField_a_of_type_Float = ((float)paramJSONObject.optDouble("posX", 0.0D));
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i].jdField_b_of_type_Float = ((float)paramJSONObject.optDouble("posY", 0.0D));
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i].jdField_c_of_type_Float = ((float)paramJSONObject.optDouble("width", 0.0D));
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i].d = ((float)paramJSONObject.optDouble("height", 0.0D));
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i].jdField_b_of_type_Int = paramJSONObject.optInt("repeatTimes", 0);
-      paramSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[i].jdField_c_of_type_Int = paramJSONObject.optInt("interval", 0);
+      paramSignatureTemplateInfo.v[i].a = j;
+      paramSignatureTemplateInfo.v[i].b = paramJSONObject.optString("pngZip");
+      paramSignatureTemplateInfo.v[i].c = ((float)paramJSONObject.optDouble("posX", 0.0D));
+      paramSignatureTemplateInfo.v[i].d = ((float)paramJSONObject.optDouble("posY", 0.0D));
+      paramSignatureTemplateInfo.v[i].e = ((float)paramJSONObject.optDouble("width", 0.0D));
+      paramSignatureTemplateInfo.v[i].f = ((float)paramJSONObject.optDouble("height", 0.0D));
+      paramSignatureTemplateInfo.v[i].g = paramJSONObject.optInt("repeatTimes", 0);
+      paramSignatureTemplateInfo.v[i].h = paramJSONObject.optInt("interval", 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SignatureTemplateConfig
  * JD-Core Version:    0.7.0.1
  */

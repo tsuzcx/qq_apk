@@ -7,19 +7,9 @@ import com.tencent.mobileqq.qroute.QRoute;
 
 public class AudioProcess
 {
-  public static IAudioProcessApi a()
-  {
-    return ((IAudioProcessHelperApi)QRoute.api(IAudioProcessHelperApi.class)).getInstance();
-  }
-  
   public static IAudioProcessApi a(IAVEngineCommon paramIAVEngineCommon, ISetAudioFrameCallback paramISetAudioFrameCallback)
   {
     return ((IAudioProcessHelperApi)QRoute.api(IAudioProcessHelperApi.class)).createInstance(paramIAVEngineCommon, paramISetAudioFrameCallback);
-  }
-  
-  public static void a()
-  {
-    ((IAudioProcessHelperApi)QRoute.api(IAudioProcessHelperApi.class)).destroyInstance();
   }
   
   public static void a(byte[] paramArrayOfByte, float paramFloat)
@@ -40,6 +30,16 @@ public class AudioProcess
   public static boolean a(int paramInt)
   {
     return ((IAudioProcessHelperApi)QRoute.api(IAudioProcessHelperApi.class)).getInstance().startPlay(paramInt);
+  }
+  
+  public static IAudioProcessApi b()
+  {
+    return ((IAudioProcessHelperApi)QRoute.api(IAudioProcessHelperApi.class)).getInstance();
+  }
+  
+  public static void c()
+  {
+    ((IAudioProcessHelperApi)QRoute.api(IAudioProcessHelperApi.class)).destroyInstance();
   }
 }
 

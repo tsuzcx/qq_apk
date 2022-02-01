@@ -4,8 +4,6 @@ import android.graphics.Bitmap;
 
 public abstract interface INonMainProcAvatarLoader
 {
-  public abstract Bitmap a();
-  
   public abstract Bitmap a(String paramString, boolean paramBoolean);
   
   public abstract Bitmap a(String paramString, boolean paramBoolean, Bitmap paramBitmap);
@@ -18,13 +16,15 @@ public abstract interface INonMainProcAvatarLoader
   
   public abstract void a(FaceObserver paramFaceObserver);
   
-  public abstract void b();
+  public abstract Bitmap b();
   
   public abstract void b(FaceObserver paramFaceObserver);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.INonMainProcAvatarLoader
  * JD-Core Version:    0.7.0.1
  */

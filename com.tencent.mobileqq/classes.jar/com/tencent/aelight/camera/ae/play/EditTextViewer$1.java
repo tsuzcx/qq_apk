@@ -9,12 +9,12 @@ class EditTextViewer$1
   
   public void run()
   {
-    QQToast.a(this.this$0.getContext(), this.val$stringRes, 1).a();
+    QQToast.makeText(this.this$0.getContext(), this.val$stringRes, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.EditTextViewer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,64 +17,64 @@ import org.xml.sax.InputSource;
 
 public class AntiphishingUrlConfig
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private Handler jdField_a_of_type_AndroidOsHandler = new AntiphishingUrlConfig.1(this, Looper.getMainLooper());
-  private String jdField_a_of_type_JavaLangString = "antiphishingConfig";
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = null;
-  private int c = 1;
-  private int d = 2;
+  private String a = "antiphishingConfig";
+  private int b = 0;
+  private ArrayList<String> c = null;
+  private long d = 0L;
+  private int e = 0;
+  private boolean f = false;
+  private int g = 1;
+  private int h = 2;
+  private String i = null;
+  private Context j = null;
+  private Handler k = new AntiphishingUrlConfig.1(this, Looper.getMainLooper());
   
-  public static long a()
+  public static long c()
   {
     StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
     long l = localStatFs.getBlockSize();
     return localStatFs.getAvailableBlocks() * l;
   }
   
-  private String a()
+  private String d()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
     localStringBuilder.append("/Tencent/com/tencent/mobileqq/antiphishingconfig.xml");
     localStringBuilder.toString();
-    return this.jdField_b_of_type_JavaLangString;
+    return this.i;
   }
   
   public ArrayList<String> a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (!this.jdField_a_of_type_Boolean)) {
-      a();
+    if ((this.c == null) && (!this.f)) {
+      b();
     }
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.c;
   }
   
   public void a(int paramInt, String paramString1, String paramString2, Context paramContext)
   {
-    if (paramInt <= this.jdField_a_of_type_Int)
+    if (paramInt <= this.b)
     {
-      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.a;
       paramString2 = new StringBuilder();
       paramString2.append("nNewVersion:");
       paramString2.append(paramInt);
       paramString2.append("nLocalConfigVer:");
-      paramString2.append(this.jdField_a_of_type_Int);
+      paramString2.append(this.b);
       paramString2.append("Do not Need Update!");
       QLog.d(paramString1, 4, paramString2.toString());
       return;
     }
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Int == paramInt) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 7200000L))
+    if ((this.d != 0L) && (this.e == paramInt) && (System.currentTimeMillis() - this.d < 7200000L))
     {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "Config Updata, Frequence limited!");
+      QLog.d(this.a, 1, "Config Updata, Frequence limited!");
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Int = paramInt;
-    String str = this.jdField_a_of_type_JavaLangString;
+    this.d = System.currentTimeMillis();
+    this.e = paramInt;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("filehash:");
     localStringBuilder.append(paramString2);
@@ -86,14 +86,14 @@ public class AntiphishingUrlConfig
   
   public void a(String paramString, Context paramContext)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.i = paramString;
+    this.j = paramContext;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Parase Config!");
-    Object localObject = a();
+    QLog.d(this.a, 2, "Parase Config!");
+    Object localObject = d();
     if (localObject == null) {
       return false;
     }
@@ -102,8 +102,8 @@ public class AntiphishingUrlConfig
     try
     {
       SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new InputStreamReader(new FileInputStream((File)localObject), "UTF-8")), localSAXForHandler);
-      this.jdField_a_of_type_Int = localSAXForHandler.a();
-      this.jdField_a_of_type_JavaUtilArrayList = localSAXForHandler.a();
+      this.b = localSAXForHandler.a();
+      this.c = localSAXForHandler.b();
       return true;
     }
     catch (Exception localException)
@@ -115,7 +115,7 @@ public class AntiphishingUrlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.AntiphishingUrlConfig
  * JD-Core Version:    0.7.0.1
  */

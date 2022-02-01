@@ -2,46 +2,43 @@ package com.tencent.mobileqq.kandian.biz.video.danmaku.ext;
 
 import android.os.Message;
 import android.view.View;
-import com.tencent.mobileqq.danmaku.core.AbsWindow;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-import com.tencent.mobileqq.danmaku.data.BaseDanmaku;
-import com.tencent.mobileqq.danmaku.inject.DanmakuContext;
-import com.tencent.mobileqq.danmaku.tool.DanmakuDrawTimer;
-import com.tencent.mobileqq.danmaku.tool.TouchPoint;
+import com.tencent.common.danmaku.core.AbsWindow;
+import com.tencent.common.danmaku.core.DanmakuManager;
+import com.tencent.common.danmaku.data.BaseDanmaku;
+import com.tencent.common.danmaku.inject.DanmakuContext;
+import com.tencent.common.danmaku.render.IDanmakuView;
+import com.tencent.common.danmaku.tool.DanmakuDrawTimer;
+import com.tencent.common.danmaku.tool.TouchPoint;
+import java.util.List;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ext/DanmakuManagerExt;", "Lcom/tencent/mobileqq/danmaku/core/DanmakuManager;", "danmakuView", "Landroid/view/View;", "danmakuContext", "Lcom/tencent/mobileqq/danmaku/inject/DanmakuContext;", "(Landroid/view/View;Lcom/tencent/mobileqq/danmaku/inject/DanmakuContext;)V", "CLICK", "", "drawTimerExt", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ext/DanmakuDrawTimerExt;", "handleTouchEventSync", "", "getHandleTouchEventSync", "()Z", "setHandleTouchEventSync", "(Z)V", "<set-?>", "isPaused", "needPauseOnUpdate", "updatePlayerTimeImmediately", "forceDrawOneFrame", "", "forceMeasure", "danmaku", "Lcom/tencent/mobileqq/danmaku/data/BaseDanmaku;", "getPlayerTime", "", "handelUpdate", "handleRelease", "handleSeek", "msg", "Landroid/os/Message;", "onClickDanmakuView", "point", "Lcom/tencent/mobileqq/danmaku/tool/TouchPoint;", "onDanmakuViewCreated", "pause", "resume", "setPlayerSpeedRatio", "speedRatio", "", "start", "startTime", "updateFrame", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ext/DanmakuManagerExt;", "Lcom/tencent/common/danmaku/core/DanmakuManager;", "danmakuView", "Landroid/view/View;", "danmakuContext", "Lcom/tencent/common/danmaku/inject/DanmakuContext;", "(Landroid/view/View;Lcom/tencent/common/danmaku/inject/DanmakuContext;)V", "CLICK", "", "drawTimerExt", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ext/DanmakuDrawTimerExt;", "handleTouchEventSync", "", "getHandleTouchEventSync", "()Z", "setHandleTouchEventSync", "(Z)V", "<set-?>", "isPaused", "needPauseOnUpdate", "updatePlayerTimeImmediately", "forceDrawOneFrame", "", "forceMeasure", "danmaku", "Lcom/tencent/common/danmaku/data/BaseDanmaku;", "getPlayerTime", "", "handelUpdate", "handleRelease", "handleSeek", "msg", "Landroid/os/Message;", "onClickDanmakuView", "point", "Lcom/tencent/common/danmaku/tool/TouchPoint;", "onDanmakuViewCreated", "pause", "resume", "setDisableSync", "forceVsync", "(Ljava/lang/Boolean;)V", "setPlayerSpeedRatio", "speedRatio", "", "setUseUiTime", "start", "startTime", "updateFrame", "uploadDanmaku", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class DanmakuManagerExt
   extends DanmakuManager
 {
-  public static final DanmakuManagerExt.Companion a;
-  private final int jdField_a_of_type_Int = 10;
-  private final DanmakuDrawTimerExt jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuDrawTimerExt = new DanmakuDrawTimerExt();
-  private boolean c;
-  private boolean d;
-  private boolean e;
-  private boolean f;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt$Companion = new DanmakuManagerExt.Companion(null);
-  }
+  public static final DanmakuManagerExt.Companion m = new DanmakuManagerExt.Companion(null);
+  private final int n = 10;
+  private final DanmakuDrawTimerExt o = new DanmakuDrawTimerExt();
+  private boolean p;
+  private boolean q;
+  private boolean r;
+  private boolean s;
   
   public DanmakuManagerExt(@Nullable View paramView, @Nullable DanmakuContext paramDanmakuContext)
   {
     super(paramView, paramDanmakuContext);
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuToolDanmakuDrawTimer = ((DanmakuDrawTimer)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuDrawTimerExt);
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreAbsWindow.a((DanmakuDrawTimer)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuDrawTimerExt);
+    this.b = ((DanmakuDrawTimer)this.o);
+    this.j.a((DanmakuDrawTimer)this.o);
   }
   
   @Nullable
   public final BaseDanmaku<?, ?> a(@NotNull TouchPoint paramTouchPoint)
   {
     Intrinsics.checkParameterIsNotNull(paramTouchPoint, "point");
-    BaseDanmaku localBaseDanmaku = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreAbsWindow.a(paramTouchPoint);
+    BaseDanmaku localBaseDanmaku = this.j.a(paramTouchPoint);
     if (localBaseDanmaku != null) {
       localBaseDanmaku.a(paramTouchPoint);
     }
@@ -50,14 +47,14 @@ public final class DanmakuManagerExt
   
   public final void a(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuDrawTimerExt.a(paramFloat);
+    this.o.a(paramFloat);
   }
   
   public void a(long paramLong)
   {
     super.a(paramLong);
-    this.e = false;
-    this.d = false;
+    this.r = false;
+    this.q = false;
   }
   
   protected void a(@Nullable Message paramMessage)
@@ -69,90 +66,125 @@ public final class DanmakuManagerExt
       paramMessage = null;
     }
     if (paramMessage != null) {
-      this.f = true;
+      this.s = true;
     }
   }
   
   public void a(@Nullable BaseDanmaku<?, ?> paramBaseDanmaku)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreAbsWindow.b(paramBaseDanmaku);
+    this.j.b(paramBaseDanmaku);
   }
   
-  public final void a(boolean paramBoolean)
+  public final void a(@Nullable Boolean paramBoolean)
   {
-    this.c = paramBoolean;
-  }
-  
-  public long b()
-  {
-    if (this.f)
+    if (paramBoolean != null)
     {
-      DanmakuContext localDanmakuContext = this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext;
-      Intrinsics.checkExpressionValueIsNotNull(localDanmakuContext, "mDanmakuContext");
-      this.b = localDanmakuContext.a();
-      this.f = false;
+      paramBoolean.booleanValue();
+      this.a.a(paramBoolean.booleanValue());
     }
-    return super.b();
   }
   
   public void b()
   {
     super.b();
-    this.e = false;
-    this.d = false;
+    this.r = false;
+    this.q = false;
+  }
+  
+  public final void b(@Nullable Boolean paramBoolean)
+  {
+    if (paramBoolean != null)
+    {
+      paramBoolean.booleanValue();
+      this.a.b(paramBoolean.booleanValue());
+    }
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    this.p = paramBoolean;
   }
   
   public void c()
   {
     super.c();
-    this.d = true;
-  }
-  
-  public final boolean e()
-  {
-    return this.d;
-  }
-  
-  protected void i()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    super.i();
+    this.q = true;
   }
   
   protected void j()
   {
+    this.c = false;
     super.j();
-    if (this.e) {
-      c();
-    }
   }
   
   protected void k()
   {
-    super.k();
-    p();
-  }
-  
-  public void l()
-  {
-    super.l();
-    if (this.d) {
-      q();
+    DanmakuContext localDanmakuContext = this.g;
+    Intrinsics.checkExpressionValueIsNotNull(localDanmakuContext, "mDanmakuContext");
+    int j = localDanmakuContext.l();
+    localDanmakuContext = this.g;
+    Intrinsics.checkExpressionValueIsNotNull(localDanmakuContext, "mDanmakuContext");
+    int k = localDanmakuContext.l();
+    int i = 0;
+    while (i < j)
+    {
+      int i1 = this.i.size();
+      super.k();
+      i += k - (this.i.size() - i1);
     }
   }
   
-  public final void q()
+  public long p()
   {
-    if (this.d)
+    if (this.s)
+    {
+      DanmakuContext localDanmakuContext = this.g;
+      Intrinsics.checkExpressionValueIsNotNull(localDanmakuContext, "mDanmakuContext");
+      this.f = localDanmakuContext.e();
+      this.s = false;
+    }
+    return super.p();
+  }
+  
+  protected void r()
+  {
+    super.r();
+    if (this.r) {
+      c();
+    }
+  }
+  
+  protected void s()
+  {
+    super.s();
+    x();
+  }
+  
+  public void t()
+  {
+    super.t();
+    if (this.q) {
+      z();
+    }
+  }
+  
+  public final boolean y()
+  {
+    return this.q;
+  }
+  
+  public final void z()
+  {
+    if (this.q)
     {
       super.b();
-      this.e = true;
+      this.r = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.ext.DanmakuManagerExt
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,14 @@ class RIJSkinOperationPopupStep$7
 {
   RIJSkinOperationPopupStep$7(RIJSkinOperationPopupStep paramRIJSkinOperationPopupStep) {}
   
-  public void g()
+  public void f()
   {
-    RIJSkinOperationPopupStep.a(this.a);
+    RIJSkinOperationPopupStep.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJSkinOperationPopupStep.7
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ class WatchTogetherVideoDecodeHelper$8
 {
   public void run()
   {
-    if (!WatchTogetherVideoDecodeHelper.c(this.this$0)) {
+    if (!WatchTogetherVideoDecodeHelper.h(this.this$0)) {
       WatchTogetherVideoDecodeHelper.a(this.this$0, "onGainEglContext");
     }
   }

@@ -63,14 +63,14 @@ public class TextEffectModule
           return false;
         }
         paramJSONObject = ((IArkDictManager)localAppInterface.getRuntimeService(IArkDictManager.class, "all")).wordSegment(paramJSONObject);
-        if (!paramJSONObject.jdField_a_of_type_Boolean)
+        if (!paramJSONObject.a)
         {
           paramInvokeCallback.exec(-1, "sdk init failed! soLoaded.");
           return false;
         }
-        if (paramJSONObject.jdField_a_of_type_ArrayOfJavaLangString != null)
+        if (paramJSONObject.c != null)
         {
-          paramJSONObject = paramJSONObject.jdField_a_of_type_ArrayOfJavaLangString;
+          paramJSONObject = paramJSONObject.c;
           int j = paramJSONObject.length;
           int i = 0;
           while (i < j)
@@ -96,7 +96,7 @@ public class TextEffectModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qg.modules.TextEffectModule
  * JD-Core Version:    0.7.0.1
  */

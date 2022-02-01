@@ -30,9 +30,9 @@ final class QfavHelper$3
     //   32: iconst_2
     //   33: ldc 44
     //   35: invokestatic 48	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   38: invokestatic 53	cooperation/qqfav/QfavHelper:a	()Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   38: invokestatic 54	cooperation/qqfav/QfavHelper:d	()Ljava/util/concurrent/atomic/AtomicBoolean;
     //   41: iconst_1
-    //   42: invokevirtual 59	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   42: invokevirtual 60	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   45: aload_0
     //   46: getfield 12	cooperation/qqfav/QfavHelper$3:a	Ljava/lang/Runnable;
     //   49: iconst_5
@@ -44,15 +44,15 @@ final class QfavHelper$3
     //   59: ifeq +11 -> 70
     //   62: ldc 42
     //   64: iconst_2
-    //   65: ldc 61
+    //   65: ldc 62
     //   67: invokestatic 48	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   70: aload_1
     //   71: ldc 28
-    //   73: new 63	cooperation/qqfav/QfavHelper$3$1
+    //   73: new 64	cooperation/qqfav/QfavHelper$3$1
     //   76: dup
     //   77: aload_0
-    //   78: invokespecial 66	cooperation/qqfav/QfavHelper$3$1:<init>	(Lcooperation/qqfav/QfavHelper$3;)V
-    //   81: invokevirtual 70	com/tencent/mobileqq/pluginsdk/PluginManagerClient:installPlugin	(Ljava/lang/String;Lcom/tencent/mobileqq/pluginsdk/OnPluginInstallListener;)V
+    //   78: invokespecial 67	cooperation/qqfav/QfavHelper$3$1:<init>	(Lcooperation/qqfav/QfavHelper$3;)V
+    //   81: invokevirtual 71	com/tencent/mobileqq/pluginsdk/PluginManagerClient:installPlugin	(Ljava/lang/String;Lcom/tencent/mobileqq/pluginsdk/OnPluginInstallListener;)V
     //   84: return
     //   85: astore_1
     //   86: return
@@ -70,7 +70,7 @@ final class QfavHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavHelper.3
  * JD-Core Version:    0.7.0.1
  */

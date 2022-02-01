@@ -24,22 +24,22 @@ public class GdtPreDownloadListenerAdapter
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    onDownloadStatusChanged(11, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
+    onDownloadStatusChanged(11, paramDownloadInfo.t, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    a(11, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c, paramInt1);
+    a(11, paramDownloadInfo.t, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c, paramInt1);
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    onDownloadStatusChanged(10, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
+    onDownloadStatusChanged(10, paramDownloadInfo.t, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    onDownloadStatusChanged(9, paramDownloadInfo.f, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
+    onDownloadStatusChanged(9, paramDownloadInfo.t, new Pair(paramDownloadInfo.d, paramDownloadInfo.e), paramDownloadInfo.c);
   }
   
   public void onDownloadProgressUpdate(List<Object> paramList, List<Pair<String, String>> paramList1)
@@ -83,7 +83,7 @@ public class GdtPreDownloadListenerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtPreDownloadListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

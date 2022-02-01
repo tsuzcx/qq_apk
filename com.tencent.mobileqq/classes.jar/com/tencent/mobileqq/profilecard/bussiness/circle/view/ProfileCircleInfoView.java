@@ -79,7 +79,7 @@ public class ProfileCircleInfoView
     localDynamicEffectTextView.setSingleLine(true);
     localDynamicEffectTextView.setTextColor(-13604865);
     localDynamicEffectTextView.setTextSize(2, 12.0F);
-    localDynamicEffectTextView.setDrawableResource(2130844140);
+    localDynamicEffectTextView.setDrawableResource(2130845251);
     return localDynamicEffectTextView;
   }
   
@@ -205,7 +205,7 @@ public class ProfileCircleInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.circle.view.ProfileCircleInfoView
  * JD-Core Version:    0.7.0.1
  */

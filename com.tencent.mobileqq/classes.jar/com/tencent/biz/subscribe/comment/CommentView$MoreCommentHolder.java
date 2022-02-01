@@ -6,12 +6,12 @@ import android.widget.TextView;
 
 class CommentView$MoreCommentHolder
 {
-  public ImageView a;
   public LinearLayout a;
-  public TextView a;
-  public LinearLayout b;
   public TextView b;
   public TextView c;
+  public TextView d;
+  public ImageView e;
+  public LinearLayout f;
 }
 
 

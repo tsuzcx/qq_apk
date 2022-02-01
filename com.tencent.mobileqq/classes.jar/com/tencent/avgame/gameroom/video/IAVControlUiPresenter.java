@@ -5,8 +5,6 @@ import com.tencent.avgame.gamelogic.data.EngineData;
 
 public abstract interface IAVControlUiPresenter
 {
-  public abstract ImageView a();
-  
   public abstract void a(int paramInt);
   
   public abstract void a(EngineData paramEngineData);
@@ -17,9 +15,11 @@ public abstract interface IAVControlUiPresenter
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract boolean b();
-  
   public abstract void c(boolean paramBoolean);
+  
+  public abstract ImageView h();
+  
+  public abstract boolean j();
 }
 
 

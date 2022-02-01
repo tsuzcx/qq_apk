@@ -38,7 +38,7 @@ public class LoginHelper
   public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
     ThemeUiPlugin.destroy(paramQQAppInterface);
-    ChatBackgroundManager.b();
+    ChatBackgroundManager.j();
     Object localObject = paramQQAppInterface.getApp().getSharedPreferences("unreadcount", 4).edit();
     ((SharedPreferences.Editor)localObject).putInt("unread", 0);
     ((SharedPreferences.Editor)localObject).commit();
@@ -46,7 +46,7 @@ public class LoginHelper
     if (GlobalImageCache.a != null) {
       GlobalImageCache.a.evictAll();
     }
-    if ((QQPlayerService.a()) && (paramActivity != null))
+    if ((QQPlayerService.b()) && (paramActivity != null))
     {
       localObject = new Intent();
       ((Intent)localObject).setAction("qqplayer_exit_action");
@@ -107,7 +107,7 @@ public class LoginHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.LoginHelper
  * JD-Core Version:    0.7.0.1
  */

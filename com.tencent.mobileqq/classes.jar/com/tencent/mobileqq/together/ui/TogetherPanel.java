@@ -13,68 +13,68 @@ import com.tencent.qphone.base.util.QLog;
 public class TogetherPanel
   implements PopupWindow.OnDismissListener
 {
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  TogetherPopupDialog jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog;
+  TogetherPopupDialog a;
+  BaseActivity b;
   
   public TogetherPanel(BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherPanel", 2, "destroyPanel");
-    }
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog.d();
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog = null;
+    this.b = paramBaseActivity;
   }
   
   public void a(TroopChatPie paramTroopChatPie, View paramView, int paramInt)
   {
-    paramView = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("input_method");
+    paramView = (InputMethodManager)this.b.getSystemService("input_method");
     if (paramView.isActive()) {
-      paramView.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView().getWindowToken(), 0);
+      paramView.hideSoftInputFromWindow(this.b.getWindow().getDecorView().getWindowToken(), 0);
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog;
+    paramView = this.a;
     if (paramView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog = TogetherPopupDialog.a(paramTroopChatPie, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, -1, -1, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog.setOnDismissListener(this);
-      TogetherControlManager.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a();
+      this.a = TogetherPopupDialog.a(paramTroopChatPie, this.b, -1, -1, paramInt);
+      this.a.setOnDismissListener(this);
+      TogetherControlManager.a(this.b.app).c();
     }
     else if (paramInt == 1)
     {
-      paramView.c();
+      paramView.b();
     }
-    paramTroopChatPie = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow();
+    paramTroopChatPie = this.b.getWindow();
     if (paramTroopChatPie != null)
     {
       paramView = paramTroopChatPie.getAttributes();
       paramView.alpha = 0.5F;
       paramTroopChatPie.setAttributes(paramView);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog.setAnimationStyle(2131755680);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog.showAtLocation(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView(), 80, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog.b();
+    this.a.setAnimationStyle(2131952641);
+    this.a.showAtLocation(this.b.getWindow().getDecorView(), 80, 0, 0);
+    this.a.a();
   }
   
   public boolean a()
   {
-    TogetherPopupDialog localTogetherPopupDialog = this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog;
+    TogetherPopupDialog localTogetherPopupDialog = this.a;
     if ((localTogetherPopupDialog != null) && (localTogetherPopupDialog.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherUiTogetherPopupDialog.dismiss();
+      this.a.dismiss();
       return true;
     }
     return false;
   }
   
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherPanel", 2, "destroyPanel");
+    }
+    a();
+    this.a.c();
+    this.a = null;
+  }
+  
   public void onDismiss()
   {
-    TogetherControlManager.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(false);
-    Window localWindow = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow();
+    TogetherControlManager.a(this.b.app).a(false);
+    Window localWindow = this.b.getWindow();
     if (localWindow != null)
     {
       WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
@@ -85,7 +85,7 @@ public class TogetherPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.TogetherPanel
  * JD-Core Version:    0.7.0.1
  */

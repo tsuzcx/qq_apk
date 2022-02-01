@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import com.tencent.mobileqq.apollo.res.api.impl.ApolloResDownloaderImpl;
+import com.tencent.mobileqq.apollo.utils.ApolloResDownloaderUtil;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
@@ -14,17 +14,17 @@ final class ApolloSSOConfig$3
   
   public void run()
   {
-    Object localObject = ApolloResDownloaderImpl.getDownloaderInterface(this.jdField_a_of_type_MqqAppAppRuntime);
+    Object localObject = ApolloResDownloaderUtil.a(this.a);
     boolean bool;
     if (localObject != null)
     {
-      DownloadTask localDownloadTask = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask;
+      DownloadTask localDownloadTask = this.b;
       ((DownloaderInterface)localObject).startDownload(localDownloadTask, localDownloadTask.a(), null);
       bool = false;
     }
     else
     {
-      DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, null);
+      DownloaderFactory.a(this.b, null);
       bool = true;
     }
     if (QLog.isColorLevel())
@@ -38,7 +38,7 @@ final class ApolloSSOConfig$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.3
  * JD-Core Version:    0.7.0.1
  */

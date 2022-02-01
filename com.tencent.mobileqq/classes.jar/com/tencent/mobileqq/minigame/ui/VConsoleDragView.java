@@ -51,8 +51,8 @@ public class VConsoleDragView
   
   private void initScreenConfig()
   {
-    this.mScreenWidth = ViewUtils.a();
-    int j = ViewUtils.b();
+    this.mScreenWidth = ViewUtils.getScreenWidth();
+    int j = ViewUtils.getScreenHeight();
     int i;
     if (LiuHaiUtils.b()) {
       i = ImmersiveUtils.getStatusBarHeight(getContext());
@@ -157,8 +157,8 @@ public class VConsoleDragView
   
   public void requestLandscapeLayout()
   {
-    int i = ViewUtils.a();
-    int k = ViewUtils.b();
+    int i = ViewUtils.getScreenWidth();
+    int k = ViewUtils.getScreenHeight();
     if (i > k)
     {
       j = i;
@@ -188,7 +188,7 @@ public class VConsoleDragView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.VConsoleDragView
  * JD-Core Version:    0.7.0.1
  */

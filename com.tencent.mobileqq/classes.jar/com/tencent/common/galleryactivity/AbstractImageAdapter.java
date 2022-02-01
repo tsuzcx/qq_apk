@@ -7,14 +7,14 @@ import com.tencent.image.URLDrawable;
 public abstract class AbstractImageAdapter
   extends BaseAdapter
 {
-  AbstractImageListModel jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
-  private AbstractProgressView jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+  private AbstractProgressView a;
+  AbstractImageListModel h;
   
   private AbstractProgressView a(int paramInt)
   {
-    AbstractImageListModel localAbstractImageListModel = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
+    AbstractImageListModel localAbstractImageListModel = this.h;
     if ((localAbstractImageListModel != null) && (paramInt == localAbstractImageListModel.b())) {
-      return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView;
+      return this.a;
     }
     return null;
   }
@@ -45,11 +45,6 @@ public abstract class AbstractImageAdapter
     }
   }
   
-  public AbstractImageListModel a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
     AbstractProgressView localAbstractProgressView = a(paramInt1);
@@ -70,25 +65,30 @@ public abstract class AbstractImageAdapter
   
   public void a(AbstractImageListModel paramAbstractImageListModel)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel = paramAbstractImageListModel;
+    this.h = paramAbstractImageListModel;
   }
   
   public void a(AbstractProgressView paramAbstractProgressView)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractProgressView = paramAbstractProgressView;
+    this.a = paramAbstractProgressView;
   }
   
   public void b(int paramInt1, int paramInt2)
   {
     AbstractProgressView localAbstractProgressView = a(paramInt1);
-    if ((localAbstractProgressView != null) && (localAbstractProgressView.a())) {
+    if ((localAbstractProgressView != null) && (localAbstractProgressView.d())) {
       localAbstractProgressView.a(paramInt2);
     }
   }
   
+  public AbstractImageListModel d()
+  {
+    return this.h;
+  }
+  
   public int getCount()
   {
-    AbstractImageListModel localAbstractImageListModel = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
+    AbstractImageListModel localAbstractImageListModel = this.h;
     if (localAbstractImageListModel == null) {
       return 0;
     }
@@ -97,11 +97,11 @@ public abstract class AbstractImageAdapter
   
   public Object getItem(int paramInt)
   {
-    AbstractImageListModel localAbstractImageListModel = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
+    AbstractImageListModel localAbstractImageListModel = this.h;
     if (localAbstractImageListModel == null) {
       return null;
     }
-    return localAbstractImageListModel.a(paramInt);
+    return localAbstractImageListModel.c(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -111,7 +111,7 @@ public abstract class AbstractImageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AbstractImageAdapter
  * JD-Core Version:    0.7.0.1
  */

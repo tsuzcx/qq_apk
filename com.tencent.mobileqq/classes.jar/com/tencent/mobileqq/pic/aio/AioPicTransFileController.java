@@ -109,33 +109,6 @@ public class AioPicTransFileController
     return bool1;
   }
   
-  public void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    Iterator localIterator = a().entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (IHttpCommunicatorListener)((Map.Entry)localIterator.next()).getValue();
-      if (a((IHttpCommunicatorListener)localObject))
-      {
-        localObject = (BaseTransProcessor)localObject;
-        if ((paramString.equals(((BaseTransProcessor)localObject).mUiRequest.mPeerUin)) && (((BaseTransProcessor)localObject).mIsPause))
-        {
-          ((BaseTransProcessor)localObject).resume();
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("resume pic:");
-            localStringBuilder.append(((BaseTransProcessor)localObject).mUiRequest.mUniseq);
-            QLog.d("cancelpic", 2, localStringBuilder.toString());
-          }
-        }
-      }
-    }
-  }
-  
   public boolean a(String paramString)
   {
     boolean bool1 = false;
@@ -168,7 +141,34 @@ public class AioPicTransFileController
     return bool1;
   }
   
-  public boolean b(String paramString)
+  public void b(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    Iterator localIterator = a().entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (IHttpCommunicatorListener)((Map.Entry)localIterator.next()).getValue();
+      if (a((IHttpCommunicatorListener)localObject))
+      {
+        localObject = (BaseTransProcessor)localObject;
+        if ((paramString.equals(((BaseTransProcessor)localObject).mUiRequest.mPeerUin)) && (((BaseTransProcessor)localObject).mIsPause))
+        {
+          ((BaseTransProcessor)localObject).resume();
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("resume pic:");
+            localStringBuilder.append(((BaseTransProcessor)localObject).mUiRequest.mUniseq);
+            QLog.d("cancelpic", 2, localStringBuilder.toString());
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean c(String paramString)
   {
     if (paramString == null) {
       return false;
@@ -187,7 +187,7 @@ public class AioPicTransFileController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.aio.AioPicTransFileController
  * JD-Core Version:    0.7.0.1
  */

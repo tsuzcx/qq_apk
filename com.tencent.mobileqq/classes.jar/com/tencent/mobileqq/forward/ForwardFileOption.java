@@ -86,6 +86,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.SimpleModeHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.mobileqq.widget.QQToast;
@@ -105,144 +106,41 @@ import org.jetbrains.annotations.NotNull;
 public class ForwardFileOption
   extends ForwardFileBaseOption
 {
-  private static ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  private static FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private ForwardNewVersionDialog jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog;
-  private EditText jdField_b_of_type_AndroidWidgetEditText;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  boolean j;
-  protected boolean k;
-  boolean l = false;
-  boolean m = false;
-  boolean n = false;
-  private boolean o;
+  private static FileManagerEntity ap;
+  private static ChatMessage aq;
+  boolean a = false;
+  protected boolean ak;
+  boolean al = false;
+  boolean am = false;
+  boolean an = false;
+  private boolean ao;
+  private ImageView ar;
+  private PopupWindow as;
+  private TextView at = null;
+  private ForwardNewVersionDialog au;
+  private SparseIntArray av;
+  private EditText aw;
+  private TextView ax;
+  private EditText ay;
   
   public ForwardFileOption(Intent paramIntent)
   {
     super(paramIntent);
-    this.jdField_j_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 10;
-  }
-  
-  private void I()
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseIntArray != null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 2131698302);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(-1, 2131698296);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(-2, 2131698297);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(-3, 2131698294);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(-4, 2131698303);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(-5, 2131698300);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(-6, 2131698298);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(-7, 2131698301);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(-8, 2131698295);
-  }
-  
-  private void J()
-  {
-    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
-    if (localPopupWindow != null) {
-      localPopupWindow.dismiss();
-    }
-  }
-  
-  private void K()
-  {
-    Object localObject1 = a();
-    if (localObject1 != null)
-    {
-      int i = ((ForwardFileInfo)localObject1).b();
-      if (((i == 10000) || (i == 10006)) && (g() == 2))
-      {
-        a(f(), String.valueOf(((ForwardFileInfo)localObject1).a()));
-        return;
-      }
-      long l1;
-      Object localObject2;
-      if ((i != 10000) && (i != 10001) && (i != 10002) && (i != 10004) && (i != 10003))
-      {
-        if (i == 10006)
-        {
-          l1 = ((ForwardFileInfo)localObject1).b();
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l1);
-          if (localObject2 != null)
-          {
-            localObject2 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject2);
-            l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("last_time", 0L);
-            String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sender_uin");
-            i = FileManagerUtil.a(((TroopFileStatusInfo)localObject2).g);
-            if ((i != 0) && (i != 2))
-            {
-              QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, null, (TroopFileStatusInfo)localObject2, str, l1, 12, false);
-              return;
-            }
-            long l2 = ((ForwardFileInfo)localObject1).a();
-            QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, null, null, l2, (TroopFileStatusInfo)localObject2, str, l1, -1, 12, null, false, false);
-          }
-        }
-        else if (i == 10013)
-        {
-          l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("qfavId", -1L);
-          if (l1 != -1L) {
-            QfavHelper.a(this.jdField_a_of_type_AndroidAppActivity, "", l1);
-          }
-        }
-      }
-      else
-      {
-        l1 = ((ForwardFileInfo)localObject1).b();
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l1);
-        if (localObject1 != null)
-        {
-          if ((((FileManagerEntity)localObject1).nFileType != 0) && (((FileManagerEntity)localObject1).nFileType != 2))
-          {
-            localObject1 = new FileModelAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject1);
-            localObject2 = new FileBrowserParam().a(12);
-            ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.jdField_a_of_type_AndroidAppActivity, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
-            return;
-          }
-          FileModel.a((FileManagerEntity)localObject1).a(this.jdField_a_of_type_AndroidAppActivity, i, 12);
-        }
-      }
-    }
-    else if (FileUtils.fileExistsAndNotEmpty(this.jdField_i_of_type_JavaLangString))
-    {
-      try
-      {
-        localObject1 = FileManagerUtil.a(new FileInfo(this.jdField_i_of_type_JavaLangString));
-        if (localObject1 != null)
-        {
-          FileModel.a((FileManagerEntity)localObject1).a(this.jdField_a_of_type_AndroidAppActivity, 12);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
+    this.L = 10;
   }
   
   public static int a(FileManagerEntity paramFileManagerEntity)
   {
-    int i1 = 10000;
-    int i = i1;
+    int j = 10000;
+    int i = j;
     if (paramFileManagerEntity != null)
     {
-      i = i1;
+      i = j;
       switch (paramFileManagerEntity.getCloudType())
       {
       case 4: 
       default: 
-        i = i1;
+        i = j;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -256,7 +154,7 @@ public class ForwardFileOption
         return 10011;
       case 6: 
       case 7: 
-        if (FileUtil.a(paramFileManagerEntity.getFilePath())) {
+        if (FileUtil.b(paramFileManagerEntity.getFilePath())) {
           return 10000;
         }
         return 10009;
@@ -269,70 +167,15 @@ public class ForwardFileOption
     return i;
   }
   
-  private Drawable a()
-  {
-    String str = g();
-    if (FileUtils.fileExistsAndNotEmpty(str))
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.getLoadingDrawable();
-      localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.getFailedDrawable();
-      return URLDrawable.getFileDrawable(str, localURLDrawableOptions);
-    }
-    return null;
-  }
-  
-  private TextWatcher a()
-  {
-    return new ForwardFileOption.12(this);
-  }
-  
-  private View.OnClickListener a()
-  {
-    return new ForwardFileOption.8(this);
-  }
-  
-  private View.OnLongClickListener a()
-  {
-    return new ForwardFileOption.13(this);
-  }
-  
-  @NotNull
-  private View.OnTouchListener a()
-  {
-    return new ForwardFileOption.7(this);
-  }
-  
   private View.OnTouchListener a(View paramView)
   {
     return new ForwardFileOption.9(this, paramView);
   }
   
-  private TextView.OnEditorActionListener a()
-  {
-    return new ForwardFileOption.11(this);
-  }
-  
-  private ForwardFileInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo;
-    }
-    if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (this.jdField_c_of_type_JavaUtilArrayList.size() == 1)) {
-      return (ForwardFileInfo)this.jdField_c_of_type_JavaUtilArrayList.get(0);
-    }
-    return null;
-  }
-  
-  public static ForwardFileInfo a(FileManagerEntity paramFileManagerEntity)
-  {
-    return a(paramFileManagerEntity, null);
-  }
-  
   public static ForwardFileInfo a(FileManagerEntity paramFileManagerEntity, ChatMessage paramChatMessage)
   {
-    jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
-    jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    ap = paramFileManagerEntity;
+    aq = paramChatMessage;
     paramChatMessage = new ForwardFileInfo();
     paramChatMessage.b(a(paramFileManagerEntity));
     paramChatMessage.d(paramFileManagerEntity.getCloudType());
@@ -371,7 +214,7 @@ public class ForwardFileOption
     localObject = ((StringBuilder)localObject).toString();
     try
     {
-      ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramString, (String)localObject, 600, 800);
+      ImageUtil.a(this.q.getApplication(), paramString, (String)localObject, 600, 800);
       return localObject;
     }
     catch (Exception paramString) {}
@@ -381,57 +224,57 @@ public class ForwardFileOption
   private void a(int paramInt1, int paramInt2, RelativeLayout paramRelativeLayout)
   {
     paramRelativeLayout.setPadding(0, paramInt1, 0, paramInt1);
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localURLImageView.setId(2131367191);
+    URLImageView localURLImageView = new URLImageView(this.s);
+    localURLImageView.setId(2131433647);
     localURLImageView.setAdjustViewBounds(true);
-    localURLImageView.setMaxHeight(ViewUtils.a(140.0F));
+    localURLImageView.setMaxHeight(ViewUtils.dip2px(140.0F));
     localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     Object localObject = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     paramRelativeLayout.addView(localURLImageView, (ViewGroup.LayoutParams)localObject);
-    localObject = new View(this.jdField_a_of_type_AndroidAppActivity);
-    ((View)localObject).setId(2131367186);
+    localObject = new View(this.s);
+    ((View)localObject).setId(2131433642);
     ((View)localObject).setBackgroundColor(Color.argb(0, 0, 0, 0));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(6, 2131367191);
-    localLayoutParams.addRule(8, 2131367191);
-    localLayoutParams.addRule(5, 2131367191);
-    localLayoutParams.addRule(7, 2131367191);
+    localLayoutParams.addRule(6, 2131433647);
+    localLayoutParams.addRule(8, 2131433647);
+    localLayoutParams.addRule(5, 2131433647);
+    localLayoutParams.addRule(7, 2131433647);
     paramRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    ((ImageView)localObject).setId(2131367192);
+    localObject = new ImageView(this.s);
+    ((ImageView)localObject).setId(2131433648);
     localLayoutParams = new RelativeLayout.LayoutParams(paramInt2, paramInt2);
     localLayoutParams.addRule(13);
     paramRelativeLayout.addView((View)localObject, localLayoutParams);
-    paramRelativeLayout = a();
+    paramRelativeLayout = aJ();
     if (paramRelativeLayout != null) {
       localURLImageView.setImageDrawable(paramRelativeLayout);
     }
-    ((ImageView)localObject).setImageResource(2130840135);
+    ((ImageView)localObject).setImageResource(2130840439);
   }
   
   private void a(int paramInt, RelativeLayout paramRelativeLayout)
   {
     paramRelativeLayout.setPadding(0, paramInt, 0, paramInt);
-    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localURLImageView.setId(2131367191);
+    URLImageView localURLImageView = new URLImageView(this.s);
+    localURLImageView.setId(2131433647);
     localURLImageView.setAdjustViewBounds(true);
-    localURLImageView.setMaxHeight(ViewUtils.a(140.0F));
+    localURLImageView.setMaxHeight(ViewUtils.dip2px(140.0F));
     localURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     Object localObject = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     paramRelativeLayout.addView(localURLImageView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetImageView = localURLImageView;
-    localObject = new View(this.jdField_a_of_type_AndroidAppActivity);
-    ((View)localObject).setId(2131367186);
+    this.ar = localURLImageView;
+    localObject = new View(this.s);
+    ((View)localObject).setId(2131433642);
     ((View)localObject).setBackgroundColor(Color.argb(0, 0, 0, 0));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(6, 2131367191);
-    localLayoutParams.addRule(8, 2131367191);
-    localLayoutParams.addRule(5, 2131367191);
-    localLayoutParams.addRule(7, 2131367191);
+    localLayoutParams.addRule(6, 2131433647);
+    localLayoutParams.addRule(8, 2131433647);
+    localLayoutParams.addRule(5, 2131433647);
+    localLayoutParams.addRule(7, 2131433647);
     paramRelativeLayout.addView((View)localObject, localLayoutParams);
-    paramRelativeLayout = a();
+    paramRelativeLayout = aJ();
     if (paramRelativeLayout != null) {
       localURLImageView.setImageDrawable(paramRelativeLayout);
     }
@@ -439,9 +282,9 @@ public class ForwardFileOption
   
   private void a(int paramInt, RelativeLayout paramRelativeLayout, ImageView paramImageView, AsyncImageView paramAsyncImageView, LinearLayout paramLinearLayout1, TextView paramTextView, LinearLayout paramLinearLayout2)
   {
-    ImageButton localImageButton = new ImageButton(this.jdField_a_of_type_AndroidAppActivity);
+    ImageButton localImageButton = new ImageButton(this.s);
     localImageButton.setBackgroundColor(Color.parseColor("#FFFFFF"));
-    localImageButton.setImageResource(2130844403);
+    localImageButton.setImageResource(2130845720);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(paramInt, paramInt);
     paramLinearLayout1.addView(localImageButton, localLayoutParams);
     paramLinearLayout1.setGravity(16);
@@ -455,155 +298,102 @@ public class ForwardFileOption
     paramTextView.setOnTouchListener(new ForwardFileOption.4(this, localImageButton));
     localImageButton.setOnClickListener(new ForwardFileOption.5(this));
     localImageButton.setOnTouchListener(new ForwardFileOption.6(this, localImageButton));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(a());
-    paramAsyncImageView.setOnClickListener(a());
-    paramImageView.setOnClickListener(a());
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(a(paramLinearLayout2));
+    this.at.setOnClickListener(ay());
+    paramAsyncImageView.setOnClickListener(ay());
+    paramImageView.setOnClickListener(ay());
+    this.at.setOnTouchListener(a(paramLinearLayout2));
     paramAsyncImageView.setOnTouchListener(a(paramLinearLayout2));
     paramImageView.setOnTouchListener(a(paramLinearLayout2));
   }
   
-  private void a(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null)
-    {
-      View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560820, null);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView, -1, -2, true);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(localView);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setSoftInputMode(16);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)localView.findViewById(2131372936));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364437));
-      this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(false);
-      this.jdField_a_of_type_AndroidWidgetEditText.setMaxLines(2);
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(a());
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnLongClickListener(a());
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(a());
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(b());
-      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.findViewById(2131368874));
-      if (this.jdField_b_of_type_AndroidWidgetEditText != null) {
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new ForwardFileOption.10(this));
-      }
-    }
-    b(paramView);
-  }
-  
   private void a(ForwardFileInfo paramForwardFileInfo, int paramInt)
   {
-    if ((paramForwardFileInfo != null) && (paramForwardFileInfo.a() != null) && (paramForwardFileInfo.a().length() > 1) && (paramInt != 1) && (paramInt != 0) && (paramInt != 2) && (paramForwardFileInfo.d() < 104857600L)) {
-      this.n = true;
+    if ((paramForwardFileInfo != null) && (paramForwardFileInfo.d() != null) && (paramForwardFileInfo.d().length() > 1) && (paramInt != 1) && (paramInt != 0) && (paramInt != 2) && (paramForwardFileInfo.j() < 104857600L)) {
+      this.an = true;
     }
-    if ((paramForwardFileInfo == null) && (this.jdField_j_of_type_JavaLangString.length() > 1) && (this.jdField_i_of_type_JavaLangString.length() > 1) && (this.jdField_b_of_type_Long < 104857600L)) {
-      this.n = true;
+    if ((paramForwardFileInfo == null) && (this.aj.length() > 1) && (this.ah.length() > 1) && (this.ai < 104857600L)) {
+      this.an = true;
     }
   }
   
   private void a(ForwardFileInfo paramForwardFileInfo, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, RelativeLayout paramRelativeLayout)
   {
     paramRelativeLayout.setPadding(0, paramInt5, 0, paramInt5);
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localImageView.setId(2131367185);
-    localImageView.setImageResource(2130840133);
+    ImageView localImageView = new ImageView(this.s);
+    localImageView.setId(2131433641);
+    localImageView.setImageResource(2130840437);
     Object localObject1 = new RelativeLayout.LayoutParams(paramInt2, paramInt3);
     ((RelativeLayout.LayoutParams)localObject1).addRule(11);
     ((RelativeLayout.LayoutParams)localObject1).addRule(15);
     ((RelativeLayout.LayoutParams)localObject1).leftMargin = paramInt1;
     paramRelativeLayout.addView(localImageView, (ViewGroup.LayoutParams)localObject1);
-    AsyncImageView localAsyncImageView = new AsyncImageView(this.jdField_a_of_type_AndroidAppActivity);
-    localAsyncImageView.setId(2131367187);
-    localObject1 = new RelativeLayout.LayoutParams(paramInt6, paramInt6);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(15);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(0, 2131367185);
-    paramRelativeLayout.addView(localAsyncImageView, (ViewGroup.LayoutParams)localObject1);
-    localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-    ((LinearLayout)localObject1).setId(2131367190);
-    ((LinearLayout)localObject1).setOrientation(1);
-    ((LinearLayout)localObject1).setBackgroundColor(Color.argb(0, 0, 0, 0));
-    Object localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(0, 2131367187);
+    AsyncImageView localAsyncImageView = new AsyncImageView(this.s);
+    localAsyncImageView.setId(2131433643);
+    Object localObject2 = new RelativeLayout.LayoutParams(paramInt6, paramInt6);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(0, 2131433641);
+    paramRelativeLayout.addView(localAsyncImageView, (ViewGroup.LayoutParams)localObject2);
+    Object localObject3 = new LinearLayout(this.s);
+    ((LinearLayout)localObject3).setId(2131433646);
+    ((LinearLayout)localObject3).setOrientation(1);
+    ((LinearLayout)localObject3).setBackgroundColor(Color.argb(0, 0, 0, 0));
+    localObject2 = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(0, 2131433643);
     ((RelativeLayout.LayoutParams)localObject2).addRule(9);
-    paramRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    this.jdField_a_of_type_AndroidWidgetTextView = new EllipsizingTextView(this.jdField_a_of_type_AndroidAppActivity, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367188);
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(0.0F, 1.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
-    ((LinearLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
+    paramRelativeLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject2);
+    this.at = new EllipsizingTextView(this.s, null);
+    this.at.setId(2131433644);
+    this.at.setMaxLines(1);
+    this.at.setIncludeFontPadding(false);
+    this.at.setLineSpacing(0.0F, 1.0F);
+    this.at.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+    this.at.setTextColor(Color.parseColor("#777777"));
+    this.at.setTextSize(1, 14.0F);
+    ((LinearLayout)localObject3).addView(this.at);
+    localObject2 = new LinearLayout(this.s);
     ((LinearLayout)localObject2).setOrientation(0);
-    Object localObject3 = new RelativeLayout.LayoutParams(-2, paramInt4);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131367188);
-    ((LinearLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-    localObject3 = new TextView(this.jdField_a_of_type_AndroidAppActivity);
-    ((TextView)localObject3).setId(2131367189);
+    Object localObject4 = new RelativeLayout.LayoutParams(-2, paramInt4);
+    ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131433644);
+    ((LinearLayout)localObject3).addView((View)localObject2, (ViewGroup.LayoutParams)localObject4);
+    localObject3 = new TextView(this.s);
+    ((TextView)localObject3).setId(2131433645);
     ((TextView)localObject3).setSingleLine();
     ((TextView)localObject3).setGravity(16);
     ((TextView)localObject3).setTextColor(Color.parseColor("#777777"));
     ((TextView)localObject3).setTextSize(1, 14.0F);
     ((LinearLayout)localObject2).addView((View)localObject3);
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-    localLinearLayout.setId(2131367186);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setBackgroundColor(Color.argb(0, 0, 0, 0));
+    SimpleModeHelper.a(this.at, (TextView)localObject3, localImageView, (ViewGroup.LayoutParams)localObject1);
+    localObject4 = new LinearLayout(this.s);
+    ((LinearLayout)localObject4).setId(2131433642);
+    ((LinearLayout)localObject4).setOrientation(1);
+    ((LinearLayout)localObject4).setBackgroundColor(Color.argb(0, 0, 0, 0));
     localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(6, 2131367190);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131367190);
-    paramRelativeLayout.addView(localLinearLayout, (ViewGroup.LayoutParams)localObject1);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(6, 2131433646);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(8, 2131433646);
+    paramRelativeLayout.addView((View)localObject4, (ViewGroup.LayoutParams)localObject1);
     if (paramForwardFileInfo != null) {
-      localObject1 = paramForwardFileInfo.d();
+      localObject1 = paramForwardFileInfo.i();
     } else {
-      localObject1 = this.jdField_j_of_type_JavaLangString;
+      localObject1 = this.aj;
     }
-    long l1;
+    long l;
     if (paramForwardFileInfo != null) {
-      l1 = paramForwardFileInfo.d();
+      l = paramForwardFileInfo.j();
     } else {
-      l1 = this.jdField_b_of_type_Long;
+      l = this.ai;
     }
     FileManagerUtil.a(localAsyncImageView, (String)localObject1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+    this.at.setText((CharSequence)localObject1);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(FileUtil.a(l1, this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().densityDpi));
+    localStringBuilder.append(FileUtil.a(l, this.s.getResources().getDisplayMetrics().densityDpi));
     localStringBuilder.append(" ");
     ((TextView)localObject3).setText(localStringBuilder.toString());
-    a(paramForwardFileInfo, FileManagerUtil.a((String)localObject1));
-    if (this.n)
+    a(paramForwardFileInfo, FileManagerUtil.c((String)localObject1));
+    if (this.an)
     {
-      I();
-      a(paramInt3, paramRelativeLayout, localImageView, localAsyncImageView, (LinearLayout)localObject2, (TextView)localObject3, localLinearLayout);
+      aA();
+      a(paramInt3, paramRelativeLayout, localImageView, localAsyncImageView, (LinearLayout)localObject2, (TextView)localObject3, (LinearLayout)localObject4);
     }
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("startToGalleryWithPath: path=");
-      ((StringBuilder)localObject).append(paramString1);
-      QLog.d("ForwardOption.ForwardFileOption", 2, ((StringBuilder)localObject).toString());
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      localObject = new AIOImageData();
-      ((AIOImageData)localObject).a = paramString1;
-      ((AIOImageData)localObject).b = paramString1;
-      ((AIOImageData)localObject).c = paramString1;
-      ((AIOImageData)localObject).e = false;
-      paramString1 = new Bundle();
-      paramString1.putBoolean("extra.EXTRA_NOT_CLEAR_TOP", true);
-      paramString1.putBoolean("key_allow_forward_photo_preview_edit", true);
-      a(paramString1, new AIOImageProviderService(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString2, 0, null), (AIORichMediaData)localObject);
-      G();
-    }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    return (paramInt == 2) || (paramInt == 3) || (paramInt == 0) || (paramInt == 7) || (paramInt == 6) || (paramInt == 10) || (paramInt == 9);
   }
   
   private boolean a(RecentUser paramRecentUser)
@@ -611,7 +401,7 @@ public class ForwardFileOption
     if (paramRecentUser.getType() == 9501) {
       return false;
     }
-    if ((paramRecentUser.getType() == 1006) && (!a(ForwardAbility.ForwardAbilityType.h))) {
+    if ((paramRecentUser.getType() == 1006) && (!a(ForwardAbility.ForwardAbilityType.i))) {
       return false;
     }
     if (paramRecentUser.getType() == 6004) {
@@ -624,15 +414,15 @@ public class ForwardFileOption
   private boolean a(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: new 855	java/io/File
+    //   0: new 544	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 856	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 546	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_1
-    //   9: new 855	java/io/File
+    //   9: new 544	java/io/File
     //   12: dup
     //   13: aload_2
-    //   14: invokespecial 856	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 546	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore 11
     //   19: aconst_null
     //   20: astore 12
@@ -640,20 +430,20 @@ public class ForwardFileOption
     //   23: astore 10
     //   25: aconst_null
     //   26: astore_2
-    //   27: new 858	java/io/FileInputStream
+    //   27: new 548	java/io/FileInputStream
     //   30: dup
     //   31: aload_1
-    //   32: invokespecial 861	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   35: invokevirtual 865	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   32: invokespecial 551	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   35: invokevirtual 555	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   38: astore_1
-    //   39: new 867	java/io/FileOutputStream
+    //   39: new 557	java/io/FileOutputStream
     //   42: dup
     //   43: aload 11
-    //   45: invokespecial 868	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   48: invokevirtual 869	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   45: invokespecial 558	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   48: invokevirtual 559	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   51: astore 11
     //   53: aload_1
-    //   54: invokevirtual 873	java/nio/channels/FileChannel:size	()J
+    //   54: invokevirtual 564	java/nio/channels/FileChannel:size	()J
     //   57: lstore 4
     //   59: iconst_0
     //   60: istore_3
@@ -668,7 +458,7 @@ public class ForwardFileOption
     //   73: lload 6
     //   75: lload 4
     //   77: aload 11
-    //   79: invokevirtual 877	java/nio/channels/FileChannel:transferTo	(JJLjava/nio/channels/WritableByteChannel;)J
+    //   79: invokevirtual 568	java/nio/channels/FileChannel:transferTo	(JJLjava/nio/channels/WritableByteChannel;)J
     //   82: lstore 8
     //   84: lload 8
     //   86: lconst_0
@@ -687,19 +477,19 @@ public class ForwardFileOption
     //   108: aload_1
     //   109: ifnull +15 -> 124
     //   112: aload_1
-    //   113: invokevirtual 880	java/nio/channels/FileChannel:close	()V
+    //   113: invokevirtual 571	java/nio/channels/FileChannel:close	()V
     //   116: goto +8 -> 124
     //   119: astore_1
     //   120: aload_1
-    //   121: invokevirtual 881	java/io/IOException:printStackTrace	()V
+    //   121: invokevirtual 574	java/io/IOException:printStackTrace	()V
     //   124: aload 11
     //   126: ifnull +16 -> 142
     //   129: aload 11
-    //   131: invokevirtual 880	java/nio/channels/FileChannel:close	()V
+    //   131: invokevirtual 571	java/nio/channels/FileChannel:close	()V
     //   134: goto +8 -> 142
     //   137: astore_1
     //   138: aload_1
-    //   139: invokevirtual 881	java/io/IOException:printStackTrace	()V
+    //   139: invokevirtual 574	java/io/IOException:printStackTrace	()V
     //   142: iconst_1
     //   143: ireturn
     //   144: astore_2
@@ -732,24 +522,24 @@ public class ForwardFileOption
     //   191: aconst_null
     //   192: astore_1
     //   193: aload 10
-    //   195: invokevirtual 881	java/io/IOException:printStackTrace	()V
+    //   195: invokevirtual 574	java/io/IOException:printStackTrace	()V
     //   198: aload_2
     //   199: ifnull +15 -> 214
     //   202: aload_2
-    //   203: invokevirtual 880	java/nio/channels/FileChannel:close	()V
+    //   203: invokevirtual 571	java/nio/channels/FileChannel:close	()V
     //   206: goto +8 -> 214
     //   209: astore_2
     //   210: aload_2
-    //   211: invokevirtual 881	java/io/IOException:printStackTrace	()V
+    //   211: invokevirtual 574	java/io/IOException:printStackTrace	()V
     //   214: aload_1
     //   215: ifnull +14 -> 229
     //   218: aload_1
-    //   219: invokevirtual 880	java/nio/channels/FileChannel:close	()V
+    //   219: invokevirtual 571	java/nio/channels/FileChannel:close	()V
     //   222: iconst_0
     //   223: ireturn
     //   224: astore_1
     //   225: aload_1
-    //   226: invokevirtual 881	java/io/IOException:printStackTrace	()V
+    //   226: invokevirtual 574	java/io/IOException:printStackTrace	()V
     //   229: iconst_0
     //   230: ireturn
     //   231: astore 12
@@ -770,19 +560,19 @@ public class ForwardFileOption
     //   254: aload 11
     //   256: ifnull +16 -> 272
     //   259: aload 11
-    //   261: invokevirtual 880	java/nio/channels/FileChannel:close	()V
+    //   261: invokevirtual 571	java/nio/channels/FileChannel:close	()V
     //   264: goto +8 -> 272
     //   267: astore_2
     //   268: aload_2
-    //   269: invokevirtual 881	java/io/IOException:printStackTrace	()V
+    //   269: invokevirtual 574	java/io/IOException:printStackTrace	()V
     //   272: aload 10
     //   274: ifnull +16 -> 290
     //   277: aload 10
-    //   279: invokevirtual 880	java/nio/channels/FileChannel:close	()V
+    //   279: invokevirtual 571	java/nio/channels/FileChannel:close	()V
     //   282: goto +8 -> 290
     //   285: astore_2
     //   286: aload_2
-    //   287: invokevirtual 881	java/io/IOException:printStackTrace	()V
+    //   287: invokevirtual 574	java/io/IOException:printStackTrace	()V
     //   290: goto +5 -> 295
     //   293: aload_1
     //   294: athrow
@@ -824,9 +614,576 @@ public class ForwardFileOption
     //   277	282	285	java/io/IOException
   }
   
-  private int b(int paramInt)
+  private void aA()
   {
-    SparseIntArray localSparseIntArray = this.jdField_a_of_type_AndroidUtilSparseIntArray;
+    if (this.av != null) {
+      return;
+    }
+    this.av = new SparseIntArray();
+    this.av.put(1, 2131896203);
+    this.av.put(-1, 2131896197);
+    this.av.put(-2, 2131896198);
+    this.av.put(-3, 2131896195);
+    this.av.put(-4, 2131896204);
+    this.av.put(-5, 2131896201);
+    this.av.put(-6, 2131896199);
+    this.av.put(-7, 2131896202);
+    this.av.put(-8, 2131896196);
+  }
+  
+  private void aB()
+  {
+    PopupWindow localPopupWindow = this.as;
+    if (localPopupWindow != null) {
+      localPopupWindow.dismiss();
+    }
+  }
+  
+  private TextView.OnEditorActionListener aC()
+  {
+    return new ForwardFileOption.11(this);
+  }
+  
+  private TextWatcher aD()
+  {
+    return new ForwardFileOption.12(this);
+  }
+  
+  private View.OnLongClickListener aE()
+  {
+    return new ForwardFileOption.13(this);
+  }
+  
+  private View.OnClickListener aF()
+  {
+    Object localObject1 = aK();
+    String str;
+    if (localObject1 != null) {
+      str = ((ForwardFileInfo)localObject1).i();
+    } else {
+      str = this.aj;
+    }
+    if (localObject1 != null) {
+      localObject1 = ((ForwardFileInfo)localObject1).d();
+    } else {
+      localObject1 = this.ah;
+    }
+    Object localObject2 = this.at;
+    if (localObject2 != null) {
+      localObject2 = ((TextView)localObject2).getText().toString();
+    } else {
+      localObject2 = "";
+    }
+    return new ForwardFileOption.14(this, str, (String)localObject1, h((String)localObject2));
+  }
+  
+  private boolean aG()
+  {
+    int i = this.s.getWindow().getDecorView().getHeight();
+    Rect localRect = new Rect();
+    this.s.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    return i * 3 / 4 > localRect.bottom;
+  }
+  
+  private boolean aH()
+  {
+    if (!this.an) {
+      return true;
+    }
+    if (this.t != null)
+    {
+      if (this.t.size() < 9) {
+        return true;
+      }
+      if ((this.t.containsKey("fileinfo_array")) && (this.t.getParcelableArrayList("fileinfo_array").size() > 1)) {
+        return true;
+      }
+      ForwardFileInfo localForwardFileInfo = aK();
+      String str2 = this.at.getText().toString();
+      String str1;
+      if (localForwardFileInfo != null) {
+        str1 = localForwardFileInfo.i();
+      } else {
+        str1 = this.aj;
+      }
+      if (str2.equals(str1)) {
+        return true;
+      }
+      if (localForwardFileInfo != null) {
+        str1 = localForwardFileInfo.d();
+      } else {
+        str1 = this.ah;
+      }
+      int i = str1.lastIndexOf('/');
+      Object localObject;
+      if ((i > -1) && (i < str1.length()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str1.substring(0, i + 1));
+        ((StringBuilder)localObject).append(str2);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = "";
+      }
+      if (a(str1, (String)localObject))
+      {
+        if (localForwardFileInfo != null)
+        {
+          localForwardFileInfo.d(str2);
+          localForwardFileInfo.a((String)localObject);
+          localForwardFileInfo.b(10000);
+          this.t.putParcelable("fileinfo", localForwardFileInfo);
+        }
+        this.t.putString("forward_filepath", (String)localObject);
+        this.r.putExtras(this.t);
+        return true;
+      }
+      g(-1);
+      return false;
+    }
+    return true;
+  }
+  
+  private int aI()
+  {
+    Object localObject = aK();
+    int i = -1;
+    if ((localObject == null) && (TextUtils.isEmpty(this.ah))) {
+      return -1;
+    }
+    if ((localObject != null) || (!TextUtils.isEmpty(this.ah)))
+    {
+      if (localObject != null) {
+        localObject = ((ForwardFileInfo)localObject).i();
+      } else {
+        localObject = this.ah;
+      }
+      String str = aw();
+      i = FileManagerUtil.c((String)localObject);
+      if ((i == 0) && (FileUtils.fileExistsAndNotEmpty(str))) {
+        return 2;
+      }
+      if ((i == 2) && (FileUtils.fileExistsAndNotEmpty(str))) {
+        return 3;
+      }
+      i = 1;
+    }
+    return i;
+  }
+  
+  private Drawable aJ()
+  {
+    String str = aw();
+    if (FileUtils.fileExistsAndNotEmpty(str))
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.getLoadingDrawable();
+      localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.getFailedDrawable();
+      return URLDrawable.getFileDrawable(str, localURLDrawableOptions);
+    }
+    return null;
+  }
+  
+  private ForwardFileInfo aK()
+  {
+    if (this.ad != null) {
+      return this.ad;
+    }
+    if ((this.ae != null) && (this.ae.size() == 1)) {
+      return (ForwardFileInfo)this.ae.get(0);
+    }
+    return null;
+  }
+  
+  private void aL()
+  {
+    Object localObject1 = aK();
+    if (localObject1 != null)
+    {
+      int i = ((ForwardFileInfo)localObject1).c();
+      if (((i == 10000) || (i == 10006)) && (aI() == 2))
+      {
+        b(au(), String.valueOf(((ForwardFileInfo)localObject1).b()));
+        return;
+      }
+      long l1;
+      Object localObject2;
+      if ((i != 10000) && (i != 10001) && (i != 10002) && (i != 10004) && (i != 10003))
+      {
+        if (i == 10006)
+        {
+          l1 = ((ForwardFileInfo)localObject1).e();
+          localObject2 = this.q.getFileManagerDataCenter().a(l1);
+          if (localObject2 != null)
+          {
+            localObject2 = TroopFileUtils.a(this.q, (FileManagerEntity)localObject2);
+            l1 = this.r.getLongExtra("last_time", 0L);
+            String str = this.r.getStringExtra("sender_uin");
+            i = FileManagerUtil.c(((TroopFileStatusInfo)localObject2).t);
+            if ((i != 0) && (i != 2))
+            {
+              QFileUtils.a(this.q, this.s, null, (TroopFileStatusInfo)localObject2, str, l1, 12, false);
+              return;
+            }
+            long l2 = ((ForwardFileInfo)localObject1).b();
+            QFileUtils.a(this.q, this.s, null, null, l2, (TroopFileStatusInfo)localObject2, str, l1, -1, 12, null, false, false);
+          }
+        }
+        else if (i == 10013)
+        {
+          l1 = this.r.getLongExtra("qfavId", -1L);
+          if (l1 != -1L) {
+            QfavHelper.a(this.s, "", l1);
+          }
+        }
+      }
+      else
+      {
+        l1 = ((ForwardFileInfo)localObject1).e();
+        localObject1 = this.q.getFileManagerDataCenter().a(l1);
+        if (localObject1 != null)
+        {
+          if ((((FileManagerEntity)localObject1).nFileType != 0) && (((FileManagerEntity)localObject1).nFileType != 2))
+          {
+            localObject1 = new FileModelAdapter(this.q, (FileManagerEntity)localObject1);
+            localObject2 = new FileBrowserParam().a(12);
+            ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.s, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
+            return;
+          }
+          FileModel.a((FileManagerEntity)localObject1).a(this.s, i, 12);
+        }
+      }
+    }
+    else if (FileUtils.fileExistsAndNotEmpty(this.ah))
+    {
+      try
+      {
+        localObject1 = FileManagerUtil.a(new FileInfo(this.ah));
+        if (localObject1 != null)
+        {
+          FileModel.a((FileManagerEntity)localObject1).a(this.s, 12);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  private String au()
+  {
+    String str2;
+    String str1;
+    if (this.ad == null)
+    {
+      str2 = this.r.getStringExtra("forward_filepath");
+      str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = this.t.getString("forward_filepath");
+      }
+    }
+    else
+    {
+      str2 = this.ad.d();
+      str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = this.ad.p();
+      }
+    }
+    if (TextUtils.isEmpty(str1)) {
+      return null;
+    }
+    int i = FileManagerUtil.c(str1);
+    if ((i != -1) && (i != 11)) {
+      return str1;
+    }
+    return a(str1);
+  }
+  
+  private void av()
+  {
+    String str = au();
+    if (FileUtils.fileExistsAndNotEmpty(str))
+    {
+      File localFile = new File(str);
+      this.aj = localFile.getName();
+      this.ah = str;
+      this.ai = localFile.length();
+    }
+  }
+  
+  private String aw()
+  {
+    Object localObject = aK();
+    if (localObject != null) {
+      return ((ForwardFileInfo)localObject).p();
+    }
+    String str = this.r.getStringExtra("forward_thumb");
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = this.t.getString("forward_thumb");
+    }
+    return localObject;
+  }
+  
+  @NotNull
+  private View.OnTouchListener ax()
+  {
+    return new ForwardFileOption.7(this);
+  }
+  
+  private View.OnClickListener ay()
+  {
+    return new ForwardFileOption.8(this);
+  }
+  
+  private int az()
+  {
+    Object localObject = this.t;
+    int i = -1;
+    if (localObject == null) {
+      return -1;
+    }
+    localObject = this.t.getParcelableArrayList("forward_multi_target");
+    if (localObject != null)
+    {
+      if (((List)localObject).size() > 1) {
+        i = 4;
+      }
+    }
+    else
+    {
+      int j = this.t.getInt("uintype", 0);
+      if (j != -1)
+      {
+        if (j != 0)
+        {
+          if (j == 1) {
+            i = 1;
+          }
+        }
+        else {
+          i = 2;
+        }
+      }
+      else {
+        i = 3;
+      }
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800AEE9", "0X800AEE9", i, 0, "", "", "", "");
+    return i;
+  }
+  
+  public static ForwardFileInfo b(FileManagerEntity paramFileManagerEntity)
+  {
+    return a(paramFileManagerEntity, null);
+  }
+  
+  private void b(View paramView)
+  {
+    if (this.as == null)
+    {
+      View localView = LayoutInflater.from(this.s).inflate(2131627078, null);
+      this.as = new PopupWindow(localView, -1, -2, true);
+      this.as.setContentView(localView);
+      this.as.setSoftInputMode(16);
+      this.aw = ((EditText)localView.findViewById(2131440500));
+      this.ax = ((TextView)localView.findViewById(2131430471));
+      this.aw.setSingleLine(false);
+      this.aw.setMaxLines(2);
+      this.aw.setOnEditorActionListener(aC());
+      this.aw.setOnLongClickListener(aE());
+      this.aw.addTextChangedListener(aD());
+      this.ax.setOnClickListener(aF());
+      this.ay = ((EditText)this.au.findViewById(2131435808));
+      if (this.ay != null) {
+        this.as.setOnDismissListener(new ForwardFileOption.10(this));
+      }
+    }
+    c(paramView);
+  }
+  
+  private void b(String paramString1, String paramString2)
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startToGalleryWithPath: path=");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d("ForwardOption.ForwardFileOption", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      localObject = new AIOImageData();
+      ((AIOImageData)localObject).a = paramString1;
+      ((AIOImageData)localObject).b = paramString1;
+      ((AIOImageData)localObject).c = paramString1;
+      ((AIOImageData)localObject).j = false;
+      paramString1 = new Bundle();
+      paramString1.putBoolean("extra.EXTRA_NOT_CLEAR_TOP", true);
+      paramString1.putBoolean("key_allow_forward_photo_preview_edit", true);
+      a(paramString1, new AIOImageProviderService(this.q.getCurrentUin(), paramString2, 0, null), (AIORichMediaData)localObject);
+      aq();
+    }
+  }
+  
+  private void b(String paramString1, String paramString2, String paramString3)
+  {
+    Object localObject1 = this.aw;
+    if (localObject1 == null) {
+      return;
+    }
+    localObject1 = ((EditText)localObject1).getText().toString();
+    this.aw.setSelection(((String)localObject1).length());
+    if ((localObject1 != null) && (((String)localObject1).length() > 0))
+    {
+      if (!((String)localObject1).matches("[^/\\\\\\\\<>*:?|\\\"]+"))
+      {
+        g(-7);
+        return;
+      }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramString3);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      paramString3 = this.at;
+      localObject1 = "";
+      if (paramString3 != null) {
+        paramString3 = paramString3.getText().toString();
+      } else {
+        paramString3 = "";
+      }
+      if (((String)localObject2).equals(paramString3))
+      {
+        ReportController.b(null, "dc00898", "", "", "0X800AEEB", "0X800AEEB", 0, 0, "", "", "", "");
+        aB();
+        return;
+      }
+      if (!((String)localObject2).equals(paramString1))
+      {
+        int j = paramString2.lastIndexOf('/');
+        int i = 0;
+        paramString1 = (String)localObject1;
+        if (j > -1)
+        {
+          paramString1 = (String)localObject1;
+          if (j < paramString2.length()) {
+            paramString1 = paramString2.substring(0, j + 1);
+          }
+        }
+        paramString1 = new File(paramString1).listFiles();
+        if ((paramString1 != null) && (paramString1.length > 0))
+        {
+          j = paramString1.length;
+          while (i < j)
+          {
+            paramString2 = paramString1[i];
+            if ((!paramString2.isDirectory()) && (paramString2.getName().toLowerCase().equals(((String)localObject2).toLowerCase())))
+            {
+              g(-3);
+              return;
+            }
+            i += 1;
+          }
+        }
+      }
+      paramString1 = this.at;
+      if (paramString1 != null) {
+        paramString1.setText((CharSequence)localObject2);
+      }
+      g(1);
+      ReportController.b(null, "dc00898", "", "", "0X800AEEB", "0X800AEEB", 0, 0, "", "", "", "");
+      aB();
+      return;
+    }
+    g(-6);
+  }
+  
+  private boolean b(RecentUser paramRecentUser)
+  {
+    if (((paramRecentUser.getType() != 1) || (c(paramRecentUser.uin))) && ((paramRecentUser.getType() != 0) || (CrmUtils.a(this.q, paramRecentUser.uin, paramRecentUser.getType()))) && (paramRecentUser.getType() != 3000))
+    {
+      if (-1L != FileManagerUtil.f(paramRecentUser.getType())) {
+        return true;
+      }
+      return (paramRecentUser.uin.equalsIgnoreCase(AppConstants.DATALINE_PC_UIN)) && (a(ForwardAbility.ForwardAbilityType.g)) && (as());
+    }
+    return true;
+  }
+  
+  private void c(View paramView)
+  {
+    if (this.as == null) {
+      return;
+    }
+    this.am = false;
+    Object localObject = this.ay;
+    if (localObject != null) {
+      ((EditText)localObject).setFocusable(false);
+    }
+    localObject = (InputMethodManager)this.s.getSystemService("input_method");
+    ((InputMethodManager)localObject).toggleSoftInput(1000, 2);
+    this.as.setFocusable(true);
+    this.as.setOutsideTouchable(true);
+    this.as.update();
+    this.as.setBackgroundDrawable(new BitmapDrawable());
+    this.as.showAtLocation(paramView.getRootView(), 80, 0, 0);
+    if (aG()) {
+      ((InputMethodManager)localObject).toggleSoftInput(0, 2);
+    }
+    paramView = this.au;
+    if (paramView != null) {
+      paramView.a();
+    }
+    this.aw.setFocusable(true);
+    this.aw.setFocusableInTouchMode(true);
+    this.aw.requestFocus();
+  }
+  
+  private boolean c(RecentUser paramRecentUser)
+  {
+    if (((paramRecentUser.getType() != 0) || (CrmUtils.a(this.q, paramRecentUser.uin, paramRecentUser.getType()))) && (paramRecentUser.getType() != 1) && (paramRecentUser.getType() != 3000) && (paramRecentUser.getType() != 1006) && (paramRecentUser.getType() != 1004))
+    {
+      if (paramRecentUser.getType() == 1000) {
+        return true;
+      }
+      return (paramRecentUser.uin.equalsIgnoreCase(AppConstants.DATALINE_PC_UIN)) && (a(ForwardAbility.ForwardAbilityType.g)) && (as());
+    }
+    return true;
+  }
+  
+  private boolean d(RecentUser paramRecentUser)
+  {
+    return paramRecentUser.getType() == 1;
+  }
+  
+  private boolean e(RecentUser paramRecentUser)
+  {
+    if (!Utils.b(paramRecentUser.uin))
+    {
+      if (((paramRecentUser.getType() == 0) && (!CrmUtils.a(this.q, paramRecentUser.uin, paramRecentUser.getType()))) || ((paramRecentUser.getType() == 1) && (a(d)) && (!c(paramRecentUser.uin))) || (paramRecentUser.getType() == 3000) || (FileManagerUtil.f(paramRecentUser.getType()) != -1L)) {
+        return true;
+      }
+    }
+    else if ((paramRecentUser.uin.equalsIgnoreCase(AppConstants.DATALINE_PC_UIN)) && (a(ForwardAbility.ForwardAbilityType.g)) && (as())) {
+      return true;
+    }
+    return false;
+  }
+  
+  private boolean f(int paramInt)
+  {
+    return (paramInt == 2) || (paramInt == 3) || (paramInt == 0) || (paramInt == 7) || (paramInt == 6) || (paramInt == 10) || (paramInt == 9);
+  }
+  
+  private int g(int paramInt)
+  {
+    SparseIntArray localSparseIntArray = this.av;
     int i;
     if (localSparseIntArray != null) {
       i = localSparseIntArray.get(paramInt, 0);
@@ -840,36 +1197,13 @@ public class ForwardFileOption
     } else {
       paramInt = 0;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramInt, i, 0).a();
+    QQToast.makeText(this.s, paramInt, i, 0).show();
     return paramInt;
   }
   
-  private View.OnClickListener b()
+  private String h(String paramString)
   {
-    Object localObject1 = a();
-    String str;
-    if (localObject1 != null) {
-      str = ((ForwardFileInfo)localObject1).d();
-    } else {
-      str = this.jdField_j_of_type_JavaLangString;
-    }
-    if (localObject1 != null) {
-      localObject1 = ((ForwardFileInfo)localObject1).a();
-    } else {
-      localObject1 = this.jdField_i_of_type_JavaLangString;
-    }
-    Object localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localObject2 != null) {
-      localObject2 = ((TextView)localObject2).getText().toString();
-    } else {
-      localObject2 = "";
-    }
-    return new ForwardFileOption.14(this, str, (String)localObject1, b((String)localObject2));
-  }
-  
-  private String b(String paramString)
-  {
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetEditText;
+    Object localObject1 = this.aw;
     Object localObject2 = "";
     if (localObject1 == null) {
       return "";
@@ -892,14 +1226,14 @@ public class ForwardFileOption
     if ((i > -1) && (i < ((String)localObject1).length()))
     {
       localObject2 = ((String)localObject1).substring(0, i);
-      this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject2);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(((String)localObject2).length());
+      this.aw.setText((CharSequence)localObject2);
+      this.aw.setSelection(((String)localObject2).length());
       localObject1 = ((String)localObject1).substring(i, ((String)localObject1).length());
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject1);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(((String)localObject1).length());
+      this.aw.setText((CharSequence)localObject1);
+      this.aw.setSelection(((String)localObject1).length());
       localObject1 = localObject2;
     }
     localObject2 = new StringBuilder();
@@ -908,346 +1242,480 @@ public class ForwardFileOption
     return ((StringBuilder)localObject2).toString();
   }
   
-  private void b(View paramView)
+  protected void Z()
   {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null) {
-      return;
+    this.as = null;
+    this.au = new ForwardNewVersionDialog(this.s);
+    this.au.a(2131627070);
+    Object localObject = this.au;
+    this.A = ((QQCustomDialog)localObject);
+    ((ForwardNewVersionDialog)localObject).a(G() ^ true);
+    this.au.c(210);
+    this.au.a(a());
+    this.au.setCanceledOnTouchOutside(false);
+    this.au.a(B(), H(), this.s.getResources().getString(C()), this.s.getResources().getString(D()), N(), P());
+    a(this.au);
+    localObject = this.au.getWindow();
+    ((Window)localObject).getDecorView().setPadding(0, 0, 0, 0);
+    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -2;
+    ((Window)localObject).setAttributes(localLayoutParams);
+    if (!this.s.isFinishing()) {
+      this.au.show();
     }
-    this.m = false;
-    Object localObject = this.jdField_b_of_type_AndroidWidgetEditText;
-    if (localObject != null) {
-      ((EditText)localObject).setFocusable(false);
-    }
-    localObject = (InputMethodManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method");
-    ((InputMethodManager)localObject).toggleSoftInput(1000, 2);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.update();
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView.getRootView(), 80, 0, 0);
-    if (d()) {
-      ((InputMethodManager)localObject).toggleSoftInput(0, 2);
-    }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog;
-    if (paramView != null) {
-      paramView.a();
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    this.A.setOnDismissListener(this);
   }
   
-  private void b(String paramString1, String paramString2, String paramString3)
+  protected View a()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetEditText;
-    if (localObject1 == null) {
+    Object localObject = aK();
+    int i = AIOUtils.b(8.0F, this.s.getResources());
+    int j = AIOUtils.b(12.0F, this.s.getResources());
+    AIOUtils.b(14.0F, this.s.getResources());
+    int k = AIOUtils.b(15.0F, this.s.getResources());
+    int m = AIOUtils.b(16.0F, this.s.getResources());
+    int n = AIOUtils.b(18.0F, this.s.getResources());
+    int i1 = AIOUtils.b(20.0F, this.s.getResources());
+    int i2 = AIOUtils.b(32.0F, this.s.getResources());
+    int i3 = AIOUtils.b(40.0F, this.s.getResources());
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.s);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localRelativeLayout.setOnClickListener(new ForwardFileOption.2(this));
+    localRelativeLayout.setOnTouchListener(ax());
+    localRelativeLayout.setLayoutParams(localLayoutParams);
+    int i4 = aI();
+    if (i4 == 2)
+    {
+      a(k, localRelativeLayout);
+      return localRelativeLayout;
+    }
+    if (i4 == 3)
+    {
+      a(k, i3, localRelativeLayout);
+      return localRelativeLayout;
+    }
+    if (i4 == 1)
+    {
+      a((ForwardFileInfo)localObject, i, j, m, n, i1, i2, localRelativeLayout);
+      return localRelativeLayout;
+    }
+    localRelativeLayout.setPadding(0, i1, 0, i1);
+    localObject = new AnimationTextView(this.s);
+    ((AnimationTextView)localObject).setText(n());
+    ((AnimationTextView)localObject).setMaxLines(2);
+    ((AnimationTextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
+    ((AnimationTextView)localObject).setTextColor(this.s.getResources().getColorStateList(2131166157));
+    ((AnimationTextView)localObject).setTextSize(14.0F);
+    localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    localLayoutParams.bottomMargin = ScreenUtil.dip2px(10.0F);
+    localRelativeLayout.addView((View)localObject, localLayoutParams);
+    localRelativeLayout.setOnClickListener(null);
+    return localRelativeLayout;
+  }
+  
+  public List<RecentUser> a(List<RecentUser> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.r.getIntExtra("forward_source_uin_type", 0) == 9501) {
+      return localArrayList;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      RecentUser localRecentUser = (RecentUser)paramList.next();
+      if ((localRecentUser != null) && (a(localRecentUser))) {
+        if ((this.ak) && (b(localRecentUser))) {
+          localArrayList.add(localRecentUser);
+        } else if ((this.ao) && (c(localRecentUser))) {
+          localArrayList.add(localRecentUser);
+        } else if ((this.al) && (d(localRecentUser))) {
+          localArrayList.add(localRecentUser);
+        } else if (e(localRecentUser)) {
+          localArrayList.add(localRecentUser);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    if ((paramInt1 == 19001) && (paramInt2 == -1))
+    {
+      paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+      Object localObject = au();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("refresh forward preview,editPicPath:");
+        localStringBuilder.append(paramIntent);
+        localStringBuilder.append(" :currentFile");
+        localStringBuilder.append((String)localObject);
+        QLog.d("ForwardOption.ForwardFileOption", 2, localStringBuilder.toString());
+      }
+      if (!((String)localObject).equals(paramIntent))
+      {
+        this.w = false;
+        this.t.remove("FORWARD_MSG_FOR_PIC");
+        this.t.putString("forward_filepath", paramIntent);
+        this.t.putString("forward_extra", paramIntent);
+        this.t.putBoolean("extra_is_edited_pic", true);
+        localObject = aK();
+        if (localObject != null)
+        {
+          ((ForwardFileInfo)localObject).a(paramIntent);
+          ((ForwardFileInfo)localObject).f(paramIntent);
+        }
+        paramIntent = aJ();
+        if (paramIntent != null) {
+          this.ar.setImageDrawable(paramIntent);
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    if ((this.ak) && (!this.a) && (-1L != FileManagerUtil.f(paramBundle.getInt("uintype"))))
+    {
+      DialogUtil.a(this.s, 230, this.s.getString(2131895443), this.s.getString(2131895396), null, this.s.getString(2131917392), new ForwardFileOption.1(this), null).show();
       return;
     }
-    localObject1 = ((EditText)localObject1).getText().toString();
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(((String)localObject1).length());
-    if ((localObject1 != null) && (((String)localObject1).length() > 0))
+    super.a(paramInt, paramBundle);
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    ArrayList localArrayList1 = this.t.getParcelableArrayList("fileinfo_array");
+    Object localObject1 = null;
+    if (localArrayList1 != null) {}
+    try
     {
-      if (!((String)localObject1).matches("[^/\\\\\\\\<>*:?|\\\"]+"))
+      localArrayList1 = (ArrayList)localArrayList1;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      label29:
+      ArrayList localArrayList2;
+      Object localObject2;
+      int i;
+      break label29;
+    }
+    localArrayList1 = null;
+    localArrayList2 = (ArrayList)this.t.get("android.intent.extra.STREAM");
+    if (localArrayList2.size() > 1)
+    {
+      if (localArrayList1 == null)
       {
-        b(-7);
-        return;
-      }
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(paramString3);
-      localObject2 = ((StringBuilder)localObject2).toString();
-      paramString3 = this.jdField_a_of_type_AndroidWidgetTextView;
-      localObject1 = "";
-      if (paramString3 != null) {
-        paramString3 = paramString3.getText().toString();
-      } else {
-        paramString3 = "";
-      }
-      if (((String)localObject2).equals(paramString3))
-      {
-        ReportController.b(null, "dc00898", "", "", "0X800AEEB", "0X800AEEB", 0, 0, "", "", "", "");
-        J();
-        return;
-      }
-      if (!((String)localObject2).equals(paramString1))
-      {
-        int i1 = paramString2.lastIndexOf('/');
-        int i = 0;
-        paramString1 = (String)localObject1;
-        if (i1 > -1)
+        localObject2 = new ArrayList();
+        i = 0;
+        for (;;)
         {
-          paramString1 = (String)localObject1;
-          if (i1 < paramString2.length()) {
-            paramString1 = paramString2.substring(0, i1 + 1);
+          localObject1 = localObject2;
+          if (i >= localArrayList2.size()) {
+            break;
           }
+          localObject1 = (Uri)localArrayList2.get(i);
+          ((ArrayList)localObject2).add(a(this.s, (Uri)localObject1));
+          i += 1;
         }
-        paramString1 = new File(paramString1).listFiles();
-        if ((paramString1 != null) && (paramString1.length > 0))
+      }
+    }
+    else
+    {
+      if (!aH()) {
+        return;
+      }
+      localObject2 = aK();
+      if (localObject2 != null)
+      {
+        localObject1 = new ArrayList();
+        ((ArrayList)localObject1).add(((ForwardFileInfo)localObject2).d());
+      }
+    }
+    paramIntent.putExtra("dataline_forward_type", 100);
+    paramIntent.putExtra("sendMultiple", true);
+    if (localArrayList1 == null) {
+      paramIntent.putStringArrayListExtra("dataline_forward_pathlist", (ArrayList)localObject1);
+    }
+  }
+  
+  public DeviceInfo[] a(DeviceInfo[] paramArrayOfDeviceInfo)
+  {
+    ArrayList localArrayList = new ArrayList();
+    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.q.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    int j = paramArrayOfDeviceInfo.length;
+    int i = 0;
+    while (i < j)
+    {
+      DeviceInfo localDeviceInfo = paramArrayOfDeviceInfo[i];
+      if (localDeviceInfo != null)
+      {
+        int k = FileManagerUtil.c(au());
+        ProductInfo localProductInfo = localSmartDeviceProxyMgr.b(localDeviceInfo.productId);
+        if (((k != 2) || (!localSmartDeviceProxyMgr.c(localDeviceInfo.din)) || (!localSmartDeviceProxyMgr.a(localDeviceInfo.din, 17))) && (localProductInfo != null) && (localProductInfo.isSupportMainMsgType(8)) && (a(k))) {
+          localArrayList.add(localDeviceInfo);
+        }
+      }
+      i += 1;
+    }
+    return (DeviceInfo[])localArrayList.toArray(new DeviceInfo[localArrayList.size()]);
+  }
+  
+  protected void b(Intent paramIntent)
+  {
+    if (!aH()) {
+      return;
+    }
+    paramIntent.putExtra("dataline_forward_type", 100);
+    if (this.ad == null)
+    {
+      String str2 = this.r.getStringExtra("forward_filepath");
+      String str1 = str2;
+      if (str2 == null) {
+        str1 = this.t.getString("forward_filepath");
+      }
+      paramIntent.putExtra("dataline_forward_path", str1);
+      return;
+    }
+    paramIntent.putExtra("dataline_forward_path", this.ad.d());
+  }
+  
+  protected void c()
+  {
+    if ((!this.al) && (ai()))
+    {
+      this.C.add(c);
+      this.C.add(j);
+    }
+    if ((!this.al) && (ag())) {
+      this.C.add(e);
+    }
+    if ((this.ad != null) && (this.ad.c() != 10006) && (this.ad.c() != 10003) && (this.ad.c() != 10002)) {
+      this.ad.c();
+    }
+    if (ah()) {
+      this.C.add(d);
+    }
+    if (this.ad != null)
+    {
+      if (DataLineHandler.b(this.q.getFileManagerDataCenter().a(this.ad.e())))
+      {
+        this.C.add(g);
+        this.C.add(l);
+      }
+    }
+    else if (this.ae != null)
+    {
+      Iterator localIterator = this.ae.iterator();
+      ForwardFileInfo localForwardFileInfo;
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localForwardFileInfo = (ForwardFileInfo)localIterator.next();
+      } while ((localForwardFileInfo == null) || (!DataLineHandler.b(this.q.getFileManagerDataCenter().a(localForwardFileInfo.e()))));
+      this.C.add(g);
+      this.C.add(l);
+    }
+    else
+    {
+      this.C.add(g);
+      this.C.add(l);
+    }
+    if ((this.r != null) && (this.r.getBooleanExtra("isFromFavorites", false))) {
+      this.C.add(g);
+    }
+    if ((this.r != null) && (this.r.getBooleanExtra("k_smartdevice", true)) && (aj()) && (f(FileManagerUtil.c(au())))) {
+      this.C.add(k);
+    }
+  }
+  
+  public boolean e()
+  {
+    super.e();
+    Object localObject = this.r;
+    boolean bool2 = false;
+    this.J = ((Intent)localObject).getBooleanExtra("forward _key_nojump", false);
+    if (this.ad != null)
+    {
+      int i = this.ad.o();
+      localObject = this.ad.d();
+      boolean bool3 = TextUtils.isEmpty((CharSequence)localObject);
+      if (this.ad.c() == 10006) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.ak = bool1;
+      if (this.ad.c() == 10009) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.al = bool1;
+      if (i == 2) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.ao = bool1;
+      boolean bool1 = bool2;
+      if ((bool3 ^ true)) {
+        if (i != 3)
         {
-          i1 = paramString1.length;
-          while (i < i1)
+          bool1 = bool2;
+          if (!FileUtils.fileExists((String)localObject)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
+      this.a = bool1;
+    }
+    else if (this.ae != null)
+    {
+      this.al = true;
+      localObject = this.ae.iterator();
+      ForwardFileInfo localForwardFileInfo;
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localForwardFileInfo = (ForwardFileInfo)((Iterator)localObject).next();
+      } while ((localForwardFileInfo == null) || (localForwardFileInfo.o() == 6));
+      this.al = false;
+    }
+    else if (this.r.getBooleanExtra("isFromShare", false))
+    {
+      this.a = true;
+    }
+    this.t.putString("leftBackText", this.s.getString(2131917002));
+    if ((this.ad == null) && (TextUtils.isEmpty(this.ah))) {
+      av();
+    }
+    return true;
+  }
+  
+  protected boolean f()
+  {
+    boolean bool = this.r.getBooleanExtra("isFromShare", false);
+    if (!aH()) {
+      return true;
+    }
+    Object localObject1;
+    Intent localIntent;
+    Object localObject2;
+    if (K())
+    {
+      localObject1 = M();
+      localIntent = AIOUtils.a(new Intent(this.s, SplashActivity.class), null);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("fileoption realForwardTo isfromshare=");
+        ((StringBuilder)localObject2).append(bool);
+        QLog.d("forward", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (bool)
+      {
+        this.t.putString("leftBackText", HardCodeUtil.a(2131902749));
+        localIntent.addFlags(268435456);
+        localIntent.addFlags(67108864);
+        localIntent.putExtras(this.t);
+        bool = c(localIntent);
+        if (this.K)
+        {
+          ForwardUtils.a(this.q, this.s, this.I, localIntent, null);
+          if ((QSecFramework.c().a(1003).booleanValue()) && (this.a))
           {
-            paramString2 = paramString1[i];
-            if ((!paramString2.isDirectory()) && (paramString2.getName().toLowerCase().equals(((String)localObject2).toLowerCase())))
+            localObject1 = ((List)localObject1).iterator();
+            while (((Iterator)localObject1).hasNext())
             {
-              b(-3);
-              return;
+              localObject2 = (ResultRecord)((Iterator)localObject1).next();
+              SecShareInfoUtil.a().a(4, au(), ((ResultRecord)localObject2).getUinType(), ((ResultRecord)localObject2).uin);
+              SecShareInfoUtil.a().c();
             }
-            i += 1;
           }
         }
-      }
-      paramString1 = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (paramString1 != null) {
-        paramString1.setText((CharSequence)localObject2);
-      }
-      b(1);
-      ReportController.b(null, "dc00898", "", "", "0X800AEEB", "0X800AEEB", 0, 0, "", "", "", "");
-      J();
-      return;
-    }
-    b(-6);
-  }
-  
-  private boolean b(RecentUser paramRecentUser)
-  {
-    if (((paramRecentUser.getType() != 1) || (a(paramRecentUser.uin))) && ((paramRecentUser.getType() != 0) || (CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUser.uin, paramRecentUser.getType()))) && (paramRecentUser.getType() != 3000))
-    {
-      if (-1L != FileManagerUtil.a(paramRecentUser.getType())) {
-        return true;
-      }
-      return (paramRecentUser.uin.equalsIgnoreCase(AppConstants.DATALINE_PC_UIN)) && (a(ForwardAbility.ForwardAbilityType.jdField_f_of_type_JavaLangInteger)) && (t());
-    }
-    return true;
-  }
-  
-  private boolean c(RecentUser paramRecentUser)
-  {
-    if (((paramRecentUser.getType() != 0) || (CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUser.uin, paramRecentUser.getType()))) && (paramRecentUser.getType() != 1) && (paramRecentUser.getType() != 3000) && (paramRecentUser.getType() != 1006) && (paramRecentUser.getType() != 1004))
-    {
-      if (paramRecentUser.getType() == 1000) {
-        return true;
-      }
-      return (paramRecentUser.uin.equalsIgnoreCase(AppConstants.DATALINE_PC_UIN)) && (a(ForwardAbility.ForwardAbilityType.jdField_f_of_type_JavaLangInteger)) && (t());
-    }
-    return true;
-  }
-  
-  private boolean d()
-  {
-    int i = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getHeight();
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    return i * 3 / 4 > localRect.bottom;
-  }
-  
-  private boolean d(RecentUser paramRecentUser)
-  {
-    return paramRecentUser.getType() == 1;
-  }
-  
-  private void e()
-  {
-    String str = f();
-    if (FileUtils.fileExistsAndNotEmpty(str))
-    {
-      File localFile = new File(str);
-      this.jdField_j_of_type_JavaLangString = localFile.getName();
-      this.jdField_i_of_type_JavaLangString = str;
-      this.jdField_b_of_type_Long = localFile.length();
-    }
-  }
-  
-  private boolean e(RecentUser paramRecentUser)
-  {
-    if (!Utils.a(paramRecentUser.uin))
-    {
-      if (((paramRecentUser.getType() == 0) && (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecentUser.uin, paramRecentUser.getType()))) || ((paramRecentUser.getType() == 1) && (a(jdField_c_of_type_JavaLangInteger)) && (!a(paramRecentUser.uin))) || (paramRecentUser.getType() == 3000) || (FileManagerUtil.a(paramRecentUser.getType()) != -1L)) {
-        return true;
-      }
-    }
-    else if ((paramRecentUser.uin.equalsIgnoreCase(AppConstants.DATALINE_PC_UIN)) && (a(ForwardAbility.ForwardAbilityType.jdField_f_of_type_JavaLangInteger)) && (t())) {
-      return true;
-    }
-    return false;
-  }
-  
-  private int f()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidOsBundle;
-    int i = -1;
-    if (localObject == null) {
-      return -1;
-    }
-    localObject = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("forward_multi_target");
-    if (localObject != null)
-    {
-      if (((List)localObject).size() > 1) {
-        i = 4;
-      }
-    }
-    else
-    {
-      int i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype", 0);
-      if (i1 != -1)
-      {
-        if (i1 != 0)
+        else if (!bool)
         {
-          if (i1 == 1) {
-            i = 1;
-          }
-        }
-        else {
-          i = 2;
+          ForwardUtils.a(this.q, this.s, this.I, localIntent, null);
         }
       }
-      else {
-        i = 3;
-      }
-    }
-    ReportController.b(null, "dc00898", "", "", "0X800AEE9", "0X800AEE9", i, 0, "", "", "", "");
-    return i;
-  }
-  
-  private String f()
-  {
-    String str2;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo == null)
-    {
-      str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("forward_filepath");
-      str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
-      }
-    }
-    else
-    {
-      str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a();
-      str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.f();
-      }
-    }
-    if (TextUtils.isEmpty(str1)) {
-      return null;
-    }
-    int i = FileManagerUtil.a(str1);
-    if ((i != -1) && (i != 11)) {
-      return str1;
-    }
-    return a(str1);
-  }
-  
-  private int g()
-  {
-    Object localObject = a();
-    int i = -1;
-    if ((localObject == null) && (TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString))) {
-      return -1;
-    }
-    if ((localObject != null) || (!TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)))
-    {
-      if (localObject != null) {
-        localObject = ((ForwardFileInfo)localObject).d();
-      } else {
-        localObject = this.jdField_i_of_type_JavaLangString;
-      }
-      String str = g();
-      i = FileManagerUtil.a((String)localObject);
-      if ((i == 0) && (FileUtils.fileExistsAndNotEmpty(str))) {
-        return 2;
-      }
-      if ((i == 2) && (FileUtils.fileExistsAndNotEmpty(str))) {
-        return 3;
-      }
-      i = 1;
-    }
-    return i;
-  }
-  
-  private String g()
-  {
-    Object localObject = a();
-    if (localObject != null) {
-      return ((ForwardFileInfo)localObject).f();
-    }
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("forward_thumb");
-    localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = this.jdField_a_of_type_AndroidOsBundle.getString("forward_thumb");
-    }
-    return localObject;
-  }
-  
-  private boolean u()
-  {
-    if (!this.n) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
-    {
-      if (this.jdField_a_of_type_AndroidOsBundle.size() < 9) {
-        return true;
-      }
-      if ((this.jdField_a_of_type_AndroidOsBundle.containsKey("fileinfo_array")) && (this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("fileinfo_array").size() > 1)) {
-        return true;
-      }
-      ForwardFileInfo localForwardFileInfo = a();
-      String str2 = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      String str1;
-      if (localForwardFileInfo != null) {
-        str1 = localForwardFileInfo.d();
-      } else {
-        str1 = this.jdField_j_of_type_JavaLangString;
-      }
-      if (str2.equals(str1)) {
-        return true;
-      }
-      if (localForwardFileInfo != null) {
-        str1 = localForwardFileInfo.a();
-      } else {
-        str1 = this.jdField_i_of_type_JavaLangString;
-      }
-      int i = str1.lastIndexOf('/');
-      Object localObject;
-      if ((i > -1) && (i < str1.length()))
+      else if (!this.J)
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(str1.substring(0, i + 1));
-        ((StringBuilder)localObject).append(str2);
-        localObject = ((StringBuilder)localObject).toString();
+        localIntent.putExtras(this.t);
+        ForwardUtils.a(this.q, this.s, this.I, localIntent, null);
+      }
+      localIntent.putExtras(this.t);
+      this.s.setResult(-1, localIntent);
+    }
+    for (;;)
+    {
+      return false;
+      int i = this.t.getInt("uintype");
+      localObject1 = this.t.getString("uin");
+      if (i == 1008)
+      {
+        localIntent = new Intent(this.s, ChatActivity.class);
+        localIntent.putExtra("chat_subType", ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getPublicAccountAioClass((String)localObject1, this.q));
       }
       else
       {
-        localObject = "";
+        localIntent = AIOUtils.a(new Intent(this.s, SplashActivity.class), null);
       }
-      if (a(str1, (String)localObject))
+      if (QLog.isColorLevel())
       {
-        if (localForwardFileInfo != null)
-        {
-          localForwardFileInfo.d(str2);
-          localForwardFileInfo.a((String)localObject);
-          localForwardFileInfo.b(10000);
-          this.jdField_a_of_type_AndroidOsBundle.putParcelable("fileinfo", localForwardFileInfo);
-        }
-        this.jdField_a_of_type_AndroidOsBundle.putString("forward_filepath", (String)localObject);
-        this.jdField_a_of_type_AndroidContentIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        return true;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("fileoption realForwardTo isfromshare=");
+        ((StringBuilder)localObject2).append(bool);
+        QLog.d("forward", 2, ((StringBuilder)localObject2).toString());
       }
-      b(-1);
-      return false;
+      if (bool)
+      {
+        this.t.putString("leftBackText", HardCodeUtil.a(2131902748));
+        localIntent.addFlags(268435456);
+        localIntent.addFlags(67108864);
+        localIntent.putExtras(this.t);
+        bool = c(localIntent);
+        if (this.K)
+        {
+          this.s.startActivity(localIntent);
+          if ((QSecFramework.c().a(1003).booleanValue()) && (this.a))
+          {
+            SecShareInfoUtil.a().a(4, au(), i, (String)localObject1);
+            SecShareInfoUtil.a().c();
+          }
+        }
+        else if (!bool)
+        {
+          ForwardUtils.a(this.q, this.s, this.I, localIntent, null);
+        }
+      }
+      else if (!this.J)
+      {
+        localIntent.putExtras(this.t);
+        ForwardUtils.a(this.q, this.s, this.I, localIntent, null);
+      }
+      localIntent.putExtras(this.t);
+      this.s.setResult(-1, localIntent);
+      this.s.finish();
     }
-    return true;
   }
   
-  protected void B()
+  protected void g()
   {
-    String str1 = f();
+    String str1 = au();
     if (!TextUtils.isEmpty(str1))
     {
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      int i = FileManagerUtil.a(str1);
+      String str2 = this.t.getString("uin");
+      int i = FileManagerUtil.c(str1);
       Object localObject;
       if (i == 2)
       {
@@ -1255,8 +1723,8 @@ public class ForwardFileOption
       }
       else
       {
-        localObject = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-        if ((localObject != null) && (((SmartDeviceProxyMgr)localObject).a(Long.parseLong(this.jdField_a_of_type_AndroidOsBundle.getString("uin")), 17)))
+        localObject = (SmartDeviceProxyMgr)this.q.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+        if ((localObject != null) && (((SmartDeviceProxyMgr)localObject).a(Long.parseLong(this.t.getString("uin")), 17)))
         {
           ((SmartDeviceProxyMgr)localObject).a(Long.parseLong(str2), "", "", "", 0, null);
           if (i == 0)
@@ -1273,528 +1741,61 @@ public class ForwardFileOption
           localObject = DeviceMsgHandle.b;
         }
       }
-      DeviceMsgHandle localDeviceMsgHandle = (DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+      DeviceMsgHandle localDeviceMsgHandle = (DeviceMsgHandle)this.q.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(str1);
-      localDeviceMsgHandle.a().a((String)localObject, str2, localArrayList, null);
+      localDeviceMsgHandle.b().a((String)localObject, str2, localArrayList, null);
     }
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    this.s.finish();
   }
   
-  protected View a()
+  protected int h()
   {
-    Object localObject = a();
-    int i = AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i1 = AIOUtils.b(12.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i2 = AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i3 = AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i4 = AIOUtils.b(18.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i5 = AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i6 = AIOUtils.b(32.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    int i7 = AIOUtils.b(40.0F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localRelativeLayout.setOnClickListener(new ForwardFileOption.2(this));
-    localRelativeLayout.setOnTouchListener(a());
-    localRelativeLayout.setLayoutParams(localLayoutParams);
-    int i8 = g();
-    if (i8 == 2)
-    {
-      a(i2, localRelativeLayout);
-      return localRelativeLayout;
-    }
-    if (i8 == 3)
-    {
-      a(i2, i7, localRelativeLayout);
-      return localRelativeLayout;
-    }
-    if (i8 == 1)
-    {
-      a((ForwardFileInfo)localObject, i, i1, i3, i4, i5, i6, localRelativeLayout);
-      return localRelativeLayout;
-    }
-    localRelativeLayout.setPadding(0, i5, 0, i5);
-    localObject = new AnimationTextView(this.jdField_a_of_type_AndroidAppActivity);
-    ((AnimationTextView)localObject).setText(a());
-    ((AnimationTextView)localObject).setMaxLines(2);
-    ((AnimationTextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
-    ((AnimationTextView)localObject).setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165694));
-    ((AnimationTextView)localObject).setTextSize(14.0F);
-    localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.bottomMargin = ScreenUtil.dip2px(10.0F);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localRelativeLayout.setOnClickListener(null);
-    return localRelativeLayout;
-  }
-  
-  public List<RecentUser> a(List<RecentUser> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("forward_source_uin_type", 0) == 9501) {
-      return localArrayList;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (a(localRecentUser))) {
-        if ((this.jdField_k_of_type_Boolean) && (b(localRecentUser))) {
-          localArrayList.add(localRecentUser);
-        } else if ((this.o) && (c(localRecentUser))) {
-          localArrayList.add(localRecentUser);
-        } else if ((this.l) && (d(localRecentUser))) {
-          localArrayList.add(localRecentUser);
-        } else if (e(localRecentUser)) {
-          localArrayList.add(localRecentUser);
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == 19001) && (paramInt2 == -1))
-    {
-      paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-      Object localObject = f();
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("refresh forward preview,editPicPath:");
-        localStringBuilder.append(paramIntent);
-        localStringBuilder.append(" :currentFile");
-        localStringBuilder.append((String)localObject);
-        QLog.d("ForwardOption.ForwardFileOption", 2, localStringBuilder.toString());
-      }
-      if (!((String)localObject).equals(paramIntent))
-      {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidOsBundle.remove("FORWARD_MSG_FOR_PIC");
-        this.jdField_a_of_type_AndroidOsBundle.putString("forward_filepath", paramIntent);
-        this.jdField_a_of_type_AndroidOsBundle.putString("forward_extra", paramIntent);
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("extra_is_edited_pic", true);
-        localObject = a();
-        if (localObject != null)
-        {
-          ((ForwardFileInfo)localObject).a(paramIntent);
-          ((ForwardFileInfo)localObject).f(paramIntent);
-        }
-        paramIntent = a();
-        if (paramIntent != null) {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramIntent);
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if ((this.jdField_k_of_type_Boolean) && (!this.jdField_j_of_type_Boolean) && (-1L != FileManagerUtil.a(paramBundle.getInt("uintype"))))
-    {
-      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, this.jdField_a_of_type_AndroidAppActivity.getString(2131697670), this.jdField_a_of_type_AndroidAppActivity.getString(2131697623), null, this.jdField_a_of_type_AndroidAppActivity.getString(2131719788), new ForwardFileOption.1(this), null).show();
-      return;
-    }
-    super.a(paramInt, paramBundle);
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    ArrayList localArrayList1 = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("fileinfo_array");
-    Object localObject1 = null;
-    if (localArrayList1 != null) {}
-    try
-    {
-      localArrayList1 = (ArrayList)localArrayList1;
-    }
-    catch (ClassCastException localClassCastException)
-    {
-      label29:
-      ArrayList localArrayList2;
-      Object localObject2;
-      int i;
-      break label29;
-    }
-    localArrayList1 = null;
-    localArrayList2 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("android.intent.extra.STREAM");
-    if (localArrayList2.size() > 1)
-    {
-      if (localArrayList1 == null)
-      {
-        localObject2 = new ArrayList();
-        i = 0;
-        for (;;)
-        {
-          localObject1 = localObject2;
-          if (i >= localArrayList2.size()) {
-            break;
-          }
-          localObject1 = (Uri)localArrayList2.get(i);
-          ((ArrayList)localObject2).add(a(this.jdField_a_of_type_AndroidAppActivity, (Uri)localObject1));
-          i += 1;
-        }
-      }
-    }
-    else
-    {
-      if (!u()) {
-        return;
-      }
-      localObject2 = a();
-      if (localObject2 != null)
-      {
-        localObject1 = new ArrayList();
-        ((ArrayList)localObject1).add(((ForwardFileInfo)localObject2).a());
-      }
-    }
-    paramIntent.putExtra("dataline_forward_type", 100);
-    paramIntent.putExtra("sendMultiple", true);
-    if (localArrayList1 == null) {
-      paramIntent.putStringArrayListExtra("dataline_forward_pathlist", (ArrayList)localObject1);
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    Object localObject = this.jdField_a_of_type_AndroidContentIntent;
-    boolean bool2 = false;
-    this.e = ((Intent)localObject).getBooleanExtra("forward _key_nojump", false);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo != null)
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.d();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a();
-      boolean bool3 = TextUtils.isEmpty((CharSequence)localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b() == 10006) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      this.jdField_k_of_type_Boolean = bool1;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b() == 10009) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      this.l = bool1;
-      if (i == 2) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      this.o = bool1;
-      boolean bool1 = bool2;
-      if ((bool3 ^ true)) {
-        if (i != 3)
-        {
-          bool1 = bool2;
-          if (!FileUtils.fileExists((String)localObject)) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-      this.jdField_j_of_type_Boolean = bool1;
-    }
-    else if (this.jdField_c_of_type_JavaUtilArrayList != null)
-    {
-      this.l = true;
-      localObject = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-      ForwardFileInfo localForwardFileInfo;
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        localForwardFileInfo = (ForwardFileInfo)((Iterator)localObject).next();
-      } while ((localForwardFileInfo == null) || (localForwardFileInfo.d() == 6));
-      this.l = false;
-    }
-    else if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromShare", false))
-    {
-      this.jdField_j_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", this.jdField_a_of_type_AndroidAppActivity.getString(2131719442));
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo == null) && (TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString))) {
-      e();
-    }
-    return true;
-  }
-  
-  public DeviceInfo[] a(DeviceInfo[] paramArrayOfDeviceInfo)
-  {
-    ArrayList localArrayList = new ArrayList();
-    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    int i1 = paramArrayOfDeviceInfo.length;
-    int i = 0;
-    while (i < i1)
-    {
-      DeviceInfo localDeviceInfo = paramArrayOfDeviceInfo[i];
-      if (localDeviceInfo != null)
-      {
-        int i2 = FileManagerUtil.a(f());
-        ProductInfo localProductInfo = localSmartDeviceProxyMgr.a(localDeviceInfo.productId);
-        if (((i2 != 2) || (!localSmartDeviceProxyMgr.c(localDeviceInfo.din)) || (!localSmartDeviceProxyMgr.a(localDeviceInfo.din, 17))) && (localProductInfo != null) && (localProductInfo.isSupportMainMsgType(8)) && (a(jdField_j_of_type_JavaLangInteger))) {
-          localArrayList.add(localDeviceInfo);
-        }
-      }
-      i += 1;
-    }
-    return (DeviceInfo[])localArrayList.toArray(new DeviceInfo[localArrayList.size()]);
-  }
-  
-  protected void b()
-  {
-    if ((!this.l) && (r()))
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_i_of_type_JavaLangInteger);
-    }
-    if ((!this.l) && (p())) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b() != 10006) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b() != 10003) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b() != 10002)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b();
-    }
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_c_of_type_JavaLangInteger);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo != null)
-    {
-      if (DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b())))
-      {
-        this.jdField_a_of_type_JavaUtilSet.add(jdField_f_of_type_JavaLangInteger);
-        this.jdField_a_of_type_JavaUtilSet.add(jdField_k_of_type_JavaLangInteger);
-      }
-    }
-    else if (this.jdField_c_of_type_JavaUtilArrayList != null)
-    {
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-      ForwardFileInfo localForwardFileInfo;
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localForwardFileInfo = (ForwardFileInfo)localIterator.next();
-      } while ((localForwardFileInfo == null) || (!DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localForwardFileInfo.b()))));
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_f_of_type_JavaLangInteger);
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_k_of_type_JavaLangInteger);
-    }
-    else
-    {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_f_of_type_JavaLangInteger);
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_k_of_type_JavaLangInteger);
-    }
-    if ((this.jdField_a_of_type_AndroidContentIntent != null) && (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromFavorites", false))) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_f_of_type_JavaLangInteger);
-    }
-    if ((this.jdField_a_of_type_AndroidContentIntent != null) && (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_smartdevice", true)) && (s()) && (a(FileManagerUtil.a(f())))) {
-      this.jdField_a_of_type_JavaUtilSet.add(jdField_j_of_type_JavaLangInteger);
-    }
-  }
-  
-  protected void b(Intent paramIntent)
-  {
-    if (!u()) {
-      return;
-    }
-    paramIntent.putExtra("dataline_forward_type", 100);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo == null)
-    {
-      String str2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("forward_filepath");
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
-      }
-      paramIntent.putExtra("dataline_forward_path", str1);
-      return;
-    }
-    paramIntent.putExtra("dataline_forward_path", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.a());
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected boolean c()
-  {
-    boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromShare", false);
-    if (!u()) {
-      return true;
-    }
-    Object localObject1;
-    Intent localIntent;
-    Object localObject2;
-    if (j())
-    {
-      localObject1 = b();
-      localIntent = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("fileoption realForwardTo isfromshare=");
-        ((StringBuilder)localObject2).append(bool);
-        QLog.d("forward", 2, ((StringBuilder)localObject2).toString());
-      }
-      if (bool)
-      {
-        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", HardCodeUtil.a(2131704852));
-        localIntent.addFlags(268435456);
-        localIntent.addFlags(67108864);
-        localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        bool = a(localIntent);
-        if (this.jdField_f_of_type_Boolean)
-        {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-          if ((QSecFramework.a().a(1003).booleanValue()) && (this.jdField_j_of_type_Boolean))
-          {
-            localObject1 = ((List)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (ResultRecord)((Iterator)localObject1).next();
-              SecShareInfoUtil.a().a(4, f(), ((ResultRecord)localObject2).getUinType(), ((ResultRecord)localObject2).uin);
-              SecShareInfoUtil.a().a();
-            }
-          }
-        }
-        else if (!bool)
-        {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-        }
-      }
-      else if (!this.e)
-      {
-        localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-      }
-      localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    }
-    for (;;)
-    {
-      return false;
-      int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-      localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      if (i == 1008)
-      {
-        localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ChatActivity.class);
-        localIntent.putExtra("chat_subType", ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getPublicAccountAioClass((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-      }
-      else
-      {
-        localIntent = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("fileoption realForwardTo isfromshare=");
-        ((StringBuilder)localObject2).append(bool);
-        QLog.d("forward", 2, ((StringBuilder)localObject2).toString());
-      }
-      if (bool)
-      {
-        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", HardCodeUtil.a(2131704851));
-        localIntent.addFlags(268435456);
-        localIntent.addFlags(67108864);
-        localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        bool = a(localIntent);
-        if (this.jdField_f_of_type_Boolean)
-        {
-          this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-          if ((QSecFramework.a().a(1003).booleanValue()) && (this.jdField_j_of_type_Boolean))
-          {
-            SecShareInfoUtil.a().a(4, f(), i, (String)localObject1);
-            SecShareInfoUtil.a().a();
-          }
-        }
-        else if (!bool)
-        {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-        }
-      }
-      else if (!this.e)
-      {
-        localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
-      }
-      localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-  }
-  
-  protected int d()
-  {
-    FileManagerEntity localFileManagerEntity = jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    FileManagerEntity localFileManagerEntity = ap;
     int i = 0;
     if (localFileManagerEntity != null)
     {
-      if (new QfavBuilder(3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, jdField_a_of_type_ComTencentMobileqqDataChatMessage, true))
+      if (new QfavBuilder(3).a(this.q, this.s, ap, aq, true))
       {
-        jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
+        ap = null;
         break label109;
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo != null)
+    else if (this.ad != null)
     {
-      localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo.b());
-      if ((localFileManagerEntity != null) && (new QfavBuilder(3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localFileManagerEntity, null, true)))
+      localFileManagerEntity = this.q.getFileManagerDataCenter().a(this.ad.e());
+      if ((localFileManagerEntity != null) && (new QfavBuilder(3).a(this.q, this.s, localFileManagerEntity, null, true)))
       {
-        jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = null;
+        ap = null;
         break label109;
       }
     }
     i = -1;
     label109:
     if (i == 0) {
-      QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", -1, 0, 69, 0, "", "");
+      QfavReport.a(this.q, "User_AddFav", -1, 0, 69, 0, "", "");
     }
     return i;
   }
   
-  protected String e()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getString(2131719013);
-  }
-  
-  protected boolean m()
+  protected boolean k()
   {
     return true;
   }
   
-  protected void w()
+  public boolean l()
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog = new ForwardNewVersionDialog(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.a(2131560812);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = ((QQCustomDialog)localObject);
-    ((ForwardNewVersionDialog)localObject).a(i() ^ true);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.c(210);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.a(a());
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.a(c(), d(), this.jdField_a_of_type_AndroidAppActivity.getResources().getString(a()), this.jdField_a_of_type_AndroidAppActivity.getResources().getString(b()), a(), b());
-    a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.getWindow();
-    ((Window)localObject).getDecorView().setPadding(0, 0, 0, 0);
-    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -2;
-    ((Window)localObject).setAttributes(localLayoutParams);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardNewVersionDialog.show();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(this);
+    return true;
+  }
+  
+  protected String o()
+  {
+    return this.I.getString(2131916548);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileOption
  * JD-Core Version:    0.7.0.1
  */

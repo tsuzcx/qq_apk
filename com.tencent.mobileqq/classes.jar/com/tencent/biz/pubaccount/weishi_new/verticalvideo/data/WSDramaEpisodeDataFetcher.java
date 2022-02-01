@@ -15,9 +15,9 @@ import java.util.List;
 public class WSDramaEpisodeDataFetcher
   implements IDataFetcher<WSDramaEpisodeParams, WSVerticalItemData>
 {
-  public String a;
   public boolean a;
   public boolean b;
+  public String c;
   
   private int a(boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -33,7 +33,7 @@ public class WSDramaEpisodeDataFetcher
   private WSDramaEpisodeDataFetcher.ResponseModel a(@NonNull WSRequest<stGetDramaFeedsRsp> paramWSRequest, @NonNull stGetDramaFeedsRsp paramstGetDramaFeedsRsp, @NonNull WSDramaEpisodeParams paramWSDramaEpisodeParams)
   {
     boolean bool;
-    if ((paramWSDramaEpisodeParams.c()) && (paramstGetDramaFeedsRsp.isFinished)) {
+    if ((paramWSDramaEpisodeParams.e()) && (paramstGetDramaFeedsRsp.isFinished)) {
       bool = true;
     } else {
       bool = false;
@@ -45,30 +45,30 @@ public class WSDramaEpisodeDataFetcher
     localStringBuilder.append(", mIsFinished:");
     localStringBuilder.append(paramstGetDramaFeedsRsp.isFinished);
     WSLog.e("WSDramaEpisodeDataFetcher", localStringBuilder.toString());
-    return new WSDramaEpisodeDataFetcher.ResponseModel(paramstGetDramaFeedsRsp.drama, paramWSRequest, paramWSDramaEpisodeParams.a(), paramWSDramaEpisodeParams.c(), paramstGetDramaFeedsRsp.attachInfo, paramstGetDramaFeedsRsp.isFinished);
+    return new WSDramaEpisodeDataFetcher.ResponseModel(paramstGetDramaFeedsRsp.drama, paramWSRequest, paramWSDramaEpisodeParams.a(), paramWSDramaEpisodeParams.e(), paramstGetDramaFeedsRsp.attachInfo, paramstGetDramaFeedsRsp.isFinished);
   }
   
   private void a(@NonNull WSServiceErrorInfo paramWSServiceErrorInfo, @NonNull IFetchDataRspListener<WSVerticalItemData> paramIFetchDataRspListener, @NonNull WSDramaEpisodeParams paramWSDramaEpisodeParams)
   {
-    paramIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), paramWSDramaEpisodeParams.a(), paramWSDramaEpisodeParams.b());
+    paramIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.b(), paramWSDramaEpisodeParams.a(), paramWSDramaEpisodeParams.b());
   }
   
   private void a(@NonNull WSDramaEpisodeDataFetcher.ResponseModel paramResponseModel)
   {
-    this.jdField_a_of_type_JavaLangString = paramResponseModel.jdField_a_of_type_JavaLangString;
-    if (paramResponseModel.b)
+    this.c = paramResponseModel.e;
+    if (paramResponseModel.d)
     {
-      this.b = paramResponseModel.c;
+      this.b = paramResponseModel.f;
       return;
     }
-    this.jdField_a_of_type_Boolean = paramResponseModel.c;
+    this.a = paramResponseModel.f;
   }
   
   private void a(@NonNull WSDramaEpisodeDataFetcher.ResponseModel paramResponseModel, @NonNull IFetchDataRspListener<WSVerticalItemData> paramIFetchDataRspListener)
   {
     a(paramResponseModel);
-    int i = a(paramResponseModel.jdField_a_of_type_Boolean, paramResponseModel.b);
-    paramIFetchDataRspListener.a(paramResponseModel.jdField_a_of_type_JavaUtilList, false, paramResponseModel.jdField_a_of_type_Boolean, Integer.valueOf(i));
+    int i = a(paramResponseModel.c, paramResponseModel.d);
+    paramIFetchDataRspListener.a(paramResponseModel.b, false, paramResponseModel.c, Integer.valueOf(i));
   }
   
   private boolean a(boolean paramBoolean)
@@ -76,26 +76,26 @@ public class WSDramaEpisodeDataFetcher
     if (paramBoolean) {
       return this.b;
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public boolean a(@NonNull WSDramaEpisodeParams paramWSDramaEpisodeParams, @NonNull IFetchDataRspListener<WSVerticalItemData> paramIFetchDataRspListener)
   {
-    if (a(paramWSDramaEpisodeParams.c()))
+    if (a(paramWSDramaEpisodeParams.e()))
     {
       paramIFetchDataRspListener = new StringBuilder();
       paramIFetchDataRspListener.append("fetchData() is finished. isLoadMoreDown = ");
-      paramIFetchDataRspListener.append(paramWSDramaEpisodeParams.c());
+      paramIFetchDataRspListener.append(paramWSDramaEpisodeParams.e());
       WSLog.a("WSDramaEpisodeDataFetcher", paramIFetchDataRspListener.toString());
       return false;
     }
-    WSNetService.a(new WSGetDramaFeedsRequest(paramWSDramaEpisodeParams, this.jdField_a_of_type_JavaLangString)).a(new WSDramaEpisodeDataFetcher.1(this, paramWSDramaEpisodeParams, paramIFetchDataRspListener));
+    WSNetService.a(new WSGetDramaFeedsRequest(paramWSDramaEpisodeParams, this.c)).a(new WSDramaEpisodeDataFetcher.1(this, paramWSDramaEpisodeParams, paramIFetchDataRspListener));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSDramaEpisodeDataFetcher
  * JD-Core Version:    0.7.0.1
  */

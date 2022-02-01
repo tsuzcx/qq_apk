@@ -10,9 +10,14 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 public class GetSquareBannerRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.square_720_banner_list");
+  public static final String e = StoryApi.a("StorySvc.square_720_banner_list");
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetSquareBannerItemList localRspGetSquareBannerItemList = new qqstory_service.RspGetSquareBannerItemList();
     try
@@ -26,19 +31,14 @@ public class GetSquareBannerRequest
     return new GetSquareBannerRequest.GetSquareBannerResponse(localRspGetSquareBannerItemList);
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     return new qqstory_service.ReqGetSquareBannerItemList().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest
  * JD-Core Version:    0.7.0.1
  */

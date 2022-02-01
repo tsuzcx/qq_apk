@@ -622,7 +622,7 @@ class p
     } else {
       paramLong1 = 0L;
     }
-    paramLong2 = com.tencent.mobileqq.msf.core.c.j.a(this.d, localFromServiceMsg);
+    paramLong2 = com.tencent.mobileqq.msf.core.d.j.a(this.d, localFromServiceMsg);
     int i = 0;
     int j = 0;
     if (paramInt2 != -1000)
@@ -2153,7 +2153,7 @@ class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.p
  * JD-Core Version:    0.7.0.1
  */

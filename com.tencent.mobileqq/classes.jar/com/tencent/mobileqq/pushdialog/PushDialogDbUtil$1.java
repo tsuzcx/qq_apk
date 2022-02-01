@@ -14,17 +14,17 @@ class PushDialogDbUtil$1
   {
     synchronized (PushDialogDbUtil.a(this.this$0))
     {
-      List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PushDialogTemplate.class, true, "mUin=? AND time>=?", this.jdField_a_of_type_ArrayOfJavaLangString, null, null, null, null);
+      List localList = this.a.query(PushDialogTemplate.class, true, "mUin=? AND time>=?", this.b, null, null, null, null);
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("PushDialogTemplate query: ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)???).append(this.c);
         ((StringBuilder)???).append(", queryTime: ");
-        ((StringBuilder)???).append(new Date(this.b));
+        ((StringBuilder)???).append(new Date(this.d));
         QLog.d("PushDialogDbUtil", 3, ((StringBuilder)???).toString());
       }
-      ??? = this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogDbUtil$OnPushDialogDbAction;
+      ??? = this.e;
       if (??? != null) {
         ((PushDialogDbUtil.OnPushDialogDbAction)???).a(localList);
       }
@@ -34,7 +34,7 @@ class PushDialogDbUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogDbUtil.1
  * JD-Core Version:    0.7.0.1
  */

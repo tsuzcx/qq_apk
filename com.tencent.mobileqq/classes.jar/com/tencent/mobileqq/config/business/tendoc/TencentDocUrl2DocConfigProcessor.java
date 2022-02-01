@@ -13,7 +13,7 @@ public final class TencentDocUrl2DocConfigProcessor
   public static TencentDocUrl2DocConfigBean a()
   {
     QLog.d("TencentDocUrl2DocConfigProcessor", 1, "getConfig");
-    return (TencentDocUrl2DocConfigBean)QConfigManager.a().a(559);
+    return (TencentDocUrl2DocConfigBean)QConfigManager.b().b(559);
   }
   
   public static boolean a(String paramString)
@@ -83,7 +83,7 @@ public final class TencentDocUrl2DocConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocUrl2DocConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

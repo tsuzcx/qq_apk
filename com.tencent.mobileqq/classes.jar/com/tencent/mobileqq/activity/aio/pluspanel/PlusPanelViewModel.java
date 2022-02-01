@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider.Factory;
 import com.tencent.biz.qqstory.utils.FeedUtils;
 import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
@@ -47,75 +48,40 @@ import java.util.List;
 public class PlusPanelViewModel
   extends BaseViewModel<PlusPanelRepository>
 {
-  public static ViewModelProvider.Factory a;
-  int jdField_a_of_type_Int = 0;
-  private final MutableLiveData<Boolean> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private final List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  private final MutableLiveData<ArrayList<PluginData>> jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
-  
-  static
-  {
-    jdField_a_of_type_AndroidxLifecycleViewModelProvider$Factory = new PlusPanelViewModel.4();
-  }
+  public static ViewModelProvider.Factory e = new PlusPanelViewModel.4();
+  boolean a = false;
+  boolean b = false;
+  int c = 0;
+  public int d = -1;
+  private final List<Integer> f = new ArrayList();
+  private final MutableLiveData<Boolean> g = new MutableLiveData();
+  private final MutableLiveData<ArrayList<PluginData>> h = new MutableLiveData();
+  private boolean i = false;
   
   public PlusPanelViewModel(PlusPanelRepository paramPlusPanelRepository)
   {
     super(paramPlusPanelRepository);
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (paramInt <= 7) {
-      return;
-    }
-    Object localObject = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PlusPanelAppInfo)((Iterator)localObject).next()).onChatPieLifeCycle(paramInt);
-      }
-    }
   }
   
   private void a(int paramInt, PluginData paramPluginData, IRedTouchManager paramIRedTouchManager)
   {
-    paramPluginData = paramIRedTouchManager.getAppInfoFilterByID(10, paramPluginData.c, paramPluginData.f);
+    paramPluginData = paramIRedTouchManager.getAppInfoFilterByID(10, paramPluginData.f, paramPluginData.i);
     if (paramPluginData != null) {
       paramIRedTouchManager.reportLevelOneRedInfo(paramPluginData.uiAppId.get(), 30);
     }
   }
   
-  private boolean a(BaseChatPie paramBaseChatPie)
-  {
-    if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
-      return false;
-    }
-    TroopManager localTroopManager = (TroopManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (localTroopManager.g(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b))
-    {
-      localTroopManager.h(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
-      return true;
-    }
-    return false;
-  }
-  
   private void b(LifecycleOwner paramLifecycleOwner)
   {
-    MutableLiveData localMutableLiveData = this.jdField_b_of_type_AndroidxLifecycleMutableLiveData;
+    MutableLiveData localMutableLiveData = this.h;
     if (localMutableLiveData != null) {
       localMutableLiveData.removeObservers(paramLifecycleOwner);
     }
-    localMutableLiveData = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+    localMutableLiveData = this.g;
     if (localMutableLiveData != null) {
       localMutableLiveData.removeObservers(paramLifecycleOwner);
     }
-    localMutableLiveData = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    localMutableLiveData = ((PlusPanelRepository)this.z).a();
     if (localMutableLiveData != null) {
       localMutableLiveData.removeObservers(paramLifecycleOwner);
     }
@@ -125,8 +91,8 @@ public class PlusPanelViewModel
   {
     if (paramInt > 0)
     {
-      IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
-      paramBaseChatPie = localIRedTouchManager.getAppInfoFilterByID(10, String.valueOf(paramInt), paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+      IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramBaseChatPie.d.getRuntimeService(IRedTouchManager.class, "");
+      paramBaseChatPie = localIRedTouchManager.getAppInfoFilterByID(10, String.valueOf(paramInt), paramBaseChatPie.ah.c);
       if (paramBaseChatPie != null) {
         localIRedTouchManager.reportLevelOneRedInfo(paramBaseChatPie.uiAppId.get(), 31);
       }
@@ -135,60 +101,56 @@ public class PlusPanelViewModel
   
   private void b(BaseChatPie paramBaseChatPie, PluginData paramPluginData)
   {
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramPluginData);
+    a(paramBaseChatPie.d, paramBaseChatPie.ah, paramPluginData);
   }
   
-  LifecycleOwner a(BaseChatPie paramBaseChatPie)
+  private void c(int paramInt)
   {
-    try
+    if (paramInt <= 7) {
+      return;
+    }
+    Object localObject = ((PlusPanelRepository)this.z).c();
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      paramBaseChatPie = (QBaseFragment)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_Fragment");
-      if ((paramBaseChatPie instanceof LifeCycleFragment))
-      {
-        paramBaseChatPie = (LifeCycleFragment)paramBaseChatPie;
-        return paramBaseChatPie;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PlusPanelAppInfo)((Iterator)localObject).next()).onChatPieLifeCycle(paramInt);
       }
     }
-    catch (Exception paramBaseChatPie)
-    {
-      QLog.d("PlusPanelViewModel", 1, paramBaseChatPie, new Object[0]);
-    }
-    return null;
   }
   
-  public MutableLiveData<ArrayList<PluginData>> a()
+  private boolean i(BaseChatPie paramBaseChatPie)
   {
-    return this.jdField_b_of_type_AndroidxLifecycleMutableLiveData;
+    if (paramBaseChatPie.ah.a != 1) {
+      return false;
+    }
+    TroopManager localTroopManager = (TroopManager)paramBaseChatPie.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    if (localTroopManager.F(paramBaseChatPie.ah.c))
+    {
+      localTroopManager.E(paramBaseChatPie.ah.c);
+      return true;
+    }
+    return false;
   }
   
   PlusPanelAppInfo a(int paramInt)
   {
-    return ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramInt);
-  }
-  
-  public List<PlusPanelAppInfo> a(BaseChatPie paramBaseChatPie)
-  {
-    if (((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a != null)
-    {
-      ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a.a(paramBaseChatPie);
-      return ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a.a();
-    }
-    return new ArrayList();
+    return ((PlusPanelRepository)this.z).c(paramInt);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.f.clear();
   }
   
   public void a(LifecycleOwner paramLifecycleOwner)
   {
-    ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a().observe(paramLifecycleOwner, new PlusPanelViewModel.3(this));
+    ((PlusPanelRepository)this.z).a().observe(paramLifecycleOwner, new PlusPanelViewModel.3(this));
   }
   
   void a(SessionInfo paramSessionInfo, PlusPanelAppInfo paramPlusPanelAppInfo, QQAppInterface paramQQAppInterface)
   {
-    if (!((HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString))
+    if (!((HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramSessionInfo.b))
     {
       ITroopAppService localITroopAppService = (ITroopAppService)paramQQAppInterface.getRuntimeService(ITroopAppService.class, "all");
       if (paramPlusPanelAppInfo.redPoint)
@@ -197,20 +159,20 @@ public class PlusPanelViewModel
         ThreadManager.excute(new PlusPanelViewModel.2(this, localITroopAppService, paramPlusPanelAppInfo), 128, null, false);
       }
       boolean bool = paramPlusPanelAppInfo.canRemove;
-      a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramPlusPanelAppInfo.getAppID(), bool);
-      int i = paramPlusPanelAppInfo.getAppID();
-      if ((localITroopAppService != null) && (i > 0))
+      a(paramQQAppInterface, paramSessionInfo.b, paramPlusPanelAppInfo.getAppID(), bool);
+      int j = paramPlusPanelAppInfo.getAppID();
+      if ((localITroopAppService != null) && (j > 0))
       {
-        localITroopAppService.addReportClick(i, false, paramSessionInfo.jdField_a_of_type_JavaLangString);
-        new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("add_page").d("Clk_app").a(new String[] { paramSessionInfo.jdField_a_of_type_JavaLangString }).a(new String[] { String.valueOf(i) }).a(new String[] { "1" }).a();
+        localITroopAppService.addReportClick(j, false, paramSessionInfo.b);
+        new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("add_page").d("Clk_app").a(new String[] { paramSessionInfo.b }).a(new String[] { String.valueOf(j) }).a(new String[] { "1" }).a();
       }
     }
   }
   
   public void a(BaseChatPie paramBaseChatPie)
   {
-    ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramBaseChatPie, this.c);
-    this.jdField_a_of_type_Int = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramBaseChatPie.getClass());
+    ((PlusPanelRepository)this.z).a(paramBaseChatPie, this.i);
+    this.c = ((PlusPanelRepository)this.z).a(paramBaseChatPie.getClass());
   }
   
   public void a(BaseChatPie paramBaseChatPie, int paramInt)
@@ -218,44 +180,44 @@ public class PlusPanelViewModel
     if (paramInt != 7)
     {
       if (paramInt == 15) {
-        e(paramBaseChatPie);
+        f(paramBaseChatPie);
       }
     }
     else {
-      d(paramBaseChatPie);
+      e(paramBaseChatPie);
     }
-    a(paramInt);
+    c(paramInt);
   }
   
   public void a(BaseChatPie paramBaseChatPie, PluginData paramPluginData)
   {
-    if (a(paramBaseChatPie)) {
+    if (i(paramBaseChatPie)) {
       return;
     }
-    SessionInfo localSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    PlusPanelAppInfo localPlusPanelAppInfo = a(paramPluginData.jdField_b_of_type_Int);
+    SessionInfo localSessionInfo = paramBaseChatPie.ah;
+    PlusPanelAppInfo localPlusPanelAppInfo = a(paramPluginData.b);
     if (localPlusPanelAppInfo != null)
     {
-      int i = localSessionInfo.jdField_a_of_type_Int;
+      int j = localSessionInfo.a;
       b(paramBaseChatPie, localPlusPanelAppInfo.getRedDotID());
       b(paramBaseChatPie, paramPluginData);
-      ((AIOZhituHelper)paramBaseChatPie.a(116)).a();
+      ((AIOZhituHelper)paramBaseChatPie.q(116)).a();
       localPlusPanelAppInfo.handlePanelClick(this, paramBaseChatPie, localSessionInfo);
-      QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if ((localSessionInfo.jdField_a_of_type_Int != 1001) && (localSessionInfo.jdField_a_of_type_Int != 10002))
+      QQAppInterface localQQAppInterface = paramBaseChatPie.d;
+      if ((localSessionInfo.a != 1001) && (localSessionInfo.a != 10002))
       {
-        if (localSessionInfo.jdField_a_of_type_Int == 1) {
+        if (localSessionInfo.a == 1) {
           a(localSessionInfo, localPlusPanelAppInfo, localQQAppInterface);
         }
       }
       else
       {
-        if (localSessionInfo.jdField_a_of_type_Int == 1001) {
+        if (localSessionInfo.a == 1001) {
           paramPluginData = "0";
         } else {
           paramPluginData = "1";
         }
-        ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_plus", 0, 0, paramPluginData, ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).b(localPlusPanelAppInfo.getAppID()), "", "");
+        ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_plus", 0, 0, paramPluginData, ((PlusPanelRepository)this.z).b(localPlusPanelAppInfo.getAppID()), "", "");
       }
       b(paramBaseChatPie);
     }
@@ -263,32 +225,32 @@ public class PlusPanelViewModel
   
   public void a(BaseChatPie paramBaseChatPie, List<PluginData> paramList, int paramInt)
   {
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramList, paramInt);
+    a(paramBaseChatPie.d, paramBaseChatPie.ah.b, paramBaseChatPie.ah.a, paramList, paramInt);
   }
   
   public void a(BaseChatPie paramBaseChatPie, boolean paramBoolean)
   {
-    if (this.c != paramBoolean)
+    if (this.i != paramBoolean)
     {
-      this.c = paramBoolean;
-      c(paramBaseChatPie);
+      this.i = paramBoolean;
+      d(paramBaseChatPie);
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (i == 2)
+    int j = this.c;
+    if (j == 2)
     {
       ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "C2C", "gift_exp", 0, 0, "", "", "", "");
       return;
     }
-    if (i == 6)
+    if (j == 6)
     {
       ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "discuss_grp", "gift_exp", 0, 0, "", "", "", "");
       return;
     }
-    if (i == 7) {
+    if (j == 7) {
       ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "temp_c2c", "gift_exp", 0, 0, "", "", "", "");
     }
   }
@@ -307,19 +269,93 @@ public class PlusPanelViewModel
   
   void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, PluginData paramPluginData)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    if (!TextUtils.isEmpty(paramPluginData.f)) {
+      a(paramInt, paramPluginData, localIRedTouchManager);
+    }
+    if ((paramPluginData.b > 0) && (!this.f.contains(Integer.valueOf(paramPluginData.b))))
+    {
+      this.f.add(Integer.valueOf(paramPluginData.b));
+      int m = 0;
+      int n = 1;
+      if ((paramInt != 0) && (!ChatActivityUtils.a(paramQQAppInterface, paramString))) {
+        j = 0;
+      } else {
+        j = 1;
+      }
+      int k;
+      if (paramInt == 3000) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      if (paramInt == 1) {
+        m = 1;
+      }
+      boolean bool = b(paramInt);
+      if (j != 0) {
+        paramInt = n;
+      } else if (k != 0) {
+        paramInt = 2;
+      } else if (m != 0) {
+        paramInt = 3;
+      } else if (bool) {
+        paramInt = 4;
+      } else {
+        paramInt = 5;
+      }
+      int j = paramPluginData.b;
+      if (paramPluginData.c) {
+        paramString = "1";
+      } else {
+        paramString = "0";
+      }
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A46B", "0X800A46B", j, 0, paramString, String.valueOf(paramInt), "", "");
+    }
   }
   
   void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, PluginData paramPluginData)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    if (paramPluginData.b > 0)
+    {
+      int j = paramSessionInfo.a;
+      int k = 0;
+      int m = 1;
+      if ((j != 0) && (!ChatActivityUtils.a(paramQQAppInterface, paramSessionInfo.b))) {
+        j = 0;
+      } else {
+        j = 1;
+      }
+      if (paramSessionInfo.a == 3000) {
+        k = 1;
+      }
+      boolean bool = b(paramSessionInfo.a);
+      if (j != 0) {
+        j = m;
+      } else if (k != 0) {
+        j = 2;
+      } else if (paramSessionInfo.a == 1) {
+        j = 3;
+      } else if (bool) {
+        j = 4;
+      } else {
+        j = 5;
+      }
+      k = paramPluginData.b;
+      if (paramPluginData.c) {
+        paramSessionInfo = "1";
+      } else {
+        paramSessionInfo = "0";
+      }
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A46C", "0X800A46C", k, 0, paramSessionInfo, String.valueOf(j), "", "");
+    }
   }
   
   void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     Object localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localObject != null) {
-      localObject = ((TroopManager)localObject).b(paramString);
+      localObject = ((TroopManager)localObject).f(paramString);
     } else {
       localObject = null;
     }
@@ -350,7 +386,7 @@ public class PlusPanelViewModel
     {
       paramList = (PluginData)localIterator.next();
       a(paramQQAppInterface, paramInt1, paramString, paramList);
-      switch (paramList.jdField_b_of_type_Int)
+      switch (paramList.b)
       {
       }
       for (;;)
@@ -366,21 +402,21 @@ public class PlusPanelViewModel
         {
           break;
           IApolloDtReportHelper localIApolloDtReportHelper = (IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class);
-          localIApolloDtReportHelper.report("aio", "plus_panel", "expose", new DtReportParamsBuilder().a(localIApolloDtReportHelper.getApolloMode(paramQQAppInterface)).b(localIApolloDtReportHelper.getReportSessionType(paramInt1)).b(paramString).a());
+          localIApolloDtReportHelper.report("aio", "plus_panel", "expose", new DtReportParamsBuilder().a(localIApolloDtReportHelper.getApolloMode(paramQQAppInterface)).b(localIApolloDtReportHelper.getReportSessionType(paramInt1)).c(paramString).a());
         }
       }
-      if (paramList.jdField_b_of_type_Int == 209) {
+      if (paramList.b == 209) {
         ReportController.b(null, "dc00898", "", "", "0X800A11F", "0X800A11F", 0, 0, "", "", "", "");
       }
     }
-    if (paramInt2 == this.jdField_b_of_type_Int) {
-      TroopGiftPanel.a(paramInt2, this.jdField_a_of_type_Int);
+    if (paramInt2 == this.d) {
+      TroopGiftPanel.a(paramInt2, this.c);
     }
   }
   
   void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, boolean paramBoolean)
   {
-    String str = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramInt);
+    String str = ((PlusPanelRepository)this.z).a(paramInt);
     if (!TextUtils.isEmpty(str)) {
       ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_plus", 0, 0, paramString, str, "", "");
     }
@@ -391,38 +427,23 @@ public class PlusPanelViewModel
   
   public void a(String paramString1, String paramString2)
   {
-    ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramString1, paramString2);
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(Boolean.valueOf(true));
+    ((PlusPanelRepository)this.z).a(paramString1, paramString2);
+    this.g.setValue(Boolean.valueOf(true));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
-  boolean a(int paramInt)
+  public MutableLiveData<ArrayList<PluginData>> b()
   {
-    int[] arrayOfInt = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (arrayOfInt[i] == paramInt) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public MutableLiveData<Boolean> b()
-  {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+    return this.h;
   }
   
   public void b(BaseChatPie paramBaseChatPie)
   {
-    paramBaseChatPie = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramBaseChatPie);
+    paramBaseChatPie = ((PlusPanelRepository)this.z).a(paramBaseChatPie);
     if ((paramBaseChatPie != null) && (!paramBaseChatPie.isEmpty())) {
       ThreadManagerV2.getUIHandlerV2().post(new PlusPanelViewModel.1(this, paramBaseChatPie));
     }
@@ -431,77 +452,125 @@ public class PlusPanelViewModel
   public void b(BaseChatPie paramBaseChatPie, boolean paramBoolean)
   {
     if (paramBoolean) {
-      if (this.jdField_a_of_type_Boolean) {
-        ((TroopChatPie)paramBaseChatPie).aC();
+      if (this.a) {
+        ((TroopChatPie)paramBaseChatPie).bU();
       } else {
         return;
       }
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.b)
     {
       QLog.isColorLevel();
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    String str = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    int i;
-    if ((((TroopManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(str).dwGroupFlagExt3 & 0x2000) == 0L) {
-      i = 1;
+    this.a = false;
+    String str = paramBaseChatPie.ah.b;
+    int j;
+    if ((((TroopManager)paramBaseChatPie.d.getManager(QQManagerFactory.TROOP_MANAGER)).g(str).dwGroupFlagExt3 & 0x2000) == 0L) {
+      j = 1;
     } else {
-      i = 0;
+      j = 0;
     }
-    if (i == 0)
+    if (j == 0)
     {
-      QQToast.a(paramBaseChatPie.a(), TroopConfessUtil.jdField_a_of_type_JavaLangString, 0).a();
+      QQToast.makeText(paramBaseChatPie.aX(), TroopConfessUtil.a, 0).show();
       return;
     }
-    f(paramBaseChatPie);
+    h(paramBaseChatPie);
   }
   
-  public void c(BaseChatPie paramBaseChatPie)
+  boolean b(int paramInt)
+  {
+    int[] arrayOfInt = ((PlusPanelRepository)this.z).b();
+    int k = arrayOfInt.length;
+    int j = 0;
+    while (j < k)
+    {
+      if (arrayOfInt[j] == paramInt) {
+        return true;
+      }
+      j += 1;
+    }
+    return false;
+  }
+  
+  public MutableLiveData<Boolean> c()
+  {
+    return this.g;
+  }
+  
+  public List<PlusPanelAppInfo> c(BaseChatPie paramBaseChatPie)
+  {
+    if (((PlusPanelRepository)this.z).a != null)
+    {
+      ((PlusPanelRepository)this.z).a.a(paramBaseChatPie);
+      return ((PlusPanelRepository)this.z).a.a();
+    }
+    return new ArrayList();
+  }
+  
+  public void d(BaseChatPie paramBaseChatPie)
   {
     a(paramBaseChatPie);
     b(paramBaseChatPie);
   }
   
-  void d(BaseChatPie paramBaseChatPie)
-  {
-    if ((paramBaseChatPie instanceof TroopChatPie)) {
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
   void e(BaseChatPie paramBaseChatPie)
   {
-    if ((paramBaseChatPie instanceof TroopChatPie))
-    {
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = false;
-    }
-    paramBaseChatPie = a(paramBaseChatPie);
-    if (paramBaseChatPie != null) {
-      b(paramBaseChatPie);
+    if ((paramBaseChatPie instanceof TroopChatPie)) {
+      this.b = false;
     }
   }
   
   void f(BaseChatPie paramBaseChatPie)
   {
+    if ((paramBaseChatPie instanceof TroopChatPie))
+    {
+      this.b = false;
+      this.a = false;
+    }
+    paramBaseChatPie = g(paramBaseChatPie);
+    if (paramBaseChatPie != null) {
+      b(paramBaseChatPie);
+    }
+  }
+  
+  LifecycleOwner g(BaseChatPie paramBaseChatPie)
+  {
+    try
+    {
+      paramBaseChatPie = (QBaseFragment)paramBaseChatPie.f.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_Fragment");
+      if ((paramBaseChatPie instanceof LifeCycleFragment))
+      {
+        paramBaseChatPie = (LifeCycleFragment)paramBaseChatPie;
+        return paramBaseChatPie;
+      }
+    }
+    catch (Exception paramBaseChatPie)
+    {
+      QLog.d("PlusPanelViewModel", 1, paramBaseChatPie, new Object[0]);
+    }
+    return null;
+  }
+  
+  void h(BaseChatPie paramBaseChatPie)
+  {
     if ((a(1106865772) != null) && (!TextUtils.isEmpty("https://ti.qq.com/honest-say/group.html?_bid=3104&adtag=contact_tab&gc=$GCODE$&src_type=app&from=appstore_aio")))
     {
-      String str = "https://ti.qq.com/honest-say/group.html?_bid=3104&adtag=contact_tab&gc=$GCODE$&src_type=app&from=appstore_aio".replace("$GCODE$", NearbyURLSafeUtil.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
-      Intent localIntent = paramBaseChatPie.a().getIntent();
+      String str = "https://ti.qq.com/honest-say/group.html?_bid=3104&adtag=contact_tab&gc=$GCODE$&src_type=app&from=appstore_aio".replace("$GCODE$", NearbyURLSafeUtil.b(paramBaseChatPie.ah.b));
+      Intent localIntent = paramBaseChatPie.aX().getIntent();
       localIntent.putExtra("url", str);
       localIntent.putExtra("confess_half_screen_web", true);
       if ((paramBaseChatPie instanceof TroopChatPie)) {
-        this.jdField_b_of_type_Boolean = TroopConfessUtil.a(paramBaseChatPie);
+        this.b = TroopConfessUtil.a(paramBaseChatPie);
       }
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1106865772, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      a(paramBaseChatPie.d, 1106865772, paramBaseChatPie.ah.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel
  * JD-Core Version:    0.7.0.1
  */

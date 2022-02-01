@@ -5,28 +5,28 @@ import android.widget.FrameLayout;
 
 public class Vote2RotateAnimation
 {
-  private static long jdField_a_of_type_Long = 400L;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static long a = 400L;
+  private static boolean b = false;
   
   public static void a()
   {
-    jdField_a_of_type_Boolean = false;
+    b = false;
   }
   
   public static void a(FrameLayout paramFrameLayout)
   {
-    if (jdField_a_of_type_Boolean) {
+    if (b) {
       return;
     }
-    jdField_a_of_type_Boolean = true;
+    b = true;
     paramFrameLayout.invalidate();
     View localView = paramFrameLayout.getChildAt(1);
     paramFrameLayout = paramFrameLayout.getChildAt(0);
     CubeLeftOutAnimation localCubeLeftOutAnimation = new CubeLeftOutAnimation(localView);
-    localCubeLeftOutAnimation.setDuration(jdField_a_of_type_Long);
+    localCubeLeftOutAnimation.setDuration(a);
     localCubeLeftOutAnimation.setFillAfter(true);
     CubeRightInAnimation localCubeRightInAnimation = new CubeRightInAnimation(paramFrameLayout);
-    localCubeRightInAnimation.setDuration(jdField_a_of_type_Long);
+    localCubeRightInAnimation.setDuration(a);
     localCubeRightInAnimation.setFillAfter(true);
     localView.startAnimation(localCubeLeftOutAnimation);
     paramFrameLayout.startAnimation(localCubeRightInAnimation);
@@ -34,7 +34,7 @@ public class Vote2RotateAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.Vote2RotateAnimation
  * JD-Core Version:    0.7.0.1
  */

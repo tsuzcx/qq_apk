@@ -19,7 +19,7 @@ public class RIJRecommendFeedsLifeServiceImpl
   {
     if (((paramActivity instanceof SplashActivity)) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowKandianTab()) && (paramInt != 13))
     {
-      SuperMaskConfigMgr.a.a();
+      SuperMaskConfigMgr.a.j();
       QLog.d("ReadInJoySuperMaskAd", 1, "autoRefresh reset main feeds reqNum");
     }
   }
@@ -44,13 +44,13 @@ public class RIJRecommendFeedsLifeServiceImpl
   public void onPause()
   {
     SuperMaskUIMgr.a.b(-1);
-    SuperMaskUIMgr.a.c();
+    SuperMaskUIMgr.a.h();
     ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "onPause: setSuperMaskChannelId = -1");
   }
   
   public void onResume()
   {
-    SuperMaskUIMgr.a.b();
+    SuperMaskUIMgr.a.g();
   }
   
   public void onStart() {}
@@ -59,7 +59,7 @@ public class RIJRecommendFeedsLifeServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJRecommendFeedsLifeServiceImpl
  * JD-Core Version:    0.7.0.1
  */

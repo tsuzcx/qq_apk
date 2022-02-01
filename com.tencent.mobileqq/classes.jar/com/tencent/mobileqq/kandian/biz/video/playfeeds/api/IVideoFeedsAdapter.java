@@ -18,32 +18,6 @@ import org.jetbrains.annotations.Nullable;
 public abstract interface IVideoFeedsAdapter
   extends View.OnClickListener, View.OnLongClickListener, CustomClickListener, IAdapter
 {
-  public abstract int a();
-  
-  @Nullable
-  public abstract Activity a();
-  
-  @NotNull
-  public abstract ColorDrawable a();
-  
-  @NotNull
-  public abstract Drawable a();
-  
-  @Nullable
-  public abstract Drawable a(int paramInt);
-  
-  @Nullable
-  public abstract IVideoFeedsPlayManager a();
-  
-  @Nullable
-  public abstract VideoFeedsRecyclerView a();
-  
-  @Nullable
-  public abstract BaseVideoItemHolder a();
-  
-  @Nullable
-  public abstract Object a();
-  
   public abstract void a(float paramFloat1, float paramFloat2);
   
   public abstract void a(int paramInt, long paramLong, boolean paramBoolean);
@@ -56,43 +30,69 @@ public abstract interface IVideoFeedsAdapter
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
-  
-  public abstract boolean a(@Nullable BaseVideoItemHolder paramBaseVideoItemHolder);
-  
-  public abstract boolean a(@Nullable String paramString);
-  
-  public abstract int b();
-  
-  @NotNull
-  public abstract Drawable b();
-  
-  @NotNull
-  public abstract Object b();
-  
   public abstract void b(@Nullable VideoInfo paramVideoInfo);
   
   public abstract void b(@Nullable VideoInfo paramVideoInfo, @Nullable VideoItemHolder paramVideoItemHolder);
   
-  public abstract boolean b();
+  public abstract boolean b(@Nullable BaseVideoItemHolder paramBaseVideoItemHolder);
   
   public abstract void c(int paramInt);
   
-  public abstract boolean c();
-  
   public abstract void d(int paramInt);
   
-  public abstract boolean d();
+  @Nullable
+  public abstract Drawable e(int paramInt);
+  
+  public abstract boolean e(@Nullable String paramString);
   
   public abstract void f();
+  
+  @Nullable
+  public abstract Object g();
+  
+  @NotNull
+  public abstract ColorDrawable h();
+  
+  public abstract boolean i();
+  
+  @Nullable
+  public abstract Activity j();
+  
+  @NotNull
+  public abstract Object k();
+  
+  public abstract int l();
+  
+  public abstract int m();
+  
+  @NotNull
+  public abstract Drawable n();
   
   public abstract void notifyItemChanged(int paramInt);
   
   public abstract void notifyItemInserted(int paramInt);
+  
+  @Nullable
+  public abstract BaseVideoItemHolder o();
+  
+  @Nullable
+  public abstract IVideoFeedsPlayManager p();
+  
+  @Nullable
+  public abstract VideoFeedsRecyclerView q();
+  
+  public abstract boolean r();
+  
+  public abstract boolean s();
+  
+  public abstract boolean t();
+  
+  @NotNull
+  public abstract Drawable u();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.api.IVideoFeedsAdapter
  * JD-Core Version:    0.7.0.1
  */

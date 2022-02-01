@@ -10,10 +10,10 @@ class AudioPlayerBase$2
   
   public void run()
   {
-    if (this.this$0.a != null) {
+    if (this.this$0.r != null) {
       try
       {
-        this.this$0.a.d(this.this$0, this.this$0.b());
+        this.this$0.r.d(this.this$0, this.this$0.h());
         return;
       }
       catch (Exception localException)
@@ -31,7 +31,7 @@ class AudioPlayerBase$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerBase.2
  * JD-Core Version:    0.7.0.1
  */

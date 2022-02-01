@@ -88,7 +88,7 @@ class ColorNoteProcessStateImpl$1
         ???.append("[onReceive->ACTION_DELETE_ITEM_CALL]\n[mCanAddColorNote]: ");
         ???.append(ColorNoteProcessStateImpl.access$200(this.a));
         ???.append("\n");
-        ColorNoteUtils.a("ColorNoteQIPCModule", ???.toString());
+        ColorNoteUtils.b("ColorNoteQIPCModule", ???.toString());
       }
     }
     else if ((???.equals("key_after_sync_msg")) && (ColorNoteProcessStateImpl.access$400(this.a) != null))
@@ -109,7 +109,7 @@ class ColorNoteProcessStateImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.ipc.impl.ColorNoteProcessStateImpl.1
  * JD-Core Version:    0.7.0.1
  */

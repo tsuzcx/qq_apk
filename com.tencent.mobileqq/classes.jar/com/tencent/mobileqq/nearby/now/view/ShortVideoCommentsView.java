@@ -49,6 +49,7 @@ import com.tencent.mobileqq.nearby.now.view.viewmodel.IPlayOperationViewModel;
 import com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView;
 import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import com.tencent.mobileqq.newnearby.INearbyReportHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.util.ProfileCardUtil.ReportBundleBuilder;
@@ -153,31 +154,31 @@ public class ShortVideoCommentsView
   private void addCommentDirectly(Comments.Comment paramComment)
   {
     int i = 0;
-    while (i < this.mComments.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.mComments.c.size())
     {
-      if (((Comments.Comment)this.mComments.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int != 2)
+      if (((Comments.Comment)this.mComments.c.get(i)).d != 2)
       {
-        this.mComments.jdField_a_of_type_JavaUtilList.add(i, paramComment);
+        this.mComments.c.add(i, paramComment);
         break;
       }
       i += 1;
     }
-    if (!this.mComments.jdField_a_of_type_JavaUtilList.contains(paramComment)) {
-      this.mComments.jdField_a_of_type_JavaUtilList.add(paramComment);
+    if (!this.mComments.c.contains(paramComment)) {
+      this.mComments.c.add(paramComment);
     }
     this.mAdapter.notifyDataSetChanged();
     paramComment = this.commentCountTextView;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("(");
     Comments localComments = this.mComments;
-    long l = localComments.jdField_a_of_type_Long + 1L;
-    localComments.jdField_a_of_type_Long = l;
+    long l = localComments.a + 1L;
+    localComments.a = l;
     localStringBuilder.append(String.valueOf(l));
     localStringBuilder.append(")");
     paramComment.setText(localStringBuilder.toString());
     paramComment = this.mPlayOperationViewModel;
     if (paramComment != null) {
-      paramComment.setCommentsCount(this.mComments.jdField_a_of_type_Long);
+      paramComment.setCommentsCount(this.mComments.a);
     }
     clearInput();
     if ((getContext() instanceof Activity))
@@ -196,7 +197,7 @@ public class ShortVideoCommentsView
     if (!TextUtils.isEmpty(this.mHintText)) {
       this.etInput.setHint(this.mHintText);
     } else {
-      this.etInput.setHint(getContext().getResources().getString(2131696374));
+      this.etInput.setHint(getContext().getResources().getString(2131894146));
     }
     hideInputKeyboard();
   }
@@ -207,7 +208,7 @@ public class ShortVideoCommentsView
   
   private void ensureBottomAreaLineCorrent()
   {
-    if (((this.mComments.jdField_a_of_type_JavaUtilList.isEmpty()) || (this.mAdapter.jdField_a_of_type_Boolean)) && (this.rlNoPermission.getVisibility() == 0) && ((this.tvPermissionDeniedReason.getText() == null) || (this.tvPermissionDeniedReason.getText().length() == 0)))
+    if (((this.mComments.c.isEmpty()) || (this.mAdapter.a)) && (this.rlNoPermission.getVisibility() == 0) && ((this.tvPermissionDeniedReason.getText() == null) || (this.tvPermissionDeniedReason.getText().length() == 0)))
     {
       this.dividerView.setVisibility(8);
       return;
@@ -226,13 +227,13 @@ public class ShortVideoCommentsView
   
   private int getDeleteType(Comments.Comment paramComment)
   {
-    if (paramComment.c == this.app.getLongAccountUin()) {
+    if (paramComment.f == this.app.getLongAccountUin()) {
       return 1;
     }
-    if (this.app.getLongAccountUin() == this.mVideoData.jdField_a_of_type_Long) {
+    if (this.app.getLongAccountUin() == this.mVideoData.i) {
       return 4;
     }
-    if (this.app.getLongAccountUin() == this.mVideoData.d) {
+    if (this.app.getLongAccountUin() == this.mVideoData.u) {
       return 3;
     }
     return 2;
@@ -264,7 +265,7 @@ public class ShortVideoCommentsView
   private void handleDeleteFail(Comments.Comment paramComment)
   {
     if (this.mAdapter.a(paramComment)) {
-      showToast(getResources().getString(2131696376));
+      showToast(getResources().getString(2131894148));
     }
   }
   
@@ -301,7 +302,7 @@ public class ShortVideoCommentsView
       {
         localObject = (Activity)getContext();
         int j = UITools.b(getContext());
-        if ((this.headerContainer.getMeasuredHeight() <= j - ViewUtils.a((Context)localObject)) || (this.headerContainer.getMeasuredHeight() - i <= j - ViewUtils.a((Context)localObject) - UITools.a(getContext(), 50.0F)))
+        if ((this.headerContainer.getMeasuredHeight() <= j - ViewUtils.getStatusBarHeight((Context)localObject)) || (this.headerContainer.getMeasuredHeight() - i <= j - ViewUtils.getStatusBarHeight((Context)localObject) - UITools.a(getContext(), 50.0F)))
         {
           this.commentVisibleReport = true;
           ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("video").opName("playpage_com_exp").LvInd1().reportByVideo(this.app);
@@ -350,26 +351,26 @@ public class ShortVideoCommentsView
   
   private void removeFailedComment(Comments.Comment paramComment)
   {
-    this.mComments.jdField_a_of_type_JavaUtilList.remove(paramComment);
+    this.mComments.c.remove(paramComment);
     this.mAdapter.notifyDataSetChanged();
     paramComment = this.commentCountTextView;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("(");
     Comments localComments = this.mComments;
-    long l = localComments.jdField_a_of_type_Long - 1L;
-    localComments.jdField_a_of_type_Long = l;
+    long l = localComments.a - 1L;
+    localComments.a = l;
     localStringBuilder.append(String.valueOf(l));
     localStringBuilder.append(")");
     paramComment.setText(localStringBuilder.toString());
     paramComment = this.mPlayOperationViewModel;
     if (paramComment != null) {
-      paramComment.setCommentsCount(this.mComments.jdField_a_of_type_Long);
+      paramComment.setCommentsCount(this.mComments.a);
     }
   }
   
   private void showDeleteConfirmDialog(Comments.Comment paramComment)
   {
-    String str = getResources().getString(2131696375);
+    String str = getResources().getString(2131894147);
     DialogUtil.a(getContext(), 232, null, str, new ShortVideoCommentsView.31(this, paramComment), new ShortVideoCommentsView.32(this)).show();
   }
   
@@ -426,7 +427,7 @@ public class ShortVideoCommentsView
   
   public void hideLoading()
   {
-    if (this.mPresenter.a() > 0)
+    if (this.mPresenter.d() > 0)
     {
       HorizontalBallLoadingView localHorizontalBallLoadingView = this.mHorizontalBallLoadingView;
       if (localHorizontalBallLoadingView != null) {
@@ -450,7 +451,7 @@ public class ShortVideoCommentsView
   
   public void initLocationView()
   {
-    if (this.mVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo == null)
+    if (this.mVideoData.J == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("ShortVideoComments", 2, "initLocationView: lbsInfo null!");
@@ -458,7 +459,7 @@ public class ShortVideoCommentsView
       this.mLocationText.setVisibility(8);
       return;
     }
-    LocationInfo localLocationInfo = this.mVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo;
+    LocationInfo localLocationInfo = this.mVideoData.J;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -476,20 +477,20 @@ public class ShortVideoCommentsView
       localObject = localLocationInfo.getCity();
     }
     this.mLocationText.setText((CharSequence)localObject);
-    if ((!TextUtils.isEmpty(localLocationInfo.getName())) && (!localLocationInfo.name.endsWith(HardCodeUtil.a(2131713961))))
+    if ((!TextUtils.isEmpty(localLocationInfo.getName())) && (!localLocationInfo.name.endsWith(HardCodeUtil.a(2131911492))))
     {
-      if (this.mVideoData.b != VideoData.jdField_a_of_type_Int)
+      if (this.mVideoData.b != VideoData.a)
       {
-        this.mLocationText.setCompoundDrawablesWithIntrinsicBounds(2130845629, 0, 0, 0);
+        this.mLocationText.setCompoundDrawablesWithIntrinsicBounds(2130847093, 0, 0, 0);
         this.mLocationText.setTextColor(Color.parseColor("#576B95"));
       }
       this.mLocationText.setEnabled(true);
       this.mLocationText.setOnClickListener(new ShortVideoCommentsView.1(this, localLocationInfo));
       return;
     }
-    if (this.mVideoData.b != VideoData.jdField_a_of_type_Int)
+    if (this.mVideoData.b != VideoData.a)
     {
-      this.mLocationText.setCompoundDrawablesWithIntrinsicBounds(2130845692, 0, 0, 0);
+      this.mLocationText.setCompoundDrawablesWithIntrinsicBounds(2130847161, 0, 0, 0);
       this.mLocationText.setTextColor(Color.parseColor("#777777"));
     }
     this.mLocationText.setOnClickListener(null);
@@ -500,18 +501,18 @@ public class ShortVideoCommentsView
     Object localObject1 = this.mVideoData;
     if ((localObject1 != null) && (!((VideoData)localObject1).a()))
     {
-      String str = this.mVideoData.j;
+      String str = this.mVideoData.A;
       Object localObject2 = "";
       localObject1 = localObject2;
       if (str != null)
       {
         localObject1 = localObject2;
-        if (!this.mVideoData.j.isEmpty()) {
-          localObject1 = this.mVideoData.j.replace("\n", "").replace("\r", "").trim();
+        if (!this.mVideoData.A.isEmpty()) {
+          localObject1 = this.mVideoData.A.replace("\n", "").replace("\r", "").trim();
         }
       }
       localObject1 = parseTopicTitle((String)localObject1);
-      localObject1 = TopicHelper.b(getContext(), this.mVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo, (String)localObject1);
+      localObject1 = TopicHelper.b(getContext(), this.mVideoData.N, (String)localObject1);
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         if (QLog.isColorLevel()) {
@@ -530,18 +531,18 @@ public class ShortVideoCommentsView
         }
         this.recoderTitleTextView.setText((CharSequence)localObject1);
       }
-      if (this.mVideoData.jdField_a_of_type_Long == this.mVideoData.d)
+      if (this.mVideoData.i == this.mVideoData.u)
       {
         this.recoderFromTextView.setVisibility(8);
         this.recoderEndTextView.setVisibility(8);
         this.recoderNameTextView.setVisibility(8);
       }
-      else if ((this.mVideoData.jdField_h_of_type_Long == this.mVideoData.d) && (this.mVideoData.k != 4))
+      else if ((this.mVideoData.C == this.mVideoData.u) && (this.mVideoData.G != 4))
       {
-        this.recoderFromTextView.setText(HardCodeUtil.a(2131713923));
-        this.recoderEndTextView.setText(HardCodeUtil.a(2131713916));
+        this.recoderFromTextView.setText(HardCodeUtil.a(2131911454));
+        this.recoderEndTextView.setText(HardCodeUtil.a(2131911447));
         this.recoderEndTextView.setVisibility(0);
-        localObject2 = this.mVideoData.jdField_g_of_type_JavaLangString;
+        localObject2 = this.mVideoData.s;
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -559,9 +560,9 @@ public class ShortVideoCommentsView
       }
       else
       {
-        this.recoderFromTextView.setText(HardCodeUtil.a(2131713951));
+        this.recoderFromTextView.setText(HardCodeUtil.a(2131911482));
         this.recoderEndTextView.setVisibility(8);
-        localObject2 = this.mVideoData.jdField_h_of_type_JavaLangString;
+        localObject2 = this.mVideoData.t;
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -578,7 +579,7 @@ public class ShortVideoCommentsView
         this.recoderNameTextView.setText((CharSequence)localObject1);
       }
       this.recoderNameTextView.setOnTouchListener(new ShortVideoCommentsView.17(this));
-      long l = NetConnInfoCenter.getServerTimeMillis() - this.mVideoData.jdField_f_of_type_Long * 1000L;
+      long l = NetConnInfoCenter.getServerTimeMillis() - this.mVideoData.y * 1000L;
       if (l < 0L)
       {
         localObject1 = "1分钟前";
@@ -587,28 +588,28 @@ public class ShortVideoCommentsView
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(l / 60L / 1000L + 1L);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131713925));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131911456));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       else if (l < 86400000L)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(l / 60L / 60L / 1000L);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131713972));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131911503));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       else if (l < 31536000000L)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(l / 24L / 60L / 60L / 1000L);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131713932));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131911463));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       else
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(l / 365L / 24L / 60L / 60L / 1000L);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131713918));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131911449));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       this.recoderTimeTextView.setText((CharSequence)localObject1);
@@ -626,17 +627,17 @@ public class ShortVideoCommentsView
   public void jump2Report(Comments.Comment paramComment)
   {
     Object localObject = getContext();
-    if ((paramComment.c > 0L) && ((localObject instanceof BaseActivity)))
+    if ((paramComment.f > 0L) && ((localObject instanceof BaseActivity)))
     {
-      Bundle localBundle = new ProfileCardUtil.ReportBundleBuilder().a(paramComment.jdField_a_of_type_JavaLangString).a();
+      Bundle localBundle = new ProfileCardUtil.ReportBundleBuilder().a(paramComment.b).a();
       localObject = (BaseActivity)localObject;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramComment.c);
+      localStringBuilder.append(paramComment.f);
       localStringBuilder.append("");
       ProfileCardUtil.a((BaseActivity)localObject, 0L, localStringBuilder.toString(), null, 20006, "", localBundle);
       return;
     }
-    QQToast.a((Context)localObject, 2, HardCodeUtil.a(2131713908), 0).a();
+    QQToast.makeText((Context)localObject, 2, HardCodeUtil.a(2131911439), 0).show();
   }
   
   public void onActivityCreated(Comments paramComments, int paramInt)
@@ -668,7 +669,7 @@ public class ShortVideoCommentsView
   public void onCreate()
   {
     this.mComments = new Comments();
-    this.mComments.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.mComments.c = new ArrayList();
     this.mPresenter = new CommentsPresenter(this, this.mVideoData, this.app);
     this.mSelfUin = this.app.getLongAccountUin();
     this.mNameMaxWidth = ((int)(UITools.a(getContext()) - UITools.a(getContext(), 85.0F)));
@@ -678,69 +679,69 @@ public class ShortVideoCommentsView
   
   public View onCreateView()
   {
-    this.mRootView = LayoutInflater.from(getContext()).inflate(2131561210, this, true);
+    this.mRootView = LayoutInflater.from(getContext()).inflate(2131627562, this, true);
     this.mKeyboardHeight = (UITools.b(getContext()) / 3);
     this.mRootView.setOnClickListener(new ShortVideoCommentsView.2(this));
-    this.lvComments = ((ListView)this.mRootView.findViewById(2131370502));
+    this.lvComments = ((ListView)this.mRootView.findViewById(2131437774));
     Object localObject = this.mVideoData;
     if ((localObject == null) || (((VideoData)localObject).b == 1) || (this.mVideoData.a())) {
       this.lvComments.setOnTouchListener(new ShortVideoCommentsView.3(this));
     }
     this.mAdapter = new CommentsAdapter(getContext(), this.mComments, this.mVideoData, this.mPresenter, this.mTextPaint, this.mNameMaxWidth);
-    this.playerView = LayoutInflater.from(getContext()).inflate(2131561209, this, false);
+    this.playerView = LayoutInflater.from(getContext()).inflate(2131627561, this, false);
     localObject = this.videoViewHolder;
     View localView = this.playerView;
-    ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView);
-    ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131372843));
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView = ((ImageDisplayView)this.playerView.findViewById(2131368558));
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView = ((OperationView)this.playerView.findViewById(2131372189));
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a = this.app;
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a();
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView = ((QQStoryVideoPlayerErrorView)this.playerView.findViewById(2131372227));
-    localObject = (FrameLayout.LayoutParams)this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getLayoutParams();
-    ((FrameLayout.LayoutParams)localObject).height = UITools.b(this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getContext());
-    ((FrameLayout.LayoutParams)localObject).width = UITools.a(this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.getContext());
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.requestLayout();
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setOnClickListener(new ShortVideoCommentsView.4(this));
-    if (this.mVideoData.k == VideoData.jdField_a_of_type_Int)
+    ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).b = ((ViewGroup)localView);
+    ((VideoPlayerPagerAdapter.VideoViewHolder)localObject).c = ((RelativeLayout)localView.findViewById(2131440394));
+    this.videoViewHolder.e = ((ImageDisplayView)this.playerView.findViewById(2131435464));
+    this.videoViewHolder.d = ((OperationView)this.playerView.findViewById(2131439676));
+    this.videoViewHolder.d.c = this.app;
+    this.videoViewHolder.d.a();
+    this.videoViewHolder.f = ((QQStoryVideoPlayerErrorView)this.playerView.findViewById(2131439731));
+    localObject = (FrameLayout.LayoutParams)this.videoViewHolder.f.getLayoutParams();
+    ((FrameLayout.LayoutParams)localObject).height = UITools.b(this.videoViewHolder.f.getContext());
+    ((FrameLayout.LayoutParams)localObject).width = UITools.a(this.videoViewHolder.f.getContext());
+    this.videoViewHolder.f.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.videoViewHolder.f.requestLayout();
+    this.videoViewHolder.f.setOnClickListener(new ShortVideoCommentsView.4(this));
+    if (this.mVideoData.G == VideoData.a)
     {
-      this.videoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(8);
+      this.videoViewHolder.c.setVisibility(8);
+      this.videoViewHolder.e.setVisibility(8);
     }
-    else if (this.mVideoData.k == 4)
+    else if (this.mVideoData.G == 4)
     {
-      this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(0);
-      this.videoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.videoViewHolder.e.setVisibility(0);
+      this.videoViewHolder.c.setVisibility(8);
     }
     else
     {
-      this.videoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setVisibility(8);
+      this.videoViewHolder.c.setVisibility(0);
+      this.videoViewHolder.e.setVisibility(8);
     }
-    this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.mPlayOperationViewModel = this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a();
-    this.recoderInfoView = LayoutInflater.from(getContext()).inflate(2131561211, this, false);
-    this.recorderTopDivider = this.recoderInfoView.findViewById(2131376296);
-    this.recoderTitleTextView = ((TextView)this.recoderInfoView.findViewById(2131379930));
-    this.recoderTopicLabelListView = ((TopicLabelListView)this.recoderInfoView.findViewById(2131379941));
-    this.recoderTimeTextView = ((TextView)this.recoderInfoView.findViewById(2131379924));
-    this.recoderFromTextView = ((TextView)this.recoderInfoView.findViewById(2131379694));
-    this.recoderNameTextView = ((TextView)this.recoderInfoView.findViewById(2131379778));
-    this.recoderEndTextView = ((TextView)this.recoderInfoView.findViewById(2131379654));
-    if (this.mVideoData.k == VideoData.jdField_a_of_type_Int) {
-      this.mLocationText = ((TextView)this.recoderInfoView.findViewById(2131379615));
+    this.videoViewHolder.f.setVisibility(8);
+    this.mPlayOperationViewModel = this.videoViewHolder.d.getPlayOperationViewModel();
+    this.recoderInfoView = LayoutInflater.from(getContext()).inflate(2131627563, this, false);
+    this.recorderTopDivider = this.recoderInfoView.findViewById(2131444505);
+    this.recoderTitleTextView = ((TextView)this.recoderInfoView.findViewById(2131448814));
+    this.recoderTopicLabelListView = ((TopicLabelListView)this.recoderInfoView.findViewById(2131448827));
+    this.recoderTimeTextView = ((TextView)this.recoderInfoView.findViewById(2131448805));
+    this.recoderFromTextView = ((TextView)this.recoderInfoView.findViewById(2131448477));
+    this.recoderNameTextView = ((TextView)this.recoderInfoView.findViewById(2131448598));
+    this.recoderEndTextView = ((TextView)this.recoderInfoView.findViewById(2131448428));
+    if (this.mVideoData.G == VideoData.a) {
+      this.mLocationText = ((TextView)this.recoderInfoView.findViewById(2131448379));
     } else {
-      this.mLocationText = ((TextView)this.recoderInfoView.findViewById(2131379614));
+      this.mLocationText = ((TextView)this.recoderInfoView.findViewById(2131448378));
     }
     this.recoderInfoView.setVisibility(0);
-    this.commentCountView = LayoutInflater.from(getContext()).inflate(2131561201, this, false);
-    this.commentCountTextView = ((TextView)this.commentCountView.findViewById(2131379587));
+    this.commentCountView = LayoutInflater.from(getContext()).inflate(2131627553, this, false);
+    this.commentCountTextView = ((TextView)this.commentCountView.findViewById(2131448344));
     this.headerContainer = new LinearLayout(getContext());
     this.headerContainer.setBackgroundColor(Color.parseColor("#00000000"));
-    int i = ViewUtils.a((Activity)this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
-    float f1 = UITools.b(this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext()) - i;
-    float f2 = UITools.a(this.videoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.getContext());
+    int i = ViewUtils.getStatusBarHeight((Activity)this.videoViewHolder.e.getContext());
+    float f1 = UITools.b(this.videoViewHolder.e.getContext()) - i;
+    float f2 = UITools.a(this.videoViewHolder.e.getContext());
     if (this.mVideoData.b == 4)
     {
       this.headerContainer.setBackgroundColor(Color.parseColor("#000000"));
@@ -755,25 +756,25 @@ public class ShortVideoCommentsView
     this.headerContainer.setOrientation(1);
     if (this.mVideoData.b != 1)
     {
-      if (this.mVideoData.b == VideoData.jdField_a_of_type_Int) {
-        localObject = LayoutInflater.from(getContext()).inflate(2131561206, this.headerContainer, true);
+      if (this.mVideoData.b == VideoData.a) {
+        localObject = LayoutInflater.from(getContext()).inflate(2131627558, this.headerContainer, true);
       } else {
-        localObject = LayoutInflater.from(getContext()).inflate(2131561206, (ViewGroup)this.mRootView.findViewById(2131370633), true);
+        localObject = LayoutInflater.from(getContext()).inflate(2131627558, (ViewGroup)this.mRootView.findViewById(2131437908), true);
       }
       this.mPlayOperationViewModel.setHeadBinding((View)localObject);
-      this.videoViewHolder.jdField_a_of_type_AndroidViewView = ((View)localObject);
-      if (this.mVideoData.b == VideoData.jdField_a_of_type_Int)
+      this.videoViewHolder.g = ((View)localObject);
+      if (this.mVideoData.b == VideoData.a)
       {
         this.mPlayOperationViewModel.setHeadInfoMaskWhiteMode();
-        this.recoderInfoView.findViewById(2131376295).setVisibility(8);
+        this.recoderInfoView.findViewById(2131444504).setVisibility(8);
       }
     }
-    if (this.mVideoData.b == VideoData.jdField_a_of_type_Int)
+    if (this.mVideoData.b == VideoData.a)
     {
       this.headerContainer.addView(this.recoderInfoView);
       this.headerContainer.addView(this.playerView, (int)f2, -2);
       this.headerContainer.addView(this.commentCountView);
-      this.commentCountView.findViewById(2131379004).setVisibility(0);
+      this.commentCountView.findViewById(2131447724).setVisibility(0);
     }
     else
     {
@@ -790,11 +791,11 @@ public class ShortVideoCommentsView
     }
     else
     {
-      ((IStoryRelayoutUtil)QRoute.api(IStoryRelayoutUtil.class)).dynamicChangeStoryContainerView(this.videoViewHolder, this.mVideoData.m, this.mVideoData.l);
-      this.mFooterView = ((FrameLayout)LayoutInflater.from(getContext()).inflate(2131561196, null, false));
+      ((IStoryRelayoutUtil)QRoute.api(IStoryRelayoutUtil.class)).dynamicChangeStoryContainerView(this.videoViewHolder, this.mVideoData.I, this.mVideoData.H);
+      this.mFooterView = ((FrameLayout)LayoutInflater.from(getContext()).inflate(2131627548, null, false));
       localObject = new AbsListView.LayoutParams(-1, (int)UITools.a(getContext(), 50.0F));
       this.mFooterView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.mHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.mFooterView.findViewById(2131374287));
+      this.mHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.mFooterView.findViewById(2131442450));
       this.lvComments.addFooterView(this.mFooterView);
     }
     if (this.mVideoData.a())
@@ -802,18 +803,19 @@ public class ShortVideoCommentsView
       this.recoderInfoView.setVisibility(8);
       this.commentCountView.setVisibility(8);
     }
-    this.coverView = this.mRootView.findViewById(2131380837);
+    this.coverView = this.mRootView.findViewById(2131449813);
     this.coverView.setOnClickListener(new ShortVideoCommentsView.6(this));
-    this.btnSend = ((TextView)this.mRootView.findViewById(2131364055));
-    this.llInut = ((LinearLayout)this.mRootView.findViewById(2131370301));
-    this.etInput = ((EditText)this.mRootView.findViewById(2131366315));
+    this.btnSend = ((TextView)this.mRootView.findViewById(2131430013));
+    this.llInut = ((LinearLayout)this.mRootView.findViewById(2131437547));
+    this.etInput = ((EditText)this.mRootView.findViewById(2131432614));
     inputWidgetRegisterListener();
-    this.rlNoPermission = ((RelativeLayout)this.mRootView.findViewById(2131376707));
-    this.tvPermissionDeniedReason = ((TextView)this.mRootView.findViewById(2131369720));
-    this.btnPermissionDeniedJump = ((TextView)this.mRootView.findViewById(2131363988));
-    this.rlInputBlock = ((RelativeLayout)this.mRootView.findViewById(2131376658));
+    this.rlNoPermission = ((RelativeLayout)this.mRootView.findViewById(2131444988));
+    this.tvPermissionDeniedReason = ((TextView)this.mRootView.findViewById(2131436832));
+    this.btnPermissionDeniedJump = ((TextView)this.mRootView.findViewById(2131429945));
+    this.rlInputBlock = ((RelativeLayout)this.mRootView.findViewById(2131444921));
     hideInputKeyboard();
-    this.dividerView = this.mRootView.findViewById(2131380839);
+    this.dividerView = this.mRootView.findViewById(2131449815);
+    ((INearbyReportHelper)QRoute.api(INearbyReportHelper.class)).reportTrendDetailExp(this.app, String.valueOf(this.mVideoData.i));
     return this.mRootView;
   }
   
@@ -894,7 +896,7 @@ public class ShortVideoCommentsView
       if (QLog.isColorLevel()) {
         QLog.w("ShortVideoComments", 2, "onPermissionGranted text ie empty! etinput use defualt hint ");
       }
-      this.mHintText = getContext().getResources().getString(2131696374);
+      this.mHintText = getContext().getResources().getString(2131894146);
       this.etInput.setHint(this.mHintText);
     }
     label109:
@@ -912,7 +914,7 @@ public class ShortVideoCommentsView
       if (QLog.isColorLevel()) {
         QLog.w("ShortVideoComments", 2, "onPermissionGranted btnText ie empty! btnSend use defualt text ");
       }
-      this.btnSend.setText(getContext().getResources().getString(2131696382));
+      this.btnSend.setText(getContext().getResources().getString(2131894154));
     }
     label175:
     if (this.needToOpenKeyboard) {
@@ -944,11 +946,11 @@ public class ShortVideoCommentsView
     if (paramComment != null)
     {
       if (paramInt == 10003) {
-        showToast(getContext().getResources().getString(2131696381));
+        showToast(getContext().getResources().getString(2131894153));
       } else if (paramInt == 10009) {
         showBindPhone(paramString);
       } else {
-        showToast(getContext().getResources().getString(2131696383));
+        showToast(getContext().getResources().getString(2131894155));
       }
       this.etInput.requestFocus();
       removeFailedComment(paramComment);
@@ -958,21 +960,21 @@ public class ShortVideoCommentsView
   
   public void removeCommentDirectly(Comments.Comment paramComment)
   {
-    if (this.mComments.jdField_a_of_type_JavaUtilList.contains(paramComment))
+    if (this.mComments.c.contains(paramComment))
     {
-      this.mComments.jdField_a_of_type_JavaUtilList.remove(paramComment);
+      this.mComments.c.remove(paramComment);
       this.mAdapter.notifyDataSetChanged();
       paramComment = this.mComments;
-      paramComment.jdField_a_of_type_Long -= 1L;
+      paramComment.a -= 1L;
       paramComment = this.commentCountTextView;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("(");
-      localStringBuilder.append(String.valueOf(this.mComments.jdField_a_of_type_Long));
+      localStringBuilder.append(String.valueOf(this.mComments.a));
       localStringBuilder.append(")");
       paramComment.setText(localStringBuilder.toString());
       paramComment = this.mPlayOperationViewModel;
       if (paramComment != null) {
-        paramComment.setCommentsCount(this.mComments.jdField_a_of_type_Long);
+        paramComment.setCommentsCount(this.mComments.a);
       }
     }
   }
@@ -986,83 +988,83 @@ public class ShortVideoCommentsView
     //   4: aload_0
     //   5: getfield 186	com/tencent/mobileqq/nearby/now/view/ShortVideoCommentsView:mVideoData	Lcom/tencent/mobileqq/nearby/now/model/VideoData;
     //   8: ifnull +216 -> 224
-    //   11: new 340	java/lang/StringBuilder
+    //   11: new 342	java/lang/StringBuilder
     //   14: dup
-    //   15: invokespecial 341	java/lang/StringBuilder:<init>	()V
+    //   15: invokespecial 343	java/lang/StringBuilder:<init>	()V
     //   18: astore 4
     //   20: aload 4
     //   22: aload_0
     //   23: getfield 186	com/tencent/mobileqq/nearby/now/view/ShortVideoCommentsView:mVideoData	Lcom/tencent/mobileqq/nearby/now/model/VideoData;
-    //   26: getfield 1316	com/tencent/mobileqq/nearby/now/model/VideoData:jdField_g_of_type_Int	I
-    //   29: invokevirtual 1007	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   26: getfield 1333	com/tencent/mobileqq/nearby/now/model/VideoData:r	I
+    //   29: invokevirtual 1015	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   32: pop
     //   33: aload 4
     //   35: ldc 160
-    //   37: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: pop
     //   41: aload 4
-    //   43: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   43: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   46: astore 4
-    //   48: new 340	java/lang/StringBuilder
+    //   48: new 342	java/lang/StringBuilder
     //   51: dup
-    //   52: invokespecial 341	java/lang/StringBuilder:<init>	()V
+    //   52: invokespecial 343	java/lang/StringBuilder:<init>	()V
     //   55: astore 5
     //   57: aload 5
     //   59: aload_0
     //   60: getfield 186	com/tencent/mobileqq/nearby/now/view/ShortVideoCommentsView:mVideoData	Lcom/tencent/mobileqq/nearby/now/model/VideoData;
-    //   63: getfield 1318	com/tencent/mobileqq/nearby/now/model/VideoData:jdField_f_of_type_Int	I
-    //   66: invokevirtual 1007	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   63: getfield 1336	com/tencent/mobileqq/nearby/now/model/VideoData:q	I
+    //   66: invokevirtual 1015	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   69: pop
     //   70: aload 5
     //   72: ldc 160
-    //   74: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: pop
     //   78: aload 5
-    //   80: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   83: astore 5
-    //   85: new 340	java/lang/StringBuilder
+    //   85: new 342	java/lang/StringBuilder
     //   88: dup
-    //   89: invokespecial 341	java/lang/StringBuilder:<init>	()V
+    //   89: invokespecial 343	java/lang/StringBuilder:<init>	()V
     //   92: astore 6
     //   94: aload 6
     //   96: aload_0
     //   97: getfield 186	com/tencent/mobileqq/nearby/now/view/ShortVideoCommentsView:mVideoData	Lcom/tencent/mobileqq/nearby/now/model/VideoData;
-    //   100: getfield 493	com/tencent/mobileqq/nearby/now/model/VideoData:jdField_a_of_type_Long	J
-    //   103: invokevirtual 953	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   100: getfield 497	com/tencent/mobileqq/nearby/now/model/VideoData:i	J
+    //   103: invokevirtual 960	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   106: pop
     //   107: aload 6
     //   109: ldc 160
-    //   111: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: aload 6
-    //   117: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   120: astore 6
-    //   122: invokestatic 1324	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   122: invokestatic 1342	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   125: astore 7
-    //   127: new 340	java/lang/StringBuilder
+    //   127: new 342	java/lang/StringBuilder
     //   130: dup
-    //   131: invokespecial 341	java/lang/StringBuilder:<init>	()V
+    //   131: invokespecial 343	java/lang/StringBuilder:<init>	()V
     //   134: astore 8
     //   136: aload 8
-    //   138: ldc_w 1326
-    //   141: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: ldc_w 1344
+    //   141: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   144: pop
     //   145: aload 8
     //   147: aload_1
-    //   148: invokevirtual 1331	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   151: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: invokevirtual 1349	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   151: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: pop
     //   155: aload 7
     //   157: aload 8
-    //   159: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   162: iconst_4
-    //   163: invokevirtual 1335	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   166: ldc_w 1337
+    //   163: invokevirtual 1353	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   166: ldc_w 1355
     //   169: iconst_0
-    //   170: invokeinterface 1343 3 0
+    //   170: invokeinterface 1361 3 0
     //   175: istore_3
     //   176: iload_3
-    //   177: invokestatic 1345	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   177: invokestatic 1363	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   180: astore 8
     //   182: aload 6
     //   184: astore 7
@@ -1092,11 +1094,11 @@ public class ShortVideoCommentsView
     //   232: aload 4
     //   234: astore 5
     //   236: aload_1
-    //   237: checkcast 487	com/tencent/mobileqq/app/QQAppInterface
-    //   240: ldc_w 1347
-    //   243: ldc_w 1349
+    //   237: checkcast 489	com/tencent/mobileqq/app/QQAppInterface
+    //   240: ldc_w 1365
+    //   243: ldc_w 1367
     //   246: aload 7
-    //   248: ldc_w 594
+    //   248: ldc_w 599
     //   251: aload_2
     //   252: iconst_0
     //   253: iconst_0
@@ -1104,7 +1106,7 @@ public class ShortVideoCommentsView
     //   256: aload 4
     //   258: aload 5
     //   260: ldc 160
-    //   262: invokestatic 1354	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   262: invokestatic 1372	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   265: aload 7
     //   267: astore 9
     //   269: aload 4
@@ -1131,26 +1133,26 @@ public class ShortVideoCommentsView
     //   309: astore 10
     //   311: aload 5
     //   313: astore 11
-    //   315: invokestatic 787	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   315: invokestatic 792	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   318: ifeq +59 -> 377
-    //   321: new 340	java/lang/StringBuilder
+    //   321: new 342	java/lang/StringBuilder
     //   324: dup
-    //   325: invokespecial 341	java/lang/StringBuilder:<init>	()V
+    //   325: invokespecial 343	java/lang/StringBuilder:<init>	()V
     //   328: astore 8
     //   330: aload 8
-    //   332: ldc_w 1356
-    //   335: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: ldc_w 1374
+    //   335: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   338: pop
     //   339: aload 8
     //   341: aload 6
-    //   343: invokevirtual 1357	java/lang/Exception:toString	()Ljava/lang/String;
-    //   346: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   343: invokevirtual 1375	java/lang/Exception:toString	()Ljava/lang/String;
+    //   346: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   349: pop
-    //   350: ldc_w 1011
+    //   350: ldc_w 1019
     //   353: iconst_2
     //   354: aload 8
-    //   356: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokestatic 1360	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   356: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   359: invokestatic 1377	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   362: aload 5
     //   364: astore 11
     //   366: aload 4
@@ -1159,57 +1161,57 @@ public class ShortVideoCommentsView
     //   371: astore 8
     //   373: aload 7
     //   375: astore 9
-    //   377: invokestatic 787	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   377: invokestatic 792	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   380: ifeq +96 -> 476
-    //   383: new 340	java/lang/StringBuilder
+    //   383: new 342	java/lang/StringBuilder
     //   386: dup
-    //   387: invokespecial 341	java/lang/StringBuilder:<init>	()V
+    //   387: invokespecial 343	java/lang/StringBuilder:<init>	()V
     //   390: astore_1
     //   391: aload_1
-    //   392: ldc_w 1362
-    //   395: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: ldc_w 1379
+    //   395: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   398: pop
     //   399: aload_1
     //   400: aload_2
-    //   401: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   404: pop
     //   405: aload_1
-    //   406: ldc_w 1364
-    //   409: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   406: ldc_w 1381
+    //   409: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   412: pop
     //   413: aload_1
     //   414: aload 9
-    //   416: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   416: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   419: pop
     //   420: aload_1
-    //   421: ldc_w 1366
-    //   424: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   421: ldc_w 1383
+    //   424: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   427: pop
     //   428: aload_1
     //   429: aload 10
-    //   431: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   431: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   434: pop
     //   435: aload_1
-    //   436: ldc_w 1368
-    //   439: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   436: ldc_w 1385
+    //   439: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   442: pop
     //   443: aload_1
     //   444: aload 11
-    //   446: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   446: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   449: pop
     //   450: aload_1
-    //   451: ldc_w 1370
-    //   454: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   451: ldc_w 1387
+    //   454: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   457: pop
     //   458: aload_1
     //   459: aload 8
-    //   461: invokevirtual 347	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   461: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   464: pop
-    //   465: ldc_w 1011
+    //   465: ldc_w 1019
     //   468: iconst_2
     //   469: aload_1
-    //   470: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   473: invokestatic 1013	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   470: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   473: invokestatic 1021	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   476: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1298,7 +1300,7 @@ public class ShortVideoCommentsView
   
   public void showBadNetworkConnection()
   {
-    this.mAdapter.jdField_a_of_type_Boolean = true;
+    this.mAdapter.a = true;
   }
   
   public void showBindPhone(String paramString)
@@ -1315,7 +1317,7 @@ public class ShortVideoCommentsView
     }
     if ((!TextUtils.isEmpty(paramString)) && (localBaseActivity != null))
     {
-      DialogUtil.a(localBaseActivity, paramString, 2131690728, 2131699021, new ShortVideoCommentsView.20(this, localBaseActivity), new ShortVideoCommentsView.21(this)).show();
+      DialogUtil.a(localBaseActivity, paramString, 2131887648, 2131897030, new ShortVideoCommentsView.20(this, localBaseActivity), new ShortVideoCommentsView.21(this)).show();
       reportBindPhoneAction(this.app, "playpage_phone_exp");
     }
   }
@@ -1350,36 +1352,36 @@ public class ShortVideoCommentsView
   
   public void showDataInView(Comments paramComments)
   {
-    this.mAdapter.jdField_a_of_type_Boolean = false;
-    if ((paramComments.jdField_a_of_type_Long != 0L) || (!paramComments.jdField_a_of_type_Boolean)) {
-      this.mComments.jdField_a_of_type_Long = paramComments.jdField_a_of_type_Long;
+    this.mAdapter.a = false;
+    if ((paramComments.a != 0L) || (!paramComments.b)) {
+      this.mComments.a = paramComments.a;
     }
-    this.mComments.jdField_a_of_type_Boolean = paramComments.jdField_a_of_type_Boolean;
-    if ((paramComments.jdField_a_of_type_JavaUtilList != null) && (paramComments.jdField_a_of_type_JavaUtilList.size() > 0))
+    this.mComments.b = paramComments.b;
+    if ((paramComments.c != null) && (paramComments.c.size() > 0))
     {
-      this.mComments.jdField_a_of_type_JavaUtilList.addAll(paramComments.jdField_a_of_type_JavaUtilList);
+      this.mComments.c.addAll(paramComments.c);
       this.mAdapter.notifyDataSetChanged();
     }
-    this.isEnd = paramComments.jdField_a_of_type_Boolean;
+    this.isEnd = paramComments.b;
     this.isLoading = false;
     paramComments = this.commentCountTextView;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("(");
-    localStringBuilder.append(String.valueOf(this.mComments.jdField_a_of_type_Long));
+    localStringBuilder.append(String.valueOf(this.mComments.a));
     localStringBuilder.append(")");
     paramComments.setText(localStringBuilder.toString());
     paramComments = this.mPlayOperationViewModel;
     if (paramComments != null) {
-      paramComments.setCommentsCount(this.mComments.jdField_a_of_type_Long);
+      paramComments.setCommentsCount(this.mComments.a);
     }
   }
   
   public void showDelAndReportSheet(Comments.Comment paramComment)
   {
     ActionSheet localActionSheet = ActionSheet.create(getContext());
-    localActionSheet.addButton(HardCodeUtil.a(2131713930), 1);
-    localActionSheet.addButton(HardCodeUtil.a(2131713933), 1);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addButton(HardCodeUtil.a(2131911461), 1);
+    localActionSheet.addButton(HardCodeUtil.a(2131911464), 1);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new ShortVideoCommentsView.15(this, paramComment, localActionSheet));
     localActionSheet.show();
   }
@@ -1387,15 +1389,15 @@ public class ShortVideoCommentsView
   public void showDelSheet(Comments.Comment paramComment)
   {
     ActionSheet localActionSheet = ActionSheet.create(getContext());
-    localActionSheet.addButton(HardCodeUtil.a(2131713943), 1);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addButton(HardCodeUtil.a(2131911474), 1);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new ShortVideoCommentsView.13(this, paramComment, localActionSheet));
     localActionSheet.show();
   }
   
   public void showEmptyCloseBtn()
   {
-    this.mEmptyCloseBtn = ((ImageView)this.mRootView.findViewById(2131366211));
+    this.mEmptyCloseBtn = ((ImageView)this.mRootView.findViewById(2131432499));
     this.mEmptyCloseBtn.setOnClickListener(new ShortVideoCommentsView.16(this));
     this.mEmptyCloseBtn.setVisibility(0);
   }
@@ -1419,7 +1421,7 @@ public class ShortVideoCommentsView
   
   public void showLoading()
   {
-    if (this.mPresenter.a() > 0)
+    if (this.mPresenter.d() > 0)
     {
       HorizontalBallLoadingView localHorizontalBallLoadingView = this.mHorizontalBallLoadingView;
       if (localHorizontalBallLoadingView != null) {
@@ -1431,8 +1433,8 @@ public class ShortVideoCommentsView
   public void showReportSheet(Comments.Comment paramComment)
   {
     ActionSheet localActionSheet = ActionSheet.create(getContext());
-    localActionSheet.addButton(HardCodeUtil.a(2131713947), 1);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addButton(HardCodeUtil.a(2131911478), 1);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new ShortVideoCommentsView.14(this, paramComment, localActionSheet));
     localActionSheet.show();
   }
@@ -1440,14 +1442,14 @@ public class ShortVideoCommentsView
   public void showToast(String paramString)
   {
     if (getContext() != null) {
-      QQToast.a(getContext(), 0, paramString, 1).a();
+      QQToast.makeText(getContext(), 0, paramString, 1).show();
     }
   }
   
   public void showToast(String paramString, int paramInt)
   {
     if (getContext() != null) {
-      QQToast.a(getContext(), paramInt, paramString, 1).a();
+      QQToast.makeText(getContext(), paramInt, paramString, 1).show();
     }
   }
   
@@ -1455,7 +1457,7 @@ public class ShortVideoCommentsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView
  * JD-Core Version:    0.7.0.1
  */

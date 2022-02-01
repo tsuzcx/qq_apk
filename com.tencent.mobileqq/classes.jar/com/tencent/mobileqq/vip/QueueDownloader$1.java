@@ -23,12 +23,12 @@ class QueueDownloader$1
       ((StringBuilder)localObject).append(this.a);
       QLog.d("QueueDownloader", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.a.c) && (DownloaderFactory.a(this.a.jdField_a_of_type_JavaLangString)))
+    if ((this.a.o) && (DownloaderFactory.a(this.a.b)))
     {
       localObject = this.a;
-      ((DownloadTask)localObject).jdField_a_of_type_Int = -101;
+      ((DownloadTask)localObject).c = -101;
       ((DownloadTask)localObject).a(-1);
-      this.a.f();
+      this.a.n();
       this.this$0.a(this.a);
       this.this$0.a.addAndGet(-1);
       this.this$0.a();
@@ -62,10 +62,10 @@ class QueueDownloader$1
     try
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() != 0)) {
-        str = (String)this.a.jdField_a_of_type_JavaUtilList.get(0);
+      if ((this.a.f != null) && (this.a.f.size() != 0)) {
+        str = (String)this.a.f.get(0);
       } else {
-        str = this.a.jdField_a_of_type_JavaLangString;
+        str = this.a.b;
       }
       localStringBuilder.append("QueueDownloader");
       localStringBuilder.append(" current task:");
@@ -90,7 +90,7 @@ class QueueDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.QueueDownloader.1
  * JD-Core Version:    0.7.0.1
  */

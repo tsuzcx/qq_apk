@@ -12,14 +12,14 @@ class IlivePlayerWrapper$7
   public void onStopAsyncComplete(ITPPlayer paramITPPlayer)
   {
     QLog.i("CachePlayer", 1, "CachePlayer onStopAsyncComplete  ");
-    if (IlivePlayerWrapper.a(this.a) != null) {
-      IlivePlayerWrapper.a(this.a).onStopAsyncComplete(paramITPPlayer);
+    if (IlivePlayerWrapper.i(this.a) != null) {
+      IlivePlayerWrapper.i(this.a).onStopAsyncComplete(paramITPPlayer);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.player.IlivePlayerWrapper.7
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,13 @@ class DocxApiPlugin$5
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      TeamWorkHandlerUtils.a(this.this$0.mRuntime.a().getCurrentAccountUin(), TeamWorkHandlerUtils.a(str), str);
+      TeamWorkHandlerUtils.a(this.this$0.mRuntime.b().getCurrentAccountUin(), TeamWorkHandlerUtils.a(str), str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.5
  * JD-Core Version:    0.7.0.1
  */

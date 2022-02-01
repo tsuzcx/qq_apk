@@ -13,18 +13,18 @@ public final class SimpleUIUtilImpl
   public boolean isThemeSimpleDayUI(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "currentThemeId");
-    return QQTheme.d(paramString);
+    return QQTheme.isThemeSimpleDayUI(paramString);
   }
   
   public boolean isThemeSimpleUI(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "themeId");
-    return QQTheme.c(paramString);
+    return QQTheme.isThemeSimpleUI(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.api.impl.SimpleUIUtilImpl
  * JD-Core Version:    0.7.0.1
  */

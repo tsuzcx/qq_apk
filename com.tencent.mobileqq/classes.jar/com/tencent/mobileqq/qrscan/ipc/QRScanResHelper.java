@@ -12,31 +12,22 @@ import mqq.util.WeakReference;
 public class QRScanResHelper
   implements IQRScanIPCConst, IQRScanIPCConst.IMiniResDownloadCallback
 {
-  private static volatile QRScanResHelper jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanResHelper;
-  HashSet<Object> jdField_a_of_type_JavaUtilHashSet = new HashSet(3);
-  List<WeakReference<IQRScanIPCConst.IMiniResDownloadCallback>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static volatile QRScanResHelper c;
+  List<WeakReference<IQRScanIPCConst.IMiniResDownloadCallback>> a = new ArrayList();
+  HashSet<Object> b = new HashSet(3);
   
   public static QRScanResHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanResHelper == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanResHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanResHelper = new QRScanResHelper();
+        if (c == null) {
+          c = new QRScanResHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanResHelper;
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
+    return c;
   }
   
   public void a(int paramInt)
@@ -46,10 +37,10 @@ public class QRScanResHelper
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject2 = new ArrayList(this.jdField_a_of_type_JavaUtilList.size() + 1);
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    Object localObject2 = new ArrayList(this.a.size() + 1);
+    synchronized (this.a)
     {
-      ((List)localObject2).addAll(this.jdField_a_of_type_JavaUtilList);
+      ((List)localObject2).addAll(this.a);
       ??? = ((List)localObject2).iterator();
       while (((Iterator)???).hasNext())
       {
@@ -68,10 +59,10 @@ public class QRScanResHelper
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject2 = new ArrayList(this.jdField_a_of_type_JavaUtilList.size() + 1);
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    Object localObject2 = new ArrayList(this.a.size() + 1);
+    synchronized (this.a)
     {
-      ((List)localObject2).addAll(this.jdField_a_of_type_JavaUtilList);
+      ((List)localObject2).addAll(this.a);
       ??? = ((List)localObject2).iterator();
       while (((Iterator)???).hasNext())
       {
@@ -92,23 +83,23 @@ public class QRScanResHelper
   {
     int i;
     label122:
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.a.size() > 0)
       {
-        i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+        i = this.a.size() - 1;
         if (i >= 0)
         {
-          WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
+          WeakReference localWeakReference = (WeakReference)this.a.get(i);
           if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() != paramIMiniResDownloadCallback)) {
             break label122;
           }
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+          this.a.remove(i);
           break label122;
         }
       }
       if (paramIMiniResDownloadCallback != null) {
-        this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramIMiniResDownloadCallback));
+        this.a.add(new WeakReference(paramIMiniResDownloadCallback));
       }
       return;
     }
@@ -121,36 +112,45 @@ public class QRScanResHelper
     }
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilHashSet.add(paramObject);
+      boolean bool = this.b.add(paramObject);
       if (QLog.isColorLevel()) {
         QLog.i("MiniRecog.QRScanResHelper", 2, String.format("init deal=%b obj=%s", new Object[] { Boolean.valueOf(bool), paramObject }));
       }
       if (!bool) {
         return;
       }
-      QRScanSubQIPCModule.a().a();
+      QRScanSubQIPCModule.a().b();
       QRScanSubQIPCModule.a().a(this);
       return;
     }
     finally {}
   }
   
+  public void b()
+  {
+    synchronized (this.a)
+    {
+      this.a.clear();
+      return;
+    }
+  }
+  
   public void b(IQRScanIPCConst.IMiniResDownloadCallback paramIMiniResDownloadCallback)
   {
     int i;
     label100:
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      if (this.a.size() > 0)
       {
-        i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+        i = this.a.size() - 1;
         if (i >= 0)
         {
-          WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilList.get(i);
+          WeakReference localWeakReference = (WeakReference)this.a.get(i);
           if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() != paramIMiniResDownloadCallback)) {
             break label100;
           }
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+          this.a.remove(i);
           break label100;
         }
       }
@@ -165,18 +165,18 @@ public class QRScanResHelper
     }
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilHashSet.remove(paramObject);
+      boolean bool = this.b.remove(paramObject);
       if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.QRScanResHelper", 2, String.format("unInit deal=%b remove=%b obj=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_JavaUtilHashSet.isEmpty()), Boolean.valueOf(bool), paramObject }));
+        QLog.i("MiniRecog.QRScanResHelper", 2, String.format("unInit deal=%b remove=%b obj=%s", new Object[] { Boolean.valueOf(this.b.isEmpty()), Boolean.valueOf(bool), paramObject }));
       }
       if (!bool) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilHashSet.isEmpty())
+      if (this.b.isEmpty())
       {
         QRScanSubQIPCModule.a().a(null);
-        a();
-        QRScanSubQIPCModule.a().b();
+        b();
+        QRScanSubQIPCModule.a().c();
       }
       return;
     }
@@ -185,7 +185,7 @@ public class QRScanResHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.ipc.QRScanResHelper
  * JD-Core Version:    0.7.0.1
  */

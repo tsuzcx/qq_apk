@@ -11,23 +11,23 @@ public final class CmShowEALoader$InitResult
   @NotNull
   public CmShowAssetsData a;
   @NotNull
-  public volatile String a;
+  public volatile String b;
   
   public final void a(@NotNull CmShowAssetsData paramCmShowAssetsData)
   {
     Intrinsics.checkParameterIsNotNull(paramCmShowAssetsData, "<set-?>");
-    this.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData = paramCmShowAssetsData;
+    this.a = paramCmShowAssetsData;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowEALoader.InitResult
  * JD-Core Version:    0.7.0.1
  */

@@ -5,33 +5,33 @@ import java.util.Map;
 
 public final class b
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, c> jdField_a_of_type_JavaUtilMap;
+  private String a;
+  private Map<String, c> b;
   
   public b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.a = paramString;
+    this.b = new HashMap();
   }
   
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public final void a(c paramc)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramc.jdField_a_of_type_JavaLangString, paramc);
+    this.b.put(paramc.a, paramc);
   }
   
   public final Map<String, c> b()
   {
-    return this.jdField_a_of_type_JavaUtilMap;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -11,37 +11,50 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.support.annotation.Nullable;
+import android.os.Build.VERSION;
+import android.provider.Settings.Global;
+import android.provider.Settings.System;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.animation.LPaint;
 import com.tencent.mobileqq.dinifly.animation.content.TrimPathContent;
 import com.tencent.mobileqq.dinifly.animation.keyframe.FloatKeyframeAnimation;
 import java.io.Closeable;
+import java.io.InterruptedIOException;
+import java.net.ProtocolException;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.net.UnknownServiceException;
+import java.nio.channels.ClosedChannelException;
+import javax.net.ssl.SSLException;
 
 public final class Utils
 {
+  private static final float INV_SQRT_2 = (float)(Math.sqrt(2.0D) / 2.0D);
   public static final int SECOND_IN_NANOS = 1000000000;
-  private static final float SQRT_2 = (float)Math.sqrt(2.0D);
   private static DisplayMetrics displayMetrics;
   private static float dpScale = -1.0F;
-  private static final PathMeasure pathMeasure = new PathMeasure();
-  private static final float[] points;
-  private static final Path tempPath = new Path();
-  private static final Path tempPath2 = new Path();
+  private static final ThreadLocal<PathMeasure> threadLocalPathMeasure = new Utils.1();
+  private static final ThreadLocal<float[]> threadLocalPoints;
+  private static final ThreadLocal<Path> threadLocalTempPath = new Utils.2();
+  private static final ThreadLocal<Path> threadLocalTempPath2 = new Utils.3();
   
   static
   {
-    points = new float[4];
+    threadLocalPoints = new Utils.4();
   }
   
   public static void applyTrimPathIfNeeded(Path paramPath, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     L.beginSection("applyTrimPathIfNeeded");
-    pathMeasure.setPath(paramPath, false);
-    float f2 = pathMeasure.getLength();
+    PathMeasure localPathMeasure = (PathMeasure)threadLocalPathMeasure.get();
+    Path localPath1 = (Path)threadLocalTempPath.get();
+    Path localPath2 = (Path)threadLocalTempPath2.get();
+    localPathMeasure.setPath(paramPath, false);
+    float f2 = localPathMeasure.getLength();
     if ((paramFloat1 == 1.0F) && (paramFloat2 == 0.0F))
     {
       L.endSection("applyTrimPathIfNeeded");
@@ -86,21 +99,21 @@ public final class Utils
       if (paramFloat2 >= paramFloat3) {
         paramFloat1 = paramFloat2 - f2;
       }
-      tempPath.reset();
-      pathMeasure.getSegment(paramFloat1, paramFloat3, tempPath, true);
+      localPath1.reset();
+      localPathMeasure.getSegment(paramFloat1, paramFloat3, localPath1, true);
       if (paramFloat3 > f2)
       {
-        tempPath2.reset();
-        pathMeasure.getSegment(0.0F, paramFloat3 % f2, tempPath2, true);
-        tempPath.addPath(tempPath2);
+        localPath2.reset();
+        localPathMeasure.getSegment(0.0F, paramFloat3 % f2, localPath2, true);
+        localPath1.addPath(localPath2);
       }
       else if (paramFloat1 < 0.0F)
       {
-        tempPath2.reset();
-        pathMeasure.getSegment(paramFloat1 + f2, f2, tempPath2, true);
-        tempPath.addPath(tempPath2);
+        localPath2.reset();
+        localPathMeasure.getSegment(paramFloat1 + f2, f2, localPath2, true);
+        localPath1.addPath(localPath2);
       }
-      paramPath.set(tempPath);
+      paramPath.set(localPath1);
       L.endSection("applyTrimPathIfNeeded");
       return;
     }
@@ -159,21 +172,28 @@ public final class Utils
     return dpScale;
   }
   
+  public static float getAnimationScale(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT >= 17) {
+      return Settings.Global.getFloat(paramContext.getContentResolver(), "animator_duration_scale", 1.0F);
+    }
+    return Settings.System.getFloat(paramContext.getContentResolver(), "animator_duration_scale", 1.0F);
+  }
+  
   public static float getScale(Matrix paramMatrix)
   {
-    float[] arrayOfFloat = points;
+    float[] arrayOfFloat = (float[])threadLocalPoints.get();
     arrayOfFloat[0] = 0.0F;
     arrayOfFloat[1] = 0.0F;
-    float f1 = SQRT_2;
+    float f1 = INV_SQRT_2;
     arrayOfFloat[2] = f1;
     arrayOfFloat[3] = f1;
     paramMatrix.mapPoints(arrayOfFloat);
-    paramMatrix = points;
-    f1 = paramMatrix[2];
-    float f2 = paramMatrix[0];
-    float f3 = paramMatrix[3];
-    float f4 = paramMatrix[1];
-    return (float)Math.hypot(f1 - f2, f3 - f4) / 2.0F;
+    f1 = arrayOfFloat[2];
+    float f2 = arrayOfFloat[0];
+    float f3 = arrayOfFloat[3];
+    float f4 = arrayOfFloat[1];
+    return (float)Math.hypot(f1 - f2, f3 - f4);
   }
   
   public static int getScreenHeight(Context paramContext)
@@ -196,15 +216,14 @@ public final class Utils
   
   public static boolean hasZeroScaleAxis(Matrix paramMatrix)
   {
-    float[] arrayOfFloat = points;
+    float[] arrayOfFloat = (float[])threadLocalPoints.get();
     arrayOfFloat[0] = 0.0F;
     arrayOfFloat[1] = 0.0F;
     arrayOfFloat[2] = 37394.73F;
     arrayOfFloat[3] = 39575.234F;
     paramMatrix.mapPoints(arrayOfFloat);
-    paramMatrix = points;
-    if (paramMatrix[0] != paramMatrix[2]) {
-      return paramMatrix[1] == paramMatrix[3];
+    if (arrayOfFloat[0] != arrayOfFloat[2]) {
+      return arrayOfFloat[1] == arrayOfFloat[3];
     }
     return true;
   }
@@ -252,6 +271,11 @@ public final class Utils
     return bool;
   }
   
+  public static boolean isNetworkException(Throwable paramThrowable)
+  {
+    return ((paramThrowable instanceof SocketException)) || ((paramThrowable instanceof ClosedChannelException)) || ((paramThrowable instanceof InterruptedIOException)) || ((paramThrowable instanceof ProtocolException)) || ((paramThrowable instanceof SSLException)) || ((paramThrowable instanceof UnknownHostException)) || ((paramThrowable instanceof UnknownServiceException));
+  }
+  
   public static String printMatrix(Matrix paramMatrix)
   {
     float[] arrayOfFloat = new float[9];
@@ -282,10 +306,36 @@ public final class Utils
     localCanvas.drawPath(paramPath, localLPaint);
     return localObject;
   }
+  
+  public static Bitmap resizeBitmapIfNeeded(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    if ((paramBitmap.getWidth() == paramInt1) && (paramBitmap.getHeight() == paramInt2)) {
+      return paramBitmap;
+    }
+    Bitmap localBitmap = Bitmap.createScaledBitmap(paramBitmap, paramInt1, paramInt2, true);
+    paramBitmap.recycle();
+    return localBitmap;
+  }
+  
+  public static void saveLayerCompat(Canvas paramCanvas, RectF paramRectF, Paint paramPaint)
+  {
+    saveLayerCompat(paramCanvas, paramRectF, paramPaint, 31);
+  }
+  
+  public static void saveLayerCompat(Canvas paramCanvas, RectF paramRectF, Paint paramPaint, int paramInt)
+  {
+    L.beginSection("Utils#saveLayer");
+    if (Build.VERSION.SDK_INT < 23) {
+      paramCanvas.saveLayer(paramRectF, paramPaint, paramInt);
+    } else {
+      paramCanvas.saveLayer(paramRectF, paramPaint);
+    }
+    L.endSection("Utils#saveLayer");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/bja" android:background="@drawable/82" android:paddingTop="26.0dip" android:layout_width="296.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0sp" android:textColor="@color/akh" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="10.0dip" android:singleLine="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/abb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="21.0dip" android:layout_below="@id/dialogTitle">
+        <TextView android:textSize="14.0sp" android:textColor="@color/akh" android:layout_gravity="center_horizontal" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingExtra="5.0dip" android:lineSpacingMultiplier="1.0" />
+    </LinearLayout>
+    <View android:id="@id/biw" android:background="@color/ai7" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/abb" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/aew" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/biw">
+        <TextView android:textSize="17.0sp" android:textColor="@color/akh" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/7l" android:layout_width="fill_parent" android:layout_height="45.0dip" android:text="@string/cancel" android:singleLine="true" android:layout_weight="1.0" />
+        <View android:id="@id/aet" android:background="@color/akh" android:visibility="gone" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/akh" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/7m" android:layout_width="fill_parent" android:layout_height="45.0dip" android:text="@string/xe" android:singleLine="true" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

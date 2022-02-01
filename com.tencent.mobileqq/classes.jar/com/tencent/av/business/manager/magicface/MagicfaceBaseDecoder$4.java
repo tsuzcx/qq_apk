@@ -9,9 +9,9 @@ class MagicfaceBaseDecoder$4
   
   public void run()
   {
-    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.this$0.a.get();
+    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.this$0.b.get();
     if (localMagicPlayListener != null) {
-      localMagicPlayListener.a(-1039L, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      localMagicPlayListener.a(-1039L, this.a, this.b);
     }
   }
 }

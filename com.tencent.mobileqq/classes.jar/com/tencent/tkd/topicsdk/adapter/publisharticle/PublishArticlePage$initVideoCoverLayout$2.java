@@ -1,6 +1,7 @@
 package com.tencent.tkd.topicsdk.adapter.publisharticle;
 
 import com.tencent.tkd.topicsdk.bean.DisplayItem;
+import com.tencent.tkd.topicsdk.bean.Media;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -21,12 +22,18 @@ final class PublishArticlePage$initVideoCoverLayout$2
   public final void invoke(@NotNull DisplayItem paramDisplayItem)
   {
     Intrinsics.checkParameterIsNotNull(paramDisplayItem, "item");
-    this.this$0.a(paramDisplayItem, (Function1)new PublishArticlePage.initVideoCoverLayout.2.1(this));
+    float f;
+    if (paramDisplayItem.getMedia().getWidth() >= paramDisplayItem.getMedia().getHeight()) {
+      f = 1.333333F;
+    } else {
+      f = 0.5625F;
+    }
+    this.this$0.a(paramDisplayItem, f, (Function1)new PublishArticlePage.initVideoCoverLayout.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initVideoCoverLayout.2
  * JD-Core Version:    0.7.0.1
  */

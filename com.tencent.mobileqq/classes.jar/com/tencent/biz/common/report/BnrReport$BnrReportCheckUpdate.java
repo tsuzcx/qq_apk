@@ -38,7 +38,7 @@ public class BnrReport$BnrReportCheckUpdate
     if (localBNRConfigMsg != null) {
       localReqItem.vecParam = WupUtil.a(localBNRConfigMsg.toByteArray());
     }
-    BnrReport.a = true;
+    BnrReport.b = true;
     return localReqItem;
   }
   
@@ -80,12 +80,12 @@ public class BnrReport$BnrReportCheckUpdate
       ((StringBuilder)localObject).append(paramRespItem.cResult);
       QLog.d("BnrReport", 2, ((StringBuilder)localObject).toString());
     }
-    BnrReport.a = false;
+    BnrReport.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.report.BnrReport.BnrReportCheckUpdate
  * JD-Core Version:    0.7.0.1
  */

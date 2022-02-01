@@ -10,22 +10,22 @@ public class VideoInfo$TopBarInfo
 {
   public static final Parcelable.Creator<TopBarInfo> CREATOR = new VideoInfo.TopBarInfo.1();
   public int a;
-  public UrlJumpInfo a;
-  public String a;
   public String b;
   public String c;
   public String d;
+  public UrlJumpInfo e;
+  public String f;
   
   public VideoInfo$TopBarInfo() {}
   
   protected VideoInfo$TopBarInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
     this.d = paramParcel.readString();
+    this.e = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
+    this.f = paramParcel.readString();
   }
   
   public int describeContents()
@@ -37,20 +37,20 @@ public class VideoInfo$TopBarInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TopBarInfo{logoId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", iconUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", title='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", backgroundUrl='");
+    localStringBuilder.append(", title='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", jumpInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo);
-    localStringBuilder.append(", commonData='");
+    localStringBuilder.append(", backgroundUrl='");
     localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpInfo=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", commonData='");
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -58,17 +58,17 @@ public class VideoInfo$TopBarInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo, paramInt);
     paramParcel.writeString(this.d);
+    paramParcel.writeParcelable(this.e, paramInt);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.TopBarInfo
  * JD-Core Version:    0.7.0.1
  */

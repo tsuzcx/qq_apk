@@ -7,20 +7,21 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gamecenter.activities.GameCenterActivity;
 import com.tencent.imcore.message.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxABTestApi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ConversationInfo;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.gamecenter.api.ITempApi;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameSwitchConfig;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameSwitchConfig;
 import com.tencent.mobileqq.msg.api.IConversationFacade;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameConfigUtil;
-import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.util.api.IAppBadgeService;
@@ -40,7 +41,7 @@ public class TempApiImpl
       if (paramContext == null) {
         return null;
       }
-      if (!((ITempApi)QRoute.api(ITempApi.class)).getHippySwitch())
+      if (!((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getHippySwitch())
       {
         QLog.e("TempApiImpl", 1, "[getClickNotifyHippyIntent] hippy switch is off, ail to open by hippy");
         return null;
@@ -64,13 +65,23 @@ public class TempApiImpl
     throw new RuntimeException("fail to get QQAppInterface.");
   }
   
-  public boolean getHippySwitch()
-  {
-    return ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).getHippySwitch();
-  }
-  
   public Intent getIntentFromMsg(Context paramContext, Message paramMessage, AppInterface paramAppInterface)
   {
+    if (((IGameMsgBoxABTestApi)QRoute.api(IGameMsgBoxABTestApi.class)).isGameMsgAddTab())
+    {
+      localObject1 = ((IConversationFacade)paramAppInterface.getRuntimeService(IConversationFacade.class, "")).getTinyConvInfo(paramMessage.frienduin, 10007);
+      if (localObject1 != null)
+      {
+        paramContext = new Intent(paramContext, ChatActivity.class);
+        paramContext.putExtra("uin", paramMessage.frienduin);
+        paramContext.putExtra("uintype", 10007);
+        paramMessage = ((ConversationInfo)localObject1).tinyInfo.fromRoleId;
+        paramAppInterface = ((ConversationInfo)localObject1).tinyInfo.toRoleId;
+        paramContext.putExtra("game_msg_friend_role_id", paramMessage);
+        paramContext.putExtra("game_msg_my_role_id", paramAppInterface);
+        return paramContext;
+      }
+    }
     Object localObject1 = getClickNotifyHippyIntent(paramAppInterface, paramContext);
     if (localObject1 != null)
     {
@@ -105,11 +116,11 @@ public class TempApiImpl
           localObject3 = (IGameMsgManagerService)paramAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
           paramContext = ((IGameMsgManagerService)localObject3).getSingleGameDetail((String)localObject1);
           if (paramContext == null) {
-            break label474;
+            break label589;
           }
           paramContext = ((IGameMsgManagerService)localObject3).findGameSwitchConfig(paramContext.c);
           if ((paramContext == null) || (paramContext.mSyncSwitch == 1)) {
-            break label474;
+            break label589;
           }
           i = 0;
           localObject1 = ((IGameMsgManagerService)localObject3).getGameMsgListUrl();
@@ -123,13 +134,13 @@ public class TempApiImpl
               paramContext = new StringBuilder();
               paramContext.append((String)localObject1);
               paramContext.append("&&gameId=");
-              paramContext.append(((GameCenterSessionInfo)localObject2).e());
+              paramContext.append(((GameCenterSessionInfo)localObject2).h());
               paramContext.append("&gameName=");
-              paramContext.append(((GameCenterSessionInfo)localObject2).f());
+              paramContext.append(((GameCenterSessionInfo)localObject2).i());
               paramContext.append("&sessionId=");
-              paramContext.append(((GameCenterSessionInfo)localObject2).d());
+              paramContext.append(((GameCenterSessionInfo)localObject2).g());
               paramContext.append("&requestCount=");
-              paramContext.append(((GameCenterSessionInfo)localObject2).b());
+              paramContext.append(((GameCenterSessionInfo)localObject2).l());
               paramContext = paramContext.toString();
             }
           }
@@ -146,7 +157,7 @@ public class TempApiImpl
       }
       ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).report(paramAppInterface, paramMessage.frienduin, 10006, 2);
       return localIntent;
-      label474:
+      label589:
       int i = 1;
     }
   }
@@ -158,11 +169,6 @@ public class TempApiImpl
       return (QQAppInterface)localAppRuntime;
     }
     return null;
-  }
-  
-  public void openQQGameCenterByHippy(Context paramContext, String paramString1, String paramString2)
-  {
-    ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).openQQGameCenterByHippy(paramContext, paramString1, paramString2);
   }
   
   public void refreshAppBadge(AppInterface paramAppInterface)
@@ -183,7 +189,7 @@ public class TempApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.impl.TempApiImpl
  * JD-Core Version:    0.7.0.1
  */

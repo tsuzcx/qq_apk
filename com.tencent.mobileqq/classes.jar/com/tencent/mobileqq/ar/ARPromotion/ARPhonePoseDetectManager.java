@@ -9,36 +9,36 @@ public class ARPhonePoseDetectManager
   implements SensorTrackManager.ARSensorTrackCallback
 {
   public static int a = 8;
-  private long jdField_a_of_type_Long = 0L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ARPhonePoseDetectManager.PhonePoseDetectListener jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager$PhonePoseDetectListener;
-  private SensorTrackManager jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = true;
+  private Context b;
+  private boolean c = false;
+  private SensorTrackManager d;
+  private ARPhonePoseDetectManager.PhonePoseDetectListener e;
+  private int f = 0;
+  private long g = 0L;
+  private boolean h = true;
   
   public ARPhonePoseDetectManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager = new SensorTrackManager();
+    this.b = paramContext;
+    this.d = new SensorTrackManager();
   }
   
   private void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    if (this.jdField_a_of_type_Long != 0L)
+    if (this.g != 0L)
     {
       long l = System.currentTimeMillis();
-      if (l - this.jdField_a_of_type_Long < 1000L) {
+      if (l - this.g < 1000L) {
         return;
       }
-      this.jdField_a_of_type_Long = l;
+      this.g = l;
     }
     else
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.g = System.currentTimeMillis();
     }
     int i;
-    if (paramFloat2 > jdField_a_of_type_Int) {
+    if (paramFloat2 > a) {
       i = 1;
     } else {
       i = 2;
@@ -48,12 +48,12 @@ public class ARPhonePoseDetectManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("ARPhonePoseDetectManager current value:=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.f);
       ((StringBuilder)localObject).append(";nextPhonepose:=");
       ((StringBuilder)localObject).append(i);
       QLog.d("ARPhonePoseDetectManager", 1, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_b_of_type_Int != i)
+    if (this.f != i)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("detectPhonePose. data = ");
@@ -65,18 +65,18 @@ public class ARPhonePoseDetectManager
       ((StringBuilder)localObject).append(",");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(", mPhonePose = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.f);
       ((StringBuilder)localObject).append(", phonePose = ");
       ((StringBuilder)localObject).append(i);
       QLog.i("ARPhonePoseDetectManager", 1, ((StringBuilder)localObject).toString());
-      if ((i == 2) && (this.jdField_b_of_type_Boolean)) {
-        this.jdField_b_of_type_Boolean = false;
+      if ((i == 2) && (this.h)) {
+        this.h = false;
       }
-      this.jdField_b_of_type_Int = i;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager$PhonePoseDetectListener;
+      this.f = i;
+      localObject = this.e;
       if (localObject != null)
       {
-        i = this.jdField_b_of_type_Int;
+        i = this.f;
         if (i == 1)
         {
           ((ARPhonePoseDetectManager.PhonePoseDetectListener)localObject).a(true);
@@ -91,14 +91,14 @@ public class ARPhonePoseDetectManager
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager.a(this.jdField_a_of_type_AndroidContentContext, this);
-      this.jdField_a_of_type_Boolean = true;
+      this.d.a(this.b, this);
+      this.c = true;
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager.b();
-    this.jdField_b_of_type_Int = 0;
+    this.d.c();
+    this.f = 0;
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
@@ -108,20 +108,20 @@ public class ARPhonePoseDetectManager
   
   public void a(ARPhonePoseDetectManager.PhonePoseDetectListener paramPhonePoseDetectListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionARPhonePoseDetectManager$PhonePoseDetectListener = paramPhonePoseDetectListener;
+    this.e = paramPhonePoseDetectListener;
   }
   
   public void a(float[] paramArrayOfFloat) {}
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelSensorTrackManager.c();
-    this.jdField_b_of_type_Int = 0;
+    this.d.d();
+    this.f = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPhonePoseDetectManager
  * JD-Core Version:    0.7.0.1
  */

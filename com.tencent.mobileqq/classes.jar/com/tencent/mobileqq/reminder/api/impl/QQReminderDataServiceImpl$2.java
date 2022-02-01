@@ -24,7 +24,7 @@ class QQReminderDataServiceImpl$2
       if (QQReminderDataServiceImpl.access$100(this.this$0) != null) {
         QQReminderDataServiceImpl.access$100(this.this$0).setAlarmTimer(this.a);
       } else {
-        QQReminderUtil.c(this.a);
+        QQReminderUtil.d(this.a);
       }
     }
     QQReminderDataServiceImpl.access$300(this.this$0, this.a);
@@ -32,7 +32,7 @@ class QQReminderDataServiceImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

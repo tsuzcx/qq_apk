@@ -20,94 +20,33 @@ import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.util.LogUtil;
 
 public class QQServiceProxy
 {
-  int jdField_a_of_type_Int = -1;
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new QQServiceProxy.QQServiceForAVConnection(this);
-  private MQLruCache<String, Object> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = null;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  IQQServiceCallback.Stub jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub = new QQServiceProxy.IQQServiceCallbackStub(this);
-  IQQServiceForAV jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = null;
-  private QQLruCache<String, String> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = null;
-  boolean jdField_a_of_type_Boolean = false;
-  public boolean b = false;
+  VideoAppInterface a;
+  boolean b = false;
+  IQQServiceForAV c = null;
+  ServiceConnection d = new QQServiceProxy.QQServiceForAVConnection(this);
+  IQQServiceCallback.Stub e = new QQServiceProxy.IQQServiceCallbackStub(this);
+  public boolean f = false;
+  int g = -1;
+  private MQLruCache<String, Object> h = null;
+  private QQLruCache<String, String> i = null;
   
   public QQServiceProxy(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  public int a(int paramInt, String paramString)
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
-      try
-      {
-        paramInt = localIQQServiceForAV.a(paramInt, paramString);
-        return paramInt;
-      }
-      catch (RemoteException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQServiceProxy", 2, "getDiscussMemberNum", paramString);
-        }
-      }
-    }
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
-      try
-      {
-        int i = localIQQServiceForAV.c(paramString);
-        return i;
-      }
-      catch (RemoteException paramString)
-      {
-        QLog.e("QQServiceProxy", 2, "convertUinTypeEx e = ", paramString);
-      }
-    } else {
-      QLog.e("QQServiceProxy", 2, "convertUinTypeEx mQQServiceForAV == null");
-    }
-    return -1;
-  }
-  
-  public long a(String paramString)
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
-      try
-      {
-        long l = localIQQServiceForAV.a(paramString);
-        return l;
-      }
-      catch (RemoteException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQServiceProxy", 2, "getDiscussMemberNum", paramString);
-        }
-      }
-    }
-    return 0L;
-  }
-  
-  public Bitmap a()
-  {
-    return ImageUtil.a(true);
+    this.a = paramVideoAppInterface;
   }
   
   public Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     String str = a(paramInt, paramString1, paramString2, paramBoolean1);
-    Object localObject2 = a(str);
+    Object localObject2 = b(str);
     Object localObject3;
     if (localObject2 == null)
     {
-      localObject3 = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+      localObject3 = this.c;
       if (localObject3 != null) {
         localObject1 = localObject2;
       }
@@ -120,19 +59,19 @@ public class QQServiceProxy
         localObject1 = localObject3;
         localObject2 = localObject3;
         a(str, (Bitmap)localObject3);
-        i = 0;
+        j = 0;
         localObject1 = localObject3;
       }
       else
       {
-        i = 1;
+        j = 1;
         localObject1 = localObject3;
       }
     }
     catch (RemoteException localRemoteException)
     {
-      int i;
       int j;
+      int k;
       break label125;
     }
     catch (NullPointerException localNullPointerException)
@@ -140,37 +79,37 @@ public class QQServiceProxy
       label96:
       break label96;
     }
-    j = 3;
+    k = 3;
     Object localObject1 = localObject2;
-    i = j;
+    j = k;
     if (paramBoolean2)
     {
-      localObject1 = a();
-      for (i = j;; i = j)
+      localObject1 = f();
+      for (j = k;; j = k)
       {
         break;
         label125:
-        j = 2;
-        i = j;
+        k = 2;
+        j = k;
         if (!paramBoolean2) {
           break;
         }
-        localObject1 = a();
+        localObject1 = f();
       }
-      j = 4;
+      k = 4;
       localObject1 = localObject2;
-      i = j;
+      j = k;
       if (paramBoolean2)
       {
-        localObject1 = a();
-        i = j;
+        localObject1 = f();
+        j = k;
         break label187;
-        i = -3;
+        j = -3;
         localObject1 = localObject2;
       }
     }
     label187:
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("getFaceBitmap, uinType[");
@@ -182,25 +121,16 @@ public class QQServiceProxy
       ((StringBuilder)localObject2).append("], isNeedReturnDefaultValue[");
       ((StringBuilder)localObject2).append(paramBoolean2);
       ((StringBuilder)localObject2).append("], ret[");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(j);
       ((StringBuilder)localObject2).append("]");
       QLog.w("QQServiceProxy", 1, ((StringBuilder)localObject2).toString());
     }
     return localObject1;
   }
   
-  public Bitmap a(String paramString)
-  {
-    MQLruCache localMQLruCache = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
-    if (localMQLruCache != null) {
-      return (Bitmap)localMQLruCache.get(paramString);
-    }
-    return null;
-  }
-  
   public Bundle a(int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {}
     try
     {
@@ -241,34 +171,6 @@ public class QQServiceProxy
     return null;
   }
   
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQServiceProxy", 2, "We will get current user skey");
-      }
-      try
-      {
-        String str = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.a();
-        return str;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        if (!QLog.isColorLevel()) {
-          break label66;
-        }
-      }
-      QLog.w("QQServiceProxy", 2, "getSKey fail", localRemoteException);
-    }
-    else if (QLog.isColorLevel())
-    {
-      QLog.d("QQServiceProxy", 2, "getSKey-->mQQServiceForAV is null");
-    }
-    label66:
-    return null;
-  }
-  
   public String a(int paramInt, String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -302,14 +204,14 @@ public class QQServiceProxy
   
   public String a(AvatarParam paramAvatarParam, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    Object localObject = this.c;
     if (localObject != null)
     {
       StringBuilder localStringBuilder;
       String str;
       try
       {
-        localObject = ((IQQServiceForAV)localObject).a(paramAvatarParam.jdField_a_of_type_Int, paramAvatarParam.jdField_a_of_type_JavaLangString, paramAvatarParam.b, paramInt);
+        localObject = ((IQQServiceForAV)localObject).a(paramAvatarParam.a, paramAvatarParam.b, paramAvatarParam.c, paramInt);
       }
       catch (RemoteException localRemoteException)
       {
@@ -336,24 +238,15 @@ public class QQServiceProxy
     throw new NullPointerException("mQQServiceForAV is null");
   }
   
-  public String a(String paramString)
-  {
-    QQLruCache localQQLruCache = this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
-    if (localQQLruCache != null) {
-      return (String)localQQLruCache.get(paramString);
-    }
-    return "";
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = GlobalImageCache.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(10001, 50, 10);
+    this.h = GlobalImageCache.a;
+    this.i = new QQLruCache(10001, 50, 10);
   }
   
   public void a(int paramInt, String paramString)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
@@ -369,45 +262,9 @@ public class QQServiceProxy
     }
   }
   
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
-      try
-      {
-        localIQQServiceForAV.a(paramInt, paramString1, paramString2);
-        return;
-      }
-      catch (RemoteException paramString1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQServiceProxy", 2, "setPeerInfo", paramString1);
-        }
-      }
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
-      try
-      {
-        localIQQServiceForAV.a(paramLong);
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQServiceProxy", 2, "syncChatingTime", localRemoteException);
-        }
-      }
-    }
-  }
-  
   public void a(long paramLong1, String paramString, long paramLong2)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null)
     {
       try
@@ -429,31 +286,9 @@ public class QQServiceProxy
     }
   }
   
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null) {
-      try
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("stopPumpMessage[");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append("]");
-        QLog.w("QQServiceProxy", 1, localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.a();
-        return;
-      }
-      catch (RemoteException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQServiceProxy", 2, "stopPumpMessage", paramString);
-        }
-      }
-    }
-  }
-  
   public void a(String paramString, Bitmap paramBitmap)
   {
-    MQLruCache localMQLruCache = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+    MQLruCache localMQLruCache = this.h;
     if ((localMQLruCache != null) && (paramBitmap != null)) {
       localMQLruCache.put(paramString, paramBitmap);
     }
@@ -461,14 +296,14 @@ public class QQServiceProxy
   
   public void a(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache != null) && (!TextUtils.isEmpty(paramString2))) {
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString1, paramString2);
+    if ((this.i != null) && (!TextUtils.isEmpty(paramString2))) {
+      this.i.put(paramString1, paramString2);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
@@ -482,27 +317,9 @@ public class QQServiceProxy
     }
   }
   
-  public boolean a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isQQServiceBind ");
-      boolean bool;
-      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      localStringBuilder.append(bool);
-      QLog.d("QQServiceProxy", 2, localStringBuilder.toString());
-    }
-    return this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null;
-  }
-  
   public boolean a(int paramInt, long paramLong)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
@@ -521,11 +338,11 @@ public class QQServiceProxy
   
   public boolean a(long paramLong)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
-        boolean bool = localIQQServiceForAV.a(paramLong);
+        boolean bool = localIQQServiceForAV.b(paramLong);
         return bool;
       }
       catch (RemoteException localRemoteException)
@@ -541,7 +358,7 @@ public class QQServiceProxy
   
   public boolean a(String paramString)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
@@ -556,21 +373,11 @@ public class QQServiceProxy
     return false;
   }
   
-  public long[] a(String paramString)
+  public Bitmap b(String paramString)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
-      try
-      {
-        paramString = localIQQServiceForAV.a(paramString);
-        return paramString;
-      }
-      catch (RemoteException paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQServiceProxy", 2, "getDiscussMemberList", paramString);
-        }
-      }
+    MQLruCache localMQLruCache = this.h;
+    if (localMQLruCache != null) {
+      return (Bitmap)localMQLruCache.get(paramString);
     }
     return null;
   }
@@ -578,7 +385,7 @@ public class QQServiceProxy
   public String b(int paramInt, String paramString1, String paramString2)
   {
     String str = a(paramInt, paramString1, paramString2);
-    Object localObject3 = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    Object localObject3 = this.c;
     Object localObject1 = null;
     Object localObject2 = null;
     if (localObject3 != null) {
@@ -593,7 +400,7 @@ public class QQServiceProxy
         }
         localObject2 = localObject3;
         localObject1 = localObject3;
-        if (AudioHelper.b())
+        if (AudioHelper.e())
         {
           localObject2 = localObject3;
           localObject1 = new StringBuilder();
@@ -604,7 +411,7 @@ public class QQServiceProxy
           localObject2 = localObject3;
           ((StringBuilder)localObject1).append("], uin[");
           localObject2 = localObject3;
-          ((StringBuilder)localObject1).append(paramString1);
+          ((StringBuilder)localObject1).append(LogUtil.getSafePrintUin(paramString1));
           localObject2 = localObject3;
           ((StringBuilder)localObject1).append("], extraUin[");
           localObject2 = localObject3;
@@ -632,7 +439,7 @@ public class QQServiceProxy
     }
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      localObject1 = a(str);
+      localObject1 = c(str);
       paramString2 = (String)localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return paramString1;
@@ -645,19 +452,131 @@ public class QQServiceProxy
     return paramString2;
   }
   
-  public String b(String paramString)
+  public void b()
   {
-    Object localObject1 = a(paramString);
+    Object localObject = this.h;
+    if (localObject != null) {
+      ((MQLruCache)localObject).evictAll();
+    }
+    localObject = this.i;
+    if (localObject != null) {
+      ((QQLruCache)localObject).evictAll();
+    }
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        localIQQServiceForAV.b(paramInt, paramString);
+        return;
+      }
+      catch (RemoteException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQServiceProxy", 2, "setBindInfo", paramString);
+        }
+      }
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        localIQQServiceForAV.a(paramLong);
+        return;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQServiceProxy", 2, "syncChatingTime", localRemoteException);
+        }
+      }
+    }
+  }
+  
+  public int c(int paramInt, String paramString)
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        paramInt = localIQQServiceForAV.c(paramInt, paramString);
+        return paramInt;
+      }
+      catch (RemoteException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQServiceProxy", 2, "getDiscussMemberNum", paramString);
+        }
+      }
+    }
+    return 0;
+  }
+  
+  public String c(String paramString)
+  {
+    QQLruCache localQQLruCache = this.i;
+    if (localQQLruCache != null) {
+      return (String)localQQLruCache.get(paramString);
+    }
+    return "";
+  }
+  
+  public void c(int paramInt, String paramString1, String paramString2)
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        localIQQServiceForAV.b(paramInt, paramString1, paramString2);
+        return;
+      }
+      catch (RemoteException paramString1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQServiceProxy", 2, "setPeerInfo", paramString1);
+        }
+      }
+    }
+  }
+  
+  public boolean c()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isQQServiceBind ");
+      boolean bool;
+      if (this.c != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
+      QLog.d("QQServiceProxy", 2, localStringBuilder.toString());
+    }
+    return this.c != null;
+  }
+  
+  public String d(String paramString)
+  {
+    Object localObject1 = c(paramString);
     Object localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject2 = null;
       localObject1 = null;
-      Object localObject3 = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+      Object localObject3 = this.c;
       if (localObject3 != null) {
         try
         {
-          localObject2 = ((IQQServiceForAV)localObject3).a(paramString);
+          localObject2 = ((IQQServiceForAV)localObject3).b(paramString);
           localObject1 = localObject2;
           a(paramString, (String)localObject2);
           localObject1 = localObject2;
@@ -690,97 +609,150 @@ public class QQServiceProxy
     return localObject2;
   }
   
-  public void b()
+  public void d()
   {
-    Object localObject = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
-    if (localObject != null) {
-      ((MQLruCache)localObject).evictAll();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "bindQQService");
     }
-    localObject = this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
-    if (localObject != null) {
-      ((QQLruCache)localObject).evictAll();
+    if ((this.c == null) && (!this.b))
+    {
+      this.b = true;
+      Intent localIntent = new Intent(this.a.getApp(), QQServiceForAV.class);
+      this.a.getApp().bindService(localIntent, this.d, 1);
     }
   }
   
-  public void b(int paramInt, String paramString)
+  void e()
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
+    AVLog.printAllUserLog("QQServiceProxy", "unbindQQService");
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null)
+    {
       try
       {
-        localIQQServiceForAV.b(paramInt, paramString);
-        return;
+        localIQQServiceForAV.a();
+        this.c.a(this.e);
       }
-      catch (RemoteException paramString)
+      catch (Exception localException1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQServiceProxy", 2, "setBindInfo", paramString);
-        }
-      }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null)
-      {
-        this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.d(paramString);
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQServiceProxy", 2, "[red dot] redTouchManagerClick", paramString);
-      }
-    }
-  }
-  
-  public boolean b()
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
-      try
-      {
-        boolean bool = localIQQServiceForAV.a();
-        return bool;
+        QLog.e("QQServiceProxy", 2, "unbindQQService2 ", localException1);
       }
       catch (RemoteException localRemoteException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("QQServiceProxy", 2, "isQQpaused", localRemoteException);
-        }
+        QLog.e("QQServiceProxy", 2, "unbindQQService1 ", localRemoteException);
       }
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null) {
       try
       {
-        boolean bool = localIQQServiceForAV.a(paramString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-        return bool;
+        this.a.getApp().unbindService(this.d);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        QLog.e("QQServiceProxy", 2, "unbindService3 ", localException2);
+      }
+    }
+  }
+  
+  public void e(String paramString)
+  {
+    if (this.c != null) {
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("stopPumpMessage[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.w("QQServiceProxy", 1, localStringBuilder.toString());
+        this.c.a();
+        return;
       }
       catch (RemoteException paramString)
       {
-        paramString.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e("QQServiceProxy", 2, "stopPumpMessage", paramString);
+        }
       }
     }
-    return true;
   }
   
-  public String c(String paramString)
+  public long f(String paramString)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        long l = localIQQServiceForAV.c(paramString);
+        return l;
+      }
+      catch (RemoteException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQServiceProxy", 2, "getDiscussMemberNum", paramString);
+        }
+      }
+    }
+    return 0L;
+  }
+  
+  public Bitmap f()
+  {
+    return ImageUtil.b(true);
+  }
+  
+  public String g()
+  {
+    if (this.c != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQServiceProxy", 2, "We will get current user skey");
+      }
+      try
+      {
+        String str = this.c.d();
+        return str;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        if (!QLog.isColorLevel()) {
+          break label69;
+        }
+      }
+      QLog.w("QQServiceProxy", 2, "getSKey fail", localRemoteException);
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("QQServiceProxy", 2, "getSKey-->mQQServiceForAV is null");
+    }
+    label69:
+    return null;
+  }
+  
+  public long[] g(String paramString)
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
         paramString = localIQQServiceForAV.d(paramString);
+        return paramString;
+      }
+      catch (RemoteException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQServiceProxy", 2, "getDiscussMemberList", paramString);
+        }
+      }
+    }
+    return null;
+  }
+  
+  public String h(String paramString)
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        paramString = localIQQServiceForAV.p(paramString);
         return paramString;
       }
       catch (RemoteException paramString)
@@ -793,44 +765,32 @@ public class QQServiceProxy
     return null;
   }
   
-  public void c()
+  public boolean h()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "bindQQService");
-    }
-    if ((this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV == null) && (!this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), QQServiceForAV.class);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null)
-      {
-        this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.e(paramString);
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQServiceProxy", 2, "[red dot] redTouchManagerExposure", paramString);
-      }
-    }
-  }
-  
-  public boolean c()
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
-        boolean bool = localIQQServiceForAV.f();
+        boolean bool = localIQQServiceForAV.b();
+        return bool;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQServiceProxy", 2, "isQQpaused", localRemoteException);
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean i()
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        boolean bool = localIQQServiceForAV.o();
         return bool;
       }
       catch (RemoteException localRemoteException)
@@ -843,44 +803,49 @@ public class QQServiceProxy
     return false;
   }
   
-  void d()
+  public boolean i(String paramString)
   {
-    AVLog.printAllUserLog("QQServiceProxy", "unbindQQService");
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
-    if (localIQQServiceForAV != null)
-    {
-      try
-      {
-        localIQQServiceForAV.a();
-        this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.a(this.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub);
-      }
-      catch (Exception localException1)
-      {
-        QLog.e("QQServiceProxy", 2, "unbindQQService2 ", localException1);
-      }
-      catch (RemoteException localRemoteException)
-      {
-        QLog.e("QQServiceProxy", 2, "unbindQQService1 ", localRemoteException);
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        QLog.e("QQServiceProxy", 2, "unbindService3 ", localException2);
-      }
-    }
-  }
-  
-  public boolean d()
-  {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
-        boolean bool = localIQQServiceForAV.g();
+        boolean bool = localIQQServiceForAV.a(paramString, this.a.getCurrentAccountUin());
+        return bool;
+      }
+      catch (RemoteException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return true;
+  }
+  
+  public int j(String paramString)
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        int j = localIQQServiceForAV.t(paramString);
+        return j;
+      }
+      catch (RemoteException paramString)
+      {
+        QLog.e("QQServiceProxy", 2, "convertUinTypeEx e = ", paramString);
+      }
+    } else {
+      QLog.e("QQServiceProxy", 2, "convertUinTypeEx mQQServiceForAV == null");
+    }
+    return -1;
+  }
+  
+  public boolean j()
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
+    if (localIQQServiceForAV != null) {
+      try
+      {
+        boolean bool = localIQQServiceForAV.p();
         return bool;
       }
       catch (RemoteException localRemoteException)
@@ -893,14 +858,14 @@ public class QQServiceProxy
     return false;
   }
   
-  public void e()
+  public void k()
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null)
     {
       try
       {
-        localIQQServiceForAV.b();
+        localIQQServiceForAV.e();
         return;
       }
       catch (RemoteException localRemoteException)
@@ -913,17 +878,53 @@ public class QQServiceProxy
     }
     else
     {
-      this.b = true;
+      this.f = true;
     }
   }
   
-  public boolean e()
+  public void k(String paramString)
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    try
+    {
+      if (this.c != null)
+      {
+        this.c.r(paramString);
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQServiceProxy", 2, "[red dot] redTouchManagerClick", paramString);
+      }
+    }
+  }
+  
+  public void l(String paramString)
+  {
+    try
+    {
+      if (this.c != null)
+      {
+        this.c.s(paramString);
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQServiceProxy", 2, "[red dot] redTouchManagerExposure", paramString);
+      }
+    }
+  }
+  
+  public boolean l()
+  {
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null) {
       try
       {
-        boolean bool = localIQQServiceForAV.b();
+        boolean bool = localIQQServiceForAV.g();
         return bool;
       }
       catch (RemoteException localRemoteException)
@@ -936,25 +937,25 @@ public class QQServiceProxy
     return false;
   }
   
-  public boolean f()
+  public boolean m()
   {
-    int i = this.jdField_a_of_type_Int;
+    int j = this.g;
     boolean bool = false;
     IQQServiceForAV localIQQServiceForAV;
-    if (i == -1)
+    if (j == -1)
     {
-      localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+      localIQQServiceForAV = this.c;
       if (localIQQServiceForAV == null) {}
     }
     for (;;)
     {
       try
       {
-        if (!localIQQServiceForAV.c()) {
+        if (!localIQQServiceForAV.k()) {
           break label72;
         }
-        i = 1;
-        this.jdField_a_of_type_Int = i;
+        j = 1;
+        this.g = j;
       }
       catch (Exception localException)
       {
@@ -962,40 +963,40 @@ public class QQServiceProxy
           QLog.e("QQServiceProxy", 2, "getTalkBack", localException);
         }
       }
-      if (this.jdField_a_of_type_Int == 1) {
+      if (this.g == 1) {
         bool = true;
       }
       return bool;
       label72:
-      i = 0;
+      j = 0;
     }
   }
   
-  public boolean g()
+  public boolean n()
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     if (localIQQServiceForAV != null)
     {
       try
       {
-        bool = localIQQServiceForAV.d();
+        bool = localIQQServiceForAV.l();
       }
       catch (NullPointerException localNullPointerException)
       {
-        PtuResChecker.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+        PtuResChecker.a(this.a.getApp());
         QLog.e("PtuResChecker", 1, "getEffectsSoLoadIsOk", localNullPointerException);
         break label89;
       }
       catch (RemoteException localRemoteException)
       {
-        PtuResChecker.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+        PtuResChecker.a(this.a.getApp());
         QLog.e("PtuResChecker", 1, "getEffectsSoLoadIsOk", localRemoteException);
         break label89;
       }
     }
     else
     {
-      PtuResChecker.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
+      PtuResChecker.a(this.a.getApp());
       QLog.i("PtuResChecker", 1, "getEffectsSoLoadIsOk, service not ready.");
     }
     label89:
@@ -1004,7 +1005,7 @@ public class QQServiceProxy
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getEffectsSoLoadIsOk, service[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("], result[");
       localStringBuilder.append(bool);
       localStringBuilder.append("]");
@@ -1013,14 +1014,14 @@ public class QQServiceProxy
     return bool;
   }
   
-  public boolean h()
+  public boolean o()
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     boolean bool;
     if (localIQQServiceForAV != null) {
       try
       {
-        bool = localIQQServiceForAV.a(1);
+        bool = localIQQServiceForAV.b(1);
       }
       catch (NullPointerException localNullPointerException)
       {
@@ -1037,7 +1038,7 @@ public class QQServiceProxy
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getEffectLibPagSoLoadIsOk  result ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("   ");
       localStringBuilder.append(bool);
       QLog.e("getRealNameAuthed", 2, localStringBuilder.toString());
@@ -1045,14 +1046,14 @@ public class QQServiceProxy
     return bool;
   }
   
-  public boolean i()
+  public boolean p()
   {
-    IQQServiceForAV localIQQServiceForAV = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV;
+    IQQServiceForAV localIQQServiceForAV = this.c;
     boolean bool;
     if (localIQQServiceForAV != null) {
       try
       {
-        bool = localIQQServiceForAV.a(2);
+        bool = localIQQServiceForAV.b(2);
       }
       catch (NullPointerException localNullPointerException)
       {
@@ -1069,7 +1070,7 @@ public class QQServiceProxy
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startRealNameAuth  result ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("   ");
       localStringBuilder.append(bool);
       QLog.e("startRealNameAuth", 2, localStringBuilder.toString());
@@ -1077,15 +1078,15 @@ public class QQServiceProxy
     return bool;
   }
   
-  public boolean j()
+  public boolean q()
   {
     boolean bool2 = false;
     boolean bool1;
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null)
+      if (this.c != null)
       {
-        bool1 = this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.h();
+        bool1 = this.c.q();
       }
       else
       {

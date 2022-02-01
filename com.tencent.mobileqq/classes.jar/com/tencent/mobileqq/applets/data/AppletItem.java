@@ -8,61 +8,46 @@ public class AppletItem
   implements Parcelable
 {
   public static final Parcelable.Creator<AppletItem> CREATOR = new AppletItem.1();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private long a;
+  private String b;
   private String c;
+  private int d;
+  private int e;
+  private String f;
   
   private AppletItem(long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramString3;
+    this.a = paramLong;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramInt1;
+    this.e = paramInt2;
+    this.f = paramString3;
   }
   
   protected AppletItem(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readString();
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    this.e = paramInt;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public String c()
@@ -70,9 +55,24 @@ public class AppletItem
     return this.c;
   }
   
+  public int d()
+  {
+    return this.d;
+  }
+  
   public int describeContents()
   {
     return 0;
+  }
+  
+  public int e()
+  {
+    return this.e;
+  }
+  
+  public String f()
+  {
+    return this.f;
   }
   
   public String toString()
@@ -80,33 +80,33 @@ public class AppletItem
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AppletItem:[");
     localStringBuilder.append("id = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", name = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" icon = ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", type = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("(1:开, 0:关) ");
     localStringBuilder.append(", value = ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("] ");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.data.AppletItem
  * JD-Core Version:    0.7.0.1
  */

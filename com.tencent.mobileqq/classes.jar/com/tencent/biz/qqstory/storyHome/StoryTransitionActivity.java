@@ -32,33 +32,8 @@ import org.json.JSONObject;
 public class StoryTransitionActivity
   extends QQStoryBaseActivity
 {
-  private int jdField_a_of_type_Int = 0;
-  private TransitionCode jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode;
-  
-  public static final Intent a(Context paramContext)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getMainIntent() isNowTabAdded = ");
-      localStringBuilder.append(NowLiveManager.c);
-      QLog.w("zivonchen", 2, localStringBuilder.toString());
-    }
-    if (NowLiveManager.c)
-    {
-      ((QQStoryActivityManager)SuperManager.a(18)).a();
-      paramContext = new Intent(paramContext, SplashActivity.class);
-      paramContext.putExtra("fragment_id", 1);
-      paramContext.putExtra("tab_index", FrameControllerUtil.f);
-      paramContext.putExtra("open_now_tab_fragment", true);
-      paramContext.putExtra("extra_from_share", true);
-      paramContext.setFlags(335544320);
-      return paramContext;
-    }
-    paramContext = new Intent(paramContext, QQStoryMainActivity.class);
-    paramContext.setFlags(335544320);
-    return paramContext;
-  }
+  private TransitionCode a;
+  private int b = 0;
   
   private TransitionCode a(@NonNull String paramString)
   {
@@ -116,15 +91,40 @@ public class StoryTransitionActivity
     throw new NullPointerException("param should not be null");
   }
   
+  public static final Intent b(Context paramContext)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getMainIntent() isNowTabAdded = ");
+      localStringBuilder.append(NowLiveManager.j);
+      QLog.w("zivonchen", 2, localStringBuilder.toString());
+    }
+    if (NowLiveManager.j)
+    {
+      ((QQStoryActivityManager)SuperManager.a(18)).c();
+      paramContext = new Intent(paramContext, SplashActivity.class);
+      paramContext.putExtra("fragment_id", 1);
+      paramContext.putExtra("tab_index", FrameControllerUtil.f);
+      paramContext.putExtra("open_now_tab_fragment", true);
+      paramContext.putExtra("extra_from_share", true);
+      paramContext.setFlags(335544320);
+      return paramContext;
+    }
+    paramContext = new Intent(paramContext, QQStoryMainActivity.class);
+    paramContext.setFlags(335544320);
+    return paramContext;
+  }
+  
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
   {
     paramString2 = StoryPublishLauncher.a();
-    if (paramString2.a())
+    if (paramString2.b())
     {
       paramString1 = new Bundle();
       paramString1.putInt("entrance_type", paramInt);
       paramString2.a(this, paramString1);
-      overridePendingTransition(2130772281, 2130772067);
+      overridePendingTransition(2130772373, 2130772092);
       return true;
     }
     long l = SystemClock.uptimeMillis();
@@ -144,7 +144,7 @@ public class StoryTransitionActivity
       paramString2.putExtra("start_time", l);
       startActivity(paramString2);
       if (paramBoolean2) {
-        super.overridePendingTransition(2130772281, 2130772067);
+        super.overridePendingTransition(2130772373, 2130772092);
       } else {
         super.overridePendingTransition(0, 0);
       }
@@ -158,12 +158,12 @@ public class StoryTransitionActivity
   public boolean a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     paramString2 = StoryPublishLauncher.a();
-    if (paramString2.a())
+    if (paramString2.b())
     {
       paramString1 = new Bundle();
       paramString1.putInt("entrance_type", paramInt1);
       paramString2.a(this, paramString1, paramInt2);
-      overridePendingTransition(2130772281, 2130772067);
+      overridePendingTransition(2130772373, 2130772092);
       return true;
     }
     long l = SystemClock.uptimeMillis();
@@ -183,7 +183,7 @@ public class StoryTransitionActivity
       paramString2.putExtra("start_time", l);
       startActivityForResult(paramString2, paramInt2);
       if (paramBoolean2) {
-        super.overridePendingTransition(2130772281, 2130772067);
+        super.overridePendingTransition(2130772373, 2130772092);
       } else {
         super.overridePendingTransition(0, 0);
       }
@@ -206,7 +206,7 @@ public class StoryTransitionActivity
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    TransitionCode localTransitionCode = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode;
+    TransitionCode localTransitionCode = this.a;
     if (localTransitionCode != null) {
       localTransitionCode.a(paramInt1, paramInt2, paramIntent);
     }
@@ -218,14 +218,14 @@ public class StoryTransitionActivity
       if (paramInt2 == -1)
       {
         finish();
-        startActivity(a(this));
+        startActivity(b(this));
         return;
       }
       finish();
       return;
     }
-    if ((paramInt2 == -1) && (this.jdField_a_of_type_Int == 1)) {
-      startActivity(a(this));
+    if ((paramInt2 == -1) && (this.b == 1)) {
+      startActivity(b(this));
     }
     finish();
   }
@@ -273,7 +273,7 @@ public class StoryTransitionActivity
     if (3 == i)
     {
       finish();
-      startActivity(a(this));
+      startActivity(b(this));
       return true;
     }
     if (4 == i)
@@ -289,9 +289,9 @@ public class StoryTransitionActivity
       localObject = getIntent().getStringExtra("target_name");
       SLog.a("StoryTransitionActivity", "ACTION_START_AS_PROXY  target = %s", localObject);
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode = a((String)localObject);
+        this.a = a((String)localObject);
       }
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode;
+      localObject = this.a;
       if (localObject == null)
       {
         SLog.e("StoryTransitionActivity", "can not create TransitionCode object");
@@ -299,21 +299,21 @@ public class StoryTransitionActivity
         return true;
       }
       ((TransitionCode)localObject).a(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode.a(paramBundle, getIntent().getBundleExtra("target_args"));
+      this.a.a(paramBundle, getIntent().getBundleExtra("target_args"));
       return true;
     }
     if (6 == i)
     {
-      this.jdField_a_of_type_Int = getIntent().getIntExtra("web_target_type", 0);
+      this.b = getIntent().getIntExtra("web_target_type", 0);
       paramBundle = StoryPublishLauncher.a();
       localObject = new Bundle();
       ((Bundle)localObject).putBoolean("resource_need_all_wait", true);
       ((Bundle)localObject).putInt("entrance_type", 104);
       paramBundle.a(this, (Bundle)localObject, 100);
-      overridePendingTransition(2130772281, 2130772067);
+      overridePendingTransition(2130772373, 2130772092);
       paramBundle = new StringBuilder();
       paramBundle.append("web to story  dealType:");
-      paramBundle.append(this.jdField_a_of_type_Int);
+      paramBundle.append(this.b);
       SLog.c("StoryTransitionActivity", paramBundle.toString());
       return true;
     }
@@ -322,7 +322,7 @@ public class StoryTransitionActivity
       paramBundle = getIntent().getExtras();
       paramBundle.putBoolean("resource_need_all_wait", true);
       StoryPublishLauncher.a().a(this, paramBundle, 11000);
-      overridePendingTransition(2130772281, 2130772067);
+      overridePendingTransition(2130772373, 2130772092);
       finish();
       return true;
     }
@@ -337,19 +337,19 @@ public class StoryTransitionActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    TransitionCode localTransitionCode = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode;
+    TransitionCode localTransitionCode = this.a;
     if (localTransitionCode != null)
     {
       localTransitionCode.a();
       localTransitionCode.d();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode = null;
+      this.a = null;
     }
   }
   
   protected void doOnPause()
   {
     super.doOnPause();
-    TransitionCode localTransitionCode = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode;
+    TransitionCode localTransitionCode = this.a;
     if (localTransitionCode != null) {
       localTransitionCode.c();
     }
@@ -358,7 +358,7 @@ public class StoryTransitionActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    TransitionCode localTransitionCode = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeProxyTransitionCode;
+    TransitionCode localTransitionCode = this.a;
     if (localTransitionCode != null) {
       localTransitionCode.b();
     }

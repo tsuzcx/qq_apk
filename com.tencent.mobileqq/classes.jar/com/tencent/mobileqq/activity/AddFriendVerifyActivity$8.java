@@ -16,45 +16,45 @@ class AddFriendVerifyActivity$8
   
   public void onClick(View paramView)
   {
-    AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-    Object localObject = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, false);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    AddFriendVerifyActivity.i(this.d);
+    Object localObject = AddFriendVerifyActivity.a(this.d, false);
+    String str = this.d.b.getText().toString().trim();
     if ((str != null) && (localObject != null) && (!str.equals(localObject))) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B0", "0X80077B0", 0, 0, "", "", "", "");
+      ReportController.b(this.d.app, "dc00898", "", "", "0X80077B0", "0X80077B0", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(str, false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691954).equals(str)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
+    this.d.a(str, false);
+    if ((this.d.getString(2131888921).equals(str)) && (!AddFriendVerifyActivity.g(this.d))) {
+      AddFriendVerifyActivity.h(this.d);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo != null)
+    if (this.d.v != null)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8008439", "0X8008439", 0, 0, "", "", "", "");
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.verifyMsg)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.verifyMsg.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString()))) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X800843A", "0X800843A", 0, 0, "", "", "", "");
+      ReportController.b(this.d.app, "dc00898", "", "", "0X8008439", "0X8008439", 0, 0, "", "", "", "");
+      if ((!TextUtils.isEmpty(this.d.v.verifyMsg)) && (!this.d.v.verifyMsg.equals(this.d.b.getText().toString()))) {
+        ReportController.b(this.d.app, "dc00898", "", "", "0X800843A", "0X800843A", 0, 0, "", "", "", "");
       }
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity;
-    ((AddFriendVerifyActivity)localObject).a(((AddFriendVerifyActivity)localObject).jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim(), null, "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
+    localObject = this.d;
+    ((AddFriendVerifyActivity)localObject).a(((AddFriendVerifyActivity)localObject).b.getText().toString().trim(), null, "");
+    ReportController.b(this.d.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.a), String.valueOf(this.b), "", "");
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reportClickEvent action: 0X80077B4  sourceId = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" subSourceId = ");
       ((StringBuilder)localObject).append(this.b);
       QLog.d("AddFriendVerifyActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+    if (!TextUtils.isEmpty(this.d.w)) {
+      ReportController.b(this.d.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
+    this.d.a(this.a, this.c);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class ArkVipReporter$1
   {
     synchronized ()
     {
-      Object localObject2 = (ArkVipReportScene)ArkVipReporter.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
-      if ((localObject2 != null) && (Math.abs(System.currentTimeMillis() - ((ArkVipReportScene)localObject2).a) >= this.jdField_a_of_type_ComTencentMobileqqArkVipreportArkVipSceneConfig.a))
+      Object localObject2 = (ArkVipReportScene)ArkVipReporter.a(this.this$0).get(this.a);
+      if ((localObject2 != null) && (Math.abs(System.currentTimeMillis() - ((ArkVipReportScene)localObject2).h) >= this.b.d))
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("startSceneByEvent() find timeout scene and report:");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.a);
         QLog.i("ArkVipReporter", 1, ((StringBuilder)localObject2).toString());
-        this.this$0.a(this.jdField_a_of_type_JavaLangString);
+        this.this$0.b(this.a);
       }
       return;
     }
@@ -27,7 +27,7 @@ class ArkVipReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.vipreport.ArkVipReporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -44,7 +44,7 @@ public class IpStrategyFactory
   
   private static boolean getRichmediaIpv6Switch()
   {
-    RichmediaIpv6ConifgBean localRichmediaIpv6ConifgBean = (RichmediaIpv6ConifgBean)QConfigManager.a().a(538);
+    RichmediaIpv6ConifgBean localRichmediaIpv6ConifgBean = (RichmediaIpv6ConifgBean)QConfigManager.b().b(538);
     if (localRichmediaIpv6ConifgBean != null) {
       return localRichmediaIpv6ConifgBean.c;
     }
@@ -78,7 +78,7 @@ public class IpStrategyFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ipv6.IpStrategyFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -23,49 +23,49 @@ import java.lang.ref.WeakReference;
 public final class CommonSelectableHelper
   implements ILifeCycleHelper, OnSelectListener
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.b(50.0F);
-  private static int jdField_b_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private final WeakReference<BaseFragment> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d = -1;
-  private int e = -1;
+  private static final int a = ViewUtils.dpToPx(50.0F);
+  private static int b = -1;
+  private boolean c;
+  private long d = -1L;
+  private int e;
+  private int f = -1;
+  private int g = -1;
+  private boolean h;
+  private final int[] i = new int[2];
+  private final WeakReference<BaseFragment> j;
   
   public CommonSelectableHelper(BaseFragment paramBaseFragment)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseFragment);
-    if (jdField_b_of_type_Int == -1)
+    this.j = new WeakReference(paramBaseFragment);
+    if (b == -1)
     {
-      int i = ViewConfiguration.get(paramBaseFragment.getBaseActivity()).getScaledTouchSlop();
-      jdField_b_of_type_Int = i * i;
+      int k = ViewConfiguration.get(paramBaseFragment.getBaseActivity()).getScaledTouchSlop();
+      b = k * k;
     }
   }
   
   private void a(View paramView, BaseFragment paramBaseFragment)
   {
     AIOSelectableDelegateImpl localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
-    if ((localAIOSelectableDelegateImpl.c()) && (!localAIOSelectableDelegateImpl.a()))
+    if ((localAIOSelectableDelegateImpl.l()) && (!localAIOSelectableDelegateImpl.i()))
     {
-      View localView = localAIOSelectableDelegateImpl.a();
+      View localView = localAIOSelectableDelegateImpl.t();
       if (localView != null)
       {
-        localView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-        if (this.jdField_a_of_type_ArrayOfInt[1] + localView.getMeasuredHeight() - localView.getPaddingBottom() < jdField_a_of_type_Int + ImmersiveUtils.statusHeight)
+        localView.getLocationInWindow(this.i);
+        if (this.i[1] + localView.getMeasuredHeight() - localView.getPaddingBottom() < a + ImmersiveUtils.statusHeight)
         {
-          localAIOSelectableDelegateImpl.d();
+          localAIOSelectableDelegateImpl.n();
           return;
         }
         if (paramView != null)
         {
-          paramBaseFragment = this.jdField_a_of_type_ArrayOfInt;
-          int i = paramBaseFragment[1];
+          paramBaseFragment = this.i;
+          int k = paramBaseFragment[1];
           paramView.getLocationInWindow(paramBaseFragment);
-          if (i > this.jdField_a_of_type_ArrayOfInt[1])
+          if (k > this.i[1])
           {
-            localAIOSelectableDelegateImpl.d();
+            localAIOSelectableDelegateImpl.n();
             return;
           }
           localAIOSelectableDelegateImpl.a(paramView);
@@ -78,7 +78,7 @@ public final class CommonSelectableHelper
           localAIOSelectableDelegateImpl.d(paramView.heightPixels);
           return;
         }
-        localAIOSelectableDelegateImpl.a();
+        localAIOSelectableDelegateImpl.h();
       }
     }
   }
@@ -86,77 +86,77 @@ public final class CommonSelectableHelper
   public void a(MotionEvent paramMotionEvent)
   {
     AIOSelectableDelegateImpl localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
-    if (localAIOSelectableDelegateImpl.c())
+    if (localAIOSelectableDelegateImpl.l())
     {
-      if (!this.jdField_b_of_type_Boolean) {
+      if (!this.h) {
         return;
       }
-      int i = paramMotionEvent.getAction();
-      int j = (int)paramMotionEvent.getRawX();
-      int k = (int)paramMotionEvent.getRawY();
-      if (i == 0)
+      int k = paramMotionEvent.getAction();
+      int m = (int)paramMotionEvent.getRawX();
+      int n = (int)paramMotionEvent.getRawY();
+      if (k == 0)
       {
-        this.jdField_a_of_type_Boolean = (localAIOSelectableDelegateImpl.a(j, k) ^ true);
-        this.jdField_a_of_type_Long = localAIOSelectableDelegateImpl.jdField_a_of_type_Long;
-        if (this.jdField_a_of_type_Boolean)
+        this.c = (localAIOSelectableDelegateImpl.d(m, n) ^ true);
+        this.d = localAIOSelectableDelegateImpl.b;
+        if (this.c)
         {
-          this.d = j;
-          this.e = k;
+          this.f = m;
+          this.g = n;
         }
         else
         {
-          this.d = -1;
-          this.e = -1;
+          this.f = -1;
+          this.g = -1;
         }
-        this.c = 0;
+        this.e = 0;
         return;
       }
-      if (i == 2)
+      if (k == 2)
       {
-        if ((this.jdField_a_of_type_Boolean) && (Math.pow(this.d - j, 2.0D) + Math.pow(this.e - k, 2.0D) > jdField_b_of_type_Int))
+        if ((this.c) && (Math.pow(this.f - m, 2.0D) + Math.pow(this.g - n, 2.0D) > b))
         {
-          this.c = 2;
+          this.e = 2;
           if (QLog.isColorLevel()) {
             QLog.d("ChatPieSelectableHelper", 0, "detect scrolling.");
           }
         }
       }
-      else if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Boolean))
+      else if (((k == 1) || (k == 3)) && (this.c))
       {
-        if (this.c == 0)
+        if (this.e == 0)
         {
           if (QLog.isColorLevel()) {
             QLog.d("ChatPieSelectableHelper", 0, "detect taping.");
           }
-          long l1 = localAIOSelectableDelegateImpl.jdField_a_of_type_Long;
-          long l2 = this.jdField_a_of_type_Long;
+          long l1 = localAIOSelectableDelegateImpl.b;
+          long l2 = this.d;
           if ((l2 != -1L) && (l1 != -1L))
           {
             if (l2 == l1) {
-              localAIOSelectableDelegateImpl.d();
+              localAIOSelectableDelegateImpl.n();
             }
           }
           else {
-            localAIOSelectableDelegateImpl.d();
+            localAIOSelectableDelegateImpl.n();
           }
         }
-        this.c = 1;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Long = -1L;
+        this.e = 1;
+        this.c = false;
+        this.d = -1L;
       }
     }
   }
   
   public void a(@NonNull SelectableDelegate paramSelectableDelegate)
   {
-    boolean bool = paramSelectableDelegate.c();
-    paramSelectableDelegate = (BaseFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    boolean bool = paramSelectableDelegate.l();
+    paramSelectableDelegate = (BaseFragment)this.j.get();
     if ((paramSelectableDelegate instanceof ChatHistoryC2CAllFragment)) {
-      paramSelectableDelegate = ((ChatHistoryC2CAllFragment)paramSelectableDelegate).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      paramSelectableDelegate = ((ChatHistoryC2CAllFragment)paramSelectableDelegate).s;
     } else if ((paramSelectableDelegate instanceof ChatHistoryTroopAllFragment)) {
-      paramSelectableDelegate = ((ChatHistoryTroopAllFragment)paramSelectableDelegate).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      paramSelectableDelegate = ((ChatHistoryTroopAllFragment)paramSelectableDelegate).t;
     } else if ((paramSelectableDelegate instanceof ChatHistoryBubbleListForTroopFragment)) {
-      paramSelectableDelegate = ((ChatHistoryBubbleListForTroopFragment)paramSelectableDelegate).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      paramSelectableDelegate = ((ChatHistoryBubbleListForTroopFragment)paramSelectableDelegate).b;
     } else {
       paramSelectableDelegate = null;
     }
@@ -177,10 +177,10 @@ public final class CommonSelectableHelper
   
   public void onMoveToState(int paramInt)
   {
-    Object localObject2 = (BaseFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2 = (BaseFragment)this.j.get();
     Object localObject1;
     if ((localObject2 instanceof ChatHistoryC2CAllFragment)) {
-      localObject1 = ((ChatHistoryC2CAllFragment)localObject2).jdField_a_of_type_ComTencentMobileqqActivityHistoryWidgetChatHistoryTimeLineContainer;
+      localObject1 = ((ChatHistoryC2CAllFragment)localObject2).X;
     } else {
       localObject1 = null;
     }
@@ -199,30 +199,30 @@ public final class CommonSelectableHelper
             return;
           }
           localObject1 = AIOSelectableDelegateImpl.a();
-          if ((((AIOSelectableDelegateImpl)localObject1).a() != null) && (((AIOSelectableDelegateImpl)localObject1).c()) && (((AIOSelectableDelegateImpl)localObject1).a())) {
-            ((AIOSelectableDelegateImpl)localObject1).b();
+          if ((((AIOSelectableDelegateImpl)localObject1).t() != null) && (((AIOSelectableDelegateImpl)localObject1).l()) && (((AIOSelectableDelegateImpl)localObject1).i())) {
+            ((AIOSelectableDelegateImpl)localObject1).j();
           }
         }
         else
         {
           localObject1 = AIOSelectableDelegateImpl.a();
-          if (((SelectableDelegate)localObject1).c()) {
-            ((SelectableDelegate)localObject1).d();
+          if (((SelectableDelegate)localObject1).l()) {
+            ((SelectableDelegate)localObject1).n();
           }
         }
       }
       else
       {
         AIOSelectableDelegateImpl.a().b(this);
-        this.jdField_b_of_type_Boolean = false;
+        this.h = false;
       }
     }
     else
     {
       localObject2 = AIOSelectableDelegateImpl.a();
       ((AIOSelectableDelegateImpl)localObject2).a(this);
-      this.jdField_b_of_type_Boolean = true;
-      if ((((AIOSelectableDelegateImpl)localObject2).a() != null) && (((AIOSelectableDelegateImpl)localObject2).c()) && (!((AIOSelectableDelegateImpl)localObject2).a())) {
+      this.h = true;
+      if ((((AIOSelectableDelegateImpl)localObject2).t() != null) && (((AIOSelectableDelegateImpl)localObject2).l()) && (!((AIOSelectableDelegateImpl)localObject2).i())) {
         ((AIOSelectableDelegateImpl)localObject2).a((View)localObject1);
       }
     }
@@ -230,7 +230,7 @@ public final class CommonSelectableHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.CommonSelectableHelper
  * JD-Core Version:    0.7.0.1
  */

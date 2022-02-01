@@ -5,6 +5,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
@@ -41,7 +42,7 @@ public class DBNetworkUtil
         InetAddress localInetAddress;
         do
         {
-          localObject1 = NetworkInterface.getNetworkInterfaces();
+          localObject1 = NetworkMonitor.getNetworkInterfaces();
           Object localObject2;
           while (!((Enumeration)localObject2).hasMoreElements())
           {
@@ -70,7 +71,7 @@ public class DBNetworkUtil
     if (!localWifiManager.isWifiEnabled()) {
       return "";
     }
-    return a(localWifiManager.getConnectionInfo().getIpAddress());
+    return a(NetworkMonitor.getConnectionInfo(localWifiManager).getIpAddress());
   }
   
   public static String a(long paramLong)
@@ -106,7 +107,7 @@ public class DBNetworkUtil
         {
           do
           {
-            localObject1 = NetworkInterface.getNetworkInterfaces();
+            localObject1 = NetworkMonitor.getNetworkInterfaces();
             break label62;
             Object localObject2;
             while (!((Enumeration)localObject2).hasMoreElements())

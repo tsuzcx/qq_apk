@@ -1,5 +1,6 @@
 package UserGrowth;
 
+import NS_KING_SOCIALIZE_META.stMetaAddr;
 import NS_KING_SOCIALIZE_META.stMetaNumericSys;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
@@ -8,13 +9,18 @@ import com.qq.taf.jce.JceStruct;
 public final class stSimpleMetaPerson
   extends JceStruct
 {
-  static stSchema cache_avatarSchema = new stSchema();
-  static stLive cache_live = new stLive();
+  static stSchema cache_avatarSchema;
+  static stPersonExt cache_extInfo = new stPersonExt();
+  static stMetaAddr cache_formatAddr = new stMetaAddr();
+  static stLive cache_live;
   static stMetaNumericSys cache_nueric = new stMetaNumericSys();
   public String avatar = "";
   public stSchema avatarSchema = null;
+  public String background = "";
   public int createtime = 0;
+  public stPersonExt extInfo = null;
   public int followStatus = 0;
+  public stMetaAddr formatAddr = null;
   public String id = "";
   public stLive live = null;
   public int medal = 0;
@@ -24,12 +30,19 @@ public final class stSimpleMetaPerson
   public int relation_type = 0;
   public String schema_url = "";
   public int sex = 0;
+  public String status = "";
   public int type = 0;
   public String uid = "";
   
+  static
+  {
+    cache_avatarSchema = new stSchema();
+    cache_live = new stLive();
+  }
+  
   public stSimpleMetaPerson() {}
   
-  public stSimpleMetaPerson(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3, int paramInt4, int paramInt5, stMetaNumericSys paramstMetaNumericSys, String paramString6, int paramInt6, stSchema paramstSchema, stLive paramstLive)
+  public stSimpleMetaPerson(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, int paramInt3, int paramInt4, int paramInt5, stMetaNumericSys paramstMetaNumericSys, String paramString6, int paramInt6, stSchema paramstSchema, stLive paramstLive, stPersonExt paramstPersonExt, String paramString7, stMetaAddr paramstMetaAddr, String paramString8)
   {
     this.id = paramString1;
     this.type = paramInt1;
@@ -46,6 +59,10 @@ public final class stSimpleMetaPerson
     this.sex = paramInt6;
     this.avatarSchema = paramstSchema;
     this.live = paramstLive;
+    this.extInfo = paramstPersonExt;
+    this.status = paramString7;
+    this.formatAddr = paramstMetaAddr;
+    this.background = paramString8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -65,6 +82,10 @@ public final class stSimpleMetaPerson
     this.sex = paramJceInputStream.read(this.sex, 12, false);
     this.avatarSchema = ((stSchema)paramJceInputStream.read(cache_avatarSchema, 13, false));
     this.live = ((stLive)paramJceInputStream.read(cache_live, 14, false));
+    this.extInfo = ((stPersonExt)paramJceInputStream.read(cache_extInfo, 15, false));
+    this.status = paramJceInputStream.readString(16, false);
+    this.formatAddr = ((stMetaAddr)paramJceInputStream.read(cache_formatAddr, 17, false));
+    this.background = paramJceInputStream.readString(18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -110,6 +131,22 @@ public final class stSimpleMetaPerson
     localObject = this.live;
     if (localObject != null) {
       paramJceOutputStream.write((JceStruct)localObject, 14);
+    }
+    localObject = this.extInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
+    }
+    localObject = this.status;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
+    }
+    localObject = this.formatAddr;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
+    }
+    localObject = this.background;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
   }
 }

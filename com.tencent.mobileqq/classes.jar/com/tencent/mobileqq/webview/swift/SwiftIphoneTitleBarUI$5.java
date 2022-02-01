@@ -10,7 +10,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 class SwiftIphoneTitleBarUI$5
   implements TouchWebView.OnScrollChangedListener
 {
-  int jdField_a_of_type_Int = 0;
+  int a = 0;
   
   SwiftIphoneTitleBarUI$5(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
   
@@ -35,28 +35,28 @@ class SwiftIphoneTitleBarUI$5
       paramInt1 = 0;
     }
     paramInt1 = 180 + (DisplayUtil.a(BaseApplication.getContext(), 50.0F) + paramInt1);
-    if (Math.abs(paramInt2 - this.jdField_a_of_type_Int) > 20)
+    if (Math.abs(paramInt2 - this.a) > 20)
     {
       if (paramInt2 < paramInt1 / 3) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.v = true;
+        this.b.b.E = true;
       } else if (paramInt2 >= paramInt1) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.v = false;
+        this.b.b.E = false;
       }
-      this.jdField_a_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.i();
+      this.a = paramInt2;
+      this.b.k();
       return;
     }
     if (paramInt2 < paramInt1 / 3)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.v = true;
-      this.jdField_a_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.i();
+      this.b.b.E = true;
+      this.a = paramInt2;
+      this.b.k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI.5
  * JD-Core Version:    0.7.0.1
  */

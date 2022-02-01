@@ -18,48 +18,48 @@ import java.util.List;
 
 public class MuiltiImageToVideo
 {
-  private final int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
-  private HWVideoRecorder jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private final int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  private final String a;
+  private final int b;
   private final int c;
-  private int d = 42;
-  private int e;
+  private final int d;
+  private HWVideoRecorder e;
+  private QQFilterRenderManager f;
+  private int g = 42;
+  private ArrayList<Integer> h = new ArrayList();
+  private long i;
+  private long j;
+  private boolean k = true;
+  private int l;
   
   public MuiltiImageToVideo(String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong, boolean paramBoolean, int paramInt4)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.e = paramInt4;
+    this.a = paramString;
+    this.i = paramLong;
+    this.c = paramInt1;
+    this.b = paramInt2;
+    this.d = paramInt3;
+    this.k = paramBoolean;
+    this.l = paramInt4;
   }
   
   private int a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     if ((paramBitmap != null) && (paramInt2 != 0) && (paramInt1 != 0))
     {
-      int i = GlUtil.createTexture(3553, paramBitmap);
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = new QQFilterRenderManager();
+      int m = GlUtil.createTexture(3553, paramBitmap);
+      if (this.f == null) {
+        this.f = new QQFilterRenderManager();
       }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceCreate(paramInt1, paramInt2, paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.surfaceChange(paramInt1, paramInt2, paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.pushChain(new int[] { 170 }, null);
-      List localList = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.getQQFilters(170);
+      this.f.surfaceCreate(paramInt1, paramInt2, paramInt1, paramInt2);
+      this.f.surfaceChange(paramInt1, paramInt2, paramInt1, paramInt2);
+      this.f.pushChain(new int[] { 170 }, null);
+      List localList = this.f.getQQFilters(170);
       if ((localList != null) && (localList.size() > 0) && ((localList.get(0) instanceof QQImage2FrameFilter))) {
         ((QQImage2FrameFilter)localList.get(0)).setImageSize(paramBitmap.getWidth(), paramBitmap.getHeight());
       }
-      paramInt1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.drawFrame(i);
-      if (i > 0) {
-        GlUtil.deleteTexture(i);
+      paramInt1 = this.f.drawFrame(m);
+      if (m > 0) {
+        GlUtil.deleteTexture(m);
       }
       return paramInt1;
     }
@@ -83,7 +83,7 @@ public class MuiltiImageToVideo
       paramInt2 = paramBitmap.getHeight();
       Matrix localMatrix = new Matrix();
       localMatrix.postTranslate(paramInt1 * -0.5F, paramInt2 * -0.5F);
-      paramInt1 = this.e;
+      paramInt1 = this.l;
       if ((paramInt1 != 180) && (paramInt1 != 270)) {
         localMatrix.postRotate(-180.0F, 0.0F, 1.0F);
       }
@@ -102,7 +102,7 @@ public class MuiltiImageToVideo
   
   public void a(int paramInt)
   {
-    this.d = paramInt;
+    this.g = paramInt;
   }
   
   @TargetApi(17)
@@ -110,19 +110,19 @@ public class MuiltiImageToVideo
   public void a(List<Bitmap> paramList, VideoStoryPicToVideo.ConvertListener paramConvertListener)
   {
     VideoStoryPicToVideo.RetCode localRetCode = new VideoStoryPicToVideo.RetCode(0, "success");
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder = new HWVideoRecorder();
-    EncodeConfig localEncodeConfig = new EncodeConfig(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, this.c, 1, false, 0);
+    this.e = new HWVideoRecorder();
+    EncodeConfig localEncodeConfig = new EncodeConfig(this.a, this.c, this.b, this.d, 1, false, 0);
     localEncodeConfig.a(EGL14.eglGetCurrentContext());
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" ");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.d);
     QLog.d("MuiltiImageToVideo", 2, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder.a(localEncodeConfig, new MuiltiImageToVideo.1(this, paramList, paramConvertListener, localRetCode));
+    this.e.a(localEncodeConfig, new MuiltiImageToVideo.1(this, paramList, paramConvertListener, localRetCode));
     try
     {
       try
@@ -141,7 +141,7 @@ public class MuiltiImageToVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.step.MuiltiImageToVideo
  * JD-Core Version:    0.7.0.1
  */

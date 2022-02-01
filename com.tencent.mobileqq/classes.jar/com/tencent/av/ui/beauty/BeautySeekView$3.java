@@ -13,7 +13,7 @@ class BeautySeekView$3
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (BeautySeekView.a(this.a) != paramInt)
+    if (BeautySeekView.c(this.a) != paramInt)
     {
       BeautySeekView.a(this.a, paramInt);
       if ((paramBoolean) && (BeautySeekView.a(this.a) != null))
@@ -24,29 +24,29 @@ class BeautySeekView$3
         localStringBuilder.append("%");
         paramSeekBar.setContentDescription(localStringBuilder.toString());
       }
-      BeautySeekView.a(this.a, paramInt);
+      BeautySeekView.b(this.a, paramInt);
       paramSeekBar = this.a;
-      BeautySeekView.b(paramSeekBar, BeautySeekView.a(paramSeekBar));
+      BeautySeekView.c(paramSeekBar, BeautySeekView.c(paramSeekBar));
     }
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
+    if (BeautySeekView.d(this.a) != null) {
+      BeautySeekView.d(this.a).a(BeautySeekView.e(this.a), 2, paramInt);
     }
   }
   
   public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
-    BeautySeekView.a(this.a).setVisibility(0);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
+    BeautySeekView.f(this.a).removeCallbacks(this.a.b);
+    BeautySeekView.b(this.a).setVisibility(0);
+    if (BeautySeekView.d(this.a) != null) {
+      BeautySeekView.d(this.a).a(BeautySeekView.e(this.a), 1, BeautySeekView.c(this.a));
     }
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
+    BeautySeekView.f(this.a).postDelayed(this.a.b, 300L);
+    if (BeautySeekView.d(this.a) != null) {
+      BeautySeekView.d(this.a).a(BeautySeekView.e(this.a), 3, BeautySeekView.c(this.a));
     }
     EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }

@@ -14,30 +14,27 @@ import com.tencent.mobileqq.widget.BubbleImageView;
 public class BasePicItemBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
 {
-  public ImageView a;
-  public URLDrawable a;
-  public BasePicItemBuilder.DrawURL a;
-  public PicProgressView a;
   public BubbleImageView a;
-  public boolean a;
-  public View c;
-  final int e = 0;
-  final int f = 1;
-  final int g = 2;
-  final int h = 3;
-  final int i = 4;
-  final int j = 5;
+  public PicProgressView b;
+  public URLDrawable c;
+  public ImageView d;
+  public BasePicItemBuilder.DrawURL e;
+  public View f;
+  public boolean g = false;
+  final int s = 0;
+  final int t = 1;
+  final int u = 2;
+  final int v = 3;
+  final int w = 4;
+  final int x = 5;
   
-  public BasePicItemBuilder$Holder(BasePicItemBuilder paramBasePicItemBuilder)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public BasePicItemBuilder$Holder(BasePicItemBuilder paramBasePicItemBuilder) {}
   
   int a(MessageForPic paramMessageForPic)
   {
     if (!paramMessageForPic.isSendFromLocal())
     {
-      paramMessageForPic = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      paramMessageForPic = this.c;
       if ((paramMessageForPic != null) && (paramMessageForPic.getStatus() == 1)) {
         return 1;
       }
@@ -46,7 +43,7 @@ public class BasePicItemBuilder$Holder
     if (paramMessageForPic.size > 0L) {
       return 2;
     }
-    paramMessageForPic = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a.getRuntimeService(ITransFileController.class)).findProcessor(paramMessageForPic.frienduin, paramMessageForPic.uniseq);
+    paramMessageForPic = ((ITransFileController)this.y.d.getRuntimeService(ITransFileController.class)).findProcessor(paramMessageForPic.frienduin, paramMessageForPic.uniseq);
     if ((paramMessageForPic instanceof BaseTransProcessor))
     {
       paramMessageForPic = (BaseTransProcessor)paramMessageForPic;
@@ -61,16 +58,16 @@ public class BasePicItemBuilder$Holder
   
   public boolean a()
   {
-    BasePicItemBuilder.DrawURL localDrawURL = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL;
+    BasePicItemBuilder.DrawURL localDrawURL = this.e;
     if (localDrawURL != null) {
-      return localDrawURL.b;
+      return localDrawURL.c;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BasePicItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

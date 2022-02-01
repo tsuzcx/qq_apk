@@ -10,12 +10,12 @@ class QRecentC2CAVFileListContentView$1
   
   public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
   {
-    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
+    return Long.valueOf(paramOfflineFileInfo1.h).compareTo(Long.valueOf(paramOfflineFileInfo2.h));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QRecentC2CAVFileListContentView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,17 +18,17 @@ class PersonalityLabelGalleryActivity$2
     Object localObject = new Intent(this.a, QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", "https://ti.qq.com/cgi-node/specialtag/zanlist?_wv=1027&asyncMode=3");
     this.a.startActivity((Intent)localObject);
-    localObject = PersonalityLabelGalleryActivity.a(this.a);
-    ((ProfilePersonalityLabelInfo)localObject).praiseCount += PersonalityLabelGalleryActivity.a(this.a).unreadCount;
-    PersonalityLabelGalleryActivity.a(this.a).unreadCount = 0;
-    PersonalityLabelGalleryActivity.a(this.a).postDelayed(new PersonalityLabelGalleryActivity.2.1(this), 500L);
+    localObject = PersonalityLabelGalleryActivity.b(this.a);
+    ((ProfilePersonalityLabelInfo)localObject).praiseCount += PersonalityLabelGalleryActivity.b(this.a).unreadCount;
+    PersonalityLabelGalleryActivity.b(this.a).unreadCount = 0;
+    PersonalityLabelGalleryActivity.c(this.a).postDelayed(new PersonalityLabelGalleryActivity.2.1(this), 500L);
     ReportController.b(this.a.app, "dc00898", "", "", "0X8007FCF", "0X8007FCF", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.2
  * JD-Core Version:    0.7.0.1
  */

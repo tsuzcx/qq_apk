@@ -73,17 +73,16 @@ public class TroopGameHandler
   extends TroopBaseHandler
   implements ITroopGameHandler
 {
-  private AppInterface a;
-  public WadlTrpcListener a;
   protected Set<String> a;
+  public WadlTrpcListener b = new TroopGameHandler.1(this);
+  private AppInterface c;
   
   public TroopGameHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener = new TroopGameHandler.1(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    if (this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener != null) {
-      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener);
+    this.c = paramAppInterface;
+    if (this.b != null) {
+      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(this.b);
     }
   }
   
@@ -93,7 +92,7 @@ public class TroopGameHandler
       return;
     }
     boolean bool = paramToServiceMsg.extraData.getBoolean("isChecked");
-    paramToServiceMsg = (ITroopInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopInfoService.class, "");
+    paramToServiceMsg = (ITroopInfoService)this.c.getRuntimeService(ITroopInfoService.class, "");
     TroopInfo localTroopInfo = paramToServiceMsg.getTroopInfo(String.valueOf(paramLong));
     if (localTroopInfo != null)
     {
@@ -194,7 +193,7 @@ public class TroopGameHandler
       {
         long l1 = ((oidb_0x787.MemberLevelInfo)localObject).uint64_uin.get();
         long l2 = ((oidb_0x787.MemberLevelInfo)localObject).uint32_cmduin_flagex3_grocery.get();
-        localObject = (ITroopMemberInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopMemberInfoService.class, "");
+        localObject = (ITroopMemberInfoService)this.c.getRuntimeService(ITroopMemberInfoService.class, "");
         if (localObject != null) {
           ((ITroopMemberInfoService)localObject).saveTroopMemberCmduinFlagEx3(String.valueOf(paramLong), String.valueOf(l1), l2);
         }
@@ -236,20 +235,24 @@ public class TroopGameHandler
         paramTrpcInovkeRsp.gamesTotal = ((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).gamesTotal.get();
         paramTrpcInovkeRsp.mvpTotal = ((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).mvpTotal.get();
         paramTrpcInovkeRsp.bestOccupation = ((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).bestOccupation.get();
+        paramTrpcInovkeRsp.encrptOpenId = ((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).encrptOpenId.get();
+        paramTrpcInovkeRsp.partition = ((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).partition.get();
+        paramTrpcInovkeRsp.platid = ((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).platid.get();
+        paramTrpcInovkeRsp.area = ((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).area.get();
         i = 0;
         Object localObject2;
         if (i < ((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).bestHeroList.size())
         {
           localObject2 = (sgame_qgroup_datacard.UserHeroInfo)((sgame_qgroup_datacard.QueryUserInfoRsp)localObject1).bestHeroList.get(i);
           if (localObject2 == null) {
-            break label596;
+            break label648;
           }
           paramTrpcInovkeRsp.getClass();
           localObject2 = new ProfileGameInfo.UserHeroInfo(paramTrpcInovkeRsp, ((sgame_qgroup_datacard.UserHeroInfo)localObject2).heroId.get(), ((sgame_qgroup_datacard.UserHeroInfo)localObject2).icon.get(), ((sgame_qgroup_datacard.UserHeroInfo)localObject2).skill.get());
           paramTrpcInovkeRsp.bestHeroList.add(localObject2);
-          break label596;
+          break label648;
         }
-        localObject1 = (ITroopGameCardService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopGameCardService.class, "");
+        localObject1 = (ITroopGameCardService)this.c.getRuntimeService(ITroopGameCardService.class, "");
         if (localObject1 != null)
         {
           localObject2 = new MemberGradeLevelInfo();
@@ -285,7 +288,7 @@ public class TroopGameHandler
         paramTrpcInovkeRsp = new MemberGradeLevelInfo();
         paramTrpcInovkeRsp.memberuin = paramIntent;
         paramTrpcInovkeRsp.gradeLevel = 0;
-        localObject1 = (ITroopGameCardService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopGameCardService.class, "");
+        localObject1 = (ITroopGameCardService)this.c.getRuntimeService(ITroopGameCardService.class, "");
         if (localObject1 != null) {
           ((ITroopGameCardService)localObject1).saveMemberGradeLevelInfo(paramTrpcInovkeRsp);
         }
@@ -299,7 +302,7 @@ public class TroopGameHandler
       }
       notifyUI(TroopGameObserver.TYPE_NOTIFY_GET_MEMBER_GAME_CARD, false, null);
       return;
-      label596:
+      label648:
       i += 1;
     }
   }
@@ -426,11 +429,6 @@ public class TroopGameHandler
       }
       notifyUI(TroopGameObserver.TYPE_GET_TROOP_GAME_ACTIVITY_INFO, false, new Object[] { str, Long.valueOf(l), null });
     }
-  }
-  
-  protected String a()
-  {
-    return "TroopGameHandler";
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -741,7 +739,7 @@ public class TroopGameHandler
     ((Oidb_0x8fc.ReqBody)localObject1).uint64_group_code.set(Long.parseLong(paramString));
     Object localObject2 = new ArrayList();
     Oidb_0x8fc.MemberInfo localMemberInfo = new Oidb_0x8fc.MemberInfo();
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    long l = Long.parseLong(this.c.getCurrentAccountUin());
     localMemberInfo.uint64_uin.set(l);
     localMemberInfo.uint32_cmduin_flag_ex3_mask.set(1);
     int i = 0;
@@ -753,7 +751,7 @@ public class TroopGameHandler
     ((Oidb_0x8fc.ReqBody)localObject1).rpt_mem_level_info.set((List)localObject2);
     localObject2 = new Oidb_0x8fc.ClientInfo();
     ((Oidb_0x8fc.ClientInfo)localObject2).uint32_implat.set(109);
-    ((Oidb_0x8fc.ClientInfo)localObject2).string_clientver.set(DeviceInfoUtil.c());
+    ((Oidb_0x8fc.ClientInfo)localObject2).string_clientver.set(DeviceInfoUtil.e());
     ((Oidb_0x8fc.ReqBody)localObject1).msg_client_info.set((MessageMicro)localObject2);
     localObject2 = new oidb_sso.OIDBSSOPkg();
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2300);
@@ -767,16 +765,21 @@ public class TroopGameHandler
     sendPbReq((ToServiceMsg)localObject1);
   }
   
+  protected String dv_()
+  {
+    return "TroopGameHandler";
+  }
+  
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x787_1");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x8fc_20");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvcTcp.0xf3c_1");
+      this.a = new HashSet();
+      this.a.add("OidbSvc.0x787_1");
+      this.a.add("OidbSvc.0x8fc_20");
+      this.a.add("OidbSvcTcp.0xf3c_1");
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.a;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -786,8 +789,8 @@ public class TroopGameHandler
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener != null) {
-      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).removeListener(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener);
+    if (this.b != null) {
+      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).removeListener(this.b);
     }
     super.onDestroy();
   }
@@ -808,7 +811,7 @@ public class TroopGameHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -841,7 +844,7 @@ public class TroopGameHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.handler.TroopGameHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -25,8 +25,8 @@ class ChatHistoryTroopMemberFragment$19
   public void onClick(View paramView)
   {
     Object localObject = new Intent();
-    ((Intent)localObject).putExtra("troop_uin", this.a.c);
-    List localList = (List)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter.a.get(ChatHistoryTroopMemberFragment.a(this.a));
+    ((Intent)localObject).putExtra("troop_uin", this.a.w);
+    List localList = (List)this.a.K.a.get(ChatHistoryTroopMemberFragment.g(this.a));
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < localList.size())
@@ -36,14 +36,14 @@ class ChatHistoryTroopMemberFragment$19
     }
     ((Intent)localObject).putExtra("members_uin", localArrayList);
     PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, TroopMemberHistoryFragment.class);
-    localObject = ((TroopManager)this.a.getBaseActivity().app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, this.a.b.getCurrentAccountUin());
-    TroopReportor.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, TroopReportor.a((TroopMemberInfo)localObject) });
+    localObject = ((TroopManager)this.a.getBaseActivity().app.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.a.aj.troopUin, this.a.bc.getCurrentAccountUin());
+    TroopReportor.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.aj.troopUin, TroopReportor.a((TroopMemberInfo)localObject) });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.19
  * JD-Core Version:    0.7.0.1
  */

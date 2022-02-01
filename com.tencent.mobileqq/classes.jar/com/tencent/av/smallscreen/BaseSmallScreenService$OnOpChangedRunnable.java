@@ -19,16 +19,16 @@ class BaseSmallScreenService$OnOpChangedRunnable
   {
     if (!this.this$0.d)
     {
-      Object localObject = VideoController.a().b();
+      Object localObject = VideoController.f().aB();
       boolean bool2 = false;
       int i;
-      if ((localObject != null) && (((WatchTogetherMediaPlayCtrl)localObject).h())) {
+      if ((localObject != null) && (((WatchTogetherMediaPlayCtrl)localObject).q())) {
         i = 1;
       } else {
         i = 0;
       }
       int j;
-      if ((Build.VERSION.SDK_INT >= 21) && (VideoController.a().a().c())) {
+      if ((Build.VERSION.SDK_INT >= 21) && (VideoController.f().aE().e())) {
         j = 1;
       } else {
         j = 0;
@@ -49,14 +49,14 @@ class BaseSmallScreenService$OnOpChangedRunnable
       {
         localObject = this.this$0;
         ((BaseSmallScreenService)localObject).e = bool1;
-        ((BaseSmallScreenService)localObject).c();
+        ((BaseSmallScreenService)localObject).d();
       }
-      bool1 = SmallScreenUtils.i();
+      bool1 = SmallScreenUtils.j();
       if (bool1 != this.this$0.b)
       {
         localObject = this.this$0;
         ((BaseSmallScreenService)localObject).b = bool1;
-        ((BaseSmallScreenService)localObject).b();
+        ((BaseSmallScreenService)localObject).c();
       }
       bool1 = SmallScreenUtils.b(((AppInterface)BaseSmallScreenService.b(this.this$0)).getApp());
       if (bool1 != this.this$0.c)
@@ -65,10 +65,10 @@ class BaseSmallScreenService$OnOpChangedRunnable
         ((BaseSmallScreenService)localObject).c = bool1;
         ((BaseSmallScreenService)localObject).a();
       }
-      bool1 = this.this$0.a();
+      bool1 = this.this$0.f();
       if (bool1 != this.this$0.f)
       {
-        long l = AudioHelper.b();
+        long l = AudioHelper.c();
         if (QLog.isDevelopLevel())
         {
           localObject = new StringBuilder();
@@ -87,13 +87,13 @@ class BaseSmallScreenService$OnOpChangedRunnable
         }
         VideoNodeManager.a(20, l);
       }
-      this.this$0.a().postDelayed(this, 1000L);
+      this.this$0.b().postDelayed(this, 1000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.BaseSmallScreenService.OnOpChangedRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -25,10 +25,10 @@ class BaseGuessSongStageView$7
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     QLog.d("BaseGuessSongStageView", 2, "onLoadSuccessed ");
-    if ((paramURLDrawable != null) && (paramURLDrawable.getCurrDrawable() != null) && (this.a.a != null) && (this.a.a.getImageAsset("image_6") != null))
+    if ((paramURLDrawable != null) && (paramURLDrawable.getCurrDrawable() != null) && (this.a.p != null) && (this.a.p.getImageAsset("image_6") != null))
     {
       paramURLDrawable = this.a.a(paramURLDrawable, 280, 280);
-      this.a.a.updateBitmap("image_6", paramURLDrawable);
+      this.a.p.updateBitmap("image_6", paramURLDrawable);
     }
   }
 }

@@ -13,7 +13,7 @@ class QRDisplayActivity$31
   public void run()
   {
     Object localObject = this.this$0;
-    localObject = QRUtils.a((Context)localObject, this.jdField_a_of_type_JavaLangString, ((QRDisplayActivity)localObject).b);
+    localObject = QRUtils.a((Context)localObject, this.a, ((QRDisplayActivity)localObject).k);
     ThreadManager.getUIHandler().post(new QRDisplayActivity.31.1(this, (String)localObject));
   }
 }

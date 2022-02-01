@@ -16,7 +16,7 @@ public final class VasAdvGdtImpl$showMotiveAd$browsingAdReceiver$1
   
   public void onReceive(@Nullable Context paramContext, @Nullable Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver((BroadcastReceiver)this);
+    this.a.unregisterReceiver((BroadcastReceiver)this);
     if (paramIntent != null) {
       paramContext = paramIntent.getAction();
     } else {
@@ -26,12 +26,12 @@ public final class VasAdvGdtImpl$showMotiveAd$browsingAdReceiver$1
     if ((paramContext != null) && (paramContext.hashCode() == 403339419) && (paramContext.equals("cooperation.vip.impl.vas_browsing_ad_action"))) {
       bool = paramIntent.getBooleanExtra("profitable_flag", false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvRewardVasProfitableCallback.a(bool);
+    this.b.a(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.support.gdt.VasAdvGdtImpl.showMotiveAd.browsingAdReceiver.1
  * JD-Core Version:    0.7.0.1
  */

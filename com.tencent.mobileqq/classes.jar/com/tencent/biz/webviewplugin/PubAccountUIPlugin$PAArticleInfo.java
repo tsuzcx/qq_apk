@@ -5,13 +5,13 @@ import java.util.List;
 public class PubAccountUIPlugin$PAArticleInfo
 {
   public int a;
-  public String a;
-  public List<PubAccountUIPlugin.PAArticleButton> a;
-  public List<String> b;
+  public String b;
+  public List<PubAccountUIPlugin.PAArticleButton> c;
+  public List<String> d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountUIPlugin.PAArticleInfo
  * JD-Core Version:    0.7.0.1
  */

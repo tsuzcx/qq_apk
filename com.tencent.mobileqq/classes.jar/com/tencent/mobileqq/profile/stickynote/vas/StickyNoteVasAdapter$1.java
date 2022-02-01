@@ -16,18 +16,18 @@ class StickyNoteVasAdapter$1
   
   public void onClick(View paramView)
   {
-    if ((StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter) == 5) && (StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter) != null) && ((StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter) instanceof StickyNotePublishFragment)) && (!((StickyNotePublishFragment)StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter)).a()))
+    if ((StickyNoteVasAdapter.a(this.b) == 5) && (StickyNoteVasAdapter.b(this.b) != null) && ((StickyNoteVasAdapter.b(this.b) instanceof StickyNotePublishFragment)) && (!((StickyNotePublishFragment)StickyNoteVasAdapter.b(this.b)).g()))
     {
-      QQToast.a(StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter), HardCodeUtil.a(2131714912), 0).a();
+      QQToast.makeText(StickyNoteVasAdapter.c(this.b), HardCodeUtil.a(2131912410), 0).show();
     }
     else
     {
-      StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId);
-      int i = StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter).a;
-      StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter);
+      StickyNoteVasAdapter.a(this.b, this.a.itemId);
+      int i = StickyNoteVasAdapter.d(this.b).b;
+      StickyNoteVasAdapter.d(this.b);
       if (i == 2)
       {
-        if (9 == StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter)) {
+        if (9 == StickyNoteVasAdapter.a(this.b)) {
           localObject = "1";
         } else {
           localObject = "2";
@@ -36,25 +36,25 @@ class StickyNoteVasAdapter$1
       }
       else
       {
-        if (9 == StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter)) {
+        if (9 == StickyNoteVasAdapter.a(this.b)) {
           localObject = "1";
         } else {
           localObject = "2";
         }
         VasWebviewUtil.a("friend_wall", "item_click", "", 0, "", (String)localObject);
       }
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.notifyDataSetChanged();
-      StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter, this.jdField_a_of_type_QCUniBusiSimpleItemDetail);
-      StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter, true);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter;
-      ((StickyNoteVasAdapter)localObject).a(StickyNoteVasAdapter.a((StickyNoteVasAdapter)localObject), this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter.a);
+      this.b.notifyDataSetChanged();
+      StickyNoteVasAdapter.a(this.b, this.a);
+      StickyNoteVasAdapter.a(this.b, true);
+      Object localObject = this.b;
+      ((StickyNoteVasAdapter)localObject).a(StickyNoteVasAdapter.a((StickyNoteVasAdapter)localObject), this.a.itemId, this.a.feeType, this.b.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteVasAdapter.1
  * JD-Core Version:    0.7.0.1
  */

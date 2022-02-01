@@ -31,47 +31,32 @@ import mqq.os.MqqHandler;
 public class VoiceMainPresenter
   implements IBasePresenter, IViewPresenter, IPlayEventListener
 {
-  private int jdField_a_of_type_Int;
-  private Instrumentation jdField_a_of_type_AndroidAppInstrumentation;
-  private IVoiceAssistantCore jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
-  private ClearSessionServlet jdField_a_of_type_ComTencentMobileqqQassistantCoreClearSessionServlet;
-  private FriendSortHelper jdField_a_of_type_ComTencentMobileqqQassistantCoreFriendSortHelper;
-  private VoiceModel jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceModel;
-  private VoiceView jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b;
-  private volatile String c;
+  private IVoiceAssistantCore a;
+  private VoiceModel b;
+  private VoiceView c;
+  private String d;
+  private String e;
+  private ClearSessionServlet f;
+  private FriendSortHelper g;
+  private boolean h = false;
+  private int i;
+  private volatile String j;
+  private Instrumentation k;
   
   public VoiceMainPresenter(VoiceAssistantCoreImpl paramVoiceAssistantCoreImpl)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore = paramVoiceAssistantCoreImpl;
-    this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceModel = new VoiceModel(this);
-    this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView = new VoiceView(this);
-    this.jdField_a_of_type_ComTencentMobileqqQassistantCoreClearSessionServlet = new ClearSessionServlet();
-    this.jdField_a_of_type_JavaLangString = AssistantUtils.a(2131720325);
-    this.b = AssistantUtils.a(2131720339);
-    d();
-  }
-  
-  private String a(String paramString)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(paramString);
-    localStringBuffer.append(",");
-    int i = 0;
-    while (i < VoiceDataUtils.a.length)
-    {
-      localStringBuffer.append(AssistantUtils.a(VoiceDataUtils.a[i]));
-      localStringBuffer.append(",");
-      i += 1;
-    }
-    return localStringBuffer.toString();
+    this.a = paramVoiceAssistantCoreImpl;
+    this.b = new VoiceModel(this);
+    this.c = new VoiceView(this);
+    this.f = new ClearSessionServlet();
+    this.d = AssistantUtils.a(2131917960);
+    this.e = AssistantUtils.a(2131917974);
+    g();
   }
   
   private void a(CommandInfo paramCommandInfo, List<VoiceItemInfo> paramList)
   {
-    VoiceView localVoiceView = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
+    VoiceView localVoiceView = this.c;
     if (localVoiceView != null) {
       localVoiceView.a(paramCommandInfo, paramList);
     }
@@ -79,36 +64,36 @@ public class VoiceMainPresenter
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore != null))
+    Object localObject = this.c;
+    if ((localObject != null) && (this.a != null))
     {
-      int j = ((VoiceView)localObject).a();
-      int i = 2;
-      if (j != 4)
+      int n = ((VoiceView)localObject).e();
+      int m = 2;
+      if (n != 4)
       {
-        if (j != 5)
+        if (n != 5)
         {
-          if (j != 6)
+          if (n != 6)
           {
             if (QLog.isColorLevel())
             {
               localObject = new StringBuilder();
               ((StringBuilder)localObject).append("dealChooseResult error type = ");
-              ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a());
+              ((StringBuilder)localObject).append(this.c.e());
               QLog.d("VoiceMainPresenter", 2, ((StringBuilder)localObject).toString());
             }
           }
           else
           {
             if (paramBoolean1) {
-              b(CommandUtils.a(AssistantUtils.a(2131720331)));
+              b(CommandUtils.a(AssistantUtils.a(2131917966)));
             } else {
               p(CommandUtils.a(VoiceDataUtils.a(1), false));
             }
-            if (this.jdField_a_of_type_Boolean)
+            if (this.h)
             {
-              e();
-              this.jdField_a_of_type_Boolean = false;
+              j();
+              this.h = false;
             }
           }
         }
@@ -117,43 +102,43 @@ public class VoiceMainPresenter
           if (paramBoolean1)
           {
             localObject = null;
-            if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a() != null) {
-              localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a().jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo;
+            if (this.c.f() != null) {
+              localObject = this.c.f().i;
             }
-            this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.onConfirmSend((ConfirmSendInfo)localObject);
+            this.a.onConfirmSend((ConfirmSendInfo)localObject);
             h(CommandUtils.b());
             ReportUtils.b(1);
           }
           else
           {
-            this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.cancelSendVoice();
-            b(CommandUtils.a(AssistantUtils.a(2131720328)));
+            this.a.cancelSendVoice();
+            b(CommandUtils.a(AssistantUtils.a(2131917963)));
             ReportUtils.a(1);
           }
-          if (this.jdField_a_of_type_Boolean)
+          if (this.h)
           {
-            e();
-            this.jdField_a_of_type_Boolean = false;
+            j();
+            this.h = false;
           }
         }
       }
       else
       {
-        localObject = VoiceTextUtils.a(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a());
+        localObject = VoiceTextUtils.a(this.c.f());
         if (paramBoolean1)
         {
-          b(CommandUtils.a(AssistantUtils.a(2131720331)));
-          if (this.jdField_a_of_type_Boolean)
+          b(CommandUtils.a(AssistantUtils.a(2131917966)));
+          if (this.h)
           {
-            e();
-            this.jdField_a_of_type_Boolean = false;
+            j();
+            this.h = false;
           }
           if (localObject != null)
           {
             if (paramBoolean2) {
-              i = 1;
+              m = 1;
             }
-            ReportUtils.f(i);
+            ReportUtils.f(m);
           }
         }
         else
@@ -161,178 +146,33 @@ public class VoiceMainPresenter
           if (localObject != null)
           {
             if (paramBoolean2) {
-              i = 1;
+              m = 1;
             }
-            if (((FriendItemInfo)localObject).jdField_a_of_type_Float >= FriendSortHelper.a())
+            if (((FriendItemInfo)localObject).h >= FriendSortHelper.a())
             {
-              ReportUtils.b(i, FriendSortHelper.a());
+              ReportUtils.b(m, FriendSortHelper.a());
             }
             else
             {
-              c();
-              ReportUtils.a(i, FriendSortHelper.a());
+              f();
+              ReportUtils.a(m, FriendSortHelper.a());
             }
           }
           ThreadManager.getUIHandler().post(new VoiceMainPresenter.3(this));
-          this.jdField_a_of_type_Boolean = true;
+          this.h = true;
         }
       }
     }
-  }
-  
-  private boolean a(CommandInfo paramCommandInfo)
-  {
-    VoiceView localVoiceView = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    int j = 0;
-    boolean bool3 = false;
-    boolean bool2 = false;
-    boolean bool4 = false;
-    int i = 0;
-    boolean bool1 = bool4;
-    if (localVoiceView != null)
-    {
-      bool1 = bool4;
-      if (paramCommandInfo != null)
-      {
-        int k = localVoiceView.a();
-        if (k == 5)
-        {
-          if ((paramCommandInfo.jdField_a_of_type_Int == 9) || (paramCommandInfo.jdField_a_of_type_Int == 8) || (paramCommandInfo.jdField_a_of_type_Int == 11) || (paramCommandInfo.jdField_a_of_type_Int == 5) || (paramCommandInfo.jdField_a_of_type_Int == 6)) {
-            i = 1;
-          }
-          return i ^ 0x1;
-        }
-        if (k == 11)
-        {
-          if ((paramCommandInfo.jdField_a_of_type_Int != 8) && (paramCommandInfo.jdField_a_of_type_Int != 9) && (paramCommandInfo.jdField_a_of_type_Int != 5) && (paramCommandInfo.jdField_a_of_type_Int != 11))
-          {
-            i = j;
-            if (paramCommandInfo.jdField_a_of_type_Int != 6) {}
-          }
-          else
-          {
-            i = 1;
-          }
-          return i ^ 0x1;
-        }
-        if (b())
-        {
-          bool1 = bool3;
-          if (paramCommandInfo.jdField_a_of_type_Int != 5) {
-            bool1 = true;
-          }
-          return bool1;
-        }
-        if (VoiceTextUtils.a(paramCommandInfo.jdField_a_of_type_JavaLangString)) {
-          return false;
-        }
-        if (VoiceTextUtils.a(a()))
-        {
-          bool1 = bool4;
-          if (paramCommandInfo.jdField_a_of_type_Int == 5) {
-            return true;
-          }
-        }
-        else
-        {
-          if (c())
-          {
-            bool1 = bool2;
-            if (paramCommandInfo.jdField_a_of_type_Int != 5)
-            {
-              bool1 = bool2;
-              if (paramCommandInfo.jdField_a_of_type_Int != 10)
-              {
-                bool1 = bool2;
-                if (paramCommandInfo.jdField_a_of_type_Int != 0)
-                {
-                  bool1 = bool2;
-                  if (paramCommandInfo.jdField_a_of_type_Int != 1)
-                  {
-                    bool1 = bool2;
-                    if (paramCommandInfo.jdField_a_of_type_Int != 13) {
-                      bool1 = true;
-                    }
-                  }
-                }
-              }
-            }
-            return bool1;
-          }
-          bool1 = bool4;
-          if (!TextUtils.isEmpty(paramCommandInfo.jdField_a_of_type_JavaLangString))
-          {
-            bool1 = bool4;
-            if (paramCommandInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
-            {
-              if ((!TextUtils.isEmpty(this.c)) && ((this.c.equals(this.jdField_a_of_type_JavaLangString)) || (this.c.equals(a(this.b))))) {
-                return true;
-              }
-              if (k != 6)
-              {
-                bool1 = bool4;
-                if (k != 4) {}
-              }
-              else
-              {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private boolean b()
-  {
-    VoiceView localVoiceView = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    if ((localVoiceView != null) && (localVoiceView.a() != null)) {
-      return VoiceTextUtils.c(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a().jdField_a_of_type_JavaLangString);
-    }
-    return false;
   }
   
   private void c(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      CommandInfo localCommandInfo = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a();
-      if ((localCommandInfo != null) && (localCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo != null) && (localCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo.jdField_a_of_type_Int == 115) && (localCommandInfo.jdField_a_of_type_JavaUtilList != null) && (localCommandInfo.jdField_a_of_type_JavaUtilList.size() > 0) && (localCommandInfo.jdField_a_of_type_JavaUtilList.get(0) != null) && (VoiceTextUtils.a(paramString, ((FriendItemInfo)localCommandInfo.jdField_a_of_type_JavaUtilList.get(0)).b))) {
-        this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.onStartRecord();
+      CommandInfo localCommandInfo = this.c.f();
+      if ((localCommandInfo != null) && (localCommandInfo.f != null) && (localCommandInfo.f.a == 115) && (localCommandInfo.d != null) && (localCommandInfo.d.size() > 0) && (localCommandInfo.d.get(0) != null) && (VoiceTextUtils.a(paramString, ((FriendItemInfo)localCommandInfo.d.get(0)).b))) {
+        this.a.onStartRecord();
       }
-    }
-  }
-  
-  private boolean c()
-  {
-    VoiceView localVoiceView = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (localVoiceView != null)
-    {
-      bool1 = bool2;
-      if (localVoiceView.a() != null)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a().jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a().jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo.jdField_a_of_type_Int == 115) {
-            bool1 = true;
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private void d()
-  {
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
-    if (localIVoiceAssistantCore != null) {
-      localIVoiceAssistantCore.setPlayEventListener(this);
     }
   }
   
@@ -345,34 +185,97 @@ public class VoiceMainPresenter
       }
       return;
     }
-    CommandInfo localCommandInfo = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a();
-    localCommandInfo.jdField_a_of_type_JavaLangString = paramString;
-    a(localCommandInfo, VoiceDataUtils.a(localCommandInfo.jdField_a_of_type_JavaLangString, localCommandInfo.jdField_a_of_type_JavaUtilList));
-    paramString = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    CommandInfo localCommandInfo = this.c.f();
+    localCommandInfo.b = paramString;
+    a(localCommandInfo, VoiceDataUtils.a(localCommandInfo.b, localCommandInfo.d));
+    paramString = this.a;
     if (paramString != null) {
-      paramString.play(localCommandInfo.jdField_a_of_type_JavaLangString);
+      paramString.play(localCommandInfo.b);
     }
   }
   
-  private boolean d()
+  private String e(String paramString)
   {
-    Object localObject = AssistantUtils.a();
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramString);
+    localStringBuffer.append(",");
+    int m = 0;
+    while (m < VoiceDataUtils.a.length)
+    {
+      localStringBuffer.append(AssistantUtils.a(VoiceDataUtils.a[m]));
+      localStringBuffer.append(",");
+      m += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  private void g()
+  {
+    IVoiceAssistantCore localIVoiceAssistantCore = this.a;
+    if (localIVoiceAssistantCore != null) {
+      localIVoiceAssistantCore.setPlayEventListener(this);
+    }
+  }
+  
+  private boolean h()
+  {
+    VoiceView localVoiceView = this.c;
+    if ((localVoiceView != null) && (localVoiceView.f() != null)) {
+      return VoiceTextUtils.c(this.c.f().b);
+    }
+    return false;
+  }
+  
+  private boolean i()
+  {
+    VoiceView localVoiceView = this.c;
     boolean bool2 = false;
-    if ((localObject != null) && (AssistantUtils.a().isBackgroundPause))
+    boolean bool1 = bool2;
+    if (localVoiceView != null)
+    {
+      bool1 = bool2;
+      if (localVoiceView.f() != null)
+      {
+        bool1 = bool2;
+        if (this.c.f().f != null)
+        {
+          bool1 = bool2;
+          if (this.c.f().f.a == 115) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private void j()
+  {
+    ClearSessionServlet localClearSessionServlet = this.f;
+    if (localClearSessionServlet != null) {
+      localClearSessionServlet.a();
+    }
+  }
+  
+  private boolean k()
+  {
+    Object localObject = AssistantUtils.c();
+    boolean bool2 = false;
+    if ((localObject != null) && (AssistantUtils.c().isBackgroundPause))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceMainPresenter", 2, "isNeedFilterBackCommand isBackgroundStop");
       }
       return false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    localObject = this.a;
     boolean bool1 = bool2;
     if (localObject != null)
     {
       bool1 = bool2;
       if ((((IVoiceAssistantCore)localObject).getActivity() instanceof QBaseActivity))
       {
-        localObject = ((QBaseActivity)this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.getActivity()).getSupportFragmentManager();
+        localObject = ((QBaseActivity)this.a.getActivity()).getSupportFragmentManager();
         bool1 = bool2;
         if (localObject != null)
         {
@@ -391,92 +294,171 @@ public class VoiceMainPresenter
     return bool1;
   }
   
-  private void e()
+  private boolean q(CommandInfo paramCommandInfo)
   {
-    ClearSessionServlet localClearSessionServlet = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreClearSessionServlet;
-    if (localClearSessionServlet != null) {
-      localClearSessionServlet.a();
+    VoiceView localVoiceView = this.c;
+    int n = 0;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    boolean bool4 = false;
+    int m = 0;
+    boolean bool1 = bool4;
+    if (localVoiceView != null)
+    {
+      bool1 = bool4;
+      if (paramCommandInfo != null)
+      {
+        int i1 = localVoiceView.e();
+        if (i1 == 5)
+        {
+          if ((paramCommandInfo.a == 9) || (paramCommandInfo.a == 8) || (paramCommandInfo.a == 11) || (paramCommandInfo.a == 5) || (paramCommandInfo.a == 6)) {
+            m = 1;
+          }
+          return m ^ 0x1;
+        }
+        if (i1 == 11)
+        {
+          if ((paramCommandInfo.a != 8) && (paramCommandInfo.a != 9) && (paramCommandInfo.a != 5) && (paramCommandInfo.a != 11))
+          {
+            m = n;
+            if (paramCommandInfo.a != 6) {}
+          }
+          else
+          {
+            m = 1;
+          }
+          return m ^ 0x1;
+        }
+        if (h())
+        {
+          bool1 = bool3;
+          if (paramCommandInfo.a != 5) {
+            bool1 = true;
+          }
+          return bool1;
+        }
+        if (VoiceTextUtils.a(paramCommandInfo.b)) {
+          return false;
+        }
+        if (VoiceTextUtils.a(d()))
+        {
+          bool1 = bool4;
+          if (paramCommandInfo.a == 5) {
+            return true;
+          }
+        }
+        else
+        {
+          if (i())
+          {
+            bool1 = bool2;
+            if (paramCommandInfo.a != 5)
+            {
+              bool1 = bool2;
+              if (paramCommandInfo.a != 10)
+              {
+                bool1 = bool2;
+                if (paramCommandInfo.a != 0)
+                {
+                  bool1 = bool2;
+                  if (paramCommandInfo.a != 1)
+                  {
+                    bool1 = bool2;
+                    if (paramCommandInfo.a != 13) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+            return bool1;
+          }
+          bool1 = bool4;
+          if (!TextUtils.isEmpty(paramCommandInfo.b))
+          {
+            bool1 = bool4;
+            if (paramCommandInfo.b.equals(this.d))
+            {
+              if ((!TextUtils.isEmpty(this.j)) && ((this.j.equals(this.d)) || (this.j.equals(e(this.e))))) {
+                return true;
+              }
+              if (i1 != 6)
+              {
+                bool1 = bool4;
+                if (i1 != 4) {}
+              }
+              else
+              {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
     }
-  }
-  
-  public View a()
-  {
-    VoiceView localVoiceView = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    if (localVoiceView != null) {
-      return localVoiceView.a();
-    }
-    return null;
-  }
-  
-  public List<VoiceItemInfo> a()
-  {
-    VoiceView localVoiceView = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    if (localVoiceView != null) {
-      return localVoiceView.a();
-    }
-    return null;
+    return bool1;
   }
   
   public void a()
   {
-    a(CommandUtils.a(this.b, true), VoiceDataUtils.b(this.b));
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    a(CommandUtils.a(this.e, true), VoiceDataUtils.b(this.e));
+    IVoiceAssistantCore localIVoiceAssistantCore = this.a;
     if (localIVoiceAssistantCore != null) {
-      localIVoiceAssistantCore.play(a(this.b));
+      localIVoiceAssistantCore.play(e(this.e));
     }
     ReportUtils.c();
   }
   
   public void a(int paramInt)
   {
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    IVoiceAssistantCore localIVoiceAssistantCore = this.a;
     if (localIVoiceAssistantCore != null)
     {
       if (paramInt == 11)
       {
         localIVoiceAssistantCore.cancelSendVoice();
-        b(CommandUtils.a(AssistantUtils.a(2131720328)));
+        b(CommandUtils.a(AssistantUtils.a(2131917963)));
         ReportUtils.a(1);
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.h)
       {
-        e();
-        this.jdField_a_of_type_Boolean = false;
+        j();
+        this.h = false;
       }
     }
   }
   
   public void a(CommandInfo paramCommandInfo)
   {
-    IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+    IVoiceAssistantCore localIVoiceAssistantCore = this.a;
     if ((localIVoiceAssistantCore != null) && (paramCommandInfo != null))
     {
       AssistantUtils.a(localIVoiceAssistantCore.getActivity(), paramCommandInfo);
-      if (paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo != null)
+      if (paramCommandInfo.f != null)
       {
-        if (paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.quiteVoicePanel(false, false);
+        if (paramCommandInfo.f.e) {
+          this.a.quiteVoicePanel(false, false);
         }
-        if (paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo.jdField_a_of_type_Int == 115)
+        if (paramCommandInfo.f.a == 115)
         {
-          if (paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo.b)
+          if (paramCommandInfo.f.f)
           {
-            e(CommandUtils.a(paramCommandInfo.jdField_a_of_type_JavaLangString, paramCommandInfo));
+            e(CommandUtils.a(paramCommandInfo.b, paramCommandInfo));
           }
           else
           {
-            paramCommandInfo.jdField_a_of_type_Int = 2;
+            paramCommandInfo.a = 2;
             b(paramCommandInfo);
           }
         }
         else
         {
-          paramCommandInfo.jdField_a_of_type_Int = 2;
-          a(paramCommandInfo, VoiceDataUtils.c(paramCommandInfo.jdField_a_of_type_JavaLangString));
+          paramCommandInfo.a = 2;
+          a(paramCommandInfo, VoiceDataUtils.c(paramCommandInfo.b));
         }
       }
-      this.jdField_a_of_type_Boolean = false;
-      ReportUtils.a(paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo);
+      this.h = false;
+      ReportUtils.a(paramCommandInfo.f);
     }
   }
   
@@ -484,7 +466,7 @@ public class VoiceMainPresenter
   {
     if (paramFriendItemInfo != null)
     {
-      a(CommandUtils.a(paramFriendItemInfo, paramFriendItemInfo.jdField_a_of_type_Boolean, false));
+      a(CommandUtils.a(paramFriendItemInfo, paramFriendItemInfo.d, false));
       ReportUtils.c(1);
     }
   }
@@ -493,9 +475,9 @@ public class VoiceMainPresenter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mCurrentSpeech = ");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.j);
     QLog.d("VoiceMainPresenter", 2, localStringBuilder.toString());
-    this.c = paramString;
+    this.j = paramString;
   }
   
   public void a(boolean paramBoolean)
@@ -503,154 +485,172 @@ public class VoiceMainPresenter
     a(paramBoolean, false);
   }
   
-  public boolean a()
+  public View b()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    VoiceView localVoiceView = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
+    VoiceView localVoiceView = this.c;
     if (localVoiceView != null) {
-      localVoiceView.b();
+      return localVoiceView.c();
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      e();
-      this.jdField_a_of_type_Boolean = false;
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.c = "";
+    return null;
   }
   
   public void b(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 2) && (!TextUtils.isEmpty(paramCommandInfo.jdField_a_of_type_JavaLangString)))
+    if ((paramCommandInfo != null) && (paramCommandInfo.a == 2) && (!TextUtils.isEmpty(paramCommandInfo.b)))
     {
-      a(paramCommandInfo, VoiceDataUtils.c(paramCommandInfo.jdField_a_of_type_JavaLangString));
-      IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+      a(paramCommandInfo, VoiceDataUtils.c(paramCommandInfo.b));
+      IVoiceAssistantCore localIVoiceAssistantCore = this.a;
       if (localIVoiceAssistantCore != null) {
-        localIVoiceAssistantCore.play(paramCommandInfo.jdField_a_of_type_JavaLangString);
+        localIVoiceAssistantCore.play(paramCommandInfo.b);
       }
-      if (VoiceTextUtils.f(paramCommandInfo.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_Boolean = true;
+      if (VoiceTextUtils.f(paramCommandInfo.b)) {
+        this.h = true;
       }
     }
   }
   
   public void b(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.c)) && (paramString.equals(this.c))) {
-      this.c = "";
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.j)) && (paramString.equals(this.j))) {
+      this.j = "";
     }
     ThreadManager.getUIHandler().post(new VoiceMainPresenter.1(this, paramString));
   }
   
-  public void c()
-  {
-    ThreadManager.getSubThreadHandler().post(new VoiceMainPresenter.2(this));
-  }
-  
   public void c(CommandInfo paramCommandInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore != null)
+    if (this.a != null)
     {
-      paramCommandInfo = AssistantUtils.a(2131720327);
-      this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.executeCommand(new CommandInfo(2, paramCommandInfo));
-      this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.play(paramCommandInfo);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Int = 0;
+      paramCommandInfo = AssistantUtils.a(2131917962);
+      this.a.executeCommand(new CommandInfo(2, paramCommandInfo));
+      this.a.play(paramCommandInfo);
+      this.h = false;
+      this.i = 0;
       ReportUtils.d(3);
     }
   }
   
+  public boolean c()
+  {
+    return this.h;
+  }
+  
+  public List<VoiceItemInfo> d()
+  {
+    VoiceView localVoiceView = this.c;
+    if (localVoiceView != null) {
+      return localVoiceView.d();
+    }
+    return null;
+  }
+  
   public void d(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 3) && (!TextUtils.isEmpty(paramCommandInfo.jdField_a_of_type_JavaLangString)))
+    if ((paramCommandInfo != null) && (paramCommandInfo.a == 3) && (!TextUtils.isEmpty(paramCommandInfo.b)))
     {
-      if ((VoiceTextUtils.d(paramCommandInfo.jdField_a_of_type_JavaLangString)) && (VoiceTextUtils.a(a())))
+      if ((VoiceTextUtils.d(paramCommandInfo.b)) && (VoiceTextUtils.a(d())))
       {
-        p(CommandUtils.a(AssistantUtils.a(2131720322)));
+        p(CommandUtils.a(AssistantUtils.a(2131917957)));
         return;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-      if ((localObject != null) && (((VoiceView)localObject).a() == 7))
+      Object localObject = this.c;
+      if ((localObject != null) && (((VoiceView)localObject).e() == 7))
       {
-        d(AssistantUtils.a(2131720326));
+        d(AssistantUtils.a(2131917961));
         return;
       }
-      String str = paramCommandInfo.jdField_a_of_type_JavaLangString;
-      if (VoiceTextUtils.e(paramCommandInfo.jdField_a_of_type_JavaLangString))
+      String str = paramCommandInfo.b;
+      if (VoiceTextUtils.e(paramCommandInfo.b))
       {
-        localObject = VoiceDataUtils.a(paramCommandInfo.jdField_a_of_type_JavaLangString);
+        localObject = VoiceDataUtils.a(paramCommandInfo.b);
       }
       else if (ViewCommandModelCheck.a())
       {
-        str = AssistantUtils.a(2131720338);
+        str = AssistantUtils.a(2131917973);
         localObject = VoiceDataUtils.b(str);
-        paramCommandInfo.jdField_a_of_type_JavaLangString = str;
-        str = a(str);
-        ViewCommandModelCheck.a();
+        paramCommandInfo.b = str;
+        str = e(str);
+        ViewCommandModelCheck.b();
       }
       else
       {
-        localObject = VoiceDataUtils.a(paramCommandInfo.jdField_a_of_type_JavaLangString);
+        localObject = VoiceDataUtils.a(paramCommandInfo.b);
       }
       a(paramCommandInfo, (List)localObject);
-      if ((this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore != null) && (paramCommandInfo.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.play(str);
+      if ((this.a != null) && (paramCommandInfo.c)) {
+        this.a.play(str);
       }
     }
+  }
+  
+  public void e()
+  {
+    VoiceView localVoiceView = this.c;
+    if (localVoiceView != null) {
+      localVoiceView.b();
+    }
+    if (this.h)
+    {
+      j();
+      this.h = false;
+    }
+    this.i = 0;
+    this.j = "";
   }
   
   public void e(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 4) && (!TextUtils.isEmpty(paramCommandInfo.jdField_a_of_type_JavaLangString)))
+    if ((paramCommandInfo != null) && (paramCommandInfo.a == 4) && (!TextUtils.isEmpty(paramCommandInfo.b)))
     {
-      a(paramCommandInfo, VoiceDataUtils.d(paramCommandInfo.jdField_a_of_type_JavaLangString));
-      IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+      a(paramCommandInfo, VoiceDataUtils.d(paramCommandInfo.b));
+      IVoiceAssistantCore localIVoiceAssistantCore = this.a;
       if (localIVoiceAssistantCore != null) {
-        localIVoiceAssistantCore.play(paramCommandInfo.jdField_a_of_type_JavaLangString);
+        localIVoiceAssistantCore.play(paramCommandInfo.b);
       }
     }
   }
   
+  public void f()
+  {
+    ThreadManager.getSubThreadHandler().post(new VoiceMainPresenter.2(this));
+  }
+  
   public void f(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataRecordInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 5)) {
-      a(paramCommandInfo, VoiceDataUtils.a(paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataRecordInfo.jdField_a_of_type_JavaLangString, paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataRecordInfo.b));
+    if ((paramCommandInfo != null) && (paramCommandInfo.e != null) && (paramCommandInfo.a == 5)) {
+      a(paramCommandInfo, VoiceDataUtils.a(paramCommandInfo.e.a, paramCommandInfo.e.b));
     }
   }
   
   public void g(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataRecordInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 11)) {
-      a(paramCommandInfo, VoiceDataUtils.a(paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataRecordInfo.jdField_a_of_type_JavaLangString, paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataRecordInfo.b, paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataRecordInfo.c));
+    if ((paramCommandInfo != null) && (paramCommandInfo.e != null) && (paramCommandInfo.a == 11)) {
+      a(paramCommandInfo, VoiceDataUtils.a(paramCommandInfo.e.a, paramCommandInfo.e.b, paramCommandInfo.e.c));
     }
   }
   
   public void h(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 6))
+    if ((paramCommandInfo != null) && (paramCommandInfo.a == 6))
     {
-      a(paramCommandInfo, VoiceDataUtils.d(paramCommandInfo.jdField_a_of_type_JavaLangString));
-      IVoiceAssistantCore localIVoiceAssistantCore = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+      a(paramCommandInfo, VoiceDataUtils.d(paramCommandInfo.b));
+      IVoiceAssistantCore localIVoiceAssistantCore = this.a;
       if (localIVoiceAssistantCore != null) {
-        localIVoiceAssistantCore.play(paramCommandInfo.jdField_a_of_type_JavaLangString);
+        localIVoiceAssistantCore.play(paramCommandInfo.b);
       }
     }
   }
   
   public void i(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (!TextUtils.isEmpty(paramCommandInfo.jdField_a_of_type_JavaLangString)) && (paramCommandInfo.jdField_a_of_type_Int == 7) && (paramCommandInfo.jdField_a_of_type_JavaUtilList != null) && (!paramCommandInfo.jdField_a_of_type_JavaUtilList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore != null)) {
-      if (paramCommandInfo.jdField_a_of_type_JavaUtilList.size() == 1)
+    if ((paramCommandInfo != null) && (!TextUtils.isEmpty(paramCommandInfo.b)) && (paramCommandInfo.a == 7) && (paramCommandInfo.d != null) && (!paramCommandInfo.d.isEmpty()) && (this.a != null)) {
+      if (paramCommandInfo.d.size() == 1)
       {
-        paramCommandInfo = (FriendItemInfo)paramCommandInfo.jdField_a_of_type_JavaUtilList.get(0);
-        a(CommandUtils.a(paramCommandInfo, true, paramCommandInfo.jdField_a_of_type_Boolean ^ true));
-        if (!paramCommandInfo.jdField_a_of_type_Boolean)
+        paramCommandInfo = (FriendItemInfo)paramCommandInfo.d.get(0);
+        a(CommandUtils.a(paramCommandInfo, true, paramCommandInfo.d ^ true));
+        if (!paramCommandInfo.d)
         {
-          if (paramCommandInfo.jdField_a_of_type_Float < FriendSortHelper.a())
+          if (paramCommandInfo.h < FriendSortHelper.a())
           {
             ReportUtils.e();
             return;
@@ -660,50 +660,50 @@ public class VoiceMainPresenter
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqQassistantCoreFriendSortHelper == null) {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantCoreFriendSortHelper = new FriendSortHelper();
+        if (this.g == null) {
+          this.g = new FriendSortHelper();
         }
-        List localList = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreFriendSortHelper.a(paramCommandInfo.jdField_a_of_type_JavaUtilList);
+        List localList = this.g.a(paramCommandInfo.d);
         if ((localList != null) && (localList.size() > 0))
         {
-          paramCommandInfo.jdField_a_of_type_JavaUtilList = localList;
-          a(paramCommandInfo, VoiceDataUtils.a(paramCommandInfo.jdField_a_of_type_JavaLangString, localList));
-          this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore.play(paramCommandInfo.jdField_a_of_type_JavaLangString);
+          paramCommandInfo.d = localList;
+          a(paramCommandInfo, VoiceDataUtils.a(paramCommandInfo.b, localList));
+          this.a.play(paramCommandInfo.b);
           ReportUtils.a();
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.h = true;
       }
     }
   }
   
   public void j(CommandInfo paramCommandInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    if ((localObject != null) && ((((VoiceView)localObject).a() == 5) || (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a() == 11)))
+    Object localObject = this.c;
+    if ((localObject != null) && ((((VoiceView)localObject).e() == 5) || (this.c.e() == 11)))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+      localObject = this.a;
       if (localObject != null) {
         ((IVoiceAssistantCore)localObject).cancelSendVoice();
       }
       if (paramCommandInfo != null) {
-        b(CommandUtils.a(paramCommandInfo.jdField_a_of_type_JavaLangString));
+        b(CommandUtils.a(paramCommandInfo.b));
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
       ReportUtils.a(2);
     }
   }
   
   public void k(CommandInfo paramCommandInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    if ((localObject != null) && ((((VoiceView)localObject).a() == 5) || (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a() == 11)))
+    Object localObject = this.c;
+    if ((localObject != null) && ((((VoiceView)localObject).e() == 5) || (this.c.e() == 11)))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore;
+      localObject = this.a;
       if (localObject != null)
       {
-        ((IVoiceAssistantCore)localObject).onConfirmSend(paramCommandInfo.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo);
+        ((IVoiceAssistantCore)localObject).onConfirmSend(paramCommandInfo.i);
         h(CommandUtils.b());
-        this.jdField_a_of_type_Boolean = false;
+        this.h = false;
         ReportUtils.b(2);
       }
     }
@@ -711,25 +711,25 @@ public class VoiceMainPresenter
   
   public void l(CommandInfo paramCommandInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQassistantApiIVoiceAssistantCore != null) && (paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 10)) {
-      a(paramCommandInfo.b, true);
+    if ((this.a != null) && (paramCommandInfo != null) && (paramCommandInfo.a == 10)) {
+      a(paramCommandInfo.g, true);
     }
   }
   
   public void m(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 12))
+    if ((paramCommandInfo != null) && (paramCommandInfo.a == 12))
     {
-      VoiceView localVoiceView = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-      if ((localVoiceView != null) && (localVoiceView.a() == 7)) {
-        d(paramCommandInfo.jdField_a_of_type_JavaLangString);
+      VoiceView localVoiceView = this.c;
+      if ((localVoiceView != null) && (localVoiceView.e() == 7)) {
+        d(paramCommandInfo.b);
       }
     }
   }
   
   public void n(CommandInfo paramCommandInfo)
   {
-    if (d())
+    if (k())
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceMainPresenter", 2, "backCommand isNeedFilterBackCommand");
@@ -737,55 +737,55 @@ public class VoiceMainPresenter
     }
     else
     {
-      c();
-      b(CommandUtils.a(AssistantUtils.a(2131720307)));
+      f();
+      b(CommandUtils.a(AssistantUtils.a(2131917942)));
     }
   }
   
   public void o(CommandInfo paramCommandInfo)
   {
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 14) && (!TextUtils.isEmpty(paramCommandInfo.jdField_a_of_type_JavaLangString))) {
-      b(CommandUtils.a(paramCommandInfo.jdField_a_of_type_JavaLangString));
+    if ((paramCommandInfo != null) && (paramCommandInfo.a == 14) && (!TextUtils.isEmpty(paramCommandInfo.b))) {
+      b(CommandUtils.a(paramCommandInfo.b));
     }
   }
   
   public void p(CommandInfo paramCommandInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView;
-    if ((localObject != null) && (((VoiceView)localObject).a()))
+    Object localObject = this.c;
+    if ((localObject != null) && (((VoiceView)localObject).g()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceMainPresenter", 2, "panel is dragging, so return");
       }
       return;
     }
-    if (a(paramCommandInfo))
+    if (q(paramCommandInfo))
     {
-      if ((paramCommandInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView != null) && (QLog.isColorLevel()))
+      if ((paramCommandInfo != null) && (this.c != null) && (QLog.isColorLevel()))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("not need execute command, currentType = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoiceView.a());
+        ((StringBuilder)localObject).append(this.c.e());
         ((StringBuilder)localObject).append(", commandType = ");
-        ((StringBuilder)localObject).append(paramCommandInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramCommandInfo.a);
         QLog.d("VoiceMainPresenter", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    if ((paramCommandInfo != null) && (paramCommandInfo.jdField_a_of_type_Int == 3) && (!TextUtils.isEmpty(paramCommandInfo.jdField_a_of_type_JavaLangString)) && (paramCommandInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+    if ((paramCommandInfo != null) && (paramCommandInfo.a == 3) && (!TextUtils.isEmpty(paramCommandInfo.b)) && (paramCommandInfo.b.equals(this.d)))
     {
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Int > 3)
+      this.i += 1;
+      if (this.i > 3)
       {
-        this.jdField_a_of_type_Int = 0;
+        this.i = 0;
         a();
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = 0;
+      this.i = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantCoreVoiceModel;
+    localObject = this.b;
     if (localObject != null) {
       ((VoiceModel)localObject).a(paramCommandInfo);
     }
@@ -793,7 +793,7 @@ public class VoiceMainPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.VoiceMainPresenter
  * JD-Core Version:    0.7.0.1
  */

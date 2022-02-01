@@ -7,28 +7,28 @@ import androidx.annotation.Nullable;
 
 final class ShapeAppearancePathProvider$ShapeAppearancePathSpec
 {
-  public final float a;
-  @NonNull
-  public final Path a;
-  @NonNull
-  public final RectF a;
   @NonNull
   public final ShapeAppearanceModel a;
+  @NonNull
+  public final Path b;
+  @NonNull
+  public final RectF c;
   @Nullable
-  public final ShapeAppearancePathProvider.PathListener a;
+  public final ShapeAppearancePathProvider.PathListener d;
+  public final float e;
   
   ShapeAppearancePathProvider$ShapeAppearancePathSpec(@NonNull ShapeAppearanceModel paramShapeAppearanceModel, float paramFloat, RectF paramRectF, @Nullable ShapeAppearancePathProvider.PathListener paramPathListener, Path paramPath)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider$PathListener = paramPathListener;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = paramShapeAppearanceModel;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.d = paramPathListener;
+    this.a = paramShapeAppearanceModel;
+    this.e = paramFloat;
+    this.c = paramRectF;
+    this.b = paramPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.ShapeAppearancePathProvider.ShapeAppearancePathSpec
  * JD-Core Version:    0.7.0.1
  */

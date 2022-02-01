@@ -11,10 +11,10 @@ class CommentBottomBar$4
   
   public void onClick(View paramView)
   {
-    if (CommentBottomBar.a(this.a) != null)
+    if (CommentBottomBar.b(this.a) != null)
     {
-      CommentBottomBar.a(this.a).a(CommentBottomBar.a(this.a), CommentBottomBar.a(this.a));
-      CommentBottomBar.a(this.a);
+      CommentBottomBar.b(this.a).a(CommentBottomBar.c(this.a), CommentBottomBar.d(this.a));
+      CommentBottomBar.e(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

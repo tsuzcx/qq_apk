@@ -33,14 +33,14 @@ class TogetherWatchingDelegate$1
     localObject = this.a.a.getApplication();
     paramBundle = str1;
     if (TextUtils.isEmpty(str1)) {
-      paramBundle = ((Context)localObject).getString(2131693100);
+      paramBundle = ((Context)localObject).getString(2131890214);
     }
-    QQToast.a((Context)localObject, 1, paramBundle, 0).a();
+    QQToast.makeText((Context)localObject, 1, paramBundle, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherWatchingDelegate.1
  * JD-Core Version:    0.7.0.1
  */

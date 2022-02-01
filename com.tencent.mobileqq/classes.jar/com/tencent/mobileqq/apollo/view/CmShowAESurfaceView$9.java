@@ -10,16 +10,16 @@ class CmShowAESurfaceView$9
   
   public void run()
   {
-    if ((CmShowAESurfaceView.a(this.this$0) != null) && (CmShowAESurfaceView.a(this.this$0).getLightNode() != null) && (CmShowAESurfaceView.a(this.this$0).getLightNode().getAsset() != null))
+    if ((CmShowAESurfaceView.d(this.this$0) != null) && (CmShowAESurfaceView.d(this.this$0).getLightNode() != null) && (CmShowAESurfaceView.d(this.this$0).getLightNode().getAsset() != null))
     {
-      CmShowAESurfaceView.a(this.this$0).cmShowUpdateTouchRotate(this.a);
+      CmShowAESurfaceView.d(this.this$0).cmShowUpdateTouchRotate(this.a);
       CmShowAESurfaceView.a(this.this$0, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView.9
  * JD-Core Version:    0.7.0.1
  */

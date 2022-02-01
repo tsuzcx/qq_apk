@@ -10,19 +10,19 @@ class MsgBackupBaseFragment$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b == 2)
+    if (this.a.K == 2)
     {
-      MsgBackupCompleteFragment.d(this.a.getActivity(), this.a.c, this.a.d);
+      MsgBackupCompleteFragment.d(this.a.getActivity(), this.a.R, this.a.S);
       return;
     }
-    if (this.a.b == 3) {
-      MsgBackupCompleteFragment.j(this.a.getActivity(), this.a.c, this.a.d);
+    if (this.a.K == 3) {
+      MsgBackupCompleteFragment.j(this.a.getActivity(), this.a.R, this.a.S);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment.4
  * JD-Core Version:    0.7.0.1
  */

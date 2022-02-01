@@ -37,13 +37,13 @@ import tencent.im.oidb.cmd0x977.oidb_cmd0x977.RspFollowData;
 public class FollowListInfoModule
   extends ReadInJoyEngineModule
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<FollowingMember> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<Long, FollowingMember> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private final CopyOnWriteArrayList<IFollowStatusObserver> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = false;
+  private String a = "";
+  private boolean b = true;
+  private List<FollowingMember> c = new ArrayList();
+  private String d = "";
+  private boolean e = false;
+  private Map<Long, FollowingMember> f = new HashMap();
+  private final CopyOnWriteArrayList<IFollowStatusObserver> g = new CopyOnWriteArrayList();
   
   public FollowListInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
@@ -57,7 +57,7 @@ public class FollowListInfoModule
   
   public static List<FollowingMember> a(List<Long> paramList, IFollowStatusObserver paramIFollowStatusObserver)
   {
-    FollowListInfoModule localFollowListInfoModule = ReadInJoyLogicEngine.a().a();
+    FollowListInfoModule localFollowListInfoModule = ReadInJoyLogicEngine.a().W();
     ArrayList localArrayList = new ArrayList();
     if (localFollowListInfoModule != null) {
       localArrayList.addAll(localFollowListInfoModule.b(paramList, paramIFollowStatusObserver));
@@ -88,7 +88,7 @@ public class FollowListInfoModule
     {
       FollowingMember localFollowingMember = (FollowingMember)paramList.next();
       if (localFollowingMember != null) {
-        this.jdField_a_of_type_JavaUtilMap.put(localFollowingMember.a(), localFollowingMember);
+        this.f.put(localFollowingMember.a(), localFollowingMember);
       }
     }
     this.mMainThreadHandler.post(new FollowListInfoModule.3(this, paramInt));
@@ -96,9 +96,9 @@ public class FollowListInfoModule
   
   private void a(int paramInt, Map<Long, FollowingMember> paramMap)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.g)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.g.iterator();
       while (localIterator.hasNext()) {
         ((IFollowStatusObserver)localIterator.next()).a(paramInt, paramMap);
       }
@@ -156,9 +156,9 @@ public class FollowListInfoModule
   private void a(List<oidb_cmd0x977.FollowStatusInfo> paramList, String paramString, long paramLong, boolean paramBoolean)
   {
     paramList = a(paramList);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a(this.jdField_a_of_type_JavaUtilList, paramList);
+    this.a = paramString;
+    this.b = paramBoolean;
+    a(this.c, paramList);
     this.mMainThreadHandler.post(new FollowListInfoModule.4(this, paramList, paramLong, paramBoolean));
   }
   
@@ -218,9 +218,9 @@ public class FollowListInfoModule
   {
     PBBytesField localPBBytesField = paramReqFollowPara.bytes_cookie;
     if (paramInt == 2) {
-      paramReqFollowPara = this.jdField_a_of_type_JavaLangString;
+      paramReqFollowPara = this.a;
     } else {
-      paramReqFollowPara = this.jdField_b_of_type_JavaLangString;
+      paramReqFollowPara = this.d;
     }
     localPBBytesField.set(ByteStringMicro.copyFromUtf8(paramReqFollowPara));
   }
@@ -228,11 +228,6 @@ public class FollowListInfoModule
   private void a(oidb_cmd0x977.ReqFollowPara paramReqFollowPara, int paramInt1, List<Long> paramList, int paramInt2)
   {
     b(paramReqFollowPara, paramInt2, paramList, paramInt1);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   private boolean a(int paramInt)
@@ -247,13 +242,13 @@ public class FollowListInfoModule
   private boolean a(long paramLong)
   {
     new ArrayList().add(Long.valueOf(paramLong));
-    FollowingMember localFollowingMember = (FollowingMember)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-    return (localFollowingMember != null) && (localFollowingMember.a());
+    FollowingMember localFollowingMember = (FollowingMember)this.f.get(Long.valueOf(paramLong));
+    return (localFollowingMember != null) && (localFollowingMember.d());
   }
   
   public static boolean a(long paramLong, IFollowStatusObserver paramIFollowStatusObserver)
   {
-    FollowListInfoModule localFollowListInfoModule = ReadInJoyLogicEngine.a().a();
+    FollowListInfoModule localFollowListInfoModule = ReadInJoyLogicEngine.a().W();
     if (localFollowListInfoModule != null) {
       return localFollowListInfoModule.b(paramLong, paramIFollowStatusObserver);
     }
@@ -262,7 +257,7 @@ public class FollowListInfoModule
   
   public static boolean a(String paramString)
   {
-    FollowListInfoModule localFollowListInfoModule = ReadInJoyLogicEngine.a().a();
+    FollowListInfoModule localFollowListInfoModule = ReadInJoyLogicEngine.a().W();
     if (localFollowListInfoModule != null)
     {
       long l1 = 0L;
@@ -313,7 +308,7 @@ public class FollowListInfoModule
       while (paramIFollowStatusObserver.hasNext())
       {
         Object localObject = (Long)paramIFollowStatusObserver.next();
-        localObject = (FollowingMember)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        localObject = (FollowingMember)this.f.get(localObject);
         if (localObject != null) {
           localArrayList.add(localObject);
         }
@@ -326,7 +321,7 @@ public class FollowListInfoModule
   private void b(List<oidb_cmd0x977.FollowStatusInfo> paramList, String paramString, long paramLong, boolean paramBoolean)
   {
     paramList = a(paramList);
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = paramString;
     this.mMainThreadHandler.post(new FollowListInfoModule.5(this, paramList, paramLong, paramBoolean));
   }
   
@@ -356,14 +351,19 @@ public class FollowListInfoModule
     }
   }
   
+  private boolean b()
+  {
+    return this.b;
+  }
+  
   private boolean b(long paramLong, IFollowStatusObserver paramIFollowStatusObserver)
   {
     a(paramIFollowStatusObserver);
     paramIFollowStatusObserver = new ArrayList();
     paramIFollowStatusObserver.add(Long.valueOf(paramLong));
     a(true, 1, 1, true, 1, paramIFollowStatusObserver);
-    paramIFollowStatusObserver = (FollowingMember)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-    return (paramIFollowStatusObserver != null) && (paramIFollowStatusObserver.a());
+    paramIFollowStatusObserver = (FollowingMember)this.f.get(Long.valueOf(paramLong));
+    return (paramIFollowStatusObserver != null) && (paramIFollowStatusObserver.d());
   }
   
   private void c(List<oidb_cmd0x977.FollowStatusInfo> paramList, String paramString, long paramLong, boolean paramBoolean)
@@ -374,15 +374,15 @@ public class FollowListInfoModule
   
   public List<FollowingMember> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.c;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((a()) || (!this.jdField_b_of_type_Boolean))
+    if ((b()) || (!this.e))
     {
       a(paramInt1, paramInt2, false);
-      this.jdField_b_of_type_Boolean = true;
+      this.e = true;
     }
   }
   
@@ -394,7 +394,7 @@ public class FollowListInfoModule
   
   public void a(long paramLong, int paramInt)
   {
-    FollowingMember localFollowingMember2 = (FollowingMember)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    FollowingMember localFollowingMember2 = (FollowingMember)this.f.get(Long.valueOf(paramLong));
     FollowingMember localFollowingMember1 = localFollowingMember2;
     if (localFollowingMember2 == null)
     {
@@ -402,7 +402,7 @@ public class FollowListInfoModule
       localFollowingMember1.a(Long.valueOf(paramLong));
     }
     localFollowingMember1.a(a(paramInt));
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localFollowingMember1);
+    this.f.put(Long.valueOf(paramLong), localFollowingMember1);
   }
   
   public void a(IFollowStatusObserver paramIFollowStatusObserver)
@@ -410,10 +410,10 @@ public class FollowListInfoModule
     if (paramIFollowStatusObserver == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.g)
     {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramIFollowStatusObserver)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramIFollowStatusObserver);
+      if (!this.g.contains(paramIFollowStatusObserver)) {
+        this.g.add(paramIFollowStatusObserver);
       }
       return;
     }
@@ -425,15 +425,15 @@ public class FollowListInfoModule
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[requestFollowersListFromServer] mFollowingList=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append(", mFollowingListCookie=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(", listType=");
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("FollowingInfoModule", 0, ((StringBuilder)localObject).toString());
     }
     Object localObject = new oidb_cmd0x977.ReqBody();
-    ((oidb_cmd0x977.ReqBody)localObject).uint64_uin.set(RIJQQAppInterfaceUtil.a());
+    ((oidb_cmd0x977.ReqBody)localObject).uint64_uin.set(RIJQQAppInterfaceUtil.c());
     oidb_cmd0x977.ReqFollowPara localReqFollowPara = new oidb_cmd0x977.ReqFollowPara();
     localReqFollowPara.op_type.set(paramInt3);
     localReqFollowPara.uint32_req_count.set(paramInt1);
@@ -452,9 +452,9 @@ public class FollowListInfoModule
     if (paramIFollowStatusObserver == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    synchronized (this.g)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramIFollowStatusObserver);
+      this.g.remove(paramIFollowStatusObserver);
       return;
     }
   }
@@ -470,7 +470,7 @@ public class FollowListInfoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.follow.FollowListInfoModule
  * JD-Core Version:    0.7.0.1
  */

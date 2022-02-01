@@ -10,29 +10,29 @@ import java.util.List;
 class HalfAlgorithm$TransPathJob
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<TransPathJobListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<PointSet> jdField_a_of_type_JavaUtilList;
+  private List<PointSet> a;
+  private WeakReference<TransPathJobListener> b;
+  private int c;
   
   public HalfAlgorithm$TransPathJob(int paramInt, List<PointSet> paramList, TransPathJobListener paramTransPathJobListener)
   {
-    this.jdField_a_of_type_Int = paramList;
-    this.jdField_a_of_type_JavaUtilList = paramTransPathJobListener;
+    this.c = paramList;
+    this.a = paramTransPathJobListener;
     Object localObject;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
+    this.b = new WeakReference(localObject);
   }
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (((List)localObject1).size() != 0))
     {
-      localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject1 = this.b;
       if ((localObject1 != null) && (((WeakReference)localObject1).get() != null))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("TransPathJob begin:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(this.c);
         ((StringBuilder)localObject1).append(" - ");
         ((StringBuilder)localObject1).append(System.currentTimeMillis());
         localObject1 = ((StringBuilder)localObject1).toString();
@@ -43,7 +43,7 @@ class HalfAlgorithm$TransPathJob
         ArrayList localArrayList1 = new ArrayList();
         Path localPath1 = new Path();
         ArrayList localArrayList2 = new ArrayList();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = this.a.iterator();
         localObject1 = null;
         while (localIterator.hasNext())
         {
@@ -53,7 +53,7 @@ class HalfAlgorithm$TransPathJob
             ((PointSet)localObject2).b((PointSet)localObject1);
             localObject1 = null;
           }
-          if (HalfAlgorithm.a(this.this$0, ((PointSet)localObject2).a.jdField_a_of_type_Float, ((PointSet)localObject2).a.b, ((PointSet)localObject2).a.c, ((PointSet)localObject2).a.jdField_a_of_type_Long, ((PointSet)localObject2).c.jdField_a_of_type_Float, ((PointSet)localObject2).c.b, ((PointSet)localObject2).b.jdField_a_of_type_Float, ((PointSet)localObject2).b.b, ((PointSet)localObject2).b.c, ((PointSet)localObject2).b.jdField_a_of_type_Long, localPath1, localArrayList2))
+          if (HalfAlgorithm.a(this.this$0, ((PointSet)localObject2).a.a, ((PointSet)localObject2).a.b, ((PointSet)localObject2).a.c, ((PointSet)localObject2).a.d, ((PointSet)localObject2).c.a, ((PointSet)localObject2).c.b, ((PointSet)localObject2).b.a, ((PointSet)localObject2).b.b, ((PointSet)localObject2).b.c, ((PointSet)localObject2).b.d, localPath1, localArrayList2))
           {
             if (localArrayList2.size() > 0)
             {
@@ -79,10 +79,10 @@ class HalfAlgorithm$TransPathJob
             localObject1 = localObject2;
           }
         }
-        localObject1 = (TransPathJobListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject1 = (TransPathJobListener)this.b.get();
         if (localObject1 != null)
         {
-          int i = this.jdField_a_of_type_Int;
+          int i = this.c;
           boolean bool;
           if (localArrayList1.size() > 0) {
             bool = true;
@@ -93,26 +93,26 @@ class HalfAlgorithm$TransPathJob
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("TransPathJob end:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(this.c);
         ((StringBuilder)localObject1).append("-");
         ((StringBuilder)localObject1).append(System.currentTimeMillis());
         QLog.d(str, 2, ((StringBuilder)localObject1).toString());
         return;
       }
     }
-    localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    localObject1 = this.b;
     if (localObject1 != null)
     {
       localObject1 = (TransPathJobListener)((WeakReference)localObject1).get();
       if (localObject1 != null) {
-        ((TransPathJobListener)localObject1).a(this.jdField_a_of_type_Int, false, null, null);
+        ((TransPathJobListener)localObject1).a(this.c, false, null, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.HalfAlgorithm.TransPathJob
  * JD-Core Version:    0.7.0.1
  */

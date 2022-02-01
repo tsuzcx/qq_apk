@@ -27,62 +27,14 @@ import java.util.Map;
 
 public class QAVHrMeeting
 {
-  public static int a(long paramLong)
-  {
-    return (int)(paramLong & 0x3);
-  }
-  
-  public static Bundle a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("uin");
-    paramQQAppInterface = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramBundle);
-    long l1 = 0L;
-    long l2;
-    int i;
-    if (paramQQAppInterface != null)
-    {
-      l1 = paramQQAppInterface.mOrigin;
-      l2 = paramQQAppInterface.mOriginExtra;
-      if (b(l1)) {
-        i = paramQQAppInterface.mSelfRight;
-      } else {
-        i = 0;
-      }
-    }
-    else
-    {
-      i = -1;
-      l2 = 0L;
-    }
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putLong("Origin", l1);
-    paramQQAppInterface.putLong("OriginExtra", l2);
-    paramQQAppInterface.putInt("SelfRight", i);
-    if (QQAudioHelper.c())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("GetDiscussOrigin, uin[");
-      localStringBuilder.append(paramBundle);
-      localStringBuilder.append("], Origin[");
-      localStringBuilder.append(l1);
-      localStringBuilder.append("], OriginExtra[");
-      localStringBuilder.append(l2);
-      localStringBuilder.append("], mSelfRight[");
-      localStringBuilder.append(i);
-      localStringBuilder.append("]");
-      QLog.w("QAVHrMeeting", 1, localStringBuilder.toString());
-    }
-    return paramQQAppInterface;
-  }
-  
   public static String a()
   {
-    return BaseApplicationImpl.getApplication().getResources().getString(2131693232);
+    return BaseApplicationImpl.getApplication().getResources().getString(2131890772);
   }
   
   public static String a(DiscussionManager paramDiscussionManager, String paramString1, String paramString2)
   {
-    paramDiscussionManager = paramDiscussionManager.a(paramString1);
+    paramDiscussionManager = paramDiscussionManager.b(paramString1);
     if (paramDiscussionManager != null)
     {
       paramDiscussionManager = (DiscussionMemberInfo)paramDiscussionManager.get(paramString2);
@@ -122,20 +74,20 @@ public class QAVHrMeeting
     localStringBuilder.append("]");
     QLog.d("QAVHrMeeting", 1, localStringBuilder.toString());
     ((DiscussionHandler)localObject2).c(paramLong);
-    ((DiscussionManager)localObject1).c(String.valueOf(paramLong));
-    localObject1 = paramQQAppInterface.getProxyManager().a();
-    localObject2 = ((RecentUserProxy)localObject1).b(String.valueOf(paramLong), 3000);
+    ((DiscussionManager)localObject1).g(String.valueOf(paramLong));
+    localObject1 = paramQQAppInterface.getProxyManager().g();
+    localObject2 = ((RecentUserProxy)localObject1).c(String.valueOf(paramLong), 3000);
     if (localObject2 != null) {
       ((RecentUserProxy)localObject1).a((RecentUser)localObject2);
     }
-    ((DiscussionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).a();
+    ((DiscussionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER)).b();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong, DiscussionInfo paramDiscussionInfo)
   {
     DiscussionInfo localDiscussionInfo = paramDiscussionInfo;
     if (paramDiscussionInfo == null) {
-      localDiscussionInfo = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(String.valueOf(paramLong));
+      localDiscussionInfo = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(String.valueOf(paramLong));
     }
     if (localDiscussionInfo == null) {
       return;
@@ -153,7 +105,7 @@ public class QAVHrMeeting
     if (paramInt != 2) {
       return;
     }
-    DiscussionInfo localDiscussionInfo = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(String.valueOf(paramLong));
+    DiscussionInfo localDiscussionInfo = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(String.valueOf(paramLong));
     if ((localDiscussionInfo != null) && (localDiscussionInfo.isDiscussHrMeeting()))
     {
       paramInt = paramIntent.getIntExtra("quitReson", -1);
@@ -225,7 +177,7 @@ public class QAVHrMeeting
         if (!paramMessageRecord.isSendFromLocal()) {
           return;
         }
-        localObject = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramMessageRecord.frienduin);
+        localObject = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(paramMessageRecord.frienduin);
         if ((localObject != null) && (((DiscussionInfo)localObject).isDiscussHrMeeting()))
         {
           if (a(((DiscussionInfo)localObject).mSelfRight)) {
@@ -243,7 +195,7 @@ public class QAVHrMeeting
         return;
       }
       Object localObject = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      paramMessageRecord = ((DiscussionManager)localObject).a(paramMessageRecord.frienduin);
+      paramMessageRecord = ((DiscussionManager)localObject).d(paramMessageRecord.frienduin);
       if ((paramMessageRecord != null) && (paramMessageRecord.isHidden()))
       {
         if (paramMessageRecord.getHrExtra() != 1) {
@@ -269,11 +221,8 @@ public class QAVHrMeeting
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, QAVHrMeeting.OnGetNickNameOfMaskDisc paramOnGetNickNameOfMaskDisc)
   {
+    QQAudioHelper.b("获取hr信息_delay_");
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("获取hr信息_delay_");
-    ((StringBuilder)localObject).append(paramString2);
-    QQAudioHelper.b(((StringBuilder)localObject).toString());
-    localObject = new StringBuilder();
     ((StringBuilder)localObject).append("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/get_nickname_video_meeting_for_hr?uin=");
     ((StringBuilder)localObject).append(paramString2);
     ((StringBuilder)localObject).append("&discid=");
@@ -281,8 +230,8 @@ public class QAVHrMeeting
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QAVHrMeeting_");
-    localStringBuilder.append(QQAudioHelper.b());
-    ThreadManager.post(new QAVHrMeeting.1(localStringBuilder.toString(), (String)localObject, paramString2, paramQQAppInterface, paramString1, paramOnGetNickNameOfMaskDisc), 5, null, false);
+    localStringBuilder.append(QQAudioHelper.d());
+    ThreadManager.post(new QAVHrMeeting.1(localStringBuilder.toString(), (String)localObject, paramQQAppInterface, paramString2, paramString1, paramOnGetNickNameOfMaskDisc), 5, null, false);
   }
   
   public static void a(String paramString, QQAppInterface paramQQAppInterface, DiscussionInfo paramDiscussionInfo)
@@ -298,12 +247,12 @@ public class QAVHrMeeting
       paramQQAppInterface = (DiscussionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
       if (paramDiscussionInfo.getHrExtra() == 1)
       {
-        localDiscussionManager.a(paramDiscussionInfo.uin);
+        localDiscussionManager.e(paramDiscussionInfo.uin);
         paramQQAppInterface.notifyUI(1004, true, paramDiscussionInfo.uin);
       }
       else
       {
-        localDiscussionManager.b(paramDiscussionInfo.uin);
+        localDiscussionManager.f(paramDiscussionInfo.uin);
         Long.parseLong(paramDiscussionInfo.uin);
         paramQQAppInterface = paramDiscussionInfo.discussionName;
       }
@@ -337,17 +286,70 @@ public class QAVHrMeeting
   
   public static boolean a(SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo.O == -1) {
-      if (paramSessionInfo.E == 2) {
-        paramSessionInfo.O = b(paramSessionInfo.f);
+    if (paramSessionInfo.bQ == -1) {
+      if (paramSessionInfo.aQ == 2) {
+        paramSessionInfo.bQ = d(paramSessionInfo.aN);
       } else {
-        paramSessionInfo.O = 0;
+        paramSessionInfo.bQ = 0;
       }
     }
-    return a(paramSessionInfo.O);
+    return a(paramSessionInfo.bQ);
   }
   
-  public static int b(long paramLong)
+  public static Bundle b(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("uin");
+    paramQQAppInterface = ((DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(paramBundle);
+    long l1 = 0L;
+    long l2;
+    int i;
+    if (paramQQAppInterface != null)
+    {
+      l1 = paramQQAppInterface.mOrigin;
+      l2 = paramQQAppInterface.mOriginExtra;
+      if (b(l1)) {
+        i = paramQQAppInterface.mSelfRight;
+      } else {
+        i = 0;
+      }
+    }
+    else
+    {
+      i = -1;
+      l2 = 0L;
+    }
+    paramQQAppInterface = new Bundle();
+    paramQQAppInterface.putLong("Origin", l1);
+    paramQQAppInterface.putLong("OriginExtra", l2);
+    paramQQAppInterface.putInt("SelfRight", i);
+    if (QQAudioHelper.f())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GetDiscussOrigin, uin[");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append("], Origin[");
+      localStringBuilder.append(l1);
+      localStringBuilder.append("], OriginExtra[");
+      localStringBuilder.append(l2);
+      localStringBuilder.append("], mSelfRight[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.w("QAVHrMeeting", 1, localStringBuilder.toString());
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    return (paramLong & 0x6) != 0L;
+  }
+  
+  public static int c(long paramLong)
+  {
+    return (int)(paramLong & 0x3);
+  }
+  
+  public static int d(long paramLong)
   {
     Object localObject1 = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Object localObject2 = new Bundle();
@@ -386,15 +388,10 @@ public class QAVHrMeeting
     QLog.w("QAVHrMeeting", 1, ((StringBuilder)localObject2).toString());
     return i;
   }
-  
-  public static boolean b(long paramLong)
-  {
-    return (paramLong & 0x6) != 0L;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QAVHrMeeting
  * JD-Core Version:    0.7.0.1
  */

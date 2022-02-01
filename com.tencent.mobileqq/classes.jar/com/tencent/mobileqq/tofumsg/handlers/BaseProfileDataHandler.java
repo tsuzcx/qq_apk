@@ -42,17 +42,17 @@ public class BaseProfileDataHandler
   extends TofuDataBaseHandler
   implements ConditionSearchManager.IConfigListener
 {
-  ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  WeakReference<BaseProfileDataHandler> jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
-  volatile boolean jdField_a_of_type_Boolean;
+  ConditionSearchManager b;
+  WeakReference<BaseProfileDataHandler> c = new WeakReference(this);
+  volatile boolean d;
+  final Object e = new Object();
   
   public BaseProfileDataHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager = ((ConditionSearchManager)paramQQAppInterface.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.jdField_a_of_type_MqqUtilWeakReference);
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c(this);
+    this.b = ((ConditionSearchManager)paramQQAppInterface.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER));
+    this.b.a(this.c);
+    this.b.c(this);
   }
   
   private String a(StringBuilder paramStringBuilder, List<beancurdcube_profile_common.BeancurdcubeProfileInfo> paramList)
@@ -265,29 +265,29 @@ public class BaseProfileDataHandler
     arrayOfString[1] = ConditionSearchManager.a(paramInt2);
     arrayOfString[2] = ConditionSearchManager.a(paramInt3);
     arrayOfString[3] = ConditionSearchManager.a(paramInt4);
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (!this.d) {
+      synchronized (this.e)
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
+        boolean bool = this.d;
         if (bool) {}
       }
     }
     try
     {
-      this.jdField_a_of_type_JavaLangObject.wait(1000L);
+      this.e.wait(1000L);
       label81:
       break label93;
       paramJSONObject = finally;
       throw paramJSONObject;
       label93:
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.d)
       {
         if (QLog.isColorLevel()) {
           QLog.i("Tofu_BaseProfileDataHandler", 2, "parseLocation location not ready return");
         }
         return false;
       }
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(arrayOfString);
+      String str = this.b.d(arrayOfString);
       ??? = str;
       if (str.equals("不限")) {
         ??? = "";
@@ -310,7 +310,37 @@ public class BaseProfileDataHandler
     return 9;
   }
   
-  public String a(TofuItem paramTofuItem)
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if ((paramInt == 2) && (paramBoolean)) {
+      synchronized (this.e)
+      {
+        this.d = true;
+        this.e.notifyAll();
+        if (QLog.isColorLevel())
+        {
+          QLog.i("Tofu_BaseProfileDataHandler", 2, "onGetConfig location parse ready");
+          return;
+        }
+      }
+    }
+  }
+  
+  public void b()
+  {
+    this.b.d(this);
+    this.b.b(this.c);
+  }
+  
+  public byte[] b(TofuItem paramTofuItem)
+  {
+    oidb_0xe6b.ReqBody localReqBody = new oidb_0xe6b.ReqBody();
+    localReqBody.uint64_frd_uin.set(paramTofuItem.frdUin);
+    localReqBody.uint32_last_query_time.set((int)paramTofuItem.lastPullTsSvr);
+    return localReqBody.toByteArray();
+  }
+  
+  public String c(TofuItem paramTofuItem)
   {
     StringBuilder localStringBuilder1 = new StringBuilder(1024);
     String str;
@@ -360,40 +390,10 @@ public class BaseProfileDataHandler
     }
     return str;
   }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.d(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(this.jdField_a_of_type_MqqUtilWeakReference);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if ((paramInt == 2) && (paramBoolean)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
-        if (QLog.isColorLevel())
-        {
-          QLog.i("Tofu_BaseProfileDataHandler", 2, "onGetConfig location parse ready");
-          return;
-        }
-      }
-    }
-  }
-  
-  public byte[] a(TofuItem paramTofuItem)
-  {
-    oidb_0xe6b.ReqBody localReqBody = new oidb_0xe6b.ReqBody();
-    localReqBody.uint64_frd_uin.set(paramTofuItem.frdUin);
-    localReqBody.uint32_last_query_time.set((int)paramTofuItem.lastPullTsSvr);
-    return localReqBody.toByteArray();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.handlers.BaseProfileDataHandler
  * JD-Core Version:    0.7.0.1
  */

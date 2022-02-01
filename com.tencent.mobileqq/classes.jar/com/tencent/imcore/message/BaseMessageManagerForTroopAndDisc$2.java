@@ -9,12 +9,12 @@ class BaseMessageManagerForTroopAndDisc$2
   
   public void run()
   {
-    BaseMessageManagerForTroopAndDisc.jdField_a_of_type_ComTencentImcoreMessageBaseMessageManagerForTroopAndDisc$Callback.a(this.this$0.jdField_a_of_type_MqqAppAppRuntime, this.a);
+    BaseMessageManagerForTroopAndDisc.g.a(this.this$0.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class AddFriendVerifyFragment$8
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.a.a.getWindowToken(), 2);
+    ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).hideSoftInputFromWindow(this.a.h.getWindowToken(), 2);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.8
  * JD-Core Version:    0.7.0.1
  */

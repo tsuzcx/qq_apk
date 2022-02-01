@@ -522,8 +522,8 @@ public class QZoneFeedActionJsPlugin
     //   943: aload_0
     //   944: getfield 214	cooperation/qzone/webviewplugin/QZoneFeedActionJsPlugin:parentPlugin	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
     //   947: getfield 220	com/tencent/mobileqq/webview/swift/WebViewPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   950: invokevirtual 232	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   953: invokestatic 238	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
+    //   950: invokevirtual 231	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
+    //   953: invokestatic 237	cooperation/qzone/QZoneHelper$UserInfo:getInstance	()Lcooperation/qzone/QZoneHelper$UserInfo;
     //   956: iload_2
     //   957: aload 18
     //   959: aload_1
@@ -543,7 +543,7 @@ public class QZoneFeedActionJsPlugin
     //   982: ldc 47
     //   984: iconst_0
     //   985: aload 19
-    //   987: invokestatic 244	cooperation/qzone/QZoneHelper:forwardToFeedActionPanel	(Landroid/app/Activity;Lcooperation/qzone/QZoneHelper$UserInfo;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZIIIIILjava/lang/String;IIZLjava/lang/String;ZLandroid/os/Bundle;)V
+    //   987: invokestatic 243	cooperation/qzone/QZoneHelper:forwardToFeedActionPanel	(Landroid/app/Activity;Lcooperation/qzone/QZoneHelper$UserInfo;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IZIIIIILjava/lang/String;IIZLjava/lang/String;ZLandroid/os/Bundle;)V
     //   990: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -621,7 +621,7 @@ public class QZoneFeedActionJsPlugin
       ((StringBuilder)localObject2).append(((Intent)localObject1).getAction());
       QLog.d("QZoneFeedActionJsPlugin", 2, ((StringBuilder)localObject2).toString());
     }
-    QZoneHelper.forwardToQzoneTransluentActivity(this.parentPlugin.mRuntime.a(), QZoneHelper.UserInfo.getInstance(), (Intent)localObject1);
+    QZoneHelper.forwardToQzoneTransluentActivity(this.parentPlugin.mRuntime.d(), QZoneHelper.UserInfo.getInstance(), (Intent)localObject1);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
@@ -647,7 +647,7 @@ public class QZoneFeedActionJsPlugin
     }
     if (("normalVip".equals(paramString)) || ("highVip".equals(paramString)))
     {
-      paramString = this.parentPlugin.mRuntime.a();
+      paramString = this.parentPlugin.mRuntime.d();
       if (paramString != null) {
         paramString.finish();
       }
@@ -806,7 +806,7 @@ public class QZoneFeedActionJsPlugin
   {
     Intent localIntent = new Intent("action_h5pay_callback");
     localIntent.putExtra("h5pay_callback_json", paramString);
-    this.parentPlugin.mRuntime.a().sendBroadcast(localIntent);
+    this.parentPlugin.mRuntime.d().sendBroadcast(localIntent);
   }
   
   private void writeContent2H5(Intent paramIntent)
@@ -952,7 +952,7 @@ public class QZoneFeedActionJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneFeedActionJsPlugin
  * JD-Core Version:    0.7.0.1
  */

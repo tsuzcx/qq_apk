@@ -12,20 +12,20 @@ class HotWordSearchEntryModel$6$1
   
   public void onPlayOnce()
   {
-    this.jdField_a_of_type_ComTencentImageAbstractGifImage.setStrongGIFPlayOnceListener(null);
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$6.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$OnGifPlayListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$6.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$OnGifPlayListener.b();
+    this.a.setStrongGIFPlayOnceListener(null);
+    if (this.b.c != null) {
+      this.b.c.b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$6.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
+    if (this.b.a.get() == null) {
       return;
     }
     AbstractGifImage.pauseAll();
-    ((URLImageView)this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$6.jdField_a_of_type_JavaLangRefSoftReference.get()).setVisibility(8);
+    ((URLImageView)this.b.a.get()).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.6.1
  * JD-Core Version:    0.7.0.1
  */

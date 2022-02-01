@@ -144,11 +144,11 @@ public class CreateFaceToFaceDiscussionActivity
   private void fillBlankData(View paramView)
   {
     CreateFaceToFaceDiscussionActivity.ViewHolder localViewHolder = (CreateFaceToFaceDiscussionActivity.ViewHolder)paramView.getTag();
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845217);
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-    localViewHolder.jdField_a_of_type_JavaLangString = "";
-    ViewCompat.setImportantForAccessibility(localViewHolder.jdField_a_of_type_AndroidWidgetTextView, 2);
-    ViewCompat.setImportantForAccessibility(localViewHolder.jdField_a_of_type_AndroidWidgetImageView, 2);
+    localViewHolder.b.setImageResource(2130846659);
+    localViewHolder.c.setText(null);
+    localViewHolder.a = "";
+    ViewCompat.setImportantForAccessibility(localViewHolder.c, 2);
+    ViewCompat.setImportantForAccessibility(localViewHolder.b, 2);
     ViewCompat.setImportantForAccessibility(paramView, 2);
   }
   
@@ -163,11 +163,11 @@ public class CreateFaceToFaceDiscussionActivity
     {
       this.mDecoder.requestDecodeFace(str2, 1, false, (byte)1);
       if (this.mDefaultAvatar == null) {
-        this.mDefaultAvatar = ImageUtil.f();
+        this.mDefaultAvatar = ImageUtil.k();
       }
       paramUserProfile = this.mDefaultAvatar;
     }
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramUserProfile);
+    localViewHolder.b.setImageBitmap(paramUserProfile);
     if (this.fm == null) {
       this.fm = ((FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER));
     }
@@ -175,16 +175,16 @@ public class CreateFaceToFaceDiscussionActivity
     if (str2 != null)
     {
       paramUserProfile = str1;
-      if (this.fm.b(str2)) {
+      if (this.fm.n(str2)) {
         paramUserProfile = ContactUtils.a(this.app, str2);
       }
     }
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramUserProfile);
-    ViewCompat.setImportantForAccessibility(localViewHolder.jdField_a_of_type_AndroidWidgetTextView, 2);
-    ViewCompat.setImportantForAccessibility(localViewHolder.jdField_a_of_type_AndroidWidgetImageView, 2);
+    localViewHolder.c.setText(paramUserProfile);
+    ViewCompat.setImportantForAccessibility(localViewHolder.c, 2);
+    ViewCompat.setImportantForAccessibility(localViewHolder.b, 2);
     ViewCompat.setImportantForAccessibility(paramView, 1);
     paramView.setContentDescription(paramUserProfile);
-    localViewHolder.jdField_a_of_type_JavaLangString = str2;
+    localViewHolder.a = str2;
   }
   
   private nearfield_discuss.LBSInfo generateLbsInfo(SosoLbsInfo paramSosoLbsInfo)
@@ -226,17 +226,17 @@ public class CreateFaceToFaceDiscussionActivity
   
   private void initUi()
   {
-    this.mDigitOne = ((ImageView)findViewById(2131372092));
-    this.mDigitTwo = ((ImageView)findViewById(2131379985));
-    this.mDigitThree = ((ImageView)findViewById(2131378657));
-    this.mDigitFour = ((ImageView)findViewById(2131367209));
-    this.mDigitFive = ((ImageView)findViewById(2131366893));
-    this.mDigitSix = ((ImageView)findViewById(2131377639));
-    this.mDigitSeven = ((ImageView)findViewById(2131377346));
-    this.mDigitEight = ((ImageView)findViewById(2131366108));
-    this.mDigitNine = ((ImageView)findViewById(2131371891));
-    this.mDigitZero = ((ImageView)findViewById(2131381339));
-    this.mDelete = ((ImageView)findViewById(2131365494));
+    this.mDigitOne = ((ImageView)findViewById(2131439559));
+    this.mDigitTwo = ((ImageView)findViewById(2131448888));
+    this.mDigitThree = ((ImageView)findViewById(2131447313));
+    this.mDigitFour = ((ImageView)findViewById(2131433665));
+    this.mDigitFive = ((ImageView)findViewById(2131433223));
+    this.mDigitSix = ((ImageView)findViewById(2131446050));
+    this.mDigitSeven = ((ImageView)findViewById(2131445735));
+    this.mDigitEight = ((ImageView)findViewById(2131432393));
+    this.mDigitNine = ((ImageView)findViewById(2131439334));
+    this.mDigitZero = ((ImageView)findViewById(2131450391));
+    this.mDelete = ((ImageView)findViewById(2131431708));
     this.mDigitOne.setOnClickListener(this);
     this.mDigitTwo.setOnClickListener(this);
     this.mDigitThree.setOnClickListener(this);
@@ -248,42 +248,42 @@ public class CreateFaceToFaceDiscussionActivity
     this.mDigitNine.setOnClickListener(this);
     this.mDigitZero.setOnClickListener(this);
     this.mDelete.setOnClickListener(this);
-    this.mDigitViewOne = ((ImageView)findViewById(2131365692));
-    this.mDigitViewTwo = ((ImageView)findViewById(2131365694));
-    this.mDigitViewThree = ((ImageView)findViewById(2131365693));
-    this.mDigitViewFour = ((ImageView)findViewById(2131365691));
-    this.progress = findViewById(2131373160);
-    this.mProgressDrawable = getResources().getDrawable(2130839406);
-    this.contentLayout = ((LinearLayout)findViewById(2131365179));
-    this.mEnterWording = ((TextView)findViewById(2131381187));
-    this.mCreateTroopBtn = ((Button)findViewById(2131365323));
+    this.mDigitViewOne = ((ImageView)findViewById(2131431929));
+    this.mDigitViewTwo = ((ImageView)findViewById(2131431931));
+    this.mDigitViewThree = ((ImageView)findViewById(2131431930));
+    this.mDigitViewFour = ((ImageView)findViewById(2131431928));
+    this.progress = findViewById(2131440769);
+    this.mProgressDrawable = getResources().getDrawable(2130839590);
+    this.contentLayout = ((LinearLayout)findViewById(2131431340));
+    this.mEnterWording = ((TextView)findViewById(2131450236));
+    this.mCreateTroopBtn = ((Button)findViewById(2131431507));
     this.mCreateTroopBtn.setOnClickListener(this);
-    this.mTextviewTip = ((TextView)findViewById(2131378641));
-    this.mDigitPadLayout = ((TableLayout)findViewById(2131365684));
-    this.mNumberViewLayout = ((TableLayout)findViewById(2131372046));
-    this.mEnterTextviewTip = ((TextView)findViewById(2131378643));
+    this.mTextviewTip = ((TextView)findViewById(2131447280));
+    this.mDigitPadLayout = ((TableLayout)findViewById(2131431921));
+    this.mNumberViewLayout = ((TableLayout)findViewById(2131439509));
+    this.mEnterTextviewTip = ((TextView)findViewById(2131447282));
     this.mEnterTextviewTip.setVisibility(4);
-    this.line = findViewById(2131365768);
+    this.line = findViewById(2131432025);
     this.line.setVisibility(4);
-    this.mTitle = ((TextView)findViewById(2131369249));
-    this.mTitle.setText(getString(2131689679));
-    this.mTitle.setContentDescription(getString(2131689679));
-    this.mLeftBackBtn = ((TextView)findViewById(2131369202));
-    this.mLeftCancelBtn = ((TextView)findViewById(2131369204));
-    this.mRightBtn = ((TextView)findViewById(2131369233));
-    this.mTitle.setText(getString(2131689682));
-    this.mTitle.setContentDescription(getString(2131689682));
-    this.mTextviewTip.setText(getString(2131718694));
-    this.mTextviewTip.setContentDescription(getString(2131718694));
-    this.mEnterTextviewTip.setText(getString(2131718695));
-    this.mEnterTextviewTip.setContentDescription(getString(2131718695));
+    this.mTitle = ((TextView)findViewById(2131436227));
+    this.mTitle.setText(getString(2131886291));
+    this.mTitle.setContentDescription(getString(2131886291));
+    this.mLeftBackBtn = ((TextView)findViewById(2131436180));
+    this.mLeftCancelBtn = ((TextView)findViewById(2131436182));
+    this.mRightBtn = ((TextView)findViewById(2131436211));
+    this.mTitle.setText(getString(2131886294));
+    this.mTitle.setContentDescription(getString(2131886294));
+    this.mTextviewTip.setText(getString(2131916195));
+    this.mTextviewTip.setContentDescription(getString(2131916195));
+    this.mEnterTextviewTip.setText(getString(2131916196));
+    this.mEnterTextviewTip.setContentDescription(getString(2131916196));
     if (this.fromFace2FaceActivity)
     {
       this.mLeftBackBtn.setVisibility(0);
       this.mRightBtn.setVisibility(4);
       this.mLeftCancelBtn.setVisibility(4);
-      this.mLeftBackBtn.setText(2131690706);
-      this.mLeftBackBtn.setContentDescription(HardCodeUtil.a(2131702787));
+      this.mLeftBackBtn.setText(2131887625);
+      this.mLeftBackBtn.setContentDescription(HardCodeUtil.a(2131900777));
       this.mLeftBackBtn.setOnClickListener(new CreateFaceToFaceDiscussionActivity.4(this));
     }
     else
@@ -291,11 +291,11 @@ public class CreateFaceToFaceDiscussionActivity
       this.mLeftBackBtn.setVisibility(4);
       this.mLeftCancelBtn.setVisibility(4);
       this.mRightBtn.setVisibility(0);
-      this.mRightBtn.setText(2131690728);
-      this.mRightBtn.setContentDescription(HardCodeUtil.a(2131702784));
+      this.mRightBtn.setText(2131887648);
+      this.mRightBtn.setContentDescription(HardCodeUtil.a(2131900774));
       this.mRightBtn.setOnClickListener(new CreateFaceToFaceDiscussionActivity.5(this));
     }
-    this.bottomLayout = ((LinearLayout)findViewById(2131363750));
+    this.bottomLayout = ((LinearLayout)findViewById(2131429674));
     this.bottomLayout.setVisibility(4);
   }
   
@@ -355,9 +355,9 @@ public class CreateFaceToFaceDiscussionActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    setTheme(2131755317);
+    setTheme(2131952010);
     super.doOnCreate(paramBundle);
-    setContentView(2131562814);
+    setContentView(2131629259);
     this.mContext = getApplicationContext();
     paramBundle = getIntent();
     this.createSource = paramBundle.getIntExtra("create_source", 0);
@@ -368,7 +368,7 @@ public class CreateFaceToFaceDiscussionActivity
     this.mDecoder = ((IQQAvatarService)this.app.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.app);
     this.mDecoder.setDecodeTaskCompletionListener(this);
     this.mGridViewAdapter = new CreateFaceToFaceDiscussionActivity.GridViewAdapter(this);
-    this.mGridview = ((GridView)findViewById(2131367814));
+    this.mGridview = ((GridView)findViewById(2131434389));
     this.mGridview.setAdapter(this.mGridViewAdapter);
     this.mSelf = new nearfield_discuss.UserProfile();
     this.mSelf.uint64_uin.set(Long.parseLong(this.app.getAccount()));
@@ -421,7 +421,7 @@ public class CreateFaceToFaceDiscussionActivity
       }
       finish();
       if (this.fromFace2FaceActivity) {
-        overridePendingTransition(2130772002, 2130772003);
+        overridePendingTransition(2130772005, 2130772006);
       }
     }
     else if (paramInt != 67)
@@ -498,7 +498,7 @@ public class CreateFaceToFaceDiscussionActivity
   public void finish()
   {
     super.finish();
-    overridePendingTransition(0, 2130771992);
+    overridePendingTransition(0, 2130771995);
   }
   
   String getDescription()
@@ -528,7 +528,7 @@ public class CreateFaceToFaceDiscussionActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365323)
+    if (paramView.getId() == 2131431507)
     {
       this.isExitedHall = false;
       enterDiscussOrTroop();
@@ -550,37 +550,37 @@ public class CreateFaceToFaceDiscussionActivity
         {
         default: 
           break;
-        case 2131381339: 
+        case 2131450391: 
           this.digits.append('0');
           break;
-        case 2131379985: 
+        case 2131448888: 
           this.digits.append('2');
           break;
-        case 2131378657: 
+        case 2131447313: 
           this.digits.append('3');
           break;
-        case 2131377639: 
+        case 2131446050: 
           this.digits.append('6');
           break;
-        case 2131377346: 
+        case 2131445735: 
           this.digits.append('7');
           break;
-        case 2131372092: 
+        case 2131439559: 
           this.digits.append('1');
           break;
-        case 2131371891: 
+        case 2131439334: 
           this.digits.append('9');
           break;
-        case 2131367209: 
+        case 2131433665: 
           this.digits.append('4');
           break;
-        case 2131366893: 
+        case 2131433223: 
           this.digits.append('5');
           break;
-        case 2131366108: 
+        case 2131432393: 
           this.digits.append('8');
           break;
-        case 2131365494: 
+        case 2131431708: 
           if ((i > 0) && (i < 4)) {
             this.digits.deleteCharAt(i - 1);
           }
@@ -592,19 +592,19 @@ public class CreateFaceToFaceDiscussionActivity
               if (i != 3)
               {
                 if (i == 4) {
-                  this.mDigitViewFour.setImageResource(2130845242);
+                  this.mDigitViewFour.setImageResource(2130846684);
                 }
               }
               else {
-                this.mDigitViewThree.setImageResource(2130845242);
+                this.mDigitViewThree.setImageResource(2130846684);
               }
             }
             else {
-              this.mDigitViewTwo.setImageResource(2130845242);
+              this.mDigitViewTwo.setImageResource(2130846684);
             }
           }
           else {
-            this.mDigitViewOne.setImageResource(2130845242);
+            this.mDigitViewOne.setImageResource(2130846684);
           }
           break;
         }
@@ -616,34 +616,34 @@ public class CreateFaceToFaceDiscussionActivity
         default: 
           break;
         case '9': 
-          i = 2130845241;
+          i = 2130846683;
           break;
         case '8': 
-          i = 2130845240;
+          i = 2130846682;
           break;
         case '7': 
-          i = 2130845239;
+          i = 2130846681;
           break;
         case '6': 
-          i = 2130845238;
+          i = 2130846680;
           break;
         case '5': 
-          i = 2130845237;
+          i = 2130846679;
           break;
         case '4': 
-          i = 2130845236;
+          i = 2130846678;
           break;
         case '3': 
-          i = 2130845235;
+          i = 2130846677;
           break;
         case '2': 
-          i = 2130845234;
+          i = 2130846676;
           break;
         case '1': 
-          i = 2130845233;
+          i = 2130846675;
           break;
         case '0': 
-          i = 2130845232;
+          i = 2130846674;
         }
         if (j != 1)
         {
@@ -678,7 +678,7 @@ public class CreateFaceToFaceDiscussionActivity
                   }
                   else
                   {
-                    showToast(1, getString(2131694475));
+                    showToast(1, getString(2131892157));
                     ((Animatable)this.mProgressDrawable).stop();
                     this.progress.setVisibility(4);
                     if (this.mHandler.hasMessages(1)) {
@@ -693,7 +693,7 @@ public class CreateFaceToFaceDiscussionActivity
                     this.mHandler.removeMessages(1);
                   }
                   this.mHandler.sendEmptyMessageDelayed(1, 600L);
-                  QQToast.a(this.mContext, getString(2131719719), 0).a();
+                  QQToast.makeText(this.mContext, getString(2131917322), 0).show();
                   ReportController.b(this.app, "CliOper", "", "", "0X80041AD", "0X80041AD", 0, 0, "", "", "", "");
                 }
               }
@@ -731,8 +731,8 @@ public class CreateFaceToFaceDiscussionActivity
       if ((localObject != null) && ((localObject instanceof CreateFaceToFaceDiscussionActivity.ViewHolder)))
       {
         localObject = (CreateFaceToFaceDiscussionActivity.ViewHolder)localObject;
-        if (((CreateFaceToFaceDiscussionActivity.ViewHolder)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
-          ((CreateFaceToFaceDiscussionActivity.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        if (((CreateFaceToFaceDiscussionActivity.ViewHolder)localObject).a.equals(paramString)) {
+          ((CreateFaceToFaceDiscussionActivity.ViewHolder)localObject).b.setImageBitmap(paramBitmap);
         }
       }
       paramInt1 += 1;
@@ -751,7 +751,7 @@ public class CreateFaceToFaceDiscussionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity
  * JD-Core Version:    0.7.0.1
  */

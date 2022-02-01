@@ -34,7 +34,7 @@ import java.util.List;
 class IntimateContentItemNewDnaView$FriendDnaRvAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private List<NewDnaInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<NewDnaInfo> b = new ArrayList();
   
   private IntimateContentItemNewDnaView$FriendDnaRvAdapter(IntimateContentItemNewDnaView paramIntimateContentItemNewDnaView) {}
   
@@ -53,7 +53,7 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
       {
         localObject1 = new SpannableString(paramString);
         ((SpannableString)localObject1).setSpan(new StyleSpan(0), 0, paramString.length(), 33);
-        ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.a(17.0F)), 0, paramString.length(), 33);
+        ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.dip2px(17.0F)), 0, paramString.length(), 33);
         return localObject1;
       }
       paramInt1 += paramInt2;
@@ -62,12 +62,12 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
       paramInt2 += 0;
       ((SpannableString)localObject1).setSpan(paramString, 0, paramInt2, 33);
       ((SpannableString)localObject1).setSpan(new TopAlignSuperscriptSpan(0.3F), 0, paramInt2, 33);
-      ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.a(10.0F)), 0, paramInt2, 33);
+      ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.dip2px(10.0F)), 0, paramInt2, 33);
       paramString = new StyleSpan(0);
       paramInt2 = i - paramInt1 + paramInt1;
       ((SpannableString)localObject1).setSpan(paramString, paramInt1, paramInt2, 33);
       ((SpannableString)localObject1).setSpan(new TopAlignSuperscriptSpan(0.3F), paramInt1, paramInt2, 33);
-      ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.a(10.0F)), paramInt1, paramInt2, 33);
+      ((SpannableString)localObject1).setSpan(new AbsoluteSizeSpan(ViewUtils.dip2px(10.0F)), paramInt1, paramInt2, 33);
       return localObject1;
     }
     catch (Exception paramString)
@@ -86,18 +86,18 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
   
   private void a(int paramInt, IntimateContentItemNewDnaView.FriendDnaViewHolder paramFriendDnaViewHolder)
   {
-    if ((this.jdField_a_of_type_JavaUtilList.size() != 1) && (this.jdField_a_of_type_JavaUtilList.size() != 2))
+    if ((this.b.size() != 1) && (this.b.size() != 2))
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() % 2 == 0)
+      if (this.b.size() % 2 == 0)
       {
         if ((paramInt != 0) && (paramInt != 1))
         {
-          if (((paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) || (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 2)) && (this.jdField_a_of_type_JavaUtilList.size() >= 5))
+          if (((paramInt == this.b.size() - 1) || (paramInt == this.b.size() - 2)) && (this.b.size() >= 5))
           {
             a(paramFriendDnaViewHolder, -7.0F, -4.3F, -7.0F, -22.0F);
             return;
           }
-          if ((paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1) && (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 2))
+          if ((paramInt != this.b.size() - 1) && (paramInt != this.b.size() - 2))
           {
             a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -22.0F);
             return;
@@ -110,17 +110,17 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
       }
       if ((paramInt != 0) && (paramInt != 1))
       {
-        if ((paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) && (this.jdField_a_of_type_JavaUtilList.size() >= 5))
+        if ((paramInt == this.b.size() - 1) && (this.b.size() >= 5))
         {
           a(paramFriendDnaViewHolder, -7.0F, -4.3F, -7.0F, -22.0F);
           return;
         }
-        if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
+        if (paramInt == this.b.size() - 1)
         {
           a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -15.0F);
           return;
         }
-        if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 2)
+        if (paramInt == this.b.size() - 2)
         {
           a(paramFriendDnaViewHolder, -7.0F, -3.0F, -7.0F, -22.0F);
           return;
@@ -143,15 +143,15 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
       while ((i < paramArrayList.size()) && (i < 2))
       {
         Object localObject = (NewDnaInfo.DnaDetail)paramArrayList.get(i);
-        TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView.a);
+        TextView localTextView = new TextView(this.a.a);
         localTextView.setTextSize(1, 22.0F);
         localTextView.setSingleLine(true);
         localTextView.setEllipsize(TextUtils.TruncateAt.END);
-        localTextView.setTextColor(ContextCompat.getColor(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView.a, 2131166827));
+        localTextView.setTextColor(ContextCompat.getColor(this.a.a, 2131167747));
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-        localLayoutParams.setMargins(0, ViewUtils.b(2.0F), 0, 0);
+        localLayoutParams.setMargins(0, ViewUtils.dpToPx(2.0F), 0, 0);
         localTextView.setLayoutParams(localLayoutParams);
-        localObject = a(((NewDnaInfo.DnaDetail)localObject).jdField_a_of_type_JavaLangString, ((NewDnaInfo.DnaDetail)localObject).jdField_a_of_type_Int, ((NewDnaInfo.DnaDetail)localObject).b);
+        localObject = a(((NewDnaInfo.DnaDetail)localObject).a, ((NewDnaInfo.DnaDetail)localObject).b, ((NewDnaInfo.DnaDetail)localObject).c);
         if (localObject != null) {
           localTextView.setText((CharSequence)localObject);
         }
@@ -163,8 +163,8 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
   
   private void a(IntimateContentItemNewDnaView.FriendDnaViewHolder paramFriendDnaViewHolder, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramFriendDnaViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    localLayoutParams.setMargins(ViewUtils.b(paramFloat1), ViewUtils.b(paramFloat2), ViewUtils.b(paramFloat3), ViewUtils.b(paramFloat4));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramFriendDnaViewHolder.a.getLayoutParams();
+    localLayoutParams.setMargins(ViewUtils.dpToPx(paramFloat1), ViewUtils.dpToPx(paramFloat2), ViewUtils.dpToPx(paramFloat3), ViewUtils.dpToPx(paramFloat4));
     paramFriendDnaViewHolder.itemView.setLayoutParams(localLayoutParams);
   }
   
@@ -172,50 +172,50 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.clear();
+      this.b.addAll(paramList);
     }
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public void onBindViewHolder(@NonNull RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     paramViewHolder = (IntimateContentItemNewDnaView.FriendDnaViewHolder)paramViewHolder;
-    Object localObject = (NewDnaInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ReportController.b(null, "dc00898", "", "", "0X800B568", "0X800B568", ((NewDnaInfo)localObject).jdField_a_of_type_Int, 0, "", "", "", "");
+    Object localObject = (NewDnaInfo)this.b.get(paramInt);
+    ReportController.b(null, "dc00898", "", "", "0X800B568", "0X800B568", ((NewDnaInfo)localObject).a, 0, "", "", "", "");
     paramViewHolder.itemView.setTag(localObject);
-    if (!TextUtils.isEmpty(((NewDnaInfo)localObject).jdField_a_of_type_JavaLangString)) {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((NewDnaInfo)localObject).jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(((NewDnaInfo)localObject).b)) {
+      paramViewHolder.b.setText(((NewDnaInfo)localObject).b);
     }
-    if ((((NewDnaInfo)localObject).jdField_a_of_type_JavaUtilArrayList != null) && (((NewDnaInfo)localObject).jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      a(paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout, ((NewDnaInfo)localObject).jdField_a_of_type_JavaUtilArrayList);
+    if ((((NewDnaInfo)localObject).d != null) && (((NewDnaInfo)localObject).d.size() > 0)) {
+      a(paramViewHolder.c, ((NewDnaInfo)localObject).d);
     } else {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      paramViewHolder.c.removeAllViews();
     }
-    paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setCornerRadiusAndMode(ViewUtils.b(15.0F), 1);
-    if (IntimateContentItemNewDnaView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView))
+    paramViewHolder.d.setCornerRadiusAndMode(ViewUtils.dpToPx(15.0F), 1);
+    if (IntimateContentItemNewDnaView.a(this.a))
     {
-      paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setVisibility(8);
+      paramViewHolder.d.setVisibility(8);
     }
-    else if (!TextUtils.isEmpty(((NewDnaInfo)localObject).c))
+    else if (!TextUtils.isEmpty(((NewDnaInfo)localObject).e))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth();
-      localURLDrawableOptions.mRequestHeight = paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight();
+      localURLDrawableOptions.mRequestWidth = paramViewHolder.d.getWidth();
+      localURLDrawableOptions.mRequestHeight = paramViewHolder.d.getHeight();
       localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
       localURLDrawableOptions.mFailedDrawable = new ColorDrawable(0);
-      localObject = URLDrawable.getDrawable(((NewDnaInfo)localObject).c, localURLDrawableOptions);
-      paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setImageDrawable((Drawable)localObject);
-      paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setVisibility(0);
+      localObject = URLDrawable.getDrawable(((NewDnaInfo)localObject).e, localURLDrawableOptions);
+      paramViewHolder.d.setImageDrawable((Drawable)localObject);
+      paramViewHolder.d.setVisibility(0);
     }
     else
     {
-      paramViewHolder.jdField_a_of_type_ComTencentWidgetRoundRectImageView.setVisibility(8);
+      paramViewHolder.d.setVisibility(8);
     }
     a(paramInt, paramViewHolder);
   }
@@ -223,13 +223,13 @@ class IntimateContentItemNewDnaView$FriendDnaRvAdapter
   @NonNull
   public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemNewDnaView;
-    return new IntimateContentItemNewDnaView.FriendDnaViewHolder(paramViewGroup, LayoutInflater.from(paramViewGroup.a).inflate(2131559262, null));
+    paramViewGroup = this.a;
+    return new IntimateContentItemNewDnaView.FriendDnaViewHolder(paramViewGroup, LayoutInflater.from(paramViewGroup.a).inflate(2131625183, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemNewDnaView.FriendDnaRvAdapter
  * JD-Core Version:    0.7.0.1
  */

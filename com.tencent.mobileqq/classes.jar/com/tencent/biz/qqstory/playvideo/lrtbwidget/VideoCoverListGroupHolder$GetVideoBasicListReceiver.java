@@ -16,18 +16,18 @@ public class VideoCoverListGroupHolder$GetVideoBasicListReceiver
   
   public void a(@NonNull VideoCoverListGroupHolder paramVideoCoverListGroupHolder, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if (!paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (!paramGetVideoBasicInfoListEvent.g.isFail())
     {
-      if (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null) {
+      if (paramGetVideoBasicInfoListEvent.a == null) {
         return;
       }
-      if (VideoCoverListGroupHolder.b(paramVideoCoverListGroupHolder))
+      if (VideoCoverListGroupHolder.c(paramVideoCoverListGroupHolder))
       {
         VideoCoverListGroupHolder.b(paramVideoCoverListGroupHolder, true);
         SLog.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
         return;
       }
-      paramVideoCoverListGroupHolder.d();
+      paramVideoCoverListGroupHolder.h();
       SLog.b("VideoCoverListGroupHolder", "base info return , notify list now");
     }
   }
@@ -39,7 +39,7 @@ public class VideoCoverListGroupHolder$GetVideoBasicListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoCoverListGroupHolder.GetVideoBasicListReceiver
  * JD-Core Version:    0.7.0.1
  */

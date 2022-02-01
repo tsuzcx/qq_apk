@@ -7,24 +7,24 @@ import io.flutter.plugin.common.MethodCodec;
 public class APMChannel
   extends BaseMethodChannel
 {
-  public MethodChannel.MethodCallHandler a()
-  {
-    return new APMChannel.1(this);
-  }
-  
-  public MethodCodec a()
-  {
-    return APMChannelHandler.a;
-  }
-  
   public String a()
   {
     return "com.tencent.qflutter/apm";
   }
+  
+  public MethodCodec b()
+  {
+    return APMChannelHandler.b;
+  }
+  
+  public MethodChannel.MethodCallHandler c()
+  {
+    return new APMChannel.1(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.apm.APMChannel
  * JD-Core Version:    0.7.0.1
  */

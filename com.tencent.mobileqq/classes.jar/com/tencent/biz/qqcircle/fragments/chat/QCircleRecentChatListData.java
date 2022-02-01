@@ -12,6 +12,7 @@ import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.data.DraftSummaryInfoInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.qcircle.api.data.QCircleRecentDataInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.chat.QCircleBlankRecentChatListData;
@@ -122,6 +123,9 @@ public class QCircleRecentChatListData
     {
       QQCirclePrivateMsgShow.UserPMGiftInfo localUserPMGiftInfo = new QQCirclePrivateMsgShow.UserPMGiftInfo();
       localUserPMGiftInfo.mergeFrom(paramArrayOfByte);
+      if (!localUserPMGiftInfo.giftInfos.has()) {
+        return;
+      }
       setGiftInfo(localUserPMGiftInfo);
       return;
     }
@@ -170,11 +174,11 @@ public class QCircleRecentChatListData
       paramBaseQQAppInterface.append(this.mTitleName);
       if (this.mUnreadNum != 0) {
         if (this.mUnreadNum == 1) {
-          paramBaseQQAppInterface.append(paramContext.getResources().getString(2131699005));
+          paramBaseQQAppInterface.append(paramContext.getResources().getString(2131897009));
         } else if (this.mUnreadNum == 2) {
-          paramBaseQQAppInterface.append(paramContext.getResources().getString(2131699006));
+          paramBaseQQAppInterface.append(paramContext.getResources().getString(2131897010));
         } else if (this.mUnreadNum > 0) {
-          paramBaseQQAppInterface.append(paramContext.getResources().getString(2131699004, new Object[] { Integer.valueOf(this.mUnreadNum) }));
+          paramBaseQQAppInterface.append(paramContext.getResources().getString(2131897008, new Object[] { Integer.valueOf(this.mUnreadNum) }));
         }
       }
       if (this.mMsgExtroInfo != null)
@@ -193,7 +197,7 @@ public class QCircleRecentChatListData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqcircle.fragments.chat.QCircleRecentChatListData
  * JD-Core Version:    0.7.0.1
  */

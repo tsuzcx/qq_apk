@@ -12,8 +12,8 @@ class ColorNoteListController$6
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (ColorNoteListController.a(this.a) != null) {
-      ColorNoteListController.a(this.a).b();
+    if (ColorNoteListController.h(this.a) != null) {
+      ColorNoteListController.h(this.a).c();
     }
   }
   
@@ -23,7 +23,7 @@ class ColorNoteListController$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.ColorNoteListController.6
  * JD-Core Version:    0.7.0.1
  */

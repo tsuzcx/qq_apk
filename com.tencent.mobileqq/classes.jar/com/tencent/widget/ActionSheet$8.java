@@ -19,21 +19,21 @@ class ActionSheet$8
     if ((ActionSheet.access$800(this.this$0)) && ((ActionSheet.access$900(this.this$0) == null) || (!ActionSheet.access$900(this.this$0).contains(Integer.valueOf(i)))) && (ActionSheet.access$1000(this.this$0) != -1) && (i != ActionSheet.access$1000(this.this$0)))
     {
       localObject = (View)ActionSheet.access$1100(this.this$0).get(ActionSheet.access$1000(this.this$0));
-      ((View)localObject).findViewById(2131361990).setVisibility(8);
-      localObject = (TextView)((View)localObject).findViewById(2131361989);
+      ((View)localObject).findViewById(2131427550).setVisibility(8);
+      localObject = (TextView)((View)localObject).findViewById(2131427549);
       ActionSheet.access$1200(this.this$0, (TextView)localObject, false);
       localObject = (View)ActionSheet.access$1100(this.this$0).get(i);
-      ((View)localObject).findViewById(2131361990).setVisibility(0);
-      localObject = (TextView)((View)localObject).findViewById(2131361989);
+      ((View)localObject).findViewById(2131427550).setVisibility(0);
+      localObject = (TextView)((View)localObject).findViewById(2131427549);
       ActionSheet.access$1200(this.this$0, (TextView)localObject, true);
       ActionSheet.access$1002(this.this$0, i);
     }
     if (ActionSheet.access$1300(this.this$0) != null) {
-      ActionSheet.access$1300(this.this$0).OnClick(paramView, i);
+      ActionSheet.access$1300(this.this$0).onClick(paramView, i);
     }
     if (ActionSheet.access$1400(this.this$0) != null)
     {
-      localObject = (TextView)paramView.findViewById(2131361989);
+      localObject = (TextView)paramView.findViewById(2131427549);
       if ((localObject != null) && ((localObject instanceof TextView))) {
         ActionSheet.access$1400(this.this$0).OnClick(paramView, i, ((TextView)localObject).getText().toString());
       }
@@ -43,7 +43,7 @@ class ActionSheet$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ActionSheet.8
  * JD-Core Version:    0.7.0.1
  */

@@ -17,6 +17,7 @@ import com.tencent.mobileqq.vas.IndividuationUrlHelper;
 import com.tencent.mobileqq.vas.config.business.qvip.QVipBigClubSVIP9Config;
 import com.tencent.mobileqq.vas.config.business.qvip.QVipBigClubSVIP9Processor;
 import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.app.AppRuntime;
 
@@ -26,23 +27,30 @@ public class VipUtils$VipIconUtils
   
   public static int a(VipUtils.VipIconUtils.NamePlateVipTpye paramNamePlateVipTpye)
   {
-    if (paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.b)
-    {
-      if (paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.c) {
-        return 2130847299;
-      }
-      if (paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.d) {
-        return 2130847298;
-      }
-      if (paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.e) {
-        return 2130847300;
-      }
-      if ((paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.f) && (paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.g)) {
-        return 2130847299;
-      }
-      return 2130847295;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" getDefaultVipIcon spec = ");
+    Integer localInteger;
+    if (paramNamePlateVipTpye != null) {
+      localInteger = Integer.valueOf(paramNamePlateVipTpye.a);
+    } else {
+      localInteger = null;
     }
-    return 2130847299;
+    localStringBuilder.append(localInteger);
+    QLog.e("VipUtils", 1, localStringBuilder.toString());
+    if ((paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.c) && (paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.d))
+    {
+      if (paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.e) {
+        return 2130848949;
+      }
+      if (paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.f) {
+        return 2130848951;
+      }
+      if ((paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.g) && (paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.h)) {
+        return 0;
+      }
+      return 2130848946;
+    }
+    return 2130848950;
   }
   
   public static String a(int paramInt1, int paramInt2, long paramLong)
@@ -52,16 +60,25 @@ public class VipUtils$VipIconUtils
   
   private static String a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean)
   {
-    String str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getVipIconUrl vipType = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" iQQVipLevel = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(" lSuperVipTemplateId = ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" isGray = ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.e("VipUtils", 1, ((StringBuilder)localObject).toString());
     if (!paramBoolean) {
-      str = QVipBigClubSVIP9Processor.c().mAPngIconUrl;
+      localObject = QVipBigClubSVIP9Processor.e().mAPngIconUrl;
     } else {
-      str = QVipBigClubSVIP9Processor.c().mAPngIconUrlNewGray;
+      localObject = QVipBigClubSVIP9Processor.e().mAPngIconUrlNewGray;
     }
     if (paramBoolean) {
       paramLong = 0L;
     }
-    return String.format(str, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
+    return String.format((String)localObject, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
   }
   
   public static String a(String paramString1, String paramString2)
@@ -79,7 +96,7 @@ public class VipUtils$VipIconUtils
     Object localObject = (FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject != null)
     {
-      localObject = ((FriendsManager)localObject).e(paramString);
+      localObject = ((FriendsManager)localObject).m(paramString);
       if (localObject != null)
       {
         int i;
@@ -108,15 +125,15 @@ public class VipUtils$VipIconUtils
     paramAppRuntime = (FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (paramAppRuntime != null)
     {
-      paramAppRuntime = paramAppRuntime.e(paramString);
+      paramAppRuntime = paramAppRuntime.m(paramString);
       if (paramAppRuntime != null)
       {
         int i;
-        if ((paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.f) && (paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.g))
+        if ((paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.g) && (paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.h))
         {
-          if ((paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.d) && (paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.e))
+          if ((paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.e) && (paramNamePlateVipTpye != VipUtils.VipIconUtils.NamePlateVipTpye.f))
           {
-            if ((paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.b) || (paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.c))
+            if ((paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.c) || (paramNamePlateVipTpye == VipUtils.VipIconUtils.NamePlateVipTpye.d))
             {
               i = paramAppRuntime.getServiceLevel(EVIPSPEC.E_SP_QQVIP);
               return a(paramNamePlateVipTpye.a, i, 0L, paramBoolean);
@@ -143,16 +160,16 @@ public class VipUtils$VipIconUtils
     if ((paramContext != null) && (paramImageView != null) && (paramInt1 > 0))
     {
       paramImageView.setVisibility(0);
-      paramImageView.setTag(2131380933, Integer.valueOf(paramInt1));
+      paramImageView.setTag(2131449923, Integer.valueOf(paramInt1));
       String str = a(IndividuationUrlHelper.a("extendnameplateiconurl"), String.valueOf(paramInt1));
       VipUtils.a(paramContext.getResources(), paramImageView, str, URLDrawableHelperConstants.a);
       if (paramInt2 == 1)
       {
-        VipUtils.a("0X800B922", paramInt1);
+        VipUtils.c("0X800B922", paramInt1);
         return;
       }
       if (paramInt2 == 2) {
-        VipUtils.a("0X800B924", paramInt1);
+        VipUtils.c("0X800B924", paramInt1);
       }
     }
   }
@@ -160,7 +177,7 @@ public class VipUtils$VipIconUtils
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
   {
     paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    paramString = QVipBigClubSVIP9Processor.c().getVipIconSettingsUrl(paramString);
+    paramString = QVipBigClubSVIP9Processor.e().getVipIconSettingsUrl(paramString);
     Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
     localIntent.putExtra("portraitOnly", true);
     localIntent.putExtra("uin", paramQQAppInterface);
@@ -179,7 +196,7 @@ public class VipUtils$VipIconUtils
     paramAppRuntime = (FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (paramAppRuntime != null)
     {
-      paramAppRuntime = paramAppRuntime.e(paramString);
+      paramAppRuntime = paramAppRuntime.m(paramString);
       if (paramAppRuntime != null) {
         return new int[] { paramAppRuntime.nameplateVipType, paramAppRuntime.grayNameplateFlag };
       }
@@ -274,7 +291,7 @@ public class VipUtils$VipIconUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.VipIconUtils
  * JD-Core Version:    0.7.0.1
  */

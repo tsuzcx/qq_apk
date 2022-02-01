@@ -14,30 +14,30 @@ class ReadInJoyAdExpandCardPic$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_AndroidViewView;
+    paramAnimator = this.a;
     if ((paramAnimator != null) && (this.b != null))
     {
       paramAnimator.setVisibility(8);
       this.b.setVisibility(0);
     }
-    if (ReadInJoyAdExpandCardPic.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdExpandCardPic) != null) {
-      ReadInJoyAdExpandCardPic.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdExpandCardPic).setClickable(true);
+    if (ReadInJoyAdExpandCardPic.a(this.c) != null) {
+      ReadInJoyAdExpandCardPic.a(this.c).setClickable(true);
     }
-    ReadInJoyAdExpandCardPic.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdExpandCardPic, false);
+    ReadInJoyAdExpandCardPic.a(this.c, false);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (ReadInJoyAdExpandCardPic.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdExpandCardPic) != null) {
-      ReadInJoyAdExpandCardPic.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdExpandCardPic).setClickable(false);
+    if (ReadInJoyAdExpandCardPic.a(this.c) != null) {
+      ReadInJoyAdExpandCardPic.a(this.c).setClickable(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdExpandCardPic.1
  * JD-Core Version:    0.7.0.1
  */

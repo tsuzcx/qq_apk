@@ -11,11 +11,11 @@ class SimpleFileViewer$6
   
   public void run()
   {
-    TbsReaderView localTbsReaderView = LocalTbsViewManager.a().a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback);
-    if (SimpleFileViewer.a(this.this$0) != null)
+    TbsReaderView localTbsReaderView = LocalTbsViewManager.a().a(this.this$0.c, this.a, this.b);
+    if (SimpleFileViewer.f(this.this$0) != null)
     {
       SimpleFileViewer localSimpleFileViewer = this.this$0;
-      if (SimpleFileViewer.a(localSimpleFileViewer, SimpleFileViewer.a(localSimpleFileViewer), localTbsReaderView, true)) {
+      if (SimpleFileViewer.a(localSimpleFileViewer, SimpleFileViewer.f(localSimpleFileViewer), localTbsReaderView, true)) {
         SimpleFileViewer.a(this.this$0, localTbsReaderView);
       }
     }
@@ -23,7 +23,7 @@ class SimpleFileViewer$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.6
  * JD-Core Version:    0.7.0.1
  */

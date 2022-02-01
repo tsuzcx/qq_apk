@@ -24,28 +24,28 @@ class MessageForArkApp$1
   public void onLoadState(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView onLoadFinish MessageForArkApp state=", Integer.valueOf(paramInt), ",app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
+      QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView onLoadFinish MessageForArkApp state=", Integer.valueOf(paramInt), ",app=", this.e.ark_app_message.appName });
     }
-    this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
+    this.a.h.setVisibility(8);
     if (paramInt == 1)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper.getContainerRect();
-      float f = ArkAppCenterUtil.a();
+      Object localObject = this.b.getContainerRect();
+      float f = ArkAppCenterUtil.d();
       paramInt = (int)((((Rect)localObject).right - ((Rect)localObject).left) * f);
       int i = (int)(f * (((Rect)localObject).bottom - ((Rect)localObject).top));
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-      if (ArkAppCenterUtil.a)
+      this.c.a(this.a, this.e);
+      if (ArkAppCenterUtil.e)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.getLayoutParams();
-        QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView.onLoadFinish arkContainer rect(", Integer.valueOf(paramInt), ",", Integer.valueOf(i), "), arkView rect(", Integer.valueOf(((ViewGroup.LayoutParams)localObject).width), ",", Integer.valueOf(((ViewGroup.LayoutParams)localObject).height), "),app=", this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName });
+        localObject = this.a.e.getLayoutParams();
+        QLog.d("MessageForArkApp", 2, new Object[] { "ArkFold.attachArkView.onLoadFinish arkContainer rect(", Integer.valueOf(paramInt), ",", Integer.valueOf(i), "), arkView rect(", Integer.valueOf(((ViewGroup.LayoutParams)localObject).width), ",", Integer.valueOf(((ViewGroup.LayoutParams)localObject).height), "),app=", this.e.ark_app_message.appName });
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
+    this.c.a(this.b, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForArkApp.1
  * JD-Core Version:    0.7.0.1
  */

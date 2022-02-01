@@ -29,54 +29,49 @@ import org.jetbrains.annotations.Nullable;
 public final class BarrageController
   implements BarrageTrack.BarrageLineCallback, IBarrageControl
 {
-  public static final BarrageController.Companion a;
+  public static final BarrageController.Companion a = new BarrageController.Companion(null);
   @NotNull
-  private static final Integer[] jdField_a_of_type_ArrayOfJavaLangInteger = { Integer.valueOf(28), Integer.valueOf(140), Integer.valueOf(300) };
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final ArrayMap<String, BarrageHandler.SessionParams> jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+  private static final Integer[] p = { Integer.valueOf(28), Integer.valueOf(140), Integer.valueOf(300) };
+  private final Context b;
+  private BarrageState c;
+  private final BarrageTrack d;
+  private final ArrayList<BarrageInfo> e;
+  private final ArrayMap<String, BarrageHandler.SessionParams> f;
+  private final BarrageHandler g;
+  private final BarrageController.BarrageBusinessObserver h;
+  private final ArrayList<BarrageController.AnimatorState> i;
+  private boolean j;
   @Nullable
-  private BarrageCallback jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageCallback;
+  private BarrageCallback k;
+  private final Handler l;
   @NotNull
-  private final BarrageConfig jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageConfig;
-  private final BarrageController.BarrageBusinessObserver jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController$BarrageBusinessObserver;
-  private final BarrageHandler jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageHandler;
-  private BarrageState jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState;
-  private final BarrageTrack jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack;
+  private final BarrageView m;
   @NotNull
-  private final BarrageView jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageView;
+  private final BarrageConfig n;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private final ArrayList<BarrageInfo> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private final ArrayList<BarrageController.AnimatorState> b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController$Companion = new BarrageController.Companion(null);
-  }
+  private final String o;
   
   public BarrageController(@NotNull BarrageView paramBarrageView, @NotNull BarrageConfig paramBarrageConfig, @NotNull String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageView = paramBarrageView;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageConfig = paramBarrageConfig;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState = BarrageState.IDLE;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack = new BarrageTrack();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-    this.b = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler((Handler.Callback)BarrageController.handler.1.a);
+    this.m = paramBarrageView;
+    this.n = paramBarrageConfig;
+    this.o = paramString;
+    this.b = this.m.getContext();
+    this.c = BarrageState.IDLE;
+    this.d = new BarrageTrack();
+    this.e = new ArrayList();
+    this.f = new ArrayMap();
+    this.i = new ArrayList();
+    this.l = new Handler((Handler.Callback)BarrageController.handler.1.a);
     paramBarrageView = RIJQQAppInterfaceUtil.a();
-    paramBarrageConfig = paramBarrageView.getBusinessHandler(this.jdField_a_of_type_JavaLangString);
+    paramBarrageConfig = paramBarrageView.getBusinessHandler(this.o);
     if (paramBarrageConfig != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageHandler = ((BarrageHandler)paramBarrageConfig);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController$BarrageBusinessObserver = new BarrageController.BarrageBusinessObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack.a((BarrageTrack.BarrageLineCallback)this);
+      this.g = ((BarrageHandler)paramBarrageConfig);
+      this.h = new BarrageController.BarrageBusinessObserver(this);
+      this.d.a((BarrageTrack.BarrageLineCallback)this);
       if (paramBarrageView != null) {
-        paramBarrageView.addObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController$BarrageBusinessObserver);
+        paramBarrageView.addObserver((BusinessObserver)this.h);
       }
       return;
     }
@@ -85,42 +80,42 @@ public final class BarrageController
   
   private final void a(View paramView, BarrageTrack.BarrageLine paramBarrageLine)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageView.addView(paramView);
-    paramView.setX(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageView.getWidth());
-    paramView.setY(paramBarrageLine.b());
+    this.m.addView(paramView);
+    paramView.setX(this.m.getWidth());
+    paramView.setY(paramBarrageLine.c());
   }
   
   private final void a(BarrageController.AnimatorState paramAnimatorState)
   {
     if (Build.VERSION.SDK_INT >= 19)
     {
-      paramAnimatorState.a().pause();
+      paramAnimatorState.b().pause();
       return;
     }
-    paramAnimatorState.a(paramAnimatorState.a().getCurrentPlayTime());
-    paramAnimatorState.a().cancel();
+    paramAnimatorState.a(paramAnimatorState.b().getCurrentPlayTime());
+    paramAnimatorState.b().cancel();
   }
   
   private final void a(BarrageItemView paramBarrageItemView, int paramInt)
   {
-    if ((paramInt > paramBarrageItemView.a()) && (paramBarrageItemView.a()))
+    if ((paramInt > paramBarrageItemView.getBlockDistance()) && (paramBarrageItemView.getBusyInLineEntry()))
     {
       paramBarrageItemView.setBusyInLineEntry(false);
-      Iterator localIterator = paramBarrageItemView.a().iterator();
+      Iterator localIterator = paramBarrageItemView.getPlaceLines().iterator();
       while (localIterator.hasNext()) {
         ((BarrageTrack.BarrageLine)localIterator.next()).a(true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack.b();
+      this.d.b();
     }
-    if ((paramBarrageItemView.a() == BarrageItemView.AppearState.NONE) && (paramInt > -paramBarrageItemView.getWidth()))
+    if ((paramBarrageItemView.getAppearState() == BarrageItemView.AppearState.NONE) && (paramInt > -paramBarrageItemView.getWidth()))
     {
       paramBarrageItemView.setAppearState(BarrageItemView.AppearState.PART);
       return;
     }
-    if ((paramBarrageItemView.a() == BarrageItemView.AppearState.PART) && (paramInt > 0))
+    if ((paramBarrageItemView.getAppearState() == BarrageItemView.AppearState.PART) && (paramInt > 0))
     {
       paramBarrageItemView.setAppearState(BarrageItemView.AppearState.ALL);
-      paramBarrageItemView = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageCallback;
+      paramBarrageItemView = this.k;
       if (paramBarrageItemView != null) {
         paramBarrageItemView.onEventBarrageDidAppear();
       }
@@ -133,33 +128,33 @@ public final class BarrageController
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("changeState oldState:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(" state:");
       localStringBuilder.append(paramBarrageState);
       QLog.d("BarrageController", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState = paramBarrageState;
+    this.c = paramBarrageState;
   }
   
   private final void b(BarrageController.AnimatorState paramAnimatorState)
   {
     if (Build.VERSION.SDK_INT >= 19)
     {
-      if (paramAnimatorState.a().isStarted())
+      if (paramAnimatorState.b().isStarted())
       {
-        paramAnimatorState.a().resume();
+        paramAnimatorState.b().resume();
         return;
       }
-      paramAnimatorState.a().start();
+      paramAnimatorState.b().start();
       return;
     }
-    paramAnimatorState.a().start();
-    paramAnimatorState.a().setCurrentPlayTime(paramAnimatorState.a());
+    paramAnimatorState.b().start();
+    paramAnimatorState.b().setCurrentPlayTime(paramAnimatorState.a());
   }
   
-  private final void e()
+  private final void i()
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.i.iterator();
     Intrinsics.checkExpressionValueIsNotNull(localIterator, "animatorList.iterator()");
     while (localIterator.hasNext())
     {
@@ -169,9 +164,9 @@ public final class BarrageController
     }
   }
   
-  private final void f()
+  private final void j()
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.i.iterator();
     Intrinsics.checkExpressionValueIsNotNull(localIterator, "animatorList.iterator()");
     while (localIterator.hasNext())
     {
@@ -181,57 +176,13 @@ public final class BarrageController
     }
   }
   
-  private final void g()
+  private final void k()
   {
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.i.iterator();
     Intrinsics.checkExpressionValueIsNotNull(localIterator, "animatorList.iterator()");
     while (localIterator.hasNext()) {
-      ((BarrageController.AnimatorState)localIterator.next()).a().cancel();
+      ((BarrageController.AnimatorState)localIterator.next()).b().cancel();
     }
-  }
-  
-  @Nullable
-  public final BarrageCallback a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageCallback;
-  }
-  
-  @NotNull
-  public final BarrageView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageView;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      QLog.w("BarrageController", 2, "Barrage play failed for barrageData is empty.");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState == BarrageState.PLAYING)
-    {
-      QLog.w("BarrageController", 2, "Barrage play failed for status is PLAYING.");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState == BarrageState.PAUSE)
-    {
-      a(BarrageState.PLAYING);
-      e();
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState != BarrageState.IDLE) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState != BarrageState.STOPED))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("play ignore for state:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState);
-      QLog.w("BarrageController", 2, localStringBuilder.toString());
-      return;
-    }
-    a(BarrageState.PLAYING);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageConfig, (List)this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack.a();
   }
   
   public void a(long paramLong, @NotNull String paramString1, @NotNull String paramString2)
@@ -249,12 +200,12 @@ public final class BarrageController
       localStringBuilder.append(paramString2);
       QLog.d("BarrageController", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageHandler.a(paramLong, paramString1, paramString2, (BarrageHandler.SessionParams)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString1));
+    this.g.a(paramLong, paramString1, paramString2, (BarrageHandler.SessionParams)this.f.get(paramString1));
   }
   
   public final void a(@Nullable BarrageCallback paramBarrageCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageCallback = paramBarrageCallback;
+    this.k = paramBarrageCallback;
   }
   
   public void a(@NotNull BarrageInfo paramBarrageInfo, @NotNull List<BarrageTrack.BarrageLine> paramList)
@@ -262,73 +213,117 @@ public final class BarrageController
     Intrinsics.checkParameterIsNotNull(paramBarrageInfo, "barrageInfo");
     Intrinsics.checkParameterIsNotNull(paramList, "barrageLines");
     Object localObject = BarrageFactory.a;
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.b;
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
     localObject = ((BarrageFactory)localObject).a(localContext, paramBarrageInfo);
     ((BarrageItemView)localObject).setBusyInLineEntry(true);
     ((BarrageItemView)localObject).setPlaceLines(paramList);
     ((BarrageItemView)localObject).setOnClickListener((View.OnClickListener)new BarrageController.onBarragePlaceInLine.1(this, paramBarrageInfo));
     a((View)localObject, (BarrageTrack.BarrageLine)paramList.get(0));
-    ((BarrageItemView)localObject).a(paramBarrageInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageConfig);
-    this.jdField_a_of_type_AndroidOsHandler.post((Runnable)new BarrageController.onBarragePlaceInLine.2(this, (BarrageItemView)localObject));
+    ((BarrageItemView)localObject).a(paramBarrageInfo, this.n);
+    this.l.post((Runnable)new BarrageController.onBarragePlaceInLine.2(this, (BarrageItemView)localObject));
   }
   
   public final void a(@NotNull BarrageItemView paramBarrageItemView)
   {
     Intrinsics.checkParameterIsNotNull(paramBarrageItemView, "barrageItemView");
-    float f = paramBarrageItemView.getX();
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { f, -paramBarrageItemView.getWidth() });
+    float f1 = paramBarrageItemView.getX();
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { f1, -paramBarrageItemView.getWidth() });
     Intrinsics.checkExpressionValueIsNotNull(localValueAnimator, "ValueAnimator.ofFloat(st…ItemView.width.toFloat())");
     localValueAnimator.setInterpolator((TimeInterpolator)new LinearInterpolator());
-    localValueAnimator.setDuration((this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageConfig.a() * 1000 * (paramBarrageItemView.getWidth() + f) / f));
-    localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new BarrageController.startBarrageItemAnimation.1(this, paramBarrageItemView, f));
+    localValueAnimator.setDuration((this.n.c() * 1000 * (paramBarrageItemView.getWidth() + f1) / f1));
+    localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new BarrageController.startBarrageItemAnimation.1(this, paramBarrageItemView, f1));
     localValueAnimator.addListener((Animator.AnimatorListener)new BarrageController.startBarrageItemAnimation.2(this, paramBarrageItemView, localValueAnimator));
-    this.b.add(new BarrageController.AnimatorState(this, localValueAnimator));
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState == BarrageState.PLAYING) {
+    this.i.add(new BarrageController.AnimatorState(this, localValueAnimator));
+    if (this.c == BarrageState.PLAYING) {
       localValueAnimator.start();
     }
   }
   
   public final boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.j;
   }
   
-  public void b()
+  @Nullable
+  public final BarrageCallback b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState != BarrageState.PLAYING) {
-      return;
-    }
-    a(BarrageState.PAUSE);
-    f();
+    return this.k;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState == BarrageState.STOPED) {
+    if (this.e.isEmpty())
+    {
+      this.j = true;
+      QLog.w("BarrageController", 2, "Barrage play failed for barrageData is empty.");
+      return;
+    }
+    if (this.c == BarrageState.PLAYING)
+    {
+      QLog.w("BarrageController", 2, "Barrage play failed for status is PLAYING.");
+      return;
+    }
+    if (this.c == BarrageState.PAUSE)
+    {
+      a(BarrageState.PLAYING);
+      i();
+      return;
+    }
+    if ((this.c != BarrageState.IDLE) && (this.c != BarrageState.STOPED))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("play ignore for state:");
+      localStringBuilder.append(this.c);
+      QLog.w("BarrageController", 2, localStringBuilder.toString());
+      return;
+    }
+    a(BarrageState.PLAYING);
+    this.d.a(this.n, (List)this.e);
+    this.d.a();
+  }
+  
+  public void d()
+  {
+    if (this.c != BarrageState.PLAYING) {
+      return;
+    }
+    a(BarrageState.PAUSE);
+    j();
+  }
+  
+  public void e()
+  {
+    if (this.c == BarrageState.STOPED) {
       return;
     }
     a(BarrageState.STOPED);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageView.removeAllViews();
-    g();
-    this.b.clear();
+    this.m.removeAllViews();
+    k();
+    this.i.clear();
   }
   
-  public final void d()
+  public final void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageState == BarrageState.IDLE) {
+    if (this.c == BarrageState.IDLE) {
       return;
     }
     a(BarrageState.IDLE);
     QQAppInterface localQQAppInterface = RIJQQAppInterfaceUtil.a();
     if (localQQAppInterface != null) {
-      localQQAppInterface.removeObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController$BarrageBusinessObserver);
+      localQQAppInterface.removeObserver((BusinessObserver)this.h);
     }
+  }
+  
+  @NotNull
+  public final BarrageView g()
+  {
+    return this.m;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageController
  * JD-Core Version:    0.7.0.1
  */

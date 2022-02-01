@@ -15,30 +15,30 @@ class FeedCommentBackgroundSyncer$SyncAllCommentFragment$1
   
   public void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
-      SLog.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync });
+      SLog.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.b });
       return;
     }
-    FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment);
-    SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(FeedCommentBackgroundSyncer.SyncAllCommentFragment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment)), paramGetFeedCommentEvent);
-    if (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.c);
+    SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(FeedCommentBackgroundSyncer.SyncAllCommentFragment.b(this.c)), paramGetFeedCommentEvent);
+    if (paramGetFeedCommentEvent.g.isSuccess())
     {
-      FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment).addAll(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList);
-      if ((!paramGetFeedCommentEvent.jdField_a_of_type_Boolean) && (FeedCommentBackgroundSyncer.SyncAllCommentFragment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment) < 10))
+      FeedCommentBackgroundSyncer.SyncAllCommentFragment.c(this.c).addAll(paramGetFeedCommentEvent.k);
+      if ((!paramGetFeedCommentEvent.a) && (FeedCommentBackgroundSyncer.SyncAllCommentFragment.b(this.c) < 10))
       {
-        SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(FeedCommentBackgroundSyncer.SyncAllCommentFragment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment)));
-        FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment).c();
+        SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(FeedCommentBackgroundSyncer.SyncAllCommentFragment.b(this.c)));
+        FeedCommentBackgroundSyncer.SyncAllCommentFragment.d(this.c).c();
         return;
       }
-      paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment);
-      SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment).size()));
-      FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment, paramGetFeedCommentEvent);
+      paramGetFeedCommentEvent.k = FeedCommentBackgroundSyncer.SyncAllCommentFragment.c(this.c);
+      SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(FeedCommentBackgroundSyncer.SyncAllCommentFragment.c(this.c).size()));
+      FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.c, paramGetFeedCommentEvent);
       return;
     }
-    paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment);
-    SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(FeedCommentBackgroundSyncer.SyncAllCommentFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment).size()));
-    FeedCommentBackgroundSyncer.SyncAllCommentFragment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentBackgroundSyncer$SyncAllCommentFragment, paramGetFeedCommentEvent);
+    paramGetFeedCommentEvent.k = FeedCommentBackgroundSyncer.SyncAllCommentFragment.c(this.c);
+    SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(FeedCommentBackgroundSyncer.SyncAllCommentFragment.c(this.c).size()));
+    FeedCommentBackgroundSyncer.SyncAllCommentFragment.b(this.c, paramGetFeedCommentEvent);
   }
 }
 

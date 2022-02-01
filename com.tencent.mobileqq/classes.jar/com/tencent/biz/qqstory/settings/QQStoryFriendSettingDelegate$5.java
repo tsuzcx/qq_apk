@@ -14,12 +14,12 @@ class QQStoryFriendSettingDelegate$5
   {
     if (paramInt != 0)
     {
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettingDelegate.a(7, this.jdField_a_of_type_Boolean ^ true);
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettingDelegate;
-      paramArrayOfByte.a(0, paramArrayOfByte.a.getString(2131719970));
+      this.b.a(7, this.a ^ true);
+      paramArrayOfByte = this.b;
+      paramArrayOfByte.a(0, paramArrayOfByte.c.getString(2131917575));
       return;
     }
-    ((StoryConfigManager)SuperManager.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.jdField_a_of_type_Boolean));
+    ((StoryConfigManager)SuperManager.a(10)).d("story_publish_flag_compress", Boolean.valueOf(this.a));
   }
 }
 

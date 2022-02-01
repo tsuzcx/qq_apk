@@ -34,25 +34,25 @@ public class ShieldFriendsListActivity$ShieldFriendsAdapter
   extends BaseAdapter
   implements CompoundButton.OnCheckedChangeListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private List<Friends> jdField_a_of_type_JavaUtilList;
+  private List<Friends> a;
+  private Context b;
+  private IFaceDecoder c;
+  private QQAppInterface d;
   
   public ShieldFriendsListActivity$ShieldFriendsAdapter(Context paramContext, IFaceDecoder paramIFaceDecoder, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramContext;
+    this.a = new ArrayList(0);
+    this.c = paramIFaceDecoder;
+    this.d = paramQQAppInterface;
   }
   
   public void a(Friends paramFriends)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramFriends == null)) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
+    if ((this.a == null) || (paramFriends == null)) {
+      this.a = new ArrayList(1);
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramFriends);
+    this.a.add(paramFriends);
     notifyDataSetChanged();
   }
   
@@ -63,20 +63,20 @@ public class ShieldFriendsListActivity$ShieldFriendsAdapter
       if (paramList.isEmpty()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilList = paramList;
+      this.a = paramList;
       notifyDataSetChanged();
     }
   }
   
   public boolean a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((List)localObject).isEmpty()) {
         return false;
       }
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext()) {
         if (((Friends)((Iterator)localObject).next()).uin.equals(paramString)) {
           return true;
@@ -88,7 +88,7 @@ public class ShieldFriendsListActivity$ShieldFriendsAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList == null) {
       return 0;
     }
@@ -97,7 +97,7 @@ public class ShieldFriendsListActivity$ShieldFriendsAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList == null) {
       return null;
     }
@@ -114,12 +114,12 @@ public class ShieldFriendsListActivity$ShieldFriendsAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561467, paramViewGroup, false);
+      localView = LayoutInflater.from(this.b).inflate(2131627824, paramViewGroup, false);
       paramView = new ShieldFriendsListActivity.Holder();
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131377437));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377438));
-      paramView.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)localView.findViewById(2131377439));
-      paramView.jdField_a_of_type_ComTencentWidgetSwitch.setTag(paramView);
+      paramView.a = ((URLImageView)localView.findViewById(2131445836));
+      paramView.b = ((TextView)localView.findViewById(2131445837));
+      paramView.c = ((Switch)localView.findViewById(2131445838));
+      paramView.c.setTag(paramView);
       localView.setTag(paramView);
     }
     else
@@ -131,25 +131,25 @@ public class ShieldFriendsListActivity$ShieldFriendsAdapter
     Object localObject = (Friends)getItem(paramInt);
     if (localObject != null)
     {
-      paramView.jdField_a_of_type_JavaLangString = ((Friends)localObject).uin;
-      paramView.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-      paramView.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(((Friends)localObject).isShield());
-      paramView.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
-      paramView.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = this;
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, ((Friends)localObject).uin, 0);
+      paramView.d = ((Friends)localObject).uin;
+      paramView.c.setOnCheckedChangeListener(null);
+      paramView.c.setChecked(((Friends)localObject).isShield());
+      paramView.c.setOnCheckedChangeListener(this);
+      paramView.e = this;
+      Bitmap localBitmap = this.c.getBitmapFromCache(1, ((Friends)localObject).uin, 0);
       if (localBitmap == null)
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(((Friends)localObject).uin, 1, true);
+        if (!this.c.isPausing()) {
+          this.c.requestDecodeFace(((Friends)localObject).uin, 1, true);
         }
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable((BitmapDrawable)ImageUtil.f());
+        paramView.a.setBackgroundDrawable((BitmapDrawable)ImageUtil.m());
       }
       else
       {
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+        paramView.a.setBackgroundDrawable(new BitmapDrawable(localBitmap));
       }
-      localObject = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((Friends)localObject).uin, 0);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      localObject = ContactUtils.a(this.d, ((Friends)localObject).uin, 0);
+      paramView.b.setText((CharSequence)localObject);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -157,7 +157,7 @@ public class ShieldFriendsListActivity$ShieldFriendsAdapter
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = this.d;
     if (paramBoolean) {
       i = 1;
     } else {
@@ -171,21 +171,21 @@ public class ShieldFriendsListActivity$ShieldFriendsAdapter
     localObject = (ShieldFriendsListActivity.Holder)paramCompoundButton.getTag();
     if (i == 0)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131696114, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.b, 1, 2131893879, 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
       paramCompoundButton.setOnCheckedChangeListener(null);
       paramCompoundButton.setChecked(paramBoolean ^ true);
-      paramCompoundButton.setOnCheckedChangeListener(((ShieldFriendsListActivity.Holder)localObject).jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      paramCompoundButton.setOnCheckedChangeListener(((ShieldFriendsListActivity.Holder)localObject).e);
     }
     else
     {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).changeFriendShieldFlag(Long.valueOf(((ShieldFriendsListActivity.Holder)localObject).jdField_a_of_type_JavaLangString).longValue(), paramBoolean);
+      ((FriendListHandler)this.d.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).changeFriendShieldFlag(Long.valueOf(((ShieldFriendsListActivity.Holder)localObject).d).longValue(), paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ShieldFriendsListActivity.ShieldFriendsAdapter
  * JD-Core Version:    0.7.0.1
  */

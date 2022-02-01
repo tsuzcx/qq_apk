@@ -13,7 +13,7 @@ class UserOperationModule$1
   
   public void run()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a))
     {
       QLog.i("UserOperationModule", 1, "avatarUrl is empty, request userInfo");
       ReadInJoyUserInfoModule localReadInJoyUserInfoModule = UserOperationModule.getUserInfoModule();
@@ -25,12 +25,12 @@ class UserOperationModule$1
       localReadInJoyUserInfoModule.a(localArrayList, new UserOperationModule.1.1(this));
       return;
     }
-    UserOperationModule.access$000(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 2, this.jdField_a_of_type_Boolean);
+    UserOperationModule.access$000(this.this$0, this.c, this.a, this.b, 2, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.UserOperationModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,22 +10,22 @@ class RelationFriendsTroopViewHelper$3$1
   
   public void run()
   {
-    RelationFriendsTroopViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper$3.this$0).clear();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    RelationFriendsTroopViewHelper.a(this.b.this$0).clear();
+    if (this.a.size() > 0)
     {
       int i = 0;
-      while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < 5))
+      while ((i < this.a.size()) && (i < 5))
       {
-        RelationFriendsTroopViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper$3.this$0).add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        RelationFriendsTroopViewHelper.a(this.b.this$0).add(this.a.get(i));
         i += 1;
       }
     }
-    RelationFriendsTroopViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper$3.this$0).a();
+    RelationFriendsTroopViewHelper.c(this.b.this$0).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.RelationFriendsTroopViewHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

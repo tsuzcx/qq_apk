@@ -36,9 +36,9 @@ class TroopRecommendFriendFragment$5
       localStringBuilder.append(paramString2);
       QLog.i("TroopRecommendFriendFragment", 2, localStringBuilder.toString());
     }
-    if ((paramBoolean1) && (TroopRecommendFriendFragment.a(this.a).equals(paramString1)))
+    if ((paramBoolean1) && (TroopRecommendFriendFragment.f(this.a).equals(paramString1)))
     {
-      TroopRecommendFriendFragment.a(this.a).setVisibility(8);
+      TroopRecommendFriendFragment.g(this.a).setVisibility(8);
       if ((localArrayList != null) && (!localArrayList.isEmpty()))
       {
         TroopRecommendFriendFragment.a(this.a, paramArrayOfByte);
@@ -51,12 +51,12 @@ class TroopRecommendFriendFragment$5
         if (QLog.isColorLevel()) {
           QLog.i("TroopRecommendFriendFragment", 2, "onGetTroopRecommendGrayTipsPerson no data");
         }
-        TroopRecommendFriendFragment.a(this.a).setVisibility(0);
-        paramString1 = TroopRecommendFriendFragment.a(this.a).findViewById(2131373123);
+        TroopRecommendFriendFragment.g(this.a).setVisibility(0);
+        paramString1 = TroopRecommendFriendFragment.g(this.a).findViewById(2131440726);
         if (paramString1 != null) {
           paramString1.setVisibility(8);
         }
-        paramString1 = (TextView)TroopRecommendFriendFragment.a(this.a).findViewById(2131379994);
+        paramString1 = (TextView)TroopRecommendFriendFragment.g(this.a).findViewById(2131448897);
         if (paramString1 != null) {
           paramString1.setText(paramString2);
         }
@@ -66,7 +66,7 @@ class TroopRecommendFriendFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment.5
  * JD-Core Version:    0.7.0.1
  */

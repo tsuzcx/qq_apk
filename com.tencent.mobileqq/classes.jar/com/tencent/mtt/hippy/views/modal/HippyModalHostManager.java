@@ -49,13 +49,13 @@ public class HippyModalHostManager
     paramHippyModalHostView.setAnimationType(paramString);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="immersionStatusBar")
+  @HippyControllerProps(defaultType="boolean", name="immersionStatusBar")
   public void setEnterImmersionStatusBar(HippyModalHostView paramHippyModalHostView, boolean paramBoolean)
   {
     paramHippyModalHostView.setEnterImmersionStatusBar(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="darkStatusBarText")
+  @HippyControllerProps(defaultType="boolean", name="darkStatusBarText")
   public void setImmersionStatusBarTextDarkColor(HippyModalHostView paramHippyModalHostView, boolean paramBoolean)
   {
     paramHippyModalHostView.setImmersionStatusBarTextDarkColor(paramBoolean);
@@ -69,7 +69,7 @@ public class HippyModalHostManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.modal.HippyModalHostManager
  * JD-Core Version:    0.7.0.1
  */

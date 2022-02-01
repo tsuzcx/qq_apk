@@ -10,7 +10,7 @@ class SpringFestivalRedpacketConfigManager$1
   {
     try
     {
-      EntryConfigBean localEntryConfigBean = this.this$0.a();
+      EntryConfigBean localEntryConfigBean = this.this$0.c();
       if (localEntryConfigBean == null)
       {
         if (QLog.isColorLevel()) {
@@ -32,7 +32,7 @@ class SpringFestivalRedpacketConfigManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

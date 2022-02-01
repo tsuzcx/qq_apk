@@ -367,10 +367,10 @@ public class EmotionDownloader
     //   514: aload_2
     //   515: aload_1
     //   516: invokeinterface 111 1 0
-    //   521: invokevirtual 288	com/tencent/mobileqq/earlydownload/handler/SystemFaceHandler:b	(Ljava/lang/String;)V
+    //   521: invokevirtual 288	com/tencent/mobileqq/earlydownload/handler/SystemFaceHandler:c	(Ljava/lang/String;)V
     //   524: aload_2
     //   525: iconst_0
-    //   526: invokevirtual 291	com/tencent/mobileqq/earlydownload/handler/SystemFaceHandler:c	(Z)V
+    //   526: invokevirtual 290	com/tencent/mobileqq/earlydownload/handler/SystemFaceHandler:c	(Z)V
     //   529: aload_2
     //   530: iconst_0
     //   531: invokevirtual 203	com/tencent/mobileqq/earlydownload/handler/SystemFaceHandler:d	(Z)V
@@ -480,7 +480,7 @@ public class EmotionDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.EmotionDownloader
  * JD-Core Version:    0.7.0.1
  */

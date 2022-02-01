@@ -19,18 +19,18 @@ class GameQuickWordsPanel$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramAdapterView = (String)this.a.c.get(paramInt);
     paramView = new ChatActivityFacade.SendMsgParams();
-    paramView.c = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    paramView.a = System.currentTimeMillis();
-    ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ad();
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
+    paramView.f = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    paramView.g = System.currentTimeMillis();
+    ChatActivityFacade.a(this.a.f, this.a.f.getApp(), this.a.e, paramAdapterView, null, paramView);
+    this.a.g.aQ();
+    ReportController.b(this.a.f, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.gameroom.GameQuickWordsPanel.1
  * JD-Core Version:    0.7.0.1
  */

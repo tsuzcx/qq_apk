@@ -13,7 +13,7 @@ public class TroopStatusUtil
   public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
     TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo = localTroopManager.b(String.valueOf(paramLong));
+    TroopInfo localTroopInfo = localTroopManager.f(String.valueOf(paramLong));
     int k = 0;
     int m = 0;
     int j = 1;
@@ -81,7 +81,7 @@ public class TroopStatusUtil
       QLog.d("TroopStatusUtil", 2, new Object[] { "HummerMessage::updateTroopRingId: invoked. ", " ringId: ", Integer.valueOf(paramInt), " groupCode: ", Long.valueOf(paramLong) });
     }
     TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo2 = localTroopManager.b(String.valueOf(paramLong));
+    TroopInfo localTroopInfo2 = localTroopManager.f(String.valueOf(paramLong));
     TroopInfo localTroopInfo1 = localTroopInfo2;
     if (localTroopInfo2 == null)
     {
@@ -105,7 +105,7 @@ public class TroopStatusUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.TroopStatusUtil
  * JD-Core Version:    0.7.0.1
  */

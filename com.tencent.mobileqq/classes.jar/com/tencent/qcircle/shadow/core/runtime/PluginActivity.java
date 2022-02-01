@@ -27,10 +27,10 @@ import android.view.Window;
 import android.view.Window.Callback;
 import android.view.WindowManager.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.auto.engine.skin.entity.SkinItem;
+import com.tencent.mobileqq.auto.engine.skin.listener.ISkinUpdate;
+import com.tencent.mobileqq.auto.engine.skin.loader.SkinManager;
 import com.tencent.qcircle.shadow.core.runtime.qcircle.container.HostActivityDelegator;
-import com.tencent.qcircle.shadow.core.runtime.skin.entity.SkinItem;
-import com.tencent.qcircle.shadow.core.runtime.skin.listener.ISkinUpdate;
-import com.tencent.qcircle.shadow.core.runtime.skin.loader.SkinManager;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -57,6 +57,7 @@ public abstract class PluginActivity
       if ((localHostActivityDelegator instanceof Activity))
       {
         ((Activity)localHostActivityDelegator).onBackPressed();
+        Log.d("ASDynamicEngine_back", "onBackPressed pluginActivity:");
         return true;
       }
     }
@@ -438,7 +439,7 @@ public abstract class PluginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qcircle.shadow.core.runtime.PluginActivity
  * JD-Core Version:    0.7.0.1
  */

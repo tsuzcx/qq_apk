@@ -26,8 +26,8 @@ class QQComicFragment$4
     }
     int k = paramInt1;
     int j = paramInt2;
-    if (!this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getUIStyleHandler().a.b) {
-      if (this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getUIStyle().m)
+    if (!this.a.getUIStyleHandler().f.b) {
+      if (this.a.getUIStyle().v)
       {
         k = paramInt1;
         j = paramInt2;
@@ -36,11 +36,11 @@ class QQComicFragment$4
       {
         k = paramInt1;
         j = paramInt2;
-        if ((QQComicFragment.a(this.jdField_a_of_type_ComTencentComicUiQQComicFragment) & 1L) == 1L)
+        if ((QQComicFragment.b(this.a) & 1L) == 1L)
         {
           k = paramInt1;
           j = paramInt2;
-          if (LiuHaiUtils.a)
+          if (LiuHaiUtils.b)
           {
             j = paramInt2 - i;
             k = paramInt1 - i;
@@ -51,21 +51,21 @@ class QQComicFragment$4
     super.a(k, j);
   }
   
-  public void b(boolean paramBoolean)
+  public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebTitleBarInterface.b(paramBoolean);
-    QQComicFragment.a(this.jdField_a_of_type_ComTencentComicUiQQComicFragment);
+    this.b.c(paramBoolean);
+    QQComicFragment.a(this.a);
   }
   
-  public void e(boolean paramBoolean)
+  public void f(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebTitleBarInterface.e(paramBoolean);
-    QQComicFragment.a(this.jdField_a_of_type_ComTencentComicUiQQComicFragment);
+    this.b.f(paramBoolean);
+    QQComicFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicFragment.4
  * JD-Core Version:    0.7.0.1
  */

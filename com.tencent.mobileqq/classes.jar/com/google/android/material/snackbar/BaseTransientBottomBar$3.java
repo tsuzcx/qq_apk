@@ -8,30 +8,30 @@ class BaseTransientBottomBar$3
 {
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.b != null)
     {
-      if (BaseTransientBottomBar.a(this.this$0) == null) {
+      if (BaseTransientBottomBar.d(this.this$0) == null) {
         return;
       }
-      int i = BaseTransientBottomBar.b(this.this$0) - BaseTransientBottomBar.c(this.this$0) + (int)this.this$0.a.getTranslationY();
-      if (i >= BaseTransientBottomBar.d(this.this$0)) {
+      int i = BaseTransientBottomBar.e(this.this$0) - BaseTransientBottomBar.f(this.this$0) + (int)this.this$0.b.getTranslationY();
+      if (i >= BaseTransientBottomBar.g(this.this$0)) {
         return;
       }
-      Object localObject = this.this$0.a.getLayoutParams();
+      Object localObject = this.this$0.b.getLayoutParams();
       if (!(localObject instanceof ViewGroup.MarginLayoutParams))
       {
-        Log.w(BaseTransientBottomBar.a(), "Unable to apply gesture inset because layout params are not MarginLayoutParams");
+        Log.w(BaseTransientBottomBar.h(), "Unable to apply gesture inset because layout params are not MarginLayoutParams");
         return;
       }
       localObject = (ViewGroup.MarginLayoutParams)localObject;
-      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin += BaseTransientBottomBar.d(this.this$0) - i;
-      this.this$0.a.requestLayout();
+      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin += BaseTransientBottomBar.g(this.this$0) - i;
+      this.this$0.b.requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.3
  * JD-Core Version:    0.7.0.1
  */

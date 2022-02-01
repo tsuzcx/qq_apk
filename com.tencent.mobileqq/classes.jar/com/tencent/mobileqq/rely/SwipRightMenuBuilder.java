@@ -11,31 +11,30 @@ import java.util.Stack;
 
 public abstract class SwipRightMenuBuilder
 {
-  protected final int a;
-  protected String a;
-  protected final SwipRightMenuBuilder.SwipRightMenuItem[] a;
-  protected final Stack<View>[] a;
+  protected String a = SwipRightMenuBuilder.class.getSimpleName();
+  protected final Stack<View>[] b;
+  protected final int c;
+  protected final SwipRightMenuBuilder.SwipRightMenuItem[] d;
   
   public SwipRightMenuBuilder(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = SwipRightMenuBuilder.class.getSimpleName();
-    this.jdField_a_of_type_Int = paramInt1;
-    paramInt1 = this.jdField_a_of_type_Int;
+    this.c = paramInt1;
+    paramInt1 = this.c;
     if ((paramInt1 >= 0) && ((paramInt1 <= 0) || (paramInt2 >= 1)))
     {
-      this.jdField_a_of_type_ArrayOfJavaUtilStack = new Stack[paramInt2];
+      this.b = new Stack[paramInt2];
       int i = 0;
       paramInt1 = 0;
       while (paramInt1 < paramInt2)
       {
-        this.jdField_a_of_type_ArrayOfJavaUtilStack[paramInt1] = new Stack();
+        this.b[paramInt1] = new Stack();
         paramInt1 += 1;
       }
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem = new SwipRightMenuBuilder.SwipRightMenuItem[this.jdField_a_of_type_Int];
+      this.d = new SwipRightMenuBuilder.SwipRightMenuItem[this.c];
       paramInt1 = i;
-      while (paramInt1 < this.jdField_a_of_type_Int)
+      while (paramInt1 < this.c)
       {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[paramInt1] = new SwipRightMenuBuilder.SwipRightMenuItem();
+        this.d[paramInt1] = new SwipRightMenuBuilder.SwipRightMenuItem();
         paramInt1 += 1;
       }
       return;
@@ -52,46 +51,46 @@ public abstract class SwipRightMenuBuilder
   
   public int a(Context paramContext, View paramView, int paramInt, Object paramObject, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, View.OnClickListener paramOnClickListener)
   {
-    if (((paramView instanceof LinearLayout)) && (paramSwipItemBaseHolder != null) && (paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem != null) && (paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem.length != 0))
+    if (((paramView instanceof LinearLayout)) && (paramSwipItemBaseHolder != null) && (paramSwipItemBaseHolder.b != null) && (paramSwipItemBaseHolder.b.length != 0))
     {
-      if (paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem.length > this.jdField_a_of_type_Int) {
+      if (paramSwipItemBaseHolder.b.length > this.c) {
         return 0;
       }
       LinearLayout localLinearLayout = (LinearLayout)paramView;
-      a(paramInt, paramObject, this.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem);
+      a(paramInt, paramObject, this.d);
       int j = 0;
       int m = 0;
       int i;
-      for (int k = 0; j < this.jdField_a_of_type_Int; k = i)
+      for (int k = 0; j < this.c; k = i)
       {
-        i = this.jdField_a_of_type_ArrayOfJavaUtilStack.length;
+        i = this.b.length;
         int i1 = 1;
-        if ((i > 1) && (paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].jdField_a_of_type_Int != this.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].jdField_a_of_type_Int)) {
-          a(paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j]);
+        if ((i > 1) && (paramSwipItemBaseHolder.b[j].a != this.d[j].a)) {
+          a(paramSwipItemBaseHolder.b[j]);
         }
-        paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].jdField_a_of_type_Int;
-        paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].b = this.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].b;
-        paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].c = 0;
-        paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].d = -1;
-        i = paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].jdField_a_of_type_Int;
-        View localView = paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].jdField_a_of_type_AndroidViewView;
+        paramSwipItemBaseHolder.b[j].a = this.d[j].a;
+        paramSwipItemBaseHolder.b[j].b = this.d[j].b;
+        paramSwipItemBaseHolder.b[j].c = 0;
+        paramSwipItemBaseHolder.b[j].d = -1;
+        i = paramSwipItemBaseHolder.b[j].a;
+        View localView = paramSwipItemBaseHolder.b[j].e;
         if (i >= 0)
         {
-          Object localObject = this.jdField_a_of_type_ArrayOfJavaUtilStack;
+          Object localObject = this.b;
           if (i < localObject.length)
           {
             if (localView == null) {
               try
               {
-                if (!this.jdField_a_of_type_ArrayOfJavaUtilStack[i].isEmpty()) {
-                  localView = (View)this.jdField_a_of_type_ArrayOfJavaUtilStack[i].pop();
+                if (!this.b[i].isEmpty()) {
+                  localView = (View)this.b[i].pop();
                 }
                 if (localView == null) {
                   localView = a(paramContext, i);
                 }
                 if (localView != null)
                 {
-                  paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].jdField_a_of_type_AndroidViewView = localView;
+                  paramSwipItemBaseHolder.b[j].e = localView;
                   break label341;
                 }
                 throw new NullPointerException("updateRightMenuView menuView is null");
@@ -101,10 +100,10 @@ public abstract class SwipRightMenuBuilder
               i1 = 0;
             }
             label341:
-            a(paramInt, paramObject, paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j], paramOnClickListener);
-            if (paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].c >= 0)
+            a(paramInt, paramObject, paramSwipItemBaseHolder.b[j], paramOnClickListener);
+            if (paramSwipItemBaseHolder.b[j].c >= 0)
             {
-              m += paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].c;
+              m += paramSwipItemBaseHolder.b[j].c;
               k += 1;
               localView.setVisibility(0);
               n = m;
@@ -115,13 +114,13 @@ public abstract class SwipRightMenuBuilder
               localObject = (LinearLayout.LayoutParams)localView.getLayoutParams();
               if (localObject == null)
               {
-                localObject = new LinearLayout.LayoutParams(paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].c, paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].d);
+                localObject = new LinearLayout.LayoutParams(paramSwipItemBaseHolder.b[j].c, paramSwipItemBaseHolder.b[j].d);
                 localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
               }
               else
               {
-                ((LinearLayout.LayoutParams)localObject).width = paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].c;
-                ((LinearLayout.LayoutParams)localObject).height = paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].d;
+                ((LinearLayout.LayoutParams)localObject).width = paramSwipItemBaseHolder.b[j].c;
+                ((LinearLayout.LayoutParams)localObject).height = paramSwipItemBaseHolder.b[j].d;
               }
               ((LinearLayout.LayoutParams)localObject).gravity = 16;
               localLinearLayout.addView(localView, k);
@@ -131,7 +130,7 @@ public abstract class SwipRightMenuBuilder
             }
             paramContext = new StringBuilder();
             paramContext.append("updateRightMenuView, menuWidth = ");
-            paramContext.append(paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[j].c);
+            paramContext.append(paramSwipItemBaseHolder.b[j].c);
             throw new IllegalArgumentException(paramContext.toString());
           }
         }
@@ -161,17 +160,17 @@ public abstract class SwipRightMenuBuilder
   {
     if ((paramSwipItemBaseHolder != null) && (paramView != null))
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.c;
       if (i > 0)
       {
-        paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem = new SwipRightMenuBuilder.SwipRightMenuItem[i];
+        paramSwipItemBaseHolder.b = new SwipRightMenuBuilder.SwipRightMenuItem[i];
         i = 0;
-        while (i < this.jdField_a_of_type_Int)
+        while (i < this.c)
         {
-          paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[i] = new SwipRightMenuBuilder.SwipRightMenuItem();
-          paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[i].jdField_a_of_type_Int = -1;
-          paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[i].c = 0;
-          paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem[i].jdField_a_of_type_AndroidViewView = null;
+          paramSwipItemBaseHolder.b[i] = new SwipRightMenuBuilder.SwipRightMenuItem();
+          paramSwipItemBaseHolder.b[i].a = -1;
+          paramSwipItemBaseHolder.b[i].c = 0;
+          paramSwipItemBaseHolder.b[i].e = null;
           i += 1;
         }
         paramContext = new LinearLayout(paramContext);
@@ -180,10 +179,10 @@ public abstract class SwipRightMenuBuilder
       }
       else
       {
-        paramSwipItemBaseHolder.jdField_a_of_type_ArrayOfComTencentMobileqqRelySwipRightMenuBuilder$SwipRightMenuItem = null;
+        paramSwipItemBaseHolder.b = null;
         paramContext = paramView;
       }
-      paramSwipItemBaseHolder.jdField_a_of_type_AndroidViewView = paramView;
+      paramSwipItemBaseHolder.a = paramView;
       return paramContext;
     }
     paramContext = new NullPointerException("SwipRightMenuBuilder.createView holder is null or leftView is null");
@@ -200,20 +199,20 @@ public abstract class SwipRightMenuBuilder
     if (paramSwipRightMenuItem == null) {
       return;
     }
-    if (paramSwipRightMenuItem.jdField_a_of_type_AndroidViewView != null)
+    if (paramSwipRightMenuItem.e != null)
     {
-      ??? = paramSwipRightMenuItem.jdField_a_of_type_AndroidViewView.getParent();
+      ??? = paramSwipRightMenuItem.e.getParent();
       if (??? != null)
       {
         if ((??? instanceof ViewGroup)) {
-          ((ViewGroup)???).removeView(paramSwipRightMenuItem.jdField_a_of_type_AndroidViewView);
+          ((ViewGroup)???).removeView(paramSwipRightMenuItem.e);
         }
       }
       else {
-        synchronized (this.jdField_a_of_type_ArrayOfJavaUtilStack)
+        synchronized (this.b)
         {
-          if ((paramSwipRightMenuItem.jdField_a_of_type_Int >= 0) && (paramSwipRightMenuItem.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfJavaUtilStack.length)) {
-            this.jdField_a_of_type_ArrayOfJavaUtilStack[paramSwipRightMenuItem.jdField_a_of_type_Int].push(paramSwipRightMenuItem.jdField_a_of_type_AndroidViewView);
+          if ((paramSwipRightMenuItem.a >= 0) && (paramSwipRightMenuItem.a < this.b.length)) {
+            this.b[paramSwipRightMenuItem.a].push(paramSwipRightMenuItem.e);
           }
         }
       }
@@ -224,7 +223,7 @@ public abstract class SwipRightMenuBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.rely.SwipRightMenuBuilder
  * JD-Core Version:    0.7.0.1
  */

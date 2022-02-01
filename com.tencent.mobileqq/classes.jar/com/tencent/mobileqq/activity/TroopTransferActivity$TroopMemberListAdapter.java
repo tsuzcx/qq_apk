@@ -19,14 +19,14 @@ import java.util.regex.Pattern;
 public class TroopTransferActivity$TroopMemberListAdapter
   extends FacePreloadBaseAdapter
 {
-  protected LayoutInflater a;
   protected ArrayList<TroopTransferActivity.TroopMemberItem> a;
+  protected LayoutInflater b;
   
   public TroopTransferActivity$TroopMemberListAdapter(Context paramContext, ArrayList<String> paramArrayList)
   {
-    super(paramArrayList, paramContext.app, paramContext.a, 1, true);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramArrayList.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramArrayList, paramContext.app, paramContext.g, 1, true);
+    this.b = ((LayoutInflater)paramArrayList.getSystemService("layout_inflater"));
+    this.a = new ArrayList();
     TroopTransferActivity.TroopMemberItem localTroopMemberItem;
     int i;
     if (localTroopMemberItem == null) {
@@ -48,17 +48,17 @@ public class TroopTransferActivity$TroopMemberListAdapter
         if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 1))
         {
           localObject = new TroopTransferActivity.TroopMemberItem();
-          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_Int = 1;
-          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_JavaLangString = str;
-          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_b_of_type_Int = k;
+          ((TroopTransferActivity.TroopMemberItem)localObject).a = 1;
+          ((TroopTransferActivity.TroopMemberItem)localObject).c = str;
+          ((TroopTransferActivity.TroopMemberItem)localObject).b = k;
           localArrayList.add(localObject);
         }
         else if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 0))
         {
           localObject = new TroopTransferActivity.TroopMemberItem();
-          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_Int = 1;
-          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_a_of_type_JavaLangString = str;
-          ((TroopTransferActivity.TroopMemberItem)localObject).jdField_b_of_type_Int = k;
+          ((TroopTransferActivity.TroopMemberItem)localObject).a = 1;
+          ((TroopTransferActivity.TroopMemberItem)localObject).c = str;
+          ((TroopTransferActivity.TroopMemberItem)localObject).b = k;
           paramArrayList.add(localObject);
         }
       }
@@ -67,18 +67,18 @@ public class TroopTransferActivity$TroopMemberListAdapter
     if (localArrayList.size() > 0)
     {
       localTroopMemberItem = new TroopTransferActivity.TroopMemberItem();
-      localTroopMemberItem.jdField_a_of_type_Int = 0;
-      localTroopMemberItem.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_JavaUtilArrayList.add(0, localTroopMemberItem);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+      localTroopMemberItem.a = 0;
+      localTroopMemberItem.b = 1;
+      this.a.add(0, localTroopMemberItem);
+      this.a.addAll(localArrayList);
     }
     if (paramArrayList.size() > 0)
     {
       localTroopMemberItem = new TroopTransferActivity.TroopMemberItem();
-      localTroopMemberItem.jdField_a_of_type_Int = 0;
-      localTroopMemberItem.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localTroopMemberItem);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      localTroopMemberItem.a = 0;
+      localTroopMemberItem.b = 0;
+      this.a.add(localTroopMemberItem);
+      this.a.addAll(paramArrayList);
     }
     ThreadManager.post(new TroopTransferActivity.TroopMemberListAdapter.1(this, paramContext), 8, null, false);
   }
@@ -87,14 +87,14 @@ public class TroopTransferActivity$TroopMemberListAdapter
   {
     Object localObject1 = null;
     int i = 0;
-    while ((localObject1 == null) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    while ((localObject1 == null) && (i < this.a.size()))
     {
-      TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)this.a.get(i);
       Object localObject2 = localObject1;
       if (localTroopMemberItem != null)
       {
         localObject2 = localObject1;
-        if (Utils.a(localTroopMemberItem.jdField_a_of_type_JavaLangString, paramString)) {
+        if (Utils.a(localTroopMemberItem.c, paramString)) {
           localObject2 = localTroopMemberItem;
         }
       }
@@ -106,18 +106,18 @@ public class TroopTransferActivity$TroopMemberListAdapter
   
   public List<TroopTransferActivity.TroopMemberItem> a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.a;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (TroopTransferActivity.TroopMemberItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (TroopTransferActivity.TroopMemberItem)this.a.get(paramInt);
     }
     return null;
   }
@@ -130,10 +130,10 @@ public class TroopTransferActivity$TroopMemberListAdapter
   public int getItemViewType(int paramInt)
   {
     TroopTransferActivity.TroopMemberItem localTroopMemberItem = (TroopTransferActivity.TroopMemberItem)getItem(paramInt);
-    if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_a_of_type_Int == 0)) {
+    if ((localTroopMemberItem != null) && (localTroopMemberItem.a == 0)) {
       return 0;
     }
-    if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_a_of_type_Int == 1)) {
+    if ((localTroopMemberItem != null) && (localTroopMemberItem.a == 1)) {
       return 1;
     }
     return 0;
@@ -151,30 +151,30 @@ public class TroopTransferActivity$TroopMemberListAdapter
     {
       if (paramView == null)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559309, paramViewGroup, false);
+        paramView = this.b.inflate(2131625258, paramViewGroup, false);
         localViewHolder = new TroopTransferActivity.ViewHolder(null);
-        localViewHolder.c = null;
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+        localViewHolder.A = null;
+        localViewHolder.b = ((TextView)paramView);
         paramView.setTag(localViewHolder);
       }
       else
       {
         localViewHolder = (TroopTransferActivity.ViewHolder)paramView.getTag();
       }
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
-      if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_b_of_type_Int == 1))
+      localViewHolder.a = localTroopMemberItem;
+      if ((localTroopMemberItem != null) && (localTroopMemberItem.b == 1))
       {
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131693882);
+        localViewHolder.b.setText(2131891487);
         localObject1 = paramView;
       }
-      else if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_b_of_type_Int == 0))
+      else if ((localTroopMemberItem != null) && (localTroopMemberItem.b == 0))
       {
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(2131719826);
+        localViewHolder.b.setText(2131917431);
         localObject1 = paramView;
       }
       else
       {
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        localViewHolder.b.setText("");
         localObject1 = paramView;
       }
     }
@@ -185,42 +185,42 @@ public class TroopTransferActivity$TroopMemberListAdapter
       {
         if (paramView == null)
         {
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562978, paramViewGroup, false);
-          paramView.findViewById(2131379508).setVisibility(8);
-          paramView.findViewById(2131363963).setVisibility(8);
+          paramView = this.b.inflate(2131629586, paramViewGroup, false);
+          paramView.findViewById(2131448256).setVisibility(8);
+          paramView.findViewById(2131429919).setVisibility(8);
           localViewHolder = new TroopTransferActivity.ViewHolder(null);
-          localViewHolder.c = ((ImageView)paramView.findViewById(2131369373));
-          localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
+          localViewHolder.A = ((ImageView)paramView.findViewById(2131436404));
+          localViewHolder.b = ((TextView)paramView.findViewById(2131448598));
           paramView.setTag(localViewHolder);
         }
         else
         {
           localViewHolder = (TroopTransferActivity.ViewHolder)paramView.getTag();
         }
-        localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
+        localViewHolder.a = localTroopMemberItem;
         localObject1 = localObject2;
         if (localTroopMemberItem != null) {
-          localObject1 = localTroopMemberItem.jdField_a_of_type_JavaLangString;
+          localObject1 = localTroopMemberItem.c;
         }
         if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals("0")))
         {
-          localViewHolder.jdField_a_of_type_JavaLangString = ((String)localObject1);
-          localViewHolder.c.setImageBitmap(a(1, localTroopMemberItem.jdField_a_of_type_JavaLangString));
+          localViewHolder.y = ((String)localObject1);
+          localViewHolder.A.setImageBitmap(a(1, localTroopMemberItem.c));
         }
         else
         {
-          localViewHolder.c.setImageDrawable(ImageUtil.e());
+          localViewHolder.A.setImageDrawable(ImageUtil.j());
         }
         localObject1 = str;
         if (localTroopMemberItem != null) {
-          localObject1 = localTroopMemberItem.jdField_b_of_type_JavaLangString;
+          localObject1 = localTroopMemberItem.d;
         }
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+        localViewHolder.b.setText((CharSequence)localObject1);
         localObject1 = paramView;
       }
     }
-    if ((localViewHolder != null) && (localViewHolder.jdField_a_of_type_AndroidWidgetTextView != null)) {
-      ((View)localObject1).setContentDescription(localViewHolder.jdField_a_of_type_AndroidWidgetTextView.getText());
+    if ((localViewHolder != null) && (localViewHolder.b != null)) {
+      ((View)localObject1).setContentDescription(localViewHolder.b.getText());
     }
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
     return localObject1;
@@ -233,7 +233,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter
  * JD-Core Version:    0.7.0.1
  */

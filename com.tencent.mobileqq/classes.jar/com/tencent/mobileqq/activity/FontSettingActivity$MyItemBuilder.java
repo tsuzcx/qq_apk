@@ -20,11 +20,11 @@ class FontSettingActivity$MyItemBuilder
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
   
-  protected void b(View paramView) {}
+  protected void c(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity.MyItemBuilder
  * JD-Core Version:    0.7.0.1
  */

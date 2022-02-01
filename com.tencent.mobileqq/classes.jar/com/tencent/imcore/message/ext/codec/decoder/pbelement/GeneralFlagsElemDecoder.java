@@ -1,5 +1,6 @@
 package com.tencent.imcore.message.ext.codec.decoder.pbelement;
 
+import com.tencent.mobileqq.app.identity.Proto2JsonUtil;
 import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
@@ -9,6 +10,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBFloatField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.service.message.DecodeProtoPkgContext;
@@ -21,6 +23,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import msf.msgcomm.msg_comm.Msg;
+import tencent.im.group_pro_proto.user.msgTransData.TransData;
+import tencent.im.msg.hummer.resv.generalflags.MetaData;
+import tencent.im.msg.hummer.resv.generalflags.PassThrough;
 import tencent.im.msg.hummer.resv.generalflags.ResvAttr;
 import tencent.im.msg.im_msg_body.Elem;
 import tencent.im.msg.im_msg_body.GeneralFlags;
@@ -33,7 +38,7 @@ public class GeneralFlagsElemDecoder
   {
     if (!paramBoolean)
     {
-      long l = MessageProtoCodec.a(paramMsg);
+      long l = MessageProtoCodec.e(paramMsg);
       if (l >= 0L)
       {
         if (!paramList.isEmpty()) {
@@ -56,34 +61,17 @@ public class GeneralFlagsElemDecoder
   
   private void a(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
-    Object localObject;
-    if (paramResvAttr.bytes_tag_name.has())
-    {
-      localObject = paramResvAttr.bytes_tag_name.get().toStringUtf8();
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("decodeOpenExtraInfo, bytes_tag_name= ");
-        localStringBuilder.append((String)localObject);
-        QLog.d("GeneralFlagsElemDecoder", 2, localStringBuilder.toString());
-      }
-      if (!paramList.isEmpty()) {
-        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_open_game_tag_name", (String)localObject);
-      }
+    if (paramList.isEmpty()) {
+      return;
     }
-    if (paramResvAttr.bytes_message_ext.has())
+    paramList = (MessageRecord)paramList.get(0);
+    if (paramResvAttr.game_meta_data.has())
     {
-      paramResvAttr = paramResvAttr.bytes_message_ext.get().toStringUtf8();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("decodeOpenExtraInfo, bytes_message_ext= ");
-        ((StringBuilder)localObject).append(paramResvAttr);
-        QLog.d("GeneralFlagsElemDecoder", 2, ((StringBuilder)localObject).toString());
-      }
-      if (!paramList.isEmpty()) {
-        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_open_game_message_ext", paramResvAttr);
-      }
+      Object localObject = (generalflags.MetaData)paramResvAttr.game_meta_data.get();
+      paramResvAttr = ((generalflags.MetaData)localObject).ext_nick.get();
+      localObject = ((generalflags.MetaData)localObject).data_from.get();
+      paramList.saveExtInfoToExtStr("GUILD_MSG_GAME_NICK", paramResvAttr);
+      paramList.saveExtInfoToExtStr("GUILD_MSG_GAME_TYPE", (String)localObject);
     }
   }
   
@@ -141,6 +129,115 @@ public class GeneralFlagsElemDecoder
   
   private void b(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
+    if (!paramResvAttr.trans_data.has()) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GuildGeneralFlagsElemDecoder", 2, "decodeTransDataExtraInfo, has transdata");
+    }
+    if (!paramList.isEmpty())
+    {
+      msgTransData.TransData localTransData = new msgTransData.TransData();
+      try
+      {
+        localTransData.mergeFrom(paramResvAttr.trans_data.get().toByteArray());
+        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("MSG_GUILD_TRANS_DATA", Proto2JsonUtil.a(localTransData));
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramList)
+      {
+        paramResvAttr = new StringBuilder();
+        paramResvAttr.append("decodeTransDataExtraInfo error ");
+        paramResvAttr.append(paramList);
+        QLog.w("GuildGeneralFlagsElemDecoder", 1, paramResvAttr.toString());
+      }
+    }
+  }
+  
+  private void b(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr, StringBuilder paramStringBuilder)
+  {
+    if (paramResvAttr.uint32_service_msg_remind_type.has())
+    {
+      int i = paramResvAttr.uint32_service_msg_remind_type.get();
+      if (!paramList.isEmpty()) {
+        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.A, String.valueOf(i));
+      }
+      paramStringBuilder.append("---uint32_service_msg_remind_type = ");
+      paramStringBuilder.append(i);
+      paramStringBuilder.append("---");
+    }
+  }
+  
+  private void c(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  {
+    if (!paramResvAttr.uint32_compound_msg_flag.has()) {
+      return;
+    }
+    int i = paramResvAttr.uint32_compound_msg_flag.get();
+    if (QLog.isColorLevel())
+    {
+      paramResvAttr = new StringBuilder();
+      paramResvAttr.append("decodeMixMsgExtraInfo, uint32_compound_msg_flag = ");
+      paramResvAttr.append(i);
+      QLog.d("GeneralFlagsElemDecoder", 2, paramResvAttr.toString());
+    }
+    if (!paramList.isEmpty()) {
+      ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_compound_msg_flag", String.valueOf(i));
+    }
+  }
+  
+  private void c(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr, StringBuilder paramStringBuilder)
+  {
+    if (paramResvAttr.uint32_service_msg_type.has())
+    {
+      int i = paramResvAttr.uint32_service_msg_type.get();
+      if (!paramList.isEmpty()) {
+        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.z, String.valueOf(i));
+      }
+      paramStringBuilder.append("---uint32_service_msg_type = ");
+      paramStringBuilder.append(i);
+      paramStringBuilder.append("---");
+    }
+  }
+  
+  private void d(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  {
+    if ((paramResvAttr != null) && (paramResvAttr.pass_through != null))
+    {
+      Object localObject;
+      if (paramResvAttr.pass_through.bytes_qqconnect_tag_name.has())
+      {
+        localObject = paramResvAttr.pass_through.bytes_qqconnect_tag_name.get().toStringUtf8();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("decodeOpenExtraInfo, bytes_qqconnect_tag_name= ");
+          localStringBuilder.append((String)localObject);
+          QLog.d("GeneralFlagsElemDecoder", 2, localStringBuilder.toString());
+        }
+        if (!paramList.isEmpty()) {
+          ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_open_game_tag_name", (String)localObject);
+        }
+      }
+      if (paramResvAttr.pass_through.bytes_qqconnect_message_ext.has())
+      {
+        paramResvAttr = paramResvAttr.pass_through.bytes_qqconnect_message_ext.get().toStringUtf8();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("decodeOpenExtraInfo, bytes_qqconnect_message_ext= ");
+          ((StringBuilder)localObject).append(paramResvAttr);
+          QLog.d("GeneralFlagsElemDecoder", 2, ((StringBuilder)localObject).toString());
+        }
+        if (!paramList.isEmpty()) {
+          ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr("key_open_game_message_ext", paramResvAttr);
+        }
+      }
+    }
+  }
+  
+  private void e(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  {
     if ((paramResvAttr.uint32_comment_flag.has()) && (paramResvAttr.uint64_comment_location.has()) && (!paramList.isEmpty()))
     {
       boolean bool;
@@ -180,21 +277,7 @@ public class GeneralFlagsElemDecoder
     }
   }
   
-  private void b(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr, StringBuilder paramStringBuilder)
-  {
-    if (paramResvAttr.uint32_service_msg_remind_type.has())
-    {
-      int i = paramResvAttr.uint32_service_msg_remind_type.get();
-      if (!paramList.isEmpty()) {
-        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.A, String.valueOf(i));
-      }
-      paramStringBuilder.append("---uint32_service_msg_remind_type = ");
-      paramStringBuilder.append(i);
-      paramStringBuilder.append("---");
-    }
-  }
-  
-  private void c(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void f(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     try
     {
@@ -219,21 +302,7 @@ public class GeneralFlagsElemDecoder
     catch (Throwable paramList) {}
   }
   
-  private void c(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr, StringBuilder paramStringBuilder)
-  {
-    if (paramResvAttr.uint32_service_msg_type.has())
-    {
-      int i = paramResvAttr.uint32_service_msg_type.get();
-      if (!paramList.isEmpty()) {
-        ((MessageRecord)paramList.get(0)).saveExtInfoToExtStr(MessageConstants.z, String.valueOf(i));
-      }
-      paramStringBuilder.append("---uint32_service_msg_type = ");
-      paramStringBuilder.append(i);
-      paramStringBuilder.append("---");
-    }
-  }
-  
-  private void d(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void g(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.uint32_holiday_flag.has())
     {
@@ -251,7 +320,7 @@ public class GeneralFlagsElemDecoder
     }
   }
   
-  private void e(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void h(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.uint32_bot_message_class_id.has())
     {
@@ -269,7 +338,7 @@ public class GeneralFlagsElemDecoder
     }
   }
   
-  private void f(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void i(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.uint32_diy_font_timestamp.has())
     {
@@ -291,7 +360,7 @@ public class GeneralFlagsElemDecoder
     }
   }
   
-  private void g(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void j(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.uint64_subfont_id.has())
     {
@@ -309,7 +378,7 @@ public class GeneralFlagsElemDecoder
     }
   }
   
-  private void h(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void k(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.float_sticker_x.has())
     {
@@ -380,7 +449,7 @@ public class GeneralFlagsElemDecoder
     }
   }
   
-  private void i(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void l(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     if (paramResvAttr.uint32_tail_key.has())
     {
@@ -398,7 +467,7 @@ public class GeneralFlagsElemDecoder
     }
   }
   
-  private void j(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
+  private void m(List<MessageRecord> paramList, generalflags.ResvAttr paramResvAttr)
   {
     try
     {
@@ -484,16 +553,16 @@ public class GeneralFlagsElemDecoder
         try
         {
           ((generalflags.ResvAttr)localObject).mergeFrom(paramElem.general_flags.bytes_pb_reserve.get().toByteArray());
-          h(paramList, (generalflags.ResvAttr)localObject);
+          k(paramList, (generalflags.ResvAttr)localObject);
           bool1 = a(paramList, false, (generalflags.ResvAttr)localObject);
           try
           {
-            g(paramList, (generalflags.ResvAttr)localObject);
-            f(paramList, (generalflags.ResvAttr)localObject);
-            a((generalflags.ResvAttr)localObject);
+            j(paramList, (generalflags.ResvAttr)localObject);
             i(paramList, (generalflags.ResvAttr)localObject);
-            e(paramList, (generalflags.ResvAttr)localObject);
-            d(paramList, (generalflags.ResvAttr)localObject);
+            a((generalflags.ResvAttr)localObject);
+            l(paramList, (generalflags.ResvAttr)localObject);
+            h(paramList, (generalflags.ResvAttr)localObject);
+            g(paramList, (generalflags.ResvAttr)localObject);
             paramElem = new StringBuilder("<---decodeMiniProgramPBMsgElems:");
             c(paramList, (generalflags.ResvAttr)localObject, paramElem);
             b(paramList, (generalflags.ResvAttr)localObject, paramElem);
@@ -501,10 +570,13 @@ public class GeneralFlagsElemDecoder
             if (QLog.isColorLevel()) {
               QLog.d("GeneralFlagsElemDecoder", 2, new Object[] { paramElem });
             }
+            f(paramList, (generalflags.ResvAttr)localObject);
+            e(paramList, (generalflags.ResvAttr)localObject);
+            m(paramList, (generalflags.ResvAttr)localObject);
+            d(paramList, (generalflags.ResvAttr)localObject);
             c(paramList, (generalflags.ResvAttr)localObject);
-            b(paramList, (generalflags.ResvAttr)localObject);
-            j(paramList, (generalflags.ResvAttr)localObject);
             a(paramList, (generalflags.ResvAttr)localObject);
+            b(paramList, (generalflags.ResvAttr)localObject);
           }
           catch (InvalidProtocolBufferMicroException paramElem) {}
           paramElem.printStackTrace();
@@ -537,7 +609,7 @@ public class GeneralFlagsElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.GeneralFlagsElemDecoder
  * JD-Core Version:    0.7.0.1
  */

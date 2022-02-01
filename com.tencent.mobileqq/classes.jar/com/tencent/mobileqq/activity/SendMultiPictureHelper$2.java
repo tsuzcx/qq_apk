@@ -17,22 +17,22 @@ class SendMultiPictureHelper$2
   protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
+    if (this.a.c != null) {
+      this.a.c.setMessage(String.format(this.a.o, new Object[] { Integer.valueOf(this.a.e + 1), Integer.valueOf(this.a.f), Integer.valueOf(0) }));
     }
     paramString = this.a;
-    paramString.jdField_a_of_type_JavaUtilList = paramString.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
+    paramString.u = paramString.b.getFileManagerProxy().c();
   }
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
     QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    if (this.a.u != null)
     {
       paramInt = 0;
-      while (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+      while (paramInt < this.a.d.size())
       {
-        if (((SendMultiPictureHelper.SendingFileInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a == paramLong1) {
+        if (((SendMultiPictureHelper.SendingFileInfo)this.a.d.get(paramInt)).b == paramLong1) {
           break label74;
         }
         paramInt += 1;
@@ -42,15 +42,15 @@ class SendMultiPictureHelper$2
       if (paramInt != -1)
       {
         paramInt = 0;
-        while (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
+        while (paramInt < this.a.u.size())
         {
-          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+          paramString = (FileManagerEntity)this.a.u.get(paramInt);
           if (paramString.uniseq == paramLong1)
           {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
+            if (this.a.c == null) {
               break;
             }
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
+            this.a.c.setMessage(String.format(this.a.o, new Object[] { Integer.valueOf(this.a.e + 1), Integer.valueOf(this.a.f), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
             return;
           }
           paramInt += 1;
@@ -60,15 +60,15 @@ class SendMultiPictureHelper$2
     else
     {
       paramString = this.a;
-      paramString.jdField_a_of_type_JavaUtilList = paramString.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
+      paramString.u = paramString.b.getFileManagerProxy().c();
     }
   }
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
   {
     QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
-    if (!this.a.jdField_b_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+    if (!this.a.m) {
+      synchronized (this.a.d)
       {
         this.a.a();
         return;
@@ -78,7 +78,7 @@ class SendMultiPictureHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SendMultiPictureHelper.2
  * JD-Core Version:    0.7.0.1
  */

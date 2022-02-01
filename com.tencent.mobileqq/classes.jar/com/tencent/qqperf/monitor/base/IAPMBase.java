@@ -5,23 +5,23 @@ import com.tencent.qqperf.config.APMModuleConfig;
 
 public abstract interface IAPMBase
 {
-  public abstract DefaultPluginConfig a();
-  
   public abstract String a();
   
-  public abstract void a();
+  public abstract void d();
   
-  public abstract APMModuleConfig b();
+  public abstract APMModuleConfig f();
   
-  public abstract void b();
+  public abstract DefaultPluginConfig g();
   
-  public abstract boolean c();
+  public abstract boolean h();
   
-  public abstract boolean d();
+  public abstract boolean i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.base.IAPMBase
  * JD-Core Version:    0.7.0.1
  */

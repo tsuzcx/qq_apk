@@ -15,14 +15,14 @@ class QfileLocalFileAppTabView$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (this.this$0.f)
+    if (this.this$0.n)
     {
-      FileCategoryUtil.a(this.this$0.a, this.this$0);
+      FileCategoryUtil.a(this.this$0.C, this.this$0);
       FileCategoryUtil.a(true, AppConstants.SDCARD_FILE_SAVE_PATH, ".apk", "", localHashMap, this.this$0);
     }
     else
     {
-      Iterator localIterator = this.this$0.d.iterator();
+      Iterator localIterator = this.this$0.m.iterator();
       while (localIterator.hasNext()) {
         FileCategoryUtil.a(true, ((QfileTabBarView.ScanParams)localIterator.next()).a(), ".apk", "", localHashMap, this.this$0);
       }
@@ -33,7 +33,7 @@ class QfileLocalFileAppTabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ class ConferenceFlyTicketActivity$OnReportHrSelfNickNameTask
   public void a(DownloadParams paramDownloadParams)
   {
     AudioHelper.b("上传SelfNickName_rsp");
-    boolean bool = paramDownloadParams.a.jdField_a_of_type_Boolean;
+    boolean bool = paramDownloadParams.f.f;
     String str = "";
     Object localObject;
     StringBuilder localStringBuilder;
@@ -28,7 +28,7 @@ class ConferenceFlyTicketActivity$OnReportHrSelfNickNameTask
     {
       try
       {
-        paramDownloadParams = new String(paramDownloadParams.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
+        paramDownloadParams = new String(paramDownloadParams.f.a, "UTF-8");
       }
       catch (Exception paramDownloadParams)
       {

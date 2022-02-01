@@ -48,7 +48,7 @@ public class AppCompatActivity
     super(paramInt);
   }
   
-  private boolean performMenuItemShortcut(int paramInt, KeyEvent paramKeyEvent)
+  private boolean performMenuItemShortcut(KeyEvent paramKeyEvent)
   {
     if ((Build.VERSION.SDK_INT < 26) && (!paramKeyEvent.isCtrlPressed()) && (!KeyEvent.metaStateHasNoModifiers(paramKeyEvent.getMetaState())) && (paramKeyEvent.getRepeatCount() == 0) && (!KeyEvent.isModifierKey(paramKeyEvent.getKeyCode())))
     {
@@ -67,8 +67,7 @@ public class AppCompatActivity
   
   protected void attachBaseContext(Context paramContext)
   {
-    super.attachBaseContext(paramContext);
-    getDelegate().attachBaseContext(paramContext);
+    super.attachBaseContext(getDelegate().attachBaseContext2(paramContext));
   }
   
   public void closeOptionsMenu()
@@ -192,7 +191,7 @@ public class AppCompatActivity
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (performMenuItemShortcut(paramInt, paramKeyEvent)) {
+    if (performMenuItemShortcut(paramKeyEvent)) {
       return true;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);

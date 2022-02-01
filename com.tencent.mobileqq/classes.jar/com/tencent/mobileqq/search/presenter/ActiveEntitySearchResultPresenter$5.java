@@ -1,35 +1,37 @@
 package com.tencent.mobileqq.search.presenter;
 
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.guild.api.IQQGuildRouterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
-import com.tencent.mobileqq.troop.activity.JoinTroopUtil.JoinTroopCallback;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ActiveEntitySearchResultPresenter$5
-  implements JoinTroopUtil.JoinTroopCallback
+  implements View.OnClickListener
 {
   ActiveEntitySearchResultPresenter$5(ActiveEntitySearchResultPresenter paramActiveEntitySearchResultPresenter, GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b != null) && (this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b.equals(paramString)))
+    if (this.a.R == 0)
     {
-      if (paramInt == 3) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.m = 2;
-      } else if ((paramInt != 2) && (paramInt != 4))
-      {
-        if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.m = 0;
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.m = 1;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter.a();
+      ((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).openGuild(ActiveEntitySearchResultPresenter.c(this.b), paramView.getContext(), false, null, this.a.b);
     }
+    else
+    {
+      int i = 246614;
+      if (this.a.m == 99) {
+        i = 246613;
+      }
+      ((IQQGuildRouterApi)QRoute.api(IQQGuildRouterApi.class)).addGuildByAuthSig(paramView.getContext(), this.a.b, this.a.T, i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.5
  * JD-Core Version:    0.7.0.1
  */

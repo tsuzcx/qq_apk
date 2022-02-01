@@ -18,7 +18,7 @@ public class SquareFeedAllInfoPullSegment
 {
   private void b(JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)
   {
-    paramJobContext = paramGetFeedIdListResult.jdField_a_of_type_JavaUtilList;
+    paramJobContext = paramGetFeedIdListResult.a;
     SLog.a("Q.qqstory.discover:SquareFeedAllInfoPullSegment", "start pull feed info count:%d", Integer.valueOf(paramJobContext.size()));
     if (SLog.a()) {
       SLog.a("Q.qqstory.discover:SquareFeedAllInfoPullSegment", "start pull feed info %s", paramJobContext);
@@ -29,25 +29,25 @@ public class SquareFeedAllInfoPullSegment
       localArrayList.add(((FeedIdListSeqInfo)((Iterator)localObject).next()).a);
     }
     localObject = new BatchGetSquareFeedInfoRequest();
-    ((BatchGetSquareFeedInfoRequest)localObject).jdField_a_of_type_JavaUtilList = paramJobContext;
+    ((BatchGetSquareFeedInfoRequest)localObject).f = paramJobContext;
     CmdTaskManger.a().a((NetworkRequest)localObject, new SquareFeedAllInfoPullSegment.1(this, paramGetFeedIdListResult, localArrayList));
   }
   
   protected void a(JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)
   {
-    Iterator localIterator = paramGetFeedIdListResult.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramGetFeedIdListResult.a.iterator();
     while (localIterator.hasNext()) {
       if (localIterator.next() == null) {
         localIterator.remove();
       }
     }
-    if (paramGetFeedIdListResult.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (paramGetFeedIdListResult.a.isEmpty())
     {
-      if (paramGetFeedIdListResult.b)
+      if (paramGetFeedIdListResult.c)
       {
         paramJobContext = new SquareFeedData(new ErrorMessage());
-        paramJobContext.c = paramGetFeedIdListResult.jdField_a_of_type_Boolean;
-        paramJobContext.jdField_a_of_type_Boolean = paramGetFeedIdListResult.b;
+        paramJobContext.c = paramGetFeedIdListResult.b;
+        paramJobContext.a = paramGetFeedIdListResult.c;
         notifyResult(paramJobContext);
         return;
       }

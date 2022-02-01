@@ -17,42 +17,18 @@ import java.util.Map;
 
 public class DatalineMsgDbTransformer
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, Boolean> b = new HashMap();
+  private QQAppInterface a;
+  private Map<String, Long> b = new HashMap();
+  private Map<String, Boolean> c = new HashMap();
   
   public DatalineMsgDbTransformer(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private int a(int paramInt)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("dataline_msg_transform_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("msg_transform_count_");
-    localStringBuilder.append(paramInt);
-    int i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getTransformCountIndex: type[");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append("] startIndex[");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append("]");
-      QLog.i("DatalineMsgDbTransformer", 1, ((StringBuilder)localObject).toString());
-    }
-    return i;
+    this.a = paramQQAppInterface;
   }
   
   private String a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    long l = b(paramInt1);
+    long l = c(paramInt1);
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("select * from ");
@@ -89,7 +65,7 @@ public class DatalineMsgDbTransformer
       ((StringBuilder)localObject2).append("]");
       QLog.i("DatalineMsgDbTransformer", 1, ((StringBuilder)localObject2).toString());
     }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
     Object localObject2 = localEntityManager.rawQuery(DataLineMsgRecord.class, (String)localObject1, null);
     localEntityManager.close();
     localObject1 = localObject2;
@@ -106,10 +82,10 @@ public class DatalineMsgDbTransformer
       if (paramList.isEmpty()) {
         return;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      Object localObject = this.a.getApp();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("dataline_msg_transform_");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      localStringBuilder.append(this.a.getCurrentUin());
       localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
       if (paramInt2 == 0)
       {
@@ -152,15 +128,15 @@ public class DatalineMsgDbTransformer
   {
     try
     {
-      Object localObject1 = this.b;
+      Object localObject1 = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("msg_transform_finish_");
       localStringBuilder.append(paramInt);
       ((Map)localObject1).put(localStringBuilder.toString(), Boolean.valueOf(paramBoolean));
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      localObject1 = this.a.getApp();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("dataline_msg_transform_");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      localStringBuilder.append(this.a.getCurrentUin());
       localObject1 = ((BaseApplication)localObject1).getSharedPreferences(localStringBuilder.toString(), 0).edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("msg_transform_finish_");
@@ -182,56 +158,10 @@ public class DatalineMsgDbTransformer
     finally {}
   }
   
-  private boolean a(int paramInt)
+  private void d(int paramInt)
   {
-    try
-    {
-      Object localObject1 = this.b;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("msg_transform_finish_");
-      localStringBuilder.append(paramInt);
-      if (((Map)localObject1).containsKey(localStringBuilder.toString()))
-      {
-        localObject1 = this.b;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("msg_transform_finish_");
-        localStringBuilder.append(paramInt);
-        bool = ((Boolean)((Map)localObject1).get(localStringBuilder.toString())).booleanValue();
-        return bool;
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("dataline_msg_transform_");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-      localObject1 = ((BaseApplication)localObject1).getSharedPreferences(localStringBuilder.toString(), 0);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("msg_transform_finish_");
-      localStringBuilder.append(paramInt);
-      boolean bool = ((SharedPreferences)localObject1).getBoolean(localStringBuilder.toString(), false);
-      localObject1 = this.b;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("msg_transform_finish_");
-      localStringBuilder.append(paramInt);
-      ((Map)localObject1).put(localStringBuilder.toString(), Boolean.valueOf(bool));
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("getTransformFinishFlag: type[");
-        ((StringBuilder)localObject1).append(paramInt);
-        ((StringBuilder)localObject1).append("] finishFlag[");
-        ((StringBuilder)localObject1).append(bool);
-        ((StringBuilder)localObject1).append("]");
-        QLog.i("DatalineMsgDbTransformer", 1, ((StringBuilder)localObject1).toString());
-      }
-      return bool;
-    }
-    finally {}
-  }
-  
-  private void b(int paramInt)
-  {
-    int i = a(paramInt);
-    DatalineMsgHelper localDatalineMsgHelper = new DatalineMsgHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = e(paramInt);
+    DatalineMsgHelper localDatalineMsgHelper = new DatalineMsgHelper(this.a);
     int j;
     do
     {
@@ -252,7 +182,7 @@ public class DatalineMsgDbTransformer
       if (localList.size() > 0)
       {
         localObject = new ArrayList();
-        DatalineMsgTransformer localDatalineMsgTransformer = new DatalineMsgTransformer(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        DatalineMsgTransformer localDatalineMsgTransformer = new DatalineMsgTransformer(this.a);
         Iterator localIterator = localList.iterator();
         while (localIterator.hasNext())
         {
@@ -283,6 +213,76 @@ public class DatalineMsgDbTransformer
     a(paramInt, true);
   }
   
+  private int e(int paramInt)
+  {
+    Object localObject = this.a.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dataline_msg_transform_");
+    localStringBuilder.append(this.a.getCurrentUin());
+    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("msg_transform_count_");
+    localStringBuilder.append(paramInt);
+    int i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTransformCountIndex: type[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("] startIndex[");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("DatalineMsgDbTransformer", 1, ((StringBuilder)localObject).toString());
+    }
+    return i;
+  }
+  
+  private boolean f(int paramInt)
+  {
+    try
+    {
+      Object localObject1 = this.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msg_transform_finish_");
+      localStringBuilder.append(paramInt);
+      if (((Map)localObject1).containsKey(localStringBuilder.toString()))
+      {
+        localObject1 = this.c;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("msg_transform_finish_");
+        localStringBuilder.append(paramInt);
+        bool = ((Boolean)((Map)localObject1).get(localStringBuilder.toString())).booleanValue();
+        return bool;
+      }
+      localObject1 = this.a.getApp();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dataline_msg_transform_");
+      localStringBuilder.append(this.a.getCurrentUin());
+      localObject1 = ((BaseApplication)localObject1).getSharedPreferences(localStringBuilder.toString(), 0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msg_transform_finish_");
+      localStringBuilder.append(paramInt);
+      boolean bool = ((SharedPreferences)localObject1).getBoolean(localStringBuilder.toString(), false);
+      localObject1 = this.c;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msg_transform_finish_");
+      localStringBuilder.append(paramInt);
+      ((Map)localObject1).put(localStringBuilder.toString(), Boolean.valueOf(bool));
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getTransformFinishFlag: type[");
+        ((StringBuilder)localObject1).append(paramInt);
+        ((StringBuilder)localObject1).append("] finishFlag[");
+        ((StringBuilder)localObject1).append(bool);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("DatalineMsgDbTransformer", 1, ((StringBuilder)localObject1).toString());
+      }
+      return bool;
+    }
+    finally {}
+  }
+  
   public long a(int paramInt)
   {
     List localList = a(0, 1, paramInt);
@@ -295,36 +295,73 @@ public class DatalineMsgDbTransformer
   public void a()
   {
     QLog.e("DatalineMsgDbTransformer", 1, "transform.");
-    a(0);
-    if (a(0))
+    b(0);
+    if (f(0))
     {
       QLog.i("DatalineMsgDbTransformer", 1, "transform: handle dataline pc: finish.");
     }
     else
     {
       QLog.i("DatalineMsgDbTransformer", 1, "transform: handle dataline pc: start.");
-      b(0);
+      d(0);
     }
-    a(1);
-    if (a(1))
+    b(1);
+    if (f(1))
     {
       QLog.i("DatalineMsgDbTransformer", 1, "transform: handle dataline iPad: finish.");
       return;
     }
     QLog.i("DatalineMsgDbTransformer", 1, "transform: handle dataline iPad: start.");
-    b(1);
+    d(1);
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, long paramLong)
+  {
+    if (paramLong == 0L) {
+      return;
+    }
+    try
+    {
+      Object localObject1 = this.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msg_transform_begin_id_");
+      localStringBuilder.append(paramInt);
+      ((Map)localObject1).put(localStringBuilder.toString(), Long.valueOf(paramLong));
+      localObject1 = this.a.getApp();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dataline_msg_transform_");
+      localStringBuilder.append(this.a.getCurrentUin());
+      localObject1 = ((BaseApplication)localObject1).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msg_transform_begin_id_");
+      localStringBuilder.append(paramInt);
+      ((SharedPreferences.Editor)localObject1).putLong(localStringBuilder.toString(), paramLong);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveTransformBeginItemId: type[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("] beginItemId[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        QLog.i("DatalineMsgDbTransformer", 1, localStringBuilder.toString());
+      }
+      ((SharedPreferences.Editor)localObject1).apply();
+      return;
+    }
+    finally {}
+  }
+  
+  public void b(int paramInt)
   {
     try
     {
-      if (a(paramInt))
+      if (f(paramInt))
       {
         QLog.d("DatalineMsgDbTransformer", 2, "checkTransformBeginItemId: finish, do not check.");
         return;
       }
-      long l = b(paramInt);
+      long l = c(paramInt);
       StringBuilder localStringBuilder;
       if (l == -1L)
       {
@@ -353,70 +390,33 @@ public class DatalineMsgDbTransformer
     finally {}
   }
   
-  public void a(int paramInt, long paramLong)
-  {
-    if (paramLong == 0L) {
-      return;
-    }
-    try
-    {
-      Object localObject1 = this.jdField_a_of_type_JavaUtilMap;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("msg_transform_begin_id_");
-      localStringBuilder.append(paramInt);
-      ((Map)localObject1).put(localStringBuilder.toString(), Long.valueOf(paramLong));
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("dataline_msg_transform_");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-      localObject1 = ((BaseApplication)localObject1).getSharedPreferences(localStringBuilder.toString(), 0).edit();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("msg_transform_begin_id_");
-      localStringBuilder.append(paramInt);
-      ((SharedPreferences.Editor)localObject1).putLong(localStringBuilder.toString(), paramLong);
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("saveTransformBeginItemId: type[");
-        localStringBuilder.append(paramInt);
-        localStringBuilder.append("] beginItemId[");
-        localStringBuilder.append(paramLong);
-        localStringBuilder.append("]");
-        QLog.i("DatalineMsgDbTransformer", 1, localStringBuilder.toString());
-      }
-      ((SharedPreferences.Editor)localObject1).apply();
-      return;
-    }
-    finally {}
-  }
-  
-  public long b(int paramInt)
+  public long c(int paramInt)
   {
     try
     {
-      Object localObject1 = this.jdField_a_of_type_JavaUtilMap;
+      Object localObject1 = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("msg_transform_begin_id_");
       localStringBuilder.append(paramInt);
       if (((Map)localObject1).containsKey(localStringBuilder.toString()))
       {
-        localObject1 = this.jdField_a_of_type_JavaUtilMap;
+        localObject1 = this.b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("msg_transform_begin_id_");
         localStringBuilder.append(paramInt);
         l = ((Long)((Map)localObject1).get(localStringBuilder.toString())).longValue();
         return l;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      localObject1 = this.a.getApp();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("dataline_msg_transform_");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      localStringBuilder.append(this.a.getCurrentUin());
       localObject1 = ((BaseApplication)localObject1).getSharedPreferences(localStringBuilder.toString(), 0);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("msg_transform_begin_id_");
       localStringBuilder.append(paramInt);
       long l = ((SharedPreferences)localObject1).getLong(localStringBuilder.toString(), -1L);
-      localObject1 = this.jdField_a_of_type_JavaUtilMap;
+      localObject1 = this.b;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("msg_transform_begin_id_");
       localStringBuilder.append(paramInt);
@@ -438,7 +438,7 @@ public class DatalineMsgDbTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.DatalineMsgDbTransformer
  * JD-Core Version:    0.7.0.1
  */

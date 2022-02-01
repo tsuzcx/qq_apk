@@ -24,16 +24,16 @@ class ForwardPreviewTroopMemberController$2
     }
     localStringBuilder.append(i);
     QLog.i("Forward.Preview.Dialog", 2, localStringBuilder.toString());
-    if ((ForwardPreviewTroopMemberController.a(this.a).equals(paramString)) && (ForwardPreviewTroopMemberController.a(this.a) != null))
+    if ((ForwardPreviewTroopMemberController.c(this.a).equals(paramString)) && (ForwardPreviewTroopMemberController.b(this.a) != null))
     {
-      this.a.e();
-      ForwardPreviewTroopMemberController.a(this.a).a(paramList);
+      this.a.h();
+      ForwardPreviewTroopMemberController.b(this.a).a(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.2
  * JD-Core Version:    0.7.0.1
  */

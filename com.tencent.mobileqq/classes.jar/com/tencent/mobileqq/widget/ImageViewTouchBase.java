@@ -49,11 +49,11 @@ public abstract class ImageViewTouchBase
   {
     float f1 = getWidth();
     float f2 = getHeight();
-    float f3 = paramRotateBitmap.c();
-    float f4 = paramRotateBitmap.b();
+    float f3 = paramRotateBitmap.f();
+    float f4 = paramRotateBitmap.e();
     paramMatrix.reset();
     float f5 = Math.min(Math.min(f1 / f3, 3.0F), Math.min(f2 / f4, 3.0F));
-    paramMatrix.postConcat(paramRotateBitmap.a());
+    paramMatrix.postConcat(paramRotateBitmap.c());
     paramMatrix.postScale(f5, f5);
     paramMatrix.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
   }
@@ -70,7 +70,7 @@ public abstract class ImageViewTouchBase
     if (localObject != null) {
       ((Drawable)localObject).setDither(true);
     }
-    localObject = this.mBitmapDisplayed.a();
+    localObject = this.mBitmapDisplayed.b();
     this.mBitmapDisplayed.a(paramBitmap);
     this.mBitmapDisplayed.a(paramInt);
     if ((localObject != null) && (localObject != paramBitmap))
@@ -89,12 +89,12 @@ public abstract class ImageViewTouchBase
   
   protected void center(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.mBitmapDisplayed.a() == null) {
+    if (this.mBitmapDisplayed.b() == null) {
       return;
     }
     Matrix localMatrix = getImageViewMatrix();
-    float f1 = this.mBitmapDisplayed.a().getWidth();
-    float f2 = this.mBitmapDisplayed.a().getHeight();
+    float f1 = this.mBitmapDisplayed.b().getWidth();
+    float f2 = this.mBitmapDisplayed.b().getHeight();
     float f3 = 0.0F;
     RectF localRectF = new RectF(0.0F, 0.0F, f1, f2);
     localMatrix.mapRect(localRectF);
@@ -162,8 +162,8 @@ public abstract class ImageViewTouchBase
   {
     Matrix localMatrix = getImageViewMatrix();
     RectF localRectF = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    if (this.mBitmapDisplayed.a() != null) {
-      localRectF.set(0.0F, 0.0F, this.mBitmapDisplayed.a().getWidth(), this.mBitmapDisplayed.a().getHeight());
+    if (this.mBitmapDisplayed.b() != null) {
+      localRectF.set(0.0F, 0.0F, this.mBitmapDisplayed.b().getWidth(), this.mBitmapDisplayed.b().getHeight());
     }
     localMatrix.mapRect(localRectF);
     return localRectF;
@@ -171,7 +171,7 @@ public abstract class ImageViewTouchBase
   
   public int getImageHeight()
   {
-    return this.mBitmapDisplayed.a().getHeight();
+    return this.mBitmapDisplayed.b().getHeight();
   }
   
   protected Matrix getImageViewMatrix()
@@ -183,7 +183,7 @@ public abstract class ImageViewTouchBase
   
   public int getImageWidth()
   {
-    return this.mBitmapDisplayed.a().getWidth();
+    return this.mBitmapDisplayed.b().getWidth();
   }
   
   public float getMaxZoom()
@@ -219,10 +219,10 @@ public abstract class ImageViewTouchBase
   
   protected float maxZoom()
   {
-    if (this.mBitmapDisplayed.a() == null) {
+    if (this.mBitmapDisplayed.b() == null) {
       return 1.0F;
     }
-    float f2 = Math.max(this.mBitmapDisplayed.c() / this.mThisWidth, this.mBitmapDisplayed.b() / this.mThisHeight) * 4.0F;
+    float f2 = Math.max(this.mBitmapDisplayed.f() / this.mThisWidth, this.mBitmapDisplayed.e() / this.mThisHeight) * 4.0F;
     float f1 = f2;
     if (f2 < 1.0F) {
       f1 = 3.0F;
@@ -235,11 +235,11 @@ public abstract class ImageViewTouchBase
     try
     {
       super.onDraw(paramCanvas);
-      if ((this.mBitmapDisplayed != null) && (this.mBitmapDisplayed.a() != null))
+      if ((this.mBitmapDisplayed != null) && (this.mBitmapDisplayed.b() != null))
       {
         Paint localPaint = new Paint();
         Object localObject = getImageViewMatrix();
-        this.tmpRect.set(0.0F, 0.0F, this.mBitmapDisplayed.a().getWidth(), this.mBitmapDisplayed.a().getHeight());
+        this.tmpRect.set(0.0F, 0.0F, this.mBitmapDisplayed.b().getWidth(), this.mBitmapDisplayed.b().getHeight());
         ((Matrix)localObject).mapRect(this.tmpRect);
         if (this.bShadow)
         {
@@ -306,7 +306,7 @@ public abstract class ImageViewTouchBase
       this.mOnLayoutRunnable = null;
       localRunnable.run();
     }
-    if (this.mBitmapDisplayed.a() != null)
+    if (this.mBitmapDisplayed.b() != null)
     {
       getProperBaseMatrix(this.mBitmapDisplayed, this.mBaseMatrix);
       setImageMatrix(getImageViewMatrix());
@@ -341,10 +341,10 @@ public abstract class ImageViewTouchBase
       this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, paramRotateBitmap, paramBoolean);
       return;
     }
-    if (paramRotateBitmap.a() != null)
+    if (paramRotateBitmap.b() != null)
     {
       getProperBaseMatrix(paramRotateBitmap, this.mBaseMatrix);
-      setImageBitmap(paramRotateBitmap.a(), paramRotateBitmap.a());
+      setImageBitmap(paramRotateBitmap.b(), paramRotateBitmap.a());
     }
     else
     {
@@ -388,7 +388,7 @@ public abstract class ImageViewTouchBase
     if (getScale() >= this.mMaxZoom) {
       return;
     }
-    if (this.mBitmapDisplayed.a() == null) {
+    if (this.mBitmapDisplayed.b() == null) {
       return;
     }
     float f1 = getWidth() / 2.0F;
@@ -405,7 +405,7 @@ public abstract class ImageViewTouchBase
   
   protected void zoomOut(float paramFloat)
   {
-    if (this.mBitmapDisplayed.a() == null) {
+    if (this.mBitmapDisplayed.b() == null) {
       return;
     }
     float f1 = paramFloat;
@@ -468,7 +468,7 @@ public abstract class ImageViewTouchBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageViewTouchBase
  * JD-Core Version:    0.7.0.1
  */

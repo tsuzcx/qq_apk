@@ -15,15 +15,15 @@ class FilterMsgBoxFragment$3
   {
     if (!this.a.getBaseActivity().isFinishing())
     {
-      ReportController.b(FilterMsgBoxFragment.a(this.a), "dc00898", "", "", "0X800B6B8", "0X800B6B8", 0, 0, "", "", "", "");
-      FilterMsgBoxFragment.b(this.a);
+      ReportController.b(FilterMsgBoxFragment.b(this.a), "dc00898", "", "", "0X800B6B8", "0X800B6B8", 0, 0, "", "", "", "");
+      FilterMsgBoxFragment.c(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.FilterMsgBoxFragment.3
  * JD-Core Version:    0.7.0.1
  */

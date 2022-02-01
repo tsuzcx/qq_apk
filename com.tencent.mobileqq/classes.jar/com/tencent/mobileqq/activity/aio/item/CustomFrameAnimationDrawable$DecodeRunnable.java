@@ -12,25 +12,25 @@ import java.util.Vector;
 class CustomFrameAnimationDrawable$DecodeRunnable
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<Bitmap> jdField_a_of_type_JavaUtilArrayList;
+  int a;
   int b;
+  String c;
+  ArrayList<Bitmap> d;
+  Resources e;
+  BitmapFactory.Options f = new BitmapFactory.Options();
   
   public CustomFrameAnimationDrawable$DecodeRunnable(int paramInt1, String paramString, int paramInt2, ArrayList<Bitmap> paramArrayList)
   {
-    this.jdField_a_of_type_Int = paramString;
-    this.jdField_a_of_type_JavaLangString = paramInt2;
+    this.a = paramString;
+    this.c = paramInt2;
     this.b = paramArrayList;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.d = localObject;
   }
   
   public void a(Resources paramResources)
   {
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+    this.e = paramResources;
   }
   
   public void run()
@@ -39,7 +39,7 @@ class CustomFrameAnimationDrawable$DecodeRunnable
     Object localObject1;
     if (CustomFrameAnimationDrawable.a(this.this$0))
     {
-      str1 = CustomFrameAnimationDrawable.a(this.this$0).a(CustomFrameAnimationDrawable.a(this.this$0), CustomFrameAnimationDrawable.b(this.this$0), this.jdField_a_of_type_Int);
+      str1 = CustomFrameAnimationDrawable.d(this.this$0).a(CustomFrameAnimationDrawable.b(this.this$0), CustomFrameAnimationDrawable.c(this.this$0), this.a);
       localObject1 = CommonImageCacheHelper.a(str1);
     }
     else
@@ -50,23 +50,23 @@ class CustomFrameAnimationDrawable$DecodeRunnable
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject2 = this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
+      localObject2 = this.f;
       ((BitmapFactory.Options)localObject2).inSampleSize = 1;
       ((BitmapFactory.Options)localObject2).inMutable = true;
-      if (CustomFrameAnimationDrawable.a(this.this$0).size() > 0) {
-        localObject2 = (Bitmap)CustomFrameAnimationDrawable.a(this.this$0).remove(0);
+      if (CustomFrameAnimationDrawable.e(this.this$0).size() > 0) {
+        localObject2 = (Bitmap)CustomFrameAnimationDrawable.e(this.this$0).remove(0);
       } else {
         localObject2 = null;
       }
-      if ((!CustomFrameAnimationDrawable.a(this.this$0)) && (localObject2 != null) && (!((Bitmap)localObject2).isRecycled()) && (CustomFrameAnimationDrawable.a())) {
-        this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inBitmap = ((Bitmap)localObject2);
+      if ((!CustomFrameAnimationDrawable.a(this.this$0)) && (localObject2 != null) && (!((Bitmap)localObject2).isRecycled()) && (CustomFrameAnimationDrawable.p())) {
+        this.f.inBitmap = ((Bitmap)localObject2);
       }
       int i = this.b;
       if (i != 0)
       {
         try
         {
-          localObject2 = BaseImageUtil.a(this.jdField_a_of_type_AndroidContentResResources, i);
+          localObject2 = BaseImageUtil.a(this.e, i);
         }
         catch (OutOfMemoryError localOutOfMemoryError1)
         {
@@ -80,12 +80,12 @@ class CustomFrameAnimationDrawable$DecodeRunnable
       }
       else
       {
-        String str2 = this.jdField_a_of_type_JavaLangString;
+        String str2 = this.c;
         localObject2 = localObject1;
         if (str2 != null) {
           try
           {
-            localObject2 = BaseImageUtil.a(str2, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+            localObject2 = BaseImageUtil.a(str2, this.f);
           }
           catch (OutOfMemoryError localOutOfMemoryError2)
           {
@@ -105,14 +105,14 @@ class CustomFrameAnimationDrawable$DecodeRunnable
       if (CustomFrameAnimationDrawable.a(this.this$0)) {
         CommonImageCacheHelper.a(str1, (Bitmap)localObject2);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+      this.d.add(localObject2);
     }
-    this.this$0.a = null;
+    this.this$0.h = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

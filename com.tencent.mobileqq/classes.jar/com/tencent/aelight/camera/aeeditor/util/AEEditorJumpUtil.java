@@ -12,7 +12,7 @@ import com.tencent.aelight.camera.entry.api.AECameraEntry;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import com.tencent.tavcut.bean.Size;
+import com.tencent.qcircle.tavcut.bean.Size;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,7 +40,7 @@ public class AEEditorJumpUtil
         return;
       }
       int i = AECameraEntry.y.a();
-      if (AECameraEntryManager.m(paramActivity.getIntent())) {
+      if (AECameraEntryManager.r(paramActivity.getIntent())) {
         i = AECameraEntry.A.a();
       }
       if (paramInt == 1)
@@ -65,7 +65,7 @@ public class AEEditorJumpUtil
       localBundle.putString("albumId", paramString2);
       localBundle.putSerializable("PeakConstants.selectedMediaInfoHashMap", paramHashMap);
       int i = AECameraEntry.y.a();
-      if (AECameraEntryManager.m(paramActivity.getIntent())) {
+      if (AECameraEntryManager.r(paramActivity.getIntent())) {
         i = AECameraEntry.A.a();
       }
       if (paramInt == 0)
@@ -185,7 +185,7 @@ public class AEEditorJumpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.util.AEEditorJumpUtil
  * JD-Core Version:    0.7.0.1
  */

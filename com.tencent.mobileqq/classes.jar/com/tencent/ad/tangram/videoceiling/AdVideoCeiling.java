@@ -1,9 +1,6 @@
 package com.tencent.ad.tangram.videoceiling;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.support.annotation.Keep;
-import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.AdError;
 import com.tencent.ad.tangram.log.AdLog;
 import java.lang.ref.WeakReference;
@@ -32,7 +29,7 @@ public enum AdVideoCeiling
     INSTANCE.adapter = paramWeakReference;
   }
   
-  public static AdError show(WeakReference<Activity> paramWeakReference, Ad paramAd, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, Bundle paramBundle, boolean paramBoolean3)
+  public static AdError show(AdVideoCeiling.Params paramParams)
   {
     AdVideoCeilingAdapter localAdVideoCeilingAdapter = getAdapter();
     if (localAdVideoCeilingAdapter == null)
@@ -40,18 +37,7 @@ public enum AdVideoCeiling
       AdLog.e("AdVideoCeiling", "show error");
       return new AdError(303);
     }
-    AdVideoCeilingAdapter.Params localParams = new AdVideoCeilingAdapter.Params();
-    localParams.activity = paramWeakReference;
-    localParams.ad = paramAd;
-    localParams.webUrl = paramString1;
-    localParams.videoUrl = paramString2;
-    localParams.style = paramInt;
-    localParams.videoPlayForced = paramBoolean1;
-    localParams.videoLoop = paramBoolean2;
-    localParams.videoStartPositionMillis = paramLong;
-    localParams.extrasForIntent = paramBundle;
-    localParams.autodownload = paramBoolean3;
-    return localAdVideoCeilingAdapter.show(localParams);
+    return localAdVideoCeilingAdapter.show(paramParams);
   }
 }
 

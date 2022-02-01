@@ -10,13 +10,13 @@ import mqq.app.QQPermissionCallback;
 public class LocationPermissionHelper
   implements QQPermissionCallback
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private LocationPermissionHelper.LocationPermissionCallback jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback;
+  private Activity a;
+  private LocationPermissionHelper.LocationPermissionCallback b;
   
   public LocationPermissionHelper(Activity paramActivity, LocationPermissionHelper.LocationPermissionCallback paramLocationPermissionCallback)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback = paramLocationPermissionCallback;
+    this.a = paramActivity;
+    this.b = paramLocationPermissionCallback;
   }
   
   public void a()
@@ -24,14 +24,14 @@ public class LocationPermissionHelper
     Object localObject;
     if (Build.VERSION.SDK_INT < 23)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback;
+      localObject = this.b;
       if (localObject != null) {
         ((LocationPermissionHelper.LocationPermissionCallback)localObject).onGetLocation();
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidAppActivity;
+      localObject = this.a;
       if (localObject == null) {
         return;
       }
@@ -43,7 +43,7 @@ public class LocationPermissionHelper
       }
       if (i == 0)
       {
-        localObject = this.jdField_a_of_type_AndroidAppActivity;
+        localObject = this.a;
         if ((localObject instanceof AppActivity))
         {
           ((AppActivity)localObject).requestPermissions(this, 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
@@ -55,7 +55,7 @@ public class LocationPermissionHelper
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback;
+        localObject = this.b;
         if (localObject != null) {
           ((LocationPermissionHelper.LocationPermissionCallback)localObject).onGetLocation();
         }
@@ -65,12 +65,12 @@ public class LocationPermissionHelper
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilLocationPermissionHelper$LocationPermissionCallback;
+    paramArrayOfString = this.b;
     if (paramArrayOfString != null) {
       paramArrayOfString.onGetLocation();
     }
@@ -78,7 +78,7 @@ public class LocationPermissionHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.LocationPermissionHelper
  * JD-Core Version:    0.7.0.1
  */

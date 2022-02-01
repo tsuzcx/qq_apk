@@ -12,16 +12,16 @@ class PublicAccountImageCollectionAdapter$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    PublicAccountImageCollectionAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageCollectionAdapter, paramView);
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageCollectionAdapter;
-    paramView.d = this.jdField_a_of_type_Int;
-    PublicAccountImageCollectionAdapter.a(paramView).onTouchEvent(paramMotionEvent);
+    PublicAccountImageCollectionAdapter.a(this.b, paramView);
+    paramView = this.b;
+    paramView.k = this.a;
+    PublicAccountImageCollectionAdapter.c(paramView).onTouchEvent(paramMotionEvent);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionAdapter.2
  * JD-Core Version:    0.7.0.1
  */

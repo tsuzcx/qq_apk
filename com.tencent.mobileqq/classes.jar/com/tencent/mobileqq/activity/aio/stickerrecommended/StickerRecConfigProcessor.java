@@ -23,12 +23,12 @@ public class StickerRecConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      StickerRecConfigBean localStickerRecConfigBean = StickerRecConfigBean.a(paramArrayOfQConfItem[0].a);
+      StickerRecConfigBean localStickerRecConfigBean = StickerRecConfigBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("StickerRecConfigProcessor", 2, localStringBuilder.toString());
       }
       return localStickerRecConfigBean;
@@ -43,7 +43,7 @@ public class StickerRecConfigProcessor
     {
       localObject = (AppInterface)localObject;
       String str = ((AppInterface)localObject).getCurrentUin();
-      StickerRecManagerImpl.setMaxMatchLength(((AppInterface)localObject).getApplicationContext(), str, paramStickerRecConfigBean.a());
+      StickerRecManagerImpl.setMaxMatchLength(((AppInterface)localObject).getApplicationContext(), str, paramStickerRecConfigBean.b());
       StickerRecManagerImpl.setRecStickerSwitch((AppInterface)localObject, paramStickerRecConfigBean.a());
     }
   }
@@ -82,7 +82,7 @@ public class StickerRecConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

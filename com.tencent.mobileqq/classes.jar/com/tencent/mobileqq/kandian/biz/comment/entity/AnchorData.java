@@ -9,15 +9,9 @@ public class AnchorData
 {
   public static final Parcelable.Creator<AnchorData> CREATOR = new AnchorData.1();
   public String a;
-  public boolean a;
   public String b;
-  public boolean b;
-  
-  public AnchorData()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public boolean c = true;
+  public boolean d = false;
   
   public int describeContents()
   {
@@ -26,15 +20,15 @@ public class AnchorData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
+    paramParcel.writeString(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeByte((byte)this.c);
+    paramParcel.writeByte((byte)this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.entity.AnchorData
  * JD-Core Version:    0.7.0.1
  */

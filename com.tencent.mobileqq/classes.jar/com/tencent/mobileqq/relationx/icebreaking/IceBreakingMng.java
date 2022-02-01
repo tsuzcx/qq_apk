@@ -4,6 +4,7 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecApi;
 import com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecManager;
 import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecData;
@@ -20,6 +21,7 @@ import com.tencent.mobileqq.config.CfgProcess.CfgParseResult;
 import com.tencent.mobileqq.config.CfgProcess.OnGetConfigListener;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -53,73 +55,70 @@ import java.util.Locale;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 
 public class IceBreakingMng
   implements Handler.Callback, CfgProcess.OnGetConfigListener, Manager
 {
-  public static final String a;
-  private float jdField_a_of_type_Float;
-  public int a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopMngObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver;
-  private TroopPushObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(ThreadManager.getFileThreadLooper(), this);
-  private final Object jdField_a_of_type_JavaLangObject;
-  private WeakReference<OnIceBreakChangeListener> jdField_a_of_type_JavaLangRefWeakReference;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference<IIceBreakHotPicCallback> jdField_b_of_type_JavaLangRefWeakReference;
-  private Set<String> jdField_b_of_type_JavaUtilSet = new HashSet();
-  private final ConcurrentHashMap<String, Integer> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private Set<String> jdField_c_of_type_JavaUtilSet = new HashSet();
-  private final ConcurrentHashMap<String, Integer> jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_c_of_type_Boolean = false;
-  private volatile String jdField_d_of_type_JavaLangString;
-  private Set<String> jdField_d_of_type_JavaUtilSet = new HashSet();
-  private final ConcurrentHashMap<String, Integer> jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_d_of_type_Boolean = false;
-  private boolean e;
-  private boolean f;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705777);
-  }
+  public static final String a = HardCodeUtil.a(2131903662);
+  public static boolean b = false;
+  private final Object A;
+  private WeakReference<OnIceBreakChangeListener> B;
+  private WeakReference<IIceBreakHotPicCallback> C;
+  private volatile String D;
+  private TroopObserver E;
+  private TroopMngObserver F;
+  private TroopPushObserver G;
+  public boolean c = false;
+  QQAppInterface d;
+  public int e;
+  FriendListObserver f;
+  private final ConcurrentHashMap<String, Integer> g = new ConcurrentHashMap();
+  private final ConcurrentHashMap<String, Integer> h = new ConcurrentHashMap();
+  private final ConcurrentHashMap<String, Integer> i = new ConcurrentHashMap();
+  private final ConcurrentHashMap<String, Integer> j = new ConcurrentHashMap();
+  private final ConcurrentHashMap<String, Integer> k = new ConcurrentHashMap();
+  private MqqWeakReferenceHandler l = new MqqWeakReferenceHandler(ThreadManager.getFileThreadLooper(), this);
+  private Set<String> m = new HashSet();
+  private Set<String> n = new HashSet();
+  private Set<String> o = new HashSet();
+  private Set<String> p = new HashSet();
+  private volatile boolean q = false;
+  private boolean r = false;
+  private boolean s = false;
+  private String t;
+  private String u;
+  private float v;
+  private boolean w;
+  private int x;
+  private int y;
+  private boolean z;
   
   public IceBreakingMng(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    String str = jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = str;
-    this.jdField_c_of_type_JavaLangString = str;
-    this.jdField_a_of_type_Float = 7.0F;
-    this.e = false;
-    this.jdField_b_of_type_Int = 100;
-    this.jdField_c_of_type_Int = 50;
-    this.jdField_a_of_type_Int = 60;
-    this.f = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new IceBreakingMng.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new IceBreakingMng.3(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver = new IceBreakingMng.4(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver = new IceBreakingMng.5(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConfigProcess().a("breaking_ice_config", this);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(0);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver, true);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver, true);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver, true);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver, true);
+    String str = a;
+    this.t = str;
+    this.u = str;
+    this.v = 7.0F;
+    this.w = false;
+    this.x = 100;
+    this.y = 50;
+    this.e = 60;
+    this.z = false;
+    this.A = new Object();
+    this.f = new IceBreakingMng.1(this);
+    this.E = new IceBreakingMng.4(this);
+    this.F = new IceBreakingMng.5(this);
+    this.G = new IceBreakingMng.6(this);
+    this.d = paramQQAppInterface;
+    this.d.getConfigProcess().a("breaking_ice_config", this);
+    this.l.sendEmptyMessage(0);
+    paramQQAppInterface.addObserver(this.f, true);
+    paramQQAppInterface.addObserver(this.E, true);
+    paramQQAppInterface.addObserver(this.G, true);
+    paramQQAppInterface.addObserver(this.F, true);
   }
   
   private boolean a(boolean paramBoolean1, boolean paramBoolean2, ConcurrentHashMap<String, Integer> paramConcurrentHashMap)
@@ -162,286 +161,286 @@ public class IceBreakingMng
   private Object[] a(boolean paramBoolean, String paramString)
   {
     // Byte code:
-    //   0: getstatic 44	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   0: getstatic 70	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:a	Ljava/lang/String;
     //   3: astore 13
     //   5: iload_1
     //   6: ifne +23 -> 29
     //   9: aload_0
-    //   10: getfield 135	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   13: invokevirtual 220	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   10: getfield 165	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:d	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   13: invokevirtual 245	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   16: aload_0
-    //   17: getfield 135	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   20: invokevirtual 224	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
-    //   23: ldc 143
-    //   25: invokestatic 229	com/tencent/mobileqq/utils/SharedPreUtils:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   17: getfield 165	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:d	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   20: invokevirtual 249	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
+    //   23: ldc 173
+    //   25: invokestatic 254	com/tencent/mobileqq/utils/SharedPreUtils:s	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   28: astore_2
     //   29: bipush 50
     //   31: istore 5
     //   33: bipush 100
     //   35: istore 6
-    //   37: ldc 97
+    //   37: ldc 127
     //   39: fstore 4
     //   41: aload_2
-    //   42: invokestatic 235	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   45: ifne +256 -> 301
-    //   48: new 237	org/json/JSONObject
+    //   42: invokestatic 260	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   45: ifne +260 -> 305
+    //   48: new 262	org/json/JSONObject
     //   51: dup
     //   52: aload_2
-    //   53: invokespecial 239	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   53: invokespecial 264	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   56: astore 15
     //   58: aload 15
-    //   60: ldc 241
-    //   62: iconst_0
-    //   63: invokevirtual 245	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   66: istore_1
-    //   67: aload 15
-    //   69: ldc 247
-    //   71: iconst_0
-    //   72: invokevirtual 245	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   75: istore 10
-    //   77: aload 15
-    //   79: ldc 249
-    //   81: getstatic 44	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   84: invokevirtual 253	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   87: astore_2
-    //   88: aload 13
-    //   90: astore 14
-    //   92: fload 4
-    //   94: fstore_3
-    //   95: aload 15
-    //   97: ldc 255
-    //   99: getstatic 44	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   102: invokevirtual 253	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   105: astore 13
-    //   107: aload 13
-    //   109: astore 14
-    //   111: fload 4
-    //   113: fstore_3
-    //   114: aload 15
-    //   116: ldc_w 257
-    //   119: ldc2_w 258
-    //   122: invokevirtual 263	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   125: d2f
-    //   126: fstore 4
-    //   128: aload 13
-    //   130: astore 14
-    //   132: fload 4
-    //   134: fstore_3
-    //   135: aload 15
-    //   137: ldc_w 265
-    //   140: iconst_0
-    //   141: invokevirtual 245	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   144: istore 12
-    //   146: iload 5
-    //   148: istore 7
-    //   150: iload 6
-    //   152: istore 8
-    //   154: aload 15
-    //   156: ldc_w 267
-    //   159: bipush 100
-    //   161: invokevirtual 271	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   164: istore 6
-    //   166: iload 5
-    //   168: istore 7
-    //   170: iload 6
-    //   172: istore 8
-    //   174: aload 15
-    //   176: ldc_w 273
-    //   179: bipush 50
-    //   181: invokevirtual 271	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   184: istore 5
-    //   186: iload 5
-    //   188: istore 7
-    //   190: iload 6
-    //   192: istore 8
-    //   194: aload 15
-    //   196: ldc_w 275
-    //   199: bipush 60
-    //   201: invokevirtual 271	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   204: istore 9
-    //   206: aload 15
-    //   208: ldc_w 277
-    //   211: iconst_0
-    //   212: invokevirtual 245	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   215: istore 11
-    //   217: iload 9
-    //   219: istore 7
-    //   221: fload 4
-    //   223: fstore_3
-    //   224: aload 13
-    //   226: astore 14
-    //   228: goto +135 -> 363
-    //   231: astore 15
-    //   233: iload 9
-    //   235: istore 7
-    //   237: fload 4
-    //   239: fstore_3
-    //   240: aload 13
-    //   242: astore 14
-    //   244: goto +111 -> 355
-    //   247: astore 15
-    //   249: bipush 60
-    //   251: istore 9
-    //   253: iload 7
-    //   255: istore 5
-    //   257: iload 8
-    //   259: istore 6
-    //   261: fload 4
-    //   263: fstore_3
-    //   264: iload 9
-    //   266: istore 7
-    //   268: aload 13
-    //   270: astore 14
-    //   272: goto +83 -> 355
-    //   275: astore 15
-    //   277: aload_2
-    //   278: astore 13
-    //   280: aload 15
-    //   282: astore_2
-    //   283: goto +59 -> 342
+    //   60: ldc_w 266
+    //   63: iconst_0
+    //   64: invokevirtual 270	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   67: istore_1
+    //   68: aload 15
+    //   70: ldc_w 272
+    //   73: iconst_0
+    //   74: invokevirtual 270	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   77: istore 10
+    //   79: aload 15
+    //   81: ldc_w 274
+    //   84: getstatic 70	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:a	Ljava/lang/String;
+    //   87: invokevirtual 278	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   90: astore_2
+    //   91: aload 13
+    //   93: astore 14
+    //   95: fload 4
+    //   97: fstore_3
+    //   98: aload 15
+    //   100: ldc_w 280
+    //   103: getstatic 70	com/tencent/mobileqq/relationx/icebreaking/IceBreakingMng:a	Ljava/lang/String;
+    //   106: invokevirtual 278	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   109: astore 13
+    //   111: aload 13
+    //   113: astore 14
+    //   115: fload 4
+    //   117: fstore_3
+    //   118: aload 15
+    //   120: ldc_w 282
+    //   123: ldc2_w 283
+    //   126: invokevirtual 288	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   129: d2f
+    //   130: fstore 4
+    //   132: aload 13
+    //   134: astore 14
+    //   136: fload 4
+    //   138: fstore_3
+    //   139: aload 15
+    //   141: ldc_w 290
+    //   144: iconst_0
+    //   145: invokevirtual 270	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   148: istore 12
+    //   150: iload 5
+    //   152: istore 7
+    //   154: iload 6
+    //   156: istore 8
+    //   158: aload 15
+    //   160: ldc_w 292
+    //   163: bipush 100
+    //   165: invokevirtual 296	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   168: istore 6
+    //   170: iload 5
+    //   172: istore 7
+    //   174: iload 6
+    //   176: istore 8
+    //   178: aload 15
+    //   180: ldc_w 298
+    //   183: bipush 50
+    //   185: invokevirtual 296	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   188: istore 5
+    //   190: iload 5
+    //   192: istore 7
+    //   194: iload 6
+    //   196: istore 8
+    //   198: aload 15
+    //   200: ldc_w 300
+    //   203: bipush 60
+    //   205: invokevirtual 296	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   208: istore 9
+    //   210: aload 15
+    //   212: ldc_w 302
+    //   215: iconst_0
+    //   216: invokevirtual 270	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   219: istore 11
+    //   221: iload 9
+    //   223: istore 7
+    //   225: fload 4
+    //   227: fstore_3
+    //   228: aload 13
+    //   230: astore 14
+    //   232: goto +135 -> 367
+    //   235: astore 15
+    //   237: iload 9
+    //   239: istore 7
+    //   241: fload 4
+    //   243: fstore_3
+    //   244: aload 13
+    //   246: astore 14
+    //   248: goto +111 -> 359
+    //   251: astore 15
+    //   253: bipush 60
+    //   255: istore 9
+    //   257: iload 7
+    //   259: istore 5
+    //   261: iload 8
+    //   263: istore 6
+    //   265: fload 4
+    //   267: fstore_3
+    //   268: iload 9
+    //   270: istore 7
+    //   272: aload 13
+    //   274: astore 14
+    //   276: goto +83 -> 359
+    //   279: astore 15
+    //   281: aload_2
+    //   282: astore 13
+    //   284: aload 15
     //   286: astore_2
-    //   287: aload 13
-    //   289: astore 14
-    //   291: fload 4
-    //   293: fstore_3
-    //   294: goto +48 -> 342
-    //   297: astore_2
-    //   298: goto +34 -> 332
-    //   301: aload 13
-    //   303: astore 14
-    //   305: iconst_0
-    //   306: istore_1
-    //   307: bipush 60
-    //   309: istore 7
-    //   311: iconst_0
-    //   312: istore 10
-    //   314: iconst_0
-    //   315: istore 11
-    //   317: iconst_0
-    //   318: istore 12
-    //   320: aload 13
-    //   322: astore_2
-    //   323: fload 4
-    //   325: fstore_3
-    //   326: goto +37 -> 363
-    //   329: astore_2
-    //   330: iconst_0
-    //   331: istore_1
-    //   332: aload 13
-    //   334: astore 14
-    //   336: iconst_0
-    //   337: istore 10
-    //   339: fload 4
-    //   341: fstore_3
-    //   342: bipush 60
-    //   344: istore 7
-    //   346: iconst_0
-    //   347: istore 12
-    //   349: aload_2
-    //   350: astore 15
-    //   352: aload 13
-    //   354: astore_2
-    //   355: aload 15
-    //   357: invokevirtual 280	java/lang/Exception:printStackTrace	()V
-    //   360: iconst_0
-    //   361: istore 11
-    //   363: bipush 10
-    //   365: anewarray 4	java/lang/Object
-    //   368: dup
-    //   369: iconst_0
-    //   370: iload_1
-    //   371: invokestatic 285	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   374: aastore
-    //   375: dup
-    //   376: iconst_1
-    //   377: iload 10
-    //   379: invokestatic 285	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   382: aastore
-    //   383: dup
-    //   384: iconst_2
-    //   385: aload_2
+    //   287: goto +59 -> 346
+    //   290: astore_2
+    //   291: aload 13
+    //   293: astore 14
+    //   295: fload 4
+    //   297: fstore_3
+    //   298: goto +48 -> 346
+    //   301: astore_2
+    //   302: goto +34 -> 336
+    //   305: aload 13
+    //   307: astore 14
+    //   309: iconst_0
+    //   310: istore_1
+    //   311: bipush 60
+    //   313: istore 7
+    //   315: iconst_0
+    //   316: istore 10
+    //   318: iconst_0
+    //   319: istore 11
+    //   321: iconst_0
+    //   322: istore 12
+    //   324: aload 13
+    //   326: astore_2
+    //   327: fload 4
+    //   329: fstore_3
+    //   330: goto +37 -> 367
+    //   333: astore_2
+    //   334: iconst_0
+    //   335: istore_1
+    //   336: aload 13
+    //   338: astore 14
+    //   340: iconst_0
+    //   341: istore 10
+    //   343: fload 4
+    //   345: fstore_3
+    //   346: bipush 60
+    //   348: istore 7
+    //   350: iconst_0
+    //   351: istore 12
+    //   353: aload_2
+    //   354: astore 15
+    //   356: aload 13
+    //   358: astore_2
+    //   359: aload 15
+    //   361: invokevirtual 305	java/lang/Exception:printStackTrace	()V
+    //   364: iconst_0
+    //   365: istore 11
+    //   367: bipush 10
+    //   369: anewarray 4	java/lang/Object
+    //   372: dup
+    //   373: iconst_0
+    //   374: iload_1
+    //   375: invokestatic 310	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   378: aastore
+    //   379: dup
+    //   380: iconst_1
+    //   381: iload 10
+    //   383: invokestatic 310	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   386: aastore
     //   387: dup
-    //   388: iconst_3
-    //   389: aload 14
-    //   391: aastore
-    //   392: dup
-    //   393: iconst_4
-    //   394: fload_3
-    //   395: invokestatic 290	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   398: aastore
-    //   399: dup
-    //   400: iconst_5
-    //   401: iload 12
-    //   403: invokestatic 285	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   406: aastore
-    //   407: dup
-    //   408: bipush 6
-    //   410: iload 6
-    //   412: invokestatic 175	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   415: aastore
-    //   416: dup
-    //   417: bipush 7
-    //   419: iload 5
-    //   421: invokestatic 175	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   424: aastore
-    //   425: dup
-    //   426: bipush 8
-    //   428: iload 7
-    //   430: invokestatic 175	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   433: aastore
-    //   434: dup
-    //   435: bipush 9
-    //   437: iload 11
-    //   439: invokestatic 285	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   442: aastore
-    //   443: areturn
+    //   388: iconst_2
+    //   389: aload_2
+    //   390: aastore
+    //   391: dup
+    //   392: iconst_3
+    //   393: aload 14
+    //   395: aastore
+    //   396: dup
+    //   397: iconst_4
+    //   398: fload_3
+    //   399: invokestatic 315	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   402: aastore
+    //   403: dup
+    //   404: iconst_5
+    //   405: iload 12
+    //   407: invokestatic 310	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   410: aastore
+    //   411: dup
+    //   412: bipush 6
+    //   414: iload 6
+    //   416: invokestatic 200	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   419: aastore
+    //   420: dup
+    //   421: bipush 7
+    //   423: iload 5
+    //   425: invokestatic 200	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   428: aastore
+    //   429: dup
+    //   430: bipush 8
+    //   432: iload 7
+    //   434: invokestatic 200	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   437: aastore
+    //   438: dup
+    //   439: bipush 9
+    //   441: iload 11
+    //   443: invokestatic 310	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   446: aastore
+    //   447: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	444	0	this	IceBreakingMng
-    //   0	444	1	paramBoolean	boolean
-    //   0	444	2	paramString	String
-    //   94	301	3	f1	float
-    //   39	301	4	f2	float
-    //   31	389	5	i	int
-    //   35	376	6	j	int
-    //   148	281	7	k	int
-    //   152	106	8	m	int
-    //   204	61	9	n	int
-    //   75	303	10	bool1	boolean
-    //   215	223	11	bool2	boolean
-    //   144	258	12	bool3	boolean
-    //   3	350	13	str1	String
-    //   90	300	14	str2	String
-    //   56	151	15	localJSONObject	org.json.JSONObject
-    //   231	1	15	localException1	Exception
-    //   247	1	15	localException2	Exception
-    //   275	6	15	localException3	Exception
-    //   350	6	15	str3	String
+    //   0	448	0	this	IceBreakingMng
+    //   0	448	1	paramBoolean	boolean
+    //   0	448	2	paramString	String
+    //   97	302	3	f1	float
+    //   39	305	4	f2	float
+    //   31	393	5	i1	int
+    //   35	380	6	i2	int
+    //   152	281	7	i3	int
+    //   156	106	8	i4	int
+    //   208	61	9	i5	int
+    //   77	305	10	bool1	boolean
+    //   219	223	11	bool2	boolean
+    //   148	258	12	bool3	boolean
+    //   3	354	13	str1	String
+    //   93	301	14	str2	String
+    //   56	155	15	localJSONObject	org.json.JSONObject
+    //   235	1	15	localException1	Exception
+    //   251	1	15	localException2	Exception
+    //   279	6	15	localException3	Exception
+    //   354	6	15	str3	String
     // Exception table:
     //   from	to	target	type
-    //   206	217	231	java/lang/Exception
-    //   154	166	247	java/lang/Exception
-    //   174	186	247	java/lang/Exception
-    //   194	206	247	java/lang/Exception
-    //   95	107	275	java/lang/Exception
-    //   114	128	275	java/lang/Exception
-    //   135	146	275	java/lang/Exception
-    //   77	88	286	java/lang/Exception
-    //   67	77	297	java/lang/Exception
-    //   41	67	329	java/lang/Exception
+    //   210	221	235	java/lang/Exception
+    //   158	170	251	java/lang/Exception
+    //   178	190	251	java/lang/Exception
+    //   198	210	251	java/lang/Exception
+    //   98	111	279	java/lang/Exception
+    //   118	132	279	java/lang/Exception
+    //   139	150	279	java/lang/Exception
+    //   79	91	290	java/lang/Exception
+    //   68	79	301	java/lang/Exception
+    //   41	68	333	java/lang/Exception
   }
   
-  private void g()
+  private void i()
   {
     Object localObject2 = null;
     Object[] arrayOfObject = a(false, null);
-    Object localObject11 = FileUtils.readObject(String.format("%s_%s", new Object[] { "break_ice_map", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }));
-    Object localObject10 = FileUtils.readObject(String.format("%s_%s", new Object[] { "entered_c2c", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }));
-    Object localObject9 = FileUtils.readObject(String.format("%s_%s", new Object[] { "entered_troop", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }));
-    Object localObject8 = FileUtils.readObject(String.format("%s_%s", new Object[] { "entered_match_chat", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }));
-    Object localObject7 = FileUtils.readObject(String.format("%s_%s", new Object[] { "entered_qcircle_chat", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }));
-    if (this.jdField_b_of_type_Boolean) {
+    Object localObject11 = FileUtils.readObject(String.format("%s_%s", new Object[] { "break_ice_map", this.d.getCurrentAccountUin() }));
+    Object localObject10 = FileUtils.readObject(String.format("%s_%s", new Object[] { "entered_c2c", this.d.getCurrentAccountUin() }));
+    Object localObject9 = FileUtils.readObject(String.format("%s_%s", new Object[] { "entered_troop", this.d.getCurrentAccountUin() }));
+    Object localObject8 = FileUtils.readObject(String.format("%s_%s", new Object[] { "entered_match_chat", this.d.getCurrentAccountUin() }));
+    Object localObject7 = FileUtils.readObject(String.format("%s_%s", new Object[] { "entered_qcircle_chat", this.d.getCurrentAccountUin() }));
+    if (this.q) {
       return;
     }
     ??? = localObject2;
@@ -457,162 +456,154 @@ public class IceBreakingMng
       localObject2 = new ConcurrentHashMap();
     }
     if (localObject10 != null) {
-      synchronized (this.jdField_a_of_type_JavaUtilSet)
+      synchronized (this.m)
       {
-        this.jdField_a_of_type_JavaUtilSet.addAll((Set)localObject10);
+        this.m.addAll((Set)localObject10);
       }
     }
     if (localObject9 != null) {
-      synchronized (this.jdField_b_of_type_JavaUtilSet)
+      synchronized (this.n)
       {
-        this.jdField_b_of_type_JavaUtilSet.addAll((Set)localObject9);
+        this.n.addAll((Set)localObject9);
       }
     }
     if (localObject8 != null) {
-      synchronized (this.jdField_c_of_type_JavaUtilSet)
+      synchronized (this.o)
       {
-        this.jdField_c_of_type_JavaUtilSet.addAll((Set)localObject8);
+        this.o.addAll((Set)localObject8);
       }
     }
     if (localObject7 != null) {
-      synchronized (this.jdField_d_of_type_JavaUtilSet)
+      synchronized (this.p)
       {
-        this.jdField_d_of_type_JavaUtilSet.addAll((Set)localObject7);
+        this.p.addAll((Set)localObject7);
       }
     }
     a(((Boolean)arrayOfObject[0]).booleanValue(), ((Boolean)arrayOfObject[1]).booleanValue(), localConcurrentHashMap);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.A)
     {
-      if (!this.jdField_b_of_type_Boolean)
+      if (!this.q)
       {
         if (localConcurrentHashMap != null) {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(localConcurrentHashMap);
+          this.g.putAll(localConcurrentHashMap);
         }
-        this.jdField_c_of_type_Boolean = ((Boolean)arrayOfObject[0]).booleanValue();
-        this.jdField_d_of_type_Boolean = ((Boolean)arrayOfObject[1]).booleanValue();
-        this.jdField_b_of_type_JavaLangString = ((String)arrayOfObject[2]);
-        this.jdField_c_of_type_JavaLangString = ((String)arrayOfObject[3]);
-        this.jdField_a_of_type_Float = ((Float)arrayOfObject[4]).floatValue();
-        this.e = ((Boolean)arrayOfObject[5]).booleanValue();
-        this.jdField_b_of_type_Int = ((Integer)arrayOfObject[6]).intValue();
-        this.jdField_c_of_type_Int = ((Integer)arrayOfObject[7]).intValue();
-        this.jdField_a_of_type_Int = ((Integer)arrayOfObject[8]).intValue();
-        this.f = ((Boolean)arrayOfObject[9]).booleanValue();
-        this.jdField_b_of_type_Boolean = true;
+        this.r = ((Boolean)arrayOfObject[0]).booleanValue();
+        this.s = ((Boolean)arrayOfObject[1]).booleanValue();
+        this.t = ((String)arrayOfObject[2]);
+        this.u = ((String)arrayOfObject[3]);
+        this.v = ((Float)arrayOfObject[4]).floatValue();
+        this.w = ((Boolean)arrayOfObject[5]).booleanValue();
+        this.x = ((Integer)arrayOfObject[6]).intValue();
+        this.y = ((Integer)arrayOfObject[7]).intValue();
+        this.e = ((Integer)arrayOfObject[8]).intValue();
+        this.z = ((Boolean)arrayOfObject[9]).booleanValue();
+        this.q = true;
       }
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("init IceBreak Config: mSwitchNewFrd: ");
-        ((StringBuilder)???).append(this.jdField_c_of_type_Boolean);
+        ((StringBuilder)???).append(this.r);
         ((StringBuilder)???).append(",mSwitchOldFrd: ");
-        ((StringBuilder)???).append(this.jdField_d_of_type_Boolean);
+        ((StringBuilder)???).append(this.s);
         ((StringBuilder)???).append(",mTipNewFrd: ");
-        ((StringBuilder)???).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)???).append(this.t);
         ((StringBuilder)???).append(",mTipOldFrd: ");
-        ((StringBuilder)???).append(this.jdField_c_of_type_JavaLangString);
+        ((StringBuilder)???).append(this.u);
         ((StringBuilder)???).append(",mDaysOldFrd: ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_Float);
+        ((StringBuilder)???).append(this.v);
         ((StringBuilder)???).append(",switchTroop: ");
-        ((StringBuilder)???).append(this.e);
+        ((StringBuilder)???).append(this.w);
         ((StringBuilder)???).append(",troopMemberMinCount: ");
-        ((StringBuilder)???).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)???).append(this.x);
         ((StringBuilder)???).append(",troopMemberNotFriendRate: ");
-        ((StringBuilder)???).append(this.jdField_c_of_type_Int);
+        ((StringBuilder)???).append(this.y);
         ((StringBuilder)???).append(",showDuration: ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)???).append(this.e);
         ((StringBuilder)???).append(",mSwitchNewFrdMiniCard: ");
-        ((StringBuilder)???).append(this.f);
+        ((StringBuilder)???).append(this.z);
         QLog.d("IceBreak.Mng", 2, ((StringBuilder)???).toString());
       }
       return;
     }
   }
   
-  private void h()
+  private void j()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    localConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-    FileUtils.writeObject(String.format("%s_%s", new Object[] { "break_ice_map", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }), localConcurrentHashMap);
+    localConcurrentHashMap.putAll(this.g);
+    FileUtils.writeObject(String.format("%s_%s", new Object[] { "break_ice_map", this.d.getCurrentAccountUin() }), localConcurrentHashMap);
   }
   
-  private void m(String paramString)
+  private void v(String paramString)
   {
-    Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    Object localObject1 = ((TroopManager)localObject2).c(paramString);
+    Object localObject2 = (TroopManager)this.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    Object localObject1 = ((TroopManager)localObject2).g(paramString);
     if (localObject1 == null)
     {
       QLog.i("IceBreak.HotPic", 1, "troop info is null.");
       return;
     }
-    if (((TroopInfo)localObject1).wMemberNum < this.jdField_b_of_type_Int)
+    if (((TroopInfo)localObject1).wMemberNum < this.x)
     {
-      Object localObject3 = ((TroopManager)localObject2).b(paramString);
-      int j = 0;
-      int i = 0;
+      Object localObject3 = ((TroopManager)localObject2).w(paramString);
+      int i2 = 0;
+      int i1 = 0;
       if ((localObject3 != null) && (((List)localObject3).size() > 1))
       {
-        j = ((List)localObject3).size();
-        localObject2 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        i2 = ((List)localObject3).size();
+        localObject2 = (FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        String str1 = this.d.getCurrentAccountUin();
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
           String str2 = ((TroopMemberInfo)((Iterator)localObject3).next()).memberuin;
-          if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1)) && (!((FriendsManager)localObject2).b(str2))) {
-            i += 1;
+          if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1)) && (!((FriendsManager)localObject2).n(str2))) {
+            i1 += 1;
           }
         }
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("noFriendCount: ");
-        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(i1);
         ((StringBuilder)localObject2).append(" total count: ");
         ((StringBuilder)localObject2).append(((TroopInfo)localObject1).wMemberNum);
         QLog.i("IceBreak.HotPic", 1, ((StringBuilder)localObject2).toString());
-        if (i * 1.0F / (j - 1) > this.jdField_c_of_type_Int / 100.0F) {
-          f(paramString);
+        if (i1 * 1.0F / (i2 - 1) > this.y / 100.0F) {
+          l(paramString);
         }
       }
       else
       {
         if (localObject3 == null) {
-          i = j;
+          i1 = i2;
         } else {
-          i = ((List)localObject3).size();
+          i1 = ((List)localObject3).size();
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("troop member size: ");
-        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(i1);
         QLog.i("IceBreak.HotPic", 1, ((StringBuilder)localObject1).toString());
-        this.jdField_d_of_type_JavaLangString = paramString;
-        ((ITroopMemberListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER)).a(paramString);
+        this.D = paramString;
+        ((ITroopMemberListHandler)this.d.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER)).a(paramString);
       }
     }
     else
     {
-      f(paramString);
+      l(paramString);
     }
-  }
-  
-  public float a()
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
-    }
-    return this.jdField_a_of_type_Float;
   }
   
   public int a(String paramString, int paramInt)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
     if (paramInt == 1)
     {
-      paramString = (Integer)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      paramString = (Integer)this.h.get(paramString);
       if (paramString == null) {
         return -1;
       }
@@ -620,7 +611,7 @@ public class IceBreakingMng
     }
     if (IceBreakingUtil.d(paramInt))
     {
-      paramString = (Integer)this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      paramString = (Integer)this.i.get(paramString);
       if (paramString == null) {
         return -1;
       }
@@ -628,13 +619,33 @@ public class IceBreakingMng
     }
     if (IceBreakingUtil.e(paramInt))
     {
-      paramString = (Integer)this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      paramString = (Integer)this.j.get(paramString);
       if (paramString == null) {
         return -1;
       }
       return paramString.intValue();
     }
-    paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (paramInt == 10007)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBreakIceType hasSendIceBreak : ");
+        localStringBuilder.append(b);
+        localStringBuilder.append(" mBreakingIceGameChatMap.size() : ");
+        localStringBuilder.append(this.k.size());
+        QLog.d("IceBreak.Mng", 2, localStringBuilder.toString());
+      }
+      if ((this.k.size() == 0) && (!b)) {
+        t(paramString);
+      }
+      paramString = (Integer)this.k.get(paramString);
+      if (paramString == null) {
+        return -1;
+      }
+      return paramString.intValue();
+    }
+    paramString = (Integer)this.g.get(paramString);
     if (paramString == null) {
       return -1;
     }
@@ -646,13 +657,13 @@ public class IceBreakingMng
     if (QLog.isColorLevel()) {
       QLog.d("IceBreak.HotPic", 2, "removeAllEnteredMatchChat ");
     }
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
-    if (!this.jdField_c_of_type_JavaUtilSet.isEmpty()) {
-      synchronized (this.jdField_c_of_type_JavaUtilSet)
+    if (!this.o.isEmpty()) {
+      synchronized (this.o)
       {
-        this.jdField_c_of_type_JavaUtilSet.clear();
+        this.o.clear();
         d();
         return;
       }
@@ -661,12 +672,12 @@ public class IceBreakingMng
   
   public void a(IIceBreakHotPicCallback paramIIceBreakHotPicCallback)
   {
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramIIceBreakHotPicCallback);
+    this.C = new WeakReference(paramIIceBreakHotPicCallback);
   }
   
   public void a(OnIceBreakChangeListener paramOnIceBreakChangeListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnIceBreakChangeListener);
+    this.B = new WeakReference(paramOnIceBreakChangeListener);
   }
   
   public void a(String paramString)
@@ -678,13 +689,13 @@ public class IceBreakingMng
       ((StringBuilder)???).append(paramString);
       QLog.d("IceBreak.HotPic", 2, ((StringBuilder)???).toString());
     }
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
-    if (this.jdField_c_of_type_JavaUtilSet.contains(paramString)) {
-      synchronized (this.jdField_c_of_type_JavaUtilSet)
+    if (this.o.contains(paramString)) {
+      synchronized (this.o)
       {
-        this.jdField_c_of_type_JavaUtilSet.remove(paramString);
+        this.o.remove(paramString);
         d();
         return;
       }
@@ -709,8 +720,8 @@ public class IceBreakingMng
       localReqBody.uint32_src_term.set(paramInt1);
       localReqBody.uint32_aio_type.set(paramInt2);
       localReqBody.uint64_to_uin.set(Long.parseLong(paramString2));
-      localReqBody.str_client_ver.set("8.7.0");
-      paramString1 = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localReqBody.str_client_ver.set("8.8.17");
+      paramString1 = ((FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.d.getCurrentAccountUin());
       if (paramString1 != null) {
         localReqBody.uint32_age.set(paramString1.age);
       } else {
@@ -720,7 +731,7 @@ public class IceBreakingMng
       paramString2 = ByteBuffer.allocate(paramString1.length + 4);
       paramString2.putInt(paramString1.length + 4).put(paramString1);
       paramString1 = paramString2.array();
-      paramString1 = ((IStickerRecApi)QRoute.api(IStickerRecApi.class)).getStickerRecIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString1, "BreakIceSvr.Pull");
+      paramString1 = ((IStickerRecApi)QRoute.api(IStickerRecApi.class)).getStickerRecIntent(this.d.getApp(), paramString1, "BreakIceSvr.Pull");
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder();
@@ -728,7 +739,7 @@ public class IceBreakingMng
         paramString2.append((String)localObject);
         QLog.d("IceBreak.Mng", 2, paramString2.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramString1);
+      this.d.startServlet(paramString1);
       return;
     }
     catch (Exception paramString1)
@@ -742,7 +753,7 @@ public class IceBreakingMng
     if (!a(paramBoolean)) {
       return;
     }
-    Object localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
+    Object localObject = ((FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString);
     boolean bool;
     if ((localObject != null) && (((Friends)localObject).isFriend())) {
       bool = true;
@@ -751,8 +762,8 @@ public class IceBreakingMng
     }
     if (bool)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(paramBoolean ^ true));
-      localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      this.g.put(paramString, Integer.valueOf(paramBoolean ^ true));
+      localObject = this.B;
       if (localObject != null)
       {
         localObject = (OnIceBreakChangeListener)((WeakReference)localObject).get();
@@ -760,14 +771,14 @@ public class IceBreakingMng
           ((OnIceBreakChangeListener)localObject).a(paramString, false);
         }
       }
-      if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1)) {
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
+      if (this.l.hasMessages(1)) {
+        this.l.removeMessages(1);
       }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1);
+      this.l.sendEmptyMessage(1);
     }
     else
     {
-      e(paramString);
+      j(paramString);
     }
     if (QLog.isColorLevel()) {
       QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "addToBreakingIceList uin: %s, ret: %s", new Object[] { paramString, Boolean.valueOf(bool) }));
@@ -796,14 +807,14 @@ public class IceBreakingMng
       paramArrayOfByte = ((IcebreakHotPic.RspBody)localObject).rpt_msg_img_info.get();
       if ((paramArrayOfByte != null) && (!paramArrayOfByte.isEmpty()))
       {
-        int j = ((IcebreakHotPic.RspBody)localObject).int32_img_num.get();
+        int i2 = ((IcebreakHotPic.RspBody)localObject).int32_img_num.get();
         localObject = new ArrayList();
-        int i = 0;
-        while (i < paramArrayOfByte.size())
+        int i1 = 0;
+        while (i1 < paramArrayOfByte.size())
         {
-          IcebreakHotPic.ImgInfo localImgInfo = (IcebreakHotPic.ImgInfo)paramArrayOfByte.get(i);
+          IcebreakHotPic.ImgInfo localImgInfo = (IcebreakHotPic.ImgInfo)paramArrayOfByte.get(i1);
           StickerRecData localStickerRecData = new StickerRecData();
-          localStickerRecData.f(i);
+          localStickerRecData.f(i1);
           localStickerRecData.c(localImgInfo.uint64_img_size.get());
           localStickerRecData.a(localImgInfo.uint32_img_width.get());
           localStickerRecData.b(localImgInfo.uint32_img_height.get());
@@ -816,14 +827,14 @@ public class IceBreakingMng
           localStickerRecData.d(localImgInfo.bytes_thumb_down_url.get().toStringUtf8());
           localStickerRecData.f(localImgInfo.bytes_thumb_img_md5.get().toStringUtf8());
           ((List)localObject).add(localStickerRecData);
-          i += 1;
+          i1 += 1;
         }
-        ThreadManager.getUIHandler().post(new IceBreakingMng.2(this, (List)localObject, j));
+        ThreadManager.getUIHandler().post(new IceBreakingMng.2(this, (List)localObject, i2));
         if (QLog.isColorLevel())
         {
           paramArrayOfByte = new StringBuilder();
           paramArrayOfByte.append("handleGetIceBreakHotPicResponse staticImageNum:");
-          paramArrayOfByte.append(j);
+          paramArrayOfByte.append(i2);
           paramArrayOfByte.append("dateList: ");
           paramArrayOfByte.append(localObject);
           QLog.d("IceBreak.HotPic", 2, paramArrayOfByte.toString());
@@ -846,183 +857,211 @@ public class IceBreakingMng
     return;
   }
   
-  public boolean a()
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.f = true;
-    }
-    return this.f;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
-    }
-    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
-  }
-  
   public boolean a(boolean paramBoolean)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_d_of_type_Boolean = true;
+      this.r = true;
+      this.s = true;
     }
     if (paramBoolean) {
-      return this.jdField_c_of_type_Boolean;
+      return this.r;
     }
-    return this.jdField_d_of_type_Boolean;
+    return this.s;
   }
   
   public void b()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
     HashSet localHashSet = new HashSet();
-    localHashSet.addAll(this.jdField_a_of_type_JavaUtilSet);
-    FileUtils.writeObject(String.format("%s_%s", new Object[] { "entered_c2c", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }), localHashSet);
+    localHashSet.addAll(this.m);
+    FileUtils.writeObject(String.format("%s_%s", new Object[] { "entered_c2c", this.d.getCurrentAccountUin() }), localHashSet);
   }
   
   public void b(OnIceBreakChangeListener paramOnIceBreakChangeListener)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.B;
     if ((localWeakReference != null) && (localWeakReference.get() == paramOnIceBreakChangeListener)) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.B = null;
     }
   }
   
   public void b(String paramString)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
-    if (!this.jdField_c_of_type_JavaUtilSet.contains(paramString)) {
-      synchronized (this.jdField_c_of_type_JavaUtilSet)
+    if (!this.o.contains(paramString)) {
+      synchronized (this.o)
       {
-        this.jdField_c_of_type_JavaUtilSet.add(paramString);
+        this.o.add(paramString);
         return;
       }
     }
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
-    }
-    return this.jdField_b_of_type_JavaUtilSet.contains(paramString);
   }
   
   public void c()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
     HashSet localHashSet = new HashSet();
-    localHashSet.addAll(this.jdField_b_of_type_JavaUtilSet);
-    FileUtils.writeObject(String.format("%s_%s", new Object[] { "entered_troop", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }), localHashSet);
+    localHashSet.addAll(this.n);
+    FileUtils.writeObject(String.format("%s_%s", new Object[] { "entered_troop", this.d.getCurrentAccountUin() }), localHashSet);
   }
   
   public void c(String paramString)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
-    if (!this.jdField_d_of_type_JavaUtilSet.contains(paramString)) {
-      synchronized (this.jdField_d_of_type_JavaUtilSet)
+    if (!this.p.contains(paramString)) {
+      synchronized (this.p)
       {
-        this.jdField_d_of_type_JavaUtilSet.add(paramString);
+        this.p.add(paramString);
         return;
       }
     }
   }
   
-  public boolean c(String paramString)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
-    }
-    return this.jdField_c_of_type_JavaUtilSet.contains(paramString);
-  }
-  
   public void d()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
     HashSet localHashSet = new HashSet();
-    synchronized (this.jdField_c_of_type_JavaUtilSet)
+    synchronized (this.o)
     {
-      localHashSet.addAll(this.jdField_c_of_type_JavaUtilSet);
-      FileUtils.writeObject(String.format("%s_%s", new Object[] { "entered_match_chat", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }), localHashSet);
+      localHashSet.addAll(this.o);
+      FileUtils.writeObject(String.format("%s_%s", new Object[] { "entered_match_chat", this.d.getCurrentAccountUin() }), localHashSet);
       return;
     }
   }
   
   public void d(String paramString)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
-    if (!this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {
-      synchronized (this.jdField_a_of_type_JavaUtilSet)
+    if (!this.m.contains(paramString)) {
+      synchronized (this.m)
       {
-        this.jdField_a_of_type_JavaUtilSet.add(paramString);
+        this.m.add(paramString);
         return;
       }
     }
-  }
-  
-  public boolean d(String paramString)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
-    }
-    return this.jdField_d_of_type_JavaUtilSet.contains(paramString);
   }
   
   public void e()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
     HashSet localHashSet = new HashSet();
-    localHashSet.addAll(this.jdField_d_of_type_JavaUtilSet);
-    FileUtils.writeObject(String.format("%s_%s", new Object[] { "entered_qcircle_chat", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() }), localHashSet);
+    localHashSet.addAll(this.p);
+    FileUtils.writeObject(String.format("%s_%s", new Object[] { "entered_qcircle_chat", this.d.getCurrentAccountUin() }), localHashSet);
   }
   
   public void e(String paramString)
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
-    if (!this.jdField_b_of_type_JavaUtilSet.contains(paramString)) {
-      synchronized (this.jdField_b_of_type_JavaUtilSet)
+    if (!this.n.contains(paramString)) {
+      synchronized (this.n)
       {
-        this.jdField_b_of_type_JavaUtilSet.add(paramString);
+        this.n.add(paramString);
         return;
       }
     }
   }
   
-  public boolean e(String paramString)
+  public float f()
   {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
+    if (!this.q) {
+      i();
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    return this.v;
+  }
+  
+  public boolean f(String paramString)
+  {
+    if (!this.q) {
+      i();
+    }
+    return this.m.contains(paramString);
+  }
+  
+  public boolean g()
+  {
+    if (!this.q) {
+      i();
+    }
+    if (this.c) {
+      this.z = true;
+    }
+    return this.z;
+  }
+  
+  public boolean g(String paramString)
+  {
+    if (!this.q) {
+      i();
+    }
+    return this.n.contains(paramString);
+  }
+  
+  public void h()
+  {
+    this.C = null;
+  }
+  
+  public boolean h(String paramString)
+  {
+    if (!this.q) {
+      i();
+    }
+    return this.o.contains(paramString);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    int i1 = paramMessage.what;
+    if (i1 != 0)
+    {
+      if (i1 == 1) {
+        j();
+      }
+    }
+    else {
+      i();
+    }
+    return false;
+  }
+  
+  public boolean i(String paramString)
+  {
+    if (!this.q) {
+      i();
+    }
+    return this.p.contains(paramString);
+  }
+  
+  public boolean j(String paramString)
+  {
+    if (!this.q) {
+      i();
+    }
+    Object localObject1 = this.g.remove(paramString);
     boolean bool = false;
     if (localObject1 != null)
     {
-      Object localObject2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject2 = this.B;
       if (localObject2 != null)
       {
         localObject2 = (OnIceBreakChangeListener)((WeakReference)localObject2).get();
@@ -1030,10 +1069,10 @@ public class IceBreakingMng
           ((OnIceBreakChangeListener)localObject2).b(paramString, false);
         }
       }
-      if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1)) {
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
+      if (this.l.hasMessages(1)) {
+        this.l.removeMessages(1);
       }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1);
+      this.l.sendEmptyMessage(1);
     }
     if (QLog.isColorLevel()) {
       QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "removeFromBreakingIceList uin: %s , ret:%s", new Object[] { paramString, localObject1 }));
@@ -1044,19 +1083,32 @@ public class IceBreakingMng
     return bool;
   }
   
-  public void f()
+  public boolean k(String paramString)
   {
-    this.jdField_b_of_type_JavaLangRefWeakReference = null;
+    if (!this.q) {
+      i();
+    }
+    boolean bool2 = this.g.containsKey(paramString);
+    boolean bool1 = bool2;
+    if (bool2)
+    {
+      paramString = ((FriendsManager)this.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString);
+      if ((paramString != null) && (paramString.isFriend())) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
   
-  public void f(String paramString)
+  public void l(String paramString)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("insertTroopToBreakingIceMap troopUin: ");
     ((StringBuilder)localObject).append(paramString);
     QLog.i("IceBreak.Mng", 1, ((StringBuilder)localObject).toString());
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(0));
-    localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.h.put(paramString, Integer.valueOf(0));
+    localObject = this.B;
     if (localObject != null)
     {
       localObject = (OnIceBreakChangeListener)((WeakReference)localObject).get();
@@ -1066,32 +1118,14 @@ public class IceBreakingMng
     }
   }
   
-  public boolean f(String paramString)
-  {
-    if (!this.jdField_b_of_type_Boolean) {
-      g();
-    }
-    boolean bool2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-    boolean bool1 = bool2;
-    if (bool2)
-    {
-      paramString = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
-      if ((paramString != null) && (paramString.isFriend())) {
-        return true;
-      }
-      bool1 = false;
-    }
-    return bool1;
-  }
-  
-  public void g(String paramString)
+  public void m(String paramString)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("removeTroopFromBreakingIceMap troopUin: ");
     ((StringBuilder)localObject).append(paramString);
     QLog.i("IceBreak.Mng", 1, ((StringBuilder)localObject).toString());
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.h.remove(paramString);
+    localObject = this.B;
     if (localObject != null)
     {
       localObject = (OnIceBreakChangeListener)((WeakReference)localObject).get();
@@ -1101,10 +1135,10 @@ public class IceBreakingMng
     }
   }
   
-  public void h(String paramString)
+  public void n(String paramString)
   {
-    this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.i.remove(paramString);
+    Object localObject = this.B;
     if (localObject != null)
     {
       localObject = (OnIceBreakChangeListener)((WeakReference)localObject).get();
@@ -1114,25 +1148,10 @@ public class IceBreakingMng
     }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void o(String paramString)
   {
-    int i = paramMessage.what;
-    if (i != 0)
-    {
-      if (i == 1) {
-        h();
-      }
-    }
-    else {
-      g();
-    }
-    return false;
-  }
-  
-  public void i(String paramString)
-  {
-    this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.j.remove(paramString);
+    Object localObject = this.B;
     if (localObject != null)
     {
       localObject = (OnIceBreakChangeListener)((WeakReference)localObject).get();
@@ -1142,9 +1161,94 @@ public class IceBreakingMng
     }
   }
   
-  public void j(String paramString)
+  public void onDestroy()
   {
-    if (c(paramString))
+    this.l.removeCallbacksAndMessages(null);
+    this.d.getConfigProcess().a(this);
+    this.d.removeObserver(this.f);
+    this.d.removeObserver(this.E);
+    this.d.removeObserver(this.G);
+    this.d.removeObserver(this.F);
+  }
+  
+  public void onGetConfig(QQAppInterface paramQQAppInterface, int paramInt, String paramString, CfgProcess.CfgParseResult paramCfgParseResult)
+  {
+    if ((paramCfgParseResult != null) && ("breaking_ice_config".equals(paramString)))
+    {
+      if (!this.q) {
+        i();
+      }
+      paramQQAppInterface = a(true, paramCfgParseResult.d);
+      boolean bool1 = ((Boolean)paramQQAppInterface[0]).booleanValue();
+      boolean bool2 = ((Boolean)paramQQAppInterface[1]).booleanValue();
+      this.t = ((String)paramQQAppInterface[2]);
+      this.u = ((String)paramQQAppInterface[3]);
+      this.v = ((Float)paramQQAppInterface[4]).floatValue();
+      this.w = ((Boolean)paramQQAppInterface[5]).booleanValue();
+      this.x = ((Integer)paramQQAppInterface[6]).intValue();
+      this.y = ((Integer)paramQQAppInterface[7]).intValue();
+      this.e = ((Integer)paramQQAppInterface[8]).intValue();
+      this.z = ((Boolean)paramQQAppInterface[9]).booleanValue();
+      if ((bool1 != this.r) || (bool2 != this.s))
+      {
+        this.r = ((Boolean)paramQQAppInterface[0]).booleanValue();
+        this.s = ((Boolean)paramQQAppInterface[1]).booleanValue();
+        paramQQAppInterface = new ConcurrentHashMap(this.g.size());
+        paramQQAppInterface.putAll(this.g);
+        if (a(this.r, this.s, paramQQAppInterface))
+        {
+          this.g.clear();
+          this.g.putAll(paramQQAppInterface);
+          if (this.l.hasMessages(1)) {
+            this.l.removeMessages(1);
+          }
+          this.l.sendEmptyMessage(1);
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("onGetConfig: mSwitchNewFrd: ");
+        paramQQAppInterface.append(this.r);
+        paramQQAppInterface.append(",mSwitchOldFrd: ");
+        paramQQAppInterface.append(this.s);
+        paramQQAppInterface.append(",mTipNewFrd: ");
+        paramQQAppInterface.append(this.t);
+        paramQQAppInterface.append(",mTipOldFrd: ");
+        paramQQAppInterface.append(this.u);
+        paramQQAppInterface.append(",mDaysOldFrd: ");
+        paramQQAppInterface.append(this.v);
+        paramQQAppInterface.append(",switchTroop: ");
+        paramQQAppInterface.append(this.w);
+        paramQQAppInterface.append(",troopMemberMinCount: ");
+        paramQQAppInterface.append(this.x);
+        paramQQAppInterface.append(",troopMemberNotFriendRate: ");
+        paramQQAppInterface.append(this.y);
+        paramQQAppInterface.append(",showDuration: ");
+        paramQQAppInterface.append(this.e);
+        paramQQAppInterface.append(",mSwitchNewFrdMiniCard: ");
+        paramQQAppInterface.append(this.z);
+        QLog.d("IceBreak.Mng", 2, paramQQAppInterface.toString());
+      }
+    }
+  }
+  
+  public void p(String paramString)
+  {
+    this.k.remove(paramString);
+    Object localObject = this.B;
+    if (localObject != null)
+    {
+      localObject = (OnIceBreakChangeListener)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((OnIceBreakChangeListener)localObject).b(paramString, false);
+      }
+    }
+  }
+  
+  public void q(String paramString)
+  {
+    if (h(paramString))
     {
       if (QLog.isColorLevel())
       {
@@ -1155,15 +1259,15 @@ public class IceBreakingMng
       }
       return;
     }
-    if (!((IExpandManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).e())
+    if (!((IExpandManager)this.d.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER)).C())
     {
       if (QLog.isColorLevel()) {
         QLog.i("IceBreak.Mng", 2, "checkNeedShowIceBreakMatchChat switch is off");
       }
       return;
     }
-    this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(0));
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.i.put(paramString, Integer.valueOf(0));
+    Object localObject = this.B;
     if (localObject != null)
     {
       localObject = (OnIceBreakChangeListener)((WeakReference)localObject).get();
@@ -1173,9 +1277,9 @@ public class IceBreakingMng
     }
   }
   
-  public void k(String paramString)
+  public void r(String paramString)
   {
-    if (d(paramString))
+    if (i(paramString))
     {
       if (QLog.isColorLevel())
       {
@@ -1186,8 +1290,8 @@ public class IceBreakingMng
       }
       return;
     }
-    this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(0));
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    this.j.put(paramString, Integer.valueOf(0));
+    Object localObject = this.B;
     if (localObject != null)
     {
       localObject = (OnIceBreakChangeListener)((WeakReference)localObject).get();
@@ -1197,26 +1301,75 @@ public class IceBreakingMng
     }
   }
   
-  public void l(String paramString)
+  public boolean s(String paramString)
   {
-    if (!((IStickerRecManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen())
+    paramString = this.d.getMessageFacade().a(paramString, 10007, null, 60);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" msgList.size() ");
+      ((StringBuilder)localObject).append(paramString.size());
+      QLog.d("IceBreak.Mng", 2, ((StringBuilder)localObject).toString());
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext())
+    {
+      localObject = (MessageRecord)paramString.next();
+      if (((((MessageRecord)localObject).msgtype == -1000) || (((MessageRecord)localObject).msgtype == -1001) || (((MessageRecord)localObject).msgtype == -2000) || (((MessageRecord)localObject).msgtype == -2001)) && (((MessageRecord)localObject).issend == 1)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void t(String paramString)
+  {
+    if (s(paramString))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("checkNeedShowIceBreakGameChat enter: ");
+        ((StringBuilder)localObject).append(MobileQQ.getShortUinStr(paramString));
+        QLog.d("IceBreak.Mng", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    this.k.put(paramString, Integer.valueOf(2));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkNeedShowIceBreakGameChat mBreakingIceGameChatMap: ");
+      ((StringBuilder)localObject).append(this.k.size());
+      QLog.d("IceBreak.Mng", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.B;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
+      ((OnIceBreakChangeListener)this.B.get()).a(paramString, false);
+    }
+  }
+  
+  public void u(String paramString)
+  {
+    if (!((IStickerRecManager)this.d.getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen())
     {
       if (QLog.isColorLevel()) {
         QLog.i("IceBreak.HotPic", 2, "checkNeedShowIceBreakForTroop emotionRec switch is off");
       }
       return;
     }
-    if (b(paramString))
+    if (g(paramString))
     {
       QLog.i("IceBreak.HotPic", 1, "entered toop.");
       return;
     }
-    if (!this.e)
+    if (!this.w)
     {
       QLog.i("IceBreak.HotPic", 1, "troop switch is off.");
       return;
     }
-    TroopMemberInfo localTroopMemberInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    TroopMemberInfo localTroopMemberInfo = ((TroopManager)this.d.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString, this.d.getCurrentAccountUin());
     if ((localTroopMemberInfo != null) && (localTroopMemberInfo.last_active_time != localTroopMemberInfo.join_time))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -1228,89 +1381,18 @@ public class IceBreakingMng
       if (localTroopMemberInfo.last_active_time > localTroopMemberInfo.join_time) {
         return;
       }
-      m(paramString);
+      v(paramString);
       return;
     }
     QLog.i("IceBreak.HotPic", 1, "troop member info is null.");
-    this.jdField_d_of_type_JavaLangString = paramString;
-    ((ITroopMemberCardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER)).a(Long.valueOf(paramString).longValue(), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), true);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConfigProcess().a(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopMngObserver);
-  }
-  
-  public void onGetConfig(QQAppInterface paramQQAppInterface, int paramInt, String paramString, CfgProcess.CfgParseResult paramCfgParseResult)
-  {
-    if ((paramCfgParseResult != null) && ("breaking_ice_config".equals(paramString)))
-    {
-      if (!this.jdField_b_of_type_Boolean) {
-        g();
-      }
-      paramQQAppInterface = a(true, paramCfgParseResult.jdField_a_of_type_JavaLangString);
-      boolean bool1 = ((Boolean)paramQQAppInterface[0]).booleanValue();
-      boolean bool2 = ((Boolean)paramQQAppInterface[1]).booleanValue();
-      this.jdField_b_of_type_JavaLangString = ((String)paramQQAppInterface[2]);
-      this.jdField_c_of_type_JavaLangString = ((String)paramQQAppInterface[3]);
-      this.jdField_a_of_type_Float = ((Float)paramQQAppInterface[4]).floatValue();
-      this.e = ((Boolean)paramQQAppInterface[5]).booleanValue();
-      this.jdField_b_of_type_Int = ((Integer)paramQQAppInterface[6]).intValue();
-      this.jdField_c_of_type_Int = ((Integer)paramQQAppInterface[7]).intValue();
-      this.jdField_a_of_type_Int = ((Integer)paramQQAppInterface[8]).intValue();
-      this.f = ((Boolean)paramQQAppInterface[9]).booleanValue();
-      if ((bool1 != this.jdField_c_of_type_Boolean) || (bool2 != this.jdField_d_of_type_Boolean))
-      {
-        this.jdField_c_of_type_Boolean = ((Boolean)paramQQAppInterface[0]).booleanValue();
-        this.jdField_d_of_type_Boolean = ((Boolean)paramQQAppInterface[1]).booleanValue();
-        paramQQAppInterface = new ConcurrentHashMap(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-        paramQQAppInterface.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-        if (a(this.jdField_c_of_type_Boolean, this.jdField_d_of_type_Boolean, paramQQAppInterface))
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(paramQQAppInterface);
-          if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1)) {
-            this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
-          }
-          this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1);
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append("onGetConfig: mSwitchNewFrd: ");
-        paramQQAppInterface.append(this.jdField_c_of_type_Boolean);
-        paramQQAppInterface.append(",mSwitchOldFrd: ");
-        paramQQAppInterface.append(this.jdField_d_of_type_Boolean);
-        paramQQAppInterface.append(",mTipNewFrd: ");
-        paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString);
-        paramQQAppInterface.append(",mTipOldFrd: ");
-        paramQQAppInterface.append(this.jdField_c_of_type_JavaLangString);
-        paramQQAppInterface.append(",mDaysOldFrd: ");
-        paramQQAppInterface.append(this.jdField_a_of_type_Float);
-        paramQQAppInterface.append(",switchTroop: ");
-        paramQQAppInterface.append(this.e);
-        paramQQAppInterface.append(",troopMemberMinCount: ");
-        paramQQAppInterface.append(this.jdField_b_of_type_Int);
-        paramQQAppInterface.append(",troopMemberNotFriendRate: ");
-        paramQQAppInterface.append(this.jdField_c_of_type_Int);
-        paramQQAppInterface.append(",showDuration: ");
-        paramQQAppInterface.append(this.jdField_a_of_type_Int);
-        paramQQAppInterface.append(",mSwitchNewFrdMiniCard: ");
-        paramQQAppInterface.append(this.f);
-        QLog.d("IceBreak.Mng", 2, paramQQAppInterface.toString());
-      }
-    }
+    this.D = paramString;
+    ((ITroopMemberCardHandler)this.d.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER)).a(Long.valueOf(paramString).longValue(), Long.valueOf(this.d.getCurrentAccountUin()).longValue(), true);
+    ThreadManager.getSubThreadHandler().post(new IceBreakingMng.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.IceBreakingMng
  * JD-Core Version:    0.7.0.1
  */

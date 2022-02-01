@@ -16,6 +16,8 @@ import com.tencent.mobileqq.transfile.ChatImageDownloader;
 import com.tencent.mobileqq.transfile.GroupPicDownloadProcessor;
 import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
 import com.tencent.mobileqq.transfile.GroupQzonePicUploadProcessor;
+import com.tencent.mobileqq.transfile.GuildPicDownloadProcessor;
+import com.tencent.mobileqq.transfile.GuildPicUploadProcessor;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.TroopEffectsPicUploadProcessor;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -41,7 +43,20 @@ public class PicFactoryImpl
   
   public BaseTransProcessor getProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
-    if ((paramTransferRequest.mUinType != 1) && (paramTransferRequest.mUinType != 3000))
+    if (paramTransferRequest.mUinType == 10014)
+    {
+      if (paramTransferRequest.mIsUp)
+      {
+        if (paramTransferRequest.mBusiType == 1045) {
+          return new GroupQzonePicUploadProcessor(paramBaseTransFileController, paramTransferRequest);
+        }
+        return new GuildPicUploadProcessor(paramBaseTransFileController, paramTransferRequest);
+      }
+      if ((paramTransferRequest.mFileType == 1) || (paramTransferRequest.mFileType == 65537) || (paramTransferRequest.mFileType == 131075)) {
+        return new GuildPicDownloadProcessor(paramBaseTransFileController, paramTransferRequest);
+      }
+    }
+    else if ((paramTransferRequest.mUinType != 1) && (paramTransferRequest.mUinType != 3000))
     {
       if (paramTransferRequest.mIsUp)
       {
@@ -67,17 +82,17 @@ public class PicFactoryImpl
         return new GroupPicUploadProcessor(paramBaseTransFileController, paramTransferRequest);
       }
       if ((paramTransferRequest.mFileType == 1) || (paramTransferRequest.mFileType == 65537) || (paramTransferRequest.mFileType == 131075)) {
-        break label181;
+        break label264;
       }
     }
     return null;
-    label181:
+    label264:
     return new GroupPicDownloadProcessor(paramBaseTransFileController, paramTransferRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.PicFactoryImpl
  * JD-Core Version:    0.7.0.1
  */

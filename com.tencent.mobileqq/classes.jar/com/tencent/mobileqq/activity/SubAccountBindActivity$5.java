@@ -33,8 +33,8 @@ class SubAccountBindActivity$5
       {
         if ((i > j) && (SubAccountBindActivity.access$000(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.access$000(this.a).get(j)).getUin())))
         {
-          localObject = (TextView)SubAccountBindActivity.access$100(this.a).getChildAt(j).findViewById(2131371697);
-          TextView localTextView = (TextView)SubAccountBindActivity.access$100(this.a).getChildAt(j).findViewById(2131361863);
+          localObject = (TextView)SubAccountBindActivity.access$100(this.a).getChildAt(j).findViewById(2131439121);
+          TextView localTextView = (TextView)SubAccountBindActivity.access$100(this.a).getChildAt(j).findViewById(2131427416);
           ((TextView)localObject).setText(((IContactUtils)QRoute.api(IContactUtils.class)).getAccountNickName(this.a.app, paramString));
           localTextView.setText(paramString);
           this.a.updateFace(paramString, j);
@@ -47,7 +47,7 @@ class SubAccountBindActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.activateFriend.biz;
 
+import com.tencent.mobileqq.activity.activateFriend.QQNotifyHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -20,7 +21,8 @@ public class QQReminderStepAsync
     }
     try
     {
-      ((IQQReminderDataService)this.mAutomator.a.getRuntimeService(IQQReminderDataService.class, "")).checkTodayReminder();
+      ((IQQReminderDataService)this.mAutomator.k.getRuntimeService(IQQReminderDataService.class, "")).checkTodayReminder();
+      QQNotifyHelper.a(this.mAutomator.k);
     }
     catch (Throwable localThrowable)
     {
@@ -37,7 +39,7 @@ public class QQReminderStepAsync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.biz.QQReminderStepAsync
  * JD-Core Version:    0.7.0.1
  */

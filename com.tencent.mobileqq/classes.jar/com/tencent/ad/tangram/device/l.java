@@ -5,21 +5,19 @@ import android.content.Context;
 final class l
   extends f
 {
-  private static final int SLOT_INDEX = 0;
-  
   protected int getEventId()
   {
-    return 1120;
+    return 1116;
   }
   
   protected String getId(Context paramContext, boolean paramBoolean)
   {
-    return c.getMeid(paramContext, 0, paramBoolean);
+    return c.getImei(paramContext, paramBoolean);
   }
   
   protected String getIdCache(Context paramContext)
   {
-    return c.getMeidCache(paramContext, 0);
+    return c.getImei(paramContext);
   }
   
   protected String getIdHash(String paramString)

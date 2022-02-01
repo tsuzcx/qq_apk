@@ -24,14 +24,14 @@ public class NonFriendHeadIconController
 {
   private Object a(ChatMessage paramChatMessage, String paramString, FriendsManager paramFriendsManager, HotChatManager paramHotChatManager)
   {
-    paramHotChatManager = paramHotChatManager.a(paramChatMessage.frienduin);
+    paramHotChatManager = paramHotChatManager.c(paramChatMessage.frienduin);
     int i = 200;
     if ((paramHotChatManager != null) && (paramHotChatManager.isGameRoom))
     {
-      if ((!paramFriendsManager.b(paramString)) && (!paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        paramChatMessage = FaceDrawable.getStrangerFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 200, paramString, true);
+      if ((!paramFriendsManager.n(paramString)) && (!paramString.equals(this.b.getCurrentAccountUin()))) {
+        paramChatMessage = FaceDrawable.getStrangerFaceDrawable(this.b, 200, paramString, true);
       } else {
-        paramChatMessage = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramString);
+        paramChatMessage = FaceDrawable.getFaceDrawable(this.b, 1, paramString);
       }
     }
     else if (paramChatMessage.istroop == 1001)
@@ -39,11 +39,11 @@ public class NonFriendHeadIconController
       if (((INearbyCardManagerUtils)QRoute.api(INearbyCardManagerUtils.class)).isTinyId(paramString)) {
         i = 202;
       }
-      paramChatMessage = FaceDrawable.getStrangerFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramString, true);
+      paramChatMessage = FaceDrawable.getStrangerFaceDrawable(this.b, i, paramString, true);
     }
     else
     {
-      paramChatMessage = FaceDrawable.getStrangerFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 200, paramString, true);
+      paramChatMessage = FaceDrawable.getStrangerFaceDrawable(this.b, 200, paramString, true);
     }
     if (QLog.isColorLevel())
     {
@@ -60,54 +60,54 @@ public class NonFriendHeadIconController
     b(paramObject);
     if (MiniCardManagerUtils.a(paramString))
     {
-      paramObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845589);
-      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar, MiniCardManagerUtils.a(paramString).logo.get(), paramObject, paramObject, null, true);
+      paramObject = this.c.getResources().getDrawable(2130847053);
+      ((IImageLoader)QRoute.api(IImageLoader.class)).displayImage(this.e, MiniCardManagerUtils.b(paramString).logo.get(), paramObject, paramObject, null, true);
     }
   }
   
-  private boolean b()
+  private boolean k()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d == 3007) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d == 2007) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d == 4007) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d == 3019) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d == 2019);
-  }
-  
-  public boolean a()
-  {
-    String str = BaseBubbleBuilderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    HotChatManager localHotChatManager = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-    int i;
-    if ((localHotChatManager != null) && (localHotChatManager.b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin))) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    int j;
-    if ((localFriendsManager != null) && (localFriendsManager.b(str))) {
-      j = 1;
-    } else {
-      j = 0;
-    }
-    int k = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    return ((k == 1010) || (k == 1001) || (k == 10002) || ((i != 0) && ((j == 0) || (str.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))) || ((k == 1022) && (b()))) && (localFriendsManager != null) && (!localFriendsManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+    return (this.d.t == 3007) || (this.d.t == 2007) || (this.d.t == 4007) || (this.d.t == 3019) || (this.d.t == 2019);
   }
   
   protected void b()
   {
-    String str = BaseBubbleBuilderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    HotChatManager localHotChatManager = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-    localObject = a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, str, (FriendsManager)localObject, localHotChatManager);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop == 1001)
+    String str = BaseBubbleBuilderUtil.a(this.b, this.a);
+    Object localObject = (FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    HotChatManager localHotChatManager = (HotChatManager)this.b.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+    localObject = a(this.a, str, (FriendsManager)localObject, localHotChatManager);
+    if (this.a.istroop == 1001)
     {
       a(localObject, str);
       return;
     }
     b(localObject);
   }
+  
+  public boolean h()
+  {
+    String str = BaseBubbleBuilderUtil.a(this.b, this.a);
+    FriendsManager localFriendsManager = (FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    HotChatManager localHotChatManager = (HotChatManager)this.b.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+    int i;
+    if ((localHotChatManager != null) && (localHotChatManager.b(this.a.frienduin))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j;
+    if ((localFriendsManager != null) && (localFriendsManager.n(str))) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    int k = this.a.istroop;
+    return ((k == 1010) || (k == 1001) || (k == 10002) || ((i != 0) && ((j == 0) || (str.equals(this.b.getCurrentAccountUin())))) || ((k == 1022) && (k()))) && (localFriendsManager != null) && (!localFriendsManager.n(this.d.b));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.NonFriendHeadIconController
  * JD-Core Version:    0.7.0.1
  */

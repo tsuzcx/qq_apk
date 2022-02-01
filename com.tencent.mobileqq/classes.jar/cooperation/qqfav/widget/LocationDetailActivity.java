@@ -36,48 +36,61 @@ import cooperation.qqfav.QfavUtil;
 public class LocationDetailActivity
   extends PoiMapActivity
 {
-  public long a;
-  private IColorNoteController jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-  private FadeIconImageView jdField_a_of_type_ComTencentWidgetFadeIconImageView = null;
-  public FavoriteActionSheet a;
-  public TextView b = null;
-  public ImageView c = null;
-  public String g;
-  public String h;
-  public String i;
-  public String j = null;
-  public boolean k = false;
-  private boolean l = false;
-  private boolean m = false;
+  private boolean aA = false;
+  public String ao;
+  public String ap;
+  public String aq;
+  public long ar = -1L;
+  public TextView as = null;
+  public String at = null;
+  public ImageView au = null;
+  public FavoriteActionSheet av;
+  public boolean aw = false;
+  private FadeIconImageView ax = null;
+  private boolean ay = false;
+  private IColorNoteController az;
   
-  public LocationDetailActivity()
+  @TargetApi(11)
+  private void m()
   {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
-  private int a()
-  {
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-    int n;
-    if ((localIColorNoteController != null) && (localIColorNoteController.isColorNoteExist())) {
-      n = 256;
-    } else {
-      n = 128;
+    if (this.as == null) {
+      return;
     }
-    return n | 0x50;
+    if (TextUtils.isEmpty(this.at))
+    {
+      this.as.setVisibility(8);
+      return;
+    }
+    this.as.setVisibility(0);
+    if (VersionUtils.e()) {
+      this.as.setAlpha(0.9F);
+    }
+    this.as.setText(new QQText(this.at, 3, 22));
   }
   
-  private Intent a()
+  private int n()
   {
-    if ((this.g != null) && (this.h != null))
+    IColorNoteController localIColorNoteController = this.az;
+    int i;
+    if ((localIColorNoteController != null) && (localIColorNoteController.isColorNoteExist())) {
+      i = 256;
+    } else {
+      i = 128;
+    }
+    return i | 0x50;
+  }
+  
+  private Intent o()
+  {
+    if ((this.ao != null) && (this.ap != null))
     {
       Intent localIntent1 = getLocationData();
       Intent localIntent2 = localIntent1.putExtra("forward_type", -2).putExtra("forward_latitude", localIntent1.getStringExtra("latitude")).putExtra("forward_longitude", localIntent1.getStringExtra("longitude")).putExtra("forward_location", this.mCurPoiAdr).putExtra("forward_location_string", this.mCurPoiAdr);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(AppConstants.PATH_LOCATION_IMG);
-      localStringBuilder.append(this.g);
+      localStringBuilder.append(this.ao);
       localStringBuilder.append("_");
-      localStringBuilder.append(this.h);
+      localStringBuilder.append(this.ap);
       localStringBuilder.append(".png");
       localIntent2.putExtra("forward_thumb", localStringBuilder.toString()).putExtra("isFromFavorites", true).putExtra("title", this.mCurPoiName).putExtra("summary", this.mCurPoiAdr);
       return localIntent1;
@@ -85,48 +98,30 @@ public class LocationDetailActivity
     return null;
   }
   
-  @TargetApi(11)
-  private void i()
+  private void p()
   {
-    if (this.b == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(this.j))
-    {
-      this.b.setVisibility(8);
-      return;
-    }
-    this.b.setVisibility(0);
-    if (VersionUtils.e()) {
-      this.b.setAlpha(0.9F);
-    }
-    this.b.setText(new QQText(this.j, 3, 22));
+    QfavHelper.a(this, "", this.ar, 0L);
   }
   
-  private void j()
+  private void q()
   {
-    QfavHelper.a(this, "", this.jdField_a_of_type_Long, 0L);
-  }
-  
-  private void k()
-  {
-    setResult(-1, c(this));
+    setResult(-1, f(this));
     finish();
   }
   
-  private void l()
+  private void r()
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController = ((IColorNoteController)QRoute.api(IColorNoteController.class));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.init(this, true, false, true, true, 0);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setServiceInfo(a(false));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.attachToActivity(this);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setOnColorNoteAnimFinishListener(new LocationDetailActivity.5(this));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setOnColorNoteCurdListener(new LocationDetailActivity.6(this));
-    boolean bool = b();
+    this.az = ((IColorNoteController)QRoute.api(IColorNoteController.class));
+    this.az.init(this, true, false, true, true, 0);
+    this.az.setServiceInfo(b(false));
+    this.az.attachToActivity(this);
+    this.az.setOnColorNoteAnimFinishListener(new LocationDetailActivity.5(this));
+    this.az.setOnColorNoteCurdListener(new LocationDetailActivity.6(this));
+    boolean bool = j();
     if (!bool) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.disablePostTable();
+      this.az.disablePostTable();
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.enablePostTable();
+      this.az.enablePostTable();
     }
     if (QLog.isColorLevel())
     {
@@ -138,70 +133,47 @@ public class LocationDetailActivity
     }
   }
   
-  private void m()
+  private void s()
   {
     QfavReport.a(null, "User_Modify", 7, 0, getIntent().getIntExtra("category", 1));
-    QfavHelper.b(this, "", this.jdField_a_of_type_Long);
+    QfavHelper.b(this, "", this.ar);
     super.finish();
-  }
-  
-  public IServiceInfo a(boolean paramBoolean)
-  {
-    return new LocationColorNoteServiceInfo(this, Long.valueOf(this.jdField_a_of_type_Long));
   }
   
   protected void a(Bundle paramBundle)
   {
-    Intent localIntent = a();
+    Intent localIntent = o();
     if (localIntent != null)
     {
       localIntent.putExtras(paramBundle);
       ForwardBaseOption.a(getActivity(), localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_shoucang");
       return;
     }
-    QQToast.a(this, 2131692205, 1, 2000).b(5);
+    QQToast.makeText(this, 2131889192, 1, 2000).show(5);
   }
   
   protected void a(boolean paramBoolean)
   {
-    Object localObject = a(this);
-    Intent localIntent = new Intent(b(this));
+    Object localObject = d(this);
+    Intent localIntent = new Intent(e(this));
     localIntent.putExtras((Intent)localObject);
     localIntent.putExtra("modify", paramBoolean);
-    localIntent.putExtra("favId", this.jdField_a_of_type_Long);
-    localIntent.putExtra("note", this.j);
+    localIntent.putExtra("favId", this.ar);
+    localIntent.putExtra("note", this.at);
     localIntent.setClassName("com.qqfav", "com.qqfav.activity.AddLocationFavActivity");
     localObject = localIntent.getStringExtra("pluginsdk_selfuin");
-    int n;
+    int i;
     if (paramBoolean) {
-      n = 13322;
+      i = 13322;
     } else {
-      n = 13321;
+      i = 13321;
     }
-    QfavHelper.a(this, (String)localObject, localIntent, n);
+    QfavHelper.a(this, (String)localObject, localIntent, i);
   }
   
-  protected boolean b()
+  public IServiceInfo b(boolean paramBoolean)
   {
-    return true;
-  }
-  
-  protected boolean c()
-  {
-    this.k = true;
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-    if ((localIColorNoteController != null) && (!localIColorNoteController.isColorNoteExist()))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.canAddColorNote())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.insertColorNote();
-        return true;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.onCannotAdd();
-      return false;
-    }
-    this.k = false;
-    return false;
+    return new LocationColorNoteServiceInfo(this, Long.valueOf(this.ar));
   }
   
   @Override
@@ -215,78 +187,101 @@ public class LocationDetailActivity
   
   public void finish()
   {
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    IColorNoteController localIColorNoteController = this.az;
     if (localIColorNoteController != null)
     {
-      long l1 = this.jdField_a_of_type_Long;
-      if ((l1 != -1L) && (l1 != 0L)) {
+      long l = this.ar;
+      if ((l != -1L) && (l != 0L)) {
         localIColorNoteController.addHistoryNote();
       }
     }
     super.finish();
   }
   
-  protected void h()
-  {
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-    if ((localIColorNoteController != null) && (localIColorNoteController.isColorNoteExist())) {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.deleteColorNote();
-    }
-  }
-  
   protected void initTitleBar()
   {
     Object localObject = super.getIntent().getExtras();
-    this.i = ((Bundle)localObject).getString("loc");
-    this.g = ((Bundle)localObject).getString("lat");
-    this.h = ((Bundle)localObject).getString("lon");
-    this.jdField_a_of_type_Long = ((Bundle)localObject).getLong("favId");
-    TextView localTextView2 = (TextView)findViewById(2131369202);
-    localTextView2.setText(2131692234);
+    this.aq = ((Bundle)localObject).getString("loc");
+    this.ao = ((Bundle)localObject).getString("lat");
+    this.ap = ((Bundle)localObject).getString("lon");
+    this.ar = ((Bundle)localObject).getLong("favId");
+    TextView localTextView2 = (TextView)findViewById(2131436180);
+    localTextView2.setText(2131889221);
     localTextView2.setOnClickListener(new LocationDetailActivity.1(this));
-    ((TextView)super.findViewById(2131369249)).setText(2131693810);
-    TextView localTextView1 = (TextView)super.findViewById(2131369233);
-    this.m = super.getIntent().getBooleanExtra("forNoteNewFavorite", false);
-    if ((!this.m) && (!((Bundle)localObject).getBoolean("forNewFavorite", false)))
+    ((TextView)super.findViewById(2131436227)).setText(2131891386);
+    TextView localTextView1 = (TextView)super.findViewById(2131436211);
+    this.aA = super.getIntent().getBooleanExtra("forNoteNewFavorite", false);
+    if ((!this.aA) && (!((Bundle)localObject).getBoolean("forNewFavorite", false)))
     {
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet = new LocationDetailActivity.2(this, this, new LocationDetailActivity.LocationActions(this), a(), 7, null);
+      this.av = new LocationDetailActivity.2(this, this, new LocationDetailActivity.LocationActions(this), n(), 7, null);
       localTextView2.setText(((Bundle)localObject).getString("leftViewText"));
       localTextView1.setVisibility(8);
-      this.c = ((ImageView)super.findViewById(2131369216));
-      this.c.setVisibility(0);
-      this.c.setImageResource(2130840347);
-      this.c.setContentDescription(super.getString(2131694220));
-      this.c.setOnClickListener(this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet);
-      this.jdField_a_of_type_ComTencentWidgetFadeIconImageView = ((FadeIconImageView)findViewById(2131369220));
+      this.au = ((ImageView)super.findViewById(2131436194));
+      this.au.setVisibility(0);
+      this.au.setImageResource(2130841087);
+      this.au.setContentDescription(super.getString(2131891858));
+      this.au.setOnClickListener(this.av);
+      this.ax = ((FadeIconImageView)findViewById(2131436198));
       if (!QfavUtil.a())
       {
-        localObject = this.jdField_a_of_type_ComTencentWidgetFadeIconImageView;
+        localObject = this.ax;
         if (localObject != null)
         {
           ((FadeIconImageView)localObject).setVisibility(0);
-          this.l = true;
+          this.ay = true;
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentWidgetFadeIconImageView;
+        localObject = this.ax;
         if (localObject != null) {
           ((FadeIconImageView)localObject).setVisibility(8);
         }
       }
     }
-    else if (this.m)
+    else if (this.aA)
     {
-      localTextView1.setText(2131694583);
+      localTextView1.setText(2131892267);
       localTextView1.setOnClickListener(new LocationDetailActivity.3(this));
     }
     else
     {
-      localTextView2.setText(2131690529);
-      localTextView1.setText(2131694457);
+      localTextView2.setText(2131887440);
+      localTextView1.setText(2131892137);
       localTextView1.setOnClickListener(new LocationDetailActivity.4(this));
     }
     localTextView1.setTag(localTextView1.getText());
+  }
+  
+  protected boolean j()
+  {
+    return true;
+  }
+  
+  protected boolean k()
+  {
+    this.aw = true;
+    IColorNoteController localIColorNoteController = this.az;
+    if ((localIColorNoteController != null) && (!localIColorNoteController.isColorNoteExist()))
+    {
+      if (this.az.canAddColorNote())
+      {
+        this.az.insertColorNote();
+        return true;
+      }
+      this.az.onCannotAdd();
+      return false;
+    }
+    this.aw = false;
+    return false;
+  }
+  
+  protected void l()
+  {
+    IColorNoteController localIColorNoteController = this.az;
+    if ((localIColorNoteController != null) && (localIColorNoteController.isColorNoteExist())) {
+      this.az.deleteColorNote();
+    }
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -301,11 +296,11 @@ public class LocationDetailActivity
         }
         else if ((13322 == paramInt1) && (paramIntent != null))
         {
-          this.j = paramIntent.getStringExtra("note");
-          i();
+          this.at = paramIntent.getStringExtra("note");
+          m();
         }
       }
-      paramIntent = this.c;
+      paramIntent = this.au;
       if ((paramIntent != null) && (13322 != paramInt1) && (103 != paramInt1)) {
         paramIntent.setOnClickListener(null);
       }
@@ -315,7 +310,7 @@ public class LocationDetailActivity
   public void onBackPressed()
   {
     super.setResult(0, new Intent());
-    ImageView localImageView = this.c;
+    ImageView localImageView = this.au;
     if (localImageView != null) {
       localImageView.setOnClickListener(null);
     }
@@ -332,45 +327,45 @@ public class LocationDetailActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = super.findViewById(2131377019);
+    paramBundle = super.findViewById(2131445383);
     paramBundle.setFocusable(false);
     paramBundle.setContentDescription(null);
-    if ((this.m) && (!super.getIntent().getBooleanExtra("forNewFavorite", false)))
+    if ((this.aA) && (!super.getIntent().getBooleanExtra("forNewFavorite", false)))
     {
       paramBundle = (FrameLayout)super.findViewById(16908290);
       float f = super.getResources().getDisplayMetrics().density;
-      this.b = new TextView(paramBundle.getContext());
-      this.b.setId(2131371959);
-      this.b.setBackgroundResource(2130839390);
-      this.b.setMaxLines(3);
-      int n = (int)(15.0F * f);
-      this.b.setPadding(n, n, n, n);
-      this.b.setTextColor(super.getResources().getColor(2131167056));
-      this.b.setTextSize(14.0F);
-      this.b.setIncludeFontPadding(false);
+      this.as = new TextView(paramBundle.getContext());
+      this.as.setId(2131439404);
+      this.as.setBackgroundResource(2130839574);
+      this.as.setMaxLines(3);
+      int i = (int)(15.0F * f);
+      this.as.setPadding(i, i, i, i);
+      this.as.setTextColor(super.getResources().getColor(2131167993));
+      this.as.setTextSize(14.0F);
+      this.as.setIncludeFontPadding(false);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
       localLayoutParams.topMargin = ((int)(f * 50.0F) + ImmersiveUtils.getStatusBarHeight(this));
       localLayoutParams.gravity = 48;
-      paramBundle.addView(this.b, localLayoutParams);
+      paramBundle.addView(this.as, localLayoutParams);
     }
-    this.j = super.getIntent().getStringExtra("note");
+    this.at = super.getIntent().getStringExtra("note");
     this.hideJiejingIcon = true;
     if (this.jiejingIcon != null) {
       this.jiejingIcon.setVisibility(8);
     }
-    i();
-    if (this.jdField_a_of_type_Long != -1L)
+    m();
+    if (this.ar != -1L)
     {
       getIntent().putExtra("big_brother_source_key", "biz_src_jc_shoucang");
       getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      l();
+      r();
     }
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    IColorNoteController localIColorNoteController = this.az;
     if (localIColorNoteController != null) {
       localIColorNoteController.onDestroy();
     }
@@ -379,7 +374,7 @@ public class LocationDetailActivity
   protected void onPause()
   {
     super.onPause();
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    IColorNoteController localIColorNoteController = this.az;
     if (localIColorNoteController != null) {
       localIColorNoteController.onPause();
     }
@@ -388,7 +383,7 @@ public class LocationDetailActivity
   protected void onResume()
   {
     super.onResume();
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    IColorNoteController localIColorNoteController = this.az;
     if (localIColorNoteController != null) {
       localIColorNoteController.onResume();
     }
@@ -402,7 +397,7 @@ public class LocationDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.widget.LocationDetailActivity
  * JD-Core Version:    0.7.0.1
  */

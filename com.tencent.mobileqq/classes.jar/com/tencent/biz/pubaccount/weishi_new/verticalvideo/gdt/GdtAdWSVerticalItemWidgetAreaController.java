@@ -11,36 +11,36 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalVide
 public class GdtAdWSVerticalItemWidgetAreaController
   extends AbsWsUIGroup<WSVerticalItemData>
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private GdtAdWSVerticalItemWidgetButtonController jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController;
-  private WSVerticalVideoHolder jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder;
+  private GdtAdWSVerticalItemWidgetButtonController g;
+  private ViewStub h;
+  private WSVerticalVideoHolder i;
   
   public GdtAdWSVerticalItemWidgetAreaController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder = paramWSVerticalVideoHolder;
-  }
-  
-  private stSimpleMetaFeed a()
-  {
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-    if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed))) {
-      return localWSVerticalItemData.a();
-    }
-    return null;
+    this.i = paramWSVerticalVideoHolder;
   }
   
   private void b(WSVerticalItemData paramWSVerticalItemData)
   {
-    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    if ((l() != null) && (l().new_icon != null) && (l().new_icon.tag_type == 0))
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController == null)
+      if (this.g == null)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController = new GdtAdWSVerticalItemWidgetButtonController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder);
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController.a(this.jdField_a_of_type_AndroidViewViewStub);
+        this.g = new GdtAdWSVerticalItemWidgetButtonController(this.a, this.i);
+        this.g.a(this.h);
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController.a(paramWSVerticalItemData);
+      this.g.a(paramWSVerticalItemData);
     }
+  }
+  
+  private stSimpleMetaFeed l()
+  {
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
+    if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.b() instanceof stSimpleMetaFeed))) {
+      return localWSVerticalItemData.b();
+    }
+    return null;
   }
   
   protected void a() {}
@@ -51,29 +51,29 @@ public class GdtAdWSVerticalItemWidgetAreaController
     b(paramWSVerticalItemData);
   }
   
-  protected int b()
-  {
-    return 2131560050;
-  }
-  
   protected void b() {}
   
-  protected void c()
+  protected void f()
   {
-    GdtAdWSVerticalItemWidgetButtonController localGdtAdWSVerticalItemWidgetButtonController = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController;
+    GdtAdWSVerticalItemWidgetButtonController localGdtAdWSVerticalItemWidgetButtonController = this.g;
     if (localGdtAdWSVerticalItemWidgetButtonController != null) {
-      localGdtAdWSVerticalItemWidgetButtonController.c();
+      localGdtAdWSVerticalItemWidgetButtonController.f();
     }
   }
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380473));
+    return 2131626094;
+  }
+  
+  protected void j()
+  {
+    this.h = ((ViewStub)c(2131449426));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalItemWidgetAreaController
  * JD-Core Version:    0.7.0.1
  */

@@ -29,10 +29,10 @@ class RecentAdapter$10$3
   {
     try
     {
-      paramDialog = this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin();
+      paramDialog = this.a.a.getRecentUserUin();
       paramView = new StringBuilder();
-      int i = ChatHistory.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialog, 1, paramView);
-      Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramDialog, 1);
+      int i = ChatHistory.a(this.a.f.d, paramDialog, 1, paramView);
+      Object localObject = this.a.f.d.getMessageFacade().h(paramDialog, 1);
       long l1;
       if ((localObject != null) && (!((List)localObject).isEmpty())) {
         l1 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).shmsgseq;
@@ -45,20 +45,20 @@ class RecentAdapter$10$3
           long l2 = Long.parseLong(paramView.toString());
           l1 = Math.max(l2, l1);
           if (l1 > 0L) {
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(paramDialog, 1, l1);
+            this.a.f.d.getMsgCache().a(paramDialog, 1, l1);
           }
-          if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramDialog))
+          if (((TroopManager)this.a.f.d.getManager(QQManagerFactory.TROOP_MANAGER)).o(paramDialog))
           {
-            FriendsStatusUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialog, 1);
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramDialog, 1, true, false);
+            FriendsStatusUtil.b(this.a.f.d, paramDialog, 1);
+            this.a.f.d.getMessageFacade().b(paramDialog, 1, true, false);
           }
           else
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramDialog, 1);
+            this.a.f.d.getMessageFacade().c(paramDialog, 1);
           }
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(paramDialog, 1);
-          ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history_confirm_del_msg");
-          paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+          this.a.f.d.getMessageFacade().g(paramDialog, 1);
+          ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).stopAllTask(this.a.f.d, "chat_history_confirm_del_msg");
+          paramView = this.a.f.d.getHandler(Conversation.class);
           localObject = paramView.obtainMessage(1017);
           ((Message)localObject).obj = paramDialog;
           ((Message)localObject).arg1 = 1;
@@ -67,15 +67,15 @@ class RecentAdapter$10$3
         catch (Exception paramDialog)
         {
           QLog.e("Q.recent", 1, "ClearChatRecordTask parse seq fail.", paramDialog);
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, 2, 2131691483, 0).a();
-          RecentAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter, this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+          QQToast.makeText(this.a.f.c, 2, 2131888442, 0).show();
+          RecentAdapter.a(this.a.f, this.a.a, this.a.b, this.a.c);
           return;
         }
       } else if (QLog.isColorLevel()) {
         QLog.d("Q.recent", 2, "msg history already clear!");
       }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, 2, 2131691483, 0).a();
-      RecentAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter, this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.a.jdField_a_of_type_JavaLangString, this.a.b);
+      QQToast.makeText(this.a.f.c, 2, 2131888442, 0).show();
+      RecentAdapter.a(this.a.f, this.a.a, this.a.b, this.a.c);
       return;
     }
     catch (IllegalStateException paramDialog)
@@ -87,13 +87,13 @@ class RecentAdapter$10$3
         paramView.append(paramDialog.toString());
         QLog.e("Q.recent", 2, paramView.toString());
       }
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, 1, 2131691480, 0).a();
+      QQToast.makeText(this.a.f.c, 1, 2131888439, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.10.3
  * JD-Core Version:    0.7.0.1
  */

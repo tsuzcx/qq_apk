@@ -10,13 +10,13 @@ class FrameworkHandler$5
   
   public void run()
   {
-    RIJNewBiuCardTransformManager.a().a();
+    RIJNewBiuCardTransformManager.a().c();
     QLog.d("FrameworkHandler", 2, "transformCommentBiuCard | in recommend feeds and transform ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.FrameworkHandler.5
  * JD-Core Version:    0.7.0.1
  */

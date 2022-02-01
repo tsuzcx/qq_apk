@@ -35,12 +35,12 @@ public class MsgTabNodePullVideoBasicInfoSegment
       paramJobContext = new ArrayList();
       Object localObject = paramList.iterator();
       while (((Iterator)localObject).hasNext()) {
-        paramJobContext.add(((MsgTabVideoData)((Iterator)localObject).next()).b);
+        paramJobContext.add(((MsgTabVideoData)((Iterator)localObject).next()).c);
       }
       paramJobContext = new BatchGetVideoInfo(paramJobContext);
       localObject = this.a;
       if (localObject != null) {
-        paramJobContext.a = ((BatchGetVideoInfo.VideoLocalCacheFilter)localObject);
+        paramJobContext.d = ((BatchGetVideoInfo.VideoLocalCacheFilter)localObject);
       }
       paramJobContext.a(new MsgTabNodePullVideoBasicInfoSegment.2(this, paramList));
       paramJobContext.b();
@@ -54,7 +54,7 @@ public class MsgTabNodePullVideoBasicInfoSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodePullVideoBasicInfoSegment
  * JD-Core Version:    0.7.0.1
  */

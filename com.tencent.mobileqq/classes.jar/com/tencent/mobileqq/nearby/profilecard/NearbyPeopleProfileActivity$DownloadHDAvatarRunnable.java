@@ -3,17 +3,17 @@ package com.tencent.mobileqq.nearby.profilecard;
 class NearbyPeopleProfileActivity$DownloadHDAvatarRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private String a;
+  private int b;
+  private String c;
+  private boolean d;
   
   NearbyPeopleProfileActivity$DownloadHDAvatarRunnable(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramString1;
+    this.b = paramInt;
+    this.c = paramString2;
+    this.d = paramBoolean;
   }
   
   public void run()
@@ -23,7 +23,7 @@ class NearbyPeopleProfileActivity$DownloadHDAvatarRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.DownloadHDAvatarRunnable
  * JD-Core Version:    0.7.0.1
  */

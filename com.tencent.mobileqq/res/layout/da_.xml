@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginRight="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/da7" />
+    <TextView android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/qd4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

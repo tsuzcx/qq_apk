@@ -1,11 +1,11 @@
 package cooperation.qqcircle.report;
 
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudCommon.BytesEntry;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import java.util.ArrayList;
@@ -41,18 +41,16 @@ public class QCircleReporterAgent
     if (localArrayList.size() > 0)
     {
       localStCommonExt.mapBytesInfo.set(localArrayList);
-      i = RFLog.CLR;
       paramArrayOfByte1 = new StringBuilder();
       paramArrayOfByte1.append("buildSessionCommonExt() valid session and subsession!scene:");
       paramArrayOfByte1.append(this.mScene);
-      RFLog.d("QCircleReporterAgent", i, paramArrayOfByte1.toString());
+      QLog.d("QCircleReporterAgent", 2, paramArrayOfByte1.toString());
       return localStCommonExt;
     }
-    int i = RFLog.CLR;
     paramArrayOfByte1 = new StringBuilder();
     paramArrayOfByte1.append("buildSessionCommonExt() no session and subsession!scene:");
     paramArrayOfByte1.append(this.mScene);
-    RFLog.e("QCircleReporterAgent", i, paramArrayOfByte1.toString());
+    QLog.e("QCircleReporterAgent", 2, paramArrayOfByte1.toString());
     return localStCommonExt;
   }
   
@@ -123,11 +121,10 @@ public class QCircleReporterAgent
   
   public void updateSubSession(FeedCloudCommon.StCommonExt paramStCommonExt)
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("updateSubSession,scene:");
     localStringBuilder.append(this.mScene);
-    RFLog.d("QCircleReporterAgent", i, localStringBuilder.toString());
+    QLog.d("QCircleReporterAgent", 1, localStringBuilder.toString());
     if ((paramStCommonExt != null) && (paramStCommonExt.has()) && (paramStCommonExt.mapBytesInfo.has()))
     {
       localStringBuilder = null;
@@ -143,22 +140,22 @@ public class QCircleReporterAgent
         paramStCommonExt = (FeedCloudCommon.BytesEntry)localIterator.next();
       } while ((paramStCommonExt == null) || (!"SubSessionID".equals(paramStCommonExt.key.get())));
       paramStCommonExt = paramStCommonExt.value.get().toByteArray();
-      i = 1;
+      int i = 1;
       if (paramStCommonExt != null) {
         updateSubSession(paramStCommonExt);
       }
       if (i != 0)
       {
-        RFLog.d("QCircleReporterAgent", RFLog.USR, "find subsession!");
+        QLog.d("QCircleReporterAgent", 1, "find subsession!");
         return;
       }
-      RFLog.e("QCircleReporterAgent", RFLog.USR, "can't find subsession!");
+      QLog.e("QCircleReporterAgent", 1, "can't find subsession!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporterAgent
  * JD-Core Version:    0.7.0.1
  */

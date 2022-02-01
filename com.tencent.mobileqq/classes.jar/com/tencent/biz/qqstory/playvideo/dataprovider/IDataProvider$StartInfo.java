@@ -6,37 +6,37 @@ public class IDataProvider$StartInfo
 {
   public IDataProvider.GroupId a;
   @Nullable
-  public IDataProvider.GroupInfo a;
-  @Nullable
-  public String a;
-  @Nullable
   public String b;
+  @Nullable
+  public String c;
+  @Nullable
+  public IDataProvider.GroupInfo d;
   
   public IDataProvider$StartInfo(@Nullable IDataProvider.GroupId paramGroupId, @Nullable String paramString1, @Nullable String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = paramGroupId;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a = paramGroupId;
+    this.b = paramString1;
+    this.c = paramString2;
   }
   
   public IDataProvider$StartInfo(StartInfo paramStartInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = paramStartInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
-    this.jdField_a_of_type_JavaLangString = paramStartInfo.jdField_a_of_type_JavaLangString;
+    this.a = paramStartInfo.a;
     this.b = paramStartInfo.b;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo = paramStartInfo.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupInfo;
+    this.c = paramStartInfo.c;
+    this.d = paramStartInfo.d;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("StartInfo{mGroupId=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", vid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", feedId='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -44,7 +44,7 @@ public class IDataProvider$StartInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.StartInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -18,24 +18,24 @@ public class RecommendTroopListWrapperForSearchEmpty
   
   protected RecommendTroopAdapter a()
   {
-    return new RecommendTroopAdapterForSearchEmpty(this.jdField_a_of_type_AndroidContentContext, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, true);
+    return new RecommendTroopAdapterForSearchEmpty(this.j, (QQAppInterface)this.i, true);
   }
   
-  protected void a()
+  protected void b()
   {
-    super.a();
+    super.b();
     ReportController.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
   }
   
-  public void d()
+  public void f()
   {
-    super.d();
+    super.f();
     ReportController.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.RecommendTroopListWrapperForSearchEmpty
  * JD-Core Version:    0.7.0.1
  */

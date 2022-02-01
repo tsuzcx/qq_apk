@@ -8,27 +8,27 @@ import java.util.ArrayList;
 public class SlideTabViewPager$TabViewAdapter
   extends PagerAdapter
 {
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<View> b = new ArrayList();
   
   public SlideTabViewPager$TabViewAdapter(ArrayList<View> paramArrayList)
   {
     Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.b = localObject;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    paramViewGroup.removeView((View)this.b.get(paramInt));
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = (View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    View localView = (View)this.b.get(paramInt);
     paramViewGroup.addView(localView);
     return localView;
   }

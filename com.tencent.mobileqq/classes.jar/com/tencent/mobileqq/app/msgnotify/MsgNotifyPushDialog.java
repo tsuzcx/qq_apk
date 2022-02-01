@@ -44,37 +44,37 @@ import org.xmlpull.v1.XmlPullParser;
 public class MsgNotifyPushDialog
   extends ReportDialog
 {
-  public static int a = 0;
-  public static long a = 86400000L;
-  public static Intent a;
-  public static DownloadTask a;
+  private static long A = -1L;
   public static String a = "PushOpenNotify";
-  public static boolean a = false;
-  public static int b = 0;
-  @Deprecated
-  public static long b = 0L;
-  public static String b;
-  public static boolean b = false;
-  public static int c = 0;
-  private static long c = -1L;
+  public static long b = 86400000L;
   public static String c;
-  public static boolean c;
-  public static int d;
   public static String d;
-  public static boolean d;
-  public static int e;
-  public static String e;
-  public static int f;
-  public static String f;
-  public static int g;
+  public static String e = "msgnotify_pic.zip";
+  public static String f = "msgnotify_pic_%d.jpg";
+  public static int g = 25;
+  public static String h = "https://sqimg.qq.com/qq_product_operations/banner/msgnotify_pic.zip";
+  public static DownloadTask i;
+  public static boolean k = true;
+  public static boolean l = true;
+  public static int m = 0;
+  public static Intent n = null;
+  public static boolean o = false;
   @Deprecated
-  public static String g;
-  public static String h;
-  public static String i;
-  public static String j = null;
-  private Context jdField_a_of_type_AndroidContentContext;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean e;
+  public static long p = 0L;
+  @Deprecated
+  public static String q = HardCodeUtil.a(2131904831);
+  public static String r = HardCodeUtil.a(2131904825);
+  public static String s = HardCodeUtil.a(2131904828);
+  public static int t = 0;
+  public static int u = 3;
+  public static int v = 7;
+  public static int w = 3;
+  public static int x = 30;
+  public static boolean y = false;
+  public static String z = null;
+  private Context B;
+  private boolean C;
+  ImageView j;
   
   static
   {
@@ -82,53 +82,34 @@ public class MsgNotifyPushDialog
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("MsgPushNotify");
     localStringBuilder.append(File.separator);
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    c = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(c);
     localStringBuilder.append("msgnotify_pic");
     localStringBuilder.append(File.separator);
-    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_d_of_type_JavaLangString = "msgnotify_pic.zip";
-    jdField_e_of_type_JavaLangString = "msgnotify_pic_%d.jpg";
-    jdField_a_of_type_Int = 25;
-    jdField_f_of_type_JavaLangString = "https://sqimg.qq.com/qq_product_operations/banner/msgnotify_pic.zip";
-    jdField_a_of_type_Boolean = true;
-    jdField_b_of_type_Boolean = true;
-    jdField_b_of_type_Int = 0;
-    jdField_a_of_type_AndroidContentIntent = null;
-    jdField_c_of_type_Boolean = false;
-    jdField_b_of_type_Long = 0L;
-    jdField_g_of_type_JavaLangString = HardCodeUtil.a(2131706989);
-    h = HardCodeUtil.a(2131706983);
-    i = HardCodeUtil.a(2131706986);
-    jdField_c_of_type_Int = 0;
-    jdField_d_of_type_Int = 3;
-    jdField_e_of_type_Int = 7;
-    jdField_f_of_type_Int = 3;
-    jdField_g_of_type_Int = 30;
-    jdField_d_of_type_Boolean = false;
+    d = localStringBuilder.toString();
   }
   
   @TargetApi(14)
   public MsgNotifyPushDialog(Context paramContext)
   {
-    super(paramContext, 2131756189);
-    super.getWindow().setWindowAnimations(2131755294);
+    super(paramContext, 2131953338);
+    super.getWindow().setWindowAnimations(2131951986);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.B = paramContext;
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    if ((!jdField_d_of_type_Boolean) || (!paramQQAppInterface.getCurrentUin().equals(j)))
+    if ((!y) || (!paramQQAppInterface.getCurrentUin().equals(z)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("PushOpenNotify", 2, "initPushOpeNotifyConfig");
       }
-      jdField_d_of_type_Boolean = true;
-      j = paramQQAppInterface.getCurrentUin();
+      y = true;
+      z = paramQQAppInterface.getCurrentUin();
       a(paramQQAppInterface, null, true);
     }
   }
@@ -147,7 +128,7 @@ public class MsgNotifyPushDialog
     }
     if (paramString == null)
     {
-      jdField_a_of_type_AndroidContentIntent = JumpToNotificationSettingUtil.a(paramAppRuntime.getApp());
+      n = JumpToNotificationSettingUtil.a(paramAppRuntime.getApp());
       return;
     }
     try
@@ -157,11 +138,11 @@ public class MsgNotifyPushDialog
       ((XmlPullParser)localObject).setInput(paramString, "utf-8");
       a((XmlPullParser)localObject);
       if (QLog.isColorLevel()) {
-        QLog.d("PushOpenNotify", 2, new Object[] { "handlePushOpenNotifyConfig, switch:", Boolean.valueOf(jdField_a_of_type_Boolean), ", frequency:", Integer.valueOf(jdField_c_of_type_Int), " ", Integer.valueOf(jdField_d_of_type_Int), " ", Integer.valueOf(jdField_e_of_type_Int), " ", Integer.valueOf(jdField_f_of_type_Int), " ", Integer.valueOf(jdField_g_of_type_Int), ", intent:", jdField_a_of_type_AndroidContentIntent });
+        QLog.d("PushOpenNotify", 2, new Object[] { "handlePushOpenNotifyConfig, switch:", Boolean.valueOf(k), ", frequency:", Integer.valueOf(t), " ", Integer.valueOf(u), " ", Integer.valueOf(v), " ", Integer.valueOf(w), " ", Integer.valueOf(x), ", intent:", n });
       }
-      if ((jdField_b_of_type_Boolean) && (!jdField_c_of_type_Boolean) && (jdField_a_of_type_AndroidContentIntent == null))
+      if ((l) && (!o) && (n == null))
       {
-        jdField_a_of_type_AndroidContentIntent = JumpToNotificationSettingUtil.a(paramAppRuntime.getApp());
+        n = JumpToNotificationSettingUtil.a(paramAppRuntime.getApp());
         return;
       }
     }
@@ -179,60 +160,60 @@ public class MsgNotifyPushDialog
   
   private static void a(XmlPullParser paramXmlPullParser)
   {
-    for (int k = paramXmlPullParser.getEventType(); k != 1; k = paramXmlPullParser.next()) {
+    for (int i1 = paramXmlPullParser.getEventType(); i1 != 1; i1 = paramXmlPullParser.next()) {
       if (paramXmlPullParser.getEventType() == 2)
       {
         String str1 = paramXmlPullParser.getName();
         if (str1.equals("switch"))
         {
-          jdField_a_of_type_Boolean = paramXmlPullParser.nextText().equals("true");
+          k = paramXmlPullParser.nextText().equals("true");
         }
         else if (str1.equals("frequency"))
         {
-          jdField_b_of_type_Long = Long.valueOf(paramXmlPullParser.nextText()).longValue();
-          if (jdField_b_of_type_Long < 0L) {
-            jdField_b_of_type_Long = 0L;
+          p = Long.valueOf(paramXmlPullParser.nextText()).longValue();
+          if (p < 0L) {
+            p = 0L;
           }
         }
         else if (str1.equals("wording"))
         {
-          jdField_g_of_type_JavaLangString = paramXmlPullParser.nextText();
+          q = paramXmlPullParser.nextText();
         }
         else if (str1.equals("title"))
         {
-          h = paramXmlPullParser.nextText();
+          r = paramXmlPullParser.nextText();
         }
         else if (str1.equals("content"))
         {
-          i = paramXmlPullParser.nextText();
+          s = paramXmlPullParser.nextText();
         }
         else if (str1.equals("frequency_OneTime"))
         {
-          jdField_c_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+          t = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
         }
         else if (str1.equals("frequency_OneMax"))
         {
-          jdField_d_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+          u = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
         }
         else if (str1.equals("frequency_TwoTime"))
         {
-          jdField_e_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+          v = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
         }
         else if (str1.equals("frequency_TwoMax"))
         {
-          jdField_f_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+          w = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
         }
         else if (str1.equals("frequency_ThreeTime"))
         {
-          jdField_g_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+          x = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
         }
         else if (str1.equals("maxOSVersion"))
         {
-          jdField_b_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+          m = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
         }
         else if (str1.equals("defaultSwitch"))
         {
-          jdField_b_of_type_Boolean = paramXmlPullParser.nextText().equals("true");
+          l = paramXmlPullParser.nextText().equals("true");
         }
         else
         {
@@ -248,10 +229,10 @@ public class MsgNotifyPushDialog
               continue;
             }
           }
-          if ((str1.equals("device")) && (paramXmlPullParser.getAttributeValue(null, "id").equals(DeviceInfoUtil.d())))
+          if ((str1.equals("device")) && (paramXmlPullParser.getAttributeValue(null, "id").equals(DeviceInfoUtil.f())))
           {
             b(paramXmlPullParser);
-            if (jdField_a_of_type_AndroidContentIntent != null) {
+            if (n != null) {
               return;
             }
           }
@@ -262,120 +243,120 @@ public class MsgNotifyPushDialog
   
   public static boolean a(File paramFile)
   {
-    int k = 0;
+    int i1 = 0;
     for (;;)
     {
       try
       {
-        if (k >= jdField_a_of_type_Int) {
+        if (i1 >= g) {
           break label170;
         }
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(jdField_c_of_type_JavaLangString);
-        localStringBuilder.append(jdField_e_of_type_JavaLangString);
-        if (new File(String.format(localStringBuilder.toString(), new Object[] { Integer.valueOf(k) })).exists()) {
+        localStringBuilder.append(d);
+        localStringBuilder.append(f);
+        if (new File(String.format(localStringBuilder.toString(), new Object[] { Integer.valueOf(i1) })).exists()) {
           break label163;
         }
-        k = 0;
+        i1 = 0;
       }
       catch (Exception paramFile)
       {
         StringBuilder localStringBuilder;
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "unzipFile err, ", paramFile);
+        QLog.e(a, 1, "unzipFile err, ", paramFile);
       }
-      if (k < jdField_a_of_type_Int)
+      if (i1 < g)
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(jdField_c_of_type_JavaLangString);
-        localStringBuilder.append(jdField_e_of_type_JavaLangString);
-        FileUtils.deleteFile(String.format(localStringBuilder.toString(), new Object[] { Integer.valueOf(k) }));
-        k += 1;
+        localStringBuilder.append(d);
+        localStringBuilder.append(f);
+        FileUtils.deleteFile(String.format(localStringBuilder.toString(), new Object[] { Integer.valueOf(i1) }));
+        i1 += 1;
       }
       else
       {
         if (paramFile.exists())
         {
-          FileUtils.uncompressZip(paramFile.getPath(), jdField_b_of_type_JavaLangString, false);
+          FileUtils.uncompressZip(paramFile.getPath(), c, false);
           return true;
         }
         return false;
         label163:
-        k += 1;
+        i1 += 1;
         continue;
         label170:
-        k = 1;
-        if (k != 0) {
+        i1 = 1;
+        if (i1 != 0) {
           return true;
         }
-        k = 0;
+        i1 = 0;
       }
     }
   }
   
   private static void b(XmlPullParser paramXmlPullParser)
   {
-    jdField_a_of_type_AndroidContentIntent = null;
+    n = null;
     while (paramXmlPullParser.next() != 3) {
       if (paramXmlPullParser.getEventType() == 2)
       {
-        if (jdField_a_of_type_AndroidContentIntent == null) {
-          jdField_a_of_type_AndroidContentIntent = new Intent();
+        if (n == null) {
+          n = new Intent();
         }
         Object localObject = paramXmlPullParser.getName();
         if (((String)localObject).equals("action"))
         {
-          jdField_a_of_type_AndroidContentIntent.setAction(paramXmlPullParser.nextText());
+          n.setAction(paramXmlPullParser.nextText());
         }
         else if (((String)localObject).equals("data"))
         {
           localObject = Uri.parse(paramXmlPullParser.nextText());
-          jdField_a_of_type_AndroidContentIntent.setData((Uri)localObject);
+          n.setData((Uri)localObject);
         }
         else if (((String)localObject).equals("type"))
         {
-          jdField_a_of_type_AndroidContentIntent.setType(paramXmlPullParser.nextText());
+          n.setType(paramXmlPullParser.nextText());
         }
         else if (((String)localObject).equals("package"))
         {
-          jdField_a_of_type_AndroidContentIntent.setPackage(paramXmlPullParser.nextText());
+          n.setPackage(paramXmlPullParser.nextText());
         }
         else if (((String)localObject).equals("component"))
         {
           localObject = paramXmlPullParser.nextText().split(";");
           localObject = new ComponentName(localObject[0].trim(), localObject[1].trim());
-          jdField_a_of_type_AndroidContentIntent.setComponent((ComponentName)localObject);
+          n.setComponent((ComponentName)localObject);
         }
         else if (((String)localObject).equals("category"))
         {
-          jdField_a_of_type_AndroidContentIntent.addCategory(paramXmlPullParser.nextText());
+          n.addCategory(paramXmlPullParser.nextText());
         }
         else
         {
           if (((String)localObject).equals("blackList"))
           {
-            jdField_c_of_type_Boolean = true;
-            jdField_a_of_type_AndroidContentIntent = null;
+            o = true;
+            n = null;
             return;
           }
           if (((String)localObject).equals("app_uid"))
           {
-            jdField_a_of_type_AndroidContentIntent.putExtra("app_uid", Process.myUid());
+            n.putExtra("app_uid", Process.myUid());
             paramXmlPullParser.nextText();
           }
           else
           {
-            jdField_a_of_type_AndroidContentIntent.putExtra((String)localObject, paramXmlPullParser.nextText());
+            n.putExtra((String)localObject, paramXmlPullParser.nextText());
           }
         }
       }
     }
   }
   
-  private static boolean b(QQAppInterface paramQQAppInterface)
+  private static boolean c(QQAppInterface paramQQAppInterface)
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
-    ((StringBuilder)localObject1).append(jdField_d_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(c);
+    ((StringBuilder)localObject1).append(e);
     localObject1 = ((StringBuilder)localObject1).toString();
     Object localObject2 = new File((String)localObject1);
     if ((((File)localObject2).exists()) && (a((File)localObject2))) {
@@ -383,23 +364,23 @@ public class MsgNotifyPushDialog
     }
     if (NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication()) == 0)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "res download give up");
+      QLog.d(a, 1, "res download give up");
       return false;
     }
-    Object localObject3 = jdField_a_of_type_ComTencentMobileqqVipDownloadTask;
+    Object localObject3 = i;
     if (localObject3 != null) {
-      if ((((DownloadTask)localObject3).a() != 2) && (jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a() != 3))
+      if ((((DownloadTask)localObject3).e() != 2) && (i.e() != 3))
       {
-        localObject3 = jdField_a_of_type_JavaLangString;
+        localObject3 = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("res download task status error, cancel it, status: ");
-        localStringBuilder.append(jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a());
+        localStringBuilder.append(i.e());
         QLog.d((String)localObject3, 1, localStringBuilder.toString());
-        jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a(true);
+        i.a(true);
       }
       else
       {
-        paramQQAppInterface = jdField_a_of_type_JavaLangString;
+        paramQQAppInterface = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("res download duplicated, ");
         ((StringBuilder)localObject2).append((String)localObject1);
@@ -407,11 +388,11 @@ public class MsgNotifyPushDialog
         return false;
       }
     }
-    jdField_a_of_type_ComTencentMobileqqVipDownloadTask = new DownloadTask(jdField_f_of_type_JavaLangString, (File)localObject2);
-    jdField_a_of_type_ComTencentMobileqqVipDownloadTask.n = true;
+    i = new DownloadTask(h, (File)localObject2);
+    i.J = true;
     paramQQAppInterface = ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "start download ");
-    paramQQAppInterface.startDownload(jdField_a_of_type_ComTencentMobileqqVipDownloadTask, new MsgNotifyPushDialog.5((String)localObject1), null);
+    QLog.d(a, 1, "start download ");
+    paramQQAppInterface.startDownload(i, new MsgNotifyPushDialog.5((String)localObject1), null);
     return false;
   }
   
@@ -419,19 +400,19 @@ public class MsgNotifyPushDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131558988);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365637));
-    paramBundle = (TextView)findViewById(2131365648);
-    TextView localTextView = (TextView)findViewById(2131365613);
-    Button localButton = (Button)findViewById(2131365610);
-    ImageView localImageView = (ImageView)findViewById(2131364711);
+    super.setContentView(2131624621);
+    this.j = ((ImageView)findViewById(2131431868));
+    paramBundle = (TextView)findViewById(2131431880);
+    TextView localTextView = (TextView)findViewById(2131431844);
+    Button localButton = (Button)findViewById(2131431841);
+    ImageView localImageView = (ImageView)findViewById(2131430817);
     try
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(jdField_c_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(jdField_e_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(d);
+      ((StringBuilder)localObject).append(f);
       localObject = BitmapFactory.decodeFile(String.format(((StringBuilder)localObject).toString(), new Object[] { Integer.valueOf(0) }));
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject));
+      this.j.setBackgroundDrawable(new BitmapDrawable(this.B.getResources(), (Bitmap)localObject));
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -439,9 +420,9 @@ public class MsgNotifyPushDialog
       break label148;
     }
     getOwnerActivity().finish();
-    paramBundle.setText(h);
-    localTextView.setText(i);
-    localButton.setText(HardCodeUtil.a(2131706984));
+    paramBundle.setText(r);
+    localTextView.setText(s);
+    localButton.setText(HardCodeUtil.a(2131904826));
     localButton.setOnClickListener(new MsgNotifyPushDialog.1(this));
     localImageView.setOnClickListener(new MsgNotifyPushDialog.2(this));
     localImageView.setOnTouchListener(new MsgNotifyPushDialog.3(this, localImageView));
@@ -450,14 +431,14 @@ public class MsgNotifyPushDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (!this.jdField_e_of_type_Boolean) {
+    if (!this.C) {
       ThreadManager.post(new MsgNotifyPushDialog.4(this), 10, null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog
  * JD-Core Version:    0.7.0.1
  */

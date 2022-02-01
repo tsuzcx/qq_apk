@@ -14,7 +14,7 @@ class CustomWebModule$6
     if ((paramContentLoadedEvent != null) && (paramContentLoadedEvent.mContentLoaded))
     {
       CustomWebModule.c(this.a, paramContentLoadedEvent.mContentLoaded);
-      if (CustomWebModule.a(this.a)) {
+      if (CustomWebModule.c(this.a)) {
         this.a.a(1);
       }
     }
@@ -22,7 +22,7 @@ class CustomWebModule$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.6
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ class RIJInvokeHandler$5
   
   public void a(IBaseHandler paramIBaseHandler)
   {
-    paramIBaseHandler.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+    paramIBaseHandler.a(this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.RIJInvokeHandler.5
  * JD-Core Version:    0.7.0.1
  */

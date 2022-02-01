@@ -16,9 +16,9 @@ public final class VideoSessionUtils
   @Nullable
   public static final String a()
   {
-    if ((RIJQQAppInterfaceUtil.a() instanceof QQAppInterface))
+    if ((RIJQQAppInterfaceUtil.e() instanceof QQAppInterface))
     {
-      localObject = RIJQQAppInterfaceUtil.a();
+      localObject = RIJQQAppInterfaceUtil.e();
       if (localObject != null)
       {
         localObject = (QQAppInterface)localObject;
@@ -38,7 +38,7 @@ public final class VideoSessionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.VideoSessionUtils
  * JD-Core Version:    0.7.0.1
  */

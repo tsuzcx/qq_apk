@@ -19,17 +19,17 @@ class StoryScanManager$1
   public void a(List<StoryAlbum> paramList)
   {
     super.onNext(paramList);
-    StoryScanManager.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryScanManager, 0);
+    StoryScanManager.a(this.b, 0);
     Object localObject1 = new StoryScanManager.ScanResultEvent();
-    ((StoryScanManager.ScanResultEvent)localObject1).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
-    ((StoryScanManager.ScanResultEvent)localObject1).jdField_a_of_type_JavaUtilList = paramList;
+    ((StoryScanManager.ScanResultEvent)localObject1).g = new ErrorMessage();
+    ((StoryScanManager.ScanResultEvent)localObject1).a = paramList;
     StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject1);
     if (!paramList.isEmpty()) {
-      StoryScanManager.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryScanManager, this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo.a(), this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo.b());
+      StoryScanManager.a(this.b, this.a.a(), this.a.b());
     }
-    long l = System.currentTimeMillis() - StoryScanManager.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryScanManager);
+    long l = System.currentTimeMillis() - StoryScanManager.a(this.b);
     String str = StoryScanManager.a(paramList);
-    boolean bool = this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo.a();
+    boolean bool = this.a.c();
     Object localObject2 = "2";
     if (bool) {
       localObject1 = "2";
@@ -40,7 +40,7 @@ class StoryScanManager$1
     localStringBuilder.append(l);
     localStringBuilder.append("");
     StoryReportor.a("video_shoot_slides", "scan", 0, 0, new String[] { "", localObject1, localStringBuilder.toString() });
-    if (this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo.a()) {
+    if (this.a.c()) {
       localObject1 = localObject2;
     } else {
       localObject1 = "1";
@@ -49,8 +49,8 @@ class StoryScanManager$1
     ((StringBuilder)localObject2).append(paramList.size());
     ((StringBuilder)localObject2).append("");
     StoryReportor.a("video_shoot_slides", "piece_smartalbum", 0, 0, new String[] { str, localObject1, ((StringBuilder)localObject2).toString() });
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan and split success timecost=%s : ScanInfo =%s result=%s", new Object[] { Long.valueOf(l), this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo, str });
-    StoryScanManager.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryScanManager, this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo);
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan and split success timecost=%s : ScanInfo =%s result=%s", new Object[] { Long.valueOf(l), this.a, str });
+    StoryScanManager.a(this.b, this.a);
   }
   
   public void onError(@NonNull Error paramError)
@@ -58,19 +58,19 @@ class StoryScanManager$1
     super.onError(paramError);
     Object localObject2 = new StoryScanManager.ScanResultEvent();
     Object localObject1 = (ErrorMessage)paramError;
-    ((StoryScanManager.ScanResultEvent)localObject2).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = ((ErrorMessage)localObject1);
-    ((StoryScanManager.ScanResultEvent)localObject2).jdField_a_of_type_JavaUtilList = new ArrayList();
+    ((StoryScanManager.ScanResultEvent)localObject2).g = ((ErrorMessage)localObject1);
+    ((StoryScanManager.ScanResultEvent)localObject2).a = new ArrayList();
     StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject2);
-    StoryScanManager.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryScanManager, 0);
+    StoryScanManager.a(this.b, 0);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("scan and split falied : ");
     ((StringBuilder)localObject2).append(paramError);
     SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", ((StringBuilder)localObject2).toString());
     long l1 = System.currentTimeMillis();
-    long l2 = StoryScanManager.a(this.jdField_a_of_type_ComTencentBizQqstoryAlbumStoryScanManager);
+    long l2 = StoryScanManager.a(this.b);
     int i = ((ErrorMessage)localObject1).errorCode;
     localObject1 = ((ErrorMessage)localObject1).errorMsg;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo.a()) {
+    if (this.a.c()) {
       paramError = "2";
     } else {
       paramError = "1";
@@ -83,7 +83,7 @@ class StoryScanManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryScanManager.1
  * JD-Core Version:    0.7.0.1
  */

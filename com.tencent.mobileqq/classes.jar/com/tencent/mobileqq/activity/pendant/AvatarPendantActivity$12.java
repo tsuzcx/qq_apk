@@ -14,24 +14,24 @@ class AvatarPendantActivity$12
   
   public void onClick(View paramView)
   {
-    VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
-    boolean bool = TextUtils.isEmpty(this.b);
+    VasH5PayUtil.a(this.d, "mvip.gxh.android.faceaddon_nati_dft", this.a, "1450000515", this.b, this.c, "");
+    boolean bool = TextUtils.isEmpty(this.c);
     String str2 = "0";
     String str1 = str2;
     if (!bool) {
-      if ("QQ会员".equals(this.b)) {
+      if ("QQ会员".equals(this.c)) {
         str1 = str2;
       } else {
         str1 = "1";
       }
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, str1, "", "", "");
+    ReportController.b(this.d.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, str1, "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.12
  * JD-Core Version:    0.7.0.1
  */

@@ -31,9 +31,9 @@ class SelectMemberActivity$17
         String str = (String)paramMessage.obj;
         paramMessage = str;
         if (str == null) {
-          paramMessage = this.a.getString(2131693483);
+          paramMessage = this.a.getString(2131891032);
         }
-        QQToast.a(this.a, 1, paramMessage, 1500).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a, 1, paramMessage, 1500).show(this.a.getTitleBarHeight());
       }
     }
     else if ((this.a.pd != null) && (this.a.pd.isShowing()))
@@ -49,20 +49,20 @@ class SelectMemberActivity$17
       else
       {
         if (this.a.mIsTroopAdmin) {
-          i = 2131693485;
+          i = 2131891034;
         } else {
-          i = 2131693484;
+          i = 2131891033;
         }
         paramMessage = this.a.getResources().getString(i);
       }
-      QQToast.a(this.a, 2, paramMessage, 1500).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 2, paramMessage, 1500).show(this.a.getTitleBarHeight());
       postDelayed(new SelectMemberActivity.17.1(this), 1500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberActivity.17
  * JD-Core Version:    0.7.0.1
  */

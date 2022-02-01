@@ -42,11 +42,11 @@ public class InstallStateReceiver
         LogUtility.c("InstallStateReceiver", ((StringBuilder)localObject2).toString());
         if (1 == paramInt)
         {
-          DownloadManagerV2.a().f((DownloadInfo)localObject1);
+          DownloadManagerV2.a().h((DownloadInfo)localObject1);
         }
         else if (2 == paramInt)
         {
-          DownloadManagerV2.a().e((DownloadInfo)localObject1);
+          DownloadManagerV2.a().g((DownloadInfo)localObject1);
         }
         else
         {
@@ -100,7 +100,7 @@ public class InstallStateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.receiver.InstallStateReceiver
  * JD-Core Version:    0.7.0.1
  */

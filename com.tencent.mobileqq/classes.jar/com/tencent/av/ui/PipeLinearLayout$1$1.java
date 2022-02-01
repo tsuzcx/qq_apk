@@ -9,8 +9,8 @@ class PipeLinearLayout$1$1
   
   public void run()
   {
-    if (!PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0)) {
-      PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).setText(this.jdField_a_of_type_JavaLangStringBuilder.toString());
+    if (!PipeLinearLayout.e(this.b.this$0)) {
+      PipeLinearLayout.d(this.b.this$0).setText(this.a.toString());
     }
   }
 }

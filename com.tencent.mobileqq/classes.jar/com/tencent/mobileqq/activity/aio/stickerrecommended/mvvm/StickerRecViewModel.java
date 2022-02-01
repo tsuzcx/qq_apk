@@ -20,67 +20,51 @@ public class StickerRecViewModel
   extends BaseViewModel<StickerRecRepository>
   implements IStickerRecViewModel, ScenesRecommendManagerImpl.IScenesRecEmoUIHelper
 {
-  private long jdField_a_of_type_Long;
-  private MutableLiveData<StickerRecLiveData> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private boolean jdField_a_of_type_Boolean = false;
-  private MutableLiveData<LayoutStatusLiveData> jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private boolean jdField_b_of_type_Boolean = false;
+  private MutableLiveData<StickerRecLiveData> a = new MutableLiveData();
+  private MutableLiveData<LayoutStatusLiveData> b = new MutableLiveData();
   private MutableLiveData<String> c = new MutableLiveData();
+  private BaseSessionInfo d;
+  private long e;
+  private boolean f = false;
+  private boolean g = false;
   
   public StickerRecViewModel(StickerRecRepository paramStickerRecRepository)
   {
     super(paramStickerRecRepository);
   }
   
-  public MutableLiveData<StickerRecLiveData> a()
-  {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Long != 0L)
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
-      this.jdField_a_of_type_Long = 0L;
-    }
-  }
-  
   public void a(AppInterface paramAppInterface)
   {
-    ((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramAppInterface);
+    ((StickerRecRepository)this.z).a(paramAppInterface);
   }
   
   public void a(BaseSessionInfo paramBaseSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    ((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    this.d = paramBaseSessionInfo;
+    ((StickerRecRepository)this.z).c();
   }
   
   public void a(LayoutStatusLiveData paramLayoutStatusLiveData)
   {
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.setValue(paramLayoutStatusLiveData);
+    this.b.setValue(paramLayoutStatusLiveData);
   }
   
   public void a(ScenesRecommendItem paramScenesRecommendItem)
   {
     QLog.i("ScenesRecommendManager", 1, "handleScenesRec start");
-    if (!((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a().isEmotionRecSettingOpen())
+    if (!((StickerRecRepository)this.z).b().isEmotionRecSettingOpen())
     {
       QLog.i("ScenesRecommendManager", 1, "handleScenesRec isEmotionRecSettingOpen = false");
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    ((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a().analyzeForScenesMode(paramScenesRecommendItem, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    this.e = System.currentTimeMillis();
+    ((StickerRecRepository)this.z).b().analyzeForScenesMode(paramScenesRecommendItem, this.d.a, this.d.b);
   }
   
   public void a(boolean paramBoolean)
   {
-    ((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramBoolean);
-    ScenesRecommendManagerImpl localScenesRecommendManagerImpl = ScenesRecommendManagerImpl.get(((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a());
+    ((StickerRecRepository)this.z).a(paramBoolean);
+    ScenesRecommendManagerImpl localScenesRecommendManagerImpl = ScenesRecommendManagerImpl.get(((StickerRecRepository)this.z).a());
     StickerRecViewModel localStickerRecViewModel;
     if (paramBoolean) {
       localStickerRecViewModel = this;
@@ -92,12 +76,12 @@ public class StickerRecViewModel
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.f;
   }
   
   public boolean a(Editable paramEditable, String paramString)
   {
-    int i = StickerRecManagerImpl.getMaxMatchLength(((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a().getApplicationContext(), ((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a().getCurrentUin(), 6);
+    int i = StickerRecManagerImpl.getMaxMatchLength(((StickerRecRepository)this.z).a().getApplicationContext(), ((StickerRecRepository)this.z).a().getCurrentUin(), 6);
     paramEditable = paramEditable.toString();
     if (!TextUtils.isEmpty(paramString)) {
       paramEditable = paramString;
@@ -105,8 +89,8 @@ public class StickerRecViewModel
     boolean bool = false;
     if (i >= paramEditable.length())
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      bool = ((StickerRecRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a().analyze(paramEditable, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
+      this.e = System.currentTimeMillis();
+      bool = ((StickerRecRepository)this.z).b().analyze(paramEditable, this.d);
     }
     if (bool) {
       this.c.setValue(paramEditable);
@@ -116,13 +100,13 @@ public class StickerRecViewModel
   
   public boolean a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
+    Object localObject = this.d;
     if (localObject == null)
     {
       QLog.i("ScenesRecommendManager", 2, "mSessionInfo is null");
       return false;
     }
-    localObject = ((BaseSessionInfo)localObject).jdField_a_of_type_JavaLangString;
+    localObject = ((BaseSessionInfo)localObject).b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("checkUinIsCurrentChat  uin = ");
     localStringBuilder.append(paramString);
@@ -132,34 +116,50 @@ public class StickerRecViewModel
     return ((String)localObject).equalsIgnoreCase(paramString);
   }
   
-  public MutableLiveData<LayoutStatusLiveData> b()
+  public MutableLiveData<StickerRecLiveData> b()
   {
-    return this.jdField_b_of_type_AndroidxLifecycleMutableLiveData;
+    return this.a;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
   
-  public boolean b()
+  public MutableLiveData<LayoutStatusLiveData> c()
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public MutableLiveData<String> c()
-  {
-    return this.c;
+    return this.b;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
+  }
+  
+  public MutableLiveData<String> d()
+  {
+    return this.c;
+  }
+  
+  public boolean e()
+  {
+    return this.g;
+  }
+  
+  public void f()
+  {
+    if (this.e != 0L)
+    {
+      long l1 = System.currentTimeMillis();
+      long l2 = this.e;
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
+      this.e = 0L;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.mvvm.StickerRecViewModel
  * JD-Core Version:    0.7.0.1
  */

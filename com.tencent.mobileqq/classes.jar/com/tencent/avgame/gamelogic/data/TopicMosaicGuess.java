@@ -16,11 +16,6 @@ import trpc.qq_vgame.common.AvGameCommon.GuessPictureTipsInfo;
 public class TopicMosaicGuess
   extends TopicBase
 {
-  protected TopicBase a()
-  {
-    return new TopicMosaicGuess();
-  }
-  
   public void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo)
   {
     if (paramGameQuestionInfo.type.get() == 2)
@@ -28,15 +23,15 @@ public class TopicMosaicGuess
       if (paramGameQuestionInfo.picture.has())
       {
         AvGameCommon.GuessPictureQuestionInfo localGuessPictureQuestionInfo = (AvGameCommon.GuessPictureQuestionInfo)paramGameQuestionInfo.picture.get();
-        this.jdField_b_of_type_Int = Math.max(0, paramGameQuestionInfo.index.get() - 1);
+        this.h = Math.max(0, paramGameQuestionInfo.index.get() - 1);
         int i;
         if (paramGameQuestionInfo.id.has()) {
           i = paramGameQuestionInfo.id.get();
         } else {
-          i = this.jdField_a_of_type_Int;
+          i = this.a;
         }
-        this.jdField_a_of_type_Int = i;
-        Object localObject2 = this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes;
+        this.a = i;
+        Object localObject2 = this.i;
         boolean bool = localGuessPictureQuestionInfo.url.has();
         Object localObject1 = "";
         if (bool) {
@@ -45,7 +40,7 @@ public class TopicMosaicGuess
           paramGameQuestionInfo = "";
         }
         ((AVRes)localObject2).a(paramGameQuestionInfo, null, 0, "");
-        localObject2 = this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes;
+        localObject2 = this.j;
         if (localGuessPictureQuestionInfo.answer.has()) {
           paramGameQuestionInfo = localGuessPictureQuestionInfo.answer.get();
         } else {
@@ -55,24 +50,24 @@ public class TopicMosaicGuess
         if (localGuessPictureQuestionInfo.size.has()) {
           i = localGuessPictureQuestionInfo.size.get();
         } else {
-          i = this.c;
+          i = this.m;
         }
-        this.c = i;
-        localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
+        this.m = i;
+        localObject2 = this.d;
         if (localGuessPictureQuestionInfo.reward_type.has()) {
           paramGameQuestionInfo = localGuessPictureQuestionInfo.reward_type.get();
         } else {
           paramGameQuestionInfo = "";
         }
         localObject2[0] = paramGameQuestionInfo;
-        localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
+        localObject2 = this.d;
         if (localGuessPictureQuestionInfo.extra_reward.has()) {
           paramGameQuestionInfo = localGuessPictureQuestionInfo.extra_reward.get();
         } else {
           paramGameQuestionInfo = "";
         }
         localObject2[1] = paramGameQuestionInfo;
-        localObject2 = this.jdField_a_of_type_ArrayOfJavaLangString;
+        localObject2 = this.d;
         paramGameQuestionInfo = (AvGameCommon.GameQuestionInfo)localObject1;
         if (localGuessPictureQuestionInfo.reward_stroke_color.has()) {
           paramGameQuestionInfo = localGuessPictureQuestionInfo.reward_stroke_color.get();
@@ -86,7 +81,7 @@ public class TopicMosaicGuess
           {
             localObject1 = (AvGameCommon.GuessPictureTipsInfo)paramGameQuestionInfo.next();
             localObject1 = new Pair(Integer.valueOf(((AvGameCommon.GuessPictureTipsInfo)localObject1).show_delay_ts.get()), ((AvGameCommon.GuessPictureTipsInfo)localObject1).tips.get());
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+            this.k.add(localObject1);
           }
         }
       }
@@ -101,11 +96,16 @@ public class TopicMosaicGuess
     return 2;
   }
   
+  protected TopicBase n()
+  {
+    return new TopicMosaicGuess();
+  }
+  
   @NonNull
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(d());
+    localStringBuilder.append(o());
     return localStringBuilder.toString();
   }
 }

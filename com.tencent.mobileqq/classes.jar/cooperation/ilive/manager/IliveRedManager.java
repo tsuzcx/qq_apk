@@ -7,6 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -43,21 +44,29 @@ public class IliveRedManager
     return "3";
   }
   
-  public static String getIliveRecomRedInfo()
+  public static Pair<String, String> getIliveRecomRedInfo()
   {
-    Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
-    if (localObject == null) {
-      return "";
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
+    if (localAppRuntime == null) {
+      return null;
     }
-    localObject = parseIliveRecomRedInfo(((IRedTouchManager)((AppRuntime)localObject).getRuntimeService(IRedTouchManager.class, "")).getAppInfo(1, String.valueOf(101100)));
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getIliveRecomRedInfo , recomInfo = ");
-      localStringBuilder.append((String)localObject);
-      QLog.i("IliveRedManager", 2, localStringBuilder.toString());
+    return parseIliveRecomRedInfo(((IRedTouchManager)localAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(1, String.valueOf(101100)));
+  }
+  
+  public static long getRedAdId(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if ((paramAppInfo != null) && (paramAppInfo.buffer.has()) && (paramAppInfo.iNewFlag.get() != 0)) {
+      try
+      {
+        long l = new JSONObject(paramAppInfo.buffer.get()).optLong("ad_id");
+        return l;
+      }
+      catch (JSONException paramAppInfo)
+      {
+        paramAppInfo.printStackTrace();
+      }
     }
-    return localObject;
+    return 0L;
   }
   
   public static boolean isRecomRedJumpUrl(String paramString)
@@ -76,7 +85,7 @@ public class IliveRedManager
     return false;
   }
   
-  public static String parseIliveRecomRedInfo(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public static Pair<String, String> parseIliveRecomRedInfo(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
     if ((paramAppInfo != null) && (paramAppInfo.buffer.has()) && (paramAppInfo.iNewFlag.get() != 0)) {
       try
@@ -85,13 +94,14 @@ public class IliveRedManager
         long l = paramAppInfo.optLong("ad_id");
         Object localObject = paramAppInfo.optJSONObject("msg");
         if (localObject == null) {
-          return "";
+          return null;
         }
         localObject = ((JSONObject)localObject).optJSONObject(String.valueOf(l));
         if (localObject == null) {
-          return "";
+          return null;
         }
         localObject = ((JSONObject)localObject).optString("extinfo");
+        String str = paramAppInfo.optString("_jump_url");
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -101,7 +111,8 @@ public class IliveRedManager
           localStringBuilder.append(paramAppInfo.toString());
           QLog.i("IliveRedManager", 2, localStringBuilder.toString());
         }
-        return localObject;
+        paramAppInfo = new Pair(localObject, str);
+        return paramAppInfo;
       }
       catch (Exception paramAppInfo)
       {
@@ -109,7 +120,7 @@ public class IliveRedManager
         QLog.e("IliveRedManager", 1, "parseIliveRecomRedInfo exception", paramAppInfo);
       }
     }
-    return "";
+    return null;
   }
   
   public static String parseShopRedBuffer(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
@@ -130,7 +141,7 @@ public class IliveRedManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.manager.IliveRedManager
  * JD-Core Version:    0.7.0.1
  */

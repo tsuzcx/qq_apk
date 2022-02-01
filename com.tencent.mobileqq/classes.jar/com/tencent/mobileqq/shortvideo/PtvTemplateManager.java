@@ -35,56 +35,48 @@ import org.json.JSONObject;
 
 public class PtvTemplateManager
 {
-  static PtvTemplateManager jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager;
-  public static File a;
-  public static final Long a;
-  static Object jdField_a_of_type_JavaLangObject;
-  public static String a;
-  public static boolean a;
-  public static File b;
-  public static String b;
-  public static String c;
-  public static String g;
-  public static String h;
-  private static boolean h;
-  public static String i;
-  public PtvTemplateManager.IPtvTemplateUpdateListener a;
-  public PtvTemplateManager.PtvTemplateInfo a;
-  ArrayList<PtvTemplateManager.PtvTemplateInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  Object jdField_b_of_type_JavaLangObject = new Object();
-  ArrayList<PtvTemplateManager.PtvTemplateInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean b;
-  Object jdField_c_of_type_JavaLangObject = new Object();
-  ArrayList<PtvTemplateManager.PtvTemplateInfo> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean c;
-  Object jdField_d_of_type_JavaLangObject = new Object();
-  String jdField_d_of_type_JavaLangString;
-  public ArrayList<VideoMaterial> d;
-  public boolean d;
-  String jdField_e_of_type_JavaLangString;
-  ArrayList<PtvTemplateManager.PtvTemplateInfo> jdField_e_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean e;
-  String f;
-  public boolean f;
-  public boolean g;
+  private static boolean F = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductFeatureRom(CameraCompatibleConstants.F);
+  public static final Long a = Long.valueOf(60000L);
+  public static String b = "ptv_template_usable";
+  public static String c = "ptv_debug";
+  public static String d = "ptv_template_usable_doodle";
+  public static File e;
+  public static File f;
+  static Object g = new Object();
+  static PtvTemplateManager h;
+  public static String t = "5";
+  public static String u = "200";
+  public static String v = "20";
+  public static boolean w;
+  public boolean A = false;
+  public PtvTemplateManager.IPtvTemplateUpdateListener B;
+  ArrayList<PtvTemplateManager.PtvTemplateInfo> C = new ArrayList();
+  public boolean D = false;
+  public boolean E = false;
+  ArrayList<PtvTemplateManager.PtvTemplateInfo> i = new ArrayList();
+  ArrayList<PtvTemplateManager.PtvTemplateInfo> j = new ArrayList();
+  ArrayList<PtvTemplateManager.PtvTemplateInfo> k = new ArrayList();
+  public PtvTemplateManager.PtvTemplateInfo l;
+  public ArrayList<VideoMaterial> m = new ArrayList();
+  Object n = new Object();
+  Object o = new Object();
+  Object p = new Object();
+  String q;
+  String r;
+  String s;
+  public boolean x = false;
+  public boolean y = false;
+  public boolean z = false;
   
   static
   {
-    jdField_a_of_type_JavaLangLong = Long.valueOf(60000L);
-    jdField_a_of_type_JavaLangString = "ptv_template_usable";
-    jdField_b_of_type_JavaLangString = "ptv_debug";
-    jdField_c_of_type_JavaLangString = "ptv_template_usable_doodle";
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_g_of_type_JavaLangString = "5";
-    jdField_h_of_type_JavaLangString = "200";
-    i = "20";
-    int j = 0;
-    jdField_a_of_type_Boolean = false;
-    jdField_h_of_type_Boolean = false;
+    int i1 = 0;
+    w = false;
+    F = false;
     try
     {
       boolean bool = "mounted".equals(Environment.getExternalStorageState());
-      j = bool;
+      i1 = bool;
     }
     catch (Exception localException)
     {
@@ -93,43 +85,33 @@ public class PtvTemplateManager
       StringBuilder localStringBuilder;
       break label70;
     }
-    if (j != 0) {
+    if (i1 != 0) {
       localObject = new File(AppConstants.SDCARD_PATH);
     } else {
       localObject = BaseApplicationImpl.getApplication().getCacheDir();
     }
-    jdField_a_of_type_JavaIoFile = new File((File)localObject, "ptv_template");
+    e = new File((File)localObject, "ptv_template");
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaIoFile.getPath());
+    localStringBuilder.append(e.getPath());
     localStringBuilder.append(File.separator);
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append(File.separator);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaIoFile.getPath());
+    localStringBuilder.append(e.getPath());
     localStringBuilder.append(File.separator);
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_b_of_type_JavaIoFile = new File((File)localObject, "doodle_template");
+    localStringBuilder.append(c);
+    c = localStringBuilder.toString();
+    f = new File((File)localObject, "doodle_template");
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(jdField_b_of_type_JavaIoFile.getPath());
+    ((StringBuilder)localObject).append(f.getPath());
     ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append(jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(d);
     ((StringBuilder)localObject).append(File.separator);
-    jdField_c_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-    jdField_h_of_type_Boolean = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductFeatureRom(CameraCompatibleConstants.E);
+    d = ((StringBuilder)localObject).toString();
   }
   
-  private PtvTemplateManager(AppInterface paramAppInterface)
-  {
-    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_Boolean = false;
-  }
+  private PtvTemplateManager(AppInterface paramAppInterface) {}
   
   static PtvTemplateManager.PtvTemplateInfo a(String paramString)
   {
@@ -171,19 +153,19 @@ public class PtvTemplateManager
       }
       try
       {
-        int k = ((JSONArray)localObject).length();
-        if (k <= 0) {
+        int i2 = ((JSONArray)localObject).length();
+        if (i2 <= 0) {
           return null;
         }
-        paramString.doodleInfos = new ArrayList(k);
-        int j = 0;
-        while (j < k)
+        paramString.doodleInfos = new ArrayList(i2);
+        int i1 = 0;
+        while (i1 < i2)
         {
-          localDoodleInfo = (PtvTemplateManager.DoodleInfo)JSONUtils.a(((JSONArray)localObject).getJSONObject(j), PtvTemplateManager.DoodleInfo.class);
+          localDoodleInfo = (PtvTemplateManager.DoodleInfo)JSONUtils.a(((JSONArray)localObject).getJSONObject(i1), PtvTemplateManager.DoodleInfo.class);
           if (localDoodleInfo != null) {
             paramString.doodleInfos.add(localDoodleInfo);
           }
-          j += 1;
+          i1 += 1;
         }
         if (QLog.isColorLevel())
         {
@@ -206,19 +188,19 @@ public class PtvTemplateManager
   
   public static PtvTemplateManager a(AppInterface paramAppInterface)
   {
-    ??? = jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager;
+    ??? = h;
     if (??? != null) {
       return ???;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (g)
     {
-      if (jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager != null)
+      if (h != null)
       {
-        paramAppInterface = jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager;
+        paramAppInterface = h;
         return paramAppInterface;
       }
-      jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager = new PtvTemplateManager(paramAppInterface);
-      paramAppInterface = jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager;
+      h = new PtvTemplateManager(paramAppInterface);
+      paramAppInterface = h;
       return paramAppInterface;
     }
   }
@@ -274,28 +256,28 @@ public class PtvTemplateManager
       try
       {
         if (((JSONObject)localObject).has("guide_video_url")) {
-          paramPtvTemplateManager.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).getString("guide_video_url");
+          paramPtvTemplateManager.q = ((JSONObject)localObject).getString("guide_video_url");
         }
         if (((JSONObject)localObject).has("guide_video_md5")) {
-          paramPtvTemplateManager.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).getString("guide_video_md5");
+          paramPtvTemplateManager.r = ((JSONObject)localObject).getString("guide_video_md5");
         }
         if (((JSONObject)localObject).has("version")) {
-          paramPtvTemplateManager.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).getString("version");
+          paramPtvTemplateManager.s = ((JSONObject)localObject).getString("version");
         }
         if (((JSONObject)localObject).has("gestureGapFrame")) {
-          jdField_g_of_type_JavaLangString = ((JSONObject)localObject).getString("gestureGapFrame");
+          t = ((JSONObject)localObject).getString("gestureGapFrame");
         }
         if (((JSONObject)localObject).has("gestureGapTime")) {
-          jdField_h_of_type_JavaLangString = ((JSONObject)localObject).getString("gestureGapTime");
+          u = ((JSONObject)localObject).getString("gestureGapTime");
         }
         if (((JSONObject)localObject).has("gesturethreadcoldtime")) {
-          i = ((JSONObject)localObject).getString("gesturethreadcoldtime");
+          v = ((JSONObject)localObject).getString("gesturethreadcoldtime");
         }
         paramPtvTemplateManager = paramString;
         if (!((JSONObject)localObject).has("gestureShouldUpload")) {
           break label255;
         }
-        jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("gestureShouldUpload");
+        w = ((JSONObject)localObject).getBoolean("gestureShouldUpload");
         paramPtvTemplateManager = paramString;
       }
       catch (JSONException localJSONException1) {}
@@ -325,17 +307,6 @@ public class PtvTemplateManager
     return null;
   }
   
-  public static void a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager != null) {
-        jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager = null;
-      }
-      return;
-    }
-  }
-  
   static void a(String paramString1, String paramString2)
   {
     ThreadManager.getFileThreadHandler().post(new PtvTemplateManager.1(paramString2, paramString1));
@@ -343,70 +314,41 @@ public class PtvTemplateManager
   
   public static boolean a()
   {
-    return new File(jdField_a_of_type_JavaIoFile, "ptv_template_new.cfg").exists();
+    return new File(e, "ptv_template_new.cfg").exists();
   }
   
   public static boolean b()
   {
-    return new File(jdField_a_of_type_JavaIoFile, "ptv_template_web.cfg").exists();
+    return new File(e, "ptv_template_web.cfg").exists();
   }
   
-  public static boolean c()
+  public static void c()
   {
-    return new File(jdField_b_of_type_JavaIoFile, "doodle_template_new.cfg").exists();
+    synchronized (g)
+    {
+      if (h != null) {
+        h = null;
+      }
+      return;
+    }
   }
   
-  private void d()
+  public static boolean f()
   {
-    PtvTemplateManager.IPtvTemplateUpdateListener localIPtvTemplateUpdateListener = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateUpdateListener;
+    return new File(f, "doodle_template_new.cfg").exists();
+  }
+  
+  public static boolean i()
+  {
+    return new File(e, "ptv_template_bless.cfg").exists();
+  }
+  
+  private void l()
+  {
+    PtvTemplateManager.IPtvTemplateUpdateListener localIPtvTemplateUpdateListener = this.B;
     if (localIPtvTemplateUpdateListener != null) {
       localIPtvTemplateUpdateListener.a();
     }
-  }
-  
-  public static boolean d()
-  {
-    return new File(jdField_a_of_type_JavaIoFile, "ptv_template_bless.cfg").exists();
-  }
-  
-  public QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public ArrayList<PtvTemplateManager.PtvTemplateInfo> a()
-  {
-    return this.jdField_c_of_type_JavaUtilArrayList;
-  }
-  
-  public List<VideoMaterial> a()
-  {
-    if ((this.jdField_d_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null)) {
-      synchronized (this.jdField_d_of_type_JavaLangObject)
-      {
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.doodleInfos.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject3 = (PtvTemplateManager.DoodleInfo)localIterator.next();
-          if (((PtvTemplateManager.DoodleInfo)localObject3).doodleUsable)
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(jdField_c_of_type_JavaLangString);
-            localStringBuilder.append(((PtvTemplateManager.DoodleInfo)localObject3).doodleName);
-            localObject3 = VideoSDKMaterialParser.parseVideoMaterialForEdit(localStringBuilder.toString(), "params");
-            this.jdField_d_of_type_JavaUtilArrayList.add(localObject3);
-            if (QLog.isDevelopLevel()) {
-              QLog.d("Doodle_Strokes_PtvTemplateManager", 4, new Object[] { "getDoodleMaterials add DoodleMaterial:", ((VideoMaterial)localObject3).getId() });
-            }
-          }
-        }
-      }
-    }
-    return this.jdField_d_of_type_JavaUtilArrayList;
   }
   
   List<PtvTemplateManager.PtvTemplateInfo> a(AppInterface paramAppInterface, File paramFile, HashMap<String, PtvTemplateManager.PtvTemplateInfo> paramHashMap)
@@ -419,9 +361,9 @@ public class PtvTemplateManager
       } else {
         bool = false;
       }
-      QLog.i("PtvTemplateManager", 2, String.format("rebuildTemplateInfos, app[%s], isUpdateedByServer[%s], cur_runnable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(hashCode()) }));
+      QLog.i("PtvTemplateManager", 2, String.format("rebuildTemplateInfos, app[%s], isUpdateedByServer[%s], cur_runnable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.x), Integer.valueOf(hashCode()) }));
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.x) {
       return null;
     }
     paramAppInterface = a(paramFile);
@@ -453,7 +395,7 @@ public class PtvTemplateManager
   
   void a(QQAppInterface paramQQAppInterface, ArrayList<PtvTemplateManager.PtvTemplateInfo> paramArrayList)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new PtvTemplateManager.3(this, paramArrayList), jdField_a_of_type_JavaLangLong.longValue());
+    ThreadManager.getSubThreadHandler().postDelayed(new PtvTemplateManager.3(this, paramArrayList), a.longValue());
   }
   
   public void a(Runnable paramRunnable)
@@ -479,11 +421,11 @@ public class PtvTemplateManager
       return;
     }
     ThreadManager.getFileThreadHandler().post(new PtvTemplateManager.12(this, ???));
-    synchronized (this.jdField_d_of_type_JavaLangObject)
+    synchronized (this.p)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = paramQQAppInterface;
+      this.l = paramQQAppInterface;
       ThreadManager.getFileThreadHandler().post(new PtvTemplateManager.13(this));
-      b();
+      g();
       return;
     }
   }
@@ -500,17 +442,17 @@ public class PtvTemplateManager
       String str;
       if (paramInt == 1)
       {
-        localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+        localArrayList = this.i;
         str = "ptv_template_new.cfg";
       }
       else
       {
-        localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+        localArrayList = this.j;
         str = "ptv_template_web.cfg";
       }
       a(paramString, str);
       a(localList, paramInt);
-      if (this.jdField_d_of_type_Boolean) {
+      if (this.z) {
         return;
       }
       ThreadManager.getFileThreadHandler().post(new PtvTemplateManager.2(this, localList));
@@ -525,14 +467,14 @@ public class PtvTemplateManager
       if (paramArrayList.isEmpty()) {
         return;
       }
-      int j = 0;
-      while (j < paramArrayList.size())
+      int i1 = 0;
+      while (i1 < paramArrayList.size())
       {
-        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramArrayList.get(j);
+        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramArrayList.get(i1);
         if ((localPtvTemplateInfo != null) && (localPtvTemplateInfo.predownload) && (!TextUtils.isEmpty(localPtvTemplateInfo.resurl))) {
           ThreadManager.getFileThreadHandler().post(new PtvTemplateManager.4(this, localPtvTemplateInfo));
         }
-        j += 1;
+        i1 += 1;
       }
     }
   }
@@ -555,19 +497,19 @@ public class PtvTemplateManager
         }
       }
       if (paramInt == 1) {
-        synchronized (this.jdField_b_of_type_JavaLangObject)
+        synchronized (this.n)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-          this.jdField_b_of_type_Boolean = true;
+          this.i.clear();
+          this.i.addAll(paramList);
+          this.x = true;
           return;
         }
       }
-      synchronized (this.jdField_c_of_type_JavaLangObject)
+      synchronized (this.o)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.clear();
-        this.jdField_b_of_type_JavaUtilArrayList.addAll(paramList);
-        this.jdField_c_of_type_Boolean = true;
+        this.j.clear();
+        this.j.addAll(paramList);
+        this.y = true;
         return;
       }
     }
@@ -580,7 +522,7 @@ public class PtvTemplateManager
       if (TextUtils.isEmpty(paramDoodleInfo.doodleName)) {
         return false;
       }
-      Object localObject = new File(jdField_b_of_type_JavaIoFile, paramDoodleInfo.doodleName);
+      Object localObject = new File(f, paramDoodleInfo.doodleName);
       if (!((File)localObject).exists())
       {
         if (QLog.isColorLevel())
@@ -600,7 +542,7 @@ public class PtvTemplateManager
           if (paramBoolean)
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(jdField_c_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(d);
             ((StringBuilder)localObject).append(paramDoodleInfo.doodleName);
             ((StringBuilder)localObject).append(File.separator);
             if (!new File(((StringBuilder)localObject).toString(), "params.json").exists())
@@ -614,7 +556,7 @@ public class PtvTemplateManager
               }
               try
               {
-                ZipUtils.unZipFile(new File(jdField_b_of_type_JavaIoFile, paramDoodleInfo.doodleName), jdField_c_of_type_JavaLangString);
+                ZipUtils.unZipFile(new File(f, paramDoodleInfo.doodleName), d);
                 if (QLog.isColorLevel())
                 {
                   localObject = new StringBuilder();
@@ -654,7 +596,7 @@ public class PtvTemplateManager
       if (TextUtils.isEmpty(paramPtvTemplateInfo.name)) {
         return false;
       }
-      Object localObject1 = new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name);
+      Object localObject1 = new File(e, paramPtvTemplateInfo.name);
       if (!((File)localObject1).exists()) {
         return false;
       }
@@ -664,7 +606,7 @@ public class PtvTemplateManager
         if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equalsIgnoreCase(paramPtvTemplateInfo.md5)))
         {
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(b);
           ((StringBuilder)localObject1).append(paramPtvTemplateInfo.name);
           ((StringBuilder)localObject1).append(File.separator);
           Object localObject2 = ((StringBuilder)localObject1).toString();
@@ -673,7 +615,7 @@ public class PtvTemplateManager
           if ((!((File)localObject1).exists()) && (!((File)localObject2).exists())) {
             try
             {
-              ZipUtils.unZipFile(new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name), jdField_a_of_type_JavaLangString);
+              ZipUtils.unZipFile(new File(e, paramPtvTemplateInfo.name), b);
               return true;
             }
             catch (Exception paramPtvTemplateInfo)
@@ -698,41 +640,6 @@ public class PtvTemplateManager
     return false;
   }
   
-  void b()
-  {
-    QQAppInterface localQQAppInterface = a();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-    if ((localObject1 != null) && (!((PtvTemplateManager.PtvTemplateInfo)localObject1).doodleInfos.isEmpty()) && (localQQAppInterface != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "preDownloadDoodleTemplate!");
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.doodleInfos.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        PtvTemplateManager.DoodleInfo localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject1).next();
-        if ((localDoodleInfo != null) && (!TextUtils.isEmpty(localDoodleInfo.doodleUrl)) && (!localDoodleInfo.doodleUsable))
-        {
-          Object localObject2 = new PtvTemplateManager.14(this, localDoodleInfo);
-          IPreDownloadController localIPreDownloadController = (IPreDownloadController)localQQAppInterface.getRuntimeService(IPreDownloadController.class);
-          if (localIPreDownloadController.isEnable())
-          {
-            localObject2 = new RunnableTask(localQQAppInterface, "qq_doodle_res", (Runnable)localObject2, 4000L);
-            localIPreDownloadController.requestPreDownload(10020, null, localDoodleInfo.doodleName, 0, localDoodleInfo.doodleUrl, new File(jdField_b_of_type_JavaIoFile, localDoodleInfo.doodleName).getPath(), 2, 0, true, (AbsPreDownloadTask)localObject2);
-          }
-          else
-          {
-            ThreadManager.post((Runnable)localObject2, 8, null, true);
-          }
-        }
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "Exception!");
-    }
-  }
-  
   public void b(String arg1, QQAppInterface paramQQAppInterface)
   {
     List localList = a(null, ???);
@@ -752,38 +659,113 @@ public class PtvTemplateManager
           localPtvTemplateInfo.businessID = 1;
         }
       }
-      synchronized (this.jdField_e_of_type_JavaUtilArrayList)
+      synchronized (this.C)
       {
-        this.jdField_e_of_type_JavaUtilArrayList.clear();
-        this.jdField_e_of_type_JavaUtilArrayList.addAll(localList);
-        this.jdField_f_of_type_Boolean = true;
-        if (this.jdField_g_of_type_Boolean) {
+        this.C.clear();
+        this.C.addAll(localList);
+        this.D = true;
+        if (this.E) {
           return;
         }
         ThreadManager.getFileThreadHandler().post(new PtvTemplateManager.16(this, localList));
-        a(paramQQAppInterface, this.jdField_e_of_type_JavaUtilArrayList);
+        a(paramQQAppInterface, this.C);
         return;
       }
     }
   }
   
-  public void c()
+  public ArrayList<PtvTemplateManager.PtvTemplateInfo> d()
   {
-    synchronized (this.jdField_d_of_type_JavaLangObject)
+    return this.k;
+  }
+  
+  public List<VideoMaterial> e()
+  {
+    if ((this.m.isEmpty()) && (this.l != null)) {
+      synchronized (this.p)
+      {
+        Iterator localIterator = this.l.doodleInfos.iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject3 = (PtvTemplateManager.DoodleInfo)localIterator.next();
+          if (((PtvTemplateManager.DoodleInfo)localObject3).doodleUsable)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(d);
+            localStringBuilder.append(((PtvTemplateManager.DoodleInfo)localObject3).doodleName);
+            localObject3 = VideoSDKMaterialParser.parseVideoMaterialForEdit(localStringBuilder.toString(), "params");
+            this.m.add(localObject3);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("Doodle_Strokes_PtvTemplateManager", 4, new Object[] { "getDoodleMaterials add DoodleMaterial:", ((VideoMaterial)localObject3).getId() });
+            }
+          }
+        }
+      }
+    }
+    return this.m;
+  }
+  
+  void g()
+  {
+    QQAppInterface localQQAppInterface = j();
+    Object localObject1 = this.l;
+    if ((localObject1 != null) && (!((PtvTemplateManager.PtvTemplateInfo)localObject1).doodleInfos.isEmpty()) && (localQQAppInterface != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = null;
-      this.jdField_d_of_type_JavaUtilArrayList.clear();
-      File localFile = new File(jdField_b_of_type_JavaIoFile, "doodle_template_new.cfg");
+      if (QLog.isColorLevel()) {
+        QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "preDownloadDoodleTemplate!");
+      }
+      localObject1 = this.l.doodleInfos.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        PtvTemplateManager.DoodleInfo localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject1).next();
+        if ((localDoodleInfo != null) && (!TextUtils.isEmpty(localDoodleInfo.doodleUrl)) && (!localDoodleInfo.doodleUsable))
+        {
+          Object localObject2 = new PtvTemplateManager.14(this, localDoodleInfo);
+          IPreDownloadController localIPreDownloadController = (IPreDownloadController)localQQAppInterface.getRuntimeService(IPreDownloadController.class);
+          if (localIPreDownloadController.isEnable())
+          {
+            localObject2 = new RunnableTask(localQQAppInterface, "qq_doodle_res", (Runnable)localObject2, 4000L);
+            localIPreDownloadController.requestPreDownload(10020, null, localDoodleInfo.doodleName, 0, localDoodleInfo.doodleUrl, new File(f, localDoodleInfo.doodleName).getPath(), 2, 0, true, (AbsPreDownloadTask)localObject2);
+          }
+          else
+          {
+            ThreadManager.post((Runnable)localObject2, 8, null, true);
+          }
+        }
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "Exception!");
+    }
+  }
+  
+  public void h()
+  {
+    synchronized (this.p)
+    {
+      this.l = null;
+      this.m.clear();
+      File localFile = new File(f, "doodle_template_new.cfg");
       if (localFile.exists()) {
         localFile.delete();
       }
       return;
     }
   }
+  
+  public QQAppInterface j()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager
  * JD-Core Version:    0.7.0.1
  */

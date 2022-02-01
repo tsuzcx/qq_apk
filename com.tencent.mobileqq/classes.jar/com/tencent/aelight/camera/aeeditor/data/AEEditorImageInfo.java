@@ -1,49 +1,53 @@
 package com.tencent.aelight.camera.aeeditor.data;
 
 import android.graphics.Matrix;
-import com.tencent.tavcut.bean.CropConfig;
+import com.tencent.qcircle.tavcut.bean.CropConfig;
 
 public class AEEditorImageInfo
 {
-  public int a;
-  public Matrix a;
-  public CropConfig a;
   public String a;
   public int b;
-  public int c = 0;
+  public int c;
+  public CropConfig d = new CropConfig(0.0F, 0.0F, 1.0F, 1.0F);
+  public int e = 0;
+  private Matrix f = null;
   
   public AEEditorImageInfo(String paramString, int paramInt1, int paramInt2, CropConfig paramCropConfig)
   {
-    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = new CropConfig(0.0F, 0.0F, 1.0F, 1.0F);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = paramCropConfig;
+    this.a = paramString;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramCropConfig;
   }
   
-  public int a()
+  public Matrix a()
   {
-    return this.c;
+    return this.f;
   }
   
   public void a(int paramInt)
   {
-    this.c = paramInt;
+    this.e = paramInt;
   }
   
   public void a(Matrix paramMatrix)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = paramMatrix;
+    this.f = paramMatrix;
   }
   
   public void a(CropConfig paramCropConfig)
   {
-    this.jdField_a_of_type_ComTencentTavcutBeanCropConfig = paramCropConfig;
+    this.d = paramCropConfig;
+  }
+  
+  public int b()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.data.AEEditorImageInfo
  * JD-Core Version:    0.7.0.1
  */

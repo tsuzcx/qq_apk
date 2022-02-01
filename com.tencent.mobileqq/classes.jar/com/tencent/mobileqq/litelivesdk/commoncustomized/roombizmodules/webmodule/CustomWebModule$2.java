@@ -38,8 +38,8 @@ class CustomWebModule$2
       paramJSONObject.append("()");
       paramString = paramJSONObject.toString();
     }
-    if (this.a.a != null) {
-      this.a.a.evaluateJavascript(paramString, new CustomWebModule.2.1(this, paramValueCallback));
+    if (this.a.f != null) {
+      this.a.f.evaluateJavascript(paramString, new CustomWebModule.2.1(this, paramValueCallback));
     }
   }
   
@@ -91,7 +91,7 @@ class CustomWebModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.2
  * JD-Core Version:    0.7.0.1
  */

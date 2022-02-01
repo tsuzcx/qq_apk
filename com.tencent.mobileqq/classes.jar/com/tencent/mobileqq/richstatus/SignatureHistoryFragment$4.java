@@ -38,13 +38,13 @@ class SignatureHistoryFragment$4
     if (localQQAppInterface == null) {
       return;
     }
-    int i = this.this$0.getResources().getDimensionPixelSize(2131297229);
-    if (localQQAppInterface.getCurrentAccountUin().equals(SignatureHistoryFragment.a(this.this$0)))
+    int i = this.this$0.getResources().getDimensionPixelSize(2131297660);
+    if (localQQAppInterface.getCurrentAccountUin().equals(SignatureHistoryFragment.c(this.this$0)))
     {
       localObject2 = localBitmap;
       try
       {
-        localObject1 = FaceUtil.b();
+        localObject1 = FaceUtil.c();
         localObject2 = localBitmap;
         Object localObject3 = new File((String)localObject1);
         localObject2 = localBitmap;
@@ -76,19 +76,19 @@ class SignatureHistoryFragment$4
     }
     Object localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = localQQAppInterface.getFaceBitmap(SignatureHistoryFragment.a(this.this$0), true);
+      localObject2 = localQQAppInterface.getFaceBitmap(SignatureHistoryFragment.c(this.this$0), true);
     }
     if (localObject2 != null)
     {
-      localObject1 = SignatureHistoryFragment.a(this.this$0).obtainMessage(2);
+      localObject1 = SignatureHistoryFragment.d(this.this$0).obtainMessage(2);
       ((Message)localObject1).obj = localObject2;
-      SignatureHistoryFragment.a(this.this$0).sendMessage((Message)localObject1);
+      SignatureHistoryFragment.d(this.this$0).sendMessage((Message)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.4
  * JD-Core Version:    0.7.0.1
  */

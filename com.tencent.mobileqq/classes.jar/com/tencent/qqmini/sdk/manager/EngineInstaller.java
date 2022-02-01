@@ -815,7 +815,7 @@ public class EngineInstaller
           {
             Object localObject3 = new JSONObject(paramBaseLibInfo.baseLibDesc);
             localObject1 = new EngineVersion(paramBaseLibInfo.baseLibVersion);
-            long l = ((JSONObject)localObject3).optLong("file_length");
+            long l = ((JSONObject)localObject3).optLong("file_length", -1L);
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("[MiniEng] installWithCallback ");
             ((StringBuilder)localObject3).append(paramBaseLibInfo);
@@ -925,7 +925,7 @@ public class EngineInstaller
             }
             paramCallback = null;
             if (paramBaseLibInfo.baseLibType != 2) {
-              break label977;
+              break label980;
             }
             bool2 = paramBaseLibInfo.baseLibUrl.startsWith("assets://");
             paramBaseLibInfo.baseLibUrl.replace("assets://", "");
@@ -963,7 +963,7 @@ public class EngineInstaller
         }
       }
       finally {}
-      label977:
+      label980:
       boolean bool2 = false;
     }
   }
@@ -998,7 +998,7 @@ public class EngineInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineInstaller
  * JD-Core Version:    0.7.0.1
  */

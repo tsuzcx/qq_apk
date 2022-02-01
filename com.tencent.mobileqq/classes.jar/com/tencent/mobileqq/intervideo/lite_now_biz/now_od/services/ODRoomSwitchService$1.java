@@ -13,7 +13,7 @@ class ODRoomSwitchService$1
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_odServicesODRoomSwitchService$IGetNeighborRoomListener.a(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
@@ -25,11 +25,11 @@ class ODRoomSwitchService$1
       int i = localRcmdRoomSwitchRsp.ret.get();
       if (i == 0)
       {
-        paramArrayOfByte = ODRoomSwitchService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_odServicesODRoomSwitchService, localRcmdRoomSwitchRsp);
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_odServicesODRoomSwitchService$IGetNeighborRoomListener.a(paramArrayOfByte);
+        paramArrayOfByte = ODRoomSwitchService.a(this.b, localRcmdRoomSwitchRsp);
+        this.a.a(paramArrayOfByte);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_odServicesODRoomSwitchService$IGetNeighborRoomListener.a(i, "get rooms onRecv data error");
+      this.a.a(i, "get rooms onRecv data error");
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -40,7 +40,7 @@ class ODRoomSwitchService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_od.services.ODRoomSwitchService.1
  * JD-Core Version:    0.7.0.1
  */

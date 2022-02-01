@@ -7,12 +7,11 @@ import java.io.PrintStream;
 class TroopGiftPanel$GiftInputFilter
   implements InputFilter
 {
-  protected int a;
+  protected int a = -1;
   
   public TroopGiftPanel$GiftInputFilter(TroopGiftPanel paramTroopGiftPanel, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
@@ -42,7 +41,7 @@ class TroopGiftPanel$GiftInputFilter
       if ((paramInt3 == 0) && (paramInt1 == 48)) {
         return "";
       }
-      if ((this.jdField_a_of_type_Int > 0) && (paramSpanned.length() >= this.jdField_a_of_type_Int)) {
+      if ((this.a > 0) && (paramSpanned.length() >= this.a)) {
         return "";
       }
       return null;
@@ -52,7 +51,7 @@ class TroopGiftPanel$GiftInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.GiftInputFilter
  * JD-Core Version:    0.7.0.1
  */

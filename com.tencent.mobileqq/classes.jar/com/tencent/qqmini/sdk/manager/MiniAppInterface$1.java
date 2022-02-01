@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.content.Context;
+import com.tencent.qqmini.sdk.core.utils.WebViewUtils;
 import com.tencent.qqmini.sdk.launcher.Configuration;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
@@ -13,6 +14,7 @@ class MiniAppInterface$1
   {
     try
     {
+      WebViewUtils.a();
       PreloadResource.g().preload(this.val$context, this.val$configuration);
       return;
     }
@@ -24,7 +26,7 @@ class MiniAppInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniAppInterface.1
  * JD-Core Version:    0.7.0.1
  */

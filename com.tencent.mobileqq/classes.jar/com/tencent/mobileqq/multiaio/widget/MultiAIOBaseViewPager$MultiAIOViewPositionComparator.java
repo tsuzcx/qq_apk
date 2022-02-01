@@ -26,19 +26,19 @@ class MultiAIOBaseViewPager$MultiAIOViewPositionComparator
       }
       return i;
     }
-    i = this.a.a();
-    if (i == paramView1.b) {
+    i = this.a.getCurrentItem();
+    if (i == paramView1.e) {
       return 1;
     }
-    if (i == paramView2.b) {
+    if (i == paramView2.e) {
       return -1;
     }
-    return paramView1.b - paramView2.b;
+    return paramView1.e - paramView2.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.MultiAIOViewPositionComparator
  * JD-Core Version:    0.7.0.1
  */

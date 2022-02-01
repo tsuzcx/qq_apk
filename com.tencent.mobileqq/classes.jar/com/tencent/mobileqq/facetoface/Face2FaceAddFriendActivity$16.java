@@ -14,7 +14,7 @@ class Face2FaceAddFriendActivity$16
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
+    Intent localIntent = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.U).putExtra("mgid", (byte)this.a.V);
     localIntent.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
     this.a.startActivityForResult(localIntent, 100);
     ReportController.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
@@ -23,7 +23,7 @@ class Face2FaceAddFriendActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.16
  * JD-Core Version:    0.7.0.1
  */

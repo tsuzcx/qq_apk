@@ -12,28 +12,28 @@ class TogetherWatchingDelegate$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TogetherWatchingDelegate localTogetherWatchingDelegate = this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate;
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    TogetherWatchingDelegate localTogetherWatchingDelegate = this.f;
+    String str2 = this.a;
     String str1;
-    if (this.jdField_a_of_type_Int == 8) {
+    if (this.b == 8) {
       str1 = "clk_openframe_open";
     } else {
       str1 = "clk_joinbar_open";
     }
     TogetherWatchingDelegate.a(localTogetherWatchingDelegate, str2, str1);
     paramDialogInterface.dismiss();
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.b;
     if (paramInt == 8)
     {
-      TogetherWatchingDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.b, paramInt);
+      TogetherWatchingDelegate.a(this.f, this.c, this.a, this.d, paramInt);
       return;
     }
-    TogetherWatchingDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate, this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_JavaLangString, paramInt);
+    TogetherWatchingDelegate.a(this.f, this.e, this.d, this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherWatchingDelegate.2
  * JD-Core Version:    0.7.0.1
  */

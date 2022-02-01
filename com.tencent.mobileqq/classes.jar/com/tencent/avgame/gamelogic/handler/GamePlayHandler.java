@@ -70,7 +70,7 @@ public class GamePlayHandler
   
   private String a()
   {
-    return MobileQQ.sMobileQQ.getResources().getString(2131690303);
+    return MobileQQ.sMobileQQ.getResources().getString(2131887214);
   }
   
   private String a(int paramInt)
@@ -199,7 +199,7 @@ public class GamePlayHandler
     localObject1 = new GameInfo();
     ((GameInfo)localObject1).a(localGameInfo);
     if (paramRoomOwnerStartGameS2CReq.question_class.has()) {
-      ((GameInfo)localObject1).a = paramRoomOwnerStartGameS2CReq.question_class.get();
+      ((GameInfo)localObject1).g = paramRoomOwnerStartGameS2CReq.question_class.get();
     }
     ObserverCenter.a().b(GamePlayObserver.class, 2, true, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, localObject1, localPlayer, localObject2, Long.valueOf(paramLong3) });
   }
@@ -209,64 +209,64 @@ public class GamePlayHandler
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 266	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   1: getfield 267	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   4: astore 11
-    //   6: ldc_w 268
+    //   6: ldc_w 269
     //   9: astore 10
     //   11: aload 11
-    //   13: ldc_w 269
-    //   16: ldc_w 268
-    //   19: invokevirtual 274	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   13: ldc_w 270
+    //   16: ldc_w 269
+    //   19: invokevirtual 275	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   22: astore 12
     //   24: aload_1
-    //   25: getfield 266	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   28: ldc_w 276
-    //   31: invokevirtual 280	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   25: getfield 267	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   28: ldc_w 277
+    //   31: invokevirtual 281	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   34: lstore 7
     //   36: aload_1
-    //   37: getfield 266	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   40: ldc_w 282
-    //   43: invokevirtual 286	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   37: getfield 267	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   40: ldc_w 283
+    //   43: invokevirtual 287	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   46: istore 6
     //   48: aload_1
-    //   49: getfield 266	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   52: ldc_w 288
-    //   55: ldc_w 268
-    //   58: invokevirtual 274	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   49: getfield 267	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   52: ldc_w 289
+    //   55: ldc_w 269
+    //   58: invokevirtual 275	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   61: astore 14
-    //   63: new 290	com/tencent/avgame/gamelogic/data/RoomInfo
+    //   63: new 291	com/tencent/avgame/gamelogic/data/RoomInfo
     //   66: dup
-    //   67: invokespecial 291	com/tencent/avgame/gamelogic/data/RoomInfo:<init>	()V
+    //   67: invokespecial 292	com/tencent/avgame/gamelogic/data/RoomInfo:<init>	()V
     //   70: astore 13
     //   72: aload_2
-    //   73: invokevirtual 296	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   73: invokevirtual 297	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
     //   76: ifeq +442 -> 518
-    //   79: new 298	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp
+    //   79: new 299	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp
     //   82: dup
-    //   83: invokespecial 299	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:<init>	()V
+    //   83: invokespecial 300	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:<init>	()V
     //   86: astore 15
     //   88: aload 15
     //   90: aload_3
-    //   91: checkcast 301	[B
-    //   94: checkcast 301	[B
-    //   97: invokevirtual 305	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   91: checkcast 302	[B
+    //   94: checkcast 302	[B
+    //   97: invokevirtual 306	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   100: pop
     //   101: aload 15
-    //   103: getfield 309	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   106: invokevirtual 312	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   109: checkcast 311	trpc/qq_vgame/common/AvGameCommon$Result
-    //   112: getfield 315	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   103: getfield 310	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   106: invokevirtual 313	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   109: checkcast 312	trpc/qq_vgame/common/AvGameCommon$Result
+    //   112: getfield 316	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   115: invokevirtual 131	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   118: istore 5
     //   120: aload 10
     //   122: astore_3
     //   123: aload 15
-    //   125: getfield 309	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   128: invokevirtual 312	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   131: checkcast 311	trpc/qq_vgame/common/AvGameCommon$Result
-    //   134: getfield 319	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   137: invokevirtual 324	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   140: invokevirtual 329	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   125: getfield 310	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   128: invokevirtual 313	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   131: checkcast 312	trpc/qq_vgame/common/AvGameCommon$Result
+    //   134: getfield 320	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   137: invokevirtual 325	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   140: invokevirtual 330	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   143: astore_1
     //   144: aload_1
     //   145: astore_3
@@ -274,8 +274,8 @@ public class GamePlayHandler
     //   147: astore 10
     //   149: aload 13
     //   151: aload 15
-    //   153: getfield 333	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:room_info	Ltrpc/qq_vgame/common/AvGameCommon$RoomInfo;
-    //   156: invokevirtual 336	com/tencent/avgame/gamelogic/data/RoomInfo:parseFrom	(Ltrpc/qq_vgame/common/AvGameCommon$RoomInfo;)V
+    //   153: getfield 334	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:room_info	Ltrpc/qq_vgame/common/AvGameCommon$RoomInfo;
+    //   156: invokevirtual 337	com/tencent/avgame/gamelogic/data/RoomInfo:parseFrom	(Ltrpc/qq_vgame/common/AvGameCommon$RoomInfo;)V
     //   159: aload_1
     //   160: astore 11
     //   162: aload_1
@@ -283,15 +283,15 @@ public class GamePlayHandler
     //   164: aload_1
     //   165: astore 10
     //   167: aload 15
-    //   169: getfield 339	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:low_version_users	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   172: invokevirtual 340	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   169: getfield 340	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:low_version_users	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   172: invokevirtual 341	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
     //   175: ifeq +110 -> 285
     //   178: aload_1
     //   179: astore_3
     //   180: aload_1
     //   181: astore 10
     //   183: aload 15
-    //   185: getfield 339	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:low_version_users	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   185: getfield 340	trpc/qq_vgame/playgame/AvGamePlay$StartGameRsp:low_version_users	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   188: invokevirtual 85	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   191: astore 16
     //   193: aload_1
@@ -301,8 +301,8 @@ public class GamePlayHandler
     //   198: new 87	java/util/ArrayList
     //   201: dup
     //   202: aload 16
-    //   204: invokeinterface 343 1 0
-    //   209: invokespecial 346	java/util/ArrayList:<init>	(I)V
+    //   204: invokeinterface 344 1 0
+    //   209: invokespecial 347	java/util/ArrayList:<init>	(I)V
     //   212: astore 11
     //   214: aload 16
     //   216: invokeinterface 96 1 0
@@ -320,7 +320,7 @@ public class GamePlayHandler
     //   245: aload 16
     //   247: invokeinterface 106 1 0
     //   252: checkcast 223	trpc/qq_vgame/common/AvGameCommon$RoomUserInfo
-    //   255: getfield 347	trpc/qq_vgame/common/AvGameCommon$RoomUserInfo:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   255: getfield 348	trpc/qq_vgame/common/AvGameCommon$RoomUserInfo:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   258: invokevirtual 165	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   261: invokestatic 70	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   264: invokeinterface 119 2 0
@@ -351,7 +351,7 @@ public class GamePlayHandler
     //   312: goto +35 -> 347
     //   315: aconst_null
     //   316: astore_1
-    //   317: ldc_w 348
+    //   317: ldc_w 349
     //   320: istore 4
     //   322: aload 10
     //   324: astore_3
@@ -361,43 +361,43 @@ public class GamePlayHandler
     //   331: astore 11
     //   333: aconst_null
     //   334: astore_3
-    //   335: ldc_w 348
+    //   335: ldc_w 349
     //   338: istore 4
     //   340: aload 10
     //   342: astore_1
     //   343: aload 11
     //   345: astore 10
-    //   347: new 350	java/lang/StringBuilder
+    //   347: new 351	java/lang/StringBuilder
     //   350: dup
-    //   351: invokespecial 351	java/lang/StringBuilder:<init>	()V
+    //   351: invokespecial 352	java/lang/StringBuilder:<init>	()V
     //   354: astore 11
     //   356: aload 11
-    //   358: ldc_w 353
-    //   361: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: ldc_w 354
+    //   361: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   364: pop
     //   365: aload 11
     //   367: aload 10
-    //   369: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   369: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   372: pop
     //   373: ldc 234
     //   375: iconst_1
     //   376: aload 11
-    //   378: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   381: invokestatic 365	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   378: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   381: invokestatic 366	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   384: aload_3
     //   385: astore 10
     //   387: aload_1
     //   388: astore_3
     //   389: ldc 234
-    //   391: ldc_w 367
+    //   391: ldc_w 368
     //   394: aconst_null
     //   395: iconst_1
-    //   396: anewarray 369	com/tencent/mobileqq/pb/MessageMicro
+    //   396: anewarray 370	com/tencent/mobileqq/pb/MessageMicro
     //   399: dup
     //   400: iconst_0
     //   401: aload 15
     //   403: aastore
-    //   404: invokestatic 372	com/tencent/avgame/gamelogic/GameUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   404: invokestatic 373	com/tencent/avgame/gamelogic/GameUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   407: iload 4
     //   409: ifne +22 -> 431
     //   412: aload_0
@@ -406,7 +406,7 @@ public class GamePlayHandler
     //   417: iload 6
     //   419: aload 14
     //   421: aload 15
-    //   423: invokespecial 375	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	(Ljava/lang/String;JILjava/lang/String;Ltrpc/qq_vgame/playgame/AvGamePlay$StartGameRsp;)Z
+    //   423: invokespecial 376	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	(Ljava/lang/String;JILjava/lang/String;Ltrpc/qq_vgame/playgame/AvGamePlay$StartGameRsp;)Z
     //   426: istore 9
     //   428: goto +6 -> 434
     //   431: iconst_0
@@ -416,10 +416,10 @@ public class GamePlayHandler
     //   439: aload_3
     //   440: astore_1
     //   441: aload_3
-    //   442: invokestatic 381	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   442: invokestatic 382	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   445: ifeq +8 -> 453
     //   448: aload_0
-    //   449: invokespecial 383	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	()Ljava/lang/String;
+    //   449: invokespecial 384	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	()Ljava/lang/String;
     //   452: astore_1
     //   453: invokestatic 60	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
     //   456: ldc 62
@@ -463,7 +463,7 @@ public class GamePlayHandler
     //   515: goto +11 -> 526
     //   518: iconst_0
     //   519: istore 9
-    //   521: ldc_w 348
+    //   521: ldc_w 349
     //   524: istore 4
     //   526: ldc 234
     //   528: iconst_1
@@ -471,33 +471,33 @@ public class GamePlayHandler
     //   531: anewarray 64	java/lang/Object
     //   534: dup
     //   535: iconst_0
-    //   536: ldc_w 385
+    //   536: ldc_w 386
     //   539: aastore
     //   540: dup
     //   541: iconst_1
     //   542: iload 9
-    //   544: invokestatic 390	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   544: invokestatic 391	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   547: aastore
     //   548: dup
     //   549: iconst_2
-    //   550: ldc_w 392
+    //   550: ldc_w 393
     //   553: aastore
     //   554: dup
     //   555: iconst_3
     //   556: aload_2
-    //   557: invokevirtual 296	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   560: invokestatic 390	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   557: invokevirtual 297	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   560: invokestatic 391	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   563: aastore
     //   564: dup
     //   565: iconst_4
-    //   566: ldc_w 394
+    //   566: ldc_w 395
     //   569: aastore
     //   570: dup
     //   571: iconst_5
     //   572: iload 4
     //   574: invokestatic 136	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   577: aastore
-    //   578: invokestatic 397	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   578: invokestatic 398	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   581: return
     //   582: astore_1
     //   583: goto -268 -> 315
@@ -572,21 +572,21 @@ public class GamePlayHandler
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 266	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   4: ldc_w 415
-    //   7: invokevirtual 418	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1: getfield 267	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   4: ldc_w 416
+    //   7: invokevirtual 419	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   10: astore 16
     //   12: aload_1
-    //   13: getfield 266	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   16: ldc_w 276
-    //   19: invokevirtual 280	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   13: getfield 267	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   16: ldc_w 277
+    //   19: invokevirtual 281	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   22: lstore 9
     //   24: aload_2
-    //   25: invokevirtual 296	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   25: invokevirtual 297	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
     //   28: istore 13
-    //   30: ldc_w 348
+    //   30: ldc_w 349
     //   33: istore 6
-    //   35: ldc_w 268
+    //   35: ldc_w 269
     //   38: astore_1
     //   39: iload 6
     //   41: istore 7
@@ -594,9 +594,9 @@ public class GamePlayHandler
     //   44: astore 15
     //   46: iload 13
     //   48: ifeq +334 -> 382
-    //   51: new 420	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp
+    //   51: new 421	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp
     //   54: dup
-    //   55: invokespecial 421	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:<init>	()V
+    //   55: invokespecial 422	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:<init>	()V
     //   58: astore 17
     //   60: iload 6
     //   62: istore 7
@@ -604,17 +604,17 @@ public class GamePlayHandler
     //   66: istore 8
     //   68: aload 17
     //   70: aload_3
-    //   71: invokevirtual 422	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   71: invokevirtual 423	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   74: pop
     //   75: iload 6
     //   77: istore 7
     //   79: iload 6
     //   81: istore 8
     //   83: aload 17
-    //   85: getfield 423	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   88: invokevirtual 312	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   91: checkcast 311	trpc/qq_vgame/common/AvGameCommon$Result
-    //   94: getfield 315	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   85: getfield 424	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   88: invokevirtual 313	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   91: checkcast 312	trpc/qq_vgame/common/AvGameCommon$Result
+    //   94: getfield 316	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   97: invokevirtual 131	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   100: istore 6
     //   102: iload 6
@@ -622,12 +622,12 @@ public class GamePlayHandler
     //   106: iload 6
     //   108: istore 8
     //   110: aload 17
-    //   112: getfield 423	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   115: invokevirtual 312	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   118: checkcast 311	trpc/qq_vgame/common/AvGameCommon$Result
-    //   121: getfield 319	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   124: invokevirtual 324	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   127: invokevirtual 329	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   112: getfield 424	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   115: invokevirtual 313	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   118: checkcast 312	trpc/qq_vgame/common/AvGameCommon$Result
+    //   121: getfield 320	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   124: invokevirtual 325	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   127: invokevirtual 330	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   130: astore_3
     //   131: aload_3
     //   132: astore_1
@@ -636,44 +636,44 @@ public class GamePlayHandler
     //   138: istore 6
     //   140: goto +52 -> 192
     //   143: astore_3
-    //   144: new 350	java/lang/StringBuilder
+    //   144: new 351	java/lang/StringBuilder
     //   147: dup
-    //   148: invokespecial 351	java/lang/StringBuilder:<init>	()V
+    //   148: invokespecial 352	java/lang/StringBuilder:<init>	()V
     //   151: astore 15
     //   153: aload 15
     //   155: aload 4
-    //   157: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: pop
     //   161: aload 15
-    //   163: ldc_w 425
-    //   166: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: ldc_w 426
+    //   166: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: pop
     //   170: aload 15
     //   172: aload_3
-    //   173: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   173: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   176: pop
     //   177: ldc 234
     //   179: iconst_1
     //   180: aload 15
-    //   182: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: invokestatic 365	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   182: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   185: invokestatic 366	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   188: iload 7
     //   190: istore 6
     //   192: ldc 234
     //   194: aload 4
     //   196: iconst_1
-    //   197: anewarray 427	java/lang/String
+    //   197: anewarray 428	java/lang/String
     //   200: dup
     //   201: iconst_0
-    //   202: ldc_w 429
+    //   202: ldc_w 430
     //   205: aastore
     //   206: iconst_1
-    //   207: anewarray 369	com/tencent/mobileqq/pb/MessageMicro
+    //   207: anewarray 370	com/tencent/mobileqq/pb/MessageMicro
     //   210: dup
     //   211: iconst_0
     //   212: aload 17
     //   214: aastore
-    //   215: invokestatic 372	com/tencent/avgame/gamelogic/GameUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   215: invokestatic 373	com/tencent/avgame/gamelogic/GameUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   218: iload 6
     //   220: istore 7
     //   222: aload_1
@@ -689,14 +689,14 @@ public class GamePlayHandler
     //   243: iconst_0
     //   244: istore 13
     //   246: aload 17
-    //   248: getfield 430	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:question_info	Ltrpc/qq_vgame/common/AvGameCommon$GameQuestionInfo;
+    //   248: getfield 431	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:question_info	Ltrpc/qq_vgame/common/AvGameCommon$GameQuestionInfo;
     //   251: invokevirtual 49	trpc/qq_vgame/common/AvGameCommon$GameQuestionInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
     //   254: checkcast 46	trpc/qq_vgame/common/AvGameCommon$GameQuestionInfo
     //   257: iload 13
     //   259: invokestatic 55	com/tencent/avgame/gamelogic/GameUtil:b	(Ltrpc/qq_vgame/common/AvGameCommon$GameQuestionInfo;Z)Lcom/tencent/avgame/gamelogic/ITopic;
     //   262: astore_3
     //   263: aload 17
-    //   265: getfield 433	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   265: getfield 434	trpc/qq_vgame/question/AvGameQuestionInfo$CmdGetQuestionRsp:seq	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   268: invokevirtual 165	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   271: lstore 11
     //   273: aload_3
@@ -737,11 +737,11 @@ public class GamePlayHandler
     //   332: istore 7
     //   334: aload_1
     //   335: astore 15
-    //   337: invokestatic 436	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   337: invokestatic 437	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   340: ifeq +45 -> 385
     //   343: ldc 234
     //   345: iconst_2
-    //   346: ldc_w 438
+    //   346: ldc_w 439
     //   349: iconst_2
     //   350: anewarray 64	java/lang/Object
     //   353: dup
@@ -752,8 +752,8 @@ public class GamePlayHandler
     //   359: iconst_1
     //   360: aload_3
     //   361: aastore
-    //   362: invokestatic 442	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   365: invokestatic 445	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   362: invokestatic 443	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   365: invokestatic 446	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   368: iload 13
     //   370: istore 14
     //   372: iload 6
@@ -774,8 +774,8 @@ public class GamePlayHandler
     //   404: aload 16
     //   406: ifnull +15 -> 421
     //   409: aload 16
-    //   411: ldc_w 447
-    //   414: invokevirtual 451	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   411: ldc_w 448
+    //   414: invokevirtual 452	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   417: astore_1
     //   418: goto +5 -> 423
     //   421: aconst_null
@@ -787,27 +787,27 @@ public class GamePlayHandler
     //   429: iconst_3
     //   430: if_icmplt +27 -> 457
     //   433: iconst_2
-    //   434: invokestatic 453	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   434: invokestatic 454	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   437: aload_1
     //   438: iconst_1
     //   439: aaload
-    //   440: invokevirtual 457	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   440: invokevirtual 458	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   443: ifeq +14 -> 457
     //   446: aload_0
-    //   447: ldc_w 458
-    //   450: invokespecial 460	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	(I)Ljava/lang/String;
+    //   447: ldc_w 459
+    //   450: invokespecial 461	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	(I)Ljava/lang/String;
     //   453: astore_1
     //   454: goto +11 -> 465
     //   457: aload_0
-    //   458: ldc_w 461
-    //   461: invokespecial 460	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	(I)Ljava/lang/String;
+    //   458: ldc_w 462
+    //   461: invokespecial 461	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	(I)Ljava/lang/String;
     //   464: astore_1
     //   465: aload_1
     //   466: astore 15
     //   468: goto +12 -> 480
     //   471: aload_0
-    //   472: ldc_w 462
-    //   475: invokespecial 460	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	(I)Ljava/lang/String;
+    //   472: ldc_w 463
+    //   475: invokespecial 461	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	(I)Ljava/lang/String;
     //   478: astore 15
     //   480: invokestatic 60	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
     //   483: ldc 62
@@ -840,26 +840,26 @@ public class GamePlayHandler
     //   528: aastore
     //   529: dup
     //   530: iconst_1
-    //   531: ldc_w 464
+    //   531: ldc_w 465
     //   534: aastore
     //   535: dup
     //   536: iconst_2
     //   537: iload 14
-    //   539: invokestatic 390	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   539: invokestatic 391	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   542: aastore
     //   543: dup
     //   544: iconst_3
-    //   545: ldc_w 392
+    //   545: ldc_w 393
     //   548: aastore
     //   549: dup
     //   550: iconst_4
     //   551: aload_2
-    //   552: invokevirtual 296	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   555: invokestatic 390	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   552: invokevirtual 297	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   555: invokestatic 391	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   558: aastore
     //   559: dup
     //   560: iconst_5
-    //   561: ldc_w 394
+    //   561: ldc_w 395
     //   564: aastore
     //   565: dup
     //   566: bipush 6
@@ -868,7 +868,7 @@ public class GamePlayHandler
     //   573: aastore
     //   574: dup
     //   575: bipush 7
-    //   577: ldc_w 466
+    //   577: ldc_w 467
     //   580: aastore
     //   581: dup
     //   582: bipush 8
@@ -877,13 +877,13 @@ public class GamePlayHandler
     //   589: aastore
     //   590: dup
     //   591: bipush 9
-    //   593: ldc_w 468
+    //   593: ldc_w 469
     //   596: aastore
     //   597: dup
     //   598: bipush 10
     //   600: aload 16
     //   602: aastore
-    //   603: invokestatic 397	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   603: invokestatic 398	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   606: return
     //   607: astore_3
     //   608: goto -472 -> 136
@@ -942,10 +942,10 @@ public class GamePlayHandler
     paramStartGameRsp.parseFrom((AvGameCommon.RoomUserInfo)localObject);
     localObject = new GameInfo();
     ((GameInfo)localObject).a(localGameInfo);
-    ((GameInfo)localObject).a = paramString2;
+    ((GameInfo)localObject).g = paramString2;
     int i = paramInt;
     if (paramInt <= 0) {
-      i = GameUtil.a(localGameInfo.type.get());
+      i = GameUtil.b(localGameInfo.type.get());
     }
     paramString2 = GameUtil.b(localGameQuestionInfo, false);
     if (paramString2 == null)
@@ -962,21 +962,21 @@ public class GamePlayHandler
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 266	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   4: ldc_w 415
-    //   7: invokevirtual 418	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1: getfield 267	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   4: ldc_w 416
+    //   7: invokevirtual 419	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   10: astore 9
     //   12: aload_1
-    //   13: getfield 266	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   16: ldc_w 269
-    //   19: invokevirtual 418	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   13: getfield 267	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   16: ldc_w 270
+    //   19: invokevirtual 419	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore 10
     //   24: aload_2
-    //   25: invokevirtual 296	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   25: invokevirtual 297	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
     //   28: istore 7
-    //   30: ldc_w 348
+    //   30: ldc_w 349
     //   33: istore 4
-    //   35: ldc_w 268
+    //   35: ldc_w 269
     //   38: astore_1
     //   39: iload 4
     //   41: istore 5
@@ -984,9 +984,9 @@ public class GamePlayHandler
     //   44: astore 8
     //   46: iload 7
     //   48: ifeq +222 -> 270
-    //   51: new 544	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp
+    //   51: new 545	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp
     //   54: dup
-    //   55: invokespecial 545	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp:<init>	()V
+    //   55: invokespecial 546	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp:<init>	()V
     //   58: astore 11
     //   60: iload 4
     //   62: istore 5
@@ -994,19 +994,19 @@ public class GamePlayHandler
     //   66: istore 6
     //   68: aload 11
     //   70: aload_3
-    //   71: checkcast 301	[B
-    //   74: checkcast 301	[B
-    //   77: invokevirtual 546	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   71: checkcast 302	[B
+    //   74: checkcast 302	[B
+    //   77: invokevirtual 547	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   80: pop
     //   81: iload 4
     //   83: istore 5
     //   85: iload 4
     //   87: istore 6
     //   89: aload 11
-    //   91: getfield 547	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   94: invokevirtual 312	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   97: checkcast 311	trpc/qq_vgame/common/AvGameCommon$Result
-    //   100: getfield 315	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   91: getfield 548	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   94: invokevirtual 313	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   97: checkcast 312	trpc/qq_vgame/common/AvGameCommon$Result
+    //   100: getfield 316	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   103: invokevirtual 131	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   106: istore 4
     //   108: iload 4
@@ -1014,12 +1014,12 @@ public class GamePlayHandler
     //   112: iload 4
     //   114: istore 6
     //   116: aload 11
-    //   118: getfield 547	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   121: invokevirtual 312	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   124: checkcast 311	trpc/qq_vgame/common/AvGameCommon$Result
-    //   127: getfield 319	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   130: invokevirtual 324	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   133: invokevirtual 329	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   118: getfield 548	trpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   121: invokevirtual 313	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   124: checkcast 312	trpc/qq_vgame/common/AvGameCommon$Result
+    //   127: getfield 320	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   130: invokevirtual 325	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   133: invokevirtual 330	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   136: astore_3
     //   137: aload_3
     //   138: astore_1
@@ -1028,40 +1028,40 @@ public class GamePlayHandler
     //   144: istore 4
     //   146: goto +44 -> 190
     //   149: astore_3
-    //   150: new 350	java/lang/StringBuilder
+    //   150: new 351	java/lang/StringBuilder
     //   153: dup
-    //   154: invokespecial 351	java/lang/StringBuilder:<init>	()V
+    //   154: invokespecial 352	java/lang/StringBuilder:<init>	()V
     //   157: astore 8
     //   159: aload 8
-    //   161: ldc_w 549
-    //   164: invokevirtual 357	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: ldc_w 550
+    //   164: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: pop
     //   168: aload 8
     //   170: aload_3
-    //   171: invokevirtual 360	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   171: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: ldc 234
     //   177: iconst_1
     //   178: aload 8
-    //   180: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: invokestatic 365	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   180: invokevirtual 363	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   183: invokestatic 366	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   186: iload 5
     //   188: istore 4
     //   190: ldc 234
-    //   192: ldc_w 551
+    //   192: ldc_w 552
     //   195: iconst_1
-    //   196: anewarray 427	java/lang/String
+    //   196: anewarray 428	java/lang/String
     //   199: dup
     //   200: iconst_0
-    //   201: ldc_w 429
+    //   201: ldc_w 430
     //   204: aastore
     //   205: iconst_1
-    //   206: anewarray 369	com/tencent/mobileqq/pb/MessageMicro
+    //   206: anewarray 370	com/tencent/mobileqq/pb/MessageMicro
     //   209: dup
     //   210: iconst_0
     //   211: aload 11
     //   213: aastore
-    //   214: invokestatic 372	com/tencent/avgame/gamelogic/GameUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   214: invokestatic 373	com/tencent/avgame/gamelogic/GameUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   217: iload 4
     //   219: istore 5
     //   221: aload_1
@@ -1069,7 +1069,7 @@ public class GamePlayHandler
     //   224: iload 4
     //   226: ifne +44 -> 270
     //   229: aload 11
-    //   231: invokestatic 554	com/tencent/avgame/gamelogic/GameUtil:a	(Ltrpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp;)Ljava/util/List;
+    //   231: invokestatic 555	com/tencent/avgame/gamelogic/GameUtil:a	(Ltrpc/qq_vgame/game_ranking/AvGameRanking$GetRankingListRsp;)Ljava/util/List;
     //   234: astore_3
     //   235: invokestatic 60	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
     //   238: ldc 62
@@ -1104,10 +1104,10 @@ public class GamePlayHandler
     //   285: aload_1
     //   286: astore_3
     //   287: aload_1
-    //   288: invokestatic 381	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   288: invokestatic 382	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   291: ifeq +8 -> 299
     //   294: aload_0
-    //   295: invokespecial 383	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	()Ljava/lang/String;
+    //   295: invokespecial 384	com/tencent/avgame/gamelogic/handler/GamePlayHandler:a	()Ljava/lang/String;
     //   298: astore_3
     //   299: invokestatic 60	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
     //   302: ldc 62
@@ -1134,26 +1134,26 @@ public class GamePlayHandler
     //   333: anewarray 64	java/lang/Object
     //   336: dup
     //   337: iconst_0
-    //   338: ldc_w 556
+    //   338: ldc_w 557
     //   341: aastore
     //   342: dup
     //   343: iconst_1
     //   344: iload 7
-    //   346: invokestatic 390	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   346: invokestatic 391	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   349: aastore
     //   350: dup
     //   351: iconst_2
-    //   352: ldc_w 392
+    //   352: ldc_w 393
     //   355: aastore
     //   356: dup
     //   357: iconst_3
     //   358: aload_2
-    //   359: invokevirtual 296	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   362: invokestatic 390	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   359: invokevirtual 297	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   362: invokestatic 391	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   365: aastore
     //   366: dup
     //   367: iconst_4
-    //   368: ldc_w 394
+    //   368: ldc_w 395
     //   371: aastore
     //   372: dup
     //   373: iconst_5
@@ -1162,13 +1162,13 @@ public class GamePlayHandler
     //   379: aastore
     //   380: dup
     //   381: bipush 6
-    //   383: ldc_w 468
+    //   383: ldc_w 469
     //   386: aastore
     //   387: dup
     //   388: bipush 7
     //   390: aload 9
     //   392: aastore
-    //   393: invokestatic 397	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   393: invokestatic 398	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   396: return
     //   397: astore_3
     //   398: goto -256 -> 142
@@ -1440,7 +1440,7 @@ public class GamePlayHandler
     if (paramString2 != null) {
       localStartGameReq.question_class.set(paramString2);
     }
-    if (IGameEngine.a().f())
+    if (IGameEngine.I().A())
     {
       localStartGameReq.pk_id.set(paramInt2);
       localStartGameReq.pk_round.set(paramInt4);
@@ -1495,9 +1495,9 @@ public class GamePlayHandler
     long l3 = SystemClock.elapsedRealtime();
     QLog.d("avgame_logic.GamePlayHandler", 1, String.format("handleOnlinePush type=%d [%s] seq=%d roomId=%d gameId=%s", new Object[] { Integer.valueOf(i), GameUtil.a(i), Long.valueOf(l1), Long.valueOf(l2), str2 }));
     String str1;
-    if (!IGameEngine.k())
+    if (!IGameEngine.J())
     {
-      str1 = IGameEngine.a().a().b();
+      str1 = IGameEngine.I().s().n();
     }
     else
     {

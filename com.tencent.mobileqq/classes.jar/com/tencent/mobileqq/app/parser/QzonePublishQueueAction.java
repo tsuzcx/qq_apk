@@ -19,12 +19,12 @@ public class QzonePublishQueueAction
   
   private boolean c()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    if ((this.b instanceof Activity))
     {
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-      localUserInfo.qzone_uin = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin();
-      localUserInfo.nickname = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentNickname();
-      QZoneHelper.forwardToPublishQueue((Activity)this.jdField_a_of_type_AndroidContentContext, localUserInfo, -1);
+      localUserInfo.qzone_uin = this.a.getCurrentAccountUin();
+      localUserInfo.nickname = this.a.getCurrentNickname();
+      QZoneHelper.forwardToPublishQueue((Activity)this.b, localUserInfo, -1);
       return true;
     }
     return false;
@@ -43,14 +43,14 @@ public class QzonePublishQueueAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QzonePublishQueueAction", 1, localStringBuilder.toString());
-      b_("QzonePublishQueueAction");
+      h_("QzonePublishQueueAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzonePublishQueueAction
  * JD-Core Version:    0.7.0.1
  */

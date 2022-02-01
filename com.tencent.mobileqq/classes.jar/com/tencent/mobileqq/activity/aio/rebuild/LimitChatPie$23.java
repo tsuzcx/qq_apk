@@ -11,22 +11,22 @@ class LimitChatPie$23
   
   public void onClick(View paramView)
   {
-    if ((!this.a.t()) && (LimitChatPie.a(this.a) != 5))
+    if ((!this.a.bD()) && (LimitChatPie.e(this.a) != 5))
     {
-      LimitChatPie.c(this.a);
+      LimitChatPie.f(this.a);
     }
     else
     {
-      com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-      LimitChatPie.d(this.a);
-      PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
+      com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+      LimitChatPie.g(this.a);
+      PlusPanelUtils.a(this.a.d, this.a.f, this.a.ah, true, null, null);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.23
  * JD-Core Version:    0.7.0.1
  */

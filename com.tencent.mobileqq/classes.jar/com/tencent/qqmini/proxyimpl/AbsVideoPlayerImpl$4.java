@@ -11,12 +11,12 @@ class AbsVideoPlayerImpl$4
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerImpl);
+    this.a.onCompletion(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AbsVideoPlayerImpl.4
  * JD-Core Version:    0.7.0.1
  */

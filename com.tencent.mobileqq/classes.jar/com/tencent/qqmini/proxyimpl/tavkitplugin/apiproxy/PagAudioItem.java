@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy;
 
-import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.model.TAVStickerLayerInfo.TAVStickerUserData;
@@ -10,22 +10,22 @@ import java.util.List;
 
 class PagAudioItem
 {
-  private final CMTime jdField_a_of_type_ComTencentTavCoremediaCMTime;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<TAVStickerLayerInfo.TAVStickerUserData> jdField_a_of_type_JavaUtilList;
+  private final String a;
+  private final CMTime b;
+  private final List<TAVStickerLayerInfo.TAVStickerUserData> c;
   
   PagAudioItem(String paramString, CMTime paramCMTime, List<TAVStickerLayerInfo.TAVStickerUserData> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentTavCoremediaCMTime = paramCMTime;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramString;
+    this.b = paramCMTime;
+    this.c = paramList;
   }
   
-  static PagAudioItem a(TAVSticker paramTAVSticker, MiniAppFileManager paramMiniAppFileManager)
+  static PagAudioItem a(TAVSticker paramTAVSticker, IMiniAppFileManager paramIMiniAppFileManager)
   {
     List localList = paramTAVSticker.getAudioUserDatas();
     long l = (paramTAVSticker.getAudioStartTime() * 1000.0F * 1000.0F);
-    return new PagAudioItem(paramMiniAppFileManager.getWxFilePath(a(paramTAVSticker.getAudioData(), paramMiniAppFileManager.getTmpPath(".pcm"))), CMTime.fromUs(l), localList);
+    return new PagAudioItem(paramIMiniAppFileManager.getWxFilePath(a(paramTAVSticker.getAudioData(), paramIMiniAppFileManager.getTmpPath(".pcm"))), CMTime.fromUs(l), localList);
   }
   
   private static String a(ByteBuffer paramByteBuffer, String paramString)
@@ -52,24 +52,24 @@ class PagAudioItem
     return paramString;
   }
   
-  CMTime a()
-  {
-    return this.jdField_a_of_type_ComTencentTavCoremediaCMTime;
-  }
-  
   String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  List<TAVStickerLayerInfo.TAVStickerUserData> a()
+  CMTime b()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
+  }
+  
+  List<TAVStickerLayerInfo.TAVStickerUserData> c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagAudioItem
  * JD-Core Version:    0.7.0.1
  */

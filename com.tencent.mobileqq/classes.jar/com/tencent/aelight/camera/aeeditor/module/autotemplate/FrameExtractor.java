@@ -46,7 +46,7 @@ public class FrameExtractor
     long l = 0L;
     while (((Iterator)localObject).hasNext())
     {
-      l += ((FrameExtractor.MediaWithType)((Iterator)localObject).next()).jdField_a_of_type_Long;
+      l += ((FrameExtractor.MediaWithType)((Iterator)localObject).next()).c;
       localArrayList2.add(Long.valueOf(l));
     }
     if (paramList1 != null)
@@ -73,12 +73,12 @@ public class FrameExtractor
           return localArrayList1;
         }
         if (((Long)localArrayList2.get(i)).longValue() > ((Long)paramList1.get(k)).longValue()) {
-          if (((FrameExtractor.MediaWithType)paramList.get(i)).jdField_a_of_type_Int == 2)
+          if (((FrameExtractor.MediaWithType)paramList.get(i)).b == 2)
           {
             localObject = new BitmapFactory.Options();
             int m = 1;
             ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-            BitmapFactory.decodeFile(((FrameExtractor.MediaWithType)paramList.get(i)).jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+            BitmapFactory.decodeFile(((FrameExtractor.MediaWithType)paramList.get(i)).a, (BitmapFactory.Options)localObject);
             int n = ((BitmapFactory.Options)localObject).outWidth;
             int i1 = ((BitmapFactory.Options)localObject).outHeight;
             j = m;
@@ -101,11 +101,11 @@ public class FrameExtractor
             localObject = new BitmapFactory.Options();
             ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
             ((BitmapFactory.Options)localObject).inSampleSize = j;
-            localArrayList1.add(BitmapFactory.decodeFile(((FrameExtractor.MediaWithType)paramList.get(i)).jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject));
+            localArrayList1.add(BitmapFactory.decodeFile(((FrameExtractor.MediaWithType)paramList.get(i)).a, (BitmapFactory.Options)localObject));
           }
           else if (Build.VERSION.SDK_INT >= 17)
           {
-            localArrayList1.add(a(((FrameExtractor.MediaWithType)paramList.get(i)).jdField_a_of_type_JavaLangString, ((Long)paramList1.get(k)).longValue(), paramInt));
+            localArrayList1.add(a(((FrameExtractor.MediaWithType)paramList.get(i)).a, ((Long)paramList1.get(k)).longValue(), paramInt));
           }
         }
         k += 1;
@@ -116,7 +116,7 @@ public class FrameExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.autotemplate.FrameExtractor
  * JD-Core Version:    0.7.0.1
  */

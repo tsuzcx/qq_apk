@@ -18,25 +18,25 @@ final class ImageLoaderImpl$loadImageFromFile$runnable$1
   public final void run()
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.a > 0) {
-      i = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.a;
+    if (this.a.a > 0) {
+      i = this.a.a;
     } else {
-      i = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
+      i = this.b.getWidth();
     }
     int j;
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.a > 0) {
-      j = this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader$ImageLoaderOption.b;
+    if (this.a.a > 0) {
+      j = this.a.b;
     } else {
-      j = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
+      j = this.b.getHeight();
     }
     Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
-    localObjectRef.element = ImageLoaderImpl.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+    localObjectRef.element = ImageLoaderImpl.a(this.this$0, this.c);
     if ((Bitmap)localObjectRef.element == null) {
-      localObjectRef.element = ImageLoaderImpl.a(this.this$0, this.b, i, j);
+      localObjectRef.element = ImageLoaderImpl.a(this.this$0, this.d, i, j);
     }
     if ((Bitmap)localObjectRef.element != null)
     {
-      ImageLoaderImpl.a(this.this$0, this.jdField_a_of_type_JavaLangString, (Bitmap)localObjectRef.element);
+      ImageLoaderImpl.a(this.this$0, this.c, (Bitmap)localObjectRef.element);
       ThreadManagerKt.a((Function0)new ImageLoaderImpl.loadImageFromFile.runnable.1.1(this, localObjectRef));
       return;
     }
@@ -46,7 +46,7 @@ final class ImageLoaderImpl$loadImageFromFile$runnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ImageLoaderImpl.loadImageFromFile.runnable.1
  * JD-Core Version:    0.7.0.1
  */

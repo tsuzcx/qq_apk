@@ -24,7 +24,7 @@ public class QVipExtendIconProcessor
     QVipExtendIconConfig localQVipExtendIconConfig = new QVipExtendIconConfig();
     try
     {
-      localQVipExtendIconConfig.a = new JSONObject(paramArrayOfQConfItem[0].a).optBoolean("showVipIcon", false);
+      localQVipExtendIconConfig.a = new JSONObject(paramArrayOfQConfItem[0].b).optBoolean("showVipIcon", false);
       if (QLog.isColorLevel())
       {
         paramArrayOfQConfItem = new StringBuilder();
@@ -62,7 +62,7 @@ public class QVipExtendIconProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipExtendIconProcessor
  * JD-Core Version:    0.7.0.1
  */

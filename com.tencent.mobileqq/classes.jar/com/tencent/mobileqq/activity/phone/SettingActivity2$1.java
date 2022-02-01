@@ -10,7 +10,7 @@ class SettingActivity2$1
   
   public void run()
   {
-    boolean bool = PermissionChecker.a().c();
+    boolean bool = PermissionChecker.a().e();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -22,7 +22,7 @@ class SettingActivity2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.SettingActivity2.1
  * JD-Core Version:    0.7.0.1
  */

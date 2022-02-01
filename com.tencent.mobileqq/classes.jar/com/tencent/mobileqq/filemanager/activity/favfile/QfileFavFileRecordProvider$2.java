@@ -17,7 +17,7 @@ class QfileFavFileRecordProvider$2
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    long l = ((IQQFileEngine)QfileFavFileRecordProvider.a(this.this$0).getRuntimeService(IQQFileEngine.class)).favProxyGetGettedPartList(QfileFavFileRecordProvider.a(this.this$0), localArrayList);
+    long l = ((IQQFileEngine)QfileFavFileRecordProvider.g(this.this$0).getRuntimeService(IQQFileEngine.class)).favProxyGetGettedPartList(QfileFavFileRecordProvider.d(this.this$0), localArrayList);
     Object localObject = QfileFavFileRecordProvider.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(QfileFavFileRecordProvider.b);
@@ -32,16 +32,16 @@ class QfileFavFileRecordProvider$2
       this.this$0.a(localArrayList, (QfileFavFileRecordProvider.FileRecordGroup)localObject);
       this.this$0.a((QfileFavFileRecordProvider.FileRecordGroup)localObject);
     }
-    ((IQQFileEngine)QfileFavFileRecordProvider.a(this.this$0).getRuntimeService(IQQFileEngine.class)).favProxyCancelGetFileList(QfileFavFileRecordProvider.a(this.this$0));
+    ((IQQFileEngine)QfileFavFileRecordProvider.g(this.this$0).getRuntimeService(IQQFileEngine.class)).favProxyCancelGetFileList(QfileFavFileRecordProvider.d(this.this$0));
     QfileFavFileRecordProvider.a(this.this$0, l);
-    QfileFavFileRecordProvider.a(this.this$0);
-    QfileFavFileRecordProvider.d(this.this$0);
+    QfileFavFileRecordProvider.b(this.this$0);
+    QfileFavFileRecordProvider.h(this.this$0);
     this.this$0.notifyObservers(new Object[] { Integer.valueOf(1), { Integer.valueOf(65535) } });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileRecordProvider.2
  * JD-Core Version:    0.7.0.1
  */

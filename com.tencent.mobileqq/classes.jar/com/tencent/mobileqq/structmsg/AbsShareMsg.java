@@ -103,7 +103,7 @@ public abstract class AbsShareMsg
     this.mDatas = null;
     this.mAdSourceMenu = null;
     this.mSourceOnClickListener = new AbsShareMsg.1(this);
-    this.mVersion = 28;
+    this.mVersion = 29;
   }
   
   AbsShareMsg(Bundle paramBundle)
@@ -116,7 +116,7 @@ public abstract class AbsShareMsg
     this.mDatas = null;
     this.mAdSourceMenu = null;
     this.mSourceOnClickListener = new AbsShareMsg.1(this);
-    this.mVersion = 28;
+    this.mVersion = 29;
     this.mContentCover = paramBundle.getString("image_url_remote");
     if (this.mContentCover != null)
     {
@@ -162,7 +162,7 @@ public abstract class AbsShareMsg
     this.mMsgBrief = paramBundle.getString("brief_key");
     if (TextUtils.isEmpty(this.mMsgBrief)) {
       if (!TextUtils.isEmpty(this.mSourceName)) {
-        this.mMsgBrief = String.format(ap, new Object[] { this.mSourceName });
+        this.mMsgBrief = String.format(aJ, new Object[] { this.mSourceName });
       } else {
         this.mMsgBrief = DEFAULT_MSG_BRIEF;
       }
@@ -177,9 +177,9 @@ public abstract class AbsShareMsg
     }
     if ((TextUtils.isEmpty(this.mContentTitle)) && (TextUtils.isEmpty(this.mContentSummary))) {
       if (TextUtils.isEmpty(this.mSourceName)) {
-        this.mContentTitle = ao;
+        this.mContentTitle = aI;
       } else {
-        this.mContentTitle = String.format(an, new Object[] { this.mSourceName });
+        this.mContentTitle = String.format(aH, new Object[] { this.mSourceName });
       }
     }
     this.mNeedRound = paramBundle.getString("icon_need_round");
@@ -258,7 +258,7 @@ public abstract class AbsShareMsg
     this.mDatas = null;
     this.mAdSourceMenu = null;
     this.mSourceOnClickListener = new AbsShareMsg.1(this);
-    this.mVersion = 28;
+    this.mVersion = 29;
     int m = paramStructMsgNode.a();
     int k;
     for (int j = 0; i < m; j = k)
@@ -312,10 +312,10 @@ public abstract class AbsShareMsg
   
   private int a(String[] paramArrayOfString)
   {
-    if (a(paramArrayOfString)) {
+    if (b(paramArrayOfString)) {
       return 4;
     }
-    if (b(paramArrayOfString)) {
+    if (c(paramArrayOfString)) {
       return 8;
     }
     return -1;
@@ -326,7 +326,7 @@ public abstract class AbsShareMsg
     Object localObject = new ActivityURIRequest(paramContext, "/base/vipcomic");
     ((ActivityURIRequest)localObject).extra().putString("options", "{\"from\":28, \"mod\":\"4008004\"}");
     QRoute.startUri((URIRequest)localObject, null);
-    String[] arrayOfString = AIOGallerySceneWithBusiness.a(this.mMsgActionData);
+    String[] arrayOfString = AIOGallerySceneWithBusiness.e(this.mMsgActionData);
     if ((arrayOfString != null) && (arrayOfString.length >= 8))
     {
       int i = a(arrayOfString);
@@ -360,27 +360,27 @@ public abstract class AbsShareMsg
         return false;
       }
       localObject = (StructMsgItemLayoutDefault)localObject;
-      if (((StructMsgItemLayoutDefault)localObject).a != null)
+      if (((StructMsgItemLayoutDefault)localObject).ax != null)
       {
-        if (((StructMsgItemLayoutDefault)localObject).a.isEmpty()) {
+        if (((StructMsgItemLayoutDefault)localObject).ax.isEmpty()) {
           return false;
         }
-        localObject = (AbsStructMsgElement)((StructMsgItemLayoutDefault)localObject).a.get(0);
+        localObject = (AbsStructMsgElement)((StructMsgItemLayoutDefault)localObject).ax.get(0);
         if (!(localObject instanceof StructMsgItemImage)) {
           return false;
         }
-        return ((StructMsgItemImage)localObject).a();
+        return ((StructMsgItemImage)localObject).c();
       }
     }
     return false;
   }
   
-  private boolean a(String[] paramArrayOfString)
+  private boolean b(String[] paramArrayOfString)
   {
     return paramArrayOfString[7].equals("link");
   }
   
-  private boolean b(String[] paramArrayOfString)
+  private boolean c(String[] paramArrayOfString)
   {
     return (paramArrayOfString[7].equals("scrawl_link")) && (paramArrayOfString.length >= 9);
   }
@@ -455,9 +455,9 @@ public abstract class AbsShareMsg
     if (TextUtils.isEmpty(paramString2)) {
       paramString2 = str;
     }
-    paramString1 = MessageRecordFactory.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
+    paramString1 = MessageRecordFactory.c(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
     ForwardOrderManager.a().a(paramString1.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
-    paramQQAppInterface.getMessageFacade().a(paramString1, MessageHandler.c);
+    paramQQAppInterface.getMessageFacade().a(paramString1, MessageHandler.i);
     paramAbsShareMsg = ForwardSdkShareProcessor.buildTransferRequestFromMessage(paramString1, paramAbsShareMsg);
     ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(paramAbsShareMsg);
   }
@@ -471,7 +471,7 @@ public abstract class AbsShareMsg
     if (TextUtils.isEmpty(paramString2)) {
       paramString2 = str;
     }
-    paramString1 = MessageRecordFactory.a(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
+    paramString1 = MessageRecordFactory.c(paramQQAppInterface, str, paramString1, paramString2, paramInt, l, paramAbsShareMsg);
     ForwardOrderManager.a().a(paramString1.uniseq, paramAbsShareMsg.parentUniseq, paramAbsShareMsg.forwardID);
     a(paramQQAppInterface, ForwardSdkShareProcessor.buildTransferRequestFromMessageExtra(paramString1, paramAbsShareMsg, paramUpCallBack));
     QLog.d("StructMsg", 1, "sendSdkShareMessageByServer");
@@ -506,7 +506,7 @@ public abstract class AbsShareMsg
       {
         if ((localObject instanceof AbsStructMsgItem))
         {
-          localObject = ((AbsStructMsgItem)localObject).a.iterator();
+          localObject = ((AbsStructMsgItem)localObject).ax.iterator();
           AbsStructMsgElement localAbsStructMsgElement;
           do
           {
@@ -514,10 +514,10 @@ public abstract class AbsShareMsg
               break;
             }
             localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
-          } while (!paramString.equals(localAbsStructMsgElement.a));
+          } while (!paramString.equals(localAbsStructMsgElement.b));
           return localAbsStructMsgElement;
         }
-        if (paramString.equals(((AbsStructMsgElement)localObject).a)) {
+        if (paramString.equals(((AbsStructMsgElement)localObject).b)) {
           return localObject;
         }
       }
@@ -589,20 +589,20 @@ public abstract class AbsShareMsg
     {
       Object localObject2 = (AbsStructMsgElement)localIterator.next();
       View localView = ((AbsStructMsgElement)localObject2).a(paramContext, paramView, (Bundle)localObject1);
-      if ((localView != null) && ((!(localObject2 instanceof StructMsgItemLayoutDefault)) || (((StructMsgItemLayoutDefault)localObject2).o != 1)))
+      if ((localView != null) && ((!(localObject2 instanceof StructMsgItemLayoutDefault)) || (((StructMsgItemLayoutDefault)localObject2).au != 1)))
       {
         if ((localObject2 instanceof StructMsgItemLayout2))
         {
-          TextView localTextView = (TextView)localView.findViewById(2131379930);
+          TextView localTextView = (TextView)localView.findViewById(2131448814);
           if (localTextView != null)
           {
             localObject2 = (StructMsgItemLayout2)localObject2;
-            if ((((StructMsgItemLayout2)localObject2).o != 1) && (((StructMsgItemLayout2)localObject2).o != 3))
+            if ((((StructMsgItemLayout2)localObject2).au != 1) && (((StructMsgItemLayout2)localObject2).au != 3))
             {
               localTextView.setGravity(16);
               localTextView.setMaxLines(2);
               localTextView.setTextSize(14.0F);
-              localTextView.setTextColor(paramContext.getResources().getColor(2131165660));
+              localTextView.setTextColor(paramContext.getResources().getColor(2131166120));
               if (TextUtils.isEmpty(localTextView.getText()))
               {
                 localTextView.setText("");
@@ -651,15 +651,15 @@ public abstract class AbsShareMsg
     }
     TextView localTextView = (TextView)localObject1;
     localTextView.setText(this.mSourceName);
-    localTextView.setBackgroundResource(2130842703);
+    localTextView.setBackgroundResource(2130843656);
     Object localObject2;
     Drawable localDrawable;
     if (!TextUtils.isEmpty(this.mSourceIcon))
     {
       localObject2 = this.mSourceIcon;
-      localDrawable = localResources.getDrawable(2130850833);
+      localDrawable = localResources.getDrawable(2130852668);
       localDrawable.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
-      paramView = localResources.getDrawable(2130850834);
+      paramView = localResources.getDrawable(2130852669);
       paramView.setBounds(0, 0, AIOUtils.b(12.0F, localResources), AIOUtils.b(12.0F, localResources));
     }
     for (;;)
@@ -718,12 +718,12 @@ public abstract class AbsShareMsg
           AbsStructMsgElement localAbsStructMsgElement;
           if ((localObject instanceof StructMsgItemLayout1))
           {
-            localObject = ((StructMsgItemLayout1)localObject).a.iterator();
+            localObject = ((StructMsgItemLayout1)localObject).ax.iterator();
             while (((Iterator)localObject).hasNext())
             {
               localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
               if ((localAbsStructMsgElement instanceof StructMsgItemTitle)) {
-                localStringBuffer.append(((StructMsgItemTitle)localAbsStructMsgElement).ai);
+                localStringBuffer.append(((StructMsgItemTitle)localAbsStructMsgElement).aA);
               }
             }
           }
@@ -731,14 +731,14 @@ public abstract class AbsShareMsg
           {
             localObject = (StructMsgItemLayout2)localObject;
             localStringBuffer.append("链接");
-            localObject = ((StructMsgItemLayout2)localObject).a.iterator();
+            localObject = ((StructMsgItemLayout2)localObject).ax.iterator();
             while (((Iterator)localObject).hasNext())
             {
               localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
               if ((localAbsStructMsgElement instanceof StructMsgItemTitle)) {
-                localStringBuffer.append(((StructMsgItemTitle)localAbsStructMsgElement).ai);
+                localStringBuffer.append(((StructMsgItemTitle)localAbsStructMsgElement).aA);
               } else if ((localAbsStructMsgElement instanceof StructMsgItemSummary)) {
-                localStringBuffer.append(((StructMsgItemSummary)localAbsStructMsgElement).ai);
+                localStringBuffer.append(((StructMsgItemSummary)localAbsStructMsgElement).aA);
               }
             }
           }
@@ -746,12 +746,12 @@ public abstract class AbsShareMsg
           {
             localObject = (StructMsgItemLayout29)localObject;
             int i = 0;
-            localObject = ((StructMsgItemLayout29)localObject).a.iterator();
+            localObject = ((StructMsgItemLayout29)localObject).ax.iterator();
             while (((Iterator)localObject).hasNext())
             {
               localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject).next();
-              if (("type".equals(localAbsStructMsgElement.a)) && ((localAbsStructMsgElement instanceof StructMsgItemType))) {
-                i = ((StructMsgItemType)localAbsStructMsgElement).o;
+              if (("type".equals(localAbsStructMsgElement.b)) && ((localAbsStructMsgElement instanceof StructMsgItemType))) {
+                i = ((StructMsgItemType)localAbsStructMsgElement).au;
               }
             }
             if (i != 2)
@@ -810,13 +810,13 @@ public abstract class AbsShareMsg
       {
         JSONObject localJSONObject1 = new JSONObject();
         JSONArray localJSONArray = new JSONArray();
-        paramStructMsgNode = paramStructMsgNode.a;
+        paramStructMsgNode = paramStructMsgNode.d;
         if ((paramStructMsgNode != null) && (!paramStructMsgNode.isEmpty()))
         {
           paramStructMsgNode = paramStructMsgNode.iterator();
           while (paramStructMsgNode.hasNext())
           {
-            Object localObject = ((StructMsgNode)paramStructMsgNode.next()).a;
+            Object localObject = ((StructMsgNode)paramStructMsgNode.next()).d;
             if ((localObject != null) && (!((List)localObject).isEmpty()))
             {
               localObject = ((List)localObject).iterator();
@@ -887,7 +887,7 @@ public abstract class AbsShareMsg
   protected void parseDefaultContentNode()
   {
     AbsStructMsgItem localAbsStructMsgItem = StructMsgElementFactory.a(2);
-    localAbsStructMsgItem.a("", this.mMsgBrief, aq);
+    localAbsStructMsgItem.a("", this.mMsgBrief, aK);
     addItem(localAbsStructMsgItem);
   }
   
@@ -896,13 +896,13 @@ public abstract class AbsShareMsg
     if (paramStructMsgNode == null) {
       return;
     }
-    this.mSourceAppid = StructMsgUtils.a(paramStructMsgNode.a("appid"));
+    this.mSourceAppid = StructMsgUtils.b(paramStructMsgNode.a("appid"));
     this.mSourceName = paramStructMsgNode.a("name");
     if (TextUtils.isEmpty(this.mMsgBrief))
     {
       this.mEmptyMsgBriefModified = true;
       if (!TextUtils.isEmpty(this.mSourceName)) {
-        this.mMsgBrief = String.format(ap, new Object[] { this.mSourceName });
+        this.mMsgBrief = String.format(aJ, new Object[] { this.mSourceName });
       } else {
         this.mMsgBrief = DEFAULT_MSG_BRIEF;
       }
@@ -1059,6 +1059,9 @@ public abstract class AbsShareMsg
         if (!TextUtils.isEmpty(this.mQzoneExtraMsg)) {
           localXmlSerializerWithFilter.attribute(null, "qzFloatExtra", this.mQzoneExtraMsg);
         }
+        if (!TextUtils.isEmpty(this.mBirthReminder)) {
+          localXmlSerializerWithFilter.attribute(null, "birthReminderMsg", this.mBirthReminder);
+        }
         toContentXml(localXmlSerializerWithFilter);
         if (this.mMsgServiceID == 128)
         {
@@ -1129,7 +1132,7 @@ public abstract class AbsShareMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsShareMsg
  * JD-Core Version:    0.7.0.1
  */

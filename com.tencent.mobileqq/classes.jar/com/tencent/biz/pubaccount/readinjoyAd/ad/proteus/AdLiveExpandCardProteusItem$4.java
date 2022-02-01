@@ -20,8 +20,8 @@ class AdLiveExpandCardProteusItem$4
     {
       try
       {
-        Object localObject1 = BitmapRegionDecoder.newInstance(AdLiveExpandCardProteusItem.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsBitmap), false);
-        i = this.jdField_a_of_type_Int;
+        Object localObject1 = BitmapRegionDecoder.newInstance(AdLiveExpandCardProteusItem.a(this.this$0, this.a), false);
+        i = this.b;
         int k = 1;
         if (i != 0) {
           break label210;
@@ -29,29 +29,29 @@ class AdLiveExpandCardProteusItem$4
         i = 1;
         int j;
         if (i != 0) {
-          j = (int)(this.b * this.jdField_a_of_type_Float);
+          j = (int)(this.c * this.d);
         } else {
-          j = this.b;
+          j = this.c;
         }
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("handleBitmap  top :");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(this.b);
         ((StringBuilder)localObject2).append(":::bottom:");
         ((StringBuilder)localObject2).append(j);
         ReadInJoyAdLog.a("AdLiveExpandCardProteusItem", ((StringBuilder)localObject2).toString());
-        localObject2 = new Rect(0, this.jdField_a_of_type_Int, this.c, j);
+        localObject2 = new Rect(0, this.b, this.e, j);
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
         localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
         localObject1 = ((BitmapRegionDecoder)localObject1).decodeRegion((Rect)localObject2, localOptions);
         if (localObject1 != null)
         {
-          CommonImageCacheHelper.a(this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1);
+          CommonImageCacheHelper.a(this.f, (Bitmap)localObject1);
           j = k;
           if (i != 0) {
             j = 2;
           }
-          AdLiveExpandCardProteusItem.a(this.this$0).removeMessages(j);
-          AdLiveExpandCardProteusItem.a(this.this$0).sendEmptyMessage(j);
+          AdLiveExpandCardProteusItem.c(this.this$0).removeMessages(j);
+          AdLiveExpandCardProteusItem.c(this.this$0).sendEmptyMessage(j);
           return;
         }
       }
@@ -67,7 +67,7 @@ class AdLiveExpandCardProteusItem$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.AdLiveExpandCardProteusItem.4
  * JD-Core Version:    0.7.0.1
  */

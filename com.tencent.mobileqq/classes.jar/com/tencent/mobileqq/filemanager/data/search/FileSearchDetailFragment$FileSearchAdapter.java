@@ -21,16 +21,16 @@ class FileSearchDetailFragment$FileSearchAdapter
   {
     super(paramListView, paramIFaceDecoder);
     paramFileSearchDetailFragment = (FileEntitySearchResultModel)paramISearchResultModel;
-    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+    if (paramFileSearchDetailFragment.a.size() > 1)
     {
       paramListView = new ArrayList();
-      paramIFaceDecoder = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
+      paramIFaceDecoder = paramFileSearchDetailFragment.a.iterator();
       while (paramIFaceDecoder.hasNext())
       {
         paramISearchResultModel = (FileManagerEntity)paramIFaceDecoder.next();
         paramString = new FileEntitySearchResultModel();
-        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
-        paramString.jdField_a_of_type_JavaUtilList.add(paramISearchResultModel);
+        paramString.b = paramFileSearchDetailFragment.b;
+        paramString.a.add(paramISearchResultModel);
         paramListView.add(paramString);
       }
       a(paramListView);
@@ -39,7 +39,7 @@ class FileSearchDetailFragment$FileSearchAdapter
   
   protected IPresenter<ISearchResultModel, ISearchResultView> a(int paramInt)
   {
-    return new FileSearchResultPresenter(this.a.a);
+    return new FileSearchResultPresenter(this.a.e);
   }
   
   protected IView a(int paramInt, ViewGroup paramViewGroup)
@@ -49,7 +49,7 @@ class FileSearchDetailFragment$FileSearchAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment.FileSearchAdapter
  * JD-Core Version:    0.7.0.1
  */

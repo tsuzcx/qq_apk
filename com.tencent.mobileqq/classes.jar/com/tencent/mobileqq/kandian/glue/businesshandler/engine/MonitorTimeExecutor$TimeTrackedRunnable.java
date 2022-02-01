@@ -6,56 +6,56 @@ import android.support.annotation.NonNull;
 class MonitorTimeExecutor$TimeTrackedRunnable
   implements Runnable
 {
-  private final long jdField_a_of_type_Long;
-  private final Runnable jdField_a_of_type_JavaLangRunnable;
-  private Thread jdField_a_of_type_JavaLangThread;
+  private final long a;
   private long b;
-  private long c;
+  private final Runnable c;
+  private long d;
+  private Thread e;
   
   private MonitorTimeExecutor$TimeTrackedRunnable(@NonNull Runnable paramRunnable)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-  }
-  
-  public Runnable a()
-  {
-    return this.jdField_a_of_type_JavaLangRunnable;
+    this.c = paramRunnable;
+    this.a = SystemClock.uptimeMillis();
   }
   
   public Thread a()
   {
-    return this.jdField_a_of_type_JavaLangThread;
+    return this.e;
+  }
+  
+  public Runnable b()
+  {
+    return this.c;
   }
   
   public void run()
   {
     this.b = SystemClock.uptimeMillis();
-    this.c = (this.b - this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.d = (this.b - this.a);
+    this.e = Thread.currentThread();
+    this.c.run();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TimeTrackedRunnable{timestampAdded=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", timestampStarted=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", task=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangRunnable);
-    localStringBuilder.append(", timeWaited=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", timeWaited=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", currentThread=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangThread);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.MonitorTimeExecutor.TimeTrackedRunnable
  * JD-Core Version:    0.7.0.1
  */

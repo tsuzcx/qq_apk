@@ -18,10 +18,10 @@ class CommentListPageLoader$2
   
   protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.b();
-    ((CommentManager)SuperManager.a(17)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader$GetFeedCommentEvent.a, CommentListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader).a, CommentListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader).a(), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.a("Q.qqstory.detail:CommentListPageLoader");
+    this.c.a();
+    this.c.b();
+    ((CommentManager)SuperManager.a(17)).a(this.a.k, CommentListPageLoader.a(this.c).a, CommentListPageLoader.a(this.c).a(), this.b);
+    this.c.a("Q.qqstory.detail:CommentListPageLoader");
     return null;
   }
 }

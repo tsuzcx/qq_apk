@@ -11,14 +11,14 @@ class HealthBusinessPlugin$1
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.scrollBy(0, paramInt2 - paramInt4);
+    if (this.a.q != null) {
+      this.a.q.scrollBy(0, paramInt2 - paramInt4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.1
  * JD-Core Version:    0.7.0.1
  */

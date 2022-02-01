@@ -51,8 +51,8 @@ public class MapHelper
   public MapHelper(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mAppNameMap.put("com.tencent.map", HardCodeUtil.a(2131706513));
-    this.mAppNameMap.put("com.baidu.BaiduMap", HardCodeUtil.a(2131706519));
+    this.mAppNameMap.put("com.tencent.map", HardCodeUtil.a(2131904369));
+    this.mAppNameMap.put("com.baidu.BaiduMap", HardCodeUtil.a(2131904375));
     this.mActionMap.put("com.tencent.map", Integer.valueOf(1));
     this.mActionMap.put("com.baidu.BaiduMap", Integer.valueOf(2));
     this.mUIHandler = new Handler(Looper.getMainLooper());
@@ -76,7 +76,27 @@ public class MapHelper
     return new double[] { d * Math.sin(paramDouble1) + 0.006D, paramDouble2 * d + 0.0065D };
   }
   
-  public void OnClick(View paramView, int paramInt)
+  protected void checkInstalledMapApp()
+  {
+    long l = System.currentTimeMillis();
+    this.mInstalledMapAppSet.clear();
+    this.mContext.getPackageManager();
+    if (PackageUtil.d(this.mContext, "com.tencent.map")) {
+      this.mInstalledMapAppSet.add("com.tencent.map");
+    }
+    if (PackageUtil.d(this.mContext, "com.baidu.BaiduMap")) {
+      this.mInstalledMapAppSet.add("com.baidu.BaiduMap");
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkInstalledMapApp: time=");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.d("Q.qqmap", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void onClick(View paramView, int paramInt)
   {
     paramInt = this.mActionArray[paramInt];
     if (paramInt != 1)
@@ -90,26 +110,6 @@ public class MapHelper
     }
     if (this.mActionSheet.isShowing()) {
       this.mActionSheet.dismiss();
-    }
-  }
-  
-  protected void checkInstalledMapApp()
-  {
-    long l = System.currentTimeMillis();
-    this.mInstalledMapAppSet.clear();
-    this.mContext.getPackageManager();
-    if (PackageUtil.a(this.mContext, "com.tencent.map")) {
-      this.mInstalledMapAppSet.add("com.tencent.map");
-    }
-    if (PackageUtil.a(this.mContext, "com.baidu.BaiduMap")) {
-      this.mInstalledMapAppSet.add("com.baidu.BaiduMap");
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkInstalledMapApp: time=");
-      localStringBuilder.append(System.currentTimeMillis() - l);
-      QLog.d("Q.qqmap", 2, localStringBuilder.toString());
     }
   }
   
@@ -215,7 +215,7 @@ public class MapHelper
   {
     if (TextUtils.isEmpty(this.mStreetViewUrl))
     {
-      QQToast.a(this.mContext.getApplicationContext(), 0, HardCodeUtil.a(2131706515), 1).b(this.mContext.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.mContext.getApplicationContext(), 0, HardCodeUtil.a(2131904371), 1).show(this.mContext.getResources().getDimensionPixelSize(2131299920));
       return;
     }
     Intent localIntent = new Intent(this.mContext, QQBrowserActivity.class);
@@ -239,10 +239,10 @@ public class MapHelper
       this.mSelfPoiName = paramString1;
       this.mTargetPoiName = paramString2;
       if (TextUtils.isEmpty(this.mSelfPoiName)) {
-        this.mSelfPoiName = HardCodeUtil.a(2131706514);
+        this.mSelfPoiName = HardCodeUtil.a(2131904370);
       }
       if (TextUtils.isEmpty(this.mTargetPoiName)) {
-        this.mTargetPoiName = HardCodeUtil.a(2131706512);
+        this.mTargetPoiName = HardCodeUtil.a(2131904368);
       }
       double d = getDistance(paramLatLng1.getLongitude(), paramLatLng1.getLatitude(), paramLatLng2.getLongitude(), paramLatLng2.getLatitude());
       if (d > 1000.0D) {
@@ -266,15 +266,15 @@ public class MapHelper
         QLog.d("Q.qqmap", 2, localStringBuilder.toString());
       }
       checkInstalledMapApp();
-      this.mActionSheet = ((ActionSheet)ActionSheetHelper.a(this.mContext, null));
+      this.mActionSheet = ((ActionSheet)ActionSheetHelper.b(this.mContext, null));
       this.mActionSheet.setOnButtonClickListener(this);
       if (!TextUtils.isEmpty(this.mStreetViewUrl))
       {
-        this.mActionSheet.addButton(HardCodeUtil.a(2131706516));
+        this.mActionSheet.addButton(HardCodeUtil.a(2131904372));
         this.mActionArray[0] = 0;
         i = 1;
       }
-      this.mActionSheet.addButton(HardCodeUtil.a(2131706517));
+      this.mActionSheet.addButton(HardCodeUtil.a(2131904373));
       paramLatLng1 = this.mActionArray;
       int j = i + 1;
       paramLatLng1[i] = 1;
@@ -295,12 +295,12 @@ public class MapHelper
       this.mActionSheet.show();
       return;
     }
-    QQToast.a(this.mContext, 0, HardCodeUtil.a(2131706518), 1).b(this.mContext.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(this.mContext, 0, HardCodeUtil.a(2131904374), 1).show(this.mContext.getResources().getDimensionPixelSize(2131299920));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.MapHelper
  * JD-Core Version:    0.7.0.1
  */

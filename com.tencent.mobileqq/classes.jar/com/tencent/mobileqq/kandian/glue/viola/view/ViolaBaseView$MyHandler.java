@@ -22,19 +22,19 @@ class ViolaBaseView$MyHandler
         if (i != 3) {
           return;
         }
-        ViolaBaseView.a(this.a);
+        ViolaBaseView.c(this.a);
         return;
       }
       ViolaBaseView.a(this.a, true);
-      ViolaBaseView.d(this.a);
+      ViolaBaseView.j(this.a);
       return;
     }
-    ViolaBaseView.d(this.a);
+    ViolaBaseView.j(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.MyHandler
  * JD-Core Version:    0.7.0.1
  */

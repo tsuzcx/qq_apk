@@ -126,28 +126,28 @@ class VideoBroadcastReceiver$MyHandler
       localObject1 = (Context)localObject2[4];
       localObject2 = (String)localObject2[5];
       localObject3 = new SessionInfo();
-      ((SessionInfo)localObject3).jdField_a_of_type_Int = i;
-      ((SessionInfo)localObject3).d = ((String)localObject5);
+      ((SessionInfo)localObject3).a = i;
+      ((SessionInfo)localObject3).e = ((String)localObject5);
       if (i == 1006)
       {
-        ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = paramMessage;
+        ((SessionInfo)localObject3).b = paramMessage;
         paramMessage = ((IPhoneContactService)localQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).getSelfBindInfo();
         if (paramMessage != null)
         {
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append(paramMessage.nationCode);
           ((StringBuilder)localObject4).append(paramMessage.mobileNo);
-          ((SessionInfo)localObject3).e = ((StringBuilder)localObject4).toString();
+          ((SessionInfo)localObject3).f = ((StringBuilder)localObject4).toString();
         }
       }
       else if (i == 1000)
       {
-        localObject5 = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramMessage);
+        localObject5 = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramMessage);
         if (localObject5 == null)
         {
           if (QLog.isColorLevel())
           {
-            localObject1 = VideoBroadcastReceiver.jdField_a_of_type_JavaLangString;
+            localObject1 = VideoBroadcastReceiver.a;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("findTroopInfo fail ,uin : ");
             ((StringBuilder)localObject2).append(paramMessage);
@@ -155,18 +155,18 @@ class VideoBroadcastReceiver$MyHandler
           }
           return;
         }
-        ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject4);
-        ((SessionInfo)localObject3).b = ((TroopInfo)localObject5).troopcode;
-        ((SessionInfo)localObject3).c = ((TroopInfo)localObject5).troopuin;
+        ((SessionInfo)localObject3).b = ((String)localObject4);
+        ((SessionInfo)localObject3).c = ((TroopInfo)localObject5).troopcode;
+        ((SessionInfo)localObject3).d = ((TroopInfo)localObject5).troopuin;
       }
       else if (i == 1004)
       {
-        ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject4);
-        ((SessionInfo)localObject3).b = paramMessage;
+        ((SessionInfo)localObject3).b = ((String)localObject4);
+        ((SessionInfo)localObject3).c = paramMessage;
       }
       else
       {
-        ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject4);
+        ((SessionInfo)localObject3).b = ((String)localObject4);
       }
       ChatActivityFacade.b(localQQAppInterface, (Context)localObject1, (SessionInfo)localObject3, (String)localObject2);
     }
@@ -174,7 +174,7 @@ class VideoBroadcastReceiver$MyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.VideoBroadcastReceiver.MyHandler
  * JD-Core Version:    0.7.0.1
  */

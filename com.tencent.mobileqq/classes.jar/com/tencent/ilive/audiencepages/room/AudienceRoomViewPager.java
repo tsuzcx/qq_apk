@@ -239,7 +239,7 @@ public class AudienceRoomViewPager
   
   public void onCreate()
   {
-    BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().f();
+    BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().g();
     this.mAudienceRoomPager = new AudienceRoomPagerImpl(this);
     this.mActivity.getWindow().addFlags(128);
     this.logInterface = ((LogInterface)BizEngineMgr.getInstance().getLiveEngine().getService(LogInterface.class));
@@ -475,7 +475,7 @@ public class AudienceRoomViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.AudienceRoomViewPager
  * JD-Core Version:    0.7.0.1
  */

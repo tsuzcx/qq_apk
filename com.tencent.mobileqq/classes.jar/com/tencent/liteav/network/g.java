@@ -3,6 +3,7 @@ package com.tencent.liteav.network;
 import android.content.Context;
 import android.os.Handler;
 import com.tencent.liteav.basic.d.c;
+import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 
 public class g
@@ -96,8 +97,10 @@ public class g
         a(str1, str2, str3, paramString, paramInt, new g.1(this, str1, str2, str3, paramString, parama));
         return 0;
       }
+      TXCLog.i("TXRTMPAccUrlFetcher", "getAccerateStreamPlayUrl streamID is empty");
       return -2;
     }
+    TXCLog.i("TXRTMPAccUrlFetcher", "getAccerateStreamPlayUrl input playUrl is empty");
     return -1;
   }
   
@@ -123,7 +126,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.g
  * JD-Core Version:    0.7.0.1
  */

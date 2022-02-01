@@ -104,14 +104,14 @@ public class QBaseActivity
   {
     try
     {
-      Iterator localIterator = QBaseActivityInjectUtil.a.iterator();
+      Iterator localIterator = QBaseActivityInjectUtil.globalCallbacks.iterator();
       while (localIterator.hasNext())
       {
         Class localClass = (Class)localIterator.next();
         lifecycleCallbacks.a((BaseActivityLifecycleCallbacks)localClass.newInstance());
       }
-      if (QBaseActivityInjectUtil.c.size() > 0) {
-        injectInterface = (IBaseActivityInjectInterface)((Class)QBaseActivityInjectUtil.c.get(0)).newInstance();
+      if (QBaseActivityInjectUtil.injectInterfaceClzList.size() > 0) {
+        injectInterface = (IBaseActivityInjectInterface)((Class)QBaseActivityInjectUtil.injectInterfaceClzList.get(0)).newInstance();
       }
     }
     catch (InstantiationException localInstantiationException)
@@ -318,7 +318,7 @@ public class QBaseActivity
   {
     if (((ISimpleUIUtil)QRoute.api(ISimpleUIUtil.class)).getSimpleUISwitch())
     {
-      boolean bool = QQTheme.a();
+      boolean bool = QQTheme.isNowThemeIsNight();
       if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()))
       {
         ImmersiveUtils.setStatusTextColor(bool ^ true, getWindow());
@@ -343,7 +343,7 @@ public class QBaseActivity
     super.attachBaseContext(paramContext);
     try
     {
-      paramContext = QBaseActivityInjectUtil.b.iterator();
+      paramContext = QBaseActivityInjectUtil.instanceCallbacks.iterator();
       while (paramContext.hasNext()) {
         registerActivityLifecycleCallbacks((BaseActivityLifecycleCallbacks)((Class)paramContext.next()).newInstance());
       }
@@ -1018,7 +1018,7 @@ public class QBaseActivity
   
   public int getTitleBarHeight()
   {
-    return getResources().getDimensionPixelSize(2131299168);
+    return getResources().getDimensionPixelSize(2131299920);
   }
   
   public void initNavigationBarColor()
@@ -1164,14 +1164,14 @@ public class QBaseActivity
   public void onPostThemeChanged()
   {
     if (this.mSystemBarComp != null) {
-      if (QQTheme.b())
+      if (QQTheme.isDefaultOrDIYTheme())
       {
-        this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130846361));
+        this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130847834));
       }
       else
       {
         this.mSystemBarComp.setStatusBarDrawable(null);
-        this.mSystemBarComp.setStatusBarColor(getResources().getColor(2131167114));
+        this.mSystemBarComp.setStatusBarColor(getResources().getColor(2131168092));
       }
     }
     ((ISimpleUIUtil)QRoute.api(ISimpleUIUtil.class)).adjustSimpleStatusBar(this.mSystemBarComp, getWindow());
@@ -1229,12 +1229,12 @@ public class QBaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131167114);
+        int i = getResources().getColor(2131168092);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
-          if (QQTheme.b()) {
-            this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130846361));
+          if (QQTheme.isDefaultOrDIYTheme()) {
+            this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130847834));
           } else {
             this.mSystemBarComp.setStatusDrawable(null);
           }
@@ -1263,7 +1263,7 @@ public class QBaseActivity
   
   protected String setLastActivityName()
   {
-    return getString(2131690706);
+    return getString(2131887625);
   }
   
   public void setNFCResumeRunnable(Runnable paramRunnable)
@@ -1325,11 +1325,11 @@ public class QBaseActivity
   
   public void setStatusBarBlue()
   {
-    if (QQTheme.b())
+    if (QQTheme.isDefaultOrDIYTheme())
     {
       SystemBarCompact localSystemBarCompact = this.mSystemBarComp;
       if (localSystemBarCompact != null) {
-        localSystemBarCompact.setStatusBarDrawable(getResources().getDrawable(2130846361));
+        localSystemBarCompact.setStatusBarDrawable(getResources().getDrawable(2130847834));
       }
     }
   }
@@ -1469,7 +1469,7 @@ public class QBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QBaseActivity
  * JD-Core Version:    0.7.0.1
  */

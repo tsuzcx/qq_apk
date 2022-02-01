@@ -9,24 +9,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class DataProvider<DATA>
 {
-  public static final String a = "com.tencent.biz.qqstory.model.DataProvider";
-  protected DATA a;
-  protected List<DataProvider.DataUpdateListener<DATA>> a;
-  
-  public DataProvider()
-  {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
+  public static final String b = "com.tencent.biz.qqstory.model.DataProvider";
+  protected DATA c;
+  protected List<DataProvider.DataUpdateListener<DATA>> d = new CopyOnWriteArrayList();
   
   public void a()
   {
-    SLog.b(jdField_a_of_type_JavaLangString, "onInit");
+    SLog.b(b, "onInit");
   }
   
   public void a(@NonNull DataProvider.DataUpdateListener<DATA> paramDataUpdateListener)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramDataUpdateListener)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramDataUpdateListener);
+    if (!this.d.contains(paramDataUpdateListener)) {
+      this.d.add(paramDataUpdateListener);
     }
   }
   
@@ -34,7 +29,7 @@ public abstract class DataProvider<DATA>
   
   protected void a(boolean paramBoolean, DATA paramDATA)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((DataProvider.DataUpdateListener)localIterator.next()).a(paramBoolean, paramDATA);
     }
@@ -42,14 +37,14 @@ public abstract class DataProvider<DATA>
   
   public void b()
   {
-    SLog.b(jdField_a_of_type_JavaLangString, "onDestroy");
-    this.jdField_a_of_type_JavaUtilList.clear();
+    SLog.b(b, "onDestroy");
+    this.d.clear();
   }
   
   public void b(@NonNull DataProvider.DataUpdateListener<DATA> paramDataUpdateListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramDataUpdateListener)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramDataUpdateListener);
+    if (this.d.contains(paramDataUpdateListener)) {
+      this.d.remove(paramDataUpdateListener);
     }
   }
   
@@ -60,7 +55,7 @@ public abstract class DataProvider<DATA>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.DataProvider
  * JD-Core Version:    0.7.0.1
  */

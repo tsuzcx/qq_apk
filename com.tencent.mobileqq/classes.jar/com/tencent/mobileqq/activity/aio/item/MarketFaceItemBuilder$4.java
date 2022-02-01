@@ -11,12 +11,12 @@ class MarketFaceItemBuilder$4
   
   public void a(Void paramVoid)
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder, -1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Long);
+    MarketFaceItemBuilder.a(this.e, this.a, -1, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

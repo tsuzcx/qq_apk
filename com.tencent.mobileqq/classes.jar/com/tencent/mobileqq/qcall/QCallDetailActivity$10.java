@@ -19,9 +19,9 @@ class QCallDetailActivity$10
     if (paramObject == null) {
       return;
     }
-    if (!TextUtils.isEmpty(QCallDetailActivity.a(this.a)))
+    if (!TextUtils.isEmpty(QCallDetailActivity.b(this.a)))
     {
-      if (!QCallDetailActivity.a(this.a).equals(paramObject.getString("uin"))) {
+      if (!QCallDetailActivity.b(this.a).equals(paramObject.getString("uin"))) {
         return;
       }
       if (this.a.app != null) {
@@ -35,7 +35,7 @@ class QCallDetailActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.10
  * JD-Core Version:    0.7.0.1
  */

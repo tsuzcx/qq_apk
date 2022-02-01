@@ -75,7 +75,7 @@ public class LongClickCopyAction
     String str2;
     if (paramTextView != null)
     {
-      str1 = paramTextView.getResources().getString(2131699147);
+      str1 = paramTextView.getResources().getString(2131897163);
       str2 = paramTextView.getText().toString();
     }
     else
@@ -146,7 +146,7 @@ public class LongClickCopyAction
     paramContext.setPopupWindow(paramBubblePopupWindow, null);
     paramContext.setMenu(paramQQCustomMenu);
     paramContext.setMenuIconClickListener(paramOnClickListener);
-    paramContext.a();
+    paramContext.c();
     return paramContext;
   }
   
@@ -262,7 +262,7 @@ public class LongClickCopyAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.utils.LongClickCopyAction
  * JD-Core Version:    0.7.0.1
  */

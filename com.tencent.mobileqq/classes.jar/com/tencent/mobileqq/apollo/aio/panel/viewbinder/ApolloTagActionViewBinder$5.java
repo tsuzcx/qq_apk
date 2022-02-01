@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.apollo.aio.panel.ApolloPanelListAdapter;
 import com.tencent.mobileqq.apollo.aio.panel.ApolloPanelListView;
 import com.tencent.mobileqq.apollo.handler.ApolloExtensionObserver;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
@@ -21,7 +20,7 @@ class ApolloTagActionViewBinder$5
 {
   ApolloTagActionViewBinder$5(ApolloTagActionViewBinder paramApolloTagActionViewBinder) {}
   
-  protected void b(int paramInt, List<Integer> paramList)
+  protected void a(int paramInt, List<Integer> paramList)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[onGetApolloActionUsedList]  actionIdList :");
@@ -31,7 +30,7 @@ class ApolloTagActionViewBinder$5
     QLog.d("[cmshow]ApolloActionWithTagsViewBinder", 1, ((StringBuilder)localObject).toString());
     try
     {
-      if (this.a.d != paramInt) {
+      if (this.a.n != paramInt) {
         return;
       }
       if ((paramList != null) && (paramList.size() > 0))
@@ -41,7 +40,7 @@ class ApolloTagActionViewBinder$5
         while (paramList.hasNext())
         {
           paramInt = ((Integer)paramList.next()).intValue();
-          Iterator localIterator = ApolloTagActionViewBinder.c(this.a).iterator();
+          Iterator localIterator = ApolloTagActionViewBinder.e(this.a).iterator();
           while (localIterator.hasNext())
           {
             ApolloInfo localApolloInfo = (ApolloInfo)localIterator.next();
@@ -53,26 +52,25 @@ class ApolloTagActionViewBinder$5
         ThreadManagerV2.getUIHandlerV2().post(new ApolloTagActionViewBinder.5.1(this, (List)localObject));
         return;
       }
-      if (ApolloTagActionViewBinder.a(this.a) == null)
+      if (ApolloTagActionViewBinder.h(this.a) == null)
       {
-        paramList = new TextView(this.a.jdField_a_of_type_AndroidContentContext);
+        paramList = new TextView(this.a.i);
         paramList.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-        if (this.a.d == 9) {
-          paramList.setText(2131690077);
+        if (this.a.n == 9) {
+          paramList.setText(2131886732);
         } else {
-          paramList.setText(2131690076);
+          paramList.setText(2131886731);
         }
         paramList.setTextSize(14.0F);
         paramList.setTextColor(Color.parseColor("#B0B3BF"));
         paramList.setGravity(17);
-        paramList.setHeight(this.a.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.getHeight() - ApolloTagActionViewBinder.a(this.a).getHeight());
+        paramList.setHeight(this.a.r.getHeight() - ApolloTagActionViewBinder.i(this.a).getHeight());
         ApolloTagActionViewBinder.a(this.a, paramList);
       }
-      ApolloTagActionViewBinder.a(this.a).setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListView.addHeaderView(ApolloTagActionViewBinder.a(this.a));
+      ApolloTagActionViewBinder.h(this.a).setVisibility(0);
+      this.a.r.addHeaderView(ApolloTagActionViewBinder.h(this.a));
       paramList = new ArrayList();
-      this.a.b(paramList);
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.notifyDataSetChanged();
+      ApolloTagActionViewBinder.b(this.a, paramList);
       QLog.d("[cmshow]ApolloActionWithTagsViewBinder", 1, "[onGetApolloActionUsedList] ActionUsedList is empty.");
       return;
     }
@@ -84,7 +82,7 @@ class ApolloTagActionViewBinder$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloTagActionViewBinder.5
  * JD-Core Version:    0.7.0.1
  */

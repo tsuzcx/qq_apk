@@ -271,9 +271,9 @@ public class MsgBackupJniProxy
     if ((paramBoolean1) && (paramBoolean2))
     {
       MsgBackupReporter.a();
-      MsgBackupManager.a().a.add(Long.valueOf(paramLong2));
+      MsgBackupManager.a().l.add(Long.valueOf(paramLong2));
       localObject = MsgBackupReporter.a;
-      ((MsgBackupReportData)localObject).j += 1L;
+      ((MsgBackupReportData)localObject).o += 1L;
     }
     recvFile(paramLong1, paramLong2, paramString1, paramString2, paramBoolean1, paramLong3, 0L);
   }
@@ -339,7 +339,7 @@ public class MsgBackupJniProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy
  * JD-Core Version:    0.7.0.1
  */

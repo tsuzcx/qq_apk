@@ -10,23 +10,23 @@ import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class PublicAccountImageCollectionAdapter$CoverHolder
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  VideoFeedsAlphaMaskView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView;
-  ZImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetZImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
-  TextView b;
+  ZImageView a;
+  ImageProgressCircle b;
   TextView c;
-  TextView d;
+  ImageView d;
   TextView e;
   TextView f;
+  TextView g;
+  TextView h;
+  Button i;
+  VideoFeedsAlphaMaskView j;
+  View k;
+  TextView l;
+  int m;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionAdapter.CoverHolder
  * JD-Core Version:    0.7.0.1
  */

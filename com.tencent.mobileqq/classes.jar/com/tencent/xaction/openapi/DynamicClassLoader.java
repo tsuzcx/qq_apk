@@ -15,31 +15,45 @@ public class DynamicClassLoader
     if (!paramString.startsWith("com.tencent.xaction.")) {
       return super.loadClass(paramString, paramBoolean);
     }
+    Object localObject2;
     if (paramString.startsWith("com.tencent.xaction.openapi.")) {
-      return super.loadClass(paramString, paramBoolean);
+      try
+      {
+        localObject3 = super.loadClass(paramString, paramBoolean);
+        Object localObject1 = localObject3;
+        if (localObject3 == null) {
+          break label51;
+        }
+        return localObject3;
+      }
+      catch (ClassNotFoundException localClassNotFoundException1)
+      {
+        localClassNotFoundException1.printStackTrace();
+      }
+    } else {
+      localObject2 = null;
     }
-    Object localObject1 = null;
     try
     {
-      localObject2 = findClass(paramString);
-      localObject1 = localObject2;
+      label51:
+      localObject3 = findClass(paramString);
+      localObject2 = localObject3;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    catch (ClassNotFoundException localClassNotFoundException2)
     {
-      Object localObject2;
-      label44:
-      break label44;
+      label61:
+      break label61;
     }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = super.loadClass(paramString, paramBoolean);
+    Object localObject3 = localObject2;
+    if (localObject2 == null) {
+      localObject3 = super.loadClass(paramString, paramBoolean);
     }
-    return localObject2;
+    return localObject3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.openapi.DynamicClassLoader
  * JD-Core Version:    0.7.0.1
  */

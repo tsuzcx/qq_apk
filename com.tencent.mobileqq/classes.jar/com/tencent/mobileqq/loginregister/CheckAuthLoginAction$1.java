@@ -13,13 +13,13 @@ class CheckAuthLoginAction$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8006796", "0X8006796", 0, 0, "", "", "", "");
+    ReportController.a(this.a.getAppRuntime(), "dc00898", "", "", "0X8006796", "0X8006796", 0, 0, "", "", "", "");
     ThreadManager.postImmediately(new CheckAuthLoginAction.1.1(this), null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.CheckAuthLoginAction.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class ArkIDESettingFragment$2
   {
     if (paramBoolean)
     {
-      this.a.b();
+      this.a.f();
       this.a.a("");
       ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
     }
     else
     {
-      this.a.c();
+      this.a.g();
       this.a.a("close");
       ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
     }
@@ -29,7 +29,7 @@ class ArkIDESettingFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

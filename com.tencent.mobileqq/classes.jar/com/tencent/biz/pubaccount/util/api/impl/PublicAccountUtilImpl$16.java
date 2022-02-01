@@ -22,9 +22,9 @@ class PublicAccountUtilImpl$16
     {
       try
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(this.a))
         {
-          if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          if (TextUtils.isEmpty(this.b)) {
             return;
           }
           localObject2 = null;
@@ -52,7 +52,7 @@ class PublicAccountUtilImpl$16
             return;
           }
           localObject1 = new Bundle();
-          localObject2 = String.format("https://c.mp.qq.com/post/pageview/report?ftype=5&ctype=1&aid=%s&vid=%s&rtype=%d&rowkey=%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_b_of_type_JavaLangString });
+          localObject2 = String.format("https://c.mp.qq.com/post/pageview/report?ftype=5&ctype=1&aid=%s&vid=%s&rtype=%d&rowkey=%s", new Object[] { this.b, this.a, Integer.valueOf(this.c), this.b });
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("uin=");
           localStringBuilder.append((String)localObject3);
@@ -64,12 +64,12 @@ class PublicAccountUtilImpl$16
           ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
           localObject4 = new PublicAccountUtilImpl.16.1(this);
           localObject1 = localObject2;
-          if (this.jdField_a_of_type_Int == 1)
+          if (this.c == 1)
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append((String)localObject2);
             ((StringBuilder)localObject1).append("&rcode=");
-            ((StringBuilder)localObject1).append(Integer.toString(this.jdField_b_of_type_Int));
+            ((StringBuilder)localObject1).append(Integer.toString(this.d));
             localObject1 = ((StringBuilder)localObject1).toString();
           }
           if (QLog.isColorLevel())
@@ -112,7 +112,7 @@ class PublicAccountUtilImpl$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.16
  * JD-Core Version:    0.7.0.1
  */

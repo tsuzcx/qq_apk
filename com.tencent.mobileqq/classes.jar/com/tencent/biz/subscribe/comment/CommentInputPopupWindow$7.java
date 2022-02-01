@@ -10,7 +10,7 @@ class CommentInputPopupWindow$7
   
   public void run()
   {
-    CommentInputPopupWindow.a(this.this$0).showSoftInput(this.a, 1);
+    CommentInputPopupWindow.j(this.this$0).showSoftInput(this.a, 1);
   }
 }
 

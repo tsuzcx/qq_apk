@@ -13,7 +13,7 @@ class WatchTogetherMediaPlayCtrl$9
   public void run()
   {
     WatchTogetherMediaPlayCtrl.a(this.this$0, 10);
-    Iterator localIterator = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
+    Iterator localIterator = WatchTogetherMediaPlayCtrl.e(this.this$0).iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();

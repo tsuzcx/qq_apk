@@ -21,13 +21,13 @@ class ListenPanel$1
     }
     paramView = new StringBuilder();
     paramView.append(i);
-    paramView.append(this.a.getContext().getString(2131691114));
+    paramView.append(this.a.getContext().getString(2131888060));
     paramAccessibilityNodeInfoCompat.setContentDescription(paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel.1
  * JD-Core Version:    0.7.0.1
  */

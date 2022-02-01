@@ -17,34 +17,34 @@ public class FramesProcessor
   implements FrameAdapter.DataSetChangeListener
 {
   public static final boolean a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new FramesProcessor.1(this);
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private FrameAdapter jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;
-  private FrameParent jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent;
-  private FramesProcessor.OnMoveListener jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor$OnMoveListener;
-  private OnFetchFrameListener jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetOnFetchFrameListener;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private float jdField_c_of_type_Float;
-  private final int jdField_c_of_type_Int;
-  private Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
+  private Rect A;
+  private Rect B = new Rect();
+  private float[] C = { 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.33F, 0.5F, 0.11F, 0.0F, -50.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+  private float b;
+  private float c;
+  private float d;
   private float e;
   private float f;
-  private float g;
-  private float h;
-  private float i;
+  private int g;
+  private int h;
+  private final int i;
+  private int j;
+  private FrameParent k;
+  private FramesProcessor.OnMoveListener l;
+  private float m;
+  private float n;
+  private float o;
+  private float p;
+  private FrameAdapter q;
+  private OnFetchFrameListener r;
+  private Scroller s;
+  private GestureDetector t;
+  private GestureDetector.OnGestureListener u = new FramesProcessor.1(this);
+  private Canvas v;
+  private Bitmap w;
+  private Paint x = new Paint();
+  private Paint y = new Paint();
+  private Rect z;
   
   static
   {
@@ -54,53 +54,53 @@ public class FramesProcessor
     } else {
       bool = false;
     }
-    jdField_a_of_type_Boolean = bool;
+    a = bool;
   }
   
   public FramesProcessor(FrameParent paramFrameParent, String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent = paramFrameParent;
-    this.jdField_b_of_type_Float = paramFloat1;
-    this.jdField_c_of_type_Float = paramFloat2;
-    this.jdField_d_of_type_Int = paramInt2;
+    this.k = paramFrameParent;
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.j = paramInt2;
     paramFloat2 = paramInt3;
-    this.i = paramFloat2;
+    this.p = paramFloat2;
     float f1 = paramInt1 * 1.0F / paramInt4 * paramFloat1;
-    this.f = f1;
-    float f2 = this.f;
+    this.m = f1;
+    float f2 = this.m;
     float f3 = paramInt2 * paramFloat1;
-    this.g = Math.max(f2 - f3, 0.0F);
-    this.h = 0.0F;
+    this.n = Math.max(f2 - f3, 0.0F);
+    this.o = 0.0F;
     if (QLog.isColorLevel())
     {
       paramFrameParent = new StringBuilder();
       paramFrameParent.append("mTotalRange=");
-      paramFrameParent.append(this.f);
+      paramFrameParent.append(this.m);
       paramFrameParent.append(", mMaxMovedDistance=");
-      paramFrameParent.append(this.g);
+      paramFrameParent.append(this.n);
       QLog.d("FramesProcessor", 2, paramFrameParent.toString());
     }
-    this.jdField_d_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt3, (int)this.jdField_c_of_type_Float, Bitmap.Config.RGB_565);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColorFilter(new ColorMatrixColorFilter(this.jdField_a_of_type_ArrayOfFloat));
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, (int)paramFloat3, (int)this.jdField_c_of_type_Float);
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect((int)(paramFloat3 + Math.min(f1, f3)), 0, paramInt3, (int)this.jdField_c_of_type_Float);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent.getContext());
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent.getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter = new FrameAdapter(this);
-    this.jdField_b_of_type_Int = ((int)Math.ceil(paramFloat2 * 1.0F / this.jdField_b_of_type_Float));
-    this.jdField_b_of_type_Int = Math.min(this.jdField_b_of_type_Int, paramInt2);
-    this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Int = 0;
-    if (jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetOnFetchFrameListener = new VideoFramesRetriever(paramString, paramFloat1);
+    this.e = 0.0F;
+    this.w = Bitmap.createBitmap(paramInt3, (int)this.d, Bitmap.Config.RGB_565);
+    this.v = new Canvas(this.w);
+    this.y.setColorFilter(new ColorMatrixColorFilter(this.C));
+    this.b = paramFloat3;
+    this.z = new Rect(0, 0, (int)paramFloat3, (int)this.d);
+    this.A = new Rect((int)(paramFloat3 + Math.min(f1, f3)), 0, paramInt3, (int)this.d);
+    this.s = new Scroller(this.k.getContext());
+    this.t = new GestureDetector(this.k.getContext(), this.u);
+    this.q = new FrameAdapter(this);
+    this.h = ((int)Math.ceil(paramFloat2 * 1.0F / this.c));
+    this.h = Math.min(this.h, paramInt2);
+    this.i = this.h;
+    this.g = 0;
+    if (a) {
+      this.r = new VideoFramesRetriever(paramString, paramFloat1);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetOnFetchFrameListener = new VideoFramesFetcher();
+      this.r = new VideoFramesFetcher();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetOnFetchFrameListener.a(paramInt4, paramInt1, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetOnFetchFrameListener.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    this.r.a(paramInt4, paramInt1, this.q);
+    this.r.a(this.g, this.h);
   }
   
   private boolean a(float paramFloat1, float paramFloat2)
@@ -108,122 +108,122 @@ public class FramesProcessor
     return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
   }
   
-  private void c()
+  private void d()
   {
-    FrameAdapter localFrameAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;
+    FrameAdapter localFrameAdapter = this.q;
     if (localFrameAdapter != null)
     {
       if (localFrameAdapter.a()) {
         return;
       }
-      int j = (int)(this.jdField_d_of_type_Float / this.jdField_b_of_type_Float);
-      this.jdField_a_of_type_Int = Math.max(j, 0);
-      int k = this.jdField_c_of_type_Int;
-      if (k >= 6) {
-        this.jdField_b_of_type_Int = Math.min(k + j, this.jdField_d_of_type_Int);
+      int i1 = (int)(this.e / this.c);
+      this.g = Math.max(i1, 0);
+      int i2 = this.i;
+      if (i2 >= 6) {
+        this.h = Math.min(i2 + i1, this.j);
       }
     }
   }
   
-  private void d()
+  private void e()
   {
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(-16777216);
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    this.v.drawColor(-16777216);
+    if (this.s.computeScrollOffset())
     {
-      this.jdField_d_of_type_Float = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      f1 = this.jdField_d_of_type_Float;
-      f2 = this.h;
+      this.e = this.s.getCurrX();
+      f1 = this.e;
+      f2 = this.o;
       if (f1 < f2)
       {
-        this.jdField_d_of_type_Float = f2;
-        this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
+        this.e = f2;
+        this.s.forceFinished(true);
       }
-      f1 = this.jdField_d_of_type_Float;
-      f2 = this.g;
+      f1 = this.e;
+      f2 = this.n;
       if (f1 > f2)
       {
-        this.jdField_d_of_type_Float = f2;
-        this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
+        this.e = f2;
+        this.s.forceFinished(true);
       }
-      c();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent;
+      d();
+      localObject = this.k;
       if (localObject != null) {
         ((FrameParent)localObject).invalidate();
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetOnFetchFrameListener.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      this.r.a(this.g, this.h);
     }
-    float f1 = this.jdField_d_of_type_Float;
-    float f2 = this.e;
-    this.e = f1;
+    float f1 = this.e;
+    float f2 = this.f;
+    this.f = f1;
     if (a(f1 - f2, 0.0F)) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor$OnMoveListener;
+    Object localObject = this.l;
     if (localObject != null)
     {
-      f1 = this.jdField_d_of_type_Float;
-      ((FramesProcessor.OnMoveListener)localObject).a(f1, -f1, this.f - f1);
+      f1 = this.e;
+      ((FramesProcessor.OnMoveListener)localObject).a(f1, -f1, this.m - f1);
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent.postInvalidate();
+    this.k.postInvalidate();
   }
   
   public void a(int paramInt)
   {
-    int j = this.jdField_a_of_type_AndroidGraphicsRect.right;
-    this.h += j - paramInt;
-    this.jdField_a_of_type_AndroidGraphicsRect.right = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent.invalidate();
+    int i1 = this.z.right;
+    this.o += i1 - paramInt;
+    this.z.right = paramInt;
+    this.k.invalidate();
   }
   
   public void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter == null) {
+    if (this.q == null) {
       return;
     }
-    d();
-    int j = Math.max(this.jdField_a_of_type_Int - 1, 0);
-    float f1 = j * this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(f1 - this.jdField_d_of_type_Float + this.jdField_a_of_type_Float, 0.0F);
-    int m = Math.min(this.jdField_b_of_type_Int + 3, this.jdField_d_of_type_Int);
-    int k = (int)this.jdField_b_of_type_Float;
-    while (j < m)
+    e();
+    int i1 = Math.max(this.g - 1, 0);
+    float f1 = i1 * this.c;
+    this.v.translate(f1 - this.e + this.b, 0.0F);
+    int i3 = Math.min(this.h + 3, this.j);
+    int i2 = (int)this.c;
+    while (i1 < i3)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(j);
+      localObject2 = this.q.a(i1);
       if (localObject2 != null)
       {
-        k = (int)Math.min(this.f - f1, this.jdField_b_of_type_Float);
-        this.jdField_c_of_type_AndroidGraphicsRect.set(0, 0, k, (int)this.jdField_c_of_type_Float);
-        localObject1 = this.jdField_a_of_type_AndroidGraphicsCanvas;
-        localObject2 = ((FramesProcessor.Frame)localObject2).jdField_a_of_type_AndroidGraphicsBitmap;
-        Rect localRect = this.jdField_c_of_type_AndroidGraphicsRect;
-        ((Canvas)localObject1).drawBitmap((Bitmap)localObject2, localRect, localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        i2 = (int)Math.min(this.m - f1, this.c);
+        this.B.set(0, 0, i2, (int)this.d);
+        localObject1 = this.v;
+        localObject2 = ((FramesProcessor.Frame)localObject2).a;
+        Rect localRect = this.B;
+        ((Canvas)localObject1).drawBitmap((Bitmap)localObject2, localRect, localRect, this.x);
       }
-      localObject1 = this.jdField_a_of_type_AndroidGraphicsCanvas;
-      float f2 = k;
+      localObject1 = this.v;
+      float f2 = i2;
       ((Canvas)localObject1).translate(f2, 0.0F);
       f1 += f2;
-      j += 1;
+      i1 += 1;
     }
-    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-f1 + this.jdField_d_of_type_Float - this.jdField_a_of_type_Float, 0.0F);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    Object localObject2 = this.jdField_a_of_type_AndroidGraphicsRect;
-    paramCanvas.drawBitmap((Bitmap)localObject1, (Rect)localObject2, (Rect)localObject2, this.jdField_b_of_type_AndroidGraphicsPaint);
-    localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    localObject2 = this.jdField_b_of_type_AndroidGraphicsRect;
-    paramCanvas.drawBitmap((Bitmap)localObject1, (Rect)localObject2, (Rect)localObject2, this.jdField_b_of_type_AndroidGraphicsPaint);
+    this.v.translate(-f1 + this.e - this.b, 0.0F);
+    paramCanvas.drawBitmap(this.w, 0.0F, 0.0F, this.x);
+    Object localObject1 = this.w;
+    Object localObject2 = this.z;
+    paramCanvas.drawBitmap((Bitmap)localObject1, (Rect)localObject2, (Rect)localObject2, this.y);
+    localObject1 = this.w;
+    localObject2 = this.A;
+    paramCanvas.drawBitmap((Bitmap)localObject1, (Rect)localObject2, (Rect)localObject2, this.y);
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
-    GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+    GestureDetector localGestureDetector = this.t;
     if (localGestureDetector != null) {
       localGestureDetector.onTouchEvent(paramMotionEvent);
     }
@@ -231,45 +231,45 @@ public class FramesProcessor
   
   public void a(FramesProcessor.OnMoveListener paramOnMoveListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor$OnMoveListener = paramOnMoveListener;
-    paramOnMoveListener = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor$OnMoveListener;
+    this.l = paramOnMoveListener;
+    paramOnMoveListener = this.l;
     if (paramOnMoveListener != null)
     {
-      float f1 = this.jdField_d_of_type_Float;
-      paramOnMoveListener.a(f1, -f1, this.f - f1);
+      float f1 = this.e;
+      paramOnMoveListener.a(f1, -f1, this.m - f1);
     }
-  }
-  
-  public boolean a()
-  {
-    return a(this.jdField_d_of_type_Float, 0.0F) ^ true;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFramesProcessor$OnMoveListener = null;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetOnFetchFrameListener;
-    if (localObject != null) {
-      ((OnFetchFrameListener)localObject).a();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;
-    if (localObject != null) {
-      ((FrameAdapter)localObject).a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter = null;
   }
   
   public void b(int paramInt)
   {
-    int j = this.jdField_b_of_type_AndroidGraphicsRect.left;
-    this.g += j - paramInt;
-    this.jdField_b_of_type_AndroidGraphicsRect.left = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameParent.invalidate();
+    int i1 = this.A.left;
+    this.n += i1 - paramInt;
+    this.A.left = paramInt;
+    this.k.invalidate();
+  }
+  
+  public boolean b()
+  {
+    return a(this.e, 0.0F) ^ true;
+  }
+  
+  public void c()
+  {
+    this.l = null;
+    Object localObject = this.r;
+    if (localObject != null) {
+      ((OnFetchFrameListener)localObject).a();
+    }
+    localObject = this.q;
+    if (localObject != null) {
+      ((FrameAdapter)localObject).b();
+    }
+    this.q = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FramesProcessor
  * JD-Core Version:    0.7.0.1
  */

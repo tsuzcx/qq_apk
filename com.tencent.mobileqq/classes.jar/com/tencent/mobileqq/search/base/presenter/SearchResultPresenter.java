@@ -38,8 +38,8 @@ public class SearchResultPresenter
   
   protected void a(ISearchResultView paramISearchResultView, ISearchResultModel paramISearchResultModel)
   {
-    if ((paramISearchResultView.a() != null) && (paramISearchResultModel != null)) {
-      paramISearchResultView.a().setText(paramISearchResultModel.b());
+    if ((paramISearchResultView.b() != null) && (paramISearchResultModel != null)) {
+      paramISearchResultView.b().setText(paramISearchResultModel.d());
     }
   }
   
@@ -47,29 +47,29 @@ public class SearchResultPresenter
   {
     d(paramISearchResultModel, paramISearchResultView);
     a(paramISearchResultView, paramISearchResultModel);
-    if (paramISearchResultView.b() != null) {
-      paramISearchResultView.b().setText(paramISearchResultModel.c());
-    }
     if (paramISearchResultView.c() != null) {
-      paramISearchResultView.c().setText(paramISearchResultModel.a());
+      paramISearchResultView.c().setText(paramISearchResultModel.e());
     }
     if (paramISearchResultView.d() != null) {
-      paramISearchResultView.d().setText(paramISearchResultModel.d());
+      paramISearchResultView.d().setText(paramISearchResultModel.a());
     }
-    if (paramISearchResultView.a() != null) {
-      if (paramISearchResultModel.a()) {
-        paramISearchResultView.a().setVisibility(0);
+    if (paramISearchResultView.e() != null) {
+      paramISearchResultView.e().setText(paramISearchResultModel.f());
+    }
+    if (paramISearchResultView.f() != null) {
+      if (paramISearchResultModel.h()) {
+        paramISearchResultView.f().setVisibility(0);
       } else {
-        paramISearchResultView.a().setVisibility(8);
+        paramISearchResultView.f().setVisibility(8);
       }
     }
     c(paramISearchResultModel, paramISearchResultView);
     if ((paramISearchResultModel instanceof GroupNetSearchModelArticleItem)) {
       try
       {
-        Object localObject2 = (ImageView)paramISearchResultView.a().findViewById(2131381027);
-        ImageView localImageView = (ImageView)paramISearchResultView.a().findViewById(2131365284);
-        TextView localTextView = (TextView)paramISearchResultView.a().findViewById(2131368313);
+        Object localObject2 = (ImageView)paramISearchResultView.h().findViewById(2131450036);
+        ImageView localImageView = (ImageView)paramISearchResultView.h().findViewById(2131431458);
+        TextView localTextView = (TextView)paramISearchResultView.h().findViewById(2131435186);
         if ((localObject2 != null) && (localImageView != null) && (localTextView != null))
         {
           ((ImageView)localObject2).setVisibility(4);
@@ -77,32 +77,32 @@ public class SearchResultPresenter
           localTextView.setVisibility(4);
         }
         localObject1 = (GroupNetSearchModelArticleItem)paramISearchResultModel;
-        int i = paramISearchResultView.a().getResources().getDimensionPixelSize(2131297515);
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(((GroupNetSearchModelArticleItem)localObject1).c(), i, i);
-        paramISearchResultView.b().setImageDrawable(localURLDrawable);
-        if ((((GroupNetSearchModelArticleItem)localObject1).a() != null) && (((GroupNetSearchModelArticleItem)localObject1).a().video_article.has()) && (((GroupNetSearchModelArticleItem)localObject1).a().video_article.get() == SearchUtils.a) && (localObject2 != null) && (localImageView != null))
+        int i = paramISearchResultView.h().getResources().getDimensionPixelSize(2131298168);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(((GroupNetSearchModelArticleItem)localObject1).m(), i, i);
+        paramISearchResultView.g().setImageDrawable(localURLDrawable);
+        if ((((GroupNetSearchModelArticleItem)localObject1).i() != null) && (((GroupNetSearchModelArticleItem)localObject1).i().video_article.has()) && (((GroupNetSearchModelArticleItem)localObject1).i().video_article.get() == SearchUtils.f) && (localObject2 != null) && (localImageView != null))
         {
           ((ImageView)localObject2).setVisibility(0);
           localImageView.getBackground().setAlpha(25);
           localImageView.setVisibility(0);
         }
-        if ((((GroupNetSearchModelArticleItem)paramISearchResultModel).a() != null) && (localTextView != null))
+        if ((((GroupNetSearchModelArticleItem)paramISearchResultModel).j() != null) && (localTextView != null))
         {
           localTextView.setVisibility(0);
-          if (paramISearchResultView.a() != null) {
-            paramISearchResultView.a().setMaxWidth(SearchUtils.a(190.0F, paramISearchResultView.a().getResources()));
+          if (paramISearchResultView.b() != null) {
+            paramISearchResultView.b().setMaxWidth(SearchUtils.a(190.0F, paramISearchResultView.h().getResources()));
           }
-          if ((localObject1 != null) && (((GroupNetSearchModelArticleItem)localObject1).a() != null))
+          if ((localObject1 != null) && (((GroupNetSearchModelArticleItem)localObject1).j() != null))
           {
-            localObject2 = ((GroupNetSearchModelArticleItem)localObject1).a().hotword.get();
-            i = ((GroupNetSearchModelArticleItem)localObject1).a().hotword_type.get();
-            ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F27", "0X8006F27", 0, 0, ((GroupNetSearchModelArticleItem)localObject1).b(), (String)localObject2, String.valueOf(i), "");
+            localObject2 = ((GroupNetSearchModelArticleItem)localObject1).j().hotword.get();
+            i = ((GroupNetSearchModelArticleItem)localObject1).j().hotword_type.get();
+            ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F27", "0X8006F27", 0, 0, ((GroupNetSearchModelArticleItem)localObject1).g(), (String)localObject2, String.valueOf(i), "");
           }
         }
         if (paramISearchResultModel.a() != null) {
-          break label536;
+          break label526;
         }
-        paramISearchResultView.c().setVisibility(8);
+        paramISearchResultView.d().setVisibility(8);
       }
       catch (Exception paramISearchResultView)
       {
@@ -114,11 +114,11 @@ public class SearchResultPresenter
     } else {
       b(paramISearchResultModel, paramISearchResultView);
     }
-    label536:
-    if (!TextUtils.isEmpty(paramISearchResultModel.a())) {
+    label526:
+    if (!TextUtils.isEmpty(paramISearchResultModel.c())) {
       try
       {
-        if (Integer.valueOf(paramISearchResultModel.a()).intValue() == ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).getShoppingAccount())
+        if (Integer.valueOf(paramISearchResultModel.c()).intValue() == ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).getShoppingAccount())
         {
           ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportEshopExpo("search", "");
           return;
@@ -133,21 +133,21 @@ public class SearchResultPresenter
   
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView, Bitmap paramBitmap)
   {
-    if ((paramISearchResultView.b() != null) && (!(paramISearchResultModel instanceof GroupNetSearchModelArticleItem))) {
-      paramISearchResultView.b().setImageBitmap(paramBitmap);
+    if ((paramISearchResultView.g() != null) && (!(paramISearchResultModel instanceof GroupNetSearchModelArticleItem))) {
+      paramISearchResultView.g().setImageBitmap(paramBitmap);
     }
   }
   
   public void b(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    if ((paramISearchResultView.b() != null) && (!(paramISearchResultModel instanceof GroupNetSearchModelArticleItem)) && ((paramISearchResultModel instanceof IFaceModel))) {
-      paramISearchResultView.b().setImageDrawable(SearchUtils.a(this.a, paramISearchResultModel));
+    if ((paramISearchResultView.g() != null) && (!(paramISearchResultModel instanceof GroupNetSearchModelArticleItem)) && ((paramISearchResultModel instanceof IFaceModel))) {
+      paramISearchResultView.g().setImageDrawable(SearchUtils.a(this.a, paramISearchResultModel));
     }
   }
   
   protected void c(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    paramISearchResultView = paramISearchResultView.a();
+    paramISearchResultView = paramISearchResultView.h();
     if (paramISearchResultView != null) {
       paramISearchResultView.setOnClickListener(new SearchResultPresenter.1(this, paramISearchResultModel));
     }
@@ -155,20 +155,20 @@ public class SearchResultPresenter
   
   public void d(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    paramISearchResultView = paramISearchResultView.a();
-    if (paramISearchResultModel.b() == 0)
+    paramISearchResultView = paramISearchResultView.h();
+    if (paramISearchResultModel.ck_() == 0)
     {
-      Integer localInteger1 = (Integer)paramISearchResultView.getTag(2131380883);
-      Integer localInteger2 = (Integer)paramISearchResultView.getTag(2131380885);
+      Integer localInteger1 = (Integer)paramISearchResultView.getTag(2131449866);
+      Integer localInteger2 = (Integer)paramISearchResultView.getTag(2131449868);
       if ((localInteger1 != null) && (localInteger2 != null)) {
         SearchViewUtils.a(paramISearchResultModel, localInteger1.intValue(), localInteger2.intValue());
       }
     }
-    int j = paramISearchResultModel.b();
-    int k = paramISearchResultModel.f_();
+    int j = paramISearchResultModel.ck_();
+    int k = paramISearchResultModel.cl_();
     int i;
     if ((paramISearchResultModel instanceof ISearchResultPositionModel)) {
-      i = ((ISearchResultPositionModel)paramISearchResultModel).u;
+      i = ((ISearchResultPositionModel)paramISearchResultModel).af;
     } else {
       i = 0;
     }
@@ -177,7 +177,7 @@ public class SearchResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.presenter.SearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

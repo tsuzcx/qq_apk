@@ -28,15 +28,15 @@ import org.json.JSONObject;
 
 public abstract class CommonConfigBase
 {
-  public int a;
   public Context a;
-  public String a;
+  public String b;
+  public int c;
   
   public CommonConfigBase(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = a(paramContext, paramString);
+    this.a = paramContext;
+    this.b = paramString;
+    this.c = a(paramContext, paramString);
     a(c());
   }
   
@@ -56,25 +56,6 @@ public abstract class CommonConfigBase
   }
   
   public abstract String a();
-  
-  public String a(AppInterface paramAppInterface, ConfigurationService.Config paramConfig)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("handleConfig type = ");
-      localStringBuilder.append(paramConfig.type.get());
-      QLog.d("CommonConfigBase", 2, localStringBuilder.toString());
-    }
-    if ((paramConfig.msg_content_list != null) && (paramConfig.msg_content_list.size() >= 1) && (paramConfig.msg_content_list.get(0) != null)) {
-      return a(paramConfig);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonConfigBase", 2, "handleQuickShotShareToStoryConfig data is null!!!");
-    }
-    a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin());
-    return null;
-  }
   
   protected String a(ConfigurationService.Config paramConfig)
   {
@@ -120,16 +101,6 @@ public abstract class CommonConfigBase
     return paramConfig.content.get().toStringUtf8();
   }
   
-  public void a(Context paramContext, String paramString)
-  {
-    paramContext = a(paramContext).edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_");
-    localStringBuilder.append(b());
-    paramContext.remove(localStringBuilder.toString()).commit();
-  }
-  
   public void a(Context paramContext, String paramString, int paramInt)
   {
     paramContext = a(paramContext).edit();
@@ -149,18 +120,18 @@ public abstract class CommonConfigBase
       localStringBuilder.append(paramConfig.type.get());
       QLog.d("CommonConfigBase", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin());
+    this.c = a(this.a, paramAppInterface.getCurrentAccountUin());
     int i = paramConfig.version.get();
-    if (this.jdField_a_of_type_Int == i)
+    if (this.c == i)
     {
       if (QLog.isColorLevel()) {
         QLog.d("CommonConfigBase", 2, "handleConfig version code not changed .");
       }
       return;
     }
-    a(this.jdField_a_of_type_AndroidContentContext, paramAppInterface.getCurrentAccountUin(), i);
-    this.jdField_a_of_type_Int = i;
-    paramConfig = a(paramAppInterface, paramConfig);
+    a(this.a, paramAppInterface.getCurrentAccountUin(), i);
+    this.c = i;
+    paramConfig = b(paramAppInterface, paramConfig);
     if (!TextUtils.isEmpty(paramConfig))
     {
       if (!a(paramAppInterface, paramConfig))
@@ -196,7 +167,7 @@ public abstract class CommonConfigBase
       ((StringBuilder)localObject).append(".tmp");
       localObject = ((StringBuilder)localObject).toString();
       paramString = new DownloadTask(paramString, new File((String)localObject));
-      paramString.b = 3;
+      paramString.e = 3;
       Bundle localBundle = new Bundle();
       localBundle.putString("file_path", (String)localObject);
       paramAppInterface.startDownload(paramString, new CommonConfigBase.1(this), localBundle);
@@ -208,14 +179,43 @@ public abstract class CommonConfigBase
   
   public abstract String b();
   
+  public String b(AppInterface paramAppInterface, ConfigurationService.Config paramConfig)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleConfig type = ");
+      localStringBuilder.append(paramConfig.type.get());
+      QLog.d("CommonConfigBase", 2, localStringBuilder.toString());
+    }
+    if ((paramConfig.msg_content_list != null) && (paramConfig.msg_content_list.size() >= 1) && (paramConfig.msg_content_list.get(0) != null)) {
+      return a(paramConfig);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonConfigBase", 2, "handleQuickShotShareToStoryConfig data is null!!!");
+    }
+    b(this.a, paramAppInterface.getCurrentAccountUin());
+    return null;
+  }
+  
+  public void b(Context paramContext, String paramString)
+  {
+    paramContext = a(paramContext).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(b());
+    paramContext.remove(localStringBuilder.toString()).commit();
+  }
+  
   public void b(String paramString)
   {
-    Object localObject = a(this.jdField_a_of_type_AndroidContentContext);
+    Object localObject = a(this.a);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = ((SharedPreferences)localObject).edit();
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append("_");
       ((StringBuilder)localObject).append(a());
       paramString.remove(((StringBuilder)localObject).toString());
@@ -223,7 +223,7 @@ public abstract class CommonConfigBase
     }
     localObject = ((SharedPreferences)localObject).edit();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("_");
     localStringBuilder.append(a());
     ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), paramString).commit();
@@ -231,9 +231,9 @@ public abstract class CommonConfigBase
   
   public String c()
   {
-    SharedPreferences localSharedPreferences = a(this.jdField_a_of_type_AndroidContentContext);
+    SharedPreferences localSharedPreferences = a(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("_");
     localStringBuilder.append(a());
     return localSharedPreferences.getString(localStringBuilder.toString(), null);

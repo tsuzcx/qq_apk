@@ -15,14 +15,14 @@ class TopicShareHelper$2
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
     }
-    if (TopicShareHelper.a(this.a).isShowing()) {
-      TopicShareHelper.a(this.a).dismiss();
+    if (TopicShareHelper.b(this.a).isShowing()) {
+      TopicShareHelper.b(this.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.TopicShareHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,60 +16,35 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskDataMgr;", "", "()V", "adData", "getAdData", "()Ljava/lang/Object;", "setAdData", "(Ljava/lang/Object;)V", "adResData", "Lorg/json/JSONObject;", "getAdResData", "()Lorg/json/JSONObject;", "setAdResData", "(Lorg/json/JSONObject;)V", "resCheckInfo", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "getResCheckInfo", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;", "setResCheckInfo", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/ResCheckStep$AdResCheckInfo;)V", "isBidMask", "", "isNormalMask", "receiveAd", "", "adInfo", "resetDataMgr", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class SuperMaskDataMgr
 {
-  public static final SuperMaskDataMgr a;
+  public static final SuperMaskDataMgr a = new SuperMaskDataMgr();
   @Nullable
-  private static volatile ResCheckStep.AdResCheckInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo;
+  private static volatile Object b;
   @Nullable
-  private static volatile Object jdField_a_of_type_JavaLangObject;
+  private static volatile JSONObject c;
   @Nullable
-  private static volatile JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskDataMgr = new SuperMaskDataMgr();
-  }
-  
-  @Nullable
-  public final ResCheckStep.AdResCheckInfo a()
-  {
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo;
-  }
+  private static volatile ResCheckStep.AdResCheckInfo d;
   
   @Nullable
   public final Object a()
   {
-    return jdField_a_of_type_JavaLangObject;
-  }
-  
-  @Nullable
-  public final JSONObject a()
-  {
-    return jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public final void a()
-  {
-    jdField_a_of_type_JavaLangObject = null;
-    jdField_a_of_type_OrgJsonJSONObject = (JSONObject)null;
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo = (ResCheckStep.AdResCheckInfo)null;
-    QLog.d("ReadInJoySuperMaskAd", 1, "resetDataMgr");
+    return b;
   }
   
   public final void a(@Nullable ResCheckStep.AdResCheckInfo paramAdResCheckInfo)
   {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskStepResCheckStep$AdResCheckInfo = paramAdResCheckInfo;
+    d = paramAdResCheckInfo;
   }
   
   public final void a(@Nullable Object paramObject)
   {
-    if (((paramObject instanceof AdvertisementInfo)) && (ReadInJoyAdUtils.h((AdvertisementInfo)paramObject)))
+    if (((paramObject instanceof AdvertisementInfo)) && (ReadInJoyAdUtils.l((AdvertisementInfo)paramObject)))
     {
       QLog.d("ReadInJoySuperMaskAd", 1, "receiveAd");
       QRouteApi localQRouteApi = QRoute.api(IRIJSuperMaskService.class);
       Intrinsics.checkExpressionValueIsNotNull(localQRouteApi, "QRoute.api(IRIJSuperMaskService::class.java)");
       ((IRIJSuperMaskService)localQRouteApi).setShowStatus(1);
-      SuperMaskReportMgr.a.b();
-      jdField_a_of_type_JavaLangObject = paramObject;
+      SuperMaskReportMgr.a.c();
+      b = paramObject;
       SuperMaskReportMgr.a(SuperMaskReportMgr.a, "recviceMask", null, 2, null);
       ThreadManagerV2.post((Runnable)new SuperMaskDataMgr.receiveAd.1(paramObject), 10, null, false);
     }
@@ -77,32 +52,52 @@ public final class SuperMaskDataMgr
   
   public final void a(@Nullable JSONObject paramJSONObject)
   {
-    jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    c = paramJSONObject;
   }
   
-  public final boolean a()
+  @Nullable
+  public final JSONObject b()
   {
-    Object localObject2 = jdField_a_of_type_JavaLangObject;
+    return c;
+  }
+  
+  @Nullable
+  public final ResCheckStep.AdResCheckInfo c()
+  {
+    return d;
+  }
+  
+  public final boolean d()
+  {
+    Object localObject2 = b;
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof AdvertisementInfo)) {
       localObject1 = null;
     }
-    return ReadInJoyAdUtils.i((AdvertisementInfo)localObject1);
+    return ReadInJoyAdUtils.m((AdvertisementInfo)localObject1);
   }
   
-  public final boolean b()
+  public final boolean e()
   {
-    Object localObject2 = jdField_a_of_type_JavaLangObject;
+    Object localObject2 = b;
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof AdvertisementInfo)) {
       localObject1 = null;
     }
-    return ReadInJoyAdUtils.j((AdvertisementInfo)localObject1);
+    return ReadInJoyAdUtils.n((AdvertisementInfo)localObject1);
+  }
+  
+  public final void f()
+  {
+    b = null;
+    c = (JSONObject)null;
+    d = (ResCheckStep.AdResCheckInfo)null;
+    QLog.d("ReadInJoySuperMaskAd", 1, "resetDataMgr");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskDataMgr
  * JD-Core Version:    0.7.0.1
  */

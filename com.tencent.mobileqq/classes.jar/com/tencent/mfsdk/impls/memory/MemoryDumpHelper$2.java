@@ -10,14 +10,14 @@ class MemoryDumpHelper$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MemoryDumpHelper.a(this.jdField_a_of_type_ComTencentMfsdkImplsMemoryMemoryDumpHelper);
-    MemoryDumpHelper.a(this.jdField_a_of_type_ComTencentMfsdkImplsMemoryMemoryDumpHelper, true, this.jdField_a_of_type_JavaLangString, null, -1L, false);
-    MemoryDumpHelper.b(this.jdField_a_of_type_ComTencentMfsdkImplsMemoryMemoryDumpHelper);
+    MemoryDumpHelper.c(this.b);
+    MemoryDumpHelper.a(this.b, true, this.a, null, -1L, false);
+    MemoryDumpHelper.d(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.MemoryDumpHelper.2
  * JD-Core Version:    0.7.0.1
  */

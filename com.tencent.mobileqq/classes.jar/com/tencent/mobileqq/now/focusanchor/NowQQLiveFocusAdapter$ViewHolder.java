@@ -9,21 +9,21 @@ import com.tencent.mobileqq.now.widget.CircleImageView;
 class NowQQLiveFocusAdapter$ViewHolder
   extends RecyclerView.ViewHolder
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  FrameAnimationView jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView;
-  CircleImageView jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView;
+  CircleImageView a;
+  TextView b;
+  FrameAnimationView c;
   
   public NowQQLiveFocusAdapter$ViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131367048));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367049));
-    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131367050));
+    this.a = ((CircleImageView)paramView.findViewById(2131433497));
+    this.b = ((TextView)paramView.findViewById(2131433498));
+    this.c = ((FrameAnimationView)paramView.findViewById(2131433499));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.NowQQLiveFocusAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

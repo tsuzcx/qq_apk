@@ -5,19 +5,19 @@ import com.tencent.theme.SkinData;
 public class ResourceGrabSkinData
 {
   public int a;
-  public SkinData a;
-  public int[] a;
-  public int[][] a;
+  public SkinData b;
+  public int[][] c;
+  public int[] d;
   
   public ResourceGrabSkinData(int paramInt, SkinData paramSkinData)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentThemeSkinData = paramSkinData;
+    this.a = paramInt;
+    this.b = paramSkinData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabSkinData
  * JD-Core Version:    0.7.0.1
  */

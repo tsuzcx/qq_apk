@@ -19,10 +19,10 @@ import tencent.im.oidb.oidb_0xbfe.RspBody;
 public class FreeNetFlowInfoModule
   extends ReadInJoyEngineModule
 {
-  private FreeNetFlowInfoModule.FreeNetFlowInfo jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = false;
+  private FreeNetFlowInfoModule.FreeNetFlowInfo a;
+  private CharSequence b;
+  private boolean c = true;
+  private boolean d = false;
   
   public FreeNetFlowInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
@@ -39,39 +39,39 @@ public class FreeNetFlowInfoModule
     {
       if (paramToServiceMsg.has())
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo == null) {
-          this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo = new FreeNetFlowInfoModule.FreeNetFlowInfo();
+        if (this.a == null) {
+          this.a = new FreeNetFlowInfoModule.FreeNetFlowInfo();
         }
         if (paramToServiceMsg.uint32_receive_status.has()) {
-          this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo.jdField_a_of_type_Int = paramToServiceMsg.uint32_receive_status.get();
+          this.a.a = paramToServiceMsg.uint32_receive_status.get();
         }
         if (paramToServiceMsg.bytes_jump_url.has()) {
-          this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo.jdField_a_of_type_JavaLangString = paramToServiceMsg.bytes_jump_url.get().toStringUtf8();
+          this.a.b = paramToServiceMsg.bytes_jump_url.get().toStringUtf8();
         }
         if (paramToServiceMsg.uint32_flag.has())
         {
-          paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo;
+          paramFromServiceMsg = this.a;
           if (paramToServiceMsg.uint32_flag.get() == 1) {
             bool = true;
           }
-          paramFromServiceMsg.jdField_a_of_type_Boolean = bool;
+          paramFromServiceMsg.c = bool;
         }
         if (QLog.isColorLevel())
         {
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("free netflow, status: ");
-          paramToServiceMsg.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo.jdField_a_of_type_Int);
+          paramToServiceMsg.append(this.a.a);
           paramToServiceMsg.append(", jumpUrl: ");
-          paramToServiceMsg.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo.jdField_a_of_type_JavaLangString);
+          paramToServiceMsg.append(this.a.b);
           paramToServiceMsg.append(", isActive: ");
-          paramToServiceMsg.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo.jdField_a_of_type_Boolean);
+          paramToServiceMsg.append(this.a.c);
           QLog.d("FreeNetFlowInfoModule", 2, paramToServiceMsg.toString());
         }
       }
     }
     else
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
       if (QLog.isColorLevel())
       {
         paramToServiceMsg = new StringBuilder();
@@ -82,29 +82,59 @@ public class FreeNetFlowInfoModule
     }
   }
   
-  public static CharSequence b()
+  public static CharSequence e()
   {
-    Object localObject = HardCodeUtil.a(2131704963);
+    Object localObject = HardCodeUtil.a(2131902854);
     int i = ((String)localObject).indexOf("领取1G流量");
     localObject = new SpannableString((CharSequence)localObject);
     ((SpannableString)localObject).setSpan(new FreeNetFlowInfoModule.1(), i, i + 6, 33);
     return localObject;
   }
   
-  public CharSequence a()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
-      this.jdField_a_of_type_JavaLangCharSequence = b();
+    this.d = paramBoolean;
+    this.c = (paramBoolean ^ true);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setShowingFreeNetFlow: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("FreeNetFlowInfoModule", 2, ((StringBuilder)localObject).toString());
     }
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    if (this.c)
+    {
+      localObject = this.a;
+      if (localObject != null) {
+        ((FreeNetFlowInfoModule.FreeNetFlowInfo)localObject).b();
+      }
+    }
   }
   
-  public String a()
+  public boolean a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo;
+    if (!this.d)
+    {
+      FreeNetFlowInfoModule.FreeNetFlowInfo localFreeNetFlowInfo = this.a;
+      if ((localFreeNetFlowInfo != null) && (localFreeNetFlowInfo.a())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return this.c;
+  }
+  
+  public String c()
+  {
+    Object localObject = this.a;
     if (localObject != null)
     {
-      String str = ((FreeNetFlowInfoModule.FreeNetFlowInfo)localObject).jdField_a_of_type_JavaLangString;
+      String str = ((FreeNetFlowInfoModule.FreeNetFlowInfo)localObject).b;
       localObject = str;
       if (QLog.isColorLevel())
       {
@@ -122,42 +152,12 @@ public class FreeNetFlowInfoModule
     return localObject;
   }
   
-  public void a(boolean paramBoolean)
+  public CharSequence d()
   {
-    this.b = paramBoolean;
-    this.jdField_a_of_type_Boolean = (paramBoolean ^ true);
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("setShowingFreeNetFlow: ");
-      ((StringBuilder)localObject).append(paramBoolean);
-      QLog.d("FreeNetFlowInfoModule", 2, ((StringBuilder)localObject).toString());
+    if (this.b == null) {
+      this.b = e();
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo;
-      if (localObject != null) {
-        ((FreeNetFlowInfoModule.FreeNetFlowInfo)localObject).a();
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!this.b)
-    {
-      FreeNetFlowInfoModule.FreeNetFlowInfo localFreeNetFlowInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonFreeNetFlowInfoModule$FreeNetFlowInfo;
-      if ((localFreeNetFlowInfo != null) && (localFreeNetFlowInfo.a())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -174,7 +174,7 @@ public class FreeNetFlowInfoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.FreeNetFlowInfoModule
  * JD-Core Version:    0.7.0.1
  */

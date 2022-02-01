@@ -12,66 +12,60 @@ public class ChatRoomMsg
   public static int b = 2;
   public static int c = 3;
   public static int d = 4;
-  private static long e;
-  public final long a;
-  public ChatRoomInfo a;
-  public final String a;
-  public final long b;
-  public long c;
-  public long d;
-  public int e;
-  private int f;
+  private static long l;
+  public ChatRoomInfo e;
+  public final long f;
+  public final String g;
+  public final long h = d();
+  public long i;
+  public int j;
+  public long k;
+  private int m;
   
   public ChatRoomMsg(ChatRoomInfo paramChatRoomInfo, long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt)
   {
-    this.jdField_b_of_type_Long = a();
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo = paramChatRoomInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Long = paramLong2;
-    this.jdField_d_of_type_Long = paramLong3;
-    this.jdField_e_of_type_Int = paramInt;
-    if (this.jdField_e_of_type_Int == jdField_a_of_type_Int)
+    this.f = paramLong1;
+    this.e = paramChatRoomInfo;
+    this.g = paramString;
+    this.i = paramLong2;
+    this.k = paramLong3;
+    this.j = paramInt;
+    if (this.j == a)
     {
-      paramChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      paramChatRoomInfo.jdField_b_of_type_Int += 1;
+      paramChatRoomInfo = this.e;
+      paramChatRoomInfo.e += 1;
     }
-    this.f = 0;
+    this.m = 0;
   }
   
-  private static long a()
+  private static long d()
   {
-    long l = jdField_e_of_type_Long + 1L;
-    jdField_e_of_type_Long = l;
-    return l;
-  }
-  
-  public void a()
-  {
-    this.f += 1;
+    long l1 = l + 1L;
+    l = l1;
+    return l1;
   }
   
   public void a(int paramInt)
   {
     ChatRoomInfo localChatRoomInfo;
-    if (paramInt == jdField_c_of_type_Int)
+    if (paramInt == c)
     {
-      localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      localChatRoomInfo.jdField_d_of_type_Int += 1;
+      localChatRoomInfo = this.e;
+      localChatRoomInfo.g += 1;
     }
-    else if (paramInt == jdField_b_of_type_Int)
+    else if (paramInt == b)
     {
-      localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      localChatRoomInfo.jdField_c_of_type_Int += 1;
+      localChatRoomInfo = this.e;
+      localChatRoomInfo.f += 1;
     }
-    if ((this.jdField_d_of_type_Long == -9223372036854775808L) || (this.jdField_e_of_type_Int != jdField_d_of_type_Int)) {
-      this.jdField_e_of_type_Int = paramInt;
+    if ((this.k == -9223372036854775808L) || (this.j != d)) {
+      this.j = paramInt;
     }
   }
   
   public boolean a()
   {
-    return this.jdField_d_of_type_Long != -9223372036854775808L;
+    return this.k != -9223372036854775808L;
   }
   
   public boolean a(chatroom_sso.Msg paramMsg)
@@ -81,13 +75,13 @@ public class ChatRoomMsg
       return false;
     }
     boolean bool1 = bool2;
-    if (this.jdField_d_of_type_Long == paramMsg.msg_id.get())
+    if (this.k == paramMsg.msg_id.get())
     {
       bool1 = bool2;
-      if (this.jdField_a_of_type_Long == paramMsg.uin.get())
+      if (this.f == paramMsg.uin.get())
       {
         bool1 = bool2;
-        if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramMsg.msg.get())) {
+        if (TextUtils.equals(this.g, paramMsg.msg.get())) {
           bool1 = true;
         }
       }
@@ -95,22 +89,27 @@ public class ChatRoomMsg
     return bool1;
   }
   
-  public boolean b()
+  public void b()
   {
-    return (this.jdField_e_of_type_Int == jdField_b_of_type_Int) && (this.f < 3) && (this.jdField_d_of_type_Long == -9223372036854775808L);
+    this.m += 1;
+  }
+  
+  public boolean c()
+  {
+    return (this.j == b) && (this.m < 3) && (this.k == -9223372036854775808L);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(60);
     localStringBuilder.append("ChatRoomMsg{senderUin: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", serverSeq: ");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", localSeq: ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", state: ");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

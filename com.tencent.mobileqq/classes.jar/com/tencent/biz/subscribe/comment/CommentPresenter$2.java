@@ -9,19 +9,19 @@ class CommentPresenter$2
   
   public void run()
   {
-    if (CommentPresenter.a(this.this$0) != null) {
-      CommentPresenter.a(this.this$0).a(CommentPresenter.a(this.this$0));
+    if (CommentPresenter.b(this.this$0) != null) {
+      CommentPresenter.b(this.this$0).a(CommentPresenter.c(this.this$0));
     }
-    if (CommentPresenter.a(this.this$0) != null)
+    if (CommentPresenter.d(this.this$0) != null)
     {
-      if (CommentPresenter.a(this.this$0) > 0)
+      if (CommentPresenter.c(this.this$0) > 0)
       {
-        CommentPresenter.a(this.this$0).setText(Formatter.a(CommentPresenter.a(this.this$0)));
-        CommentPresenter.a(this.this$0).setVisibility(0);
+        CommentPresenter.d(this.this$0).setText(Formatter.a(CommentPresenter.c(this.this$0)));
+        CommentPresenter.d(this.this$0).setVisibility(0);
         return;
       }
-      CommentPresenter.a(this.this$0).setText("");
-      CommentPresenter.a(this.this$0).setVisibility(8);
+      CommentPresenter.d(this.this$0).setText("");
+      CommentPresenter.d(this.this$0).setVisibility(8);
     }
   }
 }

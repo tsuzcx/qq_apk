@@ -12,49 +12,34 @@ import java.util.Map;
 public class IDataProvider$GroupInfo
   implements Cloneable
 {
-  public int a;
-  public IDataProvider.GroupId a;
+  private boolean a = true;
+  public IDataProvider.GroupId b;
+  public List<String> c;
+  public Map<String, String> d = new HashMap();
+  public int e = 0;
   @Nullable
-  public String a;
-  public List<String> a;
-  public Map<String, String> a;
-  private boolean a;
+  public String f;
   
   public IDataProvider$GroupInfo(IDataProvider.GroupId paramGroupId)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId = paramGroupId;
+    this.b = paramGroupId;
     AssertUtils.checkNotNull(paramGroupId);
     if ((paramGroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId))
     {
       paramGroupId = ((MsgTabPlayPageLoader.MsgTabGroupId)paramGroupId).a;
-      if ((paramGroupId != null) && (paramGroupId.jdField_a_of_type_Int == 12)) {
-        this.jdField_a_of_type_Boolean = false;
+      if ((paramGroupId != null) && (paramGroupId.b == 12)) {
+        this.a = false;
       }
     }
   }
   
-  public GroupInfo a()
-  {
-    GroupInfo localGroupInfo = new GroupInfo(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
-    localGroupInfo.jdField_a_of_type_JavaUtilMap.putAll(this.jdField_a_of_type_JavaUtilMap);
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList != null) {
-      localGroupInfo.jdField_a_of_type_JavaUtilList = new ArrayList(localList);
-    }
-    localGroupInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    return localGroupInfo;
-  }
-  
   public void a(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
+      this.d.put(str, paramString);
     }
   }
   
@@ -68,14 +53,21 @@ public class IDataProvider$GroupInfo
     return false;
   }
   
-  public boolean d()
+  public GroupInfo d()
   {
-    return this.jdField_a_of_type_JavaUtilList != null;
+    GroupInfo localGroupInfo = new GroupInfo(this.b);
+    localGroupInfo.d.putAll(this.d);
+    List localList = this.c;
+    if (localList != null) {
+      localGroupInfo.c = new ArrayList(localList);
+    }
+    localGroupInfo.f = this.f;
+    return localGroupInfo;
   }
   
   public boolean e()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c != null;
   }
   
   public boolean equals(Object paramObject)
@@ -84,16 +76,21 @@ public class IDataProvider$GroupInfo
       return true;
     }
     paramObject = (GroupInfo)paramObject;
-    IDataProvider.GroupId localGroupId = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
+    IDataProvider.GroupId localGroupId = this.b;
     if (localGroupId != null) {
-      return localGroupId.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
+      return localGroupId.equals(paramObject.b);
     }
-    return paramObject.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId == null;
+    return paramObject.b == null;
+  }
+  
+  public boolean f()
+  {
+    return this.a;
   }
   
   public int hashCode()
   {
-    IDataProvider.GroupId localGroupId = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId;
+    IDataProvider.GroupId localGroupId = this.b;
     if (localGroupId != null) {
       return localGroupId.hashCode();
     }
@@ -104,20 +101,20 @@ public class IDataProvider$GroupInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gi{g=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", fv=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", vlist=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.c);
     if (localStringBuilder.toString() != null) {
-      return String.valueOf(this.jdField_a_of_type_JavaUtilList.size());
+      return String.valueOf(this.c.size());
     }
     return "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

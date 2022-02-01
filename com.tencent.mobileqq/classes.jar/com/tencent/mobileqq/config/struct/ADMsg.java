@@ -6,25 +6,17 @@ import com.tencent.mobileqq.config.CommandListener;
 public class ADMsg
   implements CommandListener
 {
-  private static Command jdField_a_of_type_ComTencentMobileqqConfigCommand;
-  private static Command b;
-  private ADMsg.TextBox jdField_a_of_type_ComTencentMobileqqConfigStructADMsg$TextBox = null;
-  public String a;
-  public String b;
-  private Command c;
-  public String c;
+  private static Command h;
+  private static Command i;
+  public String a = "";
+  public String b = "";
+  public String c = "";
   public String d = "";
   public String e = "";
   public String f = "";
   public String g = "";
-  
-  public ADMsg()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_c_of_type_ComTencentMobileqqConfigCommand = null;
-  }
+  private Command j = null;
+  private ADMsg.TextBox k = null;
   
   public void a()
   {
@@ -65,7 +57,7 @@ public class ADMsg
     }
     if (this.e.equals("QQMSG"))
     {
-      this.jdField_c_of_type_JavaLangString.equals("AUTO");
+      this.c.equals("AUTO");
       return;
     }
     if (this.e.equals("AUTOQQMSG")) {
@@ -79,7 +71,7 @@ public class ADMsg
     }
     if (this.e.equals("USERSMS"))
     {
-      this.jdField_c_of_type_JavaLangString.equals("AUTO");
+      this.c.equals("AUTO");
       return;
     }
     this.e.equals("RESET");
@@ -90,22 +82,22 @@ public class ADMsg
     Command[] arrayOfCommand = new Command[2];
     if ((this.d != null) && (!this.e.equals("")))
     {
-      if (this.jdField_c_of_type_ComTencentMobileqqConfigCommand == null) {
-        this.jdField_c_of_type_ComTencentMobileqqConfigCommand = new Command(this.d, 1, 1);
+      if (this.j == null) {
+        this.j = new Command(this.d, 1, 1);
       }
-      arrayOfCommand[0] = this.jdField_c_of_type_ComTencentMobileqqConfigCommand;
+      arrayOfCommand[0] = this.j;
     }
     if (paramBoolean)
     {
-      arrayOfCommand[1] = jdField_b_of_type_ComTencentMobileqqConfigCommand;
+      arrayOfCommand[1] = i;
       return;
     }
-    arrayOfCommand[1] = jdField_a_of_type_ComTencentMobileqqConfigCommand;
+    arrayOfCommand[1] = h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.ADMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -9,22 +9,6 @@ public abstract class FacePanelBaseAdapter
 {
   private List<AdapterObserver> a = new ArrayList();
   
-  public void a()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((AdapterObserver)localIterator.next()).h();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((AdapterObserver)localIterator.next()).c(paramInt);
-    }
-  }
-  
   public void a(AdapterObserver paramAdapterObserver)
   {
     if (paramAdapterObserver != null)
@@ -41,6 +25,22 @@ public abstract class FacePanelBaseAdapter
       throw new IllegalStateException(localStringBuilder.toString());
     }
     throw new IllegalArgumentException("the observer is null.");
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((AdapterObserver)localIterator.next()).h();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((AdapterObserver)localIterator.next()).c(paramInt);
+    }
   }
   
   public void b(AdapterObserver paramAdapterObserver)
@@ -60,7 +60,7 @@ public abstract class FacePanelBaseAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.FacePanelBaseAdapter
  * JD-Core Version:    0.7.0.1
  */

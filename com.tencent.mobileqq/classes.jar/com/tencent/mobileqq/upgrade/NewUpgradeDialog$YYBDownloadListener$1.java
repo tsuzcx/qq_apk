@@ -9,12 +9,12 @@ class NewUpgradeDialog$YYBDownloadListener$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog$YYBDownloadListener.a.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
+    this.b.a.a(this.a.t, this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.YYBDownloadListener.1
  * JD-Core Version:    0.7.0.1
  */

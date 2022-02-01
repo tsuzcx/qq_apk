@@ -7,7 +7,7 @@ import com.tencent.qqmini.sdk.report.MiniReportManager;
 import org.json.JSONObject;
 
 class MiniAppInfoLoadingFragment$2
-  implements MiniAppInfoLoadingFragment.onGetMiniAppInfoListener
+  implements MiniAppInfoLoadingFragment.OnGetMiniAppInfoListener
 {
   MiniAppInfoLoadingFragment$2(MiniAppInfoLoadingFragment paramMiniAppInfoLoadingFragment, LaunchParam paramLaunchParam, String paramString1, String paramString2, MiniAppCacheProxy paramMiniAppCacheProxy, String paramString3, String paramString4) {}
   
@@ -21,7 +21,7 @@ class MiniAppInfoLoadingFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppInfoLoadingFragment.2
  * JD-Core Version:    0.7.0.1
  */

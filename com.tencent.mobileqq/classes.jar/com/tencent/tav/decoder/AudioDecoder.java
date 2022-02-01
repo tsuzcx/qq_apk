@@ -13,6 +13,7 @@ import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.AssetExtractor;
+import com.tencent.tav.extractor.ExtractorUtils;
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -87,7 +88,7 @@ public class AudioDecoder
         paramString = this.extractor;
         paramString.unselectTrack(paramString.getSampleTrackIndex());
       }
-      this.trackIndex = DecoderUtils.getFirstTrackIndex(this.extractor, "audio/");
+      this.trackIndex = ExtractorUtils.getFirstTrackIndex(this.extractor, "audio/");
       int i = this.trackIndex;
       if (i == -1)
       {
@@ -670,7 +671,7 @@ public class AudioDecoder
     //   2: aload_0
     //   3: getfield 244	com/tencent/tav/decoder/AudioDecoder:decoder	Landroid/media/MediaCodec;
     //   6: iload_1
-    //   7: invokestatic 521	com/tencent/tav/decoder/DecoderUtils:getInputBuffer	(Landroid/media/MediaCodec;I)Ljava/nio/ByteBuffer;
+    //   7: invokestatic 523	com/tencent/tav/decoder/DecoderUtils:getInputBuffer	(Landroid/media/MediaCodec;I)Ljava/nio/ByteBuffer;
     //   10: astore_2
     //   11: aload_0
     //   12: monitorexit
@@ -683,7 +684,7 @@ public class AudioDecoder
     //   23: astore_2
     //   24: aload_0
     //   25: getfield 98	com/tencent/tav/decoder/AudioDecoder:TAG	Ljava/lang/String;
-    //   28: ldc_w 522
+    //   28: ldc_w 524
     //   31: aload_2
     //   32: invokestatic 361	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   35: getstatic 337	android/os/Build$VERSION:SDK_INT	I
@@ -745,7 +746,7 @@ public class AudioDecoder
     //   161: invokespecial 400	com/tencent/tav/decoder/AudioDecoder:waitTime	(J)V
     //   164: aload_0
     //   165: iload_1
-    //   166: invokespecial 524	com/tencent/tav/decoder/AudioDecoder:getInputBuffer	(I)Ljava/nio/ByteBuffer;
+    //   166: invokespecial 526	com/tencent/tav/decoder/AudioDecoder:getInputBuffer	(I)Ljava/nio/ByteBuffer;
     //   169: astore_2
     //   170: aload_0
     //   171: monitorexit
@@ -787,7 +788,7 @@ public class AudioDecoder
     //   2: aload_0
     //   3: getfield 244	com/tencent/tav/decoder/AudioDecoder:decoder	Landroid/media/MediaCodec;
     //   6: iload_1
-    //   7: invokestatic 526	com/tencent/tav/decoder/DecoderUtils:getOutputBuffer	(Landroid/media/MediaCodec;I)Ljava/nio/ByteBuffer;
+    //   7: invokestatic 528	com/tencent/tav/decoder/DecoderUtils:getOutputBuffer	(Landroid/media/MediaCodec;I)Ljava/nio/ByteBuffer;
     //   10: astore_2
     //   11: aload_0
     //   12: monitorexit
@@ -800,7 +801,7 @@ public class AudioDecoder
     //   23: astore_2
     //   24: aload_0
     //   25: getfield 98	com/tencent/tav/decoder/AudioDecoder:TAG	Ljava/lang/String;
-    //   28: ldc_w 527
+    //   28: ldc_w 529
     //   31: aload_2
     //   32: invokestatic 361	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   35: getstatic 337	android/os/Build$VERSION:SDK_INT	I
@@ -908,7 +909,7 @@ public class AudioDecoder
     //   8: iload_3
     //   9: lload 4
     //   11: iload 6
-    //   13: invokevirtual 531	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
+    //   13: invokevirtual 533	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
     //   16: aload_0
     //   17: monitorexit
     //   18: return
@@ -919,7 +920,7 @@ public class AudioDecoder
     //   29: astore 7
     //   31: aload_0
     //   32: getfield 98	com/tencent/tav/decoder/AudioDecoder:TAG	Ljava/lang/String;
-    //   35: ldc_w 532
+    //   35: ldc_w 534
     //   38: aload 7
     //   40: invokestatic 361	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   43: getstatic 337	android/os/Build$VERSION:SDK_INT	I
@@ -985,7 +986,7 @@ public class AudioDecoder
     //   182: iload_3
     //   183: lload 4
     //   185: iload 6
-    //   187: invokespecial 533	com/tencent/tav/decoder/AudioDecoder:queueInputBuffer	(IIIJI)V
+    //   187: invokespecial 535	com/tencent/tav/decoder/AudioDecoder:queueInputBuffer	(IIIJI)V
     //   190: aload 7
     //   192: athrow
     //   193: aload_0
@@ -1091,7 +1092,7 @@ public class AudioDecoder
     //   3: getfield 244	com/tencent/tav/decoder/AudioDecoder:decoder	Landroid/media/MediaCodec;
     //   6: iload_1
     //   7: iload_2
-    //   8: invokevirtual 569	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
+    //   8: invokevirtual 571	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
     //   11: aload_0
     //   12: monitorexit
     //   13: return
@@ -1102,7 +1103,7 @@ public class AudioDecoder
     //   22: astore_3
     //   23: aload_0
     //   24: getfield 98	com/tencent/tav/decoder/AudioDecoder:TAG	Ljava/lang/String;
-    //   27: ldc_w 570
+    //   27: ldc_w 572
     //   30: aload_3
     //   31: invokestatic 361	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   34: getstatic 337	android/os/Build$VERSION:SDK_INT	I
@@ -1208,14 +1209,14 @@ public class AudioDecoder
     //   13: return
     //   14: aload_0
     //   15: getfield 98	com/tencent/tav/decoder/AudioDecoder:TAG	Ljava/lang/String;
-    //   18: ldc_w 573
+    //   18: ldc_w 575
     //   21: invokestatic 355	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   24: getstatic 337	android/os/Build$VERSION:SDK_INT	I
     //   27: bipush 21
     //   29: if_icmplt +26 -> 55
     //   32: aload_0
     //   33: getfield 244	com/tencent/tav/decoder/AudioDecoder:decoder	Landroid/media/MediaCodec;
-    //   36: invokevirtual 575	android/media/MediaCodec:reset	()V
+    //   36: invokevirtual 577	android/media/MediaCodec:reset	()V
     //   39: aload_0
     //   40: aload_0
     //   41: getfield 201	com/tencent/tav/decoder/AudioDecoder:mediaFormat	Landroid/media/MediaFormat;
@@ -1226,7 +1227,7 @@ public class AudioDecoder
     //   52: goto +89 -> 141
     //   55: aload_0
     //   56: getfield 244	com/tencent/tav/decoder/AudioDecoder:decoder	Landroid/media/MediaCodec;
-    //   59: invokevirtual 578	android/media/MediaCodec:stop	()V
+    //   59: invokevirtual 580	android/media/MediaCodec:stop	()V
     //   62: aload_0
     //   63: getfield 244	com/tencent/tav/decoder/AudioDecoder:decoder	Landroid/media/MediaCodec;
     //   66: invokestatic 373	com/tencent/tav/decoder/MediaCodecManager:releaseCodec	(Landroid/media/MediaCodec;)V
@@ -1234,7 +1235,7 @@ public class AudioDecoder
     //   72: aload_0
     //   73: getfield 244	com/tencent/tav/decoder/AudioDecoder:decoder	Landroid/media/MediaCodec;
     //   76: invokevirtual 245	java/lang/Object:toString	()Ljava/lang/String;
-    //   79: invokevirtual 580	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   79: invokevirtual 582	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   82: pop
     //   83: aload_0
     //   84: aload_0
@@ -1260,7 +1261,7 @@ public class AudioDecoder
     //   129: astore_2
     //   130: aload_0
     //   131: getfield 98	com/tencent/tav/decoder/AudioDecoder:TAG	Ljava/lang/String;
-    //   134: ldc_w 582
+    //   134: ldc_w 584
     //   137: aload_2
     //   138: invokestatic 361	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   141: aload_0
@@ -1338,7 +1339,7 @@ public class AudioDecoder
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 244	com/tencent/tav/decoder/AudioDecoder:decoder	Landroid/media/MediaCodec;
-    //   6: invokevirtual 598	android/media/MediaCodec:start	()V
+    //   6: invokevirtual 600	android/media/MediaCodec:start	()V
     //   9: aload_0
     //   10: monitorexit
     //   11: return
@@ -1347,7 +1348,7 @@ public class AudioDecoder
     //   16: astore_1
     //   17: aload_0
     //   18: getfield 98	com/tencent/tav/decoder/AudioDecoder:TAG	Ljava/lang/String;
-    //   21: ldc_w 599
+    //   21: ldc_w 601
     //   24: aload_1
     //   25: invokestatic 361	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   28: getstatic 337	android/os/Build$VERSION:SDK_INT	I
@@ -1417,12 +1418,12 @@ public class AudioDecoder
     //   160: invokevirtual 369	android/media/MediaCodec$CodecException:isRecoverable	()Z
     //   163: ifeq +10 -> 173
     //   166: aload_0
-    //   167: invokespecial 586	com/tencent/tav/decoder/AudioDecoder:reset	()V
+    //   167: invokespecial 588	com/tencent/tav/decoder/AudioDecoder:reset	()V
     //   170: aload_0
     //   171: monitorexit
     //   172: return
     //   173: aload_0
-    //   174: invokevirtual 602	com/tencent/tav/decoder/AudioDecoder:release	()V
+    //   174: invokevirtual 604	com/tencent/tav/decoder/AudioDecoder:release	()V
     //   177: aload_1
     //   178: athrow
     //   179: aload_0
@@ -1454,13 +1455,13 @@ public class AudioDecoder
     //   1: monitorenter
     //   2: aload_0
     //   3: lload_1
-    //   4: invokevirtual 607	java/lang/Object:wait	(J)V
+    //   4: invokevirtual 609	java/lang/Object:wait	(J)V
     //   7: goto +12 -> 19
     //   10: astore_3
     //   11: goto +11 -> 22
     //   14: astore_3
     //   15: aload_3
-    //   16: invokevirtual 608	java/lang/InterruptedException:printStackTrace	()V
+    //   16: invokevirtual 610	java/lang/InterruptedException:printStackTrace	()V
     //   19: aload_0
     //   20: monitorexit
     //   21: return
@@ -1736,7 +1737,7 @@ public class AudioDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioDecoder
  * JD-Core Version:    0.7.0.1
  */

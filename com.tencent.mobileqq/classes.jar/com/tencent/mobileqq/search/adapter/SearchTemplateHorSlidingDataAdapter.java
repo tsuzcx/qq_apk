@@ -30,49 +30,48 @@ public class SearchTemplateHorSlidingDataAdapter
   extends BaseAdapter
 {
   public static final String a = "SearchTemplateHorSlidingDataAdapter";
-  public float a;
-  public int a;
-  public long a;
-  public NetSearchTemplateHorSlidingContainerItem a;
-  public HorizontalListView a;
-  public List<NetSearchTemplateHorizontalBaseItem> a;
-  public float b;
-  public int b;
+  public List<NetSearchTemplateHorizontalBaseItem> b;
+  public NetSearchTemplateHorSlidingContainerItem c;
+  public int d;
+  public HorizontalListView e;
+  public float f;
+  public long g;
+  public float h;
+  public int i = 0;
   
   public SearchTemplateHorSlidingDataAdapter(NetSearchTemplateHorSlidingContainerItem paramNetSearchTemplateHorSlidingContainerItem, int paramInt, HorizontalListView paramHorizontalListView)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem = paramNetSearchTemplateHorSlidingContainerItem;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
+    this.c = paramNetSearchTemplateHorSlidingContainerItem;
+    this.d = paramInt;
+    this.e = paramHorizontalListView;
     paramHorizontalListView.setOnScrollListener(new SearchTemplateHorSlidingDataAdapter.1(this, paramHorizontalListView));
   }
   
   public NetSearchTemplateHorizontalBaseItem a(int paramInt)
   {
-    return (NetSearchTemplateHorizontalBaseItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (NetSearchTemplateHorizontalBaseItem)this.b.get(paramInt);
   }
   
   public List<NetSearchTemplateHorizontalBaseItem> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public void a(List<NetSearchTemplateHorizontalBaseItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    if (this.b == null) {
       return 0;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem.m)) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    if (TextUtils.isEmpty(this.c.u)) {
+      return this.b.size();
     }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    return this.b.size() + 1;
   }
   
   public long getItemId(int paramInt)
@@ -82,7 +81,7 @@ public class SearchTemplateHorSlidingDataAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if ((paramInt == this.jdField_a_of_type_JavaUtilList.size()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem.m))) {
+    if ((paramInt == this.b.size()) && (!TextUtils.isEmpty(this.c.u))) {
       return 2;
     }
     return 1;
@@ -90,49 +89,49 @@ public class SearchTemplateHorSlidingDataAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = getItemViewType(paramInt);
+    int j = getItemViewType(paramInt);
     View localView;
     Object localObject1;
     Object localObject2;
-    if (i != 1)
+    if (j != 1)
     {
-      if (i == 2)
+      if (j == 2)
       {
         localView = paramView;
         if (paramView == null) {
-          localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559825, paramViewGroup, false);
+          localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131625868, paramViewGroup, false);
         }
-        localObject1 = new FrameLayout.LayoutParams(-1, (int)this.jdField_b_of_type_Float);
+        localObject1 = new FrameLayout.LayoutParams(-1, (int)this.h);
         ((FrameLayout.LayoutParams)localObject1).topMargin = DisplayUtil.a(paramViewGroup.getContext(), 6.0F);
-        paramView = (LinearLayout)localView.findViewById(2131365132);
+        paramView = (LinearLayout)localView.findViewById(2131431280);
         paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localObject1 = (ImageView)localView.findViewById(2131371488);
-        localObject2 = (TextView)localView.findViewById(2131371513);
+        localObject1 = (ImageView)localView.findViewById(2131438863);
+        localObject2 = (TextView)localView.findViewById(2131438890);
         if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
         {
-          paramView.setBackgroundResource(2130839385);
+          paramView.setBackgroundResource(2130839569);
           ((TextView)localObject2).setTextColor(Color.parseColor("#4A4A4A"));
-          ((ImageView)localObject1).setImageResource(2130842429);
+          ((ImageView)localObject1).setImageResource(2130843382);
         }
         else
         {
-          paramView.setBackgroundResource(2130839384);
+          paramView.setBackgroundResource(2130839568);
           ((TextView)localObject2).setTextColor(Color.parseColor("#737373"));
-          ((ImageView)localObject1).setImageResource(2130842428);
+          ((ImageView)localObject1).setImageResource(2130843381);
         }
-        ((TextView)localObject2).setText(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_JavaLangCharSequence);
+        ((TextView)localObject2).setText(this.c.t);
         localView.setOnClickListener(new SearchTemplateHorSlidingDataAdapter.2(this, paramViewGroup));
         paramView = localView;
       }
     }
     else
     {
-      localObject2 = (NetSearchTemplateHorizontalOneItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      ((NetSearchTemplateHorizontalOneItem)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_Int);
+      localObject2 = (NetSearchTemplateHorizontalOneItem)this.b.get(paramInt);
+      ((NetSearchTemplateHorizontalOneItem)localObject2).b(this.c.f);
       if (paramView == null)
       {
         paramView = new NetSearchTemplateHorizontalOneView(paramViewGroup, 0);
-        localView = paramView.a();
+        localView = paramView.h();
         localView.setTag(paramView);
         localObject1 = paramView;
         paramView = localView;
@@ -141,37 +140,38 @@ public class SearchTemplateHorSlidingDataAdapter
       {
         localObject1 = (NetSearchTemplateHorizontalOneView)paramView.getTag();
       }
-      float f = this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_Int;
-      f = (float)(DeviceInfoUtil.k() - DisplayUtil.a(paramView.getContext(), 13.5F)) / (f + 0.5F);
-      if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateHorSlidingContainerItem.jdField_a_of_type_Int == 6))
+      float f1 = this.c.f;
+      f1 = (float)(DeviceInfoUtil.F() - DisplayUtil.a(paramView.getContext(), 13.5F)) / (f1 + 0.5F);
+      if ((this.c.f == 5) || (this.c.f == 6))
       {
-        f = (float)((DeviceInfoUtil.k() - DisplayUtil.a(paramView.getContext(), 32.0F)) / 3L);
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(10);
+        f1 = (float)((DeviceInfoUtil.F() - DisplayUtil.a(paramView.getContext(), 32.0F)) / 3L);
+        this.e.setDividerWidth(10);
       }
-      this.jdField_a_of_type_Float = (DisplayUtil.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getContext(), 3.0F) + f);
-      switch (((NetSearchTemplateHorizontalOneItem)localObject2).jdField_a_of_type_ComTencentMobileqqSearchBusinessNetModelNetSearchTemplateBaseItem$ImageInfo.jdField_a_of_type_Int)
+      this.f = (DisplayUtil.a(this.e.getContext(), 3.0F) + f1);
+      switch (((NetSearchTemplateHorizontalOneItem)localObject2).q.a)
       {
       default: 
-        this.jdField_b_of_type_Float = (136.0F * f / 220.0F);
+        this.h = (136.0F * f1 / 220.0F);
         break;
       case 11: 
-        this.jdField_b_of_type_Float = f;
+        this.h = f1;
         break;
       case 10: 
-        this.jdField_b_of_type_Float = (228.0F * f / 162.0F);
+        this.h = (228.0F * f1 / 162.0F);
         break;
       case 9: 
-        this.jdField_b_of_type_Float = f;
+        this.h = f1;
         break;
       case 8: 
-        this.jdField_b_of_type_Float = (136.0F * f / 220.0F);
+        this.h = (136.0F * f1 / 220.0F);
       }
-      ((NetSearchTemplateHorizontalOneView)localObject1).a().setLayoutParams(new LinearLayout.LayoutParams((int)f, -2));
+      ((NetSearchTemplateHorizontalOneView)localObject1).h().setLayoutParams(new LinearLayout.LayoutParams((int)f1, -2));
       ((NetSearchTemplateHorizontalOneItem)localObject2).a((NetSearchTemplateHorizontalBaseView)localObject1);
-      ((NetSearchTemplateHorizontalOneView)localObject1).a().measure(1073741824, 0);
-      this.jdField_b_of_type_Int = Math.max(((NetSearchTemplateHorizontalOneView)localObject1).a().getMeasuredHeight(), this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams().height = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Long = ((NetSearchTemplateHorizontalOneItem)localObject2).jdField_a_of_type_Long;
+      ((NetSearchTemplateHorizontalOneItem)localObject2).e(this.c.ah);
+      ((NetSearchTemplateHorizontalOneView)localObject1).h().measure(1073741824, 0);
+      this.i = Math.max(((NetSearchTemplateHorizontalOneView)localObject1).h().getMeasuredHeight(), this.i);
+      this.e.getLayoutParams().height = this.i;
+      this.g = ((NetSearchTemplateHorizontalOneItem)localObject2).i;
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -179,7 +179,7 @@ public class SearchTemplateHorSlidingDataAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.adapter.SearchTemplateHorSlidingDataAdapter
  * JD-Core Version:    0.7.0.1
  */

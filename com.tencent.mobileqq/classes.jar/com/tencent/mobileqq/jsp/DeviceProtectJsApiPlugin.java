@@ -363,7 +363,7 @@ public class DeviceProtectJsApiPlugin
   {
     if ((paramVarArgs != null) && (paramVarArgs.length >= 1))
     {
-      if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
+      if ((this.mRuntime != null) && (this.mRuntime.d() != null)) {
         try
         {
           Object localObject = new JSONObject(paramVarArgs[0]);
@@ -374,7 +374,7 @@ public class DeviceProtectJsApiPlugin
             QLog.d("DeviceProtectJsApiPlugin", 1, "handlePhoneChanged: phone is empty");
             return;
           }
-          ((IAuthDevUgHelper)QRoute.api(IAuthDevUgHelper.class)).notifyPhoneChanged(this.mRuntime.a(), paramVarArgs, (String)localObject);
+          ((IAuthDevUgHelper)QRoute.api(IAuthDevUgHelper.class)).notifyPhoneChanged(this.mRuntime.d(), paramVarArgs, (String)localObject);
           return;
         }
         catch (JSONException paramVarArgs)
@@ -442,7 +442,7 @@ public class DeviceProtectJsApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DeviceProtectJsApiPlugin
  * JD-Core Version:    0.7.0.1
  */

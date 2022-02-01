@@ -7,20 +7,20 @@ import org.jetbrains.annotations.NotNull;
 public final class PagViewProxy$Companion
 {
   @NotNull
-  public final AbsAsyncLoadProxy.Loader a()
+  public final String a()
   {
-    return PagViewProxy.a();
+    return PagViewProxy.e();
   }
   
   @NotNull
-  public final String a()
+  public final AbsAsyncLoadProxy.Loader b()
   {
-    return PagViewProxy.b();
+    return PagViewProxy.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.PagViewProxy.Companion
  * JD-Core Version:    0.7.0.1
  */

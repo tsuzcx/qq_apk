@@ -24,80 +24,32 @@ import java.util.List;
 
 public class PluginPreInstaller
 {
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qlink_plugin.apk" };
+  private static final String[] a = { "qlink_plugin.apk" };
   private static final String[] b = { "qqreaderplugin.apk", "comic_plugin.apk", "Photoplus.apk" };
   private static final String[] c = { "qqhotspot_plugin.apk" };
   private static final String[] d = new String[0];
   private static final String[] e = { "qqreaderplugin.apk", "comic_plugin.apk" };
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new PluginPreInstaller.1(this);
-  private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager;
+  private static final SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd");
+  private Context g;
+  private IPluginManager h;
+  private QQAppInterface i;
+  private OnPluginInstallListener j = new PluginPreInstaller.1(this);
   
   public PluginPreInstaller(Context paramContext, IPluginManager paramIPluginManager, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_CooperationPluginIPluginManager = paramIPluginManager;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.g = paramContext;
+    this.h = paramIPluginManager;
+    this.i = paramQQAppInterface;
     c();
   }
   
   private int a(String paramString)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext);
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.g);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("total_retried_times_");
     localStringBuilder.append(paramString);
     return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
-  }
-  
-  private List<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
-    int k = localObject1.length;
-    int j = 0;
-    int i = 0;
-    while (i < k)
-    {
-      localArrayList.add(localObject1[i]);
-      i += 1;
-    }
-    if (NetworkUtil.isWifiEnabled(this.jdField_a_of_type_AndroidContentContext))
-    {
-      localObject1 = b;
-      k = localObject1.length;
-      i = 0;
-      while (i < k)
-      {
-        Object localObject2 = localObject1[i];
-        if ((!localObject2.equals("Photoplus.apk")) || (!VersionUtils.d())) {
-          localArrayList.add(localObject2);
-        }
-        i += 1;
-      }
-    }
-    if ((DeviceInfoUtil.h()) || (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F))
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("plugins ");
-        ((StringBuilder)localObject1).append(Arrays.toString(e));
-        ((StringBuilder)localObject1).append("filtered in low end phone");
-        QLog.d("PluginPreInstaller", 2, ((StringBuilder)localObject1).toString());
-      }
-      localObject1 = e;
-      k = localObject1.length;
-      i = j;
-      while (i < k)
-      {
-        localArrayList.remove(localObject1[i]);
-        i += 1;
-      }
-    }
-    return localArrayList;
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
@@ -113,9 +65,9 @@ public class PluginPreInstaller
       ((StringBuilder)localObject1).append(paramInt2);
       QLog.d("PluginPreInstaller", 4, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit();
+    Object localObject1 = PreferenceManager.getDefaultSharedPreferences(this.g).edit();
     Object localObject2 = new Date();
-    localObject2 = jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject2);
+    localObject2 = f.format((Date)localObject2);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("total_retried_times_");
     localStringBuilder.append(paramString);
@@ -129,17 +81,17 @@ public class PluginPreInstaller
     localStringBuilder.append(paramString);
     ((SharedPreferences.Editor)localObject1).putString(localStringBuilder.toString(), (String)localObject2);
     ((SharedPreferences.Editor)localObject1).commit();
-    this.jdField_a_of_type_CooperationPluginIPluginManager.a(paramString, this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener, true);
+    this.h.a(paramString, this.j, true);
     if ("comic_plugin.apk".equals(paramString)) {
-      ((IQQComicWebViewApi)QRoute.api(IQQComicWebViewApi.class)).updateOfflinePkgAsync(1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ((IQQComicWebViewApi)QRoute.api(IQQComicWebViewApi.class)).updateOfflinePkgAsync(1, this.i);
     }
   }
   
   private int b(String paramString)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext);
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.g);
     Object localObject = new Date();
-    localObject = jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject);
+    localObject = f.format((Date)localObject);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("last_retry_day_");
     localStringBuilder.append(paramString);
@@ -155,10 +107,10 @@ public class PluginPreInstaller
   
   private void c()
   {
-    if (!PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getString("plugin_pre_install_qq_version", "").equals(DeviceInfoUtil.c()))
+    if (!PreferenceManager.getDefaultSharedPreferences(this.g).getString("plugin_pre_install_qq_version", "").equals(DeviceInfoUtil.e()))
     {
-      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit();
-      Iterator localIterator = a().iterator();
+      SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.g).edit();
+      Iterator localIterator = d().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -171,28 +123,76 @@ public class PluginPreInstaller
     }
   }
   
+  private List<String> d()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = a;
+    int n = localObject1.length;
+    int m = 0;
+    int k = 0;
+    while (k < n)
+    {
+      localArrayList.add(localObject1[k]);
+      k += 1;
+    }
+    if (NetworkUtil.isWifiEnabled(this.g))
+    {
+      localObject1 = b;
+      n = localObject1.length;
+      k = 0;
+      while (k < n)
+      {
+        Object localObject2 = localObject1[k];
+        if ((!localObject2.equals("Photoplus.apk")) || (!VersionUtils.d())) {
+          localArrayList.add(localObject2);
+        }
+        k += 1;
+      }
+    }
+    if ((DeviceInfoUtil.U()) || (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("plugins ");
+        ((StringBuilder)localObject1).append(Arrays.toString(e));
+        ((StringBuilder)localObject1).append("filtered in low end phone");
+        QLog.d("PluginPreInstaller", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = e;
+      n = localObject1.length;
+      k = m;
+      while (k < n)
+      {
+        localArrayList.remove(localObject1[k]);
+        k += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
   public void a()
   {
     try
     {
-      Iterator localIterator = a().iterator();
+      Iterator localIterator = d().iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
         try
         {
-          if (this.jdField_a_of_type_CooperationPluginIPluginManager.isPlugininstalled(str)) {
+          if (this.h.isPlugininstalled(str)) {
             continue;
           }
-          int i = a(str);
-          if (i >= 10) {
+          int k = a(str);
+          if (k >= 10) {
             continue;
           }
-          int j = b(str);
-          if (j >= 2) {
+          int m = b(str);
+          if (m >= 2) {
             continue;
           }
-          a(str, i, j);
+          a(str, k, m);
         }
         catch (Exception localException) {}
         if (QLog.isColorLevel())
@@ -223,14 +223,14 @@ public class PluginPreInstaller
           QLog.e("PluginPreInstaller", 2, "preinstall start,wifi_reinstall_only.");
         }
         String[] arrayOfString = d;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
+        int m = arrayOfString.length;
+        int k = 0;
+        while (k < m)
         {
-          String str = arrayOfString[i];
+          String str = arrayOfString[k];
           try
           {
-            if (!this.jdField_a_of_type_CooperationPluginIPluginManager.isPlugininstalled(str))
+            if (!this.h.isPlugininstalled(str))
             {
               a(str, a(str), b(str));
             }
@@ -241,7 +241,7 @@ public class PluginPreInstaller
               ((StringBuilder)localObject2).append(str);
               localObject2 = new Intent(((StringBuilder)localObject2).toString());
               ((Intent)localObject2).putExtra("plugin", str);
-              this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject2);
+              this.g.sendBroadcast((Intent)localObject2);
             }
           }
           catch (Exception localException)
@@ -255,7 +255,7 @@ public class PluginPreInstaller
               QLog.e("PluginPreInstaller", 2, localStringBuilder.toString(), localException);
             }
           }
-          i += 1;
+          k += 1;
         }
       }
       return;
@@ -269,7 +269,7 @@ public class PluginPreInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginPreInstaller
  * JD-Core Version:    0.7.0.1
  */

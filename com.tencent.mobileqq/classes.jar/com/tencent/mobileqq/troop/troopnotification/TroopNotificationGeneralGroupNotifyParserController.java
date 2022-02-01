@@ -17,17 +17,17 @@ public class TroopNotificationGeneralGroupNotifyParserController
     return TroopNotificationGeneralGroupNotifyParserController.GeneralGroupNotifyParserProvider.a().a(paramInt);
   }
   
+  public void c() {}
+  
   @Nullable
-  protected String a()
+  protected String d()
   {
     return "TroopNotificationGeneralGroupNotifyParserController";
   }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationGeneralGroupNotifyParserController
  * JD-Core Version:    0.7.0.1
  */

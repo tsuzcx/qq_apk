@@ -70,10 +70,10 @@ import mqq.app.Packet;
 public class ContactBindServlet
   extends MSFServlet
 {
-  private IPhoneContactService jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  private IPhoneContactService a;
   private boolean b = false;
+  private boolean c = false;
+  private int[] d = new int[0];
   
   public static RequestHeader a(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -129,10 +129,10 @@ public class ContactBindServlet
   
   private IPhoneContactService a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService = ((IPhoneContactService)getAppRuntime().getRuntimeService(IPhoneContactService.class, ""));
+    if (this.a == null) {
+      this.a = ((IPhoneContactService)getAppRuntime().getRuntimeService(IPhoneContactService.class, ""));
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService;
+    return this.a;
   }
   
   private void a(ResponeQueryQQMobileContactsV3 paramResponeQueryQQMobileContactsV3)
@@ -1351,9 +1351,9 @@ public class ContactBindServlet
       PhoneContact localPhoneContact = a().getPhoneContactByMD5(paramRecommendedContactInfo.contactsInfoEncrypt);
       if (localPhoneContact != null)
       {
-        paramRecommendContactInfo.c = PhoneContactUtils.a(paramRecommendedContactInfo.MobileNoMask, localPhoneContact.mobileNo);
-        paramRecommendContactInfo.d = localPhoneContact.name;
-        if ((!TextUtils.isEmpty(paramRecommendContactInfo.c)) && (!TextUtils.isEmpty(paramRecommendContactInfo.d))) {
+        paramRecommendContactInfo.g = PhoneContactUtils.a(paramRecommendedContactInfo.MobileNoMask, localPhoneContact.mobileNo);
+        paramRecommendContactInfo.h = localPhoneContact.name;
+        if ((!TextUtils.isEmpty(paramRecommendContactInfo.g)) && (!TextUtils.isEmpty(paramRecommendContactInfo.h))) {
           return true;
         }
       }
@@ -1872,7 +1872,7 @@ public class ContactBindServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.handler.ContactBindServlet
  * JD-Core Version:    0.7.0.1
  */

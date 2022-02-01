@@ -16,12 +16,12 @@ class DynamicNowManager$1
     localStringBuilder.append(";msg=");
     localStringBuilder.append(paramString);
     QLog.i("XProxy|NowProxy", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanOnOpenCloseRoomCallback.a(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.1
  * JD-Core Version:    0.7.0.1
  */

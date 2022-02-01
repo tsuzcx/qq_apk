@@ -18,55 +18,9 @@ import mqq.app.AppRuntime;
 
 public class QvipSpecialCareUtil
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  public static HashMap<String, String> a;
-  private static boolean jdField_a_of_type_Boolean = true;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static int a(String paramString, AppRuntime paramAppRuntime)
-  {
-    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("special_sound_type");
-    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-    localStringBuilder.append(paramString);
-    return localSharedPreferences.getInt(localStringBuilder.toString(), 1);
-  }
-  
-  public static int a(AppRuntime paramAppRuntime)
-  {
-    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    new HashSet();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("special_sound");
-      localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-      paramAppRuntime = SharedPreferencesHandler.a(localSharedPreferences, localStringBuilder.toString(), null);
-      if (paramAppRuntime != null) {
-        return paramAppRuntime.size();
-      }
-      return 0;
-    }
-  }
-  
-  public static Set<String> a(AppRuntime paramAppRuntime)
-  {
-    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    new HashSet();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("special_sound");
-      localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-      paramAppRuntime = SharedPreferencesHandler.a(localSharedPreferences, localStringBuilder.toString(), null);
-      return paramAppRuntime;
-    }
-  }
+  public static HashMap<String, String> a = new HashMap();
+  private static Object b = new Object();
+  private static boolean c = true;
   
   public static void a(int paramInt, AppRuntime paramAppRuntime)
   {
@@ -96,7 +50,7 @@ public class QvipSpecialCareUtil
       try
       {
         int i = Integer.parseInt(paramString2);
-        if (!a(paramString1, paramAppRuntime)) {
+        if (!d(paramString1, paramAppRuntime)) {
           a(paramString1, paramAppRuntime);
         }
         a(paramString1, i, paramAppRuntime);
@@ -115,10 +69,10 @@ public class QvipSpecialCareUtil
     }
     else
     {
-      if (a(paramString1, paramAppRuntime)) {
+      if (d(paramString1, paramAppRuntime)) {
         b(paramString1, paramAppRuntime);
       }
-      if (b(paramString1, paramAppRuntime)) {
+      if (e(paramString1, paramAppRuntime)) {
         c(paramString1, paramAppRuntime);
       }
     }
@@ -132,10 +86,10 @@ public class QvipSpecialCareUtil
     ((StringBuilder)localObject2).append(paramAppRuntime.getCurrentAccountUin());
     ((StringBuilder)localObject2).append(paramString);
     localObject2 = ((StringBuilder)localObject2).toString();
-    if (!jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2)) {
-      jdField_a_of_type_JavaUtilHashMap.put(localObject2, paramString);
+    if (!a.containsKey(localObject2)) {
+      a.put(localObject2, paramString);
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("special_sound");
@@ -172,7 +126,7 @@ public class QvipSpecialCareUtil
       }
       Object localObject1 = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
       SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (b)
       {
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("special_sound");
@@ -190,8 +144,8 @@ public class QvipSpecialCareUtil
           ((StringBuilder)localObject4).append(paramAppRuntime.getCurrentAccountUin());
           ((StringBuilder)localObject4).append((String)localObject2);
           localObject4 = ((StringBuilder)localObject4).toString();
-          if (!jdField_a_of_type_JavaUtilHashMap.containsKey(localObject4)) {
-            jdField_a_of_type_JavaUtilHashMap.put(localObject4, localObject2);
+          if (!a.containsKey(localObject4)) {
+            a.put(localObject4, localObject2);
           }
           if (!((Set)localObject1).contains(localObject2)) {
             ((Set)localObject1).add(localObject2);
@@ -238,57 +192,19 @@ public class QvipSpecialCareUtil
     }
   }
   
-  public static void a(AppRuntime paramAppRuntime)
-  {
-    jdField_a_of_type_JavaUtilHashMap.clear();
-    Object localObject1 = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("special_sound");
-    ((StringBuilder)localObject2).append(paramAppRuntime.getCurrentAccountUin());
-    localObject1 = SharedPreferencesHandler.a((SharedPreferences)localObject1, ((StringBuilder)localObject2).toString(), null);
-    if (localObject1 != null)
-    {
-      localObject1 = ((Set)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-        localStringBuilder.append((String)localObject2);
-        localHashMap.put(localStringBuilder.toString(), localObject2);
-      }
-    }
-    a(false);
-  }
-  
   public static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    c = paramBoolean;
   }
   
   public static boolean a()
   {
-    return jdField_a_of_type_Boolean;
+    return c;
   }
   
   public static boolean a(String paramString)
   {
-    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
-  
-  public static boolean a(String paramString, AppRuntime paramAppRuntime)
-  {
-    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    new HashSet();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("special_sound");
-      localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-      paramAppRuntime = SharedPreferencesHandler.a(localSharedPreferences, localStringBuilder.toString(), null);
-      return (paramAppRuntime != null) && (!paramAppRuntime.isEmpty()) && (paramAppRuntime.contains(paramString));
-    }
+    return a.containsKey(paramString);
   }
   
   public static boolean a(AppRuntime paramAppRuntime)
@@ -314,10 +230,10 @@ public class QvipSpecialCareUtil
     ((StringBuilder)???).append(paramAppRuntime.getCurrentAccountUin());
     ((StringBuilder)???).append(paramString);
     ??? = ((StringBuilder)???).toString();
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(???)) {
-      jdField_a_of_type_JavaUtilHashMap.remove(???);
+    if (a.containsKey(???)) {
+      a.remove(???);
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("special_sound");
@@ -348,7 +264,7 @@ public class QvipSpecialCareUtil
       }
       Object localObject2 = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
       SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (b)
       {
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("special_sound");
@@ -364,8 +280,8 @@ public class QvipSpecialCareUtil
             ((StringBuilder)localObject4).append(paramAppRuntime.getCurrentAccountUin());
             ((StringBuilder)localObject4).append((String)localObject3);
             localObject4 = ((StringBuilder)localObject4).toString();
-            if (jdField_a_of_type_JavaUtilHashMap.containsKey(localObject4)) {
-              jdField_a_of_type_JavaUtilHashMap.remove(localObject4);
+            if (a.containsKey(localObject4)) {
+              a.remove(localObject4);
             }
             if (((Set)localObject2).contains(localObject3)) {
               ((Set)localObject2).remove(localObject3);
@@ -384,22 +300,43 @@ public class QvipSpecialCareUtil
   
   public static void b(AppRuntime paramAppRuntime)
   {
-    SharedPreferences.Editor localEditor = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("key_get_special_sound_quota_time");
-    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-    localEditor.putLong(localStringBuilder.toString(), System.currentTimeMillis());
-    localEditor.commit();
+    a.clear();
+    Object localObject1 = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("special_sound");
+    ((StringBuilder)localObject2).append(paramAppRuntime.getCurrentAccountUin());
+    localObject1 = SharedPreferencesHandler.a((SharedPreferences)localObject1, ((StringBuilder)localObject2).toString(), null);
+    if (localObject1 != null)
+    {
+      localObject1 = ((Set)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        HashMap localHashMap = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append((String)localObject2);
+        localHashMap.put(localStringBuilder.toString(), localObject2);
+      }
+    }
+    a(false);
   }
   
-  public static boolean b(String paramString, AppRuntime paramAppRuntime)
+  public static int c(AppRuntime paramAppRuntime)
   {
     SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("special_sound_type");
-    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
-    localStringBuilder.append(paramString);
-    return localSharedPreferences.contains(localStringBuilder.toString());
+    new HashSet();
+    synchronized (b)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("special_sound");
+      localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+      paramAppRuntime = SharedPreferencesHandler.a(localSharedPreferences, localStringBuilder.toString(), null);
+      if (paramAppRuntime != null) {
+        return paramAppRuntime.size();
+      }
+      return 0;
+    }
   }
   
   public static void c(String paramString, AppRuntime paramAppRuntime)
@@ -434,10 +371,68 @@ public class QvipSpecialCareUtil
       localEditor.commit();
     }
   }
+  
+  public static Set<String> d(AppRuntime paramAppRuntime)
+  {
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    new HashSet();
+    synchronized (b)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("special_sound");
+      localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+      paramAppRuntime = SharedPreferencesHandler.a(localSharedPreferences, localStringBuilder.toString(), null);
+      return paramAppRuntime;
+    }
+  }
+  
+  public static boolean d(String paramString, AppRuntime paramAppRuntime)
+  {
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    new HashSet();
+    synchronized (b)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("special_sound");
+      localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+      paramAppRuntime = SharedPreferencesHandler.a(localSharedPreferences, localStringBuilder.toString(), null);
+      return (paramAppRuntime != null) && (!paramAppRuntime.isEmpty()) && (paramAppRuntime.contains(paramString));
+    }
+  }
+  
+  public static void e(AppRuntime paramAppRuntime)
+  {
+    SharedPreferences.Editor localEditor = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_get_special_sound_quota_time");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    localEditor.putLong(localStringBuilder.toString(), System.currentTimeMillis());
+    localEditor.commit();
+  }
+  
+  public static boolean e(String paramString, AppRuntime paramAppRuntime)
+  {
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("special_sound_type");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    localStringBuilder.append(paramString);
+    return localSharedPreferences.contains(localStringBuilder.toString());
+  }
+  
+  public static int f(String paramString, AppRuntime paramAppRuntime)
+  {
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("special_sound_type");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    localStringBuilder.append(paramString);
+    return localSharedPreferences.getInt(localStringBuilder.toString(), 1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QvipSpecialCareUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -16,18 +16,9 @@ import org.json.JSONObject;
 public class TenDocLogReportHelper
 {
   public static String a = "";
-  private static HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = new String[2];
-  
-  public static long a(String paramString)
-  {
-    paramString = (Long)jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-    if (paramString != null) {
-      return SystemClock.elapsedRealtime() - paramString.longValue();
-    }
-    return 0L;
-  }
+  private static JSONObject b = new JSONObject();
+  private static String[] c = new String[2];
+  private static HashMap<String, Long> d = new HashMap();
   
   public static String a(String paramString)
   {
@@ -43,12 +34,12 @@ public class TenDocLogReportHelper
       localStringBuilder.append(System.currentTimeMillis());
       paramString = localStringBuilder.toString();
     }
-    jdField_a_of_type_JavaLangString = paramString;
+    a = paramString;
     paramString = new StringBuilder();
     paramString.append("init trace id: ");
-    paramString.append(jdField_a_of_type_JavaLangString);
+    paramString.append(a);
     QLog.d("TenDocLogReportHelper", 2, paramString.toString());
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public static String a(String paramString1, String paramString2)
@@ -78,8 +69,8 @@ public class TenDocLogReportHelper
   
   public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    a(jdField_a_of_type_ArrayOfJavaLangString, paramString1, paramString3, paramString4, paramString5);
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    a(c, paramString1, paramString3, paramString4, paramString5);
+    String[] arrayOfString = c;
     ReportController.b(paramAppInterface, "dc00898", "", "", paramString2, paramString2, 0, 0, "", "", arrayOfString[0], arrayOfString[1]);
     if (QLog.isColorLevel())
     {
@@ -103,23 +94,15 @@ public class TenDocLogReportHelper
     if (paramTeamWorkFileImportInfo == null) {
       return;
     }
-    if (TextUtils.isEmpty(paramTeamWorkFileImportInfo.k))
+    if (TextUtils.isEmpty(paramTeamWorkFileImportInfo.A))
     {
-      paramTeamWorkFileImportInfo.k = a(paramTeamWorkFileImportInfo.b);
+      paramTeamWorkFileImportInfo.A = a(paramTeamWorkFileImportInfo.c);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("has setted trace Id: ");
-    localStringBuilder.append(paramTeamWorkFileImportInfo.k);
+    localStringBuilder.append(paramTeamWorkFileImportInfo.A);
     QLog.d("TenDocLogReportHelper", 2, localStringBuilder.toString());
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(SystemClock.elapsedRealtime()));
   }
   
   public static void a(String paramString1, String paramString2, String paramString3)
@@ -148,11 +131,11 @@ public class TenDocLogReportHelper
   {
     try
     {
-      jdField_a_of_type_OrgJsonJSONObject.put("trace", paramString1);
-      jdField_a_of_type_OrgJsonJSONObject.put("value", paramString2);
-      jdField_a_of_type_OrgJsonJSONObject.put("extra1", paramString3);
-      jdField_a_of_type_OrgJsonJSONObject.put("extra2", paramString4);
-      paramString1 = jdField_a_of_type_OrgJsonJSONObject.toString();
+      b.put("trace", paramString1);
+      b.put("value", paramString2);
+      b.put("extra1", paramString3);
+      b.put("extra2", paramString4);
+      paramString1 = b.toString();
       int i = paramString1.length();
       int j = i / 2;
       paramArrayOfString[0] = paramString1.substring(0, j);
@@ -163,25 +146,6 @@ public class TenDocLogReportHelper
     {
       QLog.e("TenDocLogReportHelper", 2, "report fail", paramArrayOfString);
     }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool3 = TextUtils.isEmpty(paramString);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!bool3) {
-      if (!paramString.contains("docs.qq.com"))
-      {
-        bool1 = bool2;
-        if (!paramString.contains("docx.qq.com")) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
   }
   
   public static String b(String paramString)
@@ -200,13 +164,13 @@ public class TenDocLogReportHelper
   
   public static void b(String paramString1, String paramString2, String paramString3)
   {
-    if (a(paramString1))
+    if (c(paramString1))
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("ps_key:");
-      ((StringBuilder)localObject).append(b(paramString1));
+      ((StringBuilder)localObject).append(h(paramString1));
       localObject = ((StringBuilder)localObject).toString();
-      paramString1 = c(paramString1);
+      paramString1 = d(paramString1);
       if (TextUtils.isEmpty(paramString1))
       {
         a(paramString2, paramString3, (String)localObject);
@@ -218,9 +182,9 @@ public class TenDocLogReportHelper
   
   public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (a(paramString1))
+    if (c(paramString1))
     {
-      paramString1 = c(paramString1);
+      paramString1 = d(paramString1);
       if (TextUtils.isEmpty(paramString1))
       {
         a(paramString2, paramString3, paramString4);
@@ -230,7 +194,65 @@ public class TenDocLogReportHelper
     }
   }
   
-  private static boolean b(String paramString)
+  public static boolean c(String paramString)
+  {
+    boolean bool3 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bool3) {
+      if (!paramString.contains("docs.qq.com"))
+      {
+        bool1 = bool2;
+        if (!paramString.contains("docx.qq.com")) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public static String d(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return Uri.parse(paramString).getQueryParameter("xiaolv_wy_tdoc_tid");
+  }
+  
+  public static String e(String paramString)
+  {
+    String str = d(paramString);
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    int i = paramString.indexOf("?");
+    str = paramString;
+    if (i != -1) {
+      str = paramString.substring(0, i);
+    }
+    return str;
+  }
+  
+  public static void f(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    d.put(paramString, Long.valueOf(SystemClock.elapsedRealtime()));
+  }
+  
+  public static long g(String paramString)
+  {
+    paramString = (Long)d.remove(paramString);
+    if (paramString != null) {
+      return SystemClock.elapsedRealtime() - paramString.longValue();
+    }
+    return 0L;
+  }
+  
+  private static boolean h(String paramString)
   {
     paramString = CookieManager.getInstance().getCookie(paramString);
     if (!TextUtils.isEmpty(paramString))
@@ -253,32 +275,10 @@ public class TenDocLogReportHelper
     }
     return false;
   }
-  
-  public static String c(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return Uri.parse(paramString).getQueryParameter("xiaolv_wy_tdoc_tid");
-  }
-  
-  public static String d(String paramString)
-  {
-    String str = c(paramString);
-    if (!TextUtils.isEmpty(str)) {
-      return str;
-    }
-    int i = paramString.indexOf("?");
-    str = paramString;
-    if (i != -1) {
-      str = paramString.substring(0, i);
-    }
-    return str;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.tencentdocreport.TenDocLogReportHelper
  * JD-Core Version:    0.7.0.1
  */

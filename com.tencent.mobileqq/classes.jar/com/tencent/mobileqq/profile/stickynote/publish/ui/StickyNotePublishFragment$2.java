@@ -16,9 +16,9 @@ class StickyNotePublishFragment$2
   
   public void onClick(View paramView)
   {
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.b(this.a).setVisibility(8);
+    StickyNotePublishFragment.c(this.a).setVisibility(8);
+    StickyNotePublishFragment.d(this.a).setVisibility(8);
     StickyNotePublishFragment.a(this.a).setVisibility(0);
     StickyNotePublishFragment.a(this.a).requestFocus();
     InputMethodUtil.a(StickyNotePublishFragment.a(this.a));
@@ -27,7 +27,7 @@ class StickyNotePublishFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.2
  * JD-Core Version:    0.7.0.1
  */

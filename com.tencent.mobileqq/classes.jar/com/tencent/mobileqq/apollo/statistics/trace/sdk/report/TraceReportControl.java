@@ -16,18 +16,18 @@ public class TraceReportControl
   implements ITraceReportStrategyListener
 {
   public static int a = 30000;
-  private static int jdField_b_of_type_Int = 3;
-  private static int c = 10000;
-  private long jdField_a_of_type_Long = 0L;
-  private TraceConfig jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig = null;
-  private List<TraceData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = System.currentTimeMillis() - 540000L;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int d = 0;
-  private int e = 0;
+  private static int d = 3;
+  private static int e = 10000;
+  private TraceConfig b = null;
+  private List<TraceData> c = new ArrayList();
+  private boolean f = true;
+  private boolean g = true;
+  private long h = 0L;
+  private int i = 0;
+  private int j = 0;
+  private long k = System.currentTimeMillis() - 540000L;
   
-  private void a(TraceData paramTraceData)
+  private void b(TraceData paramTraceData)
   {
     if (paramTraceData != null)
     {
@@ -35,39 +35,39 @@ public class TraceReportControl
         return;
       }
       long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_b_of_type_Long;
+      long l2 = this.k;
       if (l1 - l2 < 1000L)
       {
-        paramTraceData.result.c = this.d;
-        paramTraceData.result.d = this.e;
+        paramTraceData.result.c = this.i;
+        paramTraceData.result.d = this.j;
         return;
       }
-      if ((l1 - l2 > 600000L) || ((paramTraceData.isSampleFocus) && (l1 - this.jdField_b_of_type_Long > 300000L)))
+      if ((l1 - l2 > 600000L) || ((paramTraceData.isSampleFocus) && (l1 - this.k > 300000L)))
       {
-        this.jdField_b_of_type_Long = l1;
+        this.k = l1;
         l1 = System.currentTimeMillis();
-        this.d = TraceUtil.b();
-        this.e = TraceUtil.a();
+        this.i = TraceUtil.b();
+        this.j = TraceUtil.a();
         l2 = System.currentTimeMillis();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("samplingCpuAndMemory cpu:");
-        localStringBuilder.append(this.e);
+        localStringBuilder.append(this.j);
         localStringBuilder.append(",memory:");
-        localStringBuilder.append(this.d);
+        localStringBuilder.append(this.i);
         localStringBuilder.append(",isSampleFocus:");
         localStringBuilder.append(paramTraceData.isSampleFocus);
         localStringBuilder.append(",cost:");
         localStringBuilder.append(l2 - l1);
         QLog.i("[cmshow][TraceReport]", 1, localStringBuilder.toString());
-        paramTraceData.result.c = this.d;
-        paramTraceData.result.d = this.e;
+        paramTraceData.result.c = this.i;
+        paramTraceData.result.d = this.j;
       }
     }
   }
   
   private void c(List<TraceData> paramList)
   {
-    ITraceStorage localITraceStorage = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a();
+    ITraceStorage localITraceStorage = this.b.c();
     if (localITraceStorage != null) {
       localITraceStorage.b(paramList);
     }
@@ -75,16 +75,16 @@ public class TraceReportControl
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
-    localObject = ((TraceConfig)localObject).a();
+    localObject = ((TraceConfig)localObject).c();
     if (localObject != null)
     {
       localObject = ((ITraceStorage)localObject).a();
       if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilList = ((List)localObject);
+        this.c = ((List)localObject);
       }
     }
   }
@@ -95,28 +95,28 @@ public class TraceReportControl
       QLog.d("[cmshow][TraceReport]", 2, new Object[] { "onReportStrategyChange reportInterval:", Integer.valueOf(paramInt1), ",reportNum:", Integer.valueOf(paramInt2), ", isFailReport:", Boolean.valueOf(paramBoolean) });
     }
     if (paramInt1 > 0) {
-      jdField_a_of_type_Int = paramInt1 * 1000;
+      a = paramInt1 * 1000;
     }
     if (paramInt2 > 0) {
-      jdField_b_of_type_Int = paramInt2;
+      d = paramInt2;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   public void a(TraceConfig paramTraceConfig)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig = paramTraceConfig;
-    paramTraceConfig = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a();
+    this.b = paramTraceConfig;
+    paramTraceConfig = this.b.d();
     if (paramTraceConfig != null) {
       paramTraceConfig.a(this);
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Boolean = true;
+    this.h = System.currentTimeMillis();
+    this.g = true;
   }
   
   public void a(List<TraceData> paramList)
   {
-    ITraceNetwork localITraceNetwork = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a();
+    ITraceNetwork localITraceNetwork = this.b.d();
     if (localITraceNetwork != null)
     {
       localITraceNetwork.a(paramList);
@@ -127,32 +127,32 @@ public class TraceReportControl
   public boolean a(TraceData paramTraceData)
   {
     long l1 = System.currentTimeMillis();
-    a(paramTraceData);
-    this.jdField_a_of_type_JavaUtilList.add(paramTraceData);
-    boolean bool1 = this.jdField_b_of_type_Boolean;
+    b(paramTraceData);
+    this.c.add(paramTraceData);
+    boolean bool1 = this.g;
     boolean bool2 = false;
     boolean bool3 = false;
     if (bool1)
     {
       boolean bool4 = NetworkUtil.isNetworkAvailable(null);
-      long l2 = l1 - this.jdField_a_of_type_Long;
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      if ((paramTraceData.result != null) && (paramTraceData.result.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Boolean)) {
+      long l2 = l1 - this.h;
+      int m = this.c.size();
+      if ((paramTraceData.result != null) && (paramTraceData.result.a != 0) && (this.f)) {
         bool2 = true;
       } else {
         bool2 = false;
       }
-      if (((i >= jdField_b_of_type_Int) && (l2 > c)) || (((l2 > jdField_a_of_type_Int) || (bool2)) && (bool4)))
+      if (((m >= d) && (l2 > e)) || (((l2 > a) || (bool2)) && (bool4)))
       {
-        a(this.jdField_a_of_type_JavaUtilList);
-        c(this.jdField_a_of_type_JavaUtilList);
-        this.jdField_a_of_type_JavaUtilList.clear();
+        a(this.c);
+        c(this.c);
+        this.c.clear();
         long l3 = System.currentTimeMillis();
-        this.jdField_a_of_type_Long = l3;
+        this.h = l3;
         bool1 = bool3;
         if (QLog.isColorLevel())
         {
-          QLog.d("[cmshow][TraceReport]", 2, new Object[] { "handleAddTraceReporting interval:", Long.valueOf(l2), ",reportSize:", Integer.valueOf(i), ",report all cost:", Long.valueOf(l3 - l1), ",isFailReport:", Boolean.valueOf(bool2) });
+          QLog.d("[cmshow][TraceReport]", 2, new Object[] { "handleAddTraceReporting interval:", Long.valueOf(l2), ",reportSize:", Integer.valueOf(m), ",report all cost:", Long.valueOf(l3 - l1), ",isFailReport:", Boolean.valueOf(bool2) });
           bool1 = bool3;
         }
       }
@@ -179,34 +179,34 @@ public class TraceReportControl
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow][TraceReport]", 2, "handleAddTraceReporting not active and save");
       }
-      b(this.jdField_a_of_type_JavaUtilList);
+      b(this.c);
     }
     return bool2;
   }
   
   public void b()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
+    int m = this.c.size();
     boolean bool = NetworkUtil.isNetworkAvailable(null);
-    if ((i > 0) && (bool) && (this.jdField_b_of_type_Boolean))
+    if ((m > 0) && (bool) && (this.g))
     {
-      a(this.jdField_a_of_type_JavaUtilList);
-      c(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      a(this.c);
+      c(this.c);
+      this.c.clear();
+      this.h = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        QLog.d("[cmshow][TraceReport]", 2, new Object[] { "handleAddTraceReporting flushDelayReport reportSize:", Integer.valueOf(i) });
+        QLog.d("[cmshow][TraceReport]", 2, new Object[] { "handleAddTraceReporting flushDelayReport reportSize:", Integer.valueOf(m) });
       }
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("[cmshow][TraceReport]", 2, new Object[] { "flushDelayReport reportSize:", Integer.valueOf(i), ", net:", Boolean.valueOf(bool), ",mActive:", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
+      QLog.d("[cmshow][TraceReport]", 2, new Object[] { "flushDelayReport reportSize:", Integer.valueOf(m), ", net:", Boolean.valueOf(bool), ",mActive:", Boolean.valueOf(this.g) });
     }
   }
   
   public void b(List<TraceData> paramList)
   {
-    ITraceStorage localITraceStorage = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkTraceConfig.a();
+    ITraceStorage localITraceStorage = this.b.c();
     if (localITraceStorage != null) {
       localITraceStorage.a(paramList);
     }
@@ -214,13 +214,13 @@ public class TraceReportControl
   
   public void c()
   {
-    this.jdField_b_of_type_Boolean = false;
-    b(this.jdField_a_of_type_JavaUtilList);
+    this.g = false;
+    b(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.report.TraceReportControl
  * JD-Core Version:    0.7.0.1
  */

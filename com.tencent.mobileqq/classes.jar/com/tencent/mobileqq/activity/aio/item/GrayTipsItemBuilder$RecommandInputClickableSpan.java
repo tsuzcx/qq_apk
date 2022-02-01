@@ -17,23 +17,22 @@ import java.lang.ref.WeakReference;
 class GrayTipsItemBuilder$RecommandInputClickableSpan
   extends ClickableSpan
 {
-  public final String a;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference<Context> jdField_b_of_type_JavaLangRefWeakReference;
+  public final String a = "mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3";
+  private WeakReference<QQAppInterface> c;
+  private WeakReference<Context> d;
+  private String e;
   
   GrayTipsItemBuilder$RecommandInputClickableSpan(GrayTipsItemBuilder paramGrayTipsItemBuilder, QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3";
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = new WeakReference(paramQQAppInterface);
+    this.d = new WeakReference(paramContext);
+    this.e = paramString;
   }
   
   public void onClick(View paramView)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = (Context)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    paramView = (QQAppInterface)this.c.get();
+    Object localObject = (Context)this.d.get();
     if (paramView != null)
     {
       if (localObject == null) {
@@ -43,30 +42,30 @@ class GrayTipsItemBuilder$RecommandInputClickableSpan
       {
         if (!NetworkUtil.isNetSupport((Context)localObject))
         {
-          QQToast.a((Context)localObject, 2131692183, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText((Context)localObject, 2131889169, 0).show(((Context)localObject).getResources().getDimensionPixelSize(2131299920));
           return;
         }
         long l = System.currentTimeMillis();
-        if ((GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) != 0L) && (l > GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder)) && (l - GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder) <= 800L))
+        if ((GrayTipsItemBuilder.f(this.b) != 0L) && (l > GrayTipsItemBuilder.f(this.b)) && (l - GrayTipsItemBuilder.f(this.b) <= 800L))
         {
           if (QLog.isColorLevel()) {
             QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
           }
           return;
         }
-        GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, l);
-        localObject = JumpParser.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.jdField_b_of_type_JavaLangString }));
+        GrayTipsItemBuilder.a(this.b, l);
+        localObject = JumpParser.a(paramView, (Context)localObject, String.format("mqqapi://nearby_entry/nearby_profile?src_type=web&version=1&from=10003&from_type=0&uin=%s&mode=3", new Object[] { this.e }));
         if (localObject != null) {
           ((JumpAction)localObject).a();
         }
-        ReportController.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, ((com.tencent.mobileqq.nearpeople.api.INearbyRecommenderUtils)com.tencent.mobileqq.qroute.QRoute.api(com.tencent.mobileqq.nearpeople.api.INearbyRecommenderUtils.class)).getReasonTypeAndUins(paramView)[0], this.jdField_b_of_type_JavaLangString, "", "");
+        ReportController.b(paramView, "CliOper", "", "", "0X80055FD", "0X80055FD", 0, 0, ((com.tencent.mobileqq.nearpeople.api.INearbyRecommenderUtils)com.tencent.mobileqq.qroute.QRoute.api(com.tencent.mobileqq.nearpeople.api.INearbyRecommenderUtils.class)).getReasonTypeAndUins(paramView)[0], this.e, "", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.RecommandInputClickableSpan
  * JD-Core Version:    0.7.0.1
  */

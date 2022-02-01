@@ -28,7 +28,7 @@ public final class oidb_0xf00$GroupInfoExt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xf00.oidb_0xf00.GroupInfoExt
  * JD-Core Version:    0.7.0.1
  */

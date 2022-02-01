@@ -2,6 +2,7 @@ package com.tencent.mobileqq.onlinestatus;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.onlinestatus.olympic.model.OlympicMedalEventInfo;
 
 public class OnlineStatusObserver
   implements BusinessObserver
@@ -9,6 +10,8 @@ public class OnlineStatusObserver
   public void a(boolean paramBoolean) {}
   
   public void a(boolean paramBoolean, Bundle paramBundle) {}
+  
+  public void a(boolean paramBoolean, OlympicMedalEventInfo paramOlympicMedalEventInfo) {}
   
   public void b(boolean paramBoolean) {}
   
@@ -25,6 +28,9 @@ public class OnlineStatusObserver
     switch (paramInt)
     {
     default: 
+      return;
+    case 8: 
+      a(paramBoolean, (OlympicMedalEventInfo)paramObject);
       return;
     case 7: 
       b(paramBoolean, (Bundle)paramObject);
@@ -50,7 +56,7 @@ public class OnlineStatusObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusObserver
  * JD-Core Version:    0.7.0.1
  */

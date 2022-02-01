@@ -26,7 +26,7 @@ class PublicAccountH5AbilityPluginImpl$7
   {
     if (!((ICaptureUtil)QRoute.api(ICaptureUtil.class)).supportCapture())
     {
-      DialogUtil.a(this.this$0.activity, 230, null, HardCodeUtil.a(2131708780), null, this.this$0.activity.getString(2131694583), new PublicAccountH5AbilityPluginImpl.7.1(this), null).show();
+      DialogUtil.a(this.this$0.activity, 230, null, HardCodeUtil.a(2131906556), null, this.this$0.activity.getString(2131892267), new PublicAccountH5AbilityPluginImpl.7.1(this), null).show();
       return;
     }
     Object localObject2;
@@ -63,7 +63,7 @@ class PublicAccountH5AbilityPluginImpl$7
       boolean bool = ((Bundle)localObject3).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
       if (((Bundle)localObject3).getBoolean("VALUE_CAMERA_IS_VIDEO_CHATTING"))
       {
-        QQToast.a(this.this$0.mRuntime.a(), 0, 2131719097, 0).a();
+        QQToast.makeText(this.this$0.mRuntime.d(), 0, 2131916633, 0).show();
         return;
       }
       if (QLog.isColorLevel())
@@ -75,8 +75,8 @@ class PublicAccountH5AbilityPluginImpl$7
       }
       if (!bool)
       {
-        localObject3 = new QQProgressDialog(this.this$0.mRuntime.a(), this.this$0.mRuntime.a().getResources().getDimensionPixelSize(2131299168));
-        ((QQProgressDialog)localObject3).c(2131718086);
+        localObject3 = new QQProgressDialog(this.this$0.mRuntime.d(), this.this$0.mRuntime.d().getResources().getDimensionPixelSize(2131299920));
+        ((QQProgressDialog)localObject3).c(2131915564);
       }
       try
       {
@@ -103,7 +103,7 @@ class PublicAccountH5AbilityPluginImpl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.7
  * JD-Core Version:    0.7.0.1
  */

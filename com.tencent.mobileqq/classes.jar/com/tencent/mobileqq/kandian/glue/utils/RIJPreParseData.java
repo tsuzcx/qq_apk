@@ -2,7 +2,7 @@ package com.tencent.mobileqq.kandian.glue.utils;
 
 import android.text.TextUtils;
 import android.util.Pair;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
+import com.tencent.mobileqq.kandian.base.image.api.impl.PublicAccountHttpDownloaderImpl;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.ReadInJoyDisplayUtils;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
@@ -23,7 +23,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.UGCFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.UGCPicInfo;
 import com.tencent.mobileqq.kandian.repo.video.entity.UGCVideoInfo;
 import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
@@ -88,58 +87,10 @@ public class RIJPreParseData
     return localObject2;
   }
   
-  public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return "";
-    }
-    Object localObject1;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramAbsBaseArticleInfo.proteusItemsData);
-      localObject2 = localJSONObject.optString("style_ID", "");
-      localObject1 = localObject2;
-      try
-      {
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label112;
-        }
-        localObject1 = localJSONObject.optString("pts_page_name", "");
-      }
-      catch (JSONException localJSONException1)
-      {
-        localObject1 = localObject2;
-      }
-      localObject2 = new StringBuilder();
-    }
-    catch (JSONException localJSONException2)
-    {
-      localObject1 = "";
-    }
-    ((StringBuilder)localObject2).append("[getNewStyleName] e = ");
-    ((StringBuilder)localObject2).append(localJSONException2);
-    ((StringBuilder)localObject2).append(", articleInfo title = ");
-    ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mTitle);
-    QLog.e("RIJPreParseData", 1, ((StringBuilder)localObject2).toString());
-    label112:
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("[getNewStyleName] newStyleName = ");
-    ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append(", articleInfo title = ");
-    ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mTitle);
-    ((StringBuilder)localObject2).append(", rowKey = ");
-    ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.innerUniqueID);
-    QLog.i("RIJPreParseData", 1, ((StringBuilder)localObject2).toString());
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      return paramString;
-    }
-    return localObject1;
-  }
-  
   @Deprecated
   public static String a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!ReadInJoyHelper.b(RIJQQAppInterfaceUtil.a()))
+    if (!ReadInJoyHelper.b(RIJQQAppInterfaceUtil.e()))
     {
       if (QLog.isColorLevel())
       {
@@ -185,9 +136,166 @@ public class RIJPreParseData
     return paramString.replace((CharSequence)localObject3, localStringBuilder.toString());
   }
   
-  public static String a(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static URL a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
   {
-    paramString = a(paramString);
+    paramAbsBaseArticleInfo = c(paramString);
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.length() > 0))
+    {
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.optJSONObject(0);
+      if (paramAbsBaseArticleInfo != null) {
+        try
+        {
+          paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.optString("picture");
+          paramAbsBaseArticleInfo = new PublicAccountHttpDownloaderImpl().makeURL(paramAbsBaseArticleInfo, 3);
+          return paramAbsBaseArticleInfo;
+        }
+        catch (Exception paramAbsBaseArticleInfo)
+        {
+          QLog.e("RIJPreParseData", 1, new Object[] { "getReadinjoyVideoConvelFromJson", QLog.getStackTraceString(paramAbsBaseArticleInfo) });
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static URL a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    Object localObject = paramString;
+    if (a(paramString))
+    {
+      if (paramBoolean1) {
+        localObject = ReadInJoyDisplayUtils.f();
+      } else {
+        localObject = ReadInJoyDisplayUtils.b();
+      }
+      localObject = a(paramString, ((Integer)((Pair)localObject).second).intValue(), ((Integer)((Pair)localObject).first).intValue(), 3);
+    }
+    return RIJConvertString2URL.b((String)localObject);
+  }
+  
+  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s.b != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s.b.size() > 0))
+    {
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.s.b.iterator();
+      while (paramAbsBaseArticleInfo.hasNext())
+      {
+        UGCPicInfo localUGCPicInfo = (UGCPicInfo)paramAbsBaseArticleInfo.next();
+        if (localUGCPicInfo != null)
+        {
+          localUGCPicInfo.d = RIJConvertString2URL.a(localUGCPicInfo.d);
+          localUGCPicInfo.e = RIJConvertString2URL.a(localUGCPicInfo.e);
+        }
+      }
+    }
+  }
+  
+  private static void a(String paramString, JSONObject paramJSONObject, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ("mini_program_name".equals(paramString)) {
+      paramAbsBaseArticleInfo.miniProgramName = paramJSONObject.optString("mini_program_name");
+    }
+    if ("movie_name".equals(paramString)) {
+      paramAbsBaseArticleInfo.miniAppMovieName = paramJSONObject.optString("movie_name");
+    }
+    if ("exRowkey".equals(paramString)) {
+      paramAbsBaseArticleInfo.miniRowKey = paramJSONObject.optString("exRowkey");
+    }
+  }
+  
+  @Deprecated
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    paramString = paramString.split("/");
+    if (paramString.length < 2) {
+      return false;
+    }
+    paramString = paramString[(paramString.length - 2)].split("_");
+    if (paramString.length < 1) {
+      return false;
+    }
+    return "open".equals(paramString[(paramString.length - 1)]);
+  }
+  
+  public static URL[] a(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString = (JSONObject)new JSONTokener(paramString).nextValue();
+        if (paramString != null)
+        {
+          if (paramString.length() <= 0) {
+            return null;
+          }
+          JSONArray localJSONArray = paramString.optJSONArray("pictures");
+          if ((localJSONArray != null) && (localJSONArray.length() > 0))
+          {
+            URL[] arrayOfURL = new URL[localJSONArray.length()];
+            Object localObject = ReadInJoyDisplayUtils.b();
+            paramString = (String)localObject;
+            if (!RIJFeedsType.ab(paramAbsBaseArticleInfo)) {
+              break label248;
+            }
+            i = paramAbsBaseArticleInfo.mGalleryFeedsInfo.enum_article_style.get();
+            if (i == 2)
+            {
+              paramString = ReadInJoyDisplayUtils.c();
+              break label248;
+            }
+            if (i == 3)
+            {
+              paramString = ReadInJoyDisplayUtils.e();
+              break label248;
+            }
+            paramString = (String)localObject;
+            if (i != 1) {
+              break label248;
+            }
+            paramString = ReadInJoyDisplayUtils.d();
+            break label248;
+            if (i < localJSONArray.length())
+            {
+              localObject = localJSONArray.optJSONObject(i).optString("picture");
+              if (!TextUtils.isEmpty((CharSequence)localObject))
+              {
+                paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject;
+                if (a((String)localObject)) {
+                  paramAbsBaseArticleInfo = a((String)localObject, ((Integer)paramString.second).intValue(), ((Integer)paramString.first).intValue(), 1);
+                }
+                arrayOfURL[i] = new PublicAccountHttpDownloaderImpl().makeURL(paramAbsBaseArticleInfo, 3);
+              }
+              i += 1;
+              continue;
+            }
+            return arrayOfURL;
+          }
+        }
+        return null;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("RIJPreParseData", 1, new Object[] { "getReadinjoyFeedsPicturesFromJson", QLog.getStackTraceString(paramString) });
+        return null;
+      }
+      label248:
+      int i = 0;
+    }
+  }
+  
+  public static String b(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    paramString = c(paramString);
     if ((paramString != null) && (paramString.length() > 0))
     {
       Object localObject2 = paramString.optJSONObject(0);
@@ -245,7 +353,7 @@ public class RIJPreParseData
                     catch (Exception localException)
                     {
                       paramString = paramAbsBaseArticleInfo;
-                      break label302;
+                      break label326;
                     }
                   }
                 }
@@ -259,7 +367,7 @@ public class RIJPreParseData
         catch (Exception paramAbsBaseArticleInfo)
         {
           AbsBaseArticleInfo localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-          label302:
+          label326:
           localAbsBaseArticleInfo.printStackTrace();
           l = 0L;
         }
@@ -297,29 +405,7 @@ public class RIJPreParseData
     return null;
   }
   
-  public static URL a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
-  {
-    paramAbsBaseArticleInfo = a(paramString);
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.length() > 0))
-    {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.optJSONObject(0);
-      if (paramAbsBaseArticleInfo != null) {
-        try
-        {
-          paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.optString("picture");
-          paramAbsBaseArticleInfo = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramAbsBaseArticleInfo, 3);
-          return paramAbsBaseArticleInfo;
-        }
-        catch (Exception paramAbsBaseArticleInfo)
-        {
-          QLog.e("RIJPreParseData", 1, new Object[] { "getReadinjoyVideoConvelFromJson", QLog.getStackTraceString(paramAbsBaseArticleInfo) });
-        }
-      }
-    }
-    return null;
-  }
-  
-  public static URL a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public static URL b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -327,17 +413,183 @@ public class RIJPreParseData
     Object localObject = paramString;
     if (a(paramString))
     {
-      if (paramBoolean1) {
-        localObject = ReadInJoyDisplayUtils.e();
-      } else {
-        localObject = ReadInJoyDisplayUtils.a();
-      }
+      localObject = ReadInJoyDisplayUtils.d();
       localObject = a(paramString, ((Integer)((Pair)localObject).second).intValue(), ((Integer)((Pair)localObject).first).intValue(), 3);
     }
-    return RIJConvertString2URL.a((String)localObject);
+    return RIJConvertString2URL.b((String)localObject);
   }
   
-  private static JSONArray a(String paramString)
+  private static JSONObject b(String paramString)
+  {
+    paramString = c(paramString);
+    if ((paramString != null) && (paramString.length() > 0)) {
+      return paramString.optJSONObject(0);
+    }
+    return null;
+  }
+  
+  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    for (;;)
+    {
+      try
+      {
+        if ((paramAbsBaseArticleInfo.mDislikeInfos == null) || (paramAbsBaseArticleInfo.mDislikeInfos.size() <= 0)) {
+          paramAbsBaseArticleInfo.mDislikeInfos = DislikeInfo.a(paramAbsBaseArticleInfo.mDiskLikeInfoString);
+        }
+        paramAbsBaseArticleInfo.mPictures = a(paramAbsBaseArticleInfo.mJsonPictureList, paramAbsBaseArticleInfo);
+        Object localObject;
+        if ((RIJItemViewTypeUtils.s(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.z(paramAbsBaseArticleInfo)))
+        {
+          paramAbsBaseArticleInfo.mSinglePicture = a(((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.v.g.get(0)).f, true, true);
+        }
+        else if (((paramAbsBaseArticleInfo instanceof BaseArticleInfo)) && ((RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.e(paramAbsBaseArticleInfo))))
+        {
+          paramAbsBaseArticleInfo.mSinglePicture = a(paramAbsBaseArticleInfo.mFirstPagePicUrl, RIJItemViewTypeUtils.f(paramAbsBaseArticleInfo), true);
+          a(paramAbsBaseArticleInfo);
+          d(paramAbsBaseArticleInfo);
+        }
+        else if ((RIJFeedsType.ab(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mGalleryFeedsInfo.enum_article_style.get() == 1))
+        {
+          paramAbsBaseArticleInfo.mSinglePicture = b(paramAbsBaseArticleInfo.mFirstPagePicUrl, RIJItemViewTypeUtils.f(paramAbsBaseArticleInfo), true);
+        }
+        else
+        {
+          localObject = paramAbsBaseArticleInfo.mFirstPagePicUrl;
+          boolean bool2 = paramAbsBaseArticleInfo.mShowBigPicture;
+          if (paramAbsBaseArticleInfo.mVideoType != 0) {
+            break label668;
+          }
+          bool1 = true;
+          paramAbsBaseArticleInfo.mSinglePicture = a((String)localObject, bool2, bool1);
+        }
+        if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mFirstPagePicUrl)) {
+          paramAbsBaseArticleInfo.mFirstPagePicUrl = RIJConvertString2URL.a(paramAbsBaseArticleInfo.mFirstPagePicUrl);
+        }
+        if (paramAbsBaseArticleInfo.mVideoCoverUrl != null) {
+          paramAbsBaseArticleInfo.mVideoCoverUrl = new PublicAccountHttpDownloaderImpl().makeURL(paramAbsBaseArticleInfo.mVideoCoverUrl.toString(), 3);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("preParseArticleJsonParam mJsonVideoList = ");
+          ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mJsonVideoList);
+          QLog.d("RIJPreParseData", 2, ((StringBuilder)localObject).toString());
+        }
+        if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mJsonVideoList))
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("preParseArticleJsonParam article.mArticleID:");
+            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mArticleID);
+            ((StringBuilder)localObject).append(" article.mTitle:");
+            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mTitle);
+            ((StringBuilder)localObject).append(" article.mSummary:");
+            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mSummary);
+            ((StringBuilder)localObject).append("mJsonVideoList:");
+            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mJsonVideoList);
+            QLog.d("RIJPreParseData", 2, ((StringBuilder)localObject).toString());
+          }
+          paramAbsBaseArticleInfo.mVideoCoverUrl = a(paramAbsBaseArticleInfo, paramAbsBaseArticleInfo.mJsonVideoList);
+          localObject = b(paramAbsBaseArticleInfo.mJsonVideoList, paramAbsBaseArticleInfo);
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = ((String)localObject).split(";");
+            paramAbsBaseArticleInfo.mVideoVid = localObject[0];
+            paramAbsBaseArticleInfo.mVideoDuration = Integer.valueOf(localObject[1]).intValue();
+            paramAbsBaseArticleInfo.thirdIcon = localObject[2];
+            paramAbsBaseArticleInfo.thirdName = localObject[3];
+            paramAbsBaseArticleInfo.thirdAction = localObject[4];
+            if ((paramAbsBaseArticleInfo.mFeedType != 3) && (TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID))) {
+              paramAbsBaseArticleInfo.innerUniqueID = localObject[5];
+            }
+            paramAbsBaseArticleInfo.busiType = Integer.valueOf(localObject[6]).intValue();
+            paramAbsBaseArticleInfo.mVideoJsonWidth = Integer.valueOf(localObject[7]).intValue();
+            paramAbsBaseArticleInfo.mVideoJsonHeight = Integer.valueOf(localObject[8]).intValue();
+            paramAbsBaseArticleInfo.thirdUin = localObject[9];
+            paramAbsBaseArticleInfo.thirdUinName = localObject[10];
+            paramAbsBaseArticleInfo.mXGFileSize = Long.valueOf(localObject[11]).longValue();
+            paramAbsBaseArticleInfo.mThirdVideoURL = localObject[12];
+            paramAbsBaseArticleInfo.mThirdVideoURLExpireTime = Long.valueOf(localObject[13]).longValue();
+          }
+          b(paramAbsBaseArticleInfo, paramAbsBaseArticleInfo.mJsonVideoList);
+          return;
+        }
+        if (((paramAbsBaseArticleInfo instanceof BaseArticleInfo)) && (!RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)))
+        {
+          paramAbsBaseArticleInfo.busiType = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.s.c.get(0)).o;
+          return;
+        }
+      }
+      catch (Exception paramAbsBaseArticleInfo)
+      {
+        QLog.e("RIJPreParseData", 1, new Object[] { "preParseArticleJsonParam", QLog.getStackTraceString(paramAbsBaseArticleInfo) });
+      }
+      return;
+      label668:
+      boolean bool1 = false;
+    }
+  }
+  
+  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
+  {
+    paramString = b(paramString);
+    if (paramString == null) {
+      return;
+    }
+    paramAbsBaseArticleInfo.setFirstFrameUrl(RIJConvertString2URL.b(paramString.optString("first_frame")));
+  }
+  
+  public static String c(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return "";
+    }
+    Object localObject1;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramAbsBaseArticleInfo.proteusItemsData);
+      localObject2 = localJSONObject.optString("style_ID", "");
+      localObject1 = localObject2;
+      try
+      {
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label120;
+        }
+        localObject1 = localJSONObject.optString("pts_page_name", "");
+      }
+      catch (JSONException localJSONException1)
+      {
+        localObject1 = localObject2;
+      }
+      localObject2 = new StringBuilder();
+    }
+    catch (JSONException localJSONException2)
+    {
+      localObject1 = "";
+    }
+    ((StringBuilder)localObject2).append("[getNewStyleName] e = ");
+    ((StringBuilder)localObject2).append(localJSONException2);
+    ((StringBuilder)localObject2).append(", articleInfo title = ");
+    ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mTitle);
+    QLog.e("RIJPreParseData", 1, ((StringBuilder)localObject2).toString());
+    label120:
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[getNewStyleName] newStyleName = ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(", articleInfo title = ");
+    ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mTitle);
+    ((StringBuilder)localObject2).append(", rowKey = ");
+    ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.innerUniqueID);
+    QLog.i("RIJPreParseData", 1, ((StringBuilder)localObject2).toString());
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      return paramString;
+    }
+    return localObject1;
+  }
+  
+  private static JSONArray c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -366,259 +618,6 @@ public class RIJPreParseData
       QLog.e("RIJPreParseData", 1, new Object[] { "getVideoJsonArray", QLog.getStackTraceString(paramString) });
     }
     return null;
-  }
-  
-  private static JSONObject a(String paramString)
-  {
-    paramString = a(paramString);
-    if ((paramString != null) && (paramString.length() > 0)) {
-      return paramString.optJSONObject(0);
-    }
-    return null;
-  }
-  
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a.size() > 0))
-    {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a.iterator();
-      while (paramAbsBaseArticleInfo.hasNext())
-      {
-        UGCPicInfo localUGCPicInfo = (UGCPicInfo)paramAbsBaseArticleInfo.next();
-        if (localUGCPicInfo != null)
-        {
-          localUGCPicInfo.b = RIJConvertString2URL.a(localUGCPicInfo.b);
-          localUGCPicInfo.c = RIJConvertString2URL.a(localUGCPicInfo.c);
-        }
-      }
-    }
-  }
-  
-  public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString == null) {
-      return;
-    }
-    paramAbsBaseArticleInfo.setFirstFrameUrl(RIJConvertString2URL.a(paramString.optString("first_frame")));
-  }
-  
-  private static void a(String paramString, JSONObject paramJSONObject, AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ("mini_program_name".equals(paramString)) {
-      paramAbsBaseArticleInfo.miniProgramName = paramJSONObject.optString("mini_program_name");
-    }
-    if ("movie_name".equals(paramString)) {
-      paramAbsBaseArticleInfo.miniAppMovieName = paramJSONObject.optString("movie_name");
-    }
-    if ("exRowkey".equals(paramString)) {
-      paramAbsBaseArticleInfo.miniRowKey = paramJSONObject.optString("exRowkey");
-    }
-  }
-  
-  @Deprecated
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    paramString = paramString.split("/");
-    if (paramString.length < 2) {
-      return false;
-    }
-    paramString = paramString[(paramString.length - 2)].split("_");
-    if (paramString.length < 1) {
-      return false;
-    }
-    return "open".equals(paramString[(paramString.length - 1)]);
-  }
-  
-  public static URL[] a(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString = (JSONObject)new JSONTokener(paramString).nextValue();
-        if (paramString != null)
-        {
-          if (paramString.length() <= 0) {
-            return null;
-          }
-          JSONArray localJSONArray = paramString.optJSONArray("pictures");
-          if ((localJSONArray != null) && (localJSONArray.length() > 0))
-          {
-            URL[] arrayOfURL = new URL[localJSONArray.length()];
-            Object localObject = ReadInJoyDisplayUtils.a();
-            paramString = (String)localObject;
-            if (!RIJFeedsType.T(paramAbsBaseArticleInfo)) {
-              break label253;
-            }
-            i = paramAbsBaseArticleInfo.mGalleryFeedsInfo.enum_article_style.get();
-            if (i == 2)
-            {
-              paramString = ReadInJoyDisplayUtils.b();
-              break label253;
-            }
-            if (i == 3)
-            {
-              paramString = ReadInJoyDisplayUtils.d();
-              break label253;
-            }
-            paramString = (String)localObject;
-            if (i != 1) {
-              break label253;
-            }
-            paramString = ReadInJoyDisplayUtils.c();
-            break label253;
-            if (i < localJSONArray.length())
-            {
-              localObject = localJSONArray.optJSONObject(i).optString("picture");
-              if (!TextUtils.isEmpty((CharSequence)localObject))
-              {
-                paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject;
-                if (a((String)localObject)) {
-                  paramAbsBaseArticleInfo = a((String)localObject, ((Integer)paramString.second).intValue(), ((Integer)paramString.first).intValue(), 1);
-                }
-                arrayOfURL[i] = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramAbsBaseArticleInfo, 3);
-              }
-              i += 1;
-              continue;
-            }
-            return arrayOfURL;
-          }
-        }
-        return null;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("RIJPreParseData", 1, new Object[] { "getReadinjoyFeedsPicturesFromJson", QLog.getStackTraceString(paramString) });
-        return null;
-      }
-      label253:
-      int i = 0;
-    }
-  }
-  
-  public static URL b(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    Object localObject = paramString;
-    if (a(paramString))
-    {
-      localObject = ReadInJoyDisplayUtils.c();
-      localObject = a(paramString, ((Integer)((Pair)localObject).second).intValue(), ((Integer)((Pair)localObject).first).intValue(), 3);
-    }
-    return RIJConvertString2URL.a((String)localObject);
-  }
-  
-  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    for (;;)
-    {
-      try
-      {
-        if ((paramAbsBaseArticleInfo.mDislikeInfos == null) || (paramAbsBaseArticleInfo.mDislikeInfos.size() <= 0)) {
-          paramAbsBaseArticleInfo.mDislikeInfos = DislikeInfo.a(paramAbsBaseArticleInfo.mDiskLikeInfoString);
-        }
-        paramAbsBaseArticleInfo.mPictures = a(paramAbsBaseArticleInfo.mJsonPictureList, paramAbsBaseArticleInfo);
-        Object localObject;
-        if ((RIJItemViewTypeUtils.s(paramAbsBaseArticleInfo)) && (!RIJItemViewTypeUtils.z(paramAbsBaseArticleInfo)))
-        {
-          paramAbsBaseArticleInfo.mSinglePicture = a(((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.a.get(0)).d, true, true);
-        }
-        else if (((paramAbsBaseArticleInfo instanceof BaseArticleInfo)) && ((RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)) || (RIJItemViewTypeUtils.e(paramAbsBaseArticleInfo))))
-        {
-          paramAbsBaseArticleInfo.mSinglePicture = a(paramAbsBaseArticleInfo.mFirstPagePicUrl, RIJItemViewTypeUtils.f(paramAbsBaseArticleInfo), true);
-          a(paramAbsBaseArticleInfo);
-          d(paramAbsBaseArticleInfo);
-        }
-        else if ((RIJFeedsType.T(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mGalleryFeedsInfo.enum_article_style.get() == 1))
-        {
-          paramAbsBaseArticleInfo.mSinglePicture = b(paramAbsBaseArticleInfo.mFirstPagePicUrl, RIJItemViewTypeUtils.f(paramAbsBaseArticleInfo), true);
-        }
-        else
-        {
-          localObject = paramAbsBaseArticleInfo.mFirstPagePicUrl;
-          boolean bool2 = paramAbsBaseArticleInfo.mShowBigPicture;
-          if (paramAbsBaseArticleInfo.mVideoType != 0) {
-            break label671;
-          }
-          bool1 = true;
-          paramAbsBaseArticleInfo.mSinglePicture = a((String)localObject, bool2, bool1);
-        }
-        if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mFirstPagePicUrl)) {
-          paramAbsBaseArticleInfo.mFirstPagePicUrl = RIJConvertString2URL.a(paramAbsBaseArticleInfo.mFirstPagePicUrl);
-        }
-        if (paramAbsBaseArticleInfo.mVideoCoverUrl != null) {
-          paramAbsBaseArticleInfo.mVideoCoverUrl = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramAbsBaseArticleInfo.mVideoCoverUrl.toString(), 3);
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("preParseArticleJsonParam mJsonVideoList = ");
-          ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mJsonVideoList);
-          QLog.d("RIJPreParseData", 2, ((StringBuilder)localObject).toString());
-        }
-        if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mJsonVideoList))
-        {
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).append("preParseArticleJsonParam article.mArticleID:");
-            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mArticleID);
-            ((StringBuilder)localObject).append(" article.mTitle:");
-            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mTitle);
-            ((StringBuilder)localObject).append(" article.mSummary:");
-            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mSummary);
-            ((StringBuilder)localObject).append("mJsonVideoList:");
-            ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mJsonVideoList);
-            QLog.d("RIJPreParseData", 2, ((StringBuilder)localObject).toString());
-          }
-          paramAbsBaseArticleInfo.mVideoCoverUrl = a(paramAbsBaseArticleInfo, paramAbsBaseArticleInfo.mJsonVideoList);
-          localObject = a(paramAbsBaseArticleInfo.mJsonVideoList, paramAbsBaseArticleInfo);
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            localObject = ((String)localObject).split(";");
-            paramAbsBaseArticleInfo.mVideoVid = localObject[0];
-            paramAbsBaseArticleInfo.mVideoDuration = Integer.valueOf(localObject[1]).intValue();
-            paramAbsBaseArticleInfo.thirdIcon = localObject[2];
-            paramAbsBaseArticleInfo.thirdName = localObject[3];
-            paramAbsBaseArticleInfo.thirdAction = localObject[4];
-            if ((paramAbsBaseArticleInfo.mFeedType != 3) && (TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID))) {
-              paramAbsBaseArticleInfo.innerUniqueID = localObject[5];
-            }
-            paramAbsBaseArticleInfo.busiType = Integer.valueOf(localObject[6]).intValue();
-            paramAbsBaseArticleInfo.mVideoJsonWidth = Integer.valueOf(localObject[7]).intValue();
-            paramAbsBaseArticleInfo.mVideoJsonHeight = Integer.valueOf(localObject[8]).intValue();
-            paramAbsBaseArticleInfo.thirdUin = localObject[9];
-            paramAbsBaseArticleInfo.thirdUinName = localObject[10];
-            paramAbsBaseArticleInfo.mXGFileSize = Long.valueOf(localObject[11]).longValue();
-            paramAbsBaseArticleInfo.mThirdVideoURL = localObject[12];
-            paramAbsBaseArticleInfo.mThirdVideoURLExpireTime = Long.valueOf(localObject[13]).longValue();
-          }
-          a(paramAbsBaseArticleInfo, paramAbsBaseArticleInfo.mJsonVideoList);
-          return;
-        }
-        if (((paramAbsBaseArticleInfo instanceof BaseArticleInfo)) && (!RIJItemViewTypeUtils.x(paramAbsBaseArticleInfo)))
-        {
-          paramAbsBaseArticleInfo.busiType = ((UGCVideoInfo)paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.b.get(0)).f;
-          return;
-        }
-      }
-      catch (Exception paramAbsBaseArticleInfo)
-      {
-        QLog.e("RIJPreParseData", 1, new Object[] { "preParseArticleJsonParam", QLog.getStackTraceString(paramAbsBaseArticleInfo) });
-      }
-      return;
-      label671:
-      boolean bool1 = false;
-    }
   }
   
   public static void c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -652,16 +651,16 @@ public class RIJPreParseData
   
   private static void d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.size() > 0))
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t.a != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t.a.size() > 0))
     {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.iterator();
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.t.a.iterator();
       while (paramAbsBaseArticleInfo.hasNext())
       {
         PGCPicInfo localPGCPicInfo = (PGCPicInfo)paramAbsBaseArticleInfo.next();
         if (localPGCPicInfo != null)
         {
-          localPGCPicInfo.b = RIJConvertString2URL.a(localPGCPicInfo.b);
-          localPGCPicInfo.c = RIJConvertString2URL.a(localPGCPicInfo.c);
+          localPGCPicInfo.d = RIJConvertString2URL.a(localPGCPicInfo.d);
+          localPGCPicInfo.e = RIJConvertString2URL.a(localPGCPicInfo.e);
         }
       }
     }
@@ -669,7 +668,7 @@ public class RIJPreParseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.utils.RIJPreParseData
  * JD-Core Version:    0.7.0.1
  */

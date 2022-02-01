@@ -18,9 +18,9 @@ import org.jetbrains.annotations.NotNull;
 final class QueueDownloader
   implements INetInfoHandler, DownloaderInterface
 {
-  private DownloaderFactory.DownloadConfig jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory$DownloadConfig;
-  private LinkedList<DownloadTask> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  AtomicInteger a = new AtomicInteger(1);
+  private DownloaderFactory.DownloadConfig b;
+  private LinkedList<DownloadTask> c = new LinkedList();
   
   public QueueDownloader(AppRuntime paramAppRuntime, DownloaderFactory.DownloadConfig paramDownloadConfig)
   {
@@ -28,25 +28,25 @@ final class QueueDownloader
     if (paramDownloadConfig == null) {
       localDownloadConfig = new DownloaderFactory.DownloadConfig();
     }
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory$DownloadConfig = localDownloadConfig;
-    if (this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory$DownloadConfig.a) {
+    this.b = localDownloadConfig;
+    if (this.b.a) {
       AppNetConnInfo.registerConnectionChangeReceiver(paramAppRuntime.getApplication(), this);
     }
   }
   
-  private DownloadTask a()
+  private DownloadTask b()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      if (!this.c.isEmpty())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (!localDownloadTask.a())
+          if (!localDownloadTask.c())
           {
-            localDownloadTask.a();
+            localDownloadTask.d();
             return localDownloadTask;
           }
         }
@@ -68,37 +68,37 @@ final class QueueDownloader
   {
     try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      synchronized (this.c)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          long l = localDownloadTask.d;
+          long l = localDownloadTask.u;
           boolean bool2 = false;
           boolean bool1 = bool2;
           if (l > 0L)
           {
             l = System.currentTimeMillis() / 1000L;
             bool1 = bool2;
-            if (!localDownloadTask.a())
+            if (!localDownloadTask.c())
             {
               bool1 = bool2;
-              if (l > localDownloadTask.c + localDownloadTask.d) {
+              if (l > localDownloadTask.t + localDownloadTask.u) {
                 bool1 = true;
               }
             }
           }
-          if ((localDownloadTask.b()) || (bool1))
+          if ((localDownloadTask.f()) || (bool1))
           {
             localIterator.remove();
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("remove task[");
-              localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append(localDownloadTask.b);
               localStringBuilder.append("], isCancal=");
-              localStringBuilder.append(localDownloadTask.b());
+              localStringBuilder.append(localDownloadTask.f());
               localStringBuilder.append(", timeOut=");
               localStringBuilder.append(bool1);
               QLog.d("QueueDownloader", 2, localStringBuilder.toString());
@@ -109,23 +109,23 @@ final class QueueDownloader
         {
           ??? = new StringBuilder();
           ((StringBuilder)???).append("doTask | downloadLimitCount=");
-          ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          ((StringBuilder)???).append(this.a.get());
           ((StringBuilder)???).append(",maxDownloadCount=");
           ((StringBuilder)???).append(3);
           ((StringBuilder)???).append(",downloadQueue size=");
-          ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilLinkedList.size());
+          ((StringBuilder)???).append(this.c.size());
           QLog.d("QueueDownloader", 2, ((StringBuilder)???).toString());
         }
-        while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= 3)
+        while (this.a.get() <= 3)
         {
-          ??? = a();
+          ??? = b();
           if (??? == null)
           {
             QLog.d("QueueDownloader", 2, "doTask | run() null");
             return;
           }
           b((DownloadTask)???);
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+          this.a.addAndGet(1);
         }
         return;
       }
@@ -137,11 +137,11 @@ final class QueueDownloader
   
   public void a(DownloadTask paramDownloadTask)
   {
-    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
+    LinkedList localLinkedList = this.c;
     if (paramDownloadTask != null) {}
     try
     {
-      if ((!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) && (this.jdField_a_of_type_JavaUtilLinkedList.contains(paramDownloadTask)))
+      if ((!this.c.isEmpty()) && (this.c.contains(paramDownloadTask)))
       {
         if (QLog.isColorLevel())
         {
@@ -150,8 +150,8 @@ final class QueueDownloader
           localStringBuilder.append(paramDownloadTask);
           QLog.d("QueueDownloader", 2, localStringBuilder.toString());
         }
-        paramDownloadTask.j();
-        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramDownloadTask);
+        paramDownloadTask.r();
+        this.c.remove(paramDownloadTask);
       }
       return;
     }
@@ -166,32 +166,32 @@ final class QueueDownloader
     ((StringBuilder)???).append(",key=");
     ((StringBuilder)???).append(paramString);
     QLog.d("QueueDownloader", 2, ((StringBuilder)???).toString());
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      if (!this.c.isEmpty())
       {
         Object localObject2;
         if (paramBoolean)
         {
-          paramString = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+          paramString = this.c.iterator();
           while (paramString.hasNext())
           {
             localObject2 = (DownloadTask)paramString.next();
             ((DownloadTask)localObject2).a(true);
-            ((DownloadTask)localObject2).j();
+            ((DownloadTask)localObject2).r();
           }
-          this.jdField_a_of_type_JavaUtilLinkedList.clear();
+          this.c.clear();
         }
         else if ((paramString != null) && (!TextUtils.isEmpty(paramString)))
         {
-          localObject2 = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+          localObject2 = this.c.iterator();
           ArrayList localArrayList = new ArrayList();
           while (((Iterator)localObject2).hasNext())
           {
             DownloadTask localDownloadTask = (DownloadTask)((Iterator)localObject2).next();
-            if (paramString.equals(localDownloadTask.jdField_a_of_type_JavaLangString))
+            if (paramString.equals(localDownloadTask.b))
             {
-              if (!localDownloadTask.a())
+              if (!localDownloadTask.c())
               {
                 ((Iterator)localObject2).remove();
                 localArrayList.add(localDownloadTask);
@@ -199,17 +199,17 @@ final class QueueDownloader
               else
               {
                 localDownloadTask.a(true);
-                localDownloadTask.j();
+                localDownloadTask.r();
               }
             }
-            else if ((localDownloadTask.b()) && (!localDownloadTask.a()))
+            else if ((localDownloadTask.f()) && (!localDownloadTask.c()))
             {
               ((Iterator)localObject2).remove();
               localArrayList.add(localDownloadTask);
             }
           }
           if (localArrayList.size() > 0) {
-            this.jdField_a_of_type_JavaUtilLinkedList.removeAll(localArrayList);
+            this.c.removeAll(localArrayList);
           }
         }
         else
@@ -227,17 +227,17 @@ final class QueueDownloader
   
   public DownloadTask getTask(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedList;
+    Object localObject1 = this.c;
     if (paramString != null) {}
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      if (!this.c.isEmpty())
       {
-        Object localObject2 = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        Object localObject2 = this.c.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)((Iterator)localObject2).next();
-          if (paramString.equals(localDownloadTask.jdField_a_of_type_JavaLangString))
+          if (paramString.equals(localDownloadTask.b))
           {
             if (QLog.isColorLevel())
             {
@@ -276,20 +276,20 @@ final class QueueDownloader
   
   public void onNetMobile2None()
   {
-    ??? = this.jdField_a_of_type_JavaUtilLinkedList;
+    ??? = this.c;
     if ((??? != null) && (???.size() > 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QueueDownloader", 2, "queueDownload network-onNetMobile2None");
       }
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      synchronized (this.c)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (localDownloadTask.a() == 2) {
-            localDownloadTask.i();
+          if (localDownloadTask.e() == 2) {
+            localDownloadTask.q();
           }
         }
         return;
@@ -320,16 +320,16 @@ final class QueueDownloader
   
   public void onNetWifi2Mobile(String arg1)
   {
-    ??? = this.jdField_a_of_type_JavaUtilLinkedList;
+    ??? = this.c;
     if ((??? != null) && (???.size() > 0)) {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      synchronized (this.c)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (localDownloadTask.a() == 2) {
-            localDownloadTask.g();
+          if (localDownloadTask.e() == 2) {
+            localDownloadTask.o();
           }
         }
         return;
@@ -339,20 +339,20 @@ final class QueueDownloader
   
   public void onNetWifi2None()
   {
-    ??? = this.jdField_a_of_type_JavaUtilLinkedList;
+    ??? = this.c;
     if ((??? != null) && (???.size() > 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QueueDownloader", 2, "queueDownload network-onNetWifi2None");
       }
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      synchronized (this.c)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
-          if (localDownloadTask.a() == 2) {
-            localDownloadTask.h();
+          if (localDownloadTask.e() == 2) {
+            localDownloadTask.p();
           }
         }
         return;
@@ -364,19 +364,19 @@ final class QueueDownloader
   {
     if (DownloaderFactory.a(paramDownloadTask))
     {
-      if (getTask(paramDownloadTask.jdField_a_of_type_JavaLangString) == paramDownloadTask) {
+      if (getTask(paramDownloadTask.b) == paramDownloadTask) {
         return;
       }
-      DownloadTask localDownloadTask = getTask(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      DownloadTask localDownloadTask = getTask(paramDownloadTask.b);
       if (localDownloadTask != null)
       {
-        if (localDownloadTask.s)
+        if (localDownloadTask.T)
         {
           paramDownloadTask.a(???);
           paramDownloadTask.a(paramBundle);
           ??? = BaseApplicationImpl.getApplication().getRuntime();
-          if ((??? != null) && (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a < 0L)) {
-            paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a = ???.getLongAccountUin();
+          if ((??? != null) && (paramDownloadTask.S.b < 0L)) {
+            paramDownloadTask.S.b = ???.getLongAccountUin();
           }
           localDownloadTask.a(paramDownloadTask);
         }
@@ -385,28 +385,28 @@ final class QueueDownloader
       paramDownloadTask.a(???);
       paramDownloadTask.a(paramBundle);
       ??? = BaseApplicationImpl.getApplication().getRuntime();
-      if ((??? != null) && (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a < 0L)) {
-        paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a = ???.getLongAccountUin();
+      if ((??? != null) && (paramDownloadTask.S.b < 0L)) {
+        paramDownloadTask.S.b = ???.getLongAccountUin();
       }
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      synchronized (this.c)
       {
-        paramBundle = getTask(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        paramBundle = getTask(paramDownloadTask.b);
         if (paramBundle == null)
         {
-          paramDownloadTask.c = ((int)(System.currentTimeMillis() / 1000L));
-          if (paramDownloadTask.b) {
-            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramDownloadTask);
+          paramDownloadTask.t = ((int)(System.currentTimeMillis() / 1000L));
+          if (paramDownloadTask.m) {
+            this.c.addFirst(paramDownloadTask);
           } else {
-            this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramDownloadTask);
+            this.c.addLast(paramDownloadTask);
           }
         }
-        else if ((paramDownloadTask.b) && (!paramBundle.a()) && (this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBundle)))
+        else if ((paramDownloadTask.m) && (!paramBundle.c()) && (this.c.remove(paramBundle)))
         {
-          this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramBundle);
+          this.c.addFirst(paramBundle);
         }
         ??? = new StringBuilder();
         ???.append("startDownload | task=");
-        ???.append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+        ???.append(paramDownloadTask.b);
         QLog.d("QueueDownloader", 2, ???.toString());
         a();
         return;
@@ -417,22 +417,22 @@ final class QueueDownloader
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    ??? = this.jdField_a_of_type_JavaUtilLinkedList;
+    ??? = this.c;
     if ((??? != null) && (((LinkedList)???).size() > 0)) {
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+      synchronized (this.c)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext())
         {
           DownloadTask localDownloadTask = (DownloadTask)localIterator.next();
           localStringBuilder.append("key=");
-          localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaLangString);
-          if ((localDownloadTask.jdField_a_of_type_JavaUtilList != null) && (localDownloadTask.jdField_a_of_type_JavaUtilList.size() > 0))
+          localStringBuilder.append(localDownloadTask.b);
+          if ((localDownloadTask.f != null) && (localDownloadTask.f.size() > 0))
           {
             localStringBuilder.append(",size=");
-            localStringBuilder.append(localDownloadTask.jdField_a_of_type_JavaUtilList.size());
+            localStringBuilder.append(localDownloadTask.f.size());
             localStringBuilder.append(",url=");
-            localStringBuilder.append((String)localDownloadTask.jdField_a_of_type_JavaUtilList.get(0));
+            localStringBuilder.append((String)localDownloadTask.f.get(0));
           }
           localStringBuilder.append(";");
         }
@@ -446,7 +446,7 @@ final class QueueDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.QueueDownloader
  * JD-Core Version:    0.7.0.1
  */

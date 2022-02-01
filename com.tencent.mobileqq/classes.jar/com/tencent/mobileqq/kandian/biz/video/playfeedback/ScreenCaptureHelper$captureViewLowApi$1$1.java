@@ -11,12 +11,12 @@ final class ScreenCaptureHelper$captureViewLowApi$1$1
   
   public final void run()
   {
-    ScreenCaptureHelper.a(this.this$0.this$0, this.a, this.this$0.a);
+    ScreenCaptureHelper.a(this.this$0.this$0, this.a, this.this$0.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeedback.ScreenCaptureHelper.captureViewLowApi.1.1
  * JD-Core Version:    0.7.0.1
  */

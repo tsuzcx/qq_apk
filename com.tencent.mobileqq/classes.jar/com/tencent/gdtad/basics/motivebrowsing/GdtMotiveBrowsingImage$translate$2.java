@@ -19,12 +19,12 @@ final class GdtMotiveBrowsingImage$translate$2
   
   public final int invoke()
   {
-    return ViewUtils.b(7.5F);
+    return ViewUtils.dpToPx(7.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingImage.translate.2
  * JD-Core Version:    0.7.0.1
  */

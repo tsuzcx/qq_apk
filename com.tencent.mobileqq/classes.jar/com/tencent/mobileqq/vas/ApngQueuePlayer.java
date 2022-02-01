@@ -15,25 +15,46 @@ import java.util.ArrayDeque;
 public class ApngQueuePlayer
   extends URLDrawableHelper.Adapter
 {
-  private static ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLDrawableDownListener.Adapter jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new ApngQueuePlayer.1(this);
-  ApngQueuePlayer.RepeatListener jdField_a_of_type_ComTencentMobileqqVasApngQueuePlayer$RepeatListener = new ApngQueuePlayer.RepeatListener(this);
-  private ArrayDeque<ApngQueuePlayer.DrawableBuilder> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
-  private boolean jdField_a_of_type_Boolean = true;
+  private static ColorDrawable c = new ColorDrawable(0);
+  ApngQueuePlayer.RepeatListener a = new ApngQueuePlayer.RepeatListener(this);
+  URLDrawableDownListener.Adapter b = new ApngQueuePlayer.1(this);
+  private boolean d = true;
+  private ImageView e;
+  private ArrayDeque<ApngQueuePlayer.DrawableBuilder> f = new ArrayDeque();
   
   public ApngQueuePlayer(ImageView paramImageView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
+    this.e = paramImageView;
     if ((paramImageView instanceof URLImageView)) {
-      ((URLImageView)paramImageView).setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
+      ((URLImageView)paramImageView).setURLDrawableDownListener(this.b);
     }
   }
   
-  private Drawable a()
+  private void b()
   {
-    Object localObject = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+    Object localObject = (ApngQueuePlayer.DrawableBuilder)this.f.poll();
+    if (localObject == null)
+    {
+      this.d = true;
+      return;
+    }
+    this.d = false;
+    localObject = ((ApngQueuePlayer.DrawableBuilder)localObject).a(c());
+    if (((URLDrawable)localObject).getStatus() == 1)
+    {
+      b();
+      return;
+    }
+    this.e.setImageDrawable((Drawable)localObject);
+    if (!(this.e instanceof URLImageView)) {
+      ((URLDrawable)localObject).setURLDrawableListener(this);
+    }
+  }
+  
+  private Drawable c()
+  {
+    Object localObject = c;
+    Drawable localDrawable = this.e.getDrawable();
     if (localDrawable != null)
     {
       if ((localDrawable instanceof URLDrawable)) {
@@ -44,38 +65,17 @@ public class ApngQueuePlayer
     return localObject;
   }
   
-  private void b()
-  {
-    Object localObject = (ApngQueuePlayer.DrawableBuilder)this.jdField_a_of_type_JavaUtilArrayDeque.poll();
-    if (localObject == null)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    localObject = ((ApngQueuePlayer.DrawableBuilder)localObject).a(a());
-    if (((URLDrawable)localObject).getStatus() == 1)
-    {
-      b();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    if (!(this.jdField_a_of_type_AndroidWidgetImageView instanceof URLImageView)) {
-      ((URLDrawable)localObject).setURLDrawableListener(this);
-    }
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayDeque.clear();
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_Boolean = true;
+    this.f.clear();
+    this.e.setImageDrawable(null);
+    this.d = true;
   }
   
   public void a(ApngQueuePlayer.DrawableBuilder paramDrawableBuilder)
   {
-    this.jdField_a_of_type_JavaUtilArrayDeque.add(paramDrawableBuilder);
-    if (this.jdField_a_of_type_Boolean) {
+    this.f.add(paramDrawableBuilder);
+    if (this.d) {
       b();
     }
   }
@@ -104,7 +104,7 @@ public class ApngQueuePlayer
     }
     if (paramURLDrawable.apngLoop != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqVasApngQueuePlayer$RepeatListener.a(paramURLDrawable);
+      this.a.a(paramURLDrawable);
       return;
     }
     b();
@@ -112,7 +112,7 @@ public class ApngQueuePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ApngQueuePlayer
  * JD-Core Version:    0.7.0.1
  */

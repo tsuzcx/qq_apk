@@ -13,15 +13,15 @@ class PublicAccountJavascriptInterfaceImpl$18
   
   public void run()
   {
-    boolean bool = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isFollowUin(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
+    boolean bool = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isFollowUin(this.a, this.b);
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("follow", bool);
+      this.c.put("follow", bool);
       localPublicAccountJavascriptInterfaceImpl = this.this$0;
-      str = this.b;
+      str = this.d;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("{ret:0, response:");
-      localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+      localStringBuilder.append(this.c.toString());
       localStringBuilder.append("}");
       localPublicAccountJavascriptInterfaceImpl.callJs(str, new String[] { localStringBuilder.toString() });
       return;
@@ -35,17 +35,17 @@ class PublicAccountJavascriptInterfaceImpl$18
       break label99;
     }
     localPublicAccountJavascriptInterfaceImpl = this.this$0;
-    str = this.b;
+    str = this.d;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("{ret:-2, response:");
-    localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    localStringBuilder.append(this.c.toString());
     localStringBuilder.append("}");
     localPublicAccountJavascriptInterfaceImpl.callJs(str, new String[] { localStringBuilder.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl.18
  * JD-Core Version:    0.7.0.1
  */

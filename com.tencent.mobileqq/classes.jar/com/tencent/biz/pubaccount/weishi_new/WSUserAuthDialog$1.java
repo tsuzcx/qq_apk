@@ -10,11 +10,11 @@ final class WSUserAuthDialog$1
 {
   public void a(WeishiTask paramWeishiTask)
   {
-    if (paramWeishiTask.a())
+    if (paramWeishiTask.b())
     {
-      if ((paramWeishiTask.a instanceof stUserConfigRsp))
+      if ((paramWeishiTask.m instanceof stUserConfigRsp))
       {
-        paramWeishiTask = (stUserConfigRsp)paramWeishiTask.a;
+        paramWeishiTask = (stUserConfigRsp)paramWeishiTask.m;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("doTask: UserConfig response :  code = ");
         localStringBuilder.append(paramWeishiTask.code);
@@ -29,7 +29,7 @@ final class WSUserAuthDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSUserAuthDialog.1
  * JD-Core Version:    0.7.0.1
  */

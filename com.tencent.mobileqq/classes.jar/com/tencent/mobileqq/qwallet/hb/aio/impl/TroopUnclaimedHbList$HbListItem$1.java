@@ -9,14 +9,14 @@ class TroopUnclaimedHbList$HbListItem$1
   
   public void a(int paramInt)
   {
-    if (((paramInt == 1) || (paramInt == 10) || (paramInt == 15)) && (this.a.a.a != null)) {
-      this.a.a.a.dismiss();
+    if (((paramInt == 1) || (paramInt == 10) || (paramInt == 15)) && (this.a.f.a != null)) {
+      this.a.f.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.TroopUnclaimedHbList.HbListItem.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,11 @@ public class NewFriendTabEmptyBuilder
   extends NewFriendBaseBuilder
   implements View.OnClickListener
 {
-  private boolean a;
+  private boolean a = false;
   
   public NewFriendTabEmptyBuilder(Context paramContext, AppInterface paramAppInterface, SystemMsgListAdapter paramSystemMsgListAdapter, NewFriendMessage paramNewFriendMessage)
   {
     super(paramContext, paramAppInterface, paramSystemMsgListAdapter, paramNewFriendMessage);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public View a(int paramInt, View paramView)
@@ -38,19 +37,19 @@ public class NewFriendTabEmptyBuilder
     else
     {
       localNewFriendTabEmptyHolder = new NewFriendTabEmptyBuilder.NewFriendTabEmptyHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561248, null);
-      localNewFriendTabEmptyHolder.a = ((LinearLayout)paramView.findViewById(2131365154));
-      localNewFriendTabEmptyHolder.b = ((LinearLayout)paramView.findViewById(2131365149));
-      localObject = (ThemeImageView)paramView.findViewById(2131366225);
+      paramView = LayoutInflater.from(this.c).inflate(2131627604, null);
+      localNewFriendTabEmptyHolder.a = ((LinearLayout)paramView.findViewById(2131431306));
+      localNewFriendTabEmptyHolder.b = ((LinearLayout)paramView.findViewById(2131431298));
+      localObject = (ThemeImageView)paramView.findViewById(2131432513);
       ((ThemeImageView)localObject).setSupportMaskView(true);
       ((ThemeImageView)localObject).setMaskShape(ThemeImageWrapper.MODE_SQURE);
       paramView.setTag(localNewFriendTabEmptyHolder);
     }
     paramView.setOnClickListener(this);
     Object localObject = new Rect();
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    paramInt = ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168) - ViewUtils.a(80.0F);
-    if (this.jdField_a_of_type_Boolean)
+    ((Activity)this.c).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    paramInt = ((Rect)localObject).height() - this.c.getResources().getDimensionPixelSize(2131299920) - ViewUtils.dip2px(80.0F);
+    if (this.a)
     {
       a(paramView, paramInt);
       localNewFriendTabEmptyHolder.a.setVisibility(8);
@@ -65,14 +64,14 @@ public class NewFriendTabEmptyBuilder
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendTabEmptyBuilder
  * JD-Core Version:    0.7.0.1
  */

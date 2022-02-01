@@ -42,7 +42,7 @@ class ReportReceiver$ReportRunner
       }
       else
       {
-        localObject = ReportControllerServiceHolder.a();
+        localObject = ReportControllerServiceHolder.c();
         if (localObject != null) {
           ((IReportService)localObject).a(this.a, localAppRuntime);
         }
@@ -79,7 +79,7 @@ class ReportReceiver$ReportRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ReportReceiver.ReportRunner
  * JD-Core Version:    0.7.0.1
  */

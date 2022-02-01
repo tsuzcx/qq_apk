@@ -39,11 +39,11 @@ public class EqqDetail
   public boolean mIsSyncLbs;
   public boolean mIsSyncLbsSelected;
   public int mShowMsgFlag;
-  public String name = HardCodeUtil.a(2131704306);
+  public String name = HardCodeUtil.a(2131902220);
   public String phoneNumber = "";
   public String realSummary = "";
   public int seqno = 0;
-  public String summary = HardCodeUtil.a(2131704304);
+  public String summary = HardCodeUtil.a(2131902218);
   @unique
   public String uin;
   
@@ -55,7 +55,7 @@ public class EqqDetail
     this.mIsSyncLbs = false;
     this.mIsAgreeSyncLbs = false;
     this.mIsSyncLbsSelected = false;
-    this.certifiedDescription = HardCodeUtil.a(2131704305);
+    this.certifiedDescription = HardCodeUtil.a(2131902219);
   }
   
   public EqqDetail(mobileqq_mp.GetEqqAccountDetailInfoResponse paramGetEqqAccountDetailInfoResponse)
@@ -67,7 +67,7 @@ public class EqqDetail
     this.mIsSyncLbs = false;
     this.mIsAgreeSyncLbs = false;
     this.mIsSyncLbsSelected = false;
-    this.certifiedDescription = HardCodeUtil.a(2131704305);
+    this.certifiedDescription = HardCodeUtil.a(2131902219);
     Object localObject1 = (mobileqq_mp.EqqAccountInfo)paramGetEqqAccountDetailInfoResponse.accountInfo.get();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
@@ -242,7 +242,7 @@ public class EqqDetail
   
   public boolean hasIvrAbility()
   {
-    boolean bool2 = CrmUtils.a;
+    boolean bool2 = CrmUtils.b;
     boolean bool1 = false;
     if (!bool2)
     {
@@ -259,7 +259,7 @@ public class EqqDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.EqqDetail
  * JD-Core Version:    0.7.0.1
  */

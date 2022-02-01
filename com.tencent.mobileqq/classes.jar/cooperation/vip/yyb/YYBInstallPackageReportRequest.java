@@ -15,38 +15,38 @@ import java.util.ArrayList;
 public class YYBInstallPackageReportRequest
   extends QzoneExternalRequest
 {
-  private static String jdField_a_of_type_JavaLangString = "";
   private static String b = "";
   private static String c = "";
-  private AccessReqHead jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
+  private static String d = "";
+  private AccessReqHead a;
   
   public YYBInstallPackageReportRequest(long paramLong, ArrayList<String> paramArrayList)
   {
     super.setHostUin(paramLong);
     super.setLoginUserId(paramLong);
     this.needCompress = false;
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead = new AccessReqHead();
-    Object localObject = this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
+    this.a = new AccessReqHead();
+    Object localObject = this.a;
     ((AccessReqHead)localObject).loginType = 1;
     ((AccessReqHead)localObject).uin = paramLong;
     ((AccessReqHead)localObject).terminal = new Terminal();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imei = String.valueOf(a());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.macAddress = String.valueOf(c());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.androidId = String.valueOf(DeviceInfoUtil.f());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.imsi = String.valueOf(b());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.mode = String.valueOf(DeviceInfoUtil.i());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.manufacture = String.valueOf(DeviceInfoUtil.h());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei = String.valueOf(UserAction.getQIMEI());
+    this.a.terminal.imei = String.valueOf(a());
+    this.a.terminal.macAddress = String.valueOf(c());
+    this.a.terminal.androidId = String.valueOf(DeviceInfoUtil.j());
+    this.a.terminal.imsi = String.valueOf(b());
+    this.a.terminal.mode = String.valueOf(DeviceInfoUtil.u());
+    this.a.terminal.manufacture = String.valueOf(DeviceInfoUtil.t());
+    this.a.terminal.qimei = String.valueOf(UserAction.getQIMEI());
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("YYBInstallPackageReportRequest qimei=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.terminal.qimei);
+      ((StringBuilder)localObject).append(this.a.terminal.qimei);
       QLog.d("YYBInstallPackageReportRequest", 1, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uniqueId = String.valueOf(MobileInfoUtil.getImei());
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uninstallPkgList = new ArrayList();
-    this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead.uninstallPkgList.addAll(paramArrayList);
+    this.a.uniqueId = String.valueOf(MobileInfoUtil.getImei());
+    this.a.uninstallPkgList = new ArrayList();
+    this.a.uninstallPkgList.addAll(paramArrayList);
   }
   
   public static AccessRspHead a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
@@ -63,15 +63,15 @@ public class YYBInstallPackageReportRequest
   
   public static String a()
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = b;
     if ((str != null) && (str.length() > 0)) {
-      return jdField_a_of_type_JavaLangString;
+      return b;
     }
     try
     {
-      jdField_a_of_type_JavaLangString = QQDeviceInfo.getIMEI("b94d1a");
+      b = QQDeviceInfo.getIMEI("b94d1a");
       label27:
-      return jdField_a_of_type_JavaLangString;
+      return b;
     }
     catch (Exception localException)
     {
@@ -81,15 +81,15 @@ public class YYBInstallPackageReportRequest
   
   public static String b()
   {
-    String str = b;
+    String str = c;
     if ((str != null) && (str.length() > 0)) {
-      return b;
+      return c;
     }
     try
     {
-      b = QQDeviceInfo.getIMSI("b94d1a");
+      c = QQDeviceInfo.getIMSI("b94d1a");
       label27:
-      return b;
+      return c;
     }
     catch (Exception localException)
     {
@@ -99,15 +99,15 @@ public class YYBInstallPackageReportRequest
   
   public static String c()
   {
-    String str = c;
+    String str = d;
     if ((str != null) && (str.length() > 0)) {
-      return c;
+      return d;
     }
     try
     {
-      c = QQDeviceInfo.getMAC("b94d1a");
+      d = QQDeviceInfo.getMAC("b94d1a");
       label27:
-      return c;
+      return d;
     }
     catch (Exception localException)
     {
@@ -122,7 +122,7 @@ public class YYBInstallPackageReportRequest
   
   public JceStruct getReq()
   {
-    return this.jdField_a_of_type_NS_NEW_MOBILE_REPORTAccessReqHead;
+    return this.a;
   }
   
   public String uniKey()
@@ -132,7 +132,7 @@ public class YYBInstallPackageReportRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.yyb.YYBInstallPackageReportRequest
  * JD-Core Version:    0.7.0.1
  */

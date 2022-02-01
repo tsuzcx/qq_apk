@@ -56,17 +56,17 @@ class ProfileCardShareHelper$1
           }
         }
       }
-      if ((j != 0) && (ProfileCardShareHelper.a(this.a)))
+      if ((j != 0) && (ProfileCardShareHelper.b(this.a)))
       {
         paramContext = this.a;
-        ProfileCardShareHelper.a(paramContext, ProfileCardShareHelper.b(paramContext));
+        ProfileCardShareHelper.b(paramContext, ProfileCardShareHelper.c(paramContext));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardShareHelper.1
  * JD-Core Version:    0.7.0.1
  */

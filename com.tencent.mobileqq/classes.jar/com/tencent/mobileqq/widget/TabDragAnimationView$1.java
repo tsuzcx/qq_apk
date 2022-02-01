@@ -23,8 +23,8 @@ class TabDragAnimationView$1
   public void onLongPress(MotionEvent paramMotionEvent)
   {
     super.onLongPress(paramMotionEvent);
-    if (TabDragAnimationView.a(this.a) != null) {
-      TabDragAnimationView.a(this.a).onLongClick(this.a);
+    if (TabDragAnimationView.b(this.a) != null) {
+      TabDragAnimationView.b(this.a).onLongClick(this.a);
     }
   }
   
@@ -42,7 +42,7 @@ class TabDragAnimationView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabDragAnimationView.1
  * JD-Core Version:    0.7.0.1
  */

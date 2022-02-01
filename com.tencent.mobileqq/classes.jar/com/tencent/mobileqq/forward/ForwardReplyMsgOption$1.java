@@ -13,19 +13,19 @@ class ForwardReplyMsgOption$1
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null)
+    if (this.a.A != null)
     {
-      this.a.a.hideSoftInputFromWindow();
+      this.a.A.hideSoftInputFromWindow();
       ForwardReplyMsgOption localForwardReplyMsgOption = this.a;
       ForwardReplyMsgOption.a(localForwardReplyMsgOption, ForwardReplyMsgOption.a(localForwardReplyMsgOption).uniseq);
-      this.a.G();
+      this.a.aq();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardReplyMsgOption.1
  * JD-Core Version:    0.7.0.1
  */

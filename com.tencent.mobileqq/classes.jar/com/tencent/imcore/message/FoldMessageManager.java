@@ -69,14 +69,14 @@ public class FoldMessageManager
           }
           if ((TextUtils.isEmpty(localMessageForFoldMsg.redBagIndex)) && (!TextUtils.isEmpty(localMessageForFoldMsg.redBagId)))
           {
-            if (localPasswdRedBagFoldManager.c.containsKey(localMessageForFoldMsg.redBagId)) {
-              localMessageForFoldMsg.redBagIndex = ((String)localPasswdRedBagFoldManager.c.get(localMessageForFoldMsg.redBagId));
+            if (localPasswdRedBagFoldManager.h.containsKey(localMessageForFoldMsg.redBagId)) {
+              localMessageForFoldMsg.redBagIndex = ((String)localPasswdRedBagFoldManager.h.get(localMessageForFoldMsg.redBagId));
             }
           }
           else {
             bool1 = true;
           }
-          if ((paramBoolean1) || (!localPasswdRedBagFoldManager.a(localMessageForFoldMsg.frienduin, localMessageForFoldMsg.istroop, localMessageForFoldMsg.redBagId, localMessageForFoldMsg.redBagIndex)))
+          if ((paramBoolean1) || (!localPasswdRedBagFoldManager.b(localMessageForFoldMsg.frienduin, localMessageForFoldMsg.istroop, localMessageForFoldMsg.redBagId, localMessageForFoldMsg.redBagIndex)))
           {
             do
             {
@@ -94,24 +94,24 @@ public class FoldMessageManager
               localObject2 = new FoldMessageManager.RedBagFoldContext();
               ((HashMap)localObject4).put(localObject1, localObject2);
             }
-            ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_b_of_type_Boolean = bool1;
+            ((FoldMessageManager.RedBagFoldContext)localObject2).h = bool1;
             if (!localMessageForFoldMsg.foldFlag)
             {
-              ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_a_of_type_Boolean = true;
-              if (localMessageForFoldMsg.shmsgseq > ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_b_of_type_Long)
+              ((FoldMessageManager.RedBagFoldContext)localObject2).e = true;
+              if (localMessageForFoldMsg.shmsgseq > ((FoldMessageManager.RedBagFoldContext)localObject2).f)
               {
-                ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_b_of_type_Long = localMessageForFoldMsg.shmsgseq;
-                ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = localMessageForFoldMsg;
+                ((FoldMessageManager.RedBagFoldContext)localObject2).f = localMessageForFoldMsg.shmsgseq;
+                ((FoldMessageManager.RedBagFoldContext)localObject2).g = localMessageForFoldMsg;
               }
             }
             else
             {
-              ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_a_of_type_Int += 1;
-              ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_a_of_type_JavaUtilLinkedHashSet.add(localMessageForFoldMsg.senderuin);
-              if (localMessageForFoldMsg.shmsgseq < ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_a_of_type_Long)
+              ((FoldMessageManager.RedBagFoldContext)localObject2).a += 1;
+              ((FoldMessageManager.RedBagFoldContext)localObject2).b.add(localMessageForFoldMsg.senderuin);
+              if (localMessageForFoldMsg.shmsgseq < ((FoldMessageManager.RedBagFoldContext)localObject2).c)
               {
-                ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_a_of_type_Long = localMessageForFoldMsg.shmsgseq;
-                ((FoldMessageManager.RedBagFoldContext)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = localMessageForFoldMsg;
+                ((FoldMessageManager.RedBagFoldContext)localObject2).c = localMessageForFoldMsg.shmsgseq;
+                ((FoldMessageManager.RedBagFoldContext)localObject2).d = localMessageForFoldMsg;
               }
             }
           }
@@ -124,10 +124,10 @@ public class FoldMessageManager
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (FoldMessageManager.RedBagFoldContext)((Map.Entry)((Iterator)localObject2).next()).getValue();
-          if (((FoldMessageManager.RedBagFoldContext)localObject3).jdField_a_of_type_Int > 0)
+          if (((FoldMessageManager.RedBagFoldContext)localObject3).a > 0)
           {
-            if (((FoldMessageManager.RedBagFoldContext)localObject3).jdField_a_of_type_Boolean) {
-              ((FoldMessageManager.RedBagFoldContext)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = ((FoldMessageManager.RedBagFoldContext)localObject3).jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg;
+            if (((FoldMessageManager.RedBagFoldContext)localObject3).e) {
+              ((FoldMessageManager.RedBagFoldContext)localObject3).d = ((FoldMessageManager.RedBagFoldContext)localObject3).g;
             }
             if (paramList2 == null) {
               localObject1 = paramBaseMessageManager.a(paramQQAppInterface, ((MessageRecord)paramList1.get(0)).frienduin, ((MessageRecord)paramList1.get(0)).istroop);
@@ -139,7 +139,7 @@ public class FoldMessageManager
               QLog.e("Q.msg.BaseMessageManager", 1, "mergeFoldMsgGrayTips null aioList");
               return;
             }
-            localObject1 = localPasswdRedBagFoldManager.a((List)localObject1, ((FoldMessageManager.RedBagFoldContext)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg, ((FoldMessageManager.RedBagFoldContext)localObject3).jdField_a_of_type_JavaUtilLinkedHashSet, ((FoldMessageManager.RedBagFoldContext)localObject3).jdField_a_of_type_Int, paramBoolean1, paramBoolean2);
+            localObject1 = localPasswdRedBagFoldManager.a((List)localObject1, ((FoldMessageManager.RedBagFoldContext)localObject3).d, ((FoldMessageManager.RedBagFoldContext)localObject3).b, ((FoldMessageManager.RedBagFoldContext)localObject3).a, paramBoolean1, paramBoolean2);
             if ((localObject1 != null) && (paramList2 == null))
             {
               if ((QLog.isColorLevel()) && (StartupTrackerForAio.a()) && (paramList2 != null) && (paramList2.size() > 0))
@@ -176,7 +176,7 @@ public class FoldMessageManager
     HashSet localHashSet = new HashSet();
     paramQQAppInterface = (PasswdRedBagFoldManager)paramQQAppInterface.getManager(QQManagerFactory.PASSWD_RED_BAG_FOLD_MANAGER);
     paramQQAppInterface.a(false);
-    if (paramQQAppInterface.d.isEmpty()) {
+    if (paramQQAppInterface.i.isEmpty()) {
       return;
     }
     Iterator localIterator = paramHashMap.entrySet().iterator();
@@ -184,33 +184,33 @@ public class FoldMessageManager
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       FoldMessageManager.RedBagFoldContext localRedBagFoldContext1 = (FoldMessageManager.RedBagFoldContext)localEntry.getValue();
-      if (localRedBagFoldContext1.jdField_b_of_type_Boolean)
+      if (localRedBagFoldContext1.h)
       {
-        String str = (String)paramQQAppInterface.d.get(localEntry.getKey());
+        String str = (String)paramQQAppInterface.i.get(localEntry.getKey());
         if ((!TextUtils.isEmpty(str)) && (paramHashMap.containsKey(str)))
         {
           FoldMessageManager.RedBagFoldContext localRedBagFoldContext2 = (FoldMessageManager.RedBagFoldContext)paramHashMap.get(str);
           localHashSet.add(str);
-          localRedBagFoldContext1.jdField_a_of_type_Int += localRedBagFoldContext2.jdField_a_of_type_Int;
-          localRedBagFoldContext1.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(localRedBagFoldContext2.jdField_a_of_type_JavaUtilLinkedHashSet);
+          localRedBagFoldContext1.a += localRedBagFoldContext2.a;
+          localRedBagFoldContext1.b.addAll(localRedBagFoldContext2.b);
           boolean bool;
-          if ((!localRedBagFoldContext1.jdField_a_of_type_Boolean) && (!localRedBagFoldContext2.jdField_a_of_type_Boolean)) {
+          if ((!localRedBagFoldContext1.e) && (!localRedBagFoldContext2.e)) {
             bool = false;
           } else {
             bool = true;
           }
-          localRedBagFoldContext1.jdField_a_of_type_Boolean = bool;
-          if (localRedBagFoldContext1.jdField_b_of_type_Long < localRedBagFoldContext2.jdField_b_of_type_Long)
+          localRedBagFoldContext1.e = bool;
+          if (localRedBagFoldContext1.f < localRedBagFoldContext2.f)
           {
-            localRedBagFoldContext1.jdField_b_of_type_Long = localRedBagFoldContext2.jdField_b_of_type_Long;
-            localRedBagFoldContext1.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = localRedBagFoldContext2.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg;
-            localRedBagFoldContext1.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg.redBagIndex = ((String)localEntry.getKey());
+            localRedBagFoldContext1.f = localRedBagFoldContext2.f;
+            localRedBagFoldContext1.g = localRedBagFoldContext2.g;
+            localRedBagFoldContext1.g.redBagIndex = ((String)localEntry.getKey());
           }
-          if (localRedBagFoldContext1.jdField_a_of_type_Long > localRedBagFoldContext2.jdField_a_of_type_Long)
+          if (localRedBagFoldContext1.c > localRedBagFoldContext2.c)
           {
-            localRedBagFoldContext1.jdField_a_of_type_Long = localRedBagFoldContext2.jdField_a_of_type_Long;
-            localRedBagFoldContext1.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = localRedBagFoldContext2.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg;
-            localRedBagFoldContext1.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg.redBagIndex = ((String)localEntry.getKey());
+            localRedBagFoldContext1.c = localRedBagFoldContext2.c;
+            localRedBagFoldContext1.d = localRedBagFoldContext2.d;
+            localRedBagFoldContext1.d.redBagIndex = ((String)localEntry.getKey());
           }
         }
       }
@@ -220,7 +220,7 @@ public class FoldMessageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.FoldMessageManager
  * JD-Core Version:    0.7.0.1
  */

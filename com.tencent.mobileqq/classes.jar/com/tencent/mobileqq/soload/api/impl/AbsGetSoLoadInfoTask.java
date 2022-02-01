@@ -19,54 +19,30 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 class AbsGetSoLoadInfoTask
 {
-  private static ISoLoaderBaseCommonetService jdField_a_of_type_ComTencentMobileqqSoloadApiISoLoaderBaseCommonetService = (ISoLoaderBaseCommonetService)QRoute.api(ISoLoaderBaseCommonetService.class);
-  private static final Map<String, Object> jdField_a_of_type_JavaUtilMap = new HashMap();
-  int jdField_a_of_type_Int;
-  LoadParam.LoadItem jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem;
-  LoadParam jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam;
-  SoDetailInfo jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = true;
-  String c;
+  private static final Map<String, Object> j = new HashMap();
+  private static ISoLoaderBaseCommonetService k = (ISoLoaderBaseCommonetService)QRoute.api(ISoLoaderBaseCommonetService.class);
+  LoadParam a;
+  LoadParam.LoadItem b;
+  int c;
+  boolean d = false;
+  boolean e = true;
+  String f;
+  String g;
+  SoDetailInfo h;
+  String i;
   
   AbsGetSoLoadInfoTask(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam = paramLoadParam;
-    this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem = paramLoadItem;
-  }
-  
-  static int a()
-  {
-    if (!SoLoadUtils.a()) {
-      return 0;
-    }
-    try
-    {
-      int i = QConfigManager.a().a(526, MobileQQ.sMobileQQ.peekAppRuntime().getLongAccountUin());
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SoLoadWidget.AbsGetSoTask", 1, localThrowable, new Object[0]);
-    }
-    return 0;
+    this.a = paramLoadParam;
+    this.b = paramLoadItem;
   }
   
   static boolean a()
   {
     return SoLoadUtils.a() ^ true;
-  }
-  
-  protected static boolean a(@NonNull SoLocalInfo paramSoLocalInfo)
-  {
-    return (!TextUtils.isEmpty(paramSoLocalInfo.mSoPath)) && (new File(paramSoLocalInfo.mSoPath).exists());
   }
   
   protected static boolean a(@NonNull SoLocalInfo paramSoLocalInfo, @NonNull SoDetailInfo paramSoDetailInfo)
@@ -79,14 +55,14 @@ class AbsGetSoLoadInfoTask
     if ((paramLoadItem.lops.flag & 0x8) != 0) {
       return true;
     }
-    synchronized (jdField_a_of_type_JavaUtilMap)
+    synchronized (j)
     {
-      Object localObject2 = jdField_a_of_type_JavaUtilMap.get(paramLoadItem.name);
+      Object localObject2 = j.get(paramLoadItem.name);
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new byte[0];
-        jdField_a_of_type_JavaUtilMap.put(paramLoadItem.name, localObject1);
+        j.put(paramLoadItem.name, localObject1);
       }
       try
       {
@@ -95,6 +71,23 @@ class AbsGetSoLoadInfoTask
       }
       finally {}
     }
+  }
+  
+  static int b()
+  {
+    if (!SoLoadUtils.a()) {
+      return 0;
+    }
+    try
+    {
+      int m = QConfigManager.b().a(526, SoLoadUtils.b());
+      return m;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SoLoadWidget.AbsGetSoTask", 1, localThrowable, new Object[0]);
+    }
+    return 0;
   }
   
   private static boolean b(String paramString, long paramLong, LoadParam.LoadItem paramLoadItem, SoDetailInfo paramSoDetailInfo, int paramInt)
@@ -116,8 +109,8 @@ class AbsGetSoLoadInfoTask
     long l = IOUtil.getCRC32Value(new File(paramString));
     if (paramLong != l)
     {
-      SoLoadUtils.a(paramLoadItem.name);
-      paramString = jdField_a_of_type_ComTencentMobileqqSoloadApiISoLoaderBaseCommonetService;
+      SoLoadUtils.c(paramLoadItem.name);
+      paramString = k;
       if (paramString != null)
       {
         String str1 = paramLoadItem.soFileName;
@@ -141,13 +134,13 @@ class AbsGetSoLoadInfoTask
   {
     SoLoadInfo localSoLoadInfo = new SoLoadInfo();
     localSoLoadInfo.curCode = paramInt;
-    localSoLoadInfo.soPathToLoad = this.jdField_a_of_type_JavaLangString;
-    localSoLoadInfo.subErrCode = this.jdField_a_of_type_Int;
-    localSoLoadInfo.isFinishDownload = this.jdField_a_of_type_Boolean;
-    localSoLoadInfo.isNeedDownload = this.jdField_b_of_type_Boolean;
-    localSoLoadInfo.soDetailInfo = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo;
-    localSoLoadInfo.rFileFolder = this.jdField_b_of_type_JavaLangString;
-    localSoLoadInfo.failDetail = this.c;
+    localSoLoadInfo.soPathToLoad = this.f;
+    localSoLoadInfo.subErrCode = this.c;
+    localSoLoadInfo.isFinishDownload = this.d;
+    localSoLoadInfo.isNeedDownload = this.e;
+    localSoLoadInfo.soDetailInfo = this.h;
+    localSoLoadInfo.rFileFolder = this.g;
+    localSoLoadInfo.failDetail = this.i;
     return localSoLoadInfo;
   }
   
@@ -155,14 +148,14 @@ class AbsGetSoLoadInfoTask
   {
     if (paramSoInfo != null)
     {
-      if (SoDataUtil.a()) {
+      if (SoDataUtil.c()) {
         localObject = paramSoInfo.arm64Info;
       } else {
         localObject = paramSoInfo.arm32Info;
       }
-      this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo = ((SoDetailInfo)localObject);
+      this.h = ((SoDetailInfo)localObject);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntitySoDetailInfo;
+    Object localObject = this.h;
     boolean bool;
     if ((localObject != null) && (!TextUtils.isEmpty(((SoDetailInfo)localObject).url))) {
       bool = true;
@@ -177,15 +170,20 @@ class AbsGetSoLoadInfoTask
       ((StringBuilder)localObject).append(",info:");
       ((StringBuilder)localObject).append(paramSoInfo);
       ((StringBuilder)localObject).append(",is64:");
-      ((StringBuilder)localObject).append(SoDataUtil.a());
+      ((StringBuilder)localObject).append(SoDataUtil.c());
       QLog.i("SoLoadWidget.AbsGetSoTask", 2, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
+  
+  protected boolean a(@NonNull SoLocalInfo paramSoLocalInfo)
+  {
+    return (!TextUtils.isEmpty(paramSoLocalInfo.mSoPath)) && (new File(paramSoLocalInfo.mSoPath).exists());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.AbsGetSoLoadInfoTask
  * JD-Core Version:    0.7.0.1
  */

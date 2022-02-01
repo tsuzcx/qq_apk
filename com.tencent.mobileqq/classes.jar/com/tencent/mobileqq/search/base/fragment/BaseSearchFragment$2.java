@@ -11,17 +11,17 @@ class BaseSearchFragment$2
   
   public void run()
   {
-    if (!this.this$0.d)
+    if (!this.this$0.u)
     {
-      this.this$0.a.a();
-      this.this$0.d = true;
+      this.this$0.o.a();
+      this.this$0.u = true;
     }
     ThreadManager.getUIHandler().post(new BaseSearchFragment.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.fragment.BaseSearchFragment.2
  * JD-Core Version:    0.7.0.1
  */

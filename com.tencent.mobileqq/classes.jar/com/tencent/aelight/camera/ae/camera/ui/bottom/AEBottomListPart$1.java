@@ -9,12 +9,12 @@ class AEBottomListPart$1
   
   public void a()
   {
-    AEBottomListPart.a(this.a).a(131076, new Object[0]);
+    AEBottomListPart.a(this.a).b(131076, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.1
  * JD-Core Version:    0.7.0.1
  */

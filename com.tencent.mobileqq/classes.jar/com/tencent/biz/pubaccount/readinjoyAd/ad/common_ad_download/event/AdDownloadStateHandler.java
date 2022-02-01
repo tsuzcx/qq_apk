@@ -66,15 +66,15 @@ public enum AdDownloadStateHandler
     Object localObject;
     if (paramRIJDownloadView != null)
     {
-      localObject = paramRIJDownloadView.a();
+      localObject = paramRIJDownloadView.getDownloadData();
       if (localObject != null) {
-        ((ADVideoAppDownloadData)localObject).a = 0;
+        ((ADVideoAppDownloadData)localObject).f = 0;
       }
     }
     if ((paramRIJDownloadView != null) && (!paramRIJDownloadView.d()))
     {
-      paramRIJDownloadView.e();
-      localObject = paramRIJDownloadView.a();
+      paramRIJDownloadView.h();
+      localObject = paramRIJDownloadView.getDownloadBtn();
       if (localObject != null)
       {
         if (paramRIJDownloadView.c()) {
@@ -87,7 +87,7 @@ public enum AdDownloadStateHandler
     }
     else if (paramRIJDownloadView != null)
     {
-      paramRIJDownloadView.d();
+      paramRIJDownloadView.g();
     }
   }
   
@@ -95,9 +95,9 @@ public enum AdDownloadStateHandler
   {
     if (paramRIJDownloadView != null)
     {
-      ADVideoAppDownloadData localADVideoAppDownloadData = paramRIJDownloadView.a();
+      ADVideoAppDownloadData localADVideoAppDownloadData = paramRIJDownloadView.getDownloadData();
       if (localADVideoAppDownloadData != null) {
-        localADVideoAppDownloadData.a = 6;
+        localADVideoAppDownloadData.f = 6;
       }
     }
     showInitBtn(paramRIJDownloadView);
@@ -108,7 +108,7 @@ public enum AdDownloadStateHandler
       {
         paramRIJDownloadView = paramRIJDownloadView.getApplicationContext();
         if (paramRIJDownloadView != null) {
-          QQToast.a(paramRIJDownloadView, (CharSequence)HardCodeUtil.a(2131712919), 0).a();
+          QQToast.makeText(paramRIJDownloadView, (CharSequence)HardCodeUtil.a(2131910489), 0).show();
         }
       }
     }
@@ -119,15 +119,15 @@ public enum AdDownloadStateHandler
     Object localObject;
     if (paramRIJDownloadView != null)
     {
-      localObject = paramRIJDownloadView.a();
+      localObject = paramRIJDownloadView.getDownloadData();
       if (localObject != null) {
-        ((ADVideoAppDownloadData)localObject).a = 0;
+        ((ADVideoAppDownloadData)localObject).f = 0;
       }
     }
     if ((paramRIJDownloadView != null) && (!paramRIJDownloadView.d()))
     {
-      paramRIJDownloadView.e();
-      localObject = paramRIJDownloadView.a();
+      paramRIJDownloadView.h();
+      localObject = paramRIJDownloadView.getAdInfo();
       if (localObject != null) {
         localObject = ((AdvertisementInfo)localObject).mAdBtnTxt;
       } else {
@@ -136,9 +136,9 @@ public enum AdDownloadStateHandler
       localObject = (CharSequence)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo((AbsBaseArticleInfo)paramRIJDownloadView.a()))
+        if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo((AbsBaseArticleInfo)paramRIJDownloadView.getAdInfo()))
         {
-          localObject = paramRIJDownloadView.a();
+          localObject = paramRIJDownloadView.getDownloadBtn();
           if (localObject != null)
           {
             if (paramRIJDownloadView.c()) {
@@ -151,7 +151,7 @@ public enum AdDownloadStateHandler
         }
         else
         {
-          localObject = paramRIJDownloadView.a();
+          localObject = paramRIJDownloadView.getDownloadBtn();
           if (localObject != null)
           {
             if (paramRIJDownloadView.c()) {
@@ -165,7 +165,7 @@ public enum AdDownloadStateHandler
       }
       else
       {
-        paramRIJDownloadView = paramRIJDownloadView.a();
+        paramRIJDownloadView = paramRIJDownloadView.getDownloadBtn();
         if (paramRIJDownloadView != null) {
           paramRIJDownloadView.setText((CharSequence)localObject);
         }
@@ -173,19 +173,19 @@ public enum AdDownloadStateHandler
     }
     else if (paramRIJDownloadView != null)
     {
-      paramRIJDownloadView.d();
+      paramRIJDownloadView.g();
     }
   }
   
   protected final void onInstallSucceedUI(@Nullable RIJDownloadView paramRIJDownloadView)
   {
     if (paramRIJDownloadView != null) {
-      paramRIJDownloadView.e();
+      paramRIJDownloadView.h();
     }
     Object localObject1;
     if (paramRIJDownloadView != null)
     {
-      localObject2 = paramRIJDownloadView.a();
+      localObject2 = paramRIJDownloadView.getDownloadBtn();
       if (localObject2 != null)
       {
         if (paramRIJDownloadView.c() == true) {
@@ -198,22 +198,22 @@ public enum AdDownloadStateHandler
     }
     Object localObject2 = (IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class);
     if (paramRIJDownloadView != null) {
-      localObject1 = paramRIJDownloadView.a();
+      localObject1 = paramRIJDownloadView.getAdInfo();
     } else {
       localObject1 = null;
     }
     if ((((IRIJAdUtilService)localObject2).isGameGiftAd((AdvertisementInfo)localObject1)) && (paramRIJDownloadView != null))
     {
-      localObject1 = paramRIJDownloadView.a();
+      localObject1 = paramRIJDownloadView.getDownloadBtn();
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)"领取");
       }
     }
     if (paramRIJDownloadView != null)
     {
-      paramRIJDownloadView = paramRIJDownloadView.a();
+      paramRIJDownloadView = paramRIJDownloadView.getDownloadData();
       if (paramRIJDownloadView != null) {
-        paramRIJDownloadView.a = 1;
+        paramRIJDownloadView.f = 1;
       }
     }
   }
@@ -223,23 +223,23 @@ public enum AdDownloadStateHandler
     showInitBtn(paramRIJDownloadView);
     if (paramRIJDownloadView != null)
     {
-      paramAdDownloadInfo = paramRIJDownloadView.a();
+      paramAdDownloadInfo = paramRIJDownloadView.getDownloadData();
       if (paramAdDownloadInfo != null) {
-        paramAdDownloadInfo.a = 4;
+        paramAdDownloadInfo.f = 4;
       }
     }
     if (paramRIJDownloadView != null)
     {
-      paramAdDownloadInfo = paramRIJDownloadView.a();
+      paramAdDownloadInfo = paramRIJDownloadView.getDownloadData();
       if (paramAdDownloadInfo != null)
       {
-        paramRIJDownloadView = paramRIJDownloadView.a();
+        paramRIJDownloadView = paramRIJDownloadView.getDownloadData();
         if (paramRIJDownloadView != null) {
-          paramRIJDownloadView = Integer.valueOf(paramRIJDownloadView.b);
+          paramRIJDownloadView = Integer.valueOf(paramRIJDownloadView.g);
         } else {
           paramRIJDownloadView = null;
         }
-        paramAdDownloadInfo.b = paramRIJDownloadView.intValue();
+        paramAdDownloadInfo.g = paramRIJDownloadView.intValue();
       }
     }
   }
@@ -250,22 +250,22 @@ public enum AdDownloadStateHandler
     ADVideoAppDownloadData localADVideoAppDownloadData;
     if (paramRIJDownloadView != null)
     {
-      localADVideoAppDownloadData = paramRIJDownloadView.a();
+      localADVideoAppDownloadData = paramRIJDownloadView.getDownloadData();
       if (localADVideoAppDownloadData != null) {
-        localADVideoAppDownloadData.a = 3;
+        localADVideoAppDownloadData.f = 3;
       }
     }
     if (paramRIJDownloadView != null)
     {
-      localADVideoAppDownloadData = paramRIJDownloadView.a();
+      localADVideoAppDownloadData = paramRIJDownloadView.getDownloadData();
       if (localADVideoAppDownloadData != null)
       {
         if (paramAdDownloadInfo != null) {
-          paramRIJDownloadView = Integer.valueOf(paramAdDownloadInfo.b());
+          paramRIJDownloadView = Integer.valueOf(paramAdDownloadInfo.c());
         } else {
           paramRIJDownloadView = null;
         }
-        localADVideoAppDownloadData.b = paramRIJDownloadView.intValue();
+        localADVideoAppDownloadData.g = paramRIJDownloadView.intValue();
       }
     }
   }
@@ -282,29 +282,29 @@ public enum AdDownloadStateHandler
         onInstallSucceedUI(paramRIJDownloadView);
         return;
       }
-      Object localObject = paramRIJDownloadView.a();
+      Object localObject = paramRIJDownloadView.getDownloadData();
       if (localObject != null) {
-        localObject = ((ADVideoAppDownloadData)localObject).i;
+        localObject = ((ADVideoAppDownloadData)localObject).n;
       } else {
         localObject = null;
       }
-      if (((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists())) || (paramAdDownloadInfo.a() == 5))
+      if (((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists())) || (paramAdDownloadInfo.b() == 5))
       {
         onSuccessDownloadUI(paramRIJDownloadView);
         return;
       }
-      if (paramAdDownloadInfo.a() == 4)
+      if (paramAdDownloadInfo.b() == 4)
       {
-        localObject = paramRIJDownloadView.a();
+        localObject = paramRIJDownloadView.getDownloadData();
         if (localObject != null)
         {
-          ((ADVideoAppDownloadData)localObject).a = 4;
-          ((ADVideoAppDownloadData)localObject).b = paramAdDownloadInfo.b();
+          ((ADVideoAppDownloadData)localObject).f = 4;
+          ((ADVideoAppDownloadData)localObject).g = paramAdDownloadInfo.c();
         }
         onPauseDownloadUI(paramRIJDownloadView, paramAdDownloadInfo);
         return;
       }
-      if (paramAdDownloadInfo.a() == 0) {
+      if (paramAdDownloadInfo.b() == 0) {
         onInitUI(paramRIJDownloadView);
       }
     }
@@ -315,9 +315,9 @@ public enum AdDownloadStateHandler
     showInitBtn(paramRIJDownloadView);
     if (paramRIJDownloadView != null)
     {
-      paramRIJDownloadView = paramRIJDownloadView.a();
+      paramRIJDownloadView = paramRIJDownloadView.getDownloadData();
       if (paramRIJDownloadView != null) {
-        paramRIJDownloadView.a = 3;
+        paramRIJDownloadView.f = 3;
       }
     }
   }
@@ -330,19 +330,19 @@ public enum AdDownloadStateHandler
   protected final void onSuccessDownloadUI(@Nullable RIJDownloadView paramRIJDownloadView)
   {
     if (paramRIJDownloadView != null) {
-      paramRIJDownloadView.e();
+      paramRIJDownloadView.h();
     }
     Object localObject;
     if (paramRIJDownloadView != null)
     {
-      localObject = paramRIJDownloadView.a();
+      localObject = paramRIJDownloadView.getDownloadData();
       if (localObject != null) {
-        ((ADVideoAppDownloadData)localObject).a = 5;
+        ((ADVideoAppDownloadData)localObject).f = 5;
       }
     }
     if (paramRIJDownloadView != null)
     {
-      localObject = paramRIJDownloadView.a();
+      localObject = paramRIJDownloadView.getDownloadBtn();
       if (localObject != null)
       {
         if (paramRIJDownloadView.c() == true) {
@@ -359,10 +359,10 @@ public enum AdDownloadStateHandler
   {
     if (paramRIJDownloadView != null)
     {
-      localObject = paramRIJDownloadView.a();
+      localObject = paramRIJDownloadView.getDownloadData();
       if (localObject != null)
       {
-        localObject = ((ADVideoAppDownloadData)localObject).i;
+        localObject = ((ADVideoAppDownloadData)localObject).n;
         break label23;
       }
     }
@@ -371,18 +371,18 @@ public enum AdDownloadStateHandler
     if ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists()))
     {
       if (paramRIJDownloadView != null) {
-        paramRIJDownloadView.e();
+        paramRIJDownloadView.h();
       }
       if (paramRIJDownloadView != null)
       {
-        localObject = paramRIJDownloadView.a();
+        localObject = paramRIJDownloadView.getDownloadData();
         if (localObject != null) {
-          ((ADVideoAppDownloadData)localObject).a = 5;
+          ((ADVideoAppDownloadData)localObject).f = 5;
         }
       }
       if (paramRIJDownloadView != null)
       {
-        TextView localTextView = paramRIJDownloadView.a();
+        TextView localTextView = paramRIJDownloadView.getDownloadBtn();
         if (localTextView != null)
         {
           if (paramRIJDownloadView.c() == true) {
@@ -395,9 +395,9 @@ public enum AdDownloadStateHandler
       }
       if (paramRIJDownloadView != null)
       {
-        paramRIJDownloadView = paramRIJDownloadView.a();
+        paramRIJDownloadView = paramRIJDownloadView.getDownloadData();
         if (paramRIJDownloadView != null) {
-          paramRIJDownloadView.a = 5;
+          paramRIJDownloadView.f = 5;
         }
       }
     }
@@ -406,9 +406,9 @@ public enum AdDownloadStateHandler
       onInitUI(paramRIJDownloadView);
       if (paramRIJDownloadView != null)
       {
-        paramRIJDownloadView = paramRIJDownloadView.a();
+        paramRIJDownloadView = paramRIJDownloadView.getDownloadData();
         if (paramRIJDownloadView != null) {
-          paramRIJDownloadView.a = 0;
+          paramRIJDownloadView.f = 0;
         }
       }
     }
@@ -458,8 +458,8 @@ public enum AdDownloadStateHandler
   {
     if ((paramRIJDownloadView != null) && (!paramRIJDownloadView.d()))
     {
-      paramRIJDownloadView.e();
-      TextView localTextView = paramRIJDownloadView.a();
+      paramRIJDownloadView.h();
+      TextView localTextView = paramRIJDownloadView.getDownloadBtn();
       if (localTextView != null)
       {
         if (paramRIJDownloadView.c()) {
@@ -472,13 +472,13 @@ public enum AdDownloadStateHandler
     }
     else if (paramRIJDownloadView != null)
     {
-      paramRIJDownloadView.d();
+      paramRIJDownloadView.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler
  * JD-Core Version:    0.7.0.1
  */

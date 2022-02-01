@@ -65,131 +65,121 @@ public class ChipDrawable
   extends MaterialShapeDrawable
   implements Drawable.Callback, TintAwareDrawable, TextDrawableHelper.TextDrawableDelegate
 {
-  private static final ShapeDrawable jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable = new ShapeDrawable(new OvalShape());
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842910 };
-  private float jdField_a_of_type_Float;
-  @ColorInt
-  private int jdField_a_of_type_Int;
+  private static final int[] a = { 16842910 };
+  private static final ShapeDrawable b = new ShapeDrawable(new OvalShape());
+  @Nullable
+  private MotionSpec A;
+  private float B;
+  private float C;
+  private float D;
+  private float E;
+  private float F;
+  private float G;
+  private float H;
+  private float I;
   @NonNull
-  private final Context jdField_a_of_type_AndroidContentContext;
+  private final Context J;
+  private final Paint K = new Paint(1);
   @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  @Nullable
-  private ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter;
-  private final Paint.FontMetrics jdField_a_of_type_AndroidGraphicsPaint$FontMetrics = new Paint.FontMetrics();
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  @Nullable
-  private PorterDuff.Mode jdField_a_of_type_AndroidGraphicsPorterDuff$Mode = PorterDuff.Mode.SRC_IN;
-  @Nullable
-  private PorterDuffColorFilter jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private TextUtils.TruncateAt jdField_a_of_type_AndroidTextTextUtils$TruncateAt;
-  @Nullable
-  private MotionSpec jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
+  private final Paint L;
+  private final Paint.FontMetrics M = new Paint.FontMetrics();
+  private final RectF N = new RectF();
+  private final PointF O = new PointF();
+  private final Path P = new Path();
   @NonNull
-  private final TextDrawableHelper jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper;
+  private final TextDrawableHelper Q;
+  @ColorInt
+  private int R;
+  @ColorInt
+  private int S;
+  @ColorInt
+  private int T;
+  @ColorInt
+  private int U;
+  @ColorInt
+  private int V;
+  @ColorInt
+  private int W;
+  private boolean X;
+  @ColorInt
+  private int Y;
+  private int Z = 255;
   @Nullable
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private ColorFilter aa;
+  @Nullable
+  private PorterDuffColorFilter ab;
+  @Nullable
+  private ColorStateList ac;
+  @Nullable
+  private PorterDuff.Mode ad = PorterDuff.Mode.SRC_IN;
+  private int[] ae;
+  private boolean af;
+  @Nullable
+  private ColorStateList ag;
   @NonNull
-  private WeakReference<ChipDrawable.Delegate> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = -1.0F;
-  @ColorInt
-  private int jdField_b_of_type_Int;
+  private WeakReference<ChipDrawable.Delegate> ah = new WeakReference(null);
+  private TextUtils.TruncateAt ai;
+  private boolean aj;
+  private int ak;
+  private boolean al;
   @Nullable
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
+  private ColorStateList c;
   @Nullable
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private ColorStateList d;
+  private float e;
+  private float f = -1.0F;
   @Nullable
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private ColorStateList g;
+  private float h;
   @Nullable
-  private MotionSpec jdField_b_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
+  private ColorStateList i;
   @Nullable
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private boolean jdField_b_of_type_Boolean;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  private float jdField_c_of_type_Float;
-  @ColorInt
-  private int jdField_c_of_type_Int;
+  private CharSequence j;
+  private boolean k;
   @Nullable
-  private ColorStateList jdField_c_of_type_AndroidContentResColorStateList;
+  private Drawable l;
   @Nullable
-  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_c_of_type_Boolean;
-  private float jdField_d_of_type_Float;
-  @ColorInt
-  private int jdField_d_of_type_Int;
+  private ColorStateList m;
+  private float n;
+  private boolean o;
+  private boolean p;
   @Nullable
-  private ColorStateList jdField_d_of_type_AndroidContentResColorStateList;
+  private Drawable q;
   @Nullable
-  private Drawable jdField_d_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  @ColorInt
-  private int jdField_e_of_type_Int;
+  private Drawable r;
   @Nullable
-  private ColorStateList jdField_e_of_type_AndroidContentResColorStateList;
-  private boolean jdField_e_of_type_Boolean;
-  private float jdField_f_of_type_Float;
-  @ColorInt
-  private int jdField_f_of_type_Int;
+  private ColorStateList s;
+  private float t;
   @Nullable
-  private ColorStateList jdField_f_of_type_AndroidContentResColorStateList;
-  private boolean jdField_f_of_type_Boolean;
-  private float jdField_g_of_type_Float;
-  @ColorInt
-  private int jdField_g_of_type_Int;
+  private CharSequence u;
+  private boolean v;
+  private boolean w;
   @Nullable
-  private ColorStateList jdField_g_of_type_AndroidContentResColorStateList;
-  private boolean jdField_g_of_type_Boolean;
-  private float jdField_h_of_type_Float;
-  private int jdField_h_of_type_Int = 255;
+  private Drawable x;
   @Nullable
-  private ColorStateList jdField_h_of_type_AndroidContentResColorStateList;
-  private boolean jdField_h_of_type_Boolean;
-  private float jdField_i_of_type_Float;
-  private int jdField_i_of_type_Int;
+  private ColorStateList y;
   @Nullable
-  private ColorStateList jdField_i_of_type_AndroidContentResColorStateList;
-  private boolean jdField_i_of_type_Boolean;
-  private float j;
-  private float k;
-  private float l;
-  private float m;
+  private MotionSpec z;
   
   private ChipDrawable(@NonNull Context paramContext, AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
     a(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper = new TextDrawableHelper(this);
-    this.jdField_a_of_type_JavaLangCharSequence = "";
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().density = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_AndroidGraphicsPaint = null;
-    paramContext = this.jdField_b_of_type_AndroidGraphicsPaint;
+    this.J = paramContext;
+    this.Q = new TextDrawableHelper(this);
+    this.j = "";
+    this.Q.a().density = paramContext.getResources().getDisplayMetrics().density;
+    this.L = null;
+    paramContext = this.L;
     if (paramContext != null) {
       paramContext.setStyle(Paint.Style.STROKE);
     }
-    setState(jdField_a_of_type_ArrayOfInt);
-    a(jdField_a_of_type_ArrayOfInt);
-    this.jdField_h_of_type_Boolean = true;
-    if (RippleUtils.jdField_a_of_type_Boolean) {
-      jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable.setTint(-1);
+    setState(a);
+    a(a);
+    this.aj = true;
+    if (RippleUtils.a) {
+      b.setTint(-1);
     }
-  }
-  
-  @Nullable
-  private ColorFilter a()
-  {
-    ColorFilter localColorFilter = this.jdField_a_of_type_AndroidGraphicsColorFilter;
-    if (localColorFilter != null) {
-      return localColorFilter;
-    }
-    return this.jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter;
   }
   
   @NonNull
@@ -202,22 +192,22 @@ public class ChipDrawable
   
   private void a(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
   {
-    if (!this.jdField_i_of_type_Boolean)
+    if (!this.al)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRect);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, d(), d(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.K.setColor(this.R);
+      this.K.setStyle(Paint.Style.FILL);
+      this.N.set(paramRect);
+      paramCanvas.drawRoundRect(this.N, j(), j(), this.K);
     }
   }
   
   private void a(@NonNull Rect paramRect, @NonNull RectF paramRectF)
   {
     paramRectF.setEmpty();
-    if ((i()) || (j()))
+    if ((ag()) || (ah()))
     {
-      float f1 = this.jdField_f_of_type_Float + this.jdField_g_of_type_Float;
-      float f2 = r();
+      float f1 = this.B + this.C;
+      float f2 = ak();
       if (DrawableCompat.getLayoutDirection(this) == 0)
       {
         paramRectF.left = (paramRect.left + f1);
@@ -228,7 +218,7 @@ public class ChipDrawable
         paramRectF.right = (paramRect.right - f1);
         paramRectF.left = (paramRectF.right - f2);
       }
-      f1 = s();
+      f1 = al();
       paramRectF.top = (paramRect.exactCenterY() - f1 / 2.0F);
       paramRectF.bottom = (paramRectF.top + f1);
     }
@@ -236,22 +226,22 @@ public class ChipDrawable
   
   private void a(@Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt1, @StyleRes int paramInt2)
   {
-    TypedArray localTypedArray = ThemeEnforcement.a(this.jdField_a_of_type_AndroidContentContext, paramAttributeSet, R.styleable.j, paramInt1, paramInt2, new int[0]);
-    this.jdField_i_of_type_Boolean = localTypedArray.hasValue(R.styleable.aN);
-    i(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.aA));
-    a(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.an));
-    a(localTypedArray.getDimension(R.styleable.av, 0.0F));
-    if (localTypedArray.hasValue(R.styleable.ao)) {
-      b(localTypedArray.getDimension(R.styleable.ao, 0.0F));
+    TypedArray localTypedArray = ThemeEnforcement.a(this.J, paramAttributeSet, R.styleable.aI, paramInt1, paramInt2, new int[0]);
+    this.al = localTypedArray.hasValue(R.styleable.bu);
+    j(MaterialResources.a(this.J, localTypedArray, R.styleable.bh));
+    a(MaterialResources.a(this.J, localTypedArray, R.styleable.aU));
+    a(localTypedArray.getDimension(R.styleable.bc, 0.0F));
+    if (localTypedArray.hasValue(R.styleable.aV)) {
+      b(localTypedArray.getDimension(R.styleable.aV, 0.0F));
     }
-    b(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.ay));
-    c(localTypedArray.getDimension(R.styleable.az, 0.0F));
-    c(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.aM));
-    a(localTypedArray.getText(R.styleable.ah));
-    TextAppearance localTextAppearance = MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.ac);
-    localTextAppearance.jdField_e_of_type_Float = localTypedArray.getDimension(R.styleable.ad, localTextAppearance.jdField_e_of_type_Float);
+    b(MaterialResources.a(this.J, localTypedArray, R.styleable.bf));
+    c(localTypedArray.getDimension(R.styleable.bg, 0.0F));
+    c(MaterialResources.a(this.J, localTypedArray, R.styleable.bt));
+    a(localTypedArray.getText(R.styleable.aO));
+    TextAppearance localTextAppearance = MaterialResources.c(this.J, localTypedArray, R.styleable.aJ);
+    localTextAppearance.n = localTypedArray.getDimension(R.styleable.aK, localTextAppearance.n);
     a(localTextAppearance);
-    paramInt1 = localTypedArray.getInt(R.styleable.af, 0);
+    paramInt1 = localTypedArray.getInt(R.styleable.aM, 0);
     if (paramInt1 != 1)
     {
       if (paramInt1 != 2)
@@ -267,58 +257,43 @@ public class ChipDrawable
     else {
       a(TextUtils.TruncateAt.START);
     }
-    b(localTypedArray.getBoolean(R.styleable.au, false));
+    b(localTypedArray.getBoolean(R.styleable.bb, false));
     if ((paramAttributeSet != null) && (paramAttributeSet.getAttributeValue("http://schemas.android.com/apk/res-auto", "chipIconEnabled") != null) && (paramAttributeSet.getAttributeValue("http://schemas.android.com/apk/res-auto", "chipIconVisible") == null)) {
-      b(localTypedArray.getBoolean(R.styleable.ar, false));
+      b(localTypedArray.getBoolean(R.styleable.aY, false));
     }
-    a(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.aq));
-    if (localTypedArray.hasValue(R.styleable.at)) {
-      d(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.at));
+    a(MaterialResources.b(this.J, localTypedArray, R.styleable.aX));
+    if (localTypedArray.hasValue(R.styleable.ba)) {
+      d(MaterialResources.a(this.J, localTypedArray, R.styleable.ba));
     }
-    d(localTypedArray.getDimension(R.styleable.as, -1.0F));
-    c(localTypedArray.getBoolean(R.styleable.aH, false));
+    d(localTypedArray.getDimension(R.styleable.aZ, -1.0F));
+    c(localTypedArray.getBoolean(R.styleable.bo, false));
     if ((paramAttributeSet != null) && (paramAttributeSet.getAttributeValue("http://schemas.android.com/apk/res-auto", "closeIconEnabled") != null) && (paramAttributeSet.getAttributeValue("http://schemas.android.com/apk/res-auto", "closeIconVisible") == null)) {
-      c(localTypedArray.getBoolean(R.styleable.aC, false));
+      c(localTypedArray.getBoolean(R.styleable.bj, false));
     }
-    b(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.aB));
-    e(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.aG));
-    e(localTypedArray.getDimension(R.styleable.aE, 0.0F));
-    d(localTypedArray.getBoolean(R.styleable.ai, false));
-    e(localTypedArray.getBoolean(R.styleable.am, false));
+    b(MaterialResources.b(this.J, localTypedArray, R.styleable.bi));
+    e(MaterialResources.a(this.J, localTypedArray, R.styleable.bn));
+    e(localTypedArray.getDimension(R.styleable.bl, 0.0F));
+    d(localTypedArray.getBoolean(R.styleable.aP, false));
+    e(localTypedArray.getBoolean(R.styleable.aT, false));
     if ((paramAttributeSet != null) && (paramAttributeSet.getAttributeValue("http://schemas.android.com/apk/res-auto", "checkedIconEnabled") != null) && (paramAttributeSet.getAttributeValue("http://schemas.android.com/apk/res-auto", "checkedIconVisible") == null)) {
-      e(localTypedArray.getBoolean(R.styleable.ak, false));
+      e(localTypedArray.getBoolean(R.styleable.aR, false));
     }
-    c(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.aj));
-    if (localTypedArray.hasValue(R.styleable.al)) {
-      f(MaterialResources.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.al));
+    c(MaterialResources.b(this.J, localTypedArray, R.styleable.aQ));
+    if (localTypedArray.hasValue(R.styleable.aS)) {
+      f(MaterialResources.a(this.J, localTypedArray, R.styleable.aS));
     }
-    a(MotionSpec.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.aO));
-    b(MotionSpec.a(this.jdField_a_of_type_AndroidContentContext, localTypedArray, R.styleable.aJ));
-    f(localTypedArray.getDimension(R.styleable.ax, 0.0F));
-    g(localTypedArray.getDimension(R.styleable.aL, 0.0F));
-    h(localTypedArray.getDimension(R.styleable.aK, 0.0F));
-    i(localTypedArray.getDimension(R.styleable.aQ, 0.0F));
-    j(localTypedArray.getDimension(R.styleable.aP, 0.0F));
-    k(localTypedArray.getDimension(R.styleable.aF, 0.0F));
-    l(localTypedArray.getDimension(R.styleable.aD, 0.0F));
-    m(localTypedArray.getDimension(R.styleable.ap, 0.0F));
-    C(localTypedArray.getDimensionPixelSize(R.styleable.ag, 2147483647));
+    a(MotionSpec.a(this.J, localTypedArray, R.styleable.bv));
+    b(MotionSpec.a(this.J, localTypedArray, R.styleable.bq));
+    f(localTypedArray.getDimension(R.styleable.be, 0.0F));
+    g(localTypedArray.getDimension(R.styleable.bs, 0.0F));
+    h(localTypedArray.getDimension(R.styleable.br, 0.0F));
+    i(localTypedArray.getDimension(R.styleable.bx, 0.0F));
+    j(localTypedArray.getDimension(R.styleable.bw, 0.0F));
+    k(localTypedArray.getDimension(R.styleable.bm, 0.0F));
+    l(localTypedArray.getDimension(R.styleable.bk, 0.0F));
+    m(localTypedArray.getDimension(R.styleable.aW, 0.0F));
+    C(localTypedArray.getDimensionPixelSize(R.styleable.aN, 2147483647));
     localTypedArray.recycle();
-  }
-  
-  private static boolean a(@Nullable ColorStateList paramColorStateList)
-  {
-    return (paramColorStateList != null) && (paramColorStateList.isStateful());
-  }
-  
-  private static boolean a(@Nullable Drawable paramDrawable)
-  {
-    return (paramDrawable != null) && (paramDrawable.isStateful());
-  }
-  
-  private static boolean a(@Nullable TextAppearance paramTextAppearance)
-  {
-    return (paramTextAppearance != null) && (paramTextAppearance.jdField_a_of_type_AndroidContentResColorStateList != null) && (paramTextAppearance.jdField_a_of_type_AndroidContentResColorStateList.isStateful());
   }
   
   private static boolean a(@Nullable int[] paramArrayOfInt, @AttrRes int paramInt)
@@ -326,14 +301,14 @@ public class ChipDrawable
     if (paramArrayOfInt == null) {
       return false;
     }
-    int i1 = paramArrayOfInt.length;
-    int n = 0;
-    while (n < i1)
+    int i2 = paramArrayOfInt.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (paramArrayOfInt[n] == paramInt) {
+      if (paramArrayOfInt[i1] == paramInt) {
         return true;
       }
-      n += 1;
+      i1 += 1;
     }
     return false;
   }
@@ -341,172 +316,258 @@ public class ChipDrawable
   private boolean a(@NonNull int[] paramArrayOfInt1, @NonNull int[] paramArrayOfInt2)
   {
     boolean bool1 = super.onStateChange(paramArrayOfInt1);
-    Object localObject = this.jdField_a_of_type_AndroidContentResColorStateList;
+    Object localObject = this.c;
     if (localObject != null) {
-      n = ((ColorStateList)localObject).getColorForState(paramArrayOfInt1, this.jdField_a_of_type_Int);
+      i1 = ((ColorStateList)localObject).getColorForState(paramArrayOfInt1, this.R);
     } else {
-      n = 0;
+      i1 = 0;
     }
-    int i1 = a(n);
-    if (this.jdField_a_of_type_Int != i1)
+    int i2 = E(i1);
+    if (this.R != i2)
     {
-      this.jdField_a_of_type_Int = i1;
+      this.R = i2;
       bool1 = true;
     }
-    localObject = this.jdField_b_of_type_AndroidContentResColorStateList;
+    localObject = this.d;
     if (localObject != null) {
-      n = ((ColorStateList)localObject).getColorForState(paramArrayOfInt1, this.jdField_b_of_type_Int);
+      i1 = ((ColorStateList)localObject).getColorForState(paramArrayOfInt1, this.S);
     } else {
-      n = 0;
+      i1 = 0;
     }
-    int n = a(n);
-    if (this.jdField_b_of_type_Int != n)
+    int i1 = E(i1);
+    if (this.S != i1)
     {
-      this.jdField_b_of_type_Int = n;
+      this.S = i1;
       bool1 = true;
     }
-    int i2 = MaterialColors.a(i1, n);
-    if (this.jdField_c_of_type_Int != i2) {
-      n = 1;
-    } else {
-      n = 0;
-    }
-    if (b() == null) {
+    int i3 = MaterialColors.a(i2, i1);
+    if (this.T != i3) {
       i1 = 1;
     } else {
       i1 = 0;
     }
-    if ((n | i1) != 0)
+    if (M() == null) {
+      i2 = 1;
+    } else {
+      i2 = 0;
+    }
+    if ((i1 | i2) != 0)
     {
-      this.jdField_c_of_type_Int = i2;
-      g(ColorStateList.valueOf(this.jdField_c_of_type_Int));
+      this.T = i3;
+      g(ColorStateList.valueOf(this.T));
       bool1 = true;
     }
-    localObject = this.jdField_c_of_type_AndroidContentResColorStateList;
+    localObject = this.g;
     if (localObject != null) {
-      n = ((ColorStateList)localObject).getColorForState(paramArrayOfInt1, this.jdField_d_of_type_Int);
+      i1 = ((ColorStateList)localObject).getColorForState(paramArrayOfInt1, this.U);
     } else {
-      n = 0;
+      i1 = 0;
     }
-    if (this.jdField_d_of_type_Int != n)
+    if (this.U != i1)
     {
-      this.jdField_d_of_type_Int = n;
+      this.U = i1;
       bool1 = true;
     }
-    if ((this.jdField_i_of_type_AndroidContentResColorStateList != null) && (RippleUtils.a(paramArrayOfInt1))) {
-      n = this.jdField_i_of_type_AndroidContentResColorStateList.getColorForState(paramArrayOfInt1, this.jdField_e_of_type_Int);
+    if ((this.ag != null) && (RippleUtils.a(paramArrayOfInt1))) {
+      i1 = this.ag.getColorForState(paramArrayOfInt1, this.V);
     } else {
-      n = 0;
+      i1 = 0;
     }
     boolean bool2 = bool1;
-    if (this.jdField_e_of_type_Int != n)
+    if (this.V != i1)
     {
-      this.jdField_e_of_type_Int = n;
+      this.V = i1;
       bool2 = bool1;
-      if (this.jdField_g_of_type_Boolean) {
+      if (this.af) {
         bool2 = true;
       }
     }
-    if ((this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a() != null) && (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().jdField_a_of_type_AndroidContentResColorStateList != null)) {
-      n = this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramArrayOfInt1, this.jdField_f_of_type_Int);
+    if ((this.Q.b() != null) && (this.Q.b().a != null)) {
+      i1 = this.Q.b().a.getColorForState(paramArrayOfInt1, this.W);
     } else {
-      n = 0;
+      i1 = 0;
     }
     bool1 = bool2;
-    if (this.jdField_f_of_type_Int != n)
+    if (this.W != i1)
     {
-      this.jdField_f_of_type_Int = n;
+      this.W = i1;
       bool1 = true;
     }
     boolean bool3;
-    if ((a(getState(), 16842912)) && (this.jdField_d_of_type_Boolean)) {
+    if ((a(getState(), 16842912)) && (this.v)) {
       bool3 = true;
     } else {
       bool3 = false;
     }
     bool2 = bool1;
-    if (this.jdField_f_of_type_Boolean != bool3)
+    if (this.X != bool3)
     {
       bool2 = bool1;
-      if (this.jdField_d_of_type_AndroidGraphicsDrawableDrawable != null)
+      if (this.x != null)
       {
-        float f1 = a();
-        this.jdField_f_of_type_Boolean = bool3;
-        if (f1 != a())
+        float f1 = c();
+        this.X = bool3;
+        if (f1 != c())
         {
           bool2 = true;
-          n = 1;
+          i1 = 1;
           break label461;
         }
         bool2 = true;
       }
     }
-    n = 0;
+    i1 = 0;
     label461:
-    localObject = this.jdField_h_of_type_AndroidContentResColorStateList;
+    localObject = this.ac;
     if (localObject != null) {
-      i1 = ((ColorStateList)localObject).getColorForState(paramArrayOfInt1, this.jdField_g_of_type_Int);
+      i2 = ((ColorStateList)localObject).getColorForState(paramArrayOfInt1, this.Y);
     } else {
-      i1 = 0;
+      i2 = 0;
     }
-    if (this.jdField_g_of_type_Int != i1)
+    if (this.Y != i2)
     {
-      this.jdField_g_of_type_Int = i1;
-      this.jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = DrawableUtils.a(this, this.jdField_h_of_type_AndroidContentResColorStateList, this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
+      this.Y = i2;
+      this.ab = DrawableUtils.a(this, this.ac, this.ad);
       bool2 = true;
     }
     bool1 = bool2;
-    if (a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)) {
-      bool1 = bool2 | this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(paramArrayOfInt1);
+    if (d(this.l)) {
+      bool1 = bool2 | this.l.setState(paramArrayOfInt1);
     }
     bool2 = bool1;
-    if (a(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable)) {
-      bool2 = bool1 | this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.setState(paramArrayOfInt1);
+    if (d(this.x)) {
+      bool2 = bool1 | this.x.setState(paramArrayOfInt1);
     }
     bool1 = bool2;
-    if (a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable))
+    if (d(this.q))
     {
       localObject = new int[paramArrayOfInt1.length + paramArrayOfInt2.length];
       System.arraycopy(paramArrayOfInt1, 0, localObject, 0, paramArrayOfInt1.length);
       System.arraycopy(paramArrayOfInt2, 0, localObject, paramArrayOfInt1.length, paramArrayOfInt2.length);
-      bool1 = bool2 | this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState((int[])localObject);
+      bool1 = bool2 | this.q.setState((int[])localObject);
     }
     bool2 = bool1;
-    if (RippleUtils.jdField_a_of_type_Boolean)
+    if (RippleUtils.a)
     {
       bool2 = bool1;
-      if (a(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable)) {
-        bool2 = bool1 | this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setState(paramArrayOfInt2);
+      if (d(this.r)) {
+        bool2 = bool1 | this.r.setState(paramArrayOfInt2);
       }
     }
     if (bool2) {
       invalidateSelf();
     }
-    if (n != 0) {
+    if (i1 != 0) {
       b();
     }
     return bool2;
   }
   
+  private boolean ag()
+  {
+    return (this.k) && (this.l != null);
+  }
+  
+  private boolean ah()
+  {
+    return (this.w) && (this.x != null) && (this.X);
+  }
+  
+  private boolean ai()
+  {
+    return (this.p) && (this.q != null);
+  }
+  
+  private boolean aj()
+  {
+    return (this.w) && (this.x != null) && (this.v);
+  }
+  
+  private float ak()
+  {
+    Drawable localDrawable;
+    if (this.X) {
+      localDrawable = this.x;
+    } else {
+      localDrawable = this.l;
+    }
+    if ((this.n <= 0.0F) && (localDrawable != null)) {
+      return localDrawable.getIntrinsicWidth();
+    }
+    return this.n;
+  }
+  
+  private float al()
+  {
+    Drawable localDrawable;
+    if (this.X) {
+      localDrawable = this.x;
+    } else {
+      localDrawable = this.l;
+    }
+    if ((this.n <= 0.0F) && (localDrawable != null))
+    {
+      float f1 = (float)Math.ceil(ViewUtils.a(this.J, 24));
+      if (localDrawable.getIntrinsicHeight() <= f1) {
+        return localDrawable.getIntrinsicHeight();
+      }
+      return f1;
+    }
+    return this.n;
+  }
+  
+  private float am()
+  {
+    this.Q.a().getFontMetrics(this.M);
+    return (this.M.descent + this.M.ascent) / 2.0F;
+  }
+  
+  @Nullable
+  private ColorFilter an()
+  {
+    ColorFilter localColorFilter = this.aa;
+    if (localColorFilter != null) {
+      return localColorFilter;
+    }
+    return this.ab;
+  }
+  
+  private void ao()
+  {
+    ColorStateList localColorStateList;
+    if (this.af) {
+      localColorStateList = RippleUtils.b(this.i);
+    } else {
+      localColorStateList = null;
+    }
+    this.ag = localColorStateList;
+  }
+  
+  @TargetApi(21)
+  private void ap()
+  {
+    this.r = new RippleDrawable(RippleUtils.b(m()), this.q, b);
+  }
+  
   private void b(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
   {
-    if (!this.jdField_i_of_type_Boolean)
+    if (!this.al)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(a());
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRect);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, d(), d(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.K.setColor(this.S);
+      this.K.setStyle(Paint.Style.FILL);
+      this.K.setColorFilter(an());
+      this.N.set(paramRect);
+      paramCanvas.drawRoundRect(this.N, j(), j(), this.K);
     }
   }
   
   private void b(@NonNull Rect paramRect, @NonNull RectF paramRectF)
   {
     paramRectF.setEmpty();
-    if (this.jdField_a_of_type_JavaLangCharSequence != null)
+    if (this.j != null)
     {
-      float f1 = this.jdField_f_of_type_Float + a() + this.jdField_i_of_type_Float;
-      float f2 = this.m + b() + this.j;
+      float f1 = this.B + c() + this.E;
+      float f2 = this.I + d() + this.F;
       if (DrawableCompat.getLayoutDirection(this) == 0)
       {
         paramRectF.left = (paramRect.left + f1);
@@ -522,79 +583,67 @@ public class ChipDrawable
     }
   }
   
-  private void c()
+  private static boolean b(@Nullable TextAppearance paramTextAppearance)
   {
-    ColorStateList localColorStateList;
-    if (this.jdField_g_of_type_Boolean) {
-      localColorStateList = RippleUtils.b(this.jdField_d_of_type_AndroidContentResColorStateList);
-    } else {
-      localColorStateList = null;
-    }
-    this.jdField_i_of_type_AndroidContentResColorStateList = localColorStateList;
+    return (paramTextAppearance != null) && (paramTextAppearance.a != null) && (paramTextAppearance.a.isStateful());
   }
   
   private void c(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
   {
-    if ((this.jdField_c_of_type_Float > 0.0F) && (!this.jdField_i_of_type_Boolean))
+    if ((this.h > 0.0F) && (!this.al))
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_d_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      if (!this.jdField_i_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(a());
+      this.K.setColor(this.U);
+      this.K.setStyle(Paint.Style.STROKE);
+      if (!this.al) {
+        this.K.setColorFilter(an());
       }
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRect.left + this.jdField_c_of_type_Float / 2.0F, paramRect.top + this.jdField_c_of_type_Float / 2.0F, paramRect.right - this.jdField_c_of_type_Float / 2.0F, paramRect.bottom - this.jdField_c_of_type_Float / 2.0F);
-      float f1 = this.jdField_b_of_type_Float - this.jdField_c_of_type_Float / 2.0F;
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, f1, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.N.set(paramRect.left + this.h / 2.0F, paramRect.top + this.h / 2.0F, paramRect.right - this.h / 2.0F, paramRect.bottom - this.h / 2.0F);
+      float f1 = this.f - this.h / 2.0F;
+      paramCanvas.drawRoundRect(this.N, f1, f1, this.K);
     }
   }
   
   private void c(@NonNull Rect paramRect, @NonNull RectF paramRectF)
   {
     paramRectF.setEmpty();
-    if (k())
+    if (ai())
     {
-      float f1 = this.m + this.l;
+      float f1 = this.I + this.H;
       if (DrawableCompat.getLayoutDirection(this) == 0)
       {
         paramRectF.right = (paramRect.right - f1);
-        paramRectF.left = (paramRectF.right - this.jdField_e_of_type_Float);
+        paramRectF.left = (paramRectF.right - this.t);
       }
       else
       {
         paramRectF.left = (paramRect.left + f1);
-        paramRectF.right = (paramRectF.left + this.jdField_e_of_type_Float);
+        paramRectF.right = (paramRectF.left + this.t);
       }
-      paramRectF.top = (paramRect.exactCenterY() - this.jdField_e_of_type_Float / 2.0F);
-      paramRectF.bottom = (paramRectF.top + this.jdField_e_of_type_Float);
+      paramRectF.top = (paramRect.exactCenterY() - this.t / 2.0F);
+      paramRectF.bottom = (paramRectF.top + this.t);
     }
-  }
-  
-  @TargetApi(21)
-  private void d()
-  {
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = new RippleDrawable(RippleUtils.b(a()), this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, jdField_a_of_type_AndroidGraphicsDrawableShapeDrawable);
   }
   
   private void d(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_e_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRect);
-    if (!this.jdField_i_of_type_Boolean)
+    this.K.setColor(this.V);
+    this.K.setStyle(Paint.Style.FILL);
+    this.N.set(paramRect);
+    if (!this.al)
     {
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, d(), d(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRoundRect(this.N, j(), j(), this.K);
       return;
     }
-    a(new RectF(paramRect), this.jdField_a_of_type_AndroidGraphicsPath);
-    super.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidGraphicsPath, a());
+    a(new RectF(paramRect), this.P);
+    super.a(paramCanvas, this.K, this.P, Q());
   }
   
   private void d(@NonNull Rect paramRect, @NonNull RectF paramRectF)
   {
     paramRectF.set(paramRect);
-    if (k())
+    if (ai())
     {
-      float f1 = this.m + this.l + this.jdField_e_of_type_Float + this.k + this.j;
+      float f1 = this.I + this.H + this.t + this.G + this.F;
       if (DrawableCompat.getLayoutDirection(this) == 0)
       {
         paramRectF.right = (paramRect.right - f1);
@@ -604,23 +653,21 @@ public class ChipDrawable
     }
   }
   
-  private void d(@Nullable Drawable paramDrawable)
+  private static boolean d(@Nullable Drawable paramDrawable)
   {
-    if (paramDrawable != null) {
-      paramDrawable.setCallback(null);
-    }
+    return (paramDrawable != null) && (paramDrawable.isStateful());
   }
   
   private void e(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
   {
-    if (i())
+    if (ag())
     {
-      a(paramRect, this.jdField_a_of_type_AndroidGraphicsRectF);
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-      float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.top;
+      a(paramRect, this.N);
+      float f1 = this.N.left;
+      float f2 = this.N.top;
       paramCanvas.translate(f1, f2);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height());
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.l.setBounds(0, 0, (int)this.N.width(), (int)this.N.height());
+      this.l.draw(paramCanvas);
       paramCanvas.translate(-f1, -f2);
     }
   }
@@ -628,9 +675,9 @@ public class ChipDrawable
   private void e(@NonNull Rect paramRect, @NonNull RectF paramRectF)
   {
     paramRectF.setEmpty();
-    if (k())
+    if (ai())
     {
-      float f1 = this.m + this.l + this.jdField_e_of_type_Float + this.k + this.j;
+      float f1 = this.I + this.H + this.t + this.G + this.F;
       if (DrawableCompat.getLayoutDirection(this) == 0)
       {
         paramRectF.right = paramRect.right;
@@ -648,6 +695,27 @@ public class ChipDrawable
   
   private void e(@Nullable Drawable paramDrawable)
   {
+    if (paramDrawable != null) {
+      paramDrawable.setCallback(null);
+    }
+  }
+  
+  private void f(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
+  {
+    if (ah())
+    {
+      a(paramRect, this.N);
+      float f1 = this.N.left;
+      float f2 = this.N.top;
+      paramCanvas.translate(f1, f2);
+      this.x.setBounds(0, 0, (int)this.N.width(), (int)this.N.height());
+      this.x.draw(paramCanvas);
+      paramCanvas.translate(-f1, -f2);
+    }
+  }
+  
+  private void f(@Nullable Drawable paramDrawable)
+  {
     if (paramDrawable == null) {
       return;
     }
@@ -655,225 +723,206 @@ public class ChipDrawable
     DrawableCompat.setLayoutDirection(paramDrawable, DrawableCompat.getLayoutDirection(this));
     paramDrawable.setLevel(getLevel());
     paramDrawable.setVisible(isVisible(), false);
-    if (paramDrawable == this.jdField_b_of_type_AndroidGraphicsDrawableDrawable)
+    if (paramDrawable == this.q)
     {
       if (paramDrawable.isStateful()) {
-        paramDrawable.setState(a());
+        paramDrawable.setState(g());
       }
-      DrawableCompat.setTintList(paramDrawable, this.jdField_f_of_type_AndroidContentResColorStateList);
+      DrawableCompat.setTintList(paramDrawable, this.s);
       return;
     }
     if (paramDrawable.isStateful()) {
       paramDrawable.setState(getState());
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if ((paramDrawable == localDrawable) && (this.jdField_b_of_type_Boolean)) {
-      DrawableCompat.setTintList(localDrawable, this.jdField_e_of_type_AndroidContentResColorStateList);
-    }
-  }
-  
-  private void f(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
-  {
-    if (j())
-    {
-      a(paramRect, this.jdField_a_of_type_AndroidGraphicsRectF);
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-      float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.top;
-      paramCanvas.translate(f1, f2);
-      this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height());
-      this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.translate(-f1, -f2);
+    Drawable localDrawable = this.l;
+    if ((paramDrawable == localDrawable) && (this.o)) {
+      DrawableCompat.setTintList(localDrawable, this.m);
     }
   }
   
   private void g(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
   {
-    if (this.jdField_a_of_type_JavaLangCharSequence != null)
+    if (this.j != null)
     {
-      Object localObject = a(paramRect, this.jdField_a_of_type_AndroidGraphicsPointF);
-      b(paramRect, this.jdField_a_of_type_AndroidGraphicsRectF);
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a() != null)
+      Object localObject = a(paramRect, this.O);
+      b(paramRect, this.N);
+      if (this.Q.b() != null)
       {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().drawableState = getState();
-        this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(this.jdField_a_of_type_AndroidContentContext);
+        this.Q.a().drawableState = getState();
+        this.Q.a(this.J);
       }
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().setTextAlign((Paint.Align)localObject);
-      int n = Math.round(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(a().toString()));
-      int i2 = Math.round(this.jdField_a_of_type_AndroidGraphicsRectF.width());
-      int i1 = 0;
-      if (n > i2) {
-        n = 1;
+      this.Q.a().setTextAlign((Paint.Align)localObject);
+      int i1 = Math.round(this.Q.a(n().toString()));
+      int i3 = Math.round(this.N.width());
+      int i2 = 0;
+      if (i1 > i3) {
+        i1 = 1;
       } else {
-        n = 0;
+        i1 = 0;
       }
-      if (n != 0)
+      if (i1 != 0)
       {
-        i1 = paramCanvas.save();
-        paramCanvas.clipRect(this.jdField_a_of_type_AndroidGraphicsRectF);
+        i2 = paramCanvas.save();
+        paramCanvas.clipRect(this.N);
       }
-      localObject = this.jdField_a_of_type_JavaLangCharSequence;
+      localObject = this.j;
       paramRect = (Rect)localObject;
-      if (n != 0)
+      if (i1 != 0)
       {
         paramRect = (Rect)localObject;
-        if (this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt != null) {
-          paramRect = TextUtils.ellipsize((CharSequence)localObject, this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(), this.jdField_a_of_type_AndroidGraphicsRectF.width(), this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt);
+        if (this.ai != null) {
+          paramRect = TextUtils.ellipsize((CharSequence)localObject, this.Q.a(), this.N.width(), this.ai);
         }
       }
-      paramCanvas.drawText(paramRect, 0, paramRect.length(), this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a());
-      if (n != 0) {
-        paramCanvas.restoreToCount(i1);
+      paramCanvas.drawText(paramRect, 0, paramRect.length(), this.O.x, this.O.y, this.Q.a());
+      if (i1 != 0) {
+        paramCanvas.restoreToCount(i2);
       }
     }
   }
   
   private void h(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
   {
-    if (k())
+    if (ai())
     {
-      c(paramRect, this.jdField_a_of_type_AndroidGraphicsRectF);
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.left;
-      float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.top;
+      c(paramRect, this.N);
+      float f1 = this.N.left;
+      float f2 = this.N.top;
       paramCanvas.translate(f1, f2);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_AndroidGraphicsRectF.width(), (int)this.jdField_a_of_type_AndroidGraphicsRectF.height());
-      if (RippleUtils.jdField_a_of_type_Boolean)
+      this.q.setBounds(0, 0, (int)this.N.width(), (int)this.N.height());
+      if (RippleUtils.a)
       {
-        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getBounds());
-        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.jumpToCurrentState();
-        this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        this.r.setBounds(this.q.getBounds());
+        this.r.jumpToCurrentState();
+        this.r.draw(paramCanvas);
       }
       else
       {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        this.q.draw(paramCanvas);
       }
       paramCanvas.translate(-f1, -f2);
     }
   }
   
-  private void i(@Nullable ColorStateList paramColorStateList)
+  private void i(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != paramColorStateList)
+    Paint localPaint = this.L;
+    if (localPaint != null)
     {
-      this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+      localPaint.setColor(ColorUtils.setAlphaComponent(-16777216, 127));
+      paramCanvas.drawRect(paramRect, this.L);
+      if ((ag()) || (ah()))
+      {
+        a(paramRect, this.N);
+        paramCanvas.drawRect(this.N, this.L);
+      }
+      if (this.j != null) {
+        paramCanvas.drawLine(paramRect.left, paramRect.exactCenterY(), paramRect.right, paramRect.exactCenterY(), this.L);
+      }
+      if (ai())
+      {
+        c(paramRect, this.N);
+        paramCanvas.drawRect(this.N, this.L);
+      }
+      this.L.setColor(ColorUtils.setAlphaComponent(-65536, 127));
+      d(paramRect, this.N);
+      paramCanvas.drawRect(this.N, this.L);
+      this.L.setColor(ColorUtils.setAlphaComponent(-16711936, 127));
+      e(paramRect, this.N);
+      paramCanvas.drawRect(this.N, this.L);
+    }
+  }
+  
+  private static boolean i(@Nullable ColorStateList paramColorStateList)
+  {
+    return (paramColorStateList != null) && (paramColorStateList.isStateful());
+  }
+  
+  private void j(@Nullable ColorStateList paramColorStateList)
+  {
+    if (this.c != paramColorStateList)
+    {
+      this.c = paramColorStateList;
       onStateChange(getState());
     }
   }
   
-  private void i(@NonNull Canvas paramCanvas, @NonNull Rect paramRect)
+  @Nullable
+  public ColorStateList A()
   {
-    Paint localPaint = this.jdField_b_of_type_AndroidGraphicsPaint;
-    if (localPaint != null)
-    {
-      localPaint.setColor(ColorUtils.setAlphaComponent(-16777216, 127));
-      paramCanvas.drawRect(paramRect, this.jdField_b_of_type_AndroidGraphicsPaint);
-      if ((i()) || (j()))
-      {
-        a(paramRect, this.jdField_a_of_type_AndroidGraphicsRectF);
-        paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-      if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-        paramCanvas.drawLine(paramRect.left, paramRect.exactCenterY(), paramRect.right, paramRect.exactCenterY(), this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-      if (k())
-      {
-        c(paramRect, this.jdField_a_of_type_AndroidGraphicsRectF);
-        paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsPaint);
-      }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(ColorUtils.setAlphaComponent(-65536, 127));
-      d(paramRect, this.jdField_a_of_type_AndroidGraphicsRectF);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsPaint);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(ColorUtils.setAlphaComponent(-16711936, 127));
-      e(paramRect, this.jdField_a_of_type_AndroidGraphicsRectF);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsPaint);
-    }
-  }
-  
-  private boolean i()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null);
-  }
-  
-  private boolean j()
-  {
-    return (this.jdField_e_of_type_Boolean) && (this.jdField_d_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_f_of_type_Boolean);
-  }
-  
-  private boolean k()
-  {
-    return (this.jdField_c_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null);
-  }
-  
-  private boolean l()
-  {
-    return (this.jdField_e_of_type_Boolean) && (this.jdField_d_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_d_of_type_Boolean);
-  }
-  
-  private float r()
-  {
-    Drawable localDrawable;
-    if (this.jdField_f_of_type_Boolean) {
-      localDrawable = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
-    } else {
-      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    }
-    if ((this.jdField_d_of_type_Float <= 0.0F) && (localDrawable != null)) {
-      return localDrawable.getIntrinsicWidth();
-    }
-    return this.jdField_d_of_type_Float;
-  }
-  
-  private float s()
-  {
-    Drawable localDrawable;
-    if (this.jdField_f_of_type_Boolean) {
-      localDrawable = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
-    } else {
-      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    }
-    if ((this.jdField_d_of_type_Float <= 0.0F) && (localDrawable != null))
-    {
-      float f1 = (float)Math.ceil(ViewUtils.a(this.jdField_a_of_type_AndroidContentContext, 24));
-      if (localDrawable.getIntrinsicHeight() <= f1) {
-        return localDrawable.getIntrinsicHeight();
-      }
-      return f1;
-    }
-    return this.jdField_d_of_type_Float;
-  }
-  
-  private float t()
-  {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a().getFontMetrics(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics);
-    return (this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.descent + this.jdField_a_of_type_AndroidGraphicsPaint$FontMetrics.ascent) / 2.0F;
+    return this.y;
   }
   
   public void A(@DimenRes int paramInt)
   {
-    l(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    l(this.J.getResources().getDimension(paramInt));
+  }
+  
+  @Nullable
+  public MotionSpec B()
+  {
+    return this.z;
   }
   
   public void B(@DimenRes int paramInt)
   {
-    m(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    m(this.J.getResources().getDimension(paramInt));
+  }
+  
+  @Nullable
+  public MotionSpec C()
+  {
+    return this.A;
   }
   
   public void C(@Px int paramInt)
   {
-    this.jdField_i_of_type_Int = paramInt;
+    this.ak = paramInt;
   }
   
-  float a()
+  public float D()
   {
-    if ((!i()) && (!j())) {
-      return 0.0F;
-    }
-    return this.jdField_g_of_type_Float + r() + this.jdField_h_of_type_Float;
+    return this.B;
   }
   
-  @Nullable
-  public ColorStateList a()
+  public float E()
   {
-    return this.jdField_d_of_type_AndroidContentResColorStateList;
+    return this.C;
+  }
+  
+  public float F()
+  {
+    return this.D;
+  }
+  
+  public float G()
+  {
+    return this.E;
+  }
+  
+  public float H()
+  {
+    return this.F;
+  }
+  
+  public float I()
+  {
+    return this.G;
+  }
+  
+  public float J()
+  {
+    return this.H;
+  }
+  
+  public float K()
+  {
+    return this.I;
+  }
+  
+  boolean L()
+  {
+    return this.aj;
   }
   
   @NonNull
@@ -881,9 +930,9 @@ public class ChipDrawable
   {
     paramPointF.set(0.0F, 0.0F);
     Paint.Align localAlign = Paint.Align.LEFT;
-    if (this.jdField_a_of_type_JavaLangCharSequence != null)
+    if (this.j != null)
     {
-      float f1 = this.jdField_f_of_type_Float + a() + this.jdField_i_of_type_Float;
+      float f1 = this.B + c() + this.E;
       if (DrawableCompat.getLayoutDirection(this) == 0)
       {
         paramPointF.x = (paramRect.left + f1);
@@ -894,49 +943,16 @@ public class ChipDrawable
         paramPointF.x = (paramRect.right - f1);
         localAlign = Paint.Align.RIGHT;
       }
-      paramPointF.y = (paramRect.centerY() - t());
+      paramPointF.y = (paramRect.centerY() - am());
     }
     return localAlign;
   }
   
-  @Nullable
-  public Drawable a()
-  {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      return DrawableCompat.unwrap(localDrawable);
-    }
-    return null;
-  }
-  
-  public TextUtils.TruncateAt a()
-  {
-    return this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt;
-  }
-  
-  @Nullable
-  public TextAppearance a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a();
-  }
-  
-  @Nullable
-  public CharSequence a()
-  {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public void a()
-  {
-    b();
-    invalidateSelf();
-  }
-  
   public void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Float != paramFloat)
+    if (this.e != paramFloat)
     {
-      this.jdField_a_of_type_Float = paramFloat;
+      this.e = paramFloat;
       invalidateSelf();
       b();
     }
@@ -944,14 +960,14 @@ public class ChipDrawable
   
   public void a(@ColorRes int paramInt)
   {
-    a(AppCompatResources.getColorStateList(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    a(AppCompatResources.getColorStateList(this.J, paramInt));
   }
   
   public void a(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_b_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.d != paramColorStateList)
     {
-      this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
+      this.d = paramColorStateList;
       onStateChange(getState());
     }
   }
@@ -963,20 +979,20 @@ public class ChipDrawable
   
   public void a(@Nullable Drawable paramDrawable)
   {
-    Drawable localDrawable = a();
+    Drawable localDrawable = q();
     if (localDrawable != paramDrawable)
     {
-      float f1 = a();
+      float f1 = c();
       if (paramDrawable != null) {
         paramDrawable = DrawableCompat.wrap(paramDrawable).mutate();
       } else {
         paramDrawable = null;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      float f2 = a();
-      d(localDrawable);
-      if (i()) {
-        e(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.l = paramDrawable;
+      float f2 = c();
+      e(localDrawable);
+      if (ag()) {
+        f(this.l);
       }
       invalidateSelf();
       if (f1 != f2) {
@@ -987,22 +1003,22 @@ public class ChipDrawable
   
   public void a(@Nullable TextUtils.TruncateAt paramTruncateAt)
   {
-    this.jdField_a_of_type_AndroidTextTextUtils$TruncateAt = paramTruncateAt;
+    this.ai = paramTruncateAt;
   }
   
   public void a(@Nullable MotionSpec paramMotionSpec)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec = paramMotionSpec;
+    this.z = paramMotionSpec;
   }
   
   public void a(@Nullable ChipDrawable.Delegate paramDelegate)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDelegate);
+    this.ah = new WeakReference(paramDelegate);
   }
   
   public void a(@Nullable TextAppearance paramTextAppearance)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(paramTextAppearance, this.jdField_a_of_type_AndroidContentContext);
+    this.Q.a(paramTextAppearance, this.J);
   }
   
   public void a(@Nullable CharSequence paramCharSequence)
@@ -1011,10 +1027,10 @@ public class ChipDrawable
     if (paramCharSequence == null) {
       localObject = "";
     }
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangCharSequence, (CharSequence)localObject))
+    if (!TextUtils.equals(this.j, (CharSequence)localObject))
     {
-      this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(true);
+      this.j = ((CharSequence)localObject);
+      this.Q.a(true);
       invalidateSelf();
       b();
     }
@@ -1022,64 +1038,34 @@ public class ChipDrawable
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_g_of_type_Boolean != paramBoolean)
+    if (this.af != paramBoolean)
     {
-      this.jdField_g_of_type_Boolean = paramBoolean;
-      c();
+      this.af = paramBoolean;
+      ao();
       onStateChange(getState());
     }
   }
   
   public boolean a()
   {
-    return this.jdField_g_of_type_Boolean;
+    return this.af;
   }
   
   public boolean a(@NonNull int[] paramArrayOfInt)
   {
-    if (!Arrays.equals(this.jdField_b_of_type_ArrayOfInt, paramArrayOfInt))
+    if (!Arrays.equals(this.ae, paramArrayOfInt))
     {
-      this.jdField_b_of_type_ArrayOfInt = paramArrayOfInt;
-      if (k()) {
+      this.ae = paramArrayOfInt;
+      if (ai()) {
         return a(getState(), paramArrayOfInt);
       }
     }
     return false;
   }
   
-  @NonNull
-  public int[] a()
-  {
-    return this.jdField_b_of_type_ArrayOfInt;
-  }
-  
-  float b()
-  {
-    if (k()) {
-      return this.k + this.jdField_e_of_type_Float + this.l;
-    }
-    return 0.0F;
-  }
-  
-  @Nullable
-  public Drawable b()
-  {
-    Drawable localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    if (localDrawable != null) {
-      return DrawableCompat.unwrap(localDrawable);
-    }
-    return null;
-  }
-  
-  @Nullable
-  public CharSequence b()
-  {
-    return this.jdField_b_of_type_JavaLangCharSequence;
-  }
-  
   protected void b()
   {
-    ChipDrawable.Delegate localDelegate = (ChipDrawable.Delegate)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ChipDrawable.Delegate localDelegate = (ChipDrawable.Delegate)this.ah.get();
     if (localDelegate != null) {
       localDelegate.a();
     }
@@ -1088,24 +1074,24 @@ public class ChipDrawable
   @Deprecated
   public void b(float paramFloat)
   {
-    if (this.jdField_b_of_type_Float != paramFloat)
+    if (this.f != paramFloat)
     {
-      this.jdField_b_of_type_Float = paramFloat;
-      setShapeAppearanceModel(a().a(paramFloat));
+      this.f = paramFloat;
+      setShapeAppearanceModel(getShapeAppearanceModel().a(paramFloat));
     }
   }
   
   public void b(@DimenRes int paramInt)
   {
-    a(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    a(this.J.getResources().getDimension(paramInt));
   }
   
   public void b(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_c_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.g != paramColorStateList)
     {
-      this.jdField_c_of_type_AndroidContentResColorStateList = paramColorStateList;
-      if (this.jdField_i_of_type_Boolean) {
+      this.g = paramColorStateList;
+      if (this.al) {
         h(paramColorStateList);
       }
       onStateChange(getState());
@@ -1114,23 +1100,23 @@ public class ChipDrawable
   
   public void b(@Nullable Drawable paramDrawable)
   {
-    Drawable localDrawable = b();
+    Drawable localDrawable = u();
     if (localDrawable != paramDrawable)
     {
-      float f1 = b();
+      float f1 = d();
       if (paramDrawable != null) {
         paramDrawable = DrawableCompat.wrap(paramDrawable).mutate();
       } else {
         paramDrawable = null;
       }
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      if (RippleUtils.jdField_a_of_type_Boolean) {
-        d();
+      this.q = paramDrawable;
+      if (RippleUtils.a) {
+        ap();
       }
-      float f2 = b();
-      d(localDrawable);
-      if (k()) {
-        e(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+      float f2 = d();
+      e(localDrawable);
+      if (ai()) {
+        f(this.q);
       }
       invalidateSelf();
       if (f1 != f2) {
@@ -1141,37 +1127,37 @@ public class ChipDrawable
   
   public void b(@Nullable MotionSpec paramMotionSpec)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialAnimationMotionSpec = paramMotionSpec;
+    this.A = paramMotionSpec;
   }
   
   public void b(@Nullable CharSequence paramCharSequence)
   {
-    if (this.jdField_b_of_type_JavaLangCharSequence != paramCharSequence)
+    if (this.u != paramCharSequence)
     {
-      this.jdField_b_of_type_JavaLangCharSequence = BidiFormatter.getInstance().unicodeWrap(paramCharSequence);
+      this.u = BidiFormatter.getInstance().unicodeWrap(paramCharSequence);
       invalidateSelf();
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.k != paramBoolean)
     {
-      boolean bool = i();
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      paramBoolean = i();
-      int n;
+      boolean bool = ag();
+      this.k = paramBoolean;
+      paramBoolean = ag();
+      int i1;
       if (bool != paramBoolean) {
-        n = 1;
+        i1 = 1;
       } else {
-        n = 0;
+        i1 = 0;
       }
-      if (n != 0)
+      if (i1 != 0)
       {
         if (paramBoolean) {
-          e(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          f(this.l);
         } else {
-          d(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          e(this.l);
         }
         invalidateSelf();
         b();
@@ -1179,23 +1165,21 @@ public class ChipDrawable
     }
   }
   
-  public boolean b()
+  float c()
   {
-    return a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-  }
-  
-  public float c()
-  {
-    return this.jdField_a_of_type_Float;
+    if ((!ag()) && (!ah())) {
+      return 0.0F;
+    }
+    return this.C + ak() + this.D;
   }
   
   public void c(float paramFloat)
   {
-    if (this.jdField_c_of_type_Float != paramFloat)
+    if (this.h != paramFloat)
     {
-      this.jdField_c_of_type_Float = paramFloat;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(paramFloat);
-      if (this.jdField_i_of_type_Boolean) {
+      this.h = paramFloat;
+      this.K.setStrokeWidth(paramFloat);
+      if (this.al) {
         super.n(paramFloat);
       }
       invalidateSelf();
@@ -1205,28 +1189,28 @@ public class ChipDrawable
   @Deprecated
   public void c(@DimenRes int paramInt)
   {
-    b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    b(this.J.getResources().getDimension(paramInt));
   }
   
   public void c(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_d_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.i != paramColorStateList)
     {
-      this.jdField_d_of_type_AndroidContentResColorStateList = paramColorStateList;
-      c();
+      this.i = paramColorStateList;
+      ao();
       onStateChange(getState());
     }
   }
   
   public void c(@Nullable Drawable paramDrawable)
   {
-    if (this.jdField_d_of_type_AndroidGraphicsDrawableDrawable != paramDrawable)
+    if (this.x != paramDrawable)
     {
-      float f1 = a();
-      this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      float f2 = a();
-      d(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable);
-      e(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable);
+      float f1 = c();
+      this.x = paramDrawable;
+      float f2 = c();
+      e(this.x);
+      f(this.x);
       invalidateSelf();
       if (f1 != f2) {
         b();
@@ -1236,23 +1220,23 @@ public class ChipDrawable
   
   public void c(boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Boolean != paramBoolean)
+    if (this.p != paramBoolean)
     {
-      boolean bool = k();
-      this.jdField_c_of_type_Boolean = paramBoolean;
-      paramBoolean = k();
-      int n;
+      boolean bool = ai();
+      this.p = paramBoolean;
+      paramBoolean = ai();
+      int i1;
       if (bool != paramBoolean) {
-        n = 1;
+        i1 = 1;
       } else {
-        n = 0;
+        i1 = 0;
       }
-      if (n != 0)
+      if (i1 != 0)
       {
         if (paramBoolean) {
-          e(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+          f(this.q);
         } else {
-          d(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+          e(this.q);
         }
         invalidateSelf();
         b();
@@ -1260,26 +1244,21 @@ public class ChipDrawable
     }
   }
   
-  public boolean c()
+  float d()
   {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public float d()
-  {
-    if (this.jdField_i_of_type_Boolean) {
-      return n();
+    if (ai()) {
+      return this.G + this.t + this.H;
     }
-    return this.jdField_b_of_type_Float;
+    return 0.0F;
   }
   
   public void d(float paramFloat)
   {
-    if (this.jdField_d_of_type_Float != paramFloat)
+    if (this.n != paramFloat)
     {
-      float f1 = a();
-      this.jdField_d_of_type_Float = paramFloat;
-      paramFloat = a();
+      float f1 = c();
+      this.n = paramFloat;
+      paramFloat = c();
       invalidateSelf();
       if (f1 != paramFloat) {
         b();
@@ -1289,17 +1268,17 @@ public class ChipDrawable
   
   public void d(@ColorRes int paramInt)
   {
-    b(AppCompatResources.getColorStateList(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    b(AppCompatResources.getColorStateList(this.J, paramInt));
   }
   
   public void d(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_e_of_type_AndroidContentResColorStateList != paramColorStateList)
+    this.o = true;
+    if (this.m != paramColorStateList)
     {
-      this.jdField_e_of_type_AndroidContentResColorStateList = paramColorStateList;
-      if (i()) {
-        DrawableCompat.setTintList(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramColorStateList);
+      this.m = paramColorStateList;
+      if (ag()) {
+        DrawableCompat.setTintList(this.l, paramColorStateList);
       }
       onStateChange(getState());
     }
@@ -1307,24 +1286,19 @@ public class ChipDrawable
   
   public void d(boolean paramBoolean)
   {
-    if (this.jdField_d_of_type_Boolean != paramBoolean)
+    if (this.v != paramBoolean)
     {
-      this.jdField_d_of_type_Boolean = paramBoolean;
-      float f1 = a();
-      if ((!paramBoolean) && (this.jdField_f_of_type_Boolean)) {
-        this.jdField_f_of_type_Boolean = false;
+      this.v = paramBoolean;
+      float f1 = c();
+      if ((!paramBoolean) && (this.X)) {
+        this.X = false;
       }
-      float f2 = a();
+      float f2 = c();
       invalidateSelf();
       if (f1 != f2) {
         b();
       }
     }
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_d_of_type_Boolean;
   }
   
   public void draw(@NonNull Canvas paramCanvas)
@@ -1335,42 +1309,37 @@ public class ChipDrawable
       if (getAlpha() == 0) {
         return;
       }
-      int n = 0;
-      if (this.jdField_h_of_type_Int < 255) {
-        n = CanvasCompat.a(paramCanvas, localRect.left, localRect.top, localRect.right, localRect.bottom, this.jdField_h_of_type_Int);
+      int i1 = 0;
+      if (this.Z < 255) {
+        i1 = CanvasCompat.a(paramCanvas, localRect.left, localRect.top, localRect.right, localRect.bottom, this.Z);
       }
       a(paramCanvas, localRect);
       b(paramCanvas, localRect);
-      if (this.jdField_i_of_type_Boolean) {
+      if (this.al) {
         super.draw(paramCanvas);
       }
       c(paramCanvas, localRect);
       d(paramCanvas, localRect);
       e(paramCanvas, localRect);
       f(paramCanvas, localRect);
-      if (this.jdField_h_of_type_Boolean) {
+      if (this.aj) {
         g(paramCanvas, localRect);
       }
       h(paramCanvas, localRect);
       i(paramCanvas, localRect);
-      if (this.jdField_h_of_type_Int < 255) {
-        paramCanvas.restoreToCount(n);
+      if (this.Z < 255) {
+        paramCanvas.restoreToCount(i1);
       }
     }
   }
   
-  public float e()
-  {
-    return this.jdField_f_of_type_Float;
-  }
-  
   public void e(float paramFloat)
   {
-    if (this.jdField_e_of_type_Float != paramFloat)
+    if (this.t != paramFloat)
     {
-      this.jdField_e_of_type_Float = paramFloat;
+      this.t = paramFloat;
       invalidateSelf();
-      if (k()) {
+      if (ai()) {
         b();
       }
     }
@@ -1378,16 +1347,16 @@ public class ChipDrawable
   
   public void e(@DimenRes int paramInt)
   {
-    c(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    c(this.J.getResources().getDimension(paramInt));
   }
   
   public void e(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_f_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.s != paramColorStateList)
     {
-      this.jdField_f_of_type_AndroidContentResColorStateList = paramColorStateList;
-      if (k()) {
-        DrawableCompat.setTintList(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, paramColorStateList);
+      this.s = paramColorStateList;
+      if (ai()) {
+        DrawableCompat.setTintList(this.q, paramColorStateList);
       }
       onStateChange(getState());
     }
@@ -1395,23 +1364,23 @@ public class ChipDrawable
   
   public void e(boolean paramBoolean)
   {
-    if (this.jdField_e_of_type_Boolean != paramBoolean)
+    if (this.w != paramBoolean)
     {
-      boolean bool = j();
-      this.jdField_e_of_type_Boolean = paramBoolean;
-      paramBoolean = j();
-      int n;
+      boolean bool = ah();
+      this.w = paramBoolean;
+      paramBoolean = ah();
+      int i1;
       if (bool != paramBoolean) {
-        n = 1;
+        i1 = 1;
       } else {
-        n = 0;
+        i1 = 0;
       }
-      if (n != 0)
+      if (i1 != 0)
       {
         if (paramBoolean) {
-          e(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable);
+          f(this.x);
         } else {
-          d(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable);
+          e(this.x);
         }
         invalidateSelf();
         b();
@@ -1419,21 +1388,22 @@ public class ChipDrawable
     }
   }
   
-  boolean e()
+  public boolean e()
   {
-    return this.jdField_h_of_type_Boolean;
+    return d(this.q);
   }
   
-  public float f()
+  public void f()
   {
-    return this.jdField_i_of_type_Float;
+    b();
+    invalidateSelf();
   }
   
   public void f(float paramFloat)
   {
-    if (this.jdField_f_of_type_Float != paramFloat)
+    if (this.B != paramFloat)
     {
-      this.jdField_f_of_type_Float = paramFloat;
+      this.B = paramFloat;
       invalidateSelf();
       b();
     }
@@ -1441,16 +1411,16 @@ public class ChipDrawable
   
   public void f(@ColorRes int paramInt)
   {
-    c(AppCompatResources.getColorStateList(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    c(AppCompatResources.getColorStateList(this.J, paramInt));
   }
   
   public void f(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_g_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.y != paramColorStateList)
     {
-      this.jdField_g_of_type_AndroidContentResColorStateList = paramColorStateList;
-      if (l()) {
-        DrawableCompat.setTintList(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable, paramColorStateList);
+      this.y = paramColorStateList;
+      if (aj()) {
+        DrawableCompat.setTintList(this.x, paramColorStateList);
       }
       onStateChange(getState());
     }
@@ -1458,21 +1428,16 @@ public class ChipDrawable
   
   void f(boolean paramBoolean)
   {
-    this.jdField_h_of_type_Boolean = paramBoolean;
-  }
-  
-  public float g()
-  {
-    return this.j;
+    this.aj = paramBoolean;
   }
   
   public void g(float paramFloat)
   {
-    if (this.jdField_g_of_type_Float != paramFloat)
+    if (this.C != paramFloat)
     {
-      float f1 = a();
-      this.jdField_g_of_type_Float = paramFloat;
-      paramFloat = a();
+      float f1 = c();
+      this.C = paramFloat;
+      paramFloat = c();
       invalidateSelf();
       if (f1 != paramFloat) {
         b();
@@ -1482,28 +1447,34 @@ public class ChipDrawable
   
   public void g(@StyleRes int paramInt)
   {
-    a(new TextAppearance(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    a(new TextAppearance(this.J, paramInt));
+  }
+  
+  @NonNull
+  public int[] g()
+  {
+    return this.ae;
   }
   
   public int getAlpha()
   {
-    return this.jdField_h_of_type_Int;
+    return this.Z;
   }
   
   @Nullable
   public ColorFilter getColorFilter()
   {
-    return this.jdField_a_of_type_AndroidGraphicsColorFilter;
+    return this.aa;
   }
   
   public int getIntrinsicHeight()
   {
-    return (int)this.jdField_a_of_type_Float;
+    return (int)this.e;
   }
   
   public int getIntrinsicWidth()
   {
-    return Math.min(Math.round(this.jdField_f_of_type_Float + a() + this.jdField_i_of_type_Float + this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a(a().toString()) + this.j + b() + this.m), this.jdField_i_of_type_Int);
+    return Math.min(Math.round(this.B + c() + this.E + this.Q.a(n().toString()) + this.F + d() + this.I), this.ak);
   }
   
   public int getOpacity()
@@ -1514,32 +1485,33 @@ public class ChipDrawable
   @TargetApi(21)
   public void getOutline(@NonNull Outline paramOutline)
   {
-    if (this.jdField_i_of_type_Boolean)
+    if (this.al)
     {
       super.getOutline(paramOutline);
       return;
     }
     Rect localRect = getBounds();
     if (!localRect.isEmpty()) {
-      paramOutline.setRoundRect(localRect, this.jdField_b_of_type_Float);
+      paramOutline.setRoundRect(localRect, this.f);
     } else {
-      paramOutline.setRoundRect(0, 0, getIntrinsicWidth(), getIntrinsicHeight(), this.jdField_b_of_type_Float);
+      paramOutline.setRoundRect(0, 0, getIntrinsicWidth(), getIntrinsicHeight(), this.f);
     }
     paramOutline.setAlpha(getAlpha() / 255.0F);
   }
   
-  public float h()
+  @Nullable
+  public ColorStateList h()
   {
-    return this.m;
+    return this.d;
   }
   
   public void h(float paramFloat)
   {
-    if (this.jdField_h_of_type_Float != paramFloat)
+    if (this.D != paramFloat)
     {
-      float f1 = a();
-      this.jdField_h_of_type_Float = paramFloat;
-      paramFloat = a();
+      float f1 = c();
+      this.D = paramFloat;
+      paramFloat = c();
       invalidateSelf();
       if (f1 != paramFloat) {
         b();
@@ -1549,14 +1521,19 @@ public class ChipDrawable
   
   public void h(@BoolRes int paramInt)
   {
-    b(this.jdField_a_of_type_AndroidContentContext.getResources().getBoolean(paramInt));
+    b(this.J.getResources().getBoolean(paramInt));
+  }
+  
+  public float i()
+  {
+    return this.e;
   }
   
   public void i(float paramFloat)
   {
-    if (this.jdField_i_of_type_Float != paramFloat)
+    if (this.E != paramFloat)
     {
-      this.jdField_i_of_type_Float = paramFloat;
+      this.E = paramFloat;
       invalidateSelf();
       b();
     }
@@ -1564,7 +1541,7 @@ public class ChipDrawable
   
   public void i(@DrawableRes int paramInt)
   {
-    a(AppCompatResources.getDrawable(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    a(AppCompatResources.getDrawable(this.J, paramInt));
   }
   
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
@@ -1577,14 +1554,22 @@ public class ChipDrawable
   
   public boolean isStateful()
   {
-    return (a(this.jdField_a_of_type_AndroidContentResColorStateList)) || (a(this.jdField_b_of_type_AndroidContentResColorStateList)) || (a(this.jdField_c_of_type_AndroidContentResColorStateList)) || ((this.jdField_g_of_type_Boolean) && (a(this.jdField_i_of_type_AndroidContentResColorStateList))) || (a(this.jdField_a_of_type_ComGoogleAndroidMaterialInternalTextDrawableHelper.a())) || (l()) || (a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)) || (a(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable)) || (a(this.jdField_h_of_type_AndroidContentResColorStateList));
+    return (i(this.c)) || (i(this.d)) || (i(this.g)) || ((this.af) && (i(this.ag))) || (b(this.Q.b())) || (aj()) || (d(this.l)) || (d(this.x)) || (i(this.ac));
+  }
+  
+  public float j()
+  {
+    if (this.al) {
+      return ab();
+    }
+    return this.f;
   }
   
   public void j(float paramFloat)
   {
-    if (this.j != paramFloat)
+    if (this.F != paramFloat)
     {
-      this.j = paramFloat;
+      this.F = paramFloat;
       invalidateSelf();
       b();
     }
@@ -1592,16 +1577,22 @@ public class ChipDrawable
   
   public void j(@ColorRes int paramInt)
   {
-    d(AppCompatResources.getColorStateList(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    d(AppCompatResources.getColorStateList(this.J, paramInt));
+  }
+  
+  @Nullable
+  public ColorStateList k()
+  {
+    return this.g;
   }
   
   public void k(float paramFloat)
   {
-    if (this.k != paramFloat)
+    if (this.G != paramFloat)
     {
-      this.k = paramFloat;
+      this.G = paramFloat;
       invalidateSelf();
-      if (k()) {
+      if (ai()) {
         b();
       }
     }
@@ -1609,16 +1600,21 @@ public class ChipDrawable
   
   public void k(@DimenRes int paramInt)
   {
-    d(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    d(this.J.getResources().getDimension(paramInt));
+  }
+  
+  public float l()
+  {
+    return this.h;
   }
   
   public void l(float paramFloat)
   {
-    if (this.l != paramFloat)
+    if (this.H != paramFloat)
     {
-      this.l = paramFloat;
+      this.H = paramFloat;
       invalidateSelf();
-      if (k()) {
+      if (ai()) {
         b();
       }
     }
@@ -1626,14 +1622,20 @@ public class ChipDrawable
   
   public void l(@DrawableRes int paramInt)
   {
-    b(AppCompatResources.getDrawable(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    b(AppCompatResources.getDrawable(this.J, paramInt));
+  }
+  
+  @Nullable
+  public ColorStateList m()
+  {
+    return this.i;
   }
   
   public void m(float paramFloat)
   {
-    if (this.m != paramFloat)
+    if (this.I != paramFloat)
     {
-      this.m = paramFloat;
+      this.I = paramFloat;
       invalidateSelf();
       b();
     }
@@ -1641,33 +1643,45 @@ public class ChipDrawable
   
   public void m(@ColorRes int paramInt)
   {
-    e(AppCompatResources.getColorStateList(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    e(AppCompatResources.getColorStateList(this.J, paramInt));
+  }
+  
+  @Nullable
+  public CharSequence n()
+  {
+    return this.j;
   }
   
   public void n(@DimenRes int paramInt)
   {
-    e(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    e(this.J.getResources().getDimension(paramInt));
+  }
+  
+  @Nullable
+  public TextAppearance o()
+  {
+    return this.Q.b();
   }
   
   public void o(@BoolRes int paramInt)
   {
-    d(this.jdField_a_of_type_AndroidContentContext.getResources().getBoolean(paramInt));
+    d(this.J.getResources().getBoolean(paramInt));
   }
   
   public boolean onLayoutDirectionChanged(int paramInt)
   {
     boolean bool2 = super.onLayoutDirectionChanged(paramInt);
     boolean bool1 = bool2;
-    if (i()) {
-      bool1 = bool2 | DrawableCompat.setLayoutDirection(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramInt);
+    if (ag()) {
+      bool1 = bool2 | DrawableCompat.setLayoutDirection(this.l, paramInt);
     }
     bool2 = bool1;
-    if (j()) {
-      bool2 = bool1 | DrawableCompat.setLayoutDirection(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable, paramInt);
+    if (ah()) {
+      bool2 = bool1 | DrawableCompat.setLayoutDirection(this.x, paramInt);
     }
     bool1 = bool2;
-    if (k()) {
-      bool1 = bool2 | DrawableCompat.setLayoutDirection(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, paramInt);
+    if (ai()) {
+      bool1 = bool2 | DrawableCompat.setLayoutDirection(this.q, paramInt);
     }
     if (bool1) {
       invalidateSelf();
@@ -1679,16 +1693,16 @@ public class ChipDrawable
   {
     boolean bool2 = super.onLevelChange(paramInt);
     boolean bool1 = bool2;
-    if (i()) {
-      bool1 = bool2 | this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setLevel(paramInt);
+    if (ag()) {
+      bool1 = bool2 | this.l.setLevel(paramInt);
     }
     bool2 = bool1;
-    if (j()) {
-      bool2 = bool1 | this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.setLevel(paramInt);
+    if (ah()) {
+      bool2 = bool1 | this.x.setLevel(paramInt);
     }
     bool1 = bool2;
-    if (k()) {
-      bool1 = bool2 | this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setLevel(paramInt);
+    if (ai()) {
+      bool1 = bool2 | this.q.setLevel(paramInt);
     }
     if (bool1) {
       invalidateSelf();
@@ -1698,30 +1712,56 @@ public class ChipDrawable
   
   public boolean onStateChange(@NonNull int[] paramArrayOfInt)
   {
-    if (this.jdField_i_of_type_Boolean) {
+    if (this.al) {
       super.onStateChange(paramArrayOfInt);
     }
-    return a(paramArrayOfInt, a());
+    return a(paramArrayOfInt, g());
+  }
+  
+  public TextUtils.TruncateAt p()
+  {
+    return this.ai;
   }
   
   public void p(@BoolRes int paramInt)
   {
-    e(this.jdField_a_of_type_AndroidContentContext.getResources().getBoolean(paramInt));
+    e(this.J.getResources().getBoolean(paramInt));
+  }
+  
+  @Nullable
+  public Drawable q()
+  {
+    Drawable localDrawable = this.l;
+    if (localDrawable != null) {
+      return DrawableCompat.unwrap(localDrawable);
+    }
+    return null;
   }
   
   public void q(@DrawableRes int paramInt)
   {
-    c(AppCompatResources.getDrawable(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    c(AppCompatResources.getDrawable(this.J, paramInt));
+  }
+  
+  @Nullable
+  public ColorStateList r()
+  {
+    return this.m;
   }
   
   public void r(@ColorRes int paramInt)
   {
-    f(AppCompatResources.getColorStateList(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    f(AppCompatResources.getColorStateList(this.J, paramInt));
+  }
+  
+  public float s()
+  {
+    return this.n;
   }
   
   public void s(@AnimatorRes int paramInt)
   {
-    a(MotionSpec.a(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    a(MotionSpec.a(this.J, paramInt));
   }
   
   public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong)
@@ -1734,37 +1774,37 @@ public class ChipDrawable
   
   public void setAlpha(int paramInt)
   {
-    if (this.jdField_h_of_type_Int != paramInt)
+    if (this.Z != paramInt)
     {
-      this.jdField_h_of_type_Int = paramInt;
+      this.Z = paramInt;
       invalidateSelf();
     }
   }
   
   public void setColorFilter(@Nullable ColorFilter paramColorFilter)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsColorFilter != paramColorFilter)
+    if (this.aa != paramColorFilter)
     {
-      this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
+      this.aa = paramColorFilter;
       invalidateSelf();
     }
   }
   
   public void setTintList(@Nullable ColorStateList paramColorStateList)
   {
-    if (this.jdField_h_of_type_AndroidContentResColorStateList != paramColorStateList)
+    if (this.ac != paramColorStateList)
     {
-      this.jdField_h_of_type_AndroidContentResColorStateList = paramColorStateList;
+      this.ac = paramColorStateList;
       onStateChange(getState());
     }
   }
   
   public void setTintMode(@NonNull PorterDuff.Mode paramMode)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode != paramMode)
+    if (this.ad != paramMode)
     {
-      this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode = paramMode;
-      this.jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = DrawableUtils.a(this, this.jdField_h_of_type_AndroidContentResColorStateList, paramMode);
+      this.ad = paramMode;
+      this.ab = DrawableUtils.a(this, this.ac, paramMode);
       invalidateSelf();
     }
   }
@@ -1773,16 +1813,16 @@ public class ChipDrawable
   {
     boolean bool2 = super.setVisible(paramBoolean1, paramBoolean2);
     boolean bool1 = bool2;
-    if (i()) {
-      bool1 = bool2 | this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(paramBoolean1, paramBoolean2);
+    if (ag()) {
+      bool1 = bool2 | this.l.setVisible(paramBoolean1, paramBoolean2);
     }
     bool2 = bool1;
-    if (j()) {
-      bool2 = bool1 | this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.setVisible(paramBoolean1, paramBoolean2);
+    if (ah()) {
+      bool2 = bool1 | this.x.setVisible(paramBoolean1, paramBoolean2);
     }
     bool1 = bool2;
-    if (k()) {
-      bool1 = bool2 | this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setVisible(paramBoolean1, paramBoolean2);
+    if (ai()) {
+      bool1 = bool2 | this.q.setVisible(paramBoolean1, paramBoolean2);
     }
     if (bool1) {
       invalidateSelf();
@@ -1792,12 +1832,27 @@ public class ChipDrawable
   
   public void t(@AnimatorRes int paramInt)
   {
-    b(MotionSpec.a(this.jdField_a_of_type_AndroidContentContext, paramInt));
+    b(MotionSpec.a(this.J, paramInt));
+  }
+  
+  public boolean t()
+  {
+    return this.p;
+  }
+  
+  @Nullable
+  public Drawable u()
+  {
+    Drawable localDrawable = this.q;
+    if (localDrawable != null) {
+      return DrawableCompat.unwrap(localDrawable);
+    }
+    return null;
   }
   
   public void u(@DimenRes int paramInt)
   {
-    f(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    f(this.J.getResources().getDimension(paramInt));
   }
   
   public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable)
@@ -1808,34 +1863,62 @@ public class ChipDrawable
     }
   }
   
+  @Nullable
+  public ColorStateList v()
+  {
+    return this.s;
+  }
+  
   public void v(@DimenRes int paramInt)
   {
-    g(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    g(this.J.getResources().getDimension(paramInt));
+  }
+  
+  public float w()
+  {
+    return this.t;
   }
   
   public void w(@DimenRes int paramInt)
   {
-    h(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    h(this.J.getResources().getDimension(paramInt));
+  }
+  
+  @Nullable
+  public CharSequence x()
+  {
+    return this.u;
   }
   
   public void x(@DimenRes int paramInt)
   {
-    i(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    i(this.J.getResources().getDimension(paramInt));
   }
   
   public void y(@DimenRes int paramInt)
   {
-    j(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    j(this.J.getResources().getDimension(paramInt));
+  }
+  
+  public boolean y()
+  {
+    return this.v;
+  }
+  
+  @Nullable
+  public Drawable z()
+  {
+    return this.x;
   }
   
   public void z(@DimenRes int paramInt)
   {
-    k(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(paramInt));
+    k(this.J.getResources().getDimension(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.chip.ChipDrawable
  * JD-Core Version:    0.7.0.1
  */

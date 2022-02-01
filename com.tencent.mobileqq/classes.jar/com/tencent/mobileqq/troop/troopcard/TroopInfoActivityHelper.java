@@ -73,7 +73,7 @@ public class TroopInfoActivityHelper
     localGroupInfo.uint32_group_class_ext.set((int)paramLong5);
     paramString1 = GroupCatalogTool.a(MobileQQ.sMobileQQ).a(MobileQQ.sMobileQQ, String.valueOf(localGroupInfo.uint32_group_class_ext.get()));
     if (paramString1 != null) {
-      localGroupInfo.string_group_class_text.set(ByteStringMicro.copyFromUtf8(paramString1.a));
+      localGroupInfo.string_group_class_text.set(ByteStringMicro.copyFromUtf8(paramString1.b));
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
@@ -157,7 +157,7 @@ public class TroopInfoActivityHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcard.TroopInfoActivityHelper
  * JD-Core Version:    0.7.0.1
  */

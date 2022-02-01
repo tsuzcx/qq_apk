@@ -17,8 +17,8 @@ class AlbumRecommendAdvController$2
   
   public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
-    if ((paramDrawable != null) && (AlbumRecommendAdvController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAlbumRecommendAdvController) != null)) {
-      AlbumRecommendAdvController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAlbumRecommendAdvController).post(new AlbumRecommendAdvController.2.1(this, paramDrawable));
+    if ((paramDrawable != null) && (AlbumRecommendAdvController.d(this.b) != null)) {
+      AlbumRecommendAdvController.d(this.b).post(new AlbumRecommendAdvController.2.1(this, paramDrawable));
     }
   }
   
@@ -26,7 +26,7 @@ class AlbumRecommendAdvController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.logic.AlbumRecommendAdvController.2
  * JD-Core Version:    0.7.0.1
  */

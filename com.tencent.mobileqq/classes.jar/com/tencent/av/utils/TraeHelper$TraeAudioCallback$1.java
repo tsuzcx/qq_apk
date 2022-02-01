@@ -9,7 +9,7 @@ class TraeHelper$TraeAudioCallback$1
   
   public void run()
   {
-    MediaPlayer.OnCompletionListener localOnCompletionListener = this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener;
+    MediaPlayer.OnCompletionListener localOnCompletionListener = this.a;
     if (localOnCompletionListener != null) {
       localOnCompletionListener.onCompletion(null);
     }

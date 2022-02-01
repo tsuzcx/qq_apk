@@ -12,22 +12,22 @@ class PicShareToWX$TimeoutRunnable
   public void run()
   {
     PicShareToWX.a(this.this$0, true);
-    if ((PicShareToWX.a(this.this$0) != null) && (PicShareToWX.a(this.this$0) != null)) {
-      ((ITransFileController)PicShareToWX.a(this.this$0).getRuntimeService(ITransFileController.class)).stop(PicShareToWX.a(this.this$0));
+    if ((this.this$0.c != null) && (this.this$0.b != null)) {
+      ((ITransFileController)this.this$0.c.getRuntimeService(ITransFileController.class)).stop(this.this$0.b);
     }
-    if (PicShareToWX.a(this.this$0) != null) {
-      PicShareToWX.a(this.this$0).callbackResult(PicShareToWX.a(this.this$0), EIPCResult.createResult(-102, null));
+    if (this.this$0.f != null) {
+      this.this$0.f.callbackResult(this.this$0.g, EIPCResult.createResult(-102, null));
     }
-    PicShareToWX.a(PicShareToWX.b(this.this$0), false);
+    PicShareToWX.a(this.this$0.e, false);
     PicShareToWX.a(this.this$0, false, 12345, 0);
+    this.this$0.d();
     this.this$0.c();
-    this.this$0.b();
     this.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicShareToWX.TimeoutRunnable
  * JD-Core Version:    0.7.0.1
  */

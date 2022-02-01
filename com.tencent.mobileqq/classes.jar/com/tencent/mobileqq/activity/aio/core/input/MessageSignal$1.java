@@ -12,7 +12,7 @@ class MessageSignal$1
   
   public void run()
   {
-    int i = this.this$0.d();
+    int i = this.this$0.f();
     if ((MessageSignal.a(this.this$0) == i) && (MessageSignal.b(this.this$0) != 1))
     {
       MessageSignal.c(this.this$0);
@@ -24,9 +24,9 @@ class MessageSignal$1
     }
     if (MessageSignal.d(this.this$0) <= MessageSignal.e(this.this$0))
     {
-      MessageSignal.a(this.this$0).a().sendMsgSignal();
-      MessageSignal.f(this.this$0);
-      ThreadManager.getSubThreadHandler().postDelayed(MessageSignal.a(this.this$0), 2000L);
+      MessageSignal.f(this.this$0).a().sendMsgSignal();
+      MessageSignal.g(this.this$0);
+      ThreadManager.getSubThreadHandler().postDelayed(MessageSignal.h(this.this$0), 2000L);
       return;
     }
     MessageSignal.a(this.this$0, false);
@@ -37,7 +37,7 @@ class MessageSignal$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.input.MessageSignal.1
  * JD-Core Version:    0.7.0.1
  */

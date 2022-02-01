@@ -12,16 +12,16 @@ class VideoCoverListBar$VideoCoverListBarAdapter$ViewHolder$1
   
   public void onClick(View paramView)
   {
-    if (VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter$ViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter.a) != null) {
-      VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter$ViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter.a).a(VideoCoverListBar.VideoCoverListBarAdapter.ViewHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter$ViewHolder));
+    if (VideoCoverListBar.e(this.b.a.a) != null) {
+      VideoCoverListBar.e(this.b.a.a).a(VideoCoverListBar.VideoCoverListBarAdapter.ViewHolder.a(this.b));
     }
-    StoryReportor.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.VideoCoverListBarAdapter.ViewHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar$VideoCoverListBarAdapter$ViewHolder) });
+    StoryReportor.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.VideoCoverListBarAdapter.ViewHolder.a(this.b) });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverListBar.VideoCoverListBarAdapter.ViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,62 +17,61 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class ReadInJoyBasePopupWindow
   extends PopupWindow
 {
-  private int a;
   protected Activity a;
-  protected View a;
-  protected FrameLayout a;
-  protected ImageView a;
-  protected boolean a;
-  private int b;
-  protected ImageView b;
-  private int c;
-  private int d;
+  protected View b;
+  protected FrameLayout c;
+  protected ImageView d;
+  protected ImageView e;
+  protected boolean f = false;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
   
   public ReadInJoyBasePopupWindow(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidViewView.measure(0, 0);
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-    setHeight(this.jdField_b_of_type_Int);
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "calculatePopupWindow, popupHeight = ", Integer.valueOf(this.jdField_b_of_type_Int) });
+    this.b.measure(0, 0);
+    this.h = this.b.getMeasuredHeight();
+    setHeight(this.h);
+    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "calculatePopupWindow, popupHeight = ", Integer.valueOf(this.h) });
   }
   
   public abstract View a(LayoutInflater paramLayoutInflater);
   
   protected void a()
   {
-    this.c = ((int)DeviceInfoUtil.i());
-    this.d = ((int)DeviceInfoUtil.j());
-    Object localObject = (LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater");
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject).inflate(2131560087, null);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365169));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379125));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379124));
+    this.i = ((int)DeviceInfoUtil.D());
+    this.j = ((int)DeviceInfoUtil.E());
+    Object localObject = (LayoutInflater)this.a.getSystemService("layout_inflater");
+    this.b = ((LayoutInflater)localObject).inflate(2131626134, null);
+    this.c = ((FrameLayout)this.b.findViewById(2131431322));
+    this.d = ((ImageView)this.b.findViewById(2131447861));
+    this.e = ((ImageView)this.b.findViewById(2131447860));
     localObject = a((LayoutInflater)localObject);
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView((View)localObject);
+      this.c.addView((View)localObject);
     }
     setBackgroundDrawable(new ColorDrawable(0));
-    this.jdField_a_of_type_Int = ((int)(this.c - this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298867) * 2.0F));
-    setWidth(this.jdField_a_of_type_Int);
+    this.g = ((int)(this.i - this.a.getResources().getDimension(2131299584) * 2.0F));
+    setWidth(this.g);
     setTouchable(true);
     setFocusable(true);
-    setContentView(this.jdField_a_of_type_AndroidViewView);
+    setContentView(this.b);
     b();
-    this.jdField_a_of_type_Boolean = true;
+    this.f = true;
   }
   
   protected void a(float paramFloat)
   {
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+    WindowManager.LayoutParams localLayoutParams = this.a.getWindow().getAttributes();
     localLayoutParams.alpha = paramFloat;
-    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+    this.a.getWindow().setAttributes(localLayoutParams);
   }
   
   protected final void a(View paramView)
@@ -81,46 +80,46 @@ public abstract class ReadInJoyBasePopupWindow
     a(0.8F);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
-    int i = this.d;
-    int m = arrayOfInt[1];
-    int n = paramView.getHeight();
-    int j = (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298867);
-    int k = this.jdField_a_of_type_Int - (arrayOfInt[0] - j) - paramView.getWidth() / 2;
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "marginRight = ", Integer.valueOf(k) });
+    int k = this.j;
+    int i1 = arrayOfInt[1];
+    int i2 = paramView.getHeight();
+    int m = (int)this.a.getResources().getDimension(2131299584);
+    int n = this.g - (arrayOfInt[0] - m) - paramView.getWidth() / 2;
+    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "marginRight = ", Integer.valueOf(n) });
     double d1;
     double d2;
-    if (i - (m + n) > this.jdField_b_of_type_Int)
+    if (k - (i1 + i2) > this.h)
     {
-      d1 = k;
-      d2 = this.jdField_a_of_type_Int;
+      d1 = n;
+      d2 = this.g;
       Double.isNaN(d2);
       if (d1 > d2 * 0.1D) {
-        setAnimationStyle(2131755041);
+        setAnimationStyle(2131951657);
       } else {
-        setAnimationStyle(2131755040);
+        setAnimationStyle(2131951656);
       }
-      i = arrayOfInt[1] + paramView.getHeight() + ViewUtils.a(4.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, k, 0);
+      k = arrayOfInt[1] + paramView.getHeight() + ViewUtils.dip2px(4.0F);
+      this.d.setVisibility(0);
+      this.e.setVisibility(4);
+      this.d.setPadding(0, 0, n, 0);
     }
     else
     {
-      d1 = k;
-      d2 = this.jdField_a_of_type_Int;
+      d1 = n;
+      d2 = this.g;
       Double.isNaN(d2);
       if (d1 > d2 * 0.1D) {
-        setAnimationStyle(2131755044);
+        setAnimationStyle(2131951660);
       } else {
-        setAnimationStyle(2131755043);
+        setAnimationStyle(2131951659);
       }
-      i = arrayOfInt[1] - this.jdField_b_of_type_Int - ViewUtils.a(4.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetImageView.setPadding(0, 0, k, 0);
+      k = arrayOfInt[1] - this.h - ViewUtils.dip2px(4.0F);
+      this.d.setVisibility(4);
+      this.e.setVisibility(0);
+      this.e.setPadding(0, 0, n, 0);
     }
-    showAtLocation(paramView, 0, j, i);
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "x = ", Integer.valueOf(j), ", y = ", Integer.valueOf(i), ", width = ", Integer.valueOf(this.jdField_a_of_type_Int), ", height = ", Integer.valueOf(this.jdField_b_of_type_Int) });
+    showAtLocation(paramView, 0, m, k);
+    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "x = ", Integer.valueOf(m), ", y = ", Integer.valueOf(k), ", width = ", Integer.valueOf(this.g), ", height = ", Integer.valueOf(this.h) });
   }
   
   public void b()
@@ -130,7 +129,7 @@ public abstract class ReadInJoyBasePopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyBasePopupWindow
  * JD-Core Version:    0.7.0.1
  */

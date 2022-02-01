@@ -11,13 +11,13 @@ class AddContactsView$4$1
   
   public void onGlobalLayout()
   {
-    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
+    this.a.a.p.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.p);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.4.1
  * JD-Core Version:    0.7.0.1
  */

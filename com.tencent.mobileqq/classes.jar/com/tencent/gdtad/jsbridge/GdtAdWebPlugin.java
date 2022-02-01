@@ -33,7 +33,7 @@ public class GdtAdWebPlugin
     GdtManager.a().a((Context)localObject, new GdtManager.Params());
   }
   
-  private void a()
+  private void d()
   {
     if (this.a == null)
     {
@@ -46,7 +46,7 @@ public class GdtAdWebPlugin
     }
   }
   
-  private void b()
+  private void e()
   {
     if (this.a != null)
     {
@@ -63,7 +63,7 @@ public class GdtAdWebPlugin
   {
     Activity localActivity1;
     if (this.mRuntime != null) {
-      localActivity1 = this.mRuntime.a();
+      localActivity1 = this.mRuntime.d();
     } else {
       localActivity1 = null;
     }
@@ -74,18 +74,18 @@ public class GdtAdWebPlugin
     return localActivity2;
   }
   
-  public GdtAppReceiver a()
-  {
-    return this.a;
-  }
-  
-  public String a()
+  public String b()
   {
     Activity localActivity = a();
     if ((localActivity == null) || (!(localActivity instanceof QQBrowserActivity))) {
       return null;
     }
     return ((QQBrowserActivity)QQBrowserActivity.class.cast(localActivity)).getCurrentUrl();
+  }
+  
+  public GdtAppReceiver c()
+  {
+    return this.a;
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -133,7 +133,7 @@ public class GdtAdWebPlugin
     }
     else if ("handleClick".equals(paramString3))
     {
-      a();
+      d();
       paramJsBridgeListener = GdtAdPluginFactory.a().a(12);
     }
     else if ("showBanner".equals(paramString3))
@@ -216,6 +216,10 @@ public class GdtAdWebPlugin
     {
       paramJsBridgeListener = GdtAdPluginFactory.a().a(32);
     }
+    else if ("showMotiveVideoDemo".equals(paramString3))
+    {
+      paramJsBridgeListener = GdtAdPluginFactory.a().a(33);
+    }
     if (paramJsBridgeListener != null) {
       paramJsBridgeListener.a(this, paramString1, paramVarArgs);
     }
@@ -231,12 +235,12 @@ public class GdtAdWebPlugin
   protected void onDestroy()
   {
     super.onDestroy();
-    b();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtAdWebPlugin
  * JD-Core Version:    0.7.0.1
  */

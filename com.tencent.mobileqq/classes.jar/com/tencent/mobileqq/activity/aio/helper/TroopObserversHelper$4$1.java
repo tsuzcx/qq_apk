@@ -11,14 +11,14 @@ class TroopObserversHelper$4$1
   
   public void run()
   {
-    if ((TroopObserversHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopObserversHelper$4.a) != null) && (TroopObserversHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopObserversHelper$4.a).isResume())) {
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Long);
+    if ((TroopObserversHelper.g(this.c.a) != null) && (TroopObserversHelper.g(this.c.a).isResume())) {
+      ThreadManager.getSubThreadHandler().postDelayed(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.4.1
  * JD-Core Version:    0.7.0.1
  */

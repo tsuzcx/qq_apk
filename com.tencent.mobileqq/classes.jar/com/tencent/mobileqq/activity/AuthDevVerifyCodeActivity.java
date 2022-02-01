@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.utils.SMSBodyObserver;
 import com.tencent.mobileqq.app.utils.SmsContent;
+import com.tencent.mobileqq.login.authdev.AuthDevUgReporter;
 import com.tencent.mobileqq.loginregister.AuthDevVerifyProxy;
 import com.tencent.mobileqq.loginregister.ICommonSmsView;
 import com.tencent.mobileqq.loginregister.LoginStaticField;
@@ -25,14 +26,14 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.VerifyCodeView;
-import com.tencent.mobileqq.widget.VerifyCodeView.OnVerifyCodeCompleteListener;
+import com.tencent.mobileqq.widget.VerifyCodeView.OnVerifyCodeChangedListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppRuntime;
 
 @RoutePage(desc="输入短信验证码页面", path="/base/login/authDevVerifyCode")
 public class AuthDevVerifyCodeActivity
   extends RegisterNewBaseActivity
-  implements View.OnClickListener, SMSBodyObserver, ICommonSmsView, VerifyCodeView.OnVerifyCodeCompleteListener
+  implements View.OnClickListener, SMSBodyObserver, ICommonSmsView, VerifyCodeView.OnVerifyCodeChangedListener
 {
   public static final int SECOND = 1000;
   private static final String TAG = "Q.devlock.AuthDevVerifyCodeActivity";
@@ -52,26 +53,10 @@ public class AuthDevVerifyCodeActivity
   {
     if (!NetworkUtil.isNetSupport(this))
     {
-      QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
+      QQToast.makeText(this, getString(2131889169), 0).show(getTitleBarHeight());
       return false;
     }
     return true;
-  }
-  
-  private void commitSmsCode()
-  {
-    if (!NetworkUtil.isNetSupport(this))
-    {
-      QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
-      return;
-    }
-    String str2 = this.verifyCodeView.a();
-    String str1 = str2;
-    if (str2 != null) {
-      str1 = str2.toString().trim();
-    }
-    this.mVerifyProxy.a(this, this, str1);
-    this.isSmsChecked = true;
   }
   
   private void hideProgerssDialog()
@@ -81,12 +66,12 @@ public class AuthDevVerifyCodeActivity
   
   private void initViews()
   {
-    setTitleText(2131716657);
+    setTitleText(2131914120);
     setTitleHint();
     setProgressBarVisible(false);
-    this.mResendBtn = ((TextView)findViewById(2131364036));
+    this.mResendBtn = ((TextView)findViewById(2131429992));
     this.mResendBtn.setOnClickListener(this);
-    long l = System.currentTimeMillis() - LoginStaticField.a;
+    long l = System.currentTimeMillis() - LoginStaticField.b;
     if (l >= 59000L) {
       mSecond = 1;
     } else {
@@ -98,7 +83,7 @@ public class AuthDevVerifyCodeActivity
       this.mResendBtn.setClickable(false);
       TextView localTextView = this.mResendBtn;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(getString(2131716626));
+      localStringBuilder.append(getString(2131914089));
       localStringBuilder.append(" (");
       localStringBuilder.append(mSecond);
       localStringBuilder.append("s)");
@@ -108,12 +93,12 @@ public class AuthDevVerifyCodeActivity
     }
     else
     {
-      this.mResendBtn.setText(getString(2131716626));
+      this.mResendBtn.setText(getString(2131914089));
       this.mResendBtn.setTextColor(-11692801);
     }
-    this.btnLeftBack = ((TextView)findViewById(2131364182));
+    this.btnLeftBack = ((TextView)findViewById(2131430169));
     this.btnLeftBack.setOnClickListener(this);
-    this.verifyCodeView = ((VerifyCodeView)findViewById(2131380407));
+    this.verifyCodeView = ((VerifyCodeView)findViewById(2131449357));
     this.verifyCodeView.a(this);
   }
   
@@ -122,10 +107,10 @@ public class AuthDevVerifyCodeActivity
     this.mResendBtn.setEnabled(false);
     this.mResendBtn.setClickable(false);
     mSecond = paramInt;
-    LoginStaticField.a = System.currentTimeMillis();
+    LoginStaticField.b = System.currentTimeMillis();
     TextView localTextView = this.mResendBtn;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getString(2131716626));
+    localStringBuilder.append(getString(2131914089));
     localStringBuilder.append(" (");
     localStringBuilder.append(mSecond);
     localStringBuilder.append("s)");
@@ -142,6 +127,22 @@ public class AuthDevVerifyCodeActivity
   public void clearWrongCode()
   {
     this.verifyCodeView.a();
+  }
+  
+  protected void commitSmsCode()
+  {
+    if (!NetworkUtil.isNetSupport(this))
+    {
+      QQToast.makeText(this, getString(2131889169), 0).show(getTitleBarHeight());
+      return;
+    }
+    String str2 = this.verifyCodeView.getCode();
+    String str1 = str2;
+    if (str2 != null) {
+      str1 = str2.toString().trim();
+    }
+    this.mVerifyProxy.a(this, this, str1);
+    this.isSmsChecked = true;
   }
   
   public void dismissDialog()
@@ -167,11 +168,11 @@ public class AuthDevVerifyCodeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131563018);
-    setTitleText(2131716657);
-    AppRuntime localAppRuntime = this.mRuntime;
-    paramBundle = localAppRuntime;
-    if (localAppRuntime == null) {
+    setContentView(2131629626);
+    setTitleText(2131914120);
+    Object localObject = this.mRuntime;
+    paramBundle = (Bundle)localObject;
+    if (localObject == null) {
       paramBundle = getAppRuntime();
     }
     if (paramBundle == null)
@@ -182,19 +183,19 @@ public class AuthDevVerifyCodeActivity
     this.mVerifyProxy = new AuthDevVerifyProxy();
     paramBundle = getIntent();
     this.phoneNum = paramBundle.getExtras().getString("phone_num");
-    paramBundle = paramBundle.getExtras().getString("country_code");
-    if (!TextUtils.isEmpty(paramBundle)) {
-      this.countryCode = paramBundle;
+    localObject = paramBundle.getExtras().getString("country_code");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      this.countryCode = ((String)localObject);
     }
     initViews();
     this.isSmsChecked = false;
     this.hasUserClickStay = false;
-    if (AppSetting.d) {
-      this.mResendBtn.setContentDescription(getString(2131716626));
+    if (AppSetting.e) {
+      this.mResendBtn.setContentDescription(getString(2131914089));
     }
     try
     {
-      this.smsContent = new SmsContent(null);
+      this.smsContent = new SmsContent(null, paramBundle.getLongExtra("verify_code_start_time", 0L));
       this.smsContent.a(this, this);
     }
     catch (Throwable paramBundle)
@@ -203,9 +204,10 @@ public class AuthDevVerifyCodeActivity
     }
     this.mVerifyProxy.a(this, this);
     if ((mSecond <= 1) && (checkNetworkAvailable())) {
-      this.mVerifyProxy.a(this, this);
+      this.mVerifyProxy.b(this, this);
     }
     getWindow().setSoftInputMode(5);
+    AuthDevUgReporter.a().a(getReportRuntime(), "0X800BC47");
     return true;
   }
   
@@ -216,6 +218,11 @@ public class AuthDevVerifyCodeActivity
     if (localAuthDevVerifyProxy != null) {
       localAuthDevVerifyProxy.a();
     }
+  }
+  
+  protected AppRuntime getReportRuntime()
+  {
+    return getAppRuntime();
   }
   
   public void handleMessage(String paramString1, String paramString2)
@@ -234,13 +241,14 @@ public class AuthDevVerifyCodeActivity
       QuickLoginReporter.b(0, "SUCCESS");
       NewAuthDevUgFragment.a(3);
     }
+    AuthDevUgReporter.a().a(getReportRuntime(), "0X800BC48");
   }
   
   public boolean onBackEvent()
   {
     if (!this.isSmsChecked)
     {
-      DialogUtil.a(this, 230, getString(2131700861), getString(2131700452, new Object[] { getMaskedPhoneNum() }), getString(2131711171), getString(2131702762), new AuthDevVerifyCodeActivity.2(this), new AuthDevVerifyCodeActivity.3(this)).show();
+      DialogUtil.a(this, 230, getString(2131898885), getString(2131898486, new Object[] { getMaskedPhoneNum() }), getString(2131901576), getString(2131900753), new AuthDevVerifyCodeActivity.2(this), new AuthDevVerifyCodeActivity.3(this)).show();
       report898("0X800BB51");
       return true;
     }
@@ -249,13 +257,13 @@ public class AuthDevVerifyCodeActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364036)
+    if (paramView.getId() == 2131429992)
     {
       if ((mSecond <= 1) && (checkNetworkAvailable())) {
-        this.mVerifyProxy.b(this, this);
+        this.mVerifyProxy.c(this, this);
       }
     }
-    else if (paramView.getId() == 2131364182)
+    else if (paramView.getId() == 2131430169)
     {
       onBackEvent();
       report898("0X800BB50");
@@ -294,9 +302,11 @@ public class AuthDevVerifyCodeActivity
     }
   }
   
-  public void onVerifyCodeComplete()
+  public void onVerifyCodeChanged(boolean paramBoolean, String paramString)
   {
-    commitSmsCode();
+    if (paramBoolean) {
+      commitSmsCode();
+    }
   }
   
   public void report898(String paramString)
@@ -316,7 +326,7 @@ public class AuthDevVerifyCodeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity
  * JD-Core Version:    0.7.0.1
  */

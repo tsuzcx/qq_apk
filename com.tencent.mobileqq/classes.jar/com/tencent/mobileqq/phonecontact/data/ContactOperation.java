@@ -14,45 +14,35 @@ import java.util.List;
 
 public class ContactOperation
 {
-  private static String jdField_a_of_type_JavaLangString = ContactSyncConstants.jdField_a_of_type_JavaLangString;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ContentValues jdField_a_of_type_AndroidContentContentValues;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private List<ContentProviderOperation> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private static String d = ContactSyncConstants.a;
+  private List<ContentProviderOperation> a;
+  private AppInterface b;
+  private ContentValues c;
+  private long e;
+  private boolean f;
+  private int g;
   
   private ContactOperation(AppInterface paramAppInterface, List<ContentProviderOperation> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContentValues = new ContentValues();
+    this.a = paramList;
+    this.b = paramAppInterface;
+    this.c = new ContentValues();
   }
   
   private ContactOperation(AppInterface paramAppInterface, List<ContentProviderOperation> paramList, long paramLong)
   {
     this(paramAppInterface, paramList);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
+    this.e = paramLong;
+    this.f = false;
   }
   
   private ContactOperation(AppInterface paramAppInterface, List<ContentProviderOperation> paramList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
   {
     this(paramAppInterface, paramList);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramList.size();
+    this.f = true;
+    this.g = paramList.size();
     paramAppInterface = ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", "true").build()).withValue("aggregation_mode", Integer.valueOf(0)).withValue("account_type", "com.tencent.mobileqq.account").withValue("account_name", paramString1).withValue("sourceid", paramString2).withValue("sync1", paramString3).withValue("sync2", paramString4).withValue("sync3", Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_JavaUtilList.add(paramAppInterface.build());
-  }
-  
-  private static ContentProviderOperation.Builder a()
-  {
-    return ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", jdField_a_of_type_JavaLangString).build()).withYieldAllowed(true);
-  }
-  
-  private static ContentProviderOperation.Builder a(Uri paramUri)
-  {
-    return ContentProviderOperation.newUpdate(paramUri.buildUpon().appendQueryParameter("caller_is_syncadapter", jdField_a_of_type_JavaLangString).build()).withYieldAllowed(true);
+    this.a.add(paramAppInterface.build());
   }
   
   public static ContactOperation a(AppInterface paramAppInterface, List<ContentProviderOperation> paramList, long paramLong)
@@ -67,55 +57,65 @@ public class ContactOperation
   
   private void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidContentContentValues.put("raw_contact_id", Long.valueOf(this.jdField_a_of_type_Long));
+    if (!this.f) {
+      this.c.put("raw_contact_id", Long.valueOf(this.e));
     }
-    ContentProviderOperation.Builder localBuilder = a();
-    localBuilder.withValues(this.jdField_a_of_type_AndroidContentContentValues);
-    if (this.jdField_a_of_type_Boolean) {
-      localBuilder.withValueBackReference("raw_contact_id", this.jdField_a_of_type_Int);
+    ContentProviderOperation.Builder localBuilder = b();
+    localBuilder.withValues(this.c);
+    if (this.f) {
+      localBuilder.withValueBackReference("raw_contact_id", this.g);
     }
-    this.jdField_a_of_type_JavaUtilList.add(localBuilder.build());
+    this.a.add(localBuilder.build());
   }
   
   private void a(Uri paramUri)
   {
-    paramUri = a(paramUri);
-    paramUri.withValues(this.jdField_a_of_type_AndroidContentContentValues);
-    this.jdField_a_of_type_JavaUtilList.add(paramUri.build());
+    paramUri = b(paramUri);
+    paramUri.withValues(this.c);
+    this.a.add(paramUri.build());
+  }
+  
+  private static ContentProviderOperation.Builder b()
+  {
+    return ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI.buildUpon().appendQueryParameter("caller_is_syncadapter", d).build()).withYieldAllowed(true);
+  }
+  
+  private static ContentProviderOperation.Builder b(Uri paramUri)
+  {
+    return ContentProviderOperation.newUpdate(paramUri.buildUpon().appendQueryParameter("caller_is_syncadapter", d).build()).withYieldAllowed(true);
   }
   
   public ContactOperation a(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/name");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
+    this.c.clear();
+    this.c.put("mimetype", "vnd.android.cursor.item/name");
+    this.c.put("data1", paramString);
     a();
     return this;
   }
   
   public ContactOperation a(String paramString, Uri paramUri)
   {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
+    this.c.clear();
+    this.c.put("data1", paramString);
     a(paramUri);
     return this;
   }
   
   public ContactOperation b(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContentValues.clear();
-    this.jdField_a_of_type_AndroidContentContentValues.put("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mobileqq.voicecall.profile");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data1", paramString);
-    this.jdField_a_of_type_AndroidContentContentValues.put("data2", "QQ");
-    this.jdField_a_of_type_AndroidContentContentValues.put("data3", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131698717));
+    this.c.clear();
+    this.c.put("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mobileqq.voicecall.profile");
+    this.c.put("data1", paramString);
+    this.c.put("data2", "QQ");
+    this.c.put("data3", this.b.getApp().getString(2131896675));
     a();
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.data.ContactOperation
  * JD-Core Version:    0.7.0.1
  */

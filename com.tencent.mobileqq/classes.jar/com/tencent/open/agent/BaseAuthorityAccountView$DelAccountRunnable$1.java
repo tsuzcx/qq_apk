@@ -9,19 +9,19 @@ class BaseAuthorityAccountView$DelAccountRunnable$1
   
   public void run()
   {
-    if ((!this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$DelAccountRunnable.this$0.a(this.jdField_a_of_type_JavaLangString, false)) && ((this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$DelAccountRunnable.this$0.jdField_a_of_type_AndroidContentContext instanceof QuickLoginAuthorityActivity))) {
-      ((QuickLoginAuthorityActivity)this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$DelAccountRunnable.this$0.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, false);
+    if ((!this.b.this$0.a(this.a, false)) && ((this.b.this$0.c instanceof QuickLoginAuthorityActivity))) {
+      ((QuickLoginAuthorityActivity)this.b.this$0.c).a(this.a, false);
     }
-    if (this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$DelAccountRunnable.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+    if (this.b.this$0.h != null)
     {
-      this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$DelAccountRunnable.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$DelAccountRunnable.this$0.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.b.this$0.h.dismiss();
+      this.b.this$0.h = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseAuthorityAccountView.DelAccountRunnable.1
  * JD-Core Version:    0.7.0.1
  */

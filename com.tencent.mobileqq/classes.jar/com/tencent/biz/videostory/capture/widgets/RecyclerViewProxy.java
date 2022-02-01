@@ -22,11 +22,6 @@ public class RecyclerViewProxy
     return this.a.getChildCount();
   }
   
-  public int a(View paramView)
-  {
-    return this.a.getPosition(paramView);
-  }
-  
   public View a(int paramInt)
   {
     return this.a.getChildAt(paramInt);
@@ -38,16 +33,6 @@ public class RecyclerViewProxy
     this.a.addView(paramRecycler);
     this.a.measureChildWithMargins(paramRecycler, 0, 0);
     return paramRecycler;
-  }
-  
-  public void a()
-  {
-    this.a.requestLayout();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.offsetChildrenHorizontal(paramInt);
   }
   
   public void a(RecyclerView.Recycler paramRecycler)
@@ -81,20 +66,9 @@ public class RecyclerViewProxy
     return this.a.getItemCount();
   }
   
-  public int b(View paramView)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    return this.a.getDecoratedMeasuredWidth(paramView) + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin;
-  }
-  
-  public void b()
-  {
-    this.a.removeAllViews();
-  }
-  
   public void b(int paramInt)
   {
-    this.a.offsetChildrenVertical(paramInt);
+    this.a.offsetChildrenHorizontal(paramInt);
   }
   
   public void b(RecyclerView.Recycler paramRecycler)
@@ -119,18 +93,44 @@ public class RecyclerViewProxy
   
   public int c(View paramView)
   {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    return this.a.getDecoratedMeasuredHeight(paramView) + localMarginLayoutParams.topMargin + localMarginLayoutParams.bottomMargin;
+    return this.a.getPosition(paramView);
+  }
+  
+  public void c(int paramInt)
+  {
+    this.a.offsetChildrenVertical(paramInt);
   }
   
   public int d()
   {
     return this.a.getHeight();
   }
+  
+  public int d(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    return this.a.getDecoratedMeasuredWidth(paramView) + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin;
+  }
+  
+  public int e(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    return this.a.getDecoratedMeasuredHeight(paramView) + localMarginLayoutParams.topMargin + localMarginLayoutParams.bottomMargin;
+  }
+  
+  public void e()
+  {
+    this.a.requestLayout();
+  }
+  
+  public void f()
+  {
+    this.a.removeAllViews();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.capture.widgets.RecyclerViewProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,11 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/InflaterSource;", "Lokio/Source;", "source", "inflater", "Ljava/util/zip/Inflater;", "(Lokio/Source;Ljava/util/zip/Inflater;)V", "Lokio/BufferedSource;", "(Lokio/BufferedSource;Ljava/util/zip/Inflater;)V", "bufferBytesHeldByInflater", "", "closed", "", "close", "", "read", "", "sink", "Lokio/Buffer;", "byteCount", "refill", "releaseInflatedBytes", "timeout", "Lokio/Timeout;", "okio"}, k=1, mv={1, 1, 16})
 public final class InflaterSource
   implements Source
 {
@@ -13,27 +17,18 @@ public final class InflaterSource
   private final Inflater inflater;
   private final BufferedSource source;
   
-  InflaterSource(BufferedSource paramBufferedSource, Inflater paramInflater)
+  public InflaterSource(@NotNull BufferedSource paramBufferedSource, @NotNull Inflater paramInflater)
   {
-    if (paramBufferedSource != null)
-    {
-      if (paramInflater != null)
-      {
-        this.source = paramBufferedSource;
-        this.inflater = paramInflater;
-        return;
-      }
-      throw new IllegalArgumentException("inflater == null");
-    }
-    throw new IllegalArgumentException("source == null");
+    this.source = paramBufferedSource;
+    this.inflater = paramInflater;
   }
   
-  public InflaterSource(Source paramSource, Inflater paramInflater)
+  public InflaterSource(@NotNull Source paramSource, @NotNull Inflater paramInflater)
   {
     this(Okio.buffer(paramSource), paramInflater);
   }
   
-  private void releaseInflatedBytes()
+  private final void releaseInflatedBytes()
   {
     int i = this.bufferBytesHeldByInflater;
     if (i == 0) {
@@ -54,10 +49,17 @@ public final class InflaterSource
     this.source.close();
   }
   
-  public long read(Buffer paramBuffer, long paramLong)
+  public long read(@NotNull Buffer paramBuffer, long paramLong)
   {
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "sink");
+    int i;
     if (paramLong >= 0L) {
-      if (!this.closed) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      if ((this.closed ^ true)) {
         if (paramLong == 0L) {
           return 0L;
         }
@@ -66,20 +68,20 @@ public final class InflaterSource
     for (;;)
     {
       boolean bool = refill();
-      label144:
+      label169:
       do
       {
         try
         {
-          Segment localSegment = paramBuffer.writableSegment(1);
-          int i = (int)Math.min(paramLong, 8192 - localSegment.limit);
+          Segment localSegment = paramBuffer.writableSegment$okio(1);
+          i = (int)Math.min(paramLong, 8192 - localSegment.limit);
           i = this.inflater.inflate(localSegment.data, localSegment.limit, i);
           if (i > 0)
           {
             localSegment.limit += i;
-            paramLong = paramBuffer.size;
+            paramLong = paramBuffer.size();
             long l = i;
-            paramBuffer.size = (paramLong + l);
+            paramBuffer.setSize$okio(paramLong + l);
             return l;
           }
           if (!this.inflater.finished())
@@ -87,26 +89,26 @@ public final class InflaterSource
             if (!this.inflater.needsDictionary()) {
               continue;
             }
-            break label144;
-            throw new EOFException("source exhausted prematurely");
+            break label169;
+            throw ((Throwable)new EOFException("source exhausted prematurely"));
           }
           releaseInflatedBytes();
           if (localSegment.pos == localSegment.limit)
           {
             paramBuffer.head = localSegment.pop();
-            SegmentPool.recycle(localSegment);
+            SegmentPool.INSTANCE.recycle(localSegment);
           }
           return -1L;
         }
         catch (DataFormatException paramBuffer)
         {
-          throw new IOException(paramBuffer);
+          throw ((Throwable)new IOException((Throwable)paramBuffer));
         }
-        throw new IllegalStateException("closed");
+        throw ((Throwable)new IllegalStateException("closed".toString()));
         paramBuffer = new StringBuilder();
         paramBuffer.append("byteCount < 0: ");
         paramBuffer.append(paramLong);
-        paramBuffer = new IllegalArgumentException(paramBuffer.toString());
+        paramBuffer = (Throwable)new IllegalArgumentException(paramBuffer.toString().toString());
         for (;;)
         {
           throw paramBuffer;
@@ -121,19 +123,29 @@ public final class InflaterSource
       return false;
     }
     releaseInflatedBytes();
-    if (this.inflater.getRemaining() == 0)
+    int i;
+    if (this.inflater.getRemaining() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
       if (this.source.exhausted()) {
         return true;
       }
-      Segment localSegment = this.source.buffer().head;
+      Segment localSegment = this.source.getBuffer().head;
+      if (localSegment == null) {
+        Intrinsics.throwNpe();
+      }
       this.bufferBytesHeldByInflater = (localSegment.limit - localSegment.pos);
       this.inflater.setInput(localSegment.data, localSegment.pos, this.bufferBytesHeldByInflater);
       return false;
     }
-    throw new IllegalStateException("?");
+    throw ((Throwable)new IllegalStateException("?".toString()));
   }
   
+  @NotNull
   public Timeout timeout()
   {
     return this.source.timeout();
@@ -141,7 +153,7 @@ public final class InflaterSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.InflaterSource
  * JD-Core Version:    0.7.0.1
  */

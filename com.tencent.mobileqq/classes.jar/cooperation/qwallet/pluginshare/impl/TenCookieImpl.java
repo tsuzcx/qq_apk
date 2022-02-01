@@ -61,7 +61,7 @@ public class TenCookieImpl
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append(paramString);
     localStringBuilder2.append("_");
-    localStringBuilder2.append(DeviceInfoUtil.a());
+    localStringBuilder2.append(DeviceInfoUtil.b());
     localStringBuilder1.append(MD5.toMD5(localStringBuilder2.toString()));
     localStringBuilder1.append("q$WaQ3#k");
     return MD5.toMD5(localStringBuilder1.toString()).substring(8, 24);
@@ -539,7 +539,7 @@ public class TenCookieImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qwallet.pluginshare.impl.TenCookieImpl
  * JD-Core Version:    0.7.0.1
  */

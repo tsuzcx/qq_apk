@@ -11,70 +11,65 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
 public class GroupSearchModelLocalTroop
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  public static final String a;
-  private int a;
+  public static final String b = HardCodeUtil.a(2131903367);
   public List<ISearchResultModel> a;
-  private String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705479);
-  }
+  private String c;
+  private int d;
   
   public GroupSearchModelLocalTroop(List<ISearchResultModel> paramList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return SearchEntryConfigManager.a("fts_native_contactor_maxnum", 3);
+    this.a = paramList;
+    this.c = paramString;
+    this.d = paramInt;
   }
   
   public String a()
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return b;
   }
   
   public void a(View paramView)
   {
-    ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, 2);
-    SearchUtils.a(this.b, 20, 0, paramView);
+    ContactSearchActivity.a(paramView.getContext(), this.c, this.d, 33751869, 2);
+    SearchUtils.a(this.c, 20, 0, paramView);
     if ((paramView.getContext() instanceof UniteSearchActivity))
     {
       paramView = new StringBuilder();
       paramView.append("");
-      paramView.append(this.b);
+      paramView.append(this.c);
       SearchUtils.a("all_result", "more_contact", new String[] { paramView.toString() });
       if (SearchConfigManager.needSeparate) {
-        SearchUtils.a("search", "group", "more", 0, 0, new String[] { SearchUtils.a(this.jdField_a_of_type_Int) });
+        SearchUtils.a("search", "group", "more", 0, 0, new String[] { SearchUtils.a(this.d) });
       }
-      UniteSearchReportController.a(null, 0, this.jdField_a_of_type_Int, "0X8009D3D", 0, 0, null, null);
+      UniteSearchReportController.a(null, 0, this.d, "0X8009D3D", 0, 0, null, null);
     }
   }
   
-  public int b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public String b()
+  public String c()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return SearchEntryConfigManager.a("fts_native_contactor_maxnum", 3);
+  }
+  
+  public int f()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupSearchModelLocalTroop
  * JD-Core Version:    0.7.0.1
  */

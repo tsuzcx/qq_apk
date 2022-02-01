@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="50" android:drawable="@drawable/id5" />
-    <item android:duration="50" android:drawable="@drawable/id6" />
-    <item android:duration="50" android:drawable="@drawable/id7" />
-    <item android:duration="50" android:drawable="@drawable/id8" />
-    <item android:duration="50" android:drawable="@drawable/id9" />
-    <item android:duration="50" android:drawable="@drawable/id_" />
-    <item android:duration="50" android:drawable="@drawable/ida" />
-    <item android:duration="50" android:drawable="@drawable/idb" />
-    <item android:duration="50" android:drawable="@drawable/idc" />
-    <item android:duration="50" android:drawable="@drawable/idd" />
-    <item android:duration="50" android:drawable="@drawable/ide" />
-    <item android:duration="50" android:drawable="@drawable/idf" />
-    <item android:duration="50" android:drawable="@drawable/idg" />
-    <item android:duration="50" android:drawable="@drawable/idh" />
-    <item android:duration="50" android:drawable="@drawable/idi" />
-</animation-list>
+    <item android:state_enabled="false" android:drawable="@drawable/ib6" />
+    <item android:state_pressed="true" android:drawable="@drawable/ib8" />
+    <item android:drawable="@drawable/ib7" />
+</selector>

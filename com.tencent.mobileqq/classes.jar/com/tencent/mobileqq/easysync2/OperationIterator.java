@@ -10,18 +10,18 @@ import java.util.regex.Pattern;
 public class OperationIterator
   implements Iterator<Operation>
 {
-  private Iterator<Operation> jdField_a_of_type_JavaUtilIterator;
-  List<Operation> jdField_a_of_type_JavaUtilList;
+  List<Operation> a;
+  private Iterator<Operation> b;
   
   public OperationIterator(String paramString)
   {
-    if (Changeset.a)
+    if (Changeset.b)
     {
-      this.jdField_a_of_type_JavaUtilList = new OperationParser().a(paramString);
+      this.a = new OperationParser().a(paramString);
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.a = new ArrayList();
       Object localObject1 = Pattern.compile("((?:\\*[0-9a-z]+)*)(?:\\|([0-9a-z]+))?([-+=])([0-9a-z]+)|\\?|").matcher(paramString);
       while (((Matcher)localObject1).find())
       {
@@ -42,18 +42,18 @@ public class OperationIterator
             if (Utils.a(str)) {
               i = 0;
             } else {
-              i = Changeset.a(str);
+              i = Changeset.b(str);
             }
-            ((Operation)localObject2).b = i;
-            ((Operation)localObject2).jdField_a_of_type_JavaLangString = ((Matcher)localObject1).group(1);
+            ((Operation)localObject2).c = i;
+            ((Operation)localObject2).d = ((Matcher)localObject1).group(1);
             str = ((Matcher)localObject1).group(4);
             if (Utils.a(str)) {
               i = j;
             } else {
-              i = Changeset.a(str);
+              i = Changeset.b(str);
             }
-            ((Operation)localObject2).jdField_a_of_type_Int = i;
-            this.jdField_a_of_type_JavaUtilList.add(localObject2);
+            ((Operation)localObject2).b = i;
+            this.a.add(localObject2);
           }
           else
           {
@@ -65,22 +65,22 @@ public class OperationIterator
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.b = this.a.iterator();
   }
   
   public Operation a()
   {
-    return (Operation)this.jdField_a_of_type_JavaUtilIterator.next();
+    return (Operation)this.b.next();
   }
   
   public boolean hasNext()
   {
-    return this.jdField_a_of_type_JavaUtilIterator.hasNext();
+    return this.b.hasNext();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.OperationIterator
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import kotlin.Metadata;
 public final class EcshopRainViewApiImpl$Companion {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.api.impl.EcshopRainViewApiImpl.Companion
  * JD-Core Version:    0.7.0.1
  */

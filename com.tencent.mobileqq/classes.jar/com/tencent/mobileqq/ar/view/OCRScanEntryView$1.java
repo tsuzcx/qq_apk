@@ -14,10 +14,10 @@ class OCRScanEntryView$1
   
   public void run()
   {
-    String str = CameraProxy.a().a();
-    if (FileUtil.b(str))
+    String str = CameraProxy.a().m();
+    if (FileUtil.d(str))
     {
-      ((IOCR)QRoute.api(IOCR.class)).startOcrPerformFragment((Activity)this.this$0.a, str, 0, -1008, null);
+      ((IOCR)QRoute.api(IOCR.class)).startOcrPerformFragment((Activity)this.this$0.E, str, 0, -1008, null);
       ReportController.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 1, 0, "", "0", "0", "");
     }
     OCRScanEntryView.a(this.this$0, false);
@@ -25,7 +25,7 @@ class OCRScanEntryView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.OCRScanEntryView.1
  * JD-Core Version:    0.7.0.1
  */

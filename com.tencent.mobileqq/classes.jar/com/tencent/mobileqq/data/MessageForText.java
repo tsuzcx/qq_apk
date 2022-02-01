@@ -102,7 +102,7 @@ public class MessageForText
   private void parseStickerMsg()
   {
     Object localObject;
-    if ((EmojiStickerManager.a(this)) && ((this.extLong & 0x4) > 0) && (EmojiStickerManager.f))
+    if ((EmojiStickerManager.e(this)) && ((this.extLong & 0x4) > 0) && (EmojiStickerManager.n))
     {
       System.currentTimeMillis();
       localObject = getExtInfoFromExtStr("sticker_info");
@@ -316,7 +316,7 @@ public class MessageForText
   
   public boolean isSupportFTS()
   {
-    return MsgProxyUtils.m(this.istroop);
+    return MsgProxyUtils.n(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -343,21 +343,21 @@ public class MessageForText
   
   public void setSendMsgParams(ChatActivityFacade.SendMsgParams paramSendMsgParams)
   {
-    this.mMsgSignalSum = paramSendMsgParams.jdField_a_of_type_Int;
-    this.mMsgSignalCount = paramSendMsgParams.b;
-    this.mIsMsgSignalOpen = paramSendMsgParams.jdField_c_of_type_Boolean;
-    this.mMsgSignalNetType = paramSendMsgParams.jdField_c_of_type_Int;
-    this.mMsgSendTime = paramSendMsgParams.jdField_a_of_type_Long;
-    this.mPasswdRedBagFlag = paramSendMsgParams.f;
-    this.mPasswdRedBagSender = paramSendMsgParams.d;
+    this.mMsgSignalSum = paramSendMsgParams.c;
+    this.mMsgSignalCount = paramSendMsgParams.d;
+    this.mIsMsgSignalOpen = paramSendMsgParams.e;
+    this.mMsgSignalNetType = paramSendMsgParams.f;
+    this.mMsgSendTime = paramSendMsgParams.g;
+    this.mPasswdRedBagFlag = paramSendMsgParams.q;
+    this.mPasswdRedBagSender = paramSendMsgParams.p;
     if ((this instanceof MessageForFoldMsg)) {
-      ((MessageForFoldMsg)this).foldFlagTemp = paramSendMsgParams.e;
+      ((MessageForFoldMsg)this).foldFlagTemp = paramSendMsgParams.t;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForText
  * JD-Core Version:    0.7.0.1
  */

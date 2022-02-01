@@ -23,58 +23,58 @@ public class ShareGroupDateListPageLoader
   extends INetPageLoader
   implements CmdTaskManger.CommandCallback<GetShareGroupDateListRequest, GetShareGroupDateListResponse>
 {
-  protected int a;
-  protected ShareGroupDateListPageLoader.CacheContext a;
-  protected final String b;
-  protected long c;
-  protected final String c;
-  protected final String d;
-  protected String e = "";
+  protected final String g;
+  protected final String h;
+  protected final String i;
+  protected ShareGroupDateListPageLoader.CacheContext j;
+  protected String k = "";
+  protected long l;
+  protected int m;
   
   public ShareGroupDateListPageLoader(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.d = paramString1;
+    this.g = paramString1;
+    this.m = paramInt;
+    this.h = paramString2;
+    this.i = paramString1;
   }
   
   private void d()
   {
-    int i = UIUtils.a();
-    int j = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardModelShareGroupDateListPageLoader$CacheContext.jdField_a_of_type_Int;
-    long l = 0L;
-    if (j != i)
+    int n = UIUtils.b();
+    int i1 = this.j.c;
+    long l1 = 0L;
+    if (i1 != n)
     {
-      SLog.d("Q.qqstory.shareGroup:ShareGroupDateListPageLoader", "timezone has changed. old=%d, new=%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardModelShareGroupDateListPageLoader$CacheContext.jdField_a_of_type_Int), Integer.valueOf(i) });
+      SLog.d("Q.qqstory.shareGroup:ShareGroupDateListPageLoader", "timezone has changed. old=%d, new=%d", new Object[] { Integer.valueOf(this.j.c), Integer.valueOf(n) });
       localObject = (MemoryManager)SuperManager.a(19);
-      MemoryInfoEntry localMemoryInfoEntry = ((MemoryManager)localObject).a(this.d);
+      MemoryInfoEntry localMemoryInfoEntry = ((MemoryManager)localObject).c(this.i);
       if (localMemoryInfoEntry == null)
       {
-        localObject = new MemoryInfoEntry(this.d);
+        localObject = new MemoryInfoEntry(this.i);
         ((MemoryInfoEntry)localObject).seq = 0L;
-        ((MemoryInfoEntry)localObject).timeZone = i;
+        ((MemoryInfoEntry)localObject).timeZone = n;
       }
       else
       {
         localMemoryInfoEntry.seq = 0L;
-        localMemoryInfoEntry.timeZone = i;
+        localMemoryInfoEntry.timeZone = n;
         localObject = ((MemoryManager)localObject).a(localMemoryInfoEntry);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardModelShareGroupDateListPageLoader$CacheContext.a((MemoryInfoEntry)localObject);
+      this.j.a((MemoryInfoEntry)localObject);
     }
-    if (a(this.e)) {
-      l = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardModelShareGroupDateListPageLoader$CacheContext.jdField_a_of_type_Long;
+    if (b(this.k)) {
+      l1 = this.j.a;
     }
-    this.jdField_c_of_type_Long = l;
+    this.l = l1;
     Object localObject = new GetShareGroupDateListRequest();
-    ((GetShareGroupDateListRequest)localObject).c = 10;
-    ((GetShareGroupDateListRequest)localObject).d = 10;
-    ((GetShareGroupDateListRequest)localObject).jdField_b_of_type_JavaLangString = this.e;
-    ((GetShareGroupDateListRequest)localObject).jdField_b_of_type_Long = l;
-    ((GetShareGroupDateListRequest)localObject).f = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardModelShareGroupDateListPageLoader$CacheContext.jdField_a_of_type_Int;
-    ((GetShareGroupDateListRequest)localObject).a = this.jdField_b_of_type_JavaLangString;
-    ((GetShareGroupDateListRequest)localObject).e = this.jdField_a_of_type_Int;
+    ((GetShareGroupDateListRequest)localObject).g = 10;
+    ((GetShareGroupDateListRequest)localObject).h = 10;
+    ((GetShareGroupDateListRequest)localObject).f = this.k;
+    ((GetShareGroupDateListRequest)localObject).j = l1;
+    ((GetShareGroupDateListRequest)localObject).k = this.j.c;
+    ((GetShareGroupDateListRequest)localObject).e = this.g;
+    ((GetShareGroupDateListRequest)localObject).i = this.m;
     CmdTaskManger.a().a((NetworkRequest)localObject, this);
   }
   
@@ -89,7 +89,7 @@ public class ShareGroupDateListPageLoader
     Bosses.get().postJob(new ShareGroupDateListPageLoader.1(this, "Q.qqstory.shareGroup:ShareGroupDateListPageLoader"));
   }
   
-  protected boolean a(String paramString)
+  protected boolean b(String paramString)
   {
     return (TextUtils.isEmpty(paramString)) || (paramString.equals("0"));
   }

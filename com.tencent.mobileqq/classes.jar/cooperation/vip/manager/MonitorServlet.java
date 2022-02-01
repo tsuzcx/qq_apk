@@ -40,34 +40,6 @@ import tencent.im.new_year_2014.Unisso.UniSsoServerRsp;
 public class MonitorServlet
   extends MSFServlet
 {
-  private static int a()
-  {
-    int j = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
-    int i = 4;
-    if (j != 1)
-    {
-      if (j != 2)
-      {
-        if (j != 3)
-        {
-          if (j != 4) {
-            return 1;
-          }
-        }
-        else {
-          return 5;
-        }
-      }
-      else {
-        return 6;
-      }
-    }
-    else {
-      i = 3;
-    }
-    return i;
-  }
-  
   private static mobile_monitor_report.UserCommReport a()
   {
     mobile_monitor_report.UserCommReport localUserCommReport = new mobile_monitor_report.UserCommReport();
@@ -76,7 +48,7 @@ public class MonitorServlet
     String str = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCityCode();
     localUserCommReport.city_code.set(str);
     localUserCommReport.mobile_type.set(Build.MODEL);
-    localUserCommReport.net_type.set(a());
+    localUserCommReport.net_type.set(b());
     localUserCommReport.from_id.set(2);
     return localUserCommReport;
   }
@@ -156,12 +128,40 @@ public class MonitorServlet
     Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
     localUniSsoServerReqComm.platform.set(109L);
     localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-    localUniSsoServerReqComm.mqqver.set("8.7.0");
+    localUniSsoServerReqComm.mqqver.set("8.8.17");
     localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
     localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgExceptionReq.toByteArray()));
     paramList.putExtra("data", WupUtil.a(localUniSsoServerReq.toByteArray()));
     paramList.putExtra("cmd", "MobileReport.ExceptionReport");
     localAppRuntime.startServlet(paramList);
+  }
+  
+  private static int b()
+  {
+    int j = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+    int i = 4;
+    if (j != 1)
+    {
+      if (j != 2)
+      {
+        if (j != 3)
+        {
+          if (j != 4) {
+            return 1;
+          }
+        }
+        else {
+          return 5;
+        }
+      }
+      else {
+        return 6;
+      }
+    }
+    else {
+      i = 3;
+    }
+    return i;
   }
   
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -239,7 +239,7 @@ public class MonitorServlet
     Unisso.UniSsoServerReqComm localUniSsoServerReqComm = new Unisso.UniSsoServerReqComm();
     localUniSsoServerReqComm.platform.set(109L);
     localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-    localUniSsoServerReqComm.mqqver.set("8.7.0");
+    localUniSsoServerReqComm.mqqver.set("8.8.17");
     localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
     localUniSsoServerReq.reqdata.set(ByteStringMicro.copyFrom(localPkgTraceReq.toByteArray()));
     paramList.putExtra("data", WupUtil.a(localUniSsoServerReq.toByteArray()));
@@ -314,7 +314,7 @@ public class MonitorServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.MonitorServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,11 @@ public class ExpandConfig
   public List<String> defaultTags = new ArrayList();
   public String expandExamImg;
   public int exposureTimeLimit = 2;
+  public String flutterHomePageTitle;
+  public String flutterMessagePageTitle;
   public String flutterResMd5;
   public String flutterResUrl;
+  public String flutterSettingPageTitle;
   public int isExpandEntranceOnTop;
   public int isHasUpgradeIntroduce;
   public HashMap<String, LimitChatRes> limitChatResList = new HashMap();
@@ -68,7 +71,7 @@ public class ExpandConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.config.ExpandConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -43,14 +43,14 @@ class IntimateInfoManager$2
         IntimateInfoManager.a(this.a).preDownloadSuccess((String)localObject, paramNetResp.mTotalFileLen);
       }
       paramNetResp = (HttpNetReq)paramNetResp.mReq;
-      if (IntimateInfoManager.a(this.a, paramNetResp.mOutPath, IntimateInfoManager.a(this.a)))
+      if (IntimateInfoManager.a(this.a, paramNetResp.mOutPath, IntimateInfoManager.b(this.a)))
       {
-        localObject = new File(IntimateInfoManager.a());
+        localObject = new File(IntimateInfoManager.d());
         if (!((File)localObject).exists()) {
           ((File)localObject).mkdirs();
         }
-        boolean bool1 = IntimateInfoManager.b(this.a, paramNetResp.mOutPath, IntimateInfoManager.a());
-        boolean bool2 = IntimateInfoManager.a(this.a);
+        boolean bool1 = IntimateInfoManager.b(this.a, paramNetResp.mOutPath, IntimateInfoManager.d());
+        boolean bool2 = IntimateInfoManager.c(this.a);
         if (QLog.isColorLevel()) {
           QLog.d("IntimateInfoManager", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
         }
@@ -74,7 +74,7 @@ class IntimateInfoManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimateInfoManager.2
  * JD-Core Version:    0.7.0.1
  */

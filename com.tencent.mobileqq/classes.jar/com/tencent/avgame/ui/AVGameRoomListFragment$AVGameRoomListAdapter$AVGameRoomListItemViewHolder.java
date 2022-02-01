@@ -8,10 +8,10 @@ import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
 public class AVGameRoomListFragment$AVGameRoomListAdapter$AVGameRoomListItemViewHolder
   extends FacePreloadHolder.ViewHolder
 {
-  public LinearLayout a;
   public TextView a;
-  public RoomInfo a;
   public TextView b;
+  public LinearLayout c;
+  public RoomInfo d;
 }
 
 

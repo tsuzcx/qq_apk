@@ -7,15 +7,15 @@ class VideoBaseItem$2$1
   
   public void run()
   {
-    this.a.a.c = 4;
+    this.a.a.g = 4;
     if (VideoBaseItem.a(this.a.a) != null) {
-      VideoBaseItem.a(this.a.a).d(VideoBaseItem.a(this.a.a));
+      VideoBaseItem.a(this.a.a).d(VideoBaseItem.b(this.a.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.2.1
  * JD-Core Version:    0.7.0.1
  */

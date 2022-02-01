@@ -12,24 +12,24 @@ class FriendProfileImageAvatar$1
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.a.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null) {}
+    Object localObject1 = this.this$0.l.getEntityManagerFactory().createEntityManager();
+    if (localObject1 != null) {}
     try
     {
       try
       {
-        Setting localSetting = (Setting)localEntityManager.find(Setting.class, this.a.d);
+        Setting localSetting = (Setting)((EntityManager)localObject1).find(Setting.class, this.a.g);
         if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
         {
           localSetting.headImgTimestamp = 0L;
           localSetting.updateTimestamp = 0L;
-          localEntityManager.update(localSetting);
-          this.this$0.a.updateSettingTableCache(localSetting);
+          ((EntityManager)localObject1).update(localSetting);
+          this.this$0.l.updateSettingTableCache(localSetting);
         }
       }
       finally
       {
-        localEntityManager.close();
+        ((EntityManager)localObject1).close();
       }
     }
     catch (Exception localException)
@@ -37,13 +37,14 @@ class FriendProfileImageAvatar$1
       label94:
       break label94;
     }
-    localEntityManager.close();
-    this.this$0.a.refreshFace(this.this$0.b);
+    ((EntityManager)localObject1).close();
+    localObject1 = this.this$0;
+    FriendProfileImageAvatar.a((FriendProfileImageAvatar)localObject1, ((FriendProfileImageAvatar)localObject1).h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.1
  * JD-Core Version:    0.7.0.1
  */

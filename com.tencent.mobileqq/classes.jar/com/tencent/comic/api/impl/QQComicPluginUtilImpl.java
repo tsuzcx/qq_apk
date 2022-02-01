@@ -33,8 +33,8 @@ public class QQComicPluginUtilImpl
   
   public void notifyChangedWhenRuntimeCreated()
   {
-    if (QQComicPluginBridge.jdField_a_of_type_ComTencentComicUtilsRuntimeCreateObservable != null) {
-      QQComicPluginBridge.jdField_a_of_type_ComTencentComicUtilsRuntimeCreateObservable.a();
+    if (QQComicPluginBridge.e != null) {
+      QQComicPluginBridge.e.a();
     }
   }
   
@@ -45,7 +45,7 @@ public class QQComicPluginUtilImpl
   
   public void reportHitRate(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2)
   {
-    PluginPreloadReportUtils.a(AppHelper.a(), paramInt1, paramInt2, paramInt3, paramInt4, paramString1, new String[] { paramString2 });
+    PluginPreloadReportUtils.a(AppHelper.b(), paramInt1, paramInt2, paramInt3, paramInt4, paramString1, new String[] { paramString2 });
   }
   
   public void reportPreload(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, long paramLong)
@@ -60,7 +60,7 @@ public class QQComicPluginUtilImpl
   
   public void setDownloadObserver(QQComicDownloadObserverProxy paramQQComicDownloadObserverProxy)
   {
-    QQComicPluginBridge.jdField_a_of_type_ComTencentComicJspQQComicDownloadObserverProxy = paramQQComicDownloadObserverProxy;
+    QQComicPluginBridge.c = paramQQComicDownloadObserverProxy;
   }
   
   public void setFirstInObserver(Observer paramObserver)
@@ -70,17 +70,17 @@ public class QQComicPluginUtilImpl
   
   public void setJsPluginBuilder(QQComicJsPluginBuilder paramQQComicJsPluginBuilder)
   {
-    QQComicPluginBridge.jdField_a_of_type_ComTencentComicJspQQComicJsPluginBuilder = paramQQComicJsPluginBuilder;
+    QQComicPluginBridge.b = paramQQComicJsPluginBuilder;
   }
   
   public void setPluginReady(boolean paramBoolean)
   {
-    QQComicPluginBridge.jdField_a_of_type_Boolean = paramBoolean;
+    QQComicPluginBridge.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.api.impl.QQComicPluginUtilImpl
  * JD-Core Version:    0.7.0.1
  */

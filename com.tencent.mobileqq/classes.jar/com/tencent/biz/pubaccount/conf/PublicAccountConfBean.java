@@ -28,9 +28,9 @@ import org.w3c.dom.NodeList;
 public class PublicAccountConfBean
   implements IQStorageSafable<String>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<IPublicAccountConfigUtil.PublicAccountConfigFolder> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  private boolean jdField_a_of_type_Boolean = false;
+  private ArrayList<IPublicAccountConfigUtil.PublicAccountConfigFolder> a = new ArrayList(0);
+  private boolean b = false;
+  private String c = "";
   
   public static PublicAccountConfBean a(String paramString)
   {
@@ -55,7 +55,7 @@ public class PublicAccountConfBean
     int i = 0;
     while (i < paramArrayOfQConfItem.length)
     {
-      localPublicAccountConfBean = a(paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString);
+      localPublicAccountConfBean = a(paramArrayOfQConfItem[i].b);
       i += 1;
     }
     return localPublicAccountConfBean;
@@ -63,11 +63,11 @@ public class PublicAccountConfBean
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if ((localAppRuntime instanceof QQAppInterface)) {
-        SharedPreUtils.f(((QQAppInterface)localAppRuntime).getApplication(), this.jdField_a_of_type_JavaLangString);
+        SharedPreUtils.C(((QQAppInterface)localAppRuntime).getApplication(), this.c);
       }
     }
     else if (QLog.isColorLevel())
@@ -76,7 +76,14 @@ public class PublicAccountConfBean
     }
   }
   
-  public void a(String paramString)
+  public void b()
+  {
+    if (this.b) {
+      PublicAccountConfigUtilImpl.addFolders(this.a);
+    }
+  }
+  
+  public void b(String paramString)
   {
     Object localObject1;
     if (QLog.isColorLevel())
@@ -90,7 +97,7 @@ public class PublicAccountConfBean
     {
       if (!TextUtils.isEmpty(paramString))
       {
-        this.jdField_a_of_type_JavaLangString = paramString;
+        this.c = paramString;
         paramString = paramString.trim();
         paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8"))).getElementsByTagName("public-account-folder");
         int j = paramString.getLength();
@@ -99,7 +106,7 @@ public class PublicAccountConfBean
         {
           localObject1 = (QQAppInterface)localObject2;
           localObject2 = ((AppRuntime)localObject2).getApplication();
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
+          this.a = new ArrayList(j);
           int i = 0;
           while (i < j)
           {
@@ -109,10 +116,10 @@ public class PublicAccountConfBean
             localObject3 = ((Element)localObject3).getElementsByTagName("icon").item(0).getFirstChild().getNodeValue();
             IPublicAccountConfigUtil.PublicAccountConfigFolder localPublicAccountConfigFolder = new IPublicAccountConfigUtil.PublicAccountConfigFolder();
             ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).initPublicAccountConfigFolder(localPublicAccountConfigFolder, (AppInterface)localObject1, (Context)localObject2, k, str, (String)localObject3);
-            this.jdField_a_of_type_JavaUtilArrayList.add(localPublicAccountConfigFolder);
+            this.a.add(localPublicAccountConfigFolder);
             i += 1;
           }
-          this.jdField_a_of_type_Boolean = true;
+          this.b = true;
         }
       }
       else if (QLog.isColorLevel())
@@ -129,17 +136,10 @@ public class PublicAccountConfBean
       paramString.printStackTrace();
     }
   }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      PublicAccountConfigUtilImpl.addFolders(this.jdField_a_of_type_JavaUtilArrayList);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PublicAccountConfBean
  * JD-Core Version:    0.7.0.1
  */

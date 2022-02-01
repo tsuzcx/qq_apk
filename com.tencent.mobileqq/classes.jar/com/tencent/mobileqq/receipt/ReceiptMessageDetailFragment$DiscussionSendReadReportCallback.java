@@ -30,17 +30,17 @@ class ReceiptMessageDetailFragment$DiscussionSendReadReportCallback
         QLog.d("ReceiptMessageDetailFragment", 1, paramArrayOfByte.toString());
         if (paramBundle.uint32_code.get() == 20)
         {
-          ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+          ReceiptMessageDetailFragment.F((ReceiptMessageDetailFragment)this.a);
           return;
         }
-        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+        ReceiptMessageDetailFragment.r((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ReceiptMessageDetailFragment", 2, "getDiscussionSendReadReportCallback succ");
       }
       ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      ReceiptMessageDetailFragment.r((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -49,7 +49,7 @@ class ReceiptMessageDetailFragment$DiscussionSendReadReportCallback
       break label154;
     }
     QLog.d("ReceiptMessageDetailFragment", 1, "Report read status fail on invalid data");
-    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+    ReceiptMessageDetailFragment.F((ReceiptMessageDetailFragment)this.a);
     return;
     paramArrayOfByte = new StringBuilder();
     paramArrayOfByte.append("getDiscussionSendReadReportCallback error on code: ");
@@ -59,7 +59,7 @@ class ReceiptMessageDetailFragment$DiscussionSendReadReportCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DiscussionSendReadReportCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ final class AdDownloadLifeEvent$OnAttachedToWindow
     ((StringBuilder)localObject).append("OnAttachedToWindow ");
     ((StringBuilder)localObject).append(paramRIJDownloadView.hashCode());
     ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", ((StringBuilder)localObject).toString());
-    if (!ReadInJoyAdUtils.q((AbsBaseArticleInfo)paramRIJDownloadView.a())) {
+    if (!ReadInJoyAdUtils.s((AbsBaseArticleInfo)paramRIJDownloadView.getAdInfo())) {
       return;
     }
     localObject = new StringBuilder();
@@ -47,7 +47,7 @@ final class AdDownloadLifeEvent$OnAttachedToWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadLifeEvent.OnAttachedToWindow
  * JD-Core Version:    0.7.0.1
  */

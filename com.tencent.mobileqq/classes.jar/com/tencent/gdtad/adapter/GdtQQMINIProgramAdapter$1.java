@@ -17,12 +17,12 @@ class GdtQQMINIProgramAdapter$1
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
     GdtLog.b("GdtQQMINIProgramAdapter", String.format("onLaunchResult %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    AdAnalysisHelperForUtil.reportForLaunchQQMINIProgramEND((Context)this.jdField_a_of_type_ComTencentAdTangramMiniAdQQMINIProgramAdapter$Params.context.get(), this.jdField_a_of_type_ComTencentGdtadAditemGdtAd, paramBoolean);
+    AdAnalysisHelperForUtil.reportForLaunchQQMINIProgramEND((Context)this.a.context.get(), this.b, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtQQMINIProgramAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,15 +19,6 @@ import mqq.os.MqqHandler;
 
 public class WSVerticalTrendsCacheUtils
 {
-  private static List<WSVerticalItemData> a()
-  {
-    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = (stSimpleGetFeedListRsp)WSFileUtils.a(new stSimpleGetFeedListRsp(), b());
-    if (localstSimpleGetFeedListRsp == null) {
-      return new ArrayList();
-    }
-    return WSVerticalDataUtil.a(localstSimpleGetFeedListRsp.feeds);
-  }
-  
   private static void a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
     if (paramstSimpleMetaFeed == null) {
@@ -40,23 +31,23 @@ public class WSVerticalTrendsCacheUtils
   {
     if (paramView != null)
     {
-      WSVerticalPageAdapter localWSVerticalPageAdapter = paramView.a();
+      WSVerticalPageAdapter localWSVerticalPageAdapter = paramView.b();
       if (localWSVerticalPageAdapter == null) {
         return;
       }
-      int i = localWSVerticalPageAdapter.a();
-      Object localObject = localWSVerticalPageAdapter.a(i);
+      int i = localWSVerticalPageAdapter.h();
+      Object localObject = localWSVerticalPageAdapter.b(i);
       paramView = (WSVerticalPageContract.View)localObject;
       if (localObject != null)
       {
         paramView = (WSVerticalPageContract.View)localObject;
         if (((stSimpleMetaFeed)localObject).video_type == 2) {
-          paramView = localWSVerticalPageAdapter.a(i + 1);
+          paramView = localWSVerticalPageAdapter.b(i + 1);
         }
       }
       localObject = paramView;
       if (paramView == null) {
-        localObject = localWSVerticalPageAdapter.a(i - 1);
+        localObject = localWSVerticalPageAdapter.b(i - 1);
       }
       a((stSimpleMetaFeed)localObject);
       WSVideoPreloadManager.a((stSimpleMetaFeed)localObject);
@@ -68,7 +59,7 @@ public class WSVerticalTrendsCacheUtils
     if (!paramBoolean) {
       return;
     }
-    List localList = a();
+    List localList = b();
     if (localList.size() == 0) {
       return;
     }
@@ -81,7 +72,16 @@ public class WSVerticalTrendsCacheUtils
     paramIFetchDataRspListener.run();
   }
   
-  private static String b()
+  private static List<WSVerticalItemData> b()
+  {
+    stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = (stSimpleGetFeedListRsp)WSFileUtils.b(new stSimpleGetFeedListRsp(), c());
+    if (localstSimpleGetFeedListRsp == null) {
+      return new ArrayList();
+    }
+    return WSVerticalDataUtil.a(localstSimpleGetFeedListRsp.feeds);
+  }
+  
+  private static String c()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     if (localObject != null)
@@ -100,7 +100,7 @@ public class WSVerticalTrendsCacheUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalTrendsCacheUtils
  * JD-Core Version:    0.7.0.1
  */

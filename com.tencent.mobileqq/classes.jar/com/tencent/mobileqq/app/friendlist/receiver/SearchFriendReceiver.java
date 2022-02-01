@@ -50,7 +50,7 @@ public class SearchFriendReceiver
     int k;
     if (bool1)
     {
-      localObject1 = (RespHead)this.a.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespHead", new RespHead());
+      localObject1 = (RespHead)this.b.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespHead", new RespHead());
       if (localObject1 != null)
       {
         j = ((RespHead)localObject1).iResult;
@@ -71,7 +71,7 @@ public class SearchFriendReceiver
       k = 0;
       bool2 = false;
     }
-    paramFromServiceMsg = (RespSearch)this.a.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSearch", new RespSearch());
+    paramFromServiceMsg = (RespSearch)this.b.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespSearch", new RespSearch());
     if (paramFromServiceMsg != null)
     {
       int m = paramFromServiceMsg.result;
@@ -79,7 +79,7 @@ public class SearchFriendReceiver
       if (m != 1) {
         break label344;
       }
-      if (localObject2 == ContactSearchFacade.a)
+      if (localObject2 == ContactSearchFacade.b)
       {
         QLog.d("FriendListHandler.BaseHandlerReceiver", 1, "handleSearchFriend search troop and hit TwiLight");
       }
@@ -133,7 +133,7 @@ public class SearchFriendReceiver
     int i;
     if (bool1)
     {
-      paramFromServiceMsg = (RespHead)this.a.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespHead", new RespHead());
+      paramFromServiceMsg = (RespHead)this.b.decodePacket(paramFromServiceMsg.getWupBuffer(), "RespHead", new RespHead());
       if (paramFromServiceMsg != null)
       {
         i = paramFromServiceMsg.iResult;
@@ -155,7 +155,7 @@ public class SearchFriendReceiver
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     oidb_0x972.RspBody localRspBody = new oidb_0x972.RspBody();
-    FriendListHandler localFriendListHandler = this.a;
+    FriendListHandler localFriendListHandler = this.b;
     int i = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
     if (QLog.isColorLevel())
     {
@@ -198,7 +198,7 @@ public class SearchFriendReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.SearchFriendReceiver
  * JD-Core Version:    0.7.0.1
  */

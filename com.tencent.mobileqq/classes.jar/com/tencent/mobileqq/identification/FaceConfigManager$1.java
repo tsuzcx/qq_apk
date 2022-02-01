@@ -11,18 +11,18 @@ final class FaceConfigManager$1
   public void a(int paramInt, String paramString)
   {
     QLog.d("FaceConfigManager", 1, new Object[] { "requestConfigJson failed, errorMsg : ", paramString, " code : ", Integer.valueOf(paramInt) });
-    FaceConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConfigDownloader$IDownloadCallback);
+    FaceConfigManager.a(this.b);
   }
   
   public void a(String paramString)
   {
     QLog.d("FaceConfigManager", 1, "requestConfigJson success");
-    FaceConfigManager.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString, this.jdField_a_of_type_ComTencentMobileqqIdentificationFaceConfigDownloader$IDownloadCallback);
+    FaceConfigManager.a(this.a, paramString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.FaceConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

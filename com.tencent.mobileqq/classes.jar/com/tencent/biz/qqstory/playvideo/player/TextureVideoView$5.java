@@ -16,7 +16,7 @@ class TextureVideoView$5
   {
     if (QLog.isColorLevel())
     {
-      localObject = this.a.jdField_a_of_type_JavaLangString;
+      localObject = this.a.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Error: ");
       localStringBuilder.append(paramInt1);
@@ -25,12 +25,12 @@ class TextureVideoView$5
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     Object localObject = this.a;
-    ((TextureVideoView)localObject).jdField_a_of_type_Int = -1;
-    ((TextureVideoView)localObject).b = -1;
-    if (((TextureVideoView)localObject).jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    ((TextureVideoView)localObject).f = -1;
+    ((TextureVideoView)localObject).g = -1;
+    if (((TextureVideoView)localObject).m != null) {
+      this.a.m.hide();
     }
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(paramIMediaPlayer, paramInt1, paramInt2))) {
+    if ((this.a.r != null) && (this.a.r.a(paramIMediaPlayer, paramInt1, paramInt2))) {
       return true;
     }
     if (this.a.getWindowToken() != null)
@@ -51,7 +51,7 @@ class TextureVideoView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TextureVideoView.5
  * JD-Core Version:    0.7.0.1
  */

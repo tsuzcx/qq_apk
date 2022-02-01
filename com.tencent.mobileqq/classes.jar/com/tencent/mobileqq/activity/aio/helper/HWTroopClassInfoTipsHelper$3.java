@@ -33,7 +33,7 @@ class HWTroopClassInfoTipsHelper$3
       {
         Object localObject = new JSONObject(paramContext);
         paramContext = ((JSONObject)localObject).optString("groupCode");
-        if (!TextUtils.equals(paramContext, HWTroopClassInfoTipsHelper.a(this.a).a)) {
+        if (!TextUtils.equals(paramContext, HWTroopClassInfoTipsHelper.a(this.a).b)) {
           return;
         }
         paramIntent = ((JSONObject)localObject).optString("content");
@@ -43,18 +43,18 @@ class HWTroopClassInfoTipsHelper$3
         String str3 = ((JSONObject)localObject).optString("uin");
         String str4 = ((JSONObject)localObject).optString("course");
         localObject = ((JSONObject)localObject).optString("name");
-        if ((!"join".equals(str1)) && (TextUtils.equals(str3, HWTroopClassInfoTipsHelper.a(this.a).getCurrentAccountUin())))
+        if ((!"join".equals(str1)) && (TextUtils.equals(str3, HWTroopClassInfoTipsHelper.b(this.a).getCurrentAccountUin())))
         {
-          ((IBizTroopMemberInfoService)HWTroopClassInfoTipsHelper.a(this.a).getRuntimeService(IBizTroopMemberInfoService.class, "")).asynSaveHomeworkTroopMemberIdentity(HWTroopClassInfoTipsHelper.a(this.a).a, str3, str2, i, str4, (String)localObject);
-          if (this.a.a != null)
+          ((IBizTroopMemberInfoService)HWTroopClassInfoTipsHelper.b(this.a).getRuntimeService(IBizTroopMemberInfoService.class, "")).asynSaveHomeworkTroopMemberIdentity(HWTroopClassInfoTipsHelper.a(this.a).b, str3, str2, i, str4, (String)localObject);
+          if (this.a.b != null)
           {
             if (QLog.isColorLevel()) {
               QLog.d("HWTroopClassInfoTipsHelper", 2, "mHomeworkTroopIdentityChangedReceiver dismissTipsBar.");
             }
-            this.a.a.a(HWTroopClassInfoTipsHelper.a(this.a), false);
+            this.a.b.a(HWTroopClassInfoTipsHelper.c(this.a), false);
           }
-          if (HWTroopClassInfoTipsHelper.a(this.a) != null) {
-            HWTroopClassInfoTipsHelper.a(this.a).a(i);
+          if (HWTroopClassInfoTipsHelper.d(this.a) != null) {
+            HWTroopClassInfoTipsHelper.d(this.a).a(i);
           }
           if (QLog.isColorLevel()) {
             QLog.d("zivonchen", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver troopUin = ", paramContext, ", content = ", paramIntent, ", source = ", str1, ", rankId = ", Integer.valueOf(i), ", nickName = ", str2, "uin = ", str3 });
@@ -71,7 +71,7 @@ class HWTroopClassInfoTipsHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.HWTroopClassInfoTipsHelper.3
  * JD-Core Version:    0.7.0.1
  */

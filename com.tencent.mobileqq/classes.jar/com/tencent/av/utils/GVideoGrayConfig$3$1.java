@@ -14,7 +14,7 @@ class GVideoGrayConfig$3$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    ((IGroupVideoManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER)).a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString, "4", "openRoom");
+    ((IGroupVideoManager)this.a.a.getManager(QQManagerFactory.GROUP_VIDEO_PLUGIN_MANAGER)).a(this.a.b, this.a.a.getCurrentAccountUin(), this.a.d, "4", "openRoom");
   }
 }
 

@@ -24,7 +24,7 @@ public final class DoodleMsgProto$DoodleData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     msg.aio_doodle.DoodleMsgProto.DoodleData
  * JD-Core Version:    0.7.0.1
  */

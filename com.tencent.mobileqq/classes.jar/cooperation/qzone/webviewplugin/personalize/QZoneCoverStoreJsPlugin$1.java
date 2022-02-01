@@ -14,16 +14,16 @@ class QZoneCoverStoreJsPlugin$1
   
   public void onClick(View paramView)
   {
-    if ((this.this$0.mRuntime.a() != null) && (this.this$0.mRuntime.a() != null))
+    if ((this.this$0.mRuntime.b() != null) && (this.this$0.mRuntime.a() != null))
     {
-      paramView = QZoneHelper.QZoneCoverConstants.getCoverStoreUrl("qzone", String.valueOf(1), this.this$0.mRuntime.a().getAccount(), this.this$0.mRuntime.a().getAccount());
+      paramView = QZoneHelper.QZoneCoverConstants.getCoverStoreUrl("qzone", String.valueOf(1), this.this$0.mRuntime.b().getAccount(), this.this$0.mRuntime.b().getAccount());
       this.this$0.mRuntime.a().loadUrl(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

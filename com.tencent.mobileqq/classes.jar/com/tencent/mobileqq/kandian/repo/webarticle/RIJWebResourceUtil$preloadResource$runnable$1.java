@@ -17,7 +17,7 @@ final class RIJWebResourceUtil$preloadResource$runnable$1
   public final void run()
   {
     String str1 = RIJWebResourceUtil.a(RIJWebResourceUtil.a);
-    Iterator localIterator = RIJWebResourceUtil.a(RIJWebResourceUtil.a).iterator();
+    Iterator localIterator = RIJWebResourceUtil.b(RIJWebResourceUtil.a).iterator();
     while (localIterator.hasNext())
     {
       String str2 = (String)localIterator.next();
@@ -50,7 +50,7 @@ final class RIJWebResourceUtil$preloadResource$runnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJWebResourceUtil.preloadResource.runnable.1
  * JD-Core Version:    0.7.0.1
  */

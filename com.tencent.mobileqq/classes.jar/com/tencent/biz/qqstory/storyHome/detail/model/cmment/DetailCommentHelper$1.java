@@ -3,6 +3,7 @@ package com.tencent.biz.qqstory.storyHome.detail.model.cmment;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class DetailCommentHelper$1
   implements TextView.OnEditorActionListener
@@ -11,12 +12,18 @@ class DetailCommentHelper$1
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    boolean bool;
     if (paramInt == 4)
     {
-      this.a.d();
-      return true;
+      this.a.f();
+      bool = true;
     }
-    return false;
+    else
+    {
+      bool = false;
+    }
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
+    return bool;
   }
 }
 

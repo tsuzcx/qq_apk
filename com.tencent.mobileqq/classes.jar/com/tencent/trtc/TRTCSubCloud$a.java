@@ -1,6 +1,7 @@
 package com.tencent.trtc;
 
-import android.os.Handler;
+import com.tencent.liteav.audio.TXCAudioEngine;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.trtc.impl.TRTCRoomInfo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -26,10 +27,18 @@ class TRTCSubCloud$a
     if (localObject != null)
     {
       ArrayList localArrayList = new ArrayList();
-      TRTCSubCloud.access$6200((TRTCSubCloud)localObject).forEachUser(new TRTCSubCloud.a.1(this, localArrayList));
-      TRTCSubCloud.access$6400((TRTCSubCloud)localObject, new TRTCSubCloud.a.2(this, TRTCSubCloud.access$6300((TRTCSubCloud)localObject), localArrayList));
-      if (TRTCSubCloud.access$6500((TRTCSubCloud)localObject) > 0) {
-        TRTCSubCloud.access$6800((TRTCSubCloud)localObject).postDelayed(TRTCSubCloud.access$6600((TRTCSubCloud)localObject), TRTCSubCloud.access$6700((TRTCSubCloud)localObject));
+      int i = TXCAudioEngine.getInstance().getSoftwareCaptureVolumeLevel();
+      if (i > 0)
+      {
+        TRTCCloudDef.TRTCVolumeInfo localTRTCVolumeInfo = new TRTCCloudDef.TRTCVolumeInfo();
+        localTRTCVolumeInfo.userId = TRTCSubCloud.access$6300((TRTCSubCloud)localObject).userId;
+        localTRTCVolumeInfo.volume = i;
+        localArrayList.add(localTRTCVolumeInfo);
+      }
+      TRTCSubCloud.access$6400((TRTCSubCloud)localObject).forEachUser(new TRTCSubCloud.a.1(this, localArrayList));
+      TRTCSubCloud.access$6600((TRTCSubCloud)localObject, new TRTCSubCloud.a.2(this, TRTCSubCloud.access$6500((TRTCSubCloud)localObject), localArrayList));
+      if (TRTCSubCloud.access$6700((TRTCSubCloud)localObject) > 0) {
+        TRTCSubCloud.access$7000((TRTCSubCloud)localObject).postDelayed(TRTCSubCloud.access$6800((TRTCSubCloud)localObject), TRTCSubCloud.access$6900((TRTCSubCloud)localObject));
       }
     }
   }

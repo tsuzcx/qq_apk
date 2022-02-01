@@ -16,7 +16,7 @@ public class DoutuConfigReporter
     if ((paramMessageRecord != null) && (!AIOSingleReporter.a().a(paramMessageRecord, "0X800B547")))
     {
       a();
-      AIOSingleReporter.a().a(paramMessageRecord, "0X800B547");
+      AIOSingleReporter.a().b(paramMessageRecord, "0X800B547");
     }
   }
   
@@ -32,7 +32,7 @@ public class DoutuConfigReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuConfigReporter
  * JD-Core Version:    0.7.0.1
  */

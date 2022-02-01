@@ -141,7 +141,7 @@ public final class RIJAdDownloadReport
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramDownloadClickState, "state");
     Intrinsics.checkParameterIsNotNull(paramString, "ex5");
-    int i = RIJAdDownloadReport.WhenMappings.a[paramDownloadClickState.ordinal()];
+    int i = RIJAdDownloadReport.WhenMappings.$EnumSwitchMapping$0[paramDownloadClickState.ordinal()];
     long l = 3010205L;
     if (i != 1)
     {
@@ -324,7 +324,7 @@ public final class RIJAdDownloadReport
     localHashMap.put("packageName", localObject);
     if (paramAdDownloadInfo != null)
     {
-      localObject = paramAdDownloadInfo.c();
+      localObject = paramAdDownloadInfo.f();
       if (localObject != null) {}
     }
     else
@@ -335,7 +335,7 @@ public final class RIJAdDownloadReport
     Object localObject = str1;
     if (paramAdDownloadInfo != null)
     {
-      String str2 = String.valueOf(paramAdDownloadInfo.a());
+      String str2 = String.valueOf(paramAdDownloadInfo.i());
       localObject = str1;
       if (str2 != null) {
         localObject = str2;
@@ -345,7 +345,7 @@ public final class RIJAdDownloadReport
     localHashMap.put("apnType", a.a());
     str1 = null;
     if (paramAdDownloadInfo != null) {
-      localObject = Integer.valueOf(paramAdDownloadInfo.c());
+      localObject = Integer.valueOf(paramAdDownloadInfo.d());
     } else {
       localObject = null;
     }
@@ -377,7 +377,7 @@ public final class RIJAdDownloadReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadReport
  * JD-Core Version:    0.7.0.1
  */

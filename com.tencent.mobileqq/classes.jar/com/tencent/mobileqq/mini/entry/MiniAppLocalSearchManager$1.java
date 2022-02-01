@@ -38,7 +38,7 @@ class MiniAppLocalSearchManager$1
         ((MiniAppLocalSearchEntity)localObject3).showMask = 1;
         MiniAppLocalSearchManager.access$100(this.this$0, (EntityManager)localObject1, (Entity)localObject3);
         continue;
-        localObject2 = new MiniAppLocalSearchEntity(this.val$miniAppInfo.appId, this.val$miniAppInfo.name, this.val$miniAppInfo.iconUrl, this.val$miniAppInfo.desc, 1);
+        localObject2 = new MiniAppLocalSearchEntity(this.val$miniAppInfo.appId, this.val$miniAppInfo.name, this.val$miniAppInfo.iconUrl, this.val$miniAppInfo.desc, 1, this.val$miniAppInfo.miniAppType);
         MiniAppLocalSearchManager.access$100(this.this$0, (EntityManager)localObject1, (Entity)localObject2);
       }
     }
@@ -46,7 +46,7 @@ class MiniAppLocalSearchManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager.1
  * JD-Core Version:    0.7.0.1
  */

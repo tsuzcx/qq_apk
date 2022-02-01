@@ -12,10 +12,10 @@ class AVActivity$MyControlUIObserver$4
     if (this.a.a.isDestroyed()) {
       return;
     }
-    if (this.a.a.a != null)
+    if (this.a.a.aa != null)
     {
-      this.a.a.a.setAnimationTrigger(this.a.a.a());
-      this.a.a.a.setVisibility(0);
+      this.a.a.aa.setAnimationTrigger(this.a.a.a());
+      this.a.a.aa.setVisibility(0);
     }
   }
 }

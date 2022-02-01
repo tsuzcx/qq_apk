@@ -18,56 +18,56 @@ import com.tencent.qqlive.module.videoreport.VideoReport;
 public class OnSocialHeaderClickListener
   implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private AbsBaseArticleInfo a;
+  private Context b;
   
   public OnSocialHeaderClickListener(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramAbsBaseArticleInfo;
+    this.b = paramContext;
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    int i = RIJBaseItemViewType.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    if ((paramViewBase != null) && (this.jdField_a_of_type_AndroidContentContext != null) && (i != 76) && (i != 78) && (i != 77))
+    int i = RIJBaseItemViewType.c(this.a);
+    paramViewBase = this.a;
+    if ((paramViewBase != null) && (this.b != null) && (i != 76) && (i != 78) && (i != 77))
     {
-      if (RIJItemViewTypeUtils.B(paramViewBase)) {
+      if (RIJItemViewTypeUtils.E(paramViewBase)) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.isPGCShortContent())
+      if (this.a.isPGCShortContent())
       {
-        paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+        paramViewBase = this.a;
         paramViewBase.clickArea = 6;
-        PGCShortContentUtils.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-        paramViewBase = this.jdField_a_of_type_AndroidContentContext;
-        AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+        PGCShortContentUtils.a(this.b, paramViewBase);
+        paramViewBase = this.b;
+        AbsBaseArticleInfo localAbsBaseArticleInfo = this.a;
         RIJFrameworkReportManager.a(paramViewBase, localAbsBaseArticleInfo, (int)localAbsBaseArticleInfo.mChannelID);
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedType == 36)
+      else if (this.a.mFeedType == 36)
       {
-        RIJJumpUtils.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 6);
+        RIJJumpUtils.b(this.b, this.a, 6);
       }
-      else if (RIJItemViewTypeUtils.j(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+      else if (RIJItemViewTypeUtils.j(this.a))
       {
         paramViewBase = new StringBuilder();
-        paramViewBase.append(ReadInJoyConstants.k);
-        paramViewBase.append(Base64Util.encodeToString(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mSubscribeID).getBytes(), 2));
+        paramViewBase.append(ReadInJoyConstants.l);
+        paramViewBase.append(Base64Util.encodeToString(String.valueOf(this.a.mSubscribeID).getBytes(), 2));
         paramViewBase = paramViewBase.toString();
-        ReadInJoyUtils.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+        ReadInJoyUtils.a(this.b, paramViewBase);
       }
       else
       {
-        RIJJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, false);
+        RIJJumpUtils.a(this.b, this.a, false);
       }
-      VideoReport.reportEvent("clck", new RIJDtParamBuilder().f("card").e(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID).g(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.dtReportBackendInfo).b("list").a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mChannelID)).a("14").b(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.dtReportContentType)).c("click_contentid").a().a());
+      VideoReport.reportEvent("clck", new RIJDtParamBuilder().f("card").e(this.a.innerUniqueID).g(this.a.dtReportBackendInfo).b("list").a(Long.valueOf(this.a.mChannelID)).a("14").b(Integer.valueOf(this.a.dtReportContentType)).c("click_contentid").a().c());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnSocialHeaderClickListener
  * JD-Core Version:    0.7.0.1
  */

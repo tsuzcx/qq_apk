@@ -40,11 +40,11 @@ class TroopObserversHelper$9
       if (paramBoolean2) {
         return;
       }
-      if ((TextUtils.equals(paramString1, TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString)) && (((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).n(TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString)) && (String.valueOf(1104445552).equals(paramString2)))
+      if ((TextUtils.equals(paramString1, TroopObserversHelper.b(this.a).b)) && (((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).aa(TroopObserversHelper.b(this.a).b)) && (String.valueOf(1104445552).equals(paramString2)))
       {
-        paramString1 = TroopObserversHelper.a(this.a);
+        paramString1 = TroopObserversHelper.f(this.a);
         if ((paramString1 != null) && ((paramString1.a instanceof HomeworkTroopController))) {
-          ((HomeworkTroopController)paramString1.a).a(false, TroopObserversHelper.a(this.a));
+          ((HomeworkTroopController)paramString1.a).a(false, TroopObserversHelper.d(this.a));
         }
       }
     }
@@ -54,10 +54,10 @@ class TroopObserversHelper$9
   {
     if (paramBoolean1)
     {
-      if (!TextUtils.equals(paramString, TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString)) {
+      if (!TextUtils.equals(paramString, TroopObserversHelper.b(this.a).b)) {
         return;
       }
-      Object localObject = ChatActivityUtils.a(TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString, TroopObserversHelper.a(this.a).getCurrentAccountUin());
+      Object localObject = ChatActivityUtils.a(TroopObserversHelper.b(this.a).b, TroopObserversHelper.a(this.a).getCurrentAccountUin());
       boolean bool;
       if ((localObject != null) && (-1 == ((Integer)localObject).intValue())) {
         bool = true;
@@ -80,7 +80,7 @@ class TroopObserversHelper$9
         QLog.d(".troop.notify_feeds.aio", 2, ((StringBuilder)localObject).toString());
       }
       if (!paramBoolean3) {
-        TroopAioNotifyManager.a(TroopObserversHelper.a(this.a), TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString);
+        TroopAioNotifyManager.a(TroopObserversHelper.a(this.a), TroopObserversHelper.b(this.a).b);
       }
     }
   }
@@ -100,23 +100,23 @@ class TroopObserversHelper$9
       while (paramList.hasNext())
       {
         Object localObject1 = (TroopUnreadMsgInfo)paramList.next();
-        if (TextUtils.equals(TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString, ((TroopUnreadMsgInfo)localObject1).jdField_a_of_type_JavaLangString))
+        if (TextUtils.equals(TroopObserversHelper.b(this.a).b, ((TroopUnreadMsgInfo)localObject1).b))
         {
           Object localObject2;
-          if (((TroopUnreadMsgInfo)localObject1).jdField_a_of_type_Long == 1104445552L)
+          if (((TroopUnreadMsgInfo)localObject1).a == 1104445552L)
           {
             if (QLog.isColorLevel()) {
-              QLog.d("TroopObserversHelper", 2, new Object[] { "onUpdateTroopUnreadMsg homework. num=", Integer.valueOf(((TroopUnreadMsgInfo)localObject1).b) });
+              QLog.d("TroopObserversHelper", 2, new Object[] { "onUpdateTroopUnreadMsg homework. num=", Integer.valueOf(((TroopUnreadMsgInfo)localObject1).d) });
             }
-            if (localTroopManager.n(TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString))
+            if (localTroopManager.aa(TroopObserversHelper.b(this.a).b))
             {
-              localObject2 = TroopObserversHelper.a(this.a);
+              localObject2 = TroopObserversHelper.f(this.a);
               if ((localObject2 != null) && ((((TroopClassControllerManager)localObject2).a instanceof HomeworkTroopController))) {
-                ((HomeworkTroopController)((TroopClassControllerManager)localObject2).a).a(false, TroopObserversHelper.a(this.a));
+                ((HomeworkTroopController)((TroopClassControllerManager)localObject2).a).a(false, TroopObserversHelper.d(this.a));
               }
             }
           }
-          if (((TroopUnreadMsgInfo)localObject1).jdField_a_of_type_Long == 2L)
+          if (((TroopUnreadMsgInfo)localObject1).a == 2L)
           {
             if (QLog.isColorLevel())
             {
@@ -124,11 +124,11 @@ class TroopObserversHelper$9
               ((StringBuilder)localObject2).append("receive troop album  red dot, push=");
               ((StringBuilder)localObject2).append(paramBoolean2);
               ((StringBuilder)localObject2).append(", num=");
-              ((StringBuilder)localObject2).append(((TroopUnreadMsgInfo)localObject1).b);
+              ((StringBuilder)localObject2).append(((TroopUnreadMsgInfo)localObject1).d);
               QLog.d("TroopObserversHelper", 2, ((StringBuilder)localObject2).toString());
             }
-            localObject1 = TroopObserversHelper.a(this.a).a();
-            TroopObserversHelper.a(this.a);
+            localObject1 = TroopObserversHelper.d(this.a).j();
+            TroopObserversHelper.d(this.a);
             ((MqqHandler)localObject1).obtainMessage(85).sendToTarget();
           }
         }
@@ -138,7 +138,7 @@ class TroopObserversHelper$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.9
  * JD-Core Version:    0.7.0.1
  */

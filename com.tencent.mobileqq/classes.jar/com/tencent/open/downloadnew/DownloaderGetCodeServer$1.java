@@ -47,7 +47,7 @@ class DownloaderGetCodeServer$1
       LogUtility.c("DownloaderWriteCodeIPC", localStringBuilder.toString());
       if (localObject1 != null)
       {
-        ((QQAppInterface)localObject2).addDefaultObservers(DownloaderGetCodeServer.a(this.a));
+        ((QQAppInterface)localObject2).addDefaultObservers(DownloaderGetCodeServer.b(this.a));
         paramString = (ConfigHandler)((QQAppInterface)localObject2).getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
@@ -56,7 +56,7 @@ class DownloaderGetCodeServer$1
         localObject2 = ((StringBuilder)localObject2).toString();
         paramBundle.putInt("CallbackId", paramInt);
         paramBundle = new Bundle(paramBundle);
-        DownloaderGetCodeServer.a(this.a).put(localObject2, paramBundle);
+        DownloaderGetCodeServer.c(this.a).put(localObject2, paramBundle);
         paramString.a((String)localObject1, i, (String)localObject2);
       }
     }
@@ -65,7 +65,7 @@ class DownloaderGetCodeServer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeServer.1
  * JD-Core Version:    0.7.0.1
  */

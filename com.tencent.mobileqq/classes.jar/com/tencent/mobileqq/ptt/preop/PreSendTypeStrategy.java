@@ -10,27 +10,20 @@ import org.json.JSONArray;
 
 public class PreSendTypeStrategy
 {
-  public static final int a;
-  public float a;
-  public int[] a;
-  float jdField_b_of_type_Float = 0.05F;
-  int jdField_b_of_type_Int = 1;
-  int c = -1;
+  public static final int a = IVoiceTuneUtil.VOICE_TYPES.length;
+  public int[] b = new int[a];
+  int c = 1;
   int d = -1;
-  public int e = 0;
+  int e = -1;
   public int f = 0;
-  int g = 0;
-  private int h = 0;
-  
-  static
-  {
-    jdField_a_of_type_Int = IVoiceTuneUtil.VOICE_TYPES.length;
-  }
+  public int g = 0;
+  public float h = 0.75F;
+  float i = 0.05F;
+  int j = 0;
+  private int k = 0;
   
   public PreSendTypeStrategy(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
-    this.jdField_a_of_type_Float = 0.75F;
     Object localObject = BaseApplication.getContext();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PttPreSendSp_");
@@ -40,16 +33,16 @@ public class PreSendTypeStrategy
     {
       paramAppRuntime = paramAppRuntime.getString("PttVoiceChangePreSender", "[]");
       localObject = new JSONArray(paramAppRuntime);
-      if (((JSONArray)localObject).length() == jdField_a_of_type_Int + 2)
+      if (((JSONArray)localObject).length() == a + 2)
       {
-        int i = 0;
-        while (i < jdField_a_of_type_Int)
+        int m = 0;
+        while (m < a)
         {
-          this.jdField_a_of_type_ArrayOfInt[i] = ((JSONArray)localObject).getInt(i);
-          i += 1;
+          this.b[m] = ((JSONArray)localObject).getInt(m);
+          m += 1;
         }
-        this.e = ((JSONArray)localObject).getInt(jdField_a_of_type_Int);
-        this.f = ((JSONArray)localObject).getInt(jdField_a_of_type_Int + 1);
+        this.f = ((JSONArray)localObject).getInt(a);
+        this.g = ((JSONArray)localObject).getInt(a + 1);
       }
       if (QLog.isColorLevel())
       {
@@ -62,85 +55,85 @@ public class PreSendTypeStrategy
     }
     catch (Exception paramAppRuntime)
     {
-      this.jdField_a_of_type_ArrayOfInt = new int[jdField_a_of_type_Int];
-      this.e = 0;
+      this.b = new int[a];
       this.f = 0;
+      this.g = 0;
       paramAppRuntime.printStackTrace();
     }
   }
   
   private float a(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfInt[paramInt] / this.e;
+    return this.b[paramInt] / this.f;
   }
   
-  private String a()
+  private String b()
   {
     JSONArray localJSONArray = new JSONArray();
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    int[] arrayOfInt = this.b;
+    int n = arrayOfInt.length;
+    int m = 0;
+    while (m < n)
     {
-      localJSONArray.put(arrayOfInt[i]);
-      i += 1;
+      localJSONArray.put(arrayOfInt[m]);
+      m += 1;
     }
-    localJSONArray.put(this.e);
     localJSONArray.put(this.f);
+    localJSONArray.put(this.g);
     return localJSONArray.toString();
   }
   
-  private int b()
+  private int c()
   {
-    int i = 0;
     int m = 0;
-    int k;
-    for (int j = 0; i < jdField_a_of_type_Int; j = k)
+    int i2 = 0;
+    int i1;
+    for (int n = 0; m < a; n = i1)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      k = j;
-      if (j < arrayOfInt[i])
+      int[] arrayOfInt = this.b;
+      i1 = n;
+      if (n < arrayOfInt[m])
       {
-        k = arrayOfInt[i];
-        m = i;
+        i1 = arrayOfInt[m];
+        i2 = m;
       }
-      i += 1;
+      m += 1;
     }
-    return m;
+    return i2;
   }
   
   public int a()
   {
-    if (this.e >= 5)
+    if (this.f >= 5)
     {
-      int i = this.c;
-      if (i >= 0)
+      int m = this.d;
+      if (m >= 0)
       {
-        if (this.jdField_b_of_type_Int >= 2)
+        if (this.c >= 2)
         {
-          this.d = i;
-          this.g = 1;
+          this.e = m;
+          this.j = 1;
         }
         else
         {
-          i = b();
-          if (a(i) >= this.jdField_a_of_type_Float)
+          m = c();
+          if (a(m) >= this.h)
           {
-            this.d = i;
-            this.g = 2;
+            this.e = m;
+            this.j = 2;
           }
           else
           {
-            i = this.c;
-            if ((i >= 0) && (this.f / this.e > 0.8D))
+            m = this.d;
+            if ((m >= 0) && (this.g / this.f > 0.8D))
             {
-              this.d = i;
-              this.g = 3;
+              this.e = m;
+              this.j = 3;
             }
             else
             {
-              this.d = -1;
-              this.g = -1;
+              this.e = -1;
+              this.j = -1;
             }
           }
         }
@@ -148,23 +141,23 @@ public class PreSendTypeStrategy
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("guess type, result : ");
-          localStringBuilder.append(this.d);
+          localStringBuilder.append(this.e);
           localStringBuilder.append(" case : ");
-          localStringBuilder.append(this.g);
+          localStringBuilder.append(this.j);
           localStringBuilder.append(", datas : ");
-          localStringBuilder.append(a());
+          localStringBuilder.append(b());
           QLog.d("PreSendTypeStrategy", 2, localStringBuilder.toString());
         }
-        return this.d;
+        return this.e;
       }
     }
-    this.d = -1;
+    this.e = -1;
     return -1;
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    String str = a();
+    String str = b();
     BaseApplication localBaseApplication = BaseApplication.getContext();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PttPreSendSp_");
@@ -183,52 +176,52 @@ public class PreSendTypeStrategy
   
   public void a(AppRuntime paramAppRuntime, int paramInt)
   {
-    int i = this.d;
-    if ((i != -1) && (this.g == 2))
+    int m = this.e;
+    if ((m != -1) && (this.j == 2))
     {
-      if (i == paramInt)
+      if (m == paramInt)
       {
-        f1 = this.jdField_a_of_type_Float;
-        this.jdField_a_of_type_Float = (f1 - this.jdField_b_of_type_Float * f1);
+        f1 = this.h;
+        this.h = (f1 - this.i * f1);
       }
       else
       {
-        f1 = this.jdField_a_of_type_Float;
-        this.jdField_a_of_type_Float = (f1 + (1.0F - f1) * this.jdField_b_of_type_Float);
+        f1 = this.h;
+        this.h = (f1 + (1.0F - f1) * this.i);
       }
-      float f2 = this.jdField_a_of_type_Float;
+      float f2 = this.h;
       float f1 = f2;
       if (f2 < 0.55F) {
         f1 = 0.55F;
       }
-      this.jdField_a_of_type_Float = f1;
-      f2 = this.jdField_a_of_type_Float;
+      this.h = f1;
+      f2 = this.h;
       f1 = f2;
       if (f2 > 0.9F) {
         f1 = 0.9F;
       }
-      this.jdField_a_of_type_Float = f1;
+      this.h = f1;
     }
     if (paramInt < 0)
     {
-      this.c = paramInt;
+      this.d = paramInt;
       return;
     }
-    if (paramInt == this.c)
+    if (paramInt == this.d)
     {
-      this.jdField_b_of_type_Int += 1;
-      this.f += 1;
+      this.c += 1;
+      this.g += 1;
     }
     else
     {
-      this.jdField_b_of_type_Int = 1;
+      this.c = 1;
     }
-    this.c = paramInt;
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    this.d = paramInt;
+    int[] arrayOfInt = this.b;
     arrayOfInt[paramInt] += 1;
-    this.e += 1;
-    this.h += 1;
-    if (this.h % 5 == 0) {
+    this.f += 1;
+    this.k += 1;
+    if (this.k % 5 == 0) {
       a(paramAppRuntime);
     }
     if (QLog.isColorLevel())
@@ -242,7 +235,7 @@ public class PreSendTypeStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PreSendTypeStrategy
  * JD-Core Version:    0.7.0.1
  */

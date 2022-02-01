@@ -25,31 +25,31 @@ import org.json.JSONObject;
 public class TextBitmapDrawable
   implements DiyPendantFetcher.Invalidatable
 {
-  static LRULinkedHashMap<String, Bitmap> jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(10);
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  WeakReference<MessengerService> jdField_a_of_type_JavaLangRefWeakReference;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  static LRULinkedHashMap<String, Bitmap> d = new LRULinkedHashMap(10);
+  JSONObject a;
+  Bundle b;
+  WeakReference<MessengerService> c;
   
   public TextBitmapDrawable(JSONObject paramJSONObject, Bundle paramBundle, WeakReference<MessengerService> paramWeakReference)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.a = paramJSONObject;
+    this.b = paramBundle;
+    this.c = paramWeakReference;
   }
   
-  public Object a()
+  public Object c()
   {
     return new Object();
   }
   
   public void invalidateSelf()
   {
-    Object localObject3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("text");
-    int j = this.jdField_a_of_type_OrgJsonJSONObject.optInt("width");
-    int k = this.jdField_a_of_type_OrgJsonJSONObject.optInt("height");
-    int m = this.jdField_a_of_type_OrgJsonJSONObject.optInt("fontId");
-    Object localObject1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("fontColor");
-    int n = this.jdField_a_of_type_OrgJsonJSONObject.optInt("fontType");
+    Object localObject3 = this.a.optString("text");
+    int j = this.a.optInt("width");
+    int k = this.a.optInt("height");
+    int m = this.a.optInt("fontId");
+    Object localObject1 = this.a.optString("fontColor");
+    int n = this.a.optInt("fontType");
     TextPaint localTextPaint = new TextPaint();
     Rect localRect = new Rect(3, 5, j - 3, k - 3);
     float f = AvatarPendantUtil.a(localTextPaint, localRect, (String)localObject3);
@@ -87,7 +87,7 @@ public class TextBitmapDrawable
       ((StringBuilder)localObject1).append("_");
       ((StringBuilder)localObject1).append(k);
       str = ((StringBuilder)localObject1).toString();
-      localObject2 = (Bitmap)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str);
+      localObject2 = (Bitmap)d.get(str);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -95,7 +95,7 @@ public class TextBitmapDrawable
         localObject1 = localObject2;
         if (localObject2 != null)
         {
-          jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str, localObject2);
+          d.put(str, localObject2);
           localObject1 = localObject2;
         }
       }
@@ -126,17 +126,17 @@ public class TextBitmapDrawable
         ((Bundle)localObject2).putBoolean("updateResult", false);
         ((Bundle)localObject2).putString("errMsg", localException1.getMessage());
       }
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject2);
-      localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      this.b.putBundle("response", (Bundle)localObject2);
+      localWeakReference = this.c;
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_AndroidOsBundle);
+        ((MessengerService)this.c.get()).a(this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addon.TextBitmapDrawable
  * JD-Core Version:    0.7.0.1
  */

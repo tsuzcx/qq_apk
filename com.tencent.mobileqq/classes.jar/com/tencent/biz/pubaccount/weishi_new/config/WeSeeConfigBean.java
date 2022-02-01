@@ -9,18 +9,10 @@ import org.json.JSONObject;
 
 public class WeSeeConfigBean
 {
-  public WeSeeBeaconReportConfigInfo a;
-  public WeSeeStrategyConfigInfo a;
-  public WeSeeVideoPluginConfigInfo a;
-  public WeSeeWnsConfigInfo a;
-  
-  public WeSeeConfigBean()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeVideoPluginConfigInfo = new WeSeeVideoPluginConfigInfo(null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeStrategyConfigInfo = new WeSeeStrategyConfigInfo(null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeBeaconReportConfigInfo = new WeSeeBeaconReportConfigInfo(null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeWnsConfigInfo = new WeSeeWnsConfigInfo(null);
-  }
+  public WeSeeVideoPluginConfigInfo a = new WeSeeVideoPluginConfigInfo(null);
+  public WeSeeStrategyConfigInfo b = new WeSeeStrategyConfigInfo(null);
+  public WeSeeBeaconReportConfigInfo c = new WeSeeBeaconReportConfigInfo(null);
+  public WeSeeWnsConfigInfo d = new WeSeeWnsConfigInfo(null);
   
   private static JSONObject a(String paramString)
   {
@@ -40,9 +32,9 @@ public class WeSeeConfigBean
   
   private void a(@NotNull JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeVideoPluginConfigInfo = WeSeeVideoPluginConfigInfo.a(paramJSONObject.optJSONObject("video_plugin_threshold"));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeStrategyConfigInfo = WeSeeStrategyConfigInfo.a(paramJSONObject.optJSONObject("trends_tab_strategy"));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeBeaconReportConfigInfo = WeSeeBeaconReportConfigInfo.a(paramJSONObject.optJSONObject("beacon_report_strategy"));
+    this.a = WeSeeVideoPluginConfigInfo.b(paramJSONObject.optJSONObject("video_plugin_threshold"));
+    this.b = WeSeeStrategyConfigInfo.b(paramJSONObject.optJSONObject("trends_tab_strategy"));
+    this.c = WeSeeBeaconReportConfigInfo.b(paramJSONObject.optJSONObject("beacon_report_strategy"));
   }
   
   public boolean a(QConfItem[] paramArrayOfQConfItem)
@@ -59,9 +51,9 @@ public class WeSeeConfigBean
         Object localObject1 = paramArrayOfQConfItem[i];
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("content:");
-        ((StringBuilder)localObject2).append(((QConfItem)localObject1).a);
+        ((StringBuilder)localObject2).append(((QConfItem)localObject1).b);
         WSLog.e("WeSeeConfigBean", ((StringBuilder)localObject2).toString());
-        localObject1 = a(((QConfItem)localObject1).a);
+        localObject1 = a(((QConfItem)localObject1).b);
         if (localObject1 != null)
         {
           localObject2 = ((JSONObject)localObject1).optString("task_id");
@@ -70,7 +62,7 @@ public class WeSeeConfigBean
           localStringBuilder.append((String)localObject2);
           WSLog.a("WeSeeConfigBean", localStringBuilder.toString());
           if (TextUtils.equals((CharSequence)localObject2, "0002")) {
-            this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeWnsConfigInfo = WeSeeWnsConfigInfo.a(((JSONObject)localObject1).optJSONObject("wsgzh_req_cmd_strategy"));
+            this.d = WeSeeWnsConfigInfo.b(((JSONObject)localObject1).optJSONObject("wsgzh_req_cmd_strategy"));
           } else {
             a((JSONObject)localObject1);
           }
@@ -86,9 +78,9 @@ public class WeSeeConfigBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WeSeeConfigBean{mPluginConfigInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeVideoPluginConfigInfo);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mStrategyConfig=");
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeStrategyConfigInfo;
+    Object localObject = this.b;
     if (localObject != null) {
       localObject = ((WeSeeStrategyConfigInfo)localObject).a;
     } else {
@@ -96,16 +88,16 @@ public class WeSeeConfigBean
     }
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("mBeaconConfigInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeBeaconReportConfigInfo);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("mWeSeeWnsConfigInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newConfigWeSeeWnsConfigInfo);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.WeSeeConfigBean
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,8 @@ package com.tencent.ad.tangram.protocol;
 
 public final class indicator
 {
+  public static final int DO_NOTHING = 0;
+  public static final int HIDE_AD = 3;
   public static final int kAdInfo = 10;
   public static final int kDisplay = 13;
   public static final int kFeedsExposureCtrl = 14;

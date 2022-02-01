@@ -10,20 +10,20 @@ import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 class WSLikeAnimationManger$1
   implements IWeishiServiceListener
 {
-  WSLikeAnimationManger$1(WSLikeAnimationManger paramWSLikeAnimationManger, String paramString, int paramInt, boolean paramBoolean) {}
+  WSLikeAnimationManger$1(WSLikeAnimationManger paramWSLikeAnimationManger, String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
   
   public void a(WeishiTask paramWeishiTask)
   {
-    LikeRspEvent localLikeRspEvent = new LikeRspEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    if ((paramWeishiTask != null) && (paramWeishiTask.a != null))
+    LikeRspEvent localLikeRspEvent = new LikeRspEvent(this.a, this.b, this.c);
+    if ((paramWeishiTask != null) && (paramWeishiTask.m != null))
     {
-      if ((paramWeishiTask.a instanceof stPostFeedDingRsp))
+      if ((paramWeishiTask.m instanceof stPostFeedDingRsp))
       {
-        paramWeishiTask = (stPostFeedDingRsp)paramWeishiTask.a;
+        paramWeishiTask = (stPostFeedDingRsp)paramWeishiTask.m;
         if (paramWeishiTask == null)
         {
           WSLog.a("WSLikeAnimationManger", "服务器失败！！！");
-          WSLikeAnimationManger.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newLikeWSLikeAnimationManger, this.jdField_a_of_type_JavaLangString, localLikeRspEvent, this.jdField_a_of_type_Boolean ^ true);
+          WSLikeAnimationManger.a(this.e, this.b, localLikeRspEvent, this.d ^ true);
         }
         else
         {
@@ -40,20 +40,21 @@ class WSLikeAnimationManger$1
       else
       {
         WSLog.a("WSLikeAnimationManger", "点赞失败:-2");
-        WSLikeAnimationManger.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newLikeWSLikeAnimationManger, this.jdField_a_of_type_JavaLangString, localLikeRspEvent, this.jdField_a_of_type_Boolean ^ true);
+        WSLikeAnimationManger.a(this.e, this.b, localLikeRspEvent, this.d ^ true);
       }
     }
     else
     {
       WSLog.a("WSLikeAnimationManger", "点赞失败:-1");
-      WSLikeAnimationManger.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newLikeWSLikeAnimationManger, this.jdField_a_of_type_JavaLangString, localLikeRspEvent, this.jdField_a_of_type_Boolean ^ true);
+      WSLikeAnimationManger.a(this.e, this.b, localLikeRspEvent, this.d ^ true);
     }
+    localLikeRspEvent.setFromRsp(true);
     WSSimpleEventBus.a().a(localLikeRspEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WSLikeAnimationManger.1
  * JD-Core Version:    0.7.0.1
  */

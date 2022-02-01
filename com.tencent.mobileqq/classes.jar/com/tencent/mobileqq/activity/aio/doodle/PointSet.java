@@ -30,11 +30,11 @@ class PointSet
     {
       this.a.a(this.b);
       this.c.a(this.d);
-      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
+      this.b.a((this.c.a + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.d + paramLong) / 2L);
       this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
       return;
     }
-    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
+    this.b.a((this.c.a + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.d + paramLong) / 2L);
     this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
   }
   
@@ -53,14 +53,14 @@ class PointSet
     {
       this.a = paramPointSet.a;
       this.c = paramPointSet.c;
-      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+      this.b.a((this.d.a + this.c.a) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.d + this.c.d) / 2L);
       return;
     }
     PointInfo localPointInfo2 = this.d;
     if (localPointInfo2 == paramPointSet.c)
     {
       localPointInfo2.a(localPointInfo1);
-      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+      this.b.a((this.d.a + this.c.a) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.d + this.c.d) / 2L);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -70,7 +70,7 @@ class PointSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.PointSet
  * JD-Core Version:    0.7.0.1
  */

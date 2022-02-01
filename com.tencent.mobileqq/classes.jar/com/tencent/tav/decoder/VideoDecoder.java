@@ -15,19 +15,22 @@ import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.AssetExtractor;
+import com.tencent.tav.extractor.ExtractorUtils;
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
 public class VideoDecoder
   implements IVideoDecoder
 {
+  public static boolean FIX_DECODE_CROP_SIZE = true;
   private static final int MAX_WAIT_TIME = 1000;
   public final String TAG;
-  private MediaCodec.BufferInfo bufferInfo;
+  private final MediaCodec.BufferInfo bufferInfo;
   private CMSampleState currentDecoderState;
   private CMSampleState currentStartState;
   private CMTime duration;
@@ -43,14 +46,16 @@ public class VideoDecoder
   private long mTimeOffset;
   private final MediaCodecWrapper mediaCodecWrapper;
   private MediaFormat mediaFormat;
+  @Nullable
   private AssetExtractor mirrorExtractor;
   private Surface outputSurface;
   private CMTime pFrameTime;
   @NotNull
   private final IVideoDecoder.Params params;
-  private ArrayList<VideoDecoder.PendingFrame> pendingFrames;
+  private final ArrayList<VideoDecoder.PendingFrame> pendingFrames;
   private CMTime preReadTime;
   private boolean readSampleFinish;
+  private VideoDecoderQuickSeekHelper seekHelper;
   private final String sourcePath;
   private boolean started;
   private CMTimeRange timeRange;
@@ -75,6 +80,7 @@ public class VideoDecoder
     this.started = false;
     this.lastFrameValid = false;
     this.lastOutputBufferIndex = -1;
+    this.seekHelper = new VideoDecoderQuickSeekHelper.DefaultVideoDecoderQuickSeekHelper();
     this.mTimeOffset = 10000000L;
     this.mLastVideoQueueTime = 0L;
     this.currentStartState = new CMSampleState();
@@ -91,15 +97,18 @@ public class VideoDecoder
     localStringBuilder.append("], outputSurface = [");
     localStringBuilder.append(this.outputSurface);
     localStringBuilder.append("]");
-    Logger.d(paramParams, localStringBuilder.toString());
+    Logger.i(paramParams, localStringBuilder.toString());
     if ((!TextUtils.isEmpty(this.sourcePath)) && (new File(this.sourcePath).exists()))
     {
       long l = System.currentTimeMillis();
       this.extractor = initExtractor(this.sourcePath);
-      if (this.extractor == null) {
+      paramParams = this.extractor;
+      if (paramParams == null) {
         return;
       }
-      createMirrorExtractor();
+      if (paramParams.needMirror()) {
+        createMirrorExtractor();
+      }
       this.mediaFormat = this.extractor.getTrackFormat(this.trackIndex);
       this.duration = new CMTime((float)this.extractor.getDuration() * 1.0F / (float)TimeUnit.SECONDS.toMicros(1L));
       if (this.mediaFormat.containsKey("frame-rate"))
@@ -132,54 +141,59 @@ public class VideoDecoder
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("sourcePath:");
     ((StringBuilder)localObject1).append(this.sourcePath);
-    Object localObject2 = ((StringBuilder)localObject1).toString();
-    localObject1 = localObject2;
+    Object localObject3 = ((StringBuilder)localObject1).toString();
+    localObject1 = localObject3;
     if (this.extraInfo != null)
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append((String)localObject3);
       ((StringBuilder)localObject1).append(";decodeInfo:");
       ((StringBuilder)localObject1).append(this.extraInfo.get("extra_info_key_decode_info"));
       localObject1 = ((StringBuilder)localObject1).toString();
     }
-    localObject2 = localObject1;
-    Object localObject3;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(";");
+    ((StringBuilder)localObject3).append(MediaCodecManager.getCodecCountInfo());
+    localObject3 = ((StringBuilder)localObject3).toString();
+    localObject1 = localObject3;
+    Object localObject2;
     if (this.mediaCodecWrapper.getMediaCodec() != null)
     {
-      localObject2 = localObject1;
+      localObject1 = localObject3;
       StringBuilder localStringBuilder;
       if (Build.VERSION.SDK_INT >= 21) {
         try
         {
-          localObject2 = this.mediaCodecWrapper.getMediaCodec().getInputFormat();
+          localObject1 = this.mediaCodecWrapper.getMediaCodec().getInputFormat();
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append((String)localObject3);
           localStringBuilder.append(";inputFormat=");
-          localStringBuilder.append(((MediaFormat)localObject2).toString());
-          localObject2 = localStringBuilder.toString();
+          localStringBuilder.append(((MediaFormat)localObject1).toString());
+          localObject1 = localStringBuilder.toString();
         }
-        catch (Exception localException2)
+        catch (Exception localException1)
         {
-          Logger.e(this.TAG, "buildSampleStateError: ", localException2);
-          localObject3 = localObject1;
+          Logger.e(this.TAG, "buildSampleStateError: ", localException1);
+          localObject2 = localObject3;
         }
       }
       try
       {
-        localObject1 = this.mediaCodecWrapper.getMediaCodec().getOutputFormat();
+        localObject3 = this.mediaCodecWrapper.getMediaCodec().getOutputFormat();
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localObject3);
+        localStringBuilder.append(localObject2);
         localStringBuilder.append(";outputFormat=");
-        localStringBuilder.append(((MediaFormat)localObject1).toString());
-        localObject1 = localStringBuilder.toString();
-        localObject3 = localObject1;
+        localStringBuilder.append(((MediaFormat)localObject3).toString());
+        localObject3 = localStringBuilder.toString();
+        localObject2 = localObject3;
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
-        Logger.e(this.TAG, "buildSampleStateError: ", localException1);
+        Logger.e(this.TAG, "buildSampleStateError: ", localException2);
       }
     }
-    return CMSampleState.fromError(-3L, localObject3, paramException);
+    return CMSampleState.fromError(-3L, localObject2, paramException);
   }
   
   private void clearDecoder()
@@ -246,161 +260,196 @@ public class VideoDecoder
   
   private void doReadFrames(VideoDecoder.SampleTime paramSampleTime, CMTime paramCMTime, boolean paramBoolean)
   {
-    Object localObject = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("doReadFrames() called with: sampleTime = [");
-    localStringBuilder.append(paramSampleTime);
-    localStringBuilder.append("], targetTime = [");
-    localStringBuilder.append(paramCMTime);
-    localStringBuilder.append("], justCache = [");
-    localStringBuilder.append(paramBoolean);
-    localStringBuilder.append("]");
-    Logger.v((String)localObject, localStringBuilder.toString());
+    Object localObject1 = this.TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("doReadFrames() called with: sampleTime = [");
+    ((StringBuilder)localObject2).append(paramSampleTime);
+    ((StringBuilder)localObject2).append("], targetTime = [");
+    ((StringBuilder)localObject2).append(paramCMTime);
+    ((StringBuilder)localObject2).append("], justCache = [");
+    ((StringBuilder)localObject2).append(paramBoolean);
+    ((StringBuilder)localObject2).append("]");
+    Logger.v((String)localObject1, ((StringBuilder)localObject2).toString());
     if ((this.pendingFrames.size() == 0) && (this.extractorDone)) {
       Logger.i(this.TAG, "doReadFrames:[unRead]pendingFrames.size() == 0 && extractorDone");
     }
     int i = 0;
-    while ((this.pendingFrames.size() > 0) || (!this.extractorDone))
+    label898:
+    label915:
+    label1232:
+    for (;;)
     {
-      if (!this.extractorDone) {
-        readFromExtractor();
-      }
-      int n = this.mediaCodecWrapper.dequeueOutputBuffer(this.bufferInfo);
-      tryFixCropSize();
-      if ((this.bufferInfo.flags & 0x4) != 0)
+      if ((this.pendingFrames.size() > 0) || (!this.extractorDone))
       {
-        if ((this.bufferInfo.size > 0) && (n >= 0) && (this.pendingFrames.size() > 0))
-        {
-          this.pendingFrames.remove(0);
-          this.mediaCodecWrapper.releaseOutputBuffer(n, true);
+        if (!this.extractorDone) {
+          readFromExtractor();
         }
-        Logger.i(this.TAG, "doReadFrames:[finish] bufferInfo.flags == MediaCodec.BUFFER_FLAG_END_OF_STREAM");
-        VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-1L));
-        return;
-      }
-      int j;
-      if ((n >= 0) && (this.pendingFrames.size() > 0))
-      {
-        if (this.bufferInfo.size <= 0)
-        {
-          this.mediaCodecWrapper.releaseOutputBuffer(n, false);
-          localObject = this.TAG;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("doReadFrames:[failed] bufferInfo.size == ");
-          localStringBuilder.append(this.bufferInfo.size);
-          Logger.e((String)localObject, localStringBuilder.toString());
-          VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-2L));
+        int n = this.mediaCodecWrapper.dequeueOutputBuffer(this.bufferInfo);
+        if (FIX_DECODE_CROP_SIZE) {
+          tryFixCropSize();
         }
-        else
+        if ((this.bufferInfo.flags & 0x4) != 0)
         {
-          localObject = (VideoDecoder.PendingFrame)this.pendingFrames.remove(0);
-          VideoDecoder.SampleTime.access$502(paramSampleTime, this.bufferInfo.presentationTimeUs - VideoDecoder.PendingFrame.access$600((VideoDecoder.PendingFrame)localObject));
+          if ((this.bufferInfo.size > 0) && (n >= 0) && (this.pendingFrames.size() > 0))
+          {
+            this.pendingFrames.remove(0);
+            this.mediaCodecWrapper.releaseOutputBuffer(n, true);
+          }
+          Logger.i(this.TAG, "doReadFrames:[finish] bufferInfo.flags == MediaCodec.BUFFER_FLAG_END_OF_STREAM");
+          VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-1L));
+          return;
+        }
+        if ((n >= 0) && (this.pendingFrames.size() > 0))
+        {
+          if (this.bufferInfo.size <= 0)
+          {
+            this.mediaCodecWrapper.releaseOutputBuffer(n, false);
+            localObject1 = this.TAG;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("doReadFrames:[failed] bufferInfo.size == ");
+            ((StringBuilder)localObject2).append(this.bufferInfo.size);
+            Logger.e((String)localObject1, ((StringBuilder)localObject2).toString());
+            VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-2L));
+            continue;
+          }
+          localObject2 = (VideoDecoder.PendingFrame)this.pendingFrames.remove(0);
+          VideoDecoder.SampleTime.access$502(paramSampleTime, this.bufferInfo.presentationTimeUs - VideoDecoder.PendingFrame.access$600((VideoDecoder.PendingFrame)localObject2));
           VideoDecoder.SampleTime.access$402(paramSampleTime, new CMSampleState(new CMTime((float)VideoDecoder.SampleTime.access$500(paramSampleTime) * 1.0F / (float)TimeUnit.SECONDS.toMicros(1L))));
+          int j;
           if ((this.pendingFrames.isEmpty()) && (this.extractorDone)) {
             j = 1;
           } else {
             j = 0;
           }
-          if ((j == 0) && (VideoDecoder.PendingFrame.access$700((VideoDecoder.PendingFrame)localObject).getTimeUs() > VideoDecoder.SampleTime.access$500(paramSampleTime) + this.frameDurationUs / 2L))
+          localObject1 = paramCMTime;
+          if (paramCMTime.getFlag() == 1)
+          {
+            long l = getNextFrameTime(paramCMTime);
+            if ((this.outputSurface != null) && (this.seekHelper.isCanSkipCurDecoder(VideoDecoder.SampleTime.access$500(paramSampleTime), l)))
+            {
+              this.mediaCodecWrapper.releaseOutputBuffer(n, true);
+              VideoDecoder.SampleTime.access$700(paramSampleTime);
+              return;
+            }
+            localObject1 = paramCMTime;
+            if (this.outputSurface != null)
+            {
+              localObject1 = paramCMTime;
+              if (this.seekHelper.isCanQuicklyFinish(VideoDecoder.SampleTime.access$500(paramSampleTime), l))
+              {
+                paramCMTime = this.timeRange.getStart();
+                Iterator localIterator = this.pendingFrames.iterator();
+                for (;;)
+                {
+                  localObject1 = paramCMTime;
+                  if (!localIterator.hasNext()) {
+                    break;
+                  }
+                  VideoDecoder.PendingFrame.access$802((VideoDecoder.PendingFrame)localIterator.next(), paramCMTime);
+                }
+              }
+            }
+          }
+          if ((j == 0) && (VideoDecoder.PendingFrame.access$800((VideoDecoder.PendingFrame)localObject2).getTimeUs() > VideoDecoder.SampleTime.access$500(paramSampleTime) + this.frameDurationUs / 2L))
           {
             this.mediaCodecWrapper.releaseOutputBuffer(n, false);
             Logger.v(this.TAG, "doReadFrames:[failed] pendingFrame.seekStartTime.getTimeUs() > sampleTime.timeUs");
             VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-2L));
           }
-          else if ((this.outputSurface != null) && (!paramBoolean))
+          else
           {
+            if ((this.outputSurface == null) || (paramBoolean)) {
+              break label915;
+            }
             if (j != 0) {
               VideoDecoder.SampleTime.access$402(paramSampleTime, new CMSampleState(this.duration));
             }
             int k;
-            if (paramCMTime.getTimeUs() - VideoDecoder.SampleTime.access$400(paramSampleTime).getTime().getTimeUs() <= this.frameDurationUs / 2L) {
+            if (((CMTime)localObject1).getTimeUs() - VideoDecoder.SampleTime.access$400(paramSampleTime).getTime().getTimeUs() <= this.frameDurationUs / 2L) {
               k = 1;
             } else {
               k = 0;
             }
             int m;
-            if (paramCMTime.getTimeUs() >= this.duration.getTimeUs()) {
+            if (((CMTime)localObject1).getTimeUs() >= this.duration.getTimeUs()) {
               m = 1;
             } else {
               m = 0;
             }
-            if ((k == 0) && (m == 0) && (j == 0))
-            {
-              this.mediaCodecWrapper.releaseOutputBuffer(n, false);
-              localObject = this.TAG;
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("doReadFrames:[failed] targetTime.getTimeUs() - sampleTime.cmTime.getTimeUs() == ");
-              localStringBuilder.append(paramCMTime.getTimeUs() - VideoDecoder.SampleTime.access$400(paramSampleTime).getTime().getTimeUs());
-              localStringBuilder.append(" targetTime = ");
-              localStringBuilder.append(paramCMTime);
-              localStringBuilder.append("  duration = ");
-              localStringBuilder.append(this.duration);
-              localStringBuilder.append(" pendingFrames.size() = ");
-              localStringBuilder.append(this.pendingFrames.size());
-              localStringBuilder.append(" extractorDone = ");
-              localStringBuilder.append(this.extractorDone);
-              Logger.v((String)localObject, localStringBuilder.toString());
-              VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-2L));
+            if ((k != 0) || (m != 0) || (j != 0)) {
+              break label898;
             }
-            else
-            {
-              this.mediaCodecWrapper.releaseOutputBuffer(n, true);
-              VideoDecoder.SampleTime.access$800(paramSampleTime);
-            }
+            this.mediaCodecWrapper.releaseOutputBuffer(n, false);
+            paramCMTime = this.TAG;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("doReadFrames:[failed] targetTime.getTimeUs() - sampleTime.cmTime.getTimeUs() == ");
+            ((StringBuilder)localObject2).append(((CMTime)localObject1).getTimeUs() - VideoDecoder.SampleTime.access$400(paramSampleTime).getTime().getTimeUs());
+            ((StringBuilder)localObject2).append(" targetTime = ");
+            ((StringBuilder)localObject2).append(localObject1);
+            ((StringBuilder)localObject2).append("  duration = ");
+            ((StringBuilder)localObject2).append(this.duration);
+            ((StringBuilder)localObject2).append(" pendingFrames.size() = ");
+            ((StringBuilder)localObject2).append(this.pendingFrames.size());
+            ((StringBuilder)localObject2).append(" extractorDone = ");
+            ((StringBuilder)localObject2).append(this.extractorDone);
+            Logger.v(paramCMTime, ((StringBuilder)localObject2).toString());
+            VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-2L));
+          }
+          paramCMTime = (CMTime)localObject1;
+          break label1232;
+          this.mediaCodecWrapper.releaseOutputBuffer(n, true);
+          VideoDecoder.SampleTime.access$700(paramSampleTime);
+          break label1161;
+          this.lastOutputBufferIndex = n;
+          paramCMTime = this.mediaCodecWrapper.getOnputBuffer(n);
+          if (paramCMTime != null)
+          {
+            paramCMTime.position(this.bufferInfo.offset);
+            paramCMTime.limit(this.bufferInfo.offset + this.bufferInfo.size);
+            VideoDecoder.SampleTime.access$700(paramSampleTime);
           }
           else
           {
-            this.lastOutputBufferIndex = n;
-            paramCMTime = this.mediaCodecWrapper.getOnputBuffer(n);
-            if (paramCMTime != null)
-            {
-              paramCMTime.position(this.bufferInfo.offset);
-              paramCMTime.limit(this.bufferInfo.offset + this.bufferInfo.size);
-              VideoDecoder.SampleTime.access$800(paramSampleTime);
-            }
-            else
-            {
-              this.mediaCodecWrapper.releaseOutputBuffer(n, false);
-              paramCMTime = this.TAG;
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("doReadFrames:[error] ");
-              ((StringBuilder)localObject).append(this.bufferInfo.size);
-              ((StringBuilder)localObject).append(" byteBuffer==null");
-              Logger.e(paramCMTime, ((StringBuilder)localObject).toString());
-              VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-3L));
-            }
+            this.mediaCodecWrapper.releaseOutputBuffer(n, false);
+            paramCMTime = this.TAG;
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("doReadFrames:[error] ");
+            ((StringBuilder)localObject1).append(this.bufferInfo.size);
+            ((StringBuilder)localObject1).append(" byteBuffer==null");
+            Logger.e(paramCMTime, ((StringBuilder)localObject1).toString());
+            VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-3L));
           }
         }
-      }
-      else
-      {
-        if (n >= 0)
+        else
         {
-          localObject = this.TAG;
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("doReadFrames:[failed] pendingFrames.size() == ");
-          localStringBuilder.append(this.pendingFrames.size());
-          Logger.w((String)localObject, localStringBuilder.toString());
-          this.mediaCodecWrapper.releaseOutputBuffer(n, false);
-          VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-2L));
-        }
-        j = i + 1;
-        i = j;
-        if (j > 1000)
-        {
+          if (n >= 0)
+          {
+            localObject1 = this.TAG;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("doReadFrames:[failed] pendingFrames.size() == ");
+            ((StringBuilder)localObject2).append(this.pendingFrames.size());
+            Logger.w((String)localObject1, ((StringBuilder)localObject2).toString());
+            this.mediaCodecWrapper.releaseOutputBuffer(n, false);
+            VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-2L));
+          }
+          i += 1;
+          if (i <= 1000) {
+            break label1232;
+          }
           Logger.e(this.TAG, "doReadFrames: [timeout] ");
           VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-4L));
         }
       }
-    }
-    if ((this.extractorDone) && (VideoDecoder.SampleTime.access$500(paramSampleTime) < 0L) && (!paramBoolean))
-    {
-      paramCMTime = this.TAG;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("doReadFrames: extractorDone && sampleTime.timeUs < 0, sampleTime = ");
-      ((StringBuilder)localObject).append(paramSampleTime);
-      Logger.i(paramCMTime, ((StringBuilder)localObject).toString());
-      VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-1L));
+      if ((this.extractorDone) && (VideoDecoder.SampleTime.access$500(paramSampleTime) < 0L) && (!paramBoolean))
+      {
+        paramCMTime = this.TAG;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("doReadFrames: extractorDone && sampleTime.timeUs < 0, sampleTime = ");
+        ((StringBuilder)localObject1).append(paramSampleTime);
+        Logger.i(paramCMTime, ((StringBuilder)localObject1).toString());
+        VideoDecoder.SampleTime.access$402(paramSampleTime, CMSampleState.fromError(-1L));
+      }
+      return;
     }
   }
   
@@ -484,6 +533,20 @@ public class VideoDecoder
     }
   }
   
+  private long getNextFrameTime(CMTime paramCMTime)
+  {
+    if (this.seekHelper.isCareForSeekTime())
+    {
+      AssetExtractor localAssetExtractor = this.mirrorExtractor;
+      if (localAssetExtractor != null)
+      {
+        localAssetExtractor.seekTo(paramCMTime.getTimeUs(), 1);
+        return this.mirrorExtractor.getSampleTime();
+      }
+    }
+    return -1L;
+  }
+  
   private boolean hasPreReadAndFirstFrameSeek(CMTime paramCMTime)
   {
     return (paramCMTime == CMTime.CMTimeZero) && (this.preReadTime != CMTime.CMTimeInvalid) && (this.lastOutputBufferIndex != -1) && (!this.currentDecoderState.isInvalid());
@@ -502,7 +565,7 @@ public class VideoDecoder
     while (((AssetExtractor)localObject).getSampleTrackIndex() != -1) {
       ((AssetExtractor)localObject).unselectTrack(((AssetExtractor)localObject).getSampleTrackIndex());
     }
-    this.trackIndex = DecoderUtils.getFirstTrackIndex((AssetExtractor)localObject, "video/");
+    this.trackIndex = ExtractorUtils.getFirstTrackIndex((AssetExtractor)localObject, "video/");
     int i = this.trackIndex;
     if (i == -1)
     {
@@ -657,7 +720,7 @@ public class VideoDecoder
         this.mediaCodecWrapper.queueInputBuffer(i, 0, j, this.mLastVideoQueueTime, 0);
         localObject = new VideoDecoder.PendingFrame(null);
         VideoDecoder.PendingFrame.access$602((VideoDecoder.PendingFrame)localObject, this.mTimeOffset);
-        VideoDecoder.PendingFrame.access$702((VideoDecoder.PendingFrame)localObject, this.currentStartState.getTime());
+        VideoDecoder.PendingFrame.access$802((VideoDecoder.PendingFrame)localObject, this.currentStartState.getTime());
         this.pendingFrames.add(localObject);
       }
       this.extractor.advance();
@@ -805,7 +868,7 @@ public class VideoDecoder
         localStringBuilder.append(this.currentDecoderState);
         localStringBuilder.append(",  extractor.getSampleTime() = ");
         if (this.extractor == null) {
-          break label488;
+          break label503;
         }
         localObject1 = Long.valueOf(this.extractor.getSampleTime());
         localStringBuilder.append(localObject1);
@@ -814,14 +877,14 @@ public class VideoDecoder
         Logger.v((String)localObject2, localStringBuilder.toString());
         this.lastFrameValid = false;
         if ((outputSurface() == null) || (this.lastOutputBufferIndex == -1)) {
-          break label496;
+          break label511;
         }
         i = 1;
         if (!this.currentDecoderState.getTime().smallThan(paramCMTime)) {
-          break label506;
+          break label521;
         }
         if ((!this.extractorDone) || (!this.pendingFrames.isEmpty())) {
-          break label501;
+          break label516;
         }
       }
       finally {}
@@ -862,17 +925,18 @@ public class VideoDecoder
       localStringBuilder.append("  -  ");
       localStringBuilder.append(this.currentDecoderState);
       Logger.v((String)localObject2, localStringBuilder.toString());
+      this.seekHelper.setLastReadSampleTime(((CMSampleState)localObject1).getTime().getTimeUs());
       return localObject1;
-      label488:
+      label503:
       localObject1 = "null";
       continue;
-      label496:
+      label511:
       int i = 0;
       continue;
-      label501:
+      label516:
       int j = 0;
       continue;
-      label506:
+      label521:
       j = 1;
     }
   }
@@ -998,6 +1062,11 @@ public class VideoDecoder
     }
   }
   
+  public void setVideoDecoderSeekHelper(@NonNull VideoDecoderQuickSeekHelper paramVideoDecoderQuickSeekHelper)
+  {
+    this.seekHelper = paramVideoDecoderQuickSeekHelper;
+  }
+  
   public void start(CMTimeRange paramCMTimeRange)
   {
     try
@@ -1051,7 +1120,7 @@ public class VideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -7,30 +7,28 @@ import org.json.JSONObject;
 
 public class FastWebRecommendUGInfo
 {
-  public int a;
-  public String a;
   public JSONObject a;
-  public String b;
+  public int b = 0;
   public String c;
   public String d;
-  public String e = "前往快报阅读";
-  public String f = "下载快报阅读";
-  public String g = "安装快报阅读";
-  public String h = "下载中...";
-  public String i = "下载已暂停";
-  public String j = "下载快报阅读";
-  private String k;
+  public String e;
+  public String f;
+  public String g = "前往快报阅读";
+  public String h = "下载快报阅读";
+  public String i = "安装快报阅读";
+  public String j = "下载中...";
+  public String k = "下载已暂停";
+  public String l = "下载快报阅读";
+  private String m;
   
   public FastWebRecommendUGInfo(@NonNull String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
     a(paramString);
   }
   
   public FastWebRecommendUGInfo(@NonNull String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.k = paramString2;
+    this.m = paramString2;
     a(paramString1);
   }
   
@@ -38,36 +36,36 @@ public class FastWebRecommendUGInfo
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).getJSONObject("sRspJsonData");
-      paramString = this.jdField_a_of_type_OrgJsonJSONObject.getJSONArray("items");
+      this.a = new JSONObject(paramString).getJSONObject("sRspJsonData");
+      paramString = this.a.getJSONArray("items");
       if ((paramString != null) && (paramString.length() > 0))
       {
         paramString = (JSONObject)paramString.get(0);
-        this.jdField_a_of_type_Int = paramString.optInt("useUg");
+        this.b = paramString.optInt("useUg");
         localObject = paramString.getJSONObject("statInfo").getJSONArray("999");
         if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
-          this.jdField_a_of_type_JavaLangString = ((String)((JSONArray)localObject).get(0));
+          this.c = ((String)((JSONArray)localObject).get(0));
         }
-        if (!this.k.isEmpty())
+        if (!this.m.isEmpty())
         {
-          paramString = paramString.getJSONObject("privateInfo").getJSONObject(this.k);
-          this.c = paramString.optString("deepLink");
-          this.b = paramString.optString("h5Link");
-          this.d = paramString.optString("clipboardData");
+          paramString = paramString.getJSONObject("privateInfo").getJSONObject(this.m);
+          this.e = paramString.optString("deepLink");
+          this.d = paramString.optString("h5Link");
+          this.f = paramString.optString("clipboardData");
         }
       }
-      paramString = this.jdField_a_of_type_OrgJsonJSONObject.getJSONObject("rsp_ext").getJSONArray("extitems");
+      paramString = this.a.getJSONObject("rsp_ext").getJSONArray("extitems");
       if ((paramString != null) && (paramString.length() > 0))
       {
         paramString = (JSONObject)paramString.get(0);
         if (paramString != null)
         {
-          this.e = paramString.optString("state_installed", "前往快报阅读");
-          this.f = paramString.optString("state_unInstalled", "下载快报阅读");
-          this.g = paramString.optString("state_download_complete", "安装快报阅读");
-          this.h = paramString.optString("state_downloading", "下载中...");
-          this.i = paramString.optString("state_download_interrupt", "下载已暂停");
-          this.j = paramString.optString("state_download_interrupt_next", "下载快报阅读");
+          this.g = paramString.optString("state_installed", "前往快报阅读");
+          this.h = paramString.optString("state_unInstalled", "下载快报阅读");
+          this.i = paramString.optString("state_download_complete", "安装快报阅读");
+          this.j = paramString.optString("state_downloading", "下载中...");
+          this.k = paramString.optString("state_download_interrupt", "下载已暂停");
+          this.l = paramString.optString("state_download_interrupt_next", "下载快报阅读");
           return;
         }
       }
@@ -83,17 +81,17 @@ public class FastWebRecommendUGInfo
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.b == 1;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Int == 2;
+    return this.b == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebRecommendUGInfo
  * JD-Core Version:    0.7.0.1
  */

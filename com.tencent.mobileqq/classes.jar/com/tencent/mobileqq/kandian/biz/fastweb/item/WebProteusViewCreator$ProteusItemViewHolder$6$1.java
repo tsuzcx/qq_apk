@@ -19,22 +19,22 @@ class WebProteusViewCreator$ProteusItemViewHolder$6$1
   
   public void a(UserLevelInfo paramUserLevelInfo)
   {
-    paramUserLevelInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
+    paramUserLevelInfo = this.a;
     if (paramUserLevelInfo != null) {
       paramUserLevelInfo = paramUserLevelInfo.getNativeView();
     } else {
       paramUserLevelInfo = null;
     }
-    FastWebDislikeUtils.a(paramUserLevelInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData.b, this.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData.a);
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData.b != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData.a != null) && (this.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData.a.a)) {
-      RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(this.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData.b.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_LOVE, 0, 0, 0), 5);
+    FastWebDislikeUtils.a(paramUserLevelInfo, this.b.aQ, this.b.aR);
+    if ((this.b.aQ != null) && (this.b.aR != null) && (this.b.aR.h)) {
+      RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(this.b.aQ.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_LOVE, 0, 0, 0), 5);
     }
-    RIJ3ClickUtils.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView(), 7);
+    RIJ3ClickUtils.a.a(this.a.getNativeView(), 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.6.1
  * JD-Core Version:    0.7.0.1
  */

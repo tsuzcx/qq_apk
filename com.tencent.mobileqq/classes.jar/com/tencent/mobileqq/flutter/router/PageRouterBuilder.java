@@ -13,7 +13,7 @@ public class PageRouterBuilder
   
   public PageRouterBuilder a(String paramString)
   {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
+    this.a.a = paramString;
     return this;
   }
   
@@ -23,38 +23,38 @@ public class PageRouterBuilder
     {
       SerializableMap localSerializableMap = new SerializableMap();
       localSerializableMap.setMap(paramMap);
-      this.a.jdField_a_of_type_ComTencentMobileqqFlutterRouterSerializableMap = localSerializableMap;
+      this.a.c = localSerializableMap;
     }
     return this;
   }
   
   public PageRouterBuilder a(boolean paramBoolean)
   {
-    this.a.c = paramBoolean;
+    this.a.g = paramBoolean;
     return this;
   }
   
   public PageRouterBuilder b(String paramString)
   {
-    this.a.jdField_b_of_type_JavaLangString = paramString;
+    this.a.b = paramString;
     return this;
   }
   
   public PageRouterBuilder b(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Boolean = paramBoolean;
+    this.a.e = paramBoolean;
     return this;
   }
   
   public PageRouterBuilder c(boolean paramBoolean)
   {
-    this.a.jdField_b_of_type_Boolean = paramBoolean;
+    this.a.f = paramBoolean;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.router.PageRouterBuilder
  * JD-Core Version:    0.7.0.1
  */

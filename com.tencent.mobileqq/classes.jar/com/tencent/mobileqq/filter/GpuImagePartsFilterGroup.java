@@ -8,15 +8,15 @@ import java.util.LinkedList;
 public class GpuImagePartsFilterGroup
   extends GPUBaseFilter
 {
-  private GPUDrawPartFilter jdField_a_of_type_ComTencentMobileqqFilterGPUDrawPartFilter;
-  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private GPUDrawPartFilter a;
   private GPUDrawPartFilter b;
+  private final LinkedList<Runnable> c = new LinkedList();
   
   private void a(@NonNull Runnable paramRunnable)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
+      this.c.add(paramRunnable);
       return;
     }
   }
@@ -41,11 +41,6 @@ public class GpuImagePartsFilterGroup
     }
   }
   
-  public void a()
-  {
-    a(this.jdField_a_of_type_JavaUtilLinkedList);
-  }
-  
   public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
   {
     a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
@@ -53,7 +48,7 @@ public class GpuImagePartsFilterGroup
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (FilterFactory.a(paramInt1))
+    if (FilterFactory.b(paramInt1))
     {
       a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
       return;
@@ -67,12 +62,17 @@ public class GpuImagePartsFilterGroup
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqFilterGPUDrawPartFilter != null) || (this.b != null);
+    return (this.a != null) || (this.b != null);
+  }
+  
+  public void b()
+  {
+    a(this.c);
   }
   
   public void destroy()
   {
-    GPUDrawPartFilter localGPUDrawPartFilter = this.jdField_a_of_type_ComTencentMobileqqFilterGPUDrawPartFilter;
+    GPUDrawPartFilter localGPUDrawPartFilter = this.a;
     if (localGPUDrawPartFilter != null) {
       localGPUDrawPartFilter.destroy();
     }
@@ -89,7 +89,7 @@ public class GpuImagePartsFilterGroup
       SLog.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
       return;
     }
-    GPUDrawPartFilter localGPUDrawPartFilter = this.jdField_a_of_type_ComTencentMobileqqFilterGPUDrawPartFilter;
+    GPUDrawPartFilter localGPUDrawPartFilter = this.a;
     if (localGPUDrawPartFilter != null) {
       localGPUDrawPartFilter.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
     }
@@ -98,9 +98,9 @@ public class GpuImagePartsFilterGroup
   
   public void init()
   {
-    GPUDrawPartFilter localGPUDrawPartFilter = this.jdField_a_of_type_ComTencentMobileqqFilterGPUDrawPartFilter;
+    GPUDrawPartFilter localGPUDrawPartFilter = this.a;
     if ((localGPUDrawPartFilter != null) && (!localGPUDrawPartFilter.isInitialized())) {
-      this.jdField_a_of_type_ComTencentMobileqqFilterGPUDrawPartFilter.init();
+      this.a.init();
     }
     localGPUDrawPartFilter = this.b;
     if ((localGPUDrawPartFilter != null) && (!localGPUDrawPartFilter.isInitialized())) {
@@ -110,7 +110,7 @@ public class GpuImagePartsFilterGroup
   
   public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    GPUDrawPartFilter localGPUDrawPartFilter = this.jdField_a_of_type_ComTencentMobileqqFilterGPUDrawPartFilter;
+    GPUDrawPartFilter localGPUDrawPartFilter = this.a;
     if (localGPUDrawPartFilter != null) {
       localGPUDrawPartFilter.onOutputSizeChanged(paramInt1, paramInt2);
     }
@@ -122,7 +122,7 @@ public class GpuImagePartsFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filter.GpuImagePartsFilterGroup
  * JD-Core Version:    0.7.0.1
  */

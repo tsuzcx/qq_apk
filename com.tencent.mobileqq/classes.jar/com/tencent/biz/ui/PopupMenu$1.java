@@ -11,8 +11,8 @@ class PopupMenu$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiPopupMenu.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiPopupMenu.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
+    if (this.c.a != null) {
+      this.c.a.a(this.a, this.b, 2);
     }
     paramView.post(new PopupMenu.1.1(this));
     EventCollector.getInstance().onViewClicked(paramView);
@@ -20,7 +20,7 @@ class PopupMenu$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.PopupMenu.1
  * JD-Core Version:    0.7.0.1
  */

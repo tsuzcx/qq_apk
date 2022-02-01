@@ -39,15 +39,15 @@ class AENewPhotoListFragment$NewPhotoListActivityHandler
           if (i != 2) {
             return;
           }
-          ((AENewPhotoListFragment)localObject).h();
+          ((AENewPhotoListFragment)localObject).l();
           QLog.e("PhotoListActivity", 2, new Object[] { "onEncodeError = ", Integer.valueOf(((Integer)paramMessage.obj).intValue()) });
-          QQToast.a(((AENewPhotoListFragment)localObject).getActivity(), ((AENewPhotoListFragment)localObject).getResources().getString(2131694860), 0).a();
+          QQToast.makeText(((AENewPhotoListFragment)localObject).getActivity(), ((AENewPhotoListFragment)localObject).getResources().getString(2131892563), 0).show();
           return;
         }
-        ((AENewPhotoListFragment)this.a.get()).jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a(paramMessage);
+        ((AENewPhotoListFragment)this.a.get()).a.a(paramMessage);
         return;
       }
-      localObject = ((AENewPhotoListFragment)localObject).jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment$PhotoGridAdapter;
+      localObject = ((AENewPhotoListFragment)localObject).d;
       if (localObject == null) {
         return;
       }
@@ -66,7 +66,7 @@ class AENewPhotoListFragment$NewPhotoListActivityHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.fragment.AENewPhotoListFragment.NewPhotoListActivityHandler
  * JD-Core Version:    0.7.0.1
  */

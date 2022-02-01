@@ -117,7 +117,7 @@ class UrlSecurityCheckManager$4
     paramInt = i;
     int j = 0;
     label366:
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewUrlSecurityCheckManager$OnCheckResult != null)
+    if (this.a != null)
     {
       paramArrayOfByte = new Bundle();
       if (j != 0) {
@@ -126,13 +126,13 @@ class UrlSecurityCheckManager$4
       paramArrayOfByte.putInt("result", paramInt);
       paramArrayOfByte.putString("errMsg", paramBundle);
       paramArrayOfByte.putString("retUin", (String)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUrlSecurityCheckManager$OnCheckResult.a(paramArrayOfByte);
+      this.a.a(paramArrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.UrlSecurityCheckManager.4
  * JD-Core Version:    0.7.0.1
  */

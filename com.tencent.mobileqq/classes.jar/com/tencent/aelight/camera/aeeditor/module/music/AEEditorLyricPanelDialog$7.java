@@ -14,17 +14,17 @@ class AEEditorLyricPanelDialog$7
   {
     AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.this$0;
     AEEditorLyricPanelDialog.a(localAEEditorLyricPanelDialog, new AEEditorQcircleBubbleView(localAEEditorLyricPanelDialog.getContext()));
-    AEEditorLyricPanelDialog.a(this.this$0).c(2064515169);
-    AEEditorLyricPanelDialog.a(this.this$0).b(1);
-    AEEditorLyricPanelDialog.a(this.this$0).a(AEEditorLyricPanelDialog.a(this.this$0), 1, 0);
-    ThreadManager.getUIHandler().postDelayed(AEEditorLyricPanelDialog.a(this.this$0), 3000L);
-    AEEditorLyricPanelDialog.a(this.this$0).setOnDismissListener(new AEEditorLyricPanelDialog.7.1(this));
+    AEEditorLyricPanelDialog.f(this.this$0).c(2064187511);
+    AEEditorLyricPanelDialog.f(this.this$0).b(1);
+    AEEditorLyricPanelDialog.f(this.this$0).a(AEEditorLyricPanelDialog.g(this.this$0), 1, 0);
+    ThreadManager.getUIHandler().postDelayed(AEEditorLyricPanelDialog.h(this.this$0), 3000L);
+    AEEditorLyricPanelDialog.f(this.this$0).setOnDismissListener(new AEEditorLyricPanelDialog.7.1(this));
     AECameraPrefsUtil.a().a("SP_KEY_FIRST_ENTER_MUSIC_TAB", false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorLyricPanelDialog.7
  * JD-Core Version:    0.7.0.1
  */

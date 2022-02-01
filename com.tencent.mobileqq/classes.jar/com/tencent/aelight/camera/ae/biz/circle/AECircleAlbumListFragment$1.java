@@ -11,13 +11,13 @@ class AECircleAlbumListFragment$1
   public void onClick(View paramView)
   {
     if (this.a.a != null) {
-      this.a.a.a();
+      this.a.a.ak_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECircleAlbumListFragment.1
  * JD-Core Version:    0.7.0.1
  */

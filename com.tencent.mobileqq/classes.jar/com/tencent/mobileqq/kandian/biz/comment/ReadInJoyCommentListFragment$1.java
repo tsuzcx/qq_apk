@@ -25,22 +25,22 @@ class ReadInJoyCommentListFragment$1
       }
       else
       {
-        if (ReadInJoyCommentListFragment.a(this.a) != null)
+        if (ReadInJoyCommentListFragment.b(this.a) != null)
         {
-          if (ReadInJoyCommentListFragment.a(this.a) != null)
+          if (ReadInJoyCommentListFragment.c(this.a) != null)
           {
-            ((FrameLayout)ReadInJoyCommentListFragment.a(this.a).findViewById(2131368189)).setVisibility(8);
-            ReadInJoyCommentListFragment.b(this.a);
+            ((FrameLayout)ReadInJoyCommentListFragment.c(this.a).findViewById(2131435054)).setVisibility(8);
+            ReadInJoyCommentListFragment.d(this.a);
           }
           ReadInJoyCommentListFragment.a(this.a, null);
         }
-        if (!ReadInJoyCommentListFragment.a(this.a))
+        if (!ReadInJoyCommentListFragment.e(this.a))
         {
           localObject = this.a;
-          ReadInJoyCommentListFragment.a((ReadInJoyCommentListFragment)localObject, ReadInJoyCommentListFragment.a((ReadInJoyCommentListFragment)localObject));
+          ReadInJoyCommentListFragment.a((ReadInJoyCommentListFragment)localObject, ReadInJoyCommentListFragment.c((ReadInJoyCommentListFragment)localObject));
         }
       }
-      ReadInJoyCommentListFragment.c(this.a);
+      ReadInJoyCommentListFragment.f(this.a);
       return;
     }
     QLog.d("ReadInJoyCommentListFragment", 1, "activity not exists or fragment detached");
@@ -48,7 +48,7 @@ class ReadInJoyCommentListFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentListFragment.1
  * JD-Core Version:    0.7.0.1
  */

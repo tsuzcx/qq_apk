@@ -6,15 +6,15 @@ import java.util.List;
 
 class LocalVideoPushSegment$LoadAlbumResult
 {
-  public final int a;
-  public final StoryAlbum a;
   public final List<LocalMediaInfo> a;
+  public final int b;
+  public final StoryAlbum c;
   
   public LocalVideoPushSegment$LoadAlbumResult(List<LocalMediaInfo> paramList, int paramInt, StoryAlbum paramStoryAlbum)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum = paramStoryAlbum;
+    this.a = paramList;
+    this.b = paramInt;
+    this.c = paramStoryAlbum;
   }
 }
 

@@ -16,35 +16,35 @@ class EmotionDownGIFCallback$1
       QLog.d("EmotionDownGIFCallback", 1, "onDownload");
     }
     Object localObject1 = this.a;
-    if ((localObject1 != null) && (((DownCallBack.DownResult)localObject1).jdField_b_of_type_JavaLangString != null))
+    if ((localObject1 != null) && (((DownCallBack.DownResult)localObject1).e != null))
     {
       localObject1 = new PicResult();
-      ((PicResult)localObject1).jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
+      ((PicResult)localObject1).a = this.a.a;
       Object localObject2 = this.a;
-      ((PicResult)localObject1).jdField_a_of_type_JavaLangObject = localObject2;
-      ((PicResult)localObject1).jdField_a_of_type_Boolean = ((DownCallBack.DownResult)localObject2).jdField_a_of_type_Boolean;
-      if (this.a.jdField_a_of_type_Int != 0)
+      ((PicResult)localObject1).d = localObject2;
+      ((PicResult)localObject1).e = ((DownCallBack.DownResult)localObject2).j;
+      if (this.a.a != 0)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo == null)
+        if (this.a.d == null)
         {
           localObject2 = new PicInfoInterface.ErrInfo();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.a.jdField_b_of_type_Int);
+          localStringBuilder.append(this.a.b);
           localStringBuilder.append("_");
-          localStringBuilder.append(this.a.jdField_a_of_type_JavaLangString);
-          ((PicInfoInterface.ErrInfo)localObject2).jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-          ((PicInfoInterface.ErrInfo)localObject2).jdField_a_of_type_JavaLangString = "onDownload";
-          this.a.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = ((PicInfoInterface.ErrInfo)localObject2);
+          localStringBuilder.append(this.a.c);
+          ((PicInfoInterface.ErrInfo)localObject2).b = localStringBuilder.toString();
+          ((PicInfoInterface.ErrInfo)localObject2).a = "onDownload";
+          this.a.d = ((PicInfoInterface.ErrInfo)localObject2);
         }
-        ((PicResult)localObject1).jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = this.a.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo;
+        ((PicResult)localObject1).b = this.a.d;
       }
-      this.this$0.a(this.a.jdField_a_of_type_Int, (PicResult)localObject1);
+      this.this$0.a(this.a.a, (PicResult)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionDownGIFCallback.1
  * JD-Core Version:    0.7.0.1
  */

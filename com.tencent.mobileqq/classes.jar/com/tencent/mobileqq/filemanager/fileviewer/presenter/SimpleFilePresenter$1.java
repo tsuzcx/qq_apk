@@ -11,12 +11,12 @@ class SimpleFilePresenter$1
   
   public void run()
   {
-    TeamWorkHandlerUtils.a(this.a.m, this.this$0.a.m());
+    TeamWorkHandlerUtils.b(this.a.F, this.this$0.c.ag());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.1
  * JD-Core Version:    0.7.0.1
  */

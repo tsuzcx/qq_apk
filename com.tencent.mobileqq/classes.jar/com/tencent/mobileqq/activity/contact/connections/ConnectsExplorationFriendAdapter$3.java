@@ -82,17 +82,17 @@ class ConnectsExplorationFriendAdapter$3
     if (paramBoolean)
     {
       this.a.notifyDataSetChanged();
-      if (ConnectsExplorationFriendAdapter.a(this.a) != null)
+      if (ConnectsExplorationFriendAdapter.b(this.a) != null)
       {
-        ConnectsExplorationFriendAdapter.a(this.a).removeCallbacks(this.a.a);
-        ConnectsExplorationFriendAdapter.a(this.a).postDelayed(this.a.a, 1600L);
+        ConnectsExplorationFriendAdapter.b(this.a).removeCallbacks(this.a.a);
+        ConnectsExplorationFriendAdapter.b(this.a).postDelayed(this.a.a, 1600L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationFriendAdapter.3
  * JD-Core Version:    0.7.0.1
  */

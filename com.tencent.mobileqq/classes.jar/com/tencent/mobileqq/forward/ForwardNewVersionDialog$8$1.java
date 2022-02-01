@@ -21,15 +21,15 @@ class ForwardNewVersionDialog$8$1
   
   public void run()
   {
-    int k = ForwardNewVersionDialog.a(this.a.this$0, ForwardNewVersionDialog.a(this.a.this$0).getView());
-    int m = ForwardNewVersionDialog.a(this.a.this$0, ForwardNewVersionDialog.a(this.a.this$0));
-    int n = ForwardNewVersionDialog.a(this.a.this$0).getHeight();
+    int k = ForwardNewVersionDialog.a(this.a.this$0, ForwardNewVersionDialog.f(this.a.this$0).getView());
+    int m = ForwardNewVersionDialog.a(this.a.this$0, ForwardNewVersionDialog.j(this.a.this$0));
+    int n = ForwardNewVersionDialog.j(this.a.this$0).getHeight();
     int i = m + n;
     int i1 = ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext());
     int j;
     if (k - i > 0)
     {
-      i = ForwardNewVersionDialog.a(this.a.this$0).getView().getHeight() / 2;
+      i = ForwardNewVersionDialog.f(this.a.this$0).getView().getHeight() / 2;
     }
     else
     {
@@ -37,7 +37,7 @@ class ForwardNewVersionDialog$8$1
       if (j < m) {
         i = m - j;
       } else {
-        i = i - k + ViewUtils.a(10.0F);
+        i = i - k + ViewUtils.dip2px(10.0F);
       }
     }
     Object localObject = this.a.this$0.getWindow().getAttributes();
@@ -45,16 +45,16 @@ class ForwardNewVersionDialog$8$1
     this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject);
     if (i > m - i1)
     {
-      localObject = ForwardNewVersionDialog.a(this.a.this$0).getLayoutParams();
+      localObject = ForwardNewVersionDialog.j(this.a.this$0).getLayoutParams();
       if (localObject != null)
       {
-        ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - ViewUtils.a(10.0F));
-        ForwardNewVersionDialog.a(this.a.this$0).requestLayout();
+        ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - ViewUtils.dip2px(10.0F));
+        ForwardNewVersionDialog.j(this.a.this$0).requestLayout();
       }
     }
     if (QLog.isColorLevel())
     {
-      localObject = (Context)ForwardNewVersionDialog.a(this.a.this$0).get();
+      localObject = (Context)ForwardNewVersionDialog.k(this.a.this$0).get();
       j = 0;
       if (localObject != null) {
         j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
@@ -83,7 +83,7 @@ class ForwardNewVersionDialog$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.8.1
  * JD-Core Version:    0.7.0.1
  */

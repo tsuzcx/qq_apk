@@ -10,8 +10,8 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 class DoodleColorAndModeView$1
   extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int = UIUtils.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView.getContext(), 15.0F);
-  private int b = UIUtils.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView.getContext(), 28.5F);
+  private int b = UIUtils.a(this.a.getContext(), 15.0F);
+  private int c = UIUtils.a(this.a.getContext(), 28.5F);
   
   DoodleColorAndModeView$1(DoodleColorAndModeView paramDoodleColorAndModeView) {}
   
@@ -19,16 +19,16 @@ class DoodleColorAndModeView$1
   {
     int i = paramRecyclerView.getChildAdapterPosition(paramView);
     if (i > 0) {
-      paramRect.left = this.jdField_a_of_type_Int;
-    }
-    if ((i == 1) && (DoodleColorAndModeView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleColorAndModeView))) {
       paramRect.left = this.b;
+    }
+    if ((i == 1) && (DoodleColorAndModeView.a(this.a))) {
+      paramRect.left = this.c;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleColorAndModeView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,14 @@ class RecordSoundPanel$1
     if (paramMessage.what != 1) {
       return;
     }
-    ((AudioPanelAioHelper)this.a.a.a(128)).f(1);
+    ((AudioPanelAioHelper)this.a.a.q(128)).g(1);
     this.a.a();
-    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131698588), 1).a();
+    QQToast.makeText(this.a.a.aX(), this.a.a.aX().getString(2131896535), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel.1
  * JD-Core Version:    0.7.0.1
  */

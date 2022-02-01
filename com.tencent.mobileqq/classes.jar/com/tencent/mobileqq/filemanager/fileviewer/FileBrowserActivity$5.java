@@ -29,7 +29,7 @@ class FileBrowserActivity$5
     }
     if ((ImmersiveUtils.isSupporImmersive() == 1) && (i == 0))
     {
-      localObject = (RelativeLayout)this.a.findViewById(2131376810);
+      localObject = (RelativeLayout)this.a.findViewById(2131445139);
       ((RelativeLayout)localObject).setFitsSystemWindows(true);
       ((RelativeLayout)localObject).setPadding(0, ImmersiveUtils.getStatusBarHeight(this.a), 0, 0);
     }
@@ -38,28 +38,28 @@ class FileBrowserActivity$5
   public void a(int paramInt)
   {
     FileBrowserActivity localFileBrowserActivity = this.a;
-    FileBrowserActivity.a(localFileBrowserActivity, (TextView)localFileBrowserActivity.findViewById(2131369249));
-    FileBrowserActivity.a(this.a).setTextSize(1, 19.0F);
-    FileBrowserActivity.a(this.a).setText(this.a.a.a());
+    FileBrowserActivity.a(localFileBrowserActivity, (TextView)localFileBrowserActivity.findViewById(2131436227));
+    FileBrowserActivity.d(this.a).setTextSize(1, 19.0F);
+    FileBrowserActivity.d(this.a).setText(this.a.d.b());
   }
   
   public void a(boolean paramBoolean)
   {
     FileBrowserActivity.a(this.a, paramBoolean);
-    Object localObject = this.a.findViewById(2131376639);
-    if (!FileBrowserActivity.a(this.a))
+    Object localObject = this.a.findViewById(2131444900);
+    if (!FileBrowserActivity.e(this.a))
     {
       ((View)localObject).setVisibility(0);
       if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
       {
-        int i = this.a.getResources().getColor(2131167114);
+        int i = this.a.getResources().getColor(2131168092);
         this.a.mSystemBarComp.setStatusColor(i);
         this.a.mSystemBarComp.setStatusBarColor(i);
         if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130846361));
+          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130847834));
         }
       }
-      LiuHaiUtils.b(this.a);
+      LiuHaiUtils.g(this.a);
       this.a.getWindow().setFlags(0, 1024);
       return;
     }
@@ -73,16 +73,16 @@ class FileBrowserActivity$5
       }
     }
     localObject = this.a;
-    FileBrowserActivity.a((FileBrowserActivity)localObject, ((FileBrowserActivity)localObject).a.a());
-    if ((FileBrowserActivity.a(this.a) != 2) && (FileBrowserActivity.a(this.a) != 0)) {
-      LiuHaiUtils.c(this.a);
+    FileBrowserActivity.a((FileBrowserActivity)localObject, ((FileBrowserActivity)localObject).d.f());
+    if ((FileBrowserActivity.f(this.a) != 2) && (FileBrowserActivity.f(this.a) != 0)) {
+      LiuHaiUtils.h(this.a);
     }
     this.a.getWindow().setFlags(1024, 1024);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.5
  * JD-Core Version:    0.7.0.1
  */

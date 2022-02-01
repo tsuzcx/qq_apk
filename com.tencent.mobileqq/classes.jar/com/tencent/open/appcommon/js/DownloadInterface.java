@@ -74,7 +74,7 @@ public class DownloadInterface
         paramWebView = (AppInterface)((BaseActivity)paramActivity).getAppRuntime();
       }
     }
-    DownloadManager.a().a(paramWebView);
+    DownloadManager.b().a(paramWebView);
     JsCallbackManager.a().a(this);
     LogUtility.c("DownloadInterface", "init out");
   }
@@ -130,10 +130,10 @@ public class DownloadInterface
         JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
         DownloadInfo localDownloadInfo = new DownloadInfo();
         localDownloadInfo.c = localJSONObject.optString("appid");
-        localDownloadInfo.j = localJSONObject.optString("myAppId");
-        localDownloadInfo.k = localJSONObject.optString("apkId");
+        localDownloadInfo.l = localJSONObject.optString("myAppId");
+        localDownloadInfo.m = localJSONObject.optString("apkId");
         localDownloadInfo.e = localJSONObject.optString("packageName");
-        localDownloadInfo.b = localJSONObject.optInt("versionCode");
+        localDownloadInfo.n = localJSONObject.optInt("versionCode");
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
@@ -204,7 +204,7 @@ public class DownloadInterface
     if (!hasRight()) {
       return;
     }
-    DownloadManager.a().a(paramString);
+    DownloadManager.b().a(paramString);
   }
   
   public void checkUpdate(String paramString)
@@ -244,13 +244,13 @@ public class DownloadInterface
       if (this.listener == null)
       {
         this.listener = new DownloadInterface.JsCheckUpdateCallback(this, paramString1);
-        UpdateManager.a().a(this.listener);
+        UpdateManager.b().a(this.listener);
       }
       else
       {
         ((DownloadInterface.JsCheckUpdateCallback)this.listener).b(paramString1);
       }
-      UpdateManager.a().a(paramString2);
+      UpdateManager.b().a(paramString2);
       return;
     }
     catch (JSONException paramString1)
@@ -292,7 +292,7 @@ public class DownloadInterface
     LogUtility.c("DownloadInterface", "destroy");
     JsCallbackManager.a().b(this);
     if (UpdateManager.a()) {
-      UpdateManager.a().b(this.listener);
+      UpdateManager.b().b(this.listener);
     }
   }
   
@@ -498,7 +498,7 @@ public class DownloadInterface
       paramString = new JSONObject(paramString);
       Object localObject = paramString.optString("downloadUrl");
       paramString = paramString.optString("callback");
-      localObject = DownloadManager.a().a((String)localObject);
+      localObject = DownloadManager.b().h((String)localObject);
       if (localObject == null) {
         return -1;
       }
@@ -529,7 +529,7 @@ public class DownloadInterface
       localStringBuilder.append(paramString.toString());
       LogUtility.c("DownloadInterface", localStringBuilder.toString());
       paramString = paramString.optString("via");
-      MyAppApi.a().a(this.mActivity, paramString, "biz_src_yyb");
+      MyAppApi.l().a(this.mActivity, paramString, "biz_src_yyb");
       return;
     }
     catch (Exception paramString)
@@ -636,7 +636,7 @@ public class DownloadInterface
   
   public void installYYB()
   {
-    MyAppApi.a().c(this.mActivity);
+    MyAppApi.l().c(this.mActivity);
   }
   
   protected void jsCallBack(String paramString)
@@ -674,7 +674,7 @@ public class DownloadInterface
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131703666), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131901615), 0).show();
       }
     }
     else
@@ -739,7 +739,7 @@ public class DownloadInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.DownloadInterface
  * JD-Core Version:    0.7.0.1
  */

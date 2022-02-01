@@ -485,7 +485,7 @@ public class QzoneShareApiImpl
     }
     try
     {
-      paramOnDismissListener = new Intent(paramContext, QZoneShareActivity.class);
+      paramOnDismissListener = new Intent(BaseApplicationImpl.getContext(), QZoneShareActivity.class);
       paramOnDismissListener.putExtra("qzone_uin", paramString);
       paramOnDismissListener.putExtra("extraIntentKeyParcelable", paramQZoneShareData);
       ((Activity)paramContext).startActivityForResult(paramOnDismissListener, paramInt);
@@ -493,10 +493,10 @@ public class QzoneShareApiImpl
     }
     catch (Exception paramOnDismissListener)
     {
-      label71:
-      break label71;
+      label73:
+      break label73;
     }
-    paramOnDismissListener = new Intent(paramContext, QZoneShareActivity.class);
+    paramOnDismissListener = new Intent(BaseApplicationImpl.getContext(), QZoneShareActivity.class);
     paramOnDismissListener.putExtra("qzone_uin", paramString);
     paramOnDismissListener.putExtra("extraIntentKeyParcelable", paramQZoneShareData);
     paramOnDismissListener.addFlags(268435456);
@@ -547,7 +547,7 @@ public class QzoneShareApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzoneShareApiImpl
  * JD-Core Version:    0.7.0.1
  */

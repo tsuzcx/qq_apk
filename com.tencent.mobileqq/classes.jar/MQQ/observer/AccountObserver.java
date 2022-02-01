@@ -19,7 +19,6 @@ public abstract class AccountObserver
   private void onReceiveLoginActions(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     Object localObject1;
-    Object localObject2;
     int i;
     Object localObject3;
     if (paramInt != 1001)
@@ -51,20 +50,17 @@ public abstract class AccountObserver
     }
     paramInt = paramBundle.getInt("code");
     String str1 = paramBundle.getString("alias");
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("onRV  action login code = ");
-      ((StringBuilder)localObject2).append(paramInt);
-      ((StringBuilder)localObject2).append("; alias = ");
-      if (str1 == null) {
-        localObject1 = "is null";
-      } else {
-        localObject1 = str1;
-      }
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.d("AccountObserver", 2, ((StringBuilder)localObject2).toString());
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onRV  action login code = ");
+    ((StringBuilder)localObject2).append(paramInt);
+    ((StringBuilder)localObject2).append("; alias = ");
+    if (str1 == null) {
+      localObject1 = "is null";
+    } else {
+      localObject1 = str1;
     }
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QLog.d("AccountObserver", 1, ((StringBuilder)localObject2).toString());
     if (paramBoolean)
     {
       localObject1 = paramBundle.getByteArray("tlv543In119");
@@ -258,7 +254,7 @@ public abstract class AccountObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     mqq.observer.AccountObserver
  * JD-Core Version:    0.7.0.1
  */

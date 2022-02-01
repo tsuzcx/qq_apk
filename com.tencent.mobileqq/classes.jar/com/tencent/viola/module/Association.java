@@ -34,16 +34,22 @@ public class Association
   @JSMethod
   public void bind(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    if ((paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_REF)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_EVENT)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_PROPS))) {}
+    boolean bool1;
+    if ((paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_REF)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_EVENT)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_PROPS))) {
+      bool1 = true;
+    }
     for (;;)
     {
       try
       {
-        if (paramJSONObject.has("sync"))
-        {
+        if (paramJSONObject.has("sync")) {
           bool1 = ViolaUtils.getBoolean(paramJSONObject.opt("sync"));
+        }
+        if (ViolaUtils.useV8Engine())
+        {
+          bool1 = false;
           if (!paramJSONObject.has("applyLayout")) {
-            break label114;
+            break label122;
           }
           bool2 = ViolaUtils.getBoolean(paramJSONObject.opt("applyLayout"));
           bind(paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_REF), paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_EVENT), paramJSONObject.getJSONArray(AssocioationEvents.ASSOCIOATION_KEY_PROPS), "", paramString, bool1, bool2);
@@ -54,16 +60,15 @@ public class Association
       {
         return;
       }
-      boolean bool1 = true;
       continue;
-      label114:
+      label122:
       boolean bool2 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.module.Association
  * JD-Core Version:    0.7.0.1
  */

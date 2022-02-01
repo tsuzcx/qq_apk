@@ -37,13 +37,13 @@ public class MiniAppInfoManager
     boolean bool1 = QLog.isColorLevel();
     boolean bool2 = false;
     if (bool1) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramMiniAppInfo.jdField_c_of_type_Int) });
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyAppInfo. appState=", Integer.valueOf(paramMiniAppInfo.h) });
     }
     bool1 = bool2;
     if (paramMiniAppInfo != null)
     {
       bool1 = bool2;
-      if (paramMiniAppInfo.jdField_c_of_type_Int == 1) {
+      if (paramMiniAppInfo.h == 1) {
         bool1 = true;
       }
     }
@@ -53,20 +53,20 @@ public class MiniAppInfoManager
   boolean a(MiniAppInfo paramMiniAppInfo, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramMiniAppInfo.h });
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "getAppInfoFromCache cache valid. cacheKey=", paramMiniAppInfo.p });
     }
     if (paramInt2 == 1)
     {
-      if (paramMiniAppInfo.jdField_c_of_type_Long > NetConnInfoCenter.getServerTimeMillis()) {
+      if (paramMiniAppInfo.n > NetConnInfoCenter.getServerTimeMillis()) {
         return true;
       }
     }
     else if (paramInt2 == 0)
     {
-      if ((paramInt1 == 1) && (paramMiniAppInfo.a > NetConnInfoCenter.getServerTimeMillis())) {
+      if ((paramInt1 == 1) && (paramMiniAppInfo.l > NetConnInfoCenter.getServerTimeMillis())) {
         return true;
       }
-      if ((paramInt1 == 2) && (paramMiniAppInfo.b > NetConnInfoCenter.getServerTimeMillis())) {
+      if ((paramInt1 == 2) && (paramMiniAppInfo.m > NetConnInfoCenter.getServerTimeMillis())) {
         return true;
       }
     }
@@ -76,14 +76,14 @@ public class MiniAppInfoManager
   boolean b(MiniAppInfo paramMiniAppInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramMiniAppInfo.f });
+      QLog.d("MiniAppInfoManager", 2, new Object[] { "verifyDownloadUrl. downloadUrl=", paramMiniAppInfo.j });
     }
-    return TextUtils.isEmpty(paramMiniAppInfo.f) ^ true;
+    return TextUtils.isEmpty(paramMiniAppInfo.j) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppInfoManager
  * JD-Core Version:    0.7.0.1
  */

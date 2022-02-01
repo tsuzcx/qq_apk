@@ -51,7 +51,7 @@ class ExtendFriendResourceDownloader$2
         ExtendFriendResourceDownloader.a(this.a).preDownloadSuccess((String)localObject, paramNetResp.mTotalFileLen);
       }
       paramNetResp = (HttpNetReq)paramNetResp.mReq;
-      boolean bool2 = ExtendFriendResourceDownloader.a(this.a, paramNetResp.mOutPath, ExtendFriendResourceDownloader.a(this.a));
+      boolean bool2 = ExtendFriendResourceDownloader.a(this.a, paramNetResp.mOutPath, ExtendFriendResourceDownloader.b(this.a));
       if (bool2)
       {
         localObject = new File(ExtendFriendResourceDownloader.a());
@@ -59,14 +59,14 @@ class ExtendFriendResourceDownloader$2
           ((File)localObject).mkdirs();
         }
         boolean bool4 = ExtendFriendResourceDownloader.b(this.a, paramNetResp.mOutPath, ExtendFriendResourceDownloader.a());
-        boolean bool3 = ExtendFriendResourceDownloader.a(this.a);
+        boolean bool3 = ExtendFriendResourceDownloader.c(this.a);
         if (QLog.isColorLevel()) {
           QLog.d("ExtendFriendResourceDownloader", 2, String.format("onResp ResultOk unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3) }));
         }
         boolean bool1;
-        if (ExtendFriendResourceDownloader.a(this.a) != null)
+        if (ExtendFriendResourceDownloader.d(this.a) != null)
         {
-          paramNetResp = ExtendFriendResourceDownloader.a(this.a);
+          paramNetResp = ExtendFriendResourceDownloader.d(this.a);
           if ((bool4) && (bool3)) {
             bool1 = true;
           } else {
@@ -88,8 +88,8 @@ class ExtendFriendResourceDownloader$2
           QLog.e("ExtendFriendResourceDownloader", 2, "onResp ResultOk file check invalid.");
         }
         ExtendFriendResourceDownloader.a(this.a, paramNetResp.mOutPath);
-        if (ExtendFriendResourceDownloader.a(this.a) != null) {
-          ExtendFriendResourceDownloader.a(this.a).a(false);
+        if (ExtendFriendResourceDownloader.d(this.a) != null) {
+          ExtendFriendResourceDownloader.d(this.a).a(false);
         }
       }
       ExtendFriendReport.a().a(bool2, 0);
@@ -105,7 +105,7 @@ class ExtendFriendResourceDownloader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.downloader.ExtendFriendResourceDownloader.2
  * JD-Core Version:    0.7.0.1
  */

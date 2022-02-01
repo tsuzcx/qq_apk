@@ -17,7 +17,7 @@ public class GategoryItemManagerImpl
   public String getJumApp(Object paramObject)
   {
     if ((paramObject != null) && ((paramObject instanceof QIMFilterCategoryItem))) {
-      return ((QIMFilterCategoryItem)paramObject).h;
+      return ((QIMFilterCategoryItem)paramObject).q;
     }
     return null;
   }
@@ -25,14 +25,14 @@ public class GategoryItemManagerImpl
   public boolean isCombo(Object paramObject)
   {
     if ((paramObject != null) && ((paramObject instanceof QIMFilterCategoryItem))) {
-      return ((QIMFilterCategoryItem)paramObject).a;
+      return ((QIMFilterCategoryItem)paramObject).p;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.GategoryItemManagerImpl
  * JD-Core Version:    0.7.0.1
  */

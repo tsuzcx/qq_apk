@@ -16,35 +16,35 @@ class SignatureHistoryFragment$22
 {
   SignatureHistoryFragment$22(SignatureHistoryFragment paramSignatureHistoryFragment, CommentItem paramCommentItem, String paramString, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0) {
-      if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getBaseActivity()))
+      if (!NetworkUtil.isNetSupport(this.d.getBaseActivity()))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getBaseActivity(), 2131693191, 0).a();
+        QQToast.makeText(this.d.getBaseActivity(), 2131890731, 0).show();
       }
       else
       {
-        SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem);
-        if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem != null) && (!TextUtils.isEmpty(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+        SignatureHistoryFragment.a(this.d, this.a);
+        if ((this.a != null) && (!TextUtils.isEmpty(SignatureHistoryFragment.c(this.d))) && (!TextUtils.isEmpty(this.b)))
         {
-          if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) == null)
+          if (SignatureHistoryFragment.e(this.d) == null)
           {
-            paramView = this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment;
-            SignatureHistoryFragment.a(paramView, new QQProgressDialog(paramView.getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getBaseActivity().getTitleBarHeight()));
+            paramView = this.d;
+            SignatureHistoryFragment.a(paramView, new QQProgressDialog(paramView.getBaseActivity(), this.d.getBaseActivity().getTitleBarHeight()));
           }
-          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).a(null);
-          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).show();
-          this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.a.a(Long.valueOf(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.feedId, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.id);
+          SignatureHistoryFragment.e(this.d).a(null);
+          SignatureHistoryFragment.e(this.d).show();
+          this.d.d.a(Long.valueOf(SignatureHistoryFragment.c(this.d)).longValue(), this.a.feedId, Long.valueOf(this.b).longValue(), this.a.id);
         }
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.c.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.22
  * JD-Core Version:    0.7.0.1
  */

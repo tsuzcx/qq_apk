@@ -18,17 +18,17 @@ import java.util.List;
 public class MyVideoSharePlayingListSync
   extends BasePagePlayingListSync
 {
-  protected long a;
-  protected int b;
-  protected String c;
+  protected long j;
+  protected int k;
+  protected String l;
   
   protected void a()
   {
     Object localObject = (StoryManager)SuperManager.a(5);
     StoryVideoItem localStoryVideoItem;
-    if (QQStoryContext.a().a(this.jdField_c_of_type_JavaLangString))
+    if (QQStoryContext.a().b(this.l))
     {
-      localObject = ((StoryManager)localObject).d(this.jdField_c_of_type_JavaLangString);
+      localObject = ((StoryManager)localObject).g(this.l);
       if (localObject != null)
       {
         localIterator = ((List)localObject).iterator();
@@ -44,51 +44,51 @@ public class MyVideoSharePlayingListSync
     }
     else
     {
-      localObject = ((StoryManager)localObject).a(this.jdField_c_of_type_JavaLangString);
+      localObject = ((StoryManager)localObject).d(this.l);
     }
     Iterator localIterator = ((List)localObject).iterator();
     while (localIterator.hasNext())
     {
       localStoryVideoItem = (StoryVideoItem)localIterator.next();
       if (TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
-        localStoryVideoItem.mOwnerUid = QQStoryContext.a().b();
+        localStoryVideoItem.mOwnerUid = QQStoryContext.a().i();
       }
     }
     if (((List)localObject).size() > 0)
     {
       localIterator = ((List)localObject).iterator();
       while (localIterator.hasNext()) {
-        if (((StoryVideoItem)localIterator.next()).mCreateTime / 1000L > this.jdField_a_of_type_Long) {
+        if (((StoryVideoItem)localIterator.next()).mCreateTime / 1000L > this.j) {
           localIterator.remove();
         }
       }
       if (((List)localObject).size() == 0) {
         return;
       }
-      if (((StoryVideoItem)((List)localObject).get(((List)localObject).size() - 1)).mCreateTime / 1000L != this.jdField_a_of_type_Long) {
+      if (((StoryVideoItem)((List)localObject).get(((List)localObject).size() - 1)).mCreateTime / 1000L != this.j) {
         return;
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.d = true;
       localObject = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_b_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_Boolean = true;
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_b_of_type_Boolean = true;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).a = this.h;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).b = this.l;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).i = true;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).j = true;
       StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
     }
   }
   
   protected void b()
   {
-    this.jdField_c_of_type_Boolean = true;
-    GetShareVideoListRequest localGetShareVideoListRequest = new GetShareVideoListRequest(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int);
-    localGetShareVideoListRequest.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.e = true;
+    GetShareVideoListRequest localGetShareVideoListRequest = new GetShareVideoListRequest(this.l, this.j, this.k);
+    localGetShareVideoListRequest.h = this.c;
     CmdTaskManger.a().a(localGetShareVideoListRequest, new MyVideoSharePlayingListSync.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.MyVideoSharePlayingListSync
  * JD-Core Version:    0.7.0.1
  */

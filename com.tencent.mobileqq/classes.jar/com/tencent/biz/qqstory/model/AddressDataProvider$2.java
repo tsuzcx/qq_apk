@@ -19,29 +19,29 @@ class AddressDataProvider$2
     if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
     {
       SLog.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
-      this.a.jdField_a_of_type_JavaLangObject = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
+      this.a.c = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.b, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationResponse.g, paramGetLocationRequest.f, paramGetLocationRequest.g);
       this.a.a("country", paramGetLocationResponse.a);
-      this.a.a("province", paramGetLocationResponse.c);
-      this.a.a("city", paramGetLocationResponse.d);
-      this.a.a("district", paramGetLocationResponse.e);
-      this.a.a("street", paramGetLocationResponse.f);
-      this.a.a("longitude", paramGetLocationRequest.d);
-      this.a.a("latitude", paramGetLocationRequest.e);
+      this.a.a("province", paramGetLocationResponse.b);
+      this.a.a("city", paramGetLocationResponse.e);
+      this.a.a("district", paramGetLocationResponse.f);
+      this.a.a("street", paramGetLocationResponse.g);
+      this.a.a("longitude", paramGetLocationRequest.f);
+      this.a.a("latitude", paramGetLocationRequest.g);
       this.a.a("time", System.currentTimeMillis());
       paramGetLocationRequest = this.a;
-      paramGetLocationRequest.a(true, paramGetLocationRequest.jdField_a_of_type_JavaLangObject);
+      paramGetLocationRequest.a(true, paramGetLocationRequest.c);
     }
     else
     {
       SLog.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetLocationRequest });
       this.a.a(false, null);
     }
-    this.a.jdField_a_of_type_Boolean = false;
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.AddressDataProvider.2
  * JD-Core Version:    0.7.0.1
  */

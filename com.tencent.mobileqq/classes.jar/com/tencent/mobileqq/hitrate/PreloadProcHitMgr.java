@@ -24,7 +24,7 @@ public class PreloadProcHitMgr
         while (localIterator2.hasNext())
         {
           PreloadProcHitSession localPreloadProcHitSession = (PreloadProcHitSession)localIterator2.next();
-          localPreloadProcHitSession.d();
+          localPreloadProcHitSession.e();
           ((HashSet)localObject1).add(localPreloadProcHitSession.d);
         }
       }
@@ -44,7 +44,7 @@ public class PreloadProcHitMgr
   {
     synchronized (a)
     {
-      String str = paramPreloadProcHitSession.a();
+      String str = paramPreloadProcHitSession.c();
       ArrayList localArrayList = (ArrayList)a.get(str);
       if (localArrayList == null)
       {
@@ -77,7 +77,7 @@ public class PreloadProcHitMgr
             if (((PreloadProcHitPluginSession)localPreloadProcHitSession).a.equals(paramString))
             {
               localPreloadProcHitSession.b();
-              localPreloadProcHitSession.d();
+              localPreloadProcHitSession.e();
             }
           }
         }
@@ -102,7 +102,7 @@ public class PreloadProcHitMgr
         {
           localObject = ((ArrayList)a.get(localObject)).iterator();
           while (((Iterator)localObject).hasNext()) {
-            ((PreloadProcHitSession)((Iterator)localObject).next()).d();
+            ((PreloadProcHitSession)((Iterator)localObject).next()).e();
           }
         }
       }
@@ -122,7 +122,7 @@ public class PreloadProcHitMgr
       PreloadProcHitPluginSessionProc localPreloadProcHitPluginSessionProc = (PreloadProcHitPluginSessionProc)b.get(paramString);
       if (localPreloadProcHitPluginSessionProc != null)
       {
-        localPreloadProcHitPluginSessionProc.d();
+        localPreloadProcHitPluginSessionProc.e();
         b.remove(paramString);
       }
       return;
@@ -157,7 +157,7 @@ public class PreloadProcHitMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hitrate.PreloadProcHitMgr
  * JD-Core Version:    0.7.0.1
  */

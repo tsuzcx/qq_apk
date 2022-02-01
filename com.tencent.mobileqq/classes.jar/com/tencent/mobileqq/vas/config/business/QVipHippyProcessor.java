@@ -15,7 +15,7 @@ public class QVipHippyProcessor
 {
   public static QVipHippyConfig a()
   {
-    QVipHippyConfig localQVipHippyConfig2 = (QVipHippyConfig)QConfigManager.a().a(734);
+    QVipHippyConfig localQVipHippyConfig2 = (QVipHippyConfig)QConfigManager.b().b(734);
     QVipHippyConfig localQVipHippyConfig1 = localQVipHippyConfig2;
     if (localQVipHippyConfig2 == null) {
       localQVipHippyConfig1 = new QVipHippyConfig(new LinkedTreeMap());
@@ -28,7 +28,7 @@ public class QVipHippyProcessor
   {
     try
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       QLog.d("QVipHippyProcessor", 2, paramArrayOfQConfItem);
       if (!TextUtils.isEmpty(paramArrayOfQConfItem))
       {
@@ -50,15 +50,15 @@ public class QVipHippyProcessor
     return new QVipHippyConfig(new LinkedTreeMap());
   }
   
-  @NonNull
-  public QVipHippyConfig c()
-  {
-    return new QVipHippyConfig(new LinkedTreeMap());
-  }
-  
   public Class<QVipHippyConfig> clazz()
   {
     return QVipHippyConfig.class;
+  }
+  
+  @NonNull
+  public QVipHippyConfig e()
+  {
+    return new QVipHippyConfig(new LinkedTreeMap());
   }
   
   public boolean isNeedCompressed()
@@ -73,7 +73,7 @@ public class QVipHippyProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.QVipHippyProcessor
  * JD-Core Version:    0.7.0.1
  */

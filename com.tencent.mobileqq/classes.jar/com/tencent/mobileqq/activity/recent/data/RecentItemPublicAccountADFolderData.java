@@ -22,7 +22,7 @@ public class RecentItemPublicAccountADFolderData
   {
     super(paramRecentUser);
     this.mUnreadFlag = 1;
-    this.trueUin = AdvertisementRecentUserManager.a().a(paramRecentUser.uin);
+    this.trueUin = AdvertisementRecentUserManager.a().c(paramRecentUser.uin);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -54,7 +54,7 @@ public class RecentItemPublicAccountADFolderData
       } else {
         this.mMenuFlag &= 0xFFFFFFFE;
       }
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName);
@@ -99,7 +99,7 @@ public class RecentItemPublicAccountADFolderData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountADFolderData
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class UpgradeDetailActivity$JsCover
   
   public long getApkSize()
   {
-    return UpgradeDetailActivity.a(this.a);
+    return UpgradeDetailActivity.c(this.a);
   }
   
   public String getApkVersion()
@@ -28,12 +28,12 @@ public class UpgradeDetailActivity$JsCover
   
   public int getDownloadState()
   {
-    return UpgradeController.a().a();
+    return UpgradeController.a().b();
   }
   
   public long getUpgradeTime()
   {
-    return UpgradeDetailActivity.a(this.a).a.iNewTimeStamp;
+    return UpgradeDetailActivity.d(this.a).b.iNewTimeStamp;
   }
   
   public int installApk()
@@ -44,7 +44,7 @@ public class UpgradeDetailActivity$JsCover
   
   public int pauseDownload()
   {
-    UpgradeController.a().e();
+    UpgradeController.a().i();
     return 0;
   }
   
@@ -53,7 +53,7 @@ public class UpgradeDetailActivity$JsCover
     if (QLog.isColorLevel()) {
       QLog.d("preLoad_configServlet", 2, "resume download from web, mark it.");
     }
-    UpgradeController.a().d();
+    UpgradeController.a().h();
     return 0;
   }
   
@@ -68,14 +68,14 @@ public class UpgradeDetailActivity$JsCover
   
   public int stopDownload()
   {
-    UpgradeController.a().c();
+    UpgradeController.a().g();
     return 0;
   }
   
   public int tipsLoadComplete()
   {
     QLog.d("Hyim", 2, "loadTipsComplete");
-    this.a.a = true;
+    this.a.d = true;
     int i = getDownloadState();
     this.a.a(i, UpgradeController.a());
     return 0;
@@ -83,7 +83,7 @@ public class UpgradeDetailActivity$JsCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity.JsCover
  * JD-Core Version:    0.7.0.1
  */

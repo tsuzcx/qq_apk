@@ -13,52 +13,52 @@ import com.tencent.widget.XListView;
 public class ListViewWrapper
   implements IndexBar.OnIndexBarTouchListener
 {
-  public Context a;
-  private final View jdField_a_of_type_AndroidViewView;
-  public IndexBar a;
-  public IndexBarTipsLayout a;
-  public QQAppInterface a;
-  public QuickAtListAdapter a;
   public XListView a;
-  private String jdField_a_of_type_JavaLangString = "";
+  public QuickAtListAdapter b;
+  public QQAppInterface c;
+  public Context d;
+  public IndexBarTipsLayout e;
+  public IndexBar f;
+  private final View g;
+  private String h = "";
   
   public ListViewWrapper(QQAppInterface paramQQAppInterface, Context paramContext, TroopChatPie paramTroopChatPie, View paramView, XListView paramXListView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter = new QuickAtListAdapter(this, paramTroopChatPie);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter);
+    this.c = paramQQAppInterface;
+    this.d = paramContext;
+    this.g = paramView;
+    this.a = paramXListView;
+    this.b = new QuickAtListAdapter(this, paramTroopChatPie);
+    this.a.setAdapter(this.b);
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout = ((IndexBarTipsLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368762));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar = ((IndexBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368761));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar.setOnIndexBarTouchListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setVisibility(8);
+    this.e = ((IndexBarTipsLayout)this.g.findViewById(2131435679));
+    this.f = ((IndexBar)this.g.findViewById(2131435678));
+    this.f.setOnIndexBarTouchListener(this);
+    this.e.setVisibility(8);
   }
   
   public void a(String paramString, int paramInt, float paramFloat)
   {
-    IndexBarTipsLayout localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout;
+    IndexBarTipsLayout localIndexBarTipsLayout = this.e;
     if (localIndexBarTipsLayout != null) {
       localIndexBarTipsLayout.setText(paramString, paramFloat);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
+    if (!this.h.equals(paramString))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.h = paramString;
       if ("★".equals(paramString))
       {
-        this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
+        this.a.setSelection(0);
         return;
       }
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiQuickAtListAdapter.a(paramString);
+      paramInt = this.b.d(paramString);
       if (paramInt != -1)
       {
-        paramString = this.jdField_a_of_type_ComTencentWidgetXListView;
+        paramString = this.a;
         paramString.setSelection(paramInt + paramString.getHeaderViewsCount());
       }
     }
@@ -72,9 +72,9 @@ public class ListViewWrapper
       QLog.d("ListViewWrapper", 2, new Object[] { "onLetterTouching: invoked. ", " touching: ", Boolean.valueOf(paramBoolean) });
     }
     if (!paramBoolean) {
-      this.jdField_a_of_type_JavaLangString = "";
+      this.h = "";
     }
-    IndexBarTipsLayout localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout;
+    IndexBarTipsLayout localIndexBarTipsLayout = this.e;
     if (localIndexBarTipsLayout != null)
     {
       if (!paramBoolean) {
@@ -86,7 +86,7 @@ public class ListViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.ListViewWrapper
  * JD-Core Version:    0.7.0.1
  */

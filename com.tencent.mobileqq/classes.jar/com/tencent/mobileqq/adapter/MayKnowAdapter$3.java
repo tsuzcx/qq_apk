@@ -11,11 +11,11 @@ class MayKnowAdapter$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    paramAnimation = this.a;
     if ((paramAnimation != null) && ((paramAnimation.getTag() instanceof MayKnowAdapter.MKRViewHolder))) {
-      ((MayKnowAdapter.MKRViewHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a = true;
+      ((MayKnowAdapter.MKRViewHolder)this.a.getTag()).j = true;
     }
-    MayKnowAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterMayKnowAdapter);
+    MayKnowAdapter.a(this.b);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -24,7 +24,7 @@ class MayKnowAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.MayKnowAdapter.3
  * JD-Core Version:    0.7.0.1
  */

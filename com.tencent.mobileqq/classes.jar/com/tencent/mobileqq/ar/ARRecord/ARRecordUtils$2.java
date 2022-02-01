@@ -10,17 +10,17 @@ final class ARRecordUtils$2
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), this.b, 0).show();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_JavaLangString, 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 2, this.b, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.2
  * JD-Core Version:    0.7.0.1
  */

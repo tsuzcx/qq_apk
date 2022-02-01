@@ -9,10 +9,14 @@ public abstract interface AppConstants$VALUE
   public static final int HOT_CHAT_FROM_WIFI_SHELL = 2;
   public static final String IOS_PA_CARD_ACTION_DATA_SCHEME = "mqqapi://card/show_pslcard?src_type=app&card_type=public_account&version=1&uin=";
   public static final int NON_TROOP_ADMIN_MAX_INVITE_NUM = 100;
+  public static final int REGISTER_ENTRANCE_TYPE_ADD_ACCOUNT = 2;
+  public static final int REGISTER_ENTRANCE_TYPE_DEFAULT = 0;
+  public static final int REGISTER_ENTRANCE_TYPE_MAIN = 1;
   public static final int SHARE_REQ_TYPE_AUDIO = 2;
   public static final int SHARE_REQ_TYPE_DAFAULT = 1;
   public static final int SHARE_REQ_TYPE_HYPERTEXT = 3;
   public static final int SHARE_REQ_TYPE_IMAGE = 5;
+  public static final int SHARE_REQ_TYPE_JOIN_GUILD = 6;
   public static final int SHARE_REQ_TYPE_MINI_PROGRAM = 2147483646;
   public static final int SHARE_REQ_TYPE_PIC = 1;
   public static final int SHARE_REQ_TYPE_PUBLIC_ACCOUNT = 19;
@@ -62,8 +66,10 @@ public abstract interface AppConstants$VALUE
   public static final int UIN_TYPE_FRIEND = 0;
   public static final int UIN_TYPE_FRIEND_VALIDATION = 1022;
   public static final int UIN_TYPE_FUN_CALL = 8998;
-  public static final int UIN_TYPE_GAME_BUDDY = 10009;
+  public static final int UIN_TYPE_GAME_BOX = 10015;
   public static final int UIN_TYPE_GROUP_MEMBER_STRANGER = 1000;
+  public static final int UIN_TYPE_GUILD_GROUP = 10016;
+  public static final int UIN_TYPE_GUILD_SERVICE = 10014;
   public static final int UIN_TYPE_HOTCHAT_CENTER = 5001;
   public static final int UIN_TYPE_HOTCHAT_TOPIC = 1026;
   public static final int UIN_TYPE_HOT_CHAT_MEMBER_STRANGER = 1020;
@@ -121,6 +127,7 @@ public abstract interface AppConstants$VALUE
   public static final int UIN_TYPE_TEMP_AUDIOROOM = 10010;
   public static final int UIN_TYPE_TEMP_CIRCLE = 10008;
   public static final int UIN_TYPE_TEMP_GAME_MSG = 10007;
+  public static final int UIN_TYPE_TEMP_KAN_DIAN = 10013;
   public static final int UIN_TYPE_TEMP_MSG_BOX = 10011;
   public static final int UIN_TYPE_TENCENT_DOCS_ASSISTANT = 6004;
   public static final int UIN_TYPE_TRIBE_TEMP = 10002;
@@ -148,7 +155,7 @@ public abstract interface AppConstants$VALUE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.AppConstants.VALUE
  * JD-Core Version:    0.7.0.1
  */

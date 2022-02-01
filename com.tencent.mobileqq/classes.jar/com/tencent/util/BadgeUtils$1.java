@@ -11,10 +11,10 @@ final class BadgeUtils$1
   
   public void run()
   {
-    BadgeUtilImpl.setLimitCount(this.jdField_a_of_type_Int);
+    BadgeUtilImpl.setLimitCount(this.a);
     try
     {
-      BadgeUtilImpl.setBadge(this.jdField_a_of_type_AndroidContentContext, this.b);
+      BadgeUtilImpl.setBadge(this.b, this.c);
       return;
     }
     catch (Exception localException)
@@ -29,7 +29,7 @@ final class BadgeUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.BadgeUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,7 @@ import com.tencent.mobileqq.widget.navbar.OnItemSelectListener;
 
 public abstract interface IEditInfoApi
 {
-  public abstract int a();
-  
   public abstract Intent a(Intent paramIntent);
-  
-  public abstract View.OnClickListener a();
-  
-  public abstract EmoticonCallback a();
-  
-  public abstract OnItemSelectListener a();
   
   public abstract void a(int paramInt);
   
@@ -27,11 +19,19 @@ public abstract interface IEditInfoApi
   
   public abstract void a(IEditInfoActivity paramIEditInfoActivity);
   
-  public abstract void b();
+  public abstract OnItemSelectListener b();
+  
+  public abstract void c();
+  
+  public abstract int d();
+  
+  public abstract View.OnClickListener e();
+  
+  public abstract EmoticonCallback f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editinfo.IEditInfoApi
  * JD-Core Version:    0.7.0.1
  */

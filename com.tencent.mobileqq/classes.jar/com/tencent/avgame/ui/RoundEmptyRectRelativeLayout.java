@@ -18,8 +18,8 @@ import java.util.Iterator;
 public class RoundEmptyRectRelativeLayout
   extends RelativeLayout
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private ArrayList<RoundEmptyRectRelativeLayout.ClipRoundRect> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  private Paint a = new Paint();
+  private ArrayList<RoundEmptyRectRelativeLayout.ClipRoundRect> b = new ArrayList(5);
   
   @TargetApi(11)
   public RoundEmptyRectRelativeLayout(Context paramContext)
@@ -43,16 +43,16 @@ public class RoundEmptyRectRelativeLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.XOR));
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.FILL);
+    this.a.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.XOR));
   }
   
   public boolean a(RoundEmptyRectRelativeLayout.ClipRoundRect paramClipRoundRect)
   {
-    if ((paramClipRoundRect != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramClipRoundRect)))
+    if ((paramClipRoundRect != null) && (!this.b.contains(paramClipRoundRect)))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramClipRoundRect);
+      this.b.add(paramClipRoundRect);
       return true;
     }
     return false;
@@ -61,7 +61,7 @@ public class RoundEmptyRectRelativeLayout
   public boolean b(RoundEmptyRectRelativeLayout.ClipRoundRect paramClipRoundRect)
   {
     if (paramClipRoundRect != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.remove(paramClipRoundRect);
+      return this.b.remove(paramClipRoundRect);
     }
     return false;
   }
@@ -71,15 +71,15 @@ public class RoundEmptyRectRelativeLayout
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
     Path localPath = new Path();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       RoundEmptyRectRelativeLayout.ClipRoundRect localClipRoundRect = (RoundEmptyRectRelativeLayout.ClipRoundRect)localIterator.next();
-      localPath.addRoundRect(RoundEmptyRectRelativeLayout.ClipRoundRect.a(localClipRoundRect), RoundEmptyRectRelativeLayout.ClipRoundRect.a(localClipRoundRect), Path.Direction.CW);
+      localPath.addRoundRect(RoundEmptyRectRelativeLayout.ClipRoundRect.a(localClipRoundRect), RoundEmptyRectRelativeLayout.ClipRoundRect.b(localClipRoundRect), Path.Direction.CW);
     }
     paramCanvas.saveLayer(new RectF(0.0F, 0.0F, i, j), null, 31);
     super.dispatchDraw(paramCanvas);
-    paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(localPath, this.a);
     paramCanvas.restore();
   }
 }

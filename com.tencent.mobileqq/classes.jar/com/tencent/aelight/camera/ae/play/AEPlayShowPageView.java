@@ -51,14 +51,14 @@ public class AEPlayShowPageView
   
   private static AEPlayShowGridAdapter.SizeInfo calcSizeInfo(int paramInt)
   {
-    int j = ViewUtils.a(10.0F);
-    int k = ViewUtils.a(4.0F);
+    int j = ViewUtils.dip2px(10.0F);
+    int k = ViewUtils.dip2px(4.0F);
     int m = (int)(k * 0.96F);
     int i;
     if (paramInt == 1) {
-      i = ViewUtils.a() - j * 2 - k * 2;
+      i = ViewUtils.getScreenWidth() - j * 2 - k * 2;
     } else {
-      i = (ViewUtils.a() - j * 2 - k * 4) / 2;
+      i = (ViewUtils.getScreenWidth() - j * 2 - k * 4) / 2;
     }
     int n = (int)(i * 0.96F * 59.0F / 34.0F);
     AEPlayShowGridAdapter.SizeInfo localSizeInfo = new AEPlayShowGridAdapter.SizeInfo();
@@ -82,10 +82,10 @@ public class AEPlayShowPageView
     if ((localObject instanceof AEPituCameraUnit))
     {
       localObject = (AEPituCameraUnit)localObject;
-      if ((((AEPituCameraUnit)localObject).a() != null) && (((AEPituCameraUnit)localObject).a().getIntent() != null))
+      if ((((AEPituCameraUnit)localObject).s() != null) && (((AEPituCameraUnit)localObject).s().getIntent() != null))
       {
-        ((AEPituCameraUnit)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
-        ((AEPituCameraUnit)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
+        ((AEPituCameraUnit)localObject).s().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
+        ((AEPituCameraUnit)localObject).s().getIntent().putExtra("KEY_CURRENT_TYPE", "");
       }
     }
   }
@@ -99,8 +99,8 @@ public class AEPlayShowPageView
   
   private void initViews(@NonNull Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2064318546, this, true);
-    this.mPlayShowGridView = ((RecyclerView)findViewById(2064121914));
+    LayoutInflater.from(paramContext).inflate(2064056418, this, true);
+    this.mPlayShowGridView = ((RecyclerView)findViewById(2063990848));
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("rv toString ");
     ((StringBuilder)localObject).append(this.mPlayShowGridView.toString());
@@ -164,11 +164,11 @@ public class AEPlayShowPageView
           return;
         }
         AEMaterialMetaData localAEMaterialMetaData = (AEMaterialMetaData)this.mInfoWrappers.get(i);
-        AEBaseReportParam.a().e(localAEMaterialMetaData.h);
+        AEBaseReportParam.a().g(localAEMaterialMetaData.P);
         AEBaseReportParam localAEBaseReportParam = AEBaseReportParam.a();
         i += 1;
-        localAEBaseReportParam.d(i);
-        AEBaseDataReporter.a().f(localAEMaterialMetaData.k);
+        localAEBaseReportParam.f(i);
+        AEBaseDataReporter.a().f(localAEMaterialMetaData.m);
       }
     }
   }
@@ -212,7 +212,7 @@ public class AEPlayShowPageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEPlayShowPageView
  * JD-Core Version:    0.7.0.1
  */

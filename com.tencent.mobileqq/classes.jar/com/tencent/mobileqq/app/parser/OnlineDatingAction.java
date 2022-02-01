@@ -33,22 +33,22 @@ public class OnlineDatingAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("OnlineDatingAction", 1, localStringBuilder.toString());
-      b_("OnlineDatingAction");
+      h_("OnlineDatingAction");
     }
     return false;
   }
   
   public boolean b()
   {
-    String str7 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomid");
-    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
-    boolean bool = TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"));
+    String str7 = (String)this.f.get("roomid");
+    String str6 = (String)this.f.get("fromid");
+    boolean bool = TextUtils.isEmpty((CharSequence)this.f.get("vasname"));
     String str5 = "";
     String str2;
     if (!bool) {
       try
       {
-        String str1 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
+        String str1 = URLDecoder.decode((String)this.f.get("vasname"), "utf-8");
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException1)
       {
@@ -59,10 +59,10 @@ public class OnlineDatingAction
     }
     String str3 = str5;
     String str4;
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("userdata"))) {
+    if (!TextUtils.isEmpty((CharSequence)this.f.get("userdata"))) {
       try
       {
-        str3 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
+        str3 = URLDecoder.decode((String)this.f.get("vasname"), "utf-8");
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException2)
       {
@@ -93,13 +93,13 @@ public class OnlineDatingAction
       localNumberFormatException2.printStackTrace();
       i = 0;
     }
-    ((ODProxy)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getManager(QQManagerFactory.ODPROXY_MGR)).a(this.jdField_a_of_type_AndroidContentContext, l1, "launcher", str2, str4, i);
+    ((ODProxy)this.a.getManager(QQManagerFactory.ODPROXY_MGR)).a(this.b, l1, "launcher", str2, str4, i);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OnlineDatingAction
  * JD-Core Version:    0.7.0.1
  */

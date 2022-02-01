@@ -20,16 +20,16 @@ class TroopGagActivity$3
   
   protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
+    if ((!TextUtils.isEmpty(this.a.c)) && (!this.a.c.equals(paramString))) {
       return;
     }
     if (paramBoolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$TroopGagMemberAdapter.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$TroopGagMemberAdapter.getCount() == 0) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.a.b.notifyDataSetChanged();
+      if (this.a.b.getCount() == 0) {
+        this.a.f.setVisibility(8);
       } else {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.a.f.setVisibility(0);
       }
       paramString = this.a;
       paramList = new StringBuilder();
@@ -38,7 +38,7 @@ class TroopGagActivity$3
       paramString = paramString.getSharedPreferences(paramList.toString(), 4).edit();
       paramList = new StringBuilder();
       paramList.append("key_last_update_time");
-      paramList.append(this.a.jdField_a_of_type_JavaLangString);
+      paramList.append(this.a.c);
       paramString.putLong(paramList.toString(), System.currentTimeMillis()).commit();
     }
     ThreadManager.post(new TroopGagActivity.3.1(this, (TroopGagMgr)this.a.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)), 8, null, false);
@@ -53,7 +53,7 @@ class TroopGagActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopGagActivity.3
  * JD-Core Version:    0.7.0.1
  */

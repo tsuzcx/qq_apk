@@ -1,10 +1,10 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import qqcircle.QQCircleReport.SingleDcData;
 
@@ -39,17 +39,16 @@ class QCircleReporter$6
       }
       localStringBuilder.append(str);
       String str = localStringBuilder.toString();
-      int i = RFLog.CLR;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("add one SingleDcData:");
       localStringBuilder.append(QCircleReporter.access$800(this.val$singleDcData));
-      RFLog.d(str, i, localStringBuilder.toString());
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReporter.6
  * JD-Core Version:    0.7.0.1
  */

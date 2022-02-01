@@ -18,80 +18,54 @@ import mqq.util.WeakReference;
 
 public class PerfReporter
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private static final PerfReporter.CalResult jdField_a_of_type_ComTencentAvUtilsPerfReporter$CalResult = new PerfReporter.CalResult(null);
-  private static final Runnable jdField_a_of_type_JavaLangRunnable = new PerfReporter.1();
-  private static String jdField_a_of_type_JavaLangString;
-  private static final Map<String, PerfReporter.DeltaTime> jdField_a_of_type_JavaUtilMap = new PerfReporter.2();
-  private static final Vector<Integer> jdField_a_of_type_JavaUtilVector = new Vector(10000);
-  private static WeakReference<Context> jdField_a_of_type_MqqUtilWeakReference;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static String jdField_b_of_type_JavaLangString;
-  private static boolean jdField_b_of_type_Boolean = false;
-  
-  public static int a()
-  {
-    long l = System.currentTimeMillis();
-    Object localObject = new Debug.MemoryInfo();
-    try
-    {
-      Debug.getMemoryInfo((Debug.MemoryInfo)localObject);
-      int i = ((Debug.MemoryInfo)localObject).getTotalPss() / 1024;
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getMemory: ");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(", cost: ");
-      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
-      QLog.d("PerfReporter", 2, ((StringBuilder)localObject).toString());
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getMemory fail to getProcessMemoryInfo by exception:");
-      localStringBuilder.append(localThrowable.getMessage());
-      QLog.w("PerfReporter", 2, localStringBuilder.toString());
-    }
-    return -1;
-  }
+  private static boolean a = false;
+  private static boolean b = false;
+  private static String c;
+  private static String d;
+  private static WeakReference<Context> e;
+  private static final PerfReporter.CalResult f = new PerfReporter.CalResult(null);
+  private static final Vector<Integer> g = new Vector(10000);
+  private static HandlerThread h;
+  private static Handler i;
+  private static final Runnable j = new PerfReporter.1();
+  private static final Map<String, PerfReporter.DeltaTime> k = new PerfReporter.2();
   
   public static Map<String, String> a(SessionInfo paramSessionInfo)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("app_subversion", jdField_b_of_type_JavaLangString);
-    localHashMap.put("user_uin", jdField_a_of_type_JavaLangString);
+    localHashMap.put("app_subversion", d);
+    localHashMap.put("user_uin", c);
     String str = "audio";
     if (paramSessionInfo == null)
     {
       QLog.w("PerfReporter", 2, "createParams with no sessionInfo found");
       str = "no_session";
     }
-    else if (!paramSessionInfo.H)
+    else if (!paramSessionInfo.aK)
     {
-      if (paramSessionInfo.j)
+      if (paramSessionInfo.H)
       {
-        if (paramSessionInfo.k) {
+        if (paramSessionInfo.I) {
           str = "video";
         } else {
           str = "local video only";
         }
       }
-      else if (paramSessionInfo.k) {
+      else if (paramSessionInfo.I) {
         str = "remote video only";
       }
     }
     localHashMap.put("call_type", str);
-    int i = 0;
-    while (i < 20)
+    int m = 0;
+    while (m < 20)
     {
       paramSessionInfo = new StringBuilder();
       paramSessionInfo.append("memory_node_");
-      i += 1;
-      paramSessionInfo.append(i);
+      m += 1;
+      paramSessionInfo.append(m);
       localHashMap.put(paramSessionInfo.toString(), "0");
     }
-    paramSessionInfo = jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    paramSessionInfo = k.keySet().iterator();
     while (paramSessionInfo.hasNext())
     {
       str = (String)paramSessionInfo.next();
@@ -118,11 +92,11 @@ public class PerfReporter
   public static void a()
   {
     QLog.d("PerfReporter", 2, "start");
-    if ((jdField_a_of_type_Boolean) && (!jdField_b_of_type_Boolean))
+    if ((a) && (!b))
     {
       b();
-      jdField_a_of_type_AndroidOsHandler.post(jdField_a_of_type_JavaLangRunnable);
-      jdField_b_of_type_Boolean = true;
+      i.post(j);
+      b = true;
       return;
     }
     QLog.w("PerfReporter", 2, "start not init yet, or already start.");
@@ -134,54 +108,139 @@ public class PerfReporter
     if (!QAVPerfTestConfig.a(paramString1))
     {
       QLog.d("PerfReporter", 2, "init QAVPerfTestConfig isPerfTestOpen returns false.");
-      jdField_a_of_type_Boolean = false;
-      jdField_b_of_type_Boolean = false;
+      a = false;
+      b = false;
       return;
     }
-    jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
-    jdField_a_of_type_JavaLangString = paramString1;
-    jdField_b_of_type_JavaLangString = paramString2;
-    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("memory_report_handler_thread");
-    jdField_a_of_type_AndroidOsHandlerThread.start();
-    jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    e = new WeakReference(paramContext);
+    c = paramString1;
+    d = paramString2;
+    h = new HandlerThread("memory_report_handler_thread");
+    h.start();
+    i = new Handler(h.getLooper());
     QQBeaconReport.a();
-    jdField_a_of_type_Boolean = true;
+    a = true;
   }
   
-  public static void a(SessionInfo paramSessionInfo)
+  public static void a(String paramString, int paramInt)
   {
-    if (!jdField_b_of_type_Boolean)
+    if (!b) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    paramString = (PerfReporter.DeltaTime)k.get(paramString);
+    if (paramInt == 0)
+    {
+      paramString.a = l;
+      return;
+    }
+    if ((paramInt == 1) && (paramString.a != 0L))
+    {
+      if (paramString.b.size() >= paramString.b.capacity())
+      {
+        PerfReporter.CalResult localCalResult = b(paramString.b);
+        paramString.c.a(localCalResult);
+        paramString.b.clear();
+      }
+      paramString.b.add(Integer.valueOf((int)(l - paramString.a)));
+      paramString.a = 0L;
+    }
+  }
+  
+  private static PerfReporter.CalResult b(Vector<Integer> paramVector)
+  {
+    PerfReporter.CalResult localCalResult = new PerfReporter.CalResult(null);
+    int i4 = paramVector.size();
+    if (i4 > 0)
+    {
+      int i2 = 0;
+      int m = 0;
+      int n;
+      int i3;
+      for (int i1 = 0; m < i4; i1 = i3)
+      {
+        n = ((Integer)paramVector.get(m)).intValue();
+        i3 = i1 + n;
+        if (localCalResult.a < 0) {
+          i1 = n;
+        } else {
+          i1 = Math.max(localCalResult.a, n);
+        }
+        localCalResult.a = i1;
+        if (localCalResult.b >= 0) {
+          n = Math.min(localCalResult.b, n);
+        }
+        localCalResult.b = n;
+        m += 1;
+      }
+      localCalResult.c = (i1 / i4);
+      double d1 = 0.0D;
+      m = i2;
+      while (m < i4)
+      {
+        n = ((Integer)paramVector.get(m)).intValue();
+        d2 = (n - localCalResult.c) * (n - localCalResult.c);
+        Double.isNaN(d2);
+        d1 += d2;
+        m += 1;
+      }
+      double d2 = i4;
+      Double.isNaN(d2);
+      localCalResult.d = Math.sqrt(d1 / d2);
+    }
+    localCalResult.e = i4;
+    return localCalResult;
+  }
+  
+  public static void b()
+  {
+    QLog.d("PerfReporter", 2, "stop");
+    if (!b) {
+      return;
+    }
+    i.removeCallbacks(j);
+    g.clear();
+    Iterator localIterator = k.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((PerfReporter.DeltaTime)((Map.Entry)localIterator.next()).getValue()).a();
+    }
+    b = false;
+  }
+  
+  public static void b(SessionInfo paramSessionInfo)
+  {
+    if (!b)
     {
       QLog.w("PerfReporter", 2, "report not started yet:");
       return;
     }
     paramSessionInfo = a(paramSessionInfo);
-    Object localObject1 = b(jdField_a_of_type_JavaUtilVector);
-    ((PerfReporter.CalResult)localObject1).a(jdField_a_of_type_ComTencentAvUtilsPerfReporter$CalResult);
-    paramSessionInfo.put("memory_max", String.valueOf(((PerfReporter.CalResult)localObject1).jdField_a_of_type_Int));
+    Object localObject1 = b(g);
+    ((PerfReporter.CalResult)localObject1).a(f);
+    paramSessionInfo.put("memory_max", String.valueOf(((PerfReporter.CalResult)localObject1).a));
     paramSessionInfo.put("memory_min", String.valueOf(((PerfReporter.CalResult)localObject1).b));
     paramSessionInfo.put("memory_avg", String.valueOf(((PerfReporter.CalResult)localObject1).c));
-    paramSessionInfo.put("memory_variance", String.valueOf(((PerfReporter.CalResult)localObject1).jdField_a_of_type_Double));
-    int j;
-    for (int i = 0; (i < jdField_a_of_type_JavaUtilVector.size()) && (i < 20); i = j)
+    paramSessionInfo.put("memory_variance", String.valueOf(((PerfReporter.CalResult)localObject1).d));
+    int n;
+    for (int m = 0; (m < g.size()) && (m < 20); m = n)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("memory_node_");
-      j = i + 1;
-      ((StringBuilder)localObject1).append(j);
-      paramSessionInfo.put(((StringBuilder)localObject1).toString(), String.valueOf(jdField_a_of_type_JavaUtilVector.get(i)));
+      n = m + 1;
+      ((StringBuilder)localObject1).append(n);
+      paramSessionInfo.put(((StringBuilder)localObject1).toString(), String.valueOf(g.get(m)));
     }
-    localObject1 = jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    localObject1 = k.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       String str = (String)((Iterator)localObject1).next();
-      Object localObject2 = (PerfReporter.DeltaTime)jdField_a_of_type_JavaUtilMap.get(str);
-      PerfReporter.CalResult localCalResult = b(((PerfReporter.DeltaTime)localObject2).jdField_a_of_type_JavaUtilVector);
-      localCalResult.a(((PerfReporter.DeltaTime)localObject2).jdField_a_of_type_ComTencentAvUtilsPerfReporter$CalResult);
+      Object localObject2 = (PerfReporter.DeltaTime)k.get(str);
+      PerfReporter.CalResult localCalResult = b(((PerfReporter.DeltaTime)localObject2).b);
+      localCalResult.a(((PerfReporter.DeltaTime)localObject2).c);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(str);
       ((StringBuilder)localObject2).append("_max");
-      paramSessionInfo.put(((StringBuilder)localObject2).toString(), String.valueOf(localCalResult.jdField_a_of_type_Int));
+      paramSessionInfo.put(((StringBuilder)localObject2).toString(), String.valueOf(localCalResult.a));
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(str);
       ((StringBuilder)localObject2).append("_min");
@@ -193,94 +252,35 @@ public class PerfReporter
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(str);
       ((StringBuilder)localObject2).append("_variance");
-      paramSessionInfo.put(((StringBuilder)localObject2).toString(), String.valueOf(localCalResult.jdField_a_of_type_Double));
+      paramSessionInfo.put(((StringBuilder)localObject2).toString(), String.valueOf(localCalResult.d));
     }
-    QQBeaconReport.a("0AND0B5DQ74RHJ2R", jdField_a_of_type_JavaLangString, "av_perf", true, paramSessionInfo, true);
+    QQBeaconReport.a("0AND0B5DQ74RHJ2R", c, "av_perf", true, paramSessionInfo, true);
   }
   
-  public static void a(String paramString, int paramInt)
+  public static int c()
   {
-    if (!jdField_b_of_type_Boolean) {
-      return;
-    }
     long l = System.currentTimeMillis();
-    paramString = (PerfReporter.DeltaTime)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramInt == 0)
+    Object localObject = new Debug.MemoryInfo();
+    try
     {
-      paramString.jdField_a_of_type_Long = l;
-      return;
+      Debug.getMemoryInfo((Debug.MemoryInfo)localObject);
+      int m = ((Debug.MemoryInfo)localObject).getTotalPss() / 1024;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMemory: ");
+      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append(", cost: ");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.d("PerfReporter", 2, ((StringBuilder)localObject).toString());
+      return m;
     }
-    if ((paramInt == 1) && (paramString.jdField_a_of_type_Long != 0L))
+    catch (Throwable localThrowable)
     {
-      if (paramString.jdField_a_of_type_JavaUtilVector.size() >= paramString.jdField_a_of_type_JavaUtilVector.capacity())
-      {
-        PerfReporter.CalResult localCalResult = b(paramString.jdField_a_of_type_JavaUtilVector);
-        paramString.jdField_a_of_type_ComTencentAvUtilsPerfReporter$CalResult.a(localCalResult);
-        paramString.jdField_a_of_type_JavaUtilVector.clear();
-      }
-      paramString.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf((int)(l - paramString.jdField_a_of_type_Long)));
-      paramString.jdField_a_of_type_Long = 0L;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getMemory fail to getProcessMemoryInfo by exception:");
+      localStringBuilder.append(localThrowable.getMessage());
+      QLog.w("PerfReporter", 2, localStringBuilder.toString());
     }
-  }
-  
-  private static PerfReporter.CalResult b(Vector<Integer> paramVector)
-  {
-    PerfReporter.CalResult localCalResult = new PerfReporter.CalResult(null);
-    int i1 = paramVector.size();
-    if (i1 > 0)
-    {
-      int m = 0;
-      int i = 0;
-      int j;
-      int n;
-      for (int k = 0; i < i1; k = n)
-      {
-        j = ((Integer)paramVector.get(i)).intValue();
-        n = k + j;
-        if (localCalResult.jdField_a_of_type_Int < 0) {
-          k = j;
-        } else {
-          k = Math.max(localCalResult.jdField_a_of_type_Int, j);
-        }
-        localCalResult.jdField_a_of_type_Int = k;
-        if (localCalResult.b >= 0) {
-          j = Math.min(localCalResult.b, j);
-        }
-        localCalResult.b = j;
-        i += 1;
-      }
-      localCalResult.c = (k / i1);
-      double d1 = 0.0D;
-      i = m;
-      while (i < i1)
-      {
-        j = ((Integer)paramVector.get(i)).intValue();
-        d2 = (j - localCalResult.c) * (j - localCalResult.c);
-        Double.isNaN(d2);
-        d1 += d2;
-        i += 1;
-      }
-      double d2 = i1;
-      Double.isNaN(d2);
-      localCalResult.jdField_a_of_type_Double = Math.sqrt(d1 / d2);
-    }
-    localCalResult.d = i1;
-    return localCalResult;
-  }
-  
-  public static void b()
-  {
-    QLog.d("PerfReporter", 2, "stop");
-    if (!jdField_b_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_AndroidOsHandler.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    jdField_a_of_type_JavaUtilVector.clear();
-    Iterator localIterator = jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((PerfReporter.DeltaTime)((Map.Entry)localIterator.next()).getValue()).a();
-    }
-    jdField_b_of_type_Boolean = false;
+    return -1;
   }
 }
 

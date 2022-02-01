@@ -11,13 +11,12 @@ class LimitChatPie$26
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LimitChatPie.e(this.a);
-    this.a.a().finish();
+    this.a.aX().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.26
  * JD-Core Version:    0.7.0.1
  */

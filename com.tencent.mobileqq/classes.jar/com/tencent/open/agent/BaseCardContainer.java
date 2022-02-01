@@ -29,46 +29,29 @@ import java.util.List;
 public abstract class BaseCardContainer
   extends RelativeLayout
 {
-  protected final int a;
   protected Context a;
-  private Drawable a;
-  protected Handler a;
-  protected ImageView a;
-  protected LinearLayout a;
-  protected URLDrawableDownListener.Adapter a;
-  protected URLImageView a;
-  protected List<Permission> a;
-  protected boolean a;
-  protected int b = -1;
+  protected final int b;
+  protected List<Permission> c;
+  protected boolean d = false;
+  protected int e = -1;
+  protected LinearLayout f;
+  protected ImageView g;
+  protected URLImageView h;
+  protected Handler i = new BaseCardContainer.1(this, Looper.getMainLooper());
+  protected URLDrawableDownListener.Adapter j = new BaseCardContainer.2(this);
+  private Drawable k;
   
   public BaseCardContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new BaseCardContainer.1(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new BaseCardContainer.2(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = paramContext;
+    this.b = getResources().getDisplayMetrics().widthPixels;
+    this.c = new ArrayList();
   }
   
-  private Drawable a()
+  private URLDrawable c(String paramString)
   {
-    try
-    {
-      Drawable localDrawable = QQLiteStatusUtil.a(this.jdField_a_of_type_Int);
-      return localDrawable;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      SSOLog.c("BaseCardContainer", "-->create empty drawable oom.", localOutOfMemoryError);
-    }
-    return null;
-  }
-  
-  private URLDrawable a(String paramString)
-  {
-    Object localObject = a();
+    Object localObject = getEmptyDrawable();
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
@@ -89,14 +72,28 @@ public abstract class BaseCardContainer
     }
     if ((paramString == null) || (paramString.getStatus() != 1))
     {
-      URLImageView localURLImageView = this.jdField_a_of_type_ComTencentImageURLImageView;
+      URLImageView localURLImageView = this.h;
       if (localURLImageView != null)
       {
-        localURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
-        this.jdField_a_of_type_AndroidOsHandler.post(new BaseCardContainer.3(this, paramString));
+        localURLImageView.setURLDrawableDownListener(this.j);
+        this.i.post(new BaseCardContainer.3(this, paramString));
       }
     }
     return paramString;
+  }
+  
+  private Drawable getEmptyDrawable()
+  {
+    try
+    {
+      Drawable localDrawable = QQLiteStatusUtil.a(this.b);
+      return localDrawable;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      SSOLog.c("BaseCardContainer", "-->create empty drawable oom.", localOutOfMemoryError);
+    }
+    return null;
   }
   
   protected String a(String paramString)
@@ -104,32 +101,32 @@ public abstract class BaseCardContainer
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    int j = paramString.length();
-    if (j >= 8)
+    int n = paramString.length();
+    if (n >= 8)
     {
-      localObject = paramString.substring(j - 8);
+      localObject = paramString.substring(n - 8);
     }
     else
     {
       localObject = new StringBuilder();
-      i = 0;
-      while (i < 8 - j)
+      m = 0;
+      while (m < 8 - n)
       {
         ((StringBuilder)localObject).append("0");
-        i += 1;
+        m += 1;
       }
       ((StringBuilder)localObject).append(paramString);
       localObject = ((StringBuilder)localObject).toString();
     }
     StringBuilder localStringBuilder = new StringBuilder("http://i.gtimg.cn/open/app_icon");
-    j = 0;
-    int i = 2;
-    while (j < 8)
+    n = 0;
+    int m = 2;
+    while (n < 8)
     {
       localStringBuilder.append("/");
-      localStringBuilder.append(((String)localObject).substring(j, i));
-      j += 2;
-      i += 2;
+      localStringBuilder.append(((String)localObject).substring(n, m));
+      n += 2;
+      m += 2;
     }
     localStringBuilder.append("/");
     localStringBuilder.append(paramString);
@@ -177,9 +174,9 @@ public abstract class BaseCardContainer
   {
     URLImageView localURLImageView = paramURLImageView;
     if (paramURLImageView == null) {
-      localURLImageView = this.jdField_a_of_type_ComTencentImageURLImageView;
+      localURLImageView = this.h;
     }
-    paramURLImageView = a();
+    paramURLImageView = getEmptyDrawable();
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramURLImageView;
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramURLImageView;
@@ -205,14 +202,14 @@ public abstract class BaseCardContainer
     else
     {
       SSOLog.a("BaseCardContainer", new Object[] { "getStatus OTHERS: " });
-      localURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter);
+      localURLImageView.setURLDrawableDownListener(this.j);
     }
     if (paramURLImageView != null) {
       localURLImageView.setImageDrawable(paramURLImageView);
     }
   }
   
-  protected void a(String paramString)
+  protected void b(String paramString)
   {
     ThreadManager.executeOnSubThread(new BaseCardContainer.6(this, paramString));
   }
@@ -220,14 +217,14 @@ public abstract class BaseCardContainer
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131378869));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378870));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131367471));
+    this.f = ((LinearLayout)super.findViewById(2131447569));
+    this.g = ((ImageView)super.findViewById(2131447570));
+    this.h = ((URLImageView)super.findViewById(2131433977));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseCardContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -45,7 +45,7 @@ class Share$1$1$1
       localObject1 = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject1).inSampleSize = 1;
       localObject1 = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject1);
-      this.a.a.this$0.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(localObject1);
+      this.a.b.this$0.x = new SoftReference(localObject1);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -67,7 +67,7 @@ class Share$1$1$1
       QLog.e("shareWebPage", 2, "WebView screenshot OutOfMemoryError.");
     }
     localObject4 = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
-    localObject3 = this.a.a.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount();
+    localObject3 = this.a.b.this$0.G.getAccount();
     localObject2 = ((TicketManager)localObject4).getSkey((String)localObject3);
     l2 = System.currentTimeMillis();
     localObject1 = null;
@@ -87,7 +87,7 @@ class Share$1$1$1
     }
     if (QLog.isColorLevel())
     {
-      localObject5 = Share.jdField_a_of_type_JavaLangString;
+      localObject5 = Share.a;
       localObject6 = new StringBuilder();
       ((StringBuilder)localObject6).append("queryImage, ret=");
       ((StringBuilder)localObject6).append(((Pair)localObject1).first);
@@ -120,9 +120,9 @@ class Share$1$1$1
     ReportCenter.a().a((Bundle)localObject5, "", (String)localObject3, false);
     if (!TextUtils.isEmpty((CharSequence)((Pair)localObject1).second))
     {
-      this.a.a.this$0.i = ((String)((Pair)localObject1).second);
-      this.a.a.this$0.jdField_e_of_type_Boolean = false;
-      this.a.a.this$0.b = 0;
+      this.a.b.this$0.i = ((String)((Pair)localObject1).second);
+      this.a.b.this$0.p = false;
+      this.a.b.this$0.q = 0;
     }
     else
     {
@@ -154,7 +154,7 @@ class Share$1$1$1
       paramString.putString("act_type", "51");
       localObject5 = "intext_3";
       paramString.putString((String)localObject5, "1");
-      localObject1 = this.a.a.jdField_a_of_type_JavaLangString;
+      localObject1 = this.a.b.a;
       localObject4 = "stringext_1";
       paramString.putString((String)localObject4, (String)localObject1);
       ReportCenter.a().a(paramString, "", (String)localObject3, false);
@@ -185,9 +185,9 @@ class Share$1$1$1
             if (TextUtils.isEmpty(paramString)) {
               break label1118;
             }
-            this.a.a.this$0.i = paramString;
-            this.a.a.this$0.jdField_e_of_type_Boolean = false;
-            this.a.a.this$0.b = 0;
+            this.a.b.this$0.i = paramString;
+            this.a.b.this$0.p = false;
+            this.a.b.this$0.q = 0;
             k = 0;
             i = j;
           }
@@ -200,7 +200,7 @@ class Share$1$1$1
         }
         if (QLog.isColorLevel())
         {
-          QLog.d(Share.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
+          QLog.d(Share.a, 2, paramString.getMessage());
           i = j;
         }
         label1118:
@@ -229,7 +229,7 @@ class Share$1$1$1
       ((StringBuilder)localObject1).append(l2 - l1);
       paramString.putString("intext_5", ((StringBuilder)localObject1).toString());
       if (k == 1) {
-        paramString.putString((String)localObject4, this.a.a.jdField_a_of_type_JavaLangString);
+        paramString.putString((String)localObject4, this.a.b.a);
       }
       ReportCenter.a().a(paramString, "", (String)localObject3, false);
     }
@@ -241,13 +241,13 @@ class Share$1$1$1
     {
       paramString = new StringBuilder();
       paramString.append("Share info after WebView screenshot: title=");
-      paramString.append(this.a.a.this$0.jdField_e_of_type_JavaLangString);
+      paramString.append(this.a.b.this$0.e);
       paramString.append(", summary=");
-      paramString.append(this.a.a.this$0.h);
+      paramString.append(this.a.b.this$0.h);
       paramString.append(", thumb=");
-      paramString.append(this.a.a.this$0.i);
+      paramString.append(this.a.b.this$0.i);
       paramString.append(", shareURL=");
-      paramString.append(this.a.a.jdField_a_of_type_JavaLangString);
+      paramString.append(this.a.b.a);
       QLog.e("shareWebPage", 2, paramString.toString());
       localObject1 = localObject2;
       paramString = (String)localObject3;
@@ -257,17 +257,17 @@ class Share$1$1$1
     label1467:
     k = 1;
     localObject2 = new Bundle();
-    if (TextUtils.isEmpty(this.a.a.this$0.i)) {
+    if (TextUtils.isEmpty(this.a.b.this$0.i)) {
       j = 1;
     } else {
       j = 0;
     }
     i = j;
-    if (TextUtils.isEmpty(this.a.a.this$0.h)) {
+    if (TextUtils.isEmpty(this.a.b.this$0.h)) {
       i = j | 0x2;
     }
     j = i;
-    if (TextUtils.isEmpty(this.a.a.this$0.jdField_e_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a.b.this$0.e)) {
       j = i | 0x4;
     }
     ((Bundle)localObject2).putString("report_type", "102");
@@ -282,27 +282,27 @@ class Share$1$1$1
     ((Bundle)localObject2).putString("intext_1", ((StringBuilder)localObject3).toString());
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("");
-    ((StringBuilder)localObject3).append(ReportDef.RepUtil.b(this.a.a.jdField_a_of_type_Int));
+    ((StringBuilder)localObject3).append(ReportDef.RepUtil.b(this.a.b.b));
     ((Bundle)localObject2).putString((String)localObject1, ((StringBuilder)localObject3).toString());
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("");
     ((StringBuilder)localObject1).append(j);
     ((Bundle)localObject2).putString("intext_2", ((StringBuilder)localObject1).toString());
-    ((Bundle)localObject2).putString(paramString, this.a.a.jdField_a_of_type_JavaLangString);
-    ReportCenter.a().a((Bundle)localObject2, "", this.a.a.this$0.jdField_a_of_type_MqqAppAppRuntime.getAccount(), false);
+    ((Bundle)localObject2).putString(paramString, this.a.b.a);
+    ReportCenter.a().a((Bundle)localObject2, "", this.a.b.this$0.G.getAccount(), false);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
       paramString.append("WebView screenshot END. thumb=");
-      paramString.append(this.a.a.this$0.i);
+      paramString.append(this.a.b.this$0.i);
       QLog.e("shareWebPage", 2, paramString.toString());
     }
-    Share.a(this.a.a.this$0, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_Int, this.a.a.jdField_a_of_type_Boolean);
+    Share.a(this.a.b.this$0, this.a.b.a, this.a.b.b, this.a.b.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.1.1.1
  * JD-Core Version:    0.7.0.1
  */

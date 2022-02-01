@@ -24,13 +24,13 @@ class QidianProfileCardActivity$28
     ((QZoneHelper.UserInfo)localObject2).qzone_uin = this.this$0.app.getCurrentAccountUin();
     ((QZoneHelper.UserInfo)localObject2).nickname = ((String)localObject1);
     localObject1 = this.this$0;
-    QZoneHelper.forwardToUserHome((Context)localObject1, (QZoneHelper.UserInfo)localObject2, ((QidianProfileCardActivity)localObject1).jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.uin, this.this$0.jdField_a_of_type_ComTencentMobileqqProfilecardDataProfileCardInfo.allInOne.lastActivity, -1, 5, this.this$0.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession, this.a, false);
+    QZoneHelper.forwardToUserHome((Context)localObject1, (QZoneHelper.UserInfo)localObject2, ((QidianProfileCardActivity)localObject1).e.allInOne.uin, this.this$0.e.allInOne.lastActivity, -1, 5, this.this$0.x, this.a, false);
     QidianProfileCardActivity.b(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.28
  * JD-Core Version:    0.7.0.1
  */

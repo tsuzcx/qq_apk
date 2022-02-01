@@ -13,13 +13,13 @@ class QQFavProxyImpl$3
   {
     Iterator localIterator = QQFavProxyImpl.access$100(this.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((IQQFavProxy.QQFavProxyListener)localIterator.next()).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      ((IQQFavProxy.QQFavProxyListener)localIterator.next()).a(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.impl.QQFavProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

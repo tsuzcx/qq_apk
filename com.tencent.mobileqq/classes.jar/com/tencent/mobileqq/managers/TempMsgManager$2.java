@@ -14,12 +14,12 @@ class TempMsgManager$2
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b(1);
+      this.a.f(1);
     }
     else if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqManagersTempMsgManager.a(this.jdField_a_of_type_Short, true, true);
-      ReportController.b(TempMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqManagersTempMsgManager), "dc00898", "", "", "0X8009978", "0X8009978", this.jdField_a_of_type_ComTencentMobileqqManagersTempMsgManager.a(this.jdField_a_of_type_Short), this.jdField_a_of_type_ComTencentMobileqqManagersTempMsgManager.a(this.jdField_a_of_type_Short), "", "", "", "");
+      this.c.a(this.b, true, true);
+      ReportController.b(TempMsgManager.a(this.c), "dc00898", "", "", "0X8009978", "0X8009978", this.c.d(this.b), this.c.d(this.b), "", "", "", "");
     }
     paramDialogInterface.dismiss();
   }

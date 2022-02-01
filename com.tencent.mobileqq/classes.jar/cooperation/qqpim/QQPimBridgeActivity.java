@@ -27,10 +27,10 @@ public class QQPimBridgeActivity
   implements Handler.Callback
 {
   public static long a;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  QQPimPluginLoadRunnable.IPluginLoadListener jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener = new QQPimBridgeActivity.2(this);
-  private QQPimPluginLoadRunnable jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
+  QQPimPluginLoadRunnable.IPluginLoadListener b = new QQPimBridgeActivity.2(this);
+  private QQProgressDialog c;
+  private MqqWeakReferenceHandler d;
+  private QQPimPluginLoadRunnable e;
   
   public static boolean a(Context paramContext)
   {
@@ -62,35 +62,35 @@ public class QQPimBridgeActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167333);
-    if (System.currentTimeMillis() - jdField_a_of_type_Long < 800L)
+    getWindow().setBackgroundDrawableResource(2131168376);
+    if (System.currentTimeMillis() - a < 800L)
     {
       finish();
       return true;
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getResources().getDimensionPixelSize(2131299168));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131710569));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new QQPimBridgeActivity.1(this));
-    paramBundle = this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
+    this.d = new MqqWeakReferenceHandler(this);
+    a = System.currentTimeMillis();
+    this.c = new QQProgressDialog(this, super.getResources().getDimensionPixelSize(2131299920));
+    this.c.a(HardCodeUtil.a(2131908256));
+    this.c.setCanceledOnTouchOutside(false);
+    this.c.setOnDismissListener(new QQPimBridgeActivity.1(this));
+    paramBundle = this.e;
     if (paramBundle != null) {
       paramBundle.a();
     }
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable$IPluginLoadListener);
-    ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
+    this.e = new QQPimPluginLoadRunnable(this.b);
+    ThreadManager.postImmediately(this.e, null, true);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.c;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.c.dismiss();
+      this.c = null;
     }
     sTopActivity = null;
   }
@@ -108,20 +108,20 @@ public class QQPimBridgeActivity
         if (!isFinishing())
         {
           i = paramMessage.arg1;
-          int j = super.getResources().getDimensionPixelSize(2131299168);
-          paramMessage = HardCodeUtil.a(2131710572);
+          int j = super.getResources().getDimensionPixelSize(2131299920);
+          paramMessage = HardCodeUtil.a(2131908259);
           if (-4 == i) {
-            paramMessage = HardCodeUtil.a(2131710573);
+            paramMessage = HardCodeUtil.a(2131908260);
           } else if ((-5 != i) && (-1 != i) && (-3 != i) && (-2 != i))
           {
             if (-6 == i) {
-              paramMessage = HardCodeUtil.a(2131710570);
+              paramMessage = HardCodeUtil.a(2131908257);
             }
           }
           else {
-            paramMessage = HardCodeUtil.a(2131710568);
+            paramMessage = HardCodeUtil.a(2131908255);
           }
-          QQToast.a(this.app.getApp(), 1, paramMessage, 0).b(j);
+          QQToast.makeText(this.app.getApp(), 1, paramMessage, 0).show(j);
           finish();
           return false;
         }
@@ -129,23 +129,23 @@ public class QQPimBridgeActivity
       else if (!isFinishing())
       {
         Bundle localBundle = getIntent().getExtras();
-        boolean bool = QQPimDefineList.i.equals(localBundle.getString(QQPimDefineList.o));
+        boolean bool = QQPimDefineList.j.equals(localBundle.getString(QQPimDefineList.p));
         Object localObject = null;
         paramMessage = null;
         if (bool)
         {
           if (!a(getApplicationContext())) {
-            paramMessage = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+            paramMessage = this.c;
           }
           QQPimPluginProxyActivity.a(this, localBundle, paramMessage);
           finish();
           return false;
         }
-        if (QQPimDefineList.j.equals(localBundle.getString(QQPimDefineList.o)))
+        if (QQPimDefineList.k.equals(localBundle.getString(QQPimDefineList.p)))
         {
           paramMessage = localObject;
           if (!a(getApplicationContext())) {
-            paramMessage = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+            paramMessage = this.c;
           }
           QQPimPluginProxyActivity.b(this, localBundle, paramMessage);
           finish();
@@ -155,11 +155,11 @@ public class QQPimBridgeActivity
     }
     else if (!isFinishing())
     {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      paramMessage = this.c;
       if (paramMessage != null)
       {
-        paramMessage.a(HardCodeUtil.a(2131710571));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        paramMessage.a(HardCodeUtil.a(2131908258));
+        this.c.show();
       }
     }
     return false;
@@ -179,7 +179,7 @@ public class QQPimBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqpim.QQPimBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

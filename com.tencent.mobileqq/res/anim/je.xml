@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
+<set android:shareInterpolator="false" android:startOffset="233" android:zAdjustment="top"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <set android:ordering="sequentially">
-        <objectAnimator android:interpolator="@interpolator/k" android:duration="183" android:valueFrom="1.0" android:valueTo="1.4" android:valueType="floatType" android:propertyName="scaleX" />
-        <objectAnimator android:interpolator="@interpolator/k" android:duration="16" android:valueFrom="1.4" android:valueTo="0.0" android:valueType="floatType" android:propertyName="scaleX" />
-        <objectAnimator android:interpolator="@interpolator/k" android:duration="300" android:valueFrom="0.0" android:valueTo="0.0" android:valueType="floatType" android:propertyName="scaleX" />
-    </set>
-    <set android:ordering="sequentially">
-        <objectAnimator android:interpolator="@interpolator/k" android:duration="183" android:valueFrom="1.0" android:valueTo="1.4" android:valueType="floatType" android:propertyName="scaleY" />
-        <objectAnimator android:interpolator="@interpolator/k" android:duration="16" android:valueFrom="1.4" android:valueTo="0.0" android:valueType="floatType" android:propertyName="scaleY" />
-        <objectAnimator android:interpolator="@interpolator/k" android:duration="300" android:valueFrom="0.0" android:valueTo="0.0" android:valueType="floatType" android:propertyName="scaleY" />
-    </set>
+    <translate android:interpolator="@anim/js" android:duration="250" android:fromYDelta="100.0%p" android:toYDelta="0.0" />
 </set>

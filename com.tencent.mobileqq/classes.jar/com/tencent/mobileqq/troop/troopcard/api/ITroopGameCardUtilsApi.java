@@ -52,7 +52,7 @@ public abstract interface ITroopGameCardUtilsApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcard.api.ITroopGameCardUtilsApi
  * JD-Core Version:    0.7.0.1
  */

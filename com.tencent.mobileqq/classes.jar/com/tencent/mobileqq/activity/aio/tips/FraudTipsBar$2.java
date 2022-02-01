@@ -21,10 +21,10 @@ class FraudTipsBar$2
   
   public void onClick(View paramView)
   {
-    FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar, 2);
-    FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a();
-    ReportController.b(FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar), "P_CliOper", "Safe_AntiFraud", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a, "banner", "userclick", this.jdField_a_of_type_Int, 0, "", "", "", "");
-    Object localObject1 = (Bundle)AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerURL", 146, this.jdField_a_of_type_Int);
+    FraudTipsBar.a(this.b, 2);
+    FraudTipsBar.a(this.b).c();
+    ReportController.b(FraudTipsBar.c(this.b), "P_CliOper", "Safe_AntiFraud", FraudTipsBar.d(this.b).b, "banner", "userclick", this.a, 0, "", "", "", "");
+    Object localObject1 = (Bundle)AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerURL", 146, this.a);
     if (localObject1 != null) {
       localObject1 = ((Bundle)localObject1).getString("BannerURL");
     } else {
@@ -34,12 +34,12 @@ class FraudTipsBar$2
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       localObject2 = "https://jubao.qq.com/cn/jubao?appname=KQQ&subapp=$SUBAPP$&jubaotype=uin&system=$SYSTEM$&eviluin=$EVILUIN$&impeachuin=$USERUIN$";
     }
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.a == 1) {
       localObject1 = ((String)localObject2).replace("$SUBAPP$", "notice");
     } else {
       localObject1 = ((String)localObject2).replace("$SUBAPP$", "tips");
     }
-    localObject1 = ((String)localObject1).replace("$SYSTEM$", "android").replace("$EVILUIN$", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).a).replace("$USERUIN$", FraudTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar).getAccount());
+    localObject1 = ((String)localObject1).replace("$SYSTEM$", "android").replace("$EVILUIN$", FraudTipsBar.d(this.b).b).replace("$USERUIN$", FraudTipsBar.c(this.b).getAccount());
     localObject2 = BaseActivity.sTopActivity;
     Intent localIntent = new Intent((Context)localObject2, QQBrowserDelegationActivity.class);
     localIntent.putExtra("injectrecommend", true);
@@ -50,7 +50,7 @@ class FraudTipsBar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.FraudTipsBar.2
  * JD-Core Version:    0.7.0.1
  */

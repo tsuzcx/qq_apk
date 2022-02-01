@@ -14,24 +14,24 @@ class QfileBaseRecentFileTabView$6$2
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    if (this.a.getCloudType() == 0)
     {
-      ((IQQFileEngine)QfileBaseRecentFileTabView.n(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$6.a).getRuntimeService(IQQFileEngine.class)).resumeOnlineTrans(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      ((IQQFileEngine)QfileBaseRecentFileTabView.q(this.b.a).getRuntimeService(IQQFileEngine.class)).resumeOnlineTrans(this.a.nSessionId);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 6)
+    if (this.a.getCloudType() == 6)
     {
-      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).downloadDatalineFile(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).downloadDatalineFile(this.a);
       return;
     }
-    ((IQQFileEngine)QfileBaseRecentFileTabView.o(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$6.a).getRuntimeService(IQQFileEngine.class)).resume(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((IQQFileEngine)QfileBaseRecentFileTabView.r(this.b.a).getRuntimeService(IQQFileEngine.class)).resume(this.a.nSessionId);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.6.2
  * JD-Core Version:    0.7.0.1
  */

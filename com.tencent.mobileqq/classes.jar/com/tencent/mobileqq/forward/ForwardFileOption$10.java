@@ -10,20 +10,20 @@ class ForwardFileOption$10
   
   public void onDismiss()
   {
-    if (!this.a.m) {
+    if (!this.a.am) {
       ForwardFileOption.a(this.a, -8);
     }
-    if (ForwardFileOption.a(this.a) != null)
+    if (ForwardFileOption.d(this.a) != null)
     {
-      ForwardFileOption.a(this.a).setFocusable(true);
-      ForwardFileOption.a(this.a).setFocusableInTouchMode(true);
-      ForwardFileOption.a(this.a).requestFocus();
+      ForwardFileOption.d(this.a).setFocusable(true);
+      ForwardFileOption.d(this.a).setFocusableInTouchMode(true);
+      ForwardFileOption.d(this.a).requestFocus();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileOption.10
  * JD-Core Version:    0.7.0.1
  */

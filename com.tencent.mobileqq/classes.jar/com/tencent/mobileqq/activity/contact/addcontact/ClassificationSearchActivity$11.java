@@ -22,7 +22,7 @@ class ClassificationSearchActivity$11
     if (paramString != null)
     {
       Object localObject2 = null;
-      Iterator localIterator = this.a.b.iterator();
+      Iterator localIterator = this.a.u.iterator();
       Object localObject1;
       do
       {
@@ -42,34 +42,34 @@ class ClassificationSearchActivity$11
       }
       else
       {
-        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+        if (this.a.q == ClassificationSearchActivity.k)
         {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+          this.a.K.setText(paramString);
           if (!TextUtils.isEmpty(paramString.trim()))
           {
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+            this.a.K.setSelection(this.a.K.getText().length());
             ClassificationSearchActivity.a(this.a, paramString);
           }
         }
-        else if (this.a.f == ClassificationSearchActivity.d)
+        else if (this.a.q == ClassificationSearchActivity.n)
         {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
+          this.a.K.setText(paramString);
+          this.a.K.setSelection(paramString.length());
           ClassificationSearchActivity.a(this.a, paramString);
         }
         else
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
+          this.a.M.a(paramString, false);
         }
-        if ((this.a.f != ClassificationSearchActivity.d) && (!TextUtils.isEmpty(paramString.trim()))) {
+        if ((this.a.q != ClassificationSearchActivity.n) && (!TextUtils.isEmpty(paramString.trim()))) {
           this.a.a(paramString);
         }
       }
       if (localObject1 != null)
       {
-        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) {
+        if (this.a.q == ClassificationSearchActivity.k) {
           paramString = "kan";
-        } else if (this.a.f == ClassificationSearchActivity.d) {
+        } else if (this.a.q == ClassificationSearchActivity.n) {
           paramString = "quan";
         } else {
           paramString = "";
@@ -86,7 +86,7 @@ class ClassificationSearchActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -38,10 +38,10 @@ class SogouEmoji$4
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonManagerService.syncFindEmoticonPackageById(str);
+        Object localObject2 = this.this$0.e.syncFindEmoticonPackageById(str);
         if (localObject2 == null)
         {
-          this.this$0.jdField_a_of_type_ComTencentMobileqqEmoticonApiIEmojiManagerService.startDownloadEmosmJson(str, EmojiManagerServiceConstant.JSON_EMOSM_MALL);
+          this.this$0.f.startDownloadEmosmJson(str, EmojiManagerServiceConstant.JSON_EMOSM_MALL);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -63,7 +63,7 @@ class SogouEmoji$4
             ((StringBuilder)localObject3).append(",json exists in local db.");
             QLog.d("SogouEmoji", 2, ((StringBuilder)localObject3).toString());
           }
-          Object localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonManagerService.syncGetSubEmoticonsByPackageId(str, true);
+          Object localObject3 = this.this$0.e.syncGetSubEmoticonsByPackageId(str, true);
           localObject2 = localObject1;
           if ((localObject3 instanceof ArrayList))
           {
@@ -102,7 +102,7 @@ class SogouEmoji$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.SogouEmoji.4
  * JD-Core Version:    0.7.0.1
  */

@@ -78,7 +78,7 @@ public class OfflineFileDecoder
         localStringBuilder.append(";fileKey :");
         localStringBuilder.append(paramMsg);
         localStringBuilder.append(";");
-        if (!paramMessageHandler.a().a(paramMsg))
+        if (!paramMessageHandler.D().a(paramMsg))
         {
           String str = ((im_msg_body.NotOnlineFile)localObject2).bytes_file_name.get().toStringUtf8();
           localStringBuilder.append("strFileName:");
@@ -106,7 +106,7 @@ public class OfflineFileDecoder
                 localStringBuilder.append(";");
                 if (!paramBoolean4)
                 {
-                  if (StreamDataManager.d(paramMsg))
+                  if (StreamDataManager.m(paramMsg))
                   {
                     localStringBuilder.append("DuplicateKey:");
                     localStringBuilder.append(paramMsg);
@@ -114,10 +114,10 @@ public class OfflineFileDecoder
                     if (QLog.isColorLevel()) {
                       QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
                     }
-                    StreamDataManager.c(paramMsg);
+                    StreamDataManager.l(paramMsg);
                     return;
                   }
-                  StreamDataManager.b(paramMsg);
+                  StreamDataManager.k(paramMsg);
                 }
               }
               else if (QLog.isColorLevel())
@@ -142,7 +142,7 @@ public class OfflineFileDecoder
               ((MessageForPtt)localObject1).msgData = ((RichMsg.PttRec)localObject2).toByteArray();
               ((MessageForPtt)localObject1).parse();
               paramList.add(localObject1);
-              ((IPttInfoCollector)QRoute.api(IPttInfoCollector.class)).reportPTTPV(paramMessageHandler.a, 1, false, 4);
+              ((IPttInfoCollector)QRoute.api(IPttInfoCollector.class)).reportPTTPV(paramMessageHandler.n, 1, false, 4);
             }
           }
           else
@@ -185,7 +185,7 @@ public class OfflineFileDecoder
           localStringBuilder.append("]");
           QLog.d("OfflineFileDecoder", 2, localStringBuilder.toString());
         }
-        paramMessageHandler.a.getFileTransferHandler().a(paramMessageHandler, paramList, paramMsg, (im_msg_body.NotOnlineFile)localObject2, String.valueOf(paramLong1), paramBoolean1, paramBoolean2, paramLong2, paramInt2, null);
+        paramMessageHandler.n.getFileTransferHandler().a(paramMessageHandler, paramList, paramMsg, (im_msg_body.NotOnlineFile)localObject2, String.valueOf(paramLong1), paramBoolean1, paramBoolean2, paramLong2, paramInt2, null);
       }
       return;
     }
@@ -204,21 +204,21 @@ public class OfflineFileDecoder
   {
     long l1 = paramMsg.msg_head.from_uin.get();
     int i = paramMsg.msg_head.c2c_cmd.get();
-    long l2 = paramDecodeProtoPkgContext.g;
-    boolean bool2 = paramDecodeProtoPkgContext.jdField_a_of_type_Boolean;
-    boolean bool3 = paramDecodeProtoPkgContext.b;
+    long l2 = paramDecodeProtoPkgContext.x;
+    boolean bool2 = paramDecodeProtoPkgContext.g;
+    boolean bool3 = paramDecodeProtoPkgContext.h;
     boolean bool1;
-    if (l1 == paramDecodeProtoPkgContext.jdField_a_of_type_Long) {
+    if (l1 == paramDecodeProtoPkgContext.a) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    a(paramMessageHandler, paramList, i, paramMsg, l2, bool2, bool3, bool1, paramDecodeProtoPkgContext.jdField_d_of_type_Long, paramDecodeProtoPkgContext.jdField_d_of_type_Boolean, paramDecodeProtoPkgContext.jdField_a_of_type_Int);
+    a(paramMessageHandler, paramList, i, paramMsg, l2, bool2, bool3, bool1, paramDecodeProtoPkgContext.d, paramDecodeProtoPkgContext.j, paramDecodeProtoPkgContext.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.buddyMessage.OfflineFileDecoder
  * JD-Core Version:    0.7.0.1
  */

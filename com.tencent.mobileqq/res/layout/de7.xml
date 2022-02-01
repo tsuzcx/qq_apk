@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/8s" android:background="@drawable/gwr" android:paddingTop="9.0dip" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/8r" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/jef" android:scaleType="center" android:layout_alignParentRight="true" />
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/8z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="13.0dip" android:text="玩法" android:includeFontPadding="false" />
+        <com.tencent.timi.game.liveroom.impl.more.AnchorMoreOpeItemView android:id="@id/8t" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/8z" android:layout_alignLeft="@id/8z" app:menuIcon="@drawable/jet" app:menuName="展示出装" />
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/90" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="29.0dip" android:text="设置" android:includeFontPadding="false" android:layout_below="@id/8t" />
+        <com.tencent.timi.game.liveroom.impl.more.AnchorMoreOpeItemView android:id="@id/8x" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/90" android:layout_alignLeft="@id/90" app:menuIcon="@drawable/jew" app:menuName="分享" />
+        <com.tencent.timi.game.liveroom.impl.more.AnchorMoreOpeItemView android:id="@id/8w" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginLeft="29.0dip" android:layout_toRightOf="@id/8x" android:layout_alignTop="@id/8x" app:menuIcon="@drawable/jev" app:menuName="设置" />
+        <com.tencent.timi.game.liveroom.impl.more.AnchorMoreOpeItemView android:id="@id/8v" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginLeft="29.0dip" android:layout_toRightOf="@id/8w" android:layout_alignTop="@id/8w" app:menuIcon="@drawable/jeu" app:menuName="公告" />
+    </RelativeLayout>
+</RelativeLayout>

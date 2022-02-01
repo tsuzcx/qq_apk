@@ -34,24 +34,19 @@ public class ExtendFriendFeedView
   extends FrameLayout
   implements View.OnTouchListener
 {
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  public static ColorFilter a;
-  private static final Map<String, WeakReference<Bitmap>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static final int[] jdField_a_of_type_ArrayOfInt = { -13900833, -37464, -12331403, -5544982 };
-  private final float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private int c = 0;
-  
-  static
-  {
-    jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(536870912, PorterDuff.Mode.SRC_ATOP);
-  }
+  public static ColorFilter a = new PorterDuffColorFilter(536870912, PorterDuff.Mode.SRC_ATOP);
+  private static final int[] b = { -13900833, -37464, -12331403, -5544982 };
+  private static Bitmap c;
+  private static final Map<String, WeakReference<Bitmap>> d = new HashMap();
+  private int e;
+  private int f;
+  private Paint g;
+  private Bitmap h;
+  private RectF i;
+  private final float j;
+  private GradientDrawable k;
+  private boolean l;
+  private int m = 0;
   
   public ExtendFriendFeedView(Context paramContext)
   {
@@ -66,8 +61,8 @@ public class ExtendFriendFeedView
   public ExtendFriendFeedView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(1912995846, this, true);
-    this.jdField_a_of_type_Float = AIOUtils.b(4.0F, getResources());
+    LayoutInflater.from(paramContext).inflate(1912995850, this, true);
+    this.j = AIOUtils.b(4.0F, getResources());
   }
   
   private Bitmap a(String paramString)
@@ -88,21 +83,21 @@ public class ExtendFriendFeedView
         if (TextUtils.isEmpty(paramString)) {
           break label244;
         }
-        i = paramString.lastIndexOf('=');
-        if (i < 0) {
+        n = paramString.lastIndexOf('=');
+        if (n < 0) {
           break label244;
         }
-        paramString = paramString.substring(i + 1);
+        paramString = paramString.substring(n + 1);
         if (TextUtils.isEmpty(paramString)) {
           break label244;
         }
-        i = paramString.toUpperCase().charAt(0) % arrayOfString.length;
-        if (i == -1) {
+        n = paramString.toUpperCase().charAt(0) % arrayOfString.length;
+        if (n == -1) {
           str2 = ExpandResourceUtil.a("expand_feed_bg_default.png");
         } else {
-          str2 = ExpandResourceUtil.a(arrayOfString[i]);
+          str2 = ExpandResourceUtil.a(arrayOfString[n]);
         }
-        paramString = (WeakReference)jdField_a_of_type_JavaUtilMap.get(str2);
+        paramString = (WeakReference)d.get(str2);
         if (paramString != null) {
           paramString = (Bitmap)paramString.get();
         } else {
@@ -127,7 +122,7 @@ public class ExtendFriendFeedView
           localObject1 = paramString;
           localObject2 = ExpandResourceUtil.a(str2, (BitmapFactory.Options)localObject2);
           localObject1 = localObject2;
-          jdField_a_of_type_JavaUtilMap.put(str2, new WeakReference(localObject2));
+          d.put(str2, new WeakReference(localObject2));
         }
         catch (Exception localException2)
         {
@@ -143,102 +138,102 @@ public class ExtendFriendFeedView
       String str1 = paramString;
       return str1;
       label244:
-      int i = -1;
+      int n = -1;
     }
     return localObject2;
   }
   
   private GradientDrawable a(int paramInt)
   {
-    Object localObject = jdField_a_of_type_ArrayOfInt;
+    Object localObject = b;
     paramInt = localObject[(paramInt % localObject.length)];
-    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+    localObject = this.k;
     if (localObject == null)
     {
-      float f = this.jdField_a_of_type_Float;
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = GradientDrawableUtils.a(paramInt, 0.0F, 0.0F, f, f);
+      float f1 = this.j;
+      this.k = GradientDrawableUtils.a(paramInt, 0.0F, 0.0F, f1, f1);
     }
     else
     {
       ((GradientDrawable)localObject).setColor(paramInt);
     }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+    return this.k;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    if (this.g == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.g = new Paint(1);
+      this.g.setStyle(Paint.Style.FILL);
+      this.g.setAntiAlias(true);
     }
-    if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0))
+    if ((this.e > 0) && (this.f > 0))
     {
-      Object localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
+      Object localObject = this.h;
       if ((localObject == null) || (((Bitmap)localObject).isRecycled()))
       {
-        if (jdField_a_of_type_AndroidGraphicsBitmap == null)
+        if (c == null)
         {
-          jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(10, 10, Bitmap.Config.RGB_565);
-          new Canvas(jdField_a_of_type_AndroidGraphicsBitmap).drawColor(-1);
+          c = Bitmap.createBitmap(10, 10, Bitmap.Config.RGB_565);
+          new Canvas(c).drawColor(-1);
         }
-        this.jdField_b_of_type_AndroidGraphicsBitmap = jdField_a_of_type_AndroidGraphicsBitmap;
+        this.h = c;
       }
-      int k = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
-      int i = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
-      int j = this.jdField_a_of_type_Int;
-      float f2 = j;
-      float f1 = k;
+      int i2 = this.h.getWidth();
+      int n = this.h.getHeight();
+      int i1 = this.e;
+      float f2 = i1;
+      float f1 = i2;
       float f3 = f2 / f1;
-      k = this.jdField_b_of_type_Int;
-      f2 = k;
-      float f4 = i;
+      i2 = this.f;
+      f2 = i2;
+      float f4 = n;
       f2 /= f4;
       if (f3 > f2)
       {
-        f2 = (f4 * f3 - k) / 2.0F;
+        f2 = (f4 * f3 - i2) / 2.0F;
         f1 = 0.0F;
       }
       else
       {
-        f1 = (f1 * f2 - j) / 2.0F;
+        f1 = (f1 * f2 - i1) / 2.0F;
         f3 = f2;
         f2 = 0.0F;
       }
       localObject = new Matrix();
       ((Matrix)localObject).setScale(f3, f3);
       ((Matrix)localObject).postTranslate(-f1, -f2);
-      BitmapShader localBitmapShader = new BitmapShader(this.jdField_b_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+      BitmapShader localBitmapShader = new BitmapShader(this.h, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
       localBitmapShader.setLocalMatrix((Matrix)localObject);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(localBitmapShader);
-      if (this.jdField_a_of_type_AndroidGraphicsRectF == null) {
-        this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+      this.g.setShader(localBitmapShader);
+      if (this.i == null) {
+        this.i = new RectF();
       }
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable != null)
+      this.i.set(0.0F, this.m, this.e, this.f);
+      if (this.k != null)
       {
-        i = AIOUtils.b(5.0F, getResources());
-        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
-        j = this.jdField_b_of_type_Int;
-        ((GradientDrawable)localObject).setBounds(0, j - i, this.jdField_a_of_type_Int, j);
+        n = AIOUtils.b(5.0F, getResources());
+        localObject = this.k;
+        i1 = this.f;
+        ((GradientDrawable)localObject).setBounds(0, i1 - n, this.e, i1);
       }
     }
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    Object localObject = this.i;
     if (localObject != null)
     {
-      Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+      Paint localPaint = this.g;
       if (localPaint != null)
       {
-        float f = this.jdField_a_of_type_Float;
-        paramCanvas.drawRoundRect((RectF)localObject, f, f, localPaint);
+        float f1 = this.j;
+        paramCanvas.drawRoundRect((RectF)localObject, f1, f1, localPaint);
       }
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+    localObject = this.k;
     if (localObject != null) {
       ((GradientDrawable)localObject).draw(paramCanvas);
     }
@@ -248,35 +243,35 @@ public class ExtendFriendFeedView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.e = paramInt1;
+    this.f = paramInt2;
     a();
     invalidate();
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
+    int n = paramMotionEvent.getAction();
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (i != 0) {
-      if (i != 1)
+    if (n != 0) {
+      if (n != 1)
       {
         bool1 = bool2;
-        if (i == 2) {}
+        if (n == 2) {}
       }
       else
       {
         bool1 = false;
       }
     }
-    if (this.jdField_a_of_type_Boolean != bool1)
+    if (this.l != bool1)
     {
-      this.jdField_a_of_type_Boolean = bool1;
+      this.l = bool1;
       if (bool1) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
+        this.g.setColorFilter(a);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
+        this.g.setColorFilter(null);
       }
       invalidate();
     }
@@ -290,7 +285,7 @@ public class ExtendFriendFeedView
   
   public void setFeedBgParams(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    this.c = paramInt2;
+    this.m = paramInt2;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -303,11 +298,11 @@ public class ExtendFriendFeedView
       QLog.d("ExtendFriendFeedView", 0, localStringBuilder.toString());
     }
     setPadding(getPaddingLeft(), paramInt2, getPaddingRight(), getPaddingBottom());
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(paramString);
+    this.h = a(paramString);
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = a(paramInt1);
+      this.k = a(paramInt1);
     } else {
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = null;
+      this.k = null;
     }
     a();
     invalidate();
@@ -315,7 +310,7 @@ public class ExtendFriendFeedView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendFeedView
  * JD-Core Version:    0.7.0.1
  */

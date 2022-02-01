@@ -5,6 +5,7 @@ import android.view.View;
 import com.etrump.mixlayout.ETFont;
 import com.etrump.mixlayout.ETLayout;
 import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.core.util.EmoticonPanelUtils;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.style.EmoticonSpan;
@@ -23,11 +24,11 @@ class TextItemBuilder$4
       QLog.d("TextItemBuilder", 2, "SingleTap invoked!");
     }
     Object localObject = (AnimationTextView)paramView;
-    float f1 = ((AnimationTextView)localObject).touchL - TextItemBuilder.e;
+    float f1 = ((AnimationTextView)localObject).touchL - BaseChatItemLayout.getTextBubblePaddingAlignHead();
     float f2 = ((AnimationTextView)localObject).touchT;
-    float f3 = TextItemBuilder.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Boolean) {
-      f1 = ((AnimationTextView)localObject).touchL - TextItemBuilder.f;
+    float f3 = TextItemBuilder.y;
+    if (this.a) {
+      f1 = ((AnimationTextView)localObject).touchL - BaseChatItemLayout.getTextBubblePaddingAlignError();
     }
     localObject = ((AnimationTextView)localObject).getText();
     if ((localObject instanceof QQText))
@@ -54,10 +55,10 @@ class TextItemBuilder$4
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("isHanYiFont, onlyEmoji: ");
-            localStringBuilder.append(paramView.jdField_a_of_type_Boolean);
+            localStringBuilder.append(paramView.g);
             QLog.d("ChatItemBuilder", 2, localStringBuilder.toString());
           }
-          bool1 = paramView.jdField_a_of_type_Boolean ^ true;
+          bool1 = paramView.g ^ true;
         }
       }
       else
@@ -72,13 +73,13 @@ class TextItemBuilder$4
       } else {
         bool2 = false;
       }
-      EmoticonPanelUtils.a((EmoticonSpan[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.jdField_a_of_type_AndroidContentContext, bool1);
+      EmoticonPanelUtils.a((EmoticonSpan[])localObject, f1, f2 - f3, bool2, i, j, this.b.d, this.b.f, (Activity)this.b.e, bool1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

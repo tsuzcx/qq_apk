@@ -119,25 +119,25 @@ public class HippyListViewController
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="exposureEventEnabled")
+  @HippyControllerProps(defaultType="boolean", name="exposureEventEnabled")
   public void setExposureEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
   {
     paramHippyListView.setExposureEventEnable(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onMomentumScrollBegin")
+  @HippyControllerProps(defaultType="boolean", name="onMomentumScrollBegin")
   public void setMomentumScrollBeginEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
   {
     paramHippyListView.setMomentumScrollBeginEventEnable(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onMomentumScrollEnd")
+  @HippyControllerProps(defaultType="boolean", name="onMomentumScrollEnd")
   public void setMomentumScrollEndEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
   {
     paramHippyListView.setMomentumScrollEndEventEnable(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onScrollEnable")
+  @HippyControllerProps(defaultType="boolean", name="onScrollEnable")
   public void setOnScrollEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
   {
     paramHippyListView.setOnScrollEventEnable(paramBoolean);
@@ -164,7 +164,7 @@ public class HippyListViewController
     paramHippyListView.setHasSuspentedItem(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onScrollBeginDrag")
+  @HippyControllerProps(defaultType="boolean", name="onScrollBeginDrag")
   public void setScrollBeginDragEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
   {
     paramHippyListView.setScrollBeginDragEventEnable(paramBoolean);
@@ -176,7 +176,7 @@ public class HippyListViewController
     paramHippyListView.setScrollEnable(paramBoolean);
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onScrollEndDrag")
+  @HippyControllerProps(defaultType="boolean", name="onScrollEndDrag")
   public void setScrollEndDragEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
   {
     paramHippyListView.setScrollEndDragEventEnable(paramBoolean);
@@ -190,7 +190,7 @@ public class HippyListViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.list.HippyListViewController
  * JD-Core Version:    0.7.0.1
  */

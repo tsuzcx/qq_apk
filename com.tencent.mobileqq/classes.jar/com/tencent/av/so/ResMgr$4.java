@@ -5,7 +5,7 @@ final class ResMgr$4
 {
   public void run()
   {
-    ResMgr.a().a("AVSDKSo");
+    ResMgr.a().a("AVTraeSo");
   }
 }
 

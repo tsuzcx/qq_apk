@@ -422,7 +422,7 @@ public class GifProcessor
               ((StringBuilder)localObject2).append(File.separator);
               ((StringBuilder)localObject2).append(l3);
               ((StringBuilder)localObject2).append(".jpg");
-              ImageUtil.a((Bitmap)localObject1, new File(((StringBuilder)localObject2).toString()));
+              ImageUtil.b((Bitmap)localObject1, new File(((StringBuilder)localObject2).toString()));
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append(str2);
               ((StringBuilder)localObject1).append(File.separator);
@@ -925,7 +925,7 @@ public class GifProcessor
     //   275: aload 15
     //   277: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   280: invokespecial 120	java/io/File:<init>	(Ljava/lang/String;)V
-    //   283: invokestatic 271	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
+    //   283: invokestatic 271	com/tencent/mobileqq/utils/ImageUtil:b	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
     //   286: pop
     //   287: invokestatic 153	java/lang/System:currentTimeMillis	()J
     //   290: lstore 12
@@ -1312,7 +1312,7 @@ public class GifProcessor
     //   486: aload 21
     //   488: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   491: invokespecial 120	java/io/File:<init>	(Ljava/lang/String;)V
-    //   494: invokestatic 271	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
+    //   494: invokestatic 271	com/tencent/mobileqq/utils/ImageUtil:b	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
     //   497: pop
     //   498: goto +16 -> 514
     //   501: astore_0
@@ -1463,7 +1463,7 @@ public class GifProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.GifProcessor
  * JD-Core Version:    0.7.0.1
  */

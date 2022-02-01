@@ -6,13 +6,13 @@ import org.json.JSONObject;
 
 public class ImportFormData
 {
-  public int a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public String c;
+  public int c;
   public String d;
+  public String e;
+  public int f;
+  public boolean g;
   
   public static ImportFormData a(JSONObject paramJSONObject)
   {
@@ -25,13 +25,13 @@ public class ImportFormData
           paramJSONObject = paramJSONObject.getJSONObject("data");
           if (paramJSONObject != null)
           {
-            localImportFormData.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
-            localImportFormData.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
-            localImportFormData.jdField_a_of_type_Int = paramJSONObject.optInt("localPadId");
-            localImportFormData.c = paramJSONObject.optString("localPadId");
-            localImportFormData.d = paramJSONObject.optString("doc_id");
-            localImportFormData.jdField_b_of_type_Int = paramJSONObject.optInt("doc_type");
-            localImportFormData.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isCache");
+            localImportFormData.a = paramJSONObject.optString("url");
+            localImportFormData.b = paramJSONObject.optString("title");
+            localImportFormData.c = paramJSONObject.optInt("localPadId");
+            localImportFormData.d = paramJSONObject.optString("localPadId");
+            localImportFormData.e = paramJSONObject.optString("doc_id");
+            localImportFormData.f = paramJSONObject.optInt("doc_type");
+            localImportFormData.g = paramJSONObject.optBoolean("isCache");
           }
           return localImportFormData;
         }
@@ -46,7 +46,7 @@ public class ImportFormData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.bean.ImportFormData
  * JD-Core Version:    0.7.0.1
  */

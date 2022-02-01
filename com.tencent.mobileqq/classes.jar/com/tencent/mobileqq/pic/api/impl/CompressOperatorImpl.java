@@ -39,7 +39,7 @@ public class CompressOperatorImpl
   
   public Bitmap getGifTagBitmap()
   {
-    return Utils.a();
+    return Utils.c();
   }
   
   public String getSendPhotoPath(String paramString, int paramInt)
@@ -64,7 +64,7 @@ public class CompressOperatorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.CompressOperatorImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ public class X5UpdateGuard$LoadingDialog
 {
   X5UpdateGuard$LoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131756040);
-    setContentView(2131562238);
+    super(paramContext, 2131953180);
+    setContentView(2131628666);
     getWindow().setFlags(1024, 2048);
   }
   
   public void a(String paramString)
   {
-    ((TextView)findViewById(2131378784)).setText(paramString);
+    ((TextView)findViewById(2131447463)).setText(paramString);
   }
   
   public void dismiss()
@@ -61,7 +61,7 @@ public class X5UpdateGuard$LoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.X5UpdateGuard.LoadingDialog
  * JD-Core Version:    0.7.0.1
  */

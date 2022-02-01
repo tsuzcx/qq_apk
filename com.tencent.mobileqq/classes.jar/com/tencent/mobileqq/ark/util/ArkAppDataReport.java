@@ -52,12 +52,12 @@ public class ArkAppDataReport
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean, int paramInt, Map<String, String> paramMap)
   {
-    if (a(paramString2))
+    if (b(paramString2))
     {
       b(paramAppRuntime, paramString1, paramString2, paramBoolean, paramInt, paramMap);
       return;
     }
-    if (b(paramString2))
+    if (c(paramString2))
     {
       c(paramAppRuntime, paramString1, paramString2, paramBoolean, paramInt, paramMap);
       return;
@@ -74,21 +74,6 @@ public class ArkAppDataReport
     paramAppRuntime.append(", params=");
     paramAppRuntime.append(paramMap);
     QLog.i("ArkApp.DataReport", 1, paramAppRuntime.toString());
-  }
-  
-  static boolean a(String paramString)
-  {
-    String[] arrayOfString = a;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (arrayOfString[i].equals(paramString)) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
   }
   
   static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean, int paramInt, Map<String, String> paramMap)
@@ -110,7 +95,7 @@ public class ArkAppDataReport
   
   static boolean b(String paramString)
   {
-    String[] arrayOfString = b;
+    String[] arrayOfString = a;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -142,10 +127,25 @@ public class ArkAppDataReport
     paramMap.put("usedTime", String.valueOf(paramInt));
     QQBeaconReport.a(paramAppRuntime.getCurrentUin(), paramString2, paramBoolean, paramMap, true);
   }
+  
+  static boolean c(String paramString)
+  {
+    String[] arrayOfString = b;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (arrayOfString[i].equals(paramString)) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.util.ArkAppDataReport
  * JD-Core Version:    0.7.0.1
  */

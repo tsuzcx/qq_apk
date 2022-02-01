@@ -11,13 +11,13 @@ class ThirdVideoManager$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    ThirdVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlThirdVideoManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlThirdVideoManager$UUIDToUrlCallback, this.jdField_a_of_type_Long, paramBoolean, paramBundle);
+    this.a.setObserver(null);
+    ThirdVideoManager.a(this.f, this.b, this.c, this.d, this.e, paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.videourl.ThirdVideoManager.1
  * JD-Core Version:    0.7.0.1
  */

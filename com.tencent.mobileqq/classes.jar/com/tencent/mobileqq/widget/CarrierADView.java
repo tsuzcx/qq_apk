@@ -26,9 +26,9 @@ public class CarrierADView
   extends ADView
   implements Handler.Callback
 {
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private IFlingSwitch jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private IFlingSwitch a;
+  private MotionEvent b;
+  private MqqHandler c;
   
   public CarrierADView(Context paramContext)
   {
@@ -40,39 +40,39 @@ public class CarrierADView
     super(paramContext, paramAttributeSet);
   }
   
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a();
-    }
-    return 0;
-  }
-  
   public void b(View paramView, int paramInt)
   {
-    if (this.b.getChildCount() == 0)
+    if (this.x.getChildCount() == 0)
     {
-      this.b.setPadding(0, 0, 0, 0);
+      this.x.setPadding(0, 0, 0, 0);
       RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
       localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = new WorkSpaceView(getContext());
-      setCircle(this.f);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
+      this.y = new WorkSpaceView(getContext());
+      setCircle(this.E);
+      this.y.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setId(100000);
-      localRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView, localLayoutParams);
-      this.b.addView(localRelativeLayout, new LinearLayout.LayoutParams(-1, -1));
+      this.y.setId(100000);
+      localRelativeLayout.addView(this.y, localLayoutParams);
+      this.x.addView(localRelativeLayout, new LinearLayout.LayoutParams(-1, -1));
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = ((WorkSpaceView)((ViewGroup)this.b.getChildAt(0)).getChildAt(0));
+      this.y = ((WorkSpaceView)((ViewGroup)this.x.getChildAt(0)).getChildAt(0));
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.addView(paramView, this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildCount());
+      this.y.addView(paramView, this.y.getChildCount());
       return;
     }
     catch (Exception paramView) {}
+  }
+  
+  public int getCurrentScreen()
+  {
+    if (this.y != null) {
+      return this.y.getCurrentScreen();
+    }
+    return 0;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -83,32 +83,32 @@ public class CarrierADView
       if (i != 1) {
         return false;
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
+      this.c.removeMessages(0);
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView == null) {
+    if (this.y == null) {
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildCount() > 1) && (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getWidth() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a() + 1);
+    if ((this.y.getChildCount() > 1) && (this.y.getWidth() > 0)) {
+      this.y.a(this.y.getCurrentScreen() + 1);
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(0, 3400);
+    this.c.sendEmptyMessageDelayed(0, 3400);
     return false;
-  }
-  
-  public void i()
-  {
-    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
-    if (localMqqHandler != null)
-    {
-      localMqqHandler.removeMessages(0);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(0, 3000L);
-    }
   }
   
   public void j()
   {
-    MqqHandler localMqqHandler = this.jdField_a_of_type_MqqOsMqqHandler;
+    MqqHandler localMqqHandler = this.c;
+    if (localMqqHandler != null)
+    {
+      localMqqHandler.removeMessages(0);
+      this.c.sendEmptyMessageDelayed(0, 3000L);
+    }
+  }
+  
+  public void k()
+  {
+    MqqHandler localMqqHandler = this.c;
     if (localMqqHandler != null) {
       localMqqHandler.sendEmptyMessage(1);
     }
@@ -116,39 +116,39 @@ public class CarrierADView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch != null)
+    if (this.a != null)
     {
       int i = paramMotionEvent.getAction();
       MotionEvent localMotionEvent;
       if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch.enableFlingRight(false);
-        j();
-        localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+        this.a.enableFlingRight(false);
+        k();
+        localMotionEvent = this.b;
         if (localMotionEvent != null) {
           localMotionEvent.recycle();
         }
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        this.b = MotionEvent.obtain(paramMotionEvent);
         return false;
       }
       if (i == 2)
       {
-        localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+        localMotionEvent = this.b;
         if (localMotionEvent != null)
         {
           float f1 = localMotionEvent.getX();
           float f2 = paramMotionEvent.getX();
-          if (Math.abs((this.jdField_a_of_type_AndroidViewMotionEvent.getY() - paramMotionEvent.getY()) / (f1 - f2)) < 0.5F) {
+          if (Math.abs((this.b.getY() - paramMotionEvent.getY()) / (f1 - f2)) < 0.5F) {
             getParent().requestDisallowInterceptTouchEvent(true);
           }
         }
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        this.b = MotionEvent.obtain(paramMotionEvent);
         return false;
       }
       if ((i == 1) || (i == 3))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch.enableFlingRight(true);
-        i();
+        this.a.enableFlingRight(true);
+        j();
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
@@ -157,10 +157,10 @@ public class CarrierADView
   
   public void setCarrierData(List<AdData> paramList, int paramInt, CarrierHelper paramCarrierHelper)
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
-      this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    if (this.c == null) {
+      this.c = new CustomHandler(Looper.getMainLooper(), this);
     }
-    h();
+    i();
     if ((paramList != null) && (paramList.size() != 0))
     {
       int i;
@@ -184,7 +184,7 @@ public class CarrierADView
       {
         try
         {
-          View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131561175, null);
+          View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131627527, null);
           paramCarrierHelper.a(localView, (AdData)paramList.get(paramInt));
           b(localView, paramInt);
         }
@@ -196,7 +196,7 @@ public class CarrierADView
         }
         paramInt += 1;
       }
-      i();
+      j();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -207,25 +207,25 @@ public class CarrierADView
   
   public void setFlingSwitch(IFlingSwitch paramIFlingSwitch)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch = paramIFlingSwitch;
+    this.a = paramIFlingSwitch;
   }
   
   public void setVisibility(int paramInt)
   {
     if ((paramInt != 8) && (paramInt != 4)) {
-      i();
-    } else {
       j();
+    } else {
+      k();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setVisibility(paramInt);
+    if (this.y != null) {
+      this.y.setVisibility(paramInt);
     }
     super.setVisibility(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CarrierADView
  * JD-Core Version:    0.7.0.1
  */

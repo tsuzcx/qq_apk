@@ -238,9 +238,9 @@ public class EmojiManagerServiceImpl
   
   private boolean checkSDCardNoAvailable(Emoticon paramEmoticon)
   {
-    if (Utils.a())
+    if (Utils.b())
     {
-      if (Utils.b() < 1048576L)
+      if (Utils.c() < 1048576L)
       {
         QLog.d(TAG, 1, "sdcard check, sdcard full .return.");
         VasReportUtils.a("emotionType", "emotionActionAIO", "1", paramEmoticon.epId, paramEmoticon.eId, "", "", "", "", "");
@@ -491,8 +491,8 @@ public class EmojiManagerServiceImpl
       if (!FileUtils.fileExists(localObject1[1]))
       {
         localObject1 = new DownloadTask(localObject1[0], new File(localObject1[1]));
-        ((DownloadTask)localObject1).n = true;
-        ((DownloadTask)localObject1).jdField_e_of_type_Int = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
+        ((DownloadTask)localObject1).J = true;
+        ((DownloadTask)localObject1).v = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
         paramInt = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download((DownloadTask)localObject1, this.mApp);
         if (paramInt != 0)
         {
@@ -594,8 +594,8 @@ public class EmojiManagerServiceImpl
       {
         localObject2 = new File(localObject1[1]);
         localObject1 = new DownloadTask(localObject1[0], (File)localObject2);
-        ((DownloadTask)localObject1).n = true;
-        ((DownloadTask)localObject1).jdField_e_of_type_Int = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
+        ((DownloadTask)localObject1).J = true;
+        ((DownloadTask)localObject1).v = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
         paramInt = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download((DownloadTask)localObject1, this.mApp);
         if (paramInt != 0)
         {
@@ -664,10 +664,10 @@ public class EmojiManagerServiceImpl
             localObject4 = TAG;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("onProgress download encrypt exception, url=");
-            localStringBuilder.append(((DownloadTask)localObject1).c);
+            localStringBuilder.append(((DownloadTask)localObject1).h);
             QLog.d((String)localObject4, 2, localStringBuilder.toString());
           }
-          if ((Utils.a()) && (Utils.b() > 1048576L))
+          if ((Utils.b()) && (Utils.c() > 1048576L))
           {
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append(AppConstants.SDCARD_PATH);
@@ -706,7 +706,7 @@ public class EmojiManagerServiceImpl
           ((StringBuilder)localObject3).append(" time:");
           ((StringBuilder)localObject3).append(System.currentTimeMillis());
           ((StringBuilder)localObject3).append(" url=");
-          ((StringBuilder)localObject3).append(((DownloadTask)localObject1).c);
+          ((StringBuilder)localObject3).append(((DownloadTask)localObject1).h);
           QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
           return false;
         }
@@ -723,7 +723,7 @@ public class EmojiManagerServiceImpl
           ((StringBuilder)localObject4).append(" time:");
           ((StringBuilder)localObject4).append(System.currentTimeMillis());
           ((StringBuilder)localObject4).append(" url=");
-          ((StringBuilder)localObject4).append(((DownloadTask)localObject1).c);
+          ((StringBuilder)localObject4).append(((DownloadTask)localObject1).h);
           QLog.d((String)localObject3, 2, ((StringBuilder)localObject4).toString());
         }
         VasReportUtils.a("emotionType", "emotionActionAIO", "8", paramEmoticon.epId, paramEmoticon.eId, "", "", "", "", "");
@@ -760,8 +760,8 @@ public class EmojiManagerServiceImpl
       if (!FileUtils.fileExists(localObject1[1]))
       {
         localObject1 = new DownloadTask(localObject1[0], new File(localObject1[1]));
-        ((DownloadTask)localObject1).n = true;
-        ((DownloadTask)localObject1).jdField_e_of_type_Int = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
+        ((DownloadTask)localObject1).J = true;
+        ((DownloadTask)localObject1).v = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
         paramInt = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download((DownloadTask)localObject1, this.mApp);
         if (paramInt != 0)
         {
@@ -820,8 +820,8 @@ public class EmojiManagerServiceImpl
       if (!FileUtils.fileExists(localObject1[1]))
       {
         localObject1 = new DownloadTask(localObject1[0], new File(localObject1[1]));
-        ((DownloadTask)localObject1).n = true;
-        ((DownloadTask)localObject1).jdField_e_of_type_Int = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
+        ((DownloadTask)localObject1).J = true;
+        ((DownloadTask)localObject1).v = EmojiManagerServiceConstant.EMOTION_DOWNLOAD_TIMEOUT;
         paramInt = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download((DownloadTask)localObject1, this.mApp);
         if (paramInt != 0)
         {
@@ -845,7 +845,7 @@ public class EmojiManagerServiceImpl
           localStringBuilder.append("");
           VasReportUtils.a("emotionType", "emotionActionAIO", "10", (String)localObject2, (String)localObject3, (String)localObject4, localStringBuilder.toString(), "", "", "");
           if (paramEmoticon.isNewSoundEmoticon()) {
-            reportSoundEmoticonDownload(paramEmoticon.epId, paramEmoticon.eId, ((DownloadTask)localObject1).jdField_a_of_type_Int);
+            reportSoundEmoticonDownload(paramEmoticon.epId, paramEmoticon.eId, ((DownloadTask)localObject1).c);
           }
           return false;
         }
@@ -893,7 +893,7 @@ public class EmojiManagerServiceImpl
   {
     boolean bool;
     if (???.rscType == 1) {
-      bool = PngFrameUtil.a(EmotionPanelConstans.pngFramePath.replace("[epId]", paramEmoticon.epId));
+      bool = PngFrameUtil.d(EmotionPanelConstans.pngFramePath.replace("[epId]", paramEmoticon.epId));
     } else {
       bool = FileUtils.fileExists(paramArrayOfString[1]);
     }
@@ -1025,16 +1025,16 @@ public class EmojiManagerServiceImpl
       i = 3;
       j = 4;
     }
-    String str2 = EmosmUtils.b(i, str1);
-    String str3 = EmosmUtils.a(3, paramEmoticonPackage.epId);
+    String str2 = EmosmUtils.c(i, str1);
+    String str3 = EmosmUtils.b(3, paramEmoticonPackage.epId);
     if (!FileUtils.fileExists(str3))
     {
       paramList.add(str2);
       paramMap.put(str2, new File(str3));
       paramBundle.putInt(str2, 3);
     }
-    str1 = EmosmUtils.b(j, str1);
-    paramEmoticonPackage = EmosmUtils.a(4, paramEmoticonPackage.epId);
+    str1 = EmosmUtils.c(j, str1);
+    paramEmoticonPackage = EmosmUtils.b(4, paramEmoticonPackage.epId);
     if (!FileUtils.fileExists(paramEmoticonPackage))
     {
       paramList.add(str1);
@@ -1173,7 +1173,7 @@ public class EmojiManagerServiceImpl
       VasReportUtils.a("emotionType", "emotionActionDownload", "4", paramEmoticonPackage.epId, "", "", paramFile, "", "", "");
       return 11008;
     }
-    if ((!TextUtils.isEmpty(paramEmoticonPackage.minQQVersion)) && (!IndividuationConfigInfo.a(paramEmoticonPackage.minQQVersion, "8.7.0")))
+    if ((!TextUtils.isEmpty(paramEmoticonPackage.minQQVersion)) && (!IndividuationConfigInfo.a(paramEmoticonPackage.minQQVersion, "8.8.17")))
     {
       paramFile = TAG;
       paramList = new StringBuilder();
@@ -1305,8 +1305,8 @@ public class EmojiManagerServiceImpl
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 2, "handleEmotionPackage| add h5 zip url");
       }
-      String str = EmosmUtils.a(paramEmoticonPackage.epId);
-      paramEmoticonPackage = EmosmUtils.b(paramEmoticonPackage.epId);
+      String str = EmosmUtils.f(paramEmoticonPackage.epId);
+      paramEmoticonPackage = EmosmUtils.g(paramEmoticonPackage.epId);
       if (paramEmoticonPackage != null)
       {
         paramList.add(str);
@@ -1402,8 +1402,8 @@ public class EmojiManagerServiceImpl
     } else {
       str = paramEmoticonPackage.epId;
     }
-    String str = EmosmUtils.b(i, str);
-    paramEmoticonPackage = EmosmUtils.a(2, paramEmoticonPackage.epId);
+    String str = EmosmUtils.c(i, str);
+    paramEmoticonPackage = EmosmUtils.b(2, paramEmoticonPackage.epId);
     if (!FileUtils.fileExists(paramEmoticonPackage))
     {
       paramList.add(str);
@@ -1459,7 +1459,7 @@ public class EmojiManagerServiceImpl
     if (paramString == null) {
       return false;
     }
-    Object localObject1 = EmosmUtils.a(2, paramString);
+    Object localObject1 = EmosmUtils.b(2, paramString);
     Object localObject2;
     if (!new File((String)localObject1).exists())
     {
@@ -1473,7 +1473,7 @@ public class EmojiManagerServiceImpl
       }
       return false;
     }
-    localObject1 = EmosmUtils.a(3, paramString);
+    localObject1 = EmosmUtils.b(3, paramString);
     if (!new File((String)localObject1).exists())
     {
       if (QLog.isColorLevel())
@@ -1486,7 +1486,7 @@ public class EmojiManagerServiceImpl
       }
       return false;
     }
-    localObject1 = EmosmUtils.a(4, paramString);
+    localObject1 = EmosmUtils.b(4, paramString);
     if (!new File((String)localObject1).exists())
     {
       if (QLog.isColorLevel())
@@ -1557,7 +1557,7 @@ public class EmojiManagerServiceImpl
           return false;
         }
         if (1 == i) {
-          return PngFrameUtil.a(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString));
+          return PngFrameUtil.d(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString));
         }
         if ((localObject3 != null) && (((EmoticonPackage)localObject3).isAPNG == 2)) {
           localObject1 = EmotionPanelConstans.emoticonAPNGPath.replace("[epId]", paramString).replace("[eId]", ((Emoticon)localObject2).eId);
@@ -1787,7 +1787,7 @@ public class EmojiManagerServiceImpl
       i = 0;
     }
     if (1 == i) {
-      return PngFrameUtil.a(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString));
+      return PngFrameUtil.d(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString));
     }
     localObject = (ArrayList)getEmoticonManager().syncGetSubEmoticonsByPackageId(paramString);
     if ((localObject != null) && (((ArrayList)localObject).size() > 0) && (!new File(EmotionPanelConstans.emoticonEncryptPath.replace("[epId]", paramString).replace("[eId]", ((Emoticon)((ArrayList)localObject).get(0)).eId)).exists()))
@@ -1875,7 +1875,11 @@ public class EmojiManagerServiceImpl
       if (!paramString.exists()) {
         return false;
       }
-      paramString = FileUtils.readFileContent(paramString).split("&");
+      paramString = FileUtils.readFileContent(paramString);
+      if (paramString == null) {
+        return false;
+      }
+      paramString = paramString.split("&");
       i = paramString.length;
       paramInt = 0;
       while (paramInt < i)
@@ -1900,7 +1904,7 @@ public class EmojiManagerServiceImpl
     if (paramString == null) {
       return false;
     }
-    Object localObject1 = EmosmUtils.a(2, paramString);
+    Object localObject1 = EmosmUtils.b(2, paramString);
     Object localObject2;
     if (!new File((String)localObject1).exists())
     {
@@ -1914,7 +1918,7 @@ public class EmojiManagerServiceImpl
       }
       return false;
     }
-    localObject1 = EmosmUtils.a(3, paramString);
+    localObject1 = EmosmUtils.b(3, paramString);
     if (!new File((String)localObject1).exists())
     {
       if (QLog.isColorLevel())
@@ -1927,7 +1931,7 @@ public class EmojiManagerServiceImpl
       }
       return false;
     }
-    localObject1 = EmosmUtils.a(4, paramString);
+    localObject1 = EmosmUtils.b(4, paramString);
     if (!new File((String)localObject1).exists())
     {
       if (QLog.isColorLevel())
@@ -2051,7 +2055,7 @@ public class EmojiManagerServiceImpl
   
   public void fetchEmoticonEncryptKeys(String paramString, ArrayList<Emoticon> paramArrayList)
   {
-    int i = EmoticonPanelUtils.a(paramString);
+    int i = EmoticonPanelUtils.b(paramString);
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
       if (i == -1) {
@@ -2066,7 +2070,7 @@ public class EmojiManagerServiceImpl
   
   public void fetchEmoticonEncryptKeys(String paramString, ArrayList<Emoticon> paramArrayList, ReqInfo paramReqInfo)
   {
-    int i = EmoticonPanelUtils.a(paramString);
+    int i = EmoticonPanelUtils.b(paramString);
     if ((paramArrayList != null) && (paramArrayList.size() != 0) && (paramReqInfo != null))
     {
       if (i == -1) {
@@ -2177,7 +2181,7 @@ public class EmojiManagerServiceImpl
       i = paramBundle.getInt("businessType");
       j = paramBundle.getInt("sceneType");
       if (((String)localObject).length() == 0) {}
-      while (EmoticonPanelUtils.a((String)localObject) == -1)
+      while (EmoticonPanelUtils.b((String)localObject) == -1)
       {
         paramBundle = (Bundle)localObject;
         break;
@@ -2238,13 +2242,13 @@ public class EmojiManagerServiceImpl
       if (paramString.length() == 0) {
         return false;
       }
-      paramString = EmoticonPanelUtils.a(paramString);
+      paramString = EmoticonPanelUtils.c(paramString);
       paramString = getDownloader().getTask(paramString);
       bool1 = bool2;
       if (paramString != null)
       {
         bool1 = bool2;
-        if (!paramString.b()) {
+        if (!paramString.f()) {
           bool1 = true;
         }
       }
@@ -2433,7 +2437,7 @@ public class EmojiManagerServiceImpl
         ((StringBuilder)localObject1).append("vipEmoticonKey_");
         ((StringBuilder)localObject1).append(paramEmoticonPackage.epId);
         localObject3 = ((StringBuilder)localObject1).toString();
-        localObject1 = EmoticonPanelUtils.a(paramEmoticonPackage.epId);
+        localObject1 = EmoticonPanelUtils.c(paramEmoticonPackage.epId);
         if (paramEmoticonPackage.jobType == 4) {
           localObject1 = EmotionPanelConstans.smallEmoticonJsonUrl.replace("[epId]", paramEmoticonPackage.epId);
         }
@@ -2445,9 +2449,9 @@ public class EmojiManagerServiceImpl
         localStringBuilder.append(JSON_PREFIX);
         localStringBuilder.append(paramEmoticonPackage.epId);
         localConcurrentHashMap.put(localStringBuilder.toString(), localObject4);
-        ((DownloadTask)localObject1).g = EmojiManagerServiceConstant.EMOTION_TRY_DOWNLOAD;
-        ((DownloadTask)localObject1).j = true;
-        ((DownloadTask)localObject1).n = true;
+        ((DownloadTask)localObject1).w = EmojiManagerServiceConstant.EMOTION_TRY_DOWNLOAD;
+        ((DownloadTask)localObject1).D = true;
+        ((DownloadTask)localObject1).J = true;
         paramInt = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download((DownloadTask)localObject1, this.mApp);
         localObject1 = this.statusMap;
         localObject4 = new StringBuilder();
@@ -2524,7 +2528,7 @@ public class EmojiManagerServiceImpl
       if (!((String)localObject1).contains("auto")) {
         this.statusMap.put(paramEmoticonPackage.epId, new TaskStatus(paramEmoticonPackage.epId, (DownloadTask)localObject3));
       }
-      ((DownloadTask)localObject3).n = true;
+      ((DownloadTask)localObject3).J = true;
       if (localArrayList.size() == 0)
       {
         if (QLog.isColorLevel()) {
@@ -2684,20 +2688,20 @@ public class EmojiManagerServiceImpl
     if (paramDownloadTask == null) {
       return;
     }
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramDownloadTask.a().getSerializable("emoticonPackage");
-    File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.c);
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramDownloadTask.b().getSerializable("emoticonPackage");
+    File localFile = (File)paramDownloadTask.g.get(paramDownloadTask.h);
     Object localObject4;
     try
     {
-      boolean bool = this.encryptKeyMap.containsKey(paramDownloadTask.c);
+      boolean bool = this.encryptKeyMap.containsKey(paramDownloadTask.h);
       Object localObject1 = null;
       if (!bool) {
         break label763;
       }
       synchronized (this.encryptKeyMap)
       {
-        localObject4 = (String)this.encryptKeyMap.get(paramDownloadTask.c);
-        this.encryptKeyMap.remove(paramDownloadTask.c);
+        localObject4 = (String)this.encryptKeyMap.get(paramDownloadTask.h);
+        this.encryptKeyMap.remove(paramDownloadTask.h);
       }
       if (localFile == null) {
         break label769;
@@ -2719,15 +2723,15 @@ public class EmojiManagerServiceImpl
       ((StringBuilder)???).append(" time:");
       ((StringBuilder)???).append(System.currentTimeMillis());
       ((StringBuilder)???).append(" url=");
-      ((StringBuilder)???).append(paramDownloadTask.c);
+      ((StringBuilder)???).append(paramDownloadTask.h);
       QLog.e((String)localObject4, 2, ((StringBuilder)???).toString());
-      paramDownloadTask.jdField_a_of_type_Boolean = true;
+      paramDownloadTask.a = true;
       listenerManager.a(localEmoticonPackage, 11020, this.mApp);
       VasReportUtils.a("emotionType", "emotionActionDownload", "9", localEmoticonPackage.epId, "", "", "", "", "", "");
     }
     if ((localEmoticonPackage.jobType != 4) && (localObject4 == null))
     {
-      paramDownloadTask.jdField_a_of_type_Boolean = true;
+      paramDownloadTask.a = true;
       QLog.e(TAG, 1, "emotionDownloadListener | onDoneFile encryptKey loss");
       listenerManager.a(localEmoticonPackage, 11009, this.mApp);
       VasReportUtils.a("emotionType", "emotionActionDownload", "7", localEmoticonPackage.epId, "", "", "", "", "", "");
@@ -2743,14 +2747,14 @@ public class EmojiManagerServiceImpl
       localObject4 = TAG;
       ??? = new StringBuilder();
       ((StringBuilder)???).append("emotionDownloadListener | onDoneFile onProgress download encrypt exception, url=");
-      ((StringBuilder)???).append(paramDownloadTask.c);
+      ((StringBuilder)???).append(paramDownloadTask.h);
       QLog.e((String)localObject4, 2, ((StringBuilder)???).toString());
       localObject4 = localEmoticonPackage.epId;
       ??? = new StringBuilder();
       ((StringBuilder)???).append(i);
       ((StringBuilder)???).append("");
       VasReportUtils.a("emotionType", "emotionActionDownload", "8", (String)localObject4, "", "", ((StringBuilder)???).toString(), "", "", "");
-      if ((Utils.a()) && (Utils.b() > 1048576L))
+      if ((Utils.b()) && (Utils.c() > 1048576L))
       {
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append(AppConstants.SDCARD_PATH);
@@ -2771,13 +2775,13 @@ public class EmojiManagerServiceImpl
       ((StringBuilder)localObject4).append(" time:");
       ((StringBuilder)localObject4).append(System.currentTimeMillis());
       ((StringBuilder)localObject4).append(" url=");
-      ((StringBuilder)localObject4).append(paramDownloadTask.c);
+      ((StringBuilder)localObject4).append(paramDownloadTask.h);
       QLog.d((String)localObject3, 2, ((StringBuilder)localObject4).toString());
       return;
     }
     for (;;)
     {
-      paramDownloadTask.jdField_a_of_type_Boolean = true;
+      paramDownloadTask.a = true;
       QLog.e(TAG, 1, "emotionDownloadListener | onDoneFile srcData or filePath = null");
       listenerManager.a(localEmoticonPackage, 11013, this.mApp);
       VasReportUtils.a("emotionType", "emotionActionDownload", "6", localEmoticonPackage.epId, "", "", "", "", "", "");
@@ -2871,10 +2875,10 @@ public class EmojiManagerServiceImpl
     if (paramDownloadTask == null) {
       return;
     }
-    Object localObject = paramDownloadTask.a();
-    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
+    Object localObject = paramDownloadTask.b();
+    int i = ((Bundle)localObject).getInt(paramDownloadTask.h);
     EmoticonPackage localEmoticonPackage = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    localObject = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.c);
+    localObject = (File)paramDownloadTask.g.get(paramDownloadTask.h);
     if (i != 2)
     {
       if (i != 16)
@@ -2888,7 +2892,7 @@ public class EmojiManagerServiceImpl
         }
         catch (IOException localIOException1)
         {
-          paramDownloadTask.jdField_a_of_type_Boolean = true;
+          paramDownloadTask.a = true;
           localIOException1.printStackTrace();
         }
         ((File)localObject).delete();
@@ -2901,7 +2905,7 @@ public class EmojiManagerServiceImpl
       }
       catch (IOException localIOException2)
       {
-        paramDownloadTask.jdField_a_of_type_Boolean = true;
+        paramDownloadTask.a = true;
         localIOException2.printStackTrace();
       }
       ((File)localObject).delete();
@@ -3105,7 +3109,7 @@ public class EmojiManagerServiceImpl
       localStringBuilder.append(String.valueOf(this.mApp));
       QLog.d((String)???, 2, localStringBuilder.toString());
     }
-    listenerManager.a();
+    listenerManager.b();
     if ((this.mApp.getAccount() != null) && (getEmoticonManager() != null)) {
       getEmoticonManager().clearCache();
     }
@@ -3292,8 +3296,8 @@ public class EmojiManagerServiceImpl
     localStringBuilder.append("vipEmoticonKey_cover_");
     localStringBuilder.append(paramEmoticonPackage.epId);
     paramEmoticonPackage = new DownloadTask(localArrayList, localHashMap, localStringBuilder.toString());
-    paramEmoticonPackage.jdField_e_of_type_Long = this.limitSize;
-    paramEmoticonPackage.n = true;
+    paramEmoticonPackage.y = this.limitSize;
+    paramEmoticonPackage.J = true;
     getDownloader().startDownload(paramEmoticonPackage, this.coverDownloadListener, localBundle);
   }
   
@@ -3550,7 +3554,7 @@ public class EmojiManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.api.impl.EmojiManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

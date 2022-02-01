@@ -2,13 +2,14 @@ package com.tencent.tav.core;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.view.Surface;
 import com.tencent.tav.asset.MetadataItem;
 import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.decoder.AssetWriterVideoEncoder;
 import com.tencent.tav.decoder.EncoderWriter;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.RenderContextParams;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tav.decoder.muxer.MediaMuxerFactory.MediaMuxerCreator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,7 +30,6 @@ public class AssetWriter
   private List<AssetWriterInput> inputs = new ArrayList();
   private List<MetadataItem> metadata;
   private String outputFileType;
-  private Surface rendSurface;
   private RenderContext renderContext;
   private RenderContextParams renderContextParams;
   private boolean shouldOptimizeForNetworkUse;
@@ -141,15 +141,6 @@ public class AssetWriter
     this.status = AssetWriter.AssetWriterStatus.AssetWriterStatusCancelled;
   }
   
-  public Surface createInputSurface()
-  {
-    EncoderWriter localEncoderWriter = this.encoderWriter;
-    if (localEncoderWriter != null) {
-      return localEncoderWriter.createInputSurface();
-    }
-    return null;
-  }
-  
   public EncoderWriter encoderWriter()
   {
     return this.encoderWriter;
@@ -174,12 +165,6 @@ public class AssetWriter
     {
       ((RenderContext)localObject).release();
       this.renderContext = null;
-    }
-    localObject = this.rendSurface;
-    if (localObject != null)
-    {
-      ((Surface)localObject).release();
-      this.rendSurface = null;
     }
     return true;
   }
@@ -234,6 +219,7 @@ public class AssetWriter
     return this.shouldOptimizeForNetworkUse;
   }
   
+  @RequiresApi(api=18)
   public RenderContext renderContext()
   {
     if (this.renderContext == null)
@@ -241,8 +227,7 @@ public class AssetWriter
       EncoderWriter localEncoderWriter = this.encoderWriter;
       if (localEncoderWriter != null)
       {
-        this.rendSurface = localEncoderWriter.createInputSurface();
-        this.renderContext = new RenderContext(this.encoderWriter.getOutWidth(), this.encoderWriter.getOutHeight(), this.rendSurface);
+        this.renderContext = localEncoderWriter.createRenderContext(localEncoderWriter.getOutWidth(), this.encoderWriter.getOutHeight());
         this.renderContext.setParams(this.renderContextParams);
       }
     }
@@ -284,7 +269,7 @@ public class AssetWriter
   }
   
   @RequiresApi(api=18)
-  public boolean startWriting()
+  public boolean startWriting(AssetWriterVideoEncoder paramAssetWriterVideoEncoder, MediaMuxerFactory.MediaMuxerCreator paramMediaMuxerCreator)
   {
     if (this.videoOutputPath == null) {
       return false;
@@ -292,22 +277,22 @@ public class AssetWriter
     cancelWriting();
     try
     {
-      this.encoderWriter = new EncoderWriter(this.videoOutputPath);
+      this.encoderWriter = new EncoderWriter(this.videoOutputPath, paramAssetWriterVideoEncoder, paramMediaMuxerCreator);
       this.encoderWriter.setEncodeOption(this.encodeOption);
-      Iterator localIterator = this.inputs.iterator();
-      while (localIterator.hasNext()) {
-        ((AssetWriterInput)localIterator.next()).initConfig(this);
+      paramAssetWriterVideoEncoder = this.inputs.iterator();
+      while (paramAssetWriterVideoEncoder.hasNext()) {
+        ((AssetWriterInput)paramAssetWriterVideoEncoder.next()).initConfig(this);
       }
       return true;
     }
-    catch (Exception localException)
+    catch (Exception paramAssetWriterVideoEncoder)
     {
-      Logger.e("AssetWriter", "startWriting: ", localException);
+      Logger.e("AssetWriter", "startWriting: ", paramAssetWriterVideoEncoder);
       this.inputStatusHashMap.clear();
-      EncoderWriter localEncoderWriter = this.encoderWriter;
-      if (localEncoderWriter != null)
+      paramAssetWriterVideoEncoder = this.encoderWriter;
+      if (paramAssetWriterVideoEncoder != null)
       {
-        localEncoderWriter.stop();
+        paramAssetWriterVideoEncoder.stop();
         this.encoderWriter = null;
       }
     }
@@ -331,7 +316,7 @@ public class AssetWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetWriter
  * JD-Core Version:    0.7.0.1
  */

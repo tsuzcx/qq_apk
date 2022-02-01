@@ -17,6 +17,8 @@ final class NSHippyListView$MyAdapter
   {
     super(paramRecyclerView, paramHippyEngineContext);
     setContainerPositionGetter(this);
+    setScrollEventThrottle(0);
+    setScrollForReportThrottle(0);
   }
   
   private int getOffset()
@@ -41,6 +43,14 @@ final class NSHippyListView$MyAdapter
     return i;
   }
   
+  protected void checkOnScrollEvent()
+  {
+    this.this$0.ensureHippyRootLayout();
+    if ((this.this$0.hippyRootLayout != null) && (this.this$0.hippyRootLayout.getParent() != null)) {
+      super.checkOnScrollEvent();
+    }
+  }
+  
   public HippyTKDListViewAdapter.ContainerPosition getContainerPosition()
   {
     this.this$0.ensureHippyRootLayout();
@@ -50,7 +60,7 @@ final class NSHippyListView$MyAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.NSHippyListView.MyAdapter
  * JD-Core Version:    0.7.0.1
  */

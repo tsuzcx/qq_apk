@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="6.0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/m_e" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="页面名字" android:layout_weight="3.0" />
-    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/oan" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="关键key" android:layout_weight="2.0" />
-    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/oap" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="停留时长" android:layout_weight="1.0" />
-</LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_gravity="top" android:background="@drawable/f6o" android:layout_width="fill_parent" android:layout_height="190.0dip" />
+        <View android:layout_gravity="bottom" android:background="@drawable/f69" android:layout_width="fill_parent" android:layout_height="182.0dip" android:layout_marginBottom="68.0dip" />
+        <View android:layout_gravity="bottom" android:background="#b3252525" android:layout_width="fill_parent" android:layout_height="68.0dip" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="center" android:id="@id/nc8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.biz.qqcircle.richframework.widget.SquareImageView android:layout_gravity="center" android:background="@color/bu" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/ih5" app:round_radius="30.0dip" />
+    </FrameLayout>
+    <RelativeLayout android:layout_gravity="bottom" android:paddingTop="12.0dip" android:paddingBottom="34.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:keepScreenOn="true">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/ncf">
+            <LinearLayout android:orientation="horizontal" android:id="@id/paw" android:background="@drawable/f6p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/iq9" />
+                <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/pax" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="动漫情怀    " />
+            </LinearLayout>
+            <LinearLayout android:id="@id/p_v" android:background="@drawable/f6p" android:paddingLeft="8.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginTop="12.0dip">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/p_8" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/qcircle_skin_icon_general_location_ghost" />
+                <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/pes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxWidth="252.0dip" android:maxLines="1" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/alc" android:layout_gravity="center_vertical" android:id="@id/pat" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <com.tencent.biz.qqcircle.widgets.QCircleMaxHeightScrollView android:id="@id/phh" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView android:id="@id/pex" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" app:expandDuration="250" app:expandedText="@string/xyf" app:maxExpandLines="3" app:noExpandText="@string/xyg">
+                    <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="left" android:layout_gravity="left" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="2.0dip" android:fadeScrollbars="false" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView>
+            </com.tencent.biz.qqcircle.widgets.QCircleMaxHeightScrollView>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/eej" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_above="@id/ncf" android:layout_centerHorizontal="true">
+            <TextView android:textSize="30.0dip" android:textColor="@color/al3" android:id="@id/qk4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:30 | " />
+            <TextView android:textSize="30.0dip" android:textColor="@color/alb" android:id="@id/qq_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:56" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/ncf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="15.0dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="-4.5dip" android:layout_above="@id/mnk">
+            <include layout="@layout/cw9" />
+            <SeekBar android:layout_gravity="center" android:id="@id/ilm" android:layout_width="fill_parent" android:layout_height="1.0dip" style="@style/acl" />
+        </FrameLayout>
+        <RelativeLayout android:id="@id/mnk" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <FrameLayout android:id="@id/nbz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_marginRight="8.0dip">
+                <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:layout_gravity="center|top" android:id="@id/o_3" android:layout_width="38.0dip" android:layout_height="38.0dip" app:authIconEnable="false" app:authIconHeight="14.0dip" app:authIconWidth="14.0dip" />
+                <com.tencent.biz.qqcircle.widgets.QCirclePlusFollowView android:layout_gravity="center_horizontal" android:id="@id/nf8" android:layout_width="27.0dip" android:layout_height="16.0dip" android:layout_marginTop="26.0dip" />
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/nbz" android:layout_centerVertical="true">
+                <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/qqi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="110.0dip" android:maxLines="1" android:includeFontPadding="false" />
+                <TextView android:textSize="12.0dip" android:textColor="#b2ffffff" android:ellipsize="end" android:id="@id/qqj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:maxWidth="110.0dip" android:maxLines="1" android:includeFontPadding="false" />
+                <TextView android:textSize="12.0dip" android:textColor="#b2ffffff" android:ellipsize="end" android:id="@id/qob" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:maxWidth="110.0dip" android:maxLines="1" android:includeFontPadding="false" />
+            </LinearLayout>
+            <com.tencent.biz.qqcircle.comment.QCircleCommentBottomBar android:id="@id/mt4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-7.0dip" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>

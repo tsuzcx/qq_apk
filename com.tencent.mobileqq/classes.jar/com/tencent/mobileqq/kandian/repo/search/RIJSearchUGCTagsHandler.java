@@ -43,7 +43,7 @@ public class RIJSearchUGCTagsHandler
     oidb_cmd0xb83.ReqBody localReqBody = new oidb_cmd0xb83.ReqBody();
     localReqBody.msg_req_recommend_tag_info.set((MessageMicro)localObject);
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0xb83", 2947, 0, localReqBody.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReq((ToServiceMsg)localObject);
+    this.a.sendPbReq((ToServiceMsg)localObject);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -54,8 +54,8 @@ public class RIJSearchUGCTagsHandler
     if (i == 0)
     {
       QLog.d("RIJSearchUGCTagsHandler", 1, "handle0xb83GetKeywordList result OK");
-      paramObject = ReadInJoyMSFHandlerUtils.d(paramToServiceMsg.msg_rsp_search_tag_info.rpt_msg_tag_info_list.get());
-      paramToServiceMsg = ReadInJoyMSFHandlerUtils.d(paramToServiceMsg.msg_rsp_recommend_tag_info.rpt_msg_tag_info_list.get());
+      paramObject = ReadInJoyMSFHandlerUtils.e(paramToServiceMsg.msg_rsp_search_tag_info.rpt_msg_tag_info_list.get());
+      paramToServiceMsg = ReadInJoyMSFHandlerUtils.e(paramToServiceMsg.msg_rsp_recommend_tag_info.rpt_msg_tag_info_list.get());
       paramFromServiceMsg.addAll(paramObject);
       paramFromServiceMsg.addAll(paramToServiceMsg);
     }
@@ -66,7 +66,7 @@ public class RIJSearchUGCTagsHandler
       paramToServiceMsg.append(i);
       QLog.d("RIJSearchUGCTagsHandler", 2, paramToServiceMsg.toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJSearchUGCTagsHandler.1(this, paramFromServiceMsg));
+    this.b.post(new RIJSearchUGCTagsHandler.1(this, paramFromServiceMsg));
   }
   
   public void a(String paramString)
@@ -86,12 +86,12 @@ public class RIJSearchUGCTagsHandler
       localReqBody.msg_req_recommend_tag_info.set(paramString);
     }
     paramString = ReadInJoyOidbHelper.a("OidbSvc.0xb83", 2947, 0, localReqBody.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReq(paramString);
+    this.a.sendPbReq(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.search.RIJSearchUGCTagsHandler
  * JD-Core Version:    0.7.0.1
  */

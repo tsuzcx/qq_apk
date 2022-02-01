@@ -28,8 +28,8 @@ import java.util.List;
 public class DiscPicThumbDownloader
   extends BaseThumbDownloader
 {
-  private SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new DiscPicThumbDownloader.5(this);
+  private SparseArray<String> c = new SparseArray();
+  private FileTransferObserver d = new DiscPicThumbDownloader.5(this);
   
   public DiscPicThumbDownloader(QQAppInterface paramQQAppInterface)
   {
@@ -39,7 +39,7 @@ public class DiscPicThumbDownloader
   
   private DiscPicThumbDownloader.PicSession a(long paramLong, boolean paramBoolean)
   {
-    Object localObject = a(paramLong);
+    Object localObject = b(paramLong);
     if (localObject == null) {
       return null;
     }
@@ -71,174 +71,177 @@ public class DiscPicThumbDownloader
     switch (paramInt)
     {
     default: 
-      return;
     case -2: 
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumb", paramPicSession.b, paramDownloadTask.jdField_a_of_type_JavaLangString, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9003L, "FileNotFoundException", 0L, 0L, 0L, paramDownloadTask.jdField_a_of_type_JavaLangString, "", 0, "FileNotFoundException", "");
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumbDetail", paramPicSession.b, paramDownloadTask.jdField_a_of_type_JavaLangString, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9003L, "FileNotFoundException", 0L, 0L, 0L, paramDownloadTask.jdField_a_of_type_JavaLangString, "", 0, "size error", "");
+      FileManagerUtil.a(this.a, paramPicSession.b.nSessionId, "actFileDiscThumb", paramPicSession.e, paramDownloadTask.b, paramPicSession.b.peerUin, paramPicSession.b.Uuid, paramPicSession.b.strFileMd5, 9003L, "FileNotFoundException", 0L, 0L, 0L, paramDownloadTask.b, "", 0, "FileNotFoundException", "");
+      FileManagerUtil.a(this.a, paramPicSession.b.nSessionId, "actFileDiscThumbDetail", paramPicSession.e, paramDownloadTask.b, paramPicSession.b.peerUin, paramPicSession.b.Uuid, paramPicSession.b.strFileMd5, 9003L, "FileNotFoundException", 0L, 0L, 0L, paramDownloadTask.b, "", 0, "size error", "");
       return;
     case -3: 
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l2 = paramPicSession.b;
-      localObject3 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      str1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      str2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      str3 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
-      l3 = paramDownloadTask.e;
-      l4 = paramDownloadTask.jdField_c_of_type_Long;
-      l5 = paramPicSession.jdField_a_of_type_Int;
-      str4 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        localObject1 = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
+      localObject2 = this.a;
+      l1 = paramPicSession.b.nSessionId;
+      l2 = paramPicSession.e;
+      localObject3 = paramDownloadTask.b;
+      str1 = paramPicSession.b.peerUin;
+      str2 = paramPicSession.b.Uuid;
+      str3 = paramPicSession.b.strFileMd5;
+      l3 = paramDownloadTask.t;
+      l4 = paramDownloadTask.j;
+      l5 = paramPicSession.c;
+      str4 = paramDownloadTask.b;
+      if (paramDownloadTask.s != null) {
+        localObject1 = paramDownloadTask.s.rawRespHeader;
       } else {
         localObject1 = "respose null";
       }
-      FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumb", l2, (String)localObject3, str1, str2, str3, 9004L, "no network", l3, l4, l5, str4, (String)localObject1, paramDownloadTask.jdField_b_of_type_Int, "no network", "");
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l2 = paramPicSession.b;
-      localObject2 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      localObject3 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      str1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      str2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
-      l3 = paramDownloadTask.e;
-      l4 = paramDownloadTask.jdField_c_of_type_Long;
-      l5 = paramPicSession.jdField_a_of_type_Int;
-      str3 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        paramPicSession = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
+      FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumb", l2, (String)localObject3, str1, str2, str3, 9004L, "no network", l3, l4, l5, str4, (String)localObject1, paramDownloadTask.l, "no network", "");
+      localObject1 = this.a;
+      l1 = paramPicSession.b.nSessionId;
+      l2 = paramPicSession.e;
+      localObject2 = paramDownloadTask.b;
+      localObject3 = paramPicSession.b.peerUin;
+      str1 = paramPicSession.b.Uuid;
+      str2 = paramPicSession.b.strFileMd5;
+      l3 = paramDownloadTask.t;
+      l4 = paramDownloadTask.j;
+      l5 = paramPicSession.c;
+      str3 = paramDownloadTask.b;
+      if (paramDownloadTask.s != null) {
+        paramPicSession = paramDownloadTask.s.rawRespHeader;
       } else {
         paramPicSession = "respose null";
       }
-      FileManagerUtil.a((QQAppInterface)localObject1, l1, "actFileDiscThumbDetail", l2, (String)localObject2, (String)localObject3, str1, str2, 9004L, "no network", l3, l4, l5, str3, paramPicSession, paramDownloadTask.jdField_c_of_type_Int, "no network", "");
+      FileManagerUtil.a((QQAppInterface)localObject1, l1, "actFileDiscThumbDetail", l2, (String)localObject2, (String)localObject3, str1, str2, 9004L, "no network", l3, l4, l5, str3, paramPicSession, paramDownloadTask.n, "no network", "");
       return;
+    case -7: 
+      FileManagerUtil.a(this.a, paramPicSession.b.nSessionId, "actFileDiscThumb", paramPicSession.e, paramDownloadTask.b, paramPicSession.b.peerUin, paramPicSession.b.Uuid, paramPicSession.b.strFileMd5, 9005L, "noRs", 0L, 0L, 0L, paramDownloadTask.b, "", 0, "noRs", "");
+      FileManagerUtil.a(this.a, paramPicSession.b.nSessionId, "actFileDiscThumbDetail", paramPicSession.e, paramDownloadTask.b, paramPicSession.b.peerUin, paramPicSession.b.Uuid, paramPicSession.b.strFileMd5, 9005L, "noRs", paramDownloadTask.t, paramDownloadTask.j, paramDownloadTask.k, paramDownloadTask.b, "", 0, "noRs", "");
+      return;
+    case -8: 
+      localObject2 = this.a;
+      l1 = paramPicSession.b.nSessionId;
+      l2 = paramPicSession.e;
+      localObject3 = paramDownloadTask.b;
+      str1 = paramPicSession.b.peerUin;
+      str2 = paramPicSession.b.Uuid;
+      str3 = paramPicSession.b.strFileMd5;
+      l3 = paramDownloadTask.j;
+      l4 = paramDownloadTask.k;
+      str4 = paramDownloadTask.b;
+      if (paramDownloadTask.s != null) {
+        localObject1 = paramDownloadTask.s.rawRespHeader;
+      } else {
+        localObject1 = "respose null";
+      }
+      FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumb", l2, (String)localObject3, str1, str2, str3, 9003L, "revStream write Exception", 0L, l3, l4, str4, (String)localObject1, paramDownloadTask.l, "revStream write Exception", "");
+      localObject1 = this.a;
+      l1 = paramPicSession.b.nSessionId;
+      l2 = paramPicSession.e;
+      localObject2 = paramDownloadTask.b;
+      localObject3 = paramPicSession.b.peerUin;
+      str1 = paramPicSession.b.Uuid;
+      str2 = paramPicSession.b.strFileMd5;
+      l3 = paramDownloadTask.j;
+      l4 = paramDownloadTask.k;
+      str3 = paramDownloadTask.b;
+      if (paramDownloadTask.s != null) {
+        paramPicSession = paramDownloadTask.s.rawRespHeader;
+      } else {
+        paramPicSession = "respose null";
+      }
+      FileManagerUtil.a((QQAppInterface)localObject1, l1, "actFileDiscThumbDetail", l2, (String)localObject2, (String)localObject3, str1, str2, 9003L, "revStream write Exception", 0L, l3, l4, str3, paramPicSession, paramDownloadTask.n, "revStream write Exception", "");
+      return;
+    case -9: 
+      localObject2 = this.a;
+      l1 = paramPicSession.b.nSessionId;
+      l2 = paramPicSession.e;
+      localObject3 = paramDownloadTask.b;
+      str1 = paramPicSession.b.peerUin;
+      str2 = paramPicSession.b.Uuid;
+      str3 = paramPicSession.b.strFileMd5;
+      l3 = paramDownloadTask.t;
+      l4 = paramDownloadTask.j;
+      l5 = paramDownloadTask.k;
+      str4 = paramDownloadTask.b;
+      if (paramDownloadTask.s != null) {
+        localObject1 = paramDownloadTask.s.rawRespHeader;
+      } else {
+        localObject1 = "respose null";
+      }
+      FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumb", l2, (String)localObject3, str1, str2, str3, 9003L, "rename error", l3, l4, l5, str4, (String)localObject1, paramDownloadTask.l, "rename error", "");
+      localObject1 = this.a;
+      l1 = paramPicSession.b.nSessionId;
+      l2 = paramPicSession.e;
+      localObject2 = paramDownloadTask.b;
+      localObject3 = paramPicSession.b.peerUin;
+      str1 = paramPicSession.b.Uuid;
+      str2 = paramPicSession.b.strFileMd5;
+      l3 = paramDownloadTask.t;
+      l4 = paramDownloadTask.j;
+      l5 = paramDownloadTask.k;
+      str3 = paramDownloadTask.b;
+      if (paramDownloadTask.s != null) {
+        paramPicSession = paramDownloadTask.s.rawRespHeader;
+      } else {
+        paramPicSession = "respose null";
+      }
+      FileManagerUtil.a((QQAppInterface)localObject1, l1, "actFileDiscThumbDetail", l2, (String)localObject2, (String)localObject3, str1, str2, 9003L, "rename error", l3, l4, l5, str3, paramPicSession, paramDownloadTask.n, "rename error", "");
+      return;
+    case -10: 
+      if (paramPicSession.b != null)
+      {
+        paramPicSession.b.thumbInvalidCode = 1;
+        return;
+      }
+      break;
+    case -11: 
     case -6: 
     case -5: 
     case -4: 
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        paramInt = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.errCode;
+      if (paramDownloadTask.s != null) {
+        paramInt = paramDownloadTask.s.errCode;
       } else {
         paramInt = 0;
       }
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        localObject1 = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getErrorString();
+      if (paramDownloadTask.s != null) {
+        localObject1 = paramDownloadTask.s.getErrorString();
       } else {
         localObject1 = "http resp err";
       }
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l3 = paramPicSession.b;
-      str1 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      str2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      str3 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      str4 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
+      localObject3 = this.a;
+      l2 = paramPicSession.b.nSessionId;
+      l3 = paramPicSession.e;
+      str1 = paramDownloadTask.b;
+      str2 = paramPicSession.b.peerUin;
+      str3 = paramPicSession.b.Uuid;
+      str4 = paramPicSession.b.strFileMd5;
       l1 = paramInt;
-      l4 = paramDownloadTask.e;
-      l5 = paramDownloadTask.jdField_c_of_type_Long;
-      long l6 = paramDownloadTask.jdField_a_of_type_Int;
-      String str5 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        localObject2 = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
+      l4 = paramDownloadTask.t;
+      l5 = paramDownloadTask.j;
+      long l6 = paramDownloadTask.k;
+      String str5 = paramDownloadTask.b;
+      if (paramDownloadTask.s != null) {
+        localObject2 = paramDownloadTask.s.rawRespHeader;
       } else {
         localObject2 = "respose null";
       }
-      FileManagerUtil.a((QQAppInterface)localObject3, l2, "actFileDiscThumb", l3, str1, str2, str3, str4, l1, (String)localObject1, l4, l5, l6, str5, (String)localObject2, paramDownloadTask.jdField_b_of_type_Int, (String)localObject1, "");
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l3 = paramPicSession.b;
-      str1 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      str2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      str3 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      str4 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
-      l4 = paramDownloadTask.e;
-      l5 = paramDownloadTask.jdField_c_of_type_Long;
-      l6 = paramDownloadTask.jdField_a_of_type_Int;
-      str5 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        localObject2 = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
+      FileManagerUtil.a((QQAppInterface)localObject3, l2, "actFileDiscThumb", l3, str1, str2, str3, str4, l1, (String)localObject1, l4, l5, l6, str5, (String)localObject2, paramDownloadTask.l, (String)localObject1, "");
+      localObject3 = this.a;
+      l2 = paramPicSession.b.nSessionId;
+      l3 = paramPicSession.e;
+      str1 = paramDownloadTask.b;
+      str2 = paramPicSession.b.peerUin;
+      str3 = paramPicSession.b.Uuid;
+      str4 = paramPicSession.b.strFileMd5;
+      l4 = paramDownloadTask.t;
+      l5 = paramDownloadTask.j;
+      l6 = paramDownloadTask.k;
+      str5 = paramDownloadTask.b;
+      if (paramDownloadTask.s != null) {
+        localObject2 = paramDownloadTask.s.rawRespHeader;
       } else {
         localObject2 = "respose null";
       }
-      FileManagerUtil.a((QQAppInterface)localObject3, l2, "actFileDiscThumbDetail", l3, str1, str2, str3, str4, l1, (String)localObject1, l4, l5, l6, str5, (String)localObject2, paramDownloadTask.jdField_c_of_type_Int, (String)localObject1, "");
-      paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.thumbInvalidCode = 2;
-      return;
-    case -7: 
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumb", paramPicSession.b, paramDownloadTask.jdField_a_of_type_JavaLangString, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9005L, "noRs", 0L, 0L, 0L, paramDownloadTask.jdField_a_of_type_JavaLangString, "", 0, "noRs", "");
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumbDetail", paramPicSession.b, paramDownloadTask.jdField_a_of_type_JavaLangString, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9005L, "noRs", paramDownloadTask.e, paramDownloadTask.jdField_c_of_type_Long, paramDownloadTask.jdField_a_of_type_Int, paramDownloadTask.jdField_a_of_type_JavaLangString, "", 0, "noRs", "");
-      return;
-    case -8: 
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l2 = paramPicSession.b;
-      localObject3 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      str1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      str2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      str3 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
-      l3 = paramDownloadTask.jdField_c_of_type_Long;
-      l4 = paramDownloadTask.jdField_a_of_type_Int;
-      str4 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        localObject1 = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
-      } else {
-        localObject1 = "respose null";
-      }
-      FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumb", l2, (String)localObject3, str1, str2, str3, 9003L, "revStream write Exception", 0L, l3, l4, str4, (String)localObject1, paramDownloadTask.jdField_b_of_type_Int, "revStream write Exception", "");
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l2 = paramPicSession.b;
-      localObject2 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      localObject3 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      str1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      str2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
-      l3 = paramDownloadTask.jdField_c_of_type_Long;
-      l4 = paramDownloadTask.jdField_a_of_type_Int;
-      str3 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        paramPicSession = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
-      } else {
-        paramPicSession = "respose null";
-      }
-      FileManagerUtil.a((QQAppInterface)localObject1, l1, "actFileDiscThumbDetail", l2, (String)localObject2, (String)localObject3, str1, str2, 9003L, "revStream write Exception", 0L, l3, l4, str3, paramPicSession, paramDownloadTask.jdField_c_of_type_Int, "revStream write Exception", "");
-      return;
-    case -9: 
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l2 = paramPicSession.b;
-      localObject3 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      str1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      str2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      str3 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
-      l3 = paramDownloadTask.e;
-      l4 = paramDownloadTask.jdField_c_of_type_Long;
-      l5 = paramDownloadTask.jdField_a_of_type_Int;
-      str4 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        localObject1 = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
-      } else {
-        localObject1 = "respose null";
-      }
-      FileManagerUtil.a((QQAppInterface)localObject2, l1, "actFileDiscThumb", l2, (String)localObject3, str1, str2, str3, 9003L, "rename error", l3, l4, l5, str4, (String)localObject1, paramDownloadTask.jdField_b_of_type_Int, "rename error", "");
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l2 = paramPicSession.b;
-      localObject2 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      localObject3 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      str1 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      str2 = paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
-      l3 = paramDownloadTask.e;
-      l4 = paramDownloadTask.jdField_c_of_type_Long;
-      l5 = paramDownloadTask.jdField_a_of_type_Int;
-      str3 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-        paramPicSession = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
-      } else {
-        paramPicSession = "respose null";
-      }
-      FileManagerUtil.a((QQAppInterface)localObject1, l1, "actFileDiscThumbDetail", l2, (String)localObject2, (String)localObject3, str1, str2, 9003L, "rename error", l3, l4, l5, str3, paramPicSession, paramDownloadTask.jdField_c_of_type_Int, "rename error", "");
-      return;
-    }
-    if (paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
-      paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.thumbInvalidCode = 1;
+      FileManagerUtil.a((QQAppInterface)localObject3, l2, "actFileDiscThumbDetail", l3, str1, str2, str3, str4, l1, (String)localObject1, l4, l5, l6, str5, (String)localObject2, paramDownloadTask.n, (String)localObject1, "");
+      paramPicSession.b.thumbInvalidCode = 2;
     }
   }
   
@@ -262,10 +265,10 @@ public class DiscPicThumbDownloader
       a(paramLong2, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
     }
-    if ((TextUtils.isEmpty(((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString5))) {
-      ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString5;
+    if ((TextUtils.isEmpty(((DiscPicThumbDownloader.PicSession)localObject).b.strFileMd5)) && (!TextUtils.isEmpty(paramString5))) {
+      ((DiscPicThumbDownloader.PicSession)localObject).b.strFileMd5 = paramString5;
     }
-    FileManagerUtil.a(((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null);
+    FileManagerUtil.a(((DiscPicThumbDownloader.PicSession)localObject).b, this.a, null);
     boolean bool = true;
     if (paramLong1 != 0L)
     {
@@ -280,20 +283,20 @@ public class DiscPicThumbDownloader
       QLog.e("DiscPicThumbDownloader<FileAssistant>", 1, paramByteStringMicro.toString());
       if ((paramLong1 != -100001L) && ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L)))
       {
-        ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        ((DiscPicThumbDownloader.PicSession)localObject).b.status = 16;
+        this.a.getFileManagerDataCenter().c(((DiscPicThumbDownloader.PicSession)localObject).b);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 51, new Object[] { ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_Int) });
+      this.a.getFileManagerNotifyCenter().a(false, 51, new Object[] { ((DiscPicThumbDownloader.PicSession)localObject).b, Integer.valueOf(((DiscPicThumbDownloader.PicSession)localObject).c) });
       a(paramLong2);
       a(paramLong2, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
     }
     if ((paramString3 != null) && (paramByteStringMicro != null))
     {
-      if ((TextUtils.isEmpty(((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString5))) {
-        ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString5;
+      if ((TextUtils.isEmpty(((DiscPicThumbDownloader.PicSession)localObject).b.strFileMd5)) && (!TextUtils.isEmpty(paramString5))) {
+        ((DiscPicThumbDownloader.PicSession)localObject).b.strFileMd5 = paramString5;
       }
-      paramString1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_Int, "");
+      paramString1 = (String)this.c.get(((DiscPicThumbDownloader.PicSession)localObject).c, "");
       if (TextUtils.isEmpty(paramString1))
       {
         paramString1 = new StringBuilder();
@@ -302,7 +305,7 @@ public class DiscPicThumbDownloader
         paramString1.append("] unknow thumbSize!!!info:");
         paramString1.append(localObject.toString());
         QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, paramString1.toString());
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 51, new Object[] { ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_Int) });
+        this.a.getFileManagerNotifyCenter().a(false, 51, new Object[] { ((DiscPicThumbDownloader.PicSession)localObject).b, Integer.valueOf(((DiscPicThumbDownloader.PicSession)localObject).c) });
         a(paramLong2);
         a(paramLong2, false, paramString3, paramShort, paramString4, null, paramString2, false, null, (short)0, null);
         return;
@@ -311,7 +314,7 @@ public class DiscPicThumbDownloader
       paramByteStringMicro.append(paramString4);
       paramByteStringMicro.append(paramString1);
       paramString5 = paramByteStringMicro.toString();
-      if ((((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsThumb4C2C(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (paramBundle != null))
+      if ((((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsThumb4C2C(this.a)) && (paramBundle != null))
       {
         paramString1 = paramBundle.getString("strHttpsDomain");
         if (!TextUtils.isEmpty(paramString1))
@@ -320,15 +323,15 @@ public class DiscPicThumbDownloader
           if (s == 0)
           {
             s = 443;
-            break label656;
+            break label657;
           }
-          break label656;
+          break label657;
         }
       }
       bool = false;
       paramString1 = null;
       short s = 0;
-      label656:
+      label657:
       if (paramBundle != null)
       {
         paramString4 = paramBundle.getString("IPv6Dns");
@@ -354,8 +357,8 @@ public class DiscPicThumbDownloader
     QLog.i("DiscPicThumbDownloader<FileAssistant>", 1, paramString1.toString());
     if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
     {
-      ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      ((DiscPicThumbDownloader.PicSession)localObject).b.status = 16;
+      this.a.getFileManagerDataCenter().c(((DiscPicThumbDownloader.PicSession)localObject).b);
     }
     a(paramLong2);
     a(paramLong2, false, null, 0, null, null, paramString2, false, null, (short)0, null);
@@ -363,26 +366,26 @@ public class DiscPicThumbDownloader
   
   private void a(DiscPicThumbDownloader.PicSession paramPicSession, String paramString, ThumbHttpDownloader.DownloadTask paramDownloadTask)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumb", System.currentTimeMillis() - paramPicSession.b, paramDownloadTask.jdField_a_of_type_JavaLangString, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, paramDownloadTask.e, paramDownloadTask.jdField_c_of_type_Long, paramDownloadTask.jdField_a_of_type_Int, paramDownloadTask.jdField_b_of_type_Int, null);
-    if (paramPicSession.jdField_a_of_type_Int == 7)
+    FileManagerUtil.a(this.a, paramPicSession.b.nSessionId, "actFileDiscThumb", System.currentTimeMillis() - paramPicSession.e, paramDownloadTask.b, paramPicSession.b.peerUin, paramPicSession.b.Uuid, paramPicSession.b.strFileMd5, paramDownloadTask.t, paramDownloadTask.j, paramDownloadTask.k, paramDownloadTask.l, null);
+    if (paramPicSession.c == 7)
     {
-      paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
-      FileManagerUtil.d(paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      paramPicSession.b.strLargeThumPath = paramString;
+      FileManagerUtil.n(paramPicSession.b);
       ThreadManager.post(new DiscPicThumbDownloader.3(this, paramPicSession), 8, null, false);
     }
-    else if (paramPicSession.jdField_a_of_type_Int == 5)
+    else if (paramPicSession.c == 5)
     {
-      paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strMiddleThumPath = paramString;
-      FileManagerUtil.d(paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if (FilePicURLDrawlableHelper.a(paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)) {
+      paramPicSession.b.strMiddleThumPath = paramString;
+      FileManagerUtil.n(paramPicSession.b);
+      if (FilePicURLDrawlableHelper.i(paramPicSession.b)) {
         ThreadManager.post(new DiscPicThumbDownloader.4(this, paramPicSession), 8, null, false);
       }
     }
     else
     {
-      paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strThumbPath = paramString;
+      paramPicSession.b.strThumbPath = paramString;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.getFileManagerDataCenter().c(paramPicSession.b);
   }
   
   private String b(int paramInt, String paramString)
@@ -428,15 +431,15 @@ public class DiscPicThumbDownloader
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, "?pictype=scaled&size=16*16");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, "?pictype=scaled&size=32*32");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(2, "?pictype=scaled&size=64*64");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(3, "?pictype=scaled&size=128*128");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(4, "?pictype=scaled&size=320*320");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(5, "?pictype=scaled&size=384*384");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(6, "?pictype=scaled&size=640*640");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(7, "?pictype=scaled&size=750*750");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(8, "?pictype=scaled&size=1024*1024");
+    this.c.put(0, "?pictype=scaled&size=16*16");
+    this.c.put(1, "?pictype=scaled&size=32*32");
+    this.c.put(2, "?pictype=scaled&size=64*64");
+    this.c.put(3, "?pictype=scaled&size=128*128");
+    this.c.put(4, "?pictype=scaled&size=320*320");
+    this.c.put(5, "?pictype=scaled&size=384*384");
+    this.c.put(6, "?pictype=scaled&size=640*640");
+    this.c.put(7, "?pictype=scaled&size=750*750");
+    this.c.put(8, "?pictype=scaled&size=1024*1024");
   }
   
   public String a(FileManagerEntity paramFileManagerEntity, int paramInt)
@@ -448,7 +451,7 @@ public class DiscPicThumbDownloader
       ((StringBuilder)localObject1).append(paramFileManagerEntity.nSessionId);
       ((StringBuilder)localObject1).append("]");
       QLog.e("DiscPicThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity, Integer.valueOf(paramInt) });
+      this.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity, Integer.valueOf(paramInt) });
       return null;
     }
     a();
@@ -457,17 +460,17 @@ public class DiscPicThumbDownloader
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(FMSettings.a().getDefaultThumbPath());
-    ((StringBuilder)localObject1).append(b(paramInt, MD5.a(paramFileManagerEntity.Uuid)));
+    ((StringBuilder)localObject1).append(b(paramInt, MD5.b(paramFileManagerEntity.Uuid)));
     Object localObject2 = ((StringBuilder)localObject1).toString();
     localObject1 = localObject2;
-    if (!FileUtil.a((String)localObject2))
+    if (!FileUtil.b((String)localObject2))
     {
       localObject1 = localObject2;
       if (!TextUtils.isEmpty(paramFileManagerEntity.strFileMd5))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(FMSettings.a().getDefaultThumbPath());
-        ((StringBuilder)localObject1).append(b(paramInt, MD5.a(paramFileManagerEntity.strFileMd5)));
+        ((StringBuilder)localObject1).append(b(paramInt, MD5.b(paramFileManagerEntity.strFileMd5)));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
     }
@@ -476,14 +479,14 @@ public class DiscPicThumbDownloader
       if (paramInt == 7)
       {
         paramFileManagerEntity.strLargeThumPath = ((String)localObject1);
-        if (FilePicURLDrawlableHelper.a(paramFileManagerEntity)) {
+        if (FilePicURLDrawlableHelper.i(paramFileManagerEntity)) {
           ThreadManager.post(new DiscPicThumbDownloader.1(this, paramFileManagerEntity), 8, null, false);
         }
       }
       else if (paramInt == 5)
       {
         paramFileManagerEntity.strMiddleThumPath = ((String)localObject1);
-        if (FilePicURLDrawlableHelper.a(paramFileManagerEntity)) {
+        if (FilePicURLDrawlableHelper.i(paramFileManagerEntity)) {
           ThreadManager.post(new DiscPicThumbDownloader.2(this, paramFileManagerEntity), 8, null, false);
         }
       }
@@ -491,25 +494,25 @@ public class DiscPicThumbDownloader
       {
         paramFileManagerEntity.strThumbPath = ((String)localObject1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 50, new Object[] { paramFileManagerEntity, Integer.valueOf(paramInt) });
+      this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
+      this.a.getFileManagerNotifyCenter().a(true, 50, new Object[] { paramFileManagerEntity, Integer.valueOf(paramInt) });
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[downloadThumb] Id[");
       ((StringBuilder)localObject2).append(paramFileManagerEntity.nSessionId);
       ((StringBuilder)localObject2).append("] thumb Downloaded:");
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.e("DiscPicThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, "actFileDiscThumb", 0L, "", paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, 0L, 0, null);
+      FileManagerUtil.a(this.a, paramFileManagerEntity.nSessionId, "actFileDiscThumb", 0L, "", paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, 0L, 0, null);
       return localObject1;
     }
     localObject2 = new DiscPicThumbDownloader.PicSession(paramFileManagerEntity);
-    ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_Int = paramInt;
-    a((BaseThumbDownloader.Session)localObject2, (String)localObject1);
+    ((DiscPicThumbDownloader.PicSession)localObject2).c = paramInt;
+    a((BaseThumbDownloader.Session)localObject2, (String)localObject1, true);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[downloadThumb] download  nSession[");
     ((StringBuilder)localObject1).append(paramFileManagerEntity.nSessionId);
     ((StringBuilder)localObject1).append("], ThumbDownloadId[");
-    ((StringBuilder)localObject1).append(((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_Long);
+    ((StringBuilder)localObject1).append(((DiscPicThumbDownloader.PicSession)localObject2).a);
     ((StringBuilder)localObject1).append("]");
     QLog.i("DiscPicThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
     return null;
@@ -518,15 +521,15 @@ public class DiscPicThumbDownloader
   public List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList)
   {
     Object localObject = a(paramLong, false);
-    if ((localObject != null) && (((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null))
+    if ((localObject != null) && (((DiscPicThumbDownloader.PicSession)localObject).b != null))
     {
       int i;
-      if (((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {
+      if (((DiscPicThumbDownloader.PicSession)localObject).b.peerType == 3000) {
         i = 5;
       } else {
         i = 1;
       }
-      if (!FileIPv6StrateyController.a().isConfigEnableIPV6(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i)) {
+      if (!FileIPv6StrateyController.b().isConfigEnableIPV6(this.a, i)) {
         return null;
       }
       StringBuilder localStringBuilder;
@@ -540,7 +543,7 @@ public class DiscPicThumbDownloader
         paramString.append("] busiType:");
         paramString.append(i);
         QLog.i("DiscPicThumbDownloader<FileAssistant>", 1, paramString.toString());
-        paramList = FileIPv6StrateyController.a().getIPV6listForMediaPlatfrom(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramList);
+        paramList = FileIPv6StrateyController.b().getIPV6listForMediaPlatfrom(this.a, i, paramList);
         if ((paramList != null) && (paramList.size() > 0))
         {
           paramString = new ArrayList();
@@ -586,18 +589,18 @@ public class DiscPicThumbDownloader
         paramList.append(i);
         QLog.i("DiscPicThumbDownloader<FileAssistant>", 1, paramList.toString());
         paramString = new FileIPv6StrateyController.DomainInfo(paramString, paramInt);
-        paramList = FileIPv6StrateyController.a().getIPlistForV6Domain(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, i);
+        paramList = FileIPv6StrateyController.b().getIPlistForV6Domain(this.a, paramString, i);
         if ((paramList != null) && (!paramList.a()))
         {
           paramString = new ArrayList();
-          paramList = paramList.a.iterator();
+          paramList = paramList.b.iterator();
           while (paramList.hasNext())
           {
             localObject = (FileIPv6StrateyController.IPInfo)paramList.next();
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject).jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject).a);
             localStringBuilder.append(":");
-            localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject).jdField_a_of_type_Int);
+            localStringBuilder.append(((FileIPv6StrateyController.IPInfo)localObject).b);
             paramString.add(localStringBuilder.toString());
           }
           paramList = new StringBuilder();
@@ -630,49 +633,7 @@ public class DiscPicThumbDownloader
       QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, paramDownloadTask.toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(true, 52, new Object[] { paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(paramInt) });
-  }
-  
-  public void a(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask)
-  {
-    int i = 0;
-    Object localObject = a(paramLong, false);
-    if (localObject == null)
-    {
-      paramDownloadTask = new StringBuilder();
-      paramDownloadTask.append("[downloadThumb]  ID[");
-      paramDownloadTask.append(paramLong);
-      paramDownloadTask.append("] onDownloadCompleted no this session");
-      QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, paramDownloadTask.toString());
-      return;
-    }
-    if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-      i = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.errCode;
-    }
-    String str1;
-    if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-      str1 = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.getErrorString();
-    } else {
-      str1 = "start retry";
-    }
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    paramLong = ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-    long l1 = ((DiscPicThumbDownloader.PicSession)localObject).b;
-    String str2 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-    String str3 = ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-    String str4 = ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-    String str5 = ((DiscPicThumbDownloader.PicSession)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
-    long l2 = i;
-    long l3 = paramDownloadTask.e;
-    long l4 = paramDownloadTask.jdField_c_of_type_Long;
-    long l5 = paramDownloadTask.jdField_a_of_type_Int;
-    String str6 = paramDownloadTask.jdField_a_of_type_JavaLangString;
-    if (paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null) {
-      localObject = paramDownloadTask.jdField_b_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.rawRespHeader;
-    } else {
-      localObject = "respose null";
-    }
-    FileManagerUtil.a(localQQAppInterface, paramLong, "actFileDiscThumbDetail", l1, str2, str3, str4, str5, l2, str1, l3, l4, l5, str6, (String)localObject, paramDownloadTask.jdField_c_of_type_Int, str1, "");
+    this.a.getFileManagerNotifyCenter().a(true, 52, new Object[] { paramDownloadTask.b, Integer.valueOf(paramInt) });
   }
   
   public void a(long paramLong, HttpMsg paramHttpMsg)
@@ -688,7 +649,7 @@ public class DiscPicThumbDownloader
       return;
     }
     paramHttpMsg.busiType = 3000;
-    paramHttpMsg.setRequestProperty("Cookie", localPicSession.jdField_a_of_type_JavaLangString);
+    paramHttpMsg.setRequestProperty("Cookie", localPicSession.d);
   }
   
   public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, ThumbHttpDownloader.DownloadTask paramDownloadTask)
@@ -708,7 +669,7 @@ public class DiscPicThumbDownloader
     } else {
       a(paramInt, localPicSession, paramDownloadTask);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 50, new Object[] { localPicSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localPicSession.jdField_a_of_type_Int) });
+    this.a.getFileManagerNotifyCenter().a(paramBoolean, 50, new Object[] { localPicSession.b, Integer.valueOf(localPicSession.c) });
     super.a(paramLong, paramBoolean, paramInt, paramString, paramDownloadTask);
   }
   
@@ -722,8 +683,8 @@ public class DiscPicThumbDownloader
       paramString1.append(String.valueOf(paramLong2));
       paramString1.append("]");
       QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, paramString1.toString());
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0L, "actFileDiscThumb", 0L, "", "", "", "", 9005L, "get info null", 0L, 0L, 0L, "", "", 0, "get info null", "");
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0L, "actFileDiscThumbDetail", 0L, "", "", "", "", 9005L, "get info null", 0L, 0L, 0L, "", "", 0, "get info null", "");
+      FileManagerUtil.a(this.a, 0L, "actFileDiscThumb", 0L, "", "", "", "", 9005L, "get info null", 0L, 0L, 0L, "", "", 0, "get info null", "");
+      FileManagerUtil.a(this.a, 0L, "actFileDiscThumbDetail", 0L, "", "", "", "", 9005L, "get info null", 0L, 0L, 0L, "", "", 0, "get info null", "");
       a(paramLong2, false, null, 0, null, null, paramString4, false, null, (short)0, null);
       return;
     }
@@ -750,39 +711,39 @@ public class DiscPicThumbDownloader
       }
       else
       {
-        ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        ((DiscPicThumbDownloader.PicSession)localObject2).b.status = 16;
+        this.a.getFileManagerDataCenter().c(((DiscPicThumbDownloader.PicSession)localObject2).b);
       }
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      long l2 = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      long l3 = ((DiscPicThumbDownloader.PicSession)localObject2).b;
-      paramString2 = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      paramString3 = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      paramBundle = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
+      paramString1 = this.a;
+      long l2 = ((DiscPicThumbDownloader.PicSession)localObject2).b.nSessionId;
+      long l3 = ((DiscPicThumbDownloader.PicSession)localObject2).e;
+      paramString2 = ((DiscPicThumbDownloader.PicSession)localObject2).b.peerUin;
+      paramString3 = ((DiscPicThumbDownloader.PicSession)localObject2).b.Uuid;
+      paramBundle = ((DiscPicThumbDownloader.PicSession)localObject2).b.strFileMd5;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(String.valueOf(paramInt2));
       ((StringBuilder)localObject1).append("&");
       ((StringBuilder)localObject1).append(String.valueOf(paramLong1));
       FileManagerUtil.a(paramString1, l2, "actFileDiscThumb", l3, "", paramString2, paramString3, paramBundle, l1, ((StringBuilder)localObject1).toString(), 0L, 0L, 0L, "", "", 0, "ret error", null);
-      paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      l2 = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-      l3 = ((DiscPicThumbDownloader.PicSession)localObject2).b;
-      paramString2 = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-      paramString3 = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-      paramBundle = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5;
+      paramString1 = this.a;
+      l2 = ((DiscPicThumbDownloader.PicSession)localObject2).b.nSessionId;
+      l3 = ((DiscPicThumbDownloader.PicSession)localObject2).e;
+      paramString2 = ((DiscPicThumbDownloader.PicSession)localObject2).b.peerUin;
+      paramString3 = ((DiscPicThumbDownloader.PicSession)localObject2).b.Uuid;
+      paramBundle = ((DiscPicThumbDownloader.PicSession)localObject2).b.strFileMd5;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(String.valueOf(paramInt2));
       ((StringBuilder)localObject1).append("&");
       ((StringBuilder)localObject1).append(String.valueOf(paramLong1));
       FileManagerUtil.a(paramString1, l2, "actFileDiscThumbDetail", l3, "", paramString2, paramString3, paramBundle, l1, ((StringBuilder)localObject1).toString(), 0L, 0L, 0L, "", "", 0, "ret error", null);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_Int) });
+      this.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { ((DiscPicThumbDownloader.PicSession)localObject2).b, Integer.valueOf(((DiscPicThumbDownloader.PicSession)localObject2).c) });
       a(paramLong2);
       a(paramLong2, false, null, 0, null, null, paramString4, false, null, (short)0, null);
       return;
     }
-    ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_JavaLangString = paramString4;
-    paramString1 = this.jdField_a_of_type_AndroidUtilSparseArray;
-    paramInt2 = ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_Int;
+    ((DiscPicThumbDownloader.PicSession)localObject2).d = paramString4;
+    paramString1 = this.c;
+    paramInt2 = ((DiscPicThumbDownloader.PicSession)localObject2).c;
     Object localObject1 = "";
     paramString1 = (String)paramString1.get(paramInt2, "");
     if (TextUtils.isEmpty(paramString1))
@@ -801,9 +762,9 @@ public class DiscPicThumbDownloader
       paramBundle.append("] unknow thumbSize!!!info:");
       paramBundle.append(localObject2.toString());
       QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, paramBundle.toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_Int) });
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumb", ((DiscPicThumbDownloader.PicSession)localObject2).b, paramString1, ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9005L, "size error", 0L, 0L, 0L, paramString1, "", 0, "size error", "");
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumbDetail", ((DiscPicThumbDownloader.PicSession)localObject2).b, paramString1, ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, ((DiscPicThumbDownloader.PicSession)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9005L, "size error", 0L, 0L, 0L, paramString1, "", 0, "size error", "");
+      this.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { ((DiscPicThumbDownloader.PicSession)localObject2).b, Integer.valueOf(((DiscPicThumbDownloader.PicSession)localObject2).c) });
+      FileManagerUtil.a(this.a, ((DiscPicThumbDownloader.PicSession)localObject2).b.nSessionId, "actFileDiscThumb", ((DiscPicThumbDownloader.PicSession)localObject2).e, paramString1, ((DiscPicThumbDownloader.PicSession)localObject2).b.peerUin, ((DiscPicThumbDownloader.PicSession)localObject2).b.Uuid, ((DiscPicThumbDownloader.PicSession)localObject2).b.strFileMd5, 9005L, "size error", 0L, 0L, 0L, paramString1, "", 0, "size error", "");
+      FileManagerUtil.a(this.a, ((DiscPicThumbDownloader.PicSession)localObject2).b.nSessionId, "actFileDiscThumbDetail", ((DiscPicThumbDownloader.PicSession)localObject2).e, paramString1, ((DiscPicThumbDownloader.PicSession)localObject2).b.peerUin, ((DiscPicThumbDownloader.PicSession)localObject2).b.Uuid, ((DiscPicThumbDownloader.PicSession)localObject2).b.strFileMd5, 9005L, "size error", 0L, 0L, 0L, paramString1, "", 0, "size error", "");
       a(paramLong2);
       paramString1 = new StringBuilder();
       paramString1.append("/ftn_handler/");
@@ -816,7 +777,7 @@ public class DiscPicThumbDownloader
     ((StringBuilder)localObject2).append(paramString3);
     ((StringBuilder)localObject2).append(paramString1);
     localObject2 = ((StringBuilder)localObject2).toString();
-    if ((((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsThumb4Disc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (paramBundle != null))
+    if ((((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsThumb4Disc(this.a)) && (paramBundle != null))
     {
       paramString1 = paramBundle.getString("strHttpsDomain");
       if (!TextUtils.isEmpty(paramString1))
@@ -826,16 +787,16 @@ public class DiscPicThumbDownloader
         {
           s = 443;
           paramBoolean = bool;
-          break label1160;
+          break label1161;
         }
         paramBoolean = bool;
-        break label1160;
+        break label1161;
       }
     }
     paramString1 = null;
     paramBoolean = false;
     short s = 0;
-    label1160:
+    label1161:
     paramString3 = (String)localObject1;
     if (paramBundle != null) {
       paramString3 = paramBundle.getString("IPv6Dns");
@@ -855,19 +816,61 @@ public class DiscPicThumbDownloader
       QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, paramDownloadTask.toString());
       return false;
     }
-    if (paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(paramLong, paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, Long.parseLong(paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver);
+    if (paramDownloadTask.b.peerType == 3000) {
+      this.a.getFileTransferHandler().a(paramLong, paramDownloadTask.b.fileName, Long.parseLong(paramDownloadTask.b.peerUin), paramDownloadTask.b.Uuid, this.d);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(paramLong, paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver);
+      this.a.getFileTransferHandler().a(paramLong, paramDownloadTask.b.Uuid, paramDownloadTask.b.fileIdCrc, paramDownloadTask.b.bSend, this.d);
     }
     return true;
   }
   
-  public void b(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
+  public void b(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask)
+  {
+    int i = 0;
+    Object localObject = a(paramLong, false);
+    if (localObject == null)
+    {
+      paramDownloadTask = new StringBuilder();
+      paramDownloadTask.append("[downloadThumb]  ID[");
+      paramDownloadTask.append(paramLong);
+      paramDownloadTask.append("] onDownloadCompleted no this session");
+      QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, paramDownloadTask.toString());
+      return;
+    }
+    if (paramDownloadTask.s != null) {
+      i = paramDownloadTask.s.errCode;
+    }
+    String str1;
+    if (paramDownloadTask.s != null) {
+      str1 = paramDownloadTask.s.getErrorString();
+    } else {
+      str1 = "start retry";
+    }
+    QQAppInterface localQQAppInterface = this.a;
+    paramLong = ((DiscPicThumbDownloader.PicSession)localObject).b.nSessionId;
+    long l1 = ((DiscPicThumbDownloader.PicSession)localObject).e;
+    String str2 = paramDownloadTask.b;
+    String str3 = ((DiscPicThumbDownloader.PicSession)localObject).b.peerUin;
+    String str4 = ((DiscPicThumbDownloader.PicSession)localObject).b.Uuid;
+    String str5 = ((DiscPicThumbDownloader.PicSession)localObject).b.strFileMd5;
+    long l2 = i;
+    long l3 = paramDownloadTask.t;
+    long l4 = paramDownloadTask.j;
+    long l5 = paramDownloadTask.k;
+    String str6 = paramDownloadTask.b;
+    if (paramDownloadTask.s != null) {
+      localObject = paramDownloadTask.s.rawRespHeader;
+    } else {
+      localObject = "respose null";
+    }
+    FileManagerUtil.a(localQQAppInterface, paramLong, "actFileDiscThumbDetail", l1, str2, str3, str4, str5, l2, str1, l3, l4, l5, str6, (String)localObject, paramDownloadTask.n, str1, "");
+  }
+  
+  public void c(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

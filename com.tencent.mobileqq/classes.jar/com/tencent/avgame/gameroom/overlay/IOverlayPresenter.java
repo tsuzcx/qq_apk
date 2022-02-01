@@ -6,10 +6,6 @@ import android.view.View;
 
 public abstract interface IOverlayPresenter
 {
-  public abstract int a();
-  
-  public abstract View a();
-  
   public abstract void a();
   
   public abstract void a(RectF paramRectF);
@@ -20,11 +16,15 @@ public abstract interface IOverlayPresenter
   
   public abstract void a(String paramString, RectF paramRectF, int paramInt);
   
+  public abstract View b();
+  
   public abstract void b(RectF paramRectF);
   
   public abstract void b(String paramString);
   
   public abstract void b(String paramString, RectF paramRectF, int paramInt);
+  
+  public abstract int c();
 }
 
 

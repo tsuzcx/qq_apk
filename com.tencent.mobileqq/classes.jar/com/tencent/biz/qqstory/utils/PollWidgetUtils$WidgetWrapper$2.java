@@ -7,7 +7,7 @@ class PollWidgetUtils$WidgetWrapper$2
   {
     PollWidgetUtils.WidgetWrapper localWidgetWrapper = this.this$0;
     PollWidgetUtils.WidgetWrapper.a(localWidgetWrapper, PollWidgetUtils.WidgetWrapper.a(localWidgetWrapper) ^ true);
-    this.this$0.a.b_(PollWidgetUtils.WidgetWrapper.a(this.this$0));
+    this.this$0.a.f_(PollWidgetUtils.WidgetWrapper.a(this.this$0));
   }
 }
 

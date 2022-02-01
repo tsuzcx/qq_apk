@@ -18,174 +18,174 @@ import java.lang.ref.WeakReference;
 public class ZimuItemViewPacMan
   extends ZimuItemViewMotion
 {
-  private long jdField_a_of_type_Long = 0L;
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  private ZimuItemViewPacMan.PacManPara jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara;
-  private final int[] jdField_a_of_type_ArrayOfInt;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap = null;
-  private Canvas jdField_b_of_type_AndroidGraphicsCanvas = new Canvas();
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  int j = 10;
-  int k = 8;
-  int l = 4;
+  private Paint A = new Paint();
+  private ZimuItemViewPacMan.PacManPara B;
+  private Bitmap C = null;
+  private Canvas D = new Canvas();
+  Rect t = new Rect(0, 0, 0, 0);
+  Rect u = new Rect(0, 0, 0, 0);
+  int v = 10;
+  int w = 8;
+  int x = 4;
+  private final int[] y;
+  private long z = 0L;
   
   public ZimuItemViewPacMan(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat, ZimuItemViewPacMan.PacManPara paramPacManPara)
   {
     super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt1 / 6, paramInt1 / 5 };
-    this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara = paramPacManPara;
-    e();
+    this.A.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.o.setTextAlign(Paint.Align.CENTER);
+    this.y = new int[] { paramInt1 / 6, paramInt1 / 5 };
+    this.B = paramPacManPara;
+    n();
   }
   
-  private Bitmap c()
+  private boolean p()
+  {
+    return this.h < this.j / 2;
+  }
+  
+  private Bitmap q()
   {
     try
     {
-      String str = (String)this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo.a;
-      int n = str.length();
-      this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.b * n + (n - 1) * this.k, this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.b, Bitmap.Config.ARGB_8888);
-      this.jdField_b_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
-      float f2 = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.b / 2;
-      Object localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
+      String str = (String)this.l.b;
+      int k = str.length();
+      this.C = Bitmap.createBitmap(this.B.c * k + (k - 1) * this.w, this.B.c, Bitmap.Config.ARGB_8888);
+      this.D.setBitmap(this.C);
+      float f2 = this.B.c / 2;
+      Object localObject = this.o.getFontMetrics();
       float f3 = (((Paint.FontMetrics)localObject).ascent + ((Paint.FontMetrics)localObject).descent) / 2.0F;
-      float f4 = this.l / 2;
+      float f4 = this.x / 2;
       float f1 = f2;
-      int m;
-      for (int i = 0; i < n; i = m)
+      int j;
+      for (int i = 0; i < k; i = j)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(false);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-        this.jdField_b_of_type_AndroidGraphicsCanvas.drawCircle(f1, f2, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.l);
-        this.jdField_b_of_type_AndroidGraphicsCanvas.drawCircle(f1, f2, f2 - f4, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        localObject = this.jdField_b_of_type_AndroidGraphicsCanvas;
-        m = i + 1;
-        ((Canvas)localObject).drawText(str, i, m, f1, f2 - f3, this.jdField_a_of_type_AndroidGraphicsPaint);
-        i = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.b;
-        int i1 = this.k;
-        f1 += i + i1;
+        this.o.setAntiAlias(false);
+        this.o.setStyle(Paint.Style.FILL);
+        this.o.setColor(-1);
+        this.D.drawCircle(f1, f2, f2, this.o);
+        this.o.setAntiAlias(true);
+        this.o.setStyle(Paint.Style.STROKE);
+        this.o.setColor(-16777216);
+        this.o.setStrokeWidth(this.x);
+        this.D.drawCircle(f1, f2, f2 - f4, this.o);
+        this.o.setStrokeWidth(0.0F);
+        this.o.setStyle(Paint.Style.FILL);
+        localObject = this.D;
+        j = i + 1;
+        ((Canvas)localObject).drawText(str, i, j, f1, f2 - f3, this.o);
+        i = this.B.c;
+        int m = this.w;
+        f1 += i + m;
       }
-      return this.jdField_b_of_type_AndroidGraphicsBitmap;
+      return this.C;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, localException.getMessage());
+        QLog.e(this.a, 2, localException.getMessage());
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, localOutOfMemoryError.getMessage());
+        QLog.e(this.a, 2, localOutOfMemoryError.getMessage());
       }
     }
-  }
-  
-  private boolean d()
-  {
-    return this.e < this.g / 2;
   }
   
   protected int a(int paramInt)
   {
     if (paramInt < 8) {
-      return this.jdField_a_of_type_ArrayOfInt[0];
+      return this.y[0];
     }
-    return this.jdField_a_of_type_ArrayOfInt[1];
+    return this.y[1];
   }
   
   protected int a(Paint paramPaint)
   {
-    this.d = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.jdField_a_of_type_Int;
-    this.jdField_b_of_type_AndroidGraphicsRect.right = this.d;
-    this.jdField_b_of_type_AndroidGraphicsRect.bottom = this.d;
-    return this.d;
+    this.g = this.B.b;
+    this.u.right = this.g;
+    this.u.bottom = this.g;
+    return this.g;
   }
   
   protected int a(Paint paramPaint, String paramString)
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo != null) {
-      i = this.jdField_a_of_type_ComTencentAvBusinessHandlerSentenceInfo.a.length();
+    if (this.l != null) {
+      i = this.l.b.length();
     } else {
       i = 0;
     }
-    return this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.jdField_a_of_type_Int + this.j + this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.b * i + (i - 1) * this.k;
-  }
-  
-  public Bitmap a()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, c(), d());
-    }
-    else
-    {
-      c();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = b();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.B.b + this.v + this.B.c * i + (i - 1) * this.w;
   }
   
   protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
   {
-    long l1 = System.currentTimeMillis();
-    paramCanvas.drawPaint(this.jdField_b_of_type_AndroidGraphicsPaint);
+    long l = System.currentTimeMillis();
+    paramCanvas.drawPaint(this.A);
     paramCanvas.save();
-    paramCanvas.clipRect(this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.jdField_a_of_type_Int / 2, 0, paramInt1, paramInt2);
-    float f2 = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.jdField_a_of_type_Int + this.j;
+    paramCanvas.clipRect(this.B.b / 2, 0, paramInt1, paramInt2);
+    float f2 = this.B.b + this.v;
     float f1 = f2;
-    if (d())
+    if (p())
     {
-      f1 = f2 - this.jdField_a_of_type_Float * 100.0F;
-      f1 += this.e * 2 * (f2 - f1) / this.g;
+      f1 = f2 - this.p * 100.0F;
+      f1 += this.h * 2 * (f2 - f1) / this.j;
     }
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, f1, (this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.jdField_a_of_type_Int - this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.b) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(this.C, f1, (this.B.b - this.B.c) / 2, this.o);
     paramCanvas.restore();
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[((int)((l1 - this.jdField_a_of_type_Long) / 200L % this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length))];
-    this.jdField_a_of_type_AndroidGraphicsRect.right = localBitmap.getWidth();
-    this.jdField_a_of_type_AndroidGraphicsRect.bottom = localBitmap.getHeight();
-    paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    Bitmap localBitmap = this.B.a[((int)((l - this.z) / 200L % this.B.a.length))];
+    this.t.right = localBitmap.getWidth();
+    this.t.bottom = localBitmap.getHeight();
+    paramCanvas.drawBitmap(localBitmap, this.t, this.u, this.o);
   }
   
   public void a(ZimuItemViewPacMan.PacManPara paramPacManPara)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara = paramPacManPara;
+    this.B = paramPacManPara;
   }
   
-  void d()
+  public Bitmap k()
   {
-    super.d();
-    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if ((this.m != null) && (!this.m.isRecycled()))
+    {
+      a(this.q, h(), i());
+    }
+    else
+    {
+      q();
+      this.m = l();
+    }
+    return this.m;
+  }
+  
+  void m()
+  {
+    super.m();
+    Bitmap localBitmap = this.C;
     if (localBitmap != null)
     {
       if (!localBitmap.isRecycled()) {
-        this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
+        this.C.recycle();
       }
-      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+      this.C = null;
     }
   }
   
-  int e()
+  void n()
   {
-    return this.jdField_a_of_type_ComTencentAvUiFunchatZimuZimuItemViewPacMan$PacManPara.c;
+    float f = this.p * 0.48F;
+    this.v = ((int)(this.v * f));
+    this.w = ((int)(this.w * f));
+    this.x = ((int)(this.x * f));
   }
   
-  void e()
+  int o()
   {
-    float f = this.jdField_a_of_type_Float * 0.48F;
-    this.j = ((int)(this.j * f));
-    this.k = ((int)(this.k * f));
-    this.l = ((int)(this.l * f));
+    return this.B.d;
   }
 }
 

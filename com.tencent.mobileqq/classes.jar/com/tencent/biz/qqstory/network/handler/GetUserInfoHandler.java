@@ -32,51 +32,46 @@ public class GetUserInfoHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<ConvertUinAndUnionIdRequest, ConvertUinAndUnionIdResponse>
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  public SoftReference<GetUserInfoHandler.OnGetUserInfoCallback> a;
-  public List<QQUserUIItem.UserID> a;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public int b;
-  private List<QQUserUIItem.UserID> b;
+  public int c;
+  public List<QQUserUIItem.UserID> d;
+  public SoftReference<GetUserInfoHandler.OnGetUserInfoCallback> e;
+  public String f;
+  private List<QQUserUIItem.UserID> g = new ArrayList();
+  private Set<String> h = new HashSet();
+  private AtomicBoolean i = new AtomicBoolean(false);
+  private final Object j = new Object();
   
-  public GetUserInfoHandler()
-  {
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-  }
+  public GetUserInfoHandler() {}
   
   public GetUserInfoHandler(int paramInt, List<QQUserUIItem.UserID> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramInt;
+    this.d = paramList;
   }
   
   public GetUserInfoHandler(GetUserInfoHandler.OnGetUserInfoCallback paramOnGetUserInfoCallback)
   {
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramOnGetUserInfoCallback);
+    this.e = new SoftReference(paramOnGetUserInfoCallback);
   }
   
-  public static void d()
+  public static void e()
   {
     GetUserInfoHandler localGetUserInfoHandler = new GetUserInfoHandler();
-    if (TextUtils.isEmpty(QQStoryContext.a().b()))
+    if (TextUtils.isEmpty(QQStoryContext.a().i()))
     {
-      long l = QQStoryContext.a().a();
+      long l = QQStoryContext.a().h();
       localGetUserInfoHandler.a(0, new QQUserUIItem.UserID(String.valueOf(l), ""), String.valueOf(l));
       return;
     }
-    String str = QQStoryContext.a().b();
+    String str = QQStoryContext.a().i();
     localGetUserInfoHandler.a(1, new QQUserUIItem.UserID("", str), str);
   }
   
   public void a()
   {
     ConvertUinAndUnionIdRequest localConvertUinAndUnionIdRequest = new ConvertUinAndUnionIdRequest();
-    localConvertUinAndUnionIdRequest.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
-    localConvertUinAndUnionIdRequest.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    localConvertUinAndUnionIdRequest.e = this.c;
+    localConvertUinAndUnionIdRequest.f.addAll(this.d);
     CmdTaskManger.a().a(localConvertUinAndUnionIdRequest, this);
   }
   
@@ -94,12 +89,12 @@ public class GetUserInfoHandler
     }
     SLog.d("Q.qqstory.user.GetUserInfoHandler", "start get user id: %s , convert from %s, needMetal:%s, needGradeSpeed:%s", new Object[] { paramUserID, localObject, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
     Object localObject = new ConvertUinAndUnionIdRequest();
-    ((ConvertUinAndUnionIdRequest)localObject).jdField_a_of_type_JavaLangString = paramString;
-    ((ConvertUinAndUnionIdRequest)localObject).jdField_c_of_type_Int = paramInt;
-    ((ConvertUinAndUnionIdRequest)localObject).jdField_a_of_type_JavaUtilList.add(paramUserID);
-    ((ConvertUinAndUnionIdRequest)localObject).jdField_c_of_type_Boolean = paramUserID.a();
-    ((ConvertUinAndUnionIdRequest)localObject).jdField_a_of_type_Boolean = paramBoolean1;
-    ((ConvertUinAndUnionIdRequest)localObject).b = paramBoolean2;
+    ((ConvertUinAndUnionIdRequest)localObject).j = paramString;
+    ((ConvertUinAndUnionIdRequest)localObject).e = paramInt;
+    ((ConvertUinAndUnionIdRequest)localObject).f.add(paramUserID);
+    ((ConvertUinAndUnionIdRequest)localObject).i = paramUserID.a();
+    ((ConvertUinAndUnionIdRequest)localObject).g = paramBoolean1;
+    ((ConvertUinAndUnionIdRequest)localObject).h = paramBoolean2;
     CmdTaskManger.a().a((NetworkRequest)localObject, this);
   }
   
@@ -112,18 +107,18 @@ public class GetUserInfoHandler
     }
     SLog.d("Q.qqstory.user.GetUserInfoHandler", "start get user id: %s , convert from %s", new Object[] { paramList, localObject });
     Object localObject = new ConvertUinAndUnionIdRequest();
-    ((ConvertUinAndUnionIdRequest)localObject).jdField_c_of_type_Int = paramInt;
-    ((ConvertUinAndUnionIdRequest)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+    ((ConvertUinAndUnionIdRequest)localObject).e = paramInt;
+    ((ConvertUinAndUnionIdRequest)localObject).f.addAll(paramList);
     CmdTaskManger.a().a((NetworkRequest)localObject, this);
   }
   
   public void a(@NonNull ConvertUinAndUnionIdRequest paramConvertUinAndUnionIdRequest, @Nullable ConvertUinAndUnionIdResponse arg2, @NonNull ErrorMessage paramErrorMessage)
   {
     GetUserInfoHandler.UpdateUserInfoEvent localUpdateUserInfoEvent = new GetUserInfoHandler.UpdateUserInfoEvent();
-    localUpdateUserInfoEvent.b = this.jdField_a_of_type_JavaLangString;
+    localUpdateUserInfoEvent.d = this.f;
     if (paramErrorMessage.isSuccess())
     {
-      Object localObject = ???.jdField_a_of_type_JavaUtilList;
+      Object localObject = ???.a;
       ??? = new ArrayList();
       UserManager localUserManager = (UserManager)SuperManager.a(2);
       localObject = ((List)localObject).iterator();
@@ -135,46 +130,46 @@ public class GetUserInfoHandler
         }
         ???.add(localUserManager.a(localQQUserUIItem));
       }
-      localUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      localUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList = ???;
-      localUpdateUserInfoEvent.jdField_a_of_type_JavaLangString = paramConvertUinAndUnionIdRequest.jdField_a_of_type_JavaLangString;
+      localUpdateUserInfoEvent.g = paramErrorMessage;
+      localUpdateUserInfoEvent.b = ???;
+      localUpdateUserInfoEvent.c = paramConvertUinAndUnionIdRequest.j;
       if (???.size() == 1)
       {
         ??? = (QQUserUIItem)???.get(0);
-        localUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ???;
-        if (paramConvertUinAndUnionIdRequest.jdField_c_of_type_Boolean)
+        localUpdateUserInfoEvent.a = ???;
+        if (paramConvertUinAndUnionIdRequest.i)
         {
-          ((StoryConfigManager)SuperManager.a(10)).b("qqstory_my_uin", ???.qq);
+          ((StoryConfigManager)SuperManager.a(10)).d("qqstory_my_uin", ???.qq);
           QQStoryContext.a().a(???.uid);
         }
       }
       StoryDispatcher.a().dispatch(localUpdateUserInfoEvent);
-      b();
+      c();
     }
     else
     {
       SLog.c("Q.qqstory.user.GetUserInfoHandler", "get server info fail , %s, time :%d", paramErrorMessage);
-      localUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      localUpdateUserInfoEvent.jdField_a_of_type_JavaLangString = paramConvertUinAndUnionIdRequest.jdField_a_of_type_JavaLangString;
+      localUpdateUserInfoEvent.g = paramErrorMessage;
+      localUpdateUserInfoEvent.c = paramConvertUinAndUnionIdRequest.j;
       StoryDispatcher.a().dispatch(localUpdateUserInfoEvent);
-      c();
+      d();
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.j)
     {
-      if ((paramConvertUinAndUnionIdRequest.jdField_c_of_type_Int == 1) && (paramConvertUinAndUnionIdRequest.jdField_a_of_type_JavaUtilList != null))
+      if ((paramConvertUinAndUnionIdRequest.e == 1) && (paramConvertUinAndUnionIdRequest.f != null))
       {
-        paramConvertUinAndUnionIdRequest = paramConvertUinAndUnionIdRequest.jdField_a_of_type_JavaUtilList.iterator();
+        paramConvertUinAndUnionIdRequest = paramConvertUinAndUnionIdRequest.f.iterator();
         while (paramConvertUinAndUnionIdRequest.hasNext())
         {
           paramErrorMessage = ((QQUserUIItem.UserID)paramConvertUinAndUnionIdRequest.next()).b;
           if (!TextUtils.isEmpty(paramErrorMessage)) {
-            this.jdField_a_of_type_JavaUtilSet.remove(paramErrorMessage);
+            this.h.remove(paramErrorMessage);
           }
         }
       }
-      paramConvertUinAndUnionIdRequest = this.jdField_a_of_type_JavaLangRefSoftReference;
+      paramConvertUinAndUnionIdRequest = this.e;
       if ((paramConvertUinAndUnionIdRequest != null) && (paramConvertUinAndUnionIdRequest.get() != null)) {
-        ((GetUserInfoHandler.OnGetUserInfoCallback)this.jdField_a_of_type_JavaLangRefSoftReference.get()).a(localUpdateUserInfoEvent);
+        ((GetUserInfoHandler.OnGetUserInfoCallback)this.e.get()).a(localUpdateUserInfoEvent);
       }
       return;
     }
@@ -186,14 +181,14 @@ public class GetUserInfoHandler
   
   public void a(@NonNull String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.j)
     {
-      if (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))
+      if (!this.h.contains(paramString))
       {
-        this.jdField_b_of_type_JavaUtilList.add(new QQUserUIItem.UserID("", paramString));
-        this.jdField_a_of_type_JavaUtilSet.add(paramString);
+        this.g.add(new QQUserUIItem.UserID("", paramString));
+        this.h.add(paramString);
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+      if (this.i.compareAndSet(false, true)) {
         new Handler().postDelayed(new GetUserInfoHandler.1(this), 600L);
       }
       return;
@@ -202,7 +197,7 @@ public class GetUserInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserInfoHandler
  * JD-Core Version:    0.7.0.1
  */

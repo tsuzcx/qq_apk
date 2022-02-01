@@ -10,11 +10,11 @@ class BaseGuessTextStageView$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidViewView != null)
+    if (this.this$0.g != null)
     {
-      this.this$0.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.this$0.b.setVisibility(8);
+      this.this$0.g.setVisibility(8);
+      this.this$0.d.setVisibility(8);
+      this.this$0.e.setVisibility(8);
     }
   }
 }

@@ -61,32 +61,32 @@ public final class AutoOnlineStatusParser
             {
               int m = ((JSONObject)localObject6).optInt("main_sensor", 1);
               localObject2 = paramString;
-              ((Sensor)localObject2).e = m;
-              ((Sensor)localObject2).f = ((JSONObject)localObject6).optInt("secondary_sensor", 3);
+              ((Sensor)localObject2).f = m;
+              ((Sensor)localObject2).g = ((JSONObject)localObject6).optInt("secondary_sensor", 3);
             }
             if (StringsKt.equals(str1, "gps", true))
             {
-              paramString.g = ((JSONObject)localObject6).optInt("internal_update_status", Constant.c / 1000);
-              paramString.h = ((JSONObject)localObject6).optInt("slow_mode_count", Constant.o);
-              paramString.i = ((JSONObject)localObject6).optInt("fast_mode_count", Constant.p);
-              paramString.j = ((JSONObject)localObject6).optInt("internal_slow_mode", Constant.m / 1000);
-              paramString.k = ((JSONObject)localObject6).optInt("internal_fast_mode", Constant.n / 1000);
-              paramString.l = ((JSONObject)localObject6).optInt("internal_exit_step", Constant.q / 1000);
-              paramString.m = ((JSONObject)localObject6).optInt("internal_exit_still", Constant.r / 1000);
-              paramString.n = ((JSONObject)localObject6).optInt("session_enter_accuracy", Constant.s);
+              paramString.h = ((JSONObject)localObject6).optInt("internal_update_status", Constant.c / 1000);
+              paramString.i = ((JSONObject)localObject6).optInt("slow_mode_count", Constant.p);
+              paramString.j = ((JSONObject)localObject6).optInt("fast_mode_count", Constant.q);
+              paramString.k = ((JSONObject)localObject6).optInt("internal_slow_mode", Constant.n / 1000);
+              paramString.l = ((JSONObject)localObject6).optInt("internal_fast_mode", Constant.o / 1000);
+              paramString.m = ((JSONObject)localObject6).optInt("internal_exit_step", Constant.r / 1000);
+              paramString.n = ((JSONObject)localObject6).optInt("internal_exit_still", Constant.s / 1000);
+              paramString.o = ((JSONObject)localObject6).optInt("session_enter_accuracy", Constant.t);
             }
             if (StringsKt.equals(str1, "dist", true))
             {
-              paramString.o = ((JSONObject)localObject6).optInt("dist_accuracy", Constant.F);
-              paramString.p = ((JSONObject)localObject6).optInt("dist_thread_hold", Constant.G);
-              paramString.q = ((JSONObject)localObject6).optInt("dist_step_thread_hold", Constant.M);
-              paramString.r = ((JSONObject)localObject6).optInt("dist_enable", 1);
-              paramString.s = ((JSONObject)localObject6).optInt("dist_req_time", Constant.H);
-              paramString.t = ((JSONObject)localObject6).optInt("dist_acceler_enable", 1);
-              paramString.v = ((JSONObject)localObject6).optInt("dist_speed_req_time", Constant.I);
-              paramString.u = ((JSONObject)localObject6).optInt("dist_speed_thread_hold", Constant.J);
-              paramString.w = ((JSONObject)localObject6).optInt("dist_moving_max", Constant.K);
-              paramString.x = ((JSONObject)localObject6).optInt("dist_not_moving_min", Constant.L);
+              paramString.p = ((JSONObject)localObject6).optInt("dist_accuracy", Constant.G);
+              paramString.q = ((JSONObject)localObject6).optInt("dist_thread_hold", Constant.H);
+              paramString.r = ((JSONObject)localObject6).optInt("dist_step_thread_hold", Constant.N);
+              paramString.s = ((JSONObject)localObject6).optInt("dist_enable", 1);
+              paramString.t = ((JSONObject)localObject6).optInt("dist_req_time", Constant.I);
+              paramString.u = ((JSONObject)localObject6).optInt("dist_acceler_enable", 1);
+              paramString.w = ((JSONObject)localObject6).optInt("dist_speed_req_time", Constant.J);
+              paramString.v = ((JSONObject)localObject6).optInt("dist_speed_thread_hold", Constant.K);
+              paramString.x = ((JSONObject)localObject6).optInt("dist_moving_max", Constant.L);
+              paramString.y = ((JSONObject)localObject6).optInt("dist_not_moving_min", Constant.M);
             }
             if (QLog.isColorLevel())
             {
@@ -120,7 +120,7 @@ public final class AutoOnlineStatusParser
           localObject2 = (Category)null;
           if (localObject7 != null)
           {
-            localObject2 = new Category(((JSONObject)localObject7).optInt("level", 1), ((JSONObject)localObject7).optString("name"), ((JSONObject)localObject7).optInt("internal", Constant.h / 1000), ((JSONObject)localObject7).optInt("poi_count", Constant.d), ((JSONObject)localObject7).optInt("poi_distance", Constant.g), ((JSONObject)localObject7).optInt("loc_distance", Constant.f), ((JSONObject)localObject7).optInt("loc_accuracy", Constant.e), ((JSONObject)localObject7).optDouble("valid_rate", Constant.a), ((JSONObject)localObject7).optInt("cache_size", Constant.j), ((JSONObject)localObject7).optInt("cache_distance", Constant.l));
+            localObject2 = new Category(((JSONObject)localObject7).optInt("level", 1), ((JSONObject)localObject7).optString("name"), ((JSONObject)localObject7).optInt("internal", Constant.i / 1000), ((JSONObject)localObject7).optInt("poi_count", Constant.d), ((JSONObject)localObject7).optInt("poi_distance", Constant.g), ((JSONObject)localObject7).optInt("loc_distance", Constant.f), ((JSONObject)localObject7).optInt("loc_accuracy", Constant.e), ((JSONObject)localObject7).optDouble("valid_rate", Constant.h), ((JSONObject)localObject7).optInt("cache_size", Constant.k), ((JSONObject)localObject7).optInt("cache_distance", Constant.m));
             localObject7 = Unit.INSTANCE;
           }
           localObject7 = ((JSONObject)localObject3).optString("icon");
@@ -145,7 +145,7 @@ public final class AutoOnlineStatusParser
             QLog.d("AutoOnlineStatusParser", 2, localStringBuilder.toString());
           }
           localObject2 = new AutoStatusItem(l, (String)localObject6, str1, (Category)localObject2, (String)localObject7, str2, (Sensor)localObject3, str3, bool);
-          localAutoStatusElement.jdField_a_of_type_JavaUtilList.add(localObject2);
+          localAutoStatusElement.a.add(localObject2);
           localObject2 = Unit.INSTANCE;
           j += 1;
         }
@@ -160,8 +160,8 @@ public final class AutoOnlineStatusParser
         localObject2 = ((JSONObject)localObject3).optString("big_icon");
         localObject3 = ((JSONObject)localObject3).optString("sub_title");
         paramString = new OnlineStatusItem(l, paramString, (String)localObject1, (String)localObject2);
-        paramString.e = ((String)localObject3);
-        localAutoStatusElement.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem = paramString;
+        paramString.i = ((String)localObject3);
+        localAutoStatusElement.b = paramString;
         paramString = Unit.INSTANCE;
       }
       localObject3 = ((JSONObject)localObject4).optJSONObject("smart_status_on_earth");
@@ -173,14 +173,14 @@ public final class AutoOnlineStatusParser
         localObject2 = ((JSONObject)localObject3).optString("big_icon");
         localObject3 = ((JSONObject)localObject3).optString("sub_title");
         paramString = new OnlineStatusItem(l, paramString, (String)localObject1, (String)localObject2);
-        paramString.e = ((String)localObject3);
-        localAutoStatusElement.jdField_b_of_type_ComTencentMobileqqOnlinestatusOnlineStatusItem = paramString;
+        paramString.i = ((String)localObject3);
+        localAutoStatusElement.e = paramString;
         paramString = Unit.INSTANCE;
       }
       paramString = ((JSONObject)localObject4).optString("weather_jump_schema", "");
       if (paramString != null)
       {
-        localAutoStatusElement.jdField_a_of_type_JavaLangString = paramString;
+        localAutoStatusElement.c = paramString;
         paramString = Unit.INSTANCE;
       }
       localObject1 = ((JSONObject)localObject4).optJSONArray("weather_url");
@@ -204,7 +204,7 @@ public final class AutoOnlineStatusParser
           localObject4 = paramString.optString("weather_big_url", "");
           localObject5 = paramString.optString("weather_aio_url", "");
           paramString = new WeatherUrl((String)localObject2, (String)localObject3, (String)localObject4, (String)localObject5, paramString.optString("big_url", (String)localObject5));
-          localAutoStatusElement.jdField_b_of_type_JavaUtilList.add(paramString);
+          localAutoStatusElement.d.add(paramString);
           paramString = Unit.INSTANCE;
         }
         j += 1;
@@ -217,7 +217,7 @@ public final class AutoOnlineStatusParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.config.AutoOnlineStatusParser
  * JD-Core Version:    0.7.0.1
  */

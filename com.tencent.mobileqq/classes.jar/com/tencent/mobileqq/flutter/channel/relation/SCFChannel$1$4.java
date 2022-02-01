@@ -17,7 +17,7 @@ class SCFChannel$1$4
   public void run()
   {
     Object localObject = new Bundle();
-    ((Bundle)localObject).putString("KEY_UIN", this.jdField_a_of_type_JavaLangString);
+    ((Bundle)localObject).putString("KEY_UIN", this.a);
     localObject = QIPCClientHelper.getInstance().getClient().callServer("FriendQIPCModule", "ACTION_GET_SCF_RING_NAME", (Bundle)localObject);
     if (((EIPCResult)localObject).isSuccess()) {
       localObject = ((EIPCResult)localObject).data.getString("KEY_SCF_RING_NAME");
@@ -32,7 +32,7 @@ class SCFChannel$1$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.4
  * JD-Core Version:    0.7.0.1
  */

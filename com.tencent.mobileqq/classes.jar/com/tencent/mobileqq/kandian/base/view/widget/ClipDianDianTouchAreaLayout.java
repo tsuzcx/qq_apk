@@ -14,13 +14,13 @@ import android.widget.FrameLayout;
 public class ClipDianDianTouchAreaLayout
   extends FrameLayout
 {
-  int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 1;
-  private int c;
+  boolean a = false;
+  VelocityTracker b;
+  int c;
+  int d = 1;
+  private View e;
+  private Rect f = new Rect();
+  private int g;
   
   public ClipDianDianTouchAreaLayout(@NonNull Context paramContext)
   {
@@ -30,12 +30,12 @@ public class ClipDianDianTouchAreaLayout
   public ClipDianDianTouchAreaLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledMinimumFlingVelocity();
+    this.c = ViewConfiguration.get(paramContext).getScaledMinimumFlingVelocity();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.e == null) {
       return super.onInterceptTouchEvent(paramMotionEvent);
     }
     int i = (int)paramMotionEvent.getX();
@@ -44,45 +44,45 @@ public class ClipDianDianTouchAreaLayout
     Object localObject;
     if (k == 0)
     {
-      this.jdField_a_of_type_AndroidViewView.getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      k = this.c;
+      this.e.getHitRect(this.f);
+      localObject = this.f;
+      k = this.g;
       ((Rect)localObject).inset(k, k);
-      this.jdField_a_of_type_Boolean = false;
-      this.b = 1;
-      localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
+      this.a = false;
+      this.d = 1;
+      localObject = this.b;
       if (localObject == null) {
-        this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+        this.b = VelocityTracker.obtain();
       } else {
         ((VelocityTracker)localObject).clear();
       }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+      this.b.addMovement(paramMotionEvent);
     }
     else if (k == 2)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         return true;
       }
-      localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
+      localObject = this.b;
       if (localObject != null)
       {
         ((VelocityTracker)localObject).addMovement(paramMotionEvent);
-        this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-        if (Math.abs((int)this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity()) >= this.jdField_a_of_type_Int) {
-          this.b = 2;
+        this.b.computeCurrentVelocity(1000);
+        if (Math.abs((int)this.b.getYVelocity()) >= this.c) {
+          this.d = 2;
         }
       }
-      if (this.b == 2) {
+      if (this.d == 2) {
         return true;
       }
     }
     else if ((k == 1) || (k == 3))
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-      this.jdField_a_of_type_Boolean = false;
+      this.b.clear();
+      this.b = null;
+      this.a = false;
     }
-    if (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j)) {
+    if (!this.f.contains(i, j)) {
       return true;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -90,50 +90,50 @@ public class ClipDianDianTouchAreaLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.e == null) {
       return super.onTouchEvent(paramMotionEvent);
     }
     int i = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
     int k = paramMotionEvent.getAction();
     if ((k == 1) || (k == 3)) {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.e;
     if (localObject != null) {
       if (k == 0)
       {
-        ((View)localObject).getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
-        localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-        i = this.c;
+        ((View)localObject).getHitRect(this.f);
+        localObject = this.f;
+        i = this.g;
         ((Rect)localObject).inset(i, i);
-        this.jdField_a_of_type_Boolean = false;
+        this.a = false;
       }
       else if (k == 2)
       {
-        if (this.b == 2)
+        if (this.d == 2)
         {
-          paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+          paramMotionEvent = this.b;
           if (paramMotionEvent != null)
           {
             paramMotionEvent.clear();
-            this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+            this.b = null;
           }
           return false;
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.a)
         {
-          paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+          paramMotionEvent = this.b;
           if (paramMotionEvent != null)
           {
             paramMotionEvent.clear();
-            this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+            this.b = null;
           }
           return false;
         }
-        if (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j))
+        if (!this.f.contains(i, j))
         {
-          this.jdField_a_of_type_Boolean = true;
+          this.a = true;
           super.onTouchEvent(paramMotionEvent);
           setPressed(false);
           return false;
@@ -145,13 +145,13 @@ public class ClipDianDianTouchAreaLayout
   
   public void setTouchWidget(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.c = paramInt;
+    this.e = paramView;
+    this.g = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ClipDianDianTouchAreaLayout
  * JD-Core Version:    0.7.0.1
  */

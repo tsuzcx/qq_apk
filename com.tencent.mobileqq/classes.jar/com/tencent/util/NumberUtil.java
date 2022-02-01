@@ -21,11 +21,6 @@ public class NumberUtil
     return paramInt;
   }
   
-  public static long a(String paramString)
-  {
-    return a(paramString, 0L);
-  }
-  
   public static long a(String paramString, long paramLong)
   {
     try
@@ -66,10 +61,15 @@ public class NumberUtil
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
+  
+  public static long b(String paramString)
+  {
+    return a(paramString, 0L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.NumberUtil
  * JD-Core Version:    0.7.0.1
  */

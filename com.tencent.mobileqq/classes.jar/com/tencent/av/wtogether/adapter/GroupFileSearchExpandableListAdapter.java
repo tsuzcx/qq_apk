@@ -38,40 +38,36 @@ public class GroupFileSearchExpandableListAdapter
   implements Handler.Callback, View.OnClickListener, AbsListView.OnScrollListener
 {
   protected static String a = "GroupFileSearchExpandableListAdapter";
-  protected final int a;
-  protected long a;
-  protected Activity a;
-  protected Handler a;
-  protected LayoutInflater a;
-  protected GroupFileSearchExpandableListAdapter.FileSelectListener a;
-  protected QQAppInterface a;
-  protected PinnedHeaderIphoneTreeView a;
-  protected HashMap<TroopFileSearchItemData, GroupFileSearchExpandableListAdapter.ViewHolder> a;
-  protected List<TroopFileSearchItemData> a;
-  private UUID a;
-  public boolean a;
-  protected Handler b;
-  protected String b;
-  protected List<TroopFileSearchItemData> b;
-  public boolean b;
+  protected final int b;
+  protected Activity c;
+  protected QQAppInterface d;
+  protected Handler e;
+  protected Handler f;
+  protected LayoutInflater g;
+  protected PinnedHeaderIphoneTreeView h;
+  protected long i;
+  protected String j = null;
+  protected HashMap<TroopFileSearchItemData, GroupFileSearchExpandableListAdapter.ViewHolder> k = new HashMap();
+  protected List<TroopFileSearchItemData> l;
+  protected List<TroopFileSearchItemData> m;
+  protected GroupFileSearchExpandableListAdapter.FileSelectListener n;
+  public boolean o = false;
+  public boolean p = false;
+  private UUID q;
   
   public GroupFileSearchExpandableListAdapter(Activity paramActivity, QQAppInterface paramQQAppInterface, long paramLong, PinnedHeaderIphoneTreeView paramPinnedHeaderIphoneTreeView, Handler paramHandler, GroupFileSearchExpandableListAdapter.FileSelectListener paramFileSelectListener)
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView = paramPinnedHeaderIphoneTreeView;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter$FileSelectListener = paramFileSelectListener;
-    this.jdField_a_of_type_Int = paramActivity.getResources().getDimensionPixelSize(2131298051);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.c = paramActivity;
+    this.d = paramQQAppInterface;
+    this.i = paramLong;
+    this.f = new Handler(this);
+    this.g = LayoutInflater.from(paramActivity);
+    this.h = paramPinnedHeaderIphoneTreeView;
+    this.e = paramHandler;
+    this.n = paramFileSelectListener;
+    this.b = paramActivity.getResources().getDimensionPixelSize(2131298727);
+    this.l = new ArrayList();
+    this.m = new ArrayList();
   }
   
   private SpannableStringBuilder a(String paramString1, String paramString2, TextView paramTextView, String paramString3, String paramString4)
@@ -89,17 +85,17 @@ public class GroupFileSearchExpandableListAdapter
   
   private void a(EllipsizingTextView paramEllipsizingTextView, TroopFileInfo paramTroopFileInfo, String paramString)
   {
-    paramEllipsizingTextView.setText(paramTroopFileInfo.c);
+    paramEllipsizingTextView.setText(paramTroopFileInfo.d);
     paramEllipsizingTextView.setMaxLines(1);
     if (TextUtils.isEmpty(paramString))
     {
-      paramEllipsizingTextView.setText(paramTroopFileInfo.c);
+      paramEllipsizingTextView.setText(paramTroopFileInfo.d);
       return;
     }
     paramEllipsizingTextView.a();
     if (paramEllipsizingTextView.getWidth() > 0)
     {
-      paramTroopFileInfo = BaseSearchUtil.a(paramEllipsizingTextView, paramTroopFileInfo.c, paramString, true);
+      paramTroopFileInfo = BaseSearchUtil.a(paramEllipsizingTextView, paramTroopFileInfo.d, paramString, true);
       paramEllipsizingTextView.setText("");
       paramEllipsizingTextView.setText(paramTroopFileInfo);
       return;
@@ -111,44 +107,44 @@ public class GroupFileSearchExpandableListAdapter
   {
     if (!paramBoolean)
     {
-      if (FileUtils.fileExistsAndNotEmpty(paramTroopFileInfo.j))
+      if (FileUtils.fileExistsAndNotEmpty(paramTroopFileInfo.w))
       {
-        int i = FileManagerUtil.a(paramTroopFileInfo.c);
-        FileManagerUtil.a(paramAsyncImageView, paramTroopFileInfo.j, i);
+        int i1 = FileManagerUtil.c(paramTroopFileInfo.d);
+        FileManagerUtil.a(paramAsyncImageView, paramTroopFileInfo.w, i1);
         return;
       }
-      paramAsyncImageView.setDefaultImage(FileManagerUtil.b(paramTroopFileInfo.c));
-      TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTroopFileSearchItemData.jdField_a_of_type_Long).a(paramTroopFileInfo.jdField_b_of_type_JavaLangString, paramTroopFileInfo.c, paramTroopFileInfo.jdField_a_of_type_Int, 128);
+      paramAsyncImageView.setDefaultImage(FileManagerUtil.i(paramTroopFileInfo.d));
+      TroopFileTransferManager.a(this.d, paramTroopFileSearchItemData.a).a(paramTroopFileInfo.c, paramTroopFileInfo.d, paramTroopFileInfo.f, 128);
     }
   }
   
   public TroopFileSearchItemData a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    int j = 0;
-    int i;
+    Object localObject = this.l;
+    int i2 = 0;
+    int i1;
     if (localObject != null)
     {
-      i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      i1 = 0;
+      while (i1 < this.l.size())
       {
-        localObject = (TroopFileSearchItemData)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localObject != null) && (((TroopFileSearchItemData)localObject).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo != null) && (((TroopFileSearchItemData)localObject).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.jdField_b_of_type_JavaLangString.equals(paramString))) {
+        localObject = (TroopFileSearchItemData)this.l.get(i1);
+        if ((localObject != null) && (((TroopFileSearchItemData)localObject).i != null) && (((TroopFileSearchItemData)localObject).i.c.equals(paramString))) {
           return localObject;
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    if (this.jdField_b_of_type_JavaUtilList != null)
+    if (this.m != null)
     {
-      i = j;
-      while (i < this.jdField_b_of_type_JavaUtilList.size())
+      i1 = i2;
+      while (i1 < this.m.size())
       {
-        localObject = (TroopFileSearchItemData)this.jdField_b_of_type_JavaUtilList.get(i);
-        if ((localObject != null) && (((TroopFileSearchItemData)localObject).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo != null) && (((TroopFileSearchItemData)localObject).jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.jdField_b_of_type_JavaLangString.equals(paramString))) {
+        localObject = (TroopFileSearchItemData)this.m.get(i1);
+        if ((localObject != null) && (((TroopFileSearchItemData)localObject).i != null) && (((TroopFileSearchItemData)localObject).i.c.equals(paramString))) {
           return localObject;
         }
-        i += 1;
+        i1 += 1;
       }
     }
     return null;
@@ -156,11 +152,11 @@ public class GroupFileSearchExpandableListAdapter
   
   public void a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.l;
     if (localList != null) {
       localList.clear();
     }
-    localList = this.jdField_b_of_type_JavaUtilList;
+    localList = this.m;
     if (localList != null) {
       localList.clear();
     }
@@ -168,82 +164,82 @@ public class GroupFileSearchExpandableListAdapter
   
   public void a(QQAppInterface paramQQAppInterface, AsyncImageView paramAsyncImageView, long paramLong, TroopFileInfo paramTroopFileInfo)
   {
-    if (FileUtils.fileExistsAndNotEmpty(paramTroopFileInfo.j))
+    if (FileUtils.fileExistsAndNotEmpty(paramTroopFileInfo.w))
     {
-      int i = FileManagerUtil.a(paramTroopFileInfo.c);
-      FileManagerUtil.a(paramAsyncImageView, paramTroopFileInfo.j, i);
+      int i1 = FileManagerUtil.c(paramTroopFileInfo.d);
+      FileManagerUtil.a(paramAsyncImageView, paramTroopFileInfo.w, i1);
       return;
     }
-    paramAsyncImageView.setDefaultImage(FileManagerUtil.b(paramTroopFileInfo.c));
+    paramAsyncImageView.setDefaultImage(FileManagerUtil.i(paramTroopFileInfo.d));
   }
   
   public void a(List<TroopFileSearchItemData> paramList, String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.j = paramString;
     if ((paramList != null) && (paramList.size() != 0))
     {
-      int j = paramList.size();
-      int i = 0;
-      while (i < j)
+      int i2 = paramList.size();
+      int i1 = 0;
+      while (i1 < i2)
       {
-        paramString = (TroopFileSearchItemData)paramList.get(i);
-        if (paramString.jdField_a_of_type_Long == this.jdField_a_of_type_Long) {
-          this.jdField_a_of_type_JavaUtilList.add(paramString);
+        paramString = (TroopFileSearchItemData)paramList.get(i1);
+        if (paramString.a == this.i) {
+          this.l.add(paramString);
         } else {
-          this.jdField_b_of_type_JavaUtilList.add(paramString);
+          this.m.add(paramString);
         }
-        i += 1;
+        i1 += 1;
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+      this.e.sendEmptyMessage(4);
       return;
     }
     a();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    this.e.sendEmptyMessage(3);
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.l;
     if (localObject != null)
     {
       ((List)localObject).clear();
-      this.jdField_a_of_type_JavaUtilList = null;
+      this.l = null;
     }
-    localObject = this.jdField_b_of_type_JavaUtilList;
+    localObject = this.m;
     if (localObject != null)
     {
       ((List)localObject).clear();
-      this.jdField_b_of_type_JavaUtilList = null;
+      this.m = null;
     }
-    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    localObject = this.k;
     if (localObject != null)
     {
       ((HashMap)localObject).clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      this.k = null;
     }
   }
   
   public void c()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.getFirstVisiblePosition();
-    int j = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.getLastVisiblePosition();
-    while (i <= j)
+    int i1 = this.h.getFirstVisiblePosition();
+    int i2 = this.h.getLastVisiblePosition();
+    while (i1 <= i2)
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.getExpandableListPosition(i);
-      if (ExpandableListView.getPackedPositionType(l) == 1)
+      long l1 = this.h.getExpandableListPosition(i1);
+      if (ExpandableListView.getPackedPositionType(l1) == 1)
       {
-        int k = ExpandableListView.getPackedPositionGroup(l);
-        int m = ExpandableListView.getPackedPositionChild(l);
-        if ((k >= 0) && (k < getGroupCount()) && ((getChild(k, m) instanceof TroopFileSearchItemData)))
+        int i3 = ExpandableListView.getPackedPositionGroup(l1);
+        int i4 = ExpandableListView.getPackedPositionChild(l1);
+        if ((i3 >= 0) && (i3 < getGroupCount()) && ((getChild(i3, i4) instanceof TroopFileSearchItemData)))
         {
-          TroopFileSearchItemData localTroopFileSearchItemData = (TroopFileSearchItemData)getChild(k, m);
-          GroupFileSearchExpandableListAdapter.ViewHolder localViewHolder = (GroupFileSearchExpandableListAdapter.ViewHolder)this.jdField_a_of_type_JavaUtilHashMap.get(localTroopFileSearchItemData);
+          TroopFileSearchItemData localTroopFileSearchItemData = (TroopFileSearchItemData)getChild(i3, i4);
+          GroupFileSearchExpandableListAdapter.ViewHolder localViewHolder = (GroupFileSearchExpandableListAdapter.ViewHolder)this.k.get(localTroopFileSearchItemData);
           if (localTroopFileSearchItemData != null) {
-            a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localViewHolder.a, localTroopFileSearchItemData.jdField_a_of_type_Long, localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
+            a(this.d, localViewHolder.c, localTroopFileSearchItemData.a, localTroopFileSearchItemData.i);
           }
         }
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
@@ -263,7 +259,7 @@ public class GroupFileSearchExpandableListAdapter
         {
           localObject1 = localObject2;
           if (paramInt2 < getChildrenCount(0)) {
-            return this.jdField_a_of_type_JavaUtilList.get(paramInt2);
+            return this.l.get(paramInt2);
           }
         }
       }
@@ -277,7 +273,7 @@ public class GroupFileSearchExpandableListAdapter
           {
             localObject1 = localObject2;
             if (paramInt2 < getChildrenCount(1)) {
-              localObject1 = this.jdField_b_of_type_JavaUtilList.get(paramInt2);
+              localObject1 = this.m.get(paramInt2);
             }
           }
         }
@@ -293,10 +289,10 @@ public class GroupFileSearchExpandableListAdapter
   
   public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramInt1 == 0) && (TroopUtils.a(this.jdField_a_of_type_JavaUtilList)))
+    if ((paramInt1 == 0) && (TroopUtils.a(this.l)))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559879, null);
-      ((TextView)paramView.findViewById(2131379650)).setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131697358, new Object[] { this.jdField_b_of_type_JavaLangString }));
+      paramView = LayoutInflater.from(this.c).inflate(2131625922, null);
+      ((TextView)paramView.findViewById(2131448422)).setText(this.c.getString(2131895131, new Object[] { this.j }));
       return paramView;
     }
     TroopFileSearchItemData localTroopFileSearchItemData = (TroopFileSearchItemData)getChild(paramInt1, paramInt2);
@@ -305,7 +301,7 @@ public class GroupFileSearchExpandableListAdapter
     }
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2013396996, paramViewGroup, false);
+      paramView = this.g.inflate(2013396996, paramViewGroup, false);
       paramViewGroup = new GroupFileSearchExpandableListAdapter.ViewHolder(this, paramView, this);
       paramView.setTag(paramViewGroup);
     }
@@ -318,13 +314,13 @@ public class GroupFileSearchExpandableListAdapter
       }
       else
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2013396996, paramViewGroup, false);
+        paramView = this.g.inflate(2013396996, paramViewGroup, false);
         paramViewGroup = new GroupFileSearchExpandableListAdapter.ViewHolder(this, paramView, this);
         paramView.setTag(paramViewGroup);
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(localTroopFileSearchItemData, paramViewGroup);
-    paramViewGroup.a(localTroopFileSearchItemData, paramInt1, this.jdField_a_of_type_Boolean);
+    this.k.put(localTroopFileSearchItemData, paramViewGroup);
+    paramViewGroup.a(localTroopFileSearchItemData, paramInt1, this.o);
     return paramView;
   }
   
@@ -332,12 +328,12 @@ public class GroupFileSearchExpandableListAdapter
   {
     if (paramInt == 0)
     {
-      if (!TroopUtils.a(this.jdField_a_of_type_JavaUtilList)) {
-        return this.jdField_a_of_type_JavaUtilList.size();
+      if (!TroopUtils.a(this.l)) {
+        return this.l.size();
       }
     }
-    else if (!TroopUtils.a(this.jdField_b_of_type_JavaUtilList)) {
-      return this.jdField_b_of_type_JavaUtilList.size();
+    else if (!TroopUtils.a(this.m)) {
+      return this.m.size();
     }
     return 1;
   }
@@ -349,10 +345,10 @@ public class GroupFileSearchExpandableListAdapter
   
   public int getGroupCount()
   {
-    if ((TroopUtils.a(this.jdField_a_of_type_JavaUtilList)) && (TroopUtils.a(this.jdField_b_of_type_JavaUtilList))) {
+    if ((TroopUtils.a(this.l)) && (TroopUtils.a(this.m))) {
       return 0;
     }
-    if (TroopUtils.a(this.jdField_b_of_type_JavaUtilList)) {
+    if (TroopUtils.a(this.m)) {
       return 1;
     }
     return 2;
@@ -367,9 +363,9 @@ public class GroupFileSearchExpandableListAdapter
   {
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559877, null);
+      paramViewGroup = this.g.inflate(2131625920, null);
     }
-    paramView = (TextView)paramViewGroup.findViewById(2131367855);
+    paramView = (TextView)paramViewGroup.findViewById(2131434435);
     if (paramInt == 0)
     {
       paramView.setVisibility(8);
@@ -377,10 +373,10 @@ public class GroupFileSearchExpandableListAdapter
     else
     {
       paramView.setVisibility(0);
-      paramView.setText(2131697359);
+      paramView.setText(2131895132);
     }
     paramViewGroup.setFocusable(true);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetPinnedHeaderIphoneTreeView.expandGroup(paramInt);
+    this.h.expandGroup(paramInt);
     return paramViewGroup;
   }
   
@@ -389,9 +385,9 @@ public class GroupFileSearchExpandableListAdapter
     if (paramMessage.what != 1) {
       return true;
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.p)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.o = false;
       RollangleImageView.setSuspendLoad(false);
       c();
     }
@@ -412,21 +408,21 @@ public class GroupFileSearchExpandableListAdapter
   {
     if (paramView.getId() == 2013331475)
     {
-      paramView = paramView.getTag(2131373858);
+      paramView = paramView.getTag(2131441532);
       if ((paramView instanceof TroopFileSearchItemData))
       {
         TroopFileSearchItemData localTroopFileSearchItemData = (TroopFileSearchItemData)paramView;
-        Object localObject = localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.jdField_a_of_type_JavaUtilUUID;
+        Object localObject = localTroopFileSearchItemData.i.b;
         paramView = (View)localObject;
-        if (((UUID)localObject).equals(this.jdField_a_of_type_JavaUtilUUID)) {
+        if (((UUID)localObject).equals(this.q)) {
           paramView = null;
         }
-        this.jdField_a_of_type_JavaUtilUUID = paramView;
+        this.q = paramView;
         notifyDataSetChanged();
-        localObject = this.jdField_a_of_type_ComTencentAvWtogetherAdapterGroupFileSearchExpandableListAdapter$FileSelectListener;
+        localObject = this.n;
         if (localObject != null)
         {
-          if (this.jdField_a_of_type_JavaUtilUUID != null) {
+          if (this.q != null) {
             paramView = localTroopFileSearchItemData;
           } else {
             paramView = null;
@@ -443,19 +439,19 @@ public class GroupFileSearchExpandableListAdapter
   {
     if (paramInt == 0)
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      this.p = true;
+      this.f.sendEmptyMessageDelayed(1, 1000L);
       c();
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.p = false;
     RollangleImageView.setSuspendLoad(true);
-    this.jdField_a_of_type_Boolean = true;
+    this.o = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.GroupFileSearchExpandableListAdapter
  * JD-Core Version:    0.7.0.1
  */

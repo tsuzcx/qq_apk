@@ -127,17 +127,17 @@ public class VoiceRedPacketHelperImpl
       if (paramArrayOfByte.length == 0) {
         return localRecogResult;
       }
-      VoiceRecognizer.a().a();
+      VoiceRecognizer.a().b();
       boolean bool;
       if (VoiceRecognizer.a().a(paramArrayOfByte, paramArrayOfByte.length) == 1) {
         bool = true;
       } else {
         bool = false;
       }
-      localRecogResult.jdField_a_of_type_Boolean = bool;
-      localRecogResult.jdField_a_of_type_Float = VoiceRecognizer.a().a();
-      localRecogResult.jdField_a_of_type_JavaLangString = cfdToScoreId(localRecogResult.jdField_a_of_type_Float);
-      VoiceRecognizer.a().b();
+      localRecogResult.a = bool;
+      localRecogResult.b = VoiceRecognizer.a().d();
+      localRecogResult.c = cfdToScoreId(localRecogResult.b);
+      VoiceRecognizer.a().c();
       this.clientTryTime += 1;
     }
     return localRecogResult;
@@ -185,9 +185,9 @@ public class VoiceRedPacketHelperImpl
     VoiceRedPacketHelperImpl.RedPacketVoiceIconIds localRedPacketVoiceIconIds = new VoiceRedPacketHelperImpl.RedPacketVoiceIconIds();
     if (paramMessageForPtt.voiceRedPacketFlag == 3)
     {
-      localRedPacketVoiceIconIds.jdField_a_of_type_Int = R.drawable.aa;
-      localRedPacketVoiceIconIds.b = R.drawable.ae;
-      localRedPacketVoiceIconIds.c = R.drawable.Z;
+      localRedPacketVoiceIconIds.a = R.drawable.ab;
+      localRedPacketVoiceIconIds.b = R.drawable.af;
+      localRedPacketVoiceIconIds.c = R.drawable.aa;
     }
     return localRedPacketVoiceIconIds;
   }
@@ -253,13 +253,13 @@ public class VoiceRedPacketHelperImpl
           l = System.currentTimeMillis();
           paramArrayOfByte = new AudioCompositeProcessor();
           localObject = new WechatNsWrapper(MobileQQ.getContext());
-          if (WechatNsWrapper.jdField_a_of_type_Boolean) {
+          if (WechatNsWrapper.j) {
             paramArrayOfByte.a((IAudioProcessor)localObject);
           }
           paramArrayOfByte.a((IAudioProcessor)localObject);
-          paramArrayOfByte.a(paramRecorderParam.jdField_a_of_type_Int, paramRecorderParam.b, paramRecorderParam.c);
+          paramArrayOfByte.a(paramRecorderParam.a, paramRecorderParam.b, paramRecorderParam.c);
           ((IPttBuffer)QRoute.api(IPttBuffer.class)).createBufferTask(paramString2);
-          paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
+          paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.a);
           ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(paramString2, paramRecorderParam, paramRecorderParam.length);
           i = paramString1.length;
           paramRecorderParam = new byte[800];
@@ -273,7 +273,7 @@ public class VoiceRedPacketHelperImpl
           i = m;
           if (localObject != null)
           {
-            ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(paramString2, ((IAudioProcessor.ProcessData)localObject).jdField_a_of_type_ArrayOfByte, ((IAudioProcessor.ProcessData)localObject).jdField_a_of_type_Int);
+            ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(paramString2, ((IAudioProcessor.ProcessData)localObject).c, ((IAudioProcessor.ProcessData)localObject).a);
             j = k;
             i = m;
             break label511;
@@ -313,7 +313,7 @@ public class VoiceRedPacketHelperImpl
   private void onError(int paramInt, String paramString)
   {
     VoiceRedPacketHelperImpl.OnVoiceRedPacketListener localOnVoiceRedPacketListener = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
-    if ((localOnVoiceRedPacketListener != null) && (!localOnVoiceRedPacketListener.d())) {
+    if ((localOnVoiceRedPacketListener != null) && (!localOnVoiceRedPacketListener.p())) {
       localOnVoiceRedPacketListener.a(paramInt, paramString);
     }
     if (QLog.isColorLevel()) {
@@ -345,8 +345,8 @@ public class VoiceRedPacketHelperImpl
     localStringBuilder.append("|");
     localStringBuilder.append(paramInt2);
     localStringBuilder.append("|");
-    localStringBuilder.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString);
-    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+    localStringBuilder.append(paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c);
+    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
     localStringBuilder.append("|");
     paramInt1 = 0;
     if ((localBaseQQAppInterface != null) && (VoiceRecognizer.a().a(localBaseQQAppInterface))) {
@@ -357,7 +357,7 @@ public class VoiceRedPacketHelperImpl
     localStringBuilder.append(paramMessageForQQWalletMsg.istroop);
     localStringBuilder.append("|");
     localStringBuilder.append(paramFloat);
-    VACDReportUtil.a(localStringBuilder.toString(), "QWalletStat", "voiceRedPackMatch", null, null, 0, null);
+    VACDReportUtil.b(localStringBuilder.toString(), "QWalletStat", "voiceRedPackMatch", null, null, 0, null);
   }
   
   public static void saveKSongFeedsId(String paramString, MessageRecord paramMessageRecord)
@@ -386,14 +386,14 @@ public class VoiceRedPacketHelperImpl
     paramMessageRecord = (MessageForPtt)paramMessageRecord;
     try
     {
-      MessageForPtt localMessageForPtt = this.mChatActivityFacadeTemp.a(QWalletTools.a(), paramMessageRecord.getLocalFilePath(), this.sessionInfo, -2, paramMessageRecord.voiceType);
+      MessageForPtt localMessageForPtt = this.mChatActivityFacadeTemp.a(QWalletTools.b(), paramMessageRecord.getLocalFilePath(), this.sessionInfo, -2, paramMessageRecord.voiceType);
       if (localMessageForPtt != null)
       {
         this.mix2RecordMap.put(localMessageForPtt, new VoiceRedPacketHelperImpl.RecordMsgInfo(paramMessageRecord, paramLong, paramArrayOfByte, paramString));
         paramArrayOfByte = new RecordParams.RecorderParam(RecordParams.b, 16000, 1);
         if (mixSong(this.fileBytes, this.mAccompanyPath, paramMessageRecord.getLocalFilePath(), paramArrayOfByte))
         {
-          paramString = QWalletTools.a();
+          paramString = QWalletTools.b();
           if ((paramString != null) && (this.sessionInfo != null) && (localMessageForPtt != null))
           {
             saveKSongRedVoiceType(2, localMessageForPtt);
@@ -401,7 +401,7 @@ public class VoiceRedPacketHelperImpl
             localMessageForPtt.serial();
             Bundle localBundle = new Bundle();
             localBundle.putInt("DiyTextId", localMessageForPtt.vipBubbleDiyTextId);
-            this.mChatActivityFacadeTemp.a(paramString, this.sessionInfo.jdField_a_of_type_Int, this.sessionInfo.jdField_a_of_type_JavaLangString, paramMessageRecord.getLocalFilePath(), localMessageForPtt.uniseq, false, paramMessageRecord.voiceLength, paramArrayOfByte.c, true, 0, 5, true, localMessageForPtt.vipSubBubbleId, localBundle, null, null, false, localMessageForPtt, 0);
+            this.mChatActivityFacadeTemp.a(paramString, this.sessionInfo.a, this.sessionInfo.b, paramMessageRecord.getLocalFilePath(), localMessageForPtt.uniseq, false, paramMessageRecord.voiceLength, paramArrayOfByte.c, true, 0, 5, true, localMessageForPtt.vipSubBubbleId, localBundle, null, null, false, localMessageForPtt, 0);
             paramArrayOfByte = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
             if (paramArrayOfByte != null) {
               this.identify = paramArrayOfByte.hashCode();
@@ -432,7 +432,7 @@ public class VoiceRedPacketHelperImpl
     {
       paramIAudioProcessor = this.byteArrayOutputStream;
       if ((paramIAudioProcessor != null) && (paramProcessData != null) && (this.mIsSaveRecordPCMData)) {
-        paramIAudioProcessor.write(paramProcessData.jdField_a_of_type_ArrayOfByte, 0, paramProcessData.jdField_a_of_type_Int);
+        paramIAudioProcessor.write(paramProcessData.c, 0, paramProcessData.a);
       }
     }
   }
@@ -458,7 +458,7 @@ public class VoiceRedPacketHelperImpl
       ((StringBuilder)localObject1).append(k);
       QLog.d("VoiceRedPacketHelperImpl", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = QWalletTools.a();
+    Object localObject1 = QWalletTools.b();
     if (localObject1 != null)
     {
       localObject1 = (IQWalletConfigService)((BaseQQAppInterface)localObject1).getRuntimeService(IQWalletConfigService.class, "");
@@ -552,13 +552,13 @@ public class VoiceRedPacketHelperImpl
     {
       try
       {
-        BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+        BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
         Object localObject1 = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
         if (localObject1 == null) {
           break label485;
         }
         i = localObject1.hashCode();
-        if ((localBaseQQAppInterface != null) && (paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForPtt)) && (localObject1 != null) && (!((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject1).d()) && (!this.isCancel) && (i == this.identify))
+        if ((localBaseQQAppInterface != null) && (paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForPtt)) && (localObject1 != null) && (!((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject1).p()) && (!this.isCancel) && (i == this.identify))
         {
           Object localObject2 = (MessageForPtt)paramMessageRecord;
           int j = ((MessageForPtt)localObject2).voiceRedPacketFlag;
@@ -576,7 +576,7 @@ public class VoiceRedPacketHelperImpl
           if (j == 1)
           {
             paramMessageRecord = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
-            if ((paramMessageRecord != null) && (!paramMessageRecord.d())) {
+            if ((paramMessageRecord != null) && (!paramMessageRecord.p())) {
               paramMessageRecord.a(true, ((MessageForPtt)localObject2).getExtInfoFromExtStr("voice_score_id"));
             }
             saveVoiceScoreId(getVoiceScoreId((MessageRecord)localObject2), (MessageRecord)localObject1);
@@ -675,7 +675,7 @@ public class VoiceRedPacketHelperImpl
   
   public void getSkey(VoiceRedPacketHelperImpl.OnGetSkeyListener paramOnGetSkeyListener)
   {
-    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
     if (localBaseQQAppInterface != null)
     {
       if (paramOnGetSkeyListener == null) {
@@ -756,7 +756,7 @@ public class VoiceRedPacketHelperImpl
     int i = 0;
     paramString = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
     if (paramString != null) {
-      i = paramString.a();
+      i = paramString.k();
     }
     return i;
   }
@@ -806,7 +806,7 @@ public class VoiceRedPacketHelperImpl
         }
         localObject1 = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
         if (localObject1 != null) {
-          ((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject1).j();
+          ((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject1).n();
         }
         ((IPttBuffer)QRoute.api(IPttBuffer.class)).flush(paramString);
         if (paramDouble < 500.0D)
@@ -821,7 +821,7 @@ public class VoiceRedPacketHelperImpl
           this.fileBytes = this.byteArrayOutputStream.toByteArray();
           this.byteArrayOutputStream.reset();
         }
-        localObject1 = (MessageForPtt)paramRecorderParam.jdField_a_of_type_JavaLangObject;
+        localObject1 = (MessageForPtt)paramRecorderParam.f;
         bool1 = this.isCheckInPhone;
         i = 0;
         if (!bool1) {
@@ -829,16 +829,16 @@ public class VoiceRedPacketHelperImpl
         }
         Object localObject2 = (MessageForQQWalletMsg)this.redPacketCacheMap.get(localObject1);
         localObject2 = checkInPhone(this.fileBytes, (MessageForQQWalletMsg)localObject2);
-        boolean bool2 = ((VoiceRedPacketHelperImpl.RecogResult)localObject2).jdField_a_of_type_Boolean;
+        boolean bool2 = ((VoiceRedPacketHelperImpl.RecogResult)localObject2).a;
         if (bool2) {
-          saveVoiceScoreId(((VoiceRedPacketHelperImpl.RecogResult)localObject2).jdField_a_of_type_JavaLangString, (MessageRecord)localObject1);
+          saveVoiceScoreId(((VoiceRedPacketHelperImpl.RecogResult)localObject2).c, (MessageRecord)localObject1);
         }
         localObject2 = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
         bool1 = bool2;
         if (localObject2 != null)
         {
           bool1 = bool2;
-          if (!((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject2).d())
+          if (!((VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)localObject2).p())
           {
             bool1 = bool2;
             if (!bool2)
@@ -858,7 +858,7 @@ public class VoiceRedPacketHelperImpl
         int j = 1;
         if (k == 8)
         {
-          if (((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.elem.o == 0)
+          if (((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.elem.C == 0)
           {
             if (this.mIsHeadSetOn == -1)
             {
@@ -874,7 +874,7 @@ public class VoiceRedPacketHelperImpl
             }
             saveKSongRedVoiceType(2, (MessageRecord)localObject1);
           }
-          else if (((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.elem.o == 1)
+          else if (((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.elem.C == 1)
           {
             saveKSongRedVoiceType(1, (MessageRecord)localObject1);
           }
@@ -899,18 +899,18 @@ public class VoiceRedPacketHelperImpl
           ((StringBuilder)localObject3).append(",redpkgType:");
           ((StringBuilder)localObject3).append(k);
           ((StringBuilder)localObject3).append("songFlag:");
-          ((StringBuilder)localObject3).append(((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.elem.o);
+          ((StringBuilder)localObject3).append(((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.elem.C);
           QLog.d("VoiceRedPacketHelperImpl", 2, ((StringBuilder)localObject3).toString());
         }
         if ((bool1) || (!this.isCheckInPhone))
         {
-          localObject2 = QWalletTools.a();
+          localObject2 = QWalletTools.b();
           if ((localObject2 != null) && (this.sessionInfo != null))
           {
             ((MessageForPtt)localObject1).serial();
             localObject3 = new Bundle();
             ((Bundle)localObject3).putInt("DiyTextId", ((MessageForPtt)localObject1).vipBubbleDiyTextId);
-            this.mChatActivityFacadeTemp.a((BaseQQAppInterface)localObject2, this.sessionInfo.jdField_a_of_type_Int, this.sessionInfo.jdField_a_of_type_JavaLangString, paramString, ((MessageForPtt)localObject1).uniseq, false, (int)paramDouble, paramRecorderParam.c, true, 0, 5, true, ((MessageForPtt)localObject1).vipSubBubbleId, (Bundle)localObject3, null, null, false, (MessageRecord)localObject1, 0);
+            this.mChatActivityFacadeTemp.a((BaseQQAppInterface)localObject2, this.sessionInfo.a, this.sessionInfo.b, paramString, ((MessageForPtt)localObject1).uniseq, false, (int)paramDouble, paramRecorderParam.c, true, 0, 5, true, ((MessageForPtt)localObject1).vipSubBubbleId, (Bundle)localObject3, null, null, false, (MessageRecord)localObject1, 0);
             paramString = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
             if (paramString != null)
             {
@@ -955,17 +955,17 @@ public class VoiceRedPacketHelperImpl
       ((StringBuilder)localObject).append(this.mIsSaveRecordPCMData);
       QLog.d("VoiceRedPacketHelperImpl", 2, ((StringBuilder)localObject).toString());
     }
-    AudioUtil.b(R.raw.jdField_a_of_type_Int, false);
-    Object localObject = RecordParams.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
+    AudioUtil.b(R.raw.a, false);
+    Object localObject = RecordParams.a(paramRecorderParam.c, paramRecorderParam.a);
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).createBufferTask(paramString);
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(paramString, (byte[])localObject, localObject.length);
-    paramString = (MessageForPtt)paramRecorderParam.jdField_a_of_type_JavaLangObject;
+    paramString = (MessageForPtt)paramRecorderParam.f;
     if (this.mIsSaveRecordPCMData)
     {
       this.byteArrayOutputStream = new ByteArrayOutputStream();
       if (paramString.voiceRedPacketFlag == 3)
       {
-        paramString = new byte[((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).bytesInSecond(paramRecorderParam.jdField_a_of_type_Int, 2, 2) / 1000 * 200];
+        paramString = new byte[((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).bytesInSecond(paramRecorderParam.a, 2, 2) / 1000 * 200];
         Arrays.fill(paramString, (byte)0);
         this.byteArrayOutputStream.write(paramString, 0, paramString.length);
       }
@@ -976,7 +976,7 @@ public class VoiceRedPacketHelperImpl
   {
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(paramString, paramArrayOfByte, paramInt1);
     paramString = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
-    if ((paramString != null) && (!paramString.d())) {
+    if ((paramString != null) && (!paramString.p())) {
       paramString.a(((IAudioPanelUtils)QRoute.api(IAudioPanelUtils.class)).getVolumeLevel(paramInt2));
     }
   }
@@ -988,7 +988,7 @@ public class VoiceRedPacketHelperImpl
     }
     VoiceRedPacketHelperImpl.OnVoiceRedPacketListener localOnVoiceRedPacketListener = (VoiceRedPacketHelperImpl.OnVoiceRedPacketListener)this.onVoiceRedPacketListenerRef.get();
     if (localOnVoiceRedPacketListener != null) {
-      localOnVoiceRedPacketListener.i();
+      localOnVoiceRedPacketListener.m();
     }
     return 250;
   }
@@ -1019,7 +1019,7 @@ public class VoiceRedPacketHelperImpl
   
   public void showToast(int paramInt)
   {
-    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+    BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
     if (localBaseQQAppInterface == null) {
       return;
     }
@@ -1034,13 +1034,13 @@ public class VoiceRedPacketHelperImpl
       int i;
       try
       {
-        BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+        BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
         this.sessionInfo = paramBaseSessionInfo;
         i = ((IViewHolderFactory)QRoute.api(IViewHolderFactory.class)).getRedPkgType(paramMessageForQQWalletMsg.messageType);
         if (!TextUtils.isEmpty(paramString)) {
           break label776;
         }
-        paramString = paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.jdField_a_of_type_JavaLangString;
+        paramString = paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.c;
         if ((localBaseQQAppInterface != null) && (paramBaseSessionInfo != null))
         {
           if (TextUtils.isEmpty(paramString)) {
@@ -1056,7 +1056,7 @@ public class VoiceRedPacketHelperImpl
           }
           if (!((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).checkExternalStorageForRecord())
           {
-            showToast(R.string.dr);
+            showToast(R.string.du);
             onError("sdcard full");
             return;
           }
@@ -1149,7 +1149,7 @@ public class VoiceRedPacketHelperImpl
             paramBaseSessionInfo.voiceRedPacketFlag = i;
           }
           this.redPacketCacheMap.put(paramBaseSessionInfo, paramMessageForQQWalletMsg);
-          localRecorderParam.jdField_a_of_type_JavaLangObject = paramBaseSessionInfo;
+          localRecorderParam.f = paramBaseSessionInfo;
           this.recorder.a(localRecorderParam);
           this.recorder.a(this);
           this.recorder.a(this);
@@ -1223,7 +1223,7 @@ public class VoiceRedPacketHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.VoiceRedPacketHelperImpl
  * JD-Core Version:    0.7.0.1
  */

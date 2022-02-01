@@ -12,34 +12,34 @@ import org.jetbrains.annotations.Nullable;
 public final class MediaPresenter
   implements IMediaContract.IPresenter
 {
-  private final IMediaContract.IModel jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IModel;
-  private IMediaContract.IView jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IView;
+  private IMediaContract.IView a;
+  private final IMediaContract.IModel b;
   
   public MediaPresenter(@NotNull IMediaContract.IModel paramIModel)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IModel = paramIModel;
+    this.b = paramIModel;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IView = ((IMediaContract.IView)null);
+    this.a = ((IMediaContract.IView)null);
   }
   
   public void a(@NotNull IMediaContract.IView paramIView)
   {
     Intrinsics.checkParameterIsNotNull(paramIView, "view");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IView = paramIView;
+    this.a = paramIView;
   }
   
   public void a(@NotNull PanelType paramPanelType, @Nullable Function1<? super PanelType, Unit> paramFunction1)
   {
     Intrinsics.checkParameterIsNotNull(paramPanelType, "panelType");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorIMediaContract$IModel.a(paramPanelType, (Function2)new MediaPresenter.loadMedias.1(this, paramFunction1, paramPanelType));
+    this.b.a(paramPanelType, (Function2)new MediaPresenter.loadMedias.1(this, paramFunction1, paramPanelType));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaPresenter
  * JD-Core Version:    0.7.0.1
  */

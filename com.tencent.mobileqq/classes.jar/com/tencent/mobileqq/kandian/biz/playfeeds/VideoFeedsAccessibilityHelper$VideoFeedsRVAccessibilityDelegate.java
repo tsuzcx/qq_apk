@@ -30,7 +30,7 @@ public final class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelega
     paramAccessibilityEvent = AccessibilityEventCompat.asRecord(paramAccessibilityEvent);
     Intrinsics.checkExpressionValueIsNotNull(paramAccessibilityEvent, "record");
     paramAccessibilityEvent.setItemCount(0);
-    paramView.setContentDescription((CharSequence)HardCodeUtil.a(2131715937));
+    paramView.setContentDescription((CharSequence)HardCodeUtil.a(2131913392));
   }
   
   public void onInitializeAccessibilityNodeInfo(@NotNull View paramView, @NotNull AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
@@ -43,7 +43,7 @@ public final class VideoFeedsAccessibilityHelper$VideoFeedsRVAccessibilityDelega
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAccessibilityHelper.VideoFeedsRVAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

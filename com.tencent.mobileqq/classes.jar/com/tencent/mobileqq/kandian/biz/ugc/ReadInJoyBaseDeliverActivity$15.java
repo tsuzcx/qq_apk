@@ -7,12 +7,12 @@ class ReadInJoyBaseDeliverActivity$15
   
   public void run()
   {
-    this.this$0.k();
+    this.this$0.o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyBaseDeliverActivity.15
  * JD-Core Version:    0.7.0.1
  */

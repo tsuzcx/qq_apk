@@ -421,6 +421,16 @@ public final class InnerAudioPlayer
           Intrinsics.throwNpe();
         }
         ((MediaPlayer)localObject2).setLooping(getLoop());
+        localObject2 = this.logger;
+        if (localObject2 != null)
+        {
+          localObject3 = LogDelegate.Level.INFO;
+          localObject4 = TAG;
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("play volume=");
+          ((StringBuilder)localObject5).append(getVolume());
+          LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject2, (LogDelegate.Level)localObject3, (String)localObject4, ((StringBuilder)localObject5).toString(), null, 8, null);
+        }
         float f1 = getVolume();
         float f2 = 0;
         if (f1 >= f2)
@@ -488,7 +498,7 @@ public final class InnerAudioPlayer
     //   22: ifnonnull +6 -> 28
     //   25: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
     //   28: aload_1
-    //   29: invokevirtual 465	android/media/MediaPlayer:stop	()V
+    //   29: invokevirtual 473	android/media/MediaPlayer:stop	()V
     //   32: aload_0
     //   33: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
     //   36: astore_1
@@ -496,7 +506,7 @@ public final class InnerAudioPlayer
     //   38: ifnonnull +6 -> 44
     //   41: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
     //   44: aload_1
-    //   45: invokevirtual 467	android/media/MediaPlayer:reset	()V
+    //   45: invokevirtual 475	android/media/MediaPlayer:reset	()V
     //   48: aload_0
     //   49: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
     //   52: astore_1
@@ -504,13 +514,13 @@ public final class InnerAudioPlayer
     //   54: ifnonnull +6 -> 60
     //   57: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
     //   60: aload_1
-    //   61: invokevirtual 469	android/media/MediaPlayer:release	()V
+    //   61: invokevirtual 477	android/media/MediaPlayer:release	()V
     //   64: aload_0
     //   65: iconst_0
     //   66: putfield 312	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioId	I
     //   69: aload_0
     //   70: aconst_null
-    //   71: checkcast 471	java/lang/String
+    //   71: checkcast 479	java/lang/String
     //   74: putfield 314	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioPath	Ljava/lang/String;
     //   77: aload_0
     //   78: iconst_0
@@ -522,7 +532,7 @@ public final class InnerAudioPlayer
     //   88: iconst_0
     //   89: putfield 368	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mStartTime	I
     //   92: aload_0
-    //   93: ldc_w 472
+    //   93: ldc_w 480
     //   96: putfield 138	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mVolume	F
     //   99: aload_0
     //   100: iconst_0
@@ -560,7 +570,7 @@ public final class InnerAudioPlayer
     //   163: invokespecial 333	java/lang/StringBuilder:<init>	()V
     //   166: astore 5
     //   168: aload 5
-    //   170: ldc_w 474
+    //   170: ldc_w 482
     //   173: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: pop
     //   177: aload 5
@@ -589,7 +599,7 @@ public final class InnerAudioPlayer
     //   223: putfield 312	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioId	I
     //   226: aload_0
     //   227: aconst_null
-    //   228: checkcast 471	java/lang/String
+    //   228: checkcast 479	java/lang/String
     //   231: putfield 314	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioPath	Ljava/lang/String;
     //   234: aload_0
     //   235: iconst_0
@@ -601,7 +611,7 @@ public final class InnerAudioPlayer
     //   245: iconst_0
     //   246: putfield 368	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mStartTime	I
     //   249: aload_0
-    //   250: ldc_w 472
+    //   250: ldc_w 480
     //   253: putfield 138	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mVolume	F
     //   256: aload_0
     //   257: iconst_0
@@ -628,7 +638,7 @@ public final class InnerAudioPlayer
     //   292: putfield 312	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioId	I
     //   295: aload_0
     //   296: aconst_null
-    //   297: checkcast 471	java/lang/String
+    //   297: checkcast 479	java/lang/String
     //   300: putfield 314	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mAudioPath	Ljava/lang/String;
     //   303: aload_0
     //   304: iconst_0
@@ -640,7 +650,7 @@ public final class InnerAudioPlayer
     //   314: iconst_0
     //   315: putfield 368	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mStartTime	I
     //   318: aload_0
-    //   319: ldc_w 472
+    //   319: ldc_w 480
     //   322: putfield 138	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mVolume	F
     //   325: aload_0
     //   326: iconst_0
@@ -712,443 +722,478 @@ public final class InnerAudioPlayer
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   6: ifnull +46 -> 52
-    //   9: aload_0
-    //   10: invokevirtual 434	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:isPlaying	()Z
-    //   13: ifeq +19 -> 32
-    //   16: aload_0
-    //   17: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   20: astore_1
-    //   21: aload_1
-    //   22: ifnonnull +6 -> 28
-    //   25: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   28: aload_1
-    //   29: invokevirtual 465	android/media/MediaPlayer:stop	()V
-    //   32: aload_0
-    //   33: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   36: astore_1
-    //   37: aload_1
-    //   38: ifnonnull +6 -> 44
-    //   41: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   44: aload_1
-    //   45: invokevirtual 467	android/media/MediaPlayer:reset	()V
-    //   48: aload_0
-    //   49: invokespecial 386	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:stopTimeUpdateCallback	()V
-    //   52: aload_0
-    //   53: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   56: astore_1
-    //   57: aload_1
-    //   58: ifnull +130 -> 188
-    //   61: aload_0
-    //   62: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   65: astore_1
-    //   66: aload_1
-    //   67: ifnonnull +6 -> 73
-    //   70: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   73: aload_1
-    //   74: aconst_null
-    //   75: invokevirtual 256	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
-    //   78: aload_0
-    //   79: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   82: astore_1
-    //   83: aload_1
-    //   84: ifnonnull +6 -> 90
-    //   87: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   90: aload_1
-    //   91: aconst_null
-    //   92: invokevirtual 260	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   95: aload_0
-    //   96: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   99: astore_1
-    //   100: aload_1
-    //   101: ifnonnull +6 -> 107
-    //   104: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   107: aload_1
-    //   108: aconst_null
-    //   109: invokevirtual 264	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
+    //   3: getfield 134	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:logger	Lcom/tencent/mobileqq/triton/utils/LogDelegate;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnull +54 -> 62
+    //   11: getstatic 445	com/tencent/mobileqq/triton/utils/LogDelegate$Level:INFO	Lcom/tencent/mobileqq/triton/utils/LogDelegate$Level;
+    //   14: astore_2
+    //   15: getstatic 128	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:TAG	Ljava/lang/String;
+    //   18: astore_3
+    //   19: new 332	java/lang/StringBuilder
+    //   22: dup
+    //   23: invokespecial 333	java/lang/StringBuilder:<init>	()V
+    //   26: astore 4
+    //   28: aload 4
+    //   30: ldc_w 484
+    //   33: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: aload 4
+    //   39: aload_0
+    //   40: invokevirtual 449	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:getVolume	()F
+    //   43: invokevirtual 452	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload_1
+    //   48: aload_2
+    //   49: aload_3
+    //   50: aload 4
+    //   52: invokevirtual 351	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: aconst_null
+    //   56: bipush 8
+    //   58: aconst_null
+    //   59: invokestatic 412	com/tencent/mobileqq/triton/utils/LogDelegate$DefaultImpls:printLog$default	(Lcom/tencent/mobileqq/triton/utils/LogDelegate;Lcom/tencent/mobileqq/triton/utils/LogDelegate$Level;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILjava/lang/Object;)V
+    //   62: aload_0
+    //   63: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   66: ifnull +46 -> 112
+    //   69: aload_0
+    //   70: invokevirtual 434	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:isPlaying	()Z
+    //   73: ifeq +19 -> 92
+    //   76: aload_0
+    //   77: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   80: astore_1
+    //   81: aload_1
+    //   82: ifnonnull +6 -> 88
+    //   85: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   88: aload_1
+    //   89: invokevirtual 473	android/media/MediaPlayer:stop	()V
+    //   92: aload_0
+    //   93: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   96: astore_1
+    //   97: aload_1
+    //   98: ifnonnull +6 -> 104
+    //   101: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   104: aload_1
+    //   105: invokevirtual 475	android/media/MediaPlayer:reset	()V
+    //   108: aload_0
+    //   109: invokespecial 386	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:stopTimeUpdateCallback	()V
     //   112: aload_0
     //   113: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
     //   116: astore_1
     //   117: aload_1
-    //   118: ifnonnull +6 -> 124
-    //   121: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   124: aload_1
-    //   125: aconst_null
-    //   126: invokevirtual 268	android/media/MediaPlayer:setOnBufferingUpdateListener	(Landroid/media/MediaPlayer$OnBufferingUpdateListener;)V
-    //   129: aload_0
-    //   130: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   133: astore_1
-    //   134: aload_1
-    //   135: ifnonnull +6 -> 141
-    //   138: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   141: aload_1
-    //   142: aconst_null
-    //   143: invokevirtual 272	android/media/MediaPlayer:setOnSeekCompleteListener	(Landroid/media/MediaPlayer$OnSeekCompleteListener;)V
-    //   146: getstatic 277	android/os/Build$VERSION:SDK_INT	I
-    //   149: bipush 28
-    //   151: if_icmplt +19 -> 170
-    //   154: aload_0
-    //   155: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   158: astore_1
-    //   159: aload_1
-    //   160: ifnonnull +6 -> 166
-    //   163: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   166: aload_1
-    //   167: invokevirtual 477	android/media/MediaPlayer:clearOnMediaTimeDiscontinuityListener	()V
-    //   170: invokestatic 247	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:getInstance	()Lcom/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager;
-    //   173: aload_0
-    //   174: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   177: invokevirtual 481	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:enqueuePlayer	(Landroid/media/MediaPlayer;)V
-    //   180: aload_0
-    //   181: aconst_null
-    //   182: checkcast 252	android/media/MediaPlayer
-    //   185: putfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   188: aload_0
-    //   189: iconst_0
-    //   190: putfield 202	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mIsPrepared	Z
-    //   193: aload_0
-    //   194: iconst_1
-    //   195: putfield 136	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mPaused	Z
-    //   198: aload_0
-    //   199: iconst_0
-    //   200: putfield 359	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mCacheDuration	I
-    //   203: goto +237 -> 440
-    //   206: astore_1
-    //   207: goto +236 -> 443
-    //   210: astore_1
-    //   211: aload_0
-    //   212: getfield 134	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:logger	Lcom/tencent/mobileqq/triton/utils/LogDelegate;
-    //   215: astore_2
-    //   216: aload_2
-    //   217: ifnull +74 -> 291
-    //   220: getstatic 330	com/tencent/mobileqq/triton/utils/LogDelegate$Level:ERROR	Lcom/tencent/mobileqq/triton/utils/LogDelegate$Level;
-    //   223: astore_3
-    //   224: getstatic 128	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:TAG	Ljava/lang/String;
-    //   227: astore 4
-    //   229: new 332	java/lang/StringBuilder
-    //   232: dup
-    //   233: invokespecial 333	java/lang/StringBuilder:<init>	()V
-    //   236: astore 5
-    //   238: aload 5
-    //   240: ldc_w 483
-    //   243: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   246: pop
-    //   247: aload 5
-    //   249: aload_0
-    //   250: invokevirtual 341	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:getAudioId	()I
-    //   253: invokevirtual 344	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   256: pop
-    //   257: aload 5
-    //   259: ldc_w 346
-    //   262: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: pop
-    //   266: aload 5
-    //   268: aload_0
-    //   269: invokevirtual 348	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:getAudioPath	()Ljava/lang/String;
-    //   272: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: pop
+    //   118: ifnull +130 -> 248
+    //   121: aload_0
+    //   122: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   125: astore_1
+    //   126: aload_1
+    //   127: ifnonnull +6 -> 133
+    //   130: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   133: aload_1
+    //   134: aconst_null
+    //   135: invokevirtual 256	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
+    //   138: aload_0
+    //   139: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   142: astore_1
+    //   143: aload_1
+    //   144: ifnonnull +6 -> 150
+    //   147: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   150: aload_1
+    //   151: aconst_null
+    //   152: invokevirtual 260	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   155: aload_0
+    //   156: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   159: astore_1
+    //   160: aload_1
+    //   161: ifnonnull +6 -> 167
+    //   164: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   167: aload_1
+    //   168: aconst_null
+    //   169: invokevirtual 264	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
+    //   172: aload_0
+    //   173: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   176: astore_1
+    //   177: aload_1
+    //   178: ifnonnull +6 -> 184
+    //   181: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   184: aload_1
+    //   185: aconst_null
+    //   186: invokevirtual 268	android/media/MediaPlayer:setOnBufferingUpdateListener	(Landroid/media/MediaPlayer$OnBufferingUpdateListener;)V
+    //   189: aload_0
+    //   190: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   193: astore_1
+    //   194: aload_1
+    //   195: ifnonnull +6 -> 201
+    //   198: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   201: aload_1
+    //   202: aconst_null
+    //   203: invokevirtual 272	android/media/MediaPlayer:setOnSeekCompleteListener	(Landroid/media/MediaPlayer$OnSeekCompleteListener;)V
+    //   206: getstatic 277	android/os/Build$VERSION:SDK_INT	I
+    //   209: bipush 28
+    //   211: if_icmplt +19 -> 230
+    //   214: aload_0
+    //   215: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   218: astore_1
+    //   219: aload_1
+    //   220: ifnonnull +6 -> 226
+    //   223: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   226: aload_1
+    //   227: invokevirtual 487	android/media/MediaPlayer:clearOnMediaTimeDiscontinuityListener	()V
+    //   230: invokestatic 247	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:getInstance	()Lcom/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager;
+    //   233: aload_0
+    //   234: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   237: invokevirtual 491	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:enqueuePlayer	(Landroid/media/MediaPlayer;)V
+    //   240: aload_0
+    //   241: aconst_null
+    //   242: checkcast 252	android/media/MediaPlayer
+    //   245: putfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   248: aload_0
+    //   249: iconst_0
+    //   250: putfield 202	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mIsPrepared	Z
+    //   253: aload_0
+    //   254: iconst_1
+    //   255: putfield 136	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mPaused	Z
+    //   258: aload_0
+    //   259: iconst_0
+    //   260: putfield 359	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mCacheDuration	I
+    //   263: goto +237 -> 500
+    //   266: astore_1
+    //   267: goto +236 -> 503
+    //   270: astore_1
+    //   271: aload_0
+    //   272: getfield 134	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:logger	Lcom/tencent/mobileqq/triton/utils/LogDelegate;
+    //   275: astore_2
     //   276: aload_2
-    //   277: aload_3
-    //   278: aload 4
-    //   280: aload 5
-    //   282: invokevirtual 351	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   285: aload_1
-    //   286: invokeinterface 357 5 0
-    //   291: aload_0
-    //   292: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   295: astore_1
-    //   296: aload_1
-    //   297: ifnull +130 -> 427
-    //   300: aload_0
-    //   301: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   304: astore_1
-    //   305: aload_1
-    //   306: ifnonnull +6 -> 312
-    //   309: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   312: aload_1
-    //   313: aconst_null
-    //   314: invokevirtual 256	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
-    //   317: aload_0
-    //   318: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   321: astore_1
-    //   322: aload_1
-    //   323: ifnonnull +6 -> 329
-    //   326: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   329: aload_1
-    //   330: aconst_null
-    //   331: invokevirtual 260	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   334: aload_0
-    //   335: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   338: astore_1
-    //   339: aload_1
-    //   340: ifnonnull +6 -> 346
-    //   343: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   346: aload_1
-    //   347: aconst_null
-    //   348: invokevirtual 264	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
+    //   277: ifnull +74 -> 351
+    //   280: getstatic 330	com/tencent/mobileqq/triton/utils/LogDelegate$Level:ERROR	Lcom/tencent/mobileqq/triton/utils/LogDelegate$Level;
+    //   283: astore_3
+    //   284: getstatic 128	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:TAG	Ljava/lang/String;
+    //   287: astore 4
+    //   289: new 332	java/lang/StringBuilder
+    //   292: dup
+    //   293: invokespecial 333	java/lang/StringBuilder:<init>	()V
+    //   296: astore 5
+    //   298: aload 5
+    //   300: ldc_w 493
+    //   303: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   306: pop
+    //   307: aload 5
+    //   309: aload_0
+    //   310: invokevirtual 341	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:getAudioId	()I
+    //   313: invokevirtual 344	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   316: pop
+    //   317: aload 5
+    //   319: ldc_w 346
+    //   322: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: pop
+    //   326: aload 5
+    //   328: aload_0
+    //   329: invokevirtual 348	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:getAudioPath	()Ljava/lang/String;
+    //   332: invokevirtual 339	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: pop
+    //   336: aload_2
+    //   337: aload_3
+    //   338: aload 4
+    //   340: aload 5
+    //   342: invokevirtual 351	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   345: aload_1
+    //   346: invokeinterface 357 5 0
     //   351: aload_0
     //   352: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
     //   355: astore_1
     //   356: aload_1
-    //   357: ifnonnull +6 -> 363
-    //   360: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   363: aload_1
-    //   364: aconst_null
-    //   365: invokevirtual 268	android/media/MediaPlayer:setOnBufferingUpdateListener	(Landroid/media/MediaPlayer$OnBufferingUpdateListener;)V
-    //   368: aload_0
-    //   369: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   372: astore_1
-    //   373: aload_1
-    //   374: ifnonnull +6 -> 380
-    //   377: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   380: aload_1
-    //   381: aconst_null
-    //   382: invokevirtual 272	android/media/MediaPlayer:setOnSeekCompleteListener	(Landroid/media/MediaPlayer$OnSeekCompleteListener;)V
-    //   385: getstatic 277	android/os/Build$VERSION:SDK_INT	I
-    //   388: bipush 28
-    //   390: if_icmplt +19 -> 409
-    //   393: aload_0
-    //   394: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   397: astore_1
-    //   398: aload_1
-    //   399: ifnonnull +6 -> 405
-    //   402: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   405: aload_1
-    //   406: invokevirtual 477	android/media/MediaPlayer:clearOnMediaTimeDiscontinuityListener	()V
-    //   409: invokestatic 247	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:getInstance	()Lcom/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager;
-    //   412: aload_0
-    //   413: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   416: invokevirtual 481	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:enqueuePlayer	(Landroid/media/MediaPlayer;)V
-    //   419: aload_0
-    //   420: aconst_null
-    //   421: checkcast 252	android/media/MediaPlayer
-    //   424: putfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   427: aload_0
-    //   428: iconst_0
-    //   429: putfield 202	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mIsPrepared	Z
-    //   432: aload_0
-    //   433: iconst_1
-    //   434: putfield 136	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mPaused	Z
-    //   437: goto -239 -> 198
-    //   440: aload_0
-    //   441: monitorexit
-    //   442: return
-    //   443: aload_0
-    //   444: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   447: astore_2
-    //   448: aload_2
-    //   449: ifnull +130 -> 579
-    //   452: aload_0
-    //   453: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   456: astore_2
-    //   457: aload_2
-    //   458: ifnonnull +6 -> 464
-    //   461: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   464: aload_2
-    //   465: aconst_null
-    //   466: invokevirtual 256	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
-    //   469: aload_0
-    //   470: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   473: astore_2
-    //   474: aload_2
-    //   475: ifnonnull +6 -> 481
-    //   478: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   481: aload_2
-    //   482: aconst_null
-    //   483: invokevirtual 260	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   486: aload_0
-    //   487: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   490: astore_2
-    //   491: aload_2
-    //   492: ifnonnull +6 -> 498
-    //   495: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   498: aload_2
-    //   499: aconst_null
-    //   500: invokevirtual 264	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
+    //   357: ifnull +130 -> 487
+    //   360: aload_0
+    //   361: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   364: astore_1
+    //   365: aload_1
+    //   366: ifnonnull +6 -> 372
+    //   369: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   372: aload_1
+    //   373: aconst_null
+    //   374: invokevirtual 256	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
+    //   377: aload_0
+    //   378: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   381: astore_1
+    //   382: aload_1
+    //   383: ifnonnull +6 -> 389
+    //   386: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   389: aload_1
+    //   390: aconst_null
+    //   391: invokevirtual 260	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   394: aload_0
+    //   395: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   398: astore_1
+    //   399: aload_1
+    //   400: ifnonnull +6 -> 406
+    //   403: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   406: aload_1
+    //   407: aconst_null
+    //   408: invokevirtual 264	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
+    //   411: aload_0
+    //   412: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   415: astore_1
+    //   416: aload_1
+    //   417: ifnonnull +6 -> 423
+    //   420: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   423: aload_1
+    //   424: aconst_null
+    //   425: invokevirtual 268	android/media/MediaPlayer:setOnBufferingUpdateListener	(Landroid/media/MediaPlayer$OnBufferingUpdateListener;)V
+    //   428: aload_0
+    //   429: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   432: astore_1
+    //   433: aload_1
+    //   434: ifnonnull +6 -> 440
+    //   437: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   440: aload_1
+    //   441: aconst_null
+    //   442: invokevirtual 272	android/media/MediaPlayer:setOnSeekCompleteListener	(Landroid/media/MediaPlayer$OnSeekCompleteListener;)V
+    //   445: getstatic 277	android/os/Build$VERSION:SDK_INT	I
+    //   448: bipush 28
+    //   450: if_icmplt +19 -> 469
+    //   453: aload_0
+    //   454: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   457: astore_1
+    //   458: aload_1
+    //   459: ifnonnull +6 -> 465
+    //   462: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   465: aload_1
+    //   466: invokevirtual 487	android/media/MediaPlayer:clearOnMediaTimeDiscontinuityListener	()V
+    //   469: invokestatic 247	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:getInstance	()Lcom/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager;
+    //   472: aload_0
+    //   473: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   476: invokevirtual 491	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:enqueuePlayer	(Landroid/media/MediaPlayer;)V
+    //   479: aload_0
+    //   480: aconst_null
+    //   481: checkcast 252	android/media/MediaPlayer
+    //   484: putfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   487: aload_0
+    //   488: iconst_0
+    //   489: putfield 202	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mIsPrepared	Z
+    //   492: aload_0
+    //   493: iconst_1
+    //   494: putfield 136	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mPaused	Z
+    //   497: goto -239 -> 258
+    //   500: aload_0
+    //   501: monitorexit
+    //   502: return
     //   503: aload_0
     //   504: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
     //   507: astore_2
     //   508: aload_2
-    //   509: ifnonnull +6 -> 515
-    //   512: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   515: aload_2
-    //   516: aconst_null
-    //   517: invokevirtual 268	android/media/MediaPlayer:setOnBufferingUpdateListener	(Landroid/media/MediaPlayer$OnBufferingUpdateListener;)V
-    //   520: aload_0
-    //   521: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   524: astore_2
-    //   525: aload_2
-    //   526: ifnonnull +6 -> 532
-    //   529: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   532: aload_2
-    //   533: aconst_null
-    //   534: invokevirtual 272	android/media/MediaPlayer:setOnSeekCompleteListener	(Landroid/media/MediaPlayer$OnSeekCompleteListener;)V
-    //   537: getstatic 277	android/os/Build$VERSION:SDK_INT	I
-    //   540: bipush 28
-    //   542: if_icmplt +19 -> 561
-    //   545: aload_0
-    //   546: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   549: astore_2
-    //   550: aload_2
-    //   551: ifnonnull +6 -> 557
-    //   554: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   557: aload_2
-    //   558: invokevirtual 477	android/media/MediaPlayer:clearOnMediaTimeDiscontinuityListener	()V
-    //   561: invokestatic 247	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:getInstance	()Lcom/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager;
-    //   564: aload_0
-    //   565: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   568: invokevirtual 481	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:enqueuePlayer	(Landroid/media/MediaPlayer;)V
-    //   571: aload_0
-    //   572: aconst_null
-    //   573: checkcast 252	android/media/MediaPlayer
-    //   576: putfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
-    //   579: aload_0
-    //   580: iconst_0
-    //   581: putfield 202	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mIsPrepared	Z
-    //   584: aload_0
-    //   585: iconst_1
-    //   586: putfield 136	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mPaused	Z
-    //   589: aload_0
-    //   590: iconst_0
-    //   591: putfield 359	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mCacheDuration	I
-    //   594: aload_1
-    //   595: athrow
-    //   596: astore_1
-    //   597: aload_0
-    //   598: monitorexit
-    //   599: goto +5 -> 604
-    //   602: aload_1
-    //   603: athrow
-    //   604: goto -2 -> 602
-    //   607: astore_1
-    //   608: goto -420 -> 188
-    //   611: astore_1
-    //   612: goto -185 -> 427
-    //   615: astore_2
-    //   616: goto -37 -> 579
+    //   509: ifnull +130 -> 639
+    //   512: aload_0
+    //   513: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   516: astore_2
+    //   517: aload_2
+    //   518: ifnonnull +6 -> 524
+    //   521: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   524: aload_2
+    //   525: aconst_null
+    //   526: invokevirtual 256	android/media/MediaPlayer:setOnErrorListener	(Landroid/media/MediaPlayer$OnErrorListener;)V
+    //   529: aload_0
+    //   530: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   533: astore_2
+    //   534: aload_2
+    //   535: ifnonnull +6 -> 541
+    //   538: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   541: aload_2
+    //   542: aconst_null
+    //   543: invokevirtual 260	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   546: aload_0
+    //   547: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   550: astore_2
+    //   551: aload_2
+    //   552: ifnonnull +6 -> 558
+    //   555: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   558: aload_2
+    //   559: aconst_null
+    //   560: invokevirtual 264	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
+    //   563: aload_0
+    //   564: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   567: astore_2
+    //   568: aload_2
+    //   569: ifnonnull +6 -> 575
+    //   572: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   575: aload_2
+    //   576: aconst_null
+    //   577: invokevirtual 268	android/media/MediaPlayer:setOnBufferingUpdateListener	(Landroid/media/MediaPlayer$OnBufferingUpdateListener;)V
+    //   580: aload_0
+    //   581: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   584: astore_2
+    //   585: aload_2
+    //   586: ifnonnull +6 -> 592
+    //   589: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   592: aload_2
+    //   593: aconst_null
+    //   594: invokevirtual 272	android/media/MediaPlayer:setOnSeekCompleteListener	(Landroid/media/MediaPlayer$OnSeekCompleteListener;)V
+    //   597: getstatic 277	android/os/Build$VERSION:SDK_INT	I
+    //   600: bipush 28
+    //   602: if_icmplt +19 -> 621
+    //   605: aload_0
+    //   606: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   609: astore_2
+    //   610: aload_2
+    //   611: ifnonnull +6 -> 617
+    //   614: invokestatic 298	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   617: aload_2
+    //   618: invokevirtual 487	android/media/MediaPlayer:clearOnMediaTimeDiscontinuityListener	()V
+    //   621: invokestatic 247	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:getInstance	()Lcom/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager;
+    //   624: aload_0
+    //   625: getfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   628: invokevirtual 491	com/tencent/mobileqq/tritonaudio/inneraudio/MediaPlayerManager:enqueuePlayer	(Landroid/media/MediaPlayer;)V
+    //   631: aload_0
+    //   632: aconst_null
+    //   633: checkcast 252	android/media/MediaPlayer
+    //   636: putfield 240	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mMediaPlayer	Landroid/media/MediaPlayer;
+    //   639: aload_0
+    //   640: iconst_0
+    //   641: putfield 202	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mIsPrepared	Z
+    //   644: aload_0
+    //   645: iconst_1
+    //   646: putfield 136	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mPaused	Z
+    //   649: aload_0
+    //   650: iconst_0
+    //   651: putfield 359	com/tencent/mobileqq/tritonaudio/inneraudio/InnerAudioPlayer:mCacheDuration	I
+    //   654: aload_1
+    //   655: athrow
+    //   656: astore_1
+    //   657: aload_0
+    //   658: monitorexit
+    //   659: goto +5 -> 664
+    //   662: aload_1
+    //   663: athrow
+    //   664: goto -2 -> 662
+    //   667: astore_1
+    //   668: goto -420 -> 248
+    //   671: astore_1
+    //   672: goto -185 -> 487
+    //   675: astore_2
+    //   676: goto -37 -> 639
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	619	0	this	InnerAudioPlayer
-    //   20	147	1	localMediaPlayer1	MediaPlayer
-    //   206	1	1	localObject1	Object
-    //   210	76	1	localThrowable1	Throwable
-    //   295	300	1	localMediaPlayer2	MediaPlayer
-    //   596	7	1	localObject2	Object
-    //   607	1	1	localThrowable2	Throwable
-    //   611	1	1	localThrowable3	Throwable
-    //   215	343	2	localObject3	Object
-    //   615	1	2	localThrowable4	Throwable
-    //   223	55	3	localLevel	LogDelegate.Level
-    //   227	52	4	str	String
-    //   236	45	5	localStringBuilder	StringBuilder
+    //   0	679	0	this	InnerAudioPlayer
+    //   6	221	1	localObject1	Object
+    //   266	1	1	localObject2	Object
+    //   270	76	1	localThrowable1	Throwable
+    //   355	300	1	localMediaPlayer	MediaPlayer
+    //   656	7	1	localObject3	Object
+    //   667	1	1	localThrowable2	Throwable
+    //   671	1	1	localThrowable3	Throwable
+    //   14	604	2	localObject4	Object
+    //   675	1	2	localThrowable4	Throwable
+    //   18	320	3	localObject5	Object
+    //   26	313	4	localObject6	Object
+    //   296	45	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   2	21	206	finally
-    //   25	28	206	finally
-    //   28	32	206	finally
-    //   32	37	206	finally
-    //   41	44	206	finally
-    //   44	52	206	finally
-    //   211	216	206	finally
-    //   220	291	206	finally
-    //   2	21	210	java/lang/Throwable
-    //   25	28	210	java/lang/Throwable
-    //   28	32	210	java/lang/Throwable
-    //   32	37	210	java/lang/Throwable
-    //   41	44	210	java/lang/Throwable
-    //   44	52	210	java/lang/Throwable
-    //   52	57	596	finally
-    //   61	66	596	finally
-    //   70	73	596	finally
-    //   73	83	596	finally
-    //   87	90	596	finally
-    //   90	100	596	finally
-    //   104	107	596	finally
-    //   107	117	596	finally
-    //   121	124	596	finally
-    //   124	134	596	finally
-    //   138	141	596	finally
-    //   141	159	596	finally
-    //   163	166	596	finally
-    //   166	170	596	finally
-    //   170	188	596	finally
-    //   188	198	596	finally
-    //   198	203	596	finally
-    //   291	296	596	finally
-    //   300	305	596	finally
-    //   309	312	596	finally
-    //   312	322	596	finally
-    //   326	329	596	finally
-    //   329	339	596	finally
-    //   343	346	596	finally
-    //   346	356	596	finally
-    //   360	363	596	finally
-    //   363	373	596	finally
-    //   377	380	596	finally
-    //   380	398	596	finally
-    //   402	405	596	finally
-    //   405	409	596	finally
-    //   409	427	596	finally
-    //   427	437	596	finally
-    //   443	448	596	finally
-    //   452	457	596	finally
-    //   461	464	596	finally
-    //   464	474	596	finally
-    //   478	481	596	finally
-    //   481	491	596	finally
-    //   495	498	596	finally
-    //   498	508	596	finally
-    //   512	515	596	finally
-    //   515	525	596	finally
-    //   529	532	596	finally
-    //   532	550	596	finally
-    //   554	557	596	finally
-    //   557	561	596	finally
-    //   561	579	596	finally
-    //   579	596	596	finally
-    //   61	66	607	java/lang/Throwable
-    //   70	73	607	java/lang/Throwable
-    //   73	83	607	java/lang/Throwable
-    //   87	90	607	java/lang/Throwable
-    //   90	100	607	java/lang/Throwable
-    //   104	107	607	java/lang/Throwable
-    //   107	117	607	java/lang/Throwable
-    //   121	124	607	java/lang/Throwable
-    //   124	134	607	java/lang/Throwable
-    //   138	141	607	java/lang/Throwable
-    //   141	159	607	java/lang/Throwable
-    //   163	166	607	java/lang/Throwable
-    //   166	170	607	java/lang/Throwable
-    //   170	188	607	java/lang/Throwable
-    //   300	305	611	java/lang/Throwable
-    //   309	312	611	java/lang/Throwable
-    //   312	322	611	java/lang/Throwable
-    //   326	329	611	java/lang/Throwable
-    //   329	339	611	java/lang/Throwable
-    //   343	346	611	java/lang/Throwable
-    //   346	356	611	java/lang/Throwable
-    //   360	363	611	java/lang/Throwable
-    //   363	373	611	java/lang/Throwable
-    //   377	380	611	java/lang/Throwable
-    //   380	398	611	java/lang/Throwable
-    //   402	405	611	java/lang/Throwable
-    //   405	409	611	java/lang/Throwable
-    //   409	427	611	java/lang/Throwable
-    //   452	457	615	java/lang/Throwable
-    //   461	464	615	java/lang/Throwable
-    //   464	474	615	java/lang/Throwable
-    //   478	481	615	java/lang/Throwable
-    //   481	491	615	java/lang/Throwable
-    //   495	498	615	java/lang/Throwable
-    //   498	508	615	java/lang/Throwable
-    //   512	515	615	java/lang/Throwable
-    //   515	525	615	java/lang/Throwable
-    //   529	532	615	java/lang/Throwable
-    //   532	550	615	java/lang/Throwable
-    //   554	557	615	java/lang/Throwable
-    //   557	561	615	java/lang/Throwable
-    //   561	579	615	java/lang/Throwable
+    //   2	7	266	finally
+    //   11	62	266	finally
+    //   62	81	266	finally
+    //   85	88	266	finally
+    //   88	92	266	finally
+    //   92	97	266	finally
+    //   101	104	266	finally
+    //   104	112	266	finally
+    //   271	276	266	finally
+    //   280	351	266	finally
+    //   2	7	270	java/lang/Throwable
+    //   11	62	270	java/lang/Throwable
+    //   62	81	270	java/lang/Throwable
+    //   85	88	270	java/lang/Throwable
+    //   88	92	270	java/lang/Throwable
+    //   92	97	270	java/lang/Throwable
+    //   101	104	270	java/lang/Throwable
+    //   104	112	270	java/lang/Throwable
+    //   112	117	656	finally
+    //   121	126	656	finally
+    //   130	133	656	finally
+    //   133	143	656	finally
+    //   147	150	656	finally
+    //   150	160	656	finally
+    //   164	167	656	finally
+    //   167	177	656	finally
+    //   181	184	656	finally
+    //   184	194	656	finally
+    //   198	201	656	finally
+    //   201	219	656	finally
+    //   223	226	656	finally
+    //   226	230	656	finally
+    //   230	248	656	finally
+    //   248	258	656	finally
+    //   258	263	656	finally
+    //   351	356	656	finally
+    //   360	365	656	finally
+    //   369	372	656	finally
+    //   372	382	656	finally
+    //   386	389	656	finally
+    //   389	399	656	finally
+    //   403	406	656	finally
+    //   406	416	656	finally
+    //   420	423	656	finally
+    //   423	433	656	finally
+    //   437	440	656	finally
+    //   440	458	656	finally
+    //   462	465	656	finally
+    //   465	469	656	finally
+    //   469	487	656	finally
+    //   487	497	656	finally
+    //   503	508	656	finally
+    //   512	517	656	finally
+    //   521	524	656	finally
+    //   524	534	656	finally
+    //   538	541	656	finally
+    //   541	551	656	finally
+    //   555	558	656	finally
+    //   558	568	656	finally
+    //   572	575	656	finally
+    //   575	585	656	finally
+    //   589	592	656	finally
+    //   592	610	656	finally
+    //   614	617	656	finally
+    //   617	621	656	finally
+    //   621	639	656	finally
+    //   639	656	656	finally
+    //   121	126	667	java/lang/Throwable
+    //   130	133	667	java/lang/Throwable
+    //   133	143	667	java/lang/Throwable
+    //   147	150	667	java/lang/Throwable
+    //   150	160	667	java/lang/Throwable
+    //   164	167	667	java/lang/Throwable
+    //   167	177	667	java/lang/Throwable
+    //   181	184	667	java/lang/Throwable
+    //   184	194	667	java/lang/Throwable
+    //   198	201	667	java/lang/Throwable
+    //   201	219	667	java/lang/Throwable
+    //   223	226	667	java/lang/Throwable
+    //   226	230	667	java/lang/Throwable
+    //   230	248	667	java/lang/Throwable
+    //   360	365	671	java/lang/Throwable
+    //   369	372	671	java/lang/Throwable
+    //   372	382	671	java/lang/Throwable
+    //   386	389	671	java/lang/Throwable
+    //   389	399	671	java/lang/Throwable
+    //   403	406	671	java/lang/Throwable
+    //   406	416	671	java/lang/Throwable
+    //   420	423	671	java/lang/Throwable
+    //   423	433	671	java/lang/Throwable
+    //   437	440	671	java/lang/Throwable
+    //   440	458	671	java/lang/Throwable
+    //   462	465	671	java/lang/Throwable
+    //   465	469	671	java/lang/Throwable
+    //   469	487	671	java/lang/Throwable
+    //   512	517	675	java/lang/Throwable
+    //   521	524	675	java/lang/Throwable
+    //   524	534	675	java/lang/Throwable
+    //   538	541	675	java/lang/Throwable
+    //   541	551	675	java/lang/Throwable
+    //   555	558	675	java/lang/Throwable
+    //   558	568	675	java/lang/Throwable
+    //   572	575	675	java/lang/Throwable
+    //   575	585	675	java/lang/Throwable
+    //   589	592	675	java/lang/Throwable
+    //   592	610	675	java/lang/Throwable
+    //   614	617	675	java/lang/Throwable
+    //   617	621	675	java/lang/Throwable
+    //   621	639	675	java/lang/Throwable
   }
   
   public void resume()
@@ -1422,7 +1467,7 @@ public final class InnerAudioPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.inneraudio.InnerAudioPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ class ReadinjoyAdHippyFragment$4
   
   public void a()
   {
-    if (this.a.a() != null) {
-      new Handler(this.a.a().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.4.2(this), 200L);
+    if (this.a.v() != null) {
+      new Handler(this.a.v().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.4.2(this), 200L);
     }
     if (QLog.isColorLevel()) {
       QLog.d("ReadinjoyAdMiniGameFragment", 2, "reloadPage success!");
@@ -22,8 +22,8 @@ class ReadinjoyAdHippyFragment$4
   
   public void a(int paramInt)
   {
-    if (this.a.a() != null) {
-      new Handler(this.a.a().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.4.1(this), 1000L);
+    if (this.a.v() != null) {
+      new Handler(this.a.v().getMainLooper()).postDelayed(new ReadinjoyAdHippyFragment.4.1(this), 1000L);
     }
     if (QLog.isColorLevel())
     {
@@ -51,7 +51,7 @@ class ReadinjoyAdHippyFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment.4
  * JD-Core Version:    0.7.0.1
  */

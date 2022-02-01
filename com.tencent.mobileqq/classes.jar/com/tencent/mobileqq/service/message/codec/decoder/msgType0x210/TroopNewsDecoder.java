@@ -21,12 +21,12 @@ public class TroopNewsDecoder
     if (QLog.isColorLevel()) {
       QLog.d("Q.troopgetnews..troop.notification_center", 2, "decodeC2CMsgPkg_MsgType0x210, receive troop news push");
     }
-    ((ITroopOnlinePushHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_PUSH_HANDLER)).a(paramMsgType0x210.msg_content.get().toByteArray());
+    ((ITroopOnlinePushHandler)paramMessageHandler.n.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_PUSH_HANDLER)).a(paramMsgType0x210.msg_content.get().toByteArray());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.TroopNewsDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ class AVGameJoinRoomFragment$3
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.this$0.jdField_a_of_type_ComTencentAvgameAdapterDigitsProviderAdapter.a(this.this$0.jdField_a_of_type_JavaUtilArrayList);
-    this.this$0.jdField_a_of_type_ComTencentAvgameAdapterDigitsProviderAdapter.notifyDataSetChanged();
+    this.this$0.b.clear();
+    this.this$0.c.a(this.this$0.b);
+    this.this$0.c.notifyDataSetChanged();
   }
 }
 

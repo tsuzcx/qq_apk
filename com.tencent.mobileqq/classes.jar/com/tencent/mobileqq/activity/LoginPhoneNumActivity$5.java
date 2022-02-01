@@ -17,13 +17,13 @@ class LoginPhoneNumActivity$5
   {
     paramDialog = (byte[])paramMap.get("login_tvl_value");
     paramMap = LoginAccountFragment.a(2, LoginPhoneNumActivity.access$200(this.a));
-    LoginAccountFragment.a(this.a, HardCodeUtil.a(2131699184), HardCodeUtil.a(2131706424), paramAccountInfo, paramMap, paramDialog, 2020);
+    LoginAccountFragment.a(this.a, HardCodeUtil.a(2131897200), HardCodeUtil.a(2131904283), paramAccountInfo, paramMap, paramDialog, 2020);
     ReportController.a(LoginPhoneNumActivity.access$300(this.a), "0X800B939");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginPhoneNumActivity.5
  * JD-Core Version:    0.7.0.1
  */

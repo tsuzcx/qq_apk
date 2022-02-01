@@ -15,51 +15,38 @@ import com.tencent.smtt.sdk.WebView;
 public class HalfSizeWebviewDialog
   extends BaseWebDialogFragment
 {
-  protected float a;
-  protected int a;
-  protected View a;
-  protected ViewGroup a;
-  protected ImageView a;
-  protected TextView a;
-  protected int b;
-  protected ImageView b;
-  protected boolean b;
-  protected int c;
-  protected boolean c;
-  protected boolean d = false;
-  protected boolean e = false;
+  protected boolean k = false;
+  protected int l;
+  protected int m = 0;
+  protected int n = 0;
+  protected float o = 1.0F;
+  protected boolean p;
+  protected boolean q = false;
+  protected boolean r = false;
+  protected ImageView s;
+  protected ImageView t;
+  protected ViewGroup u;
+  protected TextView v;
+  protected View w;
   
-  public HalfSizeWebviewDialog()
+  private void d()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  private void c()
-  {
-    if (this.jdField_c_of_type_Int == 0)
+    if (this.n == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.s.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.s.setVisibility(0);
   }
   
   public int a()
   {
-    return 2131559235;
+    return 2131625155;
   }
   
   public FrameLayout a(View paramView)
   {
-    return (FrameLayout)paramView.findViewById(2131381062);
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setWebChromeClient(new HalfSizeWebviewDialog.1(this));
+    return (FrameLayout)paramView.findViewById(2131450073);
   }
   
   public void a(Dialog paramDialog)
@@ -73,72 +60,77 @@ public class HalfSizeWebviewDialog
     {
       WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
       if (getActivity() != null) {
-        if (!this.d)
+        if (!this.q)
         {
-          localWindow.setWindowAnimations(2131756038);
+          localWindow.setWindowAnimations(2131953178);
           localLayoutParams.gravity = 80;
         }
         else
         {
-          localWindow.setWindowAnimations(2131756039);
+          localWindow.setWindowAnimations(2131953179);
           localLayoutParams.gravity = 5;
         }
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.l;
       if (i == 0) {
         localLayoutParams.width = -1;
       } else {
         localLayoutParams.width = i;
       }
-      i = this.jdField_b_of_type_Int;
+      i = this.m;
       if (i == 0) {
         localLayoutParams.height = (UIUtil.getScreenHeight(paramDialog.getContext()) / 2);
       } else {
         localLayoutParams.height = i;
       }
       localWindow.setAttributes(localLayoutParams);
-      localWindow.setDimAmount(this.jdField_a_of_type_Float);
+      localWindow.setDimAmount(this.o);
     }
-    if (this.jdField_b_of_type_Boolean) {
-      a();
-    }
-    if (!this.e) {
+    if (this.k) {
       b();
     }
-  }
-  
-  public void a(View paramView)
-  {
-    b(paramView);
+    if (!this.r) {
+      c();
+    }
   }
   
   public FrameLayout b(View paramView)
   {
-    return (FrameLayout)paramView.findViewById(2131381062);
+    return (FrameLayout)paramView.findViewById(2131450073);
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.e.setWebChromeClient(new HalfSizeWebviewDialog.1(this));
   }
   
-  protected void b(View paramView)
+  protected void c()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368335));
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    this.w.setVisibility(8);
+  }
+  
+  public void c(View paramView)
+  {
+    d(paramView);
+  }
+  
+  protected void d(View paramView)
+  {
+    this.u = ((ViewGroup)paramView.findViewById(2131435210));
+    ViewGroup localViewGroup = this.u;
     int i;
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.k) {
       i = 0;
     } else {
       i = 8;
     }
     localViewGroup.setVisibility(i);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368334));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368336));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368337));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new HalfSizeWebviewDialog.2(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new HalfSizeWebviewDialog.3(this));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379019);
+    this.s = ((ImageView)paramView.findViewById(2131435209));
+    this.t = ((ImageView)paramView.findViewById(2131435211));
+    this.v = ((TextView)paramView.findViewById(2131435212));
+    this.t.setOnClickListener(new HalfSizeWebviewDialog.2(this));
+    this.s.setOnClickListener(new HalfSizeWebviewDialog.3(this));
+    this.w = paramView.findViewById(2131447740);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -147,20 +139,20 @@ public class HalfSizeWebviewDialog
     paramBundle = getArguments();
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_Int = paramBundle.getInt("width");
-      this.jdField_b_of_type_Int = paramBundle.getInt("height");
-      this.jdField_b_of_type_Boolean = paramBundle.getBoolean("showTitleBar", false);
-      this.d = paramBundle.getBoolean("isLandscape", false);
-      this.jdField_a_of_type_Float = paramBundle.getFloat("dimAmount", 1.0F);
-      this.jdField_c_of_type_Boolean = paramBundle.getBoolean("leftClickClose", false);
-      this.jdField_a_of_type_Boolean = paramBundle.getBoolean("plantCookieWhenResume", false);
-      this.e = paramBundle.getBoolean("needTopRadius", false);
+      this.l = paramBundle.getInt("width");
+      this.m = paramBundle.getInt("height");
+      this.k = paramBundle.getBoolean("showTitleBar", false);
+      this.q = paramBundle.getBoolean("isLandscape", false);
+      this.o = paramBundle.getFloat("dimAmount", 1.0F);
+      this.p = paramBundle.getBoolean("leftClickClose", false);
+      this.f = paramBundle.getBoolean("plantCookieWhenResume", false);
+      this.r = paramBundle.getBoolean("needTopRadius", false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.HalfSizeWebviewDialog
  * JD-Core Version:    0.7.0.1
  */

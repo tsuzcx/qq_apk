@@ -13,8 +13,8 @@ class PicBrowserImage$2
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserImage$OnLoadListener.a(this.jdField_a_of_type_Int, false);
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserImage$OnLoadListener.a(this.jdField_a_of_type_Int);
+    this.a.a(this.b, false);
+    this.a.a(this.b);
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
@@ -22,19 +22,19 @@ class PicBrowserImage$2
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
     if ((paramInt > 0) && (paramInt < 10000)) {
-      this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserImage$OnLoadListener.b(this.jdField_a_of_type_Int, paramInt / 100);
+      this.a.b(this.b, paramInt / 100);
     }
   }
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserImage$OnLoadListener.a(this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserImage$OnLoadListener.a(this.jdField_a_of_type_Int);
+    this.a.a(this.b, true);
+    this.a.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.picbrowser.PicBrowserImage.2
  * JD-Core Version:    0.7.0.1
  */

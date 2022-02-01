@@ -60,13 +60,13 @@ final class CloudAVEngineImpl$NativeRequestHandler
       else
       {
         paramObject1 = new ICloudAVEngine.DetectBundle();
-        paramObject1.jdField_a_of_type_Int = ((Integer)paramObject2).intValue();
+        paramObject1.a = ((Integer)paramObject2).intValue();
         paramObject1.b = ((Integer)paramArrayOfObject1[0]).intValue();
-        paramObject1.jdField_a_of_type_JavaLangString = ((String)paramArrayOfObject1[1]);
-        paramObject1.c = ((String)paramArrayOfObject1[2]);
-        paramObject1.d = ((String)paramArrayOfObject1[3]);
-        paramObject1.e = ((String)paramArrayOfObject1[4]);
-        paramObject1.jdField_a_of_type_ArrayOfByte = ((byte[])paramArrayOfObject1[5]);
+        paramObject1.d = ((String)paramArrayOfObject1[1]);
+        paramObject1.f = ((String)paramArrayOfObject1[2]);
+        paramObject1.g = ((String)paramArrayOfObject1[3]);
+        paramObject1.h = ((String)paramArrayOfObject1[4]);
+        paramObject1.i = ((byte[])paramArrayOfObject1[5]);
       }
       i = this.a.cloudDetect(paramObject1, bool1, bool2, paramArrayOfObject2);
       return i;
@@ -90,7 +90,7 @@ final class CloudAVEngineImpl$NativeRequestHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.NativeRequestHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -38,12 +38,14 @@ public final class INTERFACE$StApiAppInfo
   public final PBInt32Field isRecommend = PBField.initInt32(0);
   public INTERFACE.StMDebugInfo mDebug = new INTERFACE.StMDebugInfo();
   public INTERFACE.StMainPageExtInfo mainExt = new INTERFACE.StMainPageExtInfo();
+  public final PBEnumField miniAppType = PBField.initEnum(0);
   public INTERFACE.StOperationInfo operInfo = new INTERFACE.StOperationInfo();
   public final PBRepeatMessageField<INTERFACE.StPublicAccount> pubAccts = PBField.initRepeatMessage(INTERFACE.StPublicAccount.class);
   public final PBRepeatField<String> serviceCategory = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBInt32Field skipDomainCheck = PBField.initInt32(0);
   public final PBRepeatMessageField<INTERFACE.StSubPkgInfo> subPkgs = PBField.initRepeatMessage(INTERFACE.StSubPkgInfo.class);
   public final PBInt32Field supportOffline = PBField.initInt32(0);
+  public final PBInt32Field tabIndex = PBField.initInt32(0);
   public final PBStringField tags = PBField.initString("");
   public final PBEnumField type = PBField.initEnum(0);
   public final PBStringField version = PBField.initString("");
@@ -52,7 +54,7 @@ public final class INTERFACE$StApiAppInfo
   static
   {
     Integer localInteger = Integer.valueOf(0);
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 74, 82, 90, 98, 104, 114, 122, 130, 138, 146, 154, 162, 170, 176, 186, 192, 202, 210, 216, 226, 234, 242, 250, 258, 266 }, new String[] { "appId", "appName", "icon", "donwLoadUrl", "version", "desc", "pubAccts", "type", "baselibMiniVersion", "subPkgs", "first", "domain", "appType", "mDebug", "versionId", "apiRight", "dataCache", "mainExt", "devInfo", "extData", "extGameCenter", "isRecommend", "serviceCategory", "supportOffline", "appMode", "operInfo", "skipDomainCheck", "extInfo", "extendData", "tags", "extConfig", "appNoCacheExt", "basicInfo" }, new Object[] { "", "", "", "", "", "", null, localInteger, "", null, null, null, localInteger, null, "", null, null, null, null, "", null, localInteger, "", localInteger, null, null, localInteger, null, "", "", null, null, null }, StApiAppInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 74, 82, 90, 98, 104, 114, 122, 130, 138, 146, 154, 162, 170, 176, 186, 192, 202, 210, 216, 226, 234, 242, 250, 258, 266, 272, 280 }, new String[] { "appId", "appName", "icon", "donwLoadUrl", "version", "desc", "pubAccts", "type", "baselibMiniVersion", "subPkgs", "first", "domain", "appType", "mDebug", "versionId", "apiRight", "dataCache", "mainExt", "devInfo", "extData", "extGameCenter", "isRecommend", "serviceCategory", "supportOffline", "appMode", "operInfo", "skipDomainCheck", "extInfo", "extendData", "tags", "extConfig", "appNoCacheExt", "basicInfo", "tabIndex", "miniAppType" }, new Object[] { "", "", "", "", "", "", null, localInteger, "", null, null, null, localInteger, null, "", null, null, null, null, "", null, localInteger, "", localInteger, null, null, localInteger, null, "", "", null, null, null, localInteger, localInteger }, StApiAppInfo.class);
   }
 }
 

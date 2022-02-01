@@ -1,8 +1,8 @@
 package com.tencent.aelight.camera.aeeditor.lyric.widget;
 
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
-import com.tencent.weseevideo.editor.sticker.music.lyric.data.SentenceUI;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.Lyric;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.Sentence;
+import com.tencent.qcircle.weseevideo.editor.sticker.music.lyric.data.SentenceUI;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -34,7 +34,7 @@ public class LyricViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricViewHelper
  * JD-Core Version:    0.7.0.1
  */

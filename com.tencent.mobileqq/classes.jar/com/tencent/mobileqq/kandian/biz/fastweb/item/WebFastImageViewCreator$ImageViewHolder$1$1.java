@@ -9,14 +9,14 @@ class WebFastImageViewCreator$ImageViewHolder$1$1
   
   public void run()
   {
-    WebFastImageViewCreator.ImageViewHolder localImageViewHolder = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemWebFastImageViewCreator$ImageViewHolder$1.a;
-    ImageData localImageData = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataImageData;
+    WebFastImageViewCreator.ImageViewHolder localImageViewHolder = this.b.a;
+    ImageData localImageData = this.a;
     localImageViewHolder.a(localImageData, localImageData, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebFastImageViewCreator.ImageViewHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

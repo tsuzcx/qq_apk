@@ -1,6 +1,5 @@
 package com.tencent.aelight.camera.aioeditor;
 
-import NS_QQ_STORY_META.META.StMusic;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -9,17 +8,18 @@ import android.view.View;
 import com.tencent.biz.videostory.widget.view.smartmusicview.CircleLayoutManager;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.List;
+import qqcircle.QQCircleSmartMatchMusic.MusicInfo;
 
 public class SmartMusicRecyclerView
   extends RecyclerView
 {
-  private int jdField_a_of_type_Int;
-  private EditVideoSmartMusicPart.onSmartMusicViewListener jdField_a_of_type_ComTencentAelightCameraAioeditorEditVideoSmartMusicPart$onSmartMusicViewListener;
-  private SmartMusicAdapter.SmartMusicVH jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH;
-  private SmartMusicAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter;
-  private CircleLayoutManager jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewCircleLayoutManager;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
+  private CircleLayoutManager a;
+  private SmartMusicAdapter b;
+  private boolean c;
+  private SmartMusicAdapter.SmartMusicVH d;
+  private EditVideoSmartMusicPart.onSmartMusicViewListener e;
+  private int f;
+  private boolean g = true;
   
   public SmartMusicRecyclerView(Context paramContext)
   {
@@ -39,10 +39,10 @@ public class SmartMusicRecyclerView
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewCircleLayoutManager = new CircleLayoutManager(getContext(), AIOUtils.b(120.0F, getContext().getResources()));
-    setLayoutManager(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewCircleLayoutManager);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter = new SmartMusicAdapter();
-    setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter);
+    this.a = new CircleLayoutManager(getContext(), AIOUtils.b(120.0F, getContext().getResources()));
+    setLayoutManager(this.a);
+    this.b = new SmartMusicAdapter();
+    setAdapter(this.b);
     addOnScrollListener(new SmartMusicRecyclerView.1(this));
   }
   
@@ -50,90 +50,90 @@ public class SmartMusicRecyclerView
   {
     if (paramInt == 0)
     {
-      SmartMusicAdapter.SmartMusicVH localSmartMusicVH = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH;
-      if ((localSmartMusicVH != null) && (this.jdField_a_of_type_Boolean) && (this.b))
+      SmartMusicAdapter.SmartMusicVH localSmartMusicVH = this.d;
+      if ((localSmartMusicVH != null) && (this.c) && (this.g))
       {
         localSmartMusicVH.a();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH.d();
+        this.d.d();
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.c)
       {
-        int i = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewCircleLayoutManager.a() + 1;
+        int i = this.a.a() + 1;
         paramRecyclerView.smoothScrollToPosition(i);
         b();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH = ((SmartMusicAdapter.SmartMusicVH)paramRecyclerView.findViewHolderForAdapterPosition(i));
-        paramRecyclerView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorEditVideoSmartMusicPart$onSmartMusicViewListener;
-        if ((paramRecyclerView != null) && (this.jdField_a_of_type_Int != i))
+        this.d = ((SmartMusicAdapter.SmartMusicVH)paramRecyclerView.findViewHolderForAdapterPosition(i));
+        paramRecyclerView = this.e;
+        if ((paramRecyclerView != null) && (this.f != i))
         {
-          this.jdField_a_of_type_Int = i;
-          paramRecyclerView.a(i, this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH);
+          this.f = i;
+          paramRecyclerView.a(i, this.d);
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.c = true;
       }
     }
     if (((paramInt == 1) || (paramInt == 2)) && (paramInt == 1))
     {
       b();
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
     }
   }
   
   private void b()
   {
-    SmartMusicAdapter.SmartMusicVH localSmartMusicVH = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH;
+    SmartMusicAdapter.SmartMusicVH localSmartMusicVH = this.d;
     if (localSmartMusicVH != null)
     {
       localSmartMusicVH.a(false);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH.b(false);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH.b();
+      this.d.b(false);
+      this.d.b();
     }
   }
   
-  public CircleLayoutManager a()
+  public CircleLayoutManager getCircleLayoutManager()
   {
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewCircleLayoutManager;
+    return this.a;
   }
   
   public void setHasAutoSet(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void setLastPosition(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void setListener(EditVideoSmartMusicPart.onSmartMusicViewListener paramonSmartMusicViewListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorEditVideoSmartMusicPart$onSmartMusicViewListener = paramonSmartMusicViewListener;
-    SmartMusicAdapter localSmartMusicAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter;
+    this.e = paramonSmartMusicViewListener;
+    SmartMusicAdapter localSmartMusicAdapter = this.b;
     if (localSmartMusicAdapter != null) {
       localSmartMusicAdapter.a(paramonSmartMusicViewListener);
     }
   }
   
-  public void setMusicData(List<META.StMusic> paramList)
+  public void setMusicData(List<QQCircleSmartMatchMusic.MusicInfo> paramList)
   {
     if (paramList != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter.a(paramList);
+      this.b.a(paramList);
     }
   }
   
   public void setNeedScale(boolean paramBoolean)
   {
-    this.b = paramBoolean;
-    a().a(paramBoolean);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH != null)
+    this.g = paramBoolean;
+    getCircleLayoutManager().a(paramBoolean);
+    if (this.d != null)
     {
-      float f;
+      float f1;
       if (paramBoolean) {
-        f = a().a();
+        f1 = getCircleLayoutManager().b();
       } else {
-        f = 1.0F;
+        f1 = 1.0F;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH.itemView.setScaleY(f);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorSmartMusicAdapter$SmartMusicVH.itemView.setScaleX(f);
+      this.d.itemView.setScaleY(f1);
+      this.d.itemView.setScaleX(f1);
     }
   }
   
@@ -144,12 +144,12 @@ public class SmartMusicRecyclerView
     if (i < 0) {
       paramInt = 0;
     }
-    smoothScrollBy(0, a().a(paramInt));
+    smoothScrollBy(0, getCircleLayoutManager().b(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.SmartMusicRecyclerView
  * JD-Core Version:    0.7.0.1
  */

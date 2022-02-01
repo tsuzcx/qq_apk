@@ -17,6 +17,7 @@ import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.cmshow.engine.CMShowPlatform;
 import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.fragment.QIphoneTitleBarFragment;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -30,140 +31,144 @@ public class ApolloDebugFragment
   extends QIphoneTitleBarFragment
   implements CompoundButton.OnCheckedChangeListener
 {
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private SharedPreferences jdField_b_of_type_AndroidContentSharedPreferences = null;
-  private FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private FormSwitchItem A;
+  private FormSwitchItem B;
+  private FormSwitchItem C;
+  private FormSwitchItem D;
+  private FormSwitchItem E;
+  private FormSwitchItem F;
+  private FormSwitchItem G;
+  private FormSwitchItem H;
+  private FormSwitchItem I;
+  private FormSwitchItem J;
+  private FormSwitchItem K;
+  private FormSwitchItem L;
+  private FormSwitchItem M;
+  private SharedPreferences a;
+  private SharedPreferences b = null;
   private FormSwitchItem c;
   private FormSwitchItem d;
   private FormSwitchItem e;
   private FormSwitchItem f;
   private FormSwitchItem g;
-  private FormSwitchItem h;
-  private FormSwitchItem i;
-  private FormSwitchItem j;
-  private FormSwitchItem k;
-  private FormSwitchItem l;
-  private FormSwitchItem m;
-  private FormSwitchItem n;
-  private FormSwitchItem o;
-  private FormSwitchItem p;
-  private FormSwitchItem q;
-  private FormSwitchItem r;
-  private FormSwitchItem s;
-  private FormSwitchItem t;
-  private FormSwitchItem u;
+  private FormSwitchItem w;
+  private FormSwitchItem x;
+  private FormSwitchItem y;
+  private FormSwitchItem z;
   
-  private void a()
+  private void b()
   {
-    ThreadManager.excute(new ApolloDebugFragment.2(this), 64, null, true);
+    ThreadManager.excute(new ApolloDebugFragment.3(this), 64, null, true);
   }
   
   protected int a()
   {
-    return 2131558617;
+    return 2131624181;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_b_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 4);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_test", 0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362773));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("厘米秀内网环境代理");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((IApolloUtil)QRoute.api(IApolloUtil.class)).isApolloProxyEnable());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362731));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("厘米秀动作素材删除");
-    paramLayoutInflater = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/");
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramLayoutInflater.exists() ^ true);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-    this.c = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362794));
-    this.c.setContentDescription("厘米秀脚本文件删除");
-    paramLayoutInflater = new File(ApolloConstant.N);
-    this.c.setChecked(paramLayoutInflater.exists() ^ true);
+    this.b = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 4);
+    this.a = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_test", 0);
+    this.c = ((FormSwitchItem)this.t.findViewById(2131428459));
+    this.c.setContentDescription("厘米秀内网环境代理");
+    this.c.setChecked(((IApolloUtil)QRoute.api(IApolloUtil.class)).isApolloProxyEnable());
     this.c.setOnCheckedChangeListener(this);
-    this.d = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362746));
-    this.d.setContentDescription("厘米秀表情缓存删除");
-    paramLayoutInflater = new File(ApolloCoderResource.a.a());
+    this.d = ((FormSwitchItem)this.t.findViewById(2131428417));
+    this.d.setContentDescription("厘米秀动作素材删除");
+    paramLayoutInflater = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/");
     this.d.setChecked(paramLayoutInflater.exists() ^ true);
     this.d.setOnCheckedChangeListener(this);
-    this.e = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362757));
-    this.e.setContentDescription("厘米秀装扮素材删除");
-    paramLayoutInflater = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/");
+    this.e = ((FormSwitchItem)this.t.findViewById(2131428481));
+    this.e.setContentDescription("厘米秀脚本文件删除");
+    paramLayoutInflater = new File(ApolloConstant.V);
     this.e.setChecked(paramLayoutInflater.exists() ^ true);
     this.e.setOnCheckedChangeListener(this);
-    this.f = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362792));
-    this.f.setContentDescription("厘米秀角色素材删除");
-    paramLayoutInflater = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/");
+    this.f = ((FormSwitchItem)this.t.findViewById(2131428432));
+    this.f.setContentDescription("厘米秀表情缓存删除");
+    paramLayoutInflater = new File(ApolloCoderResource.a.a());
     this.f.setChecked(paramLayoutInflater.exists() ^ true);
     this.f.setOnCheckedChangeListener(this);
-    this.g = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362766));
-    this.g.setContentDescription("厘米秀游戏资源包删除");
-    paramLayoutInflater = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
+    this.g = ((FormSwitchItem)this.t.findViewById(2131428443));
+    this.g.setContentDescription("厘米秀装扮素材删除");
+    paramLayoutInflater = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/");
     this.g.setChecked(paramLayoutInflater.exists() ^ true);
     this.g.setOnCheckedChangeListener(this);
-    this.h = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362771));
-    this.h.setContentDescription("厘米秀游戏资源校验和更新");
-    this.h.setChecked(this.jdField_b_of_type_AndroidContentSharedPreferences.getBoolean("game_whitelist_verify_switch", true));
-    this.h.setOnCheckedChangeListener(this);
-    this.i = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362806));
-    this.i.setContentDescription("厘米秀3d表情包测试");
-    this.i.setTag(Integer.valueOf(1));
-    this.i.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("test_3d_action", false));
-    this.i.setOnCheckedChangeListener(this);
-    this.j = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362793));
-    this.j.setContentDescription("厘米秀新角色测试");
-    this.j.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("test_new_role", false));
-    this.j.setOnCheckedChangeListener(this);
-    this.k = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362796));
-    this.k.setContentDescription("厘米秀抽屉页大人物");
-    this.k.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("test_settingme_size_big", false));
-    this.k.setOnCheckedChangeListener(this);
-    this.l = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362789));
-    this.l.setContentDescription("厘米秀新人物细眉毛");
-    this.l.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("test_role_eyebrow", false));
-    this.l.setOnCheckedChangeListener(this);
-    this.m = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362791));
-    this.m.setContentDescription("厘米秀新人物光头");
-    this.m.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("test_role_no_hair", false));
-    this.m.setOnCheckedChangeListener(this);
-    this.n = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362790));
-    this.n.setContentDescription("厘米秀新人物不显示睫毛");
-    this.n.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("test_role_no_eyelash", false));
-    this.n.setOnCheckedChangeListener(this);
-    this.o = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362809));
-    this.o.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(Scene.AIO.debugConfigKey(), false));
-    this.o.setOnCheckedChangeListener(this);
-    this.p = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362810));
-    this.p.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(Scene.AIO_BACKGROUND.debugConfigKey(), false));
-    this.p.setOnCheckedChangeListener(this);
-    this.q = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362811));
-    this.q.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(Scene.DRAWER.debugConfigKey(), true));
-    this.q.setOnCheckedChangeListener(this);
-    this.r = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362812));
-    this.r.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(Scene.FRIEND_CARD.debugConfigKey(), false));
-    this.r.setOnCheckedChangeListener(this);
-    this.s = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362813));
-    this.s.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(Scene.MEME_PLAYER.debugConfigKey(), false));
-    this.s.setOnCheckedChangeListener(this);
-    this.t = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362807));
-    this.t.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("test_ce_makeup", false));
-    this.t.setOnCheckedChangeListener(this);
-    this.u = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131362808));
-    this.u.setChecked(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("test_ce_offscreen_world", true));
-    this.u.setOnCheckedChangeListener(this);
-    ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131362814)).setOnClickListener(new ApolloDebugFragment.1(this));
+    this.w = ((FormSwitchItem)this.t.findViewById(2131428479));
+    this.w.setContentDescription("厘米秀角色素材删除");
+    paramLayoutInflater = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/");
+    this.w.setChecked(paramLayoutInflater.exists() ^ true);
+    this.w.setOnCheckedChangeListener(this);
+    this.x = ((FormSwitchItem)this.t.findViewById(2131428452));
+    this.x.setContentDescription("厘米秀游戏资源包删除");
+    paramLayoutInflater = new File("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
+    this.x.setChecked(paramLayoutInflater.exists() ^ true);
+    this.x.setOnCheckedChangeListener(this);
+    this.y = ((FormSwitchItem)this.t.findViewById(2131428457));
+    this.y.setContentDescription("厘米秀游戏资源校验和更新");
+    this.y.setChecked(this.b.getBoolean("game_whitelist_verify_switch", true));
+    this.y.setOnCheckedChangeListener(this);
+    this.z = ((FormSwitchItem)this.t.findViewById(2131428492));
+    this.z.setContentDescription("厘米秀3d表情包测试");
+    this.z.setTag(Integer.valueOf(1));
+    this.z.setChecked(this.a.getBoolean("test_3d_action", false));
+    this.z.setOnCheckedChangeListener(this);
+    this.A = ((FormSwitchItem)this.t.findViewById(2131428480));
+    this.A.setContentDescription("厘米秀新角色测试");
+    this.A.setChecked(this.a.getBoolean("test_new_role", false));
+    this.A.setOnCheckedChangeListener(this);
+    this.B = ((FormSwitchItem)this.t.findViewById(2131428482));
+    this.B.setContentDescription("厘米秀抽屉页大人物");
+    this.B.setChecked(this.a.getBoolean("test_settingme_size_big", false));
+    this.B.setOnCheckedChangeListener(this);
+    this.C = ((FormSwitchItem)this.t.findViewById(2131428476));
+    this.C.setContentDescription("厘米秀新人物细眉毛");
+    this.C.setChecked(this.a.getBoolean("test_role_eyebrow", false));
+    this.C.setOnCheckedChangeListener(this);
+    this.D = ((FormSwitchItem)this.t.findViewById(2131428478));
+    this.D.setContentDescription("厘米秀新人物光头");
+    this.D.setChecked(this.a.getBoolean("test_role_no_hair", false));
+    this.D.setOnCheckedChangeListener(this);
+    this.E = ((FormSwitchItem)this.t.findViewById(2131428477));
+    this.E.setContentDescription("厘米秀新人物不显示睫毛");
+    this.E.setChecked(this.a.getBoolean("test_role_no_eyelash", false));
+    this.E.setOnCheckedChangeListener(this);
+    this.F = ((FormSwitchItem)this.t.findViewById(2131428500));
+    this.F.setChecked(this.a.getBoolean("test_ce_use_beta_res", false));
+    this.F.setOnCheckedChangeListener(this);
+    this.G = ((FormSwitchItem)this.t.findViewById(2131428494));
+    this.G.setChecked(CMShowPlatform.a.b(Scene.AIO));
+    this.G.setOnCheckedChangeListener(this);
+    this.H = ((FormSwitchItem)this.t.findViewById(2131428495));
+    this.H.setChecked(CMShowPlatform.a.b(Scene.AIO_BACKGROUND));
+    this.H.setOnCheckedChangeListener(this);
+    this.I = ((FormSwitchItem)this.t.findViewById(2131428496));
+    this.I.setChecked(CMShowPlatform.a.b(Scene.DRAWER));
+    this.I.setOnCheckedChangeListener(this);
+    this.J = ((FormSwitchItem)this.t.findViewById(2131428497));
+    this.J.setChecked(CMShowPlatform.a.b(Scene.FRIEND_CARD));
+    this.J.setOnCheckedChangeListener(this);
+    this.K = ((FormSwitchItem)this.t.findViewById(2131428498));
+    this.K.setChecked(CMShowPlatform.a.b(Scene.MEME_PLAYER));
+    this.K.setOnCheckedChangeListener(this);
+    this.L = ((FormSwitchItem)this.t.findViewById(2131428499));
+    this.L.setChecked(this.a.getBoolean("test_ce_meme_player_save_frame_callback", false));
+    this.L.setOnCheckedChangeListener(this);
+    this.M = ((FormSwitchItem)this.t.findViewById(2131428493));
+    this.M.setChecked(this.a.getBoolean("test_ce_makeup", false));
+    this.M.setOnCheckedChangeListener(this);
+    ((TextView)this.t.findViewById(2131428501)).setOnClickListener(new ApolloDebugFragment.1(this));
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton.equals(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()))
+    if (paramCompoundButton.equals(this.c.getSwitch()))
     {
       ((IApolloUtil)QRoute.api(IApolloUtil.class)).setApolloProxyEnable(paramBoolean);
       return;
     }
-    if (paramCompoundButton.equals(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()))
+    if (paramCompoundButton.equals(this.d.getSwitch()))
     {
       if (!paramBoolean) {
         return;
@@ -171,7 +176,7 @@ public class ApolloDebugFragment
       try
       {
         FileUtils.deleteDirectory("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/");
-        QQToast.a(getActivity(), HardCodeUtil.a(2131704284), 1).a();
+        QQToast.makeText(getActivity(), HardCodeUtil.a(2131902200), 1).show();
         return;
       }
       catch (Exception paramCompoundButton)
@@ -180,15 +185,15 @@ public class ApolloDebugFragment
         return;
       }
     }
-    if (paramCompoundButton.equals(this.c.a()))
+    if (paramCompoundButton.equals(this.e.getSwitch()))
     {
       if (!paramBoolean) {
         return;
       }
       try
       {
-        FileUtils.deleteDirectory(ApolloConstant.N);
-        QQToast.a(getActivity(), HardCodeUtil.a(2131704266), 1).a();
+        FileUtils.deleteDirectory(ApolloConstant.V);
+        QQToast.makeText(getActivity(), HardCodeUtil.a(2131902184), 1).show();
         return;
       }
       catch (Exception paramCompoundButton)
@@ -197,7 +202,7 @@ public class ApolloDebugFragment
         return;
       }
     }
-    if (paramCompoundButton.equals(this.d.a()))
+    if (paramCompoundButton.equals(this.f.getSwitch()))
     {
       if (!paramBoolean) {
         return;
@@ -205,7 +210,7 @@ public class ApolloDebugFragment
       try
       {
         FileUtils.deleteDirectory(ApolloCoderResource.a.a());
-        QQToast.a(getActivity(), 2131691462, 1).a();
+        QQToast.makeText(getActivity(), 2131888420, 1).show();
         return;
       }
       catch (Exception paramCompoundButton)
@@ -214,7 +219,7 @@ public class ApolloDebugFragment
         return;
       }
     }
-    if (paramCompoundButton.equals(this.e.a()))
+    if (paramCompoundButton.equals(this.g.getSwitch()))
     {
       if (!paramBoolean) {
         return;
@@ -222,7 +227,7 @@ public class ApolloDebugFragment
       try
       {
         FileUtils.deleteDirectory("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/dress/");
-        QQToast.a(getActivity(), HardCodeUtil.a(2131704271), 1).a();
+        QQToast.makeText(getActivity(), HardCodeUtil.a(2131902189), 1).show();
         return;
       }
       catch (Exception paramCompoundButton)
@@ -231,7 +236,7 @@ public class ApolloDebugFragment
         return;
       }
     }
-    if (paramCompoundButton.equals(this.f.a()))
+    if (paramCompoundButton.equals(this.w.getSwitch()))
     {
       if (!paramBoolean) {
         return;
@@ -239,7 +244,7 @@ public class ApolloDebugFragment
       try
       {
         FileUtils.deleteDirectory("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/role/");
-        QQToast.a(getActivity(), HardCodeUtil.a(2131704278), 1).a();
+        QQToast.makeText(getActivity(), HardCodeUtil.a(2131902195), 1).show();
         return;
       }
       catch (Exception paramCompoundButton)
@@ -248,7 +253,7 @@ public class ApolloDebugFragment
         return;
       }
     }
-    if (paramCompoundButton.equals(this.g.a()))
+    if (paramCompoundButton.equals(this.x.getSwitch()))
     {
       if (!paramBoolean) {
         return;
@@ -256,7 +261,7 @@ public class ApolloDebugFragment
       try
       {
         FileUtils.deleteDirectory("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-        QQToast.a(getActivity(), HardCodeUtil.a(2131704277), 1).a();
+        QQToast.makeText(getActivity(), HardCodeUtil.a(2131902194), 1).show();
         return;
       }
       catch (Exception paramCompoundButton)
@@ -265,83 +270,86 @@ public class ApolloDebugFragment
         return;
       }
     }
-    if (paramCompoundButton.equals(this.h.a()))
+    if (paramCompoundButton.equals(this.y.getSwitch()))
     {
-      this.jdField_b_of_type_AndroidContentSharedPreferences.edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
+      this.b.edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.i.a()))
+    if (paramCompoundButton.equals(this.z.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("test_3d_action", paramBoolean).commit();
+      this.a.edit().putBoolean("test_3d_action", paramBoolean).commit();
       FileUtils.deleteDirectory("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/");
       return;
     }
-    if (paramCompoundButton.equals(this.j.a()))
+    if (paramCompoundButton.equals(this.A.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("test_new_role", paramBoolean).commit();
+      this.a.edit().putBoolean("test_new_role", paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.k.a()))
+    if (paramCompoundButton.equals(this.B.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("test_settingme_size_big", paramBoolean).commit();
+      this.a.edit().putBoolean("test_settingme_size_big", paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.l.a()))
+    if (paramCompoundButton.equals(this.C.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("test_role_eyebrow", paramBoolean).commit();
+      this.a.edit().putBoolean("test_role_eyebrow", paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.m.a()))
+    if (paramCompoundButton.equals(this.D.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("test_role_no_hair", paramBoolean).commit();
+      this.a.edit().putBoolean("test_role_no_hair", paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.n.a()))
+    if (paramCompoundButton.equals(this.E.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("test_role_no_eyelash", paramBoolean).commit();
+      this.a.edit().putBoolean("test_role_no_eyelash", paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.o.a()))
+    if (paramCompoundButton.equals(this.F.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(Scene.AIO.debugConfigKey(), paramBoolean).commit();
+      this.a.edit().putBoolean("test_ce_use_beta_res", paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.p.a()))
+    if (paramCompoundButton.equals(this.G.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(Scene.AIO_BACKGROUND.debugConfigKey(), paramBoolean).commit();
+      this.a.edit().putBoolean(Scene.AIO.debugConfigKey(), paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.r.a()))
+    if (paramCompoundButton.equals(this.H.getSwitch()))
     {
-      a();
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(Scene.FRIEND_CARD.debugConfigKey(), paramBoolean).commit();
+      this.a.edit().putBoolean(Scene.AIO_BACKGROUND.debugConfigKey(), paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.q.a()))
+    if (paramCompoundButton.equals(this.J.getSwitch()))
     {
-      a();
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(Scene.DRAWER.debugConfigKey(), paramBoolean).commit();
+      this.a.edit().putBoolean(Scene.FRIEND_CARD.debugConfigKey(), paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.s.a()))
+    if (paramCompoundButton.equals(this.I.getSwitch()))
     {
-      a();
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(Scene.MEME_PLAYER.debugConfigKey(), paramBoolean).commit();
+      this.a.edit().putBoolean(Scene.DRAWER.debugConfigKey(), paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.t.a()))
+    if (paramCompoundButton.equals(this.K.getSwitch()))
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("test_ce_makeup", paramBoolean).commit();
+      this.a.edit().putBoolean(Scene.MEME_PLAYER.debugConfigKey(), paramBoolean).commit();
       return;
     }
-    if (paramCompoundButton.equals(this.u.a())) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("test_ce_offscreen_world", paramBoolean).commit();
+    if (paramCompoundButton.equals(this.L.getSwitch()))
+    {
+      b();
+      this.a.edit().putBoolean("test_ce_meme_player_save_frame_callback", paramBoolean).commit();
+      return;
+    }
+    if (paramCompoundButton.equals(this.M.getSwitch())) {
+      this.a.edit().putBoolean("test_ce_makeup", paramBoolean).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.ApolloDebugFragment
  * JD-Core Version:    0.7.0.1
  */

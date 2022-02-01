@@ -9,45 +9,45 @@ import android.widget.TextView;
 
 public class BannerVideoInfoWidget3$BannerViewHolder
 {
-  public int a;
-  public Drawable a;
   public View a;
-  public ImageView a;
-  public TextView a;
   public ImageView b;
-  public TextView b;
   public TextView c;
+  public TextView d;
+  public ImageView e;
+  public TextView f;
+  public int g;
+  public Drawable h;
   
   public BannerVideoInfoWidget3$BannerViewHolder(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370105);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370104));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370094));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370090));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370103));
-    this.c = ((TextView)paramView.findViewById(2131361961));
-    this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131299066);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramView.getContext().getResources().getDrawable(2130839613);
+    this.a = paramView.findViewById(2131437267);
+    this.b = ((ImageView)paramView.findViewById(2131437266));
+    this.c = ((TextView)paramView.findViewById(2131437256));
+    this.d = ((TextView)paramView.findViewById(2131437252));
+    this.e = ((ImageView)paramView.findViewById(2131437265));
+    this.f = ((TextView)paramView.findViewById(2131427516));
+    this.g = paramView.getContext().getResources().getDimensionPixelOffset(2131299794);
+    this.h = paramView.getContext().getResources().getDrawable(2130840079);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839609);
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    localView.setPadding(localView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop(), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839613);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(null, 1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.setBackgroundResource(2130840074);
+    View localView = this.a;
+    localView.setPadding(localView.getPaddingLeft(), this.a.getPaddingTop(), this.a.getPaddingRight(), this.a.getPaddingBottom());
+    this.b.setVisibility(8);
+    this.b.setImageResource(2130840079);
+    this.d.setVisibility(8);
+    this.d.setText("");
+    this.d.setTypeface(null, 1);
+    this.d.setContentDescription("");
+    this.d.setTextColor(-16777216);
     this.c.setVisibility(8);
+    this.c.setText("");
+    this.c.setContentDescription("");
+    this.c.setTextColor(-16777216);
+    this.e.setVisibility(8);
+    this.f.setVisibility(8);
   }
 }
 

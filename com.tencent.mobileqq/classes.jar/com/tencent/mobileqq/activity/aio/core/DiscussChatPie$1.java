@@ -13,13 +13,13 @@ class DiscussChatPie$1
   
   public void onClick(View paramView)
   {
-    VideoItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, false, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "");
+    VideoItemBuilder.a(this.a.d, this.a.aX(), this.a.ah, 1, false, this.a.d.getCurrentUin(), "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.DiscussChatPie.1
  * JD-Core Version:    0.7.0.1
  */

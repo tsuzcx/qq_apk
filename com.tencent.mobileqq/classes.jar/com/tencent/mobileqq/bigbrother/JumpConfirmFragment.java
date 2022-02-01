@@ -19,10 +19,10 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCol
 public class JumpConfirmFragment
   extends QPublicBaseFragment
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private String a;
+  private int b;
+  private String c;
+  private int d;
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
@@ -34,13 +34,13 @@ public class JumpConfirmFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     Object localObject = getArguments();
-    this.jdField_a_of_type_JavaLangString = ((Bundle)localObject).getString("big_brother_source_key");
-    this.jdField_a_of_type_Int = ((Bundle)localObject).getInt("key_id");
-    this.jdField_b_of_type_JavaLangString = ((Bundle)localObject).getString("key_process_id");
-    this.jdField_b_of_type_Int = ((Bundle)localObject).getInt("key_callback_id", 0);
+    this.a = ((Bundle)localObject).getString("big_brother_source_key");
+    this.b = ((Bundle)localObject).getInt("key_id");
+    this.c = ((Bundle)localObject).getString("key_process_id");
+    this.d = ((Bundle)localObject).getInt("key_callback_id", 0);
     try
     {
-      localObject = DialogUtil.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690728), getString(2131720390), new JumpConfirmFragment.1(this), new JumpConfirmFragment.2(this));
+      localObject = DialogUtil.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131887648), getString(2131918066), new JumpConfirmFragment.1(this), new JumpConfirmFragment.2(this));
       ((QQCustomDialog)localObject).setOnDismissListener(new JumpConfirmFragment.3(this));
       getQBaseActivity().setJumpDialog((Dialog)localObject);
       ((QQCustomDialog)localObject).show();
@@ -48,7 +48,7 @@ public class JumpConfirmFragment
     catch (Throwable localThrowable)
     {
       QLog.e("JumpConfirmFragment", 1, localThrowable, new Object[0]);
-      JefsClass.getInstance().a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int);
+      JefsClass.getInstance().a(this.b, this.c, this.d);
       getActivity().finish();
     }
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
@@ -58,7 +58,7 @@ public class JumpConfirmFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.JumpConfirmFragment
  * JD-Core Version:    0.7.0.1
  */

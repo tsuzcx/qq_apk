@@ -10,12 +10,12 @@ class SecSpyFileManager$1
   
   public void run()
   {
-    UnifiedDebugManager.a(this.this$0.a.getApplication());
+    UnifiedDebugManager.a(this.this$0.d.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.secspy.SecSpyFileManager.1
  * JD-Core Version:    0.7.0.1
  */

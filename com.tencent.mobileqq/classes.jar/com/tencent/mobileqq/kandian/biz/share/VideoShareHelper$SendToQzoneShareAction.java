@@ -38,7 +38,7 @@ class VideoShareHelper$SendToQzoneShareAction
     paramString.add(paramAbsBaseArticleInfo);
     paramActionSheetItem.putStringArrayList("image_url", paramString);
     paramActionSheetItem.putLong("req_share_id", 0L);
-    QZoneShareManager.jumpToQzoneShare(VideoShareHelper.a(this.a), VideoShareHelper.a(this.a), paramActionSheetItem, null, 19202);
+    QZoneShareManager.jumpToQzoneShare(VideoShareHelper.i(this.a), VideoShareHelper.f(this.a), paramActionSheetItem, null, 19202);
   }
   
   public int b()
@@ -53,7 +53,7 @@ class VideoShareHelper$SendToQzoneShareAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.SendToQzoneShareAction
  * JD-Core Version:    0.7.0.1
  */

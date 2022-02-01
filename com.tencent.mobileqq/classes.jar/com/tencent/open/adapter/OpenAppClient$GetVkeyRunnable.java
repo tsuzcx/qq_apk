@@ -14,70 +14,70 @@ import mqq.manager.TicketManager;
 public class OpenAppClient$GetVkeyRunnable
   implements Runnable
 {
-  protected int a;
   protected Activity a;
-  protected String a;
-  protected AppRuntime a;
+  protected int b;
+  protected String c;
+  protected AppRuntime d;
   
   public OpenAppClient$GetVkeyRunnable(Activity paramActivity, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    paramActivity = this.jdField_a_of_type_AndroidAppActivity;
+    this.a = paramActivity;
+    paramActivity = this.a;
     if ((paramActivity instanceof BaseActivity)) {
-      this.jdField_a_of_type_MqqAppAppRuntime = ((BaseActivity)paramActivity).getAppRuntime();
+      this.d = ((BaseActivity)paramActivity).getAppRuntime();
     }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt;
+    this.c = paramString;
   }
   
   public OpenAppClient$GetVkeyRunnable(AppRuntime paramAppRuntime, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramAppRuntime;
+    this.b = paramInt;
+    this.c = paramString;
   }
   
   public void run()
   {
-    if (!APNUtil.d(CommonDataAdapter.a().a())) {
+    if (!APNUtil.k(CommonDataAdapter.a().b())) {
       return;
     }
     String str = null;
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+    Object localObject = this.d;
     if (localObject == null) {
       return;
     }
-    localObject = ((TicketManager)((AppRuntime)localObject).getManager(2)).getSkey(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    localObject = ((TicketManager)((AppRuntime)localObject).getManager(2)).getSkey(this.d.getAccount());
+    AppRuntime localAppRuntime = this.d;
     if ((localAppRuntime instanceof QQAppInterface)) {
       str = ((QQAppInterface)localAppRuntime).getCurrentAccountUin();
     } else if ((localAppRuntime instanceof BrowserAppInterface)) {
       str = ((BrowserAppInterface)localAppRuntime).getAccount();
     }
-    if ((str != null) && (!str.equals(String.valueOf(CommonDataAdapter.a().a())))) {
+    if ((str != null) && (!str.equals(String.valueOf(CommonDataAdapter.a().c())))) {
       CommonDataAdapter.a().a(Long.valueOf(str).longValue());
     }
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      LogUtility.b(OpenAppClient.jdField_a_of_type_JavaLangString, "Get skey success");
+      LogUtility.b(OpenAppClient.a, "Get skey success");
       CommonDataAdapter.a().a((String)localObject);
     }
-    OpenAppClient.jdField_a_of_type_Boolean = false;
-    int i = this.jdField_a_of_type_Int;
+    OpenAppClient.d = false;
+    int i = this.b;
     if (i != 1)
     {
       if (i != 2) {
         return;
       }
-      AppClient.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str, (String)localObject);
+      AppClient.b(this.a, this.c, str, (String)localObject);
       return;
     }
-    AppClient.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str, (String)localObject);
+    AppClient.a(this.a, this.c, str, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.adapter.OpenAppClient.GetVkeyRunnable
  * JD-Core Version:    0.7.0.1
  */

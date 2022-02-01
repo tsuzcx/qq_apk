@@ -18,7 +18,7 @@ class SmartDeviceIPCHost$5
       return null;
     }
     paramBundle.setClassLoader(getClass().getClassLoader());
-    paramBundle = this.a.b(paramBundle);
+    paramBundle = this.a.c(paramBundle);
     if (paramBundle != null) {
       paramBundle.setClassLoader(getClass().getClassLoader());
     }
@@ -30,7 +30,7 @@ class SmartDeviceIPCHost$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.ipc.SmartDeviceIPCHost.5
  * JD-Core Version:    0.7.0.1
  */

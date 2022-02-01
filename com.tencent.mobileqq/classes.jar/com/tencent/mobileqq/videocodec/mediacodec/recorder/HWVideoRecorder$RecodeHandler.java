@@ -15,13 +15,13 @@ public class HWVideoRecorder$RecodeHandler
   public HWVideoRecorder$RecodeHandler(HWVideoRecorder paramHWVideoRecorder1, Looper paramLooper, HWVideoRecorder paramHWVideoRecorder2)
   {
     super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHWVideoRecorder2);
+    this.a = new WeakReference(paramHWVideoRecorder2);
   }
   
   public void handleMessage(Message paramMessage)
   {
     int i = paramMessage.what;
-    HWVideoRecorder localHWVideoRecorder = (HWVideoRecorder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    HWVideoRecorder localHWVideoRecorder = (HWVideoRecorder)this.a.get();
     if (localHWVideoRecorder == null)
     {
       if (QLog.isColorLevel()) {
@@ -37,8 +37,8 @@ public class HWVideoRecorder$RecodeHandler
         {
           if (i == 3)
           {
-            if (HWVideoRecorder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder) != null) {
-              HWVideoRecorder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder).a();
+            if (HWVideoRecorder.d(this.b) != null) {
+              HWVideoRecorder.d(this.b).a();
             }
           }
           else
@@ -64,7 +64,7 @@ public class HWVideoRecorder$RecodeHandler
           throw new RuntimeException("bundle == null");
         }
       }
-      else if ((!HWVideoRecorder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder)) && (HWVideoRecorder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder) != null) && (HWVideoRecorder.a(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecRecorderHWVideoRecorder).a))
+      else if ((!HWVideoRecorder.a(this.b)) && (HWVideoRecorder.b(this.b) != null) && (HWVideoRecorder.b(this.b).i))
       {
         sendEmptyMessageDelayed(1, 100L);
         if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
@@ -73,7 +73,7 @@ public class HWVideoRecorder$RecodeHandler
       }
       else
       {
-        HWVideoRecorder.a(localHWVideoRecorder);
+        HWVideoRecorder.c(localHWVideoRecorder);
       }
     }
     else
@@ -90,7 +90,7 @@ public class HWVideoRecorder$RecodeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.recorder.HWVideoRecorder.RecodeHandler
  * JD-Core Version:    0.7.0.1
  */

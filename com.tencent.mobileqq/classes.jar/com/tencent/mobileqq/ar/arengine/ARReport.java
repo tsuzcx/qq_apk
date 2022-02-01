@@ -9,29 +9,15 @@ import java.io.FileFilter;
 
 public class ARReport
 {
-  private static ARReport jdField_a_of_type_ComTencentMobileqqArArengineARReport;
-  private static final FileFilter jdField_a_of_type_JavaIoFileFilter = new ARReport.17();
-  
-  public static int a()
-  {
-    if (Build.VERSION.SDK_INT <= 10) {
-      return 1;
-    }
-    try
-    {
-      int i = new File("/sys/devices/system/cpu/").listFiles(jdField_a_of_type_JavaIoFileFilter).length;
-      return i;
-    }
-    catch (SecurityException|NullPointerException localSecurityException) {}
-    return -1;
-  }
+  private static ARReport a;
+  private static final FileFilter b = new ARReport.17();
   
   public static ARReport a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqArArengineARReport == null) {
-      jdField_a_of_type_ComTencentMobileqqArArengineARReport = new ARReport();
+    if (a == null) {
+      a = new ARReport();
     }
-    return jdField_a_of_type_ComTencentMobileqqArArengineARReport;
+    return a;
   }
   
   public static String a(Context paramContext)
@@ -42,20 +28,29 @@ public class ARReport
     return paramContext.toString();
   }
   
-  private boolean a(long paramLong)
+  public static int b()
   {
-    return (paramLong >= 0L) && (paramLong <= 600000L);
+    if (Build.VERSION.SDK_INT <= 10) {
+      return 1;
+    }
+    try
+    {
+      int i = new File("/sys/devices/system/cpu/").listFiles(b).length;
+      return i;
+    }
+    catch (SecurityException|NullPointerException localSecurityException) {}
+    return -1;
   }
   
-  public String a()
+  private boolean d(long paramLong)
   {
-    return "un";
+    return (paramLong >= 0L) && (paramLong <= 600000L);
   }
   
   public void a(long paramLong)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report  WebView mTotal:  %s ", new Object[] { Long.valueOf(paramLong) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.5(this, paramLong), 5, null, false);
@@ -64,7 +59,7 @@ public class ARReport
   public void a(long paramLong, int paramInt)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report   AREngineinitAR mTotal:  %s  result:  %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.16(this, paramLong, paramInt), 5, null, false);
@@ -88,7 +83,7 @@ public class ARReport
   public void a(long paramLong, boolean paramBoolean)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report  ARLocalControlint mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.7(this, paramLong, paramBoolean), 5, null, false);
@@ -103,7 +98,7 @@ public class ARReport
   public void b(long paramLong)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report  ARMarkerResourceManagerint mTotal:  %s ", new Object[] { Long.valueOf(paramLong) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.6(this, paramLong), 5, null, false);
@@ -112,16 +107,21 @@ public class ARReport
   public void b(long paramLong, boolean paramBoolean)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report  ARCloudControlSo mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.8(this, paramLong, paramBoolean), 5, null, false);
   }
   
+  public String c()
+  {
+    return "un";
+  }
+  
   public void c(long paramLong)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report   SensorTrackManagerInit mTotal:  %s ", new Object[] { Long.valueOf(paramLong) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.14(this, paramLong), 5, null, false);
@@ -130,7 +130,7 @@ public class ARReport
   public void c(long paramLong, boolean paramBoolean)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report  ARCloudControlinit mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.9(this, paramLong, paramBoolean), 5, null, false);
@@ -139,7 +139,7 @@ public class ARReport
   public void d(long paramLong, boolean paramBoolean)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report   ARLocalMarkerRecoglinit mTotal:  %s result:   %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.10(this, paramLong, paramBoolean), 5, null, false);
@@ -148,7 +148,7 @@ public class ARReport
   public void e(long paramLong, boolean paramBoolean)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report   ARLocalMarkerRecoglSo mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.11(this, paramLong, paramBoolean), 5, null, false);
@@ -157,7 +157,7 @@ public class ARReport
   public void f(long paramLong, boolean paramBoolean)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report   ARNativeBridgeSo mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.12(this, paramLong, paramBoolean), 5, null, false);
@@ -166,7 +166,7 @@ public class ARReport
   public void g(long paramLong, boolean paramBoolean)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report   ARLocalFaceRecogInit mTotal:  %s result:  %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-    if (!a(paramLong)) {
+    if (!d(paramLong)) {
       return;
     }
     ThreadManager.post(new ARReport.13(this, paramLong, paramBoolean), 5, null, false);
@@ -174,7 +174,7 @@ public class ARReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport
  * JD-Core Version:    0.7.0.1
  */

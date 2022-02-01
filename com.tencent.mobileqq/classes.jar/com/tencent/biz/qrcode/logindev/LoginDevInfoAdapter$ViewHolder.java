@@ -7,21 +7,21 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class LoginDevInfoAdapter$ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView a;
+  ImageView b;
   ImageView c;
+  TextView d;
+  TextView e;
   
   public LoginDevInfoAdapter$ViewHolder(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365596));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366781));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131706412));
-    this.c = ((ImageView)paramView.findViewById(2131364707));
-    this.c.setContentDescription(HardCodeUtil.a(2131706411));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370629));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372963));
+    this.a = ((ImageView)paramView.findViewById(2131431823));
+    this.b = ((ImageView)paramView.findViewById(2131433103));
+    this.b.setContentDescription(HardCodeUtil.a(2131904271));
+    this.c = ((ImageView)paramView.findViewById(2131430811));
+    this.c.setContentDescription(HardCodeUtil.a(2131904270));
+    this.d = ((TextView)paramView.findViewById(2131437904));
+    this.e = ((TextView)paramView.findViewById(2131440528));
   }
 }
 

@@ -14,21 +14,21 @@ class FMLocalFileActivity$1
   
   protected Integer a(Void... paramVarArgs)
   {
-    return Integer.valueOf(FileCategoryUtil.b(this.a));
+    return Integer.valueOf(FileCategoryUtil.f(this.a));
   }
   
   protected void a(Integer paramInteger)
   {
     super.onPostExecute(paramInteger);
     this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.G.iterator();
     while (localIterator.hasNext())
     {
       FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
-      if (localFileCategoryEntity.e == 4)
+      if (localFileCategoryEntity.g == 4)
       {
-        localFileCategoryEntity.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+        localFileCategoryEntity.e = paramInteger.intValue();
+        this.a.I.notifyDataSetChanged();
       }
     }
   }
@@ -41,7 +41,7 @@ class FMLocalFileActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity.1
  * JD-Core Version:    0.7.0.1
  */

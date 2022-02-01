@@ -15,12 +15,12 @@ public class DownloadInterface$JsCheckUpdateCallback
   
   public DownloadInterface$JsCheckUpdateCallback(DownloadInterface paramDownloadInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(String paramString)
   {
-    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
+    if (!this.b.hasRight()) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -29,15 +29,15 @@ public class DownloadInterface$JsCheckUpdateCallback
     LogUtility.e("DownloadInterface", localStringBuilder.toString());
     paramString = new StringBuilder();
     paramString.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"");
-    paramString.append(this.jdField_a_of_type_JavaLangString);
+    paramString.append(this.a);
     paramString.append("\",\"r\":\"-1\"});}void(0);");
     paramString = paramString.toString();
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramString);
+    this.b.jsCallBack(paramString);
   }
   
   public void a(ArrayList<ApkUpdateDetail> paramArrayList)
   {
-    if (!this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.hasRight()) {
+    if (!this.b.hasRight()) {
       return;
     }
     Object localObject = new StringBuilder();
@@ -65,12 +65,12 @@ public class DownloadInterface$JsCheckUpdateCallback
         ((JSONArray)localObject).put(localJSONObject2);
         i += 1;
       }
-      localJSONObject1.put("guid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject1.put("guid", this.a);
       localJSONObject1.put("content", ((JSONArray)localObject).toString());
       localJSONObject1.put("resultCode", "0");
       paramArrayList = new StringBuilder();
       paramArrayList.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{'guid':'");
-      paramArrayList.append(this.jdField_a_of_type_JavaLangString);
+      paramArrayList.append(this.a);
       paramArrayList.append("','r':'0','data':'");
       paramArrayList.append(((JSONArray)localObject).toString());
       paramArrayList.append("'});}void(0);");
@@ -83,24 +83,24 @@ public class DownloadInterface$JsCheckUpdateCallback
     }
     paramArrayList = new StringBuilder();
     paramArrayList.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.checkUpdate',{\"guid\":\"");
-    paramArrayList.append(this.jdField_a_of_type_JavaLangString);
+    paramArrayList.append(this.a);
     paramArrayList.append("\",\"r\":\"-1\"});}void(0);");
     paramArrayList = paramArrayList.toString();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(">>checkUpdate jsUrl:");
     ((StringBuilder)localObject).append(paramArrayList);
     LogUtility.b("DownloadInterface", ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramArrayList);
+    this.b.jsCallBack(paramArrayList);
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.DownloadInterface.JsCheckUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

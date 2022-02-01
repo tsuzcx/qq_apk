@@ -10,13 +10,13 @@ class ReadInJoyChannelViewPagerController$7
   
   public void run()
   {
-    ReadInJoyChannelViewPagerController.a(this.this$0, this.jdField_a_of_type_Int);
-    ReadInJoyChannelViewPagerController.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
+    ReadInJoyChannelViewPagerController.c(this.this$0, this.a);
+    ReadInJoyChannelViewPagerController.a(this.this$0, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPagerController.7
  * JD-Core Version:    0.7.0.1
  */

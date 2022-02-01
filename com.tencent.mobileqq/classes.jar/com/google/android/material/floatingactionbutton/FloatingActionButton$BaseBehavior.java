@@ -19,26 +19,26 @@ import java.util.List;
 public class FloatingActionButton$BaseBehavior<T extends FloatingActionButton>
   extends CoordinatorLayout.Behavior<T>
 {
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private FloatingActionButton.OnVisibilityChangedListener jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton$OnVisibilityChangedListener;
-  private boolean jdField_a_of_type_Boolean;
+  private Rect a;
+  private FloatingActionButton.OnVisibilityChangedListener b;
+  private boolean c;
   
   public FloatingActionButton$BaseBehavior()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
   }
   
   public FloatingActionButton$BaseBehavior(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.A);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(R.styleable.bV, true);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cV);
+    this.c = paramContext.getBoolean(R.styleable.cW, true);
     paramContext.recycle();
   }
   
   private void a(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull FloatingActionButton paramFloatingActionButton)
   {
-    Rect localRect = paramFloatingActionButton.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect = paramFloatingActionButton.b;
     if ((localRect != null) && (localRect.centerX() > 0) && (localRect.centerY() > 0))
     {
       CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramFloatingActionButton.getLayoutParams();
@@ -79,13 +79,13 @@ public class FloatingActionButton$BaseBehavior<T extends FloatingActionButton>
   private boolean a(@NonNull View paramView, @NonNull FloatingActionButton paramFloatingActionButton)
   {
     CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramFloatingActionButton.getLayoutParams();
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.c) {
       return false;
     }
     if (localLayoutParams.getAnchorId() != paramView.getId()) {
       return false;
     }
-    return paramFloatingActionButton.c() == 0;
+    return paramFloatingActionButton.getUserSetVisibility() == 0;
   }
   
   private boolean a(CoordinatorLayout paramCoordinatorLayout, @NonNull AppBarLayout paramAppBarLayout, @NonNull FloatingActionButton paramFloatingActionButton)
@@ -93,15 +93,15 @@ public class FloatingActionButton$BaseBehavior<T extends FloatingActionButton>
     if (!a(paramAppBarLayout, paramFloatingActionButton)) {
       return false;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (this.a == null) {
+      this.a = new Rect();
     }
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect = this.a;
     DescendantOffsetUtils.b(paramCoordinatorLayout, paramAppBarLayout, localRect);
-    if (localRect.bottom <= paramAppBarLayout.e()) {
-      paramFloatingActionButton.b(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton$OnVisibilityChangedListener, false);
+    if (localRect.bottom <= paramAppBarLayout.getMinimumHeightForVisibleOverlappingContent()) {
+      paramFloatingActionButton.b(this.b, false);
     } else {
-      paramFloatingActionButton.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton$OnVisibilityChangedListener, false);
+      paramFloatingActionButton.a(this.b, false);
     }
     return true;
   }
@@ -113,9 +113,9 @@ public class FloatingActionButton$BaseBehavior<T extends FloatingActionButton>
     }
     CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramFloatingActionButton.getLayoutParams();
     if (paramView.getTop() < paramFloatingActionButton.getHeight() / 2 + localLayoutParams.topMargin) {
-      paramFloatingActionButton.b(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton$OnVisibilityChangedListener, false);
+      paramFloatingActionButton.b(this.b, false);
     } else {
-      paramFloatingActionButton.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton$OnVisibilityChangedListener, false);
+      paramFloatingActionButton.a(this.b, false);
     }
     return true;
   }
@@ -140,7 +140,7 @@ public class FloatingActionButton$BaseBehavior<T extends FloatingActionButton>
   
   public boolean a(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull FloatingActionButton paramFloatingActionButton, @NonNull Rect paramRect)
   {
-    paramCoordinatorLayout = paramFloatingActionButton.jdField_a_of_type_AndroidGraphicsRect;
+    paramCoordinatorLayout = paramFloatingActionButton.b;
     paramRect.set(paramFloatingActionButton.getLeft() + paramCoordinatorLayout.left, paramFloatingActionButton.getTop() + paramCoordinatorLayout.top, paramFloatingActionButton.getRight() - paramCoordinatorLayout.right, paramFloatingActionButton.getBottom() - paramCoordinatorLayout.bottom);
     return true;
   }
@@ -164,7 +164,7 @@ public class FloatingActionButton$BaseBehavior<T extends FloatingActionButton>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.FloatingActionButton.BaseBehavior
  * JD-Core Version:    0.7.0.1
  */

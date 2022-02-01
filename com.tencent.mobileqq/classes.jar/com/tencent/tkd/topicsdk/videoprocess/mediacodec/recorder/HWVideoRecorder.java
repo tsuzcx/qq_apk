@@ -14,25 +14,25 @@ import org.jetbrains.annotations.NotNull;
 @TargetApi(18)
 public class HWVideoRecorder
 {
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("recode_thread");
-  private EncodeConfig jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig;
-  private EncodeInputSurface jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeInputSurface;
-  private HWVideoEncoder jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderHWVideoEncoder;
-  private HWEncodeListener jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
-  private HWEncodeNextListener jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeNextListener;
-  private HWVideoRecorder.RecodeHandler jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder$RecodeHandler;
-  private HWVideoRecorderBuffer jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorderBuffer;
-  private String jdField_a_of_type_JavaLangString;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private HWVideoEncoder a;
+  private EncodeInputSurface b;
+  private HWVideoRecorder.RecodeHandler c;
+  private HandlerThread d = new HandlerThread("recode_thread");
+  private HWEncodeListener e;
+  private HWEncodeNextListener f;
+  private String g;
+  private volatile boolean h = false;
+  private EncodeConfig i;
+  private boolean j = false;
+  private HWVideoRecorderBuffer k;
   
   public HWVideoRecorder()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder$RecodeHandler = a(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderHWVideoEncoder = new HWVideoEncoder();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeInputSurface = new EncodeInputSurface();
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorderBuffer = new HWVideoRecorderBuffer();
+    this.d.start();
+    this.c = a(this.d.getLooper());
+    this.a = new HWVideoEncoder();
+    this.b = new EncodeInputSurface();
+    this.k = new HWVideoRecorderBuffer();
   }
   
   private HWVideoRecorder.RecodeHandler a(Looper paramLooper)
@@ -42,24 +42,24 @@ public class HWVideoRecorder
   
   private void a(@NotNull HWVideoRecorder.RecordingObj paramRecordingObj)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener = paramRecordingObj.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeNextListener = paramRecordingObj.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeNextListener;
-    paramRecordingObj = paramRecordingObj.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig;
+    this.e = paramRecordingObj.a;
+    this.f = paramRecordingObj.b;
+    paramRecordingObj = paramRecordingObj.c;
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("handleStartRecording EGLContext = ");
     localStringBuilder1.append(paramRecordingObj.a());
     TLog.c("HWVideoRecorder", localStringBuilder1.toString());
-    if (this.jdField_a_of_type_Boolean) {
-      b();
+    if (this.h) {
+      c();
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig = paramRecordingObj;
-    this.jdField_a_of_type_JavaLangString = paramRecordingObj.jdField_a_of_type_JavaLangString;
+    this.h = true;
+    this.i = paramRecordingObj;
+    this.g = paramRecordingObj.a;
     try
     {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderHWVideoEncoder.a(paramRecordingObj);
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeInputSurface.a(paramRecordingObj, this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderHWVideoEncoder.a());
-      paramRecordingObj = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
+      this.a.a(paramRecordingObj);
+      this.b.a(paramRecordingObj, this.a.d());
+      paramRecordingObj = this.e;
       if (paramRecordingObj != null) {
         paramRecordingObj.e();
       }
@@ -72,49 +72,12 @@ public class HWVideoRecorder
       localStringBuilder2.append("handleStartRecording: exception at start. encodeConfig = ");
       localStringBuilder2.append(paramRecordingObj);
       TLog.a("HWVideoRecorder", localStringBuilder2.toString(), localThrowable);
-      paramRecordingObj = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
+      paramRecordingObj = this.e;
       if (paramRecordingObj != null) {
         paramRecordingObj.b(1, localThrowable);
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
     }
-  }
-  
-  private void b()
-  {
-    TLog.c("HWVideoRecorder", "handleStopRecording");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      try
-      {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderHWVideoEncoder.b();
-        TLog.c("HWVideoRecorder", "handleStopRecording complete");
-        if ((this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener != null) && (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper == null))
-        {
-          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener = null;
-        }
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeInputSurface.a();
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeNextListener = null;
-        return;
-      }
-      catch (Exception localException)
-      {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("handleStopRecording: exception. config = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig);
-        TLog.d("HWVideoRecorder", ((StringBuilder)localObject).toString());
-        localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
-        if (localObject != null) {
-          ((HWEncodeListener)localObject).b(2, localException);
-        }
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderHWVideoEncoder.c();
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeInputSurface.a();
-        return;
-      }
-    }
-    TLog.c("HWVideoRecorder", "handleStopRecording: is not recording.");
   }
   
   private void b(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
@@ -125,29 +88,29 @@ public class HWVideoRecorder
     localStringBuilder.append(" ; textureId = ");
     localStringBuilder.append(paramInt2);
     localStringBuilder.append(" ; EGLContext = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig.a());
+    localStringBuilder.append(this.i.a());
     TLog.b("HWVideoRecorder", localStringBuilder.toString());
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.h)
     {
       paramArrayOfFloat1 = new StringBuilder();
       paramArrayOfFloat1.append("handleFrameAvailable mIsRecording = ");
-      paramArrayOfFloat1.append(this.jdField_a_of_type_Boolean);
+      paramArrayOfFloat1.append(this.h);
       TLog.b("HWVideoRecorder", paramArrayOfFloat1.toString());
       return;
     }
     try
     {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderHWVideoEncoder.a();
-      if (this.b) {
-        paramInt2 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorderBuffer.a();
+      this.a.a();
+      if (this.j) {
+        paramInt2 = this.k.b();
       }
       if (paramInt2 != -1)
       {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeInputSurface.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
-        if (this.b) {
-          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorderBuffer.a(false, 1);
+        this.b.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
+        if (this.j) {
+          this.k.a(false, 1);
         }
-        paramArrayOfFloat1 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
+        paramArrayOfFloat1 = this.e;
         if (paramArrayOfFloat1 != null) {
           paramArrayOfFloat1.f();
         }
@@ -165,26 +128,63 @@ public class HWVideoRecorder
     {
       paramArrayOfFloat2 = new StringBuilder();
       paramArrayOfFloat2.append("frameAvailable: exception. config = ");
-      paramArrayOfFloat2.append(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeConfig);
+      paramArrayOfFloat2.append(this.i);
       TLog.b("HWVideoRecorder", paramArrayOfFloat2.toString(), paramArrayOfFloat1);
-      paramArrayOfFloat2 = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWEncodeListener;
+      paramArrayOfFloat2 = this.e;
       if (paramArrayOfFloat2 != null) {
         paramArrayOfFloat2.b(2, paramArrayOfFloat1);
       }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderHWVideoEncoder.c();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEncodeInputSurface.a();
-      this.jdField_a_of_type_Boolean = false;
+      this.a.c();
+      this.b.a();
+      this.h = false;
     }
+  }
+  
+  private void c()
+  {
+    TLog.c("HWVideoRecorder", "handleStopRecording");
+    if (this.h)
+    {
+      this.h = false;
+      try
+      {
+        this.a.b();
+        TLog.c("HWVideoRecorder", "handleStopRecording complete");
+        if ((this.e != null) && (this.i.f == null))
+        {
+          this.e.a(this.g);
+          this.e = null;
+        }
+        this.b.a();
+        this.f = null;
+        return;
+      }
+      catch (Exception localException)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleStopRecording: exception. config = ");
+        ((StringBuilder)localObject).append(this.i);
+        TLog.d("HWVideoRecorder", ((StringBuilder)localObject).toString());
+        localObject = this.e;
+        if (localObject != null) {
+          ((HWEncodeListener)localObject).b(2, localException);
+        }
+        this.a.c();
+        this.b.a();
+        return;
+      }
+    }
+    TLog.c("HWVideoRecorder", "handleStopRecording: is not recording.");
   }
   
   public void a()
   {
-    if (this.b) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorderBuffer.a();
+    if (this.j) {
+      this.k.a();
     }
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder$RecodeHandler.sendMessage(localMessage);
+    this.c.sendMessage(localMessage);
   }
   
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
@@ -198,32 +198,32 @@ public class HWVideoRecorder
     ((StringBuilder)localObject).append(EGL14.eglGetCurrentContext());
     TLog.b("HWVideoRecorder", ((StringBuilder)localObject).toString());
     boolean bool;
-    if (this.b)
+    if (this.j)
     {
-      bool = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorderBuffer.a(paramInt2);
+      bool = this.k.a(paramInt2);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder$RecodeHandler.removeMessages(2);
+      this.c.removeMessages(2);
       bool = false;
     }
-    if ((!this.b) || (bool))
+    if ((!this.j) || (bool))
     {
       localObject = Message.obtain();
       ((Message)localObject).what = 2;
       ((Message)localObject).obj = new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayOfFloat1, paramArrayOfFloat2, Long.valueOf(paramLong) };
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder$RecodeHandler.sendMessage((Message)localObject);
+      this.c.sendMessage((Message)localObject);
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean ^ true;
+    return this.h ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.recorder.HWVideoRecorder
  * JD-Core Version:    0.7.0.1
  */

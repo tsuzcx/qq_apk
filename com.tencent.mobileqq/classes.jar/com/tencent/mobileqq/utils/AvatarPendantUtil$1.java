@@ -13,12 +13,12 @@ final class AvatarPendantUtil$1
   
   public void run()
   {
-    AvatarPendantUtil.jdField_a_of_type_Boolean = false;
-    synchronized (AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList)
+    AvatarPendantUtil.g = false;
+    synchronized (AvatarPendantUtil.f)
     {
-      String[] arrayOfString = new String[AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.size()];
-      AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString);
-      AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.clear();
+      String[] arrayOfString = new String[AvatarPendantUtil.f.size()];
+      AvatarPendantUtil.f.toArray(arrayOfString);
+      AvatarPendantUtil.f.clear();
       if (arrayOfString.length == 0) {
         return;
       }
@@ -33,7 +33,7 @@ final class AvatarPendantUtil$1
       if (??? != null)
       {
         ((IApolloExtensionHandler)???).a(arrayOfString, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
-        AvatarPendantUtil.a(System.currentTimeMillis());
+        AvatarPendantUtil.c(System.currentTimeMillis());
       }
       return;
     }
@@ -41,7 +41,7 @@ final class AvatarPendantUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AvatarPendantUtil.1
  * JD-Core Version:    0.7.0.1
  */

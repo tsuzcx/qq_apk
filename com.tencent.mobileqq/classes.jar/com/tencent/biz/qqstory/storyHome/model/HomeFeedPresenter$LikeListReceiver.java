@@ -15,8 +15,8 @@ class HomeFeedPresenter$LikeListReceiver
   
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
   {
-    Object localObject = paramHomeFeedPresenter.a(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
-    if ((localObject != null) && (!paramGetLikeListEvent.jdField_a_of_type_Boolean))
+    Object localObject = paramHomeFeedPresenter.a(paramGetLikeListEvent.a);
+    if ((localObject != null) && (!paramGetLikeListEvent.b))
     {
       if (!(localObject instanceof CommentLikeHomeFeed))
       {
@@ -24,12 +24,12 @@ class HomeFeedPresenter$LikeListReceiver
         return;
       }
       localObject = (CommentLikeHomeFeed)localObject;
-      ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mLikeCount = paramGetLikeListEvent.b;
-      ((CommentLikeHomeFeed)localObject).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true);
-      HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
+      ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).f).mLikeCount = paramGetLikeListEvent.d;
+      ((CommentLikeHomeFeed)localObject).b(paramGetLikeListEvent.f, true);
+      HomeFeedPresenter.c(paramHomeFeedPresenter).b(paramGetLikeListEvent.a);
       return;
     }
-    SLog.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramGetLikeListEvent.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramGetLikeListEvent.jdField_a_of_type_Boolean) });
+    SLog.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramGetLikeListEvent.a, Boolean.valueOf(paramGetLikeListEvent.b) });
   }
   
   public Class acceptEventClass()

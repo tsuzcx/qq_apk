@@ -12,7 +12,7 @@ final class ExpandPluginLoadingFragment$updateLoadCountDown$2
   {
     double d4 = this.a;
     double d3 = this.b;
-    boolean bool = ExpandPluginLoadingFragment.b(this.this$0);
+    boolean bool = ExpandPluginLoadingFragment.m(this.this$0);
     double d2 = 0.0D;
     double d1;
     if (bool)
@@ -37,7 +37,7 @@ final class ExpandPluginLoadingFragment$updateLoadCountDown$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.entrance.ExpandPluginLoadingFragment.updateLoadCountDown.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,57 +8,35 @@ import java.util.Queue;
 
 class AudioPlayback$BufferQueue
 {
-  private int jdField_a_of_type_Int;
-  private List<AudioPlayback.BufferQueue.Item> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Queue<AudioPlayback.BufferQueue.Item> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private int b;
+  private int a;
+  private Queue<AudioPlayback.BufferQueue.Item> b = new LinkedList();
+  private List<AudioPlayback.BufferQueue.Item> c = new ArrayList();
+  private int d;
   
   AudioPlayback.BufferQueue.Item a()
   {
     try
     {
-      AudioPlayback.BufferQueue.Item localItem = (AudioPlayback.BufferQueue.Item)this.jdField_a_of_type_JavaUtilQueue.poll();
+      AudioPlayback.BufferQueue.Item localItem = (AudioPlayback.BufferQueue.Item)this.b.poll();
       if (localItem != null) {
-        this.b -= localItem.jdField_a_of_type_JavaNioByteBuffer.remaining();
+        this.d -= localItem.a.remaining();
       }
       return localItem;
     }
     finally {}
   }
   
-  void a()
-  {
-    try
-    {
-      for (;;)
-      {
-        AudioPlayback.BufferQueue.Item localItem = (AudioPlayback.BufferQueue.Item)this.jdField_a_of_type_JavaUtilQueue.poll();
-        if (localItem == null) {
-          break;
-        }
-        a(localItem);
-      }
-      this.b = 0;
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw localObject;
-    }
-  }
-  
   void a(AudioPlayback.BufferQueue.Item paramItem)
   {
     try
     {
-      int i = paramItem.jdField_a_of_type_JavaNioByteBuffer.capacity();
-      int j = this.jdField_a_of_type_Int;
+      int i = paramItem.a.capacity();
+      int j = this.a;
       if (i != j) {
         return;
       }
-      paramItem.jdField_a_of_type_JavaNioByteBuffer.rewind();
-      this.jdField_a_of_type_JavaUtilList.add(paramItem);
+      paramItem.a.rewind();
+      this.c.add(paramItem);
       return;
     }
     finally {}
@@ -68,27 +46,49 @@ class AudioPlayback$BufferQueue
   {
     try
     {
-      if (paramByteBuffer.remaining() > this.jdField_a_of_type_Int)
+      if (paramByteBuffer.remaining() > this.a)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_Int = paramByteBuffer.remaining();
+        this.c.clear();
+        this.a = paramByteBuffer.remaining();
       }
       AudioPlayback.BufferQueue.Item localItem;
-      if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        localItem = (AudioPlayback.BufferQueue.Item)this.jdField_a_of_type_JavaUtilList.remove(0);
+      if (!this.c.isEmpty()) {
+        localItem = (AudioPlayback.BufferQueue.Item)this.c.remove(0);
       } else {
         localItem = new AudioPlayback.BufferQueue.Item(paramByteBuffer.remaining());
       }
-      localItem.jdField_a_of_type_JavaNioByteBuffer.limit(paramByteBuffer.remaining());
-      localItem.jdField_a_of_type_JavaNioByteBuffer.mark();
-      localItem.jdField_a_of_type_JavaNioByteBuffer.put(paramByteBuffer);
-      localItem.jdField_a_of_type_JavaNioByteBuffer.reset();
-      localItem.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_JavaUtilQueue.add(localItem);
-      this.b += localItem.jdField_a_of_type_JavaNioByteBuffer.remaining();
+      localItem.a.limit(paramByteBuffer.remaining());
+      localItem.a.mark();
+      localItem.a.put(paramByteBuffer);
+      localItem.a.reset();
+      localItem.b = paramLong;
+      this.b.add(localItem);
+      this.d += localItem.a.remaining();
       return;
     }
     finally {}
+  }
+  
+  void b()
+  {
+    try
+    {
+      for (;;)
+      {
+        AudioPlayback.BufferQueue.Item localItem = (AudioPlayback.BufferQueue.Item)this.b.poll();
+        if (localItem == null) {
+          break;
+        }
+        a(localItem);
+      }
+      this.d = 0;
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 

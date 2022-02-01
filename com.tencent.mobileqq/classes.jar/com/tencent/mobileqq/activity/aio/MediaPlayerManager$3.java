@@ -28,11 +28,11 @@ class MediaPlayerManager$3
       localStringBuilder.append(bool);
       QLog.i("MediaPlayerManager", 2, localStringBuilder.toString());
     }
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
-    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
-      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
+    com.tencent.mobileqq.utils.AudioUtil.c = null;
+    if ((MediaPlayerManager.c(this.a) != null) && ((MediaPlayerManager.c(this.a) instanceof MessageForPtt))) {
+      ((MessageForPtt)MediaPlayerManager.c(this.a)).playProgress = 0.0F;
     }
-    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
+    if ((MediaPlayerManager.d(this.a) != null) && (MediaPlayerManager.e(this.a))) {
       return;
     }
     MediaPlayerManager.a(this.a, null);
@@ -41,7 +41,7 @@ class MediaPlayerManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MediaPlayerManager.3
  * JD-Core Version:    0.7.0.1
  */

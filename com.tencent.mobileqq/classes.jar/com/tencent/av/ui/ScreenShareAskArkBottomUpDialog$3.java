@@ -12,8 +12,8 @@ class ScreenShareAskArkBottomUpDialog$3
   public void onClick(View paramView)
   {
     this.a.dismiss();
-    if (ScreenShareAskArkBottomUpDialog.a(this.a) != null) {
-      ScreenShareAskArkBottomUpDialog.a(this.a).a();
+    if (ScreenShareAskArkBottomUpDialog.b(this.a) != null) {
+      ScreenShareAskArkBottomUpDialog.b(this.a).a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

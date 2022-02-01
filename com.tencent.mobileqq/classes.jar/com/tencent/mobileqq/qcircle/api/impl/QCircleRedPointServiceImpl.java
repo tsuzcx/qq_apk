@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.qcircle.api.impl;
 
 import com.tencent.biz.qcircleshadow.handler.QCircleHandler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.mobileqq.qcircle.api.IQCircleRedPointService;
 import com.tencent.mobileqq.qcircle.api.data.ReportExtraInfo;
 import com.tencent.mobileqq.qcircle.api.event.QCircleRedInfoEvent;
 import com.tencent.mobileqq.qcircle.tempapi.interfaces.OnGetQQCircleNumRedMsgListener;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.QCircleConfig;
 import cooperation.qqcircle.redpoint.BaseRedPoinManagerDelegate;
 import cooperation.qqcircle.redpoint.EeveeRedPointManagerDelegate;
@@ -65,7 +65,6 @@ public class QCircleRedPointServiceImpl
     boolean bool2 = QCircleConfig.isQQCircleUseEeveeRedPoint();
     this.mCurrentRedPointManagerDelegate = this.mEeveeRedPointManagerDelegate;
     mIsQQCircleCurrentUseEeveeRedPoint = true;
-    int i = RFLog.USR;
     paramAppRuntime = new StringBuilder();
     paramAppRuntime.append("isQQCircleCurrentUseEeveeRedPoint: ");
     paramAppRuntime.append(mIsQQCircleCurrentUseEeveeRedPoint);
@@ -74,7 +73,7 @@ public class QCircleRedPointServiceImpl
     paramAppRuntime.append(", isQQCircleUseEeveeRedPoint: ");
     paramAppRuntime.append(bool2);
     paramAppRuntime.append(" )");
-    RFLog.e("QCircleRedPointManager", i, paramAppRuntime.toString());
+    QLog.e("QCircleRedPointManager", 1, paramAppRuntime.toString());
   }
   
   public void onDestroy()
@@ -130,14 +129,14 @@ public class QCircleRedPointServiceImpl
   
   public void updateRedPoint()
   {
-    if (QCircleHandler.a() != null) {
-      QCircleHandler.a().b();
+    if (QCircleHandler.d() != null) {
+      QCircleHandler.d().b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleRedPointServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,36 +9,36 @@ import android.widget.ImageButton;
 
 public class QQFrameByFrameAnimation
 {
-  int jdField_a_of_type_Int = 300;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  View jdField_a_of_type_AndroidViewView = null;
-  QQAnimationListener jdField_a_of_type_ComTencentAvUtilsQQAnimationListener = null;
-  Runnable jdField_a_of_type_JavaLangRunnable = new QQFrameByFrameAnimation.1(this);
-  int[] jdField_a_of_type_ArrayOfInt;
-  int b = 0;
-  int c = 0;
-  int d = 0;
+  View a = null;
+  QQAnimationListener b = null;
+  int[] c;
+  int d = 300;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  Handler h = new Handler();
+  Runnable i = new QQFrameByFrameAnimation.1(this);
   
   void a()
   {
-    this.c += 1;
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    this.f += 1;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      int[] arrayOfInt = this.c;
       if ((arrayOfInt != null) && (arrayOfInt.length > 0))
       {
-        int i = arrayOfInt[(this.c % arrayOfInt.length)];
+        int j = arrayOfInt[(this.f % arrayOfInt.length)];
         if ((localObject instanceof ImageButton))
         {
-          ((View)localObject).setBackgroundResource(i);
+          ((View)localObject).setBackgroundResource(j);
           return;
         }
         if ((localObject instanceof Button))
         {
-          localObject = ((View)localObject).getResources().getDrawable(i);
+          localObject = ((View)localObject).getResources().getDrawable(j);
           ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-          ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, (Drawable)localObject, null, null);
+          ((Button)this.a).setCompoundDrawables(null, (Drawable)localObject, null, null);
         }
       }
     }
@@ -46,45 +46,45 @@ public class QQFrameByFrameAnimation
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramView;
   }
   
   public void a(QQAnimationListener paramQQAnimationListener)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener = paramQQAnimationListener;
+    this.b = paramQQAnimationListener;
   }
   
   public void a(int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    this.c = paramArrayOfInt;
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      int[] arrayOfInt = this.c;
       if ((arrayOfInt != null) && (arrayOfInt.length > 0))
       {
-        this.c = 0;
+        this.f = 0;
         if ((localObject instanceof ImageButton)) {
           ((View)localObject).setBackgroundResource(arrayOfInt[0]);
         }
-        localObject = this.jdField_a_of_type_AndroidViewView;
+        localObject = this.a;
         if ((localObject instanceof Button))
         {
-          localObject = ((View)localObject).getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
+          localObject = ((View)localObject).getResources().getDrawable(this.c[0]);
           ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
-          ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, (Drawable)localObject, null, null);
+          ((Button)this.a).setCompoundDrawables(null, (Drawable)localObject, null, null);
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
-        localObject = this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener;
+        this.h.postDelayed(this.i, this.d);
+        localObject = this.b;
         if (localObject != null) {
           ((QQAnimationListener)localObject).d();
         }
@@ -94,13 +94,13 @@ public class QQFrameByFrameAnimation
   
   public void b(int paramInt)
   {
-    this.d = paramInt;
+    this.g = paramInt;
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    QQAnimationListener localQQAnimationListener = this.jdField_a_of_type_ComTencentAvUtilsQQAnimationListener;
+    this.h.removeCallbacks(this.i);
+    QQAnimationListener localQQAnimationListener = this.b;
     if (localQQAnimationListener != null) {
       localQQAnimationListener.a();
     }

@@ -29,30 +29,30 @@ import java.util.List;
 public class SwipeBackLayout
   extends RelativeLayout
 {
-  protected int a;
-  protected Context a;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  final Handler jdField_a_of_type_AndroidOsHandler = new SwipeBackLayout.1(this);
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   protected View a;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  protected ReadinjoyH5ElementManager a;
-  protected WebViewFragment a;
-  protected List<ViewPager> a;
-  protected boolean a;
   protected int b;
-  protected boolean b;
   protected int c;
-  protected volatile boolean c;
   protected int d;
-  protected boolean d;
   protected int e;
-  protected boolean e;
   protected int f;
-  private boolean f;
-  private boolean g = false;
-  private boolean h = false;
-  private boolean i = false;
+  protected boolean g;
+  protected boolean h;
+  protected List<ViewPager> i = new LinkedList();
+  protected Context j;
+  protected volatile boolean k;
+  protected WebViewFragment l;
+  protected ReadinjoyH5ElementManager m = new ReadinjoyH5ElementManager();
+  protected boolean n = false;
+  protected boolean o = true;
+  protected int p;
+  final Handler q = new SwipeBackLayout.1(this);
+  private Scroller r;
+  private Drawable s;
+  private GestureDetector t;
+  private boolean u = true;
+  private boolean v = false;
+  private boolean w = false;
+  private boolean x = false;
   
   public SwipeBackLayout(Context paramContext)
   {
@@ -67,39 +67,39 @@ public class SwipeBackLayout
   public SwipeBackLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebReadinjoyH5ElementManager = new ReadinjoyH5ElementManager();
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842751);
-    this.jdField_f_of_type_Int = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
+    this.b = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.r = new Scroller(paramContext);
+    this.s = getResources().getDrawable(2130843704);
+    this.p = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
   }
   
   public SwipeBackLayout(Context paramContext, boolean paramBoolean)
   {
     this(paramContext, null);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new SwipeBackLayout.KandianGestureDetector(this, paramContext));
+    this.j = paramContext;
+    this.o = paramBoolean;
+    this.t = new GestureDetector(paramContext, new SwipeBackLayout.KandianGestureDetector(this, paramContext));
   }
   
   private void a(List<ViewPager> paramList, ViewGroup paramViewGroup)
   {
-    int k = paramViewGroup.getChildCount();
-    int j = 0;
-    while (j < k)
+    int i2 = paramViewGroup.getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      View localView = paramViewGroup.getChildAt(j);
+      View localView = paramViewGroup.getChildAt(i1);
       if ((localView instanceof ViewPager)) {
         paramList.add((ViewPager)localView);
       } else if ((localView instanceof ViewGroup)) {
         a(paramList, (ViewGroup)localView);
       }
-      j += 1;
+      i1 += 1;
     }
+  }
+  
+  private void setContentView(View paramView)
+  {
+    this.a = ((View)paramView.getParent());
   }
   
   protected ViewPager a(List<ViewPager> paramList, MotionEvent paramMotionEvent)
@@ -125,34 +125,34 @@ public class SwipeBackLayout
   
   protected void a()
   {
-    if (this.h) {
+    if (this.w) {
       return;
     }
-    this.h = true;
-    int j = this.jdField_e_of_type_Int + this.jdField_a_of_type_AndroidViewView.getScrollX();
-    double d1 = j;
+    this.w = true;
+    int i1 = this.f + this.a.getScrollX();
+    double d1 = i1;
     Double.isNaN(d1);
-    double d2 = this.jdField_e_of_type_Int;
+    double d2 = this.f;
     Double.isNaN(d2);
-    int k = (int)(d1 * 1.0D / d2 * 700.0D);
+    int i2 = (int)(d1 * 1.0D / d2 * 700.0D);
     try
     {
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_AndroidViewView.getScrollX(), 0, -j + 1, 0, Math.abs(k));
+      this.r.startScroll(this.a.getScrollX(), 0, -i1 + 1, 0, Math.abs(i2));
       label85:
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("SwipeBackLayout scrollRight viewwithd=");
-        localStringBuilder.append(this.jdField_e_of_type_Int);
+        localStringBuilder.append(this.f);
         localStringBuilder.append("  startx+ ");
-        localStringBuilder.append(this.jdField_a_of_type_AndroidViewView.getScrollX());
+        localStringBuilder.append(this.a.getScrollX());
         localStringBuilder.append("  left width = ");
-        localStringBuilder.append(-j);
+        localStringBuilder.append(-i1);
         localStringBuilder.append("  duration=");
-        localStringBuilder.append(k);
+        localStringBuilder.append(i2);
         QLog.i("WebLog_SwipeBackLayout", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 800L);
+      this.q.sendEmptyMessageDelayed(1, 800L);
       postInvalidate();
       return;
     }
@@ -164,7 +164,7 @@ public class SwipeBackLayout
   
   protected boolean a(MotionEvent paramMotionEvent)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
+    Object localObject = this.l;
     if ((localObject != null) && (localObject != null) && (((WebViewFragment)localObject).getWebView() != null))
     {
       localObject = ((WebViewFragment)localObject).getWebView();
@@ -174,9 +174,9 @@ public class SwipeBackLayout
       float f1 = ((CustomWebView)localObject).getScale();
       if (f1 > 0.0F)
       {
-        int j = (int)((paramMotionEvent.getX() + ((CustomWebView)localObject).getWebScrollX()) / f1);
-        int k = (int)((paramMotionEvent.getY() + ((CustomWebView)localObject).getWebScrollY()) / f1);
-        return this.jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebReadinjoyH5ElementManager.a(new Point(j, k));
+        int i1 = (int)((paramMotionEvent.getX() + ((CustomWebView)localObject).getWebScrollX()) / f1);
+        int i2 = (int)((paramMotionEvent.getY() + ((CustomWebView)localObject).getWebScrollY()) / f1);
+        return this.m.a(new Point(i1, i2));
       }
     }
     return false;
@@ -186,8 +186,8 @@ public class SwipeBackLayout
   {
     try
     {
-      int j = this.jdField_a_of_type_AndroidViewView.getScrollX();
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_AndroidViewView.getScrollX(), 0, -j, 0, Math.abs(j));
+      int i1 = this.a.getScrollX();
+      this.r.startScroll(this.a.getScrollX(), 0, -i1, 0, Math.abs(i1));
       postInvalidate();
       return;
     }
@@ -196,13 +196,13 @@ public class SwipeBackLayout
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    if (this.r.computeScrollOffset())
     {
-      this.jdField_a_of_type_AndroidViewView.scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      this.a.scrollTo(this.r.getCurrX(), this.r.getCurrY());
       postInvalidate();
-      if ((this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && (this.jdField_b_of_type_Boolean))
+      if ((this.r.isFinished()) && (this.h))
       {
-        WebViewFragment localWebViewFragment = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
+        WebViewFragment localWebViewFragment = this.l;
         if (localWebViewFragment != null)
         {
           localWebViewFragment.flingLToR();
@@ -219,31 +219,31 @@ public class SwipeBackLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.g) && (this.jdField_f_of_type_Boolean))
+    if ((this.v) && (this.u))
     {
-      ViewPager localViewPager = a(this.jdField_a_of_type_JavaUtilList, paramMotionEvent);
+      ViewPager localViewPager = a(this.i, paramMotionEvent);
       if ((localViewPager != null) && (localViewPager.getCurrentItem() != 0)) {
         return super.onInterceptTouchEvent(paramMotionEvent);
       }
-      int j = paramMotionEvent.getAction();
-      if (j != 0)
+      int i1 = paramMotionEvent.getAction();
+      if (i1 != 0)
       {
-        if ((j == 2) && (this.jdField_d_of_type_Boolean) && ((int)paramMotionEvent.getRawX() - this.jdField_b_of_type_Int > this.jdField_a_of_type_Int) && (Math.abs((int)paramMotionEvent.getRawY() - this.c) < this.jdField_a_of_type_Int)) {
+        if ((i1 == 2) && (this.n) && ((int)paramMotionEvent.getRawX() - this.c > this.b) && (Math.abs((int)paramMotionEvent.getRawY() - this.d) < this.b)) {
           return true;
         }
       }
       else
       {
-        this.jdField_d_of_type_Boolean = false;
-        j = (int)paramMotionEvent.getRawX();
-        this.jdField_d_of_type_Int = j;
-        this.jdField_b_of_type_Int = j;
-        this.c = ((int)paramMotionEvent.getRawY());
-        if ((this.jdField_b_of_type_Int < this.jdField_e_of_type_Int / 3) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebReadinjoyH5ElementManager.a()) || (!a(paramMotionEvent))) && (this.jdField_e_of_type_Boolean)) {
-          this.jdField_d_of_type_Boolean = true;
+        this.n = false;
+        i1 = (int)paramMotionEvent.getRawX();
+        this.e = i1;
+        this.c = i1;
+        this.d = ((int)paramMotionEvent.getRawY());
+        if ((this.c < this.f / 3) && ((this.m.a()) || (!a(paramMotionEvent))) && (this.o)) {
+          this.n = true;
         }
       }
-      return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      return this.t.onTouchEvent(paramMotionEvent);
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -253,82 +253,82 @@ public class SwipeBackLayout
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean)
     {
-      this.jdField_e_of_type_Int = getWidth();
-      a(this.jdField_a_of_type_JavaUtilList, this);
+      this.f = getWidth();
+      a(this.i, this);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_f_of_type_Boolean) && (this.g))
+    if ((this.u) && (this.v))
     {
-      int j = paramMotionEvent.getAction();
+      int i1 = paramMotionEvent.getAction();
       StringBuilder localStringBuilder;
-      if (j != 1)
+      if (i1 != 1)
       {
-        if ((j == 2) && (this.jdField_d_of_type_Boolean))
+        if ((i1 == 2) && (this.n))
         {
-          j = (int)paramMotionEvent.getRawX();
-          int k = this.jdField_d_of_type_Int - j;
-          this.jdField_d_of_type_Int = j;
-          if ((j - this.jdField_b_of_type_Int > this.jdField_a_of_type_Int) && (Math.abs((int)paramMotionEvent.getRawY() - this.c) < this.jdField_a_of_type_Int)) {
-            this.jdField_a_of_type_Boolean = true;
+          i1 = (int)paramMotionEvent.getRawX();
+          int i2 = this.e - i1;
+          this.e = i1;
+          if ((i1 - this.c > this.b) && (Math.abs((int)paramMotionEvent.getRawY() - this.d) < this.b)) {
+            this.g = true;
           }
-          if ((j - this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Boolean))
+          if ((i1 - this.c > 0) && (this.g))
           {
             if (QLog.isColorLevel())
             {
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("moveX:");
-              localStringBuilder.append(j);
+              localStringBuilder.append(i1);
               localStringBuilder.append("downX:");
-              localStringBuilder.append(this.jdField_b_of_type_Int);
+              localStringBuilder.append(this.c);
               localStringBuilder.append("deltaX:");
-              localStringBuilder.append(k);
+              localStringBuilder.append(i2);
               QLog.i("WebLog_SwipeBackLayout", 2, localStringBuilder.toString());
             }
-            this.jdField_a_of_type_AndroidViewView.scrollBy(k, 0);
+            this.a.scrollBy(i2, 0);
           }
         }
       }
-      else if (this.jdField_d_of_type_Boolean)
+      else if (this.n)
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.g = false;
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("event.getRawX():");
           localStringBuilder.append(paramMotionEvent.getRawX());
           localStringBuilder.append("screenWidth:");
-          localStringBuilder.append(this.jdField_f_of_type_Int);
+          localStringBuilder.append(this.p);
           localStringBuilder.append("viewWidth:");
-          localStringBuilder.append(this.jdField_e_of_type_Int);
+          localStringBuilder.append(this.f);
           QLog.i("WebLog_SwipeBackLayout", 2, localStringBuilder.toString());
         }
-        if (paramMotionEvent.getRawX() - this.jdField_b_of_type_Int >= this.jdField_f_of_type_Int / 2)
+        if (paramMotionEvent.getRawX() - this.c >= this.p / 2)
         {
-          this.jdField_b_of_type_Boolean = true;
+          this.h = true;
           a();
         }
         else
         {
           postDelayed(new SwipeBackLayout.2(this), 100L);
-          this.jdField_b_of_type_Boolean = false;
+          this.h = false;
         }
       }
-      return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      return this.t.onTouchEvent(paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setWebViewFragment(WebViewFragment paramWebViewFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment = paramWebViewFragment;
+    this.l = paramWebViewFragment;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

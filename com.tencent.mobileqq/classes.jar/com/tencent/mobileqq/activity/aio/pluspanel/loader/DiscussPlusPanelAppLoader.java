@@ -27,32 +27,32 @@ public class DiscussPlusPanelAppLoader
   
   public void b(BaseChatPie paramBaseChatPie)
   {
-    Object localObject = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1200000007);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1106658188);
-    if (HotPicManager.a((QQAppInterface)localObject).b()) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1107930043);
+    Object localObject = paramBaseChatPie.d;
+    a(paramBaseChatPie.ah.a);
+    a(paramBaseChatPie.ah.a, 1200000007);
+    a(paramBaseChatPie.ah.a, 1106658188);
+    if (HotPicManager.a((QQAppInterface)localObject).j()) {
+      a(paramBaseChatPie.ah.a, 1107930043);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1104864062);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1104864068);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1104864066);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1104639410);
-    if (this.a.a(paramBaseChatPie.a(), ((QQAppInterface)localObject).getCurrentAccountUin())) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1106114157);
+    a(paramBaseChatPie.ah.a, 1104864062);
+    a(paramBaseChatPie.ah.a, 1104864068);
+    a(paramBaseChatPie.ah.a, 1104864066);
+    a(paramBaseChatPie.ah.a, 1104639410);
+    if (this.e.a(paramBaseChatPie.aX(), ((QQAppInterface)localObject).getCurrentAccountUin())) {
+      a(paramBaseChatPie.ah.a, 1106114157);
     }
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1200000010);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1104864070);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1104788679);
-    a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1104874204);
+    a(paramBaseChatPie.ah.a, 1200000010);
+    a(paramBaseChatPie.ah.a, 1104864070);
+    a(paramBaseChatPie.ah.a, 1104788679);
+    a(paramBaseChatPie.ah.a, 1104874204);
     if (ReceiptUtil.a()) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1106189400);
+      a(paramBaseChatPie.ah.a, 1106189400);
     }
     try
     {
       IApolloManagerService localIApolloManagerService = (IApolloManagerService)((QQAppInterface)localObject).getRuntimeService(IApolloManagerService.class, "all");
-      if ((localIApolloManagerService.isApolloSupport(paramBaseChatPie.a())) && (localIApolloManagerService.queryApolloSwitchSet("discuss") == 1)) {
-        a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1200000008);
+      if ((localIApolloManagerService.isApolloSupport(paramBaseChatPie.aX())) && (localIApolloManagerService.queryApolloSwitchSet("discuss") == 1)) {
+        a(paramBaseChatPie.ah.a, 1200000008);
       }
     }
     catch (Exception localException)
@@ -61,18 +61,18 @@ public class DiscussPlusPanelAppLoader
     }
     if (((TeamWorkManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TEAMWORK_MANAGER)).a().booleanValue())
     {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1200000002);
-      AIOPanelUtiles.a((BaseQQAppInterface)localObject, "0X80093F3", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      a(paramBaseChatPie.ah.a, 1200000002);
+      AIOPanelUtiles.a((BaseQQAppInterface)localObject, "0X80093F3", paramBaseChatPie.ah.a);
     }
     localObject = (ArkMsgAIDisableConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkMsgAIDisableConfBean.class);
-    if ((localObject != null) && (((ArkMsgAIDisableConfBean)localObject).a() != null) && (!((ArkMsgAIDisableConfBean)localObject).a().a)) {
-      a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1200000009);
+    if ((localObject != null) && (((ArkMsgAIDisableConfBean)localObject).b() != null) && (!((ArkMsgAIDisableConfBean)localObject).b().a)) {
+      a(paramBaseChatPie.ah.a, 1200000009);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.DiscussPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

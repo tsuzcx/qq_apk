@@ -8,22 +8,22 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RIJPopupAutomator
 {
-  private int jdField_a_of_type_Int = 0;
-  private ArrayList<BasePopupStep> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean = false;
+  private ArrayList<BasePopupStep> a = new ArrayList();
+  private int b = 0;
+  private boolean c = false;
+  private AtomicBoolean d = new AtomicBoolean(false);
   
-  private void i()
+  private void j()
   {
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (this.b < this.a.size())
     {
-      BasePopupStep localBasePopupStep = (BasePopupStep)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Boolean)
+      BasePopupStep localBasePopupStep = (BasePopupStep)this.a.get(this.b);
+      if (this.c)
       {
-        localBasePopupStep.h();
+        localBasePopupStep.i();
         return;
       }
-      localBasePopupStep.g();
+      localBasePopupStep.h();
       return;
     }
     QLog.d("RIJPopupAutomator", 2, "startNext currentIndex out of bound");
@@ -31,7 +31,7 @@ public class RIJPopupAutomator
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((BasePopupStep)localIterator.next()).a();
     }
@@ -48,28 +48,23 @@ public class RIJPopupAutomator
       localStringBuilder.append(paramBoolean);
       QLog.d("RIJPopupAutomator", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, paramBoolean);
+    this.d.compareAndSet(false, paramBoolean);
     if (!paramBoolean)
     {
-      this.jdField_a_of_type_Int += 1;
-      i();
+      this.b += 1;
+      j();
     }
   }
   
   public void a(BasePopupStep... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(Arrays.asList(paramVarArgs));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    this.d.compareAndSet(true, false);
+    this.a.addAll(Arrays.asList(paramVarArgs));
   }
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((BasePopupStep)localIterator.next()).b();
     }
@@ -77,7 +72,7 @@ public class RIJPopupAutomator
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((BasePopupStep)localIterator.next()).c();
     }
@@ -85,7 +80,7 @@ public class RIJPopupAutomator
   
   public void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((BasePopupStep)localIterator.next()).d();
     }
@@ -93,7 +88,7 @@ public class RIJPopupAutomator
   
   public void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((BasePopupStep)localIterator.next()).e();
     }
@@ -101,7 +96,7 @@ public class RIJPopupAutomator
   
   public void f()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((BasePopupStep)localIterator.next()).f();
     }
@@ -110,22 +105,27 @@ public class RIJPopupAutomator
   public void g()
   {
     QLog.d("RIJPopupAutomator", 1, "startStepFromOnResume");
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    i();
+    this.b = 0;
+    this.c = false;
+    j();
   }
   
   public void h()
   {
     QLog.d("RIJPopupAutomator", 1, "startStepFromOnShowSelf");
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-    i();
+    this.b = 0;
+    this.c = true;
+    j();
+  }
+  
+  public boolean i()
+  {
+    return this.d.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.RIJPopupAutomator
  * JD-Core Version:    0.7.0.1
  */

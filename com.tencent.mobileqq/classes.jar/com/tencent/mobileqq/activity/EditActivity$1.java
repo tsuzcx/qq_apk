@@ -25,13 +25,13 @@ class EditActivity$1
     }
     else if ((paramObject instanceof String))
     {
-      QQToast.a(this.a, 1, (String)paramObject, 1).a();
+      QQToast.makeText(this.a, 1, (String)paramObject, 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EditActivity.1
  * JD-Core Version:    0.7.0.1
  */

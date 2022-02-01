@@ -25,16 +25,16 @@ class CMActionTouchManager$CheckForLongPress
     if (this.a == CMActionTouchManager.a(this.this$0))
     {
       CMActionTouchManager.a(this.this$0, true);
-      CMActionTouchManager.a(this.this$0).sendAccessibilityEvent(2);
-      if ((!TextUtils.isEmpty(CMActionTouchManager.a(this.this$0))) && (CMActionTouchManager.b(this.this$0) >= 0) && (CMActionTouchManager.a(this.this$0) != null)) {
-        CMActionTouchManager.a(this.this$0).onNotifyLongTouch(CMActionTouchManager.a(this.this$0));
+      CMActionTouchManager.b(this.this$0).sendAccessibilityEvent(2);
+      if ((!TextUtils.isEmpty(CMActionTouchManager.c(this.this$0))) && (CMActionTouchManager.d(this.this$0) >= 0) && (CMActionTouchManager.e(this.this$0) != null)) {
+        CMActionTouchManager.e(this.this$0).a(CMActionTouchManager.c(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.touch.CMActionTouchManager.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

@@ -21,27 +21,24 @@ public class SchoolTroopKeywordManager
   implements Manager
 {
   public static final String a;
-  private static final String[] a;
-  private static final String[] b = { "", HardCodeUtil.a(2131713492), HardCodeUtil.a(2131713488) };
-  protected SparseArray<String[]> a;
-  protected final QQAppInterface a;
-  protected LinkedHashMap<String, SchoolTroopKeywordManager.KeywordResult> a;
+  private static final String[] e = { "", HardCodeUtil.a(2131911040), HardCodeUtil.a(2131911041) };
+  private static final String[] f = { "", HardCodeUtil.a(2131911042), HardCodeUtil.a(2131911039) };
+  protected final QQAppInterface b;
+  protected SparseArray<String[]> c = new SparseArray();
+  protected LinkedHashMap<String, SchoolTroopKeywordManager.KeywordResult> d = new LinkedHashMap();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(".troop.school_troop.");
     localStringBuilder.append(SchoolTroopKeywordManager.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "", HardCodeUtil.a(2131713489), HardCodeUtil.a(2131713491) };
+    a = localStringBuilder.toString();
   }
   
   public SchoolTroopKeywordManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    a();
+    this.b = paramQQAppInterface;
+    c();
   }
   
   public static String a(String paramString1, String paramString2)
@@ -85,57 +82,57 @@ public class SchoolTroopKeywordManager
     return paramString2.toString();
   }
   
-  private void a()
-  {
-    long l = System.currentTimeMillis();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("homework_troop_config");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString("troop_school_keyword_config", "");
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "The configString is empty, new user or no config");
-      }
-      return;
-    }
-    a((String)localObject);
-    localObject = jdField_a_of_type_JavaLangString;
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("loadConfig cost time: ");
-    localStringBuilder.append(System.currentTimeMillis() - l);
-    QLog.i((String)localObject, 1, localStringBuilder.toString());
-  }
-  
   public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int != 1) {
+    if (paramSessionInfo.a != 1) {
       return false;
     }
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramSessionInfo.b);
     if (paramQQAppInterface == null) {
       return false;
     }
     return paramQQAppInterface.dwGroupClassExt == 32L;
   }
   
+  private void c()
+  {
+    long l = System.currentTimeMillis();
+    Object localObject = this.b.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("homework_troop_config");
+    localStringBuilder.append(this.b.getCurrentUin());
+    localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString("troop_school_keyword_config", "");
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w(a, 2, "The configString is empty, new user or no config");
+      }
+      return;
+    }
+    a((String)localObject);
+    localObject = a;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadConfig cost time: ");
+    localStringBuilder.append(System.currentTimeMillis() - l);
+    QLog.i((String)localObject, 1, localStringBuilder.toString());
+  }
+  
   public int a(SessionInfo paramSessionInfo)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int != 1) {
+    if (paramSessionInfo.a != 1) {
       return -1;
     }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0) {
+    if (this.c.size() == 0) {
       return -4;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    String str = this.b.getCurrentAccountUin();
+    Object localObject = ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramSessionInfo.b);
     if (localObject == null)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("it must be wrong. The troopUin '");
-      ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramSessionInfo.b);
       ((StringBuilder)localObject).append("' has not troopInfo");
       QLog.w(str, 2, ((StringBuilder)localObject).toString());
       return -2;
@@ -144,10 +141,10 @@ public class SchoolTroopKeywordManager
     {
       if (QLog.isDevelopLevel())
       {
-        str = jdField_a_of_type_JavaLangString;
+        str = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("Not school troop. The troopUin '");
-        localStringBuilder.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramSessionInfo.b);
         localStringBuilder.append("', dwGroupClassExt = ");
         localStringBuilder.append(((TroopInfo)localObject).dwGroupClassExt);
         QLog.i(str, 2, localStringBuilder.toString());
@@ -162,7 +159,7 @@ public class SchoolTroopKeywordManager
     }
     if (QLog.isDevelopLevel())
     {
-      paramSessionInfo = jdField_a_of_type_JavaLangString;
+      paramSessionInfo = a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("detect role. The currentUin '");
       ((StringBuilder)localObject).append(str);
@@ -184,7 +181,7 @@ public class SchoolTroopKeywordManager
       int i = a(paramSessionInfo);
       if (QLog.isColorLevel())
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("detectKeyword.detectRole time cost: ");
         ((StringBuilder)localObject2).append(System.currentTimeMillis() - l1);
@@ -196,10 +193,10 @@ public class SchoolTroopKeywordManager
       if (((i & 0x2) != 2) && ((i & 0x1) != 1)) {
         return null;
       }
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)
+      if (this.c.size() == 0)
       {
         if (QLog.isDevelopLevel()) {
-          QLog.w(jdField_a_of_type_JavaLangString, 2, "Keywords is empty, the config is error?");
+          QLog.w(a, 2, "Keywords is empty, the config is error?");
         }
         return null;
       }
@@ -209,12 +206,12 @@ public class SchoolTroopKeywordManager
       ((StringBuilder)localObject1).append("_");
       ((StringBuilder)localObject1).append(i);
       localObject1 = ((StringBuilder)localObject1).toString();
-      Object localObject2 = (SchoolTroopKeywordManager.KeywordResult)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1);
+      Object localObject2 = (SchoolTroopKeywordManager.KeywordResult)this.d.get(localObject1);
       if (localObject2 != null)
       {
         if (QLog.isColorLevel())
         {
-          paramSessionInfo = jdField_a_of_type_JavaLangString;
+          paramSessionInfo = a;
           paramMessageRecord = new StringBuilder();
           paramMessageRecord.append("detectKeyword.useCache time cost: ");
           paramMessageRecord.append(System.currentTimeMillis() - l1);
@@ -224,16 +221,16 @@ public class SchoolTroopKeywordManager
       }
       localObject2 = paramMessageRecord.msg;
       paramMessageRecord = new SchoolTroopKeywordManager.KeywordResult();
-      paramMessageRecord.jdField_a_of_type_Long = l2;
-      paramMessageRecord.jdField_a_of_type_Int = i;
-      paramMessageRecord.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      paramMessageRecord.a = l2;
+      paramMessageRecord.c = i;
+      paramMessageRecord.b = paramSessionInfo.b;
       paramMessageRecord.a((String)localObject2);
-      int k = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      int k = this.c.size();
       i = 0;
       while (i < k)
       {
-        int m = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-        paramSessionInfo = (String[])this.jdField_a_of_type_AndroidUtilSparseArray.get(m);
+        int m = this.c.keyAt(i);
+        paramSessionInfo = (String[])this.c.get(m);
         int n = paramSessionInfo.length;
         int j = 0;
         while (j < n)
@@ -242,27 +239,27 @@ public class SchoolTroopKeywordManager
           int i1 = ((String)localObject2).indexOf(str);
           if (i1 != -1)
           {
-            paramMessageRecord.jdField_b_of_type_Int = m;
-            paramMessageRecord.jdField_b_of_type_JavaLangString = str;
-            paramMessageRecord.c = i1;
-            paramMessageRecord.d = (i1 + str.length());
-            this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, paramMessageRecord);
+            paramMessageRecord.d = m;
+            paramMessageRecord.e = str;
+            paramMessageRecord.f = i1;
+            paramMessageRecord.g = (i1 + str.length());
+            this.d.put(localObject1, paramMessageRecord);
             return paramMessageRecord;
           }
           j += 1;
         }
         i += 1;
       }
-      paramMessageRecord.jdField_b_of_type_Int = -1;
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, paramMessageRecord);
+      paramMessageRecord.d = -1;
+      this.d.put(localObject1, paramMessageRecord);
       if (QLog.isColorLevel())
       {
-        paramSessionInfo = jdField_a_of_type_JavaLangString;
+        paramSessionInfo = a;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("detectKeyword time cost: ");
         ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
         ((StringBuilder)localObject1).append(", result = ");
-        ((StringBuilder)localObject1).append(paramMessageRecord.jdField_b_of_type_Int);
+        ((StringBuilder)localObject1).append(paramMessageRecord.d);
         QLog.i(paramSessionInfo, 2, ((StringBuilder)localObject1).toString());
       }
       return paramMessageRecord;
@@ -274,36 +271,36 @@ public class SchoolTroopKeywordManager
   public void a(String paramString)
   {
     // Byte code:
-    //   0: invokestatic 108	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 146	java/lang/System:currentTimeMillis	()J
     //   3: lstore 7
-    //   5: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: invokestatic 180	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   8: ifeq +44 -> 52
-    //   11: getstatic 39	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   11: getstatic 43	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:a	Ljava/lang/String;
     //   14: astore 9
-    //   16: new 19	java/lang/StringBuilder
+    //   16: new 23	java/lang/StringBuilder
     //   19: dup
-    //   20: invokespecial 22	java/lang/StringBuilder:<init>	()V
+    //   20: invokespecial 26	java/lang/StringBuilder:<init>	()V
     //   23: astore 10
     //   25: aload 10
-    //   27: ldc_w 286
-    //   30: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: ldc_w 291
+    //   30: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: pop
     //   34: aload 10
     //   36: aload_1
-    //   37: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: pop
     //   41: aload 9
     //   43: iconst_2
     //   44: aload 10
-    //   46: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 161	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   52: new 288	org/json/JSONArray
+    //   46: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokestatic 197	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   52: new 293	org/json/JSONArray
     //   55: dup
     //   56: aload_1
-    //   57: invokespecial 290	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   57: invokespecial 295	org/json/JSONArray:<init>	(Ljava/lang/String;)V
     //   60: astore 9
     //   62: aload 9
-    //   64: invokevirtual 291	org/json/JSONArray:length	()I
+    //   64: invokevirtual 296	org/json/JSONArray:length	()I
     //   67: istore 4
     //   69: iconst_0
     //   70: istore_2
@@ -312,27 +309,27 @@ public class SchoolTroopKeywordManager
     //   74: if_icmpge +111 -> 185
     //   77: aload 9
     //   79: iload_2
-    //   80: invokevirtual 295	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   80: invokevirtual 300	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
     //   83: astore 11
     //   85: aload 11
-    //   87: ldc_w 297
-    //   90: invokevirtual 302	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   87: ldc_w 302
+    //   90: invokevirtual 307	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   93: istore 5
     //   95: iload 5
-    //   97: getstatic 52	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   97: getstatic 56	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:e	[Ljava/lang/String;
     //   100: arraylength
     //   101: if_icmplt +6 -> 107
     //   104: goto +253 -> 357
-    //   107: new 304	java/util/ArrayList
+    //   107: new 309	java/util/ArrayList
     //   110: dup
-    //   111: invokespecial 305	java/util/ArrayList:<init>	()V
+    //   111: invokespecial 310	java/util/ArrayList:<init>	()V
     //   114: astore 10
     //   116: aload 11
-    //   118: ldc_w 307
-    //   121: invokevirtual 311	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   118: ldc_w 312
+    //   121: invokevirtual 316	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   124: astore 11
     //   126: aload 11
-    //   128: invokevirtual 291	org/json/JSONArray:length	()I
+    //   128: invokevirtual 296	org/json/JSONArray:length	()I
     //   131: istore 6
     //   133: iconst_0
     //   134: istore_3
@@ -342,8 +339,8 @@ public class SchoolTroopKeywordManager
     //   141: aload 10
     //   143: aload 11
     //   145: iload_3
-    //   146: invokevirtual 313	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   149: invokevirtual 317	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   146: invokevirtual 318	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   149: invokevirtual 322	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   152: pop
     //   153: iload_3
     //   154: iconst_1
@@ -351,89 +348,89 @@ public class SchoolTroopKeywordManager
     //   156: istore_3
     //   157: goto -22 -> 135
     //   160: aload_0
-    //   161: getfield 64	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   161: getfield 68	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:c	Landroid/util/SparseArray;
     //   164: iload 5
     //   166: aload 10
     //   168: aload 10
-    //   170: invokevirtual 318	java/util/ArrayList:size	()I
-    //   173: anewarray 41	java/lang/String
-    //   176: invokevirtual 322	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
-    //   179: invokevirtual 325	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   170: invokevirtual 323	java/util/ArrayList:size	()I
+    //   173: anewarray 45	java/lang/String
+    //   176: invokevirtual 327	java/util/ArrayList:toArray	([Ljava/lang/Object;)[Ljava/lang/Object;
+    //   179: invokevirtual 330	android/util/SparseArray:put	(ILjava/lang/Object;)V
     //   182: goto +175 -> 357
     //   185: aload_0
-    //   186: getfield 69	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   189: invokevirtual 328	java/util/LinkedHashMap:clear	()V
-    //   192: getstatic 39	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   186: getfield 73	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:d	Ljava/util/LinkedHashMap;
+    //   189: invokevirtual 333	java/util/LinkedHashMap:clear	()V
+    //   192: getstatic 43	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:a	Ljava/lang/String;
     //   195: astore_1
-    //   196: new 19	java/lang/StringBuilder
+    //   196: new 23	java/lang/StringBuilder
     //   199: dup
-    //   200: invokespecial 22	java/lang/StringBuilder:<init>	()V
+    //   200: invokespecial 26	java/lang/StringBuilder:<init>	()V
     //   203: astore 9
     //   205: aload 9
-    //   207: ldc_w 330
-    //   210: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: ldc_w 335
+    //   210: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   213: pop
     //   214: aload 9
-    //   216: invokestatic 108	java/lang/System:currentTimeMillis	()J
+    //   216: invokestatic 146	java/lang/System:currentTimeMillis	()J
     //   219: lload 7
     //   221: lsub
-    //   222: invokevirtual 158	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   222: invokevirtual 194	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   225: pop
     //   226: aload_1
     //   227: iconst_1
     //   228: aload 9
-    //   230: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: invokestatic 161	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   230: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   233: invokestatic 197	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   236: return
     //   237: astore_1
     //   238: goto +60 -> 298
-    //   241: getstatic 39	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   241: getstatic 43	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:a	Ljava/lang/String;
     //   244: astore 9
-    //   246: new 19	java/lang/StringBuilder
+    //   246: new 23	java/lang/StringBuilder
     //   249: dup
-    //   250: invokespecial 22	java/lang/StringBuilder:<init>	()V
+    //   250: invokespecial 26	java/lang/StringBuilder:<init>	()V
     //   253: astore 10
     //   255: aload 10
-    //   257: ldc_w 332
-    //   260: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: ldc_w 337
+    //   260: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   263: pop
     //   264: aload 10
     //   266: aload_1
-    //   267: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   270: pop
     //   271: aload 9
     //   273: iconst_2
     //   274: aload 10
-    //   276: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   279: invokestatic 150	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   282: getstatic 39	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   276: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   279: invokestatic 186	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   282: getstatic 43	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:a	Ljava/lang/String;
     //   285: astore_1
-    //   286: new 19	java/lang/StringBuilder
+    //   286: new 23	java/lang/StringBuilder
     //   289: dup
-    //   290: invokespecial 22	java/lang/StringBuilder:<init>	()V
+    //   290: invokespecial 26	java/lang/StringBuilder:<init>	()V
     //   293: astore 9
     //   295: goto -90 -> 205
-    //   298: getstatic 39	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   298: getstatic 43	com/tencent/mobileqq/troop/utils/SchoolTroopKeywordManager:a	Ljava/lang/String;
     //   301: astore 9
-    //   303: new 19	java/lang/StringBuilder
+    //   303: new 23	java/lang/StringBuilder
     //   306: dup
-    //   307: invokespecial 22	java/lang/StringBuilder:<init>	()V
+    //   307: invokespecial 26	java/lang/StringBuilder:<init>	()V
     //   310: astore 10
     //   312: aload 10
-    //   314: ldc_w 330
-    //   317: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   314: ldc_w 335
+    //   317: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   320: pop
     //   321: aload 10
-    //   323: invokestatic 108	java/lang/System:currentTimeMillis	()J
+    //   323: invokestatic 146	java/lang/System:currentTimeMillis	()J
     //   326: lload 7
     //   328: lsub
-    //   329: invokevirtual 158	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   329: invokevirtual 194	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   332: pop
     //   333: aload 9
     //   335: iconst_1
     //   336: aload 10
-    //   338: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   341: invokestatic 161	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   338: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   341: invokestatic 197	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   344: goto +5 -> 349
     //   347: aload_1
     //   348: athrow
@@ -480,7 +477,7 @@ public class SchoolTroopKeywordManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager
  * JD-Core Version:    0.7.0.1
  */

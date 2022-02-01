@@ -4,8 +4,8 @@ import com.tencent.mobileqq.kandian.glue.businesshandler.api.IBaseHandler;
 
 public abstract class HandlerTask
 {
-  public Object a;
   private String a;
+  public Object g;
   
   public HandlerTask(String paramString)
   {
@@ -21,7 +21,7 @@ public abstract class HandlerTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.HandlerTask
  * JD-Core Version:    0.7.0.1
  */

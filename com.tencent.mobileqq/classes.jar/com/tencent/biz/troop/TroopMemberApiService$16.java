@@ -1,37 +1,93 @@
 package com.tencent.biz.troop;
 
-import android.content.Intent;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.api.INearbyVideoUtils;
+import com.tencent.mobileqq.nearby.business.INearbyCardHandler;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class TroopMemberApiService$16
-  extends WtloginListener
+  extends TransProcessorHandler
 {
-  TroopMemberApiService$16(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
+  TroopMemberApiService$16(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public void handleMessage(Message paramMessage)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
-  }
-  
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (paramInt2 == 0)
+    if ((TroopMemberApiService.g(this.a) instanceof QQAppInterface))
     {
-      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, paramString.getExtras());
-      return;
+      FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("seq", this.a.l);
+      int i = paramMessage.what;
+      if (i != 1003)
+      {
+        if (i != 1005) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed. STATUS_SEND_ERROR");
+        }
+        localBundle.putBoolean("isSuccess", false);
+        this.a.a(75, localBundle);
+        return;
+      }
+      if (localFileMsg.fileType == 64)
+      {
+        this.a.i = NearbyPeoplePhotoUploadProcessor.mPhotoId;
+        if (this.a.i != this.a.j)
+        {
+          paramMessage = this.a;
+          paramMessage.j = paramMessage.i;
+          if (QLog.isColorLevel())
+          {
+            paramMessage = new StringBuilder();
+            paramMessage.append("mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = ");
+            paramMessage.append(this.a.i);
+            QLog.i("TroopMemberApiService", 2, paramMessage.toString());
+          }
+          paramMessage = (INearbyCardHandler)((QQAppInterface)TroopMemberApiService.h(this.a)).getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER);
+          if (paramMessage != null) {
+            paramMessage.a(this.a.k, this.a.i, true);
+          }
+          localBundle.putInt("head_id", this.a.i);
+          localBundle.putString("video_id", this.a.k);
+          localBundle.putBoolean("isSuccess", true);
+          this.a.a(75, localBundle);
+        }
+      }
+      else
+      {
+        if (localFileMsg.fileType == 39)
+        {
+          this.a.k = ((NearbyPeoplePhotoUploadProcessor)localFileMsg.processor).mVideoId;
+          if (QLog.isColorLevel())
+          {
+            paramMessage = new StringBuilder();
+            paramMessage.append("mPhotoUploadHandler.handleMessage(), big video upload success. videoId = ");
+            paramMessage.append(this.a.k);
+            QLog.i("TroopMemberApiService", 2, paramMessage.toString());
+          }
+          ((INearbyVideoUtils)QRoute.api(INearbyVideoUtils.class)).uploadThumbPhoto((QQAppInterface)TroopMemberApiService.i(this.a), this.a.h);
+          return;
+        }
+        localBundle.putBoolean("isSuccess", false);
+        this.a.a(75, localBundle);
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(61, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.16
  * JD-Core Version:    0.7.0.1
  */

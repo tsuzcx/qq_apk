@@ -10,23 +10,23 @@ class OnlineStatusPanel$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.a)
+    if (this.c.a)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
-      if ((localObject != null) && (((ArrayList)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a())))
+      localObject = this.a;
+      if ((localObject != null) && (((ArrayList)localObject).equals(this.c.this$0.b.a())))
       {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a();
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.setCurrentItem();
+        this.c.this$0.b.c();
+        this.c.this$0.setCurrentItem();
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.jdField_a_of_type_JavaUtilArrayList = this.b;
-    OnlineStatusPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.setCurrentItem();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-    int i = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.getCount();
+    this.c.this$0.b.a(this.a);
+    this.c.this$0.b.a = this.b;
+    OnlineStatusPanel.b(this.c.this$0);
+    this.c.this$0.b.notifyDataSetChanged();
+    this.c.this$0.setCurrentItem();
+    Object localObject = this.c.this$0.a;
+    int i = this.c.this$0.b.getCount();
     boolean bool = true;
     if (i <= 1) {
       bool = false;
@@ -36,7 +36,7 @@ class OnlineStatusPanel$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPanel.2.1
  * JD-Core Version:    0.7.0.1
  */

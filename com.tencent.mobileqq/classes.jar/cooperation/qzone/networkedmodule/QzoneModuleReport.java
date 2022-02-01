@@ -7,6 +7,7 @@ import common.config.service.QzoneConfig;
 import java.util.Calendar;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class QzoneModuleReport
 {
@@ -133,7 +134,7 @@ public class QzoneModuleReport
     localStringBuilder.append("_");
     localStringBuilder.append(str);
     localHashMap.put("param_FailCode", localStringBuilder.toString());
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramQzoneModuleRecord.mModuleId);
     localStringBuilder.append("_downloadRes");
@@ -188,7 +189,7 @@ public class QzoneModuleReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleReport
  * JD-Core Version:    0.7.0.1
  */

@@ -23,22 +23,21 @@ public class VidToShareGroupVideoInfoHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<GetShareGroupVideoInfoRequest, GetShareGroupVideoInfoResponse>
 {
-  protected String a;
-  protected List<String> a;
+  protected List<String> c = new ArrayList();
+  protected String d;
   
   public VidToShareGroupVideoInfoHandler(String paramString, List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.c.addAll(paramList);
     }
   }
   
   public void a()
   {
     GetShareGroupVideoInfoRequest localGetShareGroupVideoInfoRequest = new GetShareGroupVideoInfoRequest();
-    localGetShareGroupVideoInfoRequest.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    localGetShareGroupVideoInfoRequest.e = this.c;
     CmdTaskManger.a().a(localGetShareGroupVideoInfoRequest, this);
   }
   
@@ -49,30 +48,30 @@ public class VidToShareGroupVideoInfoHandler
     {
       paramErrorMessage = new StringBuilder();
       paramErrorMessage.append("onCmdRespond: request.count=");
-      paramErrorMessage.append(paramGetShareGroupVideoInfoRequest.jdField_a_of_type_JavaUtilList.size());
+      paramErrorMessage.append(paramGetShareGroupVideoInfoRequest.e.size());
       paramErrorMessage.append(",content=");
-      paramErrorMessage.append(paramGetShareGroupVideoInfoRequest.jdField_a_of_type_JavaUtilList.toString());
+      paramErrorMessage.append(paramGetShareGroupVideoInfoRequest.e.toString());
       SLog.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", paramErrorMessage.toString());
       paramGetShareGroupVideoInfoRequest = new StringBuilder();
       paramGetShareGroupVideoInfoRequest.append("onCmdRespond: count=");
-      paramGetShareGroupVideoInfoRequest.append(paramGetShareGroupVideoInfoResponse.jdField_a_of_type_JavaUtilList.size());
+      paramGetShareGroupVideoInfoRequest.append(paramGetShareGroupVideoInfoResponse.a.size());
       paramGetShareGroupVideoInfoRequest.append(",content=");
       paramGetShareGroupVideoInfoRequest.append(paramGetShareGroupVideoInfoResponse.toString());
       SLog.b("Q.qqstory.net:VidToShareGroupVideoInfoHandler", paramGetShareGroupVideoInfoRequest.toString());
-      b();
-      paramGetShareGroupVideoInfoResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetShareGroupVideoInfoResponse.jdField_a_of_type_JavaUtilList);
-      localGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramGetShareGroupVideoInfoRequest = paramGetShareGroupVideoInfoResponse.jdField_a_of_type_JavaUtilList.iterator();
+      c();
+      paramGetShareGroupVideoInfoResponse.a = ((StoryManager)SuperManager.a(5)).a(paramGetShareGroupVideoInfoResponse.a);
+      localGetSimpleInfoListEvent.a = this.d;
+      paramGetShareGroupVideoInfoRequest = paramGetShareGroupVideoInfoResponse.a.iterator();
       while (paramGetShareGroupVideoInfoRequest.hasNext())
       {
         paramGetShareGroupVideoInfoResponse = (StoryVideoItem)paramGetShareGroupVideoInfoRequest.next();
         paramGetShareGroupVideoInfoResponse = new VideoCollectionItem.FakeVideoUIItem(paramGetShareGroupVideoInfoResponse.mVid, paramGetShareGroupVideoInfoResponse);
-        localGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList.add(paramGetShareGroupVideoInfoResponse);
+        localGetSimpleInfoListEvent.b.add(paramGetShareGroupVideoInfoResponse);
       }
       StoryDispatcher.a().dispatch(localGetSimpleInfoListEvent);
       return;
     }
-    c();
+    d();
     StoryDispatcher.a().dispatch(localGetSimpleInfoListEvent);
   }
   
@@ -80,9 +79,9 @@ public class VidToShareGroupVideoInfoHandler
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VidToShareGroupVideoInfoHandler{mVidList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mCollectionId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -90,7 +89,7 @@ public class VidToShareGroupVideoInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.VidToShareGroupVideoInfoHandler
  * JD-Core Version:    0.7.0.1
  */

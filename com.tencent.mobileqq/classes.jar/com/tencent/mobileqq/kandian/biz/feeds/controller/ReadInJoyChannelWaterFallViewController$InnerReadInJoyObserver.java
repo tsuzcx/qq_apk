@@ -30,12 +30,12 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
 {
   private ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver(ReadInJoyChannelWaterFallViewController paramReadInJoyChannelWaterFallViewController) {}
   
-  private void c(List<Long> paramList)
+  private void d(List<Long> paramList)
   {
-    Object localObject = RIJQQAppInterfaceUtil.a();
+    Object localObject = RIJQQAppInterfaceUtil.e();
     if (FeedsSPUtils.a((AppRuntime)localObject))
     {
-      if (!ReadInJoyHelper.D((AppRuntime)localObject)) {
+      if (!ReadInJoyHelper.ap((AppRuntime)localObject)) {
         return;
       }
       if (paramList != null)
@@ -59,7 +59,7 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
           }
           j += 1;
         }
-        ReadInJoyLogicEngine.a().a().a((List)localObject);
+        ReadInJoyLogicEngine.a().d().a((List)localObject);
       }
     }
   }
@@ -83,7 +83,7 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
       } else {
         localObject1 = "";
       }
-      localStringBuilder.append(RIJAppSetting.a((String)localObject1));
+      localStringBuilder.append(RIJAppSetting.b((String)localObject1));
       localObject1 = localStringBuilder.toString();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject1);
@@ -120,10 +120,10 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
     }
     this.a.a.a(true, true);
     paramList = this.a;
-    if (!ReadInJoyChannelWaterFallViewController.a(paramList, ReadInJoyChannelWaterFallViewController.a(paramList) ^ true)) {
-      ReadInJoyChannelWaterFallViewController.a(this.a);
+    if (!ReadInJoyChannelWaterFallViewController.a(paramList, ReadInJoyChannelWaterFallViewController.b(paramList) ^ true)) {
+      ReadInJoyChannelWaterFallViewController.c(this.a);
     }
-    if (!ReadInJoyChannelWaterFallViewController.a(this.a)) {
+    if (!ReadInJoyChannelWaterFallViewController.b(this.a)) {
       ReadInJoyChannelWaterFallViewController.b(this.a, true);
     }
   }
@@ -140,10 +140,10 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
   
   public void a(List<Long> paramList)
   {
-    if (!PreloadManager.a().a()) {
+    if (!PreloadManager.a().f()) {
       return;
     }
-    PreloadManager.a().e();
+    PreloadManager.a().h();
     ReadInJoyChannelWaterFallViewController.a(this.a);
     if ((paramList != null) && (paramList.size() >= 5))
     {
@@ -156,7 +156,7 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
         {
           localObject = ((AbsBaseArticleInfo)localObject).mArticleContentUrl;
           if (PubAccountPreloadPlugin.a((String)localObject)) {
-            PreloadManager.a().a((String)localObject);
+            PreloadManager.a().b((String)localObject);
           }
         }
         i += 1;
@@ -171,7 +171,7 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
     if (paramInt != ReadInJoyChannelWaterFallViewController.a(this.a)) {
       return;
     }
-    paramInt = ReadInJoyLogicEngine.a().a(Integer.valueOf(paramInt));
+    paramInt = ReadInJoyLogicEngine.a().b(Integer.valueOf(paramInt));
     if (paramBoolean1)
     {
       Object localObject1;
@@ -196,29 +196,29 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
           QLog.d(((StringBuilder)localObject2).toString(), 1, ((StringBuilder)localObject1).toString());
         }
         ReadInJoyChannelWaterFallViewController.a(this.a, ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyChannelWaterFallViewController.a(this.a)), paramList), 1);
-        localObject1 = String.format(this.a.a().getResources().getString(2131717753), new Object[] { Integer.valueOf(paramInt) });
+        localObject1 = String.format(this.a.cQ_().getResources().getString(2131915228), new Object[] { Integer.valueOf(paramInt) });
         this.a.a.a(true, (String)localObject1);
       }
-      else if (this.a.a.a())
+      else if (this.a.a.b())
       {
         this.a.a.b(true);
-        e(this.a.a().getResources().getString(2131718010));
+        e(this.a.cQ_().getResources().getString(2131915491));
       }
       else
       {
-        localObject1 = this.a.a().getResources().getString(2131717752);
+        localObject1 = this.a.cQ_().getResources().getString(2131915227);
         this.a.a.a(true, (String)localObject1);
       }
     }
     else
     {
-      if (this.a.a.a()) {
-        e(this.a.a().getResources().getString(2131717971));
+      if (this.a.a.b()) {
+        e(this.a.cQ_().getResources().getString(2131915451));
       }
       this.a.a.b(paramBoolean1);
     }
     a(paramList);
-    c(paramList);
+    d(paramList);
   }
   
   public void b(int paramInt, List<Long> paramList)
@@ -257,24 +257,19 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
     {
       paramList = new StringBuilder();
       paramList.append("autoLoad:");
-      paramList.append(ReadInJoyChannelWaterFallViewController.b(this.a));
+      paramList.append(ReadInJoyChannelWaterFallViewController.d(this.a));
       paramList.append(" noMoreData:");
       paramList.append(paramBoolean2);
       paramList.append(" fore:");
-      paramList.append(GesturePWDUtils.isAppOnForeground(this.a.a()));
+      paramList.append(GesturePWDUtils.isAppOnForeground(this.a.cQ_()));
       QLog.d("ReadInJoyChannelWaterFallViewController", 2, paramList.toString());
     }
-    if ((!ReadInJoyChannelWaterFallViewController.b(this.a)) && (paramBoolean2) && (GesturePWDUtils.isAppOnForeground(this.a.a())) && (ReadInJoyChannelWaterFallViewController.a(this.a) != 70))
+    if ((!ReadInJoyChannelWaterFallViewController.d(this.a)) && (paramBoolean2) && (GesturePWDUtils.isAppOnForeground(this.a.cQ_())) && (ReadInJoyChannelWaterFallViewController.a(this.a) != 70))
     {
-      paramList = this.a.a().getResources().getString(2131717752);
-      QQToast.a(this.a.a().getApplicationContext(), paramList, 0).a();
+      paramList = this.a.cQ_().getResources().getString(2131915227);
+      QQToast.makeText(this.a.cQ_().getApplicationContext(), paramList, 0).show();
     }
     ReadInJoyChannelWaterFallViewController.c(this.a, false);
-  }
-  
-  public void c()
-  {
-    this.a.a.a();
   }
   
   public void c(int paramInt, List<Long> paramList)
@@ -310,15 +305,20 @@ class ReadInJoyChannelWaterFallViewController$InnerReadInJoyObserver
         ReadInJoyChannelWaterFallViewController.a(this.a, ReadInJoyLogicEngine.a().a(Integer.valueOf(ReadInJoyChannelWaterFallViewController.a(this.a)), paramList), 1);
         return;
       }
-      if (this.a.a.a()) {
-        e(this.a.a().getResources().getString(2131718010));
+      if (this.a.a.b()) {
+        e(this.a.cQ_().getResources().getString(2131915491));
       }
     }
+  }
+  
+  public void cE_()
+  {
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyChannelWaterFallViewController.InnerReadInJoyObserver
  * JD-Core Version:    0.7.0.1
  */

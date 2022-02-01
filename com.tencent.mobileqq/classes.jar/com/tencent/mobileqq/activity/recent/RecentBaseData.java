@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.recent;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.imcore.message.Message;
@@ -13,11 +14,15 @@ import com.tencent.mobileqq.imcore.proxy.basic.TalkBackProxy;
 import com.tencent.mobileqq.imcore.proxy.msg.MsgUtilsProxy;
 import com.tencent.mobileqq.imcore.proxy.msg.QQTextProxy;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
+import com.tencent.mobileqq.utils.abtest.ABTestController;
+import com.tencent.mobileqq.utils.abtest.ExpEntityInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 @ParcelAnnotation.ParcelObject
 public abstract class RecentBaseData
 {
+  public static final int C2C_PROCESSUNREADNUM = 99;
   public static final int MENU_FLAG_AV_A = 12288;
   public static final int MENU_FLAG_AV_C2C = 4096;
   public static final int MENU_FLAG_AV_DIS = 8192;
@@ -52,6 +57,7 @@ public abstract class RecentBaseData
   public static final int STATUS_SING_TOGETHER = 9;
   public static final int STATUS_STUDY_ROOM = 11;
   public static final int STATUS_WATCH_TOGETHER = 7;
+  public static final int TROOP_PROCESSUNREADNUM = 999;
   public static final int UNREAD_MSG_FALG_NUM_VIP = 4;
   public static final int UNREAD_MSG_FLAG_NONE = 0;
   public static final int UNREAD_MSG_FLAG_NUM_BLUE = 3;
@@ -314,11 +320,45 @@ public abstract class RecentBaseData
     }
   }
   
+  protected void processUnReadNum(int paramInt1, int paramInt2)
+  {
+    if (this.mUnreadFlag == 3)
+    {
+      if (this.mUnreadNum <= 0) {
+        return;
+      }
+      if (ABTestController.a().a("message_reminder_layer2_1505_20210618").f())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        if (this.mUnreadNum > paramInt2)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramInt2);
+          ((StringBuilder)localObject).append("+");
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.mUnreadNum);
+          ((StringBuilder)localObject).append(BaseApplication.getContext().getResources().getString(2131916809));
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("]");
+        Object localObject = localStringBuilder.toString();
+        this.mExtraInfoColor = paramInt1;
+        this.mMsgExtroInfo = ((CharSequence)localObject);
+      }
+    }
+  }
+  
   public abstract void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentBaseData
  * JD-Core Version:    0.7.0.1
  */

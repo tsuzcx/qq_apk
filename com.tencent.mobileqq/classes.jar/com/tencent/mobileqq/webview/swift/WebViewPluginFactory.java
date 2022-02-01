@@ -58,7 +58,6 @@ import com.tencent.mobileqq.activity.contact.addcontact.InvitationWebViewPlugin;
 import com.tencent.mobileqq.activity.faceunlock.FaceUnblockCameraJsApiPlugin;
 import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
 import com.tencent.mobileqq.antiphing.AntiphingHandler;
-import com.tencent.mobileqq.apollo.game.ApolloGamePlugin;
 import com.tencent.mobileqq.apollo.web.api.impl.ApolloJsPluginImpl;
 import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
 import com.tencent.mobileqq.ark.browser.ArkPlugin;
@@ -66,6 +65,8 @@ import com.tencent.mobileqq.ark.security.ArkSecurityWebViewPlugin;
 import com.tencent.mobileqq.campuscircle.CampusCirclePlugin;
 import com.tencent.mobileqq.confess.ConfessPlugin;
 import com.tencent.mobileqq.emotionintegrate.EmoticonPlugin;
+import com.tencent.mobileqq.flashshow.api.hybird.FSJsPlugin;
+import com.tencent.mobileqq.guild.webview.QQGuildJsPlugin;
 import com.tencent.mobileqq.imaxad.ImaxAdSharePlugin;
 import com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin;
 import com.tencent.mobileqq.intervideo.huayang.impl.HuayangJsPluginImpl;
@@ -75,6 +76,7 @@ import com.tencent.mobileqq.intervideo.yiqikan.TogetherBusinessForWebPlugin;
 import com.tencent.mobileqq.intimate.IntimatePlugin;
 import com.tencent.mobileqq.jsp.AVGameShareJsApiPlugin;
 import com.tencent.mobileqq.jsp.AccountsPlugin;
+import com.tencent.mobileqq.jsp.AppPlugin;
 import com.tencent.mobileqq.jsp.ConnectApiPlugin;
 import com.tencent.mobileqq.jsp.DataApiPlugin;
 import com.tencent.mobileqq.jsp.DeviceApiPlugin;
@@ -94,6 +96,7 @@ import com.tencent.mobileqq.jsp.QQApiPlugin;
 import com.tencent.mobileqq.jsp.QQStoryApiPlugin;
 import com.tencent.mobileqq.jsp.RegisterPlugin;
 import com.tencent.mobileqq.jsp.SmsApiPlugin;
+import com.tencent.mobileqq.jsp.StudyModePlugin;
 import com.tencent.mobileqq.jsp.StudyRoomJsPlugin;
 import com.tencent.mobileqq.jsp.TeleScreenApiPlugin;
 import com.tencent.mobileqq.jsp.TroopApiPlugin;
@@ -119,6 +122,8 @@ import com.tencent.mobileqq.profilecard.bussiness.anonymous.jsp.AskAnonymouslyAp
 import com.tencent.mobileqq.qcircle.api.hybird.QCircleJsPlugin;
 import com.tencent.mobileqq.qqexpand.widget.ExtendFriendWebViewPlugin;
 import com.tencent.mobileqq.qqgamepub.web.QQGameWebViewJsPlugin;
+import com.tencent.mobileqq.qqgift.webview.QQGiftJsPlugin;
+import com.tencent.mobileqq.qqlive.webview.QQLiveJsPlugin;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.realname.GetAreaCodeWebviewPlugin;
 import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
@@ -156,6 +161,7 @@ import com.tencent.mobileqq.vaswebviewplugin.EmojiSubPageUiPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.FunnyPicJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.GiftJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.HealthUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.HippyJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.IndividualRedPacketJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.IndividuationPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.IndividuationUIPlugin;
@@ -182,6 +188,7 @@ import com.tencent.mobileqq.vaswebviewplugin.SuitUIPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.ThemeAndBubbleCommonJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.TreasureCardJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
 import com.tencent.mobileqq.vaswebviewplugin.VipClubJsPlugin;
@@ -200,6 +207,7 @@ import com.tencent.mobileqq.wholepeople.WholePeoplePlugin;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPlugin;
 import com.tencent.qidian.plugin.QidianWpaWebviewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.timi.game.web.business.impl.plugin.LivingInscriptionWebPlugin;
 import cooperation.comic.VipComicEmoticonJsPlugin;
 import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 import cooperation.qzone.webviewplugin.GDTReportPlugin;
@@ -217,12 +225,19 @@ import java.util.Set;
 
 public class WebViewPluginFactory
 {
-  @ConfigInject(configPath="/Business/webview/src/main/resources/Inject_business_webviewplugin_map.yml", version=3)
+  @ConfigInject(configPath="/Business/webview/src/main/resources/Inject_business_webviewplugin_map.yml", version=4)
   public static HashMap<String, Class<? extends WebViewPlugin>> a = new HashMap();
   static final HashMap<Class<? extends WebViewPlugin>, Integer> b;
   
   static
   {
+    a.put("app", AppPlugin.class);
+    a.put("timiEsports", LivingInscriptionWebPlugin.class);
+    a.put("studyMode", StudyModePlugin.class);
+    a.put("qq_gift", QQGiftJsPlugin.class);
+    a.put("qq_livestream", QQLiveJsPlugin.class);
+    a.put("guild", QQGuildJsPlugin.class);
+    a.put("hippy", HippyJsPlugin.class);
     a.put("forceHttps", WebForceHttpsPlugin.class);
     a.put("gameCenter", GameCenterInterruptPlugin.class);
     a.put("register", RegisterPlugin.class);
@@ -293,7 +308,6 @@ public class WebViewPluginFactory
     a.put("specialRing", VipSpecialSoundWebViewPlugin.class);
     a.put("extendFriend", ExtendFriendWebViewPlugin.class);
     a.put("deviceProtect", DeviceProtectJsApiPlugin.class);
-    a.put("apolloGame", ApolloGamePlugin.class);
     a.put("historyhead", HistoryHeadWebViewPlugin.class);
     a.put("bless", BlessJsApiPlugin.class);
     a.put("chatBg", ChatBackgroundJsPlugin.class);
@@ -364,6 +378,7 @@ public class WebViewPluginFactory
     a.put("common", ThemeAndBubbleCommonJsPlugin.class);
     a.put("accountRelease", AccountReleasePlugin.class);
     a.put("groupVideo", GVideoWebPlugin.class);
+    a.put("treasureCard", TreasureCardJsPlugin.class);
     a.put("GiftJsPlugin", GiftJsPlugin.class);
     a.put("video", VipVideoApiPlugin.class);
     a.put("qw_charge", QWalletCommonJsPlugin.class);
@@ -442,6 +457,7 @@ public class WebViewPluginFactory
     a.put("friendApi", FriendApiPlugin.class);
     a.put("qztodayinhistory", QZoneTihSettingWebPlugin.class);
     a.put("sso", SSOWebviewPlugin.class);
+    a.put("qflash", FSJsPlugin.class);
     a.put("qcircle", QCircleJsPlugin.class);
     a.put("qqcard", QQCardJsPlugin.class);
     a.put("TroopMemberApiPlugin", TroopMemberApiPlugin.class);
@@ -504,7 +520,7 @@ public class WebViewPluginFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPluginFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -23,19 +23,14 @@ public class GeneralRecommendHomeFeed
     super(paramGeneralRecommendFeedItem);
   }
   
-  public GeneralRecommendFeedItem a()
-  {
-    return (GeneralRecommendFeedItem)super.a();
-  }
-  
   public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
     Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_recommend_feed.recommend_feed.get();
-    ((GeneralRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
-    ((GeneralRecommendFeedItem)this.a).blurb = paramStoryFeed.general_recommend_feed.blurb.get().toStringUtf8();
-    ((GeneralRecommendFeedItem)this.a).recommendId = paramStoryFeed.general_recommend_feed.recommend_id.get();
-    ((GeneralRecommendFeedItem)this.a).recommendTitle = paramStoryFeed.general_recommend_feed.title_wording.get().toStringUtf8();
-    ((GeneralRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    ((GeneralRecommendFeedItem)this.f).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
+    ((GeneralRecommendFeedItem)this.f).blurb = paramStoryFeed.general_recommend_feed.blurb.get().toStringUtf8();
+    ((GeneralRecommendFeedItem)this.f).recommendId = paramStoryFeed.general_recommend_feed.recommend_id.get();
+    ((GeneralRecommendFeedItem)this.f).recommendTitle = paramStoryFeed.general_recommend_feed.title_wording.get().toStringUtf8();
+    ((GeneralRecommendFeedItem)this.f).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
     paramStoryFeed = new ArrayList();
     localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
     while (((Iterator)localObject).hasNext())
@@ -47,6 +42,11 @@ public class GeneralRecommendHomeFeed
     }
     c(paramStoryFeed, true);
     return true;
+  }
+  
+  public GeneralRecommendFeedItem h()
+  {
+    return (GeneralRecommendFeedItem)super.i();
   }
 }
 

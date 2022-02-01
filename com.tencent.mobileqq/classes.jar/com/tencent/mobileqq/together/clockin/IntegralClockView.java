@@ -15,10 +15,10 @@ public class IntegralClockView
   extends ClockView
   implements Observer
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private ClockInData jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
+  private Context a;
+  private RelativeLayout b;
+  private DiniFlyAnimationView c;
+  private ClockInData d;
   
   public IntegralClockView(DiniFlyAnimationView paramDiniFlyAnimationView, RelativeLayout paramRelativeLayout, Context paramContext, ClockAnimController paramClockAnimController, ClockInData paramClockInData)
   {
@@ -26,67 +26,67 @@ public class IntegralClockView
     if (paramClockAnimController != null) {
       paramClockAnimController.addObserver(this);
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData = paramClockInData;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = paramDiniFlyAnimationView;
-    paramDiniFlyAnimationView = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+    this.a = paramContext;
+    this.b = paramRelativeLayout;
+    this.d = paramClockInData;
+    this.c = paramDiniFlyAnimationView;
+    paramDiniFlyAnimationView = this.c;
     if (paramDiniFlyAnimationView != null)
     {
       paramDiniFlyAnimationView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new IntegralClockView.1(this));
-      paramDiniFlyAnimationView = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-      if ((paramDiniFlyAnimationView != null) && (!TextUtils.isEmpty(paramDiniFlyAnimationView.m))) {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimationFromUrl(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.m);
+      this.c.addAnimatorListener(new IntegralClockView.1(this));
+      paramDiniFlyAnimationView = this.d;
+      if ((paramDiniFlyAnimationView != null) && (!TextUtils.isEmpty(paramDiniFlyAnimationView.p))) {
+        this.c.setAnimationFromUrl(this.d.p);
       }
     }
   }
   
   private void b()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    if ((this.b != null) && (this.c != null) && (this.a != null))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
+      Object localObject = this.d;
       if (localObject != null)
       {
-        if (TextUtils.isEmpty(((ClockInData)localObject).m)) {
+        if (TextUtils.isEmpty(((ClockInData)localObject).p)) {
           return;
         }
-        int i = ScreenUtil.getInstantScreenHeight(this.jdField_a_of_type_AndroidContentContext);
+        int i = ScreenUtil.getInstantScreenHeight(this.a);
         localObject = new int[2];
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocationOnScreen((int[])localObject);
+        this.b.getLocationOnScreen((int[])localObject);
         int j = localObject[1];
-        int k = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-        localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject).bottomMargin = (i - j - k - ViewUtils.b(30.0F));
-        if (((FrameLayout.LayoutParams)localObject).bottomMargin + ViewUtils.b(170.0F) > i) {
-          ((FrameLayout.LayoutParams)localObject).bottomMargin = (i - ViewUtils.b(170.0F) + ViewUtils.b(30.0F));
+        int k = this.b.getHeight();
+        localObject = (FrameLayout.LayoutParams)this.c.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject).bottomMargin = (i - j - k - ViewUtils.dpToPx(30.0F));
+        if (((FrameLayout.LayoutParams)localObject).bottomMargin + ViewUtils.dpToPx(170.0F) > i) {
+          ((FrameLayout.LayoutParams)localObject).bottomMargin = (i - ViewUtils.dpToPx(170.0F) + ViewUtils.dpToPx(30.0F));
         }
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimationFromUrl(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.m);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(false);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+        this.c.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.c.setVisibility(0);
+        this.c.setAnimationFromUrl(this.d.p);
+        this.c.loop(false);
+        this.c.playAnimation();
       }
     }
   }
   
   public void a()
   {
-    DiniFlyAnimationView localDiniFlyAnimationView = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+    DiniFlyAnimationView localDiniFlyAnimationView = this.c;
     if (localDiniFlyAnimationView != null)
     {
       localDiniFlyAnimationView.removeAllAnimatorListener();
-      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
+      if (this.c.isAnimating()) {
+        this.c.endAnimation();
       }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = null;
+      this.c = null;
     }
   }
   
   public void b(int paramInt)
   {
-    DiniFlyAnimationView localDiniFlyAnimationView = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+    DiniFlyAnimationView localDiniFlyAnimationView = this.c;
     if (localDiniFlyAnimationView != null) {
       localDiniFlyAnimationView.setVisibility(paramInt);
     }
@@ -104,7 +104,7 @@ public class IntegralClockView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.IntegralClockView
  * JD-Core Version:    0.7.0.1
  */

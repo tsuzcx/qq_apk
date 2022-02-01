@@ -9,31 +9,31 @@ import com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogic.IcheckBoxCallb
 public class AEAbstractPhotoListFragment$PhotoItemClickListener
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  int a;
+  CheckBox b;
   
   public AEAbstractPhotoListFragment$PhotoItemClickListener(AEAbstractPhotoListFragment paramAEAbstractPhotoListFragment) {}
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(CheckBox paramCheckBox)
   {
-    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
+    this.b = paramCheckBox;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.a.a != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.a.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
+    if (this.c.a.j != null) {
+      this.c.a.j.a(paramView, this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.fragment.AEAbstractPhotoListFragment.PhotoItemClickListener
  * JD-Core Version:    0.7.0.1
  */

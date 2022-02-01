@@ -49,25 +49,25 @@ public class IdentificationPoseReflect$QYtSDKEventListener
       QLog.e("qq_Identification.Model", 1, "network not available");
       paramString1 = new HashMap();
       paramString1.put("process_action", "failed");
-      paramString1.put("message", HardCodeUtil.a(2131705788));
-      this.a.jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener.handleEvent(paramString1);
+      paramString1.put("message", HardCodeUtil.a(2131903673));
+      this.a.b.handleEvent(paramString1);
       return;
     }
     this.a.a(new IdentificationPoseReflect.QYtSDKEventListener.2(this));
     QLog.d("qq_Identification.Model", 1, "start upload face data");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqIdentificationIFaceController == null)
+    if (this.a.a == null)
     {
       paramString1 = this.a;
-      paramString1.jdField_a_of_type_ComTencentMobileqqIdentificationIFaceController = new ActReflectRequestHelper(IdentificationPoseReflect.a(paramString1), paramString2, this.a.jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener);
+      paramString1.a = new ActReflectRequestHelper(IdentificationPoseReflect.a(paramString1), paramString2, this.a.b);
     }
-    paramString1 = (ActReflectRequestHelper)this.a.jdField_a_of_type_ComTencentMobileqqIdentificationIFaceController;
+    paramString1 = (ActReflectRequestHelper)this.a.a;
     paramString1.a(paramString2);
     paramString1.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationPoseReflect.QYtSDKEventListener
  * JD-Core Version:    0.7.0.1
  */

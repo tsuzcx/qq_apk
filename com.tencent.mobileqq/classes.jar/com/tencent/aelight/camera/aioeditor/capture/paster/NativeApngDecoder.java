@@ -16,50 +16,48 @@ import java.util.Locale;
 public class NativeApngDecoder
   implements Handler.Callback
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  protected Bitmap a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[7];
-  public int b;
-  private volatile long jdField_b_of_type_Long = 0L;
-  protected Bitmap b;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long = 0L;
-  protected int d = -1;
-  protected int e;
-  private int f = 0;
+  int[] a = new int[7];
+  public int b = 0;
+  public int c = 0;
+  long d;
+  int e;
+  protected Bitmap f;
+  protected Bitmap g;
+  protected int h = -1;
+  protected int i;
+  private int j = 0;
+  private Paint k = new Paint();
+  private Paint l = new Paint();
+  private volatile long m = 0L;
+  private HandlerThread n;
+  private Handler o;
+  private long p = 0L;
+  private boolean q = false;
   
   public NativeApngDecoder(File paramFile)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    int i;
-    int j;
+    int i1;
+    int i2;
     if (paramFile != null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("gif_decode_thread");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(0);
+      this.n = new HandlerThread("gif_decode_thread");
+      this.n.start();
+      this.o = new Handler(this.n.getLooper(), this);
+      this.k.setAntiAlias(true);
+      this.l.setAntiAlias(true);
+      this.l.setColor(0);
       a(paramFile);
-      i = this.jdField_a_of_type_Int;
-      if (i > 0)
+      i1 = this.b;
+      if (i1 > 0)
       {
-        j = this.jdField_b_of_type_Int;
-        if (j <= 0) {}
+        i2 = this.c;
+        if (i2 <= 0) {}
       }
     }
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
+      this.f = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_8888);
+      this.g = Bitmap.createBitmap(this.b, this.c, Bitmap.Config.ARGB_8888);
     }
     catch (OutOfMemoryError paramFile)
     {
@@ -70,42 +68,42 @@ public class NativeApngDecoder
     URLDrawable.clearMemoryCache();
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
+      this.f = Bitmap.createBitmap(this.b, this.c, Bitmap.Config.ARGB_8888);
+      this.g = Bitmap.createBitmap(this.b, this.c, Bitmap.Config.ARGB_8888);
     }
     catch (OutOfMemoryError paramFile)
     {
       break label234;
     }
     QLog.e("NativeApngDecoder", 1, "APNG create Bitmap OOM");
-    this.jdField_b_of_type_Long = ApngImage.nativeGetNextFrame(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ArrayOfInt);
-    paramFile = this.jdField_a_of_type_ArrayOfInt;
+    this.m = ApngImage.nativeGetNextFrame(this.d, this.m, this.f, this.a);
+    paramFile = this.a;
     if (paramFile[5] == 0) {
-      this.e = paramFile[4];
+      this.i = paramFile[4];
     }
-    this.d = 0;
+    this.h = 0;
     return;
     throw new NullPointerException("Source is null");
   }
   
   private void a(File paramFile)
   {
-    this.jdField_a_of_type_Long = ApngImage.nativeStartDecode(paramFile.getAbsolutePath(), this.jdField_a_of_type_ArrayOfInt, this.jdField_c_of_type_Int);
-    paramFile = this.jdField_a_of_type_ArrayOfInt;
+    this.d = ApngImage.nativeStartDecode(paramFile.getAbsolutePath(), this.a, this.e);
+    paramFile = this.a;
     if (paramFile[5] == 0)
     {
-      this.jdField_a_of_type_Int = paramFile[0];
-      this.jdField_b_of_type_Int = paramFile[1];
-      this.f = paramFile[2];
+      this.b = paramFile[0];
+      this.c = paramFile[1];
+      this.j = paramFile[2];
       if (QLog.isColorLevel())
       {
         paramFile = new StringBuilder();
         paramFile.append("start decode success width = ");
-        paramFile.append(this.jdField_a_of_type_Int);
+        paramFile.append(this.b);
         paramFile.append(" height = ");
-        paramFile.append(this.jdField_b_of_type_Int);
+        paramFile.append(this.c);
         paramFile.append(" frameCount = ");
-        paramFile.append(this.f);
+        paramFile.append(this.j);
         QLog.d("NativeApngDecoder", 2, paramFile.toString());
       }
     }
@@ -113,7 +111,7 @@ public class NativeApngDecoder
     {
       paramFile = new StringBuilder();
       paramFile.append("start decode error: ");
-      paramFile.append(this.jdField_a_of_type_ArrayOfInt[5]);
+      paramFile.append(this.a[5]);
       QLog.e("NativeApngDecoder", 1, paramFile.toString());
     }
   }
@@ -121,7 +119,7 @@ public class NativeApngDecoder
   public Bitmap a(long paramLong)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.e * 1000 * 1000;
+    long l2 = this.i * 1000 * 1000;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -129,7 +127,7 @@ public class NativeApngDecoder
       ((StringBuilder)localObject).append(paramLong);
       QLog.d("NativeApngDecoder", 2, ((StringBuilder)localObject).toString());
     }
-    long l3 = paramLong - this.jdField_c_of_type_Long;
+    long l3 = paramLong - this.p;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -145,41 +143,41 @@ public class NativeApngDecoder
     }
     if (l3 < l2)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.q)
       {
         localObject = Message.obtain();
         ((Message)localObject).what = 2;
-        ((Message)localObject).arg1 = this.d;
+        ((Message)localObject).arg1 = this.h;
         ((Message)localObject).arg2 = 0;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+        this.o.sendMessage((Message)localObject);
       }
     }
-    else if (this.jdField_a_of_type_Boolean)
+    else if (this.q)
     {
-      if (this.d == 0) {
-        i = 1;
+      if (this.h == 0) {
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      this.d = i;
-      this.jdField_c_of_type_Long = paramLong;
-      this.jdField_a_of_type_Boolean = false;
+      this.h = i1;
+      this.p = paramLong;
+      this.q = false;
       localObject = Message.obtain();
       ((Message)localObject).what = 2;
-      ((Message)localObject).arg1 = this.d;
+      ((Message)localObject).arg1 = this.h;
       ((Message)localObject).arg2 = 1;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.o.sendMessage((Message)localObject);
     }
     else if (QLog.isColorLevel())
     {
       QLog.e("NativeApngDecoder", 2, "getNextFrameBitmap| had not preLoad ");
     }
     Object localObject = null;
-    int i = this.d;
-    if (i == 0) {
-      localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    } else if (i == 1) {
-      localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    int i1 = this.h;
+    if (i1 == 0) {
+      localObject = this.f;
+    } else if (i1 == 1) {
+      localObject = this.g;
     }
     paramLong = System.currentTimeMillis();
     if (QLog.isColorLevel())
@@ -196,69 +194,69 @@ public class NativeApngDecoder
   
   protected void finalize()
   {
-    if (this.jdField_b_of_type_Long != 0L) {
-      ApngImage.nativeFreeFrame(this.jdField_b_of_type_Long);
+    if (this.m != 0L) {
+      ApngImage.nativeFreeFrame(this.m);
     }
-    long l = this.jdField_a_of_type_Long;
-    if (l != 0L) {
-      ApngImage.nativeFreeImage(l);
+    long l1 = this.d;
+    if (l1 != 0L) {
+      ApngImage.nativeFreeImage(l1);
     }
     super.finalize();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i;
+    int i1;
     if (paramMessage.what == 1)
     {
-      i = this.d;
-      if ((i != -1) && (i != 1))
+      i1 = this.h;
+      if ((i1 != -1) && (i1 != 1))
       {
-        if (i == 0)
+        if (i1 == 0)
         {
-          this.jdField_b_of_type_Long = ApngImage.nativeGetNextFrame(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ArrayOfInt);
-          this.d = 1;
+          this.m = ApngImage.nativeGetNextFrame(this.d, this.m, this.g, this.a);
+          this.h = 1;
           return false;
         }
       }
       else
       {
-        this.jdField_b_of_type_Long = ApngImage.nativeGetNextFrame(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ArrayOfInt);
-        this.d = 0;
+        this.m = ApngImage.nativeGetNextFrame(this.d, this.m, this.f, this.a);
+        this.h = 0;
         return false;
       }
     }
     else if (paramMessage.what == 2)
     {
       long l1 = System.currentTimeMillis();
-      i = paramMessage.arg1;
-      int j = paramMessage.arg2;
+      i1 = paramMessage.arg1;
+      int i2 = paramMessage.arg2;
       if (QLog.isColorLevel())
       {
         paramMessage = new StringBuilder();
         paramMessage.append("getNextFrameBitmap| PRE_LOAD_FRAME Begin + type:");
-        paramMessage.append(j);
+        paramMessage.append(i2);
         QLog.d("NativeApngDecoder", 2, paramMessage.toString());
       }
-      if (i == 0) {
-        this.jdField_b_of_type_Long = ApngImage.nativeGetNextFrame(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ArrayOfInt);
-      } else if (i == 1) {
-        this.jdField_b_of_type_Long = ApngImage.nativeGetNextFrame(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ArrayOfInt);
+      if (i1 == 0) {
+        this.m = ApngImage.nativeGetNextFrame(this.d, this.m, this.g, this.a);
+      } else if (i1 == 1) {
+        this.m = ApngImage.nativeGetNextFrame(this.d, this.m, this.f, this.a);
       }
-      paramMessage = this.jdField_a_of_type_ArrayOfInt;
+      paramMessage = this.a;
       if (paramMessage[5] == 0) {
-        this.e = paramMessage[4];
+        this.i = paramMessage[4];
       } else if (QLog.isColorLevel()) {
         QLog.d("NativeApngDecoder", 2, "getNextFrameBitmap|error");
       }
-      this.jdField_a_of_type_Boolean = true;
-      i = this.jdField_a_of_type_ArrayOfInt[3];
+      this.q = true;
+      i1 = this.a[3];
       long l2 = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
         paramMessage = new StringBuilder();
         paramMessage.append("getNextFrameBitmap| PRE_LOAD_FRAME END curIndex= ");
-        paramMessage.append(i);
+        paramMessage.append(i1);
         paramMessage.append(", cost=");
         paramMessage.append(l2 - l1);
         QLog.d("NativeApngDecoder", 2, paramMessage.toString());
@@ -269,12 +267,12 @@ public class NativeApngDecoder
   
   public String toString()
   {
-    return String.format(Locale.US, "Size: %dx%d, %d frames, error: %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[0]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[2]), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[3]) });
+    return String.format(Locale.US, "Size: %dx%d, %d frames, error: %d", new Object[] { Integer.valueOf(this.a[0]), Integer.valueOf(this.a[1]), Integer.valueOf(this.a[2]), Integer.valueOf(this.a[3]) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.NativeApngDecoder
  * JD-Core Version:    0.7.0.1
  */

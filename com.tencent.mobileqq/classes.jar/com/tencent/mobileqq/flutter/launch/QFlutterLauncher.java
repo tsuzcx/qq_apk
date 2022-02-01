@@ -11,7 +11,7 @@ import com.qflutter.qqface.loader.QQFaceLoader;
 import com.qflutter.resource_loader.QFlutterResourceLoader;
 import com.qflutter.superchannel.SuperChannelLog;
 import com.qflutter.vistaimage.VistaImageLog;
-import com.qflutter.vistaimage.VistaImagePlugin;
+import com.qflutter.vistaplayer.VistaPlayerLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -25,7 +25,7 @@ import com.tencent.mobileqq.flutter.qqface.QFlutterFace;
 import com.tencent.mobileqq.flutter.report.QFlutterReporter;
 import com.tencent.mobileqq.flutter.vistaimage.SuperChannelLogImpl;
 import com.tencent.mobileqq.flutter.vistaimage.VistaImageLogImpl;
-import com.tencent.mobileqq.flutter.vistaimage.VistaImageProxy;
+import com.tencent.mobileqq.flutter.vistaimage.VistaPlayerLogImpl;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qqexpand.utils.ExpandResourceUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -41,34 +41,34 @@ import mqq.os.MqqHandler;
 
 public class QFlutterLauncher
 {
-  private static QFlutterLauncher jdField_a_of_type_ComTencentMobileqqFlutterLaunchQFlutterLauncher;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private int jdField_a_of_type_Int = 0;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsLooper);
-  private final Looper jdField_a_of_type_AndroidOsLooper = Looper.getMainLooper();
-  private LaunchTrace jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace = new LaunchTrace();
-  private QuickInstaller jdField_a_of_type_ComTencentMobileqqFlutterLaunchQuickInstaller = new QuickInstaller();
-  private final Set<LaunchListener> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
+  private static QFlutterLauncher a;
+  private static String b = "";
+  private int c = 0;
+  private final Looper d = Looper.getMainLooper();
+  private final Handler e = new Handler(this.d);
+  private final Set<LaunchListener> f = new HashSet();
+  private LaunchTrace g = new LaunchTrace();
+  private QuickInstaller h = new QuickInstaller();
+  private boolean i;
   
   public static QFlutterLauncher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFlutterLaunchQFlutterLauncher == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqFlutterLaunchQFlutterLauncher == null) {
-          jdField_a_of_type_ComTencentMobileqqFlutterLaunchQFlutterLauncher = new QFlutterLauncher();
+        if (a == null) {
+          a = new QFlutterLauncher();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqFlutterLaunchQFlutterLauncher;
+    return a;
   }
   
   private void a(int paramInt, boolean paramBoolean)
   {
     QLog.d("QFlutter.launcher", 1, String.format("notifyResult, errCode: %s, isFirstLaunch: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) }));
-    if (Looper.myLooper() == this.jdField_a_of_type_AndroidOsLooper)
+    if (Looper.myLooper() == this.d)
     {
       b(paramInt, paramBoolean);
       return;
@@ -76,27 +76,21 @@ public class QFlutterLauncher
     ThreadManager.getUIHandler().post(new QFlutterLauncher.4(this, paramInt, paramBoolean));
   }
   
-  private void b()
-  {
-    Looper.myLooper();
-    Looper localLooper = this.jdField_a_of_type_AndroidOsLooper;
-  }
-  
   private void b(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.e.removeCallbacksAndMessages(null);
     if (paramInt == 0) {
-      this.jdField_a_of_type_Int = 2;
+      this.c = 2;
     } else {
-      this.jdField_a_of_type_Int = 0;
+      this.c = 0;
     }
-    LaunchResult localLaunchResult = new LaunchResult(paramInt, paramBoolean, this.jdField_a_of_type_Boolean);
+    LaunchResult localLaunchResult = new LaunchResult(paramInt, paramBoolean, this.i);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.a(paramInt, this.jdField_a_of_type_Boolean);
-      localLaunchResult.a(this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace);
+      this.g.a(paramInt, this.i);
+      localLaunchResult.a(this.g);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext()) {
       ((LaunchListener)localIterator.next()).a(localLaunchResult);
     }
@@ -107,43 +101,49 @@ public class QFlutterLauncher
     if (paramLaunchListener == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilSet)
+    synchronized (this.f)
     {
-      this.jdField_a_of_type_JavaUtilSet.add(paramLaunchListener);
+      this.f.add(paramLaunchListener);
       return;
     }
   }
   
   private void b(String paramString)
   {
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.f();
+    c();
+    this.g.f();
     FlutterMain.setNativeLibDir(paramString);
-    e();
+    f();
     FlutterMain.startInitialization(BaseApplicationImpl.getContext());
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.g();
+    this.g.g();
     a(0, true);
   }
   
   private void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.launcher", 2, "start install");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.a();
-    if (DebugInstaller.a())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      DebugInstaller.a();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchQuickInstaller.a(new QFlutterLauncher.1(this));
+    Looper.myLooper();
+    Looper localLooper = this.d;
   }
   
   private void d()
   {
-    FlutterSubQIPCModule.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.launcher", 2, "start install");
+    }
+    this.g.a();
+    if (DebugInstaller.a())
+    {
+      this.i = true;
+      DebugInstaller.b();
+      return;
+    }
+    this.i = false;
+    this.h.a(new QFlutterLauncher.1(this));
+  }
+  
+  private void e()
+  {
+    FlutterSubQIPCModule.b();
     Bundle localBundle = new Bundle();
     if (2 == BaseApplicationImpl.sProcessId) {
       localBundle.putString("FlutterCallerIpcProcessName", "com.tencent.mobileqq:qzone");
@@ -153,7 +153,7 @@ public class QFlutterLauncher
     QIPCClientHelper.getInstance().getClient().callServer("FlutterMainQIPCModule", "ACTION_INSTALL_ENGINE", localBundle, new QFlutterLauncher.2(this));
   }
   
-  private void e()
+  private void f()
   {
     QflutterLogPlugin.setLog(new QFlutterLog(QFlutterInstaller.a("libQFlutterLog.so")));
     QFlutterResourceLoader.get().init(BaseApplicationImpl.getContext(), new QFlutterResourceLoaderNativeImp(BaseApplicationImpl.getContext()));
@@ -166,20 +166,108 @@ public class QFlutterLauncher
     localStringBuilder.append("/");
     localStringBuilder.append("liblibpag.so");
     localAnimateImgInitManager.init(new AnimateImgInit(localStringBuilder.toString()));
-    VistaImagePlugin.init(VistaImageProxy.a());
     SuperChannelLog.init(new SuperChannelLogImpl());
     VistaImageLog.init(new VistaImageLogImpl());
+    VistaPlayerLog.init(new VistaPlayerLogImpl());
+    g();
   }
   
-  public void a()
+  private void g() {}
+  
+  public void a(LaunchListener paramLaunchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.d();
+    if (paramLaunchListener == null) {
+      return;
+    }
+    synchronized (this.f)
+    {
+      this.f.remove(paramLaunchListener);
+      return;
+    }
+  }
+  
+  public void a(LaunchListener paramLaunchListener, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    c();
+    b(paramLaunchListener);
+    int j = this.c;
+    if (j == 2)
+    {
+      QLog.d("QFlutter.launcher", 1, "engine is running");
+      a(0, false);
+      return;
+    }
+    if (j == 1)
+    {
+      QLog.d("QFlutter.launcher", 1, "engine is launching");
+      return;
+    }
+    this.c = 1;
+    this.g.i();
+    this.g.a(paramBoolean1, paramBoolean2);
+    d();
+  }
+  
+  public void a(QFlutterLauncher.InstallResult paramInstallResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.launcher", 2, String.format("onInstallResult, isSuccess: %s, installDir: %s, isLocalEngineExist: %s, isLocalAppExist: %s, fromQuickInstall: %s", new Object[] { Boolean.valueOf(paramInstallResult.a), paramInstallResult.b, Boolean.valueOf(paramInstallResult.c), Boolean.valueOf(paramInstallResult.d), Boolean.valueOf(paramInstallResult.f) }));
+    }
+    QFlutterReporter.a(paramInstallResult.e);
+    if ((paramInstallResult.a) && (FileUtil.d(paramInstallResult.b)))
+    {
+      this.g.a(paramInstallResult.c, paramInstallResult.d, paramInstallResult.f);
+      a(paramInstallResult.b);
+      return;
+    }
+    QLog.d("QFlutter.launcher", 1, String.format("onInstallResult, isSuccess: %s, installDir: %s, fileIsExist: %s", new Object[] { Boolean.valueOf(paramInstallResult.a), paramInstallResult.b, Boolean.valueOf(FileUtil.d(paramInstallResult.b)) }));
+    a(3, true);
+  }
+  
+  public void a(String paramString)
+  {
+    this.g.b();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("res.apk");
+    localObject = ((StringBuilder)localObject).toString();
+    if (FileUtil.d((String)localObject)) {
+      try
+      {
+        AssetManager localAssetManager = BaseApplicationImpl.getContext().getAssets();
+        Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
+        localMethod.setAccessible(true);
+        localMethod.invoke(localAssetManager, new Object[] { localObject });
+        this.g.c();
+        if (Looper.myLooper() == this.d)
+        {
+          b(paramString);
+          return;
+        }
+        ThreadManager.getUIHandler().postAtFrontOfQueue(new QFlutterLauncher.3(this, paramString));
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("QFlutter.launcher", 1, "loadAsset", paramString);
+        a(5, true);
+        return;
+      }
+    }
+    QLog.e("QFlutter.launcher", 1, String.format("assetsPath: %s not exist", new Object[] { localObject }));
+    a(4, true);
+  }
+  
+  public void b()
+  {
+    this.g.d();
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(QFlutterInstaller.b());
     ((StringBuilder)localObject1).append(File.separator);
     ((StringBuilder)localObject1).append("res.apk");
     localObject1 = ((StringBuilder)localObject1).toString();
-    if (FileUtil.b((String)localObject1)) {
+    if (FileUtil.d((String)localObject1)) {
       try
       {
         Object localObject2 = FlutterMain.findAppBundlePath();
@@ -201,97 +289,12 @@ public class QFlutterLauncher
       QLog.e("QFlutter.launcher", 1, String.format("assetsPath: %s not exist when reload asset", new Object[] { localException }));
     }
     label161:
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.e();
-  }
-  
-  public void a(LaunchListener paramLaunchListener)
-  {
-    if (paramLaunchListener == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilSet)
-    {
-      this.jdField_a_of_type_JavaUtilSet.remove(paramLaunchListener);
-      return;
-    }
-  }
-  
-  public void a(LaunchListener paramLaunchListener, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    b();
-    b(paramLaunchListener);
-    int i = this.jdField_a_of_type_Int;
-    if (i == 2)
-    {
-      QLog.d("QFlutter.launcher", 1, "engine is running");
-      a(0, false);
-      return;
-    }
-    if (i == 1)
-    {
-      QLog.d("QFlutter.launcher", 1, "engine is launching");
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.h();
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.a(paramBoolean1, paramBoolean2);
-    c();
-  }
-  
-  public void a(QFlutterLauncher.InstallResult paramInstallResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.launcher", 2, String.format("onInstallResult, isSuccess: %s, installDir: %s, isLocalEngineExist: %s, isLocalAppExist: %s, fromQuickInstall: %s", new Object[] { Boolean.valueOf(paramInstallResult.jdField_a_of_type_Boolean), paramInstallResult.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramInstallResult.jdField_b_of_type_Boolean), Boolean.valueOf(paramInstallResult.c), Boolean.valueOf(paramInstallResult.d) }));
-    }
-    QFlutterReporter.a(paramInstallResult.jdField_b_of_type_JavaLangString);
-    if ((paramInstallResult.jdField_a_of_type_Boolean) && (FileUtil.b(paramInstallResult.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.a(paramInstallResult.jdField_b_of_type_Boolean, paramInstallResult.c, paramInstallResult.d);
-      a(paramInstallResult.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.d("QFlutter.launcher", 1, String.format("onInstallResult, isSuccess: %s, installDir: %s, fileIsExist: %s", new Object[] { Boolean.valueOf(paramInstallResult.jdField_a_of_type_Boolean), paramInstallResult.jdField_a_of_type_JavaLangString, Boolean.valueOf(FileUtil.b(paramInstallResult.jdField_a_of_type_JavaLangString)) }));
-    a(3, true);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.b();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append(File.separator);
-    ((StringBuilder)localObject).append("res.apk");
-    localObject = ((StringBuilder)localObject).toString();
-    if (FileUtil.b((String)localObject)) {
-      try
-      {
-        AssetManager localAssetManager = BaseApplicationImpl.getContext().getAssets();
-        Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
-        localMethod.setAccessible(true);
-        localMethod.invoke(localAssetManager, new Object[] { localObject });
-        this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace.c();
-        if (Looper.myLooper() == this.jdField_a_of_type_AndroidOsLooper)
-        {
-          b(paramString);
-          return;
-        }
-        ThreadManager.getUIHandler().postAtFrontOfQueue(new QFlutterLauncher.3(this, paramString));
-        return;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("QFlutter.launcher", 1, "loadAsset", paramString);
-        a(5, true);
-        return;
-      }
-    }
-    QLog.e("QFlutter.launcher", 1, String.format("assetsPath: %s not exist", new Object[] { localObject }));
-    a(4, true);
+    this.g.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.QFlutterLauncher
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 public class DocFileBrowserView$GestureRelativeLayout
   extends RelativeLayout
 {
-  private final GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private final GestureDetector b;
   
   public DocFileBrowserView$GestureRelativeLayout(DocFileBrowserView paramDocFileBrowserView, Context paramContext)
   {
@@ -19,12 +19,12 @@ public class DocFileBrowserView$GestureRelativeLayout
   public DocFileBrowserView$GestureRelativeLayout(DocFileBrowserView paramDocFileBrowserView, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new DocFileBrowserView.GestureRelativeLayout.1(this, paramDocFileBrowserView));
+    this.b = new GestureDetector(paramContext, new DocFileBrowserView.GestureRelativeLayout.1(this, paramDocFileBrowserView));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+    GestureDetector localGestureDetector = this.b;
     if (localGestureDetector != null) {
       localGestureDetector.onTouchEvent(paramMotionEvent);
     }
@@ -33,7 +33,7 @@ public class DocFileBrowserView$GestureRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.view.DocFileBrowserView.GestureRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

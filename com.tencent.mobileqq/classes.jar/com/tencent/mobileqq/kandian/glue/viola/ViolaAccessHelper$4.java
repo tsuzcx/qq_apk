@@ -10,12 +10,12 @@ final class ViolaAccessHelper$4
   
   public void run()
   {
-    HtmlOffline.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ViolaAccessHelper.4.1(this), true, 0, true);
+    HtmlOffline.b(this.a, this.b, new ViolaAccessHelper.4.1(this), true, 0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper.4
  * JD-Core Version:    0.7.0.1
  */

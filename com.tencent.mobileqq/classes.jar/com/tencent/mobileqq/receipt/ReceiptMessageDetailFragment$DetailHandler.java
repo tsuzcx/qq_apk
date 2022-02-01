@@ -42,17 +42,17 @@ class ReceiptMessageDetailFragment$DetailHandler
             default: 
               break;
             case 7: 
-              ReceiptMessageDetailFragment.k(localReceiptMessageDetailFragment);
+              ReceiptMessageDetailFragment.A(localReceiptMessageDetailFragment);
               break;
             case 6: 
-              i = PttItemBuilder.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment));
-              localReceiptMessageDetailFragment.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), i, false);
+              i = PttItemBuilder.a(ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.v(localReceiptMessageDetailFragment));
+              localReceiptMessageDetailFragment.a(ReceiptMessageDetailFragment.z(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.v(localReceiptMessageDetailFragment), i, false);
               break;
             case 5: 
-              QQToast.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getApp(), 1, 2131698575, 0).a(localReceiptMessageDetailFragment);
+              QQToast.makeText(ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment).getApp(), 1, 2131896522, 0).showByQueue(localReceiptMessageDetailFragment);
               break;
             case 4: 
-              ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+              ReceiptMessageDetailFragment.w(localReceiptMessageDetailFragment);
               break;
             case 3: 
               if (!(paramMessage.obj instanceof MessageForPtt)) {
@@ -60,7 +60,7 @@ class ReceiptMessageDetailFragment$DetailHandler
               }
               ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 3);
               ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPtt)paramMessage.obj);
-              ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+              ReceiptMessageDetailFragment.w(localReceiptMessageDetailFragment);
               break;
             case 2: 
               if (!(paramMessage.obj instanceof MessageForPic)) {
@@ -78,15 +78,15 @@ class ReceiptMessageDetailFragment$DetailHandler
               i = 1;
               break;
             }
-            ReceiptMessageDetailFragment.i(localReceiptMessageDetailFragment);
+            ReceiptMessageDetailFragment.x(localReceiptMessageDetailFragment);
           }
           else
           {
-            ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment);
+            ReceiptMessageDetailFragment.y(localReceiptMessageDetailFragment);
           }
         }
         else {
-          ReceiptMessageDetailFragment.l(localReceiptMessageDetailFragment);
+          ReceiptMessageDetailFragment.B(localReceiptMessageDetailFragment);
         }
       }
       else {
@@ -96,16 +96,16 @@ class ReceiptMessageDetailFragment$DetailHandler
       if (i != 0)
       {
         localReceiptMessageDetailFragment.stopTitleProgress();
-        ReceiptMessageDetailFragment.m(localReceiptMessageDetailFragment);
-        if ((ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a == 0) && (!ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment))) {
-          if (ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment)) {
+        ReceiptMessageDetailFragment.C(localReceiptMessageDetailFragment);
+        if ((ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment).a == 0) && (!ReceiptMessageDetailFragment.D(localReceiptMessageDetailFragment))) {
+          if (ReceiptMessageDetailFragment.E(localReceiptMessageDetailFragment)) {
             ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 1, true);
           } else {
             ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 0, true);
           }
         }
-        if (ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment)) {
-          ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+        if (ReceiptMessageDetailFragment.D(localReceiptMessageDetailFragment)) {
+          ReceiptMessageDetailFragment.w(localReceiptMessageDetailFragment);
         }
       }
     }
@@ -113,7 +113,7 @@ class ReceiptMessageDetailFragment$DetailHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DetailHandler
  * JD-Core Version:    0.7.0.1
  */

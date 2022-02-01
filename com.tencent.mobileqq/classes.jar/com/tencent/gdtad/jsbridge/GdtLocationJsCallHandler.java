@@ -46,7 +46,7 @@ class GdtLocationJsCallHandler
       }
       paramVarArgs = localObject;
       if (paramGdtAdWebPlugin != null) {
-        paramVarArgs = paramGdtAdWebPlugin.a();
+        paramVarArgs = paramGdtAdWebPlugin.b();
       }
       AdAnalysisHelperForUtil.reportForJSBridgeInvoked(paramString, false, "getLocation", paramVarArgs);
       return true;
@@ -56,7 +56,7 @@ class GdtLocationJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtLocationJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class AppBarLayout$BaseBehavior$3
   
   public boolean perform(@NonNull View paramView, @Nullable AccessibilityViewCommand.CommandArguments paramCommandArguments)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialAppbarAppBarLayout.setExpanded(this.jdField_a_of_type_Boolean);
+    this.a.setExpanded(this.b);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.AppBarLayout.BaseBehavior.3
  * JD-Core Version:    0.7.0.1
  */

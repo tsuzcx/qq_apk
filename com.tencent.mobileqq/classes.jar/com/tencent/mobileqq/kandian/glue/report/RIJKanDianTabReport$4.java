@@ -9,12 +9,12 @@ final class RIJKanDianTabReport$4
   
   public final void run()
   {
-    ReadInJoyGlobalReporter.a().b(this.a);
+    ReadInJoyGlobalReporter.e().d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.RIJKanDianTabReport.4
  * JD-Core Version:    0.7.0.1
  */

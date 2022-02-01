@@ -9,32 +9,32 @@ class FeedSegment$10
   
   public void onNetMobile2None()
   {
-    FeedSegment.b(this.a, FeedSegment.a(3));
+    FeedSegment.b(this.a, FeedSegment.d(3));
   }
   
   public void onNetMobile2Wifi(String paramString)
   {
-    FeedSegment.b(this.a, FeedSegment.a(1));
+    FeedSegment.b(this.a, FeedSegment.d(1));
   }
   
   public void onNetNone2Mobile(String paramString)
   {
-    FeedSegment.b(this.a, FeedSegment.a(2));
+    FeedSegment.b(this.a, FeedSegment.d(2));
   }
   
   public void onNetNone2Wifi(String paramString)
   {
-    FeedSegment.b(this.a, FeedSegment.a(1));
+    FeedSegment.b(this.a, FeedSegment.d(1));
   }
   
   public void onNetWifi2Mobile(String paramString)
   {
-    FeedSegment.b(this.a, FeedSegment.a(2));
+    FeedSegment.b(this.a, FeedSegment.d(2));
   }
   
   public void onNetWifi2None()
   {
-    FeedSegment.b(this.a, FeedSegment.a(3));
+    FeedSegment.b(this.a, FeedSegment.d(3));
   }
 }
 

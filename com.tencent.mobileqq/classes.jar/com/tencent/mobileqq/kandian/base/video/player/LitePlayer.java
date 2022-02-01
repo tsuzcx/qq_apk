@@ -9,55 +9,55 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.ThreadUtil;
 import com.tencent.mobileqq.kandian.base.video.VideoPlayUtils;
 import com.tencent.mobileqq.kandian.base.video.plugin.OnVideoPluginInstallListener;
 import com.tencent.mobileqq.kandian.base.video.plugin.VideoPluginInstall;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.viola.utils.ViolaUtils;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import mqq.app.AppRuntime;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.os.MqqHandler;
 
 public class LitePlayer
   implements OnVideoPluginInstallListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private static int f;
+  private LitePlayer.UiHandler A;
+  private String B;
+  private boolean C;
+  private boolean D;
   @NonNull
   protected Context a;
   @NonNull
-  protected ViewGroup a;
-  private LitePlayer.MediaPlayListenerAdapterImpl jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$MediaPlayListenerAdapterImpl;
-  @Nullable
-  private LitePlayer.PlayParams jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams;
-  private LitePlayer.UiHandler jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler;
+  protected VideoPlayerWrapper b;
   @NonNull
-  protected VideoPlayerWrapper a;
-  private VideoPluginInstall jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall;
-  private final String jdField_a_of_type_JavaLangString;
-  private List<PlayerStatusListener> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private List<IPlayerReporter> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
-  private boolean f;
+  protected ViewGroup c;
+  protected boolean d;
+  private final String e;
   private boolean g;
   private boolean h;
   private boolean i;
   private boolean j;
   private boolean k;
   private boolean l;
+  private boolean m;
+  private boolean n;
+  private boolean o;
+  private boolean p;
+  private boolean q;
+  private float r;
+  private int s;
+  private int t;
+  private int u;
+  @Nullable
+  private LitePlayer.PlayParams v;
+  private ConcurrentLinkedQueue<PlayerStatusListener> w;
+  private ConcurrentLinkedQueue<IPlayerReporter> x;
+  private VideoPluginInstall y;
+  private LitePlayer.MediaPlayListenerAdapterImpl z;
   
   @UiThread
   public LitePlayer(Context paramContext, String paramString, boolean paramBoolean)
@@ -66,76 +66,159 @@ public class LitePlayer
     localStringBuilder.append("LitePlayer<");
     localStringBuilder.append(Integer.toHexString(hashCode()));
     localStringBuilder.append(">");
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.d = false;
-    this.e = false;
-    this.f = false;
+    this.e = localStringBuilder.toString();
     this.g = false;
-    this.h = true;
-    this.i = false;
+    this.h = false;
+    this.i = true;
     this.j = false;
     this.k = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 100;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$MediaPlayListenerAdapterImpl = new LitePlayer.MediaPlayListenerAdapterImpl(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler = new LitePlayer.UiHandler(this);
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.l = paramBoolean;
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall = new VideoPluginInstall();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall.a(this);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper = a();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    paramBoolean = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall.a();
+    this.l = false;
+    this.m = false;
+    this.n = true;
+    this.o = false;
+    this.p = false;
+    this.q = false;
+    this.r = 1.0F;
+    this.s = 0;
+    this.u = 100;
+    this.d = false;
+    this.z = new LitePlayer.MediaPlayListenerAdapterImpl(this);
+    this.A = new LitePlayer.UiHandler(this);
+    this.D = true;
+    this.B = paramString;
+    this.C = paramBoolean;
+    this.a = paramContext.getApplicationContext();
+    this.y = new VideoPluginInstall();
+    this.y.a(this);
+    this.w = new ConcurrentLinkedQueue();
+    this.c = new FrameLayout(this.a);
+    this.b = G();
+    this.x = new ConcurrentLinkedQueue();
+    if (!this.y.b()) {
+      this.y.a();
+    }
+    f += 1;
     if (QLog.isColorLevel())
     {
-      paramContext = this.jdField_a_of_type_JavaLangString;
+      paramContext = this.e;
       paramString = new StringBuilder();
-      paramString.append("LitePlayer: isPluginInstalled=");
-      paramString.append(paramBoolean);
+      paramString.append("LitePlayer: create player, player_num=");
+      paramString.append(f);
       QLog.d(paramContext, 2, paramString.toString());
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall.a();
     }
   }
   
   @UiThread
-  private VideoPlayerWrapper a()
+  private VideoPlayerWrapper G()
   {
-    VideoPlayerWrapper localVideoPlayerWrapper = new VideoPlayerWrapper(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_b_of_type_JavaLangString);
-    localVideoPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$MediaPlayListenerAdapterImpl);
-    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    localVideoPlayerWrapper.a(this.jdField_a_of_type_AndroidViewViewGroup, TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString) ^ true, this.l);
-    View localView = localVideoPlayerWrapper.a();
+    VideoPlayerWrapper localVideoPlayerWrapper = new VideoPlayerWrapper(this.a.getApplicationContext(), this.B);
+    localVideoPlayerWrapper.a(this.z);
+    this.c.removeAllViews();
+    localVideoPlayerWrapper.a(this.c, TextUtils.isEmpty(this.B) ^ true, this.C);
+    View localView = localVideoPlayerWrapper.b();
     if (localView != null)
     {
-      localView.setId(2131376064);
-      this.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(true);
+      localView.setId(2131444264);
+      this.c.setKeepScreenOn(true);
     }
-    localVideoPlayerWrapper.a(this.k);
-    localVideoPlayerWrapper.c(this.j);
-    localVideoPlayerWrapper.e(this.h);
-    localVideoPlayerWrapper.a(this.jdField_a_of_type_Float);
-    localVideoPlayerWrapper.d(this.i);
-    localVideoPlayerWrapper.b(this.jdField_a_of_type_Int);
+    localVideoPlayerWrapper.a(this.q);
+    localVideoPlayerWrapper.g(this.p);
+    localVideoPlayerWrapper.i(this.n);
+    localVideoPlayerWrapper.a(this.r);
+    localVideoPlayerWrapper.h(this.o);
+    localVideoPlayerWrapper.b(this.s);
     return localVideoPlayerWrapper;
+  }
+  
+  @UiThread
+  private void H()
+  {
+    if (QLog.isColorLevel())
+    {
+      String str = this.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkPlayer: tag=");
+      localStringBuilder.append(this.b.E());
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    if ((this.b.E() != null) || (!this.b.r()))
+    {
+      b(this.b);
+      this.b.D();
+      this.b = G();
+    }
+    this.c.setKeepScreenOn(true);
+  }
+  
+  private void I()
+  {
+    this.m = false;
+    this.A.removeMessages(1);
+    if (this.i)
+    {
+      e();
+      LitePlayer.PlayParams localPlayParams = this.v;
+      if ((localPlayParams != null) && (localPlayParams.d / 1000L != this.b.C() / 1000L)) {
+        b((int)(this.v.d / 1000L));
+      }
+    }
+    else
+    {
+      this.j = true;
+    }
+  }
+  
+  private void J()
+  {
+    Object localObject = this.b;
+    if (((VideoPlayerWrapper)localObject).n())
+    {
+      long l1 = ((VideoPlayerWrapper)localObject).C();
+      if (l1 >= ((VideoPlayerWrapper)localObject).I() - 500L)
+      {
+        this.l = true;
+      }
+      else if ((l1 >= 0L) && (this.l) && (((VideoPlayerWrapper)localObject).R()))
+      {
+        if (QLog.isColorLevel())
+        {
+          String str = this.e;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onVideoReplayOnLoop: pos=");
+          localStringBuilder.append(l1);
+          QLog.d(str, 2, localStringBuilder.toString());
+        }
+        this.l = false;
+        this.t += 1;
+        ((VideoPlayerWrapper)localObject).N();
+        localObject = this.w;
+        if (localObject != null)
+        {
+          localObject = ((ConcurrentLinkedQueue)localObject).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            ((PlayerStatusListener)((Iterator)localObject).next()).onVideoEnd(this.t);
+          }
+        }
+      }
+      localObject = this.w;
+      if (localObject != null)
+      {
+        localObject = ((ConcurrentLinkedQueue)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((PlayerStatusListener)((Iterator)localObject).next()).onProgressChanged(l1);
+        }
+      }
+    }
   }
   
   private void a(LitePlayer.PlayParams paramPlayParams)
   {
-    if (TextUtils.isEmpty(paramPlayParams.jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(paramPlayParams.b))
     {
-      a(paramPlayParams.jdField_a_of_type_JavaLangString, paramPlayParams.jdField_a_of_type_Int, paramPlayParams.jdField_a_of_type_Long);
+      a(paramPlayParams.a, paramPlayParams.c, paramPlayParams.d);
       return;
     }
-    a(paramPlayParams.jdField_a_of_type_JavaLangString, paramPlayParams.jdField_b_of_type_JavaLangString, paramPlayParams.jdField_a_of_type_Int, paramPlayParams.jdField_a_of_type_Long, paramPlayParams.jdField_b_of_type_Int);
+    a(paramPlayParams.a, paramPlayParams.b, paramPlayParams.c, paramPlayParams.d, paramPlayParams.e);
   }
   
   static void a(Runnable paramRunnable)
@@ -152,7 +235,7 @@ public class LitePlayer
   {
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("openByUrl: vid=");
       localStringBuilder.append(paramString1);
@@ -162,100 +245,109 @@ public class LitePlayer
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(", startPosition=");
       localStringBuilder.append(paramLong);
+      localStringBuilder.append(", mainThread=");
+      boolean bool;
+      if (Looper.getMainLooper() == Looper.myLooper()) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (this.jdField_b_of_type_Boolean)
+    if ((!this.h) && (this.D))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$MediaPlayListenerAdapterImpl.a(null, 201, 109, 0, "player had destoryed", null);
+      if ((paramBoolean1) && (TextUtils.isEmpty(paramString2)))
+      {
+        this.z.a(null, 201, 61, 0, "url null", null);
+        return;
+      }
+      if ((!paramBoolean1) && (TextUtils.isEmpty(paramString1)))
+      {
+        this.z.a(null, 201, 61, 0, "vid null", null);
+        return;
+      }
+      if (a(paramLong)) {
+        return;
+      }
+      this.v = new LitePlayer.PlayParams(this, paramString1, paramString2, paramInt1, paramLong, paramInt2);
+      if (!this.y.b())
+      {
+        this.y.a();
+        return;
+      }
+      H();
+      b(paramString1, paramString2);
+      this.b.c(this.d);
+      if (ViolaUtils.isBindDataOpmOpen())
+      {
+        b(new LitePlayer.3(this, paramBoolean1, paramString1, paramString2, paramInt1, paramLong, paramInt2, paramBoolean2, paramString3));
+        return;
+      }
+      a(new LitePlayer.4(this, paramBoolean1, paramString1, paramString2, paramInt1, paramLong, paramInt2, paramBoolean2, paramString3));
       return;
     }
-    if ((paramBoolean1) && (TextUtils.isEmpty(paramString2)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$MediaPlayListenerAdapterImpl.a(null, 201, 61, 0, "url null", null);
-      return;
-    }
-    if ((!paramBoolean1) && (TextUtils.isEmpty(paramString1)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$MediaPlayListenerAdapterImpl.a(null, 201, 61, 0, "vid null", null);
-      return;
-    }
-    if (a(paramLong)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams = new LitePlayer.PlayParams(this, paramString1, paramString2, paramInt1, paramLong, paramInt2);
-    if (!this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall.a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall.a();
-      return;
-    }
-    n();
-    b(paramString1, paramString2);
-    if (paramBoolean1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a(paramString1, paramString2, paramInt1, paramLong, 0L, paramInt2, paramBoolean2, true, this.g, paramString3);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a(paramString1, paramInt1, paramLong, this.g);
+    this.z.a(null, 201, 109, 0, "player had destoryed", null);
   }
   
   private boolean a(long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams != null) && (this.g) && (this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a() == this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams))
+    if ((this.v != null) && (this.m) && (this.b.E() == this.v))
     {
       Object localObject;
       if (QLog.isColorLevel())
       {
-        localObject = this.jdField_a_of_type_JavaLangString;
+        localObject = this.e;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("checkPreload: status=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.b());
+        localStringBuilder.append(this.b.h());
         QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams.jdField_a_of_type_Long = paramLong;
-      if ((!f()) && (!g()) && (!i()))
+      this.v.d = paramLong;
+      if ((!s()) && (!t()) && (!v()))
       {
-        if ((!c()) && (!d()))
+        if ((!p()) && (!q()))
         {
-          this.g = false;
+          this.m = false;
           if (QLog.isColorLevel())
           {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkPreload: checkPreload player was preload but status error");
+            QLog.d(this.e, 2, "checkPreload: checkPreload player was preload but status error");
             return false;
           }
         }
         else
         {
           if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkPreload: prePlaying, just do nothing ");
+            QLog.d(this.e, 2, "checkPreload: prePlaying, just do nothing ");
           }
-          localObject = this.jdField_b_of_type_JavaUtilList.iterator();
+          localObject = this.x.iterator();
           while (((Iterator)localObject).hasNext()) {
             ((IPlayerReporter)((Iterator)localObject).next()).a(false);
           }
-          this.g = false;
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.k();
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.p();
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.sendEmptyMessageDelayed(1, 10000L);
+          this.m = false;
+          this.b.B();
+          this.b.Y();
+          this.g = true;
+          this.A.sendEmptyMessageDelayed(1, 10000L);
           return true;
         }
       }
       else
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkPreload: hasPrePlay, just go onVideoPrepared");
+          QLog.d(this.e, 2, "checkPreload: hasPrePlay, just go onVideoPrepared");
         }
-        localObject = this.jdField_b_of_type_JavaUtilList.iterator();
+        localObject = this.x.iterator();
         while (((Iterator)localObject).hasNext()) {
           ((IPlayerReporter)((Iterator)localObject).next()).a(true);
         }
-        localObject = this.jdField_b_of_type_JavaUtilList.iterator();
+        localObject = this.x.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((IPlayerReporter)((Iterator)localObject).next()).b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper);
+          ((IPlayerReporter)((Iterator)localObject).next()).b(this.b);
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.k();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.p();
-        o();
+        this.b.B();
+        this.b.Y();
+        I();
         return true;
       }
     }
@@ -264,10 +356,10 @@ public class LitePlayer
   
   private void b(LitePlayer.PlayParams paramPlayParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a(paramPlayParams);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.removeMessages(1);
+    this.b.a(paramPlayParams);
+    this.g = true;
+    this.t = 0;
+    this.A.removeMessages(1);
   }
   
   private void b(VideoPlayerWrapper paramVideoPlayerWrapper)
@@ -275,141 +367,137 @@ public class LitePlayer
     if (paramVideoPlayerWrapper == null) {
       return;
     }
-    paramVideoPlayerWrapper.n();
-    if (!paramVideoPlayerWrapper.j())
+    paramVideoPlayerWrapper.T();
+    if (!paramVideoPlayerWrapper.r())
     {
-      if (paramVideoPlayerWrapper.i()) {
+      if (paramVideoPlayerWrapper.q()) {
         return;
       }
-      paramVideoPlayerWrapper.j();
-      ThreadManager.excute(new LitePlayer.6(this, paramVideoPlayerWrapper), 16, null, true);
+      paramVideoPlayerWrapper.x();
+      paramVideoPlayerWrapper.a(null);
     }
+  }
+  
+  static void b(Runnable paramRunnable)
+  {
+    if (Looper.myLooper() == ThreadManager.getSubThreadLooper())
+    {
+      paramRunnable.run();
+      return;
+    }
+    ThreadManager.executeOnSubThread(paramRunnable);
   }
   
   private void b(String paramString1, String paramString2)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.x.iterator();
     while (localIterator.hasNext()) {
-      ((IPlayerReporter)localIterator.next()).a(paramString1, paramString2, this.g, this.k);
+      ((IPlayerReporter)localIterator.next()).a(paramString1, paramString2, this.m, this.q);
     }
-    paramString1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    paramString1 = this.w.iterator();
     while (paramString1.hasNext()) {
       ((PlayerStatusListener)paramString1.next()).onVideoOpen();
     }
-    b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams);
+    b(this.v);
   }
   
-  private void n()
+  public void A()
   {
+    this.z.a(this.b, null);
+  }
+  
+  public Map<String, String> B()
+  {
+    return VideoPlayUtils.a(this.b);
+  }
+  
+  public void C()
+  {
+    this.i = false;
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkPlayer: tag=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a());
+      localStringBuilder.append("doOnPause() isPlaying()=");
+      localStringBuilder.append(u());
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a() != null) || (!this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.j()))
+    if ((u()) || (v()))
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.l();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper = a();
+      this.k = true;
+      this.g = false;
+      f();
     }
   }
   
-  private void o()
+  public void D()
   {
-    this.g = false;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.removeMessages(1);
-    if (this.jdField_c_of_type_Boolean)
-    {
-      c();
-      LitePlayer.PlayParams localPlayParams = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams;
-      if ((localPlayParams != null) && (localPlayParams.jdField_a_of_type_Long / 1000L != this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a() / 1000L)) {
-        b((int)(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams.jdField_a_of_type_Long / 1000L));
-      }
+    this.i = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.e, 2, "onResume: ");
     }
-    else
+    if ((this.j) && (s()))
     {
-      this.d = true;
+      I();
     }
-  }
-  
-  private void p()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper;
-    if (((VideoPlayerWrapper)localObject).f())
+    else if (this.k)
     {
-      long l1 = ((VideoPlayerWrapper)localObject).a();
-      if (l1 >= ((VideoPlayerWrapper)localObject).b() - 500L)
-      {
-        this.f = true;
-      }
-      else if ((l1 >= 0L) && (this.f) && (((VideoPlayerWrapper)localObject).m()))
-      {
-        if (QLog.isColorLevel())
-        {
-          String str = this.jdField_a_of_type_JavaLangString;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("onVideoReplayOnLoop: pos=");
-          localStringBuilder.append(l1);
-          QLog.d(str, 2, localStringBuilder.toString());
-        }
-        this.f = false;
-        this.jdField_b_of_type_Int += 1;
-        ((VideoPlayerWrapper)localObject).m();
-        localObject = this.jdField_a_of_type_JavaUtilList;
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext()) {
-            ((PlayerStatusListener)((Iterator)localObject).next()).onVideoEnd(this.jdField_b_of_type_Int);
-          }
-        }
-      }
-      localObject = this.jdField_a_of_type_JavaUtilList;
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((PlayerStatusListener)((Iterator)localObject).next()).onProgressChanged(l1);
-        }
-      }
+      this.g = true;
+      g();
     }
+    this.k = false;
+    this.j = false;
   }
   
-  public int a()
+  public void E()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.b();
+    h();
+    this.A.removeCallbacksAndMessages(null);
+    this.w.clear();
+    this.x.clear();
+    this.i = true;
+    this.k = false;
+    this.j = false;
   }
   
-  public long a()
+  public void F()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.b();
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.c();
-  }
-  
-  public Map<String, String> a()
-  {
-    return VideoPlayUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper);
+    if (!this.h) {
+      f -= 1;
+    }
+    this.h = true;
+    this.i = false;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doOnDestory: destroy player, player_num=");
+      localStringBuilder.append(f);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    h();
+    this.b.D();
+    Object localObject = this.y;
+    if (localObject != null) {
+      ((VideoPluginInstall)localObject).c();
+    }
+    this.A.removeCallbacksAndMessages(null);
+    this.w.clear();
+    this.x.clear();
   }
   
   public void a()
   {
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("replay: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams);
+      localStringBuilder.append(this.v);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams;
+    b(this.b);
+    Object localObject = this.v;
     if (localObject != null) {
       a((LitePlayer.PlayParams)localObject);
     }
@@ -417,39 +505,47 @@ public class LitePlayer
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a(paramFloat);
+    this.r = paramFloat;
+    this.b.a(paramFloat);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.b(paramInt);
+    this.s = paramInt;
+    this.b.b(paramInt);
   }
   
   protected void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$MediaPlayListenerAdapterImpl.a(null, paramInt1, paramInt2, paramInt3, paramString, null);
+    this.z.a(null, paramInt1, paramInt2, paramInt3, paramString, null);
   }
   
   public void a(ViewGroup paramViewGroup)
   {
-    g();
-    if ((this.jdField_a_of_type_AndroidViewViewGroup.getParent() instanceof ViewGroup)) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.getParent()).removeView(this.jdField_a_of_type_AndroidViewViewGroup);
+    if (QLog.isColorLevel())
+    {
+      String str = this.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("attach: ");
+      localStringBuilder.append(paramViewGroup);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
-    h();
-    paramViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup, -1, -1);
+    m();
+    if ((this.c.getParent() instanceof ViewGroup)) {
+      ((ViewGroup)this.c.getParent()).removeView(this.c);
+    }
+    n();
+    paramViewGroup.addView(this.c, -1, -1);
   }
   
   public void a(IPlayerReporter paramIPlayerReporter)
   {
-    this.jdField_b_of_type_JavaUtilList.add(paramIPlayerReporter);
+    this.x.add(paramIPlayerReporter);
   }
   
   public void a(PlayerStatusListener paramPlayerStatusListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramPlayerStatusListener);
+    this.w.add(paramPlayerStatusListener);
   }
   
   public void a(VideoPlayerWrapper paramVideoPlayerWrapper)
@@ -461,7 +557,7 @@ public class LitePlayer
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a(paramString);
+    this.b.a(paramString);
   }
   
   public void a(String paramString, int paramInt, long paramLong)
@@ -476,8 +572,8 @@ public class LitePlayer
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.removeMessages(0);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.sendEmptyMessage(0);
+    this.A.removeMessages(0);
+    this.A.sendEmptyMessage(0);
     b(new LitePlayer.PlayParams(this, paramString1, paramString2, 0, 0L, 0));
   }
   
@@ -496,67 +592,51 @@ public class LitePlayer
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onInstallComplete: success=");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append(", mHasDestory=");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.h);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
-      if (this.jdField_b_of_type_Boolean) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper = a();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams;
-      if (localObject != null) {
+      if (!this.h)
+      {
+        if (!this.D) {
+          return;
+        }
+        this.b = G();
+        localObject = this.v;
+        if (localObject == null) {
+          return;
+        }
         a((LitePlayer.PlayParams)localObject);
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.w.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((PlayerStatusListener)((Iterator)localObject).next()).onVideoError(123, 99, null);
       }
     }
   }
   
-  public boolean a()
-  {
-    return this.g;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.c();
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a();
-  }
-  
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a(paramInt);
+    this.b.a(paramInt);
   }
   
   public void b(boolean paramBoolean)
   {
-    this.g = true;
-    this.k = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a(paramBoolean);
+    this.m = true;
+    this.q = paramBoolean;
+    this.b.a(paramBoolean);
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startPreload: coverFrame=");
       localStringBuilder.append(paramBoolean);
@@ -566,255 +646,235 @@ public class LitePlayer
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams != null) && ((d()) || (f()) || (g()) || (h()) || (i()));
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.d();
+    return this.m;
   }
   
   public void c()
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("start: status=");
-      localStringBuilder.append(a());
-      QLog.d((String)localObject, 2, localStringBuilder.toString());
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((PlayerStatusListener)((Iterator)localObject).next()).beforeVideoStart();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.d();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.removeMessages(0);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.sendEmptyMessage(0);
-    ThreadUtil.a(new LitePlayer.3(this));
-    localObject = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((IPlayerReporter)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper);
-    }
+    this.b.d();
   }
   
   public void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.u = paramInt;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.h = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.e(paramBoolean);
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel())
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("pause: status=");
-      localStringBuilder.append(a());
-      QLog.d(str, 2, localStringBuilder.toString());
-    }
-    if ((h()) || (i()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.f();
-      ThreadUtil.a(new LitePlayer.4(this));
-    }
+    this.n = paramBoolean;
+    this.b.i(paramBoolean);
   }
   
   public void d(boolean paramBoolean)
   {
-    this.i = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.d(paramBoolean);
+    this.o = paramBoolean;
+    this.b.h(paramBoolean);
   }
   
   public boolean d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.b();
+    return (this.b.E() == null) && (this.b.r());
   }
   
   public void e()
   {
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      localObject = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("restart: status=");
-      localStringBuilder.append(a());
-      QLog.d(str, 2, localStringBuilder.toString());
+      localStringBuilder.append("start: status=");
+      localStringBuilder.append(l());
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    if ((g()) || (f()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.e();
-      ThreadUtil.a(new LitePlayer.5(this));
+    Object localObject = this.w.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PlayerStatusListener)((Iterator)localObject).next()).beforeVideoStart();
+    }
+    this.b.u();
+    this.A.removeMessages(0);
+    this.A.sendEmptyMessage(0);
+    ThreadUtil.a(new LitePlayer.5(this));
+    localObject = this.x.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IPlayerReporter)((Iterator)localObject).next()).a(this.b);
     }
   }
   
   public void e(boolean paramBoolean)
   {
-    this.j = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.c(paramBoolean);
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.c();
+    this.p = paramBoolean;
+    this.b.g(paramBoolean);
   }
   
   public void f()
   {
-    Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      String str = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("stop: mPlayParam=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams);
-      QLog.d((String)localObject, 2, localStringBuilder.toString());
+      localStringBuilder.append("pause: status=");
+      localStringBuilder.append(l());
+      QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams != null)
+    if ((u()) || (v()))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PlayerStatusListener)((Iterator)localObject).next()).onVideoStop();
-      }
-      localObject = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((IPlayerReporter)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper, this.jdField_b_of_type_Int);
-      }
+      this.b.w();
+      ThreadUtil.a(new LitePlayer.6(this));
     }
-    b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper);
-    this.g = false;
-    this.h = true;
-    this.i = false;
-    this.j = false;
-    this.k = false;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$PlayParams = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidViewViewGroup.setKeepScreenOn(false);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.removeMessages(0);
   }
   
-  public boolean f()
+  public void f(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.d();
+    this.D = paramBoolean;
   }
   
   public void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.a();
-  }
-  
-  public boolean g()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.e();
+    if (QLog.isColorLevel())
+    {
+      String str = this.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("restart: status=");
+      localStringBuilder.append(l());
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    if ((t()) || (s()))
+    {
+      this.b.v();
+      ThreadUtil.a(new LitePlayer.7(this));
+    }
   }
   
   public void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.b();
-  }
-  
-  public boolean h()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.f();
-  }
-  
-  public void i()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.o();
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.e;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stop: mPlayParam=");
+      localStringBuilder.append(this.v);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    if (this.v != null)
+    {
+      localObject = this.w.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PlayerStatusListener)((Iterator)localObject).next()).onVideoStop();
+      }
+      localObject = this.x.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((IPlayerReporter)((Iterator)localObject).next()).a(this.b, this.t);
+      }
+    }
+    b(this.b);
+    this.m = false;
+    this.n = true;
+    this.o = false;
+    this.p = false;
+    this.q = false;
+    this.r = 1.0F;
+    this.s = 0;
+    this.v = null;
+    this.t = 0;
+    this.B = null;
+    this.c.setKeepScreenOn(false);
+    this.A.removeMessages(0);
   }
   
   public boolean i()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.g();
+    return this.b.Q();
   }
   
-  public void j()
+  public long j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$MediaPlayListenerAdapterImpl.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper, null);
+    return this.b.I();
   }
   
-  public void k()
+  public long k()
   {
-    this.jdField_c_of_type_Boolean = false;
-    if (QLog.isColorLevel())
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doOnPause() isPlaying()=");
-      localStringBuilder.append(h());
-      QLog.d(str, 2, localStringBuilder.toString());
-    }
-    if ((h()) || (i()))
-    {
-      this.e = true;
-      this.jdField_a_of_type_Boolean = false;
-      d();
-    }
+    return this.b.C();
   }
   
-  public void l()
+  public int l()
   {
-    this.jdField_c_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onResume: ");
-    }
-    if ((this.d) && (f()))
-    {
-      o();
-    }
-    else if (this.e)
-    {
-      AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
-      boolean bool;
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        bool = ((QQAppInterface)localAppRuntime).isVideoChatting();
-      } else {
-        bool = false;
-      }
-      if (!bool)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        e();
-      }
-    }
-    this.e = false;
-    this.d = false;
+    return this.b.h();
   }
   
   public void m()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnDestory: ");
-    }
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideoPlayerWrapper.l();
-    VideoPluginInstall localVideoPluginInstall = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall;
-    if (localVideoPluginInstall != null) {
-      localVideoPluginInstall.b();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerLitePlayer$UiHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.f();
+  }
+  
+  public void n()
+  {
+    this.b.g();
+  }
+  
+  public boolean o()
+  {
+    return (this.v != null) && ((q()) || (s()) || (t()) || (u()) || (v()));
+  }
+  
+  public boolean p()
+  {
+    return this.b.i();
+  }
+  
+  public boolean q()
+  {
+    return this.b.j();
+  }
+  
+  public boolean r()
+  {
+    return this.b.k();
+  }
+  
+  public boolean s()
+  {
+    return this.b.l();
+  }
+  
+  public boolean t()
+  {
+    return this.b.m();
+  }
+  
+  public boolean u()
+  {
+    return this.b.n();
+  }
+  
+  public boolean v()
+  {
+    return this.b.o();
+  }
+  
+  public int w()
+  {
+    return this.b.F();
+  }
+  
+  public int x()
+  {
+    return this.b.G();
+  }
+  
+  public String y()
+  {
+    return this.b.V();
+  }
+  
+  public void z()
+  {
+    this.b.W();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.LitePlayer
  * JD-Core Version:    0.7.0.1
  */

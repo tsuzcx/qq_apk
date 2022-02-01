@@ -40,11 +40,11 @@ class ForwardSdkShareProcessor$ImageUploadStep
     String str = this.this$0.app.getCurrentUin();
     int i = 0;
     paramString = new CompressInfo(paramString, 0);
-    paramString.f = 0;
+    paramString.o = 0;
     ForwardStatisticsReporter.a("compress_local_image");
     ForwardStatisticsReporter.a("compress_local_image", str, ((ICompressOperator)QRoute.api(ICompressOperator.class)).startThumbnail(paramString));
-    if (!TextUtils.isEmpty(paramString.e)) {
-      this.this$0.mLocalImgUrl = paramString.e;
+    if (!TextUtils.isEmpty(paramString.l)) {
+      this.this$0.mLocalImgUrl = paramString.l;
     }
     Object localObject1 = null;
     paramString = new File(this.this$0.mLocalImgUrl);
@@ -290,7 +290,7 @@ class ForwardSdkShareProcessor$ImageUploadStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ImageUploadStep
  * JD-Core Version:    0.7.0.1
  */

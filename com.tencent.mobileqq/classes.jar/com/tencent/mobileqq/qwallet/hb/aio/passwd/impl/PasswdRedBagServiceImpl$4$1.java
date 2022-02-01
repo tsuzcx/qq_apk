@@ -24,17 +24,17 @@ class PasswdRedBagServiceImpl$4$1
       }
       if (paramBoolean)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl.isFirstInAio = false;
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        this.a.c.isFirstInAio = false;
+        Iterator localIterator = this.a.a.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
           BroadCastInfo localBroadCastInfo = (BroadCastInfo)paramBundle.sendlistIdiomInfoDict.get(str);
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl.getPasswdRedBagInfoById(str) != null) && (localBroadCastInfo != null)) {
+          if ((this.a.c.getPasswdRedBagInfoById(str) != null) && (localBroadCastInfo != null)) {
             if (localBroadCastInfo.isFinished == 1) {
-              this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl.setPasswdRedBagFinish(str);
+              this.a.c.setPasswdRedBagFinish(str);
             } else {
-              this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioPasswdImplPasswdRedBagServiceImpl.updateIdiomRedbagsLastword(str, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY, localBroadCastInfo.hbPoemRule);
+              this.a.c.updateIdiomRedbagsLastword(str, this.a.b.b, this.a.b.a, localBroadCastInfo.idiomSeq, localBroadCastInfo.hbIdiom, localBroadCastInfo.hbIdiomLastPY, localBroadCastInfo.hbPoemRule);
             }
           }
         }
@@ -44,7 +44,7 @@ class PasswdRedBagServiceImpl$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.impl.PasswdRedBagServiceImpl.4.1
  * JD-Core Version:    0.7.0.1
  */

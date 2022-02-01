@@ -27,23 +27,23 @@ public class WyReportUtils
     try
     {
       WyReportUtils.ReportInfo localReportInfo = new WyReportUtils.ReportInfo();
-      localReportInfo.jdField_a_of_type_Int = paramWeiyunDownloadStatusInfo.jdField_b_of_type_Int;
-      localReportInfo.jdField_a_of_type_JavaLangString = paramWeiyunDownloadStatusInfo.jdField_a_of_type_JavaLangString;
-      DownloadJobContext localDownloadJobContext2 = paramWeiyunDownloadStatusInfo.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadJobContext;
+      localReportInfo.a = paramWeiyunDownloadStatusInfo.b;
+      localReportInfo.b = paramWeiyunDownloadStatusInfo.c;
+      DownloadJobContext localDownloadJobContext2 = paramWeiyunDownloadStatusInfo.i;
       DownloadJobContext localDownloadJobContext1 = localDownloadJobContext2;
       if (localDownloadJobContext2 == null) {
-        localDownloadJobContext1 = WyDownloader.a().a(paramLong);
+        localDownloadJobContext1 = WyDownloader.a().b(paramLong);
       }
       if (localDownloadJobContext1 != null)
       {
-        localReportInfo.f = localDownloadJobContext1.a().jdField_b_of_type_JavaLangString;
-        localReportInfo.jdField_a_of_type_Long = localDownloadJobContext1.a().jdField_a_of_type_Long;
-        localReportInfo.g = localDownloadJobContext1.a().jdField_a_of_type_JavaLangString;
-        localReportInfo.e = localDownloadJobContext1.a().c;
-        localReportInfo.h = paramWeiyunDownloadStatusInfo.jdField_b_of_type_JavaLangString;
-        paramWeiyunDownloadStatusInfo = localDownloadJobContext1.a();
+        localReportInfo.h = localDownloadJobContext1.c().c;
+        localReportInfo.j = localDownloadJobContext1.c().e;
+        localReportInfo.k = localDownloadJobContext1.c().b;
+        localReportInfo.g = localDownloadJobContext1.c().d;
+        localReportInfo.l = paramWeiyunDownloadStatusInfo.f;
+        paramWeiyunDownloadStatusInfo = localDownloadJobContext1.k();
         if (paramWeiyunDownloadStatusInfo != null) {
-          localReportInfo.d = paramWeiyunDownloadStatusInfo.mReqUrl;
+          localReportInfo.f = paramWeiyunDownloadStatusInfo.mReqUrl;
         }
       }
       a(paramString1, paramString2, localReportInfo, paramBoolean, true);
@@ -64,24 +64,24 @@ public class WyReportUtils
   private static void a(String paramString1, String paramString2, WyReportUtils.ReportInfo paramReportInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramReportInfo.jdField_a_of_type_Int));
-    localHashMap.put("serverip", paramReportInfo.jdField_b_of_type_JavaLangString);
-    localHashMap.put("param_errMsg", paramReportInfo.jdField_a_of_type_JavaLangString);
-    localHashMap.put("param_errorDesc", String.valueOf(paramReportInfo.jdField_a_of_type_JavaLangString));
-    localHashMap.put("param_Server", paramReportInfo.jdField_b_of_type_JavaLangString);
-    localHashMap.put("param_ftnIP", paramReportInfo.jdField_b_of_type_JavaLangString);
-    localHashMap.put("param_innerServerIp", paramReportInfo.c);
-    localHashMap.put("param_serverPort", String.valueOf(paramReportInfo.jdField_b_of_type_Int));
-    localHashMap.put("param_url", paramReportInfo.d);
-    localHashMap.put("param_MD5", paramReportInfo.e);
+    localHashMap.put("param_FailCode", String.valueOf(paramReportInfo.a));
+    localHashMap.put("serverip", paramReportInfo.c);
+    localHashMap.put("param_errMsg", paramReportInfo.b);
+    localHashMap.put("param_errorDesc", String.valueOf(paramReportInfo.b));
+    localHashMap.put("param_Server", paramReportInfo.c);
+    localHashMap.put("param_ftnIP", paramReportInfo.c);
+    localHashMap.put("param_innerServerIp", paramReportInfo.d);
+    localHashMap.put("param_serverPort", String.valueOf(paramReportInfo.e));
+    localHashMap.put("param_url", paramReportInfo.f);
+    localHashMap.put("param_MD5", paramReportInfo.g);
     Object localObject;
-    if (paramReportInfo.jdField_a_of_type_Boolean) {
+    if (paramReportInfo.i) {
       localObject = "0";
     } else {
       localObject = "1";
     }
     localHashMap.put("param_isDowngrade", localObject);
-    localHashMap.put("param_fsizeo", String.valueOf(paramReportInfo.jdField_a_of_type_Long));
+    localHashMap.put("param_fsizeo", String.valueOf(paramReportInfo.j));
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramString1, paramString2, paramBoolean1, 0L, 0L, localHashMap, null);
     for (;;)
     {
@@ -89,15 +89,15 @@ public class WyReportUtils
       {
         paramString2 = new JSONArray();
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("t_server_ip", paramReportInfo.jdField_b_of_type_JavaLangString);
-        ((JSONObject)localObject).put("t_server_port", paramReportInfo.jdField_b_of_type_Int);
-        ((JSONObject)localObject).put("t_url", paramReportInfo.d);
-        ((JSONObject)localObject).put("t_file_name", paramReportInfo.f);
-        ((JSONObject)localObject).put("t_file_id", paramReportInfo.g);
-        ((JSONObject)localObject).put("t_file_path", paramReportInfo.h);
-        ((JSONObject)localObject).put("t_file_size", paramReportInfo.jdField_a_of_type_Long);
-        ((JSONObject)localObject).put("t_file_sha", paramReportInfo.e);
-        ((JSONObject)localObject).put("t_err_code", paramReportInfo.jdField_a_of_type_Int);
+        ((JSONObject)localObject).put("t_server_ip", paramReportInfo.c);
+        ((JSONObject)localObject).put("t_server_port", paramReportInfo.e);
+        ((JSONObject)localObject).put("t_url", paramReportInfo.f);
+        ((JSONObject)localObject).put("t_file_name", paramReportInfo.h);
+        ((JSONObject)localObject).put("t_file_id", paramReportInfo.k);
+        ((JSONObject)localObject).put("t_file_path", paramReportInfo.l);
+        ((JSONObject)localObject).put("t_file_size", paramReportInfo.j);
+        ((JSONObject)localObject).put("t_file_sha", paramReportInfo.g);
+        ((JSONObject)localObject).put("t_err_code", paramReportInfo.a);
         long l = 0L;
         if (paramString1 != null) {
           if (paramString1.startsWith("weiyun_")) {
@@ -112,9 +112,9 @@ public class WyReportUtils
         {
           i = 1;
           ((JSONObject)localObject).put("t_action", i);
-          ((JSONObject)localObject).put("t_app_ver", ApkUtils.a(BaseApplication.getContext()));
+          ((JSONObject)localObject).put("t_app_ver", ApkUtils.b(BaseApplication.getContext()));
           if (!paramBoolean1) {
-            ((JSONObject)localObject).put("t_err_msg", paramReportInfo.jdField_a_of_type_JavaLangString);
+            ((JSONObject)localObject).put("t_err_msg", paramReportInfo.b);
           }
           paramString2.put(localObject);
           paramString1 = new JSONObject();
@@ -139,8 +139,8 @@ public class WyReportUtils
       try
       {
         WyReportUtils.ReportInfo localReportInfo = new WyReportUtils.ReportInfo();
-        localReportInfo.jdField_a_of_type_Int = paramStatusInfo.errorCode;
-        localReportInfo.jdField_a_of_type_JavaLangString = paramStatusInfo.errorMsg;
+        localReportInfo.a = paramStatusInfo.errorCode;
+        localReportInfo.b = paramStatusInfo.errorMsg;
         UploadJobContext localUploadJobContext2 = paramStatusInfo.jobContext;
         UploadJobContext localUploadJobContext1 = localUploadJobContext2;
         if (localUploadJobContext2 == null) {
@@ -148,22 +148,22 @@ public class WyReportUtils
         }
         if (localUploadJobContext1 != null)
         {
-          localReportInfo.f = localUploadJobContext1.file().fileName;
-          localReportInfo.jdField_a_of_type_Long = localUploadJobContext1.file().fileSize;
-          localReportInfo.g = paramStatusInfo.fileId;
-          localReportInfo.e = localUploadJobContext1.file().sha;
+          localReportInfo.h = localUploadJobContext1.file().fileName;
+          localReportInfo.j = localUploadJobContext1.file().fileSize;
+          localReportInfo.k = paramStatusInfo.fileId;
+          localReportInfo.g = localUploadJobContext1.file().sha;
           paramStatusInfo = localUploadJobContext1.uploadRequest();
           if (paramStatusInfo != null)
           {
-            localReportInfo.jdField_b_of_type_JavaLangString = paramStatusInfo.serverIp();
-            localReportInfo.jdField_b_of_type_Int = paramStatusInfo.serverPort();
-            localReportInfo.d = paramStatusInfo.serverName();
+            localReportInfo.c = paramStatusInfo.serverIp();
+            localReportInfo.e = paramStatusInfo.serverPort();
+            localReportInfo.f = paramStatusInfo.serverName();
           }
         }
         if (!WeiyunTransmissionGlobal.getInstance().isNativeUpload())
         {
           bool = true;
-          localReportInfo.jdField_a_of_type_Boolean = bool;
+          localReportInfo.i = bool;
           a(paramString1, paramString2, localReportInfo, paramBoolean, false);
           return;
         }
@@ -185,7 +185,7 @@ public class WyReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.utils.WyReportUtils
  * JD-Core Version:    0.7.0.1
  */

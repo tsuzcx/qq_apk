@@ -10,7 +10,7 @@ class AVActivity$MyVideoObserver$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvWtogetherMediaWatchTogetherMediaPlayCtrl.a(this.jdField_a_of_type_ComTencentAvWtogetherCallbackVideoSink);
+    this.a.a(this.b);
   }
 }
 

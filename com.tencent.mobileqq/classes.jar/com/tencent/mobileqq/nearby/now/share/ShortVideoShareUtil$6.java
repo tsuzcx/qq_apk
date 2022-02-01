@@ -12,19 +12,19 @@ final class ShortVideoShareUtil$6
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    if ((paramBaseResp != null) && (TextUtils.equals(this.a, paramBaseResp.transaction)))
     {
       WXShareHelper.a().b(this);
       if (paramBaseResp.errCode == 0)
       {
-        paramBaseResp = this.jdField_a_of_type_ComTencentMobileqqNearbyNowShareIShortVideoShareUtil$OnShareCallBack;
+        paramBaseResp = this.b;
         if (paramBaseResp != null) {
           paramBaseResp.a(true);
         }
       }
       else
       {
-        paramBaseResp = this.jdField_a_of_type_ComTencentMobileqqNearbyNowShareIShortVideoShareUtil$OnShareCallBack;
+        paramBaseResp = this.b;
         if (paramBaseResp != null) {
           paramBaseResp.a(false);
         }
@@ -34,7 +34,7 @@ final class ShortVideoShareUtil$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.6
  * JD-Core Version:    0.7.0.1
  */

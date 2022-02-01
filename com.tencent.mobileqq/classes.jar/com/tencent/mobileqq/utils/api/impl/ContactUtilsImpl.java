@@ -12,7 +12,7 @@ public class ContactUtilsImpl
   public String getAccountNickName(AppInterface paramAppInterface, String paramString)
   {
     if ((paramAppInterface instanceof QQAppInterface)) {
-      return ContactUtils.e((QQAppInterface)paramAppInterface, paramString);
+      return ContactUtils.f((QQAppInterface)paramAppInterface, paramString);
     }
     return null;
   }
@@ -32,7 +32,7 @@ public class ContactUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.api.impl.ContactUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

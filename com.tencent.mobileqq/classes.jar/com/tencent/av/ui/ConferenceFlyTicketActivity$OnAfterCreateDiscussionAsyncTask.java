@@ -19,20 +19,20 @@ class ConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask
   
   public void a(DownloadParams paramDownloadParams)
   {
-    boolean bool = paramDownloadParams.a.jdField_a_of_type_Boolean;
+    boolean bool = paramDownloadParams.f.f;
     String str3 = "";
     StringBuilder localStringBuilder;
     if (bool)
     {
       try
       {
-        String str1 = new String(paramDownloadParams.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
+        String str1 = new String(paramDownloadParams.f.a, "UTF-8");
       }
       catch (Exception localException)
       {
         if (QLog.isColorLevel())
         {
-          localObject = this.a.jdField_a_of_type_JavaLangString;
+          localObject = this.a.a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("onPostDownloadComplete :");
           localStringBuilder.append(localException.toString());
@@ -48,7 +48,7 @@ class ConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask
       i = ((JSONObject)localObject).getInt("retcode");
       if (QLog.isColorLevel())
       {
-        str2 = this.a.jdField_a_of_type_JavaLangString;
+        str2 = this.a.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = ");
         localStringBuilder.append(i);
@@ -76,7 +76,7 @@ class ConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask
     String str2 = str3;
     if (QLog.isColorLevel())
     {
-      str2 = this.a.jdField_a_of_type_JavaLangString;
+      str2 = this.a.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onPostDownloadComplete : result_code = ");
       ((StringBuilder)localObject).append("");
@@ -90,10 +90,10 @@ class ConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask
       str2 = str3;
     }
     label312:
-    str3 = this.a.jdField_a_of_type_JavaLangString;
+    str3 = this.a.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("OnAfterCreateDiscussionAsyncTask, IsSucc[");
-    ((StringBuilder)localObject).append(paramDownloadParams.a.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(paramDownloadParams.f.f);
     ((StringBuilder)localObject).append("], retcode[");
     ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append("], result_code[");
@@ -104,13 +104,13 @@ class ConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask
     QLog.w(str3, 1, ((StringBuilder)localObject).toString());
     if ((i == 0) && (str2.equals("0")))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.parseLong(this.a.h), this.a.c);
+      this.a.n.a(Long.parseLong(this.a.h), this.a.c);
       paramDownloadParams = this.a;
       paramDownloadParams.a(paramDownloadParams.h, this.a.c);
       this.a.finish();
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.c(Long.parseLong(this.a.h));
+    this.a.n.c(Long.parseLong(this.a.h));
     this.a.a(1, 0);
   }
 }

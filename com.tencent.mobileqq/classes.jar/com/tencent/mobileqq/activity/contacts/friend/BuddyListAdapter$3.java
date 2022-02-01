@@ -14,13 +14,13 @@ class BuddyListAdapter$3
   public void onClick(View paramView)
   {
     GroupManagerActivity.a(this.a.a);
-    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    ReportController.b(BuddyListAdapter.e(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.BuddyListAdapter.3
  * JD-Core Version:    0.7.0.1
  */

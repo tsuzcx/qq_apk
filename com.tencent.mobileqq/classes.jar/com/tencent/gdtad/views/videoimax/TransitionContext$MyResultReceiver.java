@@ -40,8 +40,8 @@ final class TransitionContext$MyResultReceiver
         TransitionContext.a((TransitionContext)localObject, true);
         paramBundle.setClassLoader(GdtVideoImaxFragment.MyResultReceiver.class.getClassLoader());
         TransitionContext.a((TransitionContext)localObject, (ResultReceiver)paramBundle.getParcelable("callback"));
-        if (TransitionContext.a((TransitionContext)localObject)) {
-          TransitionContext.a((TransitionContext)localObject);
+        if (TransitionContext.b((TransitionContext)localObject)) {
+          TransitionContext.c((TransitionContext)localObject);
         }
       }
     }
@@ -49,7 +49,7 @@ final class TransitionContext$MyResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.TransitionContext.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

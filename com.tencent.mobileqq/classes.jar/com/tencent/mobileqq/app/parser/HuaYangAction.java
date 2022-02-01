@@ -22,9 +22,9 @@ public class HuaYangAction
   
   private boolean c()
   {
-    Object localObject1 = new StringBuilder((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
+    Object localObject1 = new StringBuilder((String)this.f.get("url"));
     ((StringBuilder)localObject1).append("?a=1");
-    Object localObject2 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject2 = this.f.keySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       String str1 = (String)((Iterator)localObject2).next();
@@ -32,7 +32,7 @@ public class HuaYangAction
       {
         try
         {
-          String str2 = URLEncoder.encode((String)this.jdField_a_of_type_JavaUtilHashMap.get(str1), "UTF-8");
+          String str2 = URLEncoder.encode((String)this.f.get(str1), "UTF-8");
           ((StringBuilder)localObject1).append("&");
           ((StringBuilder)localObject1).append(str1);
           ((StringBuilder)localObject1).append("=");
@@ -52,7 +52,7 @@ public class HuaYangAction
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.e("HuaYangAction", 4, ((StringBuilder)localObject2).toString());
     }
-    localObject2 = this.jdField_a_of_type_AndroidContentContext;
+    localObject2 = this.b;
     Intent localIntent = new Intent((Context)localObject2, QQBrowserActivity.class);
     localIntent.setFlags(536870912);
     localIntent.putExtra("url", (String)localObject1);
@@ -73,14 +73,14 @@ public class HuaYangAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("HuaYangAction", 1, localStringBuilder.toString());
-      b_("HuaYangAction");
+      h_("HuaYangAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.HuaYangAction
  * JD-Core Version:    0.7.0.1
  */

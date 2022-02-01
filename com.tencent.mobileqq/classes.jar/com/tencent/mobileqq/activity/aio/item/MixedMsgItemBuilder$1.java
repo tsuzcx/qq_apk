@@ -12,8 +12,8 @@ class MixedMsgItemBuilder$1
   
   public void onClick(View paramView)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    if (!this.a.a()) {
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+    if (!this.a.c()) {
       MixedMsgItemBuilder.a(this.a).onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +21,7 @@ class MixedMsgItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

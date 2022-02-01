@@ -29,7 +29,7 @@ class QQGamePreDownloadServiceImpl$8
       {
         QQGameResFlowControl.DSLPermitRsp localDSLPermitRsp = new QQGameResFlowControl.DSLPermitRsp();
         localDSLPermitRsp.mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
-        int j = localDSLPermitRsp.res_state.get();
+        int j = localDSLPermitRsp.resState.get();
         i = j;
         if (j != 1) {
           break label124;
@@ -72,7 +72,7 @@ class QQGamePreDownloadServiceImpl$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGamePreDownloadServiceImpl.8
  * JD-Core Version:    0.7.0.1
  */

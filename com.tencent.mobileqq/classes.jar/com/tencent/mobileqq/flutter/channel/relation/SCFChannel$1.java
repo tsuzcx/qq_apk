@@ -35,12 +35,12 @@ class SCFChannel$1
   
   protected void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
   {
-    VasWebviewUtil.a(this.a.b(), "Care", "PageView", "", 1, 0, 0, null, null, null);
+    VasWebviewUtil.a(this.a.e(), "Care", "PageView", "", 1, 0, 0, null, null, null);
   }
   
   protected void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult)
   {
-    paramResult = this.a.b();
+    paramResult = this.a.e();
     if (paramBoolean.booleanValue()) {
       paramString = "SwitchOn";
     } else {
@@ -67,7 +67,7 @@ class SCFChannel$1
   
   protected void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
   {
-    VasWebviewUtil.a(this.a.b(), "bell", "care_show", "", 1, 0, 0, "", "", "");
+    VasWebviewUtil.a(this.a.e(), "bell", "care_show", "", 1, 0, 0, "", "", "");
   }
   
   protected void c(String paramString, MethodChannel.Result paramResult)
@@ -84,12 +84,12 @@ class SCFChannel$1
   protected void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
   {
     ReportController.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 2, 0, "", "", "", "");
-    VasWebviewUtil.a(this.a.b(), "bell", " care_click", "", 1, 0, 0, "", "", "");
+    VasWebviewUtil.a(this.a.e(), "bell", " care_click", "", 1, 0, 0, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1
  * JD-Core Version:    0.7.0.1
  */

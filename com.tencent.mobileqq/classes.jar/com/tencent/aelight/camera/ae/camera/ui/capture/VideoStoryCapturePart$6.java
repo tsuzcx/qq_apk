@@ -24,13 +24,13 @@ class VideoStoryCapturePart$6
     }
     paramAECaptureModeChangingEvent = paramAECaptureModeChangingEvent.b;
     VideoStoryCapturePart.a(this.a, paramAECaptureModeChangingEvent);
-    Boolean localBoolean = (Boolean)VideoStoryCapturePart.a(this.a).b().getValue();
+    Boolean localBoolean = (Boolean)VideoStoryCapturePart.g(this.a).d().getValue();
     Object localObject = AECaptureMode.GIF;
     boolean bool2 = false;
     if (paramAECaptureModeChangingEvent == localObject)
     {
-      VideoStoryCapturePart.a(this.a);
-      VideoStoryCapturePart.a(this.a).setVisibility(0);
+      VideoStoryCapturePart.h(this.a);
+      VideoStoryCapturePart.i(this.a).setVisibility(0);
       localObject = VideoStoryCapturePart.a(this.a);
       boolean bool1 = bool2;
       if (localBoolean != null)
@@ -45,18 +45,17 @@ class VideoStoryCapturePart$6
     }
     else
     {
-      if (VideoStoryCapturePart.a(this.a)) {
-        VideoStoryCapturePart.a(this.a).setVisibility(8);
+      if (VideoStoryCapturePart.j(this.a)) {
+        VideoStoryCapturePart.i(this.a).setVisibility(8);
       }
-      VideoStoryCapturePart.a(this.a).switchSegment(true);
       VideoStoryCapturePart.a(this.a).switchSegmentFollowFace(false);
     }
-    VideoStoryCapturePart.a(this.a, paramAECaptureModeChangingEvent);
+    VideoStoryCapturePart.b(this.a, paramAECaptureModeChangingEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.capture.VideoStoryCapturePart.6
  * JD-Core Version:    0.7.0.1
  */

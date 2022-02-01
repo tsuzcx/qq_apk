@@ -14,8 +14,8 @@ class CustomizeStrategyFactory$3
   {
     try
     {
-      this.a.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = QWalletTools.a(this.a.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$AnimConfig.a);
-      this.a.c = true;
+      this.a.i = QWalletTools.c(this.a.h.a);
+      this.a.j = true;
     }
     catch (Throwable localThrowable)
     {
@@ -30,12 +30,12 @@ class CustomizeStrategyFactory$3
     if (QLog.isColorLevel()) {
       QLog.d("CustomizeStrategyFactory", 2, "preProcessAnim-preProcess finished");
     }
-    CustomizeStrategyFactory.a().a(this.a);
+    CustomizeStrategyFactory.d().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.3
  * JD-Core Version:    0.7.0.1
  */

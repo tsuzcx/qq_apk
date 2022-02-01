@@ -16,7 +16,12 @@ public class VKdRewardTaskLayout
     super(paramContext);
   }
   
-  public VKdRewardTaskVideoTimer a()
+  public void a(VKdRewardTaskVideoTimer paramVKdRewardTaskVideoTimer)
+  {
+    this.a = new WeakReference(paramVKdRewardTaskVideoTimer);
+  }
+  
+  public VKdRewardTaskVideoTimer getComponent()
   {
     WeakReference localWeakReference = this.a;
     if (localWeakReference != null) {
@@ -24,15 +29,10 @@ public class VKdRewardTaskLayout
     }
     return null;
   }
-  
-  public void a(VKdRewardTaskVideoTimer paramVKdRewardTaskVideoTimer)
-  {
-    this.a = new WeakReference(paramVKdRewardTaskVideoTimer);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.reward.VKdRewardTaskLayout
  * JD-Core Version:    0.7.0.1
  */

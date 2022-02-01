@@ -9,7 +9,7 @@ final class WSFeedUtils$1
 {
   WSFeedUtils$1(ActionSheet.OnButtonClickListener paramOnButtonClickListener, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("clickedView :");
@@ -17,16 +17,16 @@ final class WSFeedUtils$1
     ((StringBuilder)localObject).append(", which: ");
     ((StringBuilder)localObject).append(paramInt);
     WSLog.b("WSFeedUtils", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet$OnButtonClickListener;
+    localObject = this.a;
     if (localObject != null) {
-      ((ActionSheet.OnButtonClickListener)localObject).OnClick(paramView, paramInt);
+      ((ActionSheet.OnButtonClickListener)localObject).onClick(paramView, paramInt);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils.1
  * JD-Core Version:    0.7.0.1
  */

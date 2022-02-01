@@ -20,7 +20,7 @@ class ClassificationSearchActivity$10
     if (paramString != null)
     {
       Object localObject2 = null;
-      Iterator localIterator = this.a.c.iterator();
+      Iterator localIterator = this.a.v.iterator();
       Object localObject1;
       do
       {
@@ -47,7 +47,7 @@ class ClassificationSearchActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.10
  * JD-Core Version:    0.7.0.1
  */

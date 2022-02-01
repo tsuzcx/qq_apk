@@ -11,8 +11,8 @@ import cooperation.qzone.QzoneExternalRequest;
 public class QzoneLoverCheckRequest
   extends QzoneExternalRequest
 {
-  private sweet_upgrade_key_notify_req jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private sweet_upgrade_key_notify_req b;
   
   public QzoneLoverCheckRequest() {}
   
@@ -21,15 +21,15 @@ public class QzoneLoverCheckRequest
     super.setHostUin(paramLong);
     super.setLoginUserId(paramLong);
     this.needCompress = false;
-    this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req = new sweet_upgrade_key_notify_req();
-    this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req.req_comm = new sweet_req_comm();
-    this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req.req_comm.opuin = paramLong;
-    this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req.req_comm.uin = paramLong;
-    this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req.req_comm.loveuin = 0L;
-    this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req.req_comm.qua = QUA.getQUA3();
-    this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req.req_comm.pf = 1;
-    this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req.req_comm.src = 3;
-    this.jdField_a_of_type_JavaLangString = a();
+    this.b = new sweet_upgrade_key_notify_req();
+    this.b.req_comm = new sweet_req_comm();
+    this.b.req_comm.opuin = paramLong;
+    this.b.req_comm.uin = paramLong;
+    this.b.req_comm.loveuin = 0L;
+    this.b.req_comm.qua = QUA.getQUA3();
+    this.b.req_comm.pf = 1;
+    this.b.req_comm.src = 3;
+    this.a = a();
   }
   
   public static sweet_upgrade_key_notify_rsp a(byte[] paramArrayOfByte, String paramString)
@@ -68,17 +68,17 @@ public class QzoneLoverCheckRequest
   
   public JceStruct getReq()
   {
-    return this.jdField_a_of_type_SWEET_NEW_ICONSweet_upgrade_key_notify_req;
+    return this.b;
   }
   
   public String uniKey()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.qzonelover.QzoneLoverCheckRequest
  * JD-Core Version:    0.7.0.1
  */

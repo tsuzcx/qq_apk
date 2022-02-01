@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/pw3" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/pw4" android:background="#ff1b1c26" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="360.0dip">
+        <com.tencent.mobileqq.widget.QQBlurView android:id="@id/ox9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.widget.RoundRelativeLayout>
+    <LinearLayout android:orientation="vertical" android:paddingTop="8.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/ofk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <include layout="@layout/d9s" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/py3" android:paddingLeft="12.5dip" android:paddingRight="12.5dip" android:visibility="gone" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="268.0dip" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="84.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/b03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="33.0dip" android:text="礼物" android:layout_centerVertical="true" />
+            <LinearLayout android:gravity="center_vertical" android:id="@id/ogg" android:background="@drawable/j4k" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <ImageView android:background="@drawable/j4e" android:layout_width="17.0dip" android:layout_height="17.0dip" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/qo_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="充值" />
+                <ImageView android:background="@drawable/j4i" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="1.0dip" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/of_" android:background="@drawable/j4g" android:visibility="invisible" android:layout_width="100.0dip" android:layout_height="4.0dip" android:layout_marginTop="4.0dip" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.widget.RoundRelativeLayout>

@@ -8,27 +8,21 @@ import mqq.app.MobileQQ;
 
 public class AudioDeviceStatus
 {
-  protected volatile AudioDeviceStatus.AudioDeviceStatusResult a;
-  protected boolean a;
-  AudioPlayerHelper.AudioPlayerParameter[] a;
+  protected boolean a = true;
   protected volatile boolean b = false;
   protected volatile boolean c = false;
   protected volatile boolean d = false;
-  private volatile boolean e = false;
-  private boolean f = false;
-  
-  public AudioDeviceStatus()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult = null;
-  }
+  protected volatile AudioDeviceStatus.AudioDeviceStatusResult e = null;
+  AudioPlayerHelper.AudioPlayerParameter[] f;
+  private volatile boolean g = false;
+  private boolean h = false;
   
   private AudioPlayerHelper.AudioPlayerParameter a(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter == null) {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter = AudioPlayerHelper.a();
+    if (this.f == null) {
+      this.f = AudioPlayerHelper.a();
     }
-    AudioPlayerHelper.AudioPlayerParameter[] arrayOfAudioPlayerParameter = this.jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter;
+    AudioPlayerHelper.AudioPlayerParameter[] arrayOfAudioPlayerParameter = this.f;
     AudioPlayerHelper.AudioPlayerParameter localAudioPlayerParameter2 = arrayOfAudioPlayerParameter[0];
     AudioPlayerHelper.AudioPlayerParameter localAudioPlayerParameter1 = localAudioPlayerParameter2;
     if (paramInt >= 0)
@@ -44,14 +38,6 @@ public class AudioDeviceStatus
   public int a()
   {
     return 31;
-  }
-  
-  public AudioDeviceStatus.AudioDeviceStatusResult a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult == null) {
-      new AudioDeviceStatus.AudioDeviceStatusResult(a(0), 0);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult;
   }
   
   public AudioDeviceStatus.AudioDeviceStatusResult a(int paramInt, boolean paramBoolean)
@@ -83,28 +69,7 @@ public class AudioDeviceStatus
     localStringBuilder.append("|");
     localStringBuilder.append(paramBoolean);
     a(localStringBuilder.toString());
-    return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult;
-  }
-  
-  public AudioPlayerHelper.AudioPlayerParameter a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult != null) && (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult.a() != null))
-    {
-      a("getCurrentProperParam");
-      return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult.a();
-    }
-    return a(0);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult = new AudioDeviceStatus.AudioDeviceStatusResult(a(0), 0);
-    this.b = AudioDeviceHelper.a(BaseApplication.getContext());
-    this.e = AudioDeviceHelper.b(BaseApplication.getContext());
-    this.jdField_a_of_type_Boolean = AudioDeviceHelper.a(MobileQQ.sMobileQQ.waitAppRuntime(null));
-    this.d = AudioDeviceHelper.d(BaseApplication.getContext());
-    c();
-    a("init ");
+    return this.e;
   }
   
   public void a(AudioManager paramAudioManager)
@@ -113,8 +78,8 @@ public class AudioDeviceStatus
     localStringBuilder.append("doOnBluetoothSCODisconnected isBluetoothA2dpOn = ");
     localStringBuilder.append(paramAudioManager.isBluetoothA2dpOn());
     a(localStringBuilder.toString());
-    if ((this.e) && (!paramAudioManager.isBluetoothA2dpOn())) {
-      this.e = false;
+    if ((this.g) && (!paramAudioManager.isBluetoothA2dpOn())) {
+      this.g = false;
     }
   }
   
@@ -123,16 +88,16 @@ public class AudioDeviceStatus
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      if (!StringUtil.a(paramString)) {
+      if (!StringUtil.isEmpty(paramString)) {
         localStringBuilder.append(paramString);
       }
       paramString = new StringBuilder();
       paramString.append("\n mCurDeviceStatus = ");
-      paramString.append(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult.a);
+      paramString.append(this.e.a);
       localStringBuilder.append(paramString.toString());
       paramString = new StringBuilder();
       paramString.append("\n  userLoudSpeakerStatus = ");
-      paramString.append(this.jdField_a_of_type_Boolean);
+      paramString.append(this.a);
       localStringBuilder.append(paramString.toString());
       paramString = new StringBuilder();
       paramString.append("\n  mNearToEar = ");
@@ -144,7 +109,7 @@ public class AudioDeviceStatus
       localStringBuilder.append(paramString.toString());
       paramString = new StringBuilder();
       paramString.append("\n  blueHeadsetConnect = ");
-      paramString.append(this.e);
+      paramString.append(this.g);
       localStringBuilder.append(paramString.toString());
       paramString = new StringBuilder();
       paramString.append("\n  mblueHeadsetSCOConnect = ");
@@ -156,22 +121,19 @@ public class AudioDeviceStatus
   
   protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    c();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.a = paramBoolean;
+    j();
   }
   
   public void b()
   {
-    if (!this.f)
-    {
-      e(AudioDeviceHelper.d(BaseApplication.getContext()));
-      this.f = true;
-    }
+    this.e = new AudioDeviceStatus.AudioDeviceStatusResult(a(0), 0);
+    this.b = AudioDeviceHelper.a(BaseApplication.getContext());
+    this.g = AudioDeviceHelper.b(BaseApplication.getContext());
+    this.a = AudioDeviceHelper.a(MobileQQ.sMobileQQ.waitAppRuntime(null));
+    this.d = AudioDeviceHelper.d(BaseApplication.getContext());
+    j();
+    a("init ");
   }
   
   protected void b(boolean paramBoolean)
@@ -179,25 +141,86 @@ public class AudioDeviceStatus
     if (this.c != paramBoolean) {
       this.c = paramBoolean;
     }
-    c();
+    j();
   }
   
-  public boolean b()
+  public void c()
+  {
+    if (!this.h)
+    {
+      e(AudioDeviceHelper.d(BaseApplication.getContext()));
+      this.h = true;
+    }
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+    j();
+  }
+  
+  protected void d(boolean paramBoolean)
+  {
+    this.g = AudioDeviceHelper.b(BaseApplication.getContext());
+    this.d = AudioDeviceHelper.d(BaseApplication.getContext());
+    j();
+  }
+  
+  public boolean d()
+  {
+    return this.a;
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+    j();
+  }
+  
+  public boolean e()
   {
     return this.b;
   }
   
-  protected void c()
+  public boolean f()
   {
-    Object localObject = a();
+    return this.g;
+  }
+  
+  public boolean g()
+  {
+    return this.c;
+  }
+  
+  public AudioPlayerHelper.AudioPlayerParameter h()
+  {
+    if ((this.e != null) && (this.e.a() != null))
+    {
+      a("getCurrentProperParam");
+      return this.e.a();
+    }
+    return a(0);
+  }
+  
+  public AudioDeviceStatus.AudioDeviceStatusResult i()
+  {
+    if (this.e == null) {
+      new AudioDeviceStatus.AudioDeviceStatusResult(a(0), 0);
+    }
+    return this.e;
+  }
+  
+  protected void j()
+  {
+    Object localObject = i();
     int i;
-    if ((AudioDeviceHelper.jdField_a_of_type_Boolean) && (this.d)) {
+    if ((AudioDeviceHelper.b) && (this.d)) {
       i = 4;
     } else if (this.b) {
       i = 2;
-    } else if (this.e) {
+    } else if (this.g) {
       i = 3;
-    } else if ((this.jdField_a_of_type_Boolean) && (!this.c)) {
+    } else if ((this.a) && (!this.c)) {
       i = 0;
     } else {
       i = 1;
@@ -207,46 +230,17 @@ public class AudioDeviceStatus
     }
     AudioDeviceStatus.AudioDeviceStatusResult localAudioDeviceStatusResult = new AudioDeviceStatus.AudioDeviceStatusResult(a(i), i, true);
     if (!((AudioDeviceStatus.AudioDeviceStatusResult)localObject).a(localAudioDeviceStatusResult)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioDeviceStatus$AudioDeviceStatusResult = localAudioDeviceStatusResult;
+      this.e = localAudioDeviceStatusResult;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateCurrentStatus end nextStatusType = ");
     ((StringBuilder)localObject).append(i);
     a(((StringBuilder)localObject).toString());
   }
-  
-  protected void c(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-    c();
-  }
-  
-  public boolean c()
-  {
-    return this.e;
-  }
-  
-  protected void d(boolean paramBoolean)
-  {
-    this.e = AudioDeviceHelper.b(BaseApplication.getContext());
-    this.d = AudioDeviceHelper.d(BaseApplication.getContext());
-    c();
-  }
-  
-  public boolean d()
-  {
-    return this.c;
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-    c();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioDeviceStatus
  * JD-Core Version:    0.7.0.1
  */

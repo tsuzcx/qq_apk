@@ -29,7 +29,7 @@ public class RealTimeTemplateFactoryCache
   
   protected void clearMemory()
   {
-    if (!ReadInJoyHelper.r()) {
+    if (!ReadInJoyHelper.E()) {
       clear();
     }
   }
@@ -54,7 +54,7 @@ public class RealTimeTemplateFactoryCache
     if (paramContext != null) {
       return paramContext;
     }
-    paramContext = RealTimeController.a(paramString);
+    paramContext = RealTimeController.b(paramString);
     if (paramContext != null)
     {
       paramContext.b(paramString);
@@ -94,7 +94,7 @@ public class RealTimeTemplateFactoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.realtime.RealTimeTemplateFactoryCache
  * JD-Core Version:    0.7.0.1
  */

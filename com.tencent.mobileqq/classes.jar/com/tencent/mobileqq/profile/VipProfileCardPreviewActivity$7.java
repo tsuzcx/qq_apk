@@ -39,10 +39,10 @@ class VipProfileCardPreviewActivity$7
     //   60: aload 9
     //   62: aload_0
     //   63: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   66: getfield 72	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:z	I
+    //   66: getfield 72	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:ak	I
     //   69: aload_0
     //   70: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   73: getfield 75	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:y	I
+    //   73: getfield 75	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:aj	I
     //   76: invokevirtual 78	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   79: putfield 81	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   82: new 83	java/io/BufferedInputStream
@@ -90,11 +90,11 @@ class VipProfileCardPreviewActivity$7
     //   169: astore 6
     //   171: aload_0
     //   172: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   175: getfield 125	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:k	I
+    //   175: getfield 125	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:u	I
     //   178: i2f
     //   179: aload_0
     //   180: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   183: getfield 128	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:j	I
+    //   183: getfield 128	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:t	I
     //   186: i2f
     //   187: fdiv
     //   188: fstore_1
@@ -240,26 +240,26 @@ class VipProfileCardPreviewActivity$7
     //   475: aload_0
     //   476: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
     //   479: aload 8
-    //   481: putfield 220	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   481: putfield 221	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:H	Landroid/graphics/drawable/Drawable;
     //   484: aload 7
     //   486: astore 6
     //   488: aload_0
     //   489: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   492: getfield 220	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   492: getfield 221	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:H	Landroid/graphics/drawable/Drawable;
     //   495: ifnull +34 -> 529
     //   498: aload 7
     //   500: astore 6
     //   502: aload_0
     //   503: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   506: getfield 223	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   506: getfield 225	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:y	Landroid/os/Handler;
     //   509: ifnull +20 -> 529
     //   512: aload 7
     //   514: astore 6
     //   516: aload_0
     //   517: getfield 15	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity$7:this$0	Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;
-    //   520: getfield 223	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   520: getfield 225	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:y	Landroid/os/Handler;
     //   523: bipush 27
-    //   525: invokevirtual 229	android/os/Handler:sendEmptyMessage	(I)Z
+    //   525: invokevirtual 231	android/os/Handler:sendEmptyMessage	(I)Z
     //   528: pop
     //   529: aload 7
     //   531: invokevirtual 103	java/io/BufferedInputStream:close	()V
@@ -288,14 +288,14 @@ class VipProfileCardPreviewActivity$7
     //   581: aload 7
     //   583: astore 6
     //   585: aload 9
-    //   587: ldc 231
+    //   587: ldc 233
     //   589: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   592: pop
     //   593: aload 7
     //   595: astore 6
     //   597: aload 9
     //   599: aload 8
-    //   601: invokevirtual 234	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   601: invokevirtual 236	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   604: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   607: pop
     //   608: aload 7
@@ -326,14 +326,14 @@ class VipProfileCardPreviewActivity$7
     //   662: aload 7
     //   664: astore 6
     //   666: aload 9
-    //   668: ldc 236
+    //   668: ldc 238
     //   670: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   673: pop
     //   674: aload 7
     //   676: astore 6
     //   678: aload 9
     //   680: aload 8
-    //   682: invokevirtual 237	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   682: invokevirtual 239	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   685: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   688: pop
     //   689: aload 7
@@ -518,7 +518,7 @@ class VipProfileCardPreviewActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.7
  * JD-Core Version:    0.7.0.1
  */

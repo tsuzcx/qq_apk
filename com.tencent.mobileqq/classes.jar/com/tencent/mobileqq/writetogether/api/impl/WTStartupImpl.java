@@ -28,7 +28,7 @@ public class WTStartupImpl
   {
     boolean bool = ((IAnonymousChatApi)QRoute.api(IAnonymousChatApi.class)).getAioAnonymousStatus(paramString);
     if (bool) {
-      QQToast.a(paramContext, 2131720453, 0).a();
+      QQToast.makeText(paramContext, 2131918129, 0).show();
     }
     return bool;
   }
@@ -37,7 +37,7 @@ public class WTStartupImpl
   {
     boolean bool = isGag(paramAppRuntime, paramString);
     if (bool) {
-      QQToast.a(paramContext, 2131720463, 0).a();
+      QQToast.makeText(paramContext, 2131918139, 0).show();
     }
     return bool;
   }
@@ -46,14 +46,14 @@ public class WTStartupImpl
   {
     boolean bool = NetworkUtil.isNetworkAvailable(paramContext);
     if (!bool) {
-      QQToast.a(paramContext, 2131720472, 0).a();
+      QQToast.makeText(paramContext, 2131918148, 0).show();
     }
     return bool;
   }
   
   public static boolean isGag(AppRuntime paramAppRuntime, String paramString)
   {
-    return ((ITroopGagService)paramAppRuntime.getRuntimeService(ITroopGagService.class, "")).getSelfGagInfo(paramString, true).a;
+    return ((ITroopGagService)paramAppRuntime.getRuntimeService(ITroopGagService.class, "")).getSelfGagInfo(paramString, true).b;
   }
   
   public void launchEditor(Context paramContext, Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -74,10 +74,10 @@ public class WTStartupImpl
     Object localObject = new Bundle();
     ((Bundle)localObject).putString("KEY_CANCEL_OR_BACK", "VALUE_BACK");
     OpenDocParam localOpenDocParam = new OpenDocParam();
-    localOpenDocParam.jdField_f_of_type_Int = paramInt1;
-    localOpenDocParam.k = paramString2;
-    localOpenDocParam.jdField_f_of_type_JavaLangString = paramString1;
-    localOpenDocParam.g = 0;
+    localOpenDocParam.t = paramInt1;
+    localOpenDocParam.u = paramString2;
+    localOpenDocParam.f = paramString1;
+    localOpenDocParam.v = 0;
     ((Bundle)localObject).putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
     if ((paramContext instanceof Activity))
     {
@@ -105,7 +105,7 @@ public class WTStartupImpl
     }
     if (!WriteTogetherUtils.a(paramAppRuntime, paramString2))
     {
-      QQToast.a(paramContext, 2131720455, 0).a();
+      QQToast.makeText(paramContext, 2131918131, 0).show();
       return;
     }
     if (paramString1 == null) {
@@ -129,21 +129,21 @@ public class WTStartupImpl
     }
     paramContext = new Bundle();
     Object localObject = WriteTogetherUtils.a(paramString1);
-    paramContext.putString("leftViewText", HardCodeUtil.a(2131720417));
+    paramContext.putString("leftViewText", HardCodeUtil.a(2131918093));
     paramContext.putString("KEY_CANCEL_OR_BACK", "VALUE_CANCEL");
     OpenDocParam localOpenDocParam = new OpenDocParam();
     localOpenDocParam.a = ((String)localObject);
-    localOpenDocParam.jdField_f_of_type_Int = paramInt1;
-    localOpenDocParam.k = paramString2;
+    localOpenDocParam.t = paramInt1;
+    localOpenDocParam.u = paramString2;
     if ((paramInt1 == 5) || (paramInt1 == 6)) {
-      localOpenDocParam.g = 0;
+      localOpenDocParam.v = 0;
     }
     paramContext.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
     WriteTogetherEditorFragment.a(paramActivity, WriteTogetherEditorFragment.class, paramContext, paramInt2);
-    paramInt2 = WriteTogetherUtils.a(paramAppRuntime, paramString2);
+    paramInt2 = WriteTogetherUtils.b(paramAppRuntime, paramString2);
     paramAppRuntime = new StringBuilder();
     paramAppRuntime.append("");
-    paramAppRuntime.append(WriteTogetherUtils.a(paramInt1));
+    paramAppRuntime.append(WriteTogetherUtils.c(paramInt1));
     paramAppRuntime = paramAppRuntime.toString();
     paramContext = new StringBuilder();
     paramContext.append("");
@@ -157,7 +157,7 @@ public class WTStartupImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.api.impl.WTStartupImpl
  * JD-Core Version:    0.7.0.1
  */

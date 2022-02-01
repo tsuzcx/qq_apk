@@ -11,17 +11,17 @@ class MultiVideoCtrlLayerUIBase$RequestVideoTimeOutRunnable
   
   public void run()
   {
-    if (this.this$0.a != null)
+    if (this.this$0.am != null)
     {
-      this.this$0.a.a("Multi_RequestVideoTimeOutRunnable");
-      this.this$0.y();
-      if (this.this$0.e == 2) {
+      this.this$0.am.f("Multi_RequestVideoTimeOutRunnable");
+      this.this$0.L();
+      if (this.this$0.h == 2) {
         ReportController.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
     else if (QLog.isColorLevel())
     {
-      QLog.e(this.this$0.d, 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
+      QLog.e(this.this$0.X, 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
     }
   }
 }

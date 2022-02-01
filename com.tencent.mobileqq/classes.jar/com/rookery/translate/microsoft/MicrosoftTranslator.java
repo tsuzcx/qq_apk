@@ -20,16 +20,16 @@ import org.apache.http.message.BasicHeader;
 public class MicrosoftTranslator
   extends Translator
 {
-  private static MicrosoftTranslator jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator;
-  private MicrosoftTranslator.AccessToken jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator$AccessToken = new MicrosoftTranslator.AccessToken(this, null);
-  DocumentBuilder jdField_a_of_type_JavaxXmlParsersDocumentBuilder;
-  DocumentBuilderFactory jdField_a_of_type_JavaxXmlParsersDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
+  private static MicrosoftTranslator c;
+  DocumentBuilderFactory a = DocumentBuilderFactory.newInstance();
+  DocumentBuilder b;
+  private MicrosoftTranslator.AccessToken d = new MicrosoftTranslator.AccessToken(this, null);
   
   private MicrosoftTranslator()
   {
     try
     {
-      this.jdField_a_of_type_JavaxXmlParsersDocumentBuilder = this.jdField_a_of_type_JavaxXmlParsersDocumentBuilderFactory.newDocumentBuilder();
+      this.b = this.a.newDocumentBuilder();
       return;
     }
     catch (ParserConfigurationException localParserConfigurationException)
@@ -42,10 +42,10 @@ public class MicrosoftTranslator
   {
     try
     {
-      if (jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator == null) {
-        jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator = new MicrosoftTranslator();
+      if (c == null) {
+        c = new MicrosoftTranslator();
       }
-      return jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator;
+      return c;
     }
     finally {}
   }
@@ -110,9 +110,9 @@ public class MicrosoftTranslator
   
   public void a(Context paramContext, List<String> paramList, Language paramLanguage, Long paramLong, String paramString1, String paramString2, TranslateWithTimeCallback paramTranslateWithTimeCallback)
   {
-    if (System.currentTimeMillis() < this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator$AccessToken.jdField_a_of_type_Long)
+    if (System.currentTimeMillis() < this.d.b)
     {
-      a(paramContext, paramList, paramLanguage, this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator$AccessToken.jdField_a_of_type_JavaLangString, paramLong, paramTranslateWithTimeCallback);
+      a(paramContext, paramList, paramLanguage, this.d.a, paramLong, paramTranslateWithTimeCallback);
       return;
     }
     a(paramContext, paramString1, paramString2, paramLong, new MicrosoftTranslator.1(this, paramLong, paramContext, paramList, paramLanguage, paramTranslateWithTimeCallback));

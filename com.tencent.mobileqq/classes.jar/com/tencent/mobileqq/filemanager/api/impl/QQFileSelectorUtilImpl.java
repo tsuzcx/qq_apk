@@ -22,7 +22,7 @@ public class QQFileSelectorUtilImpl
 {
   public List<PackageInfo> getAllApps(Context paramContext)
   {
-    return FileCategoryUtil.a(paramContext);
+    return FileCategoryUtil.e(paramContext);
   }
   
   public Drawable getApkIcon(Context paramContext, String paramString)
@@ -37,12 +37,12 @@ public class QQFileSelectorUtilImpl
   
   public long getPicCount(Context paramContext)
   {
-    return FileCategoryUtil.a(paramContext);
+    return FileCategoryUtil.d(paramContext);
   }
   
   public boolean isImportLocaFilesForH5(Context paramContext)
   {
-    return (paramContext != null) && ((paramContext instanceof BaseFileAssistantActivity)) && (((BaseFileAssistantActivity)paramContext).j);
+    return (paramContext != null) && ((paramContext instanceof BaseFileAssistantActivity)) && (((BaseFileAssistantActivity)paramContext).z);
   }
   
   public boolean isNeedFinish(Activity paramActivity)
@@ -50,7 +50,7 @@ public class QQFileSelectorUtilImpl
     if ((paramActivity != null) && ((paramActivity instanceof FMActivity)))
     {
       paramActivity = (FMActivity)paramActivity;
-      if ((paramActivity.e() == 0) || (7 == paramActivity.e())) {
+      if ((paramActivity.E() == 0) || (7 == paramActivity.E())) {
         return true;
       }
     }
@@ -85,7 +85,7 @@ public class QQFileSelectorUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QQFileSelectorUtilImpl
  * JD-Core Version:    0.7.0.1
  */

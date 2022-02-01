@@ -11,13 +11,15 @@ import org.json.JSONObject;
 final class ReadInJoyTelePhoneUtils$1
   implements Runnable
 {
+  ReadInJoyTelePhoneUtils$1(AdvertisementInfo paramAdvertisementInfo, Context paramContext) {}
+  
   public void run()
   {
     try
     {
       Object localObject = BaseApplicationImpl.getContext();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdRl);
+      localStringBuilder.append(this.a.mAdRl);
       localStringBuilder.append("&acttype=9001");
       localObject = HttpUtil.openUrlForByte((Context)localObject, localStringBuilder.toString(), "GET", null, null);
       if (localObject == null)
@@ -39,7 +41,7 @@ final class ReadInJoyTelePhoneUtils$1
       localObject = new JSONObject((String)localObject);
       if ((((JSONObject)localObject).optJSONObject("data") != null) && (!TextUtils.isEmpty(((JSONObject)localObject).optJSONObject("data").optString("fmcphone"))))
       {
-        ReadInJoyTelePhoneUtils.a(this.jdField_a_of_type_AndroidContentContext, ((JSONObject)localObject).optJSONObject("data").optString("fmcphone"), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+        ReadInJoyTelePhoneUtils.a(this.b, ((JSONObject)localObject).optJSONObject("data").optString("fmcphone"), this.a);
         return;
       }
     }
@@ -52,7 +54,7 @@ final class ReadInJoyTelePhoneUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyTelePhoneUtils.1
  * JD-Core Version:    0.7.0.1
  */

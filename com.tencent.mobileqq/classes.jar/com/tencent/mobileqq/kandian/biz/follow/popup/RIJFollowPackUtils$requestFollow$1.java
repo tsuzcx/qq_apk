@@ -27,16 +27,16 @@ final class RIJFollowPackUtils$requestFollow$1
     QLog.d(str, 1, localStringBuilder.toString());
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowRecommendFollowInfo.isFollowed = true;
-      RIJFollowPackUtils.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFollowPopupRIJFollowPackUtils$RIJFollowPackData);
+      this.a.isFollowed = true;
+      RIJFollowPackUtils.a.a(this.b);
       return;
     }
-    QQToast.a((Context)BaseApplicationImpl.getContext(), 1, 2131717970, 0).a();
+    QQToast.makeText((Context)BaseApplicationImpl.getContext(), 1, 2131915450, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.popup.RIJFollowPackUtils.requestFollow.1
  * JD-Core Version:    0.7.0.1
  */

@@ -82,7 +82,7 @@ public class ProfileColorScreenComponent
         QLog.i("ProfileColorScreenComponent", 1, "ColorScreenManager.sEnable is false, loadColorScreen fail.");
         return;
       }
-      if (SimpleUIUtil.a())
+      if (SimpleUIUtil.e())
       {
         QLog.i("ProfileColorScreenComponent", 1, "loadColorScreen, SimpleUIMode is open now");
         return;
@@ -110,7 +110,7 @@ public class ProfileColorScreenComponent
         }
         VasWebviewUtil.a(this.mApp.getCurrentAccountUin(), "Bubble", "ShowEffect", (String)localObject, 1, 0, 0, null, Integer.toString(i), null);
         this.mColorScreenLoader = new ProfileColorScreenComponent.ColorScreenLoader(this, i);
-        VasUtil.a(this.mApp).getColorScreen().a(i, VasManager.a(this.mColorScreenLoader));
+        VasUtil.b(this.mApp).getColorScreen().a(i, VasManager.a(this.mColorScreenLoader));
         return;
       }
       if (QLog.isColorLevel()) {
@@ -198,7 +198,7 @@ public class ProfileColorScreenComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent
  * JD-Core Version:    0.7.0.1
  */

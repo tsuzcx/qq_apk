@@ -5,15 +5,15 @@ import android.content.Context;
 
 public class PluginManagerV2$LaunchState
 {
-  public ProgressDialog a;
   public Context a;
-  public IPluginManager.OnPluginReadyListener a;
-  public IPluginManager.PluginParams a;
-  public boolean a = true;
+  public boolean b = true;
+  public IPluginManager.PluginParams c;
+  public IPluginManager.OnPluginReadyListener d;
+  public ProgressDialog e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginManagerV2.LaunchState
  * JD-Core Version:    0.7.0.1
  */

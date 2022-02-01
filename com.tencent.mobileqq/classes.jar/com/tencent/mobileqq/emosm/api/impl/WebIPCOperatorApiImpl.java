@@ -12,27 +12,27 @@ public class WebIPCOperatorApiImpl
 {
   public void doBindService(Context paramContext)
   {
-    WebIPCOperator.a().a().doBindService(paramContext);
+    WebIPCOperator.a().c().doBindService(paramContext);
   }
   
   public void doUnbindService(Context paramContext)
   {
-    WebIPCOperator.a().a().doUnbindService(paramContext);
+    WebIPCOperator.a().c().doUnbindService(paramContext);
   }
   
   public boolean isServiceClientBinded()
   {
-    return WebIPCOperator.a().a();
+    return WebIPCOperator.a().e();
   }
   
   public void onBindSuc()
   {
-    WebIPCOperator.a().a();
+    WebIPCOperator.a().b();
   }
   
   public void onDisconnectWithService()
   {
-    WebIPCOperator.a().b();
+    WebIPCOperator.a().d();
   }
   
   public void onPushMsgFromServer(Bundle paramBundle)
@@ -67,7 +67,7 @@ public class WebIPCOperatorApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.WebIPCOperatorApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -48,7 +48,7 @@ class SmallEmojiSpan$1
     }
     if (bool)
     {
-      localObject3 = EmoticonPanelUtils.a();
+      localObject3 = EmoticonPanelUtils.d();
       if (localObject3 != null) {
         localObject1 = ((IEmoticonManagerService)localObject3).syncFindEmoticonById(Integer.toString(this.this$0.b), Integer.toString(this.this$0.c));
       } else {
@@ -79,7 +79,7 @@ class SmallEmojiSpan$1
       QLog.d("QQText", 2, ((StringBuilder)localObject3).toString());
     }
     localObject1 = new DownloadTask((String)localObject1, (File)localObject2);
-    ((DownloadTask)localObject1).j = true;
+    ((DownloadTask)localObject1).D = true;
     int i = ((IDownloaderFactory)QRoute.api(IDownloaderFactory.class)).download((DownloadTask)localObject1, localAppInterface2);
     Object localObject3 = new EmoticonPackage();
     ((EmoticonPackage)localObject3).epId = Integer.toString(this.this$0.b);
@@ -98,7 +98,7 @@ class SmallEmojiSpan$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.style.SmallEmojiSpan.1
  * JD-Core Version:    0.7.0.1
  */

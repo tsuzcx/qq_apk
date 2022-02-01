@@ -77,7 +77,7 @@ public class QidianUtils
     String str2 = paramChatMessage.getExtInfoFromExtStr("qidian_ext_nick_name");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = QidianManager.a(paramQQAppInterface, paramChatMessage.senderuin);
+      str1 = QidianManager.c(paramQQAppInterface, paramChatMessage.senderuin);
     }
     if ((TextUtils.isEmpty(str1)) && (QLog.isColorLevel())) {
       QLog.d("QidianUtils", 2, "qidian ext nickname is null");
@@ -89,13 +89,13 @@ public class QidianUtils
   {
     if (!TextUtils.isEmpty(paramString4))
     {
-      int i = paramString4.indexOf(paramAppInterface.getApp().getString(2131698321));
+      int i = paramString4.indexOf(paramAppInterface.getApp().getString(2131896245));
       if (i == -1) {
         return;
       }
-      paramString4 = new UniteGrayTipParam(paramString1, paramAppInterface.getCurrentAccountUin(), paramString4, paramInt, -5023, 1245186, MessageCache.a());
-      paramString4.f = false;
-      paramString4.a = paramLong;
+      paramString4 = new UniteGrayTipParam(paramString1, paramAppInterface.getCurrentAccountUin(), paramString4, paramInt, -5023, 1245186, MessageCache.c());
+      paramString4.q = false;
+      paramString4.j = paramLong;
       Object localObject = new Bundle();
       ((Bundle)localObject).putInt("key_action", 12);
       paramString4.a(i, i + 4, (Bundle)localObject);
@@ -169,11 +169,11 @@ public class QidianUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    long l = MessageCache.a();
+    long l = MessageCache.c();
     paramString1 = new UniteGrayTipParam(paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, paramInt, -5020, 1245187, l);
-    paramString1.f = false;
-    paramString1.a = l;
-    paramString1.d = paramString3;
+    paramString1.q = false;
+    paramString1.j = l;
+    paramString1.p = paramString3;
     paramString2 = new MessageForUniteGrayTip();
     paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
     UniteGrayTipMsgUtil.a(paramQQAppInterface, paramString2);
@@ -259,7 +259,7 @@ public class QidianUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.util.QidianUtils
  * JD-Core Version:    0.7.0.1
  */

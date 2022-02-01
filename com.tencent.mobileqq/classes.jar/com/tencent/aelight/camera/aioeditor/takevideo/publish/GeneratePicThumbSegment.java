@@ -12,31 +12,31 @@ import java.lang.ref.WeakReference;
 public class GeneratePicThumbSegment
   extends MeasureJobSegment<GenerateContext, GenerateContext>
 {
-  private int a;
   public WeakReference<Activity> a;
+  private int b;
   
   public GeneratePicThumbSegment(@NonNull Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramActivity);
+    this.b = paramInt;
   }
   
   protected void a(JobContext paramJobContext, GenerateContext paramGenerateContext)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.a.get();
     if (localActivity == null)
     {
       SLog.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
       super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
       return;
     }
-    Object localObject = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_JavaLangString;
+    Object localObject = paramGenerateContext.l.a;
     paramJobContext = (JobContext)localObject;
-    if (!paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.c)
+    if (!paramGenerateContext.l.h)
     {
       paramJobContext = (JobContext)localObject;
-      if (paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean) {
-        paramJobContext = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_JavaLangString;
+      if (paramGenerateContext.l.g) {
+        paramJobContext = paramGenerateContext.l.b;
       }
     }
     localObject = new BitmapFactory.Options();
@@ -45,19 +45,19 @@ public class GeneratePicThumbSegment
     int i = ((BitmapFactory.Options)localObject).outWidth;
     int j = ((BitmapFactory.Options)localObject).outHeight;
     boolean bool;
-    if (this.jdField_a_of_type_Int == 5) {
+    if (this.b == 5) {
       bool = true;
     } else {
       bool = false;
     }
-    paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGenerateThumbArgs = new GenerateThumbArgs(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
-    paramGenerateContext.jdField_a_of_type_JavaLangString = paramJobContext;
+    paramGenerateContext.i = new GenerateThumbArgs(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+    paramGenerateContext.j = paramJobContext;
     super.notifyResult(paramGenerateContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.GeneratePicThumbSegment
  * JD-Core Version:    0.7.0.1
  */

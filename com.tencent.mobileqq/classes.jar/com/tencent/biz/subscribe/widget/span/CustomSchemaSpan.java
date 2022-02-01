@@ -9,29 +9,29 @@ import android.view.View;
 public class CustomSchemaSpan
   extends ClickableSpan
 {
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private CustomSchemaSpan.OnCustomSchemaClickListener jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomSchemaSpan$OnCustomSchemaClickListener;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private int b;
+  private ColorStateList c;
+  private CustomSchemaSpan.OnCustomSchemaClickListener d;
   
   public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
-      paramView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomSchemaSpan$OnCustomSchemaClickListener;
+      paramView = this.d;
       if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_JavaLangString);
+        paramView.a(this.a);
       }
     }
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i > 0) {
       paramTextPaint.setColor(i);
     }
-    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    ColorStateList localColorStateList = this.c;
     if (localColorStateList != null) {
       paramTextPaint.setColor(localColorStateList.getColorForState(paramTextPaint.drawableState, 0));
     }
@@ -40,7 +40,7 @@ public class CustomSchemaSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.span.CustomSchemaSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -21,96 +21,77 @@ import java.util.HashMap;
 public class PokeAndEmoPanelHelper
   implements OnFinishListener, IMsgUpdateCallback, ILifeCycleHelper
 {
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private PanelManager jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final AIOContext a;
+  private final QQAppInterface b;
+  private PanelManager c;
   
   public PokeAndEmoPanelHelper(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    paramAIOContext.a().a(this);
-  }
-  
-  private PokeAndEmoPanel a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    }
-    return (PokeAndEmoPanel)this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.b(23);
+    this.a = paramAIOContext;
+    this.b = paramAIOContext.a();
+    paramAIOContext.d().a(this);
   }
   
   private void a()
   {
-    ViewGroup localViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-    PokeItemAnimationManager.a().a((FitSystemWindowsRelativeLayout)localViewGroup);
+    ViewGroup localViewGroup = this.a.r();
+    PokeItemAnimationManager.c().a((FitSystemWindowsRelativeLayout)localViewGroup);
   }
   
   private void b()
   {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
+    PokeAndEmoPanel localPokeAndEmoPanel = h();
     if (localPokeAndEmoPanel != null) {
       localPokeAndEmoPanel.a();
     }
   }
   
-  private void c()
-  {
-    PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (!PokeItemHelper.b) {
-      ThreadManager.executeOnSubThread(new PokeAndEmoPanelHelper.1(this));
-    }
-  }
-  
   private void d()
   {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null) {
-      localPokeAndEmoPanel.c();
+    PokePanel.a(this.b);
+    if (!PokeItemHelper.I) {
+      ThreadManager.executeOnSubThread(new PokeAndEmoPanelHelper.1(this));
     }
   }
   
   private void e()
   {
-    PokeAndEmoPanel localPokeAndEmoPanel = a();
-    if (localPokeAndEmoPanel != null)
-    {
-      localPokeAndEmoPanel.b();
-      PokeItemHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), PokeItemHelper.a);
+    PokeAndEmoPanel localPokeAndEmoPanel = h();
+    if (localPokeAndEmoPanel != null) {
+      localPokeAndEmoPanel.c();
     }
-    PokeItemHelper.a();
-    PokeItemHelper.b();
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a.clear();
   }
   
   private void f()
   {
-    PokeItemAnimationManager.a().a(3);
-    PokeItemAnimationManager.a().a(6);
-    PokeItemAnimationManager.a().a(12);
-    PokeItemAnimationManager.a().a(15);
-    PokeItemAnimationManager.a().a(18);
-    PokeItemAnimationManager.a().a(9);
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public void a(AIOContext paramAIOContext, ChatMessage paramChatMessage)
-  {
-    if ((!paramChatMessage.isread) && ((paramChatMessage instanceof MessageForPoke)) && (!paramChatMessage.isSend()))
+    PokeAndEmoPanel localPokeAndEmoPanel = h();
+    if (localPokeAndEmoPanel != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
-      ((MessageForPoke)paramChatMessage).isPlayed = false;
+      localPokeAndEmoPanel.b();
+      PokeItemHelper.b(this.b.getAccount(), PokeItemHelper.k);
     }
+    PokeItemHelper.b();
+    PokeItemHelper.d();
+    g();
+    this.b.getMsgCache().h.clear();
   }
   
-  public boolean a(int paramInt)
+  private void g()
   {
-    return false;
+    PokeItemAnimationManager.c().a(3);
+    PokeItemAnimationManager.c().a(6);
+    PokeItemAnimationManager.c().a(12);
+    PokeItemAnimationManager.c().a(15);
+    PokeItemAnimationManager.c().a(18);
+    PokeItemAnimationManager.c().a(9);
+  }
+  
+  private PokeAndEmoPanel h()
+  {
+    if (this.c == null) {
+      this.c = this.a.q();
+    }
+    return (PokeAndEmoPanel)this.c.d(23);
   }
   
   public boolean a(AIOContext paramAIOContext, ChatMessage paramChatMessage)
@@ -123,16 +104,35 @@ public class PokeAndEmoPanelHelper
     return false;
   }
   
-  public void b(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
-  
-  public boolean b(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  public void b(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
-    return false;
+    if ((!paramChatMessage.isread) && ((paramChatMessage instanceof MessageForPoke)) && (!paramChatMessage.isSend()))
+    {
+      this.b.getMsgCache().h.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
+      ((MessageForPoke)paramChatMessage).isPlayed = false;
+    }
+  }
+  
+  public int bM_()
+  {
+    return 0;
   }
   
   public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
   
-  public void d(int paramInt) {}
+  public boolean d(int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean d(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  {
+    return false;
+  }
+  
+  public void e(int paramInt) {}
+  
+  public void e(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
   
   public String getTag()
   {
@@ -160,13 +160,13 @@ public class PokeAndEmoPanelHelper
             b();
             return;
           }
-          c();
+          d();
           return;
         }
-        e();
+        f();
         return;
       }
-      d();
+      e();
       return;
     }
     a();
@@ -174,7 +174,7 @@ public class PokeAndEmoPanelHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PokeAndEmoPanelHelper
  * JD-Core Version:    0.7.0.1
  */

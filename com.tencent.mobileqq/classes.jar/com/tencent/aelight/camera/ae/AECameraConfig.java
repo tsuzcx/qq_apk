@@ -9,249 +9,144 @@ import org.jetbrains.annotations.NotNull;
 
 public class AECameraConfig
 {
-  private int jdField_a_of_type_Int;
-  private AECameraConfig.LogicPartsGenerator jdField_a_of_type_ComTencentAelightCameraAeAECameraConfig$LogicPartsGenerator;
-  private AECaptureMode jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode;
-  private Size jdField_a_of_type_ComTencentMobileqqActivityRichmediaSize;
-  private SessionWrap jdField_a_of_type_DovComQqImAeCurrentSessionWrap;
-  private Float jdField_a_of_type_JavaLangFloat;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private AECaptureMode[] jdField_a_of_type_ArrayOfComTencentAelightCameraAeModeAECaptureMode;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private final int jdField_f_of_type_Int;
-  private boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean;
-  private int jdField_h_of_type_Int;
-  private boolean jdField_h_of_type_Boolean;
-  private int jdField_i_of_type_Int;
-  private boolean jdField_i_of_type_Boolean;
-  private int jdField_j_of_type_Int;
-  private boolean jdField_j_of_type_Boolean;
-  private int jdField_k_of_type_Int;
-  private boolean jdField_k_of_type_Boolean;
+  private boolean A;
+  private SessionWrap B;
+  private String C;
+  private Size D;
+  private Float E;
+  private Integer F;
+  private boolean a;
+  private boolean b;
+  private boolean c;
+  private boolean d;
+  private int e;
+  private int f;
+  private boolean g;
+  private boolean h;
+  private int i = -1;
+  private int j;
+  private boolean k;
   private int l;
-  private int m;
+  private final int m;
+  private int n;
+  private boolean o;
+  private boolean p;
+  private int q;
+  private int r;
+  private int s;
+  private int t;
+  private int u;
+  private int v;
+  private AECaptureMode w;
+  private AECaptureMode[] x;
+  private boolean y;
+  private AECameraConfig.LogicPartsGenerator z;
   
   private AECameraConfig(AECameraConfig.Builder paramBuilder)
   {
-    this.jdField_g_of_type_Boolean = AECameraConfig.Builder.a(paramBuilder);
-    this.jdField_e_of_type_Int = AECameraConfig.Builder.a(paramBuilder);
-    this.jdField_h_of_type_Int = AECameraConfig.Builder.b(paramBuilder);
-    this.jdField_i_of_type_Int = AECameraConfig.Builder.c(paramBuilder);
-    this.jdField_j_of_type_Int = AECameraConfig.Builder.d(paramBuilder);
-    this.l = AECameraConfig.Builder.e(paramBuilder);
-    this.jdField_a_of_type_ArrayOfComTencentAelightCameraAeModeAECaptureMode = AECameraConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode = AECameraConfig.Builder.a(paramBuilder);
-    this.m = AECameraConfig.Builder.f(paramBuilder);
-    this.jdField_k_of_type_Boolean = AECameraConfig.Builder.b(paramBuilder);
-    this.jdField_a_of_type_DovComQqImAeCurrentSessionWrap = AECameraConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_JavaLangString = AECameraConfig.Builder.a(paramBuilder);
-    this.jdField_j_of_type_Boolean = AECameraConfig.Builder.c(paramBuilder);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSize = AECameraConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_JavaLangFloat = AECameraConfig.Builder.a(paramBuilder);
-    this.jdField_a_of_type_JavaLangInteger = AECameraConfig.Builder.a(paramBuilder);
-    this.jdField_h_of_type_Boolean = AECameraConfig.Builder.d(paramBuilder);
-    this.jdField_i_of_type_Boolean = AECameraConfig.Builder.e(paramBuilder);
-    this.jdField_g_of_type_Int = AECameraConfig.Builder.g(paramBuilder);
-    this.jdField_k_of_type_Int = AECameraConfig.Builder.h(paramBuilder);
-    this.jdField_f_of_type_Int = AECameraConfig.Builder.i(paramBuilder);
-    this.jdField_d_of_type_Int = AECameraConfig.Builder.j(paramBuilder);
-    this.jdField_b_of_type_Boolean = AECameraConfig.Builder.f(paramBuilder);
-    this.jdField_d_of_type_Boolean = AECameraConfig.Builder.g(paramBuilder);
-    this.jdField_e_of_type_Boolean = AECameraConfig.Builder.h(paramBuilder);
-    this.jdField_a_of_type_Boolean = AECameraConfig.Builder.i(paramBuilder);
-    this.jdField_f_of_type_Boolean = AECameraConfig.Builder.j(paramBuilder);
-    this.jdField_b_of_type_Int = paramBuilder.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Int = paramBuilder.jdField_c_of_type_Int;
-    this.jdField_c_of_type_Int = paramBuilder.jdField_a_of_type_Int;
-    this.jdField_c_of_type_Boolean = paramBuilder.jdField_a_of_type_Boolean;
-    if (AECameraConfig.Builder.a(paramBuilder) == null)
+    this.k = AECameraConfig.Builder.a(paramBuilder);
+    this.l = AECameraConfig.Builder.b(paramBuilder);
+    this.q = AECameraConfig.Builder.c(paramBuilder);
+    this.r = AECameraConfig.Builder.d(paramBuilder);
+    this.s = AECameraConfig.Builder.e(paramBuilder);
+    this.u = AECameraConfig.Builder.f(paramBuilder);
+    this.x = AECameraConfig.Builder.g(paramBuilder);
+    this.w = AECameraConfig.Builder.h(paramBuilder);
+    this.v = AECameraConfig.Builder.i(paramBuilder);
+    this.A = AECameraConfig.Builder.j(paramBuilder);
+    this.B = AECameraConfig.Builder.k(paramBuilder);
+    this.C = AECameraConfig.Builder.l(paramBuilder);
+    this.y = AECameraConfig.Builder.m(paramBuilder);
+    this.D = AECameraConfig.Builder.n(paramBuilder);
+    this.E = AECameraConfig.Builder.o(paramBuilder);
+    this.F = AECameraConfig.Builder.p(paramBuilder);
+    this.o = AECameraConfig.Builder.q(paramBuilder);
+    this.p = AECameraConfig.Builder.r(paramBuilder);
+    this.n = AECameraConfig.Builder.s(paramBuilder);
+    this.t = AECameraConfig.Builder.t(paramBuilder);
+    this.m = AECameraConfig.Builder.u(paramBuilder);
+    this.j = AECameraConfig.Builder.v(paramBuilder);
+    this.b = AECameraConfig.Builder.w(paramBuilder);
+    this.d = AECameraConfig.Builder.x(paramBuilder);
+    this.g = AECameraConfig.Builder.y(paramBuilder);
+    this.a = AECameraConfig.Builder.z(paramBuilder);
+    this.h = AECameraConfig.Builder.A(paramBuilder);
+    this.f = paramBuilder.b;
+    this.e = paramBuilder.d;
+    this.i = paramBuilder.a;
+    this.c = paramBuilder.c;
+    if (AECameraConfig.Builder.B(paramBuilder) == null)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeAECameraConfig$LogicPartsGenerator = a();
+      this.z = D();
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeAECameraConfig$LogicPartsGenerator = AECameraConfig.Builder.a(paramBuilder);
+    this.z = AECameraConfig.Builder.B(paramBuilder);
   }
   
   @NotNull
-  private AECameraConfig.LogicPartsGenerator a()
+  private AECameraConfig.LogicPartsGenerator D()
   {
     return new AECameraConfig.1(this);
   }
   
+  public boolean A()
+  {
+    return this.A;
+  }
+  
+  public SessionWrap B()
+  {
+    return this.B;
+  }
+  
+  public int C()
+  {
+    return this.i;
+  }
+  
   public int a()
   {
-    return this.jdField_k_of_type_Int;
-  }
-  
-  public AECaptureMode a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode;
-  }
-  
-  public Size a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSize == null)
-    {
-      int i1 = this.jdField_h_of_type_Int;
-      int n = i1;
-      if (i1 == 0) {
-        n = CameraHelper.a();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSize = SVParamManager.a().a(n);
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSize;
-  }
-  
-  public SessionWrap a()
-  {
-    return this.jdField_a_of_type_DovComQqImAeCurrentSessionWrap;
-  }
-  
-  public Float a()
-  {
-    if (this.jdField_a_of_type_JavaLangFloat == null)
-    {
-      int i1 = this.jdField_h_of_type_Int;
-      int n = i1;
-      if (i1 == 0) {
-        n = CameraHelper.a();
-      }
-      this.jdField_a_of_type_JavaLangFloat = Float.valueOf(SVParamManager.a().a(n));
-    }
-    return this.jdField_a_of_type_JavaLangFloat;
-  }
-  
-  public Integer a()
-  {
-    if (this.jdField_a_of_type_JavaLangInteger == null)
-    {
-      int i1 = CameraHelper.a();
-      int n = i1;
-      if (this.jdField_h_of_type_Int == 0)
-      {
-        n = i1;
-        if (i1 == 0) {
-          n = 1;
-        }
-      }
-      i1 = this.jdField_h_of_type_Int;
-      if (i1 != 0) {
-        n = i1;
-      }
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(SVParamManager.a().a(n) * 1000);
-    }
-    return this.jdField_a_of_type_JavaLangInteger;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public AECaptureMode[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfComTencentAelightCameraAeModeAECaptureMode;
+    return this.t;
   }
   
   public int b()
   {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public Integer b()
-  {
-    return Integer.valueOf(this.l);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.j;
   }
   
   public int c()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int d()
-  {
-    return this.jdField_f_of_type_Int;
+    return this.f;
   }
   
   public boolean d()
   {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public int e()
-  {
-    return this.jdField_g_of_type_Int;
+    return this.h;
   }
   
   public boolean e()
   {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public int f()
-  {
-    return this.jdField_e_of_type_Int;
+    return this.a;
   }
   
   public boolean f()
   {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public int g()
-  {
-    return this.jdField_h_of_type_Int;
+    return this.b;
   }
   
   public boolean g()
   {
-    return this.jdField_h_of_type_Boolean;
-  }
-  
-  public int h()
-  {
-    return this.jdField_i_of_type_Int;
+    return this.c;
   }
   
   public boolean h()
   {
-    return this.jdField_i_of_type_Boolean;
-  }
-  
-  public int i()
-  {
-    return this.jdField_j_of_type_Int;
+    return this.d;
   }
   
   public boolean i()
   {
-    return this.jdField_j_of_type_Boolean;
+    return this.g;
   }
   
   public int j()
@@ -259,19 +154,124 @@ public class AECameraConfig
     return this.m;
   }
   
-  public boolean j()
+  public Integer k()
   {
-    return this.jdField_k_of_type_Boolean;
+    if (this.F == null)
+    {
+      int i2 = CameraHelper.a();
+      int i1 = i2;
+      if (this.q == 0)
+      {
+        i1 = i2;
+        if (i2 == 0) {
+          i1 = 1;
+        }
+      }
+      i2 = this.q;
+      if (i2 != 0) {
+        i1 = i2;
+      }
+      this.F = Integer.valueOf(SVParamManager.a().c(i1) * 1000);
+    }
+    return this.F;
   }
   
-  public int k()
+  public Float l()
   {
-    return this.jdField_c_of_type_Int;
+    if (this.E == null)
+    {
+      int i2 = this.q;
+      int i1 = i2;
+      if (i2 == 0) {
+        i1 = CameraHelper.a();
+      }
+      this.E = Float.valueOf(SVParamManager.a().b(i1));
+    }
+    return this.E;
+  }
+  
+  public String m()
+  {
+    return this.C;
+  }
+  
+  public Size n()
+  {
+    if (this.D == null)
+    {
+      int i2 = this.q;
+      int i1 = i2;
+      if (i2 == 0) {
+        i1 = CameraHelper.a();
+      }
+      this.D = SVParamManager.a().a(i1);
+    }
+    return this.D;
+  }
+  
+  public int o()
+  {
+    return this.n;
+  }
+  
+  public boolean p()
+  {
+    return this.o;
+  }
+  
+  public int q()
+  {
+    return this.l;
+  }
+  
+  public boolean r()
+  {
+    return this.p;
+  }
+  
+  public int s()
+  {
+    return this.q;
+  }
+  
+  public int t()
+  {
+    return this.r;
+  }
+  
+  public int u()
+  {
+    return this.s;
+  }
+  
+  public Integer v()
+  {
+    return Integer.valueOf(this.u);
+  }
+  
+  public int w()
+  {
+    return this.v;
+  }
+  
+  public AECaptureMode x()
+  {
+    return this.w;
+  }
+  
+  public AECaptureMode[] y()
+  {
+    return this.x;
+  }
+  
+  public boolean z()
+  {
+    return this.y;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AECameraConfig
  * JD-Core Version:    0.7.0.1
  */

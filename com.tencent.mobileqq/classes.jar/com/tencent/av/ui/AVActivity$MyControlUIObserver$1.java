@@ -10,10 +10,10 @@ class AVActivity$MyControlUIObserver$1
   
   public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
   {
-    if (paramVideoViewInfo1.a) {
+    if (paramVideoViewInfo1.c) {
       return 1;
     }
-    if (paramVideoViewInfo2.a) {
+    if (paramVideoViewInfo2.c) {
       return 1;
     }
     return 0;

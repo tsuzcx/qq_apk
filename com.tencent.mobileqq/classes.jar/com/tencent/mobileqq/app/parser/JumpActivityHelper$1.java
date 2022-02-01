@@ -13,9 +13,9 @@ final class JumpActivityHelper$1
   
   public void run()
   {
-    JumpActivityHelper.c(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity);
-    String str = this.jdField_a_of_type_AndroidContentIntent.getType();
-    Uri localUri = this.jdField_a_of_type_AndroidContentIntent.getData();
+    JumpActivityHelper.e(this.a);
+    String str = this.b.getType();
+    Uri localUri = this.b.getData();
     Intent localIntent = new Intent();
     int i;
     if ((str != null) && (str.startsWith("image")))
@@ -24,23 +24,23 @@ final class JumpActivityHelper$1
     }
     else
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("not_forward", true);
+      this.c.putBoolean("not_forward", true);
       i = 0;
     }
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("android.intent.extra.STREAM", localUri);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+    this.c.putParcelable("android.intent.extra.STREAM", localUri);
+    localIntent.putExtras(this.c);
     localIntent.putExtra("isFromShare", true);
     localIntent.putExtra("forward_type", i);
     localIntent.putExtra("forward_from_jump", true);
     localIntent.setData(localUri);
     localIntent.putExtra("sendMultiple", false);
-    RouteUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, localIntent, "/base/forwardRecent");
-    this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.finish();
+    RouteUtils.a(this.a, localIntent, "/base/forwardRecent");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.JumpActivityHelper.1
  * JD-Core Version:    0.7.0.1
  */

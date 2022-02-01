@@ -8,13 +8,13 @@ public class SvEffectSdkInitor$QQGestureResource
   implements GestureResource
 {
   public static String a = "5";
-  public static boolean a = false;
   public static String b = "200";
   public static String c = "20";
+  public static boolean d = false;
   
   public String getGestureGapFrame()
   {
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public String getGestureGapTime()
@@ -24,7 +24,7 @@ public class SvEffectSdkInitor$QQGestureResource
   
   public boolean getGestureShouldUpload()
   {
-    return jdField_a_of_type_Boolean;
+    return d;
   }
   
   public String getGestureThreadColdTime()
@@ -44,12 +44,12 @@ public class SvEffectSdkInitor$QQGestureResource
   
   public boolean isGestureEnable()
   {
-    return GestureMgr.a().d();
+    return GestureMgr.e().f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQGestureResource
  * JD-Core Version:    0.7.0.1
  */

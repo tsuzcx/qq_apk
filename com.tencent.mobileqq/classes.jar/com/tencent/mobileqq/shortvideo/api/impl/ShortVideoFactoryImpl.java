@@ -39,7 +39,7 @@ public class ShortVideoFactoryImpl
   
   public BaseTransProcessor getProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
-    if ((paramTransferRequest.mUinType != 1) && (paramTransferRequest.mUinType != 3000)) {
+    if ((paramTransferRequest.mUinType != 1) && (paramTransferRequest.mUinType != 3000) && (paramTransferRequest.mUinType != 10014)) {
       return getC2CProcessor(paramBaseTransFileController, paramTransferRequest);
     }
     return getTroopProcessor(paramBaseTransFileController, paramTransferRequest);
@@ -58,7 +58,7 @@ public class ShortVideoFactoryImpl
   public BaseTransProcessor getTroopProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
     if (paramTransferRequest.mIsUp) {
-      if ((paramTransferRequest.mFileType != 6) && (paramTransferRequest.mFileType != 17) && (paramTransferRequest.mFileType != 9))
+      if ((paramTransferRequest.mFileType != 6) && (paramTransferRequest.mFileType != 17) && (paramTransferRequest.mFileType != 9) && (paramTransferRequest.mFileType != 67))
       {
         if (paramTransferRequest.mFileType == 20) {
           return new ShortVideoForwardProcessor(paramBaseTransFileController, paramTransferRequest);
@@ -73,7 +73,7 @@ public class ShortVideoFactoryImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.api.impl.ShortVideoFactoryImpl
  * JD-Core Version:    0.7.0.1
  */

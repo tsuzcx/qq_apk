@@ -31,7 +31,7 @@ public class VFSAssistantUtils
     }
     if ((!TextUtils.isEmpty(paramString)) && (hasExternalStorage))
     {
-      String str = VFSRegisterProxy.a().a();
+      String str = VFSRegisterProxy.a().b();
       Object localObject;
       if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0))
       {
@@ -44,9 +44,9 @@ public class VFSAssistantUtils
           return ((StringBuilder)localObject).toString();
         }
       }
-      else if ((str != null) && (!paramString.startsWith(str)) && (paramString.startsWith(VFSRegisterProxy.a().b())))
+      else if ((str != null) && (!paramString.startsWith(str)) && (paramString.startsWith(VFSRegisterProxy.a().c())))
       {
-        localObject = paramString.split(VFSRegisterProxy.a().b());
+        localObject = paramString.split(VFSRegisterProxy.a().c());
         if (localObject.length >= 2)
         {
           paramString = new StringBuilder();
@@ -54,7 +54,7 @@ public class VFSAssistantUtils
           paramString.append(localObject[1]);
           return paramString.toString();
         }
-        if (paramString.equals(VFSRegisterProxy.a().b())) {
+        if (paramString.equals(VFSRegisterProxy.a().c())) {
           return str;
         }
       }
@@ -64,7 +64,7 @@ public class VFSAssistantUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vfs.VFSAssistantUtils
  * JD-Core Version:    0.7.0.1
  */

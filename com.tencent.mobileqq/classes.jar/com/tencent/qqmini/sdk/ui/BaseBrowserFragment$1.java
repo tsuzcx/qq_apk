@@ -89,8 +89,8 @@ class BaseBrowserFragment$1
     this.this$0.mCoreDumpData.put("errorCode", Integer.valueOf(paramWebResourceError.getErrorCode()));
     this.this$0.mCoreDumpData.put("errorMsg", paramWebResourceError.getDescription());
     this.this$0.mCoreDumpData.put("requestUrl", paramWebResourceRequest.getUrl().toString());
-    if ((this.this$0.mBrowerEngin != null) && (paramWebResourceError.getErrorCode() >= 400)) {
-      this.this$0.mBrowerEngin.handleEvent(paramWebView.getUrl(), 1L, this.this$0.mCoreDumpData);
+    if ((this.this$0.mBrowserEngine != null) && (paramWebResourceError.getErrorCode() >= 400)) {
+      this.this$0.mBrowserEngine.handleEvent(paramWebView.getUrl(), 1L, this.this$0.mCoreDumpData);
     }
   }
   
@@ -139,7 +139,7 @@ class BaseBrowserFragment$1
         return true;
       }
     }
-    if ((this.this$0.mBrowerEngin != null) && (this.this$0.mBrowerEngin.shouldOverrideUrlRequest((String)localObject))) {
+    if ((this.this$0.mBrowserEngine != null) && (this.this$0.mBrowserEngine.shouldOverrideUrlRequest((String)localObject))) {
       return true;
     }
     return super.shouldOverrideUrlLoading(paramWebView, (String)localObject);
@@ -147,7 +147,7 @@ class BaseBrowserFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.BaseBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

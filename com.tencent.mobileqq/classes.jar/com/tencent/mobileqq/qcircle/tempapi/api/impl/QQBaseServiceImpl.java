@@ -5,8 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 import com.tencent.mobileqq.activity.qcircle.QCircleHippyFragment;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -21,6 +22,7 @@ import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.profilecard.utils.ProfileCodecUtils;
 import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.settings.message.AssistantSettingFragment;
 import com.tencent.mobileqq.shortvideo.mediacodec.ShortVideoCodec;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -93,15 +95,15 @@ public class QQBaseServiceImpl
     try
     {
       Intent localIntent1 = new Intent(BaseActivity.sTopActivity, QQSettingSettingActivity.class);
-      Intent localIntent2 = new Intent(BaseActivity.sTopActivity, AssistantSettingActivity.class);
+      Intent localIntent2 = new Intent();
+      localIntent2.setClass(BaseActivity.sTopActivity, PublicFragmentActivity.class);
+      localIntent2.putExtra("public_fragment_class", AssistantSettingFragment.class.getName());
       localIntent2.addFlags(268435456);
-      Intent localIntent3 = new Intent();
-      localIntent3.addFlags(268435456);
-      localIntent3.addFlags(536870912);
-      localIntent3.addFlags(67108864);
-      localIntent3.setClass(BaseActivity.sTopActivity, PublicFragmentActivity.class);
-      localIntent3.putExtra("public_fragment_class", BottomTabSettingFragment.class.getName());
-      BaseActivity.sTopActivity.startActivities(new Intent[] { localIntent1, localIntent2, localIntent3 });
+      BaseActivity.sTopActivity.startActivities(new Intent[] { localIntent1, localIntent2 });
+      localIntent1 = new Intent();
+      localIntent1.addFlags(268435456);
+      localIntent1.putExtra("KEY_ENTRANCE", "VALUE_QQ_SETTING_FRAGMENT");
+      QPublicFragmentActivity.Launcher.a(BaseApplicationImpl.getContext(), localIntent1, QPublicFragmentActivity.class, BottomTabSettingFragment.class);
       return;
     }
     catch (Exception localException)
@@ -122,7 +124,7 @@ public class QQBaseServiceImpl
     paramBundle = this.mSearchManager;
     if (paramBundle != null)
     {
-      int i = paramBundle.a();
+      int i = paramBundle.d();
       if (i != 0)
       {
         i = this.mSearchManager.a(i, true);
@@ -144,7 +146,7 @@ public class QQBaseServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.tempapi.api.impl.QQBaseServiceImpl
  * JD-Core Version:    0.7.0.1
  */

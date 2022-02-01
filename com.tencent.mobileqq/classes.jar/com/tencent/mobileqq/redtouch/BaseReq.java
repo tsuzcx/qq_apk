@@ -11,15 +11,15 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class BaseReq
   extends BaseIpc
 {
-  public ResultReceiver a;
+  public ResultReceiver c;
   
-  public static BaseReq a(Bundle paramBundle)
+  public static BaseReq d(Bundle paramBundle)
   {
     if (paramBundle == null) {
       return null;
     }
     int i = paramBundle.getInt("redpoint.fromReceiverIPCCode", -1);
-    Object localObject = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    Object localObject = (Class)a.get(i);
     if (localObject != null) {
       if (QLog.isColorLevel())
       {
@@ -43,10 +43,10 @@ public abstract class BaseReq
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    if (this.c != null)
     {
       Parcel localParcel = Parcel.obtain();
-      this.jdField_a_of_type_AndroidOsResultReceiver.writeToParcel(localParcel, 0);
+      this.c.writeToParcel(localParcel, 0);
       localParcel.setDataPosition(0);
       ResultReceiver localResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
       localParcel.recycle();
@@ -56,11 +56,17 @@ public abstract class BaseReq
   
   public abstract void a(QQAppInterface paramQQAppInterface, Bundle paramBundle);
   
-  public final boolean a(Bundle paramBundle)
+  public void b(Bundle paramBundle)
+  {
+    super.b(paramBundle);
+    this.c = ((ResultReceiver)paramBundle.getParcelable("redpoint.fromReceiverKey"));
+  }
+  
+  public final boolean c(Bundle paramBundle)
   {
     if (paramBundle != null)
     {
-      ResultReceiver localResultReceiver = this.jdField_a_of_type_AndroidOsResultReceiver;
+      ResultReceiver localResultReceiver = this.c;
       if (localResultReceiver != null)
       {
         localResultReceiver.send(0, paramBundle);
@@ -72,16 +78,10 @@ public abstract class BaseReq
     }
     return false;
   }
-  
-  public void b(Bundle paramBundle)
-  {
-    super.b(paramBundle);
-    this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramBundle.getParcelable("redpoint.fromReceiverKey"));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.BaseReq
  * JD-Core Version:    0.7.0.1
  */

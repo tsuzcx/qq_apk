@@ -12,27 +12,27 @@ class QRLoginMgrActivity$6$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.a;
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      if (QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a) != -1L)
+      if (QRLoginMgrActivity.c(this.b.a) != -1L)
       {
-        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject = this.a.iterator();
         while (((Iterator)localObject).hasNext())
         {
           LoginDevItem localLoginDevItem = (LoginDevItem)((Iterator)localObject).next();
-          if (localLoginDevItem.a == QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a)) {
-            localLoginDevItem.c = QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a);
+          if (localLoginDevItem.a == QRLoginMgrActivity.c(this.b.a)) {
+            localLoginDevItem.g = QRLoginMgrActivity.d(this.b.a);
           }
         }
       }
-      if (QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a) != null) {
-        QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a).a(this.jdField_a_of_type_JavaUtilList);
+      if (QRLoginMgrActivity.e(this.b.a) != null) {
+        QRLoginMgrActivity.e(this.b.a).a(this.a);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a.finish();
+      this.b.a.finish();
     }
   }
 }

@@ -14,9 +14,9 @@ class VoiceMainPresenter$1
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.a)) && (VoiceMainPresenter.a(this.this$0) != null) && (VoiceMainPresenter.a(this.this$0) != null))
+    if ((!TextUtils.isEmpty(this.a)) && (VoiceMainPresenter.a(this.this$0) != null) && (VoiceMainPresenter.b(this.this$0) != null))
     {
-      int i = VoiceMainPresenter.a(this.this$0).a();
+      int i = VoiceMainPresenter.a(this.this$0).e();
       if (i != 2)
       {
         if (i != 4) {
@@ -27,7 +27,7 @@ class VoiceMainPresenter$1
       }
       if (VoiceTextUtils.a(this.a))
       {
-        VoiceMainPresenter.a(this.this$0).quiteVoicePanel(true, false);
+        VoiceMainPresenter.b(this.this$0).quiteVoicePanel(true, false);
         return;
       }
       if (VoiceTextUtils.b(this.a))
@@ -37,7 +37,7 @@ class VoiceMainPresenter$1
       }
       if (VoiceTextUtils.c(this.a))
       {
-        VoiceMainPresenter.a(this.this$0).resendVoice();
+        VoiceMainPresenter.b(this.this$0).resendVoice();
         return;
       }
       VoiceMainPresenter.a(this.this$0, this.a);
@@ -46,7 +46,7 @@ class VoiceMainPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.VoiceMainPresenter.1
  * JD-Core Version:    0.7.0.1
  */

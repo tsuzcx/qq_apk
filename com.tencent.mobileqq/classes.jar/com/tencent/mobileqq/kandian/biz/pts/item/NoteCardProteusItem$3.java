@@ -23,14 +23,14 @@ class NoteCardProteusItem$3
     } else {
       i = 1;
     }
-    if ((i == 0) && (ReadInJoyNoteCardUtil.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
-      NoteCardProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+    if ((i == 0) && (ReadInJoyNoteCardUtil.a() == 1) && ((this.a.getContext() instanceof Activity))) {
+      NoteCardProteusItem.a(this.b, (Activity)this.a.getContext());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NoteCardProteusItem.3
  * JD-Core Version:    0.7.0.1
  */

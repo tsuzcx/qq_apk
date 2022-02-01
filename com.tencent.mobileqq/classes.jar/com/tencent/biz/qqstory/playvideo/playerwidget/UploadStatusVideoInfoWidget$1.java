@@ -13,7 +13,7 @@ class UploadStatusVideoInfoWidget$1
   {
     paramString = UploadStatusVideoInfoWidget.a(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131715695));
+    localStringBuilder.append(HardCodeUtil.a(2131913161));
     localStringBuilder.append(paramInt);
     localStringBuilder.append("%");
     paramString.setText(localStringBuilder.toString());

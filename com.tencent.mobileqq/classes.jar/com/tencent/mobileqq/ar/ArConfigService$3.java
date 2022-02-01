@@ -23,11 +23,11 @@ class ArConfigService$3
       QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
     }
     if ("qq.android.ar.native.so_v8.3.6".equals(paramXmlData.strResName)) {
-      ArConfigService.a(this.a, (int)(paramLong1 * 100L / paramLong2));
+      ArConfigService.b(this.a, (int)(paramLong1 * 100L / paramLong2));
     }
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.3.1(this, i));
+    int i = (ArConfigService.r(this.a) + ArConfigService.s(this.a) + ArConfigService.t(this.a) + ArConfigService.u(this.a) + ArConfigService.v(this.a)) / 5;
+    if (!ArConfigService.q(this.a)) {
+      ArConfigService.w(this.a).post(new ArConfigService.3.1(this, i));
     }
   }
   
@@ -41,13 +41,13 @@ class ArConfigService$3
       if ("qq.android.ar.native.so_v8.3.6".equals(paramXmlData.strResName)) {
         ArConfigService.b(this.a, true);
       }
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.3.2(this));
+      if ((ArConfigService.A(this.a)) && (ArConfigService.B(this.a)) && (ArConfigService.C(this.a)) && (ArConfigService.D(this.a)) && (ArConfigService.E(this.a))) {
+        ArConfigService.w(this.a).post(new ArConfigService.3.2(this));
       }
     }
-    else if (!ArConfigService.e(this.a))
+    else if (!ArConfigService.q(this.a))
     {
-      ArConfigService.a(this.a).post(new ArConfigService.3.3(this));
+      ArConfigService.w(this.a).post(new ArConfigService.3.3(this));
       ArConfigService.a(this.a, true);
     }
   }
@@ -56,7 +56,7 @@ class ArConfigService$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.3
  * JD-Core Version:    0.7.0.1
  */

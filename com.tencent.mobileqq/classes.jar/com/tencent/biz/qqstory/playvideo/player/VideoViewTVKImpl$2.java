@@ -12,9 +12,9 @@ class VideoViewTVKImpl$2
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    VideoViewTVKImpl.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
-    VideoViewTVKImpl.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
-    paramTVK_IMediaPlayer = this.a.a;
+    VideoViewTVKImpl.a(this.a).k = paramTVK_IMediaPlayer.getDuration();
+    VideoViewTVKImpl.a(this.a).l = paramTVK_IMediaPlayer.getCurrentPostion();
+    paramTVK_IMediaPlayer = this.a.l;
     if (paramTVK_IMediaPlayer != null) {
       ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
     }
@@ -22,7 +22,7 @@ class VideoViewTVKImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2
  * JD-Core Version:    0.7.0.1
  */

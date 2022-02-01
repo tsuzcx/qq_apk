@@ -11,16 +11,16 @@ class ConditionSearchFriendActivity$7
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
+    if ((paramMessage.what == 1000) && ((this.a.S == 1) || (this.a.S == 2)))
     {
       this.a.a();
-      QQToast.a(this.a, 2131691057, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 2131888003, 0).show(this.a.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity.7
  * JD-Core Version:    0.7.0.1
  */

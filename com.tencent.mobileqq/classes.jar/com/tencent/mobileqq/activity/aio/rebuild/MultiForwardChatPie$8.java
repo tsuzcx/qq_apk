@@ -9,14 +9,14 @@ class MultiForwardChatPie$8
 {
   MultiForwardChatPie$8(MultiForwardChatPie paramMultiForwardChatPie, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie, paramView, paramInt, this.jdField_a_of_type_ComTencentWidgetActionSheet);
+    MultiForwardChatPie.a(this.b, paramView, paramInt, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.8
  * JD-Core Version:    0.7.0.1
  */

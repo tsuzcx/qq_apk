@@ -15,35 +15,34 @@ public abstract class BaseMvpFaceAdapter<M extends IFaceModel, V extends IFaceVi
   extends BaseMvpAdapter<M, V>
   implements DecodeTaskCompletionListener, AbsListView.OnScrollListener
 {
-  protected int a;
-  protected IFaceDecoder a;
   private ListView a;
+  protected IFaceDecoder b;
+  protected int c = 0;
   
   public BaseMvpFaceAdapter(ListView paramListView, IFaceDecoder paramIFaceDecoder)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
+    this.a = paramListView;
+    this.b = paramIFaceDecoder;
     paramIFaceDecoder.setDecodeTaskCompletionListener(this);
     paramListView.setOnScrollListener(this);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+    if (!this.b.isPausing())
     {
-      paramInt1 = this.jdField_a_of_type_Int;
+      paramInt1 = this.c;
       if ((paramInt1 == 0) || (paramInt1 == 1))
       {
-        int i = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+        int i = this.a.getChildCount();
         paramInt1 = 0;
         while (paramInt1 < i)
         {
-          IFaceModel localIFaceModel = (IFaceModel)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131380884);
-          if ((localIFaceModel != null) && (localIFaceModel.a() == paramInt2) && (paramString.equals(localIFaceModel.a())))
+          IFaceModel localIFaceModel = (IFaceModel)this.a.getChildAt(paramInt1).getTag(2131449867);
+          if ((localIFaceModel != null) && (localIFaceModel.b() == paramInt2) && (paramString.equals(localIFaceModel.c())))
           {
-            IFacePresenter localIFacePresenter = (IFacePresenter)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131380886);
-            IFaceView localIFaceView = (IFaceView)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131380889);
+            IFacePresenter localIFacePresenter = (IFacePresenter)this.a.getChildAt(paramInt1).getTag(2131449869);
+            IFaceView localIFaceView = (IFaceView)this.a.getChildAt(paramInt1).getTag(2131449873);
             if ((localIFacePresenter != null) && (localIFaceView != null)) {
               localIFacePresenter.a(localIFaceModel, localIFaceView, paramBitmap);
             }
@@ -58,26 +57,26 @@ public abstract class BaseMvpFaceAdapter<M extends IFaceModel, V extends IFaceVi
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {
+    if (this.a == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     if ((paramInt != 0) && (paramInt != 1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
+      this.b.cancelPendingRequests();
+      this.b.pause();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+    if (this.b.isPausing()) {
+      this.b.resume();
     }
-    int i = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+    int i = this.a.getChildCount();
     paramInt = 0;
     while (paramInt < i)
     {
-      IFaceModel localIFaceModel = (IFaceModel)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131380884);
-      IFacePresenter localIFacePresenter = (IFacePresenter)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131380886);
-      IFaceView localIFaceView = (IFaceView)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131380889);
+      IFaceModel localIFaceModel = (IFaceModel)this.a.getChildAt(paramInt).getTag(2131449867);
+      IFacePresenter localIFacePresenter = (IFacePresenter)this.a.getChildAt(paramInt).getTag(2131449869);
+      IFaceView localIFaceView = (IFaceView)this.a.getChildAt(paramInt).getTag(2131449873);
       if ((localIFacePresenter != null) && (localIFaceModel != null) && (paramAbsListView != null)) {
         localIFacePresenter.a(localIFaceModel, localIFaceView);
       }
@@ -87,7 +86,7 @@ public abstract class BaseMvpFaceAdapter<M extends IFaceModel, V extends IFaceVi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.adapter.BaseMvpFaceAdapter
  * JD-Core Version:    0.7.0.1
  */

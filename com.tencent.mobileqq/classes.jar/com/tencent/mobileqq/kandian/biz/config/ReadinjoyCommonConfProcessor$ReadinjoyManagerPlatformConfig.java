@@ -19,7 +19,7 @@ public class ReadinjoyCommonConfProcessor$ReadinjoyManagerPlatformConfig
           if (i >= paramArrayOfQConfItem.length) {
             continue;
           }
-          if (TextUtils.isEmpty(paramArrayOfQConfItem[i].a))
+          if (TextUtils.isEmpty(paramArrayOfQConfItem[i].b))
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("receive empty config content, skip ! index : ");
@@ -53,7 +53,7 @@ public class ReadinjoyCommonConfProcessor$ReadinjoyManagerPlatformConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.config.ReadinjoyCommonConfProcessor.ReadinjoyManagerPlatformConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -71,7 +71,7 @@ public class FaceCluster
     {
       try
       {
-        bool = FaceScanNativeSoLoader.a();
+        bool = FaceScanNativeSoLoader.c();
         if (!bool) {
           return false;
         }
@@ -83,13 +83,13 @@ public class FaceCluster
         soLoaded = true;
         try
         {
-          int i = FaceScanNativeSoLoader.b(FaceScanNativeSoLoader.c());
-          int j = FaceScanNativeSoLoader.b(FaceScanNativeSoLoader.d());
+          int i = FaceScanNativeSoLoader.d(FaceScanNativeSoLoader.d());
+          int j = FaceScanNativeSoLoader.d(FaceScanNativeSoLoader.e());
           System.loadLibrary("YTCommon");
-          int k = FaceScanNativeSoLoader.c("YTFaceCluster");
-          int m = FaceScanNativeSoLoader.b(FaceScanNativeSoLoader.e());
-          int n = FaceScanNativeSoLoader.c("YTFaceExtFeature");
-          int i1 = FaceScanNativeSoLoader.c("YTFaceClusterJNI_V852");
+          int k = FaceScanNativeSoLoader.e("YTFaceCluster");
+          int m = FaceScanNativeSoLoader.d(FaceScanNativeSoLoader.f());
+          int n = FaceScanNativeSoLoader.e("YTFaceExtFeature");
+          int i1 = FaceScanNativeSoLoader.e("YTFaceClusterJNI_V852");
           if ((j != 0) || (k != 0) || (n != 0) || (m != 0) || (i1 != 0) || (i != 0)) {
             break label272;
           }
@@ -139,7 +139,7 @@ public class FaceCluster
   {
     Object localObject = ((IAEOldResUtil)QRoute.api(IAEOldResUtil.class)).getFinalUnzippedPackageDir(AEOldResInfo.b);
     boolean bool1;
-    if (!FileUtil.b((String)localObject))
+    if (!FileUtil.d((String)localObject))
     {
       boolean bool2 = false;
       bool1 = bool2;

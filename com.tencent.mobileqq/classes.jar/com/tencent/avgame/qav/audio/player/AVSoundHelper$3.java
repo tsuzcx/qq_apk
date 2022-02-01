@@ -5,7 +5,7 @@ final class AVSoundHelper$3
 {
   public void run()
   {
-    AVSoundHelper.a().a(this.a);
+    AVSoundHelper.k().b(this.a);
   }
 }
 

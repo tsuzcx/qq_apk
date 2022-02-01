@@ -18,45 +18,20 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/viola/barrage/BarrageTrack;", "", "()V", "bakBarrageData", "Ljava/util/ArrayDeque;", "Lcom/tencent/mobileqq/kandian/biz/viola/barrage/BarrageInfo;", "barrageConfig", "Lcom/tencent/mobileqq/kandian/biz/viola/barrage/BarrageConfig;", "barrageData", "barrageLineCallback", "Lcom/tencent/mobileqq/kandian/biz/viola/barrage/BarrageTrack$BarrageLineCallback;", "getBarrageLineCallback", "()Lcom/tencent/mobileqq/kandian/biz/viola/barrage/BarrageTrack$BarrageLineCallback;", "setBarrageLineCallback", "(Lcom/tencent/mobileqq/kandian/biz/viola/barrage/BarrageTrack$BarrageLineCallback;)V", "handler", "Landroid/os/Handler;", "isFirstTimePlaceBarrage", "", "lines", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/kandian/biz/viola/barrage/BarrageTrack$BarrageLine;", "Lkotlin/collections/ArrayList;", "canPlaceInThisLine", "index", "", "barrageType", "Lcom/tencent/mobileqq/kandian/biz/viola/barrage/BarrageItemView$BarrageType;", "checkPlaceLineIsValidate", "barrageLines", "", "findSuitableBarrageLines", "getIdleLineCount", "getPlaceLineCount", "handleBarrageDataForLoop", "", "init", "innerPlaceBarrageInLine", "barrageInfo", "notifyLineIdle", "placeBarrageInLine", "delay", "", "placeOneBarrageInLine", "reset", "tryPlaceBarragesInLine", "BarrageLine", "BarrageLineCallback", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class BarrageTrack
 {
-  public static final BarrageTrack.Companion a;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private BarrageConfig jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageConfig = new BarrageConfig();
+  public static final BarrageTrack.Companion a = new BarrageTrack.Companion(null);
+  private final Handler b = new Handler();
+  private final ArrayList<BarrageTrack.BarrageLine> c = new ArrayList();
+  private boolean d = true;
+  private ArrayDeque<BarrageInfo> e = new ArrayDeque();
+  private ArrayDeque<BarrageInfo> f = new ArrayDeque();
+  private BarrageConfig g = new BarrageConfig();
   @Nullable
-  private BarrageTrack.BarrageLineCallback jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack$BarrageLineCallback;
-  private ArrayDeque<BarrageInfo> jdField_a_of_type_JavaUtilArrayDeque = new ArrayDeque();
-  private final ArrayList<BarrageTrack.BarrageLine> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private ArrayDeque<BarrageInfo> b = new ArrayDeque();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack$Companion = new BarrageTrack.Companion(null);
-  }
-  
-  private final int a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = 0;
-    while (localIterator.hasNext()) {
-      if (((BarrageTrack.BarrageLine)localIterator.next()).a()) {
-        i += 1;
-      }
-    }
-    return i;
-  }
-  
-  private final int a(BarrageItemView.BarrageType paramBarrageType)
-  {
-    if (paramBarrageType == BarrageItemView.BarrageType.DOUBLE_LINE) {
-      return 2;
-    }
-    return 1;
-  }
+  private BarrageTrack.BarrageLineCallback h;
   
   private final List<BarrageTrack.BarrageLine> a(BarrageItemView.BarrageType paramBarrageType)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject1 = this.c.iterator();
     Object localObject2;
     do
     {
@@ -66,13 +41,13 @@ public final class BarrageTrack
           break;
         }
         localObject2 = (BarrageTrack.BarrageLine)((Iterator)localObject1).next();
-      } while ((localArrayList.isEmpty()) && (!a(((BarrageTrack.BarrageLine)localObject2).a(), paramBarrageType)));
+      } while ((localArrayList.isEmpty()) && (!a(((BarrageTrack.BarrageLine)localObject2).b(), paramBarrageType)));
       if (((BarrageTrack.BarrageLine)localObject2).a()) {
         localArrayList.add(localObject2);
       } else {
         localArrayList.clear();
       }
-    } while (localArrayList.size() != a(paramBarrageType));
+    } while (localArrayList.size() != b(paramBarrageType));
     localObject1 = (List)localArrayList;
     if (!a((List)localObject1, paramBarrageType))
     {
@@ -90,7 +65,7 @@ public final class BarrageTrack
     if (paramBarrageInfo == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed((Runnable)new BarrageTrack.placeBarrageInLine.1(this, paramBarrageInfo), paramLong);
+    this.b.postDelayed((Runnable)new BarrageTrack.placeBarrageInLine.1(this, paramBarrageInfo), paramLong);
   }
   
   private final void a(BarrageInfo paramBarrageInfo, List<BarrageTrack.BarrageLine> paramList)
@@ -106,12 +81,12 @@ public final class BarrageTrack
         if (i == 0) {
           ((StringBuilder)localObject1).append(",");
         }
-        ((StringBuilder)localObject1).append(localBarrageLine.a());
+        ((StringBuilder)localObject1).append(localBarrageLine.b());
         i = 0;
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("placeOneBarrageInLine barrageInfo:");
-      ((StringBuilder)localObject2).append(paramBarrageInfo.b);
+      ((StringBuilder)localObject2).append(paramBarrageInfo.c);
       ((StringBuilder)localObject2).append("    barrageLines:");
       ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
       QLog.d("BarrageTrack", 2, ((StringBuilder)localObject2).toString());
@@ -120,7 +95,7 @@ public final class BarrageTrack
     while (((Iterator)localObject1).hasNext()) {
       ((BarrageTrack.BarrageLine)((Iterator)localObject1).next()).a(false);
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack$BarrageLineCallback;
+    localObject1 = this.h;
     if (localObject1 != null) {
       ((BarrageTrack.BarrageLineCallback)localObject1).a(paramBarrageInfo, paramList);
     }
@@ -133,7 +108,7 @@ public final class BarrageTrack
   
   private final boolean a(BarrageInfo paramBarrageInfo)
   {
-    List localList = a(BarrageItemView.a.a(paramBarrageInfo.b));
+    List localList = a(BarrageItemView.a.a(paramBarrageInfo.c));
     if (localList.isEmpty())
     {
       QLog.w("BarrageTrack", 2, "InnerPlaceBarrageInLine failed for no idle barrageLine.");
@@ -145,42 +120,62 @@ public final class BarrageTrack
   
   private final boolean a(List<BarrageTrack.BarrageLine> paramList, BarrageItemView.BarrageType paramBarrageType)
   {
-    return a(paramBarrageType) == paramList.size();
+    return b(paramBarrageType) == paramList.size();
+  }
+  
+  private final int b(BarrageItemView.BarrageType paramBarrageType)
+  {
+    if (paramBarrageType == BarrageItemView.BarrageType.DOUBLE_LINE) {
+      return 2;
+    }
+    return 1;
   }
   
   private final void c()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
   private final void d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageConfig.a()) && (this.jdField_a_of_type_JavaUtilArrayDeque.size() < this.b.size()))
+    if ((this.g.d()) && (this.e.size() < this.f.size()))
     {
-      this.jdField_a_of_type_JavaUtilArrayDeque.addAll((Collection)this.b.clone());
-      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)new BarrageTrack.handleBarrageDataForLoop.1(this));
+      this.e.addAll((Collection)this.f.clone());
+      this.b.post((Runnable)new BarrageTrack.handleBarrageDataForLoop.1(this));
     }
+  }
+  
+  private final int e()
+  {
+    Iterator localIterator = this.c.iterator();
+    int i = 0;
+    while (localIterator.hasNext()) {
+      if (((BarrageTrack.BarrageLine)localIterator.next()).a()) {
+        i += 1;
+      }
+    }
+    return i;
   }
   
   public final void a()
   {
     int j;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      j = ((Collection)this.jdField_a_of_type_JavaUtilArrayList).size();
+      j = ((Collection)this.c).size();
       i = 0;
       while (i < j)
       {
-        a((BarrageInfo)this.jdField_a_of_type_JavaUtilArrayDeque.poll(), i * 500L);
+        a((BarrageInfo)this.e.poll(), i * 500L);
         i += 1;
       }
     }
-    int k = a();
+    int k = e();
     int i = 0;
     while (i < k)
     {
       j = i + 1;
-      BarrageInfo localBarrageInfo = (BarrageInfo)this.jdField_a_of_type_JavaUtilArrayDeque.peek();
+      BarrageInfo localBarrageInfo = (BarrageInfo)this.e.peek();
       if (localBarrageInfo == null)
       {
         i = j;
@@ -190,12 +185,12 @@ public final class BarrageTrack
         i = j;
         if (a(localBarrageInfo))
         {
-          this.jdField_a_of_type_JavaUtilArrayDeque.remove(localBarrageInfo);
+          this.e.remove(localBarrageInfo);
           i = j;
         }
       }
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     d();
   }
   
@@ -203,9 +198,9 @@ public final class BarrageTrack
   {
     Intrinsics.checkParameterIsNotNull(paramBarrageConfig, "barrageConfig");
     Intrinsics.checkParameterIsNotNull(paramList, "barrageData");
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageConfig = paramBarrageConfig;
+    this.g = paramBarrageConfig;
     c();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.c.clear();
     int m = BarrageItemView.a.a();
     int n = DisplayUtil.a((Context)BaseApplication.getContext(), paramBarrageConfig.b());
     int i1 = paramBarrageConfig.a();
@@ -221,19 +216,19 @@ public final class BarrageTrack
         k = j + (m + n);
       }
       paramBarrageConfig.b(k);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramBarrageConfig);
+      this.c.add(paramBarrageConfig);
       i += 1;
     }
-    this.jdField_a_of_type_JavaUtilArrayDeque.clear();
-    this.jdField_a_of_type_JavaUtilArrayDeque.addAll((Collection)paramList);
-    paramBarrageConfig = this.jdField_a_of_type_JavaUtilArrayDeque.clone();
+    this.e.clear();
+    this.e.addAll((Collection)paramList);
+    paramBarrageConfig = this.e.clone();
     Intrinsics.checkExpressionValueIsNotNull(paramBarrageConfig, "this.barrageData.clone()");
-    this.b = paramBarrageConfig;
+    this.f = paramBarrageConfig;
   }
   
   public final void a(@Nullable BarrageTrack.BarrageLineCallback paramBarrageLineCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageTrack$BarrageLineCallback = paramBarrageLineCallback;
+    this.h = paramBarrageLineCallback;
   }
   
   public final void b()
@@ -243,7 +238,7 @@ public final class BarrageTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageTrack
  * JD-Core Version:    0.7.0.1
  */

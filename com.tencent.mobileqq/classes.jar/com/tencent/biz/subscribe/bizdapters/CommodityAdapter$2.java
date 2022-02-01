@@ -12,7 +12,7 @@ class CommodityAdapter$2
   public void run()
   {
     CommodityAdapter localCommodityAdapter = this.this$0;
-    localCommodityAdapter.a((ArrayList)CommodityAdapter.a(localCommodityAdapter).goods.get());
+    localCommodityAdapter.b((ArrayList)CommodityAdapter.a(localCommodityAdapter).goods.get());
     localCommodityAdapter = this.this$0;
     localCommodityAdapter.a(CommodityAdapter.a(localCommodityAdapter));
   }

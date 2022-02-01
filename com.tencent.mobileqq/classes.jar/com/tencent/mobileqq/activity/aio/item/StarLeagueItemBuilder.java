@@ -31,17 +31,11 @@ import com.tencent.qphone.base.util.QLog;
 public class StarLeagueItemBuilder
   extends BaseBubbleBuilder
 {
-  View.OnClickListener a;
+  View.OnClickListener a = new StarLeagueItemBuilder.1(this);
   
   public StarLeagueItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new StarLeagueItemBuilder.1(this);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
-  {
-    return 0;
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -54,23 +48,23 @@ public class StarLeagueItemBuilder
     else
     {
       paramViewHolder = (StarLeagueItemBuilder.Holder)a();
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
+      paramViewHolder.j = paramBaseChatItemLayout;
       paramBaseChatItemLayout.setTag(paramViewHolder);
       paramView = null;
     }
     paramOnLongClickAndTouchListener = paramView;
     if (paramView == null)
     {
-      paramOnLongClickAndTouchListener = LayoutInflater.from(localContext).inflate(2131560705, null);
-      paramViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramOnLongClickAndTouchListener.findViewById(2131377817));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131377822));
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramOnLongClickAndTouchListener.findViewById(2131377823));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramOnLongClickAndTouchListener.findViewById(2131377824));
-      paramViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131380214));
-      paramViewHolder.jdField_c_of_type_AndroidViewView = paramOnLongClickAndTouchListener.findViewById(2131365827);
-      paramViewHolder.d = paramOnLongClickAndTouchListener.findViewById(2131365179);
-      paramViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131365799));
-      paramViewHolder.d.getLayoutParams().width = BaseChatItemLayout.e;
+      paramOnLongClickAndTouchListener = LayoutInflater.from(localContext).inflate(2131626750, null);
+      paramViewHolder.a = ((RoundCornerImageView)paramOnLongClickAndTouchListener.findViewById(2131446285));
+      paramViewHolder.d = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131446291));
+      paramViewHolder.c = ((TextView)paramOnLongClickAndTouchListener.findViewById(2131446292));
+      paramViewHolder.b = ((TextView)paramOnLongClickAndTouchListener.findViewById(2131446293));
+      paramViewHolder.e = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131449132));
+      paramViewHolder.f = paramOnLongClickAndTouchListener.findViewById(2131432085);
+      paramViewHolder.g = paramOnLongClickAndTouchListener.findViewById(2131431340);
+      paramViewHolder.s = ((ImageView)paramOnLongClickAndTouchListener.findViewById(2131432056));
+      paramViewHolder.g.getLayoutParams().width = BaseChatItemLayout.e;
     }
     paramBaseChatItemLayout.setHeadIconVisible(false);
     paramView = paramBaseChatItemLayout.a(NickNameChatItemLayoutProcessor.j);
@@ -88,25 +82,25 @@ public class StarLeagueItemBuilder
     if ((paramChatMessage instanceof MessageForStarLeague))
     {
       paramView = (MessageForStarLeague)paramChatMessage;
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.starName);
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramView.subTitle);
+      paramViewHolder.b.setText(paramView.starName);
+      paramViewHolder.c.setText(paramView.subTitle);
       if (paramView.levelStatus == 1)
       {
-        paramViewHolder.d.setBackgroundResource(2130844047);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844043);
-        paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-        paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+        paramViewHolder.g.setBackgroundResource(2130845002);
+        paramViewHolder.d.setImageResource(2130844998);
+        paramViewHolder.e.setVisibility(0);
+        paramViewHolder.s.setVisibility(8);
+        paramViewHolder.b.setTextColor(-1);
+        paramViewHolder.c.setTextColor(-1);
       }
       else
       {
-        paramViewHolder.d.setBackgroundResource(2130844044);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844042);
-        paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-        paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
+        paramViewHolder.g.setBackgroundResource(2130844999);
+        paramViewHolder.d.setImageResource(2130844997);
+        paramViewHolder.e.setVisibility(8);
+        paramViewHolder.s.setVisibility(0);
+        paramViewHolder.b.setTextColor(-16777216);
+        paramViewHolder.c.setTextColor(Color.parseColor("#777777"));
       }
       if (!paramView.starAvatar.isEmpty()) {
         try
@@ -117,18 +111,18 @@ public class StarLeagueItemBuilder
           paramBaseChatItemLayout.mFailedDrawable = null;
           paramBaseChatItemLayout.mLoadingDrawable = null;
           paramBaseChatItemLayout = URLDrawable.getDrawable(paramView.starAvatar, paramBaseChatItemLayout);
-          paramViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramBaseChatItemLayout);
-          paramViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(DisplayUtil.a(localContext, 32.0F));
+          paramViewHolder.a.setImageDrawable(paramBaseChatItemLayout);
+          paramViewHolder.a.setCorner(DisplayUtil.a(localContext, 32.0F));
         }
         catch (Throwable paramBaseChatItemLayout)
         {
           QLog.e("ChatItemBuilder", 1, "levelStatus parse failed!", paramBaseChatItemLayout);
         }
       }
-      paramViewHolder.d.setContentDescription(paramView.brief);
+      paramViewHolder.g.setContentDescription(paramView.brief);
     }
-    paramViewHolder.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    paramViewHolder.g.setOnClickListener(this.a);
+    paramViewHolder.q = paramChatMessage;
     return paramOnLongClickAndTouchListener;
   }
   
@@ -137,35 +131,40 @@ public class StarLeagueItemBuilder
     return new StarLeagueItemBuilder.Holder(this);
   }
   
-  protected String a(ChatMessage paramChatMessage)
-  {
-    return null;
-  }
-  
   protected void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
   {
     super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramViewHolder, paramInt1, paramInt2);
     paramChatMessage = (StarLeagueItemBuilder.Holder)paramViewHolder;
-    if (paramChatMessage.jdField_a_of_type_AndroidViewView != null)
+    if (paramChatMessage.h != null)
     {
-      paramContext = paramChatMessage.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramContext = paramChatMessage.h.getLayoutParams();
       paramContext.width = -1;
       paramContext.height = -1;
-      paramChatMessage.jdField_a_of_type_AndroidViewView.setLayoutParams(paramContext);
+      paramChatMessage.h.setLayoutParams(paramContext);
     }
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.a(paramView, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
-    return paramView.a();
+    ChatActivityFacade.a(paramView, this.e, this.f.a);
+    super.a(paramView, this.e, 2131428089, null, null);
+    return paramView.d();
+  }
+  
+  public int c(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  protected String d(ChatMessage paramChatMessage)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StarLeagueItemBuilder
  * JD-Core Version:    0.7.0.1
  */

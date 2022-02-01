@@ -11,13 +11,13 @@ import java.util.List;
 
 public class AppInfoResponse
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<IconUrlSize> jdField_a_of_type_JavaUtilList;
+  private String a;
+  private List<IconUrlSize> b;
   
   public AppInfoResponse(String paramString, List<IconUrlSize> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramString;
+    this.b = paramList;
   }
   
   public static AppInfoResponse a(preAuth.PreAuthResponse paramPreAuthResponse, appType.AndroidInfo paramAndroidInfo)
@@ -49,25 +49,25 @@ public class AppInfoResponse
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  public List<IconUrlSize> a()
+  public List<IconUrlSize> b()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("appName=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.entity.AppInfoResponse
  * JD-Core Version:    0.7.0.1
  */

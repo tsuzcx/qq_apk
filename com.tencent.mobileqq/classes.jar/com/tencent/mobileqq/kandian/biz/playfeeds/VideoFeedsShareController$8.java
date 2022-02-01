@@ -9,17 +9,17 @@ class VideoFeedsShareController$8
   
   public void onDismissOperations()
   {
-    if (VideoFeedsShareController.b(this.a)) {
-      VideoFeedsShareController.a(this.a).c();
+    if (VideoFeedsShareController.c(this.a)) {
+      VideoFeedsShareController.b(this.a).h();
     }
-    if (VideoFeedsShareController.a(this.a) != null) {
-      VideoFeedsShareController.a(this.a).g();
+    if (VideoFeedsShareController.d(this.a) != null) {
+      VideoFeedsShareController.d(this.a).f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.8
  * JD-Core Version:    0.7.0.1
  */

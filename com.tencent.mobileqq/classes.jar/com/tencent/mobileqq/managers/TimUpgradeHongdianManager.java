@@ -12,52 +12,15 @@ public class TimUpgradeHongdianManager
   implements Manager
 {
   public static String a = "TimUpgradeHongdianManager";
-  private QQAppInterface a;
-  public boolean a;
-  public String b;
+  public boolean b = false;
   public String c;
   public String d;
+  public String e;
+  private QQAppInterface f;
   
   public TimUpgradeHongdianManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("tim_upgrade_hongdian_pre_");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-      localObject1 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).edit();
-      if (localObject1 != null)
-      {
-        ((SharedPreferences.Editor)localObject1).putBoolean("tim_upgrade_hongdian_switch", false);
-        ((SharedPreferences.Editor)localObject1).putString("tim_upgrade_hongdian_title", null);
-        ((SharedPreferences.Editor)localObject1).putString("tim_upgrade_hongdian_sub_title", null);
-        ((SharedPreferences.Editor)localObject1).putString("tim_upgrade_hongdian_url", null);
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "clearHondianSP done");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      Object localObject2;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("clearHondianSP ");
-        localStringBuilder.append(localException.toString());
-        QLog.e((String)localObject2, 2, localStringBuilder.toString());
-      }
-    }
+    this.f = paramQQAppInterface;
   }
   
   public boolean a()
@@ -68,36 +31,36 @@ public class TimUpgradeHongdianManager
     boolean bool2 = bool4;
     try
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      Object localObject1 = this.f.getApp();
       bool2 = bool4;
       localObject2 = new StringBuilder();
       bool2 = bool4;
       ((StringBuilder)localObject2).append("tim_upgrade_hongdian_pre_");
       bool2 = bool4;
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      ((StringBuilder)localObject2).append(this.f.getCurrentUin());
       bool2 = bool4;
       localObject1 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
       bool2 = bool4;
-      this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject1).getBoolean("tim_upgrade_hongdian_switch", false);
+      this.b = ((SharedPreferences)localObject1).getBoolean("tim_upgrade_hongdian_switch", false);
       bool2 = bool4;
-      this.b = ((SharedPreferences)localObject1).getString("tim_upgrade_hongdian_title", null);
+      this.c = ((SharedPreferences)localObject1).getString("tim_upgrade_hongdian_title", null);
       bool2 = bool4;
-      this.c = ((SharedPreferences)localObject1).getString("tim_upgrade_hongdian_sub_title", null);
+      this.d = ((SharedPreferences)localObject1).getString("tim_upgrade_hongdian_sub_title", null);
       bool2 = bool4;
-      this.d = ((SharedPreferences)localObject1).getString("tim_upgrade_hongdian_url", null);
+      this.e = ((SharedPreferences)localObject1).getString("tim_upgrade_hongdian_url", null);
       bool2 = bool4;
       long l2 = System.currentTimeMillis();
       boolean bool1 = bool3;
       bool2 = bool4;
-      if (!TextUtils.isEmpty(this.b))
+      if (!TextUtils.isEmpty(this.c))
       {
         bool1 = bool3;
         bool2 = bool4;
-        if (!TextUtils.isEmpty(this.c))
+        if (!TextUtils.isEmpty(this.d))
         {
           bool1 = bool3;
           bool2 = bool4;
-          if (!TextUtils.isEmpty(this.d)) {
+          if (!TextUtils.isEmpty(this.e)) {
             bool1 = true;
           }
         }
@@ -107,25 +70,25 @@ public class TimUpgradeHongdianManager
       if (QLog.isColorLevel())
       {
         bool2 = bool1;
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = a;
         bool2 = bool1;
         localObject2 = new StringBuilder();
         bool2 = bool1;
         ((StringBuilder)localObject2).append("checkIfShowTimHongdian , switchKey = ");
         bool2 = bool1;
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject2).append(this.b);
         bool2 = bool1;
         ((StringBuilder)localObject2).append(", mTitle = ");
         bool2 = bool1;
-        ((StringBuilder)localObject2).append(this.b);
+        ((StringBuilder)localObject2).append(this.c);
         bool2 = bool1;
         ((StringBuilder)localObject2).append(", mSubTitle =");
         bool2 = bool1;
-        ((StringBuilder)localObject2).append(this.c);
+        ((StringBuilder)localObject2).append(this.d);
         bool2 = bool1;
         ((StringBuilder)localObject2).append(", url=");
         bool2 = bool1;
-        ((StringBuilder)localObject2).append(this.d);
+        ((StringBuilder)localObject2).append(this.e);
         bool2 = bool1;
         ((StringBuilder)localObject2).append(", sp time cost = ");
         bool2 = bool1;
@@ -145,7 +108,7 @@ public class TimUpgradeHongdianManager
       bool3 = bool2;
       if (QLog.isColorLevel())
       {
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("checkIfShowTimHongdian ");
         localStringBuilder.append(localException.toString());
@@ -154,6 +117,42 @@ public class TimUpgradeHongdianManager
       }
     }
     return bool3;
+  }
+  
+  public void b()
+  {
+    try
+    {
+      Object localObject1 = this.f.getApp();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("tim_upgrade_hongdian_pre_");
+      ((StringBuilder)localObject2).append(this.f.getCurrentUin());
+      localObject1 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).edit();
+      if (localObject1 != null)
+      {
+        ((SharedPreferences.Editor)localObject1).putBoolean("tim_upgrade_hongdian_switch", false);
+        ((SharedPreferences.Editor)localObject1).putString("tim_upgrade_hongdian_title", null);
+        ((SharedPreferences.Editor)localObject1).putString("tim_upgrade_hongdian_sub_title", null);
+        ((SharedPreferences.Editor)localObject1).putString("tim_upgrade_hongdian_url", null);
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d(a, 2, "clearHondianSP done");
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("clearHondianSP ");
+        localStringBuilder.append(localException.toString());
+        QLog.e((String)localObject2, 2, localStringBuilder.toString());
+      }
+    }
   }
   
   public void onDestroy() {}

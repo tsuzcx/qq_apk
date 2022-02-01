@@ -13,12 +13,12 @@ class VasProfileTagView$9
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.val$needAddPraise) && (VasProfileTagView.access$1600(this.this$0).allInOne.pa != 0) && (this.val$tagView.getTag(2131374938) != null) && (this.val$tagView.getTag(2131374938).equals(Boolean.valueOf(true))))
+    if ((this.val$needAddPraise) && (VasProfileTagView.access$1600(this.this$0).allInOne.pa != 0) && (this.val$tagView.getTag(2131443123) != null) && (this.val$tagView.getTag(2131443123).equals(Boolean.valueOf(true))))
     {
-      this.val$tagView.setTag(2131374938, Boolean.valueOf(false));
+      this.val$tagView.setTag(2131443123, Boolean.valueOf(false));
       paramAnimator = this.this$0;
       VipTagView localVipTagView = this.val$tagView;
-      paramAnimator.addLike(localVipTagView, ((Long)localVipTagView.getTag(2131374940)).longValue());
+      paramAnimator.addLike(localVipTagView, ((Long)localVipTagView.getTag(2131443125)).longValue());
       return;
     }
     this.val$tagView.setShakingState(true);
@@ -26,7 +26,7 @@ class VasProfileTagView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView.9
  * JD-Core Version:    0.7.0.1
  */

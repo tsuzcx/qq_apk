@@ -19,13 +19,13 @@ final class MergeBitmapBlurUtil$1
   {
     try
     {
-      Object localObject = CommonImageCacheHelper.a(this.jdField_a_of_type_JavaLangString);
+      Object localObject = CommonImageCacheHelper.a(this.a);
       if (localObject != null)
       {
-        MergeBitmapBlurUtil.a((Bitmap)localObject, this.jdField_a_of_type_AndroidWidgetImageView);
+        MergeBitmapBlurUtil.a((Bitmap)localObject, this.b);
         return;
       }
-      localObject = new URL(this.jdField_a_of_type_JavaLangString).openConnection();
+      localObject = new URL(this.a).openConnection();
       int i = ((HttpURLConnection)localObject).getContentLength();
       ((URLConnection)localObject).connect();
       localObject = ((URLConnection)localObject).getInputStream();
@@ -33,7 +33,7 @@ final class MergeBitmapBlurUtil$1
       Bitmap localBitmap = BitmapFactory.decodeStream(localBufferedInputStream);
       localBufferedInputStream.close();
       ((InputStream)localObject).close();
-      MergeBitmapBlurUtil.a(this.jdField_a_of_type_JavaLangString, localBitmap, this.jdField_a_of_type_AndroidWidgetImageView);
+      MergeBitmapBlurUtil.a(this.a, localBitmap, this.b);
       return;
     }
     catch (Exception localException)

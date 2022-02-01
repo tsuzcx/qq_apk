@@ -6,44 +6,43 @@ import java.util.HashSet;
 
 public class LbsManager$POIListRequestSession
 {
-  final int jdField_a_of_type_Int;
-  public final Bundle a;
-  String jdField_a_of_type_JavaLangString = "";
-  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = true;
+  final int a;
+  boolean b = true;
+  boolean c = true;
+  String d = "";
+  String e = "";
+  HashSet<String> f = new HashSet();
+  public final Bundle g = new Bundle();
   
   public LbsManager$POIListRequestSession(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
-  public static POIListRequestSession a()
+  public static POIListRequestSession b()
   {
     return new POIListRequestSession(20);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_b_of_type_Boolean = true;
+    this.d = "";
+    this.f.clear();
+    this.c = true;
   }
   
   public void a(String paramString)
   {
-    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.equals(paramString, this.e))
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
+      this.e = paramString;
       a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public class DoubleShortVideoFontSizeConfigHandler
 {
   public static String a()
   {
-    return (String)RIJSPUtils.a("double_short_video_font_size", "14");
+    return (String)RIJSPUtils.b("double_short_video_font_size", "14");
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -53,7 +53,7 @@ public class DoubleShortVideoFontSizeConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.DoubleShortVideoFontSizeConfigHandler
  * JD-Core Version:    0.7.0.1
  */

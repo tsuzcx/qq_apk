@@ -15,8 +15,8 @@ class QidianProfileCardActivity$UiHandler
     if (paramMessage.what == 0) {}
     try
     {
-      BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
+      BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.f);
+      this.a.a.setBackgroundDrawable(localBitmapDrawable);
       label43:
       super.handleMessage(paramMessage);
       return;
@@ -29,7 +29,7 @@ class QidianProfileCardActivity$UiHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.UiHandler
  * JD-Core Version:    0.7.0.1
  */

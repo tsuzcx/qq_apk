@@ -30,25 +30,25 @@ public class ConfigService
   {
     AccessReq localAccessReq = new AccessReq();
     localAccessReq.gray = 0;
-    String str2 = DeviceInfoUtil.a();
+    String str2 = DeviceInfoUtil.b();
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     localAccessReq.imei = str1;
-    str2 = DeviceInfoUtil.k();
+    str2 = DeviceInfoUtil.w();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     localAccessReq.manufacture = str1;
-    str2 = DeviceInfoUtil.i();
+    str2 = DeviceInfoUtil.u();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     localAccessReq.mode = str1;
-    str2 = DeviceInfoUtil.j();
+    str2 = DeviceInfoUtil.v();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -105,7 +105,7 @@ public class ConfigService
     localSDKUpgradeReq.vUin = ((ArrayList)localObject);
     localSDKUpgradeReq.bSdkUpdateFlag = false;
     localObject = new ArrayList();
-    ((ArrayList)localObject).add(Integer.valueOf(AppSetting.a()));
+    ((ArrayList)localObject).add(Integer.valueOf(AppSetting.d()));
     localSDKUpgradeReq.vAppid = ((ArrayList)localObject);
     paramUniPacket.put("SDKUpgradeReq", localSDKUpgradeReq);
     paramToServiceMsg.setTimeout(20000L);
@@ -258,7 +258,7 @@ public class ConfigService
     localCheckSinglePkgSigReq.pkgSig = ((String)localObject);
     localCheckSinglePkgSigReq.versionCode = ApkUtils.a(BaseApplicationImpl.sApplication);
     localCheckSinglePkgSigReq.marketVer = paramToServiceMsg.extraData.getInt("mv");
-    localCheckSinglePkgSigReq.sysVer = DeviceInfoUtil.a();
+    localCheckSinglePkgSigReq.sysVer = DeviceInfoUtil.d();
     paramToServiceMsg = localCheckSinglePkgSigReq.toByteArray();
     if (QLog.isDevelopLevel())
     {
@@ -327,7 +327,7 @@ public class ConfigService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.config.ConfigService
  * JD-Core Version:    0.7.0.1
  */

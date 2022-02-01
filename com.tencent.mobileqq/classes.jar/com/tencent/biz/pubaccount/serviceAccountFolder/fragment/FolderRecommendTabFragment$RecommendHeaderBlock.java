@@ -17,7 +17,7 @@ import java.util.List;
 class FolderRecommendTabFragment$RecommendHeaderBlock
   extends SingleViewBlock
 {
-  FolderRecommendTabFragment.FolderRecommendHeadItemView jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
+  FolderRecommendTabFragment.FolderRecommendHeadItemView a;
   
   public FolderRecommendTabFragment$RecommendHeaderBlock(FolderRecommendTabFragment paramFolderRecommendTabFragment, Bundle paramBundle)
   {
@@ -26,11 +26,11 @@ class FolderRecommendTabFragment$RecommendHeaderBlock
   
   protected BaseWidgetView a(ViewGroup paramViewGroup, MultiViewBlock paramMultiViewBlock)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView = new FolderRecommendTabFragment.FolderRecommendHeadItemView(paramViewGroup.getContext());
-    if (FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment) != null) {
-      FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment).a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView);
+    this.a = new FolderRecommendTabFragment.FolderRecommendHeadItemView(paramViewGroup.getContext());
+    if (FolderRecommendTabFragment.d(this.b) != null) {
+      FolderRecommendTabFragment.d(this.b).a(this.a);
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
+    return this.a;
   }
   
   public void a(Bundle paramBundle) {}
@@ -42,27 +42,27 @@ class FolderRecommendTabFragment$RecommendHeaderBlock
     localTianShuAdPosItemData.a = 476;
     localTianShuAdPosItemData.b = 6;
     paramLoadInfo.add(localTianShuAdPosItemData);
-    TianShuManager.getInstance().requestAdv(paramLoadInfo, FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment));
+    TianShuManager.getInstance().requestAdv(paramLoadInfo, FolderRecommendTabFragment.b(this.b));
   }
   
   public void a(List<TogetherControlManager.EntryBannerInfo> paramList)
   {
-    FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView).a(paramList);
+    FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.a).a(paramList);
     if ((paramList != null) && (paramList.size() > 0))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((TogetherControlManager.EntryBannerInfo)paramList.get(0)).a.iAdId);
+      localStringBuilder.append(((TogetherControlManager.EntryBannerInfo)paramList.get(0)).d.iAdId);
       localStringBuilder.append("");
       FolderRecommendTabFragment.a("227", "227", localStringBuilder.toString(), 101, 1);
-      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(true);
+      this.a.a(true);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(false);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.RecommendHeaderBlock
  * JD-Core Version:    0.7.0.1
  */

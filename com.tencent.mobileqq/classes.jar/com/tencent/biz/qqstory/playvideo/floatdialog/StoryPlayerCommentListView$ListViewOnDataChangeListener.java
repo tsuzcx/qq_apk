@@ -12,7 +12,7 @@ class StoryPlayerCommentListView$ListViewOnDataChangeListener
   
   public void a()
   {
-    this.a.p();
+    this.a.q();
   }
   
   public void a(@NonNull DetailFeedItem paramDetailFeedItem, ErrorMessage paramErrorMessage, boolean paramBoolean)
@@ -23,16 +23,16 @@ class StoryPlayerCommentListView$ListViewOnDataChangeListener
       localObject = "fail";
     }
     SLog.a("Q.qqstory.player.StoryPlayerCommentListView", "on cache item back %s:%s ", localObject, paramDetailFeedItem);
-    boolean bool = StoryPlayerCommentListView.a(this.a).a();
-    Object localObject = (PlayerCommentSegment)this.a.a("PlayerCommentSegment");
+    boolean bool = StoryPlayerCommentListView.a(this.a).e();
+    Object localObject = (PlayerCommentSegment)this.a.b("PlayerCommentSegment");
     if (localObject != null) {
       ((PlayerCommentSegment)localObject).a(paramDetailFeedItem);
     }
-    localObject = (PlayerDoubleTabSegment)this.a.a("PlayerDoubleTabSegment");
+    localObject = (PlayerDoubleTabSegment)this.a.b("PlayerDoubleTabSegment");
     if (localObject != null) {
       ((PlayerDoubleTabSegment)localObject).a(paramDetailFeedItem);
     }
-    localObject = (PlayerCommentEmptySegment)this.a.a("PlayerCommentEmptySegment");
+    localObject = (PlayerCommentEmptySegment)this.a.b("PlayerCommentEmptySegment");
     if (localObject != null)
     {
       ((PlayerCommentEmptySegment)localObject).a(paramDetailFeedItem);
@@ -42,10 +42,10 @@ class StoryPlayerCommentListView$ListViewOnDataChangeListener
         ((PlayerCommentEmptySegment)localObject).a(false);
       }
     }
-    this.a.setLoadMoreComplete("CommentFloatDialog", true, paramDetailFeedItem.a(bool) ^ true);
-    this.a.p();
-    if (StoryPlayerCommentListView.a(this.a) != null) {
-      StoryPlayerCommentListView.a(this.a).a(paramDetailFeedItem, paramErrorMessage);
+    this.a.setLoadMoreComplete("CommentFloatDialog", true, paramDetailFeedItem.b(bool) ^ true);
+    this.a.q();
+    if (StoryPlayerCommentListView.b(this.a) != null) {
+      StoryPlayerCommentListView.b(this.a).a(paramDetailFeedItem, paramErrorMessage);
     }
   }
   
@@ -57,32 +57,32 @@ class StoryPlayerCommentListView$ListViewOnDataChangeListener
       localObject = "fail";
     }
     SLog.a("Q.qqstory.player.StoryPlayerCommentListView", "on comment item back %s: %s", localObject, paramDetailFeedItem);
-    boolean bool = StoryPlayerCommentListView.a(this.a).a();
-    Object localObject = (PlayerCommentSegment)this.a.a("PlayerCommentSegment");
+    boolean bool = StoryPlayerCommentListView.a(this.a).e();
+    Object localObject = (PlayerCommentSegment)this.a.b("PlayerCommentSegment");
     if (localObject != null) {
       ((PlayerCommentSegment)localObject).a(paramDetailFeedItem);
     }
-    localObject = (PlayerDoubleTabSegment)this.a.a("PlayerDoubleTabSegment");
+    localObject = (PlayerDoubleTabSegment)this.a.b("PlayerDoubleTabSegment");
     if (localObject != null) {
       ((PlayerDoubleTabSegment)localObject).a(paramDetailFeedItem);
     }
-    localObject = (PlayerCommentEmptySegment)this.a.a("PlayerCommentEmptySegment");
+    localObject = (PlayerCommentEmptySegment)this.a.b("PlayerCommentEmptySegment");
     if (localObject != null)
     {
       ((PlayerCommentEmptySegment)localObject).a(paramDetailFeedItem);
       ((PlayerCommentEmptySegment)localObject).a(false);
     }
     if (paramBoolean) {
-      this.a.setLoadMoreComplete("CommentFloatDialog", true, paramDetailFeedItem.a(bool) ^ true);
+      this.a.setLoadMoreComplete("CommentFloatDialog", true, paramDetailFeedItem.b(bool) ^ true);
     } else {
       this.a.setLoadMoreComplete("CommentFloatDialog", false, false);
     }
-    this.a.p();
+    this.a.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView.ListViewOnDataChangeListener
  * JD-Core Version:    0.7.0.1
  */

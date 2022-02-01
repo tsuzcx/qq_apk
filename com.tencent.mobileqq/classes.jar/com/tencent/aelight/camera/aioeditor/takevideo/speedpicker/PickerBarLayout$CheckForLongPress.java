@@ -11,7 +11,7 @@ class PickerBarLayout$CheckForLongPress
   
   public void a()
   {
-    this.a = PickerBarLayout.b(this.this$0);
+    this.a = PickerBarLayout.c(this.this$0);
   }
   
   public void run()
@@ -23,13 +23,13 @@ class PickerBarLayout$CheckForLongPress
       localPickerBarLayout.getParent().requestDisallowInterceptTouchEvent(true);
       this.this$0.sendAccessibilityEvent(2);
       localPickerBarLayout = this.this$0;
-      localPickerBarLayout.a(PickerBarLayout.a(localPickerBarLayout));
+      localPickerBarLayout.a(PickerBarLayout.b(localPickerBarLayout));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.PickerBarLayout.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

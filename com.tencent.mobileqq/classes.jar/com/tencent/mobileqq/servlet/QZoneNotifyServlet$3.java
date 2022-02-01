@@ -11,7 +11,7 @@ final class QZoneNotifyServlet$3
   {
     try
     {
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(QZoneNotifyServlet.a());
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(QZoneNotifyServlet.c());
       return;
     }
     catch (Exception localException)
@@ -25,7 +25,7 @@ final class QZoneNotifyServlet$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.3
  * JD-Core Version:    0.7.0.1
  */

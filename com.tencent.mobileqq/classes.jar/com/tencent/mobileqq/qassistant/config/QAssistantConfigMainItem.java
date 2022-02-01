@@ -23,11 +23,11 @@ public class QAssistantConfigMainItem
   {
     if (paramQBaseActivity == null)
     {
-      QAssistantConfigUtils.a(this.g, this.f, 100);
+      QAssistantConfigUtils.a(this.h, this.g, 100);
       return false;
     }
     ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(paramQBaseActivity, "/base/start/splash");
-    ((IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class)).extendJumpIntentExtra2(localActivityURIRequest.extra(), this.f);
+    ((IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class)).extendJumpIntentExtra2(localActivityURIRequest.extra(), this.g);
     localActivityURIRequest.setFlags(67108864);
     QAssistantConfigUtils.a(this, paramBoolean, localActivityURIRequest);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -42,7 +42,7 @@ public class QAssistantConfigMainItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.config.QAssistantConfigMainItem
  * JD-Core Version:    0.7.0.1
  */

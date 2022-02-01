@@ -20,21 +20,21 @@ import mqq.os.MqqHandler;
 public class FraudTipsBar
   implements TipsBarTask
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean = false;
+  private QQAppInterface a;
+  private TipsManager b;
+  private Context c;
+  private BaseSessionInfo d;
+  private MqqHandler e;
+  private int f = 0;
+  private boolean g = false;
   
   public FraudTipsBar(QQAppInterface paramQQAppInterface, TipsManager paramTipsManager, Context paramContext, BaseSessionInfo paramBaseSessionInfo, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.a = paramQQAppInterface;
+    this.b = paramTipsManager;
+    this.c = paramContext;
+    this.d = paramBaseSessionInfo;
+    this.e = paramMqqHandler;
   }
   
   public int a()
@@ -44,8 +44,8 @@ public class FraudTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561858, null);
-    TextView localTextView = (TextView)localView.findViewById(2131362512);
+    View localView = LayoutInflater.from(this.c).inflate(2131628276, null);
+    TextView localTextView = (TextView)localView.findViewById(2131428122);
     String str = (String)paramVarArgs[0];
     int i = ((Integer)paramVarArgs[1]).intValue();
     localTextView.setText(str);
@@ -53,15 +53,36 @@ public class FraudTipsBar
     return localView;
   }
   
-  public void a()
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FraudTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
+    }
+    d();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int[] c()
+  {
+    return null;
+  }
+  
+  public void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FraudTipsBar", 2, "check() : ");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 0) {
+    if (this.d.a != 0) {
       return;
     }
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.f != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("FraudTipsBar", 2, "mAntiFraudTips is showing or has shown");
@@ -71,7 +92,7 @@ public class FraudTipsBar
     long l;
     try
     {
-      l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+      l = Long.parseLong(this.d.b);
     }
     catch (Throwable localThrowable1)
     {
@@ -81,21 +102,21 @@ public class FraudTipsBar
     if (l == 0L) {
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.g)
     {
-      this.jdField_a_of_type_Boolean = true;
-      if (UinFraudInfo.a().a(l))
+      this.g = true;
+      if (UinFraudInfo.a().b(l))
       {
         if (QLog.isColorLevel()) {
           QLog.d("FraudTipsBar", 2, "uin cache is out of date, update it! ");
         }
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).queryUinSafetyFlag("OidbSvc.0x476_146", (int)l, 146);
+        ((FriendListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).queryUinSafetyFlag("OidbSvc.0x476_146", (int)l, 146);
       }
     }
     int i = UinFraudInfo.a().a(l);
     if (i != 0)
     {
-      AntiFraudConfigFileUtil.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "SecWarningCfg");
+      AntiFraudConfigFileUtil.a().a(this.a, "SecWarningCfg");
       Object localObject1 = null;
       Object localObject2 = (Bundle)AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerWording", 146, i);
       if (localObject2 != null) {
@@ -104,10 +125,10 @@ public class FraudTipsBar
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[] { localObject1, Integer.valueOf(i) }))
+      if (this.b.a(this, new Object[] { localObject1, Integer.valueOf(i) }))
       {
-        this.jdField_a_of_type_Int = 1;
-        ReportController.b(null, "P_CliOper", "Safe_AntiFraud", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "banner", "display", i, 0, "", "", "", "");
+        this.f = 1;
+        ReportController.b(null, "P_CliOper", "Safe_AntiFraud", this.d.b, "banner", "display", i, 0, "", "", "", "");
         localObject2 = new Timer();
         FraudTipsBar.1 local1 = new FraudTipsBar.1(this);
         localObject1 = (Bundle)AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerTTL", 146, i);
@@ -133,31 +154,10 @@ public class FraudTipsBar
       }
     }
   }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    if (paramInt != 1000) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FraudTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.FraudTipsBar
  * JD-Core Version:    0.7.0.1
  */

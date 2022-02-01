@@ -15,7 +15,7 @@ public class QCircleHostZipHelper
     Drawable localDrawable = ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).getZipAnimationDrawable();
     ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setAnimationRes(localDrawable, paramString, paramInt);
     localDrawable.setCallback(paramCallback);
-    ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setScale(localDrawable, ViewUtils.a() / 720.0F);
+    ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setScale(localDrawable, ViewUtils.getScreenWidth() / 720.0F);
     ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).clearFirstFrame(localDrawable);
     ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setRepeatAnimation(localDrawable, true);
     ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setShowLastFrameWhenStop(localDrawable, true);
@@ -46,7 +46,7 @@ public class QCircleHostZipHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostZipHelper
  * JD-Core Version:    0.7.0.1
  */

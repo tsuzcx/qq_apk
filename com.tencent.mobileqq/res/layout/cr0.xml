@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.kandian.glue.viola.wormhole.WormholeView android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/opl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:id="@id/opn" android:background="@color/aal" android:layout_width="fill_parent" android:layout_height="200.0dip">
-        <TextView android:textSize="15.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/opm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="200.0dip" android:text="@string/gvw" />
-    </FrameLayout>
-</com.tencent.mobileqq.kandian.glue.viola.wormhole.WormholeView>
+    <com.tencent.mobileqq.widget.OverScrollRecyclerView android:id="@id/qi4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" />
+    <include layout="@layout/cr3" />
+</RelativeLayout>

@@ -12,33 +12,33 @@ class VideoCoverView$9
   
   public void a()
   {
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    if (this.a.jdField_a_of_type_Int == 5)
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.c = true;
+    if (this.a.f == 5)
     {
       this.a.d();
     }
     else
     {
       VideoCoverView localVideoCoverView = this.a;
-      localVideoCoverView.b(VideoCoverView.a(localVideoCoverView));
+      localVideoCoverView.b(VideoCoverView.f(localVideoCoverView));
     }
-    AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
+    AdvertisementStatistics.a().a(VideoCoverView.b(this.a).g.c, this.a.e, true);
   }
   
   public void b()
   {
     VideoCoverView localVideoCoverView = this.a;
-    localVideoCoverView.jdField_a_of_type_Int = 6;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    localVideoCoverView.f = 6;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = false;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.c = true;
     localVideoCoverView.g();
-    AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
+    AdvertisementStatistics.a().a(VideoCoverView.b(this.a).g.c, this.a.e, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.9
  * JD-Core Version:    0.7.0.1
  */

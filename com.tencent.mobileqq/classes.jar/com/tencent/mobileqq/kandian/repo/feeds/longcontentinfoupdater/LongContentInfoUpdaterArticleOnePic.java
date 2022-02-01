@@ -17,18 +17,18 @@ import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
 public final class LongContentInfoUpdaterArticleOnePic
   extends LongContentInfoUpdater
 {
-  protected void a()
+  protected void e()
   {
-    Object localObject1 = a();
+    Object localObject1 = b();
     if (localObject1 != null) {
-      ((SocializeFeedsInfo)localObject1).a = 1;
+      ((SocializeFeedsInfo)localObject1).b = 1;
     }
     Object localObject3 = a();
-    localObject1 = a();
+    localObject1 = c();
     Object localObject2 = null;
     if (localObject1 != null)
     {
-      localObject1 = ((LongContentInfo)localObject1).a;
+      localObject1 = ((LongContentInfo)localObject1).b;
       if (localObject1 != null)
       {
         localObject1 = ((ArticleBasicInfo)localObject1).b;
@@ -38,21 +38,21 @@ public final class LongContentInfoUpdaterArticleOnePic
     localObject1 = null;
     label49:
     ((AbsBaseArticleInfo)localObject3).mTitle = ((String)localObject1);
-    localObject1 = a();
+    localObject1 = d();
     if (localObject1 != null) {
-      ((PGCFeedsInfo)localObject1).a = true;
+      ((PGCFeedsInfo)localObject1).f = true;
     }
     try
     {
-      localObject3 = a();
+      localObject3 = c();
       localObject1 = localObject2;
       if (localObject3 != null)
       {
-        localObject3 = ((LongContentInfo)localObject3).a;
+        localObject3 = ((LongContentInfo)localObject3).b;
         localObject1 = localObject2;
         if (localObject3 != null)
         {
-          localObject3 = ((ArticleBasicInfo)localObject3).a;
+          localObject3 = ((ArticleBasicInfo)localObject3).c;
           localObject1 = localObject2;
           if (localObject3 != null)
           {
@@ -93,7 +93,7 @@ public final class LongContentInfoUpdaterArticleOnePic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.longcontentinfoupdater.LongContentInfoUpdaterArticleOnePic
  * JD-Core Version:    0.7.0.1
  */

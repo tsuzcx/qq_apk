@@ -56,7 +56,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
       if (paramBoolean) {
         paramString = ApiUtil.wrapCallbackOk(paramString, getResultObj(paramInt1, paramInt2));
       } else {
-        paramString = ApiUtil.wrapCallbackFail(paramString, getResultObj(paramInt1, paramInt2), (String)InterstitialAdPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2)));
+        paramString = ApiUtil.wrapCallbackFail(paramString, getResultObj(paramInt1, paramInt2), (String)InterstitialAdPlugin.S_CODE_MSG_MAP.get(Integer.valueOf(paramInt2)));
       }
       paramString = paramString.toString();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -223,7 +223,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InterstitialAdPlugin.MiniInterstitialAd
  * JD-Core Version:    0.7.0.1
  */

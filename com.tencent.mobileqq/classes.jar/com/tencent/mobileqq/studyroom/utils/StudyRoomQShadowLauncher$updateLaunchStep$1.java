@@ -16,7 +16,7 @@ final class StudyRoomQShadowLauncher$updateLaunchStep$1
   
   public final void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     int j = 1;
     Object localObject;
     if (i != 0)
@@ -31,23 +31,23 @@ final class StudyRoomQShadowLauncher$updateLaunchStep$1
               if (i == 5)
               {
                 StudyRoomQShadowLauncher.b(this.this$0, 100);
-                if (StudyRoomQShadowLauncher.b(this.this$0) != null) {
-                  StudyRoomQShadowLauncher.a(this.this$0).a();
+                if (StudyRoomQShadowLauncher.h(this.this$0) != null) {
+                  StudyRoomQShadowLauncher.g(this.this$0).a();
                 }
-                StudyRoomQShadowLauncher.a(this.this$0).onEnterComplete();
+                StudyRoomQShadowLauncher.j(this.this$0).onEnterComplete();
                 localObject = StudyRoomQShadowLauncher.a(this.this$0);
                 if (localObject != null) {
                   ((CountDownLatch)localObject).countDown();
                 }
               }
             }
-            else if (StudyRoomQShadowLauncher.b(this.this$0) != null) {
-              StudyRoomQShadowLauncher.a(this.this$0).a();
+            else if (StudyRoomQShadowLauncher.h(this.this$0) != null) {
+              StudyRoomQShadowLauncher.g(this.this$0).a();
             }
           }
           else
           {
-            if (StudyRoomQShadowLauncher.d(this.this$0)) {
+            if (StudyRoomQShadowLauncher.s(this.this$0)) {
               i = 60;
             } else {
               i = 30;
@@ -57,7 +57,7 @@ final class StudyRoomQShadowLauncher$updateLaunchStep$1
         }
         else
         {
-          if (StudyRoomQShadowLauncher.d(this.this$0)) {
+          if (StudyRoomQShadowLauncher.s(this.this$0)) {
             i = 50;
           } else {
             i = 10;
@@ -66,30 +66,30 @@ final class StudyRoomQShadowLauncher$updateLaunchStep$1
         }
       }
     }
-    else if (this.jdField_b_of_type_Int != -1) {
-      StudyRoomQShadowLauncher.b(this.this$0);
+    else if (this.b != -1) {
+      StudyRoomQShadowLauncher.r(this.this$0);
     }
-    if ((!StudyRoomQShadowLauncher.e(this.this$0)) && (StudyRoomQShadowLauncher.c(this.this$0) != null))
+    if ((!StudyRoomQShadowLauncher.t(this.this$0)) && (StudyRoomQShadowLauncher.u(this.this$0) != null))
     {
-      localObject = (CharSequence)this.jdField_a_of_type_JavaLangString;
-      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-        i = 0;
-      } else {
-        i = 1;
-      }
-      if (i == 0) {
-        StudyRoomQShadowLauncher.a(this.this$0).setText((CharSequence)this.jdField_a_of_type_JavaLangString);
-      }
-      localObject = (CharSequence)this.jdField_b_of_type_JavaLangString;
-      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-        i = 0;
-      } else {
-        i = 1;
-      }
-      if (i == 0) {
-        StudyRoomQShadowLauncher.b(this.this$0).setText((CharSequence)this.jdField_b_of_type_JavaLangString);
-      }
       localObject = (CharSequence)this.c;
+      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (i == 0) {
+        StudyRoomQShadowLauncher.n(this.this$0).setText((CharSequence)this.c);
+      }
+      localObject = (CharSequence)this.d;
+      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (i == 0) {
+        StudyRoomQShadowLauncher.o(this.this$0).setText((CharSequence)this.d);
+      }
+      localObject = (CharSequence)this.e;
       i = j;
       if (localObject != null) {
         if (((CharSequence)localObject).length() == 0) {
@@ -100,19 +100,19 @@ final class StudyRoomQShadowLauncher$updateLaunchStep$1
       }
       if (i == 0)
       {
-        StudyRoomQShadowLauncher.a(this.this$0).setVisibility(8);
-        StudyRoomQShadowLauncher.a(this.this$0).setText((CharSequence)this.c);
-        StudyRoomQShadowLauncher.a(this.this$0).setOnClickListener((View.OnClickListener)new StudyRoomQShadowLauncher.updateLaunchStep.1.4(this));
-        StudyRoomQShadowLauncher.a(this.this$0).setVisibility(0);
+        StudyRoomQShadowLauncher.q(this.this$0).setVisibility(8);
+        StudyRoomQShadowLauncher.p(this.this$0).setText((CharSequence)this.e);
+        StudyRoomQShadowLauncher.p(this.this$0).setOnClickListener((View.OnClickListener)new StudyRoomQShadowLauncher.updateLaunchStep.1.4(this));
+        StudyRoomQShadowLauncher.p(this.this$0).setVisibility(0);
         return;
       }
-      StudyRoomQShadowLauncher.a(this.this$0).setVisibility(8);
+      StudyRoomQShadowLauncher.p(this.this$0).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomQShadowLauncher.updateLaunchStep.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class BusinessCardAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839107;
+    return 2130839263;
   }
   
   public int getAppID()
@@ -52,28 +52,28 @@ public class BusinessCardAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131693561);
+    return BaseApplicationImpl.getContext().getString(2131891125);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     paramPlusPanelViewModel = new Bundle();
     paramPlusPanelViewModel.putInt("forward_type", 23);
-    paramPlusPanelViewModel.putInt("curent_aio_uin_type", paramSessionInfo.jdField_a_of_type_Int);
-    paramPlusPanelViewModel.putString("curent_aio_uinname", paramSessionInfo.d);
-    paramPlusPanelViewModel.putString("curent_aio_uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-    paramPlusPanelViewModel.putString("curent_aio_troop_uin", paramSessionInfo.b);
+    paramPlusPanelViewModel.putInt("curent_aio_uin_type", paramSessionInfo.a);
+    paramPlusPanelViewModel.putString("curent_aio_uinname", paramSessionInfo.e);
+    paramPlusPanelViewModel.putString("curent_aio_uin", paramSessionInfo.b);
+    paramPlusPanelViewModel.putString("curent_aio_troop_uin", paramSessionInfo.c);
     paramPlusPanelViewModel.putBoolean("only_single_selection", true);
     Intent localIntent = new Intent();
     localIntent.putExtras(paramPlusPanelViewModel);
-    ForwardBaseOption.a(paramBaseChatPie.a(), localIntent, 21);
-    AIOPanelUtiles.a(paramBaseChatPie.a, "0X80056B3", paramSessionInfo.jdField_a_of_type_Int);
-    AIOPanelUtiles.a(paramBaseChatPie.a, "0X8007010", paramSessionInfo.jdField_a_of_type_Int);
+    ForwardBaseOption.a(paramBaseChatPie.aX(), localIntent, 21);
+    AIOPanelUtiles.a(paramBaseChatPie.d, "0X80056B3", paramSessionInfo.a);
+    AIOPanelUtiles.a(paramBaseChatPie.d, "0X8007010", paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.BusinessCardAppInfo
  * JD-Core Version:    0.7.0.1
  */

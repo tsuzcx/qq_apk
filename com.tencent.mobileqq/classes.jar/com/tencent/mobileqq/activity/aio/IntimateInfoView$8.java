@@ -22,19 +22,19 @@ class IntimateInfoView$8
     this.a.setBounds(0, 0, 750, 1272);
     this.a.draw((Canvas)localObject1);
     localObject1 = this.this$0;
-    BaseActivity localBaseActivity = ((IntimateInfoView)localObject1).jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    QQAppInterface localQQAppInterface = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    IntimateInfo localIntimateInfo = IntimateInfoView.a(this.this$0);
+    BaseActivity localBaseActivity = ((IntimateInfoView)localObject1).b;
+    QQAppInterface localQQAppInterface = this.this$0.a;
+    IntimateInfo localIntimateInfo = IntimateInfoView.c(this.this$0);
     Object localObject2 = this.this$0;
-    localObject2 = ((IntimateInfoView)localObject2).a(((IntimateInfoView)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localObject2 = ((IntimateInfoView)localObject2).b(((IntimateInfoView)localObject2).a.getCurrentAccountUin());
     IntimateInfoView localIntimateInfoView = this.this$0;
-    IntimateInfoView.a((IntimateInfoView)localObject1, new IntimateInfoShareHelper(localBaseActivity, localQQAppInterface, localIntimateInfo, (Bitmap)localObject2, localIntimateInfoView.a(localIntimateInfoView.jdField_a_of_type_JavaLangString), localBitmap));
+    IntimateInfoView.a((IntimateInfoView)localObject1, new IntimateInfoShareHelper(localBaseActivity, localQQAppInterface, localIntimateInfo, (Bitmap)localObject2, localIntimateInfoView.b(localIntimateInfoView.d), localBitmap));
     ThreadManager.getUIHandler().post(new IntimateInfoView.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.8
  * JD-Core Version:    0.7.0.1
  */

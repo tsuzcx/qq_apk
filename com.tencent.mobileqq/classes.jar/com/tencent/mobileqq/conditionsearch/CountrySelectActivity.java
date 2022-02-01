@@ -30,15 +30,15 @@ public class CountrySelectActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, IndexView.OnIndexChangedListener
 {
-  static final boolean jdField_a_of_type_Boolean = AppSetting.d;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-  CountrySelectActivity.CountryAdapter jdField_a_of_type_ComTencentMobileqqConditionsearchCountrySelectActivity$CountryAdapter;
-  IndexView jdField_a_of_type_ComTencentMobileqqWidgetIndexView;
-  PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
-  String jdField_a_of_type_JavaLangString;
-  LinkedHashMap<String, Integer> jdField_a_of_type_JavaUtilLinkedHashMap;
-  List<Object> jdField_a_of_type_JavaUtilList;
-  boolean b = true;
+  static final boolean a = AppSetting.e;
+  private static final String[] i = { "#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+  PinnedDividerListView b;
+  CountrySelectActivity.CountryAdapter c;
+  IndexView d;
+  List<Object> e;
+  LinkedHashMap<String, Integer> f;
+  String g;
+  boolean h = true;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -52,107 +52,107 @@ public class CountrySelectActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559544);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131365276));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368760));
-    setTitle(HardCodeUtil.a(2131702782));
-    Object localObject1 = ((ConditionSearchManager)this.app.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER)).a();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(((List)localObject1).size() + 26);
-    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_country_code");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = "0";
+    setContentView(2131625566);
+    this.b = ((PinnedDividerListView)findViewById(2131431450));
+    this.d = ((IndexView)findViewById(2131435677));
+    setTitle(HardCodeUtil.a(2131900772));
+    Object localObject1 = ((ConditionSearchManager)this.app.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER)).c();
+    this.f = new LinkedHashMap();
+    this.e = new ArrayList(((List)localObject1).size() + 26);
+    this.g = getIntent().getStringExtra("key_country_code");
+    if (TextUtils.isEmpty(this.g)) {
+      this.g = "0";
     }
-    this.b = getIntent().getBooleanExtra("key_no_limit_allow", false);
-    if (this.b)
+    this.h = getIntent().getBooleanExtra("key_no_limit_allow", false);
+    if (this.h)
     {
-      paramBundle = getLayoutInflater().inflate(2131559546, null);
+      paramBundle = getLayoutInflater().inflate(2131625568, null);
       localObject2 = new CountrySelectActivity.ViewHolder(null);
-      ((TextView)paramBundle.findViewById(2131365275)).setText("不限");
-      localObject3 = paramBundle.findViewById(2131364607);
-      if (this.jdField_a_of_type_JavaLangString.equals("0")) {
-        i = 0;
+      ((TextView)paramBundle.findViewById(2131431449)).setText("不限");
+      localObject3 = paramBundle.findViewById(2131430679);
+      if (this.g.equals("0")) {
+        j = 0;
       } else {
-        i = 8;
+        j = 8;
       }
-      ((View)localObject3).setVisibility(i);
-      paramBundle.findViewById(2131365274).setVisibility(8);
-      ((CountrySelectActivity.ViewHolder)localObject2).jdField_a_of_type_JavaLangString = "0";
+      ((View)localObject3).setVisibility(j);
+      paramBundle.findViewById(2131431448).setVisibility(8);
+      ((CountrySelectActivity.ViewHolder)localObject2).c = "0";
       paramBundle.setTag(localObject2);
       paramBundle.setOnClickListener(this);
-      if (jdField_a_of_type_Boolean) {
+      if (a) {
         paramBundle.setContentDescription("不限");
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView(paramBundle);
+      this.b.addHeaderView(paramBundle);
     }
-    paramBundle = getLayoutInflater().inflate(2131559546, null);
+    paramBundle = getLayoutInflater().inflate(2131625568, null);
     Object localObject2 = new CountrySelectActivity.ViewHolder(null);
-    ((TextView)paramBundle.findViewById(2131365275)).setText("中国");
-    Object localObject3 = paramBundle.findViewById(2131364607);
-    if (this.jdField_a_of_type_JavaLangString.equals("1")) {
-      i = 0;
+    ((TextView)paramBundle.findViewById(2131431449)).setText("中国");
+    Object localObject3 = paramBundle.findViewById(2131430679);
+    if (this.g.equals("1")) {
+      j = 0;
     } else {
-      i = 8;
+      j = 8;
     }
-    ((View)localObject3).setVisibility(i);
-    paramBundle.findViewById(2131365274).setVisibility(8);
-    ((CountrySelectActivity.ViewHolder)localObject2).jdField_a_of_type_JavaLangString = "1";
+    ((View)localObject3).setVisibility(j);
+    paramBundle.findViewById(2131431448).setVisibility(8);
+    ((CountrySelectActivity.ViewHolder)localObject2).c = "1";
     paramBundle.setTag(localObject2);
     paramBundle.setOnClickListener(this);
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       paramBundle.setContentDescription("中国");
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView(paramBundle);
-    localObject2 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+    this.b.addHeaderView(paramBundle);
+    localObject2 = this.f;
     paramBundle = "#";
     ((LinkedHashMap)localObject2).put("#", Integer.valueOf(0));
     localObject2 = ((List)localObject1).iterator();
-    int i = 0;
-    int j;
+    int j = 0;
+    int k;
     for (;;)
     {
-      j = i;
+      k = j;
       if (!((Iterator)localObject2).hasNext()) {
         break;
       }
       localObject3 = (BaseAddress)((Iterator)localObject2).next();
       if ((!((BaseAddress)localObject3).code.equals("0")) && (!((BaseAddress)localObject3).code.equals("1")))
       {
-        j = i;
+        k = j;
         localObject1 = paramBundle;
         if (!((BaseAddress)localObject3).pinyinFirst.equals(paramBundle))
         {
           localObject1 = ((BaseAddress)localObject3).pinyinFirst;
-          int k = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf((String)localObject1);
-          while (i <= k)
+          int m = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf((String)localObject1);
+          while (j <= m)
           {
-            paramBundle = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-            j = i + 1;
-            paramBundle.put("ABCDEFGHIJKLMNOPQRSTUVWXYZ".substring(i, j), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()));
-            i = j;
+            paramBundle = this.f;
+            k = j + 1;
+            paramBundle.put("ABCDEFGHIJKLMNOPQRSTUVWXYZ".substring(j, k), Integer.valueOf(this.e.size() + this.b.getHeaderViewsCount()));
+            j = k;
           }
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()));
+          this.f.put(localObject1, Integer.valueOf(this.e.size() + this.b.getHeaderViewsCount()));
           paramBundle = new CountrySelectActivity.DividerItem(null);
-          paramBundle.jdField_a_of_type_JavaLangString = ((String)localObject1);
-          this.jdField_a_of_type_JavaUtilList.add(paramBundle);
-          j = i;
+          paramBundle.a = ((String)localObject1);
+          this.e.add(paramBundle);
+          k = j;
         }
-        this.jdField_a_of_type_JavaUtilList.add(localObject3);
-        i = j;
+        this.e.add(localObject3);
+        j = k;
         paramBundle = (Bundle)localObject1;
       }
     }
-    while (j < 26)
+    while (k < 26)
     {
-      paramBundle = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-      i = j + 1;
-      paramBundle.put("ABCDEFGHIJKLMNOPQRSTUVWXYZ".substring(j, i), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount()));
-      j = i;
+      paramBundle = this.f;
+      j = k + 1;
+      paramBundle.put("ABCDEFGHIJKLMNOPQRSTUVWXYZ".substring(k, j), Integer.valueOf(this.e.size() + this.b.getHeaderViewsCount()));
+      k = j;
     }
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchCountrySelectActivity$CountryAdapter = new CountrySelectActivity.CountryAdapter(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqConditionsearchCountrySelectActivity$CountryAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(jdField_a_of_type_ArrayOfJavaLangString, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
+    this.c = new CountrySelectActivity.CountryAdapter(this, null);
+    this.b.setAdapter(this.c);
+    this.d.setIndex(i, false);
+    this.d.setOnIndexChangedListener(this);
     return true;
   }
   
@@ -167,7 +167,7 @@ public class CountrySelectActivity
     if ((localObject instanceof CountrySelectActivity.ViewHolder))
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_country_code", ((CountrySelectActivity.ViewHolder)localObject).jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_country_code", ((CountrySelectActivity.ViewHolder)localObject).c);
       setResult(-1, localIntent);
       finish();
     }
@@ -183,7 +183,7 @@ public class CountrySelectActivity
   
   public void onIndexChanged(String paramString)
   {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    Integer localInteger = (Integer)this.f.get(paramString);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -193,12 +193,12 @@ public class CountrySelectActivity
       localStringBuilder.append(localInteger);
       QLog.d("CountrySelectActivity", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(localInteger.intValue());
+    this.b.setSelection(localInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.CountrySelectActivity
  * JD-Core Version:    0.7.0.1
  */

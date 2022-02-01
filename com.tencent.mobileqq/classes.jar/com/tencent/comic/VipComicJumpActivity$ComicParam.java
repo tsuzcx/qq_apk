@@ -6,110 +6,104 @@ import java.util.HashMap;
 
 public class VipComicJumpActivity$ComicParam
 {
-  public int a;
-  public long a;
-  Intent jdField_a_of_type_AndroidContentIntent = new Intent();
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  VipComicJumpActivity.ComicInfo jdField_a_of_type_ComTencentComicVipComicJumpActivity$ComicInfo = null;
-  VipComicJumpActivity.PageOpenTraceInfo jdField_a_of_type_ComTencentComicVipComicJumpActivity$PageOpenTraceInfo;
-  String jdField_a_of_type_JavaLangString = "";
-  HashMap<String, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  boolean jdField_a_of_type_Boolean = false;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean;
-  String jdField_c_of_type_JavaLangString = null;
-  boolean jdField_c_of_type_Boolean = false;
-  String jdField_d_of_type_JavaLangString = null;
-  boolean jdField_d_of_type_Boolean = false;
-  String jdField_e_of_type_JavaLangString = "com.qqcomic.activity.VipComicMainTabActivity";
-  boolean jdField_e_of_type_Boolean = true;
-  String jdField_f_of_type_JavaLangString = "";
-  boolean jdField_f_of_type_Boolean = false;
-  String jdField_g_of_type_JavaLangString = null;
-  boolean jdField_g_of_type_Boolean = false;
-  String jdField_h_of_type_JavaLangString = null;
-  boolean jdField_h_of_type_Boolean = false;
-  String jdField_i_of_type_JavaLangString = null;
-  boolean jdField_i_of_type_Boolean = false;
-  String j = "";
-  String k = "";
-  String l = "";
-  String m = "";
-  String n = "";
-  
-  public VipComicJumpActivity$ComicParam()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-  }
+  String A = "";
+  boolean B = false;
+  String C = "";
+  Bundle D;
+  VipComicJumpActivity.PageOpenTraceInfo E;
+  public long a = 0L;
+  long b = 0L;
+  public int c = 0;
+  String d = "";
+  String e = "";
+  String f = null;
+  String g = null;
+  String h = "com.qqcomic.activity.VipComicMainTabActivity";
+  String i = "";
+  VipComicJumpActivity.ComicInfo j = null;
+  String k = null;
+  String l = null;
+  String m = null;
+  boolean n = false;
+  boolean o;
+  boolean p = false;
+  boolean q = false;
+  boolean r = true;
+  boolean s = false;
+  Intent t = new Intent();
+  boolean u = false;
+  HashMap<String, Boolean> v = new HashMap();
+  boolean w = false;
+  String x = "";
+  String y = "";
+  String z = "";
   
   void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+    this.v.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
   boolean a(String paramString)
   {
-    return (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) && (((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).booleanValue());
+    return (this.v.get(paramString) != null) && (((Boolean)this.v.get(paramString)).booleanValue());
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ComicParam{clickTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", startTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", sourceFrom=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", extUrlParam='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", jumpConponentName='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", jumpurl='");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append(", comicInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentComicVipComicJumpActivity$ComicInfo);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", jumpMainTab='");
-    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append(", jumpSubTab='");
-    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append(this.l);
     localStringBuilder.append('\'');
     localStringBuilder.append(", leftViewText='");
-    localStringBuilder.append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append(this.m);
     localStringBuilder.append('\'');
     localStringBuilder.append(", returnDetail=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.n);
     localStringBuilder.append(", returnToHome=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.o);
     localStringBuilder.append(", returnHomeFromDetail=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.p);
     localStringBuilder.append(", isPlayerLocked=");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(this.q);
     localStringBuilder.append(", needClearTop=");
-    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    localStringBuilder.append(this.r);
     localStringBuilder.append(", isFullscreen=");
-    localStringBuilder.append(this.jdField_f_of_type_Boolean);
+    localStringBuilder.append(this.s);
     localStringBuilder.append(", mIntent=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidContentIntent);
+    localStringBuilder.append(this.t);
     localStringBuilder.append(", mNeedLaunchPlugin=");
-    localStringBuilder.append(this.jdField_g_of_type_Boolean);
+    localStringBuilder.append(this.u);
     localStringBuilder.append(", mIsTabRedMap=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilHashMap);
+    localStringBuilder.append(this.v);
     localStringBuilder.append(", mIsNewFlag=");
-    localStringBuilder.append(this.jdField_h_of_type_Boolean);
+    localStringBuilder.append(this.w);
     localStringBuilder.append(", mRedDotMissionIds='");
-    localStringBuilder.append(this.j);
+    localStringBuilder.append(this.x);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mIsJumpActPage=");
-    localStringBuilder.append(this.jdField_i_of_type_Boolean);
+    localStringBuilder.append(this.B);
     localStringBuilder.append(", mJumpActUrl='");
-    localStringBuilder.append(this.n);
+    localStringBuilder.append(this.C);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -117,7 +111,7 @@ public class VipComicJumpActivity$ComicParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicJumpActivity.ComicParam
  * JD-Core Version:    0.7.0.1
  */

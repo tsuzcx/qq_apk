@@ -6,52 +6,52 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseUsingTimeReport
   implements UsingTimeReportManager.IStateChangeCallBack
 {
-  private long jdField_a_of_type_Long = 0L;
-  private UsingTimeReportManager jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
-  public String a;
-  private boolean jdField_a_of_type_Boolean = false;
-  private long jdField_b_of_type_Long = 0L;
+  private long a = 0L;
   public String b;
-  private boolean jdField_b_of_type_Boolean = false;
   public String c;
+  public String d;
+  private long e = 0L;
+  private boolean f = false;
+  private boolean g = false;
+  private UsingTimeReportManager h;
   
   public BaseUsingTimeReport(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager = a();
-    UsingTimeReportManager localUsingTimeReportManager = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
-    if ((localUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
-    {
-      localUsingTimeReportManager.a(this);
-      this.jdField_b_of_type_Boolean = true;
-    }
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
   }
   
   private void g()
   {
-    UsingTimeReportManager localUsingTimeReportManager = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
-    if ((localUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
+    this.h = a();
+    UsingTimeReportManager localUsingTimeReportManager = this.h;
+    if ((localUsingTimeReportManager != null) && (!this.g))
     {
-      localUsingTimeReportManager.b(this);
-      this.jdField_b_of_type_Boolean = false;
+      localUsingTimeReportManager.a(this);
+      this.g = true;
     }
   }
   
   private void h()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    UsingTimeReportManager localUsingTimeReportManager = this.h;
+    if ((localUsingTimeReportManager != null) && (this.g))
+    {
+      localUsingTimeReportManager.b(this);
+      this.g = false;
+    }
+  }
+  
+  private void i()
+  {
+    if (!this.g) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
-      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-      long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+      this.e = SystemClock.uptimeMillis();
+      long l = this.e - this.a;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -59,10 +59,10 @@ public class BaseUsingTimeReport
         localStringBuilder.append(l);
         QLog.i("BaseUsingTimeReport", 2, localStringBuilder.toString());
       }
-      if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
+      if ((l > 0L) && (this.g)) {
         a(l);
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
     }
   }
   
@@ -71,52 +71,52 @@ public class BaseUsingTimeReport
     return null;
   }
   
-  public void a()
+  public void a(long paramLong) {}
+  
+  public void b()
   {
-    f();
-    if (!this.jdField_b_of_type_Boolean) {
+    g();
+    if (!this.g) {
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Boolean = true;
+      this.a = SystemClock.uptimeMillis();
+      this.f = true;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("start(), mStartTime=");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.a);
         QLog.i("BaseUsingTimeReport", 2, localStringBuilder.toString());
       }
     }
   }
   
-  public void a(long paramLong) {}
-  
-  public void b()
-  {
-    h();
-    g();
-  }
-  
   public void c()
   {
+    i();
     h();
   }
   
   public void d()
   {
-    a();
+    i();
   }
   
   public void e()
   {
     b();
   }
+  
+  public void f()
+  {
+    c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.BaseUsingTimeReport
  * JD-Core Version:    0.7.0.1
  */

@@ -21,17 +21,17 @@ class ToPayManagerImpl$5$1
   
   public void run()
   {
-    AppActivity localAppActivity = (AppActivity)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    AppActivity localAppActivity = (AppActivity)this.this$0.a.get();
     if (localAppActivity != null)
     {
       if (localAppActivity.isFinishing()) {
         return;
       }
       ToPayManagerImpl.access$000(localAppActivity, false);
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.a == 0)
       {
-        this.this$0.jdField_a_of_type_AndroidOsResultReceiver.send(1, new Bundle());
-        ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.aio.send", 0, 0, "", "", "", "");
+        this.this$0.b.send(1, new Bundle());
+        ReportController.b(QWalletTools.b(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.aio.send", 0, 0, "", "", "", "");
         int i = localAppActivity.getIntent().getIntExtra("iPayFrom", -1);
         if (QLog.isColorLevel())
         {
@@ -42,14 +42,14 @@ class ToPayManagerImpl$5$1
         }
         if (i == 1)
         {
-          ToPayManagerImpl.access$100(localAppActivity, this.this$0.jdField_a_of_type_JavaUtilArrayList, this.this$0.b);
+          ToPayManagerImpl.access$100(localAppActivity, this.this$0.c, this.this$0.d);
           return;
         }
-        ToPayManagerImpl.access$200(localAppActivity, this.this$0.jdField_a_of_type_JavaUtilArrayList, this.this$0.b);
+        ToPayManagerImpl.access$200(localAppActivity, this.this$0.c, this.this$0.d);
         return;
       }
       Object localObject1 = null;
-      Object localObject2 = this.jdField_a_of_type_AndroidOsBundle;
+      Object localObject2 = this.b;
       if (localObject2 != null) {
         localObject1 = ((Bundle)localObject2).getString("retmsg");
       }
@@ -58,13 +58,13 @@ class ToPayManagerImpl$5$1
         localObject2 = localAppActivity.getResources().getString(R.string.m);
       }
       DialogUtil.a(localAppActivity, 231, null, (CharSequence)localObject2, localAppActivity.getResources().getString(R.string.l), null, null, new ToPayManagerImpl.5.1.1(this)).show();
-      ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.errwinshow", 0, 0, "", "", "", "");
+      ReportController.b(QWalletTools.b(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.errwinshow", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.ToPayManagerImpl.5.1
  * JD-Core Version:    0.7.0.1
  */

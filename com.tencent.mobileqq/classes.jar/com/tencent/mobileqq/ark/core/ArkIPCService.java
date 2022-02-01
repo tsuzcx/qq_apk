@@ -29,51 +29,50 @@ import mqq.app.MobileQQ;
 public class ArkIPCService
   extends QIPCModule
 {
-  static volatile ArkIPCService jdField_a_of_type_ComTencentMobileqqArkCoreArkIPCService;
+  static volatile ArkIPCService a;
   @ConfigInject(configPath="Business/qqark-impl/src/main/resources/Inject_ArkIPCService_APIList.yml", version=1)
-  public static final ArrayList<Class<? extends IPCMethodHandler>> a;
-  private final HashMap<String, Class<? extends IPCMethodHandler>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public static final ArrayList<Class<? extends IPCMethodHandler>> b = new ArrayList();
+  private final HashMap<String, Class<? extends IPCMethodHandler>> c = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.GetUinHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.GetNicknameHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.GetNicknameByViewHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.GetSKeyHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.GetPSKeyHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.LoginHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.GetUserInformationHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.GetAudioOutputModeHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.GetPSKeyAsyncHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkQQAPIIPCModule.LaunchMiniappHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkAppSSOIPCHandler.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkVipReporterIPCHandler.class);
+    b.add(ArkQQAPIIPCModule.GetUinHandler.class);
+    b.add(ArkQQAPIIPCModule.GetNicknameHandler.class);
+    b.add(ArkQQAPIIPCModule.GetNicknameByViewHandler.class);
+    b.add(ArkQQAPIIPCModule.GetSKeyHandler.class);
+    b.add(ArkQQAPIIPCModule.GetPSKeyHandler.class);
+    b.add(ArkQQAPIIPCModule.LoginHandler.class);
+    b.add(ArkQQAPIIPCModule.GetUserInformationHandler.class);
+    b.add(ArkQQAPIIPCModule.GetAudioOutputModeHandler.class);
+    b.add(ArkQQAPIIPCModule.GetPSKeyAsyncHandler.class);
+    b.add(ArkQQAPIIPCModule.LaunchMiniappHandler.class);
+    b.add(ArkAppSSOIPCHandler.class);
+    b.add(ArkVipReporterIPCHandler.class);
   }
   
   ArkIPCService(String paramString)
   {
     super(paramString);
-    a();
+    b();
   }
   
   public static ArkIPCService a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqArkCoreArkIPCService == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqArkCoreArkIPCService == null) {
-          jdField_a_of_type_ComTencentMobileqqArkCoreArkIPCService = new ArkIPCService("ArkQQAPIIPCModule");
+        if (a == null) {
+          a = new ArkIPCService("ArkQQAPIIPCModule");
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqArkCoreArkIPCService;
+    return a;
   }
   
   IPCMethodHandler a(String paramString)
   {
-    Object localObject = (Class)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    Object localObject = (Class)this.c.get(paramString);
     if (localObject == null)
     {
       localObject = new StringBuilder();
@@ -91,9 +90,57 @@ public class ArkIPCService
     return null;
   }
   
-  protected void a()
+  public void a(IPCMethod paramIPCMethod)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    if (paramIPCMethod == null)
+    {
+      QLog.i("ArkApp.ArkIPCService", 1, "call, method is null");
+      return;
+    }
+    Object localObject = a(paramIPCMethod.a());
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("call, handler not found, method=");
+      ((StringBuilder)localObject).append(paramIPCMethod.a());
+      QLog.i("ArkApp.ArkIPCService", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    if (c())
+    {
+      a(paramIPCMethod, (IPCMethodHandler)localObject);
+      return;
+    }
+    b(paramIPCMethod, (IPCMethodHandler)localObject);
+  }
+  
+  void a(IPCMethod paramIPCMethod, IPCMethodHandler paramIPCMethodHandler)
+  {
+    if ((paramIPCMethodHandler instanceof IPCSyncMethodHandler))
+    {
+      paramIPCMethodHandler = ((IPCSyncMethodHandler)paramIPCMethodHandler).a(paramIPCMethod.b());
+      boolean bool;
+      if (paramIPCMethodHandler.code == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      paramIPCMethod.a(bool, paramIPCMethodHandler.data);
+      return;
+    }
+    if ((paramIPCMethodHandler instanceof IPCAsyncMethodHandler)) {
+      ((IPCAsyncMethodHandler)paramIPCMethodHandler).a(paramIPCMethod.b(), new ArkIPCService.2(this, paramIPCMethod));
+    }
+  }
+  
+  void a(String paramString, Class<? extends IPCMethodHandler> paramClass)
+  {
+    this.c.put(paramString, paramClass);
+  }
+  
+  protected void b()
+  {
+    Iterator localIterator = b.iterator();
     while (localIterator.hasNext())
     {
       Class localClass = (Class)localIterator.next();
@@ -114,66 +161,13 @@ public class ArkIPCService
     }
   }
   
-  public void a(IPCMethod paramIPCMethod)
-  {
-    if (paramIPCMethod == null)
-    {
-      QLog.i("ArkApp.ArkIPCService", 1, "call, method is null");
-      return;
-    }
-    Object localObject = a(paramIPCMethod.a());
-    if (localObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("call, handler not found, method=");
-      ((StringBuilder)localObject).append(paramIPCMethod.a());
-      QLog.i("ArkApp.ArkIPCService", 1, ((StringBuilder)localObject).toString());
-      return;
-    }
-    if (a())
-    {
-      a(paramIPCMethod, (IPCMethodHandler)localObject);
-      return;
-    }
-    b(paramIPCMethod, (IPCMethodHandler)localObject);
-  }
-  
-  void a(IPCMethod paramIPCMethod, IPCMethodHandler paramIPCMethodHandler)
-  {
-    if ((paramIPCMethodHandler instanceof IPCSyncMethodHandler))
-    {
-      paramIPCMethodHandler = ((IPCSyncMethodHandler)paramIPCMethodHandler).a(paramIPCMethod.a());
-      boolean bool;
-      if (paramIPCMethodHandler.code == 0) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      paramIPCMethod.a(bool, paramIPCMethodHandler.data);
-      return;
-    }
-    if ((paramIPCMethodHandler instanceof IPCAsyncMethodHandler)) {
-      ((IPCAsyncMethodHandler)paramIPCMethodHandler).a(paramIPCMethod.a(), new ArkIPCService.2(this, paramIPCMethod));
-    }
-  }
-  
-  void a(String paramString, Class<? extends IPCMethodHandler> paramClass)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramClass);
-  }
-  
-  boolean a()
-  {
-    return MobileQQ.sProcessId == 1;
-  }
-  
   void b(IPCMethod paramIPCMethod, IPCMethodHandler paramIPCMethodHandler)
   {
     boolean bool2 = paramIPCMethodHandler instanceof IPCSyncMethodHandler;
     boolean bool1 = true;
     if (bool2)
     {
-      paramIPCMethodHandler = QIPCClientHelper.getInstance().callServer("ArkQQAPIIPCModule", paramIPCMethod.a(), paramIPCMethod.a());
+      paramIPCMethodHandler = QIPCClientHelper.getInstance().callServer("ArkQQAPIIPCModule", paramIPCMethod.a(), paramIPCMethod.b());
       if (paramIPCMethodHandler.code != 0)
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -191,13 +185,18 @@ public class ArkIPCService
     }
     if ((paramIPCMethodHandler instanceof IPCAsyncMethodHandler))
     {
-      QIPCClientHelper.getInstance().callServer("ArkQQAPIIPCModule", paramIPCMethod.a(), paramIPCMethod.a(), new ArkIPCService.3(this, paramIPCMethod));
+      QIPCClientHelper.getInstance().callServer("ArkQQAPIIPCModule", paramIPCMethod.a(), paramIPCMethod.b(), new ArkIPCService.3(this, paramIPCMethod));
       return;
     }
     paramIPCMethod = new StringBuilder();
     paramIPCMethod.append("call, invalid handler class, ");
     paramIPCMethod.append(paramIPCMethodHandler.getClass().toString());
     QLog.i("ArkApp.ArkIPCService", 1, paramIPCMethod.toString());
+  }
+  
+  boolean c()
+  {
+    return MobileQQ.sProcessId == 1;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -220,7 +219,7 @@ public class ArkIPCService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkIPCService
  * JD-Core Version:    0.7.0.1
  */

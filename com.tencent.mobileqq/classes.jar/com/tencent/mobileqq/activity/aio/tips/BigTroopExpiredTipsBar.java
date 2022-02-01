@@ -21,20 +21,20 @@ public class BigTroopExpiredTipsBar
   implements View.OnClickListener, TipsBarTask
 {
   public static String a = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=%s&from=%s";
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private String b;
+  private QQAppInterface c;
+  private Context d;
+  private TipsManager e;
+  private SpannableString f;
+  private int g;
+  private int h;
+  private boolean i;
   
   public BigTroopExpiredTipsBar(QQAppInterface paramQQAppInterface, Context paramContext, TipsManager paramTipsManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
+    this.c = paramQQAppInterface;
+    this.d = paramContext;
+    this.e = paramTipsManager;
   }
   
   public int a()
@@ -44,21 +44,21 @@ public class BigTroopExpiredTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558592, null);
-    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131362523);
-    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131362533);
-    ((TextView)paramVarArgs.findViewById(2131362534)).setText(this.jdField_a_of_type_AndroidTextSpannableString);
-    if (this.jdField_a_of_type_Int == 0)
+    paramVarArgs = LayoutInflater.from(this.d).inflate(2131624151, null);
+    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131428134);
+    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131428144);
+    ((TextView)paramVarArgs.findViewById(2131428145)).setText(this.f);
+    if (this.g == 0)
     {
-      localImageView1.setImageResource(2130839471);
-      paramVarArgs.setBackgroundResource(2130839468);
-      localImageView2.setImageResource(2130850483);
+      localImageView1.setImageResource(2130839660);
+      paramVarArgs.setBackgroundResource(2130839657);
+      localImageView2.setImageResource(2130852279);
     }
     else
     {
-      localImageView1.setImageResource(2130844287);
-      paramVarArgs.setBackgroundResource(2130847386);
-      localImageView2.setImageResource(2130844443);
+      localImageView1.setImageResource(2130845604);
+      paramVarArgs.setBackgroundResource(2130849037);
+      localImageView2.setImageResource(2130845761);
       localImageView2.setOnClickListener(this);
     }
     paramVarArgs.setOnClickListener(this);
@@ -69,22 +69,17 @@ public class BigTroopExpiredTipsBar
   
   public void a(String paramString, SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.b = paramString;
+    this.f = paramSpannableString;
+    this.g = paramInt1;
+    this.h = paramInt2;
     boolean bool;
     if ((paramInt2 != 3) && (paramInt2 != 4)) {
       bool = false;
     } else {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
-  }
-  
-  public int[] a()
-  {
-    return null;
+    this.i = bool;
   }
   
   public int b()
@@ -92,23 +87,28 @@ public class BigTroopExpiredTipsBar
     return 23;
   }
   
+  public int[] c()
+  {
+    return null;
+  }
+  
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
+    int j = paramView.getId();
     Object localObject;
     QQAppInterface localQQAppInterface;
-    if (i != 2131362522)
+    if (j != 2131428133)
     {
-      if (i == 2131362533)
+      if (j == 2131428144)
       {
-        localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-        i = ((TroopManager)localObject).f(this.jdField_b_of_type_JavaLangString);
-        ((TroopManager)localObject).g(this.jdField_b_of_type_JavaLangString, i + 1);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
-        if (this.jdField_a_of_type_Boolean)
+        localObject = (TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER);
+        j = ((TroopManager)localObject).N(this.b);
+        ((TroopManager)localObject).g(this.b, j + 1);
+        this.e.c();
+        if (this.i)
         {
-          localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          if (this.jdField_b_of_type_Int == 3) {
+          localQQAppInterface = this.c;
+          if (this.h == 3) {
             localObject = "0X800A57A";
           } else {
             localObject = "0X800A57C";
@@ -122,33 +122,33 @@ public class BigTroopExpiredTipsBar
       if (QLog.isColorLevel()) {
         QLog.d("BigTroopExpiredTipsBar", 2, "click tips, jump");
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.i)
       {
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", String.format(jdField_a_of_type_JavaLangString, new Object[] { this.jdField_b_of_type_JavaLangString, "group_aio_tip" }));
+        localObject = new Intent(this.d, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", String.format(a, new Object[] { this.b, "group_aio_tip" }));
         ((Intent)localObject).putExtra("hide_operation_bar", true);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X8009E34", this.jdField_b_of_type_Int, 0, "", "", "", "");
+        this.d.startActivity((Intent)localObject);
+        ReportController.b(this.c, "dc00898", "", "", "qq_vip", "0X8009E34", this.h, 0, "", "", "", "");
       }
       else
       {
-        TroopManager.LiangGroupHelper.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, "group_aio_tip");
-        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (this.jdField_b_of_type_Int == 3) {
+        TroopManager.LiangGroupHelper.a(this.d, this.b, "group_aio_tip");
+        localQQAppInterface = this.c;
+        if (this.h == 3) {
           localObject = "0X800A57A";
         } else {
           localObject = "0X800A57C";
         }
         ReportController.b(localQQAppInterface, "dc00898", "", "", "qq_vip", (String)localObject, 1, 0, "", "", "", "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
+      this.e.c();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.BigTroopExpiredTipsBar
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/DraftArticleInfo;", "Ljava/io/Serializable;", "publishId", "", "content", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/weibo/bean/EditObject;", "Lkotlin/collections/ArrayList;", "displayItems", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "commodityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "allowMultiTweetTopic", "", "allowCommentAfterPublishConfig", "allowSaveAlbums", "(Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;ZZZ)V", "getAllowCommentAfterPublishConfig", "()Z", "setAllowCommentAfterPublishConfig", "(Z)V", "getAllowMultiTweetTopic", "setAllowMultiTweetTopic", "getAllowSaveAlbums", "setAllowSaveAlbums", "getCommodityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "setCommodityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;)V", "getContent", "()Ljava/util/ArrayList;", "setContent", "(Ljava/util/ArrayList;)V", "getDisplayItems", "setDisplayItems", "hasMedia", "getHasMedia", "mediaType", "Lcom/tencent/tkd/topicsdk/bean/MediaType;", "getMediaType", "()Lcom/tencent/tkd/topicsdk/bean/MediaType;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "getPublishId", "()Ljava/lang/String;", "setPublishId", "(Ljava/lang/String;)V", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "other", "", "hashCode", "", "toString", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/DraftArticleInfo;", "Ljava/io/Serializable;", "publishId", "", "content", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/weibo/bean/EditObject;", "Lkotlin/collections/ArrayList;", "displayItems", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "commodityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "invitedManuscriptItem", "Lcom/tencent/tkd/topicsdk/bean/InvitedManuscriptItem;", "allowMultiTweetTopic", "", "allowCommentAfterPublishConfig", "allowSaveAlbums", "isOriginalContent", "deliverType", "", "canReprint", "(Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;Lcom/tencent/tkd/topicsdk/bean/InvitedManuscriptItem;ZZZZIZ)V", "getAllowCommentAfterPublishConfig", "()Z", "setAllowCommentAfterPublishConfig", "(Z)V", "getAllowMultiTweetTopic", "setAllowMultiTweetTopic", "getAllowSaveAlbums", "setAllowSaveAlbums", "getCanReprint", "setCanReprint", "getCommodityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "setCommodityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;)V", "getContent", "()Ljava/util/ArrayList;", "setContent", "(Ljava/util/ArrayList;)V", "getDeliverType", "()I", "setDeliverType", "(I)V", "getDisplayItems", "setDisplayItems", "hasMedia", "getHasMedia", "getInvitedManuscriptItem", "()Lcom/tencent/tkd/topicsdk/bean/InvitedManuscriptItem;", "setInvitedManuscriptItem", "(Lcom/tencent/tkd/topicsdk/bean/InvitedManuscriptItem;)V", "setOriginalContent", "mediaType", "Lcom/tencent/tkd/topicsdk/bean/MediaType;", "getMediaType", "()Lcom/tencent/tkd/topicsdk/bean/MediaType;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "getPublishId", "()Ljava/lang/String;", "setPublishId", "(Ljava/lang/String;)V", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "", "hashCode", "toString", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class DraftArticleInfo
   implements Serializable
 {
@@ -20,12 +20,17 @@ public final class DraftArticleInfo
   private boolean allowCommentAfterPublishConfig;
   private boolean allowMultiTweetTopic;
   private boolean allowSaveAlbums;
+  private boolean canReprint;
   @Nullable
   private CommodityInfo commodityInfo;
   @NotNull
   private ArrayList<EditObject> content;
+  private int deliverType;
   @NotNull
   private ArrayList<DisplayItem> displayItems;
+  @Nullable
+  private InvitedManuscriptItem invitedManuscriptItem;
+  private boolean isOriginalContent;
   @Nullable
   private OriginContentInfo originContentInfo;
   @NotNull
@@ -33,25 +38,44 @@ public final class DraftArticleInfo
   
   public DraftArticleInfo()
   {
-    this(null, null, null, null, null, false, false, false, 255, null);
+    this(null, null, null, null, null, null, false, false, false, false, 0, false, 4095, null);
   }
   
-  public DraftArticleInfo(@NotNull String paramString, @NotNull ArrayList<EditObject> paramArrayList, @NotNull ArrayList<DisplayItem> paramArrayList1, @Nullable OriginContentInfo paramOriginContentInfo, @Nullable CommodityInfo paramCommodityInfo, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public DraftArticleInfo(@NotNull String paramString, @NotNull ArrayList<EditObject> paramArrayList, @NotNull ArrayList<DisplayItem> paramArrayList1, @Nullable OriginContentInfo paramOriginContentInfo, @Nullable CommodityInfo paramCommodityInfo, @Nullable InvitedManuscriptItem paramInvitedManuscriptItem, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt, boolean paramBoolean5)
   {
     this.publishId = paramString;
     this.content = paramArrayList;
     this.displayItems = paramArrayList1;
     this.originContentInfo = paramOriginContentInfo;
     this.commodityInfo = paramCommodityInfo;
+    this.invitedManuscriptItem = paramInvitedManuscriptItem;
     this.allowMultiTweetTopic = paramBoolean1;
     this.allowCommentAfterPublishConfig = paramBoolean2;
     this.allowSaveAlbums = paramBoolean3;
+    this.isOriginalContent = paramBoolean4;
+    this.deliverType = paramInt;
+    this.canReprint = paramBoolean5;
   }
   
   @NotNull
   public final String component1()
   {
     return this.publishId;
+  }
+  
+  public final boolean component10()
+  {
+    return this.isOriginalContent;
+  }
+  
+  public final int component11()
+  {
+    return this.deliverType;
+  }
+  
+  public final boolean component12()
+  {
+    return this.canReprint;
   }
   
   @NotNull
@@ -78,28 +102,34 @@ public final class DraftArticleInfo
     return this.commodityInfo;
   }
   
-  public final boolean component6()
+  @Nullable
+  public final InvitedManuscriptItem component6()
   {
-    return this.allowMultiTweetTopic;
+    return this.invitedManuscriptItem;
   }
   
   public final boolean component7()
   {
-    return this.allowCommentAfterPublishConfig;
+    return this.allowMultiTweetTopic;
   }
   
   public final boolean component8()
+  {
+    return this.allowCommentAfterPublishConfig;
+  }
+  
+  public final boolean component9()
   {
     return this.allowSaveAlbums;
   }
   
   @NotNull
-  public final DraftArticleInfo copy(@NotNull String paramString, @NotNull ArrayList<EditObject> paramArrayList, @NotNull ArrayList<DisplayItem> paramArrayList1, @Nullable OriginContentInfo paramOriginContentInfo, @Nullable CommodityInfo paramCommodityInfo, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public final DraftArticleInfo copy(@NotNull String paramString, @NotNull ArrayList<EditObject> paramArrayList, @NotNull ArrayList<DisplayItem> paramArrayList1, @Nullable OriginContentInfo paramOriginContentInfo, @Nullable CommodityInfo paramCommodityInfo, @Nullable InvitedManuscriptItem paramInvitedManuscriptItem, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt, boolean paramBoolean5)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "publishId");
     Intrinsics.checkParameterIsNotNull(paramArrayList, "content");
     Intrinsics.checkParameterIsNotNull(paramArrayList1, "displayItems");
-    return new DraftArticleInfo(paramString, paramArrayList, paramArrayList1, paramOriginContentInfo, paramCommodityInfo, paramBoolean1, paramBoolean2, paramBoolean3);
+    return new DraftArticleInfo(paramString, paramArrayList, paramArrayList1, paramOriginContentInfo, paramCommodityInfo, paramInvitedManuscriptItem, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramInt, paramBoolean5);
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -108,7 +138,7 @@ public final class DraftArticleInfo
       if ((paramObject instanceof DraftArticleInfo))
       {
         paramObject = (DraftArticleInfo)paramObject;
-        if ((Intrinsics.areEqual(this.publishId, paramObject.publishId)) && (Intrinsics.areEqual(this.content, paramObject.content)) && (Intrinsics.areEqual(this.displayItems, paramObject.displayItems)) && (Intrinsics.areEqual(this.originContentInfo, paramObject.originContentInfo)) && (Intrinsics.areEqual(this.commodityInfo, paramObject.commodityInfo)) && (this.allowMultiTweetTopic == paramObject.allowMultiTweetTopic) && (this.allowCommentAfterPublishConfig == paramObject.allowCommentAfterPublishConfig) && (this.allowSaveAlbums == paramObject.allowSaveAlbums)) {}
+        if ((Intrinsics.areEqual(this.publishId, paramObject.publishId)) && (Intrinsics.areEqual(this.content, paramObject.content)) && (Intrinsics.areEqual(this.displayItems, paramObject.displayItems)) && (Intrinsics.areEqual(this.originContentInfo, paramObject.originContentInfo)) && (Intrinsics.areEqual(this.commodityInfo, paramObject.commodityInfo)) && (Intrinsics.areEqual(this.invitedManuscriptItem, paramObject.invitedManuscriptItem)) && (this.allowMultiTweetTopic == paramObject.allowMultiTweetTopic) && (this.allowCommentAfterPublishConfig == paramObject.allowCommentAfterPublishConfig) && (this.allowSaveAlbums == paramObject.allowSaveAlbums) && (this.isOriginalContent == paramObject.isOriginalContent) && (this.deliverType == paramObject.deliverType) && (this.canReprint == paramObject.canReprint)) {}
       }
       else
       {
@@ -133,6 +163,11 @@ public final class DraftArticleInfo
     return this.allowSaveAlbums;
   }
   
+  public final boolean getCanReprint()
+  {
+    return this.canReprint;
+  }
+  
   @Nullable
   public final CommodityInfo getCommodityInfo()
   {
@@ -145,6 +180,11 @@ public final class DraftArticleInfo
     return this.content;
   }
   
+  public final int getDeliverType()
+  {
+    return this.deliverType;
+  }
+  
   @NotNull
   public final ArrayList<DisplayItem> getDisplayItems()
   {
@@ -154,6 +194,12 @@ public final class DraftArticleInfo
   public final boolean getHasMedia()
   {
     return ((Collection)this.displayItems).isEmpty() ^ true;
+  }
+  
+  @Nullable
+  public final InvitedManuscriptItem getInvitedManuscriptItem()
+  {
+    return this.invitedManuscriptItem;
   }
   
   @Nullable
@@ -187,6 +233,11 @@ public final class DraftArticleInfo
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
+  public final boolean isOriginalContent()
+  {
+    return this.isOriginalContent;
+  }
+  
   public final void setAllowCommentAfterPublishConfig(boolean paramBoolean)
   {
     this.allowCommentAfterPublishConfig = paramBoolean;
@@ -202,6 +253,11 @@ public final class DraftArticleInfo
     this.allowSaveAlbums = paramBoolean;
   }
   
+  public final void setCanReprint(boolean paramBoolean)
+  {
+    this.canReprint = paramBoolean;
+  }
+  
   public final void setCommodityInfo(@Nullable CommodityInfo paramCommodityInfo)
   {
     this.commodityInfo = paramCommodityInfo;
@@ -213,15 +269,30 @@ public final class DraftArticleInfo
     this.content = paramArrayList;
   }
   
+  public final void setDeliverType(int paramInt)
+  {
+    this.deliverType = paramInt;
+  }
+  
   public final void setDisplayItems(@NotNull ArrayList<DisplayItem> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "<set-?>");
     this.displayItems = paramArrayList;
   }
   
+  public final void setInvitedManuscriptItem(@Nullable InvitedManuscriptItem paramInvitedManuscriptItem)
+  {
+    this.invitedManuscriptItem = paramInvitedManuscriptItem;
+  }
+  
   public final void setOriginContentInfo(@Nullable OriginContentInfo paramOriginContentInfo)
   {
     this.originContentInfo = paramOriginContentInfo;
+  }
+  
+  public final void setOriginalContent(boolean paramBoolean)
+  {
+    this.isOriginalContent = paramBoolean;
   }
   
   public final void setPublishId(@NotNull String paramString)
@@ -244,19 +315,27 @@ public final class DraftArticleInfo
     localStringBuilder.append(this.originContentInfo);
     localStringBuilder.append(", commodityInfo=");
     localStringBuilder.append(this.commodityInfo);
+    localStringBuilder.append(", invitedManuscriptItem=");
+    localStringBuilder.append(this.invitedManuscriptItem);
     localStringBuilder.append(", allowMultiTweetTopic=");
     localStringBuilder.append(this.allowMultiTweetTopic);
     localStringBuilder.append(", allowCommentAfterPublishConfig=");
     localStringBuilder.append(this.allowCommentAfterPublishConfig);
     localStringBuilder.append(", allowSaveAlbums=");
     localStringBuilder.append(this.allowSaveAlbums);
+    localStringBuilder.append(", isOriginalContent=");
+    localStringBuilder.append(this.isOriginalContent);
+    localStringBuilder.append(", deliverType=");
+    localStringBuilder.append(this.deliverType);
+    localStringBuilder.append(", canReprint=");
+    localStringBuilder.append(this.canReprint);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.DraftArticleInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -8,47 +8,47 @@ import javax.microedition.khronos.egl.EGL10;
 
 public class OffscreenSurface
 {
-  private android.opengl.EGLContext jdField_a_of_type_AndroidOpenglEGLContext = null;
-  private android.opengl.EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay = null;
-  private android.opengl.EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface = null;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-  private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-  private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-  private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
+  private EGL10 a = null;
+  private javax.microedition.khronos.egl.EGLDisplay b = null;
+  private javax.microedition.khronos.egl.EGLSurface c = null;
+  private javax.microedition.khronos.egl.EGLContext d = null;
+  private android.opengl.EGLDisplay e = null;
+  private android.opengl.EGLSurface f = null;
+  private android.opengl.EGLContext g = null;
   
   private void c()
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)javax.microedition.khronos.egl.EGLContext.getEGL());
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    this.a = ((EGL10)javax.microedition.khronos.egl.EGLContext.getEGL());
+    this.b = this.a.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
     Object localObject1 = new int[2];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject1);
+    this.a.eglInitialize(this.b, (int[])localObject1);
     localObject1 = new javax.microedition.khronos.egl.EGLConfig[1];
     Object localObject2 = new int[1];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglChooseConfig(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12339, 1, 12344 }, (javax.microedition.khronos.egl.EGLConfig[])localObject1, 1, (int[])localObject2);
+    this.a.eglChooseConfig(this.b, new int[] { 12351, 12430, 12329, 0, 12339, 1, 12344 }, (javax.microedition.khronos.egl.EGLConfig[])localObject1, 1, (int[])localObject2);
     if (localObject2[0] == 0) {
       AVCoreLog.e("OffscreenSurface", "TROUBLE! No config found.");
     }
     localObject1 = localObject1[0];
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject1, new int[] { 12375, 64, 12374, 64, 12344 });
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (javax.microedition.khronos.egl.EGLConfig)localObject1, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-    localObject1 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-    localObject2 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-    javax.microedition.khronos.egl.EGLSurface localEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-    ((EGL10)localObject1).eglMakeCurrent((javax.microedition.khronos.egl.EGLDisplay)localObject2, localEGLSurface, localEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    this.c = this.a.eglCreatePbufferSurface(this.b, (javax.microedition.khronos.egl.EGLConfig)localObject1, new int[] { 12375, 64, 12374, 64, 12344 });
+    this.d = this.a.eglCreateContext(this.b, (javax.microedition.khronos.egl.EGLConfig)localObject1, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    localObject1 = this.a;
+    localObject2 = this.b;
+    javax.microedition.khronos.egl.EGLSurface localEGLSurface = this.c;
+    ((EGL10)localObject1).eglMakeCurrent((javax.microedition.khronos.egl.EGLDisplay)localObject2, localEGLSurface, localEGLSurface, this.d);
   }
   
   private void d()
   {
-    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+    EGL10 localEGL10 = this.a;
     if (localEGL10 != null)
     {
-      javax.microedition.khronos.egl.EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-      if ((localEGLDisplay != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null))
+      javax.microedition.khronos.egl.EGLDisplay localEGLDisplay = this.b;
+      if ((localEGLDisplay != null) && (this.c != null) && (this.d != null))
       {
         localEGL10.eglMakeCurrent(localEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+        this.a.eglDestroySurface(this.b, this.c);
+        this.a.eglDestroyContext(this.b, this.d);
+        this.a.eglTerminate(this.b);
       }
     }
   }
@@ -56,37 +56,37 @@ public class OffscreenSurface
   @SuppressLint({"NewApi"})
   private void e()
   {
-    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
+    this.e = EGL14.eglGetDisplay(0);
     Object localObject1 = new int[2];
-    EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject1, 0, (int[])localObject1, 1);
+    EGL14.eglInitialize(this.e, (int[])localObject1, 0, (int[])localObject1, 1);
     localObject1 = new android.opengl.EGLConfig[1];
     Object localObject2 = new int[1];
-    EGL14.eglChooseConfig(this.jdField_a_of_type_AndroidOpenglEGLDisplay, new int[] { 12351, 12430, 12329, 0, 12352, 4, 12339, 1, 12344 }, 0, (android.opengl.EGLConfig[])localObject1, 0, 1, (int[])localObject2, 0);
+    EGL14.eglChooseConfig(this.e, new int[] { 12351, 12430, 12329, 0, 12352, 4, 12339, 1, 12344 }, 0, (android.opengl.EGLConfig[])localObject1, 0, 1, (int[])localObject2, 0);
     if ((localObject2[0] == 0) && (AVCoreLog.isColorLevel())) {
       AVCoreLog.i("OffscreenSurface", "TROUBLE! No config found.");
     }
     localObject1 = localObject1[0];
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject1, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
-    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (android.opengl.EGLConfig)localObject1, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
-    localObject1 = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
-    localObject2 = this.jdField_a_of_type_AndroidOpenglEGLSurface;
-    EGL14.eglMakeCurrent((android.opengl.EGLDisplay)localObject1, (android.opengl.EGLSurface)localObject2, (android.opengl.EGLSurface)localObject2, this.jdField_a_of_type_AndroidOpenglEGLContext);
+    this.f = EGL14.eglCreatePbufferSurface(this.e, (android.opengl.EGLConfig)localObject1, new int[] { 12375, 64, 12374, 64, 12344 }, 0);
+    this.g = EGL14.eglCreateContext(this.e, (android.opengl.EGLConfig)localObject1, EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
+    localObject1 = this.e;
+    localObject2 = this.f;
+    EGL14.eglMakeCurrent((android.opengl.EGLDisplay)localObject1, (android.opengl.EGLSurface)localObject2, (android.opengl.EGLSurface)localObject2, this.g);
   }
   
   @SuppressLint({"NewApi"})
-  private void g()
+  private void f()
   {
-    android.opengl.EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
-    if ((localEGLDisplay != null) && (this.jdField_a_of_type_AndroidOpenglEGLSurface != null) && (this.jdField_a_of_type_AndroidOpenglEGLContext != null))
+    android.opengl.EGLDisplay localEGLDisplay = this.e;
+    if ((localEGLDisplay != null) && (this.f != null) && (this.g != null))
     {
       EGL14.eglMakeCurrent(localEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
-      EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface);
-      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
-      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
+      EGL14.eglDestroySurface(this.e, this.f);
+      EGL14.eglDestroyContext(this.e, this.g);
+      EGL14.eglTerminate(this.e);
     }
   }
   
-  void b()
+  void g()
   {
     if (Build.VERSION.SDK_INT >= 17)
     {
@@ -96,11 +96,11 @@ public class OffscreenSurface
     c();
   }
   
-  public void f()
+  public void n()
   {
     if (Build.VERSION.SDK_INT >= 17)
     {
-      g();
+      f();
       return;
     }
     d();

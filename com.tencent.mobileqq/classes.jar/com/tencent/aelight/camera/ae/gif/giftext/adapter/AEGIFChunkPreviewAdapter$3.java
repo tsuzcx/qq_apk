@@ -21,25 +21,25 @@ class AEGIFChunkPreviewAdapter$3
     }
     else
     {
-      str = HardCodeUtil.a(2131700185);
+      str = HardCodeUtil.a(2131898229);
     }
-    paramString = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
+    paramString = this.a.getLayoutParams();
     int i;
     if (str.indexOf('\n') > 0) {
-      i = AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter) * 3 / 10;
+      i = AEGIFChunkPreviewAdapter.b(this.b) * 3 / 10;
     } else {
-      i = AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter) * 11 / 50;
+      i = AEGIFChunkPreviewAdapter.b(this.b) * 11 / 50;
     }
     paramString.height = i;
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setTextSize(DisplayUtil.c(AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter), 23.0F));
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(DisplayUtil.a(AEGIFChunkPreviewAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFChunkPreviewAdapter), 2.0F));
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setText(str);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFOutlineTextView.setLayoutParams(paramString);
+    this.a.setTextSize(DisplayUtil.c(AEGIFChunkPreviewAdapter.c(this.b), 23.0F));
+    this.a.setOutlineWidth(DisplayUtil.a(AEGIFChunkPreviewAdapter.c(this.b), 2.0F));
+    this.a.setText(str);
+    this.a.setLayoutParams(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFChunkPreviewAdapter.3
  * JD-Core Version:    0.7.0.1
  */

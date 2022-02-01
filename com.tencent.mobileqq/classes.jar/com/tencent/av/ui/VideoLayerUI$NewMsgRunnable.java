@@ -12,20 +12,20 @@ class VideoLayerUI$NewMsgRunnable
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.Y == null) {
       return;
     }
-    if (VideoLayerUI.a(this.this$0).size() > 0)
+    if (VideoLayerUI.g(this.this$0).size() > 0)
     {
-      this.this$0.a.a().removeCallbacks(VideoLayerUI.a(this.this$0));
-      this.this$0.a.a().removeCallbacks(VideoLayerUI.b(this.this$0));
-      RecvMsg localRecvMsg = (RecvMsg)VideoLayerUI.a(this.this$0).remove(0);
+      this.this$0.Y.a().removeCallbacks(VideoLayerUI.h(this.this$0));
+      this.this$0.Y.a().removeCallbacks(VideoLayerUI.i(this.this$0));
+      RecvMsg localRecvMsg = (RecvMsg)VideoLayerUI.g(this.this$0).remove(0);
       VideoLayerUI.a(this.this$0, localRecvMsg);
-      this.this$0.a.a().postDelayed(VideoLayerUI.a(this.this$0), 3000L);
-      this.this$0.a.a().postDelayed(VideoLayerUI.b(this.this$0), 3000L);
+      this.this$0.Y.a().postDelayed(VideoLayerUI.h(this.this$0), 3000L);
+      this.this$0.Y.a().postDelayed(VideoLayerUI.i(this.this$0), 3000L);
       return;
     }
-    this.this$0.a.a().removeCallbacks(VideoLayerUI.a(this.this$0));
+    this.this$0.Y.a().removeCallbacks(VideoLayerUI.h(this.this$0));
   }
 }
 

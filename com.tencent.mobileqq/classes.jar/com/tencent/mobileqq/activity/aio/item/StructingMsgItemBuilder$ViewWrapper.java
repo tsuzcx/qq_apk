@@ -6,35 +6,35 @@ import java.lang.ref.SoftReference;
 
 class StructingMsgItemBuilder$ViewWrapper
 {
-  String jdField_a_of_type_JavaLangString;
-  SoftReference<View> jdField_a_of_type_JavaLangRefSoftReference;
-  SoftReference<ViewGroup> b;
+  String a;
+  SoftReference<View> b;
+  SoftReference<ViewGroup> c;
   
   public StructingMsgItemBuilder$ViewWrapper(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
-    this.b = new SoftReference(paramViewGroup);
+    this.a = paramString;
+    this.b = new SoftReference(paramView);
+    this.c = new SoftReference(paramViewGroup);
   }
   
   public View a()
   {
-    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-  }
-  
-  public ViewGroup a()
-  {
-    return (ViewGroup)this.b.get();
+    return (View)this.b.get();
   }
   
   public void a(ViewGroup paramViewGroup)
   {
-    this.b = new SoftReference(paramViewGroup);
+    this.c = new SoftReference(paramViewGroup);
+  }
+  
+  public ViewGroup b()
+  {
+    return (ViewGroup)this.c.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.ViewWrapper
  * JD-Core Version:    0.7.0.1
  */

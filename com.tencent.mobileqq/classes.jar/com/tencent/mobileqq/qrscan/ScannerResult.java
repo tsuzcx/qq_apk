@@ -16,122 +16,63 @@ public class ScannerResult
 {
   public static final Parcelable.Creator<ScannerResult> CREATOR = new ScannerResult.1();
   public ArrayList<QBarResult> a;
-  public boolean a;
   public ArrayList<QMiniResult> b;
-  public boolean b;
+  public boolean c;
+  public boolean d;
   
   public ScannerResult()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    this.c = false;
+    this.d = false;
   }
   
   protected ScannerResult(Parcel paramParcel)
   {
     boolean bool2 = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(QBarResult.CREATOR);
-    this.jdField_b_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(QMiniResult.CREATOR);
+    this.c = false;
+    this.d = false;
+    this.a = paramParcel.createTypedArrayList(QBarResult.CREATOR);
+    this.b = paramParcel.createTypedArrayList(QMiniResult.CREATOR);
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.c = bool1;
     boolean bool1 = bool2;
     if (paramParcel.readByte() != 0) {
       bool1 = true;
     }
-    this.jdField_b_of_type_Boolean = bool1;
-  }
-  
-  public int a()
-  {
-    int i;
-    if (d()) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    int j = i;
-    if (c()) {
-      j = i | 0x2;
-    }
-    return j;
-  }
-  
-  public Pair<StringBuilder, StringBuilder> a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-    {
-      localObject = new StringBuilder();
-      StringBuilder localStringBuilder = new StringBuilder();
-      ((StringBuilder)localObject).append(((QBarResult)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(((QBarResult)this.jdField_a_of_type_JavaUtilArrayList.get(0)).b);
-      return new Pair(localStringBuilder, localObject);
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
-      return ((QMiniResult)this.jdField_b_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (!b()) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (((ArrayList)localObject).size() > 1))
-    {
-      localObject = (QBarResult)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-    }
-    if ((d()) && (c())) {
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-    }
-    localObject = this.jdField_b_of_type_JavaUtilArrayList;
-    if ((localObject != null) && (((ArrayList)localObject).size() > 1))
-    {
-      localObject = (QMiniResult)this.jdField_b_of_type_JavaUtilArrayList.get(0);
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
-    }
+    this.d = bool1;
   }
   
   public void a(SparseArray<Object> paramSparseArray)
   {
-    Object localObject = a();
+    Object localObject = b();
     if (localObject != null) {
       paramSparseArray.put(1, localObject);
     }
-    localObject = a();
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+    localObject = c();
+    String str = d();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
       paramSparseArray.put(2, localObject);
+      paramSparseArray.put(1001, str);
     }
   }
   
-  public void a(String paramString)
+  public void a(String paramString, int paramInt)
   {
-    a(paramString, new Rect(), 0.0F, 0, 0);
+    a(paramString, new Rect(), 0.0F, 0, 0, paramInt);
   }
   
-  public void a(String paramString, Rect paramRect, float paramFloat, int paramInt1, int paramInt2)
+  public void a(String paramString, Rect paramRect, float paramFloat, int paramInt1, int paramInt2, int paramInt3)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
     QMiniResult localQMiniResult = new QMiniResult();
-    localQMiniResult.jdField_a_of_type_JavaLangString = paramString;
+    localQMiniResult.b = paramString;
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
       float f2 = paramRect.left;
@@ -139,26 +80,31 @@ public class ScannerResult
       f2 = f2 * 1.0F / f1;
       float f3 = paramRect.top;
       float f4 = paramInt2;
-      localQMiniResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f2, f3 * 1.0F / f4, paramRect.right * 1.0F / f1, paramRect.bottom * 1.0F / f4);
+      localQMiniResult.c = new RectF(f2, f3 * 1.0F / f4, paramRect.right * 1.0F / f1, paramRect.bottom * 1.0F / f4);
     }
     else
     {
-      localQMiniResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+      localQMiniResult.c = new RectF();
     }
-    localQMiniResult.jdField_a_of_type_Float = paramFloat;
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    localQMiniResult.a = paramFloat;
+    if (this.b == null) {
+      this.b = new ArrayList();
     }
-    this.jdField_b_of_type_JavaUtilArrayList.add(localQMiniResult);
+    if (paramInt3 == 3) {
+      localQMiniResult.d = "wx";
+    } else if (paramInt3 == 2) {
+      localQMiniResult.d = "qq";
+    }
+    this.b.add(localQMiniResult);
   }
   
   public boolean a()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject1 = this.a;
     Object localObject2;
     if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = this.a.iterator();
       j = 0;
       for (;;)
       {
@@ -167,23 +113,23 @@ public class ScannerResult
           break;
         }
         localObject2 = (QBarResult)((Iterator)localObject1).next();
-        if ((((QBarResult)localObject2).jdField_a_of_type_AndroidGraphicsRectF != null) && (!((QBarResult)localObject2).jdField_a_of_type_AndroidGraphicsRectF.isEmpty())) {
+        if ((((QBarResult)localObject2).d != null) && (!((QBarResult)localObject2).d.isEmpty())) {
           j += 1;
         }
       }
     }
     int i = 0;
-    localObject1 = this.jdField_b_of_type_JavaUtilArrayList;
+    localObject1 = this.b;
     int j = i;
     if (localObject1 != null)
     {
       j = i;
       if (!((ArrayList)localObject1).isEmpty())
       {
-        if (!this.jdField_a_of_type_Boolean) {
+        if (!this.c) {
           return false;
         }
-        localObject1 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        localObject1 = this.b.iterator();
         for (;;)
         {
           j = i;
@@ -191,7 +137,7 @@ public class ScannerResult
             break;
           }
           localObject2 = (QMiniResult)((Iterator)localObject1).next();
-          if ((((QMiniResult)localObject2).jdField_a_of_type_AndroidGraphicsRectF != null) && (!((QMiniResult)localObject2).jdField_a_of_type_AndroidGraphicsRectF.isEmpty())) {
+          if ((((QMiniResult)localObject2).c != null) && (!((QMiniResult)localObject2).c.isEmpty())) {
             i += 1;
           }
         }
@@ -200,21 +146,36 @@ public class ScannerResult
     return j > 1;
   }
   
-  public boolean b()
+  public Pair<StringBuilder, StringBuilder> b()
   {
-    return (c()) || (d());
+    Object localObject = this.a;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+    {
+      localObject = new StringBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
+      ((StringBuilder)localObject).append(((QBarResult)this.a.get(0)).b);
+      localStringBuilder.append(((QBarResult)this.a.get(0)).c);
+      return new Pair(localStringBuilder, localObject);
+    }
+    return null;
   }
   
-  public boolean c()
+  public String c()
   {
-    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-    return (localArrayList != null) && (!localArrayList.isEmpty());
+    ArrayList localArrayList = this.b;
+    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+      return ((QMiniResult)this.b.get(0)).b;
+    }
+    return null;
   }
   
-  public boolean d()
+  public String d()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    return (localArrayList != null) && (!localArrayList.isEmpty());
+    ArrayList localArrayList = this.b;
+    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+      return ((QMiniResult)this.b.get(0)).d;
+    }
+    return null;
   }
   
   public int describeContents()
@@ -222,38 +183,94 @@ public class ScannerResult
     return 0;
   }
   
+  public int e()
+  {
+    int i;
+    if (h()) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j = i;
+    if (g()) {
+      j = i | 0x2;
+    }
+    return j;
+  }
+  
+  public boolean f()
+  {
+    return (g()) || (h());
+  }
+  
+  public boolean g()
+  {
+    ArrayList localArrayList = this.b;
+    return (localArrayList != null) && (!localArrayList.isEmpty());
+  }
+  
+  public boolean h()
+  {
+    ArrayList localArrayList = this.a;
+    return (localArrayList != null) && (!localArrayList.isEmpty());
+  }
+  
+  public void i()
+  {
+    if (!f()) {
+      return;
+    }
+    Object localObject = this.a;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 1))
+    {
+      localObject = (QBarResult)this.a.get(0);
+      this.a.clear();
+      this.a.add(localObject);
+    }
+    if ((h()) && (g())) {
+      this.b.clear();
+    }
+    localObject = this.b;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 1))
+    {
+      localObject = (QMiniResult)this.b.get(0);
+      this.b.clear();
+      this.b.add(localObject);
+    }
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ScannerResult{hasQrCode:");
-    localStringBuilder.append(d());
+    localStringBuilder.append(h());
     localStringBuilder.append(" hasMiniCode:");
-    localStringBuilder.append(c());
+    localStringBuilder.append(g());
     localStringBuilder.append(" maybeMulti:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" hasMultiResult:");
     localStringBuilder.append(a());
     localStringBuilder.append(" qMiniUseAIDetect:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("\nqBarResults=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\nqMiniResults=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeTypedList(this.jdField_b_of_type_JavaUtilArrayList);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
+    paramParcel.writeTypedList(this.a);
+    paramParcel.writeTypedList(this.b);
+    paramParcel.writeByte((byte)this.c);
+    paramParcel.writeByte((byte)this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.ScannerResult
  * JD-Core Version:    0.7.0.1
  */

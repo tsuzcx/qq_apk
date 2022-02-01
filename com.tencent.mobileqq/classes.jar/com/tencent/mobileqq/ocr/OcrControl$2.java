@@ -10,14 +10,14 @@ class OcrControl$2
   
   public void run()
   {
-    if (((ARCloudReqInfo)this.this$0.a.get(this.a) != null) && (OcrControl.a(this.this$0) != null)) {
+    if (((ARCloudReqInfo)this.this$0.c.get(this.a) != null) && (OcrControl.a(this.this$0) != null)) {
       OcrControl.a(this.this$0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.2
  * JD-Core Version:    0.7.0.1
  */

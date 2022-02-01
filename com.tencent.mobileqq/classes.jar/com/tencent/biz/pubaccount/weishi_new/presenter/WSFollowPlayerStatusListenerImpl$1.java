@@ -11,13 +11,13 @@ class WSFollowPlayerStatusListenerImpl$1
   
   public void run()
   {
-    WSFollowBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, this.jdField_a_of_type_Boolean);
-    WSReportDc00898.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, this.jdField_a_of_type_Boolean);
+    WSFollowBeaconReport.a(this.a, this.b);
+    WSReportDc00898.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSFollowPlayerStatusListenerImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class BaseChatPie$28
   
   public void onClick(View paramView)
   {
-    MultiMsgManager.a().a = 0;
-    this.a.a.a(this.a.a(), this.a.a().getIntent());
-    this.a.b(1);
+    MultiMsgManager.a().e = 0;
+    this.a.h.a(this.a.aX(), this.a.aX().getIntent());
+    this.a.f(1);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.28
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,10 @@ import com.tencent.image.URLImageView;
 public class PressDarkImageView
   extends URLImageView
 {
-  public static final int[] a;
-  public float a;
-  public int a;
-  public float b = 0.5F;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211 };
-  }
+  public static final int[] a = { 16843210, 16843211 };
+  public float b = 1.0F;
+  public float c = 0.5F;
+  public int d = 0;
   
   public PressDarkImageView(Context paramContext)
   {
@@ -35,29 +30,27 @@ public class PressDarkImageView
   public PressDarkImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = 0;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
-    this.jdField_a_of_type_Float = paramContext.getFloat(0, this.jdField_a_of_type_Float);
-    this.b = paramContext.getFloat(1, this.b);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a);
+    this.b = paramContext.getFloat(0, this.b);
+    this.c = paramContext.getFloat(1, this.c);
     paramContext.recycle();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.d == 1)
     {
       super.clearColorFilter();
       return;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      super.setImageAlpha((int)(this.jdField_a_of_type_Float * 255.0F));
+      super.setImageAlpha((int)(this.b * 255.0F));
       return;
     }
     if (Build.VERSION.SDK_INT >= 11)
     {
-      super.setAlpha(this.jdField_a_of_type_Float);
+      super.setAlpha(this.b);
       return;
     }
     super.clearColorFilter();
@@ -68,19 +61,19 @@ public class PressDarkImageView
     super.drawableStateChanged();
     if (isPressed())
     {
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.d == 1)
       {
         super.setColorFilter(436207616);
         return;
       }
       if (Build.VERSION.SDK_INT >= 16)
       {
-        super.setImageAlpha((int)(this.b * 255.0F));
+        super.setImageAlpha((int)(this.c * 255.0F));
         return;
       }
       if (Build.VERSION.SDK_INT >= 11)
       {
-        super.setAlpha(this.b);
+        super.setAlpha(this.c);
         return;
       }
       super.setColorFilter(-3355444, PorterDuff.Mode.MULTIPLY);

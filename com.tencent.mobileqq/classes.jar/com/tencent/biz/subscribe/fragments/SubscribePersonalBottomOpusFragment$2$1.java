@@ -17,7 +17,7 @@ class SubscribePersonalBottomOpusFragment$2$1
   {
     if ((paramBoolean) && (paramStGetMainPageRsp != null))
     {
-      paramBaseRequest = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
+      paramBaseRequest = this.a;
       paramString = paramStGetMainPageRsp.vecFeed.get();
       COMM.StCommonExt localStCommonExt = paramStGetMainPageRsp.extInfo;
       int i = paramStGetMainPageRsp.isFinish.get();

@@ -52,12 +52,12 @@ public class MsgBackupMultiMsgProcessor
     return localArrayList;
   }
   
-  public static String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  public static String c(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
   {
     if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
       try
       {
-        paramMessageRecord = MsgBackupUtil.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
+        paramMessageRecord = MsgBackupUtil.d(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
         return paramMessageRecord;
       }
       catch (JSONException paramMessageRecord)
@@ -71,25 +71,9 @@ public class MsgBackupMultiMsgProcessor
   public ResDownloadObject a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
   {
     ResDownloadObject localResDownloadObject = new ResDownloadObject();
-    localResDownloadObject.jdField_a_of_type_JavaLangString = a(paramMessageRecord, paramMsgBackupResEntity);
-    localResDownloadObject.jdField_a_of_type_Boolean = true;
+    localResDownloadObject.b = b(paramMessageRecord, paramMsgBackupResEntity);
+    localResDownloadObject.a = true;
     return localResDownloadObject;
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = MsgBackupUtil.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return "";
   }
   
   public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
@@ -107,11 +91,27 @@ public class MsgBackupMultiMsgProcessor
     return paramMsgBackupResEntity.msgType == 4;
   }
   
+  public String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
+      try
+      {
+        paramMessageRecord = MsgBackupUtil.d(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
+        return paramMessageRecord;
+      }
+      catch (JSONException paramMessageRecord)
+      {
+        paramMessageRecord.printStackTrace();
+      }
+    }
+    return "";
+  }
+  
   public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupMultiMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

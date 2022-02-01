@@ -29,10 +29,10 @@ class DateStrings
     if (paramLong2 == null) {
       return Pair.create(a(paramLong1.longValue(), paramSimpleDateFormat), null);
     }
-    Calendar localCalendar1 = UtcDates.a();
-    Calendar localCalendar2 = UtcDates.b();
+    Calendar localCalendar1 = UtcDates.b();
+    Calendar localCalendar2 = UtcDates.c();
     localCalendar2.setTimeInMillis(paramLong1.longValue());
-    Calendar localCalendar3 = UtcDates.b();
+    Calendar localCalendar3 = UtcDates.c();
     localCalendar3.setTimeInMillis(paramLong2.longValue());
     if (paramSimpleDateFormat != null)
     {
@@ -57,8 +57,8 @@ class DateStrings
   
   static String a(long paramLong, @Nullable SimpleDateFormat paramSimpleDateFormat)
   {
-    Calendar localCalendar1 = UtcDates.a();
-    Calendar localCalendar2 = UtcDates.b();
+    Calendar localCalendar1 = UtcDates.b();
+    Calendar localCalendar2 = UtcDates.c();
     localCalendar2.setTimeInMillis(paramLong);
     if (paramSimpleDateFormat != null) {
       return paramSimpleDateFormat.format(new Date(paramLong));
@@ -74,7 +74,7 @@ class DateStrings
     if (Build.VERSION.SDK_INT >= 24) {
       return UtcDates.a(paramLocale).format(new Date(paramLong));
     }
-    return UtcDates.a(paramLocale).format(new Date(paramLong));
+    return UtcDates.e(paramLocale).format(new Date(paramLong));
   }
   
   static String a(Context paramContext, long paramLong)
@@ -92,7 +92,7 @@ class DateStrings
     if (Build.VERSION.SDK_INT >= 24) {
       return UtcDates.b(paramLocale).format(new Date(paramLong));
     }
-    return UtcDates.b(paramLocale).format(new Date(paramLong));
+    return UtcDates.f(paramLocale).format(new Date(paramLong));
   }
   
   static String c(long paramLong)
@@ -105,7 +105,7 @@ class DateStrings
     if (Build.VERSION.SDK_INT >= 24) {
       return UtcDates.c(paramLocale).format(new Date(paramLong));
     }
-    return UtcDates.c(paramLocale).format(new Date(paramLong));
+    return UtcDates.g(paramLocale).format(new Date(paramLong));
   }
   
   static String d(long paramLong)
@@ -118,7 +118,7 @@ class DateStrings
     if (Build.VERSION.SDK_INT >= 24) {
       return UtcDates.d(paramLocale).format(new Date(paramLong));
     }
-    return UtcDates.c(paramLocale).format(new Date(paramLong));
+    return UtcDates.g(paramLocale).format(new Date(paramLong));
   }
   
   static String e(long paramLong)
@@ -128,7 +128,7 @@ class DateStrings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.DateStrings
  * JD-Core Version:    0.7.0.1
  */

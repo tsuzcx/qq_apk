@@ -25,77 +25,77 @@ import org.jetbrains.annotations.Nullable;
 public class VipFunCallManagerImpl
   implements IVipFunCallManager, Manager
 {
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener;
-  private IPCDownloadListener jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  AppRuntime a;
+  DownloadListener b;
+  private IPCDownloadListener c;
   
   /* Error */
   public VipFunCallManagerImpl()
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 20	java/lang/Object:<init>	()V
+    //   1: invokespecial 22	java/lang/Object:<init>	()V
     //   4: aconst_null
     //   5: astore_2
     //   6: aconst_null
     //   7: astore_1
     //   8: aload_0
     //   9: aconst_null
-    //   10: putfield 22	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener	Lcom/tencent/mobileqq/vip/IPCDownloadListener;
+    //   10: putfield 24	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:c	Lcom/tencent/mobileqq/vip/IPCDownloadListener;
     //   13: aload_0
-    //   14: new 24	com/tencent/mobileqq/vipav/VipFunCallManagerImpl$1
+    //   14: new 26	com/tencent/mobileqq/vipav/VipFunCallManagerImpl$1
     //   17: dup
     //   18: aload_0
-    //   19: ldc 26
-    //   21: ldc 28
-    //   23: invokespecial 31	com/tencent/mobileqq/vipav/VipFunCallManagerImpl$1:<init>	(Lcom/tencent/mobileqq/vipav/VipFunCallManagerImpl;Ljava/lang/String;Ljava/lang/String;)V
-    //   26: putfield 33	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:jdField_a_of_type_ComTencentMobileqqVipDownloadListener	Lcom/tencent/mobileqq/vip/DownloadListener;
+    //   19: ldc 28
+    //   21: ldc 30
+    //   23: invokespecial 33	com/tencent/mobileqq/vipav/VipFunCallManagerImpl$1:<init>	(Lcom/tencent/mobileqq/vipav/VipFunCallManagerImpl;Ljava/lang/String;Ljava/lang/String;)V
+    //   26: putfield 35	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:b	Lcom/tencent/mobileqq/vip/DownloadListener;
     //   29: aload_0
-    //   30: invokestatic 38	com/tencent/mobileqq/vas/util/VasUtil:a	()Lmqq/app/AppRuntime;
-    //   33: putfield 40	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   36: new 42	java/io/File
+    //   30: invokestatic 40	com/tencent/mobileqq/vas/util/VasUtil:c	()Lmqq/app/AppRuntime;
+    //   33: putfield 42	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:a	Lmqq/app/AppRuntime;
+    //   36: new 44	java/io/File
     //   39: dup
-    //   40: invokestatic 47	com/tencent/mobileqq/vas/vipav/api/VipFunCallUtil:a	()Ljava/lang/String;
-    //   43: invokespecial 50	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: invokestatic 49	com/tencent/mobileqq/vas/vipav/api/VipFunCallUtil:a	()Ljava/lang/String;
+    //   43: invokespecial 52	java/io/File:<init>	(Ljava/lang/String;)V
     //   46: astore_3
     //   47: aload_3
-    //   48: invokevirtual 54	java/io/File:exists	()Z
+    //   48: invokevirtual 56	java/io/File:exists	()Z
     //   51: ifne +8 -> 59
     //   54: aload_3
-    //   55: invokevirtual 57	java/io/File:mkdirs	()Z
+    //   55: invokevirtual 59	java/io/File:mkdirs	()Z
     //   58: pop
     //   59: aload_0
-    //   60: invokespecial 59	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:a	()Z
+    //   60: invokespecial 61	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:a	()Z
     //   63: ifne +107 -> 170
-    //   66: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   66: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   69: ifeq +11 -> 80
-    //   72: ldc 66
+    //   72: ldc 68
     //   74: iconst_2
-    //   75: ldc 68
-    //   77: invokestatic 72	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   75: ldc 70
+    //   77: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   80: aload_0
-    //   81: getfield 40	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   84: invokevirtual 78	mqq/app/AppRuntime:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   87: invokevirtual 84	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
-    //   90: ldc 86
-    //   92: invokevirtual 92	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   81: getfield 42	com/tencent/mobileqq/vipav/VipFunCallManagerImpl:a	Lmqq/app/AppRuntime;
+    //   84: invokevirtual 80	mqq/app/AppRuntime:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   87: invokevirtual 86	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
+    //   90: ldc 88
+    //   92: invokevirtual 94	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   95: astore_3
     //   96: aload_3
     //   97: astore_1
     //   98: aload_3
     //   99: astore_2
-    //   100: invokestatic 47	com/tencent/mobileqq/vas/vipav/api/VipFunCallUtil:a	()Ljava/lang/String;
-    //   103: new 94	java/lang/StringBuffer
+    //   100: invokestatic 49	com/tencent/mobileqq/vas/vipav/api/VipFunCallUtil:a	()Ljava/lang/String;
+    //   103: new 96	java/lang/StringBuffer
     //   106: dup
-    //   107: ldc 96
-    //   109: invokespecial 97	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
+    //   107: ldc 98
+    //   109: invokespecial 99	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
     //   112: aload_3
-    //   113: invokestatic 103	com/tencent/mobileqq/utils/FileUtils:writeFile	(Ljava/lang/String;Ljava/lang/StringBuffer;Ljava/io/InputStream;)Z
+    //   113: invokestatic 105	com/tencent/mobileqq/utils/FileUtils:writeFile	(Ljava/lang/String;Ljava/lang/StringBuffer;Ljava/io/InputStream;)Z
     //   116: pop
     //   117: aload_3
     //   118: ifnull +52 -> 170
     //   121: aload_3
-    //   122: invokevirtual 108	java/io/InputStream:close	()V
+    //   122: invokevirtual 110	java/io/InputStream:close	()V
     //   125: return
     //   126: astore_2
     //   127: goto +25 -> 152
@@ -103,24 +103,24 @@ public class VipFunCallManagerImpl
     //   131: aload_2
     //   132: astore_1
     //   133: aload_3
-    //   134: invokevirtual 111	java/io/IOException:printStackTrace	()V
+    //   134: invokevirtual 113	java/io/IOException:printStackTrace	()V
     //   137: aload_2
     //   138: ifnull +32 -> 170
     //   141: aload_2
-    //   142: invokevirtual 108	java/io/InputStream:close	()V
+    //   142: invokevirtual 110	java/io/InputStream:close	()V
     //   145: return
     //   146: astore_1
     //   147: aload_1
-    //   148: invokevirtual 112	java/lang/Exception:printStackTrace	()V
+    //   148: invokevirtual 114	java/lang/Exception:printStackTrace	()V
     //   151: return
     //   152: aload_1
     //   153: ifnull +15 -> 168
     //   156: aload_1
-    //   157: invokevirtual 108	java/io/InputStream:close	()V
+    //   157: invokevirtual 110	java/io/InputStream:close	()V
     //   160: goto +8 -> 168
     //   163: astore_1
     //   164: aload_1
-    //   165: invokevirtual 112	java/lang/Exception:printStackTrace	()V
+    //   165: invokevirtual 114	java/lang/Exception:printStackTrace	()V
     //   168: aload_2
     //   169: athrow
     //   170: return
@@ -202,7 +202,7 @@ public class VipFunCallManagerImpl
   {
     AppRuntime localAppRuntime = paramAppRuntime;
     if (paramAppRuntime == null) {
-      localAppRuntime = VasUtil.a();
+      localAppRuntime = VasUtil.c();
     }
     if (localAppRuntime == null)
     {
@@ -285,7 +285,7 @@ public class VipFunCallManagerImpl
   
   private void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+    Object localObject = this.a;
     boolean bool = false;
     if (localObject != null) {
       bool = VipFunCallUtil.a(((AppRuntime)localObject).getApp(), "VipFunCallManager", false);
@@ -361,7 +361,7 @@ public class VipFunCallManagerImpl
   private boolean a(DownloadTask paramDownloadTask)
   {
     boolean bool;
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0)) {
+    if ((paramDownloadTask.e() == 3) && (paramDownloadTask.c == 0)) {
       bool = true;
     } else {
       bool = false;
@@ -370,9 +370,9 @@ public class VipFunCallManagerImpl
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("mDownloadListener onDone fail, task.getStatus():");
-      localStringBuilder.append(paramDownloadTask.a());
+      localStringBuilder.append(paramDownloadTask.e());
       localStringBuilder.append(", task.errCode:");
-      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+      localStringBuilder.append(paramDownloadTask.c);
       QLog.e("VipFunCallManager", 1, localStringBuilder.toString());
     }
     return bool;
@@ -380,12 +380,12 @@ public class VipFunCallManagerImpl
   
   public boolean downloadFCSuit(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, IPCDownloadListener paramIPCDownloadListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener = paramIPCDownloadListener;
-    int i = VipFunCallUtil.a();
+    this.c = paramIPCDownloadListener;
+    int i = VipFunCallUtil.c();
     startDownload(paramInt1, 9, paramBoolean, paramInt3);
     startDownload(paramInt1, i, paramBoolean, paramInt3);
     if (paramInt2 != 0) {
-      ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).colorRingDownload(this.jdField_a_of_type_MqqAppAppRuntime, paramInt2, paramBoolean, paramInt3, paramIPCDownloadListener);
+      ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).colorRingDownload(this.a, paramInt2, paramBoolean, paramInt3, paramIPCDownloadListener);
     }
     if (i == 6) {
       startDownload(paramInt1, 7, false, 0);
@@ -395,7 +395,7 @@ public class VipFunCallManagerImpl
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener = null;
+    this.c = null;
   }
   
   public void setFunCallData(AppRuntime paramAppRuntime, int paramInt1, String paramString, int paramInt2, int paramInt3, List<Long> paramList, long paramLong)
@@ -452,7 +452,7 @@ public class VipFunCallManagerImpl
     if (paramInt1 == 0) {
       return;
     }
-    String str1 = VipFunCallUtil.b(this.jdField_a_of_type_MqqAppAppRuntime, paramInt1, paramInt2, null);
+    String str1 = VipFunCallUtil.b(this.a, paramInt1, paramInt2, null);
     if (TextUtils.isEmpty(str1))
     {
       localObject1 = new StringBuilder();
@@ -467,7 +467,7 @@ public class VipFunCallManagerImpl
       QLog.e("VipFunCallManager", 1, ((StringBuilder)localObject1).toString());
       return;
     }
-    String str2 = VipFunCallUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, paramInt1, paramInt2, null);
+    String str2 = VipFunCallUtil.a(this.a, paramInt1, paramInt2, null);
     if (TextUtils.isEmpty(str2))
     {
       localObject1 = new StringBuilder();
@@ -482,13 +482,13 @@ public class VipFunCallManagerImpl
       QLog.e("VipFunCallManager", 1, ((StringBuilder)localObject1).toString());
       return;
     }
-    Object localObject2 = new VipFunCallManagerImpl.OnDownLoadDone(this, paramInt1, paramInt2, paramBoolean, paramInt3, str1, str2).a();
+    Object localObject2 = new VipFunCallManagerImpl.OnDownLoadDone(this, paramInt1, paramInt2, paramBoolean, paramInt3, str1, str2).e();
     if (((VipFunCallManagerImpl.OnDownLoadDone)localObject2).a()) {
       return;
     }
-    Object localObject1 = ((VipFunCallManagerImpl.OnDownLoadDone)localObject2).a();
-    paramInt3 = ((VipFunCallManagerImpl.OnDownLoadDone)localObject2).a();
-    localObject2 = ((VipFunCallManagerImpl.OnDownLoadDone)localObject2).a();
+    Object localObject1 = ((VipFunCallManagerImpl.OnDownLoadDone)localObject2).b();
+    paramInt3 = ((VipFunCallManagerImpl.OnDownLoadDone)localObject2).c();
+    localObject2 = ((VipFunCallManagerImpl.OnDownLoadDone)localObject2).d();
     if (paramInt3 != 0)
     {
       localObject1 = new StringBuilder();
@@ -497,22 +497,22 @@ public class VipFunCallManagerImpl
       localObject1 = new File(((StringBuilder)localObject1).toString());
     }
     localObject1 = new DownloadTask(str1, (File)localObject1);
-    ((DownloadTask)localObject1).jdField_a_of_type_Byte = 1;
-    ((DownloadTask)localObject1).jdField_e_of_type_Long = 5242880L;
-    ((DownloadTask)localObject1).jdField_e_of_type_JavaLangString = VipFunCallConstants.b;
+    ((DownloadTask)localObject1).O = 1;
+    ((DownloadTask)localObject1).y = 5242880L;
+    ((DownloadTask)localObject1).K = VipFunCallConstants.e;
     if ((9 == paramInt2) || (7 == paramInt2))
     {
-      if (WebpSoLoader.a() != null) {
+      if (WebpSoLoader.b() != null) {
         paramBoolean = true;
       } else {
         paramBoolean = false;
       }
-      ((DownloadTask)localObject1).l = paramBoolean;
+      ((DownloadTask)localObject1).F = paramBoolean;
     }
     if (7 != paramInt2) {
-      ((DownloadTask)localObject1).b = true;
+      ((DownloadTask)localObject1).m = true;
     }
-    ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).startDownload(this.jdField_a_of_type_MqqAppAppRuntime, (Bundle)localObject2, (DownloadTask)localObject1, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+    ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).startDownload(this.a, (Bundle)localObject2, (DownloadTask)localObject1, this.b);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -528,7 +528,7 @@ public class VipFunCallManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vipav.VipFunCallManagerImpl
  * JD-Core Version:    0.7.0.1
  */

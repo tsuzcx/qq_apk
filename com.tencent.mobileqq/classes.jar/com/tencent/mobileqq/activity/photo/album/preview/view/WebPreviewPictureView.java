@@ -19,12 +19,12 @@ public class WebPreviewPictureView
   
   private void a(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.post(new WebPreviewPictureView.2(this, paramURLDrawable));
+    this.b.post(new WebPreviewPictureView.2(this, paramURLDrawable));
   }
   
   public void bindView(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPicturePresenter.a(paramInt);
+    Object localObject1 = this.a.a(paramInt);
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.mScreenWidthPx;
     ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.mScreenHeightPx;
@@ -59,7 +59,7 @@ public class WebPreviewPictureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.view.WebPreviewPictureView
  * JD-Core Version:    0.7.0.1
  */

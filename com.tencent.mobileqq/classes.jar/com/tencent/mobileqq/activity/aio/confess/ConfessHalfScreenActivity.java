@@ -19,8 +19,8 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class ConfessHalfScreenActivity
   extends QQBrowserActivity
 {
-  private int jdField_a_of_type_Int = 0;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private BroadcastReceiver a;
+  private int b = 0;
   
   public ConfessHalfScreenActivity()
   {
@@ -45,27 +45,27 @@ public class ConfessHalfScreenActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167333);
-    paramBundle = findViewById(2131363807);
+    getWindow().setBackgroundDrawableResource(2131168376);
+    paramBundle = findViewById(2131429740);
     if (paramBundle != null) {
-      paramBundle.setBackgroundResource(2131167333);
+      paramBundle.setBackgroundResource(2131168376);
     }
-    this.jdField_a_of_type_Int = getIntent().getIntExtra("confessDstHeight", 0);
-    if (this.jdField_a_of_type_Int <= 0)
+    this.b = getIntent().getIntExtra("confessDstHeight", 0);
+    if (this.b <= 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("WebLog_QQBrowserActivity", 2, "height==0");
       }
       finish();
     }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ConfessHalfScreenActivity.1(this);
+    if (this.a == null) {
+      this.a = new ConfessHalfScreenActivity.1(this);
     }
     try
     {
       paramBundle = new IntentFilter();
       paramBundle.addAction("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT");
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+      registerReceiver(this.a, paramBundle);
       return bool;
     }
     catch (Exception paramBundle)
@@ -81,10 +81,10 @@ public class ConfessHalfScreenActivity
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+      if (this.a != null)
       {
-        unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+        unregisterReceiver(this.a);
+        this.a = null;
       }
     }
     catch (Exception localException)
@@ -116,7 +116,7 @@ public class ConfessHalfScreenActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity
  * JD-Core Version:    0.7.0.1
  */

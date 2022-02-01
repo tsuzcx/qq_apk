@@ -14,22 +14,22 @@ class MsgTabStoryNodeDelegate$1
     super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
     if ((paramBoolean1) && (paramBoolean2))
     {
-      QQToast.a(this.a.a.a, 2, HardCodeUtil.a(2131706996), 0).a();
+      QQToast.makeText(this.a.b.m, 2, HardCodeUtil.a(2131904838), 0).show();
       return;
     }
     if ((!paramBoolean1) && (paramBoolean2))
     {
-      QQToast.a(this.a.a.a, 1, HardCodeUtil.a(2131707001), 0).a();
+      QQToast.makeText(this.a.b.m, 1, HardCodeUtil.a(2131904843), 0).show();
       return;
     }
     if ((!paramBoolean1) && (!paramBoolean2)) {
-      QQToast.a(this.a.a.a, 1, HardCodeUtil.a(2131706997), 0).a();
+      QQToast.makeText(this.a.b.m, 1, HardCodeUtil.a(2131904839), 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,9 +34,9 @@ class NewFriendMoreSysMsgAdapter$9
     if (QLog.isColorLevel()) {
       QLog.i("NewFriendMoreSysMsgAdapter", 2, "onSendSystemMsgActionError execute");
     }
-    NewFriendMoreSysMsgAdapter.d(this.a);
-    paramString = NewFriendMoreSysMsgAdapter.a(this.a).getResources().getString(2131719418);
-    QQToast.a(NewFriendMoreSysMsgAdapter.a(this.a), 1, paramString, 0).b(NewFriendMoreSysMsgAdapter.b(this.a));
+    NewFriendMoreSysMsgAdapter.n(this.a);
+    paramString = NewFriendMoreSysMsgAdapter.b(this.a).getResources().getString(2131916977);
+    QQToast.makeText(NewFriendMoreSysMsgAdapter.b(this.a), 1, paramString, 0).show(NewFriendMoreSysMsgAdapter.o(this.a));
   }
   
   protected void a(boolean paramBoolean, int paramInt)
@@ -50,15 +50,15 @@ class NewFriendMoreSysMsgAdapter$9
       localStringBuilder.append(paramInt);
       QLog.i("NewFriendMoreSysMsgAdapter", 2, localStringBuilder.toString());
     }
-    NewFriendMoreSysMsgAdapter.d(this.a);
+    NewFriendMoreSysMsgAdapter.n(this.a);
     if (paramBoolean)
     {
-      if (NewFriendMoreSysMsgAdapter.a(this.a) != null) {
-        NewFriendMoreSysMsgAdapter.a(this.a).finish();
+      if (NewFriendMoreSysMsgAdapter.b(this.a) != null) {
+        NewFriendMoreSysMsgAdapter.b(this.a).finish();
       }
     }
     else {
-      QQToast.a(NewFriendMoreSysMsgAdapter.a(this.a), 2131699380, 0).a();
+      QQToast.makeText(NewFriendMoreSysMsgAdapter.b(this.a), 2131897411, 0).show();
     }
   }
   
@@ -88,9 +88,9 @@ class NewFriendMoreSysMsgAdapter$9
       QLog.i("NewFriendMoreSysMsgAdapter", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = paramString3;
-    NewFriendMoreSysMsgAdapter.d(this.a);
+    NewFriendMoreSysMsgAdapter.n(this.a);
     this.a.notifyDataSetChanged();
-    long l2 = FriendSystemMsgController.a().b();
+    long l2 = FriendSystemMsgController.a().d();
     long l1 = l2;
     if (!TextUtils.isEmpty(paramString1)) {
       try
@@ -107,20 +107,20 @@ class NewFriendMoreSysMsgAdapter$9
     if (!paramBoolean)
     {
       if (TextUtils.isEmpty(paramString3)) {
-        localObject = NewFriendMoreSysMsgAdapter.a(this.a).getResources().getString(2131718739);
+        localObject = NewFriendMoreSysMsgAdapter.b(this.a).getResources().getString(2131916242);
       }
-      QQToast.a(NewFriendMoreSysMsgAdapter.a(this.a), 1, (CharSequence)localObject, 0).b(NewFriendMoreSysMsgAdapter.b(this.a));
+      QQToast.makeText(NewFriendMoreSysMsgAdapter.b(this.a), 1, (CharSequence)localObject, 0).show(NewFriendMoreSysMsgAdapter.o(this.a));
       ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).changeStructMsgActionsWhenFail(localStructMsg, paramInt3, paramString2, paramString4);
       return;
     }
-    paramString1 = NewFriendMoreSysMsgAdapter.a(this.a).getResources().getString(2131692656);
-    QQToast.a(NewFriendMoreSysMsgAdapter.a(this.a), 2, paramString1, 0).b(NewFriendMoreSysMsgAdapter.b(this.a));
-    l2 = FriendSystemMsgController.a().a();
+    paramString1 = NewFriendMoreSysMsgAdapter.b(this.a).getResources().getString(2131889681);
+    QQToast.makeText(NewFriendMoreSysMsgAdapter.b(this.a), 2, paramString1, 0).show(NewFriendMoreSysMsgAdapter.o(this.a));
+    l2 = FriendSystemMsgController.a().c();
     ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).changeStructMsgActions(localStructMsg, paramInt1, paramString2, paramInt2);
     if ((l2 != 0L) && (localStructMsg != null)) {
       try
       {
-        NewFriendMoreSysMsgAdapter.a(this.a).updateMsgContentByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l2, localStructMsg.toByteArray());
+        NewFriendMoreSysMsgAdapter.d(this.a).updateMsgContentByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l2, localStructMsg.toByteArray());
       }
       catch (Exception paramString1)
       {
@@ -152,7 +152,7 @@ class NewFriendMoreSysMsgAdapter$9
         paramString3.putString("base_nick", paramString2);
         paramString3.putBoolean("isFromWzry", true);
       }
-      ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).startRemarkAfterAgree(NewFriendMoreSysMsgAdapter.a(this.a), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
+      ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).startRemarkAfterAgree(NewFriendMoreSysMsgAdapter.b(this.a), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
     }
   }
   
@@ -168,16 +168,16 @@ class NewFriendMoreSysMsgAdapter$9
       ((StringBuilder)localObject).append(paramBoolean2);
       QLog.i("NewFriendMoreSysMsgAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    NewFriendMoreSysMsgAdapter.d(this.a);
+    NewFriendMoreSysMsgAdapter.n(this.a);
     if (paramBoolean1)
     {
-      NewFriendMoreSysMsgAdapter.c(this.a);
+      NewFriendMoreSysMsgAdapter.k(this.a);
       return;
     }
-    if ((paramBoolean2) && (NewFriendMoreSysMsgAdapter.a(this.a)))
+    if ((paramBoolean2) && (NewFriendMoreSysMsgAdapter.p(this.a)))
     {
-      localObject = NewFriendMoreSysMsgAdapter.a(this.a).getResources().getString(2131719409);
-      QQToast.a(NewFriendMoreSysMsgAdapter.a(this.a), 1, (CharSequence)localObject, 0).b(NewFriendMoreSysMsgAdapter.b(this.a));
+      localObject = NewFriendMoreSysMsgAdapter.b(this.a).getResources().getString(2131916968);
+      QQToast.makeText(NewFriendMoreSysMsgAdapter.b(this.a), 1, (CharSequence)localObject, 0).show(NewFriendMoreSysMsgAdapter.o(this.a));
     }
   }
   
@@ -186,9 +186,9 @@ class NewFriendMoreSysMsgAdapter$9
     if (QLog.isColorLevel()) {
       QLog.i("NewFriendMoreSysMsgAdapter", 2, "onGetDelSystemMsgError");
     }
-    NewFriendMoreSysMsgAdapter.d(this.a);
-    String str = NewFriendMoreSysMsgAdapter.a(this.a).getResources().getString(2131719409);
-    QQToast.a(NewFriendMoreSysMsgAdapter.a(this.a), 1, str, 0).b(NewFriendMoreSysMsgAdapter.b(this.a));
+    NewFriendMoreSysMsgAdapter.n(this.a);
+    String str = NewFriendMoreSysMsgAdapter.b(this.a).getResources().getString(2131916968);
+    QQToast.makeText(NewFriendMoreSysMsgAdapter.b(this.a), 1, str, 0).show(NewFriendMoreSysMsgAdapter.o(this.a));
   }
   
   protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
@@ -202,24 +202,24 @@ class NewFriendMoreSysMsgAdapter$9
       paramList.append(paramBoolean2);
       QLog.i("NewFriendMoreSysMsgAdapter", 2, paramList.toString());
     }
-    if (NewFriendMoreSysMsgAdapter.a(this.a).isFinishing()) {
+    if (NewFriendMoreSysMsgAdapter.b(this.a).isFinishing()) {
       return;
     }
     if (paramBoolean1)
     {
-      NewFriendMoreSysMsgAdapter.c(this.a);
+      NewFriendMoreSysMsgAdapter.k(this.a);
     }
-    else if ((paramBoolean2) && (NewFriendMoreSysMsgAdapter.a(this.a)))
+    else if ((paramBoolean2) && (NewFriendMoreSysMsgAdapter.p(this.a)))
     {
-      paramList = NewFriendMoreSysMsgAdapter.a(this.a).getResources().getString(2131719416);
-      QQToast.a(NewFriendMoreSysMsgAdapter.a(this.a), 1, paramList, 0).b(NewFriendMoreSysMsgAdapter.b(this.a));
+      paramList = NewFriendMoreSysMsgAdapter.b(this.a).getResources().getString(2131916975);
+      QQToast.makeText(NewFriendMoreSysMsgAdapter.b(this.a), 1, paramList, 0).show(NewFriendMoreSysMsgAdapter.o(this.a));
     }
-    NewFriendMoreSysMsgAdapter.e(this.a);
+    NewFriendMoreSysMsgAdapter.q(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.adapter.NewFriendMoreSysMsgAdapter.9
  * JD-Core Version:    0.7.0.1
  */

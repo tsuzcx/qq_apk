@@ -16,26 +16,24 @@ import mqq.manager.Manager;
 public class WerewolvesDataManager
   implements Manager
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  protected Object a;
-  protected Map<String, RecentInviteUser> a;
-  protected Object b = new Object();
+  QQAppInterface a;
+  EntityManager b;
+  protected Object c = new Object();
+  protected Object d = new Object();
+  protected Map<String, RecentInviteUser> e = new HashMap();
   
   public WerewolvesDataManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
     ThreadManager.post(new WerewolvesDataManager.1(this, paramQQAppInterface), 5, null, false);
   }
   
   public List<RecentInviteUser> a()
   {
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      Object localObject4 = this.jdField_a_of_type_JavaUtilMap.values();
+      Object localObject4 = this.e.values();
       ??? = ((Collection)localObject4).iterator();
       while (((Iterator)???).hasNext())
       {
@@ -44,7 +42,7 @@ public class WerewolvesDataManager
           localArrayList.add(localObject4);
         }
       }
-      synchronized (this.b)
+      synchronized (this.d)
       {
         Collections.sort(localArrayList);
         return localArrayList;
@@ -64,23 +62,23 @@ public class WerewolvesDataManager
   public void a(String arg1, int paramInt, String paramString2)
   {
     String str = RecentInviteUser.getKey(paramInt, ???);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      ??? = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(str);
+      ??? = (RecentInviteUser)this.e.get(str);
       ??? = ???;
       if (??? == null)
       {
         ??? = new RecentInviteUser();
         ((RecentInviteUser)???).uniKey = str;
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.c)
         {
-          this.jdField_a_of_type_JavaUtilMap.put(str, ???);
+          this.e.put(str, ???);
         }
       }
       ((RecentInviteUser)???).uin = ???;
       ((RecentInviteUser)???).uinType = paramInt;
       ((RecentInviteUser)???).lastInviteId = paramString2;
-      synchronized (this.b)
+      synchronized (this.d)
       {
         ((RecentInviteUser)???).lastInviteTime = System.currentTimeMillis();
         a((RecentInviteUser)???);
@@ -94,26 +92,12 @@ public class WerewolvesDataManager
     ThreadManager.post(new WerewolvesDataManager.2(this, paramString1, paramString2, paramArrayList, paramGetInviteUserCallback), 8, null, true);
   }
   
-  public boolean a(String paramString1, int paramInt, String paramString2)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      paramString1 = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(RecentInviteUser.getKey(paramInt, paramString1));
-      if (paramString1 != null)
-      {
-        boolean bool = TextUtils.equals(paramString1.lastInviteId, paramString2);
-        return bool;
-      }
-      return false;
-    }
-  }
-  
   public List<RecentInviteUser> b()
   {
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      Object localObject3 = this.jdField_a_of_type_JavaUtilMap.values();
+      Object localObject3 = this.e.values();
       ??? = ((Collection)localObject3).iterator();
       while (((Iterator)???).hasNext())
       {
@@ -131,11 +115,25 @@ public class WerewolvesDataManager
     }
   }
   
+  public boolean b(String paramString1, int paramInt, String paramString2)
+  {
+    synchronized (this.c)
+    {
+      paramString1 = (RecentInviteUser)this.e.get(RecentInviteUser.getKey(paramInt, paramString1));
+      if (paramString1 != null)
+      {
+        boolean bool = TextUtils.equals(paramString1.lastInviteId, paramString2);
+        return bool;
+      }
+      return false;
+    }
+  }
+  
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager
  * JD-Core Version:    0.7.0.1
  */

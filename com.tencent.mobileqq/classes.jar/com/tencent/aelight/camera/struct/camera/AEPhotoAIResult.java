@@ -4,50 +4,40 @@ import java.util.Map;
 
 public class AEPhotoAIResult
 {
-  private float jdField_a_of_type_Float;
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private float b;
+  private String a;
+  private Map<String, String> b;
   private float c;
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  private float d;
+  private float e;
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public Map<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilMap;
+    return this.a;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a(Map<String, String> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.b = paramMap;
   }
   
-  public float b()
+  public Map<String, String> b()
   {
     return this.b;
   }
   
   public void b(float paramFloat)
   {
-    this.b = paramFloat;
+    this.d = paramFloat;
   }
   
   public float c()
@@ -57,7 +47,17 @@ public class AEPhotoAIResult
   
   public void c(float paramFloat)
   {
-    this.c = paramFloat;
+    this.e = paramFloat;
+  }
+  
+  public float d()
+  {
+    return this.d;
+  }
+  
+  public float e()
+  {
+    return this.e;
   }
 }
 

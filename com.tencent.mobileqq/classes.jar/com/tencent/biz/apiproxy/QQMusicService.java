@@ -18,14 +18,14 @@ public class QQMusicService
 {
   public static String a = "msg_key";
   public static String b = "msg_back";
-  long jdField_a_of_type_Long = 0L;
-  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  QQPlayerCallback jdField_a_of_type_ComTencentMobileqqMusicQQPlayerCallback = new QQMusicService.1(this);
-  private final String c = "QQMusicService";
+  TroopMemberApiService c;
+  long d = 0L;
+  QQPlayerCallback e = new QQMusicService.1(this);
+  private final String f = "QQMusicService";
   
   public QQMusicService(TroopMemberApiService paramTroopMemberApiService)
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+    this.c = paramTroopMemberApiService;
   }
   
   private JSONObject a(SongInfo paramSongInfo)
@@ -36,7 +36,7 @@ public class QQMusicService
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("id", paramSongInfo.jdField_a_of_type_Long);
+      localJSONObject.put("id", paramSongInfo.a);
     }
     catch (JSONException localJSONException1)
     {
@@ -44,7 +44,7 @@ public class QQMusicService
     }
     try
     {
-      localJSONObject.put("audio_url", paramSongInfo.b);
+      localJSONObject.put("audio_url", paramSongInfo.d);
     }
     catch (JSONException localJSONException2)
     {
@@ -52,7 +52,7 @@ public class QQMusicService
     }
     try
     {
-      localJSONObject.put("title", paramSongInfo.c);
+      localJSONObject.put("title", paramSongInfo.e);
     }
     catch (JSONException localJSONException3)
     {
@@ -60,7 +60,7 @@ public class QQMusicService
     }
     try
     {
-      localJSONObject.put("desc", paramSongInfo.d);
+      localJSONObject.put("desc", paramSongInfo.f);
     }
     catch (JSONException localJSONException4)
     {
@@ -68,7 +68,7 @@ public class QQMusicService
     }
     try
     {
-      localJSONObject.put("image_url", paramSongInfo.e);
+      localJSONObject.put("image_url", paramSongInfo.g);
     }
     catch (JSONException localJSONException5)
     {
@@ -76,7 +76,7 @@ public class QQMusicService
     }
     try
     {
-      localJSONObject.put("share_url", paramSongInfo.f);
+      localJSONObject.put("share_url", paramSongInfo.h);
       return localJSONObject;
     }
     catch (JSONException paramSongInfo)
@@ -114,16 +114,16 @@ public class QQMusicService
     }
     paramString.optInt("mtype", 1);
     localSongInfo = new SongInfo();
-    localSongInfo.jdField_a_of_type_Long = paramString.optLong("id");
-    localSongInfo.b = paramString.optString("audio_url");
-    localSongInfo.c = paramString.optString("title");
-    localSongInfo.d = paramString.optString("desc");
-    localSongInfo.e = paramString.optString("image_url");
-    localSongInfo.f = paramString.optString("share_url");
-    this.jdField_a_of_type_Long = localSongInfo.jdField_a_of_type_Long;
+    localSongInfo.a = paramString.optLong("id");
+    localSongInfo.d = paramString.optString("audio_url");
+    localSongInfo.e = paramString.optString("title");
+    localSongInfo.f = paramString.optString("desc");
+    localSongInfo.g = paramString.optString("image_url");
+    localSongInfo.h = paramString.optString("share_url");
+    this.d = localSongInfo.a;
     QQPlayerService.a(new Intent(BaseApplication.getContext(), MusicPlayerActivity.class));
-    QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerCallback);
-    QQPlayerService.a(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerCallback.getToken(), localSongInfo);
+    QQPlayerService.a(this.e);
+    QQPlayerService.a(BaseApplication.getContext(), this.e.getToken(), localSongInfo);
   }
   
   public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
@@ -131,9 +131,9 @@ public class QQMusicService
     if (paramBundle == null) {
       return;
     }
-    int i = paramBundle.getInt(jdField_a_of_type_JavaLangString);
+    int i = paramBundle.getInt(a);
     paramAppRuntime = new Bundle();
-    paramAppRuntime.putInt(jdField_a_of_type_JavaLangString, i);
+    paramAppRuntime.putInt(a, i);
     int j = paramBundle.getInt("seq", -1);
     if (j != -1) {
       paramAppRuntime.putInt("seq", j);
@@ -143,34 +143,34 @@ public class QQMusicService
     default: 
       return;
     case 8: 
-      QQPlayerService.c(BaseApplication.getContext());
+      QQPlayerService.e(BaseApplication.getContext());
       return;
     case 7: 
-      QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerCallback);
-      paramBundle = a(QQPlayerService.b());
+      QQPlayerService.a(this.e);
+      paramBundle = a(QQPlayerService.g());
       if (paramBundle != null) {
         paramAppRuntime.putString("music", paramBundle.toString());
       }
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(8, paramAppRuntime);
+      this.c.a(8, paramAppRuntime);
       return;
     case 6: 
-      QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerCallback);
-      paramAppRuntime.putInt("mode", QQPlayerService.b());
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(8, paramAppRuntime);
+      QQPlayerService.a(this.e);
+      paramAppRuntime.putInt("mode", QQPlayerService.d());
+      this.c.a(8, paramAppRuntime);
       return;
     case 5: 
-      QQPlayerService.a(paramBundle.getInt("mode"));
+      QQPlayerService.b(paramBundle.getInt("mode"));
       return;
     case 4: 
-      QQPlayerService.a(this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerCallback);
-      paramAppRuntime.putInt("state", QQPlayerService.a());
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(8, paramAppRuntime);
+      QQPlayerService.a(this.e);
+      paramAppRuntime.putInt("state", QQPlayerService.c());
+      this.c.a(8, paramAppRuntime);
       return;
     case 3: 
-      QQPlayerService.b(BaseApplication.getContext());
+      QQPlayerService.d(BaseApplication.getContext());
       return;
     case 2: 
-      QQPlayerService.a(BaseApplication.getContext());
+      QQPlayerService.c(BaseApplication.getContext());
       return;
     }
     a(paramBundle.getString("music"));

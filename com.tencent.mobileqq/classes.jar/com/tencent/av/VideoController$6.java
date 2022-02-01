@@ -7,7 +7,7 @@ class VideoController$6
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
+    this.this$0.a(this.a, this.b, this.c, this.d, this.e, this.f, false, this.g, this.h);
   }
 }
 

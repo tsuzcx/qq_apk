@@ -14,7 +14,7 @@ class VideoHeaderBlock$1
   public void onClick(View paramView)
   {
     if ((!FastClickUtils.a("SUB_ENTER_FLOAT_MODE")) && (VideoHeaderBlock.a(this.a) != null)) {
-      VideoHeaderBlock.a(this.a).c();
+      VideoHeaderBlock.a(this.a).p();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

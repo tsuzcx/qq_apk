@@ -13,18 +13,18 @@ import com.tencent.widget.ListView;
 public class QQCustomDialogThreeBtns
   extends ReportDialog
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new QQCustomDialogThreeBtns.1(this);
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ListView jdField_a_of_type_ComTencentWidgetListView;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  TextView a;
   TextView b;
   TextView c;
   TextView d;
   TextView e;
-  TextView f;
+  LinearLayout f;
+  ListView g;
+  TextView h;
+  String[] i;
+  LayoutInflater j;
+  DialogInterface.OnClickListener k;
+  private BaseAdapter l = new QQCustomDialogThreeBtns.1(this);
   
   public QQCustomDialogThreeBtns(Context paramContext, int paramInt)
   {
@@ -63,12 +63,12 @@ public class QQCustomDialogThreeBtns
   {
     if (paramString != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      this.a.setText(paramString);
+      this.a.setVisibility(0);
+      paramString = this.i;
       return this;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.setVisibility(8);
     return this;
   }
   
@@ -139,28 +139,28 @@ public class QQCustomDialogThreeBtns
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365648));
-    this.b = ((TextView)findViewById(2131365644));
-    this.f = ((TextView)findViewById(2131373032));
-    this.c = ((TextView)findViewById(2131365633));
-    this.e = ((TextView)findViewById(2131365636));
-    this.d = ((TextView)findViewById(2131365639));
+    this.a = ((TextView)findViewById(2131431880));
+    this.b = ((TextView)findViewById(2131431876));
+    this.h = ((TextView)findViewById(2131440611));
+    this.c = ((TextView)findViewById(2131431864));
+    this.e = ((TextView)findViewById(2131431867));
+    this.d = ((TextView)findViewById(2131431870));
     this.c.setVisibility(8);
     this.e.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363688));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131370110));
+    this.f = ((LinearLayout)findViewById(2131429603));
+    this.g = ((ListView)findViewById(2131437272));
   }
   
   public void setTitle(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.setText(paramInt);
+    this.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogThreeBtns
  * JD-Core Version:    0.7.0.1
  */

@@ -27,16 +27,16 @@ class AVGameActivity$3
     ((StringBuilder)localObject).append(AVGameActivity.access$000(this.this$0));
     QLog.i("AVGameActivity", 1, ((StringBuilder)localObject).toString());
     localObject = AVGameSession.a(11, Long.valueOf(AVGameActivity.access$000(this.this$0)).longValue());
-    AVGameSession localAVGameSession = AVGameBusinessCtrl.b().a();
+    AVGameSession localAVGameSession = AVGameBusinessCtrl.b().j();
     int i = 0;
-    if ((localAVGameSession != null) && (localAVGameSession.a.equalsIgnoreCase((String)localObject)))
+    if ((localAVGameSession != null) && (localAVGameSession.b.equalsIgnoreCase((String)localObject)))
     {
-      if (localAVGameSession.a() == 2)
+      if (localAVGameSession.c() == 2)
       {
         this.this$0.onEnterRoom(5);
         break label167;
       }
-      if (localAVGameSession.a() == 1)
+      if (localAVGameSession.c() == 1)
       {
         this.this$0.onEnterRoom(6);
         break label167;
@@ -50,8 +50,8 @@ class AVGameActivity$3
     if (localAVGameSession != null)
     {
       l = System.currentTimeMillis();
-      AVGamePerfReporter.a().a(0, GameEngine.a().a().a(), GameEngine.a().a().b(), 0L);
-      AVGameHandler.a().a().post(new AVGameActivity.3.1(this, l));
+      AVGamePerfReporter.a().a(0, GameEngine.a().s().i(), GameEngine.a().s().n(), 0L);
+      AVGameHandler.a().b().post(new AVGameActivity.3.1(this, l));
       if (QLog.isColorLevel()) {
         QLog.d("AVGameActivity", 2, "mEnterAvRoomRunnable exit old session");
       }
@@ -65,7 +65,7 @@ class AVGameActivity$3
     if ((AVGameActivity.access$200(this.this$0) != null) && (AVGameActivity.access$200(this.this$0).length != 0))
     {
       AVGameNodeReportUtil.b();
-      if ((GameEngine.a().f()) && (GameEngine.a().i())) {
+      if ((GameEngine.a().A()) && (GameEngine.a().D())) {
         i = 4;
       } else {
         i = 2;
@@ -85,7 +85,7 @@ class AVGameActivity$3
         AVGameActivity.access$100(this.this$0, 2, i);
         return;
       }
-      if (AVGameBusinessCtrl.b().a() == null)
+      if (AVGameBusinessCtrl.b().j() == null)
       {
         AVGameActivity.access$100(this.this$0, 3, 1);
         return;

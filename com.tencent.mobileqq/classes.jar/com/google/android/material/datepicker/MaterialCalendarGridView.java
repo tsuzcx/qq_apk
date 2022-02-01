@@ -22,8 +22,8 @@ import java.util.Iterator;
 final class MaterialCalendarGridView
   extends GridView
 {
-  private final Calendar jdField_a_of_type_JavaUtilCalendar = UtcDates.b();
-  private final boolean jdField_a_of_type_Boolean;
+  private final Calendar a = UtcDates.c();
+  private final boolean b;
   
   public MaterialCalendarGridView(Context paramContext)
   {
@@ -43,7 +43,7 @@ final class MaterialCalendarGridView
       setNextFocusLeftId(R.id.a);
       setNextFocusRightId(R.id.c);
     }
-    this.jdField_a_of_type_Boolean = MaterialDatePicker.b(getContext());
+    this.b = MaterialDatePicker.b(getContext());
     ViewCompat.setAccessibilityDelegate(this, new MaterialCalendarGridView.1(this));
   }
   
@@ -112,11 +112,11 @@ final class MaterialCalendarGridView
   {
     super.onDraw(paramCanvas);
     Object localObject1 = a();
-    Object localObject2 = ((MonthAdapter)localObject1).jdField_a_of_type_ComGoogleAndroidMaterialDatepickerDateSelector;
-    CalendarStyle localCalendarStyle = ((MonthAdapter)localObject1).jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarStyle;
+    Object localObject2 = ((MonthAdapter)localObject1).c;
+    CalendarStyle localCalendarStyle = ((MonthAdapter)localObject1).d;
     Long localLong1 = ((MonthAdapter)localObject1).a(((MonthAdapter)localObject1).a());
     Long localLong2 = ((MonthAdapter)localObject1).a(((MonthAdapter)localObject1).b());
-    Iterator localIterator = ((DateSelector)localObject2).b().iterator();
+    Iterator localIterator = ((DateSelector)localObject2).d().iterator();
     for (;;)
     {
       MaterialCalendarGridView localMaterialCalendarGridView = this;
@@ -139,7 +139,7 @@ final class MaterialCalendarGridView
             if (l1 < localLong1.longValue())
             {
               n = ((MonthAdapter)localObject1).a();
-              if (((MonthAdapter)localObject1).b(n)) {
+              if (((MonthAdapter)localObject1).e(n)) {
                 i = 0;
               } else if (!bool) {
                 i = localMaterialCalendarGridView.getChildAt(n - 1).getRight();
@@ -149,8 +149,8 @@ final class MaterialCalendarGridView
             }
             else
             {
-              localMaterialCalendarGridView.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(l1);
-              n = ((MonthAdapter)localObject1).b(localMaterialCalendarGridView.jdField_a_of_type_JavaUtilCalendar.get(5));
+              localMaterialCalendarGridView.a.setTimeInMillis(l1);
+              n = ((MonthAdapter)localObject1).c(localMaterialCalendarGridView.a.get(5));
               i = a(localMaterialCalendarGridView.getChildAt(n));
             }
             int i1;
@@ -158,7 +158,7 @@ final class MaterialCalendarGridView
             if (l2 > localLong2.longValue())
             {
               i1 = Math.min(((MonthAdapter)localObject1).b(), getChildCount() - 1);
-              if (((MonthAdapter)localObject1).c(i1)) {
+              if (((MonthAdapter)localObject1).f(i1)) {
                 j = getWidth();
               } else if (!bool) {
                 j = localMaterialCalendarGridView.getChildAt(i1).getRight();
@@ -168,8 +168,8 @@ final class MaterialCalendarGridView
             }
             else
             {
-              localMaterialCalendarGridView.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(l2);
-              i1 = ((MonthAdapter)localObject1).b(localMaterialCalendarGridView.jdField_a_of_type_JavaUtilCalendar.get(5));
+              localMaterialCalendarGridView.a.setTimeInMillis(l2);
+              i1 = ((MonthAdapter)localObject1).c(localMaterialCalendarGridView.a.get(5));
               j = a(localMaterialCalendarGridView.getChildAt(i1));
             }
             int i2 = (int)((MonthAdapter)localObject1).getItemId(n);
@@ -184,9 +184,9 @@ final class MaterialCalendarGridView
               int i3 = getNumColumns() + m - 1;
               localObject2 = getChildAt(m);
               int i5 = ((View)localObject2).getTop();
-              int i6 = localCalendarStyle.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarItemStyle.a();
+              int i6 = localCalendarStyle.a.a();
               int i7 = ((View)localObject2).getBottom();
-              int i8 = localCalendarStyle.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarItemStyle.b();
+              int i8 = localCalendarStyle.a.b();
               int k;
               if (!bool)
               {
@@ -224,7 +224,7 @@ final class MaterialCalendarGridView
                 k = m;
                 m = i3;
               }
-              paramCanvas.drawRect(m, i5 + i6, k, i7 - i8, localCalendarStyle.jdField_a_of_type_AndroidGraphicsPaint);
+              paramCanvas.drawRect(m, i5 + i6, k, i7 - i8, localCalendarStyle.h);
               i2 += 1;
             }
           }
@@ -268,7 +268,7 @@ final class MaterialCalendarGridView
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(16777215, -2147483648));
       getLayoutParams().height = getMeasuredHeight();
@@ -299,7 +299,7 @@ final class MaterialCalendarGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.MaterialCalendarGridView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,23 +9,23 @@ class CameraControl$1$1
   
   public void run()
   {
-    CameraControl.TakePictureData localTakePictureData = new CameraControl.TakePictureData(this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl, null);
-    localTakePictureData.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    localTakePictureData.jdField_a_of_type_JavaIoFile = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.jdField_a_of_type_JavaIoFile;
-    localTakePictureData.jdField_a_of_type_AndroidGraphicsRect = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.jdField_a_of_type_AndroidGraphicsRect;
-    localTakePictureData.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback;
-    localTakePictureData.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.jdField_a_of_type_Int;
-    localTakePictureData.b = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl.jdField_a_of_type_Int;
-    localTakePictureData.c = 100;
-    localTakePictureData.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.jdField_a_of_type_Boolean;
-    localTakePictureData.d = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.b;
-    localTakePictureData.jdField_a_of_type_AndroidHardwareCamera$Size = this.jdField_a_of_type_AndroidHardwareCamera$Size;
-    new CameraControl.TakePictureTask(this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl$1.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl, localTakePictureData).execute(new Void[0]);
+    CameraControl.TakePictureData localTakePictureData = new CameraControl.TakePictureData(this.c.i, null);
+    localTakePictureData.a = this.a;
+    localTakePictureData.b = this.c.d;
+    localTakePictureData.c = this.c.e;
+    localTakePictureData.d = this.c.f;
+    localTakePictureData.e = this.c.b;
+    localTakePictureData.f = this.c.i.g;
+    localTakePictureData.h = 100;
+    localTakePictureData.g = this.c.g;
+    localTakePictureData.i = this.c.h;
+    localTakePictureData.j = this.b;
+    new CameraControl.TakePictureTask(this.c.i, localTakePictureData).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraControl.1.1
  * JD-Core Version:    0.7.0.1
  */

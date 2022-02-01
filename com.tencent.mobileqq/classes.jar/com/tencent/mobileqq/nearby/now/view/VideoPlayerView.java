@@ -127,7 +127,7 @@ public class VideoPlayerView
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("vid_");
     ((StringBuilder)localObject2).append(getFileName(paramString));
-    localObject2 = DownloadTask.a(((StringBuilder)localObject2).toString(), 0);
+    localObject2 = DownloadTask.b(((StringBuilder)localObject2).toString(), 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append(".tmp");
@@ -173,7 +173,7 @@ public class VideoPlayerView
   
   public long getCurrentPosition()
   {
-    return this.mPlayer.a();
+    return this.mPlayer.d();
   }
   
   public long getDownloadOffset()
@@ -185,7 +185,7 @@ public class VideoPlayerView
     ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
     ((StringBuilder)localObject).append(".now_video/");
     ((StringBuilder)localObject).append("vid_");
-    ((StringBuilder)localObject).append(getFileName(this.mVideoData.b));
+    ((StringBuilder)localObject).append(getFileName(this.mVideoData.d));
     ((StringBuilder)localObject).append(".mp4");
     localObject = ((StringBuilder)localObject).toString();
     if (new File((String)localObject).exists()) {
@@ -195,7 +195,7 @@ public class VideoPlayerView
     ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
     ((StringBuilder)localObject).append(".now_video/");
     ((StringBuilder)localObject).append("vid_");
-    ((StringBuilder)localObject).append(getFileName(this.mVideoData.b));
+    ((StringBuilder)localObject).append(getFileName(this.mVideoData.d));
     ((StringBuilder)localObject).append(".mp4.tmp");
     localObject = new File(((StringBuilder)localObject).toString());
     if (((File)localObject).exists()) {
@@ -206,7 +206,7 @@ public class VideoPlayerView
   
   public long getDuration()
   {
-    return this.mPlayer.b();
+    return this.mPlayer.g();
   }
   
   public long getFileSize()
@@ -234,8 +234,8 @@ public class VideoPlayerView
   public void initWidgetView(RelativeLayout paramRelativeLayout)
   {
     this.mRootView = paramRelativeLayout;
-    this.ivCover = ((ImageView)this.mRootView.findViewById(2131369331));
-    this.doodleView = ((ImageView)this.mRootView.findViewById(2131365808));
+    this.ivCover = ((ImageView)this.mRootView.findViewById(2131436334));
+    this.doodleView = ((ImageView)this.mRootView.findViewById(2131432065));
     paramRelativeLayout = this.mHandler;
     if (paramRelativeLayout != null)
     {
@@ -247,7 +247,7 @@ public class VideoPlayerView
   
   public boolean isPlaying()
   {
-    return this.mPlayer.a();
+    return this.mPlayer.i();
   }
   
   public boolean isVideoCached()
@@ -259,7 +259,7 @@ public class VideoPlayerView
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append(".now_video/");
     localStringBuilder.append("vid_");
-    localStringBuilder.append(getFileName(this.mVideoData.b));
+    localStringBuilder.append(getFileName(this.mVideoData.d));
     localStringBuilder.append(".mp4");
     if (new File(localStringBuilder.toString()).exists()) {
       return true;
@@ -273,7 +273,7 @@ public class VideoPlayerView
     if (QLog.isColorLevel()) {
       QLog.i("VideoPlayerView", 2, "pause");
     }
-    this.mPlayer.c();
+    this.mPlayer.e();
     this.mPaused = true;
     this.mLastPos = getCurrentPosition();
   }
@@ -287,7 +287,7 @@ public class VideoPlayerView
   
   public void play(VideoData paramVideoData)
   {
-    String str = paramVideoData.b;
+    String str = paramVideoData.d;
     this.mFileSize = 0L;
     this.mOffset = 0L;
     boolean bool2 = isVideoCached();
@@ -304,7 +304,7 @@ public class VideoPlayerView
     }
     Object localObject1 = this.mPlayer;
     if (localObject1 != null) {
-      ((IVideoView)localObject1).a();
+      ((IVideoView)localObject1).b();
     }
     localObject1 = this.mPlayer;
     if ((localObject1 != null) && (((IVideoView)localObject1).a() != null) && (this.mPlayer.a().getParent() != null)) {
@@ -316,7 +316,7 @@ public class VideoPlayerView
     {
       localObject1 = (VideoViewTVKImpl)localObject1;
       boolean bool1;
-      if (paramVideoData.l < paramVideoData.m) {
+      if (paramVideoData.H < paramVideoData.I) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -340,8 +340,8 @@ public class VideoPlayerView
     this.mPlayerType = 1;
     ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setRePlayCount(0);
     ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setPlayTimeBegin(System.currentTimeMillis());
-    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setFeedId(paramVideoData.jdField_a_of_type_JavaLangString);
-    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setAnchorUin(String.valueOf(paramVideoData.jdField_a_of_type_Long));
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setFeedId(paramVideoData.c);
+    ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).setAnchorUin(String.valueOf(paramVideoData.i));
     localObject1 = this.mVideoInfoListener;
     if (localObject1 != null) {
       ((IVideoPlayerView.VideoInfoListener)localObject1).onDoingStartPlayback();
@@ -374,7 +374,7 @@ public class VideoPlayerView
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("vid_");
         ((StringBuilder)localObject3).append(getFileName(str));
-        ((IVideoView)localObject2).a(((StringBuilder)localObject3).toString(), (String)localObject1, str, paramVideoData.g);
+        ((IVideoView)localObject2).a(((StringBuilder)localObject3).toString(), (String)localObject1, str, paramVideoData.z);
       }
       else
       {
@@ -397,7 +397,7 @@ public class VideoPlayerView
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append(".tmp");
-        ((IVideoView)localObject2).a((String)localObject3, localStringBuilder.toString(), str, paramVideoData.g);
+        ((IVideoView)localObject2).a((String)localObject3, localStringBuilder.toString(), str, paramVideoData.z);
       }
       this.mPlayer.a(new VideoPlayerView.7(this, paramVideoData, bool2));
       if (QLog.isColorLevel()) {
@@ -418,7 +418,7 @@ public class VideoPlayerView
     if (QLog.isColorLevel()) {
       QLog.i("VideoPlayerView", 2, "restart");
     }
-    String str = this.mVideoData.jdField_a_of_type_JavaLangString;
+    String str = this.mVideoData.c;
     int i;
     if (isVideoCached()) {
       i = 1;
@@ -428,7 +428,7 @@ public class VideoPlayerView
     QualityReporter.a(str, i, "0", "0");
     QualityReporter.a(2);
     QualityReporter.d();
-    this.mPlayer.d();
+    this.mPlayer.f();
     return true;
   }
   
@@ -439,7 +439,7 @@ public class VideoPlayerView
       if (QLog.isColorLevel()) {
         QLog.i("VideoPlayerView", 2, "resume");
       }
-      this.mPlayer.b();
+      this.mPlayer.c();
       this.mPlayer.a(this.mLastPos);
       return;
     }
@@ -512,10 +512,10 @@ public class VideoPlayerView
       this.mEndPlayTime = System.currentTimeMillis();
       long l = this.mEndPlayTime;
       l = this.mStartPlayTime;
-      this.mPlayer.b();
+      this.mPlayer.g();
       this.mStartPlayed = false;
     }
-    this.mPlayer.a();
+    this.mPlayer.b();
     this.mPaused = false;
   }
   
@@ -537,13 +537,13 @@ public class VideoPlayerView
     if ((localObject != null) && (((IVideoView)localObject).a() != null) && (this.mPlayer.a().getParent() != null)) {
       ((ViewGroup)this.mPlayer.a().getParent()).removeView(this.mPlayer.a());
     }
-    this.mPlayer.a();
+    this.mPlayer.b();
     this.mReultListener = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView
  * JD-Core Version:    0.7.0.1
  */

@@ -38,10 +38,10 @@ class QQServiceForAV$10
       Intent localIntent = new Intent();
       localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
       localIntent.putExtra("uin", paramString);
-      localObject = (FriendsManager)QQServiceForAV.k(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
+      localObject = (FriendsManager)QQServiceForAV.p(this.a).getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (localObject != null)
       {
-        localObject = ((FriendsManager)localObject).e(paramString);
+        localObject = ((FriendsManager)localObject).m(paramString);
         if (localObject != null)
         {
           localObject = ContactUtils.a((Friends)localObject);
@@ -53,9 +53,9 @@ class QQServiceForAV$10
       localIntent.putExtra("nick", (String)localObject);
       localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
       localQQAppInterface.getApp().sendBroadcast(localIntent);
-      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-      if (this.a.a()) {
-        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      this.a.s.remove(paramString);
+      if (this.a.b()) {
+        localQQAppInterface.removeObserver(this.a.v);
       }
     }
   }

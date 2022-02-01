@@ -14,13 +14,13 @@ class VideoPlayerView$9
   public void notifyVideoClose(int paramInt)
   {
     VideoPlayerView.b(this.a, false);
-    if (VideoPlayerView.a(this.a) != null)
+    if (VideoPlayerView.l(this.a) != null)
     {
-      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.l(this.a).c();
       VideoPlayerView.a(this.a, null);
     }
     VideoPlayerView.a(this.a, null);
-    this.a.b();
+    this.a.g();
   }
   
   public void notifyVideoSeek(int paramInt)
@@ -30,32 +30,32 @@ class VideoPlayerView$9
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("VideoPlayerView", 4, ((StringBuilder)localObject).toString());
     localObject = this.a;
-    ((VideoPlayerView)localObject).a(paramInt * ((VideoPlayerView)localObject).a().getDurationMs() / 100L);
+    ((VideoPlayerView)localObject).a(paramInt * ((VideoPlayerView)localObject).getSuperPlayer().getDurationMs() / 100L);
   }
   
   public void notifyVideoStart()
   {
-    if (this.a.a().getCurrentPositionMs() < this.a.a().getDurationMs())
+    if (this.a.getSuperPlayer().getCurrentPositionMs() < this.a.getSuperPlayer().getDurationMs())
     {
-      this.a.f();
+      this.a.e();
       return;
     }
-    if (VideoPlayerView.b(this.a))
+    if (VideoPlayerView.o(this.a))
     {
       QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
       return;
     }
-    this.a.a().setLoopback(true);
-    this.a.i();
-    if (VideoPlayerView.a(this.a) != null) {
-      VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
+    this.a.getSuperPlayer().setLoopback(true);
+    this.a.j();
+    if (VideoPlayerView.m(this.a) != null) {
+      VideoPlayerView.m(this.a).onVideoStart((int)this.a.getSuperPlayer().getDurationMs());
     }
     QLog.d("VideoPlayerView", 4, "no more, player repeat");
   }
   
   public void notifyVideoStop()
   {
-    this.a.g();
+    this.a.h();
   }
 }
 

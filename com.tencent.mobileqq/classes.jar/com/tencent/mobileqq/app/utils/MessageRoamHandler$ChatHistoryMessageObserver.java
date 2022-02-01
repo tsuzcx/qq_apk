@@ -13,19 +13,19 @@ import mqq.os.MqqHandler;
 class MessageRoamHandler$ChatHistoryMessageObserver
   extends MessageObserver
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public MessageRoamHandler$ChatHistoryMessageObserver(MessageRoamHandler paramMessageRoamHandler, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   protected void onUpdateDelRoamChat(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+    if (this.a.a != this.b) {
       return;
     }
-    MessageRoamManager localMessageRoamManager = (MessageRoamManager)MessageRoamHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler).getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    MessageRoamManager localMessageRoamManager = (MessageRoamManager)MessageRoamHandler.a(this.a).getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
     if (!paramBoolean)
     {
       localMessageRoamManager.a(8, null);
@@ -58,7 +58,7 @@ class MessageRoamHandler$ChatHistoryMessageObserver
       localStringBuilder.append(l);
       QLog.d("Q.roammsg", 2, localStringBuilder.toString());
     }
-    localObject2 = MessageRoamHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler).getHandler(C2CMessageSearchDialog.class);
+    localObject2 = MessageRoamHandler.a(this.a).getHandler(C2CMessageSearchDialog.class);
     if (!paramBoolean)
     {
       localObject1 = ((MqqHandler)localObject2).obtainMessage(4);
@@ -76,10 +76,10 @@ class MessageRoamHandler$ChatHistoryMessageObserver
   
   protected void onUpdateSetRoamChat(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
+    if (this.a.a != this.b) {
       return;
     }
-    MessageRoamManager localMessageRoamManager = (MessageRoamManager)MessageRoamHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler).getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
+    MessageRoamManager localMessageRoamManager = (MessageRoamManager)MessageRoamHandler.a(this.a).getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
     if (!paramBoolean)
     {
       localMessageRoamManager.a(7, null);
@@ -90,7 +90,7 @@ class MessageRoamHandler$ChatHistoryMessageObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.MessageRoamHandler.ChatHistoryMessageObserver
  * JD-Core Version:    0.7.0.1
  */

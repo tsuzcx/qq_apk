@@ -16,19 +16,19 @@ final class MultiVideoHelper$1
   
   public void a(ImageRequest paramImageRequest, ICloseableBitmap paramICloseableBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.setHasFirstFramePreload(true);
+    this.a.setHasFirstFramePreload(true);
     if (QLog.isColorLevel())
     {
       paramImageRequest = MultiVideoHelper.a;
       paramICloseableBitmap = new StringBuilder();
       paramICloseableBitmap.append("preload success width: ");
-      paramICloseableBitmap.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.getFirstFrameWidth());
+      paramICloseableBitmap.append(this.a.getFirstFrameWidth());
       paramICloseableBitmap.append(", height: ");
-      paramICloseableBitmap.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.getFirstFrameHeight());
+      paramICloseableBitmap.append(this.a.getFirstFrameHeight());
       paramICloseableBitmap.append(", ");
-      paramICloseableBitmap.append(this.jdField_a_of_type_JavaNetURL);
+      paramICloseableBitmap.append(this.b);
       paramICloseableBitmap.append(", title: ");
-      paramICloseableBitmap.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mTitle);
+      paramICloseableBitmap.append(this.a.mTitle);
       QLog.d(paramImageRequest, 2, paramICloseableBitmap.toString());
     }
   }
@@ -38,13 +38,13 @@ final class MultiVideoHelper$1
     paramImageRequest = MultiVideoHelper.a;
     paramThrowable = new StringBuilder();
     paramThrowable.append("preload failed ");
-    paramThrowable.append(this.jdField_a_of_type_JavaNetURL);
+    paramThrowable.append(this.b);
     QLog.e(paramImageRequest, 2, paramThrowable.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.MultiVideoHelper.1
  * JD-Core Version:    0.7.0.1
  */

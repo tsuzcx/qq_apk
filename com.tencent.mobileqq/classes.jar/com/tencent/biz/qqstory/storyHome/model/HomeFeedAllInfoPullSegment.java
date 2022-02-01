@@ -24,36 +24,36 @@ import java.util.Vector;
 public class HomeFeedAllInfoPullSegment
   extends JobSegment<FeedListPageLoaderBase.GetFeedIdListResult, HomeFeedData>
 {
-  private BatchGetFeedCommentRequest.BatchGetFeedCommentResp jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp;
-  private BatchGetFeedLikeRequest.BatchGetFeedLikeResp jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedLikeRequest$BatchGetFeedLikeResp;
-  private BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
-  private GetFeedFeatureResponse jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetFeedFeatureResponse;
-  private Vector<NetworkRequest> jdField_a_of_type_JavaUtilVector = new Vector(5);
+  private Vector<NetworkRequest> a = new Vector(5);
+  private BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp b;
+  private BatchGetFeedCommentRequest.BatchGetFeedCommentResp c;
+  private BatchGetFeedLikeRequest.BatchGetFeedLikeResp d;
+  private GetFeedFeatureResponse e;
   
   private FeedFeatureItem a(int paramInt, CommentLikeHomeFeed paramCommentLikeHomeFeed)
   {
-    List localList = this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetFeedFeatureResponse.jdField_a_of_type_JavaUtilList;
+    List localList = this.e.a;
     if (paramInt < localList.size()) {
       localFeedFeatureItem = (FeedFeatureItem)localList.get(paramInt);
     } else {
       localFeedFeatureItem = null;
     }
-    if ((localFeedFeatureItem != null) && (localFeedFeatureItem.a.equals(paramCommentLikeHomeFeed.a.feedId))) {
+    if ((localFeedFeatureItem != null) && (localFeedFeatureItem.a.equals(paramCommentLikeHomeFeed.f.feedId))) {
       return localFeedFeatureItem;
     }
     FeedFeatureItem localFeedFeatureItem = new FeedFeatureItem();
-    localFeedFeatureItem.a = paramCommentLikeHomeFeed.a.feedId;
+    localFeedFeatureItem.a = paramCommentLikeHomeFeed.f.feedId;
     paramInt = localList.indexOf(localFeedFeatureItem);
     if (paramInt >= 0) {
       return (FeedFeatureItem)localList.get(paramInt);
     }
-    SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "can't not find feed like for id:%s", new Object[] { paramCommentLikeHomeFeed.a.feedId });
+    SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "can't not find feed like for id:%s", new Object[] { paramCommentLikeHomeFeed.f.feedId });
     return null;
   }
   
   private void a(FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
+    Object localObject1 = this.b;
     boolean bool3 = true;
     int i = 0;
     boolean bool1;
@@ -63,107 +63,107 @@ public class HomeFeedAllInfoPullSegment
       bool1 = false;
     }
     boolean bool2;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp != null) {
+    if (this.c != null) {
       bool2 = true;
     } else {
       bool2 = false;
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedLikeRequest$BatchGetFeedLikeResp == null) {
+    if (this.d == null) {
       bool3 = false;
     }
     SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed info resp basic info:%b, comment %b, like %b", Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3));
-    if (!this.jdField_a_of_type_JavaUtilVector.isEmpty()) {
+    if (!this.a.isEmpty()) {
       return;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
-    if ((localObject1 != null) && (((BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp)localObject1).jdField_a_of_type_Int == 0))
+    localObject1 = this.b;
+    if ((localObject1 != null) && (((BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp)localObject1).c == 0))
     {
       localObject1 = (FeedManager)SuperManager.a(11);
       HomeFeedData localHomeFeedData = new HomeFeedData(new ErrorMessage());
-      localHomeFeedData.c = paramGetFeedIdListResult.jdField_a_of_type_Boolean;
-      localHomeFeedData.jdField_a_of_type_Boolean = paramGetFeedIdListResult.b;
-      localHomeFeedData.jdField_a_of_type_JavaUtilList = new ArrayList();
-      Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
+      localHomeFeedData.c = paramGetFeedIdListResult.b;
+      localHomeFeedData.a = paramGetFeedIdListResult.c;
+      localHomeFeedData.e = new ArrayList();
+      Object localObject2 = this.b.a.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (StoryHomeFeed)((Iterator)localObject2).next();
-        localHomeFeedData.jdField_a_of_type_JavaUtilList.add(((StoryHomeFeed)localObject3).a.feedId);
+        localHomeFeedData.e.add(((StoryHomeFeed)localObject3).f.feedId);
       }
-      localHomeFeedData.b = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList;
-      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
+      localHomeFeedData.f = this.b.a;
+      localObject2 = this.b.a.iterator();
       Object localObject4;
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (StoryHomeFeed)((Iterator)localObject2).next();
-        ((StoryHomeFeed)localObject3).a(i, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedLikeRequest$BatchGetFeedLikeResp);
+        ((StoryHomeFeed)localObject3).a(i, this.b, this.c, this.d);
         if ((localObject3 instanceof CommentLikeHomeFeed))
         {
           localObject3 = (CommentLikeHomeFeed)localObject3;
-          if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetFeedFeatureResponse != null)
+          if (this.e != null)
           {
             localObject4 = a(i, (CommentLikeHomeFeed)localObject3);
             if (localObject4 != null)
             {
-              ((CommentLikeHomeFeed)localObject3).a().mViewTotalTime = ((FeedFeatureItem)localObject4).c;
-              SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "get feature feedId=%s, view total=%d", ((CommentLikeHomeFeed)localObject3).a.feedId, Long.valueOf(((CommentLikeHomeFeed)localObject3).a().mViewTotalTime));
+              ((CommentLikeHomeFeed)localObject3).c().mViewTotalTime = ((FeedFeatureItem)localObject4).d;
+              SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "get feature feedId=%s, view total=%d", ((CommentLikeHomeFeed)localObject3).f.feedId, Long.valueOf(((CommentLikeHomeFeed)localObject3).c().mViewTotalTime));
             }
           }
         }
         i += 1;
       }
-      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
+      localObject2 = this.b.a.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((StoryHomeFeed)((Iterator)localObject2).next()).a();
+        ((StoryHomeFeed)((Iterator)localObject2).next()).b();
       }
-      localObject2 = new ArrayList(localHomeFeedData.b.size());
-      Object localObject3 = localHomeFeedData.b.iterator();
+      localObject2 = new ArrayList(localHomeFeedData.f.size());
+      Object localObject3 = localHomeFeedData.f.iterator();
       while (((Iterator)localObject3).hasNext()) {
-        ((ArrayList)localObject2).add(((StoryHomeFeed)((Iterator)localObject3).next()).a);
+        ((ArrayList)localObject2).add(((StoryHomeFeed)((Iterator)localObject3).next()).f);
       }
       localObject2 = ((FeedManager)localObject1).a((List)localObject2);
-      localObject3 = localHomeFeedData.b.iterator();
+      localObject3 = localHomeFeedData.f.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (StoryHomeFeed)((Iterator)localObject3).next();
-        i = ((List)localObject2).indexOf(((StoryHomeFeed)localObject4).a);
+        i = ((List)localObject2).indexOf(((StoryHomeFeed)localObject4).f);
         if (i >= 0)
         {
-          ((StoryHomeFeed)localObject4).a = ((FeedItem)((List)localObject2).get(i));
-          ((StoryHomeFeed)localObject4).a.onRefresh();
+          ((StoryHomeFeed)localObject4).f = ((FeedItem)((List)localObject2).get(i));
+          ((StoryHomeFeed)localObject4).f.onRefresh();
         }
       }
-      if (paramGetFeedIdListResult.jdField_a_of_type_Boolean) {
-        ((FeedManager)localObject1).a().a();
+      if (paramGetFeedIdListResult.b) {
+        ((FeedManager)localObject1).f().a();
       }
-      paramGetFeedIdListResult = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp;
+      paramGetFeedIdListResult = this.c;
       if (paramGetFeedIdListResult != null)
       {
         SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "need sync comment size:%d", Integer.valueOf(paramGetFeedIdListResult.b.size()));
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.b.size() > 0)) {
-          ((FeedManager)localObject1).a().a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.b);
+        if ((this.c.c == 0) && (this.c.b.size() > 0)) {
+          ((FeedManager)localObject1).f().a(this.c.b);
         }
       }
       notifyResult(localHomeFeedData);
       return;
     }
-    paramGetFeedIdListResult = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
+    paramGetFeedIdListResult = this.b;
     if (paramGetFeedIdListResult == null) {
       i = 940001;
     } else {
-      i = paramGetFeedIdListResult.jdField_a_of_type_Int;
+      i = paramGetFeedIdListResult.c;
     }
-    paramGetFeedIdListResult = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
+    paramGetFeedIdListResult = this.b;
     if (paramGetFeedIdListResult == null) {
       paramGetFeedIdListResult = "";
     } else {
-      paramGetFeedIdListResult = paramGetFeedIdListResult.b;
+      paramGetFeedIdListResult = paramGetFeedIdListResult.d;
     }
     notifyError(new ErrorMessage(i, paramGetFeedIdListResult));
   }
   
   private void b(JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)
   {
-    List localList = paramGetFeedIdListResult.jdField_a_of_type_JavaUtilList;
+    List localList = paramGetFeedIdListResult.a;
     SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "start pull feed info count:%d", Integer.valueOf(localList.size()));
     if (SLog.a()) {
       SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "start pull feed info %s", localList);
@@ -174,36 +174,36 @@ public class HomeFeedAllInfoPullSegment
       localArrayList.add(((FeedIdListSeqInfo)((Iterator)localObject).next()).a);
     }
     localObject = new BatchGetFriendStoryFeedInfoRequest();
-    this.jdField_a_of_type_JavaUtilVector.add(localObject);
+    this.a.add(localObject);
     BatchGetFeedCommentRequest localBatchGetFeedCommentRequest = new BatchGetFeedCommentRequest(localArrayList, true);
-    this.jdField_a_of_type_JavaUtilVector.add(localBatchGetFeedCommentRequest);
+    this.a.add(localBatchGetFeedCommentRequest);
     BatchGetFeedLikeRequest localBatchGetFeedLikeRequest = new BatchGetFeedLikeRequest(localArrayList, true);
-    this.jdField_a_of_type_JavaUtilVector.add(localBatchGetFeedLikeRequest);
+    this.a.add(localBatchGetFeedLikeRequest);
     GetFeedFeatureRequest localGetFeedFeatureRequest = new GetFeedFeatureRequest();
-    this.jdField_a_of_type_JavaUtilVector.add(localGetFeedFeatureRequest);
-    ((BatchGetFriendStoryFeedInfoRequest)localObject).jdField_a_of_type_JavaUtilList = localList;
+    this.a.add(localGetFeedFeatureRequest);
+    ((BatchGetFriendStoryFeedInfoRequest)localObject).f = localList;
     CmdTaskManger.a().a((NetworkRequest)localObject, new HomeFeedAllInfoPullSegment.1(this, paramJobContext, paramGetFeedIdListResult));
     CmdTaskManger.a().a(localBatchGetFeedCommentRequest, new HomeFeedAllInfoPullSegment.2(this, paramJobContext, paramGetFeedIdListResult));
     CmdTaskManger.a().a(localBatchGetFeedLikeRequest, new HomeFeedAllInfoPullSegment.3(this, paramJobContext, paramGetFeedIdListResult));
-    localGetFeedFeatureRequest.jdField_a_of_type_JavaUtilList = localArrayList;
+    localGetFeedFeatureRequest.f = localArrayList;
     CmdTaskManger.a().a(localGetFeedFeatureRequest, new HomeFeedAllInfoPullSegment.4(this, paramJobContext, paramGetFeedIdListResult));
   }
   
   protected void a(JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)
   {
-    Iterator localIterator = paramGetFeedIdListResult.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = paramGetFeedIdListResult.a.iterator();
     while (localIterator.hasNext()) {
       if (localIterator.next() == null) {
         localIterator.remove();
       }
     }
-    if (paramGetFeedIdListResult.jdField_a_of_type_JavaUtilList.isEmpty())
+    if (paramGetFeedIdListResult.a.isEmpty())
     {
-      if (paramGetFeedIdListResult.b)
+      if (paramGetFeedIdListResult.c)
       {
         paramJobContext = new HomeFeedData(new ErrorMessage());
-        paramJobContext.c = paramGetFeedIdListResult.jdField_a_of_type_Boolean;
-        paramJobContext.jdField_a_of_type_Boolean = paramGetFeedIdListResult.b;
+        paramJobContext.c = paramGetFeedIdListResult.b;
+        paramJobContext.a = paramGetFeedIdListResult.c;
         notifyResult(paramJobContext);
         return;
       }

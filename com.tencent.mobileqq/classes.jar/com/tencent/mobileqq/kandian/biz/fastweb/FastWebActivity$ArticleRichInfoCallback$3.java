@@ -12,16 +12,16 @@ class FastWebActivity$ArticleRichInfoCallback$3
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" update biuView cnt : ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     QLog.d("FastWebActivity", 2, localStringBuilder.toString());
-    if (FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a) != null) {
-      FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a).a(FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a).c);
+    if (FastWebActivity.d(this.b.a) != null) {
+      FastWebActivity.p(this.b.a).a(FastWebActivity.d(this.b.a).e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.ArticleRichInfoCallback.3
  * JD-Core Version:    0.7.0.1
  */

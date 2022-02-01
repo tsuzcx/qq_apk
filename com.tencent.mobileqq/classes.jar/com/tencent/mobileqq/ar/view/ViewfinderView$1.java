@@ -11,13 +11,13 @@ class ViewfinderView$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ViewfinderView.a(this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.jdField_a_of_type_ComTencentMobileqqArViewViewfinderView.postInvalidate(this.jdField_a_of_type_AndroidGraphicsRect.left - 6, this.jdField_a_of_type_AndroidGraphicsRect.top - 6, this.jdField_a_of_type_AndroidGraphicsRect.right + 6, this.jdField_a_of_type_AndroidGraphicsRect.bottom + 6);
+    ViewfinderView.a(this.b, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.b.postInvalidate(this.a.left - 6, this.a.top - 6, this.a.right + 6, this.a.bottom + 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ViewfinderView.1
  * JD-Core Version:    0.7.0.1
  */

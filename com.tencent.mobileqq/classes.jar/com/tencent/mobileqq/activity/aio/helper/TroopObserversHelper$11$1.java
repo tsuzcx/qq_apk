@@ -11,16 +11,16 @@ class TroopObserversHelper$11$1
   
   public void run()
   {
-    if (TroopObserversHelper.a(this.a.a).a != null)
+    if (TroopObserversHelper.d(this.a.a).bp != null)
     {
-      TroopObserversHelper.a(this.a.a).a.a().a(true);
-      TroopObserversHelper.a(this.a.a).a.a().a(0L);
+      TroopObserversHelper.d(this.a.a).bp.u().a(true);
+      TroopObserversHelper.d(this.a.a).bp.u().a(0L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.11.1
  * JD-Core Version:    0.7.0.1
  */

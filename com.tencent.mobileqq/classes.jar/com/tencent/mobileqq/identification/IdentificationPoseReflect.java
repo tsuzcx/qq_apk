@@ -29,21 +29,21 @@ import org.json.JSONObject;
 public class IdentificationPoseReflect
   extends IdentificationBaseModel
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private AppConf jdField_a_of_type_ComTencentMobileqqIdentificationAppConf;
+  private Intent e;
+  private AppConf f;
   
   public IdentificationPoseReflect(Intent paramIntent, RequestListener paramRequestListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener = paramRequestListener;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationAppConf = ((FaceConf)paramIntent.getSerializableExtra("faceConf")).getAppConf();
+    this.b = paramRequestListener;
+    this.e = paramIntent;
+    this.f = ((FaceConf)paramIntent.getSerializableExtra("faceConf")).getAppConf();
   }
   
   private int a(JSONObject paramJSONObject)
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqIdentificationAppConf != null) && (this.jdField_a_of_type_ComTencentMobileqqIdentificationAppConf.actionReq != null))
+      if ((this.f != null) && (this.f.actionReq != null))
       {
         if (paramJSONObject == null)
         {
@@ -51,7 +51,7 @@ public class IdentificationPoseReflect
           return 1004;
         }
         JSONArray localJSONArray = new JSONArray();
-        int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqIdentificationAppConf.actionReq;
+        int[] arrayOfInt = this.f.actionReq;
         int j = arrayOfInt.length;
         int i = 0;
         while (i < j)
@@ -60,8 +60,8 @@ public class IdentificationPoseReflect
           i += 1;
         }
         paramJSONObject.put("action_default_seq", localJSONArray);
-        paramJSONObject.put("color_data", this.jdField_a_of_type_ComTencentMobileqqIdentificationAppConf.colorSequence);
-        paramJSONObject.put("select_data", new JSONObject(this.jdField_a_of_type_ComTencentMobileqqIdentificationAppConf.selectData));
+        paramJSONObject.put("color_data", this.f.colorSequence);
+        paramJSONObject.put("select_data", new JSONObject(this.f.selectData));
         paramJSONObject.remove("timeout_countdown_ms");
         return 0;
       }
@@ -120,47 +120,70 @@ public class IdentificationPoseReflect
     }
   }
   
+  private void a(QQIdentiferActivity paramQQIdentiferActivity, boolean paramBoolean, int paramInt)
+  {
+    a(new IdentificationPoseReflect.1(this, paramQQIdentiferActivity, paramBoolean, paramInt));
+  }
+  
+  private void a(Closeable paramCloseable)
+  {
+    if (paramCloseable == null)
+    {
+      QLog.e("qq_Identification.Model", 1, "closeCloseable, closeable is null");
+      return;
+    }
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable)
+    {
+      QLog.e("qq_Identification.Model", 1, "closeCloseable error : ", paramCloseable);
+    }
+  }
+  
   /* Error */
-  private String a(String paramString)
+  private String b(String paramString)
   {
     // Byte code:
-    //   0: ldc 45
+    //   0: ldc 48
     //   2: iconst_1
     //   3: iconst_2
-    //   4: anewarray 127	java/lang/Object
+    //   4: anewarray 129	java/lang/Object
     //   7: dup
     //   8: iconst_0
-    //   9: ldc 159
+    //   9: ldc 180
     //   11: aastore
     //   12: dup
     //   13: iconst_1
     //   14: aload_1
     //   15: aastore
-    //   16: invokestatic 135	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   16: invokestatic 137	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   19: aconst_null
     //   20: astore_3
-    //   21: new 109	java/lang/StringBuilder
+    //   21: new 111	java/lang/StringBuilder
     //   24: dup
-    //   25: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   25: invokespecial 112	java/lang/StringBuilder:<init>	()V
     //   28: astore 4
-    //   30: new 161	java/io/BufferedReader
+    //   30: new 182	java/io/BufferedReader
     //   33: dup
-    //   34: new 163	java/io/InputStreamReader
+    //   34: new 184	java/io/InputStreamReader
     //   37: dup
-    //   38: new 165	java/io/FileInputStream
+    //   38: new 186	java/io/FileInputStream
     //   41: dup
-    //   42: new 103	java/io/File
+    //   42: new 105	java/io/File
     //   45: dup
     //   46: aload_1
-    //   47: invokespecial 136	java/io/File:<init>	(Ljava/lang/String;)V
-    //   50: invokespecial 168	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   53: invokespecial 171	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   56: invokespecial 174	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   47: invokespecial 138	java/io/File:<init>	(Ljava/lang/String;)V
+    //   50: invokespecial 189	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   53: invokespecial 192	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   56: invokespecial 195	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   59: astore_2
     //   60: aload_2
     //   61: astore_1
     //   62: aload_2
-    //   63: invokevirtual 177	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   63: invokevirtual 198	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   66: astore_3
     //   67: aload_3
     //   68: ifnull +15 -> 83
@@ -168,17 +191,17 @@ public class IdentificationPoseReflect
     //   72: astore_1
     //   73: aload 4
     //   75: aload_3
-    //   76: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: pop
     //   80: goto -20 -> 60
     //   83: aload_2
     //   84: astore_1
     //   85: aload 4
-    //   87: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   90: astore_3
     //   91: aload_0
     //   92: aload_2
-    //   93: invokespecial 180	com/tencent/mobileqq/identification/IdentificationPoseReflect:a	(Ljava/io/Closeable;)V
+    //   93: invokespecial 200	com/tencent/mobileqq/identification/IdentificationPoseReflect:a	(Ljava/io/Closeable;)V
     //   96: aload_3
     //   97: areturn
     //   98: astore_3
@@ -194,28 +217,28 @@ public class IdentificationPoseReflect
     //   114: astore_2
     //   115: aload_2
     //   116: astore_1
-    //   117: ldc 45
+    //   117: ldc 48
     //   119: iconst_1
-    //   120: ldc 182
+    //   120: ldc 202
     //   122: aload_3
-    //   123: invokestatic 92	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   123: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   126: goto +14 -> 140
     //   129: aload_2
     //   130: astore_1
-    //   131: ldc 45
+    //   131: ldc 48
     //   133: iconst_1
-    //   134: ldc 184
+    //   134: ldc 204
     //   136: aload_3
-    //   137: invokestatic 92	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   137: invokestatic 94	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   140: aload_0
     //   141: aload_2
-    //   142: invokespecial 180	com/tencent/mobileqq/identification/IdentificationPoseReflect:a	(Ljava/io/Closeable;)V
+    //   142: invokespecial 200	com/tencent/mobileqq/identification/IdentificationPoseReflect:a	(Ljava/io/Closeable;)V
     //   145: aconst_null
     //   146: areturn
     //   147: astore_2
     //   148: aload_0
     //   149: aload_1
-    //   150: invokespecial 180	com/tencent/mobileqq/identification/IdentificationPoseReflect:a	(Ljava/io/Closeable;)V
+    //   150: invokespecial 200	com/tencent/mobileqq/identification/IdentificationPoseReflect:a	(Ljava/io/Closeable;)V
     //   153: goto +5 -> 158
     //   156: aload_2
     //   157: athrow
@@ -257,33 +280,10 @@ public class IdentificationPoseReflect
     //   21	60	161	java/io/FileNotFoundException
   }
   
-  private void a(QQIdentiferActivity paramQQIdentiferActivity, boolean paramBoolean, int paramInt)
-  {
-    a(new IdentificationPoseReflect.1(this, paramQQIdentiferActivity, paramBoolean, paramInt));
-  }
-  
-  private void a(Closeable paramCloseable)
-  {
-    if (paramCloseable == null)
-    {
-      QLog.e("qq_Identification.Model", 1, "closeCloseable, closeable is null");
-      return;
-    }
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (IOException paramCloseable)
-    {
-      QLog.e("qq_Identification.Model", 1, "closeCloseable error : ", paramCloseable);
-    }
-  }
-  
   protected int a(Activity paramActivity, ICamera paramICamera)
   {
-    Camera localCamera = paramICamera.a();
-    int i = paramICamera.a();
+    Camera localCamera = paramICamera.d();
+    int i = paramICamera.e();
     try
     {
       i = YtCameraSetting.initCamera(paramActivity.getApplicationContext(), localCamera, i);
@@ -330,13 +330,13 @@ public class IdentificationPoseReflect
     localStringBuilder.append(paramString);
     localStringBuilder.append("identification/YtSDKUIConfig.json");
     paramString = localStringBuilder.toString();
-    localObject = a((String)localObject);
+    localObject = b((String)localObject);
     if (localObject == null)
     {
       QLog.e("qq_Identification.Model", 1, "get settingConfigJson error : null");
       return 1001;
     }
-    paramString = a(paramString);
+    paramString = b(paramString);
     if (paramString == null)
     {
       QLog.e("qq_Identification.Model", 1, "get uiConfigJson error : null");
@@ -354,30 +354,6 @@ public class IdentificationPoseReflect
   protected void a(Activity paramActivity, int paramInt)
   {
     a(new IdentificationPoseReflect.2(this, paramInt, paramActivity));
-  }
-  
-  protected void a(Activity paramActivity, ICamera paramICamera)
-  {
-    YtSDKKitFramework.YtSDKPlatformContext localYtSDKPlatformContext = YtSDKKitFramework.getInstance().getPlatformContext();
-    localYtSDKPlatformContext.currentCamera = paramICamera.a();
-    int i = paramICamera.a();
-    localYtSDKPlatformContext.currentCameraId = i;
-    localYtSDKPlatformContext.currentRotateState = YtCameraSetting.getRotate(BaseApplication.getContext(), i, 1);
-    localYtSDKPlatformContext.reflectLayout = null;
-    localYtSDKPlatformContext.reflectListener = new IdentificationPoseReflect.QYTReflectListener(this, null);
-    localYtSDKPlatformContext.currentAppContext = paramActivity.getApplicationContext();
-    paramICamera = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
-    JSONObject localJSONObject = YtSDKKit.a().a(5);
-    ArrayList localArrayList = YtSDKKitConfigHelper.getPipleStateNames(paramICamera);
-    if ((localArrayList != null) && (localJSONObject != null))
-    {
-      QLog.d("qq_Identification.Model", 1, new Object[] { "YtSDKKitFramework init result : ", Integer.valueOf(YtSDKKitFramework.getInstance().init(localYtSDKPlatformContext, localJSONObject, paramICamera, localArrayList, new IdentificationPoseReflect.QYtSDKEventListener(this))) });
-      return;
-    }
-    if ((paramActivity instanceof QQIdentiferActivity)) {
-      a((QQIdentiferActivity)paramActivity, false, 217);
-    }
-    QLog.e("qq_Identification.Model", 1, "initSdkResult stateNames == null || sdkConfig == null");
   }
   
   protected void a(Runnable paramRunnable)
@@ -409,7 +385,7 @@ public class IdentificationPoseReflect
       }
       return;
     }
-    a(paramActivity, localFaceCameraProxy);
+    b(paramActivity, localFaceCameraProxy);
   }
   
   public boolean a(String paramString, String[] paramArrayOfString)
@@ -496,10 +472,34 @@ public class IdentificationPoseReflect
     }
     return false;
   }
+  
+  protected void b(Activity paramActivity, ICamera paramICamera)
+  {
+    YtSDKKitFramework.YtSDKPlatformContext localYtSDKPlatformContext = YtSDKKitFramework.getInstance().getPlatformContext();
+    localYtSDKPlatformContext.currentCamera = paramICamera.d();
+    int i = paramICamera.e();
+    localYtSDKPlatformContext.currentCameraId = i;
+    localYtSDKPlatformContext.currentRotateState = YtCameraSetting.getRotate(BaseApplication.getContext(), i, 1);
+    localYtSDKPlatformContext.reflectLayout = null;
+    localYtSDKPlatformContext.reflectListener = new IdentificationPoseReflect.QYTReflectListener(this, null);
+    localYtSDKPlatformContext.currentAppContext = paramActivity.getApplicationContext();
+    paramICamera = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
+    JSONObject localJSONObject = YtSDKKit.a().a(5);
+    ArrayList localArrayList = YtSDKKitConfigHelper.getPipleStateNames(paramICamera);
+    if ((localArrayList != null) && (localJSONObject != null))
+    {
+      QLog.d("qq_Identification.Model", 1, new Object[] { "YtSDKKitFramework init result : ", Integer.valueOf(YtSDKKitFramework.getInstance().init(localYtSDKPlatformContext, localJSONObject, paramICamera, localArrayList, new IdentificationPoseReflect.QYtSDKEventListener(this))) });
+      return;
+    }
+    if ((paramActivity instanceof QQIdentiferActivity)) {
+      a((QQIdentiferActivity)paramActivity, false, 217);
+    }
+    QLog.e("qq_Identification.Model", 1, "initSdkResult stateNames == null || sdkConfig == null");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationPoseReflect
  * JD-Core Version:    0.7.0.1
  */

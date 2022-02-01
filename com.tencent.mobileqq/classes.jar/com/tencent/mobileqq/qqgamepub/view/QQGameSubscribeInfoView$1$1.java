@@ -10,14 +10,14 @@ class QQGameSubscribeInfoView$1$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (QQGameSubscribeInfoView.a(this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGameSubscribeInfoView$1.a) != null)) {
-      QQGameSubscribeInfoView.a(this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewQQGameSubscribeInfoView$1.a).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if ((this.a != null) && (QQGameSubscribeInfoView.a(this.b.b) != null)) {
+      QQGameSubscribeInfoView.a(this.b.b).setImageBitmap(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.QQGameSubscribeInfoView.1.1
  * JD-Core Version:    0.7.0.1
  */

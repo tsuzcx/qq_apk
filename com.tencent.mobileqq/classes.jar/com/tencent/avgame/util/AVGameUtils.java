@@ -137,7 +137,7 @@ public final class AVGameUtils
       }
       if ((!TextUtils.isEmpty(localObject1)) && (!TextUtils.isEmpty(paramQQAppInterface)))
       {
-        paramQQAppInterface = AvGameLoadingActivity.a(false, j, str3, localObject1, 0, null);
+        paramQQAppInterface = AvGameLoadingActivity.b(false, j, str3, localObject1, 0, null);
         paramQQAppInterface.setClass(BaseApplicationImpl.getApplication(), QPublicFragmentActivity.class);
         paramQQAppInterface.addFlags(268435456);
         paramQQAppInterface.putExtra("public_fragment_class", AvGameLoadingActivity.class.getName());

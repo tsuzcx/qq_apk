@@ -23,19 +23,19 @@ public class ProxyManagerFactoryImpl
     return null;
   }
   
-  public CacheManager a(AppRuntime paramAppRuntime)
-  {
-    return (CacheManager)a(paramAppRuntime, QQManagerFactory.CACHE_MANAGER);
-  }
-  
   public ProxyManager a(AppRuntime paramAppRuntime)
   {
     return (ProxyManager)a(paramAppRuntime, QQManagerFactory.PROXY_MANAGER);
   }
+  
+  public CacheManager b(AppRuntime paramAppRuntime)
+  {
+    return (CacheManager)a(paramAppRuntime, QQManagerFactory.CACHE_MANAGER);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.ProxyManagerFactoryImpl
  * JD-Core Version:    0.7.0.1
  */

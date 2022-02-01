@@ -34,7 +34,7 @@ class LocalTbsViewManager$1
         if (QLog.isColorLevel()) {
           QLog.d("zivonchen", 2, "canOpenFile return ok 1-------");
         }
-        paramInteger = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback;
+        paramInteger = this.a;
         if (paramInteger != null) {
           paramInteger.b(true);
         }
@@ -43,7 +43,7 @@ class LocalTbsViewManager$1
       if (QLog.isColorLevel()) {
         QLog.d("zivonchen", 2, "canOpenFile return ok 2-------");
       }
-      paramInteger = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewLocalTbsViewManager$LocalTbsViewManagerCallback;
+      paramInteger = this.a;
       if (paramInteger != null) {
         paramInteger.b(false);
       }
@@ -52,7 +52,7 @@ class LocalTbsViewManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileview.LocalTbsViewManager.1
  * JD-Core Version:    0.7.0.1
  */

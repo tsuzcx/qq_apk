@@ -24,16 +24,16 @@ class LoginKeyHelperImpl$1
       paramWUserSigInfo.append(paramErrMsg.getMessage());
       QLog.i("XProxy", 2, paramWUserSigInfo.toString());
     }
-    LoginKeyHelperImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqIntervideoImplLoginKeyHelperImpl, this.jdField_a_of_type_JavaLangString, false, paramInt);
+    LoginKeyHelperImpl.access$000(this.b, this.a, false, paramInt);
   }
   
   public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
     if (paramInt2 == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoImplLoginKeyHelperImpl.mAccountInfo.a = this.jdField_a_of_type_ComTencentMobileqqIntervideoImplLoginKeyHelperImpl.wtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoImplLoginKeyHelperImpl.mLastUpdatedTime = System.currentTimeMillis();
-      LoginKeyHelperImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqIntervideoImplLoginKeyHelperImpl, this.jdField_a_of_type_JavaLangString, true, 0);
+      this.b.mAccountInfo.d = this.b.wtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+      this.b.mLastUpdatedTime = System.currentTimeMillis();
+      LoginKeyHelperImpl.access$000(this.b, this.a, true, 0);
       return;
     }
     if (QLog.isColorLevel())
@@ -43,12 +43,12 @@ class LoginKeyHelperImpl$1
       paramString.append(paramInt2);
       QLog.i("XProxy", 2, paramString.toString());
     }
-    LoginKeyHelperImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqIntervideoImplLoginKeyHelperImpl, this.jdField_a_of_type_JavaLangString, false, paramInt2);
+    LoginKeyHelperImpl.access$000(this.b, this.a, false, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.impl.LoginKeyHelperImpl.1
  * JD-Core Version:    0.7.0.1
  */

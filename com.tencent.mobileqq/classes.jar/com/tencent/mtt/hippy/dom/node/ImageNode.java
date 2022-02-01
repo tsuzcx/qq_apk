@@ -1,6 +1,7 @@
 package com.tencent.mtt.hippy.dom.node;
 
 import com.tencent.mtt.hippy.annotation.HippyControllerProps;
+import com.tencent.mtt.hippy.views.image.HippyImageView.ImageEvent;
 import java.util.ArrayList;
 
 public class ImageNode
@@ -9,15 +10,17 @@ public class ImageNode
   public static final String PROP_VERTICAL_ALIGNMENT = "verticalAlignment";
   private ArrayList<String> mGestureTypes = null;
   private c mImageSpan = null;
-  private boolean mIsVirtual;
+  private final boolean mIsVirtual;
   private int mVerticalAlignment = 1;
+  private final boolean[] shouldSendImageEvent;
   
   public ImageNode(boolean paramBoolean)
   {
     this.mIsVirtual = paramBoolean;
+    this.shouldSendImageEvent = new boolean[HippyImageView.ImageEvent.values().length];
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onClick")
+  @HippyControllerProps(defaultType="boolean", name="onClick")
   public void clickEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -39,12 +42,17 @@ public class ImageNode
     return this.mVerticalAlignment;
   }
   
+  public boolean isEnableImageEvent(HippyImageView.ImageEvent paramImageEvent)
+  {
+    return this.shouldSendImageEvent[paramImageEvent.ordinal()];
+  }
+  
   public boolean isVirtual()
   {
     return this.mIsVirtual;
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onLongClick")
+  @HippyControllerProps(defaultType="boolean", name="onLongClick")
   public void longClickEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -56,7 +64,7 @@ public class ImageNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onPressIn")
+  @HippyControllerProps(defaultType="boolean", name="onPressIn")
   public void pressInEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -85,7 +93,19 @@ public class ImageNode
     this.mImageSpan = paramc;
   }
   
-  @HippyControllerProps(defaultString="", defaultType="string", name="src")
+  @HippyControllerProps(defaultType="boolean", name="onError")
+  public void setOnError(boolean paramBoolean)
+  {
+    this.shouldSendImageEvent[HippyImageView.ImageEvent.ONERROR.ordinal()] = paramBoolean;
+  }
+  
+  @HippyControllerProps(defaultType="boolean", name="onLoad")
+  public void setOnLoadEnd(boolean paramBoolean)
+  {
+    this.shouldSendImageEvent[HippyImageView.ImageEvent.ONLOAD.ordinal()] = paramBoolean;
+  }
+  
+  @HippyControllerProps(defaultType="string", name="src")
   public void setUrl(String paramString)
   {
     c localc = this.mImageSpan;
@@ -100,7 +120,7 @@ public class ImageNode
     this.mVerticalAlignment = paramInt;
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchCancel")
+  @HippyControllerProps(defaultType="boolean", name="onTouchCancel")
   public void touchCancelable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -112,7 +132,7 @@ public class ImageNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchDown")
+  @HippyControllerProps(defaultType="boolean", name="onTouchDown")
   public void touchDownEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -124,7 +144,7 @@ public class ImageNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchEnd")
+  @HippyControllerProps(defaultType="boolean", name="onTouchEnd")
   public void touchEndEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -136,7 +156,7 @@ public class ImageNode
     }
   }
   
-  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onTouchMove")
+  @HippyControllerProps(defaultType="boolean", name="onTouchMove")
   public void touchUpEnable(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -150,7 +170,7 @@ public class ImageNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.ImageNode
  * JD-Core Version:    0.7.0.1
  */

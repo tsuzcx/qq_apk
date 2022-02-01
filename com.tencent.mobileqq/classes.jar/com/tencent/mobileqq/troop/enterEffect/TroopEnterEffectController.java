@@ -42,36 +42,77 @@ import java.util.Vector;
 public class TroopEnterEffectController
 {
   public static final String a;
-  protected Handler a;
-  protected SparseArray<TroopEnterEffectData> a;
-  protected LinearLayout a;
-  protected RelativeLayout a;
-  protected ScrollView a;
-  protected SpriteGLView a;
-  private CallBacker a;
-  protected DownloaderInterface a;
-  protected boolean a;
-  protected String b;
+  protected SpriteGLView b;
+  protected LinearLayout c;
+  protected ScrollView d;
+  protected RelativeLayout e;
+  protected Handler f = new Handler(Looper.getMainLooper());
+  protected SparseArray<TroopEnterEffectData> g = new SparseArray();
+  protected DownloaderInterface h;
+  protected boolean i;
+  protected String j;
+  private CallBacker k = new TroopEnterEffectController.4(this);
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append(".troop/enter_effects/");
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    a = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public TroopEnterEffectController(QQAppInterface paramQQAppInterface, RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker = new TroopEnterEffectController.4(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface = ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
-    ((IVasQuickUpdateService)paramQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+    this.e = paramRelativeLayout;
+    this.h = ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    ((IVasQuickUpdateService)paramQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "")).addCallBacker(this.k);
   }
   
-  public static int a(String paramString)
+  public static Bitmap a(String paramString, TroopEnterEffectData paramTroopEnterEffectData)
+  {
+    int m = paramTroopEnterEffectData.f;
+    Object localObject = null;
+    if (m == 2)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("/yearsvip/yearsvip_s");
+      ((StringBuilder)localObject).append(paramTroopEnterEffectData.e);
+      ((StringBuilder)localObject).append(".png");
+      paramString = ((StringBuilder)localObject).toString();
+    }
+    try
+    {
+      paramString = ImageUtil.a(paramString, null);
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString) {}
+    if (paramTroopEnterEffectData.f == 1)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("/svip/svip_s");
+      ((StringBuilder)localObject).append(paramTroopEnterEffectData.e);
+      ((StringBuilder)localObject).append(".png");
+      paramString = ((StringBuilder)localObject).toString();
+      localObject = ImageUtil.a(paramString, null);
+    }
+    return localObject;
+    return null;
+  }
+  
+  public static String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a);
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
+  }
+  
+  public static int b(String paramString)
   {
     if (paramString.startsWith("groupeffect_item_"))
     {
@@ -83,40 +124,38 @@ public class TroopEnterEffectController
     return -1;
   }
   
-  public static Bitmap a(String paramString, TroopEnterEffectData paramTroopEnterEffectData)
+  public static String b()
   {
-    int i = paramTroopEnterEffectData.c;
-    Object localObject = null;
-    if (i == 2)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("/yearsvip/yearsvip_s");
-      ((StringBuilder)localObject).append(paramTroopEnterEffectData.b);
-      ((StringBuilder)localObject).append(".png");
-      paramString = ((StringBuilder)localObject).toString();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return new File(localBaseApplicationImpl.getFilesDir(), "enterEffectVipIcons.zip").getAbsolutePath();
     }
-    try
-    {
-      paramString = ImageUtil.a(paramString, null);
-      return paramString;
-    }
-    catch (OutOfMemoryError paramString) {}
-    if (paramTroopEnterEffectData.c == 1)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("/svip/svip_s");
-      ((StringBuilder)localObject).append(paramTroopEnterEffectData.b);
-      ((StringBuilder)localObject).append(".png");
-      paramString = ((StringBuilder)localObject).toString();
-      localObject = ImageUtil.a(paramString, null);
-    }
-    return localObject;
     return null;
   }
   
-  private TroopEnterEffectConfig.GrayTipsConfig a()
+  public static String c()
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return new File(localBaseApplicationImpl.getFilesDir(), "enterEffectVipIcons").getAbsolutePath();
+    }
+    return null;
+  }
+  
+  public static void d()
+  {
+    String str = c();
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.e("TroopEnterEffect.Controller", 1, "checkVipIconsExists get null path");
+      return;
+    }
+    if (ThemeUtil.getFileNumInFile(new File(str)) == 0) {
+      ((IVasQuickUpdateService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "enterEffectVipIcons", "TroopEnterEffectController");
+    }
+  }
+  
+  private TroopEnterEffectConfig.GrayTipsConfig h()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     ITroopEnterEffectService localITroopEnterEffectService = (ITroopEnterEffectService)localQQAppInterface.getRuntimeService(ITroopEnterEffectService.class, "all");
@@ -134,94 +173,52 @@ public class TroopEnterEffectController
     if (!bool)
     {
       localObject1 = localITroopEnterEffectService.getTroopEnterEffectConfig();
-      if (((TroopEnterEffectConfig)localObject1).a.size() > 0)
+      if (((TroopEnterEffectConfig)localObject1).d.size() > 0)
       {
-        int i;
-        if (localITroopEnterEffectService.hasSetEffect(this.b)) {
-          i = 2;
+        int m;
+        if (localITroopEnterEffectService.hasSetEffect(this.j)) {
+          m = 2;
         } else {
-          i = 1;
+          m = 1;
         }
-        int j = 0;
-        while (j < ((TroopEnterEffectConfig)localObject1).a.size())
+        int n = 0;
+        while (n < ((TroopEnterEffectConfig)localObject1).d.size())
         {
-          TroopEnterEffectConfig.GrayTipsConfig localGrayTipsConfig = (TroopEnterEffectConfig.GrayTipsConfig)((TroopEnterEffectConfig)localObject1).a.get(j);
+          TroopEnterEffectConfig.GrayTipsConfig localGrayTipsConfig = (TroopEnterEffectConfig.GrayTipsConfig)((TroopEnterEffectConfig)localObject1).d.get(n);
           Object localObject2 = localITroopEnterEffectService.getSharedPreferences();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("gray_tips_no_longer_");
-          localStringBuilder.append(localGrayTipsConfig.jdField_a_of_type_Int);
+          localStringBuilder.append(localGrayTipsConfig.a);
           bool = ((SharedPreferences)localObject2).getBoolean(localStringBuilder.toString(), false);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("getGrayTips id = ");
-            ((StringBuilder)localObject2).append(localGrayTipsConfig.jdField_a_of_type_Int);
+            ((StringBuilder)localObject2).append(localGrayTipsConfig.a);
             ((StringBuilder)localObject2).append(" nolongerShow = ");
             ((StringBuilder)localObject2).append(bool);
             QLog.d("TroopEnterEffect.Controller", 2, ((StringBuilder)localObject2).toString());
           }
-          if ((!bool) && (localGrayTipsConfig.a(i, localQQAppInterface))) {
+          if ((!bool) && (localGrayTipsConfig.a(m, localQQAppInterface))) {
             return localGrayTipsConfig;
           }
-          j += 1;
+          n += 1;
         }
       }
     }
     return null;
   }
   
-  public static String a()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return new File(localBaseApplicationImpl.getFilesDir(), "enterEffectVipIcons.zip").getAbsolutePath();
-    }
-    return null;
-  }
-  
-  public static String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(".zip");
-    return localStringBuilder.toString();
-  }
-  
-  public static String b()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return new File(localBaseApplicationImpl.getFilesDir(), "enterEffectVipIcons").getAbsolutePath();
-    }
-    return null;
-  }
-  
-  public static void b()
-  {
-    String str = b();
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.e("TroopEnterEffect.Controller", 1, "checkVipIconsExists get null path");
-      return;
-    }
-    if (ThemeUtil.getFileNumInFile(new File(str)) == 0) {
-      ((IVasQuickUpdateService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "enterEffectVipIcons", "TroopEnterEffectController");
-    }
-  }
-  
   public void a()
   {
-    if (DeviceInfoUtil.h())
+    if (DeviceInfoUtil.U())
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopEnterEffect.Controller", 2, "playAnimaions: isLowEndPhoneForPreDownload = true");
       }
       return;
     }
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopEnterEffect.Controller", 2, "playAnimaions: isSimpleUISwitch = true");
@@ -229,10 +226,10 @@ public class TroopEnterEffectController
       return;
     }
     ITroopEnterEffectService localITroopEnterEffectService = (ITroopEnterEffectService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(ITroopEnterEffectService.class, "all");
-    TroopEnterEffectData localTroopEnterEffectData = localITroopEnterEffectService.getFirstEffectData(this.b);
-    if ((localTroopEnterEffectData != null) && (a(localTroopEnterEffectData)))
+    TroopEnterEffectData localTroopEnterEffectData = localITroopEnterEffectService.getFirstEffectData(this.j);
+    if ((localTroopEnterEffectData != null) && (b(localTroopEnterEffectData)))
     {
-      if (System.currentTimeMillis() - localTroopEnterEffectData.jdField_a_of_type_Long < 60000L)
+      if (System.currentTimeMillis() - localTroopEnterEffectData.d < 60000L)
       {
         a(localTroopEnterEffectData);
         return;
@@ -250,26 +247,26 @@ public class TroopEnterEffectController
       ((StringBuilder)localObject1).append("showAnimation: enterEffectData = ");
       ((StringBuilder)localObject1).append(paramTroopEnterEffectData);
       ((StringBuilder)localObject1).append(" isAio = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.i);
       QLog.d("TroopEnterEffect.Controller", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null)
+    if (this.b == null)
     {
       Object localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       String str = ((QQAppInterface)localObject2).getCurrentUin();
-      if ((!TextUtils.isEmpty(str)) && (str.equals(paramTroopEnterEffectData.jdField_a_of_type_JavaLangString))) {
-        VasWebviewUtil.a(str, "style", "0X8008E5F", "", 1, 0, 0, "", Integer.toString(paramTroopEnterEffectData.jdField_a_of_type_Int), "");
+      if ((!TextUtils.isEmpty(str)) && (str.equals(paramTroopEnterEffectData.b))) {
+        VasWebviewUtil.a(str, "style", "0X8008E5F", "", 1, 0, 0, "", Integer.toString(paramTroopEnterEffectData.a), "");
       } else {
-        VasWebviewUtil.a(str, "style", "0X8008E60", "", 1, 0, 0, "", Integer.toString(paramTroopEnterEffectData.jdField_a_of_type_Int), "");
+        VasWebviewUtil.a(str, "style", "0X8008E60", "", 1, 0, 0, "", Integer.toString(paramTroopEnterEffectData.a), "");
       }
       localObject1 = (ITroopEnterEffectService)((QQAppInterface)localObject2).getRuntimeService(ITroopEnterEffectService.class, "all");
       ((ITroopEnterEffectService)localObject1).removeEnterEffectData(paramTroopEnterEffectData);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = new SpriteGLView(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), 1);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b = true;
+      this.b = new SpriteGLView(this.e.getContext(), 1);
+      this.b.v = true;
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, 0);
-      View localView1 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379143);
-      View localView2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379333);
-      View localView3 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374119);
+      View localView1 = this.e.findViewById(2131447879);
+      View localView2 = this.e.findViewById(2131448070);
+      View localView3 = this.e.findViewById(2131442214);
       if ((localView1 != null) && (localView1.getVisibility() == 0)) {
         localLayoutParams.topMargin = localView1.getBottom();
       } else if ((localView2 != null) && (localView2.getVisibility() == 0)) {
@@ -277,26 +274,26 @@ public class TroopEnterEffectController
       } else if ((localView3 != null) && (localView3.getVisibility() == 0)) {
         localLayoutParams.topMargin = localView3.getBottom();
       } else {
-        localLayoutParams.topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), 50.0F);
+        localLayoutParams.topMargin = DisplayUtil.a(this.e.getContext(), 50.0F);
       }
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
+      if (this.c == null) {
+        this.c = new LinearLayout(this.e.getContext());
       }
-      if (this.jdField_a_of_type_AndroidWidgetScrollView == null)
+      if (this.d == null)
       {
-        this.jdField_a_of_type_AndroidWidgetScrollView = new TroopEnterEffectController.1(this, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
-        this.jdField_a_of_type_AndroidWidgetScrollView.setClickable(false);
-        this.jdField_a_of_type_AndroidWidgetScrollView.setEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, -1, DisplayUtil.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight()));
+        this.d = new TroopEnterEffectController.1(this, this.e.getContext());
+        this.d.setClickable(false);
+        this.d.setEnabled(false);
+        this.d.addView(this.c, -1, DisplayUtil.a(this.e.getContext(), this.e.getHeight()));
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetScrollView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, -1, 0);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.setOnTouchListener(new TroopEnterEffectController.2(this, (QQAppInterface)localObject2, str, paramTroopEnterEffectData));
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.post(new TroopEnterEffectController.3(this, paramTroopEnterEffectData));
+      this.e.addView(this.d, localLayoutParams);
+      this.c.addView(this.b, -1, 0);
+      this.b.setOnTouchListener(new TroopEnterEffectController.2(this, (QQAppInterface)localObject2, str, paramTroopEnterEffectData));
+      this.b.post(new TroopEnterEffectController.3(this, paramTroopEnterEffectData));
       paramTroopEnterEffectData = (TroopEnterEffectManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.TROOP_ENTER_EFFECT_MANAGER);
-      localObject2 = a();
+      localObject2 = h();
       if (localObject2 != null) {
-        paramTroopEnterEffectData.a((TroopEnterEffectConfig.GrayTipsConfig)localObject2, this.b);
+        paramTroopEnterEffectData.a((TroopEnterEffectConfig.GrayTipsConfig)localObject2, this.j);
       }
       ((ITroopEnterEffectService)localObject1).report("Grp_AIO", "action_play", new String[0]);
     }
@@ -304,78 +301,78 @@ public class TroopEnterEffectController
   
   public void a(String paramString)
   {
-    this.b = paramString;
+    this.j = paramString;
   }
   
-  public boolean a(TroopEnterEffectData paramTroopEnterEffectData)
+  public boolean b(TroopEnterEffectData paramTroopEnterEffectData)
   {
-    int i = paramTroopEnterEffectData.jdField_a_of_type_Int;
+    int m = paramTroopEnterEffectData.a;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("downloadAnimationResources: id = ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(m);
       QLog.d("TroopEnterEffect.Controller", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(a);
+    ((StringBuilder)localObject).append(m);
     localObject = ((StringBuilder)localObject).toString();
     if (TroopGiftUtil.a(new File((String)localObject))) {
       return true;
     }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i) != null) {
+    if (this.g.get(m) != null) {
       return false;
     }
     FileUtils.deleteDirectory((String)localObject);
     localObject = (IVasQuickUpdateService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IVasQuickUpdateService.class, "");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("groupeffect_item_");
-    localStringBuilder.append(i);
+    localStringBuilder.append(m);
     localStringBuilder.append(".zip");
     ((IVasQuickUpdateService)localObject).downloadItem(25L, localStringBuilder.toString(), "TroopEnterEffectController");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(i, paramTroopEnterEffectData);
+    this.g.put(m, paramTroopEnterEffectData);
     return false;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect.Controller", 2, "onResume");
-    }
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void d()
-  {
-    SpriteGLView localSpriteGLView = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView;
-    if (localSpriteGLView != null)
-    {
-      localSpriteGLView.n();
-      this.jdField_a_of_type_AndroidWidgetScrollView.removeAllViews();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetScrollView);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = null;
-      this.jdField_a_of_type_AndroidWidgetScrollView = null;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    ((ITroopEnterEffectService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(ITroopEnterEffectService.class, "all")).removeAllEffectDatas(this.b);
   }
   
   public void e()
   {
     if (QLog.isColorLevel()) {
+      QLog.d("TroopEnterEffect.Controller", 2, "onResume");
+    }
+    this.i = true;
+  }
+  
+  public void f()
+  {
+    SpriteGLView localSpriteGLView = this.b;
+    if (localSpriteGLView != null)
+    {
+      localSpriteGLView.o();
+      this.d.removeAllViews();
+      this.c.removeView(this.b);
+      this.e.removeView(this.d);
+      this.b = null;
+      this.d = null;
+      this.c = null;
+    }
+    this.i = false;
+    this.f.removeCallbacksAndMessages(null);
+    ((ITroopEnterEffectService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(ITroopEnterEffectService.class, "all")).removeAllEffectDatas(this.j);
+  }
+  
+  public void g()
+  {
+    if (QLog.isColorLevel()) {
       QLog.d("TroopEnterEffect.Controller", 2, "onDestroy remove quickupdate callback");
     }
-    ((IVasQuickUpdateService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IVasQuickUpdateService.class, "")).removeCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+    ((IVasQuickUpdateService)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getRuntimeService(IVasQuickUpdateService.class, "")).removeCallBacker(this.k);
     PobingManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController
  * JD-Core Version:    0.7.0.1
  */

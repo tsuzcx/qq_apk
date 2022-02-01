@@ -8,26 +8,24 @@ public class GroupCatalogXmlHandler
   extends DefaultHandler
 {
   protected GroupCatalogBean a;
-  protected String a;
-  protected ArrayList<GroupCatalogBean> a;
-  protected boolean a;
-  protected GroupCatalogBean b;
+  protected String b;
+  protected boolean c = false;
+  protected ArrayList<GroupCatalogBean> d = new ArrayList();
+  protected GroupCatalogBean e;
   
   public GroupCatalogXmlHandler(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public GroupCatalogBean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean;
+    return this.a;
   }
   
-  public ArrayList<GroupCatalogBean> a()
+  public ArrayList<GroupCatalogBean> b()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.d;
   }
   
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
@@ -36,9 +34,9 @@ public class GroupCatalogXmlHandler
   
   public void endElement(String paramString1, String paramString2, String paramString3)
   {
-    paramString1 = this.b;
+    paramString1 = this.e;
     if (paramString1 != null) {
-      this.b = paramString1.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean;
+      this.e = paramString1.e;
     }
   }
   
@@ -77,7 +75,7 @@ public class GroupCatalogXmlHandler
       if (paramString1 == null) {
         return;
       }
-      paramAttributes = this.b;
+      paramAttributes = this.e;
       if (!paramString2.startsWith("L")) {
         return;
       }
@@ -95,23 +93,23 @@ public class GroupCatalogXmlHandler
         return;
       }
       paramString2 = new GroupCatalogBean(i, paramString1, paramString3);
-      this.b = paramString2;
+      this.e = paramString2;
       if (paramString2.a(paramAttributes)) {
-        paramAttributes.a(this.b);
+        paramAttributes.b(this.e);
       } else {
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.b);
+        this.d.add(this.e);
       }
-      if ((!this.jdField_a_of_type_Boolean) && (String.valueOf(this.jdField_a_of_type_JavaLangString).equals(paramString1)))
+      if ((!this.c) && (String.valueOf(this.b).equals(paramString1)))
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopcatalogGroupCatalogBean = paramString2;
+        this.c = true;
+        this.a = paramString2;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcatalog.GroupCatalogXmlHandler
  * JD-Core Version:    0.7.0.1
  */

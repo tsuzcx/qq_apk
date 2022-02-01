@@ -55,9 +55,9 @@ public class AddContactTroopHandler
     }
     paramSosoLbsInfo = new userinfo.AppInfo();
     paramSosoLbsInfo.plat_type.set(2);
-    paramSosoLbsInfo.str_app_version.set(DeviceInfoUtil.c());
+    paramSosoLbsInfo.str_app_version.set(DeviceInfoUtil.e());
     localUserInfo.app_info.set(paramSosoLbsInfo);
-    localUserInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    localUserInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     paramSosoLbsInfo = (TicketManager)this.a.getManager(2);
     Object localObject = this.a.getAccount();
     if (!TextUtils.isEmpty(paramSosoLbsInfo.getSkey((String)localObject))) {
@@ -154,7 +154,7 @@ public class AddContactTroopHandler
     paramIGetPopClassAndSearchCB.uint32_accuracy.set(k);
     paramIGetPopClassAndSearchCB.uint32_time.set((int)d2);
     paramIGetPopClassAndSearchCB.uint32_cityid.set(i);
-    paramIGetPopClassAndSearchCB.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    paramIGetPopClassAndSearchCB.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     paramIGetPopClassAndSearchCB.uint32_client.set(2);
     paramSosoLbsInfo = (IRecommendTroopService)this.a.getRuntimeService(IRecommendTroopService.class, "");
     if (paramSosoLbsInfo != null) {

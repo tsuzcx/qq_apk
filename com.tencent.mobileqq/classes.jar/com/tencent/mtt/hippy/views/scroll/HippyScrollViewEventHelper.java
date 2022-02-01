@@ -11,6 +11,7 @@ import com.tencent.mtt.hippy.utils.PixelUtil;
 
 public class HippyScrollViewEventHelper
 {
+  public static final String EVENT_ON_END_REACHED = "onEndReached";
   public static final String EVENT_TYPE_ANIMATION_END = "onScrollAnimationEnd";
   public static final String EVENT_TYPE_BEGIN_DRAG = "onScrollBeginDrag";
   public static final String EVENT_TYPE_END_DRAG = "onScrollEndDrag";
@@ -19,11 +20,6 @@ public class HippyScrollViewEventHelper
   public static final String EVENT_TYPE_REFRESH = "onRefresh";
   public static final String EVENT_TYPE_SCROLL = "onScroll";
   public static final long MOMENTUM_DELAY = 20L;
-  
-  public static void emitScrollAnimationEndEvent(ViewGroup paramViewGroup)
-  {
-    emitScrollEvent(paramViewGroup, "onScrollAnimationEnd");
-  }
   
   public static void emitScrollBeginDragEvent(ViewGroup paramViewGroup)
   {
@@ -92,7 +88,7 @@ public class HippyScrollViewEventHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.scroll.HippyScrollViewEventHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ class PrinterStatusHandler$1
   public void run()
   {
     ReportController.b(PrinterStatusHandler.a(this.this$0), "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
-    if (PrinterStatusHandler.a(this.this$0) != null)
+    if (PrinterStatusHandler.b(this.this$0) != null)
     {
-      PrinterStatusHandler.a(this.this$0).cancel();
+      PrinterStatusHandler.b(this.this$0).cancel();
       PrinterStatusHandler.a(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterStatusHandler.1
  * JD-Core Version:    0.7.0.1
  */

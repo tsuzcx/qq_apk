@@ -2,39 +2,30 @@ package com.tencent.av.ui;
 
 public class QavListItemBase$ItemInfo
 {
-  public int a;
-  public Object a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
-  public int c;
   public String c;
-  public boolean c;
-  public int d;
-  public String d;
   public boolean d;
-  
-  public QavListItemBase$ItemInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_d_of_type_Boolean = false;
-  }
+  public boolean e;
+  public int f = 0;
+  public int g;
+  public boolean h = false;
+  public int i = 0;
+  public int j = 0;
+  public String k;
+  public String l;
+  public Object m = null;
+  public boolean n = false;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("id[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], name[");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("], desc[");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

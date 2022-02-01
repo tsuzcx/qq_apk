@@ -59,7 +59,7 @@ public abstract class KmeansPlus<T>
     paramList1 = paramList.toString();
     paramArrayOfLong = (StoryConfigManager)SuperManager.a(10);
     paramList = "";
-    localObject1 = (String)paramArrayOfLong.b("key_album_debug_sse", "");
+    localObject1 = (String)paramArrayOfLong.c("key_album_debug_sse", "");
     paramArrayOfLong = paramList1;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -100,7 +100,7 @@ public abstract class KmeansPlus<T>
       while (i < paramList.size())
       {
         if (((List)paramList.get(i)).size() > 0) {
-          localArrayList.add(a((List)paramList.get(i)));
+          localArrayList.add(b((List)paramList.get(i)));
         } else {
           SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.kmeans", "点位置相同时，有空的堆出现");
         }
@@ -111,7 +111,23 @@ public abstract class KmeansPlus<T>
     return this.a;
   }
   
-  private List<List<T>> a(List<T> paramList1, List<T> paramList2)
+  private boolean a(List<T> paramList1, List<T> paramList2)
+  {
+    if (paramList1.size() != paramList2.size()) {
+      return false;
+    }
+    int i = 0;
+    while (i < paramList1.size())
+    {
+      if (!a(paramList1.get(i), paramList2.get(i))) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
+  }
+  
+  private List<List<T>> b(List<T> paramList1, List<T> paramList2)
   {
     ArrayList localArrayList = new ArrayList();
     if ((paramList2 != null) && (paramList2.size() >= 2))
@@ -132,7 +148,7 @@ public abstract class KmeansPlus<T>
         int k = 0;
         while (i < paramList2.size())
         {
-          long l3 = a(localObject, paramList2.get(i));
+          long l3 = b(localObject, paramList2.get(i));
           long l2;
           if (l1 != -1L)
           {
@@ -156,23 +172,7 @@ public abstract class KmeansPlus<T>
     return localArrayList;
   }
   
-  private boolean a(List<T> paramList1, List<T> paramList2)
-  {
-    if (paramList1.size() != paramList2.size()) {
-      return false;
-    }
-    int i = 0;
-    while (i < paramList1.size())
-    {
-      if (!a(paramList1.get(i), paramList2.get(i))) {
-        return false;
-      }
-      i += 1;
-    }
-    return true;
-  }
-  
-  private T b(List<T> paramList)
+  private T d(List<T> paramList)
   {
     long l2 = -1L;
     int i = 0;
@@ -183,7 +183,7 @@ public abstract class KmeansPlus<T>
       int k = 0;
       while (k < paramList.size())
       {
-        long l4 = a(paramList.get(k), this.b.get(i));
+        long l4 = b(paramList.get(k), this.b.get(i));
         if (l4 == 0L)
         {
           l1 = -1L;
@@ -215,22 +215,13 @@ public abstract class KmeansPlus<T>
   
   protected abstract double a();
   
-  protected int a()
-  {
-    return 100;
-  }
-  
-  protected abstract long a(T paramT1, T paramT2);
-  
-  protected abstract T a(List<T> paramList);
-  
   public List<List<T>> a(int paramInt1, List<T> paramList, long[] paramArrayOfLong, int paramInt2)
   {
     this.a = paramList;
     paramInt1 = 0;
     while (paramInt1 < 50)
     {
-      this.c = a(this.b, this.a);
+      this.c = b(this.b, this.a);
       paramList = a(this.c);
       if (a(this.a, paramList)) {
         break;
@@ -247,7 +238,7 @@ public abstract class KmeansPlus<T>
       int i = 0;
       while (i < paramList.size())
       {
-        l += a(localObject, paramList.get(i));
+        l += b(localObject, paramList.get(i));
         i += 1;
       }
       paramInt1 += 1;
@@ -265,7 +256,7 @@ public abstract class KmeansPlus<T>
     int i = 1;
     while (i < paramInt1)
     {
-      Object localObject = b(this.a);
+      Object localObject = d(this.a);
       this.a.add(localObject);
       i += 1;
     }
@@ -277,7 +268,7 @@ public abstract class KmeansPlus<T>
   {
     Object localObject = this.b;
     this.b = paramList;
-    int i = Math.min(Math.min(this.b.size() - 2, 20), a());
+    int i = Math.min(Math.min(this.b.size() - 2, 20), b());
     if (i <= 0) {
       i = 1;
     }
@@ -342,12 +333,6 @@ public abstract class KmeansPlus<T>
     return this.c;
   }
   
-  public void a(List<T> paramList)
-  {
-    List localList = this.b;
-    this.b = paramList;
-  }
-  
   protected boolean a(long paramLong)
   {
     return false;
@@ -357,16 +342,31 @@ public abstract class KmeansPlus<T>
   
   protected int b()
   {
+    return 100;
+  }
+  
+  protected abstract long b(T paramT1, T paramT2);
+  
+  protected abstract T b(List<T> paramList);
+  
+  protected int c()
+  {
     List localList = this.b;
     if (localList == null) {
       return 0;
     }
     return localList.size();
   }
+  
+  public void c(List<T> paramList)
+  {
+    List localList = this.b;
+    this.b = paramList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.kmeans.KmeansPlus
  * JD-Core Version:    0.7.0.1
  */

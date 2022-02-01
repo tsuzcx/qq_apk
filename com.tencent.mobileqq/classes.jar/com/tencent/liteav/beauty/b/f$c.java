@@ -30,7 +30,6 @@ class f$c
   
   public boolean a()
   {
-    NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(2);
     if ((this.a != 0) && (b())) {
       this.g = true;
@@ -54,7 +53,7 @@ class f$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.f.c
  * JD-Core Version:    0.7.0.1
  */

@@ -19,15 +19,15 @@ class QQStoryWatcherListActivity$3
     {
       paramView = (QQUserUIItem)paramObject;
       StoryApi.a(this.a, 10, paramView.uid);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
-        StoryReportor.a("home_page", "clk_head_list", StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", StoryReportor.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
+      if ((!TextUtils.isEmpty(this.a.j)) && (this.a.k != null)) {
+        StoryReportor.a("home_page", "clk_head_list", StoryReportor.a(this.a.k), 0, new String[] { "1", StoryReportor.b(this.a.l), "", this.a.j });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity.3
  * JD-Core Version:    0.7.0.1
  */

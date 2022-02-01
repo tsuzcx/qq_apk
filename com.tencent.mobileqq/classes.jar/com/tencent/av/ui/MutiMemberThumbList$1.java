@@ -17,7 +17,7 @@ class MutiMemberThumbList$1
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_Int;
+    int j = this.a;
     int k = MutiMemberThumbList.a(this.this$0).length;
     int i = 0;
     boolean bool;
@@ -26,21 +26,21 @@ class MutiMemberThumbList$1
     } else {
       bool = false;
     }
-    while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < MutiMemberThumbList.a(this.this$0).length))
+    while ((i < this.b.size()) && (i < MutiMemberThumbList.a(this.this$0).length))
     {
-      Object localObject = (VideoController.GAudioFriends)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      Object localObject = (VideoController.GAudioFriends)this.b.get(i);
       if ((bool) && (i == MutiMemberThumbList.a(this.this$0).length - 1)) {
         break;
       }
-      Bitmap localBitmap = MutiMemberThumbList.a(this.this$0).a(String.valueOf(((VideoController.GAudioFriends)localObject).a), String.valueOf(MutiMemberThumbList.a(this.this$0)), MutiMemberThumbList.a(this.this$0), true, true);
+      Bitmap localBitmap = MutiMemberThumbList.d(this.this$0).a(String.valueOf(((VideoController.GAudioFriends)localObject).a), String.valueOf(MutiMemberThumbList.b(this.this$0)), MutiMemberThumbList.c(this.this$0), true, true);
       localObject = localBitmap;
-      if (MutiMemberThumbList.a(this.this$0)) {
+      if (MutiMemberThumbList.e(this.this$0)) {
         localObject = UITools.a(localBitmap, "#4C000000", true);
       }
       localArrayList.add(localObject);
       i += 1;
     }
-    if (MutiMemberThumbList.b(this.this$0))
+    if (MutiMemberThumbList.f(this.this$0))
     {
       QLog.d("MutiMemberThumbList", 1, "doDisplay quit by destroyed in UI_Thread");
       return;

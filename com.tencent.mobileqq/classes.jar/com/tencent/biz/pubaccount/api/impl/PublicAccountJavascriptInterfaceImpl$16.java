@@ -16,15 +16,15 @@ class PublicAccountJavascriptInterfaceImpl$16
       if (PublicAccountJavascriptInterfaceImpl.access$100() > 52428800L)
       {
         PublicAccountJavascriptInterfaceImpl localPublicAccountJavascriptInterfaceImpl = this.this$0;
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("{ret:-12, response:");
-        localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+        localStringBuilder.append(this.b.toString());
         localStringBuilder.append("}");
         localPublicAccountJavascriptInterfaceImpl.callJs(str, new String[] { localStringBuilder.toString() });
         return;
       }
-      this.this$0.writeData(this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+      this.this$0.writeData(this.c, this.a, this.b);
       return;
     }
     finally {}
@@ -32,7 +32,7 @@ class PublicAccountJavascriptInterfaceImpl$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl.16
  * JD-Core Version:    0.7.0.1
  */

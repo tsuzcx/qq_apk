@@ -23,7 +23,7 @@ class QZoneShareActivity$7$1
   {
     if (this.val$currentCount > this.val$maxWordCnt)
     {
-      QQToast.a(this.this$1.this$0, 4, 2131717731, 0).a();
+      QQToast.makeText(this.this$1.this$0, 4, 2131915206, 0).show();
       return;
     }
     this.this$1.this$0.hideKeyboardAndEmo();
@@ -87,7 +87,7 @@ class QZoneShareActivity$7$1
     else
     {
       QZoneShareActivity.access$900(this.this$1.this$0);
-      QQToast.a(this.this$1.this$0, 5, HardCodeUtil.a(2131712283), 0).a();
+      QQToast.makeText(this.this$1.this$0, 5, HardCodeUtil.a(2131909883), 0).show();
     }
     this.this$1.this$0.setResult(-1, this.this$1.this$0.getIntent());
     this.this$1.this$0.finish();
@@ -95,7 +95,7 @@ class QZoneShareActivity$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

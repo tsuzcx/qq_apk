@@ -18,27 +18,27 @@ class HotVideoData$1
       if (paramRichProtoResp.resps.size() > 0)
       {
         paramRichProtoReq = (RichProto.RichProtoResp.ShortVideoDownResp)paramRichProtoResp.resps.get(0);
-        this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.a(paramRichProtoReq);
+        this.a.a(paramRichProtoReq);
       }
       else
       {
-        paramRichProtoReq = this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult;
-        paramRichProtoReq.jdField_a_of_type_Boolean = false;
-        paramRichProtoReq.jdField_a_of_type_JavaLangString = "Unknown error！";
+        paramRichProtoReq = this.a;
+        paramRichProtoReq.a = false;
+        paramRichProtoReq.b = "Unknown error！";
       }
     }
     else
     {
-      paramRichProtoReq = this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult;
-      paramRichProtoReq.jdField_a_of_type_Boolean = false;
-      paramRichProtoReq.jdField_a_of_type_JavaLangString = "Unknown error！";
+      paramRichProtoReq = this.a;
+      paramRichProtoReq.a = false;
+      paramRichProtoReq.b = "Unknown error！";
     }
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlCallBack.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult);
+    this.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoData.1
  * JD-Core Version:    0.7.0.1
  */

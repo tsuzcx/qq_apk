@@ -157,7 +157,7 @@ public class Utils
       {
         if (ThemeUtil.isInNightMode(((PublicFragmentActivity)localObject).getAppRuntime()))
         {
-          if ((!SystemUtil.b()) && (!SystemUtil.d()))
+          if ((!SystemUtil.d()) && (!SystemUtil.g()))
           {
             localSystemBarCompact.setStatusBarColor(-7829368);
             return;
@@ -166,13 +166,13 @@ public class Utils
           localSystemBarCompact.setStatusBarDarkMode(true);
           return;
         }
-        if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
+        if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.g()))
         {
           ((PublicFragmentActivity)localObject).getWindow().getDecorView().setSystemUiVisibility(9216);
           localSystemBarCompact.setStatusBarColor(-1);
           return;
         }
-        if (!SystemUtil.d())
+        if (!SystemUtil.g())
         {
           localSystemBarCompact.setStatusBarColor(-2368549);
           return;
@@ -305,11 +305,11 @@ public class Utils
             try
             {
               localObject3 = (AtFriendsSpan)localObject3;
-              localObject4 = new JumpInfo(Long.parseLong(((AtFriendsSpan)localObject3).jdField_a_of_type_JavaLangString), ((AtFriendsSpan)localObject3).a(), paramEditText);
-              String str2 = ((AtFriendsSpan)localObject3).jdField_a_of_type_JavaLangString;
+              localObject4 = new JumpInfo(Long.parseLong(((AtFriendsSpan)localObject3).a), ((AtFriendsSpan)localObject3).b(), paramEditText);
+              String str2 = ((AtFriendsSpan)localObject3).a;
               try
               {
-                paramList.add(new BiuCommentInfo(str2, Long.valueOf(((AtFriendsSpan)localObject3).jdField_a_of_type_Long), (String)localObject2, 1, (JumpInfo)localObject4));
+                paramList.add(new BiuCommentInfo(str2, Long.valueOf(((AtFriendsSpan)localObject3).b), (String)localObject2, 1, (JumpInfo)localObject4));
               }
               catch (NumberFormatException localNumberFormatException1) {}
               localObject3 = new StringBuilder();
@@ -325,18 +325,18 @@ public class Utils
               break label549;
             }
             localObject3 = (BiuNicknameSpan)localObject3;
-            paramList.add(new BiuCommentInfo(((BiuNicknameSpan)localObject3).jdField_a_of_type_JavaLangString, Long.valueOf(((BiuNicknameSpan)localObject3).jdField_a_of_type_Long), localNumberFormatException2, 0));
+            paramList.add(new BiuCommentInfo(((BiuNicknameSpan)localObject3).a, Long.valueOf(((BiuNicknameSpan)localObject3).b), localNumberFormatException2, 0));
           }
           break label668;
           label549:
           if ((localObject3 instanceof TopicSpan))
           {
-            localObject3 = ((TopicSpan)localObject3).a();
-            paramList.add(new BiuCommentInfo(paramString, Long.valueOf(0L), localNumberFormatException2, 2, new JumpInfo(((TopicInfo)localObject3).a(), ((TopicInfo)localObject3).a(), ((TopicInfo)localObject3).d())));
+            localObject3 = ((TopicSpan)localObject3).b();
+            paramList.add(new BiuCommentInfo(paramString, Long.valueOf(0L), localNumberFormatException2, 2, new JumpInfo(((TopicInfo)localObject3).a(), ((TopicInfo)localObject3).b(), ((TopicInfo)localObject3).d())));
           }
           else if ((localObject3 instanceof JumpSpan))
           {
-            paramList.add(new BiuCommentInfo(paramString, Long.valueOf(0L), localNumberFormatException2, 3, new JumpInfo(0L, HardCodeUtil.a(2131715777), ((JumpSpan)localObject3).a())));
+            paramList.add(new BiuCommentInfo(paramString, Long.valueOf(0L), localNumberFormatException2, 3, new JumpInfo(0L, HardCodeUtil.a(2131913235), ((JumpSpan)localObject3).a())));
           }
           label668:
           j += 1;
@@ -422,7 +422,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.Utils
  * JD-Core Version:    0.7.0.1
  */

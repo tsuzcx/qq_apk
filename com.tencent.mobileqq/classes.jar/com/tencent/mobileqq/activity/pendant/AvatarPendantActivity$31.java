@@ -35,7 +35,7 @@ class AvatarPendantActivity$31
             if (paramGetAdsRsp != null)
             {
               AvatarPendantActivity.b(this.a, paramGetAdsRsp.iAdId.get());
-              AvatarPendantActivity.c(this.a, paramGetAdsRsp.traceinfo.get());
+              AvatarPendantActivity.e(this.a, paramGetAdsRsp.traceinfo.get());
               bool1 = true;
             }
             else
@@ -56,13 +56,13 @@ class AvatarPendantActivity$31
     paramGetAdsRsp.append("getCmshowAvatarRedDot should show:");
     paramGetAdsRsp.append(bool1);
     QLog.d("AvatarPendantActivity", 1, paramGetAdsRsp.toString());
-    this.a.a.putBoolean("cmshow_avatar_red_dot", bool1);
-    this.a.a.apply();
+    this.a.ao.putBoolean("cmshow_avatar_red_dot", bool1);
+    this.a.ao.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.31
  * JD-Core Version:    0.7.0.1
  */

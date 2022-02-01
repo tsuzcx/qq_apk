@@ -16,7 +16,7 @@ class FeedSegment$13$1$1
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment$13$1.a.a).a(this.jdField_a_of_type_JavaLangString);
+    FeedSegment.l(this.b.a.e).a(this.a);
     return null;
   }
 }

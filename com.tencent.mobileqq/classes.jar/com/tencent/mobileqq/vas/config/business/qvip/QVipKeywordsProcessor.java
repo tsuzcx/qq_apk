@@ -20,7 +20,7 @@ public class QVipKeywordsProcessor
   public QVipKeywordsConfig a(QConfItem[] paramArrayOfQConfItem)
   {
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     AioVipKeywordConfigHelper.a().a(((AppRuntime)localObject).getApplication(), paramArrayOfQConfItem, ((AppRuntime)localObject).getCurrentAccountUin());
     if (QLog.isColorLevel())
     {
@@ -55,7 +55,7 @@ public class QVipKeywordsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipKeywordsProcessor
  * JD-Core Version:    0.7.0.1
  */

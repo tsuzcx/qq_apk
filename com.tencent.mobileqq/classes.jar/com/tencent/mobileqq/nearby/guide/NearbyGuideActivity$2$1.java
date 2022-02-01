@@ -13,26 +13,26 @@ class NearbyGuideActivity$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$2.a.dismissProcessDialog();
-    if (this.jdField_a_of_type_Boolean)
+    this.c.a.dismissProcessDialog();
+    if (this.a)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$2.a.showToast(2, HardCodeUtil.a(2131707209));
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$2.a.gotoNearbyBaseActivity(true);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$2.a.finish();
-      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$2.a.app.getAccount(), "nearby_need_show_guide", Boolean.valueOf(false));
+      this.c.a.showToast(2, HardCodeUtil.a(2131905041));
+      this.c.a.gotoNearbyBaseActivity(true);
+      this.c.a.finish();
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.c.a.app.getAccount(), "nearby_need_show_guide", Boolean.valueOf(false));
       return;
     }
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    String str2 = this.b;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = HardCodeUtil.a(2131707223);
+      str1 = HardCodeUtil.a(2131905055);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity$2.a.showToast(1, str1);
+    this.c.a.showToast(1, str1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

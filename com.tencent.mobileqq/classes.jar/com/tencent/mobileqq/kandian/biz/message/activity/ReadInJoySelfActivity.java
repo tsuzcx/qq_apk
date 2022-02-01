@@ -6,7 +6,7 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.QIphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,28 +22,24 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.os.MqqHandler;
 
 public class ReadInJoySelfActivity
-  extends IphoneTitleBarActivity
+  extends QIphoneTitleBarActivity
   implements OnTabRedNumsChangeListenner
 {
   protected QQAppInterface a;
-  protected ReadInJoyBaseFragment a;
-  protected KandianMergeManager a;
+  protected KandianMergeManager b;
+  protected ReadInJoyBaseFragment c;
   
   private void a()
   {
-    this.app = ((QQAppInterface)super.getAppRuntime());
-    if (this.app == null) {
-      return;
+    ReadInJoyWebDataManager.a().d(this.a.getCurrentAccountUin());
+    if (this.b != null) {
+      ReadInJoyWebDataManager.a().a(this.a.getCurrentAccountUin(), this.b.P() ^ true);
     }
-    ReadInJoyWebDataManager.a().d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianMergeManager != null) {
-      ReadInJoyWebDataManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianMergeManager.i() ^ true);
-    }
-    setContentView(2131558488);
+    setContentView(2131624037);
     b();
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     String str;
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       str = "3";
     } else {
       str = "1";
@@ -51,9 +47,9 @@ public class ReadInJoySelfActivity
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://viola.qq.com/js/usercenter.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=6&v_bundleName=usercenter&v_bid=3740&jump_source=");
     localStringBuilder.append(str);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonFragmentReadInJoyBaseFragment = ReadInJoySelfCenterViolaFragment.a(localStringBuilder.toString());
-    localFragmentTransaction.add(2131367211, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonFragmentReadInJoyBaseFragment);
-    localFragmentTransaction.show(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonFragmentReadInJoyBaseFragment);
+    this.c = ReadInJoySelfCenterViolaFragment.a(localStringBuilder.toString());
+    localFragmentTransaction.add(2131433667, this.c);
+    localFragmentTransaction.show(this.c);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
@@ -63,7 +59,7 @@ public class ReadInJoySelfActivity
   {
     hideTitleBar();
     setImmersiveStatus();
-    this.titleRoot = ((RelativeLayout)findViewById(2131378893));
+    this.titleRoot = ((RelativeLayout)findViewById(2131447595));
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       super.getWindow().addFlags(67108864);
@@ -79,7 +75,7 @@ public class ReadInJoySelfActivity
     }
   }
   
-  public void aD_()
+  public void da_()
   {
     ThreadManager.getUIHandler().post(new ReadInJoySelfActivity.1(this));
   }
@@ -87,9 +83,9 @@ public class ReadInJoySelfActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ReadInJoyUtils.a());
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianMergeManager = ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianMergeManager.a(this);
+    this.a = ((QQAppInterface)ReadInJoyUtils.b());
+    this.b = ((KandianMergeManager)this.a.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER));
+    this.b.a(this);
     a();
     return true;
   }
@@ -97,7 +93,7 @@ public class ReadInJoySelfActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    KandianMergeManager localKandianMergeManager = this.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianMergeManager;
+    KandianMergeManager localKandianMergeManager = this.b;
     if (localKandianMergeManager != null) {
       localKandianMergeManager.b(this);
     }
@@ -105,7 +101,7 @@ public class ReadInJoySelfActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.activity.ReadInJoySelfActivity
  * JD-Core Version:    0.7.0.1
  */

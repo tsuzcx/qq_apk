@@ -24,7 +24,7 @@ public class AdEmoReportUtil
     if (paramBaseSessionInfo == null) {
       return 0;
     }
-    int i = paramBaseSessionInfo.jdField_a_of_type_Int;
+    int i = paramBaseSessionInfo.a;
     if (i == 1) {
       return 1;
     }
@@ -55,7 +55,7 @@ public class AdEmoReportUtil
           localStringBuilder.append(paramMessageForPic.uniseq);
           QLog.d("AdEmoReportUtil", 2, localStringBuilder.toString());
         }
-        paramMessageForPic = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+        paramMessageForPic = paramBaseSessionInfo.b;
         int i = a(paramBaseSessionInfo);
         if (str1 == null) {
           paramBaseSessionInfo = "";
@@ -74,17 +74,17 @@ public class AdEmoReportUtil
       if (paramPicReq == null) {
         return;
       }
-      if ((paramPicReq.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) && (paramPicReq.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.imageBizType == 9))
+      if ((paramPicReq.i != null) && (paramPicReq.i.imageBizType == 9))
       {
-        if ((paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo != null) && (paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a != null) && (paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.f != null)) {
-          paramPicReq = paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicFowardInfo.a.f;
+        if ((paramPicReq.h != null) && (paramPicReq.h.b != null) && (paramPicReq.h.b.m != null)) {
+          paramPicReq = paramPicReq.h.b.m;
         } else {
           paramPicReq = "";
         }
         if (QLog.isColorLevel()) {
           QLog.d("AdEmoReportUtil", 2, "reportForwardSingleAdEmo ");
         }
-        a(paramAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, "0X800B128", "0X800B128", 1, "", paramPicReq, "");
+        a(paramAppInterface, paramBaseSessionInfo.b, "0X800B128", "0X800B128", 1, "", paramPicReq, "");
       }
     }
   }
@@ -106,7 +106,7 @@ public class AdEmoReportUtil
         localStringBuilder.append(i);
         QLog.d("AdEmoReportUtil", 2, localStringBuilder.toString());
       }
-      a(paramAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, "0X800B123", "0X800B123", i, "", "", paramString);
+      a(paramAppInterface, paramBaseSessionInfo.b, "0X800B123", "0X800B123", i, "", "", paramString);
     }
   }
   
@@ -127,7 +127,7 @@ public class AdEmoReportUtil
         localStringBuilder.append(paramString3);
         QLog.d("AdEmoReportUtil", 2, localStringBuilder.toString());
       }
-      a(paramAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, "0X800B124", paramString1, a(paramBaseSessionInfo), String.valueOf(paramInt + 1), paramString2, paramString3);
+      a(paramAppInterface, paramBaseSessionInfo.b, "0X800B124", paramString1, a(paramBaseSessionInfo), String.valueOf(paramInt + 1), paramString2, paramString3);
       return;
     }
   }
@@ -233,7 +233,7 @@ public class AdEmoReportUtil
       }
       Object localObject = paramMessageForPic.md5;
       paramMessageForPic = paramMessageForPic.picExtraData.mAdEmoDescStr;
-      String str = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+      String str = paramBaseSessionInfo.b;
       int i = a(paramBaseSessionInfo);
       paramBaseSessionInfo = (BaseSessionInfo)localObject;
       if (localObject == null) {
@@ -260,7 +260,7 @@ public class AdEmoReportUtil
         localStringBuilder.append(paramString3);
         QLog.d("AdEmoReportUtil", 2, localStringBuilder.toString());
       }
-      a(paramAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, "0X800B125", paramString1, a(paramBaseSessionInfo), String.valueOf(paramInt + 1), paramString2, paramString3);
+      a(paramAppInterface, paramBaseSessionInfo.b, "0X800B125", paramString1, a(paramBaseSessionInfo), String.valueOf(paramInt + 1), paramString2, paramString3);
       return;
     }
   }
@@ -290,7 +290,7 @@ public class AdEmoReportUtil
           a(paramAppInterface, "", "0X800B129", "0X800B129", 0, "", paramMessageForPic, "");
           return;
         }
-        Object localObject = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+        Object localObject = paramBaseSessionInfo.b;
         int i = a(paramBaseSessionInfo);
         if (paramMessageForPic == null) {
           paramMessageForPic = "";
@@ -317,7 +317,7 @@ public class AdEmoReportUtil
           QLog.d("AdEmoReportUtil", 2, ((StringBuilder)localObject).toString());
         }
         paramMessageForPic = paramMessageForPic.md5;
-        Object localObject = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+        Object localObject = paramBaseSessionInfo.b;
         int i = a(paramBaseSessionInfo);
         paramBaseSessionInfo = paramMessageForPic;
         if (paramMessageForPic == null) {
@@ -330,7 +330,7 @@ public class AdEmoReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.ad.AdEmoReportUtil
  * JD-Core Version:    0.7.0.1
  */

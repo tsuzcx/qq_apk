@@ -10,42 +10,42 @@ class FileModelAdapter$3
   
   public void a(float paramFloat)
   {
-    if (FileModelAdapter.a(this.a) != null) {
-      FileModelAdapter.a(this.a).a(paramFloat);
+    if (FileModelAdapter.d(this.a) != null) {
+      FileModelAdapter.d(this.a).a(paramFloat);
     }
   }
   
   public void d()
   {
-    if (FileModelAdapter.a(this.a) != null) {
-      FileModelAdapter.a(this.a).b();
+    if (FileModelAdapter.d(this.a) != null) {
+      FileModelAdapter.d(this.a).b();
     }
   }
   
   public void e()
   {
-    if (FileModelAdapter.a(this.a) != null) {
-      FileModelAdapter.a(this.a).c();
+    if (FileModelAdapter.d(this.a) != null) {
+      FileModelAdapter.d(this.a).c();
     }
   }
   
   public void f()
   {
-    if (FileModelAdapter.a(this.a) != null) {
-      FileModelAdapter.a(this.a).d();
+    if (FileModelAdapter.d(this.a) != null) {
+      FileModelAdapter.d(this.a).d();
     }
   }
   
   public void g()
   {
-    if (FileModelAdapter.a(this.a) != null) {
-      FileModelAdapter.a(this.a).e();
+    if (FileModelAdapter.d(this.a) != null) {
+      FileModelAdapter.d(this.a).e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.FileModelAdapter.3
  * JD-Core Version:    0.7.0.1
  */

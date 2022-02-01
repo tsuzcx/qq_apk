@@ -10,12 +10,12 @@ class NearbyBaseFragment$1
   
   public void run()
   {
-    this.a.mWebview.flingScroll(0, -this.this$0.b);
+    this.a.mWebview.flingScroll(0, -this.this$0.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

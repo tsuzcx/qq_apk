@@ -17,15 +17,15 @@ import com.tencent.mobileqq.uftransfer.api.UFTTransferConfig.UploadConfig;
 abstract class QFileDiscTransferWrapper$DiscBaseUploadWrapper
   implements IUFTUploadCallback
 {
-  final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  final QFileDiscTransferWrapper.ITransferWrapperCallback jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileDiscTransferWrapper$ITransferWrapperCallback;
-  IUFTTransferKey jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey;
-  boolean jdField_a_of_type_Boolean = true;
+  final QQAppInterface a;
+  boolean b = true;
+  final QFileDiscTransferWrapper.ITransferWrapperCallback c;
+  IUFTTransferKey d;
   
   QFileDiscTransferWrapper$DiscBaseUploadWrapper(QQAppInterface paramQQAppInterface, QFileDiscTransferWrapper.ITransferWrapperCallback paramITransferWrapperCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileDiscTransferWrapper$ITransferWrapperCallback = paramITransferWrapperCallback;
+    this.a = paramQQAppInterface;
+    this.c = paramITransferWrapperCallback;
   }
   
   public int a(IUFTTransferKey paramIUFTTransferKey, Bundle paramBundle, IUFTUploadSendMsgCallback paramIUFTUploadSendMsgCallback)
@@ -37,20 +37,18 @@ abstract class QFileDiscTransferWrapper$DiscBaseUploadWrapper
   {
     UFTTransferConfig localUFTTransferConfig = new UFTTransferConfig(true);
     localUFTTransferConfig.a().c(true);
-    localUFTTransferConfig.a().d(FileIPv6StrateyController.a().isConfigEnableIPV6(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5));
+    localUFTTransferConfig.a().d(FileIPv6StrateyController.b().isConfigEnableIPV6(this.a, 5));
     return localUFTTransferConfig;
   }
   
-  abstract void a();
-  
   void a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey != null)
+    this.b = true;
+    if (this.d != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("REASON", paramInt);
-      ((IUFTTransferService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IUFTTransferService.class, "")).stop(this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey, localBundle);
+      ((IUFTTransferService)this.a.getRuntimeService(IUFTTransferService.class, "")).stop(this.d, localBundle);
     }
   }
   
@@ -67,10 +65,12 @@ abstract class QFileDiscTransferWrapper$DiscBaseUploadWrapper
   public void a(IUFTTransferKey paramIUFTTransferKey, UFTFileLocalInfo paramUFTFileLocalInfo) {}
   
   public void a(IUFTTransferKey paramIUFTTransferKey, UFTFileUploadBusinessInfo paramUFTFileUploadBusinessInfo) {}
+  
+  abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileDiscTransferWrapper.DiscBaseUploadWrapper
  * JD-Core Version:    0.7.0.1
  */

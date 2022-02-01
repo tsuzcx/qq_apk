@@ -9,14 +9,14 @@ public class RichTextClearInputCallback
 {
   public void a(AIOContext paramAIOContext)
   {
-    if (paramAIOContext.a().a() == 28) {
-      paramAIOContext.a().a(true);
+    if (paramAIOContext.q().b() == 28) {
+      paramAIOContext.q().a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.clearinput.RichTextClearInputCallback
  * JD-Core Version:    0.7.0.1
  */

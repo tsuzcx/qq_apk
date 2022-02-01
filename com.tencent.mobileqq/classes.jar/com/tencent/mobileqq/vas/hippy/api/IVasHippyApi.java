@@ -13,11 +13,11 @@ public abstract interface IVasHippyApi
   
   public abstract HippyCustomViewCreator createHippyCustomViewCreator();
   
-  public abstract boolean isVasModule(String paramString);
+  public abstract boolean isVasModuleNeedToBeAdd(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.api.IVasHippyApi
  * JD-Core Version:    0.7.0.1
  */

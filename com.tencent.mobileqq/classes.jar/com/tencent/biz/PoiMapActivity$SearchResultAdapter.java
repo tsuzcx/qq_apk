@@ -16,26 +16,26 @@ public class PoiMapActivity$SearchResultAdapter
   
   public PoiMapActivity$SearchResultAdapter(PoiMapActivity paramPoiMapActivity, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.a = LayoutInflater.from(paramContext);
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
+    if (this.b.K == null) {
       return 0;
     }
-    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.d) {
-      return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size() + 1;
+    if (this.b.G) {
+      return this.b.K.size() + 1;
     }
-    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size();
+    return this.b.K.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
+    if (this.b.K == null) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    return this.b.K.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -48,36 +48,36 @@ public class PoiMapActivity$SearchResultAdapter
     PoiMapActivity.PoiItemViewHolder localPoiItemViewHolder;
     if (paramView == null)
     {
-      localPoiItemViewHolder = new PoiMapActivity.PoiItemViewHolder(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559960, null);
-      localPoiItemViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371709));
-      localPoiItemViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362252));
-      localPoiItemViewHolder.c = paramView.findViewById(2131377149);
-      localPoiItemViewHolder.c.setVisibility(4);
-      localPoiItemViewHolder.d = paramView.findViewById(2131371496);
-      localPoiItemViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365560);
-      localPoiItemViewHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377358);
+      localPoiItemViewHolder = new PoiMapActivity.PoiItemViewHolder(this.b);
+      paramView = LayoutInflater.from(this.b).inflate(2131626003, null);
+      localPoiItemViewHolder.b = ((TextView)paramView.findViewById(2131439135));
+      localPoiItemViewHolder.c = ((TextView)paramView.findViewById(2131427833));
+      localPoiItemViewHolder.i = paramView.findViewById(2131445527);
+      localPoiItemViewHolder.i.setVisibility(4);
+      localPoiItemViewHolder.j = paramView.findViewById(2131438871);
+      localPoiItemViewHolder.a = paramView.findViewById(2131431787);
+      localPoiItemViewHolder.d = paramView.findViewById(2131445751);
       paramView.setTag(localPoiItemViewHolder);
     }
     else
     {
       localPoiItemViewHolder = (PoiMapActivity.PoiItemViewHolder)paramView.getTag();
     }
-    localPoiItemViewHolder.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    if (paramInt == this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size())
+    localPoiItemViewHolder.d.setVisibility(8);
+    if (paramInt == this.b.K.size())
     {
-      localPoiItemViewHolder.d.setVisibility(0);
-      localPoiItemViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      localPoiItemViewHolder.j.setVisibility(0);
+      localPoiItemViewHolder.a.setVisibility(8);
     }
     else
     {
-      localPoiItemViewHolder.d.setVisibility(8);
-      localPoiItemViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      localPoiItemViewHolder.j.setVisibility(8);
+      localPoiItemViewHolder.a.setVisibility(0);
       PoiMapActivity.POI localPOI = (PoiMapActivity.POI)getItem(paramInt);
       if (localPOI != null)
       {
-        localPoiItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localPOI.a);
-        localPoiItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(localPOI.b);
+        localPoiItemViewHolder.b.setText(localPOI.a);
+        localPoiItemViewHolder.c.setText(localPOI.b);
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));

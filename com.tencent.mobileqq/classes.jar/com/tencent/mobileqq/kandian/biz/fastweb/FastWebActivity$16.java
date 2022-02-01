@@ -14,19 +14,19 @@ class FastWebActivity$16
   public boolean queueIdle()
   {
     String str;
-    if (FastWebActivity.a(this.a).c == 0) {
+    if (FastWebActivity.d(this.a).B == 0) {
       str = "";
     } else {
-      str = FastWebActivity.a(this.a).p;
+      str = FastWebActivity.d(this.a).C;
     }
     int i = this.a.getIntent().getIntExtra("floating_window_scene", 0);
-    FastWebRequestUtil.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).e), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).a(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a), i, this.a.a.mChannelID, FastWebActivity.a(this.a));
+    FastWebRequestUtil.a(FastWebActivity.d(this.a).x, FastWebActivity.d(this.a).q, String.valueOf(FastWebActivity.d(this.a).y), FastWebActivity.d(this.a).t, FastWebActivity.d(this.a).a(), str, FastWebActivity.d(this.a).u, FastWebActivity.d(this.a).v, FastWebActivity.q(this.a), FastWebActivity.r(this.a), i, this.a.g.mChannelID, FastWebActivity.k(this.a));
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.16
  * JD-Core Version:    0.7.0.1
  */

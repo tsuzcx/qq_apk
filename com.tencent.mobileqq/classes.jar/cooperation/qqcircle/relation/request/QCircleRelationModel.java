@@ -196,24 +196,6 @@ public class QCircleRelationModel
     ((IQCircleRelationModel.OnLoadAtRelationListener)localObject).onLoadAtRelationFinish(this.mRequestScene, this.mResults, this.mUpdateTimeInterval);
   }
   
-  private void sendDataRequest(int paramInt, List<Map<String, Object>> paramList)
-  {
-    int i;
-    if (paramList == null) {
-      i = 0;
-    } else {
-      i = paramList.size();
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[sendDataRequest] scene: ");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append(" | param count: ");
-    localStringBuilder.append(i);
-    QLog.d("RFL-QCircleRelationModel", 1, localStringBuilder.toString());
-    paramList = new QCircleRelationGroupRequest(paramInt, paramList);
-    VSNetworkHelper.getInstance().sendRequest(paramList, this);
-  }
-  
   public void loadRelationData(int paramInt)
   {
     loadRelationData(paramInt, new ArrayList());
@@ -252,6 +234,23 @@ public class QCircleRelationModel
     QLog.w("RFL-QCircleRelationModel", 1, paramBaseRequest.toString());
   }
   
+  public void sendDataRequest(int paramInt, List<Map<String, Object>> paramList)
+  {
+    int i;
+    if (paramList == null) {
+      i = 0;
+    } else {
+      i = paramList.size();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[sendDataRequest] scene: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" | param count: ");
+    localStringBuilder.append(i);
+    QLog.d("RFL-QCircleRelationModel", 1, localStringBuilder.toString());
+    VSNetworkHelper.getInstance().sendRequest(new QCircleRelationGroupRequest(paramInt, paramList), this);
+  }
+  
   public void setOnLoadAtRelationListener(IQCircleRelationModel.OnLoadAtRelationListener paramOnLoadAtRelationListener)
   {
     this.mOnLoadAtRelationListener = paramOnLoadAtRelationListener;
@@ -259,7 +258,7 @@ public class QCircleRelationModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.relation.request.QCircleRelationModel
  * JD-Core Version:    0.7.0.1
  */

@@ -137,9 +137,9 @@ public class MiniProgramShareUtils
         paramJSONObject.append("[QQ小");
         int i;
         if (paramMiniArkShareModel.getShareBusinessType() == 0) {
-          i = 2131706905;
+          i = 2131904750;
         } else {
-          i = 2131706906;
+          i = 2131904751;
         }
         paramJSONObject.append(HardCodeUtil.a(i));
         paramJSONObject.append("]");
@@ -376,7 +376,7 @@ public class MiniProgramShareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramShareUtils
  * JD-Core Version:    0.7.0.1
  */

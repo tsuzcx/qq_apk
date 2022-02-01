@@ -17,42 +17,42 @@ import java.util.List;
 
 public class GIFCreator
 {
-  private static String jdField_a_of_type_JavaLangString = "GIFCreator";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private GIFCreator.Callback jdField_a_of_type_DovComQqImAeCurrentGIFCreator$Callback;
-  private GifEncoder jdField_a_of_type_DovComQqImVideoGifEncoder = new GifEncoder();
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private static String a = "GIFCreator";
   private String b = ((IAEPath)QRoute.api(IAEPath.class)).getGifPreviewCache();
-  private String c;
-  private String d;
-  private String e;
+  private Handler c;
+  private GifEncoder d = new GifEncoder();
+  private GIFCreator.Callback e;
+  private List<String> f;
+  private String g;
+  private String h;
+  private String i;
   
   public GIFCreator(String paramString)
   {
-    this.e = paramString;
-    this.jdField_a_of_type_JavaUtilList = a(paramString);
+    this.i = paramString;
+    this.f = a(paramString);
     paramString = new StringBuilder();
     paramString.append(this.b);
     paramString.append(System.currentTimeMillis());
     paramString.append(".gif");
-    this.c = paramString.toString();
+    this.g = paramString.toString();
     paramString = new StringBuilder();
     paramString.append(this.b);
     paramString.append(System.currentTimeMillis());
     paramString.append("_compressed.gif");
-    this.d = paramString.toString();
+    this.h = paramString.toString();
     try
     {
       paramString = new File(this.b);
       if (!paramString.isDirectory())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(this.b);
         localStringBuilder.append(" is not a directory");
         QLog.d((String)localObject, 4, localStringBuilder.toString());
         boolean bool = paramString.mkdirs();
-        paramString = jdField_a_of_type_JavaLangString;
+        paramString = a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("mkdirs return ");
         ((StringBuilder)localObject).append(bool);
@@ -61,7 +61,7 @@ public class GIFCreator
     }
     catch (Exception paramString)
     {
-      Object localObject = jdField_a_of_type_JavaLangString;
+      Object localObject = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("check dir exception, msg = ");
       localStringBuilder.append(paramString.getMessage());
@@ -72,7 +72,7 @@ public class GIFCreator
     paramString.append(System.currentTimeMillis());
     paramString = new HandlerThread(paramString.toString());
     paramString.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
+    this.c = new Handler(paramString.getLooper());
   }
   
   private Bitmap a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -107,7 +107,7 @@ public class GIFCreator
     }
     catch (Exception paramString)
     {
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = a;
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("readRawBytesToBitmap exception, msg = ");
       ((StringBuilder)localObject3).append(paramString.getMessage());
@@ -119,7 +119,7 @@ public class GIFCreator
       label129:
       break label129;
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "readRawBytesToBitmap OOM");
+    QLog.d(a, 4, "readRawBytesToBitmap OOM");
     return localObject2;
   }
   
@@ -133,17 +133,17 @@ public class GIFCreator
       if (localObject != null)
       {
         Arrays.sort((Object[])localObject);
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
+        int k = localObject.length;
+        int j = 0;
+        while (j < k)
         {
-          String str = localObject[i];
+          String str = localObject[j];
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramString);
           localStringBuilder.append(File.separator);
           localStringBuilder.append(str);
           localArrayList.add(localStringBuilder.toString());
-          i += 1;
+          j += 1;
         }
       }
     }
@@ -155,12 +155,12 @@ public class GIFCreator
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 220	java/io/File:isFile	()Z
+    //   1: invokevirtual 221	java/io/File:isFile	()Z
     //   4: ifeq +133 -> 137
-    //   7: new 222	java/io/FileInputStream
+    //   7: new 223	java/io/FileInputStream
     //   10: dup
     //   11: aload_0
-    //   12: invokespecial 225	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 226	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   15: astore_2
     //   16: aload_2
     //   17: astore_0
@@ -169,15 +169,15 @@ public class GIFCreator
     //   23: astore_3
     //   24: aload_2
     //   25: astore_0
-    //   26: new 227	java/io/ByteArrayOutputStream
+    //   26: new 228	java/io/ByteArrayOutputStream
     //   29: dup
-    //   30: invokespecial 228	java/io/ByteArrayOutputStream:<init>	()V
+    //   30: invokespecial 229	java/io/ByteArrayOutputStream:<init>	()V
     //   33: astore 4
     //   35: aload_2
     //   36: astore_0
     //   37: aload_2
     //   38: aload_3
-    //   39: invokevirtual 232	java/io/FileInputStream:read	([B)I
+    //   39: invokevirtual 233	java/io/FileInputStream:read	([B)I
     //   42: istore_1
     //   43: iload_1
     //   44: iconst_m1
@@ -188,20 +188,20 @@ public class GIFCreator
     //   52: aload_3
     //   53: iconst_0
     //   54: iload_1
-    //   55: invokevirtual 236	java/io/ByteArrayOutputStream:write	([BII)V
+    //   55: invokevirtual 237	java/io/ByteArrayOutputStream:write	([BII)V
     //   58: goto -23 -> 35
     //   61: aload_2
     //   62: astore_0
     //   63: aload 4
-    //   65: invokevirtual 240	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   65: invokevirtual 241	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   68: astore_3
     //   69: aload_2
-    //   70: invokevirtual 243	java/io/FileInputStream:close	()V
+    //   70: invokevirtual 244	java/io/FileInputStream:close	()V
     //   73: aload_3
     //   74: areturn
     //   75: astore_0
     //   76: aload_0
-    //   77: invokevirtual 246	java/io/IOException:printStackTrace	()V
+    //   77: invokevirtual 247	java/io/IOException:printStackTrace	()V
     //   80: aload_3
     //   81: areturn
     //   82: astore_3
@@ -216,55 +216,55 @@ public class GIFCreator
     //   95: aload_2
     //   96: astore_0
     //   97: aload_3
-    //   98: invokevirtual 246	java/io/IOException:printStackTrace	()V
+    //   98: invokevirtual 247	java/io/IOException:printStackTrace	()V
     //   101: aload_2
     //   102: ifnull +72 -> 174
     //   105: aload_2
-    //   106: invokevirtual 243	java/io/FileInputStream:close	()V
+    //   106: invokevirtual 244	java/io/FileInputStream:close	()V
     //   109: aconst_null
     //   110: areturn
     //   111: astore_0
     //   112: aload_0
-    //   113: invokevirtual 246	java/io/IOException:printStackTrace	()V
+    //   113: invokevirtual 247	java/io/IOException:printStackTrace	()V
     //   116: aconst_null
     //   117: areturn
     //   118: astore_2
     //   119: aload_0
     //   120: ifnull +15 -> 135
     //   123: aload_0
-    //   124: invokevirtual 243	java/io/FileInputStream:close	()V
+    //   124: invokevirtual 244	java/io/FileInputStream:close	()V
     //   127: goto +8 -> 135
     //   130: astore_0
     //   131: aload_0
-    //   132: invokevirtual 246	java/io/IOException:printStackTrace	()V
+    //   132: invokevirtual 247	java/io/IOException:printStackTrace	()V
     //   135: aload_2
     //   136: athrow
-    //   137: getstatic 89	dov/com/qq/im/ae/current/GIFCreator:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   137: getstatic 93	dov/com/qq/im/ae/current/GIFCreator:a	Ljava/lang/String;
     //   140: astore_2
-    //   141: new 54	java/lang/StringBuilder
+    //   141: new 58	java/lang/StringBuilder
     //   144: dup
-    //   145: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   145: invokespecial 59	java/lang/StringBuilder:<init>	()V
     //   148: astore_3
     //   149: aload_3
-    //   150: ldc 248
-    //   152: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: ldc 249
+    //   152: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: pop
     //   156: aload_3
     //   157: aload_0
-    //   158: invokevirtual 251	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   161: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: invokevirtual 252	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   161: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: pop
     //   165: aload_2
     //   166: iconst_4
     //   167: aload_3
-    //   168: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   171: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   168: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   171: invokestatic 100	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   174: aconst_null
     //   175: areturn
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	176	0	paramFile	File
-    //   42	13	1	i	int
+    //   42	13	1	j	int
     //   15	55	2	localFileInputStream	java.io.FileInputStream
     //   86	1	2	localObject1	Object
     //   94	12	2	localObject2	Object
@@ -297,19 +297,19 @@ public class GIFCreator
   
   public void a()
   {
-    FileUtils.deleteDirectory(this.e);
+    FileUtils.deleteDirectory(this.i);
   }
   
   public void a(GIFCreator.Callback paramCallback)
   {
-    this.jdField_a_of_type_DovComQqImAeCurrentGIFCreator$Callback = paramCallback;
-    QLog.d(jdField_a_of_type_JavaLangString, 4, new Object[] { "start create gif, gif path = ", this.c });
-    this.jdField_a_of_type_AndroidOsHandler.post(new GIFCreator.1(this, paramCallback));
+    this.e = paramCallback;
+    QLog.d(a, 4, new Object[] { "start create gif, gif path = ", this.g });
+    this.c.post(new GIFCreator.1(this, paramCallback));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.current.GIFCreator
  * JD-Core Version:    0.7.0.1
  */

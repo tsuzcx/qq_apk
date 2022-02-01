@@ -19,10 +19,10 @@ class StrangerIntimateView$4
       if (paramBitmap == null) {
         return;
       }
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
+      if (paramString.equals(this.a.d)) {
+        StrangerIntimateView.c(this.a).setImageBitmap(paramBitmap);
+      } else if ((this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin()))) {
         StrangerIntimateView.b(this.a).setImageBitmap(paramBitmap);
-      } else if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        StrangerIntimateView.a(this.a).setImageBitmap(paramBitmap);
       }
       if (QLog.isColorLevel())
       {
@@ -38,7 +38,7 @@ class StrangerIntimateView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.StrangerIntimateView.4
  * JD-Core Version:    0.7.0.1
  */

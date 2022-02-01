@@ -46,34 +46,7 @@ public class SVIPObserver
     switch (paramInt)
     {
     default: 
-    case 114: 
-      paramObject = (Object[])paramObject;
-      onGetRoamType((String)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 113: 
-      onGetBigTroopExpiredInfo(paramBoolean, paramObject);
-      return;
-    case 112: 
-      onSetFace(paramBoolean, (FaceRsp)paramObject);
-      return;
-    case 111: 
-      onGetRoamToast(paramBoolean, (GetRoamToastRsp)paramObject);
-      return;
-    case 110: 
-      onFontBubblePaySuccess((Bundle)paramObject);
-      return;
-    case 109: 
-      paramObject = (Object[])paramObject;
-      onSetFontBubble(paramBoolean, (SetFontBubbleRsp)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 108: 
-      onGetBubbleRecommend(paramBoolean, (BubbleRecommendRsp)paramObject);
-      return;
-    case 107: 
-      onGetFontRecommend(paramBoolean, (FontRecommendRsp)paramObject);
-      return;
-    case 106: 
-      onDefaultCardRsp(paramBoolean, paramObject);
+      onUpdateContinue1(paramInt, paramBoolean, paramObject);
       return;
     case 105: 
       onGetColorNickData(paramBoolean, paramObject);
@@ -104,11 +77,47 @@ public class SVIPObserver
     }
   }
   
+  public void onUpdateContinue1(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 114: 
+      paramObject = (Object[])paramObject;
+      onGetRoamType((String)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    case 113: 
+      onGetBigTroopExpiredInfo(paramBoolean, paramObject);
+      return;
+    case 112: 
+      onSetFace(paramBoolean, (FaceRsp)paramObject);
+      return;
+    case 111: 
+      onGetRoamToast(paramBoolean, (GetRoamToastRsp)paramObject);
+      return;
+    case 110: 
+      onFontBubblePaySuccess((Bundle)paramObject);
+      return;
+    case 109: 
+      paramObject = (Object[])paramObject;
+      onSetFontBubble(paramBoolean, (SetFontBubbleRsp)paramObject[0], ((Integer)paramObject[1]).intValue());
+      return;
+    case 108: 
+      onGetBubbleRecommend(paramBoolean, (BubbleRecommendRsp)paramObject);
+      return;
+    case 107: 
+      onGetFontRecommend(paramBoolean, (FontRecommendRsp)paramObject);
+      return;
+    }
+    onDefaultCardRsp(paramBoolean, paramObject);
+  }
+  
   public void onVipStatusChanged() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SVIPObserver
  * JD-Core Version:    0.7.0.1
  */

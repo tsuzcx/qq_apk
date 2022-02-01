@@ -13,12 +13,12 @@ class ShopLayout$2
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (ShopLayout.a(this.a) != null) {
-      ShopLayout.a(this.a).a();
+    if (ShopLayout.b(this.a) != null) {
+      ShopLayout.b(this.a).a();
     }
     if (paramInt == 0)
     {
-      paramRecyclerView = ShopLayout.a(this.a).getLayoutManager();
+      paramRecyclerView = ShopLayout.c(this.a).getLayoutManager();
       int i = 0;
       if ((paramRecyclerView instanceof GridLayoutManager)) {
         i = ((GridLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
@@ -38,7 +38,7 @@ class ShopLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.widget.ShopLayout.2
  * JD-Core Version:    0.7.0.1
  */

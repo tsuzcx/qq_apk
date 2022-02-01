@@ -12,8 +12,8 @@ class EditActivity$7
   
   public void onClick(View paramView)
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    if ((EditActivity.h(this.a) != null) && (EditActivity.h(this.a).isShowing()) && (EditActivity.h(this.a).getWindow() != null)) {
+      EditActivity.h(this.a).dismiss();
     }
     this.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +21,7 @@ class EditActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EditActivity.7
  * JD-Core Version:    0.7.0.1
  */

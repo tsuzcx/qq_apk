@@ -13,7 +13,7 @@ class LoginView$26
   public void afterTextChanged(Editable paramEditable)
   {
     LoginView.a(this.a, null);
-    LoginView.c(this.a);
+    this.a.b();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
@@ -23,31 +23,31 @@ class LoginView$26
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    if (this.a.w != null)
     {
       paramCharSequence = paramCharSequence.toString();
-      if ((paramCharSequence != null) && (LoginView.a(this.a) != null) && (LoginView.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+      if ((paramCharSequence != null) && (LoginView.D(this.a) != null) && (LoginView.D(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
         MobileQQ.sMobileQQ.refreAccountList();
       }
       LoginView.a(this.a, null);
-      if (LoginView.a(this.a) != null)
+      if (LoginView.D(this.a) != null)
       {
-        if (LoginView.a(this.a).length() == 0) {
+        if (LoginView.D(this.a).length() == 0) {
           return;
         }
-        if ((paramCharSequence != null) && (paramCharSequence.length() != 0) && (paramCharSequence.length() == LoginView.a(this.a).length() + 1))
+        if ((paramCharSequence != null) && (paramCharSequence.length() != 0) && (paramCharSequence.length() == LoginView.D(this.a).length() + 1))
         {
-          if ((paramCharSequence.startsWith(LoginView.a(this.a))) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText != null))
+          if ((paramCharSequence.startsWith(LoginView.D(this.a))) && (this.a.h != null))
           {
-            paramCharSequence = paramCharSequence.substring(LoginView.a(this.a).length());
+            paramCharSequence = paramCharSequence.substring(LoginView.D(this.a).length());
             if (paramCharSequence != null)
             {
               if (paramCharSequence.length() != 1) {
                 return;
               }
-              this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
-              this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
-              LoginView.c(this.a);
+              this.a.h.setText(paramCharSequence);
+              this.a.h.setSelection(1);
+              this.a.b();
             }
           }
         }
@@ -65,7 +65,7 @@ class LoginView$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.26
  * JD-Core Version:    0.7.0.1
  */

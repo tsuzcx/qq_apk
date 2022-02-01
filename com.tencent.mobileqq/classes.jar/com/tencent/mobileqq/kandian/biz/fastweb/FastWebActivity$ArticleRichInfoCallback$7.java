@@ -8,20 +8,20 @@ class FastWebActivity$ArticleRichInfoCallback$7
 {
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a) != null) && (this.jdField_a_of_type_JavaLangString.equals(FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$ArticleRichInfoCallback.a).j)))
+    if ((this.a != null) && (FastWebActivity.d(this.b.a) != null) && (this.a.equals(FastWebActivity.d(this.b.a).q)))
     {
       QLog.d("FastWebActivity", 2, "get related search words success! notify ui bindData");
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("handleRelatedSearchWordsResp, msg not match !");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     QLog.d("FastWebActivity", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.ArticleRichInfoCallback.7
  * JD-Core Version:    0.7.0.1
  */

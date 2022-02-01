@@ -24,8 +24,8 @@ public class CGRect
   
   public CGRect(@NonNull PointF paramPointF, @NonNull CGSize paramCGSize)
   {
-    Utils.a(paramPointF);
-    Utils.a(paramCGSize);
+    Utils.checkNotNull(paramPointF);
+    Utils.checkNotNull(paramCGSize);
     PointF localPointF = paramPointF;
     if (paramPointF == null) {
       localPointF = new PointF();
@@ -72,7 +72,7 @@ public class CGRect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.CGRect
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ class VideoPlayerView$10
   
   public void a()
   {
-    if ((this.a.a() != null) && (VideoPlayerView.a(this.a) != null))
+    if ((this.a.getSuperPlayer() != null) && (VideoPlayerView.m(this.a) != null))
     {
       VideoPlayerView.c(this.a, false);
-      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.c(this.a));
-      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getRenderViewWidth(), this.a.a().getRenderViewHeight());
+      VideoPlayerView.m(this.a).onOrientationChange(VideoPlayerView.p(this.a));
+      VideoPlayerView.m(this.a).onVideoSize(this.a.getPlayerVideoView().getRenderViewWidth(), this.a.getPlayerVideoView().getRenderViewHeight());
     }
   }
 }

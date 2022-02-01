@@ -10,33 +10,29 @@ public class MultiBiuSameContent
   implements Parcelable
 {
   public static final Parcelable.Creator<MultiBiuSameContent> CREATOR = new MultiBiuSameContent.1();
-  public int a;
   public long a;
-  public String a;
-  public ArrayList<BiuCommentInfo> a;
-  public int b;
-  public long b;
+  public String b;
   public int c;
-  public long c;
   public int d;
+  public long e;
+  public int f;
+  public int g;
+  public long h;
+  public ArrayList<BiuCommentInfo> i = new ArrayList();
   
-  public MultiBiuSameContent()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public MultiBiuSameContent() {}
   
   protected MultiBiuSameContent(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readInt();
     this.d = paramParcel.readInt();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(BiuCommentInfo.CREATOR);
+    this.e = paramParcel.readLong();
+    this.f = paramParcel.readInt();
+    this.g = paramParcel.readInt();
+    this.h = paramParcel.readLong();
+    this.i = paramParcel.createTypedArrayList(BiuCommentInfo.CREATOR);
   }
   
   public int describeContents()
@@ -46,20 +42,20 @@ public class MultiBiuSameContent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeInt(this.c);
     paramParcel.writeInt(this.d);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilArrayList);
+    paramParcel.writeLong(this.e);
+    paramParcel.writeInt(this.f);
+    paramParcel.writeInt(this.g);
+    paramParcel.writeLong(this.h);
+    paramParcel.writeTypedList(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.biu.MultiBiuSameContent
  * JD-Core Version:    0.7.0.1
  */

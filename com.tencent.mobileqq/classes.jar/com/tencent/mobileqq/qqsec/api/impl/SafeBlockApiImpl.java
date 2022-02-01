@@ -67,12 +67,12 @@ public class SafeBlockApiImpl
   
   public String getAppendMsgWithSceneId(int paramInt)
   {
-    return FrozenNotifyDlgHelper.a().a(paramInt);
+    return FrozenNotifyDlgHelper.a().c(paramInt);
   }
   
   public int getForbidScene(byte[] paramArrayOfByte)
   {
-    return FrozenNotifyDlgHelper.a().a(paramArrayOfByte);
+    return FrozenNotifyDlgHelper.a().b(paramArrayOfByte);
   }
   
   public String getJumpAQH5Url(String paramString1, String paramString2, boolean paramBoolean)
@@ -92,7 +92,7 @@ public class SafeBlockApiImpl
   
   public int getTipResIdWithSceneId(int paramInt)
   {
-    return FrozenNotifyDlgHelper.a().a(paramInt);
+    return FrozenNotifyDlgHelper.a().b(paramInt);
   }
   
   public CharSequence handleNotifyMsg(String paramString, QBaseActivity paramQBaseActivity, int paramInt)
@@ -137,7 +137,7 @@ public class SafeBlockApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqsec.api.impl.SafeBlockApiImpl
  * JD-Core Version:    0.7.0.1
  */

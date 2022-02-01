@@ -31,8 +31,8 @@ public class TroopSystemMsgBoxAppender
       paramLong = paramMessageRecord.time;
     }
     Object localObject = (C2CMessageManager)paramIMessageManager;
-    Message localMessage = ((C2CMessageManager)localObject).jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getLastMessage(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-    int j = GroupSystemMsgController.a().a(((C2CMessageManager)localObject).jdField_a_of_type_MqqAppAppRuntime);
+    Message localMessage = ((C2CMessageManager)localObject).b.getLastMessage(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+    int j = GroupSystemMsgController.a().b(((C2CMessageManager)localObject).a);
     if (j > 0)
     {
       int i;
@@ -45,7 +45,7 @@ public class TroopSystemMsgBoxAppender
       {
         MessageRecord.copyMessageRecordBaseField(localMessage, paramMessageRecord);
         localMessage.msgData = paramMessageRecord.msgData;
-        ((C2CMessageManager)localObject).jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setIncomingMsg(localMessage);
+        ((C2CMessageManager)localObject).b.setIncomingMsg(localMessage);
         try
         {
           ((C2CMessageManager)paramIMessageManager).a(localMessage);
@@ -56,12 +56,12 @@ public class TroopSystemMsgBoxAppender
             QLog.d("Q.msg.BaseMessageManager", 2, "addMessageRecord ERROR", paramIMessageManager);
           }
         }
-        ((C2CMessageManager)localObject).jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getIncomingMsg().unReadNum = j;
+        ((C2CMessageManager)localObject).b.getIncomingMsg().unReadNum = j;
       }
     }
     else
     {
-      ((C2CMessageManager)localObject).jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.setIncomingMsg(null);
+      ((C2CMessageManager)localObject).b.setIncomingMsg(null);
     }
     return new Object[] { Boolean.valueOf(true), paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) };
   }
@@ -76,7 +76,7 @@ public class TroopSystemMsgBoxAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.msgboxappender.TroopSystemMsgBoxAppender
  * JD-Core Version:    0.7.0.1
  */

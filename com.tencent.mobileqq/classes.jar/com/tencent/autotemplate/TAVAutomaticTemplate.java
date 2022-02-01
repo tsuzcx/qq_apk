@@ -130,6 +130,7 @@ public class TAVAutomaticTemplate
   
   private void addEffectToClip(TAVClip paramTAVClip, CGSize paramCGSize)
   {
+    Object localObject;
     if ((!isRhythmTemplate()) && (((paramTAVClip.getResource() instanceof TAVImageResource)) || ((paramTAVClip.getResource() instanceof TAVImageTrackResource))))
     {
       localObject = imageMovieSticker(RandomUtil.RandomInt(1, 5));
@@ -139,8 +140,7 @@ public class TAVAutomaticTemplate
         this.filterStickers.add(((TAVMovieSticker)localObject).getSticker());
       }
     }
-    Object localObject = paramTAVClip.getVideoConfiguration();
-    if ((paramTAVClip.getExtraTrackInfo("extra_frame_info") == null) && (((TAVVideoConfiguration)localObject).getContentMode() != TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill))
+    if (isNeedDefaultBlurEffectNote(paramTAVClip, paramTAVClip.getVideoConfiguration()))
     {
       localObject = new ArrayList();
       TAVTimeRangeAspectFillEffect localTAVTimeRangeAspectFillEffect = new TAVTimeRangeAspectFillEffect(paramCGSize);
@@ -226,15 +226,9 @@ public class TAVAutomaticTemplate
       if (localObject2 == null) {
         localObject1 = new ArrayList();
       }
-      float f = paramFloat;
-      while (f > 0.0F)
-      {
-        this.musicResource.setDuration(f);
-        localObject2 = this.musicResource.convertToMovieClip();
-        if (localObject2 == null) {
-          break;
-        }
-        f -= (float)(((TAVMovieClip)localObject2).getResource().getTimeRange().getDurationUs() / 1000L);
+      this.musicResource.setDuration(paramFloat);
+      localObject2 = this.musicResource.convertToMovieClip();
+      if (localObject2 != null) {
         ((List)localObject1).add(((TAVMovieClip)localObject2).convertToClip());
       }
       paramTAVComposition.setAudios((List)localObject1);
@@ -381,6 +375,11 @@ public class TAVAutomaticTemplate
       return localObject;
     }
     return null;
+  }
+  
+  private boolean isNeedDefaultBlurEffectNote(TAVClip paramTAVClip, TAVVideoConfiguration paramTAVVideoConfiguration)
+  {
+    return (paramTAVClip.getExtraTrackInfo("extra_frame_info") == null) && (paramTAVVideoConfiguration.getContentMode() != TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill) && (isAddBlurEffectNote());
   }
   
   private void setAllDirs(String paramString)
@@ -559,6 +558,7 @@ public class TAVAutomaticTemplate
     applyTimeEffectToComposition(localTAVComposition);
     this.transitionHelper = new TransitionHelper(this.transitions, getExtraData(), this.templateDir, this.transitionStickers, getFaceTransitions());
     this.transitionHelper.setTransitionEffectModels(this.transitionEffectModels);
+    this.transitionHelper.setTransitionApplyType(this.transitionApplyType);
     if ((!isRhythmTemplate()) && (this.transitionHelper.needTransition(localTAVComposition))) {
       this.transitionHelper.applyTransitionToComposition(localTAVComposition);
     }
@@ -869,6 +869,11 @@ public class TAVAutomaticTemplate
     return this.volume;
   }
   
+  public boolean isAddBlurEffectNote()
+  {
+    return ConfigType.a;
+  }
+  
   public boolean isOpeningEffectEnable()
   {
     return true;
@@ -976,6 +981,11 @@ public class TAVAutomaticTemplate
   public void setImagePagAssetDir(String paramString)
   {
     this.imagePagAssetDir = paramString;
+  }
+  
+  public void setIsAddBlurEffectNote(boolean paramBoolean)
+  {
+    ConfigType.a = paramBoolean;
   }
   
   public void setMapping(boolean paramBoolean)

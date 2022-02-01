@@ -25,7 +25,7 @@ public final class WTogetherCommon$PlayerStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     trpc.qq_av_together.common.WTogetherCommon.PlayerStatus
  * JD-Core Version:    0.7.0.1
  */

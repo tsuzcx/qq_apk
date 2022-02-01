@@ -31,16 +31,16 @@ class LyricsController$7
     }
     if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext))
     {
-      if ((this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.jdField_h_of_type_Boolean))
+      if ((this.a.e) && (this.a.j != null) && (this.a.i != null) && (this.a.d.u))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a.setAlign(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.jdField_h_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.g());
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.i, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.g());
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.jdField_h_of_type_Boolean = false;
+        this.a.j.o.setAlign(this.a.d.t);
+        this.a.j.a(this.a.d.r, this.a.j.getCurrentY());
+        this.a.i.a(this.a.d.s, this.a.i.getCurrentY());
+        this.a.d.u = false;
       }
       this.a.a(false);
       paramContext = this.a;
-      paramContext.jdField_a_of_type_Boolean = false;
+      paramContext.c = false;
       LyricsController.a(paramContext, false);
       return;
     }
@@ -49,26 +49,26 @@ class LyricsController$7
       if (i == 0)
       {
         paramContext = this.a;
-        paramContext.jdField_a_of_type_Boolean = true;
+        paramContext.c = true;
         paramContext.a(true);
         LyricsController.a(this.a, false);
         return;
       }
-      if (this.a.b)
+      if (this.a.e)
       {
         LyricsController.a(this.a, true);
         return;
       }
       paramContext = this.a;
-      paramContext.jdField_a_of_type_Boolean = true;
-      paramContext.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatParams.f = true;
+      paramContext.c = true;
+      paramContext.d.k = true;
       LyricsController.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.7
  * JD-Core Version:    0.7.0.1
  */

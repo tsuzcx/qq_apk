@@ -105,7 +105,7 @@ public class ArkPubicEventWrapImpl
     JSONObject localJSONObject1 = new JSONObject();
     try
     {
-      if (StringUtil.a(paramString2)) {
+      if (StringUtil.isEmpty(paramString2)) {
         return;
       }
       localObject1 = QBaseActivity.sTopActivity;
@@ -160,7 +160,7 @@ public class ArkPubicEventWrapImpl
         localObject3 = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).UIViewUtils$getViewByPosition(paramString2, (ChatMessage)localObject4);
         if (localObject3 != null)
         {
-          localObject3 = ((View)localObject3).findViewById(R.id.d);
+          localObject3 = ((View)localObject3).findViewById(R.id.g);
           if (localObject3 != null)
           {
             localObject4 = getVisibilityRect((View)localObject3);
@@ -348,7 +348,7 @@ public class ArkPubicEventWrapImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.utils.impl.ArkPubicEventWrapImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -16,15 +16,15 @@ public class ScannerResultReceiver
     if (paramInt == 0)
     {
       paramBundle = this.a;
-      if ((paramBundle != null) && (paramBundle.a)) {
-        this.a.b();
+      if ((paramBundle != null) && (paramBundle.f)) {
+        this.a.c();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.ScannerResultReceiver
  * JD-Core Version:    0.7.0.1
  */

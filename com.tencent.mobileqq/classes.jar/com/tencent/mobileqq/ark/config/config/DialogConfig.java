@@ -14,23 +14,14 @@ public class DialogConfig
   extends ArkManageConfig
   implements IQStorageSafable<String>
 {
-  public String a;
-  public HashMap<String, ArrayList<String>> a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public boolean a = false;
+  public boolean b = false;
   public boolean c = false;
   public boolean d = false;
-  public boolean e = false;
-  
-  public DialogConfig()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public String e = "";
+  public boolean f = false;
+  public String g = "";
+  public HashMap<String, ArrayList<String>> h = new HashMap();
   
   public void a(String paramString)
   {
@@ -45,30 +36,30 @@ public class DialogConfig
       try
       {
         JSONObject localJSONObject = new JSONObject(paramString);
-        this.jdField_a_of_type_Boolean = ArkManageConfig.a(localJSONObject, "ark_map_transfer_struct");
-        this.jdField_b_of_type_JavaLangString = ArkManageConfig.a(localJSONObject, "business_percent");
+        this.a = ArkManageConfig.a(localJSONObject, "ark_map_transfer_struct");
+        this.g = ArkManageConfig.b(localJSONObject, "business_percent");
         if (localJSONObject.optInt("ark_use_android_http", 0) != 0)
         {
           bool = true;
-          this.jdField_b_of_type_Boolean = bool;
+          this.b = bool;
           this.c = ArkManageConfig.a(localJSONObject, "ark_support_android9_emoji");
           this.d = ArkManageConfig.a(localJSONObject, "ark_engine_multi_thread");
-          this.jdField_a_of_type_JavaLangString = ArkManageConfig.a(localJSONObject, "ark_engine_hardware_rendering_device_matcher");
-          this.e = ArkManageConfig.a(localJSONObject, "ark_engine_disable_hardware_rendering");
+          this.e = ArkManageConfig.b(localJSONObject, "ark_engine_hardware_rendering_device_matcher");
+          this.f = ArkManageConfig.a(localJSONObject, "ark_engine_disable_hardware_rendering");
           Object localObject1 = new StringBuilder("mArkMapTransferStruct=");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+          ((StringBuilder)localObject1).append(this.a);
           ((StringBuilder)localObject1).append(", mBusinessPercent=");
-          ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(this.g);
           ((StringBuilder)localObject1).append(", mArkUseAndroidHttp=");
-          ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+          ((StringBuilder)localObject1).append(this.b);
           ((StringBuilder)localObject1).append(", mArkAndroid9EmojiFeatureSupport=");
           ((StringBuilder)localObject1).append(this.c);
           ((StringBuilder)localObject1).append(", mArkEngineMultiThread");
           ((StringBuilder)localObject1).append(this.d);
           ((StringBuilder)localObject1).append(", mArkEngineHardwareRenderingDeviceMatcher=");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
-          ((StringBuilder)localObject1).append(", mArkEngineDisableHardwareRendering=");
           ((StringBuilder)localObject1).append(this.e);
+          ((StringBuilder)localObject1).append(", mArkEngineDisableHardwareRendering=");
+          ((StringBuilder)localObject1).append(this.f);
           QLog.i("DialogConfig", 1, ((StringBuilder)localObject1).toString());
           localJSONObject = localJSONObject.optJSONObject("msgai_intent_app_map");
           if (localJSONObject != null)
@@ -103,7 +94,7 @@ public class DialogConfig
               if (localArrayList.isEmpty()) {
                 continue;
               }
-              this.jdField_a_of_type_JavaUtilHashMap.put(str1, localArrayList);
+              this.h.put(str1, localArrayList);
               continue;
             }
           }
@@ -123,7 +114,7 @@ public class DialogConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.config.DialogConfig
  * JD-Core Version:    0.7.0.1
  */

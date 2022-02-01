@@ -86,20 +86,20 @@ public class ArkCommonUtil
             paramBoolean = false;
           }
           localIntent.putExtra("h5_ark_url_web_checker_enable", paramBoolean);
-          localIntent.putExtra("h5_ark_url_web_sender_uin", ArkAppContainer.c);
+          localIntent.putExtra("h5_ark_url_web_sender_uin", ArkAppContainer.l);
           if (bool2) {
-            localIntent.putExtra("puin", ArkAppContainer.c);
+            localIntent.putExtra("puin", ArkAppContainer.l);
           }
-          QLog.d("ArkApp.ArkCommonUtil", 1, new Object[] { "ArkSafe.UrlCheck.launchQQBrowser,appname=", paramString3, ", enableCheck=", Boolean.valueOf(paramBoolean), ", appEnableCheck=", Boolean.valueOf(bool1), ", isPublicAccount=", Boolean.valueOf(bool2), ", senderUin=", ArkAppContainer.c, ", mUrlChecker=", paramString2.toString() });
+          QLog.d("ArkApp.ArkCommonUtil", 1, new Object[] { "ArkSafe.UrlCheck.launchQQBrowser,appname=", paramString3, ", enableCheck=", Boolean.valueOf(paramBoolean), ", appEnableCheck=", Boolean.valueOf(bool1), ", isPublicAccount=", Boolean.valueOf(bool2), ", senderUin=", ArkAppContainer.l, ", mUrlChecker=", paramString2.toString() });
           ChooseImageIPCModule.a().a(new ArkCommonUtil.1());
         }
       }
     }
-    paramString2 = ((ArkAIKeyWordConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkAIKeyWordConfBean.class)).a();
+    paramString2 = ((ArkAIKeyWordConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkAIKeyWordConfBean.class)).d();
     if (!TextUtils.isEmpty(paramString2)) {
       localIntent.putExtra("h5_ark_check_config", paramString2);
     }
-    paramString2 = a();
+    paramString2 = b();
     paramString3 = a(true);
     if (!TextUtils.isEmpty(paramString2)) {
       localIntent.putExtra("h5_ark_nation_code", paramString2);
@@ -177,27 +177,19 @@ public class ArkCommonUtil
     return null;
   }
   
-  public static String a()
-  {
-    if (MobileQQ.sProcessId != 1) {
-      return "";
-    }
-    return ((IPhoneContactService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IPhoneContactService.class, "")).getSelfBindInfo().nationCode;
-  }
-  
   public static String a(SessionInfo paramSessionInfo)
   {
     if (paramSessionInfo != null)
     {
       StringBuilder localStringBuilder = new StringBuilder("sessionInfo=[");
       localStringBuilder.append("curType:");
-      localStringBuilder.append(paramSessionInfo.jdField_a_of_type_Int);
+      localStringBuilder.append(paramSessionInfo.a);
       localStringBuilder.append(", curFriendUin:");
-      localStringBuilder.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(", troopUin:");
       localStringBuilder.append(paramSessionInfo.b);
+      localStringBuilder.append(", troopUin:");
+      localStringBuilder.append(paramSessionInfo.c);
       localStringBuilder.append(", curFriendNick");
-      localStringBuilder.append(paramSessionInfo.d);
+      localStringBuilder.append(paramSessionInfo.e);
       return localStringBuilder.toString();
     }
     return "sessionInfo=null";
@@ -244,7 +236,7 @@ public class ArkCommonUtil
     {
       boolean bool1;
       if (((BaseActivity)localObject1).getChatFragment() != null) {
-        bool1 = ((BaseActivity)localObject1).getChatFragment().a() instanceof PublicAccountChatPie;
+        bool1 = ((BaseActivity)localObject1).getChatFragment().k() instanceof PublicAccountChatPie;
       }
       if (((IArkAPIService)QRoute.api(IArkAPIService.class)).dispatchOpenURL(paramString1, "", new JSONObject(), paramInt, paramString2)) {
         ArkAppDataReport.a(null, paramString2, "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
@@ -299,7 +291,7 @@ public class ArkCommonUtil
                 else {
                   i = 0;
                 }
-                ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportOpenURLAccess(paramString2, paramString1, j, i, ArkAppContainer.c);
+                ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportOpenURLAccess(paramString2, paramString1, j, i, ArkAppContainer.l);
               }
               else
               {
@@ -350,7 +342,7 @@ public class ArkCommonUtil
             else {
               i = 0;
             }
-            ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportOpenURLAccess(paramString2, paramString1, j, i, ArkAppContainer.c);
+            ((IArkSecureReport)QRoute.api(IArkSecureReport.class)).reportOpenURLAccess(paramString2, paramString1, j, i, ArkAppContainer.l);
           }
           else
           {
@@ -363,9 +355,9 @@ public class ArkCommonUtil
           }
           if (((BaseActivity)localObject1).getChatFragment() != null)
           {
-            localObject2 = ((BaseActivity)localObject1).getChatFragment().a();
+            localObject2 = ((BaseActivity)localObject1).getChatFragment().k();
             if ((localObject2 instanceof PublicAccountChatPie)) {
-              ((PublicAccountChatPie)localObject2).a.b();
+              ((PublicAccountChatPie)localObject2).cd.b();
             } else {
               ArkAppDataReport.a(null, paramString2, "FullScreenOrH5ShowForAI", 0, 0, 0L, 0L, 0L, "", "");
             }
@@ -378,10 +370,18 @@ public class ArkCommonUtil
     ArkAppDataReport.a(null, paramString2, "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
     return true;
   }
+  
+  public static String b()
+  {
+    if (MobileQQ.sProcessId != 1) {
+      return "";
+    }
+    return ((IPhoneContactService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IPhoneContactService.class, "")).getSelfBindInfo().nationCode;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.ArkCommonUtil
  * JD-Core Version:    0.7.0.1
  */

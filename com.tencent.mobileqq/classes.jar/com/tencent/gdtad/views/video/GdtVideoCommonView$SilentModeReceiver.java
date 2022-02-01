@@ -14,7 +14,7 @@ class GdtVideoCommonView$SilentModeReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool2 = GdtVideoCommonView.d(this.a);
+    boolean bool2 = GdtVideoCommonView.C(this.a);
     boolean bool1 = true;
     if (bool2)
     {
@@ -22,10 +22,10 @@ class GdtVideoCommonView$SilentModeReceiver
       QLog.i("GdtVideoCommonView", 1, "SilentModeReceiver first auto called! so skip!");
       return;
     }
-    if ((GdtVideoCommonView.a(this.a) != null) && ("android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction())))
+    if ((GdtVideoCommonView.A(this.a) != null) && ("android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction())))
     {
-      int i = GdtVideoCommonView.a(this.a).getRingerMode();
-      int j = GdtVideoCommonView.a(this.a).getStreamVolume(3);
+      int i = GdtVideoCommonView.A(this.a).getRingerMode();
+      int j = GdtVideoCommonView.A(this.a).getStreamVolume(3);
       paramContext = new StringBuilder();
       paramContext.append("system context mode: ");
       paramContext.append(i);
@@ -33,19 +33,19 @@ class GdtVideoCommonView$SilentModeReceiver
       if (i != 2)
       {
         paramContext = this.a;
-        paramContext.b = true;
+        paramContext.c = true;
         GdtVideoCommonView.d(paramContext, false);
-        GdtVideoCommonView.a(this.a).setOutputMute(true);
+        GdtVideoCommonView.o(this.a).setOutputMute(true);
       }
       else
       {
         paramContext = this.a;
-        paramContext.b = false;
+        paramContext.c = false;
         if (j > 0) {
           GdtVideoCommonView.d(paramContext, true);
         }
-        GdtVideoCommonView.a(this.a).setOutputMute(GdtVideoCommonView.e(this.a) ^ true);
-        bool1 = true ^ GdtVideoCommonView.e(this.a);
+        GdtVideoCommonView.o(this.a).setOutputMute(GdtVideoCommonView.D(this.a) ^ true);
+        bool1 = true ^ GdtVideoCommonView.D(this.a);
       }
       paramContext = this.a;
       GdtVideoCommonView.a(paramContext, j, paramContext.a, false, bool1);
@@ -54,7 +54,7 @@ class GdtVideoCommonView$SilentModeReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoCommonView.SilentModeReceiver
  * JD-Core Version:    0.7.0.1
  */

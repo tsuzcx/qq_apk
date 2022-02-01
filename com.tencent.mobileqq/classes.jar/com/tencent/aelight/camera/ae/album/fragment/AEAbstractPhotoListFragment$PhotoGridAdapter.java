@@ -27,28 +27,26 @@ public class AEAbstractPhotoListFragment$PhotoGridAdapter
   extends RecyclerView.Adapter<AEAbstractPhotoListFragment.PhotoVH>
   implements URLDrawableDownListener
 {
-  public ColorDrawable a;
-  public Drawable a;
-  public LayoutInflater a;
-  public ArrayList<LocalMediaInfo> a;
+  public ArrayList<LocalMediaInfo> a = new ArrayList();
+  public Drawable b;
+  public ColorDrawable c = new ColorDrawable(570425344);
+  public LayoutInflater d;
   
   public AEAbstractPhotoListFragment$PhotoGridAdapter(AEAbstractPhotoListFragment paramAEAbstractPhotoListFragment)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramAEAbstractPhotoListFragment.getActivity().getLayoutInflater();
+    this.d = paramAEAbstractPhotoListFragment.getActivity().getLayoutInflater();
   }
   
   public TextView a()
   {
-    TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.getActivity());
+    TextView localTextView = new TextView(this.e.getActivity());
     localTextView.setGravity(17);
     localTextView.setTextSize(10.0F);
     localTextView.setTextColor(-1);
     GradientDrawable localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setShape(0);
-    localGradientDrawable.setSize(QAlbumCommonUtil.dp2px(30.0F, this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.getResources()), QAlbumCommonUtil.dp2px(18.0F, this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.getResources()));
-    localGradientDrawable.setCornerRadii(new float[] { QAlbumCommonUtil.dp2px(2.0F, this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.getResources()), QAlbumCommonUtil.dp2px(2.0F, this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.getResources()), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F });
+    localGradientDrawable.setSize(QAlbumCommonUtil.dp2px(30.0F, this.e.getResources()), QAlbumCommonUtil.dp2px(18.0F, this.e.getResources()));
+    localGradientDrawable.setCornerRadii(new float[] { QAlbumCommonUtil.dp2px(2.0F, this.e.getResources()), QAlbumCommonUtil.dp2px(2.0F, this.e.getResources()), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F });
     localGradientDrawable.setColor(1291845632);
     localTextView.setBackgroundDrawable(localGradientDrawable);
     return localTextView;
@@ -60,34 +58,34 @@ public class AEAbstractPhotoListFragment$PhotoGridAdapter
     {
       if (paramInt != 1)
       {
-        if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a != null))
+        if ((paramInt == 2) && (this.e.a.i != null))
         {
-          paramViewGroup = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment;
-          return new AEAbstractPhotoListFragment.PhotoVH(paramViewGroup, paramViewGroup.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a.c());
+          paramViewGroup = this.e;
+          return new AEAbstractPhotoListFragment.PhotoVH(paramViewGroup, paramViewGroup.a.i.k());
         }
       }
-      else if (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a != null)
+      else if (this.e.a.i != null)
       {
-        paramViewGroup = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment;
-        return new AEAbstractPhotoListFragment.PhotoVH(paramViewGroup, paramViewGroup.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a.b());
+        paramViewGroup = this.e;
+        return new AEAbstractPhotoListFragment.PhotoVH(paramViewGroup, paramViewGroup.a.i.j());
       }
     }
-    else if (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a != null)
+    else if (this.e.a.i != null)
     {
-      paramViewGroup = this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment;
-      return new AEAbstractPhotoListFragment.PhotoVH(paramViewGroup, paramViewGroup.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a.a());
+      paramViewGroup = this.e;
+      return new AEAbstractPhotoListFragment.PhotoVH(paramViewGroup, paramViewGroup.a.i.aj_());
     }
     return null;
   }
   
   public LocalMediaInfo a(int paramInt)
   {
-    return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return (LocalMediaInfo)this.a.get(paramInt);
   }
   
   public void a(AEAbstractPhotoListFragment.PhotoVH paramPhotoVH, int paramInt)
   {
-    AEAbstractPhotoListFragment.PhotoItemClickListener localPhotoItemClickListener = new AEAbstractPhotoListFragment.PhotoItemClickListener(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment);
+    AEAbstractPhotoListFragment.PhotoItemClickListener localPhotoItemClickListener = new AEAbstractPhotoListFragment.PhotoItemClickListener(this.e);
     int i = getItemViewType(paramInt);
     if (i != 0)
     {
@@ -96,44 +94,44 @@ public class AEAbstractPhotoListFragment$PhotoGridAdapter
         if (i != 2) {
           return;
         }
-        if (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a != null) {
-          this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a.c(paramInt, paramPhotoVH, localPhotoItemClickListener);
+        if (this.e.a.i != null) {
+          this.e.a.i.c(paramInt, paramPhotoVH, localPhotoItemClickListener);
         }
       }
-      else if (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a != null)
+      else if (this.e.a.i != null)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a.b(paramInt, paramPhotoVH, localPhotoItemClickListener);
+        this.e.a.i.b(paramInt, paramPhotoVH, localPhotoItemClickListener);
       }
     }
-    else if (this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a.a(paramInt, paramPhotoVH, localPhotoItemClickListener);
+    else if (this.e.a.i != null) {
+      this.e.a.i.a(paramInt, paramPhotoVH, localPhotoItemClickListener);
     }
   }
   
   public void a(List<LocalMediaInfo> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
     if (paramList != null)
     {
       if (paramList.size() == 0) {
         return;
       }
-      if ((!this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.r) && (QAlbumUtil.getMediaType((LocalMediaInfo)paramList.get(0)) == 2)) {
+      if ((!this.e.b.O) && (QAlbumUtil.getMediaType((LocalMediaInfo)paramList.get(0)) == 2)) {
         paramList.remove(0);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      this.jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment.jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.a(this.jdField_a_of_type_JavaUtilArrayList, paramBoolean);
+      this.a.addAll(paramList);
+      this.e.a.a(this.a, paramBoolean);
     }
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public int getItemViewType(int paramInt)
   {
-    return QAlbumUtil.getMediaType((LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    return QAlbumUtil.getMediaType((LocalMediaInfo)this.a.get(paramInt));
   }
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
@@ -172,7 +170,7 @@ public class AEAbstractPhotoListFragment$PhotoGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.fragment.AEAbstractPhotoListFragment.PhotoGridAdapter
  * JD-Core Version:    0.7.0.1
  */

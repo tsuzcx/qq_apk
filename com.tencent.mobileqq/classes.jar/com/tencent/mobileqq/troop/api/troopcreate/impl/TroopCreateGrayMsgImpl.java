@@ -69,10 +69,10 @@ public class TroopCreateGrayMsgImpl
         l1 = l2;
       }
     }
-    localObject1 = HardCodeUtil.a(2131715061);
+    localObject1 = HardCodeUtil.a(2131912549);
     if (paramBoolean)
     {
-      paramString2 = HardCodeUtil.a(2131715059);
+      paramString2 = HardCodeUtil.a(2131912547);
       StringBuffer localStringBuffer = new StringBuffer();
       Iterator localIterator = this.createInfo.inviteMembers.iterator();
       while (localIterator.hasNext())
@@ -93,11 +93,11 @@ public class TroopCreateGrayMsgImpl
     }
     else if (!TextUtils.isEmpty(paramString2))
     {
-      paramString2 = String.format(HardCodeUtil.a(2131715058), new Object[] { paramString2 });
+      paramString2 = String.format(HardCodeUtil.a(2131912546), new Object[] { paramString2 });
     }
     else
     {
-      paramString2 = HardCodeUtil.a(2131715060);
+      paramString2 = HardCodeUtil.a(2131912548);
     }
     localMessageForGrayTips.init(this.app.getCurrentAccountUin(), paramString1, paramString1, paramString2, NetConnInfoCenter.getServerTime(), -1047, 1, 0L);
     localMessageForGrayTips.shmsgseq = l1;
@@ -122,9 +122,9 @@ public class TroopCreateGrayMsgImpl
       localObject1 = (MessageForGrayTips)MessageRecordFactory.a(2024);
       ((MessageForGrayTips)localObject1).frienduin = paramString;
       Object localObject2 = BaseApplicationImpl.getApplication().getResources();
-      String str1 = ((Resources)localObject2).getString(2131697305);
-      String str2 = ((Resources)localObject2).getString(2131697303);
-      localObject2 = ((Resources)localObject2).getString(2131697304);
+      String str1 = ((Resources)localObject2).getString(2131895078);
+      String str2 = ((Resources)localObject2).getString(2131895076);
+      localObject2 = ((Resources)localObject2).getString(2131895077);
       ((MessageForGrayTips)localObject1).init(this.app.getCurrentAccountUin(), paramString, paramString, str1, NetConnInfoCenter.getServerTime(), -1047, 1, 0L);
       ((MessageForGrayTips)localObject1).setTextGravity(17);
       paramString = new Bundle();
@@ -164,7 +164,7 @@ public class TroopCreateGrayMsgImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.troopcreate.impl.TroopCreateGrayMsgImpl
  * JD-Core Version:    0.7.0.1
  */

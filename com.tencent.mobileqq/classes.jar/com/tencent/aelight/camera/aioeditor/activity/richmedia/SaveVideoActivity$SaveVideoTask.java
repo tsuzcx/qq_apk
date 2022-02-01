@@ -22,24 +22,24 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class SaveVideoActivity$SaveVideoTask
   extends AsyncTask<Void, Void, Void>
 {
-  double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<PeakActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
+  double a;
+  private WeakReference<PeakActivity> b;
+  private WeakReference<AppInterface> c;
+  private AtomicBoolean d = new AtomicBoolean(false);
+  private String e;
+  private boolean f;
+  private int g = -1;
+  private String h;
   
   SaveVideoActivity$SaveVideoTask(PeakActivity paramPeakActivity, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramPeakActivity);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+    this.b = new WeakReference(paramPeakActivity);
+    this.c = new WeakReference(paramAppInterface);
   }
   
   private int a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    if (this.d.get()) {
       paramInt = 0;
     }
     return paramInt;
@@ -53,24 +53,92 @@ class SaveVideoActivity$SaveVideoTask
     return "";
   }
   
-  private void a()
+  private void a(int paramInt, PublishVideoEntry paramPublishVideoEntry)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    if ((this.c.get() != null) && (this.b.get() != null) && (!((PeakActivity)this.b.get()).isFinishing()))
     {
-      if (this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) {
+      Activity localActivity = (Activity)this.b.get();
+      SaveVideoActivity.a((AppInterface)this.c.get(), paramPublishVideoEntry);
+      localActivity.setResult(a(paramInt), localActivity.getIntent());
+      localActivity.finish();
+      if (a(paramInt) == -1) {
+        b(this.g);
+      }
+    }
+  }
+  
+  private void a(PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
+  {
+    this.h = com.tencent.mobileqq.shortvideo.ShortVideoUtils.getLocalShortVideoPath();
+    if (SaveVideoActivity.d() == null) {
+      SaveVideoActivity.a(FFmpeg.getInstance(paramPeakActivity.getApplicationContext()));
+    }
+    if (SaveVideoActivity.d().isFFmpegCommandRunning())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SaveVideoActivity", 2, "generate files mFFmpeg is running!");
+      }
+      return;
+    }
+    try
+    {
+      if ((((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromCheckEntry(paramPeakActivity.getIntent())) || (((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromMiniApp(paramPeakActivity.getIntent())))
+      {
+        paramPeakActivity = (IMiniAppService)QRoute.api(IMiniAppService.class);
+        this.h = paramPeakActivity.getTmpPathFromOut(paramString1, a((Context)this.b.get()));
+        paramPeakActivity = paramPeakActivity.getTmpPathFromOut(paramPublishVideoEntry.thumbPath, a((Context)this.b.get()));
+        paramPublishVideoEntry.miniThumbPath = paramPeakActivity;
+        if (paramPeakActivity != null) {
+          com.tencent.mobileqq.utils.FileUtils.copyFile(paramPublishVideoEntry.thumbPath, paramPeakActivity);
+        }
+      }
+      paramPeakActivity = new SaveVideoActivity.SaveVideoTask.VideoSaveAlumCallBack(this, paramPublishVideoEntry, paramString1, this.h);
+      SaveVideoActivity.d().setCurrentTaskUni(this.h);
+      SaveVideoActivity.d().watermark(paramString2, paramString1, this.h, paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, paramPeakActivity);
+      return;
+    }
+    catch (Exception paramPeakActivity)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("generate files save alum:");
+        paramString1.append(paramPeakActivity);
+        QLog.d("SaveVideoActivity", 2, paramString1.toString());
+      }
+    }
+  }
+  
+  private boolean a()
+  {
+    if (this.d.get())
+    {
+      if ((this.b.get() != null) && (this.c.get() != null)) {
+        a(0, SaveVideoActivity.a((AppInterface)this.c.get(), this.e));
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    if (this.b.get() != null)
+    {
+      if (this.c.get() == null) {
         return;
       }
       if (a()) {
         return;
       }
-      PeakActivity localPeakActivity = (PeakActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      Object localObject1 = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+      PeakActivity localPeakActivity = (PeakActivity)this.b.get();
+      Object localObject1 = (AppInterface)this.c.get();
       Object localObject2 = localPeakActivity.getIntent();
       if (localObject2 == null) {
         return;
       }
-      this.jdField_a_of_type_JavaLangString = ((Intent)localObject2).getStringExtra("fakeId");
-      localObject2 = SaveVideoActivity.a((AppInterface)localObject1, this.jdField_a_of_type_JavaLangString);
+      this.e = ((Intent)localObject2).getStringExtra("fakeId");
+      localObject2 = SaveVideoActivity.a((AppInterface)localObject1, this.e);
       if (localObject2 == null)
       {
         localPeakActivity.setResult(1, localPeakActivity.getIntent());
@@ -90,101 +158,33 @@ class SaveVideoActivity$SaveVideoTask
       {
         localObject3 = new File((String)localObject1).getParent();
         if (localObject3 != null) {
-          com.tencent.biz.qqstory.utils.FileUtils.a((String)localObject3);
+          com.tencent.biz.qqstory.utils.FileUtils.b((String)localObject3);
         }
       }
       new VideoCompositeHelper().a((PublishVideoEntry)localObject2, (String)localObject1, false, true, new SaveVideoActivity.SaveVideoTask.1(this, localPeakActivity, (String)localObject1, null, (PublishVideoEntry)localObject2));
     }
   }
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    if (this.b.get() != null)
     {
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.h)) {
         return;
       }
-      if (new File(this.jdField_b_of_type_JavaLangString).exists()) {}
+      if (new File(this.h).exists()) {}
     }
-  }
-  
-  private void a(int paramInt, PublishVideoEntry paramPublishVideoEntry)
-  {
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((PeakActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isFinishing()))
-    {
-      Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      SaveVideoActivity.a((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get(), paramPublishVideoEntry);
-      localActivity.setResult(a(paramInt), localActivity.getIntent());
-      localActivity.finish();
-      if (a(paramInt) == -1) {
-        a(this.jdField_a_of_type_Int);
-      }
-    }
-  }
-  
-  private void a(PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
-  {
-    this.jdField_b_of_type_JavaLangString = com.tencent.mobileqq.shortvideo.ShortVideoUtils.getLocalShortVideoPath();
-    if (SaveVideoActivity.a() == null) {
-      SaveVideoActivity.a(FFmpeg.getInstance(paramPeakActivity.getApplicationContext()));
-    }
-    if (SaveVideoActivity.a().isFFmpegCommandRunning())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SaveVideoActivity", 2, "generate files mFFmpeg is running!");
-      }
-      return;
-    }
-    try
-    {
-      if ((((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromCheckEntry(paramPeakActivity.getIntent())) || (((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromMiniApp(paramPeakActivity.getIntent())))
-      {
-        paramPeakActivity = (IMiniAppService)QRoute.api(IMiniAppService.class);
-        this.jdField_b_of_type_JavaLangString = paramPeakActivity.getTmpPathFromOut(paramString1, a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
-        paramPeakActivity = paramPeakActivity.getTmpPathFromOut(paramPublishVideoEntry.thumbPath, a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
-        paramPublishVideoEntry.miniThumbPath = paramPeakActivity;
-        if (paramPeakActivity != null) {
-          com.tencent.mobileqq.utils.FileUtils.copyFile(paramPublishVideoEntry.thumbPath, paramPeakActivity);
-        }
-      }
-      paramPeakActivity = new SaveVideoActivity.SaveVideoTask.VideoSaveAlumCallBack(this, paramPublishVideoEntry, paramString1, this.jdField_b_of_type_JavaLangString);
-      SaveVideoActivity.a().setCurrentTaskUni(this.jdField_b_of_type_JavaLangString);
-      SaveVideoActivity.a().watermark(paramString2, paramString1, this.jdField_b_of_type_JavaLangString, paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, paramPeakActivity);
-      return;
-    }
-    catch (Exception paramPeakActivity)
-    {
-      if (QLog.isColorLevel())
-      {
-        paramString1 = new StringBuilder();
-        paramString1.append("generate files save alum:");
-        paramString1.append(paramPeakActivity);
-        QLog.d("SaveVideoActivity", 2, paramString1.toString());
-      }
-    }
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null)) {
-        a(0, SaveVideoActivity.a((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString));
-      }
-      return true;
-    }
-    return false;
   }
   
   protected Void a(Void... paramVarArgs)
   {
-    a();
+    b();
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.SaveVideoActivity.SaveVideoTask
  * JD-Core Version:    0.7.0.1
  */

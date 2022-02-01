@@ -1450,7 +1450,7 @@ public class TroopHomeworkHelper
     paramString2.append(";skey=");
     paramString2.append((String)localObject);
     paramString1.putString("Cookie", paramString2.toString());
-    if (HomeworkDpcCfg.a().a()) {
+    if (HomeworkDpcCfg.a().c()) {
       return a(paramAppRuntime, "https://qun.qq.com/cgi-bin/grouphw/upload_auth/put", localBundle, paramString1);
     }
     return b(paramAppRuntime, "https://qun.qq.com/cgi-bin/grouphw/upload_auth/put", localBundle, paramString1);
@@ -1485,7 +1485,7 @@ public class TroopHomeworkHelper
     //   11: ldc_w 301
     //   14: aload_2
     //   15: aload_3
-    //   16: invokestatic 518	com/tencent/biz/common/util/HttpUtil:openUrl	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Ljava/lang/String;
+    //   16: invokestatic 519	com/tencent/biz/common/util/HttpUtil:openUrl	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Ljava/lang/String;
     //   19: astore 6
     //   21: aload 6
     //   23: astore 5
@@ -1528,13 +1528,13 @@ public class TroopHomeworkHelper
     //   101: invokestatic 415	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   104: ldc 77
     //   106: iconst_2
-    //   107: ldc_w 520
+    //   107: ldc_w 521
     //   110: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   113: aload_0
     //   114: aload_1
     //   115: aload_2
     //   116: aload_3
-    //   117: invokestatic 475	cooperation/troop_homework/TroopHomeworkHelper:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Lorg/json/JSONObject;
+    //   117: invokestatic 476	cooperation/troop_homework/TroopHomeworkHelper:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Lorg/json/JSONObject;
     //   120: areturn
     //   121: astore 5
     //   123: iconst_1
@@ -1543,13 +1543,13 @@ public class TroopHomeworkHelper
     //   128: ifeq +20 -> 148
     //   131: ldc 77
     //   133: iconst_2
-    //   134: ldc_w 520
+    //   134: ldc_w 521
     //   137: invokestatic 133	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   140: aload_0
     //   141: aload_1
     //   142: aload_2
     //   143: aload_3
-    //   144: invokestatic 475	cooperation/troop_homework/TroopHomeworkHelper:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Lorg/json/JSONObject;
+    //   144: invokestatic 476	cooperation/troop_homework/TroopHomeworkHelper:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Lorg/json/JSONObject;
     //   147: pop
     //   148: aload 5
     //   150: athrow
@@ -1603,7 +1603,7 @@ public class TroopHomeworkHelper
     paramString2.append(";skey=");
     paramString2.append((String)localObject);
     paramString1.putString("Cookie", paramString2.toString());
-    if (HomeworkDpcCfg.a().a()) {
+    if (HomeworkDpcCfg.a().c()) {
       return a(paramAppRuntime, "https://qun.qq.com/cgi-bin/grouphw/upload_append", localBundle, paramString1);
     }
     return b(paramAppRuntime, "https://qun.qq.com/cgi-bin/grouphw/upload_append", localBundle, paramString1);
@@ -1641,7 +1641,7 @@ public class TroopHomeworkHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.TroopHomeworkHelper
  * JD-Core Version:    0.7.0.1
  */

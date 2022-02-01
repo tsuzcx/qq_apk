@@ -12,14 +12,14 @@ class QSecLibMgr$1
   
   public void a(List<Pair<Integer, Byte>> paramList)
   {
-    Message localMessage = QSecLibMgr.a(this.a).obtainMessage(2);
+    Message localMessage = QSecLibMgr.d(this.a).obtainMessage(2);
     localMessage.obj = paramList;
-    QSecLibMgr.a(this.a).sendMessage(localMessage);
+    QSecLibMgr.d(this.a).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecLibMgr.1
  * JD-Core Version:    0.7.0.1
  */

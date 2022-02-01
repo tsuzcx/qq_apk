@@ -245,7 +245,7 @@ public class StoryVideoItem
     this.mAddTime = paramStoryVideoEntry.addTime;
     this.mPublishDate = paramStoryVideoEntry.mPublishDate;
     if (TextUtils.isEmpty(this.mPublishDate)) {
-      this.mPublishDate = FeedManager.a().format(new Date(this.mCreateTime));
+      this.mPublishDate = FeedManager.h().format(new Date(this.mCreateTime));
     }
     this.mUploadStatus = paramStoryVideoEntry.uploadStatus;
     this.mRetryUploadTimes = paramStoryVideoEntry.retryUploadTimes;
@@ -534,29 +534,29 @@ public class StoryVideoItem
   public static String convertToVideoAttr(StoryVideoItem paramStoryVideoItem, String paramString)
   {
     // Byte code:
-    //   0: new 733	org/json/JSONObject
+    //   0: new 734	org/json/JSONObject
     //   3: dup
-    //   4: invokespecial 861	org/json/JSONObject:<init>	()V
+    //   4: invokespecial 862	org/json/JSONObject:<init>	()V
     //   7: astore_3
     //   8: aload_0
     //   9: getfield 193	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVideoWidth	I
     //   12: iconst_m1
     //   13: if_icmpeq +15 -> 28
     //   16: aload_3
-    //   17: ldc_w 738
+    //   17: ldc_w 739
     //   20: aload_0
     //   21: getfield 193	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVideoWidth	I
-    //   24: invokevirtual 865	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   24: invokevirtual 866	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   27: pop
     //   28: aload_0
     //   29: getfield 195	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVideoHeight	I
     //   32: iconst_m1
     //   33: if_icmpeq +15 -> 48
     //   36: aload_3
-    //   37: ldc_w 743
+    //   37: ldc_w 744
     //   40: aload_0
     //   41: getfield 195	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVideoHeight	I
-    //   44: invokevirtual 865	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   44: invokevirtual 866	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   47: pop
     //   48: aload_0
     //   49: getfield 197	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVideoBytes	J
@@ -564,30 +564,30 @@ public class StoryVideoItem
     //   55: lcmp
     //   56: ifeq +15 -> 71
     //   59: aload_3
-    //   60: ldc_w 745
+    //   60: ldc_w 746
     //   63: aload_0
     //   64: getfield 197	com/tencent/biz/qqstory/model/item/StoryVideoItem:mVideoBytes	J
-    //   67: invokevirtual 868	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   67: invokevirtual 869	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   70: pop
     //   71: aload_0
     //   72: getfield 173	com/tencent/biz/qqstory/model/item/StoryVideoItem:mIsPicture	I
     //   75: iconst_m1
     //   76: if_icmpeq +15 -> 91
     //   79: aload_3
-    //   80: ldc_w 751
+    //   80: ldc_w 752
     //   83: aload_0
     //   84: getfield 173	com/tencent/biz/qqstory/model/item/StoryVideoItem:mIsPicture	I
-    //   87: invokevirtual 865	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   87: invokevirtual 866	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   90: pop
     //   91: aload_0
     //   92: getfield 392	com/tencent/biz/qqstory/model/item/StoryVideoItem:mDoodleText	Ljava/lang/String;
     //   95: invokestatic 336	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   98: ifne +15 -> 113
     //   101: aload_3
-    //   102: ldc_w 753
+    //   102: ldc_w 754
     //   105: aload_0
     //   106: getfield 392	com/tencent/biz/qqstory/model/item/StoryVideoItem:mDoodleText	Ljava/lang/String;
-    //   109: invokevirtual 871	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   109: invokevirtual 872	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   112: pop
     //   113: aload_0
     //   114: getfield 457	com/tencent/biz/qqstory/model/item/StoryVideoItem:mAtJsonData	Ljava/lang/String;
@@ -596,20 +596,20 @@ public class StoryVideoItem
     //   121: iload_2
     //   122: ifne +37 -> 159
     //   125: aload_3
-    //   126: ldc_w 759
-    //   129: new 794	org/json/JSONArray
+    //   126: ldc_w 760
+    //   129: new 795	org/json/JSONArray
     //   132: dup
     //   133: aload_0
     //   134: getfield 457	com/tencent/biz/qqstory/model/item/StoryVideoItem:mAtJsonData	Ljava/lang/String;
-    //   137: invokespecial 872	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   140: invokevirtual 871	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   137: invokespecial 873	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   140: invokevirtual 872	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   143: pop
     //   144: goto +15 -> 159
     //   147: aload_3
-    //   148: ldc_w 759
+    //   148: ldc_w 760
     //   151: aload_0
     //   152: getfield 457	com/tencent/biz/qqstory/model/item/StoryVideoItem:mAtJsonData	Ljava/lang/String;
-    //   155: invokevirtual 871	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   155: invokevirtual 872	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   158: pop
     //   159: aload_0
     //   160: getfield 181	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLocalCreateTime	J
@@ -617,57 +617,57 @@ public class StoryVideoItem
     //   166: lcmp
     //   167: ifeq +19 -> 186
     //   170: aload_3
-    //   171: ldc_w 761
+    //   171: ldc_w 762
     //   174: aload_0
     //   175: getfield 181	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLocalCreateTime	J
     //   178: ldc2_w 469
     //   181: ldiv
-    //   182: invokevirtual 868	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   182: invokevirtual 869	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   185: pop
     //   186: aload_0
     //   187: getfield 475	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLocalCreateLocation	Ljava/lang/String;
     //   190: invokestatic 336	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   193: ifne +15 -> 208
     //   196: aload_3
-    //   197: ldc_w 763
+    //   197: ldc_w 764
     //   200: aload_0
     //   201: getfield 475	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLocalCreateLocation	Ljava/lang/String;
-    //   204: invokevirtual 871	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   204: invokevirtual 872	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   207: pop
     //   208: aload_0
-    //   209: getfield 767	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLatitude	I
+    //   209: getfield 768	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLatitude	I
     //   212: iconst_m1
     //   213: if_icmpeq +15 -> 228
     //   216: aload_3
-    //   217: ldc_w 765
+    //   217: ldc_w 766
     //   220: aload_0
-    //   221: getfield 767	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLatitude	I
-    //   224: invokevirtual 865	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   221: getfield 768	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLatitude	I
+    //   224: invokevirtual 866	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   227: pop
     //   228: aload_0
-    //   229: getfield 771	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLongitude	I
+    //   229: getfield 772	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLongitude	I
     //   232: iconst_m1
     //   233: if_icmpeq +15 -> 248
     //   236: aload_3
-    //   237: ldc_w 769
+    //   237: ldc_w 770
     //   240: aload_0
-    //   241: getfield 771	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLongitude	I
-    //   244: invokevirtual 865	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   241: getfield 772	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLongitude	I
+    //   244: invokevirtual 866	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   247: pop
     //   248: aload_3
-    //   249: ldc_w 788
+    //   249: ldc_w 789
     //   252: aload_0
     //   253: getfield 171	com/tencent/biz/qqstory/model/item/StoryVideoItem:mLocalSpecialItemId	Ljava/lang/String;
-    //   256: invokevirtual 871	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   256: invokevirtual 872	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   259: pop
     //   260: goto +12 -> 272
     //   263: astore_0
     //   264: aload_1
-    //   265: ldc_w 874
+    //   265: ldc_w 875
     //   268: aload_0
-    //   269: invokestatic 856	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   269: invokestatic 857	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   272: aload_3
-    //   273: invokevirtual 823	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   273: invokevirtual 824	org/json/JSONObject:toString	()Ljava/lang/String;
     //   276: areturn
     //   277: astore 4
     //   279: goto -132 -> 147
@@ -1539,17 +1539,17 @@ public class StoryVideoItem
     if (localObject1 != null)
     {
       localObject2 = new qqstory_struct.TagInfoBase();
-      ((qqstory_struct.TagInfoBase)localObject2).tag_id.set(((TagItem.TagInfoBase)localObject1).jdField_a_of_type_Long);
-      ((qqstory_struct.TagInfoBase)localObject2).tag_type.set(((TagItem.TagInfoBase)localObject1).jdField_a_of_type_Int);
-      ((qqstory_struct.TagInfoBase)localObject2).tag_name.set(((TagItem.TagInfoBase)localObject1).jdField_a_of_type_JavaLangString);
-      ((qqstory_struct.TagInfoBase)localObject2).tag_desc.set(((TagItem.TagInfoBase)localObject1).b);
+      ((qqstory_struct.TagInfoBase)localObject2).tag_id.set(((TagItem.TagInfoBase)localObject1).a);
+      ((qqstory_struct.TagInfoBase)localObject2).tag_type.set(((TagItem.TagInfoBase)localObject1).d);
+      ((qqstory_struct.TagInfoBase)localObject2).tag_name.set(((TagItem.TagInfoBase)localObject1).b);
+      ((qqstory_struct.TagInfoBase)localObject2).tag_desc.set(((TagItem.TagInfoBase)localObject1).c);
       localStoryVideoEntry.mTagBytes = ((qqstory_struct.TagInfoBase)localObject2).toByteArray();
     }
     localObject1 = this.mCompInfoBase;
     if (localObject1 != null)
     {
       localObject2 = new qqstory_struct.CompInfoBase();
-      ((qqstory_struct.CompInfoBase)localObject2).title.set(((CompInfoBase)localObject1).jdField_a_of_type_JavaLangString);
+      ((qqstory_struct.CompInfoBase)localObject2).title.set(((CompInfoBase)localObject1).a);
       ((qqstory_struct.CompInfoBase)localObject2).backgroud_url.set(((CompInfoBase)localObject1).b);
       localStoryVideoEntry.mCompBytes = ((qqstory_struct.CompInfoBase)localObject2).toByteArray();
     }
@@ -1638,7 +1638,7 @@ public class StoryVideoItem
     localFeedVideoInfo.vid.set(ByteStringMicro.copyFromUtf8(this.mVid));
     localFeedVideoInfo.time.set(this.mCreateTime / 1000L);
     if (this.mTagInfoBase != null) {
-      localFeedVideoInfo.video_tag.set(this.mTagInfoBase.a());
+      localFeedVideoInfo.video_tag.set(this.mTagInfoBase.b());
     }
     localFeedVideoInfo.video_cover.set(ByteStringMicro.copyFromUtf8(this.mVideoThumbnailUrl));
     localFeedVideoInfo.video_attr.set(ByteStringMicro.copyFromUtf8(convertToVideoAttr(this, paramString)));
@@ -1764,8 +1764,8 @@ public class StoryVideoItem
   public VideoGameInfo getVideoGameInfo()
   {
     VideoLinkInfo localVideoLinkInfo = getOALinkInfo();
-    if ((localVideoLinkInfo != null) && (localVideoLinkInfo.a != null)) {
-      return localVideoLinkInfo.a;
+    if ((localVideoLinkInfo != null) && (localVideoLinkInfo.j != null)) {
+      return localVideoLinkInfo.j;
     }
     if (this.mGameInfo == null) {
       this.mGameInfo = VideoGameInfo.a(this.mGameInfoJson);
@@ -1784,7 +1784,7 @@ public class StoryVideoItem
   public int getVideoMaskType()
   {
     boolean bool1 = isMaskVideo();
-    boolean bool2 = FileUtils.c(this.mAtImagePath);
+    boolean bool2 = FileUtils.d(this.mAtImagePath);
     if (bool1)
     {
       if (bool2) {
@@ -1863,18 +1863,18 @@ public class StoryVideoItem
   
   public boolean isMine()
   {
-    return QQStoryContext.a().b().equals(this.mOwnerUid);
+    return QQStoryContext.a().i().equals(this.mOwnerUid);
   }
   
   public boolean isPollVideo()
   {
-    return StringUtil.a(this.mPollLayoutJson) ^ true;
+    return StringUtil.isEmpty(this.mPollLayoutJson) ^ true;
   }
   
   public boolean isTroopLocalVideoOnly()
   {
     VideoSpreadGroupList localVideoSpreadGroupList = this.mVideoSpreadGroupList;
-    return (localVideoSpreadGroupList != null) && (localVideoSpreadGroupList.jdField_a_of_type_Int == 4);
+    return (localVideoSpreadGroupList != null) && (localVideoSpreadGroupList.a == 4);
   }
   
   public boolean isUploadFail()
@@ -2018,7 +2018,7 @@ public class StoryVideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.StoryVideoItem
  * JD-Core Version:    0.7.0.1
  */

@@ -17,11 +17,11 @@ class QQGameGrayTipsView$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isInValidGameAppId(QQGameGrayTipsView.a(this.a).gameAppId))
+    if (!((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isInValidGameAppId(QQGameGrayTipsView.c(this.a).gameAppId))
     {
       paramAnimator = new QQGameSubscribeBusEvent(5);
       QQGamePubSubscribe.AppSubscribeInfo localAppSubscribeInfo = new QQGamePubSubscribe.AppSubscribeInfo();
-      localAppSubscribeInfo.appid.set(Integer.parseInt(QQGameGrayTipsView.a(this.a).gameAppId));
+      localAppSubscribeInfo.appid.set(Integer.parseInt(QQGameGrayTipsView.c(this.a).gameAppId));
       paramAnimator.subscribeInfo = localAppSubscribeInfo;
       SimpleEventBus.getInstance().dispatchEvent(paramAnimator);
     }
@@ -29,7 +29,7 @@ class QQGameGrayTipsView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.QQGameGrayTipsView.2
  * JD-Core Version:    0.7.0.1
  */

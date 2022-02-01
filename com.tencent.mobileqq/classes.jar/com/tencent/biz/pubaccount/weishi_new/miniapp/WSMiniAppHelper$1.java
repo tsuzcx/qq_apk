@@ -7,8 +7,6 @@ import com.tencent.mobileqq.mini.api.MiniAppLaunchListener;
 class WSMiniAppHelper$1
   implements MiniAppLaunchListener
 {
-  WSMiniAppHelper$1(WSMiniAppHelper paramWSMiniAppHelper) {}
-  
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -27,7 +25,7 @@ class WSMiniAppHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.miniapp.WSMiniAppHelper.1
  * JD-Core Version:    0.7.0.1
  */

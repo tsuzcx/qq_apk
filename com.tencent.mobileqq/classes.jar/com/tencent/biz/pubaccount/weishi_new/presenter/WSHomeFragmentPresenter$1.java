@@ -12,24 +12,25 @@ class WSHomeFragmentPresenter$1
   
   public void a(WeishiTask paramWeishiTask)
   {
-    if ((this.a.a() != null) && (paramWeishiTask != null) && (paramWeishiTask.a()) && (paramWeishiTask.a != null) && ((paramWeishiTask.a instanceof stRedDotRsp)))
+    if ((this.a.getView() != null) && (paramWeishiTask != null) && (paramWeishiTask.b()) && (paramWeishiTask.m != null) && ((paramWeishiTask.m instanceof stRedDotRsp)))
     {
-      paramWeishiTask = (stRedDotRsp)paramWeishiTask.a;
+      paramWeishiTask = (stRedDotRsp)paramWeishiTask.m;
       WSHomeFragmentPresenter.a(this.a, paramWeishiTask.notificationReddot);
       WSHomeFragmentPresenter.b(this.a, paramWeishiTask.menu);
-      if (this.a.a() != null) {
-        ((IWSHomeView)this.a.a()).a(paramWeishiTask);
+      WSHomeFragmentPresenter.a(this.a, paramWeishiTask.user);
+      if (this.a.getView() != null) {
+        ((IWSHomeView)this.a.getView()).a(paramWeishiTask);
       }
     }
-    else if (this.a.a() != null)
+    else if (this.a.getView() != null)
     {
-      ((IWSHomeView)this.a.a()).b();
+      ((IWSHomeView)this.a.getView()).o();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSHomeFragmentPresenter.1
  * JD-Core Version:    0.7.0.1
  */

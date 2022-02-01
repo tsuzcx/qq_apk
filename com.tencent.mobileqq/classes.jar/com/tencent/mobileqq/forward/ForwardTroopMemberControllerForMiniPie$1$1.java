@@ -9,16 +9,16 @@ class ForwardTroopMemberControllerForMiniPie$1$1
   
   public void run()
   {
-    if (ForwardTroopMemberControllerForMiniPie.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0) != null)
+    if (ForwardTroopMemberControllerForMiniPie.b(this.b.this$0) != null)
     {
-      ForwardTroopMemberControllerForMiniPie.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0);
-      ForwardTroopMemberControllerForMiniPie.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardTroopMemberControllerForMiniPie$1.this$0).a(this.jdField_a_of_type_JavaUtilList);
+      ForwardTroopMemberControllerForMiniPie.c(this.b.this$0);
+      ForwardTroopMemberControllerForMiniPie.b(this.b.this$0).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.1.1
  * JD-Core Version:    0.7.0.1
  */

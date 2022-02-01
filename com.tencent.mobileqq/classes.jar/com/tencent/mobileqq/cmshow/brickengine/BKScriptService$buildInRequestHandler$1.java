@@ -29,9 +29,9 @@ public final class BKScriptService$buildInRequestHandler$1
     if (bool) {
       return null;
     }
-    if (BKScriptService.a(this.a).a() == EngineState.DESTROYED)
+    if (BKScriptService.a(this.a).e() == EngineState.DESTROYED)
     {
-      str = BKScriptService.a(this.a);
+      str = BKScriptService.b(this.a);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("buildInRequestHandler handleCmd:");
       ((StringBuilder)localObject1).append(paramString1);
@@ -41,15 +41,15 @@ public final class BKScriptService$buildInRequestHandler$1
       QLog.w(str, 1, ((StringBuilder)localObject1).toString());
       return null;
     }
-    Object localObject1 = BKScriptService.a(this.a).a();
+    Object localObject1 = BKScriptService.a(this.a).f();
     if (localObject1 != null)
     {
-      if (((BKRenderService)localObject1).a() != paramLong) {
+      if (((BKRenderService)localObject1).d() != paramLong) {
         return null;
       }
       if (QLog.isColorLevel())
       {
-        localObject1 = BKScriptService.a(this.a);
+        localObject1 = BKScriptService.b(this.a);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(this);
         ((StringBuilder)localObject2).append(" handleCmd, jsState:");
@@ -59,7 +59,7 @@ public final class BKScriptService$buildInRequestHandler$1
         ((StringBuilder)localObject2).append(", reqData:");
         ((StringBuilder)localObject2).append(paramString2);
         ((StringBuilder)localObject2).append(", EngineState:");
-        ((StringBuilder)localObject2).append(BKScriptService.a(this.a).a());
+        ((StringBuilder)localObject2).append(BKScriptService.a(this.a).e());
         QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
       localObject1 = this.a;
@@ -81,7 +81,7 @@ public final class BKScriptService$buildInRequestHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKScriptService.buildInRequestHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -50,13 +50,6 @@ public class AECMShowQipcModule
     return AECMShowQipcModule.InstanceHolder.a;
   }
   
-  private String a()
-  {
-    return "https://d3g.qq.com/sngapp/app/update/20210112192445_5344/CrossEngine.jar";
-  }
-  
-  private void a() {}
-  
   private void a(int paramInt)
   {
     QLog.d("AECMShowQipcModule", 1, " handleDownloadAERes ");
@@ -66,7 +59,7 @@ public class AECMShowQipcModule
     {
       AEResInfo localAEResInfo = (AEResInfo)localIterator.next();
       StringBuilder localStringBuilder;
-      if (AEResUtil.b(localAEResInfo))
+      if (AEResUtil.d(localAEResInfo))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[handleDownloadAERes], resInfo=");
@@ -114,22 +107,15 @@ public class AECMShowQipcModule
     QIPCClientHelper.getInstance().callServer("AECMShowQipcModule", "action_download_essential_resource", localBundle, new AECMShowQipcModule.1(paramCMJoyEssentialDownloadCallback));
   }
   
-  private boolean a()
-  {
-    return false;
-  }
-  
   private String b()
   {
-    return "https://bucket-kila-1257758378.cos.ap-guangzhou.myqcloud.com/CECmShowEngineRes.zip";
+    return "https://d3g.qq.com/sngapp/app/update/20210112192445_5344/CrossEngine.jar";
   }
-  
-  private void b() {}
   
   private void b(int paramInt)
   {
-    int i = AECMShowConfigManager.a().a();
-    int j = AECMShowConfigManager.a().b();
+    int i = AECMShowConfigManager.d().b();
+    int j = AECMShowConfigManager.d().c();
     HashMap localHashMap = new HashMap();
     localHashMap.put("KEY_CMSHOW_IMG_MAX_LENGTH", Integer.valueOf(i));
     localHashMap.put("KEY_CMSHOW_IMG_QUALITY", Integer.valueOf(j));
@@ -143,9 +129,9 @@ public class AECMShowQipcModule
     QIPCClientHelper.getInstance().callServer("AECMShowQipcModule", "action_get_request_image_param", null, paramEIPCResultCallback);
   }
   
-  private boolean b()
+  private String c()
   {
-    return false;
+    return "https://bucket-kila-1257758378.cos.ap-guangzhou.myqcloud.com/CECmShowEngineRes.zip";
   }
   
   private void c(int paramInt)
@@ -155,7 +141,7 @@ public class AECMShowQipcModule
   
   private void d(int paramInt)
   {
-    if (a())
+    if (d())
     {
       AEQLog.b("AECMShowQipcModule", "[doDownloadCrossEngineLibrary] CrossEngine libs exists, no need to update");
       callbackResult(paramInt, EIPCResult.createSuccessResult(null));
@@ -186,19 +172,24 @@ public class AECMShowQipcModule
       callbackResult(paramInt, EIPCResult.createResult(-102, null));
       return;
     }
-    localObject2 = new File(ApolloConstant.i, "libs.zip");
+    localObject2 = new File(ApolloConstant.j, "libs.zip");
     if (((File)localObject2).getParentFile().exists()) {
-      FileUtils.deleteDirectory(ApolloConstant.i);
+      FileUtils.deleteDirectory(ApolloConstant.j);
     }
     ((File)localObject2).getParentFile().mkdirs();
-    DownloadTask localDownloadTask = new DownloadTask(a(), (File)localObject2);
-    localDownloadTask.p = true;
-    localDownloadTask.n = true;
-    localDownloadTask.f = "apollo_res";
-    localDownloadTask.b = 1;
-    localDownloadTask.q = true;
-    localDownloadTask.r = true;
+    DownloadTask localDownloadTask = new DownloadTask(b(), (File)localObject2);
+    localDownloadTask.N = true;
+    localDownloadTask.J = true;
+    localDownloadTask.L = "apollo_res";
+    localDownloadTask.e = 1;
+    localDownloadTask.P = true;
+    localDownloadTask.Q = true;
     ((DownloaderInterface)localObject1).startDownload(localDownloadTask, new AECMShowQipcModule.4(this, (File)localObject2, paramInt), null);
+  }
+  
+  private boolean d()
+  {
+    return false;
   }
   
   private void e(int paramInt)
@@ -206,9 +197,16 @@ public class AECMShowQipcModule
     ThreadManagerV2.excute(new AECMShowQipcModule.5(this, paramInt), 16, null, false);
   }
   
+  private boolean e()
+  {
+    return false;
+  }
+  
+  private void f() {}
+  
   private void f(int paramInt)
   {
-    if (b())
+    if (e())
     {
       AEQLog.b("AECMShowQipcModule", "[doDownloadCrossEngineAssets] CrossEngine assets exists, no need to update");
       callbackResult(paramInt, EIPCResult.createSuccessResult(null));
@@ -239,20 +237,22 @@ public class AECMShowQipcModule
       callbackResult(paramInt, EIPCResult.createResult(-102, null));
       return;
     }
-    localObject2 = new File(ApolloConstant.j, "assets.zip");
+    localObject2 = new File(ApolloConstant.k, "assets.zip");
     if (((File)localObject2).getParentFile().exists()) {
-      FileUtils.deleteDirectory(ApolloConstant.j);
+      FileUtils.deleteDirectory(ApolloConstant.k);
     }
     ((File)localObject2).getParentFile().mkdirs();
-    DownloadTask localDownloadTask = new DownloadTask(b(), (File)localObject2);
-    localDownloadTask.p = true;
-    localDownloadTask.n = true;
-    localDownloadTask.f = "apollo_res";
-    localDownloadTask.b = 1;
-    localDownloadTask.q = true;
-    localDownloadTask.r = true;
+    DownloadTask localDownloadTask = new DownloadTask(c(), (File)localObject2);
+    localDownloadTask.N = true;
+    localDownloadTask.J = true;
+    localDownloadTask.L = "apollo_res";
+    localDownloadTask.e = 1;
+    localDownloadTask.P = true;
+    localDownloadTask.Q = true;
     ((DownloaderInterface)localObject1).startDownload(localDownloadTask, new AECMShowQipcModule.6(this, (File)localObject2, paramInt), null);
   }
+  
+  private void g() {}
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
@@ -272,7 +272,7 @@ public class AECMShowQipcModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowQipcModule
  * JD-Core Version:    0.7.0.1
  */

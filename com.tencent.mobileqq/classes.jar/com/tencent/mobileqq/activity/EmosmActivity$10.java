@@ -18,7 +18,7 @@ class EmosmActivity$10
   {
     this.a.mEPDatas.clear();
     if (this.a.mAdapter != null) {
-      this.a.mAdapter.a();
+      this.a.mAdapter.b();
     }
     if ((paramList != null) && (paramList.size() > 0))
     {
@@ -63,9 +63,9 @@ class EmosmActivity$10
       this.a.mListView.removeHeaderView(this.a.headerView);
     }
     if (this.a.mLaunchMode == 2) {
-      this.a.setTitle(2131691917);
+      this.a.setTitle(2131888884);
     } else {
-      this.a.setTitle(2131692136);
+      this.a.setTitle(2131889117);
     }
     if (this.a.mAdapter != null) {
       this.a.mAdapter.notifyDataSetChanged();
@@ -74,7 +74,7 @@ class EmosmActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.10
  * JD-Core Version:    0.7.0.1
  */

@@ -24,30 +24,30 @@ public class ShareGroupsListAdapter$HotSortCardHolder
   extends RecyclerView.ViewHolder
 {
   public Context a;
-  public ImageView a;
-  public TextView a;
-  public MyMemoriesListView.OnUIClickListener a;
   public ImageView b;
-  public TextView b;
-  public ImageView c;
   public TextView c;
-  public ImageView d;
   public TextView d;
-  public TextView e;
+  public ImageView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public ImageView i;
+  public ImageView j;
+  public MyMemoriesListView.OnUIClickListener k;
   
   public ShareGroupsListAdapter$HotSortCardHolder(View paramView, Context paramContext)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364307));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364326));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364350));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364342));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364348));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364327));
-    this.e = ((TextView)paramView.findViewById(2131364343));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374488));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374000));
+    this.a = paramContext;
+    this.b = ((ImageView)paramView.findViewById(2131430332));
+    this.c = ((TextView)paramView.findViewById(2131430354));
+    this.d = ((TextView)paramView.findViewById(2131430378));
+    this.e = ((ImageView)paramView.findViewById(2131430370));
+    this.f = ((TextView)paramView.findViewById(2131430376));
+    this.g = ((TextView)paramView.findViewById(2131430355));
+    this.h = ((TextView)paramView.findViewById(2131430371));
+    this.i = ((ImageView)paramView.findViewById(2131442658));
+    this.j = ((ImageView)paramView.findViewById(2131442066));
   }
   
   public void a()
@@ -63,98 +63,98 @@ public class ShareGroupsListAdapter$HotSortCardHolder
       return;
     }
     this.itemView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    int i = (UIUtils.a(this.jdField_a_of_type_AndroidContentContext) - UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 25.0F)) / 2;
-    double d1 = i;
+    this.c.setVisibility(8);
+    int m = (UIUtils.b(this.a) - UIUtils.a(this.a, 25.0F)) / 2;
+    double d1 = m;
     Double.isNaN(d1);
-    int j = (int)(d1 * 1.61D);
-    this.itemView.getLayoutParams().width = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = j;
+    int n = (int)(d1 * 1.61D);
+    this.itemView.getLayoutParams().width = m;
+    this.b.getLayoutParams().width = m;
+    this.b.getLayoutParams().height = n;
     if (paramHotSortVideoEntry.coverURL == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846843));
+      this.b.setImageDrawable(this.a.getResources().getDrawable(2130848395));
     }
     else
     {
       localObject = ThumbnailUrlHelper.c(paramHotSortVideoEntry.coverURL);
-      if (!((String)localObject).equals(this.jdField_a_of_type_AndroidWidgetImageView.getTag()))
+      if (!((String)localObject).equals(this.b.getTag()))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(localObject);
-        UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, (String)localObject, i, j, i / 30, UIUtils.b, "QQStoryMemory");
+        this.b.setTag(localObject);
+        UIUtils.a(this.b, (String)localObject, m, n, m / 30, UIUtils.h, "QQStoryMemory");
       }
     }
     Object localObject = paramHotSortVideoEntry.storyId;
     this.itemView.setOnClickListener(new ShareGroupsListAdapter.HotSortCardHolder.1(this, (String)localObject));
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.d.setVisibility(8);
     localObject = ((UserManager)SuperManager.a(2)).c(paramHotSortVideoEntry.unionId);
     if (localObject == null)
     {
-      if (!"NullImage".equals(this.jdField_b_of_type_AndroidWidgetImageView.getTag()))
+      if (!"NullImage".equals(this.e.getTag()))
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setTag("NullImage");
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.f());
+        this.e.setTag("NullImage");
+        this.e.setImageBitmap(ImageUtil.k());
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(StoryApi.a(2131699904));
+      this.f.setText(StoryApi.b(2131897957));
     }
     else
     {
-      if (!((QQUserUIItem)localObject).headUrl.equals(this.jdField_b_of_type_AndroidWidgetImageView.getTag()))
+      if (!((QQUserUIItem)localObject).headUrl.equals(this.e.getTag()))
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setTag(((QQUserUIItem)localObject).headUrl);
-        ShareGroupsListAdapter.a(this.jdField_b_of_type_AndroidWidgetImageView, 0, ((QQUserUIItem)localObject).headUrl);
+        this.e.setTag(((QQUserUIItem)localObject).headUrl);
+        ShareGroupsListAdapter.a(this.e, 0, ((QQUserUIItem)localObject).headUrl);
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(((QQUserUIItem)localObject).getDisplayName());
+      this.f.setText(((QQUserUIItem)localObject).getDisplayName());
       if (((QQUserUIItem)localObject).isVipButNoFriend())
       {
         if (StoryDepends.QimUtil.a())
         {
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-          j = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
-          this.jdField_c_of_type_AndroidWidgetTextView.setMaxWidth(i - j);
+          this.i.setVisibility(0);
+          this.j.setVisibility(8);
+          n = UIUtils.a(this.a, 72.0F);
+          this.f.setMaxWidth(m - n);
         }
         else
         {
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-          PlayModeUtils.a(this.jdField_d_of_type_AndroidWidgetImageView, (QQUserUIItem)localObject);
+          this.i.setVisibility(8);
+          this.j.setVisibility(0);
+          PlayModeUtils.a(this.j, (QQUserUIItem)localObject);
           localObject = PlayModeUtils.b((QQUserUIItem)localObject);
           if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            this.jdField_d_of_type_AndroidWidgetImageView.setTag(localObject);
+            this.j.setTag(localObject);
           }
         }
       }
       else
       {
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.i.setVisibility(8);
+        this.j.setVisibility(8);
       }
     }
     if ((paramHotSortVideoEntry.likeCount == 0) && (paramHotSortVideoEntry.viewCount == 0))
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.e.setVisibility(8);
+      this.g.setVisibility(8);
+      this.h.setVisibility(8);
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847105);
-      ((Drawable)localObject).setBounds(0, 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.0F));
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(UIUtils.a(paramHotSortVideoEntry.viewCount));
-      this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846712);
+      localObject = this.a.getResources().getDrawable(2130848657);
+      ((Drawable)localObject).setBounds(0, 0, UIUtils.a(this.a, 12.0F), UIUtils.a(this.a, 12.0F));
+      this.g.setText(UIUtils.a(paramHotSortVideoEntry.viewCount));
+      this.g.setCompoundDrawables((Drawable)localObject, null, null, null);
+      localObject = this.a.getResources().getDrawable(2130848264);
       ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
-      this.e.setText(UIUtils.a(paramHotSortVideoEntry.likeCount));
-      this.e.setCompoundDrawables((Drawable)localObject, null, null, null);
-      this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.e.setVisibility(0);
+      this.h.setText(UIUtils.a(paramHotSortVideoEntry.likeCount));
+      this.h.setCompoundDrawables((Drawable)localObject, null, null, null);
+      this.g.setVisibility(0);
+      this.h.setVisibility(0);
     }
     StoryReportor.a("share_story", "exp_video_card", 0, 0, new String[] { paramHotSortVideoEntry.groupId, paramHotSortVideoEntry.storyId });
   }
   
   public void a(MyMemoriesListView.OnUIClickListener paramOnUIClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener = paramOnUIClickListener;
+    this.k = paramOnUIClickListener;
   }
 }
 

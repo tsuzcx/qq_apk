@@ -10,11 +10,11 @@ import org.jetbrains.annotations.Nullable;
 public final class RIJVideoRewardCoinManager$RIJRewardInfo
 {
   @Nullable
-  private final VideoInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-  @Nullable
-  private final String jdField_a_of_type_JavaLangString;
+  private final String a;
   @Nullable
   private String b;
+  @Nullable
+  private final VideoInfo c;
   
   public RIJVideoRewardCoinManager$RIJRewardInfo()
   {
@@ -23,21 +23,15 @@ public final class RIJVideoRewardCoinManager$RIJRewardInfo
   
   public RIJVideoRewardCoinManager$RIJRewardInfo(@Nullable String paramString1, @Nullable String paramString2, @Nullable VideoInfo paramVideoInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo = paramVideoInfo;
-  }
-  
-  @Nullable
-  public final VideoInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+    this.c = paramVideoInfo;
   }
   
   @Nullable
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   @Nullable
@@ -46,13 +40,19 @@ public final class RIJVideoRewardCoinManager$RIJRewardInfo
     return this.b;
   }
   
+  @Nullable
+  public final VideoInfo c()
+  {
+    return this.c;
+  }
+  
   public boolean equals(@Nullable Object paramObject)
   {
     if (this != paramObject) {
       if ((paramObject instanceof RIJRewardInfo))
       {
         paramObject = (RIJRewardInfo)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo, paramObject.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c))) {}
       }
       else
       {
@@ -64,7 +64,7 @@ public final class RIJVideoRewardCoinManager$RIJRewardInfo
   
   public int hashCode()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     int k = 0;
     int i;
     if (localObject != null) {
@@ -79,7 +79,7 @@ public final class RIJVideoRewardCoinManager$RIJRewardInfo
     } else {
       j = 0;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+    localObject = this.c;
     if (localObject != null) {
       k = localObject.hashCode();
     }
@@ -91,18 +91,18 @@ public final class RIJVideoRewardCoinManager$RIJRewardInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RIJRewardInfo(articleID=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", accountUin=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", videoInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager.RIJRewardInfo
  * JD-Core Version:    0.7.0.1
  */

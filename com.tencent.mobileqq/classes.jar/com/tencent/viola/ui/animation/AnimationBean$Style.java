@@ -54,9 +54,9 @@ public class AnimationBean$Style
   public String height;
   private List<PropertyValuesHolder> holders = new LinkedList();
   public String opacity;
-  private Pair<Float, Float> pivot;
+  public Pair<Float, Float> pivot;
   public String transform;
-  private Map<Property<View, Float>, Float> transformMap = new LinkedHashMap();
+  public Map<Property<View, Float>, Float> transformMap = new LinkedHashMap();
   public String transformOrigin;
   public String width;
   
@@ -228,7 +228,7 @@ public class AnimationBean$Style
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       if (!paramMap.containsKey(localEntry.getKey())) {
-        paramMap.put(localEntry.getKey(), localEntry.getValue());
+        paramMap.put((Property)localEntry.getKey(), (Float)localEntry.getValue());
       }
     }
   }
@@ -272,7 +272,7 @@ public class AnimationBean$Style
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.animation.AnimationBean.Style
  * JD-Core Version:    0.7.0.1
  */

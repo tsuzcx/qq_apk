@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewStub;
 import com.tencent.aelight.camera.ae.AEBaseCameraUnit;
+import com.tencent.aelight.camera.ae.AECameraConfig;
 import com.tencent.aelight.camera.ae.camera.ui.VideoStoryPiecesPart;
 import com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart;
 import com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart;
@@ -13,7 +14,13 @@ import com.tencent.aelight.camera.ae.camera.ui.bottom.AECircleBottomListPart;
 import com.tencent.aelight.camera.ae.camera.ui.capture.VideoStoryCapturePart;
 import com.tencent.aelight.camera.ae.camera.ui.dashboard.AEDashboardUtil;
 import com.tencent.aelight.camera.ae.camera.ui.dashboard.AEVideoStoryDashboardPart;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowBottomPart;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowMusicPart;
+import com.tencent.aelight.camera.ae.camera.ui.flashshow.AEFlashShowRightBarPart;
 import com.tencent.aelight.camera.ae.camera.ui.gallery.AECaptureCustomMaterialPart;
+import com.tencent.aelight.camera.ae.camera.ui.panel.AEBottomPanelPart;
+import com.tencent.aelight.camera.ae.camera.ui.topbar.AEAIONewTopBarPart;
+import com.tencent.aelight.camera.ae.camera.ui.topbar.AETopRightBarPart;
 import com.tencent.aelight.camera.ae.camera.ui.topbar.AEVideoStoryTopBarPart;
 import com.tencent.aelight.camera.ae.camera.ui.watermark.AEWaterMarkEditorPart;
 import com.tencent.aelight.camera.ae.data.AEMaterialManager;
@@ -32,35 +39,30 @@ import java.util.Set;
 @SuppressLint({"UseSparseArrays"})
 public class VideoStoryCapturePartManager
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private AEBaseCameraUnit jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit;
-  private Map<Integer, VideoStoryBasePart> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Set<Integer> jdField_a_of_type_JavaUtilSet;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private Activity a;
+  private AEBaseCameraUnit b;
+  private View c;
+  private Map<Integer, VideoStoryBasePart> d = new HashMap();
+  private Set<Integer> e;
+  private volatile boolean f = false;
   
   public VideoStoryCapturePartManager(Activity paramActivity, View paramView, AEBaseCameraUnit paramAEBaseCameraUnit)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit = paramAEBaseCameraUnit;
-    this.jdField_a_of_type_JavaUtilSet = a();
+    this.a = paramActivity;
+    this.c = paramView;
+    this.b = paramAEBaseCameraUnit;
+    this.e = g();
   }
   
-  private int a(int paramInt)
+  private <T> T c(int paramInt, Object... paramVarArgs)
   {
-    if (paramInt >> 16 == 2) {
-      return 786432;
+    if (paramInt != 65537) {
+      return null;
     }
-    return 65536;
+    return this.b;
   }
   
-  private Set<Integer> a()
-  {
-    return b();
-  }
-  
-  private void a(int paramInt)
+  private void c(int paramInt)
   {
     Object localObject;
     switch (paramInt)
@@ -68,50 +70,78 @@ public class VideoStoryCapturePartManager
     default: 
       localObject = null;
       break;
+    case 1048576: 
+      localObject = new AEFlashShowMusicPart(this.a, this.c, this);
+      break;
+    case 983041: 
+      localObject = new AEBottomPanelPart(this.a, this.c, this);
+      break;
+    case 983040: 
+      localObject = new AEFlashShowBottomPart(this.a, this.c, this);
+      break;
+    case 917506: 
+      localObject = new AEAIONewTopBarPart(this.a, this.c, this);
+      break;
+    case 917505: 
+      localObject = new AETopRightBarPart(this.a, this.c, this);
+      break;
+    case 917504: 
+      localObject = new AEFlashShowRightBarPart(this.a, this.c, this);
+      break;
     case 851968: 
-      localObject = new AECaptureCustomMaterialPart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new AECaptureCustomMaterialPart(this.a, this.c, this);
       break;
     case 786432: 
-      localObject = new AECircleBottomListPart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new AECircleBottomListPart(this.a, this.c, this);
       break;
     case 720896: 
-      localObject = new AEVideoStoryDashboardPart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new AEVideoStoryDashboardPart(this.a, this.c, this);
       break;
     case 655360: 
-      localObject = new AEPlayShowPart(this.jdField_a_of_type_AndroidAppActivity, (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2064121915), this);
+      localObject = new AEPlayShowPart(this.a, (ViewStub)this.c.findViewById(2063990849), this);
       break;
     case 589824: 
-      localObject = new AEWaterMarkEditorPart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new AEWaterMarkEditorPart(this.a, this.c, this);
       break;
     case 524288: 
-      localObject = new AEGIFStickerListPart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new AEGIFStickerListPart(this.a, this.c, this);
       break;
     case 458752: 
-      localObject = new AEVideoStoryTopBarPart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new AEVideoStoryTopBarPart(this.a, this.c, this);
       break;
     case 393216: 
-      localObject = new AEVideoStoryCaptureModePart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new AEVideoStoryCaptureModePart(this.a, this.c, this);
       break;
     case 327680: 
-      localObject = new VideoStoryPiecesPart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new VideoStoryPiecesPart(this.a, this.c, this);
       break;
     case 262144: 
-      localObject = new VideoStoryCapturePart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new VideoStoryCapturePart(this.a, this.c, this);
       break;
     case 196608: 
-      localObject = new VideoStoryAIScenePart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new VideoStoryAIScenePart(this.a, this.c, this);
       break;
     case 131072: 
-      localObject = new AEBottomListPart(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
+      localObject = new AEBottomListPart(this.a, this.c, this);
     }
     if (localObject != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
+      this.d.put(Integer.valueOf(paramInt), localObject);
     }
   }
   
-  private int b(int paramInt)
+  private int d(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    if (paramInt >> 16 == 2) {
+      return 786432;
+    }
+    return 65536;
+  }
+  
+  private void d(int paramInt, Object... paramVarArgs) {}
+  
+  private int e(int paramInt)
+  {
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
@@ -122,171 +152,173 @@ public class VideoStoryCapturePartManager
     return 65536;
   }
   
-  private <T> T b(int paramInt, Object... paramVarArgs)
+  private Set<Integer> g()
   {
-    if (paramInt != 65537) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit;
+    return h();
   }
   
-  private Set<Integer> b()
+  private Set<Integer> h()
   {
+    int i = this.b.u().u();
     HashSet localHashSet = new HashSet();
-    int j = AECameraEntry.a.a();
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-    int i = j;
-    if (localActivity != null)
+    boolean bool = AECameraEntry.L.b(i);
+    Integer localInteger1 = Integer.valueOf(655360);
+    Integer localInteger2 = Integer.valueOf(524288);
+    Integer localInteger3 = Integer.valueOf(458752);
+    Integer localInteger4 = Integer.valueOf(262144);
+    if (bool)
     {
-      i = j;
-      if (localActivity.getIntent() != null) {
-        i = this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-      }
+      localHashSet.add(Integer.valueOf(917504));
+      localHashSet.add(localInteger4);
+      localHashSet.add(Integer.valueOf(983040));
+      localHashSet.add(Integer.valueOf(1048576));
     }
-    if (AECameraEntry.J.a(i))
+    else if (AECameraEntry.J.b(i))
     {
-      localHashSet.add(Integer.valueOf(458752));
-      localHashSet.add(Integer.valueOf(262144));
+      localHashSet.add(localInteger3);
+      localHashSet.add(localInteger4);
       localHashSet.add(Integer.valueOf(327680));
       localHashSet.add(Integer.valueOf(131072));
     }
-    else if ((!AECameraEntry.c.a(i)) && (!AECameraEntry.t.a(i)) && (!AECameraEntry.n.a(i)) && (!AECameraEntry.e.a(i)) && (!AECameraEntryManager.c(i)))
+    else if ((!AECameraEntry.c.b(i)) && (!AECameraEntry.t.b(i)) && (!AECameraEntry.n.b(i)) && (!AECameraEntry.e.b(i)) && (!AECameraEntryManager.c(i)))
     {
-      if (AECameraEntry.e.a(i))
+      if (AECameraEntry.e.b(i))
       {
-        localHashSet.add(Integer.valueOf(458752));
+        localHashSet.add(localInteger3);
         localHashSet.add(Integer.valueOf(131072));
         localHashSet.add(Integer.valueOf(196608));
-        localHashSet.add(Integer.valueOf(262144));
+        localHashSet.add(localInteger4);
         localHashSet.add(Integer.valueOf(327680));
         localHashSet.add(Integer.valueOf(393216));
-        localHashSet.add(Integer.valueOf(524288));
+        localHashSet.add(localInteger2);
         localHashSet.add(Integer.valueOf(589824));
+        localHashSet.add(Integer.valueOf(917505));
       }
-      else if ((!AECameraEntry.L.a(i)) && (!AECameraEntry.K.a(i)))
+      else if ((!AECameraEntry.N.b(i)) && (!AECameraEntry.M.b(i)))
       {
-        if (AECameraEntry.w.a(i))
+        if (AECameraEntry.w.b(i))
         {
-          localHashSet.add(Integer.valueOf(458752));
-          localHashSet.add(Integer.valueOf(262144));
+          localHashSet.add(localInteger3);
+          localHashSet.add(localInteger4);
           localHashSet.add(Integer.valueOf(327680));
-          localHashSet.add(Integer.valueOf(524288));
+          localHashSet.add(localInteger2);
           localHashSet.add(Integer.valueOf(131072));
           localHashSet.add(Integer.valueOf(393216));
+          localHashSet.add(Integer.valueOf(917505));
         }
-        else if (AECameraEntry.I.a(i))
+        else if (AECameraEntry.I.b(i))
         {
-          localHashSet.add(Integer.valueOf(458752));
-          localHashSet.add(Integer.valueOf(262144));
+          localHashSet.add(localInteger3);
+          localHashSet.add(localInteger4);
           localHashSet.add(Integer.valueOf(327680));
           localHashSet.add(Integer.valueOf(131072));
           localHashSet.add(Integer.valueOf(393216));
+          localHashSet.add(Integer.valueOf(917505));
         }
         else
         {
-          localHashSet.add(Integer.valueOf(458752));
+          localHashSet.add(localInteger3);
+          localHashSet.add(Integer.valueOf(917505));
           if (AECameraEntryManager.g(i)) {
             localHashSet.add(Integer.valueOf(786432));
           } else {
             localHashSet.add(Integer.valueOf(131072));
           }
           localHashSet.add(Integer.valueOf(196608));
-          localHashSet.add(Integer.valueOf(262144));
+          localHashSet.add(localInteger4);
           localHashSet.add(Integer.valueOf(327680));
           localHashSet.add(Integer.valueOf(393216));
-          localHashSet.add(Integer.valueOf(524288));
+          localHashSet.add(localInteger2);
           localHashSet.add(Integer.valueOf(589824));
         }
       }
       else
       {
-        localHashSet.add(Integer.valueOf(458752));
+        localHashSet.add(localInteger3);
         localHashSet.add(Integer.valueOf(131072));
-        localHashSet.add(Integer.valueOf(262144));
+        localHashSet.add(localInteger4);
         localHashSet.add(Integer.valueOf(327680));
         localHashSet.add(Integer.valueOf(393216));
+        localHashSet.add(Integer.valueOf(917505));
       }
     }
     else
     {
-      localHashSet.add(Integer.valueOf(458752));
+      localHashSet.add(localInteger3);
       localHashSet.add(Integer.valueOf(131072));
       localHashSet.add(Integer.valueOf(196608));
-      localHashSet.add(Integer.valueOf(262144));
+      localHashSet.add(localInteger4);
       localHashSet.add(Integer.valueOf(327680));
       localHashSet.add(Integer.valueOf(393216));
-      localHashSet.add(Integer.valueOf(524288));
+      localHashSet.add(localInteger2);
       localHashSet.add(Integer.valueOf(589824));
-      localHashSet.add(Integer.valueOf(655360));
-      if (AECameraEntry.e.a(i)) {
+      localHashSet.add(localInteger1);
+      localHashSet.add(Integer.valueOf(917505));
+      if (AECameraEntry.e.b(i)) {
         localHashSet.add(Integer.valueOf(851968));
       }
     }
-    if (AECameraEntryManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit) == 204) {
-      localHashSet.remove(Integer.valueOf(524288));
+    if (AECameraEntryManager.a(this.b) == 204) {
+      localHashSet.remove(localInteger2);
     }
-    if (AECameraEntryManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeAEBaseCameraUnit) == 205) {
-      localHashSet.remove(Integer.valueOf(655360));
+    if (AECameraEntryManager.a(this.b) == 205) {
+      localHashSet.remove(localInteger1);
     }
-    if (AEDashboardUtil.a())
+    if ((!AECameraEntryManager.g(i)) && (!AECameraEntry.L.b(i))) {
+      localHashSet.add(Integer.valueOf(983041));
+    }
+    if ((AECameraEntryManager.a(this.b) == 207) || (AECameraEntryManager.a(this.b) == 205) || (AECameraEntryManager.a(this.b) == 201) || (AECameraEntryManager.a(this.b) == 203) || (AECameraEntryManager.a(this.b) == 202))
     {
-      boolean bool = AECameraPrefsUtil.a().a("DEBUG_KEY_TEST_LAUNCH_SPEED_MODE", false, 4);
-      if ((AEDashboardUtil.a()) && (!bool)) {
+      localHashSet.remove(localInteger3);
+      localHashSet.add(Integer.valueOf(917506));
+    }
+    if (AEDashboardUtil.f())
+    {
+      bool = AECameraPrefsUtil.a().b("DEBUG_KEY_TEST_LAUNCH_SPEED_MODE", false, 4);
+      if ((AEDashboardUtil.f()) && (!bool)) {
         localHashSet.add(Integer.valueOf(720896));
       }
     }
     return localHashSet;
   }
   
-  private void b(int paramInt, Object... paramVarArgs) {}
-  
-  private void g()
+  private void i()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext()) {
-      a(((Integer)localIterator.next()).intValue());
+      c(((Integer)localIterator.next()).intValue());
     }
   }
   
-  private void h()
+  private void j()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = this.d.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).initView();
+      ((VideoStoryBasePart)this.d.get(localInteger)).initView();
     }
-  }
-  
-  public AEMaterialManager a(int paramInt)
-  {
-    paramInt = b(paramInt);
-    VideoStoryBasePart localVideoStoryBasePart = (VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if ((localVideoStoryBasePart instanceof AEBottomListPart)) {
-      return ((AEBottomListPart)localVideoStoryBasePart).a();
-    }
-    return null;
   }
   
   public <T> T a(int paramInt, Object... paramVarArgs)
   {
-    int i = b(paramInt);
-    VideoStoryBasePart localVideoStoryBasePart = (VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+    int i = e(paramInt);
+    VideoStoryBasePart localVideoStoryBasePart = (VideoStoryBasePart)this.d.get(Integer.valueOf(i));
     if (localVideoStoryBasePart != null) {
       return localVideoStoryBasePart.get(paramInt, paramVarArgs);
     }
-    return b(paramInt, paramVarArgs);
+    return c(paramInt, paramVarArgs);
   }
   
   public void a()
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.f)
       {
-        g();
-        h();
-        this.jdField_a_of_type_Boolean = true;
+        i();
+        j();
+        this.f = true;
       }
       return;
     }
@@ -299,89 +331,99 @@ public class VideoStoryCapturePartManager
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = this.d.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).onActivityResult(paramInt1, paramInt2, paramIntent);
+      ((VideoStoryBasePart)this.d.get(localInteger)).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public boolean a(int paramInt)
   {
-    int j = b(paramInt);
+    paramInt = e(paramInt);
+    return (VideoStoryBasePart)this.d.get(Integer.valueOf(paramInt)) != null;
+  }
+  
+  public AEMaterialManager b(int paramInt)
+  {
+    paramInt = e(paramInt);
+    VideoStoryBasePart localVideoStoryBasePart = (VideoStoryBasePart)this.d.get(Integer.valueOf(paramInt));
+    if ((localVideoStoryBasePart instanceof AEBottomListPart)) {
+      return ((AEBottomListPart)localVideoStoryBasePart).j();
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.d.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Integer localInteger = (Integer)localIterator.next();
+      ((VideoStoryBasePart)this.d.get(localInteger)).onActivityResume();
+    }
+  }
+  
+  public void b(int paramInt, Object... paramVarArgs)
+  {
+    int j = e(paramInt);
     int i = j;
     if (j == 65536) {
-      i = a(paramInt);
+      i = d(paramInt);
     }
-    VideoStoryBasePart localVideoStoryBasePart = (VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+    VideoStoryBasePart localVideoStoryBasePart = (VideoStoryBasePart)this.d.get(Integer.valueOf(i));
     if (localVideoStoryBasePart != null)
     {
       localVideoStoryBasePart.send(paramInt, paramVarArgs);
       return;
     }
-    b(paramInt, paramVarArgs);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    paramInt = b(paramInt);
-    return (VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null;
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      ((VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).onActivityResume();
-    }
+    d(paramInt, paramVarArgs);
   }
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = this.d.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).onActivityPause();
+      ((VideoStoryBasePart)this.d.get(localInteger)).onActivityPause();
     }
   }
   
   public void d()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = this.d.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).onActivityStart();
+      ((VideoStoryBasePart)this.d.get(localInteger)).onActivityStart();
     }
   }
   
   public void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = this.d.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).onActivityStop();
+      ((VideoStoryBasePart)this.d.get(localInteger)).onActivityStop();
     }
   }
   
   public void f()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = this.d.keySet().iterator();
     while (localIterator.hasNext())
     {
       Integer localInteger = (Integer)localIterator.next();
-      ((VideoStoryBasePart)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).onDestroy();
+      ((VideoStoryBasePart)this.d.get(localInteger)).onDestroy();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.part.VideoStoryCapturePartManager
  * JD-Core Version:    0.7.0.1
  */

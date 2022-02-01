@@ -76,10 +76,10 @@ class VideoNodeReporter$1
       l1 = 0L;
     }
     paramMessage.a(28, l1);
-    int i = this.a.jdField_a_of_type_Int;
+    int i = this.a.f;
     this.a.a(37, i);
-    if (VideoNodeReporter.a(this.a).a() != null) {
-      VideoNodeReporter.b(this.a).a().a("batteryValue", String.valueOf(i));
+    if (VideoNodeReporter.a(this.a).b() != null) {
+      VideoNodeReporter.b(this.a).b().b("batteryValue", String.valueOf(i));
     }
     boolean bool3 = VideoController.b(BaseApplicationImpl.getContext());
     paramMessage = this.a;
@@ -98,7 +98,7 @@ class VideoNodeReporter$1
     }
     paramMessage.a(40, l1);
     this.a.b();
-    i = QavRecordDpc.a().i;
+    i = QavRecordDpc.a().j;
     paramMessage = new StringBuilder();
     paramMessage.append("handleMessage, activityName =  ");
     paramMessage.append((String)localObject);
@@ -109,7 +109,7 @@ class VideoNodeReporter$1
     paramMessage.append(",checkDuration = ");
     paramMessage.append(i);
     QLog.d("VideoNodeReporter", 1, paramMessage.toString());
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
+    this.a.g.sendEmptyMessageDelayed(1, i);
     return false;
   }
 }

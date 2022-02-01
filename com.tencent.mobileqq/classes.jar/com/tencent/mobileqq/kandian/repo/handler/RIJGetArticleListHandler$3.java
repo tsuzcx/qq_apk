@@ -14,17 +14,17 @@ class RIJGetArticleListHandler$3
   public void run()
   {
     long l = System.currentTimeMillis();
-    QLog.d("RIJGetArticleListHandler", 2, new Object[] { "feedsPreload, loadingTime = ", Long.valueOf(this.jdField_a_of_type_Long) });
+    QLog.d("RIJGetArticleListHandler", 2, new Object[] { "feedsPreload, loadingTime = ", Long.valueOf(this.a) });
     QLog.d("RIJGetArticleListHandler", 2, new Object[] { "feedsPreload, schedule cost = ", Long.valueOf(l - this.b) });
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("hitFeedsPreloadCache", Boolean.valueOf(true));
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("feedsRequestBeginTime", Long.valueOf(this.c));
-    RIJGetArticleListHandler.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_ArrayOfByte);
-    FeedsPreloadExposeReport.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsPreloadFeedsPreloadDataModule$PreloadCache.jdField_a_of_type_JavaLangString);
+    this.c.a.getAttributes().put("hitFeedsPreloadCache", Boolean.valueOf(true));
+    this.c.a.getAttributes().put("feedsRequestBeginTime", Long.valueOf(this.d));
+    RIJGetArticleListHandler.a(this.this$0, this.c.a, this.c.d, this.c.b, this.c.c, this.c.e, this.c.f, this.c.g, this.c.h);
+    FeedsPreloadExposeReport.a(this.c.d, this.c.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJGetArticleListHandler.3
  * JD-Core Version:    0.7.0.1
  */

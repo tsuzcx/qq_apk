@@ -12,19 +12,19 @@ class SpriteDrawerInfoBridge$1
   {
     if (SpriteDrawerInfoBridge.a(this.this$0) != null)
     {
-      if (SpriteDrawerInfoBridge.a(this.this$0).a()) {
-        this.a.j = 1;
+      if (SpriteDrawerInfoBridge.a(this.this$0).c()) {
+        this.a.p = 1;
       }
       SpriteTaskParam localSpriteTaskParam = this.a;
       SpriteDrawerInfoBridge localSpriteDrawerInfoBridge = this.this$0;
-      localSpriteTaskParam.a = localSpriteDrawerInfoBridge;
-      SpriteDrawerInfoBridge.a(localSpriteDrawerInfoBridge).a(this.a);
+      localSpriteTaskParam.u = localSpriteDrawerInfoBridge;
+      SpriteDrawerInfoBridge.a(localSpriteDrawerInfoBridge).b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoBridge.1
  * JD-Core Version:    0.7.0.1
  */

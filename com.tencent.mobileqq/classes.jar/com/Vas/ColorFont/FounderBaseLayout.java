@@ -13,57 +13,59 @@ import java.util.Arrays;
 
 public abstract class FounderBaseLayout
 {
-  public ValueAnimator a;
-  public Bitmap a;
-  protected Canvas a;
-  public ETFont a;
-  public int e;
-  public int[] i = { -1, -1 };
-  
-  public FounderBaseLayout()
-  {
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-  }
+  public Bitmap o;
+  public int[] p = { -1, -1 };
+  public ETFont q;
+  public ValueAnimator r;
+  public int s;
+  protected Canvas t = new Canvas();
   
   public abstract int a(int paramInt1, int paramInt2, TextGraphMap paramTextGraphMap);
   
-  protected String a()
-  {
-    if (FastColorFontHelper.a) {
-      return getClass().getSimpleName();
-    }
-    return "BaseLayout";
-  }
-  
   protected void a()
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, this.i[0] });
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    int[] arrayOfInt = this.i;
+    this.r = ValueAnimator.ofInt(new int[] { 0, this.p[0] });
+    ValueAnimator localValueAnimator = this.r;
+    int[] arrayOfInt = this.p;
     localValueAnimator.setDuration(arrayOfInt[0] * arrayOfInt[1]);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+    this.r.setRepeatCount(0);
+    this.r.setInterpolator(new LinearInterpolator());
   }
   
   public void a(boolean paramBoolean)
   {
-    this.e = 0;
-    this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    this.s = 0;
+    this.q.mShouldDisplayAnimation = false;
+    if (this.r != null)
     {
       FastColorFontLog.a("FounderBaseLayout", "StopAnimation......");
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.r.cancel();
     }
   }
   
-  protected boolean a(int paramInt1, int paramInt2)
+  public abstract boolean a(Canvas paramCanvas);
+  
+  public abstract int[] a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, ETFont paramETFont);
+  
+  public abstract void b();
+  
+  protected void c()
+  {
+    if (this.t == null) {
+      this.t = new Canvas();
+    }
+    this.t.setBitmap(this.o);
+    this.t.drawColor(0, PorterDuff.Mode.CLEAR);
+  }
+  
+  protected boolean d(int paramInt1, int paramInt2)
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      } else if ((paramInt1 > this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) || (paramInt2 > this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) || ((paramInt1 << 1 < this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) && (paramInt2 << 1 < this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()))) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      if (this.o == null) {
+        this.o = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      } else if ((paramInt1 > this.o.getWidth()) || (paramInt2 > this.o.getHeight()) || ((paramInt1 << 1 < this.o.getWidth()) && (paramInt2 << 1 < this.o.getHeight()))) {
+        this.o = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
       }
       return true;
     }
@@ -79,115 +81,108 @@ public abstract class FounderBaseLayout
     return false;
   }
   
-  public abstract boolean a(Canvas paramCanvas);
-  
-  public abstract int[] a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, ETFont paramETFont);
-  
-  public abstract void b();
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsCanvas == null) {
-      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-    }
-    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-  }
-  
   public void e()
   {
     FastColorFontLog.a("FounderBaseLayout", "release....");
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.o;
     if (localObject != null)
     {
       ((Bitmap)localObject).recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      this.o = null;
     }
-    localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    localObject = this.r;
     if (localObject != null)
     {
       ((ValueAnimator)localObject).cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.r = null;
     }
-    this.jdField_a_of_type_AndroidGraphicsCanvas = null;
+    this.t = null;
   }
   
-  public void f()
+  protected String f()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if ((localObject != null) && (((ValueAnimator)localObject).isRunning()) && (this.e > 0))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("PauseAnimation...... animInfo:");
-      ((StringBuilder)localObject).append(Arrays.toString(this.i));
-      ((StringBuilder)localObject).append("  frameIndex:");
-      ((StringBuilder)localObject).append(this.e);
-      FastColorFontLog.a("FounderBaseLayout", ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
+    if (FastColorFontHelper.a) {
+      return getClass().getSimpleName();
     }
+    return "BaseLayout";
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
+    Object localObject = this.r;
+    if ((localObject != null) && (((ValueAnimator)localObject).isRunning()) && (this.s > 0))
     {
-      Object localObject = this.i;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PauseAnimation...... animInfo:");
+      ((StringBuilder)localObject).append(Arrays.toString(this.p));
+      ((StringBuilder)localObject).append("  frameIndex:");
+      ((StringBuilder)localObject).append(this.s);
+      FastColorFontLog.a("FounderBaseLayout", ((StringBuilder)localObject).toString());
+      this.r.cancel();
+      this.q.mShouldDisplayAnimation = false;
+    }
+  }
+  
+  public void h()
+  {
+    if (this.q != null)
+    {
+      Object localObject = this.p;
       if (localObject[0] > 0)
       {
         if (localObject[1] <= 0) {
           return;
         }
-        localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+        localObject = this.r;
         if ((localObject != null) && (!((ValueAnimator)localObject).isRunning()))
         {
-          int j = this.e;
-          if ((j > 0) && (j < this.i[0]))
+          int i = this.s;
+          if ((i > 0) && (i < this.p[0]))
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("RestartAnimation...... animInfo:");
-            ((StringBuilder)localObject).append(Arrays.toString(this.i));
+            ((StringBuilder)localObject).append(Arrays.toString(this.p));
             ((StringBuilder)localObject).append("  frameIndex:");
-            ((StringBuilder)localObject).append(this.e);
+            ((StringBuilder)localObject).append(this.s);
             FastColorFontLog.a("FounderBaseLayout", ((StringBuilder)localObject).toString());
-            this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = true;
-            this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { this.e, this.i[0] });
-            localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-            int[] arrayOfInt = this.i;
-            ((ValueAnimator)localObject).setDuration((arrayOfInt[0] - this.e) * arrayOfInt[1]);
-            this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+            this.q.mShouldDisplayAnimation = true;
+            this.r.setIntValues(new int[] { this.s, this.p[0] });
+            localObject = this.r;
+            int[] arrayOfInt = this.p;
+            ((ValueAnimator)localObject).setDuration((arrayOfInt[0] - this.s) * arrayOfInt[1]);
+            this.r.start();
           }
         }
       }
     }
   }
   
-  public void h()
+  public void i()
   {
-    this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = true;
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    this.q.mShouldDisplayAnimation = true;
+    ValueAnimator localValueAnimator = this.r;
     if (localValueAnimator == null)
     {
       a();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.r.start();
       return;
     }
     if (!localValueAnimator.isRunning())
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { this.i[0] });
-      localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-      int[] arrayOfInt = this.i;
+      this.r.setIntValues(new int[] { this.p[0] });
+      localValueAnimator = this.r;
+      int[] arrayOfInt = this.p;
       localValueAnimator.setDuration(arrayOfInt[0] * arrayOfInt[1]);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.r.start();
     }
   }
   
-  public void i()
+  public void j()
   {
     a(true);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    this.e = 0;
-    int[] arrayOfInt = this.i;
+    this.r = null;
+    this.s = 0;
+    int[] arrayOfInt = this.p;
     arrayOfInt[0] = -1;
     arrayOfInt[1] = -1;
   }

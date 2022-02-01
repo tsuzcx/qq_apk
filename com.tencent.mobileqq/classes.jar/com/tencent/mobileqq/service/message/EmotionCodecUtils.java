@@ -62,47 +62,6 @@ public class EmotionCodecUtils
     return localStringBuilder.toString();
   }
   
-  public static byte[] a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    int m = paramString.length();
-    byte[] arrayOfByte = new byte[m << 2];
-    int k = 0;
-    int j = 0;
-    while (k < m)
-    {
-      int i = paramString.charAt(k);
-      if (i != 20)
-      {
-        j += a(i, arrayOfByte, j);
-      }
-      else
-      {
-        int n = j + 1;
-        arrayOfByte[j] = ((byte)i);
-        j = k + 1;
-        i = paramString.charAt(j);
-        short[] arrayOfShort = b;
-        if (i >= arrayOfShort.length)
-        {
-          j = n + a(i, arrayOfByte, n);
-        }
-        else
-        {
-          arrayOfByte[n] = ((byte)(char)(arrayOfShort[i] + 65));
-          k = j;
-          j = n + 1;
-        }
-      }
-      k += 1;
-    }
-    paramString = new byte[j];
-    System.arraycopy(arrayOfByte, 0, paramString, 0, j);
-    return paramString;
-  }
-  
   public static byte[] a(byte[] paramArrayOfByte)
   {
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfByte.length * 2);
@@ -165,7 +124,48 @@ public class EmotionCodecUtils
     return paramArrayOfByte;
   }
   
-  public static String b(String paramString)
+  public static byte[] b(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    int m = paramString.length();
+    byte[] arrayOfByte = new byte[m << 2];
+    int k = 0;
+    int j = 0;
+    while (k < m)
+    {
+      int i = paramString.charAt(k);
+      if (i != 20)
+      {
+        j += a(i, arrayOfByte, j);
+      }
+      else
+      {
+        int n = j + 1;
+        arrayOfByte[j] = ((byte)i);
+        j = k + 1;
+        i = paramString.charAt(j);
+        short[] arrayOfShort = b;
+        if (i >= arrayOfShort.length)
+        {
+          j = n + a(i, arrayOfByte, n);
+        }
+        else
+        {
+          arrayOfByte[n] = ((byte)(char)(arrayOfShort[i] + 65));
+          k = j;
+          j = n + 1;
+        }
+      }
+      k += 1;
+    }
+    paramString = new byte[j];
+    System.arraycopy(arrayOfByte, 0, paramString, 0, j);
+    return paramString;
+  }
+  
+  public static String c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
@@ -198,7 +198,7 @@ public class EmotionCodecUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.EmotionCodecUtils
  * JD-Core Version:    0.7.0.1
  */

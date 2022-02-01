@@ -16,13 +16,13 @@ class EditTroopNameService$2
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131366086) && (!EditTroopNameService.a(this.a)) && (!TextUtils.isEmpty(EditTroopNameService.a(this.a))))
+    if ((paramView.getId() == 2131432366) && (!EditTroopNameService.d(this.a)) && (!TextUtils.isEmpty(EditTroopNameService.b(this.a))))
     {
-      if ((TextUtils.isEmpty(EditTroopNameService.b(this.a)) ^ true)) {}
+      if ((TextUtils.isEmpty(EditTroopNameService.e(this.a)) ^ true)) {}
       String str2;
       try
       {
-        str1 = String.format(EditTroopNameService.a(this.a).getString(2131720026), new Object[] { EditTroopNameService.a(this.a), EditTroopNameService.b(this.a) });
+        str1 = String.format(EditTroopNameService.c(this.a).getString(2131917631), new Object[] { EditTroopNameService.b(this.a), EditTroopNameService.e(this.a) });
       }
       catch (Exception localException)
       {
@@ -30,20 +30,20 @@ class EditTroopNameService$2
         localException.printStackTrace();
         str2 = "";
       }
-      str1 = String.format(EditTroopNameService.a(this.a).getString(2131720027), new Object[] { EditTroopNameService.a(this.a) });
+      str1 = String.format(EditTroopNameService.c(this.a).getString(2131917632), new Object[] { EditTroopNameService.b(this.a) });
       if (!TextUtils.isEmpty(str2))
       {
         if (Build.VERSION.SDK_INT < 11)
         {
-          ((android.text.ClipboardManager)EditTroopNameService.a(this.a).getSystemService("clipboard")).setText(str2);
+          ((android.text.ClipboardManager)EditTroopNameService.c(this.a).getSystemService("clipboard")).setText(str2);
         }
         else
         {
-          android.content.ClipboardManager localClipboardManager = (android.content.ClipboardManager)EditTroopNameService.a(this.a).getSystemService("clipboard");
+          android.content.ClipboardManager localClipboardManager = (android.content.ClipboardManager)EditTroopNameService.c(this.a).getSystemService("clipboard");
           ClipboardMonitor.setText(localClipboardManager, str2);
           localClipboardManager.setText(str2);
         }
-        QQToast.a(EditTroopNameService.a(this.a), 2131699465, 1).a();
+        QQToast.makeText(EditTroopNameService.c(this.a), 2131897496, 1).show();
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -51,7 +51,7 @@ class EditTroopNameService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editservice.EditTroopNameService.2
  * JD-Core Version:    0.7.0.1
  */

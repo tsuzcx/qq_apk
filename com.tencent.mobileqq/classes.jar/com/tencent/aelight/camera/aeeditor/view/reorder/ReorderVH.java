@@ -19,20 +19,20 @@ public final class ReorderVH
   }
   
   @NotNull
-  public final TextView a()
+  public final ThumbClipView a()
   {
-    return this.a.a();
+    return this.a.getThumbView();
   }
   
   @NotNull
-  public final ThumbClipView a()
+  public final TextView b()
   {
-    return this.a.a();
+    return this.a.getDurationView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.reorder.ReorderVH
  * JD-Core Version:    0.7.0.1
  */

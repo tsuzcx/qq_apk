@@ -13,9 +13,9 @@ class ReadInJoyNativeAdFragment$4
 {
   ReadInJoyNativeAdFragment$4(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (ReadInJoyNativeAdFragment.a(this.a)) {
+    if (ReadInJoyNativeAdFragment.h(this.a)) {
       return;
     }
     ReadInJoyNativeAdFragment.a(this.a, true);
@@ -27,22 +27,22 @@ class ReadInJoyNativeAdFragment$4
       }
       else
       {
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.getBaseActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
-        paramView = this.a.getString(2131717959);
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.getBaseActivity().app, ReadInJoyNativeAdFragment.i(this.a), ReadInJoyNativeAdFragment.j(this.a), ReadInJoyNativeAdFragment.k(this.a), 2, 2, 0);
+        paramView = this.a.getString(2131915439);
       }
     }
     else
     {
-      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.getBaseActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
-      paramView = this.a.getString(2131717957);
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).doAdReport(this.a.getBaseActivity().app, ReadInJoyNativeAdFragment.i(this.a), ReadInJoyNativeAdFragment.j(this.a), ReadInJoyNativeAdFragment.k(this.a), 2, 1, 0);
+      paramView = this.a.getString(2131915437);
     }
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    QQToast.a(this.a.getBaseActivity(), 2, paramView, 0).b(0);
+    ReadInJoyNativeAdFragment.l(this.a).dismiss();
+    QQToast.makeText(this.a.getBaseActivity(), 2, paramView, 0).show(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment.4
  * JD-Core Version:    0.7.0.1
  */

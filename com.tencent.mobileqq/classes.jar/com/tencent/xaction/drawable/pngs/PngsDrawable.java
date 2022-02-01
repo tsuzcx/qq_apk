@@ -17,6 +17,7 @@ import com.tencent.xaction.api.util.FileUtil;
 import com.tencent.xaction.api.util.FileUtil.Companion;
 import com.tencent.xaction.impl.XAEngine;
 import com.tencent.xaction.impl.XAEngine.Companion;
+import com.tencent.xaction.log.QLog;
 import com.tencent.xaction.openapi.api.IPublicDecorDrawable;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -28,49 +29,49 @@ public final class PngsDrawable
   extends Drawable
   implements IDrawable
 {
-  private transient int jdField_a_of_type_Int;
+  private final String a = "PngsDrawable";
+  private IPublicDecorDrawable b;
   @Nullable
-  private transient Resources jdField_a_of_type_AndroidContentResResources;
+  private transient Resources c;
   @NotNull
-  private final transient Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+  private final transient PngBitmap d = new PngBitmap();
   @NotNull
-  private final transient PngBitmap jdField_a_of_type_ComTencentXactionDrawablePngsPngBitmap = new PngBitmap();
-  private IPublicDecorDrawable jdField_a_of_type_ComTencentXactionOpenapiApiIPublicDecorDrawable;
-  private final String jdField_a_of_type_JavaLangString = "PngsDrawable";
+  private final transient Paint e = new Paint(6);
+  private transient int f;
+  private transient int g;
   @Nullable
-  private transient String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private transient int b;
-  private transient int c;
-  private transient int d;
+  private transient String[] h;
+  private transient int i;
+  private transient int j;
   
   private final int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = paramInt1;
+    int k = paramInt1;
     if (paramInt2 != 0)
     {
-      i = paramInt1;
+      k = paramInt1;
       if (paramInt3 != 0)
       {
         if (paramInt2 == paramInt3) {
           return paramInt1;
         }
-        i = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+        k = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
       }
     }
-    return i;
+    return k;
   }
   
-  private final boolean a()
+  private final boolean c()
   {
-    if (this.jdField_a_of_type_AndroidContentResResources != null)
+    if (this.c != null)
     {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      if ((arrayOfString != null) && (this.d < 3))
+      String[] arrayOfString = this.h;
+      if ((arrayOfString != null) && (this.j < 3))
       {
         if (arrayOfString == null) {
           Intrinsics.throwNpe();
         }
-        if (arrayOfString.length > this.c) {
+        if (arrayOfString.length > this.i) {
           return true;
         }
       }
@@ -78,99 +79,115 @@ public final class PngsDrawable
     return false;
   }
   
-  public final void a()
-  {
-    if (!a()) {
-      return;
-    }
-    Object localObject1 = this.jdField_a_of_type_ArrayOfJavaLangString;
-    if (localObject1 == null) {
-      Intrinsics.throwNpe();
-    }
-    int i = this.c;
-    Object localObject3 = localObject1[i];
-    this.c = (i + 1);
-    i = this.c;
-    localObject1 = this.jdField_a_of_type_ArrayOfJavaLangString;
-    if (localObject1 == null) {
-      Intrinsics.throwNpe();
-    }
-    if (i >= localObject1.length) {
-      this.c = 0;
-    }
-    localObject1 = XAEngine.Companion.a();
-    if (localObject3 == null) {
-      Intrinsics.throwNpe();
-    }
-    Object localObject2 = ((IMemoryLruCache)localObject1).a((String)localObject3);
-    localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject2 = new BitmapFactory.Options();
-      Resources localResources;
-      if (FileUtil.a.a((String)localObject3))
-      {
-        localObject1 = BitmapUtil.a;
-        localResources = this.jdField_a_of_type_AndroidContentResResources;
-        if (localResources == null) {
-          Intrinsics.throwNpe();
-        }
-        localObject1 = ((BitmapUtil.Companion)localObject1).a(localResources, FileUtil.a.a((String)localObject3), (BitmapFactory.Options)localObject2, true, null);
-      }
-      else
-      {
-        localObject1 = BitmapUtil.a;
-        localResources = this.jdField_a_of_type_AndroidContentResResources;
-        if (localResources == null) {
-          Intrinsics.throwNpe();
-        }
-        localObject1 = ((BitmapUtil.Companion)localObject1).a(localResources, (String)localObject3, (BitmapFactory.Options)localObject2, false, null);
-      }
-      if (localObject1 == null) {
-        return;
-      }
-      i = ((BitmapFactory.Options)localObject2).outWidth;
-      localObject3 = this.jdField_a_of_type_AndroidContentResResources;
-      if (localObject3 == null) {
-        Intrinsics.throwNpe();
-      }
-      this.jdField_a_of_type_Int = a(i, 320, ((Resources)localObject3).getDisplayMetrics().densityDpi);
-      i = ((BitmapFactory.Options)localObject2).outHeight;
-      localObject2 = this.jdField_a_of_type_AndroidContentResResources;
-      if (localObject2 == null) {
-        Intrinsics.throwNpe();
-      }
-      this.b = a(i, 320, ((Resources)localObject2).getDisplayMetrics().densityDpi);
-    }
-    this.jdField_a_of_type_ComTencentXactionDrawablePngsPngBitmap.a((Bitmap)localObject1);
-    this.d += 1;
-  }
-  
   public final void a(int paramInt)
   {
-    this.c = paramInt;
+    this.i = paramInt;
   }
   
   public final void a(@Nullable Resources paramResources)
   {
-    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+    this.c = paramResources;
   }
   
   public final void a(@Nullable String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.h = paramArrayOfString;
   }
   
   @Nullable
   public final String[] a()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    return this.h;
+  }
+  
+  public final void b()
+  {
+    if (!c()) {
+      return;
+    }
+    try
+    {
+      Object localObject1 = this.h;
+      if (localObject1 == null) {
+        Intrinsics.throwNpe();
+      }
+      localObject3 = String.valueOf(localObject1[this.i]);
+      this.i += 1;
+      int k = this.i;
+      localObject1 = this.h;
+      if (localObject1 == null) {
+        Intrinsics.throwNpe();
+      }
+      if (k >= localObject1.length) {
+        this.i = 0;
+      }
+      localObject1 = XAEngine.Companion.e();
+      if (localObject3 == null) {
+        Intrinsics.throwNpe();
+      }
+      localObject2 = ((IMemoryLruCache)localObject1).a((String)localObject3);
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject2 = new BitmapFactory.Options();
+        if (FileUtil.a.b((String)localObject3))
+        {
+          localObject1 = BitmapUtil.a;
+          localObject4 = this.c;
+          if (localObject4 == null) {
+            Intrinsics.throwNpe();
+          }
+          localObject1 = ((BitmapUtil.Companion)localObject1).b((Resources)localObject4, FileUtil.a.a((String)localObject3), (BitmapFactory.Options)localObject2, true, null);
+        }
+        else
+        {
+          localObject1 = BitmapUtil.a;
+          localObject4 = this.c;
+          if (localObject4 == null) {
+            Intrinsics.throwNpe();
+          }
+          localObject1 = ((BitmapUtil.Companion)localObject1).b((Resources)localObject4, (String)localObject3, (BitmapFactory.Options)localObject2, false, null);
+        }
+        if (localObject1 == null) {
+          return;
+        }
+        k = ((BitmapFactory.Options)localObject2).outWidth;
+        localObject3 = this.c;
+        if (localObject3 == null) {
+          Intrinsics.throwNpe();
+        }
+        this.f = a(k, 320, ((Resources)localObject3).getDisplayMetrics().densityDpi);
+        k = ((BitmapFactory.Options)localObject2).outHeight;
+        localObject2 = this.c;
+        if (localObject2 == null) {
+          Intrinsics.throwNpe();
+        }
+        this.g = a(k, 320, ((Resources)localObject2).getDisplayMetrics().densityDpi);
+      }
+      this.d.a((Bitmap)localObject1);
+      this.j += 1;
+      return;
+    }
+    catch (Exception localException)
+    {
+      Object localObject2 = this.a;
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("pngs size:");
+      Object localObject4 = this.h;
+      if (localObject4 == null) {
+        Intrinsics.throwNpe();
+      }
+      ((StringBuilder)localObject3).append(localObject4.length);
+      ((StringBuilder)localObject3).append(" nextIndex:");
+      ((StringBuilder)localObject3).append(this.i);
+      QLog.a((String)localObject2, 1, ((StringBuilder)localObject3).toString(), (Throwable)localException);
+    }
   }
   
   public void draw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    int i = paramCanvas.save();
+    int k = paramCanvas.save();
     if (getDecor() != null)
     {
       localObject = getDecor();
@@ -182,19 +199,19 @@ public final class PngsDrawable
       }
     }
     Object localObject = (Rect)null;
-    int j = this.jdField_a_of_type_Int;
-    if (j > 0) {
-      localObject = new Rect(0, 0, j, this.b);
+    int m = this.f;
+    if (m > 0) {
+      localObject = new Rect(0, 0, m, this.g);
     }
-    this.jdField_a_of_type_ComTencentXactionDrawablePngsPngBitmap.a(paramCanvas, (Rect)localObject, super.getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restoreToCount(i);
-    this.d -= 1;
+    this.d.a(paramCanvas, (Rect)localObject, super.getBounds(), this.e);
+    paramCanvas.restoreToCount(k);
+    this.j -= 1;
   }
   
   @Nullable
   public IPublicDecorDrawable getDecor()
   {
-    return this.jdField_a_of_type_ComTencentXactionOpenapiApiIPublicDecorDrawable;
+    return this.b;
   }
   
   public int getOpacity()
@@ -209,12 +226,12 @@ public final class PngsDrawable
   public void setDecor(@NotNull IPublicDecorDrawable paramIPublicDecorDrawable)
   {
     Intrinsics.checkParameterIsNotNull(paramIPublicDecorDrawable, "decorDrawable");
-    this.jdField_a_of_type_ComTencentXactionOpenapiApiIPublicDecorDrawable = paramIPublicDecorDrawable;
+    this.b = paramIPublicDecorDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.drawable.pngs.PngsDrawable
  * JD-Core Version:    0.7.0.1
  */

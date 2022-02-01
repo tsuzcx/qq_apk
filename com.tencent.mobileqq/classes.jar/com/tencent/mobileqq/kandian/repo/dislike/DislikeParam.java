@@ -5,18 +5,18 @@ import java.util.List;
 
 public class DislikeParam
 {
-  public int a;
   public long a;
-  public String a;
-  public ArrayList<DislikeInfo> a;
-  public List<Long> a;
-  public long b;
-  public long c;
-  public long d;
+  public int b;
+  public List<Long> c;
+  public ArrayList<DislikeInfo> d;
+  public long e;
+  public long f;
+  public String g;
+  public long h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.dislike.DislikeParam
  * JD-Core Version:    0.7.0.1
  */

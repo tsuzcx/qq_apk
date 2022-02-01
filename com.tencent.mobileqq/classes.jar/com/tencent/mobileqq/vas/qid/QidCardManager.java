@@ -7,7 +7,6 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.vas.api.IVasDepTemp;
@@ -20,7 +19,6 @@ import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import gxh_message.Dialogue;
 import java.io.File;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -40,49 +38,9 @@ public class QidCardManager
     a = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
-  public static int a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    try
-    {
-      Dialogue localDialogue = new Dialogue();
-      localDialogue.mergeFrom(paramString.getBytes());
-      if (localDialogue.short_nameplate_itemid.has())
-      {
-        int i = localDialogue.short_nameplate_itemid.get();
-        return i;
-      }
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return 0;
-  }
-  
-  private static DownloaderInterface a()
-  {
-    return ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).getDownloader(VasUtil.a());
-  }
-  
-  public static File a(String paramString)
-  {
-    paramString = a(paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      return paramString;
-    }
-    return null;
-  }
-  
   public static String a()
   {
-    Card localCard = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).findAndCreateCardByUin(VasUtil.a());
+    Card localCard = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).findAndCreateCardByUin(VasUtil.e());
     if (localCard != null)
     {
       if (localCard.shGender == 1) {
@@ -110,7 +68,7 @@ public class QidCardManager
     if ((paramQidData != null) && (!TextUtils.isEmpty(paramQidData.a)) && (!TextUtils.isEmpty(paramQidData.b)))
     {
       DownloadTask localDownloadTask = new DownloadTask(paramQidData.a, new File(paramQidData.b));
-      a().startDownload(localDownloadTask, new QidCardManager.1(paramActivity, paramQidPagView, paramQidData), null);
+      b().startDownload(localDownloadTask, new QidCardManager.1(paramActivity, paramQidPagView, paramQidData), null);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -121,7 +79,7 @@ public class QidCardManager
   public static void a(AppRuntime paramAppRuntime, Activity paramActivity, int paramInt)
   {
     Intent localIntent = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).getQQBrowserIntent();
-    localIntent.putExtra("url", QVipQidProcessor.c().b);
+    localIntent.putExtra("url", QVipQidProcessor.e().d);
     localIntent.putExtra("hide_more_button", true);
     if (paramAppRuntime == null) {
       paramAppRuntime = "";
@@ -145,16 +103,34 @@ public class QidCardManager
     return localEditor.commit();
   }
   
-  public static String b(String paramString)
+  private static DownloaderInterface b()
   {
-    paramString = d(paramString);
+    return ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).getDownloader(VasUtil.c());
+  }
+  
+  public static File b(String paramString)
+  {
+    paramString = a(paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = new File(paramString);
+    if (paramString.exists()) {
+      return paramString;
+    }
+    return null;
+  }
+  
+  public static String c(String paramString)
+  {
+    paramString = e(paramString);
     if (!TextUtils.isEmpty(paramString)) {
       return String.format("https://cmshowar-1251316161.cos.ap-guangzhou.myqcloud.com/qqshow/%s/2d/body/640.png", new Object[] { paramString });
     }
     return null;
   }
   
-  public static String c(String paramString)
+  public static String d(String paramString)
   {
     SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences(b, 0);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -163,7 +139,7 @@ public class QidCardManager
     return localSharedPreferences.getString(localStringBuilder.toString(), "");
   }
   
-  private static String d(String paramString)
+  private static String e(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -172,13 +148,13 @@ public class QidCardManager
     byte[] arrayOfByte = new byte[4];
     byte[] tmp21_19 = arrayOfByte;
     tmp21_19[0] = 50;
-    byte[] tmp27_21 = tmp21_19;
-    tmp27_21[1] = 48;
-    byte[] tmp33_27 = tmp27_21;
-    tmp33_27[2] = 50;
-    byte[] tmp39_33 = tmp33_27;
-    tmp39_33[3] = 48;
-    tmp39_33;
+    byte[] tmp26_21 = tmp21_19;
+    tmp26_21[1] = 48;
+    byte[] tmp31_26 = tmp26_21;
+    tmp31_26[2] = 50;
+    byte[] tmp36_31 = tmp31_26;
+    tmp36_31[3] = 48;
+    tmp36_31;
     ByteArrayBuffer localByteArrayBuffer = new ByteArrayBuffer(1024);
     int j = 0;
     int i = 0;
@@ -210,7 +186,7 @@ public class QidCardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qid.QidCardManager
  * JD-Core Version:    0.7.0.1
  */

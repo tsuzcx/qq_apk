@@ -35,8 +35,8 @@ class MediaPlayer$EventHandler
                   return;
                 }
                 Log.d("Story-MediaPlayer", "onInfo");
-                if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener != null) {
-                  this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener.a_(this.a, paramMessage.arg1, paramMessage.arg2);
+                if (this.a.C != null) {
+                  this.a.C.a_(this.a, paramMessage.arg1, paramMessage.arg2);
                 }
                 return;
               }
@@ -48,45 +48,45 @@ class MediaPlayer$EventHandler
               localStringBuilder.append(")");
               Log.e("Story-MediaPlayer", localStringBuilder.toString());
               boolean bool;
-              if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener != null) {
-                bool = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(this.a, paramMessage.arg1, paramMessage.arg2);
+              if (this.a.B != null) {
+                bool = this.a.B.a(this.a, paramMessage.arg1, paramMessage.arg2);
               } else {
                 bool = false;
               }
-              if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) && (!bool)) {
-                this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a);
+              if ((this.a.y != null) && (!bool)) {
+                this.a.y.a(this.a);
               }
               this.a.c(false);
               return;
             }
             Log.d("Story-MediaPlayer", "onVideoSizeChanged");
-            if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener != null) {
-              this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener.a(this.a, paramMessage.arg1, paramMessage.arg2);
+            if (this.a.D != null) {
+              this.a.D.a(this.a, paramMessage.arg1, paramMessage.arg2);
             }
             return;
           }
           Log.d("Story-MediaPlayer", "onSeekComplete");
-          if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener != null) {
-            this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener.a(this.a);
+          if (this.a.A != null) {
+            this.a.A.a(this.a);
           }
           return;
         }
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener != null) {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener.a(this.a, paramMessage.arg1);
+        if (this.a.E != null) {
+          this.a.E.a(this.a, paramMessage.arg1);
         }
-        this.a.e = paramMessage.arg1;
+        this.a.t = paramMessage.arg1;
         return;
       }
       Log.d("Story-MediaPlayer", "onPlaybackComplete");
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a);
+      if (this.a.y != null) {
+        this.a.y.a(this.a);
       }
       this.a.c(false);
       return;
     }
     Log.d("Story-MediaPlayer", "onPrepared");
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.a);
+    if (this.a.x != null) {
+      this.a.x.a_(this.a);
     }
   }
 }

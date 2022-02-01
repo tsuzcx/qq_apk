@@ -635,11 +635,11 @@ public class PatchBundleDataHandlerImpl
         return;
       }
       DownloadTask localDownloadTask = new DownloadTask(paramString, (File)localObject1);
-      localDownloadTask.p = true;
-      localDownloadTask.n = false;
-      localDownloadTask.f = "hippy_patch";
-      localDownloadTask.b = 1;
-      localDownloadTask.r = true;
+      localDownloadTask.N = true;
+      localDownloadTask.J = false;
+      localDownloadTask.L = "hippy_patch";
+      localDownloadTask.e = 1;
+      localDownloadTask.Q = true;
       ((DownloaderInterface)localObject2).startDownload(localDownloadTask, new PatchBundleDataHandlerImpl.7(this, (File)localObject1, paramHippyEngineContext, paramInt, paramPromise, paramString), null);
       return;
     }
@@ -654,7 +654,7 @@ public class PatchBundleDataHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.api.impl.PatchBundleDataHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

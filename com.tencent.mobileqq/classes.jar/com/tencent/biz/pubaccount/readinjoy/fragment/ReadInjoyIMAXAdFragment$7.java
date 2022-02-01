@@ -22,14 +22,14 @@ class ReadInjoyIMAXAdFragment$7
   public void onInstalledSuccessed()
   {
     GdtLog.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
-    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
-      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    if ((ReadInjoyIMAXAdFragment.d()) && (ReadInjoyIMAXAdFragment.s(this.a) != null)) {
+      ReadInjoyIMAXAdFragment.s(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.7
  * JD-Core Version:    0.7.0.1
  */

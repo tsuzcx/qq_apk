@@ -20,20 +20,20 @@ public class GameMsgAddFriendRulesApiImpl
     if (localGameMsgAddFriendRules == null) {
       return false;
     }
-    return localGameMsgAddFriendRules.a();
+    return localGameMsgAddFriendRules.b();
   }
   
   public void recordAction()
   {
     GameMsgAddFriendRules localGameMsgAddFriendRules = this.mInstance;
     if (localGameMsgAddFriendRules != null) {
-      localGameMsgAddFriendRules.b();
+      localGameMsgAddFriendRules.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.impl.GameMsgAddFriendRulesApiImpl
  * JD-Core Version:    0.7.0.1
  */

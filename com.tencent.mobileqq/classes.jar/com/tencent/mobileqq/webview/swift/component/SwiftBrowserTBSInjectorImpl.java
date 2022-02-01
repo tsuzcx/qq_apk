@@ -26,10 +26,10 @@ public class SwiftBrowserTBSInjectorImpl
 {
   Map<String, RedAppInfo> a;
   
-  private String a(SwiftBrowserComponentsProvider.SwiftBrowserComponentContext paramSwiftBrowserComponentContext)
+  private String b(SwiftBrowserComponentsProvider.SwiftBrowserComponentContext paramSwiftBrowserComponentContext)
   {
-    if ((paramSwiftBrowserComponentContext.a() instanceof QQBrowserActivity)) {
-      paramSwiftBrowserComponentContext = (QQBrowserActivity)paramSwiftBrowserComponentContext.a();
+    if ((paramSwiftBrowserComponentContext.b() instanceof QQBrowserActivity)) {
+      paramSwiftBrowserComponentContext = (QQBrowserActivity)paramSwiftBrowserComponentContext.b();
     } else {
       paramSwiftBrowserComponentContext = null;
     }
@@ -97,10 +97,10 @@ public class SwiftBrowserTBSInjectorImpl
   
   public void a(SwiftBrowserComponentsProvider.SwiftBrowserComponentContext paramSwiftBrowserComponentContext)
   {
-    if (SwiftWebViewUtils.b())
+    if (SwiftWebViewUtils.e())
     {
-      String str = a(paramSwiftBrowserComponentContext);
-      if ((!TextUtils.isEmpty(str)) && (SwiftWebViewUtils.a(str)) && (!str.contains("asyncMode=3")) && (!str.contains("sonic=1"))) {
+      String str = b(paramSwiftBrowserComponentContext);
+      if ((!TextUtils.isEmpty(str)) && (SwiftWebViewUtils.d(str)) && (!str.contains("asyncMode=3")) && (!str.contains("sonic=1"))) {
         SwiftBrowserTBSHandler.a(str, paramSwiftBrowserComponentContext.a());
       }
     }
@@ -116,24 +116,24 @@ public class SwiftBrowserTBSInjectorImpl
       paramString.append("onUploadLiveLogFinished, result: ");
       paramString.append(bool);
       QLog.d("SwiftBrowserTBSInjectorImpl", 1, paramString.toString());
-      if ((UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver != null) && (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L))
+      if ((UiApiPlugin.aa != null) && (UiApiPlugin.Z.get() != -1L))
       {
         paramString = new Bundle();
-        paramString.putLong("seq", UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
-        paramBundle = UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver;
+        paramString.putLong("seq", UiApiPlugin.Z.get());
+        paramBundle = UiApiPlugin.aa;
         if (!bool) {
           i = -3;
         }
         paramBundle.send(i, paramString);
-        UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = null;
-        UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(-1L);
+        UiApiPlugin.aa = null;
+        UiApiPlugin.Z.set(-1L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSInjectorImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -8,14 +8,14 @@ class WSServiceExecutor$2
   public void run()
   {
     if (WSServiceExecutor.a(this.this$0).isReportPerformance()) {
-      WSServiceExecutor.a(this.this$0);
+      WSServiceExecutor.b(this.this$0);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetCommonServiceCallback.a(this.jdField_a_of_type_JavaLangObject);
+    this.a.a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSServiceExecutor.2
  * JD-Core Version:    0.7.0.1
  */

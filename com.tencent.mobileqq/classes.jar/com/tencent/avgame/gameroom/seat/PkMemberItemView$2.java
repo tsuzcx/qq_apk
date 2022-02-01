@@ -16,7 +16,7 @@ class PkMemberItemView$2
     ColorMatrix localColorMatrix = new ColorMatrix();
     localColorMatrix.setSaturation(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
     paramValueAnimator = new ColorMatrixColorFilter(localColorMatrix);
-    this.a.b.setColorFilter(paramValueAnimator);
+    this.a.e.setColorFilter(paramValueAnimator);
   }
 }
 

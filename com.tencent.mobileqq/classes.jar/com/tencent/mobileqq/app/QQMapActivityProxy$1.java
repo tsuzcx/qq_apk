@@ -28,13 +28,13 @@ class QQMapActivityProxy$1
     if (paramContext.equals("com.tencent.mobileqq.addLbsObserver"))
     {
       if (QQMapActivityProxy.a(this.a) != null) {
-        QQMapActivityProxy.a(this.a).addObserver(QQMapActivityProxy.a(this.a));
+        QQMapActivityProxy.a(this.a).addObserver(QQMapActivityProxy.b(this.a));
       }
     }
     else if (paramContext.equals("com.tencent.mobileqq.removeLbsObserver"))
     {
       if (QQMapActivityProxy.a(this.a) != null) {
-        QQMapActivityProxy.a(this.a).removeObserver(QQMapActivityProxy.a(this.a));
+        QQMapActivityProxy.a(this.a).removeObserver(QQMapActivityProxy.b(this.a));
       }
     }
     else if (paramContext.equals("com.tencent.mobileqq.getStreetViewUrl"))
@@ -47,7 +47,7 @@ class QQMapActivityProxy$1
     {
       try
       {
-        QQMapActivityProxy.a(this.a).unregisterReceiver(QQMapActivityProxy.a(this.a));
+        QQMapActivityProxy.d(this.a).unregisterReceiver(QQMapActivityProxy.c(this.a));
         return;
       }
       catch (Exception paramContext)
@@ -108,7 +108,7 @@ class QQMapActivityProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQMapActivityProxy.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,17 +8,17 @@ public class AEBaseDataReporterImpl
 {
   public void reportARVideoDownloadBtn()
   {
-    AEBaseDataReporter.a().f();
+    AEBaseDataReporter.a().g();
   }
   
   public void reportARVideoExpose()
   {
-    AEBaseDataReporter.a().h();
+    AEBaseDataReporter.a().i();
   }
   
   public void reportARVideoShareBtn()
   {
-    AEBaseDataReporter.a().g();
+    AEBaseDataReporter.a().h();
   }
   
   public void reportClickFilterItem(String paramString)
@@ -28,7 +28,7 @@ public class AEBaseDataReporterImpl
   
   public void reportCmShowPhotoListClickCloseBtn()
   {
-    AEBaseDataReporter.a().aK();
+    AEBaseDataReporter.a().aP();
   }
   
   public void reportCmShowPhotoListExit(long paramLong)
@@ -38,52 +38,52 @@ public class AEBaseDataReporterImpl
   
   public void reportCmShowPhotoListExpose()
   {
-    AEBaseDataReporter.a().aI();
+    AEBaseDataReporter.a().aN();
   }
   
   public void reportCmShowPhotoListPickPhoto()
   {
-    AEBaseDataReporter.a().aJ();
+    AEBaseDataReporter.a().aO();
   }
   
   public void reportCmShowPhotoPreviewClickBackBtn()
   {
-    AEBaseDataReporter.a().aM();
+    AEBaseDataReporter.a().aR();
   }
   
   public void reportCmShowPhotoPreviewClickConfirmBtn()
   {
-    AEBaseDataReporter.a().aL();
+    AEBaseDataReporter.a().aQ();
   }
   
   public void reportDownloadBtn()
   {
-    AEBaseDataReporter.a().e();
+    AEBaseDataReporter.a().f();
   }
   
   public void reportEditView()
   {
-    AEBaseDataReporter.a().b();
+    AEBaseDataReporter.a().c();
   }
   
   public void reportEditViewExpose()
   {
-    AEBaseDataReporter.a().a();
+    AEBaseDataReporter.a().b();
   }
   
   public void reportEmoFilterItem(String paramString)
   {
-    AEBaseDataReporter.a().j(paramString);
+    AEBaseDataReporter.a().l(paramString);
   }
   
   public void reportPicChooseNextBtn()
   {
-    AEBaseDataReporter.a().Z();
+    AEBaseDataReporter.a().aa();
   }
   
   public void reportPostBtn()
   {
-    AEBaseDataReporter.a().c();
+    AEBaseDataReporter.a().d();
   }
   
   public void reportPostBtn(String paramString, int paramInt)
@@ -93,12 +93,12 @@ public class AEBaseDataReporterImpl
   
   public void reportRephotoBtn()
   {
-    AEBaseDataReporter.a().d();
+    AEBaseDataReporter.a().e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.report.api.impl.AEBaseDataReporterImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -116,29 +116,30 @@ public class AudioPlayManager
     return this.mSysMediaPlayer.getCurrentPosition();
   }
   
-  public boolean pauseAudio(int paramInt)
+  public void pauseAudio(int paramInt)
   {
     Object localObject = (String)this.mAudioPlayUrlList.get(paramInt);
-    if ((!TextUtils.isEmpty(this.mCurrentPlayUrl)) && (this.mCurrentPlayUrl.equals(localObject)) && (paramInt == this.mCurrentPlayID) && (this.mSysMediaPlayer.isPlaying()))
+    if ((!TextUtils.isEmpty(this.mCurrentPlayUrl)) && (this.mCurrentPlayUrl.equals(localObject)) && (paramInt == this.mCurrentPlayID))
     {
+      if (!this.mSysMediaPlayer.isPlaying()) {
+        return;
+      }
       this.mSysMediaPlayer.pause();
       this.mAudioPlayPositionList.put(this.mCurrentPlayID, Integer.valueOf(this.mSysMediaPlayer.getCurrentPosition()));
       localObject = (AudioPlayManager.AudioManagerListener)this.mPlayCallbackListener.get(this.mCurrentPlayID);
       if (localObject != null) {
         ((AudioPlayManager.AudioManagerListener)localObject).onPlayPause(this.mCurrentPlayUrl);
       }
-      return true;
     }
-    return false;
   }
   
-  public boolean playAudio(int paramInt)
+  public void playAudio(int paramInt)
   {
     try
     {
       Object localObject1 = (String)this.mAudioPlayUrlList.get(paramInt);
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        return false;
+        return;
       }
       if ((this.mCurrentPlayID == paramInt) && (((String)localObject1).equals(this.mCurrentPlayUrl)))
       {
@@ -173,8 +174,8 @@ public class AudioPlayManager
         this.mSysMediaPlayer.setDataSource(this.mCurrentPlayUrl);
         this.mSysMediaPlayer.prepareAsync();
         this.mSysMediaPlayer.setDisplay(null);
+        return;
       }
-      return true;
     }
     catch (Exception localException)
     {
@@ -186,7 +187,6 @@ public class AudioPlayManager
       ((StringBuilder)localObject2).append(localException.getMessage());
       LogUtils.d("AudioPlayManager", ((StringBuilder)localObject2).toString());
     }
-    return false;
   }
   
   public void release()
@@ -207,7 +207,7 @@ public class AudioPlayManager
     }
   }
   
-  public boolean releaseAudio(int paramInt)
+  public void releaseAudio(int paramInt)
   {
     String str = (String)this.mAudioPlayUrlList.get(paramInt);
     if ((!TextUtils.isEmpty(this.mCurrentPlayUrl)) && (this.mCurrentPlayUrl.equals(str)) && (paramInt == this.mCurrentPlayID))
@@ -220,52 +220,50 @@ public class AudioPlayManager
     this.mAudioPlayUrlList.delete(paramInt);
     this.mPlayCallbackListener.delete(paramInt);
     this.mAudioPlayPositionList.delete(paramInt);
-    return true;
   }
   
-  public boolean seekTo(int paramInt1, int paramInt2)
+  public void seekTo(int paramInt1, int paramInt2)
   {
     String str = (String)this.mAudioPlayUrlList.get(paramInt1);
     if (TextUtils.isEmpty(str)) {
-      return false;
+      return;
     }
     if ((this.mCurrentPlayID == paramInt1) && (str.equals(this.mCurrentPlayUrl))) {
       this.mSysMediaPlayer.seekTo(paramInt2);
     }
-    return true;
   }
   
-  public boolean setAudioPlayUrl(int paramInt, String paramString, AudioPlayManager.AudioManagerListener paramAudioManagerListener)
+  public void setAudioPlayUrl(int paramInt, String paramString, AudioPlayManager.AudioManagerListener paramAudioManagerListener)
   {
     if (TextUtils.isEmpty(paramString)) {
-      return false;
+      return;
     }
     this.mAudioPlayUrlList.put(paramInt, paramString);
     if (paramAudioManagerListener != null) {
       this.mPlayCallbackListener.put(paramInt, paramAudioManagerListener);
     }
-    return true;
   }
   
-  public boolean stopAudio(int paramInt)
+  public void stopAudio(int paramInt)
   {
     Object localObject = (String)this.mAudioPlayUrlList.get(paramInt);
-    if ((!TextUtils.isEmpty(this.mCurrentPlayUrl)) && (this.mCurrentPlayUrl.equals(localObject)) && (paramInt == this.mCurrentPlayID) && (this.mSysMediaPlayer.isPlaying()))
+    if ((!TextUtils.isEmpty(this.mCurrentPlayUrl)) && (this.mCurrentPlayUrl.equals(localObject)) && (paramInt == this.mCurrentPlayID))
     {
+      if (!this.mSysMediaPlayer.isPlaying()) {
+        return;
+      }
       this.mSysMediaPlayer.stop();
       this.mAudioPlayPositionList.put(this.mCurrentPlayID, Integer.valueOf(this.mSysMediaPlayer.getCurrentPosition()));
       localObject = (AudioPlayManager.AudioManagerListener)this.mPlayCallbackListener.get(this.mCurrentPlayID);
       if (localObject != null) {
         ((AudioPlayManager.AudioManagerListener)localObject).onPlayPause(this.mCurrentPlayUrl);
       }
-      return true;
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.audioview.AudioPlayManager
  * JD-Core Version:    0.7.0.1
  */

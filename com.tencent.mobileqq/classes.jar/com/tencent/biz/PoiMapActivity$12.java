@@ -13,53 +13,53 @@ class PoiMapActivity$12
   
   public void run()
   {
-    boolean bool2 = this.this$0.i;
+    boolean bool2 = this.this$0.Z;
     boolean bool1 = true;
     PoiMapActivity localPoiMapActivity;
     if (bool2)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
         this.this$0.a("rec_locate", "call_foursquare", "", "", "", "");
         QLog.d("PoiMapActivity", 1, "hasPoiListForFoursquareFinal: true");
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.this$0.X.setVisibility(8);
       }
       else
       {
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.this$0.X.setVisibility(8);
       }
-      if (this.this$0.jdField_b_of_type_AndroidWidgetLinearLayout != null) {
-        this.this$0.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.this$0.an != null) {
+        this.this$0.an.setVisibility(8);
       }
-      if (!this.jdField_a_of_type_JavaLangString.equals(this.this$0.jdField_b_of_type_ArrayOfJavaLangString[0]))
+      if (!this.b.equals(this.this$0.am[0]))
       {
         localPoiMapActivity = this.this$0;
-        localPoiMapActivity.l = 0;
-        localPoiMapActivity.jdField_a_of_type_ArrayOfComTencentBizPoiMapActivity$PoiTab[0].b(true);
+        localPoiMapActivity.r = 0;
+        localPoiMapActivity.d[0].b(true);
       }
     }
     else
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (this.this$0.jdField_b_of_type_AndroidWidgetLinearLayout != null) {
-        this.this$0.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.this$0.X.setVisibility(8);
+      if (this.this$0.an != null) {
+        this.this$0.an.setVisibility(0);
       }
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.c))
     {
-      if (this.jdField_b_of_type_JavaLangString.equals(this.this$0.c))
+      if (this.c.equals(this.this$0.F))
       {
         localPoiMapActivity = this.this$0;
-        String str = this.jdField_b_of_type_JavaLangString;
-        ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-        if (this.jdField_a_of_type_Int <= 0) {
+        String str = this.c;
+        ArrayList localArrayList = this.d;
+        if (this.e <= 0) {
           bool1 = false;
         }
         localPoiMapActivity.a(str, localArrayList, bool1);
       }
     }
     else {
-      this.this$0.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.d, this.jdField_b_of_type_Boolean);
+      this.this$0.a(this.d, this.f, this.g, this.b, this.e, this.h, this.i);
     }
   }
 }

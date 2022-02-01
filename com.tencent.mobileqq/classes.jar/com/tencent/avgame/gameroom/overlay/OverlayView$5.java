@@ -9,8 +9,8 @@ class OverlayView$5
   
   public void run()
   {
-    OverlayView.a(this.this$0).setVisibility(0);
-    new ScoreValueUpdater(OverlayView.a(this.this$0), this.a, this.b).a();
+    OverlayView.j(this.this$0).setVisibility(0);
+    new ScoreValueUpdater(OverlayView.j(this.this$0), this.a, this.b).a();
   }
 }
 

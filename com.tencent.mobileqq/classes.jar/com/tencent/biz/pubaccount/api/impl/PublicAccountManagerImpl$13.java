@@ -14,12 +14,12 @@ class PublicAccountManagerImpl$13
     double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
     double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
     paramIntent = paramIntent.getStringExtra("name");
-    this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.reportEventTypeMenuEventLocation(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    this.c.reportEventTypeMenuEventLocation(d1, d2, paramIntent, this.a, this.b);
     try
     {
-      paramContext.unregisterReceiver(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.locationResultReceiver);
+      paramContext.unregisterReceiver(this.c.locationResultReceiver);
       label58:
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.locationResultReceiver = null;
+      this.c.locationResultReceiver = null;
       return;
     }
     catch (Exception paramContext)
@@ -30,7 +30,7 @@ class PublicAccountManagerImpl$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.13
  * JD-Core Version:    0.7.0.1
  */

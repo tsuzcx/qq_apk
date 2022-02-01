@@ -26,7 +26,7 @@ class ConfessPlugin$2
       localStringBuilder.append(" head:");
       localStringBuilder.append(paramBitmap);
       QLog.i("ConfessPlugin", 4, localStringBuilder.toString());
-      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
+      if ((this.a.i != null) && (this.a.mRuntime != null) && (this.a.mRuntime.b() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.b().getCurrentAccountUin())))
       {
         ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
         ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
@@ -36,7 +36,7 @@ class ConfessPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.2
  * JD-Core Version:    0.7.0.1
  */

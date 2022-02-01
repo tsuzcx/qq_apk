@@ -78,16 +78,20 @@ class NearbyPeoplePhotoUploadProcessor$1
     paramHashMap.mTransferedSize = paramHashMap.mFileSize;
     if ((this.this$0.file.fileType != 50) && (this.this$0.file.fileType != 51))
     {
-      if (this.this$0.file.fileType == 23) {
+      if ((this.this$0.file.fileType != 23) && (this.this$0.file.fileType != 67) && (this.this$0.file.fileType != 68))
+      {
+        if (this.this$0.file.fileType == 22) {
+          NearbyPeoplePhotoUploadProcessor.access$200(this.this$0, paramArrayOfByte);
+        } else if (this.this$0.file.fileType == 48) {
+          NearbyPeoplePhotoUploadProcessor.access$300(this.this$0, paramArrayOfByte);
+        } else if (this.this$0.file.fileType == 35) {
+          NearbyPeoplePhotoUploadProcessor.access$400(this.this$0, paramArrayOfByte);
+        } else {
+          NearbyPeoplePhotoUploadProcessor.access$500(this.this$0, paramArrayOfByte);
+        }
+      }
+      else {
         NearbyPeoplePhotoUploadProcessor.access$100(this.this$0, paramArrayOfByte);
-      } else if (this.this$0.file.fileType == 22) {
-        NearbyPeoplePhotoUploadProcessor.access$200(this.this$0, paramArrayOfByte);
-      } else if (this.this$0.file.fileType == 48) {
-        NearbyPeoplePhotoUploadProcessor.access$300(this.this$0, paramArrayOfByte);
-      } else if (this.this$0.file.fileType == 35) {
-        NearbyPeoplePhotoUploadProcessor.access$400(this.this$0, paramArrayOfByte);
-      } else {
-        NearbyPeoplePhotoUploadProcessor.access$500(this.this$0, paramArrayOfByte);
       }
     }
     else {
@@ -118,7 +122,7 @@ class NearbyPeoplePhotoUploadProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,28 +17,27 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public class GetShareGroupDateListRequest
   extends NetworkRequest
 {
-  public String a;
-  public long b;
-  public String b;
-  public int c;
-  private final String c;
-  public int d;
-  public int e;
-  public int f;
+  public String e;
+  public String f = "";
+  public int g;
+  public int h;
+  public int i;
+  public long j;
+  public int k;
+  private final String l = StoryApi.a("StoryGroupSvc.datacard_get_feeds_new");
   
-  public GetShareGroupDateListRequest()
+  public String a()
   {
-    this.jdField_c_of_type_JavaLangString = StoryApi.a("StoryGroupSvc.datacard_get_feeds_new");
-    this.jdField_b_of_type_JavaLangString = "";
+    return this.l;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGroupDateVideoList localRspGroupDateVideoList = new qqstory_service.RspGroupDateVideoList();
     try
     {
       localRspGroupDateVideoList.mergeFrom(paramArrayOfByte);
-      return new GetShareGroupDateListResponse(this.a, localRspGroupDateVideoList);
+      return new GetShareGroupDateListResponse(this.e, localRspGroupDateVideoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
@@ -47,29 +46,24 @@ public class GetShareGroupDateListRequest
     return null;
   }
   
-  public String a()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGroupDateVideoList localReqGroupDateVideoList = new qqstory_service.ReqGroupDateVideoList();
-    localReqGroupDateVideoList.from.set(this.e);
-    localReqGroupDateVideoList.group_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGroupDateVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqGroupDateVideoList.date_count.set(this.jdField_c_of_type_Int);
-    localReqGroupDateVideoList.video_count.set(this.d);
-    localReqGroupDateVideoList.seqno.set(this.jdField_b_of_type_Long);
-    if (this.f != -1) {
-      localReqGroupDateVideoList.time_zone.set(this.f);
+    localReqGroupDateVideoList.from.set(this.i);
+    localReqGroupDateVideoList.group_unionid.set(ByteStringMicro.copyFromUtf8(this.e));
+    localReqGroupDateVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.f));
+    localReqGroupDateVideoList.date_count.set(this.g);
+    localReqGroupDateVideoList.video_count.set(this.h);
+    localReqGroupDateVideoList.seqno.set(this.j);
+    if (this.k != -1) {
+      localReqGroupDateVideoList.time_zone.set(this.k);
     }
     return localReqGroupDateVideoList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetShareGroupDateListRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator android:interpolator="@interpolator/h" android:duration="166" android:valueFrom="M -7.0,-7.0 l 14.0,0.0 c 0.0,0.0 0.0,0.0 0.0,0.0 l 0.0,14.0 c 0.0,0.0 0.0,0.0 0.0,0.0 l -14.0,0.0 c 0.0,0.0 0.0,0.0 0.0,0.0 l 0.0,-14.0 c 0.0,0.0 0.0,0.0 0.0,0.0 Z M 7.0,-9.0 c 0.0,0.0 -14.0,0.0 -14.0,0.0 c -1.1044921875,0.0 -2.0,0.8955078125 -2.0,2.0 c 0.0,0.0 0.0,14.0 0.0,14.0 c 0.0,1.1044921875 0.8955078125,2.0 2.0,2.0 c 0.0,0.0 14.0,0.0 14.0,0.0 c 1.1044921875,0.0 2.0,-0.8955078125 2.0,-2.0 c 0.0,0.0 0.0,-14.0 0.0,-14.0 c 0.0,-1.1044921875 -0.8955078125,-2.0 -2.0,-2.0 c 0.0,0.0 0.0,0.0 0.0,0.0 Z" android:valueTo="M 0.0,-0.05 l 0.0,0.0 c 0.02761423749,0.0 0.05,0.02238576251 0.05,0.05 l 0.0,0.0 c 0.0,0.02761423749 -0.02238576251,0.05 -0.05,0.05 l 0.0,0.0 c -0.02761423749,0.0 -0.05,-0.02238576251 -0.05,-0.05 l 0.0,0.0 c 0.0,-0.02761423749 0.02238576251,-0.05 0.05,-0.05 Z M 7.0,-9.0 c 0.0,0.0 -14.0,0.0 -14.0,0.0 c -1.1044921875,0.0 -2.0,0.8955078125 -2.0,2.0 c 0.0,0.0 0.0,14.0 0.0,14.0 c 0.0,1.1044921875 0.8955078125,2.0 2.0,2.0 c 0.0,0.0 14.0,0.0 14.0,0.0 c 1.1044921875,0.0 2.0,-0.8955078125 2.0,-2.0 c 0.0,0.0 0.0,-14.0 0.0,-14.0 c 0.0,-1.1044921875 -0.8955078125,-2.0 -2.0,-2.0 c 0.0,0.0 0.0,0.0 0.0,0.0 Z" android:valueType="pathType" android:propertyName="pathData" />
     <set android:ordering="sequentially">
-        <objectAnimator android:interpolator="@interpolator/k" android:duration="183" android:valueFrom="1.0" android:valueTo="0.9" android:valueType="floatType" android:propertyName="scaleX" />
-        <objectAnimator android:interpolator="@interpolator/i" android:duration="16" android:valueFrom="0.9" android:valueTo="0.5" android:valueType="floatType" android:propertyName="scaleX" />
-        <objectAnimator android:interpolator="@interpolator/i" android:duration="300" android:valueFrom="0.5" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleX" />
-    </set>
-    <set android:ordering="sequentially">
-        <objectAnimator android:interpolator="@interpolator/k" android:duration="183" android:valueFrom="1.0" android:valueTo="0.9" android:valueType="floatType" android:propertyName="scaleY" />
-        <objectAnimator android:interpolator="@interpolator/i" android:duration="16" android:valueFrom="0.9" android:valueTo="0.5" android:valueType="floatType" android:propertyName="scaleY" />
-        <objectAnimator android:interpolator="@interpolator/i" android:duration="300" android:valueFrom="0.5" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleY" />
+        <objectAnimator android:interpolator="@android:interpolator/linear" android:duration="166" android:valueFrom="1.0" android:valueTo="1.0" android:propertyName="fillAlpha" />
+        <objectAnimator android:interpolator="@interpolator/g" android:duration="33" android:valueFrom="1.0" android:valueTo="0.0" android:propertyName="fillAlpha" />
     </set>
 </set>

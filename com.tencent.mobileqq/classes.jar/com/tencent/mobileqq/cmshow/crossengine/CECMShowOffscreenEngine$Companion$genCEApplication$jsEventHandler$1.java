@@ -16,11 +16,11 @@ public final class CECMShowOffscreenEngine$Companion$genCEApplication$jsEventHan
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "worldName");
     Intrinsics.checkParameterIsNotNull(paramString2, "params");
-    paramString1 = (CECMShowOffscreenEngine)CECMShowOffscreenEngine.a().get(paramString1);
+    paramString1 = (CECMShowOffscreenEngine)CECMShowOffscreenEngine.n().get(paramString1);
     if (paramString1 != null)
     {
       CEChannelUtil localCEChannelUtil = CEChannelUtil.a;
-      paramString1 = CECMShowOffscreenEngine.a(paramString1);
+      paramString1 = CECMShowOffscreenEngine.b(paramString1);
       if (paramString1 != null) {
         paramString1 = paramString1.a(paramString2);
       } else {
@@ -33,7 +33,7 @@ public final class CECMShowOffscreenEngine$Companion$genCEApplication$jsEventHan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CECMShowOffscreenEngine.Companion.genCEApplication.jsEventHandler.1
  * JD-Core Version:    0.7.0.1
  */

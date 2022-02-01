@@ -21,7 +21,7 @@ class QQGameGrayTipsView$1
       if (j <= 0) {
         return;
       }
-      QQGameGrayTipsView.a(this.this$0).setBackgroundDrawable(this.this$0.getContext().getResources().getDrawable(2130840209));
+      QQGameGrayTipsView.a(this.this$0).setBackgroundDrawable(this.this$0.getContext().getResources().getDrawable(2130840521));
       i = (i - j) / 2;
       j = this.this$0.c.getLeft();
       int k = this.this$0.c.getRight();
@@ -34,7 +34,7 @@ class QQGameGrayTipsView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.QQGameGrayTipsView.1
  * JD-Core Version:    0.7.0.1
  */

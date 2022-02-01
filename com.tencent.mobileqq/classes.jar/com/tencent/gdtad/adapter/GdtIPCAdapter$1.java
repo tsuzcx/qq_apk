@@ -15,7 +15,7 @@ class GdtIPCAdapter$1
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     boolean bool2 = true;
     boolean bool1;
     if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
@@ -23,7 +23,7 @@ class GdtIPCAdapter$1
     } else {
       bool1 = false;
     }
-    GdtLog.b("GdtIPCAdapter", String.format("send.onCallback:%b action:%s from:%s to:%s", new Object[] { Boolean.valueOf(bool1), this.jdField_a_of_type_JavaLangString, this.b, this.c }));
+    GdtLog.b("GdtIPCAdapter", String.format("send.onCallback:%b action:%s from:%s to:%s", new Object[] { Boolean.valueOf(bool1), this.b, this.c, this.d }));
     localObject = new AdIPCManager.Result();
     if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess())) {
       bool1 = bool2;
@@ -37,15 +37,15 @@ class GdtIPCAdapter$1
       paramEIPCResult = null;
     }
     ((AdIPCManager.Result)localObject).bundle = paramEIPCResult;
-    paramEIPCResult = this.jdField_a_of_type_JavaLangRefWeakReference;
+    paramEIPCResult = this.a;
     if ((paramEIPCResult != null) && (paramEIPCResult.get() != null)) {
-      ((AdIPCManager.Callback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).onCallback(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params, (AdIPCManager.Result)localObject);
+      ((AdIPCManager.Callback)this.a.get()).onCallback(this.e, (AdIPCManager.Result)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtIPCAdapter.1
  * JD-Core Version:    0.7.0.1
  */

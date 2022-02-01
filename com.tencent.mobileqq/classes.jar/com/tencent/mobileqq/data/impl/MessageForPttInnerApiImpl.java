@@ -49,11 +49,11 @@ public class MessageForPttInnerApiImpl
     if (hasSttTxt(paramString, paramInt))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(BaseApplication.getContext().getString(2131691288));
+      localStringBuilder.append(BaseApplication.getContext().getString(2131888238));
       localStringBuilder.append(paramString);
       return localStringBuilder.toString();
     }
-    return BaseApplication.getContext().getString(2131691288);
+    return BaseApplication.getContext().getString(2131888238);
   }
   
   public String getTmpFilePath(String paramString)
@@ -72,7 +72,7 @@ public class MessageForPttInnerApiImpl
   
   public boolean hasSttTxt(String paramString, int paramInt)
   {
-    return (!StringUtil.a(paramString)) && (!BaseApplication.getContext().getString(2131719266).equals(paramString)) && (paramInt != 3);
+    return (!StringUtil.isEmpty(paramString)) && (!BaseApplication.getContext().getString(2131916818).equals(paramString)) && (paramInt != 3);
   }
   
   public boolean isReady(int paramInt)
@@ -82,7 +82,7 @@ public class MessageForPttInnerApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.impl.MessageForPttInnerApiImpl
  * JD-Core Version:    0.7.0.1
  */

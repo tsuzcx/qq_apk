@@ -19,7 +19,7 @@ class ProfileContentSignComponent$1
   {
     if ((ProfileContentSignComponent.access$000(this.this$0) != null) && (((ProfileCardInfo)ProfileContentSignComponent.access$200(this.this$0)).allInOne.uin.equals(ProfileContentSignComponent.access$100(this.this$0).getCurrentAccountUin())))
     {
-      ExtensionInfo localExtensionInfo = ((FriendsManager)ProfileContentSignComponent.access$300(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(ProfileContentSignComponent.access$400(this.this$0).getCurrentAccountUin());
+      ExtensionInfo localExtensionInfo = ((FriendsManager)ProfileContentSignComponent.access$300(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).x(ProfileContentSignComponent.access$400(this.this$0).getCurrentAccountUin());
       if (localExtensionInfo != null) {
         ProfileContentSignComponent.access$500(this.this$0, localExtensionInfo.richBuffer, localExtensionInfo.richTime);
       }
@@ -37,11 +37,11 @@ class ProfileContentSignComponent$1
       {
         if (TextUtils.equals(((ProfileCardInfo)ProfileContentSignComponent.access$800(this.this$0)).allInOne.uin, paramArrayOfString[i]))
         {
-          paramArrayOfString = localFriendsManager.a(((ProfileCardInfo)ProfileContentSignComponent.access$900(this.this$0)).allInOne.uin);
+          paramArrayOfString = localFriendsManager.x(((ProfileCardInfo)ProfileContentSignComponent.access$900(this.this$0)).allInOne.uin);
           if (paramArrayOfString == null) {
             break;
           }
-          ProfileContentSignComponent.access$1002(this.this$0, ExtensionRichStatus.a(paramArrayOfString));
+          ProfileContentSignComponent.access$1002(this.this$0, ExtensionRichStatus.c(paramArrayOfString));
           paramArrayOfString = this.this$0;
           ProfileContentSignComponent.access$1200(paramArrayOfString, ((ProfileCardInfo)ProfileContentSignComponent.access$1100(paramArrayOfString)).card, false);
           return;
@@ -53,7 +53,7 @@ class ProfileContentSignComponent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.ProfileContentSignComponent.1
  * JD-Core Version:    0.7.0.1
  */

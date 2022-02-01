@@ -20,7 +20,7 @@ public class VideoFeedsAppInterface
   public static final String b = VideoPlayRecommendHandler.class.getName();
   public static final String c = VideoPlayCountHandler.class.getName();
   public static final String d = ((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplName(IPublicAccountArticleHandler.class);
-  private VideoFeedsService a;
+  private VideoFeedsService e;
   
   public VideoFeedsAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -34,7 +34,7 @@ public class VideoFeedsAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public String getCurrentAccountUin()
@@ -49,7 +49,7 @@ public class VideoFeedsAppInterface
   
   public MobileQQServiceBase getMobileQQService()
   {
-    return this.a;
+    return this.e;
   }
   
   public String getModuleId()
@@ -60,12 +60,12 @@ public class VideoFeedsAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.a = new VideoFeedsService(this);
+    this.e = new VideoFeedsService(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsAppInterface
  * JD-Core Version:    0.7.0.1
  */

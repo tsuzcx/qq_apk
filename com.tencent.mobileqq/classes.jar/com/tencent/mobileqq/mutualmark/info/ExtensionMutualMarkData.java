@@ -79,10 +79,10 @@ public class ExtensionMutualMarkData
         }
         localObject = new MutualMarkInfo();
         ((MutualMarkInfo)localObject).a = 8L;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Long = paramExtensionInfo.qzoneVisitType;
-        ((MutualMarkInfo)localObject).d = paramExtensionInfo.lastQzoneVisitTime;
-        ((MutualMarkInfo)localObject).c = paramExtensionInfo.qzoneHotDays;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Boolean = paramExtensionInfo.hasRemindQzoneVisit;
+        ((MutualMarkInfo)localObject).b = paramExtensionInfo.qzoneVisitType;
+        ((MutualMarkInfo)localObject).e = paramExtensionInfo.lastQzoneVisitTime;
+        ((MutualMarkInfo)localObject).d = paramExtensionInfo.qzoneHotDays;
+        ((MutualMarkInfo)localObject).n = paramExtensionInfo.hasRemindQzoneVisit;
         this.a.put(Long.valueOf(((MutualMarkInfo)localObject).a), localObject);
       }
     }
@@ -100,11 +100,11 @@ public class ExtensionMutualMarkData
         }
         localObject = new MutualMarkInfo();
         ((MutualMarkInfo)localObject).a = 4L;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Long = paramExtensionInfo.friendshipLevel;
-        ((MutualMarkInfo)localObject).d = paramExtensionInfo.lastFriendshipTime;
-        ((MutualMarkInfo)localObject).c = paramExtensionInfo.friendshipChatDays;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Boolean = paramExtensionInfo.hasRemindFrdship;
-        ((MutualMarkInfo)localObject).i = paramExtensionInfo.frdshipAnimStartTime;
+        ((MutualMarkInfo)localObject).b = paramExtensionInfo.friendshipLevel;
+        ((MutualMarkInfo)localObject).e = paramExtensionInfo.lastFriendshipTime;
+        ((MutualMarkInfo)localObject).d = paramExtensionInfo.friendshipChatDays;
+        ((MutualMarkInfo)localObject).n = paramExtensionInfo.hasRemindFrdship;
+        ((MutualMarkInfo)localObject).o = paramExtensionInfo.frdshipAnimStartTime;
         this.a.put(Long.valueOf(((MutualMarkInfo)localObject).a), localObject);
       }
     }
@@ -122,11 +122,11 @@ public class ExtensionMutualMarkData
         }
         localObject = new MutualMarkInfo();
         ((MutualMarkInfo)localObject).a = 5L;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Long = paramExtensionInfo.chatHotLevel;
-        ((MutualMarkInfo)localObject).d = paramExtensionInfo.lastChatTime;
-        ((MutualMarkInfo)localObject).c = paramExtensionInfo.chatDays;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Boolean = paramExtensionInfo.hasRemindChat;
-        ((MutualMarkInfo)localObject).i = paramExtensionInfo.chatAnimStartTime;
+        ((MutualMarkInfo)localObject).b = paramExtensionInfo.chatHotLevel;
+        ((MutualMarkInfo)localObject).e = paramExtensionInfo.lastChatTime;
+        ((MutualMarkInfo)localObject).d = paramExtensionInfo.chatDays;
+        ((MutualMarkInfo)localObject).n = paramExtensionInfo.hasRemindChat;
+        ((MutualMarkInfo)localObject).o = paramExtensionInfo.chatAnimStartTime;
         this.a.put(Long.valueOf(((MutualMarkInfo)localObject).a), localObject);
       }
     }
@@ -144,13 +144,13 @@ public class ExtensionMutualMarkData
         }
         localObject = new MutualMarkInfo();
         ((MutualMarkInfo)localObject).a = 7L;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Long = paramExtensionInfo.loverChatLevel;
-        ((MutualMarkInfo)localObject).d = paramExtensionInfo.loverLastChatTime;
-        ((MutualMarkInfo)localObject).c = paramExtensionInfo.loverChatDays;
+        ((MutualMarkInfo)localObject).b = paramExtensionInfo.loverChatLevel;
+        ((MutualMarkInfo)localObject).e = paramExtensionInfo.loverLastChatTime;
+        ((MutualMarkInfo)localObject).d = paramExtensionInfo.loverChatDays;
         if (paramExtensionInfo.loverTransFlag)
         {
-          ((MutualMarkInfo)localObject).f = 2L;
-          ((MutualMarkInfo)localObject).g = (NetConnInfoCenter.getServerTimeMillis() / 1000L + 86400L);
+          ((MutualMarkInfo)localObject).g = 2L;
+          ((MutualMarkInfo)localObject).h = (NetConnInfoCenter.getServerTimeMillis() / 1000L + 86400L);
         }
         this.a.put(Long.valueOf(((MutualMarkInfo)localObject).a), localObject);
       }
@@ -159,7 +159,7 @@ public class ExtensionMutualMarkData
   
   private void i(ExtensionInfo paramExtensionInfo)
   {
-    boolean bool = HotReactiveHelper.a();
+    boolean bool = HotReactiveHelper.g();
     Object localObject = Long.valueOf(12L);
     ConcurrentHashMap localConcurrentHashMap;
     if (bool)
@@ -174,7 +174,7 @@ public class ExtensionMutualMarkData
           }
           localObject = new MutualMarkInfo();
           ((MutualMarkInfo)localObject).a = 12L;
-          ((MutualMarkInfo)localObject).jdField_b_of_type_Long = paramExtensionInfo.newBestIntimacyType;
+          ((MutualMarkInfo)localObject).b = paramExtensionInfo.newBestIntimacyType;
           this.a.put(Long.valueOf(((MutualMarkInfo)localObject).a), localObject);
         }
       }
@@ -189,7 +189,7 @@ public class ExtensionMutualMarkData
         }
         localObject = new MutualMarkInfo();
         ((MutualMarkInfo)localObject).a = 12L;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Long = paramExtensionInfo.bestIntimacyType;
+        ((MutualMarkInfo)localObject).b = paramExtensionInfo.bestIntimacyType;
         this.a.put(Long.valueOf(((MutualMarkInfo)localObject).a), localObject);
       }
     }
@@ -207,10 +207,10 @@ public class ExtensionMutualMarkData
         }
         localObject = new MutualMarkInfo();
         ((MutualMarkInfo)localObject).a = 6L;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Long = paramExtensionInfo.praiseHotLevel;
-        ((MutualMarkInfo)localObject).d = paramExtensionInfo.lastpraiseTime;
-        ((MutualMarkInfo)localObject).jdField_b_of_type_Boolean = paramExtensionInfo.hasRemindPraise;
-        ((MutualMarkInfo)localObject).i = paramExtensionInfo.praiseAnimStartTime;
+        ((MutualMarkInfo)localObject).b = paramExtensionInfo.praiseHotLevel;
+        ((MutualMarkInfo)localObject).e = paramExtensionInfo.lastpraiseTime;
+        ((MutualMarkInfo)localObject).n = paramExtensionInfo.hasRemindPraise;
+        ((MutualMarkInfo)localObject).o = paramExtensionInfo.praiseAnimStartTime;
         this.a.put(Long.valueOf(((MutualMarkInfo)localObject).a), localObject);
       }
     }
@@ -250,7 +250,7 @@ public class ExtensionMutualMarkData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.info.ExtensionMutualMarkData
  * JD-Core Version:    0.7.0.1
  */

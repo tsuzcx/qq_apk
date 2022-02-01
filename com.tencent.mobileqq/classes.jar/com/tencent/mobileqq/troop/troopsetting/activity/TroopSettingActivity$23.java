@@ -18,16 +18,16 @@ class TroopSettingActivity$23
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData != null)
+    if (this.this$0.i != null)
     {
-      if (this.this$0.jdField_a_of_type_AndroidOsHandler == null) {
+      if (this.this$0.aD == null) {
         return;
       }
       Object localObject1 = null;
       Object localObject2 = TroopSettingActivity.a(this.this$0).getEntityManagerFactory().createEntityManager();
       if (localObject2 != null)
       {
-        localObject1 = ((EntityManager)localObject2).query(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin }, null, null, null, null);
+        localObject1 = ((EntityManager)localObject2).query(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.i.troopUin }, null, null, null, null);
         ((EntityManager)localObject2).close();
       }
       if (localObject1 != null)
@@ -37,18 +37,18 @@ class TroopSettingActivity$23
         while (((Iterator)localObject1).hasNext())
         {
           TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject1).next();
-          if (Utils.d(localTroopMemberInfo.memberuin)) {
+          if (Utils.e(localTroopMemberInfo.memberuin)) {
             ((ArrayList)localObject2).add(localTroopMemberInfo.memberuin);
           }
         }
-        this.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopSettingActivity.23.1(this, (ArrayList)localObject2));
+        this.this$0.aD.post(new TroopSettingActivity.23.1(this, (ArrayList)localObject2));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.23
  * JD-Core Version:    0.7.0.1
  */

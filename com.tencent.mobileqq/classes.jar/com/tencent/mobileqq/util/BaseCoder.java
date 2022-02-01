@@ -3,24 +3,24 @@ package com.tencent.mobileqq.util;
 public class BaseCoder
 {
   public static BaseCoder a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[256];
-  private static char[] jdField_a_of_type_ArrayOfChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+  private static char[] b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+  private static byte[] c = new byte[256];
   
   protected BaseCoder()
   {
-    a();
+    b();
   }
   
   public static BaseCoder a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqUtilBaseCoder == null) {
+    if (a == null) {
       try
       {
-        jdField_a_of_type_ComTencentMobileqqUtilBaseCoder = new BaseCoder();
+        a = new BaseCoder();
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqUtilBaseCoder;
+    return a;
   }
   
   public String a(String paramString)
@@ -35,7 +35,7 @@ public class BaseCoder
     int j = 0;
     int i = 0;
     Object localObject;
-    char c;
+    char c1;
     for (;;)
     {
       int m = paramArrayOfByte.length;
@@ -47,17 +47,17 @@ public class BaseCoder
       j += 8;
       while (j > 5)
       {
-        localObject = jdField_a_of_type_ArrayOfChar;
+        localObject = b;
         j -= 6;
-        c = localObject[(i >> j)];
-        if (c == 'i') {
+        c1 = localObject[(i >> j)];
+        if (c1 == 'i') {
           localObject = "ia";
-        } else if (c == '+') {
+        } else if (c1 == '+') {
           localObject = "ib";
-        } else if (c == '/') {
+        } else if (c1 == '/') {
           localObject = "ic";
         } else {
-          localObject = Character.valueOf(c);
+          localObject = Character.valueOf(c1);
         }
         localStringBuffer.append(localObject);
         i &= (1 << j) - 1;
@@ -66,38 +66,38 @@ public class BaseCoder
     }
     if (j > 0)
     {
-      c = jdField_a_of_type_ArrayOfChar[(i << 6 - j)];
-      if (c == 'i') {
+      c1 = b[(i << 6 - j)];
+      if (c1 == 'i') {
         paramArrayOfByte = "ia";
-      } else if (c == '+') {
+      } else if (c1 == '+') {
         paramArrayOfByte = "ib";
-      } else if (c == '/') {
+      } else if (c1 == '/') {
         paramArrayOfByte = (byte[])localObject;
       } else {
-        paramArrayOfByte = Character.valueOf(c);
+        paramArrayOfByte = Character.valueOf(c1);
       }
       localStringBuffer.append(paramArrayOfByte);
     }
     return localStringBuffer;
   }
   
-  protected void a()
+  protected void b()
   {
     int i = 0;
     for (;;)
     {
-      char[] arrayOfChar = jdField_a_of_type_ArrayOfChar;
+      char[] arrayOfChar = b;
       if (i >= arrayOfChar.length) {
         break;
       }
-      jdField_a_of_type_ArrayOfByte[arrayOfChar[i]] = ((byte)i);
+      c[arrayOfChar[i]] = ((byte)i);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.BaseCoder
  * JD-Core Version:    0.7.0.1
  */

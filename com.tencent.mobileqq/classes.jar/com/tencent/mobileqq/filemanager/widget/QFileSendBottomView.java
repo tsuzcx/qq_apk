@@ -16,27 +16,27 @@ import com.tencent.widget.ListView;
 public class QFileSendBottomView
   extends RelativeLayout
 {
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private QQBlurView jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  private QQBlurView a;
+  private ListView b;
+  private RelativeLayout c;
   
   public QFileSendBottomView(Context paramContext)
   {
     super(paramContext, null);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560799, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131627057, this);
     b();
   }
   
   public QFileSendBottomView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560799, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131627057, this, true);
     b();
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377188));
+    this.c = ((RelativeLayout)findViewById(2131445569));
   }
   
   public View a(int paramInt)
@@ -46,34 +46,34 @@ public class QFileSendBottomView
   
   protected void a()
   {
-    QQBlurView localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    QQBlurView localQQBlurView = this.a;
     if (localQQBlurView != null)
     {
       localQQBlurView.c();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
+      this.a = null;
     }
     if (!ThemeUtil.isDefaultOrDIYTheme(false))
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844308);
+      this.c.setBackgroundResource(2130845625);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)findViewById(2131380356));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(this.jdField_a_of_type_ComTencentWidgetListView);
-    localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    this.a = ((QQBlurView)findViewById(2131449300));
+    this.a.setVisibility(0);
+    this.a.a(this.b);
+    localQQBlurView = this.a;
     localQQBlurView.b(localQQBlurView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c(-1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(new ColorDrawable(Color.parseColor("#E5EBEDF5")));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
+    this.a.c(-1);
+    this.a.a(new ColorDrawable(Color.parseColor("#E5EBEDF5")));
+    this.a.b(0);
+    this.a.a(8.0F);
+    this.a.a(8);
+    this.a.d();
+    this.a.a();
   }
   
   public void a(ListView paramListView)
   {
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    this.b = paramListView;
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.addView(new View(getContext()), new RelativeLayout.LayoutParams(-1, AIOUtils.b(50.0F, getResources())));
     paramListView.addFooterView(localRelativeLayout);
@@ -82,7 +82,7 @@ public class QFileSendBottomView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBottomView
  * JD-Core Version:    0.7.0.1
  */

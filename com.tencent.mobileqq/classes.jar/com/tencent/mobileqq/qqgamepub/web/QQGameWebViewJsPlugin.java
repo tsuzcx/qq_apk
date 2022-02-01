@@ -13,7 +13,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Ljava.lang.String;>;
 import java.util.Map;
 import mqq.app.MobileQQ;
 import org.json.JSONArray;
@@ -36,54 +35,78 @@ public class QQGameWebViewJsPlugin
     return ((IQQGameTempRelyApi)QRoute.api(IQQGameTempRelyApi.class)).getCurrentContext(this.mRuntime);
   }
   
-  private void a()
+  private JSONArray a(List<String> paramList1, List<String> paramList2, List<Integer> paramList3, List<Integer> paramList4, JSONArray paramJSONArray)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    Object localObject = paramJSONArray;
+    if (paramList1 != null)
     {
-      localJSONObject.put("code", "-1");
-      localJSONObject.put("msg", "error, parameters wrong...");
-      label26:
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("errorCallBack: ");
-      localStringBuilder.append(localJSONObject);
-      QLog.i("QQGamePub_QQGameWebViewJsPlugin", 2, localStringBuilder.toString());
-      a(this.b, localJSONObject.toString());
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      break label26;
-    }
-  }
-  
-  private void a(Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    try
-    {
-      ArrayList localArrayList = a(paramIntent);
-      if ((localArrayList != null) && (localArrayList.size() != 0))
+      localObject = paramJSONArray;
+      if (paramList2 != null)
       {
-        paramIntent = a(paramIntent, localArrayList);
-        if (paramIntent == null) {
-          break label58;
+        localObject = paramJSONArray;
+        if (paramList3 != null)
+        {
+          localObject = paramJSONArray;
+          if (paramList4 != null)
+          {
+            JSONArray localJSONArray = new JSONArray();
+            int i = 0;
+            for (;;)
+            {
+              localObject = localJSONArray;
+              if (i >= paramList1.size()) {
+                break;
+              }
+              localObject = localJSONArray;
+              if (i >= paramList2.size()) {
+                break;
+              }
+              localObject = localJSONArray;
+              if (i >= paramList3.size()) {
+                break;
+              }
+              localObject = localJSONArray;
+              if (i >= paramList4.size()) {
+                break;
+              }
+              boolean bool = TextUtils.isEmpty((CharSequence)paramList1.get(i));
+              localObject = "";
+              if (!bool) {
+                paramJSONArray = (String)paramList1.get(i);
+              } else {
+                paramJSONArray = "";
+              }
+              if (!TextUtils.isEmpty((CharSequence)paramList2.get(i))) {
+                localObject = (String)paramList2.get(i);
+              }
+              int j;
+              if (paramList3.get(i) != null) {
+                j = ((Integer)paramList3.get(i)).intValue();
+              } else {
+                j = 0;
+              }
+              int k;
+              if (paramList4.get(i) != null) {
+                k = ((Integer)paramList4.get(i)).intValue();
+              } else {
+                k = 0;
+              }
+              if ((k == 4) || (k == 8))
+              {
+                JSONObject localJSONObject = new JSONObject();
+                localJSONObject.put("uin", paramJSONArray);
+                localJSONObject.put("name", localObject);
+                localJSONObject.put("type", k);
+                localJSONObject.put("count", j);
+                localJSONArray.put(localJSONObject);
+              }
+              i += 1;
+            }
+          }
         }
-        a(this.b, paramIntent.toString());
-        return;
       }
-      a();
-      return;
     }
-    catch (Exception paramIntent)
-    {
-      label54:
-      label58:
-      break label54;
-    }
-    a();
+    return localObject;
   }
   
   private void a(String paramString)
@@ -152,7 +175,7 @@ public class QQGameWebViewJsPlugin
         {
           if (i2 < 0)
           {
-            a();
+            b();
             return;
           }
           super.startActivityForResult(a(localContext, str1, i3, i2, paramString, j, localArrayList, k, m, n, i, str2), (byte)33);
@@ -162,10 +185,10 @@ public class QQGameWebViewJsPlugin
       catch (Exception paramString)
       {
         paramString.printStackTrace();
-        a();
+        b();
         return;
       }
-      a();
+      b();
       return;
       label311:
       int i = 0;
@@ -182,6 +205,104 @@ public class QQGameWebViewJsPlugin
     QLog.i("QQGamePub_QQGameWebViewJsPlugin", 2, localStringBuilder.toString());
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
       super.callJs(paramString1, new String[] { paramString2 });
+    }
+  }
+  
+  private void b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("code", "-1");
+      localJSONObject.put("msg", "error, parameters wrong...");
+      label26:
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("errorCallBack: ");
+      localStringBuilder.append(localJSONObject);
+      QLog.i("QQGamePub_QQGameWebViewJsPlugin", 2, localStringBuilder.toString());
+      a(this.b, localJSONObject.toString());
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      break label26;
+    }
+  }
+  
+  private void b(Intent paramIntent)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    try
+    {
+      ArrayList localArrayList = a(paramIntent);
+      if ((localArrayList != null) && (localArrayList.size() != 0))
+      {
+        paramIntent = a(paramIntent, localArrayList);
+        if (paramIntent == null) {
+          break label58;
+        }
+        a(this.b, paramIntent.toString());
+        return;
+      }
+      b();
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      label54:
+      label58:
+      break label54;
+    }
+    b();
+  }
+  
+  private void b(List<String> paramList1, List<String> paramList2, List<Integer> paramList, List<String> paramList3, JSONArray paramJSONArray)
+  {
+    if ((paramList1 != null) && (paramList2 != null))
+    {
+      int i = 0;
+      while ((i < paramList1.size()) && (i < paramList2.size()))
+      {
+        boolean bool = TextUtils.isEmpty((CharSequence)paramList1.get(i));
+        Object localObject2 = "";
+        String str1;
+        if (!bool) {
+          str1 = (String)paramList1.get(i);
+        } else {
+          str1 = "";
+        }
+        String str2;
+        if (!TextUtils.isEmpty((CharSequence)paramList2.get(i))) {
+          str2 = (String)paramList2.get(i);
+        } else {
+          str2 = "";
+        }
+        Object localObject1 = localObject2;
+        if (paramList3 != null)
+        {
+          localObject1 = localObject2;
+          if (paramList3.size() - 1 >= i)
+          {
+            localObject1 = localObject2;
+            if (!TextUtils.isEmpty((CharSequence)paramList3.get(i))) {
+              localObject1 = (String)paramList3.get(i);
+            }
+          }
+        }
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("uin", str1);
+        ((JSONObject)localObject2).put("name", str2);
+        ((JSONObject)localObject2).put("levelIcon", localObject1);
+        if ((paramList != null) && (paramList.size() > i)) {
+          ((JSONObject)localObject2).put("type", paramList.get(i));
+        } else {
+          ((JSONObject)localObject2).put("type", 1);
+        }
+        paramJSONArray.put(localObject2);
+        i += 1;
+      }
     }
   }
   
@@ -305,146 +426,26 @@ public class QQGameWebViewJsPlugin
   
   protected JSONObject a(Intent paramIntent, List<String> paramList1, List<String> paramList2, List<Integer> paramList3, List<String> paramList4, List<String> paramList5, List<String> paramList6, List<Integer> paramList7, List<Integer> paramList8)
   {
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONArray localJSONArray = new JSONArray();
-        paramIntent = "";
-        localObject1 = paramIntent;
-        if (paramList1 != null)
-        {
-          localObject1 = paramIntent;
-          if (paramList2 != null)
-          {
-            i = 0;
-            localObject2 = paramList2;
-            localObject3 = paramList1;
-            localObject1 = paramIntent;
-            if (i < paramList1.size())
-            {
-              localObject1 = paramIntent;
-              if (i < paramList2.size())
-              {
-                if (TextUtils.isEmpty((CharSequence)((List)localObject3).get(i))) {
-                  break label643;
-                }
-                localObject1 = (String)((List)localObject3).get(i);
-                if (TextUtils.isEmpty((CharSequence)((List)localObject2).get(i))) {
-                  break label649;
-                }
-                localObject2 = (String)((List)localObject2).get(i);
-                if ((paramList4 == null) || (paramList4.size() - 1 < i) || (TextUtils.isEmpty((CharSequence)paramList4.get(i)))) {
-                  break label655;
-                }
-                localObject3 = (String)paramList4.get(i);
-                JSONObject localJSONObject2 = new JSONObject();
-                localJSONObject2.put("uin", localObject1);
-                localJSONObject2.put("name", localObject2);
-                localJSONObject2.put("levelIcon", localObject3);
-                if ((paramList3 != null) && (paramList3.size() > i)) {
-                  localJSONObject2.put("type", paramList3.get(i));
-                } else {
-                  localJSONObject2.put("type", 1);
-                }
-                localJSONArray.put(localJSONObject2);
-                i += 1;
-                continue;
-              }
-            }
-          }
-        }
-        if ((paramList5 == null) || (paramList6 == null) || (paramList7 == null) || (paramList8 == null)) {
-          break label707;
-        }
-        paramList2 = new JSONArray();
-        i = 0;
-        paramIntent = paramList2;
-        if (i < paramList5.size())
-        {
-          paramIntent = paramList2;
-          if (i < paramList6.size())
-          {
-            paramIntent = paramList2;
-            if (i < paramList7.size())
-            {
-              paramIntent = paramList2;
-              if (i < paramList8.size())
-              {
-                if (TextUtils.isEmpty((CharSequence)paramList5.get(i))) {
-                  break label661;
-                }
-                paramIntent = (String)paramList5.get(i);
-                if (TextUtils.isEmpty((CharSequence)paramList6.get(i))) {
-                  break label667;
-                }
-                paramList1 = (String)paramList6.get(i);
-                if (paramList7.get(i) == null) {
-                  break label673;
-                }
-                j = ((Integer)paramList7.get(i)).intValue();
-                if (paramList8.get(i) == null) {
-                  break label679;
-                }
-                k = ((Integer)paramList8.get(i)).intValue();
-                break label682;
-                paramList3 = new JSONObject();
-                paramList3.put("uin", paramIntent);
-                paramList3.put("name", paramList1);
-                paramList3.put("type", k);
-                paramList3.put("count", j);
-                paramList2.put(paramList3);
-                break label698;
-              }
-            }
-          }
-        }
-        localJSONObject1.put("friends", localJSONArray);
-        if ((paramIntent != null) && (paramIntent.length() > 0)) {
-          localJSONObject1.put("groups", paramIntent);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QQGamePub_QQGameWebViewJsPlugin", 2, localJSONObject1.toString());
-        }
-        return localJSONObject1;
+      paramIntent = new JSONObject();
+      JSONArray localJSONArray = new JSONArray();
+      b(paramList1, paramList2, paramList3, paramList4, localJSONArray);
+      paramList1 = a(paramList5, paramList6, paramList7, paramList8, null);
+      paramIntent.put("friends", localJSONArray);
+      if ((paramList1 != null) && (paramList1.length() > 0)) {
+        paramIntent.put("groups", paramList1);
       }
-      catch (JSONException paramIntent)
-      {
-        paramIntent.printStackTrace();
-        return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("QQGamePub_QQGameWebViewJsPlugin", 2, paramIntent.toString());
       }
-      label643:
-      Object localObject1 = paramIntent;
-      continue;
-      label649:
-      Object localObject2 = paramIntent;
-      continue;
-      label655:
-      Object localObject3 = paramIntent;
-      continue;
-      label661:
-      paramIntent = (Intent)localObject1;
-      continue;
-      label667:
-      paramList1 = (List<String>)localObject1;
-      continue;
-      label673:
-      int j = 0;
-      continue;
-      label679:
-      int k = 0;
-      label682:
-      if ((k != 4) && (k != 8))
-      {
-        label698:
-        i += 1;
-        continue;
-        label707:
-        paramIntent = null;
-      }
+      return paramIntent;
     }
+    catch (JSONException paramIntent)
+    {
+      paramIntent.printStackTrace();
+    }
+    return null;
   }
   
   public long getWebViewEventByNameSpace(String paramString)
@@ -567,17 +568,17 @@ public class QQGameWebViewJsPlugin
     if (paramInt == -1)
     {
       if (paramByte == 33) {
-        a(paramIntent);
+        b(paramIntent);
       }
     }
     else if (paramByte == 33) {
-      a();
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.web.QQGameWebViewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

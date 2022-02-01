@@ -1,34 +1,50 @@
 package com.tencent.biz.pubaccount.weishi_new.holder;
 
-import UserGrowth.stSimpleMetaPerson;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness;
-import com.tencent.open.base.ToastUtil;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import UserGrowth.stFeed;
+import UserGrowth.stMagicBrand;
+import UserGrowth.stSchema;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowAdapter;
+import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.view.WSMarqueeDirector.OnTextContentListener;
 
 class WSFollowFeedHolder$7
-  implements ActionSheet.OnButtonClickListener
+  implements WSMarqueeDirector.OnTextContentListener
 {
-  WSFollowFeedHolder$7(WSFollowFeedHolder paramWSFollowFeedHolder, stSimpleMetaPerson paramstSimpleMetaPerson) {}
+  WSFollowFeedHolder$7(WSFollowFeedHolder paramWSFollowFeedHolder) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(Object paramObject)
   {
-    if (!NetworkUtil.a(WSFollowFeedHolder.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder)))
-    {
-      ToastUtil.a().a(2131720447);
+    if (WeishiUtils.o()) {
       return;
     }
-    WSFollowFeedHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder).a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    WSFollowFeedHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder).setVisibility(0);
-    WSFollowFeedHolder.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder).setVisibility(4);
+    if ((paramObject instanceof stSchema))
+    {
+      WSFeedUtils.a(WSFollowFeedHolder.c(this.a).f(), (stSchema)paramObject, 700, WSFollowFeedHolder.d(this.a), "bottom_label");
+      WSFollowFeedHolder.b(this.a, "bottom_label", 2);
+    }
+  }
+  
+  public void b(Object paramObject)
+  {
+    if (WeishiUtils.o()) {
+      return;
+    }
+    if (((paramObject instanceof stSchema)) && (WSFollowFeedHolder.e(this.a).feed != null))
+    {
+      if (WSFollowFeedHolder.e(this.a).feed.magicBrand == null) {
+        return;
+      }
+      WSFeedUtils.a(WSFollowFeedHolder.c(this.a).f(), (stSchema)paramObject, 700, WSFollowFeedHolder.d(this.a), "bottom_label");
+      paramObject = this.a;
+      WSFollowFeedHolder.b(paramObject, "bottom_label", WSFollowFeedHolder.e(paramObject).feed.magicBrand.type);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFeedHolder.7
  * JD-Core Version:    0.7.0.1
  */

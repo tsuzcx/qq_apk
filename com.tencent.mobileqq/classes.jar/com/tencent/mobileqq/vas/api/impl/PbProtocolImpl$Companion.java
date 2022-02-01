@@ -3,6 +3,7 @@ package com.tencent.mobileqq.vas.api.impl;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.Random;
 import java.util.TimeZone;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
 import kotlin.jvm.JvmStatic;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -82,19 +84,10 @@ public final class PbProtocolImpl$Companion
   }
   
   @JvmStatic
-  @NotNull
-  public final Object[] a(@Nullable byte[] paramArrayOfByte)
-  {
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    localStQWebRsp.mergeFrom(paramArrayOfByte);
-    return new Object[] { Long.valueOf(localStQWebRsp.retCode.get()), localStQWebRsp.errMsg.get().toStringUtf8(), localStQWebRsp.busiBuff.get() };
-  }
-  
-  @JvmStatic
   @Nullable
   public final String b()
   {
-    String str = VasUtil.a();
+    String str = VasUtil.e();
     Intrinsics.checkExpressionValueIsNotNull(str, "VasUtil.getCurrentUin()");
     StringBuilder localStringBuilder = new StringBuilder(50);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
@@ -108,10 +101,48 @@ public final class PbProtocolImpl$Companion
     localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     return localStringBuilder.toString();
   }
+  
+  @Nullable
+  public final byte[] b(@Nullable byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      paramArrayOfByte = ((Companion)this).c(paramArrayOfByte);
+      byte b = paramArrayOfByte[0];
+      if (b != null)
+      {
+        ((Long)b).longValue();
+        String str = (String)paramArrayOfByte[1];
+        paramArrayOfByte = (ByteStringMicro)paramArrayOfByte[2];
+        if (paramArrayOfByte == null) {
+          Intrinsics.throwNpe();
+        }
+        return paramArrayOfByte.toByteArray();
+      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Long");
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  @JvmStatic
+  @NotNull
+  public final Object[] c(@Nullable byte[] paramArrayOfByte)
+  {
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    localStQWebRsp.mergeFrom(paramArrayOfByte);
+    return new Object[] { Long.valueOf(localStQWebRsp.retCode.get()), localStQWebRsp.errMsg.get().toStringUtf8(), localStQWebRsp.busiBuff.get() };
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.impl.PbProtocolImpl.Companion
  * JD-Core Version:    0.7.0.1
  */

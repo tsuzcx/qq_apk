@@ -13,47 +13,47 @@ import java.util.List;
 public class AESelectionLocationAdapter
   extends RecyclerView.Adapter<AESelectionLocationAdapter.AESelectionHolder>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private AESelectionLocationAdapter.LocationData jdField_a_of_type_ComTencentAelightCameraAeCameraUiPoiAESelectionLocationAdapter$LocationData;
-  private AESelectionLocationAdapter.SelectListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPoiAESelectionLocationAdapter$SelectListener;
-  ArrayList<AESelectionLocationAdapter.LocationData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<AESelectionLocationAdapter.LocationData> a = new ArrayList();
+  private LayoutInflater b;
+  private Context c;
+  private AESelectionLocationAdapter.LocationData d;
+  private AESelectionLocationAdapter.SelectListener e;
   
   public AESelectionLocationAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = LayoutInflater.from(paramContext);
+    this.c = paramContext;
   }
   
   public AESelectionLocationAdapter.AESelectionHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new AESelectionLocationAdapter.AESelectionHolder(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2064318475, paramViewGroup, false), this.jdField_a_of_type_AndroidContentContext);
+    return new AESelectionLocationAdapter.AESelectionHolder(this, this.b.inflate(2064056335, paramViewGroup, false), this.c);
   }
   
   public void a(AESelectionLocationAdapter.AESelectionHolder paramAESelectionHolder, int paramInt)
   {
-    paramAESelectionHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramAESelectionHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    int i = ((AESelectionLocationAdapter.LocationData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
-    paramAESelectionHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((AESelectionLocationAdapter.LocationData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
-    paramAESelectionHolder.jdField_a_of_type_AndroidViewView.setOnClickListener(new AESelectionLocationAdapter.1(this, paramInt));
+    paramAESelectionHolder.a.setVisibility(0);
+    paramAESelectionHolder.b.setVisibility(0);
+    int i = ((AESelectionLocationAdapter.LocationData)this.a.get(paramInt)).b;
+    paramAESelectionHolder.a.setText(((AESelectionLocationAdapter.LocationData)this.a.get(paramInt)).a);
+    paramAESelectionHolder.c.setOnClickListener(new AESelectionLocationAdapter.1(this, paramInt));
   }
   
   public void a(AESelectionLocationAdapter.SelectListener paramSelectListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPoiAESelectionLocationAdapter$SelectListener = paramSelectListener;
+    this.e = paramSelectListener;
   }
   
   public void a(List<AESelectionLocationAdapter.LocationData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.a;
     if (localArrayList == null) {
       return 0;
     }
@@ -67,7 +67,7 @@ public class AESelectionLocationAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.poi.AESelectionLocationAdapter
  * JD-Core Version:    0.7.0.1
  */

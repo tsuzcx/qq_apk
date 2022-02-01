@@ -16,41 +16,41 @@ class HotPicPageView$3
       if (i != 1) {
         return;
       }
-      if (HotPicPageView.b) {
+      if (HotPicPageView.z) {
         return;
       }
       this.a.i();
       return;
     }
-    if (HotPicPageView.b) {
+    if (HotPicPageView.z) {
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$HotPicAdapter != null))
+    if ((this.a.g.getVisibility() == 0) && (this.a.h != null))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$HotPicAdapter.getItemCount() == 0) {
+      if (this.a.h.getItemCount() == 0) {
         return;
       }
-      i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
+      i = this.a.g.d();
       if (i < 0) {
         return;
       }
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
+      paramMessage = this.a.g.findViewHolderForPosition(i);
       if ((paramMessage != null) && ((paramMessage instanceof HotPicPageView.MyVideoViewHolder)))
       {
         paramMessage = (HotPicPageView.MyVideoViewHolder)paramMessage;
-        if (paramMessage.jdField_a_of_type_Int == 0)
+        if (paramMessage.n == 0)
         {
           this.a.b(paramMessage, i);
           return;
         }
-        paramMessage.jdField_a_of_type_Boolean = true;
+        paramMessage.m = true;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView.3
  * JD-Core Version:    0.7.0.1
  */

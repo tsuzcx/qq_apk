@@ -17,18 +17,6 @@ public class GetPhotographyGuideInfoStep
 {
   private boolean a = false;
   
-  public String a()
-  {
-    return "GetPhotographyGuideInfoStep";
-  }
-  
-  public void a()
-  {
-    SLog.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "run");
-    GetPhotographyGuideInfoStep.GetPhotographyGuideRequest localGetPhotographyGuideRequest = new GetPhotographyGuideInfoStep.GetPhotographyGuideRequest();
-    CmdTaskManger.a().a(localGetPhotographyGuideRequest, this);
-  }
-  
   public void a(@NonNull GetPhotographyGuideInfoStep.GetPhotographyGuideRequest paramGetPhotographyGuideRequest, @Nullable GetPhotographyGuideInfoStep.GetPhotographyGuideResponse paramGetPhotographyGuideResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     if ((paramErrorMessage.isSuccess()) && (paramGetPhotographyGuideResponse != null))
@@ -37,20 +25,32 @@ public class GetPhotographyGuideInfoStep
       paramGetPhotographyGuideRequest = (StoryConfigManager)SuperManager.a(10);
       paramGetPhotographyGuideResponse = paramGetPhotographyGuideResponse.a;
       if ((paramGetPhotographyGuideResponse != null) && (paramGetPhotographyGuideResponse.size() > 0)) {
-        paramGetPhotographyGuideRequest.b("StorySvc.get_photography_guide.word", paramGetPhotographyGuideResponse.get(0));
+        paramGetPhotographyGuideRequest.d("StorySvc.get_photography_guide.word", paramGetPhotographyGuideResponse.get(0));
       } else {
-        paramGetPhotographyGuideRequest.b("StorySvc.get_photography_guide.word", HardCodeUtil.a(2131705354));
+        paramGetPhotographyGuideRequest.d("StorySvc.get_photography_guide.word", HardCodeUtil.a(2131903236));
       }
-      d();
+      h();
       return;
     }
     SLog.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetPhotographyGuideRequest });
     b(paramErrorMessage);
   }
   
-  public void b() {}
+  public void b()
+  {
+    SLog.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "run");
+    GetPhotographyGuideInfoStep.GetPhotographyGuideRequest localGetPhotographyGuideRequest = new GetPhotographyGuideInfoStep.GetPhotographyGuideRequest();
+    CmdTaskManger.a().a(localGetPhotographyGuideRequest, this);
+  }
   
-  public void c()
+  public String c()
+  {
+    return "GetPhotographyGuideInfoStep";
+  }
+  
+  public void e() {}
+  
+  public void f()
   {
     try
     {

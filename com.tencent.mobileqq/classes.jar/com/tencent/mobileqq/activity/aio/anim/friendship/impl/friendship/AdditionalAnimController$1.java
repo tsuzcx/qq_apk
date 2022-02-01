@@ -16,14 +16,14 @@ class AdditionalAnimController$1
     if (AdditionalAnimController.a(this.a) != null) {
       AdditionalAnimController.a(this.a).setAlpha((float)d);
     }
-    if (AdditionalAnimController.a(this.a) != null) {
-      AdditionalAnimController.a(this.a).setAlpha((float)d * 2.0F);
+    if (AdditionalAnimController.b(this.a) != null) {
+      AdditionalAnimController.b(this.a).setAlpha((float)d * 2.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.friendship.AdditionalAnimController.1
  * JD-Core Version:    0.7.0.1
  */

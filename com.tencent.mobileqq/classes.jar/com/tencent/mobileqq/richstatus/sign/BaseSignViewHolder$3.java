@@ -7,16 +7,16 @@ class BaseSignViewHolder$3
   
   public void run()
   {
-    if (this.this$0.d) {
+    if (this.this$0.K) {
       return;
     }
     BaseSignViewHolder localBaseSignViewHolder = this.this$0;
-    localBaseSignViewHolder.a(localBaseSignViewHolder.a);
+    localBaseSignViewHolder.a(localBaseSignViewHolder.w);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.BaseSignViewHolder.3
  * JD-Core Version:    0.7.0.1
  */

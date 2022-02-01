@@ -63,39 +63,39 @@ public class GamePKResultFragment
   extends GameBaseFragment
   implements View.OnClickListener, View.OnTouchListener, IGameResultView, IGamePosterView
 {
-  protected RecyclerView a;
-  private View jdField_a_of_type_AndroidViewView;
-  protected Button a;
-  protected ImageView a;
-  protected LinearLayout a;
-  protected RelativeLayout a;
-  protected TextView a;
-  private GamePKResultRankAdapter jdField_a_of_type_ComTencentAvgameAdapterGamePKResultRankAdapter = null;
-  private UserInfoHandler jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler;
-  protected AutoResizeAsyncImageView a;
-  private SurvivalPkResultInfo jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo = null;
+  private boolean A = true;
   protected IGameResultPresenter a;
-  private AVGamePKPosterView jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView;
-  protected AVGameSplitNumberView a;
-  protected AutoBgImageView a;
-  private boolean jdField_a_of_type_Boolean = true;
-  protected Button b;
-  protected ImageView b;
-  protected LinearLayout b;
-  protected TextView b;
-  protected AutoResizeAsyncImageView b;
   protected AutoBgImageView b;
-  protected ImageView c;
-  protected TextView c;
-  protected AutoResizeAsyncImageView c;
-  protected TextView d;
-  protected TextView e;
+  protected AutoBgImageView c;
+  protected RelativeLayout d;
+  protected Button e;
+  protected Button f;
+  protected RecyclerView g;
+  protected ImageView h;
+  protected TextView i;
+  protected TextView j;
+  protected LinearLayout k;
+  protected AVGameSplitNumberView l;
+  protected TextView m;
+  protected LinearLayout n;
+  protected TextView o;
+  protected AutoResizeAsyncImageView p;
+  protected AutoResizeAsyncImageView q;
+  protected ImageView r;
+  protected ImageView s;
+  protected TextView t;
+  protected AutoResizeAsyncImageView u;
+  private UserInfoHandler v;
+  private AVGamePKPosterView w;
+  private View x;
+  private GamePKResultRankAdapter y = null;
+  private SurvivalPkResultInfo z = null;
   
   public static GamePKResultFragment a()
   {
     GamePKResultFragment localGamePKResultFragment = new GamePKResultFragment();
     localGamePKResultFragment.setArguments(new Bundle());
-    localGamePKResultFragment.jdField_a_of_type_ComTencentAvgameGameresultIGameResultPresenter = new GameResultPKPresenterImp(localGamePKResultFragment);
+    localGamePKResultFragment.a = new GameResultPKPresenterImp(localGamePKResultFragment);
     return localGamePKResultFragment;
   }
   
@@ -121,57 +121,57 @@ public class GamePKResultFragment
   
   private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_c_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.d.setVisibility(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setVisibility(8);
-    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setVisibility(0);
-    Object localObject = AVGameUtil.a("avgame_pk_result_fail_spider@2x.png");
+    this.u.setVisibility(0);
+    this.k.setVisibility(0);
+    this.o.setVisibility(0);
+    this.g.setVisibility(8);
+    this.p.setVisibility(8);
+    this.q.setVisibility(0);
+    Object localObject = AVGameUtil.c("avgame_pk_result_fail_spider@2x.png");
     if (localObject != null)
     {
-      this.jdField_c_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setFailedDrawable(new BitmapDrawable((Bitmap)localObject));
-      this.jdField_c_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setLoadingDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.u.setFailedDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.u.setLoadingDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    this.jdField_c_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setLoopOne();
-    this.jdField_c_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a("https://static-res.qq.com/static-res/avgames/survival/avgame_pk_result_spider.png");
-    localObject = AVGameUtil.a("avgame_pk_result_fail2@2x.png");
+    this.u.setLoopOne();
+    this.u.a("https://static-res.qq.com/static-res/avgames/survival/avgame_pk_result_spider.png");
+    localObject = AVGameUtil.c("avgame_pk_result_fail2@2x.png");
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.h.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localObject = AVGameUtil.a("avgame_pk_result_fail1@2x.png");
+    localObject = AVGameUtil.c("avgame_pk_result_fail1@2x.png");
     if (localObject != null)
     {
-      this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setFailedDrawable(new BitmapDrawable((Bitmap)localObject));
-      this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setLoadingDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.q.setFailedDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.q.setLoadingDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setLoopOne();
-    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a("https://static-res.qq.com/static-res/avgames/survival/avgame_pk_result_fail.png");
-    localObject = AVGameUtil.a("avgame_pk_result_footing2@2x.png");
+    this.q.setLoopOne();
+    this.q.a("https://static-res.qq.com/static-res/avgames/survival/avgame_pk_result_fail.png");
+    localObject = AVGameUtil.c("avgame_pk_result_footing2@2x.png");
     if (localObject != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.r.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localObject = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.a(37.0F);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.a(37.0F);
-    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(getResources().getDrawable(2130838682));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.setDimension(ViewUtils.b(49.0F), ViewUtils.b(67.0F));
-    localObject = this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView;
+    localObject = (RelativeLayout.LayoutParams)this.n.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.dip2px(37.0F);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.dip2px(37.0F);
+    this.f.setBackgroundDrawable(getResources().getDrawable(2130838896));
+    this.l.setDimension(ViewUtils.dpToPx(49.0F), ViewUtils.dpToPx(67.0F));
+    localObject = this.l;
     ((AVGameSplitNumberView)localObject).setNumDrawable(((AVGameSplitNumberView)localObject).a("avgame_pk_result_num%d@2x.png"));
     c(paramInt1);
-    localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+    localObject = this.m;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("/");
     localStringBuilder.append(paramInt2);
     ((TextView)localObject).setText(localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView.a(paramInt1, paramInt2);
+    this.w.a(paramInt1, paramInt2);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mSurvivalPkResultInfo.total is : ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.total);
+      ((StringBuilder)localObject).append(this.z.total);
       ((StringBuilder)localObject).append(" mSurvivalPkResultInfo.rank: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.rank);
+      ((StringBuilder)localObject).append(this.z.rank);
       QLog.i("GamePKResultFragment", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -189,10 +189,10 @@ public class GamePKResultFragment
   
   private boolean a(boolean paramBoolean, int paramInt)
   {
-    SurvivalPkResultInfo localSurvivalPkResultInfo = this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo;
-    if ((localSurvivalPkResultInfo != null) && (localSurvivalPkResultInfo.delayAward) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.delayAwardTip != null))
+    SurvivalPkResultInfo localSurvivalPkResultInfo = this.z;
+    if ((localSurvivalPkResultInfo != null) && (localSurvivalPkResultInfo.delayAward) && (this.z.delayAwardTip != null))
     {
-      a(null, this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.delayAwardTip, getString(2131690499), new GamePKResultFragment.3(this, paramBoolean, paramInt), null, null);
+      a(null, this.z.delayAwardTip, getString(2131887410), new GamePKResultFragment.3(this, paramBoolean, paramInt), null, null);
       return true;
     }
     return false;
@@ -200,37 +200,37 @@ public class GamePKResultFragment
   
   private void b(int paramInt)
   {
-    this.jdField_c_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setVisibility(8);
-    this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setVisibility(0);
-    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setVisibility(8);
-    Object localObject = AVGameUtil.a("avgame_pk_result_win2@2x.png");
+    this.u.setVisibility(8);
+    this.o.setVisibility(8);
+    this.k.setVisibility(8);
+    this.g.setVisibility(0);
+    this.p.setVisibility(0);
+    this.q.setVisibility(8);
+    Object localObject = AVGameUtil.c("avgame_pk_result_win2@2x.png");
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.h.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localObject = AVGameUtil.a("avgame_pk_result_win1@2x.png");
+    localObject = AVGameUtil.c("avgame_pk_result_win1@2x.png");
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setFailedDrawable(new BitmapDrawable((Bitmap)localObject));
-      this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setLoadingDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.p.setFailedDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.p.setLoadingDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setLoopOne();
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a("https://static-res.qq.com/static-res/avgames/survival/avgame_pk_result_suc2.png");
-    localObject = AVGameUtil.a("avgame_pk_result_footing@2x.png");
+    this.p.setLoopOne();
+    this.p.a("https://static-res.qq.com/static-res/avgames/survival/avgame_pk_result_suc2.png");
+    localObject = AVGameUtil.c("avgame_pk_result_footing@2x.png");
     if (localObject != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.r.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject));
     }
-    localObject = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.a(58.0F);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.a(58.0F);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView.a(paramInt);
+    localObject = (RelativeLayout.LayoutParams)this.n.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.dip2px(58.0F);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.dip2px(58.0F);
+    this.w.a(paramInt);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("mSurvivalPkResultInfo.total is : ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.total);
+      ((StringBuilder)localObject).append(this.z.total);
       QLog.i("GamePKResultFragment", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -240,81 +240,11 @@ public class GamePKResultFragment
     d(2);
   }
   
-  private void c()
-  {
-    int i = ImmersiveUtils.getStatusBarHeight(getQBaseActivity());
-    if (ImmersiveUtils.isSupporImmersive() == 1) {
-      i += ViewUtils.b(4.0F);
-    } else {
-      i = ViewUtils.b(8.0F);
-    }
-    Object localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject1).topMargin = i;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.d.setTypeface(AVGameText.a());
-    this.jdField_a_of_type_AndroidWidgetButton.setTypeface(AVGameText.a());
-    this.jdField_b_of_type_AndroidWidgetButton.setTypeface(AVGameText.a());
-    localObject1 = AVGameUtil.a("avgame_room_bg@2x.png");
-    if (localObject1 != null) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject1));
-    }
-    this.jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView.setPresenter(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetAutoBgImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultPresenter.b();
-    FloatWindowController.a().c();
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)GameEngine.a().a().getBusinessHandler(HandlerFactory.b));
-    localObject1 = this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler;
-    if (localObject1 != null)
-    {
-      localObject1 = ((UserInfoHandler)localObject1).a(((UserInfoHandler)localObject1).getCurrentAccountUin(), (byte)1);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject1);
-      Object localObject2 = new ArrayList();
-      ((ArrayList)localObject2).add(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler.getCurrentAccountUin());
-      localObject2 = (String)a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, (ArrayList)localObject2).get(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler.getCurrentAccountUin());
-      if (localObject2 != null) {
-        this.e.setText((CharSequence)localObject2);
-      }
-      this.jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, (String)localObject2, (Bitmap)localObject1);
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnTouchListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnTouchListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnTouchListener(this);
-    a();
-  }
-  
   private void c(int paramInt)
   {
-    AVGameSplitNumberView localAVGameSplitNumberView = this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView;
+    AVGameSplitNumberView localAVGameSplitNumberView = this.l;
     if ((localAVGameSplitNumberView != null) && (localAVGameSplitNumberView.getVisibility() == 0)) {
-      this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView.a(paramInt);
-    }
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo;
-    if (localObject != null)
-    {
-      if (((SurvivalPkResultInfo)localObject).awardUrl == null) {
-        return;
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("mSurvivalPkResultInfo.awardUrl is : ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.awardUrl);
-        ((StringBuilder)localObject).append("");
-        QLog.i("GamePKResultFragment", 2, ((StringBuilder)localObject).toString());
-      }
-      localObject = new Intent(getQBaseActivity(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.awardUrl);
-      getQBaseActivity().startActivity((Intent)localObject);
+      this.l.a(paramInt);
     }
   }
   
@@ -323,12 +253,12 @@ public class GamePKResultFragment
     if (a(true, paramInt)) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.A)
     {
       e(paramInt);
       return;
     }
-    a(null, getString(2131690419), getString(2131690420), new GamePKResultFragment.1(this, paramInt), getString(2131690421), new GamePKResultFragment.2(this));
+    a(null, getString(2131887330), getString(2131887331), new GamePKResultFragment.1(this, paramInt), getString(2131887332), new GamePKResultFragment.2(this));
   }
   
   private void e(int paramInt)
@@ -339,71 +269,79 @@ public class GamePKResultFragment
       if (paramInt != 2) {
         return;
       }
-      this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultPresenter.d();
+      this.a.d();
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultPresenter.f();
+    this.a.h();
   }
   
-  public Activity a()
+  private void f()
   {
-    return getQBaseActivity();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo != null)
+    int i1 = ImmersiveUtils.getStatusBarHeight(getQBaseActivity());
+    if (ImmersiveUtils.isSupporImmersive() == 1) {
+      i1 += ViewUtils.dpToPx(4.0F);
+    } else {
+      i1 = ViewUtils.dpToPx(8.0F);
+    }
+    Object localObject1 = (RelativeLayout.LayoutParams)this.d.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject1).topMargin = i1;
+    this.d.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    this.i.setTypeface(AVGameText.getTypeface());
+    this.j.setTypeface(AVGameText.getTypeface());
+    this.o.setTypeface(AVGameText.getTypeface());
+    this.e.setTypeface(AVGameText.getTypeface());
+    this.f.setTypeface(AVGameText.getTypeface());
+    localObject1 = AVGameUtil.c("avgame_room_bg@2x.png");
+    if (localObject1 != null) {
+      this.x.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject1));
+    }
+    this.w.setPresenter(this);
+    this.b.setOnClickListener(this);
+    this.c.setOnClickListener(this);
+    this.e.setOnClickListener(this);
+    this.f.setOnClickListener(this);
+    this.a.b();
+    FloatWindowController.c().d();
+    this.v = ((UserInfoHandler)GameEngine.a().f().getBusinessHandler(HandlerFactory.b));
+    localObject1 = this.v;
+    if (localObject1 != null)
     {
-      if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
+      localObject1 = ((UserInfoHandler)localObject1).a(((UserInfoHandler)localObject1).getCurrentAccountUin(), (byte)1);
+      this.s.setImageBitmap((Bitmap)localObject1);
+      Object localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(this.v.getCurrentAccountUin());
+      localObject2 = (String)a(this.v, (ArrayList)localObject2).get(this.v.getCurrentAccountUin());
+      if (localObject2 != null) {
+        this.t.setText((CharSequence)localObject2);
+      }
+      this.w.a(this.v, (String)localObject2, (Bitmap)localObject1);
+    }
+    this.j.setOnTouchListener(this);
+    this.e.setOnTouchListener(this);
+    this.f.setOnTouchListener(this);
+    b();
+  }
+  
+  private void g()
+  {
+    this.A = true;
+    Object localObject = this.z;
+    if (localObject != null)
+    {
+      if (((SurvivalPkResultInfo)localObject).awardUrl == null) {
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("GamePKResultFragment", 2, "refreshPageData");
-      }
-      ApngImage.resumeAll();
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.gameSur)
+      if (QLog.isColorLevel())
       {
-        b(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.total);
-        a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.rankingUins);
-        this.jdField_a_of_type_Boolean = false;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("mSurvivalPkResultInfo.awardUrl is : ");
+        ((StringBuilder)localObject).append(this.z.awardUrl);
+        ((StringBuilder)localObject).append("");
+        QLog.i("GamePKResultFragment", 2, ((StringBuilder)localObject).toString());
       }
-      else
-      {
-        a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.rank, this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.total);
-        if (!this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.hasAward)
-        {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        }
-        else
-        {
-          this.jdField_a_of_type_Boolean = false;
-        }
-      }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.awardUrl)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.awardText)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.awardUrlStr)))
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.awardText);
-        TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("<u>");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.awardUrlStr);
-        localStringBuilder.append("</u> >");
-        localTextView.setText(Html.fromHtml(localStringBuilder.toString()));
-        int i;
-        if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.gameSur) {
-          i = 1;
-        } else {
-          i = 2;
-        }
-        ReportController.b(null, "dc00898", "", "", "0X800B695", "0X800B695", i, 0, "", "", "", "");
-        return;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localObject = new Intent(getQBaseActivity(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", this.z.awardUrl);
+      getQBaseActivity().startActivity((Intent)localObject);
     }
   }
   
@@ -412,8 +350,8 @@ public class GamePKResultFragment
     super.a(paramInt);
     if (paramInt == 3)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultPresenter.b();
-      FloatWindowController.a().c();
+      this.a.b();
+      FloatWindowController.c().d();
     }
   }
   
@@ -436,15 +374,15 @@ public class GamePKResultFragment
     if (paramSurvivalPkResultInfo == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo = paramSurvivalPkResultInfo;
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo != null))
+    this.z = paramSurvivalPkResultInfo;
+    if ((QLog.isColorLevel()) && (this.z != null))
     {
       paramSurvivalPkResultInfo = new StringBuilder();
       paramSurvivalPkResultInfo.append("mSurvivalPkResultInfo:");
-      paramSurvivalPkResultInfo.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo.toString());
+      paramSurvivalPkResultInfo.append(this.z.toString());
       QLog.i("GamePKResultFragment", 2, paramSurvivalPkResultInfo.toString());
     }
-    a();
+    b();
   }
   
   public void a(BaseAVGameAppInterface paramBaseAVGameAppInterface, long paramLong, String paramString1, int paramInt, String paramString2, String paramString3)
@@ -460,7 +398,7 @@ public class GamePKResultFragment
   {
     if (paramList != null)
     {
-      if (this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler == null) {
+      if (this.v == null) {
         return;
       }
       ArrayList localArrayList = new ArrayList();
@@ -468,7 +406,7 @@ public class GamePKResultFragment
       while (paramList.hasNext())
       {
         SurvivalPkResultInfo.Pair localPair = (SurvivalPkResultInfo.Pair)paramList.next();
-        if (!String.valueOf(localPair.second).equals(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler.getCurrentAccountUin())) {
+        if (!String.valueOf(localPair.second).equals(this.v.getCurrentAccountUin())) {
           localArrayList.add(localPair);
         }
       }
@@ -479,15 +417,15 @@ public class GamePKResultFragment
         paramList.append(localArrayList.size());
         QLog.i("GamePKResultFragment", 2, paramList.toString());
       }
-      this.jdField_a_of_type_ComTencentAvgameAdapterGamePKResultRankAdapter = new GamePKResultRankAdapter(getQBaseActivity(), localArrayList, 10, a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localArrayList), this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(getQBaseActivity()));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAvgameAdapterGamePKResultRankAdapter);
+      this.y = new GamePKResultRankAdapter(getQBaseActivity(), localArrayList, 10, a(this.v, localArrayList), this.v);
+      this.g.setLayoutManager(new LinearLayoutManager(getQBaseActivity()));
+      this.g.setAdapter(this.y);
       if (QLog.isColorLevel())
       {
         paramList = new StringBuilder();
         paramList.append("userInfoHandler is null?: ");
         boolean bool;
-        if (this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler == null) {
+        if (this.v == null) {
           bool = true;
         } else {
           bool = false;
@@ -499,26 +437,77 @@ public class GamePKResultFragment
     }
   }
   
-  public boolean a()
+  public void aD_()
   {
-    b(true);
-    return true;
+    GamePKResultRankAdapter localGamePKResultRankAdapter = this.y;
+    if (localGamePKResultRankAdapter != null)
+    {
+      localGamePKResultRankAdapter.a(a(this.v, localGamePKResultRankAdapter.a()));
+      this.w.b();
+    }
   }
   
   public void b()
   {
-    GamePKResultRankAdapter localGamePKResultRankAdapter = this.jdField_a_of_type_ComTencentAvgameAdapterGamePKResultRankAdapter;
-    if (localGamePKResultRankAdapter != null)
+    if (this.z != null)
     {
-      localGamePKResultRankAdapter.a(a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localGamePKResultRankAdapter.a()));
-      this.jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView.b();
+      if (this.j == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("GamePKResultFragment", 2, "refreshPageData");
+      }
+      ApngImage.resumeAll();
+      this.j.setVisibility(0);
+      this.i.setVisibility(0);
+      if (this.z.gameSur)
+      {
+        b(this.z.total);
+        a(this.z.rankingUins);
+        this.A = false;
+      }
+      else
+      {
+        a(this.z.rank, this.z.total);
+        if (!this.z.hasAward)
+        {
+          this.j.setVisibility(8);
+          this.i.setVisibility(8);
+        }
+        else
+        {
+          this.A = false;
+        }
+      }
+      if ((!TextUtils.isEmpty(this.z.awardUrl)) && (!TextUtils.isEmpty(this.z.awardText)) && (!TextUtils.isEmpty(this.z.awardUrlStr)))
+      {
+        this.j.setOnClickListener(this);
+        this.i.setText(this.z.awardText);
+        TextView localTextView = this.j;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<u>");
+        localStringBuilder.append(this.z.awardUrlStr);
+        localStringBuilder.append("</u> >");
+        localTextView.setText(Html.fromHtml(localStringBuilder.toString()));
+        int i1;
+        if (this.z.gameSur) {
+          i1 = 1;
+        } else {
+          i1 = 2;
+        }
+        ReportController.b(null, "dc00898", "", "", "0X800B695", "0X800B695", i1, 0, "", "", "", "");
+        return;
+      }
+      this.A = true;
+      this.j.setVisibility(8);
+      this.i.setVisibility(8);
     }
   }
   
   public void b(EngineData paramEngineData)
   {
-    if (a() != null) {
-      a().showRoom();
+    if (m() != null) {
+      m().showRoom();
     }
   }
   
@@ -527,8 +516,8 @@ public class GamePKResultFragment
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        int i = GameEngine.a().a().d();
-        AVGameShareUtil.a().a(a(), paramString, i);
+        int i1 = GameEngine.a().s().p();
+        AVGameShareUtil.a().a(d(), paramString, i1);
         return;
       }
       catch (Exception paramString)
@@ -543,6 +532,17 @@ public class GamePKResultFragment
   
   public void b(String paramString1, String paramString2, String paramString3) {}
   
+  public Activity d()
+  {
+    return getQBaseActivity();
+  }
+  
+  public boolean e()
+  {
+    b(true);
+    return true;
+  }
+  
   public View getView()
   {
     return super.getView();
@@ -551,57 +551,57 @@ public class GamePKResultFragment
   public void onClick(View paramView)
   {
     SurvivalPkResultInfo localSurvivalPkResultInfo;
-    int i;
+    int i1;
     switch (paramView.getId())
     {
     default: 
       break;
-    case 2131363287: 
-      localSurvivalPkResultInfo = this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo;
+    case 2131429161: 
+      localSurvivalPkResultInfo = this.z;
       if (localSurvivalPkResultInfo != null)
       {
         if (localSurvivalPkResultInfo.gameSur) {
-          i = 1;
+          i1 = 1;
         } else {
-          i = 2;
+          i1 = 2;
         }
-        ReportController.b(null, "dc00898", "", "", "0X800B696", "0X800B696", i, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800B696", "0X800B696", i1, 0, "", "", "", "");
       }
-      this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultPresenter.g();
+      this.a.i();
       break;
-    case 2131363280: 
-      localSurvivalPkResultInfo = this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo;
+    case 2131429154: 
+      localSurvivalPkResultInfo = this.z;
       if (localSurvivalPkResultInfo != null)
       {
         if (localSurvivalPkResultInfo.gameSur) {
-          i = 1;
+          i1 = 1;
         } else {
-          i = 2;
+          i1 = 2;
         }
-        ReportController.b(null, "dc00898", "", "", "0X800B697", "0X800B697", i, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800B697", "0X800B697", i1, 0, "", "", "", "");
       }
       b(false);
       break;
-    case 2131363276: 
-      localSurvivalPkResultInfo = this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo;
+    case 2131429150: 
+      localSurvivalPkResultInfo = this.z;
       if (localSurvivalPkResultInfo != null)
       {
         if (localSurvivalPkResultInfo.gameSur) {
-          i = 1;
+          i1 = 1;
         } else {
-          i = 2;
+          i1 = 2;
         }
-        ReportController.b(null, "dc00898", "", "", "0X800B698", "0X800B698", i, 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", "0X800B698", "0X800B698", i1, 0, "", "", "", "");
       }
       if (!a(false, 0)) {
-        d();
+        g();
       }
       break;
-    case 2131363255: 
-      ReportController.b(null, "dc00898", "", "", "0X800B035", "0X800B035", FloatWindowController.a().a(null) + 1, 0, "2", "", "", "");
-      this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultPresenter.e();
+    case 2131429129: 
+      ReportController.b(null, "dc00898", "", "", "0X800B035", "0X800B035", FloatWindowController.c().a(null) + 1, 0, "2", "", "", "");
+      this.a.g();
       break;
-    case 2131363254: 
+    case 2131429128: 
       d(1);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -609,7 +609,7 @@ public class GamePKResultFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558661, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131624278, null);
     if (QLog.isColorLevel()) {
       QLog.i("GamePKResultFragment", 2, "onCreateView");
     }
@@ -625,7 +625,7 @@ public class GamePKResultFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.jdField_a_of_type_ComTencentAvgameGameresultIGameResultPresenter.c();
+    this.a.c();
   }
   
   public void onPause()
@@ -650,10 +650,10 @@ public class GamePKResultFragment
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (i != 0)
+    int i1 = paramMotionEvent.getActionMasked();
+    if (i1 != 0)
     {
-      if ((i == 1) || (i == 3)) {
+      if ((i1 == 1) || (i1 == 3)) {
         paramView.setAlpha(1.0F);
       }
     }
@@ -666,29 +666,29 @@ public class GamePKResultFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView = ((AutoBgImageView)paramView.findViewById(2131363255));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetAutoBgImageView = ((AutoBgImageView)paramView.findViewById(2131363254));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363323));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363287));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131363280));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363256);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131363283));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363279));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363277));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363276));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363275));
-    this.d = ((TextView)paramView.findViewById(2131363274));
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363263));
-    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363261));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363260));
-    this.e = ((TextView)paramView.findViewById(2131363267));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363273));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameSplitNumberView = ((AVGameSplitNumberView)paramView.findViewById(2131363285));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363282));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363259));
-    this.jdField_c_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363288));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGamePKPosterView = ((AVGamePKPosterView)paramView.findViewById(2131363247));
-    c();
+    this.b = ((AutoBgImageView)paramView.findViewById(2131429129));
+    this.c = ((AutoBgImageView)paramView.findViewById(2131429128));
+    this.d = ((RelativeLayout)paramView.findViewById(2131429197));
+    this.e = ((Button)paramView.findViewById(2131429161));
+    this.f = ((Button)paramView.findViewById(2131429154));
+    this.x = paramView.findViewById(2131429130);
+    this.g = ((RecyclerView)paramView.findViewById(2131429157));
+    this.h = ((ImageView)paramView.findViewById(2131429153));
+    this.i = ((TextView)paramView.findViewById(2131429151));
+    this.j = ((TextView)paramView.findViewById(2131429150));
+    this.k = ((LinearLayout)paramView.findViewById(2131429149));
+    this.o = ((TextView)paramView.findViewById(2131429148));
+    this.p = ((AutoResizeAsyncImageView)paramView.findViewById(2131429137));
+    this.q = ((AutoResizeAsyncImageView)paramView.findViewById(2131429135));
+    this.s = ((ImageView)paramView.findViewById(2131429134));
+    this.t = ((TextView)paramView.findViewById(2131429141));
+    this.n = ((LinearLayout)paramView.findViewById(2131429147));
+    this.l = ((AVGameSplitNumberView)paramView.findViewById(2131429159));
+    this.m = ((TextView)paramView.findViewById(2131429156));
+    this.r = ((ImageView)paramView.findViewById(2131429133));
+    this.u = ((AutoResizeAsyncImageView)paramView.findViewById(2131429162));
+    this.w = ((AVGamePKPosterView)paramView.findViewById(2131429121));
+    f();
   }
 }
 

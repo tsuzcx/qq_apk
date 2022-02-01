@@ -21,12 +21,12 @@ class LebaSearchMoreInfoActivity$3
       if (paramInt != 18) {
         return;
       }
-      this.a.a = paramObject.getBoolean("isOpen");
-      this.a.c = paramObject.getString("name");
-      if (this.a.c != null)
+      this.a.g = paramObject.getBoolean("isOpen");
+      this.a.h = paramObject.getString("name");
+      if (this.a.h != null)
       {
         paramObject = this.a;
-        paramObject.b = paramObject.getString(2131696040, new Object[] { paramObject.c });
+        paramObject.e = paramObject.getString(2131893802, new Object[] { paramObject.h });
       }
       LebaSearchMoreInfoActivity.a(this.a);
       return;
@@ -34,19 +34,19 @@ class LebaSearchMoreInfoActivity$3
     paramBoolean = paramObject.getBoolean("result");
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramBoolean) {
-      paramObject = this.a.getString(2131696034);
+      paramObject = this.a.getString(2131893796);
     } else {
-      paramObject = this.a.getString(2131696033);
+      paramObject = this.a.getString(2131893795);
     }
     localStringBuilder.append(paramObject);
-    localStringBuilder.append(this.a.getString(2131696032));
-    localStringBuilder.append(this.a.c);
+    localStringBuilder.append(this.a.getString(2131893794));
+    localStringBuilder.append(this.a.h);
     if (paramBoolean) {
       paramInt = 2;
     } else {
       paramInt = 1;
     }
-    QQToast.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, paramInt, localStringBuilder.toString(), 1).show(this.a.getTitleBarHeight());
     paramObject = this.a;
     paramInt = i;
     if (paramBoolean) {
@@ -57,7 +57,7 @@ class LebaSearchMoreInfoActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity.3
  * JD-Core Version:    0.7.0.1
  */

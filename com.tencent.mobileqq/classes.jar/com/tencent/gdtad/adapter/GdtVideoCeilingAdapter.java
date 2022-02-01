@@ -3,8 +3,8 @@ package com.tencent.gdtad.adapter;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.videoceiling.AdVideoCeiling.Params;
 import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter.Params;
 import com.tencent.ad.tangram.views.canvas.AdCanvasData;
 import com.tencent.ad.tangram.views.canvas.AdCanvasDataBuilderV2;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -17,7 +17,7 @@ import java.lang.ref.WeakReference;
 public final class GdtVideoCeilingAdapter
   implements AdVideoCeilingAdapter
 {
-  public AdError show(AdVideoCeilingAdapter.Params paramParams)
+  public AdError show(AdVideoCeiling.Params paramParams)
   {
     if ((paramParams != null) && (paramParams.isValid()) && ((paramParams.ad instanceof GdtAd)))
     {
@@ -30,6 +30,7 @@ public final class GdtVideoCeilingAdapter
       localGdtVideoCeilingData.setAd((GdtAd)GdtAd.class.cast(paramParams.ad));
       localGdtVideoCeilingData.setWebUrl(paramParams.webUrl);
       localGdtVideoCeilingData.setVideoData((GdtVideoData)localObject);
+      localGdtVideoCeilingData.setWidthHeightRatio(paramParams.widthHeightRatio);
       int i = paramParams.style;
       if (i != 1)
       {
@@ -77,7 +78,7 @@ public final class GdtVideoCeilingAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtVideoCeilingAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -25,21 +25,11 @@ import java.util.List;
 public class FriendFreqGrayTips
   implements GrayTipsTask
 {
-  private Time jdField_a_of_type_AndroidTextFormatTime;
-  private ChatAdapter1 jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public MessageRecord a(Object... paramVarArgs)
-  {
-    paramVarArgs = MessageRecordFactory.a(-1014);
-    long l = MessageCache.a();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, "", l, -1014, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l);
-    paramVarArgs.isread = true;
-    return paramVarArgs;
-  }
+  private QQAppInterface a;
+  private SessionInfo b;
+  private TipsManager c;
+  private ChatAdapter1 d;
+  private Time e;
   
   public void a(int paramInt, Object... paramVarArgs)
   {
@@ -64,7 +54,7 @@ public class FriendFreqGrayTips
       }
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0)
+      if (this.b.a != 0)
       {
         if (QLog.isColorLevel())
         {
@@ -77,10 +67,10 @@ public class FriendFreqGrayTips
       }
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      localObject5 = QQOperateManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject5 = QQOperateManager.a(this.a);
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      if (((QQOperateManager)localObject5).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 2))
+      if (((QQOperateManager)localObject5).b(this.b.a, 2))
       {
         if (QLog.isColorLevel())
         {
@@ -93,7 +83,7 @@ public class FriendFreqGrayTips
       }
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
+      localObject4 = this.d.a();
       if (localObject4 == null)
       {
         if (QLog.isColorLevel())
@@ -190,27 +180,27 @@ public class FriendFreqGrayTips
       }
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      l1 = MessageCache.a() * 1000L;
+      l1 = MessageCache.c() * 1000L;
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      if (this.jdField_a_of_type_AndroidTextFormatTime == null)
+      if (this.e == null)
       {
         localObject3 = paramVarArgs;
         localObject2 = localObject1;
-        this.jdField_a_of_type_AndroidTextFormatTime = new Time();
+        this.e = new Time();
       }
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      this.jdField_a_of_type_AndroidTextFormatTime.set(l1);
+      this.e.set(l1);
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      paramInt = this.jdField_a_of_type_AndroidTextFormatTime.year;
+      paramInt = this.e.year;
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      i = this.jdField_a_of_type_AndroidTextFormatTime.month;
+      i = this.e.month;
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      j = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+      j = this.e.monthDay;
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
       localObject6 = new StringBuilder();
@@ -219,7 +209,7 @@ public class FriendFreqGrayTips
       ((StringBuilder)localObject6).append("voice_chat_freq_tip_msg_insert_time");
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      ((StringBuilder)localObject6).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject6).append(this.a.getCurrentAccountUin());
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
       localObject6 = ((StringBuilder)localObject6).toString();
@@ -270,7 +260,7 @@ public class FriendFreqGrayTips
       localStringBuilder.append(",curr hour is:");
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      localStringBuilder.append(this.jdField_a_of_type_AndroidTextFormatTime.hour);
+      localStringBuilder.append(this.e.hour);
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
       localStringBuilder.append(",chatFreqTipMsgInsertTime is:");
@@ -288,16 +278,16 @@ public class FriendFreqGrayTips
         {
           localObject3 = paramVarArgs;
           localObject2 = localObject1;
-          this.jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject7));
+          this.e.set(Long.parseLong((String)localObject7));
           localObject3 = paramVarArgs;
           localObject2 = localObject1;
-          k = this.jdField_a_of_type_AndroidTextFormatTime.year;
+          k = this.e.year;
           localObject3 = paramVarArgs;
           localObject2 = localObject1;
-          m = this.jdField_a_of_type_AndroidTextFormatTime.month;
+          m = this.e.month;
           localObject3 = paramVarArgs;
           localObject2 = localObject1;
-          n = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+          n = this.e.monthDay;
           if ((paramInt == k) && (i == m) && (j == n))
           {
             if (QLog.isColorLevel())
@@ -319,7 +309,7 @@ public class FriendFreqGrayTips
       ((StringBuilder)localObject7).append("voice_keyword_tip_msg_insert_time");
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      ((StringBuilder)localObject7).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject7).append(this.a.getCurrentAccountUin());
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
       localObject7 = localSharedPreferences.getString(((StringBuilder)localObject7).toString(), "");
@@ -351,16 +341,16 @@ public class FriendFreqGrayTips
           localObject7 = ((String)localObject7).split("\\|");
           localObject3 = paramVarArgs;
           localObject2 = localObject1;
-          this.jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong(localObject7[(localObject7.length - 1)]));
+          this.e.set(Long.parseLong(localObject7[(localObject7.length - 1)]));
           localObject3 = paramVarArgs;
           localObject2 = localObject1;
-          k = this.jdField_a_of_type_AndroidTextFormatTime.year;
+          k = this.e.year;
           localObject3 = paramVarArgs;
           localObject2 = localObject1;
-          m = this.jdField_a_of_type_AndroidTextFormatTime.month;
+          m = this.e.month;
           localObject3 = paramVarArgs;
           localObject2 = localObject1;
-          n = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
+          n = this.e.monthDay;
           if ((paramInt == k) && (i == m) && (j == n))
           {
             if (QLog.isColorLevel())
@@ -389,7 +379,7 @@ public class FriendFreqGrayTips
       }
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      localObject7 = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      localObject7 = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(this.b.b);
       if (localObject7 == null)
       {
         localObject3 = paramVarArgs;
@@ -400,7 +390,7 @@ public class FriendFreqGrayTips
         ((StringBuilder)localObject4).append("can not obtain friend by uin ");
         localObject3 = paramVarArgs;
         localObject2 = localObject1;
-        ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append(this.b.b);
         localObject3 = paramVarArgs;
         localObject2 = localObject1;
         paramVarArgs = ((StringBuilder)localObject4).toString();
@@ -442,16 +432,16 @@ public class FriendFreqGrayTips
       }
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 20, j, i, paramInt);
+      this.e.set(0, 0, 20, j, i, paramInt);
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      l2 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
+      l2 = this.e.toMillis(false);
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 23, j, i, paramInt);
+      this.e.set(0, 0, 23, j, i, paramInt);
       localObject3 = paramVarArgs;
       localObject2 = localObject1;
-      l3 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
+      l3 = this.e.toMillis(false);
       if ((l1 >= l2) && (l1 <= l3))
       {
         localObject3 = paramVarArgs;
@@ -511,14 +501,14 @@ public class FriendFreqGrayTips
         }
         if ((i >= 10) && (bool2) && (bool1) && (!bool3))
         {
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0])) {
+          if (!this.c.a(this, new Object[0])) {
             break label2523;
           }
-          ((QQOperateManager)localObject5).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 2);
+          ((QQOperateManager)localObject5).a(this.a, this.b.a, 2);
           localObject2 = localSharedPreferences.edit();
           ((SharedPreferences.Editor)localObject2).putString((String)localObject6, String.valueOf(l1));
           ((SharedPreferences.Editor)localObject2).commit();
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Msg_call_tips", 0, 0, "", "", "", "");
+          ReportController.b(this.a, "CliOper", "", "", "Two_call", "Msg_call_tips", 0, 0, "", "", "", "");
           paramVarArgs = "insert friend chat frequent tip msg success";
         }
         else
@@ -607,19 +597,29 @@ public class FriendFreqGrayTips
     }
   }
   
-  public int[] a()
+  public MessageRecord a_(Object... paramVarArgs)
   {
-    return new int[] { 5 };
+    paramVarArgs = MessageRecordFactory.a(-1014);
+    long l = MessageCache.c();
+    String str = this.a.getCurrentAccountUin();
+    paramVarArgs.init(str, this.b.b, str, "", l, -1014, this.b.a, l);
+    paramVarArgs.isread = true;
+    return paramVarArgs;
   }
   
   public int b()
   {
     return 1000;
   }
+  
+  public int[] c()
+  {
+    return new int[] { 5 };
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.FriendFreqGrayTips
  * JD-Core Version:    0.7.0.1
  */

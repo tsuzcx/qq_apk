@@ -14,29 +14,29 @@ public class AIOAssist
     {
       localObject = ((BaseActivity)localObject).getChatFragment();
       if (localObject != null) {
-        return ((ChatFragment)localObject).a();
+        return ((ChatFragment)localObject).k();
       }
     }
     return null;
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     BaseChatPie localBaseChatPie = a();
     if (localBaseChatPie != null) {
-      return ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
+      return ((AIOLongShotHelper)localBaseChatPie.q(15)).c();
     }
     return false;
   }
   
-  public static boolean b()
+  public static boolean c()
   {
-    return a();
+    return b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOAssist
  * JD-Core Version:    0.7.0.1
  */

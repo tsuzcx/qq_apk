@@ -12,26 +12,26 @@ public abstract class TabLayout$TabAdapter<T>
   extends BaseAdapter
 {
   protected Context a;
-  protected TabLayout a;
-  protected List<T> a;
+  protected List<T> b;
+  protected TabLayout c;
   
   public TabLayout$TabAdapter(Context paramContext, List<T> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramContext;
+    this.b = paramList;
   }
   
   private View a(int paramInt, ViewGroup paramViewGroup)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a(paramInt);
+    Object localObject2 = this.c.a(paramInt);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), paramViewGroup, false);
-      if (b())
+      localObject1 = LayoutInflater.from(this.a).inflate(a(), paramViewGroup, false);
+      if (c())
       {
         paramViewGroup = ((View)localObject1).getLayoutParams();
-        paramViewGroup.width = b();
+        paramViewGroup.width = e();
         ((View)localObject1).setLayoutParams(paramViewGroup);
       }
       ((View)localObject1).post(new TabLayout.TabAdapter.1(this, paramInt, (View)localObject1));
@@ -39,7 +39,7 @@ public abstract class TabLayout$TabAdapter<T>
     paramViewGroup = null;
     localObject2 = new TabLayout.TabAdapter.TabViewHolder((View)localObject1, null);
     ((View)localObject1).setTranslationX(0.0F);
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       paramViewGroup = localList.get(paramInt);
     }
@@ -49,49 +49,49 @@ public abstract class TabLayout$TabAdapter<T>
   
   private View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560233, paramViewGroup, false);
+    return LayoutInflater.from(this.a).inflate(2131626280, paramViewGroup, false);
   }
   
-  private int b()
+  private int e()
   {
-    return (this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getMeasuredWidth() - this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getPaddingLeft() - this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getPaddingRight()) / this.jdField_a_of_type_JavaUtilList.size();
+    return (this.c.getMeasuredWidth() - this.c.getPaddingLeft() - this.c.getPaddingRight()) / this.b.size();
   }
   
   protected abstract int a();
-  
-  protected void a() {}
   
   protected abstract void a(TabLayout.TabAdapter.TabViewHolder paramTabViewHolder, T paramT, int paramInt);
   
   public void a(TabLayout paramTabLayout)
   {
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = paramTabLayout;
-  }
-  
-  protected boolean a()
-  {
-    return true;
+    this.c = paramTabLayout;
   }
   
   protected boolean b()
   {
+    return true;
+  }
+  
+  protected boolean c()
+  {
     return false;
   }
   
+  protected void d() {}
+  
   public int getCount()
   {
-    boolean bool = a();
+    boolean bool = b();
     int j = 0;
     int i = 0;
     if (bool)
     {
-      localList = this.jdField_a_of_type_JavaUtilList;
+      localList = this.b;
       if (localList != null) {
         i = localList.size() + 1;
       }
       return i;
     }
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     i = j;
     if (localList != null) {
       i = localList.size();
@@ -101,9 +101,9 @@ public abstract class TabLayout$TabAdapter<T>
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (paramInt < localList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.b.get(paramInt);
     }
     return null;
   }
@@ -116,7 +116,7 @@ public abstract class TabLayout$TabAdapter<T>
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
-    if (a())
+    if (b())
     {
       if (paramInt < getCount() - 1) {
         localView = a(paramInt, paramViewGroup);
@@ -133,7 +133,7 @@ public abstract class TabLayout$TabAdapter<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout.TabAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class StickerBubbleListView$2
   
   public void run()
   {
-    ChatActivityFacade.a(StickerBubbleListView.a(this.this$0).a(), StickerBubbleListView.a(this.this$0).a(), StickerBubbleListView.a(this.this$0).a, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
+    ChatActivityFacade.a(StickerBubbleListView.a(this.this$0).i(), StickerBubbleListView.a(this.this$0).aX(), StickerBubbleListView.a(this.this$0).ah, this.a.a, this.b, "test");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView.2
  * JD-Core Version:    0.7.0.1
  */

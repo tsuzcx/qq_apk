@@ -11,33 +11,38 @@ import mqq.manager.AccountManager;
 
 public class OpenIdHelper
 {
-  private static OpenIdHelper jdField_a_of_type_ComTencentMobileqqAddfriendHelperOpenIdHelper;
-  MessageCache jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private static OpenIdHelper c;
+  MessageCache a;
+  AppRuntime b;
   
   private OpenIdHelper(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache = new MessageCache(paramAppRuntime);
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.a = new MessageCache(paramAppRuntime);
+    this.b = paramAppRuntime;
   }
   
   public static OpenIdHelper a(AppRuntime paramAppRuntime)
   {
-    if (jdField_a_of_type_ComTencentMobileqqAddfriendHelperOpenIdHelper == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqAddfriendHelperOpenIdHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqAddfriendHelperOpenIdHelper = new OpenIdHelper(paramAppRuntime);
+        if (c == null) {
+          c = new OpenIdHelper(paramAppRuntime);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqAddfriendHelperOpenIdHelper;
+    return c;
   }
   
   public OpenID a(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache.a(paramString);
+    return this.a.T(paramString);
+  }
+  
+  public void a(String paramString, OpenID paramOpenID)
+  {
+    this.a.a(paramString, paramOpenID);
   }
   
   public void a(String paramString, OnOpenIdGetListener paramOnOpenIdGetListener)
@@ -52,7 +57,7 @@ public class OpenIdHelper
       ((StringBuilder)localObject).append(paramString);
       QLog.d("openid", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (AccountManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(0);
+    Object localObject = (AccountManager)this.b.getManager(0);
     HashMap localHashMap = new HashMap();
     RequestCustomSig localRequestCustomSig = new RequestCustomSig();
     localRequestCustomSig.ulCustumFlag = 8192L;
@@ -65,7 +70,7 @@ public class OpenIdHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.helper.OpenIdHelper
  * JD-Core Version:    0.7.0.1
  */

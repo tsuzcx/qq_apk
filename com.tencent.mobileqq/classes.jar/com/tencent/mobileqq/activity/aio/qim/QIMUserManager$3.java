@@ -14,15 +14,15 @@ final class QIMUserManager$3
   {
     try
     {
-      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850177);
-      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850178);
-      Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850227);
+      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130851968);
+      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130851969);
+      Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130852018);
       StateListDrawable localStateListDrawable = new StateListDrawable();
-      Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850323);
+      Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130852114);
       localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
-      localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850326);
+      localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130852117);
       localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
-      localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850327);
+      localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130852118);
       localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
       ThreadManager.getUIHandler().post(new QIMUserManager.3.1(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
       return;
@@ -35,7 +35,7 @@ final class QIMUserManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager.3
  * JD-Core Version:    0.7.0.1
  */

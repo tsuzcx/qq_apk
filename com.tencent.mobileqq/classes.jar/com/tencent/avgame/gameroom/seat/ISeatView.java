@@ -7,11 +7,7 @@ import java.util.List;
 
 public abstract interface ISeatView
 {
-  public abstract RectF a();
-  
   public abstract RectF a(long paramLong);
-  
-  public abstract List<MemberVideoDisplayInfo> a();
   
   public abstract void a(long paramLong, boolean paramBoolean);
   
@@ -22,6 +18,10 @@ public abstract interface ISeatView
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
   public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract RectF getAddMemberViewRectInRootView();
+  
+  public abstract List<MemberVideoDisplayInfo> getMemberHeadViewDisplayInfoList();
 }
 
 

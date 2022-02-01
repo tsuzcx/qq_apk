@@ -16,14 +16,14 @@ class PhotoListCustomizationAIO$4
     if (QLog.isColorLevel()) {
       QLog.i("QQAlbum", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    if (this.a.a.a != null) {
-      this.a.a.a.setClickable(true);
+    if (this.a.h.o != null) {
+      this.a.h.o.setClickable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationAIO.4
  * JD-Core Version:    0.7.0.1
  */

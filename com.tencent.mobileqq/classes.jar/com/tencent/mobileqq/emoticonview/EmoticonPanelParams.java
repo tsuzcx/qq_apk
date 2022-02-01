@@ -26,11 +26,13 @@ public class EmoticonPanelParams
   public boolean hideSettingBtn = false;
   public IPanelInteractionListener interactionListener;
   public boolean isFilterSysFaceBeyond255 = false;
+  public boolean isInGuildLiveChannel = false;
   public boolean kanDianBiu = false;
   public EmoticonPanelController mController;
   public boolean mIsOnlySysEmotion = false;
   public boolean onlySysAndEmoji = false;
   public int sessionType = 0;
+  public boolean showDescInPreview = false;
   public int[] sysEmotionOrder;
   public int toastOffset;
   
@@ -89,7 +91,7 @@ public class EmoticonPanelParams
   
   public IEmoticonMainPanel create()
   {
-    EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)View.inflate(this.context, 2131559085, null);
+    EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)View.inflate(this.context, 2131624746, null);
     this.mController = localEmoticonMainPanel.getEmoController();
     show();
     return localEmoticonMainPanel;
@@ -107,7 +109,7 @@ public class EmoticonPanelParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelParams
  * JD-Core Version:    0.7.0.1
  */

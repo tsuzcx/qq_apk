@@ -17,28 +17,28 @@ class CountryActivity$CountryAdapter
   
   public int a()
   {
-    return 2131559545;
+    return 2131625567;
   }
   
   public void a(View paramView, int paramInt)
   {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((PhoneCodeUtils.CountryCode)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((PhoneCodeUtils.CountryCode)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
+    paramInt = ((Integer)this.a.c.get(((PhoneCodeUtils.CountryCode)this.a.b.get(paramInt)).a)).intValue();
+    ((TextView)paramView).setText(((PhoneCodeUtils.CountryCode)this.a.b.get(paramInt)).a);
   }
   
   public boolean a(int paramInt)
   {
-    return ((PhoneCodeUtils.CountryCode)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
+    return ((PhoneCodeUtils.CountryCode)this.a.b.get(paramInt)).b;
   }
   
   public int getCount()
   {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -48,12 +48,12 @@ class CountryActivity$CountryAdapter
   
   public int getItemViewType(int paramInt)
   {
-    return ((PhoneCodeUtils.CountryCode)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean ^ true;
+    return ((PhoneCodeUtils.CountryCode)this.a.b.get(paramInt)).b ^ true;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    PhoneCodeUtils.CountryCode localCountryCode = (PhoneCodeUtils.CountryCode)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    PhoneCodeUtils.CountryCode localCountryCode = (PhoneCodeUtils.CountryCode)this.a.b.get(paramInt);
     View localView;
     if (getItemViewType(paramInt) == 0)
     {
@@ -61,7 +61,7 @@ class CountryActivity$CountryAdapter
       if (paramView == null) {
         localView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
       }
-      ((TextView)localView).setText(localCountryCode.jdField_a_of_type_JavaLangString);
+      ((TextView)localView).setText(localCountryCode.a);
     }
     else
     {
@@ -85,7 +85,7 @@ class CountryActivity$CountryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.CountryActivity.CountryAdapter
  * JD-Core Version:    0.7.0.1
  */

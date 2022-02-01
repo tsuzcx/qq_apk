@@ -53,12 +53,11 @@ import tencent.im.msg.im_msg_body.Trans211TmpMsg;
 public class OfflineFileMessageProcessor
   extends BaseMessageProcessor
 {
-  ArrayList<String> a;
+  ArrayList<String> t = new ArrayList(20);
   
   public OfflineFileMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
     super(paramQQAppInterface, paramMessageHandler);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(20);
   }
   
   private void a(FileManagerEntity paramFileManagerEntity, msg_svc.RoutingHead paramRoutingHead)
@@ -84,14 +83,14 @@ public class OfflineFileMessageProcessor
         localStringBuilder.append(paramInt1);
         QLog.e("Q.msg.BaseMessageProcessor", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramLong);
+      this.r.c(paramLong);
       if (133 == paramInt1)
       {
-        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().a(paramString, paramToServiceMsg.extraData.getLong("sessionid"), false);
+        ((QQAppInterface)this.q).getFileTransferHandler().a(paramString, paramToServiceMsg.extraData.getLong("sessionid"), false);
         return;
       }
       if (135 == paramInt1) {
-        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(paramString, paramToServiceMsg.extraData.getLong("sessionid"), false);
+        ((QQAppInterface)this.q).getFileTransferHandler().b(paramString, paramToServiceMsg.extraData.getLong("sessionid"), false);
       }
     }
     else
@@ -99,13 +98,13 @@ public class OfflineFileMessageProcessor
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageResp : send successfully.");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramLong);
+      this.r.c(paramLong);
       if (133 == paramInt1) {
-        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().a(paramString, paramToServiceMsg.extraData.getLong("sessionid"), true);
+        ((QQAppInterface)this.q).getFileTransferHandler().a(paramString, paramToServiceMsg.extraData.getLong("sessionid"), true);
       }
       if (135 == paramInt1)
       {
-        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(paramString, paramToServiceMsg.extraData.getLong("sessionid"), true);
+        ((QQAppInterface)this.q).getFileTransferHandler().b(paramString, paramToServiceMsg.extraData.getLong("sessionid"), true);
         return;
       }
       if (QLog.isColorLevel())
@@ -134,9 +133,9 @@ public class OfflineFileMessageProcessor
       }
       if (((paramLong4 == 100L) || (paramLong4 == 127L)) && (paramPbSendMsgResp != null) && (paramPbSendMsgResp.errmsg.has()))
       {
-        AddMessageHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString1, paramPbSendMsgResp.errmsg.get(), 1001, false, false);
+        AddMessageHelper.a(this.q, paramString1, paramPbSendMsgResp.errmsg.get(), 1001, false, false);
         paramFromServiceMsg.setMsgFail();
-        paramPbSendMsgResp = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+        paramPbSendMsgResp = this.q;
         if (paramLong4 == 100L) {
           paramString2 = "0";
         } else {
@@ -147,18 +146,18 @@ public class OfflineFileMessageProcessor
         localStringBuilder.append(paramInt3);
         ReportController.b(paramPbSendMsgResp, "dc00899", "grp_lbs", "", "c2c_tmp", "no_send", 0, 0, paramString2, localStringBuilder.toString(), "", "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramLong3);
+      this.r.c(paramLong3);
       a(paramToServiceMsg, paramFromServiceMsg, paramString1, paramInt1, paramInt2);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.BaseMessageProcessor", 2, "<---handleSendTransMessageExResp : send successfully.");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramLong2);
+    this.r.c(paramLong2);
     if ((paramPbSendMsgResp.send_time.has()) && (paramLong1 != 0L))
     {
       paramLong2 = paramPbSendMsgResp.send_time.get() & 0xFFFFFFFF;
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramString1, 0, paramLong1, paramLong2);
+      this.r.a(paramString1, 0, paramLong1, paramLong2);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -183,20 +182,20 @@ public class OfflineFileMessageProcessor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReceive, MessageConstants.CMD_TRANSSERVICE_REQOFFFILEPACK: ");
-      localStringBuilder.append(paramOffLineFileInfo.b);
+      localStringBuilder.append(paramOffLineFileInfo.k);
       QLog.d("wk", 2, localStringBuilder.toString());
     }
-    if (paramOffLineFileInfo.b == 6)
+    if (paramOffLineFileInfo.k == 6)
     {
       d(paramToServiceMsg, paramFromServiceMsg, paramOffLineFileInfo);
       return;
     }
-    if (paramOffLineFileInfo.b == 2)
+    if (paramOffLineFileInfo.k == 2)
     {
       c(paramToServiceMsg, paramFromServiceMsg, paramOffLineFileInfo);
       return;
     }
-    if (paramOffLineFileInfo.b == 1) {
+    if (paramOffLineFileInfo.k == 1) {
       b(paramToServiceMsg, paramFromServiceMsg, paramOffLineFileInfo);
     }
   }
@@ -235,7 +234,7 @@ public class OfflineFileMessageProcessor
                   QLog.d("Q.msg.BaseMessageProcessor", 2, "QLINK_<---handleSendTransMessageExResp : qlink send file fail");
                 }
                 long l = paramToServiceMsg.extraData.getLong("sessionid");
-                ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getQlinkServiceMgr().b(l);
+                ((QQAppInterface)this.q).getQlinkServiceMgr().b(l);
               }
             }
             else if (QLog.isColorLevel()) {
@@ -244,18 +243,18 @@ public class OfflineFileMessageProcessor
           }
           else
           {
-            ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
+            ((QQAppInterface)this.q).getFileTransferHandler().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
             if (QLog.isColorLevel()) {
               QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send offline file  fail");
             }
           }
         }
         else {
-          ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(paramToServiceMsg, paramFromServiceMsg);
+          ((QQAppInterface)this.q).getFileTransferHandler().b(paramToServiceMsg, paramFromServiceMsg);
         }
       }
       else {
-        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(paramString, paramToServiceMsg.extraData.getLong("sessionid"), false);
+        ((QQAppInterface)this.q).getFileTransferHandler().b(paramString, paramToServiceMsg.extraData.getLong("sessionid"), false);
       }
     }
     else if (QLog.isColorLevel())
@@ -301,7 +300,7 @@ public class OfflineFileMessageProcessor
                   QLog.d("Q.msg.BaseMessageProcessor", 2, "QLINK_<---handleSendTransMessageExResp : qlink send file suc");
                 }
                 long l = paramToServiceMsg.extraData.getLong("sessionid");
-                ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getQlinkServiceMgr().a(l);
+                ((QQAppInterface)this.q).getQlinkServiceMgr().a(l);
               }
             }
             else if (QLog.isColorLevel()) {
@@ -317,18 +316,18 @@ public class OfflineFileMessageProcessor
               paramString1.append(String.valueOf(paramPbSendMsgResp.send_time.get()));
               a(paramString1.toString());
             }
-            ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
+            ((QQAppInterface)this.q).getFileTransferHandler().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
             if (QLog.isColorLevel()) {
               QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send offline file  suc");
             }
           }
         }
         else {
-          ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(paramToServiceMsg, paramFromServiceMsg);
+          ((QQAppInterface)this.q).getFileTransferHandler().b(paramToServiceMsg, paramFromServiceMsg);
         }
       }
       else {
-        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(paramString1, paramToServiceMsg.extraData.getLong("sessionid"), true);
+        ((QQAppInterface)this.q).getFileTransferHandler().b(paramString1, paramToServiceMsg.extraData.getLong("sessionid"), true);
       }
     }
     else if (QLog.isColorLevel())
@@ -368,7 +367,7 @@ public class OfflineFileMessageProcessor
       }
       i += 1;
     }
-    ((generalflags.ResvAttr)localObject).uint32_device_type.set(QFileAssistantUtils.a());
+    ((generalflags.ResvAttr)localObject).uint32_device_type.set(QFileAssistantUtils.c());
     im_msg_body.GeneralFlags localGeneralFlags = new im_msg_body.GeneralFlags();
     localGeneralFlags.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((generalflags.ResvAttr)localObject).toByteArray()));
     localObject = new im_msg_body.Elem();
@@ -480,7 +479,7 @@ public class OfflineFileMessageProcessor
       else {
         e((FileManagerEntity)localObject, paramFMTransC2CMsgInfo);
       }
-      if ((paramTransMsgContext != null) && (paramTransMsgContext.jdField_a_of_type_ArrayOfByte != null))
+      if ((paramTransMsgContext != null) && (paramTransMsgContext.b != null))
       {
         if (QLog.isColorLevel())
         {
@@ -494,7 +493,7 @@ public class OfflineFileMessageProcessor
         paramPbSendMsgReq.msg_body.msg_content.setHasFlag(false);
         paramPbSendMsgReq.msg_body.rich_text.setHasFlag(true);
         paramPbSendMsgReq.msg_body.rich_text.trans_211_tmp_msg.setHasFlag(true);
-        paramPbSendMsgReq.msg_body.rich_text.trans_211_tmp_msg.bytes_msg_body.set(ByteStringMicro.copyFrom(paramTransMsgContext.jdField_a_of_type_ArrayOfByte));
+        paramPbSendMsgReq.msg_body.rich_text.trans_211_tmp_msg.bytes_msg_body.set(ByteStringMicro.copyFrom(paramTransMsgContext.b));
         paramPbSendMsgReq.msg_body.rich_text.trans_211_tmp_msg.uint32_c2c_cmd.set(4);
         return;
       }
@@ -525,7 +524,7 @@ public class OfflineFileMessageProcessor
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, MessageFactoryReceiver.OffLineFileInfo paramOffLineFileInfo)
   {
-    if ((paramOffLineFileInfo != null) && (paramOffLineFileInfo.jdField_a_of_type_Long == 0L))
+    if ((paramOffLineFileInfo != null) && (paramOffLineFileInfo.b == 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("wk", 2, "handleSendOfflineFileResp-->notify NOTIFY_TYPE_SEND_OFFLINE_FILE");
@@ -534,13 +533,13 @@ public class OfflineFileMessageProcessor
       StatictisInfo localStatictisInfo = new StatictisInfo();
       localStatictisInfo.b = paramFromServiceMsg.getResultCode();
       localStatictisInfo.c = i;
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, 5004, true, new Object[] { paramOffLineFileInfo, localStatictisInfo });
+      this.r.a(paramToServiceMsg, 5004, true, new Object[] { paramOffLineFileInfo, localStatictisInfo });
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("wk", 2, "handleSendOfflineFileResp-->handleError");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
+    this.r.c(paramToServiceMsg, paramFromServiceMsg);
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -596,8 +595,8 @@ public class OfflineFileMessageProcessor
       QLog.d("Q.msg.BaseMessageProcessor", 2, paramObject.toString());
     }
     paramFromServiceMsg.extraData.putLong("ServerReplyCode", i);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-    paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l);
+    this.r.b(paramToServiceMsg, paramFromServiceMsg);
+    paramFromServiceMsg = this.r.b(l);
     if (paramFromServiceMsg == null)
     {
       if (QLog.isColorLevel())
@@ -616,7 +615,7 @@ public class OfflineFileMessageProcessor
     } else {
       j = 0;
     }
-    if ((j != 0) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramFromServiceMsg, "server"))) {
+    if ((j != 0) && (this.r.a(paramFromServiceMsg, "server"))) {
       return;
     }
     a(paramToServiceMsg, l, str2, k, i);
@@ -649,14 +648,14 @@ public class OfflineFileMessageProcessor
             }
             else
             {
-              ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
+              ((QQAppInterface)this.q).getFileTransferHandler().a(paramToServiceMsg, paramFromServiceMsg, paramToServiceMsg.extraData.getLong("sessionid"));
               if (QLog.isColorLevel()) {
                 QLog.d("Q.msg.BaseMessageProcessor", 2, "<FileAssistant><---handleSendTransMessageExResp : send offline file  fail");
               }
             }
           }
           else {
-            ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(paramToServiceMsg, paramFromServiceMsg);
+            ((QQAppInterface)this.q).getFileTransferHandler().b(paramToServiceMsg, paramFromServiceMsg);
           }
         }
         else if (QLog.isColorLevel()) {
@@ -664,7 +663,7 @@ public class OfflineFileMessageProcessor
         }
       }
       else {
-        ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(paramString, paramToServiceMsg.extraData.getLong("sessionid"), false);
+        ((QQAppInterface)this.q).getFileTransferHandler().b(paramString, paramToServiceMsg.extraData.getLong("sessionid"), false);
       }
     }
   }
@@ -681,7 +680,7 @@ public class OfflineFileMessageProcessor
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, MessageFactoryReceiver.OffLineFileInfo paramOffLineFileInfo)
   {
-    if ((paramOffLineFileInfo != null) && (paramOffLineFileInfo.jdField_a_of_type_Long == 0L))
+    if ((paramOffLineFileInfo != null) && (paramOffLineFileInfo.b == 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("wk", 2, "handleSetOfflineFileState-->notify NOTIFY_TYPE_SEND_OFFLINE_FILE");
@@ -690,13 +689,13 @@ public class OfflineFileMessageProcessor
       StatictisInfo localStatictisInfo = new StatictisInfo();
       localStatictisInfo.b = paramFromServiceMsg.getResultCode();
       localStatictisInfo.c = i;
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, 5005, true, new Object[] { paramOffLineFileInfo, localStatictisInfo });
+      this.r.a(paramToServiceMsg, 5005, true, new Object[] { paramOffLineFileInfo, localStatictisInfo });
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("wk", 2, "handleSetOfflineFileState-->handleError");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
+    this.r.c(paramToServiceMsg, paramFromServiceMsg);
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -759,8 +758,8 @@ public class OfflineFileMessageProcessor
       QLog.d("Q.msg.BaseMessageProcessor", 2, ((StringBuilder)localObject).toString());
     }
     paramFromServiceMsg.extraData.putLong("ServerReplyCode", i);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l2);
+    this.r.b(paramToServiceMsg, paramFromServiceMsg);
+    localObject = this.r.b(l2);
     if (localObject == null)
     {
       if (QLog.isColorLevel())
@@ -779,7 +778,7 @@ public class OfflineFileMessageProcessor
     } else {
       j = 0;
     }
-    if ((j != 0) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((SendMessageHandler)localObject, "server"))) {
+    if ((j != 0) && (this.r.a((SendMessageHandler)localObject, "server"))) {
       return;
     }
     a(paramToServiceMsg, paramFromServiceMsg, l1, l2, l3, str2, str3, k, m, l4, i, paramObject);
@@ -801,14 +800,14 @@ public class OfflineFileMessageProcessor
   {
     if (paramOffLineFileInfo == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(paramToServiceMsg, paramFromServiceMsg);
+      this.r.c(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
     StatictisInfo localStatictisInfo = new StatictisInfo();
     localStatictisInfo.b = paramFromServiceMsg.getResultCode();
     localStatictisInfo.c = i;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, 5003, true, new Object[] { paramOffLineFileInfo.jdField_a_of_type_ArrayOfByte, localStatictisInfo });
+    this.r.a(paramToServiceMsg, 5003, true, new Object[] { paramOffLineFileInfo.m, localStatictisInfo });
   }
   
   private void e(FileManagerEntity paramFileManagerEntity, msg_svc.RoutingHead paramRoutingHead)
@@ -926,7 +925,7 @@ public class OfflineFileMessageProcessor
     if (i < 2)
     {
       paramToServiceMsg.extraData.putInt("retryIndex", i + 1);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.send(paramToServiceMsg);
+      this.r.send(paramToServiceMsg);
       return;
     }
     Object localObject = new StatictisInfo();
@@ -935,39 +934,39 @@ public class OfflineFileMessageProcessor
     if (paramFromServiceMsg.getResultCode() == 1000)
     {
       ((StatictisInfo)localObject).b = 2900;
-      ((StatictisInfo)localObject).jdField_a_of_type_Long = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 2139062142L);
+      ((StatictisInfo)localObject).d = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 2139062142L);
     }
-    BaseMessageHandler localBaseMessageHandler = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler;
-    ((StatictisInfo)localObject).jdField_a_of_type_JavaLangString = BaseMessageHandler.a(paramFromServiceMsg);
+    BaseMessageHandler localBaseMessageHandler = this.r;
+    ((StatictisInfo)localObject).e = BaseMessageHandler.a(paramFromServiceMsg);
     paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
     if (paramToServiceMsg.extraData.getInt("offfile_type") == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, 3006, false, paramFromServiceMsg);
+      this.r.a(paramToServiceMsg, 3006, false, paramFromServiceMsg);
       return;
     }
     if (paramToServiceMsg.extraData.getInt("offfile_type") == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, 5003, false, new Object[] { paramFromServiceMsg, localObject });
+      this.r.a(paramToServiceMsg, 5003, false, new Object[] { paramFromServiceMsg, localObject });
       return;
     }
     if (paramToServiceMsg.extraData.getInt("offfile_type") == 2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, 5005, false, new Object[] { paramFromServiceMsg, localObject });
+      this.r.a(paramToServiceMsg, 5005, false, new Object[] { paramFromServiceMsg, localObject });
       return;
     }
     if (paramToServiceMsg.extraData.getInt("offfile_type") == 3) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, 5004, false, new Object[] { paramFromServiceMsg, localObject });
+      this.r.a(paramToServiceMsg, 5004, false, new Object[] { paramFromServiceMsg, localObject });
     }
   }
   
   public boolean a(String paramString)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))
+    if (!this.t.contains(paramString))
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 20) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+      if (this.t.size() >= 20) {
+        this.t.remove(0);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      this.t.add(paramString);
       return false;
     }
     return true;
@@ -1020,8 +1019,8 @@ public class OfflineFileMessageProcessor
       localStringBuilder.append(i);
       QLog.d("Q.msg.BaseMessageProcessor", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l1);
+    this.r.b(paramToServiceMsg, paramFromServiceMsg);
+    localObject = this.r.b(l1);
     if (localObject != null)
     {
       if (paramFromServiceMsg.getResultCode() == 2901)
@@ -1029,20 +1028,20 @@ public class OfflineFileMessageProcessor
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageError, msf said:RESNDMSG");
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((SendMessageHandler)localObject, "msf")) {
+        if (this.r.a((SendMessageHandler)localObject, "msf")) {
           return;
         }
       }
-      if ((480000L == l2) || (((SendMessageHandler)localObject).a()))
+      if ((480000L == l2) || (((SendMessageHandler)localObject).b()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l1);
+        this.r.c(l1);
         if (133 == i)
         {
-          ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().a(str, paramToServiceMsg.extraData.getLong("sessionid"), false);
+          ((QQAppInterface)this.q).getFileTransferHandler().a(str, paramToServiceMsg.extraData.getLong("sessionid"), false);
           return;
         }
         if (135 == i) {
-          ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getFileTransferHandler().b(str, paramToServiceMsg.extraData.getLong("sessionid"), false);
+          ((QQAppInterface)this.q).getFileTransferHandler().b(str, paramToServiceMsg.extraData.getLong("sessionid"), false);
         }
       }
     }
@@ -1073,8 +1072,8 @@ public class OfflineFileMessageProcessor
       localStringBuilder.append(i);
       QLog.d("Q.msg.BaseMessageProcessor", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(paramToServiceMsg, paramFromServiceMsg);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l2);
+    this.r.b(paramToServiceMsg, paramFromServiceMsg);
+    localObject = this.r.b(l2);
     if (localObject != null)
     {
       if (paramFromServiceMsg.getResultCode() == 2901)
@@ -1082,13 +1081,13 @@ public class OfflineFileMessageProcessor
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg.BaseMessageProcessor", 2, "<PbSendMsg><R><---handleSendTransMessageExError, msf said:RESNDMSG");
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a((SendMessageHandler)localObject, "msf")) {
+        if (this.r.a((SendMessageHandler)localObject, "msf")) {
           return;
         }
       }
-      if ((480000L == l4) || (((SendMessageHandler)localObject).a()))
+      if ((480000L == l4) || (((SendMessageHandler)localObject).b()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l2);
+        this.r.c(l2);
         b(paramToServiceMsg, paramFromServiceMsg, str, i, j);
       }
     }
@@ -1096,7 +1095,7 @@ public class OfflineFileMessageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.OfflineFileMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

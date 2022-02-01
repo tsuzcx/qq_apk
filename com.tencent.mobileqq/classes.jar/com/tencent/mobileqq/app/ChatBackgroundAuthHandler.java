@@ -54,7 +54,7 @@ public class ChatBackgroundAuthHandler
       }
       paramBg_CheckAuth_Rsp.put(Integer.valueOf(j), Integer.valueOf(i));
     }
-    localObject1 = ((ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).e();
+    localObject1 = ((ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).i();
     Object localObject2 = this.a.getApplication().getApplicationContext();
     Object localObject3 = this.a.getCurrentAccountUin();
     Object localObject4 = new StringBuilder();
@@ -167,7 +167,7 @@ public class ChatBackgroundAuthHandler
   
   public void a(Map<Integer, Integer> paramMap)
   {
-    HashMap localHashMap = ((ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).d();
+    HashMap localHashMap = ((ChatBackgroundManager)this.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER)).h();
     SharedPreferences.Editor localEditor = ChatBackgroundUtil.a(this.a.getApplication().getApplicationContext(), this.a.getCurrentAccountUin(), 0).edit();
     if (localHashMap != null)
     {
@@ -223,7 +223,7 @@ public class ChatBackgroundAuthHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ChatBackgroundAuthHandler
  * JD-Core Version:    0.7.0.1
  */

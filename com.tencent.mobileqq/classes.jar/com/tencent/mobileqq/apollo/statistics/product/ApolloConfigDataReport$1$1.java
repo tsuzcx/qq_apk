@@ -14,13 +14,13 @@ class ApolloConfigDataReport$1$1
       QLog.d("[cmshow]ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
     }
     if ((paramInt1 == 0) && (paramInt2 == 200)) {
-      ApolloConfigDataReport.b();
+      ApolloConfigDataReport.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.ApolloConfigDataReport.1.1
  * JD-Core Version:    0.7.0.1
  */

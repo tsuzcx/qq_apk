@@ -9,23 +9,24 @@ import eipc.EIPCResult;
 public class HardCoderManager$HardCoderIPCModule
   extends QIPCModule
 {
-  private static HardCoderIPCModule a;
+  public static final String NAME = "HardCoderModule";
+  private static HardCoderIPCModule sInstance;
   
   public HardCoderManager$HardCoderIPCModule(String paramString)
   {
     super(paramString);
   }
   
-  public static HardCoderIPCModule a()
+  public static HardCoderIPCModule getInstance()
   {
-    if (a == null) {
+    if (sInstance == null) {
       try
       {
-        a = new HardCoderIPCModule("HardCoderModule");
+        sInstance = new HardCoderIPCModule("HardCoderModule");
       }
       finally {}
     }
-    return a;
+    return sInstance;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -47,19 +48,19 @@ public class HardCoderManager$HardCoderIPCModule
       int n = paramBundle.getInt("key_scene");
       long l = paramBundle.getLong("key_action");
       paramString = paramBundle.getString("key_tag");
-      return EIPCResult.createResult(HCPerfManager.a().a(paramInt, i, j, k, m, n, l, Process.myTid(), paramString), null);
+      return EIPCResult.createResult(HCPerfManager.getInstance().start(paramInt, i, j, k, m, n, l, Process.myTid(), paramString), null);
     }
     if (paramString.equals("stop"))
     {
       paramInt = paramBundle.getInt("key_code");
-      HCPerfManager.a().a(paramInt);
+      HCPerfManager.getInstance().stop(paramInt);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderManager.HardCoderIPCModule
  * JD-Core Version:    0.7.0.1
  */

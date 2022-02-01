@@ -5,29 +5,20 @@ import java.util.LinkedList;
 
 public class FastWebActivityStackUtil
 {
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private LinkedList<FastWebActivityStackUtil.SaveState> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private LinkedList<FastWebActivityStackUtil.SaveState> a = new LinkedList();
+  private BaseActivity b;
   
   public FastWebActivityStackUtil(BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-  }
-  
-  public int a()
-  {
-    LinkedList localLinkedList = this.jdField_a_of_type_JavaUtilLinkedList;
-    if (localLinkedList == null) {
-      return 0;
-    }
-    return localLinkedList.size();
+    this.b = paramBaseActivity;
   }
   
   public FastWebActivityStackUtil.SaveState a()
   {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
+    if (this.a.isEmpty()) {
       return null;
     }
-    return (FastWebActivityStackUtil.SaveState)this.jdField_a_of_type_JavaUtilLinkedList.pop();
+    return (FastWebActivityStackUtil.SaveState)this.a.pop();
   }
   
   public void a(FastWebActivityStackUtil.PopPageListener paramPopPageListener)
@@ -35,7 +26,7 @@ public class FastWebActivityStackUtil
     if (paramPopPageListener == null) {
       return;
     }
-    while (!a())
+    while (!b())
     {
       FastWebActivityStackUtil.SaveState localSaveState = a();
       if (localSaveState != null) {
@@ -46,17 +37,26 @@ public class FastWebActivityStackUtil
   
   public void a(FastWebActivityStackUtil.SaveState paramSaveState)
   {
-    this.jdField_a_of_type_JavaUtilLinkedList.push(paramSaveState);
+    this.a.push(paramSaveState);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_JavaUtilLinkedList.isEmpty();
+    return this.a.isEmpty();
+  }
+  
+  public int c()
+  {
+    LinkedList localLinkedList = this.a;
+    if (localLinkedList == null) {
+      return 0;
+    }
+    return localLinkedList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebActivityStackUtil
  * JD-Core Version:    0.7.0.1
  */

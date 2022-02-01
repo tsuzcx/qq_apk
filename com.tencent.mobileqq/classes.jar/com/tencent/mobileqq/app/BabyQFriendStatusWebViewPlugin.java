@@ -35,11 +35,11 @@ import org.json.JSONObject;
 public class BabyQFriendStatusWebViewPlugin
   extends WebViewPlugin
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new BabyQFriendStatusWebViewPlugin.1(this);
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new BabyQFriendStatusWebViewPlugin.2(this);
-  private String jdField_a_of_type_JavaLangString = null;
+  private AppInterface a;
+  private Activity b;
+  private String c = null;
+  private final BroadcastReceiver d = new BabyQFriendStatusWebViewPlugin.1(this);
+  private EIPCResultCallback e = new BabyQFriendStatusWebViewPlugin.2(this);
   
   public BabyQFriendStatusWebViewPlugin()
   {
@@ -75,7 +75,7 @@ public class BabyQFriendStatusWebViewPlugin
       localProfileCardInfo.allInOne = paramBundle;
       localProfileCardInfo.card = new Card();
       localProfileCardInfo.card.uin = AppConstants.BABY_Q_UIN;
-      a(this.mRuntime.a(), localProfileCardInfo, AppConstants.BABY_Q_UIN, 0, paramBundle.nickname);
+      a(this.mRuntime.d(), localProfileCardInfo, AppConstants.BABY_Q_UIN, 0, paramBundle.nickname);
     }
   }
   
@@ -88,7 +88,7 @@ public class BabyQFriendStatusWebViewPlugin
   
   void a(String paramString, Bundle paramBundle)
   {
-    BabyQIPCModule.a().a(paramString, paramBundle, this.jdField_a_of_type_EipcEIPCResultCallback);
+    BabyQIPCModule.a().a(paramString, paramBundle, this.e);
   }
   
   void a(String paramString1, String paramString2, String paramString3)
@@ -140,15 +140,15 @@ public class BabyQFriendStatusWebViewPlugin
       int j = ((JSONObject)localObject).optInt("from_type");
       if (!TextUtils.isEmpty(str))
       {
-        this.jdField_a_of_type_JavaLangString = str;
+        this.c = str;
         localObject = new Intent("com.tencent.mobileqq.babyq.add");
         ((Intent)localObject).putExtra("user_type", i);
         ((Intent)localObject).putExtra("from_type", j);
-        ((Intent)localObject).setPackage(this.jdField_a_of_type_AndroidAppActivity.getPackageName());
-        this.jdField_a_of_type_AndroidAppActivity.sendBroadcast((Intent)localObject);
+        ((Intent)localObject).setPackage(this.b.getPackageName());
+        this.b.sendBroadcast((Intent)localObject);
         return;
       }
-      this.jdField_a_of_type_JavaLangString = null;
+      this.c = null;
       return;
     }
     catch (JSONException localJSONException)
@@ -217,11 +217,11 @@ public class BabyQFriendStatusWebViewPlugin
     if (((EIPCResult)localObject).isSuccess())
     {
       String str = ((EIPCResult)localObject).data.getString("friendUin");
-      byte b = ((EIPCResult)localObject).data.getByte("mgid");
-      localObject = this.mRuntime.a();
+      byte b1 = ((EIPCResult)localObject).data.getByte("mgid");
+      localObject = this.mRuntime.d();
       Intent localIntent = new Intent((Context)localObject, MoveToGroupActivity.class);
       localIntent.putExtra("friendUin", str);
-      localIntent.putExtra("mgid", b);
+      localIntent.putExtra("mgid", b1);
       localIntent.putExtra("key_from_babyq_web_plugin", true);
       ((Activity)localObject).startActivity(localIntent);
       QLog.i("BabyQFriendStatusWebViewPlugin", 1, "babyqWeb set group begin");
@@ -277,9 +277,9 @@ public class BabyQFriendStatusWebViewPlugin
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     QLog.d("BabyQFriendStatusWebViewPlugin", 1, new Object[] { "babyqWeb handleJsRequest url =", paramString1, ",method=", paramString3 });
-    if ((paramString2 != null) && (paramString2.equalsIgnoreCase("babyQ")) && (!TextUtils.isEmpty(paramString3)) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    if ((paramString2 != null) && (paramString2.equalsIgnoreCase("babyQ")) && (!TextUtils.isEmpty(paramString3)) && (this.a != null))
     {
-      if (this.jdField_a_of_type_AndroidAppActivity == null) {
+      if (this.b == null) {
         return false;
       }
       paramString1 = a(paramString3, paramVarArgs);
@@ -319,15 +319,15 @@ public class BabyQFriendStatusWebViewPlugin
       }
       if (paramString3.equals("addFriend"))
       {
-        paramJsBridgeListener = this.mRuntime.a(this.mRuntime.a());
+        paramJsBridgeListener = this.mRuntime.a(this.mRuntime.d());
         int i;
         if ((paramJsBridgeListener instanceof WebViewPluginContainer)) {
           i = ((WebViewPluginContainer)paramJsBridgeListener).switchRequestCode(this, (byte)1);
         } else {
           i = 1;
         }
-        paramJsBridgeListener = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.mRuntime.a(), 2, AppConstants.BABY_Q_UIN, null, 3001, 12, "babyQ", null, null, null, null);
-        ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriendForResult(this.mRuntime.a(), paramJsBridgeListener, i);
+        paramJsBridgeListener = ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).startAddFriend(this.mRuntime.d(), 2, AppConstants.BABY_Q_UIN, null, 3001, 12, "babyQ", null, null, null, null);
+        ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).launchAddFriendForResult(this.mRuntime.d(), paramJsBridgeListener, i);
         return true;
       }
       if (paramString3.equals("sendmsg"))
@@ -356,7 +356,7 @@ public class BabyQFriendStatusWebViewPlugin
         if (paramJsBridgeListener.isSuccess())
         {
           paramJsBridgeListener = paramJsBridgeListener.data.getString("key_report_msg");
-          NewReportPlugin.a((BaseActivity)this.mRuntime.a(), AppConstants.BABY_Q_UIN, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), 21001, paramJsBridgeListener);
+          NewReportPlugin.a((BaseActivity)this.mRuntime.d(), AppConstants.BABY_Q_UIN, null, this.a.getAccount(), 21001, paramJsBridgeListener);
         }
         return true;
       }
@@ -394,14 +394,14 @@ public class BabyQFriendStatusWebViewPlugin
   
   protected void onCreate()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
+    this.a = this.mRuntime.b();
+    this.b = this.mRuntime.d();
     Object localObject;
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    if (this.b != null)
     {
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("com.tencent.mobileqq.babyq.added");
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
+      this.b.registerReceiver(this.d, (IntentFilter)localObject);
     }
     if (QLog.isColorLevel())
     {
@@ -422,13 +422,13 @@ public class BabyQFriendStatusWebViewPlugin
       ((StringBuilder)localObject).append(this);
       QLog.d("BabyQFriendStatusWebViewPlugin", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = this.b;
     if (localObject != null) {}
     try
     {
-      ((Activity)localObject).unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      ((Activity)localObject).unregisterReceiver(this.d);
       label60:
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+      this.a = null;
       return;
     }
     catch (Exception localException)
@@ -439,7 +439,7 @@ public class BabyQFriendStatusWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

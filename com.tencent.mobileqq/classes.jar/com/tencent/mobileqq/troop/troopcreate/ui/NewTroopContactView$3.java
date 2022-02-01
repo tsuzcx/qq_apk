@@ -15,46 +15,46 @@ class NewTroopContactView$3
   
   public ArrayList<ResultRecord> a()
   {
-    return this.a.c;
-  }
-  
-  public void a()
-  {
-    this.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView$ExpandableListAdapter.notifyDataSetChanged();
-    if (this.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView$ExpandableListAdapter.getGroupCount() > 0)
-    {
-      Groups localGroups1 = NewTroopContactView.a(this.a).getGroupByGroupId(1007L);
-      Groups localGroups2 = NewTroopContactView.a(this.a).getGroupByGroupId(1008L);
-      if ((localGroups1 != null) || (localGroups2 != null))
-      {
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.expandGroup(0);
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.setIsNeedScrollPositionTop(true);
-        this.a.jdField_a_of_type_ComTencentWidgetPinnedFooterExpandableListView.smoothScrollToPositionFromTop(1, 0, 0);
-      }
-      if (localGroups1 != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper.a();
-      }
-      if (localGroups2 != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper.c();
-      }
-    }
+    return this.a.o;
   }
   
   public ArrayList<String> b()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.a.c.size())
+    while (i < this.a.o.size())
     {
-      localArrayList.add(((ResultRecord)this.a.c.get(i)).uin);
+      localArrayList.add(((ResultRecord)this.a.o.get(i)).uin);
       i += 1;
     }
     return localArrayList;
   }
+  
+  public void c()
+  {
+    this.a.y.notifyDataSetChanged();
+    if (this.a.y.getGroupCount() > 0)
+    {
+      Groups localGroups1 = NewTroopContactView.a(this.a).getGroupByGroupId(1007L);
+      Groups localGroups2 = NewTroopContactView.a(this.a).getGroupByGroupId(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
+      {
+        this.a.x.expandGroup(0);
+        this.a.x.setIsNeedScrollPositionTop(true);
+        this.a.x.smoothScrollToPositionFromTop(1, 0, 0);
+      }
+      if (localGroups1 != null) {
+        this.a.K.a();
+      }
+      if (localGroups2 != null) {
+        this.a.K.c();
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.NewTroopContactView.3
  * JD-Core Version:    0.7.0.1
  */

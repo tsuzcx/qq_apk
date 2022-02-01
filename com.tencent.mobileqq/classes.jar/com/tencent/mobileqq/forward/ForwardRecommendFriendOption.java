@@ -16,90 +16,90 @@ import java.util.Set;
 public class ForwardRecommendFriendOption
   extends ForwardBaseOption
 {
-  AbsShareMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
-  AbsStructMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+  AbsShareMsg a;
+  AbsStructMsg ad;
   
   public ForwardRecommendFriendOption(Intent paramIntent)
   {
     super(paramIntent);
   }
   
-  protected void a()
+  protected void W()
   {
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
+    int i = this.r.getIntExtra("structmsg_service_id", -1);
     if (i == 63) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B34", "0X8005B34", 0, 0, "", "", "", "");
+      ReportController.b(this.q, "CliOper", "", "", "0X8005B35", "0X8005B35", 0, 0, "", "", "", "");
     } else if (i == 84) {
-      if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
+      if (this.r.getIntExtra("pa_type", -1) == 53) {
+        ReportController.b(this.q, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
       } else {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
+        ReportController.b(this.q, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
       }
     }
-    super.a();
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    AbsStructMsg localAbsStructMsg = StructMsgFactory.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("stuctmsg_bytes"));
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = StructMsgFactory.a(this.jdField_a_of_type_AndroidOsBundle.getByteArray("struct_msg_show_in_dialog"));
-    if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg))) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)localAbsStructMsg);
-    }
-    return true;
+    super.W();
   }
   
   protected boolean a(QQCustomDialog paramQQCustomDialog)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    Object localObject = this.ad;
     if (localObject != null)
     {
-      paramQQCustomDialog.addView(((AbsStructMsg)localObject).getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null));
+      paramQQCustomDialog.addView(((AbsStructMsg)localObject).getPreDialogView(this.s, null));
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+    else if (this.a != null)
     {
       localObject = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject).setMargins(AIOUtils.b(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 0, AIOUtils.b(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), AIOUtils.b(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+      ((LinearLayout.LayoutParams)localObject).setMargins(AIOUtils.b(-15.0F, this.s.getResources()), 0, AIOUtils.b(-15.0F, this.s.getResources()), AIOUtils.b(5.0F, this.s.getResources()));
       if (QLog.isColorLevel()) {
         QLog.d("ForwardOption.ForwardRecommendFriendOption", 2, "updateImageView addStructView");
       }
-      paramQQCustomDialog.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null), (LinearLayout.LayoutParams)localObject);
+      paramQQCustomDialog.addView(this.a.getPreDialogView(this.s, null), (LinearLayout.LayoutParams)localObject);
     }
     return true;
   }
   
   protected void b()
   {
-    if (p()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
+    int i = this.r.getIntExtra("structmsg_service_id", -1);
+    if (i == 63) {
+      ReportController.b(this.q, "CliOper", "", "", "0X8005B34", "0X8005B34", 0, 0, "", "", "", "");
+    } else if (i == 84) {
+      if (this.r.getIntExtra("pa_type", -1) == 53) {
+        ReportController.b(this.q, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
+      } else {
+        ReportController.b(this.q, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
+      }
     }
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
+    super.b();
+  }
+  
+  protected void c()
+  {
+    if (ag()) {
+      this.C.add(e);
     }
-    if (r()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
+    if (ah()) {
+      this.C.add(d);
+    }
+    if (ai()) {
+      this.C.add(c);
     }
   }
   
-  protected void t()
+  public boolean e()
   {
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
-    if (i == 63) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B35", "0X8005B35", 0, 0, "", "", "", "");
-    } else if (i == 84) {
-      if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
-      } else {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
-      }
+    super.e();
+    AbsStructMsg localAbsStructMsg = StructMsgFactory.a(this.t.getByteArray("stuctmsg_bytes"));
+    this.ad = StructMsgFactory.a(this.t.getByteArray("struct_msg_show_in_dialog"));
+    if ((localAbsStructMsg != null) && ((localAbsStructMsg instanceof AbsShareMsg))) {
+      this.a = ((AbsShareMsg)localAbsStructMsg);
     }
-    super.t();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardRecommendFriendOption
  * JD-Core Version:    0.7.0.1
  */

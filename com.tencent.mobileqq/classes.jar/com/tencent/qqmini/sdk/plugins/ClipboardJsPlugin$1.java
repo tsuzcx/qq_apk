@@ -44,6 +44,7 @@ class ClipboardJsPlugin$1
         localJSONObject.put("data", "");
       }
       this.val$req.ok(localJSONObject);
+      ClipboardJsPlugin.access$100(this.this$0);
       return;
     }
     catch (Throwable localThrowable)
@@ -55,7 +56,7 @@ class ClipboardJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ClipboardJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

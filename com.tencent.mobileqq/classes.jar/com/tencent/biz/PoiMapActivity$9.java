@@ -21,15 +21,15 @@ class PoiMapActivity$9
       paramAdapterView.append(paramInt);
       QLog.i("PoiMapActivity", 2, paramAdapterView.toString());
     }
-    paramAdapterView = (PoiMapActivity.POI)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    paramAdapterView = (PoiMapActivity.POI)this.b.K.get(paramInt);
     if (paramAdapterView != null)
     {
-      paramView = this.jdField_a_of_type_ComTencentBizPoiMapActivity;
-      paramView.h = true;
+      paramView = this.b;
+      paramView.W = true;
       paramView.a(paramAdapterView);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
+      this.b.a("share_locate", "click_sch_result", "", "", "", "");
     }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.dismiss();
   }
 }
 

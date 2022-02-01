@@ -12,9 +12,9 @@ public class EventSaver
   public static final String EVENT_ITEM_SPLIT = ";";
   public static final String WLOGIN_SP_EVENT = "WLOGIN_EVENT";
   
-  public static void saveEvent(a parama)
+  public static void saveEvent(b paramb)
   {
-    c.b(parama);
+    c.b(paramb);
   }
   
   public void realClearEvent(Context paramContext, String paramString)
@@ -100,7 +100,7 @@ public class EventSaver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.report.event.EventSaver
  * JD-Core Version:    0.7.0.1
  */

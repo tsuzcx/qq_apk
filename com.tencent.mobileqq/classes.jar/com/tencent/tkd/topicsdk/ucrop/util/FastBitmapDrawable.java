@@ -14,66 +14,66 @@ import org.jetbrains.annotations.Nullable;
 public final class FastBitmapDrawable
   extends Drawable
 {
-  private int jdField_a_of_type_Int = 255;
   @Nullable
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
-  private int b;
-  private int c;
+  private Bitmap a;
+  private final Paint b = new Paint(2);
+  private int c = 255;
+  private int d;
+  private int e;
   
   @Nullable
   public final Bitmap a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.a;
   }
   
   public final void a(@Nullable Bitmap paramBitmap)
   {
     if (paramBitmap != null)
     {
-      this.b = paramBitmap.getWidth();
-      this.c = paramBitmap.getHeight();
+      this.d = paramBitmap.getWidth();
+      this.e = paramBitmap.getHeight();
     }
     else
     {
-      this.c = 0;
-      this.b = this.c;
+      this.e = 0;
+      this.d = this.e;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.a = paramBitmap;
   }
   
   public void draw(@NotNull Canvas paramCanvas)
   {
     Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.a;
     if ((localBitmap != null) && (localBitmap != null) && (!localBitmap.isRecycled())) {
-      paramCanvas.drawBitmap(localBitmap, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(localBitmap, null, getBounds(), this.b);
     }
   }
   
   public int getAlpha()
   {
-    return this.jdField_a_of_type_Int;
+    return this.c;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.c;
+    return this.e;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.b;
+    return this.d;
   }
   
   public int getMinimumHeight()
   {
-    return this.c;
+    return this.e;
   }
   
   public int getMinimumWidth()
   {
-    return this.b;
+    return this.d;
   }
   
   public int getOpacity()
@@ -83,24 +83,24 @@ public final class FastBitmapDrawable
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.c = paramInt;
+    this.b.setAlpha(paramInt);
   }
   
   public void setColorFilter(@NotNull ColorFilter paramColorFilter)
   {
     Intrinsics.checkParameterIsNotNull(paramColorFilter, "cf");
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.b.setColorFilter(paramColorFilter);
   }
   
   public void setFilterBitmap(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(paramBoolean);
+    this.b.setFilterBitmap(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.ucrop.util.FastBitmapDrawable
  * JD-Core Version:    0.7.0.1
  */

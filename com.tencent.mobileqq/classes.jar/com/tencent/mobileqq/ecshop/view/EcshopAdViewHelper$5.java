@@ -24,23 +24,23 @@ class EcshopAdViewHelper$5
   public void onClick(View paramView)
   {
     QLog.d("Ecshop_EcshopAdViewHelper", 1, "delete_ad");
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    EcshopAdViewHelper.DeleteMsgListener localDeleteMsgListener = this.jdField_a_of_type_ComTencentMobileqqEcshopViewEcshopAdViewHelper$DeleteMsgListener;
+    EcshopAdViewHelper.DeleteMsgListener localDeleteMsgListener = this.b;
     if (localDeleteMsgListener != null) {
-      localDeleteMsgListener.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      localDeleteMsgListener.a(this.c);
     } else {
-      ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).startDelAnimAndDelMsg((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      ((IEcshopPublicAccountChatPieTempApi)QRoute.api(IEcshopPublicAccountChatPieTempApi.class)).startDelAnimAndDelMsg((ChatMessage)this.c);
     }
-    ((EcshopAdHandler)((BaseQQAppInterface)AppUtils.a()).getBusinessHandler(EcshopAdHandler.class.getName())).a(8, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    QQToast.a(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131692247), 1).a();
+    ((EcshopAdHandler)((BaseQQAppInterface)AppUtils.a()).getBusinessHandler(EcshopAdHandler.class.getName())).a(8, this.c);
+    QQToast.makeText(MobileQQ.sMobileQQ, MobileQQ.sMobileQQ.getResources().getString(2131889234), 1).show();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.EcshopAdViewHelper.5
  * JD-Core Version:    0.7.0.1
  */

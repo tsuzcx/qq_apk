@@ -12,22 +12,22 @@ class DynamicChannelDataModule$5
   public void run()
   {
     Object localObject = DynamicChannelDataModule.a(this.this$0);
-    int i = this.jdField_a_of_type_Int;
-    long l = this.jdField_a_of_type_Long;
-    int j = this.b;
+    int i = this.a;
+    long l = this.b;
+    int j = this.c;
     localObject = ((EntityManager)localObject).query(DynamicChannelDataModel.class, true, "channelID = ? and recommendSeq > ?", new String[] { String.valueOf(i), String.valueOf(l) }, null, null, "recommendSeq asc", String.valueOf(j));
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      localObject = DynamicChannelDataModule.a(this.this$0, this.jdField_a_of_type_Int, (List)localObject, false);
-      DynamicChannelDataModule.a(this.this$0, false, this.jdField_a_of_type_Int, true, true, (List)localObject);
+      localObject = DynamicChannelDataModule.a(this.this$0, this.a, (List)localObject, false);
+      DynamicChannelDataModule.a(this.this$0, false, this.a, true, true, (List)localObject);
       return;
     }
-    DynamicChannelDataModule.a(this.this$0, this.jdField_a_of_type_Int, 0);
+    DynamicChannelDataModule.a(this.this$0, this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.data.DynamicChannelDataModule.5
  * JD-Core Version:    0.7.0.1
  */

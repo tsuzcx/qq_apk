@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/n2e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="matrix" />
-    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center|left" android:id="@id/n2s" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:singleLine="true" android:layout_alignParentTop="true" android:alpha="0.5" />
-    <android.support.v7.widget.RecyclerView android:scrollbarThumbVertical="@drawable/b2n" android:scrollbarStyle="outsideInset" android:id="@id/n31" android:background="@android:color/transparent" android:scrollbars="vertical" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/n2s" android:overScrollMode="never" />
-    <RelativeLayout android:id="@id/mmo" android:background="@color/l1" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/n2j" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="6.0dip" android:maxWidth="200.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:alpha="0.5" />
-        <ImageView android:id="@id/nia" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/common_loading2" android:layout_toRightOf="@id/n2j" android:layout_alignParentBottom="true" />
-        <ImageView android:id="@id/n32" android:layout_width="88.0dip" android:layout_height="29.0dip" android:layout_marginRight="16.0dip" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</merge>
+<com.tencent.mobileqq.guild.mainframe.attachcontainer.GuildMainFrameRelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.recent.cur.DragFrameLayout android:id="@id/n5f" android:background="@drawable/blc" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/nti" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_alignParentTop="true" />
+            <com.tencent.mobileqq.guild.widget.NetStatusInfoView android:id="@id/qg5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nti" />
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/qg5">
+                <FrameLayout android:id="@id/ns8" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="-16.0dip" android:layout_toRightOf="@id/ocf" />
+                <RelativeLayout android:id="@id/ocf" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="11.0dip">
+                    <FrameLayout android:id="@id/oce" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="16.0dip" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.tencent.mobileqq.activity.recent.cur.DragFrameLayout>
+    <com.tencent.mobileqq.guild.mainframe.GuildRoundRectLayout android:id="@id/muk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.guild.mainframe.GuildEmptyLayout android:id="@id/e3f" android:background="@drawable/bjz" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mobileqq.guild.mainframe.attachcontainer.GuildMainFrameRelativeLayout>

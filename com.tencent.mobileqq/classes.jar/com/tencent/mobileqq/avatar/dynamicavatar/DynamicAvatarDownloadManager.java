@@ -23,12 +23,12 @@ import mqq.util.WeakReference;
 
 public class DynamicAvatarDownloadManager
 {
-  private static File jdField_a_of_type_JavaIoFile;
-  public int a;
+  private static File c;
   public long a;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private ArrayList<WeakReference<DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ConcurrentHashMap<String, NetReq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public int b;
+  private ArrayList<WeakReference<DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback>> d = new ArrayList();
+  private ConcurrentHashMap<String, NetReq> e = new ConcurrentHashMap();
+  private AppInterface f;
   
   static
   {
@@ -38,22 +38,16 @@ public class DynamicAvatarDownloadManager
     } else {
       localFile = BaseApplicationImpl.getApplication().getCacheDir();
     }
-    jdField_a_of_type_JavaIoFile = new File(localFile, "_dynamic");
+    c = new File(localFile, "_dynamic");
   }
   
   public DynamicAvatarDownloadManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    c();
+    this.f = paramAppInterface;
+    d();
   }
   
-  public static File a(String paramString)
-  {
-    paramString = a(paramString);
-    return new File(jdField_a_of_type_JavaIoFile, paramString);
-  }
-  
-  public static String a(String paramString)
+  public static String b(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cache_");
@@ -62,20 +56,25 @@ public class DynamicAvatarDownloadManager
     return localStringBuilder.toString();
   }
   
-  private boolean a()
+  public static String c(String paramString)
+  {
+    return d(paramString).getAbsolutePath();
+  }
+  
+  private boolean c()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.a;
     if (l1 - l2 <= 86400000L)
     {
       if (l1 - l2 < 0L) {
         return true;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      Object localObject = this.f;
       if (localObject != null)
       {
-        localObject = ((DynamicAvatarManager)((AppInterface)localObject).getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).a();
-        if (this.jdField_a_of_type_Int + 1 > ((DynamicAvatarConfig)localObject).b)
+        localObject = ((DynamicAvatarManager)((AppInterface)localObject).getManager(QQManagerFactory.DYNAMIC_AVATAR_MANAGER)).b();
+        if (this.b + 1 > ((DynamicAvatarConfig)localObject).k)
         {
           if (QLog.isColorLevel()) {
             QLog.i("Q.dynamicAvatar", 2, "isLoadCountSatisfy not satisfy.");
@@ -87,24 +86,13 @@ public class DynamicAvatarDownloadManager
     return true;
   }
   
-  public static String b(String paramString)
+  public static File d(String paramString)
   {
-    return a(paramString).getAbsolutePath();
+    paramString = b(paramString);
+    return new File(c, paramString);
   }
   
-  public static boolean b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = a(paramString);
-      if ((paramString.exists()) && (paramString.isFile())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private void c()
+  private void d()
   {
     Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("dynamic_avatar", 4).getString("dynamic_load_count_one_day", "");
     if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -113,8 +101,8 @@ public class DynamicAvatarDownloadManager
       if ((localObject != null) && (localObject.length == 2)) {
         try
         {
-          this.jdField_a_of_type_Long = Long.valueOf(localObject[0]).longValue();
-          this.jdField_a_of_type_Int = Integer.valueOf(localObject[1]).intValue();
+          this.a = Long.valueOf(localObject[0]).longValue();
+          this.b = Integer.valueOf(localObject[1]).intValue();
           return;
         }
         catch (Exception localException)
@@ -125,14 +113,38 @@ public class DynamicAvatarDownloadManager
     }
   }
   
-  private boolean c(String paramString)
+  private void e()
   {
-    if ((!NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext())) && (!a())) {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    this.b += 1;
+    long l = System.currentTimeMillis();
+    if (System.currentTimeMillis() - this.a >= 86400000L)
+    {
+      this.a = System.currentTimeMillis();
+      this.b = 0;
+    }
+    ThreadManager.executeOnFileThread(new DynamicAvatarDownloadManager.2(this, l));
+  }
+  
+  public static boolean e(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = d(paramString);
+      if ((paramString.exists()) && (paramString.isFile())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private boolean f(String paramString)
+  {
+    if ((!NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext())) && (!c())) {
+      synchronized (this.d)
       {
-        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        if (!this.d.isEmpty())
         {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          Iterator localIterator = this.d.iterator();
           while (localIterator.hasNext())
           {
             WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -147,27 +159,15 @@ public class DynamicAvatarDownloadManager
     return false;
   }
   
-  private void d()
+  private boolean g(String paramString)
   {
-    this.jdField_a_of_type_Int += 1;
-    long l = System.currentTimeMillis();
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 86400000L)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Int = 0;
-    }
-    ThreadManager.executeOnFileThread(new DynamicAvatarDownloadManager.2(this, l));
-  }
-  
-  private boolean d(String paramString)
-  {
-    ??? = a(paramString);
+    ??? = d(paramString);
     if ((??? != null) && (((File)???).exists()) && (((File)???).isFile())) {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      synchronized (this.d)
       {
-        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        if (!this.d.isEmpty())
         {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          Iterator localIterator = this.d.iterator();
           while (localIterator.hasNext())
           {
             WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -184,7 +184,7 @@ public class DynamicAvatarDownloadManager
   
   public final void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values();
+    Object localObject = this.e.values();
     if (localObject != null)
     {
       if (((Collection)localObject).isEmpty()) {
@@ -196,23 +196,23 @@ public class DynamicAvatarDownloadManager
         NetReq localNetReq = (NetReq)((Iterator)localObject).next();
         if (localNetReq != null)
         {
-          AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+          AppInterface localAppInterface = this.f;
           if (localAppInterface != null) {
             ((IHttpEngineService)localAppInterface.getRuntimeService(IHttpEngineService.class, "all")).cancelReq(localNetReq);
           }
         }
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.e.clear();
     }
   }
   
   public void a(DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback paramIDynamicAvatarDownloadCallback)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.d;
     int j = 0;
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.d.iterator();
       WeakReference localWeakReference;
       do
       {
@@ -224,7 +224,7 @@ public class DynamicAvatarDownloadManager
       } while ((localWeakReference == null) || (localWeakReference.get() == null) || (localWeakReference.get() != paramIDynamicAvatarDownloadCallback));
       int i = 1;
       if (i == 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramIDynamicAvatarDownloadCallback));
+        this.d.add(new WeakReference(paramIDynamicAvatarDownloadCallback));
       }
       return;
     }
@@ -246,17 +246,17 @@ public class DynamicAvatarDownloadManager
       while (paramArrayList.hasNext())
       {
         String str = (String)paramArrayList.next();
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+        if (this.e.containsKey(str))
         {
-          NetReq localNetReq = (NetReq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+          NetReq localNetReq = (NetReq)this.e.get(str);
           if (localNetReq != null)
           {
-            AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+            AppInterface localAppInterface = this.f;
             if (localAppInterface != null) {
               ((IHttpEngineService)localAppInterface.getRuntimeService(IHttpEngineService.class, "all")).cancelReq(localNetReq);
             }
           }
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+          this.e.remove(str);
         }
       }
     }
@@ -267,13 +267,13 @@ public class DynamicAvatarDownloadManager
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    if (d(paramString)) {
+    if (g(paramString)) {
       return true;
     }
-    if (c(paramString)) {
+    if (f(paramString)) {
       return false;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+    if (this.e.containsKey(paramString))
     {
       if (QLog.isColorLevel())
       {
@@ -289,18 +289,18 @@ public class DynamicAvatarDownloadManager
     ((HttpNetReq)localObject).mCallback = new DynamicAvatarDownloadManager.1(this);
     ((HttpNetReq)localObject).mReqUrl = paramString;
     ((HttpNetReq)localObject).mHttpMethod = 0;
-    ((HttpNetReq)localObject).mOutPath = a(paramString).getPath();
+    ((HttpNetReq)localObject).mOutPath = d(paramString).getPath();
     ((HttpNetReq)localObject).mContinuErrorLimit = 1;
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    AppInterface localAppInterface = this.f;
     if (localAppInterface != null)
     {
       ((IHttpEngineService)localAppInterface.getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+      this.e.put(paramString, localObject);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("startDownloadDynamicAvatar, url: ");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(", uin:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject).append(this.f.getCurrentAccountUin());
       QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)localObject).toString());
     }
     return false;
@@ -309,15 +309,15 @@ public class DynamicAvatarDownloadManager
   public void b()
   {
     a();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    this.d.clear();
+    this.f = null;
   }
   
   public void b(DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback paramIDynamicAvatarDownloadCallback)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.d)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.d.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -335,7 +335,7 @@ public class DynamicAvatarDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager
  * JD-Core Version:    0.7.0.1
  */

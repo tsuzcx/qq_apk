@@ -22,53 +22,53 @@ public class FileSelectorSearchResultPresenter
   
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    if ((paramISearchResultView.a() != null) && (!TextUtils.isEmpty(paramISearchResultModel.b())))
-    {
-      paramISearchResultView.a().setVisibility(0);
-      paramISearchResultView.a().setText(paramISearchResultModel.b());
-    }
-    if ((paramISearchResultView.b() != null) && (!TextUtils.isEmpty(paramISearchResultModel.c())))
+    if ((paramISearchResultView.b() != null) && (!TextUtils.isEmpty(paramISearchResultModel.d())))
     {
       paramISearchResultView.b().setVisibility(0);
-      paramISearchResultView.b().setText(paramISearchResultModel.c());
+      paramISearchResultView.b().setText(paramISearchResultModel.d());
     }
-    if ((paramISearchResultView.c() != null) && (!TextUtils.isEmpty(paramISearchResultModel.a())))
+    if ((paramISearchResultView.c() != null) && (!TextUtils.isEmpty(paramISearchResultModel.e())))
     {
       paramISearchResultView.c().setVisibility(0);
-      paramISearchResultView.c().setText(paramISearchResultModel.a());
+      paramISearchResultView.c().setText(paramISearchResultModel.e());
     }
-    if ((paramISearchResultModel.d() == null) && (paramISearchResultView.d() != null)) {
-      paramISearchResultView.d().setVisibility(8);
-    }
-    if ((paramISearchResultView.d() != null) && (paramISearchResultModel.d() != null))
+    if ((paramISearchResultView.d() != null) && (!TextUtils.isEmpty(paramISearchResultModel.a())))
     {
       paramISearchResultView.d().setVisibility(0);
-      paramISearchResultView.d().setText(paramISearchResultModel.d());
+      paramISearchResultView.d().setText(paramISearchResultModel.a());
+    }
+    if ((paramISearchResultModel.f() == null) && (paramISearchResultView.e() != null)) {
+      paramISearchResultView.e().setVisibility(8);
+    }
+    if ((paramISearchResultView.e() != null) && (paramISearchResultModel.f() != null))
+    {
+      paramISearchResultView.e().setVisibility(0);
+      paramISearchResultView.e().setText(paramISearchResultModel.f());
     }
     FileSelectorSearchResultModel localFileSelectorSearchResultModel = (FileSelectorSearchResultModel)paramISearchResultModel;
-    View localView = paramISearchResultView.a();
-    paramISearchResultView = (AsyncImageView)paramISearchResultView.b();
-    String str = localFileSelectorSearchResultModel.c();
-    int i = localFileSelectorSearchResultModel.c();
+    View localView = paramISearchResultView.h();
+    paramISearchResultView = (AsyncImageView)paramISearchResultView.g();
+    String str = localFileSelectorSearchResultModel.j();
+    int i = localFileSelectorSearchResultModel.l();
     if (!TextUtils.isEmpty(str)) {
       FileManagerUtil.a(paramISearchResultView, str, i);
     } else {
-      paramISearchResultView.setDefaultImage(FileManagerUtil.a(i));
+      paramISearchResultView.setDefaultImage(FileManagerUtil.c(i));
     }
     paramISearchResultView.setOnClickListener(new FileSelectorSearchResultPresenter.1(this, paramISearchResultModel));
-    paramISearchResultView = (CheckBox)localView.findViewById(2131366794);
-    if (localFileSelectorSearchResultModel.e_() > 1) {
+    paramISearchResultView = (CheckBox)localView.findViewById(2131433116);
+    if (localFileSelectorSearchResultModel.i() > 1) {
       paramISearchResultView.setVisibility(8);
     } else {
       paramISearchResultView.setVisibility(0);
     }
-    paramISearchResultView.setChecked(localFileSelectorSearchResultModel.b());
+    paramISearchResultView.setChecked(localFileSelectorSearchResultModel.m());
     localView.setOnClickListener(new FileSelectorSearchResultPresenter.2(this, paramISearchResultModel));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

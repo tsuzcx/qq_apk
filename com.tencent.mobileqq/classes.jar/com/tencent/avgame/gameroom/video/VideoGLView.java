@@ -12,7 +12,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class VideoGLView
   extends GLRootView
 {
-  private EGLContext a;
+  private EGLContext h;
   
   public VideoGLView(Context paramContext)
   {
@@ -45,7 +45,7 @@ public class VideoGLView
   
   public void setEglShareContext(EGLContext paramEGLContext)
   {
-    this.a = paramEGLContext;
+    this.h = paramEGLContext;
   }
 }
 

@@ -7,16 +7,16 @@ class AIOGalleryActivity$AIOGalleryManager$1$4
   
   public void run()
   {
-    if (AIOGalleryActivity.AIOGalleryManager.i(this.a.a) != null)
+    if (AIOGalleryActivity.AIOGalleryManager.j(this.a.a) != null)
     {
-      ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.j(this.a.a)).e();
-      ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.k(this.a.a)).e();
+      ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.k(this.a.a)).x();
+      ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.l(this.a.a)).x();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.4
  * JD-Core Version:    0.7.0.1
  */

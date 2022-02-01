@@ -8,15 +8,15 @@ import java.util.ArrayList;
 class SuspendThreadManager$WatchdogHandler
   extends Handler
 {
-  private SuspendThreadManager.GuardThreadHandler jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$GuardThreadHandler;
-  private Thread jdField_a_of_type_JavaLangThread;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Thread b;
+  private SuspendThreadManager.GuardThreadHandler c;
+  private boolean d = false;
   
   public SuspendThreadManager$WatchdogHandler(SuspendThreadManager paramSuspendThreadManager, Looper paramLooper, Thread paramThread, SuspendThreadManager.GuardThreadHandler paramGuardThreadHandler)
   {
     super(paramLooper);
-    this.jdField_a_of_type_JavaLangThread = paramThread;
-    this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$GuardThreadHandler = paramGuardThreadHandler;
+    this.b = paramThread;
+    this.c = paramGuardThreadHandler;
   }
   
   public void a()
@@ -36,30 +36,30 @@ class SuspendThreadManager$WatchdogHandler
     if (paramMessage.what != 1) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangThread.getState() == Thread.State.BLOCKED)
+    if (this.b.getState() == Thread.State.BLOCKED)
     {
-      if (this.jdField_a_of_type_Boolean == true)
+      if (this.d == true)
       {
-        SuspendThreadManager.a(this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager, SuspendThreadManager.a());
+        SuspendThreadManager.a(this.a, SuspendThreadManager.f());
         SuspendThreadManager.a(1);
         b();
-        this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$GuardThreadHandler.a();
+        this.c.a();
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
       a();
       return;
     }
-    if (!SuspendThreadManager.a().isEmpty())
+    if (!SuspendThreadManager.g().isEmpty())
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.d = false;
       a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.suspendthread.SuspendThreadManager.WatchdogHandler
  * JD-Core Version:    0.7.0.1
  */

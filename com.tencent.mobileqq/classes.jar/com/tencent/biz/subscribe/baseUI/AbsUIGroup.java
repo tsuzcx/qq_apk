@@ -8,33 +8,23 @@ import android.view.ViewStub;
 public abstract class AbsUIGroup<T>
   extends AbsUI<T>
 {
-  protected int c = -1;
+  protected int f = -1;
   
   public AbsUIGroup(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, paramBoolean);
   }
   
-  protected abstract View a();
-  
-  protected View a(int paramInt)
-  {
-    if (this.a != null) {
-      return this.a.findViewById(paramInt);
-    }
-    return null;
-  }
-  
   protected void a()
   {
-    this.a = a();
-    g();
+    this.b = l();
+    j();
   }
   
   public void a(View paramView)
   {
-    if ((paramView != null) && (a())) {
-      ((ViewGroup)this.a).addView(paramView);
+    if ((paramView != null) && (m())) {
+      ((ViewGroup)this.b).addView(paramView);
     }
   }
   
@@ -43,18 +33,18 @@ public abstract class AbsUIGroup<T>
     if (paramViewStub == null) {
       return;
     }
-    int i = this.c;
+    int i = this.f;
     if (i != -1)
     {
       a(paramViewStub, i);
       return;
     }
-    paramViewStub.setLayoutResource(b());
-    this.a = paramViewStub.inflate();
-    if (b() == 2131562454) {
-      a(a());
+    paramViewStub.setLayoutResource(k());
+    this.b = paramViewStub.inflate();
+    if (k() == 2131628885) {
+      a(l());
     }
-    g();
+    j();
   }
   
   public void a(ViewStub paramViewStub, int paramInt)
@@ -62,19 +52,29 @@ public abstract class AbsUIGroup<T>
     if (paramViewStub != null)
     {
       paramViewStub.setLayoutResource(paramInt);
-      this.a = paramViewStub.inflate();
-      g();
+      this.b = paramViewStub.inflate();
+      j();
     }
   }
   
-  protected boolean a()
+  protected View b(int paramInt)
   {
-    return (this.a != null) && ((this.a instanceof ViewGroup));
+    if (this.b != null) {
+      return this.b.findViewById(paramInt);
+    }
+    return null;
   }
   
-  protected abstract int b();
+  protected abstract void j();
   
-  protected abstract void g();
+  protected abstract int k();
+  
+  protected abstract View l();
+  
+  protected boolean m()
+  {
+    return (this.b != null) && ((this.b instanceof ViewGroup));
+  }
 }
 
 

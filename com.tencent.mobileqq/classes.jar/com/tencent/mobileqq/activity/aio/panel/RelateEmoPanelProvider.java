@@ -9,23 +9,23 @@ import com.tencent.widget.XPanelContainer;
 public class RelateEmoPanelProvider
   implements PanelProvider<View>
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private BaseChatPie a;
+  private View b;
   
   public RelateEmoPanelProvider(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   public View createPanel(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = ((AIORelatedEmotionHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(72)).a();
-    return this.jdField_a_of_type_AndroidViewView;
+    this.b = ((AIORelatedEmotionHelper)this.a.q(72)).c();
+    return this.b;
   }
   
   public View getPanel()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.b;
   }
   
   public int getPanelId()
@@ -50,7 +50,7 @@ public class RelateEmoPanelProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.RelateEmoPanelProvider
  * JD-Core Version:    0.7.0.1
  */

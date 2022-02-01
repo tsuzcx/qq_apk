@@ -19,12 +19,12 @@ public class AKOfflineDownloader
     if (TextUtils.isEmpty(paramString2))
     {
       paramString2 = new StringBuilder();
-      paramString2.append(OfflineEnvHelper.a(paramString1));
+      paramString2.append(OfflineEnvHelper.b(paramString1));
       paramString2.append(paramString1);
       return paramString2.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(OfflineEnvHelper.a(paramString1));
+    localStringBuilder.append(OfflineEnvHelper.b(paramString1));
     localStringBuilder.append(paramString1);
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString2);
@@ -40,15 +40,15 @@ public class AKOfflineDownloader
     } else {
       i = 5;
     }
-    localMiniAppEvent.jdField_a_of_type_Int = i;
-    localMiniAppEvent.jdField_a_of_type_Boolean = paramBoolean;
-    localMiniAppEvent.jdField_a_of_type_JavaLangString = paramString2;
+    localMiniAppEvent.c = i;
+    localMiniAppEvent.b = paramBoolean;
+    localMiniAppEvent.d = paramString2;
     if (paramBoolean) {
-      localMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt), a(paramString3, "") };
+      localMiniAppEvent.e = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt), a(paramString3, "") };
     } else {
-      localMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt) };
+      localMiniAppEvent.e = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt) };
     }
-    if (localMiniAppEvent.jdField_a_of_type_Int == 1)
+    if (localMiniAppEvent.c == 1)
     {
       StoryDispatcher.a().dispatch("MiniAppManager", localMiniAppEvent);
       return;
@@ -77,7 +77,7 @@ public class AKOfflineDownloader
     String str = paramBundle.getString("bid");
     paramBundle = paramBundle.getString("path");
     boolean bool1 = bool2;
-    if (HtmlOffline.c(str))
+    if (HtmlOffline.h(str))
     {
       bool1 = bool2;
       if (OfflineSecurity.a(paramBundle, str)) {
@@ -89,7 +89,7 @@ public class AKOfflineDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.AKOfflineDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public class TenDocHistoryTabEmptyTipsBean
 {
-  private String a = HardCodeUtil.a(2131714645);
+  private String a = HardCodeUtil.a(2131912154);
   private String b = "";
   
   public static TenDocHistoryTabEmptyTipsBean a(QConfItem[] paramArrayOfQConfItem)
@@ -17,7 +17,7 @@ public class TenDocHistoryTabEmptyTipsBean
       TenDocHistoryTabEmptyTipsBean localTenDocHistoryTabEmptyTipsBean = new TenDocHistoryTabEmptyTipsBean();
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         localTenDocHistoryTabEmptyTipsBean.a = paramArrayOfQConfItem.getString("emptyShowWording");
         localTenDocHistoryTabEmptyTipsBean.b = paramArrayOfQConfItem.getString("linkWord");
         return localTenDocHistoryTabEmptyTipsBean;
@@ -48,7 +48,7 @@ public class TenDocHistoryTabEmptyTipsBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TenDocHistoryTabEmptyTipsBean
  * JD-Core Version:    0.7.0.1
  */

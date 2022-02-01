@@ -11,17 +11,17 @@ class BaseChatPie$3
   
   public void a(Bundle paramBundle)
   {
-    this.a.a.b(false);
+    this.a.U.b(false);
   }
   
   public void b(Bundle paramBundle)
   {
-    this.a.a.b(true);
+    this.a.U.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.3
  * JD-Core Version:    0.7.0.1
  */

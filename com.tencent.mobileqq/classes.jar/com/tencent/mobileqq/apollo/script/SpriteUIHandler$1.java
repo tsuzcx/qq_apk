@@ -30,26 +30,26 @@ class SpriteUIHandler$1
         return;
       }
       Object localObject2 = (ChatAdapter1)localObject1;
-      int i = AIOUtils.a(this.jdField_a_of_type_Long, (ListAdapter)localObject2);
+      int i = AIOUtils.a(this.a, (ListAdapter)localObject2);
       if (i < 0) {
         return;
       }
-      localObject1 = SpriteUIHandler.a(this.this$0);
+      localObject1 = SpriteUIHandler.b(this.this$0);
       Object localObject3 = (ChatMessage)((ChatAdapter1)localObject2).getItem(i);
       if (localObject1 != null)
       {
         if (!(localObject3 instanceof MessageForApollo)) {
           return;
         }
-        localObject2 = ((ChatAdapter1)localObject2).a.a((ChatMessage)localObject3, (BaseAdapter)localObject2);
+        localObject2 = ((ChatAdapter1)localObject2).c.a((ChatMessage)localObject3, (BaseAdapter)localObject2);
         if (!(localObject2 instanceof ApolloItemBuilder)) {
           return;
         }
         localObject2 = (ApolloItemBuilder)localObject2;
-        localObject3 = (BaseChatItemLayout)AIOUtils.a((ListView)localObject1, AIOUtils.a(this.jdField_a_of_type_Long, ((XListView)localObject1).getAdapter()));
+        localObject3 = (BaseChatItemLayout)AIOUtils.a((ListView)localObject1, AIOUtils.a(this.a, ((XListView)localObject1).getAdapter()));
         if (localObject3 != null)
         {
-          ((ApolloItemBuilder)localObject2).a((View)localObject3, this.jdField_a_of_type_Int, this.b);
+          ((ApolloItemBuilder)localObject2).a((View)localObject3, this.b, this.c);
           ((XListView)localObject1).getFirstVisiblePosition();
           int j = ((XListView)localObject1).getLastVisiblePosition();
           i = 0;
@@ -57,7 +57,7 @@ class SpriteUIHandler$1
           {
             BaseChatItemLayout localBaseChatItemLayout = (BaseChatItemLayout)AIOUtils.a((ListView)localObject1, i);
             if (localBaseChatItemLayout != null) {
-              ((ApolloItemBuilder)localObject2).a(localBaseChatItemLayout, (BaseChatItemLayout)localObject3, this.jdField_a_of_type_Int, this.b);
+              ((ApolloItemBuilder)localObject2).a(localBaseChatItemLayout, (BaseChatItemLayout)localObject3, this.b, this.c);
             }
             i += 1;
           }
@@ -73,7 +73,7 @@ class SpriteUIHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.1
  * JD-Core Version:    0.7.0.1
  */

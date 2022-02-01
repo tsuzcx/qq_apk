@@ -10,12 +10,12 @@ class RecentAdapter$8
   
   public void run()
   {
-    ReportController.b(this.this$0.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(ServiceAccountFolderManager.a().a()));
+    ReportController.b(this.this$0.d, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.a, 0, this.b, this.c, this.d, String.valueOf(ServiceAccountFolderManager.a().d()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.8
  * JD-Core Version:    0.7.0.1
  */

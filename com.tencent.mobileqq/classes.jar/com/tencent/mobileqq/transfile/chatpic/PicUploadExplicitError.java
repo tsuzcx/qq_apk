@@ -60,9 +60,9 @@ public class PicUploadExplicitError
       if (paramInt != 3) {
         return null;
       }
-      return BaseApplication.getContext().getResources().getString(2131689924);
+      return BaseApplication.getContext().getResources().getString(2131886565);
     }
-    return BaseApplication.getContext().getResources().getString(2131689925);
+    return BaseApplication.getContext().getResources().getString(2131886566);
   }
   
   public static String getFailedTip(MessageForPic paramMessageForPic)
@@ -170,7 +170,7 @@ public class PicUploadExplicitError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.chatpic.PicUploadExplicitError
  * JD-Core Version:    0.7.0.1
  */

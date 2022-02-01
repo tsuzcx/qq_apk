@@ -9,7 +9,7 @@ class PhoneContactServiceImpl$20
   
   public void run()
   {
-    if (PermissionChecker.a().c())
+    if (PermissionChecker.a().e())
     {
       this.this$0.uploadOrUpdateContact();
       PhoneContactServiceImpl localPhoneContactServiceImpl = this.this$0;
@@ -25,7 +25,7 @@ class PhoneContactServiceImpl$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.api.impl.PhoneContactServiceImpl.20
  * JD-Core Version:    0.7.0.1
  */

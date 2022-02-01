@@ -21,18 +21,18 @@ public final class MsgTabStoryNodeDelegate$ReadStoryVideoEventReceiver
   {
     SLog.a(this.TAG, "onEvent, %s", String.valueOf(paramReadStoryVideoEvent));
     MsgTabNodeInfo localMsgTabNodeInfo = paramMsgTabStoryNodeDelegate.a.a(3, "");
-    if ((localMsgTabNodeInfo != null) && (paramReadStoryVideoEvent.jdField_b_of_type_JavaLangString.equals(localMsgTabNodeInfo.jdField_e_of_type_JavaLangString)))
+    if ((localMsgTabNodeInfo != null) && (paramReadStoryVideoEvent.c.equals(localMsgTabNodeInfo.n)))
     {
       SLog.b(this.TAG, "onEvent, guideInfoNode read");
       paramMsgTabStoryNodeDelegate = new MsgTabNodeWatchedRequest();
-      paramMsgTabStoryNodeDelegate.jdField_b_of_type_JavaLangString = localMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
-      paramMsgTabStoryNodeDelegate.c = localMsgTabNodeInfo.jdField_a_of_type_Int;
-      paramMsgTabStoryNodeDelegate.d = 5;
-      paramMsgTabStoryNodeDelegate.jdField_b_of_type_Long = localMsgTabNodeInfo.jdField_e_of_type_Long;
+      paramMsgTabStoryNodeDelegate.f = localMsgTabNodeInfo.d;
+      paramMsgTabStoryNodeDelegate.g = localMsgTabNodeInfo.b;
+      paramMsgTabStoryNodeDelegate.h = 5;
+      paramMsgTabStoryNodeDelegate.i = localMsgTabNodeInfo.j;
       CmdTaskManger.a().a(paramMsgTabStoryNodeDelegate, null);
       return;
     }
-    paramMsgTabStoryNodeDelegate.a.a(paramReadStoryVideoEvent.jdField_a_of_type_JavaLangString, paramReadStoryVideoEvent.jdField_a_of_type_Long);
+    paramMsgTabStoryNodeDelegate.a.b(paramReadStoryVideoEvent.a, paramReadStoryVideoEvent.b);
   }
   
   public Class acceptEventClass()
@@ -42,7 +42,7 @@ public final class MsgTabStoryNodeDelegate$ReadStoryVideoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.ReadStoryVideoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

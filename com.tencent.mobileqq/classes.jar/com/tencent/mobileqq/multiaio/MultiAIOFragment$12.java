@@ -14,27 +14,27 @@ class MultiAIOFragment$12
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f1 = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    int i = this.jdField_a_of_type_Int;
-    paramValueAnimator.leftMargin = (i + Math.round((this.b - i) * f1));
-    i = this.c;
-    paramValueAnimator.topMargin = (i + Math.round((this.d - i) * f1));
-    i = this.e;
-    paramValueAnimator.width = (i + Math.round((this.f - i) * f1));
-    i = this.g;
-    int j = MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getHeight() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingTop() - MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment).getPaddingBottom();
-    if (j > 0) {
-      i = j;
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.a.getLayoutParams();
+    int k = this.b;
+    paramValueAnimator.leftMargin = (k + Math.round((this.c - k) * f1));
+    k = this.d;
+    paramValueAnimator.topMargin = (k + Math.round((this.e - k) * f1));
+    k = this.f;
+    paramValueAnimator.width = (k + Math.round((this.g - k) * f1));
+    k = this.h;
+    int m = MultiAIOFragment.d(this.j).getHeight() - MultiAIOFragment.d(this.j).getPaddingTop() - MultiAIOFragment.d(this.j).getPaddingBottom();
+    if (m > 0) {
+      k = m;
     }
-    j = this.h;
-    paramValueAnimator.height = (j + Math.round((i - j) * f1));
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    m = this.i;
+    paramValueAnimator.height = (m + Math.round((k - m) * f1));
+    this.a.setLayoutParams(paramValueAnimator);
+    this.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.12
  * JD-Core Version:    0.7.0.1
  */

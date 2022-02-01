@@ -24,17 +24,17 @@ class TroopChatPie$5
         QLog.d("zivonchen", 2, QLog.getStackTraceString(localInterruptedException));
       }
     }
-    if ((!this.this$0.P) && (!this.a) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && (!((TroopTipsHelper)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioHelperHelperProvider.a(109)).a()))
+    if ((!this.this$0.ch) && (!this.a) && (this.this$0.d.getTroopMask(this.this$0.ah.b) == 3) && (!((TroopTipsHelper)this.this$0.g.a(109)).c()))
     {
       TroopChatPie localTroopChatPie = this.this$0;
-      localTroopChatPie.P = true;
-      localTroopChatPie.jdField_a_of_type_MqqOsMqqHandler.post(new TroopChatPie.5.1(this));
+      localTroopChatPie.ch = true;
+      localTroopChatPie.m.post(new TroopChatPie.5.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.5
  * JD-Core Version:    0.7.0.1
  */

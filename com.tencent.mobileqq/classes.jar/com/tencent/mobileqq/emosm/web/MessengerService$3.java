@@ -12,33 +12,33 @@ class MessengerService$3
   
   public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    if (this.a.a != null)
+    if (this.a.l != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("url", null);
       int i;
       if (paramTeamWorkFileImportInfo != null) {
-        i = paramTeamWorkFileImportInfo.f;
+        i = paramTeamWorkFileImportInfo.w;
       } else {
         i = 0;
       }
       localBundle.putInt("retCode", i);
       String str2 = "";
       if (paramTeamWorkFileImportInfo != null) {
-        str1 = paramTeamWorkFileImportInfo.h;
+        str1 = paramTeamWorkFileImportInfo.x;
       } else {
         str1 = "";
       }
       localBundle.putString("errorStr", str1);
       String str1 = str2;
       if (paramTeamWorkFileImportInfo != null) {
-        str1 = paramTeamWorkFileImportInfo.i;
+        str1 = paramTeamWorkFileImportInfo.y;
       }
       localBundle.putString("redirectUrl", str1);
-      this.a.a.putBundle("response", localBundle);
+      this.a.l.putBundle("response", localBundle);
       paramTeamWorkFileImportInfo = this.a;
-      paramTeamWorkFileImportInfo.a(paramTeamWorkFileImportInfo.a);
-      this.a.a = null;
+      paramTeamWorkFileImportInfo.a(paramTeamWorkFileImportInfo.l);
+      this.a.l = null;
     }
   }
   
@@ -47,23 +47,23 @@ class MessengerService$3
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
     }
-    if (this.a.a != null)
+    if (this.a.l != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString);
-      if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d == 10)) {
+      if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.n == 10)) {
         localBundle.putBoolean("needRefresh", true);
       }
-      this.a.a.putBundle("response", localBundle);
+      this.a.l.putBundle("response", localBundle);
       paramString = this.a;
-      paramString.a(paramString.a);
-      this.a.a = null;
+      paramString.a(paramString.l);
+      this.a.l = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.3
  * JD-Core Version:    0.7.0.1
  */

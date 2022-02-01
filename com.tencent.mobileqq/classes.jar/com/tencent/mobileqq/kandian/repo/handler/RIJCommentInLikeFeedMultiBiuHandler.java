@@ -69,13 +69,13 @@ public class RIJCommentInLikeFeedMultiBiuHandler
   private feeds_info.BiuMultiLevel a(BiuInfo paramBiuInfo, ByteStringMicro paramByteStringMicro)
   {
     paramByteStringMicro = new feeds_info.BiuMultiLevel();
-    if (paramBiuInfo.jdField_a_of_type_JavaLangLong != null) {
-      paramByteStringMicro.uint64_origin_feeds_id.set(paramBiuInfo.jdField_a_of_type_JavaLangLong.longValue());
-    }
     if (paramBiuInfo.b != null) {
-      paramByteStringMicro.uint64_origin_feeds_type.set(paramBiuInfo.b.longValue());
+      paramByteStringMicro.uint64_origin_feeds_id.set(paramBiuInfo.b.longValue());
     }
-    paramBiuInfo = paramBiuInfo.jdField_a_of_type_JavaUtilList.iterator();
+    if (paramBiuInfo.c != null) {
+      paramByteStringMicro.uint64_origin_feeds_type.set(paramBiuInfo.c.longValue());
+    }
+    paramBiuInfo = paramBiuInfo.a.iterator();
     while (paramBiuInfo.hasNext())
     {
       BiuCommentInfo localBiuCommentInfo = (BiuCommentInfo)paramBiuInfo.next();
@@ -110,10 +110,10 @@ public class RIJCommentInLikeFeedMultiBiuHandler
   {
     oidb_cmd0x83e.FeedsInfo localFeedsInfo = new oidb_cmd0x83e.FeedsInfo();
     localFeedsInfo.feeds_type.set(paramInt);
-    if ((!RIJFeedsType.j(paramAbsBaseArticleInfo)) && (!RIJFeedsType.k(paramAbsBaseArticleInfo)) && (!RIJFeedsType.m(paramAbsBaseArticleInfo)) && (!RIJFeedsType.n(paramAbsBaseArticleInfo))) {
+    if ((!RIJFeedsType.p(paramAbsBaseArticleInfo)) && (!RIJFeedsType.q(paramAbsBaseArticleInfo)) && (!RIJFeedsType.s(paramAbsBaseArticleInfo)) && (!RIJFeedsType.t(paramAbsBaseArticleInfo))) {
       localFeedsInfo.uint32_business_id.set((int)paramAbsBaseArticleInfo.businessId);
-    } else if ((paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      localFeedsInfo.uint32_business_id.set(((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int);
+    } else if ((paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.size() > 0)) {
+      localFeedsInfo.uint32_business_id.set(((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.get(0)).a);
     }
     localFeedsInfo.msg_social_feeds_info.set(paramSocializeFeedsInfo);
     if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.businessName)) {
@@ -130,80 +130,80 @@ public class RIJCommentInLikeFeedMultiBiuHandler
   
   private void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull oidb_cmd0x83e.SocializeFeedsInfo paramSocializeFeedsInfo)
   {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityShareWebPageInfo != null))
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.E != null))
     {
       feeds_info.ShareWebPageInfo localShareWebPageInfo = new feeds_info.ShareWebPageInfo();
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityShareWebPageInfo;
-      RIJPBFieldUtils.a(localShareWebPageInfo.bytes_source, paramAbsBaseArticleInfo.jdField_d_of_type_JavaLangString);
-      RIJPBFieldUtils.a(localShareWebPageInfo.bytes_title, paramAbsBaseArticleInfo.jdField_b_of_type_JavaLangString);
-      RIJPBFieldUtils.a(localShareWebPageInfo.bytes_pic_url, paramAbsBaseArticleInfo.jdField_c_of_type_JavaLangString);
-      RIJPBFieldUtils.a(localShareWebPageInfo.bytes_web_url, paramAbsBaseArticleInfo.jdField_a_of_type_JavaLangString);
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.E;
+      RIJPBFieldUtils.b(localShareWebPageInfo.bytes_source, paramAbsBaseArticleInfo.d);
+      RIJPBFieldUtils.b(localShareWebPageInfo.bytes_title, paramAbsBaseArticleInfo.b);
+      RIJPBFieldUtils.b(localShareWebPageInfo.bytes_pic_url, paramAbsBaseArticleInfo.c);
+      RIJPBFieldUtils.b(localShareWebPageInfo.bytes_web_url, paramAbsBaseArticleInfo.a);
       paramSocializeFeedsInfo.share_web_page_info.set(localShareWebPageInfo);
     }
   }
   
   private void b(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull oidb_cmd0x83e.SocializeFeedsInfo paramSocializeFeedsInfo)
   {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityNowLiveInfo != null)) {
-      paramSocializeFeedsInfo.now_live_info.set(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityNowLiveInfo.a());
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.F != null)) {
+      paramSocializeFeedsInfo.now_live_info.set(paramAbsBaseArticleInfo.mSocialFeedInfo.F.a());
     }
   }
   
   private void c(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull oidb_cmd0x83e.SocializeFeedsInfo paramSocializeFeedsInfo)
   {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null) && (RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)))
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo.s != null) && (RIJItemViewTypeUtils.m(paramAbsBaseArticleInfo)))
     {
-      Object localObject1 = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo;
+      Object localObject1 = paramAbsBaseArticleInfo.mSocialFeedInfo.s;
       paramAbsBaseArticleInfo = new feeds_info.UGCFeedsInfo();
-      RIJPBFieldUtils.a(paramAbsBaseArticleInfo.bytes_ugc_comments, ((UGCFeedsInfo)localObject1).jdField_a_of_type_JavaLangString);
-      paramAbsBaseArticleInfo.enum_ugc_feeds_card_type.set(((UGCFeedsInfo)localObject1).jdField_a_of_type_Int);
-      paramAbsBaseArticleInfo.uint64_cuin.set(((UGCFeedsInfo)localObject1).jdField_a_of_type_Long);
-      Object localObject2 = ((UGCFeedsInfo)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
+      RIJPBFieldUtils.b(paramAbsBaseArticleInfo.bytes_ugc_comments, ((UGCFeedsInfo)localObject1).f);
+      paramAbsBaseArticleInfo.enum_ugc_feeds_card_type.set(((UGCFeedsInfo)localObject1).a);
+      paramAbsBaseArticleInfo.uint64_cuin.set(((UGCFeedsInfo)localObject1).e);
+      Object localObject2 = ((UGCFeedsInfo)localObject1).b.iterator();
       Object localObject3;
       Object localObject4;
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (UGCPicInfo)((Iterator)localObject2).next();
         localObject4 = new feeds_info.UGCPicInfo();
-        ((feeds_info.UGCPicInfo)localObject4).is_animation.set(((UGCPicInfo)localObject3).jdField_c_of_type_Int);
-        ((feeds_info.UGCPicInfo)localObject4).uint32_pic_height.set(((UGCPicInfo)localObject3).jdField_b_of_type_Int);
-        ((feeds_info.UGCPicInfo)localObject4).uint32_pic_width.set(((UGCPicInfo)localObject3).jdField_a_of_type_Int);
-        RIJPBFieldUtils.a(((feeds_info.UGCPicInfo)localObject4).bytes_pic_md5, ((UGCPicInfo)localObject3).jdField_a_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.UGCPicInfo)localObject4).bytes_pic_url, ((UGCPicInfo)localObject3).jdField_b_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.UGCPicInfo)localObject4).bytes_thumbnail_url, ((UGCPicInfo)localObject3).jdField_c_of_type_JavaLangString);
+        ((feeds_info.UGCPicInfo)localObject4).is_animation.set(((UGCPicInfo)localObject3).f);
+        ((feeds_info.UGCPicInfo)localObject4).uint32_pic_height.set(((UGCPicInfo)localObject3).b);
+        ((feeds_info.UGCPicInfo)localObject4).uint32_pic_width.set(((UGCPicInfo)localObject3).a);
+        RIJPBFieldUtils.b(((feeds_info.UGCPicInfo)localObject4).bytes_pic_md5, ((UGCPicInfo)localObject3).c);
+        RIJPBFieldUtils.b(((feeds_info.UGCPicInfo)localObject4).bytes_pic_url, ((UGCPicInfo)localObject3).d);
+        RIJPBFieldUtils.b(((feeds_info.UGCPicInfo)localObject4).bytes_thumbnail_url, ((UGCPicInfo)localObject3).e);
         paramAbsBaseArticleInfo.msg_ugc_pic_info_list.add((MessageMicro)localObject4);
       }
-      localObject2 = ((UGCFeedsInfo)localObject1).c.iterator();
+      localObject2 = ((UGCFeedsInfo)localObject1).d.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (UGCVoiceInfo)((Iterator)localObject2).next();
         localObject4 = new feeds_info.UGCVoiceInfo();
-        RIJPBFieldUtils.a(((feeds_info.UGCVoiceInfo)localObject4).bytes_voice_url, ((UGCVoiceInfo)localObject3).voiceUrl);
+        RIJPBFieldUtils.b(((feeds_info.UGCVoiceInfo)localObject4).bytes_voice_url, ((UGCVoiceInfo)localObject3).voiceUrl);
         ((feeds_info.UGCVoiceInfo)localObject4).uint32_duration.set(((UGCVoiceInfo)localObject3).duration);
         ((feeds_info.UGCVoiceInfo)localObject4).uint32_file_size.set(((UGCVoiceInfo)localObject3).fileSize);
         paramAbsBaseArticleInfo.msg_ugc_voice_info_list.add((MessageMicro)localObject4);
       }
-      localObject1 = ((UGCFeedsInfo)localObject1).b.iterator();
+      localObject1 = ((UGCFeedsInfo)localObject1).c.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (UGCVideoInfo)((Iterator)localObject1).next();
         localObject3 = new feeds_info.UGCVideoInfo();
-        ((feeds_info.UGCVideoInfo)localObject3).uint32_pic_height.set(((UGCVideoInfo)localObject2).jdField_d_of_type_Int);
-        ((feeds_info.UGCVideoInfo)localObject3).uint32_pic_width.set(((UGCVideoInfo)localObject2).jdField_c_of_type_Int);
-        ((feeds_info.UGCVideoInfo)localObject3).uint32_video_height.set(((UGCVideoInfo)localObject2).jdField_b_of_type_Int);
-        ((feeds_info.UGCVideoInfo)localObject3).uint32_video_width.set(((UGCVideoInfo)localObject2).jdField_a_of_type_Int);
-        ((feeds_info.UGCVideoInfo)localObject3).uint64_duration.set(((UGCVideoInfo)localObject2).jdField_a_of_type_Long);
-        ((feeds_info.UGCVideoInfo)localObject3).uint32_create_time.set(((UGCVideoInfo)localObject2).jdField_e_of_type_Int);
-        ((feeds_info.UGCVideoInfo)localObject3).uint32_busi_type.set(((UGCVideoInfo)localObject2).jdField_f_of_type_Int);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_pic_md5, ((UGCVideoInfo)localObject2).jdField_c_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_pic_url, ((UGCVideoInfo)localObject2).jdField_d_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_video_md5, ((UGCVideoInfo)localObject2).jdField_a_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_video_url, ((UGCVideoInfo)localObject2).jdField_b_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_title, ((UGCVideoInfo)localObject2).jdField_e_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_uuid, ((UGCVideoInfo)localObject2).jdField_f_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_vid, ((UGCVideoInfo)localObject2).i);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_share_url, ((UGCVideoInfo)localObject2).h);
-        RIJPBFieldUtils.a(((feeds_info.UGCVideoInfo)localObject3).bytes_uniq_id, ((UGCVideoInfo)localObject2).g);
+        ((feeds_info.UGCVideoInfo)localObject3).uint32_pic_height.set(((UGCVideoInfo)localObject2).k);
+        ((feeds_info.UGCVideoInfo)localObject3).uint32_pic_width.set(((UGCVideoInfo)localObject2).j);
+        ((feeds_info.UGCVideoInfo)localObject3).uint32_video_height.set(((UGCVideoInfo)localObject2).i);
+        ((feeds_info.UGCVideoInfo)localObject3).uint32_video_width.set(((UGCVideoInfo)localObject2).h);
+        ((feeds_info.UGCVideoInfo)localObject3).uint64_duration.set(((UGCVideoInfo)localObject2).g);
+        ((feeds_info.UGCVideoInfo)localObject3).uint32_create_time.set(((UGCVideoInfo)localObject2).m);
+        ((feeds_info.UGCVideoInfo)localObject3).uint32_busi_type.set(((UGCVideoInfo)localObject2).o);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_pic_md5, ((UGCVideoInfo)localObject2).c);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_pic_url, ((UGCVideoInfo)localObject2).d);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_video_md5, ((UGCVideoInfo)localObject2).a);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_video_url, ((UGCVideoInfo)localObject2).b);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_title, ((UGCVideoInfo)localObject2).e);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_uuid, ((UGCVideoInfo)localObject2).f);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_vid, ((UGCVideoInfo)localObject2).p);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_share_url, ((UGCVideoInfo)localObject2).n);
+        RIJPBFieldUtils.b(((feeds_info.UGCVideoInfo)localObject3).bytes_uniq_id, ((UGCVideoInfo)localObject2).l);
         paramAbsBaseArticleInfo.msg_ugc_video_info_list.add((MessageMicro)localObject3);
       }
       paramSocializeFeedsInfo.msg_ugc_topic_feeds_info.set(paramAbsBaseArticleInfo);
@@ -212,23 +212,23 @@ public class RIJCommentInLikeFeedMultiBiuHandler
   
   private void d(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull oidb_cmd0x83e.SocializeFeedsInfo paramSocializeFeedsInfo)
   {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)))
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (RIJItemViewTypeUtils.a(paramAbsBaseArticleInfo)))
     {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo;
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo.t;
       feeds_info.PGCFeedsInfo localPGCFeedsInfo = new feeds_info.PGCFeedsInfo();
-      Iterator localIterator = paramAbsBaseArticleInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = paramAbsBaseArticleInfo.a.iterator();
       Object localObject1;
       Object localObject2;
       while (localIterator.hasNext())
       {
         localObject1 = (PGCPicInfo)localIterator.next();
         localObject2 = new feeds_info.PGCPicInfo();
-        RIJPBFieldUtils.a(((feeds_info.PGCPicInfo)localObject2).bytes_pic_md5, ((PGCPicInfo)localObject1).jdField_a_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.PGCPicInfo)localObject2).bytes_pic_url, ((PGCPicInfo)localObject1).jdField_b_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.PGCPicInfo)localObject2).bytes_thumbnail_url, ((PGCPicInfo)localObject1).jdField_c_of_type_JavaLangString);
-        ((feeds_info.PGCPicInfo)localObject2).is_animation.set(((PGCPicInfo)localObject1).jdField_c_of_type_Int);
-        ((feeds_info.PGCPicInfo)localObject2).uint32_pic_height.set(((PGCPicInfo)localObject1).jdField_b_of_type_Int);
-        ((feeds_info.PGCPicInfo)localObject2).uint32_pic_width.set(((PGCPicInfo)localObject1).jdField_a_of_type_Int);
+        RIJPBFieldUtils.b(((feeds_info.PGCPicInfo)localObject2).bytes_pic_md5, ((PGCPicInfo)localObject1).c);
+        RIJPBFieldUtils.b(((feeds_info.PGCPicInfo)localObject2).bytes_pic_url, ((PGCPicInfo)localObject1).d);
+        RIJPBFieldUtils.b(((feeds_info.PGCPicInfo)localObject2).bytes_thumbnail_url, ((PGCPicInfo)localObject1).e);
+        ((feeds_info.PGCPicInfo)localObject2).is_animation.set(((PGCPicInfo)localObject1).f);
+        ((feeds_info.PGCPicInfo)localObject2).uint32_pic_height.set(((PGCPicInfo)localObject1).b);
+        ((feeds_info.PGCPicInfo)localObject2).uint32_pic_width.set(((PGCPicInfo)localObject1).a);
         localPGCFeedsInfo.msg_pgc_pic_info_list.add((MessageMicro)localObject2);
       }
       localIterator = paramAbsBaseArticleInfo.b.iterator();
@@ -236,59 +236,59 @@ public class RIJCommentInLikeFeedMultiBiuHandler
       {
         localObject1 = (PGCVideoInfo)localIterator.next();
         localObject2 = new feeds_info.PGCVideoInfo();
-        RIJPBFieldUtils.a(((feeds_info.PGCVideoInfo)localObject2).bytes_pic_md5, ((PGCVideoInfo)localObject1).jdField_c_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.PGCVideoInfo)localObject2).bytes_pic_url, ((PGCVideoInfo)localObject1).jdField_d_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.PGCVideoInfo)localObject2).bytes_video_md5, ((PGCVideoInfo)localObject1).jdField_a_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.PGCVideoInfo)localObject2).bytes_video_url, ((PGCVideoInfo)localObject1).jdField_b_of_type_JavaLangString);
+        RIJPBFieldUtils.b(((feeds_info.PGCVideoInfo)localObject2).bytes_pic_md5, ((PGCVideoInfo)localObject1).c);
+        RIJPBFieldUtils.b(((feeds_info.PGCVideoInfo)localObject2).bytes_pic_url, ((PGCVideoInfo)localObject1).d);
+        RIJPBFieldUtils.b(((feeds_info.PGCVideoInfo)localObject2).bytes_video_md5, ((PGCVideoInfo)localObject1).a);
+        RIJPBFieldUtils.b(((feeds_info.PGCVideoInfo)localObject2).bytes_video_url, ((PGCVideoInfo)localObject1).b);
         localPGCFeedsInfo.msg_pgc_video_info_list.add((MessageMicro)localObject2);
       }
-      RIJPBFieldUtils.a(localPGCFeedsInfo.bytes_pgc_comments, paramAbsBaseArticleInfo.jdField_a_of_type_JavaLangString);
+      RIJPBFieldUtils.b(localPGCFeedsInfo.bytes_pgc_comments, paramAbsBaseArticleInfo.c);
       paramSocializeFeedsInfo.msg_pgc_topic_feeds_info.set(localPGCFeedsInfo);
     }
   }
   
   private void e(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo, @NotNull oidb_cmd0x83e.SocializeFeedsInfo paramSocializeFeedsInfo)
   {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo != null) && (RIJItemViewTypeUtils.s(paramAbsBaseArticleInfo)))
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo.v != null) && (RIJItemViewTypeUtils.s(paramAbsBaseArticleInfo)))
     {
       feeds_info.TopicRecommendFeedsInfo localTopicRecommendFeedsInfo = new feeds_info.TopicRecommendFeedsInfo();
-      localTopicRecommendFeedsInfo.uint32_feeds_style.set(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_Int);
-      localTopicRecommendFeedsInfo.uint64_feeds_id.set(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_Long);
+      localTopicRecommendFeedsInfo.uint32_feeds_style.set(paramAbsBaseArticleInfo.mSocialFeedInfo.v.b);
+      localTopicRecommendFeedsInfo.uint64_feeds_id.set(paramAbsBaseArticleInfo.mSocialFeedInfo.v.a);
       Object localObject = new ArrayList();
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null)
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.v.g != null)
       {
-        Iterator localIterator = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = paramAbsBaseArticleInfo.mSocialFeedInfo.v.g.iterator();
         while (localIterator.hasNext())
         {
           TopicRecommendFeedsInfo.TopicRecommendInfo localTopicRecommendInfo = (TopicRecommendFeedsInfo.TopicRecommendInfo)localIterator.next();
           feeds_info.TopicRecommendInfo localTopicRecommendInfo1 = new feeds_info.TopicRecommendInfo();
-          localTopicRecommendInfo1.uint32_number_of_participants.set(localTopicRecommendInfo.jdField_b_of_type_Int);
-          RIJPBFieldUtils.a(localTopicRecommendInfo1.bytes_business_name, localTopicRecommendInfo.jdField_a_of_type_JavaLangString);
-          RIJPBFieldUtils.a(localTopicRecommendInfo1.bytes_business_name_prefix, localTopicRecommendInfo.jdField_c_of_type_JavaLangString);
-          RIJPBFieldUtils.a(localTopicRecommendInfo1.bytes_business_url, localTopicRecommendInfo.jdField_b_of_type_JavaLangString);
-          RIJPBFieldUtils.a(localTopicRecommendInfo1.bytes_pic_url, localTopicRecommendInfo.jdField_d_of_type_JavaLangString);
-          localTopicRecommendInfo1.uint32_business_id.set(localTopicRecommendInfo.jdField_a_of_type_Int);
+          localTopicRecommendInfo1.uint32_number_of_participants.set(localTopicRecommendInfo.e);
+          RIJPBFieldUtils.b(localTopicRecommendInfo1.bytes_business_name, localTopicRecommendInfo.b);
+          RIJPBFieldUtils.b(localTopicRecommendInfo1.bytes_business_name_prefix, localTopicRecommendInfo.d);
+          RIJPBFieldUtils.b(localTopicRecommendInfo1.bytes_business_url, localTopicRecommendInfo.c);
+          RIJPBFieldUtils.b(localTopicRecommendInfo1.bytes_pic_url, localTopicRecommendInfo.f);
+          localTopicRecommendInfo1.uint32_business_id.set(localTopicRecommendInfo.a);
           ((List)localObject).add(localTopicRecommendInfo1);
         }
       }
       localTopicRecommendFeedsInfo.msg_topic_recommend_info.set((List)localObject);
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle != null)
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.v.e != null)
       {
         localObject = new feeds_info.TopicRecommendFeedsTitle();
-        RIJPBFieldUtils.a(((feeds_info.TopicRecommendFeedsTitle)localObject).bytes_url, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_b_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.TopicRecommendFeedsTitle)localObject).bytes_title_content, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_a_of_type_JavaLangString);
+        RIJPBFieldUtils.b(((feeds_info.TopicRecommendFeedsTitle)localObject).bytes_url, paramAbsBaseArticleInfo.mSocialFeedInfo.v.e.b);
+        RIJPBFieldUtils.b(((feeds_info.TopicRecommendFeedsTitle)localObject).bytes_title_content, paramAbsBaseArticleInfo.mSocialFeedInfo.v.e.a);
         localTopicRecommendFeedsInfo.msg_left_title.set((MessageMicro)localObject);
       }
-      if (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle != null)
+      if (paramAbsBaseArticleInfo.mSocialFeedInfo.v.f != null)
       {
         localObject = new feeds_info.TopicRecommendFeedsTitle();
-        RIJPBFieldUtils.a(((feeds_info.TopicRecommendFeedsTitle)localObject).bytes_url, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_b_of_type_JavaLangString);
-        RIJPBFieldUtils.a(((feeds_info.TopicRecommendFeedsTitle)localObject).bytes_title_content, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_b_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.jdField_a_of_type_JavaLangString);
+        RIJPBFieldUtils.b(((feeds_info.TopicRecommendFeedsTitle)localObject).bytes_url, paramAbsBaseArticleInfo.mSocialFeedInfo.v.f.b);
+        RIJPBFieldUtils.b(((feeds_info.TopicRecommendFeedsTitle)localObject).bytes_title_content, paramAbsBaseArticleInfo.mSocialFeedInfo.v.f.a);
         localTopicRecommendFeedsInfo.msg_right_title.set((MessageMicro)localObject);
       }
-      RIJPBFieldUtils.a(localTopicRecommendFeedsInfo.bytes_subscribe_id, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_a_of_type_JavaLangString);
-      localTopicRecommendFeedsInfo.uint64_uin.set(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_b_of_type_Long);
-      RIJPBFieldUtils.a(localTopicRecommendFeedsInfo.bytes_comments, paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo.jdField_b_of_type_JavaLangString);
+      RIJPBFieldUtils.b(localTopicRecommendFeedsInfo.bytes_subscribe_id, paramAbsBaseArticleInfo.mSocialFeedInfo.v.d);
+      localTopicRecommendFeedsInfo.uint64_uin.set(paramAbsBaseArticleInfo.mSocialFeedInfo.v.c);
+      RIJPBFieldUtils.b(localTopicRecommendFeedsInfo.bytes_comments, paramAbsBaseArticleInfo.mSocialFeedInfo.v.h);
       paramSocializeFeedsInfo.msg_topic_recommend_feeds_info.set(localTopicRecommendFeedsInfo);
     }
   }
@@ -313,26 +313,26 @@ public class RIJCommentInLikeFeedMultiBiuHandler
     if (i == 0)
     {
       l = ((Long)paramToServiceMsg.getAttribute("BaseArticleSeq")).longValue();
-      paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().a(Integer.valueOf(0), Long.valueOf(l));
+      paramToServiceMsg = this.a.i().a(Integer.valueOf(0), Long.valueOf(l));
       if ((paramToServiceMsg != null) && (paramToServiceMsg.mSocialFeedInfo != null))
       {
-        QLog.d("RIJCommentInLikeFeedMultiBiuHandler", 2, new Object[] { "handle0x83eBiuDeliverAction, channel_id = ", Integer.valueOf(0), " articleId = ", Long.valueOf(paramToServiceMsg.mArticleID), " before biu count = ", Integer.valueOf(paramToServiceMsg.mSocialFeedInfo.jdField_f_of_type_Int) });
+        QLog.d("RIJCommentInLikeFeedMultiBiuHandler", 2, new Object[] { "handle0x83eBiuDeliverAction, channel_id = ", Integer.valueOf(0), " articleId = ", Long.valueOf(paramToServiceMsg.mArticleID), " before biu count = ", Integer.valueOf(paramToServiceMsg.mSocialFeedInfo.l) });
         paramFromServiceMsg = paramToServiceMsg.mSocialFeedInfo;
-        paramFromServiceMsg.jdField_f_of_type_Int += 1;
+        paramFromServiceMsg.l += 1;
         paramToServiceMsg.invalidateProteusTemplateBean();
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.updateEntity(paramToServiceMsg);
+        this.a.updateEntity(paramToServiceMsg);
       }
-      paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.a().a(Integer.valueOf(70), Long.valueOf(l));
+      paramToServiceMsg = this.a.i().a(Integer.valueOf(70), Long.valueOf(l));
       if ((paramToServiceMsg != null) && (paramToServiceMsg.mSocialFeedInfo != null))
       {
-        QLog.d("RIJCommentInLikeFeedMultiBiuHandler", 2, new Object[] { "handle0x83eBiuDeliverAction, channel_id = ", Integer.valueOf(70), " articleId = ", Long.valueOf(paramToServiceMsg.mArticleID), " before biu count = ", Integer.valueOf(paramToServiceMsg.mSocialFeedInfo.jdField_f_of_type_Int) });
+        QLog.d("RIJCommentInLikeFeedMultiBiuHandler", 2, new Object[] { "handle0x83eBiuDeliverAction, channel_id = ", Integer.valueOf(70), " articleId = ", Long.valueOf(paramToServiceMsg.mArticleID), " before biu count = ", Integer.valueOf(paramToServiceMsg.mSocialFeedInfo.l) });
         paramFromServiceMsg = paramToServiceMsg.mSocialFeedInfo;
-        paramFromServiceMsg.jdField_f_of_type_Int += 1;
+        paramFromServiceMsg.l += 1;
         paramToServiceMsg.invalidateProteusTemplateBean();
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.updateEntity(paramToServiceMsg);
+        this.a.updateEntity(paramToServiceMsg);
       }
     }
-    paramToServiceMsg = BaseApplication.getContext().getString(2131717858);
+    paramToServiceMsg = BaseApplication.getContext().getString(2131915331);
     if (localRspBody.bytes_result_desc.has())
     {
       paramToServiceMsg = localRspBody.bytes_result_desc.get().toStringUtf8();
@@ -342,12 +342,12 @@ public class RIJCommentInLikeFeedMultiBiuHandler
       QLog.d("RIJCommentInLikeFeedMultiBiuHandler", 2, paramFromServiceMsg.toString());
     }
     long l = localRspBody.uint64_feeds_id.get();
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJCommentInLikeFeedMultiBiuHandler.1(this, l, i, paramToServiceMsg));
+    this.b.post(new RIJCommentInLikeFeedMultiBiuHandler.1(this, l, i, paramToServiceMsg));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedMultiBiuHandler
  * JD-Core Version:    0.7.0.1
  */

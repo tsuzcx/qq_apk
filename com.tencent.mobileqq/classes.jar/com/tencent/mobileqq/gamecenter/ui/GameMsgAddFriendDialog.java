@@ -29,66 +29,68 @@ public class GameMsgAddFriendDialog
   extends PopupWindow
   implements TextWatcher, View.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  private Activity a;
+  private View b;
+  private AppInterface c;
+  private String d;
+  private String e;
+  private EditText f;
+  private TextView g;
+  private Button h;
+  private String i;
+  private int j;
   
   public GameMsgAddFriendDialog() {}
   
-  public GameMsgAddFriendDialog(AppInterface paramAppInterface, Activity paramActivity, View paramView, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  public GameMsgAddFriendDialog(int paramInt1, AppInterface paramAppInterface, Activity paramActivity, View paramView, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3)
   {
-    super(paramView, paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    super(paramView, paramInt2, paramInt3);
+    this.j = paramInt1;
+    this.a = paramActivity;
+    this.b = paramView;
+    this.c = paramAppInterface;
+    this.d = paramString1;
+    this.e = paramString2;
+    this.i = paramString3;
   }
   
   private void a(String paramString1, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.b;
     if (localObject == null)
     {
       QLog.e("GameMsgAddFriendDialog", 1, "[initView], mRootView is NULL.");
       return;
     }
-    ((ImageView)((View)localObject).findViewById(2131364703)).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131362216));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131376459));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+    ((ImageView)((View)localObject).findViewById(2131430806)).setOnClickListener(this);
+    this.h = ((Button)this.b.findViewById(2131427797));
+    this.h.setOnClickListener(this);
+    this.f = ((EditText)this.b.findViewById(2131444692));
+    this.f.addTextChangedListener(this);
+    localObject = this.f;
     ((EditText)localObject).setSelection(((EditText)localObject).getText().length());
-    localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378784);
+    localObject = (TextView)this.b.findViewById(2131447463);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString2);
     localStringBuilder.append("添加好友");
     ((TextView)localObject).setText(localStringBuilder.toString());
-    paramString2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371685);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131381179));
+    paramString2 = (TextView)this.b.findViewById(2131439109);
+    this.g = ((TextView)this.b.findViewById(2131450228));
     if (TextUtils.isEmpty(paramString1)) {
       paramString2.setVisibility(8);
     } else {
       paramString2.setText(paramString1);
     }
-    paramString1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    paramString1 = this.c;
     if (paramString1 != null)
     {
-      paramString1 = ((IGameMsgManagerService)paramString1.getRuntimeService(IGameMsgManagerService.class, "")).getFriVerifyMsg(this.c);
+      paramString1 = ((IGameMsgManagerService)paramString1.getRuntimeService(IGameMsgManagerService.class, "")).getFriVerifyMsg(this.i);
       if (!TextUtils.isEmpty(paramString1))
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramString1);
+        this.f.setText(paramString1);
         paramString2 = new StringBuilder();
         paramString2.append("appId:");
-        paramString2.append(this.c);
+        paramString2.append(this.i);
         paramString2.append(",verifyMsg:");
         paramString2.append(paramString1);
         QLog.i("GameMsgAddFriendDialog", 1, paramString2.toString());
@@ -112,9 +114,9 @@ public class GameMsgAddFriendDialog
     }
   }
   
-  public void a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void a(int paramInt, AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    paramAppInterface = new GameMsgAddFriendDialog(paramAppInterface, paramActivity, LayoutInflater.from(paramActivity).inflate(2131559138, null), -1, CommUtils.a(460.0F, paramActivity.getResources()), paramString3, paramString4, paramString5);
+    paramAppInterface = new GameMsgAddFriendDialog(paramInt, paramAppInterface, paramActivity, LayoutInflater.from(paramActivity).inflate(2131624886, null), -1, CommUtils.a(460.0F, paramActivity.getResources()), paramString3, paramString4, paramString5);
     paramAppInterface.a(paramString1, paramString2);
     paramAppInterface.setFocusable(true);
     paramAppInterface.setInputMethodMode(1);
@@ -139,23 +141,23 @@ public class GameMsgAddFriendDialog
     localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
     localTranslateAnimation.setDuration(200L);
     getContentView().startAnimation(localTranslateAnimation);
-    this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this);
+    this.f.removeTextChangedListener(this);
     localTranslateAnimation.setAnimationListener(new GameMsgAddFriendDialog.2(this));
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2131364703)
+    int k = paramView.getId();
+    if (k == 2131430806)
     {
       dismiss();
     }
-    else if ((i == 2131362216) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_AndroidWidgetEditText != null))
+    else if ((k == 2131427797) && (this.c != null) && (this.f != null))
     {
-      CommUtils.a(this.jdField_a_of_type_AndroidAppActivity);
-      String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      CommUtils.a(this.a);
+      String str1 = this.f.getText().toString();
       String str2 = ((IGameMsgHandlerNameApi)QRoute.api(IGameMsgHandlerNameApi.class)).getGameMsgHandlerName();
-      ((GameCenterUnissoHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(str2)).a(1, this.b, this.jdField_a_of_type_JavaLangString, str1);
+      ((GameCenterUnissoHandler)this.c.getBusinessHandler(str2)).a(this.j, 1, this.e, this.d, str1);
       dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -172,11 +174,11 @@ public class GameMsgAddFriendDialog
     paramCharSequence.append("/");
     paramCharSequence.append(16);
     paramCharSequence = paramCharSequence.toString();
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.g;
     if (localTextView != null) {
       localTextView.setText(paramCharSequence);
     }
-    paramCharSequence = this.jdField_a_of_type_AndroidWidgetButton;
+    paramCharSequence = this.h;
     if (paramCharSequence == null) {
       return;
     }
@@ -190,7 +192,7 @@ public class GameMsgAddFriendDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.ui.GameMsgAddFriendDialog
  * JD-Core Version:    0.7.0.1
  */

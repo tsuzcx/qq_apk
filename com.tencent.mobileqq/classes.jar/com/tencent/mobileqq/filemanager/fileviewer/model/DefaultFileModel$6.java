@@ -10,14 +10,14 @@ class DefaultFileModel$6
   
   public void a()
   {
-    FileManagerUtil.a(this.a.a, this.a.d());
+    FileManagerUtil.a(this.a.i, this.a.y());
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel.6
  * JD-Core Version:    0.7.0.1
  */

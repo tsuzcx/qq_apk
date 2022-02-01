@@ -31,11 +31,11 @@ public class GrayTipsTroopManagerBizProcessor
     try
     {
       if (!(paramAppInterface instanceof QQAppInterface)) {
-        break label830;
+        break label831;
       }
       localQQAppInterface = (QQAppInterface)paramAppInterface;
       localTroopManager = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      l = localTroopManager.b(paramString1);
+      l = localTroopManager.j(paramString1);
       if (QLog.isColorLevel())
       {
         paramAppInterface = new StringBuilder();
@@ -60,7 +60,7 @@ public class GrayTipsTroopManagerBizProcessor
       if (l > 0L) {
         return;
       }
-      localQQAppInterface.getMessageFacade().d(paramString1, 8);
+      localQQAppInterface.getMessageFacade().m(paramString1, 8);
       paramBoolean = paramTroopInfo.isHomeworkTroop();
       int i = 0;
       if (!paramBoolean) {
@@ -68,7 +68,7 @@ public class GrayTipsTroopManagerBizProcessor
       }
       paramAppInterface = paramTroopInfo.troopuin;
       if (paramInt1 > 0) {
-        break label844;
+        break label845;
       }
       paramInt1 = i;
     }
@@ -86,23 +86,23 @@ public class GrayTipsTroopManagerBizProcessor
         for (;;)
         {
           label783:
-          label830:
+          label831:
           throw paramAppInterface;
         }
-        label844:
+        label845:
         continue;
-        label847:
+        label848:
         Object localObject1 = paramAppInterface;
         paramAppInterface = str;
         continue;
         continue;
-        label859:
+        label860:
         long l = paramInt1;
       }
     }
     HWTroopUtils.a(localQQAppInterface, paramAppInterface, paramInt1, paramLong);
     break label783;
-    paramAppInterface = localQQAppInterface.getApp().getString(2131689996);
+    paramAppInterface = localQQAppInterface.getApp().getString(2131886639);
     localUniteGrayTipParam = new UniteGrayTipParam(paramString1, paramString1, paramAppInterface, 1, -5021, 131073, paramLong);
     if (!TextUtils.isEmpty(paramString2))
     {
@@ -111,15 +111,15 @@ public class GrayTipsTroopManagerBizProcessor
       if (paramInt2 == 1)
       {
         localObject1 = localTroopManager;
-        str = ((TroopManager)localObject1).a(paramString3);
+        str = ((TroopManager)localObject1).i(paramString3);
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           paramAppInterface = (AppInterface)localObject2;
           if (!((String)localObject2).equals(paramString2)) {
-            break label847;
+            break label848;
           }
         }
-        paramString3 = ((TroopManager)localObject1).b(paramString3, paramString2);
+        paramString3 = ((TroopManager)localObject1).g(paramString3, paramString2);
         paramAppInterface = (AppInterface)localObject2;
         if (paramString3 != null)
         {
@@ -140,7 +140,7 @@ public class GrayTipsTroopManagerBizProcessor
           paramAppInterface = str;
           if (localDiscussionManager != null)
           {
-            paramString3 = localDiscussionManager.a(paramString3);
+            paramString3 = localDiscussionManager.d(paramString3);
             localObject1 = localObject2;
             paramAppInterface = str;
             if (paramString3 != null)
@@ -153,23 +153,23 @@ public class GrayTipsTroopManagerBizProcessor
         if (!TextUtils.isEmpty(paramAppInterface)) {
           paramAppInterface = String.format("%s通过群聊\"%s\"邀请你加入了本群", new Object[] { localObject1, paramAppInterface });
         } else {
-          paramAppInterface = localQQAppInterface.getApp().getString(2131689997, new Object[] { localObject1 });
+          paramAppInterface = localQQAppInterface.getApp().getString(2131886640, new Object[] { localObject1 });
         }
         paramString3 = localUniteGrayTipParam;
-        paramString3.c = paramAppInterface;
+        paramString3.g = paramAppInterface;
         localObject2 = new Bundle();
         ((Bundle)localObject2).putInt("key_action", 5);
         ((Bundle)localObject2).putString("troop_mem_uin", paramString2);
         ((Bundle)localObject2).putBoolean("need_update_nick", false);
         paramString3.a(0, ((String)localObject1).length(), (Bundle)localObject2);
-        paramString2 = HardCodeUtil.a(2131715213);
+        paramString2 = HardCodeUtil.a(2131912696);
         paramString3 = new StringBuilder();
         paramString3.append(paramAppInterface);
         paramString3.append("，");
         paramString3.append(paramString2);
         paramString3.append("。");
         paramAppInterface = paramString3.toString();
-        localUniteGrayTipParam.c = paramAppInterface;
+        localUniteGrayTipParam.g = paramAppInterface;
         paramString3 = new Bundle();
         paramString3.putInt("key_action", 19);
         paramString3.putString("troop_mem_uin", localQQAppInterface.getCurrentAccountUin());
@@ -182,7 +182,7 @@ public class GrayTipsTroopManagerBizProcessor
         paramAppInterface.initGrayTipMsg(localQQAppInterface, localUniteGrayTipParam);
         paramAppInterface.isread = true;
         if (paramInt1 > 0) {
-          break label859;
+          break label860;
         }
         l = 0L;
         paramAppInterface.shmsgseq = l;
@@ -201,7 +201,7 @@ public class GrayTipsTroopManagerBizProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.GrayTipsTroopManagerBizProcessor
  * JD-Core Version:    0.7.0.1
  */

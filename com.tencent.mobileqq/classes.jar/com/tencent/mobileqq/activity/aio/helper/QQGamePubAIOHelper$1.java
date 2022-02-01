@@ -11,12 +11,12 @@ class QQGamePubAIOHelper$1
   
   public void run()
   {
-    ((IQQGameTempRelyApi)QRoute.api(IQQGameTempRelyApi.class)).addNightModeMask(QQGamePubAIOHelper.a(this.this$0).a);
+    ((IQQGameTempRelyApi)QRoute.api(IQQGameTempRelyApi.class)).addNightModeMask(QQGamePubAIOHelper.a(this.this$0).f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.1
  * JD-Core Version:    0.7.0.1
  */

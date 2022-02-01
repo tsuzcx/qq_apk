@@ -21,22 +21,22 @@ public final class BarrageController$startBarrageItemAnimation$2
   
   public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView.getX();
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView.getWidth();
+    float f1 = this.b.getX();
+    float f2 = this.b.getWidth();
     int i = 0;
     if (f1 + f2 <= 0) {
       i = 1;
     }
     if (i != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController.a().removeView((View)this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageItemView);
-      paramAnimator = BarrageController.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageController).iterator();
+      this.a.g().removeView((View)this.b);
+      paramAnimator = BarrageController.c(this.a).iterator();
       Intrinsics.checkExpressionValueIsNotNull(paramAnimator, "animatorList.iterator()");
       while (paramAnimator.hasNext())
       {
         Object localObject = paramAnimator.next();
         Intrinsics.checkExpressionValueIsNotNull(localObject, "animatorListIterator.next()");
-        if (Intrinsics.areEqual(((BarrageController.AnimatorState)localObject).a(), this.jdField_a_of_type_AndroidAnimationValueAnimator)) {
+        if (Intrinsics.areEqual(((BarrageController.AnimatorState)localObject).b(), this.c)) {
           paramAnimator.remove();
         }
       }
@@ -50,7 +50,7 @@ public final class BarrageController$startBarrageItemAnimation$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageController.startBarrageItemAnimation.2
  * JD-Core Version:    0.7.0.1
  */

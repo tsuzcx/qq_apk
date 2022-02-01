@@ -10,7 +10,7 @@ class ProfileTitleContainer$8
 {
   ProfileTitleContainer$8(ProfileTitleContainer paramProfileTitleContainer, IPhoneContactService paramIPhoneContactService, boolean paramBoolean, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
@@ -26,7 +26,7 @@ class ProfileTitleContainer$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.container.ProfileTitleContainer.8
  * JD-Core Version:    0.7.0.1
  */

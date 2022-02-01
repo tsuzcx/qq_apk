@@ -20,72 +20,9 @@ import org.xmlpull.v1.XmlPullParser;
 
 public class ArNativeSoLoader
 {
-  public static boolean a;
-  private static final byte[] a;
+  public static boolean a = false;
   public static boolean b = false;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = new byte[0];
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static byte a(String paramString)
-  {
-    if (paramString == null) {
-      return -1;
-    }
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(a());
-    ((StringBuilder)localObject1).append("/lib");
-    ((StringBuilder)localObject1).append(paramString);
-    ((StringBuilder)localObject1).append(".so");
-    localObject1 = ((StringBuilder)localObject1).toString();
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("start arNativeSo: ");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.i("ArConfig_ArNativeSoLoader", 2, ((StringBuilder)localObject2).toString());
-    }
-    Object localObject2 = new File((String)localObject1);
-    byte b1;
-    if ((!jdField_a_of_type_Boolean) && (((File)localObject2).exists()))
-    {
-      try
-      {
-        System.load((String)localObject1);
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("load ");
-          ((StringBuilder)localObject2).append((String)localObject1);
-          ((StringBuilder)localObject2).append(" success!");
-          QLog.i("ArConfig_ArNativeSoLoader", 2, ((StringBuilder)localObject2).toString());
-        }
-        b1 = 0;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ArConfig_ArNativeSoLoader", 2, "load from ar dir failed.", localUnsatisfiedLinkError);
-        }
-        b1 = -3;
-      }
-    }
-    else
-    {
-      byte b2 = -2;
-      b1 = b2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("ArConfig_ArNativeSoLoader", 2, "no ar so in ar dir");
-        b1 = b2;
-      }
-    }
-    a(paramString, b1);
-    return b1;
-  }
+  private static final byte[] c = new byte[0];
   
   public static String a()
   {
@@ -182,10 +119,10 @@ public class ArNativeSoLoader
       ((StringBuilder)localObject3).append(", exist=");
       ((StringBuilder)localObject3).append(((File)???).exists());
       ((StringBuilder)localObject3).append(", isUncompressZip=");
-      ((StringBuilder)localObject3).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject3).append(a);
       QLog.d("ArConfig_ArNativeSoLoader", 2, ((StringBuilder)localObject3).toString());
     }
-    boolean bool2 = jdField_a_of_type_Boolean;
+    boolean bool2 = a;
     boolean bool1 = false;
     if ((!bool2) && (((File)???).exists())) {
       if (!paramBoolean) {
@@ -194,7 +131,7 @@ public class ArNativeSoLoader
     }
     for (;;)
     {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+      synchronized (c)
       {
         localObject3 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4);
         StringBuilder localStringBuilder = new StringBuilder();
@@ -229,7 +166,74 @@ public class ArNativeSoLoader
     }
   }
   
-  public static byte b(String arg0)
+  public static boolean b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append("/lib");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".so");
+    return new File(localStringBuilder.toString()).exists();
+  }
+  
+  public static byte c(String paramString)
+  {
+    if (paramString == null) {
+      return -1;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(a());
+    ((StringBuilder)localObject1).append("/lib");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(".so");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("start arNativeSo: ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("ArConfig_ArNativeSoLoader", 2, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject2 = new File((String)localObject1);
+    byte b1;
+    if ((!a) && (((File)localObject2).exists()))
+    {
+      try
+      {
+        System.load((String)localObject1);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("load ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(" success!");
+          QLog.i("ArConfig_ArNativeSoLoader", 2, ((StringBuilder)localObject2).toString());
+        }
+        b1 = 0;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("ArConfig_ArNativeSoLoader", 2, "load from ar dir failed.", localUnsatisfiedLinkError);
+        }
+        b1 = -3;
+      }
+    }
+    else
+    {
+      byte b2 = -2;
+      b1 = b2;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("ArConfig_ArNativeSoLoader", 2, "no ar so in ar dir");
+        b1 = b2;
+      }
+    }
+    a(paramString, b1);
+    return b1;
+  }
+  
+  public static byte d(String arg0)
   {
     boolean bool = QLog.isColorLevel();
     byte b1 = 2;
@@ -241,7 +245,7 @@ public class ArNativeSoLoader
       ((StringBuilder)localObject1).append(???);
       QLog.d("ArConfig_ArNativeSoLoader", 2, ((StringBuilder)localObject1).toString());
     }
-    jdField_a_of_type_Boolean = true;
+    a = true;
     for (;;)
     {
       try
@@ -266,7 +270,7 @@ public class ArNativeSoLoader
             localIOException.printStackTrace();
           }
           if ((??? != null) && (a(???, (HashMap)localObject3))) {
-            synchronized (jdField_a_of_type_ArrayOfByte)
+            synchronized (c)
             {
               Iterator localIterator = ((HashMap)localObject3).entrySet().iterator();
               if (!localIterator.hasNext()) {
@@ -314,12 +318,12 @@ public class ArNativeSoLoader
           }
           b1 = 0;
         }
-        jdField_a_of_type_Boolean = false;
+        a = false;
         return b1;
       }
       catch (IOException ???)
       {
-        jdField_a_of_type_Boolean = false;
+        a = false;
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -337,20 +341,10 @@ public class ArNativeSoLoader
       b1 = 0;
     }
   }
-  
-  public static boolean b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append("/lib");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".so");
-    return new File(localStringBuilder.toString()).exists();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoLoader
  * JD-Core Version:    0.7.0.1
  */

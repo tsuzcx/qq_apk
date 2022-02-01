@@ -11,10 +11,10 @@ class QRLoginMgrActivity$5
   {
     try
     {
-      if ((QRLoginMgrActivity.a(this.this$0) != null) && (QRLoginMgrActivity.a(this.this$0).isShowing()))
+      if ((QRLoginMgrActivity.b(this.this$0) != null) && (QRLoginMgrActivity.b(this.this$0).isShowing()))
       {
-        QRLoginMgrActivity.a(this.this$0).dismiss();
-        QRLoginMgrActivity.a(this.this$0).cancel();
+        QRLoginMgrActivity.b(this.this$0).dismiss();
+        QRLoginMgrActivity.b(this.this$0).cancel();
       }
     }
     catch (Throwable localThrowable)

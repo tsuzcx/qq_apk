@@ -8,8 +8,6 @@ import java.util.List;
 
 public abstract interface IGameRoomView
 {
-  public abstract Activity a();
-  
   public abstract void a(int paramInt, String paramString);
   
   public abstract void a(long paramLong, int paramInt, String paramString1, String paramString2);
@@ -32,8 +30,6 @@ public abstract interface IGameRoomView
   
   public abstract void a(List<MemberVideoDisplayInfo> paramList);
   
-  public abstract void b();
-  
   public abstract void b(int paramInt);
   
   public abstract void b(int paramInt, String paramString);
@@ -42,17 +38,21 @@ public abstract interface IGameRoomView
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public abstract Activity d();
   
   public abstract void f();
   
   public abstract void g();
   
   public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
 }
 
 

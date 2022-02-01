@@ -13,11 +13,7 @@ public abstract interface ITempApi
 {
   public abstract void addTinySessionKey(String paramString1, String paramString2, byte[] paramArrayOfByte);
   
-  public abstract boolean getHippySwitch();
-  
   public abstract Intent getIntentFromMsg(Context paramContext, Message paramMessage, AppInterface paramAppInterface);
-  
-  public abstract void openQQGameCenterByHippy(Context paramContext, String paramString1, String paramString2);
   
   public abstract void refreshAppBadge(AppInterface paramAppInterface);
   
@@ -25,7 +21,7 @@ public abstract interface ITempApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.ITempApi
  * JD-Core Version:    0.7.0.1
  */

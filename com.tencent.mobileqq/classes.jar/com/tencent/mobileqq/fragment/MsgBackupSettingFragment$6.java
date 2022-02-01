@@ -30,30 +30,30 @@ class MsgBackupSettingFragment$6
     ((StringBuilder)localObject).append("createSession end, session = ");
     ((StringBuilder)localObject).append(l);
     QLog.d("MsgBackup", 1, ((StringBuilder)localObject).toString());
-    i = this.this$0.a.start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
+    i = this.this$0.a.start(l, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.d(this.this$0), MsgBackupSettingFragment.e(this.this$0));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("start ret = ");
     ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append(", ip = ");
-    ((StringBuilder)localObject).append(MsgBackupSettingFragment.a(this.this$0)[0]);
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.c(this.this$0)[0]);
     ((StringBuilder)localObject).append(", udpport = ");
-    ((StringBuilder)localObject).append(MsgBackupSettingFragment.a(this.this$0));
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.d(this.this$0));
     ((StringBuilder)localObject).append(", tcpport = ");
-    ((StringBuilder)localObject).append(MsgBackupSettingFragment.b(this.this$0));
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.e(this.this$0));
     QLog.d("MsgBackup", 1, ((StringBuilder)localObject).toString());
-    localBuilder.c(MsgBackupSettingFragment.b(this.this$0)[1]);
-    localBuilder.b(MsgBackupSettingFragment.b(this.this$0)[0]);
-    localBuilder.a(MsgBackupSettingFragment.a(this.this$0)[0]);
-    localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.b(this.this$0).intValue()));
-    localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.a(this.this$0).intValue()));
+    localBuilder.c(MsgBackupSettingFragment.f(this.this$0)[1]);
+    localBuilder.b(MsgBackupSettingFragment.f(this.this$0)[0]);
+    localBuilder.a(MsgBackupSettingFragment.c(this.this$0)[0]);
+    localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.e(this.this$0).intValue()));
+    localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.d(this.this$0).intValue()));
     localBuilder.a(localArrayList);
     localBuilder.a(4);
-    MsgBackupSettingFragment.a(this.this$0).a(localBuilder.a(), 3, true);
+    MsgBackupSettingFragment.g(this.this$0).a(localBuilder.a(), 3, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MsgBackupSettingFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -28,54 +28,54 @@ class RIJVideoHandleClick$12
   public void onClick(View paramView)
   {
     AbsBaseArticleInfo localAbsBaseArticleInfo;
-    if (paramView.getId() == 2131367807)
+    if (paramView.getId() == 2131434382)
     {
-      localAbsBaseArticleInfo = ((WeishiGridTwoItemViewHolder)paramView.getTag()).a;
-      localObject = ((WeishiGridTwoItemViewHolder)paramView.getTag()).b.innerUniqueID;
+      localAbsBaseArticleInfo = ((WeishiGridTwoItemViewHolder)paramView.getTag()).k;
+      localObject = ((WeishiGridTwoItemViewHolder)paramView.getTag()).l.innerUniqueID;
     }
     else
     {
-      localAbsBaseArticleInfo = ((WeishiGridTwoItemViewHolder)paramView.getTag()).b;
-      localObject = ((WeishiGridTwoItemViewHolder)paramView.getTag()).a.innerUniqueID;
+      localAbsBaseArticleInfo = ((WeishiGridTwoItemViewHolder)paramView.getTag()).l;
+      localObject = ((WeishiGridTwoItemViewHolder)paramView.getTag()).k.innerUniqueID;
     }
     VideoPlayParam localVideoPlayParam = RIJConfigVideoItem.a(localAbsBaseArticleInfo);
-    localVideoPlayParam.n = ((String)localObject);
-    localVideoPlayParam.l = VideoReporter.b();
-    if ((RIJVideoHandleClick.a(this.a).a().a() != null) && (!TextUtils.isEmpty(RIJVideoHandleClick.a(this.a).a().a().b()))) {
-      localVideoPlayParam.m = RIJVideoHandleClick.a(this.a).a().a().b();
+    localVideoPlayParam.H = ((String)localObject);
+    localVideoPlayParam.E = VideoReporter.b();
+    if ((RIJVideoHandleClick.b(this.a).a().z() != null) && (!TextUtils.isEmpty(RIJVideoHandleClick.b(this.a).a().z().C()))) {
+      localVideoPlayParam.F = RIJVideoHandleClick.b(this.a).a().z().C();
     }
     Object localObject = new int[2];
     paramView.getLocationOnScreen((int[])localObject);
-    localVideoPlayParam.h = localObject[0];
-    localVideoPlayParam.i = localObject[1];
-    localVideoPlayParam.j = paramView.getWidth();
-    localVideoPlayParam.k = paramView.getHeight();
+    localVideoPlayParam.I = localObject[0];
+    localVideoPlayParam.J = localObject[1];
+    localVideoPlayParam.K = paramView.getWidth();
+    localVideoPlayParam.L = paramView.getHeight();
     if (localAbsBaseArticleInfo.isVideoItemForCommonUrlJump())
     {
-      RIJJumpUtils.a(RIJVideoHandleClick.a(this.a).a().a(), localAbsBaseArticleInfo.mVideoAdsJumpUrl);
-      RIJVideoReportManager.a(localVideoPlayParam, localAbsBaseArticleInfo, RIJVideoHandleClick.a(this.a));
+      RIJJumpUtils.c(RIJVideoHandleClick.b(this.a).a().A(), localAbsBaseArticleInfo.mVideoAdsJumpUrl);
+      RIJVideoReportManager.a(localVideoPlayParam, localAbsBaseArticleInfo, RIJVideoHandleClick.b(this.a));
       return;
     }
     if (localAbsBaseArticleInfo.isVideoItemForWeishiJump())
     {
-      if (WeishiGuideUtils.a(RIJVideoHandleClick.a(this.a).a().a()))
+      if (WeishiGuideUtils.a(RIJVideoHandleClick.b(this.a).a().A()))
       {
-        VideoFeedsWeiShiUtils.a(RIJVideoHandleClick.a(this.a).a().a(), "video_type_videopublic");
+        VideoFeedsWeiShiUtils.a(RIJVideoHandleClick.b(this.a).a().A(), "video_type_videopublic");
       }
       else
       {
-        QQToast.a(RIJVideoHandleClick.a(this.a).a().a(), -1, 2131717893, 0).b(RIJVideoHandleClick.a(this.a).a().a().getResources().getDimensionPixelSize(2131299168));
-        VideoFeedsWeiShiUtils.b(RIJVideoHandleClick.a(this.a).a().a(), "video_type_videopublic");
+        QQToast.makeText(RIJVideoHandleClick.b(this.a).a().A(), -1, 2131915367, 0).show(RIJVideoHandleClick.b(this.a).a().A().getResources().getDimensionPixelSize(2131299920));
+        VideoFeedsWeiShiUtils.b(RIJVideoHandleClick.b(this.a).a().A(), "video_type_videopublic");
       }
-      RIJVideoReportManager.a(localVideoPlayParam, localAbsBaseArticleInfo, RIJVideoHandleClick.a(this.a));
+      RIJVideoReportManager.a(localVideoPlayParam, localAbsBaseArticleInfo, RIJVideoHandleClick.b(this.a));
       return;
     }
-    RIJVideoHandleClick.a(this.a).a().a().a(localVideoPlayParam, localAbsBaseArticleInfo, false, true);
+    RIJVideoHandleClick.b(this.a).a().v().a(localVideoPlayParam, localAbsBaseArticleInfo, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.12
  * JD-Core Version:    0.7.0.1
  */

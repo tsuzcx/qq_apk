@@ -4,20 +4,14 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 
 public class QVipFriendTag2Config
 {
-  public String a;
-  public boolean a;
-  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
-  public String c = "https://club.vip.qq.com/interact/selector?from=setting";
-  
-  public QVipFriendTag2Config()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131711214);
-  }
+  public boolean a = true;
+  public String b = HardCodeUtil.a(2131908869);
+  public String c = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
+  public String d = "https://club.vip.qq.com/interact/selector?from=setting";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipFriendTag2Config
  * JD-Core Version:    0.7.0.1
  */

@@ -27,29 +27,29 @@ import mqq.os.MqqHandler;
 public class PopDeleteState
   extends BaseState
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
-  ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372942);
-  private TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364270);
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = (DiniFlyAnimationView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366851);
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private PopAnimState jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState;
-  private DiniFlyAnimationView b = (DiniFlyAnimationView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372941);
+  ObjectAnimator d;
+  private DiniFlyAnimationView e = (DiniFlyAnimationView)this.b.findViewById(2131433178);
+  private DiniFlyAnimationView f = (DiniFlyAnimationView)this.b.findViewById(2131440505);
+  private View g = this.b.findViewById(2131440506);
+  private TextView h = (TextView)this.b.findViewById(2131430287);
+  private LottieDrawable i;
+  private PopAnimState j;
+  private int k = this.a.getResources().getDisplayMetrics().heightPixels;
   
   protected PopDeleteState(RelativeLayout paramRelativeLayout, StateContext paramStateContext)
   {
     super(paramRelativeLayout, paramStateContext);
-    LottieHelper.a(this.jdField_a_of_type_AndroidContentContext, "emoc/pop_anim_del_confirm.json", null, 50, 50, 0, new PopDeleteState.1(this));
+    LottieHelper.a(this.a, "emoc/pop_anim_del_confirm.json", null, 50, 50, 0, new PopDeleteState.1(this));
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.f) {
+    if (this.c.m) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.f = true;
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate.a();
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig.typeface).b();
+    this.c.m = true;
+    this.j.e.a();
+    this.j.d.a(this.c.c.typeface).b();
     if (QLog.isColorLevel()) {
       QLog.d("PopDeleteState", 2, "pausePopAnim");
     }
@@ -57,10 +57,10 @@ public class PopDeleteState
   
   private void c()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.f) {
+    if (!this.c.m) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate.b();
+    this.j.e.b();
     ThreadManager.getUIHandler().postDelayed(new PopDeleteState.2(this), 300L);
     if (QLog.isColorLevel()) {
       QLog.d("PopDeleteState", 2, "resumePopAnim");
@@ -69,25 +69,25 @@ public class PopDeleteState
   
   private void d()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.g == null) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null)
+    if (this.d == null)
     {
-      float f = ViewUtils.b(95.0F);
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { f });
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(400L);
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new PopDeleteState.3(this));
+      float f1 = ViewUtils.dpToPx(95.0F);
+      this.d = ObjectAnimator.ofFloat(this.g, "translationY", new float[] { f1 });
+      this.d.setDuration(400L);
+      this.d.addListener(new PopDeleteState.3(this));
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    this.d.start();
   }
   
   protected void a()
   {
-    this.b.setImageResource(2130839634);
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().height = ViewUtils.b(85.0F);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839635);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    this.f.setImageResource(2130840103);
+    this.g.getLayoutParams().height = ViewUtils.dpToPx(85.0F);
+    this.g.setBackgroundResource(2130840104);
+    this.g.requestLayout();
   }
   
   public void a(BaseState paramBaseState)
@@ -97,25 +97,25 @@ public class PopDeleteState
       QLog.d("PopDeleteState", 1, new Exception(), new Object[] { "preState error, ", paramBaseState });
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState = ((PopAnimState)paramBaseState);
-    paramBaseState = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    this.j = ((PopAnimState)paramBaseState);
+    paramBaseState = this.i;
     if (paramBaseState != null) {
-      this.b.setImageDrawable(paramBaseState);
+      this.f.setImageDrawable(paramBaseState);
     }
-    PopOutAnimViewHelper.a(0, new View[] { this.b });
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().height = ViewUtils.b(95.0F);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839636);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
-    PopOutAnimViewHelper.a(4, new View[] { this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView });
+    PopOutAnimViewHelper.a(0, new View[] { this.f });
+    this.g.getLayoutParams().height = ViewUtils.dpToPx(95.0F);
+    this.g.setBackgroundResource(2130840105);
+    this.g.requestLayout();
+    PopOutAnimViewHelper.a(4, new View[] { this.e });
     b();
-    int i = PopOutEmoticonUtil.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_AndroidWidgetEditText);
-    paramBaseState = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramBaseState.setMargins(0, 0, 0, i);
-    if (!this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.e)
+    int m = PopOutEmoticonUtil.a(this.k, this.c.f);
+    paramBaseState = (RelativeLayout.LayoutParams)this.h.getLayoutParams();
+    this.h.setVisibility(0);
+    paramBaseState.setMargins(0, 0, 0, m);
+    if (!this.c.l)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.e = true;
-      PopOutAnimViewHelper.a("0X800BBA2", this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo);
+      this.c.l = true;
+      PopOutAnimViewHelper.a("0X800BBA2", this.c.b);
     }
   }
   
@@ -130,19 +130,19 @@ public class PopDeleteState
     if ((paramBaseState instanceof PopAnimState))
     {
       a();
-      this.jdField_a_of_type_ComTencentMobileqqPopanimStateStateContext.f = false;
-      PopOutAnimViewHelper.a(0, new View[] { this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView });
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.c.m = false;
+      PopOutAnimViewHelper.a(0, new View[] { this.e });
+      this.h.setVisibility(4);
       return;
     }
     d();
-    PopOutAnimViewHelper.a(4, new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView });
-    this.jdField_a_of_type_ComTencentMobileqqPopanimStatePopAnimState.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate.c();
+    PopOutAnimViewHelper.a(4, new View[] { this.h, this.e });
+    this.j.e.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.state.PopDeleteState
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,8 @@ import com.tencent.open.base.img.ImageCache;
 public class QQGameImageLoader
 {
   protected static QQGameImageLoader a;
-  protected static final byte[] a;
-  protected LruCache<String, Bitmap> a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
-  
-  protected QQGameImageLoader()
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(10);
-  }
+  protected static final byte[] b = new byte[1];
+  protected LruCache<String, Bitmap> c = new LruCache(10);
   
   /* Error */
   public static Bitmap a(String paramString, int paramInt1, int paramInt2)
@@ -30,43 +20,43 @@ public class QQGameImageLoader
     //   1: astore 7
     //   3: aload_0
     //   4: ifnull +244 -> 248
-    //   7: new 31	android/graphics/BitmapFactory$Options
+    //   7: new 33	android/graphics/BitmapFactory$Options
     //   10: dup
-    //   11: invokespecial 32	android/graphics/BitmapFactory$Options:<init>	()V
+    //   11: invokespecial 34	android/graphics/BitmapFactory$Options:<init>	()V
     //   14: astore 8
     //   16: aload 8
     //   18: iconst_1
-    //   19: putfield 36	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   22: new 38	java/io/BufferedInputStream
+    //   19: putfield 38	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   22: new 40	java/io/BufferedInputStream
     //   25: dup
-    //   26: new 40	java/io/FileInputStream
+    //   26: new 42	java/io/FileInputStream
     //   29: dup
     //   30: aload_0
-    //   31: invokespecial 43	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   34: invokespecial 46	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   31: invokespecial 45	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   34: invokespecial 48	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   37: astore 6
     //   39: aload 6
     //   41: astore 5
     //   43: aload 6
     //   45: aconst_null
     //   46: aload 8
-    //   48: invokestatic 52	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   48: invokestatic 54	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   51: pop
     //   52: aload 6
     //   54: astore 5
     //   56: aload 8
-    //   58: getfield 56	android/graphics/BitmapFactory$Options:outWidth	I
+    //   58: getfield 58	android/graphics/BitmapFactory$Options:outWidth	I
     //   61: istore_3
     //   62: aload 6
     //   64: astore 5
     //   66: aload 8
-    //   68: getfield 59	android/graphics/BitmapFactory$Options:outHeight	I
+    //   68: getfield 61	android/graphics/BitmapFactory$Options:outHeight	I
     //   71: istore 4
     //   73: aload 6
     //   75: astore 5
-    //   77: new 31	android/graphics/BitmapFactory$Options
+    //   77: new 33	android/graphics/BitmapFactory$Options
     //   80: dup
-    //   81: invokespecial 32	android/graphics/BitmapFactory$Options:<init>	()V
+    //   81: invokespecial 34	android/graphics/BitmapFactory$Options:<init>	()V
     //   84: astore 8
     //   86: aload 6
     //   88: astore 5
@@ -77,41 +67,41 @@ public class QQGameImageLoader
     //   95: iload 4
     //   97: iload_2
     //   98: idiv
-    //   99: invokestatic 65	java/lang/Math:max	(II)I
-    //   102: putfield 68	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   99: invokestatic 67	java/lang/Math:max	(II)I
+    //   102: putfield 70	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   105: aload 6
     //   107: astore 5
     //   109: aload 8
     //   111: iconst_0
-    //   112: putfield 36	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   112: putfield 38	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   115: aload 6
     //   117: astore 5
     //   119: aload 8
     //   121: iconst_1
-    //   122: putfield 71	android/graphics/BitmapFactory$Options:inPurgeable	Z
+    //   122: putfield 73	android/graphics/BitmapFactory$Options:inPurgeable	Z
     //   125: aload 6
     //   127: astore 5
     //   129: aload 6
-    //   131: invokevirtual 76	java/io/InputStream:close	()V
+    //   131: invokevirtual 78	java/io/InputStream:close	()V
     //   134: aload 6
     //   136: astore 5
-    //   138: new 38	java/io/BufferedInputStream
+    //   138: new 40	java/io/BufferedInputStream
     //   141: dup
-    //   142: new 40	java/io/FileInputStream
+    //   142: new 42	java/io/FileInputStream
     //   145: dup
     //   146: aload_0
-    //   147: invokespecial 43	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   150: invokespecial 46	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   147: invokespecial 45	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   150: invokespecial 48	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   153: astore_0
     //   154: aload_0
     //   155: aconst_null
     //   156: aload 8
-    //   158: invokestatic 52	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   158: invokestatic 54	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   161: astore 6
     //   163: aload 6
     //   165: astore 5
     //   167: aload_0
-    //   168: invokevirtual 76	java/io/InputStream:close	()V
+    //   168: invokevirtual 78	java/io/InputStream:close	()V
     //   171: aload 6
     //   173: areturn
     //   174: astore 6
@@ -138,20 +128,20 @@ public class QQGameImageLoader
     //   213: aload_0
     //   214: astore 5
     //   216: aload 6
-    //   218: invokevirtual 79	java/lang/Throwable:printStackTrace	()V
+    //   218: invokevirtual 81	java/lang/Throwable:printStackTrace	()V
     //   221: aload_0
     //   222: ifnull +11 -> 233
     //   225: aload 7
     //   227: astore 5
     //   229: aload_0
-    //   230: invokevirtual 76	java/io/InputStream:close	()V
+    //   230: invokevirtual 78	java/io/InputStream:close	()V
     //   233: aconst_null
     //   234: areturn
     //   235: astore_0
     //   236: aload 5
     //   238: ifnull +8 -> 246
     //   241: aload 5
-    //   243: invokevirtual 76	java/io/InputStream:close	()V
+    //   243: invokevirtual 78	java/io/InputStream:close	()V
     //   246: aload_0
     //   247: athrow
     //   248: aconst_null
@@ -211,15 +201,15 @@ public class QQGameImageLoader
   
   public static QQGameImageLoader a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameImageLoader == null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    if (a == null) {
+      synchronized (b)
       {
-        if (jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameImageLoader == null) {
-          jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameImageLoader = new QQGameImageLoader();
+        if (a == null) {
+          a = new QQGameImageLoader();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqQqgamepubUtilsQQGameImageLoader;
+    return a;
   }
   
   public Bitmap a(String arg1)
@@ -228,9 +218,9 @@ public class QQGameImageLoader
       return null;
     }
     Object localObject1 = MD5Utils.encodeHexStr(???);
-    synchronized (jdField_a_of_type_ArrayOfByte)
+    synchronized (b)
     {
-      localObject1 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localObject1);
+      localObject1 = (Bitmap)this.c.get(localObject1);
       return localObject1;
     }
   }
@@ -242,7 +232,7 @@ public class QQGameImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.QQGameImageLoader
  * JD-Core Version:    0.7.0.1
  */

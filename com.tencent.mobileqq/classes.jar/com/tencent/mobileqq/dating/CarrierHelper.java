@@ -36,79 +36,18 @@ import mqq.os.MqqHandler;
 public class CarrierHelper
   implements View.OnClickListener
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131701671), HardCodeUtil.a(2131701674), HardCodeUtil.a(2131701677), HardCodeUtil.a(2131701675), HardCodeUtil.a(2131701672), HardCodeUtil.a(2131701671), HardCodeUtil.a(2131701676) };
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private CarrierADView jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView;
-  private ArrayList<CarrierHelper.EntranceConfig> jdField_a_of_type_JavaUtilArrayList;
-  private List<AdData> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
-  
-  public CarrierHelper.EntranceConfig a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null)
-    {
-      int i = this.b;
-      CarrierHelper.EntranceConfig localEntranceConfig;
-      if (i == 2)
-      {
-        localObject = ((ArrayList)localObject).iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localEntranceConfig = (CarrierHelper.EntranceConfig)((Iterator)localObject).next();
-        } while (localEntranceConfig.type != 2);
-        return localEntranceConfig;
-      }
-      if (i == 1)
-      {
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localEntranceConfig = (CarrierHelper.EntranceConfig)((Iterator)localObject).next();
-          if (localEntranceConfig.type == 1) {
-            return localEntranceConfig;
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView;
-      if (localObject != null)
-      {
-        if (((CarrierADView)localObject).getVisibility() != 0) {
-          return;
-        }
-        if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-          return;
-        }
-        localObject = new LinkedList();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          AdData localAdData = (AdData)localIterator.next();
-          if ((localAdData != null) && (!((LinkedList)localObject).contains(Integer.valueOf(localAdData.ad_source)))) {
-            ((LinkedList)localObject).add(Integer.valueOf(localAdData.ad_source));
-          }
-        }
-        ThreadManager.getSubThreadHandler().post(new CarrierHelper.1(this, (LinkedList)localObject));
-      }
-    }
-  }
+  private static final String[] c = { HardCodeUtil.a(2131899693), HardCodeUtil.a(2131899696), HardCodeUtil.a(2131899699), HardCodeUtil.a(2131899697), HardCodeUtil.a(2131899694), HardCodeUtil.a(2131899693), HardCodeUtil.a(2131899698) };
+  int a;
+  float b;
+  private int d;
+  private QQAppInterface e;
+  private View.OnClickListener f;
+  private CarrierADView g;
+  private int h;
+  private List<AdData> i;
+  private ArrayList<CarrierHelper.EntranceConfig> j;
+  private Activity k;
+  private boolean l;
   
   public void a(int paramInt, Object paramObject)
   {
@@ -119,49 +58,49 @@ public class CarrierHelper
         if (paramInt != 2) {
           return;
         }
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView;
+        paramObject = this.g;
         if (paramObject != null)
         {
-          List localList = this.jdField_a_of_type_JavaUtilList;
+          List localList = this.i;
           if (localList != null)
           {
-            paramInt = this.c;
+            paramInt = this.h;
             if (paramInt != -1) {
               paramObject.setCarrierData(localList, paramInt, this);
             }
           }
         }
       }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView != null) && ((paramObject instanceof Boolean)))
+      else if ((this.g != null) && ((paramObject instanceof Boolean)))
       {
         if (((Boolean)paramObject).booleanValue())
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.i();
+          this.g.j();
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.j();
+        this.g.k();
       }
     }
-    else if ((this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView != null) && ((paramObject instanceof Boolean)))
+    else if ((this.g != null) && ((paramObject instanceof Boolean)))
     {
       if (((Boolean)paramObject).booleanValue())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.setVisibility(0);
+        this.g.setVisibility(0);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.setVisibility(8);
+      this.g.setVisibility(8);
     }
   }
   
   public void a(View paramView, AdData paramAdData)
   {
-    Object localObject = (ImageView)paramView.findViewById(2131362129);
-    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131362150);
-    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131362169);
-    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131362149);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131362088);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131362089);
-    View localView = paramView.findViewById(2131364358);
+    Object localObject = (ImageView)paramView.findViewById(2131427708);
+    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131427729);
+    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131427750);
+    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131427728);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131427666);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131427667);
+    View localView = paramView.findViewById(2131430386);
     localBorderTextView.setTextSize(1, 11.0F);
     localBorderTextView.setBorderWidth(Math.round(localBorderTextView.getResources().getDisplayMetrics().density * 1.0F));
     ((ImageView)localObject).setImageDrawable(URLDrawableHelper.getDrawable(paramAdData.img_url));
@@ -177,65 +116,65 @@ public class CarrierHelper
       localBorderTextView.setVisibility(4);
     }
     boolean bool = TextUtils.isEmpty(paramAdData.distance);
-    int i = 89;
+    int m = 89;
     if (!bool)
     {
       localSingleLineTextView2.setText(paramAdData.distance);
       localSingleLineTextView2.setVisibility(0);
-      i = 89 + (Math.round(localBorderTextView.getPaint().measureText(paramAdData.distance)) + 5);
+      m = 89 + (Math.round(localBorderTextView.getPaint().measureText(paramAdData.distance)) + 5);
     }
     else
     {
       localSingleLineTextView2.setVisibility(8);
     }
-    localSingleLineTextView1.setMaxWidth((int)(this.jdField_a_of_type_Int - i * this.jdField_a_of_type_Float));
+    localSingleLineTextView1.setMaxWidth((int)(this.a - m * this.b));
     localSingleLineTextView1.setText(paramAdData.title);
     localTextView1.setText(paramAdData.content);
     localTextView2.setText(paramAdData.content2);
     if (paramAdData.ad_source >= 0)
     {
-      i = paramAdData.ad_source;
-      localObject = jdField_a_of_type_ArrayOfJavaLangString;
-      if (i < localObject.length)
+      m = paramAdData.ad_source;
+      localObject = c;
+      if (m < localObject.length)
       {
         localObject = localObject[paramAdData.ad_source];
         break label326;
       }
     }
-    localObject = jdField_a_of_type_ArrayOfJavaLangString[0];
+    localObject = c[0];
     label326:
     paramView.setContentDescription((CharSequence)localObject);
     localView.setContentDescription((CharSequence)localObject);
     localView.setTag(paramAdData.jump_url);
-    localView.setTag(2131374205, Integer.valueOf(paramAdData.ad_source));
-    localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    localView.setTag(2131442300, Integer.valueOf(paramAdData.ad_source));
+    localView.setOnClickListener(this.f);
   }
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilList.size() != 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView != null))
+    if ((this.i.size() != 0) && (this.g != null))
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.a();
-      FileUtils.writeObjectList(paramString, new Object[] { this.jdField_a_of_type_JavaUtilList, Integer.valueOf(i), this.jdField_a_of_type_JavaUtilArrayList });
+      int m = this.g.getCurrentScreen();
+      FileUtils.writeObjectList(paramString, new Object[] { this.i, Integer.valueOf(m), this.j });
     }
   }
   
   public void a(List<AdData> paramList, int paramInt, ArrayList<CarrierHelper.EntranceConfig> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.i.clear();
     if ((paramList != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.i.addAll(paramList);
     }
-    this.c = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.h = paramInt;
+    this.j = paramArrayList;
   }
   
   public boolean a()
   {
-    CarrierADView localCarrierADView = this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView;
+    CarrierADView localCarrierADView = this.g;
     boolean bool = false;
     if (localCarrierADView == null) {
       return false;
@@ -246,25 +185,86 @@ public class CarrierHelper
     return bool;
   }
   
+  public CarrierHelper.EntranceConfig b()
+  {
+    Object localObject = this.j;
+    if (localObject != null)
+    {
+      int m = this.d;
+      CarrierHelper.EntranceConfig localEntranceConfig;
+      if (m == 2)
+      {
+        localObject = ((ArrayList)localObject).iterator();
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localEntranceConfig = (CarrierHelper.EntranceConfig)((Iterator)localObject).next();
+        } while (localEntranceConfig.type != 2);
+        return localEntranceConfig;
+      }
+      if (m == 1)
+      {
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localEntranceConfig = (CarrierHelper.EntranceConfig)((Iterator)localObject).next();
+          if (localEntranceConfig.type == 1) {
+            return localEntranceConfig;
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  public void c()
+  {
+    if (!this.l)
+    {
+      Object localObject = this.g;
+      if (localObject != null)
+      {
+        if (((CarrierADView)localObject).getVisibility() != 0) {
+          return;
+        }
+        if (this.i.size() == 0) {
+          return;
+        }
+        localObject = new LinkedList();
+        Iterator localIterator = this.i.iterator();
+        while (localIterator.hasNext())
+        {
+          AdData localAdData = (AdData)localIterator.next();
+          if ((localAdData != null) && (!((LinkedList)localObject).contains(Integer.valueOf(localAdData.ad_source)))) {
+            ((LinkedList)localObject).add(Integer.valueOf(localAdData.ad_source));
+          }
+        }
+        ThreadManager.getSubThreadHandler().post(new CarrierHelper.1(this, (LinkedList)localObject));
+      }
+    }
+  }
+  
   public void onClick(View paramView)
   {
-    Object localObject1 = (Integer)paramView.getTag(2131374205);
+    Object localObject1 = (Integer)paramView.getTag(2131442300);
     String str = (String)paramView.getTag();
     if ((localObject1 != null) && (str != null))
     {
-      int i = this.b;
-      if ((i == 2) || (i == 1)) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80050D1", "0X80050D1", this.b, 0, String.valueOf(localObject1), "", "", "");
+      int m = this.d;
+      if ((m == 2) || (m == 1)) {
+        ReportController.b(this.e, "CliOper", "", "", "0X80050D1", "0X80050D1", this.d, 0, String.valueOf(localObject1), "", "", "");
       }
       if (((Integer)localObject1).intValue() == 5) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052A3", "0X80052A3", this.b, 0, "", "", "", "");
+        ReportController.b(this.e, "CliOper", "", "", "0X80052A3", "0X80052A3", this.d, 0, "", "", "", "");
       }
-      Object localObject2 = this.jdField_a_of_type_AndroidAppActivity;
+      Object localObject2 = this.k;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = BaseApplicationImpl.getContext();
       }
-      localObject2 = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)localObject1, str);
+      localObject2 = JumpParser.a(this.e, (Context)localObject1, str);
       if (localObject2 != null)
       {
         ((JumpAction)localObject2).a();
@@ -281,7 +281,7 @@ public class CarrierHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.CarrierHelper
  * JD-Core Version:    0.7.0.1
  */

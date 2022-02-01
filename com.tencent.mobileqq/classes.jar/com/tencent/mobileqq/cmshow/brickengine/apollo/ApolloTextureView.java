@@ -15,7 +15,6 @@ import android.view.View;
 import androidx.annotation.Keep;
 import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.apollo.listener.OnApolloViewListener;
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
 import com.tencent.mobileqq.apollo.touch.CMActionTouchManager;
 import com.tencent.mobileqq.apollo.touch.ICMTouchManager;
@@ -28,6 +27,7 @@ import com.tencent.mobileqq.apollo.view.opengl.ComponentSizeChooser;
 import com.tencent.mobileqq.apollo.view.opengl.GLTextureView;
 import com.tencent.mobileqq.cmshow.brickengine.BKUtils;
 import com.tencent.mobileqq.cmshow.engine.render.ICMShowView;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -354,7 +354,7 @@ public class ApolloTextureView
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    boolean bool = CmShowWnsUtils.z();
+    boolean bool = CmShowWnsUtils.G();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onSurfaceTextureDestroyed enablePendingRelease:");
     localStringBuilder.append(bool);
@@ -422,14 +422,14 @@ public class ApolloTextureView
     }
   }
   
-  public void runRenderTask(String paramString, int paramInt)
+  public void runRenderTask(Script paramScript)
   {
-    if ((getWorker() != null) && (getWorker().a != null))
+    if ((getWorker() != null) && (getWorker().b != null))
     {
-      runRenderTask(SpriteUtil.a(paramString, paramInt, getWorker().a));
+      runRenderTask(SpriteUtil.a(paramScript, getWorker().b));
       return;
     }
-    QLog.e("[cmshow]ApolloTextureView", 1, new Object[] { "runRenderTask error, apolloEngine null, script:", paramString });
+    QLog.e("[cmshow]ApolloTextureView", 1, new Object[] { "runRenderTask error, apolloEngine null, script:", paramScript });
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable) {}
@@ -472,7 +472,7 @@ public class ApolloTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView
  * JD-Core Version:    0.7.0.1
  */

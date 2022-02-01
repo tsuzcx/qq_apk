@@ -13,20 +13,20 @@ class MessageSearchEngine$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener != null)
+    if (this.a != null)
     {
       localObject = new MessageSearchEngine.1.1(this);
-      this.this$0.a.addObserver((Observer)localObject);
+      this.this$0.b.addObserver((Observer)localObject);
     }
     else
     {
       localObject = null;
     }
-    List localList = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest);
+    List localList = this.this$0.a(this.b);
     if (localObject != null) {
-      this.this$0.a.deleteObserver((Observer)localObject);
+      this.this$0.b.deleteObserver((Observer)localObject);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ISearchListener)localObject).a(localList, 1);
     }
@@ -34,7 +34,7 @@ class MessageSearchEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

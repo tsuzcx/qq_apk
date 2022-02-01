@@ -12,21 +12,21 @@ final class ScreenUtil$1
   
   public void run()
   {
-    Object localObject = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
-    if (this.jdField_a_of_type_Int == 1) {
+    Object localObject = (Activity)this.a.getContext();
+    if (this.b == 1) {
       ((Activity)localObject).getWindow().addFlags(128);
     } else {
       ((Activity)localObject).getWindow().clearFlags(128);
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("SetKeepScreenOn :");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.b);
     QLog.e("[cmshow]ScreenUtil", 2, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.ScreenUtil.1
  * JD-Core Version:    0.7.0.1
  */

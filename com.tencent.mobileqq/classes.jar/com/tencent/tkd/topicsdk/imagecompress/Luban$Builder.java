@@ -6,51 +6,51 @@ import java.util.List;
 
 public class Luban$Builder
 {
-  private int jdField_a_of_type_Int = 100;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private CompressionPredicate jdField_a_of_type_ComTencentTkdTopicsdkImagecompressCompressionPredicate;
-  private OnCompressListener jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener;
-  private OnRenameListener jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnRenameListener;
-  private String jdField_a_of_type_JavaLangString;
-  private List<InputStreamProvider> jdField_a_of_type_JavaUtilList;
+  private Context a;
+  private String b;
+  private int c = 100;
+  private OnRenameListener d;
+  private OnCompressListener e;
+  private CompressionPredicate f;
+  private List<InputStreamProvider> g;
   
   Luban$Builder(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = paramContext;
+    this.g = new ArrayList();
   }
   
-  private Luban a()
+  private Luban b()
   {
     return new Luban(this, null);
   }
   
   public Builder a(OnCompressListener paramOnCompressListener)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener = paramOnCompressListener;
+    this.e = paramOnCompressListener;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.add(new Luban.Builder.2(this, paramString));
+    this.g.add(new Luban.Builder.2(this, paramString));
     return this;
   }
   
   public void a()
   {
-    Luban.a(a(), this.jdField_a_of_type_AndroidContentContext);
+    Luban.a(b(), this.a);
   }
   
   public Builder b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.Luban.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -27,9 +27,9 @@ public class CommonUtils
   public static String a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
     if (paramTeamWorkFileImportInfo.a == 1) {
-      return paramTeamWorkFileImportInfo.d;
+      return paramTeamWorkFileImportInfo.g;
     }
-    return paramTeamWorkFileImportInfo.o;
+    return paramTeamWorkFileImportInfo.H;
   }
   
   public static String a(String paramString)
@@ -107,7 +107,7 @@ public class CommonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.CommonUtils
  * JD-Core Version:    0.7.0.1
  */

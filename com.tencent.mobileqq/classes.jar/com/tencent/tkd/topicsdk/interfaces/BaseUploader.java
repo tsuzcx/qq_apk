@@ -13,12 +13,6 @@ public abstract class BaseUploader
     return this;
   }
   
-  @Nullable
-  public final IUploadListener a()
-  {
-    return this.a;
-  }
-  
   public abstract void a();
   
   public final void a(@Nullable IUploadListener paramIUploadListener)
@@ -28,11 +22,21 @@ public abstract class BaseUploader
   
   public abstract void a(@NotNull String paramString);
   
+  public abstract void b();
+  
   public abstract void b(@NotNull String paramString);
+  
+  public abstract void c();
+  
+  @Nullable
+  public final IUploadListener d()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.interfaces.BaseUploader
  * JD-Core Version:    0.7.0.1
  */

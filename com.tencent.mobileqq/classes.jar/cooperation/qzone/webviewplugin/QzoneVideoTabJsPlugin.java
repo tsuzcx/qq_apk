@@ -31,7 +31,7 @@ public class QzoneVideoTabJsPlugin
     try
     {
       paramString = new JSONObject(paramString).optString("url");
-      this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.5(this, paramString));
+      this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.5(this, paramString));
       return;
     }
     catch (JSONException paramString)
@@ -66,7 +66,7 @@ public class QzoneVideoTabJsPlugin
       }
       if (((ArrayList)localObject1).size() > 0)
       {
-        this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.2(this, (ArrayList)localObject1, (ArrayList)localObject2));
+        this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.2(this, (ArrayList)localObject1, (ArrayList)localObject2));
         return;
       }
     }
@@ -105,7 +105,7 @@ public class QzoneVideoTabJsPlugin
       }
       if (localArrayList1.size() > 0)
       {
-        this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.3(this, localArrayList1, localArrayList2));
+        this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.3(this, localArrayList1, localArrayList2));
         return;
       }
     }
@@ -117,7 +117,7 @@ public class QzoneVideoTabJsPlugin
   
   private void stopAll()
   {
-    this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.4(this));
+    this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.4(this));
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -147,7 +147,7 @@ public class QzoneVideoTabJsPlugin
       }
       if ("videoProxySaveVideoToAlbum".equals(paramString3))
       {
-        paramJsBridgeListener = this.parentPlugin.mRuntime.a();
+        paramJsBridgeListener = this.parentPlugin.mRuntime.d();
         if ((paramJsBridgeListener != null) && (QZonePermission.requestStoragePermission(paramJsBridgeListener, new QzoneVideoTabJsPlugin.1(this, paramVarArgs, paramJsBridgeListener), 1))) {
           downloadVideo(paramVarArgs[0]);
         }
@@ -217,7 +217,7 @@ public class QzoneVideoTabJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin
  * JD-Core Version:    0.7.0.1
  */

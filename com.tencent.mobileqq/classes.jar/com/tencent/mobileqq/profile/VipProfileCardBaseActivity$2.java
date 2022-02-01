@@ -30,9 +30,9 @@ class VipProfileCardBaseActivity$2
     }
     Object localObject1 = this.a.app.getCurrentAccountUin();
     HashMap localHashMap = new HashMap();
-    localHashMap.put("param_BackgroundId", String.valueOf(this.a.g));
-    localHashMap.put("param_StyleId", String.valueOf(this.a.jdField_a_of_type_Long));
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    localHashMap.put("param_BackgroundId", String.valueOf(this.a.p));
+    localHashMap.put("param_StyleId", String.valueOf(this.a.n));
+    this.a.y.removeCallbacks(this.a.A);
     this.a.b();
     if ((paramBoolean) && (paramObject != null))
     {
@@ -48,26 +48,26 @@ class VipProfileCardBaseActivity$2
         if (((Integer)paramObject.first).intValue() == 101107)
         {
           localObject2 = this.a;
-          ((VipProfileCardBaseActivity)localObject2).jdField_a_of_type_Int = 1;
-          ((VipProfileCardBaseActivity)localObject2).d = 2;
-          localObject2 = ((VipProfileCardBaseActivity)localObject2).jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+          ((VipProfileCardBaseActivity)localObject2).c = 1;
+          ((VipProfileCardBaseActivity)localObject2).i = 2;
+          localObject2 = ((VipProfileCardBaseActivity)localObject2).y.obtainMessage(9);
+          this.a.y.sendMessage((Message)localObject2);
         }
         else if (((Integer)paramObject.first).intValue() == 101108)
         {
           localObject2 = this.a;
-          ((VipProfileCardBaseActivity)localObject2).jdField_a_of_type_Int = 2;
-          ((VipProfileCardBaseActivity)localObject2).d = 5;
-          localObject2 = ((VipProfileCardBaseActivity)localObject2).jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+          ((VipProfileCardBaseActivity)localObject2).c = 2;
+          ((VipProfileCardBaseActivity)localObject2).i = 5;
+          localObject2 = ((VipProfileCardBaseActivity)localObject2).y.obtainMessage(9);
+          this.a.y.sendMessage((Message)localObject2);
         }
         else
         {
-          localObject2 = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+          localObject2 = this.a.y.obtainMessage(6);
           if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
             ((Message)localObject2).obj = ((SSummaryCardRsp)paramObject.second).emsg;
           }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+          this.a.y.sendMessage((Message)localObject2);
         }
         localHashMap.put("param_FailCode", String.valueOf(paramObject.first));
         StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance((String)localObject1, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
@@ -82,14 +82,14 @@ class VipProfileCardBaseActivity$2
       }
       localHashMap.put("param_FailCode", paramObject);
       StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance((String)localObject1, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
-      paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
+      paramObject = this.a.y.obtainMessage(6);
+      this.a.y.sendMessage(paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

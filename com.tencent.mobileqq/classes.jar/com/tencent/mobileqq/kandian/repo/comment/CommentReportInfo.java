@@ -12,47 +12,42 @@ public final class CommentReportInfo
   implements Parcelable
 {
   public static final CommentReportInfo.CREATOR CREATOR = new CommentReportInfo.CREATOR(null);
-  private int jdField_a_of_type_Int;
   @Nullable
-  private String jdField_a_of_type_JavaLangString = "";
+  private String a = "";
   @Nullable
   private String b = "";
   @Nullable
   private String c = "";
+  private int d;
   @Nullable
-  private String d = "";
+  private String e = "";
   
   public CommentReportInfo() {}
   
   public CommentReportInfo(@NotNull Parcel paramParcel)
   {
     this();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
     this.c = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.d = paramParcel.readString();
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readString();
   }
   
   @Nullable
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public final void a(@Nullable String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   @Nullable
@@ -77,20 +72,25 @@ public final class CommentReportInfo
     this.c = paramString;
   }
   
-  @Nullable
-  public final String d()
+  public final int d()
   {
     return this.d;
   }
   
   public final void d(@Nullable String paramString)
   {
-    this.d = paramString;
+    this.e = paramString;
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  @Nullable
+  public final String e()
+  {
+    return this.e;
   }
   
   @NotNull
@@ -99,7 +99,7 @@ public final class CommentReportInfo
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("CommentReportInfo[");
     ((StringBuilder)localObject).append("rowkey:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("\n");
     ((StringBuilder)localObject).append("firstCommentId:");
     ((StringBuilder)localObject).append(this.b);
@@ -108,10 +108,10 @@ public final class CommentReportInfo
     ((StringBuilder)localObject).append(this.c);
     ((StringBuilder)localObject).append("\n");
     ((StringBuilder)localObject).append("reportType:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.d);
     ((StringBuilder)localObject).append("\n");
     ((StringBuilder)localObject).append("reportReason:");
-    ((StringBuilder)localObject).append(this.d);
+    ((StringBuilder)localObject).append(this.e);
     ((StringBuilder)localObject).append("]");
     localObject = ((StringBuilder)localObject).toString();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "sb.toString()");
@@ -121,16 +121,16 @@ public final class CommentReportInfo
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.d);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeString(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.comment.CommentReportInfo
  * JD-Core Version:    0.7.0.1
  */

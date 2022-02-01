@@ -21,8 +21,8 @@ final class MediaSelectorPanel$updateSelectMediaList$1$1
   
   public final void invoke()
   {
-    this.this$0.this$0.c().addAll((Collection)this.$tempSelectedMediaList);
-    Object localObject = this.this$0.this$0.a();
+    this.this$0.this$0.getSelectedMedias().addAll((Collection)this.$tempSelectedMediaList);
+    Object localObject = this.this$0.this$0.getOnSelectChangeListener();
     if (localObject != null) {
       localObject = (Unit)((Function1)localObject).invoke(this.$tempSelectedMediaList);
     }
@@ -31,7 +31,7 @@ final class MediaSelectorPanel$updateSelectMediaList$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.updateSelectMediaList.1.1
  * JD-Core Version:    0.7.0.1
  */

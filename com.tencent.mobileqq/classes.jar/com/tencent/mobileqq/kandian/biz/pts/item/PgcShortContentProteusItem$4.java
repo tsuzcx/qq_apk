@@ -18,19 +18,19 @@ class PgcShortContentProteusItem$4
   
   public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    Object localObject = this.a.k();
     ((AbsBaseArticleInfo)localObject).clickArea = 8;
-    RIJFrameworkReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), (AbsBaseArticleInfo)localObject, (int)((AbsBaseArticleInfo)localObject).mChannelID);
+    RIJFrameworkReportManager.a(this.b.getContext(), (AbsBaseArticleInfo)localObject, (int)((AbsBaseArticleInfo)localObject).mChannelID);
     QLog.d("PgcShortContentProteusItem", 1, "click single image blank area");
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a();
+    localObject = this.c.y().c();
     if (localObject != null) {
-      ((OnSubRegionClickListener)localObject).a(paramView, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), 2);
+      ((OnSubRegionClickListener)localObject).a(paramView, this.a.k(), 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.4
  * JD-Core Version:    0.7.0.1
  */

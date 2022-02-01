@@ -21,9 +21,9 @@ public class MiniAppSchemeHandler
     Object localObject = BaseActivity.sTopActivity;
     if (((localObject instanceof BaseActivity)) && (((BaseActivity)localObject).getChatFragment() != null))
     {
-      localObject = ((BaseActivity)localObject).getChatFragment().a();
+      localObject = ((BaseActivity)localObject).getChatFragment().k();
       if ((localObject instanceof TroopChatPie)) {
-        return ((BaseChatPie)localObject).a();
+        return ((BaseChatPie)localObject).aV();
       }
     }
     return null;
@@ -67,7 +67,7 @@ public class MiniAppSchemeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.scheme.MiniAppSchemeHandler
  * JD-Core Version:    0.7.0.1
  */

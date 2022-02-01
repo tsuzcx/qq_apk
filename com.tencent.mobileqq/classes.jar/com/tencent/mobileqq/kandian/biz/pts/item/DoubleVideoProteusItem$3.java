@@ -19,24 +19,24 @@ class DoubleVideoProteusItem$3
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.columnEntrances != null)
+    if (this.a.columnEntrances != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.columnEntrances.isEmpty()) {
+      if (this.a.columnEntrances.isEmpty()) {
         return;
       }
-      Object localObject = (VideoColumnInfo)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.columnEntrances.get(0);
-      if ((((VideoColumnInfo)localObject).a != null) && (((VideoColumnInfo)localObject).a.a != 3)) {
-        VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().getContext(), ((VideoColumnInfo)localObject).a);
+      Object localObject = (VideoColumnInfo)this.a.columnEntrances.get(0);
+      if ((((VideoColumnInfo)localObject).n != null) && (((VideoColumnInfo)localObject).n.a != 3)) {
+        VideoFeedsHelper.a(this.b.t().getContext(), ((VideoColumnInfo)localObject).n);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      localObject = this.a;
       ProteusSupportUtil.a((AbsBaseArticleInfo)localObject, ((AbsBaseArticleInfo)localObject).mProteusTemplateBean, paramViewBase);
-      RIJDtReportHelper.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      RIJDtReportHelper.a.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.DoubleVideoProteusItem.3
  * JD-Core Version:    0.7.0.1
  */

@@ -24,15 +24,15 @@ class ResDownloadControl$1
       {
         try
         {
-          if (ResMgr.a(localHttpNetReq.mOutPath, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resZipMd5))
+          if (ResMgr.a(localHttpNetReq.mOutPath, this.a.a.resZipMd5))
           {
             String str = paramNetResp.getParent();
             FileUtils.uncompressZip(localHttpNetReq.mOutPath, str, false);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(str);
             localStringBuilder.append(File.separator);
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resFileName);
-            boolean bool = ResMgr.a(localStringBuilder.toString(), this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resMd5);
+            localStringBuilder.append(this.a.a.resFileName);
+            boolean bool = ResMgr.a(localStringBuilder.toString(), this.a.a.resMd5);
             if (bool) {
               i = 1;
             }
@@ -53,31 +53,31 @@ class ResDownloadControl$1
     {
       paramNetResp = new StringBuilder();
       paramNetResp.append("download successfully. ");
-      paramNetResp.append(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      paramNetResp.append(this.a.a);
       QLog.i("AVResMgr", 1, paramNetResp.toString());
-      if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase("AVTraeSo")) {
-        ResMgr.b();
-      } else if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase("AVAINSMediaLabModel")) {
-        ResMgr.a();
-      } else if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo.resId.equalsIgnoreCase("AVSDKSo")) {
-        ResMgr.c();
+      if (this.a.a.resId.equalsIgnoreCase("AVTraeSo")) {
+        ResMgr.f();
+      } else if (this.a.a.resId.equalsIgnoreCase("AVAINSMediaLabGruModel")) {
+        ResMgr.d();
+      } else if (this.a.a.resId.equalsIgnoreCase("AVSDKSo")) {
+        ResMgr.h();
       }
-      ResDownloadControl.a(1, 100, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      ResDownloadControl.a(1, 100, this.a.a);
     }
     else
     {
       paramNetResp = new StringBuilder();
       paramNetResp.append("download end but failed. uncompressZip failed or md5 not match. ");
-      paramNetResp.append(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      paramNetResp.append(this.a.a);
       QLog.e("AVResMgr", 1, paramNetResp.toString());
-      ResDownloadControl.a(-1, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.b, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      ResDownloadControl.a(-1, this.a.c, this.a.a);
     }
-    if (this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq)
+    if (this.a.d == localHttpNetReq)
     {
-      paramNetResp = this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo;
-      paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-      paramNetResp.jdField_a_of_type_Int = 0;
-      ResDownloadControl.a(this.jdField_a_of_type_ComTencentAvSoResDownloadControl).remove(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo);
+      paramNetResp = this.a;
+      paramNetResp.d = null;
+      paramNetResp.b = 0;
+      ResDownloadControl.a(this.b).remove(this.a);
     }
   }
   
@@ -91,17 +91,17 @@ class ResDownloadControl$1
     } else {
       i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
     }
-    this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.b = i;
+    this.a.c = i;
     if (QLog.isColorLevel())
     {
       paramNetReq = new StringBuilder();
       paramNetReq.append("download... progress = ");
       paramNetReq.append(i);
       paramNetReq.append(", ");
-      paramNetReq.append(this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+      paramNetReq.append(this.a.a);
       QLog.d("AVResMgr", 2, paramNetReq.toString());
     }
-    ResDownloadControl.a(2, i, this.jdField_a_of_type_ComTencentAvSoResDownloadControl$DownloadInfo.jdField_a_of_type_ComTencentAvSoResInfo);
+    ResDownloadControl.a(2, i, this.a.a);
   }
 }
 

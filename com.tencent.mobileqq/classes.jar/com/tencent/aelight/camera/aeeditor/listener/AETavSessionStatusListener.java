@@ -8,13 +8,13 @@ public abstract interface AETavSessionStatusListener
   
   public abstract void a(String paramString1, String paramString2);
   
-  public abstract void b(String paramString);
+  public abstract void d(String paramString);
   
-  public abstract void c(String paramString);
+  public abstract void e(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.listener.AETavSessionStatusListener
  * JD-Core Version:    0.7.0.1
  */

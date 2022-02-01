@@ -6,104 +6,104 @@ import android.text.TextWatcher;
 public class InsertDeleteWatcher
   implements TextWatcher
 {
-  private int jdField_a_of_type_Int = 0;
-  private InsertDeleteWatcher.OnTextInsertDelete jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = false;
+  private InsertDeleteWatcher.OnTextInsertDelete a;
+  private boolean b = false;
+  private boolean c = false;
+  private boolean d = false;
+  private String e = "";
+  private String f = "";
+  private int g = 0;
+  private int h = 0;
+  private int i = 0;
   
   private void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
+    this.b = false;
+    this.c = false;
+    this.d = false;
+    this.e = "";
+    this.f = "";
+    this.g = 0;
+    this.h = 0;
+    this.i = 0;
   }
   
   public void a(InsertDeleteWatcher.OnTextInsertDelete paramOnTextInsertDelete)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete = paramOnTextInsertDelete;
+    this.a = paramOnTextInsertDelete;
   }
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete == null) {
+    if (this.a == null) {
       return;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
-      this.jdField_c_of_type_Boolean = true;
+    if ((!this.b) && (!this.c)) {
+      this.d = true;
     }
     paramEditable = paramEditable.toString();
     String str1;
-    int i;
-    if (this.jdField_a_of_type_Boolean)
+    int j;
+    if (this.b)
     {
-      str1 = this.jdField_b_of_type_JavaLangString;
-      i = this.jdField_a_of_type_Int;
-      str1 = str1.substring(i, this.jdField_b_of_type_Int + i);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
+      str1 = this.f;
+      j = this.g;
+      str1 = str1.substring(j, this.h + j);
+      this.a.a(this.g, this.h, str1, this.e, paramEditable);
     }
-    else if (this.jdField_b_of_type_Boolean)
+    else if (this.c)
     {
-      str1 = this.jdField_a_of_type_JavaLangString;
-      i = this.jdField_a_of_type_Int;
-      str1 = str1.substring(i, this.jdField_c_of_type_Int + i);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
+      str1 = this.e;
+      j = this.g;
+      str1 = str1.substring(j, this.i + j);
+      this.a.b(this.g, this.i, str1, this.e, paramEditable);
     }
-    else if (this.jdField_c_of_type_Boolean)
+    else if (this.d)
     {
-      str1 = this.jdField_a_of_type_JavaLangString;
-      i = this.jdField_a_of_type_Int;
-      str1 = str1.substring(i, this.jdField_c_of_type_Int + i);
+      str1 = this.e;
+      j = this.g;
+      str1 = str1.substring(j, this.i + j);
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_Int));
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int + this.jdField_c_of_type_Int));
+      ((StringBuilder)localObject).append(this.e.substring(0, this.g));
+      ((StringBuilder)localObject).append(this.e.substring(this.g + this.i));
       localObject = ((StringBuilder)localObject).toString();
-      String str2 = this.jdField_b_of_type_JavaLangString;
-      i = this.jdField_a_of_type_Int;
-      str2 = str2.substring(i, this.jdField_b_of_type_Int + i);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, (String)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str2, this.jdField_a_of_type_JavaLangString, paramEditable);
+      String str2 = this.f;
+      j = this.g;
+      str2 = str2.substring(j, this.h + j);
+      this.a.b(this.g, this.i, str1, this.e, (String)localObject);
+      this.a.a(this.g, this.h, str2, this.e, paramEditable);
     }
     a();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt3;
+    this.e = paramCharSequence.toString();
+    this.g = paramInt1;
+    this.h = paramInt3;
     if (paramInt2 == 0) {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
     if (paramInt3 == 0) {
-      this.jdField_b_of_type_Boolean = true;
+      this.c = true;
     }
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString();
-    this.jdField_c_of_type_Int = paramInt2;
+    this.f = paramCharSequence.toString();
+    this.i = paramInt2;
     if (paramInt2 == 0) {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
     if (paramInt3 == 0) {
-      this.jdField_b_of_type_Boolean = true;
+      this.c = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.InsertDeleteWatcher
  * JD-Core Version:    0.7.0.1
  */

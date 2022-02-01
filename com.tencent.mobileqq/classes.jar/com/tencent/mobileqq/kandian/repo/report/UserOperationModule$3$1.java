@@ -16,7 +16,7 @@ class UserOperationModule$3$1
   
   public void run()
   {
-    Iterator localIterator = this.a.a.rpt_follow_operation_result.get().iterator();
+    Iterator localIterator = this.a.b.rpt_follow_operation_result.get().iterator();
     while (localIterator.hasNext())
     {
       oidb_cmd0x978.OneFollowOperationResult localOneFollowOperationResult = (oidb_cmd0x978.OneFollowOperationResult)localIterator.next();
@@ -26,7 +26,7 @@ class UserOperationModule$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.report.UserOperationModule.3.1
  * JD-Core Version:    0.7.0.1
  */

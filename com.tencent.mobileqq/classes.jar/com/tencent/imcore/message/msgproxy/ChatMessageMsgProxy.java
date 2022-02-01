@@ -16,15 +16,6 @@ public class ChatMessageMsgProxy
     super(paramAppRuntime, paramBaseProxyManager, paramMsgPool);
   }
   
-  public MessageRecord a(MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    paramMessageRecord = super.a(paramMessageRecord, paramBoolean);
-    if ((paramMessageRecord instanceof ChatMessage)) {
-      ((ChatMessage)paramMessageRecord).reParse();
-    }
-    return paramMessageRecord;
-  }
-  
   public MessageRecord a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     paramString = super.a(paramString, paramInt1, paramLong, paramInt2, paramInt3);
@@ -59,6 +50,15 @@ public class ChatMessageMsgProxy
       ((ChatMessage)paramString).reParse();
     }
     return paramString;
+  }
+  
+  public MessageRecord b(MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    paramMessageRecord = super.b(paramMessageRecord, paramBoolean);
+    if ((paramMessageRecord instanceof ChatMessage)) {
+      ((ChatMessage)paramMessageRecord).reParse();
+    }
+    return paramMessageRecord;
   }
 }
 

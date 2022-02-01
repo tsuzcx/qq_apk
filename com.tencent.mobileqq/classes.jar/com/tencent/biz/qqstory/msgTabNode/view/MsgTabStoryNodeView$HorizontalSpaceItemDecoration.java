@@ -15,7 +15,7 @@ import java.util.Set;
 public class MsgTabStoryNodeView$HorizontalSpaceItemDecoration
   extends RecyclerView.ItemDecoration
 {
-  static final Set<Integer> a;
+  static final Set<Integer> f = new HashSet();
   protected int a;
   protected int b;
   protected int c;
@@ -24,15 +24,14 @@ public class MsgTabStoryNodeView$HorizontalSpaceItemDecoration
   
   static
   {
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+    f.add(Integer.valueOf(1024));
+    f.add(Integer.valueOf(12));
+    f.add(Integer.valueOf(3));
   }
   
   public MsgTabStoryNodeView$HorizontalSpaceItemDecoration(Context paramContext)
   {
-    this.jdField_a_of_type_Int = AIOUtils.b(5.0F, paramContext.getResources());
+    this.a = AIOUtils.b(5.0F, paramContext.getResources());
     this.b = AIOUtils.b(16.0F, paramContext.getResources());
     this.c = AIOUtils.b(8.5F, paramContext.getResources());
     this.d = AIOUtils.b(3.0F, paramContext.getResources());
@@ -55,11 +54,11 @@ public class MsgTabStoryNodeView$HorizontalSpaceItemDecoration
       {
         int n = paramView.getItemViewType(j);
         i = 0;
-        if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        if (f.contains(Integer.valueOf(m))) {
           i = 1;
         }
         j = i;
-        if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        if (f.contains(Integer.valueOf(n))) {
           j = i + 1;
         }
         if (j == 1)
@@ -83,13 +82,13 @@ public class MsgTabStoryNodeView$HorizontalSpaceItemDecoration
         paramRect.right = this.c;
         return;
       }
-      paramRect.right = this.jdField_a_of_type_Int;
+      paramRect.right = this.a;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView.HorizontalSpaceItemDecoration
  * JD-Core Version:    0.7.0.1
  */

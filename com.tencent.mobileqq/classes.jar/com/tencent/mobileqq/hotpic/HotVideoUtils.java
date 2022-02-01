@@ -41,22 +41,6 @@ public class HotVideoUtils
     return paramBitmap;
   }
   
-  private static String a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
-    ((StringBuilder)localObject).append("HotPicVideo");
-    ((StringBuilder)localObject).append(File.separator);
-    localObject = ((StringBuilder)localObject).toString();
-    File localFile = new File((String)localObject);
-    if (!localFile.exists())
-    {
-      localFile.mkdirs();
-      QLog.d("TAG", 2, "mkdirs here");
-    }
-    return localObject;
-  }
-  
   public static String a(long paramLong)
   {
     return new SimpleDateFormat("mm:ss").format(Long.valueOf(paramLong));
@@ -68,7 +52,7 @@ public class HotVideoUtils
     {
       paramString = MD5Utils.toMD5(paramString);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(a());
+      localStringBuilder.append(c());
       localStringBuilder.append(paramString);
       paramString = localStringBuilder.toString();
       return paramString;
@@ -121,10 +105,26 @@ public class HotVideoUtils
   {
     return TVK_SDKMgr.isInstalled(BaseApplicationImpl.getApplication());
   }
+  
+  private static String c()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject).append("HotPicVideo");
+    ((StringBuilder)localObject).append(File.separator);
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
+    if (!localFile.exists())
+    {
+      localFile.mkdirs();
+      QLog.d("TAG", 2, "mkdirs here");
+    }
+    return localObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoUtils
  * JD-Core Version:    0.7.0.1
  */

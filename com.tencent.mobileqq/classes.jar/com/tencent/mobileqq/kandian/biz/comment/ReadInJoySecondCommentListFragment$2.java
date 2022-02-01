@@ -17,14 +17,14 @@ class ReadInJoySecondCommentListFragment$2
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     ((ReadInJoyCommentListView)paramAbsListView).onScrollStateChanged(paramAbsListView, paramInt);
-    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).a() != null)) {
-      ReadInJoySecondCommentListFragment.a(this.a).a().a(ReadInJoySecondCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.a(this.a).getLastVisiblePosition());
+    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).q() != null)) {
+      ReadInJoySecondCommentListFragment.a(this.a).q().a(ReadInJoySecondCommentListFragment.b(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.b(this.a).getLastVisiblePosition());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoySecondCommentListFragment.2
  * JD-Core Version:    0.7.0.1
  */

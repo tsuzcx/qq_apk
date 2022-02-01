@@ -14,12 +14,12 @@ class DBFixDialogUI$11
   {
     paramDialogInterface.cancel();
     paramDialogInterface = new Intent("android.settings.INTERNAL_STORAGE_SETTINGS");
-    this.a.a.startActivity(paramDialogInterface);
+    this.a.b.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.11
  * JD-Core Version:    0.7.0.1
  */

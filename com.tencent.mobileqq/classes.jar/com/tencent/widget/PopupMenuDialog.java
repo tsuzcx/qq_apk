@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.LocaleManager;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -78,7 +79,7 @@ public class PopupMenuDialog
   
   public static PopupMenuDialog build(Activity paramActivity, List<PopupMenuDialog.MenuItem> paramList, PopupMenuDialog.OnClickActionListener paramOnClickActionListener, PopupMenuDialog.OnDismissListener paramOnDismissListener, int paramInt, boolean paramBoolean)
   {
-    return build(paramActivity, paramList, paramOnClickActionListener, paramOnDismissListener, paramInt, paramBoolean, -1, 2131755035);
+    return build(paramActivity, paramList, paramOnClickActionListener, paramOnDismissListener, paramInt, paramBoolean, -1, 2131951650);
   }
   
   public static PopupMenuDialog build(Activity paramActivity, List<PopupMenuDialog.MenuItem> paramList, PopupMenuDialog.OnClickActionListener paramOnClickActionListener, PopupMenuDialog.OnDismissListener paramOnDismissListener, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
@@ -88,7 +89,7 @@ public class PopupMenuDialog
       int j = getDesiredHeight(paramActivity, paramList.size(), paramBoolean);
       int i = paramInt1;
       if (paramInt1 <= 0) {
-        i = getScaledPixelSize(paramActivity, 2131298902);
+        i = getScaledPixelSize(paramActivity, 2131299624);
       }
       paramActivity = new PopupMenuDialog(paramActivity, prepareContent(paramActivity, paramList, paramBoolean, paramInt2), i, j, true);
       paramActivity.setAnimationStyle(paramInt3);
@@ -97,7 +98,7 @@ public class PopupMenuDialog
       if (Build.VERSION.SDK_INT >= 9) {
         setWindowType(paramActivity, 1002);
       }
-      if (AppSetting.d) {
+      if (AppSetting.e) {
         setModeTouch(paramActivity);
       }
       paramActivity.initListeners(paramActivity.getContentView());
@@ -117,16 +118,16 @@ public class PopupMenuDialog
       int j = get800UIDesiredHeight(paramActivity, paramList.size());
       int i;
       if (LocaleManager.a()) {
-        i = getScaledPixelSize(paramActivity, 2131298897);
+        i = getScaledPixelSize(paramActivity, 2131299619);
       } else {
-        i = getScaledPixelSize(paramActivity, 2131298896);
+        i = getScaledPixelSize(paramActivity, 2131299618);
       }
       paramActivity = new PopupMenuDialog(paramActivity, prepareConversationPlusContent(paramActivity, paramList), i, j, true);
-      paramActivity.setAnimationStyle(2131755035);
+      paramActivity.setAnimationStyle(2131951650);
       paramActivity.setBackgroundDrawable(new ColorDrawable(0));
       paramActivity.setOutsideTouchable(false);
       setWindowType(paramActivity, 1002);
-      if (AppSetting.d) {
+      if (AppSetting.e) {
         setModeTouch(paramActivity);
       }
       paramActivity.initListeners(paramActivity.getContentView());
@@ -155,29 +156,29 @@ public class PopupMenuDialog
       if (i == 0)
       {
         localLayoutParams = new LinearLayout.LayoutParams(-1, dp2px(62.0F, paramActivity.getResources()));
-        localObject1 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131562738, null);
+        localObject1 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131629175, null);
       }
       else
       {
         int k = paramList.size();
-        int j = 2131562737;
+        int j = 2131629174;
         if (i == k - 1)
         {
           localLayoutParams = new LinearLayout.LayoutParams(-1, dp2px(62.0F, paramActivity.getResources()));
           localObject1 = LayoutInflater.from(paramActivity);
           if (!paramBoolean) {
-            j = 2131562736;
+            j = 2131629173;
           }
           localObject1 = (LinearLayout)((LayoutInflater)localObject1).inflate(j, null);
         }
         else
         {
           localLayoutParams = new LinearLayout.LayoutParams(-1, dp2px(52.0F, paramActivity.getResources()));
-          localObject1 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131562737, null);
+          localObject1 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131629174, null);
         }
       }
-      Object localObject2 = (ImageView)((LinearLayout)localObject1).findViewById(2131368714);
-      TextView localTextView = (TextView)((LinearLayout)localObject1).findViewById(2131378623);
+      Object localObject2 = (ImageView)((LinearLayout)localObject1).findViewById(2131435627);
+      TextView localTextView = (TextView)((LinearLayout)localObject1).findViewById(2131447262);
       if (localMenuItem.netDrawable != null) {
         ((ImageView)localObject2).setImageDrawable(localMenuItem.netDrawable);
       } else if (localMenuItem.danceDrawable != null) {
@@ -203,14 +204,14 @@ public class PopupMenuDialog
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(localMenuItem.contentDescription);
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708331));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906119));
         ((LinearLayout)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
       }
       else
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(localMenuItem.title);
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708329));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131906117));
         ((LinearLayout)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
       }
       ((LinearLayout)localObject1).setTag(localMenuItem);
@@ -238,12 +239,12 @@ public class PopupMenuDialog
     } else {
       paramInt = dp2px(62.0F, paramContext.getResources()) * paramInt;
     }
-    return paramInt + getScaledPixelSize(paramContext, 2131298901);
+    return paramInt + getScaledPixelSize(paramContext, 2131299623);
   }
   
   private static int getDesiredHeight(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    int j = getScaledPixelSize(paramContext, 2131298903) * paramInt + getScaledPixelSize(paramContext, 2131298901);
+    int j = getScaledPixelSize(paramContext, 2131299625) * paramInt + getScaledPixelSize(paramContext, 2131299623);
     int i = j;
     if (paramBoolean) {
       i = j + (paramInt - 1) * 1;
@@ -253,22 +254,24 @@ public class PopupMenuDialog
   
   private void initDimView()
   {
+    Object localObject;
+    int i;
     if (this.mDimViewLp == null)
     {
       this.mDimViewLp = new WindowManager.LayoutParams();
-      WindowManager.LayoutParams localLayoutParams = this.mDimViewLp;
-      localLayoutParams.type = 1000;
-      localLayoutParams.format = -3;
-      localLayoutParams.flags = 40;
+      localObject = this.mDimViewLp;
+      ((WindowManager.LayoutParams)localObject).type = 1000;
+      ((WindowManager.LayoutParams)localObject).format = -3;
+      ((WindowManager.LayoutParams)localObject).flags = 40;
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
-        localLayoutParams = this.mDimViewLp;
-        localLayoutParams.flags |= 0x4000000;
+        localObject = this.mDimViewLp;
+        ((WindowManager.LayoutParams)localObject).flags |= 0x4000000;
       }
-      localLayoutParams = this.mDimViewLp;
+      localObject = this.mDimViewLp;
       int j = -1;
-      localLayoutParams.width = -1;
-      int i = j;
+      ((WindowManager.LayoutParams)localObject).width = -1;
+      i = j;
       if (this.activity.getWindow() != null)
       {
         i = j;
@@ -280,18 +283,25 @@ public class PopupMenuDialog
           }
         }
       }
-      localLayoutParams = this.mDimViewLp;
-      localLayoutParams.height = i;
-      localLayoutParams.windowAnimations = 2131755514;
+      localObject = this.mDimViewLp;
+      ((WindowManager.LayoutParams)localObject).height = i;
+      ((WindowManager.LayoutParams)localObject).windowAnimations = 2131952300;
     }
     if (this.mDimView == null)
     {
       this.mDimView = new View(this.activity);
-      this.mDimView.setBackgroundColor(this.activity.getResources().getColor(2131165476));
-      this.mDimView.setContentDescription(HardCodeUtil.a(2131708330));
+      localObject = this.mDimView;
+      Resources localResources = this.activity.getResources();
+      if (QQTheme.isNowThemeIsNight()) {
+        i = 2131165805;
+      } else {
+        i = 2131165797;
+      }
+      ((View)localObject).setBackgroundColor(localResources.getColor(i));
+      this.mDimView.setContentDescription(HardCodeUtil.a(2131906118));
       this.mDimView.setOnClickListener(new PopupMenuDialog.1(this));
     }
-    if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 14)) {
+    if ((AppSetting.e) && (Build.VERSION.SDK_INT >= 14)) {
       getContentView().setAccessibilityDelegate(new PopupMenuDialog.2(this));
     }
   }
@@ -315,22 +325,22 @@ public class PopupMenuDialog
   
   private static View prepareContent(Activity paramActivity, List<PopupMenuDialog.MenuItem> paramList, boolean paramBoolean, int paramInt)
   {
-    View localView = LayoutInflater.from(paramActivity).inflate(2131562742, null);
-    Object localObject1 = (BounceScrollView)localView.findViewById(2131363784);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131629179, null);
+    Object localObject1 = (BounceScrollView)localView.findViewById(2131429717);
     if (paramInt != -1) {
       ((BounceScrollView)localObject1).setBackgroundResource(paramInt);
     }
-    LinearLayout localLinearLayout = (LinearLayout)((BounceScrollView)localObject1).findViewById(2131365169);
+    LinearLayout localLinearLayout = (LinearLayout)((BounceScrollView)localObject1).findViewById(2131431322);
     ((BounceScrollView)localObject1).setVerticalScrollBarEnabled(false);
     ((BounceScrollView)localObject1).mScrollFlag = 1;
     new LinearLayout.LayoutParams(-1, 1);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, getScaledPixelSize(paramActivity, 2131298903));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, getScaledPixelSize(paramActivity, 2131299625));
     paramInt = 0;
     while (paramInt < paramList.size())
     {
       PopupMenuDialog.MenuItem localMenuItem = (PopupMenuDialog.MenuItem)paramList.get(paramInt);
       if (paramInt == 0) {
-        localObject1 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131562741, null);
+        localObject1 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131629178, null);
       }
       do
       {
@@ -339,7 +349,7 @@ public class PopupMenuDialog
         if (paramInt != paramList.size() - 1) {
           break;
         }
-        localObject2 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131562739, null);
+        localObject2 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131629176, null);
         localObject1 = localObject2;
       } while (!paramBoolean);
       Object localObject3 = createLineView(paramActivity);
@@ -351,12 +361,12 @@ public class PopupMenuDialog
       } else {
         localObject1 = null;
       }
-      localObject3 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131562740, null);
+      localObject3 = (LinearLayout)LayoutInflater.from(paramActivity).inflate(2131629177, null);
       localObject2 = localObject1;
       localObject1 = localObject3;
       label232:
-      localObject3 = (ImageView)((LinearLayout)localObject1).findViewById(2131368714);
-      TextView localTextView = (TextView)((LinearLayout)localObject1).findViewById(2131378623);
+      localObject3 = (ImageView)((LinearLayout)localObject1).findViewById(2131435627);
+      TextView localTextView = (TextView)((LinearLayout)localObject1).findViewById(2131447262);
       if (localMenuItem.netDrawable != null) {
         ((ImageView)localObject3).setImageDrawable(localMenuItem.netDrawable);
       } else if (localMenuItem.danceDrawable != null) {
@@ -382,14 +392,14 @@ public class PopupMenuDialog
       {
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(localMenuItem.contentDescription);
-        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131708332));
+        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131906120));
         ((LinearLayout)localObject1).setContentDescription(((StringBuilder)localObject3).toString());
       }
       else
       {
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(localMenuItem.title);
-        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131708328));
+        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131906116));
         ((LinearLayout)localObject1).setContentDescription(((StringBuilder)localObject3).toString());
       }
       if (localObject2 != null) {
@@ -407,11 +417,11 @@ public class PopupMenuDialog
   
   private static View prepareConversationPlusContent(Activity paramActivity, List<PopupMenuDialog.MenuItem> paramList)
   {
-    View localView = LayoutInflater.from(paramActivity).inflate(2131562742, null);
-    BounceScrollView localBounceScrollView = (BounceScrollView)localView.findViewById(2131363784);
+    View localView = LayoutInflater.from(paramActivity).inflate(2131629179, null);
+    BounceScrollView localBounceScrollView = (BounceScrollView)localView.findViewById(2131429717);
     localBounceScrollView.setVerticalScrollBarEnabled(false);
     localBounceScrollView.mScrollFlag = 1;
-    createAndAttachItemsView(paramActivity, paramList, (LinearLayout)localBounceScrollView.findViewById(2131365169));
+    createAndAttachItemsView(paramActivity, paramList, (LinearLayout)localBounceScrollView.findViewById(2131431322));
     return localView;
   }
   
@@ -457,7 +467,7 @@ public class PopupMenuDialog
       }
       if (this.mOutAnimation == null)
       {
-        this.mOutAnimation = AnimationUtils.loadAnimation(this.activity, 2130772372);
+        this.mOutAnimation = AnimationUtils.loadAnimation(this.activity, 2130772464);
         this.mOutAnimation.setAnimationListener(this);
       }
       getContentView().startAnimation(this.mOutAnimation);
@@ -515,7 +525,7 @@ public class PopupMenuDialog
     {
       int i = 0;
       if (j < this.mTotalPopHeight) {
-        i = (1 - getScaledPixelSize(this.activity, 2131298901) + j) / (getScaledPixelSize(this.activity, 2131298903) + 1);
+        i = (1 - getScaledPixelSize(this.activity, 2131299623) + j) / (getScaledPixelSize(this.activity, 2131299625) + 1);
       }
       if (i > 0) {
         setHeight(getDesiredHeight(this.activity, i, this.mNeedLine));
@@ -562,7 +572,7 @@ public class PopupMenuDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.PopupMenuDialog
  * JD-Core Version:    0.7.0.1
  */

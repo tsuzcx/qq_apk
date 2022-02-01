@@ -24,11 +24,6 @@ public class NearbyDatingRoutingType
     return 1010;
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.NearByDatingTmp localNearByDatingTmp = new msg_svc.NearByDatingTmp();
@@ -36,7 +31,7 @@ public class NearbyDatingRoutingType
     paramAppInterface = (QQAppInterface)paramAppInterface;
     Message localMessage = paramAppInterface.getMessageFacade().getLastMessage(paramMessageRecord.frienduin, 1010);
     localNearByDatingTmp.reply.set(localMessage.hasReply);
-    paramMessageRecord = paramAppInterface.getMsgCache().p(paramMessageRecord.frienduin);
+    paramMessageRecord = paramAppInterface.getMsgCache().u(paramMessageRecord.frienduin);
     if (paramMessageRecord != null)
     {
       if (QLog.isDevelopLevel())
@@ -54,14 +49,19 @@ public class NearbyDatingRoutingType
     return true;
   }
   
-  public int b()
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
   {
     return 8012;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.NearbyDatingRoutingType
  * JD-Core Version:    0.7.0.1
  */

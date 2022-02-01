@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.kandian.biz.ugc.AlbumUtils.LocalMediaInfo;
+import com.tencent.mobileqq.kandian.base.utils.AlbumUtils.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.pull2refresh.BaseViewHolder;
 import java.net.URL;
@@ -15,14 +15,12 @@ import java.net.URL;
 public class LocalMediaGridAdapter$ImageHolder
   extends BaseViewHolder<AlbumUtils.LocalMediaInfo>
 {
-  public View a;
-  public ImageView a;
+  public ImageView a = (ImageView)getView(2131436334);
+  public View b = getView(2131437989);
   
   public LocalMediaGridAdapter$ImageHolder(LocalMediaGridAdapter paramLocalMediaGridAdapter, ViewGroup paramViewGroup, int paramInt)
   {
     super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)getView(2131369331));
-    this.jdField_a_of_type_AndroidViewView = getView(2131370711);
   }
   
   protected URL a(String paramString)
@@ -49,13 +47,13 @@ public class LocalMediaGridAdapter$ImageHolder
   public void a(int paramInt, AlbumUtils.LocalMediaInfo paramLocalMediaInfo)
   {
     boolean bool;
-    if (LocalMediaGridAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter) == paramInt) {
+    if (LocalMediaGridAdapter.a(this.c) == paramInt) {
       bool = true;
     } else {
       bool = false;
     }
     a(bool);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new LocalMediaGridAdapter.ImageHolder.1(this, paramInt));
+    this.a.setOnClickListener(new LocalMediaGridAdapter.ImageHolder.1(this, paramInt));
     a(paramLocalMediaInfo);
   }
   
@@ -64,25 +62,25 @@ public class LocalMediaGridAdapter$ImageHolder
     try
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = LocalMediaGridAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.a.getWidth();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.a.getHeight();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = LocalMediaGridAdapter.b(this.c);
       ((URLDrawable.URLDrawableOptions)localObject).mPriority = 2;
-      String str = paramLocalMediaInfo.b;
+      String str = paramLocalMediaInfo.e;
       URL localURL = a(str);
       if ((!TextUtils.isEmpty(str)) && (localURL != null))
       {
         localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
-        if (paramLocalMediaInfo.a != null)
+        if (paramLocalMediaInfo.o != null)
         {
-          paramLocalMediaInfo.a.thumbWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-          paramLocalMediaInfo.a.thumbHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-          ((URLDrawable)localObject).setTag(paramLocalMediaInfo.a);
+          paramLocalMediaInfo.o.thumbWidth = this.a.getWidth();
+          paramLocalMediaInfo.o.thumbHeight = this.a.getHeight();
+          ((URLDrawable)localObject).setTag(paramLocalMediaInfo.o);
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        this.a.setImageDrawable((Drawable)localObject);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(LocalMediaGridAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcCoverselectLocalMediaGridAdapter));
+      this.a.setImageDrawable(LocalMediaGridAdapter.b(this.c));
       return;
     }
     catch (Throwable paramLocalMediaInfo)
@@ -95,15 +93,15 @@ public class LocalMediaGridAdapter$ImageHolder
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.b.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.LocalMediaGridAdapter.ImageHolder
  * JD-Core Version:    0.7.0.1
  */

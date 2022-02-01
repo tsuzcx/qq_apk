@@ -11,20 +11,20 @@ class DynamicGridView$4
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
+    DynamicGridView.a(this.b, false);
+    DynamicGridView.b(this.b);
+    DynamicGridView.a(this.b, this.a);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    DynamicGridView.a(this.b, true);
+    DynamicGridView.b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.DynamicGridView.4
  * JD-Core Version:    0.7.0.1
  */

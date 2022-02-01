@@ -26,7 +26,7 @@ class SystemMessageProcessor$4
       {
         paramProtoResp = new StringBuilder();
         paramProtoResp.append("sendFriendSystemMsgReadedReportResp reqSeq=");
-        paramProtoResp.append(this.jdField_a_of_type_Long);
+        paramProtoResp.append(this.a);
         paramProtoResp.append(";resultCode=");
         paramProtoResp.append(i);
         paramProtoResp.append(";latestFriendSeq=");
@@ -47,7 +47,7 @@ class SystemMessageProcessor$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SystemMessageProcessor.4
  * JD-Core Version:    0.7.0.1
  */

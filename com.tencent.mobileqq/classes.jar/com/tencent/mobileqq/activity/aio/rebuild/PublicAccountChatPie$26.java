@@ -20,15 +20,15 @@ class PublicAccountChatPie$26
     }
     if (paramJSONObject.optInt("retcode", -1) == 0)
     {
-      paramJSONObject = (TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
-      paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
+      paramJSONObject = (TroopBindPublicAccountMgr)this.a.d.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+      paramInt = paramJSONObject.b(this.a.ah.b);
+      paramJSONObject.a(this.a.ah.b, 0, paramInt & 0xF);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.26
  * JD-Core Version:    0.7.0.1
  */

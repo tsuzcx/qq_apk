@@ -20,16 +20,16 @@ import mqq.os.MqqHandler;
 public class SimpleFileBrowserView
   extends FileBrowserViewBase
 {
-  AsyncImageView a;
-  private RelativeLayout b;
-  private View c;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private TextView h;
-  private TextView i;
-  private TextView j;
+  private TextView a;
+  private View b;
+  private RelativeLayout c;
+  AsyncImageView m;
+  private TextView n;
+  private TextView o;
+  private TextView p;
+  private TextView q;
+  private TextView r;
+  private TextView s;
   
   public SimpleFileBrowserView(Activity paramActivity)
   {
@@ -43,81 +43,71 @@ public class SimpleFileBrowserView
   
   public void a(SpannableString paramSpannableString)
   {
-    this.d.setMovementMethod(LinkMovementMethod.getInstance());
-    this.d.setText(paramSpannableString);
-    this.d.setHighlightColor(17170445);
+    this.a.setMovementMethod(LinkMovementMethod.getInstance());
+    this.a.setText(paramSpannableString);
+    this.a.setHighlightColor(17170445);
   }
   
   public void a(String paramString, int paramInt, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.d == null) {
       return;
     }
-    if (this.h == null) {
-      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376880));
+    if (this.q == null) {
+      this.q = ((TextView)this.d.findViewById(2131445222));
     }
-    TextView localTextView = this.h;
+    TextView localTextView = this.q;
     if (localTextView == null) {
       return;
     }
     localTextView.setText(paramString);
     if (paramInt != 0) {
-      this.h.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(paramInt));
+      this.q.setTextColor(this.e.getResources().getColor(paramInt));
     }
-    this.h.setOnClickListener(paramOnClickListener);
-    this.h.setVisibility(0);
+    this.q.setOnClickListener(paramOnClickListener);
+    this.q.setVisibility(0);
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.d == null) {
       return;
     }
-    if (this.g == null) {
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364730));
+    if (this.p == null) {
+      this.p = ((TextView)this.d.findViewById(2131430838));
     }
-    TextView localTextView = this.g;
+    TextView localTextView = this.p;
     if (localTextView == null) {
       return;
     }
-    int k;
+    int i;
     if (paramBoolean) {
-      k = 0;
+      i = 0;
     } else {
-      k = 8;
+      i = 8;
     }
-    localTextView.setVisibility(k);
-    this.g.setText(paramString);
-  }
-  
-  public View b()
-  {
-    if (this.b != null)
-    {
-      QLog.e("FileBrowserViewBase", 2, "getInnerFileView : tbs not null");
-      return this.b;
-    }
-    return this.jdField_a_of_type_AndroidViewView;
+    localTextView.setVisibility(i);
+    this.p.setText(paramString);
   }
   
   public void b(View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.d == null) {
       return;
     }
-    if (this.j == null) {
-      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367884));
+    if (this.s == null) {
+      this.s = ((TextView)this.d.findViewById(2131434466));
     }
-    this.j.setOnClickListener(paramOnClickListener);
+    this.s.setOnClickListener(paramOnClickListener);
   }
   
   public void b(String paramString, View.OnClickListener paramOnClickListener)
   {
-    TextView localTextView = this.i;
+    TextView localTextView = this.r;
     if (localTextView != null)
     {
       localTextView.setText(paramString);
-      this.i.setOnClickListener(paramOnClickListener);
+      this.r.setOnClickListener(paramOnClickListener);
       f(true);
     }
   }
@@ -132,133 +122,143 @@ public class SimpleFileBrowserView
   
   public void d(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(paramInt);
+    this.m.setImageResource(paramInt);
   }
   
   public void d(String paramString)
   {
-    TextView localTextView = this.d;
+    TextView localTextView = this.a;
     if (localTextView == null) {
       return;
     }
     localTextView.setText(paramString);
   }
   
-  public void e()
-  {
-    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: SimpleFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplication.getContext().getSystemService("layout_inflater")).inflate(2131560835, null, false);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
-      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366798));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364278));
-      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366792));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366789));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372125));
-      this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361946));
-    }
-  }
-  
   public void e(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(paramInt);
+    this.m.setDefaultImage(paramInt);
   }
   
   public void e(String paramString)
   {
-    if (this.e.getMeasuredWidth() <= 0)
+    if (this.n.getMeasuredWidth() <= 0)
     {
-      this.e.post(new SimpleFileBrowserView.1(this, paramString));
+      this.n.post(new SimpleFileBrowserView.1(this, paramString));
       return;
     }
-    TextView localTextView = this.e;
-    localTextView.setText(QQFileManagerUtil.a(paramString, false, localTextView.getMeasuredWidth(), this.e.getPaint(), 2));
+    TextView localTextView = this.n;
+    localTextView.setText(QQFileManagerUtil.a(paramString, false, localTextView.getMeasuredWidth(), this.n.getPaint(), 2));
   }
   
   public void e(boolean paramBoolean)
   {
-    TextView localTextView = this.d;
+    TextView localTextView = this.a;
     if (localTextView == null) {
       return;
     }
     if ((paramBoolean) && (!TextUtils.isEmpty(localTextView.getText())))
     {
-      this.d.setVisibility(0);
+      this.a.setVisibility(0);
       return;
     }
-    this.d.setVisibility(8);
+    this.a.setVisibility(8);
   }
   
   public void f(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setApkIconAsyncImage(paramString);
+    this.m.setApkIconAsyncImage(paramString);
   }
   
   public void f(boolean paramBoolean)
   {
-    if (this.i != null)
+    if (this.r != null)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      int k = 0;
+      Object localObject = this.f;
+      int i = 0;
       if (localObject != null)
       {
-        if ((paramBoolean) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0))
+        if ((paramBoolean) && (this.f.getVisibility() != 0))
         {
-          this.i.setVisibility(0);
+          this.r.setVisibility(0);
           return;
         }
-        this.i.setVisibility(8);
+        this.r.setVisibility(8);
         return;
       }
-      localObject = this.i;
+      localObject = this.r;
       if (!paramBoolean) {
-        k = 8;
+        i = 8;
       }
-      ((TextView)localObject).setVisibility(k);
+      ((TextView)localObject).setVisibility(i);
+    }
+  }
+  
+  public void g()
+  {
+    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: SimpleFileViewer initFileView");
+    if (this.d == null)
+    {
+      this.d = ((LayoutInflater)BaseApplication.getContext().getSystemService("layout_inflater")).inflate(2131627093, null, false);
+      this.b = this.d;
+      this.a = ((TextView)this.d.findViewById(2131433120));
+      this.m = ((AsyncImageView)this.d.findViewById(2131430297));
+      this.n = ((TextView)this.d.findViewById(2131433114));
+      this.o = ((TextView)this.d.findViewById(2131433111));
+      this.k = ((TextView)this.d.findViewById(2131439595));
+      this.r = ((TextView)this.d.findViewById(2131427500));
     }
   }
   
   public void g(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramString);
+    this.m.setUrlIconAsyncImage(paramString);
   }
   
   public void g(boolean paramBoolean)
   {
-    TextView localTextView = this.f;
-    int k;
+    TextView localTextView = this.o;
+    int i;
     if (paramBoolean) {
-      k = 0;
+      i = 0;
     } else {
-      k = 8;
+      i = 8;
     }
-    localTextView.setVisibility(k);
+    localTextView.setVisibility(i);
+  }
+  
+  public View h()
+  {
+    if (this.c != null)
+    {
+      QLog.e("FileBrowserViewBase", 2, "getInnerFileView : tbs not null");
+      return this.c;
+    }
+    return this.d;
   }
   
   public void h(String paramString)
   {
-    this.f.setText(paramString);
+    this.o.setText(paramString);
   }
   
   public void h(boolean paramBoolean)
   {
-    TextView localTextView = this.j;
+    TextView localTextView = this.s;
     if (localTextView != null)
     {
-      int k;
+      int i;
       if (paramBoolean) {
-        k = 0;
+        i = 0;
       } else {
-        k = 8;
+        i = 8;
       }
-      localTextView.setVisibility(k);
+      localTextView.setVisibility(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.view.SimpleFileBrowserView
  * JD-Core Version:    0.7.0.1
  */

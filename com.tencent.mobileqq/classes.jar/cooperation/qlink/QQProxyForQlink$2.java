@@ -13,22 +13,22 @@ class QQProxyForQlink$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_CooperationQlinkQQProxyForQlink.a("0X8004855", 1);
-    Object localObject = this.jdField_a_of_type_CooperationQlinkQQProxyForQlink;
-    ((QQProxyForQlink)localObject).a(QQProxyForQlink.a((QQProxyForQlink)localObject).mPeerUin, this.jdField_a_of_type_JavaUtilArrayList);
+    this.e.a("0X8004855", 1);
+    Object localObject = this.e;
+    ((QQProxyForQlink)localObject).a(QQProxyForQlink.c((QQProxyForQlink)localObject).mPeerUin, this.a);
     localObject = new Bundle();
-    ((Bundle)localObject).putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
+    ((Bundle)localObject).putStringArrayList("string_filepaths", this.a);
     ((Bundle)localObject).putBoolean("STRING_CONTINUE_SEND_TO_", true);
-    QQProxyForQlink.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, (Bundle)localObject);
+    QQProxyForQlink.a(this.b, this.c, (Bundle)localObject);
     paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    if (this.d) {
+      this.b.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QQProxyForQlink.2
  * JD-Core Version:    0.7.0.1
  */

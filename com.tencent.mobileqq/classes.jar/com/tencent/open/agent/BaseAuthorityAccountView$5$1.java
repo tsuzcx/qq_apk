@@ -14,22 +14,22 @@ class BaseAuthorityAccountView$5$1
   public void run()
   {
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (this.a != null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("-->updateAccountFace success uin = ");
-      localStringBuilder.append(AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$5.jdField_a_of_type_JavaLangString));
+      localStringBuilder.append(AuthorityUtil.a(this.b.a));
       SSOLog.a("BaseAuthorityAccountView", new Object[] { localStringBuilder.toString() });
-      this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$5.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.b.b.setImageBitmap(this.a);
       return;
     }
     try
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("-->updateAccountFace use default uin = ");
-      localStringBuilder.append(AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$5.jdField_a_of_type_JavaLangString));
+      localStringBuilder.append(AuthorityUtil.a(this.b.a));
       SSOLog.a("BaseAuthorityAccountView", new Object[] { localStringBuilder.toString() });
-      this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$5.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentBaseAuthorityAccountView$5.this$0.getResources(), 2130840667));
+      this.b.b.setImageBitmap(BitmapFactory.decodeResource(this.b.this$0.getResources(), 2130841444));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -42,7 +42,7 @@ class BaseAuthorityAccountView$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseAuthorityAccountView.5.1
  * JD-Core Version:    0.7.0.1
  */

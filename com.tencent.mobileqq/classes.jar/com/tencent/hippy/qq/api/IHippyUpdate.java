@@ -14,11 +14,13 @@ public abstract interface IHippyUpdate
   
   public abstract boolean checkUpdateJsBundleInterval(String paramString);
   
+  public abstract void commonUpdateJsBundle(String paramString1, String paramString2, IUpdateListener paramIUpdateListener);
+  
   public abstract HippyConfig getHippyConfig();
   
   public abstract Map<String, TabFile> getTabFilesConfig();
   
-  public abstract void preDownloadHippyByController(int paramInt);
+  public abstract void preDownloadHippyByController(int paramInt1, int paramInt2);
   
   public abstract void predownloadHippy(int paramInt);
   
@@ -30,7 +32,7 @@ public abstract interface IHippyUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.api.IHippyUpdate
  * JD-Core Version:    0.7.0.1
  */

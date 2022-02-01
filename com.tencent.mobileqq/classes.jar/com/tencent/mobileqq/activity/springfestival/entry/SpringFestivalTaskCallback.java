@@ -59,44 +59,35 @@ import mqq.observer.BusinessObserver;
 public class SpringFestivalTaskCallback
   implements ITaskCallback, BusinessObserver
 {
-  long jdField_a_of_type_Long = -1L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new SpringFestivalTaskCallback.1(this));
-  Conversation.UICallBack jdField_a_of_type_ComTencentMobileqqActivityHomeConversation$UICallBack;
-  private final Conversation jdField_a_of_type_ComTencentMobileqqActivityHomeConversation;
-  private SpringFestivalTaskCallback.BrushHBStateChangeListener jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback$BrushHBStateChangeListener = new SpringFestivalTaskCallback.3(this);
-  private BaseActivityData jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData;
-  private SpringPopBanner jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner;
-  private DesktopChangeListener jdField_a_of_type_ComTencentMobileqqMiniEntryDesktopDesktopChangeListener = new SpringFestivalTaskCallback.2(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean = false;
-  long jdField_c_of_type_Long = -1L;
-  private boolean jdField_c_of_type_Boolean = false;
-  long jdField_d_of_type_Long = 2500L;
-  private boolean jdField_d_of_type_Boolean = false;
-  private boolean e = false;
-  private boolean f;
-  private boolean g;
+  Conversation.UICallBack a;
+  long b = -1L;
+  long c = -1L;
+  long d = -1L;
+  long e = 2500L;
+  private final Conversation f;
+  private SpringPopBanner g;
+  private boolean h = false;
+  private boolean i = false;
+  private boolean j = false;
+  private boolean k = false;
+  private boolean l = false;
+  private Handler m = new Handler(Looper.getMainLooper(), new SpringFestivalTaskCallback.1(this));
+  private DesktopChangeListener n = new SpringFestivalTaskCallback.2(this);
+  private BaseActivityData o;
+  private SpringFestivalTaskCallback.BrushHBStateChangeListener p = new SpringFestivalTaskCallback.3(this);
+  private boolean q;
+  private boolean r;
   
   public SpringFestivalTaskCallback(Conversation paramConversation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
-    b();
-  }
-  
-  private long a()
-  {
-    long l = ((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).a().grabReqInterval;
-    if (l > 0L) {
-      return l;
-    }
-    return this.jdField_d_of_type_Long;
+    this.f = paramConversation;
+    e();
   }
   
   @SuppressLint({"UseCompatLoadingForDrawables"})
   private void a(boolean paramBoolean, String paramString)
   {
-    MiniAppPullInterface localMiniAppPullInterface = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
+    MiniAppPullInterface localMiniAppPullInterface = this.f.y();
     if (localMiniAppPullInterface == null)
     {
       QLog.i("2021_UI_SpringFestivalTaskCallback", 1, "updateAppletsBackDrawable, miniAppPullInterface null, return");
@@ -104,8 +95,8 @@ public class SpringFestivalTaskCallback
     }
     if (paramBoolean)
     {
-      DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getApplicationContext().getResources().getDisplayMetrics();
-      paramString = Utils.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime, paramString, localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels, "default_miniapp_desktop_bg");
+      DisplayMetrics localDisplayMetrics = this.f.aF.getApplicationContext().getResources().getDisplayMetrics();
+      paramString = Utils.a(this.f.aF, paramString, localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels, "default_miniapp_desktop_bg");
       if (paramString != null)
       {
         ((IMiniAppService)QRoute.api(IMiniAppService.class)).updateMiniDesktopBackground(localMiniAppPullInterface, paramString);
@@ -117,7 +108,7 @@ public class SpringFestivalTaskCallback
     ((IMiniAppService)QRoute.api(IMiniAppService.class)).updateMiniDesktopBackground(localMiniAppPullInterface, null);
   }
   
-  private boolean a(int paramInt)
+  private boolean b(int paramInt)
   {
     boolean bool2 = true;
     boolean bool1 = bool2;
@@ -144,40 +135,9 @@ public class SpringFestivalTaskCallback
     return bool1;
   }
   
-  private long b()
+  private void p()
   {
-    return ((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).a();
-  }
-  
-  private boolean d()
-  {
-    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject2 = BaseApplicationImpl.getApplication();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("loginwelcome_");
-    localStringBuilder.append(((QQAppInterface)localObject1).getCurrentAccountUin());
-    localObject1 = ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
-    int i = ((SharedPreferences)localObject1).getInt("first_login", 0);
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("requestIsFirstLogin state=");
-      ((StringBuilder)localObject2).append(i);
-      QLog.i("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject2).toString());
-    }
-    if (i != 1)
-    {
-      localObject1 = ((SharedPreferences)localObject1).edit();
-      ((SharedPreferences.Editor)localObject1).putInt("first_login", 1);
-      ((SharedPreferences.Editor)localObject1).apply();
-      return true;
-    }
-    return false;
-  }
-  
-  private void l()
-  {
-    MiniAppPullInterface localMiniAppPullInterface = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
+    MiniAppPullInterface localMiniAppPullInterface = this.f.y();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -188,16 +148,56 @@ public class SpringFestivalTaskCallback
     if (localMiniAppPullInterface == null) {
       return;
     }
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).removeDesktopChangeListener(localMiniAppPullInterface, this.jdField_a_of_type_ComTencentMobileqqMiniEntryDesktopDesktopChangeListener);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).removeDesktopChangeListener(localMiniAppPullInterface, this.n);
   }
   
-  private void m()
+  private long q()
+  {
+    long l1 = ((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).a().grabReqInterval;
+    if (l1 > 0L) {
+      return l1;
+    }
+    return this.e;
+  }
+  
+  private long r()
+  {
+    return ((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).i();
+  }
+  
+  private boolean s()
+  {
+    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loginwelcome_");
+    localStringBuilder.append(((QQAppInterface)localObject1).getCurrentAccountUin());
+    localObject1 = ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
+    int i1 = ((SharedPreferences)localObject1).getInt("first_login", 0);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("requestIsFirstLogin state=");
+      ((StringBuilder)localObject2).append(i1);
+      QLog.i("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (i1 != 1)
+    {
+      localObject1 = ((SharedPreferences)localObject1).edit();
+      ((SharedPreferences.Editor)localObject1).putInt("first_login", 1);
+      ((SharedPreferences.Editor)localObject1).apply();
+      return true;
+    }
+    return false;
+  }
+  
+  private void t()
   {
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "reportMiniAppDesktopOpened ");
     }
     HashMap localHashMap = new HashMap();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData;
+    Object localObject = this.o;
     if (localObject != null)
     {
       localObject = ((BaseActivityData)localObject).id;
@@ -213,50 +213,36 @@ public class SpringFestivalTaskCallback
     SpringHbReporter.a(ReportConstant.Event.m, 0, 0, localHashMap, "drop");
   }
   
-  public BaseActivityData a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "setMiniAppDesktop2NormalMode");
-    }
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).updateMiniHBBanner(null);
-    a(false, null);
-  }
-  
   public void a(int paramInt)
   {
-    long l1 = b();
-    if (this.jdField_c_of_type_Long < 0L) {
-      this.jdField_c_of_type_Long = l1;
+    long l1 = r();
+    if (this.d < 0L) {
+      this.d = l1;
     }
-    if (!NetworkUtils.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a()))
+    if (!NetworkUtils.isNetworkAvailable(this.f.P()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a(false, PortalConstants.a, null);
+      this.f.aa.a(false, PortalConstants.a, null);
       return;
     }
-    long l2 = a();
+    long l2 = q();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("grabHongbao  current  = ");
       localStringBuilder1.append(l1);
       localStringBuilder1.append(",lastGrabHongBaoResponseTime = ");
-      localStringBuilder1.append(this.jdField_b_of_type_Long);
+      localStringBuilder1.append(this.c);
       localStringBuilder1.append(",lastGrabHongBaoRequestTime = ");
-      localStringBuilder1.append(this.jdField_a_of_type_Long);
+      localStringBuilder1.append(this.b);
       localStringBuilder1.append(",firstGrabHongBaoLastCallTime = ");
-      localStringBuilder1.append(this.jdField_c_of_type_Long);
+      localStringBuilder1.append(this.d);
       localStringBuilder1.append(",reqInterval = ");
       localStringBuilder1.append(l2);
       localStringBuilder1.append(",comboCount = ");
       localStringBuilder1.append(paramInt);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder1.toString());
     }
-    if ((this.jdField_b_of_type_Long < 0L) && (Math.abs(l1 - this.jdField_a_of_type_Long) < 30000L))
+    if ((this.c < 0L) && (Math.abs(l1 - this.b) < 30000L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "grabHongbao return for not resp");
@@ -264,21 +250,21 @@ public class SpringFestivalTaskCallback
       return;
     }
     StringBuilder localStringBuilder2;
-    if ((l1 - this.jdField_b_of_type_Long >= l2) && (l1 - this.jdField_a_of_type_Long >= l2) && (l1 - this.jdField_c_of_type_Long >= l2))
+    if ((l1 - this.c >= l2) && (l1 - this.b >= l2) && (l1 - this.d >= l2))
     {
-      int j = -1;
-      int i;
+      int i2 = -1;
+      int i1;
       try
       {
-        i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.promotionId);
+        i1 = Integer.parseInt(this.o.promotionId);
       }
       catch (Exception localException)
       {
-        i = j;
+        i1 = i2;
         if (QLog.isColorLevel())
         {
           QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "grabHongbao Exception", localException);
-          i = j;
+          i1 = i2;
         }
       }
       if (QLog.isColorLevel())
@@ -287,21 +273,21 @@ public class SpringFestivalTaskCallback
         localStringBuilder2.append("grabHongbao real do request,current = ");
         localStringBuilder2.append(l1);
         localStringBuilder2.append(",lastGrabHongBaoRequestTime = ");
-        localStringBuilder2.append(this.jdField_a_of_type_Long);
+        localStringBuilder2.append(this.b);
         localStringBuilder2.append(",lastGrabHongBaoResponseTime = ");
-        localStringBuilder2.append(this.jdField_b_of_type_Long);
+        localStringBuilder2.append(this.c);
         localStringBuilder2.append(",promotionId = ");
-        localStringBuilder2.append(i);
+        localStringBuilder2.append(i1);
         localStringBuilder2.append(",activityId = ");
-        localStringBuilder2.append(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.id);
+        localStringBuilder2.append(this.o.id);
         QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder2.toString());
       }
-      this.jdField_a_of_type_Long = l1;
-      RedPacketServlet.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime, i, paramInt);
-      j();
+      this.b = l1;
+      RedPacketServlet.a(this.f.aF, i1, paramInt);
+      n();
       return;
     }
-    if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))
+    if (!this.m.hasMessages(1))
     {
       l1 = (Math.random() * 2300.0D + 1200.0D);
       if (QLog.isColorLevel())
@@ -311,7 +297,7 @@ public class SpringFestivalTaskCallback
         localStringBuilder2.append(l1);
         QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder2.toString());
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, l1);
+      this.m.sendEmptyMessageDelayed(1, l1);
     }
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "grabHongbao return for limit req freq ");
@@ -329,7 +315,7 @@ public class SpringFestivalTaskCallback
       ((StringBuilder)localObject1).append(paramString);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
+    Object localObject1 = this.f.B();
     if (!(localObject1 instanceof RelativeLayout))
     {
       if (QLog.isColorLevel())
@@ -343,21 +329,21 @@ public class SpringFestivalTaskCallback
     }
     ((View)localObject1).requestLayout();
     RelativeLayout localRelativeLayout1 = (RelativeLayout)localObject1;
-    if (localRelativeLayout1.findViewById(2131377798) != null)
+    if (localRelativeLayout1.findViewById(2131446264) != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "showSpringFestivalBanner return for already added");
       }
       return;
     }
-    RelativeLayout localRelativeLayout2 = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a()).inflate(2131561111, localRelativeLayout1, false);
-    ImageView localImageView = (ImageView)localRelativeLayout2.findViewById(2131377799);
-    localImageView.setImageResource(2130845454);
+    RelativeLayout localRelativeLayout2 = (RelativeLayout)LayoutInflater.from(this.f.P()).inflate(2131627461, localRelativeLayout1, false);
+    ImageView localImageView = (ImageView)localRelativeLayout2.findViewById(2131446265);
+    localImageView.setImageResource(2130846910);
     Object localObject2 = null;
     localObject1 = localObject2;
     if (!TextUtils.isEmpty(paramString))
     {
-      SpringFestivalEntryManager localSpringFestivalEntryManager = (SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+      SpringFestivalEntryManager localSpringFestivalEntryManager = (SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
       if (paramInt == 0)
       {
         paramString = localSpringFestivalEntryManager.a(paramString, "");
@@ -396,9 +382,9 @@ public class SpringFestivalTaskCallback
       }
     }
     paramInt = localRelativeLayout1.getHeight();
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
-    if (i > 0) {
-      paramInt = i;
+    int i1 = this.f.i();
+    if (i1 > 0) {
+      paramInt = i1;
     }
     if (QLog.isColorLevel())
     {
@@ -408,44 +394,44 @@ public class SpringFestivalTaskCallback
       paramString.append(",statusTitle.h = ");
       paramString.append(localRelativeLayout1.getHeight());
       paramString.append(",statusTitleHeightInNormalState = ");
-      paramString.append(i);
+      paramString.append(i1);
       paramString.append(",bgBmp = ");
       paramString.append(localObject1);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, paramString.toString());
     }
     localRelativeLayout1.addView(localRelativeLayout2, 0, new RelativeLayout.LayoutParams(localRelativeLayout1.getWidth(), paramInt));
     localRelativeLayout2.requestLayout();
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.j();
+    this.f.n();
   }
   
   public void a(long paramLong, BaseActivityData paramBaseActivityData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData = paramBaseActivityData;
-    Object localObject1 = (SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-    Object localObject2 = ((SpringFestivalEntryManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.id);
+    this.o = paramBaseActivityData;
+    Object localObject1 = (SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+    Object localObject2 = ((SpringFestivalEntryManager)localObject1).c(this.o.id);
     Object localObject3;
     if (QLog.isColorLevel())
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("onActivityStart isMiniAppDesktopOpened = ");
-      ((StringBuilder)localObject3).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject3).append(this.i);
       ((StringBuilder)localObject3).append(",userDataItem.hasClickCloseBtn = ");
       ((StringBuilder)localObject3).append(((UserData.UserDataItem)localObject2).hasClickCloseBtn);
       ((StringBuilder)localObject3).append(",userDataItem.pendantCloseType = ");
       ((StringBuilder)localObject3).append(((UserData.UserDataItem)localObject2).pendantCloseType);
       ((StringBuilder)localObject3).append(",isResume = ");
-      ((StringBuilder)localObject3).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject3).append(this.k);
       ((StringBuilder)localObject3).append(",isLeftDrawerOpen = ");
-      ((StringBuilder)localObject3).append(this.e);
+      ((StringBuilder)localObject3).append(this.l);
       ((StringBuilder)localObject3).append(",actData = ");
       ((StringBuilder)localObject3).append(paramBaseActivityData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject3).toString());
     }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (!this.e))
+    if ((!this.i) && (this.k) && (!this.l))
     {
       if (paramBaseActivityData.type == 2)
       {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback$BrushHBStateChangeListener;
+        localObject3 = this.p;
         if (localObject3 != null) {
           ((SpringFestivalTaskCallback.BrushHBStateChangeListener)localObject3).a();
         }
@@ -454,7 +440,7 @@ public class SpringFestivalTaskCallback
           g(paramBaseActivityData);
           return;
         }
-        long l2 = b();
+        long l2 = r();
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
@@ -477,10 +463,10 @@ public class SpringFestivalTaskCallback
           QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject2).toString());
         }
         paramLong = l1;
-        if (((SpringFestivalEntryManager)localObject1).c())
+        if (((SpringFestivalEntryManager)localObject1).j())
         {
-          int i = ((SpringFestivalEntryManager)localObject1).a();
-          l1 /= i;
+          int i1 = ((SpringFestivalEntryManager)localObject1).k();
+          l1 /= i1;
           paramLong = l1;
           if (QLog.isColorLevel())
           {
@@ -488,16 +474,16 @@ public class SpringFestivalTaskCallback
             ((StringBuilder)localObject1).append("onActivityStart showPrepareCountDown SpeedUp prepareCountDownMs = ");
             ((StringBuilder)localObject1).append(l1);
             ((StringBuilder)localObject1).append(", ratio = ");
-            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(i1);
             QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject1).toString());
             paramLong = l1;
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a((OnGrabActivityData)paramBaseActivityData, paramLong);
+        this.f.aa.a((OnGrabActivityData)paramBaseActivityData, paramLong);
       }
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.j = true;
   }
   
   public void a(long paramLong, String paramString)
@@ -512,11 +498,11 @@ public class SpringFestivalTaskCallback
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = new HashMap();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData;
+    Object localObject2 = this.o;
     if (localObject2 != null)
     {
       localObject2 = ((BaseActivityData)localObject2).id;
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.promotionId;
+      String str = this.o.promotionId;
       ((Map)localObject1).put("active_id", localObject2);
       ((Map)localObject1).put("jackpot_id", str);
       ((Map)localObject1).put("ext1", paramString);
@@ -544,61 +530,61 @@ public class SpringFestivalTaskCallback
       localStringBuilder.append(paramUICallBack);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation$UICallBack = paramUICallBack;
+    this.a = paramUICallBack;
   }
   
   public void a(HBEntryBannerData paramHBEntryBannerData)
   {
-    boolean bool = StudyModeManager.a();
+    boolean bool = StudyModeManager.h();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setMiniAppDesktop2HBMode isStudyMode = ");
       localStringBuilder.append(bool);
       localStringBuilder.append(",");
-      localStringBuilder.append(paramHBEntryBannerData.b());
+      localStringBuilder.append(paramHBEntryBannerData.d());
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
     if (bool) {
       return;
     }
     ((IMiniAppService)QRoute.api(IMiniAppService.class)).updateMiniHBBanner(paramHBEntryBannerData);
-    a(true, paramHBEntryBannerData.c());
+    a(true, paramHBEntryBannerData.e());
   }
   
   public void a(BaseActivityData paramBaseActivityData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData = paramBaseActivityData;
-    UserData.UserDataItem localUserDataItem = ((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).a(paramBaseActivityData.id);
+    this.o = paramBaseActivityData;
+    UserData.UserDataItem localUserDataItem = ((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).c(paramBaseActivityData.id);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onActivityAboutToOver isMiniAppDesktopOpened = ");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.i);
       localStringBuilder.append(",userDataItem.hasClickCloseBtn = ");
       localStringBuilder.append(localUserDataItem.hasClickCloseBtn);
       localStringBuilder.append(",userDataItem.pendantCloseType = ");
       localStringBuilder.append(localUserDataItem.pendantCloseType);
       localStringBuilder.append(",conversation.mHongBaoCtrlV2.mState = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a);
+      localStringBuilder.append(this.f.aa.e);
       localStringBuilder.append(",actData = ");
       localStringBuilder.append(paramBaseActivityData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_c_of_type_Boolean = true;
+      this.j = true;
       return;
     }
     if (paramBaseActivityData.type == 2) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a != 2) && (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a != 3))
+      if ((this.f.aa.e != 2) && (this.f.aa.e != 3))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a == -1)
+        if (this.f.aa.e == -1)
         {
           g(paramBaseActivityData);
           return;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a == 4)
+        if (this.f.aa.e == 4)
         {
           if (QLog.isColorLevel()) {
             QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onActivityAboutToOver call onActivityRealStart");
@@ -608,7 +594,7 @@ public class SpringFestivalTaskCallback
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.f();
+        this.f.aa.h();
       }
     }
   }
@@ -625,21 +611,21 @@ public class SpringFestivalTaskCallback
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onMsgTabBannerShow ,isMiniAppDesktopOpened = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.i);
       ((StringBuilder)localObject).append(",isLeftDrawerOpen = ");
-      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(this.l);
       ((StringBuilder)localObject).append(",isResume = ");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.k);
       ((StringBuilder)localObject).append(",msgTabBannerData = ");
       ((StringBuilder)localObject).append(paramMsgTabBannerData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject).toString());
     }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (!this.e))
+    if ((!this.i) && (this.k) && (!this.l))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData;
+      localObject = this.o;
       if ((localObject != null) && (((BaseActivityData)localObject).type == 2))
       {
-        localObject = ((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.id);
+        localObject = ((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).c(this.o.id);
         if (((UserData.UserDataItem)localObject).leftCountDownDuration == 0L)
         {
           if (QLog.isColorLevel()) {
@@ -661,7 +647,7 @@ public class SpringFestivalTaskCallback
       }
       if (bool)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback$BrushHBStateChangeListener;
+        localObject = this.p;
         if (localObject != null) {
           ((SpringFestivalTaskCallback.BrushHBStateChangeListener)localObject).c();
         }
@@ -669,7 +655,7 @@ public class SpringFestivalTaskCallback
       }
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.j = true;
   }
   
   public void a(PopBannerData paramPopBannerData)
@@ -680,26 +666,26 @@ public class SpringFestivalTaskCallback
       return;
     }
     boolean bool;
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (!AppSetting.jdField_d_of_type_Boolean))
+    if ((!this.i) && (this.k) && (!AppSetting.e))
     {
-      bool = d();
+      bool = s();
       if (!bool)
       {
         if (QLog.isColorLevel()) {
           QLog.d("2021_UI_SpringFestivalTaskCallback", 2, String.format("showPopBanner data = %s", new Object[] { paramPopBannerData }));
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner == null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner = new SpringPopBanner(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation);
+        if (this.g == null) {
+          this.g = new SpringPopBanner(this.f);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner.a(paramPopBannerData);
+        this.g.a(paramPopBannerData);
       }
     }
     else
     {
       bool = false;
     }
-    QLog.d("2021_UI_SpringFestivalTaskCallback", 1, String.format("showPopBanner return... isMiniAppDesktopOpened=%b resume=%b talkback=%b isFirstLogin=%b", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean), Boolean.valueOf(this.jdField_d_of_type_Boolean), Boolean.valueOf(AppSetting.jdField_d_of_type_Boolean), Boolean.valueOf(bool) }));
-    this.jdField_c_of_type_Boolean = true;
+    QLog.d("2021_UI_SpringFestivalTaskCallback", 1, String.format("showPopBanner return... isMiniAppDesktopOpened=%b resume=%b talkback=%b isFirstLogin=%b", new Object[] { Boolean.valueOf(this.i), Boolean.valueOf(this.k), Boolean.valueOf(AppSetting.e), Boolean.valueOf(bool) }));
+    this.j = true;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -707,7 +693,7 @@ public class SpringFestivalTaskCallback
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onAccountChanged");
     }
-    b();
+    e();
   }
   
   public void a(boolean paramBoolean)
@@ -719,7 +705,7 @@ public class SpringFestivalTaskCallback
       localStringBuilder.append(paramBoolean);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    this.f = paramBoolean;
+    this.q = paramBoolean;
   }
   
   public boolean a()
@@ -728,55 +714,39 @@ public class SpringFestivalTaskCallback
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isBrushHBActOngoing isBrushHBActOngoing = ");
-      localStringBuilder.append(this.f);
+      localStringBuilder.append(this.q);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    return this.f;
-  }
-  
-  public void b()
-  {
-    MiniAppPullInterface localMiniAppPullInterface = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setMiniAppDestopChangeListener miniAppPullInterface = ");
-      localStringBuilder.append(localMiniAppPullInterface);
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
-    }
-    if (localMiniAppPullInterface == null) {
-      return;
-    }
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).addDesktopChangeListener(localMiniAppPullInterface, this.jdField_a_of_type_ComTencentMobileqqMiniEntryDesktopDesktopChangeListener);
+    return this.q;
   }
   
   public void b(long paramLong, BaseActivityData paramBaseActivityData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData = paramBaseActivityData;
-    UserData.UserDataItem localUserDataItem = ((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.id);
+    this.o = paramBaseActivityData;
+    UserData.UserDataItem localUserDataItem = ((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).c(this.o.id);
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onActivityRealStart isMiniAppDesktopOpened = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.i);
       ((StringBuilder)localObject).append(",userDataItem.hasClickCloseBtn = ");
       ((StringBuilder)localObject).append(localUserDataItem.hasClickCloseBtn);
       ((StringBuilder)localObject).append(",userDataItem.pendantCloseType = ");
       ((StringBuilder)localObject).append(localUserDataItem.pendantCloseType);
       ((StringBuilder)localObject).append(",isResume = ");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.k);
       ((StringBuilder)localObject).append(",isLeftDrawerOpen = ");
-      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(this.l);
       ((StringBuilder)localObject).append(",actData = ");
       ((StringBuilder)localObject).append(paramBaseActivityData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject).toString());
     }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (!this.e))
+    if ((!this.i) && (this.k) && (!this.l))
     {
       if (paramBaseActivityData.type == 2)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback$BrushHBStateChangeListener;
+        localObject = this.p;
         if (localObject != null) {
           ((SpringFestivalTaskCallback.BrushHBStateChangeListener)localObject).a();
         }
@@ -785,7 +755,7 @@ public class SpringFestivalTaskCallback
           g(paramBaseActivityData);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a((OnGrabActivityData)paramBaseActivityData);
+        this.f.aa.a((OnGrabActivityData)paramBaseActivityData);
         return;
       }
       if ((paramBaseActivityData.type == 3) || (paramBaseActivityData.type == 1)) {
@@ -793,7 +763,7 @@ public class SpringFestivalTaskCallback
       }
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.j = true;
   }
   
   public void b(BaseActivityData paramBaseActivityData)
@@ -802,33 +772,33 @@ public class SpringFestivalTaskCallback
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onActivityOver isMiniAppDesktopOpened = ");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.i);
       localStringBuilder.append("actData = ");
       localStringBuilder.append(paramBaseActivityData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.i)
     {
-      this.jdField_c_of_type_Boolean = true;
+      this.j = true;
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.d();
-    a();
+    this.f.aa.e();
+    d();
     a(false);
-    e();
-    paramBaseActivityData = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback$BrushHBStateChangeListener;
+    h();
+    paramBaseActivityData = this.p;
     if (paramBaseActivityData != null) {
       paramBaseActivityData.d();
     }
-    k();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData = null;
-    paramBaseActivityData = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback$BrushHBStateChangeListener;
+    o();
+    this.o = null;
+    paramBaseActivityData = this.p;
     if (paramBaseActivityData != null) {
       paramBaseActivityData.b();
     }
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_c_of_type_Long = -1L;
+    this.c = -1L;
+    this.b = -1L;
+    this.d = -1L;
   }
   
   public void b(MsgTabBannerData paramMsgTabBannerData)
@@ -845,12 +815,12 @@ public class SpringFestivalTaskCallback
       localStringBuilder.append(paramMsgTabBannerData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    e();
-    paramMsgTabBannerData = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback$BrushHBStateChangeListener;
+    h();
+    paramMsgTabBannerData = this.p;
     if (paramMsgTabBannerData != null) {
       paramMsgTabBannerData.d();
     }
-    k();
+    o();
   }
   
   public void b(PopBannerData paramPopBannerData)
@@ -862,7 +832,7 @@ public class SpringFestivalTaskCallback
       localStringBuilder.append(paramPopBannerData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    paramPopBannerData = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner;
+    paramPopBannerData = this.g;
     if (paramPopBannerData != null) {
       paramPopBannerData.a(false);
     }
@@ -870,43 +840,40 @@ public class SpringFestivalTaskCallback
   
   public void b(boolean paramBoolean)
   {
-    this.g = paramBoolean;
+    this.r = paramBoolean;
   }
   
   public boolean b()
   {
-    return this.g;
+    return this.r;
   }
   
-  public void c()
+  public BaseActivityData c()
   {
-    this.jdField_d_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onPause");
-    }
+    return this.o;
   }
   
   public void c(BaseActivityData paramBaseActivityData)
   {
-    Object localObject = (SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-    UserData.UserDataItem localUserDataItem = ((SpringFestivalEntryManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.id);
-    boolean bool1 = ((SpringFestivalEntryManager)localObject).b();
-    boolean bool2 = StudyModeManager.a();
+    Object localObject = (SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+    UserData.UserDataItem localUserDataItem = ((SpringFestivalEntryManager)localObject).c(this.o.id);
+    boolean bool1 = ((SpringFestivalEntryManager)localObject).h();
+    boolean bool2 = StudyModeManager.h();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onPendantShow  userDataItem.hasClickCloseBtn = ");
       ((StringBuilder)localObject).append(localUserDataItem.hasClickCloseBtn);
       ((StringBuilder)localObject).append(",isMiniAppDesktopOpened = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.i);
       ((StringBuilder)localObject).append(",isPendantShowSwitchOn = ");
       ((StringBuilder)localObject).append(bool1);
       ((StringBuilder)localObject).append(",isStudyMode = ");
       ((StringBuilder)localObject).append(bool2);
       ((StringBuilder)localObject).append(",isResume = ");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.k);
       ((StringBuilder)localObject).append(",isLeftDrawerOpen = ");
-      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(this.l);
       ((StringBuilder)localObject).append(",actData = ");
       ((StringBuilder)localObject).append(paramBaseActivityData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject).toString());
@@ -914,67 +881,23 @@ public class SpringFestivalTaskCallback
     if (bool2) {
       return;
     }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (!this.e))
+    if ((!this.i) && (this.k) && (!this.l))
     {
       if ((!localUserDataItem.hasClickCloseBtn) && (bool1)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a(paramBaseActivityData);
+        this.f.aa.a(paramBaseActivityData);
       }
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public boolean c()
-  {
-    SpringPopBanner localSpringPopBanner = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner;
-    if ((localSpringPopBanner != null) && (localSpringPopBanner.a()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner.a(true);
-      return true;
-    }
-    return false;
+    this.j = true;
   }
   
   public void d()
   {
-    this.jdField_d_of_type_Boolean = true;
-    boolean bool = StudyModeManager.a();
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("onResume isStudyMode = ");
-      ((StringBuilder)localObject).append(bool);
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject).toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "setMiniAppDesktop2NormalMode");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData;
-    if ((localObject != null) && ((((BaseActivityData)localObject).type == 3) || (this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.type == 1)))
-    {
-      if (!((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).b())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onResume hideNormalActivityPendant");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.v();
-      }
-      if (bool)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.v();
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a();
-      }
-    }
-    if (bool) {
-      a();
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("onResume isNeedRefreshScheduleTask=");
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
-    QLog.d("2021_UI_SpringFestivalTaskCallback", 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_c_of_type_Boolean)
-    {
-      ((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).c();
-      this.jdField_c_of_type_Boolean = false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.j();
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).updateMiniHBBanner(null);
+    a(false, null);
   }
   
   public void d(BaseActivityData paramBaseActivityData)
@@ -986,52 +909,43 @@ public class SpringFestivalTaskCallback
       localStringBuilder.append(paramBaseActivityData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.v();
+    this.f.aa.y();
   }
   
   public void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "removeSpringFestivalBanner");
-    }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
-    if (!(localObject1 instanceof RelativeLayout))
+    MiniAppPullInterface localMiniAppPullInterface = this.f.y();
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("removeSpringFestivalBanner return, title = ");
-        ((StringBuilder)localObject2).append(localObject1);
-        QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject2).toString());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setMiniAppDestopChangeListener miniAppPullInterface = ");
+      localStringBuilder.append(localMiniAppPullInterface);
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
+    }
+    if (localMiniAppPullInterface == null) {
       return;
     }
-    localObject1 = (RelativeLayout)localObject1;
-    Object localObject2 = ((RelativeLayout)localObject1).findViewById(2131377798);
-    if (localObject2 != null) {
-      ((RelativeLayout)localObject1).removeView((View)localObject2);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.i();
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).addDesktopChangeListener(localMiniAppPullInterface, this.n);
   }
   
   public void e(BaseActivityData paramBaseActivityData)
   {
-    SpringFestivalEntryManager localSpringFestivalEntryManager = (SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-    UserData.UserDataItem localUserDataItem = localSpringFestivalEntryManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.id);
-    boolean bool1 = StudyModeManager.a();
+    SpringFestivalEntryManager localSpringFestivalEntryManager = (SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+    UserData.UserDataItem localUserDataItem = localSpringFestivalEntryManager.c(this.o.id);
+    boolean bool1 = StudyModeManager.h();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onBreathLightShow ,userDataItem.hasDisplayBreathLight = ");
       localStringBuilder.append(localUserDataItem.hasDisplayBreathLight);
       localStringBuilder.append(",isMiniAppDesktopOpened = ");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.i);
       localStringBuilder.append(",userDataItem.hasClickCloseBtn = ");
       localStringBuilder.append(localUserDataItem.hasClickCloseBtn);
       localStringBuilder.append(",isLeftDrawerOpen = ");
-      localStringBuilder.append(this.e);
+      localStringBuilder.append(this.l);
       localStringBuilder.append(",isResume = ");
-      localStringBuilder.append(this.jdField_d_of_type_Boolean);
+      localStringBuilder.append(this.k);
       localStringBuilder.append(",isStudyMode = ");
       localStringBuilder.append(bool1);
       localStringBuilder.append(",actData = ");
@@ -1041,7 +955,7 @@ public class SpringFestivalTaskCallback
     if (bool1) {
       return;
     }
-    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Boolean) && (!this.e))
+    if ((!this.i) && (this.k) && (!this.l))
     {
       if ((!localUserDataItem.hasClickCloseBtn) && (!localUserDataItem.hasDisplayBreathLight))
       {
@@ -1058,32 +972,24 @@ public class SpringFestivalTaskCallback
             }
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a(bool1);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.d(bool1);
+        this.f.aa.a(bool1);
+        this.f.aa.d(bool1);
         localUserDataItem.hasDisplayBreathLight = true;
-        localSpringFestivalEntryManager.a();
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 5000L);
+        localSpringFestivalEntryManager.b();
+        this.h = true;
+        this.m.sendEmptyMessageDelayed(2, 5000L);
       }
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
+    this.j = true;
   }
   
   public void f()
   {
+    this.k = false;
     if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onDestroy");
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onPause");
     }
-    l();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation$UICallBack = null;
-    SpringPopBanner localSpringPopBanner = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner;
-    if (localSpringPopBanner != null) {
-      localSpringPopBanner.a(true);
-    }
-    a(false);
-    b(false);
   }
   
   public void f(BaseActivityData paramBaseActivityData)
@@ -1095,16 +1001,50 @@ public class SpringFestivalTaskCallback
       localStringBuilder.append(paramBaseActivityData);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a();
-    this.jdField_a_of_type_Boolean = false;
+    this.f.aa.a();
+    this.h = false;
   }
   
   public void g()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "updateLastGrabHongbaoRequestTime");
+    this.k = true;
+    boolean bool = StudyModeManager.h();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResume isStudyMode = ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Long = b();
+    Object localObject = this.o;
+    if ((localObject != null) && ((((BaseActivityData)localObject).type == 3) || (this.o.type == 1)))
+    {
+      if (!((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).h())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onResume hideNormalActivityPendant");
+        }
+        this.f.aa.y();
+      }
+      if (bool)
+      {
+        this.f.aa.y();
+        this.f.aa.a();
+      }
+    }
+    if (bool) {
+      d();
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onResume isNeedRefreshScheduleTask=");
+    ((StringBuilder)localObject).append(this.j);
+    QLog.d("2021_UI_SpringFestivalTaskCallback", 1, ((StringBuilder)localObject).toString());
+    if (this.j)
+    {
+      ((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).m();
+      this.j = false;
+    }
+    this.f.aa.l();
   }
   
   public void g(BaseActivityData paramBaseActivityData)
@@ -1123,43 +1063,103 @@ public class SpringFestivalTaskCallback
     }
     a(new HBEntryBannerData(paramBaseActivityData.getMiniEntryData(), paramBaseActivityData.getType(), paramBaseActivityData.getId()));
     a(false);
-    e();
-    paramBaseActivityData = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback$BrushHBStateChangeListener;
+    h();
+    paramBaseActivityData = this.p;
     if (paramBaseActivityData != null) {
       paramBaseActivityData.d();
     }
-    k();
+    o();
   }
   
   public void h()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onDrawerOpened");
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "removeSpringFestivalBanner");
     }
-    this.e = true;
+    Object localObject1 = this.f.B();
+    if (!(localObject1 instanceof RelativeLayout))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("removeSpringFestivalBanner return, title = ");
+        ((StringBuilder)localObject2).append(localObject1);
+        QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject2).toString());
+      }
+      return;
+    }
+    localObject1 = (RelativeLayout)localObject1;
+    Object localObject2 = ((RelativeLayout)localObject1).findViewById(2131446264);
+    if (localObject2 != null) {
+      ((RelativeLayout)localObject1).removeView((View)localObject2);
+    }
+    this.f.m();
   }
   
   public void i()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onDrawerClosed");
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onDestroy");
     }
-    this.e = false;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      ((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).c();
-      this.jdField_c_of_type_Boolean = false;
+    p();
+    this.m.removeCallbacksAndMessages(null);
+    this.a = null;
+    SpringPopBanner localSpringPopBanner = this.g;
+    if (localSpringPopBanner != null) {
+      localSpringPopBanner.a(true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.j();
+    a(false);
+    b(false);
   }
   
-  public void j()
+  public boolean j()
+  {
+    SpringPopBanner localSpringPopBanner = this.g;
+    if ((localSpringPopBanner != null) && (localSpringPopBanner.a()))
+    {
+      this.g.a(true);
+      return true;
+    }
+    return false;
+  }
+  
+  public void k()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "updateLastGrabHongbaoRequestTime");
+    }
+    this.b = r();
+  }
+  
+  public void l()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onDrawerOpened");
+    }
+    this.l = true;
+  }
+  
+  public void m()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onDrawerClosed");
+    }
+    this.l = false;
+    if (this.j)
+    {
+      ((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).m();
+      this.j = false;
+    }
+    this.f.aa.l();
+  }
+  
+  public void n()
   {
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "reportBrushLotteryRequest");
     }
     HashMap localHashMap = new HashMap();
-    Object localObject = a();
+    Object localObject = c();
     if (localObject != null)
     {
       String str = ((BaseActivityData)localObject).id;
@@ -1179,7 +1179,7 @@ public class SpringFestivalTaskCallback
     SpringHbReporter.a(ReportConstant.Event.p, 0, 0, localHashMap, "request");
   }
   
-  public void k()
+  public void o()
   {
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "tryRecoverTianshuBanner");
@@ -1204,37 +1204,37 @@ public class SpringFestivalTaskCallback
       return;
     }
     paramInt = paramBundle.getInt("k_id", -1);
-    int i = paramBundle.getInt("key_award_id", -1);
-    int j = paramBundle.getInt("key_award_type", -1);
-    int k = paramBundle.getInt("k_money", -1);
-    int m = paramBundle.getInt("key_promotion_id", -1);
+    int i1 = paramBundle.getInt("key_award_id", -1);
+    int i2 = paramBundle.getInt("key_award_type", -1);
+    int i3 = paramBundle.getInt("k_money", -1);
+    int i4 = paramBundle.getInt("key_promotion_id", -1);
     Object localObject1 = paramBundle.getString("key_url");
-    long l = paramBundle.getLong("key_report_ret_code");
-    a(l, String.valueOf(j));
-    this.jdField_b_of_type_Long = b();
+    long l1 = paramBundle.getLong("key_report_ret_code");
+    a(l1, String.valueOf(i2));
+    this.c = r();
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onReceive cmd = CMD_RESULT isSuccess = ");
       ((StringBuilder)localObject2).append(paramBoolean);
       ((StringBuilder)localObject2).append(",awardType = ");
-      ((StringBuilder)localObject2).append(j);
+      ((StringBuilder)localObject2).append(i2);
       ((StringBuilder)localObject2).append(", lastGrabHongBaoResponseTime = ");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject2).append(this.c);
       ((StringBuilder)localObject2).append(", portId = ");
       ((StringBuilder)localObject2).append(paramInt);
       ((StringBuilder)localObject2).append(", retCodeForReport = ");
-      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append(l1);
       ((StringBuilder)localObject2).append(", packUrl = ");
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(", showType = ");
       ((StringBuilder)localObject2).append(-1);
       ((StringBuilder)localObject2).append(", money = ");
-      ((StringBuilder)localObject2).append(k);
+      ((StringBuilder)localObject2).append(i3);
       ((StringBuilder)localObject2).append(", awardId = ");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(i1);
       ((StringBuilder)localObject2).append(", promotionId = ");
-      ((StringBuilder)localObject2).append(m);
+      ((StringBuilder)localObject2).append(i4);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject2).toString());
     }
     if (QLog.isColorLevel())
@@ -1243,40 +1243,40 @@ public class SpringFestivalTaskCallback
       ((StringBuilder)localObject1).append("isSuccess = ");
       ((StringBuilder)localObject1).append(paramBoolean);
       ((StringBuilder)localObject1).append(" isValidAwardType(awardType) = ");
-      ((StringBuilder)localObject1).append(a(j));
+      ((StringBuilder)localObject1).append(b(i2));
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if (this.m.hasMessages(1)) {
+      this.m.removeMessages(1);
     }
-    if ((paramBoolean) && (a(j))) {
+    if ((paramBoolean) && (b(i2))) {
       paramBoolean = true;
     } else {
       paramBoolean = false;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a().getResources().getString(2131698958);
-    l = -1L;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData;
+    localObject1 = this.f.P().getResources().getString(2131896950);
+    l1 = -1L;
+    Object localObject2 = this.o;
     if ((localObject2 != null) && ((localObject2 instanceof OnGrabActivityData)))
     {
       localObject1 = ((OnGrabActivityData)localObject2).noRPWording;
-      l = ((SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.id).leftCountDownDuration;
-      l = ((OnGrabActivityData)this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData).playDuration * 1000 - l;
+      l1 = ((SpringFestivalEntryManager)this.f.aF.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).c(this.o.id).leftCountDownDuration;
+      l1 = ((OnGrabActivityData)this.o).playDuration * 1000 - l1;
     }
     else
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("onReceive grabhongbao result exception , curActivityData = ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData);
+      ((StringBuilder)localObject2).append(this.o);
       QLog.d("2021_UI_SpringFestivalTaskCallback", 1, ((StringBuilder)localObject2).toString());
     }
-    paramBundle.putLong("key_current_brush_progress_ms", l);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a(paramBoolean, (String)localObject1, paramBundle);
+    paramBundle.putLong("key_current_brush_progress_ms", l1);
+    this.f.aa.a(paramBoolean, (String)localObject1, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalTaskCallback
  * JD-Core Version:    0.7.0.1
  */

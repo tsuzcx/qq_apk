@@ -13,19 +13,19 @@ class DrawClassifier$4
   {
     try
     {
-      if (!DrawClassifier.a(this.this$0))
+      if (!DrawClassifier.c(this.this$0))
       {
         if (QLog.isColorLevel()) {
           QLog.e("DrawClassifier", 2, "not init ok or already close to recog");
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnRecogListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnRecogListener.a(false);
+        if (this.a != null) {
+          this.a.a(false);
         }
       }
       long l = System.currentTimeMillis();
-      boolean bool = DrawClassifier.a(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleItem, DrawClassifier.c(this.this$0), this.this$0.a, DrawClassifier.a(this.this$0), DrawClassifier.a(this.this$0));
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnRecogListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnRecogListener.a(bool);
+      boolean bool = DrawClassifier.g(this.this$0).a(this.b, DrawClassifier.d(this.this$0), this.this$0.a, DrawClassifier.e(this.this$0), DrawClassifier.f(this.this$0));
+      if (this.a != null) {
+        this.a.a(bool);
       }
       if (QLog.isColorLevel())
       {
@@ -46,7 +46,7 @@ class DrawClassifier$4
         QLog.e("DrawClassifier", 2, localStringBuilder2.toString());
       }
       localThrowable.printStackTrace();
-      DrawClassifier.OnRecogListener localOnRecogListener = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier$OnRecogListener;
+      DrawClassifier.OnRecogListener localOnRecogListener = this.a;
       if (localOnRecogListener != null) {
         localOnRecogListener.a(false);
       }
@@ -55,7 +55,7 @@ class DrawClassifier$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawClassifier.4
  * JD-Core Version:    0.7.0.1
  */

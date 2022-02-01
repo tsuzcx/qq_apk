@@ -13,24 +13,24 @@ class FriendProfileImageActivity$6
   
   protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    this.b.c.a(this.a);
     return null;
   }
   
   protected void a(Void paramVoid)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_ComTencentMobileqqAdapterFriendProfileImageAdapter.notifyDataSetChanged();
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    this.b.c.a(this.b.k);
+    this.b.a.setSelection(this.b.c.d());
+    this.b.b.notifyDataSetChanged();
+    if ((!this.b.m) && (this.b.l)) {
+      this.b.f.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.post(new FriendProfileImageActivity.6.1(this));
+    this.b.g.post(new FriendProfileImageActivity.6.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.6
  * JD-Core Version:    0.7.0.1
  */

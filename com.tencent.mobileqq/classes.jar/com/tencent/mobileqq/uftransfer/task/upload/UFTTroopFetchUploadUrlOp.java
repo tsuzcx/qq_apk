@@ -25,35 +25,34 @@ import mqq.app.AppRuntime;
 public class UFTTroopFetchUploadUrlOp
   extends UFTBaseOp
 {
-  protected Object a;
+  protected final boolean a;
   protected final boolean b;
   protected final boolean c;
-  protected final boolean d;
+  protected Object d = null;
   protected final boolean e;
   
   public UFTTroopFetchUploadUrlOp(AppRuntime paramAppRuntime, UFTTroopUploadTaskInfo paramUFTTroopUploadTaskInfo, UFTTransferKey paramUFTTransferKey, boolean paramBoolean, UFTBaseOp.UFTOpCallback paramUFTOpCallback)
   {
     super(paramAppRuntime, paramUFTTroopUploadTaskInfo, paramUFTTransferKey, paramUFTOpCallback);
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.b = paramUFTTroopUploadTaskInfo.a().a().c();
-    this.c = paramUFTTroopUploadTaskInfo.a().a().d();
-    this.d = paramUFTTroopUploadTaskInfo.a().a().a();
+    this.a = paramUFTTroopUploadTaskInfo.s().a().c();
+    this.b = paramUFTTroopUploadTaskInfo.s().a().d();
+    this.c = paramUFTTroopUploadTaskInfo.s().a().a();
     this.e = paramBoolean;
   }
   
   protected UFTTroopFetchUploadUrlOp.UrlHostInfo a(UFTTroopUploadRsp paramUFTTroopUploadRsp, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramUFTTroopUploadRsp.d());
-    if (!TextUtils.isEmpty(paramUFTTroopUploadRsp.e())) {
-      localArrayList.add(paramUFTTroopUploadRsp.e());
+    localArrayList.add(paramUFTTroopUploadRsp.e());
+    if (!TextUtils.isEmpty(paramUFTTroopUploadRsp.f())) {
+      localArrayList.add(paramUFTTroopUploadRsp.f());
     }
     Object localObject2 = null;
-    Object localObject1 = paramUFTTroopUploadRsp.e();
+    Object localObject1 = paramUFTTroopUploadRsp.f();
     if (paramBoolean) {
-      localObject1 = ((UFTTroopUploadTaskInfo)this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo).f();
+      localObject1 = ((UFTTroopUploadTaskInfo)this.h).g();
     }
-    paramBoolean = this.b;
+    paramBoolean = this.a;
     boolean bool2 = false;
     boolean bool1;
     if ((paramBoolean) && (!TextUtils.isEmpty((CharSequence)localObject1)))
@@ -65,10 +64,10 @@ public class UFTTroopFetchUploadUrlOp
     {
       bool1 = false;
     }
-    if ((this.c) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+    if ((this.b) && (!TextUtils.isEmpty((CharSequence)localObject1)))
     {
       localObject1 = new ArrayList();
-      int i = UFTDependFeatureApi.a(this.jdField_a_of_type_MqqAppAppRuntime, paramUFTTroopUploadRsp.e(), 0, 3, (List)localObject1);
+      int i = UFTDependFeatureApi.a(this.g, paramUFTTroopUploadRsp.f(), 0, 3, (List)localObject1);
       if (((List)localObject1).size() > 0)
       {
         if (i == 1)
@@ -88,28 +87,32 @@ public class UFTTroopFetchUploadUrlOp
     paramBoolean = false;
     label195:
     paramUFTTroopUploadRsp = new UFTTroopFetchUploadUrlOp.UrlHostInfo(this);
-    paramUFTTroopUploadRsp.jdField_a_of_type_JavaUtilList = localArrayList;
-    paramUFTTroopUploadRsp.jdField_a_of_type_Boolean = bool1;
-    paramUFTTroopUploadRsp.jdField_a_of_type_JavaLangString = localObject2;
-    paramUFTTroopUploadRsp.b = bool2;
-    paramUFTTroopUploadRsp.c = paramBoolean;
+    paramUFTTroopUploadRsp.a = localArrayList;
+    paramUFTTroopUploadRsp.b = bool1;
+    paramUFTTroopUploadRsp.c = localObject2;
+    paramUFTTroopUploadRsp.d = bool2;
+    paramUFTTroopUploadRsp.e = paramBoolean;
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("TId[");
-    ((StringBuilder)localObject1).append(a());
+    ((StringBuilder)localObject1).append(i());
     ((StringBuilder)localObject1).append("] troop upload ftn host info is :");
     ((StringBuilder)localObject1).append(paramUFTTroopUploadRsp.toString());
     UFTLog.b("[UFTTransfer] UFTFetchTroopUploadUrlOp", 1, ((StringBuilder)localObject1).toString());
     return paramUFTTroopUploadRsp;
   }
   
-  public void a()
+  protected String a()
   {
-    super.a();
-    if (this.jdField_a_of_type_JavaLangObject != null)
-    {
-      UFTProtoRequestor.a().a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_JavaLangObject = null;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" cfg = useHttps:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" useIPv6:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" useExtf:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" reUpload:");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
   
   protected void a(UFTUploadSrvBusiProp.TroopUploadSrvBusiProp paramTroopUploadSrvBusiProp)
@@ -117,13 +120,13 @@ public class UFTTroopFetchUploadUrlOp
     if (paramTroopUploadSrvBusiProp == null) {
       return;
     }
-    UFTTroopUploadTaskInfo localUFTTroopUploadTaskInfo = (UFTTroopUploadTaskInfo)this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo;
-    if (!TextUtils.isEmpty(paramTroopUploadSrvBusiProp.e())) {
-      localUFTTroopUploadTaskInfo.b(paramTroopUploadSrvBusiProp.e());
+    UFTTroopUploadTaskInfo localUFTTroopUploadTaskInfo = (UFTTroopUploadTaskInfo)this.h;
+    if (!TextUtils.isEmpty(paramTroopUploadSrvBusiProp.j())) {
+      localUFTTroopUploadTaskInfo.b(paramTroopUploadSrvBusiProp.j());
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TId[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(i());
     localStringBuilder.append("] updateUploadTaskInfo srvBusiProp:");
     localStringBuilder.append(paramTroopUploadSrvBusiProp.toString());
     UFTLog.b("[UFTTransfer] UFTFetchTroopUploadUrlOp", 1, localStringBuilder.toString());
@@ -142,14 +145,14 @@ public class UFTTroopFetchUploadUrlOp
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("TId[");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append("] request troop upload url fail. errCode:");
       ((StringBuilder)localObject).append(i);
       UFTLog.d("[UFTTransfer] UFTFetchTroopUploadUrlOp", 1, ((StringBuilder)localObject).toString());
       a(new UFTUploadSrvBusiProp.TroopUploadSrvBusiProp(paramUFTTroopUploadRsp));
       localOpRetData.a(i);
-      localOpRetData.a(paramUFTTroopUploadRsp.a());
-      localOpRetData.b(paramUFTTroopUploadRsp.b());
+      localOpRetData.a(paramUFTTroopUploadRsp.b());
+      localOpRetData.b(paramUFTTroopUploadRsp.c());
       a(localOpRetData);
       return;
     }
@@ -157,39 +160,39 @@ public class UFTTroopFetchUploadUrlOp
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("TId[");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append("] request troop upload url return error. errCode:");
       ((StringBuilder)localObject).append(paramUFTTroopUploadRsp.a());
       UFTLog.d("[UFTTransfer] UFTFetchTroopUploadUrlOp", 1, ((StringBuilder)localObject).toString());
       localOpRetData.a(paramUFTTroopUploadRsp.a());
-      localOpRetData.a(paramUFTTroopUploadRsp.a());
-      localOpRetData.b(paramUFTTroopUploadRsp.b());
+      localOpRetData.a(paramUFTTroopUploadRsp.b());
+      localOpRetData.b(paramUFTTroopUploadRsp.c());
       a(new UFTUploadSrvBusiProp.TroopUploadSrvBusiProp(paramUFTTroopUploadRsp));
       a(localOpRetData);
       return;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(i());
     ((StringBuilder)localObject).append("] request troop upload url suc rsp:");
     ((StringBuilder)localObject).append(paramUFTTroopUploadRsp.toString());
     UFTLog.b("[UFTTransfer] UFTFetchTroopUploadUrlOp", 1, ((StringBuilder)localObject).toString());
     localObject = new UFTUploadSrvBusiProp.TroopUploadSrvBusiProp(paramUFTTroopUploadRsp);
-    if (!this.d)
+    if (!this.c)
     {
       UFTTroopFetchUploadUrlOp.UrlHostInfo localUrlHostInfo = a(paramUFTTroopUploadRsp, paramBoolean2);
-      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).a(localUrlHostInfo.jdField_a_of_type_Boolean);
-      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).b(localUrlHostInfo.jdField_a_of_type_JavaLangString);
-      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).a(localUrlHostInfo.jdField_a_of_type_JavaUtilList);
+      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).a(localUrlHostInfo.b);
+      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).b(localUrlHostInfo.c);
+      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).a(localUrlHostInfo.a);
       ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).a("/ftn_handler");
-      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).b(localUrlHostInfo.b);
-      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).c(UFTDependFeatureApi.a(paramUFTTroopUploadRsp.a()));
-      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).d(UFTDependFeatureApi.b(this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo.a().d()));
+      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).b(localUrlHostInfo.d);
+      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).c(UFTDependFeatureApi.a(paramUFTTroopUploadRsp.g()));
+      ((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject).d(UFTDependFeatureApi.b(this.h.r().e()));
     }
     a((UFTUploadSrvBusiProp.TroopUploadSrvBusiProp)localObject);
     localOpRetData.a(0);
-    localOpRetData.a(paramUFTTroopUploadRsp.a());
-    localOpRetData.b(paramUFTTroopUploadRsp.b());
+    localOpRetData.a(paramUFTTroopUploadRsp.b());
+    localOpRetData.b(paramUFTTroopUploadRsp.c());
     a(localOpRetData);
   }
   
@@ -197,58 +200,58 @@ public class UFTTroopFetchUploadUrlOp
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TId[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(i());
     localStringBuilder.append("] request troop re upload url.");
     UFTLog.b("[UFTTransfer] UFTFetchTroopUploadUrlOp", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangObject = UFTProtoRequestor.a().a(this.jdField_a_of_type_MqqAppAppRuntime, paramUFTTroopUploadReReq, new UFTTroopFetchUploadUrlOp.2(this));
-    return this.jdField_a_of_type_JavaLangObject != null;
+    this.d = UFTProtoRequestor.a().a(this.g, paramUFTTroopUploadReReq, new UFTTroopFetchUploadUrlOp.2(this));
+    return this.d != null;
   }
   
   protected boolean a(UFTTroopUploadReq paramUFTTroopUploadReq)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TId[");
-    localStringBuilder.append(a());
+    localStringBuilder.append(i());
     localStringBuilder.append("] request troop upload url.");
     UFTLog.b("[UFTTransfer] UFTFetchTroopUploadUrlOp", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangObject = UFTProtoRequestor.a().a(this.jdField_a_of_type_MqqAppAppRuntime, paramUFTTroopUploadReq, new UFTTroopFetchUploadUrlOp.1(this));
-    return this.jdField_a_of_type_JavaLangObject != null;
+    this.d = UFTProtoRequestor.a().a(this.g, paramUFTTroopUploadReq, new UFTTroopFetchUploadUrlOp.1(this));
+    return this.d != null;
   }
   
-  protected int b()
+  protected int c()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("TId[");
-    ((StringBuilder)localObject1).append(a());
+    ((StringBuilder)localObject1).append(i());
     ((StringBuilder)localObject1).append("] do fetch troop upload url op.");
-    ((StringBuilder)localObject1).append(b());
+    ((StringBuilder)localObject1).append(a());
     UFTLog.b("[UFTTransfer] UFTFetchTroopUploadUrlOp", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = (UFTTroopUploadTaskInfo)this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo;
+    localObject1 = (UFTTroopUploadTaskInfo)this.h;
     Object localObject2;
     boolean bool;
     if (this.e)
     {
       localObject2 = new UFTTroopUploadReReq();
-      ((UFTTroopUploadReReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).b());
-      ((UFTTroopUploadReReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).a().d());
-      ((UFTTroopUploadReReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).b());
-      ((UFTTroopUploadReReq)localObject2).a(Long.valueOf(((UFTTroopUploadTaskInfo)localObject1).c()).longValue());
+      ((UFTTroopUploadReReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).d());
+      ((UFTTroopUploadReReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).r().e());
+      ((UFTTroopUploadReReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).q());
+      ((UFTTroopUploadReReq)localObject2).a(Long.valueOf(((UFTTroopUploadTaskInfo)localObject1).a()).longValue());
       bool = a((UFTTroopUploadReReq)localObject2);
     }
     else
     {
       localObject2 = new UFTTroopUploadReq();
-      ((UFTTroopUploadReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).b());
-      ((UFTTroopUploadReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).a().b());
-      ((UFTTroopUploadReq)localObject2).b(((UFTTroopUploadTaskInfo)localObject1).a().d());
-      ((UFTTroopUploadReq)localObject2).c(((UFTTroopUploadTaskInfo)localObject1).a().c());
-      ((UFTTroopUploadReq)localObject2).b(((UFTTroopUploadTaskInfo)localObject1).c());
-      ((UFTTroopUploadReq)localObject2).a(this.d);
-      ((UFTTroopUploadReq)localObject2).b(((UFTTroopUploadTaskInfo)localObject1).b());
-      ((UFTTroopUploadReq)localObject2).b(((UFTTroopUploadTaskInfo)localObject1).a());
-      ((UFTTroopUploadReq)localObject2).c(((UFTTroopUploadTaskInfo)localObject1).d());
+      ((UFTTroopUploadReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).d());
+      ((UFTTroopUploadReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).r().c());
+      ((UFTTroopUploadReq)localObject2).b(((UFTTroopUploadTaskInfo)localObject1).r().e());
+      ((UFTTroopUploadReq)localObject2).c(((UFTTroopUploadTaskInfo)localObject1).r().d());
+      ((UFTTroopUploadReq)localObject2).b(((UFTTroopUploadTaskInfo)localObject1).f());
+      ((UFTTroopUploadReq)localObject2).a(this.c);
+      ((UFTTroopUploadReq)localObject2).b(((UFTTroopUploadTaskInfo)localObject1).p());
+      ((UFTTroopUploadReq)localObject2).b(((UFTTroopUploadTaskInfo)localObject1).o());
+      ((UFTTroopUploadReq)localObject2).c(((UFTTroopUploadTaskInfo)localObject1).b());
       ((UFTTroopUploadReq)localObject2).a(((UFTTroopUploadTaskInfo)localObject1).e());
-      ((UFTTroopUploadReq)localObject2).a(Long.valueOf(((UFTTroopUploadTaskInfo)localObject1).c()).longValue());
+      ((UFTTroopUploadReq)localObject2).a(Long.valueOf(((UFTTroopUploadTaskInfo)localObject1).a()).longValue());
       bool = a((UFTTroopUploadReq)localObject2);
     }
     if (!bool)
@@ -259,23 +262,19 @@ public class UFTTroopFetchUploadUrlOp
     return 0;
   }
   
-  protected String b()
+  public void f()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" cfg = useHttps:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" useIPv6:");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(" useExtf:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" reUpload:");
-    localStringBuilder.append(this.e);
-    return localStringBuilder.toString();
+    super.f();
+    if (this.d != null)
+    {
+      UFTProtoRequestor.a().a(this.g, this.d);
+      this.d = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTTroopFetchUploadUrlOp
  * JD-Core Version:    0.7.0.1
  */

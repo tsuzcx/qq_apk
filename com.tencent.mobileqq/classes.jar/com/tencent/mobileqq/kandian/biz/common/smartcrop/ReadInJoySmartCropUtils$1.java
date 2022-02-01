@@ -13,13 +13,13 @@ final class ReadInJoySmartCropUtils$1
   @TargetApi(11)
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("article", this.jdField_a_of_type_JavaLangString));
+    ((ClipboardManager)this.a.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("article", this.b));
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.smartcrop.ReadInJoySmartCropUtils.1
  * JD-Core Version:    0.7.0.1
  */

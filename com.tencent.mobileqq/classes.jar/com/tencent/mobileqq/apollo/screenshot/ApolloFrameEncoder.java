@@ -2,13 +2,17 @@ package com.tencent.mobileqq.apollo.screenshot;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.os.SystemClock;
-import com.tencent.mobileqq.apollo.player.model.BusinessConfig;
-import com.tencent.mobileqq.apollo.player.model.BusinessConfig.FrameType;
+import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
+import com.tencent.mobileqq.apollo.meme.ERROR_ENCODE_NO_FRAME;
+import com.tencent.mobileqq.apollo.meme.MemeHelper;
+import com.tencent.mobileqq.apollo.meme.RECORD_COMPLETE;
+import com.tencent.mobileqq.apollo.meme.model.BusinessConfig;
+import com.tencent.mobileqq.apollo.meme.model.BusinessConfig.FrameType;
 import com.tencent.mobileqq.apollo.utils.ApolloRecordUtil;
+import com.tencent.mobileqq.cmshow.engine.action.ActionStatus;
 import com.tencent.mobileqq.cmshow.engine.script.IScriptService;
 import com.tencent.mobileqq.cmshow.engine.script.Script;
-import com.tencent.mobileqq.cmshow.engine.script.ScriptUtil;
+import com.tencent.mobileqq.cmshow.engine.script.ScriptUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -16,39 +20,123 @@ import java.io.File;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
+import kotlin.properties.Delegates;
+import kotlin.properties.ReadWriteProperty;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloFrameEncoder;", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "scriptService", "Lcom/tencent/mobileqq/cmshow/engine/script/IScriptService;", "config", "Lcom/tencent/mobileqq/apollo/player/model/BusinessConfig;", "tempFilePath", "", "taskId", "", "(Lcom/tencent/mobileqq/cmshow/engine/script/IScriptService;Lcom/tencent/mobileqq/apollo/player/model/BusinessConfig;Ljava/lang/String;I)V", "frameFile", "Ljava/io/File;", "addFrame", "", "pixels", "", "width", "height", "encode", "", "outputFilePath", "frameTime", "getFrameCount", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/screenshot/ApolloFrameEncoder;", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloScreenshotEncoder;", "scriptService", "Lcom/tencent/mobileqq/cmshow/engine/script/IScriptService;", "config", "Lcom/tencent/mobileqq/apollo/meme/model/BusinessConfig;", "tempFilePath", "", "taskId", "", "(Lcom/tencent/mobileqq/cmshow/engine/script/IScriptService;Lcom/tencent/mobileqq/apollo/meme/model/BusinessConfig;Ljava/lang/String;I)V", "frameFile", "Ljava/io/File;", "hasEvaluateStopRecord", "", "hasSetTimeoutScheduler", "<set-?>", "waitingFrameIndex", "getWaitingFrameIndex", "()I", "setWaitingFrameIndex", "(I)V", "waitingFrameIndex$delegate", "Lkotlin/properties/ReadWriteProperty;", "addFrame", "", "pixels", "", "width", "height", "encode", "Lcom/tencent/mobileqq/cmshow/engine/action/ActionStatus;", "outputFilePath", "frameTime", "evaluateStopRecordIfNeed", "getFrameCount", "saveFrame2File", "file", "setTimeoutSchedulerIfNeed", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloFrameEncoder
   implements IApolloScreenshotEncoder
 {
-  public static final ApolloFrameEncoder.Companion a;
-  private final int jdField_a_of_type_Int;
-  private final BusinessConfig jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig;
-  private final IScriptService jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService;
-  private File jdField_a_of_type_JavaIoFile;
-  private final String jdField_a_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloFrameEncoder$Companion = new ApolloFrameEncoder.Companion(null);
-  }
+  public static final ApolloFrameEncoder.Companion b = new ApolloFrameEncoder.Companion(null);
+  private File c;
+  private boolean d;
+  private boolean e;
+  private final ReadWriteProperty f;
+  private final IScriptService g;
+  private final BusinessConfig h;
+  private final String i;
+  private final int j;
   
   public ApolloFrameEncoder(@NotNull IScriptService paramIScriptService, @NotNull BusinessConfig paramBusinessConfig, @NotNull String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService = paramIScriptService;
-    this.jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig = paramBusinessConfig;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramIScriptService;
+    this.h = paramBusinessConfig;
+    this.i = paramString;
+    this.j = paramInt;
+    paramIScriptService = Delegates.INSTANCE;
+    paramIScriptService = Integer.valueOf(CmShowWnsUtils.Y());
+    this.f = ((ReadWriteProperty)new ApolloFrameEncoder..special..inlined.observable.1(paramIScriptService, paramIScriptService, this));
   }
   
-  public int a()
+  private final void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaIoFile == null) {
-      return 0;
+    this.f.setValue(this, a[0], Integer.valueOf(paramInt));
+  }
+  
+  private final void a(File paramFile, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("saveFrame2File ");
+    ((StringBuilder)localObject).append(paramFile.getAbsolutePath());
+    QLog.d("[cmshow][MemePlayer][ApolloScrshot]_ApolloFrameEncoder", 1, ((StringBuilder)localObject).toString());
+    localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    ((Bitmap)localObject).copyPixelsFromBuffer((Buffer)ByteBuffer.wrap(paramArrayOfByte));
+    paramArrayOfByte = (byte[])localObject;
+    if (this.h.a() != 0) {
+      paramArrayOfByte = ApolloRecordUtil.a((Bitmap)localObject, this.h.a());
     }
-    return 1;
+    if (this.h.c() == BusinessConfig.FrameType.JPEG)
+    {
+      ImageUtil.b(paramArrayOfByte, 100, paramFile);
+      return;
+    }
+    ImageUtil.a(paramArrayOfByte, 100, paramFile);
+  }
+  
+  private final int d()
+  {
+    return ((Number)this.f.getValue(this, a[0])).intValue();
+  }
+  
+  private final void e()
+  {
+    if (this.e) {
+      return;
+    }
+    this.e = true;
+    Object localObject = ScriptUtils.a(this.j, true);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "ScriptUtils.getStopRecordScript(taskId, true)");
+    localObject = new Script((String)localObject);
+    this.g.a((Script)localObject);
+  }
+  
+  private final void f()
+  {
+    if (!this.e)
+    {
+      if (this.d) {
+        return;
+      }
+      this.d = true;
+      long l = 333.33334F;
+      MemeHelper.a.a((Function0)new ApolloFrameEncoder.setTimeoutSchedulerIfNeed.1(this, l), l);
+    }
+  }
+  
+  @NotNull
+  public ActionStatus a(@NotNull String paramString, int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "outputFilePath");
+    Object localObject = this.c;
+    if (localObject != null)
+    {
+      if (localObject == null) {
+        Intrinsics.throwNpe();
+      }
+      if (((File)localObject).exists())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("encode frameFile:");
+        File localFile = this.c;
+        if (localFile == null) {
+          Intrinsics.throwNpe();
+        }
+        ((StringBuilder)localObject).append(localFile.getAbsolutePath());
+        ((StringBuilder)localObject).append(" to ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("[cmshow][MemePlayer][ApolloScrshot]_ApolloFrameEncoder", 1, ((StringBuilder)localObject).toString());
+        localObject = this.c;
+        if (localObject == null) {
+          Intrinsics.throwNpe();
+        }
+        FileUtils.rename(((File)localObject).getAbsolutePath(), paramString);
+        return (ActionStatus)RECORD_COMPLETE.a;
+      }
+    }
+    return (ActionStatus)ERROR_ENCODE_NO_FRAME.a;
   }
   
   public void a()
@@ -59,62 +147,40 @@ public final class ApolloFrameEncoder
   public void a(@NotNull byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "pixels");
-    if (this.jdField_a_of_type_JavaIoFile == null)
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(File.separator);
-      ((StringBuilder)localObject).append(SystemClock.elapsedRealtime());
-      this.jdField_a_of_type_JavaIoFile = new File(((StringBuilder)localObject).toString());
-      localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      ((Bitmap)localObject).copyPixelsFromBuffer((Buffer)ByteBuffer.wrap(paramArrayOfByte));
-      paramArrayOfByte = (byte[])localObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig.a() != 0) {
-        paramArrayOfByte = ApolloRecordUtil.a((Bitmap)localObject, this.jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig.a());
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloPlayerModelBusinessConfig.a() == BusinessConfig.FrameType.JPEG) {
-        ImageUtil.b(paramArrayOfByte, 100, this.jdField_a_of_type_JavaIoFile);
-      } else {
-        ImageUtil.a(paramArrayOfByte, 100, this.jdField_a_of_type_JavaIoFile);
-      }
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptIScriptService;
-      localObject = ScriptUtil.a(this.jdField_a_of_type_Int, true);
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "ScriptUtil.getStopRecordScript(taskId, true)");
-      paramArrayOfByte.a(new Script((String)localObject));
+    if (d() == 0) {
       return;
     }
-    QLog.w("[ApolloScrshot]_ApolloFrameEncoder", 1, "addFrame: frameFile already has generated!!");
-  }
-  
-  public boolean a(@NotNull String paramString, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "outputFilePath");
-    File localFile = this.jdField_a_of_type_JavaIoFile;
-    if (localFile != null)
-    {
-      if (localFile == null) {
-        Intrinsics.throwNpe();
-      }
-      if (localFile.exists())
-      {
-        localFile = this.jdField_a_of_type_JavaIoFile;
-        if (localFile == null) {
-          Intrinsics.throwNpe();
-        }
-        return FileUtils.rename(localFile.getAbsolutePath(), paramString);
-      }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.i);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(System.nanoTime());
+    localObject = new File(((StringBuilder)localObject).toString());
+    a((File)localObject, paramArrayOfByte, paramInt1, paramInt2);
+    paramArrayOfByte = this.c;
+    this.c = ((File)localObject);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.exists())) {
+      FileUtils.deleteFile(paramArrayOfByte);
     }
-    return false;
+    a(d() - 1);
+    f();
   }
   
   public void b()
   {
     IApolloScreenshotEncoder.DefaultImpls.b(this);
   }
+  
+  public int c()
+  {
+    if (this.c == null) {
+      return 0;
+    }
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloFrameEncoder
  * JD-Core Version:    0.7.0.1
  */

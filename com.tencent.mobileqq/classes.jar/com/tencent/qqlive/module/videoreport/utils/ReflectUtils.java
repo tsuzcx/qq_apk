@@ -1,9 +1,12 @@
 package com.tencent.qqlive.module.videoreport.utils;
 
+import com.tencent.qqlive.module.videoreport.Log;
 import java.lang.reflect.Field;
 
 public class ReflectUtils
 {
+  private static final String TAG = "ReflectUtils";
+  
   public static Object getField(Class<?> paramClass, String paramString)
   {
     try
@@ -13,7 +16,10 @@ public class ReflectUtils
     }
     catch (Exception paramClass)
     {
-      paramClass.printStackTrace();
+      paramString = new StringBuilder();
+      paramString.append("getField ");
+      paramString.append(paramClass);
+      Log.e("ReflectUtils", paramString.toString());
     }
     return null;
   }
@@ -27,7 +33,10 @@ public class ReflectUtils
     }
     catch (Exception paramClass)
     {
-      paramClass.printStackTrace();
+      paramString = new StringBuilder();
+      paramString.append("getField ");
+      paramString.append(paramClass);
+      Log.e("ReflectUtils", paramString.toString());
     }
     return null;
   }
@@ -58,7 +67,7 @@ public class ReflectUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ReflectUtils
  * JD-Core Version:    0.7.0.1
  */

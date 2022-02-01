@@ -12,7 +12,7 @@ public abstract class BaseEmotionViewHolder
 {
   @Nullable
   protected BaseEmotionViewHolder.EmotionViewHolderCallBack a;
-  protected ImageLoaderAdapterOption a;
+  protected ImageLoaderAdapterOption b;
   
   public BaseEmotionViewHolder(@NotNull View paramView)
   {
@@ -31,19 +31,19 @@ public abstract class BaseEmotionViewHolder
   
   public void a(@Nullable BaseEmotionViewHolder.EmotionViewHolderCallBack paramEmotionViewHolderCallBack)
   {
-    this.jdField_a_of_type_ComTencentTkdCommentPanelBaseBaseEmotionViewHolder$EmotionViewHolderCallBack = paramEmotionViewHolderCallBack;
+    this.a = paramEmotionViewHolderCallBack;
   }
   
   public abstract void a(Emotion paramEmotion);
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentTkdCommentPublisherBridgeImageLoaderAdapterOption = new ImageLoaderAdapterOption();
+    this.b = new ImageLoaderAdapterOption();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.base.BaseEmotionViewHolder
  * JD-Core Version:    0.7.0.1
  */

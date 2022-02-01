@@ -7,16 +7,6 @@ class VideoControlUI$1
 {
   VideoControlUI$1(VideoControlUI paramVideoControlUI) {}
   
-  public long a()
-  {
-    return this.a.a();
-  }
-  
-  public void a()
-  {
-    this.a.C(AudioHelper.b());
-  }
-  
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     this.a.c(paramBoolean1, paramBoolean2);
@@ -24,12 +14,22 @@ class VideoControlUI$1
   
   public boolean a()
   {
-    return this.a.g();
+    return this.a.T();
   }
   
   public boolean b()
   {
     return true;
+  }
+  
+  public void c()
+  {
+    this.a.I(AudioHelper.c());
+  }
+  
+  public long d()
+  {
+    return this.a.A();
   }
 }
 

@@ -2,6 +2,8 @@ package com.tencent.mobileqq.statistics;
 
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.login.TicketChecker;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import oicq.wlogin_sdk.report.event.EventSaver;
@@ -10,11 +12,12 @@ import oicq.wlogin_sdk.tools.util;
 final class WtloginReporter$1
   implements Runnable
 {
-  WtloginReporter$1(String paramString) {}
+  WtloginReporter$1(String paramString, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     WtloginReporter.a(BaseApplicationImpl.getContext(), new EventSaver(), "wtlogin_illegal_error", this.a);
+    new TicketChecker().a(this.a, BaseApplicationImpl.getContext(), this.b);
     Object localObject1 = util.get_cost_time(BaseApplicationImpl.getContext());
     boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
     int k = 2;
@@ -52,7 +55,7 @@ final class WtloginReporter$1
               QLog.d("WtloginReporter", 2, new Object[] { "recordTime:", Long.valueOf(l1), " fromType:", Integer.valueOf(m), " costTime1:", Long.valueOf(l2), " costTime2:", Long.valueOf(l3), " costTime3:", Long.valueOf(l4) });
             }
             if (i == 0) {
-              break label437;
+              break label458;
             }
             localObject2 = new HashMap();
             ((HashMap)localObject2).put("uin", this.a);
@@ -66,7 +69,7 @@ final class WtloginReporter$1
             }
             StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.a, "wtloginCost", true, 0L, 0L, (HashMap)localObject2, "");
             if (!QLog.isColorLevel()) {
-              break label437;
+              break label458;
             }
             QLog.d("WtloginReporter", 2, "wtlogin report cost");
           }
@@ -77,7 +80,7 @@ final class WtloginReporter$1
         } else {
           QLog.e("WtloginReporter", 1, new Object[] { "error costTimes:", localObject1[j] });
         }
-        label437:
+        label458:
         j += 1;
       }
     }
@@ -100,9 +103,9 @@ final class WtloginReporter$1
         if ((localObject1 == null) || (localObject1.length != k)) {}
       }
     }
-    label692:
-    label725:
-    label741:
+    label713:
+    label746:
+    label762:
     for (;;)
     {
       try
@@ -110,13 +113,13 @@ final class WtloginReporter$1
         l1 = Long.parseLong(localObject1[0]);
         localObject1 = localObject1[1];
         if (!QLog.isColorLevel()) {
-          break label741;
+          break label762;
         }
         try
         {
           QLog.d("WtloginReporter", 2, new Object[] { "recordTime:", Long.valueOf(l1), " backTrace:", localObject1 });
           if (i == 0) {
-            break label692;
+            break label713;
           }
           HashMap localHashMap = new HashMap();
           localHashMap.put("uin", this.a);
@@ -124,7 +127,7 @@ final class WtloginReporter$1
           localHashMap.put("backTrace", localObject1);
           StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.a, "wtloginCostTrace", true, 0L, 0L, localHashMap, "");
           if (!QLog.isColorLevel()) {
-            break label692;
+            break label713;
           }
           QLog.d("WtloginReporter", 2, "wtlogin report cost back trace");
         }
@@ -133,7 +136,7 @@ final class WtloginReporter$1
       }
       catch (Throwable localThrowable2) {}
       k = 2;
-      break label725;
+      break label746;
       Object[] arrayOfObject = new Object[k];
       arrayOfObject[0] = "error traceItems:";
       arrayOfObject[1] = arrayOfString[j];
@@ -147,7 +150,7 @@ final class WtloginReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.WtloginReporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class ListenTogetherManager$11
   
   public void a()
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((!ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) && (localBaseActivity != null))
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
+    if ((!ListenTogetherManager.p(this.d)) && (localBaseActivity != null))
     {
       if (localBaseActivity.isFinishing()) {
         return;
       }
-      ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(localBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
+      ListenTogetherManager.a(ListenTogetherManager.j(this.d)).a(localBaseActivity, this.b, this.c, 1002);
     }
   }
   
@@ -24,7 +24,7 @@ class ListenTogetherManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.11
  * JD-Core Version:    0.7.0.1
  */

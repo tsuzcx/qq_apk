@@ -10,14 +10,14 @@ class TroopMemberApiService$IncomingHandler$11
   
   public void a(Bundle paramBundle)
   {
-    paramBundle.putInt("seq", this.jdField_a_of_type_Int);
-    paramBundle.putString("processName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(146, paramBundle);
+    paramBundle.putInt("seq", this.a);
+    paramBundle.putString("processName", this.b);
+    this.c.a.a(146, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.11
  * JD-Core Version:    0.7.0.1
  */

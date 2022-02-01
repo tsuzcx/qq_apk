@@ -17,7 +17,7 @@ import kotlin.annotation.MustBeDocumented;
 public @interface IgnoreDenyDependencyFromSelf {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.annotation.IgnoreDenyDependencyFromSelf
  * JD-Core Version:    0.7.0.1
  */

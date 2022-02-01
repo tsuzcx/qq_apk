@@ -92,7 +92,7 @@ public class ShareLocationElemDecoder
       }
       paramList = (MessageForLocationShare)MessageRecordFactory.a(-2076);
       paramList.msgtype = -2076;
-      paramList.msg = BaseApplication.getContext().getString(2131719217);
+      paramList.msg = BaseApplication.getContext().getString(2131916759);
       paramList.isSharingLocation = true;
       paramList.frienduin = paramQQAppInterface;
       paramList.parse();
@@ -131,7 +131,7 @@ public class ShareLocationElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.ShareLocationElemDecoder
  * JD-Core Version:    0.7.0.1
  */

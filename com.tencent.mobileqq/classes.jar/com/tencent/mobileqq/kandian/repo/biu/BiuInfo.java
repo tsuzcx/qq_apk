@@ -4,73 +4,65 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 
 public class BiuInfo
 {
-  public int a;
-  public long a;
-  public AbsBaseArticleInfo a;
-  public String a;
   public boolean a;
-  public int b;
-  public String b;
+  public long b = -1L;
   public String c = "";
   public String d = "";
-  public String e;
-  
-  public BiuInfo()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-  }
+  public AbsBaseArticleInfo e;
+  public int f = -1;
+  public String g = "";
+  public String h = "";
+  public String i;
+  public int j;
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = null;
-    this.jdField_a_of_type_Int = -1;
-    this.e = "";
+    this.a = false;
+    this.b = -1L;
+    this.c = "";
     this.d = "";
-    this.jdField_b_of_type_Int = 0;
+    this.e = null;
+    this.f = -1;
+    this.i = "";
+    this.h = "";
+    this.j = 0;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("BiuInfo{isFromRecommendFeeds=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", feedsID=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", biuComment='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", biuMediaUrl='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", articleInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-    localStringBuilder.append(", contentSrc=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", commentBtnJumpUrl='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", commentShareUrl='");
+    localStringBuilder.append(", biuMediaUrl='");
     localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", cardJumpUrl='");
+    localStringBuilder.append(", articleInfo=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", contentSrc=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", commentBtnJumpUrl='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", commentShareUrl='");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", cardJumpUrl='");
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isCardAvailable=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.biu.BiuInfo
  * JD-Core Version:    0.7.0.1
  */

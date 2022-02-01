@@ -16,14 +16,14 @@ class TroopRequestActivity$3
     Object localObject = (IProfileDataService)TroopRequestActivity.a(this.this$0).getRuntimeService(IProfileDataService.class, "");
     if (localObject != null)
     {
-      localObject = ((IProfileDataService)localObject).getProfileCard(this.this$0.b, false);
+      localObject = ((IProfileDataService)localObject).getProfileCard(this.this$0.e, false);
       ThreadManager.getUIHandler().post(new TroopRequestActivity.3.1(this, (Card)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.3
  * JD-Core Version:    0.7.0.1
  */

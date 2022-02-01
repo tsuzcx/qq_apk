@@ -13,7 +13,7 @@ public class TroopUrlConfProcessor
   @NonNull
   public static TroopUrlConfBean a()
   {
-    TroopUrlConfBean localTroopUrlConfBean2 = (TroopUrlConfBean)QConfigManager.a().a(435);
+    TroopUrlConfBean localTroopUrlConfBean2 = (TroopUrlConfBean)QConfigManager.b().b(435);
     TroopUrlConfBean localTroopUrlConfBean1 = localTroopUrlConfBean2;
     if (localTroopUrlConfBean2 == null) {
       localTroopUrlConfBean1 = new TroopUrlConfBean();
@@ -90,7 +90,7 @@ public class TroopUrlConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopurl.config.TroopUrlConfProcessor
  * JD-Core Version:    0.7.0.1
  */

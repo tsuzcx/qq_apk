@@ -21,7 +21,7 @@ public final class BaseUiBridgeImpl
   {
     if ((paramIReadInJoyBaseAdapter instanceof ReadInJoyBaseAdapter))
     {
-      IExposureSupplementManager localIExposureSupplementManager = paramIReadInJoyBaseAdapter.a();
+      IExposureSupplementManager localIExposureSupplementManager = paramIReadInJoyBaseAdapter.o();
       if (localIExposureSupplementManager != null) {
         localIExposureSupplementManager.a(paramIReadInJoyBaseAdapter, paramIReadInJoyBaseAdapter.a());
       }
@@ -32,7 +32,7 @@ public final class BaseUiBridgeImpl
   {
     if ((paramIReadInJoyBaseAdapter instanceof ReadInJoyBaseAdapter))
     {
-      paramIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter.a();
+      paramIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter.o();
       if (paramIReadInJoyBaseAdapter != null) {
         paramIReadInJoyBaseAdapter.b();
       }
@@ -43,7 +43,7 @@ public final class BaseUiBridgeImpl
   {
     if ((paramIReadInJoyBaseAdapter instanceof ReadInJoyBaseAdapter))
     {
-      paramIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter.a();
+      paramIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter.o();
       if (paramIReadInJoyBaseAdapter != null) {
         paramIReadInJoyBaseAdapter.b(paramActivity);
       }
@@ -54,7 +54,7 @@ public final class BaseUiBridgeImpl
   {
     if ((paramIReadInJoyBaseAdapter instanceof ReadInJoyBaseAdapter))
     {
-      paramIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter.a();
+      paramIReadInJoyBaseAdapter = paramIReadInJoyBaseAdapter.o();
       if (paramIReadInJoyBaseAdapter != null) {
         paramIReadInJoyBaseAdapter.a();
       }
@@ -65,14 +65,14 @@ public final class BaseUiBridgeImpl
   public IReadInJoyBaseAdapter getReadInJoyAdapter(@NotNull IBaseHandler paramIBaseHandler)
   {
     Intrinsics.checkParameterIsNotNull(paramIBaseHandler, "baseHandler");
-    return paramIBaseHandler.a();
+    return paramIBaseHandler.b();
   }
   
   public void kanDianPopupWindowDismiss(@Nullable IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter)
   {
     if ((paramIReadInJoyBaseAdapter instanceof ReadInJoyBaseAdapter))
     {
-      paramIReadInJoyBaseAdapter = ((ReadInJoyBaseAdapter)paramIReadInJoyBaseAdapter).a();
+      paramIReadInJoyBaseAdapter = ((ReadInJoyBaseAdapter)paramIReadInJoyBaseAdapter).C();
       if ((paramIReadInJoyBaseAdapter != null) && (paramIReadInJoyBaseAdapter.isShowing())) {
         paramIReadInJoyBaseAdapter.dismiss();
       }
@@ -84,7 +84,7 @@ public final class BaseUiBridgeImpl
     Intrinsics.checkParameterIsNotNull(paramObject, "adInfo");
     if (((paramIReadInJoyBaseAdapter instanceof ReadInJoyBaseAdapter)) && ((paramObject instanceof AdvertisementInfo)))
     {
-      IExposureSupplementManager localIExposureSupplementManager = paramIReadInJoyBaseAdapter.a();
+      IExposureSupplementManager localIExposureSupplementManager = paramIReadInJoyBaseAdapter.o();
       if (localIExposureSupplementManager != null) {
         localIExposureSupplementManager.a(paramObject, paramIReadInJoyBaseAdapter.a());
       }
@@ -93,7 +93,7 @@ public final class BaseUiBridgeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.baseui.api.impl.BaseUiBridgeImpl
  * JD-Core Version:    0.7.0.1
  */

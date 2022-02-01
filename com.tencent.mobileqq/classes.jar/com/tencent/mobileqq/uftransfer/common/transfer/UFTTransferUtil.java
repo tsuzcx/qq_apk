@@ -62,16 +62,16 @@ public class UFTTransferUtil
         {
           paramString = str2.substring(0, i);
           str1 = str2.substring(i + 1);
-          localHostInfo.jdField_a_of_type_JavaLangString = paramString;
-          localHostInfo.jdField_a_of_type_Int = Integer.valueOf(str1).intValue();
+          localHostInfo.a = paramString;
+          localHostInfo.b = Integer.valueOf(str1).intValue();
         }
         else
         {
-          localHostInfo.jdField_a_of_type_JavaLangString = str2;
-          localHostInfo.jdField_a_of_type_Int = 0;
+          localHostInfo.a = str2;
+          localHostInfo.b = 0;
         }
         if (k != 0) {
-          localHostInfo.b = 1;
+          localHostInfo.c = 1;
         }
         return localHostInfo;
         i += 3;
@@ -84,7 +84,7 @@ public class UFTTransferUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.UFTTransferUtil
  * JD-Core Version:    0.7.0.1
  */

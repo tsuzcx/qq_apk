@@ -42,8 +42,8 @@ public class AEEditorApplyAllLoadingView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2064318548, this);
-    this.a = ((TextView)findViewById(2064122684));
+    LayoutInflater.from(paramContext).inflate(2064056420, this);
+    this.a = ((TextView)findViewById(2063991479));
     b();
   }
   
@@ -73,7 +73,7 @@ public class AEEditorApplyAllLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.AEEditorApplyAllLoadingView
  * JD-Core Version:    0.7.0.1
  */

@@ -32,7 +32,7 @@ public class MMKVContentProvider
     if (paramContext == null) {
       return null;
     }
-    paramContext = a(paramContext);
+    paramContext = b(paramContext);
     if (paramContext == null) {
       return null;
     }
@@ -63,7 +63,24 @@ public class MMKVContentProvider
     return null;
   }
   
-  private static String a(Context paramContext)
+  protected static String a(Context paramContext, int paramInt)
+  {
+    paramContext = (ActivityManager)paramContext.getSystemService("activity");
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.pid == paramInt) {
+          return localRunningAppProcessInfo.processName;
+        }
+      }
+    }
+    return "";
+  }
+  
+  private static String b(Context paramContext)
   {
     try
     {
@@ -84,23 +101,6 @@ public class MMKVContentProvider
       paramContext.printStackTrace();
     }
     return null;
-  }
-  
-  protected static String a(Context paramContext, int paramInt)
-  {
-    paramContext = (ActivityManager)paramContext.getSystemService("activity");
-    if (paramContext != null)
-    {
-      paramContext = paramContext.getRunningAppProcesses().iterator();
-      while (paramContext.hasNext())
-      {
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-        if (localRunningAppProcessInfo.pid == paramInt) {
-          return localRunningAppProcessInfo.processName;
-        }
-      }
-    }
-    return "";
   }
   
   @Nullable
@@ -135,7 +135,7 @@ public class MMKVContentProvider
     if (localObject == null) {
       return false;
     }
-    localObject = a((Context)localObject);
+    localObject = b((Context)localObject);
     if (localObject == null) {
       return false;
     }
@@ -162,7 +162,7 @@ public class MMKVContentProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mmkv.MMKVContentProvider
  * JD-Core Version:    0.7.0.1
  */

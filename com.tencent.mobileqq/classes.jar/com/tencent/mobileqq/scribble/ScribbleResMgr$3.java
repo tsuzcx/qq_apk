@@ -10,14 +10,14 @@ class ScribbleResMgr$3
   public int a(ResInfo paramResInfo1, ResInfo paramResInfo2)
   {
     if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
-      return paramResInfo1.f - paramResInfo2.f;
+      return paramResInfo1.j - paramResInfo2.j;
     }
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr.3
  * JD-Core Version:    0.7.0.1
  */

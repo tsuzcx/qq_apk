@@ -20,7 +20,7 @@ class BlockableEditTextView$1
     if (BlockableEditTextView.a(this.a) == 0) {
       return true;
     }
-    return BlockableEditTextView.a(this.a);
+    return BlockableEditTextView.b(this.a);
   }
   
   public void onDestroyActionMode(ActionMode paramActionMode) {}
@@ -32,7 +32,7 @@ class BlockableEditTextView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.BlockableEditTextView.1
  * JD-Core Version:    0.7.0.1
  */

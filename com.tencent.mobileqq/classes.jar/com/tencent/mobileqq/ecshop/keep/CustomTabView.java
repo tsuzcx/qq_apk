@@ -14,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.ecshop.conf.EcshopConfBean;
 import com.tencent.mobileqq.ecshop.conf.EcshopConfBean.TabConfBean;
+import com.tencent.mobileqq.ecshop.conf.EcshopConfUtil;
 import com.tencent.mobileqq.ecshop.report.ReportUtil;
 import com.tencent.mobileqq.ecshop.widget.PageSwitchUtil;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
@@ -30,43 +32,43 @@ public class CustomTabView
   extends FrameLayout
 {
   public int a;
-  private long jdField_a_of_type_Long;
+  private ArrayList<Integer> b = new CustomTabView.1(this);
   @NonNull
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new CustomTabView.1(this);
-  private String b;
+  private final Context c;
+  private long d;
+  private TextView e;
+  private String f;
+  private ImageView g;
+  private String h;
   
   public CustomTabView(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
+    this.c = paramContext;
+    this.d = NetConnInfoCenter.getServerTime();
   }
   
   public CustomTabView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
+    this.c = paramContext;
+    this.d = NetConnInfoCenter.getServerTime();
   }
   
   private void a(EcshopConfBean.TabConfBean paramTabConfBean, TextView paramTextView, ImageView paramImageView)
   {
-    this.jdField_a_of_type_Int = paramTabConfBean.jdField_a_of_type_Int;
-    paramTextView.setTextColor(Color.parseColor(paramTabConfBean.f));
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!StringUtil.a(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(this.jdField_a_of_type_JavaLangString));
+    this.a = paramTabConfBean.b;
+    paramTextView.setTextColor(Color.parseColor(paramTabConfBean.h));
+    if ((this.e != null) && (!StringUtil.isEmpty(this.f))) {
+      this.e.setTextColor(Color.parseColor(this.f));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-    this.jdField_a_of_type_JavaLangString = paramTabConfBean.e;
+    this.e = paramTextView;
+    this.f = paramTabConfBean.g;
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 28.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130851078);
-    paramTextView = URLDrawable.getDrawable(paramTabConfBean.d, (URLDrawable.URLDrawableOptions)localObject);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(this.c, 28.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.a(this.c, 28.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = MobileQQ.sMobileQQ.getResources().getDrawable(2130853309);
+    paramTextView = URLDrawable.getDrawable(paramTabConfBean.f, (URLDrawable.URLDrawableOptions)localObject);
     if (paramTextView != null)
     {
       if (paramTextView.getStatus() == 2) {
@@ -74,15 +76,15 @@ public class CustomTabView
       }
       paramImageView.setImageDrawable(paramTextView);
     }
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (!StringUtil.a(this.jdField_b_of_type_JavaLangString)))
+    if ((this.g != null) && (!StringUtil.isEmpty(this.h)))
     {
-      localObject = URLDrawable.getDrawable(this.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+      localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
       if (paramTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        this.g.setImageDrawable((Drawable)localObject);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_b_of_type_JavaLangString = paramTabConfBean.c;
+    this.g = paramImageView;
+    this.h = paramTabConfBean.e;
   }
   
   private void b(EcshopConfBean.TabConfBean paramTabConfBean, TextView paramTextView, ImageView paramImageView)
@@ -90,7 +92,7 @@ public class CustomTabView
     if (paramTabConfBean == null) {
       return;
     }
-    int i = paramTabConfBean.jdField_b_of_type_Int;
+    int i = paramTabConfBean.i;
     if (i != 0)
     {
       if (i != 1)
@@ -98,23 +100,39 @@ public class CustomTabView
         if (i != 2) {
           return;
         }
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_AndroidContentContext, ReportUtil.a(paramTabConfBean.jdField_b_of_type_JavaLangString, "tab"), 1035, new CustomTabView.3(this));
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.c, ReportUtil.a(paramTabConfBean.d, "tab"), 1035, new CustomTabView.3(this));
         return;
       }
-      if (paramTabConfBean.jdField_a_of_type_Int == 1)
+      if (paramTabConfBean.b == 1)
       {
         a(paramTabConfBean, paramTextView, paramImageView);
-        PageSwitchUtil.a.a(this.jdField_a_of_type_AndroidContentContext, false);
+        PageSwitchUtil.a.a(this.c, false);
         return;
       }
       paramTextView = new StringBuilder();
       paramTextView.append("can't match tabId: ");
-      paramTextView.append(paramTabConfBean.jdField_a_of_type_Int);
+      paramTextView.append(paramTabConfBean.b);
       QLog.i("EcshopCustomTabView", 2, paramTextView.toString());
       return;
     }
     a(paramTabConfBean, paramTextView, paramImageView);
-    PageSwitchUtil.a.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, ReportUtil.a(paramTabConfBean.jdField_b_of_type_JavaLangString, "tab"));
+    PageSwitchUtil.a.a(this.c, this.a, ReportUtil.a(paramTabConfBean.d, "tab"));
+  }
+  
+  private ArrayList<EcshopConfBean.TabConfBean> getTabConfigs()
+  {
+    Object localObject = EcshopConfUtil.a();
+    if (localObject == null)
+    {
+      QLog.i("EcshopCustomTabView", 2, "[CustomTabView] ecshopConfBean is null");
+      return new ArrayList();
+    }
+    localObject = ((EcshopConfBean)localObject).k;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
+      return localObject;
+    }
+    QLog.i("EcshopCustomTabView", 2, "[CustomTabView] tabConfs is null");
+    return new ArrayList();
   }
   
   public void a(View paramView)
@@ -132,7 +150,7 @@ public class CustomTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.keep.CustomTabView
  * JD-Core Version:    0.7.0.1
  */

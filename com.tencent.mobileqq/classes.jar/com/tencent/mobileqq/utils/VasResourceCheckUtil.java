@@ -23,17 +23,16 @@ import mqq.app.MobileQQ;
 
 public class VasResourceCheckUtil
 {
-  public static Handler.Callback a;
-  public static Handler a;
   public static final String a;
+  public static Handler b;
+  public static Handler.Callback c = new VasResourceCheckUtil.2();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append(".VasResourceCheck/temp.json");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_AndroidOsHandler$Callback = new VasResourceCheckUtil.2();
+    a = localStringBuilder.toString();
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -53,10 +52,10 @@ public class VasResourceCheckUtil
     localObject = (AvatarPendantManager)paramQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
     if (localObject != null)
     {
-      FileUtils.delete(((AvatarPendantManager)localObject).a().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).a();
-      FileUtils.delete(((AvatarPendantManager)localObject).b().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).b();
+      FileUtils.delete(((AvatarPendantManager)localObject).d().getAbsolutePath(), false);
+      ((AvatarPendantManager)localObject).d();
+      FileUtils.delete(((AvatarPendantManager)localObject).e().getAbsolutePath(), false);
+      ((AvatarPendantManager)localObject).e();
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
@@ -88,7 +87,7 @@ public class VasResourceCheckUtil
     }
     FileUtils.delete(paramQQAppInterface.getAbsolutePath(), false);
     paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(ColorRingConstants.jdField_a_of_type_JavaLangString);
+    paramQQAppInterface = new File(ColorRingConstants.a);
     if (!paramQQAppInterface.exists()) {
       paramQQAppInterface.mkdirs();
     }
@@ -98,12 +97,12 @@ public class VasResourceCheckUtil
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
   {
-    QQToast.a(paramActivity, HardCodeUtil.a(2131715801), 0).a();
+    QQToast.makeText(paramActivity, HardCodeUtil.a(2131913258), 0).show();
     paramActivity.finish();
-    if (jdField_a_of_type_AndroidOsHandler == null) {
-      jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandler$Callback);
+    if (b == null) {
+      b = new Handler(c);
     }
-    paramActivity = new DownloadTask(paramString, new File(jdField_a_of_type_JavaLangString));
+    paramActivity = new DownloadTask(paramString, new File(a));
     ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1).startDownload(paramActivity, new VasResourceCheckUtil.1(paramQQAppInterface), null);
   }
   
@@ -114,7 +113,7 @@ public class VasResourceCheckUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VasResourceCheckUtil
  * JD-Core Version:    0.7.0.1
  */

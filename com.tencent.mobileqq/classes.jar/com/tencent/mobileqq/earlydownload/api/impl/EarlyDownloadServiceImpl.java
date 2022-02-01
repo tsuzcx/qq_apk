@@ -163,7 +163,7 @@ public class EarlyDownloadServiceImpl
       MobileQQ.sMobileQQ.getApplicationContext().sendBroadcast((Intent)localObject1, "com.tencent.qqhead.permission.getheadresp");
       return;
     }
-    Object localObject1 = localEarlyHandler.a();
+    Object localObject1 = localEarlyHandler.h();
     if ("req.com.tencent.mobileqq.EARLY_DOWNLOAD".equals(localObject2))
     {
       if (((XmlData)localObject1).loadState == 1)
@@ -196,7 +196,7 @@ public class EarlyDownloadServiceImpl
     if ("req.com.tencent.mobileqq.EARLY_CANCEL".equals(localObject2))
     {
       localEarlyHandler.b(true);
-      cancelDownload(localEarlyHandler.a());
+      cancelDownload(localEarlyHandler.h());
       return;
     }
     if ("req.com.tencent.mobileqq.EARLY_SET_FAIL".equals(localObject2))
@@ -242,7 +242,7 @@ public class EarlyDownloadServiceImpl
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("doOnCancelDownload(), netReq = ");
-        ((StringBuilder)localObject1).append(((EarlyDownloadServiceImpl.DownloadRecord)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+        ((StringBuilder)localObject1).append(((EarlyDownloadServiceImpl.DownloadRecord)localObject2).a);
         ((StringBuilder)localObject1).append(", pendingNetReq = ");
         ((StringBuilder)localObject1).append(localObject3);
         QLog.d("EarlyDown.EarlyDownloadServiceImpl", 2, ((StringBuilder)localObject1).toString());
@@ -250,7 +250,7 @@ public class EarlyDownloadServiceImpl
       localObject1 = getEarlyHandler(paramXmlData.strResName);
       if ((localObject2 == null) && (localObject3 == null))
       {
-        if ((localObject1 != null) && (((EarlyHandler)localObject1).b()))
+        if ((localObject1 != null) && (((EarlyHandler)localObject1).i()))
         {
           localObject2 = new Intent("resp.com.tencent.mobileqq.EARLY_CANCEL");
           ((Intent)localObject2).putExtra("reqResult", false);
@@ -268,10 +268,10 @@ public class EarlyDownloadServiceImpl
       else
       {
         if (localObject2 != null) {
-          if (((EarlyDownloadServiceImpl.DownloadRecord)localObject2).jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask != null) {
+          if (((EarlyDownloadServiceImpl.DownloadRecord)localObject2).b != null) {
             this.mPreDownloadCtrl.cancelPreDownload(paramXmlData.strResURL_big);
           } else {
-            ((IHttpEngineService)this.app.getRuntimeService(IHttpEngineService.class, "all")).cancelReq(((EarlyDownloadServiceImpl.DownloadRecord)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+            ((IHttpEngineService)this.app.getRuntimeService(IHttpEngineService.class, "all")).cancelReq(((EarlyDownloadServiceImpl.DownloadRecord)localObject2).a);
           }
         }
         if (localObject3 != null) {
@@ -313,7 +313,7 @@ public class EarlyDownloadServiceImpl
           localObject3 = ((GetResourceRespInfoV2)localObject2).strResName;
           localObject4 = (EarlyHandler)this.mapHandler.get(localObject3);
           if (localObject4 != null) {
-            ((EarlyHandler)localObject4).e();
+            ((EarlyHandler)localObject4).u();
           }
           removeHandler((String)localObject3);
           if (QLog.isColorLevel())
@@ -339,17 +339,17 @@ public class EarlyDownloadServiceImpl
           if (localObject3 != null)
           {
             XmlData localXmlData = EarlyDataFactory.a(((EarlyHandler)localObject3).a(), ((GetResourceRespInfoV2)localObject2).strResName, ((GetResourceRespInfoV2)localObject2).strPkgName, ((GetResourceRespInfoV2)localObject2).strResConf, ((GetResourceRespInfoV2)localObject2).uiNewVer, ((GetResourceRespInfoV2)localObject2).strResURL_big, ((GetResourceRespInfoV2)localObject2).strResURL_small);
-            if (!TextUtils.equals(((GetResourceRespInfoV2)localObject2).strPkgName, ((EarlyHandler)localObject3).a().strPkgName))
+            if (!TextUtils.equals(((GetResourceRespInfoV2)localObject2).strPkgName, ((EarlyHandler)localObject3).h().strPkgName))
             {
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("doOnGetConfig() pkgName mismatch! resp:");
               localStringBuilder.append(((GetResourceRespInfoV2)localObject2).strPkgName);
               localStringBuilder.append(" vs local:");
-              localStringBuilder.append(((EarlyHandler)localObject3).a().strPkgName);
+              localStringBuilder.append(((EarlyHandler)localObject3).h().strPkgName);
               QLog.e("EarlyDown.EarlyDownloadServiceImpl", 1, localStringBuilder.toString());
             }
-            ((EarlyHandler)localObject3).a().updateServerInfo(localXmlData);
-            EarlyDataFactory.a(((EarlyHandler)localObject3).a(), new String[0]);
+            ((EarlyHandler)localObject3).h().updateServerInfo(localXmlData);
+            EarlyDataFactory.a(((EarlyHandler)localObject3).h(), new String[0]);
             localObject3 = Message.obtain();
             localObject2 = localObject3;
             if (localObject3 == null) {
@@ -394,13 +394,13 @@ public class EarlyDownloadServiceImpl
           localObject2 = getEarlyHandler((String)localObject3);
           if (localObject2 != null)
           {
-            int i = ((EarlyHandler)localObject2).a().Version;
+            int i = ((EarlyHandler)localObject2).h().Version;
             localObject4 = EarlyDataFactory.a(((EarlyHandler)localObject2).a(), ((GetResourceRespInfoV2)localObject1).strResName, ((GetResourceRespInfoV2)localObject1).strPkgName, ((GetResourceRespInfoV2)localObject1).strResConf, ((GetResourceRespInfoV2)localObject1).uiNewVer, ((GetResourceRespInfoV2)localObject1).strResURL_big, ((GetResourceRespInfoV2)localObject1).strResURL_small);
-            ((EarlyHandler)localObject2).a().updateServerInfo((XmlData)localObject4);
+            ((EarlyHandler)localObject2).h().updateServerInfo((XmlData)localObject4);
             if (i < ((GetResourceRespInfoV2)localObject1).uiNewVer) {
-              ((EarlyHandler)localObject2).a().loadState = 0;
+              ((EarlyHandler)localObject2).h().loadState = 0;
             }
-            EarlyDataFactory.a(((EarlyHandler)localObject2).a(), new String[0]);
+            EarlyDataFactory.a(((EarlyHandler)localObject2).h(), new String[0]);
             localObject2 = Message.obtain();
             localObject1 = localObject2;
             if (localObject2 == null) {
@@ -478,7 +478,7 @@ public class EarlyDownloadServiceImpl
     {
       localObject1 = (EarlyDownloadServiceImpl.DownloadRecord)this.mDownloadRecords.remove(localXmlData.strResName);
       if (localObject1 != null) {
-        localObject1 = ((EarlyDownloadServiceImpl.DownloadRecord)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+        localObject1 = ((EarlyDownloadServiceImpl.DownloadRecord)localObject1).a;
       } else {
         localObject1 = null;
       }
@@ -570,7 +570,7 @@ public class EarlyDownloadServiceImpl
     }
     try
     {
-      String str = localEarlyHandler.d();
+      String str = localEarlyHandler.l();
       bool1 = FileUtils.copyFile(paramNetResp.mReq.mOutPath, str);
       if ((QLog.isColorLevel()) && (localObject2 != null))
       {
@@ -631,7 +631,7 @@ public class EarlyDownloadServiceImpl
       if (localEarlyHandler != null)
       {
         localEarlyHandler.a(localXmlData, bool2, paramNetResp.mErrCode, paramNetResp.mReq.mOutPath);
-        localEarlyHandler.d();
+        localEarlyHandler.t();
       }
       if ((paramNetResp.mErrCode != 9366) && (paramNetResp.mErrCode != 9037) && (paramNetResp.mErrCode != 9004) && (paramNetResp.mErrCode != 9040))
       {
@@ -659,9 +659,9 @@ public class EarlyDownloadServiceImpl
         }
         if (localEarlyHandler != null)
         {
-          paramNetResp = localEarlyHandler.a();
+          paramNetResp = localEarlyHandler.b();
           if ((paramNetResp != null) && (paramNetResp.length() > 0)) {
-            StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(this.app.getCurrentAccountUin(), localEarlyHandler.a(), bool2, l2 - l3, l1, (HashMap)localObject1, "");
+            StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(this.app.getCurrentAccountUin(), localEarlyHandler.b(), bool2, l2 - l3, l1, (HashMap)localObject1, "");
           }
         }
       }
@@ -718,8 +718,8 @@ public class EarlyDownloadServiceImpl
     try
     {
       localObject = new EarlyDownloadServiceImpl.DownloadRecord(null);
-      ((EarlyDownloadServiceImpl.DownloadRecord)localObject).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
-      ((EarlyDownloadServiceImpl.DownloadRecord)localObject).jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask = paramAbsPreDownloadTask;
+      ((EarlyDownloadServiceImpl.DownloadRecord)localObject).a = paramHttpNetReq;
+      ((EarlyDownloadServiceImpl.DownloadRecord)localObject).b = paramAbsPreDownloadTask;
       this.mDownloadRecords.put(paramXmlData.strResName, localObject);
       this.mPendingDownloadRecords.remove(paramXmlData.strResName);
       return;
@@ -953,7 +953,7 @@ public class EarlyDownloadServiceImpl
                 localObject = getEarlyHandler(paramXmlData.strResName);
                 if (localObject != null)
                 {
-                  this.mPreDownloadCtrl.requestPreDownload(((EarlyHandler)localObject).a(), ((EarlyHandler)localObject).b(), paramXmlData.strResName, 0, paramXmlData.strResURL_big, ((EarlyHandler)localObject).c(), i, 0, false, paramString);
+                  this.mPreDownloadCtrl.requestPreDownload(((EarlyHandler)localObject).c(), ((EarlyHandler)localObject).d(), paramXmlData.strResName, 0, paramXmlData.strResURL_big, ((EarlyHandler)localObject).k(), i, 0, false, paramString);
                   this.mPendingDownloadRecords.put(paramXmlData.strResName, paramString);
                 }
               }
@@ -1139,7 +1139,7 @@ public class EarlyDownloadServiceImpl
               localStringBuilder.append(localObject);
               QLog.d("EarlyDown", 2, localStringBuilder.toString());
             }
-            ((EarlyHandler)localObject).a(((EarlyHandler)localObject).a(), false, paramMessage.iResult, "");
+            ((EarlyHandler)localObject).a(((EarlyHandler)localObject).h(), false, paramMessage.iResult, "");
           }
           removeRequesting(paramMessage.strResName);
           return false;
@@ -1273,7 +1273,7 @@ public class EarlyDownloadServiceImpl
   
   public boolean isLowEndPhone()
   {
-    return (DeviceInfoUtil.h()) || (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F);
+    return (DeviceInfoUtil.U()) || (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F);
   }
   
   public boolean isRequesting(String paramString)
@@ -1307,7 +1307,7 @@ public class EarlyDownloadServiceImpl
         {
           localObject3 = (EarlyHandler)this.mapHandler.get(((BaseEarlyHandlerProcessor)localObject3).a());
           if (localObject3 != null) {
-            ((EarlyHandler)localObject3).a();
+            ((EarlyHandler)localObject3).g();
           }
         }
       }
@@ -1455,7 +1455,7 @@ public class EarlyDownloadServiceImpl
         paramString = (EarlyHandler)this.mapHandler.remove(paramString);
         lock.unlock();
         if (paramString != null) {
-          paramString.a();
+          paramString.g();
         }
         return;
       }
@@ -1531,7 +1531,7 @@ public class EarlyDownloadServiceImpl
           if (localEarlyHandler != null)
           {
             localEarlyHandler.e(paramBoolean);
-            localObject = localEarlyHandler.a(localBaseEarlyHandlerProcessor.a());
+            localObject = localEarlyHandler.b(localBaseEarlyHandlerProcessor.a());
           }
           if (localObject != null) {
             localArrayList.add(localObject);
@@ -1546,12 +1546,12 @@ public class EarlyDownloadServiceImpl
       ((StringBuilder)localObject).append(localArrayList.size());
       QLog.d("EarlyDown", 2, ((StringBuilder)localObject).toString());
     }
-    ((ServerConfigManager)this.app.getManager(4)).getPluginConfig(512, localReqUserInfo, localArrayList, this.mServerConfigObserver, AppSetting.a());
+    ((ServerConfigManager)this.app.getManager(4)).getPluginConfig(512, localReqUserInfo, localArrayList, this.mServerConfigObserver, AppSetting.d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.api.impl.EarlyDownloadServiceImpl
  * JD-Core Version:    0.7.0.1
  */

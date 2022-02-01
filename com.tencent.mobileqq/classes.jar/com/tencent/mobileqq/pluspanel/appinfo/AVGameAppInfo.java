@@ -25,7 +25,7 @@ public class AVGameAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838650;
+    return 2130838779;
   }
   
   public int getAppID()
@@ -54,12 +54,12 @@ public class AVGameAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131689917);
+    return BaseApplicationImpl.getContext().getString(2131886558);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     IAvGameManager localIAvGameManager = (IAvGameManager)localQQAppInterface.getRuntimeService(IAvGameManager.class, "");
     if (localIAvGameManager == null)
     {
@@ -72,23 +72,23 @@ public class AVGameAppInfo
     } else {
       i = 2;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    if (paramSessionInfo.a == 1)
     {
-      if (AvGameEntranceUtils.a(paramBaseChatPie.a(), paramSessionInfo.jdField_a_of_type_JavaLangString)) {
+      if (AvGameEntranceUtils.a(paramBaseChatPie.aX(), paramSessionInfo.b)) {
         return;
       }
-      localIAvGameManager.createAvGameRoom(paramBaseChatPie.a(), 3, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
-      paramBaseChatPie.Q();
-      paramBaseChatPie.a().setCanLock(false);
-      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800B015", "0X800B015", i, 0, "", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "");
+      localIAvGameManager.createAvGameRoom(paramBaseChatPie.aX(), 3, paramSessionInfo.b, 0);
+      paramBaseChatPie.aw();
+      paramBaseChatPie.aX().setCanLock(false);
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800B015", "0X800B015", i, 0, "", "", paramSessionInfo.b, "");
       return;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 0)
+    if (paramSessionInfo.a == 0)
     {
-      localIAvGameManager.createAvGameRoom(paramBaseChatPie.a(), 2, paramSessionInfo.jdField_a_of_type_JavaLangString, 0);
-      paramBaseChatPie.Q();
+      localIAvGameManager.createAvGameRoom(paramBaseChatPie.aX(), 2, paramSessionInfo.b, 0);
+      paramBaseChatPie.aw();
       paramPlusPanelViewModel.b(paramBaseChatPie);
-      paramBaseChatPie.a().setCanLock(false);
+      paramBaseChatPie.aX().setCanLock(false);
       ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800B014", "0X800B014", i, 0, "", "", "", "");
       return;
     }
@@ -96,7 +96,7 @@ public class AVGameAppInfo
     {
       paramPlusPanelViewModel = new StringBuilder();
       paramPlusPanelViewModel.append("click gotoAvGame, not support chat, [");
-      paramPlusPanelViewModel.append(paramSessionInfo.jdField_a_of_type_Int);
+      paramPlusPanelViewModel.append(paramSessionInfo.a);
       paramPlusPanelViewModel.append("]");
       QLog.i("AVGameAppInfo", 2, paramPlusPanelViewModel.toString());
     }
@@ -104,7 +104,7 @@ public class AVGameAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AVGameAppInfo
  * JD-Core Version:    0.7.0.1
  */

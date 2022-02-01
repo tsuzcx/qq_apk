@@ -55,16 +55,16 @@ public class ArkPlatformConfProcessor
     localStringBuilder.append("[onUpdate] type=");
     localStringBuilder.append(type());
     localStringBuilder.append(", content = ");
-    localStringBuilder.append(paramArkPlatformConfigBean.a());
+    localStringBuilder.append(paramArkPlatformConfigBean.d());
     QLog.d("ArkApp.ConfProcessor", 1, localStringBuilder.toString());
     ArkAppCrashProtect.a();
-    paramArkPlatformConfigBean = paramArkPlatformConfigBean.a();
+    paramArkPlatformConfigBean = paramArkPlatformConfigBean.b();
     if (paramArkPlatformConfigBean == null)
     {
       QLog.i("ArkApp.ConfProcessor", 2, "ArkSafe.updateUrlCheckAndCleanAppUpdateTime error config is null");
       return;
     }
-    ArkAppConfigMgr.getInstance().updateUrlCheckAndCleanAppUpdateTime(paramArkPlatformConfigBean.jdField_a_of_type_Boolean, paramArkPlatformConfigBean.b, paramArkPlatformConfigBean.jdField_a_of_type_JavaUtilArrayList);
+    ArkAppConfigMgr.getInstance().updateUrlCheckAndCleanAppUpdateTime(paramArkPlatformConfigBean.b, paramArkPlatformConfigBean.k, paramArkPlatformConfigBean.a);
   }
   
   public Class<ArkPlatformConfigBean> clazz()
@@ -74,7 +74,7 @@ public class ArkPlatformConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.processor.ArkPlatformConfProcessor
  * JD-Core Version:    0.7.0.1
  */

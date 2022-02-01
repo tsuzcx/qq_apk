@@ -28,12 +28,12 @@ class ShareApiPlugin$1
     if (paramBoolean)
     {
       Object localObject2;
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c)) || (this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c.startsWith("http://")) || (this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c.startsWith("https://")))
+      if ((TextUtils.isEmpty(this.b.c)) || (this.b.c.startsWith("http://")) || (this.b.c.startsWith("https://")))
       {
         localObject2 = paramBundle.getString("extra_summary");
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c = ((String)localObject2);
+          this.b.c = ((String)localObject2);
           if (QLog.isColorLevel()) {
             QLog.d("ShareApiPlugin", 2, "Use share summary parsed by server");
           }
@@ -43,12 +43,12 @@ class ShareApiPlugin$1
           QLog.d("ShareApiPlugin", 2, "Server can't resolve summary");
         }
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d))
+      if (TextUtils.isEmpty(this.b.d))
       {
         localObject2 = paramBundle.getStringArrayList("extra_images");
         if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
         {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d = ((String)((ArrayList)localObject2).get(0));
+          this.b.d = ((String)((ArrayList)localObject2).get(0));
           if (QLog.isColorLevel()) {
             QLog.d("ShareApiPlugin", 2, "Use share thumb parsed by server");
           }
@@ -58,12 +58,12 @@ class ShareApiPlugin$1
           QLog.d("ShareApiPlugin", 2, "Server can't resolve thumb");
         }
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b))
+      if (TextUtils.isEmpty(this.b.b))
       {
         localObject2 = paramBundle.getString("extra_title");
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b = ((String)localObject2);
+          this.b.b = ((String)localObject2);
           if (QLog.isColorLevel()) {
             QLog.d("ShareApiPlugin", 2, "Use share title parsed by server");
           }
@@ -73,12 +73,12 @@ class ShareApiPlugin$1
           QLog.d("ShareApiPlugin", 2, "Server can't resolve title");
         }
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a))
+      if (TextUtils.isEmpty(this.b.a))
       {
         paramBundle = paramBundle.getString("extra_url");
         if (!TextUtils.isEmpty(paramBundle))
         {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a = paramBundle;
+          this.b.a = paramBundle;
           if (QLog.isColorLevel()) {
             QLog.d("ShareApiPlugin", 2, "Use share url parsed by server");
           }
@@ -92,13 +92,13 @@ class ShareApiPlugin$1
       {
         paramBundle = new StringBuilder();
         paramBundle.append("Share info after QZone rich: title=");
-        paramBundle.append(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b);
+        paramBundle.append(this.b.b);
         paramBundle.append(", summary=");
-        paramBundle.append(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c);
+        paramBundle.append(this.b.c);
         paramBundle.append(", thumb=");
-        paramBundle.append(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d);
+        paramBundle.append(this.b.d);
         paramBundle.append(", shareURL=");
-        paramBundle.append(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a);
+        paramBundle.append(this.b.a);
         QLog.e("shareWebPage", 2, paramBundle.toString());
       }
       ((Bundle)localObject1).putInt("extra_url_info_from", 5);
@@ -107,8 +107,8 @@ class ShareApiPlugin$1
     {
       ((Bundle)localObject1).putInt("extra_url_info_from", 3);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareInterface.setSummary(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b, this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c, this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a, this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d, (Bundle)localObject1);
-    paramBoolean = TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d);
+    this.a.setSummary(this.b.b, this.b.c, this.b.a, this.b.d, (Bundle)localObject1);
+    paramBoolean = TextUtils.isEmpty(this.b.d);
     int j = 1;
     if (paramBoolean) {
       i = 1;
@@ -116,11 +116,11 @@ class ShareApiPlugin$1
       i = 0;
     }
     paramInt = i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c)) {
+    if (TextUtils.isEmpty(this.b.c)) {
       paramInt = i | 0x2;
     }
     int i = paramInt;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b)) {
+    if (TextUtils.isEmpty(this.b.b)) {
       i = paramInt | 0x4;
     }
     paramBundle = new Bundle();
@@ -140,14 +140,14 @@ class ShareApiPlugin$1
     paramBundle.putString("intext_2", ((StringBuilder)localObject1).toString());
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a);
+    ((StringBuilder)localObject1).append(this.b.a);
     paramBundle.putString("stringext_1", ((StringBuilder)localObject1).toString());
-    ReportCenter.a().a(paramBundle, "", this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.mRuntime.a().getAccount(), false);
+    ReportCenter.a().a(paramBundle, "", this.b.mRuntime.b().getAccount(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.ShareApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

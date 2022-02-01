@@ -12,17 +12,17 @@ class AccountOnlineStateViewModel$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      AccountOnlineStateViewModel.a(this.this$0).setValue(this.jdField_a_of_type_JavaUtilList);
+      AccountOnlineStateViewModel.a(this.this$0).setValue(this.b);
       return;
     }
-    QQToast.a(MobileQQ.sMobileQQ, 1, 2131690243, 1).a();
+    QQToast.makeText(MobileQQ.sMobileQQ, 1, 2131887154, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.viewmodel.AccountOnlineStateViewModel.2
  * JD-Core Version:    0.7.0.1
  */

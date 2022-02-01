@@ -2,50 +2,50 @@ package com.tencent.mobileqq.vas.updatesystem.impl;
 
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateAdapter;
-import com.tencent.vas.update.callback.ICmdManager;
-import com.tencent.vas.update.callback.ICommonManager;
-import com.tencent.vas.update.callback.IDbManager;
-import com.tencent.vas.update.callback.IHttpDownloader;
-import com.tencent.vas.update.callback.IReportManager;
-import com.tencent.vas.update.callback.IVasLog;
-import com.tencent.vas.update.callback.IVasUpdateFactory;
+import com.tencent.vas.update.factory.api.ICmdManager;
+import com.tencent.vas.update.factory.api.ICommonManager;
+import com.tencent.vas.update.factory.api.IDbManager;
+import com.tencent.vas.update.factory.api.IHttpDownloader;
+import com.tencent.vas.update.factory.api.IReportManager;
+import com.tencent.vas.update.factory.api.IVasLog;
+import com.tencent.vas.update.factory.api.IVasUpdateFactory;
 
 public class VasUpdateFactory
   implements IVasUpdateFactory
 {
-  public ICmdManager getCmdManager()
-  {
-    return new VasCmdManagerImpl();
-  }
-  
-  public ICommonManager getCommonManager()
-  {
-    return new VasCommonManagerImpl();
-  }
-  
-  public IDbManager getDbManager()
-  {
-    return new VasDbManagerImpl();
-  }
-  
-  public IHttpDownloader getHttpDownloader()
-  {
-    return ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).getHttpDownloader();
-  }
-  
-  public IVasLog getLog()
+  public IVasLog a()
   {
     return new VasLogImpl();
   }
   
-  public IReportManager getReportManager()
+  public IHttpDownloader b()
+  {
+    return ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).getHttpDownloader();
+  }
+  
+  public IReportManager c()
   {
     return new VasReportManagerImpl();
+  }
+  
+  public IDbManager d()
+  {
+    return new VasDbManagerImpl();
+  }
+  
+  public ICommonManager e()
+  {
+    return new VasCommonManagerImpl();
+  }
+  
+  public ICmdManager f()
+  {
+    return new VasCmdManagerImpl();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasUpdateFactory
  * JD-Core Version:    0.7.0.1
  */

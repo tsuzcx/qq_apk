@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.settings.message;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.topentry.CTEntryListener;
+import com.tencent.widget.HeightAdaptableListView;
 
 class AssistantSettingFragment$42
-  implements DialogInterface.OnClickListener
+  implements CTEntryListener
 {
   AssistantSettingFragment$42(AssistantSettingFragment paramAssistantSettingFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a();
+    this.a.g.post(new AssistantSettingFragment.42.1(this));
+    AssistantSettingFragment.o(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.42
  * JD-Core Version:    0.7.0.1
  */

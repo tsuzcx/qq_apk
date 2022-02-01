@@ -31,7 +31,7 @@ public class QQFileModel
   {
     try
     {
-      localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+      localBaseQQAppInterface = QQFileManagerUtilImpl.l();
     }
     catch (Exception localException)
     {
@@ -87,11 +87,6 @@ public class QQFileModel
     QLog.i(paramString1, 1, localStringBuilder.toString());
   }
   
-  private boolean a(Activity paramActivity, int paramInt)
-  {
-    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkFileWithFreeWifiHelper(paramActivity, paramInt, new QQFileModel.2(this));
-  }
-  
   private boolean a(Activity paramActivity, BaseQQAppInterface paramBaseQQAppInterface)
   {
     return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkStatusToResume(paramActivity, paramBaseQQAppInterface, this.a);
@@ -102,35 +97,11 @@ public class QQFileModel
     return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkWifiWithFreeWifiHelper(paramBoolean, paramActivity, paramFMDialogInterface);
   }
   
-  private void b(Activity paramActivity, int paramInt)
-  {
-    try
-    {
-      localBaseQQAppInterface = QQFileManagerUtilImpl.a();
-    }
-    catch (Exception localException)
-    {
-      BaseQQAppInterface localBaseQQAppInterface;
-      label7:
-      break label7;
-    }
-    localBaseQQAppInterface = null;
-    if (localBaseQQAppInterface == null)
-    {
-      QLog.e("FileModel<FileAssistant>", 1, "Start VideoActivity is not in QQ!");
-      return;
-    }
-    if (a(paramActivity, localBaseQQAppInterface)) {
-      return;
-    }
-    b(paramActivity, paramInt, 10004);
-  }
-  
   private void b(Activity paramActivity, int paramInt1, int paramInt2)
   {
     try
     {
-      localObject = QQFileManagerUtilImpl.a();
+      localObject = QQFileManagerUtilImpl.l();
     }
     catch (Exception localException)
     {
@@ -165,19 +136,48 @@ public class QQFileModel
     localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getIntentForFileBrowserActivity(paramActivity);
     ((Intent)localObject).putExtra("fileinfo", localForwardFileInfo);
     ((Intent)localObject).putExtra("file_enter_file_browser_type", paramInt1);
-    ((Intent)localObject).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131704663));
+    ((Intent)localObject).putExtra("selfSet_leftViewText", HardCodeUtil.a(2131902567));
     paramActivity.startActivityForResult((Intent)localObject, 102);
-    paramActivity.overridePendingTransition(2130772065, 2130772067);
+    paramActivity.overridePendingTransition(2130772090, 2130772092);
   }
   
   private boolean b(Activity paramActivity, int paramInt)
   {
-    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkFileWithCUKingCardHelper(paramActivity, paramInt, new QQFileModel.3(this));
+    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkFileWithFreeWifiHelper(paramActivity, paramInt, new QQFileModel.2(this));
   }
   
   private boolean b(boolean paramBoolean, Activity paramActivity, FMDialogUtil.FMDialogInterface paramFMDialogInterface)
   {
     return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkWifiWithCUKingCardHelper(paramBoolean, paramActivity, paramFMDialogInterface);
+  }
+  
+  private boolean c(Activity paramActivity, int paramInt)
+  {
+    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkFileWithCUKingCardHelper(paramActivity, paramInt, new QQFileModel.3(this));
+  }
+  
+  private void d(Activity paramActivity, int paramInt)
+  {
+    try
+    {
+      localBaseQQAppInterface = QQFileManagerUtilImpl.l();
+    }
+    catch (Exception localException)
+    {
+      BaseQQAppInterface localBaseQQAppInterface;
+      label7:
+      break label7;
+    }
+    localBaseQQAppInterface = null;
+    if (localBaseQQAppInterface == null)
+    {
+      QLog.e("FileModel<FileAssistant>", 1, "Start VideoActivity is not in QQ!");
+      return;
+    }
+    if (a(paramActivity, localBaseQQAppInterface)) {
+      return;
+    }
+    b(paramActivity, paramInt, 10004);
   }
   
   public void a(Activity paramActivity, int paramInt)
@@ -186,23 +186,23 @@ public class QQFileModel
     {
       if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        FMToastUtil.a(2131694709);
+        FMToastUtil.a(2131892406);
         return;
       }
-      if ((this.a.getCloudType() == 1) && (QQFileManagerUtilImpl.a()) && (this.a.status != 2) && (this.a.fileSize > 1048576L))
+      if ((this.a.getCloudType() == 1) && (QQFileManagerUtilImpl.d()) && (this.a.status != 2) && (this.a.fileSize > 1048576L))
       {
         QQFileModel.1 local1 = new QQFileModel.1(this, paramActivity, paramInt);
-        boolean bool2 = b(paramActivity, paramInt);
+        boolean bool2 = c(paramActivity, paramInt);
         boolean bool1 = bool2;
         if (bool2) {
-          bool1 = a(paramActivity, paramInt);
+          bool1 = b(paramActivity, paramInt);
         }
         if (bool1) {
-          FMDialogUtil.a(paramActivity, paramActivity.getString(2131692561), paramActivity.getString(2131692563), local1);
+          FMDialogUtil.a(paramActivity, paramActivity.getString(2131889584), paramActivity.getString(2131889586), local1);
         }
         return;
       }
-      b(paramActivity, paramInt);
+      d(paramActivity, paramInt);
       return;
     }
     b(paramActivity, paramInt, 10004);
@@ -217,7 +217,7 @@ public class QQFileModel
   {
     if (!NetworkUtil.isNetSupportHw(BaseApplication.getContext()))
     {
-      FMToastUtil.a(2131693191);
+      FMToastUtil.a(2131890731);
       return;
     }
     if (a(paramBoolean ^ true))
@@ -232,11 +232,11 @@ public class QQFileModel
       {
         int i;
         if (paramBoolean) {
-          i = 2131692566;
+          i = 2131889589;
         } else {
-          i = 2131692563;
+          i = 2131889586;
         }
-        FMDialogUtil.a(paramContext, 2131692561, i, paramFMDialogInterface);
+        FMDialogUtil.a(paramContext, 2131889584, i, paramFMDialogInterface);
       }
     }
     else
@@ -250,7 +250,7 @@ public class QQFileModel
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
       return false;
     }
-    if (!QQFileManagerUtilImpl.a())
+    if (!QQFileManagerUtilImpl.d())
     {
       a("FlowShow", " donot ShowFlowDialog! Wi-Fi");
       return false;
@@ -280,12 +280,12 @@ public class QQFileModel
       a("FlowShow", localStringBuilder.toString());
       return false;
     }
-    l2 = MessageCache.a();
+    l2 = MessageCache.c();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("last Succ ");
     localStringBuilder.append(this.a.lastSuccessTime);
     localStringBuilder.append(" now ");
-    localStringBuilder.append(MessageCache.a());
+    localStringBuilder.append(MessageCache.c());
     localStringBuilder.append(" = ");
     localStringBuilder.append(l2 - this.a.lastSuccessTime);
     localStringBuilder.append(" limit[");
@@ -301,7 +301,7 @@ public class QQFileModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.recreate.QQFileModel
  * JD-Core Version:    0.7.0.1
  */

@@ -17,18 +17,18 @@ import cooperation.qqfav.QfavBuilder;
 public class FilePicQFavActivity
   extends IphoneTitleBarActivity
 {
-  long jdField_a_of_type_Long;
-  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  long a;
+  ChatMessage b;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Long != -1L)
+    if (this.a != -1L)
     {
-      FileManagerEntity localFileManagerEntity = this.app.getFileManagerDataCenter().a(this.jdField_a_of_type_Long);
+      FileManagerEntity localFileManagerEntity = this.app.getFileManagerDataCenter().a(this.a);
       if ((localFileManagerEntity != null) && (-1L != localFileManagerEntity.uniseq))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = ((ChatMessage)this.app.getMessageFacade().b(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
-        new QfavBuilder(3).a(this.app, this, localFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        this.b = ((ChatMessage)this.app.getMessageFacade().b(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.uniseq));
+        new QfavBuilder(3).a(this.app, this, localFileManagerEntity, this.b, false);
       }
     }
     finish();
@@ -46,7 +46,7 @@ public class FilePicQFavActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Long = getIntent().getLongExtra("file_pic_favorites", -1L);
+    this.a = getIntent().getLongExtra("file_pic_favorites", -1L);
     a();
     return true;
   }
@@ -73,7 +73,7 @@ public class FilePicQFavActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FilePicQFavActivity
  * JD-Core Version:    0.7.0.1
  */

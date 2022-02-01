@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.common.app.business.BaseQQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.ecshop.abtest.ABTestInfo;
 import com.tencent.mobileqq.ecshop.abtest.ABTestUtil;
@@ -17,74 +16,47 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.qwallet.report.IReportApi;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 import mqq.app.AppRuntime;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ReportUtil
 {
-  private static volatile ReportUtil jdField_a_of_type_ComTencentMobileqqEcshopReportReportUtil;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  public CopyOnWriteArraySet<Long> a;
+  private static final byte[] b = new byte[0];
+  private static volatile ReportUtil c;
+  public CopyOnWriteArraySet<Long> a = new CopyOnWriteArraySet();
   
   static
   {
     UserAction.registerTunnel(new TunnelInfo("000004B5DU3Q3LD1"));
   }
   
-  private ReportUtil()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  }
-  
   public static ReportUtil a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqEcshopReportReportUtil == null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    if (c == null) {
+      synchronized (b)
       {
-        if (jdField_a_of_type_ComTencentMobileqqEcshopReportReportUtil == null) {
-          jdField_a_of_type_ComTencentMobileqqEcshopReportReportUtil = new ReportUtil();
+        if (c == null) {
+          c = new ReportUtil();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqEcshopReportReportUtil;
-  }
-  
-  public static String a()
-  {
-    ABTestInfo localABTestInfo = ABTestUtil.a("expQQShopPageStyle");
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (localABTestInfo != null)
-    {
-      if (!TextUtils.isEmpty(localABTestInfo.b)) {
-        localStringBuilder.append(localABTestInfo.b);
-      }
-      localStringBuilder.append(">");
-      if (!TextUtils.isEmpty(localABTestInfo.d)) {
-        localStringBuilder.append(localABTestInfo.d);
-      }
-      localStringBuilder.append(">");
-      if (!TextUtils.isEmpty(localABTestInfo.a())) {
-        localStringBuilder.append(localABTestInfo.a());
-      }
-    }
-    return localStringBuilder.toString();
+    return c;
   }
   
   public static String a(MessageRecord paramMessageRecord)
   {
     Object localObject = QQShopFakeUrlHelper.a(EcshopUtils.a(paramMessageRecord));
-    if (!StringUtil.a((String)localObject)) {
-      paramMessageRecord = EcshopUtils.a((String)localObject, EcshopUtils.a(EcshopUtils.b(paramMessageRecord)), false);
+    if (!StringUtil.isEmpty((String)localObject)) {
+      paramMessageRecord = EcshopUtils.a((String)localObject, EcshopUtils.d(EcshopUtils.b(paramMessageRecord)), false);
     } else {
       paramMessageRecord = "";
     }
@@ -97,28 +69,16 @@ public class ReportUtil
   
   public static String a(String paramString1, String paramString2)
   {
-    if (StringUtil.a(paramString1)) {
+    if (StringUtil.isEmpty(paramString1)) {
       return paramString1;
     }
     String str = paramString2;
-    if (StringUtil.a(paramString2)) {
+    if (StringUtil.isEmpty(paramString2)) {
       str = "tab";
     }
     paramString2 = new HashMap(1);
     paramString2.put("_source", str);
     return EcshopUtils.a(paramString1, paramString2, false);
-  }
-  
-  private Map<String, String> a(JSONObject paramJSONObject)
-  {
-    Iterator localIterator = paramJSONObject.keys();
-    HashMap localHashMap = new HashMap();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localHashMap.put(str, paramJSONObject.optString(str));
-    }
-    return localHashMap;
   }
   
   public static void a(int paramInt, String paramString, boolean paramBoolean)
@@ -198,7 +158,7 @@ public class ReportUtil
     }
     try
     {
-      ReportController.b(AppUtils.a(), "P_CliOper", "Vip_pay_mywallet", "", paramString2, paramString1, paramInt, 0, paramString4, paramString3, "android", "8.7.0");
+      ReportController.b(AppUtils.a(), "P_CliOper", "Vip_pay_mywallet", "", paramString2, paramString1, paramInt, 0, paramString4, paramString3, "android", "8.8.17");
       return;
     }
     catch (Throwable paramString1)
@@ -219,7 +179,7 @@ public class ReportUtil
   {
     try
     {
-      String str = a();
+      String str = b();
       if (QLog.isColorLevel()) {
         QLog.i("ReportUtil", 2, String.format("opName: %s__opType: %s__d2: %s__d1: %s__abTestInfo: %s__fromType: %s", new Object[] { paramString1, paramString2, paramString3, paramString4, str, paramString7 }));
       }
@@ -244,7 +204,7 @@ public class ReportUtil
     localHashMap.put("ext15", paramString8);
     localHashMap.put("pvid", paramString4);
     localHashMap.put("plat", "android");
-    localHashMap.put("version", "8.7.0");
+    localHashMap.put("version", "8.8.17");
     localHashMap.put("A8", AppUtils.a().getCurrentAccountUin());
     a(paramString2, localHashMap);
   }
@@ -270,40 +230,33 @@ public class ReportUtil
     }
   }
   
-  private void a(JSONObject paramJSONObject)
+  public static String b()
   {
-    if (paramJSONObject == null) {
-      return;
-    }
-    paramJSONObject = paramJSONObject.optJSONArray("item_list");
-    if (paramJSONObject != null)
+    Object localObject = ABTestUtil.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localObject = ((Map)localObject).values().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      if (paramJSONObject.length() <= 0) {
-        return;
-      }
-      int i = 0;
-      while (i < paramJSONObject.length())
+      ABTestInfo localABTestInfo = (ABTestInfo)((Iterator)localObject).next();
+      if (localABTestInfo != null)
       {
-        Map localMap = a(paramJSONObject.optJSONObject(i).optJSONObject("report_data"));
-        StringBuilder localStringBuilder;
-        if ((localMap != null) && (!localMap.isEmpty()))
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append(NetConnInfoCenter.getServerTimeMillis());
-          localStringBuilder.append("");
-          localMap.put("ext3", localStringBuilder.toString());
+        if (localStringBuilder.length() > 0) {
+          localStringBuilder.append("##");
         }
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("params: ");
-          localStringBuilder.append(localMap);
-          QLog.i("ReportUtil", 2, localStringBuilder.toString());
+        if (!TextUtils.isEmpty(localABTestInfo.c)) {
+          localStringBuilder.append(localABTestInfo.c);
         }
-        ((IReportApi)QRoute.api(IReportApi.class)).report("000004B5DU3Q3LD1", "qgg_floor_show", localMap);
-        i += 1;
+        localStringBuilder.append(">");
+        if (!TextUtils.isEmpty(localABTestInfo.e)) {
+          localStringBuilder.append(localABTestInfo.e);
+        }
+        localStringBuilder.append(">");
+        if (!TextUtils.isEmpty(localABTestInfo.a())) {
+          localStringBuilder.append(localABTestInfo.a());
+        }
       }
     }
+    return localStringBuilder.toString();
   }
   
   public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -315,7 +268,7 @@ public class ReportUtil
   {
     try
     {
-      String str = a();
+      String str = b();
       if (QLog.isColorLevel()) {
         QLog.i("ReportUtil", 2, String.format("opName: %s__opType: %s__d2: %s__d1: %s__abTestInfo: %s__fromType: %s", new Object[] { paramString1, paramString2, paramString3, paramString4, str, Integer.valueOf(paramInt) }));
       }
@@ -327,19 +280,10 @@ public class ReportUtil
       QLog.e("ReportUtil", 1, QLog.getStackTraceString(paramString1));
     }
   }
-  
-  public void a(ChatMessage paramChatMessage, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(Long.valueOf(paramChatMessage.uniseq)))
-    {
-      a(new JSONObject(paramString).optJSONObject("floorData"));
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(Long.valueOf(paramChatMessage.uniseq));
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.report.ReportUtil
  * JD-Core Version:    0.7.0.1
  */

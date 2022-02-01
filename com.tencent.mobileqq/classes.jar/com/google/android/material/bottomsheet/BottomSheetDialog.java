@@ -26,14 +26,19 @@ import com.google.android.material.R.style;
 public class BottomSheetDialog
   extends AppCompatDialog
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  @NonNull
-  private BottomSheetBehavior.BottomSheetCallback jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior$BottomSheetCallback = new BottomSheetDialog.4(this);
-  private BottomSheetBehavior<FrameLayout> jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior;
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
   boolean b = true;
-  private boolean c = true;
-  private boolean d;
+  private BottomSheetBehavior<FrameLayout> c;
+  private FrameLayout d;
+  private boolean e = true;
+  private boolean f;
+  @NonNull
+  private BottomSheetBehavior.BottomSheetCallback g = new BottomSheetDialog.4(this);
+  
+  public BottomSheetDialog(@NonNull Context paramContext)
+  {
+    this(paramContext, 0);
+  }
   
   public BottomSheetDialog(@NonNull Context paramContext, @StyleRes int paramInt)
   {
@@ -47,18 +52,18 @@ public class BottomSheetDialog
     if (paramInt == 0)
     {
       TypedValue localTypedValue = new TypedValue();
-      if (paramContext.getTheme().resolveAttribute(R.attr.e, localTypedValue, true)) {
+      if (paramContext.getTheme().resolveAttribute(R.attr.g, localTypedValue, true)) {
         return localTypedValue.resourceId;
       }
-      i = R.style.g;
+      i = R.style.h;
     }
     return i;
   }
   
   private View a(int paramInt, @Nullable View paramView, @Nullable ViewGroup.LayoutParams paramLayoutParams)
   {
-    a();
-    CoordinatorLayout localCoordinatorLayout = (CoordinatorLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(R.id.d);
+    e();
+    CoordinatorLayout localCoordinatorLayout = (CoordinatorLayout)this.d.findViewById(R.id.d);
     View localView = paramView;
     if (paramInt != 0)
     {
@@ -67,7 +72,7 @@ public class BottomSheetDialog
         localView = getLayoutInflater().inflate(paramInt, localCoordinatorLayout, false);
       }
     }
-    paramView = (FrameLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(R.id.e);
+    paramView = (FrameLayout)this.d.findViewById(R.id.e);
     paramView.removeAllViews();
     if (paramLayoutParams == null) {
       paramView.addView(localView);
@@ -77,61 +82,61 @@ public class BottomSheetDialog
     localCoordinatorLayout.findViewById(R.id.al).setOnClickListener(new BottomSheetDialog.1(this));
     ViewCompat.setAccessibilityDelegate(paramView, new BottomSheetDialog.2(this));
     paramView.setOnTouchListener(new BottomSheetDialog.3(this));
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    return this.d;
   }
   
-  private FrameLayout a()
+  private FrameLayout e()
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)View.inflate(getContext(), R.layout.b, null));
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior = BottomSheetBehavior.a((FrameLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(R.id.e));
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior.a(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior$BottomSheetCallback);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior.b(this.b);
+      this.d = ((FrameLayout)View.inflate(getContext(), R.layout.b, null));
+      this.c = BottomSheetBehavior.b((FrameLayout)this.d.findViewById(R.id.e));
+      this.c.b(this.g);
+      this.c.b(this.b);
     }
-    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    return this.d;
   }
   
   @NonNull
   public BottomSheetBehavior<FrameLayout> a()
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior == null) {
-      a();
-    }
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior.b(this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior$BottomSheetCallback);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  boolean b()
-  {
-    if (!this.d)
-    {
-      TypedArray localTypedArray = getContext().obtainStyledAttributes(new int[] { 16843611 });
-      this.c = localTypedArray.getBoolean(0, true);
-      localTypedArray.recycle();
-      this.d = true;
+    if (this.c == null) {
+      e();
     }
     return this.c;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
+  }
+  
+  boolean c()
+  {
+    if (!this.f)
+    {
+      TypedArray localTypedArray = getContext().obtainStyledAttributes(new int[] { 16843611 });
+      this.e = localTypedArray.getBoolean(0, true);
+      localTypedArray.recycle();
+      this.f = true;
+    }
+    return this.e;
   }
   
   public void cancel()
   {
     BottomSheetBehavior localBottomSheetBehavior = a();
-    if ((this.jdField_a_of_type_Boolean) && (localBottomSheetBehavior.b() != 5))
+    if ((this.a) && (localBottomSheetBehavior.d() != 5))
     {
       localBottomSheetBehavior.d(5);
       return;
     }
     super.cancel();
+  }
+  
+  void d()
+  {
+    this.c.c(this.g);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -152,9 +157,9 @@ public class BottomSheetDialog
   protected void onStart()
   {
     super.onStart();
-    BottomSheetBehavior localBottomSheetBehavior = this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior;
-    if ((localBottomSheetBehavior != null) && (localBottomSheetBehavior.b() == 5)) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior.d(4);
+    BottomSheetBehavior localBottomSheetBehavior = this.c;
+    if ((localBottomSheetBehavior != null) && (localBottomSheetBehavior.d() == 5)) {
+      this.c.d(4);
     }
   }
   
@@ -164,7 +169,7 @@ public class BottomSheetDialog
     if (this.b != paramBoolean)
     {
       this.b = paramBoolean;
-      BottomSheetBehavior localBottomSheetBehavior = this.jdField_a_of_type_ComGoogleAndroidMaterialBottomsheetBottomSheetBehavior;
+      BottomSheetBehavior localBottomSheetBehavior = this.c;
       if (localBottomSheetBehavior != null) {
         localBottomSheetBehavior.b(paramBoolean);
       }
@@ -177,8 +182,8 @@ public class BottomSheetDialog
     if ((paramBoolean) && (!this.b)) {
       this.b = true;
     }
-    this.c = paramBoolean;
-    this.d = true;
+    this.e = paramBoolean;
+    this.f = true;
   }
   
   public void setContentView(@LayoutRes int paramInt)
@@ -198,7 +203,7 @@ public class BottomSheetDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomsheet.BottomSheetDialog
  * JD-Core Version:    0.7.0.1
  */

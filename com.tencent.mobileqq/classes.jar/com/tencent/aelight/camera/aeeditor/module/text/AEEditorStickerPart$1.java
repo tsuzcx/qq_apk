@@ -1,7 +1,7 @@
 package com.tencent.aelight.camera.aeeditor.module.text;
 
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
 
 class AEEditorStickerPart$1
   implements AEEditorTextEditDialog.AEEditorTextEditListener
@@ -23,7 +23,7 @@ class AEEditorStickerPart$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerPart.1
  * JD-Core Version:    0.7.0.1
  */

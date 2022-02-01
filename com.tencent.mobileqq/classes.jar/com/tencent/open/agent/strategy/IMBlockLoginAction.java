@@ -14,7 +14,7 @@ import mqq.app.MobileQQ;
 public class IMBlockLoginAction
   extends BaseAction
 {
-  private BroadcastReceiver a;
+  private BroadcastReceiver b;
   
   public IMBlockLoginAction(String paramString)
   {
@@ -26,18 +26,18 @@ public class IMBlockLoginAction
     if (!OpenSdkIFrameProcessor.a()) {
       return;
     }
-    this.a = new IMBlockLoginAction.2(this, paramActivity);
-    paramActivity.registerReceiver(this.a, new IntentFilter("mqq.opensdk.intent.action.PUZZLEVERIFYCODE"));
+    this.b = new IMBlockLoginAction.2(this, paramActivity);
+    paramActivity.registerReceiver(this.b, new IntentFilter("mqq.opensdk.intent.action.PUZZLEVERIFYCODE"));
   }
   
   private void c(Activity paramActivity)
   {
-    SSOLog.a("IMBlockLoginAction", new Object[] { "unregisterReceiver mPuzzleVerifyCodeReceiver=", this.a });
-    BroadcastReceiver localBroadcastReceiver = this.a;
+    SSOLog.a("IMBlockLoginAction", new Object[] { "unregisterReceiver mPuzzleVerifyCodeReceiver=", this.b });
+    BroadcastReceiver localBroadcastReceiver = this.b;
     if (localBroadcastReceiver != null)
     {
       paramActivity.unregisterReceiver(localBroadcastReceiver);
-      this.a = null;
+      this.b = null;
     }
   }
   
@@ -54,14 +54,14 @@ public class IMBlockLoginAction
     AuthModelUtil.a(paramBundle, str1, str2, new IMBlockLoginAction.1(this, bool, (AbstractOpenSdkAppInterface)localObject, paramActivity));
   }
   
-  protected boolean a(Activity paramActivity, Bundle paramBundle)
+  protected boolean b(Activity paramActivity, Bundle paramBundle)
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.IMBlockLoginAction
  * JD-Core Version:    0.7.0.1
  */

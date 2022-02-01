@@ -41,17 +41,17 @@ public class HuayangPluginContainer$URLDrawableFactory
   
   protected Drawable getDefaultLoadingDrawable()
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130848074);
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130849738);
   }
   
   protected Drawable getDefualtFailedDrawable()
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130848074);
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130849738);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.HuayangPluginContainer.URLDrawableFactory
  * JD-Core Version:    0.7.0.1
  */

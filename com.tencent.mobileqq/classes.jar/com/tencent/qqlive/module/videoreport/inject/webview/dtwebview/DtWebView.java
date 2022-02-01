@@ -10,7 +10,7 @@ import java.util.Map;
 public class DtWebView
   extends WebView
 {
-  private JsBinderHelper mJsBinderHelper = new JsBinderHelper();
+  private JsBinderHelper mJsBinderHelper;
   
   public DtWebView(Context paramContext)
   {
@@ -27,9 +27,27 @@ public class DtWebView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public DtWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
+  {
+    super(paramContext, paramAttributeSet, paramInt1, paramInt2);
+  }
+  
+  public DtWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, boolean paramBoolean)
+  {
+    super(paramContext, paramAttributeSet, paramInt, paramBoolean);
+  }
+  
+  private JsBinderHelper getJsBinderHelper()
+  {
+    if (this.mJsBinderHelper == null) {
+      this.mJsBinderHelper = new JsBinderHelper();
+    }
+    return this.mJsBinderHelper;
+  }
+  
   private void onLoad()
   {
-    if (!this.mJsBinderHelper.allowInjectOnLoad()) {
+    if (!getJsBinderHelper().allowInjectOnLoad()) {
       return;
     }
     addJavascriptInterface(new BridgeInterface(this), "DTJsBridgeInterface");
@@ -37,7 +55,7 @@ public class DtWebView
   
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    if (this.mJsBinderHelper.interceptOnAddJavascriptInterface(paramString)) {
+    if (getJsBinderHelper().interceptOnAddJavascriptInterface(paramString)) {
       return;
     }
     super.addJavascriptInterface(paramObject, paramString);
@@ -69,7 +87,7 @@ public class DtWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtWebView
  * JD-Core Version:    0.7.0.1
  */

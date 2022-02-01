@@ -9,12 +9,12 @@ class PokeResHandler$2
   
   public void run()
   {
-    PokeItemHelper.a(this.this$0.a, null);
+    PokeItemHelper.a(this.this$0.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PokeResHandler.2
  * JD-Core Version:    0.7.0.1
  */

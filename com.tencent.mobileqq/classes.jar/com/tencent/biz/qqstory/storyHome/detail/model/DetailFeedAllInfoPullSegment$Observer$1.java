@@ -11,21 +11,21 @@ class DetailFeedAllInfoPullSegment$Observer$1
   
   public void run()
   {
-    if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).isJobCancelled())
+    if (DetailFeedAllInfoPullSegment.a(this.b.a).isJobCancelled())
     {
       SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer;
+      Object localObject = this.b;
       int i1 = 0;
       localObject = (Integer)((DetailFeedAllInfoPullSegment.Observer)localObject).getFunctionResult(0);
       if (localObject != null) {
-        DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+        DetailFeedAllInfoPullSegment.b(this.b.a).a.mViewTotalTime = ((Integer)localObject).intValue();
       }
       int j;
-      if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a()) {
+      if (DetailFeedAllInfoPullSegment.b(this.b.a).b()) {
         j = 2;
       } else {
         j = 1;
@@ -41,33 +41,33 @@ class DetailFeedAllInfoPullSegment$Observer$1
         if (k >= j) {
           break;
         }
-        localObject = (DetailFeedAllInfoPullSegment.LikeData)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.getFunctionResult(i);
+        localObject = (DetailFeedAllInfoPullSegment.LikeData)this.b.getFunctionResult(i);
         if (localObject != null)
         {
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_JavaUtilList, true, ((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Boolean);
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Boolean, ((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Int);
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a.mHadLike = ((DetailFeedAllInfoPullSegment.LikeData)localObject).b;
+          DetailFeedAllInfoPullSegment.b(this.b.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).b, true, ((DetailFeedAllInfoPullSegment.LikeData)localObject).a);
+          DetailFeedAllInfoPullSegment.b(this.b.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).a, ((DetailFeedAllInfoPullSegment.LikeData)localObject).c);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a.mHadLike = ((DetailFeedAllInfoPullSegment.LikeData)localObject).d;
         }
         k += 1;
         i += 1;
       }
       while (m < j)
       {
-        localObject = (DetailFeedAllInfoPullSegment.CommentData)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.getFunctionResult(n);
+        localObject = (DetailFeedAllInfoPullSegment.CommentData)this.b.getFunctionResult(n);
         if (localObject != null)
         {
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_JavaUtilList, true, ((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_Boolean);
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_Boolean, ((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_Int);
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_Boolean, ((DetailFeedAllInfoPullSegment.CommentData)localObject).b);
-          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_Boolean, ((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_JavaLangString);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).b, true, ((DetailFeedAllInfoPullSegment.CommentData)localObject).a);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).a, ((DetailFeedAllInfoPullSegment.CommentData)localObject).c);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).a, ((DetailFeedAllInfoPullSegment.CommentData)localObject).d);
+          DetailFeedAllInfoPullSegment.b(this.b.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).a, ((DetailFeedAllInfoPullSegment.CommentData)localObject).e);
         }
         m += 1;
         n += 1;
       }
-      DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a, DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a));
+      DetailFeedAllInfoPullSegment.a(this.b.a, DetailFeedAllInfoPullSegment.b(this.b.a));
       return;
     }
-    DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a, new ErrorMessage(-1, "get feed interact data error."));
+    DetailFeedAllInfoPullSegment.a(this.b.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 

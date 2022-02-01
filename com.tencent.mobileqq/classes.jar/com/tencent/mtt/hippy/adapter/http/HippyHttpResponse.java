@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class HippyHttpResponse
 {
-  public static final Integer UNKNOWN_STATUS = new Integer(-1);
+  public static final Integer UNKNOWN_STATUS = Integer.valueOf(-1);
   private InputStream mErrorStream;
   private InputStream mInputStream;
   private String mResponseMessage;
@@ -134,7 +134,7 @@ public class HippyHttpResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.http.HippyHttpResponse
  * JD-Core Version:    0.7.0.1
  */

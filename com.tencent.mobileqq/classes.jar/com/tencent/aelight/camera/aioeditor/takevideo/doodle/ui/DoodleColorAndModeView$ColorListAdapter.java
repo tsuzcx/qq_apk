@@ -17,11 +17,11 @@ class DoodleColorAndModeView$ColorListAdapter
   {
     if (paramInt == 0)
     {
-      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558510, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624063, paramViewGroup, false);
     }
     else if (paramInt == 1)
     {
-      paramViewGroup = new DoodleSelectModeView(this.a.getContext(), DoodleColorAndModeView.a(this.a));
+      paramViewGroup = new DoodleSelectModeView(this.a.getContext(), DoodleColorAndModeView.b(this.a));
       ((DoodleSelectModeView)paramViewGroup).setSelectModeListener(new DoodleColorAndModeView.ColorListAdapter.1(this));
     }
     else
@@ -36,26 +36,26 @@ class DoodleColorAndModeView$ColorListAdapter
     if (getItemViewType(paramInt) == 1) {
       return;
     }
-    int j = DoodleColorAndModeView.b(this.a);
+    int j = DoodleColorAndModeView.d(this.a);
     int i = 0;
     if (paramInt < j)
     {
-      DoodleColorAndModeView.ColorVH.a(paramColorVH).setBackgroundResource(2130837736);
-      paramInt = DoodleColorAndModeView.b(this.a) ^ true;
+      DoodleColorAndModeView.ColorVH.a(paramColorVH).setBackgroundResource(2130837820);
+      paramInt = DoodleColorAndModeView.e(this.a) ^ true;
     }
     else
     {
-      paramInt = ((Integer)DoodleColorAndModeView.a(this.a).get(paramInt - DoodleColorAndModeView.b(this.a))).intValue();
-      DoodleColorAndModeView.ColorVH.a(paramColorVH).mutate();
-      DoodleColorAndModeView.ColorVH.a(paramColorVH).setColor(paramInt);
-      DoodleColorAndModeView.ColorVH.a(paramColorVH).setBackgroundDrawable(DoodleColorAndModeView.ColorVH.a(paramColorVH));
-      if ((DoodleColorAndModeView.b(this.a)) && (paramInt == DoodleColorAndModeView.c(this.a))) {
+      paramInt = ((Integer)DoodleColorAndModeView.f(this.a).get(paramInt - DoodleColorAndModeView.d(this.a))).intValue();
+      DoodleColorAndModeView.ColorVH.b(paramColorVH).mutate();
+      DoodleColorAndModeView.ColorVH.b(paramColorVH).setColor(paramInt);
+      DoodleColorAndModeView.ColorVH.a(paramColorVH).setBackgroundDrawable(DoodleColorAndModeView.ColorVH.b(paramColorVH));
+      if ((DoodleColorAndModeView.e(this.a)) && (paramInt == DoodleColorAndModeView.g(this.a))) {
         paramInt = 1;
       } else {
         paramInt = 0;
       }
     }
-    ImageView localImageView = DoodleColorAndModeView.ColorVH.b(paramColorVH);
+    ImageView localImageView = DoodleColorAndModeView.ColorVH.c(paramColorVH);
     if (paramInt != 0) {
       paramInt = i;
     } else {
@@ -64,7 +64,7 @@ class DoodleColorAndModeView$ColorListAdapter
     localImageView.setVisibility(paramInt);
     paramColorVH = paramColorVH.itemView;
     float f;
-    if (DoodleColorAndModeView.c(this.a)) {
+    if (DoodleColorAndModeView.h(this.a)) {
       f = 0.4F;
     } else {
       f = 1.0F;
@@ -74,7 +74,7 @@ class DoodleColorAndModeView$ColorListAdapter
   
   public int getItemCount()
   {
-    return DoodleColorAndModeView.a(this.a).size() + DoodleColorAndModeView.b(this.a);
+    return DoodleColorAndModeView.f(this.a).size() + DoodleColorAndModeView.d(this.a);
   }
   
   public int getItemViewType(int paramInt)
@@ -87,7 +87,7 @@ class DoodleColorAndModeView$ColorListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleColorAndModeView.ColorListAdapter
  * JD-Core Version:    0.7.0.1
  */

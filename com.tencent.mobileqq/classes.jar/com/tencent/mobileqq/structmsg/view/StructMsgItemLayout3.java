@@ -22,16 +22,11 @@ import java.util.Iterator;
 public class StructMsgItemLayout3
   extends AbsStructMsgItem
 {
-  protected int b()
-  {
-    return 3;
-  }
-  
   @TargetApi(16)
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     Resources localResources = paramContext.getResources();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject1 = this.ax.iterator();
     int i = 0;
     while (((Iterator)localObject1).hasNext()) {
       if (((AbsStructMsgElement)((Iterator)localObject1).next() instanceof StructMsgItemButton)) {
@@ -47,7 +42,7 @@ public class StructMsgItemLayout3
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
       localObject1 = (LinearLayout)paramView;
-      m = this.jdField_a_of_type_JavaUtilArrayList.size();
+      m = this.ax.size();
       j = 0;
       for (i = 0;; i = k)
       {
@@ -56,16 +51,16 @@ public class StructMsgItemLayout3
         if (j >= m) {
           break;
         }
-        paramView = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-        paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        localObject2 = paramView.jdField_a_of_type_JavaLangString;
+        paramView = (AbsStructMsgElement)this.ax.get(j);
+        paramView.ar = this.ar;
+        localObject2 = paramView.b;
         if ((!"picture".equals(localObject2)) && (!"video".equals(localObject2)))
         {
           k = i;
           if ("button".equals(localObject2))
           {
             paramBundle.putInt("Layout3ButtonIndex", j);
-            paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+            paramView.ar = this.ar;
             paramView.a(paramContext, ((LinearLayout)localObject1).getChildAt(j * 2), paramBundle);
             k = i;
             if (i == 0) {
@@ -75,7 +70,7 @@ public class StructMsgItemLayout3
         }
         else
         {
-          paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          paramView.ar = this.ar;
           paramView = paramView.a(paramContext, ((LinearLayout)localObject1).getChildAt(j), paramBundle);
           k = i;
           if ((paramView instanceof PAHighLightImageView))
@@ -92,14 +87,14 @@ public class StructMsgItemLayout3
     {
       localObject1 = new LinearLayout(paramContext);
       localObject2 = new ArrayList();
-      int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int i1 = this.ax.size();
       k = 0;
       m = 0;
       for (j = 0; k < i1; j = n)
       {
-        paramView = (AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-        paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-        String str = paramView.jdField_a_of_type_JavaLangString;
+        paramView = (AbsStructMsgElement)this.ax.get(k);
+        paramView.ar = this.ar;
+        String str = paramView.b;
         if ((!"picture".equals(str)) && (!"video".equals(str)))
         {
           i = m;
@@ -107,14 +102,14 @@ public class StructMsgItemLayout3
           if ("button".equals(str))
           {
             paramBundle.putInt("Layout3ButtonIndex", k);
-            paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+            paramView.ar = this.ar;
             paramView = paramView.a(paramContext, null, paramBundle);
             if (k == 0) {
-              i = 2131377964;
+              i = 2131446451;
             } else if (k == 1) {
-              i = 2131377965;
+              i = 2131446452;
             } else if (k == 2) {
-              i = 2131377966;
+              i = 2131446453;
             } else {
               i = 0;
             }
@@ -135,14 +130,14 @@ public class StructMsgItemLayout3
           if (m >= 3) {
             break;
           }
-          paramView.jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          paramView.ar = this.ar;
           paramView = paramView.a(paramContext, null, paramBundle);
           if (k == 0) {
-            i = 2131377964;
+            i = 2131446451;
           } else if (k == 1) {
-            i = 2131377965;
+            i = 2131446452;
           } else if (k == 2) {
-            i = 2131377966;
+            i = 2131446453;
           } else {
             i = 0;
           }
@@ -160,7 +155,7 @@ public class StructMsgItemLayout3
         {
           paramContext = new StringBuilder();
           paramContext.append("generate 3 item failed,item is:");
-          paramContext.append(this.jdField_a_of_type_JavaUtilArrayList);
+          paramContext.append(this.ax);
           QLog.e("StructMsg", 2, paramContext.toString());
         }
         return null;
@@ -243,14 +238,19 @@ public class StructMsgItemLayout3
     return paramView;
   }
   
-  public String b()
+  protected int c()
+  {
+    return 3;
+  }
+  
+  public String e()
   {
     return "Layout3";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout3
  * JD-Core Version:    0.7.0.1
  */

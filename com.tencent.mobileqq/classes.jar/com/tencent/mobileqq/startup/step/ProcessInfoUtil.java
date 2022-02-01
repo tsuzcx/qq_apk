@@ -36,29 +36,21 @@ public class ProcessInfoUtil
     return -1;
   }
   
-  public static int a(String paramString)
+  public static void a(String paramString)
   {
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("pid");
-      localStringBuilder.append(paramString);
-      return localSharedPreferences.getInt(localStringBuilder.toString(), -1);
-    }
-    return -1;
+    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
   }
   
-  public static long a(String paramString)
+  public static long b(String paramString)
   {
     int i = a(BaseApplicationImpl.getContext(), paramString);
     if (i == -1) {
       return 0L;
     }
-    int j = a(paramString);
+    int j = c(paramString);
     if ((j != -1) && (i == j))
     {
-      long l = b(paramString);
+      long l = d(paramString);
       if (l != -1L)
       {
         l = System.currentTimeMillis() - l;
@@ -77,12 +69,29 @@ public class ProcessInfoUtil
     return 0L;
   }
   
-  public static void a(String paramString)
+  private static SharedPreferences b()
   {
-    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
+    }
+    return null;
   }
   
-  public static long b(String paramString)
+  public static int c(String paramString)
+  {
+    SharedPreferences localSharedPreferences = b();
+    if (localSharedPreferences != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pid");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.getInt(localStringBuilder.toString(), -1);
+    }
+    return -1;
+  }
+  
+  public static long d(String paramString)
   {
     SharedPreferences localSharedPreferences = b();
     if (localSharedPreferences != null)
@@ -94,19 +103,10 @@ public class ProcessInfoUtil
     }
     return -1L;
   }
-  
-  private static SharedPreferences b()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.ProcessInfoUtil
  * JD-Core Version:    0.7.0.1
  */

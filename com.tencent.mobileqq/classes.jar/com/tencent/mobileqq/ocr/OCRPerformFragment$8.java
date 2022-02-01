@@ -13,17 +13,17 @@ class OCRPerformFragment$8
   
   public void onDismiss()
   {
-    OCRPerformFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment, null);
-    if ((this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder.b != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder.b.size() > 1))
+    OCRPerformFragment.a(this.b, null);
+    if ((this.a.f != null) && (this.a.f.size() > 1))
     {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment.getResources().getDrawable(2130846355);
-      OCRPerformFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+      Drawable localDrawable = this.b.getResources().getDrawable(2130847828);
+      OCRPerformFragment.k(this.b).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.8
  * JD-Core Version:    0.7.0.1
  */

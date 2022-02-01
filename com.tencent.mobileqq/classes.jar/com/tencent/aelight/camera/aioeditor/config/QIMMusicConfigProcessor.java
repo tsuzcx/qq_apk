@@ -27,7 +27,7 @@ public class QIMMusicConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -64,10 +64,10 @@ public class QIMMusicConfigProcessor
   
   public int migrateOldVersion()
   {
-    if (!QIMMusicConfigManager.a()) {
+    if (!QIMMusicConfigManager.f()) {
       return 0;
     }
-    return SharedPreUtils.B(BaseApplicationImpl.getContext());
+    return SharedPreUtils.V(BaseApplicationImpl.getContext());
   }
   
   public void onReqFailed(int paramInt)
@@ -79,10 +79,10 @@ public class QIMMusicConfigProcessor
   
   public int onSend(int paramInt)
   {
-    if (!QIMMusicConfigManager.a())
+    if (!QIMMusicConfigManager.f())
     {
       QLog.i("QIMMusicConfigProcessor", 1, "config file not exist");
-      QConfigManager.a().a(305, 0);
+      QConfigManager.b().a(305, 0);
       return 0;
     }
     return super.onSend(paramInt);
@@ -95,7 +95,7 @@ public class QIMMusicConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.config.QIMMusicConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

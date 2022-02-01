@@ -9,12 +9,12 @@ class TroopAioKeywordTipManager$4$1
   
   public void run()
   {
-    TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$4.a.a, this.jdField_a_of_type_JavaUtilList);
+    TroopAioKeywordHelper.a(this.b.c.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1
  * JD-Core Version:    0.7.0.1
  */

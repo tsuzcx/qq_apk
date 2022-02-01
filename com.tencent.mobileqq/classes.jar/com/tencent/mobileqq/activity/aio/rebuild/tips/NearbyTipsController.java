@@ -14,7 +14,7 @@ public class NearbyTipsController
   
   public boolean a(int paramInt)
   {
-    if (((NearbyContext)this.a).k()) {
+    if (((NearbyContext)this.a).P()) {
       return false;
     }
     return super.a(paramInt);
@@ -22,7 +22,7 @@ public class NearbyTipsController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.NearbyTipsController
  * JD-Core Version:    0.7.0.1
  */

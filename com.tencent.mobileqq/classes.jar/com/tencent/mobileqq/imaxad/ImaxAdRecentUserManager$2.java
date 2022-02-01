@@ -15,9 +15,9 @@ class ImaxAdRecentUserManager$2
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+    Object localObject = this.a.getMessageFacade();
     if (localObject != null) {
-      localObject = ((QQMessageFacade)localObject).getLastMessage(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      localObject = ((QQMessageFacade)localObject).getLastMessage(this.b, this.c);
     } else {
       localObject = null;
     }
@@ -26,16 +26,16 @@ class ImaxAdRecentUserManager$2
       if ("false".equals(((Message)localObject).getExtInfoFromExtStr("recent_list_advertisement_message_first_click")))
       {
         ((Message)localObject).saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((Message)localObject).frienduin, ((Message)localObject).msgtype, ((Message)localObject).uniseq, "extStr", ((Message)localObject).extStr);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a != null) {
-          ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.c, "", PublicAccountAdUtil.a(), this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.b);
+        this.a.getMessageFacade().a(((Message)localObject).frienduin, ((Message)localObject).msgtype, ((Message)localObject).uniseq, "extStr", ((Message)localObject).extStr);
+        if (this.d.g != null) {
+          ReportController.a(this.a, "dc00898", "", this.d.g.a, "0X8008F5E", "0X8008F5E", 0, 0, this.d.g.c, "", PublicAccountAdUtil.c(), this.d.g.b);
         }
       }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a != null)
+      if (this.d.g != null)
       {
-        ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.c, "", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.b);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.l == 2) {
-          ImaxAdPresenter.a().b(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
+        ReportController.a(this.a, "dc00898", "", this.d.g.a, "0X8008F60", "0X8008F60", 0, 0, this.d.g.c, "", "", this.d.g.b);
+        if (this.d.g.H == 2) {
+          ImaxAdPresenter.a().b(this.d);
         }
       }
     }
@@ -43,7 +43,7 @@ class ImaxAdRecentUserManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager.2
  * JD-Core Version:    0.7.0.1
  */

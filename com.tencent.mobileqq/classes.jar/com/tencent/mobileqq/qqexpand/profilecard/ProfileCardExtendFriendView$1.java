@@ -15,7 +15,7 @@ class ProfileCardExtendFriendView$1
       this.a.removeOnLayoutChangeListener(this);
       return;
     }
-    if ((ProfileCardExtendFriendView.a(this.a)) && (ProfileCardExtendFriendView.b(this.a)) && (ProfileCardExtendFriendView.a(this.a) == 0) && (ProfileCardExtendFriendView.b(this.a) == 0))
+    if ((ProfileCardExtendFriendView.a(this.a)) && (ProfileCardExtendFriendView.b(this.a)) && (ProfileCardExtendFriendView.c(this.a) == 0) && (ProfileCardExtendFriendView.d(this.a) == 0))
     {
       paramView = this.a;
       paramInt1 = paramInt4 - paramInt2;
@@ -23,13 +23,13 @@ class ProfileCardExtendFriendView$1
       ProfileCardExtendFriendView.a(paramView, Math.max(paramInt1, paramInt2));
       ProfileCardExtendFriendView.b(this.a, Math.min(paramInt1, paramInt2));
       this.a.removeOnLayoutChangeListener(this);
-      ProfileCardExtendFriendView.a(this.a);
+      ProfileCardExtendFriendView.e(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.profilecard.ProfileCardExtendFriendView.1
  * JD-Core Version:    0.7.0.1
  */

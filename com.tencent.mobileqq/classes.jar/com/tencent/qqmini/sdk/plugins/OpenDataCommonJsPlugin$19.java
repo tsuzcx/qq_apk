@@ -12,20 +12,20 @@ class OpenDataCommonJsPlugin$19
   
   public void run()
   {
-    MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getMiniAppInfo();
+    MiniAppInfo localMiniAppInfo = this.a.getMiniAppInfo();
     String str2 = SDKMiniProgramLpReportDC04239.getAppType(localMiniAppInfo);
     String str1;
     if ("0".equals(str2)) {
-      str1 = PageAction.obtain(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext).getPageUrl();
+      str1 = PageAction.obtain(this.a).getPageUrl();
     } else {
       str1 = null;
     }
-    SDKMiniProgramLpReportDC04239.report(localMiniAppInfo, str2, str1, "user_click", "custom_button", this.jdField_a_of_type_JavaLangString, this.b, String.valueOf(this.jdField_a_of_type_Int), str1, this.c, null);
+    SDKMiniProgramLpReportDC04239.report(localMiniAppInfo, str2, str1, "user_click", "custom_button", this.b, this.c, String.valueOf(this.d), str1, this.e, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.19
  * JD-Core Version:    0.7.0.1
  */

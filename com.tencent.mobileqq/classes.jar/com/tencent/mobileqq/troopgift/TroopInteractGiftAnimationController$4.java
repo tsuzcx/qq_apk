@@ -24,23 +24,23 @@ class TroopInteractGiftAnimationController$4
       localStringBuilder.append(paramInt);
       QLog.d("TroopInteractGiftAnimationController", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
+    this.a.interactState = paramRspBody.uint32_play_state.get();
+    this.a.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
+    this.a.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
+    if ((this.a.interactState == 2) && (paramRspBody.msg_finish_info.has()))
     {
       paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
+      this.a.interactText = paramRspBody.bytes_text.get().toStringUtf8();
+      this.a.participateNum = paramRspBody.uint32_participate_num.get();
+      this.a.interactFirstUin = paramRspBody.uint64_first_uin.get();
+      this.a.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
+      this.a.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.4
  * JD-Core Version:    0.7.0.1
  */

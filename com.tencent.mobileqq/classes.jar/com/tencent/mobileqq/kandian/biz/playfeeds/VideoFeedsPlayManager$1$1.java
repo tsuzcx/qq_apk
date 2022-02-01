@@ -12,21 +12,21 @@ class VideoFeedsPlayManager$1$1
   
   public void run()
   {
-    if ((VideoFeedsPlayManager.a(this.a.a) != null) && (VideoFeedsPlayManager.a(this.a.a).a != null)) {
-      VideoFeedsPlayManager.a(this.a.a).a.i(VideoFeedsPlayManager.a(this.a.a));
+    if ((VideoFeedsPlayManager.b(this.a.a) != null) && (VideoFeedsPlayManager.b(this.a.a).o != null)) {
+      VideoFeedsPlayManager.b(this.a.a).o.i(VideoFeedsPlayManager.b(this.a.a));
     }
-    if (VideoFeedsPlayManager.a(this.a.a) != null)
+    if (VideoFeedsPlayManager.g(this.a.a) != null)
     {
-      Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
+      Iterator localIterator = VideoFeedsPlayManager.g(this.a.a).iterator();
       while (localIterator.hasNext()) {
-        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).d(VideoFeedsPlayManager.a(this.a.a));
+        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).d(VideoFeedsPlayManager.b(this.a.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager.1.1
  * JD-Core Version:    0.7.0.1
  */

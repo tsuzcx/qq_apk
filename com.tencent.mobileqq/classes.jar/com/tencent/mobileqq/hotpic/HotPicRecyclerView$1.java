@@ -25,30 +25,30 @@ class HotPicRecyclerView$1
       HotVideoBlurTaskManager.b();
     }
     if (paramInt == 2) {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(true);
+      this.a.g.a(true);
     } else {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(false);
+      this.a.g.a(false);
     }
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
+    if ((paramInt == 0) && (this.a.b == 2))
     {
-      ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
-      if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener.d();
+      ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.c);
+      if ((this.a.c[0] == 0) && (this.a.f != null)) {
+        this.a.f.d();
       }
     }
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.b = paramInt;
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     if (paramInt2 > 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(paramInt2);
+      this.a.g.a(paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicRecyclerView.1
  * JD-Core Version:    0.7.0.1
  */

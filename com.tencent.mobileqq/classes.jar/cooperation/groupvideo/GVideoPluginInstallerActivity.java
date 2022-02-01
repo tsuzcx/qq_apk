@@ -75,7 +75,7 @@ public class GVideoPluginInstallerActivity
   
   private void onPluginInstallError()
   {
-    this.mTextView.setText(getString(2131697811));
+    this.mTextView.setText(getString(2131895584));
     this.mMainThreadHandler.sendEmptyMessageDelayed(4, 1000L);
   }
   
@@ -90,13 +90,13 @@ public class GVideoPluginInstallerActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    super.setContentView(2131560710);
-    super.setTitle(getString(2131697813));
+    super.setContentView(2131626755);
+    super.setTitle(getString(2131895586));
     if ((this.leftView != null) && (getIntent() != null)) {
       this.leftView.setText(getIntent().getExtras().getString("leftViewText"));
     }
-    this.mTextView = ((TextView)findViewById(2131378475));
-    this.mTextView.setText(getString(2131697812));
+    this.mTextView = ((TextView)findViewById(2131447089));
+    this.mTextView.setText(getString(2131895585));
     this.mPluginManager = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
     return bool;
   }
@@ -150,7 +150,7 @@ public class GVideoPluginInstallerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.groupvideo.GVideoPluginInstallerActivity
  * JD-Core Version:    0.7.0.1
  */

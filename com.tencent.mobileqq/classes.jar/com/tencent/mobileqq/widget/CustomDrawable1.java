@@ -11,11 +11,11 @@ import android.graphics.drawable.BitmapDrawable;
 public class CustomDrawable1
   extends AnimationDrawable
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private int a;
   private int b;
   private int c;
   private int d;
+  private Rect e;
   
   private float a(int paramInt1, int paramInt2)
   {
@@ -28,11 +28,24 @@ public class CustomDrawable1
     return 0.3F;
   }
   
-  private Rect a(int paramInt1, int paramInt2)
+  private void a(int paramInt, Canvas paramCanvas, Paint paramPaint)
+  {
+    paramPaint.setColor(16777215);
+    paramPaint.setAlpha((int)(a(1, paramInt) * 255.0F));
+    paramCanvas.drawRect(b(1, paramInt), paramPaint);
+    paramPaint.setAlpha((int)(a(2, paramInt) * 255.0F));
+    paramCanvas.drawRect(b(2, paramInt), paramPaint);
+    paramPaint.setAlpha((int)(a(3, paramInt) * 255.0F));
+    paramCanvas.drawRect(b(3, paramInt), paramPaint);
+    paramPaint.setAlpha((int)(a(4, paramInt) * 255.0F));
+    paramCanvas.drawRect(b(4, paramInt), paramPaint);
+  }
+  
+  private Rect b(int paramInt1, int paramInt2)
   {
     int i;
     if (paramInt1 == paramInt2) {
-      i = this.jdField_a_of_type_Int;
+      i = this.a;
     } else {
       i = this.c;
     }
@@ -44,35 +57,22 @@ public class CustomDrawable1
     }
     int k = 0;
     if (paramInt1 > 1) {
-      this.jdField_a_of_type_AndroidGraphicsRect.left = (a(paramInt1 - 1, paramInt2).right + 5);
+      this.e.left = (b(paramInt1 - 1, paramInt2).right + 5);
     } else {
-      this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
+      this.e.left = 0;
     }
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    Rect localRect = this.e;
     if (paramInt1 == paramInt2) {
       paramInt1 = k;
     } else {
       paramInt1 = (this.b - this.d) / 2;
     }
     localRect.top = paramInt1;
-    localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect = this.e;
     localRect.right = (localRect.left + i);
-    localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect = this.e;
     localRect.bottom = (localRect.top + j);
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  private void a(int paramInt, Canvas paramCanvas, Paint paramPaint)
-  {
-    paramPaint.setColor(16777215);
-    paramPaint.setAlpha((int)(a(1, paramInt) * 255.0F));
-    paramCanvas.drawRect(a(1, paramInt), paramPaint);
-    paramPaint.setAlpha((int)(a(2, paramInt) * 255.0F));
-    paramCanvas.drawRect(a(2, paramInt), paramPaint);
-    paramPaint.setAlpha((int)(a(3, paramInt) * 255.0F));
-    paramCanvas.drawRect(a(3, paramInt), paramPaint);
-    paramPaint.setAlpha((int)(a(4, paramInt) * 255.0F));
-    paramCanvas.drawRect(a(4, paramInt), paramPaint);
+    return this.e;
   }
   
   public void draw(Canvas paramCanvas)
@@ -101,12 +101,12 @@ public class CustomDrawable1
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int + this.c * 3 + 15;
+    return this.a + this.c * 3 + 15;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomDrawable1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ class QFileMsgForwardManager$1
     }
     String str1 = this.a.a();
     String str2 = this.a.b();
-    int i = this.a.a();
-    Object localObject2 = this.a.a();
+    int i = this.a.c();
+    Object localObject2 = this.a.d();
     if ((localObject2 != null) && (!((HashMap)localObject2).isEmpty()))
     {
       QFileMsgForwardManager.QFileUploadRequest localQFileUploadRequest = new QFileMsgForwardManager.QFileUploadRequest(this.this$0, str1, this.a, (HashMap)localObject2);
@@ -60,7 +60,7 @@ class QFileMsgForwardManager$1
             {
               localQFileUploadRequest.a(localFileUploadTask);
               if (!bool2) {
-                localFileUploadTask.a.a("", true);
+                localFileUploadTask.c.a("", true);
               }
               localObject2 = ((MessageRecord)localObject2).getExtInfoFromExtStr("_m_ForwardSize");
               l2 = l1;
@@ -89,7 +89,7 @@ class QFileMsgForwardManager$1
           l1 = l2;
         }
       }
-      if (localQFileUploadRequest.a() > 0)
+      if (localQFileUploadRequest.d() > 0)
       {
         if (QLog.isColorLevel())
         {
@@ -101,7 +101,7 @@ class QFileMsgForwardManager$1
           ((StringBuilder)localObject1).append("] toType[");
           ((StringBuilder)localObject1).append(i);
           ((StringBuilder)localObject1).append("] uploadCount[");
-          ((StringBuilder)localObject1).append(localQFileUploadRequest.a());
+          ((StringBuilder)localObject1).append(localQFileUploadRequest.d());
           ((StringBuilder)localObject1).append("]");
           QLog.i("FileMultiMsgManager<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
         }
@@ -110,7 +110,7 @@ class QFileMsgForwardManager$1
         Double.isNaN(d);
         localObject1 = ((DecimalFormat)localObject1).format(d / 1024.0D / 1024.0D);
         ReportController.b(QFileMsgForwardManager.a(this.this$0), "dc00898", "", "", "0X8009ABE", "0X8009ABE", 0, 0, "", "", (String)localObject1, "");
-        QFileMsgForwardManager.a(this.this$0).put(str1, localQFileUploadRequest);
+        QFileMsgForwardManager.b(this.this$0).put(str1, localQFileUploadRequest);
         localQFileUploadRequest.a();
         return;
       }
@@ -122,7 +122,7 @@ class QFileMsgForwardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.1
  * JD-Core Version:    0.7.0.1
  */

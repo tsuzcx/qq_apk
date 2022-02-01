@@ -8,19 +8,15 @@ public final class BeaconConfig$Builder
   private boolean b = true;
   private boolean c = true;
   private boolean d = true;
-  private boolean e = true;
-  private boolean f = true;
-  private boolean g = true;
-  private boolean h = true;
-  private ScheduledExecutorService i;
-  private com.tencent.beacon.base.net.adapter.a j;
-  private long k;
-  private long l;
-  private String m;
-  private String n;
-  private boolean o = false;
-  private boolean p = true;
-  private boolean q = true;
+  private ScheduledExecutorService e;
+  private com.tencent.beacon.base.net.adapter.a f;
+  private long g;
+  private long h;
+  private String i;
+  private String j;
+  private boolean k = false;
+  private boolean l = true;
+  private boolean m = true;
   
   public Builder auditEnable(boolean paramBoolean)
   {
@@ -36,35 +32,11 @@ public final class BeaconConfig$Builder
   
   public BeaconConfig build()
   {
-    ScheduledExecutorService localScheduledExecutorService = this.i;
+    ScheduledExecutorService localScheduledExecutorService = this.e;
     if (localScheduledExecutorService != null) {
       com.tencent.beacon.a.b.a.a(localScheduledExecutorService);
     }
-    return new BeaconConfig(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.k, this.l, this.j, this.m, this.n, this.o, this.p, this.q, null);
-  }
-  
-  public Builder collectAndroidIdEnable(boolean paramBoolean)
-  {
-    this.g = paramBoolean;
-    return this;
-  }
-  
-  public Builder collectIMEIEnable(boolean paramBoolean)
-  {
-    this.f = paramBoolean;
-    return this;
-  }
-  
-  public Builder collectMACEnable(boolean paramBoolean)
-  {
-    this.e = paramBoolean;
-    return this;
-  }
-  
-  public Builder collectProcessInfoEnable(boolean paramBoolean)
-  {
-    this.h = paramBoolean;
-    return this;
+    return new BeaconConfig(this.a, this.b, this.c, this.d, this.g, this.h, this.f, this.i, this.j, this.k, this.l, this.m, null);
   }
   
   public Builder eventReportEnable(boolean paramBoolean)
@@ -81,55 +53,55 @@ public final class BeaconConfig$Builder
   
   public Builder pagePathEnable(boolean paramBoolean)
   {
-    this.q = paramBoolean;
+    this.m = paramBoolean;
     return this;
   }
   
   public Builder qmspEnable(boolean paramBoolean)
   {
-    this.p = paramBoolean;
+    this.l = paramBoolean;
     return this;
   }
   
   public Builder setConfigHost(String paramString)
   {
-    this.n = paramString;
+    this.j = paramString;
     return this;
   }
   
   public Builder setExecutorService(ScheduledExecutorService paramScheduledExecutorService)
   {
-    this.i = paramScheduledExecutorService;
+    this.e = paramScheduledExecutorService;
     return this;
   }
   
   public Builder setForceEnableAtta(boolean paramBoolean)
   {
-    this.o = paramBoolean;
+    this.k = paramBoolean;
     return this;
   }
   
   public Builder setHttpAdapter(com.tencent.beacon.base.net.adapter.a parama)
   {
-    this.j = parama;
+    this.f = parama;
     return this;
   }
   
   public Builder setNormalPollingTime(long paramLong)
   {
-    this.l = paramLong;
+    this.h = paramLong;
     return this;
   }
   
   public Builder setRealtimePollingTime(long paramLong)
   {
-    this.k = paramLong;
+    this.g = paramLong;
     return this;
   }
   
   public Builder setUploadHost(String paramString)
   {
-    this.m = paramString;
+    this.i = paramString;
     return this;
   }
 }

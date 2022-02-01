@@ -12,14 +12,14 @@ class MsgTabStoryNodeListManager$10
   public void onDismiss()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a.b);
     localStringBuilder.append("");
-    StoryReportor.a("msg_tab", "clk_press", 0, 0, new String[] { localStringBuilder.toString(), "8", "", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString });
+    StoryReportor.a("msg_tab", "clk_press", 0, 0, new String[] { localStringBuilder.toString(), "8", "", this.a.d });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.vpng.glrenderer;
 
-import android.opengl.GLES20;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
 class VPNGRenderer$2
-  implements Runnable
+  implements MediaPlayer.OnErrorListener
 {
   VPNGRenderer$2(VPNGRenderer paramVPNGRenderer) {}
   
-  public void run()
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    GLES20.glDeleteTextures(VPNGRenderer.a(this.this$0).length, VPNGRenderer.a(this.this$0), 0);
-    GLES20.glDeleteProgram(VPNGRenderer.a(this.this$0));
-    GLES20.glFlush();
+    if (VPNGRenderer.d(this.a) != null) {
+      VPNGRenderer.d(this.a).onCall(2, "");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.glrenderer.VPNGRenderer.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class ChatHistoryTroopMemberFragment$49
   public void onClick(View paramView)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString(VasH5PayUtil.e, HardCodeUtil.a(2131701812));
+    localBundle.putString(VasH5PayUtil.e, HardCodeUtil.a(2131899830));
     localBundle.putString(VasH5PayUtil.f, "CJCLUBT");
     localBundle.putString(VasH5PayUtil.d, "1450000516");
     localBundle.putInt(VasH5PayUtil.b, 3);
@@ -26,14 +26,14 @@ class ChatHistoryTroopMemberFragment$49
     localStringBuilder.append("mvip.pt.vipsite.tqtips_chengyuan");
     localBundle.putString(str, localStringBuilder.toString());
     localBundle.putString(VasH5PayUtil.g, "svip");
-    localBundle.putString(VasH5PayUtil.a, this.a.b.getCurrentAccountUin());
+    localBundle.putString(VasH5PayUtil.a, this.a.bc.getCurrentAccountUin());
     VasH5PayUtil.a(this.a.getBaseActivity(), localBundle);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.49
  * JD-Core Version:    0.7.0.1
  */

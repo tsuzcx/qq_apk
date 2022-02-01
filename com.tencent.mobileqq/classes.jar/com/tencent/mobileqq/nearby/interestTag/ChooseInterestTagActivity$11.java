@@ -33,7 +33,7 @@ class ChooseInterestTagActivity$11
           Double.isNaN(d1);
           f1 = (float)(d1 + 0.5D);
           localPaint.setTextSize(f1);
-          localPaint.setColor(this.a.getResources().getColor(2131167116));
+          localPaint.setColor(this.a.getResources().getColor(2131168094));
           localPaint.setFakeBoldText(false);
           localPaint.setAntiAlias(true);
           Object localObject2 = localInterestTagInfo.tagName;
@@ -82,7 +82,7 @@ class ChooseInterestTagActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -102,10 +102,10 @@ public class RelatedEmoSearchEmoticonInfo
     paramParcelable = (BaseSessionInfo)paramParcelable;
     sLastTime = l;
     boolean bool = paramContext instanceof QBaseActivity;
-    if ((bool) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramParcelable.jdField_a_of_type_Int, paramParcelable.jdField_a_of_type_JavaLangString)))
+    if ((bool) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramParcelable.a, paramParcelable.b)))
     {
       paramAppRuntime = (QBaseActivity)paramContext;
-      QQToast.a(localBaseQQAppInterface.getApp(), HardCodeUtil.a(2131701523), 0).b(paramAppRuntime.getTitleBarHeight());
+      QQToast.makeText(localBaseQQAppInterface.getApp(), HardCodeUtil.a(2131899546), 0).show(paramAppRuntime.getTitleBarHeight());
       return;
     }
     if (!bool) {
@@ -131,19 +131,19 @@ public class RelatedEmoSearchEmoticonInfo
     {
       paramAppRuntime = null;
     }
-    if ((paramAppRuntime == null) && (paramParcelable.jdField_a_of_type_Int != 1008))
+    if ((paramAppRuntime == null) && (paramParcelable.a != 1008))
     {
-      QQToast.a(paramContext, 2131698963, 0).a();
+      QQToast.makeText(paramContext, 2131896955, 0).show();
       return;
     }
     paramEditText = new Intent();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramAppRuntime);
     paramEditText.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
-    paramEditText.putExtra("uin", paramParcelable.jdField_a_of_type_JavaLangString);
-    paramEditText.putExtra("uintype", paramParcelable.jdField_a_of_type_Int);
-    paramEditText.putExtra("troop_uin", paramParcelable.b);
-    paramEditText.putExtra("key_confess_topicid", paramParcelable.e);
+    paramEditText.putExtra("uin", paramParcelable.b);
+    paramEditText.putExtra("uintype", paramParcelable.a);
+    paramEditText.putExtra("troop_uin", paramParcelable.c);
+    paramEditText.putExtra("key_confess_topicid", paramParcelable.v);
     paramEditText.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
     paramEditText.putExtra("send_in_background", true);
     paramEditText.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
@@ -153,7 +153,7 @@ public class RelatedEmoSearchEmoticonInfo
     paramEditText.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1054);
     ThreadManager.post(((IEmosmService)QRoute.api(IEmosmService.class)).createSendPhotoTask((QBaseActivity)paramContext, paramEditText, null), 8, null, false);
     paramAppRuntime = this.mCurFriendUin;
-    int i = EmoticonPanelUtils.a(this.mCurType);
+    int i = EmoticonPanelUtils.e(this.mCurType);
     paramContext = new StringBuilder();
     paramContext.append(this.mReportPosition + 1);
     paramContext.append("");
@@ -193,7 +193,7 @@ public class RelatedEmoSearchEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSearchEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

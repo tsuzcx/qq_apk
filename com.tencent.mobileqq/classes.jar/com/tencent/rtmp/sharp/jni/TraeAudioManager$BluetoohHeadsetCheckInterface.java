@@ -191,25 +191,25 @@ abstract class TraeAudioManager$BluetoohHeadsetCheckInterface
         paramContext = new StringBuilder();
         paramContext.append("BT ACTION_STATE_CHANGED|   EXTRA_STATE ");
         paramContext.append(getBTActionStateChangedExtraString(i));
-        QLog.w("TRAE", 2, paramContext.toString());
+        QLog.w("TraeAudioManager", 2, paramContext.toString());
       }
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE ");
         paramContext.append(getBTActionStateChangedExtraString(j));
-        QLog.w("TRAE", 2, paramContext.toString());
+        QLog.w("TraeAudioManager", 2, paramContext.toString());
       }
       if (i == 10)
       {
         if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "    BT off");
+          QLog.w("TraeAudioManager", 2, "    BT off");
         }
         paramDeviceConfigManager.setVisible("DEVICE_BLUETOOTHHEADSET", false);
         return;
       }
       if ((i == 12) && (QLog.isColorLevel())) {
-        QLog.w("TRAE", 2, "BT OFF-->ON,Visiable it...");
+        QLog.w("TraeAudioManager", 2, "BT OFF-->ON,Visiable it...");
       }
     }
     else
@@ -228,7 +228,7 @@ abstract class TraeAudioManager$BluetoohHeadsetCheckInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.BluetoohHeadsetCheckInterface
  * JD-Core Version:    0.7.0.1
  */

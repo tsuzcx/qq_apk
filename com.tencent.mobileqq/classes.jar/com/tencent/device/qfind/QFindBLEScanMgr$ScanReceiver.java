@@ -18,21 +18,21 @@ class QFindBLEScanMgr$ScanReceiver
       paramContext.append(paramIntent.getAction());
       QLog.i("QFindBLE", 2, paramContext.toString());
     }
-    if (this.a.a != null)
+    if (this.a.w != null)
     {
-      if (System.currentTimeMillis() - QFindBLEScanMgr.a(this.a) < this.a.h) {
+      if (System.currentTimeMillis() - QFindBLEScanMgr.a(this.a) < this.a.m) {
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("QFindBLE", 2, "QFindBLEScanMgr startScan");
       }
-      this.a.a.post(new QFindBLEScanMgr.ScanReceiver.1(this));
+      this.a.w.post(new QFindBLEScanMgr.ScanReceiver.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr.ScanReceiver
  * JD-Core Version:    0.7.0.1
  */

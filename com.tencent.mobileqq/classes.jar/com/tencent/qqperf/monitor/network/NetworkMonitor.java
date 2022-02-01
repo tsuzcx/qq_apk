@@ -21,8 +21,8 @@ import mqq.app.MobileQQ;
 public class NetworkMonitor
   implements NetworkMonitorCallback
 {
-  private static NetworkMonitor jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor;
-  private ConcurrentLinkedQueue<NetworkMonitor.DownloadURLBean> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+  private static NetworkMonitor a;
+  private ConcurrentLinkedQueue<NetworkMonitor.DownloadURLBean> b;
   
   public NetworkMonitor()
   {
@@ -74,16 +74,16 @@ public class NetworkMonitor
   
   public static NetworkMonitor a()
   {
-    NetworkMonitor localNetworkMonitor = jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor;
+    NetworkMonitor localNetworkMonitor = a;
     if (localNetworkMonitor != null) {
       return localNetworkMonitor;
     }
     try
     {
-      if (jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor == null) {
-        jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor = new NetworkMonitor();
+      if (a == null) {
+        a = new NetworkMonitor();
       }
-      localNetworkMonitor = jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor;
+      localNetworkMonitor = a;
       return localNetworkMonitor;
     }
     finally {}
@@ -150,11 +150,6 @@ public class NetworkMonitor
     }
   }
   
-  private static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith("patch")) || (paramString.contains("QQpeizhiwenjian")) || (paramString.contains("/qun/configs/")) || (paramString.contains("qzonestyle")) || (paramString.contains("gxh.vip.qq.com")) || (paramString.contains("/tmp_video/quic")) || (paramString.contains("groupgift")) || (paramString.contains("vac.gtimg.cn")) || (paramString.contains("sqimg.qq.com")) || (paramString.contains("imgcache.qq.com")) || (paramString.contains("imgcache.gtimg.cn")) || (paramString.contains("i.gtimg.cn")) || (paramString.contains("cmshow.gtimg.cn")) || (paramString.contains("myapp/qq_desk")) || (paramString.contains("myapp/qqteam")) || (paramString.contains("myapp/qqt")) || (paramString.contains("plugin")) || (paramString.contains("Plugin")) || (paramString.contains("cgi-bin/httpconn")) || (paramString.contains("mobileqq/FT")) || (paramString.contains("ftn_handler")) || (paramString.contains("comp_bsdiff")) || (paramString.contains("qqpitu/jsons")) || (paramString.contains("hudongzip-1251316161.file.myqcloud.com")) || (paramString.contains("sngapp/app/update")) || (paramString.contains("qqpitu/materials/")) || (paramString.contains("hotfiles")) || (paramString.contains("2Q2W")) || (paramString.contains("soft.tbs.imtt")) || (paramString.contains("AndroidQQPlugin")));
-  }
-  
   private void b(MonitorHttpInfo paramMonitorHttpInfo, String paramString1, String paramString2)
   {
     Object localObject1 = new StringBuilder();
@@ -164,10 +159,10 @@ public class NetworkMonitor
     ((StringBuilder)localObject1).append("/");
     ((StringBuilder)localObject1).append(paramMonitorHttpInfo.getUrl());
     localObject1 = ((StringBuilder)localObject1).toString();
-    if (a((String)localObject1)) {
+    if (b((String)localObject1)) {
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+    Object localObject2 = this.b;
     if (localObject2 != null)
     {
       localObject2 = ((ConcurrentLinkedQueue)localObject2).toArray();
@@ -211,6 +206,11 @@ public class NetworkMonitor
     a(MobileQQ.context, paramMonitorHttpInfo, false, paramString1, paramString2);
   }
   
+  private static boolean b(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith("patch")) || (paramString.contains("QQpeizhiwenjian")) || (paramString.contains("/qun/configs/")) || (paramString.contains("qzonestyle")) || (paramString.contains("gxh.vip.qq.com")) || (paramString.contains("/tmp_video/quic")) || (paramString.contains("groupgift")) || (paramString.contains("vac.gtimg.cn")) || (paramString.contains("sqimg.qq.com")) || (paramString.contains("imgcache.qq.com")) || (paramString.contains("imgcache.gtimg.cn")) || (paramString.contains("i.gtimg.cn")) || (paramString.contains("cmshow.gtimg.cn")) || (paramString.contains("myapp/qq_desk")) || (paramString.contains("myapp/qqteam")) || (paramString.contains("myapp/qqt")) || (paramString.contains("plugin")) || (paramString.contains("Plugin")) || (paramString.contains("cgi-bin/httpconn")) || (paramString.contains("mobileqq/FT")) || (paramString.contains("ftn_handler")) || (paramString.contains("comp_bsdiff")) || (paramString.contains("qqpitu/jsons")) || (paramString.contains("hudongzip-1251316161.file.myqcloud.com")) || (paramString.contains("sngapp/app/update")) || (paramString.contains("qqpitu/materials/")) || (paramString.contains("hotfiles")) || (paramString.contains("2Q2W")) || (paramString.contains("soft.tbs.imtt")) || (paramString.contains("AndroidQQPlugin")));
+  }
+  
   public void a(MonitorHttpInfo paramMonitorHttpInfo, String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
@@ -223,21 +223,21 @@ public class NetworkMonitor
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+    if (this.b == null) {
+      this.b = new ConcurrentLinkedQueue();
     }
     NetworkMonitor.DownloadURLBean localDownloadURLBean = new NetworkMonitor.DownloadURLBean(this, paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localDownloadURLBean);
+    this.b.add(localDownloadURLBean);
     if (QLog.isColorLevel()) {
       QLog.d("NetworkMonitor", 2, new Object[] { "doRealAddDownloadURL=", paramString });
     }
-    while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())
+    while (!this.b.isEmpty())
     {
-      paramString = (NetworkMonitor.DownloadURLBean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek();
-      if ((paramString == null) || (paramString.a - localDownloadURLBean.a <= 600000L)) {
+      paramString = (NetworkMonitor.DownloadURLBean)this.b.peek();
+      if ((paramString == null) || (paramString.b - localDownloadURLBean.b <= 600000L)) {
         break;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      this.b.poll();
     }
   }
   
@@ -307,7 +307,7 @@ public class NetworkMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.network.NetworkMonitor
  * JD-Core Version:    0.7.0.1
  */

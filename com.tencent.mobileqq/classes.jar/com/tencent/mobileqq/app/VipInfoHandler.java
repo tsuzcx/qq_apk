@@ -70,9 +70,7 @@ import org.json.JSONException;
 public class VipInfoHandler
   extends BusinessHandler
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static String a = "k_uin";
-  private static HashMap<String, PayRuleCfg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   public static String b = "k_type";
   public static String c = "k_skey";
   public static String d = "k_from";
@@ -89,18 +87,15 @@ public class VipInfoHandler
   public static String o = "login_info";
   public static String p = "state";
   private static String q = "VipInfoHandler";
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private static final Object t = new Object();
+  private static HashMap<String, PayRuleCfg> u = new HashMap();
   private String r = null;
+  private QQAppInterface s;
   
   VipInfoHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static int a(PayRuleCfg paramPayRuleCfg)
-  {
-    return (paramPayRuleCfg.clubType - 1) * 3 + paramPayRuleCfg.userType;
+    this.s = paramQQAppInterface;
   }
   
   private int a(VipUserInfo paramVipUserInfo, int paramInt1, int paramInt2)
@@ -127,7 +122,7 @@ public class VipInfoHandler
     if (paramQQAppInterface == null) {
       paramQQAppInterface = null;
     } else {
-      paramQQAppInterface = paramQQAppInterface.a(paramString);
+      paramQQAppInterface = paramQQAppInterface.b(paramString);
     }
     if (paramQQAppInterface != null)
     {
@@ -170,70 +165,31 @@ public class VipInfoHandler
     for (;;)
     {
       PayRuleCfg localPayRuleCfg;
-      synchronized (jdField_a_of_type_JavaUtilHashMap)
+      synchronized (u)
       {
-        localPayRuleCfg = (PayRuleCfg)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        localPayRuleCfg = (PayRuleCfg)u.get(paramString);
         if (localPayRuleCfg != null) {
           return localPayRuleCfg;
         }
-        localPayRuleCfg = a(paramString, "payRule.cfg");
+        localPayRuleCfg = b(paramString, "payRule.cfg");
         ??? = localPayRuleCfg;
         if (localPayRuleCfg == null)
         {
           ??? = new PayRuleCfg();
           ((PayRuleCfg)???).enable = 0;
         }
-        synchronized (jdField_a_of_type_JavaUtilHashMap)
+        synchronized (u)
         {
-          localPayRuleCfg = (PayRuleCfg)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+          localPayRuleCfg = (PayRuleCfg)u.get(paramString);
           if (localPayRuleCfg == null)
           {
-            jdField_a_of_type_JavaUtilHashMap.put(paramString, ???);
+            u.put(paramString, ???);
             return ???;
           }
         }
       }
       ??? = localPayRuleCfg;
     }
-  }
-  
-  private static PayRuleCfg a(String arg0, String paramString2)
-  {
-    File localFile = BaseApplicationImpl.getContext().getFilesDir();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(???);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString2);
-    paramString2 = new File(localFile, localStringBuilder.toString());
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      paramString2 = FileUtils.fileToBytes(paramString2);
-      if (paramString2 != null) {
-        return (PayRuleCfg)JceUtils.decodeWup(PayRuleCfg.class, paramString2);
-      }
-      return null;
-    }
-  }
-  
-  private LoginInfo a()
-  {
-    try
-    {
-      String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      String str2 = ((TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(str1);
-      LoginInfo localLoginInfo = new LoginInfo();
-      localLoginInfo.lUin = Long.parseLong(str1);
-      localLoginInfo.iKeyType = 1;
-      localLoginInfo.sSKey = str2;
-      localLoginInfo.iOpplat = 2;
-      localLoginInfo.sClientVer = DeviceInfoUtil.c();
-      return localLoginInfo;
-    }
-    catch (Exception localException)
-    {
-      QLog.e(q, 1, localException, new Object[0]);
-    }
-    return null;
   }
   
   public static String a(PayRuleCfg paramPayRuleCfg)
@@ -262,15 +218,15 @@ public class VipInfoHandler
     localStringBuilder.append("_");
     localStringBuilder.append(l1);
     localTianShuReportData.b = localStringBuilder.toString();
-    localTianShuReportData.jdField_a_of_type_Int = 1;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.47";
-    localTianShuReportData.jdField_f_of_type_JavaLangString = "tianshu.47";
-    localTianShuReportData.g = paramString;
-    localTianShuReportData.h = "";
-    localTianShuReportData.jdField_a_of_type_Long = l1;
-    localTianShuReportData.d = paramInt;
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.jdField_f_of_type_Int = 1;
+    localTianShuReportData.c = 1;
+    localTianShuReportData.f = "tianshu.47";
+    localTianShuReportData.g = "tianshu.47";
+    localTianShuReportData.h = paramString;
+    localTianShuReportData.i = "";
+    localTianShuReportData.o = l1;
+    localTianShuReportData.p = paramInt;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.r = 1;
     TianShuManager.getInstance().report(localTianShuReportData);
   }
   
@@ -281,11 +237,11 @@ public class VipInfoHandler
     if (localVipUserInfo == null) {
       return;
     }
-    paramPrivExtV2Rsp = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    Object localObject1 = paramPrivExtV2Rsp.d(paramString);
+    paramPrivExtV2Rsp = (FriendsManager)this.s.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = paramPrivExtV2Rsp.e(paramString);
     ((Friends)localObject1).qqVipInfo = a(localVipUserInfo, 1, ((Friends)localObject1).qqVipInfo);
     ((Friends)localObject1).superVipInfo = a(localVipUserInfo, 2, ((Friends)localObject1).superVipInfo);
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    Object localObject3 = this.s.getApplication().getApplicationContext().getSharedPreferences(this.s.getCurrentAccountUin(), 0);
     if (localVipUserInfo.iUpdateTime > 0L) {
       ((SharedPreferences)localObject3).edit().putLong("sp_vip_info_request_time", localVipUserInfo.iUpdateTime);
     }
@@ -317,10 +273,10 @@ public class VipInfoHandler
       ((StringBuilder)localObject3).append(localVipUserInfo.sRedPackRemard);
       QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
     }
-    paramPrivExtV2Rsp.a((Friends)localObject1);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())) && ((localVipUserInfo.iCanUseRed >= 0) || (localVipUserInfo.iRedDisable >= 0)))
+    paramPrivExtV2Rsp.b((Friends)localObject1);
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.s.getAccount())) && ((localVipUserInfo.iCanUseRed >= 0) || (localVipUserInfo.iRedDisable >= 0)))
     {
-      paramPrivExtV2Rsp = (IndividualRedPacketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER);
+      paramPrivExtV2Rsp = (IndividualRedPacketManager)this.s.getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER);
       paramPrivExtV2Rsp.a(localVipUserInfo.iCanUseRed, localVipUserInfo.iRedDisable, true);
       paramPrivExtV2Rsp.a(localVipUserInfo.iRedPackId, localVipUserInfo.sRedPackRemard);
     }
@@ -335,14 +291,14 @@ public class VipInfoHandler
         ((StringBuilder)localObject1).append(paramPrivExtV2Rsp);
         QLog.d(paramString, 2, ((StringBuilder)localObject1).toString());
       }
-      paramPrivExtV2Rsp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", paramPrivExtV2Rsp);
+      paramPrivExtV2Rsp = this.s.getApplication().getSharedPreferences(this.s.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", paramPrivExtV2Rsp);
       if (Build.VERSION.SDK_INT < 9) {
         paramPrivExtV2Rsp.commit();
       } else {
         paramPrivExtV2Rsp.apply();
       }
     }
-    AioVipDonateHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localVipUserInfo);
+    AioVipDonateHelper.a().a(this.s, localVipUserInfo);
   }
   
   private void a(VipMedalList paramVipMedalList, String paramString)
@@ -369,8 +325,8 @@ public class VipInfoHandler
       QLog.e(paramString, 1, ((StringBuilder)localObject1).toString());
       return;
     }
-    Object localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    paramString = ((FriendsManager)localObject1).d(paramString);
+    Object localObject1 = (FriendsManager)this.s.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    paramString = ((FriendsManager)localObject1).e(paramString);
     paramVipMedalList = MedalList.parse(paramVipMedalList);
     if (paramVipMedalList != null) {
       try
@@ -401,7 +357,7 @@ public class VipInfoHandler
         QLog.e((String)localObject2, 1, localStringBuilder.toString());
       }
     }
-    ((FriendsManager)localObject1).a(paramString);
+    ((FriendsManager)localObject1).b(paramString);
   }
   
   public static void a(String paramString, PayRuleCfg paramPayRuleCfg)
@@ -411,9 +367,9 @@ public class VipInfoHandler
       QLog.e(q, 1, "writePayRule: empty uin");
       return;
     }
-    synchronized (jdField_a_of_type_JavaUtilHashMap)
+    synchronized (u)
     {
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, paramPayRuleCfg);
+      u.put(paramString, paramPayRuleCfg);
       ThreadManager.getSubThreadHandler().post(new VipInfoHandler.1(paramString, paramPayRuleCfg));
       return;
     }
@@ -429,8 +385,8 @@ public class VipInfoHandler
       QLog.e(paramArrayList.toString(), 1, "NamePlateCfgInfo is null!");
       return;
     }
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    paramString = localFriendsManager.d(paramString);
+    FriendsManager localFriendsManager = (FriendsManager)this.s.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    paramString = localFriendsManager.e(paramString);
     try
     {
       paramString.nameplateCfgInfo = NamePlateCfgInfo.convert2Json(paramArrayList);
@@ -450,7 +406,7 @@ public class VipInfoHandler
     {
       paramArrayList.printStackTrace();
     }
-    localFriendsManager.a(paramString);
+    localFriendsManager.b(paramString);
   }
   
   private static boolean a(PayRuleCfg paramPayRuleCfg1, PayRuleCfg paramPayRuleCfg2)
@@ -470,7 +426,7 @@ public class VipInfoHandler
       IliveDbManager.saveIliveDrawerData("drawer_trace_info", paramPrivExtV2Rsp.data_flag.trace_info);
     }
     IliveDbManager.saveIliveData(paramPrivExtV2Rsp.isQQLivePgc, paramPrivExtV2Rsp.qqLiveMsg);
-    QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "setting_me_vip_sync_freq", paramPrivExtV2Rsp.iSyncFreq);
+    QVipConfigManager.b(this.s, "setting_me_vip_sync_freq", paramPrivExtV2Rsp.iSyncFreq);
     if ((paramPrivExtV2Rsp.data_flag != null) && (paramPrivExtV2Rsp.data_flag.has_priv_base == 0))
     {
       QLog.e(q, 1, "getVipInfo PrivExtV2Rsp has_priv_base = 0");
@@ -575,7 +531,7 @@ public class VipInfoHandler
     boolean bool1 = true;
     if (paramBoolean)
     {
-      paramFromServiceMsg = paramToServiceMsg.extraData.getString(jdField_a_of_type_JavaLangString);
+      paramFromServiceMsg = paramToServiceMsg.extraData.getString(a);
       if (a(paramPrivExtV2Rsp)) {
         return true;
       }
@@ -615,24 +571,24 @@ public class VipInfoHandler
       }
       CUKingCardHelper.a(paramPrivExtV2Rsp.trafficResult, paramToServiceMsg.extraData);
       if ((localObject1 != null) && (((VipUserInfo)localObject1).bUpdate == 1) && (paramPrivExtV2Rsp.trafficResult != null) && (paramPrivExtV2Rsp.trafficResult.bUpdate == 1) && (paramPrivExtV2Rsp.medalInfoList != null) && (paramPrivExtV2Rsp.medalInfoList.bUpdate == 1)) {
-        QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "setting_me_get_vip_info_sequence", NetConnInfoCenter.getServerTime());
+        QVipConfigManager.b(this.s, "setting_me_get_vip_info_sequence", NetConnInfoCenter.getServerTime());
       }
-      QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "setting_me_last_request_success_time", NetConnInfoCenter.getServerTime());
+      QVipConfigManager.b(this.s, "setting_me_last_request_success_time", NetConnInfoCenter.getServerTime());
       long l1;
       if ((paramPrivExtV2Rsp.medalInfoList != null) && (paramPrivExtV2Rsp.medalInfoList.bUpdate == 1))
       {
-        if (QZoneVipInfoManager.a().a() > 0) {
+        if (QZoneVipInfoManager.a().b() > 0) {
           l1 = 1L;
         } else {
           l1 = 0L;
         }
-        QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "key_long_setting_me_vip_medal_list_record", l1);
+        QVipConfigManager.b(this.s, "key_long_setting_me_vip_medal_list_record", l1);
       }
       paramToServiceMsg = paramPrivExtV2Rsp.itemCfgList;
       if (paramToServiceMsg != null)
       {
-        l1 = QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "name_plate_config_version", 0L);
-        localObject1 = NamePlateCfgInfo.getVipNamePlateCfgInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFromServiceMsg);
+        l1 = QVipConfigManager.a(this.s, "name_plate_config_version", 0L);
+        localObject1 = NamePlateCfgInfo.getVipNamePlateCfgInfo(this.s, paramFromServiceMsg);
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
@@ -650,7 +606,7 @@ public class VipInfoHandler
         }
         if ((l1 != paramToServiceMsg.iItemCfgVer) || (TextUtils.isEmpty((CharSequence)localObject1)))
         {
-          QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "name_plate_config_version", paramToServiceMsg.iItemCfgVer);
+          QVipConfigManager.b(this.s, "name_plate_config_version", paramToServiceMsg.iItemCfgVer);
           a(paramPrivExtV2Rsp.itemCfgList.itemCfgInfo, paramFromServiceMsg);
         }
       }
@@ -659,8 +615,8 @@ public class VipInfoHandler
         QLog.e(q, 1, new Object[] { "privExtRsp.payRule ", paramPrivExtV2Rsp.payRule.iconText, " url=", paramPrivExtV2Rsp.payRule.iconUrl, " update=", Integer.valueOf(paramPrivExtV2Rsp.payRule.update), " new:\n", a(paramPrivExtV2Rsp.payRule) });
         if (paramPrivExtV2Rsp.payRule.update == 1)
         {
-          QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "last_pull_pay_rule", NetConnInfoCenter.getServerTime());
-          paramToServiceMsg = a(paramFromServiceMsg, "payRuleOrigin.cfg");
+          QVipConfigManager.b(this.s, "last_pull_pay_rule", NetConnInfoCenter.getServerTime());
+          paramToServiceMsg = b(paramFromServiceMsg, "payRuleOrigin.cfg");
           boolean bool2 = a(paramToServiceMsg, paramPrivExtV2Rsp.payRule);
           localObject1 = q;
           localObject2 = new StringBuilder();
@@ -681,15 +637,15 @@ public class VipInfoHandler
       }
       if (paramPrivExtV2Rsp.qid_info != null)
       {
-        paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        paramToServiceMsg = this.s;
         if (paramPrivExtV2Rsp.qid_info.has_qid != 1) {
           bool1 = false;
         }
         VipQidHelper.a(paramToServiceMsg, bool1);
-        QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "qid_info_login", paramPrivExtV2Rsp.qid_info.qid);
+        QVipConfigManager.b(this.s, "qid_info_login", paramPrivExtV2Rsp.qid_info.qid);
       }
       if (paramPrivExtV2Rsp.map_menum != null) {
-        QQSettingConfigManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPrivExtV2Rsp.map_menum);
+        QQSettingConfigManager.a().a(this.s, paramPrivExtV2Rsp.map_menum);
       }
       bool1 = paramBoolean;
       if (paramPrivExtV2Rsp.qq_value != null)
@@ -705,10 +661,33 @@ public class VipInfoHandler
       paramPrivExtV2Rsp.append("ClubInfoSvc.queryPrivExt failed:");
       paramPrivExtV2Rsp.append(paramFromServiceMsg.getBusinessFailCode());
       QLog.e(paramToServiceMsg, 1, paramPrivExtV2Rsp.toString());
-      ReportCenter.a().a("ClubInfoSvc.queryPrivExt", 100, paramFromServiceMsg.getBusinessFailCode(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1000277, "[CMD:ClubInfoSvc.queryPrivExtfailed]", true);
+      ReportCenter.a().a("ClubInfoSvc.queryPrivExt", 100, paramFromServiceMsg.getBusinessFailCode(), this.s.getCurrentAccountUin(), 1000277, "[CMD:ClubInfoSvc.queryPrivExtfailed]", true);
       bool1 = paramBoolean;
     }
     return bool1;
+  }
+  
+  public static int b(PayRuleCfg paramPayRuleCfg)
+  {
+    return (paramPayRuleCfg.clubType - 1) * 3 + paramPayRuleCfg.userType;
+  }
+  
+  private static PayRuleCfg b(String arg0, String paramString2)
+  {
+    File localFile = BaseApplicationImpl.getContext().getFilesDir();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(???);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    paramString2 = new File(localFile, localStringBuilder.toString());
+    synchronized (t)
+    {
+      paramString2 = FileUtils.fileToBytes(paramString2);
+      if (paramString2 != null) {
+        return (PayRuleCfg)JceUtils.decodeWup(PayRuleCfg.class, paramString2);
+      }
+      return null;
+    }
   }
   
   private static void b(String paramString1, String arg1, PayRuleCfg paramPayRuleCfg)
@@ -720,11 +699,32 @@ public class VipInfoHandler
     localStringBuilder.append(???);
     paramString1 = new File(localFile, localStringBuilder.toString());
     paramPayRuleCfg = JceUtils.encodeWup(paramPayRuleCfg);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (t)
     {
       FileUtils.writeFile(paramPayRuleCfg, paramString1.getAbsolutePath());
       return;
     }
+  }
+  
+  private LoginInfo c()
+  {
+    try
+    {
+      String str1 = this.s.getCurrentAccountUin();
+      String str2 = ((TicketManager)this.s.getManager(2)).getSkey(str1);
+      LoginInfo localLoginInfo = new LoginInfo();
+      localLoginInfo.lUin = Long.parseLong(str1);
+      localLoginInfo.iKeyType = 1;
+      localLoginInfo.sSKey = str2;
+      localLoginInfo.iOpplat = 2;
+      localLoginInfo.sClientVer = DeviceInfoUtil.e();
+      return localLoginInfo;
+    }
+    catch (Exception localException)
+    {
+      QLog.e(q, 1, localException, new Object[0]);
+    }
+    return null;
   }
   
   public String a()
@@ -734,7 +734,7 @@ public class VipInfoHandler
   
   public void a(long paramLong)
   {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "VipCustom.GetCustomOnlineStatus");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.s.getCurrentAccountUin(), "VipCustom.GetCustomOnlineStatus");
     localToServiceMsg.extraData.putLong(n, paramLong);
     send(localToServiceMsg);
     if (QLog.isDevelopLevel()) {
@@ -745,7 +745,7 @@ public class VipInfoHandler
   public void a(UniGetReq paramUniGetReq, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
     paramBusinessObserver = createToServiceMsg("QCUniBusinessLogic.uniGet", paramBusinessObserver, paramBoolean);
-    paramUniGetReq.stLogin = a();
+    paramUniGetReq.stLogin = c();
     paramBusinessObserver.extraData.putSerializable("req", paramUniGetReq);
     send(paramBusinessObserver);
   }
@@ -753,7 +753,7 @@ public class VipInfoHandler
   public void a(UniSetReq paramUniSetReq, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
     paramBusinessObserver = createToServiceMsg("QCUniBusinessLogic.uniSet", paramBusinessObserver, paramBoolean);
-    paramUniSetReq.stLogin = a();
+    paramUniSetReq.stLogin = c();
     paramBusinessObserver.extraData.putSerializable("req", paramUniSetReq);
     send(paramBusinessObserver);
   }
@@ -765,8 +765,8 @@ public class VipInfoHandler
   
   public void a(String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    Object localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ClubInfoSvc.queryPrivExt");
-    ((ToServiceMsg)localObject).extraData.putString(jdField_a_of_type_JavaLangString, paramString2);
+    Object localObject = new ToServiceMsg("mobileqq.service", this.s.getCurrentAccountUin(), "ClubInfoSvc.queryPrivExt");
+    ((ToServiceMsg)localObject).extraData.putString(a, paramString2);
     ((ToServiceMsg)localObject).extraData.putInt(b, 1);
     ((ToServiceMsg)localObject).extraData.putString(c, paramString1);
     ((ToServiceMsg)localObject).extraData.putString(d, paramString3);
@@ -785,8 +785,8 @@ public class VipInfoHandler
       ((StringBuilder)localObject).append(paramLong);
       QLog.d(paramString3, 2, ((StringBuilder)localObject).toString());
     }
-    paramString3 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ClubInfoSvc.queryPrivExt");
-    paramString3.extraData.putString(jdField_a_of_type_JavaLangString, paramString2);
+    paramString3 = new ToServiceMsg("mobileqq.service", this.s.getCurrentAccountUin(), "ClubInfoSvc.queryPrivExt");
+    paramString3.extraData.putString(a, paramString2);
     paramString3.extraData.putInt(b, 6);
     paramString3.extraData.putString(c, paramString1);
     send(paramString3);
@@ -806,10 +806,10 @@ public class VipInfoHandler
     } else {
       i1 = 0;
     }
-    paramString3 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "ClubInfoSvc.guanjiaReport");
-    paramString3.extraData.putString(jdField_a_of_type_JavaLangString, paramString1);
-    paramString3.extraData.putString(jdField_e_of_type_JavaLangString, paramString2);
-    paramString3.extraData.putBoolean(jdField_f_of_type_JavaLangString, paramBoolean);
+    paramString3 = new ToServiceMsg("mobileqq.service", this.s.getCurrentAccountUin(), "ClubInfoSvc.guanjiaReport");
+    paramString3.extraData.putString(a, paramString1);
+    paramString3.extraData.putString(e, paramString2);
+    paramString3.extraData.putBoolean(f, paramBoolean);
     paramString3.extraData.putInt(g, paramInt);
     paramString3.extraData.putInt(h, i1);
     send(paramString3);
@@ -852,7 +852,7 @@ public class VipInfoHandler
     {
       if ((i1 == 6) && ((paramObject instanceof VAResourcesRsp)))
       {
-        PrettyAccountUtil.jdField_a_of_type_Long = System.currentTimeMillis() / 1000L;
+        PrettyAccountUtil.a = System.currentTimeMillis() / 1000L;
         PrettyAccountUtil.a((VAResourcesRsp)paramObject);
         notifyUI(6, bool2, paramObject);
         return;
@@ -941,7 +941,7 @@ public class VipInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.VipInfoHandler
  * JD-Core Version:    0.7.0.1
  */

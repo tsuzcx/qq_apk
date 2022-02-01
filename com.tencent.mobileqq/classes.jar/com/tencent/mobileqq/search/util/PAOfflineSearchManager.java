@@ -7,36 +7,26 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PAOfflineSearchManager
 {
-  static PAOfflineSearchManager jdField_a_of_type_ComTencentMobileqqSearchUtilPAOfflineSearchManager;
-  String jdField_a_of_type_JavaLangString = "0";
-  ArrayList<Entity> jdField_a_of_type_JavaUtilArrayList = null;
-  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public boolean a;
-  public boolean b = true;
-  boolean c = false;
-  
-  PAOfflineSearchManager()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  static PAOfflineSearchManager b;
+  ArrayList<Entity> a = null;
+  public boolean c = true;
+  public boolean d = true;
+  String e = "0";
+  AtomicBoolean f = new AtomicBoolean(false);
+  boolean g = false;
+  HashMap<String, Integer> h = new HashMap();
   
   public static PAOfflineSearchManager a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqSearchUtilPAOfflineSearchManager == null) {
-        jdField_a_of_type_ComTencentMobileqqSearchUtilPAOfflineSearchManager = new PAOfflineSearchManager();
+      if (b == null) {
+        b = new PAOfflineSearchManager();
       }
-      PAOfflineSearchManager localPAOfflineSearchManager = jdField_a_of_type_ComTencentMobileqqSearchUtilPAOfflineSearchManager;
+      PAOfflineSearchManager localPAOfflineSearchManager = b;
       return localPAOfflineSearchManager;
     }
     finally {}
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
   
   public boolean a(String paramString)
@@ -44,15 +34,20 @@ public class PAOfflineSearchManager
     if (paramString == null) {
       return false;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.h == null) {
+      this.h = new HashMap();
     }
-    return this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+    return this.h.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.PAOfflineSearchManager
  * JD-Core Version:    0.7.0.1
  */

@@ -42,7 +42,7 @@ class TroopGagMgr$2
         {
           paramLong2 = paramString.uint32_shutup_timestap.get();
           long l = paramString.uint64_member_uin.get();
-          paramString = (ITroopGagService)this.a.a.getRuntimeService(ITroopGagService.class, "");
+          paramString = (ITroopGagService)this.a.b.getRuntimeService(ITroopGagService.class, "");
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramLong1);
           ((StringBuilder)localObject).append("");
@@ -58,7 +58,7 @@ class TroopGagMgr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGagMgr.2
  * JD-Core Version:    0.7.0.1
  */

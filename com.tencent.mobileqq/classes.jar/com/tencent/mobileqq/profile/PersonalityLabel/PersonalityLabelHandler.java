@@ -63,7 +63,7 @@ public class PersonalityLabelHandler
   private void a(String paramString1, String paramString2, long paramLong)
   {
     BeancurdManager localBeancurdManager = (BeancurdManager)this.a.getManager(QQManagerFactory.BEANCURD_MANAGER);
-    Object localObject = localBeancurdManager.a(paramString2, 0, 3);
+    Object localObject = localBeancurdManager.b(paramString2, 0, 3);
     if (localObject != null)
     {
       if (((BeancurdMsg)localObject).originTime < paramLong) {}
@@ -86,7 +86,7 @@ public class PersonalityLabelHandler
         ((BeancurdMsg)localObject).isNeedDelHistory = true;
         ((BeancurdMsg)localObject).ispush = false;
         ((BeancurdMsg)localObject).originTime = paramLong;
-        ((BeancurdMsg)localObject).startTime = MessageCache.a();
+        ((BeancurdMsg)localObject).startTime = MessageCache.c();
         ((BeancurdMsg)localObject).validTime = 2592000L;
         ((BeancurdMsg)localObject).buffer = paramString1;
         localBeancurdManager.a((BeancurdMsg)localObject);
@@ -355,7 +355,7 @@ public class PersonalityLabelHandler
         QLog.i("PersonalityLabelHandler", 2, paramToServiceMsg.toString());
       }
       localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      paramFromServiceMsg = localFriendsManager.a(paramObject);
+      paramFromServiceMsg = localFriendsManager.x(paramObject);
       paramToServiceMsg = paramFromServiceMsg;
       if (paramFromServiceMsg == null)
       {
@@ -551,7 +551,7 @@ public class PersonalityLabelHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler
  * JD-Core Version:    0.7.0.1
  */

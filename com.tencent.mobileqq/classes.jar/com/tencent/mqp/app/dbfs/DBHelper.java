@@ -9,25 +9,6 @@ import java.util.ArrayList;
 public class DBHelper
   extends SQLiteOpenHelper
 {
-  public long a(long paramLong)
-  {
-    SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(paramLong);
-    localObject = localSQLiteDatabase.query("t_PathNode", null, " ID_node=?", new String[] { ((StringBuilder)localObject).toString() }, null, null, null);
-    if (((Cursor)localObject).moveToFirst() == true)
-    {
-      paramLong = ((Cursor)localObject).getLong(2);
-      ((Cursor)localObject).close();
-      localSQLiteDatabase.close();
-      return paramLong;
-    }
-    ((Cursor)localObject).close();
-    localSQLiteDatabase.close();
-    return -1L;
-  }
-  
   public long a(long paramLong1, long paramLong2)
   {
     ContentValues localContentValues = new ContentValues();
@@ -91,16 +72,6 @@ public class DBHelper
     return l;
   }
   
-  public void a(long paramLong)
-  {
-    SQLiteDatabase localSQLiteDatabase = getWritableDatabase();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(paramLong);
-    localSQLiteDatabase.delete("t_BlobNode", " ID_blob=? ", new String[] { localStringBuilder.toString() });
-    localSQLiteDatabase.close();
-  }
-  
   public String[] a(long paramLong)
   {
     SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
@@ -125,6 +96,35 @@ public class DBHelper
     return null;
   }
   
+  public long b(long paramLong)
+  {
+    SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = localSQLiteDatabase.query("t_PathNode", null, " ID_node=?", new String[] { ((StringBuilder)localObject).toString() }, null, null, null);
+    if (((Cursor)localObject).moveToFirst() == true)
+    {
+      paramLong = ((Cursor)localObject).getLong(2);
+      ((Cursor)localObject).close();
+      localSQLiteDatabase.close();
+      return paramLong;
+    }
+    ((Cursor)localObject).close();
+    localSQLiteDatabase.close();
+    return -1L;
+  }
+  
+  public void c(long paramLong)
+  {
+    SQLiteDatabase localSQLiteDatabase = getWritableDatabase();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    localSQLiteDatabase.delete("t_BlobNode", " ID_blob=? ", new String[] { localStringBuilder.toString() });
+    localSQLiteDatabase.close();
+  }
+  
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
     paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS t_PathNode");
@@ -143,7 +143,7 @@ public class DBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqp.app.dbfs.DBHelper
  * JD-Core Version:    0.7.0.1
  */

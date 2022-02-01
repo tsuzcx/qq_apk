@@ -6,7 +6,7 @@ import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.input.BaseMessageSender;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.XEditTextEx;
 
@@ -20,26 +20,26 @@ class GameMsgChatPie$GameMsgMessageSender
   
   public void c()
   {
-    if (GameMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie) == null) {
+    if (GameMsgChatPie.c(this.d) == null) {
       return;
     }
-    if (GameMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie) != null) {
-      ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie).c, "1", "145", "920", "92005", "206356", "", "", "20", "0");
+    if (GameMsgChatPie.c(this.d) != null) {
+      ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.c(this.d).c, "1", "145", "920", "92005", "206356", "", "", "20", "0");
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString().getBytes().length > GameMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie).d)
+      if (this.d.Y.getText().toString().getBytes().length > GameMsgChatPie.c(this.d).p)
       {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.jdField_a_of_type_AndroidContentContext, 2131692792, 1);
+        ChatActivityUtils.a(this.d.e, 2131889893, 1);
         return;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.t()) {
+      if (!this.d.bF()) {
         return;
       }
-      if ((!GameMsgChatPie.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie)) && (GameMsgChatPie.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie) == 3) && (GameMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie) != null)) {
-        ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie).c, "1", "145", "920", "92005", "207647", "", "", "8", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a, "");
+      if ((!GameMsgChatPie.l(this.d)) && (GameMsgChatPie.j(this.d) == 3) && (GameMsgChatPie.c(this.d) != null)) {
+        ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.c(this.d).c, "1", "145", "920", "92005", "207647", "", "", "8", this.b.getCurrentAccountUin(), this.c.b, "");
       }
-      GameMsgChatPie.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie, true);
+      GameMsgChatPie.c(this.d, true);
       super.c();
       return;
     }
@@ -48,7 +48,7 @@ class GameMsgChatPie$GameMsgMessageSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.GameMsgMessageSender
  * JD-Core Version:    0.7.0.1
  */

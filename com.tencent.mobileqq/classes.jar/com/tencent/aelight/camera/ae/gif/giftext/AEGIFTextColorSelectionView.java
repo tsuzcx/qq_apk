@@ -13,20 +13,20 @@ import com.tencent.mobileqq.util.DisplayUtil;
 public class AEGIFTextColorSelectionView
   extends View
 {
-  private static String jdField_b_of_type_JavaLangString = "#FFFFFF";
-  private static String jdField_c_of_type_JavaLangString = "#FFFFFF";
-  private static String jdField_d_of_type_JavaLangString = "#3CB6FF";
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private int jdField_c_of_type_Int;
-  private Paint jdField_c_of_type_AndroidGraphicsPaint;
-  private int jdField_d_of_type_Int;
+  private static String l = "#FFFFFF";
+  private static String m = "#FFFFFF";
+  private static String n = "#3CB6FF";
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   private int e;
+  private String f;
+  private Context g;
+  private Paint h;
+  private Paint i;
+  private Paint j;
+  private boolean k;
   
   public AEGIFTextColorSelectionView(Context paramContext)
   {
@@ -48,24 +48,24 @@ public class AEGIFTextColorSelectionView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(this.jdField_a_of_type_JavaLangString));
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(jdField_c_of_type_JavaLangString));
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(jdField_d_of_type_JavaLangString));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+    this.g = paramContext;
+    this.k = true;
+    this.f = l;
+    this.h = new Paint(1);
+    this.h.setColor(Color.parseColor(this.f));
+    this.j = new Paint(1);
+    this.j.setColor(Color.parseColor(m));
+    this.i = new Paint(1);
+    this.i.setColor(Color.parseColor(n));
+    this.i.setStyle(Paint.Style.STROKE);
+    this.i.setStrokeWidth(DisplayUtil.a(this.g, 2.0F));
   }
   
   public void a(Boolean paramBoolean)
   {
-    if (paramBoolean.booleanValue() != this.jdField_a_of_type_Boolean)
+    if (paramBoolean.booleanValue() != this.k)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean.booleanValue();
+      this.k = paramBoolean.booleanValue();
       invalidate();
     }
   }
@@ -73,33 +73,33 @@ public class AEGIFTextColorSelectionView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Boolean) {
-      paramCanvas.drawCircle(this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, this.e, this.jdField_b_of_type_AndroidGraphicsPaint);
+    if (this.k) {
+      paramCanvas.drawCircle(this.a / 2, this.b / 2, this.e, this.i);
     }
-    paramCanvas.drawCircle(this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, this.jdField_c_of_type_Int, this.jdField_c_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawCircle(this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2, this.jdField_d_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(this.a / 2, this.b / 2, this.c, this.j);
+    paramCanvas.drawCircle(this.a / 2, this.b / 2, this.d, this.h);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
-    this.jdField_b_of_type_Int = View.MeasureSpec.getSize(paramInt2);
-    this.e = (this.jdField_a_of_type_Int / 2 - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 1.0F));
-    this.jdField_c_of_type_Int = (this.e - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F));
-    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+    this.a = View.MeasureSpec.getSize(paramInt1);
+    this.b = View.MeasureSpec.getSize(paramInt2);
+    this.e = (this.a / 2 - DisplayUtil.a(this.g, 1.0F));
+    this.c = (this.e - DisplayUtil.a(this.g, 5.0F));
+    this.d = (this.c - DisplayUtil.a(this.g, 2.0F));
   }
   
   public void setColor(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(paramString));
+    this.f = paramString;
+    this.h.setColor(Color.parseColor(paramString));
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.AEGIFTextColorSelectionView
  * JD-Core Version:    0.7.0.1
  */

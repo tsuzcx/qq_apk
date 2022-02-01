@@ -11,7 +11,7 @@ class DoubleVideoCtrlUI$18
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+    DoubleVideoCtrlUI.a(this.c, this.a, this.b);
   }
 }
 

@@ -18,12 +18,12 @@ class SmallScreenMultiVideoControlUI$StartRecvVideoRunnable
       localStringBuilder.append(this.a);
       QLog.d("SmallScreenMultiVideoControlUI", 2, localStringBuilder.toString());
     }
-    this.this$0.b();
+    this.this$0.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI.StartRecvVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

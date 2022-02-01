@@ -1,8 +1,8 @@
 package com.tencent.vas.update.entity.db;
 
 import android.text.TextUtils;
-import com.tencent.vas.update.callback.ICommonManager;
-import com.tencent.vas.update.callback.IVasLog;
+import com.tencent.vas.update.factory.api.ICommonManager;
+import com.tencent.vas.update.factory.api.IVasLog;
 import com.tencent.vas.update.util.FileUtil;
 import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 import java.io.File;
@@ -26,7 +26,7 @@ public class SeqConfigEntity
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(VasUpdateWrapper.getCommonManager().getSeqConfigPath());
+    localStringBuilder.append(VasUpdateWrapper.getCommonManager().c());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("seq_v2.cfg");
     SEQ_CONFIG_PATH = localStringBuilder.toString();
@@ -57,7 +57,7 @@ public class SeqConfigEntity
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("loadSeqConfig content = ");
     localStringBuilder.append((String)localObject1);
-    ((IVasLog)localObject2).e("VasUpdate_SeqConfig", localStringBuilder.toString());
+    ((IVasLog)localObject2).c("VasUpdate_SeqConfig", localStringBuilder.toString());
     return parseSeqJson((String)localObject1);
   }
   
@@ -79,6 +79,7 @@ public class SeqConfigEntity
     catch (Throwable paramString)
     {
       paramString.printStackTrace();
+      VasUpdateWrapper.getLog().a("VasUpdate_SeqConfig", "parseSeqJson exception", paramString);
     }
     return localSeqConfigEntity;
   }
@@ -101,7 +102,7 @@ public class SeqConfigEntity
       paramSeqConfigEntity.printStackTrace();
     }
     boolean bool = FileUtil.writeFileContent(SEQ_CONFIG_PATH, localJSONObject.toString());
-    if (VasUpdateWrapper.getLog().isColorLevel())
+    if (VasUpdateWrapper.getLog().a())
     {
       paramSeqConfigEntity = VasUpdateWrapper.getLog();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -109,13 +110,13 @@ public class SeqConfigEntity
       localStringBuilder.append(bool);
       localStringBuilder.append(" value = \n");
       localStringBuilder.append(localJSONObject.toString());
-      paramSeqConfigEntity.i("VasUpdate_SeqConfig", localStringBuilder.toString());
+      paramSeqConfigEntity.b("VasUpdate_SeqConfig", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.entity.db.SeqConfigEntity
  * JD-Core Version:    0.7.0.1
  */

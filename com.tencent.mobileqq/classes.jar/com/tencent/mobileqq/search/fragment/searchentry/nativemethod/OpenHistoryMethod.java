@@ -26,7 +26,7 @@ class OpenHistoryMethod
   @Nullable
   private TKDSearchHistoryBean getTargetHistoryBean(@NonNull HippyMap paramHippyMap)
   {
-    Object localObject = SearchWordHistoryManager.a().a();
+    Object localObject = SearchWordHistoryManager.a().c();
     int i = paramHippyMap.getInt("id");
     int j = paramHippyMap.getInt("fromWhere");
     paramHippyMap = ((List)localObject).iterator();
@@ -52,11 +52,11 @@ class OpenHistoryMethod
     if (!TextUtils.isEmpty(str2))
     {
       str1 = str2;
-      if (URLUtil.a(str2)) {}
+      if (URLUtil.e(str2)) {}
     }
     else
     {
-      str1 = SearchConfigUtils.b(10);
+      str1 = SearchConfigUtils.d(10);
       str1 = SearchConfigUtils.a(paramTKDSearchHistoryBean.getTitle(), 5, str1);
     }
     SearchUtils.a(this.app, this.context, str1);
@@ -82,7 +82,7 @@ class OpenHistoryMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.OpenHistoryMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -138,12 +138,12 @@ public class c
     if (localInteger == null) {
       return (ColorStateList)this.b.get(paramInt);
     }
-    return this.c.b(localInteger.intValue());
+    return this.c.loadColorStateList(localInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.theme.c
  * JD-Core Version:    0.7.0.1
  */

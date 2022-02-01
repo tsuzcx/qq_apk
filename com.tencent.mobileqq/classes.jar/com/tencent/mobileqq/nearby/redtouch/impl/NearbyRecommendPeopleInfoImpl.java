@@ -14,7 +14,7 @@ public class NearbyRecommendPeopleInfoImpl
   
   public String getLatestRecommendMsgid()
   {
-    return NearbyRecommendPeopleInfo.a();
+    return NearbyRecommendPeopleInfo.b();
   }
   
   public void setLatestRecommendList(String paramString, List<Object> paramList)
@@ -24,7 +24,7 @@ public class NearbyRecommendPeopleInfoImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.impl.NearbyRecommendPeopleInfoImpl
  * JD-Core Version:    0.7.0.1
  */

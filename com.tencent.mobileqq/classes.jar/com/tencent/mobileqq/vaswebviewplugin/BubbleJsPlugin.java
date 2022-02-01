@@ -213,7 +213,7 @@ public class BubbleJsPlugin
     //   50: aload 6
     //   52: aload_0
     //   53: getfield 239	com/tencent/mobileqq/vaswebviewplugin/BubbleJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   56: invokevirtual 244	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   56: invokevirtual 244	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
     //   59: invokevirtual 250	android/app/Activity:getClassLoader	()Ljava/lang/ClassLoader;
     //   62: invokevirtual 254	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   65: invokestatic 40	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -645,7 +645,7 @@ public class BubbleJsPlugin
       ((JSONObject)localObject).put("status", 3);
       ((JSONObject)localObject).put("progress", 100);
       paramJSONObject.put("result", 0);
-      paramJSONObject.put("message", HardCodeUtil.a(2131701427));
+      paramJSONObject.put("message", HardCodeUtil.a(2131899452));
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("(");
@@ -742,7 +742,7 @@ public class BubbleJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.BubbleJsPlugin
  * JD-Core Version:    0.7.0.1
  */

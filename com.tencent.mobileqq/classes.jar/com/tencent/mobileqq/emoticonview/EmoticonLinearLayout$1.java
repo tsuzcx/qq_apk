@@ -104,7 +104,7 @@ class EmoticonLinearLayout$1
         {
           localObject2 = new RelativeLayout(this.this$0.context);
           localObject1 = new URLImageView(this.this$0.context);
-          ((URLImageView)localObject1).setId(2131378202);
+          ((URLImageView)localObject1).setId(2131446720);
           if (this.this$0.panelViewType != 2007)
           {
             if (QLog.isColorLevel()) {
@@ -152,7 +152,7 @@ class EmoticonLinearLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

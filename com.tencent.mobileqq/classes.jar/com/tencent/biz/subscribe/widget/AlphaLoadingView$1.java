@@ -14,13 +14,13 @@ class AlphaLoadingView$1
     if (!AlphaLoadingView.a(this.a))
     {
       this.a.invalidate();
-      sendEmptyMessageDelayed(1, AlphaLoadingView.a(this.a));
+      sendEmptyMessageDelayed(1, AlphaLoadingView.b(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AlphaLoadingView.1
  * JD-Core Version:    0.7.0.1
  */

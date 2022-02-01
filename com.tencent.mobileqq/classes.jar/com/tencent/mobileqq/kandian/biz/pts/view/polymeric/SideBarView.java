@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 public class SideBarView
   extends BezierSideBarView
 {
-  private String a;
+  private String d;
   
   public SideBarView(Context paramContext)
   {
@@ -33,19 +33,9 @@ public class SideBarView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected int a()
+  protected int getBottomEndY()
   {
-    int j = super.a();
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    return i;
-  }
-  
-  protected int b()
-  {
-    int j = super.b();
+    int j = super.getBottomEndY();
     int i = j;
     if (j > getMeasuredHeight()) {
       i = getMeasuredHeight();
@@ -53,10 +43,20 @@ public class SideBarView
     return i;
   }
   
+  protected int getTopEndY()
+  {
+    int j = super.getTopEndY();
+    int i = j;
+    if (j < 0) {
+      i = 0;
+    }
+    return i;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    if (this.c != null) {
+      this.c.setBounds(0, 0, this.c.getIntrinsicWidth(), this.c.getIntrinsicHeight());
     }
     super.onDraw(paramCanvas);
   }
@@ -69,7 +69,7 @@ public class SideBarView
     try
     {
       int i = Color.parseColor(paramString);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
+      this.a.setColor(i);
       return;
     }
     catch (Exception paramString)
@@ -80,7 +80,7 @@ public class SideBarView
   
   public void setPath(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
     if ((paramString != null) && (!paramString.equals("-1"))) {
       if ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount")))
       {
@@ -93,7 +93,7 @@ public class SideBarView
     }
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(paramString.intValue());
+      this.c = getContext().getResources().getDrawable(paramString.intValue());
       return;
     }
     catch (Resources.NotFoundException paramString)
@@ -104,14 +104,14 @@ public class SideBarView
     }
     QLog.d("ProteusRecycleView", 2, "loadImage: cant find in resources dir, do nothing");
     return;
-    localDrawable = getContext().getResources().getDrawable(2130843404);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = DrawableUtil.getDrawable(getContext(), paramString, localDrawable, localDrawable);
+    localDrawable = getContext().getResources().getDrawable(2130844358);
+    this.c = DrawableUtil.getDrawable(getContext(), paramString, localDrawable, localDrawable);
     label111:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.SideBarView
  * JD-Core Version:    0.7.0.1
  */

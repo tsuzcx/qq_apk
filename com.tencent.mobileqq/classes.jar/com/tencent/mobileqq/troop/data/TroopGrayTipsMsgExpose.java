@@ -19,8 +19,8 @@ public class TroopGrayTipsMsgExpose
       if (paramMessageForUniteGrayTip == null) {
         return;
       }
-      if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.b == 131090)) {
-        TroopEssenceUtil.b(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
+      if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.i == 131090)) {
+        TroopEssenceUtil.c(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
       }
       TroopEssenceReportUtil.a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
     }
@@ -33,7 +33,7 @@ public class TroopGrayTipsMsgExpose
       if (paramMessageForUniteGrayTip == null) {
         return;
       }
-      if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.b == 131091)) {
+      if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.i == 131091)) {
         TroopShortcutBarUtil.a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin);
       }
     }
@@ -54,7 +54,7 @@ public class TroopGrayTipsMsgExpose
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopGrayTipsMsgExpose
  * JD-Core Version:    0.7.0.1
  */

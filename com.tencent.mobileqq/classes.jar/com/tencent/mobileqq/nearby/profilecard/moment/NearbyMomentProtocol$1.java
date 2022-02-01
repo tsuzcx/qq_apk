@@ -14,15 +14,15 @@ final class NearbyMomentProtocol$1
     paramArrayOfByte.append("getMomentList, 0xada_0 errorCode=");
     paramArrayOfByte.append(paramInt);
     QLog.i("NearbyMomentProtocol", 1, paramArrayOfByte.toString());
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$GetMomentListCallback;
+    paramArrayOfByte = this.a;
     if (paramArrayOfByte != null) {
-      paramArrayOfByte.a(false, null, true, this.jdField_a_of_type_Int);
+      paramArrayOfByte.a(false, null, true, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.1
  * JD-Core Version:    0.7.0.1
  */

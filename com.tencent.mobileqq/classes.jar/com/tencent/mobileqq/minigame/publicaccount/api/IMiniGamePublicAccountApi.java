@@ -20,10 +20,12 @@ public abstract interface IMiniGamePublicAccountApi
   public abstract boolean hasNewMessage();
   
   public abstract boolean isMiniGamePAModule(String paramString);
+  
+  public abstract boolean isUseHippy();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.api.IMiniGamePublicAccountApi
  * JD-Core Version:    0.7.0.1
  */

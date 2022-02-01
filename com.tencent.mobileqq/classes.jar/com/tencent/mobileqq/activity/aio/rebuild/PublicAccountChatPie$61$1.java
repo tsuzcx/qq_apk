@@ -17,7 +17,7 @@ class PublicAccountChatPie$61$1
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = this.a.a.b;
+      localObject = this.a.a.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestQidiKefu ... onReceive = ");
       localStringBuilder.append(paramBoolean);
@@ -32,7 +32,7 @@ class PublicAccountChatPie$61$1
       paramInt = ((mobileqq_mp.SendMenuEventResponse)localObject).ret_info.ret_code.get();
       if (QLog.isColorLevel())
       {
-        paramBundle = this.a.a.b;
+        paramBundle = this.a.a.c;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("requestQidiKefu ... onReceive: retCode = ");
         ((StringBuilder)localObject).append(paramInt);
@@ -40,9 +40,9 @@ class PublicAccountChatPie$61$1
       }
       if (paramInt == 0)
       {
-        this.a.a.Z = true;
-        this.a.a.aC();
-        this.a.a.ao();
+        this.a.a.cD = true;
+        this.a.a.bS();
+        this.a.a.bz();
         return;
       }
     }
@@ -51,13 +51,13 @@ class PublicAccountChatPie$61$1
       label179:
       break label179;
     }
-    this.a.a.m(2131695217);
-    this.a.a.ao();
+    this.a.a.t(2131892951);
+    this.a.a.bz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.61.1
  * JD-Core Version:    0.7.0.1
  */

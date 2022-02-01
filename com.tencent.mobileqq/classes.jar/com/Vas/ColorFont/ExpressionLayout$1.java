@@ -13,20 +13,20 @@ class ExpressionLayout$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i >= this.a.i[0])
+    if (i >= this.a.p[0])
     {
-      this.a.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.a.r.cancel();
       paramValueAnimator = this.a;
-      paramValueAnimator.e = 0;
-      paramValueAnimator.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
+      paramValueAnimator.s = 0;
+      paramValueAnimator.q.mShouldDisplayAnimation = false;
       ExpressionLayout.a(this.a).invalidate();
-      ExpressionLayout.a(this.a).onAnimationEnd(this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
+      ExpressionLayout.a(this.a).onAnimationEnd(this.a.q.mFontId);
       return;
     }
-    if (i > this.a.e)
+    if (i > this.a.s)
     {
       paramValueAnimator = this.a;
-      paramValueAnimator.e = i;
+      paramValueAnimator.s = i;
       ExpressionLayout.a(paramValueAnimator).invalidate();
     }
   }

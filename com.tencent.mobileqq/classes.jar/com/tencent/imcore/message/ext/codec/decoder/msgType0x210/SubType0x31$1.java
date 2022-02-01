@@ -15,7 +15,7 @@ final class SubType0x31$1
   {
     if (paramString3 != null)
     {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.a;
       if (localQQAppInterface != null)
       {
         if (paramString1 == null) {
@@ -23,9 +23,9 @@ final class SubType0x31$1
         }
         if (paramString1.equalsIgnoreCase(localQQAppInterface.getAccount()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountService.updateA2(paramString2, paramString3, true);
-          ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).setBindUinStatus(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (byte)1, paramString2);
-          ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).loadServerMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, false);
+          this.b.updateA2(paramString2, paramString3, true);
+          ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).setBindUinStatus(this.a, (byte)1, paramString2);
+          ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).loadServerMessage(this.a, paramString2, false);
         }
       }
     }
@@ -33,7 +33,7 @@ final class SubType0x31$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x31.1
  * JD-Core Version:    0.7.0.1
  */

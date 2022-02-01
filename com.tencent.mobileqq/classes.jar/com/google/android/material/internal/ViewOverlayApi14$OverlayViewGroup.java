@@ -17,18 +17,18 @@ import java.util.ArrayList;
 class ViewOverlayApi14$OverlayViewGroup
   extends ViewGroup
 {
-  static Method jdField_a_of_type_JavaLangReflectMethod;
-  View jdField_a_of_type_AndroidViewView;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ViewOverlayApi14 jdField_a_of_type_ComGoogleAndroidMaterialInternalViewOverlayApi14;
-  ArrayList<Drawable> jdField_a_of_type_JavaUtilArrayList = null;
-  private boolean jdField_a_of_type_Boolean;
+  static Method a;
+  ViewGroup b;
+  View c;
+  ArrayList<Drawable> d = null;
+  ViewOverlayApi14 e;
+  private boolean f;
   
   static
   {
     try
     {
-      jdField_a_of_type_JavaLangReflectMethod = ViewGroup.class.getDeclaredMethod("invalidateChildInParentFast", new Class[] { Integer.TYPE, Integer.TYPE, Rect.class });
+      a = ViewGroup.class.getDeclaredMethod("invalidateChildInParentFast", new Class[] { Integer.TYPE, Integer.TYPE, Rect.class });
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException) {}
@@ -37,17 +37,17 @@ class ViewOverlayApi14$OverlayViewGroup
   ViewOverlayApi14$OverlayViewGroup(Context paramContext, ViewGroup paramViewGroup, View paramView, ViewOverlayApi14 paramViewOverlayApi14)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramViewGroup;
+    this.c = paramView;
     setRight(paramViewGroup.getWidth());
     setBottom(paramViewGroup.getHeight());
     paramViewGroup.addView(this);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalViewOverlayApi14 = paramViewOverlayApi14;
+    this.e = paramViewOverlayApi14;
   }
   
   private void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
     throw new IllegalStateException("This overlay was disposed already. Please use a new one via ViewGroupUtils.getOverlay()");
@@ -57,8 +57,8 @@ class ViewOverlayApi14$OverlayViewGroup
   {
     int[] arrayOfInt1 = new int[2];
     int[] arrayOfInt2 = new int[2];
-    this.jdField_a_of_type_AndroidViewViewGroup.getLocationOnScreen(arrayOfInt1);
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt2);
+    this.b.getLocationOnScreen(arrayOfInt1);
+    this.c.getLocationOnScreen(arrayOfInt2);
     arrayOfInt2[0] -= arrayOfInt1[0];
     arrayOfInt2[1] -= arrayOfInt1[1];
   }
@@ -67,11 +67,11 @@ class ViewOverlayApi14$OverlayViewGroup
   {
     if (getChildCount() == 0)
     {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.d;
       if ((localArrayList == null) || (localArrayList.size() == 0))
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_AndroidViewViewGroup.removeView(this);
+        this.f = true;
+        this.b.removeView(this);
       }
     }
   }
@@ -79,12 +79,12 @@ class ViewOverlayApi14$OverlayViewGroup
   public void a(Drawable paramDrawable)
   {
     a();
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.d == null) {
+      this.d = new ArrayList();
     }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramDrawable))
+    if (!this.d.contains(paramDrawable))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramDrawable);
+      this.d.add(paramDrawable);
       invalidate(paramDrawable.getBounds());
       paramDrawable.setCallback(this);
     }
@@ -92,7 +92,7 @@ class ViewOverlayApi14$OverlayViewGroup
   
   public void b(Drawable paramDrawable)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.d;
     if (localArrayList != null)
     {
       localArrayList.remove(paramDrawable);
@@ -106,13 +106,13 @@ class ViewOverlayApi14$OverlayViewGroup
   {
     Object localObject = new int[2];
     int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewViewGroup.getLocationOnScreen((int[])localObject);
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
+    this.b.getLocationOnScreen((int[])localObject);
+    this.c.getLocationOnScreen(arrayOfInt);
     int j = 0;
     paramCanvas.translate(arrayOfInt[0] - localObject[0], arrayOfInt[1] - localObject[1]);
-    paramCanvas.clipRect(new Rect(0, 0, this.jdField_a_of_type_AndroidViewView.getWidth(), this.jdField_a_of_type_AndroidViewView.getHeight()));
+    paramCanvas.clipRect(new Rect(0, 0, this.c.getWidth(), this.c.getHeight()));
     super.dispatchDraw(paramCanvas);
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = this.d;
     int i;
     if (localObject == null) {
       i = 0;
@@ -121,7 +121,7 @@ class ViewOverlayApi14$OverlayViewGroup
     }
     while (j < i)
     {
-      ((Drawable)this.jdField_a_of_type_JavaUtilArrayList.get(j)).draw(paramCanvas);
+      ((Drawable)this.d.get(j)).draw(paramCanvas);
       j += 1;
     }
   }
@@ -133,10 +133,10 @@ class ViewOverlayApi14$OverlayViewGroup
   
   public ViewParent invalidateChildInParent(int[] paramArrayOfInt, Rect paramRect)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (this.b != null)
     {
       paramRect.offset(paramArrayOfInt[0], paramArrayOfInt[1]);
-      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      if (this.b != null)
       {
         paramArrayOfInt[0] = 0;
         paramArrayOfInt[1] = 0;
@@ -161,7 +161,7 @@ class ViewOverlayApi14$OverlayViewGroup
   {
     if (!super.verifyDrawable(paramDrawable))
     {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.d;
       if ((localArrayList == null) || (!localArrayList.contains(paramDrawable))) {
         return false;
       }
@@ -171,7 +171,7 @@ class ViewOverlayApi14$OverlayViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.ViewOverlayApi14.OverlayViewGroup
  * JD-Core Version:    0.7.0.1
  */

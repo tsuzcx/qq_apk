@@ -7,24 +7,24 @@ import com.tencent.widget.VerticalGallery.OnEndMovementListener;
 class WheelPickerLayout$EndMovementListener
   implements VerticalGallery.OnEndMovementListener
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public WheelPickerLayout$EndMovementListener(WheelPickerLayout paramWheelPickerLayout, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void onEndMovement(VerticalGallery paramVerticalGallery)
   {
-    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
-      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
+    int i = WheelPickerLayout.c(this.a)[this.b].getSelectedItemPosition();
+    if (WheelPickerLayout.d(this.a) != null) {
+      WheelPickerLayout.d(this.a).a(this.b, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.WheelPickerLayout.EndMovementListener
  * JD-Core Version:    0.7.0.1
  */

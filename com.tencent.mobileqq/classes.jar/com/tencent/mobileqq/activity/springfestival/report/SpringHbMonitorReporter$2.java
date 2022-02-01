@@ -19,7 +19,7 @@ final class SpringHbMonitorReporter$2
       try
       {
         SpringHbMonitorReporter.OfflineReportInfo localOfflineReportInfo = SpringHbMonitorReporter.a(BaseApplicationImpl.sApplication.getRuntime());
-        String str = localOfflineReportInfo.jdField_a_of_type_JavaLangString;
+        String str = localOfflineReportInfo.a;
         Object localObject1;
         if (QLog.isColorLevel())
         {
@@ -28,14 +28,14 @@ final class SpringHbMonitorReporter$2
           ((StringBuilder)localObject1).append(str);
           QLog.i("shua2021report_SpringHbMonitorReporter", 2, ((StringBuilder)localObject1).toString());
         }
-        if (Utils.a(this.jdField_a_of_type_JavaLangString, str))
+        if (Utils.a(this.a, str))
         {
-          Object localObject2 = SpringHbMonitorReporter.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_JavaLangString);
-          if (this.jdField_a_of_type_Int != 0) {
+          Object localObject2 = SpringHbMonitorReporter.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.a);
+          if (this.b != 0) {
             break label413;
           }
           bool = true;
-          localObject1 = SpringHbMonitorReporter.a(bool, this.jdField_a_of_type_JavaLangString);
+          localObject1 = SpringHbMonitorReporter.a(bool, this.a);
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
@@ -51,23 +51,23 @@ final class SpringHbMonitorReporter$2
           localObject2 = new HashMap();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.a);
           ((Map)localObject2).put("ext1", localStringBuilder.toString());
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(localOfflineReportInfo.jdField_a_of_type_Int);
+          localStringBuilder.append(localOfflineReportInfo.b);
           ((Map)localObject2).put("ext2", localStringBuilder.toString());
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(localOfflineReportInfo.b);
+          localStringBuilder.append(localOfflineReportInfo.c);
           ((Map)localObject2).put("ext3", localStringBuilder.toString());
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(this.b);
+          localStringBuilder.append(this.c);
           ((Map)localObject2).put("ext4", localStringBuilder.toString());
-          SpringHbReporter.a(ReportConstant.Event.c, 2, this.jdField_a_of_type_Int, (Map)localObject2, "", false);
-          SpringHbMonitorReporter.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1, this.jdField_a_of_type_JavaLangString);
-          SpringHbMonitorReporter.b(str, localOfflineReportInfo.jdField_a_of_type_Int, localOfflineReportInfo.b);
+          SpringHbReporter.a(ReportConstant.Event.c, 2, this.b, (Map)localObject2, "", false);
+          SpringHbMonitorReporter.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), (String)localObject1, this.a);
+          SpringHbMonitorReporter.b(str, localOfflineReportInfo.b, localOfflineReportInfo.c);
           return;
         }
       }
@@ -83,7 +83,7 @@ final class SpringHbMonitorReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbMonitorReporter.2
  * JD-Core Version:    0.7.0.1
  */

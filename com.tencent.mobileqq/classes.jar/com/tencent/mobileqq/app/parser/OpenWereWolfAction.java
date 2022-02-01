@@ -25,10 +25,10 @@ public class OpenWereWolfAction
     boolean bool = false;
     try
     {
-      if ("openInvitationRoom".equals(this.c)) {
+      if ("openInvitationRoom".equals(this.e)) {
         return b();
       }
-      if ("enterGameRoom".equals(this.c)) {
+      if ("enterGameRoom".equals(this.e)) {
         bool = c();
       }
       return bool;
@@ -39,7 +39,7 @@ public class OpenWereWolfAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("OpenWereWolfAction", 1, localStringBuilder.toString());
-      b_("OpenWereWolfAction");
+      h_("OpenWereWolfAction");
     }
     return false;
   }
@@ -50,14 +50,14 @@ public class OpenWereWolfAction
     int j = 0;
     if (!bool)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694425, 1).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, 2131892105, 1).show();
       return false;
     }
-    Object localObject = (String)this.a.get("invitorId");
+    Object localObject = (String)this.f.get("invitorId");
     int i = 10;
     try
     {
-      k = Integer.parseInt((String)this.a.get("roomNum"));
+      k = Integer.parseInt((String)this.f.get("roomNum"));
       i = k;
     }
     catch (Exception localException1)
@@ -70,7 +70,7 @@ public class OpenWereWolfAction
     }
     try
     {
-      k = Integer.parseInt((String)this.a.get("zoneId"));
+      k = Integer.parseInt((String)this.f.get("zoneId"));
       j = k;
     }
     catch (Exception localException2)
@@ -80,7 +80,7 @@ public class OpenWereWolfAction
     l1 = -1L;
     try
     {
-      long l2 = Long.parseLong((String)this.a.get("gc"));
+      long l2 = Long.parseLong((String)this.f.get("gc"));
       l1 = l2;
     }
     catch (Exception localException3)
@@ -114,13 +114,13 @@ public class OpenWereWolfAction
     int j = 0;
     if (!bool)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694425, 1).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, 2131892105, 1).show();
       return false;
     }
     int i = 10;
     try
     {
-      k = Integer.parseInt((String)this.a.get("roomNum"));
+      k = Integer.parseInt((String)this.f.get("roomNum"));
       i = k;
     }
     catch (Exception localException1)
@@ -133,7 +133,7 @@ public class OpenWereWolfAction
     }
     try
     {
-      k = Integer.parseInt((String)this.a.get("zoneId"));
+      k = Integer.parseInt((String)this.f.get("zoneId"));
       j = k;
     }
     catch (Exception localException2)
@@ -150,7 +150,7 @@ public class OpenWereWolfAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OpenWereWolfAction
  * JD-Core Version:    0.7.0.1
  */

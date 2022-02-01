@@ -24,8 +24,8 @@ public class ZanRankingIpcServer
   extends QIPCModule
   implements Handler.Callback
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  Set<ZanRankingIpcServer.GetCoverTask> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  Handler a = new Handler(ThreadManager.getSubThreadLooper(), this);
+  Set<ZanRankingIpcServer.GetCoverTask> b = Collections.synchronizedSet(new HashSet());
   
   private ZanRankingIpcServer()
   {
@@ -46,7 +46,7 @@ public class ZanRankingIpcServer
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      Object localObject = localFriendsManager.e(str);
+      Object localObject = localFriendsManager.m(str);
       if (localObject == null) {
         localObject = "";
       } else {
@@ -70,12 +70,12 @@ public class ZanRankingIpcServer
   public void onAccountChange()
   {
     super.onAccountChange();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    this.a.removeCallbacksAndMessages(null);
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       ((ZanRankingIpcServer.GetCoverTask)localIterator.next()).a();
     }
-    this.jdField_a_of_type_JavaUtilSet.clear();
+    this.b.clear();
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -105,7 +105,7 @@ public class ZanRankingIpcServer
     {
       paramBundle.putInt("callbackId", paramInt);
       paramString = new ZanRankingIpcServer.GetCoverTask(this, paramBundle);
-      this.jdField_a_of_type_AndroidOsHandler.post(paramString);
+      this.a.post(paramString);
       return null;
     }
     if ("action_get_frd_nicks".equals(paramString)) {
@@ -116,7 +116,7 @@ public class ZanRankingIpcServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.zanranking.ZanRankingIpcServer
  * JD-Core Version:    0.7.0.1
  */

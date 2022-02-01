@@ -6,31 +6,31 @@ import com.tencent.mobileqq.data.MessageForPic;
 
 public final class AIOPicThumbDrawableObject$Builder
 {
-  BasePicItemBuilder.DrawURL jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL;
-  ChatThumbView jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView;
-  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-  int[] jdField_a_of_type_ArrayOfInt;
+  MessageForPic a;
+  ChatThumbView b;
+  int[] c;
+  BasePicItemBuilder.DrawURL d;
   
   public AIOPicThumbDrawableObject$Builder(MessageForPic paramMessageForPic)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
+    this.a = paramMessageForPic;
   }
   
   public Builder a(BasePicItemBuilder.DrawURL paramDrawURL)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL = paramDrawURL;
+    this.d = paramDrawURL;
     return this;
   }
   
   public Builder a(ChatThumbView paramChatThumbView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView = paramChatThumbView;
+    this.b = paramChatThumbView;
     return this;
   }
   
   public Builder a(int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    this.c = paramArrayOfInt;
     return this;
   }
   
@@ -41,7 +41,7 @@ public final class AIOPicThumbDrawableObject$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.aio.AIOPicThumbDrawableObject.Builder
  * JD-Core Version:    0.7.0.1
  */

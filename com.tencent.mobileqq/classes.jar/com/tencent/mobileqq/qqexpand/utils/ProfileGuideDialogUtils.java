@@ -27,10 +27,10 @@ public class ProfileGuideDialogUtils
   {
     Object localObject1 = LayoutInflater.from(paramContext);
     Object localObject3 = null;
-    View localView1 = ((LayoutInflater)localObject1).inflate(2131561059, null);
-    View localView2 = localView1.findViewById(2131374737);
-    View localView3 = localView1.findViewById(2131363927);
-    ImageView localImageView = (ImageView)localView1.findViewById(2131374741);
+    View localView1 = ((LayoutInflater)localObject1).inflate(2131627402, null);
+    View localView2 = localView1.findViewById(2131442926);
+    View localView3 = localView1.findViewById(2131429883);
+    ImageView localImageView = (ImageView)localView1.findViewById(2131442930);
     localView2.setOnTouchListener(a);
     localView3.setOnTouchListener(a);
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(DisplayUtil.a(paramContext, 320.0F), -2);
@@ -50,7 +50,7 @@ public class ProfileGuideDialogUtils
       }
     }
     localImageView.setImageBitmap((Bitmap)localObject2);
-    Object localObject2 = new ReportDialog(paramContext, 2131755449);
+    Object localObject2 = new ReportDialog(paramContext, 2131952232);
     ((Dialog)localObject2).addContentView(localView1, localLayoutParams);
     ((Dialog)localObject2).setCanceledOnTouchOutside(false);
     localView2.setOnClickListener(new ProfileGuideDialogUtils.2(paramContext, (Dialog)localObject2));
@@ -62,22 +62,22 @@ public class ProfileGuideDialogUtils
   {
     Object localObject1 = LayoutInflater.from(paramContext);
     TextView localTextView = null;
-    View localView = ((LayoutInflater)localObject1).inflate(2131561058, null);
-    localObject1 = localView.findViewById(2131363927);
+    View localView = ((LayoutInflater)localObject1).inflate(2131627401, null);
+    localObject1 = localView.findViewById(2131429883);
     ((View)localObject1).setOnTouchListener(a);
     ((View)localObject1).setOnClickListener(paramOnClickListener);
-    Button localButton = (Button)localView.findViewById(2131363990);
+    Button localButton = (Button)localView.findViewById(2131429947);
     localButton.setOnClickListener(paramOnClickListener);
     paramOnClickListener = new ViewGroup.LayoutParams(DisplayUtil.a(paramContext, 320.0F), -2);
-    ReportDialog localReportDialog = new ReportDialog(paramContext, 2131755449);
+    ReportDialog localReportDialog = new ReportDialog(paramContext, 2131952232);
     localReportDialog.addContentView(localView, paramOnClickListener);
     localReportDialog.setCanceledOnTouchOutside(false);
     int i;
     if (paramInt != 2)
     {
       localObject1 = ExpandResourceUtil.a("expand_guide_profile.png");
-      localObject2 = HardCodeUtil.a(2131708479);
-      paramOnClickListener = HardCodeUtil.a(2131708478);
+      localObject2 = HardCodeUtil.a(2131906265);
+      paramOnClickListener = HardCodeUtil.a(2131906264);
       paramInt = DisplayUtil.a(paramContext, 163.0F);
       i = DisplayUtil.a(paramContext, 102.0F);
       paramContext = (Context)localObject2;
@@ -85,8 +85,8 @@ public class ProfileGuideDialogUtils
     else
     {
       localObject1 = ExpandResourceUtil.a("expand_guide_switch.png");
-      localObject2 = HardCodeUtil.a(2131708480);
-      paramOnClickListener = HardCodeUtil.a(2131708481);
+      localObject2 = HardCodeUtil.a(2131906266);
+      paramOnClickListener = HardCodeUtil.a(2131906267);
       paramInt = DisplayUtil.a(paramContext, 180.0F);
       i = DisplayUtil.a(paramContext, 102.0F);
       paramContext = (Context)localObject2;
@@ -105,8 +105,8 @@ public class ProfileGuideDialogUtils
         localObject2 = localTextView;
       }
     }
-    ImageView localImageView = (ImageView)localView.findViewById(2131368656);
-    localTextView = (TextView)localView.findViewById(2131380053);
+    ImageView localImageView = (ImageView)localView.findViewById(2131435569);
+    localTextView = (TextView)localView.findViewById(2131448960);
     localImageView.setImageBitmap((Bitmap)localObject2);
     localTextView.setText(paramContext);
     localButton.setText(paramOnClickListener);
@@ -119,7 +119,7 @@ public class ProfileGuideDialogUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ProfileGuideDialogUtils
  * JD-Core Version:    0.7.0.1
  */

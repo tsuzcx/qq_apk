@@ -70,7 +70,7 @@ class QQSettingMsgClearFragment$6
         DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("qq onDownloadUpdate progress = ");
-        localStringBuilder.append(localDownloadInfo.f);
+        localStringBuilder.append(localDownloadInfo.t);
         localStringBuilder.append(", url = ");
         localStringBuilder.append(localDownloadInfo.d);
         QLog.w("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
@@ -117,7 +117,7 @@ class QQSettingMsgClearFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/if5" android:background="@color/2" android:layout_width="fill_parent" android:layout_height="240.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/n4g" style="@style/zg" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:id="@id/jdw" android:background="@drawable/31" android:text="1" style="@style/zi" />
+        <View android:id="@id/n4l" style="@style/zh" />
+        <Button android:id="@id/jdx" android:background="@drawable/31" android:text="2" style="@style/zi" />
+        <View android:id="@id/n4m" style="@style/zh" />
+        <Button android:id="@id/jdy" android:background="@drawable/31" android:text="3" style="@style/zi" />
+    </LinearLayout>
+    <View android:id="@id/n4n" style="@style/zg" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:id="@id/jdz" android:background="@drawable/31" android:text="4" style="@style/zi" />
+        <View android:id="@id/n4o" style="@style/zh" />
+        <Button android:id="@id/je0" android:background="@drawable/31" android:text="5" style="@style/zi" />
+        <View android:id="@id/n4p" style="@style/zh" />
+        <Button android:id="@id/je1" android:background="@drawable/31" android:text="6" style="@style/zi" />
+    </LinearLayout>
+    <View android:id="@id/n4q" style="@style/zg" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:id="@id/je2" android:background="@drawable/31" android:text="7" style="@style/zi" />
+        <View android:id="@id/n4r" style="@style/zh" />
+        <Button android:id="@id/je3" android:background="@drawable/31" android:text="8" style="@style/zi" />
+        <View android:id="@id/n4s" style="@style/zh" />
+        <Button android:id="@id/je4" android:background="@drawable/31" android:text="9" style="@style/zi" />
+    </LinearLayout>
+    <View android:id="@id/n4h" style="@style/zg" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:textSize="26.0dip" android:id="@id/je6" android:background="@drawable/gvk" android:text="" style="@style/zi" />
+        <View android:id="@id/n4i" style="@style/zh" />
+        <Button android:id="@id/jdv" android:background="@drawable/31" android:text="0" style="@style/zi" />
+        <View android:id="@id/n4j" style="@style/zh" />
+        <ImageButton android:id="@id/je5" android:background="@drawable/gvk" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/gvs" android:layout_weight="1.0" android:contentDescription="@string/xd1" />
+    </LinearLayout>
+    <View android:id="@id/n4k" style="@style/zg" />
+</LinearLayout>

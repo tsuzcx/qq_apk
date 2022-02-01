@@ -17,23 +17,23 @@ class AccountIdentityManager$3
   
   public void onClick(View paramView)
   {
-    AccountIdentityManager.a(this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountIdentityManager).dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).logout(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_MqqAppAppRuntime, true);
+    AccountIdentityManager.a(this.d).dismiss();
+    if (this.a) {
+      ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).logout(this.b, this.c, true);
     }
     String str;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       str = "0X800B276";
     } else {
       str = "0X800B273";
     }
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+    ReportController.b(this.c, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountIdentityManager.3
  * JD-Core Version:    0.7.0.1
  */

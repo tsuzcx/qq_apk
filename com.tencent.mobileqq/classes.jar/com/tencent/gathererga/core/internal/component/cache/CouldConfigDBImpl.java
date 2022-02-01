@@ -9,26 +9,26 @@ public class CouldConfigDBImpl
   extends AbsSecureStorage
   implements CloudConfigDB
 {
-  private SharedPreferences a;
+  private SharedPreferences b;
   
   protected SharedPreferences a()
   {
-    return this.a;
-  }
-  
-  protected String a()
-  {
-    return GathererCompContext.a.a();
+    return this.b;
   }
   
   public void a(Context paramContext)
   {
-    this.a = paramContext.getSharedPreferences("gatherer_cloud_conf", 0);
+    this.b = paramContext.getSharedPreferences("gatherer_cloud_conf", 0);
+  }
+  
+  protected String b()
+  {
+    return GathererCompContext.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.component.cache.CouldConfigDBImpl
  * JD-Core Version:    0.7.0.1
  */

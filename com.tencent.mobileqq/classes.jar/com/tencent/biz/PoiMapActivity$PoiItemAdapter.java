@@ -17,41 +17,35 @@ import java.util.ArrayList;
 public class PoiMapActivity$PoiItemAdapter
   extends BaseAdapter
 {
-  public int a;
-  protected TextView a;
-  public ArrayList<PoiMapActivity.POI> a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public ArrayList<PoiMapActivity.POI> a = new ArrayList();
+  public boolean b = false;
+  public int c = -1;
+  public int d = 0;
+  public boolean e;
+  protected TextView f;
   
-  public PoiMapActivity$PoiItemAdapter(PoiMapActivity paramPoiMapActivity)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public PoiMapActivity$PoiItemAdapter(PoiMapActivity paramPoiMapActivity) {}
   
   public PoiMapActivity.POI a(int paramInt)
   {
     int i = paramInt;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       i = paramInt + 1;
     }
-    if ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i >= 0)) {
-      return (PoiMapActivity.POI)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+    if ((i < this.a.size()) && (i >= 0)) {
+      return (PoiMapActivity.POI)this.a.get(i);
     }
     return null;
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+    if (paramInt >= this.a.size()) {
       return;
     }
-    if (paramInt != this.jdField_a_of_type_Int)
+    if (paramInt != this.c)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.c = paramInt;
       notifyDataSetChanged();
       if ((paramInt != -1) && (paramBoolean))
       {
@@ -59,18 +53,18 @@ public class PoiMapActivity$PoiItemAdapter
         if (localPOI == null) {
           return;
         }
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.mCurPoiName = localPOI.a;
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.mCurPoiAdr = localPOI.jdField_b_of_type_JavaLangString;
-        PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity, localPOI.f);
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_JavaLangString = localPOI.jdField_c_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.j = localPOI.jdField_b_of_type_Int;
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.k = localPOI.jdField_c_of_type_Int;
-        PoiMapActivity.g(this.jdField_a_of_type_ComTencentBizPoiMapActivity).b();
-        TencentMap localTencentMap = PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-        double d1 = localPOI.jdField_b_of_type_Int;
+        this.g.mCurPoiName = localPOI.a;
+        this.g.mCurPoiAdr = localPOI.b;
+        PoiMapActivity.a(this.g, localPOI.f);
+        this.g.q = localPOI.c;
+        this.g.o = localPOI.k;
+        this.g.p = localPOI.l;
+        PoiMapActivity.o(this.g).b();
+        TencentMap localTencentMap = PoiMapActivity.p(this.g);
+        double d1 = localPOI.k;
         Double.isNaN(d1);
         d1 /= 1000000.0D;
-        double d2 = localPOI.jdField_c_of_type_Int;
+        double d2 = localPOI.l;
         Double.isNaN(d2);
         localTencentMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(d1, d2 / 1000000.0D)));
       }
@@ -79,25 +73,25 @@ public class PoiMapActivity$PoiItemAdapter
   
   public void a(String paramString)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramString))) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if ((!this.b) && (this.f != null) && (!TextUtils.isEmpty(paramString))) {
+      this.f.setText(paramString);
     }
   }
   
   public void a(ArrayList<PoiMapActivity.POI> paramArrayList, boolean paramBoolean, int paramInt)
   {
-    if (paramInt == this.jdField_b_of_type_Int)
+    if (paramInt == this.d)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      this.jdField_b_of_type_Int += 1;
+      this.a.addAll(paramArrayList);
+      this.e = paramBoolean;
+      this.d += 1;
       notifyDataSetChanged();
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
     notifyDataSetChanged();
   }
   
@@ -116,76 +110,76 @@ public class PoiMapActivity$PoiItemAdapter
     Object localObject2 = null;
     if (paramView == null)
     {
-      localObject1 = new PoiMapActivity.PoiItemViewHolder(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559960, null);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377358);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377357));
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371709));
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362252));
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_c_of_type_AndroidViewView = paramView.findViewById(2131377149);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_d_of_type_AndroidViewView = paramView.findViewById(2131371496);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365560);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377356));
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379400));
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374731));
+      localObject1 = new PoiMapActivity.PoiItemViewHolder(this.g);
+      paramView = LayoutInflater.from(this.g).inflate(2131626003, null);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).d = paramView.findViewById(2131445751);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).e = ((ImageView)paramView.findViewById(2131445750));
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).b = ((TextView)paramView.findViewById(2131439135));
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).c = ((TextView)paramView.findViewById(2131427833));
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).i = paramView.findViewById(2131445527);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).j = paramView.findViewById(2131438871);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).a = paramView.findViewById(2131431787);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).f = ((ImageView)paramView.findViewById(2131445749));
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).g = ((ImageView)paramView.findViewById(2131448140));
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).h = ((ImageView)paramView.findViewById(2131442919));
       paramView.setTag(localObject1);
     }
     else
     {
       localObject1 = (PoiMapActivity.PoiItemViewHolder)paramView.getTag();
     }
-    if ((paramInt != this.jdField_a_of_type_JavaUtilArrayList.size()) && ((!this.jdField_a_of_type_Boolean) || (paramInt != this.jdField_a_of_type_JavaUtilArrayList.size() - 1)))
+    if ((paramInt != this.a.size()) && ((!this.b) || (paramInt != this.a.size() - 1)))
     {
       PoiMapActivity.POI localPOI = a(paramInt);
-      if ((paramInt == 0) && (!this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView;
+      if ((paramInt == 0) && (!this.b)) {
+        this.f = ((PoiMapActivity.PoiItemViewHolder)localObject1).c;
       }
       if (localPOI == null)
       {
         localObject1 = localObject2;
-        break label578;
+        break label579;
       }
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_d_of_type_AndroidViewView.setVisibility(8);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_b_of_type_AndroidViewView.setVisibility(8);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ComTencentBizPoiMapActivity.d);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(localPOI.a);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(localPOI.jdField_b_of_type_JavaLangString);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).j.setVisibility(8);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).e.setImageDrawable(null);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).d.setVisibility(8);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).a.setVisibility(0);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).a.setBackgroundDrawable(null);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).a.setBackgroundResource(this.g.h);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).b.setText(localPOI.a);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).c.setText(localPOI.b);
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(localPOI.a);
-      ((StringBuilder)localObject2).append(localPOI.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(localPOI.b);
       localObject2 = ((StringBuilder)localObject2).toString();
-      if (paramInt == this.jdField_a_of_type_Int)
+      if (paramInt == this.c)
       {
-        ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.g);
-        ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.g);
-        ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_c_of_type_AndroidViewView.setVisibility(0);
+        ((PoiMapActivity.PoiItemViewHolder)localObject1).b.setTextColor(this.g.k);
+        ((PoiMapActivity.PoiItemViewHolder)localObject1).c.setTextColor(this.g.k);
+        ((PoiMapActivity.PoiItemViewHolder)localObject1).i.setVisibility(0);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append((String)localObject2);
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131694943));
+        ((StringBuilder)localObject1).append(this.g.getString(2131892670));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       else
       {
-        ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_Int);
-        ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_Int);
-        ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_c_of_type_AndroidViewView.setVisibility(4);
+        ((PoiMapActivity.PoiItemViewHolder)localObject1).b.setTextColor(this.g.f);
+        ((PoiMapActivity.PoiItemViewHolder)localObject1).c.setTextColor(this.g.e);
+        ((PoiMapActivity.PoiItemViewHolder)localObject1).i.setVisibility(4);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append((String)localObject2);
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getString(2131694944));
+        ((StringBuilder)localObject1).append(this.g.getString(2131892671));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       paramView.setContentDescription((CharSequence)localObject1);
     }
     else
     {
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_d_of_type_AndroidViewView.setVisibility(0);
-      ((PoiMapActivity.PoiItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(8);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).j.setVisibility(0);
+      ((PoiMapActivity.PoiItemViewHolder)localObject1).a.setVisibility(8);
     }
     Object localObject1 = paramView;
-    label578:
+    label579:
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localObject1;
   }

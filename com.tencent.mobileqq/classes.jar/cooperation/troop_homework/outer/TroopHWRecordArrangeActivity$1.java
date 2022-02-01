@@ -33,16 +33,16 @@ class TroopHWRecordArrangeActivity$1
           l = 0L;
         }
         localObject = this.a;
-        ((TroopHWRecordArrangeActivity)localObject).jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)((TroopHWRecordArrangeActivity)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+        ((TroopHWRecordArrangeActivity)localObject).d = new AudioInfo(paramMessage, (int)((TroopHWRecordArrangeActivity)localObject).a.getRecordTime(), l);
+        this.a.a.setVisibility(8);
         paramMessage = new JSONObject();
         try
         {
           paramMessage.put("webid", TroopHWRecordArrangeActivity.a(this.a));
           paramMessage.put("type", "record");
           paramMessage.put("state", "stop");
-          paramMessage.put("time", Math.round(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.duration / 1000.0F));
-          paramMessage.put("size", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.size);
+          paramMessage.put("time", Math.round(this.a.d.duration / 1000.0F));
+          paramMessage.put("size", this.a.d.size);
         }
         catch (JSONException localJSONException)
         {
@@ -50,7 +50,7 @@ class TroopHWRecordArrangeActivity$1
         }
         Intent localIntent = new Intent();
         localIntent.putExtra("jscallback", paramMessage.toString());
-        localIntent.putExtra("localPath", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+        localIntent.putExtra("localPath", this.a.d.path);
         this.a.setResult(-1, localIntent);
         this.a.finish();
         return;
@@ -59,12 +59,12 @@ class TroopHWRecordArrangeActivity$1
       this.a.finish();
       return;
     }
-    this.a.jdField_a_of_type_Boolean = true;
+    this.a.e = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.outer.TroopHWRecordArrangeActivity.1
  * JD-Core Version:    0.7.0.1
  */

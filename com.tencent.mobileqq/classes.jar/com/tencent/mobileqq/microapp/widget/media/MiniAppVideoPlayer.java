@@ -143,7 +143,7 @@ public class MiniAppVideoPlayer
     this.ab.setVisibility(0);
     this.s.setXYaxis(2);
     if (!this.i) {
-      if (!StringUtil.a(this.e))
+      if (!StringUtil.isEmpty(this.e))
       {
         paramContext = URLDrawable.getDrawable(this.e, null);
         if (paramContext != null)
@@ -154,7 +154,7 @@ public class MiniAppVideoPlayer
           }
         }
       }
-      else if (!StringUtil.a(this.l))
+      else if (!StringUtil.isEmpty(this.l))
       {
         c.a(this.l, new j(this));
       }
@@ -237,7 +237,7 @@ public class MiniAppVideoPlayer
   
   public void a(long paramLong)
   {
-    if (StringUtil.a(this.l)) {
+    if (StringUtil.isEmpty(this.l)) {
       return;
     }
     this.f = true;
@@ -306,7 +306,7 @@ public class MiniAppVideoPlayer
     paramJSONObject.optBoolean("showCenterPlayBtn");
     paramJSONObject.optBoolean("showFullScreenBtn");
     paramJSONObject.optBoolean("enableProgressGesture");
-    if (StringUtil.a(this.e)) {
+    if (StringUtil.isEmpty(this.e)) {
       this.e = paramJSONObject.optString("poster");
     }
     paramJSONObject.optInt("initialTime");
@@ -436,7 +436,7 @@ public class MiniAppVideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.MiniAppVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class TroopStoryMemoriesListAdapter$YearItemViewHolder
   
   public TroopStoryMemoriesListAdapter$YearItemViewHolder(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381304));
-    this.b = ((TextView)paramView.findViewById(2131380561));
+    this.a = ((TextView)paramView.findViewById(2131450356));
+    this.b = ((TextView)paramView.findViewById(2131449518));
   }
   
   public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(DateUtils.c(paramTroopStoryItemInfo.publishTime));
+    this.a.setText(DateUtils.d(paramTroopStoryItemInfo.publishTime));
   }
 }
 

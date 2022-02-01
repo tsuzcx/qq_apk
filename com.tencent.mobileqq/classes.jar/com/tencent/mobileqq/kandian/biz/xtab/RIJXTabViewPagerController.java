@@ -1,59 +1,100 @@
 package com.tencent.mobileqq.kandian.biz.xtab;
 
 import android.content.Context;
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.RIJXTabFrameUtils;
-import com.tencent.mobileqq.kandian.biz.feeds.api.IRIJChannelStayTimeMonitor;
+import com.tencent.mobileqq.kandian.biz.common.fragment.ReadInJoyBaseFragment;
+import com.tencent.mobileqq.kandian.biz.feeds.api.impl.RIJChannelStayTimeMonitor;
 import com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPager;
 import com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPager.CustomFragmentPagerAdapter;
-import com.tencent.mobileqq.kandian.biz.xtab.badge.RIJXTabBadgeReporter;
-import com.tencent.mobileqq.kandian.biz.xtab.badge.RIJXTabBadgeStore;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
-import com.tencent.mobileqq.kandian.repo.xtab.api.IRIJXTabConfigHandler;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.xtab.api.impl.RIJXTabConfigHandler;
+import com.tencent.mobileqq.kandian.repo.xtab.badge.RIJXTabBadgeReporter;
+import com.tencent.mobileqq.kandian.repo.xtab.badge.RIJXTabBadgeStore;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Lazy;
+import kotlin.LazyKt;
 import kotlin.Metadata;
 import kotlin.collections.CollectionsKt;
+import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
 import mqq.os.MqqHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabViewPagerController;", "", "viewPager", "Lcom/tencent/mobileqq/kandian/biz/tab/ReadInJoyChannelViewPager;", "viewPagerAdapter", "Lcom/tencent/mobileqq/kandian/biz/tab/ReadInJoyChannelViewPager$CustomFragmentPagerAdapter;", "tabBar", "Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabBar;", "(Lcom/tencent/mobileqq/kandian/biz/tab/ReadInJoyChannelViewPager;Lcom/tencent/mobileqq/kandian/biz/tab/ReadInJoyChannelViewPager$CustomFragmentPagerAdapter;Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabBar;)V", "account", "", "onPageChangeListener", "com/tencent/mobileqq/kandian/biz/xtab/RIJXTabViewPagerController$onPageChangeListener$1", "Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabViewPagerController$onPageChangeListener$1;", "tabChannelCoverInfoList", "", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/TabChannelCoverInfo;", "getTabChannelCoverInfoList", "()Ljava/util/List;", "tag", "getChannelCover", "index", "", "getCurrentChannelCover", "getCurrentFragment", "Lcom/tencent/mobileqq/app/QBaseFragment;", "getCurrentIndex", "getFragment", "getIndexByChannelID", "channelID", "getRecommendIndex", "handleGuideBadgeOnPageSelected", "", "tabInfo", "init", "needHandleBadgeOnPageSelected", "", "onDestroy", "context", "Landroid/content/Context;", "onTabChange", "setCurrentItem", "setCurrentItemByChannelID", "switch2RecommendFragment", "switchToDefaultChannel", "updateViewPager", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabViewPagerController;", "", "tabFrame", "Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabFrame;", "tabBar", "Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabBar;", "(Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabFrame;Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabBar;)V", "TAG", "", "onPageChangeListener", "com/tencent/mobileqq/kandian/biz/xtab/RIJXTabViewPagerController$onPageChangeListener$1", "Lcom/tencent/mobileqq/kandian/biz/xtab/RIJXTabViewPagerController$onPageChangeListener$1;", "tabChannelCoverInfoList", "", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/TabChannelCoverInfo;", "viewPager", "Lcom/tencent/mobileqq/kandian/biz/tab/ReadInJoyChannelViewPager;", "getViewPager", "()Lcom/tencent/mobileqq/kandian/biz/tab/ReadInJoyChannelViewPager;", "viewPager$delegate", "Lkotlin/Lazy;", "viewPagerAdapter", "Lcom/tencent/mobileqq/kandian/biz/tab/ReadInJoyChannelViewPager$CustomFragmentPagerAdapter;", "getViewPagerAdapter", "()Lcom/tencent/mobileqq/kandian/biz/tab/ReadInJoyChannelViewPager$CustomFragmentPagerAdapter;", "viewPagerAdapter$delegate", "getChannelCover", "index", "", "getCurrentChannelCover", "getCurrentFragment", "Lcom/tencent/mobileqq/app/QBaseFragment;", "getCurrentIndex", "getFragment", "getIndexByChannelID", "channelID", "getRecommendIndex", "handleTabBarOnPageSelected", "", "tabInfo", "onDestroy", "context", "Landroid/content/Context;", "onEnterKDTab", "onExitKDTab", "resetData", "setCurrentItem", "setCurrentItemByChannelID", "switch2RecommendFragment", "switchToDefaultChannel", "tryHandleBadgeOnPageSelected", "tryHandleGuideBadgeOnPageSelected", "updateChannelList", "channelList", "", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJXTabViewPagerController
 {
-  private final ReadInJoyChannelViewPager.CustomFragmentPagerAdapter jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager$CustomFragmentPagerAdapter;
-  private final ReadInJoyChannelViewPager jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager;
-  private final RIJXTabBar jdField_a_of_type_ComTencentMobileqqKandianBizXtabRIJXTabBar;
-  private final RIJXTabViewPagerController.onPageChangeListener.1 jdField_a_of_type_ComTencentMobileqqKandianBizXtabRIJXTabViewPagerController$onPageChangeListener$1;
-  private String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private final List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  private final String b;
+  private final String a;
+  private final List<TabChannelCoverInfo> b;
+  private final Lazy c;
+  private final Lazy d;
+  private final RIJXTabViewPagerController.onPageChangeListener.1 e;
+  private final RIJXTabFrame f;
+  private final RIJXTabBar g;
   
-  public RIJXTabViewPagerController(@NotNull ReadInJoyChannelViewPager paramReadInJoyChannelViewPager, @NotNull ReadInJoyChannelViewPager.CustomFragmentPagerAdapter paramCustomFragmentPagerAdapter, @NotNull RIJXTabBar paramRIJXTabBar)
+  public RIJXTabViewPagerController(@NotNull RIJXTabFrame paramRIJXTabFrame, @NotNull RIJXTabBar paramRIJXTabBar)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager = paramReadInJoyChannelViewPager;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager$CustomFragmentPagerAdapter = paramCustomFragmentPagerAdapter;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizXtabRIJXTabBar = paramRIJXTabBar;
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.b = "RIJXTabViewPagerController";
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizXtabRIJXTabViewPagerController$onPageChangeListener$1 = new RIJXTabViewPagerController.onPageChangeListener.1(this);
+    this.f = paramRIJXTabFrame;
+    this.g = paramRIJXTabBar;
+    this.a = "RIJXTabViewPagerController";
+    this.b = ((List)new ArrayList());
+    RIJChannelStayTimeMonitor.INSTANCE.startMonitor();
+    this.c = LazyKt.lazy((Function0)new RIJXTabViewPagerController.viewPagerAdapter.2(this));
+    this.d = LazyKt.lazy((Function0)new RIJXTabViewPagerController.viewPager.2(this));
+    this.e = new RIJXTabViewPagerController.onPageChangeListener.1(this);
   }
   
-  private final int a(int paramInt)
+  private final void a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i;
+    if ((paramInt2 != TabChannelCoverInfo.TYPE_CHANNEL_XTAB_FRIEND_CONFIG) && (paramInt2 != TabChannelCoverInfo.TYPE_CHANNEL_XTAB_KD_COMMUNITY_CONFIG) && (RIJXTabBadgeStore.b(paramInt2) != null)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
+      return;
+    }
+    QBaseFragment localQBaseFragment = c(paramInt1);
+    Object localObject = localQBaseFragment;
+    if (!(localQBaseFragment instanceof ReadInJoyBaseFragment)) {
+      localObject = null;
+    }
+    localObject = (ReadInJoyBaseFragment)localObject;
+    if (localObject != null)
+    {
+      ((ReadInJoyBaseFragment)localObject).a(3);
+      ThreadManager.getUIHandler().postDelayed((Runnable)new RIJXTabViewPagerController.tryHandleBadgeOnPageSelected.1(this, paramInt2), 500L);
+    }
+  }
+  
+  private final void a(int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo)
+  {
+    ThreadManager.getUIHandler().post((Runnable)new RIJXTabViewPagerController.handleTabBarOnPageSelected.1(this, paramTabChannelCoverInfo, paramInt));
+  }
+  
+  private final void a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  {
+    int i = paramTabChannelCoverInfo.mChannelCoverId;
+    if (paramTabChannelCoverInfo.needBadgeGuide)
+    {
+      if (!RIJXTabBadgeStore.a.d(i)) {
+        return;
+      }
+      RIJXTabBadgeReporter.b(i);
+      ThreadManager.getUIHandler().postDelayed((Runnable)new RIJXTabViewPagerController.tryHandleGuideBadgeOnPageSelected.1(this, i), 500L);
+    }
+  }
+  
+  private final int e(int paramInt)
+  {
+    Object localObject = this.b.iterator();
     int i = 0;
     int j;
     while (((Iterator)localObject).hasNext())
@@ -73,13 +114,13 @@ public final class RIJXTabViewPagerController
     if (i >= 0)
     {
       j = i;
-      if (i < this.jdField_a_of_type_JavaUtilList.size()) {}
+      if (i < this.b.size()) {}
     }
     else
     {
-      j = b();
+      j = j();
     }
-    localObject = this.b;
+    localObject = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getIndexByChannelID,channelID=");
     localStringBuilder.append(paramInt);
@@ -89,23 +130,19 @@ public final class RIJXTabViewPagerController
     return j;
   }
   
-  private final void a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  private final ReadInJoyChannelViewPager.CustomFragmentPagerAdapter h()
   {
-    if ((paramTabChannelCoverInfo.needBadgeGuide) && (RIJXTabBadgeStore.a.a(paramTabChannelCoverInfo.mChannelCoverId)))
-    {
-      RIJXTabBadgeReporter.b(paramTabChannelCoverInfo.mChannelCoverId);
-      ThreadManager.getUIHandler().postDelayed((Runnable)new RIJXTabViewPagerController.handleGuideBadgeOnPageSelected..inlined.apply.lambda.1(paramTabChannelCoverInfo, this), 500L);
-    }
+    return (ReadInJoyChannelViewPager.CustomFragmentPagerAdapter)this.c.getValue();
   }
   
-  private final boolean a(int paramInt)
+  private final ReadInJoyChannelViewPager i()
   {
-    return (paramInt != TabChannelCoverInfo.TYPE_CHANNEL_XTAB_FRIEND_CONFIG) && (paramInt != TabChannelCoverInfo.TYPE_CHANNEL_XTAB_KD_COMMUNITY_CONFIG) && (RIJXTabBadgeStore.a(paramInt) != null);
+    return (ReadInJoyChannelViewPager)this.d.getValue();
   }
   
-  private final int b()
+  private final int j()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -128,106 +165,101 @@ public final class RIJXTabViewPagerController
     return i;
   }
   
-  public final int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager.getCurrentItem();
-  }
-  
-  @Nullable
-  public final QBaseFragment a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager$CustomFragmentPagerAdapter.a();
-  }
-  
-  @Nullable
-  public final QBaseFragment a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager$CustomFragmentPagerAdapter.a(paramInt);
-  }
-  
-  @Nullable
-  public final TabChannelCoverInfo a()
-  {
-    return (TabChannelCoverInfo)CollectionsKt.getOrNull(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager.getCurrentItem());
-  }
-  
-  @Nullable
-  public final TabChannelCoverInfo a(int paramInt)
-  {
-    return (TabChannelCoverInfo)CollectionsKt.getOrNull(this.jdField_a_of_type_JavaUtilList, paramInt);
-  }
-  
   public final void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager.addOnPageChangeListener((ViewPager.OnPageChangeListener)this.jdField_a_of_type_ComTencentMobileqqKandianBizXtabRIJXTabViewPagerController$onPageChangeListener$1);
-    ((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).startMonitor();
+    i().post((Runnable)new RIJXTabViewPagerController.resetData.1(this));
   }
   
   public final void a(int paramInt)
   {
-    b(a(paramInt));
+    b(e(paramInt));
   }
   
   public final void a(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    ((IRIJChannelStayTimeMonitor)QRoute.api(IRIJChannelStayTimeMonitor.class)).endMonitor();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager.clearOnPageChangeListeners();
+    RIJChannelStayTimeMonitor.INSTANCE.endMonitor();
+    i().clearOnPageChangeListeners();
     if (((paramContext instanceof SplashActivity)) && (!((SplashActivity)paramContext).isFinishing())) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager$CustomFragmentPagerAdapter.a();
+      h().a();
     }
+  }
+  
+  public final void a(@NotNull List<? extends TabChannelCoverInfo> paramList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramList, "channelList");
+    this.b.clear();
+    this.b.addAll((Collection)paramList);
+    this.g.a(this.b, this);
+    h().a(this.b);
+    a(RIJXTabConfigHandler.INSTANCE.getDefaultEnterTabId());
+    i().post((Runnable)new RIJXTabViewPagerController.updateChannelList.1(this));
+    QLog.d(this.a, 1, "updateViewPager!");
   }
   
   public final void b()
   {
-    if (!StringsKt.equals(RIJQQAppInterfaceUtil.a(), this.jdField_a_of_type_JavaLangString, true)) {
-      c();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager.post((Runnable)new RIJXTabViewPagerController.onTabChange.1(this));
+    i().post((Runnable)new RIJXTabViewPagerController.onEnterKDTab.1(this));
   }
   
   public final void b(int paramInt)
   {
     int i;
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
       i = paramInt;
     } else {
-      i = b();
+      i = j();
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager.setCurrentItem(i, true);
-    String str = this.b;
+    i().setCurrentItem(i, true);
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setCurrentItem,index=");
     localStringBuilder.append(paramInt);
     QLog.d(str, 1, localStringBuilder.toString());
   }
   
+  @Nullable
+  public final QBaseFragment c(int paramInt)
+  {
+    return h().a(paramInt);
+  }
+  
   public final void c()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll((Collection)RIJXTabFrameUtils.getChannelCoverList());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizXtabRIJXTabBar.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager, this.jdField_a_of_type_JavaUtilList, this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPager$CustomFragmentPagerAdapter.a(this.jdField_a_of_type_JavaUtilList);
-    a(((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).getDefaultEnterTabId());
-    String str = RIJQQAppInterfaceUtil.a();
-    Intrinsics.checkExpressionValueIsNotNull(str, "RIJQQAppInterfaceUtil.getAccount()");
-    this.jdField_a_of_type_JavaLangString = str;
-    QLog.d(this.b, 1, "updateViewPager!");
+    i().post((Runnable)new RIJXTabViewPagerController.onExitKDTab.1(this));
+  }
+  
+  @Nullable
+  public final TabChannelCoverInfo d(int paramInt)
+  {
+    return (TabChannelCoverInfo)CollectionsKt.getOrNull(this.b, paramInt);
   }
   
   public final void d()
   {
-    int j = b();
-    int i = j;
-    if (j == -1) {
-      i = a(((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).getDefaultEnterTabId());
-    }
-    b(i);
+    b(e(RIJXTabConfigHandler.INSTANCE.getDefaultEnterTabId()));
+  }
+  
+  @Nullable
+  public final QBaseFragment e()
+  {
+    return h().d();
+  }
+  
+  public final int f()
+  {
+    return i().getCurrentItem();
+  }
+  
+  @Nullable
+  public final TabChannelCoverInfo g()
+  {
+    return (TabChannelCoverInfo)CollectionsKt.getOrNull(this.b, i().getCurrentItem());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabViewPagerController
  * JD-Core Version:    0.7.0.1
  */

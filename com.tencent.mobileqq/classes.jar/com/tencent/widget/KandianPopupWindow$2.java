@@ -11,13 +11,13 @@ class KandianPopupWindow$2
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.c();
+    this.a.e();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.KandianPopupWindow.2
  * JD-Core Version:    0.7.0.1
  */

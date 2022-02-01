@@ -4,18 +4,13 @@ import com.tencent.biz.subscribe.transition.inter.ITransAnimStateListener;
 
 public class TransAnimState
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private ITransAnimStateListener jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener;
-  
-  public void a()
-  {
-    a(-1);
-  }
+  private volatile int a = 0;
+  private ITransAnimStateListener b;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    ITransAnimStateListener localITransAnimStateListener = this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener;
+    this.a = paramInt;
+    ITransAnimStateListener localITransAnimStateListener = this.b;
     if (localITransAnimStateListener != null)
     {
       if (paramInt != -1)
@@ -27,33 +22,38 @@ public class TransAnimState
             if (paramInt != 3) {
               return;
             }
-            localITransAnimStateListener.m();
+            localITransAnimStateListener.t();
             return;
           }
-          localITransAnimStateListener.k();
+          localITransAnimStateListener.r();
           return;
         }
-        localITransAnimStateListener.l();
+        localITransAnimStateListener.s();
         return;
       }
-      localITransAnimStateListener.n();
+      localITransAnimStateListener.u();
     }
   }
   
   public void a(ITransAnimStateListener paramITransAnimStateListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener = paramITransAnimStateListener;
-    a(this.jdField_a_of_type_Int);
+    this.b = paramITransAnimStateListener;
+    a(this.a);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == -1;
+    return this.a == -1;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
+  }
+  
+  public void c()
+  {
+    a(-1);
   }
 }
 

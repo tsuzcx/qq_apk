@@ -22,12 +22,12 @@ public class DomainUtil
 {
   private static final String CONFIG_SPLIT = ";";
   private static final String[] DOMAIN_NAME_LIST = { "Request", "Websocket", "Download", "Upload", "Webview", "UDP" };
-  public static final int DOMIAN_TYPE_DOWNLOAD = 2;
-  public static final int DOMIAN_TYPE_DUP = 5;
-  public static final int DOMIAN_TYPE_REQUEST = 0;
-  public static final int DOMIAN_TYPE_UPLOAD = 3;
-  public static final int DOMIAN_TYPE_WEBSOCKET = 1;
-  public static final int DOMIAN_TYPE_WEBVIEW = 4;
+  public static final int DOMAIN_TYPE_DOWNLOAD = 2;
+  public static final int DOMAIN_TYPE_DUP = 5;
+  public static final int DOMAIN_TYPE_REQUEST = 0;
+  public static final int DOMAIN_TYPE_UPLOAD = 3;
+  public static final int DOMAIN_TYPE_WEBSOCKET = 1;
+  public static final int DOMAIN_TYPE_WEBVIEW = 4;
   private static ConcurrentHashMap<Integer, ArrayList<DomainConfig>> mCachedDomainConfigMap;
   private static String mCurWhiteListConfig;
   private static ArrayList<String> sDominWhiteList = null;
@@ -375,7 +375,7 @@ public class DomainUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.DomainUtil
  * JD-Core Version:    0.7.0.1
  */

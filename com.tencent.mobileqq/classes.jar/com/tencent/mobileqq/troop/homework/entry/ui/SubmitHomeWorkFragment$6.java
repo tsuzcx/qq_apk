@@ -12,7 +12,7 @@ class SubmitHomeWorkFragment$6
   public void run()
   {
     Object localObject = this.this$0;
-    localObject = ((SubmitHomeWorkFragment)localObject).a(((SubmitHomeWorkFragment)localObject).c);
+    localObject = ((SubmitHomeWorkFragment)localObject).b(((SubmitHomeWorkFragment)localObject).a);
     if (QLog.isColorLevel()) {
       QLog.d("SubmitHomeWorkFragment", 2, "弹起键盘");
     }
@@ -23,7 +23,7 @@ class SubmitHomeWorkFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.6
  * JD-Core Version:    0.7.0.1
  */

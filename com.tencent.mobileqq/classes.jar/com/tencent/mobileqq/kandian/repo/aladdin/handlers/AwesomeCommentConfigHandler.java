@@ -45,13 +45,13 @@ public class AwesomeCommentConfigHandler
         } else {
           paramInt2 = 0;
         }
-        RIJSPUtils.a(AwesomeCommentInfo.h, Integer.valueOf(paramInt2));
+        RIJSPUtils.a(AwesomeCommentInfo.k, Integer.valueOf(paramInt2));
       }
       else if (TextUtils.equals(str1, "awesome_comment_line_number"))
       {
         try
         {
-          RIJSPUtils.a(AwesomeCommentInfo.i, Integer.valueOf(str2));
+          RIJSPUtils.a(AwesomeCommentInfo.l, Integer.valueOf(str2));
           Aladdin.getConfig(paramInt1).update(paramString);
         }
         catch (NumberFormatException localNumberFormatException)
@@ -71,7 +71,7 @@ public class AwesomeCommentConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.AwesomeCommentConfigHandler
  * JD-Core Version:    0.7.0.1
  */

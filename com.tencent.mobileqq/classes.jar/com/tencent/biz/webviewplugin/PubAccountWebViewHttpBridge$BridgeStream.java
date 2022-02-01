@@ -10,20 +10,20 @@ import java.net.HttpURLConnection;
 class PubAccountWebViewHttpBridge$BridgeStream
   extends InputStream
 {
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  HttpURLConnection jdField_a_of_type_JavaNetHttpURLConnection;
+  BufferedInputStream a;
   BufferedInputStream b;
+  ByteArrayOutputStream c;
+  HttpURLConnection d;
   
   public PubAccountWebViewHttpBridge$BridgeStream(PubAccountWebViewHttpBridge paramPubAccountWebViewHttpBridge, BufferedInputStream paramBufferedInputStream1, BufferedInputStream paramBufferedInputStream2, ByteArrayOutputStream paramByteArrayOutputStream, HttpURLConnection paramHttpURLConnection)
   {
-    this.jdField_a_of_type_JavaIoBufferedInputStream = paramBufferedInputStream1;
+    this.a = paramBufferedInputStream1;
     this.b = paramBufferedInputStream2;
     if (paramByteArrayOutputStream == null) {
       paramByteArrayOutputStream = new ByteArrayOutputStream();
     }
-    this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
-    this.jdField_a_of_type_JavaNetHttpURLConnection = paramHttpURLConnection;
+    this.c = paramByteArrayOutputStream;
+    this.d = paramHttpURLConnection;
   }
   
   public void close()
@@ -33,20 +33,20 @@ class PubAccountWebViewHttpBridge$BridgeStream
     }
     try
     {
-      if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
+      if (this.a != null)
       {
-        this.jdField_a_of_type_JavaIoBufferedInputStream.close();
-        this.jdField_a_of_type_JavaIoBufferedInputStream = null;
+        this.a.close();
+        this.a = null;
       }
       if (this.b != null)
       {
         this.b.close();
         this.b = null;
       }
-      if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+      if (this.d != null) {
+        this.d.disconnect();
       }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginPubAccountWebViewHttpBridge.a = null;
+      this.e.l = null;
       return;
     }
     catch (Exception localException)
@@ -57,10 +57,10 @@ class PubAccountWebViewHttpBridge$BridgeStream
   
   public int read()
   {
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
+    if ((this.a == null) && (this.b == null)) {
       return -1;
     }
-    BufferedInputStream localBufferedInputStream = this.jdField_a_of_type_JavaIoBufferedInputStream;
+    BufferedInputStream localBufferedInputStream = this.a;
     int i;
     if (localBufferedInputStream != null) {
       i = localBufferedInputStream.read();
@@ -81,10 +81,10 @@ class PubAccountWebViewHttpBridge$BridgeStream
   
   public int read(byte[] paramArrayOfByte)
   {
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
+    if ((this.a == null) && (this.b == null)) {
       return -1;
     }
-    Object localObject = this.jdField_a_of_type_JavaIoBufferedInputStream;
+    Object localObject = this.a;
     int i;
     if (localObject != null)
     {
@@ -127,7 +127,7 @@ class PubAccountWebViewHttpBridge$BridgeStream
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
+    if ((this.a == null) && (this.b == null)) {
       return -1;
     }
     int i = paramArrayOfByte.length;
@@ -140,10 +140,10 @@ class PubAccountWebViewHttpBridge$BridgeStream
     {
       try
       {
-        if (this.jdField_a_of_type_JavaIoBufferedInputStream == null) {
+        if (this.a == null) {
           break label180;
         }
-        j = this.jdField_a_of_type_JavaIoBufferedInputStream.read();
+        j = this.a.read();
         int k = j;
         if (j == -1)
         {
@@ -186,7 +186,7 @@ class PubAccountWebViewHttpBridge$BridgeStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountWebViewHttpBridge.BridgeStream
  * JD-Core Version:    0.7.0.1
  */

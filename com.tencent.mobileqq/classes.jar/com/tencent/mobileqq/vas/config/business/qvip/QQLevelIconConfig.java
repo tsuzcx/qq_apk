@@ -16,8 +16,8 @@ public class QQLevelIconConfig
   public QQLevelIconConfig()
   {
     Resources localResources = MobileQQ.getContext().getResources();
-    this.mNotifyPaymentText = localResources.getString(2131716755);
-    this.mExpiredNotifyPaymentText = localResources.getString(2131716754);
+    this.mNotifyPaymentText = localResources.getString(2131914227);
+    this.mExpiredNotifyPaymentText = localResources.getString(2131914226);
   }
   
   public String toString()
@@ -39,7 +39,7 @@ public class QQLevelIconConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QQLevelIconConfig
  * JD-Core Version:    0.7.0.1
  */

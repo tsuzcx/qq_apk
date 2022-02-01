@@ -15,55 +15,51 @@ import java.util.List;
 
 public class AnimationBuilder
 {
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = null;
-  private final ViewAnimator jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator;
-  private final List<Animator> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private final View[] jdField_a_of_type_ArrayOfAndroidViewView;
-  private boolean b = false;
+  private final ViewAnimator a;
+  private final View[] b;
+  private final List<Animator> c = new ArrayList();
+  private boolean d;
+  private boolean e = false;
+  private Interpolator f = null;
   
   public AnimationBuilder(ViewAnimator paramViewAnimator, View... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator = paramViewAnimator;
-    this.jdField_a_of_type_ArrayOfAndroidViewView = paramVarArgs;
+    this.a = paramViewAnimator;
+    this.b = paramVarArgs;
   }
   
   protected float a(float paramFloat)
   {
-    return paramFloat * this.jdField_a_of_type_ArrayOfAndroidViewView[0].getContext().getResources().getDisplayMetrics().density;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0];
-  }
-  
-  public Interpolator a()
-  {
-    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+    return paramFloat * this.b[0].getContext().getResources().getDisplayMetrics().density;
   }
   
   public AnimationBuilder a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator.a(paramLong);
+    this.a.a(paramLong);
     return this;
   }
   
   protected AnimationBuilder a(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramAnimator);
+    this.c.add(paramAnimator);
     return this;
   }
   
   public AnimationBuilder a(AnimationListener.Start paramStart)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator.a(paramStart);
+    this.a.a(paramStart);
+    return this;
+  }
+  
+  public AnimationBuilder a(AnimationListener.Stop paramStop)
+  {
+    this.a.a(paramStop);
     return this;
   }
   
   public AnimationBuilder a(AnimationListener.Update paramUpdate, float... paramVarArgs)
   {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+    View[] arrayOfView = this.b;
     int j = arrayOfView.length;
     int i = 0;
     while (i < j)
@@ -81,51 +77,31 @@ public class AnimationBuilder
   
   public AnimationBuilder a(String paramString, float... paramVarArgs)
   {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+    View[] arrayOfView = this.b;
     int j = arrayOfView.length;
     int i = 0;
     while (i < j)
     {
       View localView = arrayOfView[i];
-      this.jdField_a_of_type_JavaUtilList.add(ObjectAnimator.ofFloat(localView, paramString, a(paramVarArgs)));
+      this.c.add(ObjectAnimator.ofFloat(localView, paramString, a(paramVarArgs)));
       i += 1;
     }
     return this;
   }
   
-  public AnimationBuilder a(float... paramVarArgs)
-  {
-    return a("translationY", paramVarArgs);
-  }
-  
   public AnimationBuilder a(View... paramVarArgs)
   {
-    return this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator.b(paramVarArgs);
-  }
-  
-  public ViewAnimator a()
-  {
-    return this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator.a(new AccelerateInterpolator());
-  }
-  
-  public ViewAnimator a(float paramFloat)
-  {
-    return this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator.a(new DecelerateInterpolator(paramFloat));
+    return this.a.b(paramVarArgs);
   }
   
   protected List<Animator> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   protected float[] a(float... paramVarArgs)
   {
-    if (!this.b) {
+    if (!this.e) {
       return paramVarArgs;
     }
     float[] arrayOfFloat = new float[paramVarArgs.length];
@@ -138,30 +114,65 @@ public class AnimationBuilder
     return arrayOfFloat;
   }
   
-  public AnimationBuilder b(float... paramVarArgs)
+  public Interpolator b()
   {
-    return a("alpha", paramVarArgs);
+    return this.f;
   }
   
-  public ViewAnimator b()
+  public AnimationBuilder b(float... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator.a();
-    return this.jdField_a_of_type_ComTencentBizVideostoryAnimatorViewAnimator;
+    return a("translationY", paramVarArgs);
+  }
+  
+  public ViewAnimator b(float paramFloat)
+  {
+    return this.a.a(new DecelerateInterpolator(paramFloat));
   }
   
   public AnimationBuilder c(float... paramVarArgs)
   {
-    return a(new AnimationBuilder.2(this), paramVarArgs);
+    return a("translationX", paramVarArgs);
+  }
+  
+  public ViewAnimator c()
+  {
+    return this.a.a(new AccelerateInterpolator());
   }
   
   public AnimationBuilder d(float... paramVarArgs)
   {
+    return a("alpha", paramVarArgs);
+  }
+  
+  public ViewAnimator d()
+  {
+    this.a.b();
+    return this.a;
+  }
+  
+  public View e()
+  {
+    return this.b[0];
+  }
+  
+  public AnimationBuilder e(float... paramVarArgs)
+  {
+    return a(new AnimationBuilder.2(this), paramVarArgs);
+  }
+  
+  public AnimationBuilder f(float... paramVarArgs)
+  {
     return a(new AnimationBuilder.3(this), paramVarArgs);
+  }
+  
+  public boolean f()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.animator.AnimationBuilder
  * JD-Core Version:    0.7.0.1
  */

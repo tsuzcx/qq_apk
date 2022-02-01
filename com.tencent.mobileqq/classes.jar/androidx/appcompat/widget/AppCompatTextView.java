@@ -35,25 +35,27 @@ public class AppCompatTextView
   extends TextView
   implements TintableBackgroundView, AutoSizeableTextView, TintableCompoundDrawablesView
 {
-  private final AppCompatBackgroundHelper mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
+  private final AppCompatBackgroundHelper mBackgroundTintHelper;
   @Nullable
   private Future<PrecomputedTextCompat> mPrecomputedTextFuture;
   private final AppCompatTextClassifierHelper mTextClassifierHelper;
   private final AppCompatTextHelper mTextHelper;
   
-  public AppCompatTextView(Context paramContext)
+  public AppCompatTextView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatTextView(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatTextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 16842884);
   }
   
-  public AppCompatTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatTextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
+    this.mBackgroundTintHelper = new AppCompatBackgroundHelper(this);
     this.mBackgroundTintHelper.loadFromAttributes(paramAttributeSet, paramInt);
     this.mTextHelper = new AppCompatTextHelper(this);
     this.mTextHelper.loadFromAttributes(paramAttributeSet, paramInt);

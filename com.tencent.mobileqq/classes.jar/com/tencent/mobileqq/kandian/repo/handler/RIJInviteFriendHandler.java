@@ -41,7 +41,7 @@ public class RIJInviteFriendHandler
   {
     int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, new oidb_cmd0xbd4.RspBody());
     paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJInviteFriendHandler.1(this, paramToServiceMsg, i));
+    this.b.post(new RIJInviteFriendHandler.1(this, paramToServiceMsg, i));
   }
   
   public void a(ArrayList<ResultRecord> paramArrayList, int paramInt, long paramLong, String paramString)
@@ -61,7 +61,7 @@ public class RIJInviteFriendHandler
           {
             oidb_cmd0xbd4.Invitee localInvitee = new oidb_cmd0xbd4.Invitee();
             localInvitee.uint64_uin.set(Long.parseLong(paramString.a()));
-            localInvitee.uint32_from.set(paramString.a());
+            localInvitee.uint32_from.set(paramString.c());
             localInviteReq.rpt_msg_invitee.add(localInvitee);
           }
         }
@@ -76,14 +76,14 @@ public class RIJInviteFriendHandler
         paramArrayList.printStackTrace();
         localReqBody.msg_invite_req.set(localInviteReq);
         paramArrayList = ReadInJoyOidbHelper.a("OidbSvc.0xbd4_1", 3028, 1, localReqBody.toByteArray());
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReq(paramArrayList);
+        this.a.sendPbReq(paramArrayList);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJInviteFriendHandler
  * JD-Core Version:    0.7.0.1
  */

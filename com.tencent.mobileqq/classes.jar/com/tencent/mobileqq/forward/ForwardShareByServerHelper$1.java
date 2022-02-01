@@ -34,7 +34,7 @@ class ForwardShareByServerHelper$1
   {
     String str1 = ForwardShareByServerHelper.a(this.a).getString("uin");
     HashMap localHashMap = new HashMap();
-    boolean bool = ForwardShareByServerHelper.a(this.a);
+    boolean bool = ForwardShareByServerHelper.b(this.a);
     String str2 = "1";
     if (bool) {
       localObject = "1";
@@ -42,7 +42,7 @@ class ForwardShareByServerHelper$1
       localObject = "0";
     }
     localHashMap.put("param_time_out", localObject);
-    if (ForwardShareByServerHelper.b(this.a)) {
+    if (ForwardShareByServerHelper.c(this.a)) {
       localObject = str2;
     } else {
       localObject = "0";
@@ -53,17 +53,17 @@ class ForwardShareByServerHelper$1
       localObject = "";
     }
     ForwardStatisticsReporter.a("KEY_STAGE_2_SEND_MSG_BY_SERVER", (String)localObject, localHashMap, ForwardUtils.a(paramSendResult));
-    QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, new Object[] { "UpCallBack onSend result =", paramSendResult, ", isTimeOut=", Boolean.valueOf(ForwardShareByServerHelper.a(this.a)), ", isFirstShow =", Boolean.valueOf(ForwardShareByServerHelper.b(this.a)) });
-    if (!ForwardShareByServerHelper.b(this.a)) {
+    QLog.d("SDK_SHARE.ForwardShareByServerHelper", 1, new Object[] { "UpCallBack onSend result =", paramSendResult, ", isTimeOut=", Boolean.valueOf(ForwardShareByServerHelper.b(this.a)), ", isFirstShow =", Boolean.valueOf(ForwardShareByServerHelper.c(this.a)) });
+    if (!ForwardShareByServerHelper.c(this.a)) {
       return;
     }
-    if (ForwardShareByServerHelper.a(this.a)) {
+    if (ForwardShareByServerHelper.b(this.a)) {
       return;
     }
-    int i = paramSendResult.jdField_a_of_type_Int;
+    int i = paramSendResult.a;
     if (i == 0)
     {
-      paramSendResult = (String[])paramSendResult.jdField_a_of_type_JavaLangObject;
+      paramSendResult = (String[])paramSendResult.l;
       if ((paramSendResult != null) && (paramSendResult.length == 2))
       {
         localObject = new StringBuilder();
@@ -82,8 +82,8 @@ class ForwardShareByServerHelper$1
     if (-1 == i)
     {
       i = paramSendResult.b;
-      bool = ForwardUtils.a(ForwardShareByServerHelper.a(this.a));
-      paramSendResult = (String[])paramSendResult.jdField_a_of_type_JavaLangObject;
+      bool = ForwardUtils.a(ForwardShareByServerHelper.d(this.a));
+      paramSendResult = (String[])paramSendResult.l;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("UpCallBack onSend failed errCode=");
       ((StringBuilder)localObject).append(i);
@@ -108,7 +108,7 @@ class ForwardShareByServerHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareByServerHelper.1
  * JD-Core Version:    0.7.0.1
  */

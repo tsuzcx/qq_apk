@@ -10,7 +10,6 @@ import com.tencent.av.business.manager.pendant.EffectPendantTools;
 import com.tencent.av.camera.CameraObserver;
 import com.tencent.av.camera.CameraUtils;
 import com.tencent.av.camera.api.ICameraManagerApi;
-import com.tencent.av.core.VcSystemInfo;
 import com.tencent.av.opengl.GraphicRenderMgr;
 import com.tencent.av.opengl.api.IGraphicRender;
 import com.tencent.av.opengl.config.EffectFaceDeviceConfig;
@@ -18,40 +17,34 @@ import com.tencent.av.utils.FramePerfData;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
 
 public abstract class EffectCtrlBase
   extends EffectRenderWrapper
   implements EffectController
 {
-  private static boolean b = false;
+  private static boolean h = false;
   protected Context a;
-  private CameraObserver a;
-  
-  public EffectCtrlBase()
-  {
-    this.jdField_a_of_type_ComTencentAvCameraCameraObserver = new EffectCtrlBase.1(this);
-  }
+  private CameraObserver j = new EffectCtrlBase.1(this);
   
   private void a(CameraFrame paramCameraFrame, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2)
   {
     if (paramCameraFrame != null)
     {
-      paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramShort1, paramShort2, (short)paramCameraFrame.jdField_a_of_type_Int, (short)paramCameraFrame.jdField_b_of_type_Int);
-      if (paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData != null) {
-        paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData.e();
+      paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramShort1, paramShort2, (short)paramCameraFrame.b, (short)paramCameraFrame.c);
+      if (paramCameraFrame.k != null) {
+        paramCameraFrame.k.g();
       }
-      GraphicRenderMgr.getInstance().sendCameraFrame(paramCameraFrame.jdField_a_of_type_ArrayOfByte, paramCameraFrame.c, paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.jdField_b_of_type_Int, paramCameraFrame.d, paramCameraFrame.e, paramCameraFrame.jdField_b_of_type_Long, paramCameraFrame.jdField_a_of_type_Boolean, a(), paramArrayOfByte1, paramCameraFrame.f, paramCameraFrame.g);
-      paramCameraFrame.b();
+      GraphicRenderMgr.getInstance().sendCameraFrame(paramCameraFrame.a, paramCameraFrame.d, paramCameraFrame.b, paramCameraFrame.c, paramCameraFrame.e, paramCameraFrame.f, paramCameraFrame.i, paramCameraFrame.g, i(), paramArrayOfByte1, paramCameraFrame.l, paramCameraFrame.m);
+      paramCameraFrame.e();
     }
   }
   
   public static boolean a(int paramInt, long paramLong)
   {
-    if (e()) {
+    if (f()) {
       return true;
     }
-    int i = DeviceInfoUtil.a();
+    int i = DeviceInfoUtil.d();
     if (i < 17)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -60,80 +53,38 @@ public abstract class EffectCtrlBase
       AVLog.printColorLog("EffectRenderWrapper", localStringBuilder.toString());
       return false;
     }
-    return a(paramInt, paramLong, 1073741824L);
-  }
-  
-  public static boolean a(int paramInt, long paramLong1, long paramLong2)
-  {
-    int i = VcSystemInfo.getNumCores();
-    StringBuilder localStringBuilder;
-    if (i < paramInt)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isSupportOfDevice fail, cpuCount[");
-      localStringBuilder.append(i);
-      localStringBuilder.append(" < ");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append("]");
-      QLog.w("EffectRenderWrapper", 1, localStringBuilder.toString());
-      return false;
-    }
-    long l = VcSystemInfo.getMaxCpuFreq();
-    if ((l != 0L) && (l < paramLong1))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isSupportOfDevice fail, cpuFrequency[");
-      localStringBuilder.append(l);
-      localStringBuilder.append(" < ");
-      localStringBuilder.append(paramLong1);
-      localStringBuilder.append("]");
-      QLog.w("EffectRenderWrapper", 1, localStringBuilder.toString());
-      return false;
-    }
-    paramLong1 = DeviceInfoUtil.a();
-    if (paramLong1 < paramLong2)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isSupportOfDevice fail, mem[");
-      localStringBuilder.append(paramLong1);
-      localStringBuilder.append(" < ");
-      localStringBuilder.append(paramLong2);
-      localStringBuilder.append("]");
-      QLog.w("EffectRenderWrapper", 1, localStringBuilder.toString());
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean b()
-  {
-    return (((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).isSupported()) && (PtvFilterSoLoad.a());
+    return EffectCtrlUtils.a(paramInt, paramLong, 1073741824L);
   }
   
   public static boolean c()
   {
-    if (Build.VERSION.SDK_INT <= 15) {
-      return false;
-    }
-    return a(2, 1200000L, 1073741824L);
+    return (((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).isSupported()) && (PtvFilterSoLoad.a());
   }
   
   public static boolean d()
   {
-    if (b) {
+    if (Build.VERSION.SDK_INT <= 15) {
+      return false;
+    }
+    return EffectCtrlUtils.a(2, 1200000L, 1073741824L);
+  }
+  
+  public static boolean e()
+  {
+    if (h) {
       return true;
     }
-    Object localObject = EffectFaceDeviceConfig.a();
+    Object localObject = EffectFaceDeviceConfig.g();
     if ((localObject != null) && (((EffectFaceDeviceConfig)localObject).d()))
     {
-      b = true;
+      h = true;
       return true;
     }
-    if (!c()) {
+    if (!d()) {
       return false;
     }
     int i;
-    if ((!a(4, 1400000L, 1073741824L)) && (!a(8, 1200000L, 1073741824L))) {
+    if ((!EffectCtrlUtils.a(4, 1400000L, 1073741824L)) && (!EffectCtrlUtils.a(8, 1200000L, 1073741824L))) {
       i = 0;
     } else {
       i = 1;
@@ -151,11 +102,11 @@ public abstract class EffectCtrlBase
       AVLog.printErrorLog("EffectRenderWrapper", ((StringBuilder)localObject).toString());
       return false;
     }
-    b = true;
+    h = true;
     return true;
   }
   
-  public static boolean e()
+  public static boolean f()
   {
     String str = Build.MODEL;
     if (TextUtils.isEmpty(str)) {
@@ -168,29 +119,29 @@ public abstract class EffectCtrlBase
   {
     if (paramRenderParams != null)
     {
-      int i = EffectPendantTools.a(paramRenderParams.a, paramRenderParams.b);
+      int i = EffectPendantTools.a(paramRenderParams.c, paramRenderParams.f);
       GraphicRenderMgr.getInstance().setBeautyOrFaceConfig(i, 1);
     }
     if (paramRenderResult != null) {
-      a(paramRenderResult.jdField_a_of_type_ComTencentAvOpenglEffectsCameraFrame, paramRenderResult.jdField_a_of_type_ArrayOfByte, paramRenderResult.jdField_b_of_type_ArrayOfByte, paramRenderResult.c, paramRenderResult.jdField_a_of_type_Short, paramRenderResult.jdField_b_of_type_Short);
+      a(paramRenderResult.a, paramRenderResult.b, paramRenderResult.c, paramRenderResult.d, paramRenderResult.e, paramRenderResult.f);
     }
   }
   
   protected abstract byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2, short paramShort3, short paramShort4);
   
-  protected abstract float[] a();
-  
-  public void b()
+  public void g()
   {
-    super.b();
-    CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).addObserver(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
+    super.g();
+    CameraUtils.a(this.a).addObserver(this.j);
   }
   
-  public void c()
+  public void h()
   {
-    CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).deleteObserver(this.jdField_a_of_type_ComTencentAvCameraCameraObserver);
-    super.c();
+    CameraUtils.a(this.a).deleteObserver(this.j);
+    super.h();
   }
+  
+  protected abstract float[] i();
 }
 
 

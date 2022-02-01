@@ -16,19 +16,9 @@ public class MediaExtractor
     a();
   }
   
-  public final int a()
-  {
-    return this.a.getTrackCount();
-  }
-  
   public int a(ByteBuffer paramByteBuffer, int paramInt)
   {
     return this.a.readSampleData(paramByteBuffer, paramInt);
-  }
-  
-  public long a()
-  {
-    return this.a.getSampleTime();
   }
   
   @TargetApi(16)
@@ -51,11 +41,6 @@ public class MediaExtractor
     this.a = new android.media.MediaExtractor();
   }
   
-  public void a(int paramInt)
-  {
-    this.a.selectTrack(paramInt);
-  }
-  
   public void a(long paramLong, int paramInt)
   {
     this.a.seekTo(paramLong, paramInt);
@@ -66,32 +51,47 @@ public class MediaExtractor
     this.a.setDataSource(paramContext, paramUri, paramMap);
   }
   
-  public boolean a()
-  {
-    return this.a.advance();
-  }
-  
-  public int b()
-  {
-    return this.a.getSampleTrackIndex();
-  }
-  
-  public long b()
-  {
-    return this.a.getCachedDuration();
-  }
-  
   public void b()
   {
     this.a.release();
   }
   
-  public boolean b()
+  public void b(int paramInt)
+  {
+    this.a.selectTrack(paramInt);
+  }
+  
+  public final int c()
+  {
+    return this.a.getTrackCount();
+  }
+  
+  public boolean d()
+  {
+    return this.a.advance();
+  }
+  
+  public int e()
+  {
+    return this.a.getSampleTrackIndex();
+  }
+  
+  public long f()
+  {
+    return this.a.getSampleTime();
+  }
+  
+  public long g()
+  {
+    return this.a.getCachedDuration();
+  }
+  
+  public boolean h()
   {
     return this.a.hasCacheReachedEndOfStream();
   }
   
-  public boolean c()
+  public boolean i()
   {
     return false;
   }

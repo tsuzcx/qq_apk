@@ -49,7 +49,7 @@ public class SquareRoundFrameLayout
   private void b()
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    Object localObject = new SquareRoundImageUtils.SquareRoundColorDrawable(getResources().getColor(2131165345), getWidth(), getHeight());
+    Object localObject = new SquareRoundImageUtils.SquareRoundColorDrawable(getResources().getColor(2131165587), getWidth(), getHeight());
     localStateListDrawable.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
     localObject = new ColorDrawable(0);
     localStateListDrawable.addState(new int[0], (Drawable)localObject);
@@ -84,7 +84,7 @@ public class SquareRoundFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.SquareRoundFrameLayout
  * JD-Core Version:    0.7.0.1
  */

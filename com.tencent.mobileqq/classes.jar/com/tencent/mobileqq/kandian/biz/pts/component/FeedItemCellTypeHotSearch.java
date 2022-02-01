@@ -14,50 +14,50 @@ public class FeedItemCellTypeHotSearch
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
+    this.h = true;
+    return i().n().p();
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    LinearLayout localLinearLayout = new LinearLayout(this.e);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView instanceof ComponentContentHotSearch))) {
-      localLinearLayout.addView((ComponentContentHotSearch)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView);
+    if ((this.l != null) && ((this.l instanceof ComponentContentHotSearch))) {
+      localLinearLayout.addView((ComponentContentHotSearch)this.l);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider);
+    if (this.r != null) {
+      localLinearLayout.addView(this.r);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead);
+    if (this.t != null) {
+      localLinearLayout.addView(this.t);
     }
     a(localLinearLayout);
     return this;
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return this;
   }
   
-  public FeedItemCell g()
+  public FeedItemCell i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentView = new ComponentContentHotSearch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter);
+    this.l = new ComponentContentHotSearch(this.e, this.g);
     return this;
   }
   
-  public FeedItemCell o()
+  public FeedItemCell q()
   {
-    super.o();
+    super.q();
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeHotSearch
  * JD-Core Version:    0.7.0.1
  */

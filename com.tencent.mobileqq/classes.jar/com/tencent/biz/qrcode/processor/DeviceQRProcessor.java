@@ -23,32 +23,32 @@ public class DeviceQRProcessor
     return "DeviceQRProcessor";
   }
   
-  public boolean a()
-  {
-    return super.a();
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
     paramString1 = paramString1.toLowerCase();
-    return (a(paramInt)) && ((paramString1.startsWith("http://iot.qq.com/add")) || (("ScanSmartDevice".equals(paramScannerParams.jdField_a_of_type_JavaLangString)) && (!paramString1.startsWith("http://qqapp.eprintsw.com"))));
+    return (a(paramInt)) && ((paramString1.startsWith("http://iot.qq.com/add")) || (("ScanSmartDevice".equals(paramScannerParams.b)) && (!paramString1.startsWith("http://qqapp.eprintsw.com"))));
   }
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    paramString2 = (Activity)this.a.a();
+    paramString2 = (Activity)this.b.d();
     String str = paramString1.toLowerCase();
-    if ((!str.startsWith("http://iot.qq.com/add")) && ((!"ScanSmartDevice".equals(paramScannerParams.jdField_a_of_type_JavaLangString)) || (str.startsWith("http://qqapp.eprintsw.com")))) {
+    if ((!str.startsWith("http://iot.qq.com/add")) && ((!"ScanSmartDevice".equals(paramScannerParams.b)) || (str.startsWith("http://qqapp.eprintsw.com")))) {
       return false;
     }
     SmartDeviceReport.a().a(1);
-    SmartDeviceReport.a().jdField_a_of_type_JavaLangString = "";
-    SmartDeviceReport.a().jdField_a_of_type_Int = 0;
+    SmartDeviceReport.a().b = "";
+    SmartDeviceReport.a().c = 0;
     SmartDeviceReport.a().a(BaseApplicationImpl.getApplication().getRuntime(), "Usr_Entrance", 1);
-    if (DeviceScanner.openDeviceQCodeUrl(paramString2, this.a, paramString1)) {
-      this.a.b();
+    if (DeviceScanner.openDeviceQCodeUrl(paramString2, this.b, paramString1)) {
+      this.b.b();
     }
     return true;
+  }
+  
+  public boolean b()
+  {
+    return super.b();
   }
 }
 

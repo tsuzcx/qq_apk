@@ -12,18 +12,18 @@ import java.lang.ref.WeakReference;
 class QavVideoAudioRecorder$RecodeHandler
   extends Handler
 {
-  private WeakReference<QavVideoAudioRecorder> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QavVideoAudioRecorder> b;
   
   public QavVideoAudioRecorder$RecodeHandler(QavVideoAudioRecorder paramQavVideoAudioRecorder1, Looper paramLooper, QavVideoAudioRecorder paramQavVideoAudioRecorder2)
   {
     super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQavVideoAudioRecorder2);
+    this.b = new WeakReference(paramQavVideoAudioRecorder2);
   }
   
   public void handleMessage(Message paramMessage)
   {
     int i = paramMessage.what;
-    QavVideoAudioRecorder localQavVideoAudioRecorder = (QavVideoAudioRecorder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QavVideoAudioRecorder localQavVideoAudioRecorder = (QavVideoAudioRecorder)this.b.get();
     if (localQavVideoAudioRecorder == null)
     {
       if (QLog.isColorLevel()) {
@@ -64,15 +64,15 @@ class QavVideoAudioRecorder$RecodeHandler
         }
         throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
       }
-      QavVideoAudioRecorder.a(localQavVideoAudioRecorder);
+      QavVideoAudioRecorder.b(localQavVideoAudioRecorder);
       try
       {
-        if (QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder) == null) {
+        if (QavVideoAudioRecorder.a(this.a) == null) {
           break label342;
         }
-        QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder).flush();
-        QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder).close();
-        QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder, null);
+        QavVideoAudioRecorder.a(this.a).flush();
+        QavVideoAudioRecorder.a(this.a).close();
+        QavVideoAudioRecorder.a(this.a, null);
         return;
       }
       catch (IOException paramMessage)
@@ -85,8 +85,8 @@ class QavVideoAudioRecorder$RecodeHandler
     }
     else
     {
-      if (QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder) == null) {
-        QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder, new ByteArrayOutputStream(32768));
+      if (QavVideoAudioRecorder.a(this.a) == null) {
+        QavVideoAudioRecorder.a(this.a, new ByteArrayOutputStream(32768));
       }
       if (paramMessage.obj == null) {
         break label343;

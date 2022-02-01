@@ -6,34 +6,34 @@ import java.util.Observable;
 public class StackObservable
   extends Observable
 {
-  private static StackObservable a;
+  private static StackObservable b;
   public HashMap<String, String> a;
   
   public static StackObservable a()
   {
-    if (jdField_a_of_type_ComTencentQqperfRepoterStackObservable == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqperfRepoterStackObservable == null) {
-          jdField_a_of_type_ComTencentQqperfRepoterStackObservable = new StackObservable();
+        if (b == null) {
+          b = new StackObservable();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqperfRepoterStackObservable;
+    return b;
   }
   
   public void a(HashMap<String, String> paramHashMap)
   {
     paramHashMap.put("key_type", "t_held_thread");
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.a = paramHashMap;
     setChanged();
     notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.repoter.StackObservable
  * JD-Core Version:    0.7.0.1
  */

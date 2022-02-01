@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 public class GetUserSelfInfoStep$Request
   extends NetworkRequest<GetUserSelfInfoStep.Response>
 {
-  public static final String a = StoryApi.a("StorySvc.get_user_base_info");
+  public static final String e = StoryApi.a("StorySvc.get_user_base_info");
   
   public GetUserSelfInfoStep.Response a(byte[] paramArrayOfByte)
   {
@@ -29,10 +29,10 @@ public class GetUserSelfInfoStep$Request
   
   public String a()
   {
-    return a;
+    return e;
   }
   
-  protected byte[] a()
+  protected byte[] c()
   {
     return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }

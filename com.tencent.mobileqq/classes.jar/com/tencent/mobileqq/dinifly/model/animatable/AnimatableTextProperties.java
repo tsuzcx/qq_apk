@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.model.animatable;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public class AnimatableTextProperties
 {
@@ -23,7 +23,7 @@ public class AnimatableTextProperties
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.animatable.AnimatableTextProperties
  * JD-Core Version:    0.7.0.1
  */

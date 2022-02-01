@@ -21,17 +21,17 @@ final class ReadinjoySPEventReport$19
     localAttributeList.att_name.set("op_type");
     PBStringField localPBStringField = localAttributeList.att_value;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("");
     localPBStringField.set(localStringBuilder.toString());
     localArrayList.add(localAttributeList);
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    if (this.b != null)
     {
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(2);
       localAttributeList.att_name.set("subscribe_folderstatus");
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey("folder_status")) {
-        localAttributeList.att_value.set((String)this.jdField_a_of_type_JavaUtilMap.get("folder_status"));
+      if (this.b.containsKey("folder_status")) {
+        localAttributeList.att_value.set((String)this.b.get("folder_status"));
       } else {
         localAttributeList.att_value.set("1");
       }
@@ -39,27 +39,27 @@ final class ReadinjoySPEventReport$19
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(3);
       localAttributeList.att_name.set("strategy_id");
-      localAttributeList.att_value.set((String)this.jdField_a_of_type_JavaUtilMap.get("strategy_id"));
+      localAttributeList.att_value.set((String)this.b.get("strategy_id"));
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(4);
       localAttributeList.att_name.set("algorithm_id");
-      localAttributeList.att_value.set((String)this.jdField_a_of_type_JavaUtilMap.get("algorithm_id"));
+      localAttributeList.att_value.set((String)this.b.get("algorithm_id"));
       localArrayList.add(localAttributeList);
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(5);
       localAttributeList.att_name.set("action_data");
-      localAttributeList.att_value.set((String)this.jdField_a_of_type_JavaUtilMap.get("action_data"));
+      localAttributeList.att_value.set((String)this.b.get("action_data"));
       localArrayList.add(localAttributeList);
     }
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
       localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(6);
       localAttributeList.att_name.set("operation_bitmap");
       localPBStringField = localAttributeList.att_value;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("");
       localPBStringField.set(localStringBuilder.toString());
       localArrayList.add(localAttributeList);
@@ -69,7 +69,7 @@ final class ReadinjoySPEventReport$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.19
  * JD-Core Version:    0.7.0.1
  */

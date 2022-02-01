@@ -17,20 +17,20 @@ class BlockAdView$SingleBlockAdView$1
   public void onClick(View paramView)
   {
     paramView = new GdtHandler.Params();
-    paramView.c = 11;
-    paramView.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)BlockAdView.SingleBlockAdView.access$000(this.this$1));
-    paramView.jdField_a_of_type_ComTencentGdtadAditemGdtAd = this.val$gdtAd;
-    paramView.jdField_a_of_type_Boolean = true;
+    paramView.q = 11;
+    paramView.r = new WeakReference((Activity)BlockAdView.SingleBlockAdView.access$000(this.this$1));
+    paramView.a = this.val$gdtAd;
     paramView.b = true;
+    paramView.e = true;
     Bundle localBundle = new Bundle();
     localBundle.putString("big_brother_ref_source_key", "biz_src_miniappD");
-    paramView.jdField_a_of_type_AndroidOsBundle = localBundle;
+    paramView.p = localBundle;
     GdtHandler.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.widget.BlockAdView.SingleBlockAdView.1
  * JD-Core Version:    0.7.0.1
  */

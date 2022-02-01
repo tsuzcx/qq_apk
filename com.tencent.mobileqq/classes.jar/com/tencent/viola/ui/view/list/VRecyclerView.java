@@ -265,11 +265,6 @@ public class VRecyclerView
     this.mRefreshMoveOberver = new VRecyclerView.1(this);
   }
   
-  private boolean isFlying()
-  {
-    return this.mIsFlying;
-  }
-  
   private boolean isHorizontal()
   {
     return (getComponent() != null) && (getComponent().mOrientation == 0);
@@ -692,6 +687,16 @@ public class VRecyclerView
     return 0;
   }
   
+  public boolean isFlying()
+  {
+    return this.mIsFlying;
+  }
+  
+  public boolean isListScroll()
+  {
+    return this.mIsListScroll;
+  }
+  
   public boolean isScrollDown()
   {
     int i = this.mSnaperReboundOffset;
@@ -1037,7 +1042,7 @@ public class VRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.VRecyclerView
  * JD-Core Version:    0.7.0.1
  */

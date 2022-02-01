@@ -33,11 +33,6 @@ public class TroopAioNotifyHandler
     super(paramAppInterface);
   }
   
-  protected String a()
-  {
-    return "TroopNotificationHandler";
-  }
-  
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
     super.notifyUI(paramInt, paramBoolean, paramObject);
@@ -47,7 +42,7 @@ public class TroopAioNotifyHandler
   {
     try
     {
-      String str = AppSetting.f();
+      String str = AppSetting.h();
       Object localObject = new oidb_0x928.ReqBody();
       ((oidb_0x928.ReqBody)localObject).group_id.set(paramLong);
       ((oidb_0x928.ReqBody)localObject).platform.set(2);
@@ -125,12 +120,12 @@ public class TroopAioNotifyHandler
           paramFromServiceMsg.append(" ---->");
           QLog.d(".troop.notify_feeds.data", 2, paramFromServiceMsg.toString());
         }
-        notifyUI(TroopAioNotifyObserver.a, true, new Object[] { String.valueOf(l), paramToServiceMsg });
+        notifyUI(TroopAioNotifyObserver.b, true, new Object[] { String.valueOf(l), paramToServiceMsg });
         return;
       }
       catch (Exception paramToServiceMsg)
       {
-        notifyUI(TroopAioNotifyObserver.a, false, new Object[] { String.valueOf(l), new ArrayList() });
+        notifyUI(TroopAioNotifyObserver.b, false, new Object[] { String.valueOf(l), new ArrayList() });
         if (!QLog.isColorLevel()) {
           break label467;
         }
@@ -141,12 +136,17 @@ public class TroopAioNotifyHandler
       paramFromServiceMsg.append(" ---->");
       QLog.e(".troop.notify_feeds.data", 2, paramFromServiceMsg.toString());
       return;
-      notifyUI(TroopAioNotifyObserver.a, false, new Object[] { String.valueOf(l), new ArrayList() });
+      notifyUI(TroopAioNotifyObserver.b, false, new Object[] { String.valueOf(l), new ArrayList() });
       label467:
       return;
       label468:
       i += 1;
     }
+  }
+  
+  protected String dv_()
+  {
+    return "TroopNotificationHandler";
   }
   
   public Set<String> getCommandList()
@@ -192,7 +192,7 @@ public class TroopAioNotifyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.handler.TroopAioNotifyHandler
  * JD-Core Version:    0.7.0.1
  */

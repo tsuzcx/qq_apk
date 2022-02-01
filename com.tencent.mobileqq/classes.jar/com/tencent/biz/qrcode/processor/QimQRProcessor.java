@@ -32,11 +32,6 @@ public class QimQRProcessor
     return "QimQRProcessor";
   }
   
-  public boolean a()
-  {
-    return super.a();
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
     boolean bool;
@@ -51,14 +46,19 @@ public class QimQRProcessor
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    paramString2 = (AppActivity)this.a.a();
+    paramString2 = (AppActivity)this.b.d();
     if (QRUtils.a(paramString1))
     {
       a(paramString1, paramString2);
-      this.a.b();
+      this.b.b();
       return true;
     }
     return false;
+  }
+  
+  public boolean b()
+  {
+    return super.b();
   }
 }
 

@@ -35,6 +35,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
 import com.tencent.mobileqq.soso.location.data.SosoCell;
@@ -71,10 +72,10 @@ public class HotChatHelper
 {
   public static Dialog a(Activity paramActivity, View.OnClickListener paramOnClickListener)
   {
-    paramActivity = new ReportDialog(paramActivity, 2131756189);
-    paramActivity.setContentView(2131561121);
-    Button localButton1 = (Button)paramActivity.findViewById(2131363828);
-    Button localButton2 = (Button)paramActivity.findViewById(2131363839);
+    paramActivity = new ReportDialog(paramActivity, 2131953338);
+    paramActivity.setContentView(2131627471);
+    Button localButton1 = (Button)paramActivity.findViewById(2131429764);
+    Button localButton2 = (Button)paramActivity.findViewById(2131429782);
     localButton1.setOnClickListener(new HotChatHelper.1(paramActivity));
     paramActivity.setCanceledOnTouchOutside(true);
     localButton2.setOnClickListener(paramOnClickListener);
@@ -125,11 +126,11 @@ public class HotChatHelper
   {
     int i = paramActivity.getRequestedOrientation();
     paramActivity.setRequestedOrientation(1);
-    paramQQAppInterface = DialogUtil.a(paramActivity, 0, 2131559929, paramActivity.getString(2131693197), null, paramActivity.getString(2131693570), paramActivity.getString(2131692934), new HotChatHelper.2(paramActivity, paramQQAppInterface), new HotChatHelper.3(paramQQAppInterface));
+    paramQQAppInterface = DialogUtil.a(paramActivity, 0, 2131625972, paramActivity.getString(2131890737), null, paramActivity.getString(2131891134), paramActivity.getString(2131890047), new HotChatHelper.2(paramActivity, paramQQAppInterface), new HotChatHelper.3(paramQQAppInterface));
     paramQQAppInterface.setOnDismissListener(new HotChatHelper.4(paramActivity, i));
     paramQQAppInterface.getBtnight().setTypeface(Typeface.DEFAULT_BOLD);
-    paramQQAppInterface.setMessageCount(paramActivity.getString(2131693196));
-    paramQQAppInterface.setPreviewImage(paramActivity.getResources().getDrawable(2130842650), true, 1);
+    paramQQAppInterface.setMessageCount(paramActivity.getString(2131890736));
+    paramQQAppInterface.setPreviewImage(paramActivity.getResources().getDrawable(2130843603), true, 1);
     paramQQAppInterface.show();
     return paramQQAppInterface;
   }
@@ -141,8 +142,8 @@ public class HotChatHelper
     {
       int i = localBaseActivity.getRequestedOrientation();
       localBaseActivity.setRequestedOrientation(1);
-      paramHotChatInfo = DialogUtil.a(localBaseActivity, 230, localBaseActivity.getString(2131693193), localBaseActivity.getString(2131693192), 2131690728, 2131692081, paramOnClickListener, new HotChatHelper.5());
-      paramOnClickListener = (TextView)paramHotChatInfo.findViewById(2131365644);
+      paramHotChatInfo = DialogUtil.a(localBaseActivity, 230, localBaseActivity.getString(2131890733), localBaseActivity.getString(2131890732), 2131887648, 2131889053, paramOnClickListener, new HotChatHelper.5());
+      paramOnClickListener = (TextView)paramHotChatInfo.findViewById(2131431876);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 17;
       paramOnClickListener.setLayoutParams(localLayoutParams);
@@ -205,11 +206,11 @@ public class HotChatHelper
         }
       }
       localObject1 = new LBS.Attribute();
-      localObject2 = DeviceInfoUtil.a();
+      localObject2 = DeviceInfoUtil.b();
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((LBS.Attribute)localObject1).imei.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
       }
-      localObject2 = DeviceInfoUtil.b();
+      localObject2 = DeviceInfoUtil.c();
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((LBS.Attribute)localObject1).imsi.set(ByteStringMicro.copyFrom(((String)localObject2).getBytes()));
       }
@@ -225,7 +226,7 @@ public class HotChatHelper
     if (!((WifiManager)localObject1).isWifiEnabled()) {
       return null;
     }
-    Object localObject2 = ((WifiManager)localObject1).getConnectionInfo();
+    Object localObject2 = NetworkMonitor.getConnectionInfo((WifiManager)localObject1);
     localObject1 = HotChatManager.a((WifiInfo)localObject2);
     long l = SosoWifi.macToLong(((WifiInfo)localObject2).getBSSID());
     int i = ((WifiInfo)localObject2).getRssi();
@@ -239,7 +240,7 @@ public class HotChatHelper
   public static void a(int paramInt, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     paramString5 = new ShareActionSheetBuilder(paramBaseActivity);
-    paramString5.setActionSheetTitle(paramBaseActivity.getString(2131719029));
+    paramString5.setActionSheetTitle(paramBaseActivity.getString(2131916565));
     paramString5.setActionSheetItems(a(paramBaseActivity));
     paramString5.setItemClickListener(new HotChatHelper.7(paramString5, paramInt, paramQQAppInterface, paramBaseActivity, paramString1, paramString6, paramString3, paramString4, paramString7, paramString2, paramString8));
     try
@@ -269,7 +270,7 @@ public class HotChatHelper
     }
     paramString1 = paramBaseActivity;
     if (paramBaseActivity == null) {
-      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
+      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846923);
     }
     WXShareHelper.a().b(String.valueOf(l), paramString2, paramString1, paramString3, paramString5);
   }
@@ -282,7 +283,7 @@ public class HotChatHelper
     } else {
       i = 65;
     }
-    paramString4 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(i).a(paramString2).a("web", paramString4, paramString5, null, null).a(HardCodeUtil.a(2131705644), null).a();
+    paramString4 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(i).a(paramString2).a("web", paramString4, paramString5, null, null).a(HardCodeUtil.a(2131903530), null).a();
     paramString5 = StructMsgElementFactory.a(2);
     paramString1 = paramString6;
     if (TextUtils.isEmpty(paramString6)) {
@@ -303,12 +304,12 @@ public class HotChatHelper
     }
     if (paramHotChatInfo.state == 1)
     {
-      a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131693190), true);
+      a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131890730), true);
       return;
     }
-    a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131693195), true);
-    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
-    RecentUser localRecentUser = localRecentUserProxy.a(paramHotChatInfo.troopUin, 1);
+    a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131890735), true);
+    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
+    RecentUser localRecentUser = localRecentUserProxy.b(paramHotChatInfo.troopUin, 1);
     if (localRecentUser != null) {
       localRecentUserProxy.a(localRecentUser);
     }
@@ -329,13 +330,6 @@ public class HotChatHelper
         return;
       }
       AddMessageHelper.a(paramQQAppInterface, paramHotChatInfo.troopUin, paramString, 1, paramBoolean, false);
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null) {
-      paramMessageRecord.saveExtInfoToExtStr("hotchat_flash_pic", "true");
     }
   }
   
@@ -371,28 +365,28 @@ public class HotChatHelper
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696399);
-    localActionSheetItem.icon = 2130839067;
+    localActionSheetItem.label = paramContext.getString(2131894171);
+    localActionSheetItem.icon = 2130839221;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696413);
-    localActionSheetItem.icon = 2130839068;
+    localActionSheetItem.label = paramContext.getString(2131894185);
+    localActionSheetItem.icon = 2130839222;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696420);
-    localActionSheetItem.icon = 2130839071;
+    localActionSheetItem.label = paramContext.getString(2131894192);
+    localActionSheetItem.icon = 2130839225;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696402);
-    localActionSheetItem.icon = 2130839065;
+    localActionSheetItem.label = paramContext.getString(2131894174);
+    localActionSheetItem.icon = 2130839219;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
@@ -420,7 +414,7 @@ public class HotChatHelper
     {
       paramString1 = new StringBuilder();
       paramString1.append(paramString2);
-      paramString1.append(HardCodeUtil.a(2131705645));
+      paramString1.append(HardCodeUtil.a(2131903531));
       paramString1 = paramString1.toString();
     }
     paramString5.putString("troop_wording", paramString1);
@@ -438,14 +432,14 @@ public class HotChatHelper
     }
     paramString1 = paramBaseActivity;
     if (paramBaseActivity == null) {
-      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
+      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846923);
     }
     paramBaseActivity = paramString2;
     if (paramString2.startsWith("邀请加入QQ热聊："))
     {
       paramBaseActivity = new StringBuilder();
       paramBaseActivity.append(paramString2);
-      paramBaseActivity.append(HardCodeUtil.a(2131705647));
+      paramBaseActivity.append(HardCodeUtil.a(2131903533));
       paramBaseActivity = paramBaseActivity.toString();
     }
     WXShareHelper.a().a(String.valueOf(l), paramBaseActivity, paramString1, paramString3, paramString5);
@@ -464,10 +458,17 @@ public class HotChatHelper
     }
     return false;
   }
+  
+  public static void c(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null) {
+      paramMessageRecord.saveExtInfoToExtStr("hotchat_flash_pic", "true");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatHelper
  * JD-Core Version:    0.7.0.1
  */

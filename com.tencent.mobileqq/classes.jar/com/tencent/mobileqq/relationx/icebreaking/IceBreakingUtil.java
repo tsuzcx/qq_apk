@@ -6,8 +6,11 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.MsgProxyUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.qcircle.QCircleChatUtil;
 import com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecManager;
+import com.tencent.mobileqq.apollo.statistics.product.DtReportParamsBuilder;
+import com.tencent.mobileqq.apollo.statistics.product.api.IApolloDtReportHelper;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendsManager;
@@ -32,6 +35,7 @@ import com.tencent.mobileqq.troop.utils.RobotUtils;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
+import org.json.JSONObject;
 
 public class IceBreakingUtil
 {
@@ -47,10 +51,10 @@ public class IceBreakingUtil
       if (paramSessionInfo == null) {
         return 6;
       }
-      int k = paramSessionInfo.jdField_a_of_type_Int;
+      int k = paramSessionInfo.a;
       if (b(k))
       {
-        if (((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int) == 1) {
+        if (((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).a(paramSessionInfo.b, paramSessionInfo.a) == 1) {
           return 2;
         }
         return 1;
@@ -91,11 +95,19 @@ public class IceBreakingUtil
     return localStringBuilder.toString();
   }
   
+  public static String a(BaseChatPie paramBaseChatPie)
+  {
+    if (paramBaseChatPie.ah.a == 0) {
+      return paramBaseChatPie.ah.b;
+    }
+    return paramBaseChatPie.ah.c;
+  }
+  
   public static void a(AppInterface paramAppInterface, String paramString, int paramInt, MessageForPoke paramMessageForPoke)
   {
     if ((paramAppInterface != null) && (!TextUtils.isEmpty(paramString)) && (paramMessageForPoke != null))
     {
-      Object localObject = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+      Object localObject = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
       if (localObject == null)
       {
         if (QLog.isColorLevel())
@@ -108,15 +120,16 @@ public class IceBreakingUtil
         return;
       }
       long l = paramMessageForPoke.time;
-      localObject = String.format(Locale.getDefault(), HardCodeUtil.a(2131705776), new Object[] { ((Friends)localObject).getFriendNickWithAlias() });
+      localObject = String.format(Locale.getDefault(), HardCodeUtil.a(2131903661), new Object[] { ((Friends)localObject).getFriendNickWithAlias() });
       paramMessageForPoke = new UniteGrayTipParam(paramString, paramAppInterface.getCurrentUin(), (String)localObject, paramInt, -5040, 655379, l);
-      paramMessageForPoke.c = ((String)localObject);
+      paramMessageForPoke.g = ((String)localObject);
       localObject = new MessageForUniteGrayTip();
       ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramAppInterface, paramMessageForPoke);
       ((MessageForUniteGrayTip)localObject).isread = true;
       ((MessageForUniteGrayTip)localObject).issend = 1;
       UniteGrayTipMsgUtil.a(paramAppInterface, (MessageForUniteGrayTip)localObject);
       ReportController.b(paramAppInterface, "dc00898", "", "", "0X8009891", "0X8009891", 0, 0, "", "", "", "");
+      a(IceBreakingUtil.Event.GRAY_WORD_CLK);
       if (QLog.isColorLevel()) {
         QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "addBreakingIceGrayMsgTwo [uin: %s, uinType: %s, time: %s]", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(l) }));
       }
@@ -131,39 +144,22 @@ public class IceBreakingUtil
     }
   }
   
-  public static void a(AppInterface paramAppInterface, String paramString, int paramInt, MessageRecord paramMessageRecord)
+  public static void a(BaseChatPie paramBaseChatPie, JSONObject paramJSONObject)
   {
-    if ((paramAppInterface != null) && (!TextUtils.isEmpty(paramString)) && (paramMessageRecord != null))
-    {
-      if ((paramMessageRecord.msgtype == -5012) && ((paramMessageRecord instanceof MessageForPoke)))
-      {
-        MessageForPoke localMessageForPoke = (MessageForPoke)paramMessageRecord;
-        if ((localMessageForPoke.flag & 0x8) != 0)
-        {
-          if (!paramMessageRecord.isSend()) {
-            ThreadManager.excute(new IceBreakingUtil.2(paramAppInterface, paramString, paramInt, localMessageForPoke), 16, null, false);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "checkAndAddGrayTip send: %s, time: %s", new Object[] { Integer.valueOf(paramMessageRecord.issend), Long.valueOf(paramMessageRecord.time) }));
-          }
-        }
-      }
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramAppInterface = new StringBuilder();
-      paramAppInterface.append("checkAndAddGrayTip invalidate params uin: ");
-      paramAppInterface.append(paramString);
-      QLog.i("IceBreak.IceBreakingUtil", 2, paramAppInterface.toString());
-    }
+    IceBreakingUtil.reportParams.d = paramJSONObject.optInt("actionId");
+    IceBreakingUtil.reportParams.e = paramJSONObject.optInt("type");
+    IceBreakingUtil.reportParams.a = ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).getReportSessionType(paramBaseChatPie.ah.a);
+    IceBreakingUtil.reportParams.b = ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).getApolloMode(paramBaseChatPie.d);
+    IceBreakingUtil.reportParams.c = 1;
+    IceBreakingUtil.reportParams.f = ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).getUserStatus(paramBaseChatPie.d);
+    IceBreakingUtil.reportParams.h = a(paramBaseChatPie);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     paramQQAppInterface = (IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG);
-    boolean bool = paramQQAppInterface.e(paramString);
-    if ((paramQQAppInterface.f(paramString)) && (QLog.isColorLevel())) {
+    boolean bool = paramQQAppInterface.j(paramString);
+    if ((paramQQAppInterface.k(paramString)) && (QLog.isColorLevel())) {
       QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "clearIceBreakingFlag onDelFrd uin: %s %b", new Object[] { paramString, Boolean.valueOf(bool) }));
     }
   }
@@ -175,7 +171,7 @@ public class IceBreakingUtil
       if (paramString.length() < 5) {
         return;
       }
-      if ((!MessageUtils.a(paramMessageRecord.msgtype)) && (!MsgProxyUtils.d(paramMessageRecord.msgtype)))
+      if ((!MessageUtils.b(paramMessageRecord.msgtype)) && (!MsgProxyUtils.d(paramMessageRecord.msgtype)))
       {
         if (a(paramMessageRecord.msgtype)) {
           return;
@@ -183,12 +179,12 @@ public class IceBreakingUtil
         paramQQAppInterface = (IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG);
         if (paramInt == 1)
         {
-          paramQQAppInterface.g(paramString);
+          paramQQAppInterface.m(paramString);
           return;
         }
-        if (paramQQAppInterface.f(paramString))
+        if (paramQQAppInterface.k(paramString))
         {
-          paramQQAppInterface.e(paramString);
+          paramQQAppInterface.j(paramString);
           if (QLog.isColorLevel()) {
             QLog.i("IceBreak.IceBreakingUtil", 2, String.format(Locale.getDefault(), "clearIceBreakingFlag uin: %s msgtype: %s", new Object[] { paramString, Integer.valueOf(paramMessageRecord.msgtype) }));
           }
@@ -211,14 +207,14 @@ public class IceBreakingUtil
     {
       FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       Object localObject = (IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG);
-      Friends localFriends = localFriendsManager.b(paramString);
+      Friends localFriends = localFriendsManager.c(paramString);
       if ((localFriends != null) && (localFriends.isFriend()))
       {
         if (((IStickerRecManager)paramQQAppInterface.getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen())
         {
           if (((IceBreakingMng)localObject).a(true))
           {
-            if (((IceBreakingMng)localObject).c(paramString))
+            if (((IceBreakingMng)localObject).h(paramString))
             {
               ((IceBreakingMng)localObject).a(paramString);
               if (QLog.isColorLevel())
@@ -245,7 +241,7 @@ public class IceBreakingUtil
         else if (QLog.isColorLevel()) {
           QLog.i("IceBreak.IceBreakingUtil", 2, "onAddFrdSuc emotionRec switch is off");
         }
-        localObject = localFriendsManager.a(paramString, true);
+        localObject = localFriendsManager.d(paramString, true);
         paramQQAppInterface = (QQAppInterface)localObject;
         if (localObject == null)
         {
@@ -271,6 +267,30 @@ public class IceBreakingUtil
     ThreadManager.post(new IceBreakingUtil.1(paramString, paramInt, paramQQAppInterface, paramBoolean), 5, null, true);
   }
   
+  public static void a(IceBreakingUtil.Event paramEvent)
+  {
+    int i = IceBreakingUtil.3.a[paramEvent.ordinal()];
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        a("grayword", "click");
+        return;
+      }
+      a("cmemoji", "click");
+      return;
+    }
+    a("cmemoji", "expo");
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    ((IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class)).report("c2cnew", paramString1, paramString2, new DtReportParamsBuilder().b(IceBreakingUtil.reportParams.a).a(IceBreakingUtil.reportParams.b).c(IceBreakingUtil.reportParams.c).f(Integer.toString(IceBreakingUtil.reportParams.d)).e(IceBreakingUtil.reportParams.e).f(IceBreakingUtil.reportParams.f).a(Integer.valueOf(IceBreakingUtil.reportParams.g)).c(IceBreakingUtil.reportParams.h).a());
+  }
+  
   public static boolean a(int paramInt)
   {
     int i = 0;
@@ -291,7 +311,7 @@ public class IceBreakingUtil
   public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
     boolean bool;
-    if (((b(paramInt)) || (c(paramInt)) || (d(paramInt)) || (e(paramInt))) && (!Utils.b(paramString)) && (!RobotUtils.a(paramQQAppInterface, paramString))) {
+    if (((b(paramInt)) || (c(paramInt)) || (d(paramInt)) || (e(paramInt)) || (f(paramInt))) && (!Utils.c(paramString)) && (!RobotUtils.a(paramQQAppInterface, paramString))) {
       bool = true;
     } else {
       bool = false;
@@ -326,24 +346,24 @@ public class IceBreakingUtil
         }
         return;
       }
-      if (localIceBreakingMng.a(paramString))
+      if (localIceBreakingMng.f(paramString))
       {
         QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak entered c2c");
         return;
       }
       FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      Object localObject = localFriendsManager.b(paramString);
+      Object localObject = localFriendsManager.c(paramString);
       if ((localObject != null) && (((Friends)localObject).isFriend()))
       {
-        if (localIceBreakingMng.f(paramString))
+        if (localIceBreakingMng.k(paramString))
         {
           if (QLog.isColorLevel()) {
             QLog.i("IceBreak.IceBreakingUtil", 2, "checkNeedShowIceBreak already in break list");
           }
           return;
         }
-        float f1 = localIceBreakingMng.a();
-        localObject = localFriendsManager.a(paramString, true);
+        float f1 = localIceBreakingMng.f();
+        localObject = localFriendsManager.d(paramString, true);
         if ((localObject != null) && (((ExtensionInfo)localObject).makeFrdsTs > 0L) && ((float)(System.currentTimeMillis() - ((ExtensionInfo)localObject).makeFrdsTs) < f1 * 86400000.0F))
         {
           if (QLog.isColorLevel()) {
@@ -471,29 +491,39 @@ public class IceBreakingUtil
     return ((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).isExtendMatchChatType(paramInt);
   }
   
-  private static void e(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    ((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).j(paramString);
-  }
-  
   public static boolean e(int paramInt)
   {
-    return QCircleChatUtil.a(paramInt);
+    return QCircleChatUtil.b(paramInt);
   }
   
   private static void f(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).k(paramString);
+    ((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).q(paramString);
+  }
+  
+  public static boolean f(int paramInt)
+  {
+    return QCircleChatUtil.c(paramInt);
   }
   
   private static void g(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).l(paramString);
+    ((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).r(paramString);
+  }
+  
+  private static void h(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    ((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).u(paramString);
+  }
+  
+  private static void i(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    ((IceBreakingMng)paramQQAppInterface.getManager(QQManagerFactory.ICE_BREAKING_MNG)).t(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.IceBreakingUtil
  * JD-Core Version:    0.7.0.1
  */

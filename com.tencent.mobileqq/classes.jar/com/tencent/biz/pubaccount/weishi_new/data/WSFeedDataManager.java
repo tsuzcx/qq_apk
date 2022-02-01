@@ -20,22 +20,13 @@ import java.util.List;
 
 public class WSFeedDataManager
 {
-  public int a;
-  public SparseIntArray a;
-  private WSPlayerParam a;
-  public String a;
-  public List<stSimpleMetaFeed> a;
-  public String b;
-  public List<stFeed> b;
-  
-  private WSFeedDataManager()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  }
+  public List<stSimpleMetaFeed> a = new ArrayList();
+  public List<stFeed> b = new ArrayList();
+  public String c = "";
+  public String d = "";
+  public int e;
+  public SparseIntArray f = new SparseIntArray();
+  private WSPlayerParam g;
   
   public static WSFeedDataManager a()
   {
@@ -45,31 +36,6 @@ public class WSFeedDataManager
   private IWeishiServiceListener a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, long paramLong, WSFeedDataManager.OnDataReceivedListener paramOnDataReceivedListener)
   {
     return new WSFeedDataManager.1(this, paramBoolean1, paramBoolean2, paramLong, paramInt, paramOnDataReceivedListener);
-  }
-  
-  private List<stSimpleMetaFeed> a(List<stFeed> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (WSFeedUtils.a(paramList)) {
-      return localArrayList;
-    }
-    int i = 0;
-    while (i < paramList.size())
-    {
-      stFeed localstFeed = (stFeed)paramList.get(i);
-      if ((localstFeed.feed_type == 2) && (localstFeed.feed != null))
-      {
-        this.jdField_a_of_type_AndroidUtilSparseIntArray.put(this.jdField_b_of_type_JavaUtilList.size() + i, this.jdField_a_of_type_JavaUtilList.size() + localArrayList.size());
-        localArrayList.add(localstFeed.feed);
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
-    paramList = new StringBuilder();
-    paramList.append("position map: ");
-    paramList.append(this.jdField_a_of_type_AndroidUtilSparseIntArray.toString());
-    WSLog.b("WSVideoDataManager", paramList.toString());
-    return localArrayList;
   }
   
   private void a(WeishiTask paramWeishiTask, long paramLong, int paramInt, boolean paramBoolean)
@@ -83,19 +49,19 @@ public class WSFeedDataManager
     for (localObject = "focus";; localObject = "fullscreen_videoplay") {
       break;
     }
-    WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.a, (String)localObject, paramBoolean);
+    WsBeaconReportPresenter.a().a(paramLong, paramWeishiTask.g, (String)localObject, paramBoolean);
   }
   
   private void a(List<stFeed> paramList, boolean paramBoolean1, int paramInt, boolean paramBoolean2, WSFeedDataManager.OnDataReceivedListener paramOnDataReceivedListener)
   {
     if (paramBoolean1)
     {
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
+      this.b.clear();
+      this.a.clear();
+      this.f.clear();
     }
-    List localList = a(paramList);
-    this.jdField_b_of_type_JavaUtilList.addAll(paramList);
+    List localList = b(paramList);
+    this.b.addAll(paramList);
     if (paramOnDataReceivedListener == null) {
       return;
     }
@@ -103,7 +69,7 @@ public class WSFeedDataManager
     {
       if (paramBoolean1)
       {
-        paramOnDataReceivedListener.a(false, this.jdField_b_of_type_JavaUtilList, paramBoolean2);
+        paramOnDataReceivedListener.a(false, this.b, paramBoolean2);
         return;
       }
       paramOnDataReceivedListener.a(true, paramList, paramBoolean2);
@@ -114,9 +80,34 @@ public class WSFeedDataManager
     }
   }
   
+  private List<stSimpleMetaFeed> b(List<stFeed> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (WSFeedUtils.a(paramList)) {
+      return localArrayList;
+    }
+    int i = 0;
+    while (i < paramList.size())
+    {
+      stFeed localstFeed = (stFeed)paramList.get(i);
+      if ((localstFeed.feed_type == 2) && (localstFeed.feed != null))
+      {
+        this.f.put(this.b.size() + i, this.a.size() + localArrayList.size());
+        localArrayList.add(localstFeed.feed);
+      }
+      i += 1;
+    }
+    this.a.addAll(localArrayList);
+    paramList = new StringBuilder();
+    paramList.append("position map: ");
+    paramList.append(this.f.toString());
+    WSLog.b("WSVideoDataManager", paramList.toString());
+    return localArrayList;
+  }
+  
   public IWSPlayerUIDelegate a(WSPlayableHolder paramWSPlayableHolder)
   {
-    IWSPlayerUIDelegate localIWSPlayerUIDelegate = paramWSPlayableHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate;
+    IWSPlayerUIDelegate localIWSPlayerUIDelegate = paramWSPlayableHolder.c;
     Object localObject = localIWSPlayerUIDelegate;
     if (localIWSPlayerUIDelegate == null) {
       localObject = new WSFollowFeedUIDelegate();
@@ -125,85 +116,85 @@ public class WSFeedDataManager
     return localObject;
   }
   
-  public WSPlayerParam a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
-  }
-  
   public WSPlayerParam a(WSPlayableHolder paramWSPlayableHolder, long paramLong, int paramInt)
   {
-    WSPlayerParam localWSPlayerParam2 = paramWSPlayableHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
+    WSPlayerParam localWSPlayerParam2 = paramWSPlayableHolder.b;
     WSPlayerParam localWSPlayerParam1 = localWSPlayerParam2;
     if (localWSPlayerParam2 == null) {
       localWSPlayerParam1 = new WSPlayerParam();
     }
-    localWSPlayerParam1.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo = paramWSPlayableHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo;
-    localWSPlayerParam1.jdField_a_of_type_AndroidViewViewGroup = paramWSPlayableHolder.a();
-    localWSPlayerParam1.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate = paramWSPlayableHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate;
-    localWSPlayerParam1.jdField_a_of_type_Int = 2;
-    localWSPlayerParam1.jdField_a_of_type_Long = paramLong;
-    localWSPlayerParam1.jdField_b_of_type_Boolean = false;
-    localWSPlayerParam1.jdField_b_of_type_Int = paramInt;
-    localWSPlayerParam1.jdField_a_of_type_JavaLangString = "follow_tab";
+    localWSPlayerParam1.c = paramWSPlayableHolder.a;
+    localWSPlayerParam1.a = paramWSPlayableHolder.k();
+    localWSPlayerParam1.k = paramWSPlayableHolder.c;
+    localWSPlayerParam1.e = 2;
+    localWSPlayerParam1.g = paramLong;
+    localWSPlayerParam1.i = false;
+    localWSPlayerParam1.f = paramInt;
+    localWSPlayerParam1.j = "follow_tab";
     return localWSPlayerParam1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = null;
-    }
-    Object localObject = this.jdField_b_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).clear();
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList;
-    if (localObject != null) {
-      ((List)localObject).clear();
-    }
-    localObject = this.jdField_a_of_type_AndroidUtilSparseIntArray;
-    if (localObject != null) {
-      ((SparseIntArray)localObject).clear();
-    }
-  }
-  
-  public void a(WSPlayableHolder paramWSPlayableHolder)
-  {
-    paramWSPlayableHolder = paramWSPlayableHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
-    if ((paramWSPlayableHolder != null) && ((paramWSPlayableHolder.jdField_a_of_type_Boolean) || ((paramWSPlayableHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null) && (paramWSPlayableHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.e() != 0)))) {
-      paramWSPlayableHolder.jdField_a_of_type_Boolean = false;
-    }
   }
   
   public void a(WSPlayerParam paramWSPlayerParam)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = paramWSPlayerParam;
+    this.g = paramWSPlayerParam;
   }
   
   public void a(List<stFeed> paramList)
   {
-    a(paramList);
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = 15;
+    b(paramList);
+    this.b = paramList;
+    this.e = 15;
   }
   
   public <T> void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong, WSFeedDataManager.OnDataReceivedListener<T> paramOnDataReceivedListener)
   {
     String str;
     if ((!paramBoolean1) && (!paramBoolean2)) {
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.c;
     } else {
       str = "";
     }
     paramString = new WeishiTask(new FollowRequest(str, paramBoolean1, paramBoolean2, paramString, paramInt), null, a(paramBoolean1, paramBoolean2, paramInt, paramLong, paramOnDataReceivedListener), 3001);
     WeishiBusinessLooper.a().a(paramString);
   }
+  
+  public WSPlayerParam b()
+  {
+    return this.g;
+  }
+  
+  public void b(WSPlayableHolder paramWSPlayableHolder)
+  {
+    paramWSPlayableHolder = paramWSPlayableHolder.b;
+    if ((paramWSPlayableHolder != null) && ((paramWSPlayableHolder.h) || ((paramWSPlayableHolder.d != null) && (paramWSPlayableHolder.d.E() != 0)))) {
+      paramWSPlayableHolder.h = false;
+    }
+  }
+  
+  public void c()
+  {
+    this.c = "";
+    this.d = "";
+    if (this.g != null) {
+      this.g = null;
+    }
+    Object localObject = this.b;
+    if (localObject != null) {
+      ((List)localObject).clear();
+    }
+    localObject = this.a;
+    if (localObject != null) {
+      ((List)localObject).clear();
+    }
+    localObject = this.f;
+    if (localObject != null) {
+      ((SparseIntArray)localObject).clear();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.data.WSFeedDataManager
  * JD-Core Version:    0.7.0.1
  */

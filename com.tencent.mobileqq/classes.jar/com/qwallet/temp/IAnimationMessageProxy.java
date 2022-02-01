@@ -2,15 +2,15 @@ package com.qwallet.temp;
 
 public abstract interface IAnimationMessageProxy
 {
-  public abstract long a();
-  
-  public abstract String a();
-  
   public abstract boolean a();
   
   public abstract long b();
   
-  public abstract String b();
+  public abstract long c();
+  
+  public abstract String d();
+  
+  public abstract String e();
 }
 
 

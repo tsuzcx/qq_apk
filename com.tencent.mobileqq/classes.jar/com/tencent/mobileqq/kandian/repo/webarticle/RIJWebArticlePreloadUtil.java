@@ -22,24 +22,18 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/repo/webarticle/RIJWebArticlePreloadUtil;", "", "()V", "TAG", "", "preloadList", "Ljava/util/LinkedList;", "Lcom/tencent/mobileqq/kandian/repo/webarticle/RIJWebArticlePreloadUtil$PreloadData;", "isInPreloadList", "", "url", "preload", "", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "preloadImpInWebProcess", "warmUpTemplateInWebProcess", "PreloadData", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJWebArticlePreloadUtil
 {
-  public static final RIJWebArticlePreloadUtil a;
-  private static final LinkedList<RIJWebArticlePreloadUtil.PreloadData> a;
+  public static final RIJWebArticlePreloadUtil a = new RIJWebArticlePreloadUtil();
+  private static final LinkedList<RIJWebArticlePreloadUtil.PreloadData> b = new LinkedList();
   
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoWebarticleRIJWebArticlePreloadUtil = new RIJWebArticlePreloadUtil();
-    jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  }
-  
-  private final boolean a(String paramString)
+  private final boolean b(String paramString)
   {
     paramString = (CharSequence)paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      if (jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
+      if (b.size() <= 0) {
         return false;
       }
-      Iterator localIterator = jdField_a_of_type_JavaUtilLinkedList.iterator();
+      Iterator localIterator = b.iterator();
       while (localIterator.hasNext()) {
         if (TextUtils.equals(paramString, (CharSequence)((RIJWebArticlePreloadUtil.PreloadData)localIterator.next()).a())) {
           return true;
@@ -51,7 +45,7 @@ public final class RIJWebArticlePreloadUtil
   
   public final void a()
   {
-    if (!RIJWebArticleUtil.a.f())
+    if (!RIJWebArticleUtil.a.g())
     {
       QLog.i("RIJWebArticlePreloadUtil", 1, "[warmUpTemplateInWebProcess] warm up template switch is off.");
       return;
@@ -63,14 +57,14 @@ public final class RIJWebArticlePreloadUtil
   public final void a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    if (!RIJWebArticleUtil.a.e())
+    if (!RIJWebArticleUtil.a.f())
     {
       QLog.i("RIJWebArticlePreloadUtil", 2, "[preload] web article preload switch is off.");
       return;
     }
     if ((!RIJFeedsType.a(paramAbsBaseArticleInfo)) && (!TextUtils.isEmpty((CharSequence)paramAbsBaseArticleInfo.mArticleContentUrl)))
     {
-      Object localObject = RIJQQAppInterfaceUtil.a();
+      Object localObject = RIJQQAppInterfaceUtil.e();
       if (localObject != null)
       {
         localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -100,7 +94,7 @@ public final class RIJWebArticlePreloadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJWebArticlePreloadUtil
  * JD-Core Version:    0.7.0.1
  */

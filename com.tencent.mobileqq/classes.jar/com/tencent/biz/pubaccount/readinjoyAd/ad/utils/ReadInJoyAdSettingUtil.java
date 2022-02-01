@@ -10,64 +10,64 @@ public class ReadInJoyAdSettingUtil
     SharePreferenceUtils.a(BaseApplication.getContext(), "allow_ad_request", "Y");
   }
   
-  public static boolean a()
-  {
-    return SharePreferenceUtils.a(BaseApplication.getContext(), "allow_ad_request").equalsIgnoreCase("Y");
-  }
-  
   public static void b()
   {
     SharePreferenceUtils.a(BaseApplication.getContext(), "allow_ad_request", "N");
   }
   
-  public static boolean b()
-  {
-    return SharePreferenceUtils.a(BaseApplication.getContext(), "super_mask_switch").equalsIgnoreCase("Y");
-  }
-  
-  public static void c()
-  {
-    SharePreferenceUtils.a(BaseApplication.getContext(), "super_mask_switch", "Y");
-  }
-  
   public static boolean c()
   {
-    return SharePreferenceUtils.a(BaseApplication.getContext(), "round_download_style_switch").equalsIgnoreCase("Y");
+    return SharePreferenceUtils.a(BaseApplication.getContext(), "allow_ad_request").equalsIgnoreCase("Y");
   }
   
   public static void d()
   {
-    SharePreferenceUtils.a(BaseApplication.getContext(), "super_mask_switch", "N");
-  }
-  
-  public static boolean d()
-  {
-    return SharePreferenceUtils.a(BaseApplication.getContext(), "filter_patch_ad_req").equalsIgnoreCase("Y");
+    SharePreferenceUtils.a(BaseApplication.getContext(), "super_mask_switch", "Y");
   }
   
   public static void e()
   {
-    SharePreferenceUtils.a(BaseApplication.getContext(), "round_download_style_switch", "Y");
+    SharePreferenceUtils.a(BaseApplication.getContext(), "super_mask_switch", "N");
   }
   
-  public static void f()
+  public static boolean f()
   {
-    SharePreferenceUtils.a(BaseApplication.getContext(), "round_download_style_switch", "N");
+    return SharePreferenceUtils.a(BaseApplication.getContext(), "super_mask_switch").equalsIgnoreCase("Y");
   }
   
   public static void g()
   {
-    SharePreferenceUtils.a(BaseApplication.getContext(), "filter_patch_ad_req", "Y");
+    SharePreferenceUtils.a(BaseApplication.getContext(), "round_download_style_switch", "Y");
   }
   
   public static void h()
   {
+    SharePreferenceUtils.a(BaseApplication.getContext(), "round_download_style_switch", "N");
+  }
+  
+  public static boolean i()
+  {
+    return SharePreferenceUtils.a(BaseApplication.getContext(), "round_download_style_switch").equalsIgnoreCase("Y");
+  }
+  
+  public static void j()
+  {
+    SharePreferenceUtils.a(BaseApplication.getContext(), "filter_patch_ad_req", "Y");
+  }
+  
+  public static void k()
+  {
     SharePreferenceUtils.a(BaseApplication.getContext(), "filter_patch_ad_req", "N");
+  }
+  
+  public static boolean l()
+  {
+    return SharePreferenceUtils.a(BaseApplication.getContext(), "filter_patch_ad_req").equalsIgnoreCase("Y");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdSettingUtil
  * JD-Core Version:    0.7.0.1
  */

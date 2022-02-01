@@ -30,42 +30,42 @@ public class PreviewVideoView
   extends BrowserBaseView
   implements View.OnClickListener, VideoPlayerCallback
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private PreviewVideoPresenter jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter;
-  private BaseVideoView jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+  private ImageView a;
   private ImageView b;
+  private FrameLayout c;
+  private BaseVideoView d;
+  private PreviewVideoPresenter e;
   
   public PreviewVideoView(Context paramContext, PreviewVideoPresenter paramPreviewVideoPresenter)
   {
     super(paramContext, paramPreviewVideoPresenter);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter = paramPreviewVideoPresenter;
+    this.e = paramPreviewVideoPresenter;
   }
   
   private void a(int paramInt)
   {
     VideoPlayParam localVideoPlayParam = new VideoPlayParam();
-    localVideoPlayParam.mVideoPath = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter.a(paramInt);
+    localVideoPlayParam.mVideoPath = this.e.b(paramInt);
     localVideoPlayParam.mIsLocal = true;
     localVideoPlayParam.mCallback = this;
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setVideoParam(localVideoPlayParam);
+    this.d.setVideoParam(localVideoPlayParam);
   }
   
   private void a(Context paramContext)
   {
     VideoPlayParam localVideoPlayParam = new VideoPlayParam();
-    PreviewVideoPresenter localPreviewVideoPresenter = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter;
-    localVideoPlayParam.mVideoPath = localPreviewVideoPresenter.a(localPreviewVideoPresenter.getCurrentPosition());
+    PreviewVideoPresenter localPreviewVideoPresenter = this.e;
+    localVideoPlayParam.mVideoPath = localPreviewVideoPresenter.b(localPreviewVideoPresenter.getCurrentPosition());
     localVideoPlayParam.mIsLocal = true;
     localVideoPlayParam.mCallback = this;
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView = a(paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter.getCurrentPosition(), localVideoPlayParam, null);
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setId(2131380649);
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setVideoParam(localVideoPlayParam);
+    this.d = a(paramContext, this.e.getCurrentPosition(), localVideoPlayParam, null);
+    this.d.setId(2131449608);
+    this.d.setVideoParam(localVideoPlayParam);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setLayoutParams(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView);
+    this.d.setLayoutParams(paramContext);
+    this.d.setOnClickListener(this);
+    this.d.setVisibility(0);
+    this.c.addView(this.d);
   }
   
   private void a(boolean paramBoolean)
@@ -82,7 +82,7 @@ public class PreviewVideoView
   
   private void b(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.a;
     int i;
     if (paramBoolean) {
       i = 0;
@@ -127,17 +127,17 @@ public class PreviewVideoView
   
   public void a()
   {
-    BaseVideoView localBaseVideoView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    BaseVideoView localBaseVideoView = this.d;
     if ((localBaseVideoView != null) && (localBaseVideoView.isPlaying()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
+      this.d.pause();
       a(true);
     }
   }
   
   public void bindView(int paramInt)
   {
-    LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter.a(paramInt);
+    LocalMediaInfo localLocalMediaInfo = this.e.a(paramInt);
     int i = this.mScreenWidthPx;
     int j = this.mScreenHeightPx;
     if (localLocalMediaInfo.mediaWidth > localLocalMediaInfo.mediaHeight)
@@ -146,7 +146,7 @@ public class PreviewVideoView
       j = this.mScreenWidthPx;
     }
     a(paramInt);
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter.a(localLocalMediaInfo.path);
+    Drawable localDrawable = this.e.b(localLocalMediaInfo.path);
     Object localObject = localDrawable;
     if (localDrawable == null)
     {
@@ -154,7 +154,7 @@ public class PreviewVideoView
       if (localObject != null)
       {
         localObject = a(((URL)localObject).toString(), i, j, localLocalMediaInfo);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter.a(localLocalMediaInfo.path, (Drawable)localObject);
+        this.e.a(localLocalMediaInfo.path, (Drawable)localObject);
       }
       else
       {
@@ -163,7 +163,7 @@ public class PreviewVideoView
       }
     }
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      this.a.setImageDrawable((Drawable)localObject);
     }
     b(true);
     a(true);
@@ -171,11 +171,11 @@ public class PreviewVideoView
   
   public View getView(View paramView, ViewGroup paramViewGroup)
   {
-    this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131563026, paramViewGroup, false));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mBrowserItemView.findViewById(2131373043));
-    this.b = ((ImageView)this.mBrowserItemView.findViewById(2131373041));
+    this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131629637, paramViewGroup, false));
+    this.a = ((ImageView)this.mBrowserItemView.findViewById(2131440625));
+    this.b = ((ImageView)this.mBrowserItemView.findViewById(2131440623));
     this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mBrowserItemView.findViewById(2131373045));
+    this.c = ((FrameLayout)this.mBrowserItemView.findViewById(2131440627));
     a(this.mContext);
     return this.mBrowserItemView;
   }
@@ -185,18 +185,18 @@ public class PreviewVideoView
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131373041) || (i == 2131380649))
+    if ((i == 2131440623) || (i == 2131449608))
     {
-      BaseVideoView localBaseVideoView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+      BaseVideoView localBaseVideoView = this.d;
       if (localBaseVideoView != null) {
         if (localBaseVideoView.isPlaying())
         {
-          this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
+          this.d.pause();
           a(true);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.play();
+          this.d.play();
           a(false);
         }
       }
@@ -207,7 +207,7 @@ public class PreviewVideoView
   public void onDestroy()
   {
     super.onDestroy();
-    BaseVideoView localBaseVideoView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    BaseVideoView localBaseVideoView = this.d;
     if (localBaseVideoView != null) {
       localBaseVideoView.releasePlayer(false);
     }
@@ -215,16 +215,16 @@ public class PreviewVideoView
   
   public void onDestroyView(int paramInt, View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    paramView = this.d;
     if (paramView != null) {
       paramView.releasePlayer(false);
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter;
+    paramView = this.e;
     if (paramView != null)
     {
       paramView = paramView.a(paramInt);
       if ((paramView != null) && (!TextUtils.isEmpty(paramView.path))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewVideoPresenter.a(paramView.path);
+        this.e.a(paramView.path);
       }
     }
   }
@@ -235,7 +235,7 @@ public class PreviewVideoView
   
   public void onFirstFrameRendered(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.post(new PreviewVideoView.4(this));
+    this.a.post(new PreviewVideoView.4(this));
   }
   
   public void onItemSelected(int paramInt)
@@ -255,10 +255,10 @@ public class PreviewVideoView
     if (QLog.isColorLevel()) {
       QLog.e("QQAlbum", 2, "onScrollHalfScreenWidth");
     }
-    BaseVideoView localBaseVideoView = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView;
+    BaseVideoView localBaseVideoView = this.d;
     if ((localBaseVideoView != null) && (localBaseVideoView.isPlaying()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewBaseVideoView.pause();
+      this.d.pause();
       a(true);
       b(true);
     }
@@ -275,17 +275,17 @@ public class PreviewVideoView
     }
     if (paramInt == 8)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.post(new PreviewVideoView.2(this));
+      this.a.post(new PreviewVideoView.2(this));
       return;
     }
     if (paramInt == 4) {
-      this.jdField_a_of_type_AndroidWidgetImageView.post(new PreviewVideoView.3(this));
+      this.a.post(new PreviewVideoView.3(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.view.PreviewVideoView
  * JD-Core Version:    0.7.0.1
  */

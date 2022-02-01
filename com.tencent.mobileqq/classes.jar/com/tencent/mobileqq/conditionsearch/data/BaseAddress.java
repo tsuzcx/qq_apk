@@ -29,7 +29,7 @@ public class BaseAddress
     this.addressType = paramInt;
     if (paramInt == 0)
     {
-      this.pinyinAll = ChnToSpell.a(paramString1, 1);
+      this.pinyinAll = ChnToSpell.b(paramString1, 1);
       this.pinyinFirst = String.valueOf(this.pinyinAll.charAt(0)).toUpperCase();
     }
     this.dataMap = new LinkedHashMap(15);
@@ -82,7 +82,7 @@ public class BaseAddress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.data.BaseAddress
  * JD-Core Version:    0.7.0.1
  */

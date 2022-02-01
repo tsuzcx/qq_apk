@@ -16,22 +16,22 @@ public final class OfflineBridgeInvokeHandler
     super(paramBridgeModule);
   }
   
-  @NotNull
-  public String a()
-  {
-    return "offline";
-  }
-  
   public void a()
   {
     a("updateIfNeed", (Function2)new OfflineBridgeInvokeHandler.register.1(this));
     a("batchCheckUpdate", (Function2)new OfflineBridgeInvokeHandler.register.2(this));
     a("isCached", (Function2)new OfflineBridgeInvokeHandler.register.3(this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "offline";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.OfflineBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

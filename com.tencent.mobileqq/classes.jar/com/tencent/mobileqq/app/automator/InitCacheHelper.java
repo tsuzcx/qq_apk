@@ -8,7 +8,7 @@ class InitCacheHelper
 {
   String a()
   {
-    boolean bool = a();
+    boolean bool = b();
     String str1;
     if (bool) {
       str1 = "[";
@@ -35,14 +35,14 @@ class InitCacheHelper
     return localStringBuilder.toString();
   }
   
-  boolean a()
+  boolean b()
   {
     return CommonFunctionPublishConfigProcessor.a().e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.InitCacheHelper
  * JD-Core Version:    0.7.0.1
  */

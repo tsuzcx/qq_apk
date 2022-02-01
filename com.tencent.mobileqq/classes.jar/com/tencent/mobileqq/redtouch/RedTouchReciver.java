@@ -12,7 +12,7 @@ public class RedTouchReciver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    BaseReq localBaseReq = BaseReq.a(paramBundle);
+    BaseReq localBaseReq = BaseReq.d(paramBundle);
     if (localBaseReq != null) {
       localBaseReq.a(this.a, paramBundle);
     }
@@ -20,7 +20,7 @@ public class RedTouchReciver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchReciver
  * JD-Core Version:    0.7.0.1
  */

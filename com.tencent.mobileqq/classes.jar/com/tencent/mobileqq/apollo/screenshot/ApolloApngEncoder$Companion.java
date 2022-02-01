@@ -12,17 +12,7 @@ public final class ApolloApngEncoder$Companion
   @NotNull
   public final String a()
   {
-    return ApolloApngEncoder.a();
-  }
-  
-  public final void a()
-  {
-    Companion localCompanion = (Companion)this;
-    if (localCompanion.a()) {
-      return;
-    }
-    QLog.d(localCompanion.a(), 1, "loadLibIfNeed start");
-    SoLoadManager.getInstance().load(localCompanion.b(), (OnLoadListener)ApolloApngEncoder.Companion.loadLibIfNeed.1.a);
+    return ApolloApngEncoder.d();
   }
   
   public final void a(boolean paramBoolean)
@@ -30,25 +20,35 @@ public final class ApolloApngEncoder$Companion
     ApolloApngEncoder.a(paramBoolean);
   }
   
-  public final boolean a()
-  {
-    return ApolloApngEncoder.a();
-  }
-  
   @NotNull
   public final String b()
   {
-    return ApolloApngEncoder.b();
+    return ApolloApngEncoder.e();
   }
   
-  public final boolean b()
+  public final boolean c()
   {
-    return ((Companion)this).a();
+    return ApolloApngEncoder.f();
+  }
+  
+  public final boolean d()
+  {
+    return ((Companion)this).c();
+  }
+  
+  public final void e()
+  {
+    Companion localCompanion = (Companion)this;
+    if (localCompanion.c()) {
+      return;
+    }
+    QLog.d(localCompanion.a(), 1, "loadLibIfNeed start");
+    SoLoadManager.getInstance().load(localCompanion.b(), (OnLoadListener)ApolloApngEncoder.Companion.loadLibIfNeed.1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloApngEncoder.Companion
  * JD-Core Version:    0.7.0.1
  */

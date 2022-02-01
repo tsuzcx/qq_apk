@@ -16,31 +16,31 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class VoiceTextMaskViewHelper
 {
-  private int jdField_a_of_type_Int;
   protected ViewGroup a;
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private BaseAIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext;
-  private VoiceTextPanel jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel;
-  private ViewGroup b;
+  private int b;
+  private PopupWindow c;
+  private VoiceTextPanel d;
+  private ViewGroup e;
+  private BaseAIOContext f;
   
-  private void d()
+  private void f()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()) + ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getCustomTitleViewBottom(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext));
+    a(this.d.getRight() - this.d.getLeft(), ImmersiveUtils.getStatusBarHeight(this.d.getContext()) + ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getCustomTitleViewBottom(this.f));
   }
   
-  private void e()
+  private void g()
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().setOnTouchListener(new VoiceTextMaskViewHelper.1(this));
+    this.c.getContentView().setOnTouchListener(new VoiceTextMaskViewHelper.1(this));
   }
   
   public int a()
   {
     Rect localRect1 = new Rect();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getWindowVisibleDisplayFrame(localRect1);
+    this.d.getWindowVisibleDisplayFrame(localRect1);
     Rect localRect2 = new Rect();
-    this.b.getGlobalVisibleRect(localRect2);
+    this.e.getGlobalVisibleRect(localRect2);
     localRect2 = new Rect();
-    this.jdField_a_of_type_AndroidViewViewGroup.getGlobalVisibleRect(localRect2);
+    this.a.getGlobalVisibleRect(localRect2);
     int j = localRect2.bottom;
     int i;
     if (((!Build.MODEL.startsWith("Coolpad")) || (Build.VERSION.SDK_INT != 19)) && ((!Build.MODEL.startsWith("Coolpad A8")) || (Build.VERSION.SDK_INT != 22)) && ((!Build.MODEL.startsWith("Coolpad B770")) || (Build.VERSION.SDK_INT != 22)))
@@ -59,90 +59,90 @@ public class VoiceTextMaskViewHelper
     return i;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getTopMask();
-    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
-    if ((localPopupWindow != null) && (localPopupWindow.isShowing()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VoiceTextMaskViewHelper", 2, "dismissTopMaskPanel");
-      }
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-  }
-  
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getTopMask();
-    e();
-    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
+    this.c = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getTopMask();
+    g();
+    PopupWindow localPopupWindow = this.c;
     if ((localPopupWindow != null) && (localPopupWindow.isShowing()))
     {
-      if (paramInt2 != this.jdField_a_of_type_AndroidWidgetPopupWindow.getHeight()) {
-        this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
+      if (paramInt2 != this.c.getHeight()) {
+        this.c.update(0, 0, paramInt1, paramInt2);
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).showTopMaskPanel(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext(), paramInt1, paramInt2, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel, 0, 0, 0);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
-      e();
+      this.c = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).showTopMaskPanel(this.d.getContext(), paramInt1, paramInt2, this.d, 0, 0, 0);
+      this.c.update(0, 0, paramInt1, paramInt2);
+      g();
     }
   }
   
   public void a(ViewGroup paramViewGroup1, VoiceTextPanel paramVoiceTextPanel, ViewGroup paramViewGroup2, BaseAIOContext paramBaseAIOContext)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel = paramVoiceTextPanel;
-    this.b = paramViewGroup2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = paramBaseAIOContext;
+    this.a = paramViewGroup1;
+    this.d = paramVoiceTextPanel;
+    this.e = paramViewGroup2;
+    this.f = paramBaseAIOContext;
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      d();
+      f();
       return;
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()) + ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getCustomTitleViewBottom(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext));
+    if (this.b == 0) {
+      a(this.d.getRight() - this.d.getLeft(), ImmersiveUtils.getStatusBarHeight(this.d.getContext()) + ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getCustomTitleViewBottom(this.f));
     }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   public void b()
   {
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1)
+    this.c = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getTopMask();
+    PopupWindow localPopupWindow = this.c;
+    if ((localPopupWindow != null) && (localPopupWindow.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext.a().a(2, false);
-      return;
-    }
-    if (i == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext.a().a(true);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceTextMaskViewHelper", 2, "dismissTopMaskPanel");
+      }
+      this.c.dismiss();
+      this.c = null;
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Int = 0;
+    int i = this.b;
+    if (i == 1)
+    {
+      this.f.q().a(2, false);
+      return;
+    }
+    if (i == 2) {
+      this.f.q().a(true);
+    }
+  }
+  
+  public int d()
+  {
+    return this.b;
+  }
+  
+  public void e()
+  {
+    this.b = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextMaskViewHelper
  * JD-Core Version:    0.7.0.1
  */

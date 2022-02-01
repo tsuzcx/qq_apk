@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.app.handler;
 
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.addfriend.api.IAddFriendApi;
 import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.data.OpenID;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.msf.service.protocol.security.CustomSigContent;
 import com.tencent.msf.service.protocol.security.RespondCustomSig;
@@ -35,11 +37,12 @@ final class GetOpenID$1
           {
             localObject = new String(((CustomSigContent)localObject).SigContent);
             OpenID localOpenID = new OpenID();
-            localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+            localOpenID.appID = this.a;
             localOpenID.openID = ((String)localObject);
-            this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().persistOrReplace(localOpenID);
-            ((MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache()).a(this.jdField_a_of_type_JavaLangString, localOpenID);
-            this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(1, true, localOpenID);
+            this.b.e().persistOrReplace(localOpenID);
+            ((MessageCache)this.b.b().getMsgCache()).a(this.a, localOpenID);
+            ((IAddFriendApi)QRoute.api(IAddFriendApi.class)).addOpenId(this.a, localOpenID, this.b.b());
+            this.b.notifyUI(1, true, localOpenID);
           }
           i += 1;
         }
@@ -51,12 +54,12 @@ final class GetOpenID$1
     } else {
       paramHashMap = "1";
     }
-    ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
+    ReportCenter.a().a(this.b.b().getAccount(), "", this.a, "41", "19", paramHashMap, "", "", "4", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.GetOpenID.1
  * JD-Core Version:    0.7.0.1
  */

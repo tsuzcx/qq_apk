@@ -81,11 +81,11 @@ class EmoticonPanelMallHelper$4$1
       {
         if (i == 11000)
         {
-          QQToast.a(((EmoticonPanelController)this.this$1.this$0.mPanelController).context, ((EmoticonPanelController)this.this$1.this$0.mPanelController).context.getString(2131689895), 1).b(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
+          QQToast.makeText(((EmoticonPanelController)this.this$1.this$0.mPanelController).context, ((EmoticonPanelController)this.this$1.this$0.mPanelController).context.getString(2131886536), 1).show(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
           return;
         }
         if (i == 11001) {
-          QQToast.a(((EmoticonPanelController)this.this$1.this$0.mPanelController).context, ((EmoticonPanelController)this.this$1.this$0.mPanelController).context.getString(2131689896), 1).b(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
+          QQToast.makeText(((EmoticonPanelController)this.this$1.this$0.mPanelController).context, ((EmoticonPanelController)this.this$1.this$0.mPanelController).context.getString(2131886537), 1).show(((EmoticonPanelController)this.this$1.this$0.mPanelController).getToastOffset());
         }
       }
     }
@@ -93,7 +93,7 @@ class EmoticonPanelMallHelper$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4.1
  * JD-Core Version:    0.7.0.1
  */

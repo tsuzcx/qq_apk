@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/pyp" android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center" android:id="@id/pyr" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/3c" android:textColor="@color/2d" android:id="@id/pys" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/za7" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/3r" android:textColor="@color/dr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/3q" android:text="@string/za2" android:layout_below="@id/pys" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/qg2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/2s" android:layout_marginTop="36.0dip" android:layout_marginRight="@dimen/2s">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/az_" android:padding="@dimen/2" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/jp3" android:layout_alignParentLeft="true" app:iconColor="@color/dv" />
+        <TextView android:textSize="@dimen/3c" android:textColor="#b3ffffff" android:gravity="center_vertical" android:id="@id/ose" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:text="@string/xd" android:includeFontPadding="false" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+</FrameLayout>

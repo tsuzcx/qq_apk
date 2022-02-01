@@ -18,14 +18,14 @@ class ShortVideoItemBuilder$9
     if ((localObject instanceof MessageForShortVideo))
     {
       localObject = (MessageForShortVideo)localObject;
-      ShortVideoMsgTailHelper.a(paramView.getContext(), this.a.a.a, ((MessageForShortVideo)localObject).msgTailType);
+      ShortVideoMsgTailHelper.a(paramView.getContext(), this.a.f.b, ((MessageForShortVideo)localObject).msgTailType);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.9
  * JD-Core Version:    0.7.0.1
  */

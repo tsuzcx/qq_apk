@@ -6,31 +6,31 @@ import com.tencent.mobileqq.app.QBaseFragment;
 public class GameBaseFragment
   extends QBaseFragment
 {
-  public IAVGameRootContainer a()
-  {
-    if ((getQBaseActivity() != null) && ((getQBaseActivity() instanceof IAVGameRootContainer))) {
-      return (IAVGameRootContainer)getQBaseActivity();
-    }
-    return null;
-  }
-  
   public void a(int paramInt) {}
   
   public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
   
   public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
     return false;
   }
   
-  public boolean b()
+  public boolean c()
   {
     return true;
+  }
+  
+  public boolean e()
+  {
+    return false;
+  }
+  
+  public IAVGameRootContainer m()
+  {
+    if ((getQBaseActivity() != null) && ((getQBaseActivity() instanceof IAVGameRootContainer))) {
+      return (IAVGameRootContainer)getQBaseActivity();
+    }
+    return null;
   }
 }
 

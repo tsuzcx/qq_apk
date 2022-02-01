@@ -19,9 +19,9 @@ class DataReportSettingFragment$4
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramDownloadTask.a == 0)
+    if (paramDownloadTask.c == 0)
     {
-      paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
+      paramDownloadTask = new File(this.a);
       if (!paramDownloadTask.exists()) {
         break label148;
       }
@@ -46,7 +46,7 @@ class DataReportSettingFragment$4
           localArrayList.add(ReportDataConfigGroup.a(localJSONObject));
           break label149;
         }
-        this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getBaseActivity().runOnUiThread(new DataReportSettingFragment.4.1(this, localArrayList));
+        this.b.getBaseActivity().runOnUiThread(new DataReportSettingFragment.4.1(this, localArrayList));
         return;
       }
       catch (JSONException paramDownloadTask)
@@ -66,7 +66,7 @@ class DataReportSettingFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportSettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

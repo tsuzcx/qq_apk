@@ -1152,7 +1152,7 @@ public final class c
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 540	com/tencent/mobileqq/utils/StringUtil:a	(Ljava/lang/String;)Z
+    //   1: invokestatic 540	com/tencent/mobileqq/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
     //   4: istore_1
     //   5: aconst_null
     //   6: astore_3
@@ -2156,7 +2156,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.a.c
  * JD-Core Version:    0.7.0.1
  */

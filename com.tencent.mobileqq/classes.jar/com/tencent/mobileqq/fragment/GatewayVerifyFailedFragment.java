@@ -20,16 +20,16 @@ public class GatewayVerifyFailedFragment
   extends QPublicBaseFragment
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private EquipLockProxy jdField_a_of_type_ComTencentMobileqqLoginregisterEquipLockProxy;
-  private String jdField_a_of_type_JavaLangString;
-  private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
+  private String a;
+  private String b;
+  private int c;
+  private boolean d;
+  private String e;
+  private int f;
+  private QBaseActivity g;
+  private DevlockInfo h;
+  private String i;
+  private EquipLockProxy j;
   
   private void a()
   {
@@ -40,22 +40,22 @@ public class GatewayVerifyFailedFragment
   {
     super.onAttach(paramActivity);
     paramActivity = getArguments();
-    this.jdField_a_of_type_JavaLangString = paramActivity.getString("phone_num");
-    this.jdField_b_of_type_JavaLangString = paramActivity.getString("country_code");
-    this.jdField_a_of_type_Int = paramActivity.getInt("mobile_type");
-    this.jdField_a_of_type_Boolean = paramActivity.getBoolean("from_login");
-    this.c = paramActivity.getString("uin");
-    this.jdField_b_of_type_Int = paramActivity.getInt("seq");
-    this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = ((DevlockInfo)paramActivity.getParcelable("DevlockInfo"));
-    this.d = paramActivity.getString("mainaccount");
+    this.a = paramActivity.getString("phone_num");
+    this.b = paramActivity.getString("country_code");
+    this.c = paramActivity.getInt("mobile_type");
+    this.d = paramActivity.getBoolean("from_login");
+    this.e = paramActivity.getString("uin");
+    this.f = paramActivity.getInt("seq");
+    this.h = ((DevlockInfo)paramActivity.getParcelable("DevlockInfo"));
+    this.i = paramActivity.getString("mainaccount");
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2131369202) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.finish();
-    } else if (i == 2131379801) {
+    int k = paramView.getId();
+    if (k == 2131436180) {
+      this.g.finish();
+    } else if (k == 2131448632) {
       a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -63,24 +63,24 @@ public class GatewayVerifyFailedFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = getQBaseActivity();
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterEquipLockProxy = new EquipLockProxy();
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561049, paramViewGroup, false);
-    ((TextView)paramLayoutInflater.findViewById(2131379801)).setOnClickListener(this);
-    ((TextView)paramLayoutInflater.findViewById(2131369249)).setText(getString(2131692019));
-    paramViewGroup = paramLayoutInflater.findViewById(2131376752);
+    this.g = getQBaseActivity();
+    this.j = new EquipLockProxy();
+    paramLayoutInflater = paramLayoutInflater.inflate(2131627391, paramViewGroup, false);
+    ((TextView)paramLayoutInflater.findViewById(2131448632)).setOnClickListener(this);
+    ((TextView)paramLayoutInflater.findViewById(2131436227)).setText(getString(2131888986));
+    paramViewGroup = paramLayoutInflater.findViewById(2131445043);
     paramBundle = (LinearLayout.LayoutParams)paramViewGroup.getLayoutParams();
     paramBundle.topMargin = ImmersiveUtils.getStatusBarHeight(getQBaseActivity());
     paramViewGroup.setLayoutParams(paramBundle);
-    paramLayoutInflater.findViewById(2131369202).setOnClickListener(this);
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X800ADDF", "0X800ADDF", 0, 0, "", "", "", "");
+    paramLayoutInflater.findViewById(2131436180).setOnClickListener(this);
+    ReportController.a(this.g.getAppRuntime(), "dc00898", "", "", "0X800ADDF", "0X800ADDF", 0, 0, "", "", "", "");
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.GatewayVerifyFailedFragment
  * JD-Core Version:    0.7.0.1
  */

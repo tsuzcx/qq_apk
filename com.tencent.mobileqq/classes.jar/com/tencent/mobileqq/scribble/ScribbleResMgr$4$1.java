@@ -27,29 +27,29 @@ class ScribbleResMgr$4$1
       ((StringBuilder)localObject1).append("onResp  mResult: ");
       ((StringBuilder)localObject1).append(paramNetResp.mResult);
       ((StringBuilder)localObject1).append(" url:");
-      ((StringBuilder)localObject1).append(this.a.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a.a.c);
       QLog.i("ScribbleResMgr", 2, ((StringBuilder)localObject1).toString());
     }
     int j = i;
     if (paramNetResp.mResult == 0)
     {
-      j = this.a.a.jdField_a_of_type_Int;
+      j = this.a.a.a;
       Object localObject2 = "";
       if (j == 1) {
-        localObject1 = ScribbleResMgr.b(this.a.a.jdField_a_of_type_Int, this.a.a.jdField_b_of_type_Int);
+        localObject1 = ScribbleResMgr.b(this.a.a.a, this.a.a.b);
       } else {
         localObject1 = "";
       }
-      if (this.a.a.jdField_a_of_type_Int == 2) {
-        localObject1 = ScribbleResMgr.a(this.a.a.jdField_b_of_type_Int);
+      if (this.a.a.a == 2) {
+        localObject1 = ScribbleResMgr.a(this.a.a.b);
       }
-      Object localObject3 = this.a.a.jdField_b_of_type_JavaLangString;
+      Object localObject3 = this.a.a.d;
       String str = FileUtils.calcMd5((String)localObject1);
       if ((!TextUtils.isEmpty(str)) && (str.equalsIgnoreCase((String)localObject3)))
       {
-        if (this.a.a.jdField_a_of_type_Int == 2)
+        if (this.a.a.a == 2)
         {
-          localObject2 = ScribbleResMgr.b(this.a.a.jdField_b_of_type_Int);
+          localObject2 = ScribbleResMgr.b(this.a.a.b);
           j = ZipUtils.unZipFolder((String)localObject1, (String)localObject2);
           if (j != 0)
           {
@@ -82,7 +82,7 @@ class ScribbleResMgr$4$1
         }
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("onResp url: ");
-        ((StringBuilder)localObject3).append(this.a.a.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject3).append(this.a.a.c);
         ((StringBuilder)localObject3).append("check wrong md5 =");
         ((StringBuilder)localObject3).append((String)localObject1);
         ((StringBuilder)localObject3).append(" desMd5 = ");
@@ -93,7 +93,7 @@ class ScribbleResMgr$4$1
       j = i;
       if (((IPreDownloadController)localObject1).isEnable())
       {
-        ((IPreDownloadController)localObject1).preDownloadSuccess(this.a.a.jdField_a_of_type_JavaLangString, paramNetResp.mTotalFileLen);
+        ((IPreDownloadController)localObject1).preDownloadSuccess(this.a.a.c, paramNetResp.mTotalFileLen);
         j = i;
       }
     }
@@ -107,7 +107,7 @@ class ScribbleResMgr$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr.4.1
  * JD-Core Version:    0.7.0.1
  */

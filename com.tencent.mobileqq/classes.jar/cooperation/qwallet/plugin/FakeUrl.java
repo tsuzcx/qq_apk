@@ -81,7 +81,7 @@ public class FakeUrl
         }
         SpannableString localSpannableString = new SpannableString(str1);
         localSpannableString.setSpan(new FakeUrl.3(this, str2), 0, str1.length(), 33);
-        localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131165795)), 0, str1.length(), 33);
+        localSpannableString.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131166411)), 0, str1.length(), 33);
         localSpannableStringBuilder.append(localSpannableString);
         m = 1;
       }
@@ -180,8 +180,8 @@ public class FakeUrl
     } else {
       paramString = this.lListener;
     }
-    this.mDialog = new QQCustomDialog(this.context, 2131756189);
-    this.mDialog.setContentView(2131558978);
+    this.mDialog = new QQCustomDialog(this.context, 2131953338);
+    this.mDialog.setContentView(2131624611);
     this.mDialog.setTitle(paramJSONObject.optString("title", null));
     this.mDialog.setMessageWithoutAutoLink(getSpanStr(this.fakeInfo.retmsg));
     this.mDialog.setNegativeButton(paramFakeListener, paramString);
@@ -239,7 +239,7 @@ public class FakeUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.plugin.FakeUrl
  * JD-Core Version:    0.7.0.1
  */

@@ -51,93 +51,90 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 public class AlbumRecommendAdvController
   implements IAlbumRecommendAdvController
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new AlbumRecommendAdvController.1(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public AdExposureChecker.ExposureCallback a;
-  private AsyncImageView jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageView;
-  private GdtAppReceiver jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
-  private AlumBasicData jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData;
-  private AdvRoundFrameLayout jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdvRoundFrameLayout;
-  public final String a;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference = null;
-  public ArrayList<AdExposureChecker> a;
-  private boolean jdField_a_of_type_Boolean;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private AsyncImageView jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageView;
-  private TextView c;
+  public final String a = "AlbumRecomAdvInfoView";
+  public ArrayList<AdExposureChecker> b = new ArrayList();
+  public AdExposureChecker.ExposureCallback c = null;
+  View.OnClickListener d = new AlbumRecommendAdvController.1(this);
+  private Context e;
+  private AdvRoundFrameLayout f;
+  private AsyncImageView g;
+  private TextView h;
+  private TextView i;
+  private ImageView j;
+  private AsyncImageView k;
+  private TextView l;
+  private ViewStub m;
+  private View n;
+  private RelativeLayout o;
+  private Handler p;
+  private AlumBasicData q;
+  private GdtAppReceiver r;
+  private boolean s;
+  private WeakReference<Activity> t = null;
   
   public AlbumRecommendAdvController(Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_JavaLangString = "AlbumRecomAdvInfoView";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)LayoutInflater.from(paramContext).inflate(2131562575, paramViewGroup, false));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(this.jdField_a_of_type_AndroidContentContext);
+    this.e = paramContext;
+    this.m = ((ViewStub)LayoutInflater.from(paramContext).inflate(2131629006, paramViewGroup, false));
+    this.p = new Handler(Looper.getMainLooper());
+    this.r = new GdtAppReceiver();
+    this.r.register(this.e);
   }
   
   private void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData;
+    Object localObject = this.q;
     if ((localObject != null) && (((AlumBasicData)localObject).adInfo != null))
     {
       localObject = (IGdtAdAPI)QRoute.api(IGdtAdAPI.class);
-      ((IGdtAdAPI)localObject).initGdtContext(this.jdField_a_of_type_AndroidContentContext, new InitGdtContextParams());
-      ((IGdtAdAPI)localObject).preLoadAfterAdLoaded(this.jdField_a_of_type_AndroidContentContext, new GdtAd(this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData.adInfo));
+      ((IGdtAdAPI)localObject).initGdtContext(this.e, new InitGdtContextParams());
+      ((IGdtAdAPI)localObject).preLoadAfterAdLoaded(this.e, new GdtAd(this.q.adInfo));
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidViewViewStub != null)
+    if (this.m != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.s) {
         return;
       }
       QZLog.i("AlbumRecomAdvInfoView", " @getGdtInfo initAdvView");
       if (paramBoolean)
       {
-        localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidViewViewStub.getLayoutParams();
-        ((ViewGroup.MarginLayoutParams)localObject).topMargin = ViewUtils.a(35.0F);
-        ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = ViewUtils.a(10.0F);
-        this.jdField_a_of_type_AndroidViewViewStub.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (ViewGroup.MarginLayoutParams)this.m.getLayoutParams();
+        ((ViewGroup.MarginLayoutParams)localObject).topMargin = ViewUtils.dip2px(35.0F);
+        ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = ViewUtils.dip2px(10.0F);
+        this.m.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      Object localObject = this.jdField_a_of_type_AndroidViewViewStub;
+      Object localObject = this.m;
       if (paramBoolean) {
-        i = 2131562576;
+        i1 = 2131629007;
       } else {
-        i = 2131562577;
+        i1 = 2131629008;
       }
-      ((ViewStub)localObject).setLayoutResource(i);
-      localObject = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131375201));
-      this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdvRoundFrameLayout = ((AdvRoundFrameLayout)((View)localObject).findViewById(2131375207));
-      int i = ViewUtils.a(3.0F);
-      this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAdvRoundFrameLayout.setRaduis(i, i, 0, 0);
-      this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageView = ((AsyncImageView)((View)localObject).findViewById(2131375206));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131375200));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131375208));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131375203));
-      this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageView = ((AsyncImageView)((View)localObject).findViewById(2131375202));
-      this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageView.setForeground(2130849443);
-      this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageView.setAsyncImageProcessor(new OvalProcessor());
-      this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageView.setWillNotDraw(false);
-      this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageView.setAsyncPreferQuality(true);
-      this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageView.setAsyncDefaultImage(2130849444);
-      this.c = ((TextView)((View)localObject).findViewById(2131375205));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((View)localObject).findViewById(2131375204).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      ((ViewStub)localObject).setLayoutResource(i1);
+      localObject = this.m.inflate();
+      this.n = ((View)localObject);
+      this.s = true;
+      this.o = ((RelativeLayout)((View)localObject).findViewById(2131443386));
+      this.f = ((AdvRoundFrameLayout)((View)localObject).findViewById(2131443392));
+      int i1 = ViewUtils.dip2px(3.0F);
+      this.f.setRaduis(i1, i1, 0, 0);
+      this.g = ((AsyncImageView)((View)localObject).findViewById(2131443391));
+      this.j = ((ImageView)((View)localObject).findViewById(2131443385));
+      this.h = ((TextView)((View)localObject).findViewById(2131443393));
+      this.i = ((TextView)((View)localObject).findViewById(2131443388));
+      this.k = ((AsyncImageView)((View)localObject).findViewById(2131443387));
+      this.k.setForeground(2130851127);
+      this.k.setAsyncImageProcessor(new OvalProcessor());
+      this.k.setWillNotDraw(false);
+      this.k.setAsyncPreferQuality(true);
+      this.k.setAsyncDefaultImage(2130851128);
+      this.l = ((TextView)((View)localObject).findViewById(2131443390));
+      this.o.setOnClickListener(this.d);
+      this.j.setOnClickListener(this.d);
+      ((View)localObject).findViewById(2131443389).setOnClickListener(this.d);
     }
   }
   
@@ -149,8 +146,8 @@ public class AlbumRecommendAdvController
         paramAlumBasicData = new JSONObject(paramAlumBasicData.adInfo.ext_json.get());
         if (paramAlumBasicData.has("mini_program_preload"))
         {
-          int i = paramAlumBasicData.getInt("mini_program_preload");
-          if (i == 1) {
+          int i1 = paramAlumBasicData.getInt("mini_program_preload");
+          if (i1 == 1) {
             return true;
           }
         }
@@ -167,14 +164,36 @@ public class AlbumRecommendAdvController
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      paramString = new VasAdMetaReportParam(2, paramInt, 1, 0, VasAdvSupport.a().a(), null, paramString);
+      paramString = new VasAdMetaReportParam(2, paramInt, 1, 0, VasAdvSupport.h().a(), null, paramString);
       ((IVasQZoneApi)QRoute.api(IVasQZoneApi.class)).reportAdvAsync(paramString);
       return;
     }
     QZLog.i("AlbumRecomAdvInfoView", " @getGdtInfo clickAlumAdvPicViewInfo");
   }
   
-  public void a(AlumBasicData paramAlumBasicData)
+  public void a(String paramString)
+  {
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").postDelayed(new AlbumRecommendAdvController.4(this, paramString), 0L);
+  }
+  
+  public void a(WeakReference<Activity> paramWeakReference, boolean paramBoolean)
+  {
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    if (paramWeakReference != null)
+    {
+      localParams.r = paramWeakReference;
+      localParams.a = new GdtAd(this.q.adInfo);
+      localParams.s = new WeakReference(this.r);
+      localParams.b = true;
+      localParams.e = paramBoolean;
+      localParams.p = new Bundle();
+      localParams.p.putString("big_brother_ref_source_key", "biz_src_jc_qzone");
+      ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).handleGdtAdClick(localParams);
+      QZLog.i("AlbumRecomAdvInfoView", " @getGdtInfo clickAlumAdvPicViewInfo");
+    }
+  }
+  
+  public void b(AlumBasicData paramAlumBasicData)
   {
     if ((paramAlumBasicData != null) && (paramAlumBasicData.adInfo != null)) {
       if ((paramAlumBasicData.adInfo.display_info != null) && (paramAlumBasicData.adInfo.display_info.mini_program_type != null) && (paramAlumBasicData.adInfo.display_info.mini_program_type.get() == 11))
@@ -189,36 +208,14 @@ public class AlbumRecommendAdvController
     }
   }
   
-  public void a(String paramString)
-  {
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").postDelayed(new AlbumRecommendAdvController.4(this, paramString), 0L);
-  }
-  
-  public void a(WeakReference<Activity> paramWeakReference, boolean paramBoolean)
-  {
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    if (paramWeakReference != null)
-    {
-      localParams.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData.adInfo);
-      localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver);
-      localParams.jdField_a_of_type_Boolean = true;
-      localParams.jdField_b_of_type_Boolean = paramBoolean;
-      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_jc_qzone");
-      ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).handleGdtAdClick(localParams);
-      QZLog.i("AlbumRecomAdvInfoView", " @getGdtInfo clickAlumAdvPicViewInfo");
-    }
-  }
-  
   public View getView()
   {
-    return this.jdField_a_of_type_AndroidViewViewStub;
+    return this.m;
   }
   
   public void hideAdView()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.o;
     if (localRelativeLayout != null) {
       localRelativeLayout.setVisibility(8);
     }
@@ -232,29 +229,29 @@ public class AlbumRecommendAdvController
       hideAdView();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData = paramAlumBasicData;
+    this.q = paramAlumBasicData;
     a(paramAlumBasicData.isUseAdNegativeFeedbackNewIcon());
-    a(paramAlumBasicData);
+    b(paramAlumBasicData);
     if ((paramAlumBasicData.adInfo != null) && (paramAlumBasicData.adInfo.app_info != null) && (paramAlumBasicData.adInfo.app_info.app_package_name != null)) {
-      paramAlumBasicData.originalExposureReport(paramAlumBasicData, ApkUtils.a(paramAlumBasicData.adInfo.app_info.app_package_name.get(), this.jdField_a_of_type_AndroidContentContext));
+      paramAlumBasicData.originalExposureReport(paramAlumBasicData, ApkUtils.a(paramAlumBasicData.adInfo.app_info.app_package_name.get(), this.e));
     }
     Object localObject = ImageLoader.getInstance().loadImage(paramAlumBasicData.advimageUrl, new AlbumRecommendAdvController.2(this, paramAlumBasicData));
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageView.setImageDrawable((Drawable)localObject);
+      this.g.setImageDrawable((Drawable)localObject);
       a(1, paramAlumBasicData.recCookie);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.advTextTitle);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramAlumBasicData.advTextText);
-    this.jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageView.setAsyncImage(paramAlumBasicData.advLogoUrl);
+    this.h.setText(paramAlumBasicData.advTextTitle);
+    this.i.setText(paramAlumBasicData.advTextText);
+    this.k.setAsyncImage(paramAlumBasicData.advLogoUrl);
     if (!TextUtils.isEmpty(paramAlumBasicData.rightBottomButton)) {
-      this.c.setText(paramAlumBasicData.rightBottomButton);
+      this.l.setText(paramAlumBasicData.rightBottomButton);
     } else if (paramAlumBasicData.adInfo.product_type.get() == 12) {
-      this.c.setText("去下载");
+      this.l.setText("去下载");
     } else {
-      this.c.setText("去看看");
+      this.l.setText("去看看");
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.o.setVisibility(0);
     if (QZLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -266,20 +263,20 @@ public class AlbumRecommendAdvController
       ((StringBuilder)localObject).append(paramAlumBasicData.advimageUrl);
       QZLog.i("AlbumRecomAdvInfoView", ((StringBuilder)localObject).toString());
     }
-    AdExposureChecker localAdExposureChecker = new AdExposureChecker(null, new WeakReference(this.jdField_a_of_type_AndroidViewView));
+    AdExposureChecker localAdExposureChecker = new AdExposureChecker(null, new WeakReference(this.n));
     localObject = localAdExposureChecker;
     if (paramAlumBasicData != null)
     {
       localObject = localAdExposureChecker;
       if (paramAlumBasicData.adInfo != null)
       {
-        localObject = new AdExposureChecker(new GdtAd(paramAlumBasicData.adInfo), new WeakReference(this.jdField_a_of_type_AndroidViewView));
-        if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-          this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new AlbumRecommendAdvController.3(this, paramAlumBasicData);
+        localObject = new AdExposureChecker(new GdtAd(paramAlumBasicData.adInfo), new WeakReference(this.n));
+        if (this.c == null) {
+          this.c = new AlbumRecommendAdvController.3(this, paramAlumBasicData);
         }
-        ((AdExposureChecker)localObject).setCallback(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
+        ((AdExposureChecker)localObject).setCallback(new WeakReference(this.c));
         QZLog.i("AdExposureChecker", "startonExposure");
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        this.b.add(localObject);
       }
     }
     ((AdExposureChecker)localObject).startCheck();
@@ -287,11 +284,11 @@ public class AlbumRecommendAdvController
   
   public void onDestroy()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver;
+    Object localObject = this.r;
     if (localObject != null) {
-      ((GdtAppReceiver)localObject).unregister(this.jdField_a_of_type_AndroidContentContext);
+      ((GdtAppReceiver)localObject).unregister(this.e);
     }
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = this.b;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -301,14 +298,14 @@ public class AlbumRecommendAdvController
         localAdExposureChecker.onActivityDestroy();
         localAdExposureChecker.setCallback(null);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
+      this.b.clear();
+      this.c = null;
     }
   }
   
   public void onPause()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -320,7 +317,7 @@ public class AlbumRecommendAdvController
   
   public void onResume()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -332,12 +329,12 @@ public class AlbumRecommendAdvController
   
   public void setOutActivity(Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.t = new WeakReference(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.logic.AlbumRecommendAdvController
  * JD-Core Version:    0.7.0.1
  */

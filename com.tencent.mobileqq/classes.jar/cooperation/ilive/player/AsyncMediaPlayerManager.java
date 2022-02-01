@@ -14,6 +14,8 @@ import com.tencent.livesdk.livesdkplayer.IMediaPlayerMgr.OnVideoFrameOutListener
 import com.tencent.livesdk.livesdkplayer.renderview.ITPPlayerVideoViewBase;
 import com.tencent.livesdk.livesdkplayer.renderview.ITPPlayerVideoViewBase.IVideoViewCallback;
 import com.tencent.livesdk.livesdkplayer.renderview.TPPlayerVideoView;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.ITPPlayerListener.IOnCompletionListener;
@@ -29,50 +31,59 @@ import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
 import com.tencent.thumbplayer.api.report.TPDefaultReportInfo;
 import com.tencent.thumbplayer.utils.TPCommonUtils;
 import com.tencent.thumbplayer.utils.TPLogUtil;
+import cooperation.ilive.lite.report.IliveLiteDataReport;
 import java.util.Random;
 
 public class AsyncMediaPlayerManager
   implements IMediaPlayerMgr, ITPPlayerListener.IOnCompletionListener, ITPPlayerListener.IOnErrorListener, ITPPlayerListener.IOnInfoListener, ITPPlayerListener.IOnPreparedListener, ITPPlayerListener.IOnSeekCompleteListener, ITPPlayerListener.IOnStopAsyncCompleteListener, ITPPlayerListener.IOnVideoFrameOutListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IMediaPlayerMgr.OnCompletionListener jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnCompletionListener;
-  private IMediaPlayerMgr.OnErrorListener jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnErrorListener;
-  private IMediaPlayerMgr.OnInfoListener jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnInfoListener;
-  private IMediaPlayerMgr.OnPreparedListener jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnPreparedListener;
-  private IMediaPlayerMgr.OnSeekCompleteListener jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnSeekCompleteListener;
-  private IMediaPlayerMgr.OnStopAsyncCompleteListener jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnStopAsyncCompleteListener;
-  private IMediaPlayerMgr.OnSurfaceChangeListener jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnSurfaceChangeListener;
-  private IMediaPlayerMgr.OnVideoFrameOutListener jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnVideoFrameOutListener;
-  private ITPPlayerVideoViewBase.IVideoViewCallback jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase$IVideoViewCallback = new AsyncMediaPlayerManager.1(this);
-  private ITPPlayerVideoViewBase jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase;
-  private IlivePlayerWrapper jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  private boolean d;
+  private String a;
+  private Context b;
+  private ITPPlayerVideoViewBase c;
+  private IlivePlayerWrapper d;
+  private boolean e;
+  private boolean f;
+  private boolean g;
+  private boolean h;
+  private IMediaPlayerMgr.OnPreparedListener i;
+  private IMediaPlayerMgr.OnCompletionListener j;
+  private IMediaPlayerMgr.OnErrorListener k;
+  private IMediaPlayerMgr.OnInfoListener l;
+  private IMediaPlayerMgr.OnSeekCompleteListener m;
+  private IMediaPlayerMgr.OnVideoFrameOutListener n;
+  private IMediaPlayerMgr.OnSurfaceChangeListener o;
+  private IMediaPlayerMgr.OnStopAsyncCompleteListener p;
+  private ITPPlayerVideoViewBase.IVideoViewCallback q = new AsyncMediaPlayerManager.1(this);
   
   public AsyncMediaPlayerManager(Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("TPPlayer[AsyncMediaPlayer");
-    localStringBuilder.append(new Random().nextInt());
-    localStringBuilder.append("]");
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper = new IlivePlayerWrapper(this.jdField_a_of_type_AndroidContentContext);
+    if (QLog.isColorLevel())
+    {
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AsyncMediaPlayerManager is ready:");
+      localStringBuilder.append(QQVideoPlaySDKManager.isSDKReady());
+      QLog.d((String)localObject, 4, localStringBuilder.toString());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("TPPlayer[AsyncMediaPlayer");
+    ((StringBuilder)localObject).append(new Random().nextInt());
+    ((StringBuilder)localObject).append("]");
+    this.a = ((StringBuilder)localObject).toString();
+    this.b = paramContext.getApplicationContext();
+    this.d = new IlivePlayerWrapper(this.b);
     a();
-    TPLogUtil.i(this.jdField_a_of_type_JavaLangString, "create tp player");
+    TPLogUtil.i(this.a, "create tp player");
   }
   
   private void a()
   {
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(new TPOptionalParam().buildLong(102, 3000L));
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(new TPOptionalParam().buildLong(117, 60000L));
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(new TPOptionalParam().buildLong(105, 1000L));
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(new TPOptionalParam().buildLong(106, 10000L));
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(new TPOptionalParam().buildLong(107, 15000L));
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(new TPOptionalParam().buildLong(109, 10L));
+    this.d.a(new TPOptionalParam().buildLong(102, 3000L));
+    this.d.a(new TPOptionalParam().buildLong(117, 60000L));
+    this.d.a(new TPOptionalParam().buildLong(105, 1000L));
+    this.d.a(new TPOptionalParam().buildLong(106, 10000L));
+    this.d.a(new TPOptionalParam().buildLong(107, 15000L));
+    this.d.a(new TPOptionalParam().buildLong(109, 10L));
     b();
   }
   
@@ -83,39 +94,39 @@ public class AsyncMediaPlayerManager
   
   private void b()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(this);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(this);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(this);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(this);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(this);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(this);
+    a(this.d);
+    this.d.a(this);
+    this.d.a(this);
+    this.d.a(this);
+    this.d.a(this);
+    this.d.a(this);
+    this.d.a(this);
   }
   
   public void adVideoView(ITPPlayerVideoViewBase paramITPPlayerVideoViewBase)
   {
     if ((paramITPPlayerVideoViewBase instanceof TPPlayerVideoView)) {
-      this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase = paramITPPlayerVideoViewBase;
+      this.c = paramITPPlayerVideoViewBase;
     }
-    paramITPPlayerVideoViewBase = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase;
+    paramITPPlayerVideoViewBase = this.c;
     if (paramITPPlayerVideoViewBase != null) {
-      paramITPPlayerVideoViewBase.addVideoViewCallback(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase$IVideoViewCallback);
+      paramITPPlayerVideoViewBase.addVideoViewCallback(this.q);
     }
   }
   
   public void continuePlay()
   {
-    if (this.b)
+    if (this.f)
     {
-      this.b = false;
+      this.f = false;
       try
       {
-        this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.b();
+        this.d.d();
         return;
       }
       catch (IllegalStateException localIllegalStateException)
       {
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("continuePlay exception: ");
         localStringBuilder.append(localIllegalStateException.getMessage());
@@ -127,102 +138,102 @@ public class AsyncMediaPlayerManager
   
   public int getBufferPercent()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    return this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.c();
+    a(this.d);
+    return this.d.l();
   }
   
   public long getCurrentPositionMs()
   {
-    IlivePlayerWrapper localIlivePlayerWrapper = this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper;
+    IlivePlayerWrapper localIlivePlayerWrapper = this.d;
     if (localIlivePlayerWrapper == null) {
       return 0L;
     }
-    return localIlivePlayerWrapper.b();
+    return localIlivePlayerWrapper.k();
   }
   
   public long getDecodeFrameCount()
   {
-    IlivePlayerWrapper localIlivePlayerWrapper = this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper;
+    IlivePlayerWrapper localIlivePlayerWrapper = this.d;
     if (localIlivePlayerWrapper == null) {
       return 0L;
     }
-    return localIlivePlayerWrapper.a(208);
+    return localIlivePlayerWrapper.b(208);
   }
   
   public long getDurationMs()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    return this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a();
+    a(this.d);
+    return this.d.h();
   }
   
   public long getRenderFrameCount()
   {
-    IlivePlayerWrapper localIlivePlayerWrapper = this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper;
+    IlivePlayerWrapper localIlivePlayerWrapper = this.d;
     if (localIlivePlayerWrapper == null) {
       return 0L;
     }
-    return localIlivePlayerWrapper.a(209);
+    return localIlivePlayerWrapper.b(209);
   }
   
   public int getVideoHeight()
   {
-    IlivePlayerWrapper localIlivePlayerWrapper = this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper;
+    IlivePlayerWrapper localIlivePlayerWrapper = this.d;
     if (localIlivePlayerWrapper == null) {
       return 0;
     }
-    return localIlivePlayerWrapper.b();
+    return localIlivePlayerWrapper.j();
   }
   
   public int getVideoWidth()
   {
-    IlivePlayerWrapper localIlivePlayerWrapper = this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper;
+    IlivePlayerWrapper localIlivePlayerWrapper = this.d;
     if (localIlivePlayerWrapper == null) {
       return 0;
     }
-    return localIlivePlayerWrapper.a();
+    return localIlivePlayerWrapper.i();
   }
   
   public boolean isLoopBack()
   {
-    if (this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper == null) {
+    if (this.d == null) {
       return false;
     }
-    return this.d;
+    return this.h;
   }
   
   public boolean isPaused()
   {
-    return this.b;
+    return this.f;
   }
   
   public boolean isPlaying()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
   public void onCompletion(ITPPlayer paramITPPlayer)
   {
     ReportThumbPlayer.getInstance().onCompletion(paramITPPlayer);
-    TPLogUtil.i(this.jdField_a_of_type_JavaLangString, "onCompletion : 播放完成");
-    paramITPPlayer = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnCompletionListener;
+    TPLogUtil.i(this.a, "onCompletion : 播放完成");
+    paramITPPlayer = this.j;
     if (paramITPPlayer != null) {
       paramITPPlayer.onCompletion(this);
     }
-    this.c = true;
-    this.jdField_a_of_type_Boolean = false;
+    this.g = true;
+    this.e = false;
   }
   
   public void onError(ITPPlayer paramITPPlayer, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
     ReportThumbPlayer.getInstance().onError(paramITPPlayer, paramInt1, paramInt2);
-    paramITPPlayer = this.jdField_a_of_type_JavaLangString;
+    paramITPPlayer = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onError : errorType = ");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("errorCode = ");
     localStringBuilder.append(paramInt2);
     TPLogUtil.e(paramITPPlayer, localStringBuilder.toString());
-    paramITPPlayer = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnErrorListener;
+    paramITPPlayer = this.k;
     if (paramITPPlayer != null) {
       paramITPPlayer.onError(this, paramInt1, paramInt2, paramLong1, paramLong2);
     }
@@ -231,11 +242,13 @@ public class AsyncMediaPlayerManager
   public void onInfo(ITPPlayer paramITPPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
     ReportThumbPlayer.getInstance().onInfo(paramITPPlayer, paramInt, paramLong1, paramLong2);
-    paramITPPlayer = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnInfoListener;
-    if (paramITPPlayer != null) {
+    if (this.l != null)
+    {
+      if (paramInt == 106) {}
       try
       {
-        paramITPPlayer.onInfo(this, paramInt, paramLong1, paramLong2, paramObject);
+        IliveLiteDataReport.a().d();
+        this.l.onInfo(this, paramInt, paramLong1, paramLong2, paramObject);
         return;
       }
       catch (Exception paramITPPlayer)
@@ -248,21 +261,21 @@ public class AsyncMediaPlayerManager
   public void onPrepared(ITPPlayer paramITPPlayer)
   {
     ReportThumbPlayer.getInstance().onPrepared(paramITPPlayer);
-    TPLogUtil.i(this.jdField_a_of_type_JavaLangString, "onPrepared");
-    paramITPPlayer = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnPreparedListener;
+    TPLogUtil.i(this.a, "onPrepared");
+    paramITPPlayer = this.i;
     if (paramITPPlayer != null)
     {
       paramITPPlayer.onPrepared(this);
-      this.b = false;
+      this.f = false;
       return;
     }
-    TPLogUtil.e(this.jdField_a_of_type_JavaLangString, "OnPreparedListener is null, do something when player prepared");
+    TPLogUtil.e(this.a, "OnPreparedListener is null, do something when player prepared");
   }
   
   public void onSeekComplete(ITPPlayer paramITPPlayer)
   {
-    TPLogUtil.i(this.jdField_a_of_type_JavaLangString, "Seek completion");
-    paramITPPlayer = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnSeekCompleteListener;
+    TPLogUtil.i(this.a, "Seek completion");
+    paramITPPlayer = this.m;
     if (paramITPPlayer != null) {
       paramITPPlayer.onSeekComplete(this);
     }
@@ -270,7 +283,7 @@ public class AsyncMediaPlayerManager
   
   public void onStopAsyncComplete(ITPPlayer paramITPPlayer)
   {
-    paramITPPlayer = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnStopAsyncCompleteListener;
+    paramITPPlayer = this.p;
     if (paramITPPlayer != null) {
       paramITPPlayer.a();
     }
@@ -278,7 +291,7 @@ public class AsyncMediaPlayerManager
   
   public void onVideoFrameOut(ITPPlayer paramITPPlayer, TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    IMediaPlayerMgr.OnVideoFrameOutListener localOnVideoFrameOutListener = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnVideoFrameOutListener;
+    IMediaPlayerMgr.OnVideoFrameOutListener localOnVideoFrameOutListener = this.n;
     if (localOnVideoFrameOutListener != null) {
       localOnVideoFrameOutListener.onVideoFrameOut(paramITPPlayer, paramTPVideoFrameBuffer);
     }
@@ -286,75 +299,78 @@ public class AsyncMediaPlayerManager
   
   public void openMediaPlayer(String paramString)
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
+    a(this.d);
     try
     {
       a();
-      if (this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.b())
+      if (this.d.b())
       {
-        TPLogUtil.e(this.jdField_a_of_type_JavaLangString, "CachePlayer openMediaPlayer media has prepare ");
+        TPLogUtil.e(this.a, "CachePlayer openMediaPlayer media has prepare ");
         startPlay();
         return;
       }
-      this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(paramString);
+      this.d.a(paramString);
       return;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      TPLogUtil.e(this.jdField_a_of_type_JavaLangString, Log.getStackTraceString(paramString));
+      TPLogUtil.e(this.a, Log.getStackTraceString(paramString));
     }
   }
   
   public void pausePlay()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
+    a(this.d);
     try
     {
-      this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.f();
+      this.d.m();
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pausePlay exception: ");
       localStringBuilder.append(localIllegalStateException.getMessage());
       TPLogUtil.e(str, localStringBuilder.toString());
       localIllegalStateException.printStackTrace();
     }
-    this.b = true;
+    this.f = true;
   }
   
   public void release()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    ITPPlayerVideoViewBase localITPPlayerVideoViewBase = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase;
-    if (localITPPlayerVideoViewBase != null) {
-      localITPPlayerVideoViewBase.removeVideoViewCallback(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase$IVideoViewCallback);
+    this.e = false;
+    this.f = false;
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((ITPPlayerVideoViewBase)localObject).removeVideoViewCallback(this.q);
     }
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase = null;
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnPreparedListener = null;
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnInfoListener = null;
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnErrorListener = null;
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnCompletionListener = null;
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnSeekCompleteListener = null;
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnVideoFrameOutListener = null;
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.c();
+    this.c = null;
+    this.i = null;
+    this.l = null;
+    this.k = null;
+    this.j = null;
+    this.m = null;
+    this.n = null;
+    a(this.d);
+    localObject = this.d;
+    if (localObject != null) {
+      ((IlivePlayerWrapper)localObject).g();
+    }
   }
   
   public void reset()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
+    a(this.d);
     try
     {
-      this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.e();
+      this.d.f();
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reset exception: ");
       localStringBuilder.append(localIllegalStateException.getMessage());
@@ -365,15 +381,15 @@ public class AsyncMediaPlayerManager
   
   public void seek(int paramInt)
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
+    a(this.d);
     try
     {
-      this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(paramInt);
+      this.d.a(paramInt);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("seek exception: ");
       localStringBuilder.append(localIllegalStateException.getMessage());
@@ -384,15 +400,15 @@ public class AsyncMediaPlayerManager
   
   public void seek(int paramInt1, int paramInt2)
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
+    a(this.d);
     try
     {
-      this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(paramInt1, paramInt2);
+      this.d.a(paramInt1, paramInt2);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("seek exception: ");
       localStringBuilder.append(localIllegalStateException.getMessage());
@@ -403,84 +419,84 @@ public class AsyncMediaPlayerManager
   
   public void setAudioGainRatio(float paramFloat)
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(paramFloat);
+    a(this.d);
+    this.d.a(paramFloat);
   }
   
   public void setLoopback(boolean paramBoolean)
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    this.d = paramBoolean;
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.b(this.d);
+    a(this.d);
+    this.h = paramBoolean;
+    this.d.b(this.h);
   }
   
   public void setOnCompletionListener(IMediaPlayerMgr.OnCompletionListener paramOnCompletionListener)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnCompletionListener = paramOnCompletionListener;
+    this.j = paramOnCompletionListener;
   }
   
   public void setOnErrorListener(IMediaPlayerMgr.OnErrorListener paramOnErrorListener)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnErrorListener = paramOnErrorListener;
+    this.k = paramOnErrorListener;
   }
   
   public void setOnInfoListener(IMediaPlayerMgr.OnInfoListener paramOnInfoListener)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnInfoListener = paramOnInfoListener;
+    this.l = paramOnInfoListener;
   }
   
   public void setOnPreparedListener(IMediaPlayerMgr.OnPreparedListener paramOnPreparedListener)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnPreparedListener = paramOnPreparedListener;
+    this.i = paramOnPreparedListener;
   }
   
   public void setOnSeekCompleteListener(IMediaPlayerMgr.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnSeekCompleteListener = paramOnSeekCompleteListener;
+    this.m = paramOnSeekCompleteListener;
   }
   
   public void setOnStopAsyncCompleteListener(IMediaPlayerMgr.OnStopAsyncCompleteListener paramOnStopAsyncCompleteListener)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnStopAsyncCompleteListener = paramOnStopAsyncCompleteListener;
+    this.p = paramOnStopAsyncCompleteListener;
   }
   
   public void setOnSurfaceChangeListener(IMediaPlayerMgr.OnSurfaceChangeListener paramOnSurfaceChangeListener)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnSurfaceChangeListener = paramOnSurfaceChangeListener;
+    this.o = paramOnSurfaceChangeListener;
   }
   
   public void setOnVideoFrameOutListener(IMediaPlayerMgr.OnVideoFrameOutListener paramOnVideoFrameOutListener)
   {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerIMediaPlayerMgr$OnVideoFrameOutListener = paramOnVideoFrameOutListener;
+    this.n = paramOnVideoFrameOutListener;
   }
   
   public void setOutputMute(boolean paramBoolean)
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(paramBoolean);
+    a(this.d);
+    this.d.a(paramBoolean);
   }
   
   public void setPlaySpeedRatio(float paramFloat)
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.b(paramFloat);
+    a(this.d);
+    this.d.b(paramFloat);
   }
   
   public void setPlayerSurface()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    ITPPlayerVideoViewBase localITPPlayerVideoViewBase = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerRenderviewITPPlayerVideoViewBase;
+    a(this.d);
+    ITPPlayerVideoViewBase localITPPlayerVideoViewBase = this.c;
     if (localITPPlayerVideoViewBase != null) {
-      this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.a(localITPPlayerVideoViewBase.getViewSurface());
+      this.d.a(localITPPlayerVideoViewBase.getViewSurface());
     }
   }
   
   public void setReportInfoGetter(TPDefaultReportInfo paramTPDefaultReportInfo)
   {
-    Object localObject = this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper;
+    Object localObject = this.d;
     if (localObject != null)
     {
-      localObject = ((IlivePlayerWrapper)localObject).a();
+      localObject = ((IlivePlayerWrapper)localObject).n();
       if (localObject != null) {
         ((ITPBusinessReportManager)localObject).setReportInfoGetter(paramTPDefaultReportInfo);
       }
@@ -489,53 +505,53 @@ public class AsyncMediaPlayerManager
   
   public void startPlay()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
+    a(this.d);
     try
     {
-      this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.b();
+      this.d.d();
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("startPlay exception: ");
       localStringBuilder.append(localIllegalStateException.getMessage());
       TPLogUtil.e(str, localStringBuilder.toString());
       localIllegalStateException.printStackTrace();
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.b = false;
+    this.e = true;
+    this.f = false;
   }
   
   public void stopAsyncPlay()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
-    this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.g();
-    this.jdField_a_of_type_Boolean = false;
+    a(this.d);
+    this.d.o();
+    this.e = false;
   }
   
   public void stopPlay()
   {
-    a(this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper);
+    a(this.d);
     try
     {
-      this.jdField_a_of_type_CooperationIlivePlayerIlivePlayerWrapper.d();
+      this.d.e();
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("stopPlay exception: ");
       localStringBuilder.append(localIllegalStateException.getMessage());
       TPLogUtil.e(str, localStringBuilder.toString());
       localIllegalStateException.printStackTrace();
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.player.AsyncMediaPlayerManager
  * JD-Core Version:    0.7.0.1
  */

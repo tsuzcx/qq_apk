@@ -12,78 +12,20 @@ import java.util.HashSet;
 
 public class AIOSingleReporter
 {
-  private static AIOSingleReporter jdField_a_of_type_ComTencentMobileqqUtilsAIOSingleReporter = new AIOSingleReporter();
-  private HashMap<String, HashSet<Long>> jdField_a_of_type_JavaUtilHashMap;
-  private HashSet<Object> jdField_a_of_type_JavaUtilHashSet;
-  private HashMap<Object, MessageForShortVideo> jdField_b_of_type_JavaUtilHashMap;
-  private HashSet<Object> jdField_b_of_type_JavaUtilHashSet;
+  private static AIOSingleReporter a = new AIOSingleReporter();
+  private HashMap<String, HashSet<Long>> b;
+  private HashSet<Object> c;
+  private HashMap<Object, MessageForShortVideo> d;
+  private HashSet<Object> e;
   
   public static AIOSingleReporter a()
   {
-    return jdField_a_of_type_ComTencentMobileqqUtilsAIOSingleReporter;
-  }
-  
-  public MessageForShortVideo a(Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      HashMap localHashMap = this.jdField_b_of_type_JavaUtilHashMap;
-      if (localHashMap != null) {
-        return (MessageForShortVideo)localHashMap.get(paramObject);
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
-    if (localObject != null)
-    {
-      ((HashMap)localObject).clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
-    }
-    localObject = this.jdField_a_of_type_JavaUtilHashSet;
-    if (localObject != null)
-    {
-      ((HashSet)localObject).clear();
-      this.jdField_a_of_type_JavaUtilHashSet = null;
-    }
-    localObject = this.jdField_b_of_type_JavaUtilHashSet;
-    if (localObject != null)
-    {
-      ((HashSet)localObject).clear();
-      this.jdField_b_of_type_JavaUtilHashSet = null;
-    }
-    localObject = this.jdField_b_of_type_JavaUtilHashMap;
-    if (localObject != null)
-    {
-      ((HashMap)localObject).clear();
-      this.jdField_b_of_type_JavaUtilHashMap = null;
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    if (paramLong == 0L) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    HashSet localHashSet1 = localHashSet2;
-    if (localHashSet2 == null)
-    {
-      localHashSet1 = new HashSet();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
-    }
-    localHashSet1.add(Long.valueOf(paramLong));
+    return a;
   }
   
   public void a(ChatXListView paramChatXListView)
   {
-    HashSet localHashSet = this.jdField_a_of_type_JavaUtilHashSet;
+    HashSet localHashSet = this.c;
     if (localHashSet != null)
     {
       if (localHashSet.size() == 0) {
@@ -105,7 +47,7 @@ public class AIOSingleReporter
           if ((localChatMessage != null) && ((localChatMessage instanceof MessageForShortVideo)))
           {
             long l2 = localChatMessage.uniseq;
-            if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(l2))) {
+            if (this.c.contains(Long.valueOf(l2))) {
               localHashSet.add(Long.valueOf(l2));
             }
           }
@@ -116,7 +58,7 @@ public class AIOSingleReporter
         }
         i += 1;
       }
-      this.jdField_a_of_type_JavaUtilHashSet = localHashSet;
+      this.c = localHashSet;
       paramChatXListView = new StringBuilder();
       paramChatXListView.append("markVisibleView cost time: ");
       paramChatXListView.append(SystemClock.uptimeMillis() - l1);
@@ -124,43 +66,14 @@ public class AIOSingleReporter
     }
   }
   
-  public void a(MessageRecord paramMessageRecord, String paramString)
-  {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    HashSet localHashSet1 = localHashSet2;
-    if (localHashSet2 == null)
-    {
-      localHashSet1 = new HashSet();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
-    }
-    localHashSet1.add(Long.valueOf(paramMessageRecord.uniseq));
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (paramObject == null) {
-      return;
-    }
-    if (this.jdField_b_of_type_JavaUtilHashSet == null) {
-      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-    }
-    this.jdField_b_of_type_JavaUtilHashSet.add(paramObject);
-  }
-  
   public void a(Object paramObject, MessageForShortVideo paramMessageForShortVideo)
   {
     if ((paramObject != null) && (paramMessageForShortVideo != null))
     {
-      if (this.jdField_b_of_type_JavaUtilHashMap == null) {
-        this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+      if (this.d == null) {
+        this.d = new HashMap();
       }
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramObject, paramMessageForShortVideo);
+      this.d.put(paramObject, paramMessageForShortVideo);
     }
   }
   
@@ -169,20 +82,20 @@ public class AIOSingleReporter
     if (paramObject == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilHashSet == null) {
-      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    if (this.c == null) {
+      this.c = new HashSet();
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramObject);
+      this.c.add(paramObject);
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashSet.remove(paramObject);
+    this.c.remove(paramObject);
   }
   
   public boolean a(long paramLong, String paramString)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.b;
     if (localHashMap != null)
     {
       paramString = (HashSet)localHashMap.get(paramString);
@@ -208,7 +121,7 @@ public class AIOSingleReporter
   
   public boolean a(MessageRecord paramMessageRecord, String paramString)
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.b;
     if (localHashMap != null)
     {
       paramString = (HashSet)localHashMap.get(paramString);
@@ -234,25 +147,112 @@ public class AIOSingleReporter
   
   public boolean a(Object paramObject)
   {
-    HashSet localHashSet = this.jdField_a_of_type_JavaUtilHashSet;
+    HashSet localHashSet = this.c;
     if (localHashSet != null) {
       return localHashSet.contains(paramObject);
     }
     return false;
   }
   
-  public boolean b(Object paramObject)
+  public MessageForShortVideo b(Object paramObject)
   {
-    HashSet localHashSet = this.jdField_b_of_type_JavaUtilHashSet;
+    if (paramObject != null)
+    {
+      HashMap localHashMap = this.d;
+      if (localHashMap != null) {
+        return (MessageForShortVideo)localHashMap.get(paramObject);
+      }
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      ((HashMap)localObject).clear();
+      this.b = null;
+    }
+    localObject = this.c;
+    if (localObject != null)
+    {
+      ((HashSet)localObject).clear();
+      this.c = null;
+    }
+    localObject = this.e;
+    if (localObject != null)
+    {
+      ((HashSet)localObject).clear();
+      this.e = null;
+    }
+    localObject = this.d;
+    if (localObject != null)
+    {
+      ((HashMap)localObject).clear();
+      this.d = null;
+    }
+  }
+  
+  public void b(long paramLong, String paramString)
+  {
+    if (paramLong == 0L) {
+      return;
+    }
+    if (this.b == null) {
+      this.b = new HashMap();
+    }
+    HashSet localHashSet2 = (HashSet)this.b.get(paramString);
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null)
+    {
+      localHashSet1 = new HashSet();
+      this.b.put(paramString, localHashSet1);
+    }
+    localHashSet1.add(Long.valueOf(paramLong));
+  }
+  
+  public void b(MessageRecord paramMessageRecord, String paramString)
+  {
+    if (paramMessageRecord == null) {
+      return;
+    }
+    if (this.b == null) {
+      this.b = new HashMap();
+    }
+    HashSet localHashSet2 = (HashSet)this.b.get(paramString);
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null)
+    {
+      localHashSet1 = new HashSet();
+      this.b.put(paramString, localHashSet1);
+    }
+    localHashSet1.add(Long.valueOf(paramMessageRecord.uniseq));
+  }
+  
+  public boolean c(Object paramObject)
+  {
+    HashSet localHashSet = this.e;
     if (localHashSet != null) {
       return localHashSet.contains(paramObject);
     }
     return false;
   }
+  
+  public void d(Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    if (this.e == null) {
+      this.e = new HashSet();
+    }
+    this.e.add(paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AIOSingleReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.troop.data;
 public class TroopCreateInfo$TroopCreateResult
 {
   public int a = -1;
+  public String b;
   
   public static int a(int paramInt)
   {
@@ -20,24 +21,24 @@ public class TroopCreateInfo$TroopCreateResult
             if ((paramInt != 105) && (paramInt != 16))
             {
               if (paramInt == 21) {
-                return 2131696116;
+                return 2131893881;
               }
-              return 2131696120;
+              return 2131893885;
             }
-            return 2131696118;
+            return 2131893883;
           }
-          return 2131696119;
+          return 2131893884;
         }
-        return 2131696121;
+        return 2131893886;
       }
-      return 2131696117;
+      return 2131893882;
     }
-    return 2131696122;
+    return 2131893887;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopCreateInfo.TroopCreateResult
  * JD-Core Version:    0.7.0.1
  */

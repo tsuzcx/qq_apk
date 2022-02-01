@@ -12,35 +12,35 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class CUOpenCardGuideMng$CUOpenCardClickableSpan
   extends ClickableSpan
 {
-  final int jdField_a_of_type_Int;
-  final Context jdField_a_of_type_AndroidContentContext;
-  final String jdField_a_of_type_JavaLangString;
-  final int jdField_b_of_type_Int;
-  final String jdField_b_of_type_JavaLangString;
+  final Context a;
+  final String b;
+  final String c;
+  final int d;
+  final int e;
   
   public CUOpenCardGuideMng$CUOpenCardClickableSpan(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = Color.parseColor("#00a5e0");
+    this.a = paramContext;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramInt;
+    this.e = Color.parseColor("#00a5e0");
     ThreadManager.post(new CUOpenCardGuideMng.CUOpenCardClickableSpan.1(this), 5, null, false);
   }
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("uin", this.jdField_b_of_type_JavaLangString);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("uin", this.c);
+    paramView.putExtra("url", this.b);
     paramView.putExtra("hide_more_button", true);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    this.a.startActivity(paramView);
     ThreadManager.post(new CUOpenCardGuideMng.CUOpenCardClickableSpan.2(this), 5, null, false);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(this.jdField_b_of_type_Int);
+    paramTextPaint.setColor(this.e);
     paramTextPaint.setUnderlineText(false);
   }
 }

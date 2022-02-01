@@ -15,9 +15,9 @@ public abstract interface QQGAudioCtrlCallback
   
   public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract boolean a(long paramLong, int paramInt);
+  public abstract boolean b(long paramLong, int paramInt);
   
-  public abstract void b(long paramLong, ArrayList<AVUserInfo> paramArrayList);
+  public abstract void c(long paramLong, ArrayList<AVUserInfo> paramArrayList);
 }
 
 

@@ -21,7 +21,7 @@ class InputMethodRelativeLayout$1
         } else {
           InputMethodRelativeLayout.a(this.a, false);
         }
-        this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
+        this.a.a.a(InputMethodRelativeLayout.c(this.a), InputMethodRelativeLayout.b(this.a), i);
         this.a.requestLayout();
         InputMethodRelativeLayout.a(this.a, i);
       }
@@ -30,7 +30,7 @@ class InputMethodRelativeLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodRelativeLayout.1
  * JD-Core Version:    0.7.0.1
  */

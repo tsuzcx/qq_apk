@@ -27,10 +27,10 @@ import org.json.JSONObject;
 public class WholePeoplePlugin
   extends WebViewPlugin
 {
-  private int jdField_a_of_type_Int = 2147483647;
-  ColorFilter jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(-1, PorterDuff.Mode.SRC_IN);
-  private RedTouch jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
+  ColorFilter a = new PorterDuffColorFilter(-1, PorterDuff.Mode.SRC_IN);
+  private WebView b;
+  private RedTouch c;
+  private int d = 2147483647;
   
   public WholePeoplePlugin()
   {
@@ -39,20 +39,20 @@ public class WholePeoplePlugin
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    Object localObject1 = this.mRuntime.a();
-    Object localObject2 = (WebViewFragment)this.mRuntime.a();
+    Object localObject1 = this.mRuntime.d();
+    Object localObject2 = (WebViewFragment)this.mRuntime.f();
     if (localObject2 != null)
     {
-      ImageView localImageView = ((WebViewFragment)localObject2).getSwiftTitleUI().a;
-      if (this.jdField_a_of_type_Int == 2147483647) {
-        this.jdField_a_of_type_Int = localImageView.getPaddingRight();
+      ImageView localImageView = ((WebViewFragment)localObject2).getSwiftTitleUI().h;
+      if (this.d == 2147483647) {
+        this.d = localImageView.getPaddingRight();
       }
       if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)))
       {
-        localImageView.setImageResource(2130844847);
-        if (((WebViewFragment)localObject2).getSwiftTitleUI().b != null)
+        localImageView.setImageResource(2130846281);
+        if (((WebViewFragment)localObject2).getSwiftTitleUI().e != null)
         {
-          i = ((WebViewFragment)localObject2).getSwiftTitleUI().b.getCurrentTextColor();
+          i = ((WebViewFragment)localObject2).getSwiftTitleUI().e.getCurrentTextColor();
           localImageView.setColorFilter(new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_IN));
           if (QLog.isColorLevel())
           {
@@ -64,16 +64,16 @@ public class WholePeoplePlugin
         }
         else
         {
-          localImageView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
+          localImageView.setColorFilter(this.a);
         }
         int i = 0;
         localImageView.setVisibility(0);
         if (paramBoolean2)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch == null) {
-            this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch((Context)localObject1, localImageView).b(53).a();
+          if (this.c == null) {
+            this.c = new RedTouch((Context)localObject1, localImageView).c(53).a();
           }
-          localObject1 = CampusCircleIpcClient.a().b();
+          localObject1 = CampusCircleIpcClient.a().d();
           if (localObject1 != null)
           {
             int j = ((Bundle)localObject1).getInt("redPointCount", 0);
@@ -86,29 +86,29 @@ public class WholePeoplePlugin
               }
             }
             localObject1 = WholePeopleConstant.a(k, j);
-            this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
-            localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.jdField_a_of_type_Int + AIOUtils.b(i, this.jdField_a_of_type_ComTencentSmttSdkWebView.getResources()), localImageView.getPaddingBottom());
+            this.c.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
+            localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.d + AIOUtils.b(i, this.b.getResources()), localImageView.getPaddingBottom());
           }
           else
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+            localObject1 = this.c;
             if (localObject1 != null) {
-              ((RedTouch)localObject1).d();
+              ((RedTouch)localObject1).g();
             }
           }
         }
         else
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+          localObject1 = this.c;
           if (localObject1 != null) {
-            ((RedTouch)localObject1).d();
+            ((RedTouch)localObject1).g();
           }
         }
         localImageView.setOnClickListener(new WholePeoplePlugin.1(this, paramString));
         return;
       }
       localImageView.setVisibility(8);
-      localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.jdField_a_of_type_Int, localImageView.getPaddingBottom());
+      localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.d, localImageView.getPaddingBottom());
       return;
     }
     paramString = new StringBuilder();
@@ -127,13 +127,13 @@ public class WholePeoplePlugin
       }
       if (this.mRuntime != null)
       {
-        if (this.mRuntime.a() == null) {
+        if (this.mRuntime.d() == null) {
           return false;
         }
         if ((paramString3.equalsIgnoreCase("setRightButton")) && (paramVarArgs.length == 1)) {
           try
           {
-            paramJsBridgeListener = this.mRuntime.a();
+            paramJsBridgeListener = this.mRuntime.d();
             if (paramJsBridgeListener != null)
             {
               if (paramJsBridgeListener.isFinishing()) {
@@ -147,7 +147,7 @@ public class WholePeoplePlugin
           {
             label128:
             label131:
-            label202:
+            label203:
             if (!QLog.isColorLevel()) {}
           }
         }
@@ -171,16 +171,16 @@ public class WholePeoplePlugin
     {
       break label131;
       if (i != 1) {
-        break label319;
+        break label320;
       }
       bool1 = true;
-      break label322;
+      break label323;
       bool1 = false;
       if (j != 1) {
-        break label202;
+        break label203;
       }
       bool2 = true;
-      break label202;
+      break label203;
     }
     i = 0;
     j = 0;
@@ -194,7 +194,7 @@ public class WholePeoplePlugin
       paramString1.append(" callback=");
       paramString1.append(paramJsBridgeListener);
       QLog.i("WholePeoplePlugin", 2, paramString1.toString());
-      break label307;
+      break label308;
       a(bool1, bool2, paramJsBridgeListener);
       return true;
       return true;
@@ -202,16 +202,16 @@ public class WholePeoplePlugin
       return true;
       if (paramString3.equalsIgnoreCase("readRedPoint"))
       {
-        paramJsBridgeListener = this.mRuntime.a();
+        paramJsBridgeListener = this.mRuntime.d();
         if (paramJsBridgeListener != null)
         {
           if (paramJsBridgeListener.isFinishing()) {
             return true;
           }
-          CampusCircleIpcClient.a().b();
-          paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
-          if ((paramJsBridgeListener != null) && (paramJsBridgeListener.c())) {
-            this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.d();
+          CampusCircleIpcClient.a().e();
+          paramJsBridgeListener = this.c;
+          if ((paramJsBridgeListener != null) && (paramJsBridgeListener.h())) {
+            this.c.g();
           }
         }
       }
@@ -223,12 +223,12 @@ public class WholePeoplePlugin
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
+    this.b = this.mRuntime.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.wholepeople.WholePeoplePlugin
  * JD-Core Version:    0.7.0.1
  */

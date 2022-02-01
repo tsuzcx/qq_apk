@@ -13,12 +13,12 @@ class CreateVirtualAccountFragment$3
   {
     String str = QQLiteStatusUtil.a(CreateVirtualAccountFragment.a(this.this$0));
     SSOLog.a("CreateVirtualAccountFragment", new Object[] { "uploadAvatar appId=", this.a });
-    CreateVirtualAccountFragment.a(this.this$0).a(this.a, CreateVirtualAccountFragment.a(this.this$0), QQLiteStatusUtil.a(), str);
+    CreateVirtualAccountFragment.b(this.this$0).a(this.a, CreateVirtualAccountFragment.a(this.this$0), QQLiteStatusUtil.a(), str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.CreateVirtualAccountFragment.3
  * JD-Core Version:    0.7.0.1
  */

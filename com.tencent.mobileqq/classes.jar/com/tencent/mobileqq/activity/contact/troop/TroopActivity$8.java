@@ -19,9 +19,9 @@ class TroopActivity$8
     default: 
       this.a.b();
       break;
-    case 2131369216: 
+    case 2131436194: 
       ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
-      if (this.a.a())
+      if (this.a.c())
       {
         this.a.b();
       }
@@ -31,13 +31,13 @@ class TroopActivity$8
         this.a.a();
       }
       break;
-    case 2131369202: 
-    case 2131369563: 
-    case 2131379476: 
-      if (this.a.a != null)
+    case 2131436180: 
+    case 2131436666: 
+    case 2131448219: 
+      if (this.a.u != null)
       {
         Intent localIntent = new Intent();
-        localIntent.putExtra("isDataChanged", this.a.a.isEmpty() ^ true);
+        localIntent.putExtra("isDataChanged", this.a.u.isEmpty() ^ true);
         this.a.setResult(-1, localIntent);
       }
       this.a.onBackPressed();
@@ -47,7 +47,7 @@ class TroopActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.8
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class TroopRedTouchManager$1
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("request_type", 0);
-    paramContext = this.a.c;
+    paramContext = this.a.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("receive request");
     localStringBuilder.append(paramIntent.getExtras());

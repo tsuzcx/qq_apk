@@ -11,18 +11,18 @@ class QRDisplayActivity$7
   
   public void run()
   {
-    int i = this.this$0.jdField_c_of_type_AndroidViewView.getHeight();
+    int i = this.this$0.c.getHeight();
     int j = this.this$0.b.getHeight();
     if (j < i)
     {
-      View localView = this.this$0.findViewById(2131374677);
+      View localView = this.this$0.findViewById(2131442858);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      if (this.this$0.jdField_c_of_type_Int == 2)
+      if (this.this$0.t == 2)
       {
         localLayoutParams.topMargin = 0;
         localLayoutParams.bottomMargin = 0;
       }
-      else if (this.this$0.jdField_c_of_type_Int == 5)
+      else if (this.this$0.t == 5)
       {
         localLayoutParams.topMargin += (i - j) / 2;
       }

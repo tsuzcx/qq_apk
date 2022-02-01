@@ -569,7 +569,7 @@ public class ProfileConfig
   public String getVoiceBtnWording()
   {
     if (this.app == null) {
-      return HardCodeUtil.a(2131708418);
+      return HardCodeUtil.a(2131906204);
     }
     if (this.mVoiceBtnStr == null) {
       initVoiceBtnConfig(null);
@@ -601,9 +601,9 @@ public class ProfileConfig
       return;
     }
     if ("profile_btn_config".equals(paramString)) {
-      initVoiceBtnConfig(paramCfgParseResult.a);
+      initVoiceBtnConfig(paramCfgParseResult.d);
     } else if ("profile_switch_config".equals(paramString)) {
-      initProfileSwitchConfig(paramCfgParseResult.a);
+      initProfileSwitchConfig(paramCfgParseResult.d);
     }
     paramQQAppInterface = this.mLis;
     if (paramQQAppInterface != null) {
@@ -613,7 +613,7 @@ public class ProfileConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.config.ProfileConfig
  * JD-Core Version:    0.7.0.1
  */

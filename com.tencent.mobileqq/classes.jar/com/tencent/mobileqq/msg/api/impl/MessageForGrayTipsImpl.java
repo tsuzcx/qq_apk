@@ -59,12 +59,12 @@ public class MessageForGrayTipsImpl
     if ((!checkAppRuntimeInValid()) && ((paramMessageRecord instanceof MessageForUniteGrayTip)))
     {
       Object localObject = (MessageForUniteGrayTip)paramMessageRecord;
-      if (((MessageForUniteGrayTip)localObject).tipParam.b == 2) {
+      if (((MessageForUniteGrayTip)localObject).tipParam.i == 2) {
         paramString = new SpannableStringBuilder(new QQText(paramString, 3));
       } else {
         paramString = new SpannableStringBuilder(new ColorNickText(paramString, 16));
       }
-      localObject = ((MessageForUniteGrayTip)localObject).tipParam.a().iterator();
+      localObject = ((MessageForUniteGrayTip)localObject).tipParam.b().iterator();
       while (((Iterator)localObject).hasNext())
       {
         GrayTipsMessageConstants.HighlightItem localHighlightItem = (GrayTipsMessageConstants.HighlightItem)((Iterator)localObject).next();
@@ -114,7 +114,7 @@ public class MessageForGrayTipsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msg.api.impl.MessageForGrayTipsImpl
  * JD-Core Version:    0.7.0.1
  */

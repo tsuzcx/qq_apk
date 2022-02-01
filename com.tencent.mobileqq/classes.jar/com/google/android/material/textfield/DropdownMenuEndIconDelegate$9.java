@@ -12,13 +12,13 @@ class DropdownMenuEndIconDelegate$9
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.setChecked(DropdownMenuEndIconDelegate.b(this.a));
-    DropdownMenuEndIconDelegate.a(this.a).start();
+    this.a.c.setChecked(DropdownMenuEndIconDelegate.f(this.a));
+    DropdownMenuEndIconDelegate.g(this.a).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.DropdownMenuEndIconDelegate.9
  * JD-Core Version:    0.7.0.1
  */

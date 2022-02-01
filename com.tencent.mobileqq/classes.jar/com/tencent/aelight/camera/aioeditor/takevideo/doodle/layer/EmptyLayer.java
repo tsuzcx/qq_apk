@@ -21,16 +21,9 @@ public final class EmptyLayer
     return a;
   }
   
-  public void a() {}
-  
   protected void a(Canvas paramCanvas) {}
   
   public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
   
   public boolean a(long paramLong)
   {
@@ -42,6 +35,8 @@ public final class EmptyLayer
     return false;
   }
   
+  public void b() {}
+  
   public void b(Canvas paramCanvas) {}
   
   public boolean b(MotionEvent paramMotionEvent)
@@ -49,10 +44,15 @@ public final class EmptyLayer
     SLog.b(a, "EmptyLayer handle touch event.");
     return false;
   }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.EmptyLayer
  * JD-Core Version:    0.7.0.1
  */

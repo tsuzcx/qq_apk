@@ -10,17 +10,17 @@ import com.tencent.qphone.base.util.QLog;
 public class DavWTogetherObserver
   extends WTogetherObserverImpl
 {
-  private final DoubleVideoCtrlUI a;
+  private final DoubleVideoCtrlUI c;
   
   public DavWTogetherObserver(DoubleVideoCtrlUI paramDoubleVideoCtrlUI)
   {
-    super(paramDoubleVideoCtrlUI.a);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI = paramDoubleVideoCtrlUI;
+    super(paramDoubleVideoCtrlUI.al);
+    this.c = paramDoubleVideoCtrlUI;
   }
   
   protected void a()
   {
-    AVActivity localAVActivity = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    AVActivity localAVActivity = this.c.U();
     if (localAVActivity != null) {
       localAVActivity.runOnUiThread(new DavWTogetherObserver.2(this, localAVActivity));
     }
@@ -38,17 +38,17 @@ public class DavWTogetherObserver
       ((StringBuilder)localObject).append("]");
       QLog.i("WTogether.ObserverImpl", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
+    Object localObject = this.c.U();
     if ((localObject != null) && (!((Activity)localObject).isFinishing())) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new DavWTogetherObserver.3(this, paramBoolean, (Activity)localObject, paramString));
+      this.a.post(new DavWTogetherObserver.3(this, paramBoolean, (Activity)localObject, paramString));
     }
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    int j = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b();
+    int j = this.c.z();
     int i;
-    if (AVUtil.c(j))
+    if (AVUtil.g(j))
     {
       if (paramBoolean1) {
         i = 4;
@@ -77,7 +77,7 @@ public class DavWTogetherObserver
       localStringBuilder.append("]");
       QLog.i("WTogether.ObserverImpl", 4, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new DavWTogetherObserver.1(this, i, paramBoolean2, paramBoolean1));
+    this.a.post(new DavWTogetherObserver.1(this, i, paramBoolean2, paramBoolean1));
   }
 }
 

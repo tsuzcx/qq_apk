@@ -14,14 +14,14 @@ public abstract class AsyncTask
   
   public abstract void a();
   
-  public final void b()
+  public final void c()
   {
     ThreadManager.getSubThreadHandler().post(new AsyncTask.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.AsyncTask
  * JD-Core Version:    0.7.0.1
  */

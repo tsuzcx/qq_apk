@@ -5,8 +5,8 @@ import android.support.annotation.Keep;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Keep
 public enum AdSettingsManager
@@ -15,7 +15,7 @@ public enum AdSettingsManager
   
   private WeakReference<AdSettingsManager.a> adapter;
   private AdSettingsManager.Listener listener = new AdSettingsManager.2(this);
-  private volatile List<WeakReference<AdSettingsManager.Listener>> listeners = new ArrayList();
+  private volatile List<WeakReference<AdSettingsManager.Listener>> listeners = new CopyOnWriteArrayList();
   
   private AdSettingsManager() {}
   
@@ -35,15 +35,9 @@ public enum AdSettingsManager
   
   public void addListener(WeakReference<AdSettingsManager.Listener> paramWeakReference)
   {
-    if (paramWeakReference != null) {}
-    try
-    {
-      if (paramWeakReference.get() != null) {
-        this.listeners.add(paramWeakReference);
-      }
-      return;
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+      this.listeners.add(paramWeakReference);
     }
-    finally {}
   }
   
   public gdt_settings.Settings getCache()

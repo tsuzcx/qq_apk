@@ -9,7 +9,7 @@ class BaseStageView$1
   
   public void run()
   {
-    this.this$0.c.setVisibility(0);
+    this.this$0.E.setVisibility(0);
   }
 }
 

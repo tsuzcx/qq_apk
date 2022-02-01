@@ -14,33 +14,33 @@ class LocalFileBrowserActivity$8
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
-    if (paramAdapterView.d())
+    paramAdapterView = (FileInfo)this.a.O.get(paramInt);
+    if (paramAdapterView.k())
     {
-      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+      LocalFileBrowserActivity.a(this.a, paramAdapterView.d(), true);
       return;
     }
-    if (this.a.f())
+    if (this.a.D())
     {
       if (FMDataCache.a(paramAdapterView))
       {
-        FMDataCache.b(paramAdapterView);
+        FMDataCache.c(paramAdapterView);
       }
       else
       {
-        if (this.a.h) {
-          FMDataCache.b();
+        if (this.a.x) {
+          FMDataCache.d();
         }
-        FMDataCache.a(paramAdapterView);
+        FMDataCache.b(paramAdapterView);
       }
-      this.a.l();
+      this.a.B();
       LocalFileBrowserActivity.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity.8
  * JD-Core Version:    0.7.0.1
  */

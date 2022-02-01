@@ -9,7 +9,7 @@ class CommentPresenter$5$1
   
   public void run()
   {
-    CommentPresenter.a(this.a.a, 0, CommentPresenter.a(this.a.a).getReplyId());
+    CommentPresenter.a(this.a.a, 0, CommentPresenter.m(this.a.a).getReplyId());
     CommentPresenter.b(this.a.a, false);
   }
 }

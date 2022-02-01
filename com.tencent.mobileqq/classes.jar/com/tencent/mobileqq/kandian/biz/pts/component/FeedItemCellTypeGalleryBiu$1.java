@@ -15,23 +15,23 @@ class FeedItemCellTypeGalleryBiu$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter == null) {
+    if (this.a.g == null) {
       return;
     }
-    paramView = ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a();
+    paramView = ((IReadInJoyModel)this.a.b).k();
     if (paramView == null) {
       return;
     }
-    int i = ComponentContentGalleryBiu.a(paramView, this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter);
-    OnGalleryImageClickListener localOnGalleryImageClickListener = this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a().a();
+    int i = ComponentContentGalleryBiu.a(paramView, this.a.g);
+    OnGalleryImageClickListener localOnGalleryImageClickListener = this.a.g.y().d();
     if (localOnGalleryImageClickListener != null) {
-      localOnGalleryImageClickListener.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, 0, paramView.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
+      localOnGalleryImageClickListener.a(this.a.e, paramView, 0, paramView.innerUniqueID, i, this.a.a, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeGalleryBiu.1
  * JD-Core Version:    0.7.0.1
  */

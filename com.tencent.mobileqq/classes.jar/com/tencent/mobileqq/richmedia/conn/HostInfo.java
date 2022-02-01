@@ -3,19 +3,18 @@ package com.tencent.mobileqq.richmedia.conn;
 public class HostInfo
   implements Cloneable
 {
-  public int a;
-  public long a;
   public String a;
-  public int b = 0;
+  public int b;
   public int c = 0;
-  public int d = 0;
-  public int e;
+  public long d = -1L;
+  public int e = 0;
+  public int f = 0;
+  public int g;
   
   public HostInfo(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
   public HostInfo a()
@@ -26,17 +25,17 @@ public class HostInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(":");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" failCount:");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.HostInfo
  * JD-Core Version:    0.7.0.1
  */

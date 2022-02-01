@@ -32,7 +32,7 @@ class WSFetchLocalDataModule$1
         return;
       }
       Object localObject = (stSimpleMetaFeed)paramJceStruct.get(0);
-      if (!TextUtils.equals(((stSimpleMetaFeed)localObject).id, WSFetchLocalDataModule.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataModuleWSFetchLocalDataModule))) {
+      if (!TextUtils.equals(((stSimpleMetaFeed)localObject).id, WSFetchLocalDataModule.a(this.b))) {
         return;
       }
       WSPublicAccReport.getInstance().getRecommendFullScreenInfo().a(((stSimpleMetaFeed)localObject).video_url);
@@ -40,7 +40,7 @@ class WSFetchLocalDataModule$1
       ((StringBuilder)localObject).append("onReadCacheCompleted feeds.size() = ");
       ((StringBuilder)localObject).append(paramJceStruct.size());
       WSLog.a("WSFetchLocalDataModule", ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+      localObject = this.a;
       if (localObject != null) {
         ((IFetchDataRspListener)localObject).a(WSVerticalDataUtil.a(paramJceStruct), false, true, null);
       }
@@ -49,7 +49,7 @@ class WSFetchLocalDataModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.module.WSFetchLocalDataModule.1
  * JD-Core Version:    0.7.0.1
  */

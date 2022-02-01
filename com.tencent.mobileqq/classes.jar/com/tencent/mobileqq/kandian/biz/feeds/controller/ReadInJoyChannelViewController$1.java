@@ -10,14 +10,14 @@ class ReadInJoyChannelViewController$1
   
   public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkCallHotwordChange != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkCallHotwordChange.a(paramInt, this.a.jdField_a_of_type_Int);
+    if (this.a.g != null) {
+      this.a.g.a(paramInt, this.a.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyChannelViewController.1
  * JD-Core Version:    0.7.0.1
  */

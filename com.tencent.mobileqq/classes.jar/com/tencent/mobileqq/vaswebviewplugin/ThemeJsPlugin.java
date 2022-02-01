@@ -98,7 +98,7 @@ public class ThemeJsPlugin
     {
       localJSONException.printStackTrace();
     }
-    setup(localJSONObject, paramString3, this.mThemeDiyModule.a(paramString1, paramString2), true);
+    setup(localJSONObject, paramString3, this.mThemeDiyModule.b(paramString1, paramString2), true);
   }
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -148,39 +148,39 @@ public class ThemeJsPlugin
     //   0: aload_0
     //   1: astore 8
     //   3: iload_1
-    //   4: ifge +230 -> 234
-    //   7: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4: ifge +231 -> 235
+    //   7: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   10: ifeq +42 -> 52
-    //   13: new 213	java/lang/StringBuilder
+    //   13: new 214	java/lang/StringBuilder
     //   16: dup
-    //   17: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   17: invokespecial 215	java/lang/StringBuilder:<init>	()V
     //   20: astore 6
     //   22: aload 6
-    //   24: ldc 216
-    //   26: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc 217
+    //   26: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
     //   30: aload 6
     //   32: aload 8
-    //   34: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   37: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   34: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   37: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   40: pop
     //   41: ldc 17
     //   43: iconst_2
     //   44: aload 6
-    //   46: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 192	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   46: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokestatic 193	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   52: new 115	org/json/JSONObject
     //   55: dup
     //   56: invokespecial 116	org/json/JSONObject:<init>	()V
     //   59: astore 6
     //   61: aload 6
-    //   63: ldc 231
+    //   63: ldc 232
     //   65: iconst_2
-    //   66: invokevirtual 234	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   66: invokevirtual 235	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   69: pop
     //   70: aload 6
-    //   72: ldc 236
-    //   74: ldc 238
+    //   72: ldc 237
+    //   74: ldc 239
     //   76: invokevirtual 122	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   79: pop
     //   80: aload 8
@@ -190,171 +190,171 @@ public class ThemeJsPlugin
     //   88: dup
     //   89: iconst_0
     //   90: aload 6
-    //   92: invokevirtual 239	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   92: invokevirtual 240	org/json/JSONObject:toString	()Ljava/lang/String;
     //   95: aastore
-    //   96: invokevirtual 243	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   99: getstatic 247	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
+    //   96: invokevirtual 244	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   99: getstatic 248	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
     //   102: astore 5
     //   104: aload_0
     //   105: aconst_null
     //   106: iconst_0
     //   107: aload_2
     //   108: lconst_0
-    //   109: ldc 249
-    //   111: ldc 251
-    //   113: ldc 253
+    //   109: ldc 250
+    //   111: ldc 252
+    //   113: ldc 254
     //   115: sipush 153
     //   118: aload 5
     //   120: bipush 10
     //   122: aload_3
-    //   123: ldc 255
-    //   125: invokevirtual 259	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   128: iload_1
-    //   129: iconst_m1
-    //   130: if_icmpne +15 -> 145
-    //   133: aload_0
-    //   134: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   137: astore_2
-    //   138: aload_2
-    //   139: ifnull +73 -> 212
-    //   142: goto +66 -> 208
-    //   145: return
-    //   146: astore_2
-    //   147: goto +67 -> 214
-    //   150: astore_2
-    //   151: goto +8 -> 159
-    //   154: astore_2
-    //   155: goto +59 -> 214
-    //   158: astore_2
-    //   159: new 213	java/lang/StringBuilder
-    //   162: dup
-    //   163: invokespecial 214	java/lang/StringBuilder:<init>	()V
-    //   166: astore_3
-    //   167: aload_3
-    //   168: ldc_w 261
-    //   171: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: pop
-    //   175: aload_3
-    //   176: aload_2
-    //   177: invokevirtual 264	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   180: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: pop
-    //   184: ldc 17
-    //   186: iconst_2
-    //   187: aload_3
-    //   188: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   191: invokestatic 267	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   194: iload_1
-    //   195: iconst_m1
-    //   196: if_icmpne +16 -> 212
-    //   199: aload_0
-    //   200: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   203: astore_2
-    //   204: aload_2
-    //   205: ifnull +7 -> 212
-    //   208: aload_2
-    //   209: invokevirtual 272	com/tencent/mobileqq/utils/QQCustomDialog:dismiss	()V
-    //   212: return
-    //   213: astore_2
-    //   214: iload_1
-    //   215: iconst_m1
-    //   216: if_icmpne +16 -> 232
-    //   219: aload_0
-    //   220: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   223: astore_3
-    //   224: aload_3
-    //   225: ifnull +7 -> 232
-    //   228: aload_3
-    //   229: invokevirtual 272	com/tencent/mobileqq/utils/QQCustomDialog:dismiss	()V
-    //   232: aload_2
-    //   233: athrow
-    //   234: aload 8
-    //   236: getfield 73	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:downloadThemeMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   239: aload_2
-    //   240: invokevirtual 273	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   243: checkcast 275	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo
-    //   246: astore 7
-    //   248: aload 7
-    //   250: astore 6
-    //   252: aload 7
-    //   254: ifnonnull +14 -> 268
-    //   257: aload 8
-    //   259: getfield 277	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
-    //   262: aload_2
-    //   263: invokestatic 283	com/tencent/mobileqq/vas/theme/api/ThemeUtil:getThemeInfo	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo;
-    //   266: astore 6
-    //   268: aload 6
-    //   270: astore 7
-    //   272: aload 6
-    //   274: ifnonnull +18 -> 292
-    //   277: new 275	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo
-    //   280: dup
-    //   281: invokespecial 284	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:<init>	()V
-    //   284: astore 7
-    //   286: aload 7
-    //   288: aload_2
-    //   289: putfield 287	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:themeId	Ljava/lang/String;
-    //   292: aload 7
-    //   294: iload 4
-    //   296: putfield 291	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:isVoiceTheme	Z
-    //   299: aload 8
-    //   301: getfield 277	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
-    //   304: aload 7
-    //   306: invokestatic 295	com/tencent/mobileqq/vas/theme/api/ThemeUtil:setThemeInfo	(Landroid/content/Context;Lcom/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo;)Ljava/lang/Boolean;
-    //   309: pop
-    //   310: aload 8
-    //   312: getfield 73	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:downloadThemeMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   315: aload_2
-    //   316: aload 7
-    //   318: invokevirtual 298	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   321: pop
-    //   322: aload 8
-    //   324: aload_2
-    //   325: putfield 105	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:currDownloadingThemeId	Ljava/lang/String;
-    //   328: aload_2
-    //   329: putstatic 300	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:loadingThemeIdForJsCall	Ljava/lang/String;
-    //   332: aload_0
-    //   333: aconst_null
-    //   334: iconst_0
-    //   335: aload_2
-    //   336: lconst_0
-    //   337: aconst_null
+    //   123: ldc_w 256
+    //   126: invokevirtual 260	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   129: iload_1
+    //   130: iconst_m1
+    //   131: if_icmpne +15 -> 146
+    //   134: aload_0
+    //   135: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   138: astore_2
+    //   139: aload_2
+    //   140: ifnull +73 -> 213
+    //   143: goto +66 -> 209
+    //   146: return
+    //   147: astore_2
+    //   148: goto +67 -> 215
+    //   151: astore_2
+    //   152: goto +8 -> 160
+    //   155: astore_2
+    //   156: goto +59 -> 215
+    //   159: astore_2
+    //   160: new 214	java/lang/StringBuilder
+    //   163: dup
+    //   164: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   167: astore_3
+    //   168: aload_3
+    //   169: ldc_w 262
+    //   172: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: pop
+    //   176: aload_3
+    //   177: aload_2
+    //   178: invokevirtual 265	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   181: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: ldc 17
+    //   187: iconst_2
+    //   188: aload_3
+    //   189: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   192: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   195: iload_1
+    //   196: iconst_m1
+    //   197: if_icmpne +16 -> 213
+    //   200: aload_0
+    //   201: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   204: astore_2
+    //   205: aload_2
+    //   206: ifnull +7 -> 213
+    //   209: aload_2
+    //   210: invokevirtual 273	com/tencent/mobileqq/utils/QQCustomDialog:dismiss	()V
+    //   213: return
+    //   214: astore_2
+    //   215: iload_1
+    //   216: iconst_m1
+    //   217: if_icmpne +16 -> 233
+    //   220: aload_0
+    //   221: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   224: astore_3
+    //   225: aload_3
+    //   226: ifnull +7 -> 233
+    //   229: aload_3
+    //   230: invokevirtual 273	com/tencent/mobileqq/utils/QQCustomDialog:dismiss	()V
+    //   233: aload_2
+    //   234: athrow
+    //   235: aload 8
+    //   237: getfield 73	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:downloadThemeMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   240: aload_2
+    //   241: invokevirtual 274	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   244: checkcast 276	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo
+    //   247: astore 7
+    //   249: aload 7
+    //   251: astore 6
+    //   253: aload 7
+    //   255: ifnonnull +14 -> 269
+    //   258: aload 8
+    //   260: getfield 278	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
+    //   263: aload_2
+    //   264: invokestatic 284	com/tencent/mobileqq/vas/theme/api/ThemeUtil:getThemeInfo	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo;
+    //   267: astore 6
+    //   269: aload 6
+    //   271: astore 7
+    //   273: aload 6
+    //   275: ifnonnull +18 -> 293
+    //   278: new 276	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo
+    //   281: dup
+    //   282: invokespecial 285	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:<init>	()V
+    //   285: astore 7
+    //   287: aload 7
+    //   289: aload_2
+    //   290: putfield 288	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:themeId	Ljava/lang/String;
+    //   293: aload 7
+    //   295: iload 4
+    //   297: putfield 292	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:isVoiceTheme	Z
+    //   300: aload 8
+    //   302: getfield 278	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
+    //   305: aload 7
+    //   307: invokestatic 296	com/tencent/mobileqq/vas/theme/api/ThemeUtil:setThemeInfo	(Landroid/content/Context;Lcom/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo;)Ljava/lang/Boolean;
+    //   310: pop
+    //   311: aload 8
+    //   313: getfield 73	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:downloadThemeMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   316: aload_2
+    //   317: aload 7
+    //   319: invokevirtual 299	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   322: pop
+    //   323: aload 8
+    //   325: aload_2
+    //   326: putfield 105	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:currDownloadingThemeId	Ljava/lang/String;
+    //   329: aload_2
+    //   330: putstatic 301	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:loadingThemeIdForJsCall	Ljava/lang/String;
+    //   333: aload_0
+    //   334: aconst_null
+    //   335: iconst_0
+    //   336: aload_2
+    //   337: lconst_0
     //   338: aconst_null
-    //   339: ldc 253
-    //   341: sipush 153
-    //   344: getstatic 247	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
-    //   347: bipush 11
-    //   349: aload_3
-    //   350: ldc 255
-    //   352: invokevirtual 259	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   355: ldc2_w 301
-    //   358: aload_2
-    //   359: invokestatic 305	com/tencent/mobileqq/vas/theme/api/ThemeUtil:getThemeConfigID	(Ljava/lang/String;)Ljava/lang/String;
-    //   362: new 307	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$8
-    //   365: dup
-    //   366: aload 8
-    //   368: aload 5
-    //   370: invokespecial 310	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$8:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;)V
-    //   373: invokestatic 316	com/tencent/mobileqq/vas/ipc/QuickUpdateIPCModule:download	(JLjava/lang/String;Lcom/tencent/mobileqq/vas/aidl/IDownloadListener;)V
-    //   376: return
+    //   339: aconst_null
+    //   340: ldc 254
+    //   342: sipush 153
+    //   345: getstatic 248	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
+    //   348: bipush 11
+    //   350: aload_3
+    //   351: ldc_w 256
+    //   354: invokevirtual 260	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   357: ldc2_w 302
+    //   360: aload_2
+    //   361: invokestatic 306	com/tencent/mobileqq/vas/theme/api/ThemeUtil:getThemeConfigID	(Ljava/lang/String;)Ljava/lang/String;
+    //   364: new 308	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$8
+    //   367: dup
+    //   368: aload 8
+    //   370: aload 5
+    //   372: invokespecial 311	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$8:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;)V
+    //   375: invokestatic 317	com/tencent/mobileqq/vas/ipc/QuickUpdateIPCModule:download	(JLjava/lang/String;Lcom/tencent/mobileqq/vas/aidl/IDownloadListener;)V
+    //   378: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	377	0	this	ThemeJsPlugin
-    //   0	377	1	paramInt	int
-    //   0	377	2	paramString1	String
-    //   0	377	3	paramString2	String
-    //   0	377	4	paramBoolean	boolean
-    //   0	377	5	paramString3	String
-    //   20	253	6	localObject1	Object
-    //   246	71	7	localObject2	Object
-    //   1	366	8	localThemeJsPlugin	ThemeJsPlugin
+    //   0	379	0	this	ThemeJsPlugin
+    //   0	379	1	paramInt	int
+    //   0	379	2	paramString1	String
+    //   0	379	3	paramString2	String
+    //   0	379	4	paramBoolean	boolean
+    //   0	379	5	paramString3	String
+    //   20	254	6	localObject1	Object
+    //   247	71	7	localObject2	Object
+    //   1	368	8	localThemeJsPlugin	ThemeJsPlugin
     // Exception table:
     //   from	to	target	type
-    //   104	128	146	finally
-    //   104	128	150	java/lang/Exception
-    //   52	104	154	finally
-    //   52	104	158	java/lang/Exception
-    //   159	194	213	finally
+    //   104	129	147	finally
+    //   104	129	151	java/lang/Exception
+    //   52	104	155	finally
+    //   52	104	159	java/lang/Exception
+    //   160	195	214	finally
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -364,14 +364,14 @@ public class ThemeJsPlugin
   
   protected void onCreate()
   {
-    if ((this.mRuntime.a() != null) && ((this.mRuntime.a() instanceof BrowserAppInterface))) {
-      this.app = ((BrowserAppInterface)this.mRuntime.a());
+    if ((this.mRuntime.b() != null) && ((this.mRuntime.b() instanceof BrowserAppInterface))) {
+      this.app = ((BrowserAppInterface)this.mRuntime.b());
     }
-    this.context = this.mRuntime.a().getApplicationContext();
+    this.context = this.mRuntime.d().getApplicationContext();
     this.mThemeDiyModule = new ThemeDiyModule(this.context, this.app);
     this.mThemeDiyModule.a(this.mThemeDiyImpl);
     super.onCreate();
-    this.rootView = this.mRuntime.a().getWindow().getDecorView().getRootView();
+    this.rootView = this.mRuntime.d().getWindow().getDecorView().getRootView();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onCreate, nowThemeId=");
     localStringBuilder.append(ThemeUtil.getCurrentThemeId());
@@ -563,10 +563,10 @@ public class ThemeJsPlugin
             if (i == 0) {
               synchronized (this.mLock)
               {
-                if ((!TextUtils.isEmpty(str2)) && (str2.equals(this.mCallbackId)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (this.mThemeinfo != null) && (((String)localObject3).equals(this.mThemeinfo.themeId)) && (!DarkModeManager.a(this.mRuntime.a(), (String)localObject3, new ThemeJsPlugin.10(this, (String)localObject3)))) {
-                  if (!SimpleUIUtil.a())
+                if ((!TextUtils.isEmpty(str2)) && (str2.equals(this.mCallbackId)) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (this.mThemeinfo != null) && (((String)localObject3).equals(this.mThemeinfo.themeId)) && (!DarkModeManager.b(this.mRuntime.d(), (String)localObject3, new ThemeJsPlugin.10(this, (String)localObject3)))) {
+                  if (!SimpleUIUtil.e())
                   {
-                    this.mThemeDiyModule.a();
+                    this.mThemeDiyModule.b();
                     ThemeIPCModule.a((String)localObject3, new ThemeJsPlugin.ThemeSwitchListener(this, (String)localObject3, true));
                   }
                   else
@@ -582,7 +582,7 @@ public class ThemeJsPlugin
             }
             if ("saveDiyTheme".equals(this.mCurrentMethodName))
             {
-              super.callJs(str2, new String[] { new JSONResult(???.getInt("result_int"), HardCodeUtil.a(2131714726)).a() });
+              super.callJs(str2, new String[] { new JSONResult(???.getInt("result_int"), HardCodeUtil.a(2131912232)).a() });
               return;
             }
             ??? = new JSONObject();
@@ -628,14 +628,14 @@ public class ThemeJsPlugin
       localObject2 = (ThemeUtil.ThemeInfo)this.downloadThemeMap.get(localObject1);
       paramJSONObject = (JSONObject)localObject2;
       if ("1000".equals(localObject1)) {
-        break label702;
+        break label704;
       }
       if (localObject2 != null) {
-        break label693;
+        break label695;
       }
       paramJSONObject = ThemeUtil.getThemeInfo(this.context, (String)localObject1);
-      if ((paramThemeLocator != null) && (paramThemeLocator.a())) {
-        break label702;
+      if ((paramThemeLocator != null) && (paramThemeLocator.h())) {
+        break label704;
       }
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("queryInfo zip is missing: ");
@@ -703,7 +703,7 @@ public class ThemeJsPlugin
         QLog.i("ThemeJsPlugin", 2, localStringBuilder.toString());
       }
       if (paramJSONObject.size <= 0L) {
-        break label708;
+        break label710;
       }
       l = paramJSONObject.downsize;
       d1 = l;
@@ -732,14 +732,14 @@ public class ThemeJsPlugin
         return;
       }
       return;
-      label693:
+      label695:
       i = 1;
       paramJSONObject = (JSONObject)localObject2;
       break;
-      label702:
+      label704:
       i = 0;
       break;
-      label708:
+      label710:
       i = 0;
     }
   }
@@ -758,8 +758,8 @@ public class ThemeJsPlugin
       localObject3 = "201";
       localObject1 = ???;
     }
-    label1096:
-    label1148:
+    label1097:
+    label1149:
     for (;;)
     {
       try
@@ -906,7 +906,7 @@ public class ThemeJsPlugin
             this.mCallbackId = paramJSONObject;
             if ("1103".equals(str1))
             {
-              this.mThemeDiyModule.a();
+              this.mThemeDiyModule.b();
               paramString = paramJSONObject;
             }
             paramJSONObject = finally;
@@ -918,7 +918,7 @@ public class ThemeJsPlugin
               ThemeIPCModule.a(str1, new ThemeJsPlugin.ThemeSwitchListener(this, str1, true));
               continue;
               if (paramBundle != null) {
-                break label1148;
+                break label1149;
               }
               paramString = paramJSONObject;
               paramBundle = new Bundle();
@@ -957,7 +957,7 @@ public class ThemeJsPlugin
       }
       catch (Throwable paramJSONObject)
       {
-        break label1096;
+        break label1097;
       }
       localObject1 = ???;
       paramJSONObject = new StringBuilder();
@@ -1021,126 +1021,126 @@ public class ThemeJsPlugin
     //   1: monitorenter
     //   2: aload_1
     //   3: ldc 138
-    //   5: invokevirtual 650	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   5: invokevirtual 651	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   8: astore 10
     //   10: aload_1
     //   11: ldc 118
-    //   13: invokevirtual 650	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   13: invokevirtual 651	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   16: astore 11
     //   18: aload_1
-    //   19: ldc_w 847
-    //   22: ldc_w 848
-    //   25: invokevirtual 758	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   19: ldc_w 849
+    //   22: ldc_w 850
+    //   25: invokevirtual 761	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   28: istore 4
     //   30: aload_1
-    //   31: ldc_w 755
+    //   31: ldc_w 758
     //   34: iconst_0
-    //   35: invokevirtual 758	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   35: invokevirtual 761	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   38: istore 5
-    //   40: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   40: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   43: istore 6
     //   45: iload 6
     //   47: ifeq +98 -> 145
-    //   50: new 213	java/lang/StringBuilder
+    //   50: new 214	java/lang/StringBuilder
     //   53: dup
-    //   54: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   54: invokespecial 215	java/lang/StringBuilder:<init>	()V
     //   57: astore 9
     //   59: aload 9
-    //   61: ldc_w 850
-    //   64: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: ldc_w 852
+    //   64: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: pop
     //   68: aload 9
     //   70: aload 10
-    //   72: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: pop
     //   76: aload 9
-    //   78: ldc_w 852
-    //   81: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: ldc_w 854
+    //   81: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   84: pop
     //   85: aload 9
     //   87: aload 11
-    //   89: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   92: pop
     //   93: aload 9
-    //   95: ldc_w 854
-    //   98: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: ldc_w 856
+    //   98: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: pop
     //   102: aload 9
     //   104: iload 4
-    //   106: invokevirtual 466	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   106: invokevirtual 467	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   109: pop
     //   110: aload 9
-    //   112: ldc_w 780
-    //   115: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: ldc_w 783
+    //   115: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: pop
     //   119: aload 9
     //   121: iload 5
-    //   123: invokevirtual 466	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   123: invokevirtual 467	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   126: pop
     //   127: ldc 17
     //   129: iconst_2
     //   130: aload 9
-    //   132: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 389	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   132: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   138: goto +7 -> 145
     //   141: astore_1
-    //   142: goto +786 -> 928
+    //   142: goto +790 -> 932
     //   145: aload 11
     //   147: invokestatic 136	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   150: ifeq +209 -> 359
-    //   153: new 213	java/lang/StringBuilder
+    //   150: ifeq +212 -> 362
+    //   153: new 214	java/lang/StringBuilder
     //   156: dup
-    //   157: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   157: invokespecial 215	java/lang/StringBuilder:<init>	()V
     //   160: astore_1
     //   161: aload_1
-    //   162: ldc_w 856
-    //   165: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: ldc_w 858
+    //   165: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: pop
     //   169: aload_1
     //   170: aload 10
-    //   172: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   175: pop
     //   176: aload_1
-    //   177: ldc_w 852
-    //   180: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: ldc_w 854
+    //   180: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: pop
     //   184: aload_1
     //   185: aload 11
-    //   187: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: pop
     //   191: aload_1
-    //   192: ldc_w 854
-    //   195: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: ldc_w 856
+    //   195: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   198: pop
     //   199: aload_1
     //   200: iload 4
-    //   202: invokevirtual 466	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   202: invokevirtual 467	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   205: pop
     //   206: aload_1
-    //   207: ldc_w 780
-    //   210: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: ldc_w 783
+    //   210: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   213: pop
     //   214: aload_1
     //   215: iload 5
-    //   217: invokevirtual 466	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 467	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   220: pop
     //   221: ldc 17
     //   223: iconst_1
     //   224: aload_1
-    //   225: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: invokestatic 267	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   225: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   228: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   231: new 115	org/json/JSONObject
     //   234: dup
     //   235: invokespecial 116	org/json/JSONObject:<init>	()V
     //   238: astore_1
     //   239: aload_1
-    //   240: ldc 231
+    //   240: ldc 232
     //   242: bipush 248
-    //   244: invokevirtual 234	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   244: invokevirtual 235	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   247: pop
     //   248: aload_1
-    //   249: ldc 236
-    //   251: ldc_w 858
+    //   249: ldc 237
+    //   251: ldc_w 860
     //   254: invokevirtual 122	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   257: pop
     //   258: aload_0
@@ -1150,9 +1150,9 @@ public class ThemeJsPlugin
     //   264: dup
     //   265: iconst_0
     //   266: aload_1
-    //   267: invokevirtual 239	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   267: invokevirtual 240	org/json/JSONObject:toString	()Ljava/lang/String;
     //   270: aastore
-    //   271: invokespecial 524	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   271: invokespecial 525	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   274: aload_0
     //   275: aconst_null
     //   276: iconst_0
@@ -1160,504 +1160,504 @@ public class ThemeJsPlugin
     //   279: lconst_0
     //   280: aconst_null
     //   281: aconst_null
-    //   282: ldc 253
+    //   282: ldc 254
     //   284: sipush 153
-    //   287: getstatic 247	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
+    //   287: getstatic 248	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
     //   290: bipush 248
     //   292: aload 10
-    //   294: ldc 255
-    //   296: invokevirtual 259	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   299: aconst_null
-    //   300: ldc_w 860
-    //   303: ldc_w 862
-    //   306: ldc_w 864
-    //   309: aconst_null
-    //   310: fconst_0
-    //   311: invokestatic 869	com/tencent/mobileqq/vas/VasMonitorHandler:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
-    //   314: new 75	java/util/HashMap
-    //   317: dup
-    //   318: invokespecial 76	java/util/HashMap:<init>	()V
-    //   321: astore_1
-    //   322: aload_1
-    //   323: ldc_w 862
-    //   326: ldc_w 871
-    //   329: invokevirtual 872	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   332: pop
-    //   333: invokestatic 878	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   336: invokestatic 884	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   339: ldc 255
-    //   341: ldc_w 860
-    //   344: iconst_0
-    //   345: lconst_0
-    //   346: ldc2_w 885
-    //   349: aload_1
-    //   350: ldc 255
-    //   352: iconst_1
-    //   353: invokevirtual 890	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   356: aload_0
-    //   357: monitorexit
-    //   358: return
+    //   294: ldc_w 256
+    //   297: invokevirtual 260	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   300: aconst_null
+    //   301: ldc_w 862
+    //   304: ldc_w 864
+    //   307: ldc_w 866
+    //   310: aconst_null
+    //   311: fconst_0
+    //   312: invokestatic 871	com/tencent/mobileqq/vas/VasMonitorHandler:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;F)V
+    //   315: new 75	java/util/HashMap
+    //   318: dup
+    //   319: invokespecial 76	java/util/HashMap:<init>	()V
+    //   322: astore_1
+    //   323: aload_1
+    //   324: ldc_w 864
+    //   327: ldc_w 873
+    //   330: invokevirtual 874	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   333: pop
+    //   334: invokestatic 880	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   337: invokestatic 886	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   340: ldc_w 256
+    //   343: ldc_w 862
+    //   346: iconst_0
+    //   347: lconst_0
+    //   348: ldc2_w 887
+    //   351: aload_1
+    //   352: ldc_w 256
+    //   355: iconst_1
+    //   356: invokevirtual 892	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   359: aload_0
-    //   360: getfield 277	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
-    //   363: aload 11
-    //   365: invokestatic 283	com/tencent/mobileqq/vas/theme/api/ThemeUtil:getThemeInfo	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo;
-    //   368: astore 9
-    //   370: aload_3
-    //   371: ifnull +713 -> 1084
-    //   374: aload_3
-    //   375: invokevirtual 892	com/tencent/mobileqq/vas/theme/api/ThemeLocator:b	()Z
-    //   378: ifeq +706 -> 1084
-    //   381: iconst_1
-    //   382: istore 6
-    //   384: goto +3 -> 387
-    //   387: aload_3
-    //   388: ifnull +702 -> 1090
-    //   391: aload_3
-    //   392: invokevirtual 657	com/tencent/mobileqq/vas/theme/api/ThemeLocator:a	()Z
-    //   395: ifeq +695 -> 1090
-    //   398: iconst_1
-    //   399: istore 7
-    //   401: goto +692 -> 1093
-    //   404: aload_1
-    //   405: ldc_w 894
-    //   408: iconst_0
-    //   409: invokevirtual 898	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   412: ifne +712 -> 1124
-    //   415: iconst_1
-    //   416: istore 4
-    //   418: goto +3 -> 421
-    //   421: aload_0
-    //   422: getfield 78	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportMap	Ljava/util/HashMap;
-    //   425: astore_1
-    //   426: new 213	java/lang/StringBuilder
-    //   429: dup
-    //   430: invokespecial 214	java/lang/StringBuilder:<init>	()V
-    //   433: astore_3
-    //   434: aload_3
-    //   435: aload 11
-    //   437: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   440: pop
-    //   441: aload_3
-    //   442: ldc_w 408
-    //   445: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   448: pop
-    //   449: aload_3
-    //   450: aload 10
-    //   452: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   455: pop
-    //   456: aload_1
-    //   457: aload_3
-    //   458: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   461: invokevirtual 791	java/lang/String:hashCode	()I
-    //   464: invokestatic 795	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   467: getstatic 247	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
-    //   470: invokevirtual 872	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   473: pop
-    //   474: aload_0
-    //   475: getfield 277	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
-    //   478: invokestatic 904	com/tencent/mobileqq/utils/NetworkUtil:getSystemNetwork	(Landroid/content/Context;)I
-    //   481: istore 5
-    //   483: iload 4
-    //   485: ifeq +190 -> 675
-    //   488: iload 5
-    //   490: iconst_1
-    //   491: if_icmple +184 -> 675
-    //   494: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   497: ifeq +12 -> 509
-    //   500: ldc 17
-    //   502: iconst_2
-    //   503: ldc_w 906
-    //   506: invokestatic 192	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   509: aload_0
-    //   510: getfield 332	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   513: invokevirtual 344	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   516: iconst_2
-    //   517: new 908	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$4
-    //   520: dup
-    //   521: aload_0
-    //   522: aload 11
-    //   524: aload 10
-    //   526: iload 6
-    //   528: aload_2
-    //   529: invokespecial 911	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$4:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
-    //   532: ldc_w 913
-    //   535: invokestatic 918	com/tencent/mobileqq/vip/CUKingCardHelper:a	(Landroid/app/Activity;ILcom/tencent/mobileqq/vip/CUKingCardHelper$CUKingDialogListener;Ljava/lang/String;)Z
-    //   538: ifeq +539 -> 1077
-    //   541: aload_0
-    //   542: new 920	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$5
-    //   545: dup
-    //   546: aload_0
-    //   547: aload_0
-    //   548: getfield 332	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   551: invokevirtual 344	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   554: ldc_w 921
-    //   557: aload 11
-    //   559: aload 10
-    //   561: iload 6
-    //   563: aload_2
-    //   564: invokespecial 924	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$5:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
-    //   567: putfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   570: aload_0
-    //   571: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   574: ldc_w 925
-    //   577: invokevirtual 928	com/tencent/mobileqq/utils/QQCustomDialog:setContentView	(I)V
-    //   580: aload_0
-    //   581: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   584: ldc_w 929
-    //   587: invokestatic 629	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   590: invokevirtual 933	com/tencent/mobileqq/utils/QQCustomDialog:setTitle	(Ljava/lang/String;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   593: pop
-    //   594: aload_0
-    //   595: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   598: ldc_w 934
-    //   601: invokevirtual 938	com/tencent/mobileqq/utils/QQCustomDialog:setMessage	(I)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   604: pop
-    //   605: aload_0
-    //   606: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   609: iconst_0
-    //   610: invokevirtual 942	com/tencent/mobileqq/utils/QQCustomDialog:setCanceledOnTouchOutside	(Z)V
-    //   613: aload_0
-    //   614: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   617: ldc_w 943
-    //   620: new 945	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$6
-    //   623: dup
-    //   624: aload_0
-    //   625: aload 11
-    //   627: aload 10
-    //   629: iload 6
-    //   631: aload_2
-    //   632: invokespecial 946	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$6:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
-    //   635: invokevirtual 950	com/tencent/mobileqq/utils/QQCustomDialog:setNegativeButton	(ILandroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   638: pop
-    //   639: aload_0
-    //   640: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   643: ldc_w 951
-    //   646: new 953	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$7
-    //   649: dup
-    //   650: aload_0
-    //   651: aload 11
-    //   653: aload 10
-    //   655: iload 6
-    //   657: aload_2
-    //   658: invokespecial 954	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$7:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
-    //   661: invokevirtual 957	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(ILandroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   664: pop
-    //   665: aload_0
-    //   666: getfield 222	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   669: invokevirtual 960	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
-    //   672: goto +405 -> 1077
-    //   675: aload_0
-    //   676: iconst_1
-    //   677: aload 11
-    //   679: aload 10
-    //   681: iload 6
-    //   683: aload_2
-    //   684: invokevirtual 962	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:gotoDownload	(ILjava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
-    //   687: goto +390 -> 1077
-    //   690: aload 9
-    //   692: astore_1
+    //   360: monitorexit
+    //   361: return
+    //   362: aload_0
+    //   363: getfield 278	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
+    //   366: aload 11
+    //   368: invokestatic 284	com/tencent/mobileqq/vas/theme/api/ThemeUtil:getThemeInfo	(Landroid/content/Context;Ljava/lang/String;)Lcom/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo;
+    //   371: astore 9
+    //   373: aload_3
+    //   374: ifnull +720 -> 1094
+    //   377: aload_3
+    //   378: invokevirtual 894	com/tencent/mobileqq/vas/theme/api/ThemeLocator:i	()Z
+    //   381: ifeq +713 -> 1094
+    //   384: iconst_1
+    //   385: istore 6
+    //   387: goto +3 -> 390
+    //   390: aload_3
+    //   391: ifnull +709 -> 1100
+    //   394: aload_3
+    //   395: invokevirtual 660	com/tencent/mobileqq/vas/theme/api/ThemeLocator:h	()Z
+    //   398: ifeq +702 -> 1100
+    //   401: iconst_1
+    //   402: istore 7
+    //   404: goto +699 -> 1103
+    //   407: aload_1
+    //   408: ldc_w 896
+    //   411: iconst_0
+    //   412: invokevirtual 900	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   415: ifne +719 -> 1134
+    //   418: iconst_1
+    //   419: istore 4
+    //   421: goto +3 -> 424
+    //   424: aload_0
+    //   425: getfield 78	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportMap	Ljava/util/HashMap;
+    //   428: astore_1
+    //   429: new 214	java/lang/StringBuilder
+    //   432: dup
+    //   433: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   436: astore_3
+    //   437: aload_3
+    //   438: aload 11
+    //   440: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   443: pop
+    //   444: aload_3
+    //   445: ldc_w 409
+    //   448: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   451: pop
+    //   452: aload_3
+    //   453: aload 10
+    //   455: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   458: pop
+    //   459: aload_1
+    //   460: aload_3
+    //   461: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   464: invokevirtual 794	java/lang/String:hashCode	()I
+    //   467: invokestatic 798	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   470: getstatic 248	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
+    //   473: invokevirtual 874	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   476: pop
+    //   477: aload_0
+    //   478: getfield 278	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:context	Landroid/content/Context;
+    //   481: invokestatic 906	com/tencent/mobileqq/utils/NetworkUtil:getSystemNetwork	(Landroid/content/Context;)I
+    //   484: istore 5
+    //   486: iload 4
+    //   488: ifeq +190 -> 678
+    //   491: iload 5
+    //   493: iconst_1
+    //   494: if_icmple +184 -> 678
+    //   497: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   500: ifeq +12 -> 512
+    //   503: ldc 17
+    //   505: iconst_2
+    //   506: ldc_w 908
+    //   509: invokestatic 193	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   512: aload_0
+    //   513: getfield 333	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   516: invokevirtual 346	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
+    //   519: iconst_2
+    //   520: new 910	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$4
+    //   523: dup
+    //   524: aload_0
+    //   525: aload 11
+    //   527: aload 10
+    //   529: iload 6
+    //   531: aload_2
+    //   532: invokespecial 913	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$4:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
+    //   535: ldc_w 915
+    //   538: invokestatic 920	com/tencent/mobileqq/vip/CUKingCardHelper:a	(Landroid/app/Activity;ILcom/tencent/mobileqq/vip/CUKingCardHelper$CUKingDialogListener;Ljava/lang/String;)Z
+    //   541: ifeq +546 -> 1087
+    //   544: aload_0
+    //   545: new 922	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$5
+    //   548: dup
+    //   549: aload_0
+    //   550: aload_0
+    //   551: getfield 333	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   554: invokevirtual 346	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
+    //   557: ldc_w 923
+    //   560: aload 11
+    //   562: aload 10
+    //   564: iload 6
+    //   566: aload_2
+    //   567: invokespecial 926	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$5:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
+    //   570: putfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   573: aload_0
+    //   574: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   577: ldc_w 927
+    //   580: invokevirtual 930	com/tencent/mobileqq/utils/QQCustomDialog:setContentView	(I)V
+    //   583: aload_0
+    //   584: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   587: ldc_w 931
+    //   590: invokestatic 630	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   593: invokevirtual 935	com/tencent/mobileqq/utils/QQCustomDialog:setTitle	(Ljava/lang/String;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   596: pop
+    //   597: aload_0
+    //   598: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   601: ldc_w 936
+    //   604: invokevirtual 940	com/tencent/mobileqq/utils/QQCustomDialog:setMessage	(I)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   607: pop
+    //   608: aload_0
+    //   609: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   612: iconst_0
+    //   613: invokevirtual 944	com/tencent/mobileqq/utils/QQCustomDialog:setCanceledOnTouchOutside	(Z)V
+    //   616: aload_0
+    //   617: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   620: ldc_w 945
+    //   623: new 947	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$6
+    //   626: dup
+    //   627: aload_0
+    //   628: aload 11
+    //   630: aload 10
+    //   632: iload 6
+    //   634: aload_2
+    //   635: invokespecial 948	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$6:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
+    //   638: invokevirtual 952	com/tencent/mobileqq/utils/QQCustomDialog:setNegativeButton	(ILandroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   641: pop
+    //   642: aload_0
+    //   643: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   646: ldc_w 953
+    //   649: new 955	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$7
+    //   652: dup
+    //   653: aload_0
+    //   654: aload 11
+    //   656: aload 10
+    //   658: iload 6
+    //   660: aload_2
+    //   661: invokespecial 956	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin$7:<init>	(Lcom/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
+    //   664: invokevirtual 959	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(ILandroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   667: pop
+    //   668: aload_0
+    //   669: getfield 223	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:dialog	Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   672: invokevirtual 962	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
+    //   675: goto +412 -> 1087
+    //   678: aload_0
+    //   679: iconst_1
+    //   680: aload 11
+    //   682: aload 10
+    //   684: iload 6
+    //   686: aload_2
+    //   687: invokevirtual 964	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:gotoDownload	(ILjava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
+    //   690: goto +397 -> 1087
     //   693: aload 9
-    //   695: ifnonnull +55 -> 750
-    //   698: new 275	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo
-    //   701: dup
-    //   702: invokespecial 284	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:<init>	()V
-    //   705: astore_1
-    //   706: aload_1
-    //   707: aload 11
-    //   709: putfield 287	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:themeId	Ljava/lang/String;
-    //   712: aload_1
-    //   713: ldc_w 963
-    //   716: putfield 966	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:zipVer	I
-    //   719: aload_1
-    //   720: ldc 140
-    //   722: putfield 717	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:version	Ljava/lang/String;
-    //   725: aload_1
-    //   726: ldc_w 667
-    //   729: putfield 680	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:status	Ljava/lang/String;
-    //   732: iload 5
-    //   734: iconst_1
-    //   735: if_icmpne +395 -> 1130
-    //   738: iconst_1
-    //   739: istore 8
-    //   741: goto +3 -> 744
-    //   744: aload_1
-    //   745: iload 8
-    //   747: putfield 291	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:isVoiceTheme	Z
-    //   750: new 213	java/lang/StringBuilder
-    //   753: dup
-    //   754: invokespecial 214	java/lang/StringBuilder:<init>	()V
-    //   757: astore_3
-    //   758: aload_3
-    //   759: ldc_w 968
-    //   762: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   765: pop
-    //   766: aload_3
-    //   767: aload 11
-    //   769: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   772: pop
-    //   773: aload_3
-    //   774: ldc_w 970
-    //   777: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   780: pop
-    //   781: aload_3
-    //   782: iload 6
-    //   784: invokevirtual 519	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   787: pop
-    //   788: aload_3
-    //   789: ldc_w 972
-    //   792: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   795: pop
-    //   796: aload_3
-    //   797: iload 7
-    //   799: invokevirtual 519	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   802: pop
-    //   803: ldc 17
-    //   805: iconst_1
-    //   806: aload_3
-    //   807: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   810: invokestatic 389	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   813: aload_1
-    //   814: ldc_w 667
-    //   817: putfield 680	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:status	Ljava/lang/String;
-    //   820: aload_1
-    //   821: getfield 697	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:size	J
-    //   824: lconst_1
-    //   825: lcmp
-    //   826: ifge +10 -> 836
-    //   829: aload_1
-    //   830: ldc2_w 973
-    //   833: putfield 697	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:size	J
-    //   836: aload_1
-    //   837: aload_1
-    //   838: getfield 697	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:size	J
-    //   841: putfield 689	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:downsize	J
-    //   844: aload_0
-    //   845: getfield 73	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:downloadThemeMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   848: aload 11
-    //   850: aload_1
-    //   851: invokevirtual 298	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   854: pop
-    //   855: new 115	org/json/JSONObject
-    //   858: dup
-    //   859: invokespecial 116	org/json/JSONObject:<init>	()V
-    //   862: astore_1
-    //   863: aload_1
-    //   864: ldc 231
-    //   866: iconst_3
-    //   867: invokevirtual 234	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   870: pop
-    //   871: aload_1
-    //   872: ldc 236
-    //   874: ldc_w 976
-    //   877: invokevirtual 122	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   880: pop
-    //   881: aload_0
-    //   882: aload_2
-    //   883: iconst_1
-    //   884: anewarray 126	java/lang/String
-    //   887: dup
-    //   888: iconst_0
-    //   889: aload_1
-    //   890: invokevirtual 239	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   893: aastore
-    //   894: invokespecial 524	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   897: aload_0
-    //   898: aconst_null
-    //   899: iconst_0
-    //   900: aload 11
-    //   902: lconst_0
-    //   903: ldc 249
-    //   905: ldc_w 978
-    //   908: ldc 253
-    //   910: sipush 153
-    //   913: getstatic 247	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
-    //   916: iconst_2
-    //   917: aload 10
-    //   919: ldc 255
-    //   921: invokevirtual 259	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   924: aload_0
-    //   925: monitorexit
-    //   926: return
-    //   927: astore_1
-    //   928: goto +80 -> 1008
+    //   695: astore_1
+    //   696: aload 9
+    //   698: ifnonnull +55 -> 753
+    //   701: new 276	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo
+    //   704: dup
+    //   705: invokespecial 285	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:<init>	()V
+    //   708: astore_1
+    //   709: aload_1
+    //   710: aload 11
+    //   712: putfield 288	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:themeId	Ljava/lang/String;
+    //   715: aload_1
+    //   716: ldc_w 965
+    //   719: putfield 968	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:zipVer	I
+    //   722: aload_1
+    //   723: ldc 140
+    //   725: putfield 720	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:version	Ljava/lang/String;
+    //   728: aload_1
+    //   729: ldc_w 670
+    //   732: putfield 683	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:status	Ljava/lang/String;
+    //   735: iload 5
+    //   737: iconst_1
+    //   738: if_icmpne +402 -> 1140
+    //   741: iconst_1
+    //   742: istore 8
+    //   744: goto +3 -> 747
+    //   747: aload_1
+    //   748: iload 8
+    //   750: putfield 292	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:isVoiceTheme	Z
+    //   753: new 214	java/lang/StringBuilder
+    //   756: dup
+    //   757: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   760: astore_3
+    //   761: aload_3
+    //   762: ldc_w 970
+    //   765: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   768: pop
+    //   769: aload_3
+    //   770: aload 11
+    //   772: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   775: pop
+    //   776: aload_3
+    //   777: ldc_w 972
+    //   780: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   783: pop
+    //   784: aload_3
+    //   785: iload 6
+    //   787: invokevirtual 520	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   790: pop
+    //   791: aload_3
+    //   792: ldc_w 974
+    //   795: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   798: pop
+    //   799: aload_3
+    //   800: iload 7
+    //   802: invokevirtual 520	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   805: pop
+    //   806: ldc 17
+    //   808: iconst_1
+    //   809: aload_3
+    //   810: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   813: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   816: aload_1
+    //   817: ldc_w 670
+    //   820: putfield 683	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:status	Ljava/lang/String;
+    //   823: aload_1
+    //   824: getfield 700	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:size	J
+    //   827: lconst_1
+    //   828: lcmp
+    //   829: ifge +10 -> 839
+    //   832: aload_1
+    //   833: ldc2_w 975
+    //   836: putfield 700	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:size	J
+    //   839: aload_1
+    //   840: aload_1
+    //   841: getfield 700	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:size	J
+    //   844: putfield 692	com/tencent/mobileqq/vas/theme/api/ThemeUtil$ThemeInfo:downsize	J
+    //   847: aload_0
+    //   848: getfield 73	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:downloadThemeMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   851: aload 11
+    //   853: aload_1
+    //   854: invokevirtual 299	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   857: pop
+    //   858: new 115	org/json/JSONObject
+    //   861: dup
+    //   862: invokespecial 116	org/json/JSONObject:<init>	()V
+    //   865: astore_1
+    //   866: aload_1
+    //   867: ldc 232
+    //   869: iconst_3
+    //   870: invokevirtual 235	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   873: pop
+    //   874: aload_1
+    //   875: ldc 237
+    //   877: ldc_w 978
+    //   880: invokevirtual 122	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   883: pop
+    //   884: aload_0
+    //   885: aload_2
+    //   886: iconst_1
+    //   887: anewarray 126	java/lang/String
+    //   890: dup
+    //   891: iconst_0
+    //   892: aload_1
+    //   893: invokevirtual 240	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   896: aastore
+    //   897: invokespecial 525	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   900: aload_0
+    //   901: aconst_null
+    //   902: iconst_0
+    //   903: aload 11
+    //   905: lconst_0
+    //   906: ldc 250
+    //   908: ldc_w 980
+    //   911: ldc 254
+    //   913: sipush 153
+    //   916: getstatic 248	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
+    //   919: iconst_2
+    //   920: aload 10
+    //   922: ldc_w 256
+    //   925: invokevirtual 260	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   928: aload_0
+    //   929: monitorexit
+    //   930: return
     //   931: astore_1
-    //   932: goto +148 -> 1080
+    //   932: goto +83 -> 1015
     //   935: astore_1
-    //   936: aload_0
-    //   937: aload_2
-    //   938: aload_1
-    //   939: invokevirtual 264	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   942: invokespecial 724	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJsOnError	(Ljava/lang/String;Ljava/lang/String;)V
-    //   945: new 213	java/lang/StringBuilder
-    //   948: dup
-    //   949: invokespecial 214	java/lang/StringBuilder:<init>	()V
-    //   952: astore_2
-    //   953: aload_2
-    //   954: ldc_w 980
-    //   957: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   960: pop
-    //   961: aload_2
-    //   962: aload_1
-    //   963: invokevirtual 264	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   966: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   969: pop
-    //   970: ldc 17
-    //   972: iconst_1
-    //   973: aload_2
-    //   974: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   977: invokestatic 267	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   980: aload_0
-    //   981: aconst_null
-    //   982: iconst_0
-    //   983: ldc 255
-    //   985: lconst_0
-    //   986: aconst_null
-    //   987: aconst_null
-    //   988: ldc 253
-    //   990: sipush 153
-    //   993: getstatic 247	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
-    //   996: bipush 221
-    //   998: ldc 255
-    //   1000: ldc 255
-    //   1002: invokevirtual 259	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   1005: goto +72 -> 1077
-    //   1008: aload_0
-    //   1009: aload_2
-    //   1010: aload_1
-    //   1011: invokevirtual 981	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   1014: invokespecial 724	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJsOnError	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1017: new 213	java/lang/StringBuilder
-    //   1020: dup
-    //   1021: invokespecial 214	java/lang/StringBuilder:<init>	()V
-    //   1024: astore_2
-    //   1025: aload_2
-    //   1026: ldc_w 983
-    //   1029: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1032: pop
-    //   1033: aload_2
-    //   1034: aload_1
-    //   1035: invokevirtual 981	org/json/JSONException:getMessage	()Ljava/lang/String;
-    //   1038: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1041: pop
-    //   1042: ldc 17
-    //   1044: iconst_1
-    //   1045: aload_2
-    //   1046: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1049: invokestatic 267	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1052: aload_0
-    //   1053: aconst_null
-    //   1054: iconst_0
-    //   1055: ldc 255
-    //   1057: lconst_0
-    //   1058: aconst_null
-    //   1059: aconst_null
-    //   1060: ldc 253
-    //   1062: sipush 153
-    //   1065: getstatic 247	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
-    //   1068: bipush 220
-    //   1070: ldc 255
-    //   1072: ldc 255
-    //   1074: invokevirtual 259	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
-    //   1077: aload_0
-    //   1078: monitorexit
-    //   1079: return
-    //   1080: aload_0
-    //   1081: monitorexit
-    //   1082: aload_1
-    //   1083: athrow
-    //   1084: iconst_0
-    //   1085: istore 6
-    //   1087: goto -700 -> 387
-    //   1090: iconst_0
-    //   1091: istore 7
-    //   1093: iload 6
-    //   1095: ifne -405 -> 690
-    //   1098: iload 7
-    //   1100: ifeq +6 -> 1106
-    //   1103: goto -413 -> 690
-    //   1106: iload 5
-    //   1108: iconst_1
-    //   1109: if_icmpne +9 -> 1118
-    //   1112: iconst_1
-    //   1113: istore 6
-    //   1115: goto -711 -> 404
-    //   1118: iconst_0
-    //   1119: istore 6
-    //   1121: goto -717 -> 404
-    //   1124: iconst_0
-    //   1125: istore 4
-    //   1127: goto -706 -> 421
-    //   1130: iconst_0
-    //   1131: istore 8
-    //   1133: goto -389 -> 744
+    //   936: goto +154 -> 1090
+    //   939: astore_1
+    //   940: aload_0
+    //   941: aload_2
+    //   942: aload_1
+    //   943: invokevirtual 265	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   946: invokespecial 727	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJsOnError	(Ljava/lang/String;Ljava/lang/String;)V
+    //   949: new 214	java/lang/StringBuilder
+    //   952: dup
+    //   953: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   956: astore_2
+    //   957: aload_2
+    //   958: ldc_w 982
+    //   961: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   964: pop
+    //   965: aload_2
+    //   966: aload_1
+    //   967: invokevirtual 265	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   970: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   973: pop
+    //   974: ldc 17
+    //   976: iconst_1
+    //   977: aload_2
+    //   978: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   981: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   984: aload_0
+    //   985: aconst_null
+    //   986: iconst_0
+    //   987: ldc_w 256
+    //   990: lconst_0
+    //   991: aconst_null
+    //   992: aconst_null
+    //   993: ldc 254
+    //   995: sipush 153
+    //   998: getstatic 248	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
+    //   1001: bipush 221
+    //   1003: ldc_w 256
+    //   1006: ldc_w 256
+    //   1009: invokevirtual 260	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   1012: goto +75 -> 1087
+    //   1015: aload_0
+    //   1016: aload_2
+    //   1017: aload_1
+    //   1018: invokevirtual 983	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   1021: invokespecial 727	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJsOnError	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1024: new 214	java/lang/StringBuilder
+    //   1027: dup
+    //   1028: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   1031: astore_2
+    //   1032: aload_2
+    //   1033: ldc_w 985
+    //   1036: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1039: pop
+    //   1040: aload_2
+    //   1041: aload_1
+    //   1042: invokevirtual 983	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   1045: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1048: pop
+    //   1049: ldc 17
+    //   1051: iconst_1
+    //   1052: aload_2
+    //   1053: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1056: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1059: aload_0
+    //   1060: aconst_null
+    //   1061: iconst_0
+    //   1062: ldc_w 256
+    //   1065: lconst_0
+    //   1066: aconst_null
+    //   1067: aconst_null
+    //   1068: ldc 254
+    //   1070: sipush 153
+    //   1073: getstatic 248	com/tencent/mobileqq/vas/theme/ThemeReporter:a	Ljava/lang/String;
+    //   1076: bipush 220
+    //   1078: ldc_w 256
+    //   1081: ldc_w 256
+    //   1084: invokevirtual 260	com/tencent/mobileqq/vaswebviewplugin/ThemeJsPlugin:reportTheme	(Ljava/lang/String;ILjava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+    //   1087: aload_0
+    //   1088: monitorexit
+    //   1089: return
+    //   1090: aload_0
+    //   1091: monitorexit
+    //   1092: aload_1
+    //   1093: athrow
+    //   1094: iconst_0
+    //   1095: istore 6
+    //   1097: goto -707 -> 390
+    //   1100: iconst_0
+    //   1101: istore 7
+    //   1103: iload 6
+    //   1105: ifne -412 -> 693
+    //   1108: iload 7
+    //   1110: ifeq +6 -> 1116
+    //   1113: goto -420 -> 693
+    //   1116: iload 5
+    //   1118: iconst_1
+    //   1119: if_icmpne +9 -> 1128
+    //   1122: iconst_1
+    //   1123: istore 6
+    //   1125: goto -718 -> 407
+    //   1128: iconst_0
+    //   1129: istore 6
+    //   1131: goto -724 -> 407
+    //   1134: iconst_0
+    //   1135: istore 4
+    //   1137: goto -713 -> 424
+    //   1140: iconst_0
+    //   1141: istore 8
+    //   1143: goto -396 -> 747
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1136	0	this	ThemeJsPlugin
-    //   0	1136	1	paramJSONObject	JSONObject
-    //   0	1136	2	paramString	String
-    //   0	1136	3	paramThemeLocator	ThemeLocator
-    //   28	1098	4	i	int
-    //   38	1072	5	j	int
-    //   43	1077	6	bool1	boolean
-    //   399	700	7	bool2	boolean
-    //   739	393	8	bool3	boolean
-    //   57	637	9	localObject	Object
-    //   8	910	10	str1	String
-    //   16	885	11	str2	String
+    //   0	1146	0	this	ThemeJsPlugin
+    //   0	1146	1	paramJSONObject	JSONObject
+    //   0	1146	2	paramString	String
+    //   0	1146	3	paramThemeLocator	ThemeLocator
+    //   28	1108	4	i	int
+    //   38	1082	5	j	int
+    //   43	1087	6	bool1	boolean
+    //   402	707	7	bool2	boolean
+    //   742	400	8	bool3	boolean
+    //   57	640	9	localObject	Object
+    //   8	913	10	str1	String
+    //   16	888	11	str2	String
     // Exception table:
     //   from	to	target	type
     //   50	138	141	org/json/JSONException
-    //   2	45	927	org/json/JSONException
-    //   145	356	927	org/json/JSONException
-    //   359	370	927	org/json/JSONException
-    //   374	381	927	org/json/JSONException
-    //   391	398	927	org/json/JSONException
-    //   404	415	927	org/json/JSONException
-    //   421	483	927	org/json/JSONException
-    //   494	509	927	org/json/JSONException
-    //   509	672	927	org/json/JSONException
-    //   675	687	927	org/json/JSONException
-    //   698	732	927	org/json/JSONException
-    //   744	750	927	org/json/JSONException
-    //   750	836	927	org/json/JSONException
-    //   836	924	927	org/json/JSONException
-    //   2	45	931	finally
-    //   50	138	931	finally
-    //   145	356	931	finally
-    //   359	370	931	finally
-    //   374	381	931	finally
-    //   391	398	931	finally
-    //   404	415	931	finally
-    //   421	483	931	finally
-    //   494	509	931	finally
-    //   509	672	931	finally
-    //   675	687	931	finally
-    //   698	732	931	finally
-    //   744	750	931	finally
-    //   750	836	931	finally
-    //   836	924	931	finally
-    //   936	1005	931	finally
-    //   1008	1077	931	finally
-    //   2	45	935	java/lang/Exception
-    //   50	138	935	java/lang/Exception
-    //   145	356	935	java/lang/Exception
-    //   359	370	935	java/lang/Exception
-    //   374	381	935	java/lang/Exception
-    //   391	398	935	java/lang/Exception
-    //   404	415	935	java/lang/Exception
-    //   421	483	935	java/lang/Exception
-    //   494	509	935	java/lang/Exception
-    //   509	672	935	java/lang/Exception
-    //   675	687	935	java/lang/Exception
-    //   698	732	935	java/lang/Exception
-    //   744	750	935	java/lang/Exception
-    //   750	836	935	java/lang/Exception
-    //   836	924	935	java/lang/Exception
+    //   2	45	931	org/json/JSONException
+    //   145	359	931	org/json/JSONException
+    //   362	373	931	org/json/JSONException
+    //   377	384	931	org/json/JSONException
+    //   394	401	931	org/json/JSONException
+    //   407	418	931	org/json/JSONException
+    //   424	486	931	org/json/JSONException
+    //   497	512	931	org/json/JSONException
+    //   512	675	931	org/json/JSONException
+    //   678	690	931	org/json/JSONException
+    //   701	735	931	org/json/JSONException
+    //   747	753	931	org/json/JSONException
+    //   753	839	931	org/json/JSONException
+    //   839	928	931	org/json/JSONException
+    //   2	45	935	finally
+    //   50	138	935	finally
+    //   145	359	935	finally
+    //   362	373	935	finally
+    //   377	384	935	finally
+    //   394	401	935	finally
+    //   407	418	935	finally
+    //   424	486	935	finally
+    //   497	512	935	finally
+    //   512	675	935	finally
+    //   678	690	935	finally
+    //   701	735	935	finally
+    //   747	753	935	finally
+    //   753	839	935	finally
+    //   839	928	935	finally
+    //   940	1012	935	finally
+    //   1015	1087	935	finally
+    //   2	45	939	java/lang/Exception
+    //   50	138	939	java/lang/Exception
+    //   145	359	939	java/lang/Exception
+    //   362	373	939	java/lang/Exception
+    //   377	384	939	java/lang/Exception
+    //   394	401	939	java/lang/Exception
+    //   407	418	939	java/lang/Exception
+    //   424	486	939	java/lang/Exception
+    //   497	512	939	java/lang/Exception
+    //   512	675	939	java/lang/Exception
+    //   678	690	939	java/lang/Exception
+    //   701	735	939	java/lang/Exception
+    //   747	753	939	java/lang/Exception
+    //   753	839	939	java/lang/Exception
+    //   839	928	939	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

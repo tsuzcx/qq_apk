@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,6 @@ final class QCircleLpReportDc05504$1
     localObject = QCircleReportHelper.newSingleDcData(QCircleLpReportDc05504.access$2700(), (List)localObject, null, QCircleReportHelper.getInstance().newSessionEntries(QCircleLpReportDc05504.DataBuilder.access$2300(this.val$builder), QCircleLpReportDc05504.DataBuilder.access$2800(this.val$builder), QCircleLpReportDc05504.DataBuilder.access$2900(this.val$builder), QCircleLpReportDc05504.DataBuilder.access$3000(this.val$builder)));
     if ((!QCircleReportHelper.getInstance().hasValidSession()) && (!QCircleLpReportDc05504.access$3100(QCircleLpReportDc05504.DataBuilder.access$100(this.val$builder))))
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("QCircleLpReportDc05504 report miss Session: actiontype:");
       localStringBuilder.append(QCircleLpReportDc05504.DataBuilder.access$100(this.val$builder));
@@ -44,7 +43,7 @@ final class QCircleLpReportDc05504$1
       localStringBuilder.append(",thrActionType:");
       localStringBuilder.append(QCircleLpReportDc05504.DataBuilder.access$300(this.val$builder));
       localStringBuilder.append(",add Miss Session report cache list");
-      RFLog.w("QCircleReporter", i, localStringBuilder.toString());
+      QLog.w("QCircleReporter", 1, localStringBuilder.toString());
       QCircleReporter.getInstance().addMissSessionReportDataCache((QQCircleReport.SingleDcData)localObject);
       return;
     }
@@ -53,7 +52,7 @@ final class QCircleLpReportDc05504$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05504.1
  * JD-Core Version:    0.7.0.1
  */

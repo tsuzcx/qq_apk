@@ -29,10 +29,10 @@ public class WXTRTCCloud
   public WXTRTCCloud(Context paramContext)
   {
     super(paramContext);
-    this.mConfig.W = false;
-    this.mConfig.j = 1;
+    this.mConfig.X = false;
+    this.mConfig.k = 1;
     this.mCaptureAndEnc.a(this.mConfig);
-    this.mCaptureAndEnc.g(false);
+    this.mCaptureAndEnc.h(false);
     setLocalViewFillMode(0);
   }
   
@@ -101,7 +101,7 @@ public class WXTRTCCloud
   
   public int getMaxZoom()
   {
-    return this.mCaptureAndEnc.q();
+    return this.mCaptureAndEnc.r();
   }
   
   protected void notifyEvent(String paramString, int paramInt, Bundle paramBundle)
@@ -147,10 +147,10 @@ public class WXTRTCCloud
   
   public void setConfig(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean1 != this.mConfig.K) || (paramBoolean2 != this.mConfig.L))
+    if ((paramBoolean1 != this.mConfig.L) || (paramBoolean2 != this.mConfig.M))
     {
-      this.mConfig.K = paramBoolean1;
-      this.mConfig.L = paramBoolean2;
+      this.mConfig.L = paramBoolean1;
+      this.mConfig.M = paramBoolean2;
       this.mCaptureAndEnc.a(this.mConfig);
     }
   }
@@ -197,6 +197,7 @@ public class WXTRTCCloud
   
   public void startLocalAudio()
   {
+    this.mEnableEosMode = true;
     super.startLocalAudio();
   }
   

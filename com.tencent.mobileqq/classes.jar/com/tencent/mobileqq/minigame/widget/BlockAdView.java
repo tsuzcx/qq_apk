@@ -30,19 +30,19 @@ public class BlockAdView
   private AnimatorSet animatorSet;
   private ArrayList<BlockAdView.SingleBlockAdView> blockList = new ArrayList();
   private boolean hasEndBlockAdAnimation = false;
-  public final int horizontalHeight = ViewUtils.b(65.0F);
-  public final int horizontalSingleBlockWidth = ViewUtils.b(65.0F);
+  public final int horizontalHeight = ViewUtils.dpToPx(65.0F);
+  public final int horizontalSingleBlockWidth = ViewUtils.dpToPx(65.0F);
   protected ImageView mAdIcon;
   private boolean mIsHorizontal = false;
   protected LinearLayout mLinearLayout;
   private int mPlayCount = 0;
   private int mRealAdNum = 0;
-  public final int sideGapHeightHorizontal = ViewUtils.b(4.0F);
-  public final int sideGapHeightVertical = ViewUtils.b(4.0F);
-  public final int sideGapWidthHorizontal = ViewUtils.b(4.0F);
+  public final int sideGapHeightHorizontal = ViewUtils.dpToPx(4.0F);
+  public final int sideGapHeightVertical = ViewUtils.dpToPx(4.0F);
+  public final int sideGapWidthHorizontal = ViewUtils.dpToPx(4.0F);
   public final int sideGapWidthVertical = 0;
-  public final int verticalSingleBlockHeight = ViewUtils.b(73.0F);
-  public final int verticalWidth = ViewUtils.b(65.0F);
+  public final int verticalSingleBlockHeight = ViewUtils.dpToPx(73.0F);
+  public final int verticalWidth = ViewUtils.dpToPx(65.0F);
   
   public BlockAdView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, boolean paramBoolean)
   {
@@ -170,8 +170,8 @@ public class BlockAdView
           }
         }
       }
-      paramBlockAdInfo.setRealWidth(ViewUtils.c(j));
-      paramBlockAdInfo.setRealHeight(ViewUtils.c(i));
+      paramBlockAdInfo.setRealWidth(ViewUtils.pxToDp(j));
+      paramBlockAdInfo.setRealHeight(ViewUtils.pxToDp(i));
       return paramBlockAdInfo;
     }
     return null;
@@ -252,8 +252,8 @@ public class BlockAdView
     this.mLinearLayout.setLayoutParams(localLayoutParams);
     addView(this.mLinearLayout);
     this.mAdIcon = new ImageView(paramContext);
-    this.mAdIcon.setImageDrawable(getResources().getDrawable(2130841073));
-    paramContext = new RelativeLayout.LayoutParams(ViewUtils.b(19.299999F), ViewUtils.b(11.3F));
+    this.mAdIcon.setImageDrawable(getResources().getDrawable(2130841864));
+    paramContext = new RelativeLayout.LayoutParams(ViewUtils.dpToPx(19.299999F), ViewUtils.dpToPx(11.3F));
     paramContext.addRule(9);
     paramContext.addRule(10);
     this.mAdIcon.setLayoutParams(paramContext);
@@ -264,7 +264,7 @@ public class BlockAdView
   
   private void startMultiBlockAnimation()
   {
-    float f = ViewUtils.a(5.0F);
+    float f = ViewUtils.dip2px(5.0F);
     Object localObject1 = new ObjectAnimator();
     ((ObjectAnimator)localObject1).setPropertyName("translationY");
     ((ObjectAnimator)localObject1).setFloatValues(new float[] { 0.0F, f });
@@ -339,10 +339,10 @@ public class BlockAdView
   {
     if (paramBoolean)
     {
-      setBackgroundDrawable(getResources().getDrawable(2130841075));
+      setBackgroundDrawable(getResources().getDrawable(2130841866));
       return;
     }
-    setBackgroundColor(getResources().getColor(2131166669));
+    setBackgroundColor(getResources().getColor(2131167589));
   }
   
   public void clearBlockAdAnimation()
@@ -407,7 +407,7 @@ public class BlockAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.widget.BlockAdView
  * JD-Core Version:    0.7.0.1
  */

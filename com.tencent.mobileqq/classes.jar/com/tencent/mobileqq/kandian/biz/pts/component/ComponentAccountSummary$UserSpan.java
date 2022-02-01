@@ -14,21 +14,21 @@ public class ComponentAccountSummary$UserSpan
   extends ClickableSpan
   implements ClickableSpanPressed
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   protected String a;
-  boolean jdField_a_of_type_Boolean;
+  boolean b;
+  private int d = -1;
+  private TextPaint e;
   
   public ComponentAccountSummary$UserSpan(ComponentAccountSummary paramComponentAccountSummary, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.d = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.b = paramBoolean;
+    TextPaint localTextPaint = this.e;
     if (localTextPaint != null) {
       updateDrawState(localTextPaint);
     }
@@ -36,33 +36,33 @@ public class ComponentAccountSummary$UserSpan
   
   public void onClick(View paramView)
   {
-    com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.a = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentAccountSummary.a.a.a();
+    com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils.a = this.c.a.a.k();
     paramView = new StringBuilder();
-    paramView.append(ReadInJoyConstants.k);
-    paramView.append(Base64Util.encodeToString(String.valueOf(this.jdField_a_of_type_JavaLangString).getBytes(), 2));
+    paramView.append(ReadInJoyConstants.l);
+    paramView.append(Base64Util.encodeToString(String.valueOf(this.a).getBytes(), 2));
     paramView = paramView.toString();
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentAccountSummary.getContext(), paramView);
+    ReadInJoyUtils.a(this.c.getContext(), paramView);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.e = paramTextPaint;
+    this.e.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.e;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = this.jdField_a_of_type_Int;
+    if (this.b) {
+      i = this.d;
     } else {
       i = 16119285;
     }
     paramTextPaint.bgColor = i;
-    this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+    this.e.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentAccountSummary.UserSpan
  * JD-Core Version:    0.7.0.1
  */

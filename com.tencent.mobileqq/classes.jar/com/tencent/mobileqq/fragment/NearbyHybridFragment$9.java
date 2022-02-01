@@ -18,7 +18,7 @@ class NearbyHybridFragment$9
   
   public boolean a()
   {
-    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+    return this.a.c.d();
   }
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
@@ -43,9 +43,9 @@ class NearbyHybridFragment$9
         localJSONObject.put("status", paramInt1);
         localJSONObject.put("direction", paramInt2);
         localJSONObject.put("height", paramInt3);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment$NearbyWebViewBuilder != null)
+        if (this.a.b != null)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment$NearbyWebViewBuilder.mWebview.callJs((String)localObject, new String[] { localJSONObject.toString() });
+          this.a.b.mWebview.callJs((String)localObject, new String[] { localJSONObject.toString() });
           return false;
         }
       }
@@ -59,7 +59,7 @@ class NearbyHybridFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.9
  * JD-Core Version:    0.7.0.1
  */

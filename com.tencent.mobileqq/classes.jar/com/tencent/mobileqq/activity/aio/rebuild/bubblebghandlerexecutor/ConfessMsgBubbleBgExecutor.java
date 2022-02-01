@@ -28,28 +28,28 @@ public class ConfessMsgBubbleBgExecutor
     paramChatMessage = SkinEngine.getInstances();
     int i;
     if (bool) {
-      i = 2130850336;
+      i = 2130852127;
     } else {
-      i = 2130850160;
+      i = 2130851945;
     }
     paramChatMessage = paramChatMessage.getDefaultThemeDrawable(i);
     Object localObject = SkinEngine.getInstances();
     if (bool) {
-      i = 2130850335;
+      i = 2130852126;
     } else {
-      i = 2130850159;
+      i = 2130851944;
     }
     localObject = ((SkinEngine)localObject).getDefaultThemeDrawable(i);
     StateListDrawable localStateListDrawable = new StateListDrawable();
     localStateListDrawable.addState(new int[] { 16842919 }, paramChatMessage);
     localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject);
-    paramViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
-    paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = new BubbleInfo(0);
+    paramViewHolder.h.setBackgroundDrawable(localStateListDrawable);
+    paramViewHolder.i = new BubbleInfo(0);
   }
   
   public int a()
   {
-    return ChatLayoutBubbleBgExecutorImpl.d;
+    return ChatLayoutBubbleBgExecutorImpl.g;
   }
   
   public void a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
@@ -59,12 +59,12 @@ public class ConfessMsgBubbleBgExecutor
   
   public boolean a(int paramInt, ChatMessage paramChatMessage)
   {
-    return (paramInt != 0) && (ConfessMsgUtil.a(paramChatMessage));
+    return (paramInt != 0) && (ConfessMsgUtil.b(paramChatMessage));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.ConfessMsgBubbleBgExecutor
  * JD-Core Version:    0.7.0.1
  */

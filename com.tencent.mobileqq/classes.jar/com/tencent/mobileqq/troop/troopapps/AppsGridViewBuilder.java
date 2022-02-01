@@ -15,14 +15,13 @@ import java.util.List;
 public class AppsGridViewBuilder
   extends AppsBaseBuilder
 {
-  protected List<TroopAppShortcutContainer.TroopAppInfo> a;
-  protected int b = 0;
-  protected boolean c = false;
+  protected int a = 0;
+  protected boolean l = false;
+  protected List<TroopAppShortcutContainer.TroopAppInfo> m = new ArrayList();
   
   public AppsGridViewBuilder(Context paramContext, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, Bundle paramBundle)
   {
     super(paramContext, paramQQAppInterface, paramBaseActivity, null, paramBundle);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public int a()
@@ -35,43 +34,43 @@ public class AppsGridViewBuilder
     if (paramView == null)
     {
       paramViewGroup = new AppsGridViewBuilder.ItemViewHolder();
-      paramView = new NoScrollGridView(this.jdField_a_of_type_AndroidContentContext);
+      paramView = new NoScrollGridView(this.f);
       paramView.setNumColumns(4);
-      paramView.setVerticalSpacing(AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramView.setHorizontalSpacing(AIOUtils.b(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramView.setPadding(AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      paramView.setColumnWidth(this.b);
+      paramView.setVerticalSpacing(AIOUtils.b(10.0F, this.f.getResources()));
+      paramView.setHorizontalSpacing(AIOUtils.b(13.0F, this.f.getResources()));
+      paramView.setPadding(AIOUtils.b(16.0F, this.f.getResources()), AIOUtils.b(6.0F, this.f.getResources()), AIOUtils.b(16.0F, this.f.getResources()), AIOUtils.b(20.0F, this.f.getResources()));
+      paramView.setColumnWidth(this.a);
       paramView.setSelector(new ColorDrawable(0));
       paramView.setVerticalScrollBarEnabled(false);
       paramView.setStretchMode(0);
-      paramViewGroup.a = new AppsGridViewBuilder.AppsGridViewAdapter(this, this.b);
-      paramViewGroup.a.a(this.jdField_a_of_type_JavaUtilList);
+      paramViewGroup.a = new AppsGridViewBuilder.AppsGridViewAdapter(this, this.a);
+      paramViewGroup.a.a(this.m);
       paramView.setAdapter(paramViewGroup.a);
       paramView.setTag(paramViewGroup);
     }
     else
     {
-      ((AppsGridViewBuilder.ItemViewHolder)paramView.getTag()).a.a(this.jdField_a_of_type_JavaUtilList);
+      ((AppsGridViewBuilder.ItemViewHolder)paramView.getTag()).a.a(this.m);
     }
     paramView.setClickable(false);
     return paramView;
   }
   
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public void a_(Object paramObject)
   {
     if ((paramObject instanceof ArrayList)) {
-      this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
+      this.m = ((List)paramObject);
     }
+  }
+  
+  public Object b()
+  {
+    return this.m;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsGridViewBuilder
  * JD-Core Version:    0.7.0.1
  */

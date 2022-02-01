@@ -13,30 +13,16 @@ import mqq.os.MqqHandler;
 
 public class QlinkReliableReport
 {
-  private static QlinkReliableReport jdField_a_of_type_CooperationQlinkQlinkReliableReport;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private List<QlinkReliableReport.PerformanceReporting> jdField_a_of_type_JavaUtilList;
-  
-  public static QlinkReliableReport a()
-  {
-    if (jdField_a_of_type_CooperationQlinkQlinkReliableReport == null) {
-      try
-      {
-        if (jdField_a_of_type_CooperationQlinkQlinkReliableReport == null) {
-          jdField_a_of_type_CooperationQlinkQlinkReliableReport = new QlinkReliableReport();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_CooperationQlinkQlinkReliableReport;
-  }
+  private static QlinkReliableReport a;
+  private final Object b = new Object();
+  private List<QlinkReliableReport.PerformanceReporting> c;
+  private Runnable d;
   
   public static void a()
   {
-    QlinkReliableReport localQlinkReliableReport = a();
+    QlinkReliableReport localQlinkReliableReport = c();
     if (localQlinkReliableReport != null) {
-      localQlinkReliableReport.e();
+      localQlinkReliableReport.f();
     }
   }
   
@@ -49,12 +35,12 @@ public class QlinkReliableReport
       ((StringBuilder)???).append(paramPerformanceReporting);
       QLog.d("QlinkReliableReport", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (this.c == null) {
+        this.c = new ArrayList();
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramPerformanceReporting);
+      this.c.add(paramPerformanceReporting);
       return;
     }
   }
@@ -69,7 +55,7 @@ public class QlinkReliableReport
       ((StringBuilder)localObject).append("]");
       QLog.d("QlinkReliableReport", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = a();
+    Object localObject = c();
     if (localObject != null) {
       ((QlinkReliableReport)localObject).a(new QlinkReliableReport.PerformanceReporting(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap));
     }
@@ -77,24 +63,38 @@ public class QlinkReliableReport
   
   public static void b()
   {
-    QlinkReliableReport localQlinkReliableReport = a();
+    QlinkReliableReport localQlinkReliableReport = c();
     if (localQlinkReliableReport != null) {
-      localQlinkReliableReport.f();
+      localQlinkReliableReport.g();
     }
   }
   
-  private static void h()
+  public static QlinkReliableReport c()
+  {
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new QlinkReliableReport();
+        }
+      }
+      finally {}
+    }
+    return a;
+  }
+  
+  private static void i()
   {
     if (QLog.isDevelopLevel()) {
       QLog.d("QlinkReliableReport", 2, "start:");
     }
-    QlinkReliableReport localQlinkReliableReport = a();
+    QlinkReliableReport localQlinkReliableReport = c();
     if (localQlinkReliableReport != null) {
-      localQlinkReliableReport.i();
+      localQlinkReliableReport.j();
     }
   }
   
-  private void i()
+  private void j()
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
@@ -103,10 +103,10 @@ public class QlinkReliableReport
       }
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_JavaUtilList = null;
+      List localList = this.c;
+      this.c = null;
       if (localList != null)
       {
         if (localList.size() == 0) {
@@ -117,7 +117,7 @@ public class QlinkReliableReport
         while (localIterator.hasNext())
         {
           QlinkReliableReport.PerformanceReporting localPerformanceReporting = (QlinkReliableReport.PerformanceReporting)localIterator.next();
-          ((StatisticCollector)???).collectPerformance(localPerformanceReporting.a(), localPerformanceReporting.b(), localPerformanceReporting.a(), localPerformanceReporting.a(), localPerformanceReporting.b(), localPerformanceReporting.a(), null);
+          ((StatisticCollector)???).collectPerformance(localPerformanceReporting.a(), localPerformanceReporting.b(), localPerformanceReporting.c(), localPerformanceReporting.d(), localPerformanceReporting.e(), localPerformanceReporting.f(), null);
         }
         localList.clear();
       }
@@ -129,42 +129,42 @@ public class QlinkReliableReport
     }
   }
   
-  protected void c() {}
+  protected void d() {}
   
-  protected void d()
+  protected void e()
   {
-    f();
+    g();
     try
     {
-      jdField_a_of_type_CooperationQlinkQlinkReliableReport = null;
+      a = null;
       return;
     }
     finally {}
   }
   
-  public void e()
+  public void f()
   {
     QLog.d("QlinkReliableReport", 2, "doStartReportTimer");
-    if (this.jdField_a_of_type_JavaLangRunnable == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_JavaLangRunnable = new QlinkReliableReport.1(this);
-      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
+      this.d = new QlinkReliableReport.1(this);
+      ThreadManager.getSubThreadHandler().postDelayed(this.d, 60000L);
     }
   }
   
-  public void f()
+  public void g()
   {
     QLog.d("QlinkReliableReport", 2, "doStopReportTimer");
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    if (this.d != null)
     {
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.d);
+      this.d = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkReliableReport
  * JD-Core Version:    0.7.0.1
  */

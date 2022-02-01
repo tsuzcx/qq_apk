@@ -42,9 +42,9 @@ public class GameArkView
   public GameArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2030305281, this);
-    this.arkViewContainer = findViewById(2030239764);
-    this.arkView = ((ArkView)findViewById(2030239763));
+    LayoutInflater.from(getContext()).inflate(2030370822, this);
+    this.arkViewContainer = findViewById(2030305321);
+    this.arkView = ((ArkView)findViewById(2030305320));
     for (;;)
     {
       try
@@ -172,7 +172,7 @@ public class GameArkView
     if (localObject != null) {
       ((GameArkView.LoadGameArkCallback)localObject).onLoadFinish(paramInt1, this.mPosition);
     }
-    localObject = GamePubAccountHelper.a(this.mPubType).d("76918").c("207984").a(2, this.mGameMsgInfo.advId).b(this.mGameMsgInfo.gameAppId).a(18, this.mGameMsgInfo.arkAppName);
+    localObject = GamePubAccountHelper.c(this.mPubType).d("76918").c("207984").a(2, this.mGameMsgInfo.advId).b(this.mGameMsgInfo.gameAppId).a(18, this.mGameMsgInfo.arkAppName);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("");
@@ -201,7 +201,7 @@ public class GameArkView
       ((GameArkView.LoadGameArkCallback)localObject).onLoadFinish(paramInt, this.mPosition);
     }
     ThreadManagerV2.getUIHandlerV2().postDelayed(new GameArkView.1(this), 500L);
-    localObject = GamePubAccountHelper.a(this.mPubType).d("76918").c("207984").a(2, this.mGameMsgInfo.advId).b(this.mGameMsgInfo.gameAppId).a(18, this.mGameMsgInfo.arkAppName);
+    localObject = GamePubAccountHelper.c(this.mPubType).d("76918").c("207984").a(2, this.mGameMsgInfo.advId).b(this.mGameMsgInfo.gameAppId).a(18, this.mGameMsgInfo.arkAppName);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt);
     localStringBuilder.append("");
@@ -246,7 +246,7 @@ public class GameArkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.view.GameArkView
  * JD-Core Version:    0.7.0.1
  */

@@ -15,11 +15,11 @@ final class TabItemController$showRedPointView$1
   
   public final void run()
   {
-    QQShopRedPointUtil.a(this.a.mTabId);
+    QQShopRedPointUtil.b(this.a.mTabId);
     TabItemController.a(this.this$0).setVisibility(0);
     TabItemController.a(this.this$0, this.a.mTashId);
     String str = this.a.mRedUrl;
-    if (!StringUtil.a(str))
+    if (!StringUtil.isEmpty(str))
     {
       TabItemController localTabItemController = this.this$0;
       Intrinsics.checkExpressionValueIsNotNull(str, "redPointUrl");
@@ -29,7 +29,7 @@ final class TabItemController$showRedPointView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TabItemController.showRedPointView.1
  * JD-Core Version:    0.7.0.1
  */

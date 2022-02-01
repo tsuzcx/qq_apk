@@ -15,17 +15,17 @@ class NewPolymericMultiVideoProteusItem$3
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mNewPolymericInfo.a != null)
+    if (this.a.mNewPolymericInfo.l != null)
     {
-      paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mNewPolymericInfo.a;
-      VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      NewPolymericMultiVideoProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNewPolymericMultiVideoProteusItem, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramViewBase.e);
+      paramViewBase = this.a.mNewPolymericInfo.l;
+      VideoFeedsHelper.a(this.b.getContext(), paramViewBase);
+      NewPolymericMultiVideoProteusItem.a(this.c, this.a, paramViewBase.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NewPolymericMultiVideoProteusItem.3
  * JD-Core Version:    0.7.0.1
  */

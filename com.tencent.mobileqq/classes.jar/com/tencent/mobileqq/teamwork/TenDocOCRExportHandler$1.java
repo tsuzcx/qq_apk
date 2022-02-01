@@ -40,23 +40,23 @@ class TenDocOCRExportHandler$1
             QIPCClientHelper.getInstance().callServer("Module_TDFileChangeNameQIPCModule", "Action_url_2_fmdb", localBundle);
             return;
           }
-          localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131714647), this.a });
+          localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131912156), this.a });
           return;
         }
         catch (UnsupportedEncodingException localUnsupportedEncodingException)
         {
-          localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131714648), this.a });
+          localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131912157), this.a });
           localUnsupportedEncodingException.printStackTrace();
           return;
         }
       }
-      localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131714646), this.a });
+      localTenDocOCRExportHandler.notifyUI(1, true, new Object[] { HardCodeUtil.a(2131912155), this.a });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1
  * JD-Core Version:    0.7.0.1
  */

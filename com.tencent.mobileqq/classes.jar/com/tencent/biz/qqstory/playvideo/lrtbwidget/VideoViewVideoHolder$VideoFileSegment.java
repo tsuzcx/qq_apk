@@ -13,88 +13,88 @@ class VideoViewVideoHolder$VideoFileSegment
   extends JobSegment<StoryVideoItem, StoryVideoItem>
   implements StorySingleFileDownloader.FileDownloadListener
 {
-  private StoryVideoItem jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-  private VideoViewVideoHolder.SingleFileDownloaderHolder jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder;
-  private boolean jdField_a_of_type_Boolean;
+  private StoryVideoItem b;
+  private VideoViewVideoHolder.SingleFileDownloaderHolder c;
+  private boolean d;
   
   public VideoViewVideoHolder$VideoFileSegment(VideoViewVideoHolder paramVideoViewVideoHolder, VideoViewVideoHolder.SingleFileDownloaderHolder paramSingleFileDownloaderHolder, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder = paramSingleFileDownloaderHolder;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramSingleFileDownloaderHolder;
+    this.d = paramBoolean;
   }
   
   protected void a(StoryVideoItem paramStoryVideoItem)
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 6);
+    VideoViewVideoHolder.d(this.a, 6);
     super.notifyResult(paramStoryVideoItem);
   }
   
   protected void a(JobContext paramJobContext, StoryVideoItem paramStoryVideoItem)
   {
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 5);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    if (this.jdField_a_of_type_Boolean)
+    VideoViewVideoHolder.d(this.a, 5);
+    this.b = paramStoryVideoItem;
+    if (this.d)
     {
       a(paramStoryVideoItem);
       return;
     }
-    SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully");
-    VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 5);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder.a().a(paramStoryVideoItem.mVid, 0, true, this);
+    SLog.d(this.a.a, "showVideo, start download video fully");
+    VideoViewVideoHolder.a(this.a, 5);
+    this.c.a().a(paramStoryVideoItem.mVid, 0, true, this);
   }
   
   public void a(String paramString, int paramInt)
   {
     if (!isCanceled())
     {
-      SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onSuccess");
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, "VD", SystemClock.uptimeMillis());
-      a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      SLog.d(this.a.a, "showVideo, start download video fully, onSuccess");
+      VideoViewVideoHolder.a(this.a, "VD", SystemClock.uptimeMillis());
+      a(this.b);
       return;
     }
-    SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onSuccess. stream canceled");
+    SLog.d(this.a.a, "showVideo, start download video fully, onSuccess. stream canceled");
   }
   
   public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
   {
     if (!isCanceled())
     {
-      SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, paramErrorMessage, "showVideo, start download video fully, onError", new Object[0]);
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, paramErrorMessage.errorCode);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), paramErrorMessage.getErrorMessage()));
+      SLog.b(this.a.a, paramErrorMessage, "showVideo, start download video fully, onError", new Object[0]);
+      VideoViewVideoHolder.c(this.a, 3);
+      VideoViewVideoHolder.a(this.a, false);
+      VideoViewVideoHolder.b(this.a, paramErrorMessage.errorCode);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.c(this.a), paramErrorMessage.getErrorMessage()));
       return;
     }
-    SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, paramErrorMessage, "showVideo, start download video fully, onError. stream canceled", new Object[0]);
+    SLog.b(this.a.a, paramErrorMessage, "showVideo, start download video fully, onError. stream canceled", new Object[0]);
   }
   
   public void b(String paramString, int paramInt)
   {
     if (!isCanceled())
     {
-      SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onCancel");
-      VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 3);
-      VideoViewVideoHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, false);
-      VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder, 1234);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder), "Download video cancel"));
+      SLog.d(this.a.a, "showVideo, start download video fully, onCancel");
+      VideoViewVideoHolder.c(this.a, 3);
+      VideoViewVideoHolder.a(this.a, false);
+      VideoViewVideoHolder.b(this.a, 1234);
+      notifyError(new ErrorMessage(VideoViewVideoHolder.c(this.a), "Download video cancel"));
       return;
     }
-    SLog.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "showVideo, start download video fully, onCancel. stream canceled");
+    SLog.d(this.a.a, "showVideo, start download video fully, onCancel. stream canceled");
   }
   
   protected void onCancel()
   {
     super.onCancel();
-    SLog.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a, "VideoFileSegment onCancel");
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder.a().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0);
+    SLog.b(this.a.a, "VideoFileSegment onCancel");
+    if (this.b != null) {
+      this.c.a().a(this.b.mVid, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoFileSegment
  * JD-Core Version:    0.7.0.1
  */

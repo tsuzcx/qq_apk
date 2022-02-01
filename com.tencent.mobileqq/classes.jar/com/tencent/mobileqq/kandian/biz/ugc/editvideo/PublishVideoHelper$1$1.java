@@ -25,13 +25,13 @@ class PublishVideoHelper$1$1
       } else {
         str = "视频上传失败";
       }
-      QQToast.a(localBaseApplicationImpl, i, str, 0).a();
+      QQToast.makeText(localBaseApplicationImpl, i, str, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.editvideo.PublishVideoHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

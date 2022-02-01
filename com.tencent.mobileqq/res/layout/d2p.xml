@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/ngl" android:background="@color/8f" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.immersive.views.QFSViewPager android:id="@id/ngm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p99" android:layout="@layout/cxh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p98" android:layout="@layout/cxi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

@@ -10,9 +10,9 @@ class RefreshHeaderView$2
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView.setVisibleHeight(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    if ((this.jdField_a_of_type_Int == 0) && (((Integer)paramValueAnimator.getAnimatedValue()).intValue() == 0)) {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView.setState(0);
+    this.b.setVisibleHeight(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if ((this.a == 0) && (((Integer)paramValueAnimator.getAnimatedValue()).intValue() == 0)) {
+      this.b.setState(0);
     }
   }
 }

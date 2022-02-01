@@ -11,12 +11,12 @@ class TroopHomeworkHelper$UploadFileTask$2
   
   public void run()
   {
-    QQToast.a(MobileQQ.getContext(), HardCodeUtil.a(2131715225), 0).a();
+    QQToast.makeText(MobileQQ.getContext(), HardCodeUtil.a(2131912708), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,15 @@
 package com.tencent.mobileqq.olympic.activity;
 
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -13,24 +18,29 @@ import mqq.app.AppRuntime;
 public class OlympicToolBaseActivity
   extends AbsBaseWebViewActivity
 {
-  public AppInterface a;
-  public QQAppInterface a;
-  public OlympicToolAppInterface a;
+  private static final String TAG = "ScanBaseActivity";
+  public AppInterface app;
+  public QQAppInterface qqApp;
+  public OlympicToolAppInterface toolApp;
   
-  public void a()
+  private Drawable getIconDrawable(String paramString, int paramInt)
   {
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime instanceof QQAppInterface))
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestHeight = AIOUtils.b(55.0F, getResources());
+    localURLDrawableOptions.mRequestWidth = AIOUtils.b(55.0F, getResources());
+    localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(paramInt);
+    localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      return;
+      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      return paramString;
     }
-    if ((localAppRuntime instanceof OlympicToolAppInterface))
+    catch (Exception paramString)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = ((OlympicToolAppInterface)localAppRuntime);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+      label58:
+      break label58;
     }
+    return localURLDrawableOptions.mLoadingDrawable;
   }
   
   @Override
@@ -45,7 +55,7 @@ public class OlympicToolBaseActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    a();
+    updateAppRuntime();
     return true;
   }
   
@@ -72,10 +82,12 @@ public class OlympicToolBaseActivity
     return super.getModuleId();
   }
   
+  public void launchOcr() {}
+  
   protected void onAccountChanged()
   {
     super.onAccountChanged();
-    a();
+    updateAppRuntime();
   }
   
   @Override
@@ -84,10 +96,26 @@ public class OlympicToolBaseActivity
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
+  
+  public void updateAppRuntime()
+  {
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      this.qqApp = ((QQAppInterface)localAppRuntime);
+      this.app = this.qqApp;
+      return;
+    }
+    if ((localAppRuntime instanceof OlympicToolAppInterface))
+    {
+      this.toolApp = ((OlympicToolAppInterface)localAppRuntime);
+      this.app = this.toolApp;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity
  * JD-Core Version:    0.7.0.1
  */

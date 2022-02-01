@@ -18,16 +18,16 @@ class AccountDetailCustomModuleBaseWrapper$2
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "onItemClick!");
     }
-    paramAdapterView = (IPublicAccountConfigAttr.PaConfigInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailHandlerAccountDetailBaseItemClickHandler != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailHandlerAccountDetailBaseItemClickHandler.a(paramAdapterView);
+    paramAdapterView = (IPublicAccountConfigAttr.PaConfigInfo)this.a.a.get(paramInt);
+    if (this.a.e != null) {
+      this.a.e.a(paramAdapterView);
     }
     this.a.a(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailCustomModuleBaseWrapper.2
  * JD-Core Version:    0.7.0.1
  */

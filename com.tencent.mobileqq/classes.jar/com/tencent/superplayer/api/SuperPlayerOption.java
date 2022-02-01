@@ -13,10 +13,13 @@ public class SuperPlayerOption
   private static final String TAG = "SuperPlayerOption";
   public boolean accurateSeekOnOpen;
   public SuperPlayerAudioInfo audioFrameOutputOption;
+  public String bandwidthReportHost;
   public long bufferPacketMinTotalDurationMs;
   public boolean enableAudioFrameOutput;
+  public boolean enableBandwidthStats = false;
   public boolean enableCodecReuse;
   public Boolean enableDownloadProxy;
+  public boolean enableListenerPlayerBuffer;
   public boolean enableVideoFrameCheck;
   public boolean enableVideoFrameOutput;
   public Map<String, String> httpHeader;
@@ -130,7 +133,7 @@ public class SuperPlayerOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerOption
  * JD-Core Version:    0.7.0.1
  */

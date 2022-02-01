@@ -5,33 +5,33 @@ import java.lang.ref.WeakReference;
 
 class QQToast$ShowToastMessage
 {
-  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-  private WeakReference<QQToast.IToastValidListener> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QQToast.IToastValidListener> mListener;
+  private QQToast mToast;
   
   QQToast$ShowToastMessage(QQToast paramQQToast, QQToast.IToastValidListener paramIToastValidListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIToastValidListener);
+    this.mToast = paramQQToast;
+    this.mListener = new WeakReference(paramIToastValidListener);
   }
   
-  private boolean a()
+  private boolean needToShow()
   {
-    QQToast.IToastValidListener localIToastValidListener = (QQToast.IToastValidListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    return (localIToastValidListener != null) && (localIToastValidListener.e());
+    QQToast.IToastValidListener localIToastValidListener = (QQToast.IToastValidListener)this.mListener.get();
+    return (localIToastValidListener != null) && (localIToastValidListener.canShowToast());
   }
   
   @Nullable
-  QQToast a()
+  QQToast getToast()
   {
-    if (a()) {
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+    if (needToShow()) {
+      return this.mToast;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.ShowToastMessage
  * JD-Core Version:    0.7.0.1
  */

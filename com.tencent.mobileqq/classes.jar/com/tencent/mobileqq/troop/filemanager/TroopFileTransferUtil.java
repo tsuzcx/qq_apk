@@ -36,11 +36,6 @@ public class TroopFileTransferUtil
     return 0;
   }
   
-  public static long a()
-  {
-    return (int)(System.currentTimeMillis() / 1000L) << 32 | Math.abs(new Random().nextInt());
-  }
-  
   public static QQAppInterface a()
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
@@ -50,7 +45,104 @@ public class TroopFileTransferUtil
     return null;
   }
   
-  public static TroopFileTransferUtil.HostInfo a(String paramString)
+  public static TroopFileManager a(long paramLong)
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    return TroopFileManager.a(localQQAppInterface, paramLong);
+  }
+  
+  public static int b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    int i = paramString.indexOf("User-ReturnCode=[");
+    if (i == -1) {
+      return 0;
+    }
+    paramString = paramString.substring(i + 17);
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    i = paramString.indexOf("]");
+    if (i == -1) {
+      return 0;
+    }
+    paramString = paramString.substring(0, i);
+    try
+    {
+      i = Integer.valueOf(paramString).intValue();
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public static long b()
+  {
+    return (int)(System.currentTimeMillis() / 1000L) << 32 | Math.abs(new Random().nextInt());
+  }
+  
+  public static int c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    if (!paramString.startsWith("H_")) {
+      return 0;
+    }
+    int i = paramString.indexOf("_");
+    if (i == -1) {
+      return 0;
+    }
+    int j = paramString.lastIndexOf("_");
+    if (i == j) {
+      return 0;
+    }
+    paramString = paramString.substring(i, j - 1);
+    try
+    {
+      i = Integer.valueOf(paramString).intValue();
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public static String c()
+  {
+    if (!AppNetConnInfo.isNetSupport()) {
+      return "none";
+    }
+    if (AppNetConnInfo.isWifiConn()) {
+      return "wifi";
+    }
+    if (AppNetConnInfo.isMobileConn())
+    {
+      int i = AppNetConnInfo.getMobileInfo();
+      if (i != -1)
+      {
+        if ((i != 0) && (i != 1))
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              return "unkonw";
+            }
+            return "4g";
+          }
+          return "3g";
+        }
+        return "2g";
+      }
+    }
+    return "none";
+  }
+  
+  public static TroopFileTransferUtil.HostInfo d(String paramString)
   {
     TroopFileTransferUtil.HostInfo localHostInfo = new TroopFileTransferUtil.HostInfo();
     if (TextUtils.isEmpty(paramString)) {
@@ -108,16 +200,16 @@ public class TroopFileTransferUtil
         {
           paramString = str2.substring(0, i);
           str1 = str2.substring(i + 1);
-          localHostInfo.jdField_a_of_type_JavaLangString = paramString;
-          localHostInfo.jdField_a_of_type_Int = Integer.valueOf(str1).intValue();
+          localHostInfo.a = paramString;
+          localHostInfo.b = Integer.valueOf(str1).intValue();
         }
         else
         {
-          localHostInfo.jdField_a_of_type_JavaLangString = str2;
-          localHostInfo.jdField_a_of_type_Int = 0;
+          localHostInfo.a = str2;
+          localHostInfo.b = 0;
         }
         if (k != 0) {
-          localHostInfo.b = 1;
+          localHostInfo.c = 1;
         }
         return localHostInfo;
         i += 3;
@@ -128,46 +220,7 @@ public class TroopFileTransferUtil
     return localHostInfo;
   }
   
-  public static TroopFileManager a(long paramLong)
-  {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return TroopFileManager.a(localQQAppInterface, paramLong);
-  }
-  
-  public static String a()
-  {
-    if (!AppNetConnInfo.isNetSupport()) {
-      return "none";
-    }
-    if (AppNetConnInfo.isWifiConn()) {
-      return "wifi";
-    }
-    if (AppNetConnInfo.isMobileConn())
-    {
-      int i = AppNetConnInfo.getMobileInfo();
-      if (i != -1)
-      {
-        if ((i != 0) && (i != 1))
-        {
-          if (i != 2)
-          {
-            if (i != 3) {
-              return "unkonw";
-            }
-            return "4g";
-          }
-          return "3g";
-        }
-        return "2g";
-      }
-    }
-    return "none";
-  }
-  
-  public static String a(String paramString)
+  public static String e(String paramString)
   {
     if (paramString == null) {
       return null;
@@ -180,63 +233,10 @@ public class TroopFileTransferUtil
     localStringBuilder.append(paramString);
     return localStringBuilder.toString();
   }
-  
-  public static int b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    int i = paramString.indexOf("User-ReturnCode=[");
-    if (i == -1) {
-      return 0;
-    }
-    paramString = paramString.substring(i + 17);
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    i = paramString.indexOf("]");
-    if (i == -1) {
-      return 0;
-    }
-    paramString = paramString.substring(0, i);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
-  
-  public static int c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0;
-    }
-    if (!paramString.startsWith("H_")) {
-      return 0;
-    }
-    int i = paramString.indexOf("_");
-    if (i == -1) {
-      return 0;
-    }
-    int j = paramString.lastIndexOf("_");
-    if (i == j) {
-      return 0;
-    }
-    paramString = paramString.substring(i, j - 1);
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -16,9 +16,9 @@ import java.lang.ref.WeakReference;
 class SystemDragUtils$TouchHandler
   extends Handler
 {
-  static int jdField_a_of_type_Int = -1;
-  OnLongClickAndTouchListener jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  static int a = -1;
+  WeakReference<Context> b;
+  OnLongClickAndTouchListener c;
   
   private void a(OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
@@ -27,10 +27,10 @@ class SystemDragUtils$TouchHandler
     {
       QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is BubbleOnlongClickListener");
       paramOnLongClickAndTouchListener = ((ChatAdapter1.BubbleOnlongClickListener)paramOnLongClickAndTouchListener).a;
-      if ((paramOnLongClickAndTouchListener != null) && (paramOnLongClickAndTouchListener.a()))
+      if ((paramOnLongClickAndTouchListener != null) && (paramOnLongClickAndTouchListener.e()))
       {
         QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper dismiss");
-        paramOnLongClickAndTouchListener.a();
+        paramOnLongClickAndTouchListener.f();
         return;
       }
       QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper notshow");
@@ -45,14 +45,14 @@ class SystemDragUtils$TouchHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.what == jdField_a_of_type_Int) && ((paramMessage.obj instanceof View)) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    if ((paramMessage.what == a) && ((paramMessage.obj instanceof View)) && (this.b.get() != null))
     {
-      paramMessage = (BaseBubbleBuilder.ViewHolder)AIOUtils.a((View)paramMessage.obj);
+      paramMessage = (BaseBubbleBuilder.ViewHolder)AIOUtils.b((View)paramMessage.obj);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("DRAG TRIGGER: holder is: ");
       localStringBuilder.append(paramMessage.getClass());
       QLog.d("SystemDragUtils", 1, localStringBuilder.toString());
-      if (paramMessage.a != null)
+      if (paramMessage.q != null)
       {
         ThreadManager.executeOnFileThread(new SystemDragUtils.TouchHandler.1(this, paramMessage));
         return;
@@ -63,7 +63,7 @@ class SystemDragUtils$TouchHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.TouchHandler
  * JD-Core Version:    0.7.0.1
  */

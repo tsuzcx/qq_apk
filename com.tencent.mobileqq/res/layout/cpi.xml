@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/okr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="10.0dip" />
-    <ViewStub android:gravity="center_vertical" android:id="@id/n4h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textSize="@dimen/3r" android:id="@id/title" android:layout_width="@dimen/1e" style="@style/61" />
+    <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/3r" android:id="@id/btq" style="@style/60" />
+</merge>

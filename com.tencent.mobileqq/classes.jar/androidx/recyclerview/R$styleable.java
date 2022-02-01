@@ -2,12 +2,12 @@ package androidx.recyclerview;
 
 public final class R$styleable
 {
-  public static final int[] ColorStateListItem = { 16843173, 16843551, 2131034189 };
+  public static final int[] ColorStateListItem = { 16843173, 16843551, 2131034239 };
   public static final int ColorStateListItem_alpha = 2;
   public static final int ColorStateListItem_android_alpha = 1;
   public static final int ColorStateListItem_android_color = 0;
-  public static final int[] FontFamily = { 2131034598, 2131034599, 2131034600, 2131034601, 2131034602, 2131034603 };
-  public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 16844143, 16844144, 2131034596, 2131034604, 2131034605, 2131034606, 2131035423 };
+  public static final int[] FontFamily = { 2131034944, 2131034945, 2131034946, 2131034947, 2131034948, 2131034949 };
+  public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 16844143, 16844144, 2131034942, 2131034950, 2131034951, 2131034952, 2131036303 };
   public static final int FontFamilyFont_android_font = 0;
   public static final int FontFamilyFont_android_fontStyle = 2;
   public static final int FontFamilyFont_android_fontVariationSettings = 4;
@@ -40,7 +40,7 @@ public final class R$styleable
   public static final int GradientColor_android_startY = 9;
   public static final int GradientColor_android_tileMode = 6;
   public static final int GradientColor_android_type = 2;
-  public static final int[] RecyclerView = { 16842948, 16842987, 16842993, 2131034560, 2131034561, 2131034562, 2131034563, 2131034564, 2131034716, 2131035091, 2131035212, 2131035221 };
+  public static final int[] RecyclerView = { 16842948, 16842987, 16842993, 2131034880, 2131034881, 2131034882, 2131034883, 2131034884, 2131035166, 2131035782, 2131035957, 2131035967 };
   public static final int RecyclerView_android_clipToPadding = 1;
   public static final int RecyclerView_android_descendantFocusability = 2;
   public static final int RecyclerView_android_orientation = 0;

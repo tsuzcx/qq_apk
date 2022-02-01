@@ -8,7 +8,6 @@ import com.tencent.gamecenter.wadl.api.IQQGameCheckService;
 import com.tencent.gamecenter.wadl.biz.receiver.GameCenterBroadcastReceiver;
 import com.tencent.gamecenter.wadl.util.GameCenterSpUtils;
 import com.tencent.gamecenter.wadl.util.GameCenterUtil;
-import com.tencent.gamecenter.wadl.util.WLog;
 import com.tencent.imcore.message.OnLinePushMessageProcessor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -40,7 +39,7 @@ public class SubType0xce
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("yuyue(push):OnLinePushMessageProcessor receive 0xce strJson=");
           ((StringBuilder)localObject).append(paramMsgType0x210);
-          WLog.b("Q.msg.BaseMessageProcessor", ((StringBuilder)localObject).toString());
+          QLog.i("Q.msg.BaseMessageProcessor", 2, ((StringBuilder)localObject).toString());
         }
         localObject = new JSONObject(paramMsgType0x210).optString("appid");
         String[] arrayOfString = GameCenterSpUtils.a("APPOINTMENT_DOWNLOAD_LIST").split("\\|");
@@ -50,7 +49,7 @@ public class SubType0xce
         if (i < arrayOfString.length)
         {
           if ((TextUtils.isEmpty(arrayOfString[i])) || (TextUtils.isEmpty((CharSequence)localObject)) || (!arrayOfString[i].equals(localObject))) {
-            break label236;
+            break label237;
           }
           j = 1;
         }
@@ -69,7 +68,7 @@ public class SubType0xce
         paramQQAppInterface.printStackTrace();
         return;
       }
-      label236:
+      label237:
       i += 1;
     }
   }
@@ -82,7 +81,7 @@ public class SubType0xce
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xce
  * JD-Core Version:    0.7.0.1
  */

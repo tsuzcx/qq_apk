@@ -11,51 +11,46 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ExpandPluginPreloadManager
   implements IBackgroundListener
 {
-  private final IGuardInterface jdField_a_of_type_ComTencentMobileqqAppGuardGuardinterfaceIGuardInterface = new BackgroundListenerAdapter(this);
-  public final AtomicBoolean a;
-  private boolean jdField_a_of_type_Boolean = false;
-  
-  public ExpandPluginPreloadManager()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public final AtomicBoolean a = new AtomicBoolean(false);
+  private final IGuardInterface b = new BackgroundListenerAdapter(this);
+  private boolean c = false;
   
   public void a()
   {
-    GuardManager localGuardManager = GuardManager.a;
+    GuardManager localGuardManager = GuardManager.sInstance;
     if (localGuardManager == null)
     {
       QLog.e("ExpandPluginPreloadManager", 1, "start() error, guardManager is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      localGuardManager.a(this.jdField_a_of_type_ComTencentMobileqqAppGuardGuardinterfaceIGuardInterface);
+    if (this.a.compareAndSet(false, true)) {
+      localGuardManager.registerCallBack(this.b);
     }
     QLog.d("ExpandPluginPreloadManager", 1, "start()");
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void b()
   {
-    GuardManager localGuardManager = GuardManager.a;
+    GuardManager localGuardManager = GuardManager.sInstance;
     if (localGuardManager == null)
     {
       QLog.e("ExpandPluginPreloadManager", 1, "stop() error, guardManager is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) {
-      localGuardManager.b(this.jdField_a_of_type_ComTencentMobileqqAppGuardGuardinterfaceIGuardInterface);
+    if (this.a.compareAndSet(true, false)) {
+      localGuardManager.unregisterCallback(this.b);
     }
     QLog.d("ExpandPluginPreloadManager", 1, "stop()");
   }
   
   public void c()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.c)
     {
       QLog.d("ExpandPluginPreloadManager", 1, "preloadPlugin: pre install is disable");
       return;
@@ -91,7 +86,7 @@ public class ExpandPluginPreloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.preload.ExpandPluginPreloadManager
  * JD-Core Version:    0.7.0.1
  */

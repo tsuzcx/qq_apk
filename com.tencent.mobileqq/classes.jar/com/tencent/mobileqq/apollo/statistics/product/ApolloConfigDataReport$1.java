@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.apollo.statistics.product;
 
-import com.tencent.mobileqq.apollo.res.api.IApolloResManager;
-import com.tencent.mobileqq.apollo.res.api.impl.ApolloResManagerImpl;
 import mqq.app.AppRuntime;
 
 final class ApolloConfigDataReport$1
@@ -15,12 +13,12 @@ final class ApolloConfigDataReport$1
     if (localAppRuntime == null) {
       return;
     }
-    ((ApolloResManagerImpl)localAppRuntime.getRuntimeService(IApolloResManager.class, "all")).downloadFileBy304("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/apollo_report_config.json", new ApolloConfigDataReport.1.1(this));
+    ApolloConfigDataReport.a(localAppRuntime, "https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/apollo_report_config.json", new ApolloConfigDataReport.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.ApolloConfigDataReport.1
  * JD-Core Version:    0.7.0.1
  */

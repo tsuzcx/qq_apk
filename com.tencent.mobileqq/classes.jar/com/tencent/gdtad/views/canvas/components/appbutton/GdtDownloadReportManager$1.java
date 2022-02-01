@@ -20,7 +20,7 @@ class GdtDownloadReportManager$1
   
   public void installSucceed(String paramString1, String paramString2)
   {
-    if ((GdtDownloadReportManager.a(this.a) != null) && (GdtDownloadReportManager.a(this.a).getAppId() != null) && (GdtDownloadReportManager.a(this.a).getAppPackageName() != null) && (GdtDownloadReportManager.a(this.a).getAppId().equals(paramString1)) && (GdtDownloadReportManager.a(this.a).getAppPackageName().equals(paramString2)))
+    if ((GdtDownloadReportManager.c(this.a) != null) && (GdtDownloadReportManager.c(this.a).getAppId() != null) && (GdtDownloadReportManager.c(this.a).getAppPackageName() != null) && (GdtDownloadReportManager.c(this.a).getAppId().equals(paramString1)) && (GdtDownloadReportManager.c(this.a).getAppPackageName().equals(paramString2)))
     {
       paramString2 = GdtDownloadReportManager.a(this.a, paramString2);
       ThreadManager.getFileThreadHandler().post(new GdtDownloadReportManager.1.1(this, paramString2, paramString1));
@@ -42,7 +42,7 @@ class GdtDownloadReportManager$1
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDownloadFinish: infos:");
-      ((StringBuilder)localObject).append(paramDownloadInfo.f);
+      ((StringBuilder)localObject).append(paramDownloadInfo.t);
       GdtLog.a("GdtDownloadReportManager", ((StringBuilder)localObject).toString());
       if ((GdtDownloadReportManager.a(this.a).containsKey(paramDownloadInfo.c)) && (GdtDownloadReportManager.a(this.a).get(paramDownloadInfo.c) != null))
       {
@@ -50,8 +50,8 @@ class GdtDownloadReportManager$1
         return;
       }
       localObject = this.a;
-      if (GdtDownloadReportManager.a((GdtDownloadReportManager)localObject, paramDownloadInfo, GdtDownloadReportManager.a((GdtDownloadReportManager)localObject))) {
-        GdtTraceReporter.a(GdtDownloadReportManager.a(this.a), 274);
+      if (GdtDownloadReportManager.a((GdtDownloadReportManager)localObject, paramDownloadInfo, GdtDownloadReportManager.c((GdtDownloadReportManager)localObject))) {
+        GdtTraceReporter.a(GdtDownloadReportManager.c(this.a), 274);
       }
     }
   }
@@ -65,7 +65,7 @@ class GdtDownloadReportManager$1
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDownloadPause: infos:");
-      ((StringBuilder)localObject).append(paramDownloadInfo.f);
+      ((StringBuilder)localObject).append(paramDownloadInfo.t);
       GdtLog.a("GdtDownloadReportManager", ((StringBuilder)localObject).toString());
       if ((GdtDownloadReportManager.a(this.a).containsKey(paramDownloadInfo.c)) && (GdtDownloadReportManager.a(this.a).get(paramDownloadInfo.c) != null))
       {
@@ -74,8 +74,8 @@ class GdtDownloadReportManager$1
         return;
       }
       localObject = this.a;
-      if (GdtDownloadReportManager.a((GdtDownloadReportManager)localObject, paramDownloadInfo, GdtDownloadReportManager.a((GdtDownloadReportManager)localObject))) {
-        GdtTraceReporter.a(GdtDownloadReportManager.a(this.a), 273);
+      if (GdtDownloadReportManager.a((GdtDownloadReportManager)localObject, paramDownloadInfo, GdtDownloadReportManager.c((GdtDownloadReportManager)localObject))) {
+        GdtTraceReporter.a(GdtDownloadReportManager.c(this.a), 273);
       }
     }
   }
@@ -99,7 +99,7 @@ class GdtDownloadReportManager$1
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onDownloadUpdate: progress:");
-          localStringBuilder.append(((DownloadInfo)localObject).f);
+          localStringBuilder.append(((DownloadInfo)localObject).t);
           GdtLog.a("GdtDownloadReportManager", localStringBuilder.toString());
           if ((GdtDownloadReportManager.b(this.a).containsKey(((DownloadInfo)localObject).c)) && (GdtDownloadReportManager.b(this.a).get(((DownloadInfo)localObject).c) != null))
           {
@@ -122,7 +122,7 @@ class GdtDownloadReportManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager.1
  * JD-Core Version:    0.7.0.1
  */

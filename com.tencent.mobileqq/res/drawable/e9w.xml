@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="14.0dip" />
-    <solid android:color="#ffff4242" />
-    <padding android:left="6.0dip" android:top="1.5dip" android:right="6.0dip" android:bottom="1.5dip" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/e9x" />
+    <item android:drawable="@drawable/e_2" />
+</selector>

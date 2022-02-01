@@ -48,7 +48,7 @@ public class FontSettingManager
     if (paramContext == null) {
       return -1000.0F;
     }
-    float f2 = Float.valueOf(PropertiesUtils.a(paramContext, "key_font_level", String.valueOf(16.0F))).floatValue();
+    float f2 = Float.valueOf(PropertiesUtils.b(paramContext, "key_font_level", String.valueOf(16.0F))).floatValue();
     float f1;
     if (f2 >= 13.92F)
     {
@@ -81,8 +81,8 @@ public class FontSettingManager
   
   public static boolean isDisplayMetricNoAnswer()
   {
-    String str1 = DeviceInfoUtil.h();
-    String str2 = DeviceInfoUtil.d();
+    String str1 = DeviceInfoUtil.t();
+    String str2 = DeviceInfoUtil.f();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -102,8 +102,8 @@ public class FontSettingManager
   
   public static boolean isSupportDevice()
   {
-    Object localObject = DeviceInfoUtil.h();
-    String str = DeviceInfoUtil.d();
+    Object localObject = DeviceInfoUtil.t();
+    String str = DeviceInfoUtil.f();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -286,7 +286,7 @@ public class FontSettingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FontSettingManager
  * JD-Core Version:    0.7.0.1
  */

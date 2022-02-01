@@ -63,7 +63,7 @@ public abstract class ProtoBufRequest
       if (paramIntent != null) {
         paramIntent.putExtra("traceid", paramString);
       }
-      if (StudyModeManager.a())
+      if (StudyModeManager.h())
       {
         paramIntent = new COMM.Entry();
         paramIntent.key.set("teenager");

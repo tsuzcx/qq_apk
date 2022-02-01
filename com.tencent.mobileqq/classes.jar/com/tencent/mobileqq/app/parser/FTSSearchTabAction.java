@@ -28,12 +28,12 @@ public class FTSSearchTabAction
     int i = 0;
     if (!bool)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694425, 1).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, 2131892105, 1).show();
       return false;
     }
     String str;
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("params")) {
-      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("params");
+    if (this.f.containsKey("params")) {
+      str = (String)this.f.get("params");
     } else {
       str = "";
     }
@@ -49,7 +49,7 @@ public class FTSSearchTabAction
         i += 1;
       }
       localObject2 = ((JSONObject)localObject2).optString("groupname");
-      ActiveEntitySearchActivity.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, (String)localObject2, arrayOfLong);
+      ActiveEntitySearchActivity.a(this.b, (String)localObject1, (String)localObject2, arrayOfLong);
       return true;
     }
     catch (JSONException localJSONException)
@@ -78,14 +78,14 @@ public class FTSSearchTabAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("FTSSearchTabAction", 1, localStringBuilder.toString());
-      b_("FTSSearchTabAction");
+      h_("FTSSearchTabAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.FTSSearchTabAction
  * JD-Core Version:    0.7.0.1
  */

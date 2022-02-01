@@ -12,13 +12,13 @@ class ArkAppDownloadModule$8
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if (localBaseActivity != null) {
-      QQToast.a(localBaseActivity, this.a, 0).a();
+      QQToast.makeText(localBaseActivity, this.a, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.8
  * JD-Core Version:    0.7.0.1
  */

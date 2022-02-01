@@ -12,7 +12,7 @@ class QQCustomDialogWtihInput$3
   
   public void run()
   {
-    Context localContext = (Context)QQCustomDialogWtihInput.a(this.this$0).get();
+    Context localContext = (Context)QQCustomDialogWtihInput.d(this.this$0).get();
     if (localContext != null) {
       ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
     }
@@ -20,7 +20,7 @@ class QQCustomDialogWtihInput$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInput.3
  * JD-Core Version:    0.7.0.1
  */

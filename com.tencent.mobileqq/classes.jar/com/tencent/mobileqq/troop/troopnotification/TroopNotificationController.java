@@ -8,18 +8,18 @@ import mqq.app.AppRuntime;
 
 public abstract class TroopNotificationController
 {
-  protected static String a;
-  protected AppRuntime a;
+  protected static String d;
+  protected AppRuntime c;
   
   public TroopNotificationController(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    jdField_a_of_type_JavaLangString = b();
+    this.c = paramAppRuntime;
+    d = a();
   }
   
-  private String b()
+  private String a()
   {
-    String str2 = a();
+    String str2 = d();
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "TroopNotificationController unknown";
@@ -27,22 +27,22 @@ public abstract class TroopNotificationController
     return str1;
   }
   
-  @Nullable
-  protected abstract String a();
-  
   @CallSuper
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "clearAllMsgCache");
+      QLog.d(d, 2, "clearAllMsgCache");
     }
   }
   
   public abstract void c();
+  
+  @Nullable
+  protected abstract String d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationController
  * JD-Core Version:    0.7.0.1
  */

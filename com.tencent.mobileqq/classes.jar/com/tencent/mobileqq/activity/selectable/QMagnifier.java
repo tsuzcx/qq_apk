@@ -20,36 +20,36 @@ import com.tencent.qphone.base.util.QLog;
 public class QMagnifier
   implements SelectableMagnifier
 {
-  private static final int jdField_a_of_type_Int = ScreenUtil.dip2px(172.0F);
+  private static final int a = ScreenUtil.dip2px(172.0F);
   private static final int b = ScreenUtil.dip2px(31.5F);
-  private static final int c = jdField_a_of_type_Int + ScreenUtil.dip2px(16.0F);
+  private static final int c = a + ScreenUtil.dip2px(16.0F);
   private static final int d = b + ScreenUtil.dip2px(14.0F);
   private static final int e = c / 2;
   private static final int f = ScreenUtil.dip2px(65.0F);
   private static final int g = ScreenUtil.dip2px(10.0F);
-  private static final int h = ViewUtils.b(30.0F);
-  private static final int i = ViewUtils.b(8.0F);
-  private static final int j = ViewUtils.b(12.0F);
+  private static final int h = ViewUtils.dpToPx(30.0F);
+  private static final int i = ViewUtils.dpToPx(8.0F);
+  private static final int j = ViewUtils.dpToPx(12.0F);
   private static final int k = ScreenUtil.dip2px(4.0F);
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private RoundImageView jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
-  private boolean jdField_a_of_type_Boolean;
-  private int l = -1;
-  private int m = -1;
-  private int n = -1;
+  private boolean l;
+  private PopupWindow m;
+  private RoundImageView n;
+  private Bitmap o;
+  private Canvas p;
+  private long q;
+  private final Rect r = new Rect();
+  private int s = -1;
+  private int t = -1;
+  private int u = -1;
   
   private int a(int paramInt)
   {
-    int i3 = this.l;
+    int i3 = this.s;
     int i2 = 0;
     int i1 = i2;
     if (i3 != -1)
     {
-      int i4 = this.m;
+      int i4 = this.t;
       i1 = i2;
       if (i4 != -1)
       {
@@ -58,12 +58,12 @@ public class QMagnifier
           return 2;
         }
         i3 = j;
-        i4 = this.m;
+        i4 = this.t;
         i1 = i2;
         if (paramInt + i3 < i4)
         {
           i1 = i2;
-          if (this.l + i3 < i4) {
+          if (this.s + i3 < i4) {
             i1 = 1;
           }
         }
@@ -74,11 +74,11 @@ public class QMagnifier
   
   private int a(int paramInt1, int paramInt2)
   {
-    this.m = this.l;
-    this.l = paramInt1;
+    this.t = this.s;
+    this.s = paramInt1;
     if (paramInt2 == 0)
     {
-      int i1 = this.n;
+      int i1 = this.u;
       if (i1 != -1)
       {
         if (i1 > paramInt1)
@@ -88,7 +88,7 @@ public class QMagnifier
             paramInt1 = i1;
             break label94;
           }
-          this.n = paramInt1;
+          this.u = paramInt1;
           break label94;
         }
         if (i1 >= paramInt1) {
@@ -99,11 +99,11 @@ public class QMagnifier
           paramInt1 = i1;
           break label94;
         }
-        this.n = paramInt1;
+        this.u = paramInt1;
         break label94;
       }
     }
-    this.n = paramInt1;
+    this.u = paramInt1;
     label94:
     if (paramInt2 == 0) {
       return paramInt1 - h;
@@ -135,17 +135,17 @@ public class QMagnifier
   
   private void a(View paramView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.p.setBitmap(this.o);
     RectF localRectF = a(paramView);
     a("start update ");
     a(paramInt1 - localRectF.left, paramInt2 - localRectF.top, 1.5F);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.scale(1.5F, 1.5F);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-this.jdField_a_of_type_AndroidGraphicsRect.left, -this.jdField_a_of_type_AndroidGraphicsRect.top);
-    paramView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
+    this.p.drawColor(-1);
+    this.p.scale(1.5F, 1.5F);
+    this.p.translate(-this.r.left, -this.r.top);
+    paramView.draw(this.p);
     a("get Drawing cache ");
-    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.p.setBitmap(null);
+    this.n.setImageBitmap(this.o);
   }
   
   private void a(String paramString)
@@ -154,26 +154,17 @@ public class QMagnifier
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString);
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.q);
       QLog.d("QMagnifier", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    this.jdField_a_of_type_Boolean = false;
-    this.l = -1;
-    this.m = -1;
-    this.n = -1;
+    this.q = System.currentTimeMillis();
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     paramFloat2 -= g;
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    int i1 = jdField_a_of_type_Int;
+    Rect localRect = this.r;
+    int i1 = a;
     int i2 = (int)(paramFloat1 - i1 / 2 / paramFloat3);
     int i3 = b;
     localRect.set(i2, (int)(paramFloat2 - i3 / 2 / paramFloat3), (int)(paramFloat1 + i1 / 2 / paramFloat3), (int)(paramFloat2 + i3 / 2 / paramFloat3));
@@ -184,43 +175,52 @@ public class QMagnifier
     if (Build.VERSION.SDK_INT < 23) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null)
+    if (this.m == null)
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(BaseApplicationImpl.getContext());
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setClippingEnabled(false);
+      this.q = System.currentTimeMillis();
+      this.m = new PopupWindow(BaseApplicationImpl.getContext());
+      this.m.setClippingEnabled(false);
       a("create popWindow ");
-      paramView2 = ((LayoutInflater)paramView1.getContext().getSystemService("layout_inflater")).inflate(2131559284, null, false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView2.findViewById(2131362424));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(k, false);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView2);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(c);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(d);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(null);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(jdField_a_of_type_Int, b, Bitmap.Config.ARGB_8888);
-      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+      paramView2 = ((LayoutInflater)paramView1.getContext().getSystemService("layout_inflater")).inflate(2131625208, null, false);
+      this.n = ((RoundImageView)paramView2.findViewById(2131428032));
+      this.n.setmRadius(k, false);
+      this.m.setContentView(paramView2);
+      this.m.setWidth(c);
+      this.m.setHeight(d);
+      this.m.setBackgroundDrawable(null);
+      this.o = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
+      this.p = new Canvas();
       a("create magnifier bitmap and canvas");
     }
-    if ((paramBoolean) || (!this.jdField_a_of_type_Boolean)) {
+    if ((paramBoolean) || (!this.l)) {
       a(paramView1, paramInt1, paramInt2);
     }
     paramInt2 = a(paramInt2, a(paramInt2));
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.update(paramInt1 - e, paramInt2 - f, c, d);
+    if (this.l) {
+      this.m.update(paramInt1 - e, paramInt2 - f, c, d);
     } else {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView1, 0, paramInt1 - e, paramInt2 - f);
+      this.m.showAtLocation(paramView1, 0, paramInt1 - e, paramInt2 - f);
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.l = true;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.l;
+  }
+  
+  public void b()
+  {
+    this.m.dismiss();
+    this.l = false;
+    this.s = -1;
+    this.t = -1;
+    this.u = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.QMagnifier
  * JD-Core Version:    0.7.0.1
  */

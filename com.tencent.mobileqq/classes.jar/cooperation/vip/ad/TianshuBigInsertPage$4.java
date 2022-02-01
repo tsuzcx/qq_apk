@@ -24,13 +24,13 @@ class TianshuBigInsertPage$4
       QLog.d("TianshuBigInsertPage", 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
-      TianshuBigInsertPage.a(this.a).a().runOnUiThread(new TianshuBigInsertPage.4.1(this, paramPathResult));
+      TianshuBigInsertPage.b(this.a).P().runOnUiThread(new TianshuBigInsertPage.4.1(this, paramPathResult));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBigInsertPage.4
  * JD-Core Version:    0.7.0.1
  */

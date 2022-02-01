@@ -32,54 +32,42 @@ public class PrinterSessionAdapter
   extends TimeAdapter
 {
   public static String a = "dataline.PrinterSessionAdapter";
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new PrinterSessionAdapter.1(this);
-  public View.OnLongClickListener a;
-  public PrinterActivity a;
-  DataLineHandler jdField_a_of_type_ComTencentMobileqqAppDataLineHandler = null;
-  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+  LayoutInflater b = null;
+  public PrinterActivity c = null;
+  DataLineHandler d = null;
+  public View.OnLongClickListener e = new PrinterSessionAdapter.2(this);
+  BubblePopupWindow f = null;
+  private View.OnClickListener h = new PrinterSessionAdapter.1(this);
   
   public PrinterSessionAdapter(PrinterActivity paramPrinterActivity, DataLineHandler paramDataLineHandler)
   {
-    this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity = null;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new PrinterSessionAdapter.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler = paramDataLineHandler;
-    this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity = paramPrinterActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramPrinterActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.b();
-    b();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a.size();
-  }
-  
-  public long a(int paramInt)
-  {
-    return ((PrinterItemMsgRecord)this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a.get(paramInt)).time;
+    this.d = paramDataLineHandler;
+    this.c = paramPrinterActivity;
+    this.b = LayoutInflater.from(paramPrinterActivity);
+    this.d.e.c();
+    d();
   }
   
   protected boolean a(View paramView)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    Object localObject1 = this.f;
     if ((localObject1 != null) && (((BubblePopupWindow)localObject1).isShowing())) {
       return true;
     }
     localObject1 = new QQCustomMenu();
     paramView = (ItemHolder)paramView.getTag();
-    Object localObject2 = (PrinterItemMsgRecord)paramView.a();
+    Object localObject2 = (PrinterItemMsgRecord)paramView.b();
     if (localObject2 != null)
     {
-      Object localObject3 = paramView.a().jdField_a_of_type_AndroidWidgetRelativeLayout;
+      Object localObject3 = paramView.c().m;
       if (localObject3 == null) {
         return false;
       }
       localObject3 = ((RelativeLayout)localObject3).getContext();
-      ((QQCustomMenu)localObject1).a(2131365489, ((Context)localObject3).getString(2131693709));
+      ((QQCustomMenu)localObject1).a(2131431703, ((Context)localObject3).getString(2131891284));
       localObject2 = new PrinterSessionAdapter.3(this, (PrinterItemMsgRecord)localObject2, (Context)localObject3);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView.jdField_a_of_type_AndroidWidgetRelativeLayout, (QQCustomMenu)localObject1, (View.OnClickListener)localObject2);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOnDismissListener(new PrinterSessionAdapter.1DissmissListener(this));
+      this.f = BubbleContextMenu.a(paramView.b, (QQCustomMenu)localObject1, (View.OnClickListener)localObject2);
+      this.f.setOnDismissListener(new PrinterSessionAdapter.1DissmissListener(this));
       return true;
     }
     return false;
@@ -87,18 +75,28 @@ public class PrinterSessionAdapter
   
   public long b(int paramInt)
   {
-    return ((PrinterItemMsgRecord)this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a.get(paramInt)).uniseq;
+    return ((PrinterItemMsgRecord)this.d.e.e.get(paramInt)).time;
+  }
+  
+  public int c()
+  {
+    return this.d.e.e.size();
+  }
+  
+  public long c(int paramInt)
+  {
+    return ((PrinterItemMsgRecord)this.d.e.e.get(paramInt)).uniseq;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a.size();
+    return this.d.e.e.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a.size() > paramInt) {
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a.get(paramInt);
+    if (this.d.e.e.size() > paramInt) {
+      this.d.e.e.get(paramInt);
     }
     return null;
   }
@@ -111,8 +109,8 @@ public class PrinterSessionAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject1;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a.size() > paramInt) {
-      localObject1 = (PrinterItemMsgRecord)this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a.get(paramInt);
+    if (this.d.e.e.size() > paramInt) {
+      localObject1 = (PrinterItemMsgRecord)this.d.e.e.get(paramInt);
     } else {
       localObject1 = null;
     }
@@ -127,24 +125,24 @@ public class PrinterSessionAdapter
     {
       if (paramView == null)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559021, null);
+        paramView = this.b.inflate(2131624655, null);
         localItemHolder = new ItemHolder();
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131371546));
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localItemHolder);
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLongClickable(true);
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setAddStatesFromChildren(true);
-        localItemHolder.b((TextView)paramView.findViewById(2131377850));
-        localObject2 = (RelativeLayout)paramView.findViewById(2131366806);
-        localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject2);
-        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366782));
-        localItemHolder.a().jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366819));
-        localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131366793));
-        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130851161);
-        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
-        localItemHolder.a((TextView)paramView.findViewById(2131365421));
+        localItemHolder.b = ((RelativeLayout)paramView.findViewById(2131438925));
+        localItemHolder.b.setTag(localItemHolder);
+        localItemHolder.b.setClickable(true);
+        localItemHolder.b.setLongClickable(true);
+        localItemHolder.b.setOnClickListener(this.h);
+        localItemHolder.b.setOnLongClickListener(this.e);
+        localItemHolder.b.setAddStatesFromChildren(true);
+        localItemHolder.b((TextView)paramView.findViewById(2131446326));
+        localObject2 = (RelativeLayout)paramView.findViewById(2131433128);
+        localItemHolder.c().m = ((RelativeLayout)localObject2);
+        localItemHolder.c().a = ((AsyncImageView)paramView.findViewById(2131433104));
+        localItemHolder.c().e = ((TextView)paramView.findViewById(2131433141));
+        localItemHolder.c().l = ((ProgressBar)paramView.findViewById(2131433115));
+        localItemHolder.c().a.setDefaultImage(2130853415);
+        localItemHolder.c().a.setIsDrawRound(false);
+        localItemHolder.a((TextView)paramView.findViewById(2131431625));
         paramView.setTag(localItemHolder);
       }
       else
@@ -152,34 +150,34 @@ public class PrinterSessionAdapter
         localItemHolder = (ItemHolder)paramView.getTag();
       }
       localItemHolder.a(localObject1);
-      localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
+      localItemHolder.c().a.setIsDrawRound(false);
       Object localObject2 = FileUtil.a(((PrinterItemMsgRecord)localObject1).filename);
       if (localObject2 == null)
       {
-        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130844437);
+        localItemHolder.c().a.setImageResource(2130845755);
       }
       else
       {
-        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(FileManagerUtil.b((String)localObject2));
-        if (FileManagerUtil.a((String)localObject2) != 0)
+        localItemHolder.c().a.setDefaultImage(FileManagerUtil.i((String)localObject2));
+        if (FileManagerUtil.c((String)localObject2) != 0)
         {
-          i = FileManagerUtil.b((String)localObject2);
+          i = FileManagerUtil.i((String)localObject2);
           if (i != 0) {
-            localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(i);
+            localItemHolder.c().a.setImageResource(i);
           }
         }
         else
         {
-          localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncClipSize(128, 128);
-          localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(((PrinterItemMsgRecord)localObject1).filename);
+          localItemHolder.c().a.setAsyncClipSize(128, 128);
+          localItemHolder.c().a.setAsyncImage(((PrinterItemMsgRecord)localObject1).filename);
         }
       }
       localObject2 = ((PrinterItemMsgRecord)localObject1).filename;
       int i = ((PrinterItemMsgRecord)localObject1).filename.lastIndexOf("/");
       if (i >= 0) {
-        localObject2 = FileManagerUtil.c(((PrinterItemMsgRecord)localObject1).filename.substring(i + 1));
+        localObject2 = FileManagerUtil.j(((PrinterItemMsgRecord)localObject1).filename.substring(i + 1));
       }
-      localItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+      localItemHolder.c().e.setText((CharSequence)localObject2);
       i = ((PrinterItemMsgRecord)localObject1).status;
       if (i != 1)
       {
@@ -190,38 +188,38 @@ public class PrinterSessionAdapter
           default: 
             break;
           case 12: 
-            localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-            localItemHolder.b().setText(2131691367);
+            localItemHolder.c().l.setVisibility(4);
+            localItemHolder.k().setText(2131888322);
             break;
           case 11: 
-            localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-            localItemHolder.b().setText(2131691365);
+            localItemHolder.c().l.setVisibility(4);
+            localItemHolder.k().setText(2131888320);
             break;
           case 10: 
-            localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-            localItemHolder.b().setText(2131691366);
+            localItemHolder.c().l.setVisibility(4);
+            localItemHolder.k().setText(2131888321);
             break;
           }
         }
         else
         {
-          localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-          localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)(((PrinterItemMsgRecord)localObject1).progress * 100.0D));
-          localItemHolder.b().setText(2131691364);
+          localItemHolder.c().l.setVisibility(0);
+          localItemHolder.c().l.setProgress((int)(((PrinterItemMsgRecord)localObject1).progress * 100.0D));
+          localItemHolder.k().setText(2131888319);
         }
       }
       else
       {
-        localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        localItemHolder.b().setText(2131691363);
+        localItemHolder.c().l.setVisibility(0);
+        localItemHolder.k().setText(2131888318);
       }
-      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity.app))
+      if (ThemeUtil.isInNightMode(this.c.app))
       {
-        localObject2 = (ChatBackgroundDrawable)this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity.a.getTag(2131361812);
+        localObject2 = (ChatBackgroundDrawable)this.c.b.getTag(2131427358);
         if (localObject2 != null)
         {
           i = ChatBackground.a(((ChatBackgroundDrawable)localObject2).getBitmap());
-          localItemHolder.a().setTextColor(ColorStateList.valueOf(i));
+          localItemHolder.j().setTextColor(ColorStateList.valueOf(i));
         }
       }
       if (QLog.isDevelopLevel())
@@ -232,7 +230,7 @@ public class PrinterSessionAdapter
         ((StringBuilder)localObject2).append("], uniseq[");
         ((StringBuilder)localObject2).append(((PrinterItemMsgRecord)localObject1).uniseq);
         ((StringBuilder)localObject2).append("], lastShowTime[");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject2).append(this.g);
         ((StringBuilder)localObject2).append("], filename[");
         ((StringBuilder)localObject2).append(((PrinterItemMsgRecord)localObject1).filename);
         ((StringBuilder)localObject2).append("], position[");
@@ -243,13 +241,13 @@ public class PrinterSessionAdapter
       }
       if (a(((PrinterItemMsgRecord)localObject1).uniseq))
       {
-        localObject1 = TimeFormatterUtils.a(this.jdField_a_of_type_ComDatalineActivitiesPrinterActivity, 3, ((PrinterItemMsgRecord)localObject1).time * 1000L);
-        localItemHolder.a().setVisibility(0);
-        localItemHolder.a().setText((CharSequence)localObject1);
+        localObject1 = TimeFormatterUtils.a(this.c, 3, ((PrinterItemMsgRecord)localObject1).time * 1000L);
+        localItemHolder.j().setVisibility(0);
+        localItemHolder.j().setText((CharSequence)localObject1);
       }
       else
       {
-        localItemHolder.a().setVisibility(8);
+        localItemHolder.j().setVisibility(8);
       }
       localObject1 = paramView;
     }

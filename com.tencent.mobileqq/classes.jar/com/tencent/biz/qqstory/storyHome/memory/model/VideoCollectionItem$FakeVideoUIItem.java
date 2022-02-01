@@ -5,22 +5,21 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class VideoCollectionItem$FakeVideoUIItem
 {
-  public StoryVideoItem a;
   public String a;
-  public boolean a;
-  public boolean b = true;
+  public StoryVideoItem b;
+  public boolean c = false;
+  public boolean d = true;
   
   public VideoCollectionItem$FakeVideoUIItem(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    this.a = paramString;
+    this.b = paramStoryVideoItem;
   }
   
   public boolean equals(Object paramObject)
   {
     if ((paramObject instanceof FakeVideoUIItem)) {
-      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((FakeVideoUIItem)paramObject).jdField_a_of_type_JavaLangString);
+      return TextUtils.equals(this.a, ((FakeVideoUIItem)paramObject).a);
     }
     return false;
   }

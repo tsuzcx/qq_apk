@@ -23,14 +23,14 @@ class FollowImageTextView$FirstTextView
     Object localObject = getPaint();
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
-    localObject = FollowImageTextView.a(this.a);
-    ((FollowImageTextView.TextLineHelper)localObject).a(FollowImageTextView.a(this.a) - 1);
+    localObject = FollowImageTextView.b(this.a);
+    ((FollowImageTextView.TextLineHelper)localObject).a(FollowImageTextView.c(this.a) - 1);
     ((FollowImageTextView.TextLineHelper)localObject).a(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FollowImageTextView.FirstTextView
  * JD-Core Version:    0.7.0.1
  */

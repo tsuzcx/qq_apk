@@ -16,7 +16,7 @@ class TroopMemberListActivity$48
   public void onClick(View paramView)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString(VasH5PayUtil.e, HardCodeUtil.a(2131715386));
+    localBundle.putString(VasH5PayUtil.e, HardCodeUtil.a(2131912865));
     localBundle.putString(VasH5PayUtil.f, "CJCLUBT");
     localBundle.putString(VasH5PayUtil.d, "1450000516");
     localBundle.putInt(VasH5PayUtil.b, 3);
@@ -33,7 +33,7 @@ class TroopMemberListActivity$48
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.48
  * JD-Core Version:    0.7.0.1
  */

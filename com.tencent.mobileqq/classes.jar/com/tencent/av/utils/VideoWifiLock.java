@@ -6,46 +6,46 @@ import android.net.wifi.WifiManager.WifiLock;
 
 public class VideoWifiLock
 {
-  int jdField_a_of_type_Int = 0;
-  Context jdField_a_of_type_AndroidContentContext = null;
-  WifiManager.WifiLock jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
-  String jdField_a_of_type_JavaLangString = null;
+  Context a = null;
+  int b = 0;
+  String c = null;
+  WifiManager.WifiLock d = null;
   
   public VideoWifiLock(Context paramContext, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    if (b())
-    {
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.release();
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
-    }
+    this.a = paramContext;
+    this.b = paramInt;
+    this.c = paramString;
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock == null) {
-      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = ((WifiManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("wifi")).createWifiLock(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (this.d == null) {
+      this.d = ((WifiManager)this.a.getSystemService("wifi")).createWifiLock(this.b, this.c);
     }
-    WifiManager.WifiLock localWifiLock = this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock;
+    WifiManager.WifiLock localWifiLock = this.d;
     if (localWifiLock != null)
     {
       if (!localWifiLock.isHeld()) {
-        this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.acquire();
+        this.d.acquire();
       }
       return true;
     }
     return false;
   }
   
-  public boolean b()
+  public void b()
   {
-    WifiManager.WifiLock localWifiLock = this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock;
+    if (c())
+    {
+      this.d.release();
+      this.d = null;
+    }
+  }
+  
+  public boolean c()
+  {
+    WifiManager.WifiLock localWifiLock = this.d;
     return (localWifiLock != null) && (localWifiLock.isHeld());
   }
 }

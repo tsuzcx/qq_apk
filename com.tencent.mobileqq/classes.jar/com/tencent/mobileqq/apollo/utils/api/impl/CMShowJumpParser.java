@@ -13,15 +13,15 @@ public class CMShowJumpParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new CMShowJumpAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "shop";
-    paramBaseQQAppInterface.c = "apollo_store";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "shop";
+    paramBaseQQAppInterface.e = "apollo_store";
     return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.CMShowJumpParser
  * JD-Core Version:    0.7.0.1
  */

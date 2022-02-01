@@ -11,7 +11,7 @@ class WSDramaDataManager$1
   
   public void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    IFetchDataRspListener localIFetchDataRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+    IFetchDataRspListener localIFetchDataRspListener = this.a;
     if (localIFetchDataRspListener != null) {
       localIFetchDataRspListener.a(paramInt, paramString, paramBoolean1, paramBoolean2);
     }
@@ -19,8 +19,8 @@ class WSDramaDataManager$1
   
   public void a(List<WSDramaItemData> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
-    WSDramaDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataManager).a(paramList);
-    IFetchDataRspListener localIFetchDataRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+    WSDramaDataManager.a(this.b).a(paramList);
+    IFetchDataRspListener localIFetchDataRspListener = this.a;
     if (localIFetchDataRspListener != null) {
       localIFetchDataRspListener.a(paramList, paramBoolean1, paramBoolean2, paramObject);
     }
@@ -28,7 +28,7 @@ class WSDramaDataManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaDataManager.1
  * JD-Core Version:    0.7.0.1
  */

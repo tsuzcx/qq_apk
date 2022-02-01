@@ -14,13 +14,13 @@ class FunBtnUI$1
   
   public void onClick(View paramView)
   {
-    FunBtnUI.a(this.a).a().a().a();
+    FunBtnUI.a(this.a).p().a().a();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.input.FunBtnUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -32,12 +32,12 @@ public class AVGamePosterView
   extends RelativeLayout
 {
   protected ImageView a;
-  protected LinearLayout a;
-  private AVGamePosterCoverView jdField_a_of_type_ComTencentAvgameUiAVGamePosterCoverView;
-  private IGamePosterView jdField_a_of_type_ComTencentAvgameUiIGamePosterView;
-  private ImageView b;
+  protected LinearLayout b;
   private ImageView c;
-  private ImageView d;
+  private IGamePosterView d;
+  private ImageView e;
+  private ImageView f;
+  private AVGamePosterCoverView g;
   
   public AVGamePosterView(Context paramContext)
   {
@@ -56,7 +56,7 @@ public class AVGamePosterView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private HashMap<String, String> a(UserInfoHandler paramUserInfoHandler, CopyOnWriteArrayList<UserScore> paramCopyOnWriteArrayList)
+  private HashMap<String, String> b(UserInfoHandler paramUserInfoHandler, CopyOnWriteArrayList<UserScore> paramCopyOnWriteArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     paramCopyOnWriteArrayList = paramCopyOnWriteArrayList.iterator();
@@ -66,7 +66,7 @@ public class AVGamePosterView
     return paramUserInfoHandler.a(localArrayList);
   }
   
-  private boolean b(String paramString)
+  private boolean c(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return false;
@@ -77,61 +77,43 @@ public class AVGamePosterView
       if (paramString.isRecycled()) {
         return false;
       }
-      this.c.setImageBitmap(paramString);
+      this.e.setImageBitmap(paramString);
       return true;
     }
     return false;
   }
   
-  public String a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(UUID.randomUUID().toString());
-    ((StringBuilder)localObject).append(".png");
-    localObject = ((StringBuilder)localObject).toString();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_TMP_PATH);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append((String)localObject);
-    return localStringBuilder.toString();
-  }
-  
   protected void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131558662, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372976));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372986));
-    this.c = ((ImageView)findViewById(2131372985));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterCoverView = ((AVGamePosterCoverView)findViewById(2131372978));
-    this.b = ((ImageView)findViewById(2131372983));
-    this.d = ((ImageView)findViewById(2131372984));
-    Bitmap localBitmap = AVGameUtil.a("avgame_poster_bg@2x.png");
+    LayoutInflater.from(getContext()).inflate(2131624279, this);
+    this.b = ((LinearLayout)findViewById(2131440545));
+    this.a = ((ImageView)findViewById(2131440555));
+    this.e = ((ImageView)findViewById(2131440554));
+    this.g = ((AVGamePosterCoverView)findViewById(2131440547));
+    this.c = ((ImageView)findViewById(2131440552));
+    this.f = ((ImageView)findViewById(2131440553));
+    Bitmap localBitmap = AVGameUtil.c("avgame_poster_bg@2x.png");
     if (localBitmap != null) {
-      this.d.setImageDrawable(new BitmapDrawable(localBitmap));
+      this.f.setImageDrawable(new BitmapDrawable(localBitmap));
     }
-    int i = ViewUtils.a(150.0F);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterCoverView.setAsyncClipSize(i, i);
-  }
-  
-  public void a(String paramString)
-  {
-    UiThreadUtil.a(new AVGamePosterView.1(this, paramString));
+    int i = ViewUtils.dip2px(150.0F);
+    this.g.setAsyncClipSize(i, i);
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterCoverView != null)
+    if (this.g != null)
     {
       if (!TextUtils.isEmpty(paramString1))
       {
-        this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterCoverView.setAsyncImage(paramString1);
+        this.g.setAsyncImage(paramString1);
         return;
       }
       if (paramString2 != null)
       {
-        paramString1 = AVGameUtil.a(paramString2);
+        paramString1 = AVGameUtil.c(paramString2);
         if (paramString1 != null) {
-          this.jdField_a_of_type_ComTencentAvgameUiAVGamePosterCoverView.setImageBitmap(paramString1);
+          this.g.setImageBitmap(paramString1);
         }
       }
     }
@@ -144,18 +126,18 @@ public class AVGamePosterView
       if (paramCopyOnWriteArrayList == null) {
         return false;
       }
-      HashMap localHashMap = a(paramUserInfoHandler, paramCopyOnWriteArrayList);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      HashMap localHashMap = b(paramUserInfoHandler, paramCopyOnWriteArrayList);
+      this.b.removeAllViews();
       int i = 0;
       while (i < paramCopyOnWriteArrayList.size())
       {
         UserScore localUserScore = (UserScore)paramCopyOnWriteArrayList.get(i);
         try
         {
-          View localView = LayoutInflater.from(getContext()).inflate(2131558690, null);
+          View localView = LayoutInflater.from(getContext()).inflate(2131624307, null);
           Object localObject1 = paramUserInfoHandler.a(String.valueOf(localUserScore.uin), (byte)3);
-          ((ImageView)localView.findViewById(2131363290)).setImageBitmap((Bitmap)localObject1);
-          TextView localTextView = (TextView)localView.findViewById(2131363289);
+          ((ImageView)localView.findViewById(2131429164)).setImageBitmap((Bitmap)localObject1);
+          TextView localTextView = (TextView)localView.findViewById(2131429163);
           Object localObject2 = (String)localHashMap.get(String.valueOf(localUserScore.uin));
           localObject1 = localObject2;
           if (TextUtils.isEmpty((CharSequence)localObject2))
@@ -167,14 +149,14 @@ public class AVGamePosterView
             localObject1 = String.valueOf(localUserScore.uin);
           }
           localTextView.setText((CharSequence)localObject1);
-          ((TextView)localView.findViewById(2131363286)).setText(String.valueOf(localUserScore.score));
-          localObject2 = (TextView)localView.findViewById(2131363269);
+          ((TextView)localView.findViewById(2131429160)).setText(String.valueOf(localUserScore.score));
+          localObject2 = (TextView)localView.findViewById(2131429143);
           ((TextView)localObject2).setText(String.valueOf(i + 1));
-          localObject1 = (ImageView)localView.findViewById(2131363270);
+          localObject1 = (ImageView)localView.findViewById(2131429144);
           if (i == 0)
           {
             ((TextView)localObject2).setVisibility(8);
-            localObject2 = AVGameUtil.a("avgame_ranking1@2x.png");
+            localObject2 = AVGameUtil.c("avgame_ranking1@2x.png");
             if (localObject2 != null) {
               ((ImageView)localObject1).setImageBitmap((Bitmap)localObject2);
             }
@@ -183,7 +165,7 @@ public class AVGamePosterView
           else if (i == 1)
           {
             ((TextView)localObject2).setVisibility(8);
-            localObject2 = AVGameUtil.a("avgame_ranking2@2x.png");
+            localObject2 = AVGameUtil.c("avgame_ranking2@2x.png");
             if (localObject2 != null) {
               ((ImageView)localObject1).setImageBitmap((Bitmap)localObject2);
             }
@@ -192,18 +174,18 @@ public class AVGamePosterView
           else if (i == 2)
           {
             ((TextView)localObject2).setVisibility(8);
-            localObject2 = AVGameUtil.a("avgame_ranking3@2x.png");
+            localObject2 = AVGameUtil.c("avgame_ranking3@2x.png");
             if (localObject2 != null) {
               ((ImageView)localObject1).setImageBitmap((Bitmap)localObject2);
             }
             ((ImageView)localObject1).setVisibility(0);
           }
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
+          this.b.addView(localView);
         }
         catch (Exception localException)
         {
-          label379:
-          break label379;
+          label375:
+          break label375;
         }
         QLog.e("AVGamePosterView", 2, "onGetGameRankingListSuc exception!");
         i += 1;
@@ -218,7 +200,25 @@ public class AVGamePosterView
   
   public boolean a(String paramString)
   {
-    return b(paramString);
+    return c(paramString);
+  }
+  
+  public String b()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(UUID.randomUUID().toString());
+    ((StringBuilder)localObject).append(".png");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_TMP_PATH);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
+  }
+  
+  public void b(String paramString)
+  {
+    UiThreadUtil.a(new AVGamePosterView.1(this, paramString));
   }
   
   public void setContentAndTitleView(int paramInt)
@@ -247,19 +247,19 @@ public class AVGamePosterView
     else {
       localObject = "avgame_poster_mosaic_title@2x.png";
     }
-    Object localObject = AVGameUtil.a((String)localObject);
+    Object localObject = AVGameUtil.c((String)localObject);
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+      this.a.setImageBitmap((Bitmap)localObject);
     }
-    localObject = AVGameUtil.a(str);
+    localObject = AVGameUtil.c(str);
     if (localObject != null) {
-      this.b.setImageDrawable(new BitmapDrawable((Bitmap)localObject));
+      this.c.setImageDrawable(new BitmapDrawable((Bitmap)localObject));
     }
   }
   
   public void setPresenter(IGamePosterView paramIGamePosterView)
   {
-    this.jdField_a_of_type_ComTencentAvgameUiIGamePosterView = paramIGamePosterView;
+    this.d = paramIGamePosterView;
   }
 }
 

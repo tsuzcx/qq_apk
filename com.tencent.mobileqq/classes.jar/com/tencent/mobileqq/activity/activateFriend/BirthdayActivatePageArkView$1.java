@@ -29,13 +29,13 @@ class BirthdayActivatePageArkView$1
         QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
       }
       this.a.a(false);
-      BirthdayActivatePageArkView.a(this.a).setText(HardCodeUtil.a(2131701369));
+      BirthdayActivatePageArkView.a(this.a).setText(HardCodeUtil.a(2131899379));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView.1
  * JD-Core Version:    0.7.0.1
  */

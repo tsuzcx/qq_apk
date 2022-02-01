@@ -23,13 +23,13 @@ public final class RIJSocialBottomUtils$CommentAndLikeCallBack
   implements ReadInJoyCommentDataManager.OnDataChangeListener
 {
   @Nullable
-  private ReadInJoyFastWebBottomSocialViewNew jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew;
+  private String a;
   @Nullable
-  private final AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private ReadInJoyFastWebBottomSocialViewNew b;
   @Nullable
-  private FastWebArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
+  private final AbsBaseArticleInfo c;
   @Nullable
-  private String jdField_a_of_type_JavaLangString;
+  private FastWebArticleInfo d;
   
   public RIJSocialBottomUtils$CommentAndLikeCallBack()
   {
@@ -38,15 +38,15 @@ public final class RIJSocialBottomUtils$CommentAndLikeCallBack
   
   public RIJSocialBottomUtils$CommentAndLikeCallBack(@Nullable String paramString, @Nullable ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, @Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo, @Nullable FastWebArticleInfo paramFastWebArticleInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew = paramReadInJoyFastWebBottomSocialViewNew;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo = paramFastWebArticleInfo;
+    this.a = paramString;
+    this.b = paramReadInJoyFastWebBottomSocialViewNew;
+    this.c = paramAbsBaseArticleInfo;
+    this.d = paramFastWebArticleInfo;
   }
   
   public final void a(@Nullable ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew = paramReadInJoyFastWebBottomSocialViewNew;
+    this.b = paramReadInJoyFastWebBottomSocialViewNew;
   }
   
   public void a(boolean paramBoolean, @Nullable String paramString)
@@ -57,16 +57,16 @@ public final class RIJSocialBottomUtils$CommentAndLikeCallBack
     ((StringBuilder)localObject).append(", rowKey=");
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(", articleRowkey=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     QLog.d("RIJSocialBottomUtils", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_JavaLangString;
-    if ((localObject != null) && (StringsKt.equals((String)localObject, paramString, true)) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew != null))
+    localObject = this.a;
+    if ((localObject != null) && (StringsKt.equals((String)localObject, paramString, true)) && (this.b != null))
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
+      paramString = this.d;
       if (paramString != null) {
-        paramString.a = paramBoolean;
+        paramString.h = paramBoolean;
       }
-      RIJSocialBottomUtils.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo);
+      RIJSocialBottomUtils.a.a(this.c, this.d);
     }
   }
   
@@ -97,16 +97,16 @@ public final class RIJSocialBottomUtils$CommentAndLikeCallBack
   public void onCommentListLoad(int paramInt1, boolean paramBoolean1, @NotNull List<? extends CommentViewItem> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "totalCommentDataList");
-    paramList = ReadInJoyCommentDataManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    paramList = ReadInJoyCommentDataManager.a(this.c);
     QLog.d("RIJSocialBottomUtils", 1, "onCommentListLoad back! ");
     if (paramList != null)
     {
-      long l = paramList.a();
-      paramList = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
+      long l = paramList.h();
+      paramList = this.d;
       if (paramList != null) {
-        paramList.b = l;
+        paramList.d = l;
       }
-      RIJSocialBottomUtils.a.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo);
+      RIJSocialBottomUtils.a.a(this.c, this.d);
       paramList = new StringBuilder();
       paramList.append("onCommentListLoad back!  count=");
       paramList.append(l);
@@ -134,7 +134,7 @@ public final class RIJSocialBottomUtils$CommentAndLikeCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils.CommentAndLikeCallBack
  * JD-Core Version:    0.7.0.1
  */

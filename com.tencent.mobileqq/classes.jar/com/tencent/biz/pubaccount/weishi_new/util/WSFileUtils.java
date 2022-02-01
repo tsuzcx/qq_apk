@@ -8,14 +8,6 @@ import com.tencent.mobileqq.utils.FileUtils;
 
 public class WSFileUtils
 {
-  public static <T extends JceStruct> T a(T paramT, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return a(paramT, FileUtils.readFile(paramString));
-  }
-  
   public static <T extends JceStruct> T a(T paramT, byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte != null)
@@ -58,11 +50,13 @@ public class WSFileUtils
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[WSFileUtils.java][saveDataToFile] path:");
         localStringBuilder.append(paramString);
-        localStringBuilder.append(", writeSuccess:");
-        localStringBuilder.append(bool1);
-        localStringBuilder.append(", bytesLength:");
-        localStringBuilder.append(paramJceStruct.length);
-        WSLog.d("WSFileUtils", localStringBuilder.toString());
+        WSLog.a("WSFileUtils", localStringBuilder.toString());
+        paramString = new StringBuilder();
+        paramString.append("[WSFileUtils.java][saveDataToFile] writeSuccess:");
+        paramString.append(bool1);
+        paramString.append(", bytesLength:");
+        paramString.append(paramJceStruct.length);
+        WSLog.d("WSFileUtils", paramString.toString());
       }
     }
     return bool1;
@@ -86,10 +80,18 @@ public class WSFileUtils
     }
     return null;
   }
+  
+  public static <T extends JceStruct> T b(T paramT, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return a(paramT, FileUtils.readFile(paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSFileUtils
  * JD-Core Version:    0.7.0.1
  */

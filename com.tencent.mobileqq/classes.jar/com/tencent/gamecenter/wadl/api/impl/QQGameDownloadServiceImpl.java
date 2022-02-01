@@ -98,10 +98,10 @@ public class QQGameDownloadServiceImpl
     launchService();
     localObject = new Bundle();
     ((Bundle)localObject).putString("WADL.REMOTE_NOTIFY_CMD_NAME", "doDownloadAction");
-    ((Bundle)localObject).putString("appId", paramWadlParams.jdField_a_of_type_JavaLangString);
-    ((Bundle)localObject).putInt("actionFrom", paramWadlParams.d);
+    ((Bundle)localObject).putString("appId", paramWadlParams.e);
+    ((Bundle)localObject).putInt("actionFrom", paramWadlParams.h);
     ((Bundle)localObject).putParcelable("download_wadl_params", paramWadlParams);
-    if (paramWadlParams.jdField_a_of_type_Boolean)
+    if (paramWadlParams.b)
     {
       this.mWadlProxyServiceManager.a((Bundle)localObject);
       return;
@@ -122,8 +122,8 @@ public class QQGameDownloadServiceImpl
     localObject = new Bundle();
     ((Bundle)localObject).putString("WADL.REMOTE_NOTIFY_CMD_NAME", "doInstallAction");
     ((Bundle)localObject).putParcelable("download_wadl_params", paramWadlParams);
-    ((Bundle)localObject).putString("appId", paramWadlParams.jdField_a_of_type_JavaLangString);
-    ((Bundle)localObject).putInt("actionFrom", paramWadlParams.d);
+    ((Bundle)localObject).putString("appId", paramWadlParams.e);
+    ((Bundle)localObject).putInt("actionFrom", paramWadlParams.h);
     this.mWadlProxyServiceManager.a((Bundle)localObject);
   }
   
@@ -344,57 +344,14 @@ public class QQGameDownloadServiceImpl
     if (TextUtils.isEmpty(paramIntent))
     {
       i = k;
-      paramIntent = localWadlParams.jdField_a_of_type_JavaLangString;
+      paramIntent = localWadlParams.e;
     }
     i = k;
-    localWadlParams.jdField_a_of_type_JavaLangString = paramIntent;
+    localWadlParams.e = paramIntent;
     i = k;
     if (!TextUtils.isEmpty(str3))
     {
       paramIntent = str3;
-    }
-    else
-    {
-      i = k;
-      paramIntent = localWadlParams.jdField_e_of_type_JavaLangString;
-    }
-    i = k;
-    localWadlParams.jdField_e_of_type_JavaLangString = paramIntent;
-    i = k;
-    if (!TextUtils.isEmpty(str2))
-    {
-      paramIntent = str2;
-    }
-    else
-    {
-      i = k;
-      paramIntent = localWadlParams.f;
-    }
-    i = k;
-    localWadlParams.f = paramIntent;
-    if (j <= 0)
-    {
-      i = k;
-      j = localWadlParams.jdField_e_of_type_Int;
-    }
-    i = k;
-    localWadlParams.jdField_e_of_type_Int = j;
-    i = k;
-    if (!TextUtils.isEmpty(str1))
-    {
-      paramIntent = str1;
-    }
-    else
-    {
-      i = k;
-      paramIntent = localWadlParams.j;
-    }
-    i = k;
-    localWadlParams.j = paramIntent;
-    i = k;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      paramIntent = (Intent)localObject;
     }
     else
     {
@@ -404,6 +361,49 @@ public class QQGameDownloadServiceImpl
     i = k;
     localWadlParams.k = paramIntent;
     i = k;
+    if (!TextUtils.isEmpty(str2))
+    {
+      paramIntent = str2;
+    }
+    else
+    {
+      i = k;
+      paramIntent = localWadlParams.m;
+    }
+    i = k;
+    localWadlParams.m = paramIntent;
+    if (j <= 0)
+    {
+      i = k;
+      j = localWadlParams.l;
+    }
+    i = k;
+    localWadlParams.l = j;
+    i = k;
+    if (!TextUtils.isEmpty(str1))
+    {
+      paramIntent = str1;
+    }
+    else
+    {
+      i = k;
+      paramIntent = localWadlParams.u;
+    }
+    i = k;
+    localWadlParams.u = paramIntent;
+    i = k;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramIntent = (Intent)localObject;
+    }
+    else
+    {
+      i = k;
+      paramIntent = localWadlParams.v;
+    }
+    i = k;
+    localWadlParams.v = paramIntent;
+    i = k;
     if (!TextUtils.isEmpty(paramString))
     {
       paramIntent = paramString;
@@ -411,12 +411,12 @@ public class QQGameDownloadServiceImpl
     else
     {
       i = k;
-      paramIntent = localWadlParams.c;
+      paramIntent = localWadlParams.i;
     }
     i = k;
-    localWadlParams.c = paramIntent;
+    localWadlParams.i = paramIntent;
     i = k;
-    localWadlParams.b = str4;
+    localWadlParams.f = str4;
     i = k;
     j = paramJSONObject.optInt("quic_flag", 0);
     i = j;
@@ -427,24 +427,24 @@ public class QQGameDownloadServiceImpl
     j = i;
     i = k;
     label586:
-    if (TextUtils.isEmpty(localWadlParams.j)) {
-      localWadlParams.j = localWadlParams.f;
+    if (TextUtils.isEmpty(localWadlParams.u)) {
+      localWadlParams.u = localWadlParams.m;
     }
     k = 1;
     if (j == 1)
     {
-      localWadlParams.b(256);
+      localWadlParams.c(256);
       if (i < 1) {
         i = k;
       }
-      localWadlParams.i = i;
+      localWadlParams.D = i;
     }
     else
     {
-      localWadlParams.a(256);
+      localWadlParams.b(256);
     }
     localBundle.putParcelable("download_wadl_params", localWadlParams);
-    GameCenterSpUtils.a("WADL_SP_GROUP_APPINFO", localWadlParams.f, localWadlParams.jdField_a_of_type_JavaLangString);
+    GameCenterSpUtils.a("WADL_SP_GROUP_APPINFO", localWadlParams.m, localWadlParams.e);
     if (!this.isRelease.get()) {
       this.mWadlProxyServiceManager.a(localBundle);
     }
@@ -464,7 +464,7 @@ public class QQGameDownloadServiceImpl
   {
     QLog.i("Wadl_QQGameDownloadServiceImpl", 1, "onDestroy");
     ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).removeListener(this);
-    this.mWadlProxyServiceManager.c();
+    this.mWadlProxyServiceManager.d();
     this.isRelease.set(true);
   }
   
@@ -512,7 +512,7 @@ public class QQGameDownloadServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.QQGameDownloadServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -17,32 +17,32 @@ class VasHttpDownloaderImpl$2
       if (paramDownloadTask == null) {
         return;
       }
-      int i = paramDownloadTask.a();
+      int i = paramDownloadTask.e();
       int j = 0;
-      if ((i == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0)) {
+      if ((i == 3) && (paramDownloadTask.c == 0)) {
         i = 1;
       } else {
         i = 0;
       }
-      Object localObject = paramDownloadTask.a();
+      Object localObject = paramDownloadTask.b();
       if ((localObject != null) && (((Bundle)localObject).getString("from") != null) && (((Bundle)localObject).getString("from").contains("silent_download"))) {
-        VasHttpDownloaderImpl.a(this.a, paramDownloadTask.c, paramDownloadTask.jdField_a_of_type_Long);
+        VasHttpDownloaderImpl.a(this.a, paramDownloadTask.h, paramDownloadTask.j);
       }
       localObject = VasHttpDownloaderImpl.a(this.a);
-      String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
+      String str = paramDownloadTask.b;
       if (i != 0) {
         i = j;
       } else {
         i = 8;
       }
-      ((IDownloadListener)localObject).onCompleted(str, i, paramDownloadTask.jdField_a_of_type_Int, paramDownloadTask.jdField_b_of_type_JavaLangString);
+      ((IDownloadListener)localObject).onCompleted(str, i, paramDownloadTask.c, paramDownloadTask.d);
     }
   }
   
   public void onProgress(DownloadTask paramDownloadTask)
   {
     if ((VasHttpDownloaderImpl.a(this.a) != null) && (paramDownloadTask != null)) {
-      VasHttpDownloaderImpl.a(this.a).onProgress(paramDownloadTask.jdField_a_of_type_JavaLangString, paramDownloadTask.jdField_b_of_type_Long, paramDownloadTask.jdField_a_of_type_Long, (int)paramDownloadTask.jdField_a_of_type_Float);
+      VasHttpDownloaderImpl.a(this.a).onProgress(paramDownloadTask.b, paramDownloadTask.k, paramDownloadTask.j, (int)paramDownloadTask.l);
     }
   }
   
@@ -52,14 +52,14 @@ class VasHttpDownloaderImpl$2
       return false;
     }
     if (VasHttpDownloaderImpl.a(this.a) != null) {
-      VasHttpDownloaderImpl.a(this.a).onDownloadStart(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      VasHttpDownloaderImpl.a(this.a).onDownloadStart(paramDownloadTask.b);
     }
     return super.onStart(paramDownloadTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasHttpDownloaderImpl.2
  * JD-Core Version:    0.7.0.1
  */

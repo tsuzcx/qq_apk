@@ -14,14 +14,14 @@ public class TofuProxy
     return TofuProxy.SHolder.a();
   }
   
-  private static void a() {}
+  private static void b() {}
   
   @NonNull
   public CopyOnWriteArrayList<TofuLimitMsg> a(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString)
   {
     try
     {
-      a();
+      b();
       CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
       try
       {
@@ -43,7 +43,7 @@ public class TofuProxy
   {
     try
     {
-      a();
+      b();
       try
       {
         paramQQAppInterface.getEntityManagerFactory().createEntityManager().persistOrReplace(paramTofuLimitMsg);
@@ -59,7 +59,7 @@ public class TofuProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuProxy
  * JD-Core Version:    0.7.0.1
  */

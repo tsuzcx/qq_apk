@@ -17,13 +17,13 @@ class ReceiptMsgManager$1
   
   public void run()
   {
-    this.this$0.a.voiceLength = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).msToSec(this.jdField_a_of_type_Int);
+    this.this$0.a.voiceLength = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).msToSec(this.a);
     this.this$0.a.voiceChangeFlag = this.b;
-    this.this$0.a.voiceType = this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.c;
-    this.this$0.a.fullLocalPath = this.jdField_a_of_type_JavaLangString;
+    this.this$0.a.voiceType = this.c.c;
+    this.this$0.a.fullLocalPath = this.d;
     Object localObject = this.this$0.a;
     boolean bool;
-    if (this.c == 4) {
+    if (this.e == 4) {
       bool = true;
     } else {
       bool = false;
@@ -31,17 +31,17 @@ class ReceiptMsgManager$1
     ((MessageForPtt)localObject).sendFromvoiceChangePanelFlag = bool;
     localObject = new ArrayList(1);
     ((ArrayList)localObject).add(this.this$0.a);
-    ((IPttBuffer)QRoute.api(IPttBuffer.class)).flush(this.jdField_a_of_type_JavaLangString);
+    ((IPttBuffer)QRoute.api(IPttBuffer.class)).flush(this.d);
     Bundle localBundle = new Bundle();
-    localBundle.putString("ReceiptMsgManager.EXTRA_KEY_PTT_PATH", this.jdField_a_of_type_JavaLangString);
-    localBundle.putInt("ReceiptMsgManager.EXTRA_KEY_PTT_SEND_SOURCE", this.c);
-    localBundle.putBoolean("ReceiptMsgManager.EXTRA_KEY_PTT_COMPRESS_FINISHED", this.jdField_a_of_type_Boolean);
-    ReceiptMsgManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, ReceiptMsgManager.a(this.this$0, 3), false, (ArrayList)localObject, localBundle);
+    localBundle.putString("ReceiptMsgManager.EXTRA_KEY_PTT_PATH", this.d);
+    localBundle.putInt("ReceiptMsgManager.EXTRA_KEY_PTT_SEND_SOURCE", this.e);
+    localBundle.putBoolean("ReceiptMsgManager.EXTRA_KEY_PTT_COMPRESS_FINISHED", this.f);
+    ReceiptMsgManager.a(this.this$0, this.g, this.h.b, this.h.a, this.h.c, ReceiptMsgManager.a(this.this$0, 3), false, (ArrayList)localObject, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMsgManager.1
  * JD-Core Version:    0.7.0.1
  */

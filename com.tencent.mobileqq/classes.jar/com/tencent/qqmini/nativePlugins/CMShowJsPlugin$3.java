@@ -17,7 +17,7 @@ class CMShowJsPlugin$3
     {
       paramJSONObject = new JSONObject(paramJSONObject.optString("result_data"));
       QLog.i("CMShowJsPlugin", 1, "pre-resultData ready");
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
         if (CMShowJsPlugin.a())
         {
@@ -25,10 +25,10 @@ class CMShowJsPlugin$3
           return;
         }
         CMShowJsPlugin.a(true);
-        CMShowKitFileManager.a(paramJSONObject, CMShowJsPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsCMShowJsPlugin), new CMShowJsPlugin.3.1(this, paramJSONObject));
+        CMShowKitFileManager.a(paramJSONObject, CMShowJsPlugin.b(this.c), new CMShowJsPlugin.3.1(this, paramJSONObject));
         return;
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramJSONObject);
+      this.b.ok(paramJSONObject);
       return;
     }
     catch (Throwable paramJSONObject)
@@ -36,19 +36,19 @@ class CMShowJsPlugin$3
       label88:
       break label88;
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
+    this.b.fail();
     return;
     if (paramJSONObject != null) {
       paramJSONObject = paramJSONObject.optString("errMsg");
     } else {
       paramJSONObject = "";
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramJSONObject);
+    this.b.fail(paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.CMShowJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

@@ -24,10 +24,10 @@ class TroopRequestActivity$19
     if (localObject1 != null)
     {
       Object localObject2 = this.a;
-      ((ITroopSysMsgDependApiService)localObject1).openProfileCardForTroopSysMsg((Context)localObject2, TroopRequestActivity.a((TroopRequestActivity)localObject2), this.a.a.msg.group_code.get(), this.a.a.msg.action_uin.get(), this.a.b, this.a.a.msg.sub_type.get(), true);
+      ((ITroopSysMsgDependApiService)localObject1).openProfileCardForTroopSysMsg((Context)localObject2, TroopRequestActivity.d((TroopRequestActivity)localObject2), this.a.W.msg.group_code.get(), this.a.W.msg.action_uin.get(), this.a.b, this.a.W.msg.sub_type.get(), true);
       localObject1 = TroopRequestActivity.a(this.a);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.a.a.msg.group_code.get());
+      ((StringBuilder)localObject2).append(this.a.W.msg.group_code.get());
       ((StringBuilder)localObject2).append("");
       ReportController.b((AppRuntime)localObject1, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, ((StringBuilder)localObject2).toString(), "3", "", "");
     }
@@ -36,7 +36,7 @@ class TroopRequestActivity$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.19
  * JD-Core Version:    0.7.0.1
  */

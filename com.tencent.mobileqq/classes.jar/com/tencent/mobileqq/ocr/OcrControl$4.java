@@ -14,7 +14,7 @@ class OcrControl$4
   public void run()
   {
     long l1 = new File(this.a.a).length() / 1024L;
-    long l2 = new File(this.a.b).length() / 1024L;
+    long l2 = new File(this.a.e).length() / 1024L;
     HashMap localHashMap = new HashMap();
     localHashMap.put("ocrFilesize", String.valueOf(l1));
     localHashMap.put("previewFilesize", String.valueOf(l2));
@@ -23,7 +23,7 @@ class OcrControl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.4
  * JD-Core Version:    0.7.0.1
  */

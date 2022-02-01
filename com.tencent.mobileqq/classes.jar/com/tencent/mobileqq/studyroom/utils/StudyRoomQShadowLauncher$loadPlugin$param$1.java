@@ -19,20 +19,20 @@ final class StudyRoomQShadowLauncher$loadPlugin$param$1
     QLog.i("studyroom.QShadowLauncher", 1, localStringBuilder.toString());
     if (paramBoolean)
     {
-      StudyRoomQShadowLauncher.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUtilsStudyRoomQShadowLauncher, 5, null, null, null, null, 30, null);
-      StudyRoomQShadowLauncher.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUtilsStudyRoomQShadowLauncher, 0);
+      StudyRoomQShadowLauncher.a(this.a, 5, null, null, null, null, 30, null);
+      StudyRoomQShadowLauncher.a(this.a, 0);
     }
     else
     {
-      StudyRoomQShadowLauncher.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUtilsStudyRoomQShadowLauncher, 4, "加载失败，请重试!", "请检查网络设置后重试", "重新加载", null, 16, null);
-      StudyRoomQShadowLauncher.a(this.jdField_a_of_type_ComTencentMobileqqStudyroomUtilsStudyRoomQShadowLauncher, 5);
+      StudyRoomQShadowLauncher.a(this.a, 4, "加载失败，请重试!", "请检查网络设置后重试", "重新加载", null, 16, null);
+      StudyRoomQShadowLauncher.a(this.a, 5);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.b.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomQShadowLauncher.loadPlugin.param.1
  * JD-Core Version:    0.7.0.1
  */

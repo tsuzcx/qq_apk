@@ -1,25 +1,26 @@
 package com.tencent.qcircle.shadow.core.runtime.qcircle.container;
 
 import android.os.SystemClock;
+import java.util.HashMap;
 
 public class DelegateProviderHolder
 {
-  private static DelegateProvider delegateProvider;
-  public static long sCustomPid = ;
+  public static long sCustomPid = SystemClock.elapsedRealtime();
+  private static HashMap<String, DelegateProvider> sDelegateMap = new HashMap();
   
-  public static DelegateProvider getDelegateProvider()
+  public static DelegateProvider getDelegateProvider(String paramString)
   {
-    return delegateProvider;
+    return (DelegateProvider)sDelegateMap.get(paramString);
   }
   
-  public static void setDelegateProvider(DelegateProvider paramDelegateProvider)
+  public static void setDelegateProvider(String paramString, DelegateProvider paramDelegateProvider)
   {
-    delegateProvider = paramDelegateProvider;
+    sDelegateMap.put(paramString, paramDelegateProvider);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qcircle.shadow.core.runtime.qcircle.container.DelegateProviderHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -14,24 +14,24 @@ public final class ThreadManagerKt
   public static final void a(@NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction0, "runnable");
-    ThreadManager.a.a().post((Runnable)new ThreadManagerKt.sam.java_lang_Runnable.0(paramFunction0));
+    ThreadManager.b.a().post((Runnable)new ThreadManagerKt.sam.java_lang_Runnable.0(paramFunction0));
   }
   
   public static final void b(@NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction0, "runnable");
-    ThreadManager.a.a(ThreadType.NORMAL, paramFunction0);
+    ThreadManager.b.a(ThreadType.NORMAL, paramFunction0);
   }
   
   public static final void c(@NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction0, "runnable");
-    ThreadManager.a.a(ThreadType.FILE, paramFunction0);
+    ThreadManager.b.a(ThreadType.FILE, paramFunction0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.ThreadManagerKt
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class AdProxyImpl$SDKBoxAdView$1$1
   
   public void a()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.onDismiss();
+    if (this.a.b.b != null) {
+      this.a.b.b.onDismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBoxAdView.1.1
  * JD-Core Version:    0.7.0.1
  */

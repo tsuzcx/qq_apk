@@ -15,7 +15,7 @@ class ChatXListView$1
   {
     int i = ((Activity)this.a).getWindowManager().getDefaultDisplay().getHeight();
     if (i <= 0) {
-      i = ChatXListView.a();
+      i = ChatXListView.c();
     } else {
       i >>= 2;
     }
@@ -24,14 +24,14 @@ class ChatXListView$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ChatXListView open_panel_threshold_value = ");
-      localStringBuilder.append(ChatXListView.b());
+      localStringBuilder.append(ChatXListView.d());
       QLog.d("ChatXListView", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.ChatXListView.1
  * JD-Core Version:    0.7.0.1
  */

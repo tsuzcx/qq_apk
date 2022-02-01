@@ -16,21 +16,21 @@ class TroopFileModel$6
   
   public void a()
   {
-    this.a.d();
+    this.a.h();
   }
   
   public void b()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = this.a.a((FileManagerEntity)localObject);
+    Object localObject = this.a.c.r();
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.a, ((FileManagerEntity)localObject).TroopUin);
+    localObject = this.a.e((FileManagerEntity)localObject);
     if ((TextUtils.isEmpty(TroopFileModel.a(this.a))) && (((TroopFileStatusInfo)localObject).a != null)) {
       TroopFileModel.a(this.a, ((TroopFileStatusInfo)localObject).a.toString());
     }
     if (!TextUtils.isEmpty(TroopFileModel.a(this.a)))
     {
-      localTroopFileTransferManager.d(UUID.fromString(TroopFileModel.a(this.a)));
-      if (QFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      localTroopFileTransferManager.e(UUID.fromString(TroopFileModel.a(this.a)));
+      if (QFileUtils.a(this.a.a)) {
         this.a.a("0x8009D61", null);
       }
     }
@@ -39,7 +39,7 @@ class TroopFileModel$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.6
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor;
 import com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
+import com.tencent.mobileqq.guild.pic.api.IGuildPicAIO;
 import com.tencent.mobileqq.pic.api.IPicHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -96,8 +97,15 @@ public class AIOImgThumbHelper
   
   public static ThumbWidthHeightDP getThumbWidthHeightDP(MessageForPic paramMessageForPic, boolean paramBoolean)
   {
-    if (paramMessageForPic.thumbWidthHeightDP == null) {
-      paramMessageForPic.thumbWidthHeightDP = getThumbWidthHeightDPForPicMsg(paramBoolean, ((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion(paramMessageForPic) ^ true, (int)Math.max(paramMessageForPic.width, paramMessageForPic.height));
+    if (paramMessageForPic.thumbWidthHeightDP == null)
+    {
+      boolean bool = ((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion(paramMessageForPic);
+      int i = (int)Math.max(paramMessageForPic.width, paramMessageForPic.height);
+      if ((paramMessageForPic.istroop == 10014) && (!((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion(paramMessageForPic))) {
+        paramMessageForPic.thumbWidthHeightDP = ((IGuildPicAIO)QRoute.api(IGuildPicAIO.class)).getThumbWidthHeightDPForGuildPicMsg();
+      } else {
+        paramMessageForPic.thumbWidthHeightDP = getThumbWidthHeightDPForPicMsg(paramBoolean, bool ^ true, i);
+      }
     }
     return paramMessageForPic.thumbWidthHeightDP;
   }
@@ -126,16 +134,16 @@ public class AIOImgThumbHelper
         return;
       }
       AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig localAIOPicThumbSizeConfig = AIOPicThumbSizeProcessor.a();
-      if ((localAIOPicThumbSizeConfig != null) && (localAIOPicThumbSizeConfig.jdField_a_of_type_Boolean))
+      if ((localAIOPicThumbSizeConfig != null) && (localAIOPicThumbSizeConfig.a))
       {
-        sAioImageMinSize = localAIOPicThumbSizeConfig.d;
-        sAioImageMaxSize = localAIOPicThumbSizeConfig.c;
-        sAioImageDynamicMin = localAIOPicThumbSizeConfig.h;
-        sAioImageDynamicMax = localAIOPicThumbSizeConfig.g;
-        sAioImageMinSizeUnderLimit = localAIOPicThumbSizeConfig.f;
-        sAioImageMaxSizeUnderLimit = localAIOPicThumbSizeConfig.e;
-        sPicSizeLimit = localAIOPicThumbSizeConfig.jdField_b_of_type_Int;
-        QLog.d("AIOImgThumbHelper", 1, new Object[] { "maxRatio:", Double.valueOf(localAIOPicThumbSizeConfig.jdField_a_of_type_Double), ", minRatio:", Double.valueOf(localAIOPicThumbSizeConfig.jdField_b_of_type_Double), ", picSizeLimit:", Integer.valueOf(sPicSizeLimit) });
+        sAioImageMinSize = localAIOPicThumbSizeConfig.g;
+        sAioImageMaxSize = localAIOPicThumbSizeConfig.f;
+        sAioImageDynamicMin = localAIOPicThumbSizeConfig.k;
+        sAioImageDynamicMax = localAIOPicThumbSizeConfig.j;
+        sAioImageMinSizeUnderLimit = localAIOPicThumbSizeConfig.i;
+        sAioImageMaxSizeUnderLimit = localAIOPicThumbSizeConfig.h;
+        sPicSizeLimit = localAIOPicThumbSizeConfig.e;
+        QLog.d("AIOImgThumbHelper", 1, new Object[] { "maxRatio:", Double.valueOf(localAIOPicThumbSizeConfig.b), ", minRatio:", Double.valueOf(localAIOPicThumbSizeConfig.c), ", picSizeLimit:", Integer.valueOf(sPicSizeLimit) });
       }
       else
       {
@@ -157,7 +165,7 @@ public class AIOImgThumbHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AIOImgThumbHelper
  * JD-Core Version:    0.7.0.1
  */

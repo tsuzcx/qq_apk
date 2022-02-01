@@ -10,13 +10,13 @@ class UniformDownloadMgr$11
   
   public void run()
   {
-    UniformDownloadMgr.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.a(this.this$0).b();
+    UniformDownloadMgr.a(this.this$0, this.a, this.b);
+    UniformDownloadMgr.b(this.this$0).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadMgr.11
  * JD-Core Version:    0.7.0.1
  */

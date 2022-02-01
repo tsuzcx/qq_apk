@@ -34,12 +34,12 @@ class BaseMessageProcessorForTroopAndDiscServiceImpl$1
         paramBundle.mergeFrom(paramArrayOfByte);
         if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo.a.a(21, this.jdField_a_of_type_Long, this.b);
-          if (21 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
+          this.a.c.a(21, this.b, this.c);
+          if (21 >= this.d.msgType)
           {
-            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 21;
-            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = TroopAioMsgNavigateUpdateMsgInfoUtil.a(BaseMessageProcessorForTroopAndDiscServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqServiceMessageApiImplBaseMessageProcessorForTroopAndDiscServiceImpl), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
-            this.jdField_a_of_type_JavaUtilMap.put(UinTypeUtil.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+            this.d.msgType = 21;
+            this.d.msg = TroopAioMsgNavigateUpdateMsgInfoUtil.a(BaseMessageProcessorForTroopAndDiscServiceImpl.access$000(this.h), this.e, this.a, this.d.msg, this.f, true);
+            this.g.put(UinTypeUtil.a(this.e, 1), this.d);
             return;
           }
         }
@@ -53,7 +53,7 @@ class BaseMessageProcessorForTroopAndDiscServiceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.api.impl.BaseMessageProcessorForTroopAndDiscServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

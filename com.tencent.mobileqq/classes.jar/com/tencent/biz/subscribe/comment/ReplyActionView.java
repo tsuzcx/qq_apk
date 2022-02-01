@@ -34,26 +34,26 @@ public class ReplyActionView
   
   private void a()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131558734, this, true);
-    this.a = ((TextView)((View)localObject).findViewById(2131371510));
-    this.b = ((TextView)((View)localObject).findViewById(2131369989));
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131624354, this, true);
+    this.a = ((TextView)((View)localObject).findViewById(2131438887));
+    this.b = ((TextView)((View)localObject).findViewById(2131437142));
     int i = AIOUtils.b(12.0F, getContext().getResources());
-    localObject = getResources().getDrawable(2130851303);
+    localObject = getResources().getDrawable(2130853567);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.a.setCompoundDrawables(null, null, (Drawable)localObject, null);
-    localObject = getResources().getDrawable(2130851304);
+    localObject = getResources().getDrawable(2130853568);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.b.setCompoundDrawables(null, null, (Drawable)localObject, null);
   }
   
-  public TextView a()
-  {
-    return this.a;
-  }
-  
-  public TextView b()
+  public TextView getLessReply()
   {
     return this.b;
+  }
+  
+  public TextView getMoreReply()
+  {
+    return this.a;
   }
 }
 

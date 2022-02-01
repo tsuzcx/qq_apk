@@ -1,36 +1,32 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import com.tencent.widget.ActionMenuItem;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class AccountManageActivity$8
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
   AccountManageActivity$8(AccountManageActivity paramAccountManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    AccountManageActivity.a(this.a).dismiss();
-    paramView = AccountManageActivity.a(this.a).getActionMenuItem(paramInt);
-    if (paramView == null) {
-      return;
-    }
-    paramInt = paramView.action;
-    if (paramInt == 1)
+    AccountManageActivity.c(this.a).show();
+    if (AccountManageActivity.e(this.a))
     {
-      AccountManageActivity.c(this.a);
-      return;
+      ReportController.a(this.a.app, "0X800B7D8");
+      ReportController.a(this.a.app, "0X800B7D9");
     }
-    if (paramInt == 2) {
-      this.a.h();
-    }
+    AccountManageActivity.a(this.a, false);
+    ReportController.a(this.a.app, "0X800B83B");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.8
  * JD-Core Version:    0.7.0.1
  */

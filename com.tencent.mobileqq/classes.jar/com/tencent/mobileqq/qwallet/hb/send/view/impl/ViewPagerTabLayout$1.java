@@ -15,20 +15,20 @@ class ViewPagerTabLayout$1
   {
     int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
     if (i != -1) {
-      if (ViewPagerTabLayout.a(this.a).getCurrentItem() != i)
+      if (ViewPagerTabLayout.b(this.a).getCurrentItem() != i)
       {
-        if (!ViewPagerTabLayout.a(this.a)) {
+        if (!ViewPagerTabLayout.c(this.a)) {
           this.a.setCurrentTab(i, false);
         } else {
           this.a.setCurrentTab(i);
         }
-        if (ViewPagerTabLayout.a(this.a) != null) {
-          ViewPagerTabLayout.a(this.a).a(i);
+        if (ViewPagerTabLayout.d(this.a) != null) {
+          ViewPagerTabLayout.d(this.a).a(i);
         }
       }
-      else if (ViewPagerTabLayout.a(this.a) != null)
+      else if (ViewPagerTabLayout.d(this.a) != null)
       {
-        ViewPagerTabLayout.a(this.a).b(i);
+        ViewPagerTabLayout.d(this.a).b(i);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -36,7 +36,7 @@ class ViewPagerTabLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.view.impl.ViewPagerTabLayout.1
  * JD-Core Version:    0.7.0.1
  */

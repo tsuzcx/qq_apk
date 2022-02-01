@@ -14,27 +14,27 @@ class RedTouchTempApiImpl$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationAnimation)
+    if (paramAnimation == this.a)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqTianshuApiImplRedTouchTempApiImpl.getApngDrawable(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramAnimation);
-      paramAnimation = this.jdField_a_of_type_AndroidWidgetTextView;
-      if ((paramAnimation != null) && (this.jdField_a_of_type_Boolean))
+      this.b.setVisibility(8);
+      paramAnimation = this.l.getApngDrawable(this.c, this.d);
+      this.b.setImageDrawable(paramAnimation);
+      paramAnimation = this.e;
+      if ((paramAnimation != null) && (this.f))
       {
         paramAnimation.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.g.setVisibility(8);
       }
     }
-    else if (paramAnimation == this.jdField_b_of_type_AndroidViewAnimationAnimation)
+    else if (paramAnimation == this.h)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramAnimation = this.c;
-      if ((paramAnimation != null) && (this.jdField_a_of_type_Boolean)) {
+      this.i.setVisibility(4);
+      paramAnimation = this.j;
+      if ((paramAnimation != null) && (this.f)) {
         paramAnimation.setVisibility(8);
       }
-      paramAnimation = this.d;
-      if ((paramAnimation != null) && (this.jdField_a_of_type_Boolean)) {
+      paramAnimation = this.k;
+      if ((paramAnimation != null) && (this.f)) {
         paramAnimation.setVisibility(8);
       }
       ApngImage.playByTag(39);
@@ -47,7 +47,7 @@ class RedTouchTempApiImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.impl.RedTouchTempApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

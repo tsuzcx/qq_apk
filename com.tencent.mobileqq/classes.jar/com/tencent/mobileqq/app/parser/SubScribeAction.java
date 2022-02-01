@@ -18,7 +18,7 @@ public class SubScribeAction
   {
     try
     {
-      SubscribeLaucher.a(this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaUtilHashMap);
+      SubscribeLaucher.a(this.b, this.e, this.f);
       return true;
     }
     catch (Exception localException)
@@ -27,14 +27,14 @@ public class SubScribeAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("SubScribeAction", 1, localStringBuilder.toString());
-      b_("SubScribeAction");
+      h_("SubScribeAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.SubScribeAction
  * JD-Core Version:    0.7.0.1
  */

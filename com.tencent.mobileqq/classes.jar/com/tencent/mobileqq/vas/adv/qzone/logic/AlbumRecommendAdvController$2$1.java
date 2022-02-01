@@ -12,14 +12,14 @@ class AlbumRecommendAdvController$2$1
   
   public void run()
   {
-    AlbumRecommendAdvController.a(this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAlbumRecommendAdvController$2.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAlbumRecommendAdvController).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAlbumRecommendAdvController$2.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAlbumRecommendAdvController.a(1, this.jdField_a_of_type_ComTencentMobileqqVasAdvQzoneLogicAlbumRecommendAdvController$2.jdField_a_of_type_ComTencentMobileqqVasAdvCommonDataAlumBasicData.recCookie);
+    AlbumRecommendAdvController.e(this.b.b).setImageDrawable(this.a);
+    this.b.b.a(1, this.b.a.recCookie);
     QZLog.i("AlbumRecomAdvInfoView", "@getGdtInfo setDataChanged onImageLoaded");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.logic.AlbumRecommendAdvController.2.1
  * JD-Core Version:    0.7.0.1
  */

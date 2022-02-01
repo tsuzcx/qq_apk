@@ -9,16 +9,16 @@ import eipc.EIPCResultCallback;
 final class CmGameToolCmdChannel$3
   implements EIPCResultCallback
 {
-  CmGameToolCmdChannel$3(long paramLong, String paramString) {}
+  CmGameToolCmdChannel$3(long paramLong) {}
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
     paramEIPCResult = paramEIPCResult.data.getString("resData");
-    ApolloCmdChannel.getInstance().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
+    ApolloCmdChannel.getInstance().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" GET_DRESS_PATH onCallback resJson:");
+      localStringBuilder.append(" GET_ACTION_DATA onCallback resJson:");
       localStringBuilder.append(paramEIPCResult);
       QLog.d("cmgame_process.CmGameToolCmdChannel", 2, localStringBuilder.toString());
     }
@@ -26,7 +26,7 @@ final class CmGameToolCmdChannel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.chanel.CmGameToolCmdChannel.3
  * JD-Core Version:    0.7.0.1
  */

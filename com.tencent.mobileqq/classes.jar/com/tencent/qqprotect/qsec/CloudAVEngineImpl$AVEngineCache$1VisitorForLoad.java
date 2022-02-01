@@ -21,7 +21,7 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForLoad
       }
       return false;
     }
-    if (paramResultBundle.a > new Date().getTime())
+    if (paramResultBundle.d > new Date().getTime())
     {
       if (QLog.isColorLevel()) {
         QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
@@ -37,7 +37,7 @@ final class CloudAVEngineImpl$AVEngineCache$1VisitorForLoad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.AVEngineCache.1VisitorForLoad
  * JD-Core Version:    0.7.0.1
  */

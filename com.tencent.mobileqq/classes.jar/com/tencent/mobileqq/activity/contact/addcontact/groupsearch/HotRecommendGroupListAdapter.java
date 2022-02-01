@@ -22,13 +22,13 @@ import java.util.List;
 public class HotRecommendGroupListAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private HotRecommendGroupListAdapter.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter$OnItemClickListener;
-  private List<HotRecommendGroupListAdapter.Keyword> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Context a;
+  private List<HotRecommendGroupListAdapter.Keyword> b = new ArrayList();
+  private HotRecommendGroupListAdapter.OnItemClickListener c;
   
   public HotRecommendGroupListAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   private int a(float paramFloat, int paramInt)
@@ -38,11 +38,28 @@ public class HotRecommendGroupListAdapter
   
   private ColorStateList a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int[] arrayOfInt = { 16842908 };
-    return new ColorStateList(new int[][] { { 16842919, 16842910 }, { 16842910, 16842908 }, { 16842910 }, arrayOfInt, { 16842909 }, new int[0] }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
+    int[] arrayOfInt1 = { 16842919, 16842910 };
+    int[] arrayOfInt2 = { 16842910 };
+    int[] arrayOfInt3 = { 16842908 };
+    int[] arrayOfInt4 = new int[0];
+    return new ColorStateList(new int[][] { arrayOfInt1, { 16842910, 16842908 }, arrayOfInt2, arrayOfInt3, { 16842909 }, arrayOfInt4 }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
   }
   
-  private Drawable a(int paramInt)
+  private Drawable a(int paramInt1, int paramInt2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    Drawable localDrawable = b(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842919 }, localDrawable);
+    localDrawable = b(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842908 }, localDrawable);
+    localDrawable = b(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
+    localDrawable = b(paramInt2);
+    localStateListDrawable.addState(new int[0], localDrawable);
+    return localStateListDrawable;
+  }
+  
+  private Drawable b(int paramInt)
   {
     GradientDrawable localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setShape(0);
@@ -51,43 +68,29 @@ public class HotRecommendGroupListAdapter
     return localGradientDrawable;
   }
   
-  private Drawable a(int paramInt1, int paramInt2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable = a(paramInt1);
-    localStateListDrawable.addState(new int[] { 16842919 }, localDrawable);
-    localDrawable = a(paramInt1);
-    localStateListDrawable.addState(new int[] { 16842908 }, localDrawable);
-    localDrawable = a(paramInt1);
-    localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
-    localDrawable = a(paramInt2);
-    localStateListDrawable.addState(new int[0], localDrawable);
-    return localStateListDrawable;
-  }
-  
   public HotRecommendGroupListAdapter.Keyword a(int paramInt)
   {
-    return (HotRecommendGroupListAdapter.Keyword)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (HotRecommendGroupListAdapter.Keyword)this.b.get(paramInt);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
   }
   
   void a(HotRecommendGroupListAdapter.Keyword paramKeyword)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramKeyword);
+    this.b.add(paramKeyword);
   }
   
   public void a(HotRecommendGroupListAdapter.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactGroupsearchHotRecommendGroupListAdapter$OnItemClickListener = paramOnItemClickListener;
+    this.c = paramOnItemClickListener;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public long getItemId(int paramInt)
@@ -101,10 +104,10 @@ public class HotRecommendGroupListAdapter
     Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561116, null, false);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131627466, null, false);
       paramView = new HotRecommendGroupListAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379918));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramView);
+      paramView.c = ((TextView)localView.findViewById(2131448793));
+      paramView.c.setOnClickListener(paramView);
       localView.setTag(paramView);
     }
     else
@@ -116,33 +119,33 @@ public class HotRecommendGroupListAdapter
     HotRecommendGroupListAdapter.Keyword localKeyword = a(paramInt);
     if (localKeyword != null)
     {
-      paramView.jdField_a_of_type_JavaLangString = localKeyword.jdField_a_of_type_JavaLangString;
-      paramView.jdField_a_of_type_Int = paramInt;
-      TextView localTextView = paramView.jdField_a_of_type_AndroidWidgetTextView;
-      if (TextUtils.isEmpty(localKeyword.jdField_a_of_type_JavaLangString)) {
+      paramView.b = localKeyword.a;
+      paramView.a = paramInt;
+      TextView localTextView = paramView.c;
+      if (TextUtils.isEmpty(localKeyword.a)) {
         localObject = "";
       } else {
-        localObject = localKeyword.jdField_a_of_type_JavaLangString;
+        localObject = localKeyword.a;
       }
       localTextView.setText((CharSequence)localObject);
       int i;
       if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
       {
         i = Color.parseColor("#A8A8A8");
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845462));
+        paramView.c.setBackgroundDrawable(this.a.getResources().getDrawable(2130846918));
       }
       else if (localKeyword.b == null)
       {
         i = Color.parseColor("#03081A");
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845461));
+        paramView.c.setBackgroundDrawable(this.a.getResources().getDrawable(2130846917));
       }
       else
       {
         i = Color.parseColor(localKeyword.b);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a(a(0.1F, i), a(0.2F, i)));
+        paramView.c.setBackgroundDrawable(a(a(0.1F, i), a(0.2F, i)));
       }
       int j = a(0.5F, i);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(i, j, j, i));
+      paramView.c.setTextColor(a(i, j, j, i));
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -150,7 +153,7 @@ public class HotRecommendGroupListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.HotRecommendGroupListAdapter
  * JD-Core Version:    0.7.0.1
  */

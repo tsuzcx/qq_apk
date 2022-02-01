@@ -25,6 +25,8 @@ public class MediaFileFilter
   public static final int MF_SHOW_VIDEO = 2;
   public static final int MIN_SIZE = 1000;
   public ArrayList<String> blockPaths;
+  public int imageMaxHeight = -1;
+  public int imageMaxWidth = -1;
   public int imageMinHeight = -1;
   public long imageMinSize = 1000L;
   public int imageMinWidth = -1;
@@ -34,6 +36,10 @@ public class MediaFileFilter
   public boolean needVideo = true;
   public boolean needWebp = false;
   public long videoMaxDuration = -1L;
+  public int videoMaxHeight = -1;
+  public int videoMaxWidth = -1;
+  public int videoMinHeight = -1;
+  public int videoMinWidth = -1;
   public long videoSizeLimit = -1L;
   
   static
@@ -177,7 +183,7 @@ public class MediaFileFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaFileFilter
  * JD-Core Version:    0.7.0.1
  */

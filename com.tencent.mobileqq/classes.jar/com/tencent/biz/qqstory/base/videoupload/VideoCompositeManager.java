@@ -33,21 +33,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class VideoCompositeManager
   extends BaseManger
 {
-  private VideoSaveToAlbumHelper a;
-  protected final Object a;
-  protected final ArrayList<String> a;
-  protected final ConcurrentHashMap<String, VideoCompositeManager.CompositeResult> a;
-  protected AtomicBoolean a;
-  protected final Object b = new Object();
-  
-  public VideoCompositeManager()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(3);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper = new VideoSaveToAlbumHelper();
-  }
+  protected final ArrayList<String> a = new ArrayList(3);
+  protected final ConcurrentHashMap<String, VideoCompositeManager.CompositeResult> b = new ConcurrentHashMap(3);
+  protected final Object c = new Object();
+  protected final Object d = new Object();
+  protected AtomicBoolean e = new AtomicBoolean(false);
+  private VideoSaveToAlbumHelper f = new VideoSaveToAlbumHelper();
   
   private void a(VideoCompositeManager.CompositeVideoEvent paramCompositeVideoEvent, PublishVideoEntry paramPublishVideoEntry, long paramLong)
   {
@@ -63,7 +54,7 @@ public class VideoCompositeManager
     } else {
       paramString = "1";
     }
-    StoryReportor.b("publish_story", "video_composite_wait", a(localPublishVideoEntry), paramCompositeResult.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, new String[] { paramCompositeResult.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg, String.valueOf(l - paramLong), String.valueOf(localPublishVideoEntry.videoDuration), paramString });
+    StoryReportor.b("publish_story", "video_composite_wait", a(localPublishVideoEntry), paramCompositeResult.g.errorCode, new String[] { paramCompositeResult.g.errorMsg, String.valueOf(l - paramLong), String.valueOf(localPublishVideoEntry.videoDuration), paramString });
   }
   
   protected int a(PublishVideoEntry paramPublishVideoEntry)
@@ -79,80 +70,6 @@ public class VideoCompositeManager
       return 3;
     }
     return 4;
-  }
-  
-  public VideoCompositeManager.CompositeResult a(String paramString)
-  {
-    long l = SystemClock.elapsedRealtime();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      VideoCompositeManager.CompositeResult localCompositeResult1 = (VideoCompositeManager.CompositeResult)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localCompositeResult1 != null)
-      {
-        if (com.tencent.biz.qqstory.utils.FileUtils.b(localCompositeResult1.b))
-        {
-          a(paramString, l, localCompositeResult1);
-          return localCompositeResult1;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localCompositeResult1.jdField_a_of_type_JavaLangString);
-      }
-      a(paramString);
-      int i = 0;
-      try
-      {
-        synchronized (this.b)
-        {
-          SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "start wait vid:%s", new Object[] { paramString });
-          this.b.wait(10000L);
-          SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "end wait vid:%s", new Object[] { paramString });
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          SLog.b("Q.qqstory.publish.upload.VideoCompositeManager", "waiting lock", localInterruptedException);
-          synchronized (this.jdField_a_of_type_JavaLangObject)
-          {
-            boolean bool = this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
-            VideoCompositeManager.CompositeResult localCompositeResult2 = (VideoCompositeManager.CompositeResult)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-            if (localCompositeResult2 != null)
-            {
-              SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "get result:%s", new Object[] { localCompositeResult2 });
-              a(paramString, l, localCompositeResult2);
-              return localCompositeResult2;
-            }
-            if (!bool)
-            {
-              ??? = new VideoCompositeManager.CompositeResult(this);
-              ((VideoCompositeManager.CompositeResult)???).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(942011, "no video need composite");
-              SLog.e("Q.qqstory.publish.upload.VideoCompositeManager", "no video should composite is imposable vid:%s", new Object[] { paramString });
-              a(paramString, l, (VideoCompositeManager.CompositeResult)???);
-              return ???;
-            }
-            if (i > 40)
-            {
-              localCompositeResult2 = new VideoCompositeManager.CompositeResult(this);
-              localCompositeResult2.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(942009, "wait composite video timeout");
-              SLog.e("Q.qqstory.publish.upload.VideoCompositeManager", "wait composite video timeout vid:%s", new Object[] { paramString });
-              a(paramString, l, localCompositeResult2);
-              synchronized (this.jdField_a_of_type_JavaLangObject)
-              {
-                this.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-                this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-                return localCompositeResult2;
-              }
-            }
-            i += 1;
-          }
-        }
-      }
-      throw paramString;
-    }
-    for (;;)
-    {
-      throw paramString;
-    }
   }
   
   protected void a(int paramInt, String paramString, PublishVideoEntry paramPublishVideoEntry)
@@ -188,25 +105,25 @@ public class VideoCompositeManager
   protected void a(PublishVideoEntry paramPublishVideoEntry, String arg2, int paramInt, String arg4, String paramString3, long paramLong)
   {
     VideoCompositeManager.CompositeVideoEvent localCompositeVideoEvent = new VideoCompositeManager.CompositeVideoEvent(this);
-    localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramInt, ???);
-    localCompositeVideoEvent.jdField_a_of_type_JavaLangString = ???;
+    localCompositeVideoEvent.g = new ErrorMessage(paramInt, ???);
+    localCompositeVideoEvent.a = ???;
     localCompositeVideoEvent.b = paramString3;
-    if ((paramInt == 0) && ((TextUtils.isEmpty(paramString3)) || (!com.tencent.biz.qqstory.utils.FileUtils.b(paramString3)) || (com.tencent.mobileqq.utils.FileUtils.getFileSizes(paramString3) < 100L))) {
-      localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(940007, String.format("vid:%s file:%s", new Object[] { ???, paramString3 }));
+    if ((paramInt == 0) && ((TextUtils.isEmpty(paramString3)) || (!com.tencent.biz.qqstory.utils.FileUtils.c(paramString3)) || (com.tencent.mobileqq.utils.FileUtils.getFileSizes(paramString3) < 100L))) {
+      localCompositeVideoEvent.g = new ErrorMessage(940007, String.format("vid:%s file:%s", new Object[] { ???, paramString3 }));
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.remove(???)) {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      if (this.a.remove(???)) {
+        this.e.set(false);
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(???, localCompositeVideoEvent);
+      this.b.put(???, localCompositeVideoEvent);
       ??? = "";
       Object localObject1;
       long l1;
       Object localObject2;
       try
       {
-        if (localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+        if (localCompositeVideoEvent.g.isFail())
         {
           long l2;
           if (new File(paramPublishVideoEntry.mLocalRawVideoDir).isDirectory())
@@ -238,12 +155,12 @@ public class VideoCompositeManager
             ???.append(paramPublishVideoEntry.mLocalRawVideoDir);
             localObject1 = ???.toString();
           }
-          l1 = com.tencent.biz.qqstory.utils.FileUtils.a();
-          localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg = String.format("errorCode:%d, sdcard free size:%d, vf dir size:%d, vf filename:%s, oMsg:%s", new Object[] { Integer.valueOf(localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode), Long.valueOf(l1), Long.valueOf(l2), localObject1, localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg });
+          l1 = com.tencent.biz.qqstory.utils.FileUtils.b();
+          localCompositeVideoEvent.g.errorMsg = String.format("errorCode:%d, sdcard free size:%d, vf dir size:%d, vf filename:%s, oMsg:%s", new Object[] { Integer.valueOf(localCompositeVideoEvent.g.errorCode), Long.valueOf(l1), Long.valueOf(l2), localObject1, localCompositeVideoEvent.g.errorMsg });
           if (l2 < 100L) {
-            localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode = 940018;
+            localCompositeVideoEvent.g.errorCode = 940018;
           }
-          SLog.e("Q.qqstory.publish.upload.VideoCompositeManager", localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
+          SLog.e("Q.qqstory.publish.upload.VideoCompositeManager", localCompositeVideoEvent.g.errorMsg);
         }
       }
       catch (Exception ???)
@@ -275,16 +192,16 @@ public class VideoCompositeManager
       }
       if ((bool1) || (paramInt != 0))
       {
-        if (localCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+        if (localCompositeVideoEvent.g.isSuccess())
         {
           SLog.b("Q.qqstory.publish.upload.VideoCompositeManager", "composite successfully. add save to album task.");
-          ??? = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper.a(???);
-          this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper.a(paramString3, ???);
+          ??? = this.f.a(???);
+          this.f.a(paramString3, ???);
           l1 = paramPublishVideoEntry.getLongExtra("groupUin", -1L);
           paramString3 = paramPublishVideoEntry.getStringExtra("pl", "");
           localObject1 = paramPublishVideoEntry.getStringExtra("i_l", "");
           SLog.a("Q.qqstory.publish.upload.VideoCompositeManager", "composite successfully. add save to album task. pl: %s", String.valueOf(paramString3));
-          localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper;
+          localObject2 = this.f;
           paramInt = paramPublishVideoEntry.videoWidth;
           int i = paramPublishVideoEntry.videoHeight;
           if (l1 > 0L) {
@@ -303,7 +220,7 @@ public class VideoCompositeManager
           ??? = ???.toString();
           paramString3 = AudioEncoder.a(null, null, 0);
           paramString3.b = ???;
-          paramString3.jdField_a_of_type_JavaLangString = paramPublishVideoEntry.mAudioFilePath;
+          paramString3.a = paramPublishVideoEntry.mAudioFilePath;
           paramInt = AudioEncoder.a(paramString3);
           if (paramInt == 0)
           {
@@ -327,12 +244,12 @@ public class VideoCompositeManager
             SLog.e("Q.qqstory.publish.upload.VideoCompositeManager", ???.toString());
           }
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoSaveToAlbumHelper.a();
+        this.f.a();
       }
       StoryDispatcher.a().dispatch(localCompositeVideoEvent);
-      synchronized (this.b)
+      synchronized (this.d)
       {
-        this.b.notifyAll();
+        this.d.notifyAll();
         SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "end composite result:%s", new Object[] { localCompositeVideoEvent });
         c();
         a(localCompositeVideoEvent, paramPublishVideoEntry, paramLong);
@@ -347,11 +264,11 @@ public class VideoCompositeManager
   
   public void a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))
+      if (!this.a.contains(paramString))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        this.a.add(paramString);
         SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "add composite vid:%s", new Object[] { paramString });
       }
       c();
@@ -359,31 +276,105 @@ public class VideoCompositeManager
     }
   }
   
+  public VideoCompositeManager.CompositeResult b(String paramString)
+  {
+    long l = SystemClock.elapsedRealtime();
+    synchronized (this.c)
+    {
+      VideoCompositeManager.CompositeResult localCompositeResult1 = (VideoCompositeManager.CompositeResult)this.b.get(paramString);
+      if (localCompositeResult1 != null)
+      {
+        if (com.tencent.biz.qqstory.utils.FileUtils.c(localCompositeResult1.b))
+        {
+          a(paramString, l, localCompositeResult1);
+          return localCompositeResult1;
+        }
+        this.b.remove(localCompositeResult1.a);
+      }
+      a(paramString);
+      int i = 0;
+      try
+      {
+        synchronized (this.d)
+        {
+          SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "start wait vid:%s", new Object[] { paramString });
+          this.d.wait(10000L);
+          SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "end wait vid:%s", new Object[] { paramString });
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          SLog.b("Q.qqstory.publish.upload.VideoCompositeManager", "waiting lock", localInterruptedException);
+          synchronized (this.c)
+          {
+            boolean bool = this.a.contains(paramString);
+            VideoCompositeManager.CompositeResult localCompositeResult2 = (VideoCompositeManager.CompositeResult)this.b.get(paramString);
+            if (localCompositeResult2 != null)
+            {
+              SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "get result:%s", new Object[] { localCompositeResult2 });
+              a(paramString, l, localCompositeResult2);
+              return localCompositeResult2;
+            }
+            if (!bool)
+            {
+              ??? = new VideoCompositeManager.CompositeResult(this);
+              ((VideoCompositeManager.CompositeResult)???).g = new ErrorMessage(942011, "no video need composite");
+              SLog.e("Q.qqstory.publish.upload.VideoCompositeManager", "no video should composite is imposable vid:%s", new Object[] { paramString });
+              a(paramString, l, (VideoCompositeManager.CompositeResult)???);
+              return ???;
+            }
+            if (i > 40)
+            {
+              localCompositeResult2 = new VideoCompositeManager.CompositeResult(this);
+              localCompositeResult2.g = new ErrorMessage(942009, "wait composite video timeout");
+              SLog.e("Q.qqstory.publish.upload.VideoCompositeManager", "wait composite video timeout vid:%s", new Object[] { paramString });
+              a(paramString, l, localCompositeResult2);
+              synchronized (this.c)
+              {
+                this.a.remove(paramString);
+                this.e.set(false);
+                return localCompositeResult2;
+              }
+            }
+            i += 1;
+          }
+        }
+      }
+      throw paramString;
+    }
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
   protected void c()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
+    if (this.e.getAndSet(true))
     {
       SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "video composite ing");
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.c)
     {
       String str;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      if (this.a.size() > 0) {
+        str = (String)this.a.get(0);
       } else {
         str = "";
       }
       if (TextUtils.isEmpty(str))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.e.set(false);
         SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "no video to composite");
         return;
       }
       SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "will composite vid:%s", new Object[] { str });
       long l = System.currentTimeMillis();
-      if (CaptureFreqMonitor.b) {
-        CaptureFreqMonitor.c.b();
+      if (CaptureFreqMonitor.d) {
+        CaptureFreqMonitor.f.c();
       }
       Bosses.get().postJob(new VideoCompositeManager.1(this, "Q.qqstory.publish.upload.VideoCompositeManager", str, l));
       return;
@@ -392,7 +383,7 @@ public class VideoCompositeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager
  * JD-Core Version:    0.7.0.1
  */

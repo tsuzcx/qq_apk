@@ -1,46 +1,36 @@
 package com.tencent.mobileqq.apollo.script;
 
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
-import com.tencent.mobileqq.apollo.statistics.CmShowStatUtil;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IApolloRunnableTask;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
 
 final class SpriteUtil$1
   extends IApolloRunnableTask
 {
-  SpriteUtil$1(String paramString, ApolloEngine paramApolloEngine, int paramInt) {}
+  SpriteUtil$1(Script paramScript, ApolloEngine paramApolloEngine) {}
   
   public int a()
   {
-    int i = this.jdField_a_of_type_Int;
-    if (i != 0) {
-      return i;
+    if (this.a.i() != 0) {
+      return this.a.i();
     }
     return super.a();
   }
   
   public void run()
   {
-    ApolloEngine localApolloEngine = this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine;
-    if (localApolloEngine != null) {
-      localApolloEngine.execScriptString(this.jdField_a_of_type_JavaLangString);
-    }
-    if (QLog.isColorLevel())
+    String str = this.a.e();
+    if (this.b != null)
     {
-      if (this.jdField_a_of_type_JavaLangString.contains("CMShowDefActionName"))
-      {
-        CmShowStatUtil.b("exeCmshow0");
-        return;
-      }
-      if (this.jdField_a_of_type_JavaLangString.contains("commonInit")) {
-        CmShowStatUtil.b("exeCommon");
-      }
+      this.a.b();
+      this.b.execScriptString(str);
+      this.a.j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUtil.1
  * JD-Core Version:    0.7.0.1
  */

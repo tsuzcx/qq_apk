@@ -15,17 +15,17 @@ class SpringPopBanner$3
   public void onClick(View paramView)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("active_id", this.jdField_a_of_type_JavaLangString);
+    localHashMap.put("active_id", this.a);
     localHashMap.put("refer", "1");
     SpringHbReporter.a("event_dachaping", 0, 0, localHashMap, "clk", true);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner.a(true);
-    SpringPopBanner.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryUiSpringPopBanner, this.b);
+    this.c.a(true);
+    SpringPopBanner.a(this.c, this.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.ui.SpringPopBanner.3
  * JD-Core Version:    0.7.0.1
  */

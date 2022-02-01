@@ -51,7 +51,7 @@ public class WSStatisticsBaseCollector
   {
     try
     {
-      String str = WSDeviceUtils.a();
+      String str = WSDeviceUtils.b();
       return str;
     }
     catch (NullPointerException localNullPointerException)
@@ -74,21 +74,22 @@ public class WSStatisticsBaseCollector
   private String getRefPageId()
   {
     if (TextUtils.isEmpty(WSReportEventConstants.b)) {
-      return WSSharePreferencesUtil.a("key_ref_page_id", "");
+      return WSSharePreferencesUtil.b("key_ref_page_id", "");
     }
     return WSReportEventConstants.b;
   }
   
   private String getTestId()
   {
-    return WSReportUtils.a(this.mTestId);
+    return WSReportUtils.b(this.mTestId);
   }
   
   public Map<String, String> getBaseParams()
   {
     HashMap localHashMap = new HashMap(38);
     localHashMap.put("qimei", UserAction.getQIMEI());
-    localHashMap.put("imsi", DeviceInfoUtil.b());
+    localHashMap.put("qimei36", UserAction.getQimeiNew());
+    localHashMap.put("imsi", DeviceInfoUtil.c());
     localHashMap.put("imei", MobileInfoUtil.getImei());
     localHashMap.put("mac", MobileInfoUtil.getLocalMacAddress());
     localHashMap.put("dev_brand", GlobalUtil.getInstance().getBrand());
@@ -98,15 +99,15 @@ public class WSStatisticsBaseCollector
     localHashMap.put("operating_system_version", Build.VERSION.RELEASE);
     localHashMap.put("ui_version", UI_VERSION);
     localHashMap.put("app_ver", APP_VERSION);
-    localHashMap.put("wifiBssid", WSDeviceUtils.f());
+    localHashMap.put("wifiBssid", WSDeviceUtils.j());
     localHashMap.put("push_id", getPushId());
     localHashMap.put("ip", getLocalIpAddress());
     localHashMap.put("session_id", WSPublicAccReport.getInstance().getSessionId());
     localHashMap.put("session_stamp", WSPublicAccReport.getInstance().getSessionStamp());
     localHashMap.put("sop_name", getSopName());
     localHashMap.put("qua", QUA.getQUA3());
-    localHashMap.put("android_id", DeviceInfoUtil.f());
-    localHashMap.put("qq", WeishiUtils.a());
+    localHashMap.put("android_id", DeviceInfoUtil.j());
+    localHashMap.put("qq", WeishiUtils.c());
     String str;
     if (WeishiGuideUtils.a(BaseApplicationImpl.getApplication())) {
       str = "1";
@@ -114,17 +115,17 @@ public class WSStatisticsBaseCollector
       str = "0";
     }
     localHashMap.put("if_install_weishi", str);
-    localHashMap.put("person_id", WeishiUtils.d());
+    localHashMap.put("person_id", WeishiUtils.n());
     localHashMap.put("time", String.valueOf(System.currentTimeMillis()));
-    localHashMap.put("network_type", WSDeviceUtils.g());
+    localHashMap.put("network_type", WSDeviceUtils.k());
     localHashMap.put("extended_fields", getExtendInfo());
     localHashMap.put("scenes_from", WSReportUtils.a());
     localHashMap.put("operation_id", getOperationId());
     localHashMap.put("test_id", getTestId());
     localHashMap.put("ref_page_id", getRefPageId());
     localHashMap.put("sub_session_id", getSubSession());
-    localHashMap.put("hardware_info", WSHardwareUtil.a(BaseApplicationImpl.getContext()));
-    localHashMap.put("hardware_level", String.valueOf(WSHardwareUtil.a(BaseApplicationImpl.getContext())));
+    localHashMap.put("hardware_info", WSHardwareUtil.d(BaseApplicationImpl.getContext()));
+    localHashMap.put("hardware_level", String.valueOf(WSHardwareUtil.c(BaseApplicationImpl.getContext())));
     return localHashMap;
   }
   
@@ -135,7 +136,7 @@ public class WSStatisticsBaseCollector
   
   public String getSubSession()
   {
-    if ((TextUtils.equals(this.mEventName, "gzh_pagevisit")) && (TextUtils.equals(getSopName(), "feeds"))) {
+    if ((TextUtils.equals(this.mEventName, "gzh_pageview")) && (TextUtils.equals(getSopName(), "feeds"))) {
       return "";
     }
     return this.mSubSession;
@@ -178,7 +179,7 @@ public class WSStatisticsBaseCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsBaseCollector
  * JD-Core Version:    0.7.0.1
  */

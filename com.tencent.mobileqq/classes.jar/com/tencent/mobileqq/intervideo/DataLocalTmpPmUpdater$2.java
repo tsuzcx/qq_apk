@@ -11,7 +11,7 @@ class DataLocalTmpPmUpdater$2
   public Boolean a()
   {
     boolean bool;
-    if ((DataLocalTmpPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoDataLocalTmpPmUpdater).exists()) && (this.jdField_a_of_type_JavaIoFile == DataLocalTmpPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoDataLocalTmpPmUpdater))) {
+    if ((DataLocalTmpPmUpdater.a(this.b).exists()) && (this.a == DataLocalTmpPmUpdater.a(this.b))) {
       bool = true;
     } else {
       bool = false;
@@ -21,7 +21,7 @@ class DataLocalTmpPmUpdater$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.DataLocalTmpPmUpdater.2
  * JD-Core Version:    0.7.0.1
  */

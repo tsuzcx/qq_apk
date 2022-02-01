@@ -16,15 +16,15 @@ class PicOcrServiceImpl$3
   public void run()
   {
     Object localObject;
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext.d)) || (this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext.a))
+    if ((TextUtils.isEmpty(this.a.f)) || (this.a.h))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext;
-      ((OCRReqContext)localObject).d = PicOrcUtils.a(((OCRReqContext)localObject).b);
-      this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext.a = false;
+      localObject = this.a;
+      ((OCRReqContext)localObject).f = PicOrcUtils.a(((OCRReqContext)localObject).c);
+      this.a.h = false;
     }
     if (!PicOcrServiceImpl.access$200(this.this$0).isEmpty())
     {
-      localObject = this.this$0.getCacheOcrResult(this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext.d);
+      localObject = this.this$0.getCacheOcrResult(this.a.f);
       if (localObject != null)
       {
         if (QLog.isColorLevel())
@@ -34,23 +34,23 @@ class PicOcrServiceImpl$3
           localStringBuilder.append(((PicOcrRspResult)localObject).toString());
           QLog.e("PicOcrServiceImpl", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver.a((PicOcrRspResult)localObject);
+        this.b.a((PicOcrRspResult)localObject);
         return;
       }
     }
-    PicOcrServiceImpl.access$300(this.this$0, this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver, this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext);
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext.a())
+    PicOcrServiceImpl.access$300(this.this$0, this.b, this.a);
+    if (this.a.a())
     {
-      this.this$0.uploadOcrPic(this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver, this.jdField_a_of_type_ComTencentMobileqqOcrReqOCRReqContext);
-      this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver.a();
+      this.this$0.uploadOcrPic(this.b, this.a);
+      this.b.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrObserver.onUpdate(100, false, new PicOcrRspResult());
+    this.b.onUpdate(100, false, new PicOcrRspResult());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.PicOcrServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

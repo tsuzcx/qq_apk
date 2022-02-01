@@ -11,16 +11,16 @@ import com.tencent.qphone.base.util.QLog;
 public class SkinnableServiceProcesser
   extends BroadcastReceiver
 {
-  private final Service jdField_a_of_type_AndroidAppService;
-  private final SkinnableServiceProcesser.Callback jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback;
+  private final Service a;
+  private final SkinnableServiceProcesser.Callback b;
   
   public SkinnableServiceProcesser(Service paramService, SkinnableServiceProcesser.Callback paramCallback)
   {
-    this.jdField_a_of_type_AndroidAppService = paramService;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback = paramCallback;
+    this.a = paramService;
+    this.b = paramCallback;
     try
     {
-      this.jdField_a_of_type_AndroidAppService.registerReceiver(this, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+      this.a.registerReceiver(this, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
       return;
     }
     catch (Exception paramService) {}
@@ -30,7 +30,7 @@ public class SkinnableServiceProcesser
   {
     try
     {
-      this.jdField_a_of_type_AndroidAppService.unregisterReceiver(this);
+      this.a.unregisterReceiver(this);
       return;
     }
     catch (Exception localException) {}
@@ -42,16 +42,16 @@ public class SkinnableServiceProcesser
       return;
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenSkinnableServiceProcesser$Callback;
+    paramContext = this.b;
     if (paramContext != null) {
-      paramContext.e();
+      paramContext.g();
     }
     QLog.d("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.SkinnableServiceProcesser
  * JD-Core Version:    0.7.0.1
  */

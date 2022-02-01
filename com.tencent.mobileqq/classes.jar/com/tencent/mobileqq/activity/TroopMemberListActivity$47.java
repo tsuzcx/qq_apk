@@ -18,39 +18,39 @@ class TroopMemberListActivity$47
   public void onClick(View paramView)
   {
     Object localObject;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mCanAtAll) && (!TroopMemberListActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity)))
+    if ((this.b.mCanAtAll) && (!TroopMemberListActivity.access$500(this.b)))
     {
-      if (((this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mFrom == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mDiscRemainCout > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mFrom == 3))
+      if (((this.b.mFrom == 11) && (this.b.mDiscRemainCout > 0)) || (this.b.mFrom == 3))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.getIntent();
+        localObject = this.b.getIntent();
         ((Intent)localObject).putExtra("member_uin", "0");
-        ((Intent)localObject).putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.setResult(-1, (Intent)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.finish();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mFrom == 11) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
+        ((Intent)localObject).putExtra("member_display_name", this.a);
+        this.b.setResult(-1, (Intent)localObject);
+        this.b.finish();
+        if (this.b.mFrom == 11) {
+          ReportController.b(this.b.app, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
         }
       }
       else
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, HardCodeUtil.a(2131715404), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mTitleBar.getHeight());
+        QQToast.makeText(this.b, HardCodeUtil.a(2131912882), 0).show(this.b.mTitleBar.getHeight());
       }
     }
-    else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mNoAtAllRemainTips))
+    else if (!TextUtils.isEmpty(this.b.mNoAtAllRemainTips))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity;
-      QQToast.a((Context)localObject, ((TroopMemberListActivity)localObject).mNoAtAllRemainTips, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mTitleBar.getHeight());
+      localObject = this.b;
+      QQToast.makeText((Context)localObject, ((TroopMemberListActivity)localObject).mNoAtAllRemainTips, 0).show(this.b.mTitleBar.getHeight());
     }
     else
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, HardCodeUtil.a(2131715400), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mTitleBar.getHeight());
+      QQToast.makeText(this.b, HardCodeUtil.a(2131912878), 0).show(this.b.mTitleBar.getHeight());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.47
  * JD-Core Version:    0.7.0.1
  */

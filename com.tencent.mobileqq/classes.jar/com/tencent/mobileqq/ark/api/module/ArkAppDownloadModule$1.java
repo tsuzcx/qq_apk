@@ -12,12 +12,12 @@ class ArkAppDownloadModule$1
   
   public void a(ArrayList<WadlResult> paramArrayList)
   {
-    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppDownloadModule.a(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule), new ArkAppDownloadModule.1.1(this, paramArrayList));
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppDownloadModule.a(this.b), new ArkAppDownloadModule.1.1(this, paramArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.1
  * JD-Core Version:    0.7.0.1
  */

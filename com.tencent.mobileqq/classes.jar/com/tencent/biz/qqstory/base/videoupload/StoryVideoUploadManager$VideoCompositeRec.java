@@ -17,9 +17,9 @@ public class StoryVideoUploadManager$VideoCompositeRec
   
   public void a(@NonNull StoryVideoUploadManager paramStoryVideoUploadManager, @NonNull VideoCompositeManager.CompositeVideoEvent paramCompositeVideoEvent)
   {
-    if (paramCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramCompositeVideoEvent.g.isSuccess())
     {
-      SLog.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramCompositeVideoEvent.jdField_a_of_type_JavaLangString, paramCompositeVideoEvent.b);
+      SLog.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramCompositeVideoEvent.a, paramCompositeVideoEvent.b);
       Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramStoryVideoUploadManager, paramCompositeVideoEvent), 0);
     }
   }
@@ -31,7 +31,7 @@ public class StoryVideoUploadManager$VideoCompositeRec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec
  * JD-Core Version:    0.7.0.1
  */

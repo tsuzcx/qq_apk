@@ -43,7 +43,7 @@ class BGLocateMonitor$TelephonyBinderProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.BGLocateMonitor.TelephonyBinderProxy
  * JD-Core Version:    0.7.0.1
  */

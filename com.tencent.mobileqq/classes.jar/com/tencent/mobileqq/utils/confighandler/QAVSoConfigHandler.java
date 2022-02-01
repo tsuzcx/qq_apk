@@ -21,7 +21,7 @@ public class QAVSoConfigHandler
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this.TAG);
-    localStringBuilder.append(HardCodeUtil.a(2131708935));
+    localStringBuilder.append(HardCodeUtil.a(2131906702));
     throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
@@ -37,13 +37,13 @@ public class QAVSoConfigHandler
     }
     paramString = new StringBuilder();
     paramString.append(this.TAG);
-    paramString.append(HardCodeUtil.a(2131708934));
+    paramString.append(HardCodeUtil.a(2131906701));
     throw new IllegalArgumentException(paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.QAVSoConfigHandler
  * JD-Core Version:    0.7.0.1
  */

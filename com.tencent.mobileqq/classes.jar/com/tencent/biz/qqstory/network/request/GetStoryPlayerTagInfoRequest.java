@@ -17,14 +17,19 @@ import java.util.List;
 public class GetStoryPlayerTagInfoRequest
   extends NetworkRequest<GetStoryPlayerTagInfoResponse>
 {
-  public final List<String> a;
+  public final List<String> e;
   
   public GetStoryPlayerTagInfoRequest(List<String> paramList)
   {
-    this.a = paramList;
+    this.e = paramList;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return "StorySvc.get_video_tag_778";
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
     try
@@ -38,28 +43,23 @@ public class GetStoryPlayerTagInfoRequest
     return new GetStoryPlayerTagInfoResponse(localRspStoryPlayerTagInfo);
   }
   
-  public String a()
-  {
-    return "StorySvc.get_video_tag_778";
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
-    Iterator localIterator = this.a.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
     }
     localReqStoryPlayerTagInfo.client.set(2);
-    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     return localReqStoryPlayerTagInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetStoryPlayerTagInfoRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,6 @@ import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyGlobalConfigs;
 import com.tencent.mtt.hippy.HippyRootView;
 import com.tencent.mtt.hippy.adapter.device.HippyDeviceAdapter;
-import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorEvent;
 import com.tencent.mtt.hippy.adapter.thirdparty.HippyThirdPartyAdapter;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyBundleLoader;
 import com.tencent.mtt.hippy.common.Callback;
@@ -36,20 +35,20 @@ import java.util.ArrayList;
 public class b
   implements Handler.Callback, HippyBridge.a, a
 {
-  HippyEngineContext a;
-  HippyBundleLoader b;
+  final HippyEngineContext a;
+  final HippyBundleLoader b;
   HippyBridge c;
   volatile boolean d = false;
   Handler e;
-  int f = 1;
-  boolean g = false;
+  int f;
+  boolean g;
   ArrayList<String> h = null;
   HippyEngine.ModuleListener i;
-  private StringBuilder k;
-  private boolean l = false;
-  private String m;
-  private int n;
-  private HippyThirdPartyAdapter o;
+  private final StringBuilder k;
+  private final boolean l;
+  private final String m;
+  private final int n;
+  private final HippyThirdPartyAdapter o;
   
   public b(HippyEngineContext paramHippyEngineContext, HippyBundleLoader paramHippyBundleLoader, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt2, HippyThirdPartyAdapter paramHippyThirdPartyAdapter)
   {
@@ -373,8 +372,8 @@ public class b
         localObject1 = this.a.getInstance(i1);
         if ((localObject1 != null) && (((HippyRootView)localObject1).getTimeMonitor() != null))
         {
-          ((HippyRootView)localObject1).getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_RUN_BUNDLE);
-          break label830;
+          ((HippyRootView)localObject1).getTimeMonitor().startEvent("runBundle");
+          break label829;
           this.k.setLength(0);
           Object localObject3 = ArgumentUtils.objectToJsonOpt(paramMessage.obj, this.k);
           if (TextUtils.equals((CharSequence)localObject1, "loadInstance"))
@@ -385,7 +384,7 @@ public class b
           this.c.callFunction((String)localObject1, (String)localObject3, null);
           return true;
           if (paramMessage.arg2 <= 0) {
-            break label838;
+            break label837;
           }
           localObject3 = this.a.getInstance(paramMessage.arg2);
           localObject1 = localObject3;
@@ -394,7 +393,7 @@ public class b
             localObject1 = localObject3;
             if (((HippyRootView)localObject3).getTimeMonitor() != null)
             {
-              ((HippyRootView)localObject3).getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_LOAD_BUNDLE);
+              ((HippyRootView)localObject3).getTimeMonitor().startEvent("loadBundle");
               localObject1 = localObject3;
             }
           }
@@ -438,7 +437,7 @@ public class b
           }
           a(HippyEngine.ModuleLoadStatus.STATUS_VARIABLE_NULL, "can not load module. loader.getBundleUniKey=null", null);
           return true;
-          this.a.getStartTimeMonitor().startEvent(HippyEngineMonitorEvent.ENGINE_LOAD_EVENT_INIT_BRIDGE);
+          this.a.getStartTimeMonitor().startEvent("initBridge");
           paramMessage = (Callback)paramMessage.obj;
         }
       }
@@ -450,11 +449,11 @@ public class b
       {
         localObject1 = this.a;
         if (this.f != 2) {
-          break label844;
+          break label843;
         }
         bool1 = true;
         if (this.g) {
-          break label849;
+          break label848;
         }
         bool2 = true;
         this.c = new HippyBridgeImpl((HippyEngineContext)localObject1, this, bool1, bool2, this.l, this.m);
@@ -476,23 +475,23 @@ public class b
       break;
       localObject2 = "resumeInstance";
       break;
-      label830:
+      label829:
       localObject2 = "loadInstance";
       break;
-      label838:
+      label837:
       localObject2 = null;
       break label354;
-      label844:
+      label843:
       boolean bool1 = false;
       continue;
-      label849:
+      label848:
       boolean bool2 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.b
  * JD-Core Version:    0.7.0.1
  */

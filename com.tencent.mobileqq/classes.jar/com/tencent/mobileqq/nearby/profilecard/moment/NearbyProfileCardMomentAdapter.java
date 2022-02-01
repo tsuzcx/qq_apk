@@ -17,55 +17,46 @@ public class NearbyProfileCardMomentAdapter
   extends BaseAdapter
   implements DecodeTaskCompletionListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private NearbyPeopleCard jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard;
-  private NearbyCardMomentItemFactory jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyCardMomentItemFactory;
-  private List<MomentFeedInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private NearbyCardMomentItemFactory a;
+  private NearbyPeopleCard b;
+  private final Context c;
+  private final List<MomentFeedInfo> d = new ArrayList();
   
   public NearbyProfileCardMomentAdapter(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
     if (paramQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyCardMomentItemFactory = new NearbyCardMomentItemFactory(paramQQAppInterface, paramContext);
+      this.a = new NearbyCardMomentItemFactory(paramQQAppInterface, paramContext);
     }
   }
   
   public List<MomentFeedInfo> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.d;
   }
   
   public void a(NearbyPeopleCard paramNearbyPeopleCard)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
+    this.b = paramNearbyPeopleCard;
   }
   
   public void a(List<MomentFeedInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.d.clear();
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.d.addAll(paramList);
     }
     notifyDataSetChanged();
   }
   
-  public void b(List<MomentFeedInfo> paramList)
-  {
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
-    }
-  }
-  
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.d.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.d.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -75,34 +66,34 @@ public class NearbyProfileCardMomentAdapter
   
   public int getItemViewType(int paramInt)
   {
-    NearbyCardMomentItemFactory localNearbyCardMomentItemFactory = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyCardMomentItemFactory;
+    NearbyCardMomentItemFactory localNearbyCardMomentItemFactory = this.a;
     if (localNearbyCardMomentItemFactory == null) {
       return -1;
     }
-    return localNearbyCardMomentItemFactory.a((MomentFeedInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return localNearbyCardMomentItemFactory.a((MomentFeedInfo)this.d.get(paramInt));
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyCardMomentItemFactory == null) {
+    if (this.a == null) {
       return null;
     }
-    MomentFeedInfo localMomentFeedInfo = (MomentFeedInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    int i = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyCardMomentItemFactory.a(localMomentFeedInfo);
-    BaseMomentItemBuilder localBaseMomentItemBuilder = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyCardMomentItemFactory.a(i);
+    MomentFeedInfo localMomentFeedInfo = (MomentFeedInfo)this.d.get(paramInt);
+    int i = this.a.a(localMomentFeedInfo);
+    BaseMomentItemBuilder localBaseMomentItemBuilder = this.a.a(i);
     paramViewGroup = paramView;
     if (localBaseMomentItemBuilder != null)
     {
-      localBaseMomentItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+      localBaseMomentItemBuilder.a(this.b);
       localBaseMomentItemBuilder.a(paramInt);
-      paramViewGroup = localBaseMomentItemBuilder.a(localMomentFeedInfo, this.jdField_a_of_type_AndroidContentContext, paramView);
+      paramViewGroup = localBaseMomentItemBuilder.a(localMomentFeedInfo, this.c, paramView);
     }
     return paramViewGroup;
   }
   
   public int getViewTypeCount()
   {
-    NearbyCardMomentItemFactory localNearbyCardMomentItemFactory = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyCardMomentItemFactory;
+    NearbyCardMomentItemFactory localNearbyCardMomentItemFactory = this.a;
     if (localNearbyCardMomentItemFactory == null) {
       return 1;
     }
@@ -111,7 +102,7 @@ public class NearbyProfileCardMomentAdapter
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (!TextUtils.equals(paramString, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
+    if (!TextUtils.equals(paramString, this.b.uin)) {
       return;
     }
     notifyDataSetChanged();
@@ -119,7 +110,7 @@ public class NearbyProfileCardMomentAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyProfileCardMomentAdapter
  * JD-Core Version:    0.7.0.1
  */

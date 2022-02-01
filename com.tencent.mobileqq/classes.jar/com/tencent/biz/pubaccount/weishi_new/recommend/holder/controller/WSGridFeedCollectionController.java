@@ -21,47 +21,47 @@ public class WSGridFeedCollectionController
   extends AbsWsUI<WSCollectionItemData>
   implements View.OnClickListener
 {
-  private static final int c = Color.parseColor("#e1e1e1");
-  private final stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSRoundedImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView;
-  private String jdField_a_of_type_JavaLangString;
-  private final Context jdField_b_of_type_AndroidContentContext;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int d;
+  private static final int f = Color.parseColor("#e1e1e1");
+  private View g;
+  private WSRoundedImageView h;
+  private TextView i;
+  private TextView j;
+  private final Context k;
+  private final stSimpleMetaFeed l;
+  private String m;
+  private int n;
   
   public WSGridFeedCollectionController(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
     super(paramContext);
-    this.jdField_b_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
+    this.k = paramContext;
+    this.l = paramstSimpleMetaFeed;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560423, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366631));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeWidth(WeishiUIUtil.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeColor(c);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366633));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366632));
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.g = LayoutInflater.from(paramContext).inflate(2131626468, null);
+    this.h = ((WSRoundedImageView)this.g.findViewById(2131432953));
+    this.h.setStrokeWidth(WeishiUIUtil.a);
+    this.h.setStrokeColor(f);
+    this.i = ((TextView)this.g.findViewById(2131432955));
+    this.j = ((TextView)this.g.findViewById(2131432954));
+    this.g.setOnClickListener(this);
   }
   
   protected void a() {}
   
   public void a(ViewGroup paramViewGroup)
   {
-    if ((ViewGroup)this.jdField_b_of_type_AndroidViewView.getParent() != null) {
+    if ((ViewGroup)this.g.getParent() != null) {
       return;
     }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.b(36.0F));
-    int i = ViewUtils.b(7.5F);
-    localLayoutParams.bottomMargin = i;
-    localLayoutParams.topMargin = i;
-    paramViewGroup.addView(this.jdField_b_of_type_AndroidViewView, localLayoutParams);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ViewUtils.dpToPx(36.0F));
+    int i1 = ViewUtils.dpToPx(7.5F);
+    localLayoutParams.bottomMargin = i1;
+    localLayoutParams.topMargin = i1;
+    paramViewGroup.addView(this.g, localLayoutParams);
   }
   
   public void a(WSCollectionItemData paramWSCollectionItemData)
@@ -71,39 +71,39 @@ public class WSGridFeedCollectionController
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.m = paramString;
   }
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).b());
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).c());
-    WSPicLoader.a(this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, ((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).a());
+    this.i.setText(((WSCollectionItemData)this.e).b());
+    this.j.setText(((WSCollectionItemData)this.e).c());
+    WSPicLoader.a().a(this.k, this.h, ((WSCollectionItemData)this.e).a());
   }
-  
-  protected void c() {}
   
   public void c(int paramInt)
   {
-    this.d = paramInt;
+    this.n = paramInt;
   }
   
-  public void e()
+  protected void f() {}
+  
+  public void i()
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_b_of_type_AndroidViewView.getParent();
+    ViewGroup localViewGroup = (ViewGroup)this.g.getParent();
     if (localViewGroup != null) {
-      localViewGroup.removeView(this.jdField_b_of_type_AndroidViewView);
+      localViewGroup.removeView(this.g);
     }
   }
   
   public void onClick(View paramView)
   {
-    WSCollectionJumpUtil.a(a(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, ((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).a(), this.jdField_a_of_type_Int, this.d, this.jdField_a_of_type_JavaLangString);
+    WSCollectionJumpUtil.a(d(), this.l, ((WSCollectionItemData)this.e).d(), this.c, this.n, this.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedCollectionController
  * JD-Core Version:    0.7.0.1
  */

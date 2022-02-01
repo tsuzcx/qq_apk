@@ -7,12 +7,12 @@ class AdVideoViewController$4$1
   
   public void run()
   {
-    this.a.this$0.a(this.a.a);
+    this.a.this$0.a(this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.qzone.logic.AdVideoViewController.4.1
  * JD-Core Version:    0.7.0.1
  */

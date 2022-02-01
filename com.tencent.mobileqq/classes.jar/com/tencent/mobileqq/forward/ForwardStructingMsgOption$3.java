@@ -12,18 +12,18 @@ class ForwardStructingMsgOption$3
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.a != null)
+    if (this.d.A != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.a.hideSoftInputFromWindow();
-      ForwardStructingMsgOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardStructingMsgOption.G();
+      this.d.A.hideSoftInputFromWindow();
+      ForwardStructingMsgOption.a(this.d, this.a, this.b, this.c);
+      this.d.aq();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardStructingMsgOption.3
  * JD-Core Version:    0.7.0.1
  */

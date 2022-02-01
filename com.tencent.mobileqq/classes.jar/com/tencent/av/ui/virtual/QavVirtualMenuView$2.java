@@ -12,10 +12,10 @@ class QavVirtualMenuView$2
   
   public void run()
   {
-    if ((EffectsRenderController.b()) && (AEFilterSupport.a() > 3))
+    if ((EffectsRenderController.c()) && (AEFilterSupport.a() > 3))
     {
       long l = SystemClock.elapsedRealtime();
-      String str = QavVirtualMenuView.a(this.this$0);
+      String str = QavVirtualMenuView.b(this.this$0);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("preload PTHumanSegmenter, cost[");
       localStringBuilder.append(SystemClock.elapsedRealtime() - l);

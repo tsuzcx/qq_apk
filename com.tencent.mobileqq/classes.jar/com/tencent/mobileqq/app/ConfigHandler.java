@@ -111,30 +111,16 @@ public class ConfigHandler
   implements UpgradeController.OnHandleUpgradeFinishListener
 {
   public static int a;
-  public ConfigHandler.InstallSuccessCallback a;
-  public QQAppInterface a;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private volatile boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public ConfigHandler.InstallSuccessCallback b = new ConfigHandler.InstallSuccessCallback(this);
+  public QQAppInterface c;
+  private HashSet<String> d = new HashSet();
+  private volatile boolean e;
+  private boolean f;
   
   public ConfigHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler$InstallSuccessCallback = new ConfigHandler.InstallSuccessCallback(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public static int a(QQAppInterface paramQQAppInterface)
-  {
-    int i = paramQQAppInterface.getPreferences().getInt("UPGRADE_TIPS_SHOW_COUNT", 0);
-    if (QLog.isColorLevel())
-    {
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("ConfigHandler.getUpgradeTipsShowCount:");
-      paramQQAppInterface.append(i);
-      QLog.d("UpgradeController", 2, paramQQAppInterface.toString());
-    }
-    return i;
+    this.c = paramQQAppInterface;
   }
   
   /* Error */
@@ -150,45 +136,45 @@ public class ConfigHandler
     //   8: aload_2
     //   9: astore_1
     //   10: aload_0
-    //   11: getfield 89	protocol/KQQConfig/UpgradeInfo:strProgressName	Ljava/lang/String;
+    //   11: getfield 50	protocol/KQQConfig/UpgradeInfo:strProgressName	Ljava/lang/String;
     //   14: ifnull +63 -> 77
     //   17: aload_0
-    //   18: getfield 89	protocol/KQQConfig/UpgradeInfo:strProgressName	Ljava/lang/String;
+    //   18: getfield 50	protocol/KQQConfig/UpgradeInfo:strProgressName	Ljava/lang/String;
     //   21: astore_0
     //   22: aload_2
     //   23: astore_1
     //   24: aload_0
     //   25: ifnull +52 -> 77
     //   28: aload_0
-    //   29: ldc 91
-    //   31: invokevirtual 97	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   29: ldc 52
+    //   31: invokevirtual 58	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   34: astore_0
-    //   35: new 99	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo
+    //   35: new 60	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo
     //   38: dup
-    //   39: invokespecial 100	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:<init>	()V
+    //   39: invokespecial 61	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:<init>	()V
     //   42: astore_1
     //   43: aload_1
     //   44: aload_0
     //   45: iconst_2
     //   46: aaload
-    //   47: putfield 102	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   47: putfield 63	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:a	Ljava/lang/String;
     //   50: aload_1
     //   51: aload_0
     //   52: iconst_1
     //   53: aaload
-    //   54: putfield 104	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:b	Ljava/lang/String;
+    //   54: putfield 65	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:c	Ljava/lang/String;
     //   57: aload_1
     //   58: aload_0
     //   59: iconst_0
     //   60: aaload
-    //   61: invokestatic 110	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   64: putfield 113	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:jdField_a_of_type_Long	J
+    //   61: invokestatic 71	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   64: putfield 74	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:b	J
     //   67: aload_1
     //   68: aload_0
     //   69: iconst_3
     //   70: aaload
-    //   71: invokestatic 119	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   74: putfield 121	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:jdField_a_of_type_Int	I
+    //   71: invokestatic 80	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   74: putfield 82	com/tencent/mobileqq/upgrade/UpgradeDetailWrapper$NewApkInfo:d	I
     //   77: aload_1
     //   78: areturn
     //   79: astore_0
@@ -231,60 +217,12 @@ public class ConfigHandler
     return null;
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("ConfigHandler.getUpgradeTipsUrl:");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.d("UpgradeController", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = paramQQAppInterface.getPreferences();
-    paramQQAppInterface = ((SharedPreferences)localObject).getString("UPGRADE_TIPS_URL", null);
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    localObject = ((SharedPreferences)localObject).getString("UPGRADE_TIPS_URL_MARK", null);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("ConfigHandler.getUpgradeTipsUrl:");
-      localStringBuilder.append((String)localObject);
-      QLog.d("UpgradeController", 2, localStringBuilder.toString());
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).split(":");
-      long l1 = Long.parseLong(localObject[0]);
-      long l2 = Long.parseLong(localObject[1]);
-      long l3 = System.currentTimeMillis();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("ConfigHandler.getUpgradeTipsUrl:");
-        ((StringBuilder)localObject).append(l3);
-        QLog.d("UpgradeController", 2, ((StringBuilder)localObject).toString());
-      }
-      if (l2 < l1) {
-        return null;
-      }
-      if (l3 <= l1) {
-        return null;
-      }
-      if ((l3 <= l2) && (paramInt > 0)) {
-        return null;
-      }
-    }
-    return paramQQAppInterface;
-  }
-  
   private void a(Intent paramIntent)
   {
     paramIntent.putExtra("logout_intent", true);
-    ThemeUiPlugin.destroy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ChatBackgroundManager.b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.logout(true);
+    ThemeUiPlugin.destroy(this.c);
+    ChatBackgroundManager.j();
+    this.c.logout(true);
     if (GlobalImageCache.a != null) {
       GlobalImageCache.a.evictAll();
     }
@@ -321,7 +259,7 @@ public class ConfigHandler
       if (str.equals(paramString)) {
         return;
       }
-      b(paramQQAppInterface, 0);
+      d(paramQQAppInterface, 0);
     }
     if (TextUtils.isEmpty(paramString))
     {
@@ -342,14 +280,6 @@ public class ConfigHandler
     ((SharedPreferences.Editor)localObject).putString("UPGRADE_TIPS_URL_MARK", paramQQAppInterface);
     ((SharedPreferences.Editor)localObject).putString("UPGRADE_TIPS_URL", paramString);
     ((SharedPreferences.Editor)localObject).commit();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    QLog.d("UpgradeController", 1, String.format("setUpgradeAutoDownloadInWifi isAuto=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-    paramQQAppInterface.putBoolean("UPGRADE_AUTO_DOWNLOAD_IN_WIFI", paramBoolean);
-    paramQQAppInterface.commit();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
@@ -426,8 +356,8 @@ public class ConfigHandler
       paramEntityManager.append(localAppShareID.strPkgName);
       QLog.d("share_appid", 2, paramEntityManager.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a.a(localAppShareID.strPkgName, localAppShareID);
-    a(localAppShareID.strResURLBig, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFileStreamPath(localAppShareID.strPkgName));
+    this.c.getMsgHandler().g.a(localAppShareID.strPkgName, localAppShareID);
+    a(localAppShareID.strResURLBig, this.c.getApplication().getFileStreamPath(localAppShareID.strPkgName));
     notifyUI(5, true, localAppShareID);
   }
   
@@ -435,7 +365,7 @@ public class ConfigHandler
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
+      this.d.remove(paramString);
       return;
     }
     finally
@@ -450,7 +380,7 @@ public class ConfigHandler
     if (paramGetResourceRespInfo == null) {
       return;
     }
-    long l1 = JumpFilterHelper.a().a();
+    long l1 = JumpFilterHelper.b().c();
     long l2 = paramGetResourceRespInfo.uiNewVer;
     if (QLog.isColorLevel())
     {
@@ -471,7 +401,7 @@ public class ConfigHandler
       if (TextUtils.isEmpty(paramGetResourceRespInfo)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new ConfigHandler.1(this, paramGetResourceRespInfo, l2));
+      this.c.execute(new ConfigHandler.1(this, paramGetResourceRespInfo, l2));
       return;
     }
     ThreadManager.getFileThreadHandler().post(new ConfigHandler.2(this));
@@ -480,33 +410,7 @@ public class ConfigHandler
   private void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
     notifyUI(4, paramBoolean, paramUpgradeDetailWrapper);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getPreferences().getString("UPGRADE_TIPS_DAILY_STR", null);
-    boolean bool;
-    if ((paramQQAppInterface != null) && (a().equals(paramQQAppInterface))) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("ConfigHandler.isDailyShowTips:");
-      localStringBuilder.append(bool);
-      localStringBuilder.append("--> ");
-      localStringBuilder.append(paramQQAppInterface);
-      QLog.d("UpgradeController", 2, localStringBuilder.toString());
-    }
-    return bool;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    return paramInt == paramQQAppInterface.getPreferences().getInt("NEW_ICON_TIMESTAMP", -1);
+    this.e = false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -526,12 +430,12 @@ public class ConfigHandler
       bool1 = bool2;
       if (!((IDPCApi)QRoute.api(IDPCApi.class)).isFeatureSupported(DPCNames.aio_eggs.name(), paramLong))
       {
-        FileUtils.deleteFile(new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir(), "eggs_config.zip").getAbsolutePath());
+        FileUtils.deleteFile(new File(this.c.getApplication().getFilesDir(), "eggs_config.zip").getAbsolutePath());
         FileUtils.deleteFile(AioAnimationConfigHelper.b);
         FileUtils.deleteFile(AioAnimationConfigHelper.c);
         bool1 = false;
-        AioAnimationConfigHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putLong("k_eggs_file_version", 0L).commit();
+        AioAnimationConfigHelper.a().a(this.c.getApplication());
+        this.c.getPreferences().edit().putLong("k_eggs_file_version", 0L).commit();
       }
     }
     if (QLog.isColorLevel())
@@ -544,13 +448,6 @@ public class ConfigHandler
       QLog.d("ConfigHandler", 2, localStringBuilder.toString());
     }
     return bool1;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-    paramQQAppInterface.putInt("UPGRADE_TIPS_SHOW_COUNT", paramInt);
-    paramQQAppInterface.commit();
   }
   
   public static void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -583,40 +480,34 @@ public class ConfigHandler
   
   public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
+    QLog.d("UpgradeController", 1, String.format("setUpgradeAutoDownloadInWifi isAuto=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
-    paramQQAppInterface.putBoolean("AUTO_DOWNLOADED_IN_WIFI", paramBoolean);
+    paramQQAppInterface.putBoolean("UPGRADE_AUTO_DOWNLOAD_IN_WIFI", paramBoolean);
     paramQQAppInterface.commit();
-    if (QLog.isColorLevel())
-    {
-      paramQQAppInterface = new StringBuffer();
-      paramQQAppInterface.append("is auto download : ");
-      paramQQAppInterface.append(paramBoolean);
-      QLog.d("preLoad_configServlet", 2, paramQQAppInterface.toString());
-    }
   }
   
   private void b(UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
     if (paramUpgradeDetailWrapper != null)
     {
-      if (paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) {
+      if (paramUpgradeDetailWrapper.b == null) {
         return;
       }
-      UpgradeInfo localUpgradeInfo = paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo;
+      UpgradeInfo localUpgradeInfo = paramUpgradeDetailWrapper.b;
       int i;
       if ((localUpgradeInfo.iUpgradeType > 0) && (localUpgradeInfo.bNewSwitch == 1)) {
         i = 1;
       } else {
         i = 0;
       }
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      Object localObject2 = this.c;
       if (i != 0) {
         localObject1 = "1";
       } else {
         localObject1 = "0";
       }
-      ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X8004DA5", "0X8004DA5", 0, 0, (String)localObject1, "", UpgradeController.a(), "");
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X8004DA5", "0X8004DA5", 0, 0, (String)localObject1, "", UpgradeController.k(), "");
+      Object localObject1 = this.c.getPreferences();
       localObject2 = ((SharedPreferences)localObject1).edit();
       if (((SharedPreferences)localObject1).getInt("upgrade_timeStamp", 0) < localUpgradeInfo.iNewTimeStamp) {
         ((SharedPreferences.Editor)localObject2).putInt("upgrade_timeStamp", localUpgradeInfo.iNewTimeStamp);
@@ -629,17 +520,17 @@ public class ConfigHandler
       if (localUpgradeInfo.iActionType == 0)
       {
         if (localUpgradeInfo.iUpgradeType != 1) {
-          d();
+          f();
         }
         if (localUpgradeInfo.iUpgradeType == 2)
         {
-          localObject1 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+          localObject1 = a(this.c.getApp());
           if ((localObject1 != null) && (!((String)localObject1).equals("com.tencent.mobileqq.activity.UserguideActivity")))
           {
             localObject1 = new Intent();
             ((Intent)localObject1).putExtra("reason_for_upgrade", true);
-            ((Intent)localObject1).putExtra("StrTitle", HardCodeUtil.a(2131702610));
-            ((Intent)localObject1).putExtra("StrUpgradeDesc", HardCodeUtil.a(2131702613));
+            ((Intent)localObject1).putExtra("StrTitle", HardCodeUtil.a(2131900603));
+            ((Intent)localObject1).putExtra("StrUpgradeDesc", HardCodeUtil.a(2131900606));
             ((Intent)localObject1).putExtra("StrUrl", localUpgradeInfo.strNewSoftwareURL);
             ((Intent)localObject1).putExtra(paramUpgradeDetailWrapper.getClass().getSimpleName(), paramUpgradeDetailWrapper);
             a((Intent)localObject1);
@@ -647,7 +538,7 @@ public class ConfigHandler
         }
         else if (localUpgradeInfo.iUpgradeType == 1)
         {
-          if (UpgradeController.a().a() == 4)
+          if (UpgradeController.a().b() == 4)
           {
             if (QLog.isColorLevel()) {
               QLog.d("UpgradeConfigManager", 2, "showUpgradeIfNecessary apk has been download");
@@ -655,7 +546,7 @@ public class ConfigHandler
             UpgradeController.a().d(true);
             return;
           }
-          boolean bool1 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+          boolean bool1 = a(this.c, false);
           boolean bool2 = AppNetConnInfo.isWifiConn();
           if (QLog.isColorLevel()) {
             QLog.d("UpgradeConfigManager", 2, String.format("showUpgradeIfNecessary apk has not been download. autoDownloadInWifi=%s isWifiConn=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
@@ -665,7 +556,7 @@ public class ConfigHandler
           {
             if (bool2)
             {
-              ((UpgradeController)localObject1).a();
+              ((UpgradeController)localObject1).e();
               return;
             }
             ((UpgradeController)localObject1).d(true);
@@ -673,7 +564,7 @@ public class ConfigHandler
           }
           if ((localUpgradeInfo.iTipsType != 0) && (localUpgradeInfo.iTipsType != 2))
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+            localObject1 = this.c.getHandler(Conversation.class);
             if (localObject1 != null) {
               ((MqqHandler)localObject1).obtainMessage(1134020, paramUpgradeDetailWrapper).sendToTarget();
             }
@@ -696,7 +587,7 @@ public class ConfigHandler
     if (paramGetResourceRespInfo == null) {
       return;
     }
-    IWeatherRuntimeService localIWeatherRuntimeService = (IWeatherRuntimeService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IWeatherRuntimeService.class);
+    IWeatherRuntimeService localIWeatherRuntimeService = (IWeatherRuntimeService)this.c.getRuntimeService(IWeatherRuntimeService.class);
     long l1 = paramGetResourceRespInfo.uiNewVer;
     long l2 = localIWeatherRuntimeService.getConfigVersion();
     if (QLog.isColorLevel())
@@ -718,20 +609,116 @@ public class ConfigHandler
       if (TextUtils.isEmpty(paramGetResourceRespInfo)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new ConfigHandler.3(this, paramGetResourceRespInfo, localIWeatherRuntimeService, l1));
+      this.c.execute(new ConfigHandler.3(this, paramGetResourceRespInfo, localIWeatherRuntimeService, l1));
     }
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface)
   {
-    return paramQQAppInterface.getPreferences().getBoolean("AUTO_DOWNLOADED_IN_WIFI", false);
+    paramQQAppInterface = paramQQAppInterface.getPreferences().getString("UPGRADE_TIPS_DAILY_STR", null);
+    boolean bool;
+    if ((paramQQAppInterface != null) && (a().equals(paramQQAppInterface))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ConfigHandler.isDailyShowTips:");
+      localStringBuilder.append(bool);
+      localStringBuilder.append("--> ");
+      localStringBuilder.append(paramQQAppInterface);
+      QLog.d("UpgradeController", 2, localStringBuilder.toString());
+    }
+    return bool;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    return paramInt == paramQQAppInterface.getPreferences().getInt("NEW_ICON_TIMESTAMP", -1);
+  }
+  
+  public static int c(QQAppInterface paramQQAppInterface)
+  {
+    int i = paramQQAppInterface.getPreferences().getInt("UPGRADE_TIPS_SHOW_COUNT", 0);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("ConfigHandler.getUpgradeTipsShowCount:");
+      paramQQAppInterface.append(i);
+      QLog.d("UpgradeController", 2, paramQQAppInterface.toString());
+    }
+    return i;
+  }
+  
+  public static String c(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ConfigHandler.getUpgradeTipsUrl:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("UpgradeController", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = paramQQAppInterface.getPreferences();
+    paramQQAppInterface = ((SharedPreferences)localObject).getString("UPGRADE_TIPS_URL", null);
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    localObject = ((SharedPreferences)localObject).getString("UPGRADE_TIPS_URL_MARK", null);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ConfigHandler.getUpgradeTipsUrl:");
+      localStringBuilder.append((String)localObject);
+      QLog.d("UpgradeController", 2, localStringBuilder.toString());
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split(":");
+      long l1 = Long.parseLong(localObject[0]);
+      long l2 = Long.parseLong(localObject[1]);
+      long l3 = System.currentTimeMillis();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ConfigHandler.getUpgradeTipsUrl:");
+        ((StringBuilder)localObject).append(l3);
+        QLog.d("UpgradeController", 2, ((StringBuilder)localObject).toString());
+      }
+      if (l2 < l1) {
+        return null;
+      }
+      if (l3 <= l1) {
+        return null;
+      }
+      if ((l3 <= l2) && (paramInt > 0)) {
+        return null;
+      }
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+    paramQQAppInterface.putBoolean("AUTO_DOWNLOADED_IN_WIFI", paramBoolean);
+    paramQQAppInterface.commit();
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuffer();
+      paramQQAppInterface.append("is auto download : ");
+      paramQQAppInterface.append(paramBoolean);
+      QLog.d("preLoad_configServlet", 2, paramQQAppInterface.toString());
+    }
   }
   
   private void c(UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (paramUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Boolean)
+    if (paramUpgradeDetailWrapper.f.dialog.o)
     {
-      MyAppApi.a().a(BaseActivity.sTopActivity, "biz_src_yyb");
+      MyAppApi.l().a(BaseActivity.sTopActivity, "biz_src_yyb");
       ThreadManager.getUIHandler().postDelayed(new ConfigHandler.11(this), 5000L);
     }
   }
@@ -741,7 +728,7 @@ public class ConfigHandler
   {
     // Byte code:
     //   0: aload_2
-    //   1: invokevirtual 768	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   1: invokevirtual 777	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
     //   4: istore 6
     //   6: iconst_0
     //   7: istore 14
@@ -760,25 +747,25 @@ public class ConfigHandler
     //   30: goto +6 -> 36
     //   33: iconst_0
     //   34: istore 6
-    //   36: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   36: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   39: ifeq +37 -> 76
-    //   42: new 60	java/lang/StringBuilder
+    //   42: new 98	java/lang/StringBuilder
     //   45: dup
-    //   46: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   46: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   49: astore_2
     //   50: aload_2
-    //   51: ldc_w 770
-    //   54: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: ldc_w 779
+    //   54: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: pop
     //   58: aload_2
     //   59: iload 6
-    //   61: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   64: pop
-    //   65: ldc_w 556
+    //   65: ldc_w 525
     //   68: iconst_2
     //   69: aload_2
-    //   70: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   73: invokestatic 80	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   70: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   73: invokestatic 289	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   76: iload 16
     //   78: istore 7
     //   80: iload 6
@@ -793,14 +780,14 @@ public class ConfigHandler
     //   99: istore 9
     //   101: iload 6
     //   103: istore 8
-    //   105: new 772	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   105: new 781	tencent/im/oidb/oidb_sso$OIDBSSOPkg
     //   108: dup
-    //   109: invokespecial 773	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   109: invokespecial 782	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
     //   112: aload_3
-    //   113: checkcast 775	[B
-    //   116: checkcast 775	[B
-    //   119: invokevirtual 776	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   122: checkcast 772	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   113: checkcast 784	[B
+    //   116: checkcast 784	[B
+    //   119: invokevirtual 785	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   122: checkcast 781	tencent/im/oidb/oidb_sso$OIDBSSOPkg
     //   125: astore_2
     //   126: aload_2
     //   127: ifnull +865 -> 992
@@ -813,8 +800,8 @@ public class ConfigHandler
     //   142: iload 6
     //   144: istore 8
     //   146: aload_2
-    //   147: getfield 780	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   150: invokevirtual 784	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   147: getfield 789	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   150: invokevirtual 793	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   153: ifne +839 -> 992
     //   156: iconst_1
     //   157: istore 6
@@ -827,7 +814,7 @@ public class ConfigHandler
     //   172: istore 9
     //   174: iload 6
     //   176: istore 8
-    //   178: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   178: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   181: ifeq +101 -> 282
     //   184: iload 14
     //   186: istore 10
@@ -837,9 +824,9 @@ public class ConfigHandler
     //   194: istore 9
     //   196: iload 6
     //   198: istore 8
-    //   200: new 60	java/lang/StringBuilder
+    //   200: new 98	java/lang/StringBuilder
     //   203: dup
-    //   204: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   204: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   207: astore_3
     //   208: iload 14
     //   210: istore 10
@@ -850,8 +837,8 @@ public class ConfigHandler
     //   220: iload 6
     //   222: istore 8
     //   224: aload_3
-    //   225: ldc_w 786
-    //   228: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: ldc_w 795
+    //   228: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   231: pop
     //   232: iload 14
     //   234: istore 10
@@ -863,7 +850,7 @@ public class ConfigHandler
     //   246: istore 8
     //   248: aload_3
     //   249: iload 6
-    //   251: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   251: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   254: pop
     //   255: iload 14
     //   257: istore 10
@@ -873,11 +860,11 @@ public class ConfigHandler
     //   265: istore 9
     //   267: iload 6
     //   269: istore 8
-    //   271: ldc_w 556
+    //   271: ldc_w 525
     //   274: iconst_2
     //   275: aload_3
-    //   276: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   279: invokestatic 80	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   276: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   279: invokestatic 289	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   282: iload 16
     //   284: istore 7
     //   286: iload 6
@@ -897,8 +884,8 @@ public class ConfigHandler
     //   315: iload 6
     //   317: istore 12
     //   319: aload_2
-    //   320: getfield 789	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   323: invokevirtual 792	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   320: getfield 798	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   323: invokevirtual 801	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   326: ifeq +606 -> 932
     //   329: iload 14
     //   331: istore 10
@@ -913,8 +900,8 @@ public class ConfigHandler
     //   349: iload 6
     //   351: istore 12
     //   353: aload_2
-    //   354: getfield 789	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   357: invokevirtual 330	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   354: getfield 798	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   357: invokevirtual 301	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   360: ifnull +572 -> 932
     //   363: iload 14
     //   365: istore 10
@@ -925,10 +912,10 @@ public class ConfigHandler
     //   375: iload 6
     //   377: istore 8
     //   379: aload_2
-    //   380: getfield 789	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   383: invokevirtual 330	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   386: invokevirtual 798	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   389: invokestatic 804	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   380: getfield 798	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   383: invokevirtual 301	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   386: invokevirtual 807	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   389: invokestatic 813	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
     //   392: astore_2
     //   393: iload 14
     //   395: istore 10
@@ -939,7 +926,7 @@ public class ConfigHandler
     //   405: iload 6
     //   407: istore 8
     //   409: aload_2
-    //   410: invokevirtual 808	java/nio/ByteBuffer:getShort	()S
+    //   410: invokevirtual 817	java/nio/ByteBuffer:getShort	()S
     //   413: istore 4
     //   415: iload 14
     //   417: istore 10
@@ -950,7 +937,7 @@ public class ConfigHandler
     //   427: iload 6
     //   429: istore 8
     //   431: aload_2
-    //   432: invokevirtual 808	java/nio/ByteBuffer:getShort	()S
+    //   432: invokevirtual 817	java/nio/ByteBuffer:getShort	()S
     //   435: istore 5
     //   437: iload 16
     //   439: istore 7
@@ -980,7 +967,7 @@ public class ConfigHandler
     //   487: istore 8
     //   489: aload_2
     //   490: aload_3
-    //   491: invokevirtual 810	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   491: invokevirtual 819	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
     //   494: pop
     //   495: iload 13
     //   497: istore 7
@@ -1001,14 +988,14 @@ public class ConfigHandler
     //   523: iload 6
     //   525: istore 8
     //   527: aload_0
-    //   528: getfield 37	com/tencent/mobileqq/app/ConfigHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   531: invokevirtual 412	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   528: getfield 41	com/tencent/mobileqq/app/ConfigHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   531: invokevirtual 386	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
     //   534: aload_1
-    //   535: invokevirtual 815	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   535: invokevirtual 824	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
     //   538: aconst_null
-    //   539: ldc_w 817
+    //   539: ldc_w 826
     //   542: iload 7
-    //   544: invokestatic 823	com/tencent/mobileqq/msf/sdk/SettingCloneUtil:writeValue	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+    //   544: invokestatic 832	com/tencent/mobileqq/msf/sdk/SettingCloneUtil:writeValue	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
     //   547: iload 7
     //   549: istore 10
     //   551: iload 6
@@ -1018,12 +1005,12 @@ public class ConfigHandler
     //   559: iload 6
     //   561: istore 8
     //   563: aload_0
-    //   564: getfield 37	com/tencent/mobileqq/app/ConfigHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   564: getfield 41	com/tencent/mobileqq/app/ConfigHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   567: aload_1
-    //   568: invokevirtual 815	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   571: ldc_w 825
+    //   568: invokevirtual 824	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   571: ldc_w 834
     //   574: iload 7
-    //   576: invokevirtual 829	com/tencent/mobileqq/app/QQAppInterface:openMsfPCActive	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   576: invokevirtual 838	com/tencent/mobileqq/app/QQAppInterface:openMsfPCActive	(Ljava/lang/String;Ljava/lang/String;Z)V
     //   579: iload 7
     //   581: istore 10
     //   583: iload 6
@@ -1032,9 +1019,9 @@ public class ConfigHandler
     //   589: istore 9
     //   591: iload 6
     //   593: istore 8
-    //   595: new 60	java/lang/StringBuilder
+    //   595: new 98	java/lang/StringBuilder
     //   598: dup
-    //   599: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   599: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   602: astore_2
     //   603: iload 7
     //   605: istore 10
@@ -1045,8 +1032,8 @@ public class ConfigHandler
     //   615: iload 6
     //   617: istore 8
     //   619: aload_2
-    //   620: ldc_w 831
-    //   623: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   620: ldc_w 840
+    //   623: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   626: pop
     //   627: iload 7
     //   629: istore 10
@@ -1058,7 +1045,7 @@ public class ConfigHandler
     //   641: istore 8
     //   643: aload_2
     //   644: iload 7
-    //   646: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   646: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   649: pop
     //   650: iload 7
     //   652: istore 10
@@ -1069,8 +1056,8 @@ public class ConfigHandler
     //   662: iload 6
     //   664: istore 8
     //   666: aload_2
-    //   667: ldc_w 833
-    //   670: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   667: ldc_w 842
+    //   670: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   673: pop
     //   674: iload 7
     //   676: istore 10
@@ -1080,11 +1067,11 @@ public class ConfigHandler
     //   684: istore 9
     //   686: iload 6
     //   688: istore 8
-    //   690: ldc_w 556
+    //   690: ldc_w 525
     //   693: iconst_1
     //   694: aload_2
-    //   695: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   698: invokestatic 80	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   695: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   698: invokestatic 289	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   701: iload 7
     //   703: istore 10
     //   705: iload 6
@@ -1093,10 +1080,10 @@ public class ConfigHandler
     //   711: istore 9
     //   713: iload 6
     //   715: istore 8
-    //   717: new 202	android/content/Intent
+    //   717: new 151	android/content/Intent
     //   720: dup
-    //   721: ldc_w 835
-    //   724: invokespecial 837	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   721: ldc_w 844
+    //   724: invokespecial 846	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   727: astore_2
     //   728: iload 7
     //   730: istore 10
@@ -1107,9 +1094,9 @@ public class ConfigHandler
     //   740: iload 6
     //   742: istore 8
     //   744: aload_2
-    //   745: ldc_w 839
+    //   745: ldc_w 848
     //   748: iload 7
-    //   750: invokevirtual 206	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   750: invokevirtual 155	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   753: pop
     //   754: iload 7
     //   756: istore 10
@@ -1120,10 +1107,10 @@ public class ConfigHandler
     //   766: iload 6
     //   768: istore 8
     //   770: aload_2
-    //   771: ldc_w 841
+    //   771: ldc_w 850
     //   774: aload_1
-    //   775: invokevirtual 815	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
-    //   778: invokevirtual 647	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   775: invokevirtual 824	com/tencent/qphone/base/remote/ToServiceMsg:getUin	()Ljava/lang/String;
+    //   778: invokevirtual 623	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   781: pop
     //   782: iload 7
     //   784: istore 10
@@ -1134,10 +1121,10 @@ public class ConfigHandler
     //   794: iload 6
     //   796: istore 8
     //   798: aload_0
-    //   799: getfield 37	com/tencent/mobileqq/app/ConfigHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   802: invokevirtual 629	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   799: getfield 41	com/tencent/mobileqq/app/ConfigHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   802: invokevirtual 605	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   805: aload_2
-    //   806: invokevirtual 844	com/tencent/qphone/base/util/BaseApplication:sendBroadcast	(Landroid/content/Intent;)V
+    //   806: invokevirtual 853	com/tencent/qphone/base/util/BaseApplication:sendBroadcast	(Landroid/content/Intent;)V
     //   809: iload 6
     //   811: istore 12
     //   813: goto +119 -> 932
@@ -1148,84 +1135,84 @@ public class ConfigHandler
     //   823: istore 10
     //   825: iload 8
     //   827: istore 11
-    //   829: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   829: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   832: ifeq +22 -> 854
     //   835: iload 9
     //   837: istore 10
     //   839: iload 8
     //   841: istore 11
-    //   843: ldc_w 556
+    //   843: ldc_w 525
     //   846: iconst_2
-    //   847: ldc_w 846
+    //   847: ldc_w 855
     //   850: aload_1
-    //   851: invokestatic 849	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   854: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   851: invokestatic 858	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   854: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   857: ifeq +134 -> 991
-    //   860: new 60	java/lang/StringBuilder
+    //   860: new 98	java/lang/StringBuilder
     //   863: dup
-    //   864: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   864: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   867: astore_1
     //   868: iload 9
     //   870: istore 7
     //   872: goto +78 -> 950
-    //   875: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   875: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   878: ifeq +52 -> 930
-    //   881: new 60	java/lang/StringBuilder
+    //   881: new 98	java/lang/StringBuilder
     //   884: dup
-    //   885: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   885: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   888: astore_2
     //   889: aload_2
-    //   890: ldc_w 786
-    //   893: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   890: ldc_w 795
+    //   893: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   896: pop
     //   897: aload_2
     //   898: iload 11
-    //   900: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   900: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   903: pop
     //   904: aload_2
-    //   905: ldc_w 851
-    //   908: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   905: ldc_w 860
+    //   908: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   911: pop
     //   912: aload_2
     //   913: iload 10
-    //   915: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   915: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   918: pop
-    //   919: ldc_w 556
+    //   919: ldc_w 525
     //   922: iconst_2
     //   923: aload_2
-    //   924: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   927: invokestatic 80	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   924: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   927: invokestatic 289	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   930: aload_1
     //   931: athrow
-    //   932: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   932: invokestatic 282	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   935: ifeq +56 -> 991
-    //   938: new 60	java/lang/StringBuilder
+    //   938: new 98	java/lang/StringBuilder
     //   941: dup
-    //   942: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   942: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   945: astore_1
     //   946: iload 12
     //   948: istore 8
     //   950: aload_1
-    //   951: ldc_w 786
-    //   954: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   951: ldc_w 795
+    //   954: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   957: pop
     //   958: aload_1
     //   959: iload 8
-    //   961: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   961: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   964: pop
     //   965: aload_1
-    //   966: ldc_w 851
-    //   969: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   966: ldc_w 860
+    //   969: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   972: pop
     //   973: aload_1
     //   974: iload 7
-    //   976: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   976: invokevirtual 523	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   979: pop
-    //   980: ldc_w 556
+    //   980: ldc_w 525
     //   983: iconst_2
     //   984: aload_1
-    //   985: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   988: invokestatic 80	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   985: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   988: invokestatic 289	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   991: return
     //   992: iconst_0
     //   993: istore 6
@@ -1307,14 +1294,21 @@ public class ConfigHandler
   
   private void c(GetResourceRespInfo paramGetResourceRespInfo)
   {
-    com.tencent.mobileqq.filemanager.data.FMConstants.jdField_a_of_type_Boolean = true;
+    com.tencent.mobileqq.filemanager.data.FMConstants.g = true;
     if ((paramGetResourceRespInfo.iResult != -2) && (paramGetResourceRespInfo.iResult != 0)) {
       return;
     }
     String str = paramGetResourceRespInfo.strResURL_big;
     if ((str != null) && (str.length() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new ConfigHandler.4(this, str, paramGetResourceRespInfo));
+      this.c.execute(new ConfigHandler.4(this, str, paramGetResourceRespInfo));
     }
+  }
+  
+  public static void d(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+    paramQQAppInterface.putInt("UPGRADE_TIPS_SHOW_COUNT", paramInt);
+    paramQQAppInterface.commit();
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1465,7 +1459,7 @@ public class ConfigHandler
     ((StringBuilder)localObject3).append(", valid:");
     ((StringBuilder)localObject3).append(bool2);
     QLog.d("UpgradeController", 1, ((StringBuilder)localObject3).toString());
-    this.b = bool2;
+    this.f = bool2;
     if (!bool2)
     {
       BaseApplicationImpl.sApplication.getResources();
@@ -1491,8 +1485,13 @@ public class ConfigHandler
     }
     String str = paramGetResourceRespInfo.strResURL_big;
     if ((str != null) && (str.length() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new ConfigHandler.5(this, str, paramGetResourceRespInfo));
+      this.c.execute(new ConfigHandler.5(this, str, paramGetResourceRespInfo));
     }
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getPreferences().getBoolean("AUTO_DOWNLOADED_IN_WIFI", false);
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1531,7 +1530,7 @@ public class ConfigHandler
     {
       bool1 = true;
       paramObject = paramToServiceMsg;
-      break label205;
+      break label206;
       if (i != 0)
       {
         bool1 = bool2;
@@ -1559,7 +1558,7 @@ public class ConfigHandler
           paramToServiceMsg.readFrom((JceInputStream)localObject);
           for (;;)
           {
-            label168:
+            label169:
             bool1 = bool2;
             paramObject = paramFromServiceMsg;
             if (paramToServiceMsg != null) {
@@ -1574,7 +1573,7 @@ public class ConfigHandler
                 break;
               }
             }
-            label205:
+            label206:
             if (QLog.isDevelopLevel())
             {
               paramToServiceMsg = new StringBuilder();
@@ -1595,7 +1594,7 @@ public class ConfigHandler
         }
         catch (Exception paramObject)
         {
-          break label168;
+          break label169;
         }
       }
     }
@@ -1622,11 +1621,11 @@ public class ConfigHandler
       notifyUI(7, false, Integer.valueOf(-1));
       return;
     }
-    Object localObject = (StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER);
+    Object localObject = (StatusManager)this.c.getManager(QQManagerFactory.STATUS_MANAGER);
     if (localObject == null) {
       return;
     }
-    if (!((StatusManager)localObject).a(paramGetResourceRespInfo.uiNewVer))
+    if (!((StatusManager)localObject).b(paramGetResourceRespInfo.uiNewVer))
     {
       notifyUI(7, true, Integer.valueOf(100));
       return;
@@ -1640,7 +1639,7 @@ public class ConfigHandler
       notifyUI(7, false, Integer.valueOf(-1));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new ConfigHandler.6(this, str, (StatusManager)localObject, paramGetResourceRespInfo));
+    this.c.execute(new ConfigHandler.6(this, str, (StatusManager)localObject, paramGetResourceRespInfo));
   }
   
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1673,7 +1672,7 @@ public class ConfigHandler
         } else {
           localObject = null;
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("has_auth_real_name", bool1).commit();
+        this.c.getPreferences().edit().putBoolean("has_auth_real_name", bool1).commit();
         if (i == 2)
         {
           if (localObject != null)
@@ -1741,10 +1740,10 @@ public class ConfigHandler
             paramFromServiceMsg = paramToServiceMsg;
             paramToServiceMsg = (ToServiceMsg)localObject;
           }
-          localObject = (IExpandLimitChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
+          localObject = (IExpandLimitChatManager)this.c.getManager(QQManagerFactory.EXTEND_FRIEND_LIMIT_CHAT_MANAGER);
           ((IExpandLimitChatManager)localObject).a(bool1);
           ((IExpandLimitChatManager)localObject).a(bool2, paramFromServiceMsg, paramObject, paramToServiceMsg);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("has_auth_real_name_extendfriend", bool1).putBoolean("has_request_auth_real_name_extendfriend", true).commit();
+          this.c.getPreferences().edit().putBoolean("has_auth_real_name_extendfriend", bool1).putBoolean("has_request_auth_real_name_extendfriend", true).commit();
           notifyUI(14, true, new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), paramFromServiceMsg, paramObject, paramToServiceMsg });
           if (QLog.isColorLevel())
           {
@@ -1771,7 +1770,7 @@ public class ConfigHandler
             paramToServiceMsg.append(bool1);
             QLog.i("RealName", 2, paramToServiceMsg.toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("has_auth_real_name_av", bool1).putBoolean("has_request_auth_real_name_av", true).commit();
+          this.c.getPreferences().edit().putBoolean("has_auth_real_name_av", bool1).putBoolean("has_request_auth_real_name_av", true).commit();
           notifyUI(15, true, new Object[] { Boolean.valueOf(bool1) });
         }
       }
@@ -1800,7 +1799,7 @@ public class ConfigHandler
     if (paramGetResourceRespInfo == null) {
       return;
     }
-    long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("k_eggs_file_version", 0L);
+    long l1 = this.c.getPreferences().getLong("k_eggs_file_version", 0L);
     long l2 = paramGetResourceRespInfo.uiNewVer;
     Object localObject;
     if (QLog.isColorLevel())
@@ -1822,7 +1821,7 @@ public class ConfigHandler
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new ConfigHandler.7(this, paramGetResourceRespInfo, (String)localObject, l2));
+      this.c.execute(new ConfigHandler.7(this, paramGetResourceRespInfo, (String)localObject, l2));
       return;
     }
     ThreadManager.getFileThreadHandler().post(new ConfigHandler.8(this, paramGetResourceRespInfo));
@@ -1886,58 +1885,15 @@ public class ConfigHandler
     return paramArrayList.getAppSeq();
   }
   
-  public GetResourceReqInfo a()
-  {
-    long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("k_eggs_file_version", 0L);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getEggsInfo curVersion: ");
-      ((StringBuilder)localObject).append(l);
-      QLog.d("eggs", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = new GetResourceReqInfo();
-    ((GetResourceReqInfo)localObject).uiResID = 0L;
-    ((GetResourceReqInfo)localObject).strPkgName = "eggs_android_CI_8.7.0";
-    ((GetResourceReqInfo)localObject).uiCurVer = l;
-    ((GetResourceReqInfo)localObject).sResType = 2;
-    ((GetResourceReqInfo)localObject).sLanType = 0;
-    ((GetResourceReqInfo)localObject).sReqType = 1;
-    return localObject;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfigHandler", 2, "send_oidb_0x5eb_42073");
-    }
-    oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())));
-      localReqBody.rpt_uint64_uins.set(localArrayList);
-      localReqBody.uint32_preload_disable_flag.set(1);
-      sendPbReq(makeOIDBPkg("OidbSvc.0x5eb_42073", 1515, 22, localReqBody.toByteArray()));
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ConfigHandler", 2, "send_oidb_0x5eb_42073 error", localException);
-      }
-    }
-  }
-  
   public void a(int paramInt, UpgradeDetailWrapper paramUpgradeDetailWrapper, UpgradeController paramUpgradeController)
   {
-    paramUpgradeController = paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo;
+    paramUpgradeController = paramUpgradeDetailWrapper.b;
     if ((paramInt == 0) && (paramUpgradeController != null))
     {
       BaseApplicationImpl.sApplication.getPackageName();
       a(paramUpgradeController);
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramUpgradeController.strNewTipsDescURL, paramUpgradeController.iTipsWaitDay);
-      b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramUpgradeController.strBannerPicUrl, paramUpgradeController.iDisplayDay);
+      a(this.c, paramUpgradeController.strNewTipsDescURL, paramUpgradeController.iTipsWaitDay);
+      b(this.c, paramUpgradeController.strBannerPicUrl, paramUpgradeController.iDisplayDay);
       b(paramUpgradeDetailWrapper);
       return;
     }
@@ -1948,7 +1904,7 @@ public class ConfigHandler
   {
     if (paramUpgradeDetailWrapper != null)
     {
-      paramUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo = new UpgradeInfo();
+      paramUpgradeDetailWrapper.b = new UpgradeInfo();
       a(false, paramUpgradeDetailWrapper);
     }
   }
@@ -1972,7 +1928,7 @@ public class ConfigHandler
       QLog.d("ConfigHandler", 2, paramToServiceMsg.toString());
     }
     paramObject = UpgradeController.a();
-    paramToServiceMsg = paramObject.a();
+    paramToServiceMsg = paramObject.d();
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (localObject != null)) {
       try
       {
@@ -2007,7 +1963,7 @@ public class ConfigHandler
           paramFromServiceMsg.append(i);
           QLog.d("UpgradeConfigManager", 2, paramFromServiceMsg.toString());
         }
-        paramToServiceMsg.jdField_a_of_type_Boolean = true;
+        paramToServiceMsg.g = true;
         if (i == 1)
         {
           bool2 = true;
@@ -2017,21 +1973,21 @@ public class ConfigHandler
           if (i != 2) {
             break label514;
           }
-          UpgradeController.a().b();
+          UpgradeController.a().f();
           break label514;
         }
-        if (paramToServiceMsg.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo != null)
+        if (paramToServiceMsg.c != null)
         {
           boolean bool1 = bool2;
           if (i == 0) {
-            if (paramToServiceMsg.jdField_a_of_type_Int == 1)
+            if (paramToServiceMsg.i == 1)
             {
               bool1 = true;
             }
             else
             {
               bool1 = bool2;
-              if (paramToServiceMsg.jdField_a_of_type_Int == 2) {
+              if (paramToServiceMsg.i == 2) {
                 bool1 = false;
               }
             }
@@ -2048,19 +2004,19 @@ public class ConfigHandler
         }
         else
         {
-          paramToServiceMsg.jdField_b_of_type_Int = i;
+          paramToServiceMsg.j = i;
         }
-        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool2);
+        b(this.c, bool2);
         if (QLog.isColorLevel()) {
           QLog.d("preLoad_configServlet", 2, "begin synchronized --toggle bit");
         }
-        if ((paramToServiceMsg.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo != null) && (paramToServiceMsg.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig != null) && (paramToServiceMsg.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType != 0))
+        if ((paramToServiceMsg.c != null) && (paramToServiceMsg.f != null) && (paramToServiceMsg.c.iUpgradeType != 0))
         {
           if (QLog.isColorLevel()) {
             QLog.d("preLoad_configServlet", 2, "begin synchronized --toggle bit go on");
           }
-          paramFromServiceMsg = (ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
-          paramObject.a(paramToServiceMsg.jdField_b_of_type_ProtocolKQQConfigUpgradeInfo, paramFromServiceMsg);
+          paramFromServiceMsg = (ConfigHandler)this.c.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+          paramObject.a(paramToServiceMsg.c, paramFromServiceMsg);
         }
         else if (QLog.isColorLevel())
         {
@@ -2079,7 +2035,7 @@ public class ConfigHandler
     if (paramObject == null)
     {
       if (paramToServiceMsg.extraData.getBoolean("reqRegionConfig")) {
-        ((ConditionSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER)).a(null);
+        ((ConditionSearchManager)this.c.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER)).a(null);
       }
       return;
     }
@@ -2122,7 +2078,7 @@ public class ConfigHandler
             }
             else if ("QQAddFriend.AdministrateRegion".equals(paramObject.strPkgName))
             {
-              localObject = (ConditionSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER);
+              localObject = (ConditionSearchManager)this.c.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER);
               if (localObject != null) {
                 ((ConditionSearchManager)localObject).a(paramObject);
               }
@@ -2134,13 +2090,13 @@ public class ConfigHandler
           }
           else if (paramObject.sResType == 4)
           {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+            localObject = this.c.getEntityManagerFactory().createEntityManager();
             a((EntityManager)localObject, paramObject);
             ((EntityManager)localObject).close();
           }
           else if (paramObject.sResType == 512)
           {
-            localObject = (IEarlyDownloadService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "");
+            localObject = (IEarlyDownloadService)this.c.getRuntimeService(IEarlyDownloadService.class, "");
             if (localObject != null) {
               ((IEarlyDownloadService)localObject).onServerResp(paramObject);
             }
@@ -2176,14 +2132,14 @@ public class ConfigHandler
     ((OperateVoipTipsInfo)localObject1).uin = paramString;
     ((OperateVoipTipsInfo)localObject1).uinType = paramInt;
     ((OperateVoipTipsInfo)localObject1).taskList = paramArrayList;
-    Object localObject2 = QQOperateManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject2 = QQOperateManager.a(this.c);
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       localObject3 = ((QQOperateManager)localObject2).a(((QQOperationViopTipTask)paramArrayList.next()).taskid);
       if (localObject3 == null)
       {
-        ConfigServlet.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ConfigServlet.a(this.c);
         return;
       }
       QQOperationVoipTipsTaskExcuteRecord localQQOperationVoipTipsTaskExcuteRecord = new QQOperationVoipTipsTaskExcuteRecord();
@@ -2193,7 +2149,7 @@ public class ConfigHandler
       localQQOperationVoipTipsTaskExcuteRecord.uinType = paramInt;
       localQQOperationVoipTipsTaskExcuteRecord.count = 1;
       localQQOperationVoipTipsTaskExcuteRecord.time = System.currentTimeMillis();
-      ((QQOperateManager)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localQQOperationVoipTipsTaskExcuteRecord);
+      ((QQOperateManager)localObject2).a(this.c, localQQOperationVoipTipsTaskExcuteRecord);
     }
     notifyUI(8, true, localObject1);
   }
@@ -2223,9 +2179,9 @@ public class ConfigHandler
         {
           QQOperationRequestTaskInfo localQQOperationRequestTaskInfo = (QQOperationRequestTaskInfo)paramArrayList.next();
           MobileTips.TaskInfo localTaskInfo = new MobileTips.TaskInfo();
-          localTaskInfo.task_id.set(localQQOperationRequestTaskInfo.jdField_a_of_type_Int);
-          localTaskInfo.msgcnt.set(localQQOperationRequestTaskInfo.jdField_b_of_type_Int);
-          localTaskInfo.keywords.set(localQQOperationRequestTaskInfo.jdField_a_of_type_JavaUtilArrayList);
+          localTaskInfo.task_id.set(localQQOperationRequestTaskInfo.a);
+          localTaskInfo.msgcnt.set(localQQOperationRequestTaskInfo.b);
+          localTaskInfo.keywords.set(localQQOperationRequestTaskInfo.c);
           localTaskInfo.setHasFlag(true);
           localArrayList.add(localTaskInfo);
         }
@@ -2234,7 +2190,7 @@ public class ConfigHandler
       localMobileTipsPkg.req.setHasFlag(true);
       localMobileTipsPkg.rsp.setHasFlag(true);
       localMobileTipsPkg.setHasFlag(true);
-      paramArrayList = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "MobileTipsSvc.TipsReport");
+      paramArrayList = new ToServiceMsg("mobileqq.service", this.c.getCurrentAccountUin(), "MobileTipsSvc.TipsReport");
       paramArrayList.extraData.putBoolean("isRetry", paramBoolean);
       paramArrayList.extraData.putString("chatuin", paramString);
       paramArrayList.extraData.putInt("chattype", paramInt);
@@ -2247,13 +2203,13 @@ public class ConfigHandler
   
   public void a(String paramString, File paramFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.execute(new ConfigHandler.9(this, paramString, paramFile));
+    this.c.execute(new ConfigHandler.9(this, paramString, paramFile));
   }
   
   public void a(boolean paramBoolean)
   {
     Object localObject = ByteBuffer.allocate(13);
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    long l = Long.parseLong(this.c.getCurrentAccountUin());
     short s;
     if (paramBoolean) {
       s = 1;
@@ -2266,55 +2222,14 @@ public class ConfigHandler
     sendPbReq((ToServiceMsg)localObject);
   }
   
-  public boolean a()
-  {
-    boolean bool = Verify.b(BaseApplicationImpl.sApplication);
-    if (QLog.isDevelopLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("checkAuthIfNeccessary preCheck:");
-      ((StringBuilder)localObject1).append(bool);
-      QLog.d("UpgradeController", 4, ((StringBuilder)localObject1).toString());
-    }
-    this.b = bool;
-    if (bool) {
-      return false;
-    }
-    Object localObject1 = null;
-    try
-    {
-      localObject2 = ApkExternalInfoTool.a(new File(BaseApplicationImpl.sApplication.getPackageResourcePath()));
-      localObject1 = localObject2;
-    }
-    catch (Exception localException)
-    {
-      Object localObject2;
-      label77:
-      break label77;
-    }
-    if (QLog.isDevelopLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("checkAuthIfNeccessary forCode:");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.d("UpgradeController", 4, ((StringBuilder)localObject2).toString());
-    }
-    localObject2 = createToServiceMsg("MAAControl.CheckSinglePkgSig");
-    ((ToServiceMsg)localObject2).extraData.putString("ac", (String)localObject1);
-    ((ToServiceMsg)localObject2).extraData.putInt("mv", ApkUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
-    ((ToServiceMsg)localObject2).extraData.putInt("sv", DeviceInfoUtil.a());
-    send((ToServiceMsg)localObject2);
-    return true;
-  }
-  
   public boolean a(String paramString1, int paramInt, String paramString2)
   {
     Object localObject = createToServiceMsg("MAAControl.GetSinglePkgSig");
     ((ToServiceMsg)localObject).extraData.putString("pn", paramString1);
     ((ToServiceMsg)localObject).extraData.putInt("vc", paramInt);
     ((ToServiceMsg)localObject).extraData.putString("rid", paramString2);
-    ((ToServiceMsg)localObject).extraData.putInt("mv", ApkUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
-    ((ToServiceMsg)localObject).extraData.putInt("sv", DeviceInfoUtil.a());
+    ((ToServiceMsg)localObject).extraData.putInt("mv", ApkUtils.a(this.c.getApp()));
+    ((ToServiceMsg)localObject).extraData.putInt("sv", DeviceInfoUtil.d());
     send((ToServiceMsg)localObject);
     if (QLog.isDevelopLevel())
     {
@@ -2328,35 +2243,27 @@ public class ConfigHandler
     return true;
   }
   
-  public GetResourceReqInfo b()
-  {
-    long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("k_voice_notify2_file_version", 0L);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("updateVoiceNotifyConfig => curVersion: ");
-      ((StringBuilder)localObject).append(l);
-      QLog.d("VoiceNotify", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = new GetResourceReqInfo();
-    ((GetResourceReqInfo)localObject).uiResID = 0L;
-    ((GetResourceReqInfo)localObject).strPkgName = "QQVoiceNotifyConfig2_android_CI";
-    ((GetResourceReqInfo)localObject).uiCurVer = l;
-    ((GetResourceReqInfo)localObject).sResType = 2;
-    ((GetResourceReqInfo)localObject).sLanType = 0;
-    ((GetResourceReqInfo)localObject).sReqType = 1;
-    return localObject;
-  }
-  
   public void b()
   {
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-    if (localMqqHandler != null)
-    {
-      BannerManager.a().a(UpgradeBannerProcessor.jdField_a_of_type_Int, 0, null);
-      localMqqHandler.sendEmptyMessage(1134019);
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfigHandler", 2, "send_oidb_0x5eb_42073");
     }
-    a(true, null);
+    oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      localArrayList.add(Long.valueOf(Long.parseLong(this.c.getAccount())));
+      localReqBody.rpt_uint64_uins.set(localArrayList);
+      localReqBody.uint32_preload_disable_flag.set(1);
+      sendPbReq(makeOIDBPkg("OidbSvc.0x5eb_42073", 1515, 22, localReqBody.toByteArray()));
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("ConfigHandler", 2, "send_oidb_0x5eb_42073 error", localException);
+      }
+    }
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -2386,7 +2293,7 @@ public class ConfigHandler
           if (paramToServiceMsg != null)
           {
             i = j;
-            if (paramToServiceMsg.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())) {}
+            if (paramToServiceMsg.equals(this.c.getAccount())) {}
           }
           else
           {
@@ -2400,30 +2307,111 @@ public class ConfigHandler
     }
   }
   
-  public boolean b()
+  public void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-    boolean bool1 = ((SharedPreferences)localObject).getBoolean("has_auth_real_name_extendfriend", false);
-    boolean bool2 = ((SharedPreferences)localObject).getBoolean("has_request_auth_real_name_extendfriend", false);
+    MqqHandler localMqqHandler = this.c.getHandler(Conversation.class);
+    if (localMqqHandler != null)
+    {
+      BannerManager.a().a(UpgradeBannerProcessor.a, 0, null);
+      localMqqHandler.sendEmptyMessage(1134019);
+    }
+    a(true, null);
+  }
+  
+  public void d()
+  {
+    UpgradeController.a().a(false);
+    a(false, null);
+  }
+  
+  public boolean e()
+  {
+    boolean bool = Verify.b(BaseApplicationImpl.sApplication);
+    if (QLog.isDevelopLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkAuthIfNeccessary preCheck:");
+      ((StringBuilder)localObject1).append(bool);
+      QLog.d("UpgradeController", 4, ((StringBuilder)localObject1).toString());
+    }
+    this.f = bool;
+    if (bool) {
+      return false;
+    }
+    Object localObject1 = null;
+    try
+    {
+      localObject2 = ApkExternalInfoTool.a(new File(BaseApplicationImpl.sApplication.getPackageResourcePath()));
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      Object localObject2;
+      label78:
+      break label78;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkAuthIfNeccessary forCode:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("UpgradeController", 4, ((StringBuilder)localObject2).toString());
+    }
+    localObject2 = createToServiceMsg("MAAControl.CheckSinglePkgSig");
+    ((ToServiceMsg)localObject2).extraData.putString("ac", (String)localObject1);
+    ((ToServiceMsg)localObject2).extraData.putInt("mv", ApkUtils.a(this.c.getApp()));
+    ((ToServiceMsg)localObject2).extraData.putInt("sv", DeviceInfoUtil.d());
+    send((ToServiceMsg)localObject2);
+    return true;
+  }
+  
+  public void f()
+  {
+    this.c.getPreferences().edit().putInt("upgrade_tip_count", 0).putLong("YELLOW_BAR_LAST_SHOW", 0L).putBoolean("AUTO_DOWNLOADED_IN_WIFI", false).remove("APPID_SHOULD_DOWNLOAD").commit();
+    d(this.c, 0);
+  }
+  
+  public GetResourceReqInfo g()
+  {
+    long l = this.c.getPreferences().getLong("k_eggs_file_version", 0L);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("hasAuthRealName ");
-      ((StringBuilder)localObject).append(bool1);
-      ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(bool2);
-      QLog.i("RealName", 2, ((StringBuilder)localObject).toString());
+      ((StringBuilder)localObject).append("getEggsInfo curVersion: ");
+      ((StringBuilder)localObject).append(l);
+      QLog.d("eggs", 2, ((StringBuilder)localObject).toString());
     }
-    if (bool1) {
-      return true;
-    }
-    localObject = makeOIDBPkg("OidbSvc.0x9ae_2", 2478, 10, new cmd0x9ae.ReqBody().toByteArray());
-    ((ToServiceMsg)localObject).addAttribute("serviceType", Integer.valueOf(10));
-    sendPbReq((ToServiceMsg)localObject);
-    return !bool2;
+    Object localObject = new GetResourceReqInfo();
+    ((GetResourceReqInfo)localObject).uiResID = 0L;
+    ((GetResourceReqInfo)localObject).strPkgName = "eggs_android_CI_8.7.0";
+    ((GetResourceReqInfo)localObject).uiCurVer = l;
+    ((GetResourceReqInfo)localObject).sResType = 2;
+    ((GetResourceReqInfo)localObject).sLanType = 0;
+    ((GetResourceReqInfo)localObject).sReqType = 1;
+    return localObject;
   }
   
-  public GetResourceReqInfo c()
+  public GetResourceReqInfo h()
+  {
+    long l = this.c.getPreferences().getLong("k_voice_notify2_file_version", 0L);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateVoiceNotifyConfig => curVersion: ");
+      ((StringBuilder)localObject).append(l);
+      QLog.d("VoiceNotify", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new GetResourceReqInfo();
+    ((GetResourceReqInfo)localObject).uiResID = 0L;
+    ((GetResourceReqInfo)localObject).strPkgName = "QQVoiceNotifyConfig2_android_CI";
+    ((GetResourceReqInfo)localObject).uiCurVer = l;
+    ((GetResourceReqInfo)localObject).sResType = 2;
+    ((GetResourceReqInfo)localObject).sLanType = 0;
+    ((GetResourceReqInfo)localObject).sReqType = 1;
+    return localObject;
+  }
+  
+  public GetResourceReqInfo i()
   {
     long l = BaseApplicationImpl.getApplication().getSharedPreferences("qq_safe_jump_whitelist", 0).getLong("key_jump_whitelist_version", 0L);
     GetResourceReqInfo localGetResourceReqInfo = new GetResourceReqInfo();
@@ -2436,38 +2424,9 @@ public class ConfigHandler
     return localGetResourceReqInfo;
   }
   
-  public void c()
+  public GetResourceReqInfo j()
   {
-    UpgradeController.a().a(false);
-    a(false, null);
-  }
-  
-  public boolean c()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-    boolean bool1 = ((SharedPreferences)localObject).getBoolean("has_auth_real_name_av", false);
-    boolean bool2 = ((SharedPreferences)localObject).getBoolean("has_request_auth_real_name_av", false);
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("hasAuthRealNameForAv ");
-      ((StringBuilder)localObject).append(bool1);
-      ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(bool2);
-      QLog.i("RealName", 2, ((StringBuilder)localObject).toString());
-    }
-    if (bool1) {
-      return true;
-    }
-    localObject = makeOIDBPkg("OidbSvc.0x9ae_2", 2478, 12, new cmd0x9ae.ReqBody().toByteArray());
-    ((ToServiceMsg)localObject).addAttribute("serviceType", Integer.valueOf(12));
-    sendPbReq((ToServiceMsg)localObject);
-    return !bool2;
-  }
-  
-  public GetResourceReqInfo d()
-  {
-    Object localObject = (StatusManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STATUS_MANAGER);
+    Object localObject = (StatusManager)this.c.getManager(QQManagerFactory.STATUS_MANAGER);
     if (localObject == null) {
       return null;
     }
@@ -2482,15 +2441,9 @@ public class ConfigHandler
     return localObject;
   }
   
-  public void d()
+  public GetResourceReqInfo k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("upgrade_tip_count", 0).putLong("YELLOW_BAR_LAST_SHOW", 0L).putBoolean("AUTO_DOWNLOADED_IN_WIFI", false).remove("APPID_SHOULD_DOWNLOAD").commit();
-    b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-  }
-  
-  public GetResourceReqInfo e()
-  {
-    ConditionSearchManager localConditionSearchManager = (ConditionSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER);
+    ConditionSearchManager localConditionSearchManager = (ConditionSearchManager)this.c.getManager(QQManagerFactory.CONDITION_SEARCH_MANAGER);
     if (localConditionSearchManager == null) {
       return null;
     }
@@ -2504,38 +2457,11 @@ public class ConfigHandler
     return localGetResourceReqInfo;
   }
   
-  public void e()
+  public GetResourceReqInfo l()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfigHandler", 2, "getPCActiveConfig");
-    }
-    try
-    {
-      oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-      localOIDBSSOPkg.uint32_command.set(2095);
-      localOIDBSSOPkg.uint32_service_type.set(0);
-      Object localObject = ByteBuffer.allocate(6);
-      ((ByteBuffer)localObject).putInt(Utils.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()))).putShort((short)16);
-      localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
-      localObject = createToServiceMsg("OidbSvc.0x82f_0");
-      ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
-      ((ToServiceMsg)localObject).setTimeout(30000L);
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ConfigHandler", 2, "getPCActiveConfig ex", localException);
-      }
-    }
-  }
-  
-  public GetResourceReqInfo f()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("QlinkResistTerrorist", 0);
+    Object localObject = this.c.getApplication().getSharedPreferences("QlinkResistTerrorist", 0);
     long l1 = ((SharedPreferences)localObject).getLong("SettingQlinkResistTerroristLastTime", 0L);
-    l1 = MessageCache.a() - l1;
+    l1 = MessageCache.c() - l1;
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -2546,24 +2472,24 @@ public class ConfigHandler
       localStringBuilder.append("]");
       QLog.i(str, 2, localStringBuilder.toString());
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.c.getCurrentAccountUin();
     if (!((SharedPreferences)localObject).getString("SettingQlinkResistTerroristLastAccount", "0").equalsIgnoreCase(str))
     {
       if (QLog.isColorLevel()) {
         QLog.i(((IFMConfig)QRoute.api(IFMConfig.class)).getTAG(), 2, "verifyResistTerrorist,change account!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a();
+      this.c.getFileTransferHandler().b();
     }
     else if (l1 > 86400L)
     {
       if (QLog.isColorLevel()) {
         QLog.i(((IFMConfig)QRoute.api(IFMConfig.class)).getTAG(), 2, "verifyResistTerrorist,durtime over one day!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a();
+      this.c.getFileTransferHandler().b();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("OfflineFileConfigV2", 0);
+    localObject = this.c.getApplication().getSharedPreferences("OfflineFileConfigV2", 0);
     l1 = ((SharedPreferences)localObject).getLong("FMConfigUpdateLastTime", 0L);
-    long l2 = MessageCache.a();
+    long l2 = MessageCache.c();
     if (QLog.isDevelopLevel()) {
       l1 = 0L;
     }
@@ -2604,16 +2530,43 @@ public class ConfigHandler
     return null;
   }
   
-  public void f()
+  public void m()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getBoolean("has_auth_real_name", false))
+    if (QLog.isColorLevel()) {
+      QLog.d("ConfigHandler", 2, "getPCActiveConfig");
+    }
+    try
+    {
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+      localOIDBSSOPkg.uint32_command.set(2095);
+      localOIDBSSOPkg.uint32_service_type.set(0);
+      Object localObject = ByteBuffer.allocate(6);
+      ((ByteBuffer)localObject).putInt(Utils.a(Long.parseLong(this.c.getAccount()))).putShort((short)16);
+      localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject).array()));
+      localObject = createToServiceMsg("OidbSvc.0x82f_0");
+      ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
+      ((ToServiceMsg)localObject).setTimeout(30000L);
+      sendPbReq((ToServiceMsg)localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConfigHandler", 2, "getPCActiveConfig ex", localException);
+      }
+    }
+  }
+  
+  public void n()
+  {
+    if (this.c.getPreferences().getBoolean("has_auth_real_name", false))
     {
       if (QLog.isColorLevel()) {
         QLog.i("RealName", 2, "has auth real name.");
       }
       return;
     }
-    if (EquipmentLockImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getApplication()) == 0)
+    if (EquipmentLockImpl.a().a(this.c, BaseApplicationImpl.getApplication()) == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("RealName", 2, "devlock status is 0.");
@@ -2626,6 +2579,29 @@ public class ConfigHandler
     if (QLog.isColorLevel()) {
       QLog.i("RealName", 2, "queryRealNameStatus");
     }
+  }
+  
+  public boolean o()
+  {
+    Object localObject = this.c.getPreferences();
+    boolean bool1 = ((SharedPreferences)localObject).getBoolean("has_auth_real_name_extendfriend", false);
+    boolean bool2 = ((SharedPreferences)localObject).getBoolean("has_request_auth_real_name_extendfriend", false);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hasAuthRealName ");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(bool2);
+      QLog.i("RealName", 2, ((StringBuilder)localObject).toString());
+    }
+    if (bool1) {
+      return true;
+    }
+    localObject = makeOIDBPkg("OidbSvc.0x9ae_2", 2478, 10, new cmd0x9ae.ReqBody().toByteArray());
+    ((ToServiceMsg)localObject).addAttribute("serviceType", Integer.valueOf(10));
+    sendPbReq((ToServiceMsg)localObject);
+    return !bool2;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -2722,10 +2698,33 @@ public class ConfigHandler
       }
     }
   }
+  
+  public boolean p()
+  {
+    Object localObject = this.c.getPreferences();
+    boolean bool1 = ((SharedPreferences)localObject).getBoolean("has_auth_real_name_av", false);
+    boolean bool2 = ((SharedPreferences)localObject).getBoolean("has_request_auth_real_name_av", false);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hasAuthRealNameForAv ");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(bool2);
+      QLog.i("RealName", 2, ((StringBuilder)localObject).toString());
+    }
+    if (bool1) {
+      return true;
+    }
+    localObject = makeOIDBPkg("OidbSvc.0x9ae_2", 2478, 12, new cmd0x9ae.ReqBody().toByteArray());
+    ((ToServiceMsg)localObject).addAttribute("serviceType", Integer.valueOf(12));
+    sendPbReq((ToServiceMsg)localObject);
+    return !bool2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler
  * JD-Core Version:    0.7.0.1
  */

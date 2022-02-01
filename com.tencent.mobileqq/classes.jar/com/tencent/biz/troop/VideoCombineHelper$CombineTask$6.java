@@ -7,7 +7,7 @@ class VideoCombineHelper$CombineTask$6
 {
   VideoCombineHelper$CombineTask$6(VideoCombineHelper.CombineTask paramCombineTask, VideoCombineHelper.Callback paramCallback, String paramString)
   {
-    super(paramCombineTask.a);
+    super(paramCombineTask.e);
   }
   
   public void a(boolean paramBoolean)
@@ -15,12 +15,12 @@ class VideoCombineHelper$CombineTask$6
     if (QLog.isColorLevel()) {
       QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+    this.a.a(this.b, paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.6
  * JD-Core Version:    0.7.0.1
  */

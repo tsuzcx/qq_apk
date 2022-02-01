@@ -54,10 +54,10 @@ class ResMgr$1
         QLog.i("AVResMgr", 1, "new config has been downloaded.");
         synchronized (ResMgr.a(this.a))
         {
-          if (ResMgr.a(this.a) != null) {
-            ResMgr.a(this.a).clear();
+          if (ResMgr.b(this.a) != null) {
+            ResMgr.b(this.a).clear();
           }
-          ??? = ResMgr.a();
+          ??? = ResMgr.b();
           if (??? != null) {
             ResMgr.a(this.a, ???);
           }

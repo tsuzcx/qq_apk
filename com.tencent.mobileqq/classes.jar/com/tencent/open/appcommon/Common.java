@@ -37,17 +37,6 @@ public class Common
     a = localStringBuilder.toString();
   }
   
-  public static int a()
-  {
-    return CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).getInt("appTabVersionCode", -1);
-  }
-  
-  public static long a()
-  {
-    StatFs localStatFs = new StatFs(d());
-    return localStatFs.getAvailableBlocks() * localStatFs.getBlockSize();
-  }
-  
   /* Error */
   public static long a(java.io.InputStream paramInputStream, String paramString1, String paramString2)
   {
@@ -55,35 +44,35 @@ public class Common
     //   0: new 21	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 78	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_1
     //   9: aload_1
-    //   10: invokevirtual 82	java/io/File:exists	()Z
+    //   10: invokevirtual 44	java/io/File:exists	()Z
     //   13: ifne +8 -> 21
     //   16: aload_1
-    //   17: invokevirtual 85	java/io/File:mkdir	()Z
+    //   17: invokevirtual 47	java/io/File:mkdir	()Z
     //   20: pop
     //   21: new 21	java/io/File
     //   24: dup
     //   25: aload_1
     //   26: aload_2
-    //   27: invokespecial 88	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokespecial 50	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   30: astore 5
     //   32: aconst_null
     //   33: astore 4
     //   35: aconst_null
     //   36: astore_1
-    //   37: new 90	java/io/FileOutputStream
+    //   37: new 52	java/io/FileOutputStream
     //   40: dup
     //   41: aload 5
-    //   43: invokespecial 93	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   43: invokespecial 55	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   46: astore_2
     //   47: sipush 4096
     //   50: newarray byte
     //   52: astore_1
     //   53: aload_0
     //   54: aload_1
-    //   55: invokevirtual 99	java/io/InputStream:read	([B)I
+    //   55: invokevirtual 61	java/io/InputStream:read	([B)I
     //   58: istore_3
     //   59: iconst_m1
     //   60: iload_3
@@ -92,14 +81,14 @@ public class Common
     //   65: aload_1
     //   66: iconst_0
     //   67: iload_3
-    //   68: invokevirtual 103	java/io/FileOutputStream:write	([BII)V
+    //   68: invokevirtual 65	java/io/FileOutputStream:write	([BII)V
     //   71: goto -18 -> 53
     //   74: aload_2
-    //   75: invokevirtual 106	java/io/FileOutputStream:flush	()V
+    //   75: invokevirtual 68	java/io/FileOutputStream:flush	()V
     //   78: aload_2
-    //   79: invokevirtual 109	java/io/FileOutputStream:close	()V
+    //   79: invokevirtual 71	java/io/FileOutputStream:close	()V
     //   82: aload 5
-    //   84: invokevirtual 112	java/io/File:length	()J
+    //   84: invokevirtual 75	java/io/File:length	()J
     //   87: lreturn
     //   88: astore_0
     //   89: goto +21 -> 110
@@ -119,7 +108,7 @@ public class Common
     //   110: aload_2
     //   111: ifnull +7 -> 118
     //   114: aload_2
-    //   115: invokevirtual 109	java/io/FileOutputStream:close	()V
+    //   115: invokevirtual 71	java/io/FileOutputStream:close	()V
     //   118: goto +5 -> 123
     //   121: aload_0
     //   122: athrow
@@ -193,77 +182,19 @@ public class Common
     return localStringBuilder1.toString();
   }
   
-  public static HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramString != null)
-    {
-      Object localObject;
-      if (!paramString.startsWith("?"))
-      {
-        localObject = paramString;
-        if (!paramString.startsWith("&")) {}
-      }
-      else
-      {
-        localObject = paramString.substring(1);
-      }
-      paramString = ((String)localObject).split("&");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        localObject = paramString[i].split("=");
-        if (localObject.length > 1)
-        {
-          String str = URLDecoder.decode(localObject[1]);
-          localHashMap.put(localObject[0], str);
-        }
-        i += 1;
-      }
-    }
-    return localHashMap;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      LogUtility.b("Common", "<initSystemFolder> begin to init system file... ");
-      File localFile = new File(c());
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      a(true);
-      return;
-    }
-    finally {}
-  }
-  
   public static void a(int paramInt)
   {
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    SharedPreferences.Editor localEditor = CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).edit();
     localEditor.putInt("appTabVersionCode", paramInt);
     localEditor.commit();
   }
   
   public static void a(long paramLong1, long paramLong2)
   {
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    SharedPreferences.Editor localEditor = CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).edit();
     localEditor.putLong("remaxage", paramLong1);
     localEditor.putLong("relasttime", paramLong2);
     localEditor.commit();
-  }
-  
-  public static void a(String paramString)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("setResourceMD5=");
-    ((StringBuilder)localObject).append(paramString);
-    LogUtility.c("Common", ((StringBuilder)localObject).toString());
-    localObject = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
-    ((SharedPreferences.Editor)localObject).putString("relastmd5", paramString);
-    ((SharedPreferences.Editor)localObject).commit();
   }
   
   public static void a(boolean paramBoolean)
@@ -286,20 +217,6 @@ public class Common
     }
   }
   
-  public static boolean a()
-  {
-    if (Environment.getExternalStorageState().equals("mounted")) {
-      return true;
-    }
-    return new File("/mnt/sdcard-ext").isDirectory();
-  }
-  
-  public static long[] a()
-  {
-    SharedPreferences localSharedPreferences = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4);
-    return new long[] { localSharedPreferences.getLong("remaxage", 0L), localSharedPreferences.getLong("relasttime", 0L) };
-  }
-  
   public static String[] a(String paramString)
   {
     boolean bool = paramString.toLowerCase().startsWith("sd://");
@@ -318,14 +235,14 @@ public class Common
         paramString = ((String)localObject2).substring(i + 1);
       }
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(g());
+      ((StringBuilder)localObject2).append(h());
       ((StringBuilder)localObject2).append(File.separator);
       ((StringBuilder)localObject2).append((String)localObject1);
       if (new File(((StringBuilder)localObject2).toString()).exists())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("file:///");
-        ((StringBuilder)localObject2).append(g());
+        ((StringBuilder)localObject2).append(h());
         ((StringBuilder)localObject2).append(File.separator);
         ((StringBuilder)localObject2).append((String)localObject1);
         localObject1 = ((StringBuilder)localObject2).toString();
@@ -357,33 +274,49 @@ public class Common
     return new String[] { localObject1, paramString };
   }
   
-  public static void b(String paramString)
+  public static HashMap<String, String> b(String paramString)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("setLastResourceZipMd5=");
-    ((StringBuilder)localObject).append(paramString);
-    LogUtility.c("Common", ((StringBuilder)localObject).toString());
-    localObject = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
-    ((SharedPreferences.Editor)localObject).putString("lastresourcezipmd5", paramString);
-    ((SharedPreferences.Editor)localObject).commit();
+    HashMap localHashMap = new HashMap();
+    if (paramString != null)
+    {
+      Object localObject;
+      if (!paramString.startsWith("?"))
+      {
+        localObject = paramString;
+        if (!paramString.startsWith("&")) {}
+      }
+      else
+      {
+        localObject = paramString.substring(1);
+      }
+      paramString = ((String)localObject).split("&");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        localObject = paramString[i].split("=");
+        if (localObject.length > 1)
+        {
+          String str = URLDecoder.decode(localObject[1]);
+          localHashMap.put(localObject[0], str);
+        }
+        i += 1;
+      }
+    }
+    return localHashMap;
   }
   
   public static void b(boolean paramBoolean)
   {
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+    SharedPreferences.Editor localEditor = CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).edit();
     localEditor.putBoolean("appstoreclearcache", paramBoolean);
     localEditor.commit();
-  }
-  
-  public static boolean b()
-  {
-    return CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).getBoolean("appstoreclearcache", false);
   }
   
   public static String c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(e());
+    localStringBuilder.append(f());
     localStringBuilder.append(File.separator);
     localStringBuilder.append(".AppCenterWebBuffer_QQ");
     return localStringBuilder.toString();
@@ -391,12 +324,35 @@ public class Common
   
   public static void c(String paramString)
   {
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
-    localEditor.putString("appstoreagentversion", paramString);
-    localEditor.commit();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setResourceMD5=");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtility.c("Common", ((StringBuilder)localObject).toString());
+    localObject = CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).edit();
+    ((SharedPreferences.Editor)localObject).putString("relastmd5", paramString);
+    ((SharedPreferences.Editor)localObject).commit();
   }
   
-  public static String d()
+  public static void d(String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setLastResourceZipMd5=");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtility.c("Common", ((StringBuilder)localObject).toString());
+    localObject = CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).edit();
+    ((SharedPreferences.Editor)localObject).putString("lastresourcezipmd5", paramString);
+    ((SharedPreferences.Editor)localObject).commit();
+  }
+  
+  public static boolean d()
+  {
+    if (Environment.getExternalStorageState().equals("mounted")) {
+      return true;
+    }
+    return new File("/mnt/sdcard-ext").isDirectory();
+  }
+  
+  public static String e()
   {
     String str = ".";
     try
@@ -415,11 +371,27 @@ public class Common
     return ".";
   }
   
-  public static void d(String paramString)
+  public static void e(String paramString)
+  {
+    SharedPreferences.Editor localEditor = CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).edit();
+    localEditor.putString("appstoreagentversion", paramString);
+    localEditor.commit();
+  }
+  
+  public static String f()
+  {
+    String str = VFSRegisterProxy.a().b();
+    if (!TextUtils.isEmpty(str)) {
+      return str;
+    }
+    return ".";
+  }
+  
+  public static void f(String paramString)
   {
     try
     {
-      SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).edit();
+      SharedPreferences.Editor localEditor = CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).edit();
       localEditor.putString("sdhtmldir", paramString);
       localEditor.commit();
       return;
@@ -431,27 +403,18 @@ public class Common
     }
   }
   
-  public static String e()
-  {
-    String str = VFSRegisterProxy.a().a();
-    if (!TextUtils.isEmpty(str)) {
-      return str;
-    }
-    return ".";
-  }
-  
-  public static String f()
+  public static String g()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(g());
+    localStringBuilder.append(h());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("qapp_center_index.htm");
     return localStringBuilder.toString();
   }
   
-  public static String g()
+  public static String h()
   {
-    String str = q();
+    String str = w();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<getSDResDir> getSDResDir=");
     localStringBuilder.append(str);
@@ -466,7 +429,7 @@ public class Common
     return localStringBuilder.toString();
   }
   
-  public static String h()
+  public static String i()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(c());
@@ -475,7 +438,7 @@ public class Common
     return localStringBuilder.toString();
   }
   
-  public static String i()
+  public static String j()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(c());
@@ -484,7 +447,22 @@ public class Common
     return localStringBuilder.toString();
   }
   
-  public static String j()
+  public static void k()
+  {
+    try
+    {
+      LogUtility.b("Common", "<initSystemFolder> begin to init system file... ");
+      File localFile = new File(c());
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      a(true);
+      return;
+    }
+    finally {}
+  }
+  
+  public static String l()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(c());
@@ -493,7 +471,7 @@ public class Common
     return localStringBuilder.toString();
   }
   
-  public static String k()
+  public static String m()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(c());
@@ -502,7 +480,7 @@ public class Common
     return localStringBuilder.toString();
   }
   
-  public static String l()
+  public static String n()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(c());
@@ -511,7 +489,7 @@ public class Common
     return localStringBuilder.toString();
   }
   
-  public static String m()
+  public static String o()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("file:///android_asset");
@@ -520,33 +498,55 @@ public class Common
     return localStringBuilder.toString();
   }
   
-  public static String n()
+  public static long p()
   {
-    return CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).getString("relastmd5", "");
+    StatFs localStatFs = new StatFs(e());
+    return localStatFs.getAvailableBlocks() * localStatFs.getBlockSize();
   }
   
-  public static String o()
+  public static int q()
   {
-    return CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).getString("lastresourcezipmd5", "");
-  }
-  
-  public static String p()
-  {
-    return CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).getString("appstoreagentversion", "");
-  }
-  
-  public static String q()
-  {
-    return CommonDataAdapter.a().a().getSharedPreferences("qzoneappcenter", 4).getString("sdhtmldir", "");
+    return CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).getInt("appTabVersionCode", -1);
   }
   
   public static String r()
+  {
+    return CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).getString("relastmd5", "");
+  }
+  
+  public static String s()
+  {
+    return CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).getString("lastresourcezipmd5", "");
+  }
+  
+  public static long[] t()
+  {
+    SharedPreferences localSharedPreferences = CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4);
+    return new long[] { localSharedPreferences.getLong("remaxage", 0L), localSharedPreferences.getLong("relasttime", 0L) };
+  }
+  
+  public static String u()
+  {
+    return CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).getString("appstoreagentversion", "");
+  }
+  
+  public static boolean v()
+  {
+    return CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).getBoolean("appstoreclearcache", false);
+  }
+  
+  public static String w()
+  {
+    return CommonDataAdapter.a().b().getSharedPreferences("qzoneappcenter", 4).getString("sdhtmldir", "");
+  }
+  
+  public static String x()
   {
     String str = "";
     int i = Process.myPid();
     try
     {
-      Object localObject2 = CommonDataAdapter.a().a();
+      Object localObject2 = CommonDataAdapter.a().b();
       Object localObject1 = str;
       if (localObject2 != null)
       {
@@ -565,8 +565,8 @@ public class Common
     }
     catch (Exception localException)
     {
-      label76:
-      break label76;
+      label75:
+      break label75;
     }
     LogUtility.c("Common", "exception happened!");
     return "";
@@ -574,7 +574,7 @@ public class Common
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.Common
  * JD-Core Version:    0.7.0.1
  */

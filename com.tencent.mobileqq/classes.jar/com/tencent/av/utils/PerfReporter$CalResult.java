@@ -2,28 +2,22 @@ package com.tencent.av.utils;
 
 class PerfReporter$CalResult
 {
-  public double a;
-  public int a;
+  public int a = -1;
   public int b = -1;
   public int c = -1;
-  public int d = 0;
-  
-  private PerfReporter$CalResult()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Double = -1.0D;
-  }
+  public double d = -1.0D;
+  public int e = 0;
   
   public void a(CalResult paramCalResult)
   {
-    int i = paramCalResult.jdField_a_of_type_Int;
+    int i = paramCalResult.a;
     if ((i >= 0) && (paramCalResult.b >= 0) && (paramCalResult.c >= 0))
     {
-      if (paramCalResult.jdField_a_of_type_Double < 0.0D) {
+      if (paramCalResult.d < 0.0D) {
         return;
       }
-      int k = this.d;
-      int m = paramCalResult.d;
+      int k = this.e;
+      int m = paramCalResult.e;
       int j = k + m;
       double d1 = k;
       Double.isNaN(d1);
@@ -34,11 +28,11 @@ class PerfReporter$CalResult
       Double.isNaN(d3);
       Double.isNaN(d2);
       d2 = d3 * 1.0D / d2;
-      k = this.jdField_a_of_type_Int;
+      k = this.a;
       if (k >= 0) {
         i = Math.max(k, i);
       }
-      this.jdField_a_of_type_Int = i;
+      this.a = i;
       i = this.b;
       if (i < 0) {
         i = paramCalResult.b;
@@ -60,14 +54,14 @@ class PerfReporter$CalResult
         i = (int)(d3 * d1 + d4 * d2);
       }
       this.c = i;
-      d3 = this.jdField_a_of_type_Double;
+      d3 = this.d;
       if (d3 < 0.0D) {
-        d1 = paramCalResult.jdField_a_of_type_Double;
+        d1 = paramCalResult.d;
       } else {
-        d1 = d3 * d1 + paramCalResult.jdField_a_of_type_Double * d2;
+        d1 = d3 * d1 + paramCalResult.d * d2;
       }
-      this.jdField_a_of_type_Double = d1;
-      this.d = j;
+      this.d = d1;
+      this.e = j;
     }
   }
 }

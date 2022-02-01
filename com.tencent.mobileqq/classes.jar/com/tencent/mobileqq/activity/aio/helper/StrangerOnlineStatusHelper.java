@@ -22,25 +22,25 @@ public class StrangerOnlineStatusHelper
   
   public void b()
   {
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int != 1025) || (!((StrangerQidianHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(61)).a(true))) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1006))
+    if ((this.d) && ((this.c.a != 1025) || (!((StrangerQidianHelper)this.a.d().a(61)).a(true))) && (this.c.a == 1006))
     {
-      Object localObject = ((IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).queryContactByCodeNumber(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
-      if (((localObject == null) || (OnlineStatusUtils.a(((PhoneContact)localObject).detalStatusFlag, ((PhoneContact)localObject).iTermType) == 0)) && (a().getVisibility() == 0))
+      Object localObject = ((IPhoneContactService)this.b.getRuntimeService(IPhoneContactService.class, "")).queryContactByCodeNumber(this.c.b);
+      if (((localObject == null) || (OnlineStatusUtils.a(((PhoneContact)localObject).detalStatusFlag, ((PhoneContact)localObject).iTermType) == 0)) && (f().getVisibility() == 0))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-        if (((TipsManager)localObject).a() == 5)
+        localObject = this.a.c();
+        if (((TipsManager)localObject).b() == 5)
         {
-          FriendHotTipsBar.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
-          ((TipsManager)localObject).a();
+          FriendHotTipsBar.c(this.b, this.c.b);
+          ((TipsManager)localObject).c();
         }
       }
     }
   }
   
-  protected void c()
+  protected void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1006) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.c.a == 1006) {
+      this.d = true;
     }
   }
   
@@ -52,7 +52,7 @@ public class StrangerOnlineStatusHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.StrangerOnlineStatusHelper
  * JD-Core Version:    0.7.0.1
  */

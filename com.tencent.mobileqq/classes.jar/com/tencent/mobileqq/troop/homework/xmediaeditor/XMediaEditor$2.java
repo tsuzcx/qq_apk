@@ -12,13 +12,13 @@ class XMediaEditor$2
   
   public void run()
   {
-    this.a.a.clearFocus();
+    this.a.b.clearFocus();
     ThreadManager.getUIHandler().post(new XMediaEditor.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor.2
  * JD-Core Version:    0.7.0.1
  */

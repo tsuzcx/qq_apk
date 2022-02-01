@@ -26,12 +26,12 @@ class SpringHbReportManager$7
       ((StringBuilder)localObject).append(",isSucc:");
       ((StringBuilder)localObject).append(paramBoolean);
       ((StringBuilder)localObject).append(",reqSeq:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      SpringHbReportManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, this.jdField_a_of_type_Long);
+      SpringHbReportManager.a(this.b, this.a);
       paramBundle = paramBundle.getByteArray("data");
       if ((paramBundle != null) && (paramBoolean))
       {
@@ -62,17 +62,17 @@ class SpringHbReportManager$7
           QLog.e("shua2021report_SpringHbReportManager", 1, ((StringBuilder)localObject).toString());
         }
         if (paramInt == 110002) {
-          SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, true);
+          SpringHbReportManager.b(this.b, true);
         } else {
-          SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, false);
+          SpringHbReportManager.b(this.b, false);
         }
-        SpringHbReportManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, this.jdField_a_of_type_Long, paramInt);
+        SpringHbReportManager.a(this.b, this.a, paramInt);
         paramInt = paramBundle.batchSize.get();
-        SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
+        SpringHbReportManager.b(this.b, paramInt);
         paramInt = paramBundle.reportLevel.get();
-        SpringHbReportManager.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
+        SpringHbReportManager.c(this.b, paramInt);
         paramInt = paramBundle.reportLevelTime.get();
-        SpringHbReportManager.b(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalReportSpringHbReportManager, paramInt);
+        SpringHbReportManager.b(this.b, paramInt);
         return;
       }
     }
@@ -88,7 +88,7 @@ class SpringHbReportManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReportManager.7
  * JD-Core Version:    0.7.0.1
  */

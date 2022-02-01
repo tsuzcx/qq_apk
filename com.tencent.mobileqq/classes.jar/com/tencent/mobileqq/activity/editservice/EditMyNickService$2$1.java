@@ -12,24 +12,24 @@ class EditMyNickService$2$1
   
   public void run()
   {
-    EditMyNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditMyNickService$2.a).loadingProgress(false);
-    if (this.jdField_a_of_type_Boolean)
+    EditMyNickService.a(this.d.a).loadingProgress(false);
+    if (this.a)
     {
-      EditMyNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditMyNickService$2.a).putExtra("result", this.jdField_a_of_type_ComTencentMobileqqDataCard.strNick);
-      EditMyNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditMyNickService$2.a).onFinishForResult(-1, EditMyNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditMyNickService$2.a));
+      EditMyNickService.g(this.d.a).putExtra("result", this.b.strNick);
+      EditMyNickService.a(this.d.a).onFinishForResult(-1, EditMyNickService.g(this.d.a));
       return;
     }
-    if (this.jdField_a_of_type_Int == 40) {
-      QQToast.a(EditMyNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditMyNickService$2.a), 1, 2131718812, 0).a();
+    if (this.c == 40) {
+      QQToast.makeText(EditMyNickService.d(this.d.a), 1, 2131916320, 0).show();
     } else {
-      QQToast.a(EditMyNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditMyNickService$2.a), 2, 2131694199, 0).a();
+      QQToast.makeText(EditMyNickService.d(this.d.a), 2, 2131891837, 0).show();
     }
-    EditMyNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditMyNickService$2.a).onFinish();
+    EditMyNickService.a(this.d.a).onFinish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditMyNickService.2.1
  * JD-Core Version:    0.7.0.1
  */

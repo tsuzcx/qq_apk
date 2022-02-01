@@ -17,7 +17,7 @@ class AEVideoShelfPreviewFragment$EngineCallback
   {
     WeakReference localWeakReference = this.mRef;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      AEVideoShelfPreviewFragment.access$1600((AEVideoShelfPreviewFragment)this.mRef.get());
+      AEVideoShelfPreviewFragment.access$1700((AEVideoShelfPreviewFragment)this.mRef.get());
     }
   }
   
@@ -33,7 +33,7 @@ class AEVideoShelfPreviewFragment$EngineCallback
   {
     WeakReference localWeakReference = this.mRef;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      AEVideoShelfPreviewFragment.access$1500((AEVideoShelfPreviewFragment)this.mRef.get(), paramInt1, paramInt2, paramString);
+      AEVideoShelfPreviewFragment.access$1600((AEVideoShelfPreviewFragment)this.mRef.get(), paramInt1, paramInt2, paramString);
     }
   }
   
@@ -41,7 +41,7 @@ class AEVideoShelfPreviewFragment$EngineCallback
   {
     WeakReference localWeakReference = this.mRef;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      AEVideoShelfPreviewFragment.access$1400((AEVideoShelfPreviewFragment)this.mRef.get(), paramInt);
+      AEVideoShelfPreviewFragment.access$1500((AEVideoShelfPreviewFragment)this.mRef.get(), paramInt);
     }
   }
   
@@ -49,13 +49,13 @@ class AEVideoShelfPreviewFragment$EngineCallback
   {
     WeakReference localWeakReference = this.mRef;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      AEVideoShelfPreviewFragment.access$1300((AEVideoShelfPreviewFragment)this.mRef.get());
+      AEVideoShelfPreviewFragment.access$1400((AEVideoShelfPreviewFragment)this.mRef.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEVideoShelfPreviewFragment.EngineCallback
  * JD-Core Version:    0.7.0.1
  */

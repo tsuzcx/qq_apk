@@ -15,7 +15,7 @@ final class VipComicHelper$1
   
   public void run()
   {
-    Object localObject1 = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject1 = (AppRuntime)this.a.get();
     if (localObject1 == null) {
       return;
     }
@@ -28,7 +28,7 @@ final class VipComicHelper$1
     if (k >= m)
     {
       i = j;
-      if ((arrayOfInteger[4].intValue() & this.jdField_a_of_type_Int) != 0) {
+      if ((arrayOfInteger[4].intValue() & this.b) != 0) {
         i = 1;
       }
     }
@@ -38,7 +38,7 @@ final class VipComicHelper$1
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("Skip update offline pkg. entry = ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(this.b);
         QLog.d("ComicHelper", 2, ((StringBuilder)localObject1).toString());
       }
       return;
@@ -47,7 +47,7 @@ final class VipComicHelper$1
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("Do update offline pkg. entry = ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(this.b);
       QLog.d("ComicHelper", 2, ((StringBuilder)localObject2).toString());
     }
     HtmlOffline.b("354", (AppRuntime)localObject1, true, new VipComicHelper.1.1(this));
@@ -55,7 +55,7 @@ final class VipComicHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicHelper.1
  * JD-Core Version:    0.7.0.1
  */

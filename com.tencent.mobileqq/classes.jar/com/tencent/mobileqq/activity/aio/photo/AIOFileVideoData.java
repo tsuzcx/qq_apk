@@ -18,166 +18,106 @@ import java.util.ArrayList;
 public class AIOFileVideoData
   extends AIORichMediaData
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public boolean b;
-  public int c;
-  public long c;
   public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
-  public String f;
-  private boolean f;
+  public long d;
+  public int e;
+  public int f;
   public String g;
   public String h;
   public String i;
-  public String j;
-  private String k = null;
+  public long j;
+  public String k;
+  public boolean l = false;
+  public boolean m = false;
+  public long n = 0L;
+  public boolean o = false;
+  public boolean p = false;
+  public boolean q = false;
+  public String r;
+  public int s;
+  public int t;
+  public String u;
+  public String v;
+  private String w = null;
+  private boolean x = false;
   
-  public AIOFileVideoData()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-  }
+  public AIOFileVideoData() {}
   
   public AIOFileVideoData(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   private void a(Context paramContext, VideoPlayControllerForAIO paramVideoPlayControllerForAIO)
   {
     paramVideoPlayControllerForAIO = new AIOFileVideoData.1(this, paramContext, paramVideoPlayControllerForAIO);
-    FMDialogUtil.a(paramContext, paramContext.getString(2131692561), paramContext.getString(2131692563), paramVideoPlayControllerForAIO);
+    FMDialogUtil.a(paramContext, paramContext.getString(2131889584), paramContext.getString(2131889586), paramVideoPlayControllerForAIO);
   }
   
-  private boolean c()
+  private boolean e()
   {
-    if (this.jdField_e_of_type_Boolean) {
+    if (this.q) {
       return false;
     }
-    if (!FileManagerUtil.a()) {
+    if (!FileManagerUtil.b()) {
       return false;
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_h_of_type_Long > 0L) && (this.jdField_h_of_type_Long > this.jdField_a_of_type_Long)) {
+    if ((!TextUtils.isEmpty(this.a)) && (this.O > 0L) && (this.O > this.d)) {
       return true;
     }
-    return this.jdField_h_of_type_Long > 1048576L;
+    return this.O > 1048576L;
   }
   
   public VideoPlayMedioInfo a(boolean paramBoolean)
   {
     VideoPlayMedioInfo localVideoPlayMedioInfo = new VideoPlayMedioInfo();
-    localVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString = new String[] { this.jdField_d_of_type_JavaLangString };
-    localVideoPlayMedioInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    localVideoPlayMedioInfo.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_e_of_type_JavaLangString);
-    localVideoPlayMedioInfo.jdField_a_of_type_Boolean = (a() ^ true);
+    localVideoPlayMedioInfo.c = new String[] { this.g };
+    localVideoPlayMedioInfo.d = new ArrayList();
+    localVideoPlayMedioInfo.d.add(this.h);
+    localVideoPlayMedioInfo.a = (a() ^ true);
     String str;
-    if (localVideoPlayMedioInfo.jdField_a_of_type_Boolean) {
-      str = this.jdField_f_of_type_JavaLangString;
+    if (localVideoPlayMedioInfo.a) {
+      str = this.i;
     } else {
-      str = this.jdField_c_of_type_JavaLangString;
+      str = this.c;
     }
-    localVideoPlayMedioInfo.jdField_a_of_type_JavaLangString = str;
-    localVideoPlayMedioInfo.jdField_c_of_type_Long = this.jdField_c_of_type_Long;
-    localVideoPlayMedioInfo.jdField_b_of_type_Boolean = true;
-    localVideoPlayMedioInfo.jdField_b_of_type_Long = this.jdField_h_of_type_Long;
-    localVideoPlayMedioInfo.jdField_a_of_type_Long = this.jdField_f_of_type_Long;
-    localVideoPlayMedioInfo.jdField_b_of_type_Int = this.jdField_f_of_type_Int;
-    localVideoPlayMedioInfo.jdField_e_of_type_Boolean = paramBoolean;
+    localVideoPlayMedioInfo.b = str;
+    localVideoPlayMedioInfo.o = this.n;
+    localVideoPlayMedioInfo.h = true;
+    localVideoPlayMedioInfo.n = this.O;
+    localVideoPlayMedioInfo.k = this.L;
+    localVideoPlayMedioInfo.l = this.M;
+    localVideoPlayMedioInfo.m = paramBoolean;
     return localVideoPlayMedioInfo;
-  }
-  
-  public File a(int paramInt)
-  {
-    if (!FileUtil.a(this.jdField_b_of_type_JavaLangString)) {
-      return null;
-    }
-    return new File(this.jdField_b_of_type_JavaLangString);
-  }
-  
-  public String a()
-  {
-    return this.k;
-  }
-  
-  public String a(int paramInt)
-  {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      return "";
-    }
-    if (!this.jdField_b_of_type_JavaLangString.startsWith("/"))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("file:/");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-      return localStringBuilder.toString();
-    }
-    if (this.jdField_b_of_type_JavaLangString.startsWith("//"))
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("file:");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-      return localStringBuilder.toString();
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("file:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    return localStringBuilder.toString();
-  }
-  
-  public void a()
-  {
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_f_of_type_Boolean = true;
   }
   
   public void a(Parcel paramParcel)
   {
     super.a(paramParcel);
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    int m = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readLong();
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readInt();
+    int i1 = paramParcel.readInt();
     boolean bool = true;
-    if (m != 1) {
+    if (i1 != 1) {
       bool = false;
     }
-    this.jdField_c_of_type_Boolean = bool;
-    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_i_of_type_JavaLangString = paramParcel.readString();
-    this.j = paramParcel.readString();
+    this.o = bool;
+    this.r = paramParcel.readString();
+    this.s = paramParcel.readInt();
+    this.t = paramParcel.readInt();
+    this.u = paramParcel.readString();
+    this.v = paramParcel.readString();
   }
   
   public void a(View paramView, VideoPlayControllerForAIO paramVideoPlayControllerForAIO)
   {
-    if (c())
+    if (e())
     {
       if (QFileUtils.a(paramView.getContext(), false, new AIOFileVideoData.2(this, paramVideoPlayControllerForAIO, paramView))) {
         a(paramView.getContext(), paramVideoPlayControllerForAIO);
@@ -185,47 +125,47 @@ public class AIOFileVideoData
     }
     else
     {
-      if (this.jdField_f_of_type_Boolean)
+      if (this.x)
       {
-        this.jdField_f_of_type_Boolean = false;
+        this.x = false;
         paramVideoPlayControllerForAIO.a(paramView, a(false));
       }
-      paramVideoPlayControllerForAIO.b();
-      paramVideoPlayControllerForAIO.f();
+      paramVideoPlayControllerForAIO.c();
+      paramVideoPlayControllerForAIO.h();
     }
   }
   
   public void a(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    this.jdField_h_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
-    this.jdField_c_of_type_Int = paramDataLineMsgRecord.istroop;
-    this.jdField_d_of_type_Int = paramDataLineMsgRecord.issend;
-    this.jdField_f_of_type_Long = paramDataLineMsgRecord.uniseq;
-    this.jdField_g_of_type_Long = paramDataLineMsgRecord.time;
-    this.jdField_i_of_type_Long = paramDataLineMsgRecord.shmsgseq;
-    this.jdField_h_of_type_Long = paramDataLineMsgRecord.filesize;
-    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.filename;
-    this.jdField_g_of_type_Int = 0;
+    this.r = paramDataLineMsgRecord.frienduin;
+    this.s = paramDataLineMsgRecord.istroop;
+    this.t = paramDataLineMsgRecord.issend;
+    this.L = paramDataLineMsgRecord.uniseq;
+    this.N = paramDataLineMsgRecord.time;
+    this.P = paramDataLineMsgRecord.shmsgseq;
+    this.O = paramDataLineMsgRecord.filesize;
+    this.a = paramDataLineMsgRecord.filename;
+    this.Q = 0;
     if (FileUtils.fileExistsAndNotEmpty(paramDataLineMsgRecord.path))
     {
-      this.jdField_c_of_type_JavaLangString = paramDataLineMsgRecord.path;
-      this.jdField_c_of_type_Boolean = true;
+      this.c = paramDataLineMsgRecord.path;
+      this.o = true;
     }
   }
   
   public void a(String paramString)
   {
-    this.k = paramString;
+    this.w = paramString;
   }
   
   public boolean a()
   {
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+    if (!TextUtils.isEmpty(this.c)) {
       return true;
     }
-    if (this.jdField_c_of_type_Boolean)
+    if (this.o)
     {
-      this.jdField_c_of_type_JavaLangString = this.jdField_f_of_type_JavaLangString;
+      this.c = this.i;
       return true;
     }
     return false;
@@ -233,7 +173,7 @@ public class AIOFileVideoData
   
   public boolean a(int paramInt)
   {
-    return FileUtil.a(this.jdField_b_of_type_JavaLangString);
+    return FileUtil.b(this.b);
   }
   
   public boolean a(IAIOImageProvider paramIAIOImageProvider)
@@ -241,16 +181,60 @@ public class AIOFileVideoData
     if (a()) {
       return false;
     }
-    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))) {
+    if ((!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)) && (!TextUtils.isEmpty(this.i))) {
       return false;
     }
-    paramIAIOImageProvider.a(this.jdField_f_of_type_Long, this.jdField_f_of_type_Int, 16842753);
+    paramIAIOImageProvider.a(this.L, this.M, 16842753);
     return true;
+  }
+  
+  public String b(int paramInt)
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
+    }
+    if (!this.b.startsWith("/"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file:/");
+      localStringBuilder.append(this.b);
+      return localStringBuilder.toString();
+    }
+    if (this.b.startsWith("//"))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file:");
+      localStringBuilder.append(this.b);
+      return localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file:");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
   
   public boolean b()
   {
-    return TextUtils.isEmpty(this.k) ^ true;
+    return TextUtils.isEmpty(this.w) ^ true;
+  }
+  
+  public File c(int paramInt)
+  {
+    if (!FileUtil.b(this.b)) {
+      return null;
+    }
+    return new File(this.b);
+  }
+  
+  public String c()
+  {
+    return this.w;
+  }
+  
+  public void d()
+  {
+    this.o = true;
+    this.x = true;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -260,7 +244,7 @@ public class AIOFileVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData
  * JD-Core Version:    0.7.0.1
  */

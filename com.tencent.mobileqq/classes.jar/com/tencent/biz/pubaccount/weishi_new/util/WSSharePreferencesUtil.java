@@ -5,24 +5,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class WSSharePreferencesUtil
 {
-  public static int a(String paramString, int paramInt)
-  {
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", paramString, paramInt);
-  }
-  
-  public static long a(String paramString, long paramLong)
-  {
-    return LocalMultiProcConfig.getLong("weishi_usergrowth", paramString, paramLong);
-  }
-  
   @NotNull
   private static String a()
   {
-    if (WeishiUtils.a() != 0L)
+    if (WeishiUtils.b() != 0L)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("weishi_usergrowth");
-      localStringBuilder.append(WeishiUtils.a());
+      localStringBuilder.append(WeishiUtils.c());
       return localStringBuilder.toString();
     }
     return "weishi_usergrowth";
@@ -32,11 +22,6 @@ public class WSSharePreferencesUtil
   private static String a(String paramString)
   {
     return paramString;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    return LocalMultiProcConfig.getString("weishi_usergrowth", paramString1, paramString2);
   }
   
   public static void a(String paramString, int paramInt)
@@ -59,14 +44,39 @@ public class WSSharePreferencesUtil
     LocalMultiProcConfig.putBool(a(), a(paramString), paramBoolean);
   }
   
-  public static boolean a(String paramString, boolean paramBoolean)
+  public static int b(String paramString, int paramInt)
+  {
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", paramString, paramInt);
+  }
+  
+  public static long b(String paramString, long paramLong)
+  {
+    return LocalMultiProcConfig.getLong("weishi_usergrowth", paramString, paramLong);
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    return LocalMultiProcConfig.getString("weishi_usergrowth", paramString1, paramString2);
+  }
+  
+  public static boolean b(String paramString, boolean paramBoolean)
   {
     return LocalMultiProcConfig.getBool(a(), a(paramString), paramBoolean);
+  }
+  
+  public static void c(String paramString, int paramInt)
+  {
+    LocalMultiProcConfig.putInt(a(), a(paramString), paramInt);
+  }
+  
+  public static int d(String paramString, int paramInt)
+  {
+    return LocalMultiProcConfig.getInt(a(), a(paramString), paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSSharePreferencesUtil
  * JD-Core Version:    0.7.0.1
  */

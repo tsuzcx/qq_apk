@@ -24,7 +24,7 @@ class UpcomingTimeSelector$TimeAdapter
       if (paramInt != 1) {
         return 1;
       }
-      if ((UpcomingTimeSelector.a(this.a).a(0) == 0) && (this.a.c < 23)) {
+      if ((UpcomingTimeSelector.a(this.a).b(0) == 0) && (this.a.c < 23)) {
         return this.a.a();
       }
       return 24;
@@ -42,15 +42,15 @@ class UpcomingTimeSelector$TimeAdapter
       if (paramInt1 != 1) {
         return "";
       }
-      if ((UpcomingTimeSelector.a(this.a).a(0) == 0) && (this.a.c < 23))
+      if ((UpcomingTimeSelector.a(this.a).b(0) == 0) && (this.a.c < 23))
       {
-        localObject1 = this.a.a(paramInt2);
+        localObject1 = this.a.b(paramInt2);
       }
       else
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(paramInt2);
-        ((StringBuilder)localObject1).append(this.a.a.getString(2131694556));
+        ((StringBuilder)localObject1).append(this.a.g.getString(2131892240));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       localObject2 = new StringBuilder();
@@ -86,7 +86,7 @@ class UpcomingTimeSelector$TimeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.UpcomingTimeSelector.TimeAdapter
  * JD-Core Version:    0.7.0.1
  */

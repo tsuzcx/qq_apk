@@ -5,17 +5,17 @@ import java.util.HashMap;
 
 public class FastLruCache<K, V>
 {
-  private final int jdField_a_of_type_Int;
-  private ReferenceQueue<V> jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
-  private final HashMap<K, V> jdField_a_of_type_JavaUtilHashMap;
-  private final HashMap<K, FastLruCache.Entry<K, V>> b = new HashMap();
+  private final int a;
+  private final HashMap<K, V> b;
+  private final HashMap<K, FastLruCache.Entry<K, V>> c = new HashMap();
+  private ReferenceQueue<V> d = new ReferenceQueue();
   
   public FastLruCache(int paramInt)
   {
     if (paramInt > 0)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_JavaUtilHashMap = new FastLruCache.1(this, 16, 0.75F, true, paramInt);
+      this.a = paramInt;
+      this.b = new FastLruCache.1(this, 16, 0.75F, true, paramInt);
       return;
     }
     throw new IllegalArgumentException("maxSize <= 0");
@@ -23,8 +23,8 @@ public class FastLruCache<K, V>
   
   private void a()
   {
-    for (FastLruCache.Entry localEntry = (FastLruCache.Entry)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll(); localEntry != null; localEntry = (FastLruCache.Entry)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll()) {
-      this.b.remove(localEntry.a);
+    for (FastLruCache.Entry localEntry = (FastLruCache.Entry)this.d.poll(); localEntry != null; localEntry = (FastLruCache.Entry)this.d.poll()) {
+      this.c.remove(localEntry.a);
     }
   }
   
@@ -33,11 +33,11 @@ public class FastLruCache<K, V>
     try
     {
       a();
-      Object localObject = this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+      Object localObject = this.b.get(paramK);
       if (localObject != null) {
         return localObject;
       }
-      paramK = (FastLruCache.Entry)this.b.get(paramK);
+      paramK = (FastLruCache.Entry)this.c.get(paramK);
       if (paramK == null) {
         paramK = null;
       } else {
@@ -53,8 +53,8 @@ public class FastLruCache<K, V>
     try
     {
       a();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, paramV);
-      paramK = (FastLruCache.Entry)this.b.put(paramK, new FastLruCache.Entry(paramK, paramV, this.jdField_a_of_type_JavaLangRefReferenceQueue));
+      this.b.put(paramK, paramV);
+      paramK = (FastLruCache.Entry)this.c.put(paramK, new FastLruCache.Entry(paramK, paramV, this.d));
       if (paramK == null) {
         paramK = null;
       } else {
@@ -67,7 +67,7 @@ public class FastLruCache<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     common.qzone.component.cache.common.FastLruCache
  * JD-Core Version:    0.7.0.1
  */

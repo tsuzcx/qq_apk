@@ -19,13 +19,13 @@ class DevLittleVideoItemBuilder$7
   
   public void run()
   {
-    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    DeviceMsgHandle localDeviceMsgHandle = (DeviceMsgHandle)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
-    ConcurrentHashMap localConcurrentHashMap = localDeviceMsgHandle.a;
+    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    DeviceMsgHandle localDeviceMsgHandle = (DeviceMsgHandle)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+    ConcurrentHashMap localConcurrentHashMap = localDeviceMsgHandle.m;
     int j = 0;
     try
     {
-      Iterator localIterator = localDeviceMsgHandle.a.entrySet().iterator();
+      Iterator localIterator = localDeviceMsgHandle.m.entrySet().iterator();
       do
       {
         i = j;
@@ -37,7 +37,7 @@ class DevLittleVideoItemBuilder$7
       if ((i == 0) && (!TextUtils.isEmpty(this.a.thumbFileKey)))
       {
         long l = localSmartDeviceProxyMgr.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
-        localDeviceMsgHandle.a.put(Long.valueOf(l), this.a);
+        localDeviceMsgHandle.m.put(Long.valueOf(l), this.a);
       }
       return;
     }
@@ -50,7 +50,7 @@ class DevLittleVideoItemBuilder$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

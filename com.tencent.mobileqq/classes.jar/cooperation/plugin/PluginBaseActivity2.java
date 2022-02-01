@@ -13,14 +13,9 @@ import com.tencent.widget.immersive.SystemBarCompact;
 public class PluginBaseActivity2
   extends BasePluginActivity
 {
-  public SystemBarCompact a;
-  public boolean a;
+  public boolean a = true;
   public boolean b = true;
-  
-  public PluginBaseActivity2()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public SystemBarCompact c;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -41,11 +36,11 @@ public class PluginBaseActivity2
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if ((this.jdField_a_of_type_Boolean) && (ImmersiveUtils.isSupporImmersive() == 1))
+    if ((this.a) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       getWindow().addFlags(67108864);
       if (this.b) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131167114));
+        this.c = new SystemBarCompact(this, true, getResources().getColor(2131168092));
       }
     }
   }
@@ -53,7 +48,7 @@ public class PluginBaseActivity2
   protected void onResume()
   {
     super.onResume();
-    SystemBarCompact localSystemBarCompact = this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
+    SystemBarCompact localSystemBarCompact = this.c;
     if (localSystemBarCompact != null) {
       localSystemBarCompact.init();
     }
@@ -61,7 +56,7 @@ public class PluginBaseActivity2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity2
  * JD-Core Version:    0.7.0.1
  */

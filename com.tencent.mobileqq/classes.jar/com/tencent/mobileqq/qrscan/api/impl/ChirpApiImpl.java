@@ -13,7 +13,7 @@ public class ChirpApiImpl
   {
     ChirpWrapper localChirpWrapper = this.chirp;
     if (localChirpWrapper != null) {
-      return localChirpWrapper.a(paramString);
+      return localChirpWrapper.b(paramString);
     }
     return null;
   }
@@ -25,7 +25,7 @@ public class ChirpApiImpl
       if (this.chirp == null) {
         this.chirp = new ChirpWrapper();
       }
-      int i = this.chirp.a();
+      int i = this.chirp.b();
       return i;
     }
     finally {}
@@ -42,7 +42,7 @@ public class ChirpApiImpl
     {
       if (this.chirp != null)
       {
-        this.chirp.a();
+        this.chirp.c();
         this.chirp = null;
       }
       return;
@@ -56,7 +56,7 @@ public class ChirpApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.api.impl.ChirpApiImpl
  * JD-Core Version:    0.7.0.1
  */

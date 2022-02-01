@@ -25,63 +25,58 @@ public class ComponentContentThree
   extends FrameLayout
   implements ComponentInheritView
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  CmpCtxt jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt;
-  List<KandianUrlImageView> jdField_a_of_type_JavaUtilList;
-  KandianUrlImageView b;
+  CmpCtxt a;
+  LinearLayout b;
   KandianUrlImageView c;
+  KandianUrlImageView d;
+  KandianUrlImageView e;
+  List<KandianUrlImageView> f;
   
   public ComponentContentThree(Context paramContext)
   {
     super(paramContext);
-    b(paramContext);
+    c(paramContext);
   }
   
   public ComponentContentThree(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b(paramContext);
+    c(paramContext);
   }
   
   public ComponentContentThree(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b(paramContext);
+    c(paramContext);
   }
   
-  private void b(Context paramContext)
+  private void c(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt = new CmpCtxt();
+    this.a = new CmpCtxt();
     a(paramContext);
     a();
-  }
-  
-  public View a(Context paramContext)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131560136, this, true);
   }
   
   public void a() {}
   
   public void a(Context paramContext)
   {
-    a(a(paramContext));
+    a(b(paramContext));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376081));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131369925));
-    this.b = ((KandianUrlImageView)paramView.findViewById(2131364396));
-    this.c = ((KandianUrlImageView)paramView.findViewById(2131376536));
-    this.jdField_a_of_type_JavaUtilList = Arrays.asList(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, this.b, this.c });
+    this.b = ((LinearLayout)paramView.findViewById(2131444284));
+    this.c = ((KandianUrlImageView)paramView.findViewById(2131437066));
+    this.d = ((KandianUrlImageView)paramView.findViewById(2131430425));
+    this.e = ((KandianUrlImageView)paramView.findViewById(2131444784));
+    this.f = Arrays.asList(new KandianUrlImageView[] { this.c, this.d, this.e });
     b();
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramCellListener);
+    this.a.a(paramCellListener);
   }
   
   public void a(Object paramObject)
@@ -89,23 +84,28 @@ public class ComponentContentThree
     if ((paramObject instanceof IReadInJoyModel))
     {
       paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a(paramObject);
+      this.a.a(paramObject);
       setContent(paramObject);
     }
   }
   
+  public View b(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131626183, this, true);
+  }
+  
   public void b()
   {
-    UtilsForComponent.a(getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, true);
-    UtilsForComponent.a(getContext(), this.b, true);
     UtilsForComponent.a(getContext(), this.c, true);
-    ((LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.getLayoutParams()).setMargins(0, 0, AIOUtils.b(1.5F, getResources()), 0);
-    ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(0, 0, AIOUtils.b(1.5F, getResources()), 0);
+    UtilsForComponent.a(getContext(), this.d, true);
+    UtilsForComponent.a(getContext(), this.e, true);
+    ((LinearLayout.LayoutParams)this.c.getLayoutParams()).setMargins(0, 0, AIOUtils.b(1.5F, getResources()), 0);
+    ((LinearLayout.LayoutParams)this.d.getLayoutParams()).setMargins(0, 0, AIOUtils.b(1.5F, getResources()), 0);
   }
   
   public void setContent(IReadInJoyModel paramIReadInJoyModel)
   {
-    Object localObject2 = paramIReadInJoyModel.a();
+    Object localObject2 = paramIReadInJoyModel.k();
     if (localObject2 == null) {
       return;
     }
@@ -127,7 +127,7 @@ public class ComponentContentThree
       } else {
         localObject2 = ((AbsBaseArticleInfo)localObject2).mSinglePicture;
       }
-      RIJComponentConfigImage.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { paramIReadInJoyModel, localObject1, localObject2 }), getContext());
+      RIJComponentConfigImage.a(this.f, Arrays.asList(new URL[] { paramIReadInJoyModel, localObject1, localObject2 }), getContext());
       return;
     }
     Object localObject3 = JSONUtils.a(((AbsBaseArticleInfo)localObject2).mJsonPictureList, "pictures");
@@ -154,13 +154,13 @@ public class ComponentContentThree
       } else {
         localObject2 = ((JSONObject)localObject3).optString("picture");
       }
-      RIJComponentConfigImage.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { RIJConvertString2URL.a(paramIReadInJoyModel), RIJConvertString2URL.a((String)localObject1), RIJConvertString2URL.a((String)localObject2) }), getContext());
+      RIJComponentConfigImage.a(this.f, Arrays.asList(new URL[] { RIJConvertString2URL.b(paramIReadInJoyModel), RIJConvertString2URL.b((String)localObject1), RIJConvertString2URL.b((String)localObject2) }), getContext());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentThree
  * JD-Core Version:    0.7.0.1
  */

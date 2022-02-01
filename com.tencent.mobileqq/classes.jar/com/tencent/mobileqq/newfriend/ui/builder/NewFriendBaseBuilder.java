@@ -22,20 +22,20 @@ import com.tencent.widget.ThemeImageView;
 
 public abstract class NewFriendBaseBuilder
 {
-  protected Context a;
-  protected AppInterface a;
-  protected NewFriendMessage a;
-  protected SystemMsgListBaseAdapter a;
-  protected SwipRightMenuBuilder a;
-  protected int b;
+  protected Context c;
+  protected AppInterface d;
+  protected SystemMsgListBaseAdapter e;
+  protected SwipRightMenuBuilder f;
+  protected NewFriendMessage g;
+  protected int h;
   
   public NewFriendBaseBuilder(Context paramContext, AppInterface paramAppInterface, SystemMsgListBaseAdapter paramSystemMsgListBaseAdapter, NewFriendMessage paramNewFriendMessage)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter = paramSystemMsgListBaseAdapter;
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage = paramNewFriendMessage;
-    this.b = paramContext.getResources().getDimensionPixelSize(2131297482);
+    this.c = paramContext;
+    this.d = paramAppInterface;
+    this.e = paramSystemMsgListBaseAdapter;
+    this.g = paramNewFriendMessage;
+    this.h = paramContext.getResources().getDimensionPixelSize(2131298133);
   }
   
   public static void a(View paramView, boolean paramBoolean)
@@ -48,11 +48,11 @@ public abstract class NewFriendBaseBuilder
     int k = paramView.getPaddingRight();
     int m = paramView.getPaddingLeft();
     if (paramBoolean) {
-      paramView.setBackgroundResource(2130839395);
+      paramView.setBackgroundResource(2130839579);
     } else if (ThemeUtil.isDefaultTheme()) {
-      paramView.setBackgroundResource(2130839393);
+      paramView.setBackgroundResource(2130839577);
     } else {
-      paramView.setBackgroundResource(2130839390);
+      paramView.setBackgroundResource(2130839574);
     }
     paramView.setPadding(m, j, k, i);
   }
@@ -76,18 +76,13 @@ public abstract class NewFriendBaseBuilder
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
-  protected int a()
-  {
-    return 0;
-  }
-  
   public abstract View a(int paramInt, View paramView);
   
   protected View a(Context paramContext, int paramInt, NewFriendBaseBuilder.NewFriendBaseHolder paramNewFriendBaseHolder)
   {
     View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    if (this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter != null) {
-      return this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.createView(paramContext, localView, paramNewFriendBaseHolder, -1);
+    if (this.e != null) {
+      return this.f.createView(paramContext, localView, paramNewFriendBaseHolder, -1);
     }
     paramNewFriendBaseHolder.leftView = localView;
     paramNewFriendBaseHolder.rightMenuItems = null;
@@ -96,8 +91,8 @@ public abstract class NewFriendBaseBuilder
   
   protected SwipRightMenuBuilder a(Context paramContext)
   {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298886);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298887);
+    int i = paramContext.getResources().getDimensionPixelSize(2131299607);
+    int j = paramContext.getResources().getDimensionPixelSize(2131299608);
     paramContext = INewFriendConstant.BaseBuilder.c;
     int[] arrayOfInt1 = INewFriendConstant.BaseBuilder.a;
     int[] arrayOfInt2 = INewFriendConstant.BaseBuilder.b;
@@ -108,17 +103,17 @@ public abstract class NewFriendBaseBuilder
   
   protected void a(Context paramContext, View paramView, int paramInt, Object paramObject, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, View.OnClickListener paramOnClickListener)
   {
-    SwipRightMenuBuilder localSwipRightMenuBuilder = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
+    SwipRightMenuBuilder localSwipRightMenuBuilder = this.f;
     int i;
     if (localSwipRightMenuBuilder != null) {
       i = localSwipRightMenuBuilder.updateRightMenuView(paramContext, paramView, paramInt, paramObject, paramSwipItemBaseHolder, paramOnClickListener);
     } else {
       i = 0;
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter;
-    if ((paramContext != null) && (paramContext.a != -1))
+    paramContext = this.e;
+    if ((paramContext != null) && (paramContext.d != -1))
     {
-      if (paramInt != this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.a)
+      if (paramInt != this.e.d)
       {
         paramView.scrollTo(0, 0);
         return;
@@ -132,10 +127,10 @@ public abstract class NewFriendBaseBuilder
     if (!Utils.a("tag_swip_icon_menu_item", paramView.getTag())) {
       return;
     }
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetworkAvailable(this.c))
     {
-      paramView = this.jdField_a_of_type_AndroidContentContext;
-      QQToast.a(paramView, paramView.getResources().getString(2131692183), 0).b(c());
+      paramView = this.c;
+      QQToast.makeText(paramView, paramView.getResources().getString(2131889169), 0).show(i());
       return;
     }
     Object localObject1 = paramView.getTag(-1);
@@ -158,7 +153,7 @@ public abstract class NewFriendBaseBuilder
       }
       try
       {
-        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(j);
+        paramView = this.c.getResources().getString(j);
       }
       catch (Exception localException)
       {
@@ -169,7 +164,7 @@ public abstract class NewFriendBaseBuilder
           paramView = localObject1;
         }
       }
-      if (Utils.a(paramView, this.jdField_a_of_type_AndroidContentContext.getResources().getString(INewFriendConstant.BaseBuilder.a[0]))) {
+      if (Utils.a(paramView, this.c.getResources().getString(INewFriendConstant.BaseBuilder.a[0]))) {
         a();
       }
       return;
@@ -184,7 +179,7 @@ public abstract class NewFriendBaseBuilder
     if (paramView == null) {
       return;
     }
-    View localView = paramView.findViewById(2131376644);
+    View localView = paramView.findViewById(2131444905);
     if ((localView != paramView) && (localView != null))
     {
       paramView = localView.getLayoutParams();
@@ -203,7 +198,12 @@ public abstract class NewFriendBaseBuilder
   
   public void a(NewFriendMessage paramNewFriendMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage = paramNewFriendMessage;
+    this.g = paramNewFriendMessage;
+  }
+  
+  protected int b()
+  {
+    return 0;
   }
   
   public void b(View paramView)
@@ -213,14 +213,14 @@ public abstract class NewFriendBaseBuilder
     }
   }
   
-  public int c()
+  public int i()
   {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168);
+    return this.c.getResources().getDimensionPixelSize(2131299920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

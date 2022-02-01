@@ -17,10 +17,10 @@ public class ReadInJoyNickNameTextView
   extends AbsReadInJoyNickNameTextView
   implements IReadInJoyUserInfoModule.RefreshUserInfoCallBack
 {
-  private long jdField_a_of_type_Long;
-  private AbsReadInJoyNickNameTextView.OnSetNickNameListener jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetAbsReadInJoyNickNameTextView$OnSetNickNameListener;
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean;
+  private long a;
+  private boolean b;
+  private AbsReadInJoyNickNameTextView.OnSetNickNameListener c;
+  private String d = null;
   
   public ReadInJoyNickNameTextView(Context paramContext)
   {
@@ -42,12 +42,12 @@ public class ReadInJoyNickNameTextView
     if (paramReadInJoyUserInfo == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       setText(RIJStringUtils.a(paramReadInJoyUserInfo.nick));
     } else {
       setText(paramReadInJoyUserInfo.nick);
     }
-    AbsReadInJoyNickNameTextView.OnSetNickNameListener localOnSetNickNameListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetAbsReadInJoyNickNameTextView$OnSetNickNameListener;
+    AbsReadInJoyNickNameTextView.OnSetNickNameListener localOnSetNickNameListener = this.c;
     if (localOnSetNickNameListener != null) {
       localOnSetNickNameListener.a(paramReadInJoyUserInfo.nick);
     }
@@ -65,7 +65,7 @@ public class ReadInJoyNickNameTextView
   
   public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    if (TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long)))
+    if (TextUtils.equals(paramString, String.valueOf(this.a)))
     {
       if (paramReadInJoyUserInfo == null) {
         return;
@@ -84,20 +84,20 @@ public class ReadInJoyNickNameTextView
     if (paramLong <= 0L) {
       return;
     }
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    Object localObject = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_Long, this);
-    String str = ReadInJoyUserInfoModule.a();
+    this.a = paramLong;
+    this.b = paramBoolean;
+    Object localObject = ReadInJoyUserInfoModule.a(this.a, this);
+    String str = ReadInJoyUserInfoModule.d();
     if (localObject == null)
     {
       localObject = str;
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         localObject = RIJStringUtils.a(str);
       }
       setText((CharSequence)localObject);
       return;
     }
-    a((ReadInJoyUserInfo)localObject, this.jdField_a_of_type_Boolean);
+    a((ReadInJoyUserInfo)localObject, this.b);
   }
   
   public void setNickNameByUin(String paramString)
@@ -127,21 +127,21 @@ public class ReadInJoyNickNameTextView
   
   public void setOnSetNickNameListener(AbsReadInJoyNickNameTextView.OnSetNickNameListener paramOnSetNickNameListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetAbsReadInJoyNickNameTextView$OnSetNickNameListener = paramOnSetNickNameListener;
+    this.c = paramOnSetNickNameListener;
   }
   
   public void setPrefix(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     Object localObject = paramCharSequence;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.d))
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(paramCharSequence);
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -150,7 +150,7 @@ public class ReadInJoyNickNameTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyNickNameTextView
  * JD-Core Version:    0.7.0.1
  */

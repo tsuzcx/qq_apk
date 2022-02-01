@@ -11,41 +11,41 @@ import com.tencent.mobileqq.widget.SquareImageView;
 
 class NetSearchTemplateQAView$AnswerView
 {
-  public int a;
-  public Context a;
-  public View a;
-  public FrameLayout a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
   public SquareImageView a;
   public TextView b;
-  public SquareImageView b;
   public TextView c;
+  public TextView d;
+  public LinearLayout e;
+  public FrameLayout f;
+  public SquareImageView g;
+  public ImageView h;
+  public int i;
+  public Context j;
+  public View k;
   
   public NetSearchTemplateQAView$AnswerView(NetSearchTemplateQAView paramNetSearchTemplateQAView, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.j = paramContext;
     a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559811, this.jdField_a_of_type_ComTencentMobileqqSearchViewNetSearchTemplateQAView.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363155));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371697));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373011));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365536));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131372733));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377628));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368557));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369731));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.k = LayoutInflater.from(this.j).inflate(2131625854, this.l.c, false);
+    this.a = ((SquareImageView)this.k.findViewById(2131429020));
+    this.b = ((TextView)this.k.findViewById(2131439121));
+    this.c = ((TextView)this.k.findViewById(2131440581));
+    this.d = ((TextView)this.k.findViewById(2131431757));
+    this.e = ((LinearLayout)this.k.findViewById(2131440280));
+    this.f = ((FrameLayout)this.k.findViewById(2131446037));
+    this.g = ((SquareImageView)this.f.findViewById(2131435463));
+    this.h = ((ImageView)this.f.findViewById(2131436849));
+    this.i = this.e.getChildCount();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateQAView.AnswerView
  * JD-Core Version:    0.7.0.1
  */

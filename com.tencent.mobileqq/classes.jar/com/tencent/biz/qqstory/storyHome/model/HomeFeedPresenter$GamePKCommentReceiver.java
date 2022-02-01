@@ -21,32 +21,32 @@ public class HomeFeedPresenter$GamePKCommentReceiver
   
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull GamePKCommentEvent paramGamePKCommentEvent)
   {
-    if ((!TextUtils.isEmpty(paramGamePKCommentEvent.jdField_a_of_type_JavaLangString)) && (paramGamePKCommentEvent.jdField_a_of_type_Int != 0) && (paramGamePKCommentEvent.jdField_a_of_type_Long != 0L) && (!TextUtils.isEmpty(paramGamePKCommentEvent.b)))
+    if ((!TextUtils.isEmpty(paramGamePKCommentEvent.a)) && (paramGamePKCommentEvent.b != 0) && (paramGamePKCommentEvent.c != 0L) && (!TextUtils.isEmpty(paramGamePKCommentEvent.d)))
     {
-      Object localObject1 = paramHomeFeedPresenter.a(paramGamePKCommentEvent.jdField_a_of_type_JavaLangString);
+      Object localObject1 = paramHomeFeedPresenter.a(paramGamePKCommentEvent.a);
       if ((localObject1 != null) && ((localObject1 instanceof VideoListHomeFeed)))
       {
         Object localObject2 = (VideoListHomeFeed)localObject1;
-        localObject1 = DetailCommentHelper.a(paramGamePKCommentEvent.jdField_a_of_type_JavaLangString, paramGamePKCommentEvent.jdField_a_of_type_Int, paramGamePKCommentEvent.jdField_a_of_type_Long, paramGamePKCommentEvent.b, paramGamePKCommentEvent.c, paramGamePKCommentEvent.d, paramGamePKCommentEvent.e, paramGamePKCommentEvent.f);
+        localObject1 = DetailCommentHelper.a(paramGamePKCommentEvent.a, paramGamePKCommentEvent.b, paramGamePKCommentEvent.c, paramGamePKCommentEvent.d, paramGamePKCommentEvent.f, paramGamePKCommentEvent.h, paramGamePKCommentEvent.i, paramGamePKCommentEvent.j);
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(localObject1);
         ((VideoListHomeFeed)localObject2).a(localArrayList, false);
-        localObject2 = (CommentLikeFeedItem)((VideoListHomeFeed)localObject2).a;
+        localObject2 = (CommentLikeFeedItem)((VideoListHomeFeed)localObject2).f;
         ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
         if (HomeFeedPresenter.a((CommentLikeFeedItem)localObject2)) {
           ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
         } else {
           ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
         }
-        HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramGamePKCommentEvent.jdField_a_of_type_JavaLangString);
+        HomeFeedPresenter.c(paramHomeFeedPresenter).b(paramGamePKCommentEvent.a);
         ThreadManager.post(new HomeFeedPresenter.GamePKCommentReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1, paramGamePKCommentEvent), 5, null, false);
         HomeFeedPresenter.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
         return;
       }
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramGamePKCommentEvent.jdField_a_of_type_JavaLangString });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramGamePKCommentEvent.a });
       return;
     }
-    SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible gamepk event. event.feedId = %s, event.commentId = %d, event.commentFakeId = %d, event.content = %s.", new Object[] { paramGamePKCommentEvent.jdField_a_of_type_JavaLangString, Integer.valueOf(paramGamePKCommentEvent.jdField_a_of_type_Int), Long.valueOf(paramGamePKCommentEvent.jdField_a_of_type_Long), paramGamePKCommentEvent.b });
+    SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible gamepk event. event.feedId = %s, event.commentId = %d, event.commentFakeId = %d, event.content = %s.", new Object[] { paramGamePKCommentEvent.a, Integer.valueOf(paramGamePKCommentEvent.b), Long.valueOf(paramGamePKCommentEvent.c), paramGamePKCommentEvent.d });
   }
   
   public Class acceptEventClass()

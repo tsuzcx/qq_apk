@@ -16,7 +16,7 @@ class ExtendFriendResourceDownloader$3
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mReqUrl = this.a.b;
     localHttpNetReq.mHttpMethod = 0;
-    Object localObject = ExtendFriendResourceDownloader.a(this.this$0, this.a.c);
+    Object localObject = ExtendFriendResourceDownloader.b(this.this$0, this.a.c);
     ExtendFriendResourceDownloader.a(this.this$0, (String)localObject);
     localHttpNetReq.mOutPath = ((String)localObject);
     localHttpNetReq.setUserData(this.a);
@@ -34,7 +34,7 @@ class ExtendFriendResourceDownloader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.downloader.ExtendFriendResourceDownloader.3
  * JD-Core Version:    0.7.0.1
  */

@@ -26,33 +26,33 @@ final class VipUtils$5
   {
     if (paramURLDrawable != null)
     {
-      int i = AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentResResources);
+      int i = AIOUtils.b(15.0F, this.a);
       int j = paramURLDrawable.getIntrinsicHeight();
       if (j == 0)
       {
-        boolean bool = new File(VasApngUtil.getCacheFilePath(this.jdField_a_of_type_JavaLangString)).delete();
+        boolean bool = new File(VasApngUtil.getCacheFilePath(this.b)).delete();
         paramURLDrawable = new StringBuilder();
         paramURLDrawable.append("onLoadSuccessed drawableHeight=0, deleteSucc=");
         paramURLDrawable.append(bool);
         paramURLDrawable.append(" url=");
-        paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+        paramURLDrawable.append(this.b);
         QLog.e("VipUtils", 1, paramURLDrawable.toString());
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        this.c.setImageDrawable(this.d);
         return;
       }
       j = paramURLDrawable.getIntrinsicWidth() * i / j;
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.c.getLayoutParams();
       localLayoutParams.height = i;
       localLayoutParams.width = j;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      this.c.setImageDrawable(null);
+      this.c.setImageDrawable(paramURLDrawable);
+      this.c.setLayoutParams(localLayoutParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.5
  * JD-Core Version:    0.7.0.1
  */

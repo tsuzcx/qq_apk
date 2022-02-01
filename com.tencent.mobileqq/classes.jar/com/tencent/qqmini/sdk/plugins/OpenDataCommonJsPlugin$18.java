@@ -24,18 +24,18 @@ class OpenDataCommonJsPlugin$18
         localObject = new MiniCustomDialog(OpenDataCommonJsPlugin.access$1800(this.this$0).getAttachedActivity(), R.style.mini_sdk_MiniAppInputDialog);
         ((MiniCustomDialog)localObject).setContentView(R.layout.mini_sdk_custom_dialog_temp);
         String str;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(this.a)) {
           str = null;
         } else {
-          str = this.jdField_a_of_type_JavaLangString;
+          str = this.a;
         }
-        ((MiniCustomDialog)localObject).setTitle(str).setMessage(this.jdField_b_of_type_JavaLangString);
-        ((MiniCustomDialog)localObject).setPositiveButton(this.c, ColorUtils.parseColor("#3CC51F"), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-        if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-          ((MiniCustomDialog)localObject).setNegativeButton(this.d, ColorUtils.parseColor("#000000"), this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
+        ((MiniCustomDialog)localObject).setTitle(str).setMessage(this.b);
+        ((MiniCustomDialog)localObject).setPositiveButton(this.c, ColorUtils.parseColor("#3CC51F"), this.d);
+        if (this.e.booleanValue()) {
+          ((MiniCustomDialog)localObject).setNegativeButton(this.f, ColorUtils.parseColor("#000000"), this.g);
         }
         ((MiniCustomDialog)localObject).setCanceledOnTouchOutside(true);
-        ((MiniCustomDialog)localObject).setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+        ((MiniCustomDialog)localObject).setOnCancelListener(this.h);
         ((MiniCustomDialog)localObject).show();
         return;
       }
@@ -51,7 +51,7 @@ class OpenDataCommonJsPlugin$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.18
  * JD-Core Version:    0.7.0.1
  */

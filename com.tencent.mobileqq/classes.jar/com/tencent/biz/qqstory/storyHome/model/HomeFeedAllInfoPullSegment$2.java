@@ -22,7 +22,7 @@ class HomeFeedAllInfoPullSegment$2
   
   public void a(@NonNull BatchGetFeedCommentRequest paramBatchGetFeedCommentRequest, @Nullable BatchGetFeedCommentRequest.BatchGetFeedCommentResp arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
       return;
@@ -37,7 +37,7 @@ class HomeFeedAllInfoPullSegment$2
         SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
       }
       CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-      Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = ???.a.iterator();
       for (;;)
       {
         paramErrorMessage = ???;
@@ -45,17 +45,17 @@ class HomeFeedAllInfoPullSegment$2
           break;
         }
         paramErrorMessage = (BatchGetFeedCommentRequest.FeedCommentInfo)localIterator.next();
-        localCommentManager.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
-        if (paramErrorMessage.b == 1) {
-          paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localCommentManager.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
+        localCommentManager.a(paramErrorMessage.e, paramErrorMessage.a, false, true);
+        if (paramErrorMessage.c == 1) {
+          paramErrorMessage.e.addAll(localCommentManager.b(paramErrorMessage.a, false));
         }
       }
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    synchronized (this.c)
     {
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramErrorMessage);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFeedCommentRequest);
-      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
+      HomeFeedAllInfoPullSegment.a(this.c, paramErrorMessage);
+      HomeFeedAllInfoPullSegment.a(this.c).remove(paramBatchGetFeedCommentRequest);
+      HomeFeedAllInfoPullSegment.a(this.c, this.b);
       return;
     }
     for (;;)

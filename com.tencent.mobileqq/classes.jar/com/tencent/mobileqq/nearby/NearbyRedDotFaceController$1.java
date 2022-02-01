@@ -13,13 +13,13 @@ class NearbyRedDotFaceController$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRedDotFaceController.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRedDotFaceController.a, "alpha", new float[] { 0.1F, 1.0F }).setDuration(1500L).start();
+    this.b.b.setImageDrawable(this.a);
+    ObjectAnimator.ofFloat(this.b.b, "alpha", new float[] { 0.1F, 1.0F }).setDuration(1500L).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyRedDotFaceController.1
  * JD-Core Version:    0.7.0.1
  */

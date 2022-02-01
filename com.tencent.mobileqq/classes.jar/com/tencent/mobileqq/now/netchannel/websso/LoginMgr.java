@@ -10,23 +10,23 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class LoginMgr
 {
-  private static LoginMgr jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static LoginMgr c;
+  private boolean a = false;
   private boolean b = false;
   
   public static LoginMgr a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr == null)
+    if (c == null)
     {
-      jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr = new LoginMgr();
-      ChannelCenter.a().b(NowQQLiveHelper.b());
+      c = new LoginMgr();
+      ChannelCenter.b().b(NowQQLiveHelper.d());
     }
-    return jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr;
+    return c;
   }
   
-  public static void a()
+  public static void b()
   {
-    jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr = null;
+    c = null;
   }
   
   public void a(LoginMgr.Listener paramListener)
@@ -37,32 +37,32 @@ public class LoginMgr
     localLoginTicketInfo.login_type.set(0);
     localLoginTicketInfo.client_type.set(16130);
     LoginMergedProto.TicketInfo localTicketInfo = new LoginMergedProto.TicketInfo();
-    localLoginTicketInfo.account_id.set(UserInfoMgr.a());
+    localLoginTicketInfo.account_id.set(UserInfoMgr.f());
     localLoginTicketInfo.auth_appid.set("16");
-    localTicketInfo.auth_key.set(UserInfoMgr.c());
+    localTicketInfo.auth_key.set(UserInfoMgr.h());
     localLoginTicketInfo.ticket_info.set(localTicketInfo);
     localLoginReq.login_ticket_info.set(localLoginTicketInfo);
-    ChannelCenter.a().a(30840, 1, localLoginReq.toByteArray(), new LoginMgr.1(this, paramListener));
+    ChannelCenter.b().a(30840, 1, localLoginReq.toByteArray(), new LoginMgr.1(this, paramListener));
   }
   
-  public boolean a()
+  public boolean c()
   {
     return this.b;
   }
   
-  public void b()
+  public void d()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
     LoginMergedProto.LogoutReq localLogoutReq = new LoginMergedProto.LogoutReq();
-    ChannelCenter.a().a(30840, 2, localLogoutReq.toByteArray(), new LoginMgr.2(this));
-    ChannelCenter.b();
-    UserInfoMgr.a();
-    a();
+    ChannelCenter.b().a(30840, 2, localLogoutReq.toByteArray(), new LoginMgr.2(this));
+    ChannelCenter.c();
+    UserInfoMgr.b();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.LoginMgr
  * JD-Core Version:    0.7.0.1
  */

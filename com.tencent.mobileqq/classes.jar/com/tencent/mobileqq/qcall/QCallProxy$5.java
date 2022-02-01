@@ -35,17 +35,17 @@ class QCallProxy$5
     label1262:
     label1268:
     label1276:
-    synchronized (QCallProxy.a(this.this$0))
+    synchronized (QCallProxy.b(this.this$0))
     {
       Object localObject3 = new ArrayList();
       Object localObject7 = new ArrayList();
       Object localObject6 = new ArrayList();
       Object localObject4 = new ArrayList();
-      Object localObject1 = (IPhoneContactService)QCallProxy.a(this.this$0).getRuntimeService(IPhoneContactService.class, "");
-      Object localObject5 = (FriendsManager)QCallProxy.b(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
+      Object localObject1 = (IPhoneContactService)QCallProxy.c(this.this$0).getRuntimeService(IPhoneContactService.class, "");
+      Object localObject5 = (FriendsManager)QCallProxy.d(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER);
       if ((localObject1 != null) && (((IPhoneContactService)localObject1).isBindContactOk()) && (localObject5 != null))
       {
-        Object localObject8 = QCallProxy.a(this.this$0).iterator();
+        Object localObject8 = QCallProxy.b(this.this$0).iterator();
         i = 0;
         Object localObject9;
         Object localObject10;
@@ -56,7 +56,7 @@ class QCallProxy$5
             if (((QCallRecent)localObject9).type == 1006)
             {
               localObject10 = ((IPhoneContactService)localObject1).queryContactByCodeNumber(((QCallRecent)localObject9).uin);
-              if ((localObject10 == null) || (!((FriendsManager)localObject5).b(((PhoneContact)localObject10).uin))) {
+              if ((localObject10 == null) || (!((FriendsManager)localObject5).n(((PhoneContact)localObject10).uin))) {
                 break label1217;
               }
               j = 1;
@@ -78,7 +78,7 @@ class QCallProxy$5
             else if (((QCallRecent)localObject9).type == 56938)
             {
               localObject10 = ((IPhoneContactService)localObject1).queryPhoneContactByMobile(((QCallRecent)localObject9).uin);
-              if ((localObject10 == null) || (!((FriendsManager)localObject5).b(((PhoneContact)localObject10).uin))) {
+              if ((localObject10 == null) || (!((FriendsManager)localObject5).n(((PhoneContact)localObject10).uin))) {
                 break label1232;
               }
               j = 1;
@@ -112,14 +112,14 @@ class QCallProxy$5
           }
           this.this$0.a((QCallRecent)localObject5);
           localObject10 = ((PhoneContact)localObject3).uin;
-          int[] arrayOfInt = UinTypeUtil.c;
+          int[] arrayOfInt = UinTypeUtil.d;
           k = arrayOfInt.length;
           j = 0;
           localObject3 = null;
           if (j < k)
           {
             m = arrayOfInt[j];
-            localObject3 = this.this$0.b((String)localObject10, m);
+            localObject3 = this.this$0.d((String)localObject10, m);
             if (localObject3 == null) {
               break label1242;
             }
@@ -156,7 +156,7 @@ class QCallProxy$5
           {
             localObject5 = (QCallRecent)((Iterator)localObject3).next();
             this.this$0.a((QCallRecent)localObject5);
-            this.this$0.a(((QCallRecent)localObject5).uin, ((QCallRecent)localObject5).type);
+            this.this$0.b(((QCallRecent)localObject5).uin, ((QCallRecent)localObject5).type);
           }
           localObject6 = ((List)localObject6).iterator();
           localObject3 = localObject1;
@@ -170,14 +170,14 @@ class QCallProxy$5
             this.this$0.a((QCallRecent)localObject5);
             localObject7 = ((PhoneContact)localObject1).mobileCode;
             localObject8 = ((PhoneContact)localObject1).uin;
-            localObject9 = UinTypeUtil.c;
+            localObject9 = UinTypeUtil.d;
             k = localObject9.length;
             j = 0;
             localObject1 = null;
             if (j < k)
             {
               m = localObject9[j];
-              localObject1 = this.this$0.b((String)localObject8, m);
+              localObject1 = this.this$0.d((String)localObject8, m);
               if (localObject1 == null) {
                 break label1252;
               }
@@ -225,7 +225,7 @@ class QCallProxy$5
           if ((i != 0) && (this.a != null))
           {
             localObject1 = new ArrayList();
-            localObject3 = QCallProxy.a(this.this$0).iterator();
+            localObject3 = QCallProxy.b(this.this$0).iterator();
             while (((Iterator)localObject3).hasNext())
             {
               localObject4 = (QCallRecent)((Iterator)localObject3).next();
@@ -249,7 +249,7 @@ class QCallProxy$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallProxy.5
  * JD-Core Version:    0.7.0.1
  */

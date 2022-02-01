@@ -13,17 +13,17 @@ public class ArkEnvironmentImpl
 {
   public String getAppDebugInstallDirectory()
   {
-    return ArkAppEnvConfig.a().c();
+    return ArkAppEnvConfig.a().e();
   }
   
   public String getRootDirectory()
   {
-    return ArkAppEnvConfig.a().a();
+    return ArkAppEnvConfig.a().c();
   }
   
   public void initJSCLibPath()
   {
-    ArkEnvironment.a();
+    ArkEnvironment.b();
   }
   
   public void initMultiProcEnv(IArkEnvDelegate paramIArkEnvDelegate)
@@ -38,12 +38,12 @@ public class ArkEnvironmentImpl
   
   public boolean isJSCLibExist()
   {
-    return ArkEnvironment.b();
+    return ArkEnvironment.d();
   }
   
   public boolean isTestEnv()
   {
-    return ArkAppEnvConfig.a().a() == 1;
+    return ArkAppEnvConfig.a().b() == 1;
   }
   
   public void setDebugMode(boolean paramBoolean)
@@ -58,7 +58,7 @@ public class ArkEnvironmentImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.impl.ArkEnvironmentImpl
  * JD-Core Version:    0.7.0.1
  */

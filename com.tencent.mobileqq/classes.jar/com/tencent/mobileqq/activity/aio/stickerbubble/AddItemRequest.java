@@ -6,53 +6,53 @@ import com.tencent.mobileqq.activity.aio.stickerbubble.item.ItemStatus.Velocity;
 
 public class AddItemRequest
 {
-  public int a;
   public Point a;
-  public ItemStatus.Acceleration a;
-  public ItemStatus.Velocity a;
-  public String a;
-  public boolean a;
-  public int b = 229;
+  public String b;
+  public boolean c;
+  public ItemStatus.Velocity d;
+  public ItemStatus.Acceleration e;
+  public int f;
+  public int g = 229;
   
   public AddItemRequest a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
     return this;
   }
   
   public AddItemRequest a(Point paramPoint)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.a = paramPoint;
     return this;
   }
   
   public AddItemRequest a(ItemStatus.Acceleration paramAcceleration)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration = paramAcceleration;
+    this.e = paramAcceleration;
     return this;
   }
   
   public AddItemRequest a(ItemStatus.Velocity paramVelocity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity = paramVelocity;
+    this.d = paramVelocity;
     return this;
   }
   
   public AddItemRequest a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public AddItemRequest a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.AddItemRequest
  * JD-Core Version:    0.7.0.1
  */

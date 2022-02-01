@@ -10,11 +10,6 @@ class QavDoubleVideoSharpnessMangaer$QavClickableSpan
 {
   private WeakReference<QavDoubleVideoSharpnessMangaer> a;
   
-  public QavDoubleVideoSharpnessMangaer$QavClickableSpan(QavDoubleVideoSharpnessMangaer paramQavDoubleVideoSharpnessMangaer)
-  {
-    this.a = new WeakReference(paramQavDoubleVideoSharpnessMangaer);
-  }
-  
   public void onClick(View paramView)
   {
     paramView = this.a;
@@ -23,7 +18,7 @@ class QavDoubleVideoSharpnessMangaer$QavClickableSpan
     }
     paramView = (QavDoubleVideoSharpnessMangaer)paramView.get();
     if (paramView != null) {
-      paramView.d();
+      paramView.f();
     }
   }
   

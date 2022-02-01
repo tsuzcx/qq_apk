@@ -8,17 +8,6 @@ class MagicfacePlayer$1
 {
   MagicfacePlayer$1(MagicfacePlayer paramMagicfacePlayer) {}
   
-  public void a(long paramLong, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("play video begin.");
-    localStringBuilder.append(paramString);
-    AVLog.printColorLog("AVMagicfacePlayer", localStringBuilder.toString());
-    if (this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener != null) {
-      this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener.a(paramLong, paramString);
-    }
-  }
-  
   public void a(long paramLong, String arg3, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -30,13 +19,13 @@ class MagicfacePlayer$1
     localStringBuilder.append(paramLong);
     localStringBuilder.append("]");
     QLog.w("AVMagicfacePlayer", 1, localStringBuilder.toString());
-    if (this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener != null) {
-      this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener.a(paramLong, ???, paramInt);
+    if (this.a.f != null) {
+      this.a.f.a(paramLong, ???, paramInt);
     }
     synchronized (this.a)
     {
-      if ((this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData != null)) {
-        this.a.a(paramLong, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicfaceRenderListener, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener);
+      if ((this.a.b != null) && (this.a.c != null)) {
+        this.a.a(paramLong, this.a.b, this.a.c, this.a.d, this.a.e);
       }
       return;
     }
@@ -53,21 +42,32 @@ class MagicfacePlayer$1
     if (paramBoolean)
     {
       paramString = this.a;
-      paramString.a(paramString.jdField_a_of_type_JavaLangString, 100);
+      paramString.a(paramString.a, 100);
       return;
     }
     paramString = this.a;
-    paramString.a(paramString.jdField_a_of_type_JavaLangString, 1);
+    paramString.a(paramString.a, 1);
   }
   
   public void b(long paramLong, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("play video begin.");
+    localStringBuilder.append(paramString);
+    AVLog.printColorLog("AVMagicfacePlayer", localStringBuilder.toString());
+    if (this.a.f != null) {
+      this.a.f.b(paramLong, paramString);
+    }
+  }
+  
+  public void c(long paramLong, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("play audio end. id = ");
     localStringBuilder.append(paramString);
     AVLog.printColorLog("AVMagicfacePlayer", localStringBuilder.toString());
     paramString = this.a;
-    paramString.a(paramString.jdField_a_of_type_JavaLangString);
+    paramString.a(paramString.a);
   }
 }
 

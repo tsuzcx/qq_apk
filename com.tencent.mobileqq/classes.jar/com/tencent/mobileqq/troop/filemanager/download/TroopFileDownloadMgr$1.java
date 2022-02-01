@@ -22,12 +22,12 @@ class TroopFileDownloadMgr$1
       this.this$0.a = true;
       return;
     }
-    TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.a, "init registerConnectionChangeReceiver fail");
+    TroopFileTransferUtil.Log.a("TroopFileDownloadMgr", TroopFileTransferUtil.Log.b, "init registerConnectionChangeReceiver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.1
  * JD-Core Version:    0.7.0.1
  */

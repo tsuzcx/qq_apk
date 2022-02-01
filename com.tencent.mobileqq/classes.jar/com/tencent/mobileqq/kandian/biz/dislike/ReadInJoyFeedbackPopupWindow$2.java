@@ -10,14 +10,14 @@ class ReadInJoyFeedbackPopupWindow$2
   public void onDismiss()
   {
     ReadInJoyFeedbackPopupWindow.a(this.a, 1.0F);
-    if (ReadInJoyFeedbackPopupWindow.a(this.a)) {
+    if (ReadInJoyFeedbackPopupWindow.l(this.a)) {
       ReadInJoyFeedbackPopupWindow.a(this.a, "0X80095D4", 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.ReadInJoyFeedbackPopupWindow.2
  * JD-Core Version:    0.7.0.1
  */

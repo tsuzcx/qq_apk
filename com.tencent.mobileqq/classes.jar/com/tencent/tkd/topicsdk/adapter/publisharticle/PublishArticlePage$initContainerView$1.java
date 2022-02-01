@@ -18,21 +18,21 @@ final class PublishArticlePage$initContainerView$1
   
   public final void onClick(View paramView)
   {
-    if (InputMethodUtils.a.a(this.jdField_a_of_type_AndroidAppActivity))
+    if (InputMethodUtils.a.a(this.b))
     {
       paramView = InputMethodUtils.a;
-      Context localContext = (Context)this.jdField_a_of_type_AndroidAppActivity;
-      IBinder localIBinder = this.jdField_a_of_type_AndroidWidgetLinearLayout.getWindowToken();
+      Context localContext = (Context)this.b;
+      IBinder localIBinder = this.c.getWindowToken();
       Intrinsics.checkExpressionValueIsNotNull(localIBinder, "container.windowToken");
       paramView.a(localContext, localIBinder);
       return;
     }
-    InputMethodUtils.a.a((Context)this.jdField_a_of_type_AndroidAppActivity, (View)PublishArticlePage.a(this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterPublisharticlePublishArticlePage));
+    InputMethodUtils.a.a((Context)this.b, (View)PublishArticlePage.h(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initContainerView.1
  * JD-Core Version:    0.7.0.1
  */

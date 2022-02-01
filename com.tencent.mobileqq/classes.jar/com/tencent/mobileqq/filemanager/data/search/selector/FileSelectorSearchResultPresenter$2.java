@@ -13,21 +13,21 @@ class FileSelectorSearchResultPresenter$2
   
   public void onClick(View paramView)
   {
-    FileSelectorSearchResultModel localFileSelectorSearchResultModel = (FileSelectorSearchResultModel)this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel;
+    FileSelectorSearchResultModel localFileSelectorSearchResultModel = (FileSelectorSearchResultModel)this.a;
     localFileSelectorSearchResultModel.a(paramView);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131366794);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131433116);
     if (localCheckBox.getVisibility() == 0) {
-      localCheckBox.setChecked(localFileSelectorSearchResultModel.b());
+      localCheckBox.setChecked(localFileSelectorSearchResultModel.m());
     }
-    if (FileSelectorSearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultPresenter) != null) {
-      FileSelectorSearchResultPresenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchResultPresenter).a();
+    if (FileSelectorSearchResultPresenter.a(this.b) != null) {
+      FileSelectorSearchResultPresenter.a(this.b).a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchResultPresenter.2
  * JD-Core Version:    0.7.0.1
  */

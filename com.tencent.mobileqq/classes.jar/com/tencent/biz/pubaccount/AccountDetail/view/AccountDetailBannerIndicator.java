@@ -17,29 +17,29 @@ import java.util.ArrayList;
 public class AccountDetailBannerIndicator
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 0;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final String jdField_a_of_type_JavaLangString = "#FFFFFFFF";
-  private ArrayList<ImageView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_b_of_type_Int = 0;
-  private final String jdField_b_of_type_JavaLangString = "#33FFFFFF";
+  private final String a = "#FFFFFFFF";
+  private final String b = "#33FFFFFF";
+  private Context c;
+  private int d = 0;
+  private int e = 0;
+  private ArrayList<ImageView> f = new ArrayList();
   
   public AccountDetailBannerIndicator(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramContext;
+    this.d = paramInt;
     a();
   }
   
   private void a()
   {
-    int j = AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = AIOUtils.b(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = AIOUtils.b(6.0F, this.c.getResources());
+    int k = AIOUtils.b(9.0F, this.c.getResources());
     int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.d)
     {
-      BubbleViewLayout localBubbleViewLayout = new BubbleViewLayout(this.jdField_a_of_type_AndroidContentContext);
+      BubbleViewLayout localBubbleViewLayout = new BubbleViewLayout(this.c);
       Object localObject = new LinearLayout.LayoutParams(-2, -2);
       if (i != 0) {
         ((LinearLayout.LayoutParams)localObject).setMargins(k, 0, 0, 0);
@@ -48,7 +48,7 @@ public class AccountDetailBannerIndicator
       localBubbleViewLayout.a(false);
       localBubbleViewLayout.setRadius(3.0F);
       addView(localBubbleViewLayout);
-      localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      localObject = new ImageView(this.c);
       ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(j, j));
       if (i == 0) {
         ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#FFFFFFFF")));
@@ -56,14 +56,14 @@ public class AccountDetailBannerIndicator
         ((ImageView)localObject).setImageDrawable(new ColorDrawable(Color.parseColor("#33FFFFFF")));
       }
       localBubbleViewLayout.addView((View)localObject);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      this.f.add(localObject);
       i += 1;
     }
   }
   
   public void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (i > 1) {
       i = paramInt % i;
     } else {
@@ -71,7 +71,7 @@ public class AccountDetailBannerIndicator
     }
     int j = i;
     if (paramInt < 0) {
-      j = i + this.jdField_a_of_type_Int;
+      j = i + this.d;
     }
     if (QLog.isDevelopLevel())
     {
@@ -82,14 +82,14 @@ public class AccountDetailBannerIndicator
       localStringBuilder.append(j);
       QLog.d("AccountDetailBannerIndicator", 2, localStringBuilder.toString());
     }
-    ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setImageDrawable(new ColorDrawable(Color.parseColor("#33FFFFFF")));
-    this.jdField_b_of_type_Int = j;
-    ((ImageView)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int)).setImageDrawable(new ColorDrawable(Color.parseColor("#FFFFFFFF")));
+    ((ImageView)this.f.get(this.e)).setImageDrawable(new ColorDrawable(Color.parseColor("#33FFFFFF")));
+    this.e = j;
+    ((ImageView)this.f.get(this.e)).setImageDrawable(new ColorDrawable(Color.parseColor("#FFFFFFFF")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailBannerIndicator
  * JD-Core Version:    0.7.0.1
  */

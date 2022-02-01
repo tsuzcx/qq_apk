@@ -577,16 +577,16 @@ public class TabNetBaseParser
     //   1302: aload_1
     //   1303: ifnull +40 -> 1343
     //   1306: aload_1
-    //   1307: invokevirtual 277	com/tencent/mobileqq/search/business/net/model/NetSearchTemplateBaseItem:b	()Z
+    //   1307: invokevirtual 277	com/tencent/mobileqq/search/business/net/model/NetSearchTemplateBaseItem:i	()Z
     //   1310: ifeq +33 -> 1343
     //   1313: aload_1
     //   1314: aload 39
     //   1316: getfield 280	unify/search/UnifySearchCommon$ResultItem:seporator_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1319: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1322: putfield 284	com/tencent/mobileqq/search/business/net/model/NetSearchTemplateBaseItem:u	I
+    //   1322: putfield 284	com/tencent/mobileqq/search/business/net/model/NetSearchTemplateBaseItem:af	I
     //   1325: aload_1
     //   1326: iload 9
-    //   1328: putfield 285	com/tencent/mobileqq/search/business/net/model/NetSearchTemplateBaseItem:a	Z
+    //   1328: putfield 287	com/tencent/mobileqq/search/business/net/model/NetSearchTemplateBaseItem:r	Z
     //   1331: aload 22
     //   1333: aload_1
     //   1334: invokeinterface 98 2 0
@@ -608,25 +608,25 @@ public class TabNetBaseParser
     //   1366: astore 21
     //   1368: goto +333 -> 1701
     //   1371: lload 14
-    //   1373: invokestatic 290	com/tencent/mobileqq/search/util/SearchUtils:b	(J)Z
+    //   1373: invokestatic 293	com/tencent/mobileqq/search/util/SearchUtils:b	(J)Z
     //   1376: ifne +58 -> 1434
     //   1379: new 161	java/lang/StringBuilder
     //   1382: dup
     //   1383: invokespecial 162	java/lang/StringBuilder:<init>	()V
     //   1386: astore_1
     //   1387: aload_1
-    //   1388: ldc_w 292
+    //   1388: ldc_w 295
     //   1391: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1394: pop
     //   1395: aload_1
     //   1396: lload 14
-    //   1398: invokevirtual 295	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1398: invokevirtual 298	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1401: pop
     //   1402: aload 19
     //   1404: iconst_1
     //   1405: aload_1
     //   1406: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1409: invokestatic 298	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1409: invokestatic 301	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1412: aload 19
     //   1414: astore_1
     //   1415: aload 20
@@ -639,22 +639,22 @@ public class TabNetBaseParser
     //   1429: astore 21
     //   1431: goto +270 -> 1701
     //   1434: lload 14
-    //   1436: ldc2_w 299
+    //   1436: ldc2_w 302
     //   1439: lcmp
     //   1440: ifne +43 -> 1483
-    //   1443: new 302	com/tencent/mobileqq/search/base/model/SearchResultModelForEntrance
+    //   1443: new 305	com/tencent/mobileqq/search/base/model/SearchResultModelForEntrance
     //   1446: dup
     //   1447: aload 26
     //   1449: aload 44
     //   1451: bipush 252
     //   1453: aload 42
-    //   1455: invokespecial 305	com/tencent/mobileqq/search/base/model/SearchResultModelForEntrance:<init>	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
+    //   1455: invokespecial 308	com/tencent/mobileqq/search/base/model/SearchResultModelForEntrance:<init>	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
     //   1458: astore_1
     //   1459: aload_1
     //   1460: aload 39
     //   1462: getfield 280	unify/search/UnifySearchCommon$ResultItem:seporator_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1465: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1468: putfield 306	com/tencent/mobileqq/search/base/model/SearchResultModelForEntrance:u	I
+    //   1468: putfield 309	com/tencent/mobileqq/search/base/model/SearchResultModelForEntrance:af	I
     //   1471: aload 22
     //   1473: aload_1
     //   1474: invokeinterface 98 2 0
@@ -666,7 +666,7 @@ public class TabNetBaseParser
     //   1489: astore 21
     //   1491: iload_3
     //   1492: istore 8
-    //   1494: new 308	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem
+    //   1494: new 311	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem
     //   1497: dup
     //   1498: aload 26
     //   1500: aload 41
@@ -683,25 +683,25 @@ public class TabNetBaseParser
     //   1521: aload_1
     //   1522: aload 24
     //   1524: aload 29
-    //   1526: invokespecial 311	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1526: invokespecial 314	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/util/List;ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   1529: astore 20
     //   1531: aload 20
     //   1533: aload 39
     //   1535: getfield 280	unify/search/UnifySearchCommon$ResultItem:seporator_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1538: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1541: putfield 312	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:u	I
+    //   1541: putfield 315	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:af	I
     //   1544: aload 20
     //   1546: iload 9
-    //   1548: putfield 315	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:c	Z
+    //   1548: putfield 318	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:G	Z
     //   1551: aload 20
     //   1553: iload 8
-    //   1555: putfield 318	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:j	I
+    //   1555: putfield 321	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:L	I
     //   1558: aload 20
     //   1560: iload 8
-    //   1562: putfield 321	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:k	I
+    //   1562: putfield 324	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:M	I
     //   1565: aload 20
     //   1567: iload_2
-    //   1568: putfield 323	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:a	I
+    //   1568: putfield 327	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:m	I
     //   1571: iload 7
     //   1573: iconst_1
     //   1574: if_icmpne +106 -> 1680
@@ -711,7 +711,7 @@ public class TabNetBaseParser
     //   1583: ifne +97 -> 1680
     //   1586: aload 20
     //   1588: aload 34
-    //   1590: putfield 327	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:h	Ljava/lang/String;
+    //   1590: putfield 331	com/tencent/mobileqq/search/model/GroupBaseNetSearchModelItem:n	Ljava/lang/String;
     //   1593: aload 33
     //   1595: aload 20
     //   1597: invokeinterface 98 2 0
@@ -727,7 +727,7 @@ public class TabNetBaseParser
     //   1619: invokespecial 162	java/lang/StringBuilder:<init>	()V
     //   1622: astore_1
     //   1623: aload_1
-    //   1624: ldc_w 329
+    //   1624: ldc_w 333
     //   1627: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1630: pop
     //   1631: aload_1
@@ -735,7 +735,7 @@ public class TabNetBaseParser
     //   1634: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1637: pop
     //   1638: aload_1
-    //   1639: ldc_w 331
+    //   1639: ldc_w 335
     //   1642: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1645: pop
     //   1646: aload_1
@@ -804,17 +804,17 @@ public class TabNetBaseParser
     //   1766: lcmp
     //   1767: ifne +108 -> 1875
     //   1770: aload 21
-    //   1772: getfield 334	unify/search/UnifySearchCommon$ResultItemGroup:more_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1772: getfield 338	unify/search/UnifySearchCommon$ResultItemGroup:more_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1775: invokevirtual 79	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   1778: invokevirtual 85	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   1781: astore 20
     //   1783: aload 21
-    //   1785: getfield 337	unify/search/UnifySearchCommon$ResultItemGroup:more_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1785: getfield 341	unify/search/UnifySearchCommon$ResultItemGroup:more_name	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1788: invokevirtual 79	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   1791: invokevirtual 85	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   1794: astore 23
     //   1796: aload 21
-    //   1798: getfield 340	unify/search/UnifySearchCommon$ResultItemGroup:highlight_title_keyword	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1798: getfield 344	unify/search/UnifySearchCommon$ResultItemGroup:highlight_title_keyword	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1801: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1804: iconst_1
     //   1805: if_icmpne +9 -> 1814
@@ -824,7 +824,7 @@ public class TabNetBaseParser
     //   1814: iconst_0
     //   1815: istore 10
     //   1817: aload 21
-    //   1819: getfield 343	unify/search/UnifySearchCommon$ResultItemGroup:hide_title_blank_view	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1819: getfield 347	unify/search/UnifySearchCommon$ResultItemGroup:hide_title_blank_view	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1822: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1825: iconst_1
     //   1826: if_icmpne +9 -> 1835
@@ -833,11 +833,11 @@ public class TabNetBaseParser
     //   1832: goto +6 -> 1838
     //   1835: iconst_0
     //   1836: istore 11
-    //   1838: new 345	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel
+    //   1838: new 349	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel
     //   1841: dup
     //   1842: aload 22
     //   1844: lload 16
-    //   1846: ldc_w 347
+    //   1846: ldc_w 351
     //   1849: aconst_null
     //   1850: lconst_0
     //   1851: aload 20
@@ -848,7 +848,7 @@ public class TabNetBaseParser
     //   1861: iload 11
     //   1863: aload 37
     //   1865: aload 38
-    //   1867: invokespecial 350	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:<init>	(Ljava/lang/String;JLjava/lang/String;Ljava/util/List;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLjava/lang/String;Ljava/lang/String;)V
+    //   1867: invokespecial 354	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:<init>	(Ljava/lang/String;JLjava/lang/String;Ljava/util/List;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLjava/lang/String;Ljava/lang/String;)V
     //   1870: astore 20
     //   1872: goto +3 -> 1875
     //   1875: lload 12
@@ -856,21 +856,21 @@ public class TabNetBaseParser
     //   1878: lcmp
     //   1879: ifle +124 -> 2003
     //   1882: aload 21
-    //   1884: getfield 353	unify/search/UnifySearchCommon$ResultItemGroup:total_result_count	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   1884: getfield 357	unify/search/UnifySearchCommon$ResultItemGroup:total_result_count	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   1887: invokevirtual 70	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   1890: lstore 12
     //   1892: aload 21
-    //   1894: getfield 334	unify/search/UnifySearchCommon$ResultItemGroup:more_url	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1894: getfield 338	unify/search/UnifySearchCommon$ResultItemGroup:more_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1897: invokevirtual 79	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   1900: invokevirtual 85	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   1903: astore 23
     //   1905: aload 21
-    //   1907: getfield 337	unify/search/UnifySearchCommon$ResultItemGroup:more_name	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1907: getfield 341	unify/search/UnifySearchCommon$ResultItemGroup:more_name	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   1910: invokevirtual 79	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   1913: invokevirtual 85	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   1916: astore 25
     //   1918: aload 21
-    //   1920: getfield 340	unify/search/UnifySearchCommon$ResultItemGroup:highlight_title_keyword	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1920: getfield 344	unify/search/UnifySearchCommon$ResultItemGroup:highlight_title_keyword	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1923: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1926: iconst_1
     //   1927: if_icmpne +9 -> 1936
@@ -880,7 +880,7 @@ public class TabNetBaseParser
     //   1936: iconst_0
     //   1937: istore 10
     //   1939: aload 21
-    //   1941: getfield 343	unify/search/UnifySearchCommon$ResultItemGroup:hide_title_blank_view	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1941: getfield 347	unify/search/UnifySearchCommon$ResultItemGroup:hide_title_blank_view	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   1944: invokevirtual 113	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   1947: iconst_1
     //   1948: if_icmpne +9 -> 1957
@@ -890,7 +890,7 @@ public class TabNetBaseParser
     //   1957: iconst_0
     //   1958: istore 11
     //   1960: aload_1
-    //   1961: new 345	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel
+    //   1961: new 349	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel
     //   1964: dup
     //   1965: aload 22
     //   1967: lload 16
@@ -905,7 +905,7 @@ public class TabNetBaseParser
     //   1985: iload 11
     //   1987: aload 37
     //   1989: aload 38
-    //   1991: invokespecial 350	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:<init>	(Ljava/lang/String;JLjava/lang/String;Ljava/util/List;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLjava/lang/String;Ljava/lang/String;)V
+    //   1991: invokespecial 354	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:<init>	(Ljava/lang/String;JLjava/lang/String;Ljava/util/List;JLjava/lang/String;Ljava/lang/String;Ljava/util/List;ZZZLjava/lang/String;Ljava/lang/String;)V
     //   1994: invokeinterface 98 2 0
     //   1999: pop
     //   2000: goto +3 -> 2003
@@ -913,20 +913,20 @@ public class TabNetBaseParser
     //   2006: aload 20
     //   2008: ifnull +90 -> 2098
     //   2011: aload 19
-    //   2013: invokeinterface 355 1 0
+    //   2013: invokeinterface 359 1 0
     //   2018: ifne +80 -> 2098
     //   2021: aload 20
     //   2023: aload 19
-    //   2025: invokevirtual 358	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	(Ljava/util/List;)V
+    //   2025: invokevirtual 362	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	(Ljava/util/List;)V
     //   2028: aload 20
     //   2030: aload 19
     //   2032: invokeinterface 39 1 0
     //   2037: i2l
-    //   2038: invokevirtual 361	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	(J)V
+    //   2038: invokevirtual 365	com/tencent/mobileqq/search/model/GroupBaseNetSearchModel:a	(J)V
     //   2041: aload_1
     //   2042: iconst_0
     //   2043: aload 20
-    //   2045: invokeinterface 364 3 0
+    //   2045: invokeinterface 368 3 0
     //   2050: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2053: ifeq +45 -> 2098
     //   2056: new 161	java/lang/StringBuilder
@@ -934,13 +934,13 @@ public class TabNetBaseParser
     //   2060: invokespecial 162	java/lang/StringBuilder:<init>	()V
     //   2063: astore 18
     //   2065: aload 18
-    //   2067: ldc_w 366
+    //   2067: ldc_w 370
     //   2070: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2073: pop
     //   2074: aload 18
     //   2076: aload 19
     //   2078: invokeinterface 39 1 0
-    //   2083: invokevirtual 369	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2083: invokevirtual 373	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   2086: pop
     //   2087: ldc 54
     //   2089: iconst_2
@@ -1026,7 +1026,7 @@ public class TabNetBaseParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.TabNetBaseParser
  * JD-Core Version:    0.7.0.1
  */

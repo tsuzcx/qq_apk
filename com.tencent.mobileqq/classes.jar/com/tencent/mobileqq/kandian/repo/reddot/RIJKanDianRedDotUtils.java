@@ -16,17 +16,6 @@ import org.json.JSONObject;
 
 public class RIJKanDianRedDotUtils
 {
-  public static MessageRecord a(byte[] paramArrayOfByte, String paramString)
-  {
-    MessageForStructing localMessageForStructing = new MessageForStructing();
-    localMessageForStructing.msgData = paramArrayOfByte;
-    localMessageForStructing.parse();
-    if ((TextUtils.equals(paramString, "kandian_dt_red_dot_info")) || (TextUtils.equals(paramString, "kandian_red_pnt_lock_screen"))) {
-      localMessageForStructing.extInt = 1;
-    }
-    return localMessageForStructing;
-  }
-  
   public static KandianRedDotInfo a(MessageRecord paramMessageRecord, String paramString)
   {
     if (!(paramMessageRecord instanceof MessageForStructing)) {
@@ -121,7 +110,7 @@ public class RIJKanDianRedDotUtils
   {
     try
     {
-      paramArrayOfByte = (MessageForStructing)a(paramArrayOfByte, paramString);
+      paramArrayOfByte = (MessageForStructing)b(paramArrayOfByte, paramString);
       if ((paramArrayOfByte.structingMsg != null) && (!TextUtils.isEmpty(paramArrayOfByte.structingMsg.mMsgActionData)))
       {
         paramArrayOfByte = new JSONObject(paramArrayOfByte.structingMsg.mMsgActionData).optString("push_rowkey", "");
@@ -158,10 +147,21 @@ public class RIJKanDianRedDotUtils
     }
     return paramMessageRecord;
   }
+  
+  public static MessageRecord b(byte[] paramArrayOfByte, String paramString)
+  {
+    MessageForStructing localMessageForStructing = new MessageForStructing();
+    localMessageForStructing.msgData = paramArrayOfByte;
+    localMessageForStructing.parse();
+    if ((TextUtils.equals(paramString, "kandian_dt_red_dot_info")) || (TextUtils.equals(paramString, "kandian_red_pnt_lock_screen"))) {
+      localMessageForStructing.extInt = 1;
+    }
+    return localMessageForStructing;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.reddot.RIJKanDianRedDotUtils
  * JD-Core Version:    0.7.0.1
  */

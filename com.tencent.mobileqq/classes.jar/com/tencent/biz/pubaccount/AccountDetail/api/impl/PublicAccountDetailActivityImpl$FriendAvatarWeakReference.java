@@ -9,44 +9,44 @@ import mqq.util.WeakReference;
 
 public class PublicAccountDetailActivityImpl$FriendAvatarWeakReference
 {
-  PublicAccountDetailActivityImpl.UpdateListener jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl$UpdateListener;
-  FriendProfileImageAvatar jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar;
-  WeakReference<PublicAccountDetailActivityImpl> jdField_a_of_type_MqqUtilWeakReference;
+  PublicAccountDetailActivityImpl.UpdateListener a;
+  FriendProfileImageAvatar b;
+  WeakReference<PublicAccountDetailActivityImpl> c;
   
   public PublicAccountDetailActivityImpl$FriendAvatarWeakReference(QQAppInterface paramQQAppInterface, PublicAccountDetailActivityImpl paramPublicAccountDetailActivityImpl)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar = new FriendProfileImageAvatar(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b = paramPublicAccountDetailActivityImpl.uin;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramPublicAccountDetailActivityImpl);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl$UpdateListener = new PublicAccountDetailActivityImpl.UpdateListener(paramPublicAccountDetailActivityImpl);
+    this.b = new FriendProfileImageAvatar(paramQQAppInterface);
+    this.b.h = paramPublicAccountDetailActivityImpl.uin;
+    this.c = new WeakReference(paramPublicAccountDetailActivityImpl);
+    this.a = new PublicAccountDetailActivityImpl.UpdateListener(paramPublicAccountDetailActivityImpl);
   }
   
   public void a()
   {
     FriendProfileImageModel.ProfileImageInfo localProfileImageInfo = new FriendProfileImageModel.ProfileImageInfo();
-    localProfileImageInfo.d = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b;
+    localProfileImageInfo.g = this.b.h;
     localProfileImageInfo.a = null;
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) {
+    if (this.c.get() == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get(), localProfileImageInfo);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplPublicAccountDetailActivityImpl$UpdateListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+    this.b.a((BaseActivity)this.c.get(), localProfileImageInfo);
+    this.b.a(this.a);
+    this.b.b((BaseActivity)this.c.get());
     new PublicAccountDetailActivityImpl.FriendAvatarWeakReference.1(this, localProfileImageInfo).execute(new Void[0]);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
+    if (this.c.get() != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a((BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+      this.b.a(null);
+      this.b.a((BaseActivity)this.c.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailActivityImpl.FriendAvatarWeakReference
  * JD-Core Version:    0.7.0.1
  */

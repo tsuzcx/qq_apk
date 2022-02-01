@@ -11,11 +11,6 @@ public class GdtImpressionReporter$GdtVideoReportInfo
     a();
   }
   
-  public int a()
-  {
-    return this.a;
-  }
-  
   public void a()
   {
     c();
@@ -45,16 +40,6 @@ public class GdtImpressionReporter$GdtVideoReportInfo
     this.c = paramInt1;
   }
   
-  public boolean a()
-  {
-    return this.c != -1;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
   public void b()
   {
     this.b = 3;
@@ -63,11 +48,6 @@ public class GdtImpressionReporter$GdtVideoReportInfo
   public void b(int paramInt)
   {
     this.b = paramInt;
-  }
-  
-  public int c()
-  {
-    return this.c;
   }
   
   public void c()
@@ -84,10 +64,30 @@ public class GdtImpressionReporter$GdtVideoReportInfo
   {
     this.c = -1;
   }
+  
+  public boolean e()
+  {
+    return this.c != -1;
+  }
+  
+  public int f()
+  {
+    return this.a;
+  }
+  
+  public int g()
+  {
+    return this.b;
+  }
+  
+  public int h()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtImpressionReporter.GdtVideoReportInfo
  * JD-Core Version:    0.7.0.1
  */

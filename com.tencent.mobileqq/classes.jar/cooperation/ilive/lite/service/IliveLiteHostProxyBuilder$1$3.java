@@ -58,20 +58,20 @@ class IliveLiteHostProxyBuilder$1$3
   
   public void onCreateRoom()
   {
-    IliveLiteDataReport.a().a();
+    IliveLiteDataReport.a().c();
     IliveLiteMonitorUtil.a("live_enter_tick_time", "create_room");
   }
   
   public void onDestroyRoom()
   {
-    WebViewPool.a.b();
+    WebViewPool.a.c();
     LiveLiteRoomSwitchService.a();
     Activity localActivity = ((ActivityLifeService)BizEngineMgr.getInstance().getUserEngine().getCurrentRoomEngine().getService(ActivityLifeService.class)).getTopActivity();
     if (localActivity != null) {
       localActivity.overridePendingTransition(0, 0);
     }
-    IliveLiteDataReport.a().d();
-    IliveSingleWebModule.c();
+    IliveLiteDataReport.a().f();
+    IliveSingleWebModule.a();
   }
   
   public void onEnterRoom(long paramLong, int paramInt)
@@ -88,10 +88,7 @@ class IliveLiteHostProxyBuilder$1$3
     VasStatisticCollector.a("lite_on_exit_room", null, 0L);
   }
   
-  public void onFirstFrame()
-  {
-    IliveLiteDataReport.a().b();
-  }
+  public void onFirstFrame() {}
   
   public void onLoginFail(String paramString, int paramInt) {}
   
@@ -107,7 +104,7 @@ class IliveLiteHostProxyBuilder$1$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.service.IliveLiteHostProxyBuilder.1.3
  * JD-Core Version:    0.7.0.1
  */

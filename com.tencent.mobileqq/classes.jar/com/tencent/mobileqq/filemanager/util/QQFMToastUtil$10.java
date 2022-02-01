@@ -11,15 +11,15 @@ final class QQFMToastUtil$10
   public void run()
   {
     QQToast localQQToast = new QQToast(BaseApplication.getContext());
-    localQQToast.a(2130839548);
-    localQQToast.d(3000);
-    localQQToast.c(this.a);
-    localQQToast.b(QQFMToastUtil.a());
+    localQQToast.setToastIcon(2130839752);
+    localQQToast.setDuration(3000);
+    localQQToast.setToastMsg(this.a);
+    localQQToast.show(QQFMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFMToastUtil.10
  * JD-Core Version:    0.7.0.1
  */

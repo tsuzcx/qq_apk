@@ -168,7 +168,7 @@ public class PermissionSettingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(R.layout.mini_sdk_permission_setting_layout, null);
-    if (DisplayUtil.isImmersiveSupported) {
+    if (DisplayUtil.IS_IMMERSIVE_SUPPORTED) {
       paramLayoutInflater.setFitsSystemWindows(true);
     }
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#EFEFF4"));
@@ -224,7 +224,7 @@ public class PermissionSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.PermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

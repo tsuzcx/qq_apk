@@ -9,15 +9,15 @@ import com.tencent.image.URLImageView;
 
 public class ItemHolder$MutiImageItemHolder
 {
-  public GridView a;
-  public LinearLayout a;
-  public ProgressBar a;
-  public RelativeLayout a;
   public TextView a;
-  public URLImageView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  public GridView b;
+  public ProgressBar c;
+  public RelativeLayout d;
+  public LinearLayout e;
+  public TextView f;
+  public LinearLayout g;
+  public URLImageView h;
+  public TextView i;
   
   public ItemHolder$MutiImageItemHolder(ItemHolder paramItemHolder) {}
 }

@@ -21,69 +21,69 @@ public class PhotoListCustomizationArk
   extends PhotoListCustomizationDefault
 {
   public static final String a = "com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationArk";
-  private boolean a;
-  private String b;
-  private String c;
+  private String i;
+  private boolean j;
+  private String k;
   
   public PhotoListCustomizationArk(AbstractPhotoListActivity paramAbstractPhotoListActivity)
   {
     super(paramAbstractPhotoListActivity);
   }
   
-  public Intent a(View paramView, int paramInt)
-  {
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getIntent();
-    localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-    localIntent.putExtra("key_ark_app_res_path", this.b);
-    localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-    localIntent.putExtra("key_ark_app_engine_res_dir", this.c);
-    return super.a(paramView, paramInt);
-  }
-  
   public void a(Intent paramIntent)
   {
     super.a(paramIntent);
-    this.b = paramIntent.getStringExtra("key_ark_app_res_path");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
-    this.c = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
+    this.i = paramIntent.getStringExtra("key_ark_app_res_path");
+    this.j = paramIntent.getBooleanExtra("key_should_compress", false);
+    this.k = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.setClickable(false);
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.isEmpty()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a((String)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.get(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size() - 1));
+    this.h.o.setClickable(false);
+    if (!this.e.selectedPhotoList.isEmpty()) {
+      this.h.a((String)this.e.selectedPhotoList.get(this.e.selectedPhotoList.size() - 1));
     }
     AlbumUtil.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size() == 0)
+    if (this.e.selectedPhotoList.size() == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.e("PhotoList", 2, "size == 0");
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getIntent();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size() > 0)
+    this.c.getIntent();
+    if (this.e.selectedPhotoList.size() > 0)
     {
       if (QLog.isColorLevel())
       {
-        paramView = new StringBuilder(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size() * 128);
-        int i = 0;
-        while (i < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size())
+        paramView = new StringBuilder(this.e.selectedPhotoList.size() * 128);
+        int m = 0;
+        while (m < this.e.selectedPhotoList.size())
         {
-          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.get(i) }));
-          i += 1;
+          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(m), this.e.selectedPhotoList.get(m) }));
+          m += 1;
         }
         QLog.d("PhotoListCustomizationArk", 2, paramView.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoListData.a.a();
+      this.b.u.a();
       ThreadManagerV2.executeOnSubThread(new PhotoListCustomizationArk.1(this));
     }
     else
     {
       ChooseImageIPCModule.a().a("callbackArk", null, null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.finish();
+    this.c.finish();
+  }
+  
+  public Intent b(View paramView, int paramInt)
+  {
+    Intent localIntent = this.c.getIntent();
+    localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+    localIntent.putExtra("key_ark_app_res_path", this.i);
+    localIntent.putExtra("key_should_compress", this.j);
+    localIntent.putExtra("key_ark_app_engine_res_dir", this.k);
+    return super.b(paramView, paramInt);
   }
   
   public void b(Intent paramIntent)
@@ -94,15 +94,8 @@ public class PhotoListCustomizationArk
   public void b(View paramView)
   {
     ChooseImageIPCModule.a().a("callbackArk", null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.finish();
+    this.c.finish();
     super.b(paramView);
-  }
-  
-  public void c()
-  {
-    ChooseImageIPCModule.a().a("callbackArk", null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.finish();
-    AlbumUtil.anim(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, false, false);
   }
   
   public void c(Intent paramIntent)
@@ -111,23 +104,30 @@ public class PhotoListCustomizationArk
     super.c(paramIntent);
   }
   
-  public void h()
+  public void e()
   {
-    super.h();
-    NewPhotoListActivity localNewPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity;
+    ChooseImageIPCModule.a().a("callbackArk", null, null);
+    this.c.finish();
+    AlbumUtil.anim(this.c, false, false);
+  }
+  
+  public void k()
+  {
+    super.k();
+    NewPhotoListActivity localNewPhotoListActivity = this.c;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("ArkApp ark app res:");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.i);
       QLog.d("PhotoListCustomizationArk", 2, localStringBuilder.toString());
     }
-    localNewPhotoListActivity.findViewById(2131373035).setVisibility(4);
+    localNewPhotoListActivity.findViewById(2131440614).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationArk
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class QIMDynamicTextConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[(paramArrayOfQConfItem.length - 1)].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[(paramArrayOfQConfItem.length - 1)].b;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -64,7 +64,7 @@ public class QIMDynamicTextConfigProcessor
   
   public int migrateOldVersion()
   {
-    if (!DynamicTextConfigManager.b()) {
+    if (!DynamicTextConfigManager.f()) {
       return 0;
     }
     return SharedPreUtils.a(BaseApplicationImpl.getContext());
@@ -79,10 +79,10 @@ public class QIMDynamicTextConfigProcessor
   
   public int onSend(int paramInt)
   {
-    if (!DynamicTextConfigManager.b())
+    if (!DynamicTextConfigManager.f())
     {
       QLog.i("QIMDynamicTextConfigProcessor", 1, "config file not exist");
-      QConfigManager.a().a(309, 0);
+      QConfigManager.b().a(309, 0);
       return 0;
     }
     return super.onSend(paramInt);
@@ -95,7 +95,7 @@ public class QIMDynamicTextConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.config.QIMDynamicTextConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

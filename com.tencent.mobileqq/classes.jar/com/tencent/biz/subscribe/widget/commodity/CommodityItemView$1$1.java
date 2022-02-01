@@ -10,12 +10,12 @@ class CommodityItemView$1$1
   
   public void run()
   {
-    CommodityItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityItemView$1.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    CommodityItemView.a(this.b.a).setImageDrawable(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1
  * JD-Core Version:    0.7.0.1
  */

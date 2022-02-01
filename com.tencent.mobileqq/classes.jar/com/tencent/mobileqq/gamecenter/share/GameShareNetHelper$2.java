@@ -32,24 +32,24 @@ class GameShareNetHelper$2
       ((StringBuilder)localObject1).append("|");
       ((StringBuilder)localObject1).append(paramBundle);
       ((StringBuilder)localObject1).append("|msghashcode:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.hashCode());
+      ((StringBuilder)localObject1).append(this.a.hashCode());
       QLog.d("GameShare.NetHelper", 2, ((StringBuilder)localObject1).toString());
     }
     if ((paramBoolean) && (paramBundle != null))
     {
-      ((IGameShareUtil)QRoute.api(IGameShareUtil.class)).saveValueToMsg("game_source_aio_txt", paramBundle.desc, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      ((IGameShareUtil)QRoute.api(IGameShareUtil.class)).saveValueToMsg("game_source_aio_url", paramBundle.jump_url, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      ((IGameShareUtil)QRoute.api(IGameShareUtil.class)).saveValueToMsg("game_source_aio_txt", paramBundle.desc, this.a);
+      ((IGameShareUtil)QRoute.api(IGameShareUtil.class)).saveValueToMsg("game_source_aio_url", paramBundle.jumpUrl, this.a);
       localObject1 = (IGameShareUtil)QRoute.api(IGameShareUtil.class);
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramBundle.type);
       ((StringBuilder)localObject2).append("");
-      ((IGameShareUtil)localObject1).saveValueToMsg("game_source_type_aio", ((StringBuilder)localObject2).toString(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      ((IGameShareUtil)localObject1).saveValueToMsg("game_source_type_aio", ((StringBuilder)localObject2).toString(), this.a);
       localObject1 = (IGameShareUtil)QRoute.api(IGameShareUtil.class);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramBundle.sub_type);
+      ((StringBuilder)localObject2).append(paramBundle.subType);
       ((StringBuilder)localObject2).append("");
-      ((IGameShareUtil)localObject1).saveValueToMsg("game_source_subtype_aio", ((StringBuilder)localObject2).toString(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      paramBundle = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      ((IGameShareUtil)localObject1).saveValueToMsg("game_source_subtype_aio", ((StringBuilder)localObject2).toString(), this.a);
+      paramBundle = (QQAppInterface)this.b.get();
       if (paramBundle != null)
       {
         localObject1 = paramBundle.getHandler(ChatActivity.class);
@@ -59,19 +59,19 @@ class GameShareNetHelper$2
           ((Message)localObject2).what = 78;
           ((Message)localObject2).arg1 = 891;
           Bundle localBundle = new Bundle();
-          localBundle.putLong("messageUniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+          localBundle.putLong("messageUniseq", this.a.uniseq);
           ((Message)localObject2).setData(localBundle);
           ((MqqHandler)localObject1).sendMessage((Message)localObject2);
         }
         ThreadManager.excute(new GameShareNetHelper.2.1(this, paramBundle), 32, null, false);
       }
     }
-    GameShareNetHelper.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareNetHelper).remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    GameShareNetHelper.a(this.c).remove(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.share.GameShareNetHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,47 +11,29 @@ import org.jetbrains.annotations.Nullable;
 public final class CompleteState
   extends VideoState
 {
-  @Nullable
-  private VideoPlayController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  @Nullable
-  private VideoView jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  @NotNull
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   @NotNull
   private AtomicInteger b;
+  @NotNull
+  private AtomicInteger c;
+  @Nullable
+  private VideoView d;
+  @Nullable
+  private VideoPlayController e;
   
   public CompleteState(@NotNull AtomicInteger paramAtomicInteger1, @NotNull AtomicInteger paramAtomicInteger2, @Nullable VideoView paramVideoView, @Nullable VideoPlayController paramVideoPlayController)
   {
     super(paramAtomicInteger1, paramAtomicInteger2, paramVideoView, paramVideoPlayController);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger1;
-    this.b = paramAtomicInteger2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView = paramVideoView;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController = paramVideoPlayController;
-  }
-  
-  @Nullable
-  public VideoPlayController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  }
-  
-  @Nullable
-  public VideoView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  }
-  
-  @NotNull
-  public AtomicInteger a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    this.b = paramAtomicInteger1;
+    this.c = paramAtomicInteger2;
+    this.d = paramVideoView;
+    this.e = paramVideoPlayController;
   }
   
   public void a()
   {
-    VideoPlayController localVideoPlayController = a();
+    VideoPlayController localVideoPlayController = e();
     if (localVideoPlayController != null) {
-      localVideoPlayController.f();
+      localVideoPlayController.r();
     }
   }
   
@@ -60,10 +42,28 @@ public final class CompleteState
   {
     return this.b;
   }
+  
+  @NotNull
+  public AtomicInteger c()
+  {
+    return this.c;
+  }
+  
+  @Nullable
+  public VideoView d()
+  {
+    return this.d;
+  }
+  
+  @Nullable
+  public VideoPlayController e()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.statemachine.CompleteState
  * JD-Core Version:    0.7.0.1
  */

@@ -1,124 +1,184 @@
 package com.tencent.ad.tangram.device;
 
-import android.content.Context;
-import android.os.Environment;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.file.AdFile;
+import com.tencent.ad.tangram.json.AdJSON;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForDeviceInfo;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForDeviceInfo.UUID;
-import com.tencent.ad.tangram.settings.AdSettingsManager;
-import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
-import com.tencent.ad.tangram.util.e;
-import java.io.File;
+import com.tencent.ad.tangram.protocol.qq_common.DeviceExt.UUID;
+import com.tencent.ad.tangram.util.d;
+import java.util.UUID;
+import org.json.JSONObject;
 
-final class r
+public final class r
 {
-  static final String TAG = "AdUUIDUtil";
-  private static q uuidInfo;
+  private static final String TAG = "AdUUIDInfo";
+  private qq_common.DeviceExt.UUID info;
   
-  private static String getDirectoryAbsolutePath(String paramString)
+  private r(qq_common.DeviceExt.UUID paramUUID)
   {
-    if ((TextUtils.isEmpty(paramString)) || (Environment.getExternalStorageDirectory() == null)) {
-      return null;
-    }
-    return new File(Environment.getExternalStorageDirectory(), paramString).getAbsolutePath();
+    this.info = paramUUID;
   }
   
-  public static r.a getUUID(Context paramContext, boolean paramBoolean)
+  public static r create(r.a parama)
   {
-    long l = System.currentTimeMillis();
-    r.a locala = new r.a();
-    locala.error = 1;
-    Object localObject1 = uuidInfo;
-    if (localObject1 != null)
+    if ((parama != null) && (parama.isValid()))
     {
-      locala.uuidInfo = ((q)localObject1);
-      locala.error = 0;
-      locala.cached = true;
+      UUID localUUID = UUID.randomUUID();
+      qq_common.DeviceExt.UUID localUUID1 = new qq_common.DeviceExt.UUID();
+      localUUID1.v = parama.getVersion();
+      localUUID1.u = localUUID.toString();
+      localUUID1.t = System.currentTimeMillis();
+      localUUID1.m = generateSignature(parama, localUUID1.u, localUUID1.t);
+      return new r(localUUID1);
     }
-    else
+    AdLog.e("AdUUIDInfo", "create error");
+    return null;
+  }
+  
+  public static r fromString(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      localObject1 = AdSettingsManager.INSTANCE.getCache();
-      if (localObject1 == null)
+      paramString = new JSONObject(paramString);
+      if (JSONObject.NULL.equals(paramString))
       {
-        locala.error = 106;
+        AdLog.e("AdUUIDInfo", "fromString error");
+        return null;
       }
-      else
+      paramString = new r((qq_common.DeviceExt.UUID)qq_common.DeviceExt.UUID.class.cast(AdJSON.toObject(paramString, qq_common.DeviceExt.UUID.class)));
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      AdLog.e("AdUUIDInfo", "fromString", paramString);
+    }
+    return null;
+  }
+  
+  private static String generateSignature(r.a parama, String paramString, long paramLong)
+  {
+    if ((parama != null) && (parama.isValid()) && (paramLong != -2147483648L) && (!TextUtils.isEmpty(paramString)))
+    {
+      parama = String.format("%s%d%d%s", new Object[] { paramString, Integer.valueOf(parama.getVersion()), Long.valueOf(paramLong), parama.getValue() });
+      if (!TextUtils.isEmpty(parama))
       {
-        q.a locala1 = new q.a(((gdt_settings.Settings)localObject1).settingsForDeviceInfo.uuid);
-        if (!locala1.isValid())
+        parama = d.md5(parama, "UTF-8");
+        if (!TextUtils.isEmpty(parama))
         {
-          locala.error = 4;
-        }
-        else if ((paramBoolean) && (!e.checkPermission(paramContext, "android.permission.WRITE_EXTERNAL_STORAGE")))
-        {
-          locala.error = 17;
-        }
-        else if (!TextUtils.equals(Environment.getExternalStorageState(), "mounted"))
-        {
-          locala.error = 213;
-        }
-        else
-        {
-          AdFile localAdFile1 = new AdFile(getDirectoryAbsolutePath("Tencent/ams/cache"), "meta.dat", "UTF-8", true);
-          AdFile localAdFile2 = new AdFile(getDirectoryAbsolutePath("Android/data/com.tencent.ams/cache"), "meta.dat", "UTF-8", true);
-          if ((localAdFile1.open()) && (localAdFile2.open()))
-          {
-            int i = ((gdt_settings.Settings)localObject1).settingsForDeviceInfo.uuid.maxLength;
-            String str1 = localAdFile1.readFully(i);
-            q localq1 = q.fromString(str1);
-            String str2 = localAdFile2.readFully(i);
-            q localq2 = q.fromString(str2);
-            q localq3 = q.create(locala1);
-            Object localObject2 = null;
-            if (localq3 != null) {
-              localObject1 = localq3.toString();
-            } else {
-              localObject1 = null;
-            }
-            if ((localq1 != null) && (localq1.isValid(locala1)))
-            {
-              localObject2 = str1;
-              localObject1 = localq1;
-            }
-            else if ((localq2 != null) && (localq2.isValid(locala1)))
-            {
-              localObject2 = str2;
-              localObject1 = localq2;
-            }
-            else if (!TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              localObject2 = localObject1;
-              localObject1 = localq3;
-            }
-            else
-            {
-              localObject1 = null;
-            }
-            if ((localAdFile1.writeFully((String)localObject2)) && (localAdFile2.writeFully((String)localObject2)))
-            {
-              uuidInfo = (q)localObject1;
-              locala.uuidInfo = uuidInfo;
-              locala.error = 0;
-            }
-            localAdFile1.close();
-            localAdFile2.close();
-            AdAnalysisHelperForUtil.reportForUUID(paramContext, localq1, localq2, locala1);
-          }
-          else
-          {
-            localAdFile1.close();
-            localAdFile2.close();
-            locala.error = 18;
+          parama = parama.toUpperCase();
+          if (!TextUtils.isEmpty(parama)) {
+            return parama;
           }
         }
       }
     }
-    AdLog.i("AdUUIDUtil", String.format("getUUID %d", new Object[] { Integer.valueOf(locala.error) }));
-    locala.duration = (System.currentTimeMillis() - l);
-    return locala;
+    return null;
+  }
+  
+  private boolean isValid()
+  {
+    qq_common.DeviceExt.UUID localUUID = this.info;
+    return (localUUID != null) && (localUUID.v > 0) && (this.info.t > 0L) && (!TextUtils.isEmpty(this.info.u)) && (!TextUtils.isEmpty(this.info.m));
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof r)) {
+        return false;
+      }
+      paramObject = (r)r.class.cast(paramObject);
+      if ((this.info == null) && (paramObject.info == null)) {
+        return true;
+      }
+      qq_common.DeviceExt.UUID localUUID = this.info;
+      bool1 = bool2;
+      if (localUUID != null)
+      {
+        if (paramObject.info == null) {
+          return false;
+        }
+        bool1 = bool2;
+        if (localUUID.v == paramObject.info.v)
+        {
+          bool1 = bool2;
+          if (this.info.t == paramObject.info.t)
+          {
+            bool1 = bool2;
+            if (TextUtils.equals(this.info.u, paramObject.info.u))
+            {
+              bool1 = bool2;
+              if (TextUtils.equals(this.info.m, paramObject.info.m)) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public qq_common.DeviceExt.UUID getInfo()
+  {
+    if (isValid()) {
+      return this.info;
+    }
+    return null;
+  }
+  
+  public boolean isValid(r.a parama)
+  {
+    if (isValid()) {
+      try
+      {
+        UUID localUUID = UUID.fromString(this.info.u);
+        if ((localUUID != null) && (parama != null) && (parama.isValid()) && (parama.getVersion() == this.info.v))
+        {
+          parama = generateSignature(parama, this.info.u, this.info.t);
+          return TextUtils.equals(this.info.m, parama);
+        }
+      }
+      catch (Throwable parama)
+      {
+        AdLog.e("AdUUIDInfo", "isValid", parama);
+      }
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    boolean bool = isValid();
+    Object localObject2 = null;
+    if (!bool)
+    {
+      AdLog.e("AdUUIDInfo", "toString error");
+      return null;
+    }
+    try
+    {
+      Object localObject3 = AdJSON.fromObject(this.info);
+      Object localObject1 = localObject2;
+      if (localObject3 != null)
+      {
+        localObject1 = localObject2;
+        if (!JSONObject.NULL.equals(localObject3)) {
+          localObject1 = localObject3.toString();
+        }
+      }
+      return localObject1;
+    }
+    catch (Throwable localThrowable)
+    {
+      AdLog.e("AdUUIDInfo", "toString", localThrowable);
+    }
+    return null;
   }
 }
 

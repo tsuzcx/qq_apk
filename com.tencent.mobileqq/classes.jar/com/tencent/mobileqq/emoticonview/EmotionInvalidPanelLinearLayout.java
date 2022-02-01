@@ -82,7 +82,7 @@ public class EmotionInvalidPanelLinearLayout
         if (this.isSmallEmotion)
         {
           localObject1 = new URLImageView(this.context);
-          ((URLImageView)localObject1).setId(2131378202);
+          ((URLImageView)localObject1).setId(2131446720);
           int k = (this.widthPixels - (int)(this.mDensity * 18.0F) * 8) / 7;
           localObject2 = new LinearLayout.LayoutParams(k, k);
           ((LinearLayout.LayoutParams)localObject2).leftMargin = ((int)(this.mDensity * 18.0F));
@@ -116,7 +116,7 @@ public class EmotionInvalidPanelLinearLayout
         if (localObject1 != null)
         {
           ((TextView)localObject1).setVisibility(8);
-          ((TextView)localObject1).setId(2131374392);
+          ((TextView)localObject1).setId(2131442558);
           ((TextView)localObject1).setTextSize(11.0F);
           localObject2 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject2).addRule(12);
@@ -125,11 +125,11 @@ public class EmotionInvalidPanelLinearLayout
           localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
         }
         localObject1 = new URLImageView(this.context);
-        ((URLImageView)localObject1).setId(2131378202);
+        ((URLImageView)localObject1).setId(2131446720);
         f = this.mDensity;
         Object localObject2 = new RelativeLayout.LayoutParams((int)(f * 56.0F), (int)(f * 56.0F));
         ((RelativeLayout.LayoutParams)localObject2).addRule(13, -1);
-        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131374392);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(2, 2131442558);
         ((RelativeLayout.LayoutParams)localObject2).addRule(14);
         ((URLImageView)localObject1).setVisibility(8);
         ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
@@ -137,15 +137,15 @@ public class EmotionInvalidPanelLinearLayout
         localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
         localObject1 = new ImageView(this.context);
         ((ImageView)localObject1).setVisibility(8);
-        ((ImageView)localObject1).setId(2131374393);
+        ((ImageView)localObject1).setId(2131442559);
         localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-        ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131378202);
-        ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131378202);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131446720);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131446720);
         localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-        if (AppSetting.d) {
+        if (AppSetting.e) {
           localRelativeLayout.setFocusable(true);
         }
-        if (AppSetting.d) {
+        if (AppSetting.e) {
           localRelativeLayout.setFocusable(true);
         }
         localLinearLayout.addView(localRelativeLayout);
@@ -167,7 +167,7 @@ public class EmotionInvalidPanelLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout
  * JD-Core Version:    0.7.0.1
  */

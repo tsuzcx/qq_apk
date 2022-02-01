@@ -12,18 +12,18 @@ class ShareProxyImpl$4$2
   
   public void run()
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     if ((l != -100070004L) && (l != -1000710003L))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$4.a, 1, 2131694174, 1).a();
+      QQToast.makeText(this.c.a, 1, 2131891804, 1).show();
       return;
     }
-    DialogUtil.a(this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$4.a, 233, this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$4.a.getString(2131719012), this.jdField_a_of_type_JavaLangString, new ShareProxyImpl.4.2.1(this), null).show();
+    DialogUtil.a(this.c.a, 233, this.c.a.getString(2131916547), this.b, new ShareProxyImpl.4.2.1(this), null).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl.4.2
  * JD-Core Version:    0.7.0.1
  */

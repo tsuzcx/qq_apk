@@ -1,21 +1,41 @@
 package com.tencent.aelight.camera.ae.camera.core;
 
-import android.graphics.PointF;
-import com.tencent.aelight.camera.ae.camera.filter.AEFilterProcessTex;
+import com.tencent.mobileqq.videocodec.mediacodec.recorder.HWEncodeListener;
+import com.tencent.qphone.base.util.QLog;
 
 class AECameraGLSurfaceView$27
-  implements Runnable
+  implements HWEncodeListener
 {
-  AECameraGLSurfaceView$27(AECameraGLSurfaceView paramAECameraGLSurfaceView, AEFilterProcessTex paramAEFilterProcessTex, float paramFloat1, float paramFloat2, int paramInt) {}
+  AECameraGLSurfaceView$27(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
-  public void run()
+  public void onEncodeError(int paramInt, Throwable paramThrowable)
   {
-    this.val$aeFilterProcessTex.a(new PointF(this.val$x, this.val$y), this.val$screenWidth);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Test Video  onEncodeError:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramThrowable.getMessage());
+    QLog.e("AECameraGLSurfaceView", 4, localStringBuilder.toString());
+  }
+  
+  public void onEncodeFinish(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Test Video onEncodeFinish:");
+    localStringBuilder.append(paramString);
+    QLog.i("AECameraGLSurfaceView", 4, localStringBuilder.toString());
+  }
+  
+  public void onEncodeFrame() {}
+  
+  public void onEncodeStart()
+  {
+    QLog.i("AECameraGLSurfaceView", 4, "Test Video onEncodeStart.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AECameraGLSurfaceView.27
  * JD-Core Version:    0.7.0.1
  */

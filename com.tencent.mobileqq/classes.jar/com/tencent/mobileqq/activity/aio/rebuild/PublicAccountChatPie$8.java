@@ -14,7 +14,7 @@ class PublicAccountChatPie$8
   @NotNull
   public List<ChatMessage> a()
   {
-    return this.a.a.a();
+    return this.a.V.a();
   }
   
   public void a(@NotNull ChatMessage paramChatMessage)
@@ -24,7 +24,7 @@ class PublicAccountChatPie$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.8
  * JD-Core Version:    0.7.0.1
  */

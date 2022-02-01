@@ -13,6 +13,7 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import com.tencent.bugly.proguard.x;
 import com.tencent.bugly.proguard.z;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -151,7 +152,7 @@ public class b
       if (localObject == null) {
         break label54;
       }
-      localObject = ((TelephonyManager)localObject).getSimSerialNumber();
+      localObject = PhoneInfoMonitor.getSimSerialNumber((TelephonyManager)localObject);
       paramContext = (Context)localObject;
       if (localObject != null) {
         break label54;
@@ -413,17 +414,17 @@ public class b
     //   8: getstatic 177	com/tencent/bugly/crashreport/common/info/b:d	Ljava/lang/String;
     //   11: ifnonnull +13 -> 24
     //   14: aload_0
-    //   15: ldc_w 441
+    //   15: ldc_w 444
     //   18: invokestatic 234	com/tencent/bugly/proguard/z:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   21: putstatic 177	com/tencent/bugly/crashreport/common/info/b:d	Ljava/lang/String;
     //   24: getstatic 177	com/tencent/bugly/crashreport/common/info/b:d	Ljava/lang/String;
     //   27: ifnull +35 -> 62
     //   30: aload_3
-    //   31: ldc_w 441
+    //   31: ldc_w 444
     //   34: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: pop
     //   38: aload_3
-    //   39: ldc_w 425
+    //   39: ldc_w 428
     //   42: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: pop
     //   46: aload_3
@@ -431,23 +432,23 @@ public class b
     //   50: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: pop
     //   54: aload_3
-    //   55: ldc_w 427
+    //   55: ldc_w 430
     //   58: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: getstatic 179	com/tencent/bugly/crashreport/common/info/b:e	Ljava/lang/String;
     //   65: ifnonnull +13 -> 78
     //   68: aload_0
-    //   69: ldc_w 443
+    //   69: ldc_w 446
     //   72: invokestatic 234	com/tencent/bugly/proguard/z:a	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     //   75: putstatic 179	com/tencent/bugly/crashreport/common/info/b:e	Ljava/lang/String;
     //   78: getstatic 179	com/tencent/bugly/crashreport/common/info/b:e	Ljava/lang/String;
     //   81: ifnull +35 -> 116
     //   84: aload_3
-    //   85: ldc_w 443
+    //   85: ldc_w 446
     //   88: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: pop
     //   92: aload_3
-    //   93: ldc_w 425
+    //   93: ldc_w 428
     //   96: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: pop
     //   100: aload_3
@@ -455,29 +456,29 @@ public class b
     //   104: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   107: pop
     //   108: aload_3
-    //   109: ldc_w 427
+    //   109: ldc_w 430
     //   112: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: pop
-    //   116: new 445	java/io/BufferedReader
+    //   116: new 448	java/io/BufferedReader
     //   119: dup
-    //   120: new 447	java/io/FileReader
+    //   120: new 450	java/io/FileReader
     //   123: dup
-    //   124: ldc_w 449
-    //   127: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   130: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   124: ldc_w 452
+    //   127: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   130: invokespecial 456	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   133: astore_1
     //   134: aload_1
     //   135: astore_0
     //   136: aload_1
-    //   137: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   137: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   140: astore_2
     //   141: aload_2
     //   142: ifnull +15 -> 157
     //   145: aload_1
     //   146: astore_0
     //   147: aload_2
-    //   148: ldc_w 458
-    //   151: invokevirtual 461	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   148: ldc_w 461
+    //   151: invokevirtual 464	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   154: ifeq -20 -> 134
     //   157: aload_2
     //   158: ifnull +43 -> 201
@@ -485,19 +486,19 @@ public class b
     //   162: astore_0
     //   163: aload_2
     //   164: bipush 10
-    //   166: invokevirtual 465	java/lang/String:substring	(I)Ljava/lang/String;
-    //   169: invokevirtual 468	java/lang/String:trim	()Ljava/lang/String;
+    //   166: invokevirtual 468	java/lang/String:substring	(I)Ljava/lang/String;
+    //   169: invokevirtual 471	java/lang/String:trim	()Ljava/lang/String;
     //   172: astore_2
     //   173: aload_1
     //   174: astore_0
     //   175: aload_3
-    //   176: ldc_w 470
+    //   176: ldc_w 473
     //   179: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: pop
     //   183: aload_1
     //   184: astore_0
     //   185: aload_3
-    //   186: ldc_w 425
+    //   186: ldc_w 428
     //   189: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: pop
     //   193: aload_1
@@ -512,7 +513,7 @@ public class b
     //   204: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   207: astore_2
     //   208: aload_1
-    //   209: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   209: invokevirtual 476	java/io/BufferedReader:close	()V
     //   212: aload_2
     //   213: areturn
     //   214: astore_0
@@ -538,7 +539,7 @@ public class b
     //   242: aload_1
     //   243: ifnull +16 -> 259
     //   246: aload_1
-    //   247: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   247: invokevirtual 476	java/io/BufferedReader:close	()V
     //   250: goto +9 -> 259
     //   253: astore_0
     //   254: aload_0
@@ -551,7 +552,7 @@ public class b
     //   265: aload_0
     //   266: ifnull +16 -> 282
     //   269: aload_0
-    //   270: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   270: invokevirtual 476	java/io/BufferedReader:close	()V
     //   273: goto +9 -> 282
     //   276: astore_0
     //   277: aload_0
@@ -686,78 +687,78 @@ public class b
   public static long j()
   {
     // Byte code:
-    //   0: new 447	java/io/FileReader
+    //   0: new 450	java/io/FileReader
     //   3: dup
-    //   4: ldc_w 533
-    //   7: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   4: ldc_w 536
+    //   7: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   10: astore_3
-    //   11: new 445	java/io/BufferedReader
+    //   11: new 448	java/io/BufferedReader
     //   14: dup
     //   15: aload_3
     //   16: sipush 2048
-    //   19: invokespecial 536	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   19: invokespecial 539	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   22: astore_2
     //   23: aload_2
     //   24: astore 4
     //   26: aload_3
     //   27: astore 5
     //   29: aload_2
-    //   30: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   30: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   33: astore 6
     //   35: aload 6
     //   37: ifnonnull +45 -> 82
     //   40: aload_2
-    //   41: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   41: invokevirtual 476	java/io/BufferedReader:close	()V
     //   44: goto +15 -> 59
     //   47: astore_2
     //   48: aload_2
     //   49: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   52: ifne +7 -> 59
     //   55: aload_2
-    //   56: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   56: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   59: aload_3
-    //   60: invokevirtual 538	java/io/FileReader:close	()V
+    //   60: invokevirtual 541	java/io/FileReader:close	()V
     //   63: goto +15 -> 78
     //   66: astore_2
     //   67: aload_2
     //   68: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   71: ifne +7 -> 78
     //   74: aload_2
-    //   75: invokevirtual 537	java/io/IOException:printStackTrace	()V
-    //   78: ldc2_w 496
+    //   75: invokevirtual 540	java/io/IOException:printStackTrace	()V
+    //   78: ldc2_w 499
     //   81: lreturn
     //   82: aload_2
     //   83: astore 4
     //   85: aload_3
     //   86: astore 5
     //   88: aload 6
-    //   90: ldc_w 540
+    //   90: ldc_w 543
     //   93: iconst_2
-    //   94: invokevirtual 543	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   94: invokevirtual 546	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   97: iconst_1
     //   98: aaload
     //   99: invokevirtual 221	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   102: ldc_w 545
-    //   105: ldc_w 547
-    //   108: invokevirtual 551	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   111: invokevirtual 468	java/lang/String:trim	()Ljava/lang/String;
-    //   114: invokestatic 557	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   102: ldc_w 548
+    //   105: ldc_w 550
+    //   108: invokevirtual 554	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   111: invokevirtual 471	java/lang/String:trim	()Ljava/lang/String;
+    //   114: invokestatic 560	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   117: lstore_0
     //   118: lload_0
     //   119: bipush 10
     //   121: lshl
     //   122: lstore_0
     //   123: aload_2
-    //   124: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   124: invokevirtual 476	java/io/BufferedReader:close	()V
     //   127: goto +15 -> 142
     //   130: astore_2
     //   131: aload_2
     //   132: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   135: ifne +7 -> 142
     //   138: aload_2
-    //   139: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   139: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   142: aload_3
-    //   143: invokevirtual 538	java/io/FileReader:close	()V
+    //   143: invokevirtual 541	java/io/FileReader:close	()V
     //   146: lload_0
     //   147: lreturn
     //   148: astore_2
@@ -765,7 +766,7 @@ public class b
     //   150: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   153: ifne +7 -> 160
     //   156: aload_2
-    //   157: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   157: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   160: lload_0
     //   161: lreturn
     //   162: astore 6
@@ -805,26 +806,26 @@ public class b
     //   221: aload_2
     //   222: ifnull +22 -> 244
     //   225: aload_2
-    //   226: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   226: invokevirtual 476	java/io/BufferedReader:close	()V
     //   229: goto +15 -> 244
     //   232: astore_2
     //   233: aload_2
     //   234: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   237: ifne +7 -> 244
     //   240: aload_2
-    //   241: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   241: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   244: aload_3
     //   245: ifnull +22 -> 267
     //   248: aload_3
-    //   249: invokevirtual 538	java/io/FileReader:close	()V
+    //   249: invokevirtual 541	java/io/FileReader:close	()V
     //   252: goto +15 -> 267
     //   255: astore_2
     //   256: aload_2
     //   257: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   260: ifne +7 -> 267
     //   263: aload_2
-    //   264: invokevirtual 537	java/io/IOException:printStackTrace	()V
-    //   267: ldc2_w 558
+    //   264: invokevirtual 540	java/io/IOException:printStackTrace	()V
+    //   267: ldc2_w 561
     //   270: lreturn
     //   271: astore_2
     //   272: aload 5
@@ -832,25 +833,25 @@ public class b
     //   275: aload 4
     //   277: ifnull +26 -> 303
     //   280: aload 4
-    //   282: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   282: invokevirtual 476	java/io/BufferedReader:close	()V
     //   285: goto +18 -> 303
     //   288: astore 4
     //   290: aload 4
     //   292: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   295: ifne +8 -> 303
     //   298: aload 4
-    //   300: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   300: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   303: aload_3
     //   304: ifnull +22 -> 326
     //   307: aload_3
-    //   308: invokevirtual 538	java/io/FileReader:close	()V
+    //   308: invokevirtual 541	java/io/FileReader:close	()V
     //   311: goto +15 -> 326
     //   314: astore_3
     //   315: aload_3
     //   316: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   319: ifne +7 -> 326
     //   322: aload_3
-    //   323: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   323: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   326: aload_2
     //   327: athrow
     // Local variable table:
@@ -912,138 +913,138 @@ public class b
     //   1: astore 8
     //   3: aconst_null
     //   4: astore 10
-    //   6: new 447	java/io/FileReader
+    //   6: new 450	java/io/FileReader
     //   9: dup
-    //   10: ldc_w 533
-    //   13: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   10: ldc_w 536
+    //   13: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   16: astore 6
     //   18: aload 6
     //   20: astore 7
-    //   22: new 445	java/io/BufferedReader
+    //   22: new 448	java/io/BufferedReader
     //   25: dup
     //   26: aload 6
     //   28: sipush 2048
-    //   31: invokespecial 536	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   31: invokespecial 539	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   34: astore 9
     //   36: aload 9
-    //   38: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   38: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   41: pop
     //   42: aload 9
-    //   44: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   44: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   47: astore 7
     //   49: aload 7
     //   51: ifnonnull +54 -> 105
     //   54: aload 9
-    //   56: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   56: invokevirtual 476	java/io/BufferedReader:close	()V
     //   59: goto +18 -> 77
     //   62: astore 7
     //   64: aload 7
     //   66: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   69: ifne +8 -> 77
     //   72: aload 7
-    //   74: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   74: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   77: aload 6
-    //   79: invokevirtual 538	java/io/FileReader:close	()V
-    //   82: ldc2_w 496
+    //   79: invokevirtual 541	java/io/FileReader:close	()V
+    //   82: ldc2_w 499
     //   85: lreturn
     //   86: astore 6
     //   88: aload 6
     //   90: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   93: ifne +8 -> 101
     //   96: aload 6
-    //   98: invokevirtual 537	java/io/IOException:printStackTrace	()V
-    //   101: ldc2_w 496
+    //   98: invokevirtual 540	java/io/IOException:printStackTrace	()V
+    //   101: ldc2_w 499
     //   104: lreturn
     //   105: aload 7
-    //   107: ldc_w 540
+    //   107: ldc_w 543
     //   110: iconst_2
-    //   111: invokevirtual 543	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   111: invokevirtual 546	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   114: iconst_1
     //   115: aaload
     //   116: invokevirtual 221	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   119: ldc_w 545
-    //   122: ldc_w 547
-    //   125: invokevirtual 551	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   128: invokevirtual 468	java/lang/String:trim	()Ljava/lang/String;
-    //   131: invokestatic 557	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   119: ldc_w 548
+    //   122: ldc_w 550
+    //   125: invokevirtual 554	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   128: invokevirtual 471	java/lang/String:trim	()Ljava/lang/String;
+    //   131: invokestatic 560	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   134: lstore_0
     //   135: aload 9
-    //   137: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   137: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   140: astore 7
     //   142: aload 7
     //   144: ifnonnull +54 -> 198
     //   147: aload 9
-    //   149: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   149: invokevirtual 476	java/io/BufferedReader:close	()V
     //   152: goto +18 -> 170
     //   155: astore 7
     //   157: aload 7
     //   159: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   162: ifne +8 -> 170
     //   165: aload 7
-    //   167: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   167: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   170: aload 6
-    //   172: invokevirtual 538	java/io/FileReader:close	()V
-    //   175: ldc2_w 496
+    //   172: invokevirtual 541	java/io/FileReader:close	()V
+    //   175: ldc2_w 499
     //   178: lreturn
     //   179: astore 6
     //   181: aload 6
     //   183: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   186: ifne +8 -> 194
     //   189: aload 6
-    //   191: invokevirtual 537	java/io/IOException:printStackTrace	()V
-    //   194: ldc2_w 496
+    //   191: invokevirtual 540	java/io/IOException:printStackTrace	()V
+    //   194: ldc2_w 499
     //   197: lreturn
     //   198: aload 7
-    //   200: ldc_w 540
+    //   200: ldc_w 543
     //   203: iconst_2
-    //   204: invokevirtual 543	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   204: invokevirtual 546	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   207: iconst_1
     //   208: aaload
     //   209: invokevirtual 221	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   212: ldc_w 545
-    //   215: ldc_w 547
-    //   218: invokevirtual 551	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   221: invokevirtual 468	java/lang/String:trim	()Ljava/lang/String;
-    //   224: invokestatic 557	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   212: ldc_w 548
+    //   215: ldc_w 550
+    //   218: invokevirtual 554	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   221: invokevirtual 471	java/lang/String:trim	()Ljava/lang/String;
+    //   224: invokestatic 560	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   227: lstore_2
     //   228: aload 9
-    //   230: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   230: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   233: astore 7
     //   235: aload 7
     //   237: ifnonnull +54 -> 291
     //   240: aload 9
-    //   242: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   242: invokevirtual 476	java/io/BufferedReader:close	()V
     //   245: goto +18 -> 263
     //   248: astore 7
     //   250: aload 7
     //   252: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   255: ifne +8 -> 263
     //   258: aload 7
-    //   260: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   260: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   263: aload 6
-    //   265: invokevirtual 538	java/io/FileReader:close	()V
-    //   268: ldc2_w 496
+    //   265: invokevirtual 541	java/io/FileReader:close	()V
+    //   268: ldc2_w 499
     //   271: lreturn
     //   272: astore 6
     //   274: aload 6
     //   276: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   279: ifne +8 -> 287
     //   282: aload 6
-    //   284: invokevirtual 537	java/io/IOException:printStackTrace	()V
-    //   287: ldc2_w 496
+    //   284: invokevirtual 540	java/io/IOException:printStackTrace	()V
+    //   287: ldc2_w 499
     //   290: lreturn
     //   291: aload 7
-    //   293: ldc_w 540
+    //   293: ldc_w 543
     //   296: iconst_2
-    //   297: invokevirtual 543	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   297: invokevirtual 546	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   300: iconst_1
     //   301: aaload
     //   302: invokevirtual 221	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   305: ldc_w 545
-    //   308: ldc_w 547
-    //   311: invokevirtual 551	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   314: invokevirtual 468	java/lang/String:trim	()Ljava/lang/String;
-    //   317: invokestatic 557	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   305: ldc_w 548
+    //   308: ldc_w 550
+    //   311: invokevirtual 554	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   314: invokevirtual 471	java/lang/String:trim	()Ljava/lang/String;
+    //   317: invokestatic 560	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   320: lstore 4
     //   322: lload_0
     //   323: bipush 10
@@ -1060,16 +1061,16 @@ public class b
     //   338: ladd
     //   339: lstore_0
     //   340: aload 9
-    //   342: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   342: invokevirtual 476	java/io/BufferedReader:close	()V
     //   345: goto +18 -> 363
     //   348: astore 7
     //   350: aload 7
     //   352: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   355: ifne +8 -> 363
     //   358: aload 7
-    //   360: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   360: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   363: aload 6
-    //   365: invokevirtual 538	java/io/FileReader:close	()V
+    //   365: invokevirtual 541	java/io/FileReader:close	()V
     //   368: lload_0
     //   369: lreturn
     //   370: astore 6
@@ -1077,7 +1078,7 @@ public class b
     //   374: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   377: ifne +8 -> 385
     //   380: aload 6
-    //   382: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   382: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   385: lload_0
     //   386: lreturn
     //   387: astore 7
@@ -1117,26 +1118,26 @@ public class b
     //   460: aload 10
     //   462: ifnull +26 -> 488
     //   465: aload 10
-    //   467: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   467: invokevirtual 476	java/io/BufferedReader:close	()V
     //   470: goto +18 -> 488
     //   473: astore 7
     //   475: aload 7
     //   477: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   480: ifne +8 -> 488
     //   483: aload 7
-    //   485: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   485: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   488: aload 6
     //   490: ifnull +26 -> 516
     //   493: aload 6
-    //   495: invokevirtual 538	java/io/FileReader:close	()V
+    //   495: invokevirtual 541	java/io/FileReader:close	()V
     //   498: goto +18 -> 516
     //   501: astore 6
     //   503: aload 6
     //   505: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   508: ifne +8 -> 516
     //   511: aload 6
-    //   513: invokevirtual 537	java/io/IOException:printStackTrace	()V
-    //   516: ldc2_w 558
+    //   513: invokevirtual 540	java/io/IOException:printStackTrace	()V
+    //   516: ldc2_w 561
     //   519: lreturn
     //   520: astore 9
     //   522: aload 7
@@ -1146,25 +1147,25 @@ public class b
     //   530: aload 8
     //   532: ifnull +26 -> 558
     //   535: aload 8
-    //   537: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   537: invokevirtual 476	java/io/BufferedReader:close	()V
     //   540: goto +18 -> 558
     //   543: astore 8
     //   545: aload 8
     //   547: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   550: ifne +8 -> 558
     //   553: aload 8
-    //   555: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   555: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   558: aload 6
     //   560: ifnull +26 -> 586
     //   563: aload 6
-    //   565: invokevirtual 538	java/io/FileReader:close	()V
+    //   565: invokevirtual 541	java/io/FileReader:close	()V
     //   568: goto +18 -> 586
     //   571: astore 6
     //   573: aload 6
     //   575: invokestatic 196	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   578: ifne +8 -> 586
     //   581: aload 6
-    //   583: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   583: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   586: aload 7
     //   588: athrow
     // Local variable table:
@@ -1393,26 +1394,26 @@ public class b
     //   3: dup
     //   4: invokespecial 275	java/lang/StringBuilder:<init>	()V
     //   7: astore 4
-    //   9: new 485	java/io/File
+    //   9: new 488	java/io/File
     //   12: dup
-    //   13: ldc_w 625
-    //   16: invokespecial 513	java/io/File:<init>	(Ljava/lang/String;)V
-    //   19: invokevirtual 517	java/io/File:exists	()Z
+    //   13: ldc_w 628
+    //   16: invokespecial 516	java/io/File:<init>	(Ljava/lang/String;)V
+    //   19: invokevirtual 520	java/io/File:exists	()Z
     //   22: ifeq +348 -> 370
-    //   25: new 445	java/io/BufferedReader
+    //   25: new 448	java/io/BufferedReader
     //   28: dup
-    //   29: new 447	java/io/FileReader
+    //   29: new 450	java/io/FileReader
     //   32: dup
-    //   33: ldc_w 625
-    //   36: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   39: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   33: ldc_w 628
+    //   36: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   39: invokespecial 456	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   42: astore_0
     //   43: aload_0
     //   44: astore_1
     //   45: aload_0
     //   46: astore_2
     //   47: aload_0
-    //   48: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   48: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   51: astore_3
     //   52: aload_3
     //   53: ifnull +14 -> 67
@@ -1429,7 +1430,7 @@ public class b
     //   69: aload_0
     //   70: astore_2
     //   71: aload_0
-    //   72: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   72: invokevirtual 476	java/io/BufferedReader:close	()V
     //   75: goto +3 -> 78
     //   78: aload_0
     //   79: astore_1
@@ -1443,30 +1444,30 @@ public class b
     //   92: astore_1
     //   93: aload_0
     //   94: astore_2
-    //   95: new 485	java/io/File
+    //   95: new 488	java/io/File
     //   98: dup
-    //   99: ldc_w 627
-    //   102: invokespecial 513	java/io/File:<init>	(Ljava/lang/String;)V
-    //   105: invokevirtual 517	java/io/File:exists	()Z
+    //   99: ldc_w 630
+    //   102: invokespecial 516	java/io/File:<init>	(Ljava/lang/String;)V
+    //   105: invokevirtual 520	java/io/File:exists	()Z
     //   108: ifeq +267 -> 375
     //   111: aload_0
     //   112: astore_1
     //   113: aload_0
     //   114: astore_2
-    //   115: new 445	java/io/BufferedReader
+    //   115: new 448	java/io/BufferedReader
     //   118: dup
-    //   119: new 447	java/io/FileReader
+    //   119: new 450	java/io/FileReader
     //   122: dup
-    //   123: ldc_w 627
-    //   126: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   129: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   123: ldc_w 630
+    //   126: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   129: invokespecial 456	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   132: astore_0
     //   133: aload_0
     //   134: astore_1
     //   135: aload_0
     //   136: astore_3
     //   137: aload_0
-    //   138: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   138: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   141: astore_2
     //   142: aload_2
     //   143: ifnull +14 -> 157
@@ -1483,7 +1484,7 @@ public class b
     //   159: aload_0
     //   160: astore_3
     //   161: aload_0
-    //   162: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   162: invokevirtual 476	java/io/BufferedReader:close	()V
     //   165: goto +3 -> 168
     //   168: aload_0
     //   169: astore_1
@@ -1497,30 +1498,30 @@ public class b
     //   182: astore_1
     //   183: aload_0
     //   184: astore_3
-    //   185: new 485	java/io/File
+    //   185: new 488	java/io/File
     //   188: dup
-    //   189: ldc_w 629
-    //   192: invokespecial 513	java/io/File:<init>	(Ljava/lang/String;)V
-    //   195: invokevirtual 517	java/io/File:exists	()Z
+    //   189: ldc_w 632
+    //   192: invokespecial 516	java/io/File:<init>	(Ljava/lang/String;)V
+    //   195: invokevirtual 520	java/io/File:exists	()Z
     //   198: ifeq +180 -> 378
     //   201: aload_0
     //   202: astore_1
     //   203: aload_0
     //   204: astore_3
-    //   205: new 445	java/io/BufferedReader
+    //   205: new 448	java/io/BufferedReader
     //   208: dup
-    //   209: new 447	java/io/FileReader
+    //   209: new 450	java/io/FileReader
     //   212: dup
-    //   213: ldc_w 629
-    //   216: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   219: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   213: ldc_w 632
+    //   216: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   219: invokespecial 456	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   222: astore_2
     //   223: aload_2
     //   224: astore_1
     //   225: aload_2
     //   226: astore_3
     //   227: aload_2
-    //   228: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   228: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   231: astore 5
     //   233: aload_2
     //   234: astore_0
@@ -1547,7 +1548,7 @@ public class b
     //   267: aload_0
     //   268: ifnull +15 -> 283
     //   271: aload_0
-    //   272: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   272: invokevirtual 476	java/io/BufferedReader:close	()V
     //   275: aload_2
     //   276: areturn
     //   277: astore_0
@@ -1577,7 +1578,7 @@ public class b
     //   315: aload_1
     //   316: ifnull +16 -> 332
     //   319: aload_1
-    //   320: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   320: invokevirtual 476	java/io/BufferedReader:close	()V
     //   323: goto +9 -> 332
     //   326: astore_1
     //   327: aload_1
@@ -1590,7 +1591,7 @@ public class b
     //   336: aload_0
     //   337: ifnull +15 -> 352
     //   340: aload_0
-    //   341: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   341: invokevirtual 476	java/io/BufferedReader:close	()V
     //   344: aconst_null
     //   345: areturn
     //   346: astore_0
@@ -1693,11 +1694,11 @@ public class b
     //   17: astore_3
     //   18: aload 5
     //   20: astore 4
-    //   22: new 485	java/io/File
+    //   22: new 488	java/io/File
     //   25: dup
-    //   26: ldc_w 632
-    //   29: invokespecial 513	java/io/File:<init>	(Ljava/lang/String;)V
-    //   32: invokevirtual 517	java/io/File:exists	()Z
+    //   26: ldc_w 635
+    //   29: invokespecial 516	java/io/File:<init>	(Ljava/lang/String;)V
+    //   32: invokevirtual 520	java/io/File:exists	()Z
     //   35: istore_0
     //   36: iload_0
     //   37: ifeq +82 -> 119
@@ -1705,25 +1706,25 @@ public class b
     //   41: astore_3
     //   42: aload 5
     //   44: astore 4
-    //   46: new 445	java/io/BufferedReader
+    //   46: new 448	java/io/BufferedReader
     //   49: dup
-    //   50: new 447	java/io/FileReader
+    //   50: new 450	java/io/FileReader
     //   53: dup
-    //   54: ldc_w 632
-    //   57: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   60: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   54: ldc_w 635
+    //   57: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   60: invokespecial 456	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   63: astore_1
     //   64: aload_1
-    //   65: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   65: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   68: astore_2
     //   69: aload_2
     //   70: ifnull +28 -> 98
     //   73: aload 6
-    //   75: ldc_w 634
+    //   75: ldc_w 637
     //   78: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: pop
     //   82: aload 6
-    //   84: ldc_w 425
+    //   84: ldc_w 428
     //   87: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   90: pop
     //   91: aload 6
@@ -1731,7 +1732,7 @@ public class b
     //   94: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: pop
     //   98: aload_1
-    //   99: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   99: invokevirtual 476	java/io/BufferedReader:close	()V
     //   102: goto +17 -> 119
     //   105: astore_2
     //   106: aload_1
@@ -1747,7 +1748,7 @@ public class b
     //   121: aload_1
     //   122: astore 4
     //   124: aload 6
-    //   126: ldc_w 427
+    //   126: ldc_w 430
     //   129: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   132: pop
     //   133: aload_1
@@ -1756,35 +1757,35 @@ public class b
     //   136: astore_3
     //   137: aload_1
     //   138: astore 4
-    //   140: new 485	java/io/File
+    //   140: new 488	java/io/File
     //   143: dup
-    //   144: ldc_w 636
-    //   147: invokespecial 513	java/io/File:<init>	(Ljava/lang/String;)V
-    //   150: invokevirtual 517	java/io/File:exists	()Z
+    //   144: ldc_w 639
+    //   147: invokespecial 516	java/io/File:<init>	(Ljava/lang/String;)V
+    //   150: invokevirtual 520	java/io/File:exists	()Z
     //   153: ifeq +83 -> 236
     //   156: aload_1
     //   157: astore_3
     //   158: aload_1
     //   159: astore 4
-    //   161: new 445	java/io/BufferedReader
+    //   161: new 448	java/io/BufferedReader
     //   164: dup
-    //   165: new 447	java/io/FileReader
+    //   165: new 450	java/io/FileReader
     //   168: dup
-    //   169: ldc_w 636
-    //   172: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   175: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   169: ldc_w 639
+    //   172: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   175: invokespecial 456	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   178: astore_1
     //   179: aload_1
-    //   180: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   180: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   183: astore_2
     //   184: aload_2
     //   185: ifnull +28 -> 213
     //   188: aload 6
-    //   190: ldc_w 638
+    //   190: ldc_w 641
     //   193: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   196: pop
     //   197: aload 6
-    //   199: ldc_w 425
+    //   199: ldc_w 428
     //   202: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   205: pop
     //   206: aload 6
@@ -1792,7 +1793,7 @@ public class b
     //   209: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: pop
     //   213: aload_1
-    //   214: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   214: invokevirtual 476	java/io/BufferedReader:close	()V
     //   217: aload_1
     //   218: astore_2
     //   219: goto +17 -> 236
@@ -1810,42 +1811,42 @@ public class b
     //   238: aload_2
     //   239: astore 4
     //   241: aload 6
-    //   243: ldc_w 427
+    //   243: ldc_w 430
     //   246: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   249: pop
     //   250: aload_2
     //   251: astore_3
     //   252: aload_2
     //   253: astore 4
-    //   255: new 485	java/io/File
+    //   255: new 488	java/io/File
     //   258: dup
-    //   259: ldc_w 640
-    //   262: invokespecial 513	java/io/File:<init>	(Ljava/lang/String;)V
-    //   265: invokevirtual 517	java/io/File:exists	()Z
+    //   259: ldc_w 643
+    //   262: invokespecial 516	java/io/File:<init>	(Ljava/lang/String;)V
+    //   265: invokevirtual 520	java/io/File:exists	()Z
     //   268: ifeq +81 -> 349
     //   271: aload_2
     //   272: astore_3
     //   273: aload_2
     //   274: astore 4
-    //   276: new 445	java/io/BufferedReader
+    //   276: new 448	java/io/BufferedReader
     //   279: dup
-    //   280: new 447	java/io/FileReader
+    //   280: new 450	java/io/FileReader
     //   283: dup
-    //   284: ldc_w 640
-    //   287: invokespecial 450	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   290: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   284: ldc_w 643
+    //   287: invokespecial 453	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   290: invokespecial 456	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   293: astore_1
     //   294: aload_1
-    //   295: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   295: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   298: astore_2
     //   299: aload_2
     //   300: ifnull +28 -> 328
     //   303: aload 6
-    //   305: ldc_w 642
+    //   305: ldc_w 645
     //   308: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   311: pop
     //   312: aload 6
-    //   314: ldc_w 425
+    //   314: ldc_w 428
     //   317: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   320: pop
     //   321: aload 6
@@ -1853,7 +1854,7 @@ public class b
     //   324: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   327: pop
     //   328: aload_1
-    //   329: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   329: invokevirtual 476	java/io/BufferedReader:close	()V
     //   332: goto +19 -> 351
     //   335: astore_2
     //   336: aload_1
@@ -1869,14 +1870,14 @@ public class b
     //   351: aload_1
     //   352: ifnull +52 -> 404
     //   355: aload_1
-    //   356: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   356: invokevirtual 476	java/io/BufferedReader:close	()V
     //   359: goto +45 -> 404
     //   362: goto +23 -> 385
     //   365: astore_1
     //   366: aload_3
     //   367: ifnull +16 -> 383
     //   370: aload_3
-    //   371: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   371: invokevirtual 476	java/io/BufferedReader:close	()V
     //   374: goto +9 -> 383
     //   377: astore_2
     //   378: aload_2
@@ -1887,7 +1888,7 @@ public class b
     //   385: aload 4
     //   387: ifnull +17 -> 404
     //   390: aload 4
-    //   392: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   392: invokevirtual 476	java/io/BufferedReader:close	()V
     //   395: goto +9 -> 404
     //   398: astore_1
     //   399: aload_1
@@ -2179,35 +2180,35 @@ public class b
     //   13: istore 4
     //   15: iconst_0
     //   16: istore_0
-    //   17: new 763	java/util/HashSet
+    //   17: new 766	java/util/HashSet
     //   20: dup
-    //   21: invokespecial 764	java/util/HashSet:<init>	()V
+    //   21: invokespecial 767	java/util/HashSet:<init>	()V
     //   24: astore 10
     //   26: new 245	java/lang/StringBuilder
     //   29: dup
-    //   30: ldc_w 766
+    //   30: ldc_w 769
     //   33: invokespecial 250	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   36: astore 8
     //   38: aload 8
-    //   40: invokestatic 771	android/os/Process:myPid	()I
-    //   43: invokevirtual 323	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   40: invokestatic 774	android/os/Process:myPid	()I
+    //   43: invokevirtual 326	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload 8
-    //   49: ldc_w 773
+    //   49: ldc_w 776
     //   52: invokevirtual 254	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: pop
-    //   56: new 445	java/io/BufferedReader
+    //   56: new 448	java/io/BufferedReader
     //   59: dup
-    //   60: new 775	java/io/InputStreamReader
+    //   60: new 778	java/io/InputStreamReader
     //   63: dup
-    //   64: new 777	java/io/FileInputStream
+    //   64: new 780	java/io/FileInputStream
     //   67: dup
     //   68: aload 8
     //   70: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   73: invokespecial 778	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   76: ldc_w 780
-    //   79: invokespecial 783	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   82: invokespecial 453	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   73: invokespecial 781	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   76: ldc_w 783
+    //   79: invokespecial 786	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   82: invokespecial 456	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   85: astore 9
     //   87: iload_1
     //   88: istore_2
@@ -2218,7 +2219,7 @@ public class b
     //   96: aload 9
     //   98: astore 8
     //   100: aload 9
-    //   102: invokevirtual 456	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   102: invokevirtual 459	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   105: astore 11
     //   107: aload 11
     //   109: ifnull +88 -> 197
@@ -2231,8 +2232,8 @@ public class b
     //   121: aload 9
     //   123: astore 8
     //   125: aload 11
-    //   127: ldc_w 785
-    //   130: invokevirtual 788	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   127: ldc_w 788
+    //   130: invokevirtual 791	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   133: ifne +27 -> 160
     //   136: iload_1
     //   137: istore_2
@@ -2243,8 +2244,8 @@ public class b
     //   145: aload 9
     //   147: astore 8
     //   149: aload 11
-    //   151: ldc_w 790
-    //   154: invokevirtual 788	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   151: ldc_w 793
+    //   154: invokevirtual 791	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   157: ifeq -70 -> 87
     //   160: iload_1
     //   161: istore_2
@@ -2257,12 +2258,12 @@ public class b
     //   173: aload 10
     //   175: aload 11
     //   177: aload 11
-    //   179: ldc_w 647
-    //   182: invokevirtual 794	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   179: ldc_w 650
+    //   182: invokevirtual 797	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   185: iconst_1
     //   186: iadd
-    //   187: invokevirtual 465	java/lang/String:substring	(I)Ljava/lang/String;
-    //   190: invokevirtual 795	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   187: invokevirtual 468	java/lang/String:substring	(I)Ljava/lang/String;
+    //   190: invokevirtual 798	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   193: pop
     //   194: goto -107 -> 87
     //   197: iload_1
@@ -2274,7 +2275,7 @@ public class b
     //   206: aload 9
     //   208: astore 8
     //   210: aload 10
-    //   212: invokevirtual 799	java/util/HashSet:iterator	()Ljava/util/Iterator;
+    //   212: invokevirtual 802	java/util/HashSet:iterator	()Ljava/util/Iterator;
     //   215: astore 10
     //   217: iload_0
     //   218: istore_2
@@ -2285,7 +2286,7 @@ public class b
     //   224: aload 9
     //   226: astore 8
     //   228: aload 10
-    //   230: invokeinterface 804 1 0
+    //   230: invokeinterface 807 1 0
     //   235: ifeq +98 -> 333
     //   238: iload_0
     //   239: istore_2
@@ -2296,7 +2297,7 @@ public class b
     //   245: aload 9
     //   247: astore 8
     //   249: aload 10
-    //   251: invokeinterface 808 1 0
+    //   251: invokeinterface 811 1 0
     //   256: astore 11
     //   258: iload_0
     //   259: istore_1
@@ -2311,8 +2312,8 @@ public class b
     //   271: aload 11
     //   273: checkcast 15	java/lang/String
     //   276: invokevirtual 221	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   279: ldc_w 810
-    //   282: invokevirtual 622	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   279: ldc_w 813
+    //   282: invokevirtual 625	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   285: ifeq +8 -> 293
     //   288: iload_0
     //   289: bipush 64
@@ -2328,8 +2329,8 @@ public class b
     //   302: astore 8
     //   304: aload 11
     //   306: checkcast 15	java/lang/String
-    //   309: ldc_w 591
-    //   312: invokevirtual 622	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   309: ldc_w 594
+    //   312: invokevirtual 625	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   315: istore 7
     //   317: iload_1
     //   318: istore_0
@@ -2343,12 +2344,12 @@ public class b
     //   333: iload_0
     //   334: istore_1
     //   335: aload 9
-    //   337: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   337: invokevirtual 476	java/io/BufferedReader:close	()V
     //   340: iload_0
     //   341: ireturn
     //   342: astore 8
     //   344: aload 8
-    //   346: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   346: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   349: iload_1
     //   350: ireturn
     //   351: astore 10
@@ -2367,7 +2368,7 @@ public class b
     //   379: aload 9
     //   381: astore 8
     //   383: aload 10
-    //   385: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   385: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   388: iload_2
     //   389: istore_0
     //   390: aload 9
@@ -2375,7 +2376,7 @@ public class b
     //   395: iload_2
     //   396: istore_1
     //   397: aload 9
-    //   399: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   399: invokevirtual 476	java/io/BufferedReader:close	()V
     //   402: iload_2
     //   403: ireturn
     //   404: astore 10
@@ -2384,7 +2385,7 @@ public class b
     //   409: aload 9
     //   411: astore 8
     //   413: aload 10
-    //   415: invokevirtual 811	java/io/FileNotFoundException:printStackTrace	()V
+    //   415: invokevirtual 814	java/io/FileNotFoundException:printStackTrace	()V
     //   418: iload_3
     //   419: istore_0
     //   420: aload 9
@@ -2392,7 +2393,7 @@ public class b
     //   425: iload_3
     //   426: istore_1
     //   427: aload 9
-    //   429: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   429: invokevirtual 476	java/io/BufferedReader:close	()V
     //   432: iload_3
     //   433: ireturn
     //   434: astore 10
@@ -2401,7 +2402,7 @@ public class b
     //   439: aload 9
     //   441: astore 8
     //   443: aload 10
-    //   445: invokevirtual 812	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   445: invokevirtual 815	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   448: iload 4
     //   450: istore_0
     //   451: aload 9
@@ -2409,7 +2410,7 @@ public class b
     //   456: iload 4
     //   458: istore_1
     //   459: aload 9
-    //   461: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   461: invokevirtual 476	java/io/BufferedReader:close	()V
     //   464: iload 4
     //   466: istore_0
     //   467: iload_0
@@ -2422,11 +2423,11 @@ public class b
     //   479: aload 9
     //   481: ifnull +18 -> 499
     //   484: aload 9
-    //   486: invokevirtual 473	java/io/BufferedReader:close	()V
+    //   486: invokevirtual 476	java/io/BufferedReader:close	()V
     //   489: goto +10 -> 499
     //   492: astore 9
     //   494: aload 9
-    //   496: invokevirtual 537	java/io/IOException:printStackTrace	()V
+    //   496: invokevirtual 540	java/io/IOException:printStackTrace	()V
     //   499: goto +6 -> 505
     //   502: aload 8
     //   504: athrow
@@ -2510,7 +2511,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.bugly.crashreport.common.info.b
  * JD-Core Version:    0.7.0.1
  */

@@ -55,17 +55,17 @@ class RedPacketKSongFragment$8
       label129:
       if (i != 0)
       {
-        if ((this.a.b) && (this.a.c) && (this.a.a.getVisibility() == 0))
+        if ((this.a.v) && (this.a.w) && (this.a.l.getVisibility() == 0))
         {
-          this.a.a();
+          this.a.c();
           return;
         }
-        if (this.a.d)
+        if (this.a.x)
         {
           if (QLog.isColorLevel()) {
             QLog.d("RedPacketKSongFragment", 2, "receive pause action");
           }
-          this.a.b(HardCodeUtil.a(R.string.cB));
+          this.a.b(HardCodeUtil.a(R.string.cE));
         }
       }
     }
@@ -73,7 +73,7 @@ class RedPacketKSongFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.8
  * JD-Core Version:    0.7.0.1
  */

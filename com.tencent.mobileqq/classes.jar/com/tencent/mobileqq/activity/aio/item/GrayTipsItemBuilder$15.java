@@ -17,8 +17,8 @@ class GrayTipsItemBuilder$15
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("uinType", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a.a);
-    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
+    localIntent.putExtra("uinType", this.b.d.a);
+    localIntent.putExtra("uniseq", this.a);
     localIntent.putExtra("public_fragment_window_feature", 1);
     PublicFragmentActivity.Launcher.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -26,7 +26,7 @@ class GrayTipsItemBuilder$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.15
  * JD-Core Version:    0.7.0.1
  */

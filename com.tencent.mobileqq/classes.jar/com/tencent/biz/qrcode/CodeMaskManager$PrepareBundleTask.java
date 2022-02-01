@@ -13,24 +13,24 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class CodeMaskManager$PrepareBundleTask
   extends Thread
 {
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  CodeMaskManager.Callback jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  AtomicBoolean a = new AtomicBoolean(false);
+  CodeMaskManager.Callback b;
+  Bundle c;
   
   CodeMaskManager$PrepareBundleTask(CodeMaskManager paramCodeMaskManager, CodeMaskManager.Callback paramCallback, Bundle paramBundle)
   {
     super("qr_code_mask_prepare_thread");
-    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback = paramCallback;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.b = paramCallback;
+    this.c = paramBundle;
   }
   
   Bundle a()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrsz"))
+      if (this.c.containsKey("qrsz"))
       {
-        localObject = ((QRDisplayActivity)this.this$0.jdField_a_of_type_AndroidAppActivity).a();
+        localObject = ((QRDisplayActivity)this.this$0.c).j();
         boolean bool = TextUtils.isEmpty((CharSequence)localObject);
         if (bool) {}
       }
@@ -51,7 +51,7 @@ class CodeMaskManager$PrepareBundleTask
     }
     try
     {
-      localObject = QRUtils.a((String)localObject, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
+      localObject = QRUtils.a((String)localObject, this.c.getInt("qrsz"));
     }
     catch (Exception localException)
     {
@@ -61,27 +61,27 @@ class CodeMaskManager$PrepareBundleTask
     if (localObject == null) {
       return null;
     }
-    if (this.jdField_a_of_type_AndroidOsBundle.containsKey("bkgUrl"))
+    if (this.c.containsKey("bkgUrl"))
     {
-      localObject = CodeMaskManager.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle.getString("bkgUrl"));
-      this.jdField_a_of_type_AndroidOsBundle.putParcelable("bkg", (Parcelable)localObject);
-      this.jdField_a_of_type_AndroidOsBundle.remove("bkgUrl");
+      localObject = CodeMaskManager.a(this.this$0, this.c.getString("bkgUrl"));
+      this.c.putParcelable("bkg", (Parcelable)localObject);
+      this.c.remove("bkgUrl");
     }
-    if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrbkgUrl"))
+    if (this.c.containsKey("qrbkgUrl"))
     {
-      localObject = CodeMaskManager.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle.getString("qrbkgUrl"));
-      this.jdField_a_of_type_AndroidOsBundle.putParcelable("qrbkg", (Parcelable)localObject);
-      this.jdField_a_of_type_AndroidOsBundle.remove("qrbkgUrl");
+      localObject = CodeMaskManager.a(this.this$0, this.c.getString("qrbkgUrl"));
+      this.c.putParcelable("qrbkg", (Parcelable)localObject);
+      this.c.remove("qrbkgUrl");
     }
-    localObject = this.jdField_a_of_type_AndroidOsBundle;
+    localObject = this.c;
     return localObject;
   }
   
   public void run()
   {
     Bundle localBundle = a();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.post(new CodeMaskManager.PrepareBundleTask.1(this, localBundle));
+    if (this.a.compareAndSet(false, true)) {
+      this.this$0.g.post(new CodeMaskManager.PrepareBundleTask.1(this, localBundle));
     }
   }
 }

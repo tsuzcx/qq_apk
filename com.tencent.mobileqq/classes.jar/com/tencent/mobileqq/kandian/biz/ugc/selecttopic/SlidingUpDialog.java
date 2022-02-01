@@ -30,24 +30,24 @@ import org.jetbrains.annotations.Nullable;
 public final class SlidingUpDialog
   extends Dialog
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private final RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private final boolean jdField_a_of_type_Boolean;
+  private RelativeLayout a;
+  private final View b;
+  private final boolean c;
+  private final RelativeLayout.LayoutParams d;
   
   public SlidingUpDialog(@NotNull Activity paramActivity, @NotNull View paramView, boolean paramBoolean, @NotNull RelativeLayout.LayoutParams paramLayoutParams)
   {
     super((Context)paramActivity, 16973833);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = paramLayoutParams;
+    this.b = paramView;
+    this.c = paramBoolean;
+    this.d = paramLayoutParams;
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private final void a()
   {
-    findViewById(2131365177).setOnTouchListener((View.OnTouchListener)new SlidingUpDialog.setCancelOnTouchOutside.1(this));
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    findViewById(2131431338).setOnTouchListener((View.OnTouchListener)new SlidingUpDialog.setCancelOnTouchOutside.1(this));
+    RelativeLayout localRelativeLayout = this.a;
     if (localRelativeLayout == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rootView");
     }
@@ -68,12 +68,12 @@ public final class SlidingUpDialog
   
   private final void b()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.a;
     if (localRelativeLayout == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rootView");
     }
     localRelativeLayout.setVisibility(4);
-    localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    localRelativeLayout = this.a;
     if (localRelativeLayout == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rootView");
     }
@@ -82,12 +82,12 @@ public final class SlidingUpDialog
   
   private final void c()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = this.a;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rootView");
     }
     localObject = (View)localObject;
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.a;
     if (localRelativeLayout == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rootView");
     }
@@ -132,26 +132,26 @@ public final class SlidingUpDialog
     }
     d();
     super.onCreate(paramBundle);
-    setContentView(2131560229);
-    this.jdField_a_of_type_AndroidViewView.setId(2131376077);
-    paramBundle = findViewById(2131363669);
-    localObject = findViewById(2131376813);
+    setContentView(2131626276);
+    this.b.setId(2131444279);
+    paramBundle = findViewById(2131429582);
+    localObject = findViewById(2131445143);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.rootView)");
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject);
+    this.a = ((RelativeLayout)localObject);
     Intrinsics.checkExpressionValueIsNotNull(paramBundle, "blank");
     localObject = paramBundle.getLayoutParams();
     if (localObject != null)
     {
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, this.jdField_a_of_type_AndroidViewView.getId());
-      localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, this.b.getId());
+      localObject = this.a;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("rootView");
       }
-      ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      ((RelativeLayout)localObject).addView(this.b, (ViewGroup.LayoutParams)this.d);
       a();
-      localObject = findViewById(2131364259);
+      localObject = findViewById(2131430272);
       ((View)localObject).setOnClickListener((View.OnClickListener)new SlidingUpDialog.onCreate.2(this));
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.c)
       {
         Intrinsics.checkExpressionValueIsNotNull(localObject, "cancel");
         ((View)localObject).setVisibility(8);
@@ -165,7 +165,7 @@ public final class SlidingUpDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selecttopic.SlidingUpDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -24,22 +24,22 @@ class GroupVideoManager$5
     if (GroupVideoManager.a(this.a) == null) {
       return;
     }
-    Object localObject = new HashMap(GroupVideoManager.a(this.a).getAVNotifyCenter().d);
+    Object localObject = new HashMap(GroupVideoManager.a(this.a).getAVNotifyCenter().h);
     QQGAudioMsgHandler localQQGAudioMsgHandler = GroupVideoManager.a(this.a).getGAudioHandler();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       VideoStateInfo localVideoStateInfo = (VideoStateInfo)paramList.next();
-      long[] arrayOfLong = new long[localVideoStateInfo.jdField_a_of_type_JavaUtilList.size()];
+      long[] arrayOfLong = new long[localVideoStateInfo.f.size()];
       int i = 0;
       while (i < arrayOfLong.length)
       {
-        arrayOfLong[i] = ((Long)localVideoStateInfo.jdField_a_of_type_JavaUtilList.get(i)).longValue();
+        arrayOfLong[i] = ((Long)localVideoStateInfo.f.get(i)).longValue();
         i += 1;
       }
-      ((TroopVideoManager)GroupVideoManager.a(this.a).getManager(QQManagerFactory.TROOP_VIDEO_MANAGER)).a(localVideoStateInfo.jdField_a_of_type_Long);
-      localQQGAudioMsgHandler.a(1, String.valueOf(localVideoStateInfo.jdField_a_of_type_Long), localVideoStateInfo.jdField_a_of_type_Int, arrayOfLong, 14, localVideoStateInfo.c, localVideoStateInfo.d, localVideoStateInfo.e);
-      ((Map)localObject).remove(String.valueOf(localVideoStateInfo.jdField_a_of_type_Long));
+      ((TroopVideoManager)GroupVideoManager.a(this.a).getManager(QQManagerFactory.TROOP_VIDEO_MANAGER)).a(localVideoStateInfo.a);
+      localQQGAudioMsgHandler.a(1, String.valueOf(localVideoStateInfo.a), localVideoStateInfo.b, arrayOfLong, 14, localVideoStateInfo.d, localVideoStateInfo.e, localVideoStateInfo.g);
+      ((Map)localObject).remove(String.valueOf(localVideoStateInfo.a));
     }
     paramList = ((Map)localObject).entrySet().iterator();
     while (paramList.hasNext())
@@ -57,7 +57,7 @@ class GroupVideoManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.5
  * JD-Core Version:    0.7.0.1
  */

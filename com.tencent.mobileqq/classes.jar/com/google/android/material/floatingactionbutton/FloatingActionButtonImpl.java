@@ -44,89 +44,103 @@ import java.util.List;
 
 class FloatingActionButtonImpl
 {
-  static final TimeInterpolator jdField_a_of_type_AndroidAnimationTimeInterpolator = AnimationUtils.c;
-  static final int[] jdField_a_of_type_ArrayOfInt = { 16842919, 16842910 };
-  static final int[] jdField_b_of_type_ArrayOfInt = { 16843623, 16842908, 16842910 };
-  static final int[] jdField_c_of_type_ArrayOfInt = { 16842908, 16842910 };
-  static final int[] jdField_d_of_type_ArrayOfInt = { 16843623, 16842910 };
-  static final int[] jdField_e_of_type_ArrayOfInt = { 16842910 };
-  static final int[] f = new int[0];
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
+  static final TimeInterpolator a = AnimationUtils.c;
+  static final int[] m = { 16842919, 16842910 };
+  static final int[] n = { 16843623, 16842908, 16842910 };
+  static final int[] o = { 16842908, 16842910 };
+  static final int[] p = { 16843623, 16842910 };
+  static final int[] q = { 16842910 };
+  static final int[] r = new int[0];
+  private float A;
+  private float B = 1.0F;
+  private int C;
+  private int D = 0;
+  private ArrayList<Animator.AnimatorListener> E;
+  private ArrayList<Animator.AnimatorListener> F;
+  private ArrayList<FloatingActionButtonImpl.InternalTransformationCallback> G;
+  private final Rect H = new Rect();
+  private final RectF I = new RectF();
+  private final RectF J = new RectF();
+  private final Matrix K = new Matrix();
   @Nullable
-  private Animator jdField_a_of_type_AndroidAnimationAnimator;
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private ViewTreeObserver.OnPreDrawListener L;
   @Nullable
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  ShapeAppearanceModel b;
   @Nullable
-  private ViewTreeObserver.OnPreDrawListener jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener;
+  MaterialShapeDrawable c;
   @Nullable
-  private MotionSpec jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
+  Drawable d;
   @Nullable
-  BorderDrawable jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonBorderDrawable;
-  final FloatingActionButton jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton;
+  BorderDrawable e;
+  @Nullable
+  Drawable f;
+  boolean g;
+  boolean h = true;
+  float i;
+  float j;
+  float k;
+  int l;
+  final FloatingActionButton s;
+  final ShadowViewDelegate t;
   @NonNull
-  private final StateListAnimator jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator;
-  final ShadowViewDelegate jdField_a_of_type_ComGoogleAndroidMaterialShadowShadowViewDelegate;
+  private final StateListAnimator u;
   @Nullable
-  MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+  private MotionSpec v;
   @Nullable
-  ShapeAppearanceModel jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  private ArrayList<Animator.AnimatorListener> jdField_a_of_type_JavaUtilArrayList;
-  boolean jdField_a_of_type_Boolean;
-  float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private MotionSpec w;
   @Nullable
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private Animator x;
   @Nullable
-  private MotionSpec jdField_b_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
-  private ArrayList<Animator.AnimatorListener> jdField_b_of_type_JavaUtilArrayList;
-  boolean jdField_b_of_type_Boolean = true;
-  float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = 0;
+  private MotionSpec y;
   @Nullable
-  private MotionSpec jdField_c_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
-  private ArrayList<FloatingActionButtonImpl.InternalTransformationCallback> jdField_c_of_type_JavaUtilArrayList;
-  private float jdField_d_of_type_Float;
-  @Nullable
-  private MotionSpec jdField_d_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
-  private float jdField_e_of_type_Float = 1.0F;
+  private MotionSpec z;
   
   FloatingActionButtonImpl(FloatingActionButton paramFloatingActionButton, ShadowViewDelegate paramShadowViewDelegate)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton = paramFloatingActionButton;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShadowShadowViewDelegate = paramShadowViewDelegate;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator = new StateListAnimator();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator.a(jdField_a_of_type_ArrayOfInt, a(new FloatingActionButtonImpl.ElevateToPressedTranslationZAnimation(this)));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator.a(jdField_b_of_type_ArrayOfInt, a(new FloatingActionButtonImpl.ElevateToHoveredFocusedTranslationZAnimation(this)));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator.a(jdField_c_of_type_ArrayOfInt, a(new FloatingActionButtonImpl.ElevateToHoveredFocusedTranslationZAnimation(this)));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator.a(jdField_d_of_type_ArrayOfInt, a(new FloatingActionButtonImpl.ElevateToHoveredFocusedTranslationZAnimation(this)));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator.a(jdField_e_of_type_ArrayOfInt, a(new FloatingActionButtonImpl.ResetElevationAnimation(this)));
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator.a(f, a(new FloatingActionButtonImpl.DisabledElevationAnimation(this)));
-    this.jdField_d_of_type_Float = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getRotation();
+    this.s = paramFloatingActionButton;
+    this.t = paramShadowViewDelegate;
+    this.u = new StateListAnimator();
+    this.u.a(m, a(new FloatingActionButtonImpl.ElevateToPressedTranslationZAnimation(this)));
+    this.u.a(n, a(new FloatingActionButtonImpl.ElevateToHoveredFocusedTranslationZAnimation(this)));
+    this.u.a(o, a(new FloatingActionButtonImpl.ElevateToHoveredFocusedTranslationZAnimation(this)));
+    this.u.a(p, a(new FloatingActionButtonImpl.ElevateToHoveredFocusedTranslationZAnimation(this)));
+    this.u.a(q, a(new FloatingActionButtonImpl.ResetElevationAnimation(this)));
+    this.u.a(r, a(new FloatingActionButtonImpl.DisabledElevationAnimation(this)));
+    this.A = this.s.getRotation();
+  }
+  
+  @NonNull
+  private ViewTreeObserver.OnPreDrawListener A()
+  {
+    if (this.L == null) {
+      this.L = new FloatingActionButtonImpl.5(this);
+    }
+    return this.L;
+  }
+  
+  private boolean B()
+  {
+    return (ViewCompat.isLaidOut(this.s)) && (!this.s.isInEditMode());
   }
   
   @NonNull
   private AnimatorSet a(@NonNull MotionSpec paramMotionSpec, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     ArrayList localArrayList = new ArrayList();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton, View.ALPHA, new float[] { paramFloat1 });
-    paramMotionSpec.a("opacity").a(localObjectAnimator);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.s, View.ALPHA, new float[] { paramFloat1 });
+    paramMotionSpec.b("opacity").a(localObjectAnimator);
     localArrayList.add(localObjectAnimator);
-    localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton, View.SCALE_X, new float[] { paramFloat2 });
-    paramMotionSpec.a("scale").a(localObjectAnimator);
+    localObjectAnimator = ObjectAnimator.ofFloat(this.s, View.SCALE_X, new float[] { paramFloat2 });
+    paramMotionSpec.b("scale").a(localObjectAnimator);
     a(localObjectAnimator);
     localArrayList.add(localObjectAnimator);
-    localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton, View.SCALE_Y, new float[] { paramFloat2 });
-    paramMotionSpec.a("scale").a(localObjectAnimator);
+    localObjectAnimator = ObjectAnimator.ofFloat(this.s, View.SCALE_Y, new float[] { paramFloat2 });
+    paramMotionSpec.b("scale").a(localObjectAnimator);
     a(localObjectAnimator);
     localArrayList.add(localObjectAnimator);
-    a(paramFloat3, this.jdField_a_of_type_AndroidGraphicsMatrix);
-    localObjectAnimator = ObjectAnimator.ofObject(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton, new ImageMatrixProperty(), new FloatingActionButtonImpl.3(this), new Matrix[] { new Matrix(this.jdField_a_of_type_AndroidGraphicsMatrix) });
-    paramMotionSpec.a("iconScale").a(localObjectAnimator);
+    a(paramFloat3, this.K);
+    localObjectAnimator = ObjectAnimator.ofObject(this.s, new ImageMatrixProperty(), new FloatingActionButtonImpl.3(this), new Matrix[] { new Matrix(this.K) });
+    paramMotionSpec.b("iconScale").a(localObjectAnimator);
     localArrayList.add(localObjectAnimator);
     paramMotionSpec = new AnimatorSet();
     AnimatorSetCompat.a(paramMotionSpec, localArrayList);
@@ -137,7 +151,7 @@ class FloatingActionButtonImpl
   private ValueAnimator a(@NonNull FloatingActionButtonImpl.ShadowAnimatorImpl paramShadowAnimatorImpl)
   {
     ValueAnimator localValueAnimator = new ValueAnimator();
-    localValueAnimator.setInterpolator(jdField_a_of_type_AndroidAnimationTimeInterpolator);
+    localValueAnimator.setInterpolator(a);
     localValueAnimator.setDuration(100L);
     localValueAnimator.addListener(paramShadowAnimatorImpl);
     localValueAnimator.addUpdateListener(paramShadowAnimatorImpl);
@@ -145,37 +159,20 @@ class FloatingActionButtonImpl
     return localValueAnimator;
   }
   
-  @NonNull
-  private ViewTreeObserver.OnPreDrawListener a()
-  {
-    if (this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener == null) {
-      this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = new FloatingActionButtonImpl.5(this);
-    }
-    return this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener;
-  }
-  
-  private MotionSpec a()
-  {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec == null) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec = MotionSpec.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getContext(), R.animator.jdField_b_of_type_Int);
-    }
-    return (MotionSpec)Preconditions.checkNotNull(this.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec);
-  }
-  
   private void a(float paramFloat, @NonNull Matrix paramMatrix)
   {
     paramMatrix.reset();
-    Drawable localDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getDrawable();
-    if ((localDrawable != null) && (this.jdField_b_of_type_Int != 0))
+    Drawable localDrawable = this.s.getDrawable();
+    if ((localDrawable != null) && (this.C != 0))
     {
-      RectF localRectF1 = this.jdField_a_of_type_AndroidGraphicsRectF;
-      RectF localRectF2 = this.jdField_b_of_type_AndroidGraphicsRectF;
+      RectF localRectF1 = this.I;
+      RectF localRectF2 = this.J;
       localRectF1.set(0.0F, 0.0F, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      int i = this.jdField_b_of_type_Int;
-      localRectF2.set(0.0F, 0.0F, i, i);
+      int i1 = this.C;
+      localRectF2.set(0.0F, 0.0F, i1, i1);
       paramMatrix.setRectToRect(localRectF1, localRectF2, Matrix.ScaleToFit.CENTER);
-      i = this.jdField_b_of_type_Int;
-      paramMatrix.postScale(paramFloat, paramFloat, i / 2.0F, i / 2.0F);
+      i1 = this.C;
+      paramMatrix.postScale(paramFloat, paramFloat, i1 / 2.0F, i1 / 2.0F);
     }
   }
   
@@ -187,75 +184,62 @@ class FloatingActionButtonImpl
     paramObjectAnimator.setEvaluator(new FloatingActionButtonImpl.4(this));
   }
   
-  private MotionSpec b()
+  private MotionSpec y()
   {
-    if (this.jdField_b_of_type_ComGoogleAndroidMaterialAnimationMotionSpec == null) {
-      this.jdField_b_of_type_ComGoogleAndroidMaterialAnimationMotionSpec = MotionSpec.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getContext(), R.animator.jdField_a_of_type_Int);
+    if (this.v == null) {
+      this.v = MotionSpec.a(this.s.getContext(), R.animator.b);
     }
-    return (MotionSpec)Preconditions.checkNotNull(this.jdField_b_of_type_ComGoogleAndroidMaterialAnimationMotionSpec);
+    return (MotionSpec)Preconditions.checkNotNull(this.v);
   }
   
-  private boolean g()
+  private MotionSpec z()
   {
-    return (ViewCompat.isLaidOut(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton)) && (!this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.isInEditMode());
+    if (this.w == null) {
+      this.w = MotionSpec.a(this.s.getContext(), R.animator.a);
+    }
+    return (MotionSpec)Preconditions.checkNotNull(this.w);
   }
   
   float a()
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  MaterialShapeDrawable a()
-  {
-    return new MaterialShapeDrawable((ShapeAppearanceModel)Preconditions.checkNotNull(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel));
-  }
-  
-  @Nullable
-  final ShapeAppearanceModel a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  }
-  
-  final void a()
-  {
-    d(this.jdField_e_of_type_Float);
+    return this.i;
   }
   
   final void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Float != paramFloat)
+    if (this.i != paramFloat)
     {
-      this.jdField_a_of_type_Float = paramFloat;
-      a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
+      this.i = paramFloat;
+      a(this.i, this.j, this.k);
     }
   }
   
   void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    f();
+    o();
     e(paramFloat1);
   }
   
   void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   void a(@NonNull Animator.AnimatorListener paramAnimatorListener)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.E == null) {
+      this.E = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramAnimatorListener);
+    this.E.add(paramAnimatorListener);
   }
   
   void a(@Nullable ColorStateList paramColorStateList)
   {
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+    Object localObject = this.c;
     if (localObject != null) {
       ((MaterialShapeDrawable)localObject).setTintList(paramColorStateList);
     }
-    localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonBorderDrawable;
+    localObject = this.e;
     if (localObject != null) {
       ((BorderDrawable)localObject).a(paramColorStateList);
     }
@@ -263,22 +247,22 @@ class FloatingActionButtonImpl
   
   void a(ColorStateList paramColorStateList1, @Nullable PorterDuff.Mode paramMode, ColorStateList paramColorStateList2, int paramInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = a();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setTintList(paramColorStateList1);
+    this.c = u();
+    this.c.setTintList(paramColorStateList1);
     if (paramMode != null) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setTintMode(paramMode);
+      this.c.setTintMode(paramMode);
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.G(-12303292);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getContext());
-    paramColorStateList1 = new RippleDrawableCompat(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.a());
+    this.c.H(-12303292);
+    this.c.a(this.s.getContext());
+    paramColorStateList1 = new RippleDrawableCompat(this.c.getShapeAppearanceModel());
     paramColorStateList1.setTintList(RippleUtils.b(paramColorStateList2));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramColorStateList1;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new LayerDrawable(new Drawable[] { (Drawable)Preconditions.checkNotNull(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable), paramColorStateList1 });
+    this.d = paramColorStateList1;
+    this.f = new LayerDrawable(new Drawable[] { (Drawable)Preconditions.checkNotNull(this.c), paramColorStateList1 });
   }
   
   void a(@Nullable PorterDuff.Mode paramMode)
   {
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+    MaterialShapeDrawable localMaterialShapeDrawable = this.c;
     if (localMaterialShapeDrawable != null) {
       localMaterialShapeDrawable.setTintMode(paramMode);
     }
@@ -286,53 +270,53 @@ class FloatingActionButtonImpl
   
   void a(@NonNull Rect paramRect)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      i = (this.jdField_a_of_type_Int - this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.b()) / 2;
+    if (this.g) {
+      i1 = (this.l - this.s.getSizeDimension()) / 2;
     } else {
-      i = 0;
+      i1 = 0;
     }
     float f1;
-    if (this.jdField_b_of_type_Boolean) {
-      f1 = a() + this.jdField_c_of_type_Float;
+    if (this.h) {
+      f1 = a() + this.k;
     } else {
       f1 = 0.0F;
     }
-    int j = Math.max(i, (int)Math.ceil(f1));
-    int i = Math.max(i, (int)Math.ceil(f1 * 1.5F));
-    paramRect.set(j, i, j, i);
+    int i2 = Math.max(i1, (int)Math.ceil(f1));
+    int i1 = Math.max(i1, (int)Math.ceil(f1 * 1.5F));
+    paramRect.set(i2, i1, i2, i1);
   }
   
   final void a(@Nullable MotionSpec paramMotionSpec)
   {
-    this.jdField_c_of_type_ComGoogleAndroidMaterialAnimationMotionSpec = paramMotionSpec;
+    this.y = paramMotionSpec;
   }
   
   void a(@NonNull FloatingActionButtonImpl.InternalTransformationCallback paramInternalTransformationCallback)
   {
-    if (this.jdField_c_of_type_JavaUtilArrayList == null) {
-      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.G == null) {
+      this.G = new ArrayList();
     }
-    this.jdField_c_of_type_JavaUtilArrayList.add(paramInternalTransformationCallback);
+    this.G.add(paramInternalTransformationCallback);
   }
   
   void a(@Nullable FloatingActionButtonImpl.InternalVisibilityChangedListener paramInternalVisibilityChangedListener, boolean paramBoolean)
   {
-    if (f()) {
+    if (w()) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidAnimationAnimator;
+    Object localObject = this.x;
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
-    if (g())
+    if (B())
     {
-      localObject = this.jdField_d_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
+      localObject = this.z;
       if (localObject == null) {
-        localObject = b();
+        localObject = z();
       }
       localObject = a((MotionSpec)localObject, 0.0F, 0.0F, 0.0F);
       ((AnimatorSet)localObject).addListener(new FloatingActionButtonImpl.1(this, paramBoolean, paramInternalVisibilityChangedListener));
-      paramInternalVisibilityChangedListener = this.jdField_b_of_type_JavaUtilArrayList;
+      paramInternalVisibilityChangedListener = this.F;
       if (paramInternalVisibilityChangedListener != null)
       {
         paramInternalVisibilityChangedListener = paramInternalVisibilityChangedListener.iterator();
@@ -343,14 +327,14 @@ class FloatingActionButtonImpl
       ((AnimatorSet)localObject).start();
       return;
     }
-    localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton;
-    int i;
+    localObject = this.s;
+    int i1;
     if (paramBoolean) {
-      i = 8;
+      i1 = 8;
     } else {
-      i = 4;
+      i1 = 4;
     }
-    ((FloatingActionButton)localObject).a(i, paramBoolean);
+    ((FloatingActionButton)localObject).a(i1, paramBoolean);
     if (paramInternalVisibilityChangedListener != null) {
       paramInternalVisibilityChangedListener.b();
     }
@@ -358,16 +342,16 @@ class FloatingActionButtonImpl
   
   final void a(@NonNull ShapeAppearanceModel paramShapeAppearanceModel)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = paramShapeAppearanceModel;
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+    this.b = paramShapeAppearanceModel;
+    Object localObject = this.c;
     if (localObject != null) {
       ((MaterialShapeDrawable)localObject).setShapeAppearanceModel(paramShapeAppearanceModel);
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localObject = this.d;
     if ((localObject instanceof Shapeable)) {
       ((Shapeable)localObject).setShapeAppearanceModel(paramShapeAppearanceModel);
     }
-    localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonBorderDrawable;
+    localObject = this.e;
     if (localObject != null) {
       ((BorderDrawable)localObject).a(paramShapeAppearanceModel);
     }
@@ -375,53 +359,48 @@ class FloatingActionButtonImpl
   
   void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
   
   void a(int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator.a(paramArrayOfInt);
+    this.u.a(paramArrayOfInt);
   }
   
-  final boolean a()
+  float b()
   {
-    return (!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.b() >= this.jdField_a_of_type_Int);
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialInternalStateListAnimator.a();
+    return this.j;
   }
   
   final void b(float paramFloat)
   {
-    if (this.jdField_b_of_type_Float != paramFloat)
+    if (this.j != paramFloat)
     {
-      this.jdField_b_of_type_Float = paramFloat;
-      a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
+      this.j = paramFloat;
+      a(this.i, this.j, this.k);
     }
   }
   
   final void b(int paramInt)
   {
-    if (this.jdField_b_of_type_Int != paramInt)
+    if (this.C != paramInt)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      a();
+      this.C = paramInt;
+      d();
     }
   }
   
   public void b(@NonNull Animator.AnimatorListener paramAnimatorListener)
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    if (this.F == null) {
+      this.F = new ArrayList();
     }
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramAnimatorListener);
+    this.F.add(paramAnimatorListener);
   }
   
   void b(@Nullable ColorStateList paramColorStateList)
   {
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.d;
     if (localDrawable != null) {
       DrawableCompat.setTintList(localDrawable, RippleUtils.b(paramColorStateList));
     }
@@ -429,46 +408,46 @@ class FloatingActionButtonImpl
   
   void b(@NonNull Rect paramRect)
   {
-    Preconditions.checkNotNull(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, "Didn't initialize content background");
-    if (c())
+    Preconditions.checkNotNull(this.f, "Didn't initialize content background");
+    if (p())
     {
-      paramRect = new InsetDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShadowShadowViewDelegate.a(paramRect);
+      paramRect = new InsetDrawable(this.f, paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+      this.t.a(paramRect);
       return;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShadowShadowViewDelegate.a(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    this.t.a(this.f);
   }
   
   final void b(@Nullable MotionSpec paramMotionSpec)
   {
-    this.jdField_d_of_type_ComGoogleAndroidMaterialAnimationMotionSpec = paramMotionSpec;
+    this.z = paramMotionSpec;
   }
   
   void b(@Nullable FloatingActionButtonImpl.InternalVisibilityChangedListener paramInternalVisibilityChangedListener, boolean paramBoolean)
   {
-    if (e()) {
+    if (v()) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidAnimationAnimator;
+    Object localObject = this.x;
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
-    if (g())
+    if (B())
     {
-      if (this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getVisibility() != 0)
+      if (this.s.getVisibility() != 0)
       {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setAlpha(0.0F);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setScaleY(0.0F);
-        this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setScaleX(0.0F);
+        this.s.setAlpha(0.0F);
+        this.s.setScaleY(0.0F);
+        this.s.setScaleX(0.0F);
         d(0.0F);
       }
-      localObject = this.jdField_c_of_type_ComGoogleAndroidMaterialAnimationMotionSpec;
+      localObject = this.y;
       if (localObject == null) {
-        localObject = a();
+        localObject = y();
       }
       localObject = a((MotionSpec)localObject, 1.0F, 1.0F, 1.0F);
       ((AnimatorSet)localObject).addListener(new FloatingActionButtonImpl.2(this, paramBoolean, paramInternalVisibilityChangedListener));
-      paramInternalVisibilityChangedListener = this.jdField_a_of_type_JavaUtilArrayList;
+      paramInternalVisibilityChangedListener = this.E;
       if (paramInternalVisibilityChangedListener != null)
       {
         paramInternalVisibilityChangedListener = paramInternalVisibilityChangedListener.iterator();
@@ -479,10 +458,10 @@ class FloatingActionButtonImpl
       ((AnimatorSet)localObject).start();
       return;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.a(0, paramBoolean);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setAlpha(1.0F);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setScaleY(1.0F);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setScaleX(1.0F);
+    this.s.a(0, paramBoolean);
+    this.s.setAlpha(1.0F);
+    this.s.setScaleY(1.0F);
+    this.s.setScaleX(1.0F);
     d(1.0F);
     if (paramInternalVisibilityChangedListener != null) {
       paramInternalVisibilityChangedListener.a();
@@ -491,18 +470,81 @@ class FloatingActionButtonImpl
   
   void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    f();
+    this.h = paramBoolean;
+    o();
   }
   
-  boolean b()
+  float c()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.k;
   }
   
-  void c()
+  final void c(float paramFloat)
   {
-    Object localObject = this.jdField_c_of_type_JavaUtilArrayList;
+    if (this.k != paramFloat)
+    {
+      this.k = paramFloat;
+      a(this.i, this.j, this.k);
+    }
+  }
+  
+  final void d()
+  {
+    d(this.B);
+  }
+  
+  final void d(float paramFloat)
+  {
+    this.B = paramFloat;
+    Matrix localMatrix = this.K;
+    a(paramFloat, localMatrix);
+    this.s.setImageMatrix(localMatrix);
+  }
+  
+  @Nullable
+  final ShapeAppearanceModel e()
+  {
+    return this.b;
+  }
+  
+  void e(float paramFloat)
+  {
+    MaterialShapeDrawable localMaterialShapeDrawable = this.c;
+    if (localMaterialShapeDrawable != null) {
+      localMaterialShapeDrawable.r(paramFloat);
+    }
+  }
+  
+  @Nullable
+  final MotionSpec f()
+  {
+    return this.y;
+  }
+  
+  @Nullable
+  final MotionSpec g()
+  {
+    return this.z;
+  }
+  
+  final boolean h()
+  {
+    return (!this.g) || (this.s.getSizeDimension() >= this.l);
+  }
+  
+  boolean i()
+  {
+    return this.g;
+  }
+  
+  void j()
+  {
+    this.u.a();
+  }
+  
+  void k()
+  {
+    Object localObject = this.G;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -512,23 +554,9 @@ class FloatingActionButtonImpl
     }
   }
   
-  final void c(float paramFloat)
+  void l()
   {
-    if (this.jdField_c_of_type_Float != paramFloat)
-    {
-      this.jdField_c_of_type_Float = paramFloat;
-      a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
-    }
-  }
-  
-  boolean c()
-  {
-    return true;
-  }
-  
-  void d()
-  {
-    Object localObject = this.jdField_c_of_type_JavaUtilArrayList;
+    Object localObject = this.G;
     if (localObject != null)
     {
       localObject = ((ArrayList)localObject).iterator();
@@ -538,129 +566,129 @@ class FloatingActionButtonImpl
     }
   }
   
-  final void d(float paramFloat)
+  @Nullable
+  final Drawable m()
   {
-    this.jdField_e_of_type_Float = paramFloat;
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
-    a(paramFloat, localMatrix);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setImageMatrix(localMatrix);
+    return this.f;
   }
   
-  boolean d()
+  void n() {}
+  
+  final void o()
+  {
+    Rect localRect = this.H;
+    a(localRect);
+    b(localRect);
+    this.t.a(localRect.left, localRect.top, localRect.right, localRect.bottom);
+  }
+  
+  boolean p()
   {
     return true;
   }
   
-  void e() {}
-  
-  void e(float paramFloat)
+  void q()
   {
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+    MaterialShapeDrawable localMaterialShapeDrawable = this.c;
     if (localMaterialShapeDrawable != null) {
-      localMaterialShapeDrawable.r(paramFloat);
+      MaterialShapeUtils.a(this.s, localMaterialShapeDrawable);
+    }
+    if (s()) {
+      this.s.getViewTreeObserver().addOnPreDrawListener(A());
     }
   }
   
-  boolean e()
+  void r()
   {
-    int i = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getVisibility();
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (i != 0)
-    {
-      if (this.jdField_c_of_type_Int == 2) {
-        bool1 = true;
-      }
-      return bool1;
-    }
-    bool1 = bool2;
-    if (this.jdField_c_of_type_Int != 1) {
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  final void f()
-  {
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    a(localRect);
-    b(localRect);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShadowShadowViewDelegate.a(localRect.left, localRect.top, localRect.right, localRect.bottom);
-  }
-  
-  boolean f()
-  {
-    int i = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getVisibility();
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (i == 0)
-    {
-      if (this.jdField_c_of_type_Int == 1) {
-        bool1 = true;
-      }
-      return bool1;
-    }
-    bool1 = bool2;
-    if (this.jdField_c_of_type_Int != 2) {
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  void g()
-  {
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-    if (localMaterialShapeDrawable != null) {
-      MaterialShapeUtils.a(this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton, localMaterialShapeDrawable);
-    }
-    if (d()) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getViewTreeObserver().addOnPreDrawListener(a());
-    }
-  }
-  
-  void h()
-  {
-    ViewTreeObserver localViewTreeObserver = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getViewTreeObserver();
-    ViewTreeObserver.OnPreDrawListener localOnPreDrawListener = this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener;
+    ViewTreeObserver localViewTreeObserver = this.s.getViewTreeObserver();
+    ViewTreeObserver.OnPreDrawListener localOnPreDrawListener = this.L;
     if (localOnPreDrawListener != null)
     {
       localViewTreeObserver.removeOnPreDrawListener(localOnPreDrawListener);
-      this.jdField_a_of_type_AndroidViewViewTreeObserver$OnPreDrawListener = null;
+      this.L = null;
     }
   }
   
-  void i()
+  boolean s()
   {
-    float f1 = this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getRotation();
-    if (this.jdField_d_of_type_Float != f1)
+    return true;
+  }
+  
+  void t()
+  {
+    float f1 = this.s.getRotation();
+    if (this.A != f1)
     {
-      this.jdField_d_of_type_Float = f1;
-      j();
+      this.A = f1;
+      x();
     }
   }
   
-  void j()
+  MaterialShapeDrawable u()
+  {
+    return new MaterialShapeDrawable((ShapeAppearanceModel)Preconditions.checkNotNull(this.b));
+  }
+  
+  boolean v()
+  {
+    int i1 = this.s.getVisibility();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (i1 != 0)
+    {
+      if (this.D == 2) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (this.D != 1) {
+      bool1 = true;
+    }
+    return bool1;
+  }
+  
+  boolean w()
+  {
+    int i1 = this.s.getVisibility();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (i1 == 0)
+    {
+      if (this.D == 1) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (this.D != 2) {
+      bool1 = true;
+    }
+    return bool1;
+  }
+  
+  void x()
   {
     if (Build.VERSION.SDK_INT == 19) {
-      if (this.jdField_d_of_type_Float % 90.0F != 0.0F)
+      if (this.A % 90.0F != 0.0F)
       {
-        if (this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getLayerType() != 1) {
-          this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setLayerType(1, null);
+        if (this.s.getLayerType() != 1) {
+          this.s.setLayerType(1, null);
         }
       }
-      else if (this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.getLayerType() != 0) {
-        this.jdField_a_of_type_ComGoogleAndroidMaterialFloatingactionbuttonFloatingActionButton.setLayerType(0, null);
+      else if (this.s.getLayerType() != 0) {
+        this.s.setLayerType(0, null);
       }
     }
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+    MaterialShapeDrawable localMaterialShapeDrawable = this.c;
     if (localMaterialShapeDrawable != null) {
-      localMaterialShapeDrawable.F((int)this.jdField_d_of_type_Float);
+      localMaterialShapeDrawable.G((int)this.A);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.FloatingActionButtonImpl
  * JD-Core Version:    0.7.0.1
  */

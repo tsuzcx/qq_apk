@@ -9,12 +9,12 @@ class ViolaBaseView$17
   
   public void run()
   {
-    ViolaBaseView.a(this.this$0).b(this.a);
+    ViolaBaseView.o(this.this$0).b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.17
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ class VerifyCodeActivity$1
     if (paramString2.isSend)
     {
       this.a.ed.setText("");
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131720187), 0).a();
+      QQToast.makeText(this.a.getApplicationContext(), 1, this.a.getString(2131917817), 0).show();
     }
     this.a.serverNotifyObserver.setKey(paramString1);
     this.a.serverNotifyObserver.setSeq(paramInt);
@@ -36,7 +36,7 @@ class VerifyCodeActivity$1
       this.a.showWaitting(false);
       return;
     }
-    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131720184), 1).show();
+    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131917814), 1).show();
   }
   
   public void onVerifyClose()
@@ -46,7 +46,7 @@ class VerifyCodeActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyCodeActivity.1
  * JD-Core Version:    0.7.0.1
  */

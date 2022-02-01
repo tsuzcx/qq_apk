@@ -17,14 +17,14 @@ class DrawRedpacketPannelPreviewFragment$6
     localLottieDrawable.setComposition(paramLottieComposition);
     localLottieDrawable.loop(true);
     localLottieDrawable.playAnimation();
-    if (DrawRedpacketPannelPreviewFragment.d(this.a) != null) {
-      DrawRedpacketPannelPreviewFragment.d(this.a).setImageDrawable(localLottieDrawable);
+    if (DrawRedpacketPannelPreviewFragment.p(this.a) != null) {
+      DrawRedpacketPannelPreviewFragment.p(this.a).setImageDrawable(localLottieDrawable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawRedpacketPannelPreviewFragment.6
  * JD-Core Version:    0.7.0.1
  */

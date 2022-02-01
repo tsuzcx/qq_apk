@@ -9,14 +9,14 @@ class DeviceFileModel$2$1
   
   public void a()
   {
-    this.a.a.d();
+    this.a.a.h();
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.model.DeviceFileModel.2.1
  * JD-Core Version:    0.7.0.1
  */

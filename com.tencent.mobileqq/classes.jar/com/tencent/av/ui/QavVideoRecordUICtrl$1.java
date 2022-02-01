@@ -11,15 +11,15 @@ class QavVideoRecordUICtrl$1
   public void run()
   {
     QavVideoRecordUICtrl localQavVideoRecordUICtrl = this.this$0;
-    QavVideoRecordUICtrl.a(localQavVideoRecordUICtrl, localQavVideoRecordUICtrl.a());
+    QavVideoRecordUICtrl.a(localQavVideoRecordUICtrl, localQavVideoRecordUICtrl.f());
     QavVideoRecordUICtrl.b(this.this$0, FileSwapHelper.a());
     if (QavVideoRecordUICtrl.a(this.this$0) < 31457280L)
     {
-      QavVideoRecordUICtrl.a(this.this$0).post(new QavVideoRecordUICtrl.1.1(this));
+      QavVideoRecordUICtrl.c(this.this$0).post(new QavVideoRecordUICtrl.1.1(this));
       return;
     }
-    if (QavVideoRecordUICtrl.b) {
-      QavVideoRecordUICtrl.a(this.this$0).sendEmptyMessageDelayed(11, 500L);
+    if (QavVideoRecordUICtrl.d) {
+      QavVideoRecordUICtrl.c(this.this$0).sendEmptyMessageDelayed(11, 500L);
     }
   }
 }

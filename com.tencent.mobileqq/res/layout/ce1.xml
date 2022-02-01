@@ -13,4 +13,8 @@
         <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_feed_content_text_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/lh5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginRight="8.0dip" android:singleLine="true" android:layout_toLeftOf="@id/lh3" android:layout_below="@id/lh7" android:layout_alignLeft="@id/lh7" />
         <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/lh3" android:background="@drawable/aio" android:layout_width="58.0dip" android:layout_height="29.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/na6" android:background="@null" android:paddingLeft="3.0dip" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/lh_">
+        <com.qzone.module.feedcomponent.view.CornerImageView android:id="@id/na7" android:layout_width="11.0dip" android:layout_height="11.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="2.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff989eb4" android:id="@id/na8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
+    </LinearLayout>
 </merge>

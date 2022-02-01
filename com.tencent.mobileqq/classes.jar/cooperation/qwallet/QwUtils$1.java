@@ -15,9 +15,9 @@ final class QwUtils$1
     if (QLog.isColorLevel()) {
       QLog.i("QWalletUtils", 2, "get pskey async success!");
     }
-    QwUtils.AnsyListener localAnsyListener = this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener;
+    QwUtils.AnsyListener localAnsyListener = this.a;
     if (localAnsyListener != null) {
-      localAnsyListener.a(0, new String[] { QwUtils.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+      localAnsyListener.a(0, new String[] { QwUtils.a(paramTicket, this.b) });
     }
   }
   
@@ -26,7 +26,7 @@ final class QwUtils$1
     if (QLog.isColorLevel()) {
       QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
     }
-    QwUtils.AnsyListener localAnsyListener = this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener;
+    QwUtils.AnsyListener localAnsyListener = this.a;
     if (localAnsyListener != null) {
       localAnsyListener.a(-1, new String[] { paramErrMsg.getMessage() });
     }
@@ -37,7 +37,7 @@ final class QwUtils$1
     if (QLog.isColorLevel()) {
       QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
     }
-    QwUtils.AnsyListener localAnsyListener = this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener;
+    QwUtils.AnsyListener localAnsyListener = this.a;
     if (localAnsyListener != null) {
       localAnsyListener.a(-1, new String[] { paramErrMsg.getMessage() });
     }
@@ -45,7 +45,7 @@ final class QwUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qwallet.QwUtils.1
  * JD-Core Version:    0.7.0.1
  */

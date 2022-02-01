@@ -13,13 +13,13 @@ class GroupCache$1
     GroupCache.a(this.this$0);
     GetGroupListCallback localGetGroupListCallback = this.a;
     if (localGetGroupListCallback != null) {
-      localGetGroupListCallback.a(new ArrayList(GroupCache.a(this.this$0)));
+      localGetGroupListCallback.a(new ArrayList(GroupCache.b(this.this$0)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.cache.GroupCache.1
  * JD-Core Version:    0.7.0.1
  */

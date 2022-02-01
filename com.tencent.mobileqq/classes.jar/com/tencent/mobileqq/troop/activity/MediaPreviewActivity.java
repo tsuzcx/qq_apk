@@ -42,65 +42,57 @@ import java.util.ArrayList;
 public class MediaPreviewActivity
   extends BaseActivity
 {
-  static Object jdField_a_of_type_JavaLangObject = new Object();
-  static boolean jdField_a_of_type_Boolean = false;
-  protected int a;
-  protected View a;
-  protected FrameLayout a;
-  protected TextView a;
-  protected MediaPreviewAdapter a;
-  protected Gallery a;
-  protected Runnable a;
-  protected ArrayList<MediaPreviewInfo> a;
-  protected int b;
-  protected boolean b;
-  
-  public MediaPreviewActivity()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = null;
-  }
+  static boolean a = false;
+  static Object b = new Object();
+  protected FrameLayout c;
+  protected Gallery d;
+  protected MediaPreviewAdapter e;
+  protected TextView f;
+  protected View g;
+  protected ArrayList<MediaPreviewInfo> h = null;
+  protected int i;
+  protected int j = 0;
+  protected boolean k = false;
+  protected Runnable l = null;
   
   private void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery;
+    Object localObject = this.d;
     if (localObject == null)
     {
-      QQToast.a(this, getString(2131693100), 0).a();
+      QQToast.makeText(this, getString(2131890214), 0).show();
       return;
     }
     localObject = ((Gallery)localObject).getSelectedView();
     if (localObject == null)
     {
-      QQToast.a(this, getString(2131693100), 0).a();
+      QQToast.makeText(this, getString(2131890214), 0).show();
       return;
     }
-    localObject = ((ImageView)((View)localObject).findViewById(2131368461)).getDrawable();
+    localObject = ((ImageView)((View)localObject).findViewById(2131435357)).getDrawable();
     if ((localObject != null) && ((localObject instanceof URLDrawable)))
     {
       localObject = (URLDrawable)localObject;
       if (((URLDrawable)localObject).getStatus() != 1)
       {
-        QQToast.a(this, getString(2131693100), 0).a();
+        QQToast.makeText(this, getString(2131890214), 0).show();
         return;
       }
-      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-      localActionSheet.addButton(2131693256, 1);
-      localActionSheet.addButton(2131693262, 1);
-      localActionSheet.addCancelButton(2131690728);
+      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
+      localActionSheet.addButton(2131890804, 1);
+      localActionSheet.addButton(2131890810, 1);
+      localActionSheet.addCancelButton(2131887648);
       localActionSheet.setOnButtonClickListener(new MediaPreviewActivity.6(this, localActionSheet, (URLDrawable)localObject));
       localActionSheet.show();
       return;
     }
-    QQToast.a(this, getString(2131693100), 0).a();
+    QQToast.makeText(this, getString(2131890214), 0).show();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_b_of_type_Boolean = true;
+    this.f.setVisibility(4);
+    this.k = true;
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setInterpolator(new DecelerateInterpolator());
     localAlphaAnimation.setDuration(500L);
@@ -112,12 +104,12 @@ public class MediaPreviewActivity
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
     localAnimationSet.setAnimationListener(new MediaPreviewActivity.10(this));
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new MediaPreviewActivity.11(this);
+    if (this.l == null) {
+      this.l = new MediaPreviewActivity.11(this);
     }
-    this.jdField_a_of_type_ComTencentWidgetGallery.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
-    this.jdField_a_of_type_ComTencentWidgetGallery.startAnimation(localAnimationSet);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    this.d.postDelayed(this.l, 500L);
+    this.d.startAnimation(localAnimationSet);
+    this.g.startAnimation(localAlphaAnimation);
   }
   
   protected void a(Bundle paramBundle)
@@ -153,9 +145,9 @@ public class MediaPreviewActivity
       label92:
       break label92;
     }
-    QQToast.a(this, getString(2131694911), 0).a();
+    QQToast.makeText(this, getString(2131892637), 0).show();
     return;
-    DialogUtil.a(this, 230).setTitle(getString(2131718393)).setMessage(getString(2131694907)).setPositiveButton(getString(2131718205), new MediaPreviewActivity.8(this, paramURLDrawable, (String)localObject)).setNegativeButton(getString(2131694460), new MediaPreviewActivity.7(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131915885)).setMessage(getString(2131892633)).setPositiveButton(getString(2131915687), new MediaPreviewActivity.8(this, paramURLDrawable, (String)localObject)).setNegativeButton(getString(2131892140), new MediaPreviewActivity.7(this)).show();
     label177:
   }
   
@@ -182,40 +174,40 @@ public class MediaPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(???);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_Boolean)
+      if (a)
       {
         super.finish();
         return false;
       }
-      jdField_a_of_type_Boolean = true;
+      a = true;
       if ((this.app != null) && (!TextUtils.isEmpty(this.app.getAccount())))
       {
-        setContentView(2131559246);
+        setContentView(2131625166);
         ??? = getIntent().getExtras();
-        this.jdField_a_of_type_Int = ???.getInt("index", -1);
-        this.jdField_a_of_type_JavaUtilArrayList = ???.getParcelableArrayList("mediaInfoList");
-        ??? = this.jdField_a_of_type_JavaUtilArrayList;
+        this.i = ???.getInt("index", -1);
+        this.h = ???.getParcelableArrayList("mediaInfoList");
+        ??? = this.h;
         if (??? != null) {
-          this.jdField_b_of_type_Int = ???.size();
+          this.j = ???.size();
         }
-        this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131376811));
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367431));
-        this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378460));
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView = findViewById(2131363349);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter = new MediaPreviewAdapter(this, this.jdField_a_of_type_ComTencentWidgetGallery);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-        this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter);
-        this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297150));
-        this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new MediaPreviewActivity.1(this));
-        this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new MediaPreviewActivity.2(this));
-        this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new MediaPreviewActivity.3(this));
+        this.c = ((FrameLayout)findViewById(2131445141));
+        this.c.setVisibility(0);
+        this.d = ((Gallery)findViewById(2131433934));
+        this.d.setVisibility(0);
+        this.f = ((TextView)findViewById(2131447062));
+        this.f.setVisibility(0);
+        this.g = findViewById(2131429234);
+        this.g.setBackgroundColor(-16777216);
+        this.e = new MediaPreviewAdapter(this, this.d);
+        this.e.a(this.h);
+        this.d.setAdapter(this.e);
+        this.d.setSpacing(getResources().getDimensionPixelSize(2131297535));
+        this.d.setSelection(this.i);
+        this.d.setOnItemClickListener(new MediaPreviewActivity.1(this));
+        this.d.setOnItemSelectedListener(new MediaPreviewActivity.2(this));
+        this.d.setOnItemLongClickListener(new MediaPreviewActivity.3(this));
         ThreadManager.post(new MediaPreviewActivity.4(this), 8, null, true);
         return true;
       }
@@ -227,10 +219,10 @@ public class MediaPreviewActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    Gallery localGallery = this.jdField_a_of_type_ComTencentWidgetGallery;
+    Gallery localGallery = this.d;
     if (localGallery != null)
     {
-      Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+      Runnable localRunnable = this.l;
       if (localRunnable != null) {
         localGallery.removeCallbacks(localRunnable);
       }
@@ -263,7 +255,7 @@ public class MediaPreviewActivity
   
   public void onBackPressed()
   {
-    if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentWidgetGallery.resetScale(false))) {
+    if ((!this.k) && (!this.d.resetScale(false))) {
       a();
     }
   }
@@ -278,14 +270,14 @@ public class MediaPreviewActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    ??? = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter;
+    ??? = this.e;
     if (??? != null) {
       ((MediaPreviewAdapter)???).a();
     }
     QQLiveImage.releaseAll(this);
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      jdField_a_of_type_Boolean = false;
+      a = false;
       return;
     }
   }
@@ -310,7 +302,7 @@ public class MediaPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

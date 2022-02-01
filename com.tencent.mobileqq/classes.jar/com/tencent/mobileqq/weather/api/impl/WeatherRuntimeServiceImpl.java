@@ -141,7 +141,6 @@ public class WeatherRuntimeServiceImpl
           ((SharedPreferences.Editor)localObject2).putString("cur_temp", (String)localObject1);
           ((SharedPreferences.Editor)localObject2).putString("cur_code", str2);
           ((SharedPreferences.Editor)localObject2).putString("cur_city", str1);
-          ((SharedPreferences.Editor)localObject2).putInt("cur_adcode", i);
           ((SharedPreferences.Editor)localObject2).putBoolean("show_flag", true);
           ((SharedPreferences.Editor)localObject2).putLong("drawer_last_success_time", localLong.longValue());
           ((SharedPreferences.Editor)localObject2).putString("drawer_cur_city", str1);
@@ -239,7 +238,7 @@ public class WeatherRuntimeServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.api.impl.WeatherRuntimeServiceImpl
  * JD-Core Version:    0.7.0.1
  */

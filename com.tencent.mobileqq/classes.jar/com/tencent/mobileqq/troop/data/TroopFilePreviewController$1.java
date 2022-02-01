@@ -20,9 +20,9 @@ class TroopFilePreviewController$1
   protected void c(Object paramObject)
   {
     TroopFileTransferManager.PreviewInfo localPreviewInfo = (TroopFileTransferManager.PreviewInfo)paramObject;
-    Object localObject1 = localPreviewInfo.c;
-    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131692554);
+    Object localObject1 = localPreviewInfo.d;
+    if (!NetworkUtil.isNetworkAvailable(this.a.b.getApp())) {
+      localObject1 = this.a.b.getApp().getString(2131889577);
     }
     Object localObject2;
     if (localObject1 != null)
@@ -32,38 +32,38 @@ class TroopFilePreviewController$1
     }
     else
     {
-      localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693799);
+      localObject2 = this.a.b.getApp().getString(2131891374);
     }
     if (((IFMConfig)QRoute.api(IFMConfig.class)).getUserHarCodeIp())
     {
-      localPreviewInfo.jdField_a_of_type_JavaLangString = "183.61.37.13";
-      localPreviewInfo.b = "443";
+      localPreviewInfo.b = "183.61.37.13";
+      localPreviewInfo.c = "443";
     }
-    if ((TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!TextUtils.isEmpty(localPreviewInfo.f)))
+    if ((TroopFileUtils.a(this.a.b)) && (!TextUtils.isEmpty(localPreviewInfo.h)))
     {
-      short s2 = localPreviewInfo.jdField_a_of_type_Short;
+      short s2 = localPreviewInfo.i;
       short s1 = s2;
       if (s2 == 0) {
         s1 = 443;
       }
       localObject1 = new Bundle();
       ((Bundle)localObject1).putBoolean("ishttps", true);
-      ((Bundle)localObject1).putString("httpsdomain", localPreviewInfo.f);
+      ((Bundle)localObject1).putString("httpsdomain", localPreviewInfo.h);
       ((Bundle)localObject1).putShort("httpsport", s1);
     }
     else
     {
       localObject1 = null;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback.a(localPreviewInfo.jdField_a_of_type_Boolean, localPreviewInfo.jdField_a_of_type_JavaLangString, localPreviewInfo.b, localPreviewInfo.jdField_a_of_type_Int, (String)localObject2, localPreviewInfo.d, null, localPreviewInfo.e, (Bundle)localObject1);
+    if (this.a.a != null) {
+      this.a.a.a(localPreviewInfo.a, localPreviewInfo.b, localPreviewInfo.c, localPreviewInfo.f, (String)localObject2, localPreviewInfo.e, null, localPreviewInfo.g, (Bundle)localObject1);
     }
     super.c(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFilePreviewController.1
  * JD-Core Version:    0.7.0.1
  */

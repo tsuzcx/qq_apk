@@ -96,13 +96,13 @@ public class ProfileQZoneComponent
   private boolean createPhotoView(QQAppInterface paramQQAppInterface, Card paramCard, ViewGroup paramViewGroup, PhotoInfo paramPhotoInfo, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
     String str2 = paramPhotoInfo.strPicUrl;
-    View localView2 = LayoutInflater.from(this.mActivity).inflate(2131561366, null);
-    ImageView localImageView = (ImageView)localView2.findViewById(2131368820);
-    View localView3 = localView2.findViewById(2131368822);
-    View localView1 = localView2.findViewById(2131368819);
-    View localView4 = localView2.findViewById(2131368821);
-    TextView localTextView = (TextView)localView2.findViewById(2131368816);
-    UnderlineTextView localUnderlineTextView = (UnderlineTextView)localView2.findViewById(2131368815);
+    View localView2 = LayoutInflater.from(this.mActivity).inflate(2131627722, null);
+    ImageView localImageView = (ImageView)localView2.findViewById(2131435741);
+    View localView3 = localView2.findViewById(2131435743);
+    View localView1 = localView2.findViewById(2131435740);
+    View localView4 = localView2.findViewById(2131435742);
+    TextView localTextView = (TextView)localView2.findViewById(2131435737);
+    UnderlineTextView localUnderlineTextView = (UnderlineTextView)localView2.findViewById(2131435736);
     localUnderlineTextView.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
     Object localObject = paramPhotoInfo.mapEx;
     String str1 = "";
@@ -147,7 +147,7 @@ public class ProfileQZoneComponent
         localImageView.setColorFilter(1996488704);
       }
       if (this.mQzoneDefaultPic == null) {
-        this.mQzoneDefaultPic = new ColorDrawable(this.mActivity.getResources().getColor(2131165722));
+        this.mQzoneDefaultPic = new ColorDrawable(this.mActivity.getResources().getColor(2131166314));
       }
       try
       {
@@ -286,15 +286,15 @@ public class ProfileQZoneComponent
     }
     String str = getGenderName(paramProfileCardInfo);
     if (paramProfileCardInfo.allInOne.pa == 0) {
-      str = HardCodeUtil.a(2131708470);
+      str = HardCodeUtil.a(2131906256);
     }
-    str = String.format("%s%s", new Object[] { str, this.mActivity.getString(2131693373) });
+    str = String.format("%s%s", new Object[] { str, this.mActivity.getString(2131890922) });
     if ((paramProfileCardInfo.allInOne.pa == 0) && (paramCard.showPublishButton) && (paramViewGroup != null) && ((LocalMultiProcConfig.getInt4Uin("qzone_feed_gray_mask", 1, paramQQAppInterface.getLongAccountUin()) & 0x4000) != 0))
     {
       paramViewGroup.removeAllViews();
       paramViewGroup.setVisibility(0);
       log("no photo, show writeMoodContainer view.");
-      paramQQAppInterface = LayoutInflater.from(this.mActivity).inflate(2131561368, null);
+      paramQQAppInterface = LayoutInflater.from(this.mActivity).inflate(2131627724, null);
       paramViewGroup.addView(paramQQAppInterface);
       paramQQAppInterface.setOnClickListener(new ProfileQZoneComponent.4(this));
       LpReportInfo_pf00064.allReport(699, 7);
@@ -333,7 +333,7 @@ public class ProfileQZoneComponent
     Object localObject3 = LayoutInflater.from(this.mActivity);
     boolean bool2 = ProfilePAUtils.isPaTypeHasUin(localProfileCardInfo.allInOne);
     boolean bool1 = true;
-    if ((bool2) && (paramCard != null) && (!this.mIsFromArkBabyQ))
+    if ((bool2) && (paramCard != null) && (!this.mIsFromArkBabyQ) && (!ProfilePAUtils.isFromGuild(localProfileCardInfo.allInOne.pa)))
     {
       ThreadManager.post(new ProfileQZoneComponent.2(this, localProfileCardInfo), 8, null, true);
       Object localObject1 = (View)this.mViewContainer;
@@ -346,7 +346,7 @@ public class ProfileQZoneComponent
         localObject2 = ProfileTemplateApi.getDiyMoreInfoManager(this.mComponentCenter).getQZoneDiyView("map_key_qzone");
         localObject1 = localObject2;
         if (localObject2 == null) {
-          localObject1 = ((LayoutInflater)localObject3).inflate(2131561365, null);
+          localObject1 = ((LayoutInflater)localObject3).inflate(2131627721, null);
         }
         this.mViewContainer = localObject1;
         bool1 = true;
@@ -355,10 +355,10 @@ public class ProfileQZoneComponent
       {
         bool1 = false;
       }
-      ViewGroup localViewGroup1 = (ViewGroup)((View)localObject1).findViewById(2131368817);
-      ViewGroup localViewGroup2 = (ViewGroup)((View)localObject1).findViewById(2131368818);
-      TextView localTextView = (TextView)((View)localObject1).findViewById(2131378609);
-      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131368501);
+      ViewGroup localViewGroup1 = (ViewGroup)((View)localObject1).findViewById(2131435738);
+      ViewGroup localViewGroup2 = (ViewGroup)((View)localObject1).findViewById(2131435739);
+      TextView localTextView = (TextView)((View)localObject1).findViewById(2131447238);
+      ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131435403);
       localTextView.setSingleLine(true);
       localTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
       if ((paramCard.ulShowControl & 0x80) != 0) {
@@ -404,7 +404,7 @@ public class ProfileQZoneComponent
           localTextView.setText(((StringBuilder)localObject3).toString());
         }
         if (localProfileCardInfo.allInOne.pa == 0) {
-          localTextView.setText(HardCodeUtil.a(2131708431));
+          localTextView.setText(HardCodeUtil.a(2131906217));
         }
       }
       else
@@ -419,7 +419,7 @@ public class ProfileQZoneComponent
         localObject2 = localTextView.getText().toString();
       }
       ((View)localObject1).setOnClickListener(this);
-      ((View)localObject1).setContentDescription(this.mActivity.getString(2131691215));
+      ((View)localObject1).setContentDescription(this.mActivity.getString(2131888161));
       updateItemTheme((View)localObject1, localTextView, null, localImageView);
       if (bool1)
       {
@@ -484,16 +484,16 @@ public class ProfileQZoneComponent
     }
     Object localObject = LayoutInflater.from(this.mActivity);
     Resources localResources = this.mActivity.getResources();
-    int j = localResources.getDimensionPixelSize(2131298421);
-    int i = localResources.getDimensionPixelSize(2131297596);
-    int k = ViewUtils.b(30.0F);
+    int j = localResources.getDimensionPixelSize(2131299135);
+    int i = localResources.getDimensionPixelSize(2131298260);
+    int k = ViewUtils.dpToPx(30.0F);
     k = (int)(this.mScreenWidth - i - k);
     i = getColumnCount(paramCard);
     int m = (int)((k - (i - 1) * j) * 1.0F) / i;
     log(String.format(Locale.getDefault(), "makeOrRefreshQZone count:%s, photo:%s, margin:%s, max: %s", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k) }));
     if ((paramProfileCardInfo.allInOne.pa == 0) && ((LocalMultiProcConfig.getInt4Uin("qzone_feed_gray_mask", 1, paramQQAppInterface.getLongAccountUin()) & 0x4000) != 0))
     {
-      paramProfileCardInfo = ((LayoutInflater)localObject).inflate(2131561367, null);
+      paramProfileCardInfo = ((LayoutInflater)localObject).inflate(2131627723, null);
       if (ThemeUtil.isInNightMode(paramQQAppInterface)) {
         paramProfileCardInfo.setBackgroundColor(Color.parseColor("#77F5F6FA"));
       }
@@ -553,7 +553,7 @@ public class ProfileQZoneComponent
     if (this.mActivity == null) {
       return "他";
     }
-    String str = this.mActivity.getString(2131699580);
+    String str = this.mActivity.getString(2131897611);
     Object localObject = str;
     if (paramProfileCardInfo != null)
     {
@@ -561,9 +561,9 @@ public class ProfileQZoneComponent
       if (paramProfileCardInfo.card != null)
       {
         if (paramProfileCardInfo.card.shGender == 1) {
-          paramProfileCardInfo = this.mActivity.getString(2131699579);
+          paramProfileCardInfo = this.mActivity.getString(2131897610);
         } else {
-          paramProfileCardInfo = this.mActivity.getString(2131699580);
+          paramProfileCardInfo = this.mActivity.getString(2131897611);
         }
         localObject = paramProfileCardInfo;
       }
@@ -610,7 +610,7 @@ public class ProfileQZoneComponent
         if (localObject == null) {
           localObject = null;
         } else {
-          localObject = ((FriendsManager)localObject).a(((ProfileCardInfo)this.mData).allInOne.uin);
+          localObject = ((FriendsManager)localObject).f(((ProfileCardInfo)this.mData).allInOne.uin);
         }
         if (localObject != null)
         {
@@ -680,7 +680,7 @@ public class ProfileQZoneComponent
       this.mAsyncThreadHandler.removeMessages(0);
       this.mAsyncThreadHandler = null;
     }
-    this.mPreloadHitSession.d();
+    this.mPreloadHitSession.e();
   }
   
   public void onResume()
@@ -704,7 +704,7 @@ public class ProfileQZoneComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.qzone.ProfileQZoneComponent
  * JD-Core Version:    0.7.0.1
  */

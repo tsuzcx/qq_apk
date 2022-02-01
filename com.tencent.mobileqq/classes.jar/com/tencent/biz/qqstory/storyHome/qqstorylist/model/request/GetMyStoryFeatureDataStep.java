@@ -19,59 +19,29 @@ import java.util.List;
 public class GetMyStoryFeatureDataStep
   implements CmdTaskManger.CommandCallback<GetFeedFeatureRequest, GetFeedFeatureResponse>, Step
 {
-  protected GetMyStoryVideoListStep.Result a;
-  protected Step.ErrorCallBack a;
   protected Step.FinishCallBack a;
-  
-  public GetMyStoryFeatureDataStep()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = null;
-  }
+  protected Step.ErrorCallBack b;
+  protected GetMyStoryVideoListStep.Result c = null;
   
   public Object a()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result;
-  }
-  
-  public String a()
-  {
-    return getClass().getSimpleName();
-  }
-  
-  public void a()
-  {
-    SLog.c("GetMyStoryFeatureDataStep", "GetMyStoryFeatureDataStep");
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result;
-    if ((localObject != null) && (!TextUtils.isEmpty(((GetMyStoryVideoListStep.Result)localObject).jdField_a_of_type_JavaLangString)))
-    {
-      localObject = new GetFeedFeatureRequest();
-      ((GetFeedFeatureRequest)localObject).a = Arrays.asList(new String[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_JavaLangString });
-      CmdTaskManger.a().a((NetworkRequest)localObject, this);
-      return;
-    }
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack;
-    if (localObject != null)
-    {
-      ((Step.FinishCallBack)localObject).a(a());
-      return;
-    }
-    SLog.d("GetMyStoryFeatureDataStep", "finish callBack is null");
+    return this.c;
   }
   
   public void a(@NonNull GetFeedFeatureRequest paramGetFeedFeatureRequest, @Nullable GetFeedFeatureResponse paramGetFeedFeatureResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     if ((paramGetFeedFeatureResponse != null) && (paramErrorMessage.isSuccess()) && (paramGetFeedFeatureResponse.a != null) && (paramGetFeedFeatureResponse.a.size() > 0))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem = ((FeedFeatureItem)paramGetFeedFeatureResponse.a.get(0));
+      this.c.f = ((FeedFeatureItem)paramGetFeedFeatureResponse.a.get(0));
       paramGetFeedFeatureRequest = (StoryConfigManager)SuperManager.a(10);
-      paramGetFeedFeatureRequest.b("qqstory_key_story_latest_feed_feature_feed_id", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_JavaLangString);
-      paramGetFeedFeatureRequest.b("qqstory_key_story_latest_feed_feature_total_like_count", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_Int));
-      paramGetFeedFeatureRequest.b("qqstory_key_story_latest_feed_feature_total_comment_count", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.b));
-      paramGetFeedFeatureRequest.b("qqstory_key_story_latest_feed_feature_total_view_count", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.c));
-      paramGetFeedFeatureRequest = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack;
+      paramGetFeedFeatureRequest.d("qqstory_key_story_latest_feed_feature_feed_id", this.c.f.a);
+      paramGetFeedFeatureRequest.d("qqstory_key_story_latest_feed_feature_total_like_count", Integer.valueOf(this.c.f.b));
+      paramGetFeedFeatureRequest.d("qqstory_key_story_latest_feed_feature_total_comment_count", Integer.valueOf(this.c.f.c));
+      paramGetFeedFeatureRequest.d("qqstory_key_story_latest_feed_feature_total_view_count", Integer.valueOf(this.c.f.d));
+      paramGetFeedFeatureRequest = this.a;
       if (paramGetFeedFeatureRequest != null)
       {
-        paramGetFeedFeatureRequest.a(a());
+        paramGetFeedFeatureRequest.a(c());
         return;
       }
       SLog.d("GetMyStoryFeatureDataStep", "finish callBack is null");
@@ -86,12 +56,12 @@ public class GetMyStoryFeatureDataStep
       paramGetFeedFeatureRequest = "invalid rsp";
     }
     SLog.e("GetMyStoryFeatureDataStep", "请求Features失败 errorCode: %d %s", new Object[] { Integer.valueOf(i), paramGetFeedFeatureRequest });
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem = new FeedFeatureItem();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_JavaLangString;
-    paramGetFeedFeatureRequest = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack;
+    this.c.f = new FeedFeatureItem();
+    this.c.f.a = this.c.b;
+    paramGetFeedFeatureRequest = this.a;
     if (paramGetFeedFeatureRequest != null)
     {
-      paramGetFeedFeatureRequest.a(a());
+      paramGetFeedFeatureRequest.a(c());
       return;
     }
     SLog.d("GetMyStoryFeatureDataStep", "finish callBack is null");
@@ -99,27 +69,52 @@ public class GetMyStoryFeatureDataStep
   
   public void a(Step.ErrorCallBack paramErrorCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack = paramErrorCallBack;
+    this.b = paramErrorCallBack;
   }
   
   public void a(Step.FinishCallBack paramFinishCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack = paramFinishCallBack;
+    this.a = paramFinishCallBack;
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = ((GetMyStoryVideoListStep.Result)paramObject);
+    this.c = ((GetMyStoryVideoListStep.Result)paramObject);
   }
   
-  public boolean a()
+  public void b()
+  {
+    SLog.c("GetMyStoryFeatureDataStep", "GetMyStoryFeatureDataStep");
+    Object localObject = this.c;
+    if ((localObject != null) && (!TextUtils.isEmpty(((GetMyStoryVideoListStep.Result)localObject).b)))
+    {
+      localObject = new GetFeedFeatureRequest();
+      ((GetFeedFeatureRequest)localObject).f = Arrays.asList(new String[] { this.c.b });
+      CmdTaskManger.a().a((NetworkRequest)localObject, this);
+      return;
+    }
+    localObject = this.a;
+    if (localObject != null)
+    {
+      ((Step.FinishCallBack)localObject).a(c());
+      return;
+    }
+    SLog.d("GetMyStoryFeatureDataStep", "finish callBack is null");
+  }
+  
+  public String c()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  public boolean d()
   {
     return false;
   }
   
-  public void b() {}
+  public void e() {}
   
-  public void c() {}
+  public void f() {}
 }
 
 

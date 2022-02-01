@@ -14,12 +14,12 @@ class SignTextEditFragment$4
   {
     SignTextEditFragment.a(this.a, "");
     paramDialogInterface.dismiss();
-    this.a.b.obtainMessage(6, null).sendToTarget();
+    this.a.x.obtainMessage(6, null).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.4
  * JD-Core Version:    0.7.0.1
  */

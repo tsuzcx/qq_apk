@@ -11,11 +11,11 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 public class SwipeBackLayout$KandianGestureDetector
   extends GestureDetector.SimpleOnGestureListener
 {
-  private float jdField_a_of_type_Float;
+  private float b;
   
   public SwipeBackLayout$KandianGestureDetector(SwipeBackLayout paramSwipeBackLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+    this.b = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -26,35 +26,35 @@ public class SwipeBackLayout$KandianGestureDetector
       float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
       boolean bool2 = false;
       boolean bool1 = bool2;
-      if (SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout))
+      if (SwipeBackLayout.b(this.a))
       {
         bool1 = bool2;
-        if (SwipeBackLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout))
+        if (SwipeBackLayout.c(this.a))
         {
           bool1 = bool2;
-          if (!this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqKandianBizDetailWebReadinjoyH5ElementManager.a())
+          if (!this.a.m.a())
           {
             bool1 = bool2;
-            if (this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) {
-              bool1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a(paramMotionEvent1);
+            if (this.a.l != null) {
+              bool1 = this.a.a(paramMotionEvent1);
             }
           }
         }
       }
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.d) && (paramFloat1 >= 200.0F))
+      if ((this.a.n) && (paramFloat1 >= 200.0F))
       {
-        if ((f1 < 0.0F) && (f2 < 0.5F) && (SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout)) && (SwipeBackLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout)) && (!bool1)) {
-          if ((this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        if ((f1 < 0.0F) && (f2 < 0.5F) && (SwipeBackLayout.b(this.a)) && (SwipeBackLayout.c(this.a)) && (!bool1)) {
+          if ((this.a.j instanceof Activity))
           {
-            SwipeBackLayout localSwipeBackLayout = this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout;
-            localSwipeBackLayout.c = true;
-            localSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.flingLToR();
-            this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a();
+            SwipeBackLayout localSwipeBackLayout = this.a;
+            localSwipeBackLayout.k = true;
+            localSwipeBackLayout.l.flingLToR();
+            this.a.a();
           }
-          else if (this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null)
+          else if (this.a.l != null)
           {
-            this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.flingLToR();
-            this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a();
+            this.a.l.flingLToR();
+            this.a.a();
           }
         }
         return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
@@ -66,7 +66,7 @@ public class SwipeBackLayout$KandianGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.SwipeBackLayout.KandianGestureDetector
  * JD-Core Version:    0.7.0.1
  */

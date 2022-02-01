@@ -13,15 +13,15 @@ class VideoStoryPiecesPart$3
   
   public void run()
   {
-    Drawable localDrawable = VideoStoryPiecesPart.a(this.this$0).getResources().getDrawable(2130849489);
-    int i = AIOUtils.b(36.0F, VideoStoryPiecesPart.b(this.this$0).getResources());
+    Drawable localDrawable = VideoStoryPiecesPart.q(this.this$0).getResources().getDrawable(2130851173);
+    int i = AIOUtils.b(36.0F, VideoStoryPiecesPart.r(this.this$0).getResources());
     localDrawable.setBounds(0, 0, i, i);
-    VideoStoryPiecesPart.a(this.this$0).setImageDrawable(localDrawable);
+    VideoStoryPiecesPart.s(this.this$0).setImageDrawable(localDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.VideoStoryPiecesPart.3
  * JD-Core Version:    0.7.0.1
  */

@@ -19,22 +19,17 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class MixedImageOnclickListener
   implements View.OnClickListener
 {
-  private long a;
   public SessionInfo a;
-  
-  public MixedImageOnclickListener()
-  {
-    this.jdField_a_of_type_Long = 0L;
-  }
+  private long b = 0L;
   
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long >= 1000L)
+    if (l - this.b >= 1000L)
     {
-      this.jdField_a_of_type_Long = l;
+      this.b = l;
       Object localObject = (URLImageView)paramView;
-      MessageForPic localMessageForPic = (MessageForPic)((URLImageView)localObject).getTag(2131364535);
+      MessageForPic localMessageForPic = (MessageForPic)((URLImageView)localObject).getTag(2131430592);
       URLDrawable localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
       if (localURLDrawable != null)
       {
@@ -47,7 +42,7 @@ public class MixedImageOnclickListener
             {
               localObject = ((IPicAIO)QRoute.api(IPicAIO.class)).getReceivePicFailedTip(localURLDrawable);
               if (localObject != null) {
-                QQToast.a(paramView.getContext(), (CharSequence)localObject, 0).a();
+                QQToast.makeText(paramView.getContext(), (CharSequence)localObject, 0).show();
               } else if (FolderUtils.a(paramView.getContext())) {
                 localURLDrawable.restartDownload();
               }
@@ -55,12 +50,12 @@ public class MixedImageOnclickListener
           }
           else if (((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion(localMessageForPic))
           {
-            AIOEmotionFragment.a(paramView.getContext(), localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, AnimationUtils.a(paramView));
+            AIOEmotionFragment.a(paramView.getContext(), localMessageForPic, this.a, AnimationUtils.a(paramView));
           }
           else
           {
             localMessageForPic.isInMixedMsg = true;
-            PicItemBuilder.a(PlayModeUtils.a(), paramView.getContext(), (View)localObject, localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
+            PicItemBuilder.a(PlayModeUtils.b(), paramView.getContext(), (View)localObject, localMessageForPic, this.a, false, true, true, null);
           }
         }
         else if (!localURLDrawable.isDownloadStarted()) {
@@ -73,7 +68,7 @@ public class MixedImageOnclickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.MixedImageOnclickListener
  * JD-Core Version:    0.7.0.1
  */

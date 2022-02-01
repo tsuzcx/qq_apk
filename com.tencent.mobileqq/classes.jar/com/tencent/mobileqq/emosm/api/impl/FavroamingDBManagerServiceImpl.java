@@ -1321,63 +1321,67 @@ public class FavroamingDBManagerServiceImpl
   
   public List<CustomEmotionData> updateFavEmotionsInLocalEx(List<String> paramList1, List<String> paramList2, String paramString, List<Integer> paramList)
   {
-    ArrayList localArrayList = new ArrayList();
-    List localList = getLocalFavDataNotInServer(paramList1, paramList2);
-    int i = 0;
-    if ((localList != null) && (localList.size() > 0))
+    try
     {
-      localArrayList.addAll(localList);
-      QLog.d("FavroamingDBManager", 1, new Object[] { "localUpdatedNotInServerList= ", Integer.valueOf(localList.size()) });
+      ArrayList localArrayList = new ArrayList();
+      List localList = getLocalFavDataNotInServer(paramList1, paramList2);
+      int i = 0;
+      if ((localList != null) && (localList.size() > 0))
+      {
+        localArrayList.addAll(localList);
+        QLog.d("FavroamingDBManager", 1, new Object[] { "localUpdatedNotInServerList= ", Integer.valueOf(localList.size()) });
+      }
+      if ((paramList1 != null) && (paramList1.size() > 0)) {
+        localArrayList.addAll(paramList1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-1.");
+      }
+      removeRedundancyEmoticonList(localArrayList);
+      if (QLog.isColorLevel()) {
+        QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-2.");
+      }
+      paramList1 = getEmoticonDataList();
+      int j = getMaxEmoId(paramList1);
+      if (QLog.isColorLevel()) {
+        QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-3.");
+      }
+      localArrayList = new ArrayList();
+      removeMergeEmoticon(paramList2, paramString, paramList, j, paramList1, localArrayList);
+      QLog.d("FavroamingDBManager", 1, new Object[] { "mergeSize= ", Integer.valueOf(localArrayList.size()) });
+      paramList2 = updateCustomEmotionData(localArrayList);
+      QLog.d("FavroamingDBManager", 1, new Object[] { "updateSize= ", Integer.valueOf(paramList2.size()) });
+      if (QLog.isColorLevel()) {
+        QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-4.");
+      }
+      paramString = getEmoticonDataList();
+      if (paramString != null)
+      {
+        i = paramString.size();
+        deleteCustomEmotionList(paramString);
+      }
+      this.customEmotionDbCache.clear();
+      this.customEmotionDbCache.addAll(paramList2);
+      updateCustomEmotionDataListInDB(paramList2, 1);
+      if (QLog.isColorLevel()) {
+        QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-4.");
+      }
+      paramString = (FavEmoRoamingHandler)this.app.getBusinessHandler(FavEmoRoamingHandler.a);
+      if (paramList2.size() > 0) {
+        paramString.a(paramList2, 2);
+      }
+      j = getUploadSize(paramList1, paramList2);
+      paramString = new StringBuilder();
+      paramString.append("updateFavEmotionsInLocalEx final cache size: ");
+      paramString.append(paramList2.size());
+      paramString.append(",delete size:");
+      paramString.append(i);
+      paramString.append(",upload size:");
+      paramString.append(j);
+      QLog.d("FavroamingDBManager", 1, paramString.toString());
+      return paramList1;
     }
-    if ((paramList1 != null) && (paramList1.size() > 0)) {
-      localArrayList.addAll(paramList1);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-1.");
-    }
-    removeRedundancyEmoticonList(localArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-2.");
-    }
-    paramList1 = getEmoticonDataList();
-    int j = getMaxEmoId(paramList1);
-    if (QLog.isColorLevel()) {
-      QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-3.");
-    }
-    localArrayList = new ArrayList();
-    removeMergeEmoticon(paramList2, paramString, paramList, j, paramList1, localArrayList);
-    QLog.d("FavroamingDBManager", 1, new Object[] { "mergeSize= ", Integer.valueOf(localArrayList.size()) });
-    paramList2 = updateCustomEmotionData(localArrayList);
-    QLog.d("FavroamingDBManager", 1, new Object[] { "updateSize= ", Integer.valueOf(paramList2.size()) });
-    if (QLog.isColorLevel()) {
-      QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-4.");
-    }
-    paramString = getEmoticonDataList();
-    if (paramString != null)
-    {
-      i = paramString.size();
-      deleteCustomEmotionList(paramString);
-    }
-    this.customEmotionDbCache.clear();
-    this.customEmotionDbCache.addAll(paramList2);
-    updateCustomEmotionDataListInDB(paramList2, 1);
-    if (QLog.isColorLevel()) {
-      QLog.i("FavroamingDBManager", 2, "Call getEmoticonDataList from updateFavEmotionsInLocalEx-4.");
-    }
-    paramString = (FavEmoRoamingHandler)this.app.getBusinessHandler(FavEmoRoamingHandler.a);
-    if (paramList2.size() > 0) {
-      paramString.a(paramList2, 2);
-    }
-    j = getUploadSize(paramList1, paramList2);
-    paramString = new StringBuilder();
-    paramString.append("updateFavEmotionsInLocalEx final cache size: ");
-    paramString.append(paramList2.size());
-    paramString.append(",delete size:");
-    paramString.append(i);
-    paramString.append(",upload size:");
-    paramString.append(j);
-    QLog.d("FavroamingDBManager", 1, paramString.toString());
-    return paramList1;
+    finally {}
   }
   
   public CustomEmotionData updateUpload(String paramString)
@@ -1397,7 +1401,7 @@ public class FavroamingDBManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.FavroamingDBManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

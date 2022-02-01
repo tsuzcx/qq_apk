@@ -22,7 +22,7 @@ public final class cc_sso_report_svr$BasicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.BasicInfo
  * JD-Core Version:    0.7.0.1
  */

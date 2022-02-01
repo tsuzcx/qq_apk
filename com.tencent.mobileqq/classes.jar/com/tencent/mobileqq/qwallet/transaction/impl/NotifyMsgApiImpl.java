@@ -101,7 +101,7 @@ public class NotifyMsgApiImpl
           {
             paramNotifyMsgRecord.mQQWalletRedPacketMsg.isOpened = true;
             paramNotifyMsgRecord.msgData = paramNotifyMsgRecord.getBytes();
-            if (QWalletTools.a() != null) {
+            if (QWalletTools.b() != null) {
               ((IMessageFacade)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(paramNotifyMsgRecord.frienduin, paramNotifyMsgRecord.istroop, paramNotifyMsgRecord.uniseq, paramNotifyMsgRecord.msgData);
             }
           }
@@ -138,7 +138,7 @@ public class NotifyMsgApiImpl
     while (i < paramArrayList.size())
     {
       NotifyMsgRecord localNotifyMsgRecord = (NotifyMsgRecord)paramArrayList.get(i);
-      if ((localNotifyMsgRecord != null) && (localNotifyMsgRecord.b == paramInt) && (localNotifyMsgRecord.jdField_a_of_type_JavaLangString != null) && (localNotifyMsgRecord.jdField_a_of_type_JavaLangString.equals(paramString))) {
+      if ((localNotifyMsgRecord != null) && (localNotifyMsgRecord.c == paramInt) && (localNotifyMsgRecord.d != null) && (localNotifyMsgRecord.d.equals(paramString))) {
         return localNotifyMsgRecord;
       }
       i += 1;
@@ -156,7 +156,7 @@ public class NotifyMsgApiImpl
     while (i < paramArrayList.size())
     {
       NotifyMsgRecord localNotifyMsgRecord = (NotifyMsgRecord)paramArrayList.get(i);
-      if ((localNotifyMsgRecord != null) && (localNotifyMsgRecord.b == paramInt)) {
+      if ((localNotifyMsgRecord != null) && (localNotifyMsgRecord.c == paramInt)) {
         localArrayList.add(localNotifyMsgRecord);
       }
       i += 1;
@@ -170,7 +170,7 @@ public class NotifyMsgApiImpl
     while (i < gWaitRecords.size())
     {
       NotifyMsgApiImpl.WaitRecord localWaitRecord = (NotifyMsgApiImpl.WaitRecord)gWaitRecords.get(i);
-      if ((localWaitRecord != null) && (localWaitRecord.jdField_a_of_type_Int == paramInt) && (localWaitRecord.jdField_a_of_type_JavaLangString != null) && (localWaitRecord.jdField_a_of_type_JavaLangString.equals(paramString)) && (localWaitRecord.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == paramMessageRecord)) {
+      if ((localWaitRecord != null) && (localWaitRecord.a == paramInt) && (localWaitRecord.b != null) && (localWaitRecord.b.equals(paramString)) && (localWaitRecord.c == paramMessageRecord)) {
         return true;
       }
       i += 1;
@@ -189,23 +189,23 @@ public class NotifyMsgApiImpl
     if (QLog.isColorLevel()) {
       QLog.i("NotifyMsgApi", 2, "notifyUI start");
     }
-    if ((paramWaitRecord != null) && (paramWaitRecord.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null))
+    if ((paramWaitRecord != null) && (paramWaitRecord.c != null))
     {
-      Object localObject = QWalletTools.a();
+      Object localObject = QWalletTools.b();
       if (localObject == null) {
         return;
       }
       Bundle localBundle = new Bundle();
-      localBundle.putInt("btype", paramWaitRecord.jdField_a_of_type_Int);
-      localBundle.putString("bid", paramWaitRecord.jdField_a_of_type_JavaLangString);
+      localBundle.putInt("btype", paramWaitRecord.a);
+      localBundle.putString("bid", paramWaitRecord.b);
       ((BaseQQAppInterface)localObject).notifyObservers(NotifyMsgObserver.class, 1, true, localBundle);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("notifyUI btype:");
-        ((StringBuilder)localObject).append(paramWaitRecord.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramWaitRecord.a);
         ((StringBuilder)localObject).append(" bid:");
-        ((StringBuilder)localObject).append(paramWaitRecord.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramWaitRecord.b);
         QLog.i("NotifyMsgApi", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -218,13 +218,13 @@ public class NotifyMsgApiImpl
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      BaseQQAppInterface localBaseQQAppInterface = QWalletTools.a();
+      BaseQQAppInterface localBaseQQAppInterface = QWalletTools.b();
       if (localBaseQQAppInterface == null) {
         return;
       }
       paramString2 = new NotifyMsgRecord(0, localBaseQQAppInterface.getLongAccountUin(), 2, paramString2, 0L, null);
       paramString2.a("groupUin", paramString1);
-      paramString2.a("groupType", paramInt);
+      paramString2.b("groupType", paramInt);
       updateOrCreate(localBaseQQAppInterface.getLongAccountUin(), paramString2);
     }
   }
@@ -236,22 +236,22 @@ public class NotifyMsgApiImpl
       if (paramNotifyMsgRecord2 == null) {
         return paramNotifyMsgRecord2;
       }
-      if ((paramNotifyMsgRecord1.b == paramNotifyMsgRecord2.b) && (paramNotifyMsgRecord1.jdField_a_of_type_JavaLangString != null))
+      if ((paramNotifyMsgRecord1.c == paramNotifyMsgRecord2.c) && (paramNotifyMsgRecord1.d != null))
       {
-        if (!paramNotifyMsgRecord1.jdField_a_of_type_JavaLangString.equals(paramNotifyMsgRecord2.jdField_a_of_type_JavaLangString)) {
+        if (!paramNotifyMsgRecord1.d.equals(paramNotifyMsgRecord2.d)) {
           return paramNotifyMsgRecord2;
         }
-        if (paramNotifyMsgRecord1.b == 1)
+        if (paramNotifyMsgRecord1.c == 1)
         {
           int i = paramNotifyMsgRecord2.a("state", 0);
           int j = paramNotifyMsgRecord1.a("state", 0);
           if (i != 2) {
             i = j;
           }
-          paramNotifyMsgRecord2.a("state", i);
+          paramNotifyMsgRecord2.b("state", i);
           return paramNotifyMsgRecord2;
         }
-        paramNotifyMsgRecord2.jdField_a_of_type_OrgJsonJSONObject = paramNotifyMsgRecord1.jdField_a_of_type_OrgJsonJSONObject;
+        paramNotifyMsgRecord2.f = paramNotifyMsgRecord1.f;
       }
     }
     return paramNotifyMsgRecord2;
@@ -321,12 +321,12 @@ public class NotifyMsgApiImpl
     if (j != 3) {
       return;
     }
-    paramQWalletGoldMsgTipsElem1 = QWalletTools.a();
+    paramQWalletGoldMsgTipsElem1 = QWalletTools.b();
     if (paramQWalletGoldMsgTipsElem1 == null) {
       return;
     }
     paramQWalletGoldMsgTipsElem2 = new NotifyMsgRecord(0, paramQWalletGoldMsgTipsElem1.getLongAccountUin(), 1, localQWalletGoldMsgTipsElem, 0L, null);
-    paramQWalletGoldMsgTipsElem2.a("state", i);
+    paramQWalletGoldMsgTipsElem2.b("state", i);
     updateOrCreate(paramQWalletGoldMsgTipsElem1.getLongAccountUin(), paramQWalletGoldMsgTipsElem2);
     paramQWalletGoldMsgTipsElem2 = new Bundle();
     paramQWalletGoldMsgTipsElem2.putInt("btype", 1);
@@ -434,12 +434,12 @@ public class NotifyMsgApiImpl
   
   protected static void updateOrCreate(long paramLong, NotifyMsgRecord paramNotifyMsgRecord)
   {
-    if ((paramNotifyMsgRecord != null) && (checkBusinessTypeStatic(paramNotifyMsgRecord.b)))
+    if ((paramNotifyMsgRecord != null) && (checkBusinessTypeStatic(paramNotifyMsgRecord.c)))
     {
-      if (TextUtils.isEmpty(paramNotifyMsgRecord.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramNotifyMsgRecord.d)) {
         return;
       }
-      Object localObject = getRecord(gList, paramNotifyMsgRecord.b, paramNotifyMsgRecord.jdField_a_of_type_JavaLangString);
+      Object localObject = getRecord(gList, paramNotifyMsgRecord.c, paramNotifyMsgRecord.d);
       if (localObject == null)
       {
         if (gLoadDbState == 2)
@@ -450,7 +450,7 @@ public class NotifyMsgApiImpl
           updateOrCreateToDb((ArrayList)localObject, true);
           return;
         }
-        localObject = getRecord(gWaitNotifyRecords, paramNotifyMsgRecord.b, paramNotifyMsgRecord.jdField_a_of_type_JavaLangString);
+        localObject = getRecord(gWaitNotifyRecords, paramNotifyMsgRecord.c, paramNotifyMsgRecord.d);
         if (localObject == null) {
           gWaitNotifyRecords.add(paramNotifyMsgRecord);
         } else {
@@ -460,7 +460,7 @@ public class NotifyMsgApiImpl
           loadFromDb();
         }
       }
-      else if (paramNotifyMsgRecord.b != 2)
+      else if (paramNotifyMsgRecord.c != 2)
       {
         onMergeMsg(paramNotifyMsgRecord, (NotifyMsgRecord)localObject);
         paramNotifyMsgRecord = new ArrayList();
@@ -487,7 +487,7 @@ public class NotifyMsgApiImpl
       while (paramList.hasNext())
       {
         NotifyMsgApiImpl.WaitRecord localWaitRecord = (NotifyMsgApiImpl.WaitRecord)paramList.next();
-        if ((localWaitRecord != null) && (checkAndUpdateToMesageRecord(localWaitRecord.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, localWaitRecord.jdField_a_of_type_Int, localWaitRecord.jdField_a_of_type_JavaLangString, false))) {
+        if ((localWaitRecord != null) && (checkAndUpdateToMesageRecord(localWaitRecord.c, null, localWaitRecord.a, localWaitRecord.b, false))) {
           localArrayList.add(localWaitRecord);
         }
       }
@@ -559,7 +559,7 @@ public class NotifyMsgApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.NotifyMsgApiImpl
  * JD-Core Version:    0.7.0.1
  */

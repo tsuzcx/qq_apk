@@ -10,34 +10,16 @@ import java.util.regex.Pattern;
 
 public class ParsingQrc
 {
-  private static final ParsingQrc.LyricComparator jdField_a_of_type_ComTencentMobileqqLyricUtilParsingQrc$LyricComparator = new ParsingQrc.LyricComparator(null);
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(?<=\\[).*?(?=\\])");
+  private static final Pattern a = Pattern.compile("(?<=\\[).*?(?=\\])");
   private static final Pattern b = Pattern.compile("(?<=\\()-?[0-9]*,-?[0-9]*(?=\\))");
-  private int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private ArrayList<Sentence> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static final ParsingQrc.LyricComparator c = new ParsingQrc.LyricComparator(null);
+  private final String d;
+  private ArrayList<Sentence> e = new ArrayList();
+  private int f;
   
   public ParsingQrc(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private int a(String paramString)
-  {
-    paramString = paramString.split("\\:");
-    try
-    {
-      if ((paramString.length == 2) && ("offset".equalsIgnoreCase(paramString[0])))
-      {
-        int i = Integer.parseInt(paramString[1].trim());
-        return i;
-      }
-    }
-    catch (Exception paramString)
-    {
-      Log.e("ParsingQrc", paramString.toString());
-    }
-    return 0;
+    this.d = paramString;
   }
   
   private long a(String paramString, Sentence paramSentence)
@@ -46,8 +28,8 @@ public class ParsingQrc
     if (arrayOfString.length < 2)
     {
       paramString = paramString.split("\\:");
-      if ((this.jdField_a_of_type_Int == 0) && (paramString[0].equalsIgnoreCase("offset"))) {
-        this.jdField_a_of_type_Int = Integer.parseInt(paramString[1]);
+      if ((this.f == 0) && (paramString[0].equalsIgnoreCase("offset"))) {
+        this.f = Integer.parseInt(paramString[1]);
       }
       return -1L;
     }
@@ -56,8 +38,8 @@ public class ParsingQrc
     {
       long l1 = Long.parseLong(arrayOfString[1]);
       long l2 = Long.parseLong(arrayOfString[0]);
-      paramSentence.jdField_b_of_type_Long = l1;
-      paramSentence.jdField_a_of_type_Long = l2;
+      paramSentence.c = l1;
+      paramSentence.b = l2;
       return l2;
     }
     catch (Exception paramString) {}
@@ -93,7 +75,7 @@ public class ParsingQrc
       if (paramString.equals("")) {
         return;
       }
-      Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
+      Matcher localMatcher = a.matcher(paramString);
       Object localObject3 = new ArrayList();
       int i = -1;
       Object localObject2;
@@ -121,8 +103,8 @@ public class ParsingQrc
             Sentence localSentence = new Sentence();
             if (a(str, localSentence) != -1L)
             {
-              a((String)localObject2, localSentence);
-              this.jdField_a_of_type_JavaUtilArrayList.add(localSentence);
+              b((String)localObject2, localSentence);
+              this.e.add(localSentence);
             }
           }
           ((ArrayList)localObject3).clear();
@@ -141,15 +123,15 @@ public class ParsingQrc
           i = paramString.length();
         }
         paramString = paramString.substring(i).trim();
-        if ((paramString.length() == 0) && (this.jdField_a_of_type_Int == 0)) {
+        if ((paramString.length() == 0) && (this.f == 0)) {
           paramString = ((ArrayList)localObject3).iterator();
         }
         while (paramString.hasNext())
         {
-          i = a((String)paramString.next());
+          i = b((String)paramString.next());
           if (i != 2147483647)
           {
-            this.jdField_a_of_type_Int = i;
+            this.f = i;
             return;
             localObject1 = ((ArrayList)localObject3).iterator();
             while (((Iterator)localObject1).hasNext())
@@ -158,8 +140,8 @@ public class ParsingQrc
               localObject3 = new Sentence();
               if (a((String)localObject2, (Sentence)localObject3) != -1L)
               {
-                a(paramString, (Sentence)localObject3);
-                this.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+                b(paramString, (Sentence)localObject3);
+                this.e.add(localObject3);
               }
             }
             return;
@@ -173,11 +155,29 @@ public class ParsingQrc
     }
   }
   
-  private void a(String paramString, Sentence paramSentence)
+  private int b(String paramString)
+  {
+    paramString = paramString.split("\\:");
+    try
+    {
+      if ((paramString.length == 2) && ("offset".equalsIgnoreCase(paramString[0])))
+      {
+        int i = Integer.parseInt(paramString[1].trim());
+        return i;
+      }
+    }
+    catch (Exception paramString)
+    {
+      Log.e("ParsingQrc", paramString.toString());
+    }
+    return 0;
+  }
+  
+  private void b(String paramString, Sentence paramSentence)
   {
     try
     {
-      paramSentence.jdField_a_of_type_JavaLangString = "";
+      paramSentence.a = "";
       if (paramString != null)
       {
         if (paramString.equals("")) {
@@ -219,8 +219,8 @@ public class ParsingQrc
             paramString = (String)localObject3;
           }
         }
-        paramSentence.jdField_a_of_type_JavaLangString = paramString;
-        paramSentence.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+        paramSentence.a = paramString;
+        paramSentence.g = localArrayList;
         return;
       }
       return;
@@ -236,17 +236,17 @@ public class ParsingQrc
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 47	com/tencent/mobileqq/lyric/util/ParsingQrc:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1: getfield 51	com/tencent/mobileqq/lyric/util/ParsingQrc:d	Ljava/lang/String;
     //   4: astore_3
     //   5: aload_3
     //   6: ifnull +371 -> 377
     //   9: aload_3
-    //   10: ldc 210
-    //   12: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   10: ldc 215
+    //   12: invokevirtual 219	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   15: ifeq +13 -> 28
     //   18: aload_3
-    //   19: ldc 210
-    //   21: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   19: ldc 215
+    //   21: invokevirtual 136	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   24: istore_1
     //   25: goto +5 -> 30
     //   28: iconst_m1
@@ -255,7 +255,7 @@ public class ParsingQrc
     //   31: iconst_m1
     //   32: if_icmpeq +345 -> 377
     //   35: aload_3
-    //   36: invokevirtual 177	java/lang/String:length	()I
+    //   36: invokevirtual 169	java/lang/String:length	()I
     //   39: istore_2
     //   40: iload_1
     //   41: bipush 12
@@ -268,45 +268,45 @@ public class ParsingQrc
     //   49: if_icmple +328 -> 377
     //   52: aload_3
     //   53: iload_1
-    //   54: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
+    //   54: invokevirtual 175	java/lang/String:substring	(I)Ljava/lang/String;
     //   57: astore_3
     //   58: aload_3
-    //   59: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   62: ldc 216
-    //   64: invokevirtual 219	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   59: invokevirtual 178	java/lang/String:trim	()Ljava/lang/String;
+    //   62: ldc 221
+    //   64: invokevirtual 224	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   67: ifne +5 -> 72
     //   70: aconst_null
     //   71: areturn
     //   72: aload_3
     //   73: aload_3
-    //   74: ldc 216
-    //   76: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   74: ldc 221
+    //   76: invokevirtual 136	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   79: iconst_1
     //   80: iadd
-    //   81: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
+    //   81: invokevirtual 175	java/lang/String:substring	(I)Ljava/lang/String;
     //   84: astore_3
     //   85: aload_3
-    //   86: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   89: ldc 221
-    //   91: invokevirtual 219	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   86: invokevirtual 178	java/lang/String:trim	()Ljava/lang/String;
+    //   89: ldc 226
+    //   91: invokevirtual 224	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   94: ifne +5 -> 99
     //   97: aconst_null
     //   98: areturn
     //   99: aload_3
     //   100: aload_3
-    //   101: ldc 221
-    //   103: invokevirtual 144	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   101: ldc 226
+    //   103: invokevirtual 136	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   106: iconst_1
     //   107: iadd
-    //   108: invokevirtual 183	java/lang/String:substring	(I)Ljava/lang/String;
+    //   108: invokevirtual 175	java/lang/String:substring	(I)Ljava/lang/String;
     //   111: astore_3
     //   112: aload_3
-    //   113: ldc 223
-    //   115: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   113: ldc 228
+    //   115: invokevirtual 219	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   118: ifeq +13 -> 131
     //   121: aload_3
-    //   122: ldc 223
-    //   124: invokevirtual 226	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   122: ldc 228
+    //   124: invokevirtual 231	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   127: istore_1
     //   128: goto +5 -> 133
     //   131: iconst_m1
@@ -319,15 +319,15 @@ public class ParsingQrc
     //   140: aload_3
     //   141: iconst_0
     //   142: iload_1
-    //   143: invokevirtual 148	java/lang/String:substring	(II)Ljava/lang/String;
+    //   143: invokevirtual 140	java/lang/String:substring	(II)Ljava/lang/String;
     //   146: astore_3
     //   147: aload_3
-    //   148: ldc 221
-    //   150: invokevirtual 214	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   148: ldc 226
+    //   150: invokevirtual 219	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   153: ifeq +13 -> 166
     //   156: aload_3
-    //   157: ldc 221
-    //   159: invokevirtual 226	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   157: ldc 226
+    //   159: invokevirtual 231	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   162: istore_1
     //   163: goto +5 -> 168
     //   166: iconst_m1
@@ -340,20 +340,20 @@ public class ParsingQrc
     //   175: aload_3
     //   176: iconst_0
     //   177: iload_1
-    //   178: invokevirtual 148	java/lang/String:substring	(II)Ljava/lang/String;
+    //   178: invokevirtual 140	java/lang/String:substring	(II)Ljava/lang/String;
     //   181: astore_3
-    //   182: new 228	java/io/BufferedReader
+    //   182: new 233	java/io/BufferedReader
     //   185: dup
-    //   186: new 230	java/io/StringReader
+    //   186: new 235	java/io/StringReader
     //   189: dup
     //   190: aload_3
-    //   191: invokespecial 232	java/io/StringReader:<init>	(Ljava/lang/String;)V
-    //   194: invokespecial 235	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   191: invokespecial 237	java/io/StringReader:<init>	(Ljava/lang/String;)V
+    //   194: invokespecial 240	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   197: astore 4
     //   199: aload 4
     //   201: astore_3
     //   202: aload 4
-    //   204: invokevirtual 238	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   204: invokevirtual 243	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   207: astore 5
     //   209: aload 5
     //   211: ifnull +18 -> 229
@@ -361,35 +361,35 @@ public class ParsingQrc
     //   216: astore_3
     //   217: aload_0
     //   218: aload 5
-    //   220: invokevirtual 68	java/lang/String:trim	()Ljava/lang/String;
-    //   223: invokespecial 240	com/tencent/mobileqq/lyric/util/ParsingQrc:a	(Ljava/lang/String;)V
+    //   220: invokevirtual 178	java/lang/String:trim	()Ljava/lang/String;
+    //   223: invokespecial 245	com/tencent/mobileqq/lyric/util/ParsingQrc:a	(Ljava/lang/String;)V
     //   226: goto -27 -> 199
     //   229: aload 4
     //   231: astore_3
     //   232: aload_0
-    //   233: getfield 45	com/tencent/mobileqq/lyric/util/ParsingQrc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   236: getstatic 36	com/tencent/mobileqq/lyric/util/ParsingQrc:jdField_a_of_type_ComTencentMobileqqLyricUtilParsingQrc$LyricComparator	Lcom/tencent/mobileqq/lyric/util/ParsingQrc$LyricComparator;
-    //   239: invokestatic 246	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   233: getfield 49	com/tencent/mobileqq/lyric/util/ParsingQrc:e	Ljava/util/ArrayList;
+    //   236: getstatic 40	com/tencent/mobileqq/lyric/util/ParsingQrc:c	Lcom/tencent/mobileqq/lyric/util/ParsingQrc$LyricComparator;
+    //   239: invokestatic 251	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   242: aload 4
     //   244: astore_3
-    //   245: new 248	com/tencent/mobileqq/lyric/data/Lyric
+    //   245: new 253	com/tencent/mobileqq/lyric/data/Lyric
     //   248: dup
     //   249: iconst_2
     //   250: aload_0
-    //   251: getfield 89	com/tencent/mobileqq/lyric/util/ParsingQrc:jdField_a_of_type_Int	I
+    //   251: getfield 66	com/tencent/mobileqq/lyric/util/ParsingQrc:f	I
     //   254: aload_0
-    //   255: getfield 45	com/tencent/mobileqq/lyric/util/ParsingQrc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   258: invokespecial 251	com/tencent/mobileqq/lyric/data/Lyric:<init>	(IILjava/util/ArrayList;)V
+    //   255: getfield 49	com/tencent/mobileqq/lyric/util/ParsingQrc:e	Ljava/util/ArrayList;
+    //   258: invokespecial 256	com/tencent/mobileqq/lyric/data/Lyric:<init>	(IILjava/util/ArrayList;)V
     //   261: astore 5
     //   263: aload 4
-    //   265: invokevirtual 254	java/io/BufferedReader:close	()V
+    //   265: invokevirtual 259	java/io/BufferedReader:close	()V
     //   268: aload 5
     //   270: areturn
     //   271: astore_3
-    //   272: ldc 75
+    //   272: ldc 183
     //   274: aload_3
-    //   275: invokevirtual 255	java/io/IOException:toString	()Ljava/lang/String;
-    //   278: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   275: invokevirtual 260	java/io/IOException:toString	()Ljava/lang/String;
+    //   278: invokestatic 189	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   281: pop
     //   282: aload 5
     //   284: areturn
@@ -404,22 +404,22 @@ public class ParsingQrc
     //   300: astore 4
     //   302: aload 4
     //   304: astore_3
-    //   305: ldc 75
+    //   305: ldc 183
     //   307: aload 5
-    //   309: invokevirtual 78	java/lang/Exception:toString	()Ljava/lang/String;
-    //   312: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   309: invokevirtual 184	java/lang/Exception:toString	()Ljava/lang/String;
+    //   312: invokestatic 189	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   315: pop
     //   316: aload 4
     //   318: ifnull +59 -> 377
     //   321: aload 4
-    //   323: invokevirtual 254	java/io/BufferedReader:close	()V
+    //   323: invokevirtual 259	java/io/BufferedReader:close	()V
     //   326: aconst_null
     //   327: areturn
     //   328: astore_3
-    //   329: ldc 75
+    //   329: ldc 183
     //   331: aload_3
-    //   332: invokevirtual 255	java/io/IOException:toString	()Ljava/lang/String;
-    //   335: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   332: invokevirtual 260	java/io/IOException:toString	()Ljava/lang/String;
+    //   335: invokestatic 189	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   338: pop
     //   339: aconst_null
     //   340: areturn
@@ -431,13 +431,13 @@ public class ParsingQrc
     //   349: aload 4
     //   351: ifnull +24 -> 375
     //   354: aload 4
-    //   356: invokevirtual 254	java/io/BufferedReader:close	()V
+    //   356: invokevirtual 259	java/io/BufferedReader:close	()V
     //   359: goto +16 -> 375
     //   362: astore 4
-    //   364: ldc 75
+    //   364: ldc 183
     //   366: aload 4
-    //   368: invokevirtual 255	java/io/IOException:toString	()Ljava/lang/String;
-    //   371: invokestatic 84	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   368: invokevirtual 260	java/io/IOException:toString	()Ljava/lang/String;
+    //   371: invokestatic 189	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   374: pop
     //   375: aload_3
     //   376: athrow
@@ -480,7 +480,7 @@ public class ParsingQrc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.util.ParsingQrc
  * JD-Core Version:    0.7.0.1
  */

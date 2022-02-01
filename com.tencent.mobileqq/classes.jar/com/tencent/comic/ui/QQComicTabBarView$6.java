@@ -12,11 +12,11 @@ class QQComicTabBarView$6
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentComicApiIQQComicRedTouchService != null) {
-      this.this$0.jdField_a_of_type_ComTencentComicApiIQQComicRedTouchService.deleteObserver(this.this$0.jdField_a_of_type_ComTencentComicApiImplQQComicRedTouchServiceImpl$PluginRedTouchObserver);
+    if (this.this$0.G != null) {
+      this.this$0.G.deleteObserver(this.this$0.H);
     }
-    if (QQComicPluginBridge.a != null) {
-      QQComicPluginBridge.a.b(this.this$0.jdField_a_of_type_ComTencentComicJspQQComicDownloadCountObserver);
+    if (QQComicPluginBridge.c != null) {
+      QQComicPluginBridge.c.b(this.this$0.I);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "unregister observers");
@@ -25,7 +25,7 @@ class QQComicTabBarView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTabBarView.6
  * JD-Core Version:    0.7.0.1
  */

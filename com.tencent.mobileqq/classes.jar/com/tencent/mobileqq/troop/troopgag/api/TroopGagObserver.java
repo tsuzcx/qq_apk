@@ -7,19 +7,19 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopGagObserver
   implements BusinessObserver
 {
-  public static final int a;
-  private static int b;
+  private static int a;
+  public static final int b;
   
   static
   {
-    int i = b;
-    b = i + 1;
-    a = i;
+    int i = a;
+    a = i + 1;
+    b = i;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != a) {
+    if (paramInt != b) {
       return;
     }
     if (QLog.isDevelopLevel()) {
@@ -37,7 +37,7 @@ public class TroopGagObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgag.api.TroopGagObserver
  * JD-Core Version:    0.7.0.1
  */

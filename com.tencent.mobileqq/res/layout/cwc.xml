@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/bg_texture" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.OverScrollRecyclerView android:id="@id/msc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cw_" />
+    <FrameLayout android:layout_gravity="center|left|top" android:id="@id/pbs" android:background="@drawable/f7y" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="26.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip">
+        <TextView android:textSize="@dimen/ayk" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/pbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
+    </FrameLayout>
+    <com.tencent.biz.qqcircle.widgets.QCircleRocketView android:layout_gravity="bottom|center|right" android:id="@id/pdm" android:layout_width="140.0dip" android:layout_height="210.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="79.0dip" />
+    <com.tencent.biz.qqcircle.widgets.QCirclePushBubbleView android:layout_gravity="bottom|center|right" android:id="@id/pcj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="17.0dip" android:layout_marginBottom="85.0dip" />
+    <com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView android:id="@id/p7r" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

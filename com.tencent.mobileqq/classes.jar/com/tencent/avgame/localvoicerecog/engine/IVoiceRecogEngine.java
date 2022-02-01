@@ -2,8 +2,6 @@ package com.tencent.avgame.localvoicerecog.engine;
 
 public abstract interface IVoiceRecogEngine
 {
-  public abstract int a();
-  
   public abstract int a(String paramString);
   
   public abstract int a(String paramString1, String paramString2);
@@ -15,6 +13,8 @@ public abstract interface IVoiceRecogEngine
   public abstract int b();
   
   public abstract int c();
+  
+  public abstract int e();
 }
 
 

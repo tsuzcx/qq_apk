@@ -13,15 +13,15 @@ class LebaSearchPluginManagerActivity$4
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    double d1 = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight();
-    double d2 = this.a.b;
-    double d3 = LebaSearchPluginManagerActivity.jdField_a_of_type_Double;
+    double d1 = this.a.s.getHeight();
+    double d2 = this.a.f;
+    double d3 = LebaSearchPluginManagerActivity.b;
     Double.isNaN(d2);
     Double.isNaN(d1);
-    double d4 = this.a.jdField_a_of_type_Float * 56.0F;
+    double d4 = this.a.g * 56.0F;
     Double.isNaN(d4);
     paramInt1 = (int)(d1 - d2 * (1.0D - d3) + d4);
-    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetLebaSearchBounceScrollView.setMaxOverScrollY(paramInt1);
+    this.a.r.setMaxOverScrollY(paramInt1);
     if (LebaSearchPluginManagerActivity.a(this.a))
     {
       this.a.a(paramInt2);
@@ -31,7 +31,7 @@ class LebaSearchPluginManagerActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity.4
  * JD-Core Version:    0.7.0.1
  */

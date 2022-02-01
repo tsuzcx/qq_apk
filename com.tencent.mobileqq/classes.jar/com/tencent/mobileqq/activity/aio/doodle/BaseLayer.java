@@ -8,24 +8,18 @@ import android.view.MotionEvent;
 public abstract class BaseLayer
 {
   protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  protected DoodleView b;
+  protected Rect c = new Rect();
   
   public BaseLayer(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     if (paramDoodleView != null)
     {
-      this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
+      this.a = paramDoodleView.getContext();
+      this.b = paramDoodleView;
       return;
     }
     throw new IllegalStateException("DoodleView can not be null.");
-  }
-  
-  public void a()
-  {
-    c();
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -35,7 +29,7 @@ public abstract class BaseLayer
       if (paramInt2 <= 0) {
         return;
       }
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+      this.c.set(0, 0, paramInt1, paramInt2);
     }
   }
   
@@ -46,37 +40,42 @@ public abstract class BaseLayer
   
   public boolean a()
   {
-    return b();
+    return d();
   }
   
   public final boolean a(MotionEvent paramMotionEvent)
   {
-    b();
+    c();
     return b(paramMotionEvent);
   }
   
   public void b()
   {
-    DoodleView localDoodleView = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView;
+    e();
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public void c()
+  {
+    DoodleView localDoodleView = this.b;
     if (localDoodleView != null) {
       localDoodleView.invalidate();
     }
   }
   
-  protected abstract void b(Canvas paramCanvas);
-  
-  public boolean b()
+  public boolean d()
   {
     return true;
   }
   
-  protected abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public void c() {}
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.BaseLayer
  * JD-Core Version:    0.7.0.1
  */

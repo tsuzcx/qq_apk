@@ -12,23 +12,23 @@ class ArkAppQQModule$26
   
   public void run()
   {
-    ark.VariantWrapper localVariantWrapper2 = ArkAppQQModule.d(this.this$0, this.jdField_a_of_type_Long);
+    ark.VariantWrapper localVariantWrapper2 = ArkAppQQModule.d(this.this$0, this.a);
     if (localVariantWrapper2 == null) {
       return;
     }
     ark.VariantWrapper localVariantWrapper1 = null;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.b))
     {
       localObject = localVariantWrapper1;
-      if (TextUtils.isEmpty(this.b)) {
+      if (TextUtils.isEmpty(this.c)) {
         break label89;
       }
     }
     try
     {
       localObject = new JSONObject();
-      ((JSONObject)localObject).put("openid", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("token", this.b);
+      ((JSONObject)localObject).put("openid", this.b);
+      ((JSONObject)localObject).put("token", this.c);
       localObject = ((JSONObject)localObject).toString();
     }
     catch (Exception localException)
@@ -55,7 +55,7 @@ class ArkAppQQModule$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.26
  * JD-Core Version:    0.7.0.1
  */

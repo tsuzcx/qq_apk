@@ -4,11 +4,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
+import com.tencent.av.abtest.QavOnlineExpProviderImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.qcircle.api.impl.QCircleOnlineExpProviderImpl;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
-import com.tencent.mtt.abtestsdk.entity.ExpEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -23,6 +23,8 @@ public final class ABTestUtil
   static
   {
     a.add(QCircleOnlineExpProviderImpl.class);
+    a.add(QavOnlineExpProviderImpl.class);
+    a.add(QCommonOnlineExpProviderImpl.class);
   }
   
   public static StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
@@ -64,14 +66,6 @@ public final class ABTestUtil
     return null;
   }
   
-  public static String a(ExpEntity paramExpEntity, String paramString)
-  {
-    if (paramExpEntity != null) {
-      return String.format("exp:%s. %s->%s", new Object[] { paramExpEntity.getExpName(), paramString, paramExpEntity.getAssignment() });
-    }
-    return "";
-  }
-  
   public static List<String> a()
   {
     try
@@ -87,7 +81,7 @@ public final class ABTestUtil
         Object localObject2 = (Class)((Iterator)localObject1).next();
         if (localObject2 == null)
         {
-          a("getInjectedExpList when clazz=null");
+          b("getInjectedExpList when clazz=null");
         }
         else
         {
@@ -98,7 +92,7 @@ public final class ABTestUtil
           {
             localArrayList.addAll(((IOnlineExpProvider)localObject2).getRegisterExpNameList());
             continue;
-            a("getInjectedExpList sOnlineExpInjector=null or isEmpty");
+            b("getInjectedExpList sOnlineExpInjector=null or isEmpty");
             return null;
           }
         }
@@ -109,17 +103,10 @@ public final class ABTestUtil
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("getInjectedExpList error:");
       ((StringBuilder)localObject1).append(localException.getMessage());
-      a(((StringBuilder)localObject1).toString());
+      b(((StringBuilder)localObject1).toString());
       return null;
     }
     return localException;
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ABTestController", 2, paramString);
-    }
   }
   
   public static void a(String paramString1, String paramString2)
@@ -131,8 +118,8 @@ public final class ABTestUtil
   
   public static boolean a(ExpEntityInfo paramExpEntityInfo)
   {
-    if ((paramExpEntityInfo != null) && (paramExpEntityInfo.c()) && (a(paramExpEntityInfo.getExpName()))) {
-      return a(paramExpEntityInfo.getAssignment()) ^ true;
+    if ((paramExpEntityInfo != null) && (paramExpEntityInfo.i()) && (a(paramExpEntityInfo.c()))) {
+      return a(paramExpEntityInfo.d()) ^ true;
     }
     return false;
   }
@@ -141,10 +128,17 @@ public final class ABTestUtil
   {
     return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("default", paramString));
   }
+  
+  public static void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ABTestController", 2, paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.abtest.ABTestUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class CommentLinkViewContainer
   
   private void a()
   {
-    inflate(this.a, 2131562701, this);
+    inflate(this.a, 2131629132, this);
     setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     setOrientation(1);
   }
@@ -44,10 +44,10 @@ public class CommentLinkViewContainer
   {
     if (paramCommentViewItem != null)
     {
-      if (paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData == null) {
+      if (paramCommentViewItem.c == null) {
         return;
       }
-      Object localObject = paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData.commentLinkDataList;
+      Object localObject = paramCommentViewItem.c.commentLinkDataList;
       if (localObject != null)
       {
         if (((List)localObject).size() == 0) {
@@ -61,7 +61,7 @@ public class CommentLinkViewContainer
           if (localCommentLinkData != null)
           {
             CommentLinkItemView localCommentLinkItemView = new CommentLinkItemView(this.a);
-            localCommentLinkItemView.a(paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData, localCommentLinkData);
+            localCommentLinkItemView.a(paramCommentViewItem.d, paramCommentViewItem.c, localCommentLinkData);
             addView(localCommentLinkItemView);
           }
         }
@@ -107,7 +107,7 @@ public class CommentLinkViewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.CommentLinkViewContainer
  * JD-Core Version:    0.7.0.1
  */

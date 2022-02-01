@@ -11,301 +11,304 @@ import org.json.JSONObject;
 
 public class AdReportData
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private ActionEntity jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity;
-  private ReportAction jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportAction;
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private VideoAdInfo jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo;
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private JSONObject jdField_b_of_type_OrgJsonJSONObject;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 0;
-  private JSONObject jdField_c_of_type_OrgJsonJSONObject;
-  private int jdField_d_of_type_Int;
-  private JSONObject jdField_d_of_type_OrgJsonJSONObject;
-  private int jdField_e_of_type_Int = 1;
-  private JSONObject jdField_e_of_type_OrgJsonJSONObject;
-  private JSONObject f;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public Bundle a()
-  {
-    return this.jdField_a_of_type_AndroidOsBundle;
-  }
-  
-  public ActionEntity a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity;
-  }
-  
-  public ReportAction a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportAction;
-  }
-  
-  public AdvertisementInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  }
+  boolean a;
+  private AppInterface b;
+  private Context c;
+  private int d;
+  private int e;
+  private AdvertisementInfo f;
+  private VideoAdInfo g;
+  private long h = 0L;
+  private String i;
+  private String j;
+  private JSONObject k;
+  private int l = 0;
+  private JSONObject m;
+  private Bundle n;
+  private JSONObject o;
+  private JSONObject p;
+  private JSONObject q;
+  private JSONObject r;
+  private int s;
+  private int t = 1;
+  private Integer u;
+  private boolean v;
+  private ActionEntity w;
+  private ReportAction x;
   
   public AdReportData a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
     return this;
   }
   
   public AdReportData a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.h = paramLong;
     return this;
   }
   
   public AdReportData a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramContext;
     return this;
   }
   
   public AdReportData a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.n = paramBundle;
     return this;
   }
   
   public AdReportData a(ActionEntity paramActionEntity)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity = paramActionEntity;
+    this.w = paramActionEntity;
     return this;
   }
   
   public AdReportData a(ReportAction paramReportAction)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantReportAction = paramReportAction;
+    this.x = paramReportAction;
     return this;
   }
   
   public AdReportData a(AdvertisementInfo paramAdvertisementInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+    this.f = paramAdvertisementInfo;
     return this;
   }
   
   public AdReportData a(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.b = paramAppInterface;
     return this;
   }
   
   public AdReportData a(VideoAdInfo paramVideoAdInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo = paramVideoAdInfo;
+    this.g = paramVideoAdInfo;
     return this;
   }
   
   public AdReportData a(Integer paramInteger)
   {
     if (paramInteger != null) {
-      this.jdField_e_of_type_Int = paramInteger.intValue();
+      this.t = paramInteger.intValue();
     }
     return this;
   }
   
   public AdReportData a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.i = paramString;
     return this;
   }
   
   public AdReportData a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.k = paramJSONObject;
     return this;
   }
   
   public AdReportData a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
     return this;
   }
   
   public AppInterface a()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    return this.b;
   }
   
-  public VideoAdInfo a()
+  public Context b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo;
-  }
-  
-  public Integer a()
-  {
-    return Integer.valueOf(this.jdField_e_of_type_Int);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    return this.c;
   }
   
   public AdReportData b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
     return this;
   }
   
   public AdReportData b(Integer paramInteger)
   {
-    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+    this.u = paramInteger;
     return this;
   }
   
   public AdReportData b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.j = paramString;
     return this;
   }
   
   public AdReportData b(JSONObject paramJSONObject)
   {
-    this.jdField_b_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.m = paramJSONObject;
     return this;
   }
   
   public AdReportData b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.v = paramBoolean;
     return this;
-  }
-  
-  public Integer b()
-  {
-    return this.jdField_a_of_type_JavaLangInteger;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public JSONObject b()
-  {
-    return this.jdField_b_of_type_OrgJsonJSONObject;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
   }
   
   public int c()
   {
-    return this.jdField_d_of_type_Int;
+    return this.d;
   }
   
   public AdReportData c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.l = paramInt;
     return this;
   }
   
   public AdReportData c(JSONObject paramJSONObject)
   {
-    this.jdField_c_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.o = paramJSONObject;
     return this;
-  }
-  
-  public JSONObject c()
-  {
-    return this.jdField_c_of_type_OrgJsonJSONObject;
   }
   
   public int d()
   {
-    if (this.jdField_c_of_type_Int <= 0)
-    {
-      AdvertisementInfo localAdvertisementInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-      if ((localAdvertisementInfo != null) && (localAdvertisementInfo.clickPos > 0)) {
-        this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.clickPos;
-      }
-    }
-    return this.jdField_c_of_type_Int;
+    return this.e;
   }
   
   public AdReportData d(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.s = paramInt;
     return this;
   }
   
   public AdReportData d(JSONObject paramJSONObject)
   {
-    this.jdField_e_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.q = paramJSONObject;
     return this;
   }
   
-  public JSONObject d()
+  public int e()
   {
-    return this.jdField_d_of_type_OrgJsonJSONObject;
+    return this.s;
   }
   
   public AdReportData e(JSONObject paramJSONObject)
   {
-    this.f = paramJSONObject;
+    this.r = paramJSONObject;
     return this;
   }
   
-  public JSONObject e()
+  public boolean f()
+  {
+    return this.a;
+  }
+  
+  public AdvertisementInfo g()
   {
     return this.f;
   }
   
-  public JSONObject f()
+  public VideoAdInfo h()
   {
-    return this.jdField_e_of_type_OrgJsonJSONObject;
+    return this.g;
+  }
+  
+  public long i()
+  {
+    return this.h;
+  }
+  
+  public String j()
+  {
+    return this.i;
+  }
+  
+  public String k()
+  {
+    return this.j;
+  }
+  
+  public JSONObject l()
+  {
+    return this.k;
+  }
+  
+  public int m()
+  {
+    if (this.l <= 0)
+    {
+      AdvertisementInfo localAdvertisementInfo = this.f;
+      if ((localAdvertisementInfo != null) && (localAdvertisementInfo.clickPos > 0)) {
+        this.l = this.f.clickPos;
+      }
+    }
+    return this.l;
+  }
+  
+  public JSONObject n()
+  {
+    return this.m;
+  }
+  
+  public Bundle o()
+  {
+    return this.n;
+  }
+  
+  public JSONObject p()
+  {
+    return this.o;
+  }
+  
+  public JSONObject q()
+  {
+    return this.p;
+  }
+  
+  public JSONObject r()
+  {
+    if (this.r == null) {
+      this.r = new JSONObject();
+    }
+    return this.r;
+  }
+  
+  public JSONObject s()
+  {
+    return this.q;
+  }
+  
+  public Integer t()
+  {
+    return Integer.valueOf(this.t);
+  }
+  
+  public boolean u()
+  {
+    return this.v;
+  }
+  
+  public ActionEntity v()
+  {
+    return this.w;
+  }
+  
+  public Integer w()
+  {
+    return this.u;
+  }
+  
+  public ReportAction x()
+  {
+    return this.x;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData
  * JD-Core Version:    0.7.0.1
  */

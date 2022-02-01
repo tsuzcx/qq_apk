@@ -13,9 +13,9 @@ class AppInterface$1$1
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface$1.a.webView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      if ((this.b.b.webView != null) && (!TextUtils.isEmpty(this.a)))
       {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface$1.a.webView.loadUrl(this.jdField_a_of_type_JavaLangString);
+        this.b.b.webView.loadUrl(this.a);
         return;
       }
     }
@@ -27,7 +27,7 @@ class AppInterface$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.AppInterface.1.1
  * JD-Core Version:    0.7.0.1
  */

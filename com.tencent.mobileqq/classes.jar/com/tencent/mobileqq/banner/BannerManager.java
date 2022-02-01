@@ -46,6 +46,7 @@ import com.tencent.mobileqq.activity.recent.bannerprocessor.TroopAssistBannerPro
 import com.tencent.mobileqq.activity.recent.bannerprocessor.UpdateBannerProcessor;
 import com.tencent.mobileqq.activity.recent.bannerprocessor.UpgradeBannerProcessor;
 import com.tencent.mobileqq.activity.recent.bannerprocessor.VasADBannerProcessor;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.VerifyPhoneBannerProcessor;
 import com.tencent.mobileqq.activity.recent.bannerprocessor.WifiPhotoBannerProcessor;
 import com.tencent.mobileqq.activity.recent.bannerprocessor.WifiSecurityCheckBannerProcessor;
 import com.tencent.mobileqq.app.QBaseActivity;
@@ -73,139 +74,135 @@ import mqq.app.MobileQQ;
 
 public class BannerManager
 {
+  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
+  private static ArrayList<Class<? extends IBannerProcessor>> A;
+  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
+  private static ArrayList<Class<? extends IBannerProcessor>> B;
+  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
+  private static ArrayList<Class<? extends IBannerProcessor>> C;
+  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
+  private static ArrayList<Class<? extends IBannerProcessor>> D;
   public static int a;
-  private static volatile BannerManager jdField_a_of_type_ComTencentMobileqqBannerBannerManager;
-  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
-  private static ArrayList<Class<? extends IBannerProcessor>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public static int b;
-  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
-  private static ArrayList<Class<? extends IBannerProcessor>> jdField_b_of_type_JavaUtilArrayList;
-  private static volatile boolean jdField_b_of_type_Boolean;
-  private static int jdField_c_of_type_Int;
-  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
-  private static ArrayList<Class<? extends IBannerProcessor>> jdField_c_of_type_JavaUtilArrayList;
-  private static int jdField_d_of_type_Int;
-  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
-  private static ArrayList<Class<? extends IBannerProcessor>> jdField_d_of_type_JavaUtilArrayList;
-  private static int jdField_e_of_type_Int;
-  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
-  private static ArrayList<Class<? extends IBannerProcessor>> jdField_e_of_type_JavaUtilArrayList;
-  private static int jdField_f_of_type_Int;
-  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
-  private static ArrayList<Class<? extends IBannerProcessor>> jdField_f_of_type_JavaUtilArrayList;
-  private static int jdField_g_of_type_Int;
-  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
-  private static ArrayList<Class<? extends IBannerProcessor>> jdField_g_of_type_JavaUtilArrayList;
-  private static int jdField_h_of_type_Int;
-  private static int jdField_i_of_type_Int;
-  private static int jdField_j_of_type_Int;
-  private static int jdField_k_of_type_Int;
+  private static volatile BannerManager d;
+  private static volatile boolean e;
+  private static int f;
+  private static int g;
+  private static int h;
+  private static int i;
+  private static int j;
+  private static int k;
   private static int l;
   private static int m;
   private static int n;
   private static int o;
-  private final SparseArray<ArrayList<Integer>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(7);
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private final HashMap<Integer, IBannerProcessor> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  public boolean a;
-  private Banner[] jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
-  private SparseArray<ArrayList<Integer>> jdField_b_of_type_AndroidUtilSparseArray;
-  private final ArrayList<IBannerOnAddToView> jdField_h_of_type_JavaUtilArrayList = new ArrayList();
-  private final ArrayList<IBannerOnUpdateBannerState> jdField_i_of_type_JavaUtilArrayList = new ArrayList();
-  private final ArrayList<IBannerLifecycle> jdField_j_of_type_JavaUtilArrayList = new ArrayList();
-  private final ArrayList<IBannerViewScroll> jdField_k_of_type_JavaUtilArrayList = new ArrayList();
+  private static int p;
+  private static int q;
+  private static int r;
+  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
+  private static ArrayList<Class<? extends IBannerProcessor>> x = new ArrayList();
+  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
+  private static ArrayList<Class<? extends IBannerProcessor>> y;
+  @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_banner_processor_map.yml", version=5)
+  private static ArrayList<Class<? extends IBannerProcessor>> z;
+  private final HashMap<Integer, IBannerProcessor> E = new HashMap();
+  private final ArrayList<IBannerOnAddToView> F = new ArrayList();
+  private final ArrayList<IBannerOnUpdateBannerState> G = new ArrayList();
+  private final ArrayList<IBannerLifecycle> H = new ArrayList();
+  private final ArrayList<IBannerViewScroll> I = new ArrayList();
+  public boolean c = false;
+  private QBaseActivity s;
+  private XListView t;
+  private Banner[] u;
+  private final SparseArray<ArrayList<Integer>> v = new SparseArray(7);
+  private SparseArray<ArrayList<Integer>> w;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add(NetStateBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(PhoneUnityBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(SecureModifyPwdNotifyBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(WifiSecurityCheckBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(SecurePhoneChangeNotifyBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ArkInfoBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(MissedCallBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(HotSpotBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(MobileUnityBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(WifiPhotoBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(NetNeedSignOnBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(IllegalNetworkBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(DonDisturbBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(PCOnlineBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(UpgradeBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(UpdateBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(InstallUpgradeBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ContactBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(TroopAssistBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(SetPwdBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(NotificationGuideBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(SecurityDetectBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(VasADBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(PushBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QQWifiBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(RenewalsBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ThemeVersionUpdateBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ThemeOverdueBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(TimUpgradeBannerProcessor.class);
-    jdField_a_of_type_JavaUtilArrayList.add(AutoStatusBannerProcessor.class);
-    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_b_of_type_JavaUtilArrayList.add(LoginDevicesBannerProcessor.class);
-    jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_c_of_type_JavaUtilArrayList.add(ComicBannerProcessor.class);
-    jdField_c_of_type_JavaUtilArrayList.add(BrowserBannerProcessor.class);
-    jdField_c_of_type_JavaUtilArrayList.add(GameCenterBannerProcessor.class);
-    jdField_c_of_type_JavaUtilArrayList.add(GameBannerProcessor.class);
-    jdField_c_of_type_JavaUtilArrayList.add(RunningBannerProcessor.class);
-    jdField_c_of_type_JavaUtilArrayList.add(MsgProxyBannerProcessor.class);
-    jdField_c_of_type_JavaUtilArrayList.add(GeneralBannerProcessor.class);
-    jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_d_of_type_JavaUtilArrayList.add(MusicPlayerBannerProcessor.class);
-    jdField_e_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_e_of_type_JavaUtilArrayList.add(MultiVideoBannerProcessor.class);
-    jdField_e_of_type_JavaUtilArrayList.add(QLinkTransingBannerProcessor.class);
-    jdField_f_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_f_of_type_JavaUtilArrayList.add(MsgBackupBannerProcessor.class);
-    jdField_g_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_g_of_type_JavaUtilArrayList.add(BeginnerGuideBannerProcessor.class);
-  }
-  
-  private BannerManager()
-  {
-    this.jdField_a_of_type_Boolean = false;
+    x.add(NetStateBannerProcessor.class);
+    x.add(PhoneUnityBannerProcessor.class);
+    x.add(SecureModifyPwdNotifyBannerProcessor.class);
+    x.add(WifiSecurityCheckBannerProcessor.class);
+    x.add(SecurePhoneChangeNotifyBannerProcessor.class);
+    x.add(ArkInfoBannerProcessor.class);
+    x.add(MissedCallBannerProcessor.class);
+    x.add(HotSpotBannerProcessor.class);
+    x.add(MobileUnityBannerProcessor.class);
+    x.add(WifiPhotoBannerProcessor.class);
+    x.add(NetNeedSignOnBannerProcessor.class);
+    x.add(IllegalNetworkBannerProcessor.class);
+    x.add(DonDisturbBannerProcessor.class);
+    x.add(PCOnlineBannerProcessor.class);
+    x.add(UpgradeBannerProcessor.class);
+    x.add(UpdateBannerProcessor.class);
+    x.add(InstallUpgradeBannerProcessor.class);
+    x.add(ContactBannerProcessor.class);
+    x.add(TroopAssistBannerProcessor.class);
+    x.add(SetPwdBannerProcessor.class);
+    x.add(NotificationGuideBannerProcessor.class);
+    x.add(SecurityDetectBannerProcessor.class);
+    x.add(VasADBannerProcessor.class);
+    x.add(PushBannerProcessor.class);
+    x.add(QQWifiBannerProcessor.class);
+    x.add(RenewalsBannerProcessor.class);
+    x.add(ThemeVersionUpdateBannerProcessor.class);
+    x.add(ThemeOverdueBannerProcessor.class);
+    x.add(TimUpgradeBannerProcessor.class);
+    x.add(AutoStatusBannerProcessor.class);
+    x.add(VerifyPhoneBannerProcessor.class);
+    y = new ArrayList();
+    y.add(LoginDevicesBannerProcessor.class);
+    z = new ArrayList();
+    z.add(ComicBannerProcessor.class);
+    z.add(BrowserBannerProcessor.class);
+    z.add(GameCenterBannerProcessor.class);
+    z.add(GameBannerProcessor.class);
+    z.add(RunningBannerProcessor.class);
+    z.add(MsgProxyBannerProcessor.class);
+    z.add(GeneralBannerProcessor.class);
+    A = new ArrayList();
+    A.add(MusicPlayerBannerProcessor.class);
+    B = new ArrayList();
+    B.add(MultiVideoBannerProcessor.class);
+    B.add(QLinkTransingBannerProcessor.class);
+    C = new ArrayList();
+    C.add(MsgBackupBannerProcessor.class);
+    D = new ArrayList();
+    D.add(BeginnerGuideBannerProcessor.class);
   }
   
   public static BannerManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqBannerBannerManager == null) {
+    if (d == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqBannerBannerManager == null) {
-          jdField_a_of_type_ComTencentMobileqqBannerBannerManager = new BannerManager();
+        if (d == null) {
+          d = new BannerManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqBannerBannerManager;
+    return d;
   }
   
   private void a(Banner paramBanner)
   {
     if (paramBanner != null)
     {
-      if (paramBanner.jdField_a_of_type_AndroidViewView != null) {
+      if (paramBanner.c != null) {
         return;
       }
-      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramBanner.jdField_a_of_type_Int));
+      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.E.get(Integer.valueOf(paramBanner.a));
       if (localIBannerProcessor == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.recent.banner", 2, new Object[] { "initBannerView: key=", Integer.valueOf(paramBanner.jdField_a_of_type_Int), ", processor=null" });
+          QLog.d("Q.recent.banner", 2, new Object[] { "initBannerView: key=", Integer.valueOf(paramBanner.a), ", processor=null" });
         }
         return;
       }
-      paramBanner.jdField_a_of_type_AndroidViewView = localIBannerProcessor.a(paramBanner);
-      if ((paramBanner.jdField_a_of_type_AndroidViewView instanceof TipsBar)) {
-        a((TipsBar)paramBanner.jdField_a_of_type_AndroidViewView, localIBannerProcessor.a());
+      paramBanner.c = localIBannerProcessor.a(paramBanner);
+      if ((paramBanner.c instanceof TipsBar)) {
+        a((TipsBar)paramBanner.c, localIBannerProcessor.a());
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("Q.recent.banner", 2, new Object[] { "initBannerView | banner = ", paramBanner });
@@ -220,43 +217,43 @@ public class BannerManager
     }
     if (paramBanner != null)
     {
-      if (paramBanner.jdField_a_of_type_AndroidViewView == null) {
+      if (paramBanner.c == null) {
         return;
       }
-      TextHook.updateFont(paramBanner.jdField_a_of_type_AndroidViewView);
-      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramBanner.jdField_a_of_type_Int));
+      TextHook.updateFont(paramBanner.c);
+      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.E.get(Integer.valueOf(paramBanner.a));
       if (localIBannerProcessor == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.recent.banner", 2, new Object[] { "updateBanner: key=", Integer.valueOf(paramBanner.jdField_a_of_type_Int), ", processor=null" });
+          QLog.d("Q.recent.banner", 2, new Object[] { "updateBanner: key=", Integer.valueOf(paramBanner.a), ", processor=null" });
         }
         return;
       }
       localIBannerProcessor.a(paramBanner, paramMessage);
-      if ((paramBanner.jdField_a_of_type_AndroidViewView instanceof TipsBar)) {
-        a((TipsBar)paramBanner.jdField_a_of_type_AndroidViewView);
+      if ((paramBanner.c instanceof TipsBar)) {
+        a((TipsBar)paramBanner.c);
       }
     }
   }
   
   private void a(TipsBar paramTipsBar)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      String str = QQTheme.a();
-      if ((!QQTheme.e()) && (!QQTheme.d(str)))
+      String str = QQTheme.getCurrentThemeId();
+      if ((!QQTheme.isDefaultTheme()) && (!QQTheme.isThemeSimpleDayUI(str)))
       {
-        if (paramTipsBar.a() == 6) {
+        if (paramTipsBar.getBarType() == 6) {
           paramTipsBar.setBarType(2);
-        } else if (!QQTheme.a()) {
+        } else if (!QQTheme.isNowThemeIsNight()) {
           paramTipsBar.setBarType(2);
         }
       }
-      else if (paramTipsBar.a() == 2) {
+      else if (paramTipsBar.getBarType() == 2) {
         paramTipsBar.setBarType(6);
       }
     }
-    else if (paramTipsBar.a() == 6)
+    else if (paramTipsBar.getBarType() == 6)
     {
       paramTipsBar.setBarType(2);
     }
@@ -265,27 +262,13 @@ public class BannerManager
   
   private void a(TipsBar paramTipsBar, int paramInt)
   {
-    String str = QQTheme.a();
-    if ((paramInt == 2) && (this.jdField_a_of_type_Boolean) && ((QQTheme.e()) || (QQTheme.d(str))))
+    String str = QQTheme.getCurrentThemeId();
+    if ((paramInt == 2) && (this.c) && ((QQTheme.isDefaultTheme()) || (QQTheme.isThemeSimpleDayUI(str))))
     {
       paramTipsBar.setBarType(6);
       return;
     }
     paramTipsBar.setBarType(paramInt);
-  }
-  
-  private boolean a()
-  {
-    int i1 = 0;
-    while (i1 < 7)
-    {
-      List localList = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i1);
-      if (!((List)this.jdField_b_of_type_AndroidUtilSparseArray.get(i1)).equals(localList)) {
-        return false;
-      }
-      i1 += 1;
-    }
-    return true;
   }
   
   private boolean a(Banner paramBanner, boolean paramBoolean, Message paramMessage)
@@ -299,21 +282,21 @@ public class BannerManager
     a(paramBanner);
     try
     {
-      if ((paramBanner.jdField_a_of_type_AndroidViewView != null) && (!paramBanner.jdField_a_of_type_Boolean) && (!paramBoolean))
+      if ((paramBanner.c != null) && (!paramBanner.d) && (!paramBoolean))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.recent.banner", 2, "fight.addHeaderView_3.");
         }
-        Object localObject = this.jdField_h_of_type_JavaUtilArrayList.iterator();
+        Object localObject = this.F.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((IBannerOnAddToView)((Iterator)localObject).next()).a(paramBanner);
+          ((IBannerOnAddToView)((Iterator)localObject).next()).b(paramBanner);
         }
-        this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBanner.jdField_a_of_type_AndroidViewView, 1);
+        this.t.addHeaderView(paramBanner.c, 1);
         localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
         if (localObject != null) {
-          a((AppRuntime)localObject, paramBanner.jdField_a_of_type_Int);
+          a((AppRuntime)localObject, paramBanner.a);
         }
-        paramBanner.jdField_a_of_type_Boolean = true;
+        paramBanner.d = true;
       }
     }
     catch (Exception localException)
@@ -336,7 +319,7 @@ public class BannerManager
     Class<? extends IBannerProcessor> localClass = null;
     try
     {
-      paramClass = (IBannerProcessor)paramClass.getDeclaredConstructor(new Class[] { QBaseActivity.class }).newInstance(new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity });
+      paramClass = (IBannerProcessor)paramClass.getDeclaredConstructor(new Class[] { QBaseActivity.class }).newInstance(new Object[] { this.s });
       localClass = paramClass;
       paramClass = null;
     }
@@ -348,104 +331,25 @@ public class BannerManager
       }
       return false;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localClass.b()), localClass);
+    this.E.put(Integer.valueOf(localClass.b()), localClass);
     if ((localClass instanceof IBannerViewScroll)) {
-      this.jdField_k_of_type_JavaUtilArrayList.add((IBannerViewScroll)localClass);
+      this.I.add((IBannerViewScroll)localClass);
     }
     if ((localClass instanceof IBannerLifecycle)) {
-      this.jdField_j_of_type_JavaUtilArrayList.add((IBannerLifecycle)localClass);
+      this.H.add((IBannerLifecycle)localClass);
     }
     if ((localClass instanceof IBannerOnAddToView)) {
-      this.jdField_h_of_type_JavaUtilArrayList.add((IBannerOnAddToView)localClass);
+      this.F.add((IBannerOnAddToView)localClass);
     }
     if ((localClass instanceof IBannerOnUpdateBannerState)) {
-      this.jdField_i_of_type_JavaUtilArrayList.add((IBannerOnUpdateBannerState)localClass);
+      this.G.add((IBannerOnUpdateBannerState)localClass);
     }
     return true;
-  }
-  
-  private boolean b()
-  {
-    int i1 = 0;
-    while (i1 < 7)
-    {
-      if (!((List)this.jdField_b_of_type_AndroidUtilSparseArray.get(i1)).isEmpty()) {
-        return false;
-      }
-      i1 += 1;
-    }
-    return true;
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_k_of_type_JavaUtilArrayList.clear();
-    this.jdField_j_of_type_JavaUtilArrayList.clear();
-    this.jdField_h_of_type_JavaUtilArrayList.clear();
-    this.jdField_i_of_type_JavaUtilArrayList.clear();
-    jdField_c_of_type_Int = 1;
-    jdField_d_of_type_Int = jdField_c_of_type_Int;
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (a((Class)localIterator.next())) {
-        jdField_d_of_type_Int += 1;
-      }
-    }
-    jdField_e_of_type_Int = jdField_d_of_type_Int;
-    jdField_f_of_type_Int = jdField_e_of_type_Int;
-    localIterator = jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (a((Class)localIterator.next())) {
-        jdField_f_of_type_Int += 1;
-      }
-    }
-    jdField_a_of_type_Int = jdField_f_of_type_Int;
-    jdField_b_of_type_Int = jdField_a_of_type_Int;
-    localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (a((Class)localIterator.next())) {
-        jdField_b_of_type_Int += 1;
-      }
-    }
-    jdField_g_of_type_Int = jdField_b_of_type_Int;
-    jdField_h_of_type_Int = jdField_g_of_type_Int;
-    localIterator = jdField_d_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (a((Class)localIterator.next())) {
-        jdField_h_of_type_Int += 1;
-      }
-    }
-    jdField_i_of_type_Int = jdField_h_of_type_Int;
-    jdField_j_of_type_Int = jdField_i_of_type_Int;
-    localIterator = jdField_e_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (a((Class)localIterator.next())) {
-        jdField_j_of_type_Int += 1;
-      }
-    }
-    jdField_k_of_type_Int = jdField_j_of_type_Int;
-    l = jdField_k_of_type_Int;
-    localIterator = jdField_f_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (a((Class)localIterator.next())) {
-        l += 1;
-      }
-    }
-    m = l;
-    n = m;
-    localIterator = jdField_g_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (a((Class)localIterator.next())) {
-        n += 1;
-      }
-    }
-    o = n;
   }
   
   private void c(int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    Object localObject = this.s;
     if (localObject != null) {
       localObject = ((QBaseActivity)localObject).getAppRuntime();
     } else {
@@ -467,7 +371,7 @@ public class BannerManager
     int i1 = 0;
     while (i1 < 7)
     {
-      Object localObject1 = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(i1);
+      Object localObject1 = (ArrayList)this.v.get(i1);
       if (localObject1 != null)
       {
         Iterator localIterator = ((ArrayList)localObject1).iterator();
@@ -475,7 +379,7 @@ public class BannerManager
         while (localIterator.hasNext())
         {
           int i2 = ((Integer)localIterator.next()).intValue();
-          Banner localBanner = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner[i2];
+          Banner localBanner = this.u[i2];
           Object localObject2 = null;
           if (paramMessage == null) {
             localObject1 = null;
@@ -503,31 +407,124 @@ public class BannerManager
   
   private void d()
   {
+    this.E.clear();
+    this.I.clear();
+    this.H.clear();
+    this.F.clear();
+    this.G.clear();
+    f = 1;
+    g = f;
+    Iterator localIterator = x.iterator();
+    while (localIterator.hasNext()) {
+      if (a((Class)localIterator.next())) {
+        g += 1;
+      }
+    }
+    h = g;
+    i = h;
+    localIterator = y.iterator();
+    while (localIterator.hasNext()) {
+      if (a((Class)localIterator.next())) {
+        i += 1;
+      }
+    }
+    a = i;
+    b = a;
+    localIterator = z.iterator();
+    while (localIterator.hasNext()) {
+      if (a((Class)localIterator.next())) {
+        b += 1;
+      }
+    }
+    j = b;
+    k = j;
+    localIterator = A.iterator();
+    while (localIterator.hasNext()) {
+      if (a((Class)localIterator.next())) {
+        k += 1;
+      }
+    }
+    l = k;
+    m = l;
+    localIterator = B.iterator();
+    while (localIterator.hasNext()) {
+      if (a((Class)localIterator.next())) {
+        m += 1;
+      }
+    }
+    n = m;
+    o = n;
+    localIterator = C.iterator();
+    while (localIterator.hasNext()) {
+      if (a((Class)localIterator.next())) {
+        o += 1;
+      }
+    }
+    p = o;
+    q = p;
+    localIterator = D.iterator();
+    while (localIterator.hasNext()) {
+      if (a((Class)localIterator.next())) {
+        q += 1;
+      }
+    }
+    r = q;
+  }
+  
+  private boolean e()
+  {
     int i1 = 0;
     while (i1 < 7)
     {
-      ArrayList localArrayList = (ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(i1);
+      List localList = (List)this.v.get(i1);
+      if (!((List)this.w.get(i1)).equals(localList)) {
+        return false;
+      }
+      i1 += 1;
+    }
+    return true;
+  }
+  
+  private boolean f()
+  {
+    int i1 = 0;
+    while (i1 < 7)
+    {
+      if (!((List)this.w.get(i1)).isEmpty()) {
+        return false;
+      }
+      i1 += 1;
+    }
+    return true;
+  }
+  
+  private void g()
+  {
+    int i1 = 0;
+    while (i1 < 7)
+    {
+      ArrayList localArrayList = (ArrayList)this.w.get(i1);
       if (localArrayList != null) {
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(i1, new ArrayList(localArrayList));
+        this.v.put(i1, new ArrayList(localArrayList));
       }
       i1 += 1;
     }
   }
   
-  private void e()
+  private void h()
   {
-    if (this.jdField_b_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray(7);
+    if (this.w == null) {
+      this.w = new SparseArray(7);
     }
     int i1 = 0;
     Object localObject;
     while (i1 < 7)
     {
-      localObject = (ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(i1);
+      localObject = (ArrayList)this.w.get(i1);
       if (localObject == null)
       {
         localObject = new ArrayList(1);
-        this.jdField_b_of_type_AndroidUtilSparseArray.put(i1, localObject);
+        this.w.put(i1, localObject);
       }
       else
       {
@@ -535,99 +532,99 @@ public class BannerManager
       }
       i1 += 1;
     }
-    i1 = jdField_c_of_type_Int;
-    while (i1 < jdField_d_of_type_Int)
+    i1 = f;
+    while (i1 < g)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      localObject = this.u;
       if ((localObject[i1] != null) && (localObject[i1].a())) {
-        ((ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(0)).add(Integer.valueOf(i1));
+        ((ArrayList)this.w.get(0)).add(Integer.valueOf(i1));
       }
       i1 += 1;
     }
-    i1 = jdField_e_of_type_Int;
-    while (i1 < jdField_f_of_type_Int)
+    i1 = h;
+    while (i1 < i)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      localObject = this.u;
       if ((localObject[i1] != null) && (localObject[i1].a())) {
-        ((ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(1)).add(Integer.valueOf(i1));
+        ((ArrayList)this.w.get(1)).add(Integer.valueOf(i1));
       }
       i1 += 1;
     }
-    i1 = jdField_a_of_type_Int;
-    while (i1 < jdField_b_of_type_Int)
+    i1 = a;
+    while (i1 < b)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      localObject = this.u;
       if ((localObject[i1] != null) && (localObject[i1].a())) {
-        ((ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(2)).add(Integer.valueOf(i1));
+        ((ArrayList)this.w.get(2)).add(Integer.valueOf(i1));
       }
       i1 += 1;
     }
-    i1 = jdField_g_of_type_Int;
-    while (i1 < jdField_h_of_type_Int)
+    i1 = j;
+    while (i1 < k)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      localObject = this.u;
       if ((localObject[i1] != null) && (localObject[i1].a())) {
-        ((ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(3)).add(Integer.valueOf(i1));
+        ((ArrayList)this.w.get(3)).add(Integer.valueOf(i1));
       }
       i1 += 1;
     }
-    i1 = jdField_i_of_type_Int;
-    while (i1 < jdField_j_of_type_Int)
+    i1 = l;
+    while (i1 < m)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      localObject = this.u;
       if ((localObject[i1] != null) && (localObject[i1].a())) {
-        ((ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(4)).add(Integer.valueOf(i1));
+        ((ArrayList)this.w.get(4)).add(Integer.valueOf(i1));
       }
       i1 += 1;
     }
-    i1 = jdField_k_of_type_Int;
-    while (i1 < l)
+    i1 = n;
+    while (i1 < o)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      localObject = this.u;
       if ((localObject[i1] != null) && (localObject[i1].a())) {
-        ((ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(5)).add(Integer.valueOf(i1));
+        ((ArrayList)this.w.get(5)).add(Integer.valueOf(i1));
       }
       i1 += 1;
     }
-    i1 = m;
-    while (i1 < n)
+    i1 = p;
+    while (i1 < q)
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      localObject = this.u;
       if ((localObject[i1] != null) && (localObject[i1].a())) {
-        ((ArrayList)this.jdField_b_of_type_AndroidUtilSparseArray.get(6)).add(Integer.valueOf(i1));
+        ((ArrayList)this.w.get(6)).add(Integer.valueOf(i1));
       }
       i1 += 1;
     }
   }
   
-  private void f()
+  private void i()
   {
     int i1 = 0;
     while (i1 < 7)
     {
-      Object localObject = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(i1);
+      Object localObject = (ArrayList)this.v.get(i1);
       if ((localObject != null) && (((ArrayList)localObject).size() != 0))
       {
         Iterator localIterator = ((ArrayList)localObject).iterator();
         while (localIterator.hasNext())
         {
           int i2 = ((Integer)localIterator.next()).intValue();
-          Banner localBanner = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner[i2];
-          if ((localBanner != null) && (localBanner.jdField_a_of_type_AndroidViewView != null) && (localBanner.jdField_a_of_type_Boolean))
+          Banner localBanner = this.u[i2];
+          if ((localBanner != null) && (localBanner.c != null) && (localBanner.d))
           {
-            this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(localBanner.jdField_a_of_type_AndroidViewView);
-            localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+            this.t.removeHeaderView(localBanner.c);
+            localObject = this.s;
             if (localObject != null) {
               localObject = ((QBaseActivity)localObject).getAppRuntime();
             } else {
               localObject = null;
             }
             if (localObject != null) {
-              b((AppRuntime)localObject, localBanner.jdField_a_of_type_Int);
+              b((AppRuntime)localObject, localBanner.a);
             }
-            localBanner.jdField_a_of_type_Boolean = false;
+            localBanner.d = false;
             if (!localBanner.a()) {
-              localBanner.jdField_a_of_type_AndroidViewView = null;
+              localBanner.c = null;
             }
           }
         }
@@ -636,79 +633,39 @@ public class BannerManager
     }
   }
   
-  public int a(int paramInt)
-  {
-    if (!jdField_b_of_type_Boolean) {
-      return 0;
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      Banner[] arrayOfBanner = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
-      localObject1 = localObject2;
-      if (paramInt < arrayOfBanner.length) {
-        localObject1 = arrayOfBanner[paramInt];
-      }
-    }
-    if (localObject1 == null) {
-      return 0;
-    }
-    return localObject1.jdField_b_of_type_Int;
-  }
-  
   @Nullable
   public Banner a(int paramInt)
   {
-    if (!jdField_b_of_type_Boolean) {
+    if (!e) {
       return null;
     }
-    return this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner[paramInt];
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      int i1 = ((Integer)localIterator.next()).intValue();
-      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i1));
-      if (localIBannerProcessor == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.recent.banner", 2, new Object[] { "onAccountChanged: key=", Integer.valueOf(i1), ", processor=null" });
-        }
-        return;
-      }
-      localIBannerProcessor.a();
-    }
-    a(-1, null);
+    return this.u[paramInt];
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (!jdField_b_of_type_Boolean) {
+    if (!e) {
       return;
     }
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = String.valueOf(paramInt1);
-      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.E.get(Integer.valueOf(paramInt1));
       if (localIBannerProcessor != null) {
         localObject = localIBannerProcessor.getClass().getSimpleName();
       }
       QLog.d("Q.recent.banner", 2, new Object[] { "updateBannerState|[", localObject, ",", Integer.valueOf(paramInt2), "]" });
     }
-    if ((paramInt1 >= 1) && (paramInt1 < o))
+    if ((paramInt1 >= 1) && (paramInt1 < r))
     {
-      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      localObject = this.u;
       if (localObject[paramInt1] != null) {
-        localObject[paramInt1].jdField_b_of_type_Int = paramInt2;
+        localObject[paramInt1].b = paramInt2;
       } else if ((localObject[paramInt1] == null) && (Banner.a(paramInt2))) {
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner[paramInt1] = new Banner(paramInt1, paramInt2);
+        this.u[paramInt1] = new Banner(paramInt1, paramInt2);
       }
-      localObject = this.jdField_i_of_type_JavaUtilArrayList.iterator();
+      localObject = this.G.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((IBannerOnUpdateBannerState)((Iterator)localObject).next()).a(paramInt1, paramInt2);
       }
@@ -718,7 +675,7 @@ public class BannerManager
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!jdField_b_of_type_Boolean) {
+    if (!e) {
       return;
     }
     Message localMessage = Message.obtain();
@@ -745,7 +702,7 @@ public class BannerManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, new Object[] { "updateStateAndRefreshBanner: [", Integer.valueOf(paramInt1), ", ", Integer.valueOf(paramInt2), "]" });
     }
-    if (!jdField_b_of_type_Boolean)
+    if (!e)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent.banner", 2, "updateStateAndRefreshBanner !sInit");
@@ -769,7 +726,7 @@ public class BannerManager
     if (QLog.isColorLevel())
     {
       String str = String.valueOf(paramInt);
-      Object localObject1 = (IBannerProcessor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+      Object localObject1 = (IBannerProcessor)this.E.get(Integer.valueOf(paramInt));
       if (localObject1 != null) {
         str = localObject1.getClass().getSimpleName();
       }
@@ -784,7 +741,7 @@ public class BannerManager
       }
       QLog.d("Q.recent.banner", 2, new Object[] { "refreshBanner: [", str, ", ", localObject1, ", ", localObject2, "]" });
     }
-    if (!jdField_b_of_type_Boolean)
+    if (!e)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent.banner", 2, "refreshBanner !sInit");
@@ -799,9 +756,9 @@ public class BannerManager
       ThreadManagerV2.getUIHandlerV2().post(new BannerManager.1(this, paramInt, paramMessage));
       return;
     }
-    e();
-    boolean bool1 = a();
-    boolean bool2 = b();
+    h();
+    boolean bool1 = e();
+    boolean bool2 = f();
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, new Object[] { "[refresh] refreshBanner: invoked. ", " isToShowBannersEmpty: ", Boolean.valueOf(bool2), " isBannersEqual: ", Boolean.valueOf(bool1) });
     }
@@ -810,13 +767,13 @@ public class BannerManager
     }
     if (bool2)
     {
-      f();
+      i();
       return;
     }
     if (!bool1)
     {
-      f();
-      d();
+      i();
+      g();
     }
     c(paramInt, paramMessage);
   }
@@ -831,14 +788,14 @@ public class BannerManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, new Object[] { "transitMessage: bannerId=", Integer.valueOf(paramInt), ", msg.what=", Integer.valueOf(paramMessage.what) });
     }
-    if (!jdField_b_of_type_Boolean)
+    if (!e)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent.banner", 2, "transitMessage !sInit");
       }
       return;
     }
-    IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.E.get(Integer.valueOf(paramInt));
     if (localIBannerProcessor == null)
     {
       if (QLog.isColorLevel()) {
@@ -856,11 +813,11 @@ public class BannerManager
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent.banner", 2, new Object[] { "bind, QBaseActivity:", paramQBaseActivity });
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-      this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-      c();
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner = new Banner[o];
-      jdField_b_of_type_Boolean = true;
+      this.s = paramQBaseActivity;
+      this.t = paramXListView;
+      d();
+      this.u = new Banner[r];
+      e = true;
       return;
     }
     finally {}
@@ -868,11 +825,11 @@ public class BannerManager
   
   public void a(AppRuntime paramAppRuntime)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Iterator localIterator = this.E.keySet().iterator();
     while (localIterator.hasNext())
     {
       int i1 = ((Integer)localIterator.next()).intValue();
-      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i1));
+      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.E.get(Integer.valueOf(i1));
       if (localIBannerProcessor == null)
       {
         if (QLog.isColorLevel()) {
@@ -896,46 +853,47 @@ public class BannerManager
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
-  public boolean a(int paramInt)
+  public int b(int paramInt)
   {
-    boolean bool1 = jdField_b_of_type_Boolean;
-    boolean bool2 = false;
-    if (!bool1) {
-      return false;
+    if (!e) {
+      return 0;
     }
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (paramInt >= 0)
     {
-      Banner[] arrayOfBanner = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      Banner[] arrayOfBanner = this.u;
       localObject1 = localObject2;
       if (paramInt < arrayOfBanner.length) {
         localObject1 = arrayOfBanner[paramInt];
       }
     }
-    bool1 = bool2;
-    if (localObject1 != null)
-    {
-      bool1 = bool2;
-      if (localObject1.a()) {
-        bool1 = true;
-      }
+    if (localObject1 == null) {
+      return 0;
     }
-    return bool1;
+    return localObject1.b;
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 1, "onResume");
+    Iterator localIterator = this.E.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      int i1 = ((Integer)localIterator.next()).intValue();
+      IBannerProcessor localIBannerProcessor = (IBannerProcessor)this.E.get(Integer.valueOf(i1));
+      if (localIBannerProcessor == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.recent.banner", 2, new Object[] { "onAccountChanged: key=", Integer.valueOf(i1), ", processor=null" });
+        }
+        return;
+      }
+      localIBannerProcessor.c();
     }
-    Iterator localIterator = this.jdField_j_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((IBannerLifecycle)localIterator.next()).b();
-    }
+    a(-1, null);
   }
   
   public void b(int paramInt1, int paramInt2)
@@ -957,7 +915,7 @@ public class BannerManager
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent.banner", 2, "onDestroy");
       }
-      Iterator localIterator = this.jdField_j_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.H.iterator();
       while (localIterator.hasNext()) {
         ((IBannerLifecycle)localIterator.next()).a(paramAppRuntime);
       }
@@ -968,15 +926,15 @@ public class BannerManager
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent.banner", 2, "onDestroy", paramAppRuntime);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = null;
-      this.jdField_a_of_type_ComTencentWidgetXListView = null;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_k_of_type_JavaUtilArrayList.clear();
-      this.jdField_j_of_type_JavaUtilArrayList.clear();
-      this.jdField_h_of_type_JavaUtilArrayList.clear();
-      this.jdField_i_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner = null;
-      jdField_b_of_type_Boolean = false;
+      this.s = null;
+      this.t = null;
+      this.E.clear();
+      this.I.clear();
+      this.H.clear();
+      this.F.clear();
+      this.G.clear();
+      this.u = null;
+      e = false;
     }
   }
   
@@ -992,15 +950,26 @@ public class BannerManager
   
   public void b(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_k_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.I.iterator();
     while (localIterator.hasNext()) {
       ((IBannerViewScroll)localIterator.next()).a(paramBoolean);
     }
   }
   
-  public boolean b(int paramInt)
+  public void c()
   {
-    boolean bool1 = jdField_b_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 1, "onResume");
+    }
+    Iterator localIterator = this.H.iterator();
+    while (localIterator.hasNext()) {
+      ((IBannerLifecycle)localIterator.next()).d();
+    }
+  }
+  
+  public boolean c(int paramInt)
+  {
+    boolean bool1 = e;
     boolean bool2 = false;
     if (!bool1) {
       return false;
@@ -1009,7 +978,7 @@ public class BannerManager
     Object localObject1 = localObject2;
     if (paramInt >= 0)
     {
-      Banner[] arrayOfBanner = this.jdField_a_of_type_ArrayOfComTencentMobileqqBannerBanner;
+      Banner[] arrayOfBanner = this.u;
       localObject1 = localObject2;
       if (paramInt < arrayOfBanner.length) {
         localObject1 = arrayOfBanner[paramInt];
@@ -1019,7 +988,35 @@ public class BannerManager
     if (localObject1 != null)
     {
       bool1 = bool2;
-      if (localObject1.jdField_a_of_type_Boolean) {
+      if (localObject1.a()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    boolean bool1 = e;
+    boolean bool2 = false;
+    if (!bool1) {
+      return false;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
+    {
+      Banner[] arrayOfBanner = this.u;
+      localObject1 = localObject2;
+      if (paramInt < arrayOfBanner.length) {
+        localObject1 = arrayOfBanner[paramInt];
+      }
+    }
+    bool1 = bool2;
+    if (localObject1 != null)
+    {
+      bool1 = bool2;
+      if (localObject1.d) {
         bool1 = true;
       }
     }
@@ -1028,7 +1025,7 @@ public class BannerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.banner.BannerManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,23 +14,23 @@ import mqq.os.MqqHandler;
 public class AIOJubaoDialogHelper
   implements DialogGenerator, ILifeCycleHelper
 {
-  Dialog jdField_a_of_type_AndroidAppDialog;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  Dialog a;
   Dialog b;
   Dialog c;
   Dialog d;
+  private final Context e;
+  private final BaseActivity f;
+  private final SessionInfo g;
+  private final QQAppInterface h;
+  private final BaseChatPie i;
   
   public AIOJubaoDialogHelper(HelperProvider paramHelperProvider, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.e = paramBaseChatPie.e;
+    this.f = paramBaseChatPie.aX();
+    this.g = paramBaseChatPie.ah;
+    this.h = paramBaseChatPie.d;
+    this.i = paramBaseChatPie;
     paramHelperProvider.a(this);
   }
   
@@ -41,47 +41,47 @@ public class AIOJubaoDialogHelper
     default: 
       return null;
     case 233: 
-      this.d = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131756189);
-      this.d.setContentView(2131562931);
-      localTextView1 = (TextView)this.d.findViewById(2131378475);
-      localObject = (ImageView)this.d.findViewById(2131368486);
-      localTextView1.setText(2131690750);
-      ((ImageView)localObject).setImageResource(2130839573);
+      this.d = new ReportDialog(this.e, 2131953338);
+      this.d.setContentView(2131629538);
+      localTextView1 = (TextView)this.d.findViewById(2131447089);
+      localObject = (ImageView)this.d.findViewById(2131435388);
+      localTextView1.setText(2131887670);
+      ((ImageView)localObject).setImageResource(2130839791);
       return this.d;
     case 232: 
-      this.c = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131756189);
-      this.c.setContentView(2131562931);
-      localTextView1 = (TextView)this.c.findViewById(2131378475);
-      localObject = (ImageView)this.c.findViewById(2131368486);
-      localTextView1.setText(2131690752);
-      ((ImageView)localObject).setImageResource(2130839588);
+      this.c = new ReportDialog(this.e, 2131953338);
+      this.c.setContentView(2131629538);
+      localTextView1 = (TextView)this.c.findViewById(2131447089);
+      localObject = (ImageView)this.c.findViewById(2131435388);
+      localTextView1.setText(2131887672);
+      ((ImageView)localObject).setImageResource(2130839806);
       return this.c;
     case 231: 
-      this.b = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131756189);
-      this.b.setContentView(2131558463);
-      ((TextView)this.b.findViewById(2131365644)).setText(2131718214);
+      this.b = new ReportDialog(this.e, 2131953338);
+      this.b.setContentView(2131623999);
+      ((TextView)this.b.findViewById(2131431876)).setText(2131915696);
       return this.b;
     }
-    this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext, 2131756189);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558978);
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365648);
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365644);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365633);
-    TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365639);
-    localTextView1.setText(2131718213);
-    ((TextView)localObject).setText(2131718211);
-    localTextView3.setText(2131718212);
+    this.a = new ReportDialog(this.e, 2131953338);
+    this.a.setContentView(2131624611);
+    TextView localTextView1 = (TextView)this.a.findViewById(2131431880);
+    Object localObject = (TextView)this.a.findViewById(2131431876);
+    TextView localTextView2 = (TextView)this.a.findViewById(2131431864);
+    TextView localTextView3 = (TextView)this.a.findViewById(2131431870);
+    localTextView1.setText(2131915695);
+    ((TextView)localObject).setText(2131915693);
+    localTextView3.setText(2131915694);
     localTextView3.setOnClickListener(new AIOJubaoDialogHelper.1(this));
-    localTextView2.setText(2131690728);
+    localTextView2.setText(2131887648);
     localTextView2.setOnClickListener(new AIOJubaoDialogHelper.2(this));
-    return this.jdField_a_of_type_AndroidAppDialog;
+    return this.a;
   }
   
   public void a()
   {
     Dialog localDialog = this.b;
     if ((localDialog != null) && (localDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(231);
+      this.f.dismissDialog(231);
     }
   }
   
@@ -90,7 +90,7 @@ public class AIOJubaoDialogHelper
     if ((paramInt != 232) && (paramInt != 233)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().postDelayed(new AIOJubaoDialogHelper.3(this), 1000L);
+    this.i.j().postDelayed(new AIOJubaoDialogHelper.3(this), 1000L);
   }
   
   public String getTag()
@@ -107,7 +107,7 @@ public class AIOJubaoDialogHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOJubaoDialogHelper
  * JD-Core Version:    0.7.0.1
  */

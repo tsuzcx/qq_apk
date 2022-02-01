@@ -9,15 +9,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 class BaseApi
 {
-  static ClassLoader jdField_a_of_type_JavaLangClassLoader = null;
-  static String jdField_a_of_type_JavaLangString = "com.tencent.xaction.openapi.api.impl.DynamicLoaderImpl";
-  static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
+  static String a = "com.tencent.xaction.openapi.api.impl.DynamicLoaderImpl";
+  static AtomicBoolean b = new AtomicBoolean(true);
+  static ClassLoader c = null;
   
   static IXAEngine a(Context paramContext)
   {
     try
     {
-      paramContext = jdField_a_of_type_JavaLangClassLoader.loadClass("com.tencent.xaction.impl.XAEngine").getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
+      paramContext = c.loadClass("com.tencent.xaction.impl.XAEngine").getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
     }
     catch (Exception paramContext)
     {
@@ -32,7 +32,7 @@ class BaseApi
     Object localObject2;
     try
     {
-      Object localObject1 = jdField_a_of_type_JavaLangClassLoader.loadClass("com.tencent.xaction.impl.XAGlobal").getConstructor(new Class[0]).newInstance(new Object[0]);
+      Object localObject1 = c.loadClass("com.tencent.xaction.impl.XAGlobal").getConstructor(new Class[0]).newInstance(new Object[0]);
     }
     catch (Exception localException)
     {
@@ -40,41 +40,6 @@ class BaseApi
       localObject2 = null;
     }
     return (IXAGlobal)localObject2;
-  }
-  
-  static void a()
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      try
-      {
-        if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          return;
-        }
-        Object localObject1 = jdField_a_of_type_JavaLangClassLoader;
-        if (localObject1 == null) {
-          try
-          {
-            localObject1 = (IDynamicLoader)XAApi.class.getClassLoader().loadClass(jdField_a_of_type_JavaLangString).newInstance();
-            ((IDynamicLoader)localObject1).loadSync();
-            if (((IDynamicLoader)localObject1).isLoaded()) {
-              jdField_a_of_type_JavaLangClassLoader = ((IDynamicLoader)localObject1).getClassLoader();
-            }
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  static boolean a()
-  {
-    return jdField_a_of_type_JavaLangClassLoader != null;
   }
   
   static IXAEngine b(Context paramContext)
@@ -104,10 +69,45 @@ class BaseApi
     }
     return null;
   }
+  
+  static boolean c()
+  {
+    return c != null;
+  }
+  
+  static void d()
+  {
+    if (b.get()) {
+      try
+      {
+        if (!b.get()) {
+          return;
+        }
+        Object localObject1 = c;
+        if (localObject1 == null) {
+          try
+          {
+            localObject1 = (IDynamicLoader)XAApi.class.getClassLoader().loadClass(a).newInstance();
+            ((IDynamicLoader)localObject1).loadSync();
+            if (((IDynamicLoader)localObject1).isLoaded()) {
+              c = ((IDynamicLoader)localObject1).getClassLoader();
+            }
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+        b.set(false);
+        return;
+      }
+      finally {}
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.openapi.BaseApi
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ class SubscribedListHeaderController$1$1
   
   public void a()
   {
-    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData();
-    ReadInJoyUtils.a(SubscribedListHeaderController.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerSubscribedListHeaderController$1.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerSubscribedListHeaderController).getContext(), str);
-    ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerSubscribedListHeaderController$1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    String str = this.a.getEventAttachedData();
+    ReadInJoyUtils.a(SubscribedListHeaderController.a(this.b.b).getContext(), str);
+    ProteusSupportUtil.a(this.b.a, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.SubscribedListHeaderController.1.1
  * JD-Core Version:    0.7.0.1
  */

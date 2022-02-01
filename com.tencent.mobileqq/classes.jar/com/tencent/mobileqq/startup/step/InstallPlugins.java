@@ -29,36 +29,31 @@ import mqq.app.MobileQQ;
 public class InstallPlugins
   extends Step
 {
-  public static InstallPlugins.QzoneInstallResult a;
-  public static InstallPlugins.ReportInfo a;
-  public static final String[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "qzone_plugin.apk", "qwallet_plugin.apk" };
-  }
+  public static final String[] a = { "qzone_plugin.apk", "qwallet_plugin.apk" };
+  public static InstallPlugins.ReportInfo b;
+  public static InstallPlugins.QzoneInstallResult c;
   
   public static void a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult != null)
+      if (c != null)
       {
         Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
         if (localObject1 != null)
         {
           localObject1 = ((AppRuntime)localObject1).getAccount();
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance((String)localObject1, "qzonePrePluginInstall", jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult.jdField_a_of_type_Boolean, jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult.jdField_a_of_type_Long, 0L, null, null);
+            StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance((String)localObject1, "qzonePrePluginInstall", c.a, c.b, 0L, null, null);
           }
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("install qzone:");
-          ((StringBuilder)localObject1).append(jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult.jdField_a_of_type_Boolean);
+          ((StringBuilder)localObject1).append(c.a);
           ((StringBuilder)localObject1).append(",cost:");
-          ((StringBuilder)localObject1).append(jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult.jdField_a_of_type_Long);
+          ((StringBuilder)localObject1).append(c.b);
           QLog.i("plugin_tag.InstallPlugins", 1, ((StringBuilder)localObject1).toString());
         }
-        jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult = null;
+        c = null;
       }
       return;
     }
@@ -71,7 +66,7 @@ public class InstallPlugins
     {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$ReportInfo != null)
+        if (b != null)
         {
           Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
           if (localObject1 != null)
@@ -80,21 +75,21 @@ public class InstallPlugins
             if (!TextUtils.isEmpty((CharSequence)localObject1))
             {
               HashMap localHashMap = new HashMap();
-              localHashMap.put("param_FailCode", String.valueOf(jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$ReportInfo.jdField_a_of_type_Int));
+              localHashMap.put("param_FailCode", String.valueOf(b.a));
               localHashMap.put("from", String.valueOf(paramInt));
               StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getApplication());
               Object localObject3 = new StringBuilder();
-              ((StringBuilder)localObject3).append(jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$ReportInfo.jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject3).append(b.c);
               ((StringBuilder)localObject3).append("ExtractInfo");
               localObject3 = ((StringBuilder)localObject3).toString();
-              if (jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$ReportInfo.jdField_a_of_type_Int != 0) {
+              if (b.a != 0) {
                 break label158;
               }
               bool = true;
-              localStatisticCollector.collectPerformance((String)localObject1, (String)localObject3, bool, jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$ReportInfo.b, 0L, localHashMap, null);
+              localStatisticCollector.collectPerformance((String)localObject1, (String)localObject3, bool, b.b, 0L, localHashMap, null);
             }
           }
-          jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$ReportInfo = null;
+          b = null;
         }
         else
         {
@@ -107,27 +102,9 @@ public class InstallPlugins
     }
   }
   
-  private static void a(String paramString)
-  {
-    try
-    {
-      File localFile1 = PluginUtils.getPluginInstallDir(BaseApplicationImpl.sApplication);
-      File localFile2 = new File(localFile1, paramString);
-      if (localFile2.exists()) {
-        localFile2.delete();
-      }
-      PluginInfoUtil.a(paramString, localFile1);
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("plugin_tag.InstallPlugins", 1, "", paramString);
-    }
-    QLog.d("plugin_tag.InstallPlugins", 1, "uninstallPlugin");
-  }
-  
   public static boolean a(String paramString)
   {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = a;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -154,7 +131,7 @@ public class InstallPlugins
       QLog.d("plugin_tag.InstallPlugins", 1, "dexLoaded");
       return true;
     }
-    a(paramString1);
+    b(paramString1);
     Object localObject1 = null;
     StringBuilder localStringBuilder;
     try
@@ -201,7 +178,7 @@ public class InstallPlugins
               paramString2.mState = 4;
               paramString2.mLength = localFile.length();
               paramString2.mInstalledPath = localFile.getAbsolutePath();
-              paramString2.mFingerPrint = PluginInstaller.a();
+              paramString2.mFingerPrint = PluginInstaller.c();
               PluginInfoUtil.a(paramString2, PluginUtils.getPluginInstallDir(localBaseApplicationImpl));
               QLog.d("plugin_tag.InstallPlugins", 1, "succ");
               return true;
@@ -213,7 +190,7 @@ public class InstallPlugins
             PluginStatic.removeClassLoader(paramString1);
           }
         }
-        a(paramString1);
+        b(paramString1);
       }
       catch (Exception paramString2)
       {
@@ -229,6 +206,24 @@ public class InstallPlugins
     return false;
   }
   
+  private static void b(String paramString)
+  {
+    try
+    {
+      File localFile1 = PluginUtils.getPluginInstallDir(BaseApplicationImpl.sApplication);
+      File localFile2 = new File(localFile1, paramString);
+      if (localFile2.exists()) {
+        localFile2.delete();
+      }
+      PluginInfoUtil.a(paramString, localFile1);
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("plugin_tag.InstallPlugins", 1, "", paramString);
+    }
+    QLog.d("plugin_tag.InstallPlugins", 1, "uninstallPlugin");
+  }
+  
   protected boolean doStep()
   {
     long l = System.currentTimeMillis();
@@ -239,7 +234,7 @@ public class InstallPlugins
     {
       QLog.i("plugin_tag.InstallPlugins", 1, "preinstall by pluginmanger");
       localObject1 = (IPluginManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.MGR_PLUGIN);
-      localObject3 = jdField_a_of_type_ArrayOfJavaLangString;
+      localObject3 = a;
       int j = localObject3.length;
       int i = 0;
       while (i < j)
@@ -285,9 +280,9 @@ public class InstallPlugins
       {
         QLog.d("plugin_tag.InstallPlugins", 1, "", localThrowable);
         QLog.i("plugin_tag.InstallPlugins", 1, "qzone");
-        jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult = new InstallPlugins.QzoneInstallResult();
-        jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult.jdField_a_of_type_Boolean = a("qzone_plugin.apk", "com.qzone.Foo");
-        jdField_a_of_type_ComTencentMobileqqStartupStepInstallPlugins$QzoneInstallResult.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+        c = new InstallPlugins.QzoneInstallResult();
+        c.a = a("qzone_plugin.apk", "com.qzone.Foo");
+        c.b = (System.currentTimeMillis() - l);
         QLog.i("plugin_tag.InstallPlugins", 1, "qwallet");
         a("qwallet_plugin.apk", "com.qwallet.utils.Foo");
       }
@@ -301,7 +296,7 @@ public class InstallPlugins
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InstallPlugins
  * JD-Core Version:    0.7.0.1
  */

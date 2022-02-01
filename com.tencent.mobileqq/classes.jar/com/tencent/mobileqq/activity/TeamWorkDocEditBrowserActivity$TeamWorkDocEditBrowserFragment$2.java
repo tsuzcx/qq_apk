@@ -30,14 +30,14 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$2
       if (i != 3) {
         return true;
       }
-      if ((this.a.getSwiftTitleUI().c != null) && (!this.a.getSwiftTitleUI().c.isEnabled())) {
-        this.a.getSwiftTitleUI().c.setEnabled(true);
+      if ((this.a.getSwiftTitleUI().f != null) && (!this.a.getSwiftTitleUI().f.isEnabled())) {
+        this.a.getSwiftTitleUI().f.setEnabled(true);
       }
-      QQToast.a(this.a.getQBaseActivity(), HardCodeUtil.a(2131714552), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.a.getQBaseActivity(), HardCodeUtil.a(2131912061), 0).show(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920));
       return true;
     }
-    if ((this.a.getSwiftTitleUI().c != null) && (!this.a.getSwiftTitleUI().c.isEnabled())) {
-      this.a.getSwiftTitleUI().c.setEnabled(true);
+    if ((this.a.getSwiftTitleUI().f != null) && (!this.a.getSwiftTitleUI().f.isEnabled())) {
+      this.a.getSwiftTitleUI().f.setEnabled(true);
     }
     Object localObject = (String)paramMessage.obj;
     if (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a))
@@ -53,9 +53,9 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$2
     paramMessage = new Bundle();
     paramMessage.putString("savedUrl", (String)localObject);
     localObject = (TeamWorkFileImportInfo)this.a.getIntent().getParcelableExtra("key_team_work_file_import_info");
-    if (((TeamWorkFileImportInfo)localObject).e == 3) {
+    if (((TeamWorkFileImportInfo)localObject).u == 3) {
       paramMessage.putInt("editType", 1);
-    } else if (((TeamWorkFileImportInfo)localObject).e == 6) {
+    } else if (((TeamWorkFileImportInfo)localObject).u == 6) {
       paramMessage.putInt("editType", 2);
     }
     if (this.a.getIntent().getParcelableExtra("key_team_work_file_import_info") != null) {
@@ -68,7 +68,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.2
  * JD-Core Version:    0.7.0.1
  */

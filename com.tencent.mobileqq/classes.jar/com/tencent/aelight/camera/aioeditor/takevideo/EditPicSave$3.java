@@ -12,23 +12,23 @@ class EditPicSave$3
   public void run()
   {
     Activity localActivity;
-    if (this.this$0.a == null) {
+    if (this.this$0.u == null) {
       localActivity = null;
     } else {
-      localActivity = this.this$0.a.getActivity();
+      localActivity = this.this$0.u.getActivity();
     }
     if ((localActivity != null) && (!localActivity.isFinishing()))
     {
       if ((Build.VERSION.SDK_INT > 16) && (localActivity.isDestroyed())) {
         return;
       }
-      EditPicSave.a(this.this$0).show();
+      EditPicSave.f(this.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicSave.3
  * JD-Core Version:    0.7.0.1
  */

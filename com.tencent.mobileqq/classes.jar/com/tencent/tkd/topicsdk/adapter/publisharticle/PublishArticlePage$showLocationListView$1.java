@@ -1,7 +1,6 @@
 package com.tencent.tkd.topicsdk.adapter.publisharticle;
 
 import com.tencent.tkd.topicsdk.bean.LocationInfo;
-import com.tencent.tkd.topicsdk.widget.AddLocationView;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -20,7 +19,9 @@ final class PublishArticlePage$showLocationListView$1
   
   public final void invoke(@Nullable LocationInfo paramLocationInfo)
   {
-    PublishArticlePage.a(this.this$0).setLocationInfo(paramLocationInfo);
+    PublishArticlePage.b(this.this$0, paramLocationInfo);
+    PublishArticlePage localPublishArticlePage = this.this$0;
+    PublishArticlePage.c(localPublishArticlePage, PublishArticlePage.a(localPublishArticlePage));
     boolean bool;
     if (paramLocationInfo != null) {
       bool = true;
@@ -32,7 +33,7 @@ final class PublishArticlePage$showLocationListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.showLocationListView.1
  * JD-Core Version:    0.7.0.1
  */

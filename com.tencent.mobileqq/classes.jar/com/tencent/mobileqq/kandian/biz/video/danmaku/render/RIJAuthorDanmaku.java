@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.kandian.biz.video.danmaku.render;
 
 import android.view.View;
-import com.tencent.mobileqq.danmaku.inject.DanmakuContext;
+import com.tencent.common.danmaku.inject.DanmakuContext;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJAuthorDanmaku;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJBaseDanmaku;", "danmakuContext", "Lcom/tencent/mobileqq/danmaku/inject/DanmakuContext;", "danmakuView", "Landroid/view/View;", "(Lcom/tencent/mobileqq/danmaku/inject/DanmakuContext;Landroid/view/View;)V", "getType", "", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJAuthorDanmaku;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJBaseDanmaku;", "danmakuContext", "Lcom/tencent/common/danmaku/inject/DanmakuContext;", "danmakuView", "Landroid/view/View;", "(Lcom/tencent/common/danmaku/inject/DanmakuContext;Landroid/view/View;)V", "getType", "", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJAuthorDanmaku
   extends RIJBaseDanmaku
 {
@@ -14,14 +14,14 @@ public final class RIJAuthorDanmaku
     super(paramDanmakuContext, paramView);
   }
   
-  public int a()
+  public int q()
   {
     return 19;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.render.RIJAuthorDanmaku
  * JD-Core Version:    0.7.0.1
  */

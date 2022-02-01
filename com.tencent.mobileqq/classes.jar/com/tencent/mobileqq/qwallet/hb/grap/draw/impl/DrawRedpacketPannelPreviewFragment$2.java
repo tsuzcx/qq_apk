@@ -10,18 +10,18 @@ class DrawRedpacketPannelPreviewFragment$2
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawRedpacketPannelPreviewFragment.getQBaseActivity() != null)
+    if (this.b.getQBaseActivity() != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawRedpacketPannelPreviewFragment.getQBaseActivity().isFinishing()) {
+      if (this.b.getQBaseActivity().isFinishing()) {
         return;
       }
-      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawRedpacketPannelPreviewFragment).post(new DrawRedpacketPannelPreviewFragment.2.1(this, paramBoolean));
+      DrawRedpacketPannelPreviewFragment.h(this.b).post(new DrawRedpacketPannelPreviewFragment.2.1(this, paramBoolean));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawRedpacketPannelPreviewFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,21 @@ class GaInviteLockActivity$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity$1.a.a != null)
+    if (this.b.b.N != null)
     {
-      GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity$1.a).clear();
-      Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      GaInviteLockActivity.a(this.b.b).clear();
+      Object localObject1 = this.a.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Memberinfo)((Iterator)localObject1).next();
-        if (((Memberinfo)localObject2).a != this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity$1.a.b) {
-          GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity$1.a).add(localObject2);
+        if (((Memberinfo)localObject2).a != this.b.b.c) {
+          GaInviteLockActivity.a(this.b.b).add(localObject2);
         }
       }
-      localObject1 = this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity$1.a;
+      localObject1 = this.b.b;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("InviteMemberObserverWithoutCache");
-      ((StringBuilder)localObject2).append(GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity$1.a).size());
+      ((StringBuilder)localObject2).append(GaInviteLockActivity.a(this.b.b).size());
       GaInviteLockActivity.a((GaInviteLockActivity)localObject1, ((StringBuilder)localObject2).toString());
     }
   }

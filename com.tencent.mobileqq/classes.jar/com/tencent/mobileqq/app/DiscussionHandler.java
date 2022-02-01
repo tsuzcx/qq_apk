@@ -107,31 +107,31 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class DiscussionHandler
   extends BusinessHandler
 {
-  private long jdField_a_of_type_Long = 0L;
-  private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private GroupIconHelper jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper;
-  private ArrayList<Pair<Boolean, String>> jdField_a_of_type_JavaUtilArrayList = null;
-  private LinkedHashMap<String, DiscussionHandler.ReqDiscussInfo> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(100);
-  private long jdField_b_of_type_Long = 0L;
-  private LinkedHashMap<String, DiscussionHandler.ReqDiscussInfo> jdField_b_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private LinkedHashMap<String, DiscussionHandler.ReqDiscussInfo> a = new LinkedHashMap(100);
+  private FriendListHandler b;
+  private GroupIconHelper c;
+  private LinkedHashMap<String, DiscussionHandler.ReqDiscussInfo> d = new LinkedHashMap();
+  private long e = 0L;
+  private long f = 0L;
+  private ArrayList<Pair<Boolean, String>> g = null;
+  private QQAppInterface h;
   
   DiscussionHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper = new GroupIconHelper(paramQQAppInterface.getCurrentAccountUin(), this);
+    this.h = paramQQAppInterface;
+    this.b = ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
+    this.c = new GroupIconHelper(paramQQAppInterface.getCurrentAccountUin(), this);
   }
   
   DiscussionHandler(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.h = paramQQAppInterface;
     if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
+      this.b = ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper = new GroupIconHelper(paramQQAppInterface.getCurrentAccountUin(), this);
+    this.c = new GroupIconHelper(paramQQAppInterface.getCurrentAccountUin(), this);
   }
   
   private DiscussionMemberInfo a(DiscussionInfo paramDiscussionInfo, cmd0x58b.ConfMemberInfo paramConfMemberInfo)
@@ -149,10 +149,10 @@ public class DiscussionHandler
         localDiscussionMemberInfo.inteRemarkSource = paramConfMemberInfo.uint32_interemark_source.get();
         return localDiscussionMemberInfo;
       }
-      paramDiscussionInfo = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      paramDiscussionInfo = (FriendsManager)this.h.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (paramDiscussionInfo != null)
       {
-        paramDiscussionInfo = paramDiscussionInfo.b(localDiscussionMemberInfo.memberUin);
+        paramDiscussionInfo = paramDiscussionInfo.c(localDiscussionMemberInfo.memberUin);
         if ((paramDiscussionInfo != null) && (paramDiscussionInfo.isFriend()))
         {
           localDiscussionMemberInfo.memberName = paramDiscussionInfo.name;
@@ -178,23 +178,23 @@ public class DiscussionHandler
       switch (paramInt)
       {
       default: 
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131691776);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131888738);
         break;
       case 102: 
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131691777);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131888739);
         break;
       case 101: 
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131691780);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131888742);
         break;
       case 100: 
       case 103: 
       case 104: 
       case 105: 
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131691779);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131888741);
         break;
       }
     } else {
-      str = BaseApplicationImpl.getApplication().getResources().getString(2131691778);
+      str = BaseApplicationImpl.getApplication().getResources().getString(2131888740);
     }
     ThreadManager.getUIHandler().post(new DiscussionHandler.1(this, str));
   }
@@ -217,9 +217,9 @@ public class DiscussionHandler
       localStringBuilder.append(MessageRecordUtil.a(paramString));
       QLog.d("DiscussionHandler", 2, localStringBuilder.toString());
     }
-    paramString = (MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER);
-    if (!MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, false)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord, String.valueOf(paramLong1));
+    paramString = (MessageHandler)this.h.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER);
+    if (!MessageHandlerUtils.a(this.h, localMessageRecord, false)) {
+      this.h.getMessageFacade().a(localMessageRecord, String.valueOf(paramLong1));
     }
   }
   
@@ -389,8 +389,8 @@ public class DiscussionHandler
   {
     HashMap localHashMap = new HashMap();
     long l = System.currentTimeMillis();
-    Map localMap = paramDiscussionManager.a(paramString);
-    QAVHrMeeting.a("handleGetDiscussInfoRespV2", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDiscussionInfo);
+    Map localMap = paramDiscussionManager.b(paramString);
+    QAVHrMeeting.a("handleGetDiscussInfoRespV2", this.h, paramDiscussionInfo);
     StringBuffer localStringBuffer = new StringBuffer();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
@@ -428,7 +428,7 @@ public class DiscussionHandler
       }
       else if (TextUtils.isEmpty(((DiscussionMemberInfo)localObject).inteRemark))
       {
-        paramList = paramFriendsManager.b(((DiscussionMemberInfo)localObject).memberUin);
+        paramList = paramFriendsManager.c(((DiscussionMemberInfo)localObject).memberUin);
         if ((paramList != null) && (paramList.isFriend()))
         {
           ((DiscussionMemberInfo)localObject).memberName = paramList.name;
@@ -445,19 +445,19 @@ public class DiscussionHandler
           ((DiscussionMemberInfo)localObject).inteRemarkSource = 0L;
         }
       }
-      QAVHrMeeting.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDiscussionInfo, (DiscussionMemberInfo)localObject);
+      QAVHrMeeting.a(this.h, paramDiscussionInfo, (DiscussionMemberInfo)localObject);
       localHashMap.put(((DiscussionMemberInfo)localObject).memberUin, localObject);
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.contacttab.dscs", 2, localStringBuffer.toString());
     }
     paramDiscussionManager.a(paramString, paramDiscussionInfo, paramConfBaseInfo.uint32_info_seq.get(), localHashMap, l);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper.c(paramDiscussionInfo.uin);
+    this.c.c(paramDiscussionInfo.uin);
   }
   
   private void a(ArrayList<Object> paramArrayList, int paramInt1, String paramString1, List<cmd0x58b.ConfMemberInfo> paramList, long paramLong1, long paramLong2, int paramInt2, String paramString2, DiscussionManager paramDiscussionManager, DiscussionInfo paramDiscussionInfo)
   {
-    Map localMap = paramDiscussionManager.a(paramString1);
+    Map localMap = paramDiscussionManager.b(paramString1);
     paramArrayList.set(paramInt1 * 2 + 1, Boolean.valueOf(a(paramDiscussionInfo, paramList, localMap)));
     long l = paramInt2;
     if ((l & 0x40) == 0L)
@@ -495,13 +495,13 @@ public class DiscussionHandler
       }
       paramDiscussionInfo.DiscussionFlag = l;
       paramDiscussionInfo.DiscussionFlag |= 0x20000000;
-      ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramDiscussionInfo, localMap, false);
+      ContactUtils.a(this.h, paramString1, paramDiscussionInfo, localMap, false);
     }
     paramInt1 = 1;
     label243:
     if ((paramLong1 != paramDiscussionInfo.mOrigin) || (paramLong2 != paramDiscussionInfo.mOriginExtra))
     {
-      if (QQAudioHelper.c())
+      if (QQAudioHelper.f())
       {
         paramArrayList = new StringBuilder();
         paramArrayList.append("handleGetDiscussInfoRespV2, update mOrigin[");
@@ -532,10 +532,10 @@ public class DiscussionHandler
       while (paramArrayList.hasNext())
       {
         Long localLong = (Long)paramArrayList.next();
-        DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = (DiscussionHandler.ReqDiscussInfo)this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(String.valueOf(localLong));
+        DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = (DiscussionHandler.ReqDiscussInfo)this.a.remove(String.valueOf(localLong));
         if (localReqDiscussInfo != null)
         {
-          localReqDiscussInfo.jdField_a_of_type_Int += 1;
+          localReqDiscussInfo.b += 1;
           paramHashMap.put(String.valueOf(localLong), localReqDiscussInfo);
           paramArrayList1.add(String.valueOf(localLong));
           paramArrayList1.add(Boolean.valueOf(false));
@@ -544,14 +544,9 @@ public class DiscussionHandler
     }
   }
   
-  private boolean a()
-  {
-    return this.jdField_b_of_type_JavaUtilLinkedHashMap.size() > 0;
-  }
-  
   private boolean a(DiscussionInfo paramDiscussionInfo, List<cmd0x58b.ConfMemberInfo> paramList, Map<String, DiscussionMemberInfo> paramMap)
   {
-    DiscussionManager localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    DiscussionManager localDiscussionManager = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     ArrayList localArrayList = new ArrayList();
     long l;
     if ((paramList != null) && (paramMap != null))
@@ -603,39 +598,9 @@ public class DiscussionHandler
     return false;
   }
   
-  private boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg.getResultCode() == 1002)
-    {
-      int i = paramToServiceMsg.extraData.getInt("retryTime", 0);
-      if (i < 1)
-      {
-        paramToServiceMsg.extraData.putInt("retryTime", i + 1);
-        send(paramToServiceMsg);
-        return true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DiscussionHandler", 2, "handleCheckIsDiscussionMemberTimeoutOrErrorResult retry timeout!");
-      }
-      return true;
-    }
-    if (paramFromServiceMsg.getResultCode() != 1000)
-    {
-      if (QLog.isColorLevel())
-      {
-        paramToServiceMsg = new StringBuilder();
-        paramToServiceMsg.append("handleCheckIsDiscussionMemberTimeoutOrErrorResult failCode:");
-        paramToServiceMsg.append(paramFromServiceMsg.getResultCode());
-        QLog.d("DiscussionHandler", 2, paramToServiceMsg.toString());
-      }
-      return true;
-    }
-    return false;
-  }
-  
   private boolean a(boolean paramBoolean, List<cmd0x58a.ConfBaseInfo> paramList, List<Long> paramList1)
   {
-    Object localObject2 = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
+    Object localObject2 = ((DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b();
     Object localObject1 = new HashMap(((ArrayList)localObject2).size());
     localObject2 = ((ArrayList)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -689,7 +654,7 @@ public class DiscussionHandler
         }
       }
     }
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache();
+    paramList = this.h.getMsgCache();
     paramList1 = new StringBuilder(100);
     paramList1.append("need delete dis ");
     localObject1 = ((HashMap)localObject1).keySet().iterator();
@@ -699,8 +664,8 @@ public class DiscussionHandler
       paramList1.append((String)localObject4);
       paramList1.append(";");
       a((String)localObject4);
-      if (paramList.b((String)localObject4) != null) {
-        paramList.d((String)localObject4);
+      if (paramList.I((String)localObject4) != null) {
+        paramList.H((String)localObject4);
       }
     }
     if (QLog.isColorLevel()) {
@@ -730,6 +695,11 @@ public class DiscussionHandler
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     notifyUI(1000, false, null);
+  }
+  
+  private boolean e()
+  {
+    return this.d.size() > 0;
   }
   
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -993,9 +963,9 @@ public class DiscussionHandler
   private void s(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     paramObject = (DiscussionReceiver.RespPackage)paramObject;
-    Object localObject1 = (RespGetDiscussInteRemark)paramObject.b;
+    Object localObject1 = (RespGetDiscussInteRemark)paramObject.c;
     long l = ((RespGetDiscussInteRemark)localObject1).DiscussUin;
-    paramToServiceMsg = (DiscussRespHeader)paramObject.jdField_a_of_type_JavaLangObject;
+    paramToServiceMsg = (DiscussRespHeader)paramObject.b;
     Object localObject2;
     if (QLog.isColorLevel())
     {
@@ -1016,11 +986,11 @@ public class DiscussionHandler
       notifyUI(1010, false, Long.valueOf(l));
       return;
     }
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject.jdField_a_of_type_Boolean))
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject.a))
     {
       paramToServiceMsg = ((RespGetDiscussInteRemark)localObject1).InteRemarks;
-      paramFromServiceMsg = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      paramObject = paramFromServiceMsg.a(String.valueOf(l));
+      paramFromServiceMsg = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      paramObject = paramFromServiceMsg.b(String.valueOf(l));
       if ((paramToServiceMsg != null) && (paramObject != null))
       {
         paramToServiceMsg.keySet();
@@ -1118,14 +1088,14 @@ public class DiscussionHandler
       while (paramFromServiceMsg.hasNext())
       {
         localObject = (Long)paramFromServiceMsg.next();
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(String.valueOf(localObject));
+        this.a.remove(String.valueOf(localObject));
         paramToServiceMsg.add(localObject);
         paramToServiceMsg.add(Boolean.valueOf(false));
       }
       notifyUI(1001, false, paramToServiceMsg);
     }
-    if (a()) {
-      c();
+    if (e()) {
+      d();
     }
   }
   
@@ -1141,99 +1111,39 @@ public class DiscussionHandler
     x(paramToServiceMsg, paramFromServiceMsg);
   }
   
-  public Bitmap a(String paramString)
+  private boolean z(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject = null;
-    int k;
-    if (paramString != null)
+    if (paramFromServiceMsg.getResultCode() == 1002)
     {
-      if (paramString.length() == 0) {
-        return null;
-      }
-      float f2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDisplayMetrics().density;
-      double d = 50.0F * f2;
-      Double.isNaN(d);
-      k = (int)(d + 0.5D);
-      paramString = paramString.split(";");
-      int j = paramString.length;
-      int i = 4;
-      float f1;
-      if (j <= 1) {
-        f1 = 117.0F;
-      }
-      int m;
-      for (;;)
+      int i = paramToServiceMsg.extraData.getInt("retryTime", 0);
+      if (i < 1)
       {
-        m = (int)(f2 * f1);
-        break;
-        if (paramString.length <= 4) {
-          f1 = 53.0F;
-        } else {
-          f1 = 34.0F;
-        }
+        paramToServiceMsg.extraData.putInt("retryTime", i + 1);
+        send(paramToServiceMsg);
+        return true;
       }
-      if (paramString.length <= 4) {
-        i = paramString.length;
+      if (QLog.isColorLevel()) {
+        QLog.d("DiscussionHandler", 2, "handleCheckIsDiscussionMemberTimeoutOrErrorResult retry timeout!");
       }
-      localObject = new Bitmap[i];
-      j = 0;
-      while (j < i)
-      {
-        localObject[j] = ((Bitmap)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getScaledFaceBitmap(paramString[j], 1, m, m).second);
-        j += 1;
-      }
+      return true;
     }
-    try
+    if (paramFromServiceMsg.getResultCode() != 1000)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper.a(k, (Bitmap[])localObject);
-      return localObject;
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("handleCheckIsDiscussionMemberTimeoutOrErrorResult failCode:");
+        paramToServiceMsg.append(paramFromServiceMsg.getResultCode());
+        QLog.d("DiscussionHandler", 2, paramToServiceMsg.toString());
+      }
+      return true;
     }
-    catch (Throwable paramString) {}
-    return null;
-  }
-  
-  public Bitmap a(String paramString, boolean paramBoolean)
-  {
-    if ((paramString != null) || (paramBoolean))
-    {
-      try
-      {
-        return ImageUtil.e();
-      }
-      catch (Throwable paramString)
-      {
-        Bitmap localBitmap;
-        if (!QLog.isColorLevel()) {
-          break label97;
-        }
-        QLog.e("DiscussionHandler", 2, "getDiscussionFaceIcon error", paramString);
-      }
-      if (GroupIconHelper.a(paramString)) {
-        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(1001, paramString, (byte)3, false, (byte)1, 0);
-      } else {
-        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(101, paramString, (byte)3, false, (byte)1, 0);
-      }
-      if (localBitmap == null)
-      {
-        a(paramString, true);
-        if (paramBoolean) {
-          return ImageUtil.e();
-        }
-      }
-      else
-      {
-        a(paramString, false);
-        return localBitmap;
-      }
-      label97:
-      return null;
-    }
-    return null;
+    return false;
   }
   
   public Drawable a(String paramString, boolean paramBoolean)
   {
-    paramString = a(paramString, paramBoolean);
+    paramString = b(paramString, paramBoolean);
     if (paramString != null) {
       return new BitmapDrawable(paramString);
     }
@@ -1242,17 +1152,12 @@ public class DiscussionHandler
   
   public GroupIconHelper a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper;
-  }
-  
-  public void a()
-  {
-    notifyUI(1008, true, null);
+    return this.c;
   }
   
   public void a(long paramLong)
   {
-    if (!a(paramLong))
+    if (!g(paramLong))
     {
       localObject = new ArrayList(2);
       ((ArrayList)localObject).add(Long.valueOf(paramLong));
@@ -1267,10 +1172,10 @@ public class DiscussionHandler
       ((StringBuilder)localObject).append(paramLong);
       QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    Object localObject = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = new DiscussionHandler.ReqDiscussInfo();
-    localReqDiscussInfo.jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
-    localReqDiscussInfo.b = ((DiscussionManager)localObject).a(localReqDiscussInfo.jdField_a_of_type_JavaLangString);
+    localReqDiscussInfo.a = String.valueOf(paramLong);
+    localReqDiscussInfo.c = ((DiscussionManager)localObject).c(localReqDiscussInfo.a);
     a(localReqDiscussInfo);
   }
   
@@ -1294,9 +1199,9 @@ public class DiscussionHandler
   
   public void a(long paramLong, int paramInt)
   {
-    long l1 = QQAudioHelper.b();
+    long l1 = QQAudioHelper.d();
     Object localObject1 = String.valueOf(paramLong);
-    Object localObject2 = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a((String)localObject1);
+    Object localObject2 = ((DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d((String)localObject1);
     if (localObject2 == null)
     {
       localObject1 = new StringBuilder();
@@ -1368,16 +1273,16 @@ public class DiscussionHandler
   
   public void a(long paramLong1, long paramLong2)
   {
-    DiscussionManager localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    DiscussionManager localDiscussionManager = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong1);
     localStringBuilder.append("");
-    if (localDiscussionManager.a(localStringBuilder.toString()) == null)
+    if (localDiscussionManager.d(localStringBuilder.toString()) == null)
     {
       a(paramLong1);
       return;
     }
-    if (localDiscussionManager.a(String.valueOf(paramLong1), String.valueOf(paramLong2)) == null) {
+    if (localDiscussionManager.b(String.valueOf(paramLong1), String.valueOf(paramLong2)) == null) {
       a(paramLong1);
     }
   }
@@ -1417,7 +1322,7 @@ public class DiscussionHandler
       ((StringBuilder)localObject).append(paramList.size());
       QLog.d("DiscussionHandler", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(AVNotifyCenter.class);
+    Object localObject = this.h.getHandler(AVNotifyCenter.class);
     if (localObject != null)
     {
       Message localMessage = ((MqqHandler)localObject).obtainMessage(paramInt);
@@ -1462,10 +1367,10 @@ public class DiscussionHandler
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Long > 0L) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 120000L)) {
+    if ((this.e > 0L) && (System.currentTimeMillis() - this.e < 120000L)) {
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.e = System.currentTimeMillis();
     ToServiceMsg localToServiceMsg = createToServiceMsg("QRCodeSvc.discuss_geturl");
     localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
     localToServiceMsg.extraData.putLong("discussUin", paramLong);
@@ -1482,31 +1387,31 @@ public class DiscussionHandler
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("getDiscussInfo2 ");
-      ((StringBuilder)???).append(paramReqDiscussInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(paramReqDiscussInfo.a);
       QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_b_of_type_JavaUtilLinkedHashMap)
+    synchronized (this.d)
     {
-      if ((!this.jdField_b_of_type_JavaUtilLinkedHashMap.containsKey(paramReqDiscussInfo.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(paramReqDiscussInfo.jdField_a_of_type_JavaLangString)))
+      if ((!this.d.containsKey(paramReqDiscussInfo.a)) && (!this.a.containsKey(paramReqDiscussInfo.a)))
       {
-        this.jdField_b_of_type_JavaUtilLinkedHashMap.put(paramReqDiscussInfo.jdField_a_of_type_JavaLangString, paramReqDiscussInfo);
+        this.d.put(paramReqDiscussInfo.a, paramReqDiscussInfo);
       }
       else if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getDiscussionInfo filtered ");
-        localStringBuilder.append(paramReqDiscussInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramReqDiscussInfo.a);
         QLog.d("Q.contacttab.dscs", 2, localStringBuilder.toString());
       }
-      c();
+      d();
       return;
     }
   }
   
   public void a(DiscussionInfo paramDiscussionInfo, boolean paramBoolean)
   {
-    RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-    paramDiscussionInfo = localRecentUserProxy.a(paramDiscussionInfo.uin, 3000);
+    RecentUserProxy localRecentUserProxy = this.h.getProxyManager().g();
+    paramDiscussionInfo = localRecentUserProxy.b(paramDiscussionInfo.uin, 3000);
     if (paramDiscussionInfo != null)
     {
       if (paramBoolean) {
@@ -1515,7 +1420,7 @@ public class DiscussionHandler
         paramDiscussionInfo.showUpTime = 0L;
       }
       localRecentUserProxy.b(paramDiscussionInfo);
-      paramDiscussionInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+      paramDiscussionInfo = this.h.getHandler(Conversation.class);
       if (paramDiscussionInfo != null) {
         paramDiscussionInfo.sendMessage(paramDiscussionInfo.obtainMessage(1009));
       }
@@ -1558,14 +1463,14 @@ public class DiscussionHandler
     paramObject = new long[2];
     paramObject[0] = localLong.longValue();
     paramObject[1] = paramFromServiceMsg.longValue();
-    paramToServiceMsg = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localLong), String.valueOf(paramFromServiceMsg));
+    paramToServiceMsg = ContactUtils.a(this.h, String.valueOf(localLong), String.valueOf(paramFromServiceMsg));
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131703518));
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691798, new Object[] { paramToServiceMsg }));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131901470));
+    ((StringBuilder)localObject).append(this.h.getApp().getString(2131888760, new Object[] { paramToServiceMsg }));
     paramToServiceMsg = ((StringBuilder)localObject).toString();
     try
     {
-      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      long l1 = Long.parseLong(this.h.getCurrentAccountUin());
       long l2 = localLong.longValue();
       long l3 = localLong.longValue();
       try
@@ -1580,7 +1485,7 @@ public class DiscussionHandler
     catch (NumberFormatException paramToServiceMsg) {}
     QLog.d("DiscussionHandler", 2, "handleKickoutMemberResp exception ", paramToServiceMsg);
     label292:
-    paramToServiceMsg = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(String.valueOf(localLong));
+    paramToServiceMsg = ((DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(String.valueOf(localLong));
     if (paramToServiceMsg != null)
     {
       localObject = paramToServiceMsg.faceUinSet;
@@ -1614,27 +1519,27 @@ public class DiscussionHandler
     a((String)localObject, localHashSet);
     localObject = new ArrayList();
     ((List)localObject).add(String.valueOf(paramFromServiceMsg));
-    a(localLong.longValue(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (List)localObject, 2);
+    a(localLong.longValue(), this.h.getCurrentAccountUin(), (List)localObject, 2);
     if (i != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper.c(paramToServiceMsg.uin);
+      this.c.c(paramToServiceMsg.uin);
     }
     notifyUI(1015, bool, paramObject);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper.d(paramString);
-    ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, 3000);
+    this.c.d(paramString);
+    ((DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER)).g(paramString);
+    this.h.getMessageFacade().c(paramString, 3000);
     notifyUI(1004, true, paramString);
   }
   
   public void a(String paramString, int paramInt)
   {
-    if ((this.jdField_b_of_type_Long > 0L) && (System.currentTimeMillis() - this.jdField_b_of_type_Long < 120000L)) {
+    if ((this.f > 0L) && (System.currentTimeMillis() - this.f < 120000L)) {
       return;
     }
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.f = System.currentTimeMillis();
     ToServiceMsg localToServiceMsg = createToServiceMsg("QQServiceDiscussSvc.ReqJoinDiscuss");
     localToServiceMsg.extraData.putString("signature", paramString);
     localToServiceMsg.extraData.putInt("addDisSource", paramInt);
@@ -1643,8 +1548,8 @@ public class DiscussionHandler
   
   public void a(String paramString1, String paramString2)
   {
-    DiscussionManager localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-    DiscussionInfo localDiscussionInfo = localDiscussionManager.a(paramString1);
+    DiscussionManager localDiscussionManager = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    DiscussionInfo localDiscussionInfo = localDiscussionManager.d(paramString1);
     if (localDiscussionInfo != null)
     {
       localDiscussionInfo.discussionName = paramString2;
@@ -1663,8 +1568,8 @@ public class DiscussionHandler
   {
     if ((paramString != null) && (paramArrayList != null))
     {
-      Object localObject1 = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      Object localObject2 = ((DiscussionManager)localObject1).a(paramArrayList);
+      Object localObject1 = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      Object localObject2 = ((DiscussionManager)localObject1).c(paramArrayList);
       int i = 0;
       int j = 0;
       if (localObject2 != null)
@@ -1693,10 +1598,10 @@ public class DiscussionHandler
               {
                 localObject1 = new DiscussionMemberInfo();
                 ((DiscussionMemberInfo)localObject1).memberUin = ((DiscussionMemberInfo)localObject5).memberUin;
-                ((DiscussionMemberInfo)localObject1).memberName = ContactUtils.a((DiscussionMemberInfo)localObject5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                ((DiscussionMemberInfo)localObject1).memberName = ContactUtils.a((DiscussionMemberInfo)localObject5, this.h);
                 break label313;
               }
-              if (((DiscussionMemberInfo)localObject5).memberUin.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+              if (((DiscussionMemberInfo)localObject5).memberUin.equalsIgnoreCase(this.h.getCurrentAccountUin()))
               {
                 localObject1 = paramString;
                 break label313;
@@ -1704,8 +1609,8 @@ public class DiscussionHandler
             }
             localObject1 = new DiscussionMemberInfo();
             ((DiscussionMemberInfo)localObject1).memberUin = ((DiscussionMemberInfo)localObject5).memberUin;
-            ((DiscussionMemberInfo)localObject1).memberName = ContactUtils.a((DiscussionMemberInfo)localObject5, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            ((DiscussionMemberInfo)localObject1).discussionUin = ChnToSpell.a(((DiscussionMemberInfo)localObject1).memberName, 1);
+            ((DiscussionMemberInfo)localObject1).memberName = ContactUtils.a((DiscussionMemberInfo)localObject5, this.h);
+            ((DiscussionMemberInfo)localObject1).discussionUin = ChnToSpell.b(((DiscussionMemberInfo)localObject1).memberName, 1);
             ((List)localObject3).add(localObject1);
             localObject1 = paramString;
           }
@@ -1723,7 +1628,7 @@ public class DiscussionHandler
         while ((paramInt < ((List)localObject3).size()) && (paramInt < 3))
         {
           localObject1 = (DiscussionMemberInfo)((List)localObject3).get(paramInt);
-          if (!((DiscussionMemberInfo)localObject1).memberUin.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+          if (!((DiscussionMemberInfo)localObject1).memberUin.equalsIgnoreCase(this.h.getCurrentAccountUin()))
           {
             paramString.append(((DiscussionMemberInfo)localObject1).memberName);
             paramString.append("、");
@@ -1736,11 +1641,11 @@ public class DiscussionHandler
         }
         paramString.append(paramArrayList.size());
         paramString.append("个成员已有该多人聊天。");
-        paramArrayList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        paramString = new UniteGrayTipParam(((DiscussionInfo)localObject2).uin, paramArrayList, paramString.toString(), 3000, -5040, 65560, MessageCache.a());
+        paramArrayList = this.h.getCurrentAccountUin();
+        paramString = new UniteGrayTipParam(((DiscussionInfo)localObject2).uin, paramArrayList, paramString.toString(), 3000, -5040, 65560, MessageCache.c());
         paramArrayList = new MessageForUniteGrayTip();
-        paramArrayList.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-        UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList);
+        paramArrayList.initGrayTipMsg(this.h, paramString);
+        UniteGrayTipMsgUtil.a(this.h, paramArrayList);
         return;
       }
       localObject1 = createToServiceMsg("QQServiceDiscussSvc.ReqCreateDiscuss");
@@ -1784,32 +1689,13 @@ public class DiscussionHandler
       if (paramHashSet.size() == 0) {
         return;
       }
-      DiscussionManager localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      DiscussionInfo localDiscussionInfo = localDiscussionManager.a(paramString);
+      DiscussionManager localDiscussionManager = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      DiscussionInfo localDiscussionInfo = localDiscussionManager.d(paramString);
       if (localDiscussionInfo != null) {
         localDiscussionInfo.DiscussionFlag |= 0x20000000;
       }
       localDiscussionManager.a(paramString, paramHashSet);
     }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mAutomator.c())
-    {
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper.a(paramString);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper.b(paramString);
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    paramString = new Pair(Boolean.valueOf(paramBoolean), paramString);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
   }
   
   public void a(@NonNull Collection<DiscussionHandler.ReqDiscussInfo> paramCollection)
@@ -1821,25 +1707,25 @@ public class DiscussionHandler
       ((StringBuilder)???).append(paramCollection.size());
       QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)???).toString());
     }
-    synchronized (this.jdField_b_of_type_JavaUtilLinkedHashMap)
+    synchronized (this.d)
     {
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext())
       {
         DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = (DiscussionHandler.ReqDiscussInfo)paramCollection.next();
-        if ((!this.jdField_b_of_type_JavaUtilLinkedHashMap.containsKey(localReqDiscussInfo.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localReqDiscussInfo.jdField_a_of_type_JavaLangString)) && (localReqDiscussInfo.jdField_a_of_type_Int <= 1))
+        if ((!this.d.containsKey(localReqDiscussInfo.a)) && (!this.a.containsKey(localReqDiscussInfo.a)) && (localReqDiscussInfo.b <= 1))
         {
-          this.jdField_b_of_type_JavaUtilLinkedHashMap.put(localReqDiscussInfo.jdField_a_of_type_JavaLangString, localReqDiscussInfo);
+          this.d.put(localReqDiscussInfo.a, localReqDiscussInfo);
         }
         else if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getDiscussionInfo2 filtered ");
-          localStringBuilder.append(localReqDiscussInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localReqDiscussInfo.a);
           QLog.d("Q.contacttab.dscs", 2, localStringBuilder.toString());
         }
       }
-      c();
+      d();
       return;
     }
     for (;;)
@@ -1855,21 +1741,16 @@ public class DiscussionHandler
   
   public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), DiscussionServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.h.getApp(), DiscussionServlet.class);
     localNewIntent.putExtra("key_cmd", 0);
     localNewIntent.putExtra("field_id", paramArrayOfString1);
     localNewIntent.putExtra("uin_list", paramArrayOfString2);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return paramLong > 1000000L;
+    this.h.startServlet(localNewIntent);
   }
   
   public boolean a(DiscussionInfo paramDiscussionInfo)
   {
-    paramDiscussionInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(paramDiscussionInfo.uin, 3000);
+    paramDiscussionInfo = this.h.getProxyManager().g().b(paramDiscussionInfo.uin, 3000);
     boolean bool = false;
     if (paramDiscussionInfo == null) {
       return false;
@@ -1902,10 +1783,10 @@ public class DiscussionHandler
     }
     try
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      localObject1 = this.h.getPreferences();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("DiscusstionIconVersion");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.h.getCurrentAccountUin());
       localObject2 = ((StringBuilder)localObject2).toString();
       i = ((SharedPreferences)localObject1).getInt((String)localObject2, -1);
       DiscussInfo localDiscussInfo;
@@ -1952,7 +1833,7 @@ public class DiscussionHandler
               }
               i += 1;
             }
-            localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+            localDiscussionManager = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
           }
           catch (Exception localException)
           {
@@ -1966,7 +1847,7 @@ public class DiscussionHandler
       while (paramArrayList.hasNext())
       {
         localDiscussInfo = (DiscussInfo)paramArrayList.next();
-        localObject3 = localDiscussionManager.a(String.valueOf(localDiscussInfo.DiscussUin));
+        localObject3 = localDiscussionManager.d(String.valueOf(localDiscussInfo.DiscussUin));
         if (localObject3 == null)
         {
           localObject3 = new DiscussionInfo();
@@ -2011,10 +1892,10 @@ public class DiscussionHandler
     long l = System.currentTimeMillis();
     try
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      localObject1 = this.h.getPreferences();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("DiscusstionIconVersion");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.h.getCurrentAccountUin());
       localObject2 = ((StringBuilder)localObject2).toString();
       int i = ((SharedPreferences)localObject1).getInt((String)localObject2, -1);
       Object localObject3;
@@ -2061,7 +1942,7 @@ public class DiscussionHandler
               }
               i += 1;
             }
-            localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+            localDiscussionManager = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
           }
           catch (Exception localException)
           {
@@ -2075,7 +1956,7 @@ public class DiscussionHandler
       while (paramArrayList.hasNext())
       {
         localObject3 = (DiscussionInfo)paramArrayList.next();
-        localObject4 = localDiscussionManager.a(((DiscussionInfo)localObject3).uin);
+        localObject4 = localDiscussionManager.d(((DiscussionInfo)localObject3).uin);
         if (localObject4 == null)
         {
           localObject4 = new DiscussionInfo();
@@ -2088,8 +1969,8 @@ public class DiscussionHandler
             ((DiscussionInfo)localObject4).hasCollect = false;
           }
           localObject3 = new DiscussionHandler.ReqDiscussInfo();
-          ((DiscussionHandler.ReqDiscussInfo)localObject3).jdField_a_of_type_JavaLangString = ((DiscussionInfo)localObject4).uin;
-          ((DiscussionHandler.ReqDiscussInfo)localObject3).b = ((DiscussionInfo)localObject4).mUnreliableMemberCount;
+          ((DiscussionHandler.ReqDiscussInfo)localObject3).a = ((DiscussionInfo)localObject4).uin;
+          ((DiscussionHandler.ReqDiscussInfo)localObject3).c = ((DiscussionInfo)localObject4).mUnreliableMemberCount;
           a((DiscussionHandler.ReqDiscussInfo)localObject3);
         }
         else
@@ -2102,8 +1983,8 @@ public class DiscussionHandler
           if (((DiscussionInfo)localObject4).infoSeq != ((DiscussionInfo)localObject3).infoSeq)
           {
             localObject3 = new DiscussionHandler.ReqDiscussInfo();
-            ((DiscussionHandler.ReqDiscussInfo)localObject3).jdField_a_of_type_JavaLangString = ((DiscussionInfo)localObject4).uin;
-            ((DiscussionHandler.ReqDiscussInfo)localObject3).b = ((DiscussionInfo)localObject4).mUnreliableMemberCount;
+            ((DiscussionHandler.ReqDiscussInfo)localObject3).a = ((DiscussionInfo)localObject4).uin;
+            ((DiscussionHandler.ReqDiscussInfo)localObject3).c = ((DiscussionInfo)localObject4).mUnreliableMemberCount;
             a((DiscussionHandler.ReqDiscussInfo)localObject3);
           }
           else
@@ -2123,38 +2004,57 @@ public class DiscussionHandler
     return false;
   }
   
+  public Bitmap b(String paramString, boolean paramBoolean)
+  {
+    if ((paramString != null) || (paramBoolean))
+    {
+      try
+      {
+        return ImageUtil.i();
+      }
+      catch (Throwable paramString)
+      {
+        Bitmap localBitmap;
+        if (!QLog.isColorLevel()) {
+          break label97;
+        }
+        QLog.e("DiscussionHandler", 2, "getDiscussionFaceIcon error", paramString);
+      }
+      if (GroupIconHelper.i(paramString)) {
+        localBitmap = this.h.getFaceBitmap(1001, paramString, (byte)3, false, (byte)1, 0);
+      } else {
+        localBitmap = this.h.getFaceBitmap(101, paramString, (byte)3, false, (byte)1, 0);
+      }
+      if (localBitmap == null)
+      {
+        c(paramString, true);
+        if (paramBoolean) {
+          return ImageUtil.i();
+        }
+      }
+      else
+      {
+        c(paramString, false);
+        return localBitmap;
+      }
+      label97:
+      return null;
+    }
+    return null;
+  }
+  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mAutomator.c())
-    {
-      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
-      {
-        int i = 0;
-        while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          localObject = (Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if ((localObject != null) && (((Pair)localObject).first != null) && (((Pair)localObject).second != null)) {
-            if (((Boolean)((Pair)localObject).first).booleanValue()) {
-              a((String)((Pair)localObject).second, false);
-            } else {
-              this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper.b((String)((Pair)localObject).second);
-            }
-          }
-          i += 1;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList = null;
-      }
-    }
+    notifyUI(1008, true, null);
   }
   
   public void b(long paramLong)
   {
-    DiscussionManager localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    DiscussionManager localDiscussionManager = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong);
     localStringBuilder.append("");
-    if (localDiscussionManager.a(localStringBuilder.toString()) == null) {
+    if (localDiscussionManager.d(localStringBuilder.toString()) == null) {
       a(paramLong);
     }
   }
@@ -2178,9 +2078,9 @@ public class DiscussionHandler
   
   public void b(long paramLong, ArrayList<AddDiscussMemberInfo> paramArrayList)
   {
-    if (a(paramLong))
+    if (g(paramLong))
     {
-      DiscussionInfo localDiscussionInfo = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(String.valueOf(paramLong));
+      DiscussionInfo localDiscussionInfo = ((DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d(String.valueOf(paramLong));
       if ((localDiscussionInfo != null) && (localDiscussionInfo.isDiscussHrMeeting()))
       {
         c(paramLong, paramArrayList);
@@ -2219,8 +2119,8 @@ public class DiscussionHandler
         bool1 = bool2;
         if (bool2)
         {
-          paramFromServiceMsg = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-          paramObject = paramFromServiceMsg.a(String.valueOf(paramToServiceMsg));
+          paramFromServiceMsg = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+          paramObject = paramFromServiceMsg.d(String.valueOf(paramToServiceMsg));
           bool1 = bool2;
           if (paramObject != null)
           {
@@ -2291,38 +2191,218 @@ public class DiscussionHandler
   
   public void c()
   {
+    if (this.h.mAutomator.h())
+    {
+      Object localObject = this.g;
+      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+      {
+        int i = 0;
+        while (i < this.g.size())
+        {
+          localObject = (Pair)this.g.get(i);
+          if ((localObject != null) && (((Pair)localObject).first != null) && (((Pair)localObject).second != null)) {
+            if (((Boolean)((Pair)localObject).first).booleanValue()) {
+              a((String)((Pair)localObject).second, false);
+            } else {
+              this.c.b((String)((Pair)localObject).second);
+            }
+          }
+          i += 1;
+        }
+        this.g = null;
+      }
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    if (g(paramLong))
+    {
+      ToServiceMsg localToServiceMsg = createToServiceMsg("QQServiceDiscussSvc.ReqQuitDiscuss");
+      localToServiceMsg.extraData.putLong("discussUin", paramLong);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--->>quit discuss uin: ");
+        localStringBuilder.append(paramLong);
+        QLog.d("DiscussionHandler", 2, localStringBuilder.toString());
+      }
+      send(localToServiceMsg);
+      return;
+    }
+    notifyUI(1004, false, String.valueOf(paramLong));
+  }
+  
+  void c(long paramLong, ArrayList<AddDiscussMemberInfo> paramArrayList)
+  {
+    ThreadManager.post(new DiscussionHandler.2(this, paramLong, paramArrayList), 5, null, false);
+  }
+  
+  protected void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionHandler", 2, "<<---handleUncollectDisucssionResp");
+    }
+    boolean bool1 = paramFromServiceMsg.isSuccess();
+    boolean bool3 = true;
+    if ((bool1) && (paramObject != null)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    paramToServiceMsg = Long.valueOf(paramToServiceMsg.extraData.getLong("dwConfUin"));
+    boolean bool2 = bool1;
+    if (bool1) {}
+    for (;;)
+    {
+      try
+      {
+        paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+        if (paramFromServiceMsg.uint32_result.get() != 0) {
+          break label201;
+        }
+        bool1 = bool3;
+        if (bool1)
+        {
+          paramFromServiceMsg = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+          paramObject = paramFromServiceMsg.d(String.valueOf(paramToServiceMsg));
+          if (paramObject != null)
+          {
+            long l = System.currentTimeMillis();
+            paramObject.hasCollect = false;
+            paramObject.timeSec = l;
+            paramFromServiceMsg.a(paramObject);
+            paramFromServiceMsg.b(paramObject);
+          }
+        }
+        bool2 = bool1;
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("handleUncollectDisucssionResp", 2, paramFromServiceMsg.getMessage());
+        }
+        bool2 = false;
+      }
+      notifyUI(1017, bool2, paramToServiceMsg);
+      return;
+      label201:
+      bool1 = false;
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    ToServiceMsg localToServiceMsg = createToServiceMsg("QQServiceDiscussSvc.ReqGetDiscussInfo");
+    localToServiceMsg.extraData.putString("signature", paramString);
+    send(localToServiceMsg);
+  }
+  
+  public void c(String paramString, boolean paramBoolean)
+  {
+    if (this.h.mAutomator.h())
+    {
+      if (paramBoolean)
+      {
+        this.c.a(paramString);
+        return;
+      }
+      this.c.b(paramString);
+      return;
+    }
+    if (this.g == null) {
+      this.g = new ArrayList();
+    }
+    paramString = new Pair(Boolean.valueOf(paramBoolean), paramString);
+    this.g.add(paramString);
+  }
+  
+  public Bitmap d(String paramString)
+  {
+    Object localObject = null;
+    int k;
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return null;
+      }
+      float f2 = this.h.getApp().getResources().getDisplayMetrics().density;
+      double d1 = 50.0F * f2;
+      Double.isNaN(d1);
+      k = (int)(d1 + 0.5D);
+      paramString = paramString.split(";");
+      int j = paramString.length;
+      int i = 4;
+      float f1;
+      if (j <= 1) {
+        f1 = 117.0F;
+      }
+      int m;
+      for (;;)
+      {
+        m = (int)(f2 * f1);
+        break;
+        if (paramString.length <= 4) {
+          f1 = 53.0F;
+        } else {
+          f1 = 34.0F;
+        }
+      }
+      if (paramString.length <= 4) {
+        i = paramString.length;
+      }
+      localObject = new Bitmap[i];
+      j = 0;
+      while (j < i)
+      {
+        localObject[j] = ((Bitmap)this.h.getScaledFaceBitmap(paramString[j], 1, m, m).second);
+        j += 1;
+      }
+    }
+    try
+    {
+      localObject = this.c.a(k, (Bitmap[])localObject);
+      return localObject;
+    }
+    catch (Throwable paramString) {}
+    return null;
+  }
+  
+  public void d()
+  {
     ArrayList localArrayList = new ArrayList(50);
-    synchronized (this.jdField_b_of_type_JavaUtilLinkedHashMap)
+    synchronized (this.d)
     {
       if (QLog.isColorLevel())
       {
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("startGetDiscussionInfoWorkV2, discussionUinListofGetinfo[");
-        ((StringBuilder)localObject3).append(this.jdField_b_of_type_JavaUtilLinkedHashMap.size());
+        ((StringBuilder)localObject3).append(this.d.size());
         ((StringBuilder)localObject3).append("], mGettingDiscussUins[");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+        ((StringBuilder)localObject3).append(this.a.size());
         ((StringBuilder)localObject3).append("]");
         QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject3).toString());
       }
-      if (this.jdField_b_of_type_JavaUtilLinkedHashMap.size() == 0) {
+      if (this.d.size() == 0) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() >= 100) {
+      if (this.a.size() >= 100) {
         return;
       }
-      Object localObject3 = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      Object localObject4 = this.jdField_b_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+      Object localObject3 = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      Object localObject4 = this.d.entrySet().iterator();
       int j = 0;
       int i = 0;
       int m;
       for (int k = 0; ((Iterator)localObject4).hasNext(); k = m)
       {
         DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = (DiscussionHandler.ReqDiscussInfo)((Map.Entry)((Iterator)localObject4).next()).getValue();
-        if ((localReqDiscussInfo.b + j > 500) || (i >= 50)) {
+        if ((localReqDiscussInfo.c + j > 500) || (i >= 50)) {
           break;
         }
         ((Iterator)localObject4).remove();
-        DiscussionInfo localDiscussionInfo = ((DiscussionManager)localObject3).a(localReqDiscussInfo.jdField_a_of_type_JavaLangString);
+        DiscussionInfo localDiscussionInfo = ((DiscussionManager)localObject3).d(localReqDiscussInfo.a);
         m = k;
         if (localDiscussionInfo != null)
         {
@@ -2331,9 +2411,9 @@ public class DiscussionHandler
             m = (int)localDiscussionInfo.timeSec;
           }
         }
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localReqDiscussInfo.jdField_a_of_type_JavaLangString, localReqDiscussInfo);
-        localArrayList.add(Long.valueOf(Long.parseLong(localReqDiscussInfo.jdField_a_of_type_JavaLangString)));
-        j += localReqDiscussInfo.b;
+        this.a.put(localReqDiscussInfo.a, localReqDiscussInfo);
+        localArrayList.add(Long.valueOf(Long.parseLong(localReqDiscussInfo.a)));
+        j += localReqDiscussInfo.c;
         i += 1;
       }
       localObject3 = new StringBuilder();
@@ -2356,7 +2436,7 @@ public class DiscussionHandler
       {
         localObject3 = new cmd0x58b.GetMultiConfInfoReq();
         ((cmd0x58b.GetMultiConfInfoReq)localObject3).uint64_conf_uin.set(localArrayList);
-        localObject4 = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+        localObject4 = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
         ((cmd0x58b.GetMultiConfInfoReq)localObject3).uint32_interemark_timestamp.set(k);
         localObject4 = new cmd0x58b.ConfBaseInfo();
         ((cmd0x58b.ConfBaseInfo)localObject4).bytes_conf_name.set(ByteStringMicro.copyFromUtf8(""));
@@ -2406,91 +2486,6 @@ public class DiscussionHandler
     }
   }
   
-  public void c(long paramLong)
-  {
-    if (a(paramLong))
-    {
-      ToServiceMsg localToServiceMsg = createToServiceMsg("QQServiceDiscussSvc.ReqQuitDiscuss");
-      localToServiceMsg.extraData.putLong("discussUin", paramLong);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("--->>quit discuss uin: ");
-        localStringBuilder.append(paramLong);
-        QLog.d("DiscussionHandler", 2, localStringBuilder.toString());
-      }
-      send(localToServiceMsg);
-      return;
-    }
-    notifyUI(1004, false, String.valueOf(paramLong));
-  }
-  
-  void c(long paramLong, ArrayList<AddDiscussMemberInfo> paramArrayList)
-  {
-    ThreadManager.post(new DiscussionHandler.2(this, paramLong, paramArrayList), 5, null, false);
-  }
-  
-  protected void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionHandler", 2, "<<---handleUncollectDisucssionResp");
-    }
-    boolean bool1 = paramFromServiceMsg.isSuccess();
-    boolean bool3 = true;
-    if ((bool1) && (paramObject != null)) {
-      bool1 = true;
-    } else {
-      bool1 = false;
-    }
-    paramToServiceMsg = Long.valueOf(paramToServiceMsg.extraData.getLong("dwConfUin"));
-    boolean bool2 = bool1;
-    if (bool1) {}
-    for (;;)
-    {
-      try
-      {
-        paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramFromServiceMsg.uint32_result.get() != 0) {
-          break label201;
-        }
-        bool1 = bool3;
-        if (bool1)
-        {
-          paramFromServiceMsg = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-          paramObject = paramFromServiceMsg.a(String.valueOf(paramToServiceMsg));
-          if (paramObject != null)
-          {
-            long l = System.currentTimeMillis();
-            paramObject.hasCollect = false;
-            paramObject.timeSec = l;
-            paramFromServiceMsg.a(paramObject);
-            paramFromServiceMsg.b(paramObject);
-          }
-        }
-        bool2 = bool1;
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("handleUncollectDisucssionResp", 2, paramFromServiceMsg.getMessage());
-        }
-        bool2 = false;
-      }
-      notifyUI(1017, bool2, paramToServiceMsg);
-      return;
-      label201:
-      bool1 = false;
-    }
-  }
-  
-  public void c(String paramString)
-  {
-    ToServiceMsg localToServiceMsg = createToServiceMsg("QQServiceDiscussSvc.ReqGetDiscussInfo");
-    localToServiceMsg.extraData.putString("signature", paramString);
-    send(localToServiceMsg);
-  }
-  
   public void d(long paramLong)
   {
     oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
@@ -2511,7 +2506,7 @@ public class DiscussionHandler
     if (QLog.isColorLevel()) {
       QLog.d("DiscussionHandler", 2, "<<---handleGetFlyTicket");
     }
-    this.jdField_a_of_type_Long = 0L;
+    this.e = 0L;
     long l2 = -1L;
     FlyTicket.DiscussGetUrlResponse localDiscussGetUrlResponse = new FlyTicket.DiscussGetUrlResponse();
     long l1 = l2;
@@ -2625,8 +2620,8 @@ public class DiscussionHandler
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
       paramToServiceMsg = (DiscussionReceiver.RespPackage)paramObject;
-      DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)paramToServiceMsg.jdField_a_of_type_JavaLangObject;
-      paramObject = (RespGetDiscussInfo)paramToServiceMsg.b;
+      DiscussRespHeader localDiscussRespHeader = (DiscussRespHeader)paramToServiceMsg.b;
+      paramObject = (RespGetDiscussInfo)paramToServiceMsg.c;
       paramToServiceMsg = paramObject;
       if (localDiscussRespHeader != null)
       {
@@ -2651,14 +2646,14 @@ public class DiscussionHandler
   
   protected void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_b_of_type_Long = 0L;
+    this.f = 0L;
     long l3 = -1L;
     long l2;
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
       paramObject = (DiscussionReceiver.RespPackage)paramObject;
-      paramToServiceMsg = (DiscussRespHeader)paramObject.jdField_a_of_type_JavaLangObject;
-      paramObject = (RespJoinDiscuss)paramObject.b;
+      paramToServiceMsg = (DiscussRespHeader)paramObject.b;
+      paramObject = (RespJoinDiscuss)paramObject.c;
       long l1;
       if (paramToServiceMsg != null) {
         l1 = paramToServiceMsg.Result;
@@ -2685,6 +2680,11 @@ public class DiscussionHandler
       return;
     }
     notifyUI(1014, false, paramToServiceMsg);
+  }
+  
+  public boolean g(long paramLong)
+  {
+    return paramLong > 1000000L;
   }
   
   public Set<String> getCommandList()
@@ -2728,8 +2728,8 @@ public class DiscussionHandler
       paramObject.append(paramToServiceMsg);
       QLog.d("DiscussionHandler", 2, paramObject.toString());
     }
-    paramObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-    paramFromServiceMsg = paramObject.a(String.valueOf(paramFromServiceMsg), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    paramObject = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    paramFromServiceMsg = paramObject.b(String.valueOf(paramFromServiceMsg), this.h.getCurrentAccountUin());
     if (paramFromServiceMsg != null)
     {
       paramFromServiceMsg.flag = paramToServiceMsg.byteValue();
@@ -2758,8 +2758,8 @@ public class DiscussionHandler
       QLog.d("DiscussionHandler", 2, "<<---handleQuitDiscussResp");
     }
     paramObject = (DiscussionReceiver.RespPackage)paramObject;
-    Object localObject = (RespQuitDiscuss)paramObject.b;
-    localObject = (DiscussRespHeader)paramObject.jdField_a_of_type_JavaLangObject;
+    Object localObject = (RespQuitDiscuss)paramObject.c;
+    localObject = (DiscussRespHeader)paramObject.b;
     String str1 = String.valueOf(paramToServiceMsg.extraData.getLong("discussUin"));
     int i = ((DiscussRespHeader)localObject).Result;
     String str2 = ((DiscussRespHeader)localObject).ResultDesc;
@@ -2776,12 +2776,12 @@ public class DiscussionHandler
       notifyUI(1004, false, str1);
       return;
     }
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject.jdField_a_of_type_Boolean))
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject.a))
     {
       a(str1);
       paramFromServiceMsg = new ArrayList();
-      paramFromServiceMsg.add(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      a(paramToServiceMsg.extraData.getLong("discussUin"), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramFromServiceMsg, 10009);
+      paramFromServiceMsg.add(this.h.getCurrentAccountUin());
+      a(paramToServiceMsg.extraData.getLong("discussUin"), this.h.getCurrentAccountUin(), paramFromServiceMsg, 10009);
       return;
     }
     notifyUI(1004, false, str1);
@@ -2797,11 +2797,11 @@ public class DiscussionHandler
       try
       {
         paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-        paramToServiceMsg = new DiscussionHandler.HandleGetDiscussRespCheck(this, paramToServiceMsg).a();
+        paramToServiceMsg = new DiscussionHandler.HandleGetDiscussRespCheck(this, paramToServiceMsg).d();
         if (paramToServiceMsg.a()) {
           return;
         }
-        bool1 = a(false, paramToServiceMsg.a(), paramToServiceMsg.b());
+        bool1 = a(false, paramToServiceMsg.b(), paramToServiceMsg.c());
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
@@ -2835,8 +2835,8 @@ public class DiscussionHandler
       QLog.d("DiscussionHandler", 2, "<<---handleChangeDiscussNameResp");
     }
     paramObject = (DiscussionReceiver.RespPackage)paramObject;
-    paramFromServiceMsg = (RespChangeDiscussName)paramObject.b;
-    Object localObject = (DiscussRespHeader)paramObject.jdField_a_of_type_JavaLangObject;
+    paramFromServiceMsg = (RespChangeDiscussName)paramObject.c;
+    Object localObject = (DiscussRespHeader)paramObject.b;
     paramFromServiceMsg = String.valueOf(paramToServiceMsg.extraData.getLong("discussUin"));
     int i = ((DiscussRespHeader)localObject).Result;
     String str = ((DiscussRespHeader)localObject).ResultDesc;
@@ -2846,10 +2846,10 @@ public class DiscussionHandler
       notifyUI(1005, false, paramFromServiceMsg);
       return;
     }
-    if (paramObject.jdField_a_of_type_Boolean)
+    if (paramObject.a)
     {
-      paramObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      localObject = paramObject.a(paramFromServiceMsg);
+      paramObject = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      localObject = paramObject.d(paramFromServiceMsg);
       if (localObject != null)
       {
         ((DiscussionInfo)localObject).discussionName = paramToServiceMsg.extraData.getString("newName");
@@ -2869,11 +2869,11 @@ public class DiscussionHandler
     }
     Object[] arrayOfObject = new Object[3];
     paramObject = (DiscussionReceiver.RespPackage)paramObject;
-    arrayOfObject[2] = Integer.valueOf(((DiscussRespHeader)paramObject.jdField_a_of_type_JavaLangObject).Result);
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject.jdField_a_of_type_Boolean))
+    arrayOfObject[2] = Integer.valueOf(((DiscussRespHeader)paramObject.b).Result);
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject.a))
     {
-      paramFromServiceMsg = (RespCreateDiscuss)paramObject.b;
-      if (!a(paramFromServiceMsg.DiscussUin))
+      paramFromServiceMsg = (RespCreateDiscuss)paramObject.c;
+      if (!g(paramFromServiceMsg.DiscussUin))
       {
         if (QLog.isColorLevel()) {
           QLog.d("DiscussionHandler", 2, "create discussion fail: invalid discussion uin");
@@ -2888,8 +2888,8 @@ public class DiscussionHandler
         paramObject.append(paramFromServiceMsg.DiscussUin);
         QLog.d("DiscussionHandler", 2, paramObject.toString());
       }
-      paramObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      DiscussionManager localDiscussionManager = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      paramObject = (FriendsManager)this.h.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      DiscussionManager localDiscussionManager = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
       Object localObject2 = new DiscussionInfo();
       ((DiscussionInfo)localObject2).uin = String.valueOf(paramFromServiceMsg.DiscussUin);
       ((DiscussionInfo)localObject2).discussionName = paramToServiceMsg.extraData.getString("name");
@@ -2909,7 +2909,7 @@ public class DiscussionHandler
             if (localObject3 != null)
             {
               localObject3 = ((DiscussionMemberInfo)localObject3).memberUin;
-              if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((String)localObject3).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+              if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((String)localObject3).equals(this.h.getCurrentAccountUin())))
               {
                 ((DiscussionInfo)localObject2).removeUIControlFlag_Hidden_RecentUser();
                 if (!QLog.isDevelopLevel()) {
@@ -2925,8 +2925,8 @@ public class DiscussionHandler
       }
       Object localObject1 = paramFromServiceMsg.AddResult;
       Object localObject3 = new DiscussionHandler.ReqDiscussInfo();
-      ((DiscussionHandler.ReqDiscussInfo)localObject3).jdField_a_of_type_JavaLangString = String.valueOf(paramFromServiceMsg.DiscussUin);
-      ((DiscussionHandler.ReqDiscussInfo)localObject3).b = ((Map)localObject1).size();
+      ((DiscussionHandler.ReqDiscussInfo)localObject3).a = String.valueOf(paramFromServiceMsg.DiscussUin);
+      ((DiscussionHandler.ReqDiscussInfo)localObject3).c = ((Map)localObject1).size();
       localDiscussionManager.a((DiscussionInfo)localObject2);
       a((DiscussionHandler.ReqDiscussInfo)localObject3);
       localObject3 = ((Map)localObject1).keySet();
@@ -2941,11 +2941,11 @@ public class DiscussionHandler
           localDiscussionMemberInfo.discussionUin = String.valueOf(paramFromServiceMsg.DiscussUin);
           localDiscussionMemberInfo.memberUin = String.valueOf(localObject4);
           localDiscussionMemberInfo.flag = 0;
-          localObject4 = paramObject.b(localDiscussionMemberInfo.memberUin);
+          localObject4 = paramObject.c(localDiscussionMemberInfo.memberUin);
           if ((localObject4 != null) && (((Friends)localObject4).isFriend())) {
             localDiscussionMemberInfo.memberName = ((Friends)localObject4).name;
           } else {
-            this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendInfo(localDiscussionMemberInfo.memberUin);
+            this.b.getFriendInfo(localDiscussionMemberInfo.memberUin);
           }
           ((List)localObject2).add(localDiscussionMemberInfo);
         }
@@ -2965,7 +2965,7 @@ public class DiscussionHandler
       paramToServiceMsg.append(" errMsg: ");
       paramToServiceMsg.append(paramFromServiceMsg.getBusinessFailMsg());
       paramToServiceMsg.append(" respPackage.bSuccess: ");
-      paramToServiceMsg.append(paramObject.jdField_a_of_type_Boolean);
+      paramToServiceMsg.append(paramObject.a);
       QLog.d("DiscussionHandler", 2, paramToServiceMsg.toString());
     }
     notifyUI(1002, false, arrayOfObject);
@@ -2977,8 +2977,8 @@ public class DiscussionHandler
       QLog.d("DiscussionHandler", 2, "<<---handleAddDiscussMemberResp");
     }
     Object localObject2 = (DiscussionReceiver.RespPackage)paramObject;
-    RespAddDiscussMember localRespAddDiscussMember = (RespAddDiscussMember)((DiscussionReceiver.RespPackage)localObject2).b;
-    paramObject = (DiscussRespHeader)((DiscussionReceiver.RespPackage)localObject2).jdField_a_of_type_JavaLangObject;
+    RespAddDiscussMember localRespAddDiscussMember = (RespAddDiscussMember)((DiscussionReceiver.RespPackage)localObject2).c;
+    paramObject = (DiscussRespHeader)((DiscussionReceiver.RespPackage)localObject2).b;
     Object localObject1 = String.valueOf(Long.valueOf(paramToServiceMsg.extraData.getLong("discussUin")));
     int i = paramObject.Result;
     paramToServiceMsg = paramObject.ResultDesc;
@@ -2990,11 +2990,11 @@ public class DiscussionHandler
     paramToServiceMsg = new Object[3];
     paramToServiceMsg[0] = localObject1;
     paramToServiceMsg[1] = Integer.valueOf(paramObject.Result);
-    if ((paramFromServiceMsg.isSuccess()) && (((DiscussionReceiver.RespPackage)localObject2).jdField_a_of_type_Boolean))
+    if ((paramFromServiceMsg.isSuccess()) && (((DiscussionReceiver.RespPackage)localObject2).a))
     {
-      FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      paramObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      localObject1 = paramObject.a((String)localObject1);
+      FriendsManager localFriendsManager = (FriendsManager)this.h.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      paramObject = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      localObject1 = paramObject.d((String)localObject1);
       if (localObject1 == null)
       {
         paramToServiceMsg[0] = String.valueOf(localRespAddDiscussMember.DiscussUin);
@@ -3053,7 +3053,7 @@ public class DiscussionHandler
           Object localObject5 = new StringBuilder();
           ((StringBuilder)localObject5).append(localObject3);
           ((StringBuilder)localObject5).append("");
-          localObject5 = localFriendsManager.e(((StringBuilder)localObject5).toString());
+          localObject5 = localFriendsManager.m(((StringBuilder)localObject5).toString());
           if ((localObject5 != null) && (((Friends)localObject5).name != null)) {
             ((DiscussionMemberInfo)localObject4).memberName = ((Friends)localObject5).name;
           }
@@ -3064,13 +3064,13 @@ public class DiscussionHandler
       if (QLog.isColorLevel()) {
         QLog.d("DiscussionHandler", 2, localStringBuffer.toString());
       }
-      a(localRespAddDiscussMember.DiscussUin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localArrayList1, 1);
+      a(localRespAddDiscussMember.DiscussUin, this.h.getCurrentAccountUin(), localArrayList1, 1);
       ((DiscussionInfo)localObject1).DiscussionFlag |= 0x20000000;
       paramObject.b(localArrayList2);
       if (i != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper.c(((DiscussionInfo)localObject1).uin);
+        this.c.c(((DiscussionInfo)localObject1).uin);
       }
-      paramFromServiceMsg[2] = paramToServiceMsg.b;
+      paramFromServiceMsg[2] = paramToServiceMsg.c;
       notifyUI(1003, true, paramFromServiceMsg);
       return;
     }
@@ -3165,15 +3165,15 @@ public class DiscussionHandler
     }
     if ((i == 0) && (!TextUtils.isEmpty(paramFromServiceMsg)))
     {
-      paramObject = (DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-      localObject = paramObject.a(paramFromServiceMsg);
+      paramObject = (DiscussionManager)this.h.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+      localObject = paramObject.d(paramFromServiceMsg);
       if ((localObject != null) && (((DiscussionInfo)localObject).getHrExtra() != j))
       {
         ((DiscussionInfo)localObject).mOriginExtra &= 0xFFFFFFFC;
         ((DiscussionInfo)localObject).mOriginExtra |= j & 0x3;
         paramObject.a((DiscussionInfo)localObject);
-        QAVHrMeeting.a("handle_0x44c_rsp", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DiscussionInfo)localObject);
-        QAVHrMeeting.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFromServiceMsg);
+        QAVHrMeeting.a("handle_0x44c_rsp", this.h, (DiscussionInfo)localObject);
+        QAVHrMeeting.a(this.h, paramFromServiceMsg);
       }
     }
     paramObject = new StringBuilder();
@@ -3195,9 +3195,9 @@ public class DiscussionHandler
   
   public void onDestroy()
   {
-    GroupIconHelper localGroupIconHelper = this.jdField_a_of_type_ComTencentMobileqqAppFaceGroupIconHelper;
+    GroupIconHelper localGroupIconHelper = this.c;
     if (localGroupIconHelper != null) {
-      localGroupIconHelper.a();
+      localGroupIconHelper.c();
     }
     super.onDestroy();
   }
@@ -3333,8 +3333,8 @@ public class DiscussionHandler
     //   1: astore 17
     //   3: aload_1
     //   4: getfield 382	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   7: ldc_w 752
-    //   10: invokevirtual 911	android/os/Bundle:getSerializable	(Ljava/lang/String;)Ljava/io/Serializable;
+    //   7: ldc_w 730
+    //   10: invokevirtual 904	android/os/Bundle:getSerializable	(Ljava/lang/String;)Ljava/io/Serializable;
     //   13: checkcast 597	java/util/ArrayList
     //   16: astore_2
     //   17: aload_2
@@ -3350,7 +3350,7 @@ public class DiscussionHandler
     //   35: new 597	java/util/ArrayList
     //   38: dup
     //   39: iload 4
-    //   41: invokespecial 687	java/util/ArrayList:<init>	(I)V
+    //   41: invokespecial 664	java/util/ArrayList:<init>	(I)V
     //   44: astore_1
     //   45: aload_2
     //   46: ifnonnull +9 -> 55
@@ -3363,98 +3363,98 @@ public class DiscussionHandler
     //   61: new 521	java/util/HashMap
     //   64: dup
     //   65: iload 4
-    //   67: invokespecial 686	java/util/HashMap:<init>	(I)V
+    //   67: invokespecial 663	java/util/HashMap:<init>	(I)V
     //   70: astore 16
     //   72: aload 17
     //   74: aload_2
     //   75: aload_1
     //   76: aload 16
-    //   78: invokespecial 2020	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/HashMap;)V
+    //   78: invokespecial 2025	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/HashMap;)V
     //   81: aload_1
     //   82: astore_2
-    //   83: new 2022	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
+    //   83: new 2027	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
     //   86: dup
     //   87: aload 17
     //   89: aload_3
-    //   90: checkcast 824	[B
-    //   93: checkcast 824	[B
+    //   90: checkcast 817	[B
+    //   93: checkcast 817	[B
     //   96: aload_1
     //   97: aload 16
-    //   99: invokespecial 2025	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList:<init>	(Lcom/tencent/mobileqq/app/DiscussionHandler;[BLjava/util/ArrayList;Ljava/util/HashMap;)V
-    //   102: invokevirtual 2028	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList:a	()Lcom/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList;
+    //   99: invokespecial 2030	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList:<init>	(Lcom/tencent/mobileqq/app/DiscussionHandler;[BLjava/util/ArrayList;Ljava/util/HashMap;)V
+    //   102: invokevirtual 2033	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList:c	()Lcom/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList;
     //   105: astore_3
     //   106: aload_1
     //   107: astore_2
     //   108: aload_3
-    //   109: invokevirtual 2029	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList:a	()Z
+    //   109: invokevirtual 2034	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList:a	()Z
     //   112: istore 9
     //   114: iload 9
     //   116: ifeq +15 -> 131
     //   119: aload_0
-    //   120: invokespecial 918	com/tencent/mobileqq/app/DiscussionHandler:a	()Z
+    //   120: invokespecial 911	com/tencent/mobileqq/app/DiscussionHandler:e	()Z
     //   123: ifeq +7 -> 130
     //   126: aload_0
-    //   127: invokevirtual 920	com/tencent/mobileqq/app/DiscussionHandler:c	()V
+    //   127: invokevirtual 913	com/tencent/mobileqq/app/DiscussionHandler:d	()V
     //   130: return
     //   131: aload_1
     //   132: astore_2
     //   133: aload_3
-    //   134: invokevirtual 2030	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList:a	()Ljava/util/List;
+    //   134: invokevirtual 2035	com/tencent/mobileqq/app/DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList:b	()Ljava/util/List;
     //   137: astore_3
     //   138: iconst_0
     //   139: istore 4
     //   141: aload_1
     //   142: astore_2
     //   143: aload_3
-    //   144: invokeinterface 655 1 0
+    //   144: invokeinterface 654 1 0
     //   149: istore 5
     //   151: iload 4
     //   153: iload 5
     //   155: if_icmpge +529 -> 684
     //   158: aload_3
     //   159: iload 4
-    //   161: invokeinterface 1356 2 0
-    //   166: checkcast 2032	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp
+    //   161: invokeinterface 1299 2 0
+    //   166: checkcast 2037	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp
     //   169: astore_2
     //   170: aload_2
-    //   171: getfield 2033	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp:uint64_conf_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   174: invokevirtual 93	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   177: invokestatic 99	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   171: getfield 2038	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp:uint64_conf_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   174: invokevirtual 99	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   177: invokestatic 105	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   180: astore 18
     //   182: aload_2
-    //   183: getfield 2034	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp:msg_conf_base_info	Ltencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo;
-    //   186: invokevirtual 2035	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   183: getfield 2039	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp:msg_conf_base_info	Ltencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo;
+    //   186: invokevirtual 2040	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
     //   189: checkcast 439	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo
     //   192: astore 19
     //   194: aload_2
-    //   195: getfield 2039	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp:rpt_msg_member_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   198: invokevirtual 2043	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   195: getfield 2044	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp:rpt_msg_member_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   198: invokevirtual 2048	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   201: astore 20
     //   203: aload_2
-    //   204: getfield 2046	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp:uint32_server_remark_timestamp	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   207: invokevirtual 111	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   204: getfield 2051	tencent/im/oidb/cmd0x58b/cmd0x58b$GetConfInfoRsp:uint32_server_remark_timestamp	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   207: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   210: istore 5
     //   212: aload 19
-    //   214: getfield 2049	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_err_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   217: invokevirtual 111	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   214: getfield 2054	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_err_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   217: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   220: istore 7
     //   222: aload 19
     //   224: getfield 583	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_info_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   227: invokevirtual 111	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   227: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   230: istore 6
     //   232: aload 19
-    //   234: getfield 1698	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_conf_meeting_origin	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   237: invokevirtual 111	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   234: getfield 1714	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_conf_meeting_origin	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   237: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   240: sipush 255
     //   243: iand
     //   244: i2l
     //   245: lstore 10
     //   247: aload 19
-    //   249: getfield 1699	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_conf_meeting_option	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   252: invokevirtual 111	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   249: getfield 1715	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_conf_meeting_option	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   252: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   255: istore 8
     //   257: iload 8
-    //   259: ldc_w 2050
+    //   259: ldc_w 2055
     //   262: iand
     //   263: i2l
     //   264: lstore 12
@@ -3466,7 +3466,7 @@ public class DiscussionHandler
     //   275: iload 6
     //   277: lload 10
     //   279: lload 12
-    //   281: invokespecial 2052	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Ltencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo;IIIJJ)V
+    //   281: invokespecial 2057	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Ltencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo;IIIJJ)V
     //   284: iload 7
     //   286: ifeq +35 -> 321
     //   289: iload 7
@@ -3474,7 +3474,7 @@ public class DiscussionHandler
     //   292: if_icmpne +26 -> 318
     //   295: aload 16
     //   297: aload 18
-    //   299: invokevirtual 710	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   299: invokevirtual 687	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   302: pop
     //   303: goto +15 -> 318
     //   306: astore 16
@@ -3488,48 +3488,48 @@ public class DiscussionHandler
     //   318: goto +528 -> 846
     //   321: aload 16
     //   323: aload 18
-    //   325: invokevirtual 710	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   325: invokevirtual 687	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   328: pop
     //   329: aload 19
     //   331: getfield 447	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   334: invokevirtual 111	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   334: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   337: istore 7
     //   339: aload 19
     //   341: getfield 457	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:bytes_conf_name	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   344: invokevirtual 139	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   347: invokevirtual 144	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   344: invokevirtual 145	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   347: invokevirtual 150	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   350: astore 23
     //   352: aload_0
     //   353: astore_2
     //   354: aload_2
-    //   355: getfield 39	com/tencent/mobileqq/app/DiscussionHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   358: getstatic 165	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
-    //   361: invokevirtual 169	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   364: checkcast 171	com/tencent/mobileqq/app/FriendsManager
+    //   355: getfield 45	com/tencent/mobileqq/app/DiscussionHandler:h	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   358: getstatic 171	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
+    //   361: invokevirtual 175	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   364: checkcast 177	com/tencent/mobileqq/app/FriendsManager
     //   367: astore 21
     //   369: aload_2
-    //   370: getfield 39	com/tencent/mobileqq/app/DiscussionHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   373: getstatic 648	com/tencent/mobileqq/app/QQManagerFactory:DISCUSSION_MANAGER	I
-    //   376: invokevirtual 169	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   370: getfield 45	com/tencent/mobileqq/app/DiscussionHandler:h	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   373: getstatic 647	com/tencent/mobileqq/app/QQManagerFactory:DISCUSSION_MANAGER	I
+    //   376: invokevirtual 175	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
     //   379: checkcast 515	com/tencent/mobileqq/app/DiscussionManager
     //   382: astore 22
     //   384: aload 22
     //   386: aload 18
-    //   388: invokevirtual 1051	com/tencent/mobileqq/app/DiscussionManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionInfo;
+    //   388: invokevirtual 981	com/tencent/mobileqq/app/DiscussionManager:d	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionInfo;
     //   391: astore 17
     //   393: aload 17
     //   395: ifnonnull +176 -> 571
-    //   398: new 75	com/tencent/mobileqq/data/DiscussionInfo
+    //   398: new 81	com/tencent/mobileqq/data/DiscussionInfo
     //   401: dup
-    //   402: invokespecial 690	com/tencent/mobileqq/data/DiscussionInfo:<init>	()V
+    //   402: invokespecial 667	com/tencent/mobileqq/data/DiscussionInfo:<init>	()V
     //   405: astore 17
     //   407: aload 17
     //   409: aload 18
-    //   411: putfield 78	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
+    //   411: putfield 84	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
     //   414: aload 17
     //   416: aload 19
     //   418: getfield 452	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint32_create_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   421: invokevirtual 111	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   421: invokevirtual 117	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   424: i2l
     //   425: putfield 472	com/tencent/mobileqq/data/DiscussionInfo:createTime	J
     //   428: aload 17
@@ -3538,14 +3538,14 @@ public class DiscussionHandler
     //   435: aload 17
     //   437: aload 19
     //   439: getfield 442	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint64_owner_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   442: invokevirtual 93	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   445: invokestatic 99	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   442: invokevirtual 99	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   445: invokestatic 105	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   448: putfield 475	com/tencent/mobileqq/data/DiscussionInfo:ownerUin	Ljava/lang/String;
     //   451: aload 17
     //   453: aload 19
     //   455: getfield 478	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint64_inherit_owner_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   458: invokevirtual 93	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   461: invokestatic 99	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   458: invokevirtual 99	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   461: invokestatic 105	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   464: putfield 481	com/tencent/mobileqq/data/DiscussionInfo:inheritOwnerUin	Ljava/lang/String;
     //   467: aload 17
     //   469: iload 5
@@ -3554,12 +3554,12 @@ public class DiscussionHandler
     //   475: aload 17
     //   477: aload 19
     //   479: getfield 493	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint64_group_code	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   482: invokevirtual 93	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   482: invokevirtual 99	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   485: putfield 496	com/tencent/mobileqq/data/DiscussionInfo:groupCode	J
     //   488: aload 17
     //   490: aload 19
     //   492: getfield 487	tencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo:uint64_group_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   495: invokevirtual 93	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   495: invokevirtual 99	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   498: putfield 490	com/tencent/mobileqq/data/DiscussionInfo:groupUin	J
     //   501: aload 17
     //   503: lload 10
@@ -3585,7 +3585,7 @@ public class DiscussionHandler
     //   547: aload_2
     //   548: aload 18
     //   550: aload 17
-    //   552: invokespecial 2054	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Lcom/tencent/mobileqq/data/DiscussionInfo;)V
+    //   552: invokespecial 2059	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Lcom/tencent/mobileqq/data/DiscussionInfo;)V
     //   555: aload 17
     //   557: astore_2
     //   558: goto +93 -> 651
@@ -3596,7 +3596,7 @@ public class DiscussionHandler
     //   567: astore_1
     //   568: goto +214 -> 782
     //   571: aload 17
-    //   573: getfield 697	com/tencent/mobileqq/data/DiscussionInfo:infoSeq	J
+    //   573: getfield 674	com/tencent/mobileqq/data/DiscussionInfo:infoSeq	J
     //   576: lstore 14
     //   578: lload 14
     //   580: iload 6
@@ -3616,9 +3616,9 @@ public class DiscussionHandler
     //   604: aload 23
     //   606: aload 22
     //   608: aload_2
-    //   609: invokespecial 2056	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/util/ArrayList;ILjava/lang/String;Ljava/util/List;JJILjava/lang/String;Lcom/tencent/mobileqq/app/DiscussionManager;Lcom/tencent/mobileqq/data/DiscussionInfo;)V
+    //   609: invokespecial 2061	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/util/ArrayList;ILjava/lang/String;Ljava/util/List;JJILjava/lang/String;Lcom/tencent/mobileqq/app/DiscussionManager;Lcom/tencent/mobileqq/data/DiscussionInfo;)V
     //   612: aload_2
-    //   613: invokevirtual 127	com/tencent/mobileqq/data/DiscussionInfo:isDiscussHrMeeting	()Z
+    //   613: invokevirtual 133	com/tencent/mobileqq/data/DiscussionInfo:isDiscussHrMeeting	()Z
     //   616: istore 9
     //   618: iload 9
     //   620: ifne +220 -> 840
@@ -3633,7 +3633,7 @@ public class DiscussionHandler
     //   639: aload 23
     //   641: aload 22
     //   643: aload 17
-    //   645: invokespecial 2058	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Ltencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo;IJJILjava/lang/String;Lcom/tencent/mobileqq/app/DiscussionManager;Lcom/tencent/mobileqq/data/DiscussionInfo;)V
+    //   645: invokespecial 2063	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Ltencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo;IJJILjava/lang/String;Lcom/tencent/mobileqq/app/DiscussionManager;Lcom/tencent/mobileqq/data/DiscussionInfo;)V
     //   648: goto +192 -> 840
     //   651: aload_0
     //   652: aload 18
@@ -3642,7 +3642,7 @@ public class DiscussionHandler
     //   658: aload 21
     //   660: aload 22
     //   662: aload_2
-    //   663: invokespecial 2060	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Ltencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo;Ljava/util/List;Lcom/tencent/mobileqq/app/FriendsManager;Lcom/tencent/mobileqq/app/DiscussionManager;Lcom/tencent/mobileqq/data/DiscussionInfo;)V
+    //   663: invokespecial 2065	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/lang/String;Ltencent/im/oidb/cmd0x58b/cmd0x58b$ConfBaseInfo;Ljava/util/List;Lcom/tencent/mobileqq/app/FriendsManager;Lcom/tencent/mobileqq/app/DiscussionManager;Lcom/tencent/mobileqq/data/DiscussionInfo;)V
     //   666: aload_1
     //   667: iload 4
     //   669: iconst_2
@@ -3657,18 +3657,18 @@ public class DiscussionHandler
     //   684: aload_1
     //   685: astore_3
     //   686: aload 16
-    //   688: invokevirtual 2061	java/util/HashMap:size	()I
+    //   688: invokevirtual 2066	java/util/HashMap:size	()I
     //   691: istore 4
     //   693: iload 4
     //   695: ifle +29 -> 724
     //   698: aload 16
-    //   700: invokevirtual 2065	java/util/HashMap:values	()Ljava/util/Collection;
+    //   700: invokevirtual 2070	java/util/HashMap:values	()Ljava/util/Collection;
     //   703: astore_1
     //   704: aload_0
     //   705: astore_2
     //   706: aload_2
     //   707: aload_1
-    //   708: invokevirtual 2067	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/util/Collection;)V
+    //   708: invokevirtual 2072	com/tencent/mobileqq/app/DiscussionHandler:a	(Ljava/util/Collection;)V
     //   711: goto +13 -> 724
     //   714: astore_1
     //   715: goto +67 -> 782
@@ -3684,7 +3684,7 @@ public class DiscussionHandler
     //   731: aload_3
     //   732: invokevirtual 402	com/tencent/mobileqq/app/DiscussionHandler:notifyUI	(IZLjava/lang/Object;)V
     //   735: aload_0
-    //   736: invokespecial 918	com/tencent/mobileqq/app/DiscussionHandler:a	()Z
+    //   736: invokespecial 911	com/tencent/mobileqq/app/DiscussionHandler:e	()Z
     //   739: ifeq +80 -> 819
     //   742: goto +73 -> 815
     //   745: astore_1
@@ -3712,30 +3712,30 @@ public class DiscussionHandler
     //   778: astore_2
     //   779: aload 16
     //   781: astore_1
-    //   782: invokestatic 254	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   782: invokestatic 260	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   785: ifeq +14 -> 799
     //   788: ldc_w 429
     //   791: iconst_2
-    //   792: ldc_w 2069
+    //   792: ldc_w 2074
     //   795: aload_1
-    //   796: invokestatic 1299	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   796: invokestatic 1237	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   799: aload_2
     //   800: sipush 1001
     //   803: iconst_0
     //   804: aload_3
     //   805: invokevirtual 402	com/tencent/mobileqq/app/DiscussionHandler:notifyUI	(IZLjava/lang/Object;)V
     //   808: aload_0
-    //   809: invokespecial 918	com/tencent/mobileqq/app/DiscussionHandler:a	()Z
+    //   809: invokespecial 911	com/tencent/mobileqq/app/DiscussionHandler:e	()Z
     //   812: ifeq +7 -> 819
     //   815: aload_0
-    //   816: invokevirtual 920	com/tencent/mobileqq/app/DiscussionHandler:c	()V
+    //   816: invokevirtual 913	com/tencent/mobileqq/app/DiscussionHandler:d	()V
     //   819: return
     //   820: astore_1
     //   821: aload_0
-    //   822: invokespecial 918	com/tencent/mobileqq/app/DiscussionHandler:a	()Z
+    //   822: invokespecial 911	com/tencent/mobileqq/app/DiscussionHandler:e	()Z
     //   825: ifeq +7 -> 832
     //   828: aload_0
-    //   829: invokevirtual 920	com/tencent/mobileqq/app/DiscussionHandler:c	()V
+    //   829: invokevirtual 913	com/tencent/mobileqq/app/DiscussionHandler:d	()V
     //   832: goto +5 -> 837
     //   835: aload_1
     //   836: athrow
@@ -3828,7 +3828,7 @@ public class DiscussionHandler
     long l = System.currentTimeMillis();
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      if (a(paramToServiceMsg, paramFromServiceMsg)) {
+      if (z(paramToServiceMsg, paramFromServiceMsg)) {
         return;
       }
       paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -3991,7 +3991,7 @@ public class DiscussionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DiscussionHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -48,7 +48,7 @@ public class HotPicDownLoader
     return null;
   }
   
-  public static URL a(String paramString)
+  public static URL b(String paramString)
   {
     try
     {
@@ -62,7 +62,7 @@ public class HotPicDownLoader
     return null;
   }
   
-  public static boolean a(String paramString)
+  public static boolean c(String paramString)
   {
     return a(paramString).exists();
   }
@@ -70,9 +70,9 @@ public class HotPicDownLoader
   protected int a(String paramString, File paramFile)
   {
     paramString = new DownloadTask(paramString.replaceFirst("https", "http"), paramFile);
-    paramString.e = 20000;
-    paramString.n = true;
-    paramString.b = 2;
+    paramString.v = 20000;
+    paramString.J = true;
+    paramString.e = 2;
     return DownloaderFactory.a(paramString, null, null);
   }
   
@@ -93,7 +93,7 @@ public class HotPicDownLoader
     try
     {
       paramDownloadParams = a((HotPicData)paramDownloadParams.mExtraInfo);
-      return a(paramDownloadParams);
+      return c(paramDownloadParams);
     }
     catch (Exception paramDownloadParams)
     {
@@ -129,11 +129,11 @@ public class HotPicDownLoader
       return localObject1;
     }
     ((File)localObject1).getParentFile().mkdirs();
-    if ((com.tencent.mobileqq.util.Utils.a()) && (com.tencent.mobileqq.util.Utils.b() < 31457280L))
+    if ((com.tencent.mobileqq.util.Utils.b()) && (com.tencent.mobileqq.util.Utils.c() < 31457280L))
     {
       paramDownloadParams = new StringBuilder();
       paramDownloadParams.append("SD card free space is ");
-      paramDownloadParams.append(com.tencent.mobileqq.util.Utils.b());
+      paramDownloadParams.append(com.tencent.mobileqq.util.Utils.c());
       throw new IOException(paramDownloadParams.toString());
     }
     Object localObject3 = new File(a);
@@ -190,7 +190,7 @@ public class HotPicDownLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicDownLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public final class hd_video_voip_2$CmdPhoneSpeedTestRsp$IPSpeedSvrInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.CmdPhoneSpeedTestRsp.IPSpeedSvrInfo
  * JD-Core Version:    0.7.0.1
  */

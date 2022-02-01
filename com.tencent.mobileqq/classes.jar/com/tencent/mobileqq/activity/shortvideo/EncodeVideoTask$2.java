@@ -14,8 +14,8 @@ class EncodeVideoTask$2
   
   public void a(int paramInt)
   {
-    if (EncodeVideoTask.a(this.a) != null) {
-      EncodeVideoTask.a(this.a).a(paramInt);
+    if (EncodeVideoTask.n(this.a) != null) {
+      EncodeVideoTask.n(this.a).a(paramInt);
     }
   }
   
@@ -23,14 +23,14 @@ class EncodeVideoTask$2
   {
     if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null))
     {
-      EncodeVideoTask.a(this.a).a(paramPublishVideoEntry, paramString2);
+      EncodeVideoTask.b(this.a).a(paramPublishVideoEntry, paramString2);
     }
     else
     {
       if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", EncodeVideoTask.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
+        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", EncodeVideoTask.o(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
       }
-      EncodeVideoTask.a(this.a).a(paramInt);
+      EncodeVideoTask.b(this.a).a(paramInt);
     }
     ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
   }
@@ -44,14 +44,14 @@ class EncodeVideoTask$2
       localStringBuilder.append(paramString);
       QLog.i("EncodeVideoTask", 2, localStringBuilder.toString());
     }
-    if (EncodeVideoTask.b(this.a))
+    if (EncodeVideoTask.c(this.a))
     {
       b(paramPublishVideoEntry, paramString);
       return;
     }
     if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (FileUtils.fileExistsAndNotEmpty(paramPublishVideoEntry.doodlePath)))
     {
-      EncodeVideoTask.a(paramString, paramPublishVideoEntry, EncodeVideoTask.a(this.a));
+      EncodeVideoTask.a(paramString, paramPublishVideoEntry, EncodeVideoTask.b(this.a));
       return;
     }
     b(paramPublishVideoEntry, paramString);
@@ -64,7 +64,7 @@ class EncodeVideoTask$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2
  * JD-Core Version:    0.7.0.1
  */

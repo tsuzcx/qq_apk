@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.view.SupportMenuInflater;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
@@ -33,7 +34,7 @@ public class PopupMenu
   
   public PopupMenu(@NonNull Context paramContext, @NonNull View paramView, int paramInt)
   {
-    this(paramContext, paramView, paramInt, 2131034953, 0);
+    this(paramContext, paramView, paramInt, R.attr.popupMenuStyle, 0);
   }
   
   public PopupMenu(@NonNull Context paramContext, @NonNull View paramView, int paramInt1, @AttrRes int paramInt2, @StyleRes int paramInt3)

@@ -15,22 +15,22 @@ class OCRResultFragmentNew$10$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrRspResult.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrRspResult.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    if ((this.a) && (this.b.f != null) && (!this.b.f.isEmpty()))
     {
       ((SuccessRateMeasure)MetricsApi.getDefault().get("OCR_REQUEST", SuccessRateMeasure.class)).recordSuccess(new String[] { "requestOcr", "success" });
-      OCRPerformUtil.jdField_b_of_type_JavaLangCharSequence = OCRPerformUtil.a(this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrRspResult.jdField_a_of_type_JavaUtilArrayList);
-      OCRPerformUtil.jdField_b_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder = OCRPerformUtil.a(OCRPerformUtil.jdField_b_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder, OCRPerformUtil.a.a, this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrRspResult.b, this.jdField_a_of_type_ComTencentMobileqqGalleryPicocrPicOcrRspResult.jdField_a_of_type_JavaUtilHashMap);
-      OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$10.a, 0);
+      OCRPerformUtil.f = OCRPerformUtil.a(this.b.f);
+      OCRPerformUtil.d = OCRPerformUtil.a(OCRPerformUtil.d, OCRPerformUtil.b.a, this.b.g, this.b.h);
+      OCRResultFragmentNew.b(this.c.a, 0);
       return;
     }
     ((SuccessRateMeasure)MetricsApi.getDefault().get("OCR_REQUEST", SuccessRateMeasure.class)).recordFail(new String[] { "requestOcr", "failure" });
-    QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$10.a), 1, 2131699075, 0).a();
+    QQToast.makeText(OCRResultFragmentNew.a(this.c.a), 1, 2131897084, 0).show();
     OCRPerformUtil.a("0X800AD1B", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1
  * JD-Core Version:    0.7.0.1
  */

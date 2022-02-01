@@ -50,29 +50,29 @@ public class AppBarLayout
   extends LinearLayout
   implements CoordinatorLayout.AttachedBehavior
 {
-  private static final int jdField_a_of_type_Int = R.style.h;
+  private static final int a = R.style.j;
+  private int b;
+  private int c = -1;
+  private int d = -1;
+  private int e = -1;
+  private boolean f;
+  private int g = 0;
   @Nullable
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  @Nullable
-  private WindowInsetsCompat jdField_a_of_type_AndroidxCoreViewWindowInsetsCompat;
-  @Nullable
-  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<AppBarLayout.BaseOnOffsetChangedListener> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = -1;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int = -1;
-  private boolean jdField_e_of_type_Boolean;
-  private int f = 0;
+  private WindowInsetsCompat h;
+  private List<AppBarLayout.BaseOnOffsetChangedListener> i;
+  private boolean j;
+  private boolean k;
+  private boolean l;
+  private boolean m;
   @IdRes
-  private int g;
+  private int n;
+  @Nullable
+  private WeakReference<View> o;
+  @Nullable
+  private ValueAnimator p;
+  private int[] q;
+  @Nullable
+  private Drawable r;
   
   public AppBarLayout(@NonNull Context paramContext)
   {
@@ -81,21 +81,21 @@ public class AppBarLayout
   
   public AppBarLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.jdField_a_of_type_Int);
+    this(paramContext, paramAttributeSet, R.attr.b);
   }
   
   public AppBarLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
     paramContext = getContext();
     setOrientation(1);
     if (Build.VERSION.SDK_INT >= 21)
     {
       ViewUtilsLollipop.a(this);
-      ViewUtilsLollipop.a(this, paramAttributeSet, paramInt, jdField_a_of_type_Int);
+      ViewUtilsLollipop.a(this, paramAttributeSet, paramInt, a);
     }
-    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.jdField_a_of_type_ArrayOfInt, paramInt, jdField_a_of_type_Int, new int[0]);
-    ViewCompat.setBackground(this, paramAttributeSet.getDrawable(R.styleable.jdField_a_of_type_Int));
+    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.k, paramInt, a, new int[0]);
+    ViewCompat.setBackground(this, paramAttributeSet.getDrawable(R.styleable.l));
     if ((getBackground() instanceof ColorDrawable))
     {
       ColorDrawable localColorDrawable = (ColorDrawable)getBackground();
@@ -104,67 +104,31 @@ public class AppBarLayout
       localMaterialShapeDrawable.a(paramContext);
       ViewCompat.setBackground(this, localMaterialShapeDrawable);
     }
-    if (paramAttributeSet.hasValue(R.styleable.jdField_e_of_type_Int)) {
-      a(paramAttributeSet.getBoolean(R.styleable.jdField_e_of_type_Int, false), false, false);
+    if (paramAttributeSet.hasValue(R.styleable.p)) {
+      a(paramAttributeSet.getBoolean(R.styleable.p, false), false, false);
     }
-    if ((Build.VERSION.SDK_INT >= 21) && (paramAttributeSet.hasValue(R.styleable.jdField_d_of_type_Int))) {
-      ViewUtilsLollipop.a(this, paramAttributeSet.getDimensionPixelSize(R.styleable.jdField_d_of_type_Int, 0));
+    if ((Build.VERSION.SDK_INT >= 21) && (paramAttributeSet.hasValue(R.styleable.o))) {
+      ViewUtilsLollipop.a(this, paramAttributeSet.getDimensionPixelSize(R.styleable.o, 0));
     }
     if (Build.VERSION.SDK_INT >= 26)
     {
-      if (paramAttributeSet.hasValue(R.styleable.jdField_c_of_type_Int)) {
-        setKeyboardNavigationCluster(paramAttributeSet.getBoolean(R.styleable.jdField_c_of_type_Int, false));
+      if (paramAttributeSet.hasValue(R.styleable.n)) {
+        setKeyboardNavigationCluster(paramAttributeSet.getBoolean(R.styleable.n, false));
       }
-      if (paramAttributeSet.hasValue(R.styleable.jdField_b_of_type_Int)) {
-        setTouchscreenBlocksFocus(paramAttributeSet.getBoolean(R.styleable.jdField_b_of_type_Int, false));
+      if (paramAttributeSet.hasValue(R.styleable.m)) {
+        setTouchscreenBlocksFocus(paramAttributeSet.getBoolean(R.styleable.m, false));
       }
     }
-    this.jdField_e_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.f, false);
-    this.g = paramAttributeSet.getResourceId(R.styleable.g, -1);
-    setStatusBarForeground(paramAttributeSet.getDrawable(R.styleable.h));
+    this.m = paramAttributeSet.getBoolean(R.styleable.q, false);
+    this.n = paramAttributeSet.getResourceId(R.styleable.r, -1);
+    setStatusBarForeground(paramAttributeSet.getDrawable(R.styleable.s));
     paramAttributeSet.recycle();
     ViewCompat.setOnApplyWindowInsetsListener(this, new AppBarLayout.1(this));
   }
   
-  @Nullable
-  private View a(@Nullable View paramView)
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    Object localObject2 = null;
-    if (localObject1 == null)
-    {
-      int i = this.g;
-      if (i != -1)
-      {
-        if (paramView != null) {
-          paramView = paramView.findViewById(i);
-        } else {
-          paramView = null;
-        }
-        localObject1 = paramView;
-        if (paramView == null)
-        {
-          localObject1 = paramView;
-          if ((getParent() instanceof ViewGroup)) {
-            localObject1 = ((ViewGroup)getParent()).findViewById(this.g);
-          }
-        }
-        if (localObject1 != null) {
-          this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject1);
-        }
-      }
-    }
-    localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    paramView = localObject2;
-    if (localObject1 != null) {
-      paramView = (View)((WeakReference)localObject1).get();
-    }
-    return paramView;
-  }
-  
   private void a(@NonNull MaterialShapeDrawable paramMaterialShapeDrawable, boolean paramBoolean)
   {
-    float f1 = getResources().getDimension(R.dimen.jdField_a_of_type_Int);
+    float f1 = getResources().getDimension(R.dimen.a);
     float f2;
     if (paramBoolean) {
       f2 = 0.0F;
@@ -174,96 +138,132 @@ public class AppBarLayout
     if (!paramBoolean) {
       f1 = 0.0F;
     }
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.p;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { f2, f1 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(getResources().getInteger(R.integer.jdField_a_of_type_Int));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(AnimationUtils.a);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new AppBarLayout.2(this, paramMaterialShapeDrawable));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.p = ValueAnimator.ofFloat(new float[] { f2, f1 });
+    this.p.setDuration(getResources().getInteger(R.integer.a));
+    this.p.setInterpolator(AnimationUtils.a);
+    this.p.addUpdateListener(new AppBarLayout.2(this, paramMaterialShapeDrawable));
+    this.p.start();
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int i;
+    int i1;
     if (paramBoolean1) {
-      i = 1;
+      i1 = 1;
     } else {
-      i = 2;
+      i1 = 2;
     }
-    int k = 0;
-    int j;
+    int i3 = 0;
+    int i2;
     if (paramBoolean2) {
-      j = 4;
+      i2 = 4;
     } else {
-      j = 0;
+      i2 = 0;
     }
     if (paramBoolean3) {
-      k = 8;
+      i3 = 8;
     }
-    this.f = (i | j | k);
+    this.g = (i1 | i2 | i3);
     requestLayout();
   }
   
-  private void b()
+  @Nullable
+  private View b(@Nullable View paramView)
   {
-    setWillNotDraw(d() ^ true);
+    Object localObject1 = this.o;
+    Object localObject2 = null;
+    if (localObject1 == null)
+    {
+      int i1 = this.n;
+      if (i1 != -1)
+      {
+        if (paramView != null) {
+          paramView = paramView.findViewById(i1);
+        } else {
+          paramView = null;
+        }
+        localObject1 = paramView;
+        if (paramView == null)
+        {
+          localObject1 = paramView;
+          if ((getParent() instanceof ViewGroup)) {
+            localObject1 = ((ViewGroup)getParent()).findViewById(this.n);
+          }
+        }
+        if (localObject1 != null) {
+          this.o = new WeakReference(localObject1);
+        }
+      }
+    }
+    localObject1 = this.o;
+    paramView = localObject2;
+    if (localObject1 != null) {
+      paramView = (View)((WeakReference)localObject1).get();
+    }
+    return paramView;
   }
   
   private boolean b(boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Boolean != paramBoolean)
+    if (this.k != paramBoolean)
     {
-      this.jdField_c_of_type_Boolean = paramBoolean;
+      this.k = paramBoolean;
       refreshDrawableState();
       return true;
     }
     return false;
   }
   
-  private void c()
+  private void f()
   {
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_e_of_type_Int = -1;
+    setWillNotDraw(g() ^ true);
   }
   
-  private void d()
+  private boolean g()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localWeakReference != null) {
-      localWeakReference.clear();
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    return (this.r != null) && (getTopInset() > 0);
   }
   
-  private boolean d()
+  private boolean h()
   {
-    return (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (g() > 0);
-  }
-  
-  private boolean e()
-  {
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int i2 = getChildCount();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (((AppBarLayout.LayoutParams)getChildAt(i).getLayoutParams()).a()) {
+      if (((AppBarLayout.LayoutParams)getChildAt(i1).getLayoutParams()).c()) {
         return true;
       }
-      i += 1;
+      i1 += 1;
     }
     return false;
   }
   
-  private boolean f()
+  private void i()
   {
-    int i = getChildCount();
+    this.c = -1;
+    this.d = -1;
+    this.e = -1;
+  }
+  
+  private void j()
+  {
+    WeakReference localWeakReference = this.o;
+    if (localWeakReference != null) {
+      localWeakReference.clear();
+    }
+    this.o = null;
+  }
+  
+  private boolean k()
+  {
+    int i1 = getChildCount();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (i > 0)
+    if (i1 > 0)
     {
       View localView = getChildAt(0);
       bool1 = bool2;
@@ -278,51 +278,6 @@ public class AppBarLayout
     return bool1;
   }
   
-  public final int a()
-  {
-    int i = this.jdField_c_of_type_Int;
-    if (i != -1) {
-      return i;
-    }
-    int m = getChildCount();
-    int j = 0;
-    i = 0;
-    int k;
-    for (;;)
-    {
-      k = i;
-      if (j >= m) {
-        break;
-      }
-      View localView = getChildAt(j);
-      AppBarLayout.LayoutParams localLayoutParams = (AppBarLayout.LayoutParams)localView.getLayoutParams();
-      int i1 = localView.getMeasuredHeight();
-      int n = localLayoutParams.jdField_a_of_type_Int;
-      k = i;
-      if ((n & 0x1) == 0) {
-        break;
-      }
-      k = i + (i1 + localLayoutParams.topMargin + localLayoutParams.bottomMargin);
-      i = k;
-      if (j == 0)
-      {
-        i = k;
-        if (ViewCompat.getFitsSystemWindows(localView)) {
-          i = k - g();
-        }
-      }
-      if ((n & 0x2) != 0)
-      {
-        k = i - ViewCompat.getMinimumHeight(localView);
-        break;
-      }
-      j += 1;
-    }
-    i = Math.max(0, k);
-    this.jdField_c_of_type_Int = i;
-    return i;
-  }
-  
   WindowInsetsCompat a(WindowInsetsCompat paramWindowInsetsCompat)
   {
     WindowInsetsCompat localWindowInsetsCompat;
@@ -331,10 +286,10 @@ public class AppBarLayout
     } else {
       localWindowInsetsCompat = null;
     }
-    if (!ObjectsCompat.equals(this.jdField_a_of_type_AndroidxCoreViewWindowInsetsCompat, localWindowInsetsCompat))
+    if (!ObjectsCompat.equals(this.h, localWindowInsetsCompat))
     {
-      this.jdField_a_of_type_AndroidxCoreViewWindowInsetsCompat = localWindowInsetsCompat;
-      b();
+      this.h = localWindowInsetsCompat;
+      f();
       requestLayout();
     }
     return paramWindowInsetsCompat;
@@ -361,40 +316,35 @@ public class AppBarLayout
     return new AppBarLayout.LayoutParams(paramLayoutParams);
   }
   
-  void a()
-  {
-    this.f = 0;
-  }
-  
   void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
     if (!willNotDraw()) {
       ViewCompat.postInvalidateOnAnimation(this);
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.i;
     if (localObject != null)
     {
-      int i = 0;
-      int j = ((List)localObject).size();
-      while (i < j)
+      int i1 = 0;
+      int i2 = ((List)localObject).size();
+      while (i1 < i2)
       {
-        localObject = (AppBarLayout.BaseOnOffsetChangedListener)this.jdField_a_of_type_JavaUtilList.get(i);
+        localObject = (AppBarLayout.BaseOnOffsetChangedListener)this.i.get(i1);
         if (localObject != null) {
           ((AppBarLayout.BaseOnOffsetChangedListener)localObject).a(this, paramInt);
         }
-        i += 1;
+        i1 += 1;
       }
     }
   }
   
   public void a(@Nullable AppBarLayout.BaseOnOffsetChangedListener paramBaseOnOffsetChangedListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.i == null) {
+      this.i = new ArrayList();
     }
-    if ((paramBaseOnOffsetChangedListener != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramBaseOnOffsetChangedListener))) {
-      this.jdField_a_of_type_JavaUtilList.add(paramBaseOnOffsetChangedListener);
+    if ((paramBaseOnOffsetChangedListener != null) && (!this.i.contains(paramBaseOnOffsetChangedListener))) {
+      this.i.add(paramBaseOnOffsetChangedListener);
     }
   }
   
@@ -403,14 +353,9 @@ public class AppBarLayout
     a(paramOnOffsetChangedListener);
   }
   
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   boolean a(@Nullable View paramView)
   {
-    View localView = a(paramView);
+    View localView = b(paramView);
     if (localView != null) {
       paramView = localView;
     }
@@ -419,11 +364,11 @@ public class AppBarLayout
   
   boolean a(boolean paramBoolean)
   {
-    if (this.jdField_d_of_type_Boolean != paramBoolean)
+    if (this.l != paramBoolean)
     {
-      this.jdField_d_of_type_Boolean = paramBoolean;
+      this.l = paramBoolean;
       refreshDrawableState();
-      if ((this.jdField_e_of_type_Boolean) && ((getBackground() instanceof MaterialShapeDrawable))) {
+      if ((this.m) && ((getBackground() instanceof MaterialShapeDrawable))) {
         a((MaterialShapeDrawable)getBackground(), paramBoolean);
       }
       return true;
@@ -431,14 +376,9 @@ public class AppBarLayout
     return false;
   }
   
-  int b()
-  {
-    return a();
-  }
-  
   public void b(@Nullable AppBarLayout.BaseOnOffsetChangedListener paramBaseOnOffsetChangedListener)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.i;
     if ((localList != null) && (paramBaseOnOffsetChangedListener != null)) {
       localList.remove(paramBaseOnOffsetChangedListener);
     }
@@ -451,63 +391,12 @@ public class AppBarLayout
   
   boolean b()
   {
-    return a() != 0;
+    return this.f;
   }
   
-  int c()
+  boolean c()
   {
-    int i = this.jdField_d_of_type_Int;
-    if (i != -1) {
-      return i;
-    }
-    int j = getChildCount() - 1;
-    for (int k = 0; j >= 0; k = i)
-    {
-      View localView = getChildAt(j);
-      AppBarLayout.LayoutParams localLayoutParams = (AppBarLayout.LayoutParams)localView.getLayoutParams();
-      int n = localView.getMeasuredHeight();
-      i = localLayoutParams.jdField_a_of_type_Int;
-      if ((i & 0x5) == 5)
-      {
-        int m = localLayoutParams.topMargin + localLayoutParams.bottomMargin;
-        if ((i & 0x8) != 0) {}
-        for (i = ViewCompat.getMinimumHeight(localView);; i = n - ViewCompat.getMinimumHeight(localView))
-        {
-          i = m + i;
-          break label120;
-          if ((i & 0x2) == 0) {
-            break;
-          }
-        }
-        i = m + n;
-        label120:
-        m = i;
-        if (j == 0)
-        {
-          m = i;
-          if (ViewCompat.getFitsSystemWindows(localView)) {
-            m = Math.min(i, n - g());
-          }
-        }
-        i = k + m;
-      }
-      else
-      {
-        i = k;
-        if (k > 0) {
-          break;
-        }
-      }
-      j -= 1;
-    }
-    i = Math.max(0, k);
-    this.jdField_d_of_type_Int = i;
-    return i;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_e_of_type_Boolean;
+    return getTotalScrollRange() != 0;
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -515,54 +404,20 @@ public class AppBarLayout
     return paramLayoutParams instanceof AppBarLayout.LayoutParams;
   }
   
-  int d()
+  public boolean d()
   {
-    int i = this.jdField_e_of_type_Int;
-    if (i != -1) {
-      return i;
-    }
-    int m = getChildCount();
-    int j = 0;
-    i = 0;
-    int k;
-    for (;;)
-    {
-      k = i;
-      if (j >= m) {
-        break;
-      }
-      View localView = getChildAt(j);
-      AppBarLayout.LayoutParams localLayoutParams = (AppBarLayout.LayoutParams)localView.getLayoutParams();
-      int i1 = localView.getMeasuredHeight();
-      int i2 = localLayoutParams.topMargin;
-      int i3 = localLayoutParams.bottomMargin;
-      int n = localLayoutParams.jdField_a_of_type_Int;
-      k = i;
-      if ((n & 0x1) == 0) {
-        break;
-      }
-      i += i1 + (i2 + i3);
-      if ((n & 0x2) != 0)
-      {
-        k = i - ViewCompat.getMinimumHeight(localView);
-        break;
-      }
-      j += 1;
-    }
-    i = Math.max(0, k);
-    this.jdField_e_of_type_Int = i;
-    return i;
+    return this.m;
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (d())
+    if (g())
     {
-      int i = paramCanvas.save();
-      paramCanvas.translate(0.0F, -this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      paramCanvas.restoreToCount(i);
+      int i1 = paramCanvas.save();
+      paramCanvas.translate(0.0F, -this.b);
+      this.r.draw(paramCanvas);
+      paramCanvas.restoreToCount(i1);
     }
   }
   
@@ -570,49 +425,212 @@ public class AppBarLayout
   {
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.r;
     if ((localDrawable != null) && (localDrawable.isStateful()) && (localDrawable.setState(arrayOfInt))) {
       invalidateDrawable(localDrawable);
     }
   }
   
-  public final int e()
+  void e()
   {
-    int j = g();
-    int i = ViewCompat.getMinimumHeight(this);
-    if (i != 0) {}
-    do
-    {
-      return i * 2 + j;
-      i = getChildCount();
-      if (i >= 1) {
-        i = ViewCompat.getMinimumHeight(getChildAt(i - 1));
-      } else {
-        i = 0;
-      }
-    } while (i != 0);
-    return getHeight() / 3;
-  }
-  
-  int f()
-  {
-    return this.f;
-  }
-  
-  @VisibleForTesting
-  final int g()
-  {
-    WindowInsetsCompat localWindowInsetsCompat = this.jdField_a_of_type_AndroidxCoreViewWindowInsetsCompat;
-    if (localWindowInsetsCompat != null) {
-      return localWindowInsetsCompat.getSystemWindowInsetTop();
-    }
-    return 0;
+    this.g = 0;
   }
   
   @NonNull
   public CoordinatorLayout.Behavior<AppBarLayout> getBehavior()
   {
     return new AppBarLayout.Behavior();
+  }
+  
+  int getDownNestedPreScrollRange()
+  {
+    int i1 = this.d;
+    if (i1 != -1) {
+      return i1;
+    }
+    int i2 = getChildCount() - 1;
+    for (int i3 = 0; i2 >= 0; i3 = i1)
+    {
+      View localView = getChildAt(i2);
+      AppBarLayout.LayoutParams localLayoutParams = (AppBarLayout.LayoutParams)localView.getLayoutParams();
+      int i5 = localView.getMeasuredHeight();
+      i1 = localLayoutParams.a;
+      if ((i1 & 0x5) == 5)
+      {
+        int i4 = localLayoutParams.topMargin + localLayoutParams.bottomMargin;
+        if ((i1 & 0x8) != 0) {}
+        for (i1 = ViewCompat.getMinimumHeight(localView);; i1 = i5 - ViewCompat.getMinimumHeight(localView))
+        {
+          i1 = i4 + i1;
+          break label120;
+          if ((i1 & 0x2) == 0) {
+            break;
+          }
+        }
+        i1 = i4 + i5;
+        label120:
+        i4 = i1;
+        if (i2 == 0)
+        {
+          i4 = i1;
+          if (ViewCompat.getFitsSystemWindows(localView)) {
+            i4 = Math.min(i1, i5 - getTopInset());
+          }
+        }
+        i1 = i3 + i4;
+      }
+      else
+      {
+        i1 = i3;
+        if (i3 > 0) {
+          break;
+        }
+      }
+      i2 -= 1;
+    }
+    i1 = Math.max(0, i3);
+    this.d = i1;
+    return i1;
+  }
+  
+  int getDownNestedScrollRange()
+  {
+    int i1 = this.e;
+    if (i1 != -1) {
+      return i1;
+    }
+    int i4 = getChildCount();
+    int i2 = 0;
+    i1 = 0;
+    int i3;
+    for (;;)
+    {
+      i3 = i1;
+      if (i2 >= i4) {
+        break;
+      }
+      View localView = getChildAt(i2);
+      AppBarLayout.LayoutParams localLayoutParams = (AppBarLayout.LayoutParams)localView.getLayoutParams();
+      int i6 = localView.getMeasuredHeight();
+      int i7 = localLayoutParams.topMargin;
+      int i8 = localLayoutParams.bottomMargin;
+      int i5 = localLayoutParams.a;
+      i3 = i1;
+      if ((i5 & 0x1) == 0) {
+        break;
+      }
+      i1 += i6 + (i7 + i8);
+      if ((i5 & 0x2) != 0)
+      {
+        i3 = i1 - ViewCompat.getMinimumHeight(localView);
+        break;
+      }
+      i2 += 1;
+    }
+    i1 = Math.max(0, i3);
+    this.e = i1;
+    return i1;
+  }
+  
+  @IdRes
+  public int getLiftOnScrollTargetViewId()
+  {
+    return this.n;
+  }
+  
+  public final int getMinimumHeightForVisibleOverlappingContent()
+  {
+    int i2 = getTopInset();
+    int i1 = ViewCompat.getMinimumHeight(this);
+    if (i1 != 0) {}
+    do
+    {
+      return i1 * 2 + i2;
+      i1 = getChildCount();
+      if (i1 >= 1) {
+        i1 = ViewCompat.getMinimumHeight(getChildAt(i1 - 1));
+      } else {
+        i1 = 0;
+      }
+    } while (i1 != 0);
+    return getHeight() / 3;
+  }
+  
+  int getPendingAction()
+  {
+    return this.g;
+  }
+  
+  @Nullable
+  public Drawable getStatusBarForeground()
+  {
+    return this.r;
+  }
+  
+  @Deprecated
+  public float getTargetElevation()
+  {
+    return 0.0F;
+  }
+  
+  @VisibleForTesting
+  final int getTopInset()
+  {
+    WindowInsetsCompat localWindowInsetsCompat = this.h;
+    if (localWindowInsetsCompat != null) {
+      return localWindowInsetsCompat.getSystemWindowInsetTop();
+    }
+    return 0;
+  }
+  
+  public final int getTotalScrollRange()
+  {
+    int i1 = this.c;
+    if (i1 != -1) {
+      return i1;
+    }
+    int i4 = getChildCount();
+    int i2 = 0;
+    i1 = 0;
+    int i3;
+    for (;;)
+    {
+      i3 = i1;
+      if (i2 >= i4) {
+        break;
+      }
+      View localView = getChildAt(i2);
+      AppBarLayout.LayoutParams localLayoutParams = (AppBarLayout.LayoutParams)localView.getLayoutParams();
+      int i6 = localView.getMeasuredHeight();
+      int i5 = localLayoutParams.a;
+      i3 = i1;
+      if ((i5 & 0x1) == 0) {
+        break;
+      }
+      i3 = i1 + (i6 + localLayoutParams.topMargin + localLayoutParams.bottomMargin);
+      i1 = i3;
+      if (i2 == 0)
+      {
+        i1 = i3;
+        if (ViewCompat.getFitsSystemWindows(localView)) {
+          i1 = i3 - getTopInset();
+        }
+      }
+      if ((i5 & 0x2) != 0)
+      {
+        i3 = i1 - ViewCompat.getMinimumHeight(localView);
+        break;
+      }
+      i2 += 1;
+    }
+    i1 = Math.max(0, i3);
+    this.c = i1;
+    return i1;
+  }
+  
+  int getUpNestedPreScrollRange()
+  {
+    return getTotalScrollRange();
   }
   
   protected void onAttachedToWindow()
@@ -623,33 +641,33 @@ public class AppBarLayout
   
   protected int[] onCreateDrawableState(int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfInt == null) {
-      this.jdField_a_of_type_ArrayOfInt = new int[4];
+    if (this.q == null) {
+      this.q = new int[4];
     }
-    int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt1 = this.q;
     int[] arrayOfInt2 = super.onCreateDrawableState(paramInt + arrayOfInt1.length);
-    if (this.jdField_c_of_type_Boolean) {
-      paramInt = R.attr.O;
+    if (this.k) {
+      paramInt = R.attr.W;
     } else {
-      paramInt = -R.attr.O;
+      paramInt = -R.attr.W;
     }
     arrayOfInt1[0] = paramInt;
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean)) {
-      paramInt = R.attr.P;
+    if ((this.k) && (this.l)) {
+      paramInt = R.attr.X;
     } else {
-      paramInt = -R.attr.P;
+      paramInt = -R.attr.X;
     }
     arrayOfInt1[1] = paramInt;
-    if (this.jdField_c_of_type_Boolean) {
-      paramInt = R.attr.M;
+    if (this.k) {
+      paramInt = R.attr.U;
     } else {
-      paramInt = -R.attr.M;
+      paramInt = -R.attr.U;
     }
     arrayOfInt1[2] = paramInt;
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean)) {
-      paramInt = R.attr.L;
+    if ((this.k) && (this.l)) {
+      paramInt = R.attr.T;
     } else {
-      paramInt = -R.attr.L;
+      paramInt = -R.attr.T;
     }
     arrayOfInt1[3] = paramInt;
     return mergeDrawableStates(arrayOfInt2, arrayOfInt1);
@@ -658,15 +676,15 @@ public class AppBarLayout
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    d();
+    j();
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((ViewCompat.getFitsSystemWindows(this)) && (f()))
+    if ((ViewCompat.getFitsSystemWindows(this)) && (k()))
     {
-      paramInt2 = g();
+      paramInt2 = getTopInset();
       paramInt1 = getChildCount() - 1;
       while (paramInt1 >= 0)
       {
@@ -674,27 +692,27 @@ public class AppBarLayout
         paramInt1 -= 1;
       }
     }
-    c();
+    i();
     paramBoolean = false;
-    this.jdField_a_of_type_Boolean = false;
+    this.f = false;
     paramInt2 = getChildCount();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
-      if (((AppBarLayout.LayoutParams)getChildAt(paramInt1).getLayoutParams()).a() != null)
+      if (((AppBarLayout.LayoutParams)getChildAt(paramInt1).getLayoutParams()).b() != null)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.f = true;
         break;
       }
       paramInt1 += 1;
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.r;
     if (localDrawable != null) {
-      localDrawable.setBounds(0, 0, getWidth(), g());
+      localDrawable.setBounds(0, 0, getWidth(), getTopInset());
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.j)
     {
-      if ((this.jdField_e_of_type_Boolean) || (e())) {
+      if ((this.m) || (h())) {
         paramBoolean = true;
       }
       b(paramBoolean);
@@ -704,22 +722,22 @@ public class AppBarLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int i = View.MeasureSpec.getMode(paramInt2);
-    if ((i != 1073741824) && (ViewCompat.getFitsSystemWindows(this)) && (f()))
+    int i1 = View.MeasureSpec.getMode(paramInt2);
+    if ((i1 != 1073741824) && (ViewCompat.getFitsSystemWindows(this)) && (k()))
     {
       paramInt1 = getMeasuredHeight();
-      if (i != -2147483648)
+      if (i1 != -2147483648)
       {
-        if (i == 0) {
-          paramInt1 += g();
+        if (i1 == 0) {
+          paramInt1 += getTopInset();
         }
       }
       else {
-        paramInt1 = MathUtils.clamp(getMeasuredHeight() + g(), 0, View.MeasureSpec.getSize(paramInt2));
+        paramInt1 = MathUtils.clamp(getMeasuredHeight() + getTopInset(), 0, View.MeasureSpec.getSize(paramInt2));
       }
       setMeasuredDimension(getMeasuredWidth(), paramInt1);
     }
-    c();
+    i();
   }
   
   @RequiresApi(21)
@@ -741,13 +759,13 @@ public class AppBarLayout
   
   public void setLiftOnScroll(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
   }
   
   public void setLiftOnScrollTargetViewId(@IdRes int paramInt)
   {
-    this.g = paramInt;
-    d();
+    this.n = paramInt;
+    j();
   }
   
   public void setOrientation(int paramInt)
@@ -762,7 +780,7 @@ public class AppBarLayout
   
   public void setStatusBarForeground(@Nullable Drawable paramDrawable)
   {
-    Drawable localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable2 = this.r;
     if (localDrawable2 != paramDrawable)
     {
       Drawable localDrawable1 = null;
@@ -772,15 +790,15 @@ public class AppBarLayout
       if (paramDrawable != null) {
         localDrawable1 = paramDrawable.mutate();
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localDrawable1;
-      paramDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      this.r = localDrawable1;
+      paramDrawable = this.r;
       if (paramDrawable != null)
       {
         if (paramDrawable.isStateful()) {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(getDrawableState());
+          this.r.setState(getDrawableState());
         }
-        DrawableCompat.setLayoutDirection(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ViewCompat.getLayoutDirection(this));
-        paramDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        DrawableCompat.setLayoutDirection(this.r, ViewCompat.getLayoutDirection(this));
+        paramDrawable = this.r;
         boolean bool;
         if (getVisibility() == 0) {
           bool = true;
@@ -788,9 +806,9 @@ public class AppBarLayout
           bool = false;
         }
         paramDrawable.setVisible(bool, false);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this);
+        this.r.setCallback(this);
       }
-      b();
+      f();
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
@@ -822,7 +840,7 @@ public class AppBarLayout
     } else {
       bool = false;
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.r;
     if (localDrawable != null) {
       localDrawable.setVisible(bool, false);
     }
@@ -830,12 +848,12 @@ public class AppBarLayout
   
   protected boolean verifyDrawable(@NonNull Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.r);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.AppBarLayout
  * JD-Core Version:    0.7.0.1
  */

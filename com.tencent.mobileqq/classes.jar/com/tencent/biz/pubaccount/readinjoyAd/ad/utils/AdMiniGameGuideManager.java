@@ -39,27 +39,17 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdMiniGameGuideManager;", "", "()V", "MINIGAME_COUNT", "", "TAG", "dayLimit", "", "enterTime", "", "getEnterTime", "()Ljava/lang/Long;", "setEnterTime", "(Ljava/lang/Long;)V", "Ljava/lang/Long;", "followListener", "Lcom/tencent/mobileqq/kandian/repo/follow/IFollowStatusObserver;", "isAllowShow", "", "isFollowedSmallGame", "()Z", "setFollowedSmallGame", "(Z)V", "isRegister", "miniAppNotifyListener", "Lcom/tencent/mobileqq/mini/notify/MiniAppNotify$IMiniAppNotifyListener;", "smallGameViews", "Ljava/util/concurrent/ConcurrentHashMap;", "Ljava/lang/ref/SoftReference;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/adsmallgame/IAdMiniGamePts;", "stayTime", "addSmallGameView", "", "ptsView", "checkIsAllowShow", "checkIsFollowed", "destory", "followMiniGameAccount", "gameId", "isDifferentDay", "recordTime", "leftSlideCard", "view", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "position", "notifySmallGameView", "appid", "registerMini", "resetSlideCard", "isReset", "resetView", "setLimitConfig", "slideAnimStart", "distance", "", "slideCard", "stayTimeValid", "(Ljava/lang/Long;)Z", "unRegisterMini", "updateShowInfo", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class AdMiniGameGuideManager
 {
-  private static int jdField_a_of_type_Int;
-  public static final AdMiniGameGuideManager a;
-  private static IFollowStatusObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFollowIFollowStatusObserver = (IFollowStatusObserver)AdMiniGameGuideManager.followListener.1.a;
-  private static final MiniAppNotify.IMiniAppNotifyListener jdField_a_of_type_ComTencentMobileqqMiniNotifyMiniAppNotify$IMiniAppNotifyListener;
+  public static final AdMiniGameGuideManager a = new AdMiniGameGuideManager();
   @Nullable
-  private static Long jdField_a_of_type_JavaLangLong;
-  private static ConcurrentHashMap<Integer, SoftReference<IAdMiniGamePts>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static boolean jdField_a_of_type_Boolean;
-  private static int jdField_b_of_type_Int;
-  private static boolean jdField_b_of_type_Boolean;
-  private static boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdUtilsAdMiniGameGuideManager = new AdMiniGameGuideManager();
-    jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Int = 180000;
-    jdField_b_of_type_Int = 1;
-    jdField_a_of_type_ComTencentMobileqqMiniNotifyMiniAppNotify$IMiniAppNotifyListener = (MiniAppNotify.IMiniAppNotifyListener)AdMiniGameGuideManager.miniAppNotifyListener.1.a;
-  }
+  private static Long b = Long.valueOf(0L);
+  private static boolean c = true;
+  private static ConcurrentHashMap<Integer, SoftReference<IAdMiniGamePts>> d;
+  private static int e = 180000;
+  private static int f = 1;
+  private static boolean g;
+  private static boolean h;
+  private static final MiniAppNotify.IMiniAppNotifyListener i = (MiniAppNotify.IMiniAppNotifyListener)AdMiniGameGuideManager.miniAppNotifyListener.1.a;
+  private static IFollowStatusObserver j = (IFollowStatusObserver)AdMiniGameGuideManager.followListener.1.a;
   
   private final void a(ViewBase paramViewBase, float paramFloat)
   {
@@ -84,29 +74,6 @@ public final class AdMiniGameGuideManager
     ThreadManager.getUIHandler().postDelayed((Runnable)new AdMiniGameGuideManager.leftSlideCard.1(paramViewBase, paramAbsBaseArticleInfo, paramInt), 1000L);
   }
   
-  private final boolean a()
-  {
-    if (a(SharedPreUtils.f((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount())))
-    {
-      QLog.d("AdMiniGameUtil", 2, "is different day showNum 0");
-      SharedPreUtils.N((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount(), 0);
-      return true;
-    }
-    int i = SharedPreUtils.av((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("is same day showNum ");
-    localStringBuilder.append(i);
-    localStringBuilder.append("  dayLimit ");
-    localStringBuilder.append(jdField_b_of_type_Int);
-    QLog.d("AdMiniGameUtil", 2, localStringBuilder.toString());
-    if (jdField_b_of_type_Int > i)
-    {
-      QLog.d("AdMiniGameUtil", 2, "is same day dayLimit > showNum ");
-      return true;
-    }
-    return false;
-  }
-  
   private final boolean a(long paramLong)
   {
     boolean bool2 = false;
@@ -116,23 +83,23 @@ public final class AdMiniGameGuideManager
       {
         Object localObject = Calendar.getInstance();
         Intrinsics.checkExpressionValueIsNotNull(localObject, "Calendar.getInstance()");
-        int i = ((Calendar)localObject).get(5);
+        int k = ((Calendar)localObject).get(5);
         ((Calendar)localObject).setTime(new Date(paramLong));
-        int j = ((Calendar)localObject).get(5);
+        int m = ((Calendar)localObject).get(5);
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("today  ");
-        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(k);
         ((StringBuilder)localObject).append("  recordDay ");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(m);
         ((StringBuilder)localObject).append("  isDifferent:");
-        if (i != j)
+        if (k != m)
         {
           bool1 = true;
           ((StringBuilder)localObject).append(bool1);
           ((StringBuilder)localObject).append(' ');
           QLog.e("AdMiniGameUtil", 2, ((StringBuilder)localObject).toString());
           bool1 = bool2;
-          if (i != j) {
+          if (k != m) {
             bool1 = true;
           }
           return bool1;
@@ -145,22 +112,6 @@ public final class AdMiniGameGuideManager
       }
       boolean bool1 = false;
     }
-  }
-  
-  private final boolean a(Long paramLong)
-  {
-    boolean bool = false;
-    if (paramLong == null) {
-      return false;
-    }
-    if (NetConnInfoCenter.getServerTimeMillis() - paramLong.longValue() > jdField_a_of_type_Int) {
-      bool = true;
-    }
-    paramLong = new StringBuilder();
-    paramLong.append("stayTimeValid ");
-    paramLong.append(bool);
-    QLog.e("AdMiniGameUtil", 2, paramLong.toString());
-    return bool;
   }
   
   private final void b(ViewBase paramViewBase, boolean paramBoolean, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
@@ -178,23 +129,39 @@ public final class AdMiniGameGuideManager
     } else {
       l = 6000L;
     }
-    int i;
+    int k;
     if (paramBoolean) {
-      i = 5040704;
+      k = 5040704;
     } else {
-      i = 5040705;
+      k = 5040705;
     }
-    ThreadManager.getUIHandler().postDelayed((Runnable)new AdMiniGameGuideManager.resetSlideCard.1(paramViewBase, paramAbsBaseArticleInfo, paramInt, i), l);
+    ThreadManager.getUIHandler().postDelayed((Runnable)new AdMiniGameGuideManager.resetSlideCard.1(paramViewBase, paramAbsBaseArticleInfo, paramInt, k), l);
+  }
+  
+  private final boolean b(Long paramLong)
+  {
+    boolean bool = false;
+    if (paramLong == null) {
+      return false;
+    }
+    if (NetConnInfoCenter.getServerTimeMillis() - paramLong.longValue() > e) {
+      bool = true;
+    }
+    paramLong = new StringBuilder();
+    paramLong.append("stayTimeValid ");
+    paramLong.append(bool);
+    QLog.e("AdMiniGameUtil", 2, paramLong.toString());
+    return bool;
   }
   
   private final void d()
   {
-    if (!c)
+    if (!h)
     {
-      c = true;
+      h = true;
       try
       {
-        MiniAppNotify.g.register(jdField_a_of_type_ComTencentMobileqqMiniNotifyMiniAppNotify$IMiniAppNotifyListener);
+        MiniAppNotify.g.register(i);
         return;
       }
       catch (Exception localException)
@@ -211,8 +178,8 @@ public final class AdMiniGameGuideManager
   {
     try
     {
-      c = false;
-      MiniAppNotify.g.remove(jdField_a_of_type_ComTencentMobileqqMiniNotifyMiniAppNotify$IMiniAppNotifyListener);
+      h = false;
+      MiniAppNotify.g.remove(i);
       return;
     }
     catch (Exception localException)
@@ -224,26 +191,49 @@ public final class AdMiniGameGuideManager
     }
   }
   
-  private final void f()
+  private final boolean f()
+  {
+    if (a(SharedPreUtils.bx((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount())))
+    {
+      QLog.d("AdMiniGameUtil", 2, "is different day showNum 0");
+      SharedPreUtils.R((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount(), 0);
+      return true;
+    }
+    int k = SharedPreUtils.by((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("is same day showNum ");
+    localStringBuilder.append(k);
+    localStringBuilder.append("  dayLimit ");
+    localStringBuilder.append(f);
+    QLog.d("AdMiniGameUtil", 2, localStringBuilder.toString());
+    if (f > k)
+    {
+      QLog.d("AdMiniGameUtil", 2, "is same day dayLimit > showNum ");
+      return true;
+    }
+    return false;
+  }
+  
+  private final void g()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(416);
-    jdField_b_of_type_Int = localAladdinConfig.getIntegerFromString("show_frequency_per_day", 1);
-    jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("play_time", 180) * 1000;
+    f = localAladdinConfig.getIntegerFromString("show_frequency_per_day", 1);
+    e = localAladdinConfig.getIntegerFromString("play_time", 180) * 1000;
   }
   
   public final void a()
   {
     d();
-    f();
-    jdField_b_of_type_Boolean = a();
+    g();
+    g = f();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkFollowed :  isAllowShow ");
-      localStringBuilder.append(jdField_b_of_type_Boolean);
+      localStringBuilder.append(g);
       QLog.d("AdMiniGameUtil", 2, localStringBuilder.toString());
     }
-    if (!jdField_b_of_type_Boolean) {
+    if (!g) {
       return;
     }
     ThreadUtil.postOnSubThread((Runnable)AdMiniGameGuideManager.checkIsFollowed.1.a);
@@ -266,11 +256,11 @@ public final class AdMiniGameGuideManager
     if (paramIAdMiniGamePts == null) {
       return;
     }
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if (d == null) {
+      d = new ConcurrentHashMap();
     }
     SoftReference localSoftReference = new SoftReference(paramIAdMiniGamePts);
-    ConcurrentHashMap localConcurrentHashMap = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = d;
     if (localConcurrentHashMap != null) {
       paramIAdMiniGamePts = (SoftReference)localConcurrentHashMap.put(Integer.valueOf(System.identityHashCode(paramIAdMiniGamePts)), localSoftReference);
     }
@@ -278,7 +268,7 @@ public final class AdMiniGameGuideManager
   
   public final void a(@Nullable Long paramLong)
   {
-    jdField_a_of_type_JavaLangLong = paramLong;
+    b = paramLong;
   }
   
   public final void a(@Nullable String paramString)
@@ -288,7 +278,7 @@ public final class AdMiniGameGuideManager
   
   public final void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    c = paramBoolean;
   }
   
   public final void b()
@@ -296,11 +286,11 @@ public final class AdMiniGameGuideManager
     try
     {
       SharedPreUtils.e((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount(), NetConnInfoCenter.getServerTimeMillis());
-      int i = SharedPreUtils.av((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount()) + 1;
-      SharedPreUtils.N((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount(), i);
+      int k = SharedPreUtils.by((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount()) + 1;
+      SharedPreUtils.R((Context)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication(), ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount(), k);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("updateShowInfo showNum ");
-      localStringBuilder.append(i);
+      localStringBuilder.append(k);
       QLog.d("AdMiniGameUtil", 2, localStringBuilder.toString());
       return;
     }
@@ -312,13 +302,13 @@ public final class AdMiniGameGuideManager
   
   public final void b(@Nullable String paramString)
   {
-    if (jdField_a_of_type_Boolean) {
+    if (c) {
       return;
     }
-    Object localObject1 = jdField_a_of_type_JavaLangLong;
-    if ((localObject1 != null) && (a((Long)localObject1)) && (jdField_b_of_type_Boolean) && (!TextUtils.isEmpty((CharSequence)paramString)))
+    Object localObject1 = b;
+    if ((localObject1 != null) && (b((Long)localObject1)) && (g) && (!TextUtils.isEmpty((CharSequence)paramString)))
     {
-      localObject1 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      localObject1 = d;
       if (localObject1 != null)
       {
         localObject1 = ((Map)localObject1).entrySet().iterator();
@@ -341,18 +331,18 @@ public final class AdMiniGameGuideManager
   
   public final void c()
   {
-    ConcurrentHashMap localConcurrentHashMap = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = d;
     if (localConcurrentHashMap != null) {
       localConcurrentHashMap.clear();
     }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = (ConcurrentHashMap)null;
+    d = (ConcurrentHashMap)null;
     e();
   }
   
   public final void c(@Nullable String paramString)
   {
     QLog.d("AdMiniGameUtil", 2, "resetView");
-    Object localObject1 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    Object localObject1 = d;
     if (localObject1 != null)
     {
       localObject1 = ((Map)localObject1).entrySet().iterator();
@@ -374,7 +364,7 @@ public final class AdMiniGameGuideManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdMiniGameGuideManager
  * JD-Core Version:    0.7.0.1
  */

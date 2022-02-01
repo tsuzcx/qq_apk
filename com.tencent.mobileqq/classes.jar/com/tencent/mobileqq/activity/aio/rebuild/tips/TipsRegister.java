@@ -4,25 +4,27 @@ import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.tips.IMsgTipsFilter;
 import com.tencent.mobileqq.activity.aio.coreui.tips.IMsgTipsListener;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TipsRegister
 {
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private volatile List<IMsgTipsFilter> jdField_a_of_type_JavaUtilList;
-  private volatile List<IMsgTipsListener> b;
+  private final AIOContext a;
+  private volatile List<IMsgTipsFilter> b;
+  private volatile List<IMsgTipsListener> c;
   
   public TipsRegister(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.a = paramAIOContext;
   }
   
-  private void a()
+  private void c()
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList == null)
+      if (this.b == null)
       {
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(new FoldMsgTipsFilter());
@@ -37,32 +39,33 @@ public class TipsRegister
         localArrayList.add(new TempMsgBoxTipsFilter());
         localArrayList.add(new CMRTipsFilter());
         localArrayList.add(new SubAccountTipsFilter());
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a == 1008) {
+        if (this.a.O().a == 1008) {
           localArrayList.add(new PATipsFilter());
         }
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(24));
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(39));
+        localArrayList.add(this.a.a(24));
+        localArrayList.add(this.a.a(39));
         localArrayList.add(new WatchTogetherTipsFilter());
-        this.jdField_a_of_type_JavaUtilList = localArrayList;
+        localArrayList.add((IMsgTipsFilter)((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getNewGuildMsgTipsFilter());
+        this.b = localArrayList;
       }
       return;
     }
     finally {}
   }
   
-  private void b()
+  private void d()
   {
     try
     {
-      if (this.b == null)
+      if (this.c == null)
       {
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(new SpecialCareTipsFilter());
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.i()) {
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(109));
+        if (this.a.H()) {
+          localArrayList.add(this.a.a(109));
         }
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(115));
-        this.b = localArrayList;
+        localArrayList.add(this.a.a(115));
+        this.c = localArrayList;
       }
       return;
     }
@@ -71,23 +74,23 @@ public class TipsRegister
   
   public List<IMsgTipsFilter> a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      a();
+    if (this.b == null) {
+      c();
     }
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public List<IMsgTipsListener> b()
   {
-    if (this.b == null) {
-      b();
+    if (this.c == null) {
+      d();
     }
-    return this.b;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.TipsRegister
  * JD-Core Version:    0.7.0.1
  */

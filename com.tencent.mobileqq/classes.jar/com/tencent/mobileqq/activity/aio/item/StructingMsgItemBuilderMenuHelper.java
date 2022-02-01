@@ -63,6 +63,7 @@ import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.mobileqq.troop.essencemsg.TroopEssenceUtil;
+import com.tencent.mobileqq.troop.todo.TroopTodoUtils;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -99,7 +100,7 @@ public class StructingMsgItemBuilderMenuHelper
     while (i < paramAbsShareMsg.getItemCount())
     {
       AbsStructMsgElement localAbsStructMsgElement = paramAbsShareMsg.getItemByIndex(i);
-      if ((!TextUtils.isEmpty(localAbsStructMsgElement.aa)) && (Integer.valueOf(localAbsStructMsgElement.aa).intValue() == StructingMsgItemBuilder.jdField_a_of_type_Int) && (((localAbsStructMsgElement instanceof StructMsgItemLayout4)) || ((localAbsStructMsgElement instanceof StructMsgItemLayout5)))) {
+      if ((!TextUtils.isEmpty(localAbsStructMsgElement.an)) && (Integer.valueOf(localAbsStructMsgElement.an).intValue() == StructingMsgItemBuilder.a) && (((localAbsStructMsgElement instanceof StructMsgItemLayout4)) || ((localAbsStructMsgElement instanceof StructMsgItemLayout5)))) {
         return localAbsStructMsgElement;
       }
       i += 1;
@@ -109,7 +110,7 @@ public class StructingMsgItemBuilderMenuHelper
   
   private String a(@NonNull AbsStructMsgItem paramAbsStructMsgItem, Class paramClass)
   {
-    ArrayList localArrayList = paramAbsStructMsgItem.a;
+    ArrayList localArrayList = paramAbsStructMsgItem.ax;
     AbsStructMsgItem localAbsStructMsgItem = null;
     int i = 0;
     while (i < localArrayList.size())
@@ -123,25 +124,25 @@ public class StructingMsgItemBuilderMenuHelper
         }
         else if (StructMsgItemTitle.class.equals(paramClass))
         {
-          paramAbsStructMsgItem = ((StructMsgItemTitle)localAbsStructMsgElement).b();
+          paramAbsStructMsgItem = ((StructMsgItemTitle)localAbsStructMsgElement).e();
         }
         else if (StructMsgItemSummary.class.equals(paramClass))
         {
-          paramAbsStructMsgItem = ((StructMsgItemSummary)localAbsStructMsgElement).b();
+          paramAbsStructMsgItem = ((StructMsgItemSummary)localAbsStructMsgElement).e();
         }
         else if (StructMsgItemCover.class.equals(paramClass))
         {
-          paramAbsStructMsgItem = ((StructMsgItemCover)localAbsStructMsgElement).ac;
+          paramAbsStructMsgItem = ((StructMsgItemCover)localAbsStructMsgElement).av;
         }
         else if (StructMsgItemPAVideo.class.equals(paramClass))
         {
-          paramAbsStructMsgItem = ((StructMsgItemPAVideo)localAbsStructMsgElement).ac;
+          paramAbsStructMsgItem = ((StructMsgItemPAVideo)localAbsStructMsgElement).au;
         }
         else
         {
           paramAbsStructMsgItem = localAbsStructMsgItem;
           if (StructMsgItemPAAudio.class.equals(paramClass)) {
-            paramAbsStructMsgItem = ((StructMsgItemPAAudio)localAbsStructMsgElement).ac;
+            paramAbsStructMsgItem = ((StructMsgItemPAAudio)localAbsStructMsgElement).au;
           }
         }
       }
@@ -166,7 +167,7 @@ public class StructingMsgItemBuilderMenuHelper
         localObject1 = paramStructMsgForGeneralShare.getItemByIndex(i);
         if ((localObject1 instanceof StructMsgItemLayout5))
         {
-          Object localObject2 = ((StructMsgItemLayout5)localObject1).a.iterator();
+          Object localObject2 = ((StructMsgItemLayout5)localObject1).ax.iterator();
           do
           {
             localObject1 = paramString;
@@ -176,12 +177,12 @@ public class StructingMsgItemBuilderMenuHelper
             localObject1 = (AbsStructMsgElement)((Iterator)localObject2).next();
           } while (!(localObject1 instanceof StructMsgItemVideo));
           localObject2 = (StructMsgItemVideo)localObject1;
-          paramString = ((StructMsgItemVideo)localObject2).ac;
+          paramString = ((StructMsgItemVideo)localObject2).au;
           localObject1 = paramString;
-          if (!((StructMsgItemVideo)localObject2).a()) {
+          if (!((StructMsgItemVideo)localObject2).c()) {
             break;
           }
-          ((IVideoReporter)QRoute.api(IVideoReporter.class)).reportClickEvent("0X8006601", paramStructMsgForGeneralShare.uinType, ((IVideoReporter)QRoute.api(IVideoReporter.class)).getReportVideoType(((StructMsgItemVideo)localObject2).v, paramStructMsgForGeneralShare.mSourceName), ((StructMsgItemVideo)localObject2).ae, "");
+          ((IVideoReporter)QRoute.api(IVideoReporter.class)).reportClickEvent("0X8006601", paramStructMsgForGeneralShare.uinType, ((IVideoReporter)QRoute.api(IVideoReporter.class)).getReportVideoType(((StructMsgItemVideo)localObject2).aR, paramStructMsgForGeneralShare.mSourceName), ((StructMsgItemVideo)localObject2).az, "");
           return paramString;
         }
         i += 1;
@@ -214,59 +215,6 @@ public class StructingMsgItemBuilderMenuHelper
   private void a(Context paramContext, MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo)
   {
     ThreadManager.post(new StructingMsgItemBuilderMenuHelper.1(this, paramMessageForStructing, paramSessionInfo, paramActivity, paramQQAppInterface, paramContext), 8, null, false);
-  }
-  
-  private void a(Context paramContext1, String paramString, MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface, Context paramContext2)
-  {
-    if (a(paramContext1, paramString, paramMessageForStructing, paramQQAppInterface, paramContext2)) {
-      return;
-    }
-    if (paramMessageForStructing.structingMsg.mMsgServiceID == 81) {
-      StoryReportor.a(paramQQAppInterface, paramContext2, paramMessageForStructing, "forward");
-    }
-    Object localObject = new Bundle();
-    if ((paramMessageForStructing.structingMsg.source_puin != null) && (!"".equals(paramMessageForStructing.structingMsg.source_puin))) {
-      ((Bundle)localObject).putString("source_puin", paramMessageForStructing.structingMsg.source_puin);
-    }
-    ((Bundle)localObject).putInt("forward_type", -3);
-    paramMessageForStructing.structingMsg.mCommentText = null;
-    ((Bundle)localObject).putInt("structmsg_service_id", paramMessageForStructing.structingMsg.mMsgServiceID);
-    ((Bundle)localObject).putByteArray("stuctmsg_bytes", paramMessageForStructing.structingMsg.getBytes());
-    ((Bundle)localObject).putLong("structmsg_uniseq", paramMessageForStructing.uniseq);
-    ((Bundle)localObject).putInt("accostType", paramMessageForStructing.structingMsg.sourceAccoutType);
-    ((Bundle)localObject).putInt("selection_mode", this.a.b());
-    paramContext1 = new Intent();
-    paramContext1.putExtras((Bundle)localObject);
-    if ((paramMessageForStructing.structingMsg instanceof StructMsgForImageShare))
-    {
-      localObject = (StructMsgForImageShare)paramMessageForStructing.structingMsg;
-      StructMsgItemImage localStructMsgItemImage = ((StructMsgForImageShare)localObject).getFirstImageElement();
-      if ((localStructMsgItemImage != null) && (localStructMsgItemImage.a()))
-      {
-        paramContext1.putExtra("key_forward_image_share", true);
-        paramContext1.putExtra("key_forward_image_share_appid", Long.toString(((StructMsgForImageShare)localObject).mSourceAppid));
-        paramContext1.putExtra("key_forward_image_share_uin_type", ((StructMsgForImageShare)localObject).uinType);
-      }
-    }
-    else if (((paramMessageForStructing.structingMsg instanceof StructMsgForAudioShare)) || ((paramMessageForStructing.structingMsg instanceof StructMsgForGeneralShare)))
-    {
-      paramContext1.putExtra("key_forward_share", true);
-      paramContext1.putExtra("key_forward_share_title", ((AbsShareMsg)paramMessageForStructing.structingMsg).mContentTitle);
-      paramContext1.putExtra("key_forward_image_share_uin_type", paramMessageForStructing.structingMsg.uinType);
-    }
-    ForwardBaseOption.a((Activity)paramContext2, paramContext1, 21);
-    paramContext1 = paramMessageForStructing.structingMsg.mMsgUrl;
-    ReportController.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, paramMessageForStructing.senderuin, paramContext1, Long.toString(paramMessageForStructing.structingMsg.msgId), "");
-    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004045", "0X8004045", 0, 0, "", "", "", "");
-    if (paramMessageForStructing.structingMsg.mMsgServiceID == 84) {
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8007166", "0X8007166", 0, 0, "", "", "", "");
-    }
-    if (AIOGallerySceneWithBusiness.a(paramString)) {
-      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.b(paramString), new String[] { "2", "", AIOGallerySceneWithBusiness.a(paramString) });
-    }
-    if (paramMessageForStructing.isMultiMsg) {
-      a("0X8009D66", paramMessageForStructing, paramQQAppInterface);
-    }
   }
   
   private void a(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, Activity paramActivity, AbsShareMsg paramAbsShareMsg)
@@ -308,7 +256,7 @@ public class StructingMsgItemBuilderMenuHelper
     String str1 = paramAbsShareMsg.mContentSummary;
     if (this.a.a(paramAbsShareMsg))
     {
-      localArrayList.add(QfavHelper.a(true));
+      localArrayList.add(QfavHelper.b(true));
       if ((!TextUtils.isEmpty(paramAbsShareMsg.mMsgUrl)) && (paramAbsShareMsg.mMsgUrl.indexOf("action=accountCard") > -1))
       {
         localArrayList.add(paramAbsShareMsg.getXml().getBytes());
@@ -322,7 +270,7 @@ public class StructingMsgItemBuilderMenuHelper
       if (!TextUtils.isEmpty(str2))
       {
         paramArrayOfByte = new StringBuilder();
-        paramArrayOfByte.append(paramContext.getString(2131698110));
+        paramArrayOfByte.append(paramContext.getString(2131896011));
         paramArrayOfByte.append(str2);
         str1 = paramArrayOfByte.toString();
         paramArrayOfByte = null;
@@ -355,9 +303,9 @@ public class StructingMsgItemBuilderMenuHelper
       if (paramMessageForStructing != null)
       {
         i = j;
-        if (paramMessageForStructing.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
+        if (paramMessageForStructing.aF != null)
         {
-          ((IPicPreDownload)paramQQAppInterface.getRuntimeService(IPicPreDownload.class, "")).productFromAIO(paramMessageForStructing.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 2);
+          ((IPicPreDownload)paramQQAppInterface.getRuntimeService(IPicPreDownload.class, "")).productFromAIO(paramMessageForStructing.aF, 2);
           ThreadManager.getFileThreadHandler().post(new StructingMsgItemBuilderMenuHelper.2(this, paramMessageForStructing, k, paramQQAppInterface, paramChatMessage, paramActivity));
           i = j;
         }
@@ -372,7 +320,7 @@ public class StructingMsgItemBuilderMenuHelper
       paramMessageForStructing = QfavUtil.a((StructMsgForImageShare)paramAbsShareMsg);
       if (paramMessageForStructing != null)
       {
-        QfavBuilder.a(paramMessageForStructing.ae, paramAbsShareMsg.uinType, paramMessageForStructing.ad, paramMessageForStructing.c, paramMessageForStructing.ac, paramMessageForStructing.d).b(paramQQAppInterface, paramChatMessage).a(paramActivity, paramQQAppInterface.getAccount());
+        QfavBuilder.a(paramMessageForStructing.aw, paramAbsShareMsg.uinType, paramMessageForStructing.av, paramMessageForStructing.aB, paramMessageForStructing.au, paramMessageForStructing.aC).b(paramQQAppInterface, paramChatMessage).a(paramActivity, paramQQAppInterface.getAccount());
         QfavReport.a(paramQQAppInterface, 2, 0, paramAbsShareMsg.uinType);
         QfavReport.a(paramQQAppInterface, 6, 3);
       }
@@ -381,9 +329,9 @@ public class StructingMsgItemBuilderMenuHelper
   
   private void a(ChatMessage paramChatMessage, String paramString, MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.a.b(2131371562, paramContext, paramChatMessage);
+    this.a.b(2131438943, paramContext, paramChatMessage);
     if (AIOGallerySceneWithBusiness.a(paramString)) {
-      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.b(paramString), new String[] { "4", "", AIOGallerySceneWithBusiness.a(paramString) });
+      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.d(paramString), new String[] { "4", "", AIOGallerySceneWithBusiness.c(paramString) });
     }
     if (paramMessageForStructing.structingMsg.mMsgServiceID == 81) {
       StoryReportor.a(paramQQAppInterface, paramContext, paramMessageForStructing, "withdraw");
@@ -402,9 +350,9 @@ public class StructingMsgItemBuilderMenuHelper
     paramAbsShareMsg = (StructMsgForGeneralShare)StructMsgFactory.a(paramAbsShareMsg.getBytes());
     PAVideoStructMsgUtil.a(paramAbsShareMsg);
     paramAbsShareMsg.mSourceAction = "web";
-    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    String str = paramSessionInfo.b;
     paramAbsShareMsg.mSourceUrl = PAVideoStructMsgUtil.a(str);
-    paramAbsShareMsg.mSourceName = paramSessionInfo.d;
+    paramAbsShareMsg.mSourceName = paramSessionInfo.e;
     paramAbsShareMsg.source_puin = str;
     paramAbsShareMsg.mSourceIcon = "https://pub.idqqimg.com/pc/misc/files/20191114/1014c7cfd33e4333b818ceecc0885938.png";
     paramAbsShareMsg.setFlag(0);
@@ -420,7 +368,7 @@ public class StructingMsgItemBuilderMenuHelper
   private void a(QQCustomMenu paramQQCustomMenu, QQAppInterface paramQQAppInterface, MessageForStructing paramMessageForStructing, AbsStructMsg paramAbsStructMsg)
   {
     if (paramAbsStructMsg.hasFlag(8)) {
-      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.jdField_a_of_type_Int, paramQQCustomMenu);
+      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.a, paramQQCustomMenu);
     }
     if (paramMessageForStructing.istroop == 1008)
     {
@@ -446,7 +394,7 @@ public class StructingMsgItemBuilderMenuHelper
   
   private void a(QQCustomMenu paramQQCustomMenu, MessageForStructing paramMessageForStructing, AbsStructMsg paramAbsStructMsg, QQAppInterface paramQQAppInterface)
   {
-    if ((paramMessageForStructing.extraflag != 32768) && (!paramQQAppInterface.getMsgCache().b(paramMessageForStructing)) && (a(paramMessageForStructing, paramAbsStructMsg))) {
+    if ((paramMessageForStructing.extraflag != 32768) && (!paramQQAppInterface.getMsgCache().f(paramMessageForStructing)) && (a(paramMessageForStructing, paramAbsStructMsg))) {
       BaseBubbleBuilderMenuHelper.a(paramMessageForStructing, paramQQCustomMenu);
     }
   }
@@ -487,18 +435,18 @@ public class StructingMsgItemBuilderMenuHelper
       Object localObject1 = paramMessageForStructing.getFirstImageElement();
       if (localObject1 != null)
       {
-        localObject1 = ((StructMsgItemImage)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+        localObject1 = ((StructMsgItemImage)localObject1).aF;
         Object localObject2 = URLDrawableHelper.getURL((PicUiInterface)localObject1, 1);
         if (localObject2 == null) {
           return;
         }
         localObject2 = URLDrawable.getDrawable((URL)localObject2, -1, -1, null, null, false);
         ((URLDrawable)localObject2).setTag(localObject1);
-        AIOGalleryUtils.a(paramContext, paramQQAppInterface, (URLDrawable)localObject2, ((MessageForPic)localObject1).frienduin, paramContext.getResources().getDimensionPixelSize(2131299168), paramMessageForStructing, null);
+        AIOGalleryUtils.a(paramContext, paramQQAppInterface, (URLDrawable)localObject2, ((MessageForPic)localObject1).frienduin, paramContext.getResources().getDimensionPixelSize(2131299920), paramMessageForStructing, null);
       }
     }
     if (AIOGallerySceneWithBusiness.a(paramString)) {
-      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.b(paramString), new String[] { "1", "", AIOGallerySceneWithBusiness.a(paramString) });
+      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.d(paramString), new String[] { "1", "", AIOGallerySceneWithBusiness.c(paramString) });
     }
   }
   
@@ -523,15 +471,15 @@ public class StructingMsgItemBuilderMenuHelper
     else if (paramMessageForStructing.structingMsg.mMsgServiceID == 35)
     {
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8006624", "0X8006624", 0, 1, 0, "", "", "", "");
-      if (!MultiMsgManager.a().a(paramQQAppInterface, paramMessageForStructing.uniseq))
+      if (!MultiMsgManager.a().b(paramQQAppInterface, paramMessageForStructing.uniseq))
       {
-        int i = paramContext1.getResources().getDimensionPixelSize(2131299168);
-        QQToast.a(paramContext1, HardCodeUtil.a(2131714385), 0).b(i);
+        int i = paramContext1.getResources().getDimensionPixelSize(2131299920);
+        QQToast.makeText(paramContext1, HardCodeUtil.a(2131911897), 0).show(i);
         return true;
       }
-      if (MultiMsgManager.a().b(paramQQAppInterface, paramMessageForStructing.uniseq))
+      if (MultiMsgManager.a().c(paramQQAppInterface, paramMessageForStructing.uniseq))
       {
-        DialogUtil.a(paramContext1, 230, null, "选择的消息中，部分图片\\表情等内容可能无法正常转发，是否继续转发？", HardCodeUtil.a(2131714377), HardCodeUtil.a(2131714387), new StructingMsgItemBuilderMenuHelper.3(this, paramMessageForStructing, paramContext2), new StructingMsgItemBuilderMenuHelper.4(this)).show();
+        DialogUtil.a(paramContext1, 230, null, "选择的消息中，部分图片\\表情等内容可能无法正常转发，是否继续转发？", HardCodeUtil.a(2131898212), HardCodeUtil.a(2131911899), new StructingMsgItemBuilderMenuHelper.3(this, paramMessageForStructing, paramContext2), new StructingMsgItemBuilderMenuHelper.4(this)).show();
         return true;
       }
     }
@@ -580,16 +528,16 @@ public class StructingMsgItemBuilderMenuHelper
     paramAbsStructMsg = null;
     if (localStructMsgItemImage != null)
     {
-      paramAbsStructMsg = localStructMsgItemImage.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+      paramAbsStructMsg = localStructMsgItemImage.aF;
       if (paramAbsStructMsg == null)
       {
-        if (localStructMsgItemImage.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null)
+        if (localStructMsgItemImage.aE == null)
         {
-          localStructMsgItemImage.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = localStructMsgForImageShare;
-          localStructMsgItemImage.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare.message = paramMessageForStructing;
+          localStructMsgItemImage.aE = localStructMsgForImageShare;
+          localStructMsgItemImage.aE.message = paramMessageForStructing;
         }
         localStructMsgItemImage.a(paramContext, null, null);
-        paramAbsStructMsg = localStructMsgItemImage.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+        paramAbsStructMsg = localStructMsgItemImage.aF;
       }
     }
     boolean bool = URLDrawableHelper.hasDiskCache(paramContext, paramAbsStructMsg, 65537);
@@ -602,50 +550,9 @@ public class StructingMsgItemBuilderMenuHelper
     return (!bool) && (i == 0);
   }
   
-  private boolean a(QQCustomMenu paramQQCustomMenu, MessageForStructing paramMessageForStructing, AbsStructMsg paramAbsStructMsg, QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = paramAbsStructMsg instanceof AbsShareMsg;
-    boolean bool1 = false;
-    if ((bool2) && (((AbsShareMsg)paramAbsStructMsg).mMsgException))
-    {
-      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.e, paramQQCustomMenu);
-      if (paramMessageForStructing.istroop == 1008) {
-        BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.d, paramQQCustomMenu);
-      }
-      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.l, paramQQCustomMenu);
-    }
-    else if (a(paramAbsStructMsg.mMsgServiceID))
-    {
-      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.e, paramQQCustomMenu);
-      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.l, paramQQCustomMenu);
-    }
-    else if (paramAbsStructMsg.mMsgServiceID == 128)
-    {
-      BaseBubbleBuilderMenuHelper.b(paramMessageForStructing, paramQQCustomMenu);
-      BaseBubbleBuilderMenuHelper.a(paramMessageForStructing, paramQQCustomMenu);
-      BaseBubbleBuilderMenuHelper.c(paramMessageForStructing, paramQQCustomMenu);
-      TroopReportor.a("Grp_AIO", "invite", "send_in", 0, 0, new String[0]);
-    }
-    else if ((paramAbsStructMsg instanceof StructMsgForHypertext))
-    {
-      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.e, paramQQCustomMenu);
-      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.d, paramQQCustomMenu);
-      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.l, paramQQCustomMenu);
-    }
-    else
-    {
-      if (!a(paramMessageForStructing, paramAbsStructMsg, paramQQAppInterface, paramQQCustomMenu)) {
-        break label178;
-      }
-    }
-    bool1 = true;
-    label178:
-    return bool1;
-  }
-  
   private boolean a(String paramString, QQAppInterface paramQQAppInterface, Activity paramActivity, AbsShareMsg paramAbsShareMsg, boolean paramBoolean)
   {
-    paramString = AIOGallerySceneWithBusiness.b(paramString);
+    paramString = AIOGallerySceneWithBusiness.f(paramString);
     boolean bool = paramBoolean;
     if (paramString != null)
     {
@@ -658,14 +565,14 @@ public class StructingMsgItemBuilderMenuHelper
         Object localObject = paramString.getFirstImageElement();
         if (localObject != null)
         {
-          if (((StructMsgItemImage)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
-            ((StructMsgItemImage)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = paramString;
+          if (((StructMsgItemImage)localObject).aE == null) {
+            ((StructMsgItemImage)localObject).aE = paramString;
           }
-          AIOImageData localAIOImageData = AIOGalleryUtils.a(((StructMsgItemImage)localObject).a());
-          localObject = localAIOImageData.a(4);
+          AIOImageData localAIOImageData = AIOGalleryUtils.a(((StructMsgItemImage)localObject).d());
+          localObject = localAIOImageData.c(4);
           paramString = (String)localObject;
           if (localObject == null) {
-            paramString = localAIOImageData.a(2);
+            paramString = localAIOImageData.c(2);
           }
           if (paramString != null) {
             paramString.getAbsolutePath();
@@ -679,6 +586,59 @@ public class StructingMsgItemBuilderMenuHelper
       }
     }
     return bool;
+  }
+  
+  private void b(Context paramContext1, String paramString, MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface, Context paramContext2)
+  {
+    if (a(paramContext1, paramString, paramMessageForStructing, paramQQAppInterface, paramContext2)) {
+      return;
+    }
+    if (paramMessageForStructing.structingMsg.mMsgServiceID == 81) {
+      StoryReportor.a(paramQQAppInterface, paramContext2, paramMessageForStructing, "forward");
+    }
+    Object localObject = new Bundle();
+    if ((paramMessageForStructing.structingMsg.source_puin != null) && (!"".equals(paramMessageForStructing.structingMsg.source_puin))) {
+      ((Bundle)localObject).putString("source_puin", paramMessageForStructing.structingMsg.source_puin);
+    }
+    ((Bundle)localObject).putInt("forward_type", -3);
+    paramMessageForStructing.structingMsg.mCommentText = null;
+    ((Bundle)localObject).putInt("structmsg_service_id", paramMessageForStructing.structingMsg.mMsgServiceID);
+    ((Bundle)localObject).putByteArray("stuctmsg_bytes", paramMessageForStructing.structingMsg.getBytes());
+    ((Bundle)localObject).putLong("structmsg_uniseq", paramMessageForStructing.uniseq);
+    ((Bundle)localObject).putInt("accostType", paramMessageForStructing.structingMsg.sourceAccoutType);
+    ((Bundle)localObject).putInt("selection_mode", this.a.k());
+    paramContext1 = new Intent();
+    paramContext1.putExtras((Bundle)localObject);
+    if ((paramMessageForStructing.structingMsg instanceof StructMsgForImageShare))
+    {
+      localObject = (StructMsgForImageShare)paramMessageForStructing.structingMsg;
+      StructMsgItemImage localStructMsgItemImage = ((StructMsgForImageShare)localObject).getFirstImageElement();
+      if ((localStructMsgItemImage != null) && (localStructMsgItemImage.c()))
+      {
+        paramContext1.putExtra("key_forward_image_share", true);
+        paramContext1.putExtra("key_forward_image_share_appid", Long.toString(((StructMsgForImageShare)localObject).mSourceAppid));
+        paramContext1.putExtra("key_forward_image_share_uin_type", ((StructMsgForImageShare)localObject).uinType);
+      }
+    }
+    else if (((paramMessageForStructing.structingMsg instanceof StructMsgForAudioShare)) || ((paramMessageForStructing.structingMsg instanceof StructMsgForGeneralShare)))
+    {
+      paramContext1.putExtra("key_forward_share", true);
+      paramContext1.putExtra("key_forward_share_title", ((AbsShareMsg)paramMessageForStructing.structingMsg).mContentTitle);
+      paramContext1.putExtra("key_forward_image_share_uin_type", paramMessageForStructing.structingMsg.uinType);
+    }
+    ForwardBaseOption.a((Activity)paramContext2, paramContext1, 21);
+    paramContext1 = paramMessageForStructing.structingMsg.mMsgUrl;
+    ReportController.b(paramQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, paramMessageForStructing.senderuin, paramContext1, Long.toString(paramMessageForStructing.structingMsg.msgId), "");
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004045", "0X8004045", 0, 0, "", "", "", "");
+    if (paramMessageForStructing.structingMsg.mMsgServiceID == 84) {
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8007166", "0X8007166", 0, 0, "", "", "", "");
+    }
+    if (AIOGallerySceneWithBusiness.a(paramString)) {
+      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.d(paramString), new String[] { "2", "", AIOGallerySceneWithBusiness.c(paramString) });
+    }
+    if (paramMessageForStructing.isMultiMsg) {
+      a("0X8009D66", paramMessageForStructing, paramQQAppInterface);
+    }
   }
   
   private void b(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, Activity paramActivity, AbsShareMsg paramAbsShareMsg)
@@ -784,8 +744,8 @@ public class StructingMsgItemBuilderMenuHelper
         paramString = ((BaseActivity)paramContext).getChatFragment();
         if (paramString != null)
         {
-          paramString = paramString.a();
-          ((MultiFavoriteHelper)paramString.a(11)).a(paramString, null, (MessageForStructing)paramChatMessage);
+          paramString = paramString.k();
+          ((MultiFavoriteHelper)paramString.q(11)).a(paramString, null, (MessageForStructing)paramChatMessage);
         }
       }
       else if (localAbsShareMsg.mMsgServiceID == 32)
@@ -844,6 +804,47 @@ public class StructingMsgItemBuilderMenuHelper
     return bool1;
   }
   
+  private boolean b(QQCustomMenu paramQQCustomMenu, MessageForStructing paramMessageForStructing, AbsStructMsg paramAbsStructMsg, QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = paramAbsStructMsg instanceof AbsShareMsg;
+    boolean bool1 = false;
+    if ((bool2) && (((AbsShareMsg)paramAbsStructMsg).mMsgException))
+    {
+      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.e, paramQQCustomMenu);
+      if (paramMessageForStructing.istroop == 1008) {
+        BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.d, paramQQCustomMenu);
+      }
+      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.l, paramQQCustomMenu);
+    }
+    else if (a(paramAbsStructMsg.mMsgServiceID))
+    {
+      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.e, paramQQCustomMenu);
+      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.l, paramQQCustomMenu);
+    }
+    else if (paramAbsStructMsg.mMsgServiceID == 128)
+    {
+      BaseBubbleBuilderMenuHelper.b(paramMessageForStructing, paramQQCustomMenu);
+      BaseBubbleBuilderMenuHelper.a(paramMessageForStructing, paramQQCustomMenu);
+      BaseBubbleBuilderMenuHelper.c(paramMessageForStructing, paramQQCustomMenu);
+      TroopReportor.a("Grp_AIO", "invite", "send_in", 0, 0, new String[0]);
+    }
+    else if ((paramAbsStructMsg instanceof StructMsgForHypertext))
+    {
+      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.e, paramQQCustomMenu);
+      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.d, paramQQCustomMenu);
+      BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.l, paramQQCustomMenu);
+    }
+    else
+    {
+      if (!a(paramMessageForStructing, paramAbsStructMsg, paramQQAppInterface, paramQQCustomMenu)) {
+        break label178;
+      }
+    }
+    bool1 = true;
+    label178:
+    return bool1;
+  }
+  
   private boolean b(String paramString, QQAppInterface paramQQAppInterface, Activity paramActivity, AbsShareMsg paramAbsShareMsg, boolean paramBoolean)
   {
     Object localObject3 = paramAbsShareMsg.mMsgActionData.substring(paramAbsShareMsg.mMsgActionData.indexOf("|") + 1).split("\\|");
@@ -887,14 +888,14 @@ public class StructingMsgItemBuilderMenuHelper
       localObject3 = str;
       if (localObject5 != null)
       {
-        if (((StructMsgItemImage)localObject5).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
-          ((StructMsgItemImage)localObject5).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = ((StructMsgForImageShare)localObject4);
+        if (((StructMsgItemImage)localObject5).aE == null) {
+          ((StructMsgItemImage)localObject5).aE = ((StructMsgForImageShare)localObject4);
         }
-        localObject5 = AIOGalleryUtils.a(((StructMsgItemImage)localObject5).a());
-        localObject3 = ((AIOImageData)localObject5).a(4);
+        localObject5 = AIOGalleryUtils.a(((StructMsgItemImage)localObject5).d());
+        localObject3 = ((AIOImageData)localObject5).c(4);
         localObject4 = localObject3;
         if (localObject3 == null) {
-          localObject4 = ((AIOImageData)localObject5).a(2);
+          localObject4 = ((AIOImageData)localObject5).c(2);
         }
         localObject3 = str;
         if (localObject4 != null) {
@@ -903,9 +904,9 @@ public class StructingMsgItemBuilderMenuHelper
       }
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append(localObject1[3]);
-      ((StringBuilder)localObject4).append(HardCodeUtil.a(2131714376));
+      ((StringBuilder)localObject4).append(HardCodeUtil.a(2131911889));
       ((StringBuilder)localObject4).append(localObject1[5]);
-      ((StringBuilder)localObject4).append(HardCodeUtil.a(2131714382));
+      ((StringBuilder)localObject4).append(HardCodeUtil.a(2131911894));
       localObject5 = ((StringBuilder)localObject4).toString();
       localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("ADTAG=comic.plugin.read&id=");
@@ -936,18 +937,18 @@ public class StructingMsgItemBuilderMenuHelper
       new QfavBuilder(6).a("nLinkType", 0).b("sTitle", localObject1[1]).b("sUrl", (String)localObject2).a("bAppShare", false).a("lAppId", 0L).b("sPublisher", paramAbsShareMsg.mSourceName).b("sBrief", (String)localObject5).b("sPath", (String)localObject3).b("sResUrl", paramAbsShareMsg.mSourceUrl).a("lCategory", 1L).a(paramActivity, paramQQAppInterface.getAccount());
       QfavReport.a(paramQQAppInterface, 6, 2);
       QfavReport.a(paramQQAppInterface, 8, 0, paramAbsShareMsg.uinType);
-      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.b(paramString), new String[] { "3", "", AIOGallerySceneWithBusiness.a(paramString) });
+      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.d(paramString), new String[] { "3", "", AIOGallerySceneWithBusiness.c(paramString) });
     }
     return bool;
   }
   
   private void c(ChatMessage paramChatMessage, String paramString, MessageForStructing paramMessageForStructing, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.a.b(2131371603, paramContext, paramChatMessage);
+    this.a.b(2131439015, paramContext, paramChatMessage);
     boolean bool = AIOGallerySceneWithBusiness.a(paramString);
     int j = 0;
     if (bool) {
-      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.b(paramString), new String[] { "6", "", AIOGallerySceneWithBusiness.a(paramString) });
+      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.d(paramString), new String[] { "6", "", AIOGallerySceneWithBusiness.c(paramString) });
     }
     if (paramChatMessage.istroop == 1008)
     {
@@ -978,7 +979,7 @@ public class StructingMsgItemBuilderMenuHelper
   {
     ChatActivityFacade.b(paramContext, paramQQAppInterface, paramChatMessage);
     if (AIOGallerySceneWithBusiness.a(paramString)) {
-      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.b(paramString), new String[] { "5", "", AIOGallerySceneWithBusiness.a(paramString) });
+      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramQQAppInterface, "3009", "2", "40053", AIOGallerySceneWithBusiness.d(paramString), new String[] { "5", "", AIOGallerySceneWithBusiness.c(paramString) });
     }
     if (paramMessageForStructing.structingMsg.mMsgServiceID == 81) {
       StoryReportor.a(paramQQAppInterface, paramContext, paramMessageForStructing, "delete");
@@ -987,16 +988,16 @@ public class StructingMsgItemBuilderMenuHelper
   
   public QQCustomMenu a(QQCustomMenu paramQQCustomMenu, ChatMessage paramChatMessage, ChatItemBuilder.BaseHolder paramBaseHolder)
   {
-    paramBaseHolder = this.a.a();
-    Context localContext = this.a.a();
-    SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    paramBaseHolder = this.a.l();
+    Context localContext = this.a.m();
+    SessionInfo localSessionInfo = this.a.f;
     MessageForStructing localMessageForStructing = (MessageForStructing)paramChatMessage;
     AbsStructMsg localAbsStructMsg = localMessageForStructing.structingMsg;
     if (localAbsStructMsg == null) {
       return paramQQCustomMenu;
     }
     boolean bool = false;
-    if (a(paramQQCustomMenu, localMessageForStructing, localAbsStructMsg, paramBaseHolder)) {
+    if (b(paramQQCustomMenu, localMessageForStructing, localAbsStructMsg, paramBaseHolder)) {
       return paramQQCustomMenu;
     }
     if ((localAbsStructMsg instanceof StructMsgForImageShare))
@@ -1018,7 +1019,7 @@ public class StructingMsgItemBuilderMenuHelper
       BaseBubbleBuilderMenuHelper.b(localMessageForStructing, paramQQCustomMenu);
     }
     a(paramQQCustomMenu, localMessageForStructing, localAbsStructMsg, paramBaseHolder);
-    if ((localSessionInfo.jdField_a_of_type_Int != 1008) || (paramQQCustomMenu.a() == 0)) {
+    if ((localSessionInfo.a != 1008) || (paramQQCustomMenu.b() == 0)) {
       BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.e, paramQQCustomMenu);
     }
     if ((localAbsStructMsg.mMsgServiceID == 14) || (localAbsStructMsg.mMsgServiceID == 35) || (localAbsStructMsg.mMsgServiceID == 84)) {
@@ -1036,6 +1037,9 @@ public class StructingMsgItemBuilderMenuHelper
     }
     BaseBubbleBuilderMenuHelper.a(BaseBubbleBuilderMenuHelper.l, paramQQCustomMenu);
     if (TroopEssenceUtil.a(paramChatMessage)) {
+      BaseBubbleBuilderMenuHelper.e(localMessageForStructing, paramQQCustomMenu);
+    }
+    if (TroopTodoUtils.a(paramChatMessage)) {
       BaseBubbleBuilderMenuHelper.d(localMessageForStructing, paramQQCustomMenu);
     }
     return paramQQCustomMenu;
@@ -1050,52 +1054,52 @@ public class StructingMsgItemBuilderMenuHelper
     if (localObject == null) {
       return false;
     }
-    localObject = this.a.a();
-    Context localContext = this.a.a();
-    SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if (paramInt == 2131362241)
+    localObject = this.a.l();
+    Context localContext = this.a.m();
+    SessionInfo localSessionInfo = this.a.f;
+    if (paramInt == 2131427822)
     {
       a(str, localMessageForStructing, (QQAppInterface)localObject, localContext);
     }
-    else if (paramInt == 2131367180)
+    else if (paramInt == 2131433636)
     {
       if (QLog.isColorLevel()) {
         QLog.d("forward", 2, "structingMsgItem forward");
       }
-      a(paramContext, str, localMessageForStructing, (QQAppInterface)localObject, localContext);
+      b(paramContext, str, localMessageForStructing, (QQAppInterface)localObject, localContext);
     }
-    else if (paramInt == 2131365480)
+    else if (paramInt == 2131431695)
     {
       d(paramChatMessage, str, localMessageForStructing, (QQAppInterface)localObject, localContext);
     }
-    else if (paramInt == 2131371603)
+    else if (paramInt == 2131439015)
     {
       c(paramChatMessage, str, localMessageForStructing, (QQAppInterface)localObject, localContext);
     }
-    else if (paramInt == 2131366494)
+    else if (paramInt == 2131432813)
     {
       b(paramChatMessage, str, localMessageForStructing, (QQAppInterface)localObject, localContext);
     }
-    else if (paramInt == 2131365311)
+    else if (paramInt == 2131431492)
     {
       a(localMessageForStructing, localContext);
     }
-    else if (paramInt == 2131371592)
+    else if (paramInt == 2131438999)
     {
-      this.a.b(2131371603, localContext, paramChatMessage);
+      this.a.b(2131439015, localContext, paramChatMessage);
     }
-    else if (paramInt == 2131367202)
+    else if (paramInt == 2131433658)
     {
       a(paramContext, localMessageForStructing, (QQAppInterface)localObject, (Activity)localContext, localSessionInfo);
     }
-    else if (paramInt == 2131371562)
+    else if (paramInt == 2131438943)
     {
       a(paramChatMessage, str, localMessageForStructing, (QQAppInterface)localObject, localContext);
     }
     else
     {
-      if (paramInt != 2131364271) {
-        break label329;
+      if (paramInt != 2131430288) {
+        break label330;
       }
       paramContext = ((ITransFileController)((QQAppInterface)localObject).getRuntimeService(ITransFileController.class)).findProcessor(paramChatMessage.frienduin, paramChatMessage.uniseq);
       if ((paramContext != null) && ((paramContext instanceof BaseTransProcessor))) {
@@ -1103,7 +1107,7 @@ public class StructingMsgItemBuilderMenuHelper
       }
     }
     bool = true;
-    label329:
+    label330:
     return bool;
   }
   
@@ -1114,7 +1118,7 @@ public class StructingMsgItemBuilderMenuHelper
     boolean bool1 = bool2;
     if (i == 1)
     {
-      if ((paramAbsStructMsg.mMsgServiceID != 23) && (paramAbsStructMsg.mMsgServiceID != 19) && (paramAbsStructMsg.mMsgServiceID != 60) && (!HardCodeUtil.a(2131714386).equals(paramAbsStructMsg.getSourceName())))
+      if ((paramAbsStructMsg.mMsgServiceID != 23) && (paramAbsStructMsg.mMsgServiceID != 19) && (paramAbsStructMsg.mMsgServiceID != 60) && (!HardCodeUtil.a(2131911898).equals(paramAbsStructMsg.getSourceName())))
       {
         bool1 = bool2;
         if (paramAbsStructMsg.mMsgUrl == null) {
@@ -1140,7 +1144,7 @@ public class StructingMsgItemBuilderMenuHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilderMenuHelper
  * JD-Core Version:    0.7.0.1
  */

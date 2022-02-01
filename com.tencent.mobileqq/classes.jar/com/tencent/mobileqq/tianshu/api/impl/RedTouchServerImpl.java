@@ -35,7 +35,7 @@ public class RedTouchServerImpl
   {
     RedpointHandler localRedpointHandler = this.mRedPointHandler;
     if (localRedpointHandler != null) {
-      localRedpointHandler.a(paramAppRuntime);
+      localRedpointHandler.b(paramAppRuntime);
     }
   }
   
@@ -72,7 +72,7 @@ public class RedTouchServerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.api.impl.RedTouchServerImpl
  * JD-Core Version:    0.7.0.1
  */

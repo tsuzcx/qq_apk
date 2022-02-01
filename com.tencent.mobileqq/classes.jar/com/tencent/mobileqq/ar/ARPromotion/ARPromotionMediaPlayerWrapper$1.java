@@ -18,19 +18,19 @@ class ARPromotionMediaPlayerWrapper$1
       if (ARPromotionMediaPlayerWrapper.a(this.this$0)) {
         return;
       }
-      if (ARPromotionMediaPlayerWrapper.a(this.this$0) != null)
+      if (ARPromotionMediaPlayerWrapper.b(this.this$0) != null)
       {
-        ARPromotionMediaPlayerWrapper.a(this.this$0).updateTexImage();
-        ARPromotionMediaPlayerWrapper.a(this.this$0).getTransformMatrix(ARPromotionMediaPlayerWrapper.a(this.this$0));
-        ARPromotionMediaPlayerWrapper.a(this.this$0);
-        ARPromotionMediaPlayerWrapper.a(this.this$0);
-        Matrix.setIdentityM(ARPromotionMediaPlayerWrapper.b(this.this$0), 0);
-        ARPromotionMediaPlayerWrapper.a(this.this$0).bind();
-        ARPromotionMediaPlayerWrapper.a(this.this$0).drawTexture(36197, ARPromotionMediaPlayerWrapper.a(this.this$0), ARPromotionMediaPlayerWrapper.a(this.this$0), ARPromotionMediaPlayerWrapper.b(this.this$0));
-        ARPromotionMediaPlayerWrapper.a(this.this$0).unbind();
-        if ((ARPromotionMediaPlayerWrapper.b(this.this$0) == 2L) && (ARPromotionMediaPlayerWrapper.a(this.this$0) != null))
+        ARPromotionMediaPlayerWrapper.b(this.this$0).updateTexImage();
+        ARPromotionMediaPlayerWrapper.b(this.this$0).getTransformMatrix(ARPromotionMediaPlayerWrapper.c(this.this$0));
+        ARPromotionMediaPlayerWrapper.d(this.this$0);
+        ARPromotionMediaPlayerWrapper.e(this.this$0);
+        Matrix.setIdentityM(ARPromotionMediaPlayerWrapper.f(this.this$0), 0);
+        ARPromotionMediaPlayerWrapper.g(this.this$0).bind();
+        ARPromotionMediaPlayerWrapper.i(this.this$0).drawTexture(36197, ARPromotionMediaPlayerWrapper.h(this.this$0), ARPromotionMediaPlayerWrapper.c(this.this$0), ARPromotionMediaPlayerWrapper.f(this.this$0));
+        ARPromotionMediaPlayerWrapper.g(this.this$0).unbind();
+        if ((ARPromotionMediaPlayerWrapper.j(this.this$0) == 2L) && (ARPromotionMediaPlayerWrapper.k(this.this$0) != null))
         {
-          ARPromotionMediaPlayerWrapper.a(this.this$0).a(ARPromotionMediaPlayerWrapper.b(this.this$0), 0, ARPromotionMediaPlayerWrapper.a(this.this$0).getTexId());
+          ARPromotionMediaPlayerWrapper.k(this.this$0).a(ARPromotionMediaPlayerWrapper.l(this.this$0), 0, ARPromotionMediaPlayerWrapper.g(this.this$0).getTexId());
           QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupMediaPlayerWrapper.drawFrame hardWare");
           return;
         }
@@ -44,7 +44,7 @@ class ARPromotionMediaPlayerWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper.1
  * JD-Core Version:    0.7.0.1
  */

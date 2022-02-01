@@ -562,26 +562,6 @@ public class MotionLayout
     }
   }
   
-  private void onNewStateAttachHandlers()
-  {
-    MotionScene localMotionScene = this.mScene;
-    if (localMotionScene == null) {
-      return;
-    }
-    if (localMotionScene.autoTransition(this, this.mCurrentState))
-    {
-      requestLayout();
-      return;
-    }
-    int i = this.mCurrentState;
-    if (i != -1) {
-      this.mScene.addOnClickListeners(this, i);
-    }
-    if (this.mScene.supportTouch()) {
-      this.mScene.setupTouch();
-    }
-  }
-  
   private void processTransitionCompleted()
   {
     if (this.mTransitionListener == null)
@@ -1413,8 +1393,17 @@ public class MotionLayout
     }
     onNewStateAttachHandlers();
     localObject = this.mStateCache;
-    if (localObject != null) {
+    if (localObject != null)
+    {
       ((MotionLayout.StateCache)localObject).apply();
+      return;
+    }
+    localObject = this.mScene;
+    if ((localObject != null) && (((MotionScene)localObject).mCurrentTransition != null) && (this.mScene.mCurrentTransition.getAutoTransition() == 4))
+    {
+      transitionToEnd();
+      setState(MotionLayout.TransitionState.SETUP);
+      setState(MotionLayout.TransitionState.MOVING);
     }
   }
   
@@ -1648,6 +1637,26 @@ public class MotionLayout
   
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt1, int paramInt2) {}
   
+  void onNewStateAttachHandlers()
+  {
+    MotionScene localMotionScene = this.mScene;
+    if (localMotionScene == null) {
+      return;
+    }
+    if (localMotionScene.autoTransition(this, this.mCurrentState))
+    {
+      requestLayout();
+      return;
+    }
+    int i = this.mCurrentState;
+    if (i != -1) {
+      this.mScene.addOnClickListeners(this, i);
+    }
+    if (this.mScene.supportTouch()) {
+      this.mScene.setupTouch();
+    }
+  }
+  
   public void onRtlPropertiesChanged(int paramInt)
   {
     MotionScene localMotionScene = this.mScene;
@@ -1825,6 +1834,9 @@ public class MotionLayout
   
   public void setProgress(float paramFloat)
   {
+    if ((paramFloat < 0.0F) || (paramFloat > 1.0F)) {
+      Log.w("MotionLayout", "Warning! Progress is defined for values between 0.0 and 1.0 inclusive");
+    }
     if (!isAttachedToWindow())
     {
       if (this.mStateCache == null) {
@@ -2301,7 +2313,7 @@ public class MotionLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.motion.widget.MotionLayout
  * JD-Core Version:    0.7.0.1
  */

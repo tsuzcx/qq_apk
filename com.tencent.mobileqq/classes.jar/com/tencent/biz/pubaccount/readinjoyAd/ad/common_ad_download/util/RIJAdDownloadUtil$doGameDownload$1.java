@@ -18,15 +18,15 @@ final class RIJAdDownloadUtil$doGameDownload$1
   {
     if (paramInt != 1)
     {
-      GameComponentReport.a(Integer.valueOf(0), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 10, "2");
+      GameComponentReport.a(Integer.valueOf(0), this.a, 10, "2");
       return;
     }
-    FastWebRecommendAdHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, true, 8);
+    FastWebRecommendAdHelper.a(this.b.getContext(), this.a, true, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadUtil.doGameDownload.1
  * JD-Core Version:    0.7.0.1
  */

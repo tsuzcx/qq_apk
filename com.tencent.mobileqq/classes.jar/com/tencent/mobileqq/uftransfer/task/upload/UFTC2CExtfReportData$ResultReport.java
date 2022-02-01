@@ -8,26 +8,26 @@ import mqq.app.AppRuntime;
 
 public class UFTC2CExtfReportData$ResultReport
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  ExcitingTransferUploadResultRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
-  String jdField_a_of_type_JavaLangString;
-  final AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  int jdField_d_of_type_Int = 0;
-  long jdField_d_of_type_Long = 0L;
+  final AppRuntime a;
+  long b = 0L;
+  int c = 0;
+  long d = 0L;
   long e = 0L;
-  long f = 0L;
-  long g;
+  String f;
+  String g;
+  long h = 0L;
+  boolean i = false;
+  long j = 0L;
+  long k = 0L;
+  long l;
+  int m = 0;
+  int n = 0;
+  int o = 0;
+  ExcitingTransferUploadResultRp p;
   
   public UFTC2CExtfReportData$ResultReport(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.a = paramAppRuntime;
   }
   
   protected HashMap<String, String> a()
@@ -37,39 +37,39 @@ public class UFTC2CExtfReportData$ResultReport
     localHashMap.put("param_TransferType", String.valueOf(0));
     localHashMap.put("param_Platform", String.valueOf(2));
     localHashMap.put("param_AppType", String.valueOf(0));
-    localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_FileName", String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localHashMap.put("param_Suffix", String.valueOf(this.jdField_b_of_type_JavaLangString));
-    localHashMap.put("param_TargetUin", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_GroupCode", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_FileSize", String.valueOf(this.jdField_d_of_type_Long));
-    localHashMap.put("param_IsFlashFile", String.valueOf(this.jdField_a_of_type_Boolean));
-    localHashMap.put("param_TotalCostTime", String.valueOf(this.g));
-    localHashMap.put("param_CalcShaCostTime", String.valueOf(this.e));
-    localHashMap.put("param_CalcHashCostTime", String.valueOf(this.f));
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
+    localHashMap.put("param_Result", String.valueOf(this.c));
+    localHashMap.put("param_FileName", String.valueOf(this.f));
+    localHashMap.put("param_Suffix", String.valueOf(this.g));
+    localHashMap.put("param_TargetUin", String.valueOf(this.d));
+    localHashMap.put("param_GroupCode", String.valueOf(this.e));
+    localHashMap.put("param_FileSize", String.valueOf(this.h));
+    localHashMap.put("param_IsFlashFile", String.valueOf(this.i));
+    localHashMap.put("param_TotalCostTime", String.valueOf(this.l));
+    localHashMap.put("param_CalcShaCostTime", String.valueOf(this.j));
+    localHashMap.put("param_CalcHashCostTime", String.valueOf(this.k));
+    Object localObject = this.p;
     if (localObject != null)
     {
       localHashMap.put("param_Result", String.valueOf(((ExcitingTransferUploadResultRp)localObject).mnResult));
-      localHashMap.put("param_IsXTFValid", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mbIsXTFValid));
-      localHashMap.put("param_HttpTime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mu64HttpTime));
-      localHashMap.put("param_SrvReturCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mnSrvReturCode));
-      localHashMap.put("param_TransferSpeed", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mu64TransferSpeed));
-      localHashMap.put("param_TransferSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mu64TransferSize));
-      localHashMap.put("param_StartSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mu64StartSize));
-      localHashMap.put("param_ServerIp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mstrServerIp));
-      localHashMap.put("param_ServerPort", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mwServerPort));
-      localHashMap.put("param_FileUrl", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mstrFileUrl));
-      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.muMaxUploadingFtnNum));
-      localHashMap.put("param_RetryCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.muRetryCount));
-      localHashMap.put("param_IpChangeCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.muIpChangeCount));
-      localHashMap.put("param_RollBackCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.muRollBackCount));
-      localHashMap.put("param_QueryHoleCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.muQueryHoleCount));
-      localHashMap.put("param_RangDiffCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.muRangDiffCount));
-      localHashMap.put("param_DelayTotoalCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.muDelayTotoalCount));
-      localHashMap.put("param_TcpCnnCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mnTcpCnnCode));
-      localHashMap.put("param_TcpSocketCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mnTcpSocketCode));
-      localHashMap.put("param_HttpsSupport", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.mwHttpsSupport));
+      localHashMap.put("param_IsXTFValid", String.valueOf(this.p.mbIsXTFValid));
+      localHashMap.put("param_HttpTime", String.valueOf(this.p.mu64HttpTime));
+      localHashMap.put("param_SrvReturCode", String.valueOf(this.p.mnSrvReturCode));
+      localHashMap.put("param_TransferSpeed", String.valueOf(this.p.mu64TransferSpeed));
+      localHashMap.put("param_TransferSize", String.valueOf(this.p.mu64TransferSize));
+      localHashMap.put("param_StartSize", String.valueOf(this.p.mu64StartSize));
+      localHashMap.put("param_ServerIp", String.valueOf(this.p.mstrServerIp));
+      localHashMap.put("param_ServerPort", String.valueOf(this.p.mwServerPort));
+      localHashMap.put("param_FileUrl", String.valueOf(this.p.mstrFileUrl));
+      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(this.p.muMaxUploadingFtnNum));
+      localHashMap.put("param_RetryCount", String.valueOf(this.p.muRetryCount));
+      localHashMap.put("param_IpChangeCount", String.valueOf(this.p.muIpChangeCount));
+      localHashMap.put("param_RollBackCount", String.valueOf(this.p.muRollBackCount));
+      localHashMap.put("param_QueryHoleCount", String.valueOf(this.p.muQueryHoleCount));
+      localHashMap.put("param_RangDiffCount", String.valueOf(this.p.muRangDiffCount));
+      localHashMap.put("param_DelayTotoalCount", String.valueOf(this.p.muDelayTotoalCount));
+      localHashMap.put("param_TcpCnnCode", String.valueOf(this.p.mnTcpCnnCode));
+      localHashMap.put("param_TcpSocketCode", String.valueOf(this.p.mnTcpSocketCode));
+      localHashMap.put("param_HttpsSupport", String.valueOf(this.p.mwHttpsSupport));
     }
     else
     {
@@ -93,14 +93,14 @@ public class UFTC2CExtfReportData$ResultReport
       localHashMap.put("param_TcpSocketCode", String.valueOf(0));
       localHashMap.put("param_HttpsSupport", String.valueOf(0));
     }
-    localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_c_of_type_Int));
-    localHashMap.put("param_stackType", String.valueOf(UFTDependFeatureApi.d()));
-    localHashMap.put("param_loginType", String.valueOf(UFTDependFeatureApi.e()));
-    localHashMap.put("param_ishttps", String.valueOf(this.jdField_d_of_type_Int));
-    if (UFTDependFeatureApi.a())
+    localHashMap.put("param_V6SelectType", String.valueOf(this.m));
+    localHashMap.put("param_ipAddrType", String.valueOf(this.n));
+    localHashMap.put("param_stackType", String.valueOf(UFTDependFeatureApi.h()));
+    localHashMap.put("param_loginType", String.valueOf(UFTDependFeatureApi.i()));
+    localHashMap.put("param_ishttps", String.valueOf(this.o));
+    if (UFTDependFeatureApi.c())
     {
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+      localObject = this.a;
       if ((localObject == null) || (((AppRuntime)localObject).isLogin())) {}
     }
     else
@@ -112,41 +112,41 @@ public class UFTC2CExtfReportData$ResultReport
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
   {
-    this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_c_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_d_of_type_Long = paramLong3;
+    this.d = paramLong1;
+    this.e = paramLong2;
+    this.f = paramString1;
+    this.g = paramString2;
+    this.h = paramLong3;
   }
   
   public void a(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = paramExcitingTransferUploadResultRp;
+    this.p = paramExcitingTransferUploadResultRp;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
   public void b(long paramLong)
   {
-    this.e = paramLong;
+    this.j = paramLong;
   }
   
   public void b(boolean paramBoolean)
@@ -156,12 +156,12 @@ public class UFTC2CExtfReportData$ResultReport
   
   public void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.n = paramInt;
   }
   
   public void c(long paramLong)
   {
-    this.g = paramLong;
+    this.l = paramLong;
   }
   
   public void c(boolean paramBoolean)
@@ -173,7 +173,7 @@ public class UFTC2CExtfReportData$ResultReport
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Id[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("] >>> Extf_C2C_Suc_DR:act[");
       localStringBuilder.append("actC2CXTFUpload");
       localStringBuilder.append("] ");
@@ -187,7 +187,7 @@ public class UFTC2CExtfReportData$ResultReport
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Id[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("] >>> Extf_C2C_Fail_DR:act[");
       localStringBuilder.append("actC2CXTFUpload");
       localStringBuilder.append("] ");
@@ -197,12 +197,12 @@ public class UFTC2CExtfReportData$ResultReport
       localStringBuilder.append(str);
       UFTLog.d("[UFTTransfer] UFTC2CExtfReportData", 1, localStringBuilder.toString());
     }
-    UFTDependFeatureApi.a(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), "actC2CXTFUpload", paramBoolean, 0L, 0L, localHashMap, "");
+    UFTDependFeatureApi.a(this.a.getCurrentAccountUin(), "actC2CXTFUpload", paramBoolean, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTC2CExtfReportData.ResultReport
  * JD-Core Version:    0.7.0.1
  */

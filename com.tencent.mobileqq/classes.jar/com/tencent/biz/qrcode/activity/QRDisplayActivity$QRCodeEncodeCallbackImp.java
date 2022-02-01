@@ -8,13 +8,13 @@ import java.lang.ref.WeakReference;
 class QRDisplayActivity$QRCodeEncodeCallbackImp
   implements QRCodeEncodeCallback
 {
-  public int a;
-  public String a;
   public WeakReference<QRDisplayActivity> a;
+  public String b;
+  public int c;
   
   public void a(boolean paramBoolean, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -25,7 +25,7 @@ class QRDisplayActivity$QRCodeEncodeCallbackImp
     if (QLog.isColorLevel()) {
       QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
     }
-    if (!((QRDisplayActivity)localObject).b)
+    if (!((QRDisplayActivity)localObject).h)
     {
       if (((QRDisplayActivity)localObject).isFinishing()) {
         return;
@@ -35,11 +35,11 @@ class QRDisplayActivity$QRCodeEncodeCallbackImp
         ((QRDisplayActivity)localObject).i();
         return;
       }
-      ((QRDisplayActivity)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
+      ((QRDisplayActivity)localObject).a(this.b, this.c, paramString);
       paramString = QRUtils.a(paramString, -1);
       if (paramString != null)
       {
-        ((QRDisplayActivity)localObject).a = paramString;
+        ((QRDisplayActivity)localObject).e = paramString;
         ((QRDisplayActivity)localObject).h();
         return;
       }

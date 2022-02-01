@@ -15,23 +15,23 @@ class VoiceTimeTraceUtil$1
   
   public void run()
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(VoiceTimeTraceUtil.a(this.this$0).values());
+    this.a.addAll(VoiceTimeTraceUtil.a(this.this$0).values());
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(AssistantUtils.b());
+    ((StringBuilder)localObject).append(AssistantUtils.f());
     ((StringBuilder)localObject).append("snapshot.zip");
     localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("create trace zip: ");
     localStringBuilder.append((String)localObject);
     AssistantUtils.a("VoiceTimeTraceUtil", localStringBuilder.toString());
-    FileUtils.zipFiles(this.jdField_a_of_type_JavaUtilList, (String)localObject);
+    FileUtils.zipFiles(this.a, (String)localObject);
     this.this$0.a("ZIP", (String)localObject);
     ThreadManager.getUIHandler().post(new VoiceTimeTraceUtil.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.VoiceTimeTraceUtil.1
  * JD-Core Version:    0.7.0.1
  */

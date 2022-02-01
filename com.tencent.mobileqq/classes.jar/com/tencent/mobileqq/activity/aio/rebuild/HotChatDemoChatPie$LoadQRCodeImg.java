@@ -12,11 +12,11 @@ import mqq.util.WeakReference;
 class HotChatDemoChatPie$LoadQRCodeImg
   implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private WeakReference<MqqHandler> jdField_a_of_type_MqqUtilWeakReference;
-  private final int b;
+  private WeakReference<MqqHandler> a;
+  private final String b;
   private final int c;
+  private final int d;
+  private final int e;
   
   public HotChatDemoChatPie$LoadQRCodeImg(String paramString, MqqHandler paramMqqHandler, int paramInt)
   {
@@ -25,11 +25,11 @@ class HotChatDemoChatPie$LoadQRCodeImg
   
   public HotChatDemoChatPie$LoadQRCodeImg(String paramString, MqqHandler paramMqqHandler, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramMqqHandler);
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.b = paramString;
+    this.c = paramInt1;
+    this.a = new WeakReference(paramMqqHandler);
+    this.d = paramInt2;
+    this.e = paramInt3;
   }
   
   /* Error */
@@ -50,9 +50,9 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   16: astore 4
     //   18: aload 8
     //   20: astore 5
-    //   22: new 46	java/lang/StringBuilder
+    //   22: new 48	java/lang/StringBuilder
     //   25: dup
-    //   26: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   26: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   29: astore 9
     //   31: aload 6
     //   33: astore_3
@@ -61,8 +61,8 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   38: aload 8
     //   40: astore 5
     //   42: aload 9
-    //   44: getstatic 52	com/tencent/mobileqq/app/AppConstants:SDCARD_FILE_SAVE_PATH	Ljava/lang/String;
-    //   47: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: getstatic 54	com/tencent/mobileqq/app/AppConstants:SDCARD_FILE_SAVE_PATH	Ljava/lang/String;
+    //   47: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
     //   51: aload 6
     //   53: astore_3
@@ -72,9 +72,9 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   60: astore 5
     //   62: aload 9
     //   64: aload_1
-    //   65: invokevirtual 62	java/lang/String:getBytes	()[B
-    //   68: invokestatic 68	com/tencent/qphone/base/util/MD5:toMD5	([B)Ljava/lang/String;
-    //   71: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 64	java/lang/String:getBytes	()[B
+    //   68: invokestatic 70	com/tencent/qphone/base/util/MD5:toMD5	([B)Ljava/lang/String;
+    //   71: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: pop
     //   75: aload 6
     //   77: astore_3
@@ -83,7 +83,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   82: aload 8
     //   84: astore 5
     //   86: aload 9
-    //   88: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   88: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   91: astore 9
     //   93: aload 6
     //   95: astore_3
@@ -91,7 +91,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   98: astore 4
     //   100: aload 8
     //   102: astore 5
-    //   104: invokestatic 78	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   104: invokestatic 80	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   107: ifeq +83 -> 190
     //   110: aload 6
     //   112: astore_3
@@ -99,9 +99,9 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   115: astore 4
     //   117: aload 8
     //   119: astore 5
-    //   121: new 46	java/lang/StringBuilder
+    //   121: new 48	java/lang/StringBuilder
     //   124: dup
-    //   125: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   125: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   128: astore 10
     //   130: aload 6
     //   132: astore_3
@@ -110,8 +110,8 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   137: aload 8
     //   139: astore 5
     //   141: aload 10
-    //   143: ldc 80
-    //   145: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: ldc 82
+    //   145: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   148: pop
     //   149: aload 6
     //   151: astore_3
@@ -121,7 +121,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   158: astore 5
     //   160: aload 10
     //   162: aload 9
-    //   164: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: pop
     //   168: aload 6
     //   170: astore_3
@@ -129,21 +129,21 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   173: astore 4
     //   175: aload 8
     //   177: astore 5
-    //   179: ldc 82
+    //   179: ldc 84
     //   181: iconst_4
     //   182: aload 10
-    //   184: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   187: invokestatic 86	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   184: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   187: invokestatic 88	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   190: aload 6
     //   192: astore_3
     //   193: aload 7
     //   195: astore 4
     //   197: aload 8
     //   199: astore 5
-    //   201: new 88	java/io/File
+    //   201: new 90	java/io/File
     //   204: dup
     //   205: aload 9
-    //   207: invokespecial 91	java/io/File:<init>	(Ljava/lang/String;)V
+    //   207: invokespecial 93	java/io/File:<init>	(Ljava/lang/String;)V
     //   210: astore 10
     //   212: aload 6
     //   214: astore_3
@@ -152,7 +152,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   219: aload 8
     //   221: astore 5
     //   223: aload 10
-    //   225: invokevirtual 94	java/io/File:exists	()Z
+    //   225: invokevirtual 96	java/io/File:exists	()Z
     //   228: ifne +79 -> 307
     //   231: aload 6
     //   233: astore_3
@@ -163,10 +163,10 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   242: aload_1
     //   243: aload_2
     //   244: aload_0
-    //   245: getfield 26	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:jdField_a_of_type_Int	I
+    //   245: getfield 28	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:c	I
     //   248: iconst_0
     //   249: iconst_1
-    //   250: invokestatic 99	com/tencent/mobileqq/troopshare/TroopShareUtility:a	(Ljava/lang/String;Landroid/content/res/Resources;IIZ)Landroid/graphics/Bitmap;
+    //   250: invokestatic 101	com/tencent/mobileqq/troopshare/TroopShareUtility:a	(Ljava/lang/String;Landroid/content/res/Resources;IIZ)Landroid/graphics/Bitmap;
     //   253: astore_2
     //   254: aload_2
     //   255: astore_3
@@ -176,7 +176,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   260: astore 5
     //   262: aload_2
     //   263: aload 10
-    //   265: invokestatic 104	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
+    //   265: invokestatic 106	com/tencent/mobileqq/utils/ImageUtil:b	(Landroid/graphics/Bitmap;Ljava/io/File;)Z
     //   268: pop
     //   269: aload_2
     //   270: astore_3
@@ -187,7 +187,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   276: aload_2
     //   277: astore 5
     //   279: aload_0
-    //   280: getfield 35	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:b	I
+    //   280: getfield 37	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:d	I
     //   283: iconst_1
     //   284: if_icmpne +124 -> 408
     //   287: aload_2
@@ -198,8 +198,8 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   293: astore 5
     //   295: aload_2
     //   296: aload_0
-    //   297: getfield 37	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:c	I
-    //   300: invokestatic 107	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   297: getfield 39	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:e	I
+    //   300: invokestatic 109	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   303: astore_1
     //   304: goto +104 -> 408
     //   307: aload 6
@@ -209,7 +209,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   314: aload 8
     //   316: astore 5
     //   318: aload 9
-    //   320: invokestatic 113	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   320: invokestatic 115	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   323: astore_2
     //   324: aload_2
     //   325: astore_3
@@ -220,7 +220,7 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   331: aload_2
     //   332: astore 5
     //   334: aload_0
-    //   335: getfield 35	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:b	I
+    //   335: getfield 37	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:d	I
     //   338: iconst_1
     //   339: if_icmpne +69 -> 408
     //   342: aload_2
@@ -231,8 +231,8 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   348: astore 5
     //   350: aload_2
     //   351: aload_0
-    //   352: getfield 37	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:c	I
-    //   355: invokestatic 107	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   352: getfield 39	com/tencent/mobileqq/activity/aio/rebuild/HotChatDemoChatPie$LoadQRCodeImg:e	I
+    //   355: invokestatic 109	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   358: astore_1
     //   359: goto +49 -> 408
     //   362: astore_1
@@ -240,20 +240,20 @@ class HotChatDemoChatPie$LoadQRCodeImg
     //   366: astore_2
     //   367: aload_3
     //   368: astore_1
-    //   369: invokestatic 78	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   369: invokestatic 80	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   372: ifeq +36 -> 408
     //   375: aload_2
-    //   376: invokevirtual 116	java/lang/Error:printStackTrace	()V
+    //   376: invokevirtual 118	java/lang/Error:printStackTrace	()V
     //   379: aload_3
     //   380: astore_1
     //   381: goto +27 -> 408
     //   384: astore_2
     //   385: aload 4
     //   387: astore_1
-    //   388: invokestatic 78	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   388: invokestatic 80	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   391: ifeq +17 -> 408
     //   394: aload_2
-    //   395: invokevirtual 117	java/lang/Exception:printStackTrace	()V
+    //   395: invokevirtual 119	java/lang/Exception:printStackTrace	()V
     //   398: aload 4
     //   400: astore_1
     //   401: goto +7 -> 408
@@ -363,21 +363,21 @@ class HotChatDemoChatPie$LoadQRCodeImg
   public void run()
   {
     Object localObject1 = BaseApplicationImpl.getContext().getResources();
-    Object localObject2 = a(this.jdField_a_of_type_JavaLangString, (Resources)localObject1);
+    Object localObject2 = a(this.b, (Resources)localObject1);
     if (localObject2 != null) {
       localObject1 = new BitmapDrawable((Resources)localObject1, (Bitmap)localObject2);
     } else {
       localObject1 = null;
     }
-    localObject2 = (MqqHandler)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    localObject2 = (MqqHandler)this.a.get();
     if (localObject2 != null) {
-      ((MqqHandler)localObject2).obtainMessage(34, this.b, 0, localObject1).sendToTarget();
+      ((MqqHandler)localObject2).obtainMessage(34, this.d, 0, localObject1).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatDemoChatPie.LoadQRCodeImg
  * JD-Core Version:    0.7.0.1
  */

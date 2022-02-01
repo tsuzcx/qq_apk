@@ -19,8 +19,8 @@ public class FloatWindowHelper
     boolean bool = FWPermission.hasPermission(paramContext);
     if ((!bool) && (FloatWindowUtil.a()))
     {
-      DialogUtil.a(paramContext, 230, HardCodeUtil.a(2131694539), HardCodeUtil.a(2131694538), HardCodeUtil.a(2131691602), HardCodeUtil.a(2131691603), new FloatWindowHelper.1(this, paramContext, paramIPermissionCallback), new FloatWindowHelper.2(this, paramIPermissionCallback)).show();
-      FloatWindowUtil.a();
+      DialogUtil.a(paramContext, 230, HardCodeUtil.a(2131892223), HardCodeUtil.a(2131892222), HardCodeUtil.a(2131888564), HardCodeUtil.a(2131888565), new FloatWindowHelper.1(this, paramContext, paramIPermissionCallback), new FloatWindowHelper.2(this, paramIPermissionCallback)).show();
+      FloatWindowUtil.b();
       return;
     }
     paramIPermissionCallback.a(bool);
@@ -28,7 +28,7 @@ public class FloatWindowHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.floatwindow.FloatWindowHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -63,10 +63,10 @@ public final class PushUtil
   {
     Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
-    paramIntent.putExtra("KEY_MAIN_BUSINESS_ID", paramPushComponent.jdField_a_of_type_Int);
+    paramIntent.putExtra("KEY_MAIN_BUSINESS_ID", paramPushComponent.a);
     paramIntent.putExtra("KEY_SUB_BUSINESS_ID", paramPushComponent.b);
     paramIntent.putExtra("KEY_PUSH_ID", paramPushComponent.c);
-    paramIntent.putExtra("KEY_PUSH_TRIGGER_INFO", paramPushComponent.jdField_e_of_type_JavaLangString);
+    paramIntent.putExtra("KEY_PUSH_TRIGGER_INFO", paramPushComponent.i);
   }
   
   @Nullable
@@ -86,17 +86,17 @@ public final class PushUtil
     localStringBuilder.append('_');
     localStringBuilder.append(l);
     localTianShuReportData.b = localStringBuilder.toString();
-    localTianShuReportData.d = paramInt;
-    localTianShuReportData.jdField_e_of_type_Int = 1;
-    localTianShuReportData.g = paramString2;
-    localTianShuReportData.jdField_a_of_type_Long = l;
+    localTianShuReportData.p = paramInt;
+    localTianShuReportData.q = 1;
+    localTianShuReportData.h = paramString2;
+    localTianShuReportData.o = l;
     if (paramString3 != null) {
-      localTianShuReportData.l = paramString3;
+      localTianShuReportData.s = paramString3;
     }
-    localTianShuReportData.jdField_a_of_type_Int = 1;
-    localTianShuReportData.jdField_e_of_type_JavaLangString = "vab_push";
+    localTianShuReportData.c = 1;
     localTianShuReportData.f = "vab_push";
-    localTianShuReportData.i = "";
+    localTianShuReportData.g = "vab_push";
+    localTianShuReportData.j = "";
     TianShuManager.getInstance().report(localTianShuReportData);
     if (QLog.isColorLevel())
     {
@@ -111,7 +111,7 @@ public final class PushUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.PushUtil
  * JD-Core Version:    0.7.0.1
  */

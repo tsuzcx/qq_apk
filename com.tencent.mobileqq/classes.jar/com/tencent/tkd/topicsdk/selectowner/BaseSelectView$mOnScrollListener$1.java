@@ -15,19 +15,19 @@ public final class BaseSelectView$mOnScrollListener$1
   public void onScrollStateChanged(@Nullable AbsListView paramAbsListView, int paramInt)
   {
     int i = 1;
-    if ((paramAbsListView != null) && (paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!BaseSelectView.a(this.a))) {
+    if ((paramAbsListView != null) && (paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (!BaseSelectView.c(this.a))) {
       paramInt = i;
     } else {
       paramInt = 0;
     }
     if (paramInt != 0) {
-      BaseSelectView.a(this.a).b();
+      BaseSelectView.b(this.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.selectowner.BaseSelectView.mOnScrollListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,19 @@ class PgcShortContentProteusItem$9$1
   
   public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.startPlay();
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem$Bool.a(true);
+    this.a.b.startPlay();
+    this.a.c.a(true);
   }
   
   public void b()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView.stop();
-    this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem$Bool.a(false);
+    this.a.b.stop();
+    this.a.c.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.9.1
  * JD-Core Version:    0.7.0.1
  */

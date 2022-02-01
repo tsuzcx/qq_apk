@@ -13,30 +13,6 @@ import mqq.app.MobileQQ;
 
 public class SoCrashUtils
 {
-  private static ISoLoader a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    synchronized (SoLoaderServiceImpl.LOADER_IN_LOADING)
-    {
-      Object localObject2 = new LinkedList(SoLoaderServiceImpl.LOADER_IN_LOADING.values());
-      ??? = ((List)localObject2).iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject2 = (ISoLoader)((Iterator)???).next();
-        if ((localObject2 != null) && (((ISoLoader)localObject2).a(paramString))) {
-          return localObject2;
-        }
-      }
-      return null;
-    }
-    for (;;)
-    {
-      throw paramString;
-    }
-  }
-  
   private static String a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -69,7 +45,7 @@ public class SoCrashUtils
       String str = a(paramString2);
       if (TextUtils.isEmpty(str))
       {
-        localObject2 = a(paramString2);
+        localObject2 = b(paramString2);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
@@ -89,7 +65,7 @@ public class SoCrashUtils
       paramString1 = localStringBuilder.toString();
       if (!TextUtils.isEmpty(str))
       {
-        paramString2 = SoLoaderLogic.a(str);
+        paramString2 = SoLoaderLogic.c(str);
         SoCrashInfo.a(str, paramString2, 1);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("ver=");
@@ -98,7 +74,7 @@ public class SoCrashUtils
       }
       else if (localObject1 != null)
       {
-        ((ISoLoader)localObject1).a(paramString1);
+        ((ISoLoader)localObject1).b(paramString1);
       }
       else
       {
@@ -112,10 +88,34 @@ public class SoCrashUtils
       paramString1.printStackTrace();
     }
   }
+  
+  private static ISoLoader b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    synchronized (SoLoaderServiceImpl.LOADER_IN_LOADING)
+    {
+      Object localObject2 = new LinkedList(SoLoaderServiceImpl.LOADER_IN_LOADING.values());
+      ??? = ((List)localObject2).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject2 = (ISoLoader)((Iterator)???).next();
+        if ((localObject2 != null) && (((ISoLoader)localObject2).a(paramString))) {
+          return localObject2;
+        }
+      }
+      return null;
+    }
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.util.SoCrashUtils
  * JD-Core Version:    0.7.0.1
  */

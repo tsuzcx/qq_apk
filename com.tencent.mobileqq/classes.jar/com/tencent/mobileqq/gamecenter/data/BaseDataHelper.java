@@ -8,42 +8,42 @@ import com.tencent.qphone.base.util.QLog;
 public class BaseDataHelper
 {
   public static final String a;
-  protected EntityManager a;
+  protected EntityManager b;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(GameCenterUnissoHandler.b);
     localStringBuilder.append("BaseDataHelper");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public BaseDataHelper(EntityManager paramEntityManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramEntityManager;
+    this.b = paramEntityManager;
   }
   
   protected boolean a(Entity paramEntity)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
+      if (this.b.isOpen())
       {
         if (paramEntity.getStatus() == 1000)
         {
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+          this.b.persistOrReplace(paramEntity);
           if (paramEntity.getStatus() != 1001) {
             break label128;
           }
           return true;
         }
         if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
-          return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+          return this.b.update(paramEntity);
         }
       }
       if (QLog.isColorLevel())
       {
-        String str = jdField_a_of_type_JavaLangString;
+        String str = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateEntity em closed e=");
         localStringBuilder.append(paramEntity.getTableName());
@@ -53,7 +53,7 @@ public class BaseDataHelper
     }
     catch (Throwable paramEntity)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, paramEntity.getMessage());
+      QLog.w(a, 1, paramEntity.getMessage());
       return false;
     }
     label128:
@@ -64,10 +64,10 @@ public class BaseDataHelper
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen()) {
-        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramEntity, paramString, paramArrayOfString);
+      if (this.b.isOpen()) {
+        return this.b.remove(paramEntity, paramString, paramArrayOfString);
       }
-      paramString = jdField_a_of_type_JavaLangString;
+      paramString = a;
       paramArrayOfString = new StringBuilder();
       paramArrayOfString.append("removeEntity em closed e=");
       paramArrayOfString.append(paramEntity.getTableName());
@@ -76,14 +76,14 @@ public class BaseDataHelper
     }
     catch (Throwable paramEntity)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, paramEntity.getMessage());
+      QLog.w(a, 1, paramEntity.getMessage());
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.BaseDataHelper
  * JD-Core Version:    0.7.0.1
  */

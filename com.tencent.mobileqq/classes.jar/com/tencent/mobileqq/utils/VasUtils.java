@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.View;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.common.app.AppInterface;
@@ -15,12 +16,14 @@ import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.bubble.BubbleInfo;
 import com.tencent.mobileqq.bubble.BubbleManager;
 import com.tencent.mobileqq.bubble.BubbleUtils;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.hiboom.HiBoomFont;
 import com.tencent.mobileqq.hiboom.api.IHiBoomManager;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.mobileqq.vas.api.IVasService;
 import com.tencent.mobileqq.vas.font.api.IFontManagerService;
 import com.tencent.mobileqq.vas.svip.api.SVIPHandlerConstants;
@@ -30,12 +33,12 @@ import mqq.os.MqqHandler;
 
 public final class VasUtils
 {
-  private static int a = 1000;
   public static String a = "VasUtils";
+  private static int b = 1000;
   
   public static void a()
   {
-    HiBoomFont.a().d();
+    HiBoomFont.a().e();
     ETTextView.clearCache();
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
     {
@@ -65,28 +68,28 @@ public final class VasUtils
     if (localMqqHandler != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "refreshAIO");
+        QLog.d(a, 2, "refreshAIO");
       }
       localMqqHandler.removeMessages(16711697);
-      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(16711697), jdField_a_of_type_Int);
+      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(16711697), b);
     }
     localMqqHandler = paramAppInterface.getHandler(ChatHistoryBubbleListForTroopFragment.class);
     if (localMqqHandler != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "refresh troop history");
+        QLog.d(a, 2, "refresh troop history");
       }
       localMqqHandler.removeMessages(16711697);
-      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(16711697), jdField_a_of_type_Int);
+      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(16711697), b);
     }
     paramAppInterface = paramAppInterface.getHandler(MiniChatActivity.class);
     if (paramAppInterface != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "refresh miniAIO");
+        QLog.d(a, 2, "refresh miniAIO");
       }
       paramAppInterface.removeMessages(8);
-      paramAppInterface.sendMessageDelayed(paramAppInterface.obtainMessage(8), jdField_a_of_type_Int);
+      paramAppInterface.sendMessageDelayed(paramAppInterface.obtainMessage(8), b);
     }
   }
   
@@ -106,16 +109,16 @@ public final class VasUtils
         Object localObject = paramXListView.getChildAt(i);
         if ((localObject instanceof BaseChatItemLayout))
         {
-          BaseBubbleBuilder.ViewHolder localViewHolder = (BaseBubbleBuilder.ViewHolder)AIOUtils.a((View)localObject);
+          BaseBubbleBuilder.ViewHolder localViewHolder = (BaseBubbleBuilder.ViewHolder)AIOUtils.b((View)localObject);
           localObject = AIOUtils.a((View)localObject);
-          if ((localObject != null) && (((ChatMessage)localObject).needVipBubble()) && (localViewHolder != null) && (localViewHolder.a != null) && (localViewHolder.a.jdField_a_of_type_Int == BubbleUtils.a.jdField_a_of_type_Int) && (localBubbleManager.a(SVIPHandlerConstants.a(((ChatMessage)localObject).vipBubbleID)))) {
+          if ((localObject != null) && (((ChatMessage)localObject).needVipBubble()) && (localViewHolder != null) && (localViewHolder.i != null) && (localViewHolder.i.a == BubbleUtils.a.a) && (localBubbleManager.a(SVIPHandlerConstants.a(((ChatMessage)localObject).vipBubbleID)))) {
             return true;
           }
           if ((localObject != null) && (((IFontManagerService)paramQQAppInterface.getRuntimeService(IFontManagerService.class, "")).isAioNeedRefresh(localViewHolder, localObject))) {
             return true;
           }
         }
-        else if ((localObject != null) && ((AIOUtils.a((View)localObject) instanceof RichStatItemBuilder.Holder)))
+        else if ((localObject != null) && ((AIOUtils.b((View)localObject) instanceof RichStatItemBuilder.Holder)))
         {
           return true;
         }
@@ -124,10 +127,26 @@ public final class VasUtils
     }
     return false;
   }
+  
+  public static boolean b()
+  {
+    if (StudyModeManager.h())
+    {
+      QLog.i(a, 1, "study mode, can not start by link");
+      c();
+      return true;
+    }
+    return false;
+  }
+  
+  private static void c()
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new VasUtils.2());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VasUtils
  * JD-Core Version:    0.7.0.1
  */

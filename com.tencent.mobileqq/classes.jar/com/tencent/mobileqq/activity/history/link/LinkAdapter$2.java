@@ -16,28 +16,28 @@ class LinkAdapter$2
   
   public void onClick(View paramView)
   {
-    if (!LinkAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter))
+    if (!LinkAdapter.a(this.c))
     {
-      Intent localIntent = new Intent(LinkAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter), QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
-      LinkAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter).startActivity(localIntent);
+      Intent localIntent = new Intent(LinkAdapter.b(this.c), QQBrowserActivity.class);
+      localIntent.putExtra("url", this.a.url);
+      LinkAdapter.b(this.c).startActivity(localIntent);
     }
     else
     {
-      boolean bool = LinkAdapter.ViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter$ViewHolder).isChecked();
+      boolean bool = LinkAdapter.ViewHolder.e(this.b).isChecked();
       if (bool) {
-        LinkAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+        LinkAdapter.c(this.c).remove(this.a);
       } else {
-        LinkAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
+        LinkAdapter.c(this.c).add(this.a);
       }
-      LinkAdapter.ViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkLinkAdapter$ViewHolder).setChecked(bool ^ true);
+      LinkAdapter.ViewHolder.e(this.b).setChecked(bool ^ true);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.LinkAdapter.2
  * JD-Core Version:    0.7.0.1
  */

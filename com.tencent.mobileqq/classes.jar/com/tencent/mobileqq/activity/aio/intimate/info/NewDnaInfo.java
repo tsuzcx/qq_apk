@@ -13,11 +13,11 @@ import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.NewDnaInfo;
 public class NewDnaInfo
 {
   public int a;
-  public String a;
-  public ArrayList<NewDnaInfo.DnaDetail> a;
   public String b;
   public String c;
-  public String d;
+  public ArrayList<NewDnaInfo.DnaDetail> d;
+  public String e;
+  public String f;
   
   public static ArrayList<NewDnaInfo> a(List<oidb_0xcf4.NewDnaInfo> paramList)
   {
@@ -32,19 +32,19 @@ public class NewDnaInfo
         {
           NewDnaInfo localNewDnaInfo = new NewDnaInfo();
           if (((oidb_0xcf4.NewDnaInfo)localObject).eDnaType.has()) {
-            localNewDnaInfo.jdField_a_of_type_Int = ((oidb_0xcf4.NewDnaInfo)localObject).eDnaType.get();
+            localNewDnaInfo.a = ((oidb_0xcf4.NewDnaInfo)localObject).eDnaType.get();
           }
           if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_title.has()) {
-            localNewDnaInfo.jdField_a_of_type_JavaLangString = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_title.get().toStringUtf8();
+            localNewDnaInfo.b = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_title.get().toStringUtf8();
           }
           if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_url.has()) {
-            localNewDnaInfo.b = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_url.get().toStringUtf8();
+            localNewDnaInfo.c = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_url.get().toStringUtf8();
           }
           if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_cover_url.has()) {
-            localNewDnaInfo.c = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_cover_url.get().toStringUtf8();
+            localNewDnaInfo.e = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_cover_url.get().toStringUtf8();
           }
           if (((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_minapp_url.has()) {
-            localNewDnaInfo.d = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_minapp_url.get().toStringUtf8();
+            localNewDnaInfo.f = ((oidb_0xcf4.NewDnaInfo)localObject).bytes_jump_minapp_url.get().toStringUtf8();
           }
           if (((oidb_0xcf4.NewDnaInfo)localObject).rpt_detail.has())
           {
@@ -54,10 +54,10 @@ public class NewDnaInfo
               NewDnaInfo.DnaDetail localDnaDetail = NewDnaInfo.DnaDetail.a((oidb_0xcf4.DnaDetail)((Iterator)localObject).next());
               if (localDnaDetail != null)
               {
-                if (localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList == null) {
-                  localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+                if (localNewDnaInfo.d == null) {
+                  localNewDnaInfo.d = new ArrayList();
                 }
-                localNewDnaInfo.jdField_a_of_type_JavaUtilArrayList.add(localDnaDetail);
+                localNewDnaInfo.d.add(localDnaDetail);
               }
             }
           }
@@ -73,24 +73,24 @@ public class NewDnaInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("NewDnaInfo{type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", title=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", jumpUrl=");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(", coverUrl=");
+    localStringBuilder.append(", jumpUrl=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", coverUrl=");
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", jumpMinappUrl=");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", details=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.info.NewDnaInfo
  * JD-Core Version:    0.7.0.1
  */

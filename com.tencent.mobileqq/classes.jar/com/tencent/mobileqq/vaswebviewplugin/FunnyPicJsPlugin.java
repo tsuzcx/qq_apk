@@ -94,7 +94,7 @@ public class FunnyPicJsPlugin
             }
             if ("addQutu".equals(paramString3))
             {
-              paramString2 = this.mRuntime.a();
+              paramString2 = this.mRuntime.d();
               if ((paramString2 != null) && (!NetworkUtil.isNetworkAvailable(paramString2)))
               {
                 paramJsBridgeListener = new JSONObject();
@@ -109,7 +109,7 @@ public class FunnyPicJsPlugin
               }
               if (!"mounted".equals(Environment.getExternalStorageState()))
               {
-                QQToast.a(MobileQQ.getContext(), HardCodeUtil.a(2131705093), 0).a();
+                QQToast.makeText(MobileQQ.getContext(), HardCodeUtil.a(2131902983), 0).show();
                 paramJsBridgeListener = new JSONObject();
                 paramJsBridgeListener.put("result", 1);
                 paramString2 = new StringBuilder();
@@ -133,7 +133,7 @@ public class FunnyPicJsPlugin
               {
                 paramString2.set(109L);
                 paramString3.osver.set(Build.VERSION.RELEASE);
-                paramString3.mqqver.set("8.7.0");
+                paramString3.mqqver.set("8.8.17");
                 paramString2 = new WebSSOAgent.UniSsoServerReq();
                 paramString2.comm.set(paramString3);
                 JSONObject localJSONObject = new JSONObject();
@@ -147,10 +147,10 @@ public class FunnyPicJsPlugin
                 localJSONObject.put("authType", "1");
                 paramString2.reqdata.set(localJSONObject.toString());
                 paramJsBridgeListener = new FunnyPicJsPlugin.1(this, paramString3, paramJsBridgeListener, j, paramString1);
-                paramString3 = this.mRuntime.a();
+                paramString3 = this.mRuntime.b();
                 if (paramString3 != null)
                 {
-                  paramVarArgs = new NewIntent(this.mRuntime.a().getApp(), WebSSOAgentServlet.class);
+                  paramVarArgs = new NewIntent(this.mRuntime.b().getApp(), WebSSOAgentServlet.class);
                   paramVarArgs.putExtra("extra_cmd", "AuthProxy.check");
                   paramVarArgs.putExtra("extra_data", paramString2.toByteArray());
                   paramVarArgs.setObserver(paramJsBridgeListener);
@@ -202,7 +202,7 @@ public class FunnyPicJsPlugin
   
   protected void onCreate()
   {
-    this.mRuntime.a();
+    this.mRuntime.b();
     this.mReqBundle = new Bundle();
     super.onCreate();
   }
@@ -214,31 +214,31 @@ public class FunnyPicJsPlugin
     //   0: aload_1
     //   1: ifnull +582 -> 583
     //   4: aload_1
-    //   5: ldc_w 339
+    //   5: ldc_w 342
     //   8: iconst_0
-    //   9: invokevirtual 342	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   9: invokevirtual 345	android/os/Bundle:getInt	(Ljava/lang/String;I)I
     //   12: aload_0
     //   13: getfield 122	com/tencent/mobileqq/vaswebviewplugin/FunnyPicJsPlugin:mOnRemoteResp	Lcom/tencent/mobileqq/emosm/OnRemoteRespObserver;
     //   16: getfield 128	com/tencent/mobileqq/emosm/OnRemoteRespObserver:key	I
     //   19: if_icmpne +564 -> 583
     //   22: aload_1
-    //   23: ldc_w 344
-    //   26: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   23: ldc_w 347
+    //   26: invokevirtual 350	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   29: astore 6
     //   31: aload_1
-    //   32: ldc_w 349
-    //   35: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: ldc_w 352
+    //   35: invokevirtual 350	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   38: astore 5
     //   40: aload 6
     //   42: ifnull +541 -> 583
-    //   45: ldc_w 351
+    //   45: ldc_w 354
     //   48: aload 6
     //   50: invokevirtual 73	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   53: ifeq +357 -> 410
     //   56: aload_1
     //   57: ldc 154
     //   59: iconst_0
-    //   60: invokevirtual 342	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   60: invokevirtual 345	android/os/Bundle:getInt	(Ljava/lang/String;I)I
     //   63: istore_2
     //   64: new 83	org/json/JSONObject
     //   67: dup
@@ -250,114 +250,114 @@ public class FunnyPicJsPlugin
     //   78: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   81: pop
     //   82: aload_1
-    //   83: ldc_w 353
-    //   86: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: ldc_w 356
+    //   86: invokevirtual 350	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   89: astore 7
     //   91: aload 7
     //   93: ifnull +491 -> 584
     //   96: aload 6
-    //   98: ldc_w 353
+    //   98: ldc_w 356
     //   101: new 83	org/json/JSONObject
     //   104: dup
     //   105: aload 7
-    //   107: invokespecial 355	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   110: invokevirtual 263	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   107: invokespecial 358	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   110: invokevirtual 265	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   113: pop
     //   114: goto +3 -> 117
     //   117: iload_2
     //   118: ifeq +28 -> 146
     //   121: aload_1
-    //   122: ldc_w 331
-    //   125: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   122: ldc_w 334
+    //   125: invokevirtual 350	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   128: astore 7
     //   130: aload 7
     //   132: ifnull +14 -> 146
     //   135: aload 6
-    //   137: ldc_w 331
+    //   137: ldc_w 334
     //   140: aload 7
-    //   142: invokevirtual 263	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   142: invokevirtual 265	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   145: pop
     //   146: aload_1
-    //   147: ldc_w 357
+    //   147: ldc_w 360
     //   150: iconst_0
-    //   151: invokevirtual 361	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
+    //   151: invokevirtual 364	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
     //   154: istore 4
     //   156: aload_0
     //   157: getfield 140	com/tencent/mobileqq/vaswebviewplugin/FunnyPicJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   160: invokevirtual 145	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   160: invokevirtual 145	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:d	()Landroid/app/Activity;
     //   163: astore 10
     //   165: iload 4
     //   167: ifeq +420 -> 587
     //   170: aload 10
     //   172: ifnull +415 -> 587
     //   175: aload_0
-    //   176: getfield 365	com/tencent/mobileqq/vaswebviewplugin/FunnyPicJsPlugin:isDestroy	Z
+    //   176: getfield 368	com/tencent/mobileqq/vaswebviewplugin/FunnyPicJsPlugin:isDestroy	Z
     //   179: ifne +408 -> 587
     //   182: aload 10
-    //   184: invokevirtual 370	android/app/Activity:isFinishing	()Z
+    //   184: invokevirtual 373	android/app/Activity:isFinishing	()Z
     //   187: ifne +400 -> 587
     //   190: aload_1
-    //   191: ldc_w 372
-    //   194: invokevirtual 376	android/os/Bundle:getStringArrayList	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   191: ldc_w 375
+    //   194: invokevirtual 379	android/os/Bundle:getStringArrayList	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   197: astore 7
     //   199: aload_1
-    //   200: ldc_w 378
-    //   203: invokevirtual 376	android/os/Bundle:getStringArrayList	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   200: ldc_w 381
+    //   203: invokevirtual 379	android/os/Bundle:getStringArrayList	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   206: astore 8
     //   208: aload_1
-    //   209: ldc_w 380
-    //   212: invokevirtual 376	android/os/Bundle:getStringArrayList	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   209: ldc_w 383
+    //   212: invokevirtual 379	android/os/Bundle:getStringArrayList	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   215: astore 9
     //   217: aload_1
-    //   218: ldc_w 382
-    //   221: invokevirtual 383	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   218: ldc_w 385
+    //   221: invokevirtual 386	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   224: istore_2
     //   225: aload_1
-    //   226: ldc_w 385
-    //   229: invokevirtual 383	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   226: ldc_w 388
+    //   229: invokevirtual 386	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   232: istore_3
-    //   233: new 387	com/tencent/mobileqq/qroute/route/ActivityURIRequest
+    //   233: new 390	com/tencent/mobileqq/qroute/route/ActivityURIRequest
     //   236: dup
     //   237: aload 10
-    //   239: ldc_w 389
-    //   242: invokespecial 392	com/tencent/mobileqq/qroute/route/ActivityURIRequest:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   239: ldc_w 392
+    //   242: invokespecial 395	com/tencent/mobileqq/qroute/route/ActivityURIRequest:<init>	(Landroid/content/Context;Ljava/lang/String;)V
     //   245: astore_1
     //   246: aload_1
-    //   247: ldc_w 393
-    //   250: invokevirtual 397	com/tencent/mobileqq/qroute/route/ActivityURIRequest:setFlags	(I)Lcom/tencent/mobileqq/qroute/route/ActivityURIRequest;
+    //   247: ldc_w 396
+    //   250: invokevirtual 400	com/tencent/mobileqq/qroute/route/ActivityURIRequest:setFlags	(I)Lcom/tencent/mobileqq/qroute/route/ActivityURIRequest;
     //   253: pop
     //   254: aload_1
-    //   255: invokevirtual 401	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
-    //   258: ldc_w 403
+    //   255: invokevirtual 404	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
+    //   258: ldc_w 406
     //   261: iconst_1
-    //   262: invokevirtual 407	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   262: invokevirtual 410	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   265: aload_1
-    //   266: invokevirtual 401	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
-    //   269: ldc_w 372
+    //   266: invokevirtual 404	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
+    //   269: ldc_w 375
     //   272: aload 7
-    //   274: invokevirtual 411	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   274: invokevirtual 414	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
     //   277: aload_1
-    //   278: invokevirtual 401	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
-    //   281: ldc_w 378
+    //   278: invokevirtual 404	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
+    //   281: ldc_w 381
     //   284: aload 8
-    //   286: invokevirtual 411	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   286: invokevirtual 414	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
     //   289: aload_1
-    //   290: invokevirtual 401	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
-    //   293: ldc_w 380
+    //   290: invokevirtual 404	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
+    //   293: ldc_w 383
     //   296: aload 9
-    //   298: invokevirtual 411	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   298: invokevirtual 414	android/os/Bundle:putStringArrayList	(Ljava/lang/String;Ljava/util/ArrayList;)V
     //   301: aload_1
-    //   302: invokevirtual 401	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
-    //   305: ldc_w 385
+    //   302: invokevirtual 404	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
+    //   305: ldc_w 388
     //   308: iload_3
-    //   309: invokevirtual 415	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   309: invokevirtual 418	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   312: aload_1
-    //   313: invokevirtual 401	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
-    //   316: ldc_w 382
+    //   313: invokevirtual 404	com/tencent/mobileqq/qroute/route/ActivityURIRequest:extra	()Landroid/os/Bundle;
+    //   316: ldc_w 385
     //   319: iload_2
-    //   320: invokevirtual 415	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   320: invokevirtual 418	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   323: aload_1
-    //   324: invokestatic 421	com/tencent/mobileqq/qroute/QRoute:startUri	(Lcom/tencent/mobileqq/qroute/route/URIRequest;)V
+    //   324: invokestatic 424	com/tencent/mobileqq/qroute/QRoute:startUri	(Lcom/tencent/mobileqq/qroute/route/URIRequest;)V
     //   327: goto +3 -> 330
     //   330: new 48	java/lang/StringBuilder
     //   333: dup
@@ -399,8 +399,8 @@ public class FunnyPicJsPlugin
     //   399: ldc 11
     //   401: iconst_2
     //   402: aload_1
-    //   403: invokevirtual 422	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   406: invokestatic 425	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   403: invokevirtual 425	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   406: invokestatic 428	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   409: return
     //   410: ldc 118
     //   412: aload 6
@@ -409,7 +409,7 @@ public class FunnyPicJsPlugin
     //   420: aload_1
     //   421: ldc 154
     //   423: iconst_0
-    //   424: invokevirtual 342	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   424: invokevirtual 345	android/os/Bundle:getInt	(Ljava/lang/String;I)I
     //   427: istore_2
     //   428: new 83	org/json/JSONObject
     //   431: dup
@@ -423,33 +423,33 @@ public class FunnyPicJsPlugin
     //   446: iload_2
     //   447: ifne +35 -> 482
     //   450: aload_1
-    //   451: ldc_w 353
-    //   454: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   451: ldc_w 356
+    //   454: invokevirtual 350	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   457: astore_1
     //   458: aload_1
     //   459: ifnull +52 -> 511
     //   462: aload 6
-    //   464: ldc_w 353
+    //   464: ldc_w 356
     //   467: new 83	org/json/JSONObject
     //   470: dup
     //   471: aload_1
-    //   472: invokespecial 355	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   475: invokevirtual 263	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   472: invokespecial 358	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   475: invokevirtual 265	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   478: pop
     //   479: goto +32 -> 511
     //   482: aload_1
-    //   483: ldc_w 331
-    //   486: invokevirtual 347	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   483: ldc_w 334
+    //   486: invokevirtual 350	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   489: astore_1
     //   490: aload_1
     //   491: ifnull +20 -> 511
     //   494: aload 6
-    //   496: ldc_w 353
+    //   496: ldc_w 356
     //   499: new 83	org/json/JSONObject
     //   502: dup
     //   503: aload_1
-    //   504: invokespecial 355	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   507: invokevirtual 263	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   504: invokespecial 358	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   507: invokevirtual 265	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   510: pop
     //   511: new 48	java/lang/StringBuilder
     //   514: dup
@@ -483,12 +483,12 @@ public class FunnyPicJsPlugin
     //   566: ldc 11
     //   568: iconst_2
     //   569: aload_1
-    //   570: invokevirtual 422	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   573: invokestatic 425	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   570: invokevirtual 425	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   573: invokestatic 428	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   576: return
     //   577: aload_0
     //   578: aload_1
-    //   579: invokespecial 427	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:onResponse	(Landroid/os/Bundle;)V
+    //   579: invokespecial 430	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:onResponse	(Landroid/os/Bundle;)V
     //   582: return
     //   583: return
     //   584: goto -467 -> 117
@@ -526,7 +526,7 @@ public class FunnyPicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.FunnyPicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

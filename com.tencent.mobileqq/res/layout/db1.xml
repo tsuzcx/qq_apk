@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/go8" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/mm7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" android:adjustViewBounds="true" android:maxHeight="93.0dip" />
+    <TextView android:textSize="50.0dip" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/mm_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="5.0dip" android:includeFontPadding="false" />
+    <TextView android:textSize="18.0dip" android:textColor="@color/al3" android:id="@id/mmb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="30.0dip" android:layout_toRightOf="@id/mm_" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/mma" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-5.0dip" android:includeFontPadding="false" android:layout_below="@id/mm_" android:layout_alignLeft="@id/mm_" />
+    <android.support.v7.widget.RecyclerView android:id="@id/mm8" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:layout_below="@id/mm7" />
+    <View android:id="@id/n4f" android:background="@color/b1z" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_below="@id/mm8" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/mm9" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_below="@id/n4f">
+        <TextView android:textSize="14.0dip" android:textColor="@color/fl" android:id="@id/q0e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yvy" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/awj" android:id="@id/l4p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=">" android:layout_alignParentRight="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/awj" android:id="@id/nuy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:layout_toLeftOf="@id/l4p" />
+    </RelativeLayout>
+</RelativeLayout>

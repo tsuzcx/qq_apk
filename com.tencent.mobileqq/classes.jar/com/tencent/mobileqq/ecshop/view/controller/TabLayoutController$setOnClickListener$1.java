@@ -19,16 +19,16 @@ final class TabLayoutController$setOnClickListener$1
   
   public final void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a != TabLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController))
+    if (this.c.b != TabLayoutController.a(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a);
-      this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabItemController.a();
-      ReportUtil.a("gouwu.tab.click", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", TabLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController));
-      ReportUtil.b("gouwu_tab_click", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", TabLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController));
-      TabLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController, this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean);
-      Object localObject = (Function1)TabLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController).get(Integer.valueOf(TabLayoutController.a(this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController)));
+      this.a.a(this.c.b);
+      this.b.b();
+      ReportUtil.a("gouwu.tab.click", String.valueOf(this.c.b), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", TabLayoutController.a(this.a));
+      ReportUtil.b("gouwu_tab_click", String.valueOf(this.c.b), String.valueOf(NetConnInfoCenter.getServerTimeMillis()), "", TabLayoutController.a(this.a));
+      TabLayoutController.a(this.a, this.c);
+      Object localObject = (Function1)TabLayoutController.b(this.a).get(Integer.valueOf(TabLayoutController.a(this.a)));
       if (localObject != null) {
-        localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a));
+        localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(this.c.b));
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -36,7 +36,7 @@ final class TabLayoutController$setOnClickListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TabLayoutController.setOnClickListener.1
  * JD-Core Version:    0.7.0.1
  */

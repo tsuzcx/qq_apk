@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.FitWindowsFrameLayout android:id="@id/jsk" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/aur" />
-    <androidx.appcompat.widget.ViewStubCompat android:id="@id/k68" android:layout="@layout/s6" android:inflatedId="@id/k5v" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</androidx.appcompat.widget.FitWindowsFrameLayout>
+<TextView android:textSize="12.0sp" android:textColor="#ff333333" android:ellipsize="end" android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

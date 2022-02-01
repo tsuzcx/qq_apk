@@ -10,8 +10,8 @@ import android.widget.ScrollView;
 public class ResizeLayout
   extends ScrollView
 {
-  private ResizeLayout.OnResizeListener jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener;
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean a = true;
+  private ResizeLayout.OnResizeListener b;
   
   public ResizeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,7 +20,7 @@ public class ResizeLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -33,18 +33,18 @@ public class ResizeLayout
     }
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt2 > paramInt4) {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     } else {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener != null) {
+    if (this.b != null) {
       new Handler(Looper.getMainLooper()).postDelayed(new ResizeLayout.1(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return false;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -52,12 +52,12 @@ public class ResizeLayout
   
   public void setOnResizeListener(ResizeLayout.OnResizeListener paramOnResizeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener = paramOnResizeListener;
+    this.b = paramOnResizeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.ResizeLayout
  * JD-Core Version:    0.7.0.1
  */

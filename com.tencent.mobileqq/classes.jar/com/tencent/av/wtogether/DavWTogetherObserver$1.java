@@ -17,16 +17,16 @@ class DavWTogetherObserver$1
   
   public void run()
   {
-    DavWTogetherObserver.a(this.this$0).e(0L, this.jdField_a_of_type_Int);
-    AVActivity localAVActivity = DavWTogetherObserver.a(this.this$0).a();
-    if ((!this.jdField_a_of_type_Boolean) && (this.b) && (!localAVActivity.isFinishing()) && (WTogetherUtil.b()))
+    DavWTogetherObserver.a(this.this$0).e(0L, this.a);
+    AVActivity localAVActivity = DavWTogetherObserver.a(this.this$0).U();
+    if ((!this.b) && (this.c) && (!localAVActivity.isFinishing()) && (WTogetherUtil.c()))
     {
-      Object localObject = SessionMgr.a().a();
-      localObject = ((WTogetherMng)this.this$0.a.a(16)).b((SessionInfo)localObject);
-      if (!((WatchTogetherInfo)localObject).jdField_a_of_type_Boolean)
+      Object localObject = SessionMgr.a().b();
+      localObject = ((WTogetherMng)this.this$0.b.c(17)).b((SessionInfo)localObject);
+      if (!((WatchTogetherInfo)localObject).e)
       {
-        ((WatchTogetherInfo)localObject).jdField_a_of_type_Boolean = true;
-        WTogetherUtil.a(localAVActivity, localAVActivity.getString(2131695998));
+        ((WatchTogetherInfo)localObject).e = true;
+        WTogetherUtil.a(localAVActivity, localAVActivity.getString(2131893760));
         return;
       }
       if (QLog.isColorLevel()) {

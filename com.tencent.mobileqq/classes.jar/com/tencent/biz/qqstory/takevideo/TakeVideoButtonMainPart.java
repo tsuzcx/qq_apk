@@ -9,25 +9,25 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class TakeVideoButtonMainPart
   implements View.OnClickListener
 {
-  protected long a;
   protected View a;
-  public TakeVideoButtonMainPart.OnTakeVideoButtonClickListener a;
+  protected long b;
+  public TakeVideoButtonMainPart.OnTakeVideoButtonClickListener c;
   
   public TakeVideoButtonMainPart(TakeVideoButtonMainPart.OnTakeVideoButtonClickListener paramOnTakeVideoButtonClickListener, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTakeVideoButtonMainPart$OnTakeVideoButtonClickListener = paramOnTakeVideoButtonClickListener;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.c = paramOnTakeVideoButtonClickListener;
+    this.a = paramView;
     paramView.setOnClickListener(this);
   }
   
   private boolean a()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
+    long l2 = l1 - this.b;
     if ((l2 > 0L) && (l2 < 2000L)) {
       return true;
     }
-    this.jdField_a_of_type_Long = l1;
+    this.b = l1;
     return false;
   }
   
@@ -36,7 +36,7 @@ public class TakeVideoButtonMainPart
     if (!a())
     {
       StoryReportor.a("home_page", "clk_shoot", 0, 0, new String[0]);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTakeVideoButtonMainPart$OnTakeVideoButtonClickListener.a();
+      this.c.a();
     }
     StoryUploadProcessor.checkUploadSessionKey();
     EventCollector.getInstance().onViewClicked(paramView);

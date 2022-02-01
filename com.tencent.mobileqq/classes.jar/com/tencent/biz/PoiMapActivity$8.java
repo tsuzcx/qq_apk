@@ -12,7 +12,7 @@ class PoiMapActivity$8
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    this.a.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     return false;
   }
 }

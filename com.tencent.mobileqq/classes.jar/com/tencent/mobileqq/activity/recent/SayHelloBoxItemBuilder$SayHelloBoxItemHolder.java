@@ -10,14 +10,14 @@ public class SayHelloBoxItemBuilder$SayHelloBoxItemHolder
   extends RecentItemBaseBuilder.RecentItemBaseHolder
 {
   public ImageView a;
-  public TextView a;
-  public DragTextView a;
-  public MyGridView a;
-  public SingleLineTextView a;
+  public TextView b;
+  public DragTextView c;
+  public SingleLineTextView d;
+  public MyGridView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.SayHelloBoxItemBuilder.SayHelloBoxItemHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -21,15 +21,15 @@ class GrayTipsItemBuilder$26
   
   public void onClick(View paramView)
   {
-    if (NetworkUtil.isNetSupport(this.a.jdField_a_of_type_AndroidContentContext))
+    if (NetworkUtil.isNetSupport(this.a.c))
     {
-      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      paramView = (FriendListHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      localArrayList.add(this.a.d.b);
       paramView.gatherContacts((short)1, localArrayList, false);
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692183), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+    QQToast.makeText(this.a.c, this.a.c.getResources().getString(2131889169), 1).show(((BaseActivity)this.a.c).getTitleBarHeight());
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -39,7 +39,7 @@ class GrayTipsItemBuilder$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.26
  * JD-Core Version:    0.7.0.1
  */

@@ -19,19 +19,19 @@ public abstract class MusicDownloadListener
   public void onCancel(DownloadTask paramDownloadTask)
   {
     super.onCancel(paramDownloadTask);
-    a(paramDownloadTask.jdField_a_of_type_JavaLangString);
+    a(paramDownloadTask.b);
   }
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
+    String str = paramDownloadTask.b;
     boolean bool;
-    if (paramDownloadTask.a() == 3) {
+    if (paramDownloadTask.e() == 3) {
       bool = true;
     } else {
       bool = false;
     }
-    a(str, bool, paramDownloadTask.jdField_a_of_type_Int);
+    a(str, bool, paramDownloadTask.c);
   }
   
   public void onNetMobile2None()
@@ -55,14 +55,14 @@ public abstract class MusicDownloadListener
   public void onProgress(DownloadTask paramDownloadTask)
   {
     super.onProgress(paramDownloadTask);
-    int i = (int)paramDownloadTask.jdField_a_of_type_Float;
-    a(paramDownloadTask.jdField_a_of_type_JavaLangString, i);
+    int i = (int)paramDownloadTask.l;
+    a(paramDownloadTask.b, i);
   }
   
   public boolean onStart(DownloadTask paramDownloadTask)
   {
     super.onStart(paramDownloadTask);
-    a(paramDownloadTask.jdField_a_of_type_JavaLangString, true);
+    a(paramDownloadTask.b, true);
     return true;
   }
 }

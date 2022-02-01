@@ -12,30 +12,30 @@ class ContactsInnerFrame$2
   
   protected void onQueryBindState(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.unRegistObserver(this);
-    int i = ContactsInnerFrame.a(this.a).getSelfBindState();
+    this.a.h.unRegistObserver(this);
+    int i = ContactsInnerFrame.b(this.a).getSelfBindState();
     if (i != 0) {
       if ((i != 1) && (i != 5))
       {
         if (i != 6)
         {
           if ((i != 7) && (i != 9)) {
-            ContactsInnerFrame.c(this.a);
+            ContactsInnerFrame.d(this.a);
           }
         }
         else
         {
-          if (ContactsInnerFrame.a(this.a).getSelfBindInfo().lastUsedFlag == 2L)
+          if (ContactsInnerFrame.b(this.a).getSelfBindInfo().lastUsedFlag == 2L)
           {
             ContactsInnerFrame.a(this.a);
             return;
           }
-          ContactsInnerFrame.b(this.a);
+          ContactsInnerFrame.c(this.a);
         }
       }
       else
       {
-        ContactsInnerFrame.b(this.a);
+        ContactsInnerFrame.c(this.a);
         return;
       }
     }
@@ -44,7 +44,7 @@ class ContactsInnerFrame$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.ContactsInnerFrame.2
  * JD-Core Version:    0.7.0.1
  */

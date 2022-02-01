@@ -59,8 +59,8 @@ public class PreviewContext
   public PreviewContext(CameraProxy paramCameraProxy, int paramInt1, int paramInt2)
   {
     this.mCamera = paramCameraProxy;
-    paramCameraProxy.jdField_b_of_type_Int = paramInt1;
-    paramCameraProxy.c = paramInt2;
+    paramCameraProxy.c = paramInt1;
+    paramCameraProxy.d = paramInt2;
     this.mInitHwEncode = initHwCallBackSecurity();
     this.mFrameProcessEnd = false;
     this.mVideoFrameWrite.getAndSet(0);
@@ -209,11 +209,11 @@ public class PreviewContext
         }
         return;
       }
-      j = ((SVHwEncoder)localObject).jdField_a_of_type_Int;
+      j = ((SVHwEncoder)localObject).a;
     }
     try
     {
-      i = getProcessedFrameData(localHwFrame.jdField_a_of_type_ArrayOfByte, this.mTimeStamp, j);
+      i = getProcessedFrameData(localHwFrame.a, this.mTimeStamp, j);
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
@@ -234,11 +234,11 @@ public class PreviewContext
     }
     if (i == 0)
     {
-      localHwFrame.jdField_a_of_type_Int = 0;
-      localHwFrame.jdField_b_of_type_Int = localHwFrame.jdField_a_of_type_ArrayOfByte.length;
-      localHwFrame.jdField_a_of_type_Long = this.mTimeStamp[0];
-      localHwFrame.jdField_a_of_type_Boolean = false;
-      localHwFrame.jdField_b_of_type_Boolean = true;
+      localHwFrame.b = 0;
+      localHwFrame.c = localHwFrame.a.length;
+      localHwFrame.d = this.mTimeStamp[0];
+      localHwFrame.e = false;
+      localHwFrame.f = true;
       ((SVHwEncoder)localObject).a(localHwFrame, true);
       return;
     }
@@ -305,7 +305,7 @@ public class PreviewContext
       }
       this.mCheckedDataValid = true;
       if (this.mDisablePrivilage) {
-        this.mCamera.a.a(12, new Object[] { "camera disabled zero data." });
+        this.mCamera.p.a(12, new Object[] { "camera disabled zero data." });
       }
     }
     else if (this.mDisablePrivilage)
@@ -328,16 +328,16 @@ public class PreviewContext
     {
       paramCamera = (AVIOStruct)this.mFrameSrcList.get(this.mFrameSrcList.size() - 1);
       if (paramCamera != null) {
-        if (Lock.jdField_a_of_type_Boolean)
+        if (Lock.b)
         {
           if (paramCamera.pControlFlag == ControlFlagEnum.NONE.getValue())
           {
-            localObject = CameraControl.a().a();
-            i = CameraControl.a().a();
-            paramCamera.vWidth = ((CameraControl.CustomSize)localObject).jdField_a_of_type_Int;
-            paramCamera.vHeight = ((CameraControl.CustomSize)localObject).jdField_b_of_type_Int;
+            localObject = CameraControl.a().g();
+            i = CameraControl.a().f();
+            paramCamera.vWidth = ((CameraControl.CustomSize)localObject).a;
+            paramCamera.vHeight = ((CameraControl.CustomSize)localObject).b;
             paramCamera.vFormat = i;
-            paramCamera.vOrientation = CameraControl.a().b();
+            paramCamera.vOrientation = CameraControl.a().o();
             paramCamera.vFPS = CodecParam.VIDEO_FPS;
             paramCamera.pControlFlag = ControlFlagEnum.OPEN_FILE_AND_WRITE_FRAME_DATA.getValue();
             paramCamera.vBitrate = CodecParam.mDstVideoEncBitrate;
@@ -370,7 +370,7 @@ public class PreviewContext
         }
         if (bool)
         {
-          this.mCamera.a.a(8, new Object[] { "unacceptable camera preview data" });
+          this.mCamera.p.a(8, new Object[] { "unacceptable camera preview data" });
           return;
         }
         i = this.mFrameIndex;
@@ -397,8 +397,8 @@ public class PreviewContext
         if (i == 1)
         {
           PreviewContext.VFrameData localVFrameData = new PreviewContext.VFrameData();
-          localVFrameData.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-          localVFrameData.jdField_a_of_type_ComTencentMaxvideoCommonAVIOStruct = ((AVIOStruct)paramCamera.clone());
+          localVFrameData.a = paramArrayOfByte;
+          localVFrameData.b = ((AVIOStruct)paramCamera.clone());
           ((Message)localObject).obj = localVFrameData;
         }
         else
@@ -412,18 +412,18 @@ public class PreviewContext
             paramCamera.append(this.mMsghandler);
             QLog.d("PreviewContext", 2, paramCamera.toString());
           }
-          paramCamera = CameraControl.a().a();
+          paramCamera = CameraControl.a().g();
           if (paramCamera == null) {
             return;
           }
-          i = CameraControl.a().a();
-          this.mPTVRealBeautyCache.vWidth = paramCamera.jdField_a_of_type_Int;
-          this.mPTVRealBeautyCache.vHeight = paramCamera.jdField_b_of_type_Int;
+          i = CameraControl.a().f();
+          this.mPTVRealBeautyCache.vWidth = paramCamera.a;
+          this.mPTVRealBeautyCache.vHeight = paramCamera.b;
           paramCamera = this.mPTVRealBeautyCache;
           paramCamera.vFormat = i;
           if (checkPreviewDataLength(paramCamera, paramArrayOfByte))
           {
-            this.mCamera.a.a(8, new Object[] { "unacceptable camera preview data" });
+            this.mCamera.p.a(8, new Object[] { "unacceptable camera preview data" });
             return;
           }
         }
@@ -562,7 +562,7 @@ public class PreviewContext
       CameraProxy localCameraProxy = this.mCamera;
       if (localCameraProxy != null)
       {
-        localCameraProxy.a.a(10, new Object[] { "getted" });
+        localCameraProxy.p.a(10, new Object[] { "getted" });
         this.notifyFirstFrame = false;
       }
     }
@@ -575,7 +575,7 @@ public class PreviewContext
   
   public void startCapture()
   {
-    if (!Lock.jdField_a_of_type_Boolean) {
+    if (!Lock.b) {
       return;
     }
     if (this.mFrameSrcList == null) {
@@ -609,7 +609,7 @@ public class PreviewContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext
  * JD-Core Version:    0.7.0.1
  */

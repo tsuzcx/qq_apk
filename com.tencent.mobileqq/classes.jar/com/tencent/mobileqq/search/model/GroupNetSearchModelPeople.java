@@ -10,52 +10,52 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
 public class GroupNetSearchModelPeople
-  implements ISearchResultGroupModel
+  extends ISearchResultGroupModel
 {
-  private SearchResult jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult;
-  private String jdField_a_of_type_JavaLangString;
-  private List<ISearchResultModel> jdField_a_of_type_JavaUtilList;
+  private List<ISearchResultModel> a;
+  private String b;
+  private SearchResult c;
   
   public GroupNetSearchModelPeople(SearchResult paramSearchResult, List<ISearchResultModel> paramList, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult = paramSearchResult;
-  }
-  
-  public int a()
-  {
-    return 1;
+    this.a = paramList;
+    this.b = paramString;
+    this.c = paramSearchResult;
   }
   
   public String a()
   {
-    return HardCodeUtil.a(2131705442);
-  }
-  
-  public List<ISearchResultModel> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return HardCodeUtil.a(2131903330);
   }
   
   public void a(View paramView)
   {
-    SearchUtils.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
+    SearchUtils.a(this.b, 70, 0, paramView);
     Intent localIntent = new Intent();
-    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("last_key_words", this.b);
     localIntent.putExtra("from_key", 0);
     localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_ComTencentMobileqqSearchBusinessAddcontactModelSearchResult);
+    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.c);
   }
   
-  public String b()
+  public List<ISearchResultModel> b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public int d()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupNetSearchModelPeople
  * JD-Core Version:    0.7.0.1
  */

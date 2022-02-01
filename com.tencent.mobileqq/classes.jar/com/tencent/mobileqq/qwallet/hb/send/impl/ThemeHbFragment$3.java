@@ -23,14 +23,14 @@ class ThemeHbFragment$3
       localStringBuilder.append(paramObject);
       QLog.i("ThemeHbFragment", 2, localStringBuilder.toString());
     }
-    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
-      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    if (((paramObject instanceof String)) && (ThemeHbFragment.f(this.a) != null)) {
+      ThemeHbFragment.f(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ThemeHbFragment.3
  * JD-Core Version:    0.7.0.1
  */

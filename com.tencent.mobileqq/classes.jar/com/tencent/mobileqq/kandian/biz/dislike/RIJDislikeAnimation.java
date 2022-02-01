@@ -11,21 +11,21 @@ import java.util.List;
 
 public class RIJDislikeAnimation
 {
-  AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  RIJDataManager jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager;
+  RIJDataManager a;
+  AnimationSet b;
   
   public RIJDislikeAnimation(RIJDataManager paramRIJDataManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager = paramRIJDataManager;
+    this.a = paramRIJDataManager;
   }
   
   public AnimationSet a()
   {
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet == null) {
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = ((AnimationSet)AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a(), 2130772100));
+    if (this.b == null) {
+      this.b = ((AnimationSet)AnimationUtils.loadAnimation(this.a.a().A(), 2130772146));
     }
     AnimationSet localAnimationSet = new AnimationSet(true);
-    List localList = this.jdField_a_of_type_AndroidViewAnimationAnimationSet.getAnimations();
+    List localList = this.b.getAnimations();
     int j = localList.size();
     int i = 0;
     while (i < j)
@@ -38,14 +38,14 @@ public class RIJDislikeAnimation
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().remove(paramAbsBaseArticleInfo);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a().notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().e(true);
+    this.a.b().remove(paramAbsBaseArticleInfo);
+    this.a.a().v().notifyDataSetChanged();
+    this.a.a().e(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.RIJDislikeAnimation
  * JD-Core Version:    0.7.0.1
  */

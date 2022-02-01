@@ -11,19 +11,19 @@ public abstract class PageLoaderStep<T extends Dispatcher.Dispatchable>
   implements Step
 {
   protected static AtomicLong a = new AtomicLong(0L);
-  protected int a;
-  protected long a;
-  protected INetPageLoader a;
-  protected Step.FinishCallBack a;
-  protected int b;
+  protected INetPageLoader b;
+  protected int c;
+  protected Step.FinishCallBack d;
+  protected int e;
+  protected long f;
   
   public abstract int a(T paramT);
   
-  public abstract void a(T paramT);
+  public abstract void b(T paramT);
   
-  protected boolean b()
+  protected boolean g()
   {
-    return this.b > 0;
+    return this.e > 0;
   }
 }
 

@@ -12,7 +12,7 @@ class SelectPermissionPresenter$1
   
   public void run()
   {
-    Bitmap localBitmap = OpenSdkVirtualUtil.a(SelectPermissionPresenter.a(this.this$0).getApp(), SelectPermissionPresenter.a(this.this$0));
+    Bitmap localBitmap = OpenSdkVirtualUtil.a(SelectPermissionPresenter.a(this.this$0).getApp(), SelectPermissionPresenter.b(this.this$0));
     if (localBitmap == null) {
       return;
     }
@@ -21,7 +21,7 @@ class SelectPermissionPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.SelectPermissionPresenter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ import mqq.util.WeakReference;
 class WSVideoPreDownloadManager$PreDownloadSerialTask
   implements Runnable
 {
-  private List<WSVideoPreDownloadManager.VideoPreDownloadParam> jdField_a_of_type_JavaUtilList;
-  private WeakReference<WSVideoPreDownloadManager> jdField_a_of_type_MqqUtilWeakReference;
+  private WeakReference<WSVideoPreDownloadManager> a;
+  private List<WSVideoPreDownloadManager.VideoPreDownloadParam> b;
   
   WSVideoPreDownloadManager$PreDownloadSerialTask(WSVideoPreDownloadManager paramWSVideoPreDownloadManager, List<WSVideoPreDownloadManager.VideoPreDownloadParam> paramList)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramWSVideoPreDownloadManager);
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = new WeakReference(paramWSVideoPreDownloadManager);
+    this.b = paramList;
   }
   
   private void a()
@@ -26,7 +26,7 @@ class WSVideoPreDownloadManager$PreDownloadSerialTask
     {
       StringBuilder localStringBuilder2 = new StringBuilder();
       StringBuilder localStringBuilder1 = new StringBuilder();
-      Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject = this.b.iterator();
       while (((Iterator)localObject).hasNext())
       {
         WSVideoPreDownloadManager.VideoPreDownloadParam localVideoPreDownloadParam = (WSVideoPreDownloadManager.VideoPreDownloadParam)((Iterator)localObject).next();
@@ -37,7 +37,7 @@ class WSVideoPreDownloadManager$PreDownloadSerialTask
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSVideoPreDownloadManager.java][PreDownloadSerialTask.run] preDownload listSize:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject).append(this.b.size());
       ((StringBuilder)localObject).append(", listStr:");
       ((StringBuilder)localObject).append(localStringBuilder2);
       WSLog.e("WS_VIDEO_PRE_DL", ((StringBuilder)localObject).toString());
@@ -50,28 +50,28 @@ class WSVideoPreDownloadManager$PreDownloadSerialTask
   
   private void a(WSVideoPreDownloadManager paramWSVideoPreDownloadManager)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() != 0)
+    if (this.b.size() != 0)
     {
-      WSVideoPreDownloadManager.VideoPreDownloadParam localVideoPreDownloadParam = (WSVideoPreDownloadManager.VideoPreDownloadParam)this.jdField_a_of_type_JavaUtilList.get(0);
-      String str = WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager);
+      WSVideoPreDownloadManager.VideoPreDownloadParam localVideoPreDownloadParam = (WSVideoPreDownloadManager.VideoPreDownloadParam)this.b.get(0);
+      String str = WSVideoPreDownloadManager.d(paramWSVideoPreDownloadManager);
       if (TextUtils.isEmpty(str))
       {
         WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][PreDownloadSerialTask.run] curPreDownloadUrl is empty，restart preDownload!");
-        WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager, this.jdField_a_of_type_JavaUtilList);
-        WSVideoPreDownloadManager.b(paramWSVideoPreDownloadManager);
+        WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager, this.b);
+        WSVideoPreDownloadManager.e(paramWSVideoPreDownloadManager);
         return;
       }
       if (TextUtils.equals(str, localVideoPreDownloadParam.b))
       {
         WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][PreDownloadSerialTask.run] current preDownloadUrl == PreList[0]");
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager, this.jdField_a_of_type_JavaUtilList);
+        this.b.remove(0);
+        WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager, this.b);
         return;
       }
       WSLog.e("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][PreDownloadSerialTask.run] current preDownloadUrl != PreList[0], stop download! restart preDownload!!");
-      WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager, this.jdField_a_of_type_JavaUtilList);
+      WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager, this.b);
       paramWSVideoPreDownloadManager.b();
-      WSVideoPreDownloadManager.b(paramWSVideoPreDownloadManager);
+      WSVideoPreDownloadManager.e(paramWSVideoPreDownloadManager);
     }
   }
   
@@ -79,13 +79,13 @@ class WSVideoPreDownloadManager$PreDownloadSerialTask
   {
     int k = 0;
     int j;
-    for (int i = 0; i < this.jdField_a_of_type_JavaUtilList.size(); i = j + 1)
+    for (int i = 0; i < this.b.size(); i = j + 1)
     {
-      WSVideoPreDownloadManager.VideoPreDownloadParam localVideoPreDownloadParam = (WSVideoPreDownloadManager.VideoPreDownloadParam)this.jdField_a_of_type_JavaUtilList.get(i);
+      WSVideoPreDownloadManager.VideoPreDownloadParam localVideoPreDownloadParam = (WSVideoPreDownloadManager.VideoPreDownloadParam)this.b.get(i);
       j = i;
-      if (WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager).contains(localVideoPreDownloadParam.b))
+      if (WSVideoPreDownloadManager.c(paramWSVideoPreDownloadManager).contains(localVideoPreDownloadParam.b))
       {
-        this.jdField_a_of_type_JavaUtilList.remove(i);
+        this.b.remove(i);
         j = i - 1;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[WSVideoPreDownloadManager.java][PreDownloadSerialTask.run] hadPreDownload!! removeFromPreList:");
@@ -93,13 +93,14 @@ class WSVideoPreDownloadManager$PreDownloadSerialTask
         WSLog.e("WS_VIDEO_PRE_DL", localStringBuilder.toString());
       }
     }
-    if ((WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager) != null) && (!WSVideoPreDownloadManager.a(paramWSVideoPreDownloadManager).a())) {
-      for (i = k; i < this.jdField_a_of_type_JavaUtilList.size(); i = j + 1)
+    paramWSVideoPreDownloadManager = WSVideoPreDownloadManager.g(paramWSVideoPreDownloadManager);
+    if ((paramWSVideoPreDownloadManager != null) && (!paramWSVideoPreDownloadManager.a())) {
+      for (i = k; i < this.b.size(); i = j + 1)
       {
         j = i;
-        if (!((WSVideoPreDownloadManager.VideoPreDownloadParam)this.jdField_a_of_type_JavaUtilList.get(i)).a)
+        if (!((WSVideoPreDownloadManager.VideoPreDownloadParam)this.b.get(i)).e)
         {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
+          this.b.remove(i);
           j = i - 1;
         }
       }
@@ -108,10 +109,10 @@ class WSVideoPreDownloadManager$PreDownloadSerialTask
   
   public void run()
   {
-    WSVideoPreDownloadManager localWSVideoPreDownloadManager = (WSVideoPreDownloadManager)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localWSVideoPreDownloadManager != null) && (WSVideoPreDownloadManager.a(localWSVideoPreDownloadManager) != null) && (WSVideoPreDownloadManager.a(localWSVideoPreDownloadManager) != null))
+    WSVideoPreDownloadManager localWSVideoPreDownloadManager = (WSVideoPreDownloadManager)this.a.get();
+    if ((localWSVideoPreDownloadManager != null) && (WSVideoPreDownloadManager.f(localWSVideoPreDownloadManager) != null) && (WSVideoPreDownloadManager.c(localWSVideoPreDownloadManager) != null))
     {
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.b;
       if (localList != null)
       {
         if (localList.size() == 0) {
@@ -126,7 +127,7 @@ class WSVideoPreDownloadManager$PreDownloadSerialTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.PreDownloadSerialTask
  * JD-Core Version:    0.7.0.1
  */

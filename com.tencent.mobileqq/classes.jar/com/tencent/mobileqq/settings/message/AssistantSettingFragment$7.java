@@ -12,21 +12,21 @@ class AssistantSettingFragment$7
   {
     if (paramBoolean1)
     {
-      if ((AssistantSettingFragment.c(this.a) != null) && (paramBoolean2 != AssistantSettingFragment.c(this.a).a()))
+      if ((AssistantSettingFragment.h(this.a) != null) && (paramBoolean2 != AssistantSettingFragment.h(this.a).a()))
       {
-        AssistantSettingFragment.c(this.a).setOnCheckedChangeListener(null);
-        AssistantSettingFragment.c(this.a).setChecked(paramBoolean2);
-        AssistantSettingFragment.c(this.a).setOnCheckedChangeListener(this.a);
+        AssistantSettingFragment.h(this.a).setOnCheckedChangeListener(null);
+        AssistantSettingFragment.h(this.a).setChecked(paramBoolean2);
+        AssistantSettingFragment.h(this.a).setOnCheckedChangeListener(this.a);
       }
     }
     else {
-      AssistantSettingFragment.a(this.a, 2131690712, 1);
+      AssistantSettingFragment.a(this.a, 2131887632, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.7
  * JD-Core Version:    0.7.0.1
  */

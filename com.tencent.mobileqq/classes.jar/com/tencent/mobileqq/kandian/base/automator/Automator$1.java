@@ -11,16 +11,16 @@ class Automator$1
   public void run()
   {
     Automator.a(this.this$0).clear();
-    Collections.addAll(Automator.a(this.this$0), this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep);
-    Collections.addAll(Automator.a(this.this$0), this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseAutomatorBaseStep);
-    if (this.jdField_a_of_type_Boolean) {
-      Automator.a(this.this$0);
+    Collections.addAll(Automator.a(this.this$0), this.a);
+    Collections.addAll(Automator.b(this.this$0), this.a);
+    if (this.b) {
+      Automator.c(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.Automator.1
  * JD-Core Version:    0.7.0.1
  */

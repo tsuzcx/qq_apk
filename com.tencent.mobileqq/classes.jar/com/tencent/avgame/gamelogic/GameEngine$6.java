@@ -9,7 +9,7 @@ class GameEngine$6
   
   public void run()
   {
-    GameEngine.a(this.this$0).a = AVGameUtil.a();
+    GameEngine.b(this.this$0).x = AVGameUtil.f();
   }
 }
 

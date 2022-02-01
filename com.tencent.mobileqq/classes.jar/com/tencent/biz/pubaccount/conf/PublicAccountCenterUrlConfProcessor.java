@@ -45,8 +45,8 @@ public class PublicAccountCenterUrlConfProcessor
   
   public void a(PublicAccountCenterUrlConfBean paramPublicAccountCenterUrlConfBean)
   {
-    paramPublicAccountCenterUrlConfBean.a();
     paramPublicAccountCenterUrlConfBean.b();
+    paramPublicAccountCenterUrlConfBean.c();
   }
   
   public Class<PublicAccountCenterUrlConfBean> clazz()
@@ -89,7 +89,7 @@ public class PublicAccountCenterUrlConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PublicAccountCenterUrlConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -26,7 +26,7 @@ class GdtDrawableLoader$1
     paramURLDrawable.append("onLoadFialed ");
     paramURLDrawable.append(GdtDrawableLoader.a(this.a));
     GdtLog.d("GdtDrawableLoader", paramURLDrawable.toString(), paramThrowable);
-    if (!GdtDrawableLoader.a(this.a)) {
+    if (!GdtDrawableLoader.b(this.a)) {
       GdtDrawableLoader.a(this.a, false);
     }
   }
@@ -54,7 +54,7 @@ class GdtDrawableLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.image.GdtDrawableLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class AEWaterMarkAdapter$5
   
   public void run()
   {
-    QQToast.a(AEWaterMarkAdapter.a(this.this$0), HardCodeUtil.a(2131709782), 0).a();
+    QQToast.makeText(AEWaterMarkAdapter.e(this.this$0), HardCodeUtil.a(2131907502), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEWaterMarkAdapter.5
  * JD-Core Version:    0.7.0.1
  */

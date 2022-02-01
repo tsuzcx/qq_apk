@@ -14,9 +14,9 @@ class UniformDownloadPkgInstallReceiver$1
   
   public void run()
   {
-    if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)))
+    if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.a)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.a)))
     {
-      Object localObject = UniformDownloadMgr.a().a().a(this.b, true);
+      Object localObject = UniformDownloadMgr.a().c().a(this.b, true);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
@@ -29,10 +29,10 @@ class UniformDownloadPkgInstallReceiver$1
             localStringBuilder.append("[UniformDL] send cancel notification.pkgName:");
             localStringBuilder.append(this.b);
             localStringBuilder.append(" notificationId:");
-            localStringBuilder.append(localSucDownloadInfo.a);
+            localStringBuilder.append(localSucDownloadInfo.b);
             QLog.i("UniformDownloadPkgInstallReceiver", 1, localStringBuilder.toString());
-            UniformDownloadNfn.a().c(localSucDownloadInfo.a, null);
-            this.this$0.a(this.jdField_a_of_type_AndroidContentContext, localSucDownloadInfo);
+            UniformDownloadNfn.a().c(localSucDownloadInfo.b, null);
+            this.this$0.a(this.c, localSucDownloadInfo);
           }
         }
       }
@@ -41,7 +41,7 @@ class UniformDownloadPkgInstallReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.core.UniformDownloadPkgInstallReceiver.1
  * JD-Core Version:    0.7.0.1
  */

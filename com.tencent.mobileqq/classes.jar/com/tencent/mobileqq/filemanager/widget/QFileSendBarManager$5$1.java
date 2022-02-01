@@ -26,8 +26,8 @@ class QFileSendBarManager$5$1
   
   protected Void a(Void... paramVarArgs)
   {
-    paramVarArgs = QFileSendBarManager.a(this.a.this$0);
-    Object localObject1 = QFileSendBarManager.b(this.a.this$0);
+    paramVarArgs = QFileSendBarManager.b(this.a.this$0);
+    Object localObject1 = QFileSendBarManager.e(this.a.this$0);
     int i = QFileSendBarManager.a(this.a.this$0);
     if (i == 5)
     {
@@ -39,23 +39,23 @@ class QFileSendBarManager$5$1
     {
       localObject1 = new ArrayList();
       ((ArrayList)localObject1).addAll(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles());
-      paramVarArgs = (DataLineHandler)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      paramVarArgs = (DataLineHandler)this.a.this$0.b.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       paramVarArgs.a((ArrayList)localObject1);
       localObject1 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getRecentFiles().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
         if (((FileManagerEntity)localObject2).nFileType == 13) {
-          paramVarArgs.a((FileManagerEntity)localObject2);
+          paramVarArgs.c((FileManagerEntity)localObject2);
         } else if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null)) {
-          paramVarArgs.a((FileManagerEntity)localObject2);
+          paramVarArgs.d((FileManagerEntity)localObject2);
         } else {
-          paramVarArgs.a().a((FileManagerEntity)localObject2);
+          paramVarArgs.n().a((FileManagerEntity)localObject2);
         }
       }
       if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getFavFiles().size() > 0)
       {
-        this.a.this$0.a.getFileManagerEngine().a().sendFavFiles(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getFavFiles(), AppConstants.DATALINE_PC_UIN, 6000, null);
+        this.a.this$0.b.getFileManagerEngine().h().sendFavFiles(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getFavFiles(), AppConstants.DATALINE_PC_UIN, 6000, null);
         return null;
       }
     }
@@ -65,18 +65,18 @@ class QFileSendBarManager$5$1
       {
         localObject1 = new ArrayList();
         ((ArrayList)localObject1).addAll(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles());
-        ((RouterHandler)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.ROUTER_HANDLER)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
+        ((RouterHandler)this.a.this$0.b.getBusinessHandler(BusinessHandlerFactory.ROUTER_HANDLER)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
         return null;
       }
       if (i == 9501)
       {
-        localObject1 = (DeviceMsgHandle)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+        localObject1 = (DeviceMsgHandle)this.a.this$0.b.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
         localObject2 = new ArrayList();
         ((ArrayList)localObject2).addAll(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles());
-        ((DeviceMsgHandle)localObject1).a().a(paramVarArgs, (List)localObject2);
+        ((DeviceMsgHandle)localObject1).b().b(paramVarArgs, (List)localObject2);
         return null;
       }
-      this.a.this$0.a.getFileManagerEngine().a(false, (String)localObject1, paramVarArgs, i);
+      this.a.this$0.b.getFileManagerEngine().a(false, (String)localObject1, paramVarArgs, i);
     }
     return null;
   }
@@ -84,14 +84,14 @@ class QFileSendBarManager$5$1
   protected void a(Void paramVoid)
   {
     super.onPostExecute(paramVoid);
-    QFileSendBarManager.c(this.a.this$0);
+    QFileSendBarManager.f(this.a.this$0);
     ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).clearSelected();
     this.a.this$0.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ class ReadInJoyWebviewPlugin$6
     try
     {
       paramBundle = ((JSONObject)localObject).put("retCode", paramBundle.getInt("retCode")).put("skinId", paramBundle.getString("skinId")).put("volumeIsOn", paramBundle.getInt("volumeIsOn"));
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueWebpluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      this.b.callJs(this.a, new String[] { paramBundle.toString() });
       return;
     }
     catch (JSONException paramBundle)
@@ -30,13 +30,13 @@ class ReadInJoyWebviewPlugin$6
       ((StringBuilder)localObject).append("readSkinAndSound error ");
       ((StringBuilder)localObject).append(paramBundle.toString());
       QLog.w("ReadInJoyWebviewPlugin", 1, ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueWebpluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+      this.b.callJs(this.a, new String[] { "{\"retCode\":-1}" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.webplugin.ReadInJoyWebviewPlugin.6
  * JD-Core Version:    0.7.0.1
  */

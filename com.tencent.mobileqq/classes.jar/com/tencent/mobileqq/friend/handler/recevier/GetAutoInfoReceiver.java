@@ -36,15 +36,15 @@ public class GetAutoInfoReceiver
     {
       paramToServiceMsg.putInt("group_id", paramObject.cGroupID);
       paramToServiceMsg.putString("nick_name", paramObject.strRemark);
-      ((FriendHandler)a()).notifyUI(33, true, paramToServiceMsg);
+      ((FriendHandler)c()).notifyUI(33, true, paramToServiceMsg);
       return;
     }
-    ((FriendHandler)a()).notifyUI(33, false, paramToServiceMsg);
+    ((FriendHandler)c()).notifyUI(33, false, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.GetAutoInfoReceiver
  * JD-Core Version:    0.7.0.1
  */

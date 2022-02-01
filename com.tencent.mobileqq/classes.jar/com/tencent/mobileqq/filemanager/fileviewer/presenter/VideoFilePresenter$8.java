@@ -14,35 +14,35 @@ class VideoFilePresenter$8
 {
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if ((i != -6101) && (i != -7003) && (i != 201))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692749));
+      this.this$0.a.a(this.this$0.c.y(), this.this$0.d.getString(2131889820));
       return;
     }
-    i = this.jdField_a_of_type_Int;
+    i = this.a;
     Object localObject;
     if ((i != -6101) && (i != -7003))
     {
       if (i == 201)
       {
-        if (!this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.g()) {
-          localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692750);
+        if (!this.this$0.c.K()) {
+          localObject = this.this$0.d.getString(2131889821);
         } else {
-          this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692749));
+          this.this$0.a.a(this.this$0.c.y(), this.this$0.d.getString(2131889820));
         }
       }
       else
       {
-        String str = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692749);
+        String str = this.this$0.d.getString(2131889820);
         localObject = str;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("can not handle video error. rc=[");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(this.a);
           ((StringBuilder)localObject).append("]  msg=[");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.b);
           ((StringBuilder)localObject).append("]");
           QLog.i("FileBrowserPresenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
           localObject = str;
@@ -51,12 +51,12 @@ class VideoFilePresenter$8
     }
     else
     {
-      localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692717);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      localObject = this.this$0.d.getString(2131889788);
+      this.this$0.c.a(this.a, this.b);
     }
     if (BaseActivity.sTopActivity != null)
     {
-      localObject = DialogUtil.a(BaseActivity.sTopActivity, 230, "", (CharSequence)localObject, null, HardCodeUtil.a(2131716016), new VideoFilePresenter.8.1(this), null);
+      localObject = DialogUtil.a(BaseActivity.sTopActivity, 230, "", (CharSequence)localObject, null, HardCodeUtil.a(2131913467), new VideoFilePresenter.8.1(this), null);
       if (!((QQCustomDialog)localObject).isShowing()) {
         ((QQCustomDialog)localObject).show();
       }
@@ -65,7 +65,7 @@ class VideoFilePresenter$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8
  * JD-Core Version:    0.7.0.1
  */

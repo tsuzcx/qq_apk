@@ -3,6 +3,7 @@ package com.tencent.liteav.audio.impl.Play;
 import android.media.AudioTrack;
 import com.tencent.liteav.audio.TXCAudioEngine;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportAudioTrack;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.ShortBuffer;
@@ -31,7 +32,7 @@ class TXCMultAudioTrackPlayer$1
         }
         j = 3;
         int k = AudioTrack.getMinBufferSize(TXCMultAudioTrackPlayer.access$300(this.this$0), i, j);
-        AudioTrack localAudioTrack = new AudioTrack(3, TXCMultAudioTrackPlayer.access$300(this.this$0), i, j, k, 1);
+        ReportAudioTrack localReportAudioTrack = new ReportAudioTrack(3, TXCMultAudioTrackPlayer.access$300(this.this$0), i, j, k, 1);
         Object localObject1 = TXCMultAudioTrackPlayer.access$400();
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("create audio track, samplerate:");
@@ -45,7 +46,7 @@ class TXCMultAudioTrackPlayer$1
         TXCLog.i((String)localObject1, ((StringBuilder)localObject2).toString());
         try
         {
-          localAudioTrack.play();
+          localReportAudioTrack.play();
           TXCMultAudioTrackPlayer.access$502(this.this$0, true);
           localObject1 = this.this$0;
           ((TXCMultAudioTrackPlayer)localObject1).setAudioMode(TXCMultAudioTrackPlayer.access$600((TXCMultAudioTrackPlayer)localObject1), TXCMultAudioTrackPlayer.access$700(this.this$0));
@@ -82,7 +83,7 @@ class TXCMultAudioTrackPlayer$1
                   m = i * (800 - k) / 800;
                 }
               }
-              localAudioTrack.write((byte[])localObject1, 0, localObject1.length);
+              localReportAudioTrack.write((byte[])localObject1, 0, localObject1.length);
               i = m;
               j = k;
               continue;
@@ -107,10 +108,10 @@ class TXCMultAudioTrackPlayer$1
       catch (InterruptedException localInterruptedException) {}
       try
       {
-        localAudioTrack.pause();
-        localAudioTrack.flush();
-        localAudioTrack.stop();
-        localAudioTrack.release();
+        localReportAudioTrack.pause();
+        localReportAudioTrack.flush();
+        localReportAudioTrack.stop();
+        localReportAudioTrack.release();
       }
       catch (Exception localException1)
       {
@@ -129,7 +130,7 @@ class TXCMultAudioTrackPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.Play.TXCMultAudioTrackPlayer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,126 +20,126 @@ import com.google.android.material.R.styleable;
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class TextAppearance
 {
-  public final float a;
-  public final int a;
   @Nullable
   public final ColorStateList a;
-  private Typeface a;
-  @Nullable
-  public final String a;
-  public final boolean a;
-  public final float b;
-  public final int b;
   @Nullable
   public final ColorStateList b;
-  public final boolean b;
-  public final float c;
-  @FontRes
-  private final int jdField_c_of_type_Int;
   @Nullable
   public final ColorStateList c;
-  private boolean jdField_c_of_type_Boolean = false;
-  public final float d;
   @Nullable
   public final ColorStateList d;
-  public float e;
+  @Nullable
+  public final String e;
+  public final int f;
+  public final int g;
+  public final boolean h;
+  public final float i;
+  public final float j;
+  public final float k;
+  public final boolean l;
+  public final float m;
+  public float n;
+  @FontRes
+  private final int o;
+  private boolean p = false;
+  private Typeface q;
   
   public TextAppearance(@NonNull Context paramContext, @StyleRes int paramInt)
   {
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramInt, R.styleable.TextAppearance);
-    this.e = localTypedArray.getDimension(R.styleable.TextAppearance_android_textSize, 0.0F);
-    this.jdField_a_of_type_AndroidContentResColorStateList = MaterialResources.a(paramContext, localTypedArray, R.styleable.TextAppearance_android_textColor);
-    this.jdField_b_of_type_AndroidContentResColorStateList = MaterialResources.a(paramContext, localTypedArray, R.styleable.TextAppearance_android_textColorHint);
-    this.jdField_c_of_type_AndroidContentResColorStateList = MaterialResources.a(paramContext, localTypedArray, R.styleable.TextAppearance_android_textColorLink);
-    this.jdField_a_of_type_Int = localTypedArray.getInt(R.styleable.TextAppearance_android_textStyle, 0);
-    this.jdField_b_of_type_Int = localTypedArray.getInt(R.styleable.TextAppearance_android_typeface, 1);
-    int i = MaterialResources.a(localTypedArray, R.styleable.TextAppearance_fontFamily, R.styleable.TextAppearance_android_fontFamily);
-    this.jdField_c_of_type_Int = localTypedArray.getResourceId(i, 0);
-    this.jdField_a_of_type_JavaLangString = localTypedArray.getString(i);
-    this.jdField_a_of_type_Boolean = localTypedArray.getBoolean(R.styleable.TextAppearance_textAllCaps, false);
-    this.jdField_d_of_type_AndroidContentResColorStateList = MaterialResources.a(paramContext, localTypedArray, R.styleable.TextAppearance_android_shadowColor);
-    this.jdField_a_of_type_Float = localTypedArray.getFloat(R.styleable.TextAppearance_android_shadowDx, 0.0F);
-    this.jdField_b_of_type_Float = localTypedArray.getFloat(R.styleable.TextAppearance_android_shadowDy, 0.0F);
-    this.jdField_c_of_type_Float = localTypedArray.getFloat(R.styleable.TextAppearance_android_shadowRadius, 0.0F);
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramInt, R.styleable.hL);
+    this.n = localTypedArray.getDimension(R.styleable.hM, 0.0F);
+    this.a = MaterialResources.a(paramContext, localTypedArray, R.styleable.hP);
+    this.b = MaterialResources.a(paramContext, localTypedArray, R.styleable.hQ);
+    this.c = MaterialResources.a(paramContext, localTypedArray, R.styleable.hR);
+    this.f = localTypedArray.getInt(R.styleable.hO, 0);
+    this.g = localTypedArray.getInt(R.styleable.hN, 1);
+    int i1 = MaterialResources.a(localTypedArray, R.styleable.hX, R.styleable.hW);
+    this.o = localTypedArray.getResourceId(i1, 0);
+    this.e = localTypedArray.getString(i1);
+    this.h = localTypedArray.getBoolean(R.styleable.hY, false);
+    this.d = MaterialResources.a(paramContext, localTypedArray, R.styleable.hS);
+    this.i = localTypedArray.getFloat(R.styleable.hT, 0.0F);
+    this.j = localTypedArray.getFloat(R.styleable.hU, 0.0F);
+    this.k = localTypedArray.getFloat(R.styleable.hV, 0.0F);
     localTypedArray.recycle();
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramContext = paramContext.obtainStyledAttributes(paramInt, R.styleable.X);
-      this.jdField_b_of_type_Boolean = paramContext.hasValue(R.styleable.dk);
-      this.jdField_d_of_type_Float = paramContext.getFloat(R.styleable.dk, 0.0F);
+      paramContext = paramContext.obtainStyledAttributes(paramInt, R.styleable.eO);
+      this.l = paramContext.hasValue(R.styleable.eP);
+      this.m = paramContext.getFloat(R.styleable.eP, 0.0F);
       paramContext.recycle();
       return;
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_d_of_type_Float = 0.0F;
+    this.l = false;
+    this.m = 0.0F;
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsTypeface == null)
+    if (this.q == null)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.e;
       if (str != null) {
-        this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.create(str, this.jdField_a_of_type_Int);
+        this.q = Typeface.create(str, this.f);
       }
     }
-    if (this.jdField_a_of_type_AndroidGraphicsTypeface == null)
+    if (this.q == null)
     {
-      int i = this.jdField_b_of_type_Int;
-      if (i != 1)
+      int i1 = this.g;
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i != 3) {
-            this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT;
+          if (i1 != 3) {
+            this.q = Typeface.DEFAULT;
           } else {
-            this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.MONOSPACE;
+            this.q = Typeface.MONOSPACE;
           }
         }
         else {
-          this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.SERIF;
+          this.q = Typeface.SERIF;
         }
       }
       else {
-        this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.SANS_SERIF;
+        this.q = Typeface.SANS_SERIF;
       }
-      this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.create(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_Int);
+      this.q = Typeface.create(this.q, this.f);
     }
   }
   
-  private boolean a(Context paramContext)
+  private boolean b(Context paramContext)
   {
     return TextAppearanceConfig.a();
   }
   
   public Typeface a()
   {
-    a();
-    return this.jdField_a_of_type_AndroidGraphicsTypeface;
+    b();
+    return this.q;
   }
   
   @NonNull
   @VisibleForTesting
   public Typeface a(@NonNull Context paramContext)
   {
-    if (this.jdField_c_of_type_Boolean) {
-      return this.jdField_a_of_type_AndroidGraphicsTypeface;
+    if (this.p) {
+      return this.q;
     }
     if (!paramContext.isRestricted()) {}
     try
     {
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsTypeface = ResourcesCompat.getFont(paramContext, this.jdField_c_of_type_Int);
-        if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
-          this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.create(this.jdField_a_of_type_AndroidGraphicsTypeface, this.jdField_a_of_type_Int);
+        this.q = ResourcesCompat.getFont(paramContext, this.o);
+        if (this.q != null) {
+          this.q = Typeface.create(this.q, this.f);
         }
       }
       catch (Exception paramContext)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("Error loading font ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.e);
         Log.d("TextAppearance", localStringBuilder.toString(), paramContext);
       }
     }
@@ -148,9 +148,9 @@ public class TextAppearance
       label92:
       break label92;
     }
-    a();
-    this.jdField_c_of_type_Boolean = true;
-    return this.jdField_a_of_type_AndroidGraphicsTypeface;
+    b();
+    this.p = true;
+    return this.q;
   }
   
   public void a(@NonNull Context paramContext, @NonNull TextPaint paramTextPaint, @NonNull TextAppearanceFontCallback paramTextAppearanceFontCallback)
@@ -161,34 +161,34 @@ public class TextAppearance
   
   public void a(@NonNull Context paramContext, @NonNull TextAppearanceFontCallback paramTextAppearanceFontCallback)
   {
-    if (a(paramContext)) {
+    if (b(paramContext)) {
       a(paramContext);
     } else {
-      a();
+      b();
     }
-    if (this.jdField_c_of_type_Int == 0) {
-      this.jdField_c_of_type_Boolean = true;
+    if (this.o == 0) {
+      this.p = true;
     }
-    if (this.jdField_c_of_type_Boolean)
+    if (this.p)
     {
-      paramTextAppearanceFontCallback.a(this.jdField_a_of_type_AndroidGraphicsTypeface, true);
+      paramTextAppearanceFontCallback.a(this.q, true);
       return;
     }
     try
     {
-      ResourcesCompat.getFont(paramContext, this.jdField_c_of_type_Int, new TextAppearance.1(this, paramTextAppearanceFontCallback), null);
+      ResourcesCompat.getFont(paramContext, this.o, new TextAppearance.1(this, paramTextAppearanceFontCallback), null);
       return;
     }
     catch (Exception paramContext)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Error loading font ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.e);
       Log.d("TextAppearance", localStringBuilder.toString(), paramContext);
-      this.jdField_c_of_type_Boolean = true;
+      this.p = true;
       paramTextAppearanceFontCallback.a(-3);
       return;
-      this.jdField_c_of_type_Boolean = true;
+      this.p = true;
       paramTextAppearanceFontCallback.a(1);
       return;
     }
@@ -202,54 +202,54 @@ public class TextAppearance
   public void a(@NonNull TextPaint paramTextPaint, @NonNull Typeface paramTypeface)
   {
     paramTextPaint.setTypeface(paramTypeface);
-    int i = this.jdField_a_of_type_Int;
-    i = (paramTypeface.getStyle() ^ 0xFFFFFFFF) & i;
+    int i1 = this.f;
+    i1 = (paramTypeface.getStyle() ^ 0xFFFFFFFF) & i1;
     boolean bool;
-    if ((i & 0x1) != 0) {
+    if ((i1 & 0x1) != 0) {
       bool = true;
     } else {
       bool = false;
     }
     paramTextPaint.setFakeBoldText(bool);
-    float f;
-    if ((i & 0x2) != 0) {
-      f = -0.25F;
+    float f1;
+    if ((i1 & 0x2) != 0) {
+      f1 = -0.25F;
     } else {
-      f = 0.0F;
+      f1 = 0.0F;
     }
-    paramTextPaint.setTextSkewX(f);
-    paramTextPaint.setTextSize(this.e);
-    if ((Build.VERSION.SDK_INT >= 21) && (this.jdField_b_of_type_Boolean)) {
-      paramTextPaint.setLetterSpacing(this.jdField_d_of_type_Float);
+    paramTextPaint.setTextSkewX(f1);
+    paramTextPaint.setTextSize(this.n);
+    if ((Build.VERSION.SDK_INT >= 21) && (this.l)) {
+      paramTextPaint.setLetterSpacing(this.m);
     }
   }
   
   public void b(@NonNull Context paramContext, @NonNull TextPaint paramTextPaint, @NonNull TextAppearanceFontCallback paramTextAppearanceFontCallback)
   {
     c(paramContext, paramTextPaint, paramTextAppearanceFontCallback);
-    paramContext = this.jdField_a_of_type_AndroidContentResColorStateList;
-    int i;
+    paramContext = this.a;
+    int i1;
     if (paramContext != null) {
-      i = paramContext.getColorForState(paramTextPaint.drawableState, this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor());
+      i1 = paramContext.getColorForState(paramTextPaint.drawableState, this.a.getDefaultColor());
     } else {
-      i = -16777216;
+      i1 = -16777216;
     }
-    paramTextPaint.setColor(i);
-    float f1 = this.jdField_c_of_type_Float;
-    float f2 = this.jdField_a_of_type_Float;
-    float f3 = this.jdField_b_of_type_Float;
-    paramContext = this.jdField_d_of_type_AndroidContentResColorStateList;
+    paramTextPaint.setColor(i1);
+    float f1 = this.k;
+    float f2 = this.i;
+    float f3 = this.j;
+    paramContext = this.d;
     if (paramContext != null) {
-      i = paramContext.getColorForState(paramTextPaint.drawableState, this.jdField_d_of_type_AndroidContentResColorStateList.getDefaultColor());
+      i1 = paramContext.getColorForState(paramTextPaint.drawableState, this.d.getDefaultColor());
     } else {
-      i = 0;
+      i1 = 0;
     }
-    paramTextPaint.setShadowLayer(f1, f2, f3, i);
+    paramTextPaint.setShadowLayer(f1, f2, f3, i1);
   }
   
   public void c(@NonNull Context paramContext, @NonNull TextPaint paramTextPaint, @NonNull TextAppearanceFontCallback paramTextAppearanceFontCallback)
   {
-    if (a(paramContext))
+    if (b(paramContext))
     {
       a(paramTextPaint, a(paramContext));
       return;
@@ -259,7 +259,7 @@ public class TextAppearance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.resources.TextAppearance
  * JD-Core Version:    0.7.0.1
  */

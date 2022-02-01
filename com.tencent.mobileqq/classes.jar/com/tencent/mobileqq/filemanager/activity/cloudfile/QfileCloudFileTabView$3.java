@@ -30,53 +30,53 @@ class QfileCloudFileTabView$3
   {
     QfileCloudFileTabView.b(this.a, true);
     QfileCloudFileTabView.c(this.a, paramBoolean);
-    this.a.jdField_c_of_type_Int = paramInt2;
+    this.a.x = paramInt2;
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      paramInt1 = QQFileManagerUtil.b(localWeiYunFileInfo.jdField_c_of_type_JavaLangString);
+      paramInt1 = QQFileManagerUtil.k(localWeiYunFileInfo.c);
       String str;
       if (paramInt1 == 0)
       {
-        str = ((IQQFileEngine)QfileCloudFileTabView.a(this.a).getRuntimeService(IQQFileEngine.class)).getWeiYunPicThumb(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 3, localWeiYunFileInfo);
+        str = ((IQQFileEngine)QfileCloudFileTabView.b(this.a).getRuntimeService(IQQFileEngine.class)).getWeiYunPicThumb(localWeiYunFileInfo.a, localWeiYunFileInfo.i, 3, localWeiYunFileInfo);
         if (str != null) {
-          localWeiYunFileInfo.h = str;
+          localWeiYunFileInfo.l = str;
         }
       }
       else if (2 == paramInt1)
       {
-        str = ((IQQFileEngine)QfileCloudFileTabView.b(this.a).getRuntimeService(IQQFileEngine.class)).getWeiYunVideoThumb(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo.e, 2, localWeiYunFileInfo);
+        str = ((IQQFileEngine)QfileCloudFileTabView.c(this.a).getRuntimeService(IQQFileEngine.class)).getWeiYunVideoThumb(localWeiYunFileInfo.a, localWeiYunFileInfo.i, 2, localWeiYunFileInfo);
         if (str != null) {
-          localWeiYunFileInfo.h = str;
+          localWeiYunFileInfo.l = str;
         }
       }
     }
-    if (!paramString1.equals(this.a.jdField_a_of_type_JavaLangString)) {
+    if (!paramString1.equals(this.a.a)) {
       return;
     }
-    if (QfileCloudFileTabView.b(this.a)) {
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (QfileCloudFileTabView.d(this.a)) {
+      this.a.i.clear();
     }
-    this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    if (!this.a.jdField_a_of_type_JavaLangString.equalsIgnoreCase("picture")) {
+    this.a.i.addAll(paramList);
+    if (!this.a.a.equalsIgnoreCase("picture")) {
       this.a.setListFooter();
     }
     paramString1 = this.a;
-    paramString1.jdField_c_of_type_JavaLangString = paramString2;
-    paramString1.jdField_c_of_type_Boolean = true;
+    paramString1.y = paramString2;
+    paramString1.A = true;
     paramString1.g();
-    this.a.a();
+    this.a.getRecentFileRecords();
   }
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.notifyDataSetChanged();
+    this.a.j.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.3
  * JD-Core Version:    0.7.0.1
  */

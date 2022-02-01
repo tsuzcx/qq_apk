@@ -14,13 +14,13 @@ final class RIJPushNotifyDialog$initListener$3
   
   public final void onClick(View paramView)
   {
-    RIJPushNotifyDialog.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(RIJPushNotifyDialog.a(this.a)), Integer.valueOf(3));
+    RIJPushNotifyDialog.b(this.a).g().invoke(Boolean.valueOf(false), Boolean.valueOf(RIJPushNotifyDialog.c(this.a)), Integer.valueOf(3));
     this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.mvp.RIJPushNotifyDialog.initListener.3
  * JD-Core Version:    0.7.0.1
  */

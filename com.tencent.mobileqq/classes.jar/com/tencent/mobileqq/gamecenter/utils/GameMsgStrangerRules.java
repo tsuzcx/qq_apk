@@ -9,26 +9,23 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GameMsgStrangerRules
 {
-  protected long a;
-  protected SharedPreferences a;
-  protected AppInterface a;
-  protected boolean a;
-  protected int b;
-  protected String b;
-  protected int c = 0;
+  protected boolean d = true;
+  protected SharedPreferences e = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
+  protected int f;
+  protected String g;
+  protected AppInterface h;
+  protected long i = 0L;
+  protected int j = 0;
   
   public GameMsgStrangerRules(AppInterface paramAppInterface, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplication.getContext().getSharedPreferences("game_center_sp", 0);
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
     String str = paramAppInterface.getCurrentAccountUin();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append(str);
-    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.g = localStringBuilder.toString();
+    this.h = paramAppInterface;
     a();
   }
   
@@ -36,27 +33,27 @@ public class GameMsgStrangerRules
   {
     try
     {
-      String str2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_b_of_type_JavaLangString, "");
+      String str2 = this.e.getString(this.g, "");
       if (TextUtils.isEmpty(str2))
       {
-        this.c = 0;
-        this.jdField_a_of_type_Long = 0L;
+        this.j = 0;
+        this.i = 0L;
         return;
       }
-      int i = str2.indexOf("_");
-      if (i < 0) {
+      int k = str2.indexOf("_");
+      if (k < 0) {
         break label141;
       }
-      String str1 = str2.substring(0, i);
-      str2 = str2.substring(i + 1, str2.length());
+      String str1 = str2.substring(0, k);
+      str2 = str2.substring(k + 1, str2.length());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[init], times:");
       localStringBuilder.append(str1);
       localStringBuilder.append(",momentStr:");
       localStringBuilder.append(str2);
       QLog.i("GameMsgRules.Stranger", 1, localStringBuilder.toString());
-      this.c = Integer.parseInt(str1);
-      this.jdField_a_of_type_Long = Long.parseLong(str2);
+      this.j = Integer.parseInt(str1);
+      this.i = Long.parseLong(str2);
       return;
     }
     catch (Throwable localThrowable)
@@ -65,43 +62,43 @@ public class GameMsgStrangerRules
       label141:
       break label131;
     }
-    this.c = 0;
-    this.jdField_a_of_type_Long = 0L;
+    this.j = 0;
+    this.i = 0L;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    if (!GameMsgUtil.a(this.jdField_a_of_type_Long)) {
+    if (!GameMsgUtil.a(this.i)) {
       return true;
     }
-    if (this.c < this.jdField_b_of_type_Int) {
+    if (this.j < this.f) {
       return true;
     }
     QLog.i("GameMsgRules.Stranger", 1, "Fail to action!");
     return false;
   }
   
-  public void b()
+  public void c()
   {
-    long l = System.currentTimeMillis();
-    int i = this.c;
-    if (!GameMsgUtil.a(this.jdField_a_of_type_Long)) {
-      i = 0;
+    int k = this.j;
+    if (!GameMsgUtil.a(this.i)) {
+      k = 0;
     }
-    i += 1;
-    this.c = i;
-    this.jdField_a_of_type_Long = l;
+    k += 1;
+    this.j = k;
+    long l = System.currentTimeMillis();
+    this.i = l;
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(k);
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(l);
     localObject = ((StringBuilder)localObject).toString();
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_b_of_type_JavaLangString, (String)localObject).commit();
+    this.e.edit().putString(this.g, (String)localObject).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.utils.GameMsgStrangerRules
  * JD-Core Version:    0.7.0.1
  */

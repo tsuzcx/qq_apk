@@ -19,8 +19,8 @@ class LbsFilterStatusManager$3
       LbsFilterStatusManager.a(this.a);
       return;
     }
-    if (LbsFilterStatusManager.a(this.a) != null) {
-      LbsFilterStatusManager.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+    if (LbsFilterStatusManager.b(this.a) != null) {
+      LbsFilterStatusManager.b(this.a).post(new LbsFilterStatusManager.3.1(this));
     }
   }
   
@@ -34,7 +34,7 @@ class LbsFilterStatusManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.view.LbsFilterStatusManager.3
  * JD-Core Version:    0.7.0.1
  */

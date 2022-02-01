@@ -22,19 +22,19 @@ class RIJListViewGroupHandlerClick$2
       if (paramPBRepeatMessageField.size() <= 0) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRefreshTime)) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRefreshTime, Integer.valueOf(this.jdField_a_of_type_Int + 1));
+      if (this.a.containsKey(this.b.mRefreshTime)) {
+        this.a.put(this.b.mRefreshTime, Integer.valueOf(this.c + 1));
       } else {
-        this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRefreshTime, Integer.valueOf(1));
+        this.a.put(this.b.mRefreshTime, Integer.valueOf(1));
       }
-      SharedPreUtils.a("search_word_prefix_show_times", SharedPreUtils.b("search_word_prefix_show_times") + 1L);
+      SharedPreUtils.a("search_word_prefix_show_times", SharedPreUtils.k("search_word_prefix_show_times") + 1L);
       ThreadManager.getUIHandler().post(new RIJListViewGroupHandlerClick.2.1(this, paramPBRepeatMessageField, paramPBStringField));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.click.RIJListViewGroupHandlerClick.2
  * JD-Core Version:    0.7.0.1
  */

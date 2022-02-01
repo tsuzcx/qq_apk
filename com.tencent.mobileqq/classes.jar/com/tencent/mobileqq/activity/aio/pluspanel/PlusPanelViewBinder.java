@@ -26,8 +26,8 @@ public class PlusPanelViewBinder
   
   public void a(LifecycleOwner paramLifecycleOwner, PlusPanelViewModel paramPlusPanelViewModel, PanelAdapter paramPanelAdapter, EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup)
   {
-    paramPlusPanelViewModel.a().observe(paramLifecycleOwner, new PlusPanelViewBinder.1(this, paramPanelAdapter, paramEmoticonPagerRadioGroup));
-    paramPlusPanelViewModel.b().observe(paramLifecycleOwner, new PlusPanelViewBinder.2(this, paramPanelAdapter));
+    paramPlusPanelViewModel.b().observe(paramLifecycleOwner, new PlusPanelViewBinder.1(this, paramPanelAdapter, paramEmoticonPagerRadioGroup));
+    paramPlusPanelViewModel.c().observe(paramLifecycleOwner, new PlusPanelViewBinder.2(this, paramPanelAdapter));
     paramPlusPanelViewModel.a(paramLifecycleOwner);
   }
   
@@ -59,14 +59,14 @@ public class PlusPanelViewBinder
     j = paramPanelAdapter.getCount();
     while (i < j)
     {
-      paramPanelAdapter.a(i);
+      paramPanelAdapter.b(i);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewBinder
  * JD-Core Version:    0.7.0.1
  */

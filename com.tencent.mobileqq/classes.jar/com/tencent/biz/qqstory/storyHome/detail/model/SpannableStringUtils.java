@@ -3,6 +3,7 @@ package com.tencent.biz.qqstory.storyHome.detail.model;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -65,13 +66,13 @@ public class SpannableStringUtils
     Object localObject2 = paramCommentEntry.content;
     paramCommentLikeFeedItem = null;
     if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-      paramCommentLikeFeedItem = EmotionCodecUtils.b(paramCommentEntry.content);
+      paramCommentLikeFeedItem = EmotionCodecUtils.c(paramCommentEntry.content);
     }
     int i;
     if (paramBoolean) {
-      i = 2131714101;
+      i = 2131911632;
     } else {
-      i = 2131714104;
+      i = 2131911635;
     }
     String str4 = HardCodeUtil.a(i);
     Object localObject1 = "";
@@ -160,7 +161,7 @@ public class SpannableStringUtils
     }
     label506:
     paramCommentLikeFeedItem.append(" ").append("I");
-    a(paramCommentLikeFeedItem, paramCommentLikeFeedItem.length() - 1, paramCommentLikeFeedItem.length(), 2130846691, 15, 15, 3);
+    a(paramCommentLikeFeedItem, paramCommentLikeFeedItem.length() - 1, paramCommentLikeFeedItem.length(), 2130848243, 15, 15, 3);
     return paramCommentLikeFeedItem;
   }
   
@@ -168,11 +169,11 @@ public class SpannableStringUtils
   {
     Object localObject = paramCommentEntry.content;
     if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-      paramCommentEntry = EmotionCodecUtils.b(paramCommentEntry.content);
+      paramCommentEntry = EmotionCodecUtils.c(paramCommentEntry.content);
     } else {
       paramCommentEntry = null;
     }
-    String str = HardCodeUtil.a(2131714102);
+    String str = HardCodeUtil.a(2131911633);
     if (paramCommentEntry != null)
     {
       localObject = new StringBuilder();
@@ -227,9 +228,9 @@ public class SpannableStringUtils
     Object localObject4 = paramCommentEntry.content;
     paramCommentLikeFeedItem = str1;
     if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-      paramCommentLikeFeedItem = EmotionCodecUtils.b(paramCommentEntry.content);
+      paramCommentLikeFeedItem = EmotionCodecUtils.c(paramCommentEntry.content);
     }
-    String str6 = HardCodeUtil.a(2131714107);
+    String str6 = HardCodeUtil.a(2131911638);
     if ((bool ^ true)) {
       str1 = "V";
     } else {
@@ -343,14 +344,14 @@ public class SpannableStringUtils
     if (paramCommentEntry.status == 2)
     {
       paramClickNickCallback.append(" ");
-      paramCommentLikeFeedItem = HardCodeUtil.a(2131714106);
+      paramCommentLikeFeedItem = HardCodeUtil.a(2131911637);
       i = paramClickNickCallback.length();
       j = paramCommentLikeFeedItem.length();
       paramClickNickCallback.append(paramCommentLikeFeedItem);
       b(paramClickNickCallback, i, j + i, -48606);
       i = paramClickNickCallback.length();
       paramClickNickCallback.append("[icon]  ");
-      a(paramClickNickCallback, i, i + 8, 2130848920);
+      a(paramClickNickCallback, i, i + 8, 2130850603);
     }
     return paramClickNickCallback;
   }
@@ -522,10 +523,16 @@ public class SpannableStringUtils
   
   public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
+    a(paramSpannableStringBuilder, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, 1.0F);
+  }
+  
+  public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, @FloatRange(from=0.0D, to=1.0D) float paramFloat)
+  {
     paramInt4 = UIUtils.a(BaseApplicationImpl.getContext(), paramInt4);
     paramInt5 = UIUtils.a(BaseApplicationImpl.getContext(), paramInt5);
     Object localObject = BaseApplicationImpl.getContext().getResources().getDrawable(paramInt3);
     ((Drawable)localObject).setBounds(0, 0, paramInt4, paramInt5);
+    ((Drawable)localObject).setAlpha((int)(paramFloat * 255.0F));
     if (paramInt6 == 1) {
       localObject = new ImageSpan((Drawable)localObject, 1);
     } else if (paramInt6 == 0) {
@@ -578,7 +585,7 @@ public class SpannableStringUtils
   
   private static SpannableStringBuilder b(@NonNull CommentEntry paramCommentEntry)
   {
-    String str = HardCodeUtil.a(2131714103);
+    String str = HardCodeUtil.a(2131911634);
     int i = Integer.parseInt(paramCommentEntry.content);
     paramCommentEntry = new StringBuilder();
     paramCommentEntry.append(str);
@@ -600,19 +607,19 @@ public class SpannableStringUtils
             if (i != 5) {
               return paramCommentEntry;
             }
-            a(paramCommentEntry, j, k, 2130844609, 37, 16);
+            a(paramCommentEntry, j, k, 2130845982, 37, 16);
             return paramCommentEntry;
           }
-          a(paramCommentEntry, j, k, 2130844610, 37, 16);
+          a(paramCommentEntry, j, k, 2130845983, 37, 16);
           return paramCommentEntry;
         }
-        a(paramCommentEntry, j, k, 2130844612, 37, 16);
+        a(paramCommentEntry, j, k, 2130845985, 37, 16);
         return paramCommentEntry;
       }
-      a(paramCommentEntry, j, k, 2130844613, 37, 16);
+      a(paramCommentEntry, j, k, 2130845986, 37, 16);
       return paramCommentEntry;
     }
-    a(paramCommentEntry, j, k, 2130844611, 37, 16);
+    a(paramCommentEntry, j, k, 2130845984, 37, 16);
     return paramCommentEntry;
   }
   
@@ -642,9 +649,9 @@ public class SpannableStringUtils
     }
     String str3 = paramCommentEntry.content;
     if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-      localObject3 = EmotionCodecUtils.b(paramCommentEntry.content);
+      localObject3 = EmotionCodecUtils.c(paramCommentEntry.content);
     }
-    String str2 = HardCodeUtil.a(2131714095);
+    String str2 = HardCodeUtil.a(2131911626);
     Object localObject2 = localObject4;
     if (i != 0) {
       localObject2 = "V";
@@ -715,14 +722,14 @@ public class SpannableStringUtils
     }
     if (android.text.TextUtils.isEmpty(paramContext))
     {
-      paramContext = HardCodeUtil.a(2131714096);
+      paramContext = HardCodeUtil.a(2131911627);
     }
     else
     {
       paramCommentLikeFeedItem = new StringBuilder();
       paramCommentLikeFeedItem.append(" @");
       paramCommentLikeFeedItem.append(paramContext);
-      paramCommentLikeFeedItem.append(HardCodeUtil.a(2131714096));
+      paramCommentLikeFeedItem.append(HardCodeUtil.a(2131911627));
       paramContext = paramCommentLikeFeedItem.toString();
     }
     if ((bool ^ true)) {
@@ -758,7 +765,7 @@ public class SpannableStringUtils
     }
     j = i + 1;
     if (i != j) {
-      a((SpannableStringBuilder)localObject, i, j, 2130846691, 15, 15, 3);
+      a((SpannableStringBuilder)localObject, i, j, 2130848243, 15, 15, 3);
     }
     return localObject;
   }
@@ -773,14 +780,14 @@ public class SpannableStringUtils
     }
     if (android.text.TextUtils.isEmpty(paramCommentEntry))
     {
-      paramCommentEntry = HardCodeUtil.a(2131714100);
+      paramCommentEntry = HardCodeUtil.a(2131911631);
     }
     else
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("@");
       ((StringBuilder)localObject).append(paramCommentEntry);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131714098));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131911629));
       paramCommentEntry = ((StringBuilder)localObject).toString();
     }
     Object localObject = new StringBuilder();
@@ -790,7 +797,7 @@ public class SpannableStringUtils
     i = paramCommentEntry.length();
     int j = i + 1;
     if (i != j) {
-      a((SpannableStringBuilder)localObject, i, j, 2130846691, 15, 15);
+      a((SpannableStringBuilder)localObject, i, j, 2130848243, 15, 15);
     }
     return localObject;
   }
@@ -805,9 +812,9 @@ public class SpannableStringUtils
     Object localObject2 = paramCommentEntry.content;
     localObject1 = null;
     if (com.tencent.mobileqq.text.TextUtils.hasSysEmotion(paramCommentEntry.content)) {
-      localObject1 = EmotionCodecUtils.b(paramCommentEntry.content);
+      localObject1 = EmotionCodecUtils.c(paramCommentEntry.content);
     }
-    String str4 = HardCodeUtil.a(2131714099);
+    String str4 = HardCodeUtil.a(2131911630);
     if ((bool ^ true)) {
       paramCommentLikeFeedItem = "V";
     } else {
@@ -860,7 +867,7 @@ public class SpannableStringUtils
     String str2 = a(paramCommentEntry.authorRole, (QQUserUIItem)localObject1);
     localObject1 = a((QQUserUIItem)localObject1);
     boolean bool = android.text.TextUtils.isEmpty((CharSequence)localObject1);
-    String str3 = HardCodeUtil.a(2131714105);
+    String str3 = HardCodeUtil.a(2131911636);
     if ((bool ^ true)) {
       paramCommentLikeFeedItem = "V";
     } else {
@@ -904,19 +911,19 @@ public class SpannableStringUtils
             if (i != 5) {
               return localObject2;
             }
-            a((SpannableStringBuilder)localObject2, j, k, 2130844609, 37, 16, 3);
+            a((SpannableStringBuilder)localObject2, j, k, 2130845982, 37, 16, 3);
             return localObject2;
           }
-          a((SpannableStringBuilder)localObject2, j, k, 2130844610, 37, 16, 3);
+          a((SpannableStringBuilder)localObject2, j, k, 2130845983, 37, 16, 3);
           return localObject2;
         }
-        a((SpannableStringBuilder)localObject2, j, k, 2130844612, 37, 16, 3);
+        a((SpannableStringBuilder)localObject2, j, k, 2130845985, 37, 16, 3);
         return localObject2;
       }
-      a((SpannableStringBuilder)localObject2, j, k, 2130844613, 37, 16, 3);
+      a((SpannableStringBuilder)localObject2, j, k, 2130845986, 37, 16, 3);
       return localObject2;
     }
-    a((SpannableStringBuilder)localObject2, j, k, 2130844611, 37, 16, 3);
+    a((SpannableStringBuilder)localObject2, j, k, 2130845984, 37, 16, 3);
     return localObject2;
   }
 }

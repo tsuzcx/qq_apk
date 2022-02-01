@@ -1,26 +1,39 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
 class NearbyProfileEditPanel$15
-  implements TextWatcher
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   NearbyProfileEditPanel$15(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onGlobalLayout()
   {
-    NearbyUtils.a(this.a.e, 40);
+    Object localObject = new Rect();
+    this.a.F.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.F.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
+    if (i <= 0) {
+      return;
+    }
+    int j = this.a.C.getScrollY();
+    localObject = this.a.F.getCurrentFocus();
+    if ((localObject != null) && ((localObject instanceof EditText)) && (((View)localObject).getParent() != null))
+    {
+      int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
+      int m = this.a.C.getMeasuredHeight();
+      this.a.C.smoothScrollBy(0, k + i - m - j);
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.15
  * JD-Core Version:    0.7.0.1
  */

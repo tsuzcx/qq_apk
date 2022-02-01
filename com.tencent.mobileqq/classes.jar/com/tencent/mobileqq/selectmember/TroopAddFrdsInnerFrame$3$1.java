@@ -20,24 +20,24 @@ class TroopAddFrdsInnerFrame$3$1
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onUpdateTroopGetMemberList:");
         int i;
-        if (this.jdField_a_of_type_JavaUtilList == null) {
+        if (this.a == null) {
           i = 0;
         } else {
-          i = this.jdField_a_of_type_JavaUtilList.size();
+          i = this.a.size();
         }
         ((StringBuilder)localObject).append(i);
         QLog.d("TroopAddFrdsInnerFrame", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopAddFrdsInnerFrame$3.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity;
+      Object localObject = this.b.a.f;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("last_update_time");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopAddFrdsInnerFrame$3.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.b.a.h.getCurrentAccountUin());
       localObject = ((SelectMemberActivity)localObject).getSharedPreferences(localStringBuilder.toString(), 4).edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_last_update_time");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopAddFrdsInnerFrame$3.a.b);
+      localStringBuilder.append(this.b.a.c);
       ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), System.currentTimeMillis()).commit();
-      TroopAddFrdsInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopAddFrdsInnerFrame$3.a, this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopAddFrdsInnerFrame$3.a.b, this.jdField_a_of_type_JavaUtilList);
+      TroopAddFrdsInnerFrame.a(this.b.a, this.b.a.c, this.a);
       return;
     }
     catch (Exception localException)
@@ -55,7 +55,7 @@ class TroopAddFrdsInnerFrame$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopAddFrdsInnerFrame.3.1
  * JD-Core Version:    0.7.0.1
  */

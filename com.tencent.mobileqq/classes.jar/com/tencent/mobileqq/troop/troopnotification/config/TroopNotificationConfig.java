@@ -2,14 +2,14 @@ package com.tencent.mobileqq.troop.troopnotification.config;
 
 public class TroopNotificationConfig
 {
-  public int a;
-  public long a;
   public boolean a;
   public int b;
-  public long b;
-  public int c;
+  public long c;
   public int d;
   public int e;
+  public long f;
+  public int g;
+  public int h;
   
   public TroopNotificationConfig()
   {
@@ -20,25 +20,25 @@ public class TroopNotificationConfig
   public static TroopNotificationConfig a(String paramString)
   {
     // Byte code:
-    //   0: new 24	java/lang/StringBuilder
+    //   0: new 27	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 28	java/lang/StringBuilder:<init>	()V
     //   7: astore 14
     //   9: aload 14
-    //   11: ldc 27
-    //   13: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   11: ldc 30
+    //   13: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: pop
     //   17: aload 14
     //   19: aload_0
-    //   20: invokevirtual 31	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: pop
-    //   24: ldc 33
+    //   24: ldc 36
     //   26: iconst_1
     //   27: aload 14
-    //   29: invokevirtual 37	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 42	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   29: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokestatic 45	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   35: aload_0
-    //   36: invokestatic 48	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   36: invokestatic 51	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   39: ifeq +5 -> 44
     //   42: aconst_null
     //   43: areturn
@@ -46,53 +46,53 @@ public class TroopNotificationConfig
     //   45: lstore 9
     //   47: iconst_0
     //   48: istore 13
-    //   50: new 50	org/json/JSONObject
+    //   50: new 53	org/json/JSONObject
     //   53: dup
     //   54: aload_0
-    //   55: invokespecial 53	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   55: invokespecial 56	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   58: astore_0
     //   59: aload_0
-    //   60: ldc 55
+    //   60: ldc 58
     //   62: iconst_0
-    //   63: invokevirtual 59	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   63: invokevirtual 62	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   66: istore_1
     //   67: aload_0
-    //   68: ldc 61
+    //   68: ldc 64
     //   70: iconst_0
-    //   71: invokevirtual 59	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   71: invokevirtual 62	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   74: istore_2
     //   75: aload_0
-    //   76: ldc 63
+    //   76: ldc 66
     //   78: lconst_0
-    //   79: invokevirtual 67	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   79: invokevirtual 70	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
     //   82: lstore 7
     //   84: aload_0
-    //   85: ldc 69
-    //   87: invokevirtual 72	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   85: ldc 72
+    //   87: invokevirtual 75	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   90: istore_3
     //   91: aload_0
-    //   92: ldc 74
+    //   92: ldc 77
     //   94: iconst_0
-    //   95: invokevirtual 59	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   95: invokevirtual 62	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   98: istore 4
     //   100: lload 9
     //   102: lstore 11
     //   104: aload_0
-    //   105: ldc 76
+    //   105: ldc 79
     //   107: lconst_0
-    //   108: invokevirtual 67	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   108: invokevirtual 70	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
     //   111: lstore 9
     //   113: lload 9
     //   115: lstore 11
     //   117: aload_0
-    //   118: ldc 78
+    //   118: ldc 81
     //   120: sipush 300
-    //   123: invokevirtual 59	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   123: invokevirtual 62	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   126: istore 5
     //   128: aload_0
-    //   129: ldc 80
+    //   129: ldc 83
     //   131: iconst_0
-    //   132: invokevirtual 59	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   132: invokevirtual 62	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   135: istore 6
     //   137: goto +57 -> 194
     //   140: astore_0
@@ -125,12 +125,12 @@ public class TroopNotificationConfig
     //   184: iconst_0
     //   185: istore 5
     //   187: aload_0
-    //   188: invokevirtual 83	org/json/JSONException:printStackTrace	()V
+    //   188: invokevirtual 86	org/json/JSONException:printStackTrace	()V
     //   191: iconst_0
     //   192: istore 6
     //   194: new 2	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig
     //   197: dup
-    //   198: invokespecial 84	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:<init>	()V
+    //   198: invokespecial 87	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:<init>	()V
     //   201: astore_0
     //   202: iload_1
     //   203: iconst_1
@@ -139,28 +139,28 @@ public class TroopNotificationConfig
     //   208: istore 13
     //   210: aload_0
     //   211: iload 13
-    //   213: putfield 86	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:jdField_a_of_type_Boolean	Z
+    //   213: putfield 89	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:a	Z
     //   216: aload_0
     //   217: iload_2
-    //   218: putfield 88	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:jdField_a_of_type_Int	I
+    //   218: putfield 91	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:b	I
     //   221: aload_0
     //   222: lload 7
-    //   224: putfield 90	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:jdField_a_of_type_Long	J
+    //   224: putfield 93	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:c	J
     //   227: aload_0
     //   228: iload_3
-    //   229: putfield 92	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:jdField_b_of_type_Int	I
+    //   229: putfield 95	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:d	I
     //   232: aload_0
     //   233: iload 4
-    //   235: putfield 94	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:c	I
+    //   235: putfield 97	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:e	I
     //   238: aload_0
     //   239: lload 9
-    //   241: putfield 96	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:jdField_b_of_type_Long	J
+    //   241: putfield 99	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:f	J
     //   244: aload_0
     //   245: iload 5
-    //   247: putfield 98	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:d	I
+    //   247: putfield 101	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:g	I
     //   250: aload_0
     //   251: iload 6
-    //   253: putfield 100	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:e	I
+    //   253: putfield 103	com/tencent/mobileqq/troop/troopnotification/config/TroopNotificationConfig:h	I
     //   256: aload_0
     //   257: areturn
     // Local variable table:
@@ -191,42 +191,42 @@ public class TroopNotificationConfig
   
   private void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_a_of_type_Long = 60L;
-    this.jdField_b_of_type_Int = 100;
-    this.c = 10;
-    this.jdField_b_of_type_Long = 1209600L;
-    this.d = 300;
-    this.e = 0;
+    this.a = true;
+    this.b = 100;
+    this.c = 60L;
+    this.d = 100;
+    this.e = 10;
+    this.f = 1209600L;
+    this.g = 300;
+    this.h = 0;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TroopNotificationConfig{isGlobalOpen=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", totalRemindCntOfOneWeak=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", intervelShowTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", totalRemindCntOfOneDay=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", todoGroupVerifyMsgLevel=");
     localStringBuilder.append(this.c);
-    localStringBuilder.append(", cleanExpiredTime=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", maxFetchMsgCnt=");
+    localStringBuilder.append(", totalRemindCntOfOneDay=");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(", showUnreadBk=");
+    localStringBuilder.append(", todoGroupVerifyMsgLevel=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(", cleanExpiredTime=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", maxFetchMsgCnt=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", showUnreadBk=");
+    localStringBuilder.append(this.h);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.config.TroopNotificationConfig
  * JD-Core Version:    0.7.0.1
  */

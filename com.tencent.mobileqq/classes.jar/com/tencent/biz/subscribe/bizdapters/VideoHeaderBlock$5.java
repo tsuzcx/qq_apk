@@ -19,8 +19,8 @@ class VideoHeaderBlock$5
   
   public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    if (VideoHeaderBlock.a(this.a) != null) {
-      VideoHeaderBlock.a(this.a).onTouchEvent(paramMotionEvent);
+    if (VideoHeaderBlock.d(this.a) != null) {
+      VideoHeaderBlock.d(this.a).onTouchEvent(paramMotionEvent);
     }
   }
 }

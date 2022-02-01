@@ -52,6 +52,7 @@ import org.json.JSONObject;
 
 public class Utils
 {
+  public static final int BUSINESS_ID_TEMP_GAME_MSG = 123;
   public static final int BUSINESS_ID_TEMP_MSG_BOC = 111;
   public static final int BUSINNESS_ID_ALBUM = 5;
   public static final int BUSINNESS_ID_ANIME = 18;
@@ -117,20 +118,20 @@ public class Utils
     if (!TextUtils.isEmpty(paramString2)) {
       paramQQAppInterface = paramString2;
     } else if (paramInt == 1) {
-      paramQQAppInterface = paramContext.getResources().getString(2131696035, new Object[] { paramString1 });
+      paramQQAppInterface = paramContext.getResources().getString(2131893797, new Object[] { paramString1 });
     } else {
-      paramQQAppInterface = paramContext.getString(2131696031, new Object[] { paramString1 });
+      paramQQAppInterface = paramContext.getString(2131893793, new Object[] { paramString1 });
     }
     int i;
     if (paramInt == 1) {
-      i = 2131696027;
+      i = 2131893789;
     } else {
-      i = 2131696029;
+      i = 2131893791;
     }
     if (paramInt == 1) {
-      paramInt = 2131696032;
+      paramInt = 2131893794;
     } else {
-      paramInt = 2131696030;
+      paramInt = 2131893792;
     }
     return DialogUtil.a((BaseActivity)paramContext, paramQQAppInterface, i, paramInt, (DialogInterface.OnClickListener)localObject, paramHandler);
   }
@@ -142,17 +143,17 @@ public class Utils
     paramTroopMemberApiClient = new TextView(paramContext);
     paramTroopMemberApiClient.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     paramTroopMemberApiClient.setTextSize(14.0F);
-    paramTroopMemberApiClient.setTextColor(paramContext.getResources().getColor(2131165473));
+    paramTroopMemberApiClient.setTextColor(paramContext.getResources().getColor(2131165794));
     paramTroopMemberApiClient.setGravity(1);
     paramTroopMemberApiClient.setPadding((int)DisplayUtils.a(paramContext, 15.0F), (int)DisplayUtils.a(paramContext, 30.0F), (int)DisplayUtils.a(paramContext, 15.0F), (int)DisplayUtils.a(paramContext, 15.0F));
     if (paramInt == 1)
     {
-      localQQCustomDialog.setPositiveButton(2131696027, paramBusinessObserver);
-      localQQCustomDialog.setNegativeButton(2131696032, paramBusinessObserver);
+      localQQCustomDialog.setPositiveButton(2131893789, paramBusinessObserver);
+      localQQCustomDialog.setNegativeButton(2131893794, paramBusinessObserver);
       if (paramString2 != null) {
         paramContext = paramString2;
       } else {
-        paramContext = paramContext.getResources().getString(2131696035, new Object[] { paramString1 });
+        paramContext = paramContext.getResources().getString(2131893797, new Object[] { paramString1 });
       }
     }
     else
@@ -160,10 +161,10 @@ public class Utils
       if (paramString2 != null) {
         paramContext = paramString2;
       } else {
-        paramContext = paramContext.getString(2131696031, new Object[] { paramString1 });
+        paramContext = paramContext.getString(2131893793, new Object[] { paramString1 });
       }
-      localQQCustomDialog.setNegativeButton(2131696030, paramBusinessObserver);
-      localQQCustomDialog.setPositiveButton(2131696029, paramBusinessObserver);
+      localQQCustomDialog.setNegativeButton(2131893792, paramBusinessObserver);
+      localQQCustomDialog.setPositiveButton(2131893791, paramBusinessObserver);
     }
     paramTroopMemberApiClient.setText(paramContext);
     localQQCustomDialog.addView(paramTroopMemberApiClient);
@@ -301,7 +302,7 @@ public class Utils
       paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
       paramHashMap.putExtra("key_business", 7);
       break;
-      if (QFileAssistantUtils.a())
+      if (QFileAssistantUtils.b())
       {
         QFileAssistantUtils.a(paramContext, null);
         paramHashMap = (HashMap<String, Object>)localObject;
@@ -392,8 +393,8 @@ public class Utils
     }
     paramHashMap = new Intent();
     paramHashMap.putExtra("from", "Conversation");
-    paramHashMap.putExtra("leftViewText", paramContext.getString(2131690706));
-    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131690706));
+    paramHashMap.putExtra("leftViewText", paramContext.getString(2131887625));
+    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131887625));
     paramHashMap.setFlags(67108864);
     paramHashMap.setFlags(276824064);
     RouteUtils.a(paramContext, paramHashMap, "/qrscan/scanner");
@@ -416,7 +417,7 @@ public class Utils
     } else {
       l = 0L;
     }
-    paramHashMap = QQStoryMemoriesActivity.a(paramContext, 24, l);
+    paramHashMap = QQStoryMemoriesActivity.b(paramContext, 24, l);
     paramHashMap.addFlags(268435456);
     paramContext.startActivity(paramHashMap);
     return true;
@@ -486,7 +487,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.lebasearch.Utils
  * JD-Core Version:    0.7.0.1
  */

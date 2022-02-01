@@ -11,12 +11,12 @@ import com.tencent.widget.FitSystemWindowsRelativeLayout.OnInterceptTouchEventLi
 class MultiAIOItemFragment$3
   implements FitSystemWindowsRelativeLayout.OnInterceptTouchEventListener
 {
-  float jdField_a_of_type_Float;
-  final int jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment.getBaseActivity()));
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
+  final int a = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.g.getBaseActivity()));
+  int b;
   float c;
   float d;
+  float e;
+  float f;
   
   MultiAIOItemFragment$3(MultiAIOItemFragment paramMultiAIOItemFragment) {}
   
@@ -38,7 +38,7 @@ class MultiAIOItemFragment$3
         }
         else
         {
-          i = this.jdField_b_of_type_Int;
+          i = this.b;
           bool1 = bool2;
           if (i != -1)
           {
@@ -52,22 +52,22 @@ class MultiAIOItemFragment$3
               else
               {
                 float f2 = MotionEventCompat.getX(paramMotionEvent, i);
-                f1 = Math.abs(f2 - this.d);
-                float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.jdField_a_of_type_Float;
+                f1 = Math.abs(f2 - this.f);
+                float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.c;
                 float f4 = Math.abs(f3);
-                i = this.jdField_a_of_type_Int;
+                i = this.a;
                 if ((f4 > i) && (f4 * 0.5F > f1))
                 {
                   if (f3 > 0.0F) {
-                    f1 = this.c + i;
+                    f1 = this.e + i;
                   } else {
-                    f1 = this.c - i;
+                    f1 = this.e - i;
                   }
-                  this.jdField_a_of_type_Float = f1;
-                  this.jdField_b_of_type_Float = f2;
+                  this.c = f1;
+                  this.d = f2;
                   bool2 = bool3;
                 }
-                else if (f1 > this.jdField_a_of_type_Int)
+                else if (f1 > this.a)
                 {
                   bool2 = true;
                 }
@@ -84,12 +84,12 @@ class MultiAIOItemFragment$3
                     bool2 = bool3;
                   }
                 }
-                localObject = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+                localObject = MultiAIOItemFragment.b(this.g);
                 bool1 = bool2;
                 if (localObject != null)
                 {
                   bool1 = bool2;
-                  if (((MultiAIOBaseViewPager)localObject).a() == MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) {}
+                  if (((MultiAIOBaseViewPager)localObject).getCurrentItem() == MultiAIOItemFragment.c(this.g)) {}
                 }
               }
             }
@@ -103,12 +103,12 @@ class MultiAIOItemFragment$3
     else
     {
       f1 = paramMotionEvent.getX();
+      this.f = f1;
       this.d = f1;
-      this.jdField_b_of_type_Float = f1;
       f1 = paramMotionEvent.getY();
+      this.e = f1;
       this.c = f1;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+      this.b = MotionEventCompat.getPointerId(paramMotionEvent, 0);
       bool1 = bool2;
     }
     if (QLog.isColorLevel())
@@ -125,7 +125,7 @@ class MultiAIOItemFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOItemFragment.3
  * JD-Core Version:    0.7.0.1
  */

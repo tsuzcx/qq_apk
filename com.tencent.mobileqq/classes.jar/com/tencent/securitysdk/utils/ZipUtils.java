@@ -7,27 +7,6 @@ import java.nio.ByteOrder;
 
 abstract class ZipUtils
 {
-  private static int a(ByteBuffer paramByteBuffer)
-  {
-    a(paramByteBuffer);
-    int i = paramByteBuffer.capacity();
-    if (i < 22) {
-      return -1;
-    }
-    int j = i - 22;
-    int k = Math.min(j, 65535);
-    i = 0;
-    while (i < k)
-    {
-      int m = j - i;
-      if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
-        return m;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
   private static int a(ByteBuffer paramByteBuffer, int paramInt)
   {
     return paramByteBuffer.getShort(paramInt) & 0xFFFF;
@@ -35,13 +14,8 @@ abstract class ZipUtils
   
   static long a(ByteBuffer paramByteBuffer)
   {
-    a(paramByteBuffer);
-    return a(paramByteBuffer, paramByteBuffer.position() + 16);
-  }
-  
-  private static long a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
+    d(paramByteBuffer);
+    return b(paramByteBuffer, paramByteBuffer.position() + 16);
   }
   
   static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
@@ -69,7 +43,7 @@ abstract class ZipUtils
       l -= localByteBuffer.capacity();
       paramRandomAccessFile.seek(l);
       paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
-      paramInt = a(localByteBuffer);
+      paramInt = c(localByteBuffer);
       if (paramInt == -1) {
         return null;
       }
@@ -82,14 +56,6 @@ abstract class ZipUtils
     paramRandomAccessFile.append("maxCommentSize: ");
     paramRandomAccessFile.append(paramInt);
     throw new IllegalArgumentException(paramRandomAccessFile.toString());
-  }
-  
-  private static void a(ByteBuffer paramByteBuffer)
-  {
-    if (paramByteBuffer.order() == ByteOrder.LITTLE_ENDIAN) {
-      return;
-    }
-    throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
   }
   
   private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
@@ -107,7 +73,7 @@ abstract class ZipUtils
   
   static void a(ByteBuffer paramByteBuffer, long paramLong)
   {
-    a(paramByteBuffer);
+    d(paramByteBuffer);
     a(paramByteBuffer, paramByteBuffer.position() + 16, paramLong);
   }
   
@@ -127,13 +93,47 @@ abstract class ZipUtils
   
   static long b(ByteBuffer paramByteBuffer)
   {
-    a(paramByteBuffer);
-    return a(paramByteBuffer, paramByteBuffer.position() + 12);
+    d(paramByteBuffer);
+    return b(paramByteBuffer, paramByteBuffer.position() + 12);
+  }
+  
+  private static long b(ByteBuffer paramByteBuffer, int paramInt)
+  {
+    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
+  }
+  
+  private static int c(ByteBuffer paramByteBuffer)
+  {
+    d(paramByteBuffer);
+    int i = paramByteBuffer.capacity();
+    if (i < 22) {
+      return -1;
+    }
+    int j = i - 22;
+    int k = Math.min(j, 65535);
+    i = 0;
+    while (i < k)
+    {
+      int m = j - i;
+      if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
+        return m;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
+  private static void d(ByteBuffer paramByteBuffer)
+  {
+    if (paramByteBuffer.order() == ByteOrder.LITTLE_ENDIAN) {
+      return;
+    }
+    throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ZipUtils
  * JD-Core Version:    0.7.0.1
  */

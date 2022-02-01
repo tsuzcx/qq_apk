@@ -2,8 +2,7 @@ package com.tencent.mobileqq.kandian.biz.hippy.module;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.kandian.glue.router.api.IRIJJumpUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
@@ -26,7 +25,7 @@ final class TKDCommentBizModule$openMiniApp$1
       String str = this.$params.getString("miniAppUrl");
       if (!TextUtils.isEmpty((CharSequence)str))
       {
-        ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToMiniApp((Context)localObject, str, 2106, null);
+        RIJJumpUtils.a((Context)localObject, str, 2106, null);
         return;
       }
       QLog.e("TKDCommentBizModule", 1, "openMiniApp --> scheme is empty");
@@ -35,7 +34,7 @@ final class TKDCommentBizModule$openMiniApp$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDCommentBizModule.openMiniApp.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class LottieAnimation$2
   
   public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) == null)
+    if (LottieAnimation.c(this.b) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("LottieAnimation", 2, "LottieComposition.Factory.fromInputStream mLottieView is null!");
@@ -25,8 +25,8 @@ class LottieAnimation$2
     }
     try
     {
-      if (this.jdField_a_of_type_JavaIoFileInputStream != null) {
-        this.jdField_a_of_type_JavaIoFileInputStream.close();
+      if (this.a != null) {
+        this.a.close();
       }
     }
     catch (IOException localIOException)
@@ -35,10 +35,10 @@ class LottieAnimation$2
     }
     if (paramLottieComposition != null)
     {
-      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).setComposition(paramLottieComposition);
-      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).loop(false);
-      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).setVisibility(0);
-      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).playAnimation();
+      LottieAnimation.c(this.b).setComposition(paramLottieComposition);
+      LottieAnimation.c(this.b).loop(false);
+      LottieAnimation.c(this.b).setVisibility(0);
+      LottieAnimation.c(this.b).playAnimation();
       if (QLog.isColorLevel()) {
         QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream succ");
       }
@@ -48,14 +48,14 @@ class LottieAnimation$2
       if (QLog.isColorLevel()) {
         QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream composition null");
       }
-      LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation.c();
+      LottieAnimation.d(this.b).clear();
+      this.b.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.LottieAnimation.2
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,10 @@ class VoicePlayer$1
         this.a = VoicePlayer.b(this.this$0);
         return;
       }
-      if (VoicePlayer.a(this.this$0) == null) {
+      if (VoicePlayer.c(this.this$0) == null) {
         return;
       }
-      int k = VoicePlayer.c(this.this$0);
+      int k = VoicePlayer.d(this.this$0);
       int j = VoicePlayer.b(this.this$0);
       int m = this.a;
       int i = j;
@@ -54,12 +54,12 @@ class VoicePlayer$1
       if (i > this.a) {
         this.a = i;
       }
-      Object localObject = VoicePlayer.a(this.this$0).iterator();
+      Object localObject = VoicePlayer.e(this.this$0).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((VoicePlayer.VoicePlayerListener)((Iterator)localObject).next()).a(VoicePlayer.a(this.this$0), j, i);
+        ((VoicePlayer.VoicePlayerListener)((Iterator)localObject).next()).a(VoicePlayer.f(this.this$0), j, i);
       }
-      if (VoicePlayer.a(this.this$0) != null) {
-        VoicePlayer.a(this.this$0).postDelayed(this, 50L);
+      if (VoicePlayer.g(this.this$0) != null) {
+        VoicePlayer.g(this.this$0).postDelayed(this, 50L);
       }
       return;
     }
@@ -68,7 +68,7 @@ class VoicePlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VoicePlayer.1
  * JD-Core Version:    0.7.0.1
  */

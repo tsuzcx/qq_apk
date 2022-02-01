@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class StatableSpanTextView
   extends TextView
 {
-  ITopic jdField_a_of_type_ComTencentMobileqqTextITopic;
-  boolean jdField_a_of_type_Boolean;
-  private ImageSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
-  private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+  ITopic a;
+  boolean b;
+  private ImageSpan[] c;
+  private StatableSpanTextView.StatableForegroundColorSpan[] d;
   
   public StatableSpanTextView(Context paramContext)
   {
@@ -40,7 +40,7 @@ public class StatableSpanTextView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
+    Object localObject1 = this.c;
     int j = 0;
     Object localObject2;
     int k;
@@ -48,7 +48,7 @@ public class StatableSpanTextView
     if (localObject1 != null)
     {
       localObject1 = getDrawableState();
-      localObject2 = this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
+      localObject2 = this.c;
       k = localObject2.length;
       i = 0;
       while (i < k)
@@ -60,10 +60,10 @@ public class StatableSpanTextView
         i += 1;
       }
     }
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null)
+    if (this.d != null)
     {
       localObject1 = getDrawableState();
-      localObject2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+      localObject2 = this.d;
       k = localObject2.length;
       i = j;
       while (i < k)
@@ -96,19 +96,19 @@ public class StatableSpanTextView
           paramMotionEvent = (ITopic[])((Spannable)localObject).getSpans(j, j, ITopic.class);
           if (paramMotionEvent.length != 0)
           {
-            this.jdField_a_of_type_Boolean = false;
+            this.b = false;
             paramMotionEvent = paramMotionEvent[0];
             if (i == 0)
             {
               paramMotionEvent.setPressed(this, true);
-              this.jdField_a_of_type_ComTencentMobileqqTextITopic = paramMotionEvent;
+              this.a = paramMotionEvent;
               return true;
             }
-            localObject = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+            localObject = this.a;
             if (localObject != null)
             {
               ((ITopic)localObject).setPressed(this, false);
-              this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
+              this.a = null;
             }
             if (i == 1) {
               paramMotionEvent.onClick(this);
@@ -117,22 +117,22 @@ public class StatableSpanTextView
           }
           if (i == 1)
           {
-            if (this.jdField_a_of_type_Boolean)
+            if (this.b)
             {
-              this.jdField_a_of_type_Boolean = false;
+              this.b = false;
               performClick();
             }
           }
           else if (i == 0) {
-            this.jdField_a_of_type_Boolean = true;
+            this.b = true;
           } else if (i == 3) {
-            this.jdField_a_of_type_Boolean = false;
+            this.b = false;
           }
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqTextITopic;
+          paramMotionEvent = this.a;
           if (paramMotionEvent != null)
           {
             paramMotionEvent.setPressed(this, false);
-            this.jdField_a_of_type_ComTencentMobileqqTextITopic = null;
+            this.a = null;
           }
         }
       }
@@ -145,11 +145,11 @@ public class StatableSpanTextView
     if ((paramCharSequence != null) && ((paramCharSequence instanceof Spannable)))
     {
       Spannable localSpannable = (Spannable)paramCharSequence;
-      this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = ((ImageSpan[])localSpannable.getSpans(0, localSpannable.length(), ImageSpan.class));
-      if (this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan != null)
+      this.c = ((ImageSpan[])localSpannable.getSpans(0, localSpannable.length(), ImageSpan.class));
+      if (this.c != null)
       {
         ArrayList localArrayList = new ArrayList();
-        ImageSpan[] arrayOfImageSpan = this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
+        ImageSpan[] arrayOfImageSpan = this.c;
         int j = arrayOfImageSpan.length;
         int i = 0;
         while (i < j)
@@ -162,27 +162,27 @@ public class StatableSpanTextView
         }
         if (localArrayList.size() > 0)
         {
-          this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = new ImageSpan[localArrayList.size()];
-          this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = ((ImageSpan[])localArrayList.toArray(this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan));
+          this.c = new ImageSpan[localArrayList.size()];
+          this.c = ((ImageSpan[])localArrayList.toArray(this.c));
         }
         else
         {
-          this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = null;
+          this.c = null;
         }
       }
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = ((StatableSpanTextView.StatableForegroundColorSpan[])localSpannable.getSpans(0, localSpannable.length(), StatableSpanTextView.StatableForegroundColorSpan.class));
+      this.d = ((StatableSpanTextView.StatableForegroundColorSpan[])localSpannable.getSpans(0, localSpannable.length(), StatableSpanTextView.StatableForegroundColorSpan.class));
     }
     else
     {
-      this.jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan = null;
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
+      this.c = null;
+      this.d = null;
     }
     super.setText(paramCharSequence, paramBufferType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.StatableSpanTextView
  * JD-Core Version:    0.7.0.1
  */

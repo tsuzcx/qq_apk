@@ -12,14 +12,14 @@ class PublicAccountChatPie$42
   
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a().a))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a, paramString, (byte)3));
+    if ((paramBoolean) && (paramString.equals(this.b.aE().b))) {
+      this.a.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.b.d, paramString, (byte)3));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.42
  * JD-Core Version:    0.7.0.1
  */

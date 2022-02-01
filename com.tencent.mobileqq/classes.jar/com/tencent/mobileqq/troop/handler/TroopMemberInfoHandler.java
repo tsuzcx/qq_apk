@@ -432,11 +432,6 @@ public class TroopMemberInfoHandler
     //   228	237	416	java/lang/Exception
   }
   
-  protected String a()
-  {
-    return "TroopMemberInfoHandler";
-  }
-  
   public void a(String paramString)
   {
     try
@@ -556,6 +551,11 @@ public class TroopMemberInfoHandler
     return false;
   }
   
+  protected String dv_()
+  {
+    return "TroopMemberInfoHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.a == null)
@@ -588,7 +588,7 @@ public class TroopMemberInfoHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -616,7 +616,7 @@ public class TroopMemberInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopMemberInfoHandler
  * JD-Core Version:    0.7.0.1
  */

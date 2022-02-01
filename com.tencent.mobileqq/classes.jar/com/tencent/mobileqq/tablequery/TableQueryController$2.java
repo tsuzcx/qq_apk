@@ -42,8 +42,8 @@ class TableQueryController$2
       if ((TableQueryController.a) && (!TableQueryController.b) && (TableQueryController.a(this.a) != null)) {
         TableQueryController.a(this.a).a(localQueryData);
       }
-      if ((TableQueryController.a) && ((TableQueryController.c) || (TableQueryController.a()))) {
-        TableQueryController.a(this.a).a((QQAppInterface)TableQueryController.a(this.a).get(), paramIntent.table, 2, paramIntent.mainAction, paramIntent.actionName, paramIntent.subAction);
+      if ((TableQueryController.a) && ((TableQueryController.c) || (TableQueryController.e()))) {
+        TableQueryController.c(this.a).a((QQAppInterface)TableQueryController.b(this.a).get(), paramIntent.table, 2, paramIntent.mainAction, paramIntent.actionName, paramIntent.subAction);
       }
       paramContext = new StringBuilder();
       paramContext.append(paramIntent.actionName);
@@ -62,14 +62,14 @@ class TableQueryController$2
       int i = paramIntent.getIntExtra("key_plugin_state", -1);
       if (1 == i)
       {
-        this.a.b();
+        this.a.c();
         paramContext = new TableQueryController.2.1(this);
         ThreadManager.getSubThreadHandler().postDelayed(paramContext, 2000L);
         return;
       }
       if (i == 0)
       {
-        this.a.c();
+        this.a.d();
         TableQueryController.a = false;
       }
     }
@@ -77,7 +77,7 @@ class TableQueryController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class SubscribeDraftAdapter$1
     if (paramBoolean)
     {
       if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
-        this.a.a((ArrayList)paramVarArgs[0]);
+        this.a.b((ArrayList)paramVarArgs[0]);
       }
     }
     else {

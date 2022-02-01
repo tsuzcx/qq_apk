@@ -22,16 +22,16 @@ import java.util.TreeMap;
 
 public class PromotionResDownload
 {
-  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
-  final String jdField_a_of_type_JavaLangString;
-  ArrayList<PromotionResDownload.DownloadListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  final String a;
+  PromotionConfigInfo b;
+  ArrayList<PromotionResDownload.DownloadListener> c = new ArrayList();
   
   public PromotionResDownload(long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARPromotionResDownload_");
     localStringBuilder.append(paramLong);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.a = localStringBuilder.toString();
   }
   
   static PromotionConfigInfo.ZipItem a(boolean paramBoolean, PromotionConfigInfo paramPromotionConfigInfo)
@@ -48,7 +48,7 @@ public class PromotionResDownload
           break;
         }
         localObject2 = (PromotionConfigInfo.PromotionItem)((Map.Entry)localIterator.next()).getValue();
-      } while (PromotionUtil.a(((PromotionConfigInfo.PromotionItem)localObject2).jdField_b_of_type_Long));
+      } while (PromotionUtil.a(((PromotionConfigInfo.PromotionItem)localObject2).b));
       localObject2 = a(paramBoolean, paramPromotionConfigInfo.mUin, (PromotionConfigInfo.PromotionItem)localObject2);
       localObject1 = localObject2;
     } while (localObject2 == null);
@@ -71,36 +71,36 @@ public class PromotionResDownload
   
   public static PromotionConfigInfo.ZipItem a(boolean paramBoolean, String paramString, PromotionConfigInfo.PromotionItem paramPromotionItem)
   {
-    paramPromotionItem = paramPromotionItem.a().entrySet().iterator();
+    paramPromotionItem = paramPromotionItem.b().entrySet().iterator();
     while (paramPromotionItem.hasNext())
     {
       PromotionConfigInfo.ZipItem localZipItem = (PromotionConfigInfo.ZipItem)((Map.Entry)paramPromotionItem.next()).getValue();
       String str;
       StringBuilder localStringBuilder;
-      if (localZipItem.jdField_c_of_type_Int == -1)
+      if (localZipItem.k == -1)
       {
         if (QLog.isDevelopLevel())
         {
-          str = PromotionUtil.jdField_a_of_type_JavaLangString;
+          str = PromotionUtil.a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("isPromotionResReady, 已经下载失败了, id[");
-          localStringBuilder.append(localZipItem.e);
+          localStringBuilder.append(localZipItem.f);
           localStringBuilder.append("], index[");
-          localStringBuilder.append(localZipItem.jdField_a_of_type_Int);
+          localStringBuilder.append(localZipItem.a);
           localStringBuilder.append("]");
           QLog.w(str, 1, localStringBuilder.toString());
         }
       }
-      else if ((paramBoolean) && (localZipItem.jdField_b_of_type_Int == 0))
+      else if ((paramBoolean) && (localZipItem.g == 0))
       {
         if (QLog.isDevelopLevel())
         {
-          str = PromotionUtil.jdField_a_of_type_JavaLangString;
+          str = PromotionUtil.a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("isPromotionResReady, 无需预下载, id[");
-          localStringBuilder.append(localZipItem.e);
+          localStringBuilder.append(localZipItem.f);
           localStringBuilder.append("], index[");
-          localStringBuilder.append(localZipItem.jdField_a_of_type_Int);
+          localStringBuilder.append(localZipItem.a);
           localStringBuilder.append("]");
           QLog.w(str, 1, localStringBuilder.toString());
         }
@@ -112,37 +112,27 @@ public class PromotionResDownload
     return null;
   }
   
-  private ArrayList<PromotionResDownload.DownloadListener> a()
-  {
-    ArrayList localArrayList2 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      localArrayList2.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-      return localArrayList2;
-    }
-  }
-  
   private void a(String paramString1, boolean paramBoolean, AppInterface paramAppInterface, String paramString2, int paramInt, PromotionConfigInfo.ZipItem paramZipItem)
   {
-    if ((a() != null) && (paramZipItem != null))
+    if ((b() != null) && (paramZipItem != null))
     {
       paramString2 = a(paramAppInterface, paramZipItem);
       if (paramString2 == null) {
         return;
       }
-      paramZipItem.jdField_b_of_type_Long = System.currentTimeMillis();
+      paramZipItem.m = System.currentTimeMillis();
       Object localObject1 = (IPreDownloadController)paramAppInterface.getRuntimeService(IPreDownloadController.class, "");
-      ((IPreDownloadController)localObject1).cancelPreDownload(paramZipItem.jdField_a_of_type_JavaLangString);
-      ((IPreDownloadController)localObject1).preDownloadSuccess(paramZipItem.jdField_a_of_type_JavaLangString, 0L);
-      localObject1 = paramZipItem.jdField_c_of_type_JavaLangString;
+      ((IPreDownloadController)localObject1).cancelPreDownload(paramZipItem.b);
+      ((IPreDownloadController)localObject1).preDownloadSuccess(paramZipItem.b, 0L);
+      localObject1 = paramZipItem.d;
       if (a(paramAppInterface.getAccount(), paramZipItem))
       {
-        paramAppInterface = paramZipItem.jdField_a_of_type_JavaLangObject;
+        paramAppInterface = paramZipItem.j;
         if (!paramBoolean) {}
         try
         {
-          paramZipItem.jdField_a_of_type_Boolean = false;
-          paramAppInterface = this.jdField_a_of_type_JavaLangString;
+          paramZipItem.h = false;
+          paramAppInterface = this.a;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("innerDownloadRes[");
           ((StringBuilder)localObject2).append(paramString1);
@@ -155,19 +145,19 @@ public class PromotionResDownload
           ((StringBuilder)localObject2).append("]");
           QLog.w(paramAppInterface, 1, ((StringBuilder)localObject2).toString());
           paramZipItem.a(2);
-          paramString2.a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, 100, (String)localObject1, paramZipItem);
+          paramString2.a(paramZipItem.b, paramZipItem.c, 100, (String)localObject1, paramZipItem);
           return;
         }
         finally {}
       }
-      Object localObject2 = paramZipItem.jdField_a_of_type_JavaLangObject;
+      Object localObject2 = paramZipItem.j;
       if (!paramBoolean) {}
       try
       {
-        paramZipItem.jdField_a_of_type_Boolean = false;
-        if (paramZipItem.jdField_c_of_type_Int == 1)
+        paramZipItem.h = false;
+        if (paramZipItem.k == 1)
         {
-          paramAppInterface = this.jdField_a_of_type_JavaLangString;
+          paramAppInterface = this.a;
           paramString2 = new StringBuilder();
           paramString2.append("innerDownloadRes[");
           paramString2.append(paramString1);
@@ -183,8 +173,8 @@ public class PromotionResDownload
         else
         {
           paramZipItem.a(1);
-          boolean bool = ((ResDownloadManager)paramAppInterface.getManager(QQManagerFactory.ARMAP_RES_DOWNLOAD)).a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, ".zip", true, 5, paramZipItem, paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener);
-          paramAppInterface = this.jdField_a_of_type_JavaLangString;
+          boolean bool = ((ResDownloadManager)paramAppInterface.getManager(QQManagerFactory.ARMAP_RES_DOWNLOAD)).a(paramZipItem.b, paramZipItem.c, ".zip", true, 5, paramZipItem, paramZipItem.i);
+          paramAppInterface = this.a;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("innerDownloadRes[");
           ((StringBuilder)localObject1).append(paramString1);
@@ -197,7 +187,7 @@ public class PromotionResDownload
           ((StringBuilder)localObject1).append("]");
           QLog.w(paramAppInterface, 1, ((StringBuilder)localObject1).toString());
           if ((!bool) && (paramString2 != null)) {
-            paramString2.a(paramZipItem.jdField_a_of_type_JavaLangString, paramZipItem.jdField_b_of_type_JavaLangString, -4, null, paramZipItem);
+            paramString2.a(paramZipItem.b, paramZipItem.c, -4, null, paramZipItem);
           }
         }
         return;
@@ -209,7 +199,7 @@ public class PromotionResDownload
   
   static boolean a(PromotionConfigInfo.ZipItem paramZipItem)
   {
-    if (paramZipItem.jdField_a_of_type_Int == 0)
+    if (paramZipItem.a == 0)
     {
       Object localObject = PromotionPath.a(paramZipItem);
       StringBuilder localStringBuilder = new StringBuilder();
@@ -267,37 +257,42 @@ public class PromotionResDownload
     }
     else
     {
-      int i = paramZipItem.jdField_a_of_type_Int;
+      int i = paramZipItem.a;
     }
     return true;
   }
   
   public static boolean a(String paramString, PromotionConfigInfo.ZipItem paramZipItem)
   {
-    String str = paramZipItem.d;
-    if (ARPromotionConfigSP.a(paramString, paramZipItem.e, paramZipItem.jdField_a_of_type_Int, paramZipItem.jdField_b_of_type_JavaLangString, str)) {
+    String str = paramZipItem.e;
+    if (ARPromotionConfigSP.a(paramString, paramZipItem.f, paramZipItem.a, paramZipItem.c, str)) {
       return a(paramZipItem);
     }
     return false;
   }
   
-  PromotionConfigInfo a()
+  private ArrayList<PromotionResDownload.DownloadListener> d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+    ArrayList localArrayList2 = new ArrayList();
+    synchronized (this.c)
+    {
+      localArrayList2.addAll(this.c);
+      return localArrayList2;
+    }
   }
   
   ResDownloadManager.IResDownloadListener a(AppInterface paramAppInterface, PromotionConfigInfo.ZipItem paramZipItem)
   {
     try
     {
-      if (paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener != null)
+      if (paramZipItem.i != null)
       {
-        paramAppInterface = paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener;
+        paramAppInterface = paramZipItem.i;
         return paramAppInterface;
       }
-      int i = paramZipItem.jdField_a_of_type_Int;
-      paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = new PromotionResDownload.2(this, paramAppInterface, paramZipItem.e, i);
-      paramAppInterface = paramZipItem.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener;
+      int i = paramZipItem.a;
+      paramZipItem.i = new PromotionResDownload.2(this, paramAppInterface, paramZipItem.f, i);
+      paramAppInterface = paramZipItem.i;
       return paramAppInterface;
     }
     finally {}
@@ -305,15 +300,15 @@ public class PromotionResDownload
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+    this.b = null;
   }
   
   void a(AppInterface paramAppInterface, boolean paramBoolean, String paramString, int paramInt)
   {
-    Object localObject1 = a();
+    Object localObject1 = b();
     if (localObject1 == null)
     {
-      paramAppInterface = this.jdField_a_of_type_JavaLangString;
+      paramAppInterface = this.a;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("requestPreDownload, ConfigInfo为空, callByPreDownload[");
       ((StringBuilder)localObject1).append(paramBoolean);
@@ -327,7 +322,7 @@ public class PromotionResDownload
     }
     if (!(paramAppInterface instanceof QQAppInterface))
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, 不在主进程");
+      QLog.w(this.a, 1, "requestPreDownload, 不在主进程");
       return;
     }
     Object localObject2 = ((PromotionConfigInfo)localObject1).getItem(paramString);
@@ -337,7 +332,7 @@ public class PromotionResDownload
       return;
     }
     localObject1 = a(paramBoolean, (PromotionConfigInfo)localObject1, (PromotionConfigInfo.PromotionItem)localObject2);
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestPreDownload, expectID[");
     localStringBuilder.append(paramString);
@@ -351,57 +346,57 @@ public class PromotionResDownload
     QLog.w(str, 1, localStringBuilder.toString());
     if (localObject1 == null)
     {
-      paramAppInterface = ((PromotionConfigInfo.PromotionItem)localObject2).a().entrySet().iterator();
+      paramAppInterface = ((PromotionConfigInfo.PromotionItem)localObject2).b().entrySet().iterator();
       while (paramAppInterface.hasNext()) {
-        a(paramString, ((PromotionConfigInfo.ZipItem)((Map.Entry)paramAppInterface.next()).getValue()).jdField_a_of_type_Int, 100);
+        a(paramString, ((PromotionConfigInfo.ZipItem)((Map.Entry)paramAppInterface.next()).getValue()).a, 100);
       }
       return;
     }
-    paramString = ((PromotionConfigInfo.ZipItem)localObject1).jdField_b_of_type_JavaLangString;
+    paramString = ((PromotionConfigInfo.ZipItem)localObject1).c;
     if (paramBoolean)
     {
-      if (((PromotionConfigInfo.ZipItem)localObject1).jdField_b_of_type_Int != 0)
+      if (((PromotionConfigInfo.ZipItem)localObject1).g != 0)
       {
         localObject2 = new RunnableTask((QQAppInterface)paramAppInterface, paramString, new PromotionResDownload.1(this, paramBoolean, paramAppInterface, (PromotionConfigInfo.ZipItem)localObject1), 0L);
-        paramBoolean = ((IPreDownloadController)paramAppInterface.getRuntimeService(IPreDownloadController.class, "")).requestPreDownload(10074, "prd", paramString, 0, ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_JavaLangString, ((PromotionConfigInfo.ZipItem)localObject1).jdField_c_of_type_JavaLangString, ((PromotionConfigInfo.ZipItem)localObject1).jdField_b_of_type_Int, 0, true, (AbsPreDownloadTask)localObject2);
-        ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
-        paramAppInterface = this.jdField_a_of_type_JavaLangString;
+        paramBoolean = ((IPreDownloadController)paramAppInterface.getRuntimeService(IPreDownloadController.class, "")).requestPreDownload(10074, "prd", paramString, 0, ((PromotionConfigInfo.ZipItem)localObject1).b, ((PromotionConfigInfo.ZipItem)localObject1).d, ((PromotionConfigInfo.ZipItem)localObject1).g, 0, true, (AbsPreDownloadTask)localObject2);
+        ((PromotionConfigInfo.ZipItem)localObject1).l = System.currentTimeMillis();
+        paramAppInterface = this.a;
         paramString = new StringBuilder();
         paramString.append("requestPreDownload, 预下载申请调度, ret[");
         paramString.append(paramBoolean);
         paramString.append("], index[");
-        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int);
+        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).a);
         paramString.append("]");
         QLog.w(paramAppInterface, 1, paramString.toString());
         return;
       }
-      if (QQAudioHelper.c())
+      if (QQAudioHelper.f())
       {
-        paramAppInterface = this.jdField_a_of_type_JavaLangString;
+        paramAppInterface = this.a;
         paramString = new StringBuilder();
         paramString.append("requestPreDownload, 无需预下载，id[");
-        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).e);
+        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).f);
         paramString.append("], index[");
-        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int);
+        paramString.append(((PromotionConfigInfo.ZipItem)localObject1).a);
         paramString.append("]");
         QLog.w(paramAppInterface, 1, paramString.toString());
       }
     }
     else
     {
-      a(HardCodeUtil.a(2131708508), paramBoolean, paramAppInterface, ((PromotionConfigInfo.ZipItem)localObject1).e, ((PromotionConfigInfo.ZipItem)localObject1).jdField_a_of_type_Int, (PromotionConfigInfo.ZipItem)localObject1);
+      a(HardCodeUtil.a(2131906293), paramBoolean, paramAppInterface, ((PromotionConfigInfo.ZipItem)localObject1).f, ((PromotionConfigInfo.ZipItem)localObject1).a, (PromotionConfigInfo.ZipItem)localObject1);
     }
   }
   
   void a(PromotionConfigInfo paramPromotionConfigInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+    this.b = paramPromotionConfigInfo;
     if (paramPromotionConfigInfo != null)
     {
       paramPromotionConfigInfo = paramPromotionConfigInfo.operationInfos.entrySet().iterator();
       while (paramPromotionConfigInfo.hasNext())
       {
-        Iterator localIterator = ((PromotionConfigInfo.PromotionItem)((Map.Entry)paramPromotionConfigInfo.next()).getValue()).a().entrySet().iterator();
+        Iterator localIterator = ((PromotionConfigInfo.PromotionItem)((Map.Entry)paramPromotionConfigInfo.next()).getValue()).b().entrySet().iterator();
         while (localIterator.hasNext()) {
           ((PromotionConfigInfo.ZipItem)((Map.Entry)localIterator.next()).getValue()).a();
         }
@@ -411,9 +406,9 @@ public class PromotionResDownload
   
   public void a(PromotionResDownload.DownloadListener paramDownloadListener)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramDownloadListener);
+      this.c.add(paramDownloadListener);
       return;
     }
   }
@@ -424,34 +419,39 @@ public class PromotionResDownload
     BusinessCommonConfig.sendDownloadResultNotify(2, paramString, paramInt1, paramInt2);
   }
   
-  void b()
+  PromotionConfigInfo b()
   {
-    Iterator localIterator = a().iterator();
-    while (localIterator.hasNext()) {
-      ((PromotionResDownload.DownloadListener)localIterator.next()).a();
-    }
+    return this.b;
   }
   
   public void b(PromotionResDownload.DownloadListener paramDownloadListener)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramDownloadListener);
+      this.c.remove(paramDownloadListener);
       return;
     }
   }
   
   void b(String paramString, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = a().iterator();
+    Iterator localIterator = d().iterator();
     while (localIterator.hasNext()) {
       ((PromotionResDownload.DownloadListener)localIterator.next()).a(paramString, paramInt1, paramInt2);
+    }
+  }
+  
+  void c()
+  {
+    Iterator localIterator = d().iterator();
+    while (localIterator.hasNext()) {
+      ((PromotionResDownload.DownloadListener)localIterator.next()).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionResDownload
  * JD-Core Version:    0.7.0.1
  */

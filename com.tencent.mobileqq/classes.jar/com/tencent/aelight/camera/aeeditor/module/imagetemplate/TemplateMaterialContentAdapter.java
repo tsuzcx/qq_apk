@@ -20,18 +20,18 @@ public class TemplateMaterialContentAdapter
   
   protected MaterialContentAdapter.ContentItemVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MaterialContentAdapter.ContentItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064318605, paramViewGroup, false));
+    return new MaterialContentAdapter.ContentItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064056483, paramViewGroup, false));
   }
   
   public void a(MaterialContentAdapter.ContentItemVH paramContentItemVH, int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
     super.a(paramContentItemVH, paramInt, paramMetaMaterial);
-    AEReportUtils.g(paramMetaMaterial.id);
+    AEReportUtils.f(paramMetaMaterial.id);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.imagetemplate.TemplateMaterialContentAdapter
  * JD-Core Version:    0.7.0.1
  */

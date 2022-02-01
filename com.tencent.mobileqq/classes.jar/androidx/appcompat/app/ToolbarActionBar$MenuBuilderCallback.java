@@ -2,6 +2,7 @@ package androidx.appcompat.app;
 
 import android.view.MenuItem;
 import android.view.Window.Callback;
+import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuBuilder.Callback;
 import androidx.appcompat.widget.DecorToolbar;
@@ -11,12 +12,12 @@ final class ToolbarActionBar$MenuBuilderCallback
 {
   ToolbarActionBar$MenuBuilderCallback(ToolbarActionBar paramToolbarActionBar) {}
   
-  public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
+  public boolean onMenuItemSelected(@NonNull MenuBuilder paramMenuBuilder, @NonNull MenuItem paramMenuItem)
   {
     return false;
   }
   
-  public void onMenuModeChange(MenuBuilder paramMenuBuilder)
+  public void onMenuModeChange(@NonNull MenuBuilder paramMenuBuilder)
   {
     if (this.this$0.mWindowCallback != null)
     {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.network;
 
-import com.tencent.mobileqq.dinifly.L;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 
 public enum FileExtension
 {
@@ -29,7 +29,7 @@ public enum FileExtension
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Unable to find correct extension for ");
     ((StringBuilder)localObject).append(paramString);
-    L.warn(((StringBuilder)localObject).toString());
+    Logger.warning(((StringBuilder)localObject).toString());
     return JSON;
   }
   
@@ -48,7 +48,7 @@ public enum FileExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.network.FileExtension
  * JD-Core Version:    0.7.0.1
  */

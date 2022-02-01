@@ -50,24 +50,24 @@ public class AppletsObserver
       while (paramList.hasNext())
       {
         Object localObject3 = (AppletsSetting)paramList.next();
-        Object localObject4 = ((AppletsSetting)localObject3).a;
+        Object localObject4 = ((AppletsSetting)localObject3).b;
         paramBoolean = true;
-        if ((localObject4 != null) && (((AppletsSetting)localObject3).a.size() > 0) && (((AppletsSetting)localObject3).a.get(0) != null) && (((AppletItem)((AppletsSetting)localObject3).a.get(0)).a() == 1L))
+        if ((localObject4 != null) && (((AppletsSetting)localObject3).b.size() > 0) && (((AppletsSetting)localObject3).b.get(0) != null) && (((AppletItem)((AppletsSetting)localObject3).b.get(0)).a() == 1L))
         {
-          localObject3 = (AppletItem)((AppletsSetting)localObject3).a.get(0);
-          if (((AppletItem)localObject3).b() != 1) {
+          localObject3 = (AppletItem)((AppletsSetting)localObject3).b.get(0);
+          if (((AppletItem)localObject3).e() != 1) {
             paramBoolean = false;
           }
-          ((AppletsFolderManager)localObject1).a(paramBoolean);
-          onAppletsSettingSwitchChange(((AppletItem)localObject3).b());
+          ((AppletsFolderManager)localObject1).b(paramBoolean);
+          onAppletsSettingSwitchChange(((AppletItem)localObject3).e());
         }
-        else if ((((AppletsSetting)localObject3).a != null) && (((AppletsSetting)localObject3).a.size() > 0))
+        else if ((((AppletsSetting)localObject3).b != null) && (((AppletsSetting)localObject3).b.size() > 0))
         {
-          localObject3 = ((AppletsSetting)localObject3).a.iterator();
+          localObject3 = ((AppletsSetting)localObject3).b.iterator();
           while (((Iterator)localObject3).hasNext())
           {
             localObject4 = (AppletItem)((Iterator)localObject3).next();
-            if ((((AppletItem)localObject4).a() != 1L) && (((AppletItem)localObject4).b() != 1)) {
+            if ((((AppletItem)localObject4).a() != 1L) && (((AppletItem)localObject4).e() != 1)) {
               ((Set)localObject2).add(String.valueOf(((AppletItem)localObject4).a()));
             }
           }
@@ -102,22 +102,22 @@ public class AppletsObserver
       while (paramList.hasNext())
       {
         localObject2 = (AppletItem)paramList.next();
-        int i = ((AppletItem)localObject2).b();
+        int i = ((AppletItem)localObject2).e();
         if (((AppletItem)localObject2).a() == 1L)
         {
           paramBoolean = true;
           if (i != 1) {
             paramBoolean = false;
           }
-          ((AppletsFolderManager)localObject1).a(paramBoolean);
+          ((AppletsFolderManager)localObject1).b(paramBoolean);
           onAppletsSettingSwitchChange(i);
         }
         else if (localObject1 != null)
         {
           if (i == 0) {
-            ((AppletsFolderManager)localObject1).c(String.valueOf(((AppletItem)localObject2).a()));
+            ((AppletsFolderManager)localObject1).e(String.valueOf(((AppletItem)localObject2).a()));
           } else {
-            ((AppletsFolderManager)localObject1).d(String.valueOf(((AppletItem)localObject2).a()));
+            ((AppletsFolderManager)localObject1).f(String.valueOf(((AppletItem)localObject2).a()));
           }
         }
       }
@@ -154,7 +154,7 @@ public class AppletsObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.AppletsObserver
  * JD-Core Version:    0.7.0.1
  */

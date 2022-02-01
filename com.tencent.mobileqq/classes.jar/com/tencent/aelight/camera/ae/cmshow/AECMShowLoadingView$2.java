@@ -13,10 +13,10 @@ class AECMShowLoadingView$2
   
   private String a()
   {
-    if (!TextUtils.isEmpty(AECMShowLoadingView.a(this.a))) {
-      return AECMShowLoadingView.a(this.a);
+    if (!TextUtils.isEmpty(AECMShowLoadingView.b(this.a))) {
+      return AECMShowLoadingView.b(this.a);
     }
-    return this.a.getContext().getString(2064515310);
+    return this.a.getContext().getString(2064187653);
   }
   
   public void onAnimationCancel(PAGView paramPAGView)
@@ -39,7 +39,7 @@ class AECMShowLoadingView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowLoadingView.2
  * JD-Core Version:    0.7.0.1
  */

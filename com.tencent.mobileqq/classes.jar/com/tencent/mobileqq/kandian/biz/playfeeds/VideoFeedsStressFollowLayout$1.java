@@ -16,10 +16,10 @@ final class VideoFeedsStressFollowLayout$1
   public final void onClick(View paramView)
   {
     paramView = VideoFeedsStressFollowLayout.a(this.a);
-    if ((paramView != null) && (paramView.p == true)) {
+    if ((paramView != null) && (paramView.al == true)) {
       return;
     }
-    paramView = VideoFeedsStressFollowLayout.a(this.a).iterator();
+    paramView = VideoFeedsStressFollowLayout.b(this.a).iterator();
     while (paramView.hasNext()) {
       ((VideoFeedsStressFollowLayout.OnFollowActionListener)paramView.next()).a(VideoFeedsStressFollowLayout.a(this.a));
     }
@@ -27,7 +27,7 @@ final class VideoFeedsStressFollowLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsStressFollowLayout.1
  * JD-Core Version:    0.7.0.1
  */

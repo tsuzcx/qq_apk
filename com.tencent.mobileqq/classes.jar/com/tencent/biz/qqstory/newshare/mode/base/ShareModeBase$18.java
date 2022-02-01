@@ -10,12 +10,12 @@ class ShareModeBase$18
   
   public void run()
   {
-    this.this$0.a.b(this.a);
+    this.this$0.q.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.18
  * JD-Core Version:    0.7.0.1
  */

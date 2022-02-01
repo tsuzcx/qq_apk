@@ -57,7 +57,7 @@ public final class AskAnonymouslyUtil$Companion
       Intrinsics.checkExpressionValueIsNotNull(paramString2, "MobileQQ.sMobileQQ");
       paramString2 = paramString2.getApplicationContext();
       Intrinsics.checkExpressionValueIsNotNull(paramString2, "MobileQQ.sMobileQQ.applicationContext");
-      paramString1.put("button_txt", paramString2.getResources().getString(2131699158));
+      paramString1.put("button_txt", paramString2.getResources().getString(2131897174));
       paramString1.put("recom_bottom_id", 5);
       paramString2 = paramString1.toString();
       Intrinsics.checkExpressionValueIsNotNull(paramString2, "json.toString()");
@@ -243,7 +243,7 @@ public final class AskAnonymouslyUtil$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AskAnonymouslyUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

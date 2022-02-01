@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ark;
 
 import android.content.Context;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
 
 public abstract interface ArkAdapterItemInterface
 {
   public abstract void attachArkView(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, int paramInt);
   
-  public abstract void clickTail(ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkAppItemBubbleBuilder.Holder paramHolder, Context paramContext);
+  public abstract void clickTail(ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, LinearLayout paramLinearLayout, Context paramContext);
   
   public abstract void destroyContainerByRemove();
   
@@ -18,7 +18,7 @@ public abstract interface ArkAdapterItemInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAdapterItemInterface
  * JD-Core Version:    0.7.0.1
  */

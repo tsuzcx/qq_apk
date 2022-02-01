@@ -22,16 +22,6 @@ public abstract interface IBaseHandler
   @Nullable
   public abstract View a(int paramInt, @Nullable View paramView, @Nullable ViewGroup paramViewGroup);
   
-  @Nullable
-  public abstract IReadInJoyBaseAdapter a();
-  
-  @Nullable
-  public abstract Boolean a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
   public abstract void a(int paramInt1, int paramInt2, @Nullable Intent paramIntent);
   
   public abstract void a(int paramInt, @Nullable List<Long> paramList);
@@ -70,29 +60,39 @@ public abstract interface IBaseHandler
   
   public abstract void a(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2);
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract void b();
+  @Nullable
+  public abstract IReadInJoyBaseAdapter b();
   
   public abstract void b(boolean paramBoolean1, int paramInt, @Nullable List<Long> paramList, boolean paramBoolean2);
   
-  public abstract void c();
+  public abstract void c(int paramInt);
   
-  public abstract int d();
+  public abstract boolean d(int paramInt);
   
-  public abstract void d();
+  public abstract void j();
   
-  public abstract void e();
+  public abstract void k();
   
-  public abstract void f();
+  public abstract void l();
   
-  public abstract void g();
+  public abstract void m();
   
-  public abstract void h();
+  public abstract void n();
+  
+  public abstract void o();
+  
+  @Nullable
+  public abstract Boolean p();
+  
+  public abstract void q();
+  
+  public abstract void r();
+  
+  public abstract int s();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.api.IBaseHandler
  * JD-Core Version:    0.7.0.1
  */

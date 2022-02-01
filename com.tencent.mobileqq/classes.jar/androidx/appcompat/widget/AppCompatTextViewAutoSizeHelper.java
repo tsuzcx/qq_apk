@@ -8,8 +8,6 @@ import android.os.Build.VERSION;
 import android.text.Layout.Alignment;
 import android.text.StaticLayout;
 import android.text.StaticLayout.Builder;
-import android.text.TextDirectionHeuristic;
-import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
 import android.text.method.TransformationMethod;
 import android.util.AttributeSet;
@@ -23,6 +21,7 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.R.styleable;
+import androidx.core.view.ViewCompat;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -49,14 +48,27 @@ class AppCompatTextViewAutoSizeHelper
   private int mAutoSizeTextType = 0;
   private final Context mContext;
   private boolean mHasPresetAutoSizeValues = false;
+  private final AppCompatTextViewAutoSizeHelper.Impl mImpl;
   private boolean mNeedsAutoSizeText = false;
   private TextPaint mTempTextPaint;
+  @NonNull
   private final TextView mTextView;
   
-  AppCompatTextViewAutoSizeHelper(TextView paramTextView)
+  AppCompatTextViewAutoSizeHelper(@NonNull TextView paramTextView)
   {
     this.mTextView = paramTextView;
     this.mContext = this.mTextView.getContext();
+    if (Build.VERSION.SDK_INT >= 29)
+    {
+      this.mImpl = new AppCompatTextViewAutoSizeHelper.Impl29();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      this.mImpl = new AppCompatTextViewAutoSizeHelper.Impl23();
+      return;
+    }
+    this.mImpl = new AppCompatTextViewAutoSizeHelper.Impl();
   }
   
   private static <T> T accessAndReturnWithDefault(@NonNull Object paramObject, @NonNull String paramString, @NonNull T paramT)
@@ -126,29 +138,24 @@ class AppCompatTextViewAutoSizeHelper
   @RequiresApi(23)
   private StaticLayout createStaticLayoutForMeasuring(CharSequence paramCharSequence, Layout.Alignment paramAlignment, int paramInt1, int paramInt2)
   {
-    StaticLayout.Builder localBuilder = StaticLayout.Builder.obtain(paramCharSequence, 0, paramCharSequence.length(), this.mTempTextPaint, paramInt1);
-    paramCharSequence = localBuilder.setAlignment(paramAlignment).setLineSpacing(this.mTextView.getLineSpacingExtra(), this.mTextView.getLineSpacingMultiplier()).setIncludePad(this.mTextView.getIncludeFontPadding()).setBreakStrategy(this.mTextView.getBreakStrategy()).setHyphenationFrequency(this.mTextView.getHyphenationFrequency());
+    paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, 0, paramCharSequence.length(), this.mTempTextPaint, paramInt1);
+    paramAlignment = paramCharSequence.setAlignment(paramAlignment).setLineSpacing(this.mTextView.getLineSpacingExtra(), this.mTextView.getLineSpacingMultiplier()).setIncludePad(this.mTextView.getIncludeFontPadding()).setBreakStrategy(this.mTextView.getBreakStrategy()).setHyphenationFrequency(this.mTextView.getHyphenationFrequency());
     paramInt1 = paramInt2;
     if (paramInt2 == -1) {
       paramInt1 = 2147483647;
     }
-    paramCharSequence.setMaxLines(paramInt1);
+    paramAlignment.setMaxLines(paramInt1);
     try
     {
-      if (Build.VERSION.SDK_INT >= 29) {
-        paramCharSequence = this.mTextView.getTextDirectionHeuristic();
-      } else {
-        paramCharSequence = (TextDirectionHeuristic)invokeAndReturnWithDefault(this.mTextView, "getTextDirectionHeuristic", TextDirectionHeuristics.FIRSTSTRONG_LTR);
-      }
-      localBuilder.setTextDirection(paramCharSequence);
+      this.mImpl.computeAndSetTextDirection(paramCharSequence, this.mTextView);
     }
-    catch (ClassCastException paramCharSequence)
+    catch (ClassCastException paramAlignment)
     {
-      label135:
-      break label135;
+      label103:
+      break label103;
     }
     Log.w("ACTVAutoSizeHelper", "Failed to obtain TextDirectionHeuristic, auto size may be incorrect");
-    return localBuilder.build();
+    return paramCharSequence.build();
   }
   
   private StaticLayout createStaticLayoutForMeasuringPre16(CharSequence paramCharSequence, Layout.Alignment paramAlignment, int paramInt)
@@ -262,42 +269,42 @@ class AppCompatTextViewAutoSizeHelper
   }
   
   /* Error */
-  private static <T> T invokeAndReturnWithDefault(@NonNull Object paramObject, @NonNull String paramString, @NonNull T paramT)
+  static <T> T invokeAndReturnWithDefault(@NonNull Object paramObject, @NonNull String paramString, @NonNull T paramT)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 339	androidx/appcompat/widget/AppCompatTextViewAutoSizeHelper:getTextViewMethod	(Ljava/lang/String;)Ljava/lang/reflect/Method;
+    //   1: invokestatic 337	androidx/appcompat/widget/AppCompatTextViewAutoSizeHelper:getTextViewMethod	(Ljava/lang/String;)Ljava/lang/reflect/Method;
     //   4: aload_0
     //   5: iconst_0
     //   6: anewarray 4	java/lang/Object
-    //   9: invokevirtual 343	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   9: invokevirtual 341	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   12: astore_0
     //   13: aload_0
     //   14: areturn
     //   15: astore_0
     //   16: goto +47 -> 63
     //   19: astore_0
-    //   20: new 102	java/lang/StringBuilder
+    //   20: new 121	java/lang/StringBuilder
     //   23: dup
-    //   24: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   24: invokespecial 122	java/lang/StringBuilder:<init>	()V
     //   27: astore_3
     //   28: aload_3
-    //   29: ldc_w 345
-    //   32: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc_w 343
+    //   32: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_3
     //   37: aload_1
-    //   38: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: pop
     //   42: aload_3
-    //   43: ldc_w 337
-    //   46: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: ldc_w 334
+    //   46: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: pop
     //   50: ldc 15
     //   52: aload_3
-    //   53: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   56: aload_0
-    //   57: invokestatic 121	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   57: invokestatic 140	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   60: pop
     //   61: aload_2
     //   62: areturn
@@ -496,14 +503,8 @@ class AppCompatTextViewAutoSizeHelper
         if (this.mTextView.getMeasuredWidth() <= 0) {
           return;
         }
-        boolean bool;
-        if (Build.VERSION.SDK_INT >= 29) {
-          bool = this.mTextView.isHorizontallyScrollable();
-        } else {
-          bool = ((Boolean)invokeAndReturnWithDefault(this.mTextView, "getHorizontallyScrolling", Boolean.valueOf(false))).booleanValue();
-        }
         int i;
-        if (bool) {
+        if (this.mImpl.isHorizontallyScrollable(this.mTextView)) {
           i = 1048576;
         } else {
           i = this.mTextView.getMeasuredWidth() - this.mTextView.getTotalPaddingLeft() - this.mTextView.getTotalPaddingRight();
@@ -592,41 +593,43 @@ class AppCompatTextViewAutoSizeHelper
     return (supportsAutoSizeText()) && (this.mAutoSizeTextType != 0);
   }
   
-  void loadFromAttributes(AttributeSet paramAttributeSet, int paramInt)
+  void loadFromAttributes(@Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    paramAttributeSet = this.mContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AppCompatTextView, paramInt, 0);
-    if (paramAttributeSet.hasValue(R.styleable.AppCompatTextView_autoSizeTextType)) {
-      this.mAutoSizeTextType = paramAttributeSet.getInt(R.styleable.AppCompatTextView_autoSizeTextType, 0);
+    TypedArray localTypedArray = this.mContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AppCompatTextView, paramInt, 0);
+    TextView localTextView = this.mTextView;
+    ViewCompat.saveAttributeDataForStyleable(localTextView, localTextView.getContext(), R.styleable.AppCompatTextView, paramAttributeSet, localTypedArray, paramInt, 0);
+    if (localTypedArray.hasValue(R.styleable.AppCompatTextView_autoSizeTextType)) {
+      this.mAutoSizeTextType = localTypedArray.getInt(R.styleable.AppCompatTextView_autoSizeTextType, 0);
     }
     float f1;
-    if (paramAttributeSet.hasValue(R.styleable.AppCompatTextView_autoSizeStepGranularity)) {
-      f1 = paramAttributeSet.getDimension(R.styleable.AppCompatTextView_autoSizeStepGranularity, -1.0F);
+    if (localTypedArray.hasValue(R.styleable.AppCompatTextView_autoSizeStepGranularity)) {
+      f1 = localTypedArray.getDimension(R.styleable.AppCompatTextView_autoSizeStepGranularity, -1.0F);
     } else {
       f1 = -1.0F;
     }
     float f2;
-    if (paramAttributeSet.hasValue(R.styleable.AppCompatTextView_autoSizeMinTextSize)) {
-      f2 = paramAttributeSet.getDimension(R.styleable.AppCompatTextView_autoSizeMinTextSize, -1.0F);
+    if (localTypedArray.hasValue(R.styleable.AppCompatTextView_autoSizeMinTextSize)) {
+      f2 = localTypedArray.getDimension(R.styleable.AppCompatTextView_autoSizeMinTextSize, -1.0F);
     } else {
       f2 = -1.0F;
     }
     float f3;
-    if (paramAttributeSet.hasValue(R.styleable.AppCompatTextView_autoSizeMaxTextSize)) {
-      f3 = paramAttributeSet.getDimension(R.styleable.AppCompatTextView_autoSizeMaxTextSize, -1.0F);
+    if (localTypedArray.hasValue(R.styleable.AppCompatTextView_autoSizeMaxTextSize)) {
+      f3 = localTypedArray.getDimension(R.styleable.AppCompatTextView_autoSizeMaxTextSize, -1.0F);
     } else {
       f3 = -1.0F;
     }
-    if (paramAttributeSet.hasValue(R.styleable.AppCompatTextView_autoSizePresetSizes))
+    if (localTypedArray.hasValue(R.styleable.AppCompatTextView_autoSizePresetSizes))
     {
-      paramInt = paramAttributeSet.getResourceId(R.styleable.AppCompatTextView_autoSizePresetSizes, 0);
+      paramInt = localTypedArray.getResourceId(R.styleable.AppCompatTextView_autoSizePresetSizes, 0);
       if (paramInt > 0)
       {
-        TypedArray localTypedArray = paramAttributeSet.getResources().obtainTypedArray(paramInt);
-        setupAutoSizeUniformPresetSizes(localTypedArray);
-        localTypedArray.recycle();
+        paramAttributeSet = localTypedArray.getResources().obtainTypedArray(paramInt);
+        setupAutoSizeUniformPresetSizes(paramAttributeSet);
+        paramAttributeSet.recycle();
       }
     }
-    paramAttributeSet.recycle();
+    localTypedArray.recycle();
     if (supportsAutoSizeText())
     {
       if (this.mAutoSizeTextType == 1)

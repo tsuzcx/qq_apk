@@ -10,13 +10,13 @@ class ReadInJoyCommentListFragment$7
   public void a(int paramInt)
   {
     if (paramInt != 2) {
-      this.a.d();
+      this.a.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentListFragment.7
  * JD-Core Version:    0.7.0.1
  */

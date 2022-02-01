@@ -28,7 +28,7 @@ public class FavLocalEmoticonsProcessor
     Object localObject1;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -102,7 +102,7 @@ public class FavLocalEmoticonsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.FavLocalEmoticonsProcessor
  * JD-Core Version:    0.7.0.1
  */

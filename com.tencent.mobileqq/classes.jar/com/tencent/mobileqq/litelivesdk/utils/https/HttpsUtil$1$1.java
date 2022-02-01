@@ -9,14 +9,14 @@ class HttpsUtil$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil$1.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil$1.a.a(-1, this.jdField_a_of_type_JavaIoIOException.getMessage());
+    if (this.b.b != null) {
+      this.b.b.a(-1, this.a.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.https.HttpsUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

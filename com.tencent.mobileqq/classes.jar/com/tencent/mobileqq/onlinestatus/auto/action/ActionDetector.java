@@ -37,14 +37,14 @@ public class ActionDetector
       localStringBuilder.append(" curHour: ");
       localStringBuilder.append(j);
       localStringBuilder.append(" begin: ");
-      localStringBuilder.append(Constant.D);
-      localStringBuilder.append(" end: ");
       localStringBuilder.append(Constant.E);
+      localStringBuilder.append(" end: ");
+      localStringBuilder.append(Constant.F);
       QLog.d("ActionDetector", 2, localStringBuilder.toString());
     }
-    if (Constant.E > Constant.D)
+    if (Constant.F > Constant.E)
     {
-      if ((j >= Constant.D) && (j < Constant.E))
+      if ((j >= Constant.E) && (j < Constant.F))
       {
         paramAppRuntime = paramAppRuntime.getOnlineStatus();
         if (QLog.isColorLevel())
@@ -60,7 +60,7 @@ public class ActionDetector
       }
     }
     else {
-      if ((j > Constant.D) || (j < Constant.E)) {
+      if ((j > Constant.E) || (j < Constant.F)) {
         break label242;
       }
     }
@@ -106,7 +106,7 @@ public class ActionDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.action.ActionDetector
  * JD-Core Version:    0.7.0.1
  */

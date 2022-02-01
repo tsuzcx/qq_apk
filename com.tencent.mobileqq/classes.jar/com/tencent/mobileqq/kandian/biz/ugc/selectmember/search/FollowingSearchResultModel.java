@@ -7,49 +7,29 @@ import com.tencent.mobileqq.search.model.ISearchResultModel;
 import com.tencent.mobileqq.search.util.SearchUtils;
 
 public class FollowingSearchResultModel
-  implements ISearchResultModel
+  extends ISearchResultModel
 {
-  private FollowingMember jdField_a_of_type_ComTencentMobileqqKandianRepoFollowFollowingMember;
-  private String jdField_a_of_type_JavaLangString;
+  private FollowingMember a;
+  private String b;
   
   public FollowingSearchResultModel(FollowingMember paramFollowingMember)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowFollowingMember = paramFollowingMember;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public FollowingMember a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowFollowingMember;
+    this.a = paramFollowingMember;
   }
   
   public CharSequence a()
   {
-    return HardCodeUtil.a(2131704771);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowFollowingMember.a().toString();
+    return HardCodeUtil.a(2131902673);
   }
   
   public void a(int paramInt1, int paramInt2) {}
   
   public void a(View paramView) {}
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public boolean a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowFollowingMember.a().contains(paramString);
+    this.b = paramString;
+    return this.a.b().contains(paramString);
   }
   
   public int b()
@@ -57,34 +37,54 @@ public class FollowingSearchResultModel
     return 0;
   }
   
-  public CharSequence b()
+  public String c()
   {
-    return SearchUtils.b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFollowFollowingMember.a(), this.jdField_a_of_type_JavaLangString, 6, true);
+    return this.a.a().toString();
   }
   
-  public String b()
+  public int ck_()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return 0;
   }
   
-  public CharSequence c()
+  public int cl_()
   {
-    return "";
+    return 0;
   }
   
   public CharSequence d()
   {
+    return SearchUtils.b(this.a.b(), this.b, 6, true);
+  }
+  
+  public CharSequence e()
+  {
+    return "";
+  }
+  
+  public CharSequence f()
+  {
     return null;
   }
   
-  public int f_()
+  public String g()
   {
-    return 0;
+    return this.b;
+  }
+  
+  public boolean h()
+  {
+    return false;
+  }
+  
+  public FollowingMember i()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.search.FollowingSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

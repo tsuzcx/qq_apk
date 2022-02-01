@@ -29,50 +29,44 @@ import org.xmlpull.v1.XmlSerializer;
 
 public class HtmlChangeUtil
 {
-  private static String a = "HtmlChangeUtil";
-  public static final HashMap<String, String> a;
-  private static String b = "p";
-  private static String c = "section";
-  private static String d = "strong";
-  private static String e = "i";
-  private static String f = "u";
-  private static String g = "img";
-  private static String h = "video";
-  private static String i = "a";
-  private static String j = "proteus";
-  private static String k = "span";
-  private static String l = "ul";
-  private static String m = "li";
-  private static String n = "ol";
-  private static String o = "blockquote";
-  private static String p = "text-decoration";
-  private static String q = "color";
-  private static String r = "background-color";
+  public static final HashMap<String, String> a = new HashMap();
+  private static String b = "HtmlChangeUtil";
+  private static String c = "p";
+  private static String d = "section";
+  private static String e = "strong";
+  private static String f = "i";
+  private static String g = "u";
+  private static String h = "img";
+  private static String i = "video";
+  private static String j = "a";
+  private static String k = "proteus";
+  private static String l = "span";
+  private static String m = "ul";
+  private static String n = "li";
+  private static String o = "ol";
+  private static String p = "blockquote";
+  private static String q = "text-decoration";
+  private static String r = "color";
+  private static String s = "background-color";
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("aqua", "#00FFFF");
-    jdField_a_of_type_JavaUtilHashMap.put("black", "#000000");
-    jdField_a_of_type_JavaUtilHashMap.put("blue", "#0000FF");
-    jdField_a_of_type_JavaUtilHashMap.put("fuchsia", "#FF00FF");
-    jdField_a_of_type_JavaUtilHashMap.put("gray", "#808080");
-    jdField_a_of_type_JavaUtilHashMap.put("green", "#008000");
-    jdField_a_of_type_JavaUtilHashMap.put("lime", "#00FF00");
-    jdField_a_of_type_JavaUtilHashMap.put("maroon", "#800000");
-    jdField_a_of_type_JavaUtilHashMap.put("navy", "#000080");
-    jdField_a_of_type_JavaUtilHashMap.put("olive", "#808000");
-    jdField_a_of_type_JavaUtilHashMap.put("purple", "#800080");
-    jdField_a_of_type_JavaUtilHashMap.put("red", "#FF0000");
-    jdField_a_of_type_JavaUtilHashMap.put("silver", "#C0C0C0");
-    jdField_a_of_type_JavaUtilHashMap.put("teal", "#008080");
-    jdField_a_of_type_JavaUtilHashMap.put("white", "#FFFFFF");
-    jdField_a_of_type_JavaUtilHashMap.put("yellow", "#FFFF00");
-  }
-  
-  private static int a()
-  {
-    return Aladdin.getConfig(267).getIntegerFromString("filter_small_pic_size", 30);
+    a.put("aqua", "#00FFFF");
+    a.put("black", "#000000");
+    a.put("blue", "#0000FF");
+    a.put("fuchsia", "#FF00FF");
+    a.put("gray", "#808080");
+    a.put("green", "#008000");
+    a.put("lime", "#00FF00");
+    a.put("maroon", "#800000");
+    a.put("navy", "#000080");
+    a.put("olive", "#808000");
+    a.put("purple", "#800080");
+    a.put("red", "#FF0000");
+    a.put("silver", "#C0C0C0");
+    a.put("teal", "#008080");
+    a.put("white", "#FFFFFF");
+    a.put("yellow", "#FFFF00");
   }
   
   private static ProteusBookData a(JSONObject paramJSONObject)
@@ -88,27 +82,27 @@ public class HtmlChangeUtil
         {
           localObject1 = ((TemplateFactory)localObject1).getTemplateBean(paramJSONObject);
           if (paramJSONObject.has("id")) {
-            localProteusBookData.d = paramJSONObject.getString("id");
+            localProteusBookData.e = paramJSONObject.getString("id");
           }
           if (paramJSONObject.has("card_type")) {
-            localProteusBookData.c = paramJSONObject.getString("card_type");
+            localProteusBookData.d = paramJSONObject.getString("card_type");
           }
           if (paramJSONObject.has("sid")) {
-            localProteusBookData.e = paramJSONObject.getString("sid");
+            localProteusBookData.f = paramJSONObject.getString("sid");
           }
-          String str = jdField_a_of_type_JavaLangString;
+          String str = b;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("data: ");
           localStringBuilder.append(paramJSONObject);
           QLog.d(str, 1, localStringBuilder.toString());
-          localProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = ((TemplateBean)localObject1);
-          localProteusBookData.b = ((String)localObject2);
+          localProteusBookData.b = ((TemplateBean)localObject1);
+          localProteusBookData.c = ((String)localObject2);
           return localProteusBookData;
         }
       }
       catch (Exception paramJSONObject)
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = b;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("parseBookData error!  msg=");
         ((StringBuilder)localObject2).append(paramJSONObject);
@@ -129,10 +123,10 @@ public class HtmlChangeUtil
         paramXmlPullParserWrapper = new JSONObject(paramXmlPullParserWrapper);
         if (FastWebPtsLiteDataUtil.a(paramXmlPullParserWrapper))
         {
-          if (!PTSLiteSwitchManager.a().a()) {
+          if (!PTSLiteSwitchManager.a().b()) {
             return null;
           }
-          paramXmlPullParserWrapper = FastWebPtsLiteDataUtil.a(paramXmlPullParserWrapper);
+          paramXmlPullParserWrapper = FastWebPtsLiteDataUtil.b(paramXmlPullParserWrapper);
         }
         else
         {
@@ -143,7 +137,7 @@ public class HtmlChangeUtil
     }
     catch (Exception paramXmlPullParserWrapper)
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("parseProteusData error!  msg=");
       localStringBuilder.append(paramXmlPullParserWrapper);
@@ -154,7 +148,7 @@ public class HtmlChangeUtil
   
   public static BaseData a(HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper)
   {
-    int i1 = paramXmlPullParserWrapper.c();
+    int i1 = paramXmlPullParserWrapper.e();
     Object localObject3 = null;
     Object localObject1 = "";
     Object localObject6;
@@ -174,7 +168,7 @@ public class HtmlChangeUtil
           }
           else
           {
-            if (j.equals(paramXmlPullParserWrapper.b())) {
+            if (k.equals(paramXmlPullParserWrapper.c())) {
               break;
             }
             throw new IllegalArgumentException("proteus tag error: has other end tag");
@@ -182,9 +176,9 @@ public class HtmlChangeUtil
         }
         else
         {
-          if (paramXmlPullParserWrapper.b().equals(j))
+          if (paramXmlPullParserWrapper.c().equals(k))
           {
-            int i2 = paramXmlPullParserWrapper.b();
+            int i2 = paramXmlPullParserWrapper.d();
             i1 = 0;
             for (;;)
             {
@@ -224,17 +218,17 @@ public class HtmlChangeUtil
           throw new IllegalArgumentException("proteus tag error: has other start tag");
         }
       }
-      i1 = paramXmlPullParserWrapper.d();
+      i1 = paramXmlPullParserWrapper.g();
       localObject3 = localObject4;
       localObject1 = localObject5;
     }
     if (((localObject3 instanceof ProteusBookData)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
     {
-      ((ProteusBookData)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
+      ((ProteusBookData)localObject3).a = ((String)localObject1);
       return localObject3;
     }
     if ((localObject3 instanceof PtsData)) {
-      ((PtsData)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject2);
+      ((PtsData)localObject3).b = ((String)localObject2);
     }
     return localObject3;
   }
@@ -244,7 +238,7 @@ public class HtmlChangeUtil
     StringWriter localStringWriter = new StringWriter();
     XmlSerializer localXmlSerializer = Xml.newSerializer();
     localXmlSerializer.setOutput(localStringWriter);
-    int i1 = paramXmlPullParserWrapper.c();
+    int i1 = paramXmlPullParserWrapper.e();
     Object localObject2;
     for (Object localObject1 = ""; i1 != 1; localObject1 = localObject2)
     {
@@ -260,15 +254,15 @@ public class HtmlChangeUtil
             }
             else
             {
-              localXmlSerializer.text(paramXmlPullParserWrapper.a());
+              localXmlSerializer.text(paramXmlPullParserWrapper.b());
               localObject2 = localObject1;
             }
           }
           else
           {
-            if (i.equals(paramXmlPullParserWrapper.b()))
+            if (j.equals(paramXmlPullParserWrapper.c()))
             {
-              localXmlSerializer.endTag("", i);
+              localXmlSerializer.endTag("", j);
               break;
             }
             throw new IllegalArgumentException("a tag error: has other end tag");
@@ -276,11 +270,11 @@ public class HtmlChangeUtil
         }
         else
         {
-          localObject2 = paramXmlPullParserWrapper.b();
-          if (((String)localObject2).equals(i))
+          localObject2 = paramXmlPullParserWrapper.c();
+          if (((String)localObject2).equals(j))
           {
             localXmlSerializer.startTag("", (String)localObject2);
-            int i2 = paramXmlPullParserWrapper.b();
+            int i2 = paramXmlPullParserWrapper.d();
             i1 = 0;
             for (;;)
             {
@@ -297,10 +291,10 @@ public class HtmlChangeUtil
               i1 += 1;
             }
           }
-          throw new IllegalArgumentException(HardCodeUtil.a(2131705718));
+          throw new IllegalArgumentException(HardCodeUtil.a(2131903603));
         }
       }
-      i1 = paramXmlPullParserWrapper.d();
+      i1 = paramXmlPullParserWrapper.g();
     }
     localXmlSerializer.flush();
     return FastWebPTSDataConverter.a(localStringWriter.toString(), (String)localObject1, paramSparseArray);
@@ -308,7 +302,7 @@ public class HtmlChangeUtil
   
   public static BaseData a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper, SparseArray<Float> paramSparseArray)
   {
-    int i1 = paramXmlPullParserWrapper.c();
+    int i1 = paramXmlPullParserWrapper.e();
     Object localObject3 = "";
     Object localObject1 = localObject3;
     Object localObject6;
@@ -328,7 +322,7 @@ public class HtmlChangeUtil
           }
           else
           {
-            if (g.equals(paramXmlPullParserWrapper.b())) {
+            if (h.equals(paramXmlPullParserWrapper.c())) {
               break;
             }
             throw new IllegalArgumentException("img tag error: has other end tag");
@@ -336,9 +330,9 @@ public class HtmlChangeUtil
         }
         else
         {
-          if (paramXmlPullParserWrapper.b().equals(g))
+          if (paramXmlPullParserWrapper.c().equals(h))
           {
-            int i2 = paramXmlPullParserWrapper.b();
+            int i2 = paramXmlPullParserWrapper.d();
             i1 = 0;
             for (;;)
             {
@@ -387,13 +381,13 @@ public class HtmlChangeUtil
           throw new IllegalArgumentException("img tag error: has other start tag");
         }
       }
-      i1 = paramXmlPullParserWrapper.d();
+      i1 = paramXmlPullParserWrapper.g();
       localObject3 = localObject4;
       localObject1 = localObject5;
     }
-    if (a())
+    if (i())
     {
-      i1 = a();
+      i1 = j();
       if ((Integer.parseInt(localObject1) < i1) && (Integer.parseInt((String)localObject2) < i1)) {
         return null;
       }
@@ -403,12 +397,12 @@ public class HtmlChangeUtil
   
   public static List<BaseData> a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, SparseArray<Float> paramSparseArray)
   {
-    Object localObject = paramFastWebArticleInfo.jdField_a_of_type_JavaLangString;
+    Object localObject = paramFastWebArticleInfo.b;
     ArrayList localArrayList = new ArrayList();
     HtmlChangeUtil.TextStyleInfo localTextStyleInfo = new HtmlChangeUtil.TextStyleInfo(null);
     HtmlChangeUtil.XmlPullParserWrapper localXmlPullParserWrapper = new HtmlChangeUtil.XmlPullParserWrapper(Xml.newPullParser(), localTextStyleInfo);
     localXmlPullParserWrapper.a(new StringReader((String)localObject));
-    int i1 = localXmlPullParserWrapper.c();
+    int i1 = localXmlPullParserWrapper.e();
     while (i1 != 1)
     {
       if (i1 != 0) {
@@ -417,73 +411,75 @@ public class HtmlChangeUtil
           if (i1 == 4)
           {
             a(localXmlPullParserWrapper, localTextStyleInfo, localArrayList, paramSparseArray);
-            if (2 == localXmlPullParserWrapper.c()) {
-              i1 = localXmlPullParserWrapper.c();
+            if (2 == localXmlPullParserWrapper.e()) {
+              i1 = localXmlPullParserWrapper.e();
             }
           }
         }
         else
         {
-          localObject = localXmlPullParserWrapper.b();
-          if ((!((String)localObject).equals(b)) && (!((String)localObject).equals(c)))
+          localObject = localXmlPullParserWrapper.c();
+          if ((!((String)localObject).equals(c)) && (!((String)localObject).equals(d)))
           {
-            if (((String)localObject).equals(i))
+            if (((String)localObject).equals(j))
             {
               localArrayList.add(a(localXmlPullParserWrapper, paramSparseArray));
             }
-            else if (((String)localObject).equals(d))
+            else if (((String)localObject).equals(e))
             {
               a(localXmlPullParserWrapper, localTextStyleInfo, localArrayList, paramSparseArray);
-              if (2 == localXmlPullParserWrapper.c()) {
-                i1 = localXmlPullParserWrapper.c();
+              if (2 == localXmlPullParserWrapper.e()) {
+                i1 = localXmlPullParserWrapper.e();
               }
             }
-            else if (((String)localObject).equals(o))
+            else if (((String)localObject).equals(p))
             {
-              localXmlPullParserWrapper.d();
+              localXmlPullParserWrapper.g();
               c(paramAbsBaseArticleInfo, paramFastWebArticleInfo, localXmlPullParserWrapper, localArrayList, localTextStyleInfo, paramSparseArray);
             }
-            else if (((String)localObject).equals(g))
+            else if (((String)localObject).equals(h))
             {
               localObject = a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, localXmlPullParserWrapper, paramSparseArray);
               if (localObject != null) {
                 localArrayList.add(localObject);
               }
             }
-            else if (((String)localObject).equals(h))
+            else if (((String)localObject).equals(i))
             {
               localArrayList.add(b(paramAbsBaseArticleInfo, paramFastWebArticleInfo, localXmlPullParserWrapper, paramSparseArray));
             }
-            else if (((String)localObject).equals(j))
+            else if (((String)localObject).equals(k))
             {
               localObject = a(localXmlPullParserWrapper);
               if (localObject != null) {
                 localArrayList.add(localObject);
               }
             }
-            else if (((String)localObject).equals(k))
+            else if (((String)localObject).equals(l))
             {
               a(localXmlPullParserWrapper, localTextStyleInfo, localArrayList, paramSparseArray);
             }
             else
             {
-              if ((!((String)localObject).equals(l)) && (!((String)localObject).equals(n)))
+              if ((!((String)localObject).equals(m)) && (!((String)localObject).equals(o)))
               {
                 paramAbsBaseArticleInfo = new StringBuilder();
-                paramAbsBaseArticleInfo.append(HardCodeUtil.a(2131705717));
+                paramAbsBaseArticleInfo.append(HardCodeUtil.a(2131903602));
                 paramAbsBaseArticleInfo.append((String)localObject);
                 throw new IllegalArgumentException(paramAbsBaseArticleInfo.toString());
               }
               b(paramAbsBaseArticleInfo, paramFastWebArticleInfo, localXmlPullParserWrapper, localArrayList, localTextStyleInfo, paramSparseArray);
             }
           }
-          else {
+          else
+          {
+            a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, localXmlPullParserWrapper, localArrayList);
             a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, localXmlPullParserWrapper, localArrayList, localTextStyleInfo, paramSparseArray);
           }
         }
       }
-      if (localXmlPullParserWrapper.c() != 2) {
-        i1 = localXmlPullParserWrapper.d();
+      if (localXmlPullParserWrapper.e() != 2) {
+        i1 = localXmlPullParserWrapper.g();
       } else {
         i1 = 2;
       }
@@ -531,7 +527,7 @@ public class HtmlChangeUtil
     int i4 = paramTextStyleInfo.a();
     int i5 = paramTextStyleInfo.b();
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    int i3 = paramXmlPullParserWrapper.c();
+    int i3 = paramXmlPullParserWrapper.e();
     int i1;
     for (int i2 = 0; i3 != 1; i2 = i1)
     {
@@ -547,7 +543,7 @@ public class HtmlChangeUtil
             }
             else
             {
-              SpannableString localSpannableString = new SpannableString(paramXmlPullParserWrapper.a().replaceAll(" +", " ").replaceAll("\t+", " "));
+              SpannableString localSpannableString = new SpannableString(paramXmlPullParserWrapper.b().replaceAll(" +", " ").replaceAll("\t+", " "));
               a(localSpannableString, paramTextStyleInfo.b);
               localSpannableStringBuilder.append(localSpannableString);
               i1 = i2;
@@ -564,12 +560,12 @@ public class HtmlChangeUtil
         else
         {
           i1 = i2 + 1;
-          if (!a(paramXmlPullParserWrapper.b())) {
+          if (!c(paramXmlPullParserWrapper.c())) {
             break;
           }
         }
       }
-      i3 = paramXmlPullParserWrapper.d();
+      i3 = paramXmlPullParserWrapper.g();
     }
     paramXmlPullParserWrapper = localSpannableStringBuilder.toString();
     if (!TextUtils.isEmpty(paramXmlPullParserWrapper.replaceAll(" ", "").trim())) {
@@ -577,13 +573,54 @@ public class HtmlChangeUtil
     }
   }
   
+  private static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper, List<BaseData> paramList)
+  {
+    boolean bool = paramXmlPullParserWrapper.c().equals(c);
+    Object localObject1 = "";
+    if (bool)
+    {
+      int i2 = paramXmlPullParserWrapper.d();
+      int i1 = 0;
+      String str = "";
+      for (;;)
+      {
+        localObject3 = localObject1;
+        localObject2 = str;
+        if (i1 >= i2) {
+          break;
+        }
+        localObject3 = paramXmlPullParserWrapper.a(i1);
+        if (((String)localObject3).equals("busi-id"))
+        {
+          localObject2 = paramXmlPullParserWrapper.b(i1);
+        }
+        else
+        {
+          localObject2 = localObject1;
+          if (((String)localObject3).equals("busi-type"))
+          {
+            str = paramXmlPullParserWrapper.b(i1);
+            localObject2 = localObject1;
+          }
+        }
+        i1 += 1;
+        localObject1 = localObject2;
+      }
+    }
+    Object localObject2 = "";
+    Object localObject3 = localObject1;
+    if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
+      paramList.add(FastWebPTSDataConverter.a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, (String)localObject3, (String)localObject2));
+    }
+  }
+  
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper, List<BaseData> paramList, HtmlChangeUtil.TextStyleInfo paramTextStyleInfo, SparseArray<Float> paramSparseArray)
   {
-    int i1 = paramXmlPullParserWrapper.c();
+    int i1 = paramXmlPullParserWrapper.e();
     int i3 = paramXmlPullParserWrapper.a();
     while (i1 != 1)
     {
-      int i2 = paramXmlPullParserWrapper.c();
+      int i2 = paramXmlPullParserWrapper.e();
       if (i2 != 0) {
         if (i2 != 2)
         {
@@ -595,18 +632,18 @@ public class HtmlChangeUtil
               i1 = i2;
             }
           }
-          else if (((!paramXmlPullParserWrapper.b().equals(b)) && (!paramXmlPullParserWrapper.b().equals(c))) || (i3 != paramXmlPullParserWrapper.a())) {}
+          else if (((!paramXmlPullParserWrapper.c().equals(c)) && (!paramXmlPullParserWrapper.c().equals(d))) || (i3 != paramXmlPullParserWrapper.a())) {}
         }
         else
         {
-          Object localObject = paramXmlPullParserWrapper.b();
-          if (a((String)localObject))
+          Object localObject = paramXmlPullParserWrapper.c();
+          if (c((String)localObject))
           {
             a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
             i1 = i2;
             continue;
           }
-          if (((String)localObject).equals(g))
+          if (((String)localObject).equals(h))
           {
             localObject = a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramSparseArray);
             i1 = i2;
@@ -617,29 +654,29 @@ public class HtmlChangeUtil
             i1 = i2;
             continue;
           }
-          if (((String)localObject).equals(h))
+          if (((String)localObject).equals(i))
           {
             paramList.add(b(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramSparseArray));
             i1 = i2;
             continue;
           }
-          if (((String)localObject).equals(i))
+          if (((String)localObject).equals(j))
           {
             paramList.add(a(paramXmlPullParserWrapper, paramSparseArray));
             i1 = i2;
             continue;
           }
-          if ((!((String)localObject).equals(l)) && (!((String)localObject).equals(n)))
+          if ((!((String)localObject).equals(m)) && (!((String)localObject).equals(o)))
           {
-            if (((String)localObject).equals(o))
+            if (((String)localObject).equals(p))
             {
-              paramXmlPullParserWrapper.d();
+              paramXmlPullParserWrapper.g();
               c(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramList, paramTextStyleInfo, paramSparseArray);
               i1 = i2;
               continue;
             }
-            if (!((String)localObject).equals(b)) {
-              if (!((String)localObject).equals(c)) {
+            if (!((String)localObject).equals(c)) {
+              if (!((String)localObject).equals(d)) {
                 break;
               }
             }
@@ -652,28 +689,13 @@ public class HtmlChangeUtil
           }
         }
       }
-      i1 = paramXmlPullParserWrapper.d();
+      i1 = paramXmlPullParserWrapper.g();
     }
-  }
-  
-  private static boolean a()
-  {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(267);
-    boolean bool = false;
-    if (localAladdinConfig.getIntegerFromString("enable_filter_small_pic", 0) == 1) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private static boolean a(String paramString)
-  {
-    return (paramString.equals(d)) || (paramString.equals(e)) || (paramString.equals(f)) || (paramString.equals(k));
   }
   
   public static BaseData b(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper, SparseArray<Float> paramSparseArray)
   {
-    int i4 = paramXmlPullParserWrapper.c();
+    int i4 = paramXmlPullParserWrapper.e();
     Object localObject5 = "";
     Object localObject4 = localObject5;
     Object localObject3 = localObject4;
@@ -708,7 +730,7 @@ public class HtmlChangeUtil
           }
           else
           {
-            if (h.equals(paramXmlPullParserWrapper.b())) {
+            if (i.equals(paramXmlPullParserWrapper.c())) {
               break;
             }
             throw new IllegalArgumentException("video tag error: has other end tag");
@@ -716,9 +738,9 @@ public class HtmlChangeUtil
         }
         else
         {
-          if (paramXmlPullParserWrapper.b().equals(h))
+          if (paramXmlPullParserWrapper.c().equals(i))
           {
-            int i8 = paramXmlPullParserWrapper.b();
+            int i8 = paramXmlPullParserWrapper.d();
             i4 = 0;
             for (;;)
             {
@@ -838,7 +860,7 @@ public class HtmlChangeUtil
           throw new IllegalArgumentException("video tag error: has other start tag");
         }
       }
-      i4 = paramXmlPullParserWrapper.d();
+      i4 = paramXmlPullParserWrapper.g();
       localObject5 = localObject6;
       localObject4 = localObject7;
       i3 = i5;
@@ -850,28 +872,130 @@ public class HtmlChangeUtil
     return FastWebPTSDataConverter.a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, (String)localObject5, localObject4, i3, i1, localObject3, localObject2, localObject1, i2, paramSparseArray);
   }
   
-  private static HashMap<String, String> b(String paramString)
+  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper, List<BaseData> paramList, HtmlChangeUtil.TextStyleInfo paramTextStyleInfo, SparseArray<Float> paramSparseArray)
   {
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split(";");
-    int i1 = 0;
-    while (i1 < paramString.length)
+    int i1 = paramXmlPullParserWrapper.e();
+    int i3 = paramXmlPullParserWrapper.a();
+    while (i1 != 1)
     {
-      Object localObject = paramString[i1].split(":");
-      if (localObject.length == 2)
+      int i2 = paramXmlPullParserWrapper.e();
+      if (i2 != 0)
       {
-        String str = localObject[0].trim();
-        localObject = localObject[1].trim();
-        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-          localHashMap.put(str.toLowerCase(), ((String)localObject).toLowerCase());
+        if (i2 != 2)
+        {
+          if (i2 != 3)
+          {
+            if (i2 != 4) {
+              break label320;
+            }
+            a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
+            i1 = i2;
+          }
+        }
+        else
+        {
+          Object localObject = paramXmlPullParserWrapper.c();
+          if (c((String)localObject))
+          {
+            a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
+            i1 = i2;
+            continue;
+          }
+          if (((String)localObject).equals(h))
+          {
+            localObject = a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramSparseArray);
+            i1 = i2;
+            if (localObject == null) {
+              continue;
+            }
+            paramList.add(localObject);
+            i1 = i2;
+            continue;
+          }
+          if (((String)localObject).equals(i))
+          {
+            paramList.add(b(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramSparseArray));
+            i1 = i2;
+            continue;
+          }
+          if (((String)localObject).equals(j))
+          {
+            paramList.add(a(paramXmlPullParserWrapper, paramSparseArray));
+            i1 = i2;
+            continue;
+          }
+          if ((((String)localObject).equals(o)) || (((String)localObject).equals(m))) {
+            break label320;
+          }
+          if ((!((String)localObject).equals(c)) && (!((String)localObject).equals(d)))
+          {
+            if (((String)localObject).equals(n))
+            {
+              paramXmlPullParserWrapper.g();
+              a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
+              i1 = i2;
+              continue;
+            }
+            throw new IOException("illegal tag include in list element(ul or ol)");
+          }
+          a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramList, paramTextStyleInfo, paramSparseArray);
+        }
+        if (i3 == paramXmlPullParserWrapper.a()) {
+          return;
         }
       }
-      i1 += 1;
+      label320:
+      i1 = paramXmlPullParserWrapper.g();
     }
-    return localHashMap;
   }
   
-  private static List<Object> b(String paramString)
+  public static void c(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper, List<BaseData> paramList, HtmlChangeUtil.TextStyleInfo paramTextStyleInfo, SparseArray<Float> paramSparseArray)
+  {
+    int i1;
+    label92:
+    label103:
+    label114:
+    do
+    {
+      i1 = paramXmlPullParserWrapper.e();
+      if (i1 != 2)
+      {
+        if (i1 != 3)
+        {
+          if (i1 != 4) {
+            break label114;
+          }
+        }
+        else {
+          if (!paramXmlPullParserWrapper.c().equals(p)) {
+            break label114;
+          }
+        }
+      }
+      else
+      {
+        String str = paramXmlPullParserWrapper.c();
+        if ((str.equals(c)) || (str.equals(d))) {
+          break label103;
+        }
+        if (!c(str)) {
+          break label92;
+        }
+      }
+      a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
+      continue;
+      throw new IOException("blockquote tag include no text tag !");
+      a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramList, paramTextStyleInfo, paramSparseArray);
+      paramXmlPullParserWrapper.g();
+    } while (i1 != 1);
+  }
+  
+  private static boolean c(String paramString)
+  {
+    return (paramString.equals(e)) || (paramString.equals(f)) || (paramString.equals(g)) || (paramString.equals(l));
+  }
+  
+  private static List<Object> d(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
@@ -891,7 +1015,7 @@ public class HtmlChangeUtil
             paramString = localObject[0].trim();
             localObject = localObject[1].trim();
             if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-              if (p.equals(paramString))
+              if (q.equals(paramString))
               {
                 if ("underline".equals(localObject)) {
                   localArrayList.add(HtmlChangeUtil.SpanBuilder.a(3, new Object[0]));
@@ -899,7 +1023,7 @@ public class HtmlChangeUtil
                   localArrayList.add(HtmlChangeUtil.SpanBuilder.a(5, new Object[0]));
                 }
               }
-              else if ((q.equals(paramString)) || (r.equals(paramString)))
+              else if ((r.equals(paramString)) || (s.equals(paramString)))
               {
                 if (((String)localObject).startsWith("rgb("))
                 {
@@ -915,10 +1039,10 @@ public class HtmlChangeUtil
                 }
                 else
                 {
-                  if (!jdField_a_of_type_JavaUtilHashMap.containsKey(((String)localObject).toLowerCase())) {
+                  if (!a.containsKey(((String)localObject).toLowerCase())) {
                     break label404;
                   }
-                  i1 = Color.parseColor((String)jdField_a_of_type_JavaUtilHashMap.get(((String)localObject).toLowerCase()));
+                  i1 = Color.parseColor((String)a.get(((String)localObject).toLowerCase()));
                 }
                 if (i1 != -1)
                 {
@@ -941,134 +1065,52 @@ public class HtmlChangeUtil
       }
       catch (Exception paramString)
       {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, paramString, new Object[0]);
+        QLog.e(b, 2, paramString, new Object[0]);
       }
       label404:
       int i1 = -1;
     }
   }
   
-  public static void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper, List<BaseData> paramList, HtmlChangeUtil.TextStyleInfo paramTextStyleInfo, SparseArray<Float> paramSparseArray)
+  private static HashMap<String, String> e(String paramString)
   {
-    int i1 = paramXmlPullParserWrapper.c();
-    int i3 = paramXmlPullParserWrapper.a();
-    while (i1 != 1)
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split(";");
+    int i1 = 0;
+    while (i1 < paramString.length)
     {
-      int i2 = paramXmlPullParserWrapper.c();
-      if (i2 != 0)
+      Object localObject = paramString[i1].split(":");
+      if (localObject.length == 2)
       {
-        if (i2 != 2)
-        {
-          if (i2 != 3)
-          {
-            if (i2 != 4) {
-              break label320;
-            }
-            a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
-            i1 = i2;
-          }
-        }
-        else
-        {
-          Object localObject = paramXmlPullParserWrapper.b();
-          if (a((String)localObject))
-          {
-            a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
-            i1 = i2;
-            continue;
-          }
-          if (((String)localObject).equals(g))
-          {
-            localObject = a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramSparseArray);
-            i1 = i2;
-            if (localObject == null) {
-              continue;
-            }
-            paramList.add(localObject);
-            i1 = i2;
-            continue;
-          }
-          if (((String)localObject).equals(h))
-          {
-            paramList.add(b(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramSparseArray));
-            i1 = i2;
-            continue;
-          }
-          if (((String)localObject).equals(i))
-          {
-            paramList.add(a(paramXmlPullParserWrapper, paramSparseArray));
-            i1 = i2;
-            continue;
-          }
-          if ((((String)localObject).equals(n)) || (((String)localObject).equals(l))) {
-            break label320;
-          }
-          if ((!((String)localObject).equals(b)) && (!((String)localObject).equals(c)))
-          {
-            if (((String)localObject).equals(m))
-            {
-              paramXmlPullParserWrapper.d();
-              a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
-              i1 = i2;
-              continue;
-            }
-            throw new IOException("illegal tag include in list element(ul or ol)");
-          }
-          a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramList, paramTextStyleInfo, paramSparseArray);
-        }
-        if (i3 == paramXmlPullParserWrapper.a()) {
-          return;
+        String str = localObject[0].trim();
+        localObject = localObject[1].trim();
+        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+          localHashMap.put(str.toLowerCase(), ((String)localObject).toLowerCase());
         }
       }
-      label320:
-      i1 = paramXmlPullParserWrapper.d();
+      i1 += 1;
     }
+    return localHashMap;
   }
   
-  public static void c(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, HtmlChangeUtil.XmlPullParserWrapper paramXmlPullParserWrapper, List<BaseData> paramList, HtmlChangeUtil.TextStyleInfo paramTextStyleInfo, SparseArray<Float> paramSparseArray)
+  private static boolean i()
   {
-    int i1;
-    label92:
-    label103:
-    label114:
-    do
-    {
-      i1 = paramXmlPullParserWrapper.c();
-      if (i1 != 2)
-      {
-        if (i1 != 3)
-        {
-          if (i1 != 4) {
-            break label114;
-          }
-        }
-        else {
-          if (!paramXmlPullParserWrapper.b().equals(o)) {
-            break label114;
-          }
-        }
-      }
-      else
-      {
-        String str = paramXmlPullParserWrapper.b();
-        if ((str.equals(b)) || (str.equals(c))) {
-          break label103;
-        }
-        if (!a(str)) {
-          break label92;
-        }
-      }
-      a(paramXmlPullParserWrapper, paramTextStyleInfo, paramList, paramSparseArray);
-      continue;
-      throw new IOException("blockquote tag include no text tag !");
-      a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, paramXmlPullParserWrapper, paramList, paramTextStyleInfo, paramSparseArray);
-      paramXmlPullParserWrapper.d();
-    } while (i1 != 1);
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(267);
+    boolean bool = false;
+    if (localAladdinConfig.getIntegerFromString("enable_filter_small_pic", 0) == 1) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private static int j()
+  {
+    return Aladdin.getConfig(267).getIntegerFromString("filter_small_pic_size", 30);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.HtmlChangeUtil
  * JD-Core Version:    0.7.0.1
  */

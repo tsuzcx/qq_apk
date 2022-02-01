@@ -12,14 +12,14 @@ class RichTextPanelExtendHelper$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     com.tencent.widget.XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.a.a.getParent() != null) {
-      this.a.a.getParent().requestLayout();
+    if (this.a.f.getParent() != null) {
+      this.a.f.getParent().requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.RichTextPanelExtendHelper.1
  * JD-Core Version:    0.7.0.1
  */

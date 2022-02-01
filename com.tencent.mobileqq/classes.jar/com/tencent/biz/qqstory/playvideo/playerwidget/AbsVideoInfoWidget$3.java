@@ -10,15 +10,15 @@ class AbsVideoInfoWidget$3
   
   public void run()
   {
-    if (this.this$0.a != null) {
+    if (this.this$0.j != null) {
       try
       {
-        this.this$0.a.dismiss();
+        this.this$0.j.dismiss();
         return;
       }
       catch (Exception localException)
       {
-        SLog.b(this.this$0.b, "dismiss dialog error :%s", localException);
+        SLog.b(this.this$0.i, "dismiss dialog error :%s", localException);
       }
     }
   }

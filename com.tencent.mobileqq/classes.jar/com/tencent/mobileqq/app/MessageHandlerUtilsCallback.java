@@ -47,12 +47,12 @@ public class MessageHandlerUtilsCallback
   {
     String str = paramAppInterface.getCurrentAccountUin();
     if ((str != null) && (str.equals(paramString1))) {
-      return HardCodeUtil.a(2131706657);
+      return HardCodeUtil.a(2131904508);
     }
     paramString2 = ContactUtils.a((QQAppInterface)paramAppInterface, paramString1, paramString2, 1, 0);
     if (paramString2 == paramString1)
     {
-      paramAppInterface = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString1);
+      paramAppInterface = ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString1);
       if (paramAppInterface != null) {
         return ContactUtils.a(paramAppInterface);
       }
@@ -64,9 +64,9 @@ public class MessageHandlerUtilsCallback
   {
     int i = paramPbSendMsgReq.toByteArray().length;
     Object localObject = (ISVIPHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
-    int j = ((ISVIPHandler)localObject).d();
+    int j = ((ISVIPHandler)localObject).f();
     paramAppInterface = (BubbleManager)paramAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
-    int k = ((ISVIPHandler)localObject).b();
+    int k = ((ISVIPHandler)localObject).d();
     boolean bool2 = false;
     boolean bool1;
     if (k > 0)
@@ -78,10 +78,10 @@ public class MessageHandlerUtilsCallback
         if (paramAppInterface != null)
         {
           bool1 = bool2;
-          if (paramAppInterface.a != null)
+          if (paramAppInterface.s != null)
           {
             bool1 = bool2;
-            if (paramAppInterface.a.size() <= 0) {}
+            if (paramAppInterface.s.size() <= 0) {}
           }
         }
       }
@@ -139,19 +139,19 @@ public class MessageHandlerUtilsCallback
     {
       paramObject = (ChatActivityFacade.HongbaoParams)paramObject;
       if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandlerUtils", 2, String.format("getPbSendReqFromBlessMsg, hongbao param, temp_id: %d, video_len: %d, redbag_id: %s, redbag_amount: %d, has_readbag: %d, has_video: %d", new Object[] { Long.valueOf(paramObject.jdField_a_of_type_Long), Long.valueOf(paramObject.jdField_b_of_type_Long), paramObject.jdField_a_of_type_ArrayOfByte, Long.valueOf(paramObject.c), Integer.valueOf(paramObject.jdField_a_of_type_Int), Integer.valueOf(paramObject.jdField_b_of_type_Int) }));
+        QLog.d("Q.msg.MessageHandlerUtils", 2, String.format("getPbSendReqFromBlessMsg, hongbao param, temp_id: %d, video_len: %d, redbag_id: %s, redbag_amount: %d, has_readbag: %d, has_video: %d", new Object[] { Long.valueOf(paramObject.a), Long.valueOf(paramObject.b), paramObject.c, Long.valueOf(paramObject.d), Integer.valueOf(paramObject.e), Integer.valueOf(paramObject.f) }));
       }
-      paramMultiMsgAssist.uint64_temp_id.set(paramObject.jdField_a_of_type_Long);
-      paramMultiMsgAssist.uint64_vedio_len.set(paramObject.jdField_b_of_type_Long);
-      paramMultiMsgAssist.uint32_has_readbag.set(paramObject.jdField_a_of_type_Int);
-      if (paramObject.jdField_a_of_type_Int == 1)
+      paramMultiMsgAssist.uint64_temp_id.set(paramObject.a);
+      paramMultiMsgAssist.uint64_vedio_len.set(paramObject.b);
+      paramMultiMsgAssist.uint32_has_readbag.set(paramObject.e);
+      if (paramObject.e == 1)
       {
-        if (paramObject.jdField_a_of_type_ArrayOfByte != null) {
-          paramMultiMsgAssist.bytes_redbag_id.set(ByteStringMicro.copyFrom(paramObject.jdField_a_of_type_ArrayOfByte));
+        if (paramObject.c != null) {
+          paramMultiMsgAssist.bytes_redbag_id.set(ByteStringMicro.copyFrom(paramObject.c));
         }
-        paramMultiMsgAssist.uint64_redbag_amount.set(paramObject.c);
+        paramMultiMsgAssist.uint64_redbag_amount.set(paramObject.d);
       }
-      paramMultiMsgAssist.uint32_has_vedio.set(paramObject.jdField_b_of_type_Int);
+      paramMultiMsgAssist.uint32_has_vedio.set(paramObject.f);
     }
   }
   
@@ -212,7 +212,7 @@ public class MessageHandlerUtilsCallback
       }
       else
       {
-        byte[] arrayOfByte = Utils.a(paramMessageRecord.msg);
+        byte[] arrayOfByte = Utils.h(paramMessageRecord.msg);
         if (arrayOfByte != null) {
           paramGeneralFlags.babyq_guide_msg_cookie.set(ByteStringMicro.copyFrom(arrayOfByte));
         }
@@ -275,7 +275,7 @@ public class MessageHandlerUtilsCallback
       if (paramMessageRecord.extraflag != 32768)
       {
         bool1 = bool2;
-        if (!((QQAppInterface)localAppInterface).getMsgCache().b(paramMessageRecord)) {
+        if (!((QQAppInterface)localAppInterface).getMsgCache().f(paramMessageRecord)) {
           bool1 = true;
         }
       }
@@ -285,7 +285,7 @@ public class MessageHandlerUtilsCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandlerUtilsCallback
  * JD-Core Version:    0.7.0.1
  */

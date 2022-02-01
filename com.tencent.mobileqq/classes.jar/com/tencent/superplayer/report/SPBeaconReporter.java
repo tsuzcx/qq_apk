@@ -21,13 +21,13 @@ public class SPBeaconReporter
   
   public static void report(String paramString, Map<String, String> paramMap)
   {
-    paramMap = new HashMap(paramMap);
-    ThreadUtil.getSubThreadHandler().post(new SPBeaconReporter.2(paramString, paramMap));
+    HashMap localHashMap = new HashMap(paramMap);
+    ThreadUtil.getSubThreadHandler().post(new SPBeaconReporter.2(paramString, localHashMap, paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.report.SPBeaconReporter
  * JD-Core Version:    0.7.0.1
  */

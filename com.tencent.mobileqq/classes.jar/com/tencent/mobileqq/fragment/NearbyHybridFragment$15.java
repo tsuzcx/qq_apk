@@ -25,21 +25,21 @@ class NearbyHybridFragment$15
         QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService : Done");
       }
       String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-      Object localObject = this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager;
+      Object localObject = this.a.Q;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("p_skey=");
       localStringBuilder.append(str);
       ((CookieManager)localObject).setCookie("now.qq.com", localStringBuilder.toString());
       CookieSyncManager.getInstance().sync();
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit();
+      localObject = this.a.ag.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
       localStringBuilder.append(str);
       ((SharedPreferences.Editor)localObject).putString("pskey", localStringBuilder.toString()).commit();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
-      NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
+      this.a.ag.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
+      NowLiveFragment.i = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.1(this));
+    this.a.l.post(new NearbyHybridFragment.15.1(this));
   }
   
   public void Failed(ErrMsg paramErrMsg)
@@ -51,7 +51,7 @@ class NearbyHybridFragment$15
       localStringBuilder.append(paramErrMsg);
       QLog.i("nearby.NearbyHybridFragment", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.2(this));
+    this.a.l.post(new NearbyHybridFragment.15.2(this));
   }
   
   public void Timeout(ErrMsg paramErrMsg)
@@ -63,12 +63,12 @@ class NearbyHybridFragment$15
       localStringBuilder.append(paramErrMsg);
       QLog.i("nearby.NearbyHybridFragment", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.3(this));
+    this.a.l.post(new NearbyHybridFragment.15.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.15
  * JD-Core Version:    0.7.0.1
  */

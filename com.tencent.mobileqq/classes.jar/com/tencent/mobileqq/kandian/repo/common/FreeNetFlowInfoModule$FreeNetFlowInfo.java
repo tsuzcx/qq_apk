@@ -3,24 +3,24 @@ package com.tencent.mobileqq.kandian.repo.common;
 public class FreeNetFlowInfoModule$FreeNetFlowInfo
 {
   public int a;
-  public String a;
-  public boolean a;
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public String b;
+  public boolean c;
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
+    return (this.c) && (this.a == 2);
+  }
+  
+  public void b()
+  {
+    this.a = 0;
+    this.b = null;
+    this.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.FreeNetFlowInfoModule.FreeNetFlowInfo
  * JD-Core Version:    0.7.0.1
  */

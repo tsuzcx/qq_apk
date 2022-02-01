@@ -14,24 +14,26 @@ public class BaseMenuFlag
       return false;
     }
     paramBaseQQAppInterface = (RecentUserBaseData)paramRecentBaseData;
-    int i = paramBaseQQAppInterface.mUser.getType();
-    if ((i != 0) && (i != 8) && (i != 1000) && (i != 1004) && (i != 1006) && (i != 1021)) {
-      if (i != 3000)
-      {
-        if (i == 10004) {}
-      }
-      else {
-        switch (i)
-        {
-        default: 
-          break;
-          paramRecentBaseData.mMenuFlag |= 0x2000;
-          break;
-        }
-      }
+    switch (paramBaseQQAppInterface.mUser.getType())
+    {
+    default: 
+      break;
+    case 3000: 
+      paramRecentBaseData.mMenuFlag |= 0x2000;
+      break;
+    case 0: 
+    case 8: 
+    case 1000: 
+    case 1004: 
+    case 1006: 
+    case 1021: 
+    case 10004: 
+    case 10008: 
+    case 10010: 
+    case 10013: 
+      paramRecentBaseData.mMenuFlag |= 0x1000;
     }
-    paramRecentBaseData.mMenuFlag |= 0x1000;
-    paramBaseQQAppInterface.b();
+    paramBaseQQAppInterface.d();
     paramRecentBaseData.mMenuFlag &= 0xFFFFFF0F;
     if (paramBaseQQAppInterface.mUser.showUpTime == 0L) {
       paramRecentBaseData.mMenuFlag |= 0x10;
@@ -47,7 +49,7 @@ public class BaseMenuFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.menu.BaseMenuFlag
  * JD-Core Version:    0.7.0.1
  */

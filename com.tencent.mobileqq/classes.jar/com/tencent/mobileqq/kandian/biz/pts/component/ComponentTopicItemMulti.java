@@ -21,54 +21,49 @@ public class ComponentTopicItemMulti
   extends RelativeLayout
   implements ComponentInheritView
 {
-  private int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  TopicRecommendFeedsInfo.TopicRecommendInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendInfo;
-  TextView b;
+  TopicRecommendFeedsInfo.TopicRecommendInfo a;
+  KandianUrlImageView b;
+  TextView c;
+  TextView d;
+  private AbsBaseArticleInfo e;
+  private int f;
   
   public ComponentTopicItemMulti(Context paramContext)
   {
     super(paramContext);
-    b(paramContext);
+    c(paramContext);
   }
   
   public ComponentTopicItemMulti(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    b(paramContext);
+    c(paramContext);
   }
   
   public ComponentTopicItemMulti(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    b(paramContext);
+    c(paramContext);
   }
   
-  private void b(Context paramContext)
+  private void c(Context paramContext)
   {
     a(paramContext);
     a();
-  }
-  
-  public View a(Context paramContext)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131560157, this, true);
   }
   
   public void a() {}
   
   public void a(Context paramContext)
   {
-    a(a(paramContext));
+    a(b(paramContext));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)findViewById(2131365284));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378784));
-    this.b = ((TextView)findViewById(2131365517));
+    this.b = ((KandianUrlImageView)findViewById(2131431458));
+    this.c = ((TextView)findViewById(2131447463));
+    this.d = ((TextView)findViewById(2131431733));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener) {}
@@ -77,26 +72,26 @@ public class ComponentTopicItemMulti
   {
     if ((paramObject instanceof TopicRecommendFeedsInfo.TopicRecommendInfo))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendInfo = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramObject);
+      this.a = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramObject);
       b();
       try
       {
-        paramObject = new URL(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendInfo.d);
-        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, paramObject, getContext());
+        paramObject = new URL(this.a.f);
+        ReadInJoyDisplayUtils.a(this.b, paramObject, getContext());
       }
       catch (MalformedURLException paramObject)
       {
-        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, null, getContext());
+        ReadInJoyDisplayUtils.a(this.b, null, getContext());
         paramObject.printStackTrace();
       }
-      paramObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      paramObject = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendInfo.c);
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendInfo.a);
+      localStringBuilder.append(this.a.d);
+      localStringBuilder.append(this.a.b);
       paramObject.setText(localStringBuilder.toString());
-      paramObject = String.format(getResources().getString(2131718064), new Object[] { ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_b_of_type_Int) });
-      this.b.setText(paramObject);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_b_of_type_JavaLangString))
+      paramObject = String.format(getResources().getString(2131915541), new Object[] { ReadInJoyHelper.c(this.a.e) });
+      this.d.setText(paramObject);
+      if (!TextUtils.isEmpty(this.a.c))
       {
         setOnClickListener(new ComponentTopicItemMulti.1(this));
         return;
@@ -105,20 +100,25 @@ public class ComponentTopicItemMulti
     }
   }
   
+  public View b(Context paramContext)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131626204, this, true);
+  }
+  
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
   
   public void setArticleInfo(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramAbsBaseArticleInfo;
+    this.f = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentTopicItemMulti
  * JD-Core Version:    0.7.0.1
  */

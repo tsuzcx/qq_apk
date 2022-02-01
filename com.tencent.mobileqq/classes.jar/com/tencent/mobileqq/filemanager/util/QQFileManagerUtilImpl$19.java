@@ -17,7 +17,7 @@ final class QQFileManagerUtilImpl$19
   
   public void run()
   {
-    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryFileManagerEntityByNameAndSize(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
+    Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).queryFileManagerEntityByNameAndSize(this.a, this.b.fileName, this.b.fileSize);
     if (QLog.isColorLevel())
     {
       localStringBuilder1 = new StringBuilder();
@@ -38,7 +38,7 @@ final class QQFileManagerUtilImpl$19
           break label329;
         }
         localObject = (FileManagerEntity)localIterator.next();
-        if (localObject != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)
+        if (localObject != this.b)
         {
           long l = new VFSFile(((FileManagerEntity)localObject).getFilePath()).lastModified();
           if (((FileManagerEntity)localObject).localModifyTime == l) {
@@ -66,7 +66,7 @@ final class QQFileManagerUtilImpl$19
         localStringBuilder2.append("]");
         QLog.i("CHECK_FILE_EXISTED", 1, localStringBuilder2.toString());
       }
-    } while (!QQFileManagerUtilImpl.a((FileManagerEntity)localObject, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity));
+    } while (!QQFileManagerUtilImpl.a((FileManagerEntity)localObject, this.b));
     label329:
     if (localObject == null)
     {
@@ -74,11 +74,11 @@ final class QQFileManagerUtilImpl$19
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("cann't find exsited file,entity[");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+        ((StringBuilder)localObject).append(this.b.fileName);
         ((StringBuilder)localObject).append("]");
         QLog.i("CHECK_FILE_EXISTED", 1, ((StringBuilder)localObject).toString());
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilQQFileManagerUtil$CheckResult;
+      localObject = this.c;
       if (localObject != null) {
         ((QQFileManagerUtil.CheckResult)localObject).a(false);
       }
@@ -89,7 +89,7 @@ final class QQFileManagerUtilImpl$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.19
  * JD-Core Version:    0.7.0.1
  */

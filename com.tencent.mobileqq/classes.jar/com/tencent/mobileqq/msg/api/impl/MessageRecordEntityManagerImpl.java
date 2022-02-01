@@ -17,7 +17,7 @@ public class MessageRecordEntityManagerImpl
   {
     AppRuntime localAppRuntime = this.mAppRuntime;
     if ((localAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)localAppRuntime).getEntityManagerFactory().a();
+      return ((QQAppInterface)localAppRuntime).getEntityManagerFactory().b();
     }
     return null;
   }
@@ -40,7 +40,7 @@ public class MessageRecordEntityManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msg.api.impl.MessageRecordEntityManagerImpl
  * JD-Core Version:    0.7.0.1
  */

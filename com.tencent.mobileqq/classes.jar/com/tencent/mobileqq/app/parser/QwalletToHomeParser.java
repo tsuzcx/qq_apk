@@ -11,9 +11,9 @@ public class QwalletToHomeParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new QwalletToHomeAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "wallet";
-    paramBaseQQAppInterface.c = "open";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "wallet";
+    paramBaseQQAppInterface.e = "open";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class QwalletToHomeParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QwalletToHomeParser
  * JD-Core Version:    0.7.0.1
  */

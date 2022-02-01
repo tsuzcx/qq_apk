@@ -51,7 +51,7 @@ public class InformationFaceConstant
   
   public static int a(InformationFacePackage.Item paramItem)
   {
-    int j = paramItem.a;
+    int j = paramItem.c;
     int i = 1;
     switch (j)
     {
@@ -153,7 +153,7 @@ public class InformationFaceConstant
     }
     paramString2 = localObject3;
     if (paramString1 != null) {
-      paramString2 = new BitmapDrawable(paramContext.getResources(), paramString1.a());
+      paramString2 = new BitmapDrawable(paramContext.getResources(), paramString1.h());
     }
     return paramString2;
   }
@@ -213,7 +213,7 @@ public class InformationFaceConstant
   
   public static InfoStickerDrawable a(InformationFacePackage.Item paramItem, Context paramContext, long paramLong)
   {
-    int i = paramItem.a;
+    int i = paramItem.c;
     Object localObject1;
     Object localObject2;
     Object localObject3;
@@ -237,7 +237,7 @@ public class InformationFaceConstant
       ((StringBuilder)localObject2).append("down.png");
       return new CalendarTimeStickerDrawable(paramContext, CalendarTimeStickerDrawable.a(i, (String)localObject1, ((StringBuilder)localObject2).toString(), InfoStickerUtils.h(paramLong), InfoStickerUtils.i(paramLong)));
     case 10: 
-      localObject1 = paramItem.l;
+      localObject1 = paramItem.q;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(InfoStickerSaveUtils.b(paramItem));
       ((StringBuilder)localObject2).append(File.separator);
@@ -249,7 +249,7 @@ public class InformationFaceConstant
       ((StringBuilder)localObject3).append("lantingzhonghei.ttf");
       return new TriangleLocationStickerDrawble(paramContext, TriangleLocationStickerDrawble.a(i, (String)localObject2, ((StringBuilder)localObject3).toString(), (String)localObject1));
     case 9: 
-      localObject2 = paramItem.l;
+      localObject2 = paramItem.q;
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         localObject1 = "YOUR CITY";
@@ -276,7 +276,7 @@ public class InformationFaceConstant
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append(File.separator);
-      ((StringBuilder)localObject3).append(paramItem.k);
+      ((StringBuilder)localObject3).append(paramItem.m);
       ((StringBuilder)localObject3).append(".apng");
       localObject3 = ((StringBuilder)localObject3).toString();
       localObject4 = new StringBuilder();
@@ -284,15 +284,15 @@ public class InformationFaceConstant
       ((StringBuilder)localObject4).append(File.separator);
       ((StringBuilder)localObject4).append("temperatureSymbol.png");
       localObject4 = ((StringBuilder)localObject4).toString();
-      String str = paramItem.j;
+      String str = paramItem.l;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append(File.separator);
       localStringBuilder.append("line.png");
       localObject1 = localStringBuilder.toString();
-      int j = paramItem.c;
+      int j = paramItem.n;
       boolean bool;
-      if (paramItem.d == 3) {
+      if (paramItem.o == 3) {
         bool = true;
       } else {
         bool = false;
@@ -310,9 +310,9 @@ public class InformationFaceConstant
       ((StringBuilder)localObject3).append(File.separator);
       ((StringBuilder)localObject3).append("location_icon.png");
       localObject3 = ((StringBuilder)localObject3).toString();
-      localObject1 = paramItem.l;
-      if (TextUtils.isEmpty(paramItem.l)) {
-        localObject1 = HardCodeUtil.a(2064515392);
+      localObject1 = paramItem.q;
+      if (TextUtils.isEmpty(paramItem.q)) {
+        localObject1 = HardCodeUtil.a(2064187679);
       }
       return new EaseInLocationStickerDrawable(paramContext, EaseInLocationStickerDrawable.a(i, (String)localObject1, InfoStickerUtils.f(paramLong), (String)localObject3, (String)localObject2));
     case 4: 
@@ -321,14 +321,14 @@ public class InformationFaceConstant
       ((StringBuilder)localObject1).append(File.separator);
       ((StringBuilder)localObject1).append("Roboto-Condensed.ttf");
       localObject2 = ((StringBuilder)localObject1).toString();
-      localObject1 = paramItem.l;
-      if (TextUtils.isEmpty(paramItem.l)) {
-        localObject1 = HardCodeUtil.a(2064515393);
+      localObject1 = paramItem.q;
+      if (TextUtils.isEmpty(paramItem.q)) {
+        localObject1 = HardCodeUtil.a(2064187680);
       }
       return new Left2RightInfoStickerDrawable(paramContext, Left2RightInfoStickerDrawable.a(i, InfoStickerUtils.b(paramLong), (String)localObject1, (String)localObject2));
     case 3: 
       localObject2 = InfoStickerSaveUtils.b(paramItem);
-      paramItem = InfoStickerUtils.a(paramLong);
+      paramItem = InfoStickerUtils.j(paramLong);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append((String)localObject2);
       ((StringBuilder)localObject1).append(File.separator);
@@ -360,7 +360,7 @@ public class InformationFaceConstant
   
   public static InfoStickerDrawable a(InfoStickerDrawable paramInfoStickerDrawable, Context paramContext, String paramString)
   {
-    switch (paramInfoStickerDrawable.a())
+    switch (paramInfoStickerDrawable.f())
     {
     case 6: 
     case 7: 
@@ -369,26 +369,26 @@ public class InformationFaceConstant
       break;
     case 12: 
       paramInfoStickerDrawable = (FilmDigitInfoStickerDrawable)paramInfoStickerDrawable;
-      return new FilmDigitInfoStickerDrawable(paramContext, FilmDigitInfoStickerDrawable.a(paramInfoStickerDrawable.a(), paramInfoStickerDrawable.a()));
+      return new FilmDigitInfoStickerDrawable(paramContext, FilmDigitInfoStickerDrawable.a(paramInfoStickerDrawable.f(), paramInfoStickerDrawable.a()));
     case 11: 
       paramInfoStickerDrawable = (CalendarTimeStickerDrawable)paramInfoStickerDrawable;
-      return new CalendarTimeStickerDrawable(paramContext, CalendarTimeStickerDrawable.a(paramInfoStickerDrawable.a(), paramInfoStickerDrawable.a(), paramInfoStickerDrawable.b(), InfoStickerUtils.h(-1L), InfoStickerUtils.i(-1L)));
+      return new CalendarTimeStickerDrawable(paramContext, CalendarTimeStickerDrawable.a(paramInfoStickerDrawable.f(), paramInfoStickerDrawable.c(), paramInfoStickerDrawable.d(), InfoStickerUtils.h(-1L), InfoStickerUtils.i(-1L)));
     case 10: 
       paramInfoStickerDrawable = (TriangleLocationStickerDrawble)paramInfoStickerDrawable;
-      return new TriangleLocationStickerDrawble(paramContext, TriangleLocationStickerDrawble.a(paramInfoStickerDrawable.a(), paramInfoStickerDrawable.a(), paramInfoStickerDrawable.b(), paramString));
+      return new TriangleLocationStickerDrawble(paramContext, TriangleLocationStickerDrawble.a(paramInfoStickerDrawable.f(), paramInfoStickerDrawable.a(), paramInfoStickerDrawable.c(), paramString));
     case 9: 
       paramInfoStickerDrawable = (ExpandLocationStickerDrawable)paramInfoStickerDrawable;
-      return new ExpandLocationStickerDrawable(paramContext, ExpandLocationStickerDrawable.a(paramInfoStickerDrawable.a(), paramInfoStickerDrawable.a(), paramString));
+      return new ExpandLocationStickerDrawable(paramContext, ExpandLocationStickerDrawable.a(paramInfoStickerDrawable.f(), paramInfoStickerDrawable.a(), paramString));
     case 5: 
       paramInfoStickerDrawable = (EaseInLocationStickerDrawable)paramInfoStickerDrawable;
-      return new EaseInLocationStickerDrawable(paramContext, EaseInLocationStickerDrawable.a(paramInfoStickerDrawable.a(), paramString, InfoStickerUtils.f(-1L), paramInfoStickerDrawable.a(), paramInfoStickerDrawable.b()));
+      return new EaseInLocationStickerDrawable(paramContext, EaseInLocationStickerDrawable.a(paramInfoStickerDrawable.f(), paramString, InfoStickerUtils.f(-1L), paramInfoStickerDrawable.a(), paramInfoStickerDrawable.c()));
     case 4: 
       paramInfoStickerDrawable = (Left2RightInfoStickerDrawable)paramInfoStickerDrawable;
-      return new Left2RightInfoStickerDrawable(paramContext, Left2RightInfoStickerDrawable.a(paramInfoStickerDrawable.a(), paramInfoStickerDrawable.a(), paramString, paramInfoStickerDrawable.b()));
+      return new Left2RightInfoStickerDrawable(paramContext, Left2RightInfoStickerDrawable.a(paramInfoStickerDrawable.f(), paramInfoStickerDrawable.a(), paramString, paramInfoStickerDrawable.c()));
     case 2: 
-      return new RandomTextDrawable(paramContext, RandomTextDrawable.a(paramInfoStickerDrawable.a(), InfoStickerUtils.b(-1L), InfoStickerUtils.a(-1L)));
+      return new RandomTextDrawable(paramContext, RandomTextDrawable.a(paramInfoStickerDrawable.f(), InfoStickerUtils.b(-1L), InfoStickerUtils.a(-1L)));
     case 1: 
-      return new EaseInInfoStickerDrawable(paramContext, EaseInInfoStickerDrawable.a(paramInfoStickerDrawable.a(), InfoStickerUtils.c(-1L), InfoStickerUtils.d(-1L), InfoStickerUtils.e(-1L)));
+      return new EaseInInfoStickerDrawable(paramContext, EaseInInfoStickerDrawable.a(paramInfoStickerDrawable.f(), InfoStickerUtils.c(-1L), InfoStickerUtils.d(-1L), InfoStickerUtils.e(-1L)));
     }
     return null;
   }
@@ -405,7 +405,7 @@ public class InformationFaceConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.face.InformationFaceConstant
  * JD-Core Version:    0.7.0.1
  */

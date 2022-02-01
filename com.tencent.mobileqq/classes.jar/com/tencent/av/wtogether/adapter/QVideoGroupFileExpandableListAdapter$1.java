@@ -12,7 +12,7 @@ class QVideoGroupFileExpandableListAdapter$1
   
   public void onClick(View paramView)
   {
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((QVideoGroupFileExpandableListAdapter.RecentItemHolder)paramView.getTag()).a;
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((QVideoGroupFileExpandableListAdapter.RecentItemHolder)paramView.getTag()).g;
     Object localObject = localFileManagerEntity.Uuid;
     QVideoGroupFileExpandableListAdapter localQVideoGroupFileExpandableListAdapter = this.a;
     paramView = (View)localObject;
@@ -21,9 +21,9 @@ class QVideoGroupFileExpandableListAdapter$1
     }
     QVideoGroupFileExpandableListAdapter.a(localQVideoGroupFileExpandableListAdapter, paramView);
     this.a.notifyDataSetChanged();
-    if (QVideoGroupFileExpandableListAdapter.a(this.a) != null)
+    if (QVideoGroupFileExpandableListAdapter.b(this.a) != null)
     {
-      localObject = QVideoGroupFileExpandableListAdapter.a(this.a);
+      localObject = QVideoGroupFileExpandableListAdapter.b(this.a);
       if (QVideoGroupFileExpandableListAdapter.a(this.a) != null) {
         paramView = localFileManagerEntity;
       } else {
@@ -35,7 +35,7 @@ class QVideoGroupFileExpandableListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.QVideoGroupFileExpandableListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

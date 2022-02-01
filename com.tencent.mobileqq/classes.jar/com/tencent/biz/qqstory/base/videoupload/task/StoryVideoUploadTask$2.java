@@ -12,13 +12,13 @@ class StoryVideoUploadTask$2
   
   public void a(UploadObject paramUploadObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.l = ((ImageFileObject)paramUploadObject).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    this.a.x = ((ImageFileObject)paramUploadObject).b;
+    this.b.a(1, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask.2
  * JD-Core Version:    0.7.0.1
  */

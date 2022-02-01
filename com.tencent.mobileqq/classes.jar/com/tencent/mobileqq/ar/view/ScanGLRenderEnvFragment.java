@@ -15,7 +15,7 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCol
 public class ScanGLRenderEnvFragment
   extends ScanGLRenderBaseFragment
 {
-  private VideoRecordController a;
+  private VideoRecordController i;
   
   public static ScanGLRenderEnvFragment a(ARArguments paramARArguments)
   {
@@ -26,37 +26,37 @@ public class ScanGLRenderEnvFragment
     return localScanGLRenderEnvFragment;
   }
   
-  private void c()
+  private void d()
   {
     boolean bool = VideoEncoderUtils.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
+      if (this.i == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getQBaseActivity());
-        ARVideoRecordUIControllerImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+        this.i = new VideoRecordController(getQBaseActivity());
+        ARVideoRecordUIControllerImpl.a().a(this.i);
       }
-      UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+      UniformGLRenderManager localUniformGLRenderManager = this.b;
       if (localUniformGLRenderManager != null) {
-        localUniformGLRenderManager.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+        localUniformGLRenderManager.a(this.i);
       }
     }
   }
   
-  private void d()
+  private void e()
   {
     boolean bool = VideoEncoderUtils.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("unInitVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      UniformGLRenderManager localUniformGLRenderManager = this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
+      UniformGLRenderManager localUniformGLRenderManager = this.b;
       if (localUniformGLRenderManager != null) {
         localUniformGLRenderManager.a(null);
       }
-      ARVideoRecordUIControllerImpl.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = null;
+      ARVideoRecordUIControllerImpl.a().b(this.i);
+      if (this.i != null) {
+        this.i = null;
       }
     }
   }
@@ -69,8 +69,8 @@ public class ScanGLRenderEnvFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    c();
-    paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView;
+    d();
+    paramLayoutInflater = this.a;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -78,7 +78,7 @@ public class ScanGLRenderEnvFragment
   public void onDestroy()
   {
     QLog.i("AREngine_ScanGLRenderEnvFragment", 1, "onResume");
-    d();
+    e();
     super.onDestroy();
   }
   
@@ -96,7 +96,7 @@ public class ScanGLRenderEnvFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanGLRenderEnvFragment
  * JD-Core Version:    0.7.0.1
  */

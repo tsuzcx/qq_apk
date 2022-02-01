@@ -49,14 +49,14 @@ public class LiveSingleVideoProteusItem
   private void b(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
   {
     int i;
-    if (paramAbsBaseArticleInfo.mSocialFeedInfo.h == 2) {
+    if (paramAbsBaseArticleInfo.mSocialFeedInfo.o == 2) {
       i = 1;
     } else {
       i = 0;
     }
-    if ((i != 0) && (!Util.b(paramAbsBaseArticleInfo)))
+    if ((i != 0) && (!Util.c(paramAbsBaseArticleInfo)))
     {
-      paramJSONObject.put("user_desc_follow_text", ReadInJoyUtils.a(2131718134));
+      paramJSONObject.put("user_desc_follow_text", ReadInJoyUtils.b(2131915611));
       paramJSONObject.put("is_show_followed", 1);
       paramAbsBaseArticleInfo.showMyFollowText = 1;
       return;
@@ -68,18 +68,18 @@ public class LiveSingleVideoProteusItem
   private void c(AbsBaseArticleInfo paramAbsBaseArticleInfo, JSONObject paramJSONObject)
   {
     paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mKdLiveInfo;
-    if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.jdField_a_of_type_JavaLangString)) {
-      paramJSONObject.put("live_status_bg_url", paramAbsBaseArticleInfo.jdField_a_of_type_JavaLangString);
-    }
     if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.b)) {
-      paramJSONObject.put("live_status_icon_url", paramAbsBaseArticleInfo.b);
+      paramJSONObject.put("live_status_bg_url", paramAbsBaseArticleInfo.b);
     }
-    paramJSONObject.put("live_status_text", paramAbsBaseArticleInfo.c);
-    if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.d)) {
-      paramJSONObject.put("live_hot_icon_url", paramAbsBaseArticleInfo.d);
+    if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.c)) {
+      paramJSONObject.put("live_status_icon_url", paramAbsBaseArticleInfo.c);
     }
-    paramJSONObject.put("live_hot_text", paramAbsBaseArticleInfo.e);
-    paramJSONObject.put("jump_report_info", paramAbsBaseArticleInfo.g);
+    paramJSONObject.put("live_status_text", paramAbsBaseArticleInfo.d);
+    if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.e)) {
+      paramJSONObject.put("live_hot_icon_url", paramAbsBaseArticleInfo.e);
+    }
+    paramJSONObject.put("live_hot_text", paramAbsBaseArticleInfo.f);
+    paramJSONObject.put("jump_report_info", paramAbsBaseArticleInfo.h);
   }
   
   public TemplateBean a(int paramInt, JSONObject paramJSONObject)
@@ -107,7 +107,7 @@ public class LiveSingleVideoProteusItem
       ((JSONObject)localObject).put("article_large_imge_url", paramAbsBaseArticleInfo.mFirstPagePicUrl);
       ((JSONObject)localObject).put("play_icon_url", "rij_multi_video_column_play");
       c(paramAbsBaseArticleInfo, (JSONObject)localObject);
-      paramInt = paramAbsBaseArticleInfo.mKdLiveInfo.jdField_a_of_type_Int;
+      paramInt = paramAbsBaseArticleInfo.mKdLiveInfo.a;
       if (paramInt != 2)
       {
         if (paramInt != 3) {
@@ -136,7 +136,7 @@ public class LiveSingleVideoProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.LiveSingleVideoProteusItem
  * JD-Core Version:    0.7.0.1
  */

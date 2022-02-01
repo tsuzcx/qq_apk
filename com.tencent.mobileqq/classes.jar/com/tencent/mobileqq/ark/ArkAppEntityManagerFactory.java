@@ -131,7 +131,7 @@ public class ArkAppEntityManagerFactory
       localStringBuilder.append("arkapp_");
       localStringBuilder.append(paramString);
       localStringBuilder.append(".db");
-      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), 1);
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, localStringBuilder.toString(), 1);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
@@ -154,7 +154,7 @@ public class ArkAppEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAppEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

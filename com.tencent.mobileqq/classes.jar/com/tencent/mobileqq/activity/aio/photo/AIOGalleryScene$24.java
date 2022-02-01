@@ -14,7 +14,7 @@ class AIOGalleryScene$24
   {
     if (paramInt == 0)
     {
-      View localView = this.a.a().findViewById(2131367440);
+      View localView = this.a.C().findViewById(2131433943);
       if (localView == null) {
         return;
       }
@@ -32,15 +32,15 @@ class AIOGalleryScene$24
     }
     if (3 == paramInt)
     {
-      this.a.a.a().a.i = true;
-      this.a.e.setText("");
-      this.a.u();
+      this.a.c.c().d.j = true;
+      this.a.D.setText("");
+      this.a.E();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.24
  * JD-Core Version:    0.7.0.1
  */

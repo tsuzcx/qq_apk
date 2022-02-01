@@ -16,12 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MsgBackupBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.P;
-  }
+  public static final int a = BannerTypeCollections.Q;
   
   public MsgBackupBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -38,19 +33,14 @@ public class MsgBackupBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("ComicBar", 2, "initComicBar");
     }
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+    paramBanner = new TipsBar(this.f);
     paramBanner.setVisibility(8);
     return paramBanner;
   }
   
-  public void a()
-  {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
-  }
-  
   public void a(Banner paramBanner, Message paramMessage)
   {
-    if (!(paramBanner.a instanceof TipsBar)) {
+    if (!(paramBanner.c instanceof TipsBar)) {
       return;
     }
     if (paramMessage == null) {
@@ -60,8 +50,8 @@ public class MsgBackupBannerProcessor
     {
       String str = (String)paramMessage.obj;
       int i = paramMessage.arg1;
-      paramBanner = (TipsBar)paramBanner.a;
-      paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130839347));
+      paramBanner = (TipsBar)paramBanner.c;
+      paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130839529));
       paramBanner.setTipsText(str);
       paramBanner.setOnClickListener(new MsgBackupBannerProcessor.1(this, i));
       paramBanner.setVisibility(0);
@@ -70,12 +60,17 @@ public class MsgBackupBannerProcessor
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
+  }
+  
+  public void c()
+  {
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MsgBackupBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

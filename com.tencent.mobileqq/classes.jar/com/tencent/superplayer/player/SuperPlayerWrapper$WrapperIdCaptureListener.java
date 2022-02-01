@@ -23,7 +23,7 @@ class SuperPlayerWrapper$WrapperIdCaptureListener
     localStringBuilder.append(" errorCode:");
     localStringBuilder.append(paramInt);
     LogUtil.i(str, localStringBuilder.toString());
-    SuperPlayerWrapper.access$800(this.this$0).onCaptureImageFailed(this.this$0, this.mId, paramInt);
+    SuperPlayerWrapper.access$1200(this.this$0).onCaptureImageFailed(this.this$0, this.mId, paramInt);
   }
   
   public void onCaptureVideoSuccess(Bitmap paramBitmap)
@@ -33,12 +33,12 @@ class SuperPlayerWrapper$WrapperIdCaptureListener
     localStringBuilder.append("inner listener called : onCaptureVideoSuccess id:");
     localStringBuilder.append(this.mId);
     LogUtil.i(str, localStringBuilder.toString());
-    SuperPlayerWrapper.access$800(this.this$0).onCaptureImageSucceed(this.this$0, this.mId, paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap);
+    SuperPlayerWrapper.access$1200(this.this$0).onCaptureImageSucceed(this.this$0, this.mId, paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerWrapper.WrapperIdCaptureListener
  * JD-Core Version:    0.7.0.1
  */

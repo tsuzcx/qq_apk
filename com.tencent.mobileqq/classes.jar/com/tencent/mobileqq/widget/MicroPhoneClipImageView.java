@@ -8,15 +8,10 @@ import android.widget.ImageView;
 public class MicroPhoneClipImageView
   extends ImageView
 {
-  public static final int[] a;
-  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  public static final int[] a = { 3658, 4390, 5182, 6036, 6829, 7621, 8536, 9207 };
   private int[] b = null;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 3658, 4390, 5182, 6036, 6829, 7621, 8536, 9207 };
-  }
+  private boolean c;
+  private ClipDrawable d;
   
   public MicroPhoneClipImageView(Context paramContext)
   {
@@ -38,7 +33,7 @@ public class MicroPhoneClipImageView
   
   private int a(int paramInt)
   {
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = a;
     int k = arrayOfInt.length - 2;
     if (this.b == null)
     {
@@ -73,28 +68,28 @@ public class MicroPhoneClipImageView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)getDrawable());
+    this.d = ((ClipDrawable)getDrawable());
   }
   
   public void setRecordState(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void setSoundWave(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       paramInt = a(paramInt);
-      this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(jdField_a_of_type_ArrayOfInt[paramInt]);
+      this.d.setLevel(a[paramInt]);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(0);
+    this.d.setLevel(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MicroPhoneClipImageView
  * JD-Core Version:    0.7.0.1
  */

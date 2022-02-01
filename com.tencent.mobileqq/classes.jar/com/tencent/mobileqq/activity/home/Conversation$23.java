@@ -11,12 +11,12 @@ class Conversation$23
   
   public void run()
   {
-    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).calcVisibleItemCount(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
+    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).calcVisibleItemCount(Conversation.i(this.this$0).getMeasuredHeight(), Conversation.i(this.this$0).getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.23
  * JD-Core Version:    0.7.0.1
  */

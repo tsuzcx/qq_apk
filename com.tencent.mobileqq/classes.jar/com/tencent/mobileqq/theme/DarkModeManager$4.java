@@ -11,7 +11,7 @@ final class DarkModeManager$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DarkModeManager.a("0X800A5CB");
+    DarkModeManager.b("0X800A5CB");
     if (QLog.isColorLevel()) {
       QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
     }
@@ -24,7 +24,7 @@ final class DarkModeManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.DarkModeManager.4
  * JD-Core Version:    0.7.0.1
  */

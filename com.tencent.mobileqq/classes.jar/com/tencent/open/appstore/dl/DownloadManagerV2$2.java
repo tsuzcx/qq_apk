@@ -11,13 +11,13 @@ class DownloadManagerV2$2
   
   public void run()
   {
-    CommonDataAdapter.a().a().registerReceiver(DownloadManagerV2.a(this.this$0), this.a);
-    CommonDataAdapter.a().a().registerReceiver(DownloadManagerV2.a(this.this$0), this.b);
+    CommonDataAdapter.a().b().registerReceiver(DownloadManagerV2.a(this.this$0), this.a);
+    CommonDataAdapter.a().b().registerReceiver(DownloadManagerV2.b(this.this$0), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.2
  * JD-Core Version:    0.7.0.1
  */

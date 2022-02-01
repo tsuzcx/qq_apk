@@ -17,8 +17,8 @@ public class GivingHeartItemBuilder$QuickBackClickListener
   
   public void onClick(View paramView)
   {
-    MessageForPoke localMessageForPoke = (MessageForPoke)((GivingHeartItemBuilder.Holder)AIOUtils.a(paramView)).a;
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8008913", "0X8008913", 0, 0, "", "", "", "");
+    MessageForPoke localMessageForPoke = (MessageForPoke)((GivingHeartItemBuilder.Holder)AIOUtils.b(paramView)).q;
+    ReportController.b(this.a.d, "CliOper", "", this.a.f.b, "0X8008913", "0X8008913", 0, 0, "", "", "", "");
     int i = localMessageForPoke.interactType;
     if (i != 126)
     {
@@ -27,39 +27,39 @@ public class GivingHeartItemBuilder$QuickBackClickListener
       default: 
         break;
       case 6: 
-        ChatActivityFacade.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 6, "", "");
+        ChatActivityFacade.a(this.a.w, BaseApplicationImpl.getContext(), this.a.f, 6, "", "");
         break;
       case 5: 
-        ChatActivityFacade.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 5, "", "");
+        ChatActivityFacade.a(this.a.w, BaseApplicationImpl.getContext(), this.a.f, 5, "", "");
         break;
       case 4: 
-        ChatActivityFacade.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 4, "", "");
+        ChatActivityFacade.a(this.a.w, BaseApplicationImpl.getContext(), this.a.f, 4, "", "");
         break;
       case 3: 
-        ChatActivityFacade.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 3, "", "");
+        ChatActivityFacade.a(this.a.w, BaseApplicationImpl.getContext(), this.a.f, 3, "", "");
         break;
       case 2: 
-        ChatActivityFacade.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 2, "", "");
+        ChatActivityFacade.a(this.a.w, BaseApplicationImpl.getContext(), this.a.f, 2, "", "");
         break;
       case 1: 
-        ChatActivityFacade.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, "", "");
+        ChatActivityFacade.a(this.a.w, BaseApplicationImpl.getContext(), this.a.f, 1, "", "");
         break;
       case 0: 
-        ChatActivityFacade.a(this.a.b, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, "", "");
+        ChatActivityFacade.a(this.a.w, BaseApplicationImpl.getContext(), this.a.f, 1, "", "");
         break;
       }
     }
-    else if (!PokeItemHelper.a)
+    else if (!PokeItemHelper.l)
     {
-      PokeItemHelper.a = true;
-      PokeItemHelper.a(this.a.b, localMessageForPoke.subId, localMessageForPoke.name, -1, localMessageForPoke.minVersion, 1);
+      PokeItemHelper.l = true;
+      PokeItemHelper.a(this.a.w, localMessageForPoke.subId, localMessageForPoke.name, -1, localMessageForPoke.minVersion, 1);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.QuickBackClickListener
  * JD-Core Version:    0.7.0.1
  */

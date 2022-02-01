@@ -176,15 +176,15 @@ public class GdtTangramModule
       }
       else
       {
-        localParams.c = BaseApplicationImpl.sProcessId;
-        localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(QBaseActivity.sTopActivity);
+        localParams.q = BaseApplicationImpl.sProcessId;
+        localParams.r = new WeakReference(QBaseActivity.sTopActivity);
         if (this.hippyReceiver == null)
         {
           this.hippyReceiver = new GdtAppReceiver();
           this.hippyReceiver.register(BaseApplication.getContext().getApplicationContext());
         }
-        localParams.b = new WeakReference(this.hippyReceiver);
-        localParams.jdField_a_of_type_JavaLangClass = GdtBaseHalfScreenFragmentForJs.class;
+        localParams.s = new WeakReference(this.hippyReceiver);
+        localParams.t = GdtBaseHalfScreenFragmentForJs.class;
       }
     }
     for (;;)
@@ -193,11 +193,11 @@ public class GdtTangramModule
       {
         paramHippyMap = paramHippyMap.getJSONObject("options");
         if (TextUtils.isEmpty(paramHippyMap.getString("refSid"))) {
-          break label235;
+          break label236;
         }
         paramHippyMap = paramHippyMap.getString("refSid");
-        localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-        localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramHippyMap);
+        localParams.p = new Bundle();
+        localParams.p.putString("big_brother_ref_source_key", paramHippyMap);
       }
       catch (JSONException paramHippyMap)
       {
@@ -211,7 +211,7 @@ public class GdtTangramModule
       }
       AdLog.e("GdtTangramModule", "handleClick promise is null");
       return;
-      label235:
+      label236:
       paramHippyMap = null;
     }
   }
@@ -243,53 +243,62 @@ public class GdtTangramModule
     if (paramPromise == null) {
       AdLog.e("GdtTangramModule", "openMotiveVideoAd promise is null");
     }
-    Object localObject1 = new HippyMap();
-    try
+    Object localObject2 = new HippyMap();
+    for (;;)
     {
-      int i = paramHippyMap.getInt("orientation");
-      int j = paramHippyMap.getInt("rewardTime");
-      String str = paramHippyMap.getMap("adInfo").toJSONObject().toString();
-      Object localObject2 = (qq_ad_get.QQAdGetRsp.AdInfo)GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(str));
-      str = paramHippyMap.getString("rewardText");
-      localObject2 = GdtUtil.a((qq_ad_get.QQAdGetRsp.AdInfo)localObject2, GdtUtil.a(i));
-      if (localObject2 != null)
+      try
       {
-        QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-        if (localQBaseActivity != null)
+        int i = paramHippyMap.getInt("orientation");
+        int j = paramHippyMap.getInt("rewardTime");
+        localObject1 = paramHippyMap.getMap("adInfo");
+        if (localObject1 != null)
         {
-          Intent localIntent = localQBaseActivity.getIntent();
-          if (localIntent != null)
+          localObject1 = ((HippyMap)localObject1).toJSONObject().toString();
+          localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo)GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject((String)localObject1));
+          String str = paramHippyMap.getString("rewardText");
+          localObject2 = GdtUtil.a((qq_ad_get.QQAdGetRsp.AdInfo)localObject1, GdtUtil.a(i));
+          if (localObject2 != null)
           {
-            localObject1 = localIntent.getStringExtra("big_brother_ref_source_key");
-            paramHippyMap = (HippyMap)localObject1;
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              paramHippyMap = localIntent.getStringExtra("big_brother_source_key");
+            QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
+            if (localQBaseActivity != null)
+            {
+              Intent localIntent = localQBaseActivity.getIntent();
+              if (localIntent != null)
+              {
+                localObject1 = localIntent.getStringExtra("big_brother_ref_source_key");
+                paramHippyMap = (HippyMap)localObject1;
+                if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                  paramHippyMap = localIntent.getStringExtra("big_brother_source_key");
+                }
+                ((GdtMotiveVideoPageData)localObject2).refId = paramHippyMap;
+              }
             }
-            ((GdtMotiveVideoPageData)localObject2).refId = paramHippyMap;
+            if (j > 0) {
+              ((GdtMotiveVideoPageData)localObject2).setVideoCountDown(j);
+            }
+            if (!TextUtils.isEmpty(str)) {
+              ((GdtMotiveVideoPageData)localObject2).setRewardText(str);
+            }
+            if (paramPromise != null)
+            {
+              ((GdtMotiveVideoPageData)localObject2).setHippyAsyncCallbackId(paramPromise.getCallId());
+              sHippyAsyncCallbackHashMap.put(paramPromise.getCallId(), paramPromise);
+            }
+            ((IGdtAPI)QRoute.api(IGdtAPI.class)).startGdtMotiveVideo(StartGdtMotiveVideoParams.a(localQBaseActivity, (GdtMotiveVideoPageData)localObject2));
           }
+          return;
         }
-        if (j > 0) {
-          ((GdtMotiveVideoPageData)localObject2).setVideoCountDown(j);
-        }
-        if (!TextUtils.isEmpty(str)) {
-          ((GdtMotiveVideoPageData)localObject2).setRewardText(str);
-        }
-        if (paramPromise != null)
-        {
-          ((GdtMotiveVideoPageData)localObject2).setHippyAsyncCallbackId(paramPromise.getCallId());
-          sHippyAsyncCallbackHashMap.put(paramPromise.getCallId(), paramPromise);
-        }
-        ((IGdtAPI)QRoute.api(IGdtAPI.class)).startGdtMotiveVideo(StartGdtMotiveVideoParams.a(localQBaseActivity, (GdtMotiveVideoPageData)localObject2));
       }
-      return;
-    }
-    catch (Exception paramHippyMap)
-    {
-      AdLog.e("GdtTangramModule", "openMotiveVideoAd error ", paramHippyMap);
-      ((HippyMap)localObject1).pushInt("code", 998);
-      if (paramPromise != null) {
-        paramPromise.reject(localObject1);
+      catch (Exception paramHippyMap)
+      {
+        AdLog.e("GdtTangramModule", "openMotiveVideoAd error ", paramHippyMap);
+        ((HippyMap)localObject2).pushInt("code", 998);
+        if (paramPromise != null) {
+          paramPromise.reject(localObject2);
+        }
+        return;
       }
+      Object localObject1 = null;
     }
   }
   
@@ -324,7 +333,7 @@ public class GdtTangramModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.hippy.GdtTangramModule
  * JD-Core Version:    0.7.0.1
  */

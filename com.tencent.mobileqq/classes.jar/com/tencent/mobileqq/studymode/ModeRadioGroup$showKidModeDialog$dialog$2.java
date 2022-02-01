@@ -14,19 +14,19 @@ final class ModeRadioGroup$showKidModeDialog$dialog$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup.getContext()))
+    if (!NetworkUtil.isNetSupport(this.a.getContext()))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup.getContext(), 1, 2131694475, 1).a();
+      QQToast.makeText(this.a.getContext(), 1, 2131892157, 1).show();
       return;
     }
-    if (ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup)) {
-      ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int, true, false, 4, null);
+    if (ModeRadioGroup.b(this.a)) {
+      ModeRadioGroup.a(this.a, this.b, true, false, 4, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeRadioGroup.showKidModeDialog.dialog.2
  * JD-Core Version:    0.7.0.1
  */

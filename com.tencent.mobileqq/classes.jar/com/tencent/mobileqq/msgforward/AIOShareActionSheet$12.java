@@ -16,28 +16,28 @@ class AIOShareActionSheet$12
   public void a()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = 0;
-    localSessionInfo.jdField_a_of_type_JavaLangString = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet.a);
-    localSessionInfo.b = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet.a);
+    localSessionInfo.a = 0;
+    localSessionInfo.b = QFileAssistantUtils.b(this.b.a);
+    localSessionInfo.c = QFileAssistantUtils.b(this.b.a);
     localSessionInfo.a(new Bundle());
-    MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet.a, localSessionInfo, (ArrayList)this.jdField_a_of_type_JavaUtilList);
+    MultiMsgManager.a().a(this.b.a, localSessionInfo, (ArrayList)this.a);
   }
   
   public void b()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = 0;
-    localSessionInfo.jdField_a_of_type_JavaLangString = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet.a);
-    localSessionInfo.b = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet.a);
+    localSessionInfo.a = 0;
+    localSessionInfo.b = QFileAssistantUtils.b(this.b.a);
+    localSessionInfo.c = QFileAssistantUtils.b(this.b.a);
     localSessionInfo.a(new Bundle());
-    MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqMsgforwardAIOShareActionSheet.a, localSessionInfo, (ArrayList)this.jdField_a_of_type_JavaUtilList);
+    MultiMsgManager.a().a(this.b.a, localSessionInfo, (ArrayList)this.a);
   }
   
   public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgforward.AIOShareActionSheet.12
  * JD-Core Version:    0.7.0.1
  */

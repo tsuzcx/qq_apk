@@ -21,12 +21,12 @@ import mqq.app.AppRuntime;
 public class AssistantPanelManager
   implements View.OnClickListener, IPanelSlideListener
 {
-  private VoicePanelContainer jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private VoicePanelContainer a;
+  private AtomicBoolean b = new AtomicBoolean(false);
   
   private void a(boolean paramBoolean)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer, "translationY", new float[] { 0.0F, -100.0F, ScreenUtil.getRealHeight(AssistantUtils.a()) });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.a, "translationY", new float[] { 0.0F, -100.0F, ScreenUtil.getRealHeight(AssistantUtils.d()) });
     localObjectAnimator.setDuration(500L);
     localObjectAnimator.setInterpolator(new DecelerateAccelerateInterpolator());
     localObjectAnimator.addListener(new AssistantPanelManager.1(this, paramBoolean));
@@ -36,15 +36,15 @@ public class AssistantPanelManager
   private void b(boolean paramBoolean)
   {
     Object localObject;
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    if (this.b.compareAndSet(true, false))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer;
+      localObject = this.a;
       if (localObject != null)
       {
         ((VoicePanelContainer)localObject).setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.removeAllViews();
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.b();
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer = null;
+        this.a.removeAllViews();
+        this.a.b();
+        this.a = null;
       }
     }
     if (paramBoolean)
@@ -56,20 +56,20 @@ public class AssistantPanelManager
     }
   }
   
-  private void c()
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer, "translationY", new float[] { ScreenUtil.getRealHeight(AssistantUtils.a()), 0.0F, -100.0F, 50.0F, 0.0F });
-    localObjectAnimator.setDuration(800L);
-    localObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localObjectAnimator.start();
-  }
-  
   private void c(boolean paramBoolean)
   {
-    IVoiceAssistantCore localIVoiceAssistantCore = (IVoiceAssistantCore)AssistantUtils.a().getRuntimeService(IVoiceAssistantCore.class, "");
+    IVoiceAssistantCore localIVoiceAssistantCore = (IVoiceAssistantCore)AssistantUtils.c().getRuntimeService(IVoiceAssistantCore.class, "");
     if (localIVoiceAssistantCore != null) {
       localIVoiceAssistantCore.quiteVoicePanel(paramBoolean, false);
     }
+  }
+  
+  private void d()
+  {
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.a, "translationY", new float[] { ScreenUtil.getRealHeight(AssistantUtils.d()), 0.0F, -100.0F, 50.0F, 0.0F });
+    localObjectAnimator.setDuration(800L);
+    localObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localObjectAnimator.start();
   }
   
   public int a(View paramView)
@@ -81,37 +81,37 @@ public class AssistantPanelManager
       }
       return 2;
     }
-    if (!((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).checkPermission(AssistantUtils.a())) {
+    if (!((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).checkPermission(AssistantUtils.d())) {
       return 1;
     }
-    if (a()) {
+    if (b()) {
       a(false, false);
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    if (this.b.compareAndSet(false, true))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer = new VoicePanelContainer(AssistantUtils.a());
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.setOnClickListener(this);
+        this.a = new VoicePanelContainer(AssistantUtils.d());
+        this.a.setOnClickListener(this);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer != null)
+      if (this.a != null)
       {
-        View localView = paramView.findViewById(2131377657);
+        View localView = paramView.findViewById(2131446076);
         if ((localView instanceof VoicePanelSlideContainer)) {
           ((VoicePanelSlideContainer)localView).setPanelSlideListener(this);
         }
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.addView(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer.a();
+        this.a.addView(paramView);
+        this.a.setVisibility(0);
+        this.a.a();
       }
-      c();
+      d();
     }
     return 0;
   }
   
   public void a()
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqQassistantViewVoicePanelContainer, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.a, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
     localObjectAnimator.setDuration(800L);
     localObjectAnimator.start();
   }
@@ -126,12 +126,12 @@ public class AssistantPanelManager
     b(paramBoolean2);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.b.get();
   }
   
-  public void b()
+  public void c()
   {
     c(false);
     ReportUtils.d(1);
@@ -139,7 +139,7 @@ public class AssistantPanelManager
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131380984)
+    if (paramView.getId() == 2131449975)
     {
       c(true);
       ReportUtils.d(2);
@@ -149,7 +149,7 @@ public class AssistantPanelManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.AssistantPanelManager
  * JD-Core Version:    0.7.0.1
  */

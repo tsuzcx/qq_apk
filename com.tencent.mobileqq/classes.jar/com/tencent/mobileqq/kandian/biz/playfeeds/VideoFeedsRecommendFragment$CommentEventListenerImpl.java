@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.playfeeds;
 
+import com.tencent.mobileqq.kandian.base.view.widget.LifeCycleCallBack;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.api.IVideoFeedsItemUIDelegate;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.view.VideoFeedsRecyclerView;
 import com.tencent.mobileqq.kandian.biz.video.playfeeds.viewholder.VideoItemHolder;
@@ -16,36 +17,36 @@ class VideoFeedsRecommendFragment$CommentEventListenerImpl
   
   public void a(boolean paramBoolean)
   {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).a.d(paramBoolean);
+    if (VideoFeedsRecommendFragment.g(this.a) != null) {
+      VideoFeedsRecommendFragment.g(this.a).aA.e(paramBoolean);
     }
     if (paramBoolean)
     {
-      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getBaseActivity(), false);
+      VideoFeedsRecommendFragment.c(this.a).setNeedDetectOrientation(this.a.getBaseActivity(), false);
     }
     else
     {
       VideoFeedsRecommendFragment localVideoFeedsRecommendFragment = this.a;
-      VideoFeedsRecommendFragment.a(localVideoFeedsRecommendFragment, VideoFeedsRecommendFragment.a(localVideoFeedsRecommendFragment));
+      VideoFeedsRecommendFragment.a(localVideoFeedsRecommendFragment, VideoFeedsRecommendFragment.g(localVideoFeedsRecommendFragment));
     }
-    if (!VideoFeedsRecommendFragment.a(this.a))
+    if (!VideoFeedsRecommendFragment.k(this.a))
     {
-      VideoFeedsRecommendFragment.a(this.a).setScrollable(paramBoolean ^ true);
-      if ((!paramBoolean) && (VideoFeedsRecommendFragment.b(this.a)))
+      VideoFeedsRecommendFragment.c(this.a).setScrollable(paramBoolean ^ true);
+      if ((!paramBoolean) && (VideoFeedsRecommendFragment.l(this.a)))
       {
-        VideoFeedsRecommendFragment.a(this.a).a();
+        VideoFeedsRecommendFragment.c(this.a).b();
         VideoFeedsRecommendFragment.a(this.a, false);
       }
     }
     this.a.a(paramBoolean ^ true);
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
+    if (VideoFeedsRecommendFragment.m(this.a) != null) {
+      VideoFeedsRecommendFragment.m(this.a).a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.CommentEventListenerImpl
  * JD-Core Version:    0.7.0.1
  */

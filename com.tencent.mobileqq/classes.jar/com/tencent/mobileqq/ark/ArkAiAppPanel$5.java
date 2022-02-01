@@ -14,20 +14,20 @@ class ArkAiAppPanel$5
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject = ArkAiAppPanel.a(this.a).getSelectedView();
+    Object localObject = ArkAiAppPanel.b(this.a).getSelectedView();
     if (localObject != null) {
       ((View)localObject).setSelected(false);
     }
-    ArkAiAppPanel.a(this.a).setSelection(paramInt);
-    localObject = ArkAiAppPanel.a(this.a).getSelectedView();
+    ArkAiAppPanel.b(this.a).setSelection(paramInt);
+    localObject = ArkAiAppPanel.b(this.a).getSelectedView();
     if (localObject != null) {
       ((View)localObject).setSelected(true);
     }
     ArkAiAppPanel.a(this.a, paramInt);
-    ArkAiAppPanel.a(this.a, true);
-    if ((ArkAiAppPanel.a(this.a) != null) && (ArkAiAppPanel.a(this.a).size() > 0) && (ArkAiAppPanel.a(this.a).size() > ArkAiAppPanel.a(this.a)))
+    ArkAiAppPanel.b(this.a, true);
+    if ((ArkAiAppPanel.f(this.a) != null) && (ArkAiAppPanel.f(this.a).size() > 0) && (ArkAiAppPanel.f(this.a).size() > ArkAiAppPanel.c(this.a)))
     {
-      localObject = (ArkAiInfo)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a));
+      localObject = (ArkAiInfo)ArkAiAppPanel.f(this.a).get(ArkAiAppPanel.c(this.a));
       if (localObject != null) {
         ArkAppDataReport.a(null, ((ArkAiInfo)localObject).a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
       }
@@ -37,7 +37,7 @@ class ArkAiAppPanel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiAppPanel.5
  * JD-Core Version:    0.7.0.1
  */

@@ -35,18 +35,7 @@ public class FilterMsgBoxUtil
   
   public static long a()
   {
-    return a().getLong("filter_msg_time", 0L);
-  }
-  
-  private static SharedPreferences a()
-  {
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    String str = localAppRuntime.getAccount();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("file_filter_msg");
-    localStringBuilder.append(str);
-    str = localStringBuilder.toString();
-    return localAppRuntime.getApp().getSharedPreferences(str, 0);
+    return b().getLong("filter_msg_time", 0L);
   }
   
   public static List<RecentUser> a(AppInterface paramAppInterface)
@@ -77,7 +66,7 @@ public class FilterMsgBoxUtil
       localStringBuilder.append("]");
       QLog.d("FilterMsgBoxUtil", 2, localStringBuilder.toString());
     }
-    a().edit().putLong("filter_msg_time", paramLong).apply();
+    b().edit().putLong("filter_msg_time", paramLong).apply();
   }
   
   public static void a(AppInterface paramAppInterface, boolean paramBoolean)
@@ -94,13 +83,24 @@ public class FilterMsgBoxUtil
     if (localList.isEmpty())
     {
       paramAppInterface = ((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-      paramAppInterface.a(paramAppInterface.a(AppConstants.FILTER_MSG_UIN, 10012), paramBoolean);
+      paramAppInterface.a(paramAppInterface.b(AppConstants.FILTER_MSG_UIN, 10012), paramBoolean);
     }
+  }
+  
+  private static SharedPreferences b()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    String str = localAppRuntime.getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_filter_msg");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    return localAppRuntime.getApp().getSharedPreferences(str, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.FilterMsgBoxUtil
  * JD-Core Version:    0.7.0.1
  */

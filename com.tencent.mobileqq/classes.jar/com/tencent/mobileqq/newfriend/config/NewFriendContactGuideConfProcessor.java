@@ -14,7 +14,7 @@ public class NewFriendContactGuideConfProcessor
 {
   public static NewFriendContactGuideConfBean a()
   {
-    NewFriendContactGuideConfBean localNewFriendContactGuideConfBean = (NewFriendContactGuideConfBean)QConfigManager.a().a(458);
+    NewFriendContactGuideConfBean localNewFriendContactGuideConfBean = (NewFriendContactGuideConfBean)QConfigManager.b().b(458);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -99,7 +99,7 @@ public class NewFriendContactGuideConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.config.NewFriendContactGuideConfProcessor
  * JD-Core Version:    0.7.0.1
  */

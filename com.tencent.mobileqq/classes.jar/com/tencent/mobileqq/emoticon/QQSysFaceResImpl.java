@@ -3,9 +3,9 @@ package com.tencent.mobileqq.emoticon;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.data.AniStickerInfo;
 import com.tencent.mobileqq.jsonconverter.JSONConverter;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -24,9 +24,41 @@ public class QQSysFaceResImpl
 {
   private static final String CATEGORY_NAME = "sysface";
   private static final String QZONE_CHI_GUA = "/吃瓜";
+  public static final int SYSFACE_ANISTICKER = 1;
+  public static final int SYSFACE_NORMAL = 0;
+  public static final int SYSFACE_RANDOM = 2;
   public static final String TAG = "QQSysFaceResInfo";
   private int mMaxLocalId;
   private int mMaxServerId;
+  
+  public AniStickerInfo getAniStickerInfo(int paramInt)
+  {
+    if ((this.mConfigItemMap != null) && (this.mConfigItemMap.containsKey(Integer.valueOf(paramInt))))
+    {
+      QQSysAndEmojiResInfo.QQEmoConfigItem localQQEmoConfigItem = (QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt));
+      AniStickerInfo localAniStickerInfo = new AniStickerInfo();
+      localAniStickerInfo.convert(localQQEmoConfigItem);
+      return localAniStickerInfo;
+    }
+    return null;
+  }
+  
+  public int getAniStickerType(int paramInt)
+  {
+    if (this.mConfigItemMap == null) {
+      return 0;
+    }
+    Object localObject = (QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt));
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("item is null. localId: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.e("QQSysFaceResInfo", 2, ((StringBuilder)localObject).toString());
+      return 0;
+    }
+    return ((QQSysAndEmojiResInfo.QQEmoConfigItem)localObject).AniStickerType;
+  }
   
   public String getDescription(int paramInt)
   {
@@ -69,7 +101,7 @@ public class QQSysFaceResImpl
       localURL2 = localURL1;
     }
     label117:
-    return getUrlDrawable(localURL2, null, false, String.valueOf(paramInt));
+    return getUrlDrawable(localURL2, QQSysFaceUtil.getFaceDrawableFromLocal(paramInt), false, String.valueOf(paramInt));
   }
   
   public String getEMCode(int paramInt)
@@ -83,41 +115,37 @@ public class QQSysFaceResImpl
   public Drawable getGifDrawable(int paramInt)
   {
     int i = QQSysFaceUtil.convertToServer(paramInt);
-    Object localObject3 = null;
-    Object localObject2;
+    URL localURL1;
+    URL localURL2;
     try
     {
-      localObject1 = new URL("qqsys_emoji", "host_qqsys_gif", String.format("s%d.gif", new Object[] { Integer.valueOf(i) }));
-      localObject2 = localObject1;
+      localURL1 = new URL("qqsys_emoji", "host_qqsys_gif", String.format("s%d.gif", new Object[] { Integer.valueOf(i) }));
+      localURL2 = localURL1;
       try
       {
         if (!QLog.isColorLevel()) {
-          break label120;
+          break label117;
         }
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("getGifDrawable url:");
-        ((StringBuilder)localObject2).append(((URL)localObject1).toString());
-        QLog.d("QQSysFaceResInfo", 2, ((StringBuilder)localObject2).toString());
-        localObject2 = localObject1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getGifDrawable url:");
+        localStringBuilder.append(localURL1.toString());
+        QLog.d("QQSysFaceResInfo", 2, localStringBuilder.toString());
+        localURL2 = localURL1;
       }
       catch (MalformedURLException localMalformedURLException1) {}
-      localObject2 = localObject1;
+      localURL2 = localURL1;
     }
     catch (MalformedURLException localMalformedURLException2)
     {
-      localObject1 = null;
+      localURL1 = null;
     }
     if (QLog.isColorLevel())
     {
       QLog.d("QQSysFaceResInfo", 2, "getGifDrawable ", localMalformedURLException2);
-      localObject2 = localObject1;
+      localURL2 = localURL1;
     }
-    label120:
-    Object localObject1 = localObject3;
-    if (paramInt < EmotcationConstants.VALID_SYS_EMOTCATION_COUNT) {
-      localObject1 = QQSysFaceUtil.getFaceDrawable(paramInt);
-    }
-    return getUrlDrawable((URL)localObject2, (Drawable)localObject1, true, Integer.toString(paramInt));
+    label117:
+    return getUrlDrawable(localURL2, QQSysFaceUtil.getFaceDrawableFromLocal(paramInt), true, Integer.toString(paramInt));
   }
   
   public int getMaxLocalId()
@@ -161,7 +189,7 @@ public class QQSysFaceResImpl
     if ((this.mConfigItemMap != null) && (this.mConfigItemMap.containsKey(Integer.valueOf(paramInt)))) {
       return "1".equals(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.mConfigItemMap.get(Integer.valueOf(paramInt))).isStatic);
     }
-    return EmotcationConstants.STATIC_SYS_EMOTCATION_RESOURCE[paramInt] == EmotcationConstants.STATIC_SYS_EMO_GIF_RES[paramInt];
+    return com.tencent.mobileqq.text.EmotcationConstants.STATIC_SYS_EMOTCATION_RESOURCE[paramInt] == com.tencent.mobileqq.text.EmotcationConstants.STATIC_SYS_EMO_GIF_RES[paramInt];
   }
   
   public void parseConfigData()
@@ -296,7 +324,7 @@ public class QQSysFaceResImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysFaceResImpl
  * JD-Core Version:    0.7.0.1
  */

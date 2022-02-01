@@ -34,41 +34,41 @@ public class VerifyPhoneNumActivity
   implements View.OnClickListener
 {
   protected Dialog a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new VerifyPhoneNumActivity.1(this);
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = new VerifyPhoneNumActivity.6(this);
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private String jdField_a_of_type_JavaLangString;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new VerifyPhoneNumActivity.5(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private Handler jdField_b_of_type_AndroidOsHandler = new Handler();
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e = null;
+  WtloginObserver b = new VerifyPhoneNumActivity.5(this);
+  private ViewGroup c;
+  private Button d;
+  private Button e;
+  private TextView f;
+  private String g;
+  private String h;
+  private String i;
+  private String j;
+  private byte[] k = null;
+  private String l = null;
+  private boolean m = false;
+  private Handler n = new VerifyPhoneNumActivity.1(this);
+  private ContactBindObserver o = new VerifyPhoneNumActivity.6(this);
+  private Handler p = new Handler();
+  private QQProgressDialog q;
   
   private void b()
   {
     this.leftView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363872));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363987));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380016));
+    this.d = ((Button)this.c.findViewById(2131429820));
+    this.d.setOnClickListener(this);
+    this.e = ((Button)this.c.findViewById(2131429944));
+    this.e.setOnClickListener(this);
+    this.f = ((TextView)this.c.findViewById(2131448920));
     try
     {
-      if ((this.c != null) && (this.c.length() > 4))
+      if ((this.i != null) && (this.i.length() > 4))
       {
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("***");
-        ((StringBuilder)localObject).append(this.c.substring(this.c.length() - 4, this.c.length()));
+        ((StringBuilder)localObject).append(this.i.substring(this.i.length() - 4, this.i.length()));
         localObject = ((StringBuilder)localObject).toString();
-        localObject = getString(2131694785, new Object[] { this.jdField_a_of_type_JavaLangString, localObject, this.d });
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        localObject = getString(2131892488, new Object[] { this.g, localObject, this.j });
+        this.f.setText((CharSequence)localObject);
         return;
       }
     }
@@ -81,8 +81,8 @@ public class VerifyPhoneNumActivity
   private void c()
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("uin", this.d);
-    localIntent.putExtra("password", this.e);
+    localIntent.putExtra("uin", this.j);
+    localIntent.putExtra("password", this.l);
     localIntent.putExtra("tab_index", FrameControllerUtil.a);
     localIntent.addFlags(131072);
     RouteUtils.a(this, localIntent, "/base/login");
@@ -91,7 +91,7 @@ public class VerifyPhoneNumActivity
   
   private void d()
   {
-    ContactBindServlet.a(this.app, this.jdField_a_of_type_ArrayOfByte, this.d);
+    ContactBindServlet.a(this.app, this.k, this.j);
   }
   
   private void e()
@@ -100,14 +100,14 @@ public class VerifyPhoneNumActivity
       QLog.d("VerifyPhoneNumActivity", 4, "startLogin");
     }
     PhoneNumLoginImpl.a().a(true);
-    int i = PhoneNumLoginImpl.a().b(this.app, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
-    if (i != 0)
+    int i1 = PhoneNumLoginImpl.a().b(this.app, this.h, this.g, this.b);
+    if (i1 != 0)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("startLogin.GetStViaSMSVerifyLogin ret =");
-        localStringBuilder.append(i);
+        localStringBuilder.append(i1);
         QLog.d("VerifyPhoneNumActivity", 4, localStringBuilder.toString());
       }
       h();
@@ -130,19 +130,19 @@ public class VerifyPhoneNumActivity
   
   private void g()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new VerifyPhoneNumActivity.7(this));
+    this.p.post(new VerifyPhoneNumActivity.7(this));
   }
   
   private void h()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new VerifyPhoneNumActivity.8(this));
+    this.p.post(new VerifyPhoneNumActivity.8(this));
   }
   
   protected void a()
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new VerifyPhoneNumActivity.2(this));
+      this.n.post(new VerifyPhoneNumActivity.2(this));
       return;
     }
     catch (Exception localException)
@@ -163,17 +163,17 @@ public class VerifyPhoneNumActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2131563020));
-    setTitle(2131694834);
-    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("phonenum");
-    this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("key");
-    this.c = getIntent().getStringExtra("key_register_binduin");
-    this.d = getIntent().getStringExtra("uin");
-    this.jdField_a_of_type_ArrayOfByte = getIntent().getByteArrayExtra("key_register_sign");
-    this.e = getIntent().getStringExtra("key_register_password");
-    this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
+    this.c = ((ViewGroup)setContentViewB(2131629628));
+    setTitle(2131892537);
+    this.g = getIntent().getStringExtra("phonenum");
+    this.h = getIntent().getStringExtra("key");
+    this.i = getIntent().getStringExtra("key_register_binduin");
+    this.j = getIntent().getStringExtra("uin");
+    this.k = getIntent().getByteArrayExtra("key_register_sign");
+    this.l = getIntent().getStringExtra("key_register_password");
+    this.app.registObserver(this.o);
     b();
-    setRightButton(2131690728, this);
+    setRightButton(2131887648, this);
     return true;
   }
   
@@ -189,18 +189,18 @@ public class VerifyPhoneNumActivity
     if (isFinishing()) {
       return;
     }
-    if (!PhoneNumLoginImpl.a().a())
+    if (!PhoneNumLoginImpl.a().b())
     {
       QLog.d("VerifyPhoneNumActivity", 4, "onAccountChanged not phonenum login");
       return;
     }
-    this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
+    this.app.unRegistObserver(this.o);
     this.app = ((QQAppInterface)getAppRuntime());
-    this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
-    if (this.jdField_a_of_type_Boolean)
+    this.app.registObserver(this.o);
+    if (this.m)
     {
       this.app.execute(new VerifyPhoneNumActivity.4(this));
-      QQToast.a(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131715805), 0).a();
+      QQToast.makeText(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131913262), 0).show();
     }
     BusinessUtils.a(this.app, this.app.getAccount());
     f();
@@ -209,12 +209,12 @@ public class VerifyPhoneNumActivity
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131363872)
+    int i1 = paramView.getId();
+    if (i1 != 2131429820)
     {
-      if (i != 2131363987)
+      if (i1 != 2131429944)
       {
-        if (i == 2131369233)
+        if (i1 == 2131436211)
         {
           c();
           finish();
@@ -245,12 +245,12 @@ public class VerifyPhoneNumActivity
   {
     super.onDestroy();
     a();
-    this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
+    this.app.unRegistObserver(this.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyPhoneNumActivity
  * JD-Core Version:    0.7.0.1
  */

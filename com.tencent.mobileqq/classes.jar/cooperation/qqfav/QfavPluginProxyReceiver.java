@@ -12,17 +12,17 @@ public class QfavPluginProxyReceiver
   public static void a(AppRuntime paramAppRuntime, Intent paramIntent)
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qqfav.apk";
-    localPluginParams.e = "qqfav.apk";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams.f = "com.qqfav.ipc.QfavPluginReceiver";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localPluginParams.d = "qqfav.apk";
+    localPluginParams.g = "qqfav.apk";
+    localPluginParams.c = paramAppRuntime.getAccount();
+    localPluginParams.h = "com.qqfav.ipc.QfavPluginReceiver";
+    localPluginParams.j = paramIntent;
     IPluginManager.b(paramAppRuntime.getApplication(), localPluginParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.QfavPluginProxyReceiver
  * JD-Core Version:    0.7.0.1
  */

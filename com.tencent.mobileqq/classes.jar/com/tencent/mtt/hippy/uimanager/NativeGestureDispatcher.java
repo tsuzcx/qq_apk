@@ -27,14 +27,14 @@ public class NativeGestureDispatcher
   private static final String KEY_TAG_ID = "id";
   private static final String TAG = "NativeGestureDispatcher";
   private static final int TAP_TIMEOUT = ;
-  private static View.OnAttachStateChangeListener mOnAttachedToWindowListener = new NativeGestureDispatcher.3();
-  private static View.OnClickListener mOnClickListener = new NativeGestureDispatcher.1();
-  private static View.OnAttachStateChangeListener mOnDetachedFromWindowListener = new NativeGestureDispatcher.4();
-  private static View.OnLongClickListener mOnLongClickListener = new NativeGestureDispatcher.2();
+  private static final View.OnAttachStateChangeListener mOnAttachedToWindowListener = new NativeGestureDispatcher.3();
+  private static final View.OnClickListener mOnClickListener = new NativeGestureDispatcher.1();
+  private static final View.OnAttachStateChangeListener mOnDetachedFromWindowListener = new NativeGestureDispatcher.4();
+  private static final View.OnLongClickListener mOnLongClickListener = new NativeGestureDispatcher.2();
   private HippyEngineContext mEngineContext;
   private g mGestureProcessor;
   private HashSet<String> mGestureTypes = null;
-  private View mTargetView;
+  private final View mTargetView;
   
   public NativeGestureDispatcher(View paramView)
   {
@@ -267,7 +267,7 @@ public class NativeGestureDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.NativeGestureDispatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -13,26 +13,26 @@ class GiftPackageDialog$2
   
   public void a(GiftServiceBean paramGiftServiceBean)
   {
-    String str = GiftPackageDialog.b(this.a).getText().toString();
+    String str = GiftPackageDialog.c(this.a).getText().toString();
     if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
     {
       GiftPackageDialog.b(this.a, paramGiftServiceBean);
-      GiftPackageDialog.b(this.a).setText(paramGiftServiceBean.t);
-      if (GiftPackageDialog.a(this.a)) {
+      GiftPackageDialog.c(this.a).setText(paramGiftServiceBean.t);
+      if (GiftPackageDialog.b(this.a)) {
         GiftPackageDialog.c(this.a, null);
       }
-      GiftPackageDialog.c(this.a).setText("");
-      if (GiftPackageDialog.c(this.a) != null) {
-        GiftPackageDialog.c(this.a).clear();
+      GiftPackageDialog.d(this.a).setText("");
+      if (GiftPackageDialog.h(this.a) != null) {
+        GiftPackageDialog.h(this.a).clear();
       }
-      GiftPackageDialog.a(this.a);
+      GiftPackageDialog.g(this.a);
       ThreadManager.executeOnNetWorkThread(new GiftPackageDialog.2.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.2
  * JD-Core Version:    0.7.0.1
  */

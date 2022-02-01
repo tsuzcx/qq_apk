@@ -11,14 +11,15 @@ class ChatSettingActivity$27
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    this.a.finish();
+    if ((ChatSettingActivity.x(this.a) != null) && (ChatSettingActivity.x(this.a).isShowing())) {
+      ChatSettingActivity.x(this.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.27
  * JD-Core Version:    0.7.0.1
  */

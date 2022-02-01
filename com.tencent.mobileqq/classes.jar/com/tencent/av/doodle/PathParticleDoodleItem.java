@@ -6,36 +6,35 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class PathParticleDoodleItem
   extends PathDoodleItem
 {
-  private PathParticleEffect a;
+  private PathParticleEffect l = new PathParticleEffect();
   
   public PathParticleDoodleItem(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect = new PathParticleEffect();
     a(paramInt);
   }
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(BaseApplication.getContext(), 2131230739, paramInt);
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(this.jdField_a_of_type_AndroidGraphicsPathMeasure);
+    this.l.a(BaseApplication.getContext(), 2131230807, paramInt);
+    this.l.a(this.k);
   }
   
   public void a() {}
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a((float)paramLong / 1000.0F);
+    this.l.a((float)paramLong / 1000.0F);
   }
   
   public void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(paramCanvas);
+    this.l.a(paramCanvas);
   }
   
-  public void c(float paramFloat1, float paramFloat2)
+  public void d(float paramFloat1, float paramFloat2)
   {
-    super.c(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(null);
+    super.d(paramFloat1, paramFloat2);
+    this.l.a(null);
   }
 }
 

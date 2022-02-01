@@ -17,7 +17,7 @@ public class RockDownloaderProxy
     localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
     localRockDownloaderTask.setTaskCheckLevel(1);
     localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return RockDownloader.a(localRockDownloaderTask);
+    return RockDownloader.c(localRockDownloaderTask);
   }
   
   public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable QueryAPKListener paramQueryAPKListener)
@@ -36,7 +36,7 @@ public class RockDownloaderProxy
     {
       if (paramRockDownloadListener != null)
       {
-        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, HardCodeUtil.a(2131713416), 10009);
+        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, HardCodeUtil.a(2131910967), 10009);
         paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
       }
       return;
@@ -49,27 +49,27 @@ public class RockDownloaderProxy
     RockDownloader.a(localRockDownloaderTask);
   }
   
-  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
-  {
-    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
-    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
-    localRockDownloaderTask.setTaskCheckLevel(1);
-    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return RockDownloader.b(localRockDownloaderTask);
-  }
-  
   public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
   {
     RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
     localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
     localRockDownloaderTask.setTaskCheckLevel(1);
     localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
-    return RockDownloader.a(localRockDownloaderTask);
+    return RockDownloader.e(localRockDownloaderTask);
+  }
+  
+  public static boolean c(@Nonnull RockDownloadInfo paramRockDownloadInfo)
+  {
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return RockDownloader.d(localRockDownloaderTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderProxy
  * JD-Core Version:    0.7.0.1
  */

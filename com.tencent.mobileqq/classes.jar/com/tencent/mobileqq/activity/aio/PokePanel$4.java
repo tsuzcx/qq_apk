@@ -35,9 +35,9 @@ class PokePanel$4
     {
       str = ((Bundle)localObject).getString("name");
       localObject = ((Bundle)localObject).getString("minVersion");
-      ChatActivityFacade.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, i, str, (String)localObject);
-      if (true == PokeItemHelper.a) {
-        PokeItemHelper.a = false;
+      ChatActivityFacade.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.c(this.a), 126, i, str, (String)localObject);
+      if (true == PokeItemHelper.l) {
+        PokeItemHelper.l = false;
       }
     }
     for (;;)
@@ -45,33 +45,33 @@ class PokePanel$4
       break;
       long l = ((Bundle)localObject).getLong("result");
       str = ((Bundle)localObject).getString("msg");
-      this.a.a = ((Bundle)localObject).getInt("id", 0);
-      localObject = HardCodeUtil.a(2131708318);
+      this.a.j = ((Bundle)localObject).getInt("id", 0);
+      localObject = HardCodeUtil.a(2131906107);
       if (l == 0L)
       {
-        this.a.b = 1;
-        if (true == PokeItemHelper.a) {
-          PokeItemHelper.a = false;
+        this.a.k = 1;
+        if (true == PokeItemHelper.l) {
+          PokeItemHelper.l = false;
         }
         return;
       }
       if (l == 4002L)
       {
-        this.a.b = 2;
-        str = HardCodeUtil.a(2131708321);
+        this.a.k = 2;
+        str = HardCodeUtil.a(2131906109);
       }
       for (;;)
       {
         break;
         if (l == 5002L)
         {
-          this.a.b = 4;
-          str = HardCodeUtil.a(2131708320);
+          this.a.k = 4;
+          str = HardCodeUtil.a(2131906108);
         }
         else
         {
-          this.a.b = 1;
-          localObject = HardCodeUtil.a(2131708319);
+          this.a.k = 1;
+          localObject = HardCodeUtil.a(2131899883);
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("vas poke auth fail, result: ");
           localStringBuilder.append(l);
@@ -80,7 +80,7 @@ class PokePanel$4
       }
       if (l != 0L)
       {
-        PokeItemHelper.a(PokePanel.a(this.a), (Activity)this.a.getContext(), str, (String)localObject, this.a.a, this.a.b);
+        PokeItemHelper.a(PokePanel.a(this.a), (Activity)this.a.getContext(), str, (String)localObject, this.a.j, this.a.k);
         VasWebviewUtil.a("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(i), paramObject, "", "", "", "", 0, 0, 0, 0);
       }
     }
@@ -96,7 +96,7 @@ class PokePanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokePanel.4
  * JD-Core Version:    0.7.0.1
  */

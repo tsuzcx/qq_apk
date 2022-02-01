@@ -102,7 +102,7 @@ public class QzoneUiJsPlugin
         paramString = paramString.getString("timestamp");
         if (!TextUtils.isEmpty(paramString))
         {
-          this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneUiJsPlugin.3(this, paramString));
+          this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneUiJsPlugin.3(this, paramString));
           return;
         }
       }
@@ -148,12 +148,12 @@ public class QzoneUiJsPlugin
       }
       if (i == 0)
       {
-        QZoneVideoCommonUtils.gotoRecordPreview(this.parentPlugin.mRuntime.a(), i, paramString, l2, localBundle);
+        QZoneVideoCommonUtils.gotoRecordPreview(this.parentPlugin.mRuntime.d(), i, paramString, l2, localBundle);
         return;
       }
       if (i == 1)
       {
-        QZoneHelper.forwardToPreviewLocalView(this.parentPlugin.mRuntime.a(), QZoneHelper.UserInfo.getInstance(), i, paramString, l1, l2 + l1);
+        QZoneHelper.forwardToPreviewLocalView(this.parentPlugin.mRuntime.d(), QZoneHelper.UserInfo.getInstance(), i, paramString, l1, l2 + l1);
         return;
       }
     }
@@ -206,7 +206,7 @@ public class QzoneUiJsPlugin
         {
           localObject2 = ((JSONObject)localObject2).optString("videoPath");
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneUiJsPlugin.1(this, (String)localObject2));
+            this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneUiJsPlugin.1(this, (String)localObject2));
           }
         }
         localObject2 = new Intent();
@@ -232,8 +232,8 @@ public class QzoneUiJsPlugin
           ((Intent)localObject2).putExtra("PeakConstants.ARG_FILTER_CATEGORY_NAME", str4);
           ((Intent)localObject2).putExtra("PeakConstants.ARG_FILTER_ITEM_ID", str5);
           ((Intent)localObject2).putExtra("PeakConstants.ARG_FORCE_CAMERA", n);
-          paramString = this.parentPlugin.mRuntime.a();
-          if (QZoneVipInfoManager.a().a() <= 0) {
+          paramString = this.parentPlugin.mRuntime.d();
+          if (QZoneVipInfoManager.a().b() <= 0) {
             break label508;
           }
           bool1 = true;
@@ -303,8 +303,8 @@ public class QzoneUiJsPlugin
           return;
         }
         boolean bool2 = "ptucamera".equals(paramString.optString("shoot"));
-        paramString = this.parentPlugin.mRuntime.a();
-        if (QZoneVipInfoManager.a().a() > 0)
+        paramString = this.parentPlugin.mRuntime.d();
+        if (QZoneVipInfoManager.a().b() > 0)
         {
           bool1 = true;
           QZoneVideoCommonUtils.installVideoActivity(0L, paramString, true, true, "QZonePublishMoodTabActivity", bool1, true, (String)localObject, bool2, null, null, null);
@@ -336,7 +336,7 @@ public class QzoneUiJsPlugin
         QLog.e("QzoneUiJsPlugin", 1, "handleUploadVideo video_info is empty");
         return;
       }
-      this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneUiJsPlugin.2(this, paramString));
+      this.parentPlugin.mRuntime.b().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneUiJsPlugin.2(this, paramString));
       return;
     }
     catch (JSONException paramString)
@@ -354,7 +354,7 @@ public class QzoneUiJsPlugin
     localIntentFilter.addAction("com.qzone.topic.video.FakeFeed");
     localIntentFilter.addAction("com.qzone.topic.video.HalfFakeFeed");
     localIntentFilter.addAction("com.qzone.h5.video.recordCallback");
-    this.parentPlugin.mRuntime.a().registerReceiver(this.broadcastReceiver, localIntentFilter);
+    this.parentPlugin.mRuntime.d().registerReceiver(this.broadcastReceiver, localIntentFilter);
     this.isBroadcastReceiverRegistered = true;
   }
   
@@ -399,7 +399,7 @@ public class QzoneUiJsPlugin
   {
     if (this.isBroadcastReceiverRegistered)
     {
-      this.parentPlugin.mRuntime.a().unregisterReceiver(this.broadcastReceiver);
+      this.parentPlugin.mRuntime.d().unregisterReceiver(this.broadcastReceiver);
       this.isBroadcastReceiverRegistered = false;
     }
     RemoteHandleManager.getInstance().removeWebEventListener(this);
@@ -459,7 +459,7 @@ public class QzoneUiJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneUiJsPlugin
  * JD-Core Version:    0.7.0.1
  */

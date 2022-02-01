@@ -33,23 +33,23 @@ class AdProxyImpl$SDKBoxAdView$1
         {
           if (new JSONObject(paramJSONObject).optJSONArray("pos_ads_info").getJSONObject(0).optInt("ret", -1) != 0)
           {
-            if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener == null) {
+            if (this.b.b == null) {
               break label326;
             }
-            this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
+            this.b.b.onError(1004, PluginConst.AdConst.ERROR_MSG_NO_AD);
             return;
           }
-          this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentGdtadBasicsAdboxIGdtAdBox = ((IGdtAPI)QRoute.api(IGdtAPI.class)).buildAdBox(this.jdField_a_of_type_AndroidAppActivity, paramJSONObject, "biz_src_miniapp", new AdProxyImpl.SDKBoxAdView.1.1(this));
-          if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentGdtadBasicsAdboxIGdtAdBox != null)
+          this.b.c = ((IGdtAPI)QRoute.api(IGdtAPI.class)).buildAdBox(this.a, paramJSONObject, "biz_src_miniapp", new AdProxyImpl.SDKBoxAdView.1.1(this));
+          if (this.b.c != null)
           {
-            if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null) {
-              this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onLoad();
+            if (this.b.b != null) {
+              this.b.b.onLoad();
             }
-            AdProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, paramJSONObject, this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.b);
+            AdProxyImpl.a(this.b.o, paramJSONObject, this.b.h);
             return;
           }
-          if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null) {
-            this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+          if (this.b.b != null) {
+            this.b.b.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
           }
         }
         else
@@ -59,9 +59,9 @@ class AdProxyImpl$SDKBoxAdView$1
             break label327;
           }
           i = j;
-          if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null)
+          if (this.b.b != null)
           {
-            this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(i, str);
+            this.b.b.onError(i, str);
             return;
           }
         }
@@ -69,13 +69,13 @@ class AdProxyImpl$SDKBoxAdView$1
       catch (JSONException paramJSONObject)
       {
         QLog.e("AdProxyImpl", 1, "loadAD, err", paramJSONObject);
-        if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null) {
-          this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+        if (this.b.b != null) {
+          this.b.b.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
         }
       }
       return;
-      if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null) {
-        this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBoxAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
+      if (this.b.b != null) {
+        this.b.b.onError(1000, PluginConst.AdConst.ERROR_MSG_SERVICE_FAIL);
       }
       return;
       return;
@@ -84,7 +84,7 @@ class AdProxyImpl$SDKBoxAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBoxAdView.1
  * JD-Core Version:    0.7.0.1
  */

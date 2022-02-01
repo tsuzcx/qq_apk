@@ -10,8 +10,8 @@ class b
   
   public void run()
   {
-    f.d();
-    String str = f.a(c.a(this.a));
+    e.d();
+    String str = e.a(c.a(this.a));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("non-main process check local qimei: ");
     localStringBuilder.append(str);
@@ -19,7 +19,7 @@ class b
     if (!TextUtils.isEmpty(str))
     {
       this.a.a(str);
-      f.a(System.currentTimeMillis());
+      e.a(System.currentTimeMillis());
       c.b(this.a);
       return;
     }

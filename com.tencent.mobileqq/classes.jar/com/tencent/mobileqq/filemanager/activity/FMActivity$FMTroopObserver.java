@@ -14,18 +14,18 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 class FMActivity$FMTroopObserver
   extends TroopObserver
 {
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   
   FMActivity$FMTroopObserver(FMActivity paramFMActivity) {}
   
   protected void onOIDB0X899_0_Ret(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return;
     }
     int i = 0;
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_f_of_type_JavaLangString == null) {
+    this.a = false;
+    if (this.b.ai == null) {
       return;
     }
     Object localObject1;
@@ -45,12 +45,12 @@ class FMActivity$FMTroopObserver
     }
     if ((paramInt1 == 2) && (paramBoolean))
     {
-      localObject1 = (ITroopInfoService)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a.getRuntimeService(ITroopInfoService.class, "");
-      paramString = ((ITroopInfoService)localObject1).findTroopInfo(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_f_of_type_JavaLangString);
+      localObject1 = (ITroopInfoService)this.b.p.getRuntimeService(ITroopInfoService.class, "");
+      paramString = ((ITroopInfoService)localObject1).findTroopInfo(this.b.ai);
       if (paramString == null) {
         return;
       }
-      if (StringUtil.a(paramString.troopowneruin)) {
+      if (StringUtil.isEmpty(paramString.troopowneruin)) {
         return;
       }
       paramString.Administrator = "";
@@ -85,25 +85,25 @@ class FMActivity$FMTroopObserver
       if ((paramString.troopPrivilegeFlag & 0x2) != 2L) {
         paramInt1 = 1;
       }
-      paramList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a.getCurrentAccountUin();
+      paramList = this.b.p.getCurrentAccountUin();
       if ((!paramString.isTroopAdmin(paramList)) && (!paramString.isTroopOwner(paramList)) && (paramInt1 == 0))
       {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_f_of_type_JavaLangString;
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.jdField_f_of_type_Boolean) {
+        paramString = this.b.p;
+        localObject1 = this.b.ai;
+        if (this.b.l) {
           paramList = "0";
         } else {
           paramList = "1";
         }
         ReportController.b(paramString, "P_CliOper", "Grp_files", "", "power", "nopower_upload", 0, 0, (String)localObject1, paramList, "", "");
-        FMActivity.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity);
+        FMActivity.f(this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FMActivity.FMTroopObserver
  * JD-Core Version:    0.7.0.1
  */

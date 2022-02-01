@@ -18,7 +18,7 @@ public class LaunchManagerService$ServiceBinder
   
   public void onAppLifecycle(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
   {
-    if (paramMiniAppInfo == null)
+    if ((paramMiniAppInfo == null) && (paramInt != 1))
     {
       paramMiniAppInfo = new StringBuilder();
       paramMiniAppInfo.append("handleAppLifecycle lifecycle:");
@@ -65,7 +65,7 @@ public class LaunchManagerService$ServiceBinder
       localStringBuilder2.append("]");
       QMLog.e("minisdk-start_LaunchManagerService", localStringBuilder2.toString());
       if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-        break label310;
+        break label315;
       }
       ThreadPools.getComputationThreadPool().execute(new LaunchManagerService.ServiceBinder.1(this, localThrowable));
       throw new RuntimeException(localThrowable);
@@ -77,7 +77,10 @@ public class LaunchManagerService$ServiceBinder
     this.this$0.onAppStart(paramString, paramMiniAppInfo, paramBundle);
   }
   
-  public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo) {}
+  public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
+  {
+    this.this$0.preDownloadPkg(paramMiniAppInfo, paramResultReceiver);
+  }
   
   public Bundle requestAync(String paramString1, String paramString2, Bundle paramBundle)
   {
@@ -155,7 +158,7 @@ public class LaunchManagerService$ServiceBinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.LaunchManagerService.ServiceBinder
  * JD-Core Version:    0.7.0.1
  */

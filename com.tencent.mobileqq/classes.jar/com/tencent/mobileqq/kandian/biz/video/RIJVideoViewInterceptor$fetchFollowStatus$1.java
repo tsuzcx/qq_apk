@@ -20,7 +20,7 @@ public final class RIJVideoViewInterceptor$fetchFollowStatus$1
   {
     paramMap = ReadInJoyLogicEngine.a();
     Intrinsics.checkExpressionValueIsNotNull(paramMap, "ReadInJoyLogicEngine.getInstance()");
-    paramMap = paramMap.a();
+    paramMap = paramMap.W();
     if (paramMap != null) {
       paramMap.b((IFollowStatusObserver)this);
     }
@@ -29,7 +29,7 @@ public final class RIJVideoViewInterceptor$fetchFollowStatus$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.RIJVideoViewInterceptor.fetchFollowStatus.1
  * JD-Core Version:    0.7.0.1
  */

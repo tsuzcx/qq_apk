@@ -6,16 +6,16 @@ import com.tencent.shadow.core.common.Logger;
 class QCircleLoggerFactory$IVLogger
   implements Logger
 {
-  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
   QCircleLoggerFactory$IVLogger(QCircleLoggerFactory paramQCircleLoggerFactory, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   private void a(int paramInt, String paramString, Throwable paramThrowable)
   {
-    String str = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    String str = String.valueOf(this.b);
     if (paramInt != 1)
     {
       if (paramInt != 2)
@@ -109,7 +109,7 @@ class QCircleLoggerFactory$IVLogger
   
   public String getName()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public void info(String paramString)
@@ -214,7 +214,7 @@ class QCircleLoggerFactory$IVLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCircleLoggerFactory.IVLogger
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class IlivePluginDownloadManager$IliveDownloadListener
   {
     super.onDone(paramDownloadTask);
     boolean bool;
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0)) {
+    if ((paramDownloadTask.e() == 3) && (paramDownloadTask.c == 0)) {
       bool = true;
     } else {
       bool = false;
@@ -24,22 +24,22 @@ class IlivePluginDownloadManager$IliveDownloadListener
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDone , url = ");
-      localStringBuilder.append(paramDownloadTask.c);
+      localStringBuilder.append(paramDownloadTask.h);
       localStringBuilder.append(" isSuccess = ");
       localStringBuilder.append(bool);
       localStringBuilder.append(" errorCode = ");
-      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+      localStringBuilder.append(paramDownloadTask.c);
       localStringBuilder.append(" httpCode = ");
-      localStringBuilder.append(paramDownloadTask.f);
+      localStringBuilder.append(paramDownloadTask.H);
       localStringBuilder.append(" errMsg = ");
-      localStringBuilder.append(paramDownloadTask.b);
+      localStringBuilder.append(paramDownloadTask.d);
       QLog.e("IlivePluginDownloadManager", 2, localStringBuilder.toString());
     }
-    IlivePluginDownloadManager.a(this.a).remove(paramDownloadTask);
-    IlivePluginDownloadManager.a(this.a);
+    IlivePluginDownloadManager.b(this.a).remove(paramDownloadTask);
+    IlivePluginDownloadManager.c(this.a);
     if (bool)
     {
-      IlivePluginDownloadManager.b(this.a);
+      IlivePluginDownloadManager.d(this.a);
       return;
     }
     IlivePluginDownloadManager.a(this.a, paramDownloadTask);
@@ -52,21 +52,21 @@ class IlivePluginDownloadManager$IliveDownloadListener
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onProgress ,  percent = ");
-      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Float);
+      localStringBuilder.append(paramDownloadTask.l);
       localStringBuilder.append(" url = ");
-      localStringBuilder.append(paramDownloadTask.c);
+      localStringBuilder.append(paramDownloadTask.h);
       localStringBuilder.append(" runTime = ");
       localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getClass());
       QLog.e("IlivePluginDownloadManager", 2, localStringBuilder.toString());
     }
     if (IlivePluginDownloadManager.a(this.a) != null) {
-      IlivePluginDownloadManager.a(this.a).onProgress(paramDownloadTask.jdField_a_of_type_Float);
+      IlivePluginDownloadManager.a(this.a).onProgress(paramDownloadTask.l);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IlivePluginDownloadManager.IliveDownloadListener
  * JD-Core Version:    0.7.0.1
  */

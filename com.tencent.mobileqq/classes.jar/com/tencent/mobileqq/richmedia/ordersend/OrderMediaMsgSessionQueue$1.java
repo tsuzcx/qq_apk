@@ -16,7 +16,7 @@ class OrderMediaMsgSessionQueue$1
     {
       label14:
       OrderMediaMsgItem localOrderMediaMsgItem = (OrderMediaMsgItem)localIterator.next();
-      if ((paramLong != localOrderMediaMsgItem.jdField_a_of_type_Long) || (!OrderMediaMsgSessionQueue.a(this.a).a(localOrderMediaMsgItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))) {
+      if ((paramLong != localOrderMediaMsgItem.d) || (!OrderMediaMsgSessionQueue.b(this.a).c(localOrderMediaMsgItem.h))) {
         break label14;
       }
       this.a.a(paramLong);
@@ -32,7 +32,7 @@ class OrderMediaMsgSessionQueue$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgSessionQueue.1
  * JD-Core Version:    0.7.0.1
  */

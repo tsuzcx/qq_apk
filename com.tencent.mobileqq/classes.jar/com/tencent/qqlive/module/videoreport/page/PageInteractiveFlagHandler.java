@@ -108,6 +108,20 @@ class PageInteractiveFlagHandler
     return false;
   }
   
+  private boolean isTouchedInCurPage(Window paramWindow, View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramWindow == null) {
+      paramWindow = null;
+    } else {
+      paramWindow = paramWindow.getDecorView();
+    }
+    View localView = paramView.getRootView();
+    if ((paramWindow != null) && (paramWindow == localView)) {
+      return isTouchedInCurPage(paramMotionEvent, paramWindow, paramView);
+    }
+    return false;
+  }
+  
   private void markInteractiveFlagToPage(PageInfo paramPageInfo)
   {
     DataRWProxy.setInnerParam(paramPageInfo.getPage(), "page_interactive_flag", Boolean.valueOf(true));
@@ -134,19 +148,7 @@ class PageInteractiveFlagHandler
         if (((localObject instanceof Boolean)) && (((Boolean)localObject).booleanValue())) {
           return false;
         }
-        if (paramWindow == null) {
-          paramWindow = null;
-        } else {
-          paramWindow = paramWindow.getDecorView();
-        }
-        localObject = paramPageInfo.getRootView();
-        if (paramWindow != null)
-        {
-          if (paramWindow != localObject) {
-            return false;
-          }
-          return isTouchedInCurPage(paramMotionEvent, paramWindow, paramPageInfo);
-        }
+        return isTouchedInCurPage(paramWindow, paramPageInfo, paramMotionEvent);
       }
     }
     return false;
@@ -166,7 +168,7 @@ class PageInteractiveFlagHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageInteractiveFlagHandler
  * JD-Core Version:    0.7.0.1
  */

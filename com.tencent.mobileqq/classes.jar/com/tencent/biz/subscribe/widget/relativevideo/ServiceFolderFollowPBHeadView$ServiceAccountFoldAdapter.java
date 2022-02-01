@@ -25,21 +25,21 @@ public class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter
   extends RecyclerView.Adapter
   implements DecodeTaskCompletionListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private RecentFaceDecoder jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
-  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<ServiceAccountFolderFeed> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
   private boolean b = true;
+  private List<ServiceAccountFolderFeed> c;
+  private Context d;
+  private RecentFaceDecoder e;
+  private HashMap<String, Bitmap> f = new HashMap();
+  private RecyclerView g;
+  private DragFrameLayout h;
   
   public ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter(Context paramContext, RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(((BaseActivity)paramContext).app, this, false);
+    this.d = paramContext;
+    this.g = paramRecyclerView;
+    this.c = new ArrayList();
+    this.e = new RecentFaceDecoder(((BaseActivity)paramContext).app, this, false);
   }
   
   private void c()
@@ -49,57 +49,57 @@ public class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.1(this));
+    this.g.addOnScrollListener(new ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter.1(this));
   }
   
   public void a(DragFrameLayout paramDragFrameLayout)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = paramDragFrameLayout;
+    this.h = paramDragFrameLayout;
   }
   
   public void a(List<ServiceAccountFolderFeed> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.c.clear();
+    this.c.addAll(paramList);
     c();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.f;
     if (localObject != null) {
       ((HashMap)localObject).clear();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
+    localObject = this.e;
     if (localObject != null) {
-      ((RecentFaceDecoder)localObject).a();
+      ((RecentFaceDecoder)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = null;
+    if (this.h != null) {
+      this.h = null;
     }
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.c.size();
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     ServiceFolderFollowPBHeadView.ServiceAccountViewHolder localServiceAccountViewHolder = (ServiceFolderFollowPBHeadView.ServiceAccountViewHolder)paramViewHolder;
-    localServiceAccountViewHolder.a(this.jdField_a_of_type_Boolean);
-    localServiceAccountViewHolder.a((ServiceAccountFolderFeed)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+    localServiceAccountViewHolder.a(this.a);
+    localServiceAccountViewHolder.a((ServiceAccountFolderFeed)this.c.get(paramInt), paramInt);
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new ServiceFolderFollowPBHeadView.ServiceAccountViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559631, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+    return new ServiceFolderFollowPBHeadView.ServiceAccountViewHolder(LayoutInflater.from(this.d).inflate(2131625660, paramViewGroup, false), this.e, this.f, this.h);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -109,19 +109,19 @@ public class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter
       if (paramString.length() == 0) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
-      paramBitmap = (LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
+      this.f.put(paramString, paramBitmap);
+      paramBitmap = (LinearLayoutManager)this.g.getLayoutManager();
       paramInt1 = 0;
       while (paramInt1 < getItemCount())
       {
         Object localObject = paramBitmap.findViewByPosition(paramInt1);
         if (localObject != null)
         {
-          localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
+          localObject = this.g.getChildViewHolder((View)localObject);
           if ((localObject instanceof ServiceFolderFollowPBHeadView.ServiceAccountViewHolder))
           {
             localObject = (ServiceFolderFollowPBHeadView.ServiceAccountViewHolder)localObject;
-            if (paramString.equals(((ServiceFolderFollowPBHeadView.ServiceAccountViewHolder)localObject).a.a))
+            if (paramString.equals(((ServiceFolderFollowPBHeadView.ServiceAccountViewHolder)localObject).a.b))
             {
               ((ServiceFolderFollowPBHeadView.ServiceAccountViewHolder)localObject).a(ServiceFolderFollowPBHeadView.ServiceAccountViewHolder.a((ServiceFolderFollowPBHeadView.ServiceAccountViewHolder)localObject), paramString);
               return;
@@ -135,7 +135,7 @@ public class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView.ServiceAccountFoldAdapter
  * JD-Core Version:    0.7.0.1
  */

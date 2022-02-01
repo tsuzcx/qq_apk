@@ -28,15 +28,25 @@ public class WSRoundedImageView
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.e)
     {
       paramCanvas.save();
-      paramCanvas.clipPath(this.a.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.clipPath(this.a.a);
       super.draw(paramCanvas);
       paramCanvas.restore();
       return;
     }
     super.draw(paramCanvas);
+  }
+  
+  public int getStrokeColor()
+  {
+    return this.a.c;
+  }
+  
+  public int getStrokeWidth()
+  {
+    return this.a.d;
   }
   
   public void invalidate()
@@ -50,7 +60,7 @@ public class WSRoundedImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    paramCanvas.saveLayer(this.a.jdField_a_of_type_AndroidGraphicsRectF, null, 31);
+    paramCanvas.saveLayer(this.a.g, null, 31);
     super.onDraw(paramCanvas);
     this.a.a(paramCanvas);
     paramCanvas.restore();
@@ -64,19 +74,19 @@ public class WSRoundedImageView
   
   public void setStrokeColor(int paramInt)
   {
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.c = paramInt;
     invalidate();
   }
   
   public void setStrokeWidth(int paramInt)
   {
-    this.a.b = paramInt;
+    this.a.d = paramInt;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView
  * JD-Core Version:    0.7.0.1
  */

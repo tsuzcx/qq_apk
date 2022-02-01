@@ -7,7 +7,7 @@ final class ObjConvector$9
 {
   ObjConvector$9(Class paramClass) {}
   
-  public E a(JSONObject paramJSONObject)
+  public E b(JSONObject paramJSONObject)
   {
     paramJSONObject = ObjConvector.a(paramJSONObject);
     if ((paramJSONObject != null) && (this.a.isAssignableFrom(paramJSONObject.getClass()))) {
@@ -18,7 +18,7 @@ final class ObjConvector$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.ObjConvector.9
  * JD-Core Version:    0.7.0.1
  */

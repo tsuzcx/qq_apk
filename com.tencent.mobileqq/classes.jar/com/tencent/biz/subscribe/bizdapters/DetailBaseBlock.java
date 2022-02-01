@@ -44,24 +44,24 @@ public abstract class DetailBaseBlock
   extends SingleViewBlock
   implements CommentPresenter.CommentWindowListener, OnCommentInputShowListener
 {
-  private static long jdField_a_of_type_Long = 0L;
   protected static final String a = "DetailBaseBlock";
-  protected CertifiedAccountMeta.StFeed a;
-  private CertifiedAccountMeta.StShare jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-  private View jdField_a_of_type_AndroidViewView;
-  protected PopupWindow a;
-  private PopViewAnimationDrawableHelper jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper;
-  protected ExtraTypeInfo a;
-  protected CommentBottomBar a;
-  protected GestureToLaunchPageHelper a;
-  private StatusView jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
-  private SystemBarCompact jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
-  private CertifiedAccountMeta.StShare jdField_b_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean c = false;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f;
+  private static long g;
+  protected CommentBottomBar b;
+  protected CertifiedAccountMeta.StFeed c;
+  protected ExtraTypeInfo d;
+  protected GestureToLaunchPageHelper e;
+  protected PopupWindow f;
+  private StatusView k;
+  private CertifiedAccountMeta.StShare l;
+  private String m;
+  private CertifiedAccountMeta.StShare n;
+  private SystemBarCompact o;
+  private PopViewAnimationDrawableHelper p;
+  private boolean q = false;
+  private boolean r = false;
+  private boolean s = false;
+  private View t;
+  private boolean u;
   
   public DetailBaseBlock(Bundle paramBundle)
   {
@@ -93,7 +93,7 @@ public abstract class DetailBaseBlock
     }
     if (paramStFeed != null)
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.i) {
         return true;
       }
       if (SubscribeUtils.a(paramStFeed.status.get())) {
@@ -104,81 +104,51 @@ public abstract class DetailBaseBlock
     return true;
   }
   
-  public static boolean c()
+  public static boolean j()
   {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long <= 200L)
+    long l1 = System.currentTimeMillis();
+    if (l1 - g <= 200L)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "click too fast");
+        QLog.d(a, 2, "click too fast");
       }
-      jdField_a_of_type_Long = l;
+      g = l1;
       return true;
     }
-    jdField_a_of_type_Long = l;
+    g = l1;
     return false;
   }
   
-  private void k()
+  private void r()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar = new CommentBottomBar(a().getBaseActivity());
+    this.b = new CommentBottomBar(A().getBaseActivity());
     Object localObject = new FrameLayout.LayoutParams(-1, ImmersiveUtils.dpToPx(50.0F));
     ((FrameLayout.LayoutParams)localObject).gravity = 80;
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    c();
-    if ((a() instanceof SubscribeBaseFragment)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.setShareClickListener(new DetailBaseBlock.1(this));
+    this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    f();
+    if ((A() instanceof SubscribeBaseFragment)) {
+      this.b.setShareClickListener(new DetailBaseBlock.1(this));
     }
-    localObject = new ViewStub(a().getBaseActivity());
+    localObject = new ViewStub(A().getBaseActivity());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.gravity = 80;
     localLayoutParams.setMargins(0, -ImmersiveUtils.dpToPx(50.0F), 0, 0);
     ((ViewStub)localObject).setLayoutParams(localLayoutParams);
     ((ViewStub)localObject).setFitsSystemWindows(true);
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a() != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a().b((ViewStub)localObject);
+    if (this.b.getCommentPresenter() != null) {
+      this.b.getCommentPresenter().b((ViewStub)localObject);
     }
     a((View)localObject);
-    a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar);
-    a().setPadding(0, 0, 0, ImmersiveUtils.dpToPx(50.0F));
-  }
-  
-  public CertifiedAccountMeta.StFeed a()
-  {
-    return this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-  }
-  
-  protected View a()
-  {
-    return null;
-  }
-  
-  public ShareInfoBean a(int paramInt)
-  {
-    ShareInfoBean localShareInfoBean = new ShareInfoBean();
-    localShareInfoBean.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-    localShareInfoBean.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localShareInfoBean.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare = this.jdField_b_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StShare;
-    boolean bool = true;
-    if (paramInt != 1) {
-      bool = false;
-    }
-    localShareInfoBean.jdField_a_of_type_Boolean = bool;
-    localShareInfoBean.jdField_a_of_type_Int = paramInt;
-    return localShareInfoBean;
-  }
-  
-  public GestureToLaunchPageHelper a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper;
+    a(this.b);
+    J().setPadding(0, 0, 0, ImmersiveUtils.dpToPx(50.0F));
   }
   
   protected void a(long paramLong, String paramString)
   {
-    if ((a() != null) && (a().getVisibility() == 0)) {
-      a().setVisibility(8);
+    if ((h() != null) && (h().getVisibility() == 0)) {
+      h().setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView != null)
+    if (this.k != null)
     {
       String str;
       if ((paramString == null) || (paramString.trim().length() != 0))
@@ -190,9 +160,9 @@ public abstract class DetailBaseBlock
       {
         str = null;
       }
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.a(str);
+      this.k.a(str);
     }
-    paramString = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
+    paramString = this.b;
     if (paramString != null) {
       paramString.setVisibility(8);
     }
@@ -200,16 +170,16 @@ public abstract class DetailBaseBlock
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
+    this.c = paramStFeed;
+    Object localObject = this.b;
     if (localObject != null) {
       ((CommentBottomBar)localObject).setCurrentFeed(paramStFeed);
     }
     b("share_key_subscribe_feeds_update", new BlockMerger.ShareData(paramStFeed));
-    if ((a() instanceof SubscribeBaseFragment)) {
-      ((SubscribeBaseFragment)a()).b(paramStFeed);
+    if ((A() instanceof SubscribeBaseFragment)) {
+      ((SubscribeBaseFragment)A()).b(paramStFeed);
     }
-    localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper;
+    localObject = this.e;
     if (localObject != null) {
       ((GestureToLaunchPageHelper)localObject).a(paramStFeed.poster);
     }
@@ -223,32 +193,32 @@ public abstract class DetailBaseBlock
   {
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = new CertifiedAccountMeta.StFeed();
+      this.c = new CertifiedAccountMeta.StFeed();
       try
       {
-        this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = ((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.mergeFrom(paramBundle.getByteArray("bundle_key_subscribe_feed_bytes_array")));
-        this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = ((ExtraTypeInfo)paramBundle.getSerializable("bundle_key_feed_extra_type_info"));
+        this.c = ((CertifiedAccountMeta.StFeed)this.c.mergeFrom(paramBundle.getByteArray("bundle_key_subscribe_feed_bytes_array")));
+        this.d = ((ExtraTypeInfo)paramBundle.getSerializable("bundle_key_feed_extra_type_info"));
       }
       catch (Exception paramBundle)
       {
         paramBundle.printStackTrace();
       }
-      b("share_key_subscribe_feeds_update", new BlockMerger.ShareData(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed));
+      b("share_key_subscribe_feeds_update", new BlockMerger.ShareData(this.c));
     }
-    if (!this.c)
+    if (!this.q)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = a().a();
+      this.k = I().getStatusView();
       paramBundle = new StringBuilder();
-      paramBundle.append(SubscribeUtils.a());
+      paramBundle.append(SubscribeUtils.b());
       paramBundle.append(File.separator);
-      paramBundle.append(a(a()));
+      paramBundle.append(a(K()));
       paramBundle.append(".png");
       paramBundle = paramBundle.toString();
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView.b(paramBundle);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "showLoadingView!");
+      this.k.b(paramBundle);
+      QLog.d(a, 1, "showLoadingView!");
     }
-    k();
-    this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper = new GestureToLaunchPageHelper(a());
+    r();
+    this.e = new GestureToLaunchPageHelper(G());
   }
   
   protected void a(View paramView)
@@ -258,32 +228,42 @@ public abstract class DetailBaseBlock
   
   public void a(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.f = paramBoolean;
+    this.t = paramView;
+    this.u = paramBoolean;
   }
   
   public void a(SystemBarCompact paramSystemBarCompact)
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = paramSystemBarCompact;
+    this.o = paramSystemBarCompact;
   }
   
-  protected void b()
+  public ShareInfoBean b(int paramInt)
   {
-    this.c = true;
+    ShareInfoBean localShareInfoBean = new ShareInfoBean();
+    localShareInfoBean.b = this.c;
+    localShareInfoBean.c = this.m;
+    localShareInfoBean.d = this.n;
+    boolean bool = true;
+    if (paramInt != 1) {
+      bool = false;
+    }
+    localShareInfoBean.f = bool;
+    localShareInfoBean.a = paramInt;
+    return localShareInfoBean;
   }
   
   protected void b(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
+    Object localObject = this.k;
     if (localObject != null) {
-      ((StatusView)localObject).c();
+      ((StatusView)localObject).b();
     }
-    if ((a() != null) && (a().getVisibility() == 0)) {
-      a().setVisibility(8);
+    if ((h() != null) && (h().getVisibility() == 0)) {
+      h().setVisibility(8);
     }
-    if ((a() != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null))
+    if ((h() != null) && (this.c != null))
     {
-      localObject = a();
+      localObject = h();
       int i;
       if (paramStFeed.status.get() == 3) {
         i = 0;
@@ -292,100 +272,120 @@ public abstract class DetailBaseBlock
       }
       ((View)localObject).setVisibility(i);
     }
-    paramStFeed = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
+    paramStFeed = this.b;
     if ((paramStFeed != null) && (paramStFeed.getVisibility() == 8)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.setVisibility(0);
-    }
-  }
-  
-  public boolean b()
-  {
-    CommentBottomBar localCommentBottomBar = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
-    if ((localCommentBottomBar != null) && (localCommentBottomBar.b())) {
-      return true;
-    }
-    return super.b();
-  }
-  
-  protected void c()
-  {
-    CommentBottomBar localCommentBottomBar = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
-    if (localCommentBottomBar == null) {
-      return;
-    }
-    localCommentBottomBar.a(a().getBaseActivity(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, new DetailBaseBlock.2(this), this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a() != null)
-    {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a().a(this);
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a().a(this);
+      this.b.setVisibility(0);
     }
   }
   
   public void c(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "is not own startCount");
-    if ((!SubscribeUtils.a(paramStFeed.poster.attr.get())) && (a() != null))
+    QLog.d(a, 2, "is not own startCount");
+    if ((!SubscribeUtils.a(paramStFeed.poster.attr.get())) && (G() != null))
     {
-      TimeAndCountHelper.a().a(a(), "subscribe_freshman_interaction_guide", 5000, new DetailBaseBlock.5(this, paramStFeed));
-      a().runOnUiThread(new DetailBaseBlock.6(this));
-      TimeAndCountHelper.a().a(a(), "subscribe_freshman_share_guide", 10000, new DetailBaseBlock.7(this));
+      TimeAndCountHelper.a().a(G(), "subscribe_freshman_interaction_guide", 5000, new DetailBaseBlock.5(this, paramStFeed));
+      G().runOnUiThread(new DetailBaseBlock.6(this));
+      TimeAndCountHelper.a().a(G(), "subscribe_freshman_share_guide", 10000, new DetailBaseBlock.7(this));
     }
   }
   
-  protected void d()
+  public GestureToLaunchPageHelper d()
   {
-    StatusView localStatusView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView;
+    return this.e;
+  }
+  
+  protected void e()
+  {
+    this.q = true;
+  }
+  
+  protected void f()
+  {
+    CommentBottomBar localCommentBottomBar = this.b;
+    if (localCommentBottomBar == null) {
+      return;
+    }
+    localCommentBottomBar.a(A().getBaseActivity(), this.c, new DetailBaseBlock.2(this), this.d);
+    if (this.b.getCommentPresenter() != null)
+    {
+      this.b.getCommentPresenter().a(this);
+      this.b.getCommentPresenter().a(this);
+    }
+  }
+  
+  protected void g()
+  {
+    StatusView localStatusView = this.k;
     if (localStatusView != null) {
-      localStatusView.d();
+      localStatusView.c();
     }
   }
   
-  public void e()
+  protected View h()
   {
-    AnimationDrawableFactory.a().a((String)SubscribeConstants.b.get("follow_guide_pics"), 4000, new DetailBaseBlock.3(this), true);
+    return null;
   }
   
-  public void f()
+  public boolean i()
   {
-    AnimationDrawableFactory.a().a((String)SubscribeConstants.b.get("praise_guide_pics"), 4000, new DetailBaseBlock.4(this), true);
+    CommentBottomBar localCommentBottomBar = this.b;
+    if ((localCommentBottomBar != null) && (localCommentBottomBar.e())) {
+      return true;
+    }
+    return super.i();
   }
   
-  public void g()
+  public CertifiedAccountMeta.StFeed k()
   {
-    PopViewAnimationDrawableHelper localPopViewAnimationDrawableHelper = this.jdField_a_of_type_ComTencentBizSubscribeAnimationPopViewAnimationDrawableHelper;
+    return this.c;
+  }
+  
+  public void l()
+  {
+    AnimationDrawableFactory.a().a((String)SubscribeConstants.f.get("follow_guide_pics"), 4000, new DetailBaseBlock.3(this), true);
+  }
+  
+  public void m()
+  {
+    AnimationDrawableFactory.a().a((String)SubscribeConstants.f.get("praise_guide_pics"), 4000, new DetailBaseBlock.4(this), true);
+  }
+  
+  public void n()
+  {
+    PopViewAnimationDrawableHelper localPopViewAnimationDrawableHelper = this.p;
     if (localPopViewAnimationDrawableHelper != null) {
       localPopViewAnimationDrawableHelper.b();
     }
   }
   
-  public void h() {}
-  
-  public void i()
-  {
-    if (this.d) {
-      f();
-    }
-    if (this.e) {
-      e();
-    }
-  }
-  
-  public void j()
-  {
-    if (this.d) {
-      f();
-    }
-    if (this.e) {
-      e();
-    }
-  }
+  public void o() {}
   
   public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onDetachedFromRecyclerView(paramRecyclerView);
-    paramRecyclerView = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar;
+    paramRecyclerView = this.b;
     if (paramRecyclerView != null) {
-      paramRecyclerView.c();
+      paramRecyclerView.d();
+    }
+  }
+  
+  public void p()
+  {
+    if (this.r) {
+      m();
+    }
+    if (this.s) {
+      l();
+    }
+  }
+  
+  public void q()
+  {
+    if (this.r) {
+      m();
+    }
+    if (this.s) {
+      l();
     }
   }
 }

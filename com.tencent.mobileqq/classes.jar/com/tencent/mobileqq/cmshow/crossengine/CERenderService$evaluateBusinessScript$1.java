@@ -12,16 +12,16 @@ final class CERenderService$evaluateBusinessScript$1
   
   public final void run()
   {
-    Object localObject = CERenderService.a(this.this$0);
+    Object localObject = CERenderService.b(this.this$0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("evaluateBusinessScript , scene: ");
-    localStringBuilder.append(CERenderService.a(this.this$0).a());
+    localStringBuilder.append(CERenderService.c(this.this$0).k());
     QLog.d((String)localObject, 1, localStringBuilder.toString());
-    CERenderService.a(this.this$0).a(true);
-    localObject = CERenderService.a(this.this$0).a();
+    CERenderService.c(this.this$0).a(true);
+    localObject = CERenderService.c(this.this$0).g();
     if (localObject != null)
     {
-      ((CEScriptService)localObject).a();
+      ((CEScriptService)localObject).c();
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.cmshow.crossengine.CEScriptService");
@@ -29,7 +29,7 @@ final class CERenderService$evaluateBusinessScript$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CERenderService.evaluateBusinessScript.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class SimpleUITextChangeCallback
   
   public boolean a(AIOContext paramAIOContext, Editable paramEditable)
   {
-    paramAIOContext.a().a().a().c();
+    paramAIOContext.p().d().d().c();
     paramAIOContext = (SimpleUIAIOHelper)paramAIOContext.a(29);
     boolean bool;
     if (paramEditable.length() > 0) {
@@ -23,7 +23,7 @@ public class SimpleUITextChangeCallback
     } else {
       bool = false;
     }
-    paramAIOContext.a(bool);
+    paramAIOContext.g_(bool);
     return false;
   }
   
@@ -31,7 +31,7 @@ public class SimpleUITextChangeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.edittext.SimpleUITextChangeCallback
  * JD-Core Version:    0.7.0.1
  */

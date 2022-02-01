@@ -1,21 +1,13 @@
 package com.dataline.activities;
 
-import com.tencent.mobileqq.utils.DialogUtil;
-import mqq.app.QQPermissionCallback;
-
 class LiteActivity$39
-  implements QQPermissionCallback
+  implements Runnable
 {
   LiteActivity$39(LiteActivity paramLiteActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void run()
   {
-    DialogUtil.a(this.a.getActivity());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.r();
+    this.this$0.u();
   }
 }
 

@@ -8,19 +8,19 @@ class BatchGetVideoInfoHandler$2
 {
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(1);
+    this.a.a();
+    this.b.a(1);
   }
   
   public void a(ArrayList<StoryVideoItem> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(1, paramArrayList);
+    this.a.a();
+    this.b.a(1, paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.2
  * JD-Core Version:    0.7.0.1
  */

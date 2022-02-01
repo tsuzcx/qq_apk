@@ -26,27 +26,27 @@ public class GetOnlineMemberTipsRunnable
     if (localTroopChatPie == null) {
       return;
     }
-    if ((localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (!localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) && (localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((localTroopChatPie.f != null) && (!localTroopChatPie.f.isFinishing()) && (localTroopChatPie.d != null))
     {
-      if (localTroopChatPie.a() == null) {
+      if (localTroopChatPie.aE() == null) {
         return;
       }
-      ITroopOnlineMemberHandler localITroopOnlineMemberHandler = (ITroopOnlineMemberHandler)localTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_MEMBER_HANDLER);
-      String str = localTroopChatPie.a().a;
+      ITroopOnlineMemberHandler localITroopOnlineMemberHandler = (ITroopOnlineMemberHandler)localTroopChatPie.d.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_MEMBER_HANDLER);
+      String str = localTroopChatPie.aE().b;
       if (!TextUtils.isEmpty(str))
       {
         localITroopOnlineMemberHandler.c(str);
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.i(localTroopChatPie.b, 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
+        QLog.i(localTroopChatPie.c, 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.GetOnlineMemberTipsRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -18,10 +18,10 @@ class HippyQQEngine$4
   public boolean onJsException(HippyJsException paramHippyJsException)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Hippy: loadModule onJsException:");
+    localStringBuilder.append("onJsException exception:");
     localStringBuilder.append(paramHippyJsException);
-    QLog.d("Hippy", 1, localStringBuilder.toString());
-    HippyReporter.getInstance().reportException(HippyQQEngine.access$300(this.this$0), this.this$0.mModuleVersion, 4, paramHippyJsException);
+    QLog.e("Hippy", 1, localStringBuilder.toString());
+    HippyReporter.getInstance().reportException(HippyQQEngine.access$300(this.this$0), this.this$0.mModuleVersion, 4, paramHippyJsException, this.this$0.generateReportExtraParams());
     return true;
   }
   
@@ -64,7 +64,7 @@ class HippyQQEngine$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.app.HippyQQEngine.4
  * JD-Core Version:    0.7.0.1
  */

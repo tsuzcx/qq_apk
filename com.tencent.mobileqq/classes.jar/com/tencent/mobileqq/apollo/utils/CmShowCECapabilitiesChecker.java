@@ -8,20 +8,20 @@ import com.tencent.ttpic.openapi.filter.SimpleGLThread;
 
 public class CmShowCECapabilitiesChecker
 {
-  private static SimpleGLThread jdField_a_of_type_ComTencentTtpicOpenapiFilterSimpleGLThread;
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile boolean jdField_a_of_type_Boolean = false;
-  private static String jdField_b_of_type_JavaLangString;
-  private static boolean jdField_b_of_type_Boolean;
+  private static String a;
+  private static String b;
+  private static volatile boolean c = false;
+  private static SimpleGLThread d;
+  private static boolean e;
   
   public static void a()
   {
     try
     {
-      if ((!jdField_a_of_type_Boolean) && (jdField_a_of_type_ComTencentTtpicOpenapiFilterSimpleGLThread == null))
+      if ((!c) && (d == null))
       {
-        jdField_a_of_type_ComTencentTtpicOpenapiFilterSimpleGLThread = new SimpleGLThread((EGLContext)null, "CmShowCECapabilitiesChecker");
-        jdField_a_of_type_ComTencentTtpicOpenapiFilterSimpleGLThread.postJob(new CmShowCECapabilitiesChecker.1());
+        d = new SimpleGLThread((EGLContext)null, "CmShowCECapabilitiesChecker");
+        d.postJob(new CmShowCECapabilitiesChecker.1());
       }
       return;
     }
@@ -32,31 +32,31 @@ public class CmShowCECapabilitiesChecker
     }
   }
   
-  public static boolean a()
+  public static boolean b()
   {
-    f();
-    return jdField_b_of_type_Boolean;
+    g();
+    return e;
   }
   
-  private static void d()
+  private static void e()
   {
     Object localObject = GLES20.glGetString(7937);
     String str = GLES20.glGetString(7936);
-    jdField_b_of_type_JavaLangString = GLES20.glGetString(7938);
+    b = GLES20.glGetString(7938);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("; ");
     localStringBuilder.append(str);
     localStringBuilder.append("; ");
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append(b);
+    a = localStringBuilder.toString();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("gpuInfo=");
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(a);
     QLog.i("[cmshow]CmShowCECapabilitiesChecker [CrossEngine]", 1, ((StringBuilder)localObject).toString());
   }
   
-  private static void e()
+  private static void f()
   {
     String str = GLES20.glGetString(7939);
     Object localObject = new StringBuilder();
@@ -80,36 +80,36 @@ public class CmShowCECapabilitiesChecker
         }
       }
     }
-    jdField_b_of_type_Boolean = bool1;
+    e = bool1;
   }
   
-  private static void f()
+  private static void g()
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!c)
     {
-      SimpleGLThread localSimpleGLThread = jdField_a_of_type_ComTencentTtpicOpenapiFilterSimpleGLThread;
+      SimpleGLThread localSimpleGLThread = d;
       if (localSimpleGLThread != null)
       {
         localSimpleGLThread.waitDone(200);
-        if (!jdField_a_of_type_Boolean) {
-          g();
+        if (!c) {
+          h();
         }
       }
       else
       {
-        g();
+        h();
       }
     }
   }
   
-  private static void g()
+  private static void h()
   {
     QLog.e("[cmshow]CmShowCECapabilitiesChecker [CrossEngine]", 1, "useInWrongTime", new IllegalStateException("must call init method first"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.CmShowCECapabilitiesChecker
  * JD-Core Version:    0.7.0.1
  */

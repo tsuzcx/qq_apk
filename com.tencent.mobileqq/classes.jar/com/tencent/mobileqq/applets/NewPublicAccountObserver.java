@@ -9,22 +9,22 @@ public class NewPublicAccountObserver
   extends AppletsObserver
 {
   protected QQAppInterface a;
-  private NewPublicAccountObserver.ResponseResultListener a;
+  private NewPublicAccountObserver.ResponseResultListener b;
   
   public NewPublicAccountObserver(NewPublicAccountObserver.ResponseResultListener paramResponseResultListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener = paramResponseResultListener;
+    this.b = paramResponseResultListener;
   }
   
   public NewPublicAccountObserver(NewPublicAccountObserver.ResponseResultListener paramResponseResultListener, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener = paramResponseResultListener;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramResponseResultListener;
+    this.a = paramQQAppInterface;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.a != null)
     {
       if (QLog.isColorLevel())
       {
@@ -33,13 +33,13 @@ public class NewPublicAccountObserver
         localStringBuilder.append(this);
         QLog.d("AppletsObserver", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+      this.a.removeObserver(this);
     }
   }
   
   private void a(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener;
+    Object localObject = this.b;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -50,7 +50,7 @@ public class NewPublicAccountObserver
     if (4 != ((NewPublicAccountObserver.ResponseResultListener)localObject).a()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.a(paramBoolean, paramObject);
+    this.b.a(paramBoolean, paramObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -66,33 +66,33 @@ public class NewPublicAccountObserver
         try
         {
           ((oidb_cmd0xc96.RspBody)localObject).mergeFrom((byte[])paramObject);
-          this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.a(localObject);
+          this.b.a(localObject);
         }
         catch (Exception localException)
         {
           QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
-          this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+          this.b.b(paramObject);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
           QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-          this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+          this.b.b(paramObject);
         }
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+        this.b.b(paramObject);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+      this.b.b(paramObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramBoolean, paramObject);
+    this.b.b(paramBoolean, paramObject);
     a();
   }
   
   private void b(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener;
+    Object localObject = this.b;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -103,7 +103,7 @@ public class NewPublicAccountObserver
     if (5 != ((NewPublicAccountObserver.ResponseResultListener)localObject).a()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.a(paramBoolean, paramObject);
+    this.b.a(paramBoolean, paramObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -119,33 +119,33 @@ public class NewPublicAccountObserver
         try
         {
           ((oidb_cmd0xc96.RspBody)localObject).mergeFrom((byte[])paramObject);
-          this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.a(localObject);
+          this.b.a(localObject);
         }
         catch (Exception localException)
         {
           QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
-          this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+          this.b.b(paramObject);
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
           QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-          this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+          this.b.b(paramObject);
         }
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+        this.b.b(paramObject);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+      this.b.b(paramObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramBoolean, paramObject);
+    this.b.b(paramBoolean, paramObject);
     a();
   }
   
   private void c(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener;
+    Object localObject = this.b;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -156,7 +156,7 @@ public class NewPublicAccountObserver
     if (7 != ((NewPublicAccountObserver.ResponseResultListener)localObject).a()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.a(paramBoolean, paramObject);
+    this.b.a(paramBoolean, paramObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -165,17 +165,17 @@ public class NewPublicAccountObserver
       QLog.d("AppletsObserver", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.a(paramObject);
+      this.b.a(paramObject);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramObject);
+      this.b.b(paramObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppletsNewPublicAccountObserver$ResponseResultListener.b(paramBoolean, paramObject);
+    this.b.b(paramBoolean, paramObject);
     a();
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
@@ -205,7 +205,7 @@ public class NewPublicAccountObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.NewPublicAccountObserver
  * JD-Core Version:    0.7.0.1
  */

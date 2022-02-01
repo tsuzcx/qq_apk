@@ -9,12 +9,12 @@ class TroopObserversHelper$14$1$1
   
   public void run()
   {
-    TroopObserversHelper.a(this.a.a.a).aA();
+    TroopObserversHelper.d(this.a.a.a).bS();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.14.1.1
  * JD-Core Version:    0.7.0.1
  */

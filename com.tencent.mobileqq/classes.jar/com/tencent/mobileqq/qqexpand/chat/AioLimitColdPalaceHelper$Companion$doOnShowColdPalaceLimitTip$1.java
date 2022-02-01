@@ -12,12 +12,12 @@ final class AioLimitColdPalaceHelper$Companion$doOnShowColdPalaceLimitTip$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.AioLimitColdPalaceHelper.Companion.doOnShowColdPalaceLimitTip.1
  * JD-Core Version:    0.7.0.1
  */

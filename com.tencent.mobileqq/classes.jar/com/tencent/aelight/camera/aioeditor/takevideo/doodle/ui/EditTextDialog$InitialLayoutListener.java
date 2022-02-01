@@ -14,9 +14,9 @@ class EditTextDialog$InitialLayoutListener
   
   public void onGlobalLayout()
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
+    int i = this.a.e.getBottom();
     Object localObject;
-    if (this.a.b < 0)
+    if (this.a.j < 0)
     {
       if (QLog.isColorLevel())
       {
@@ -26,11 +26,11 @@ class EditTextDialog$InitialLayoutListener
         QLog.i("EditTextDialog", 2, ((StringBuilder)localObject).toString());
       }
       localObject = this.a;
-      ((EditTextDialog)localObject).b = i;
-      ((EditTextDialog)localObject).jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.InitialLayoutListener.1(this));
+      ((EditTextDialog)localObject).j = i;
+      ((EditTextDialog)localObject).o.post(new EditTextDialog.InitialLayoutListener.1(this));
       return;
     }
-    if (this.a.b - i > this.a.jdField_a_of_type_Int)
+    if (this.a.j - i > this.a.i)
     {
       if (QLog.isColorLevel())
       {
@@ -39,18 +39,18 @@ class EditTextDialog$InitialLayoutListener
         ((StringBuilder)localObject).append(i);
         QLog.i("EditTextDialog", 2, ((StringBuilder)localObject).toString());
       }
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.a.getViewTreeObserver().addOnGlobalLayoutListener(this.a.h);
       localObject = this.a;
-      ((EditTextDialog)localObject).b = i;
-      ((EditTextDialog)localObject).jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new EditTextDialog.InitialLayoutListener.2(this));
+      ((EditTextDialog)localObject).j = i;
+      ((EditTextDialog)localObject).a.requestLayout();
+      this.a.o.post(new EditTextDialog.InitialLayoutListener.2(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog.InitialLayoutListener
  * JD-Core Version:    0.7.0.1
  */

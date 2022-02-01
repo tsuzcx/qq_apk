@@ -13,13 +13,13 @@ class ForwardArkH5StructOption$1
   {
     QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 checkUrlFromNormal CheckShareUrl = ", Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      this.a.a.putBoolean("forward_ark_from_h5_success", true);
+      this.a.t.putBoolean("forward_ark_from_h5_success", true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardArkH5StructOption.1
  * JD-Core Version:    0.7.0.1
  */

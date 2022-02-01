@@ -16,9 +16,9 @@ class VasADBannerImmersionInfo$ZipResourcesinfo
   public void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    if ((paramBoolean) && (FileUtil.b(this.c)))
+    if ((paramBoolean) && (FileUtil.d(this.c)))
     {
-      String str = ((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).getBasePath("vas_banner", String.valueOf(this.a.a.d.hashCode()));
+      String str = ((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).getBasePath("vas_banner", String.valueOf(this.d.b.d.hashCode()));
       Object localObject = new File(this.c);
       ((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).unzipFile(((File)localObject).getAbsolutePath(), str);
       if (((File)localObject).exists()) {
@@ -37,9 +37,9 @@ class VasADBannerImmersionInfo$ZipResourcesinfo
   
   public boolean a()
   {
-    if ((!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.a.a.d)))
+    if ((!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d.b.d)))
     {
-      String str = ((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).getBasePath("vas_banner", String.valueOf(this.a.a.d.hashCode()));
+      String str = ((IQzoneZipCacheHelper)QRoute.api(IQzoneZipCacheHelper.class)).getBasePath("vas_banner", String.valueOf(this.d.b.d.hashCode()));
       Object localObject = new File(str);
       if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
       {
@@ -56,7 +56,7 @@ class VasADBannerImmersionInfo$ZipResourcesinfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.info.VasADBannerImmersionInfo.ZipResourcesinfo
  * JD-Core Version:    0.7.0.1
  */

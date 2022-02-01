@@ -165,9 +165,9 @@ public class QVipUtils
   
   public static void a(Card paramCard, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    if (!QVipDiyTemplateProcessor.c().a)
+    if (!QVipDiyTemplateProcessor.e().a)
     {
-      QQToast.a(paramActivity, 0, HardCodeUtil.a(2131711344), 0).a();
+      QQToast.makeText(paramActivity, 0, HardCodeUtil.a(2131908997), 0).show();
       return;
     }
     paramCard = a(TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), paramCard.uin) ^ true, paramCard.cardId);
@@ -192,11 +192,11 @@ public class QVipUtils
     if (paramTroopInfo.checkFlagExt4(3))
     {
       QLog.e("vip_pretty.", 1, "goToPrettyTroopManagePage open mine page");
-      a(QVIPPrettyTroopProcessor.c().a("troop", paramTroopInfo.troopuin), paramString, paramActivity);
+      a(QVIPPrettyTroopProcessor.e().a("troop", paramTroopInfo.troopuin), paramString, paramActivity);
       return;
     }
     QLog.e("vip_pretty.", 1, "goToPrettyTroopManagePage open home page");
-    a(QVIPPrettyTroopProcessor.c().a("troop"), paramString, paramActivity);
+    a(QVIPPrettyTroopProcessor.e().a("troop"), paramString, paramActivity);
   }
   
   public static void a(String paramString1, String paramString2, Context paramContext)
@@ -216,14 +216,14 @@ public class QVipUtils
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
     if (!QVipConfigManager.a(paramQQAppInterface, "hide_diy_template_guide", false)) {
-      return QVipDiyTemplateProcessor.c().a;
+      return QVipDiyTemplateProcessor.e().a;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QVipUtils
  * JD-Core Version:    0.7.0.1
  */

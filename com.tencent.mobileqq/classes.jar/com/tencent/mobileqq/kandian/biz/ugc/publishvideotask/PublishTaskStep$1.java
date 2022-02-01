@@ -13,18 +13,18 @@ class PublishTaskStep$1
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.rowkey = ((String)paramList.get(0));
-      paramList = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+      this.a.rowkey = ((String)paramList.get(0));
+      paramList = this.a;
       paramList.coverProgress = 100;
       paramList.videoProgress = 100;
       paramList.compressProgress = 100;
     }
-    PublishTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskPublishTaskStep, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo);
+    PublishTaskStep.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.PublishTaskStep.1
  * JD-Core Version:    0.7.0.1
  */

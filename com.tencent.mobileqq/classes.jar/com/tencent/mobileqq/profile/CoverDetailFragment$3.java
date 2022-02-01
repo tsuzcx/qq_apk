@@ -32,7 +32,7 @@ class CoverDetailFragment$3
         if (i == 0)
         {
           paramObject = new Intent();
-          paramObject.putExtra("cover_id_key", CoverDetailFragment.a(this.a));
+          paramObject.putExtra("cover_id_key", CoverDetailFragment.e(this.a));
           localBaseActivity.setResult(-1, paramObject);
           localBaseActivity.finish();
           return;
@@ -57,7 +57,7 @@ class CoverDetailFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CoverDetailFragment.3
  * JD-Core Version:    0.7.0.1
  */

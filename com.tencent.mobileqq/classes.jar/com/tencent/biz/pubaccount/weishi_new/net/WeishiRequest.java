@@ -45,6 +45,7 @@ import android.util.Log;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.jce.wup.UniPacket;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.beacon.event.UserAction;
 import com.tencent.biz.pubaccount.weishi_new.WSQQConnectAuthManager;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.net.common.WSGzipCompressInfo;
@@ -86,68 +87,58 @@ public class WeishiRequest<T1>
   implements INetworkCallback
 {
   public static String a = "QzoneNewService.";
-  public static Map<Integer, Map<String, String>> a;
-  protected int a;
-  public long a;
-  public JceStruct a;
-  protected transient IWeishiProtocolListener a;
-  public WSUniPacket a;
-  private final WSGzipCompressInfo a;
-  protected HashMap<Object, Object> a;
-  protected boolean a;
-  public int b;
-  public long b;
-  public String b;
-  protected volatile boolean b;
-  private int jdField_c_of_type_Int;
-  public long c;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  public long d;
-  private String jdField_d_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean = false;
-  public long e;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean;
-  protected long f;
-  private String jdField_f_of_type_JavaLangString;
-  private boolean jdField_f_of_type_Boolean;
-  private long g;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
+  public static Map<Integer, Map<String, String>> n = new HashMap();
+  private boolean A;
+  private boolean B;
+  protected HashMap<Object, Object> b = new HashMap();
+  public JceStruct c;
+  public String d;
+  protected boolean e = false;
+  protected volatile boolean f = false;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
+  protected transient IWeishiProtocolListener l;
+  public WSUniPacket m;
+  protected int o;
+  protected long p = 30000L;
+  public int q = 100000;
+  private String r;
+  private String s = a;
+  private final WSGzipCompressInfo t;
+  private String u;
+  private int v;
+  private boolean w;
+  private long x;
+  private String y;
+  private boolean z = false;
   
   public WeishiRequest(String paramString)
   {
     this("WeishiGZH.", paramString, false);
-    this.jdField_f_of_type_JavaLangString = paramString;
+    this.y = paramString;
   }
   
   public WeishiRequest(String paramString, int paramInt)
   {
     this("WeishiGZH.", paramString, false);
-    this.jdField_f_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.y = paramString;
+    this.o = paramInt;
   }
   
   public WeishiRequest(String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_f_of_type_Long = 30000L;
-    this.jdField_b_of_type_Int = 100000;
-    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.r = paramString2;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString1);
     localStringBuilder.append(paramString2);
-    this.jdField_e_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    this.g = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetCommonWSGzipCompressInfo = new WSGzipCompressInfo();
-    setLoginUserId(WeishiUtils.a());
+    this.u = localStringBuilder.toString();
+    this.w = paramBoolean;
+    this.x = System.currentTimeMillis();
+    this.t = new WSGzipCompressInfo();
+    setLoginUserId(WeishiUtils.b());
   }
   
   private long a(Bundle paramBundle, String paramString)
@@ -164,104 +155,6 @@ public class WeishiRequest<T1>
     return 0L;
   }
   
-  private stReqHeader a()
-  {
-    stReqHeader localstReqHeader = new stReqHeader();
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject3 = ((AppRuntime)localObject1).getAccount();
-    Object localObject2 = (TicketManager)((AppRuntime)localObject1).getManager(2);
-    if ((localObject2 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())))
-    {
-      localObject1 = ((TicketManager)localObject2).getSkey(((AppRuntime)localObject1).getAccount());
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("session key:");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      Log.e("weishi", ((StringBuilder)localObject2).toString());
-    }
-    else
-    {
-      localObject1 = "test-key";
-    }
-    localstReqHeader.authInfo = WSQQConnectAuthManager.a().a((String)localObject3, (String)localObject1, b());
-    localstReqHeader.iChid = 0;
-    localstReqHeader.person_id = WeishiHeaderConst.jdField_a_of_type_JavaLangString;
-    localstReqHeader.platform = "Android";
-    localstReqHeader.appversion = WSDeviceUtils.a(BaseApplicationImpl.getContext());
-    localstReqHeader.user_ip = WSDeviceUtils.a();
-    localstReqHeader.strQua = QUA.getQUA3();
-    localstReqHeader.device_info = WSDeviceUtils.b();
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("device_info:");
-    ((StringBuilder)localObject2).append(localstReqHeader.device_info);
-    WSLog.b("weishi-810", ((StringBuilder)localObject2).toString());
-    localstReqHeader.h265key = a();
-    localstReqHeader.appid = 1101083114;
-    if ("stWeishiReportReq".equals(uniKey())) {
-      localstReqHeader.mapExt = a();
-    } else {
-      localstReqHeader.mapExt = new HashMap();
-    }
-    if (localstReqHeader.mapExt != null)
-    {
-      localstReqHeader.mapExt.put("iAuthType", "2");
-      Map localMap = localstReqHeader.mapExt;
-      localObject2 = localObject3;
-      if (localObject3 == null) {
-        localObject2 = "";
-      }
-      localMap.put("sUid", localObject2);
-      localObject3 = localstReqHeader.mapExt;
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = "";
-      }
-      ((Map)localObject3).put("sSessionKey", localObject2);
-      localObject2 = UserActionReportPresenter.a(BaseApplicationImpl.getContext());
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = "000000000000000";
-      }
-      localstReqHeader.mapExt.put("imei", localObject1);
-      localObject2 = UserActionReportPresenter.b(BaseApplicationImpl.getContext());
-      localObject3 = localstReqHeader.mapExt;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      ((Map)localObject3).put("qimei", localObject1);
-      localObject2 = UserActionReportPresenter.c(BaseApplicationImpl.getContext());
-      localObject3 = localstReqHeader.mapExt;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      ((Map)localObject3).put("ssid", localObject1);
-      localObject2 = a(UserActionReportPresenter.a(BaseApplicationImpl.getContext()));
-      localObject3 = localstReqHeader.mapExt;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      ((Map)localObject3).put("ssid_ip", localObject1);
-      localstReqHeader.mapExt.put("ab_policy_info", b());
-      localstReqHeader.mapExt.put("teen_mode", String.valueOf(WSNetUtil.a()));
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("[WeishiRequest.java][getHeader] mCmd:");
-      ((StringBuilder)localObject1).append(this.jdField_e_of_type_JavaLangString);
-      ((StringBuilder)localObject1).append(", mReqScene:");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
-      ((StringBuilder)localObject1).append(", header:");
-      ((StringBuilder)localObject1).append(localstReqHeader.mapExt.toString());
-      WSLog.e("weishi-Request", ((StringBuilder)localObject1).toString());
-    }
-    else
-    {
-      WSLog.a("weishi-Request", "header mapExt is null.");
-    }
-    localstReqHeader.iAppVersion = WSDeviceUtils.a();
-    return localstReqHeader;
-  }
-  
   @NotNull
   private RspHeaderBean a(QmfDownstream paramQmfDownstream, int paramInt)
   {
@@ -269,15 +162,15 @@ public class WeishiRequest<T1>
     RspHeaderBean localRspHeaderBean = new RspHeaderBean();
     if ((paramQmfDownstream != null) && (paramQmfDownstream.mapExt != null))
     {
-      localRspHeaderBean.jdField_a_of_type_JavaUtilMap = paramQmfDownstream.mapExt;
+      localRspHeaderBean.a = paramQmfDownstream.mapExt;
       Object localObject1 = paramQmfDownstream.mapExt;
-      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject1);
+      n.put(Integer.valueOf(paramInt), localObject1);
       localObject1 = ((Map)localObject1).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(c());
+        localStringBuilder.append(e());
         localStringBuilder.append(" 存进去 》》》 key: ");
         localStringBuilder.append((String)((Map.Entry)localObject2).getKey());
         localStringBuilder.append(", value: ");
@@ -296,10 +189,10 @@ public class WeishiRequest<T1>
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("}");
       Log.i("weishi-Request", ((StringBuilder)localObject2).toString());
-      if ("SimpleGetFeedList".equals(e())) {
-        LocalMultiProcConfig.putString4Uin("key_default_test_id", (String)localObject1, WeishiUtils.a());
+      if ("SimpleGetFeedList".equals(j())) {
+        LocalMultiProcConfig.putString4Uin("key_default_test_id", (String)localObject1, WeishiUtils.b());
       }
-      localRspHeaderBean.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localRspHeaderBean.b = ((String)localObject1);
       WSReportUtils.a(paramInt, (String)localObject1);
       localObject1 = (String)paramQmfDownstream.mapExt.get("person_id");
       localObject2 = new StringBuilder();
@@ -308,10 +201,10 @@ public class WeishiRequest<T1>
       ((StringBuilder)localObject2).append("}");
       Log.d("weishi-Request", ((StringBuilder)localObject2).toString());
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        WeishiUtils.b((String)localObject1);
+        WeishiUtils.k((String)localObject1);
       }
-      if ((paramQmfDownstream.iRet == -99) && (b())) {
-        WSQQConnectAuthManager.a().b();
+      if ((paramQmfDownstream.iRet == -99) && (d())) {
+        WSQQConnectAuthManager.a().d();
       }
     }
     return localRspHeaderBean;
@@ -320,85 +213,85 @@ public class WeishiRequest<T1>
   private Object a(QmfDownstream paramQmfDownstream, Class paramClass)
   {
     if (paramClass == stSimpleGetFeedListRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stSimpleGetFeedListRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stSimpleGetFeedListRsp());
     }
     if (paramClass == stNotificationRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stNotificationRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stNotificationRsp());
     }
     if (paramClass == stQQGetFeedCommentListV2Rsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stQQGetFeedCommentListV2Rsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stQQGetFeedCommentListV2Rsp());
     }
     if (paramClass == stPostFeedCommentV2Rsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stPostFeedCommentV2Rsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stPostFeedCommentV2Rsp());
     }
     if (paramClass == stPostCommentReplyV2Rsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stPostCommentReplyV2Rsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stPostCommentReplyV2Rsp());
     }
     if (paramClass == stGetCommentReplyListRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stGetCommentReplyListRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stGetCommentReplyListRsp());
     }
     if (paramClass == stDelCommentReplyRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stDelCommentReplyRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stDelCommentReplyRsp());
     }
     if (paramClass == stPostCommentDingRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stPostCommentDingRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stPostCommentDingRsp());
     }
     if (paramClass == stDeleteFeedCommentRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stDeleteFeedCommentRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stDeleteFeedCommentRsp());
     }
     if (paramClass == stPostFeedDingRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stPostFeedDingRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stPostFeedDingRsp());
     }
     if (paramClass == stWeishiReportRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stWeishiReportRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stWeishiReportRsp());
     }
     if (paramClass == stFollowFeedsRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stFollowFeedsRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stFollowFeedsRsp());
     }
     if (paramClass == stRedDotRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stRedDotRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stRedDotRsp());
     }
     if (paramClass == stSimpleGetFeedDetailRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stSimpleGetFeedDetailRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stSimpleGetFeedDetailRsp());
     }
     if (paramClass == stBlockRecommPersonRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stBlockRecommPersonRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stBlockRecommPersonRsp());
     }
     if (paramClass == stFollowRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stFollowRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stFollowRsp());
     }
     if (paramClass == stPublisherRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stPublisherRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stPublisherRsp());
     }
     if (paramClass == stWeishiDengtaReportRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stWeishiDengtaReportRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stWeishiDengtaReportRsp());
     }
     if (paramClass == stUserConfigRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stUserConfigRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stUserConfigRsp());
     }
     if (paramClass == stGetCollectionRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stGetCollectionRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stGetCollectionRsp());
     }
     if (paramClass == stFriendFeedRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stFriendFeedRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stFriendFeedRsp());
     }
     if (paramClass == stGetPersonalFeedListRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stGetPersonalFeedListRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stGetPersonalFeedListRsp());
     }
     if (paramClass == stQQGroupDetailRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stQQGroupDetailRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stQQGroupDetailRsp());
     }
     if (paramClass == stGetAIOFeedDetailRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stGetAIOFeedDetailRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stGetAIOFeedDetailRsp());
     }
     if (paramClass == stGetAllABTestPolicyRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stGetAllABTestPolicyRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stGetAllABTestPolicyRsp());
     }
     if (paramClass == stGetTabsRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stGetTabsRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stGetTabsRsp());
     }
     if (paramClass == stGetFeedIconOpRsp.class) {
-      return a(paramQmfDownstream.BusiBuff, c(), new stGetFeedIconOpRsp());
+      return a(paramQmfDownstream.BusiBuff, e(), new stGetFeedIconOpRsp());
     }
     Log.e("weishi-Request", "response无法匹配");
     return null;
@@ -432,7 +325,7 @@ public class WeishiRequest<T1>
     localObject = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
-    localStringBuilder.append(WSDeviceUtils.b());
+    localStringBuilder.append(WSDeviceUtils.e());
     return localStringBuilder.toString();
   }
   
@@ -449,9 +342,184 @@ public class WeishiRequest<T1>
     return localStringBuilder.toString();
   }
   
-  private Map<String, String> a()
+  private static boolean a(RspHeaderBean paramRspHeaderBean)
   {
-    Object localObject1 = this.jdField_a_of_type_ComQqTafJceJceStruct;
+    if ((paramRspHeaderBean != null) && (paramRspHeaderBean.a != null))
+    {
+      if (!paramRspHeaderBean.a.containsKey("qq_compressed"))
+      {
+        WSLog.e("weishi-Request", "[WSResponseDecoder.java][checkRspCompress] rsp is not compress");
+        return false;
+      }
+      return true;
+    }
+    WSLog.e("weishi-Request", "[WSResponseDecoder.java][checkRspCompress] rspHeader or mapExt is null");
+    return false;
+  }
+  
+  private <T extends JceStruct> byte[] a(byte[] paramArrayOfByte)
+  {
+    long l1 = System.currentTimeMillis();
+    a(true);
+    Object localObject = (stCompressedData)a(paramArrayOfByte, "stCompressedData", new stCompressedData());
+    byte[] arrayOfByte = null;
+    if (localObject == null)
+    {
+      WSLog.e("weishi-Request", "[WSResponseDecoder.java][checkRspCompress] rsp is compress, but decodeJce failure");
+      return null;
+    }
+    paramArrayOfByte = arrayOfByte;
+    int i1;
+    try
+    {
+      localObject = ((stCompressedData)localObject).compressed;
+      paramArrayOfByte = arrayOfByte;
+      i1 = localObject.length;
+      paramArrayOfByte = arrayOfByte;
+      arrayOfByte = GZipUtil.a((byte[])localObject);
+      paramArrayOfByte = arrayOfByte;
+      int i2 = arrayOfByte.length;
+      paramArrayOfByte = arrayOfByte;
+      arrayOfByte = Arrays.copyOfRange(arrayOfByte, 1, i2);
+      paramArrayOfByte = arrayOfByte;
+      localObject = n();
+      paramArrayOfByte = arrayOfByte;
+      ((WSGzipCompressInfo)localObject).a(i1);
+      paramArrayOfByte = arrayOfByte;
+      ((WSGzipCompressInfo)localObject).b(i2);
+      paramArrayOfByte = arrayOfByte;
+      ((WSGzipCompressInfo)localObject).a(i1 / i2);
+      paramArrayOfByte = arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[WSResponseDecoder.java][checkRspCompress] exception:");
+      ((StringBuilder)localObject).append(localException.getLocalizedMessage());
+      WSLog.d("weishi-Request", ((StringBuilder)localObject).toString());
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSResponseDecoder.java][checkRspCompress] decompress and decodeJce success. dataSize:");
+    if (paramArrayOfByte != null) {
+      i1 = paramArrayOfByte.length;
+    } else {
+      i1 = 0;
+    }
+    localStringBuilder.append(i1);
+    localStringBuilder.append(", cost:");
+    localStringBuilder.append(System.currentTimeMillis() - l1);
+    WSLog.e("weishi-Request", localStringBuilder.toString());
+    return paramArrayOfByte;
+  }
+  
+  private stReqHeader p()
+  {
+    stReqHeader localstReqHeader = new stReqHeader();
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject3 = ((AppRuntime)localObject1).getAccount();
+    Object localObject2 = (TicketManager)((AppRuntime)localObject1).getManager(2);
+    if ((localObject2 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())))
+    {
+      localObject1 = ((TicketManager)localObject2).getSkey(((AppRuntime)localObject1).getAccount());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("session key:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      Log.e("weishi", ((StringBuilder)localObject2).toString());
+    }
+    else
+    {
+      localObject1 = "test-key";
+    }
+    localstReqHeader.authInfo = WSQQConnectAuthManager.a().a((String)localObject3, (String)localObject1, d());
+    localstReqHeader.iChid = 0;
+    localstReqHeader.person_id = WeishiHeaderConst.a;
+    localstReqHeader.platform = "Android";
+    localstReqHeader.appversion = WSDeviceUtils.b(BaseApplicationImpl.getContext());
+    localstReqHeader.user_ip = WSDeviceUtils.b();
+    localstReqHeader.strQua = QUA.getQUA3();
+    localstReqHeader.device_info = WSDeviceUtils.c();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("device_info:");
+    ((StringBuilder)localObject2).append(localstReqHeader.device_info);
+    WSLog.b("weishi-810", ((StringBuilder)localObject2).toString());
+    localstReqHeader.h265key = a();
+    localstReqHeader.appid = 1101083114;
+    if ("stWeishiReportReq".equals(uniKey())) {
+      localstReqHeader.mapExt = q();
+    } else {
+      localstReqHeader.mapExt = new HashMap();
+    }
+    if (localstReqHeader.mapExt != null)
+    {
+      localstReqHeader.mapExt.put("iAuthType", "2");
+      Map localMap = localstReqHeader.mapExt;
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = "";
+      }
+      localMap.put("sUid", localObject2);
+      localObject3 = localstReqHeader.mapExt;
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = "";
+      }
+      ((Map)localObject3).put("sSessionKey", localObject2);
+      localObject2 = UserActionReportPresenter.a(BaseApplicationImpl.getContext());
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = "000000000000000";
+      }
+      localstReqHeader.mapExt.put("imei", localObject1);
+      localObject2 = UserActionReportPresenter.b(BaseApplicationImpl.getContext());
+      localObject3 = localstReqHeader.mapExt;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      ((Map)localObject3).put("qimei", localObject1);
+      localObject2 = UserAction.getQimeiNew();
+      localObject3 = localstReqHeader.mapExt;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      ((Map)localObject3).put("qimei36", localObject1);
+      localObject2 = UserActionReportPresenter.c(BaseApplicationImpl.getContext());
+      localObject3 = localstReqHeader.mapExt;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      ((Map)localObject3).put("ssid", localObject1);
+      localObject2 = a(UserActionReportPresenter.d(BaseApplicationImpl.getContext()));
+      localObject3 = localstReqHeader.mapExt;
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      ((Map)localObject3).put("ssid_ip", localObject1);
+      localstReqHeader.mapExt.put("ab_policy_info", b());
+      localstReqHeader.mapExt.put("teen_mode", String.valueOf(WSNetUtil.b()));
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[WeishiRequest.java][getHeader] mCmd:");
+      ((StringBuilder)localObject1).append(this.u);
+      ((StringBuilder)localObject1).append(", mReqScene:");
+      ((StringBuilder)localObject1).append(this.o);
+      ((StringBuilder)localObject1).append(", header:");
+      ((StringBuilder)localObject1).append(localstReqHeader.mapExt.toString());
+      WSLog.e("weishi-Request", ((StringBuilder)localObject1).toString());
+    }
+    else
+    {
+      WSLog.a("weishi-Request", "header mapExt is null.");
+    }
+    localstReqHeader.iAppVersion = WSDeviceUtils.a();
+    return localstReqHeader;
+  }
+  
+  private Map<String, String> q()
+  {
+    Object localObject1 = this.c;
     if ((localObject1 instanceof stWeishiReportReq))
     {
       localObject1 = ((stWeishiReportReq)localObject1).report_list;
@@ -462,7 +530,7 @@ public class WeishiRequest<T1>
         ((StringBuilder)localObject2).append("上报取 pageType: ");
         ((StringBuilder)localObject2).append(((stReportItem)localObject1).pagetype);
         Log.i("weishi-Request", ((StringBuilder)localObject2).toString());
-        localObject2 = (Map)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(((stReportItem)localObject1).pagetype));
+        localObject2 = (Map)n.get(Integer.valueOf(((stReportItem)localObject1).pagetype));
         if ((localObject2 != null) && (((Map)localObject2).size() > 0))
         {
           Iterator localIterator = ((Map)localObject2).entrySet().iterator();
@@ -500,91 +568,6 @@ public class WeishiRequest<T1>
     return new HashMap();
   }
   
-  private static boolean a(RspHeaderBean paramRspHeaderBean)
-  {
-    if ((paramRspHeaderBean != null) && (paramRspHeaderBean.jdField_a_of_type_JavaUtilMap != null))
-    {
-      if (!paramRspHeaderBean.jdField_a_of_type_JavaUtilMap.containsKey("qq_compressed"))
-      {
-        WSLog.e("weishi-Request", "[WSResponseDecoder.java][checkRspCompress] rsp is not compress");
-        return false;
-      }
-      return true;
-    }
-    WSLog.e("weishi-Request", "[WSResponseDecoder.java][checkRspCompress] rspHeader or mapExt is null");
-    return false;
-  }
-  
-  private <T extends JceStruct> byte[] a(byte[] paramArrayOfByte)
-  {
-    long l = System.currentTimeMillis();
-    a(true);
-    Object localObject = (stCompressedData)a(paramArrayOfByte, "stCompressedData", new stCompressedData());
-    byte[] arrayOfByte = null;
-    if (localObject == null)
-    {
-      WSLog.e("weishi-Request", "[WSResponseDecoder.java][checkRspCompress] rsp is compress, but decodeJce failure");
-      return null;
-    }
-    paramArrayOfByte = arrayOfByte;
-    int i;
-    try
-    {
-      localObject = ((stCompressedData)localObject).compressed;
-      paramArrayOfByte = arrayOfByte;
-      i = localObject.length;
-      paramArrayOfByte = arrayOfByte;
-      arrayOfByte = GZipUtil.a((byte[])localObject);
-      paramArrayOfByte = arrayOfByte;
-      int j = arrayOfByte.length;
-      paramArrayOfByte = arrayOfByte;
-      arrayOfByte = Arrays.copyOfRange(arrayOfByte, 1, j);
-      paramArrayOfByte = arrayOfByte;
-      localObject = a();
-      paramArrayOfByte = arrayOfByte;
-      ((WSGzipCompressInfo)localObject).a(i);
-      paramArrayOfByte = arrayOfByte;
-      ((WSGzipCompressInfo)localObject).b(j);
-      paramArrayOfByte = arrayOfByte;
-      ((WSGzipCompressInfo)localObject).a(i / j);
-      paramArrayOfByte = arrayOfByte;
-    }
-    catch (Exception localException)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[WSResponseDecoder.java][checkRspCompress] exception:");
-      ((StringBuilder)localObject).append(localException.getLocalizedMessage());
-      WSLog.d("weishi-Request", ((StringBuilder)localObject).toString());
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[WSResponseDecoder.java][checkRspCompress] decompress and decodeJce success. dataSize:");
-    if (paramArrayOfByte != null) {
-      i = paramArrayOfByte.length;
-    } else {
-      i = 0;
-    }
-    localStringBuilder.append(i);
-    localStringBuilder.append(", cost:");
-    localStringBuilder.append(System.currentTimeMillis() - l);
-    WSLog.e("weishi-Request", localStringBuilder.toString());
-    return paramArrayOfByte;
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.g;
-  }
-  
-  public WSGzipCompressInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetCommonWSGzipCompressInfo;
-  }
-  
   public final <T1> T1 a(byte[] paramArrayOfByte, String paramString, T1 paramT1)
   {
     UniPacket localUniPacket = new UniPacket(true);
@@ -601,11 +584,6 @@ public class WeishiRequest<T1>
     return null;
   }
   
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
   protected void a(UniAttribute paramUniAttribute, int paramInt1, int paramInt2, String paramString)
   {
     a(paramUniAttribute, paramInt1, paramInt2, paramString, true);
@@ -613,12 +591,12 @@ public class WeishiRequest<T1>
   
   public void a(IWeishiProtocolListener paramIWeishiProtocolListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetIWeishiProtocolListener = paramIWeishiProtocolListener;
+    this.l = paramIWeishiProtocolListener;
   }
   
   public void a(FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.h = System.currentTimeMillis();
     Object localObject1 = null;
     if (paramFromServiceMsg != null)
     {
@@ -629,28 +607,28 @@ public class WeishiRequest<T1>
         localObject2 = localObject2.toString().split(":");
         if ((localObject2 != null) && (localObject2.length > 1))
         {
-          this.jdField_a_of_type_JavaUtilHashMap.put("key_request_server_ip", localObject2[0]);
-          this.jdField_a_of_type_JavaUtilHashMap.put("key_request_server_port", localObject2[1]);
+          this.b.put("key_request_server_ip", localObject2[0]);
+          this.b.put("key_request_server_port", localObject2[1]);
         }
       }
       if (paramFromServiceMsg.getResultCode() == 1000)
       {
         localObject2 = paramFromServiceMsg.getWupBuffer();
         if (localObject2 != null) {
-          this.jdField_d_of_type_Long = localObject2.length;
+          this.j = localObject2.length;
         }
-        this.jdField_c_of_type_Long = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long);
+        this.i = (this.h - this.g);
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("old cost=");
-        localStringBuilder.append(this.jdField_c_of_type_Long);
+        localStringBuilder.append(this.i);
         Log.w("weishi-Server", localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("cmd=");
-        localStringBuilder.append(d());
+        localStringBuilder.append(i());
         localStringBuilder.append(",response size=");
-        localStringBuilder.append(this.jdField_d_of_type_Long);
+        localStringBuilder.append(this.j);
         localStringBuilder.append(",request size=");
-        localStringBuilder.append(this.jdField_e_of_type_Long);
+        localStringBuilder.append(this.k);
         Log.i("weishi-Server", localStringBuilder.toString());
         if (localObject2 != null) {
           localObject1 = WupUtil.b((byte[])localObject2);
@@ -668,7 +646,7 @@ public class WeishiRequest<T1>
       localStringBuilder.append("errMsg:");
       localStringBuilder.append((String)localObject2);
       a("key_report_detail_msg", localStringBuilder.toString());
-      if ((!this.jdField_b_of_type_Boolean) && (f()) && (localObject1 != null))
+      if ((!this.f) && (o()) && (localObject1 != null))
       {
         boolean bool1 = bool2;
         if (a((Bundle)localObject1, "timestamp_msf2net_atMsfSite") > 0L) {
@@ -682,7 +660,7 @@ public class WeishiRequest<T1>
             bool1 = true;
           }
         }
-        this.jdField_b_of_type_Boolean = bool1;
+        this.f = bool1;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("cmd=");
         ((StringBuilder)localObject1).append(uniKey());
@@ -706,7 +684,7 @@ public class WeishiRequest<T1>
   protected void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
     Log.i("weishi-request", "doSuccessCallback!!");
-    IWeishiProtocolListener localIWeishiProtocolListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetIWeishiProtocolListener;
+    IWeishiProtocolListener localIWeishiProtocolListener = this.l;
     if (localIWeishiProtocolListener != null) {
       localIWeishiProtocolListener.a(paramObject, paramInt1, paramInt2, paramString, paramBoolean, null);
     }
@@ -715,7 +693,7 @@ public class WeishiRequest<T1>
   protected void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, RspHeaderBean paramRspHeaderBean)
   {
     Log.i("weishi-request", "doSuccessCallback!!");
-    IWeishiProtocolListener localIWeishiProtocolListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetIWeishiProtocolListener;
+    IWeishiProtocolListener localIWeishiProtocolListener = this.l;
     if (localIWeishiProtocolListener != null) {
       localIWeishiProtocolListener.a(paramObject, paramInt1, paramInt2, paramString, paramBoolean, paramRspHeaderBean);
     }
@@ -723,12 +701,12 @@ public class WeishiRequest<T1>
   
   public void a(Object paramObject1, Object paramObject2)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramObject1, paramObject2);
+    this.b.put(paramObject1, paramObject2);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_e_of_type_Boolean = paramBoolean;
+    this.A = paramBoolean;
   }
   
   public void a(byte[] paramArrayOfByte, FromServiceMsg paramFromServiceMsg)
@@ -756,7 +734,7 @@ public class WeishiRequest<T1>
         if (WebAppIpManager.isValidServerInfo((QmfServerInfo)localObject1))
         {
           WebAppIpManager.getInstance().addWebAppIpRecord((QmfServerInfo)localObject1);
-          this.jdField_a_of_type_JavaUtilHashMap.put("key_report_busi_serverip", NetworkState.IntAddr2Ip(((QmfServerInfo)localObject1).ipWebapp.ClientIpv4));
+          this.b.put("key_report_busi_serverip", NetworkState.IntAddr2Ip(((QmfServerInfo)localObject1).ipWebapp.ClientIpv4));
         }
         localObject1 = (QmfBusiControl)paramArrayOfByte.get("busiCompCtl");
         if ((localObject1 != null) && (1 == ((QmfBusiControl)localObject1).compFlag))
@@ -780,7 +758,7 @@ public class WeishiRequest<T1>
         Object localObject3 = (ParameterizedType)getClass().getGenericSuperclass();
         if (localObject3 != null)
         {
-          localObject1 = a((QmfDownstream)localObject2, this.jdField_a_of_type_Int);
+          localObject1 = a((QmfDownstream)localObject2, this.o);
           localObject3 = (Class)localObject3.getActualTypeArguments()[0];
           if (a((RspHeaderBean)localObject1))
           {
@@ -800,9 +778,9 @@ public class WeishiRequest<T1>
           }
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("pageType scene：");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(this.o);
           Log.i("weishi-Request", ((StringBuilder)localObject2).toString());
-          a(paramArrayOfByte, paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getBusinessFailMsg(), this.jdField_d_of_type_Boolean, (RspHeaderBean)localObject1);
+          a(paramArrayOfByte, paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getBusinessFailMsg(), this.z, (RspHeaderBean)localObject1);
           return;
         }
         Log.w("weishi-Request", "泛型匹配错误");
@@ -847,21 +825,11 @@ public class WeishiRequest<T1>
     }
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   protected String b()
   {
-    if (a())
+    if (c())
     {
-      String str = WSExpABTestManager.a().a();
+      String str = WSExpABTestManager.a().d();
       if (str != null) {
         return str;
       }
@@ -870,80 +838,70 @@ public class WeishiRequest<T1>
     return "";
   }
   
+  public void b(int paramInt)
+  {
+    this.v = paramInt;
+  }
+  
   public void b(boolean paramBoolean)
   {
-    this.jdField_f_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("st");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append("Rsp");
-    return localStringBuilder.toString();
+    this.B = paramBoolean;
   }
   
   public boolean c()
   {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.jdField_e_of_type_JavaLangString;
+    return true;
   }
   
   public boolean d()
   {
-    return this.jdField_e_of_type_Boolean;
+    return true;
   }
   
   public String e()
   {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_f_of_type_Boolean;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("st");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append("Rsp");
+    return localStringBuilder.toString();
   }
   
   public byte[] encode()
   {
     Object localObject1 = getDeviceInfo();
     Object localObject2 = QUA.getQUA3();
-    long l = getLoginUserId();
+    long l1 = getLoginUserId();
     RetryInfo localRetryInfo = (RetryInfo)getRetryInfo();
-    localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
+    localObject1 = new WNSStream(1000027, (String)localObject2, l1, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return WupUtil.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.jdField_a_of_type_Boolean));
+      return WupUtil.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.e));
     }
     return null;
   }
   
-  protected boolean f()
+  public int f()
   {
-    return false;
+    return this.v;
+  }
+  
+  public boolean g()
+  {
+    return this.w;
   }
   
   public String getCmdString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.s);
+    localStringBuilder.append(this.u);
     return localStringBuilder.toString();
   }
   
   protected byte[] getEncodedUniParameter()
   {
-    Object localObject = a();
+    Object localObject = p();
     if (localObject != null) {}
     try
     {
@@ -960,34 +918,34 @@ public class WeishiRequest<T1>
       Log.e("weishi-Request", localStringBuilder3.toString());
     }
     Log.d("weishi-Request", "encode, reqHeader = null");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket = new WSUniPacket();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket.b(this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket.a("king");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket.b(e());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket.setEncodeName("UTF-8");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket.put("stReqHeader", localObject);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket.a(9999);
-    if ((this.jdField_a_of_type_ComQqTafJceJceStruct != null) && (!TextUtils.isEmpty(d())))
+    this.m = new WSUniPacket();
+    this.m.b(this.q);
+    this.q += 1;
+    this.m.a("king");
+    this.m.b(j());
+    this.m.setEncodeName("UTF-8");
+    this.m.put("stReqHeader", localObject);
+    this.m.a(9999);
+    if ((this.c != null) && (!TextUtils.isEmpty(i())))
     {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket;
+      localObject = this.m;
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("st");
-      localStringBuilder2.append(e());
+      localStringBuilder2.append(j());
       localStringBuilder2.append("Req");
-      ((WSUniPacket)localObject).put(localStringBuilder2.toString(), this.jdField_a_of_type_ComQqTafJceJceStruct);
+      ((WSUniPacket)localObject).put(localStringBuilder2.toString(), this.c);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("req名 :st");
-      ((StringBuilder)localObject).append(e());
+      ((StringBuilder)localObject).append(j());
       ((StringBuilder)localObject).append("Req");
       Log.i("weishi-Request", ((StringBuilder)localObject).toString());
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWSUniPacket.encode();
+    return this.m.encode();
   }
   
   public JceStruct getReq()
   {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+    return this.c;
   }
   
   public Object getRetryInfo()
@@ -995,18 +953,58 @@ public class WeishiRequest<T1>
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:539)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
+  public long h()
+  {
+    return this.x;
+  }
+  
+  public String i()
+  {
+    return this.u;
+  }
+  
+  public String j()
+  {
+    return this.r;
+  }
+  
+  public int k()
+  {
+    return this.o;
+  }
+  
+  public boolean l()
+  {
+    return this.A;
+  }
+  
+  public boolean m()
+  {
+    return this.B;
+  }
+  
+  public WSGzipCompressInfo n()
+  {
+    return this.t;
+  }
+  
+  protected boolean o()
+  {
+    return false;
+  }
+  
   public String uniKey()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("st");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.y);
     localStringBuilder.append("Req");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiRequest
  * JD-Core Version:    0.7.0.1
  */

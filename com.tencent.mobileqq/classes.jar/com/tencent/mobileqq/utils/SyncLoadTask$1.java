@@ -15,11 +15,11 @@ final class SyncLoadTask$1
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       SyncLoadTask localSyncLoadTask = (SyncLoadTask)localIterator.next();
-      if (localSyncLoadTask.runOnSubThread(this.jdField_a_of_type_AndroidContentResResources))
+      if (localSyncLoadTask.runOnSubThread(this.b))
       {
         localArrayList1.add(localSyncLoadTask);
       }
@@ -34,7 +34,7 @@ final class SyncLoadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SyncLoadTask.1
  * JD-Core Version:    0.7.0.1
  */

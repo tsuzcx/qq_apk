@@ -10,7 +10,7 @@ class CommentBottomBar$7
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    CommentBottomBar.a(this.a, true);
+    CommentBottomBar.b(this.a, true);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

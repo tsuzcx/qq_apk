@@ -6,21 +6,21 @@ import java.util.LinkedHashSet;
 abstract class PickerFragment<S>
   extends Fragment
 {
-  protected final LinkedHashSet<OnSelectionChangedListener<S>> a = new LinkedHashSet();
+  protected final LinkedHashSet<OnSelectionChangedListener<S>> e = new LinkedHashSet();
   
   boolean a(OnSelectionChangedListener<S> paramOnSelectionChangedListener)
   {
-    return this.a.add(paramOnSelectionChangedListener);
+    return this.e.add(paramOnSelectionChangedListener);
   }
   
-  void b()
+  void g()
   {
-    this.a.clear();
+    this.e.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.PickerFragment
  * JD-Core Version:    0.7.0.1
  */

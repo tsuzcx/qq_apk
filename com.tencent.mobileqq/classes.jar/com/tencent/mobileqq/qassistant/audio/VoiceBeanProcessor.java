@@ -9,32 +9,32 @@ import java.io.IOException;
 
 public class VoiceBeanProcessor
 {
-  private VoiceBeanProcessor.PttEncodeListener jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor$PttEncodeListener;
-  private AudioCompositeProcessor jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor;
-  private VadHelper jdField_a_of_type_ComTencentMobileqqUtilsVadHelper;
-  private boolean jdField_a_of_type_Boolean = false;
+  private VoiceBeanProcessor.PttEncodeListener a;
+  private AudioCompositeProcessor b;
+  private VadHelper c;
+  private boolean d = false;
   
   public VoiceBeanProcessor(RecordParams.RecorderParam paramRecorderParam)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor$PttEncodeListener = new VoiceBeanProcessor.PttEncodeListener();
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor = new AudioCompositeProcessor();
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(new SilkCodecWrapper(BaseApplication.getContext()));
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(paramRecorderParam.jdField_a_of_type_Int, paramRecorderParam.b, paramRecorderParam.c);
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor.a(this.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor$PttEncodeListener);
+        this.a = new VoiceBeanProcessor.PttEncodeListener();
+        this.b = new AudioCompositeProcessor();
+        this.b.a(new SilkCodecWrapper(BaseApplication.getContext()));
+        this.b.a(paramRecorderParam.a, paramRecorderParam.b, paramRecorderParam.c);
+        this.b.a(this.a);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper == null) || (this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper.jdField_a_of_type_Boolean))
+      if ((this.c == null) || (this.c.a))
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper = new VadHelper();
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper.c();
+        this.c = new VadHelper();
+        if (this.d) {
+          this.c.c();
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper.d();
+          this.c.d();
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper.a();
+        this.c.a();
         return;
       }
     }
@@ -50,11 +50,11 @@ public class VoiceBeanProcessor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 83	java/lang/System:currentTimeMillis	()J
+    //   2: invokestatic 84	java/lang/System:currentTimeMillis	()J
     //   5: lstore 4
-    //   7: new 85	java/util/ArrayList
+    //   7: new 86	java/util/ArrayList
     //   10: dup
-    //   11: invokespecial 86	java/util/ArrayList:<init>	()V
+    //   11: invokespecial 87	java/util/ArrayList:<init>	()V
     //   14: astore 8
     //   16: iconst_0
     //   17: istore_2
@@ -67,14 +67,14 @@ public class VoiceBeanProcessor
     //   26: iload_2
     //   27: isub
     //   28: sipush 6400
-    //   31: invokestatic 92	java/lang/Math:min	(II)I
+    //   31: invokestatic 93	java/lang/Math:min	(II)I
     //   34: istore_3
     //   35: aload_0
-    //   36: getfield 20	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor	Lcom/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor;
+    //   36: getfield 23	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:b	Lcom/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor;
     //   39: aload_1
     //   40: iload_2
     //   41: iload_3
-    //   42: invokevirtual 95	com/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor:a	([BII)Lcom/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData;
+    //   42: invokevirtual 96	com/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor:a	([BII)Lcom/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData;
     //   45: astore 9
     //   47: iload_2
     //   48: iload_3
@@ -82,22 +82,22 @@ public class VoiceBeanProcessor
     //   50: istore_2
     //   51: aload 8
     //   53: aload 9
-    //   55: invokeinterface 101 2 0
+    //   55: invokeinterface 102 2 0
     //   60: pop
     //   61: goto -43 -> 18
     //   64: aload 8
-    //   66: invokeinterface 105 1 0
+    //   66: invokeinterface 106 1 0
     //   71: astore_1
     //   72: iconst_0
     //   73: istore_2
     //   74: aload_1
-    //   75: invokeinterface 111 1 0
+    //   75: invokeinterface 112 1 0
     //   80: ifeq +21 -> 101
     //   83: iload_2
     //   84: aload_1
-    //   85: invokeinterface 115 1 0
-    //   90: checkcast 117	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData
-    //   93: getfield 118	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:jdField_a_of_type_Int	I
+    //   85: invokeinterface 116 1 0
+    //   90: checkcast 118	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData
+    //   93: getfield 119	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:a	I
     //   96: iadd
     //   97: istore_2
     //   98: goto -24 -> 74
@@ -105,64 +105,64 @@ public class VoiceBeanProcessor
     //   102: newarray byte
     //   104: astore_1
     //   105: aload 8
-    //   107: invokeinterface 105 1 0
+    //   107: invokeinterface 106 1 0
     //   112: astore 8
     //   114: iconst_0
     //   115: istore_2
     //   116: aload 8
-    //   118: invokeinterface 111 1 0
+    //   118: invokeinterface 112 1 0
     //   123: ifeq +42 -> 165
     //   126: aload 8
-    //   128: invokeinterface 115 1 0
-    //   133: checkcast 117	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData
+    //   128: invokeinterface 116 1 0
+    //   133: checkcast 118	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData
     //   136: astore 9
     //   138: aload 9
-    //   140: getfield 121	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:jdField_a_of_type_ArrayOfByte	[B
+    //   140: getfield 122	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:c	[B
     //   143: iconst_0
     //   144: aload_1
     //   145: iload_2
     //   146: aload 9
-    //   148: getfield 118	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:jdField_a_of_type_Int	I
-    //   151: invokestatic 125	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   148: getfield 119	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:a	I
+    //   151: invokestatic 126	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   154: iload_2
     //   155: aload 9
-    //   157: getfield 118	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:jdField_a_of_type_Int	I
+    //   157: getfield 119	com/tencent/mobileqq/qqaudio/audioprocessor/IAudioProcessor$ProcessData:a	I
     //   160: iadd
     //   161: istore_2
     //   162: goto -46 -> 116
-    //   165: invokestatic 83	java/lang/System:currentTimeMillis	()J
+    //   165: invokestatic 84	java/lang/System:currentTimeMillis	()J
     //   168: lstore 6
-    //   170: new 127	java/lang/StringBuilder
+    //   170: new 128	java/lang/StringBuilder
     //   173: dup
-    //   174: invokespecial 128	java/lang/StringBuilder:<init>	()V
+    //   174: invokespecial 129	java/lang/StringBuilder:<init>	()V
     //   177: astore 8
     //   179: aload 8
-    //   181: ldc 130
-    //   183: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: ldc 131
+    //   183: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   186: pop
     //   187: aload 8
     //   189: lload 6
     //   191: lload 4
     //   193: lsub
-    //   194: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   194: invokevirtual 138	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   197: pop
-    //   198: ldc 139
+    //   198: ldc 140
     //   200: aload 8
-    //   202: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 148	com/tencent/mobileqq/qassistant/core/AssistantUtils:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   202: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   205: invokestatic 149	com/tencent/mobileqq/qassistant/core/AssistantUtils:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   208: aload_0
-    //   209: getfield 25	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor$PttEncodeListener	Lcom/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor$PttEncodeListener;
+    //   209: getfield 28	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:a	Lcom/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor$PttEncodeListener;
     //   212: ifnull +51 -> 263
     //   215: aload_0
-    //   216: getfield 25	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceBeanProcessor$PttEncodeListener	Lcom/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor$PttEncodeListener;
-    //   219: invokevirtual 151	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor$PttEncodeListener:a	()I
+    //   216: getfield 28	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:a	Lcom/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor$PttEncodeListener;
+    //   219: invokevirtual 152	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor$PttEncodeListener:a	()I
     //   222: istore_2
     //   223: goto +3 -> 226
-    //   226: new 153	com/tencent/mobileqq/qassistant/data/VoiceEncodeResult
+    //   226: new 154	com/tencent/mobileqq/qassistant/data/VoiceEncodeResult
     //   229: dup
     //   230: aload_1
     //   231: iload_2
-    //   232: invokespecial 156	com/tencent/mobileqq/qassistant/data/VoiceEncodeResult:<init>	([BI)V
+    //   232: invokespecial 157	com/tencent/mobileqq/qassistant/data/VoiceEncodeResult:<init>	([BI)V
     //   235: astore_1
     //   236: aload_0
     //   237: monitorexit
@@ -172,7 +172,7 @@ public class VoiceBeanProcessor
     //   241: goto +12 -> 253
     //   244: astore_1
     //   245: aload_1
-    //   246: invokevirtual 75	java/io/IOException:printStackTrace	()V
+    //   246: invokevirtual 76	java/io/IOException:printStackTrace	()V
     //   249: aload_0
     //   250: monitorexit
     //   251: aconst_null
@@ -226,29 +226,29 @@ public class VoiceBeanProcessor
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 20	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor	Lcom/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor;
+    //   3: getfield 23	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:b	Lcom/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor;
     //   6: ifnull +15 -> 21
     //   9: aload_0
-    //   10: getfield 20	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor	Lcom/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor;
-    //   13: invokevirtual 157	com/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor:a	()V
+    //   10: getfield 23	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:b	Lcom/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor;
+    //   13: invokevirtual 158	com/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor:a	()V
     //   16: aload_0
     //   17: aconst_null
-    //   18: putfield 20	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorAudioCompositeProcessor	Lcom/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor;
+    //   18: putfield 23	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:b	Lcom/tencent/mobileqq/qqaudio/audioprocessor/AudioCompositeProcessor;
     //   21: aload_0
-    //   22: getfield 61	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqUtilsVadHelper	Lcom/tencent/mobileqq/utils/VadHelper;
+    //   22: getfield 62	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:c	Lcom/tencent/mobileqq/utils/VadHelper;
     //   25: ifnull +27 -> 52
     //   28: aload_0
-    //   29: getfield 61	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqUtilsVadHelper	Lcom/tencent/mobileqq/utils/VadHelper;
-    //   32: invokevirtual 159	com/tencent/mobileqq/utils/VadHelper:b	()V
+    //   29: getfield 62	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:c	Lcom/tencent/mobileqq/utils/VadHelper;
+    //   32: invokevirtual 160	com/tencent/mobileqq/utils/VadHelper:b	()V
     //   35: aload_0
     //   36: aconst_null
-    //   37: putfield 61	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:jdField_a_of_type_ComTencentMobileqqUtilsVadHelper	Lcom/tencent/mobileqq/utils/VadHelper;
+    //   37: putfield 62	com/tencent/mobileqq/qassistant/audio/VoiceBeanProcessor:c	Lcom/tencent/mobileqq/utils/VadHelper;
     //   40: goto +12 -> 52
     //   43: astore_1
     //   44: goto +11 -> 55
     //   47: astore_1
     //   48: aload_1
-    //   49: invokevirtual 75	java/io/IOException:printStackTrace	()V
+    //   49: invokevirtual 76	java/io/IOException:printStackTrace	()V
     //   52: aload_0
     //   53: monitorexit
     //   54: return
@@ -270,11 +270,11 @@ public class VoiceBeanProcessor
     //   21	40	47	java/io/IOException
   }
   
-  public boolean a(byte[] paramArrayOfByte)
+  public boolean b(byte[] paramArrayOfByte)
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqUtilsVadHelper.a(paramArrayOfByte, this.jdField_a_of_type_Boolean);
+      boolean bool = this.c.a(paramArrayOfByte, this.d);
       return bool;
     }
     finally
@@ -286,7 +286,7 @@ public class VoiceBeanProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.VoiceBeanProcessor
  * JD-Core Version:    0.7.0.1
  */

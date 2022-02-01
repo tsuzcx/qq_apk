@@ -31,7 +31,7 @@ final class BottomSelectorLayout$addMediaPanel$4
       localObject = StringCompanionObject.INSTANCE;
       localObject = this.this$0.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      localObject = ((Context)localObject).getResources().getString(R.string.F);
+      localObject = ((Context)localObject).getResources().getString(R.string.y);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getStr…lect_photo_reach_max_tip)");
       arrayOfObject = new Object[1];
       arrayOfObject[0] = Integer.valueOf(this.$maxSelectCount);
@@ -45,7 +45,7 @@ final class BottomSelectorLayout$addMediaPanel$4
       localObject = StringCompanionObject.INSTANCE;
       localObject = this.this$0.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      localObject = ((Context)localObject).getResources().getString(R.string.G);
+      localObject = ((Context)localObject).getResources().getString(R.string.z);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getStr…lect_video_reach_max_tip)");
       arrayOfObject = new Object[1];
       arrayOfObject[0] = Integer.valueOf(this.$maxSelectCount);
@@ -57,7 +57,7 @@ final class BottomSelectorLayout$addMediaPanel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addMediaPanel.4
  * JD-Core Version:    0.7.0.1
  */

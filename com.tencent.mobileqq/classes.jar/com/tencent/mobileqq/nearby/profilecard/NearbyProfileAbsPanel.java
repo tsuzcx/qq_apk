@@ -7,42 +7,42 @@ import com.tencent.mobileqq.data.NearbyPeopleCard;
 
 public abstract class NearbyProfileAbsPanel
 {
-  protected Context a;
   protected View a;
+  protected Context b;
   
   public NearbyProfileAbsPanel(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
-  
-  protected abstract int a();
   
   public View a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.a;
     if (localView != null) {
       return localView;
     }
-    int i = a();
+    int i = b();
     if (i > 0)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, null);
-      a(this.jdField_a_of_type_AndroidViewView);
+      this.a = LayoutInflater.from(this.b).inflate(i, null);
+      a(this.a);
     }
     else
     {
-      this.jdField_a_of_type_AndroidViewView = null;
+      this.a = null;
     }
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.a;
   }
   
   protected void a(View paramView) {}
   
   protected abstract void a(NearbyPeopleCard paramNearbyPeopleCard);
+  
+  protected abstract int b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileAbsPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -11,28 +11,28 @@ class AvGameLoadingActivity$9
   {
     if (AvGameLoadingActivity.a(this.this$0))
     {
-      AvGameLoadingActivity.b(this.this$0);
+      AvGameLoadingActivity.p(this.this$0);
       return;
     }
-    if (AvGameLoadingActivity.i(this.this$0))
+    if (AvGameLoadingActivity.q(this.this$0))
     {
-      AvGameLoadingActivity.c(this.this$0);
+      AvGameLoadingActivity.r(this.this$0);
       return;
     }
-    if (AvGameLoadingActivity.d(this.this$0))
+    if (AvGameLoadingActivity.e(this.this$0))
     {
-      AvGameLoadingActivity.d(this.this$0);
+      AvGameLoadingActivity.s(this.this$0);
       return;
     }
     AVGamePerfReporter.a().a("param_StepRoomProto");
-    if (AvGameLoadingActivity.j(this.this$0))
+    if (AvGameLoadingActivity.t(this.this$0))
     {
       localAvGameLoadingActivity = this.this$0;
-      AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.a(localAvGameLoadingActivity), AvGameLoadingActivity.c(this.this$0));
+      AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.d(localAvGameLoadingActivity), AvGameLoadingActivity.n(this.this$0));
       return;
     }
     AvGameLoadingActivity localAvGameLoadingActivity = this.this$0;
-    AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.a(localAvGameLoadingActivity), AvGameLoadingActivity.d(this.this$0), AvGameLoadingActivity.c(this.this$0));
+    AvGameLoadingActivity.a(localAvGameLoadingActivity, AvGameLoadingActivity.d(localAvGameLoadingActivity), AvGameLoadingActivity.u(this.this$0), AvGameLoadingActivity.n(this.this$0));
   }
 }
 

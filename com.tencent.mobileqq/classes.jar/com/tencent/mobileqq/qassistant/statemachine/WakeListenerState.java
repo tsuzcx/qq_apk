@@ -13,17 +13,6 @@ public class WakeListenerState
     this.a = paramVoiceAssistantStateMachine;
   }
   
-  public String a()
-  {
-    return WakeListenerState.class.getSimpleName();
-  }
-  
-  public void a()
-  {
-    super.a();
-    WakeManager.a().b();
-  }
-  
   public boolean a(Message paramMessage)
   {
     int i = paramMessage.what;
@@ -35,7 +24,7 @@ public class WakeListenerState
         localVoiceAssistantStateMachine = this.a;
         if (localVoiceAssistantStateMachine != null)
         {
-          localVoiceAssistantStateMachine.c(6);
+          localVoiceAssistantStateMachine.e(6);
           return true;
         }
       }
@@ -45,7 +34,7 @@ public class WakeListenerState
       localVoiceAssistantStateMachine = this.a;
       if (localVoiceAssistantStateMachine != null)
       {
-        localVoiceAssistantStateMachine.c(3);
+        localVoiceAssistantStateMachine.e(3);
         this.a.a(paramMessage);
         return true;
       }
@@ -56,12 +45,23 @@ public class WakeListenerState
   public void b()
   {
     super.b();
-    WakeManager.a().c();
+    WakeManager.a().f();
+  }
+  
+  public void c()
+  {
+    super.c();
+    WakeManager.a().g();
+  }
+  
+  public String d()
+  {
+    return WakeListenerState.class.getSimpleName();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.WakeListenerState
  * JD-Core Version:    0.7.0.1
  */

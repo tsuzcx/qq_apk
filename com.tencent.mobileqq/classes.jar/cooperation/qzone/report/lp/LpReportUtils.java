@@ -18,10 +18,10 @@ import mqq.app.MobileQQ;
 
 public class LpReportUtils
 {
-  public static final String ALL_REPORT = HardCodeUtil.a(2131706462);
-  public static final String CLICK_MESSAGE = HardCodeUtil.a(2131706464);
-  public static final String NOT_HIT = HardCodeUtil.a(2131706461);
-  public static final String SAMPLE_REPORT = HardCodeUtil.a(2131706463);
+  public static final String ALL_REPORT = HardCodeUtil.a(2131904321);
+  public static final String CLICK_MESSAGE = HardCodeUtil.a(2131904323);
+  public static final String NOT_HIT = HardCodeUtil.a(2131904320);
+  public static final String SAMPLE_REPORT = HardCodeUtil.a(2131904322);
   private static final String TAG = "LpReport.LpReportUtils";
   private static boolean isSampled = false;
   private static long sampleValidEndTime;
@@ -201,7 +201,7 @@ public class LpReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportUtils
  * JD-Core Version:    0.7.0.1
  */

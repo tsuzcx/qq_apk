@@ -13,16 +13,16 @@ import java.util.List;
 public class StartLiveTopicLabelListView
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = ((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQNearbyNowBgStartLiveNormalGap();
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new StartLiveTopicLabelListView.1(this);
-  private StartLiveTopicLabelListView.IAddTopicClickListener jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView$IAddTopicClickListener;
-  private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int b = -1;
-  private int c = ((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQNearbyNowBgStartLiveGap();
-  private int d = -1;
+  private final String a = "TopicLabelListView";
+  private Context b;
+  private HorizontalListView c;
+  private List<String> d;
+  private StartLiveTopicLabelListView.IAddTopicClickListener e;
+  private int f = ((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQNearbyNowBgStartLiveNormalGap();
+  private int g = -1;
+  private int h = ((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQNearbyNowBgStartLiveGap();
+  private int i = -1;
+  private BaseAdapter j = new StartLiveTopicLabelListView.1(this);
   
   public StartLiveTopicLabelListView(Context paramContext)
   {
@@ -44,42 +44,42 @@ public class StartLiveTopicLabelListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = new HorizontalListView(paramContext);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(paramContext, 5.0F));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
-    addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, -1, -1);
+    this.b = paramContext;
+    this.c = new HorizontalListView(paramContext);
+    this.c.setDividerWidth((int)((IUIToolsApi)QRoute.api(IUIToolsApi.class)).dp2px(paramContext, 5.0F));
+    this.c.setAdapter(this.j);
+    addView(this.c, -1, -1);
   }
   
   public void setData(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+    this.d = paramList;
+    this.j.notifyDataSetChanged();
   }
   
   public void setItemAddLabelResId(int paramInt)
   {
-    this.c = paramInt;
+    this.h = paramInt;
   }
   
   public void setItemAddLabelTextColor(int paramInt)
   {
-    this.d = paramInt;
+    this.i = paramInt;
   }
   
   public void setItemResId(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void setItemTextColor(int paramInt)
   {
-    this.b = paramInt;
+    this.g = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView
  * JD-Core Version:    0.7.0.1
  */

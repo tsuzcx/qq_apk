@@ -23,31 +23,28 @@ import java.util.Random;
 public class RandomSizeTextItem
   extends DynamicTextItem
 {
-  private float jdField_a_of_type_Float;
-  Context jdField_a_of_type_AndroidContentContext;
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private InputFilter jdField_a_of_type_AndroidTextInputFilter = null;
-  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private String jdField_a_of_type_JavaLangString = "";
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
-  public int[] a;
-  public int b;
-  private RectF b;
+  StaticLayout a;
+  TextPaint b;
+  RectF c = new RectF();
+  Random d = new Random();
+  public int[] e = { 12, 20, 24 };
+  Context f;
+  public int g = 0;
+  private float h;
+  private String i = "";
+  private RectF j = new RectF();
+  private InputFilter p = null;
   
   public RandomSizeTextItem(Context paramContext, int paramInt, List<String> paramList, Typeface paramTypeface)
   {
     super(paramInt, paramList);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 12, 20, 24 };
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_b_of_type_Int = a(paramContext, 235.0F);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.b(28.0F, paramContext.getResources()));
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
+    this.f = paramContext;
+    this.g = a(paramContext, 235.0F);
+    this.b = new TextPaint();
+    this.b.setAntiAlias(true);
+    this.b.setTypeface(paramTypeface);
+    this.b.setTextSize(AIOUtils.b(28.0F, paramContext.getResources()));
+    this.b.setColor(-1);
     if (!paramList.isEmpty()) {
       a(0, (String)paramList.get(0));
     }
@@ -58,88 +55,40 @@ public class RandomSizeTextItem
     return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().scaledDensity + 0.5F);
   }
   
-  public float a()
-  {
-    StaticLayout localStaticLayout = this.jdField_a_of_type_AndroidTextStaticLayout;
-    if (localStaticLayout != null) {
-      return localStaticLayout.getWidth();
-    }
-    return 0.0F;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public InputFilter a()
-  {
-    if (this.jdField_a_of_type_AndroidTextInputFilter == null) {
-      this.jdField_a_of_type_AndroidTextInputFilter = new RandomSizeTextItem.2(this, 20);
-    }
-    return this.jdField_a_of_type_AndroidTextInputFilter;
-  }
-  
-  public CharSequence a(String[] paramArrayOfString)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("“");
-    int j = paramArrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((StringBuilder)localObject).append(paramArrayOfString[i]);
-      i += 1;
-    }
-    ((StringBuilder)localObject).append("”");
-    paramArrayOfString = a(paramArrayOfString);
-    paramArrayOfString.add(0, Integer.valueOf(48));
-    paramArrayOfString.add(Integer.valueOf(48));
-    localObject = new SpannableString(((StringBuilder)localObject).toString());
-    int k = ((SpannableString)localObject).length();
-    for (i = 1; i < k - 1; i = j)
-    {
-      AbsoluteSizeSpan localAbsoluteSizeSpan = new AbsoluteSizeSpan(AIOUtils.b(((Integer)paramArrayOfString.get(i)).intValue(), this.jdField_a_of_type_AndroidContentContext.getResources()));
-      j = i + 1;
-      ((SpannableString)localObject).setSpan(localAbsoluteSizeSpan, i, j, 33);
-    }
-    return localObject;
-  }
-  
   public ArrayList<Integer> a(String[] paramArrayOfString)
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
-    int j = localObject.length;
-    int i = 0;
-    while (i < j)
+    Object localObject = this.e;
+    int m = localObject.length;
+    int k = 0;
+    while (k < m)
     {
-      localArrayList2.add(Integer.valueOf(localObject[i]));
-      i += 1;
+      localArrayList2.add(Integer.valueOf(localObject[k]));
+      k += 1;
     }
     Collections.shuffle(localArrayList2);
-    int m = paramArrayOfString.length;
-    i = 0;
-    j = 0;
-    while (i < m)
+    int i1 = paramArrayOfString.length;
+    k = 0;
+    m = 0;
+    while (k < i1)
     {
-      localObject = paramArrayOfString[i];
-      Integer localInteger = (Integer)localArrayList2.get(j % localArrayList2.size());
-      int n = ((String)localObject).length();
-      int k = 0;
-      while (k < n)
+      localObject = paramArrayOfString[k];
+      Integer localInteger = (Integer)localArrayList2.get(m % localArrayList2.size());
+      int i2 = ((String)localObject).length();
+      int n = 0;
+      while (n < i2)
       {
-        int i1 = ((String)localObject).charAt(k);
-        if ((i1 != 8220) && (i1 != 8221)) {
+        int i3 = ((String)localObject).charAt(n);
+        if ((i3 != 8220) && (i3 != 8221)) {
           localArrayList1.add(localInteger);
         } else {
           localArrayList1.add(Integer.valueOf(48));
         }
-        k += 1;
+        n += 1;
       }
-      j += 1;
-      i += 1;
+      m += 1;
+      k += 1;
     }
     return localArrayList1;
   }
@@ -147,52 +96,52 @@ public class RandomSizeTextItem
   @TargetApi(18)
   public void a(int paramInt, String paramString)
   {
-    int i = 0;
-    if ((TextUtils.equals(super.a(0), paramString)) && (this.jdField_a_of_type_AndroidTextStaticLayout != null)) {
+    int k = 0;
+    if ((TextUtils.equals(super.b(0), paramString)) && (this.a != null)) {
       return;
     }
     super.a(paramInt, paramString);
     paramString = super.a(paramInt, new RandomSizeTextItem.1(this));
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramString = a(a(paramString));
-    this.jdField_a_of_type_AndroidTextStaticLayout = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 3);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() >= 3)
+    this.i = paramString;
+    paramString = b(b(paramString));
+    this.a = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.b, this.g, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 3);
+    if (this.a.getLineCount() >= 3)
     {
-      paramInt = this.jdField_a_of_type_AndroidTextStaticLayout.getLineEnd(2);
+      paramInt = this.a.getLineEnd(2);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString.subSequence(0, paramInt - 1));
       localStringBuilder.append("”");
       paramString = localStringBuilder.toString();
-      this.jdField_a_of_type_AndroidTextStaticLayout = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 3);
+      this.a = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.b, this.g, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 3);
     }
-    int j = this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount();
-    float f = 0.0F;
-    paramInt = i;
-    while (paramInt < j)
+    int m = this.a.getLineCount();
+    float f1 = 0.0F;
+    paramInt = k;
+    while (paramInt < m)
     {
-      f = Math.max(f, this.jdField_a_of_type_AndroidTextStaticLayout.getLineWidth(paramInt));
+      f1 = Math.max(f1, this.a.getLineWidth(paramInt));
       paramInt += 1;
     }
-    this.jdField_a_of_type_Float = f;
+    this.h = f1;
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidTextStaticLayout != null)
+    if (this.a != null)
     {
       paramCanvas.save();
       paramCanvas.translate(0.0F, 0.0F);
-      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      if (super.b(0))
+      this.a.draw(paramCanvas);
+      if (super.f(0))
       {
-        int i = AIOUtils.b(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
-        float f = i;
-        localRectF.left = f;
-        localRectF.top = (-i);
-        localRectF.right = (a() + f);
-        this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (b() + f);
-        paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+        int k = AIOUtils.b(5.0F, this.f.getResources());
+        RectF localRectF = this.j;
+        float f1 = k;
+        localRectF.left = f1;
+        localRectF.top = (-k);
+        localRectF.right = (c() + f1);
+        this.j.bottom = (d() + f1);
+        paramCanvas.drawRoundRect(this.j, 6.0F, 6.0F, s());
       }
       paramCanvas.restore();
     }
@@ -203,59 +152,107 @@ public class RandomSizeTextItem
     return true;
   }
   
-  public String[] a(String paramString)
+  public int b()
   {
-    int k = paramString.length();
-    int i = 0;
-    int j = 0;
-    if (k <= 7)
+    return 1;
+  }
+  
+  public CharSequence b(String[] paramArrayOfString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("“");
+    int m = paramArrayOfString.length;
+    int k = 0;
+    while (k < m)
     {
-      String[] arrayOfString2 = new String[k];
-      for (i = j;; i = j)
+      ((StringBuilder)localObject).append(paramArrayOfString[k]);
+      k += 1;
+    }
+    ((StringBuilder)localObject).append("”");
+    paramArrayOfString = a(paramArrayOfString);
+    paramArrayOfString.add(0, Integer.valueOf(48));
+    paramArrayOfString.add(Integer.valueOf(48));
+    localObject = new SpannableString(((StringBuilder)localObject).toString());
+    int n = ((SpannableString)localObject).length();
+    for (k = 1; k < n - 1; k = m)
+    {
+      AbsoluteSizeSpan localAbsoluteSizeSpan = new AbsoluteSizeSpan(AIOUtils.b(((Integer)paramArrayOfString.get(k)).intValue(), this.f.getResources()));
+      m = k + 1;
+      ((SpannableString)localObject).setSpan(localAbsoluteSizeSpan, k, m, 33);
+    }
+    return localObject;
+  }
+  
+  public String[] b(String paramString)
+  {
+    int n = paramString.length();
+    int k = 0;
+    int m = 0;
+    if (n <= 7)
+    {
+      String[] arrayOfString2 = new String[n];
+      for (k = m;; k = m)
       {
         arrayOfString1 = arrayOfString2;
-        if (i >= k) {
+        if (k >= n) {
           break;
         }
-        j = i + 1;
-        arrayOfString2[i] = paramString.substring(i, j);
+        m = k + 1;
+        arrayOfString2[k] = paramString.substring(k, m);
       }
     }
     String[] arrayOfString1 = new String[7];
-    int m;
-    for (j = 0; i < 7; j = m)
+    int i1;
+    for (m = 0; k < 7; m = i1)
     {
-      m = this.jdField_a_of_type_JavaUtilRandom.nextInt(k - (7 - i) + 1) + 1;
-      k -= m;
-      m += j;
-      arrayOfString1[i] = paramString.substring(j, m);
-      i += 1;
+      i1 = this.d.nextInt(n - (7 - k) + 1) + 1;
+      n -= i1;
+      i1 += m;
+      arrayOfString1[k] = paramString.substring(m, i1);
+      k += 1;
     }
     return arrayOfString1;
   }
   
-  public float b()
+  public float c()
   {
-    StaticLayout localStaticLayout = this.jdField_a_of_type_AndroidTextStaticLayout;
+    StaticLayout localStaticLayout = this.a;
+    if (localStaticLayout != null) {
+      return localStaticLayout.getWidth();
+    }
+    return 0.0F;
+  }
+  
+  public float d()
+  {
+    StaticLayout localStaticLayout = this.a;
     if (localStaticLayout != null) {
       return localStaticLayout.getHeight();
     }
     return 0.0F;
   }
   
-  public int b()
+  public boolean e()
   {
-    return 0;
+    return (TextUtils.isEmpty(this.i)) || (super.e());
   }
   
-  public boolean b()
+  public InputFilter f()
   {
-    return (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (super.b());
+    if (this.p == null) {
+      this.p = new RandomSizeTextItem.2(this, 20);
+    }
+    return this.p;
+  }
+  
+  public int g()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.RandomSizeTextItem
  * JD-Core Version:    0.7.0.1
  */

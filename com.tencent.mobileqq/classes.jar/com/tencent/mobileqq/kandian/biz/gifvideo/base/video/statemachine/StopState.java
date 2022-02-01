@@ -12,50 +12,32 @@ import org.jetbrains.annotations.Nullable;
 public final class StopState
   extends VideoState
 {
-  @Nullable
-  private VideoPlayController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  @Nullable
-  private VideoView jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  @NotNull
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   @NotNull
   private AtomicInteger b;
+  @NotNull
+  private AtomicInteger c;
+  @Nullable
+  private VideoView d;
+  @Nullable
+  private VideoPlayController e;
   
   public StopState(@NotNull AtomicInteger paramAtomicInteger1, @NotNull AtomicInteger paramAtomicInteger2, @Nullable VideoView paramVideoView, @Nullable VideoPlayController paramVideoPlayController)
   {
     super(paramAtomicInteger1, paramAtomicInteger2, paramVideoView, paramVideoPlayController);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger1;
-    this.b = paramAtomicInteger2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView = paramVideoView;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController = paramVideoPlayController;
-  }
-  
-  @Nullable
-  public VideoPlayController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  }
-  
-  @Nullable
-  public VideoView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  }
-  
-  @NotNull
-  public AtomicInteger a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    this.b = paramAtomicInteger1;
+    this.c = paramAtomicInteger2;
+    this.d = paramVideoView;
+    this.e = paramVideoPlayController;
   }
   
   public void a()
   {
     super.a();
-    int i = b().get();
+    int i = c().get();
     if ((i != 3) && (i != 8)) {
       return;
     }
-    b();
+    f();
   }
   
   @NotNull
@@ -64,16 +46,34 @@ public final class StopState
     return this.b;
   }
   
-  public final void b()
+  @NotNull
+  public AtomicInteger c()
   {
-    if ((VideoPlayController.a.a()) || (b().get() == 8)) {
+    return this.c;
+  }
+  
+  @Nullable
+  public VideoView d()
+  {
+    return this.d;
+  }
+  
+  @Nullable
+  public VideoPlayController e()
+  {
+    return this.e;
+  }
+  
+  public final void f()
+  {
+    if ((VideoPlayController.a.f()) || (c().get() == 8)) {
       a(3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.statemachine.StopState
  * JD-Core Version:    0.7.0.1
  */

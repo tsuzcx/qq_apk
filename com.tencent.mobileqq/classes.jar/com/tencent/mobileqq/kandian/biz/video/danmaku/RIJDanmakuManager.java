@@ -13,23 +13,23 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
+import com.tencent.common.danmaku.core.DanmakuManager.IDanmakuListener;
+import com.tencent.common.danmaku.data.BaseDanmaku;
+import com.tencent.common.danmaku.inject.DanmakuContext;
+import com.tencent.common.danmaku.inject.DanmakuContext.Builder;
+import com.tencent.common.danmaku.inject.IDanmakuCreator;
+import com.tencent.common.danmaku.inject.IDanmakuExposureCallback;
+import com.tencent.common.danmaku.inject.IDanmakuPlayTimeSupplier;
+import com.tencent.common.danmaku.inject.IDanmakuUIConfig;
+import com.tencent.common.danmaku.inject.IDanmakuUIConfigCreator;
+import com.tencent.common.danmaku.inject.IDanmakuWindowCreator;
+import com.tencent.common.danmaku.inject.VideoDanmakuConfig;
+import com.tencent.common.danmaku.inject.WindowConfig;
+import com.tencent.common.danmaku.render.BaseDanmakuRender;
+import com.tencent.common.danmaku.tool.ClickResult;
+import com.tencent.common.danmaku.tool.DanmakuDrawTimer;
+import com.tencent.common.danmaku.tool.TouchPoint;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager.IDanmakuListener;
-import com.tencent.mobileqq.danmaku.data.BaseDanmaku;
-import com.tencent.mobileqq.danmaku.inject.DanmakuContext;
-import com.tencent.mobileqq.danmaku.inject.DanmakuContext.Builder;
-import com.tencent.mobileqq.danmaku.inject.IDanmakuCreator;
-import com.tencent.mobileqq.danmaku.inject.IDanmakuExposureCallback;
-import com.tencent.mobileqq.danmaku.inject.IDanmakuPlayTimeSupplier;
-import com.tencent.mobileqq.danmaku.inject.IDanmakuUIConfig;
-import com.tencent.mobileqq.danmaku.inject.IDanmakuUIConfigCreator;
-import com.tencent.mobileqq.danmaku.inject.IDanmakuWindowCreator;
-import com.tencent.mobileqq.danmaku.inject.VideoDanmakuConfig;
-import com.tencent.mobileqq.danmaku.inject.WindowConfig;
-import com.tencent.mobileqq.danmaku.render.BaseDanmakuRender;
-import com.tencent.mobileqq.danmaku.tool.ClickResult;
-import com.tencent.mobileqq.danmaku.tool.DanmakuDrawTimer;
-import com.tencent.mobileqq.danmaku.tool.TouchPoint;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.ext.DanmakuManagerExt;
 import com.tencent.mobileqq.kandian.biz.video.danmaku.model.RIJDanmakuModel;
@@ -41,6 +41,7 @@ import com.tencent.mobileqq.kandian.biz.video.danmaku.render.RIJDanmakuUIConfigC
 import com.tencent.mobileqq.kandian.biz.video.danmaku.render.RIJDanmakuWindowCreator;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.Metadata;
@@ -48,155 +49,93 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuManager;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/IDanmakuManager;", "Lcom/tencent/mobileqq/danmaku/core/DanmakuManager$IDanmakuListener;", "Landroid/view/View$OnTouchListener;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/model/RIJDanmakuModel$Callback;", "context", "Landroid/content/Context;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "useTextureView", "", "config", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuConfig;", "callback", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;", "(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;ZLcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuConfig;Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;)V", "getApp", "()Lcom/tencent/mobileqq/app/QQAppInterface;", "getCallback", "()Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;", "setCallback", "(Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;)V", "cancelClickRunnable", "Ljava/lang/Runnable;", "clickEnable", "clickingDanmaku", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJBaseDanmaku;", "getClickingDanmaku", "()Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJBaseDanmaku;", "setClickingDanmaku", "(Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJBaseDanmaku;)V", "getContext", "()Landroid/content/Context;", "value", "", "currentAuthorUin", "getCurrentAuthorUin", "()Ljava/lang/String;", "setCurrentAuthorUin", "(Ljava/lang/String;)V", "danmaViewMarginTop", "", "danmakuContext", "Lcom/tencent/mobileqq/danmaku/inject/DanmakuContext;", "danmakuManager", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ext/DanmakuManagerExt;", "danmakuUIConfigCreator", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJDanmakuUIConfigCreator;", "danmakuView", "Landroid/view/View;", "handler", "Landroid/os/Handler;", "lastGetPositionTime", "", "lastPlayPositon", "model", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/model/RIJDanmakuModel;", "seeked", "touchRect", "Landroid/graphics/Rect;", "touchView", "videoHeight", "videoPlayer", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/IPlayer;", "addDanmakuNow", "", "data", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuDetail;", "addDanmakus", "list", "", "attachContainer", "container", "Landroid/view/ViewGroup;", "calculateTouchRect", "calculateViewHeight", "cancelClick", "changeConfig", "newConfig", "changeLayoutOrientaion", "isVertical", "clear", "clickDanmaku", "danmaku", "createDanmakuView", "destroy", "getDanmakuType", "info", "hide", "innerSeek", "position", "isInDanmakuRange", "event", "Landroid/view/MotionEvent;", "location", "", "isSeeked", "curPosition", "loadData", "rowkey", "startPosition", "onClickEvent", "Lcom/tencent/mobileqq/danmaku/data/BaseDanmaku;", "touchPoint", "Lcom/tencent/mobileqq/danmaku/tool/TouchPoint;", "clickResult", "Lcom/tencent/mobileqq/danmaku/tool/ClickResult;", "onDanmakuClicked", "onDanmaku", "onDanmakuDrawFinish", "danmakuList", "", "", "Lcom/tencent/mobileqq/danmaku/inject/IDanmakuUIConfig;", "onDanmakuExposure", "onDanmakuMesureFinish", "onGetData", "reportInfoList", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ReportInfo;", "sendDanmakuForbid", "clearData", "onGetPlayPosition", "onReportBtnClick", "onTouch", "v", "pause", "reloadConfig", "restart", "seekTo", "setDanmakuTouchArea", "marginTop", "setDanmakuViewMarginTop", "topMargin", "setPlayer", "player", "setSpeedRatio", "speed", "", "show", "start", "stop", "unclickDanmauku", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuManager;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/IDanmakuManager;", "Lcom/tencent/common/danmaku/core/DanmakuManager$IDanmakuListener;", "Landroid/view/View$OnTouchListener;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/model/RIJDanmakuModel$Callback;", "context", "Landroid/content/Context;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "useTextureView", "", "config", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuConfig;", "callback", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;", "(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;ZLcom/tencent/mobileqq/kandian/biz/video/danmaku/RIJDanmakuConfig;Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;)V", "getApp", "()Lcom/tencent/mobileqq/app/QQAppInterface;", "getCallback", "()Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;", "setCallback", "(Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuEventCallback;)V", "cancelClickRunnable", "Ljava/lang/Runnable;", "clickEnable", "clickingDanmaku", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJBaseDanmaku;", "getClickingDanmaku", "()Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJBaseDanmaku;", "setClickingDanmaku", "(Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJBaseDanmaku;)V", "container", "Landroid/view/ViewGroup;", "getContext", "()Landroid/content/Context;", "value", "", "currentAuthorUin", "getCurrentAuthorUin", "()Ljava/lang/String;", "setCurrentAuthorUin", "(Ljava/lang/String;)V", "danmaViewMarginTop", "", "danmakuContext", "Lcom/tencent/common/danmaku/inject/DanmakuContext;", "danmakuManager", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ext/DanmakuManagerExt;", "danmakuUIConfigCreator", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJDanmakuUIConfigCreator;", "danmakuView", "Landroid/view/View;", "handler", "Landroid/os/Handler;", "hasDanmaku", "lastGetPositionTime", "", "lastPlayPositon", "model", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/model/RIJDanmakuModel;", "needShowOpenText", "openGuideTask", "openText", "seeked", "touchRect", "Landroid/graphics/Rect;", "touchView", "videoHeight", "videoPlayer", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/IPlayer;", "addDanmakuNow", "", "data", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/DanmakuDetail;", "addDanmakus", "list", "", "attachContainer", "calculateTouchRect", "calculateViewHeight", "cancelClick", "changeConfig", "newConfig", "changeLayoutOrientaion", "isVertical", "clear", "clickDanmaku", "danmaku", "createDanmakuView", "destroy", "getDanmakuType", "info", "getVisibility", "hide", "innerSeek", "position", "isGuideDanmaku", "isInDanmakuRange", "event", "Landroid/view/MotionEvent;", "location", "", "isOpenGuideOutTime", "isSeeked", "curPosition", "loadData", "rowkey", "startPosition", "onClickEvent", "Lcom/tencent/common/danmaku/data/BaseDanmaku;", "touchPoint", "Lcom/tencent/common/danmaku/tool/TouchPoint;", "clickResult", "Lcom/tencent/common/danmaku/tool/ClickResult;", "onDanmakuClicked", "onDanmaku", "onDanmakuDrawFinish", "danmakuList", "", "", "Lcom/tencent/common/danmaku/inject/IDanmakuUIConfig;", "onDanmakuExposure", "onDanmakuMesureFinish", "onGetData", "reportInfoList", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/kandian/biz/video/danmaku/ReportInfo;", "Lkotlin/collections/ArrayList;", "sendDanmakuForbid", "clearData", "danmakuCount", "onGetPlayPosition", "onReportBtnClick", "onTouch", "v", "pause", "reloadConfig", "restart", "seekTo", "setDanmakuTouchArea", "marginTop", "setDanmakuViewMarginTop", "topMargin", "setDisableSync", "forceVsync", "(Ljava/lang/Boolean;)V", "setPlayer", "player", "setSpeedRatio", "speed", "", "setUseUiTime", "show", "showOpenGuide", "text", "start", "stop", "unclickDanmauku", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJDanmakuManager
   implements View.OnTouchListener, DanmakuManager.IDanmakuListener, IDanmakuManager, RIJDanmakuModel.Callback
 {
-  public static final RIJDanmakuManager.Companion a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  @NotNull
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final View jdField_a_of_type_AndroidViewView;
-  @NotNull
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final DanmakuContext jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext;
+  private static int D;
+  public static final RIJDanmakuManager.Companion a = new RIJDanmakuManager.Companion(null);
+  private final boolean A;
+  private RIJDanmakuConfig B;
   @Nullable
-  private DanmakuEventCallback jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuEventCallback;
-  private IPlayer jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuIPlayer;
-  private RIJDanmakuConfig jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig;
-  private final DanmakuManagerExt jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt;
-  private final RIJDanmakuModel jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuModelRIJDanmakuModel;
-  @Nullable
-  private RIJBaseDanmaku jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku;
-  private final RIJDanmakuUIConfigCreator jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJDanmakuUIConfigCreator;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private DanmakuEventCallback C;
+  private final DanmakuManagerExt b;
+  private IPlayer c;
+  private final View d;
+  private final RIJDanmakuModel e;
+  private final DanmakuContext f;
+  private final RIJDanmakuUIConfigCreator g;
+  private final View h;
+  private boolean i;
+  private long j;
+  private long k;
+  private Rect l;
+  private int m;
+  private int n;
+  private Handler o;
+  private boolean p;
+  private boolean q;
+  private ViewGroup r;
+  private String s;
+  private boolean t;
+  private Runnable u;
+  private Runnable v;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private final View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean;
-  private final boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuManager$Companion = new RIJDanmakuManager.Companion(null);
-  }
+  private String w;
+  @Nullable
+  private RIJBaseDanmaku x;
+  @NotNull
+  private final Context y;
+  @NotNull
+  private final QQAppInterface z;
   
   public RIJDanmakuManager(@NotNull Context paramContext, @NotNull QQAppInterface paramQQAppInterface, boolean paramBoolean, @NotNull RIJDanmakuConfig paramRIJDanmakuConfig, @Nullable DanmakuEventCallback paramDanmakuEventCallback)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.c = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig = paramRIJDanmakuConfig;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuEventCallback = paramDanmakuEventCallback;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = ((Runnable)new RIJDanmakuManager.cancelClickRunnable.1(this));
-    this.jdField_a_of_type_JavaLangString = "";
+    this.y = paramContext;
+    this.z = paramQQAppInterface;
+    this.A = paramBoolean;
+    this.B = paramRIJDanmakuConfig;
+    this.C = paramDanmakuEventCallback;
+    this.o = new Handler();
+    this.p = true;
+    this.s = "";
+    this.t = true;
+    this.v = ((Runnable)new RIJDanmakuManager.cancelClickRunnable.1(this));
+    this.w = "";
     VideoDanmakuConfig.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJDanmakuUIConfigCreator = new RIJDanmakuUIConfigCreator(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig);
-    b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig);
-    this.jdField_a_of_type_AndroidViewView = a();
-    paramContext = DanmakuContext.a().a((IDanmakuPlayTimeSupplier)new RIJDanmakuManager.1(this)).a(-4).a((IDanmakuUIConfigCreator)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJDanmakuUIConfigCreator).a((BaseDanmakuRender)new RIJDanmakuRender(this.jdField_a_of_type_AndroidContentContext)).a((IDanmakuCreator)new RIJDanmakuCreator(this.jdField_a_of_type_AndroidViewView)).a((IDanmakuExposureCallback)new RIJDanmakuManager.2(this)).a((IDanmakuWindowCreator)new RIJDanmakuWindowCreator()).a();
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "DanmakuContext.newBuilde…\n                .build()");
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt = new DanmakuManagerExt(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a((DanmakuManager.IDanmakuListener)this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a(false);
-    paramContext = this.jdField_a_of_type_AndroidViewView;
+    this.g = new RIJDanmakuUIConfigCreator(this.B);
+    b(this.B);
+    this.d = p();
+    paramContext = DanmakuContext.k().a((IDanmakuPlayTimeSupplier)new RIJDanmakuManager.1(this)).a(-4).a((IDanmakuUIConfigCreator)this.g).a((BaseDanmakuRender)new RIJDanmakuRender(this.y)).a((IDanmakuCreator)new RIJDanmakuCreator(this.d)).a((IDanmakuExposureCallback)new RIJDanmakuManager.2(this)).a((IDanmakuWindowCreator)new RIJDanmakuWindowCreator()).b(Math.max(3, this.B.a())).a();
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "DanmakuContext.newBuilde…nt))\n            .build()");
+    this.f = paramContext;
+    this.b = new DanmakuManagerExt(this.d, this.f);
+    this.b.a((DanmakuManager.IDanmakuListener)this);
+    this.b.b(true);
+    this.b.a(false);
+    paramContext = this.d;
     if ((paramContext instanceof SurfaceView)) {
       ((SurfaceView)paramContext).setZOrderOnTop(true);
     }
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuModelRIJDanmakuModel = new RIJDanmakuModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RIJDanmakuModel.Callback)this);
-    this.jdField_b_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener((View.OnTouchListener)this);
-    RIJDanmakuManager.Companion.a(jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuManager$Companion);
+    this.d.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(-1, -1));
+    this.e = new RIJDanmakuModel(this.z, (RIJDanmakuModel.Callback)this);
+    this.h = new View(this.y);
+    this.h.setOnTouchListener((View.OnTouchListener)this);
+    RIJDanmakuManager.Companion.a(a);
+    D += 1;
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("config: ");
-      paramContext.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig);
+      paramContext.append(this.B);
       paramContext.append(", useTextureView=");
-      paramContext.append(this.c);
+      paramContext.append(this.A);
       paramContext.append(", miniHeight=");
-      paramContext.append(a());
+      paramContext.append(n());
+      paramContext.append(", DANMAKU_COUNT=");
+      paramContext.append(D);
       QLog.d("RIJDanmakuManager", 2, paramContext.toString());
     }
-  }
-  
-  private final int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig.a() * this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext.a();
-  }
-  
-  private final int a(DanmakuDetail paramDanmakuDetail)
-  {
-    if ((Intrinsics.areEqual(paramDanmakuDetail.a().a(), this.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(paramDanmakuDetail.a().a(), RIJQQAppInterfaceUtil.a()))) {
-      return 20;
-    }
-    if (Intrinsics.areEqual(paramDanmakuDetail.a().a(), this.jdField_a_of_type_JavaLangString)) {
-      return 19;
-    }
-    if (Intrinsics.areEqual(paramDanmakuDetail.a().a(), RIJQQAppInterfaceUtil.a())) {
-      return 18;
-    }
-    return 17;
-  }
-  
-  private final long a()
-  {
-    long l3 = System.currentTimeMillis();
-    if (l3 - this.jdField_b_of_type_Long > 'È')
-    {
-      IPlayer localIPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuIPlayer;
-      long l1;
-      if (localIPlayer != null) {
-        l1 = localIPlayer.getCurrentPosition();
-      } else {
-        l1 = 0L;
-      }
-      localIPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuIPlayer;
-      long l2;
-      if (localIPlayer != null) {
-        l2 = localIPlayer.getDuration();
-      } else {
-        l2 = 0L;
-      }
-      localIPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuIPlayer;
-      if (localIPlayer != null)
-      {
-        long l4 = 2000;
-        if ((l1 < l4) && (l2 > 0L) && (this.jdField_a_of_type_Long > localIPlayer.getDuration() - l4))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.o();
-          b(0);
-        }
-      }
-      if ((this.jdField_a_of_type_Boolean) && (a(l1)))
-      {
-        this.jdField_a_of_type_Boolean = false;
-        b((int)(l1 / 1000));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuModelRIJDanmakuModel.a((int)(l1 / 1000));
-      this.jdField_b_of_type_Long = l3;
-      this.jdField_a_of_type_Long = l1;
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  private final View a()
-  {
-    if (this.c) {
-      return (View)new TextureView(this.jdField_a_of_type_AndroidContentContext);
-    }
-    return (View)new SurfaceView(this.jdField_a_of_type_AndroidContentContext);
   }
   
   private final void a(BaseDanmaku<Object, IDanmakuUIConfig> paramBaseDanmaku)
@@ -209,10 +148,10 @@ public final class RIJDanmakuManager
     }
     if ((RIJBaseDanmaku)localObject != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuEventCallback;
+      localObject = this.C;
       if (localObject != null)
       {
-        paramBaseDanmaku = (DanmakuDetail)((RIJBaseDanmaku)paramBaseDanmaku).a();
+        paramBaseDanmaku = (DanmakuDetail)((RIJBaseDanmaku)paramBaseDanmaku).r();
         Intrinsics.checkExpressionValueIsNotNull(paramBaseDanmaku, "danmaku.data");
         ((DanmakuEventCallback)localObject).onDanmakuExposure(paramBaseDanmaku);
       }
@@ -228,43 +167,77 @@ public final class RIJDanmakuManager
       ((StringBuilder)localObject).append(paramRIJBaseDanmaku);
       QLog.d("RIJDanmakuManager", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuEventCallback;
+    this.p = false;
+    this.o.removeCallbacks(this.v);
+    Object localObject = this.C;
     if (localObject != null)
     {
-      paramRIJBaseDanmaku = (DanmakuDetail)paramRIJBaseDanmaku.a();
+      paramRIJBaseDanmaku = (DanmakuDetail)paramRIJBaseDanmaku.r();
       Intrinsics.checkExpressionValueIsNotNull(paramRIJBaseDanmaku, "danmaku.data");
       ((DanmakuEventCallback)localObject).onClickReport(paramRIJBaseDanmaku);
     }
   }
   
+  private final void a(String paramString, List<DanmakuDetail> paramList)
+  {
+    this.u = ((Runnable)null);
+    boolean bool = q();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showOpenGuide: out of time ");
+      localStringBuilder.append(bool);
+      QLog.d("RIJDanmakuManager", 2, localStringBuilder.toString());
+    }
+    if (bool)
+    {
+      b(paramList);
+      return;
+    }
+    a(new DanmakuDetail(new DanmakuInfo("danmukaipin", 0, 0, paramString, this.B.i(), ""), new UserInfo("")));
+    this.o.postDelayed((Runnable)new RIJDanmakuManager.showOpenGuide.1(this, paramList), this.B.j());
+  }
+  
   private final boolean a(long paramLong)
   {
-    return Math.abs(paramLong - this.jdField_a_of_type_Long) > 3;
+    return Math.abs(paramLong - this.j) > 3;
   }
   
   private final boolean a(MotionEvent paramMotionEvent, int[] paramArrayOfInt)
   {
-    float f = paramMotionEvent.getRawX();
+    float f1 = paramMotionEvent.getRawX();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (f > paramArrayOfInt[0])
+    if (f1 > paramArrayOfInt[0])
     {
       bool1 = bool2;
-      if (paramMotionEvent.getRawX() < paramArrayOfInt[0] + this.jdField_a_of_type_AndroidViewView.getWidth())
+      if (paramMotionEvent.getRawX() < paramArrayOfInt[0] + this.d.getWidth())
       {
         bool1 = bool2;
         if (paramMotionEvent.getRawY() > paramArrayOfInt[1])
         {
           bool1 = bool2;
-          if (paramMotionEvent.getRawY() < paramArrayOfInt[1] + this.jdField_a_of_type_AndroidViewView.getHeight()) {
+          if (paramMotionEvent.getRawY() < paramArrayOfInt[1] + this.d.getHeight()) {
             bool1 = true;
           }
         }
       }
     }
     return bool1;
+  }
+  
+  private final int b(DanmakuDetail paramDanmakuDetail)
+  {
+    if ((Intrinsics.areEqual(paramDanmakuDetail.b().a(), this.w)) && (Intrinsics.areEqual(paramDanmakuDetail.b().a(), RIJQQAppInterfaceUtil.d()))) {
+      return 20;
+    }
+    if (Intrinsics.areEqual(paramDanmakuDetail.b().a(), this.w)) {
+      return 19;
+    }
+    if (Intrinsics.areEqual(paramDanmakuDetail.b().a(), RIJQQAppInterfaceUtil.d())) {
+      return 18;
+    }
+    return 17;
   }
   
   private final void b(int paramInt)
@@ -276,106 +249,149 @@ public final class RIJDanmakuManager
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("RIJDanmakuManager", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.b(paramInt * 1000);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuModelRIJDanmakuModel;
+    this.b.b(paramInt * 1000);
+    Object localObject = this.e;
     ((RIJDanmakuModel)localObject).a(((RIJDanmakuModel)localObject).a(), paramInt);
   }
   
   private final void b(RIJDanmakuConfig paramRIJDanmakuConfig)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig = paramRIJDanmakuConfig;
+    this.B = paramRIJDanmakuConfig;
     WindowConfig localWindowConfig = DanmakuContext.a();
     Intrinsics.checkExpressionValueIsNotNull(localWindowConfig, "windowConfig");
-    localWindowConfig.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig.a());
-    localWindowConfig.c((int)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig.a());
-    float f = 2;
-    localWindowConfig.c(f);
-    localWindowConfig.b(f);
+    localWindowConfig.a(this.B.a());
+    localWindowConfig.c((int)this.B.d());
+    float f1 = 2;
+    localWindowConfig.c(f1);
+    localWindowConfig.b(f1);
     localWindowConfig.b(10);
-    localWindowConfig.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig.a() / f);
-    localWindowConfig.d((int)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig.b() / 2);
+    localWindowConfig.a(this.B.b() / f1);
+    localWindowConfig.d((int)this.B.c() / 2);
     localWindowConfig.b(true);
     localWindowConfig.d(true);
     localWindowConfig.g(0.0F);
     localWindowConfig.f(0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJDanmakuUIConfigCreator.a(paramRIJDanmakuConfig);
+    this.g.a(paramRIJDanmakuConfig);
   }
   
   private final void b(RIJBaseDanmaku paramRIJBaseDanmaku)
   {
-    paramRIJBaseDanmaku.d();
+    paramRIJBaseDanmaku.h();
     paramRIJBaseDanmaku.f(false);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a((BaseDanmaku)paramRIJBaseDanmaku);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.e()) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.q();
+    this.b.a((BaseDanmaku)paramRIJBaseDanmaku);
+    if (this.b.y()) {
+      this.b.z();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.o.removeCallbacks(this.v);
   }
   
   private final void c(RIJBaseDanmaku paramRIJBaseDanmaku)
   {
-    paramRIJBaseDanmaku.c();
+    paramRIJBaseDanmaku.f();
     paramRIJBaseDanmaku.f(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a((BaseDanmaku)paramRIJBaseDanmaku);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.e()) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.q();
+    this.b.a((BaseDanmaku)paramRIJBaseDanmaku);
+    if (this.b.y()) {
+      this.b.z();
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig.d() * 1000L);
-    DanmakuEventCallback localDanmakuEventCallback = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuEventCallback;
+    this.o.postDelayed(this.v, this.B.h() * 1000L);
+    DanmakuEventCallback localDanmakuEventCallback = this.C;
     if (localDanmakuEventCallback != null)
     {
-      paramRIJBaseDanmaku = (DanmakuDetail)paramRIJBaseDanmaku.a();
+      paramRIJBaseDanmaku = (DanmakuDetail)paramRIJBaseDanmaku.r();
       Intrinsics.checkExpressionValueIsNotNull(paramRIJBaseDanmaku, "danmaku.data");
       localDanmakuEventCallback.onDanmakuClicked(paramRIJBaseDanmaku);
     }
   }
   
-  private final void j()
+  private final boolean d(RIJBaseDanmaku paramRIJBaseDanmaku)
+  {
+    return Intrinsics.areEqual(((DanmakuDetail)paramRIJBaseDanmaku.r()).a().a(), "danmukaipin");
+  }
+  
+  private final long m()
+  {
+    long l3 = System.currentTimeMillis();
+    if (l3 - this.k > 'È')
+    {
+      IPlayer localIPlayer = this.c;
+      long l1;
+      if (localIPlayer != null) {
+        l1 = localIPlayer.getCurrentPosition();
+      } else {
+        l1 = 0L;
+      }
+      localIPlayer = this.c;
+      long l2;
+      if (localIPlayer != null) {
+        l2 = localIPlayer.getDuration();
+      } else {
+        l2 = 0L;
+      }
+      localIPlayer = this.c;
+      if (localIPlayer != null)
+      {
+        long l4 = 2000;
+        if ((l1 < l4) && (l2 > 0L) && (this.j > localIPlayer.getDuration() - l4))
+        {
+          this.b.w();
+          b(0);
+        }
+      }
+      if ((this.i) && (a(l1)))
+      {
+        this.i = false;
+        b((int)(l1 / 1000));
+      }
+      this.e.a((int)(l1 / 1000));
+      this.k = l3;
+      this.j = l1;
+    }
+    return this.j;
+  }
+  
+  private final int n()
+  {
+    return this.B.a() * this.f.c();
+  }
+  
+  private final void o()
   {
     Object localObject = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen((int[])localObject);
-    int i = localObject[0];
-    int j = localObject[1] - this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(i, j, this.jdField_a_of_type_AndroidViewView.getWidth() + i, this.jdField_b_of_type_Int + j);
-    this.jdField_b_of_type_AndroidViewView.bringToFront();
+    this.d.getLocationOnScreen((int[])localObject);
+    int i1 = localObject[0];
+    int i2 = localObject[1] - this.m;
+    this.l = new Rect(i1, i2, this.d.getWidth() + i1, this.n + i2);
+    this.h.bringToFront();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("calculateTouchRect: touchRect=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsRect);
+      ((StringBuilder)localObject).append(this.l);
       QLog.d("RIJDanmakuManager", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  @Nullable
-  public final RIJBaseDanmaku a()
+  private final View p()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku;
+    if (this.A) {
+      return (View)new TextureView(this.y);
+    }
+    return (View)new SurfaceView(this.y);
   }
   
-  @NotNull
-  public final String a()
+  private final boolean q()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    IPlayer localIPlayer = this.c;
+    long l1;
+    if (localIPlayer != null) {
+      l1 = localIPlayer.getCurrentPosition();
+    } else {
+      l1 = 0L - this.B.i();
+    }
+    return l1 > 1000;
   }
   
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("RIJDanmakuManager", 2, "hide: ", localThrowable);
-      }
-    }
-  }
+  public void a() {}
   
   public void a(float paramFloat)
   {
@@ -387,7 +403,7 @@ public final class RIJDanmakuManager
       QLog.d("RIJDanmakuManager", 2, localStringBuilder.toString());
     }
     if (paramFloat > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a(paramFloat);
+      this.b.a(paramFloat);
     }
   }
   
@@ -400,13 +416,13 @@ public final class RIJDanmakuManager
       localStringBuilder.append(paramInt);
       QLog.d("RIJDanmakuManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.i = true;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.m = paramInt1;
+    this.n = paramInt2;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -427,22 +443,30 @@ public final class RIJDanmakuManager
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("attachContainer: ");
       ((StringBuilder)localObject).append(paramViewGroup);
+      ((StringBuilder)localObject).append(", hasDanmaku: ");
+      ((StringBuilder)localObject).append(this.q);
       QLog.d("RIJDanmakuManager", 2, ((StringBuilder)localObject).toString());
     }
-    if ((Intrinsics.areEqual(paramViewGroup, this.jdField_a_of_type_AndroidViewView.getParent()) ^ true))
+    if (!this.q)
     {
-      ViewParent localViewParent = this.jdField_a_of_type_AndroidViewView.getParent();
+      this.r = paramViewGroup;
+      return;
+    }
+    if ((Intrinsics.areEqual(paramViewGroup, this.d.getParent()) ^ true))
+    {
+      ViewParent localViewParent = this.d.getParent();
       localObject = localViewParent;
       if (!(localViewParent instanceof ViewGroup)) {
         localObject = null;
       }
       localObject = (ViewGroup)localObject;
       if (localObject != null) {
-        ((ViewGroup)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
+        ((ViewGroup)localObject).removeView(this.d);
       }
-      paramViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+      paramViewGroup.addView(this.d);
     }
     paramViewGroup.post((Runnable)new RIJDanmakuManager.attachContainer.1(this, paramViewGroup));
+    this.r = ((ViewGroup)null);
   }
   
   public void a(@Nullable BaseDanmaku<?, ?> paramBaseDanmaku, @NotNull TouchPoint paramTouchPoint, @Nullable ClickResult paramClickResult)
@@ -458,41 +482,44 @@ public final class RIJDanmakuManager
       localStringBuilder.append(", clickResult=");
       localStringBuilder.append(paramClickResult);
       localStringBuilder.append(", clickEnable=");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.p);
       QLog.d("RIJDanmakuManager", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.p) {
       return;
     }
-    j();
+    o();
     if (!(paramBaseDanmaku instanceof RIJBaseDanmaku)) {
       paramClickResult = null;
     } else {
       paramClickResult = paramBaseDanmaku;
     }
     if ((RIJBaseDanmaku)paramClickResult != null) {
-      if (Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku, paramBaseDanmaku))
+      if (Intrinsics.areEqual(this.x, paramBaseDanmaku))
       {
         paramClickResult = (RIJBaseDanmaku)paramBaseDanmaku;
-        if (paramClickResult.a(paramTouchPoint))
+        if (paramClickResult.b(paramTouchPoint))
         {
           a(paramClickResult);
           paramClickResult.f(false);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a(paramBaseDanmaku);
-          if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.e()) {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.q();
+          this.b.a(paramBaseDanmaku);
+          if (this.b.y()) {
+            this.b.z();
           }
         }
       }
       else
       {
-        paramTouchPoint = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku;
-        if (paramTouchPoint != null) {
-          b(paramTouchPoint);
-        }
         paramBaseDanmaku = (RIJBaseDanmaku)paramBaseDanmaku;
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku = paramBaseDanmaku;
-        c(paramBaseDanmaku);
+        if (!d(paramBaseDanmaku))
+        {
+          paramTouchPoint = this.x;
+          if (paramTouchPoint != null) {
+            b(paramTouchPoint);
+          }
+          this.x = paramBaseDanmaku;
+          c(paramBaseDanmaku);
+        }
       }
     }
   }
@@ -500,23 +527,32 @@ public final class RIJDanmakuManager
   public void a(@NotNull DanmakuDetail paramDanmakuDetail)
   {
     Intrinsics.checkParameterIsNotNull(paramDanmakuDetail, "data");
+    Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("addDanmakuNow: ");
-      localStringBuilder.append(paramDanmakuDetail);
-      QLog.d("RIJDanmakuManager", 2, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addDanmakuNow: ");
+      ((StringBuilder)localObject).append(paramDanmakuDetail);
+      QLog.d("RIJDanmakuManager", 2, ((StringBuilder)localObject).toString());
     }
-    int i = a(paramDanmakuDetail);
-    paramDanmakuDetail = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a(i, paramDanmakuDetail);
+    if (!this.q)
+    {
+      this.q = true;
+      localObject = this.r;
+      if (localObject != null) {
+        a((ViewGroup)localObject);
+      }
+    }
+    int i1 = b(paramDanmakuDetail);
+    paramDanmakuDetail = this.b.a(i1, paramDanmakuDetail);
     Intrinsics.checkExpressionValueIsNotNull(paramDanmakuDetail, "baseDanmaku");
     paramDanmakuDetail.e(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.b(paramDanmakuDetail);
+    this.b.b(paramDanmakuDetail);
   }
   
   public void a(@Nullable IPlayer paramIPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuIPlayer = paramIPlayer;
+    this.c = paramIPlayer;
   }
   
   public void a(@NotNull RIJDanmakuConfig paramRIJDanmakuConfig)
@@ -526,28 +562,33 @@ public final class RIJDanmakuManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("changeConfig: config=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig);
+      localStringBuilder.append(this.B);
       localStringBuilder.append(", newConfig=");
       localStringBuilder.append(paramRIJDanmakuConfig);
       QLog.d("RIJDanmakuManager", 2, localStringBuilder.toString());
     }
-    if ((Intrinsics.areEqual(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig, paramRIJDanmakuConfig) ^ true))
+    if ((Intrinsics.areEqual(this.B, paramRIJDanmakuConfig) ^ true))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRIJDanmakuConfig = paramRIJDanmakuConfig;
+      this.B = paramRIJDanmakuConfig;
       b(paramRIJDanmakuConfig);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.h();
+      this.b.h();
     }
+  }
+  
+  public void a(@Nullable Boolean paramBoolean)
+  {
+    this.b.a(paramBoolean);
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.w = paramString;
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
       paramString.append("setCurrentAuthorUin: ");
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.w);
       QLog.d("RIJDanmakuManager", 2, paramString.toString());
     }
   }
@@ -565,36 +606,83 @@ public final class RIJDanmakuManager
       localStringBuilder.append(' ');
       QLog.d("RIJDanmakuManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a(paramInt * 1000);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuModelRIJDanmakuModel.a(paramString, paramInt);
+    this.b.a(paramInt * 1000);
+    this.e.a(paramString, paramInt);
   }
   
-  public void a(@NotNull List<DanmakuDetail> paramList)
-  {
-    Intrinsics.checkParameterIsNotNull(paramList, "list");
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      DanmakuDetail localDanmakuDetail = (DanmakuDetail)paramList.next();
-      int i = a(localDanmakuDetail);
-      BaseDanmaku localBaseDanmaku = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a(i, localDanmakuDetail);
-      Intrinsics.checkExpressionValueIsNotNull(localBaseDanmaku, "baseDanmaku");
-      localBaseDanmaku.b(localDanmakuDetail.a().a() * 1000);
-      localArrayList.add(localBaseDanmaku);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a((List)localArrayList);
-  }
+  public void a(@Nullable List<BaseDanmaku<Object, IDanmakuUIConfig>> paramList) {}
   
-  public void a(@NotNull List<DanmakuDetail> paramList, @NotNull ArrayList<ReportInfo> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(@NotNull List<DanmakuDetail> paramList, @NotNull ArrayList<ReportInfo> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, @NotNull String paramString, long paramLong)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "list");
     Intrinsics.checkParameterIsNotNull(paramArrayList, "reportInfoList");
+    Intrinsics.checkParameterIsNotNull(paramString, "openText");
     if (paramBoolean2) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.o();
+      this.b.w();
     }
-    a(paramList);
-    paramList = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuDanmakuEventCallback;
+    paramBoolean2 = this.q;
+    int i3 = 1;
+    Object localObject;
+    if ((!paramBoolean2) && ((((Collection)paramList).isEmpty() ^ true)))
+    {
+      this.q = true;
+      localObject = this.r;
+      if (localObject != null) {
+        a((ViewGroup)localObject);
+      }
+    }
+    int i2 = i3;
+    if (this.t)
+    {
+      this.t = false;
+      long l1 = 0L;
+      i2 = i3;
+      if (paramLong > 0L)
+      {
+        int i1;
+        if (((CharSequence)paramString).length() > 0) {
+          i1 = 1;
+        } else {
+          i1 = 0;
+        }
+        i2 = i3;
+        if (i1 != 0)
+        {
+          paramBoolean2 = q();
+          localObject = this.c;
+          paramLong = l1;
+          if (localObject != null) {
+            paramLong = ((IPlayer)localObject).getCurrentPosition();
+          }
+          l1 = this.B.i();
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onGetData: need show open text first, isOutTime ");
+            ((StringBuilder)localObject).append(paramBoolean2);
+            ((StringBuilder)localObject).append(", ");
+            ((StringBuilder)localObject).append("guide time ");
+            ((StringBuilder)localObject).append(this.B.i());
+            ((StringBuilder)localObject).append(", curPosition ");
+            ((StringBuilder)localObject).append(paramLong);
+            ((StringBuilder)localObject).append(", player ");
+            ((StringBuilder)localObject).append(this.c);
+            QLog.d("RIJDanmakuManager", 2, ((StringBuilder)localObject).toString());
+          }
+          i2 = i3;
+          if (!paramBoolean2)
+          {
+            this.u = ((Runnable)new RIJDanmakuManager.onGetData.2(this, paramString, paramList));
+            this.o.postDelayed(this.u, l1 - paramLong);
+            i2 = 0;
+          }
+        }
+      }
+    }
+    if (i2 != 0) {
+      b(paramList);
+    }
+    paramList = this.C;
     if (paramList != null) {
       paramList.onGetDanmakuData(paramBoolean1, paramArrayList);
     }
@@ -611,14 +699,73 @@ public final class RIJDanmakuManager
     }
   }
   
-  public void b()
+  @NotNull
+  public final String b()
+  {
+    return this.w;
+  }
+  
+  public void b(@Nullable Boolean paramBoolean)
+  {
+    this.b.b(paramBoolean);
+  }
+  
+  public void b(@NotNull List<DanmakuDetail> paramList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramList, "list");
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      DanmakuDetail localDanmakuDetail = (DanmakuDetail)paramList.next();
+      int i1 = b(localDanmakuDetail);
+      BaseDanmaku localBaseDanmaku = this.b.a(i1, localDanmakuDetail);
+      Intrinsics.checkExpressionValueIsNotNull(localBaseDanmaku, "baseDanmaku");
+      localBaseDanmaku.g(localDanmakuDetail.a().e() * 1000);
+      localArrayList.add(localBaseDanmaku);
+    }
+    this.b.a((List)localArrayList);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    WindowConfig localWindowConfig = DanmakuContext.a();
+    Intrinsics.checkExpressionValueIsNotNull(localWindowConfig, "DanmakuContext.getWindowConfig()");
+    localWindowConfig.d(paramBoolean);
+  }
+  
+  @Nullable
+  public final RIJBaseDanmaku c()
+  {
+    return this.x;
+  }
+  
+  public void d()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.d.getVisibility() == 0) {
+        this.d.setVisibility(4);
       }
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.h.setVisibility(8);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("RIJDanmakuManager", 2, "hide: ", localThrowable);
+      }
+    }
+  }
+  
+  public void e()
+  {
+    try
+    {
+      if (this.d.getVisibility() != 0) {
+        this.d.setVisibility(0);
+      }
+      this.h.setVisibility(0);
       return;
     }
     catch (Throwable localThrowable)
@@ -629,91 +776,82 @@ public final class RIJDanmakuManager
     }
   }
   
-  public void b(@Nullable List<BaseDanmaku<Object, IDanmakuUIConfig>> paramList) {}
-  
-  public void b(boolean paramBoolean)
+  public boolean f()
   {
-    WindowConfig localWindowConfig = DanmakuContext.a();
-    Intrinsics.checkExpressionValueIsNotNull(localWindowConfig, "DanmakuContext.getWindowConfig()");
-    localWindowConfig.d(paramBoolean);
+    return this.d.getVisibility() == 0;
   }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJDanmakuManager", 2, "pause: ");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.c();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJDanmakuManager", 2, "restart: ");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.b();
-  }
-  
-  public void e()
-  {
-    h();
-  }
-  
-  public void f() {}
   
   public void g()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RIJDanmakuManager", 2, "destroy: ");
+      QLog.d("RIJDanmakuManager", 2, "pause: ");
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.g();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuModelRIJDanmakuModel.a();
-    ViewParent localViewParent = this.jdField_a_of_type_AndroidViewView.getParent();
+    this.b.c();
+  }
+  
+  public void h()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJDanmakuManager", 2, "restart: ");
+    }
+    this.b.b();
+  }
+  
+  public void i()
+  {
+    k();
+  }
+  
+  public void j()
+  {
+    D -= 1;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("destroy: DANMAKU_COUNT=");
+      ((StringBuilder)localObject).append(D);
+      QLog.d("RIJDanmakuManager", 2, ((StringBuilder)localObject).toString());
+    }
+    this.b.g();
+    this.e.b();
+    ViewParent localViewParent = this.d.getParent();
     Object localObject = localViewParent;
     if (!(localViewParent instanceof ViewGroup)) {
       localObject = null;
     }
     localObject = (ViewGroup)localObject;
     if (localObject != null) {
-      ((ViewGroup)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
+      ((ViewGroup)localObject).removeView(this.d);
     }
-    localViewParent = this.jdField_b_of_type_AndroidViewView.getParent();
-    localObject = localViewParent;
-    if (!(localViewParent instanceof ViewGroup)) {
-      localObject = null;
-    }
-    localObject = (ViewGroup)localObject;
-    if (localObject != null) {
-      ((ViewGroup)localObject).removeView(this.jdField_b_of_type_AndroidViewView);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.h.post((Runnable)new RIJDanmakuManager.destroy.1(this));
+    this.o.removeCallbacksAndMessages(null);
   }
   
-  public void h()
+  public void k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.d();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.e();
+    this.b.d();
+    this.b.e();
   }
   
-  public void i()
+  public void l()
   {
     if (QLog.isColorLevel()) {
       QLog.d("RIJDanmakuManager", 2, "cancelClick: ");
     }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.p = true;
+    this.v.run();
   }
   
   public boolean onTouch(@Nullable View paramView, @NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
-    if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getAction() == 0))
+    if ((this.p) && (paramMotionEvent.getAction() == 0))
     {
-      paramView = this.jdField_a_of_type_AndroidGraphicsRect;
+      paramView = this.l;
       if ((paramView == null) || (paramView.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())))
       {
         paramView = new int[2];
-        this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramView);
+        this.d.getLocationOnScreen(paramView);
         boolean bool3 = a(paramMotionEvent, paramView);
         boolean bool2 = true;
         boolean bool1 = true;
@@ -723,17 +861,17 @@ public final class RIJDanmakuManager
           float f2 = paramView[0];
           float f3 = paramMotionEvent.getRawY();
           float f4 = paramView[1];
-          paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a();
+          paramView = this.b.q();
           Intrinsics.checkExpressionValueIsNotNull(paramView, "danmakuManager.drawTimer");
-          paramView = new TouchPoint(paramView.a(), new Point((int)(f1 - f2), (int)(f3 - f4)), 0);
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuExtDanmakuManagerExt.a(paramView);
+          paramView = new TouchPoint(paramView.b(), new Point((int)(f1 - f2), (int)(f3 - f4)), 0);
+          paramMotionEvent = this.b.a(paramView);
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("onTouch: clickDanmakuView, candidateDanmaku=");
             localStringBuilder.append(paramMotionEvent);
             localStringBuilder.append(", clickedDanamku=");
-            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku);
+            localStringBuilder.append(this.x);
             QLog.d("RIJDanmakuManager", 2, localStringBuilder.toString());
           }
           if (paramMotionEvent != null)
@@ -741,15 +879,15 @@ public final class RIJDanmakuManager
             a(paramMotionEvent, paramView, null);
             return true;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku == null) {
+          if (this.x == null) {
             bool1 = false;
           }
-          paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku;
+          paramView = this.x;
           bool2 = bool1;
           if (paramView != null)
           {
             b(paramView);
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku = ((RIJBaseDanmaku)null);
+            this.x = ((RIJBaseDanmaku)null);
             return bool1;
           }
         }
@@ -759,20 +897,20 @@ public final class RIJDanmakuManager
           {
             paramView = new StringBuilder();
             paramView.append("onTouch: clickVideoArea, clickedDanmaku=");
-            paramView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku);
+            paramView.append(this.x);
             QLog.d("RIJDanmakuManager", 2, paramView.toString());
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku != null) {
+          if (this.x != null) {
             bool1 = bool2;
           } else {
             bool1 = false;
           }
-          paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku;
+          paramView = this.x;
           bool2 = bool1;
           if (paramView != null)
           {
             b(paramView);
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDanmakuRenderRIJBaseDanmaku = ((RIJBaseDanmaku)null);
+            this.x = ((RIJBaseDanmaku)null);
             bool2 = bool1;
           }
         }
@@ -784,7 +922,7 @@ public final class RIJDanmakuManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.RIJDanmakuManager
  * JD-Core Version:    0.7.0.1
  */

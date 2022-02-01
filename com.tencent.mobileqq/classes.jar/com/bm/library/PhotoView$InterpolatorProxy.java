@@ -6,18 +6,18 @@ import android.view.animation.Interpolator;
 class PhotoView$InterpolatorProxy
   implements Interpolator
 {
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
+  private Interpolator b = new DecelerateInterpolator();
   
   private PhotoView$InterpolatorProxy(PhotoView paramPhotoView) {}
   
   public void a(Interpolator paramInterpolator)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.b = paramInterpolator;
   }
   
   public float getInterpolation(float paramFloat)
   {
-    Interpolator localInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+    Interpolator localInterpolator = this.b;
     float f = paramFloat;
     if (localInterpolator != null) {
       f = localInterpolator.getInterpolation(paramFloat);
@@ -27,7 +27,7 @@ class PhotoView$InterpolatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.bm.library.PhotoView.InterpolatorProxy
  * JD-Core Version:    0.7.0.1
  */

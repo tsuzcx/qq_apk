@@ -12,14 +12,14 @@ class KandianMergeManager$19
   public void run()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.NEW_KANDIAN_UIN;
-    localSessionInfo.jdField_a_of_type_Int = 1008;
-    ChatActivityFacade.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+    localSessionInfo.b = AppConstants.NEW_KANDIAN_UIN;
+    localSessionInfo.a = 1008;
+    ChatActivityFacade.a(KandianMergeManager.c(this.this$0), localSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.19
  * JD-Core Version:    0.7.0.1
  */

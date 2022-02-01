@@ -9,18 +9,18 @@ import java.util.List;
 public class PokeEmoPageAdapter
   extends PagerAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<View> jdField_a_of_type_JavaUtilList;
+  private Context a;
+  private List<View> b;
   
   public PokeEmoPageAdapter(Context paramContext, List<View> paramList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramContext;
+    this.b = paramList;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    paramViewGroup.removeView((View)this.b.get(paramInt));
   }
   
   public void finishUpdate(ViewGroup paramViewGroup)
@@ -30,7 +30,7 @@ public class PokeEmoPageAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -39,8 +39,8 @@ public class PokeEmoPageAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramViewGroup.addView((View)this.b.get(paramInt));
+    return this.b.get(paramInt);
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -60,7 +60,7 @@ public class PokeEmoPageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PokeEmoPageAdapter
  * JD-Core Version:    0.7.0.1
  */

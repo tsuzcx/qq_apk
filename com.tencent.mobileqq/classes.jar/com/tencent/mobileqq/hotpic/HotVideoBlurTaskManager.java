@@ -10,15 +10,15 @@ import java.util.Iterator;
 
 public class HotVideoBlurTaskManager
 {
-  static ArrayList<WeakReference<HotVideoBlurTaskManager>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public static boolean a = false;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayMap<HotVideoData, HotPicPageView.MyVideoViewHolder> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-  boolean b = false;
+  public static boolean c = false;
+  static ArrayList<WeakReference<HotVideoBlurTaskManager>> d = new ArrayList();
+  ArrayMap<HotVideoData, HotPicPageView.MyVideoViewHolder> a = new ArrayMap();
+  Context b;
+  boolean e = false;
   
   HotVideoBlurTaskManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   public static HotVideoBlurTaskManager a(Context paramContext)
@@ -30,8 +30,8 @@ public class HotVideoBlurTaskManager
         return null;
       }
       paramContext = new HotVideoBlurTaskManager(paramContext);
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 3) {
-        jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramContext));
+      if (d.size() < 3) {
+        d.add(new WeakReference(paramContext));
       }
       return paramContext;
     }
@@ -47,11 +47,11 @@ public class HotVideoBlurTaskManager
       if (paramHotVideoBlurTaskManager == null) {
         return;
       }
-      int i = jdField_a_of_type_JavaUtilArrayList.size();
+      int i = d.size();
       if (i >= 3) {
         return;
       }
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = d.iterator();
       Object localObject;
       do
       {
@@ -67,7 +67,7 @@ public class HotVideoBlurTaskManager
       } while ((localObject == null) || (!paramHotVideoBlurTaskManager.equals(localObject)));
       i = 1;
       if (i == 0) {
-        jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramHotVideoBlurTaskManager));
+        d.add(new WeakReference(paramHotVideoBlurTaskManager));
       }
       return;
     }
@@ -83,7 +83,7 @@ public class HotVideoBlurTaskManager
     try
     {
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = d.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -96,7 +96,7 @@ public class HotVideoBlurTaskManager
           HotVideoBlurTaskManager localHotVideoBlurTaskManager = (HotVideoBlurTaskManager)localWeakReference.get();
           if (localHotVideoBlurTaskManager == null) {
             localArrayList.add(localWeakReference);
-          } else if ((paramBoolean) && (!localHotVideoBlurTaskManager.b)) {
+          } else if ((paramBoolean) && (!localHotVideoBlurTaskManager.e)) {
             localHotVideoBlurTaskManager.a();
           }
         }
@@ -112,12 +112,12 @@ public class HotVideoBlurTaskManager
   
   public static void b()
   {
-    jdField_a_of_type_Boolean = true;
+    c = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pauseAllBlurTask HotVideoBlurTaskLock is:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(c);
       QLog.d("HotVideoBlurTaskManager", 2, localStringBuilder.toString());
     }
   }
@@ -130,7 +130,7 @@ public class HotVideoBlurTaskManager
       if (paramHotVideoBlurTaskManager == null) {
         return;
       }
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = d.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -138,7 +138,7 @@ public class HotVideoBlurTaskManager
         {
           HotVideoBlurTaskManager localHotVideoBlurTaskManager = (HotVideoBlurTaskManager)localWeakReference.get();
           if ((localHotVideoBlurTaskManager != null) && (paramHotVideoBlurTaskManager.equals(localHotVideoBlurTaskManager))) {
-            jdField_a_of_type_JavaUtilArrayList.remove(localWeakReference);
+            d.remove(localWeakReference);
           }
         }
       }
@@ -153,15 +153,15 @@ public class HotVideoBlurTaskManager
   
   public static void c()
   {
-    jdField_a_of_type_Boolean = false;
+    c = false;
     a(true);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("resmueAllBlurTask HotVideoBlurTaskLock is:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(c);
       localStringBuilder.append(" TaskManagerList size is ");
-      localStringBuilder.append(jdField_a_of_type_JavaUtilArrayList.size());
+      localStringBuilder.append(d.size());
       QLog.d("HotVideoBlurTaskManager", 2, localStringBuilder.toString());
     }
   }
@@ -172,16 +172,16 @@ public class HotVideoBlurTaskManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("tryStartBlurTask HotVideoBlurTaskLock is:");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(c);
       QLog.d("HotVideoBlurTaskManager", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size() != 0) && (!jdField_a_of_type_Boolean))
+    if ((this.a.size() != 0) && (!c))
     {
-      this.b = true;
+      this.e = true;
       ThreadManager.post(new HotVideoBlurTaskManager.1(this), 5, null, true);
       return;
     }
-    this.b = false;
+    this.e = false;
   }
   
   public void a(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, HotVideoData paramHotVideoData)
@@ -189,14 +189,14 @@ public class HotVideoBlurTaskManager
     if ((paramMyVideoViewHolder != null) && (paramHotVideoData != null)) {
       try
       {
-        if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramHotVideoData))
+        if (this.a.containsKey(paramHotVideoData))
         {
-          int i = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.indexOfKey(paramHotVideoData);
-          this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.setValueAt(i, paramMyVideoViewHolder);
+          int i = this.a.indexOfKey(paramHotVideoData);
+          this.a.setValueAt(i, paramMyVideoViewHolder);
         }
         else
         {
-          this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramHotVideoData, paramMyVideoViewHolder);
+          this.a.put(paramHotVideoData, paramMyVideoViewHolder);
         }
         if (QLog.isColorLevel())
         {
@@ -204,10 +204,10 @@ public class HotVideoBlurTaskManager
           paramMyVideoViewHolder.append("addBlurTask HotVideoData.Name is:");
           paramMyVideoViewHolder.append(paramHotVideoData.name);
           paramMyVideoViewHolder.append(" mBlurTasks size is ");
-          paramMyVideoViewHolder.append(this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size());
+          paramMyVideoViewHolder.append(this.a.size());
           QLog.d("HotVideoBlurTaskManager", 2, paramMyVideoViewHolder.toString());
         }
-        if (!this.b) {
+        if (!this.e) {
           a();
         }
         return;
@@ -223,8 +223,8 @@ public class HotVideoBlurTaskManager
     }
     try
     {
-      if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramHotVideoData)) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.remove(paramHotVideoData);
+      if (this.a.containsKey(paramHotVideoData)) {
+        this.a.remove(paramHotVideoData);
       }
       if (QLog.isColorLevel())
       {
@@ -232,7 +232,7 @@ public class HotVideoBlurTaskManager
         localStringBuilder.append("removeTaskByData HotVideoData.Name is:");
         localStringBuilder.append(paramHotVideoData.name);
         localStringBuilder.append(" mBlurTasks size is ");
-        localStringBuilder.append(this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size());
+        localStringBuilder.append(this.a.size());
         QLog.d("HotVideoBlurTaskManager", 2, localStringBuilder.toString());
       }
       return;
@@ -242,7 +242,7 @@ public class HotVideoBlurTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ import java.lang.ref.WeakReference;
 class EffectFilterTextPager$MyOnPageChangeListener
   implements ViewPager.OnPageChangeListener
 {
-  private WeakReference<EffectFilterTextPager.OnEffectFilterChangeListener> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<EffectFilterTextPager.OnEffectFilterChangeListener> b;
   
   public EffectFilterTextPager$MyOnPageChangeListener(EffectFilterTextPager paramEffectFilterTextPager, EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnEffectFilterChangeListener);
+    this.b = new WeakReference(paramOnEffectFilterChangeListener);
   }
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -32,9 +32,9 @@ class EffectFilterTextPager$MyOnPageChangeListener
     }
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(1300);
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(110), Long.valueOf(l) });
+      this.a.a(1300);
+      if (this.a.h != null) {
+        this.a.h.a(new Object[] { Integer.valueOf(110), Long.valueOf(l) });
       }
     }
   }
@@ -43,30 +43,30 @@ class EffectFilterTextPager$MyOnPageChangeListener
   
   public void onPageSelected(int paramInt)
   {
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     Object localObject;
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onPageSelected, pos[");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append("], mProgramingPos[");
-      ((StringBuilder)localObject).append(EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager));
+      ((StringBuilder)localObject).append(EffectFilterTextPager.a(this.a));
       ((StringBuilder)localObject).append("], seq[");
       ((StringBuilder)localObject).append(l);
       ((StringBuilder)localObject).append("]");
       QLog.w("EffectFilterTextPager", 1, ((StringBuilder)localObject).toString());
     }
-    if (EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt)
+    if (EffectFilterTextPager.a(this.a) != paramInt)
     {
-      localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject = this.b;
       if ((localObject != null) && (((WeakReference)localObject).get() != null))
       {
-        localObject = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramInt);
+        localObject = this.a.d.a(paramInt);
         if (localObject != null) {
-          ((EffectFilterTextPager.OnEffectFilterChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(l, paramInt, ((FilterItem)localObject).getId());
+          ((EffectFilterTextPager.OnEffectFilterChangeListener)this.b.get()).a(l, paramInt, ((FilterItem)localObject).getId());
         }
-        EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
+        EffectFilterTextPager.a(this.a, -1);
       }
     }
   }

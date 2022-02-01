@@ -12,7 +12,7 @@ class BaseDownloadAsyncTask$InnerHandler
     if (paramMessage.what != 1) {
       return;
     }
-    localHYAsyncTaskResult.jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask.a(((DownloadParams[])localHYAsyncTaskResult.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
+    localHYAsyncTaskResult.a.a(((DownloadParams[])localHYAsyncTaskResult.b)[0]);
   }
 }
 

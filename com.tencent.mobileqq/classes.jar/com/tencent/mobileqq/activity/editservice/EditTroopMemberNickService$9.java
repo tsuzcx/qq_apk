@@ -16,35 +16,35 @@ class EditTroopMemberNickService$9
     EditTroopMemberNickService.b(this.a, paramBoolean);
     if (paramBoolean)
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-      EditTroopMemberNickService.a(this.a, 0);
-      if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) {
-        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      this.a.a.setCursorVisible(true);
+      EditTroopMemberNickService.b(this.a, 0);
+      if (this.a.v != null) {
+        this.a.v.setVisibility(8);
       }
-      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+      if (this.a.q != null)
       {
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).bottomMargin = 0;
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847309);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130847303);
+        this.a.q.setVisibility(0);
+        ((RelativeLayout.LayoutParams)this.a.q.getLayoutParams()).bottomMargin = 0;
+        this.a.t.setImageResource(2130848960);
+        this.a.u.setImageResource(2130848954);
       }
     }
     else
     {
-      if (EditTroopMemberNickService.b(this.a) > 0)
+      if (EditTroopMemberNickService.h(this.a) > 0)
       {
         EditTroopMemberNickService localEditTroopMemberNickService = this.a;
-        EditTroopMemberNickService.a(localEditTroopMemberNickService, EditTroopMemberNickService.b(localEditTroopMemberNickService));
+        EditTroopMemberNickService.c(localEditTroopMemberNickService, EditTroopMemberNickService.h(localEditTroopMemberNickService));
         return;
       }
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      this.a.q.setVisibility(8);
+      this.a.a.setCursorVisible(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.9
  * JD-Core Version:    0.7.0.1
  */

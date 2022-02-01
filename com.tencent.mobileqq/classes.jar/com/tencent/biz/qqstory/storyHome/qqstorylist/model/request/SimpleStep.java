@@ -6,60 +6,60 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 public abstract class SimpleStep
   implements Step
 {
-  private Step.ErrorCallBack jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack;
-  private Step.FinishCallBack jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack;
-  private Object jdField_a_of_type_JavaLangObject;
+  private Step.FinishCallBack a;
+  private Step.ErrorCallBack b;
+  private Object c;
   
   public Object a()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.c;
   }
   
   public void a(Step.ErrorCallBack paramErrorCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack = paramErrorCallBack;
+    this.b = paramErrorCallBack;
   }
   
   public void a(Step.FinishCallBack paramFinishCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack = paramFinishCallBack;
+    this.a = paramFinishCallBack;
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    this.c = paramObject;
   }
   
   protected void b(ErrorMessage paramErrorMessage)
   {
-    paramErrorMessage.extraMsg = a();
-    Step.ErrorCallBack localErrorCallBack = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack;
+    paramErrorMessage.extraMsg = c();
+    Step.ErrorCallBack localErrorCallBack = this.b;
     if (localErrorCallBack != null)
     {
       localErrorCallBack.a(paramErrorMessage);
       return;
     }
     paramErrorMessage = new StringBuilder();
-    paramErrorMessage.append(a());
+    paramErrorMessage.append(c());
     paramErrorMessage.append(" errorCallBack is null.");
     SLog.d("SimpleStep", paramErrorMessage.toString());
   }
   
-  protected void d()
+  public boolean d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack;
+    return true;
+  }
+  
+  protected void h()
+  {
+    Object localObject = this.a;
     if (localObject != null)
     {
-      ((Step.FinishCallBack)localObject).a(a());
+      ((Step.FinishCallBack)localObject).a(c());
       return;
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(c());
     ((StringBuilder)localObject).append(" finishCallBack is null.");
     SLog.d("SimpleStep", ((StringBuilder)localObject).toString());
   }

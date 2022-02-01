@@ -25,67 +25,57 @@ public class ARCloudPretreatmentManager
 {
   public static int a = 0;
   public static int b = -1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private int c = 0;
-  
-  private String a()
-  {
-    String str = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FilteredImg");
-    localStringBuilder.append(str);
-    localStringBuilder.append(".jpg");
-    return localStringBuilder.toString();
-  }
+  private byte[] c = null;
+  private int d = 0;
+  private String e = "";
   
   /* Error */
   private void a(String paramString1, String paramString2, byte[] paramArrayOfByte, YuvImage paramYuvImage)
   {
     // Byte code:
-    //   0: new 70	java/io/File
+    //   0: new 35	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 38	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 5
-    //   10: new 51	java/lang/StringBuilder
+    //   10: new 40	java/lang/StringBuilder
     //   13: dup
-    //   14: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   14: invokespecial 41	java/lang/StringBuilder:<init>	()V
     //   17: astore 6
     //   19: aload 6
     //   21: aload_1
-    //   22: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: pop
     //   26: aload 6
     //   28: aload_2
-    //   29: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: pop
-    //   33: new 70	java/io/File
+    //   33: new 35	java/io/File
     //   36: dup
     //   37: aload 6
-    //   39: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokespecial 38	java/io/File:<init>	(Ljava/lang/String;)V
     //   45: astore_1
     //   46: aload 5
-    //   48: invokevirtual 75	java/io/File:exists	()Z
+    //   48: invokevirtual 53	java/io/File:exists	()Z
     //   51: ifne +9 -> 60
     //   54: aload 5
-    //   56: invokevirtual 78	java/io/File:mkdirs	()Z
+    //   56: invokevirtual 56	java/io/File:mkdirs	()Z
     //   59: pop
     //   60: aload_1
-    //   61: invokevirtual 75	java/io/File:exists	()Z
+    //   61: invokevirtual 53	java/io/File:exists	()Z
     //   64: ifne +16 -> 80
     //   67: aload_1
-    //   68: invokevirtual 81	java/io/File:createNewFile	()Z
+    //   68: invokevirtual 59	java/io/File:createNewFile	()Z
     //   71: pop
     //   72: goto +8 -> 80
     //   75: astore_2
     //   76: aload_2
-    //   77: invokevirtual 84	java/io/IOException:printStackTrace	()V
-    //   80: new 86	java/io/FileOutputStream
+    //   77: invokevirtual 62	java/io/IOException:printStackTrace	()V
+    //   80: new 64	java/io/FileOutputStream
     //   83: dup
     //   84: aload_1
-    //   85: invokespecial 89	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   85: invokespecial 67	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   88: astore_2
     //   89: aload_3
     //   90: ifnull +13 -> 103
@@ -93,32 +83,32 @@ public class ARCloudPretreatmentManager
     //   94: astore_1
     //   95: aload_2
     //   96: aload_3
-    //   97: invokevirtual 93	java/io/FileOutputStream:write	([B)V
+    //   97: invokevirtual 71	java/io/FileOutputStream:write	([B)V
     //   100: goto +38 -> 138
     //   103: aload 4
     //   105: ifnull +33 -> 138
     //   108: aload_2
     //   109: astore_1
     //   110: aload 4
-    //   112: new 95	android/graphics/Rect
+    //   112: new 73	android/graphics/Rect
     //   115: dup
     //   116: iconst_0
     //   117: iconst_0
     //   118: aload 4
-    //   120: invokevirtual 101	android/graphics/YuvImage:getWidth	()I
+    //   120: invokevirtual 79	android/graphics/YuvImage:getWidth	()I
     //   123: aload 4
-    //   125: invokevirtual 104	android/graphics/YuvImage:getHeight	()I
-    //   128: invokespecial 107	android/graphics/Rect:<init>	(IIII)V
+    //   125: invokevirtual 82	android/graphics/YuvImage:getHeight	()I
+    //   128: invokespecial 85	android/graphics/Rect:<init>	(IIII)V
     //   131: bipush 50
     //   133: aload_2
-    //   134: invokevirtual 111	android/graphics/YuvImage:compressToJpeg	(Landroid/graphics/Rect;ILjava/io/OutputStream;)Z
+    //   134: invokevirtual 89	android/graphics/YuvImage:compressToJpeg	(Landroid/graphics/Rect;ILjava/io/OutputStream;)Z
     //   137: pop
     //   138: aload_2
     //   139: astore_1
     //   140: aload_2
-    //   141: invokevirtual 114	java/io/FileOutputStream:flush	()V
+    //   141: invokevirtual 92	java/io/FileOutputStream:flush	()V
     //   144: aload_2
-    //   145: invokevirtual 117	java/io/FileOutputStream:close	()V
+    //   145: invokevirtual 95	java/io/FileOutputStream:close	()V
     //   148: return
     //   149: astore_1
     //   150: aconst_null
@@ -130,11 +120,11 @@ public class ARCloudPretreatmentManager
     //   158: aload_2
     //   159: astore_1
     //   160: aload_3
-    //   161: invokevirtual 84	java/io/IOException:printStackTrace	()V
+    //   161: invokevirtual 62	java/io/IOException:printStackTrace	()V
     //   164: aload_2
     //   165: ifnull +31 -> 196
     //   168: aload_2
-    //   169: invokevirtual 117	java/io/FileOutputStream:close	()V
+    //   169: invokevirtual 95	java/io/FileOutputStream:close	()V
     //   172: return
     //   173: astore_3
     //   174: aconst_null
@@ -142,15 +132,15 @@ public class ARCloudPretreatmentManager
     //   176: aload_2
     //   177: astore_1
     //   178: aload_3
-    //   179: invokevirtual 118	java/io/FileNotFoundException:printStackTrace	()V
+    //   179: invokevirtual 96	java/io/FileNotFoundException:printStackTrace	()V
     //   182: aload_2
     //   183: ifnull +13 -> 196
     //   186: aload_2
-    //   187: invokevirtual 117	java/io/FileOutputStream:close	()V
+    //   187: invokevirtual 95	java/io/FileOutputStream:close	()V
     //   190: return
     //   191: astore_1
     //   192: aload_1
-    //   193: invokevirtual 84	java/io/IOException:printStackTrace	()V
+    //   193: invokevirtual 62	java/io/IOException:printStackTrace	()V
     //   196: return
     //   197: astore_3
     //   198: aload_1
@@ -160,11 +150,11 @@ public class ARCloudPretreatmentManager
     //   202: aload_2
     //   203: ifnull +15 -> 218
     //   206: aload_2
-    //   207: invokevirtual 117	java/io/FileOutputStream:close	()V
+    //   207: invokevirtual 95	java/io/FileOutputStream:close	()V
     //   210: goto +8 -> 218
     //   213: astore_2
     //   214: aload_2
-    //   215: invokevirtual 84	java/io/IOException:printStackTrace	()V
+    //   215: invokevirtual 62	java/io/IOException:printStackTrace	()V
     //   218: aload_1
     //   219: athrow
     //   220: astore_3
@@ -203,10 +193,20 @@ public class ARCloudPretreatmentManager
     //   140	144	224	java/io/FileNotFoundException
   }
   
-  private void c()
+  private String c()
+  {
+    String str = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis()));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FilteredImg");
+    localStringBuilder.append(str);
+    localStringBuilder.append(".jpg");
+    return localStringBuilder.toString();
+  }
+  
+  private void d()
   {
     QLog.i("AREngine_ARCloudPretreatmentManagert", 1, "delete backup file.");
-    File[] arrayOfFile = new File(this.jdField_a_of_type_JavaLangString).listFiles();
+    File[] arrayOfFile = new File(this.e).listFiles();
     if (arrayOfFile != null)
     {
       int i = 0;
@@ -226,13 +226,13 @@ public class ARCloudPretreatmentManager
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(ArConfigUtils.a());
     localStringBuilder.append("ar_cloud_img/");
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.e = localStringBuilder.toString();
     ARCloudImageProc.nativeInit();
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("ARCloudPretreatmentManager mImgDir = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.e);
       QLog.i("AREngine_ARCloudPretreatmentManagert", 2, localStringBuilder.toString());
     }
   }
@@ -257,7 +257,7 @@ public class ARCloudPretreatmentManager
       return;
     }
     Object localObject = new ARCloudRecogReqFaceInfo();
-    ((ARCloudRecogReqFaceInfo)localObject).jdField_a_of_type_Int = ((int)paramARRecognition.b);
+    ((ARCloudRecogReqFaceInfo)localObject).a = ((int)paramARRecognition.e);
     FaceCluster localFaceCluster = FaceCluster.getInstance();
     long l1 = SystemClock.uptimeMillis();
     if (!FaceScanModelsLoader.b)
@@ -266,19 +266,19 @@ public class ARCloudPretreatmentManager
       return;
     }
     paramARRecognition = localFaceCluster.trackFace(paramArrayOfByte, paramInt1, paramInt2, 0, false);
-    if (ARLocalFaceRecog.a != null)
+    if (ARLocalFaceRecog.g != null)
     {
-      if (ARLocalFaceRecog.a.hasMessages(4))
+      if (ARLocalFaceRecog.g.hasMessages(4))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AREngine_ARCloudPretreatmentManagert", 2, "[DEBUG_SCAN_yt_face] pretreatFaceRecogInfo, remove pending task");
         }
-        ARLocalFaceRecog.a.removeMessages(4);
+        ARLocalFaceRecog.g.removeMessages(4);
       }
-      paramArrayOfByte = Message.obtain(ARLocalFaceRecog.a, new ARCloudPretreatmentManager.1(this, paramARRecognition, localFaceCluster, paramArrayOfByte, paramInt1, paramInt2));
+      paramArrayOfByte = Message.obtain(ARLocalFaceRecog.g, new ARCloudPretreatmentManager.1(this, paramARRecognition, localFaceCluster, paramArrayOfByte, paramInt1, paramInt2));
       paramArrayOfByte.what = 4;
-      if (ARLocalFaceRecog.a != null) {
-        ARLocalFaceRecog.a.sendMessage(paramArrayOfByte);
+      if (ARLocalFaceRecog.g != null) {
+        ARLocalFaceRecog.g.sendMessage(paramArrayOfByte);
       }
     }
     else if (QLog.isColorLevel())
@@ -297,7 +297,7 @@ public class ARCloudPretreatmentManager
     }
     if ((paramARRecognition != null) && (paramARRecognition.length > 0))
     {
-      ((ARCloudRecogReqFaceInfo)localObject).jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus = paramARRecognition;
+      ((ARCloudRecogReqFaceInfo)localObject).b = paramARRecognition;
       ReportController.b(null, "dc00898", "", "", "0X800834C", "0X800834C", 0, 0, "", "", "", "");
     }
     paramARCloudPretreatmentCallback.a((ARCloudRecogReqFaceInfo)localObject);
@@ -306,7 +306,7 @@ public class ARCloudPretreatmentManager
   public void a(byte[] paramArrayOfByte, ARRecognition paramARRecognition, ARCloudPretreatmentManager.ARCloudPretreatmentCallback paramARCloudPretreatmentCallback)
   {
     paramArrayOfByte = new ARCloudReqMarkerInfo();
-    paramArrayOfByte.jdField_a_of_type_Int = ((int)paramARRecognition.b);
+    paramArrayOfByte.a = ((int)paramARRecognition.e);
     paramARCloudPretreatmentCallback.a(paramArrayOfByte);
   }
   
@@ -344,15 +344,15 @@ public class ARCloudPretreatmentManager
         localStringBuilder.append(k);
         QLog.i("AREngine_ARCloudPretreatmentManagert", 2, localStringBuilder.toString());
       }
-      double d = i * j;
-      Double.isNaN(d);
-      int m = (int)(d * 1.5D);
-      if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.c != m))
+      double d1 = i * j;
+      Double.isNaN(d1);
+      int m = (int)(d1 * 1.5D);
+      if ((this.c == null) || (this.d != m))
       {
-        this.jdField_a_of_type_ArrayOfByte = new byte[m];
-        this.c = m;
+        this.c = new byte[m];
+        this.d = m;
       }
-      if (ARCloudImageProc.nativeScaleAndRotate(this.jdField_a_of_type_ArrayOfByte, j, i, k, paramArrayOfByte, paramInt1, paramInt2) == 0)
+      if (ARCloudImageProc.nativeScaleAndRotate(this.c, j, i, k, paramArrayOfByte, paramInt1, paramInt2) == 0)
       {
         paramArrayOfByte = new StringBuilder();
         paramArrayOfByte.append("Preprocess failed. ScaleAndRotate failed. scaledWidth = ");
@@ -377,7 +377,7 @@ public class ARCloudPretreatmentManager
         localObject = (ARRecognition)paramArrayList.next();
         long l4 = 1 << (int)((ARRecognition)localObject).a;
         if (l4 == 1L) {
-          a(this.jdField_a_of_type_ArrayOfByte, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
+          a(this.c, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
         }
         for (;;)
         {
@@ -386,22 +386,22 @@ public class ARCloudPretreatmentManager
           if (l4 != 2L) {
             break;
           }
-          b(this.jdField_a_of_type_ArrayOfByte, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
+          b(this.c, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
         }
         if (l4 == 4L)
         {
           l1 = System.currentTimeMillis();
-          a(this.jdField_a_of_type_ArrayOfByte, i, j, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
+          a(this.c, i, j, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
           l2 = System.currentTimeMillis() - l1;
         }
         else if (l4 == 64L)
         {
-          d(this.jdField_a_of_type_ArrayOfByte, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
+          d(this.c, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
           l2 = l1;
         }
         else if (l4 == 128L)
         {
-          c(this.jdField_a_of_type_ArrayOfByte, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
+          c(this.c, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
           l2 = l1;
         }
         else
@@ -409,21 +409,21 @@ public class ARCloudPretreatmentManager
           l2 = l1;
           if (l4 == 2048L)
           {
-            e(this.jdField_a_of_type_ArrayOfByte, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
+            e(this.c, (ARRecognition)localObject, paramARCloudPretreatmentCallback);
             l2 = l1;
           }
         }
         label563:
         l1 = l2;
       }
-      localObject = new YuvImage(this.jdField_a_of_type_ArrayOfByte, paramInt3, i, j, null);
-      paramArrayList = a();
-      paramArrayList = new ARCloudPretreatmentManager.ImgInfo(this.jdField_a_of_type_JavaLangString, paramArrayList, this.jdField_a_of_type_ArrayOfByte);
-      a(paramArrayList.jdField_a_of_type_JavaLangString, paramArrayList.b, null, (YuvImage)localObject);
+      localObject = new YuvImage(this.c, paramInt3, i, j, null);
+      paramArrayList = c();
+      paramArrayList = new ARCloudPretreatmentManager.ImgInfo(this.e, paramArrayList, this.c);
+      a(paramArrayList.a, paramArrayList.b, null, (YuvImage)localObject);
       long l2 = System.currentTimeMillis() - l3;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[DEBUG_SCAN_yt_face] Preprocess end. save img: ");
-      ((StringBuilder)localObject).append(paramArrayList.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramArrayList.a);
       ((StringBuilder)localObject).append(paramArrayList.b);
       ((StringBuilder)localObject).append(",preProcessCost = ");
       ((StringBuilder)localObject).append(l2);
@@ -432,55 +432,55 @@ public class ARCloudPretreatmentManager
       QLog.i(paramArrayOfByte, 1, ((StringBuilder)localObject).toString());
       paramArrayOfByte = new ARCloudReqFileInfo();
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramArrayList.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramArrayList.a);
       ((StringBuilder)localObject).append(paramArrayList.b);
-      paramArrayOfByte.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-      paramArrayOfByte.jdField_a_of_type_Int = 0;
-      localObject = ARFaceDataCollector.a();
-      ((ARFaceDataCollector)localObject).c = l1;
-      ((ARFaceDataCollector)localObject).b = l2;
-      l1 = paramArrayList.jdField_a_of_type_ArrayOfByte.length / 8192;
-      paramARCloudPretreatmentCallback.a(jdField_a_of_type_Int, paramArrayOfByte, l1);
+      paramArrayOfByte.a = ((StringBuilder)localObject).toString();
+      paramArrayOfByte.b = 0;
+      localObject = ARFaceDataCollector.b();
+      ((ARFaceDataCollector)localObject).d = l1;
+      ((ARFaceDataCollector)localObject).c = l2;
+      l1 = paramArrayList.d.length / 8192;
+      paramARCloudPretreatmentCallback.a(a, paramArrayOfByte, l1);
     }
   }
   
   public void b()
   {
-    c();
+    d();
     ARCloudImageProc.nativeUninit();
   }
   
   public void b(byte[] paramArrayOfByte, ARRecognition paramARRecognition, ARCloudPretreatmentManager.ARCloudPretreatmentCallback paramARCloudPretreatmentCallback)
   {
     paramArrayOfByte = new ARCloudRecogReqObjectClassifyInfo();
-    paramArrayOfByte.jdField_a_of_type_Int = ((int)paramARRecognition.b);
+    paramArrayOfByte.a = ((int)paramARRecognition.e);
     paramARCloudPretreatmentCallback.a(paramArrayOfByte);
   }
   
   public void c(byte[] paramArrayOfByte, ARRecognition paramARRecognition, ARCloudPretreatmentManager.ARCloudPretreatmentCallback paramARCloudPretreatmentCallback)
   {
     paramArrayOfByte = new ARCloudRecogReqObjectClassifyInfo();
-    paramArrayOfByte.jdField_a_of_type_Int = ((int)paramARRecognition.b);
+    paramArrayOfByte.a = ((int)paramARRecognition.e);
     paramARCloudPretreatmentCallback.b(paramArrayOfByte);
   }
   
   public void d(byte[] paramArrayOfByte, ARRecognition paramARRecognition, ARCloudPretreatmentManager.ARCloudPretreatmentCallback paramARCloudPretreatmentCallback)
   {
     paramArrayOfByte = new ARCloudRecogReqPreOcrInfo();
-    paramArrayOfByte.jdField_a_of_type_Int = ((int)paramARRecognition.b);
+    paramArrayOfByte.a = ((int)paramARRecognition.e);
     paramARCloudPretreatmentCallback.a(paramArrayOfByte);
   }
   
   public void e(byte[] paramArrayOfByte, ARRecognition paramARRecognition, ARCloudPretreatmentManager.ARCloudPretreatmentCallback paramARCloudPretreatmentCallback)
   {
     paramArrayOfByte = new ARCloudRecogReqSceneRecogInfo();
-    paramArrayOfByte.jdField_a_of_type_Int = ((int)paramARRecognition.b);
+    paramArrayOfByte.a = ((int)paramARRecognition.e);
     paramARCloudPretreatmentCallback.a(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudPretreatmentManager
  * JD-Core Version:    0.7.0.1
  */

@@ -2,31 +2,31 @@ package com.tencent.av.opengl.effects;
 
 public class GLTexture
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static GLTexture b;
-  private static int c = 0;
+  private static final Object d = new Object();
+  private static GLTexture e;
+  private static int f = 0;
   public int a;
-  private GLTexture jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture;
   public int b;
+  private GLTexture c;
   
   private GLTexture(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
   public static GLTexture a(int paramInt1, int paramInt2)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      if (jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture != null)
+      if (e != null)
       {
-        GLTexture localGLTexture = jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture;
-        jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture = localGLTexture.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture;
-        localGLTexture.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture = null;
-        localGLTexture.jdField_a_of_type_Int = paramInt1;
-        localGLTexture.jdField_b_of_type_Int = paramInt2;
-        c -= 1;
+        GLTexture localGLTexture = e;
+        e = localGLTexture.c;
+        localGLTexture.c = null;
+        localGLTexture.a = paramInt1;
+        localGLTexture.b = paramInt2;
+        f -= 1;
         return localGLTexture;
       }
       return new GLTexture(paramInt1, paramInt2);
@@ -35,15 +35,15 @@ public class GLTexture
   
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.a = -1;
+    this.b = -1;
+    synchronized (d)
     {
-      if (c < 4)
+      if (f < 4)
       {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture = jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture;
-        jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture = this;
-        c += 1;
+        this.c = e;
+        e = this;
+        f += 1;
       }
       return;
     }

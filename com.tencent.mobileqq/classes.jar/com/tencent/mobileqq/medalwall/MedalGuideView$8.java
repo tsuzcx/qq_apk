@@ -13,20 +13,20 @@ class MedalGuideView$8
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
+    this.a.d.setAlpha(f);
     f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
+    this.a.d.setScaleX(f);
+    this.a.d.setScaleY(f);
     f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
+    this.a.d.setTranslationX(f);
     f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
+    this.a.d.setTranslationY(f);
     f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
+    if ((!this.a.k) && (f >= 1.0F))
     {
       MedalGuideView localMedalGuideView = this.a;
-      localMedalGuideView.jdField_a_of_type_Boolean = true;
-      localMedalGuideView.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(3);
+      localMedalGuideView.k = true;
+      localMedalGuideView.a.sendEmptyMessage(3);
     }
     if (f >= 1.0F) {
       paramValueAnimator.removeAllUpdateListeners();

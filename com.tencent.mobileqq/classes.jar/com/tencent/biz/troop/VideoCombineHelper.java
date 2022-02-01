@@ -20,31 +20,31 @@ import java.util.UUID;
 public class VideoCombineHelper
 {
   protected static final String a;
-  long jdField_a_of_type_Long = 0L;
-  TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  FFmpeg jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  HashMap<String, VideoCombineHelper.CombineParams> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  long b = 0L;
+  FFmpeg c;
+  QBaseActivity d;
+  TroopMemberApiClient e;
+  Object f = new Object();
+  HashMap<String, VideoCombineHelper.CombineParams> g = new HashMap();
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_ROOT);
     localStringBuilder.append("/Tencent/QQ_business/videocombine");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public VideoCombineHelper(QBaseActivity paramQBaseActivity)
   {
-    File localFile = new File(jdField_a_of_type_JavaLangString);
+    File localFile = new File(a);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg = FFmpeg.getInstance(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.setFFMpegCanExe();
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
+    this.c = FFmpeg.getInstance(BaseApplicationImpl.getApplication());
+    this.c.setFFMpegCanExe();
+    this.d = paramQBaseActivity;
+    this.e = TroopMemberApiClient.a();
   }
   
   public DownloaderInterface a()
@@ -54,7 +54,7 @@ public class VideoCombineHelper
   
   public String a(VideoCombineHelper.CombineParams paramCombineParams, VideoCombineHelper.Callback paramCallback)
   {
-    ??? = UUID.nameUUIDFromBytes(paramCombineParams.c.getBytes());
+    ??? = UUID.nameUUIDFromBytes(paramCombineParams.f.getBytes());
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("combineVideo_");
     ((StringBuilder)localObject1).append(((UUID)???).toString());
@@ -63,37 +63,18 @@ public class VideoCombineHelper
     ((StringBuilder)localObject3).append("prepareVideo_");
     ((StringBuilder)localObject3).append(((UUID)???).toString());
     localObject3 = ((StringBuilder)localObject3).toString();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.f)
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject3))
+      if (this.g.containsKey(localObject3))
       {
-        ((VideoCombineHelper.CombineParams)this.jdField_a_of_type_JavaUtilHashMap.get(localObject3)).b = true;
+        ((VideoCombineHelper.CombineParams)this.g.get(localObject3)).b = true;
         Looper.prepare();
         new Handler().postDelayed(new VideoCombineHelper.1(this, paramCombineParams, paramCallback), 300L);
         return localObject1;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, paramCombineParams);
+      this.g.put(localObject1, paramCombineParams);
       ThreadManager.post(new VideoCombineHelper.2(this, paramCallback, System.currentTimeMillis(), (String)localObject1), 8, null, false);
       return localObject1;
-    }
-  }
-  
-  public void a(VideoCombineHelper.CombineParams paramCombineParams, VideoCombineHelper.Callback paramCallback)
-  {
-    ??? = UUID.nameUUIDFromBytes(paramCombineParams.c.getBytes());
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("prepareVideo_");
-    ((StringBuilder)localObject2).append(((UUID)???).toString());
-    localObject2 = ((StringBuilder)localObject2).toString();
-    paramCombineParams.a = true;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2)) {
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, paramCombineParams);
-      ThreadManager.post(new VideoCombineHelper.3(this, paramCallback, System.currentTimeMillis(), (String)localObject2), 8, null, false);
-      return;
     }
   }
   
@@ -104,7 +85,7 @@ public class VideoCombineHelper
       ((File)localObject1).mkdirs();
     }
     ArrayList localArrayList1 = new ArrayList();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.b = System.currentTimeMillis();
     Object localObject2 = new FFmpegCommandUnit();
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append(((File)localObject1).getAbsolutePath());
@@ -183,10 +164,10 @@ public class VideoCombineHelper
     paramString2.callback = new VideoCombineHelper.8(this, paramCallback, (String)localObject1, paramString1);
     localArrayList1.add(paramString2);
     ((ArrayList)localObject3).clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.isFFmpegCommandRunning()) {
+    if (this.c.isFFmpegCommandRunning()) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.insertFFmpegQueue(localArrayList1);
+        this.c.insertFFmpegQueue(localArrayList1);
         return;
       }
       catch (IOException paramString1)
@@ -202,7 +183,7 @@ public class VideoCombineHelper
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.cmdFFmpegQueue(localArrayList1);
+      this.c.cmdFFmpegQueue(localArrayList1);
       return;
     }
     catch (IOException paramString1)
@@ -215,10 +196,29 @@ public class VideoCombineHelper
       paramString1.printStackTrace();
     }
   }
+  
+  public void b(VideoCombineHelper.CombineParams paramCombineParams, VideoCombineHelper.Callback paramCallback)
+  {
+    ??? = UUID.nameUUIDFromBytes(paramCombineParams.f.getBytes());
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("prepareVideo_");
+    ((StringBuilder)localObject2).append(((UUID)???).toString());
+    localObject2 = ((StringBuilder)localObject2).toString();
+    paramCombineParams.a = true;
+    synchronized (this.f)
+    {
+      if (this.g.containsKey(localObject2)) {
+        return;
+      }
+      this.g.put(localObject2, paramCombineParams);
+      ThreadManager.post(new VideoCombineHelper.3(this, paramCallback, System.currentTimeMillis(), (String)localObject2), 8, null, false);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -19,8 +19,8 @@ import mqq.app.SecurityFileFrameworkManagerImpl;
 public class UpdateSecureFileStrategy
   extends Step
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "ReaderZone", "QQ_Favorite", "QQComicOffline" };
-  private SparseArrayCompat<ISecurityFileHelper> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  private static final String[] a = { "ReaderZone", "QQ_Favorite", "QQComicOffline" };
+  private SparseArrayCompat<ISecurityFileHelper> b = new SparseArrayCompat();
   
   public UpdateSecureFileStrategy()
   {
@@ -76,7 +76,7 @@ public class UpdateSecureFileStrategy
   
   private void a(int paramInt, ISecurityFileHelper paramISecurityFileHelper)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(paramInt, paramISecurityFileHelper);
+    this.b.put(paramInt, paramISecurityFileHelper);
   }
   
   protected boolean doStep()
@@ -98,20 +98,20 @@ public class UpdateSecureFileStrategy
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
+    while (i < this.b.size())
     {
-      localStringBuilder.append(((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName());
+      localStringBuilder.append(((ISecurityFileHelper)this.b.get(i)).declareBusinessFileName());
       localStringBuilder.append("#");
-      if (((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).needMigration())
+      if (((ISecurityFileHelper)this.b.get(i)).needMigration())
       {
-        String[] arrayOfString = ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).reportHistoryFileInfo();
+        String[] arrayOfString = ((ISecurityFileHelper)this.b.get(i)).reportHistoryFileInfo();
         if (QLog.isColorLevel()) {
-          QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "BusinessName= ", ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), " File Size=", arrayOfString[0], " File Amount=", arrayOfString[1] });
+          QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "BusinessName= ", ((ISecurityFileHelper)this.b.get(i)).declareBusinessFileName(), " File Size=", arrayOfString[0], " File Amount=", arrayOfString[1] });
         }
-        bool = ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).doMigrate(localFile);
-        localSharedPreferences.edit().putBoolean(((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), bool).apply();
+        bool = ((ISecurityFileHelper)this.b.get(i)).doMigrate(localFile);
+        localSharedPreferences.edit().putBoolean(((ISecurityFileHelper)this.b.get(i)).declareBusinessFileName(), bool).apply();
         if (QLog.isColorLevel()) {
-          QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "BusinessName= ", ((ISecurityFileHelper)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i)).declareBusinessFileName(), " Success=", Boolean.valueOf(bool) });
+          QLog.d("UpdateSecureFileStrategy", 2, new Object[] { "BusinessName= ", ((ISecurityFileHelper)this.b.get(i)).declareBusinessFileName(), " Success=", Boolean.valueOf(bool) });
         }
         localStringBuilder.append(true);
         localStringBuilder.append("#");
@@ -137,7 +137,7 @@ public class UpdateSecureFileStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.UpdateSecureFileStrategy
  * JD-Core Version:    0.7.0.1
  */

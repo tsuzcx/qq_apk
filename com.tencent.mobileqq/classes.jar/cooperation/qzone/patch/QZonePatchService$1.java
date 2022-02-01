@@ -9,15 +9,15 @@ class QZonePatchService$1
   
   public void run()
   {
-    QZonePatchService.log(HardCodeUtil.a(2131712022));
-    QZonePatchService.log(HardCodeUtil.a(2131712023));
+    QZonePatchService.log(HardCodeUtil.a(2131909647));
+    QZonePatchService.log(HardCodeUtil.a(2131909648));
     QZonePatchService.access$000();
     QZonePatchService.access$100(this.val$patchMd5, this.val$patchUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.patch.QZonePatchService.1
  * JD-Core Version:    0.7.0.1
  */

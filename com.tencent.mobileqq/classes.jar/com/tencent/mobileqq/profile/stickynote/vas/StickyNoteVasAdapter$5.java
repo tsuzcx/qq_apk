@@ -10,7 +10,7 @@ class StickyNoteVasAdapter$5
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    StickyNoteVasAdapter.AuthListener localAuthListener = this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter$AuthListener;
+    StickyNoteVasAdapter.AuthListener localAuthListener = this.a;
     if (localAuthListener != null)
     {
       boolean bool = paramObject instanceof UniBusiGetOneItemWithCheckRsp;
@@ -30,7 +30,7 @@ class StickyNoteVasAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteVasAdapter.5
  * JD-Core Version:    0.7.0.1
  */

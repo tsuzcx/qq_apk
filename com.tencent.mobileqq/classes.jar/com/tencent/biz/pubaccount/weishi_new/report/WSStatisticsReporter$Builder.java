@@ -47,7 +47,7 @@ public class WSStatisticsReporter$Builder
   {
     this.eventName = paramString;
     if (TextUtils.equals(paramString, "gzh_click")) {
-      WSReportEventConstants.a = true;
+      WSReportEventConstants.c = true;
     }
     return new WSStatisticsReporter(this, null);
   }
@@ -124,7 +124,7 @@ public class WSStatisticsReporter$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder
  * JD-Core Version:    0.7.0.1
  */

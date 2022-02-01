@@ -12,20 +12,20 @@ class ProfileLabelEditorActivity$1
     if (paramBoolean)
     {
       this.a.setResult(-1);
-      this.a.b(2131719453);
+      this.a.b(2131917013);
     }
     else
     {
-      this.a.b(2131719451);
+      this.a.b(2131917011);
     }
     paramObject = this.a;
-    paramObject.a = false;
+    paramObject.h = false;
     paramObject.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity.1
  * JD-Core Version:    0.7.0.1
  */

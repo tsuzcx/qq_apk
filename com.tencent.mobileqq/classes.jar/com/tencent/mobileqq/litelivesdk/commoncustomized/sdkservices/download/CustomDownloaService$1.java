@@ -15,33 +15,33 @@ class CustomDownloaService$1
   
   public void onCancel(DownloadTask paramDownloadTask)
   {
-    LogInterface localLogInterface = CustomDownloaService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesDownloadCustomDownloaService).getLog();
+    LogInterface localLogInterface = CustomDownloaService.a(this.b).getLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onCancel, DownloadCancel-----url = ");
-    localStringBuilder.append(paramDownloadTask.c);
+    localStringBuilder.append(paramDownloadTask.h);
     localLogInterface.i("CustomDownloaService", localStringBuilder.toString(), new Object[0]);
     super.onCancel(paramDownloadTask);
   }
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    LogInterface localLogInterface = CustomDownloaService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesDownloadCustomDownloaService).getLog();
+    LogInterface localLogInterface = CustomDownloaService.a(this.b).getLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onDone, DownloadSuccess-----url = ");
-    localStringBuilder.append(paramDownloadTask.c);
+    localStringBuilder.append(paramDownloadTask.h);
     localStringBuilder.append(", filePath = ");
-    localStringBuilder.append(((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.c)).getAbsolutePath());
+    localStringBuilder.append(((File)paramDownloadTask.g.get(paramDownloadTask.h)).getAbsolutePath());
     localLogInterface.i("CustomDownloaService", localStringBuilder.toString(), new Object[0]);
     super.onDone(paramDownloadTask);
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiDownloaderIDownLoaderListener.onSuccess(paramDownloadTask.c, ((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.c)).getAbsolutePath());
+    this.a.onSuccess(paramDownloadTask.h, ((File)paramDownloadTask.g.get(paramDownloadTask.h)).getAbsolutePath());
   }
   
   public void onPause(DownloadTask paramDownloadTask)
   {
-    LogInterface localLogInterface = CustomDownloaService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesDownloadCustomDownloaService).getLog();
+    LogInterface localLogInterface = CustomDownloaService.a(this.b).getLog();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onPause, DownloadPause-----url = ");
-    localStringBuilder.append(paramDownloadTask.c);
+    localStringBuilder.append(paramDownloadTask.h);
     localLogInterface.i("CustomDownloaService", localStringBuilder.toString(), new Object[0]);
     super.onPause(paramDownloadTask);
   }
@@ -49,7 +49,7 @@ class CustomDownloaService$1
   public void onProgress(DownloadTask paramDownloadTask)
   {
     super.onProgress(paramDownloadTask);
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiDownloaderIDownLoaderListener.onProgress(paramDownloadTask.c, paramDownloadTask.jdField_a_of_type_Long, (int)paramDownloadTask.jdField_a_of_type_Float, 0);
+    this.a.onProgress(paramDownloadTask.h, paramDownloadTask.j, (int)paramDownloadTask.l, 0);
   }
   
   public boolean onStart(DownloadTask paramDownloadTask)
@@ -59,7 +59,7 @@ class CustomDownloaService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.download.CustomDownloaService.1
  * JD-Core Version:    0.7.0.1
  */

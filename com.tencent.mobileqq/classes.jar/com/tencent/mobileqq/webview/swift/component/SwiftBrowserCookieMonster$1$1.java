@@ -17,11 +17,11 @@ class SwiftBrowserCookieMonster$1$1
   
   public void run()
   {
-    Iterator localIterator = this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    Iterator localIterator = this.a.this$0.q.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject3 = (String)localIterator.next();
-      Object localObject2 = (CopyOnWriteArrayList)this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject3);
+      Object localObject2 = (CopyOnWriteArrayList)this.a.this$0.q.get(localObject3);
       if (this.a.a == null) {
         localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
       } else {
@@ -39,22 +39,22 @@ class SwiftBrowserCookieMonster$1$1
           localStringBuilder.append("post callback onSetCookiesFinished ");
           localStringBuilder.append(Util.b((String)localObject1, new String[0]));
           localStringBuilder.append(", errorCode: ");
-          localStringBuilder.append(this.a.this$0.jdField_a_of_type_Long);
+          localStringBuilder.append(this.a.this$0.t);
           QLog.i("SwiftBrowserCookieMonster", 2, localStringBuilder.toString());
         }
-        if (this.a.this$0.b)
+        if (this.a.this$0.r)
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("cookie is wrong, need do jump ptlogin! ");
           localStringBuilder.append(Util.b((String)localObject1, new String[0]));
           QLog.i("SwiftBrowserCookieMonster", 1, localStringBuilder.toString());
         }
-        ((SetCookiesCallback)localObject3).a((String)localObject1, null, this.a.this$0.jdField_a_of_type_Long);
+        ((SetCookiesCallback)localObject3).a((String)localObject1, null, this.a.this$0.t);
       }
     }
-    if ((!this.a.this$0.b) && (this.a.this$0.jdField_a_of_type_Long <= 0L))
+    if ((!this.a.this$0.r) && (this.a.this$0.t <= 0L))
     {
-      this.a.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.a.this$0.q.clear();
       return;
     }
     this.a.this$0.b();
@@ -62,7 +62,7 @@ class SwiftBrowserCookieMonster$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.1.1
  * JD-Core Version:    0.7.0.1
  */

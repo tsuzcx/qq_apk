@@ -12,18 +12,18 @@ import android.view.View;
 public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
   extends View
 {
-  public float a;
-  public int a;
-  public Paint a;
-  RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private volatile boolean jdField_a_of_type_Boolean;
-  public float b;
+  public Paint a = new Paint();
   public int b;
   public float c;
-  public int c;
   public int d;
-  public int e;
-  public int f;
+  public float e;
+  public float f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  RectF k;
+  private volatile boolean l;
   
   public ReadInjoyHeaderAdDownloadView$SimpleRoundProgress(Context paramContext)
   {
@@ -38,58 +38,71 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
   public ReadInjoyHeaderAdDownloadView$SimpleRoundProgress(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  }
+  
+  public int getProgress()
+  {
+    try
+    {
+      int m = this.j;
+      return m;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = getWidth() / 2;
-    float f1 = i;
-    float f2 = this.jdField_a_of_type_Float;
-    int j = (int)(f1 - f2 / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f2);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    int k = this.d;
-    if (k != 0)
+    int m = getWidth() / 2;
+    float f1 = m;
+    float f2 = this.c;
+    int n = (int)(f1 - f2 / 2.0F);
+    this.a.setStrokeWidth(f2);
+    this.a.setColor(this.b);
+    this.a.setAntiAlias(true);
+    this.a.setStrokeCap(Paint.Cap.ROUND);
+    int i1 = this.h;
+    if (i1 != 0)
     {
-      if (k == 1) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      if (i1 == 1) {
+        this.a.setStyle(Paint.Style.FILL_AND_STROKE);
       }
     }
     else {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+      this.a.setStyle(Paint.Style.STROKE);
     }
-    paramCanvas.drawCircle(f1, f1, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    f2 = i - j;
-    float f3 = i + j;
+    paramCanvas.drawCircle(f1, f1, n, this.a);
+    this.a.setStrokeWidth(this.e);
+    this.a.setColor(this.d);
+    f2 = m - n;
+    float f3 = m + n;
     RectF localRectF = new RectF(f2, f2, f3, f3);
-    i = this.f * 360 / this.jdField_c_of_type_Int;
-    j = this.d;
-    if (j != 0)
+    m = this.j * 360 / this.g;
+    n = this.h;
+    if (n != 0)
     {
-      if (j == 1) {
-        paramCanvas.drawArc(localRectF, this.e, i, true, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (n == 1) {
+        paramCanvas.drawArc(localRectF, this.i, m, true, this.a);
       }
     }
     else {
-      paramCanvas.drawArc(localRectF, this.e, i, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawArc(localRectF, this.i, m, false, this.a);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.l)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      f3 = this.jdField_c_of_type_Float / 2.0F;
-      if (this.jdField_a_of_type_AndroidGraphicsRectF == null)
+      this.a.setStyle(Paint.Style.FILL);
+      f3 = this.f / 2.0F;
+      if (this.k == null)
       {
         f2 = f1 - f3;
         f1 += f3;
-        this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f2, f2, f1, f1);
+        this.k = new RectF(f2, f2, f1, f1);
       }
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(this.k, this.a);
     }
   }
   
@@ -98,7 +111,7 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
     if (paramInt >= 0) {
       try
       {
-        this.jdField_c_of_type_Int = paramInt;
+        this.g = paramInt;
         return;
       }
       finally
@@ -113,12 +126,12 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
   
   public void setPauseWithoutInvalidate(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
   }
   
   public void setPaused(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.l = paramBoolean;
     postInvalidate();
   }
   
@@ -126,13 +139,13 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
   {
     if (paramInt >= 0)
     {
-      int i = paramInt;
+      int m = paramInt;
       try
       {
-        if (paramInt > this.jdField_c_of_type_Int) {
-          i = this.jdField_c_of_type_Int;
+        if (paramInt > this.g) {
+          m = this.g;
         }
-        this.f = i;
+        this.j = m;
         postInvalidate();
         return;
       }
@@ -148,7 +161,7 @@ public class ReadInjoyHeaderAdDownloadView$SimpleRoundProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyHeaderAdDownloadView.SimpleRoundProgress
  * JD-Core Version:    0.7.0.1
  */

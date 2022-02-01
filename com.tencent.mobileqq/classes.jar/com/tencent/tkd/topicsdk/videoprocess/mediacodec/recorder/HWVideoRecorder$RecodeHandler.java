@@ -9,18 +9,18 @@ import java.lang.ref.WeakReference;
 public class HWVideoRecorder$RecodeHandler
   extends Handler
 {
-  WeakReference<HWVideoRecorder> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<HWVideoRecorder> a;
   
   HWVideoRecorder$RecodeHandler(HWVideoRecorder paramHWVideoRecorder1, Looper paramLooper, HWVideoRecorder paramHWVideoRecorder2)
   {
     super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHWVideoRecorder2);
+    this.a = new WeakReference(paramHWVideoRecorder2);
   }
   
   public void handleMessage(Message paramMessage)
   {
     int i = paramMessage.what;
-    HWVideoRecorder localHWVideoRecorder = (HWVideoRecorder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    HWVideoRecorder localHWVideoRecorder = (HWVideoRecorder)this.a.get();
     if (localHWVideoRecorder == null)
     {
       TLog.c("HWVideoRecorder", "RecodeHandler.handleMessage: encoder is null");
@@ -34,8 +34,8 @@ public class HWVideoRecorder$RecodeHandler
         {
           if (i == 3)
           {
-            if (HWVideoRecorder.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder) != null) {
-              HWVideoRecorder.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderHWVideoRecorder).a();
+            if (HWVideoRecorder.b(this.b) != null) {
+              HWVideoRecorder.b(this.b).a();
             }
           }
           else
@@ -68,18 +68,18 @@ public class HWVideoRecorder$RecodeHandler
     else
     {
       if (paramMessage.obj == null) {
-        break label221;
+        break label212;
       }
       HWVideoRecorder.a(localHWVideoRecorder, (HWVideoRecorder.RecordingObj)paramMessage.obj);
     }
     return;
-    label221:
+    label212:
     throw new RuntimeException("bundle == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.recorder.HWVideoRecorder.RecodeHandler
  * JD-Core Version:    0.7.0.1
  */

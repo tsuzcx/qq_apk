@@ -32,40 +32,40 @@ import mqq.app.AppRuntime;
 public class VoiceTextSttProcessController
   implements VoiceTextSttListener
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private BaseAIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext;
-  private VoiceTextSttQueryController jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttQueryController;
-  private VoiceTextStateModel jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel;
-  private VoiceTextPanel jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel;
-  private VoiceTextEditViewHelper jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper;
-  private VoiceTextSendViewHelper jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new VoiceTextSttProcessController.1(this);
-  private RecordParams.RecorderParam jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam;
-  private String jdField_a_of_type_JavaLangString;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private String b;
+  private AppRuntime a;
+  private BaseAIOContext b;
+  private BaseSessionInfo c;
+  private RecordParams.RecorderParam d;
+  private String e;
+  private String f;
+  private int g;
+  private VoiceTextPanel h;
+  private Handler i;
+  private VoiceTextSendViewHelper j;
+  private VoiceTextEditViewHelper k;
+  private VoiceTextStateModel l;
+  private VoiceTextSttQueryController m;
+  private INetInfoHandler n = new VoiceTextSttProcessController.1(this);
   
   public VoiceTextSttProcessController(VoiceTextStateModel paramVoiceTextStateModel, AppRuntime paramAppRuntime, VoiceTextPanel paramVoiceTextPanel)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel = paramVoiceTextPanel;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel = paramVoiceTextStateModel;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper = new VoiceTextSendViewHelper(paramVoiceTextStateModel, paramAppRuntime, paramAppRuntime.getApp().getSharedPreferences("check_update_sp_key", 0));
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper = new VoiceTextEditViewHelper(paramVoiceTextStateModel, paramAppRuntime, this.jdField_a_of_type_AndroidOsHandler);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttQueryController = new VoiceTextSttQueryController();
+    this.a = paramAppRuntime;
+    this.h = paramVoiceTextPanel;
+    this.l = paramVoiceTextStateModel;
+    this.j = new VoiceTextSendViewHelper(paramVoiceTextStateModel, paramAppRuntime, paramAppRuntime.getApp().getSharedPreferences("check_update_sp_key", 0));
+    this.i = new Handler(Looper.getMainLooper());
+    this.k = new VoiceTextEditViewHelper(paramVoiceTextStateModel, paramAppRuntime, this.i);
+    this.m = new VoiceTextSttQueryController();
   }
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper.a(paramBoolean);
+    this.j.a(paramBoolean);
   }
   
   private void l()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().b())
+    if (this.l.e().b())
     {
       ReportUtils.a("0X800A1DA", 3, 0);
       return;
@@ -75,36 +75,36 @@ public class VoiceTextSttProcessController
   
   private void m()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().d())
+    if (this.l.c().d())
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().b();
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam.jdField_a_of_type_JavaLangString.length() > 150))
+      this.d.i = this.l.d().b();
+      if ((this.d.i != null) && (this.d.i.length() > 150))
       {
-        RecordParams.RecorderParam localRecorderParam = this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam;
-        localRecorderParam.jdField_a_of_type_JavaLangString = localRecorderParam.jdField_a_of_type_JavaLangString.substring(0, 150);
+        RecordParams.RecorderParam localRecorderParam = this.d;
+        localRecorderParam.i = localRecorderParam.i.substring(0, 150);
       }
     }
   }
   
   private void n()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a()) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().b()))
+    if ((this.l.c().a()) || (this.l.c().b()))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext(), HardCodeUtil.a(2131716333), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.h.getContext(), HardCodeUtil.a(2131913775), 0).show(this.h.getContext().getResources().getDimensionPixelSize(2131299920));
       f();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.h();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttQueryController.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().b());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(5);
+      this.k.l();
+      this.m.b();
+      this.k.a(this.l.d().b());
+      this.l.c().a(5);
     }
   }
   
   private void o()
   {
-    if (!StringUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().b()))
+    if (!StringUtil.isEmpty(this.l.d().b()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(2);
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper.a()) {
+      this.l.c().a(2);
+      if (!this.j.g()) {
         a(true);
       }
     }
@@ -115,45 +115,45 @@ public class VoiceTextSttProcessController
     if (QLog.isColorLevel()) {
       QLog.d("VoiceTextSttProcessController", 2, "sendRequest  net unAvailable");
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext(), HardCodeUtil.a(2131716332), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(this.h.getContext(), HardCodeUtil.a(2131913774), 0).show(this.h.getContext().getResources().getDimensionPixelSize(2131299920));
     f();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(5);
+    this.l.c().a(5);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel);
+    this.j.a(this.h);
+    this.k.a(this.h);
   }
   
   public void a(int paramInt)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext(), HardCodeUtil.a(2131716333), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(this.h.getContext(), HardCodeUtil.a(2131913775), 0).show(this.h.getContext().getResources().getDimensionPixelSize(2131299920));
     f();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.h();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttQueryController.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().b());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(5);
+    this.k.l();
+    this.m.b();
+    this.k.a(this.l.d().b());
+    this.l.c().a(5);
   }
   
   public void a(BaseAIOContext paramBaseAIOContext, BaseSessionInfo paramBaseSessionInfo, RecordParams.RecorderParam paramRecorderParam, int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = paramBaseAIOContext;
-    this.b = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam = paramRecorderParam;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttQueryController.a(paramString1, this.jdField_a_of_type_MqqAppAppRuntime, this, paramBaseSessionInfo.jdField_a_of_type_Int, paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
+    this.e = paramString2;
+    this.b = paramBaseAIOContext;
+    this.f = paramString1;
+    this.c = paramBaseSessionInfo;
+    this.d = paramRecorderParam;
+    this.g = paramInt;
+    this.j.a(this.h.getVoiceTextUserOpListener());
+    this.k.a(this.h.getVoiceTextUserOpListener());
+    this.m.a(paramString1, this.a, this, paramBaseSessionInfo.a, paramBaseSessionInfo.b);
   }
   
   public void a(String paramString)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().c()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().f()))
+    if ((!this.l.c().c()) && (!this.l.c().f()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().b(paramString);
+      this.l.d().b(paramString);
       o();
       return;
     }
@@ -164,114 +164,114 @@ public class VoiceTextSttProcessController
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.e();
+    this.k.i();
   }
   
   public void b(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       a(false);
     } else {
       a(true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper.a();
+    this.j.a();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(3);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.h();
-    this.jdField_a_of_type_AndroidOsHandler.post(new VoiceTextSttProcessController.2(this));
+    this.l.c().a(3);
+    this.k.l();
+    this.i.post(new VoiceTextSttProcessController.2(this));
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(4);
+    this.l.c().a(4);
   }
   
   public void e()
   {
-    if (this.b == null) {
+    if (this.f == null) {
       return;
     }
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(this.h.getContext()))
     {
       p();
       return;
     }
     ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).setIsInVoiceTxt(true);
     ReportUtils.a("0X800A1D7", 0, 0);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().a(1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttQueryController.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.g();
+    AppNetConnInfo.registerConnectionChangeReceiver(this.h.getContext(), this.n);
+    this.l.c().a(1);
+    this.m.a(this.e);
+    this.k.k();
   }
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.a().setFocusableInTouchMode(true);
+    this.j.h();
+    this.k.h().setFocusableInTouchMode(true);
   }
   
   public void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttQueryController.a();
+    this.k.g();
+    this.m.a();
   }
   
   public void h()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
+    Object localObject = this.n;
     if (localObject != null)
     {
       AppNetConnInfo.unregisterNetInfoHandler((INetInfoHandler)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
+      this.n = null;
     }
-    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    localObject = this.i;
     if (localObject != null) {
       ((Handler)localObject).removeCallbacks(null);
     }
     g();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.h();
+    this.k.l();
   }
   
   public void i()
   {
     g();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper.c();
+    this.k.f();
+    this.j.f();
   }
   
   public void j()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().d()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().c()))
+    if ((this.l.e().d()) && (this.l.e().c()))
     {
       m();
-      int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a().d()) {
-        i = 2;
+      int i1;
+      if (this.l.c().d()) {
+        i1 = 2;
       } else {
-        i = 1;
+        i1 = 1;
       }
-      ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).sendVoiceAndTxt(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext, this.jdField_a_of_type_JavaLangString, 5, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam, 0, false, i);
+      ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).sendVoiceAndTxt(this.b, this.e, 5, this.g, this.d, 0, false, i1);
       ReportUtils.a("0X800A1DA", 1, 0);
       return;
     }
-    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).sendTxt(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelModelVoiceTextStateModel.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext());
+    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).sendTxt(this.a, this.c, this.l.a(), this.h.getContext());
     l();
   }
   
   public void k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextSendViewHelper.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiViewhelperVoiceTextEditViewHelper.b();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelControllerVoiceTextSttQueryController.a(null);
+    this.j.b();
+    this.k.b();
+    this.i.removeCallbacks(null);
+    this.m.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController
  * JD-Core Version:    0.7.0.1
  */

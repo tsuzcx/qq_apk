@@ -18,11 +18,11 @@ final class VideoPlayController$stopPlayer$1
   
   public final void invoke()
   {
-    Object localObject = this.this$0.a();
+    Object localObject = this.this$0.i();
     if (localObject != null) {
-      ((IPlayer)localObject).c();
+      ((IPlayer)localObject).i();
     }
-    localObject = this.this$0.a();
+    localObject = this.this$0.e();
     if (localObject != null) {
       ((VideoPlayListener)localObject).b();
     }
@@ -31,7 +31,7 @@ final class VideoPlayController$stopPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController.stopPlayer.1
  * JD-Core Version:    0.7.0.1
  */

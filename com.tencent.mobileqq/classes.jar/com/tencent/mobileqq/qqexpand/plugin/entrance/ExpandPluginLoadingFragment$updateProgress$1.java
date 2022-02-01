@@ -11,7 +11,7 @@ final class ExpandPluginLoadingFragment$updateProgress$1
   
   public final void run()
   {
-    ProgressBar localProgressBar = ExpandPluginLoadingFragment.a(this.this$0);
+    ProgressBar localProgressBar = ExpandPluginLoadingFragment.e(this.this$0);
     if (localProgressBar != null) {
       localProgressBar.setProgress(this.a);
     }
@@ -19,7 +19,7 @@ final class ExpandPluginLoadingFragment$updateProgress$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.entrance.ExpandPluginLoadingFragment.updateProgress.1
  * JD-Core Version:    0.7.0.1
  */

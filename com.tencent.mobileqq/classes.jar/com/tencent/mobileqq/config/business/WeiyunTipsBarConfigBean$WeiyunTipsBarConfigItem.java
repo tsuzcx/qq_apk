@@ -23,11 +23,6 @@ public class WeiyunTipsBarConfigBean$WeiyunTipsBarConfigItem
     return localWeiyunTipsBarConfigItem;
   }
   
-  public String a()
-  {
-    return this.a;
-  }
-  
   public boolean a()
   {
     return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
@@ -35,22 +30,27 @@ public class WeiyunTipsBarConfigBean$WeiyunTipsBarConfigItem
   
   public String b()
   {
-    return this.b;
+    return this.a;
   }
   
   public String c()
   {
-    return this.c;
+    return this.b;
   }
   
   public String d()
+  {
+    return this.c;
+  }
+  
+  public String e()
   {
     return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WeiyunTipsBarConfigBean.WeiyunTipsBarConfigItem
  * JD-Core Version:    0.7.0.1
  */

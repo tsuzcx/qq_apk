@@ -18,7 +18,7 @@ class AVGameQuestionClassSelectDialog$1
       i = 0;
     }
     AVGameQuestionClassSelectDialog.a(paramMessage, i);
-    AVGameQuestionClassSelectDialog.a(this.a);
+    AVGameQuestionClassSelectDialog.b(this.a);
     return true;
   }
 }

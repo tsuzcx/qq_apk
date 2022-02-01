@@ -21,11 +21,11 @@ public class QwalletToNotifyAction
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey("params");
+      boolean bool = this.f.containsKey("params");
       if (bool) {
         try
         {
-          JSONObject localJSONObject = new JSONObject(URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("params")));
+          JSONObject localJSONObject = new JSONObject(URLDecoder.decode((String)this.f.get("params")));
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
@@ -38,7 +38,7 @@ public class QwalletToNotifyAction
             localJSONObject = localJSONObject.optJSONObject("params");
             if (localJSONObject != null)
             {
-              ReminderListFragment.a(this.jdField_a_of_type_AndroidContentContext, localJSONObject.optString("notice_time"));
+              ReminderListFragment.a(this.b, localJSONObject.optString("notice_time"));
               return false;
             }
           }
@@ -62,14 +62,14 @@ public class QwalletToNotifyAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException2.getMessage());
       QLog.e("QwalletToNotifyAction", 1, localStringBuilder.toString());
-      b_("QwalletToNotifyAction");
+      h_("QwalletToNotifyAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QwalletToNotifyAction
  * JD-Core Version:    0.7.0.1
  */

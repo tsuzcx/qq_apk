@@ -35,7 +35,7 @@ public class WSCollectionJumpUtil
       localBundle.putString("tab_id", paramString2);
       localBundle.putString("from", paramString1);
       localBundle.putSerializable("feed_info", paramstSimpleMetaFeed);
-      new WSStSchemaJumpManager(paramContext).a(paramstSchema).a(localBundle).a(paramIJumpListener).c();
+      new WSStSchemaJumpManager(paramContext).a(paramstSchema).a(localBundle).a(paramIJumpListener).j();
     }
   }
   
@@ -46,8 +46,8 @@ public class WSCollectionJumpUtil
       if (paramstSimpleMetaFeed == null) {
         return;
       }
-      String str1 = paramWSVerticalPageFragment.a();
-      String str2 = paramWSVerticalPageFragment.b();
+      String str1 = paramWSVerticalPageFragment.k();
+      String str2 = paramWSVerticalPageFragment.l();
       a(paramWSVerticalPageFragment.getActivity(), paramstSimpleMetaFeed, paramstSchema, "", paramString, new WSCollectionJumpUtil.1(str1, str2, paramstSimpleMetaFeed, paramMap));
     }
   }
@@ -59,7 +59,7 @@ public class WSCollectionJumpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSCollectionJumpUtil
  * JD-Core Version:    0.7.0.1
  */

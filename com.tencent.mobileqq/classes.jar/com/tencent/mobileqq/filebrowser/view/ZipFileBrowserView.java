@@ -18,26 +18,26 @@ import com.tencent.widget.XListView;
 public class ZipFileBrowserView
   extends FileBrowserViewBase
 {
-  private int jdField_a_of_type_Int;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private TriangleView jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetTriangleView;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  private TextView A;
+  private BaseAdapter B;
+  private int C;
+  private XListView a;
+  private TriangleView b;
   private View c;
-  private View jdField_d_of_type_AndroidViewView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private View jdField_e_of_type_AndroidViewView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
-  private View jdField_f_of_type_AndroidViewView;
-  private TextView jdField_f_of_type_AndroidWidgetTextView;
-  private View jdField_g_of_type_AndroidViewView;
-  private TextView jdField_g_of_type_AndroidWidgetTextView;
-  private TextView h;
-  private TextView i;
-  private TextView j;
-  private TextView k;
-  private TextView l;
+  private View m;
+  private View n;
+  private View o;
+  private TextView p;
+  private TextView q;
+  private TextView r;
+  private TextView s;
+  private View t;
+  private TextView u;
+  private TextView v;
+  private TextView w;
+  private TextView x;
+  private RelativeLayout y;
+  private ProgressBar z;
   
   public ZipFileBrowserView(Activity paramActivity)
   {
@@ -47,82 +47,82 @@ public class ZipFileBrowserView
   public void a(View.OnClickListener paramOnClickListener)
   {
     super.a(paramOnClickListener);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379108));
-    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379081));
-    this.l = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379090));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131379079).setOnClickListener(paramOnClickListener);
+    this.y = ((RelativeLayout)this.d.findViewById(2131447842));
+    this.z = ((ProgressBar)this.d.findViewById(2131447808));
+    this.A = ((TextView)this.d.findViewById(2131447817));
+    this.d.findViewById(2131447806).setOnClickListener(paramOnClickListener);
   }
   
   public void a(BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(paramBaseAdapter);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_g_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Int = 2;
+    this.B = paramBaseAdapter;
+    this.a.setAdapter(paramBaseAdapter);
+    this.c.setVisibility(0);
+    this.m.setVisibility(8);
+    this.t.setVisibility(8);
+    this.C = 2;
   }
   
   public void a(String paramString)
   {
-    this.h.setText(paramString);
+    this.u.setText(paramString);
   }
   
   public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
     super.a(paramString, paramOnClickListener);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
+    this.p.setText(paramString);
   }
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_f_of_type_AndroidWidgetTextView.setText(paramString1);
-    this.jdField_g_of_type_AndroidWidgetTextView.setText(paramString2);
+    this.r.setText(paramString1);
+    this.s.setText(paramString2);
   }
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_Int == 2))
+    if ((paramBoolean) && (this.C == 2))
     {
-      this.jdField_e_of_type_AndroidViewView.setVisibility(0);
+      this.n.setVisibility(0);
       return;
     }
-    View localView = this.jdField_c_of_type_AndroidViewView;
+    View localView = this.c;
     localView.setPadding(0, localView.getPaddingTop(), 0, 0);
-    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+    this.n.setVisibility(8);
   }
   
   public void a(boolean paramBoolean, String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    this.p.setText(paramString);
+    this.p.setOnClickListener(paramOnClickListener);
     a(paramBoolean);
   }
   
   public void b(String paramString)
   {
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) {
-      this.l.setText(paramString);
+    if (this.y != null) {
+      this.A.setText(paramString);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (this.h != null) {
+      this.h.setText(paramString);
     }
   }
   
   public void b(String paramString, View.OnClickListener paramOnClickListener)
   {
-    TextView localTextView = this.k;
+    TextView localTextView = this.x;
     if (localTextView != null)
     {
       localTextView.setText(paramString);
-      this.k.setOnClickListener(paramOnClickListener);
+      this.x.setOnClickListener(paramOnClickListener);
       f(true);
     }
   }
   
   public void b(String paramString1, String paramString2)
   {
-    paramString1 = this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    paramString1 = this.B;
     if (paramString1 != null) {
       paramString1.notifyDataSetChanged();
     }
@@ -130,30 +130,30 @@ public class ZipFileBrowserView
   
   public void c(int paramInt)
   {
-    ProgressBar localProgressBar = this.jdField_b_of_type_AndroidWidgetProgressBar;
+    ProgressBar localProgressBar = this.z;
     if (localProgressBar != null) {
       localProgressBar.setProgress(paramInt);
     }
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    if (this.g != null) {
+      this.g.setProgress(paramInt);
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
-    if (this.jdField_a_of_type_Int == 2) {
-      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.y;
+    if (this.C == 2) {
+      localRelativeLayout = this.f;
     }
     if (localRelativeLayout != null)
     {
-      int m;
+      int i;
       if (paramBoolean) {
-        m = 0;
+        i = 0;
       } else {
-        m = 8;
+        i = 8;
       }
-      localRelativeLayout.setVisibility(m);
+      localRelativeLayout.setVisibility(i);
       if (paramBoolean) {
         f(false);
       }
@@ -162,131 +162,131 @@ public class ZipFileBrowserView
   
   public void d(String paramString)
   {
-    this.i.setText(paramString);
-  }
-  
-  public void e()
-  {
-    QLog.i("ZipFileViewer<QFile>", 4, "FileBrowserViewBase: ZipFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplication.getContext().getSystemService("layout_inflater")).inflate(2131560806, null, false);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366821));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372040));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380250));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380264));
-      this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381348);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381353);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373038);
-      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366915);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379632));
-      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379983));
-      this.j.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetTriangleView = ((TriangleView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379123));
-      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131373037);
-      this.h = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131381351));
-      this.i = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131381349));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372125));
-      this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361946));
-    }
+    this.v.setText(paramString);
   }
   
   public void e(String paramString)
   {
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
+    this.q.setText(paramString);
   }
   
   public void e(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
-      this.jdField_g_of_type_AndroidViewView.setVisibility(8);
+      this.t.setVisibility(8);
       return;
     }
-    this.jdField_g_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Int = 0;
+    this.t.setVisibility(0);
+    this.C = 0;
   }
   
   public void f(String paramString)
   {
-    this.j.setText(paramString);
+    this.w.setText(paramString);
     h(true);
   }
   
   public void f(boolean paramBoolean)
   {
-    if (this.k != null)
+    if (this.x != null)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      int m = 0;
+      Object localObject = this.f;
+      int i = 0;
       if (localObject != null)
       {
-        if ((paramBoolean) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0))
+        if ((paramBoolean) && (this.f.getVisibility() != 0))
         {
-          this.k.setVisibility(0);
+          this.x.setVisibility(0);
           return;
         }
-        this.k.setVisibility(8);
+        this.x.setVisibility(8);
         return;
       }
-      localObject = this.k;
+      localObject = this.x;
       if (!paramBoolean) {
-        m = 8;
+        i = 8;
       }
-      ((TextView)localObject).setVisibility(m);
+      ((TextView)localObject).setVisibility(i);
+    }
+  }
+  
+  public void g()
+  {
+    QLog.i("ZipFileViewer<QFile>", 4, "FileBrowserViewBase: ZipFileViewer initFileView");
+    if (this.d == null)
+    {
+      this.d = ((LayoutInflater)BaseApplication.getContext().getSystemService("layout_inflater")).inflate(2131627064, null, false);
+      this.a = ((XListView)this.d.findViewById(2131433143));
+      this.q = ((TextView)this.d.findViewById(2131439503));
+      this.r = ((TextView)this.d.findViewById(2131449168));
+      this.s = ((TextView)this.d.findViewById(2131449182));
+      this.o = this.d.findViewById(2131450401);
+      this.c = this.d.findViewById(2131450406);
+      this.m = this.d.findViewById(2131440620);
+      this.n = this.d.findViewById(2131433257);
+      this.p = ((TextView)this.d.findViewById(2131448400));
+      this.w = ((TextView)this.d.findViewById(2131448886));
+      this.w.setVisibility(8);
+      this.b = ((TriangleView)this.d.findViewById(2131447858));
+      this.t = this.d.findViewById(2131440618);
+      this.u = ((TextView)this.t.findViewById(2131450404));
+      this.v = ((TextView)this.t.findViewById(2131450402));
+      this.k = ((TextView)this.d.findViewById(2131439595));
+      this.x = ((TextView)this.d.findViewById(2131427500));
     }
   }
   
   public void g(boolean paramBoolean)
   {
-    View localView = this.jdField_d_of_type_AndroidViewView;
+    View localView = this.m;
     if (localView != null)
     {
-      int m;
+      int i;
       if (paramBoolean) {
-        m = 0;
+        i = 0;
       } else {
-        m = 8;
+        i = 8;
       }
-      localView.setVisibility(m);
+      localView.setVisibility(i);
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_Int = 1;
+      this.C = 1;
     }
   }
   
   public void h(boolean paramBoolean)
   {
-    TextView localTextView = this.j;
-    int m;
+    TextView localTextView = this.w;
+    int i;
     if (paramBoolean) {
-      m = 0;
+      i = 0;
     } else {
-      m = 8;
+      i = 8;
     }
-    localTextView.setVisibility(m);
+    localTextView.setVisibility(i);
   }
   
   public void i(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838739);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetTriangleView.setColor(BaseApplication.getContext().getResources().getColor(2131167333));
-      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(BaseApplication.getContext().getResources().getColor(2131166390));
-      this.h.setTextColor(BaseApplication.getContext().getResources().getColor(2131167144));
+      this.d.setBackgroundResource(2130838958);
+      this.b.setColor(BaseApplication.getContext().getResources().getColor(2131168376));
+      this.p.setTextColor(BaseApplication.getContext().getResources().getColor(2131167226));
+      this.u.setTextColor(BaseApplication.getContext().getResources().getColor(2131168125));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#ffffffff"));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetTriangleView.setColor(Color.parseColor("#ffffffff"));
-    this.jdField_f_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#fff7f7f8"));
-    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(BaseApplication.getContext().getResources().getColor(2131166389));
-    this.h.setTextColor(BaseApplication.getContext().getResources().getColor(2131165327));
+    this.d.setBackgroundColor(Color.parseColor("#ffffffff"));
+    this.b.setColor(Color.parseColor("#ffffffff"));
+    this.o.setBackgroundColor(Color.parseColor("#fff7f7f8"));
+    this.p.setTextColor(BaseApplication.getContext().getResources().getColor(2131167225));
+    this.u.setTextColor(BaseApplication.getContext().getResources().getColor(2131165564));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.view.ZipFileBrowserView
  * JD-Core Version:    0.7.0.1
  */

@@ -78,28 +78,28 @@ class TeamWorkFileImportJobForC2C$1
     paramInt = i;
     try
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+      if (this.a.a != null)
       {
         if (paramShort == 0) {
-          paramByteStringMicro.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b);
+          paramByteStringMicro.put("filename", this.a.b.c);
         }
         paramByteStringMicro.put("filetype", 1);
-        paramByteStringMicro.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-        paramByteStringMicro.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
-        paramByteStringMicro.put("sha", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA);
-        paramByteStringMicro.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.j != null) {
-          paramByteStringMicro.put("senderuin", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.j);
+        paramByteStringMicro.put("fileid", this.a.a.Uuid);
+        paramByteStringMicro.put("md5", this.a.a.strFileMd5);
+        paramByteStringMicro.put("sha", this.a.a.strFileSHA);
+        paramByteStringMicro.put("filesize", this.a.a.fileSize);
+        if (this.a.b.z != null) {
+          paramByteStringMicro.put("senderuin", this.a.b.z);
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.l = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-        this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.i = 1;
-        paramBoolean1 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend;
+        this.a.b.D = this.a.a.Uuid;
+        this.a.b.E = 1;
+        paramBoolean1 = this.a.a.bSend;
         if (paramBoolean1) {
           paramByteStringMicro.put("ownertype", 1);
         } else {
           paramByteStringMicro.put("ownertype", 2);
         }
-        paramByteStringMicro.put("importoption", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g);
+        paramByteStringMicro.put("importoption", this.a.b.B);
         paramInt = 1;
       }
     }
@@ -113,7 +113,7 @@ class TeamWorkFileImportJobForC2C$1
     }
     if (((paramInt != 0) || (paramShort != 0)) && (TeamWorkConvertUtils.a(paramByteStringMicro)) && (TeamWorkFileImportJobForC2C.a(this.a, paramByteStringMicro)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.fileImportFromUrl(paramByteStringMicro, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, this.a.hashCode());
+      this.a.c.fileImportFromUrl(paramByteStringMicro, this.a.b, this.a.hashCode());
       return;
     }
     this.a.a(true);
@@ -121,7 +121,7 @@ class TeamWorkFileImportJobForC2C$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForC2C.1
  * JD-Core Version:    0.7.0.1
  */

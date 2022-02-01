@@ -16,11 +16,11 @@ import com.tencent.qphone.base.util.QLog;
 public class LoginPopupMaskView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private Path a;
   private int b;
-  private int c = 26;
+  private int c;
+  private int d = 26;
+  private Paint e = new Paint();
   
   public LoginPopupMaskView(Context paramContext)
   {
@@ -29,7 +29,7 @@ public class LoginPopupMaskView
   
   private int a(float paramFloat, Resources paramResources)
   {
-    return ViewUtils.a(paramFloat);
+    return ViewUtils.dip2px(paramFloat);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -38,29 +38,29 @@ public class LoginPopupMaskView
     {
       int i = getMeasuredWidth();
       int j = getMeasuredHeight();
-      if ((this.jdField_a_of_type_AndroidGraphicsPath == null) || (i != this.jdField_a_of_type_Int) || (j != this.b))
+      if ((this.a == null) || (i != this.b) || (j != this.c))
       {
-        this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-        localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+        this.a = new Path();
+        localObject = this.a;
         float f1 = i;
-        ((Path)localObject).moveTo(f1, j - this.c);
-        localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-        float f2 = i - this.c * 2;
-        float f3 = j - this.c * 2;
+        ((Path)localObject).moveTo(f1, j - this.d);
+        localObject = this.a;
+        float f2 = i - this.d * 2;
+        float f3 = j - this.d * 2;
         float f4 = j;
         ((Path)localObject).arcTo(new RectF(f2, f3, f1, f4), 0.0F, 90.0F);
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.c, f4);
-        this.jdField_a_of_type_AndroidGraphicsPath.arcTo(new RectF(0.0F, j - this.c * 2, this.c * 2, f4), 90.0F, 90.0F);
-        this.jdField_a_of_type_AndroidGraphicsPath.close();
-        this.jdField_a_of_type_Int = i;
-        this.b = j;
+        this.a.lineTo(this.d, f4);
+        this.a.arcTo(new RectF(0.0F, j - this.d * 2, this.d * 2, f4), 90.0F, 90.0F);
+        this.a.close();
+        this.b = i;
+        this.c = j;
         localObject = Shader.TileMode.CLAMP;
         localObject = new LinearGradient(0.0F, 0.0F, 0.0F, f4, new int[] { 15922167, -2132417049, -2565928 }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShader((Shader)localObject);
+        this.e.setShader((Shader)localObject);
       }
       paramCanvas.save();
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      paramCanvas.drawRect(0.0F, 0.0F, i, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.clipPath(this.a);
+      paramCanvas.drawRect(0.0F, 0.0F, i, j, this.e);
       paramCanvas.restore();
       return;
     }
@@ -75,7 +75,7 @@ public class LoginPopupMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.LoginPopupMaskView
  * JD-Core Version:    0.7.0.1
  */

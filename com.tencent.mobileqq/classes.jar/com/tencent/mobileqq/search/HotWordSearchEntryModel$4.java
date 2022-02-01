@@ -13,22 +13,22 @@ class HotWordSearchEntryModel$4
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrl)))
+    if ((!TextUtils.isEmpty(this.a.hotSearchGifID)) && (!TextUtils.isEmpty(this.a.hotSearchGifUrl)))
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrlNight)) {
+      if (TextUtils.isEmpty(this.a.hotSearchGifUrlNight)) {
         return;
       }
-      int i = this.this$0.jdField_a_of_type_AndroidViewView.getHeight();
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.this$0.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+      int i = this.this$0.d.getHeight();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.this$0.e.getLayoutParams();
       localLayoutParams.height = i;
-      this.this$0.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
-      HotWordSearchEntryModel.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifUrlNight, this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel$OnGifPlayListener);
+      this.this$0.e.setLayoutParams(localLayoutParams);
+      HotWordSearchEntryModel.a(this.this$0.q, this.this$0.e, this.a.hotSearchGifUrl, this.a.hotSearchGifUrlNight, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.HotWordSearchEntryModel.4
  * JD-Core Version:    0.7.0.1
  */

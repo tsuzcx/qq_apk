@@ -24,22 +24,22 @@ class ReadInJoyChannelViewPagerController$1
     }
     paramView = new Intent();
     paramView.putExtra("currentIndex", ReadInJoyChannelViewPagerController.a(this.a).getCurrentItem());
-    PublicTransFragmentActivity.b(ReadInJoyChannelViewPagerController.a(this.a), paramView, ReadInJoyChannelPanelFragment.class);
+    PublicTransFragmentActivity.b(ReadInJoyChannelViewPagerController.b(this.a), paramView, ReadInJoyChannelPanelFragment.class);
     try
     {
-      RIJChannelReporter.a("0X8009497", new RIJTransMergeKanDianReport.ReportR5Builder().addFolderStatus().addRedDotStatus(this.a.a()).build());
+      RIJChannelReporter.a("0X8009497", new RIJTransMergeKanDianReport.ReportR5Builder().addFolderStatus().addRedDotStatus(this.a.b()).build());
     }
     catch (JSONException paramView)
     {
       QLog.e("ReadInJoyChannelViewPagerController", 1, QLog.getStackTraceString(paramView));
     }
     ReadInJoyChannelViewPagerController.a(this.a, false);
-    ReadInJoyChannelViewPagerController.a(this.a).setVisibility(8);
+    ReadInJoyChannelViewPagerController.c(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPagerController.1
  * JD-Core Version:    0.7.0.1
  */

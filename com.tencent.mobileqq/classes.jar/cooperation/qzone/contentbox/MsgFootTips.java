@@ -59,19 +59,19 @@ public class MsgFootTips
   
   private void initView()
   {
-    this.commentTipsView = ((LinearLayout)LayoutInflater.from(this.mContext).inflate(2131562285, null));
+    this.commentTipsView = ((LinearLayout)LayoutInflater.from(this.mContext).inflate(2131628713, null));
     try
     {
-      this.commentTipsView.setBackgroundResource(2130838739);
+      this.commentTipsView.setBackgroundResource(2130838958);
     }
     catch (Throwable localThrowable)
     {
       QLog.e("QZoneMsgManager.MsgFootTips", 2, localThrowable, new Object[0]);
     }
     addView(this.commentTipsView);
-    this.commentTipsProgressBar = ((ProgressBar)this.commentTipsView.findViewById(2131364932));
-    this.commentTipsText = ((TextView)this.commentTipsView.findViewById(2131364933));
-    this.commentTipsDivider = this.commentTipsView.findViewById(2131364929);
+    this.commentTipsProgressBar = ((ProgressBar)this.commentTipsView.findViewById(2131431055));
+    this.commentTipsText = ((TextView)this.commentTipsView.findViewById(2131431056));
+    this.commentTipsDivider = this.commentTipsView.findViewById(2131431052);
   }
   
   public View getFooterRootView()
@@ -263,7 +263,7 @@ public class MsgFootTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgFootTips
  * JD-Core Version:    0.7.0.1
  */

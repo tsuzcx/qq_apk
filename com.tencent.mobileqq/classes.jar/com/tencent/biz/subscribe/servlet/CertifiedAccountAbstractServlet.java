@@ -23,7 +23,7 @@ import mqq.app.Packet;
 public abstract class CertifiedAccountAbstractServlet
   extends MSFServlet
 {
-  private static String a = "com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet";
+  private static String b = "com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet";
   protected int a;
   
   public static String a()
@@ -66,23 +66,23 @@ public abstract class CertifiedAccountAbstractServlet
         }
         localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
         localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
-        notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+        notifyObserver(paramIntent, this.a, false, localBundle, null);
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onReceive. inform  resultcode fail.");
+        QLog.d(b, 2, "onReceive. inform  resultcode fail.");
       }
-      notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+      notifyObserver(paramIntent, this.a, false, localBundle, null);
       return;
     }
     catch (Throwable paramFromServiceMsg)
     {
-      Object localObject = jdField_a_of_type_JavaLangString;
+      Object localObject = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramFromServiceMsg);
       localStringBuilder.append("onReceive error");
       QLog.e((String)localObject, 1, localStringBuilder.toString());
-      notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+      notifyObserver(paramIntent, this.a, false, localBundle, null);
     }
   }
   

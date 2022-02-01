@@ -7,6 +7,8 @@ import android.net.wifi.WifiManager;
 import android.os.SystemClock;
 import android.telephony.TelephonyManager;
 import com.tencent.mobileqq.imcore.proxy.basic.CaughtExceptionReportProxy;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -276,7 +278,7 @@ public class SecurityUtile
     finally {}
     try
     {
-      localObject5 = ((TelephonyManager)paramContext.getApplicationContext().getSystemService("phone")).getDeviceId();
+      localObject5 = PhoneInfoMonitor.getDeviceId((TelephonyManager)paramContext.getApplicationContext().getSystemService("phone"));
       if (localObject5 != null)
       {
         localObject1 = localObject5;
@@ -286,7 +288,7 @@ public class SecurityUtile
       else
       {
         localObject4 = localObject5;
-        WifiInfo localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+        WifiInfo localWifiInfo = NetworkMonitor.getConnectionInfo((WifiManager)paramContext.getSystemService("wifi"));
         localObject1 = localObject5;
         if (localWifiInfo != null)
         {
@@ -335,7 +337,7 @@ public class SecurityUtile
     //   4: aload_0
     //   5: ldc 8
     //   7: iconst_0
-    //   8: invokevirtual 301	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   8: invokevirtual 306	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
     //   11: astore_0
     //   12: aload_0
     //   13: astore_2
@@ -344,12 +346,12 @@ public class SecurityUtile
     //   16: aload_0
     //   17: aload_1
     //   18: ldc 205
-    //   20: invokevirtual 305	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   23: invokevirtual 311	java/io/FileOutputStream:write	([B)V
+    //   20: invokevirtual 310	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   23: invokevirtual 316	java/io/FileOutputStream:write	([B)V
     //   26: aload_0
     //   27: ifnull +7 -> 34
     //   30: aload_0
-    //   31: invokevirtual 312	java/io/FileOutputStream:close	()V
+    //   31: invokevirtual 317	java/io/FileOutputStream:close	()V
     //   34: return
     //   35: astore_0
     //   36: goto +8 -> 44
@@ -361,7 +363,7 @@ public class SecurityUtile
     //   44: aload_2
     //   45: ifnull +7 -> 52
     //   48: aload_2
-    //   49: invokevirtual 312	java/io/FileOutputStream:close	()V
+    //   49: invokevirtual 317	java/io/FileOutputStream:close	()V
     //   52: aload_0
     //   53: athrow
     // Local variable table:
@@ -417,7 +419,7 @@ public class SecurityUtile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SecurityUtile
  * JD-Core Version:    0.7.0.1
  */

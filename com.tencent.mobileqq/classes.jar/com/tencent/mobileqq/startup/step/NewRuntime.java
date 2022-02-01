@@ -46,13 +46,13 @@ public class NewRuntime
         boolean bool = false;
       }
     }
-    AppSetting.b = bool;
+    AppSetting.c = bool;
     break label73;
-    AppSetting.b = false;
+    AppSetting.c = false;
     label73:
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("enableManagerSmallLock ");
-    ((StringBuilder)localObject).append(AppSetting.b);
+    ((StringBuilder)localObject).append(AppSetting.c);
     QLog.i("QQAppInterface", 1, ((StringBuilder)localObject).toString());
     if ((BaseApplicationImpl.sProcessId == 1) && (SafeModeUtil.a(BaseApplicationImpl.sApplication)))
     {
@@ -80,8 +80,8 @@ public class NewRuntime
     {
       BaseApplicationImpl.sApplication.doInit(false);
     }
-    if ((GuardManager.a == null) && ("com.tencent.mobileqq".equals(BaseApplicationImpl.processName))) {
-      GuardManager.a = new GuardManager(BaseApplicationImpl.sApplication, 0);
+    if ((GuardManager.sInstance == null) && ("com.tencent.mobileqq".equals(BaseApplicationImpl.processName))) {
+      GuardManager.sInstance = new GuardManager(BaseApplicationImpl.sApplication, 0);
     }
     if ((BaseApplicationImpl.sProcessId == 2) || (BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 9) || (BaseApplicationImpl.sProcessId == 11) || (BaseApplicationImpl.sProcessId == 10))
     {
@@ -90,7 +90,7 @@ public class NewRuntime
       }
       localObject = BaseApplicationImpl.getApplication().getRuntime();
       if (localObject != null) {
-        ((AppRuntime)localObject).setAppStateChangeListener(MemoryClearManager.a());
+        ((AppRuntime)localObject).setAppStateChangeListener(MemoryClearManager.b());
       }
     }
     if ((BaseApplicationImpl.sProcessId != 1) && (BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != -1)) {
@@ -101,7 +101,7 @@ public class NewRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.NewRuntime
  * JD-Core Version:    0.7.0.1
  */

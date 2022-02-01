@@ -29,40 +29,40 @@ import tencent.im.oidb.cmd0xeb7.oidb_0xeb7.StSignInWriteRsp;
 
 public class ClockInViewHelper
 {
-  private int jdField_a_of_type_Int = 1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private ClockAnimController jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController;
-  private ClockInCallback jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInCallback = new ClockInViewHelper.1(this);
-  private ClockInData jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-  private HasClockView jdField_a_of_type_ComTencentMobileqqTogetherClockinHasClockView;
-  private IntegralClockView jdField_a_of_type_ComTencentMobileqqTogetherClockinIntegralClockView;
-  private NoClockInView jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView;
-  private TroopClockInObserver jdField_a_of_type_ComTencentMobileqqTroopClockinApiTroopClockInObserver = new ClockInViewHelper.2(this);
+  private QQAppInterface a;
+  private Context b;
+  private FrameLayout c;
+  private ClockInData d;
+  private NoClockInView e;
+  private HasClockView f;
+  private IntegralClockView g;
+  private RelativeLayout h;
+  private DiniFlyAnimationView i;
+  private ClockAnimController j;
+  private int k = 1;
+  private ClockInCallback l = new ClockInViewHelper.1(this);
+  private TroopClockInObserver m = new ClockInViewHelper.2(this);
   
   public ClockInViewHelper(QQAppInterface paramQQAppInterface, Context paramContext, ClockInData paramClockInData, FrameLayout paramFrameLayout, RelativeLayout paramRelativeLayout, DiniFlyAnimationView paramDiniFlyAnimationView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData = paramClockInData;
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController = new ClockAnimController();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = paramDiniFlyAnimationView;
-    this.jdField_a_of_type_Int = paramInt;
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.a = paramQQAppInterface;
+    this.b = paramContext;
+    this.c = paramFrameLayout;
+    this.d = paramClockInData;
+    this.j = new ClockAnimController();
+    this.h = paramRelativeLayout;
+    this.i = paramDiniFlyAnimationView;
+    this.k = paramInt;
+    paramQQAppInterface = this.a;
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopClockinApiTroopClockInObserver);
-      paramQQAppInterface = (ITroopClockInHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_CLOCKIN_HANDLER);
+      paramQQAppInterface.addObserver(this.m);
+      paramQQAppInterface = (ITroopClockInHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_CLOCKIN_HANDLER);
       if (paramQQAppInterface != null)
       {
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-        if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.jdField_a_of_type_JavaLangString))) {
-          paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 2);
+        paramContext = this.d;
+        if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.a))) {
+          paramQQAppInterface.a(this.d.a, this.a.getCurrentAccountUin(), 2);
         }
       }
     }
@@ -71,28 +71,28 @@ public class ClockInViewHelper
   private void a(oidb_0xeb7.StSignInStatusRsp paramStSignInStatusRsp)
   {
     Object localObject = (oidb_0xeb7.SignInStatusBase)paramStSignInStatusRsp.base.get();
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.e = paramStSignInStatusRsp.mantleUrl.get();
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.n = paramStSignInStatusRsp.backgroundUrl.get();
+    this.d.g = paramStSignInStatusRsp.mantleUrl.get();
+    this.d.q = paramStSignInStatusRsp.backgroundUrl.get();
     if (localObject != null)
     {
-      ClockInData localClockInData = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
+      ClockInData localClockInData = this.d;
       boolean bool;
       if (((oidb_0xeb7.SignInStatusBase)localObject).status.get() == 1) {
         bool = true;
       } else {
         bool = false;
       }
-      localClockInData.jdField_a_of_type_Boolean = bool;
+      localClockInData.b = bool;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_Boolean)
+    if (this.d.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Int == 1)
+      this.d.c = false;
+      if (this.k == 1)
       {
         localObject = new HashMap();
         ((HashMap)localObject).put("op_via", "2");
-        ((HashMap)localObject).put("A8", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((HashMap)localObject).put("qq_group_num", this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_JavaLangString);
+        ((HashMap)localObject).put("A8", this.a.getCurrentAccountUin());
+        ((HashMap)localObject).put("qq_group_num", this.d.a);
         ClockReportUtil.a("click#aio_icon", (HashMap)localObject);
       }
       if (paramStSignInStatusRsp.doneInfo.has())
@@ -100,26 +100,26 @@ public class ClockInViewHelper
         paramStSignInStatusRsp = (oidb_0xeb7.SignInStatusDoneInfo)paramStSignInStatusRsp.doneInfo.get();
         if (paramStSignInStatusRsp != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.i = paramStSignInStatusRsp.leftTitleWrod.get();
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.k = paramStSignInStatusRsp.rightDescWord.get();
+          this.d.k = paramStSignInStatusRsp.leftTitleWrod.get();
+          this.d.n = paramStSignInStatusRsp.rightDescWord.get();
           localObject = paramStSignInStatusRsp.belowPortraitWords.get();
           if (((List)localObject).size() > 1)
           {
-            this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.j = ((String)((List)localObject).get(0));
-            this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_Long = Long.valueOf((String)((List)localObject).get(1)).longValue();
+            this.d.m = ((String)((List)localObject).get(0));
+            this.d.l = Long.valueOf((String)((List)localObject).get(1)).longValue();
           }
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.l = paramStSignInStatusRsp.recordUrl.get();
+          this.d.o = paramStSignInStatusRsp.recordUrl.get();
         }
       }
     }
     else
     {
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.k == 1)
       {
         localObject = new HashMap();
         ((HashMap)localObject).put("op_via", "1");
-        ((HashMap)localObject).put("A8", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        ((HashMap)localObject).put("qq_group_num", this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_JavaLangString);
+        ((HashMap)localObject).put("A8", this.a.getCurrentAccountUin());
+        ((HashMap)localObject).put("qq_group_num", this.d.a);
         ClockReportUtil.a("click#aio_icon", (HashMap)localObject);
       }
       if (paramStSignInStatusRsp.notInfo.has())
@@ -127,9 +127,9 @@ public class ClockInViewHelper
         localObject = (oidb_0xeb7.SignInStatusNotInfo)paramStSignInStatusRsp.notInfo.get();
         if (localObject != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.h = ((oidb_0xeb7.SignInStatusNotInfo)localObject).buttonWord.get();
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.f = ((oidb_0xeb7.SignInStatusNotInfo)localObject).signDescWordLeft.get();
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.g = ((oidb_0xeb7.SignInStatusNotInfo)localObject).signDescWordRight.get();
+          this.d.j = ((oidb_0xeb7.SignInStatusNotInfo)localObject).buttonWord.get();
+          this.d.h = ((oidb_0xeb7.SignInStatusNotInfo)localObject).signDescWordLeft.get();
+          this.d.i = ((oidb_0xeb7.SignInStatusNotInfo)localObject).signDescWordRight.get();
         }
       }
       if (paramStSignInStatusRsp.yesterday.has())
@@ -137,9 +137,9 @@ public class ClockInViewHelper
         paramStSignInStatusRsp = (oidb_0xeb7.SignInStatusYesterdayFirst)paramStSignInStatusRsp.yesterday.get();
         if (paramStSignInStatusRsp != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_b_of_type_JavaLangString = paramStSignInStatusRsp.yesterdayFirstUid.get();
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.d = paramStSignInStatusRsp.yesterdayNick.get();
-          this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.c = paramStSignInStatusRsp.yesterdayWord.get();
+          this.d.d = paramStSignInStatusRsp.yesterdayFirstUid.get();
+          this.d.f = paramStSignInStatusRsp.yesterdayNick.get();
+          this.d.e = paramStSignInStatusRsp.yesterdayWord.get();
         }
       }
     }
@@ -147,16 +147,16 @@ public class ClockInViewHelper
   
   private void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((this.d != null) && (this.a != null))
     {
-      if ((paramObject != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString1.equals(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_JavaLangString)) && (paramString2.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
+      if ((paramObject != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString1.equals(this.d.a)) && (paramString2.equals(this.a.getCurrentAccountUin())))
       {
         if (!paramBoolean)
         {
-          paramString1 = this.jdField_a_of_type_AndroidContentContext;
+          paramString1 = this.b;
           if (paramString1 != null)
           {
-            QQToast.a(paramString1, 1, HardCodeUtil.a(2131699466), 0).a();
+            QQToast.makeText(paramString1, 1, HardCodeUtil.a(2131897497), 0).show();
             return;
           }
         }
@@ -164,31 +164,31 @@ public class ClockInViewHelper
         {
           paramString1 = (oidb_0xeb7.StSignInWriteRsp)paramObject;
           paramString2 = (oidb_0xeb7.SignInStatusDoneInfo)paramString1.doneInfo.get();
-          paramObject = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-          paramObject.jdField_a_of_type_Boolean = true;
+          paramObject = this.d;
+          paramObject.b = true;
           if (paramString2 != null)
           {
-            paramObject.i = paramString2.leftTitleWrod.get();
-            this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.k = paramString2.rightDescWord.get();
-            this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.l = paramString2.recordUrl.get();
+            paramObject.k = paramString2.leftTitleWrod.get();
+            this.d.n = paramString2.rightDescWord.get();
+            this.d.o = paramString2.recordUrl.get();
             paramString2 = paramString2.belowPortraitWords.get();
             if ((paramString2 != null) && (paramString2.size() > 1))
             {
-              this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.j = ((String)paramString2.get(0));
+              this.d.m = ((String)paramString2.get(0));
               if (!TextUtils.isEmpty((CharSequence)paramString2.get(1))) {
-                this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_Long = Long.valueOf((String)paramString2.get(1)).longValue();
+                this.d.l = Long.valueOf((String)paramString2.get(1)).longValue();
               }
             }
           }
           if (paramString1.groupScore.has())
           {
             paramString1 = (oidb_0xeb7.SignInStatusGroupScore)paramString1.groupScore.get();
-            this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.m = paramString1.scoreUrl.get();
+            this.d.p = paramString1.scoreUrl.get();
           }
           if (QLog.isColorLevel()) {
             QLog.d("ClockInViewHelper", 2, "handleClockResp play anim ANIM_NOCLOCKIN_ROTATE_START");
           }
-          paramString1 = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController;
+          paramString1 = this.j;
           if (paramString1 != null) {
             paramString1.a(1);
           }
@@ -207,16 +207,16 @@ public class ClockInViewHelper
   
   private void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((this.d != null) && (this.a != null))
     {
-      if ((paramObject != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString1.equals(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_JavaLangString)) && (paramString2.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (paramInt == 2))
+      if ((paramObject != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString1.equals(this.d.a)) && (paramString2.equals(this.a.getCurrentAccountUin())) && (paramInt == 2))
       {
         if (!paramBoolean)
         {
           if (QLog.isColorLevel())
           {
             QLog.d("ClockInViewHelper", 2, "handleGetClockDataRsp data isSuccess false");
-            paramString1 = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+            paramString1 = this.c;
             if (paramString1 != null) {
               paramString1.setVisibility(8);
             }
@@ -226,7 +226,7 @@ public class ClockInViewHelper
         {
           a((oidb_0xeb7.StSignInStatusRsp)paramObject);
           a();
-          paramString1 = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+          paramString1 = this.c;
           if (paramString1 != null) {
             paramString1.setVisibility(0);
           }
@@ -243,73 +243,73 @@ public class ClockInViewHelper
     }
   }
   
-  private void c()
+  private boolean e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView = new NoClockInView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInCallback, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController);
-    }
-  }
-  
-  private boolean c()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null) && (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController != null);
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinHasClockView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinHasClockView = new HasClockView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInCallback, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController);
-    }
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinIntegralClockView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinIntegralClockView = new IntegralClockView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController, this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData);
-    }
+    return (this.a != null) && (this.b != null) && (this.c != null) && (this.d != null) && (this.h != null) && (this.i != null) && (this.j != null);
   }
   
   private void f()
   {
+    if (this.e == null) {
+      this.e = new NoClockInView(this.b, this.a, this.c, this.d, this.l, this.j);
+    }
+  }
+  
+  private void g()
+  {
+    if (this.f == null) {
+      this.f = new HasClockView(this.b, this.a, this.c, this.d, this.l, this.j);
+    }
+  }
+  
+  private void h()
+  {
+    if (this.g == null) {
+      this.g = new IntegralClockView(this.i, this.h, this.b, this.j, this.d);
+    }
+  }
+  
+  private void i()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("ClockInViewHelper", 2, "handleClockInBtnClick");
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    Object localObject1 = this.c;
     if (localObject1 != null)
     {
-      localObject1 = ((FrameLayout)localObject1).findViewById(2131370370);
+      localObject1 = ((FrameLayout)localObject1).findViewById(2131437632);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(8);
       }
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject1 = this.a;
     if (localObject1 != null)
     {
       localObject1 = (ITroopClockInHandler)((QQAppInterface)localObject1).getBusinessHandler(BusinessHandlerFactory.TROOP_CLOCKIN_HANDLER);
       if (localObject1 != null)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((ClockInData)localObject2).jdField_a_of_type_JavaLangString))) {
-          ((ITroopClockInHandler)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localObject2 = this.d;
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((ClockInData)localObject2).a))) {
+          ((ITroopClockInHandler)localObject1).a(this.d.a, this.a.getCurrentAccountUin());
         }
       }
     }
     localObject1 = new HashMap();
     ((HashMap)localObject1).put("op_via", "1");
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-    if ((localObject2 != null) && (!TextUtils.isEmpty(((ClockInData)localObject2).jdField_a_of_type_JavaLangString))) {
-      ((HashMap)localObject1).put("qq_group_num", this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_JavaLangString);
+    Object localObject2 = this.d;
+    if ((localObject2 != null) && (!TextUtils.isEmpty(((ClockInData)localObject2).a))) {
+      ((HashMap)localObject1).put("qq_group_num", this.d.a);
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject2 = this.a;
     if ((localObject2 != null) && (!TextUtils.isEmpty(((QQAppInterface)localObject2).getCurrentAccountUin()))) {
-      ((HashMap)localObject1).put("A8", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((HashMap)localObject1).put("A8", this.a.getCurrentAccountUin());
     }
     ClockReportUtil.a("click#aio_front_panel", (HashMap)localObject1);
   }
   
   public void a()
   {
-    if (!c())
+    if (!e())
     {
       if (QLog.isColorLevel()) {
         QLog.d("ClockInViewHelper", 2, "checkData flase");
@@ -320,70 +320,70 @@ public class ClockInViewHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("mClockInData : isHasClock = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d.b);
       QLog.d("ClockInViewHelper", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData.jdField_a_of_type_Boolean)
+    if (this.d.b)
     {
-      d();
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinHasClockView.b(0);
+      g();
+      this.f.b(0);
       return;
     }
-    c();
-    d();
-    e();
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView.b(0);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinHasClockView.b(4);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinIntegralClockView.b(8);
+    f();
+    g();
+    h();
+    this.e.b(0);
+    this.f.b(4);
+    this.g.b(8);
   }
   
-  public boolean a()
+  public void b()
   {
-    ClockAnimController localClockAnimController = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController;
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      ((NoClockInView)localObject).b();
+      this.e = null;
+    }
+    localObject = this.f;
+    if (localObject != null)
+    {
+      ((HasClockView)localObject).b();
+      this.f = null;
+    }
+    localObject = this.g;
+    if (localObject != null) {
+      ((IntegralClockView)localObject).a();
+    }
+    this.l = null;
+    localObject = this.j;
+    if (localObject != null) {
+      ((ClockAnimController)localObject).deleteObservers();
+    }
+    localObject = this.m;
+    if (localObject != null) {
+      this.a.removeObserver((BusinessObserver)localObject);
+    }
+  }
+  
+  public boolean c()
+  {
+    ClockAnimController localClockAnimController = this.j;
     if (localClockAnimController != null) {
       return localClockAnimController.a();
     }
     return false;
   }
   
-  public void b()
+  public boolean d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView;
-    if (localObject != null)
-    {
-      ((NoClockInView)localObject).b();
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinNoClockInView = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinHasClockView;
-    if (localObject != null)
-    {
-      ((HasClockView)localObject).b();
-      this.jdField_a_of_type_ComTencentMobileqqTogetherClockinHasClockView = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinIntegralClockView;
-    if (localObject != null) {
-      ((IntegralClockView)localObject).a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInCallback = null;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockAnimController;
-    if (localObject != null) {
-      ((ClockAnimController)localObject).deleteObservers();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopClockinApiTroopClockInObserver;
-    if (localObject != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)localObject);
-    }
-  }
-  
-  public boolean b()
-  {
-    ClockInData localClockInData = this.jdField_a_of_type_ComTencentMobileqqTogetherClockinClockInData;
-    return (localClockInData != null) && (localClockInData.jdField_a_of_type_Boolean);
+    ClockInData localClockInData = this.d;
+    return (localClockInData != null) && (localClockInData.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.ClockInViewHelper
  * JD-Core Version:    0.7.0.1
  */

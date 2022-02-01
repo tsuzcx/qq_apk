@@ -23,9 +23,9 @@ public class VersionUtil
     paramString2 = paramString2.trim();
     paramString1 = paramString1.split("\\.");
     paramString2 = paramString2.split("\\.");
-    if (paramString1.length > 0)
+    if (paramString1.length != 0)
     {
-      if (paramString2.length <= 0) {
+      if (paramString2.length == 0) {
         return -2;
       }
       paramString1 = new ArrayList(Arrays.asList(paramString1));
@@ -77,7 +77,7 @@ public class VersionUtil
         paramString2 = new StringBuilder();
         paramString2.append("compareVersion fail e:");
         paramString2.append(paramString1.toString());
-        QLog.e("[cmshow]ApolloConfigUtils", 1, paramString2.toString());
+        QLog.e("VersionUtil", 1, paramString2.toString());
       }
       return -2;
       label332:
@@ -111,16 +111,14 @@ public class VersionUtil
             localStringBuilder.append(paramString1);
             localStringBuilder.append(",max=");
             localStringBuilder.append(paramString3);
-            QLog.d("[cmshow]ApolloConfigUtils", 2, localStringBuilder.toString());
+            QLog.d("VersionUtil", 2, localStringBuilder.toString());
           }
           return true;
         }
       }
       catch (Throwable paramString1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("[cmshow]ApolloConfigUtils", 2, paramString1.toString());
-        }
+        QLog.e("VersionUtil", 1, paramString1.toString());
       }
     }
     return false;
@@ -128,7 +126,7 @@ public class VersionUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.VersionUtil
  * JD-Core Version:    0.7.0.1
  */

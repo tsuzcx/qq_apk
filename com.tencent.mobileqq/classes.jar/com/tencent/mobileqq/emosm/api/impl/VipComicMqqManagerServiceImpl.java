@@ -216,9 +216,9 @@ public class VipComicMqqManagerServiceImpl
   private void startDownload(IPicDownloadListener paramIPicDownloadListener, EntityManager paramEntityManager, DownloaderInterface paramDownloaderInterface, List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, IFavroamingDBManagerService paramIFavroamingDBManagerService, CustomEmotionData paramCustomEmotionData, VipComicFavorEmoStructMsgInfo paramVipComicFavorEmoStructMsgInfo, File paramFile)
   {
     DownloadTask localDownloadTask = new DownloadTask(paramCustomEmotionData.url, paramFile);
-    localDownloadTask.p = true;
-    localDownloadTask.f = "comic_emoticon";
-    localDownloadTask.b = 3;
+    localDownloadTask.N = true;
+    localDownloadTask.L = "comic_emoticon";
+    localDownloadTask.e = 3;
     paramDownloaderInterface.startDownload(localDownloadTask, new VipComicMqqManagerServiceImpl.1(this, paramFile, paramCustomEmotionData, paramIFavroamingDBManagerService, paramList1, paramIPicDownloadListener, paramList2, paramEntityManager, paramVipComicFavorEmoStructMsgInfo, paramAtomicInteger2, paramAtomicInteger1), null);
   }
   
@@ -595,7 +595,7 @@ public class VipComicMqqManagerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.VipComicMqqManagerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

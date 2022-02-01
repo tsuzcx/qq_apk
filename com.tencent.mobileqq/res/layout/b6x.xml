@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/if3" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/if3" android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="horizontal" android:id="@id/aau" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="30.0dip" />
-    <RelativeLayout android:orientation="vertical" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/aas" android:layout_below="@id/aau">
+    <RelativeLayout android:orientation="vertical" android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/aas" android:layout_below="@id/aau">
         <com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView android:layout_gravity="center" android:id="@id/eg6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
         <ImageView android:layout_gravity="center" android:id="@id/gxf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gxe" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="20.0dip">
             <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ee5" />
-            <com.tencent.aelight.camera.aioeditor.capture.view.PressScaleTextView android:textSize="18.0dip" android:textColor="@android:color/white" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:text="@string/r7a" android:shadowColor="@color/bx" android:shadowRadius="4.0" android:layout_centerVertical="true" />
+            <com.tencent.aelight.camera.aioeditor.capture.view.PressScaleTextView android:textSize="18.0dip" android:textColor="@android:color/white" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:text="@string/j6l" android:shadowColor="@color/bx" android:shadowRadius="4.0" android:layout_centerVertical="true" />
         </LinearLayout>
         <LinearLayout android:orientation="vertical" android:background="@color/er" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
             <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a60" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="54.0dip">
@@ -17,5 +17,5 @@
             <com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar android:id="@id/gwq" android:layout_width="fill_parent" android:layout_height="68.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentBottom="true" />
         </LinearLayout>
     </RelativeLayout>
-    <RelativeLayout android:id="@id/aas" android:background="@color/bp" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/aas" android:background="@color/black" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
 </RelativeLayout>

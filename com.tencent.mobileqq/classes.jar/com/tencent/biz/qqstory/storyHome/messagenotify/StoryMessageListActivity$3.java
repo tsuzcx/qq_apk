@@ -22,7 +22,7 @@ class StoryMessageListActivity$3
 {
   StoryMessageListActivity$3(StoryMessageListActivity paramStoryMessageListActivity)
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
@@ -50,7 +50,7 @@ class StoryMessageListActivity$3
           while (localIterator.hasNext())
           {
             MessageData localMessageData = new MessageData((qqstory_710_message.StoryMessage)localIterator.next());
-            if (localMessageData.d) {
+            if (localMessageData.v) {
               paramArrayOfByte.add(localMessageData);
             }
           }

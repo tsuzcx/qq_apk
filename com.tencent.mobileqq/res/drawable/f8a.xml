@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:shareInterpolator="false"
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <alpha android:interpolator="@interpolator/decelerate_cubic" android:duration="150" android:fromAlpha="1.0" android:toAlpha="0.0" />
-</set>
+    <solid android:color="#fff5f6fa" />
+    <corners android:radius="10.5dip" />
+</shape>

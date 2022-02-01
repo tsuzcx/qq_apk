@@ -17,7 +17,7 @@ final class HorizontalProgressStyle$VideoCardStyleTikTok
   @NotNull
   private String btnTextColor = "#FFFFFF";
   private float btnTextSize = 14.0F;
-  private int progressDrawable = 2130842820;
+  private int progressDrawable = 2130843776;
   @NotNull
   private String progressTextColor = "#FFFFFF";
   private float progressTextSize = 14.0F;
@@ -127,7 +127,7 @@ final class HorizontalProgressStyle$VideoCardStyleTikTok
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle.VideoCardStyleTikTok
  * JD-Core Version:    0.7.0.1
  */

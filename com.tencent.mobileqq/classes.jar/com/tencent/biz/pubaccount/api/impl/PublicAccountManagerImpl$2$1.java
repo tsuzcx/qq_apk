@@ -11,15 +11,15 @@ class PublicAccountManagerImpl$2$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$2.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.savePublicAccountMenuSetting(this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$2.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$2.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountMenuResponse);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$2.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl$2.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    this.e.f.savePublicAccountMenuSetting(this.e.b, this.e.c, this.a);
+    if (this.e.e != null) {
+      this.e.e.onReceive(this.b, this.c, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

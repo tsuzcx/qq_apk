@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="false" android:drawable="@drawable/g7g" />
-    <item android:state_selected="true" android:drawable="@drawable/g7h" />
-</selector>
+    <item>
+        <shape>
+            <solid android:color="#fff0f2f6" />
+        </shape>
+    </item>
+    <item android:bottom="1.0px">
+        <shape>
+            <solid android:color="@color/al3" />
+        </shape>
+    </item>
+</layer-list>

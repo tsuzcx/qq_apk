@@ -10,17 +10,17 @@ import mqq.app.MobileQQ;
 
 public class ChirpWrapper
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private int jdField_a_of_type_Int;
+  private static boolean b = false;
+  private int a;
   
   public static boolean a()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (b) {
       return true;
     }
     try
     {
-      if (jdField_a_of_type_Boolean) {
+      if (b) {
         return true;
       }
       try
@@ -33,7 +33,7 @@ public class ChirpWrapper
         if (new File((String)localObject1).exists())
         {
           System.load((String)localObject1);
-          jdField_a_of_type_Boolean = true;
+          b = true;
         }
         else if (QLog.isColorLevel())
         {
@@ -45,9 +45,9 @@ public class ChirpWrapper
         if (QLog.isColorLevel()) {
           QLog.d("ChirpWrapper", 2, "loadLibrary error", localException);
         }
-        jdField_a_of_type_Boolean = false;
+        b = false;
       }
-      boolean bool = jdField_a_of_type_Boolean;
+      boolean bool = b;
       return bool;
     }
     finally {}
@@ -115,14 +115,25 @@ public class ChirpWrapper
   
   private static native int releaseChirp(int paramInt);
   
-  public int a()
+  public String a(short[] paramArrayOfShort, int paramInt)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!b) {
+      return null;
+    }
+    if ((decodeChirp(this.a, paramArrayOfShort, paramArrayOfShort.length) == 0) && (getDecodeStringLen(this.a) == paramInt)) {
+      return getDecodeString(this.a);
+    }
+    return null;
+  }
+  
+  public int b()
+  {
+    if (!b) {
       return -2;
     }
     try
     {
-      this.jdField_a_of_type_Int = createChirp();
+      this.a = createChirp();
       return 0;
     }
     catch (Exception localException)
@@ -134,36 +145,25 @@ public class ChirpWrapper
     return -1;
   }
   
-  public Pair<Integer, short[]> a(String paramString)
+  public Pair<Integer, short[]> b(String paramString)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!b) {
       return new Pair(Integer.valueOf(-2), null);
     }
-    int i = encodeChirp(this.jdField_a_of_type_Int, paramString, paramString.length());
+    int i = encodeChirp(this.a, paramString, paramString.length());
     if (i != 0) {
       return new Pair(Integer.valueOf(i), null);
     }
-    i = getAudioLength(this.jdField_a_of_type_Int);
+    i = getAudioLength(this.a);
     paramString = new short[i];
-    return new Pair(Integer.valueOf(getAudioSample(this.jdField_a_of_type_Int, paramString, i)), paramString);
+    return new Pair(Integer.valueOf(getAudioSample(this.a, paramString, i)), paramString);
   }
   
-  public String a(short[] paramArrayOfShort, int paramInt)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return null;
-    }
-    if ((decodeChirp(this.jdField_a_of_type_Int, paramArrayOfShort, paramArrayOfShort.length) == 0) && (getDecodeStringLen(this.jdField_a_of_type_Int) == paramInt)) {
-      return getDecodeString(this.jdField_a_of_type_Int);
-    }
-    return null;
-  }
-  
-  public void a()
+  public void c()
   {
     try
     {
-      releaseChirp(this.jdField_a_of_type_Int);
+      releaseChirp(this.a);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -171,7 +171,7 @@ public class ChirpWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.chirp.ChirpWrapper
  * JD-Core Version:    0.7.0.1
  */

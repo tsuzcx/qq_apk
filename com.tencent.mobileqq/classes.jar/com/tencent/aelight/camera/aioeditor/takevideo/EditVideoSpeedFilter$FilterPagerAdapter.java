@@ -24,64 +24,48 @@ import java.util.Queue;
 public class EditVideoSpeedFilter$FilterPagerAdapter
   extends PagerAdapter
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final SparseArray<FilterData.FilterPageItem> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  public final List<FilterData> a;
-  private final Map<Class<? extends FilterData.FilterPageItem>, Queue<FilterData.FilterPageItem>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public final List<FilterData> a = new ArrayList();
+  private final Map<Class<? extends FilterData.FilterPageItem>, Queue<FilterData.FilterPageItem>> b = new HashMap();
+  private final SparseArray<FilterData.FilterPageItem> c = new SparseArray();
+  private final Context d;
   
   public EditVideoSpeedFilter$FilterPagerAdapter(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.d = paramContext;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i != 0) {
-      return paramInt % i;
-    }
-    return 0;
-  }
-  
-  @Nullable
-  public FilterData.FilterPageItem a(int paramInt)
-  {
-    return (FilterData.FilterPageItem)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return this.a.size();
   }
   
   public FilterData a(int paramInt)
   {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (FilterData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt = b(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (FilterData)this.a.get(paramInt);
     }
     return null;
   }
   
   public void a(int paramInt, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext())
     {
       FilterData localFilterData = (FilterData)((Iterator)localObject).next();
-      if (paramInt == localFilterData.jdField_b_of_type_Int) {
-        localFilterData.jdField_b_of_type_JavaLangString = paramString;
+      if (paramInt == localFilterData.c) {
+        localFilterData.d = paramString;
       }
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < this.c.size())
     {
-      localObject = (FilterData.FilterPageItem)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if ((localObject != null) && (((FilterData.FilterPageItem)localObject).jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoFilterFilterData.jdField_b_of_type_Int == paramInt) && ((localObject instanceof VideoEffectsFilterData.VideoEffectsFilterPageItem)))
+      localObject = (FilterData.FilterPageItem)this.c.valueAt(i);
+      if ((localObject != null) && (((FilterData.FilterPageItem)localObject).b.c == paramInt) && ((localObject instanceof VideoEffectsFilterData.VideoEffectsFilterPageItem)))
       {
         localObject = (VideoEffectsFilterData.VideoEffectsFilterPageItem)localObject;
-        ((VideoEffectsFilterData.VideoEffectsFilterPageItem)localObject).b.setText(paramString);
+        ((VideoEffectsFilterData.VideoEffectsFilterPageItem)localObject).f.setText(paramString);
         if (TextUtils.isEmpty(paramString)) {
           EditVideoSpeedFilter.a((FilterData.FilterPageItem)localObject);
         }
@@ -92,32 +76,47 @@ public class EditVideoSpeedFilter$FilterPagerAdapter
   
   public void a(List<FilterData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.a.clear();
+    this.a.addAll(paramList);
+    this.c.clear();
     notifyDataSetChanged();
+  }
+  
+  public int b(int paramInt)
+  {
+    int i = this.a.size();
+    if (i != 0) {
+      return paramInt % i;
+    }
+    return 0;
+  }
+  
+  @Nullable
+  public FilterData.FilterPageItem c(int paramInt)
+  {
+    return (FilterData.FilterPageItem)this.c.get(paramInt);
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     FilterData.FilterPageItem localFilterPageItem = (FilterData.FilterPageItem)paramObject;
-    paramViewGroup.removeView(localFilterPageItem.jdField_a_of_type_AndroidViewView);
-    localFilterPageItem.jdField_a_of_type_AndroidViewView.setOnTouchListener(null);
+    paramViewGroup.removeView(localFilterPageItem.a);
+    localFilterPageItem.a.setOnTouchListener(null);
     localFilterPageItem.a();
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localFilterPageItem.getClass());
+    paramObject = (Queue)this.b.get(localFilterPageItem.getClass());
     paramViewGroup = paramObject;
     if (paramObject == null)
     {
       paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localFilterPageItem.getClass(), paramViewGroup);
+      this.b.put(localFilterPageItem.getClass(), paramViewGroup);
     }
     paramViewGroup.offer(localFilterPageItem);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    this.c.remove(paramInt);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size() * 100;
+    return this.a.size() * 100;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
@@ -129,28 +128,28 @@ public class EditVideoSpeedFilter$FilterPagerAdapter
       SLog.d("EditVideoSpeedFilter", "instantiateItem find data is null !");
       return null;
     }
-    Object localObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localFilterData.a());
+    Object localObject = (Queue)this.b.get(localFilterData.b());
     if (localObject != null) {
       localFilterPageItem = (FilterData.FilterPageItem)((Queue)localObject).poll();
     }
     localObject = localFilterPageItem;
     if (localFilterPageItem == null) {
-      localObject = localFilterData.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
+      localObject = localFilterData.a(this.d, paramViewGroup);
     }
-    paramViewGroup.addView(((FilterData.FilterPageItem)localObject).jdField_a_of_type_AndroidViewView);
+    paramViewGroup.addView(((FilterData.FilterPageItem)localObject).a);
     ((FilterData.FilterPageItem)localObject).a(localFilterData, paramInt);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+    this.c.put(paramInt, localObject);
     return localObject;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    return ((paramObject instanceof FilterData.FilterPageItem)) && (((FilterData.FilterPageItem)paramObject).jdField_a_of_type_AndroidViewView == paramView);
+    return ((paramObject instanceof FilterData.FilterPageItem)) && (((FilterData.FilterPageItem)paramObject).a == paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoSpeedFilter.FilterPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

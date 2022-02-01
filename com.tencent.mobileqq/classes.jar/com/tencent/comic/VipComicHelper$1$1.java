@@ -17,7 +17,7 @@ class VipComicHelper$1$1
   
   public void loaded(String paramString, int paramInt)
   {
-    paramString = (AppRuntime)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramString = (AppRuntime)this.a.a.get();
     if (paramString == null) {
       return;
     }
@@ -27,7 +27,7 @@ class VipComicHelper$1$1
       ((StringBuilder)localObject).append("Finish update offline pkg. code = ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(", entry = ");
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a.b);
       QLog.d("ComicHelper", 2, ((StringBuilder)localObject).toString());
     }
     int j = 0;
@@ -70,7 +70,7 @@ class VipComicHelper$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,17 +10,17 @@ class VideoCombineHelper$SendingTask
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a.a();
-    VideoCombineHelper.CombineParams localCombineParams = a();
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a.a(localCombineParams.e, localCombineParams.jdField_a_of_type_JavaLangString, localCombineParams.jdField_a_of_type_Int, new VideoCombineHelper.SendingTask.1(this));
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new VideoCombineHelper.ClearTask(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.c);
+    this.a.e.e();
+    VideoCombineHelper.CombineParams localCombineParams = c();
+    this.a.e.a(localCombineParams.j, localCombineParams.c, localCombineParams.g, new VideoCombineHelper.SendingTask.1(this));
+    this.f.b(this);
+    this.h = new VideoCombineHelper.ClearTask(this.a, this.f, this.g);
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.SendingTask
  * JD-Core Version:    0.7.0.1
  */

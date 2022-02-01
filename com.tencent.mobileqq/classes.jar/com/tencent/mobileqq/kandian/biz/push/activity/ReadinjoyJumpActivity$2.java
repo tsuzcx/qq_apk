@@ -28,13 +28,13 @@ class ReadinjoyJumpActivity$2
     QLog.d("ReadinjoyJumpActivity", 1, ((StringBuilder)localObject).toString());
     if (paramList != null)
     {
-      if (!paramList.contains(Long.valueOf(ReadinjoyJumpActivity.a(this.a)))) {
+      if (!paramList.contains(Long.valueOf(ReadinjoyJumpActivity.c(this.a)))) {
         return;
       }
-      ThreadManager.getUIHandler().removeCallbacks(ReadinjoyJumpActivity.a(this.a));
-      if (!ReadinjoyJumpActivity.a(this.a))
+      ThreadManager.getUIHandler().removeCallbacks(ReadinjoyJumpActivity.d(this.a));
+      if (!ReadinjoyJumpActivity.e(this.a))
       {
-        if (ReadinjoyJumpActivity.b(this.a)) {
+        if (ReadinjoyJumpActivity.f(this.a)) {
           return;
         }
         if ((paramBoolean) && (paramList1 != null) && (!paramList1.isEmpty()))
@@ -43,37 +43,37 @@ class ReadinjoyJumpActivity$2
           while (i < paramList1.size())
           {
             paramList = (AbsBaseArticleInfo)paramList1.get(i);
-            if (paramList.mArticleID == ReadinjoyJumpActivity.a(this.a))
+            if (paramList.mArticleID == ReadinjoyJumpActivity.c(this.a))
             {
               ReadinjoyJumpActivity.a(this.a, paramList);
-              if ((ReadinjoyJumpUtils.a(ReadinjoyJumpActivity.a(this.a)) == 0) && (RIJFeedsType.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, 0L, ReadinjoyJumpActivity.a(this.a))))
+              if ((ReadinjoyJumpUtils.a(ReadinjoyJumpActivity.g(this.a)) == 0) && (RIJFeedsType.a(ReadinjoyJumpActivity.g(this.a).mArticleContentUrl, 0L, ReadinjoyJumpActivity.g(this.a))))
               {
-                paramList = ReadInJoyLogicEngine.a().a();
+                paramList = ReadInJoyLogicEngine.a().d();
                 if (paramList != null)
                 {
-                  paramList1 = ReadinjoyJumpActivity.a(this.a).mArticleContentUrl;
-                  localObject = ReadinjoyJumpActivity.a(this.a).innerUniqueID;
+                  paramList1 = ReadinjoyJumpActivity.g(this.a).mArticleContentUrl;
+                  localObject = ReadinjoyJumpActivity.g(this.a).innerUniqueID;
                   StringBuilder localStringBuilder = new StringBuilder();
-                  localStringBuilder.append(ReadinjoyJumpActivity.a(this.a).publishUin);
+                  localStringBuilder.append(ReadinjoyJumpActivity.g(this.a).publishUin);
                   localStringBuilder.append("");
                   paramList.a(paramList1, (String)localObject, localStringBuilder.toString(), 1, this.a);
                   return;
                 }
               }
-              ReadinjoyJumpActivity.b(this.a);
+              ReadinjoyJumpActivity.h(this.a);
               return;
             }
             i += 1;
           }
         }
-        ReadinjoyJumpActivity.a(this.a);
+        ReadinjoyJumpActivity.b(this.a);
       }
     }
   }
   
-  public void d_(String paramString)
+  public void k_(String paramString)
   {
-    super.d_(paramString);
+    super.k_(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("webCallback : ");
     localStringBuilder.append(paramString);
@@ -83,7 +83,7 @@ class ReadinjoyJumpActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.activity.ReadinjoyJumpActivity.2
  * JD-Core Version:    0.7.0.1
  */

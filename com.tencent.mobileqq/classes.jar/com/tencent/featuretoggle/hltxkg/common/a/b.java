@@ -11,20 +11,20 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static j jdField_a_of_type_ComTencentFeaturetoggleHltxkgCommonAJ = new j();
   public static String a;
-  private static Map<Integer, b.a> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private static String jdField_b_of_type_JavaLangString = "halley-cloud-AccessIpMgr";
-  private static Map<String, b.a> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static j b = new j();
+  private static String c = "halley-cloud-AccessIpMgr";
+  private static Map<Integer, b.a> d = new ConcurrentHashMap();
+  private static Map<String, b.a> e = new ConcurrentHashMap();
   
   public static com.tencent.featuretoggle.hltxkg.common.a.c.c a(String paramString)
   {
-    Object localObject1 = (b.a)jdField_b_of_type_JavaUtilMap.get(paramString);
+    Object localObject1 = (b.a)e.get(paramString);
     if (localObject1 != null)
     {
-      localObject2 = new com.tencent.featuretoggle.hltxkg.common.a.c.c(((b.a)localObject1).jdField_a_of_type_JavaLangString, ((b.a)localObject1).c);
+      localObject2 = new com.tencent.featuretoggle.hltxkg.common.a.c.c(((b.a)localObject1).b, ((b.a)localObject1).e);
       ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(((b.a)localObject1).jdField_a_of_type_JavaUtilList);
+      localArrayList.addAll(((b.a)localObject1).d);
       ((com.tencent.featuretoggle.hltxkg.common.a.c.c)localObject2).c = localArrayList;
       if (!((com.tencent.featuretoggle.hltxkg.common.a.c.c)localObject2).c.isEmpty()) {
         return localObject2;
@@ -48,7 +48,7 @@ public final class b
   {
     if ((paramInt1 != 0) || (paramInt2 >= 500))
     {
-      paramString = (b.a)jdField_b_of_type_JavaUtilMap.get(paramString);
+      paramString = (b.a)e.get(paramString);
       if (paramString != null) {
         paramString.b(parama);
       }
@@ -69,16 +69,16 @@ public final class b
       if (i.a("app_schdule_use_ipv6", 0, 1, 1) == 1) {
         i = 1;
       }
-      jdField_b_of_type_JavaUtilMap.clear();
+      e.clear();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         com.tencent.featuretoggle.hltxkg.common.a.c.c localc = (com.tencent.featuretoggle.hltxkg.common.a.c.c)((Iterator)localObject1).next();
-        b.a locala = new b.a(jdField_a_of_type_JavaLangString);
-        locala.jdField_a_of_type_JavaLangString = localc.jdField_a_of_type_JavaLangString;
-        locala.c = localc.jdField_b_of_type_JavaLangString;
+        b.a locala = new b.a(a);
+        locala.b = localc.a;
+        locala.e = localc.b;
         int j = localc.d;
-        boolean bool = locala.c.startsWith("bottom");
+        boolean bool = locala.e.startsWith("bottom");
         Object localObject2 = localc.c.iterator();
         while (((Iterator)localObject2).hasNext())
         {
@@ -91,18 +91,18 @@ public final class b
             locala.a(locala1);
           }
         }
-        localObject2 = new a(localc.jdField_a_of_type_JavaLangString, -1);
+        localObject2 = new a(localc.a, -1);
         ((a)localObject2).a((byte)3);
         locala.a((a)localObject2);
-        Collections.sort(locala.jdField_a_of_type_JavaUtilList, new d(locala));
-        jdField_b_of_type_JavaUtilMap.put(localc.jdField_a_of_type_JavaLangString, locala);
+        Collections.sort(locala.d, new d(locala));
+        e.put(localc.a, locala);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.b
  * JD-Core Version:    0.7.0.1
  */

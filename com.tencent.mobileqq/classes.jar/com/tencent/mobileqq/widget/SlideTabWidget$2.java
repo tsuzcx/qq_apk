@@ -7,14 +7,14 @@ class SlideTabWidget$2
   
   public void run()
   {
-    if (SlideTabWidget.a(this.this$0) != null) {
-      SlideTabWidget.a(this.this$0).a();
+    if (SlideTabWidget.d(this.this$0) != null) {
+      SlideTabWidget.d(this.this$0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideTabWidget.2
  * JD-Core Version:    0.7.0.1
  */

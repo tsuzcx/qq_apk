@@ -13,6 +13,7 @@ public abstract class ChatMessage
   public boolean isDui;
   public boolean isFirstMsg;
   public boolean isFlowMessage;
+  private boolean isNeedCombine = false;
   public boolean isShowQIMStyleGroup = false;
   public boolean isShowQWalletPubAd;
   public boolean isShowQimStyleAvater = false;
@@ -58,6 +59,11 @@ public abstract class ChatMessage
   public boolean isFollowMessage()
   {
     return this.isFlowMessage;
+  }
+  
+  public boolean isNeedCombine()
+  {
+    return this.isNeedCombine;
   }
   
   public boolean isSend()
@@ -115,6 +121,11 @@ public abstract class ChatMessage
     parse();
   }
   
+  public void setIsNeedCombine(boolean paramBoolean)
+  {
+    this.isNeedCombine = paramBoolean;
+  }
+  
   public void setIsSentByXG(boolean paramBoolean)
   {
     this.mIsSentByXG = paramBoolean;
@@ -127,7 +138,7 @@ public abstract class ChatMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ChatMessage
  * JD-Core Version:    0.7.0.1
  */

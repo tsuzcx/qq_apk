@@ -24,13 +24,13 @@ class AEEditorImageEditFragment$1
     }
     localStringBuilder.append(localObject);
     AEQLog.a("AEEditorImageEditFragment", localStringBuilder.toString());
-    AEEditorImageEditFragment.a(this.a).setTemplateMaterials(paramList, AEEditorCommonEditFragment.a, this.a.b());
-    this.a.a.a(2);
+    AEEditorImageEditFragment.a(this.a).setTemplateMaterials(paramList, AEEditorCommonEditFragment.a, this.a.s());
+    this.a.u.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

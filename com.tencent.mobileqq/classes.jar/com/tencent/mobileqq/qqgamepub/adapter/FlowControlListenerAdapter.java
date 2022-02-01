@@ -51,11 +51,11 @@ public abstract class FlowControlListenerAdapter
     //   63: invokevirtual 62	com/tencent/mobileqq/qqgamepub/data/QQGameResFlowControl$ResourcePermitRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   66: pop
     //   67: aload 16
-    //   69: getfield 66	com/tencent/mobileqq/qqgamepub/data/QQGameResFlowControl$ResourcePermitRsp:res_state	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   69: getfield 66	com/tencent/mobileqq/qqgamepub/data/QQGameResFlowControl$ResourcePermitRsp:resState	Lcom/tencent/mobileqq/pb/PBEnumField;
     //   72: invokevirtual 71	com/tencent/mobileqq/pb/PBEnumField:get	()I
     //   75: istore 6
     //   77: aload 16
-    //   79: getfield 75	com/tencent/mobileqq/qqgamepub/data/QQGameResFlowControl$ResourcePermitRsp:internal_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   79: getfield 75	com/tencent/mobileqq/qqgamepub/data/QQGameResFlowControl$ResourcePermitRsp:internalTime	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   82: invokevirtual 80	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   85: lstore 8
     //   87: ldc 82
@@ -206,7 +206,7 @@ public abstract class FlowControlListenerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.adapter.FlowControlListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

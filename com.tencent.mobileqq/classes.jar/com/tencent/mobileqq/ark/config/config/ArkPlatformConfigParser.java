@@ -14,12 +14,7 @@ public class ArkPlatformConfigParser
   extends ArkPlatformConfig
   implements IQStorageSafable<String>
 {
-  protected String b;
-  
-  public ArkPlatformConfigParser()
-  {
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  protected String m = "";
   
   public void a(String paramString)
   {
@@ -28,7 +23,7 @@ public class ArkPlatformConfigParser
       QLog.i("ArkApp.ArkPlatformConfig", 1, "onParse,fileOrRes is null");
       return;
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.m = paramString;
     for (;;)
     {
       int i;
@@ -46,7 +41,7 @@ public class ArkPlatformConfigParser
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
               break label1087;
             }
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+            this.a.add(localObject2);
             QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "get config update app=", localObject2 });
             break label1087;
           }
@@ -55,8 +50,8 @@ public class ArkPlatformConfigParser
           break label1094;
         }
         bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "mIsUrlCheckEnable = ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+        this.b = bool;
+        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "mIsUrlCheckEnable = ", Boolean.valueOf(this.b) });
         localObject1 = paramString.optJSONArray("ark_url_check_disable_apps");
         if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
         {
@@ -67,7 +62,7 @@ public class ArkPlatformConfigParser
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
               break label1100;
             }
-            this.jdField_b_of_type_JavaUtilArrayList.add(localObject2);
+            this.k.add(localObject2);
             QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "get config disable app=", localObject2 });
             break label1100;
           }
@@ -76,15 +71,15 @@ public class ArkPlatformConfigParser
           break label1107;
         }
         bool = true;
-        this.jdField_b_of_type_Boolean = bool;
-        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "mIsOptimizeEnable = ", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
+        this.c = bool;
+        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "mIsOptimizeEnable = ", Boolean.valueOf(this.c) });
         if (paramString.optInt("wt_url_new_rule", 1) != 1) {
           break label1113;
         }
         bool = true;
-        this.f = bool;
-        this.jdField_a_of_type_JavaLangString = paramString.optString("ark_toast_info_config", "");
-        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "mToastStr = ", this.jdField_a_of_type_JavaLangString });
+        this.g = bool;
+        this.h = paramString.optString("ark_toast_info_config", "");
+        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "mToastStr = ", this.h });
         localObject1 = paramString.optJSONArray("predownload_cfg_list");
         Object localObject3;
         int j;
@@ -100,21 +95,21 @@ public class ArkPlatformConfigParser
             if (!TextUtils.isEmpty((CharSequence)localObject2))
             {
               localObject3 = new PreloadItem();
-              ((PreloadItem)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject2);
-              ((PreloadItem)localObject3).jdField_a_of_type_Int = j;
+              ((PreloadItem)localObject3).a = ((String)localObject2);
+              ((PreloadItem)localObject3).b = j;
               localObject4 = new StringBuilder("onParse predownload_cfg_list name = ");
               ((StringBuilder)localObject4).append((String)localObject2);
               ((StringBuilder)localObject4).append(", preload = ");
               ((StringBuilder)localObject4).append(j);
               QLog.d("ArkApp.ArkPlatformConfig", 1, ((StringBuilder)localObject4).toString());
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, localObject3);
+              this.i.put(localObject2, localObject3);
               break label1119;
             }
             QLog.d("ArkApp.ArkPlatformConfig", 1, "onParse predownload_cfg_list app_name is empty");
             break label1119;
           }
         }
-        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "onParse mPreDownload list size =", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()) });
+        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "onParse mPreDownload list size =", Integer.valueOf(this.i.size()) });
         localObject1 = paramString.optJSONObject("app_global_url_config");
         if (localObject1 != null)
         {
@@ -137,7 +132,7 @@ public class ArkPlatformConfigParser
               break label1126;
             }
             QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "white list size =", Integer.valueOf(((ArrayList)localObject3).size()) });
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put("white", localObject3);
+            this.j.put("white", localObject3);
           }
           localObject2 = ((JSONObject)localObject1).optJSONArray("black");
           if (localObject2 != null)
@@ -161,12 +156,12 @@ public class ArkPlatformConfigParser
             ((StringBuilder)localObject2).append("black list size = ");
             ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
             QLog.d("ArkApp.ArkPlatformConfig", 1, ((StringBuilder)localObject2).toString());
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put("black", localObject1);
+            this.j.put("black", localObject1);
           }
         }
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("mGlobalUrlConfig list size = ");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+        ((StringBuilder)localObject1).append(this.j.size());
         QLog.d("ArkApp.ArkPlatformConfig", 1, ((StringBuilder)localObject1).toString());
         localObject1 = paramString.optJSONArray("ark_download_ctrl_disable_list");
         if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
@@ -178,27 +173,27 @@ public class ArkPlatformConfigParser
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
               break label1140;
             }
-            this.jdField_c_of_type_JavaUtilArrayList.add(localObject2);
+            this.l.add(localObject2);
             break label1140;
           }
         }
-        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "ark.dctrl get config disable download ctrl apps=", this.jdField_c_of_type_JavaUtilArrayList.toString() });
+        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "ark.dctrl get config disable download ctrl apps=", this.l.toString() });
         if (paramString.optInt("ark_vip_report_enable", 1) != 1) {
           break label1147;
         }
         bool = true;
-        this.jdField_c_of_type_Boolean = bool;
+        this.d = bool;
         if (paramString.optInt("back_to_file_scheme_enable", 1) != 1) {
           break label1153;
         }
         bool = true;
-        this.d = bool;
+        this.e = bool;
         if (paramString.optInt("add_backslash_enable", 1) != 1) {
           break label1159;
         }
         bool = true;
-        this.e = bool;
-        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "ark VipReport enable=", Boolean.valueOf(this.jdField_c_of_type_Boolean), ", mIsBackToFileSchemeEnable=", Boolean.valueOf(this.d), ", mAddBackslashEnable=", Boolean.valueOf(this.e) });
+        this.f = bool;
+        QLog.d("ArkApp.ArkPlatformConfig", 1, new Object[] { "ark VipReport enable=", Boolean.valueOf(this.d), ", mIsBackToFileSchemeEnable=", Boolean.valueOf(this.e), ", mAddBackslashEnable=", Boolean.valueOf(this.f) });
         return;
       }
       catch (JSONException paramString)
@@ -246,7 +241,7 @@ public class ArkPlatformConfigParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.config.ArkPlatformConfigParser
  * JD-Core Version:    0.7.0.1
  */

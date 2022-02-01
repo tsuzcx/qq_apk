@@ -16,7 +16,7 @@ class CaptureComboMusic$1
   {
     synchronized (this.a)
     {
-      this.a.a.mProgress = paramInt;
+      this.a.f.mProgress = paramInt;
       return;
     }
   }
@@ -38,10 +38,10 @@ class CaptureComboMusic$1
     if (paramBoolean) {}
     try
     {
-      this.a.a.mProgress = 100;
+      this.a.f.mProgress = 100;
       this.a.b();
       break label108;
-      this.a.a.mProgress = -1;
+      this.a.f.mProgress = -1;
       this.a.a(4);
       label108:
       return;
@@ -51,7 +51,7 @@ class CaptureComboMusic$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.CaptureComboMusic.1
  * JD-Core Version:    0.7.0.1
  */

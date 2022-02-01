@@ -7,20 +7,20 @@ import com.tencent.mobileqq.app.ThreadManager;
 
 public class ArkRecommendLogic$ArkWordSegmentThread
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private HandlerThread a;
+  private Handler b;
   
   public Handler a()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("ArkAnalyseThread", -1);
-        this.jdField_a_of_type_AndroidOsHandlerThread.start();
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        this.a = ThreadManager.newFreeHandlerThread("ArkAnalyseThread", -1);
+        this.a.start();
+        this.b = new Handler(this.a.getLooper());
       }
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      Handler localHandler = this.b;
       return localHandler;
     }
     finally {}
@@ -31,7 +31,7 @@ public class ArkRecommendLogic$ArkWordSegmentThread
     if (paramRunnable == null) {
       return;
     }
-    if (a())
+    if (b())
     {
       paramRunnable.run();
       return;
@@ -39,14 +39,14 @@ public class ArkRecommendLogic$ArkWordSegmentThread
     new ArkRecommendLogic.ArkWordSegmentThread.BlockingRunnable(this, paramRunnable).a();
   }
   
-  public boolean a()
+  public boolean b()
   {
     return Looper.myLooper() == a().getLooper();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkRecommendLogic.ArkWordSegmentThread
  * JD-Core Version:    0.7.0.1
  */

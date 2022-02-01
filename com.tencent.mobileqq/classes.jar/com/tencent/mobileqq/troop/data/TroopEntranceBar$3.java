@@ -55,15 +55,15 @@ class TroopEntranceBar$3
         }
         if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject1).uint32_groups_flag.has()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_Int = ((oidb_0x487.RspBody)localObject1).uint32_groups_flag.get();
-          TroopEntranceBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar);
-          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.notifyObservers(Integer.valueOf(0));
+          this.b.n = ((oidb_0x487.RspBody)localObject1).uint32_groups_flag.get();
+          TroopEntranceBar.a(this.b);
+          this.b.notifyObservers(Integer.valueOf(0));
           return;
         }
         if ((paramInt != 0) || (!((oidb_0x487.RspBody)localObject1).uint32_follow_state.has())) {
           break label609;
         }
-        paramBundle = (TroopBindPublicAccountMgr)this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+        paramBundle = (TroopBindPublicAccountMgr)this.b.a.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
         paramInt = ((oidb_0x487.RspBody)localObject1).uint32_follow_state.get();
         int i = ((oidb_0x487.RspBody)localObject1).uint32_remind_flag.get();
         if (i == 1)
@@ -83,7 +83,7 @@ class TroopEntranceBar$3
           localBundle.putString("op", "0");
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(this.jdField_a_of_type_Long);
+          localStringBuilder.append(this.a);
           localBundle.putString("puin", localStringBuilder.toString());
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("uin=");
@@ -96,12 +96,12 @@ class TroopEntranceBar$3
           ((HashMap)localObject2).put("CONTEXT", ((QQAppInterface)localObject1).getApp().getApplicationContext());
           new HttpWebCgiAsyncTask2("https://buluo.qq.com/cgi-bin/bar/extra/clean_temp_follow_state", "", new TroopEntranceBar.3.1(this, paramBundle, i), 1000, null).a((HashMap)localObject2);
         }
-        paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramInt, i);
+        paramBundle.a(this.b.c.b, paramInt, i);
         if (paramInt != 1) {
           break label609;
         }
-        TroopEntranceBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar);
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.notifyObservers(Integer.valueOf(1));
+        TroopEntranceBar.b(this.b);
+        this.b.notifyObservers(Integer.valueOf(1));
         return;
       }
       catch (Exception paramArrayOfByte)
@@ -120,8 +120,8 @@ class TroopEntranceBar$3
       paramArrayOfByte.append(paramInt);
       QLog.d(".troop.troop_pubaccount", 2, paramArrayOfByte.toString());
       label609:
-      TroopEntranceBar.c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar);
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopEntranceBar.notifyObservers();
+      TroopEntranceBar.c(this.b);
+      this.b.notifyObservers();
       return;
       label624:
       paramArrayOfByte = "";
@@ -130,7 +130,7 @@ class TroopEntranceBar$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopEntranceBar.3
  * JD-Core Version:    0.7.0.1
  */

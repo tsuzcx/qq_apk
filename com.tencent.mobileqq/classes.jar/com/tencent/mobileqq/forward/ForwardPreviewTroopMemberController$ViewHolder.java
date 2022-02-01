@@ -6,7 +6,7 @@ import android.view.View;
 class ForwardPreviewTroopMemberController$ViewHolder
   extends RecyclerView.ViewHolder
 {
-  public int a = ForwardPreviewTroopMemberController.b;
+  public int c = ForwardPreviewTroopMemberController.f;
   
   public ForwardPreviewTroopMemberController$ViewHolder(View paramView)
   {
@@ -16,7 +16,7 @@ class ForwardPreviewTroopMemberController$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

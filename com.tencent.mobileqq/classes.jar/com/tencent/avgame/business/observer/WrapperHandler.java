@@ -6,35 +6,35 @@ import mqq.os.MqqHandler;
 
 public class WrapperHandler
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private final MqqHandler a;
+  private final Handler b;
   
   public WrapperHandler(Looper paramLooper)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(paramLooper);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramLooper);
+    this.a = new MqqHandler(paramLooper);
+    this.b = new Handler(paramLooper);
   }
   
   public WrapperHandler(MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramMqqHandler.getLooper());
+    this.a = paramMqqHandler;
+    this.b = new Handler(paramMqqHandler.getLooper());
   }
   
   public final boolean a(Runnable paramRunnable, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(paramRunnable);
+      return this.b.postAtFrontOfQueue(paramRunnable);
     }
-    return this.jdField_a_of_type_MqqOsMqqHandler.postAtFrontOfQueue(paramRunnable);
+    return this.a.postAtFrontOfQueue(paramRunnable);
   }
   
   public final boolean b(Runnable paramRunnable, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+      return this.b.post(paramRunnable);
     }
-    return this.jdField_a_of_type_MqqOsMqqHandler.post(paramRunnable);
+    return this.a.post(paramRunnable);
   }
 }
 

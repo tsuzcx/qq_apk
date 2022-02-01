@@ -31,7 +31,7 @@ public class QQAioBackgroundPlugin
       localJSONObject1 = new JSONObject();
       localJSONObject2 = new JSONObject();
       localJSONObject1.put("data", localJSONObject2);
-      str2 = ChatBackgroundUtil.a(this.mRuntime.a(), this.mRuntime.a().getCurrentAccountUin(), String.valueOf(paramObject));
+      str2 = ChatBackgroundUtil.a(this.mRuntime.d(), this.mRuntime.b().getCurrentAccountUin(), String.valueOf(paramObject));
       boolean bool = "null".equals(str2);
       if (bool)
       {
@@ -93,7 +93,7 @@ public class QQAioBackgroundPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQAioBackgroundPlugin
  * JD-Core Version:    0.7.0.1
  */

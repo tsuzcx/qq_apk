@@ -12,7 +12,7 @@ class WebProteusViewCreator$ProteusItemViewHolder$13
   
   public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    JSONObject localJSONObject = paramProteusItemData.c;
+    JSONObject localJSONObject = paramProteusItemData.bb;
     if (WebProteusViewCreator.ProteusItemViewHolder.a(this.a, localJSONObject))
     {
       WebProteusViewCreator.ProteusItemViewHolder.a(this.a, paramViewBase, paramContext, paramProteusItemData);
@@ -23,7 +23,7 @@ class WebProteusViewCreator$ProteusItemViewHolder$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.13
  * JD-Core Version:    0.7.0.1
  */

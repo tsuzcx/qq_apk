@@ -21,51 +21,51 @@ class AEEditorImageEditFragment$18
   
   public void onResp(NetResp paramNetResp)
   {
-    AEEditorImageEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment, null);
-    if (AEEditorImageEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment) == null) {
+    AEEditorImageEditFragment.a(this.d, null);
+    if (AEEditorImageEditFragment.f(this.d) == null) {
       return;
     }
-    if (AEEditorImageEditFragment.b(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment)) {
+    if (AEEditorImageEditFragment.s(this.d)) {
       return;
     }
     if (paramNetResp.mRespData != null)
     {
-      paramNetResp = AEEditorImageEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment, this.jdField_a_of_type_Int, paramNetResp.mRespData, paramNetResp.reqCost, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+      paramNetResp = AEEditorImageEditFragment.a(this.d, this.a, paramNetResp.mRespData, paramNetResp.reqCost, this.b);
       if (!TextUtils.isEmpty(paramNetResp))
       {
         localObject1 = new ComicsFilterResult(paramNetResp);
-        AEEditorImageEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment).put(AEEditorImageEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment, this.jdField_a_of_type_Int, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial), localObject1);
+        AEEditorImageEditFragment.t(this.d).put(AEEditorImageEditFragment.a(this.d, this.a, this.b), localObject1);
         localObject2 = AEQCircleReport.a();
-        paramNetResp = this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
+        paramNetResp = this.b;
         if (paramNetResp != null) {
           paramNetResp = paramNetResp.id;
         } else {
           paramNetResp = "";
         }
-        ((AEQCircleReport)localObject2).a(paramNetResp, "", QCircleConstants.KEY_NETWORK, "0");
-        AEEditorImageEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment, this.jdField_a_of_type_Int, (ComicsFilterResult)localObject1, this.b, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+        ((AEQCircleReport)localObject2).a(paramNetResp, "", QCircleConstants.A, "0");
+        AEEditorImageEditFragment.a(this.d, this.a, (ComicsFilterResult)localObject1, this.c, this.b);
         return;
       }
       localObject1 = AEQCircleReport.a();
-      paramNetResp = this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
+      paramNetResp = this.b;
       if (paramNetResp != null) {
         paramNetResp = paramNetResp.id;
       } else {
         paramNetResp = "";
       }
-      ((AEQCircleReport)localObject1).a(paramNetResp, "", QCircleConstants.KEY_NETWORK, "-90000003");
+      ((AEQCircleReport)localObject1).a(paramNetResp, "", QCircleConstants.A, "-90000003");
       AEQLog.d("AEEditorImageEditFragment", "processComicResponse return path is empty");
       ThreadManager.getUIHandler().post(new AEEditorImageEditFragment.18.1(this));
       return;
     }
     Object localObject2 = AEQCircleReport.a();
-    Object localObject1 = this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial;
+    Object localObject1 = this.b;
     if (localObject1 != null) {
       localObject1 = ((MetaMaterial)localObject1).id;
     } else {
       localObject1 = "";
     }
-    ((AEQCircleReport)localObject2).a((String)localObject1, "", QCircleConstants.KEY_NETWORK, String.valueOf(paramNetResp.mErrCode));
+    ((AEQCircleReport)localObject2).a((String)localObject1, "", QCircleConstants.A, String.valueOf(paramNetResp.mErrCode));
     localObject1 = AEBaseDataReporter.a();
     int i = paramNetResp.mErrCode;
     localObject2 = new StringBuilder();
@@ -79,7 +79,7 @@ class AEEditorImageEditFragment$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment.18
  * JD-Core Version:    0.7.0.1
  */

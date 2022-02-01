@@ -9,18 +9,18 @@ public class BasicTypeDataParcel
 {
   public static final Parcelable.Creator<BasicTypeDataParcel> CREATOR = new BasicTypeDataParcel.1();
   public int a;
-  public Object[] a;
+  public Object[] b;
   
   public BasicTypeDataParcel(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    this.a = paramInt;
+    this.b = paramVarArgs;
   }
   
   protected BasicTypeDataParcel(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramParcel.readArray(Object.class.getClassLoader());
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readArray(Object.class.getClassLoader());
   }
   
   public int describeContents()
@@ -33,14 +33,14 @@ public class BasicTypeDataParcel
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("--------------------start-------------------");
     localStringBuilder.append("\n");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n");
-    if (this.jdField_a_of_type_ArrayOfJavaLangObject != null)
+    if (this.b != null)
     {
       int i = 0;
       for (;;)
       {
-        Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+        Object[] arrayOfObject = this.b;
         if (i >= arrayOfObject.length) {
           break;
         }
@@ -55,13 +55,13 @@ public class BasicTypeDataParcel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeArray(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeArray(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel
  * JD-Core Version:    0.7.0.1
  */

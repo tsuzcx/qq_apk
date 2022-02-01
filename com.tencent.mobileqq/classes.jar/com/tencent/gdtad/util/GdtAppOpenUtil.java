@@ -41,7 +41,7 @@ public class GdtAppOpenUtil
           localStringBuilder.append(" true");
           QLog.d("GdtAppOpenUtil", 2, localStringBuilder.toString());
         }
-        return paramContext.f;
+        return paramContext.t;
       }
       if (QLog.isColorLevel())
       {
@@ -91,18 +91,18 @@ public class GdtAppOpenUtil
         return false;
       }
       Object localObject = "";
-      if (!TextUtils.isEmpty(localDownloadInfo.l))
+      if (!TextUtils.isEmpty(localDownloadInfo.q))
       {
-        paramContext = localDownloadInfo.l;
+        paramContext = localDownloadInfo.q;
       }
       else
       {
-        int i = localDownloadInfo.c;
+        int i = localDownloadInfo.o;
         TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1 = null;
         TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2;
         if (i == 0)
         {
-          localTMAssistantDownloadTaskInfo2 = DownloadManagerV2.a().a(localDownloadInfo.d);
+          localTMAssistantDownloadTaskInfo2 = DownloadManagerV2.a().g(localDownloadInfo.d);
           paramContext = (Context)localObject;
           if (localTMAssistantDownloadTaskInfo2 != null)
           {
@@ -114,13 +114,13 @@ public class GdtAppOpenUtil
           localObject = paramContext;
           if (TextUtils.isEmpty(paramContext))
           {
-            localTMAssistantDownloadTaskInfo1 = DownloadManagerV2.a().a(localDownloadInfo);
+            localTMAssistantDownloadTaskInfo1 = DownloadManagerV2.a().c(localDownloadInfo);
             localObject = paramContext;
           }
         }
         else
         {
-          localTMAssistantDownloadTaskInfo2 = DownloadManagerV2.a().a(localDownloadInfo);
+          localTMAssistantDownloadTaskInfo2 = DownloadManagerV2.a().c(localDownloadInfo);
           paramContext = (Context)localObject;
           if (localTMAssistantDownloadTaskInfo2 != null)
           {
@@ -132,7 +132,7 @@ public class GdtAppOpenUtil
           localObject = paramContext;
           if (TextUtils.isEmpty(paramContext))
           {
-            localTMAssistantDownloadTaskInfo1 = DownloadManagerV2.a().a(localDownloadInfo.d);
+            localTMAssistantDownloadTaskInfo1 = DownloadManagerV2.a().g(localDownloadInfo.d);
             localObject = paramContext;
           }
         }
@@ -146,9 +146,9 @@ public class GdtAppOpenUtil
         }
         if (!TextUtils.isEmpty(paramContext))
         {
-          localDownloadInfo.l = paramContext;
+          localDownloadInfo.q = paramContext;
           localDownloadInfo.a(4);
-          DownloadManagerV2.a().c(localDownloadInfo);
+          DownloadManagerV2.a().e(localDownloadInfo);
         }
       }
       boolean bool1 = bool3;
@@ -214,14 +214,14 @@ public class GdtAppOpenUtil
             QLog.d("GdtAppOpenUtil", 2, localStringBuilder.toString());
           }
           int i = j;
-          if (!TextUtils.isEmpty(paramContext.l))
+          if (!TextUtils.isEmpty(paramContext.q))
           {
             paramString1 = new StringBuilder();
-            paramString1.append(paramContext.l);
+            paramString1.append(paramContext.q);
             paramString1.append(".temp");
             i = j;
             if (new File(paramString1.toString()).exists()) {
-              i = paramContext.f;
+              i = paramContext.t;
             }
           }
           return i;
@@ -273,18 +273,18 @@ public class GdtAppOpenUtil
         return false;
       }
       Object localObject = "";
-      if (!TextUtils.isEmpty(localDownloadInfo.l))
+      if (!TextUtils.isEmpty(localDownloadInfo.q))
       {
-        paramContext = localDownloadInfo.l;
+        paramContext = localDownloadInfo.q;
       }
       else
       {
-        int i = localDownloadInfo.c;
+        int i = localDownloadInfo.o;
         TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1 = null;
         TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2;
         if (i == 0)
         {
-          localTMAssistantDownloadTaskInfo2 = DownloadManagerV2.a().a(localDownloadInfo.d);
+          localTMAssistantDownloadTaskInfo2 = DownloadManagerV2.a().g(localDownloadInfo.d);
           paramContext = (Context)localObject;
           if (localTMAssistantDownloadTaskInfo2 != null)
           {
@@ -296,13 +296,13 @@ public class GdtAppOpenUtil
           localObject = paramContext;
           if (TextUtils.isEmpty(paramContext))
           {
-            localTMAssistantDownloadTaskInfo1 = DownloadManagerV2.a().a(localDownloadInfo);
+            localTMAssistantDownloadTaskInfo1 = DownloadManagerV2.a().c(localDownloadInfo);
             localObject = paramContext;
           }
         }
         else
         {
-          localTMAssistantDownloadTaskInfo2 = DownloadManagerV2.a().a(localDownloadInfo);
+          localTMAssistantDownloadTaskInfo2 = DownloadManagerV2.a().c(localDownloadInfo);
           paramContext = (Context)localObject;
           if (localTMAssistantDownloadTaskInfo2 != null)
           {
@@ -314,7 +314,7 @@ public class GdtAppOpenUtil
           localObject = paramContext;
           if (TextUtils.isEmpty(paramContext))
           {
-            localTMAssistantDownloadTaskInfo1 = DownloadManagerV2.a().a(localDownloadInfo.d);
+            localTMAssistantDownloadTaskInfo1 = DownloadManagerV2.a().g(localDownloadInfo.d);
             localObject = paramContext;
           }
         }
@@ -328,9 +328,9 @@ public class GdtAppOpenUtil
         }
         if (!TextUtils.isEmpty(paramContext))
         {
-          localDownloadInfo.l = paramContext;
+          localDownloadInfo.q = paramContext;
           localDownloadInfo.a(4);
-          DownloadManagerV2.a().c(localDownloadInfo);
+          DownloadManagerV2.a().e(localDownloadInfo);
         }
       }
       boolean bool1 = bool3;
@@ -372,14 +372,14 @@ public class GdtAppOpenUtil
       if ((paramContext.a() != 2) && (paramContext.a() != 3)) {
         return -1;
       }
-      return paramContext.f;
+      return paramContext.t;
     }
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtAppOpenUtil
  * JD-Core Version:    0.7.0.1
  */

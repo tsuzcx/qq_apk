@@ -19,8 +19,8 @@ class KingCardConfig$Item$1
   
   public void onClick(View paramView)
   {
-    ((IVasH5PayUtil)QRoute.api(IVasH5PayUtil.class)).openH5Page(this.jdField_a_of_type_JavaLangString, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount(), (Activity)this.jdField_a_of_type_AndroidContentContext);
-    ReportController.b(null, "dc00898", "", "", KingCardConfig.Item.a(this.jdField_a_of_type_ComTencentMobileqqVasConfigBusinessQvipKingCardConfig$Item), KingCardConfig.Item.a(this.jdField_a_of_type_ComTencentMobileqqVasConfigBusinessQvipKingCardConfig$Item), 2, 0, "", "", "", "");
+    ((IVasH5PayUtil)QRoute.api(IVasH5PayUtil.class)).openH5Page(this.a, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount(), (Activity)this.b);
+    ReportController.b(null, "dc00898", "", "", KingCardConfig.Item.a(this.c), KingCardConfig.Item.a(this.c), 2, 0, "", "", "", "");
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -32,7 +32,7 @@ class KingCardConfig$Item$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.KingCardConfig.Item.1
  * JD-Core Version:    0.7.0.1
  */

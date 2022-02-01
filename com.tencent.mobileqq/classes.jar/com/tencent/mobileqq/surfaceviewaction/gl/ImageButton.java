@@ -9,88 +9,88 @@ public class ImageButton
   extends Sprite
   implements IImageButton, Node.Clickable
 {
-  private ImageButton.OnClickListener a;
-  private Point jdField_b_of_type_ComTencentMobileqqSurfaceviewactionPoint = new Point(0.0F, 0.0F);
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = false;
+  private Point E = new Point(0.0F, 0.0F);
+  private String F;
+  private boolean s = false;
+  private ImageButton.OnClickListener t;
+  private boolean u = false;
   
   public ImageButton(SpriteGLView paramSpriteGLView, Bitmap paramBitmap, boolean paramBoolean)
   {
     super(paramSpriteGLView, paramBitmap);
-    this.c = paramBoolean;
+    this.u = paramBoolean;
   }
   
   public ImageButton(SpriteGLView paramSpriteGLView, boolean paramBoolean, String paramString)
   {
     super(paramSpriteGLView);
-    this.c = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.u = paramBoolean;
+    this.F = paramString;
   }
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.F;
   }
   
   public void a(ImageButton.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener = paramOnClickListener;
+    this.t = paramOnClickListener;
   }
   
   public boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null)
+    if (this.w != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.a == null) {
+      if (this.w.b == null) {
         return false;
       }
       paramInt1 = paramMotionEvent.getAction();
       float f3 = paramMotionEvent.getX();
       float f4 = paramMotionEvent.getY();
-      a(this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionPoint);
-      float f2 = b();
-      float f5 = (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionPoint.a - this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.a.getWidth() * this.e / 2.0F) * f2;
-      float f6 = (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionPoint.a + this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.a.getWidth() * this.e / 2.0F) * f2;
+      a(this.E);
+      float f2 = d();
+      float f5 = (this.E.a - this.w.b.getWidth() * this.f / 2.0F) * f2;
+      float f6 = (this.E.a + this.w.b.getWidth() * this.f / 2.0F) * f2;
       float f1;
-      if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_b_of_type_Boolean)
+      if (this.v.v)
       {
         float f7 = paramInt2;
-        f1 = f7 - (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionPoint.b + this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.a.getHeight() * this.e / 2.0F) * f2;
-        f2 = f7 - (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionPoint.b - this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.a.getHeight() * this.e / 2.0F) * f2;
+        f1 = f7 - (this.E.b + this.w.b.getHeight() * this.f / 2.0F) * f2;
+        f2 = f7 - (this.E.b - this.w.b.getHeight() * this.f / 2.0F) * f2;
       }
       else
       {
-        f1 = (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionPoint.b - this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.a.getHeight() * this.e / 2.0F) * f2;
-        f2 = (this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionPoint.b + this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.a.getHeight() * this.e / 2.0F) * f2;
+        f1 = (this.E.b - this.w.b.getHeight() * this.f / 2.0F) * f2;
+        f2 = (this.E.b + this.w.b.getHeight() * this.f / 2.0F) * f2;
       }
       if (paramInt1 == 0)
       {
         if ((f3 > f5) && (f3 < f6) && (f4 > f1) && (f4 < f2))
         {
-          this.jdField_b_of_type_Boolean = true;
-          if (this.c) {
-            this.jdField_a_of_type_Int = 128;
+          this.s = true;
+          if (this.u) {
+            this.i = 128;
           }
         }
         else
         {
-          this.jdField_b_of_type_Boolean = false;
-          if (this.c) {
-            this.jdField_a_of_type_Int = 255;
+          this.s = false;
+          if (this.u) {
+            this.i = 255;
           }
         }
-        return this.jdField_b_of_type_Boolean;
+        return this.s;
       }
       if ((paramInt1 == 1) || (paramInt1 == 3))
       {
-        this.jdField_b_of_type_Boolean = false;
-        if (this.c) {
-          this.jdField_a_of_type_Int = 255;
+        this.s = false;
+        if (this.u) {
+          this.i = 255;
         }
         if ((f3 > f5) && (f3 < f6) && (f4 > f1) && (f4 < f2))
         {
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener;
+          paramMotionEvent = this.t;
           if (paramMotionEvent != null) {
             paramMotionEvent.a(this);
           }
@@ -103,7 +103,7 @@ public class ImageButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.ImageButton
  * JD-Core Version:    0.7.0.1
  */

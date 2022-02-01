@@ -25,7 +25,7 @@ class DownloadManager$21
       if (str1 == null) {
         return;
       }
-      localObject1 = this.this$0.b(str1);
+      localObject1 = this.this$0.f(str1);
       if (localObject1 == null)
       {
         localObject1 = new StringBuilder();
@@ -46,19 +46,19 @@ class DownloadManager$21
       if (bool)
       {
         ((DownloadInfo)localObject1).a(4);
-        ((DownloadInfo)localObject1).j = 0;
-        this.this$0.e((DownloadInfo)localObject1);
+        ((DownloadInfo)localObject1).D = 0;
+        this.this$0.f((DownloadInfo)localObject1);
         this.this$0.a(4, (DownloadInfo)localObject1);
-        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).jdField_c_of_type_Long);
-        StaticAnalyz.a("300", ((DownloadInfo)localObject1).h, ((DownloadInfo)localObject1).jdField_c_of_type_JavaLangString, ((DownloadInfo)localObject1).o);
-        if (!((DownloadInfo)localObject1).a) {
+        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).E);
+        StaticAnalyz.a("300", ((DownloadInfo)localObject1).h, ((DownloadInfo)localObject1).c, ((DownloadInfo)localObject1).F);
+        if (!((DownloadInfo)localObject1).w) {
           return;
         }
-        this.this$0.c((DownloadInfo)localObject1);
+        this.this$0.d((DownloadInfo)localObject1);
         return;
       }
       this.a.getInt("VersionCode");
-      localObject2 = new File(((DownloadInfo)localObject1).l);
+      localObject2 = new File(((DownloadInfo)localObject1).q);
       try
       {
         ApkExternalInfoTool.a((File)localObject2, str2);
@@ -87,13 +87,13 @@ class DownloadManager$21
         localStringBuilder1.append(str1);
         localStringBuilder1.append(" write code and check code suc");
         LogUtility.c("DownloadManager_", localStringBuilder1.toString());
-        ((DownloadInfo)localObject1).j = 0;
-        this.this$0.e((DownloadInfo)localObject1);
+        ((DownloadInfo)localObject1).D = 0;
+        this.this$0.f((DownloadInfo)localObject1);
         this.this$0.a(4, (DownloadInfo)localObject1);
-        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).jdField_c_of_type_Long);
-        StaticAnalyz.a("300", ((DownloadInfo)localObject1).h, ((DownloadInfo)localObject1).jdField_c_of_type_JavaLangString, ((DownloadInfo)localObject1).o);
-        if (((DownloadInfo)localObject1).a) {
-          this.this$0.c((DownloadInfo)localObject1);
+        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).E);
+        StaticAnalyz.a("300", ((DownloadInfo)localObject1).h, ((DownloadInfo)localObject1).c, ((DownloadInfo)localObject1).F);
+        if (((DownloadInfo)localObject1).w) {
+          this.this$0.d((DownloadInfo)localObject1);
         }
       }
       else
@@ -103,10 +103,10 @@ class DownloadManager$21
         localStringBuilder1.append(str1);
         localStringBuilder1.append(" write code or check code fail");
         LogUtility.c("DownloadManager_", localStringBuilder1.toString());
-        ((DownloadInfo)localObject1).j = -20;
-        ((DownloadInfo)localObject1).e = -2;
-        this.this$0.e((DownloadInfo)localObject1);
-        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).j, null);
+        ((DownloadInfo)localObject1).D = -20;
+        ((DownloadInfo)localObject1).s = -2;
+        this.this$0.f((DownloadInfo)localObject1);
+        this.this$0.a((DownloadInfo)localObject1, ((DownloadInfo)localObject1).D, null);
         return;
       }
     }
@@ -119,7 +119,7 @@ class DownloadManager$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.21
  * JD-Core Version:    0.7.0.1
  */

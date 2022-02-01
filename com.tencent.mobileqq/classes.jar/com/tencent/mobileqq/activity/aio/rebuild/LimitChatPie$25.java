@@ -11,14 +11,14 @@ class LimitChatPie$25
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
+    PlusPanelUtils.a(this.a.d, this.a.f, this.a.ah, true, null, null);
+    ReportController.b(this.a.d, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.25
  * JD-Core Version:    0.7.0.1
  */

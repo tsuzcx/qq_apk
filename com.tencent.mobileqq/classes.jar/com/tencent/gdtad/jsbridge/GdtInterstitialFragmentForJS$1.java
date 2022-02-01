@@ -20,9 +20,9 @@ class GdtInterstitialFragmentForJS$1
     if (GdtInterstitialFragmentForJS.a(this.a) == null)
     {
       localObject = new GdtAdLoader.Session();
-      ((GdtAdLoader.Session)localObject).a = GdtInterstitialFragmentForJS.a(this.a);
+      ((GdtAdLoader.Session)localObject).a = GdtInterstitialFragmentForJS.b(this.a);
       GdtInterstitialFragmentForJS localGdtInterstitialFragmentForJS = this.a;
-      GdtInterstitialFragmentForJS.a(localGdtInterstitialFragmentForJS, new GdtAdLoader((GdtAdLoader.Session)localObject, new WeakReference(GdtInterstitialFragmentForJS.a(localGdtInterstitialFragmentForJS))));
+      GdtInterstitialFragmentForJS.a(localGdtInterstitialFragmentForJS, new GdtAdLoader((GdtAdLoader.Session)localObject, new WeakReference(GdtInterstitialFragmentForJS.c(localGdtInterstitialFragmentForJS))));
       GdtInterstitialFragmentForJS.a(this.a).a(new WeakReference(this.a.getBaseActivity()));
       localObject = "loading ad data";
     }
@@ -36,7 +36,7 @@ class GdtInterstitialFragmentForJS$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.1
  * JD-Core Version:    0.7.0.1
  */

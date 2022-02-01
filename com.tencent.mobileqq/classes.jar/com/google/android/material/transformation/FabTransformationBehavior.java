@@ -48,12 +48,12 @@ import java.util.List;
 public abstract class FabTransformationBehavior
   extends ExpandableTransformationBehavior
 {
-  private float jdField_a_of_type_Float;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private float jdField_b_of_type_Float;
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private final Rect a = new Rect();
+  private final RectF b = new RectF();
+  private final RectF c = new RectF();
+  private final int[] d = new int[2];
+  private float e;
+  private float f;
   
   public FabTransformationBehavior() {}
   
@@ -64,11 +64,11 @@ public abstract class FabTransformationBehavior
   
   private float a(@NonNull View paramView1, @NonNull View paramView2, @NonNull Positioning paramPositioning)
   {
-    RectF localRectF1 = this.jdField_a_of_type_AndroidGraphicsRectF;
-    RectF localRectF2 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    RectF localRectF1 = this.b;
+    RectF localRectF2 = this.c;
     b(paramView1, localRectF1);
     a(paramView2, localRectF2);
-    int i = paramPositioning.jdField_a_of_type_Int & 0x7;
+    int i = paramPositioning.a & 0x7;
     float f1;
     float f2;
     if (i != 1)
@@ -96,25 +96,16 @@ public abstract class FabTransformationBehavior
     }
     f1 -= f2;
     label114:
-    return f1 + paramPositioning.jdField_a_of_type_Float;
+    return f1 + paramPositioning.b;
   }
   
   private float a(@NonNull FabTransformationBehavior.FabTransformationSpec paramFabTransformationSpec, @NonNull MotionTiming paramMotionTiming, float paramFloat1, float paramFloat2)
   {
     long l1 = paramMotionTiming.a();
     long l2 = paramMotionTiming.b();
-    paramFabTransformationSpec = paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("expansion");
-    float f = (float)(paramFabTransformationSpec.a() + paramFabTransformationSpec.b() + 17L - l1) / (float)l2;
-    return AnimationUtils.a(paramFloat1, paramFloat2, paramMotionTiming.a().getInterpolation(f));
-  }
-  
-  private int a(@NonNull View paramView)
-  {
-    ColorStateList localColorStateList = ViewCompat.getBackgroundTintList(paramView);
-    if (localColorStateList != null) {
-      return localColorStateList.getColorForState(paramView.getDrawableState(), localColorStateList.getDefaultColor());
-    }
-    return 0;
+    paramFabTransformationSpec = paramFabTransformationSpec.a.b("expansion");
+    float f1 = (float)(paramFabTransformationSpec.a() + paramFabTransformationSpec.b() + 17L - l1) / (float)l2;
+    return AnimationUtils.a(paramFloat1, paramFloat2, paramMotionTiming.c().getInterpolation(f1));
   }
   
   @NonNull
@@ -126,23 +117,23 @@ public abstract class FabTransformationBehavior
     {
       if (((paramBoolean) && (paramFloat2 < 0.0F)) || ((!paramBoolean) && (paramFloat2 > 0.0F)))
       {
-        localObject = paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("translationXCurveUpwards");
-        localMotionTiming = paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("translationYCurveUpwards");
+        localObject = paramFabTransformationSpec.a.b("translationXCurveUpwards");
+        localMotionTiming = paramFabTransformationSpec.a.b("translationYCurveUpwards");
         paramFabTransformationSpec = (FabTransformationBehavior.FabTransformationSpec)localObject;
         localObject = localMotionTiming;
       }
       else
       {
-        localObject = paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("translationXCurveDownwards");
-        localMotionTiming = paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("translationYCurveDownwards");
+        localObject = paramFabTransformationSpec.a.b("translationXCurveDownwards");
+        localMotionTiming = paramFabTransformationSpec.a.b("translationYCurveDownwards");
         paramFabTransformationSpec = (FabTransformationBehavior.FabTransformationSpec)localObject;
         localObject = localMotionTiming;
       }
     }
     else
     {
-      localMotionTiming = paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("translationXLinear");
-      localObject = paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("translationYLinear");
+      localMotionTiming = paramFabTransformationSpec.a.b("translationXLinear");
+      localObject = paramFabTransformationSpec.a.b("translationYLinear");
       paramFabTransformationSpec = localMotionTiming;
     }
     return new Pair(paramFabTransformationSpec, localObject);
@@ -190,7 +181,7 @@ public abstract class FabTransformationBehavior
   private void a(@NonNull View paramView, RectF paramRectF)
   {
     paramRectF.set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = this.d;
     paramView.getLocationInWindow(arrayOfInt);
     paramRectF.offsetTo(arrayOfInt[0], arrayOfInt[1]);
     paramRectF.offset((int)-paramView.getTranslationX(), (int)-paramView.getTranslationY());
@@ -198,21 +189,21 @@ public abstract class FabTransformationBehavior
   
   private void a(@NonNull View paramView1, @NonNull View paramView2, boolean paramBoolean, @NonNull FabTransformationBehavior.FabTransformationSpec paramFabTransformationSpec, @NonNull List<Animator> paramList)
   {
-    float f1 = a(paramView1, paramView2, paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationPositioning);
-    float f2 = b(paramView1, paramView2, paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationPositioning);
+    float f1 = a(paramView1, paramView2, paramFabTransformationSpec.b);
+    float f2 = b(paramView1, paramView2, paramFabTransformationSpec.b);
     paramFabTransformationSpec = a(f1, f2, paramBoolean, paramFabTransformationSpec);
     paramView2 = (MotionTiming)paramFabTransformationSpec.first;
     paramFabTransformationSpec = (MotionTiming)paramFabTransformationSpec.second;
     Object localObject = View.TRANSLATION_X;
     if (!paramBoolean) {
-      f1 = this.jdField_a_of_type_Float;
+      f1 = this.e;
     }
     localObject = ObjectAnimator.ofFloat(paramView1, (Property)localObject, new float[] { f1 });
     Property localProperty = View.TRANSLATION_Y;
     if (paramBoolean) {
       f1 = f2;
     } else {
-      f1 = this.jdField_b_of_type_Float;
+      f1 = this.f;
     }
     paramView1 = ObjectAnimator.ofFloat(paramView1, localProperty, new float[] { f1 });
     paramView2.a((Animator)localObject);
@@ -227,18 +218,18 @@ public abstract class FabTransformationBehavior
       return;
     }
     CircularRevealWidget localCircularRevealWidget = (CircularRevealWidget)paramView2;
-    float f2 = c(paramView1, paramView2, paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationPositioning);
-    float f3 = d(paramView1, paramView2, paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationPositioning);
-    ((FloatingActionButton)paramView1).a(this.jdField_a_of_type_AndroidGraphicsRect);
-    float f1 = this.jdField_a_of_type_AndroidGraphicsRect.width() / 2.0F;
-    MotionTiming localMotionTiming = paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("expansion");
+    float f2 = c(paramView1, paramView2, paramFabTransformationSpec.b);
+    float f3 = d(paramView1, paramView2, paramFabTransformationSpec.b);
+    ((FloatingActionButton)paramView1).a(this.a);
+    float f1 = this.a.width() / 2.0F;
+    MotionTiming localMotionTiming = paramFabTransformationSpec.a.b("expansion");
     if (paramBoolean1)
     {
       if (!paramBoolean2) {
         localCircularRevealWidget.setRevealInfo(new CircularRevealWidget.RevealInfo(f2, f3, f1));
       }
       if (paramBoolean2) {
-        f1 = localCircularRevealWidget.a().c;
+        f1 = localCircularRevealWidget.getRevealInfo().c;
       }
       paramView1 = CircularRevealCompat.a(localCircularRevealWidget, f2, f3, MathUtils.a(f2, f3, 0.0F, 0.0F, paramFloat1, paramFloat2));
       paramView1.addListener(new FabTransformationBehavior.4(this, localCircularRevealWidget));
@@ -246,13 +237,13 @@ public abstract class FabTransformationBehavior
     }
     else
     {
-      paramFloat1 = localCircularRevealWidget.a().c;
+      paramFloat1 = localCircularRevealWidget.getRevealInfo().c;
       paramView1 = CircularRevealCompat.a(localCircularRevealWidget, f2, f3, f1);
       long l = localMotionTiming.a();
       int i = (int)f2;
       int j = (int)f3;
       a(paramView2, l, i, j, paramFloat1, paramList);
-      a(paramView2, localMotionTiming.a(), localMotionTiming.b(), paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a(), i, j, f1, paramList);
+      a(paramView2, localMotionTiming.a(), localMotionTiming.b(), paramFabTransformationSpec.a.a(), i, j, f1, paramList);
     }
     localMotionTiming.a(paramView1);
     paramList.add(paramView1);
@@ -262,26 +253,26 @@ public abstract class FabTransformationBehavior
   @TargetApi(21)
   private void a(View paramView1, @NonNull View paramView2, boolean paramBoolean1, boolean paramBoolean2, @NonNull FabTransformationBehavior.FabTransformationSpec paramFabTransformationSpec, @NonNull List<Animator> paramList, List<Animator.AnimatorListener> paramList1)
   {
-    float f = ViewCompat.getElevation(paramView2) - ViewCompat.getElevation(paramView1);
+    float f1 = ViewCompat.getElevation(paramView2) - ViewCompat.getElevation(paramView1);
     if (paramBoolean1)
     {
       if (!paramBoolean2) {
-        paramView2.setTranslationZ(-f);
+        paramView2.setTranslationZ(-f1);
       }
       paramView1 = ObjectAnimator.ofFloat(paramView2, View.TRANSLATION_Z, new float[] { 0.0F });
     }
     else
     {
-      paramView1 = ObjectAnimator.ofFloat(paramView2, View.TRANSLATION_Z, new float[] { -f });
+      paramView1 = ObjectAnimator.ofFloat(paramView2, View.TRANSLATION_Z, new float[] { -f1 });
     }
-    paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("elevation").a(paramView1);
+    paramFabTransformationSpec.a.b("elevation").a(paramView1);
     paramList.add(paramView1);
   }
   
   private void a(@NonNull View paramView1, @NonNull View paramView2, boolean paramBoolean1, boolean paramBoolean2, @NonNull FabTransformationBehavior.FabTransformationSpec paramFabTransformationSpec, @NonNull List<Animator> paramList, List<Animator.AnimatorListener> paramList1, @NonNull RectF paramRectF)
   {
-    float f1 = a(paramView1, paramView2, paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationPositioning);
-    float f2 = b(paramView1, paramView2, paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationPositioning);
+    float f1 = a(paramView1, paramView2, paramFabTransformationSpec.b);
+    float f2 = b(paramView1, paramView2, paramFabTransformationSpec.b);
     paramView1 = a(f1, f2, paramBoolean1, paramFabTransformationSpec);
     MotionTiming localMotionTiming1 = (MotionTiming)paramView1.first;
     MotionTiming localMotionTiming2 = (MotionTiming)paramView1.second;
@@ -312,11 +303,11 @@ public abstract class FabTransformationBehavior
   {
     paramFloat1 = a(paramFabTransformationSpec, paramMotionTiming1, paramFloat1, paramFloat3);
     paramFloat2 = a(paramFabTransformationSpec, paramMotionTiming2, paramFloat2, paramFloat4);
-    paramMotionTiming1 = this.jdField_a_of_type_AndroidGraphicsRect;
+    paramMotionTiming1 = this.a;
     paramView.getWindowVisibleDisplayFrame(paramMotionTiming1);
-    paramFabTransformationSpec = this.jdField_a_of_type_AndroidGraphicsRectF;
+    paramFabTransformationSpec = this.b;
     paramFabTransformationSpec.set(paramMotionTiming1);
-    paramMotionTiming1 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    paramMotionTiming1 = this.c;
     a(paramView, paramMotionTiming1);
     paramMotionTiming1.offset(paramFloat1, paramFloat2);
     paramMotionTiming1.intersect(paramFabTransformationSpec);
@@ -325,11 +316,11 @@ public abstract class FabTransformationBehavior
   
   private float b(@NonNull View paramView1, @NonNull View paramView2, @NonNull Positioning paramPositioning)
   {
-    RectF localRectF1 = this.jdField_a_of_type_AndroidGraphicsRectF;
-    RectF localRectF2 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    RectF localRectF1 = this.b;
+    RectF localRectF2 = this.c;
     b(paramView1, localRectF1);
     a(paramView2, localRectF2);
-    int i = paramPositioning.jdField_a_of_type_Int & 0x70;
+    int i = paramPositioning.a & 0x70;
     float f1;
     float f2;
     if (i != 16)
@@ -357,7 +348,7 @@ public abstract class FabTransformationBehavior
     }
     f1 -= f2;
     label117:
-    return f1 + paramPositioning.jdField_b_of_type_Float;
+    return f1 + paramPositioning.c;
   }
   
   @Nullable
@@ -372,7 +363,7 @@ public abstract class FabTransformationBehavior
   private void b(@NonNull View paramView, @NonNull RectF paramRectF)
   {
     a(paramView, paramRectF);
-    paramRectF.offset(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+    paramRectF.offset(this.e, this.f);
   }
   
   private void b(View paramView1, View paramView2, boolean paramBoolean1, boolean paramBoolean2, @NonNull FabTransformationBehavior.FabTransformationSpec paramFabTransformationSpec, @NonNull List<Animator> paramList, @NonNull List<Animator.AnimatorListener> paramList1)
@@ -400,7 +391,7 @@ public abstract class FabTransformationBehavior
         paramView1 = ObjectAnimator.ofInt(localDrawable, DrawableAlphaProperty.a, new int[] { 255 });
       }
       paramView1.addUpdateListener(new FabTransformationBehavior.2(this, paramView2));
-      paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("iconFade").a(paramView1);
+      paramFabTransformationSpec.a.b("iconFade").a(paramView1);
       paramList.add(paramView1);
       paramList1.add(new FabTransformationBehavior.3(this, localCircularRevealWidget, localDrawable));
     }
@@ -408,12 +399,21 @@ public abstract class FabTransformationBehavior
   
   private float c(@NonNull View paramView1, @NonNull View paramView2, @NonNull Positioning paramPositioning)
   {
-    RectF localRectF1 = this.jdField_a_of_type_AndroidGraphicsRectF;
-    RectF localRectF2 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    RectF localRectF1 = this.b;
+    RectF localRectF2 = this.c;
     b(paramView1, localRectF1);
     a(paramView2, localRectF2);
     localRectF2.offset(-a(paramView1, paramView2, paramPositioning), 0.0F);
     return localRectF1.centerX() - localRectF2.left;
+  }
+  
+  private int c(@NonNull View paramView)
+  {
+    ColorStateList localColorStateList = ViewCompat.getBackgroundTintList(paramView);
+    if (localColorStateList != null) {
+      return localColorStateList.getColorForState(paramView.getDrawableState(), localColorStateList.getDefaultColor());
+    }
+    return 0;
   }
   
   private void c(@NonNull View paramView1, View paramView2, boolean paramBoolean1, boolean paramBoolean2, @NonNull FabTransformationBehavior.FabTransformationSpec paramFabTransformationSpec, @NonNull List<Animator> paramList, List<Animator.AnimatorListener> paramList1)
@@ -422,7 +422,7 @@ public abstract class FabTransformationBehavior
       return;
     }
     paramView2 = (CircularRevealWidget)paramView2;
-    int i = a(paramView1);
+    int i = c(paramView1);
     if (paramBoolean1)
     {
       if (!paramBoolean2) {
@@ -435,14 +435,14 @@ public abstract class FabTransformationBehavior
       paramView1 = ObjectAnimator.ofInt(paramView2, CircularRevealWidget.CircularRevealScrimColorProperty.a, new int[] { i });
     }
     paramView1.setEvaluator(ArgbEvaluatorCompat.a());
-    paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("color").a(paramView1);
+    paramFabTransformationSpec.a.b("color").a(paramView1);
     paramList.add(paramView1);
   }
   
   private float d(@NonNull View paramView1, @NonNull View paramView2, @NonNull Positioning paramPositioning)
   {
-    RectF localRectF1 = this.jdField_a_of_type_AndroidGraphicsRectF;
-    RectF localRectF2 = this.jdField_b_of_type_AndroidGraphicsRectF;
+    RectF localRectF1 = this.b;
+    RectF localRectF2 = this.c;
     b(paramView1, localRectF1);
     a(paramView2, localRectF2);
     localRectF2.offset(0.0F, -b(paramView1, paramView2, paramPositioning));
@@ -454,7 +454,7 @@ public abstract class FabTransformationBehavior
     if (!(paramView2 instanceof ViewGroup)) {
       return;
     }
-    if (((paramView2 instanceof CircularRevealWidget)) && (CircularRevealHelper.jdField_a_of_type_Int == 0)) {
+    if (((paramView2 instanceof CircularRevealWidget)) && (CircularRevealHelper.a == 0)) {
       return;
     }
     paramView1 = a(paramView2);
@@ -472,25 +472,27 @@ public abstract class FabTransformationBehavior
     {
       paramView1 = ObjectAnimator.ofFloat(paramView1, ChildrenAlphaProperty.a, new float[] { 0.0F });
     }
-    paramFabTransformationSpec.jdField_a_of_type_ComGoogleAndroidMaterialAnimationMotionSpec.a("contentFade").a(paramView1);
+    paramFabTransformationSpec.a.b("contentFade").a(paramView1);
     paramList.add(paramView1);
   }
   
+  protected abstract FabTransformationBehavior.FabTransformationSpec a(Context paramContext, boolean paramBoolean);
+  
   @NonNull
-  protected AnimatorSet a(@NonNull View paramView1, @NonNull View paramView2, boolean paramBoolean1, boolean paramBoolean2)
+  protected AnimatorSet b(@NonNull View paramView1, @NonNull View paramView2, boolean paramBoolean1, boolean paramBoolean2)
   {
     Object localObject = a(paramView2.getContext(), paramBoolean1);
     if (paramBoolean1)
     {
-      this.jdField_a_of_type_Float = paramView1.getTranslationX();
-      this.jdField_b_of_type_Float = paramView1.getTranslationY();
+      this.e = paramView1.getTranslationX();
+      this.f = paramView1.getTranslationY();
     }
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     if (Build.VERSION.SDK_INT >= 21) {
       a(paramView1, paramView2, paramBoolean1, paramBoolean2, (FabTransformationBehavior.FabTransformationSpec)localObject, localArrayList1, localArrayList2);
     }
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    RectF localRectF = this.b;
     a(paramView1, paramView2, paramBoolean1, paramBoolean2, (FabTransformationBehavior.FabTransformationSpec)localObject, localArrayList1, localArrayList2, localRectF);
     float f1 = localRectF.width();
     float f2 = localRectF.height();
@@ -512,8 +514,6 @@ public abstract class FabTransformationBehavior
     return localObject;
   }
   
-  protected abstract FabTransformationBehavior.FabTransformationSpec a(Context paramContext, boolean paramBoolean);
-  
   @CallSuper
   public boolean layoutDependsOn(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull View paramView1, @NonNull View paramView2)
   {
@@ -524,7 +524,7 @@ public abstract class FabTransformationBehavior
       boolean bool1 = bool2;
       if (bool3)
       {
-        int i = ((FloatingActionButton)paramView2).a();
+        int i = ((FloatingActionButton)paramView2).getExpandedComponentIdHint();
         if (i != 0)
         {
           bool1 = bool2;
@@ -550,7 +550,7 @@ public abstract class FabTransformationBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.FabTransformationBehavior
  * JD-Core Version:    0.7.0.1
  */

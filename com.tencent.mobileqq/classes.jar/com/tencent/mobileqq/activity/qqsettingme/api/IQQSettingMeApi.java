@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView.BufferType;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.qqsettingme.config.QQSettingMeBizBean.Title;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.qroute.QRouteApi;
@@ -21,8 +22,6 @@ import org.json.JSONObject;
 public abstract interface IQQSettingMeApi
   extends QRouteApi
 {
-  public abstract SpannableString addNamePlateOfKing(View paramView, Resources paramResources, long paramLong, int paramInt, boolean paramBoolean);
-  
   public abstract void checkAndGetSelfNickName(AppRuntime paramAppRuntime);
   
   public abstract boolean checkUsePersonalCard(AppRuntime paramAppRuntime, Card paramCard);
@@ -30,6 +29,8 @@ public abstract interface IQQSettingMeApi
   public abstract Bitmap getBitmapFromCache(AppRuntime paramAppRuntime, String paramString, int paramInt, boolean paramBoolean);
   
   public abstract QQSettingMeBizBean.Title getBusinessEntryText(JSONObject paramJSONObject, String paramString);
+  
+  public abstract URLDrawable getGameCardIcon(View paramView, long paramLong, int paramInt1, boolean paramBoolean, int paramInt2);
   
   public abstract Integer getPlateColor(String paramString);
   
@@ -40,6 +41,8 @@ public abstract interface IQQSettingMeApi
   public abstract View.OnTouchListener headVipReport(AppRuntime paramAppRuntime, String paramString);
   
   public abstract boolean isBigVipClub(int paramInt);
+  
+  public abstract boolean isCanOpenHippy(String paramString);
   
   public abstract SpannableString parseQQLevel(Resources paramResources, int paramInt1, int paramInt2, int paramInt3);
   
@@ -57,7 +60,7 @@ public abstract interface IQQSettingMeApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.api.IQQSettingMeApi
  * JD-Core Version:    0.7.0.1
  */

@@ -52,8 +52,8 @@ public class ForwardSdkShareProcessor$SendMsgByServerStep
       if (TextUtils.isEmpty(str2)) {
         str1 = this.this$0.mAudioUrl;
       }
-      localSendResult.jdField_a_of_type_JavaLangObject = new String[] { str3, str1 };
-      localSendResult.jdField_a_of_type_Int = 0;
+      localSendResult.l = new String[] { str3, str1 };
+      localSendResult.a = 0;
       this.this$0.mUiRequest.mUpCallBack.b(localSendResult);
     }
     this.isFinished = true;
@@ -63,7 +63,7 @@ public class ForwardSdkShareProcessor$SendMsgByServerStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.SendMsgByServerStep
  * JD-Core Version:    0.7.0.1
  */

@@ -36,34 +36,34 @@ public class ShapeableImageView
   extends AppCompatImageView
   implements Shapeable
 {
-  private static final int jdField_a_of_type_Int = R.style.G;
-  @Dimension
-  private float jdField_a_of_type_Float;
+  private static final int a = R.style.I;
+  private final ShapeAppearancePathProvider b = ShapeAppearancePathProvider.a();
+  private final RectF c;
+  private final RectF d;
+  private final Paint e;
+  private final Paint f;
+  private final Path g = new Path();
   @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private ColorStateList h;
   @Nullable
-  private MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-  private ShapeAppearanceModel jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
-  private final ShapeAppearancePathProvider jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider = ShapeAppearancePathProvider.a();
-  private boolean jdField_a_of_type_Boolean = false;
+  private MaterialShapeDrawable i;
+  private ShapeAppearanceModel j;
   @Dimension
-  private int jdField_b_of_type_Int;
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF;
+  private float k;
+  private Path l;
   @Dimension
-  private int c;
+  private int m;
   @Dimension
-  private int d;
+  private int n;
   @Dimension
-  private int e;
+  private int o;
   @Dimension
-  private int f;
+  private int p;
   @Dimension
-  private int g;
+  private int q;
+  @Dimension
+  private int r;
+  private boolean s = false;
   
   public ShapeableImageView(Context paramContext)
   {
@@ -77,34 +77,34 @@ public class ShapeableImageView
   
   public ShapeableImageView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
     paramContext = getContext();
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aq, paramInt, jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentResColorStateList = MaterialResources.a(paramContext, localTypedArray, R.styleable.ek);
-    this.jdField_a_of_type_Float = localTypedArray.getDimensionPixelSize(R.styleable.el, 0);
-    int i = localTypedArray.getDimensionPixelSize(R.styleable.ed, 0);
-    this.jdField_b_of_type_Int = i;
-    this.c = i;
-    this.d = i;
-    this.e = i;
-    this.jdField_b_of_type_Int = localTypedArray.getDimensionPixelSize(R.styleable.eg, i);
-    this.c = localTypedArray.getDimensionPixelSize(R.styleable.ej, i);
-    this.d = localTypedArray.getDimensionPixelSize(R.styleable.eh, i);
-    this.e = localTypedArray.getDimensionPixelSize(R.styleable.ee, i);
-    this.f = localTypedArray.getDimensionPixelSize(R.styleable.ei, -2147483648);
-    this.g = localTypedArray.getDimensionPixelSize(R.styleable.ef, -2147483648);
+    this.f = new Paint();
+    this.f.setAntiAlias(true);
+    this.f.setColor(-1);
+    this.f.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+    this.c = new RectF();
+    this.d = new RectF();
+    this.l = new Path();
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.gi, paramInt, a);
+    this.h = MaterialResources.a(paramContext, localTypedArray, R.styleable.gq);
+    this.k = localTypedArray.getDimensionPixelSize(R.styleable.gr, 0);
+    int i1 = localTypedArray.getDimensionPixelSize(R.styleable.gj, 0);
+    this.m = i1;
+    this.n = i1;
+    this.o = i1;
+    this.p = i1;
+    this.m = localTypedArray.getDimensionPixelSize(R.styleable.gm, i1);
+    this.n = localTypedArray.getDimensionPixelSize(R.styleable.gp, i1);
+    this.o = localTypedArray.getDimensionPixelSize(R.styleable.gn, i1);
+    this.p = localTypedArray.getDimensionPixelSize(R.styleable.gk, i1);
+    this.q = localTypedArray.getDimensionPixelSize(R.styleable.go, -2147483648);
+    this.r = localTypedArray.getDimensionPixelSize(R.styleable.gl, -2147483648);
     localTypedArray.recycle();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = ShapeAppearanceModel.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int).a();
+    this.e = new Paint();
+    this.e.setStyle(Paint.Style.STROKE);
+    this.e.setAntiAlias(true);
+    this.j = ShapeAppearanceModel.a(paramContext, paramAttributeSet, paramInt, a).a();
     if (Build.VERSION.SDK_INT >= 21) {
       setOutlineProvider(new ShapeableImageView.OutlineProvider(this));
     }
@@ -112,31 +112,31 @@ public class ShapeableImageView
   
   private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(getPaddingLeft(), getPaddingTop(), paramInt1 - getPaddingRight(), paramInt2 - getPaddingBottom());
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider.a(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel, 1.0F, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPath);
-    this.jdField_b_of_type_AndroidGraphicsPath.rewind();
-    this.jdField_b_of_type_AndroidGraphicsPath.addPath(this.jdField_a_of_type_AndroidGraphicsPath);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt1, paramInt2);
-    this.jdField_b_of_type_AndroidGraphicsPath.addRect(this.jdField_b_of_type_AndroidGraphicsRectF, Path.Direction.CCW);
+    this.c.set(getPaddingLeft(), getPaddingTop(), paramInt1 - getPaddingRight(), paramInt2 - getPaddingBottom());
+    this.b.a(this.j, 1.0F, this.c, this.g);
+    this.l.rewind();
+    this.l.addPath(this.g);
+    this.d.set(0.0F, 0.0F, paramInt1, paramInt2);
+    this.l.addRect(this.d, Path.Direction.CCW);
   }
   
   private void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList == null) {
+    if (this.h == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-    int i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(getDrawableState(), this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor());
-    if ((this.jdField_a_of_type_Float > 0.0F) && (i != 0))
+    this.e.setStrokeWidth(this.k);
+    int i1 = this.h.getColorForState(getDrawableState(), this.h.getDefaultColor());
+    if ((this.k > 0.0F) && (i1 != 0))
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.e.setColor(i1);
+      paramCanvas.drawPath(this.g, this.e);
     }
   }
   
   private boolean a()
   {
-    return (this.f != -2147483648) || (this.g != -2147483648);
+    return (this.q != -2147483648) || (this.r != -2147483648);
   }
   
   private boolean b()
@@ -145,119 +145,143 @@ public class ShapeableImageView
   }
   
   @Dimension
-  public int a()
+  public int getContentPaddingBottom()
   {
-    return this.e;
-  }
-  
-  @NonNull
-  public ShapeAppearanceModel a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel;
+    return this.p;
   }
   
   @Dimension
-  public final int b()
+  public final int getContentPaddingEnd()
   {
-    int i = this.g;
-    if (i != -2147483648) {
-      return i;
+    int i1 = this.r;
+    if (i1 != -2147483648) {
+      return i1;
     }
     if (b()) {
-      return this.jdField_b_of_type_Int;
+      return this.m;
     }
-    return this.d;
+    return this.o;
   }
   
   @Dimension
-  public int c()
+  public int getContentPaddingLeft()
   {
     if (a())
     {
-      int i;
+      int i1;
       if (b())
       {
-        i = this.g;
-        if (i != -2147483648) {
-          return i;
+        i1 = this.r;
+        if (i1 != -2147483648) {
+          return i1;
         }
       }
       if (!b())
       {
-        i = this.f;
-        if (i != -2147483648) {
-          return i;
+        i1 = this.q;
+        if (i1 != -2147483648) {
+          return i1;
         }
       }
     }
-    return this.jdField_b_of_type_Int;
+    return this.m;
   }
   
   @Dimension
-  public int d()
+  public int getContentPaddingRight()
   {
     if (a())
     {
-      int i;
+      int i1;
       if (b())
       {
-        i = this.f;
-        if (i != -2147483648) {
-          return i;
+        i1 = this.q;
+        if (i1 != -2147483648) {
+          return i1;
         }
       }
       if (!b())
       {
-        i = this.g;
-        if (i != -2147483648) {
-          return i;
+        i1 = this.r;
+        if (i1 != -2147483648) {
+          return i1;
         }
       }
     }
-    return this.d;
+    return this.o;
   }
   
   @Dimension
-  public final int e()
+  public final int getContentPaddingStart()
   {
-    int i = this.f;
-    if (i != -2147483648) {
-      return i;
+    int i1 = this.q;
+    if (i1 != -2147483648) {
+      return i1;
     }
     if (b()) {
-      return this.d;
+      return this.o;
     }
-    return this.jdField_b_of_type_Int;
+    return this.m;
   }
   
   @Dimension
-  public int f()
+  public int getContentPaddingTop()
   {
-    return this.c;
+    return this.n;
   }
   
   @Dimension
   public int getPaddingBottom()
   {
-    return super.getPaddingBottom() - a();
+    return super.getPaddingBottom() - getContentPaddingBottom();
+  }
+  
+  @Dimension
+  public int getPaddingEnd()
+  {
+    return super.getPaddingEnd() - getContentPaddingEnd();
   }
   
   @Dimension
   public int getPaddingLeft()
   {
-    return super.getPaddingLeft() - c();
+    return super.getPaddingLeft() - getContentPaddingLeft();
   }
   
   @Dimension
   public int getPaddingRight()
   {
-    return super.getPaddingRight() - d();
+    return super.getPaddingRight() - getContentPaddingRight();
+  }
+  
+  @Dimension
+  public int getPaddingStart()
+  {
+    return super.getPaddingStart() - getContentPaddingStart();
   }
   
   @Dimension
   public int getPaddingTop()
   {
-    return super.getPaddingTop() - f();
+    return super.getPaddingTop() - getContentPaddingTop();
+  }
+  
+  @NonNull
+  public ShapeAppearanceModel getShapeAppearanceModel()
+  {
+    return this.j;
+  }
+  
+  @Nullable
+  public ColorStateList getStrokeColor()
+  {
+    return this.h;
+  }
+  
+  @Dimension
+  public float getStrokeWidth()
+  {
+    return this.k;
   }
   
   protected void onAttachedToWindow()
@@ -275,20 +299,20 @@ public class ShapeableImageView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(this.l, this.f);
     a(paramCanvas);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.s) {
       return;
     }
     if ((Build.VERSION.SDK_INT > 19) && (!isLayoutDirectionResolved())) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.s = true;
     if ((Build.VERSION.SDK_INT >= 21) && ((isPaddingRelative()) || (a())))
     {
       setPaddingRelative(super.getPaddingStart(), super.getPaddingTop(), super.getPaddingEnd(), super.getPaddingBottom());
@@ -305,48 +329,48 @@ public class ShapeableImageView
   
   public void setContentPadding(@Dimension int paramInt1, @Dimension int paramInt2, @Dimension int paramInt3, @Dimension int paramInt4)
   {
-    this.f = -2147483648;
-    this.g = -2147483648;
-    super.setPadding(super.getPaddingLeft() - this.jdField_b_of_type_Int + paramInt1, super.getPaddingTop() - this.c + paramInt2, super.getPaddingRight() - this.d + paramInt3, super.getPaddingBottom() - this.e + paramInt4);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.d = paramInt3;
-    this.e = paramInt4;
+    this.q = -2147483648;
+    this.r = -2147483648;
+    super.setPadding(super.getPaddingLeft() - this.m + paramInt1, super.getPaddingTop() - this.n + paramInt2, super.getPaddingRight() - this.o + paramInt3, super.getPaddingBottom() - this.p + paramInt4);
+    this.m = paramInt1;
+    this.n = paramInt2;
+    this.o = paramInt3;
+    this.p = paramInt4;
   }
   
   @RequiresApi(17)
   public void setContentPaddingRelative(@Dimension int paramInt1, @Dimension int paramInt2, @Dimension int paramInt3, @Dimension int paramInt4)
   {
-    super.setPaddingRelative(super.getPaddingStart() - e() + paramInt1, super.getPaddingTop() - this.c + paramInt2, super.getPaddingEnd() - b() + paramInt3, super.getPaddingBottom() - this.e + paramInt4);
-    int i;
+    super.setPaddingRelative(super.getPaddingStart() - getContentPaddingStart() + paramInt1, super.getPaddingTop() - this.n + paramInt2, super.getPaddingEnd() - getContentPaddingEnd() + paramInt3, super.getPaddingBottom() - this.p + paramInt4);
+    int i1;
     if (b()) {
-      i = paramInt3;
+      i1 = paramInt3;
     } else {
-      i = paramInt1;
+      i1 = paramInt1;
     }
-    this.jdField_b_of_type_Int = i;
-    this.c = paramInt2;
+    this.m = i1;
+    this.n = paramInt2;
     if (!b()) {
       paramInt1 = paramInt3;
     }
-    this.d = paramInt1;
-    this.e = paramInt4;
+    this.o = paramInt1;
+    this.p = paramInt4;
   }
   
   public void setPadding(@Dimension int paramInt1, @Dimension int paramInt2, @Dimension int paramInt3, @Dimension int paramInt4)
   {
-    super.setPadding(paramInt1 + c(), paramInt2 + f(), paramInt3 + d(), paramInt4 + a());
+    super.setPadding(paramInt1 + getContentPaddingLeft(), paramInt2 + getContentPaddingTop(), paramInt3 + getContentPaddingRight(), paramInt4 + getContentPaddingBottom());
   }
   
   public void setPaddingRelative(@Dimension int paramInt1, @Dimension int paramInt2, @Dimension int paramInt3, @Dimension int paramInt4)
   {
-    super.setPaddingRelative(paramInt1 + e(), paramInt2 + f(), paramInt3 + b(), paramInt4 + a());
+    super.setPaddingRelative(paramInt1 + getContentPaddingStart(), paramInt2 + getContentPaddingTop(), paramInt3 + getContentPaddingEnd(), paramInt4 + getContentPaddingBottom());
   }
   
   public void setShapeAppearanceModel(@NonNull ShapeAppearanceModel paramShapeAppearanceModel)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel = paramShapeAppearanceModel;
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
+    this.j = paramShapeAppearanceModel;
+    MaterialShapeDrawable localMaterialShapeDrawable = this.i;
     if (localMaterialShapeDrawable != null) {
       localMaterialShapeDrawable.setShapeAppearanceModel(paramShapeAppearanceModel);
     }
@@ -359,7 +383,7 @@ public class ShapeableImageView
   
   public void setStrokeColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.h = paramColorStateList;
     invalidate();
   }
   
@@ -370,9 +394,9 @@ public class ShapeableImageView
   
   public void setStrokeWidth(@Dimension float paramFloat)
   {
-    if (this.jdField_a_of_type_Float != paramFloat)
+    if (this.k != paramFloat)
     {
-      this.jdField_a_of_type_Float = paramFloat;
+      this.k = paramFloat;
       invalidate();
     }
   }
@@ -384,7 +408,7 @@ public class ShapeableImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.imageview.ShapeableImageView
  * JD-Core Version:    0.7.0.1
  */

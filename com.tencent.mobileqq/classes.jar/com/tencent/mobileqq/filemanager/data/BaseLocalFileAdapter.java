@@ -10,23 +10,23 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class BaseLocalFileAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private MotionViewSetter jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter = null;
-  private Object jdField_a_of_type_JavaLangObject;
+  private Context a;
+  private Object b;
+  private MotionViewSetter c = null;
   
   public BaseLocalFileAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public void a(MotionViewSetter paramMotionViewSetter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter = paramMotionViewSetter;
+    this.c = paramMotionViewSetter;
   }
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramObject;
   }
   
   public int getCount()
@@ -52,7 +52,7 @@ public class BaseLocalFileAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.BaseLocalFileAdapter
  * JD-Core Version:    0.7.0.1
  */

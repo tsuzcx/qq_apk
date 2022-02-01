@@ -138,7 +138,7 @@ public class DanmuDataServlet
       ((StringBuilder)localObject).append(paramGetBarrageListRspBody);
       QLog.d("DanmuDataHolder", 2, ((StringBuilder)localObject).toString());
     }
-    paramCacheHolder.a(((IDanmakuDecode)QRoute.api(IDanmakuDecode.class)).decodeCommentList(localList1, paramCacheHolder.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.b, DanmuDataHolder.a().jdField_a_of_type_AndroidGraphicsPaint, DanmuDataHolder.a().jdField_a_of_type_Int)).b(localList2).a(m).b(n).c(k).a(bool).a();
+    paramCacheHolder.a(((IDanmakuDecode)QRoute.api(IDanmakuDecode.class)).decodeCommentList(localList1, paramCacheHolder.b.b, DanmuDataHolder.a().a, DanmuDataHolder.a().b)).b(localList2).a(m).b(n).c(k).a(bool).c();
   }
   
   public static void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, String paramString)
@@ -181,21 +181,21 @@ public class DanmuDataServlet
       QLog.d("DanmuDataHolder", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject2 = new oidb_0xdea.GetBarrageListReqBody();
-    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint64_group_code.set(paramCacheHolder.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.b);
-    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint64_barrage_seq.set(paramCacheHolder.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Long);
-    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_last_update_time.set(paramCacheHolder.jdField_a_of_type_Int);
-    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_start_index.set(paramCacheHolder.e);
-    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_barrage_count.set(paramCacheHolder.f);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint64_group_code.set(paramCacheHolder.b.b);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint64_barrage_seq.set(paramCacheHolder.b.a);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_last_update_time.set(paramCacheHolder.d);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_start_index.set(paramCacheHolder.l);
+    ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_barrage_count.set(paramCacheHolder.m);
     int i;
-    if ((paramCacheHolder.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Int != 101) && (paramCacheHolder.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Int != 103)) {
+    if ((paramCacheHolder.b.c != 101) && (paramCacheHolder.b.c != 103)) {
       i = 0;
     } else {
       i = 1;
     }
     if (i != 0)
     {
-      ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_video_start_time.set(paramCacheHolder.jdField_c_of_type_Int);
-      ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_video_end_time.set(paramCacheHolder.jdField_d_of_type_Int);
+      ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_video_start_time.set(paramCacheHolder.j);
+      ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_video_end_time.set(paramCacheHolder.k);
     }
     else
     {
@@ -203,7 +203,7 @@ public class DanmuDataServlet
       ((oidb_0xdea.GetBarrageListReqBody)localObject2).uint32_video_end_time.set(0);
     }
     ((oidb_0xdea.GetBarrageListReqBody)localObject2).terminal.set(0);
-    switch (paramCacheHolder.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Int)
+    switch (paramCacheHolder.b.c)
     {
     default: 
       break;
@@ -224,8 +224,8 @@ public class DanmuDataServlet
     localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
     NewIntent localNewIntent = new NewIntent(((AppRuntime)localObject2).getApp(), DanmuDataServlet.class);
     localNewIntent.putExtra("KEY_SEND_DATA", ((oidb_0xdea.ReqBody)localObject1).toByteArray());
-    localNewIntent.putExtra("KEY_GROUP_UIN", paramCacheHolder.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.b);
-    localNewIntent.putExtra("KEY_TOPIC_UIN", paramCacheHolder.jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Long);
+    localNewIntent.putExtra("KEY_GROUP_UIN", paramCacheHolder.b.b);
+    localNewIntent.putExtra("KEY_TOPIC_UIN", paramCacheHolder.b.a);
     ((AppRuntime)localObject2).startServlet(localNewIntent);
   }
   
@@ -280,7 +280,7 @@ public class DanmuDataServlet
       if (i == 1000) {
         bool2 = true;
       }
-      int j = ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Int;
+      int j = ((DanmuDataHolder.CacheHolder)localObject).b.c;
       if (bool1) {
         paramIntent = "DanmuRsp Valid";
       } else {
@@ -289,23 +289,23 @@ public class DanmuDataServlet
       a(bool2, i, j, bool1, paramIntent);
       if (bool1)
       {
-        paramFromServiceMsg = ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient$DanmuPullCallback;
-        DanmuDataContext localDanmuDataContext = ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext;
-        bool2 = ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_Boolean;
-        i = ((DanmuDataHolder.CacheHolder)localObject).b;
-        if (((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Boolean) {
-          paramIntent = ((DanmuDataHolder.CacheHolder)localObject).jdField_c_of_type_JavaUtilList;
+        paramFromServiceMsg = ((DanmuDataHolder.CacheHolder)localObject).a;
+        DanmuDataContext localDanmuDataContext = ((DanmuDataHolder.CacheHolder)localObject).b;
+        bool2 = ((DanmuDataHolder.CacheHolder)localObject).c;
+        i = ((DanmuDataHolder.CacheHolder)localObject).e;
+        if (((DanmuDataHolder.CacheHolder)localObject).b.d) {
+          paramIntent = ((DanmuDataHolder.CacheHolder)localObject).h;
         } else {
-          paramIntent = ((DanmuDataHolder.CacheHolder)localObject).jdField_d_of_type_JavaUtilList;
+          paramIntent = ((DanmuDataHolder.CacheHolder)localObject).i;
         }
-        paramFromServiceMsg.onDanmuPullResult(localDanmuDataContext, true, bool2, i, (ArrayList)paramIntent, ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_JavaUtilList);
-        ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext.jdField_a_of_type_Boolean = true;
+        paramFromServiceMsg.onDanmuPullResult(localDanmuDataContext, true, bool2, i, (ArrayList)paramIntent, ((DanmuDataHolder.CacheHolder)localObject).f);
+        ((DanmuDataHolder.CacheHolder)localObject).b.d = true;
       }
       else
       {
-        ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_ComTencentMobileqqCommentDanmuDataIPCClient$DanmuPullCallback.onDanmuPullResult(((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_ComTencentMobileqqCommentDanmuDataContext, false, ((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_Boolean, ((DanmuDataHolder.CacheHolder)localObject).b, null, null);
+        ((DanmuDataHolder.CacheHolder)localObject).a.onDanmuPullResult(((DanmuDataHolder.CacheHolder)localObject).b, false, ((DanmuDataHolder.CacheHolder)localObject).c, ((DanmuDataHolder.CacheHolder)localObject).e, null, null);
       }
-      if ((bool1) && (!((DanmuDataHolder.CacheHolder)localObject).jdField_a_of_type_Boolean))
+      if ((bool1) && (!((DanmuDataHolder.CacheHolder)localObject).c))
       {
         if (QLog.isColorLevel()) {
           QLog.i("DanmuDataHolder", 2, "onReceive, 没有结束，接力拉取");
@@ -333,7 +333,7 @@ public class DanmuDataServlet
     ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(1);
     ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent));
-    ((oidb_sso.OIDBSSOPkg)localObject).str_client_version.set(AppSetting.f());
+    ((oidb_sso.OIDBSSOPkg)localObject).str_client_version.set(AppSetting.h());
     paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
     localObject = new byte[paramIntent.length + 4];
     PkgTools.dWord2Byte((byte[])localObject, 0, paramIntent.length + 4);
@@ -344,7 +344,7 @@ public class DanmuDataServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuDataServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -7,35 +7,35 @@ import android.view.View;
 final class CircularRevealAnimator$ChangeViewLayerTypeListener
   extends AnimatorListenerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
+  private View a;
   private int b;
+  private int c;
   
   CircularRevealAnimator$ChangeViewLayerTypeListener(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramView.getLayerType();
+    this.a = paramView;
+    this.b = paramInt;
+    this.c = paramView.getLayerType();
   }
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+    this.a.setLayerType(this.c, null);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+    this.a.setLayerType(this.c, null);
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
+    this.a.setLayerType(this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.CircularRevealAnimator.ChangeViewLayerTypeListener
  * JD-Core Version:    0.7.0.1
  */

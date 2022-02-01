@@ -27,7 +27,7 @@ class TestAppFragment$5$1
         if (i < j)
         {
           String str = ((JSONArray)localObject).getJSONObject(i).getString("openid");
-          if (!str.equals(this.jdField_a_of_type_JavaLangString))
+          if (!str.equals(this.a))
           {
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("openid", str);
@@ -38,11 +38,11 @@ class TestAppFragment$5$1
         else
         {
           localObject = new JSONObject();
-          ((JSONObject)localObject).put("openid", this.jdField_a_of_type_JavaLangString);
+          ((JSONObject)localObject).put("openid", this.a);
           ((JSONObject)localObject).put("score", (int)Math.floor(Math.random() * 1000.0D));
           localJSONArray.put(localObject);
           paramJSONObject.put("scoreList", localJSONArray);
-          this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment$5.a.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("reportScore", paramJSONObject, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment$5.a.jdField_a_of_type_AndroidWidgetEditText));
+          this.b.a.c.a("reportScore", paramJSONObject, new TestAppFragment.MyAPICallback(this.b.a.d));
           return;
         }
       }
@@ -57,7 +57,7 @@ class TestAppFragment$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.test.TestAppFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

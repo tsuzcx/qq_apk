@@ -9,9 +9,9 @@ class GameRoomPresenterImp$9
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.b();
-    this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a(false);
-    this.this$0.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomView.c();
+    this.this$0.c.d();
+    this.this$0.c.a(false);
+    this.this$0.a.g();
   }
 }
 

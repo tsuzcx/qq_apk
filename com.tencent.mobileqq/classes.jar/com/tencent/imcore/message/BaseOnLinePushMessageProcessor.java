@@ -21,12 +21,11 @@ import java.util.Iterator;
 public class BaseOnLinePushMessageProcessor
   extends BaseMessageProcessor
 {
-  protected final MapClassGenerator<Long, Msg0X210SubTypeDecoder> a;
+  protected final MapClassGenerator<Long, Msg0X210SubTypeDecoder> t = new MapClassGeneratorImpl();
   
   public BaseOnLinePushMessageProcessor(AppInterface paramAppInterface, BaseMessageHandler paramBaseMessageHandler)
   {
     super(paramAppInterface, paramBaseMessageHandler);
-    this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator = new MapClassGeneratorImpl();
   }
   
   public static MsgType0x210 a(byte[] paramArrayOfByte)
@@ -48,15 +47,15 @@ public class BaseOnLinePushMessageProcessor
   
   private OnLinePushParamReturnMsg b(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(OnLinePushMsgTypeProcessorDispatcher.a(paramInt)).a(OnLinePushMsgTypeProcessorDispatcher.a(paramInt), paramMsgInfo, paramSvcReqPushMsg);
+    return this.r.a(OnLinePushMsgTypeProcessorDispatcher.a(paramInt)).a(OnLinePushMsgTypeProcessorDispatcher.b(paramInt), paramMsgInfo, paramSvcReqPushMsg);
   }
   
-  private boolean c(MsgType0x210 paramMsgType0x210)
+  private boolean e(MsgType0x210 paramMsgType0x210)
   {
     return paramMsgType0x210.uSubMsgType == 234L;
   }
   
-  private boolean d(MsgType0x210 paramMsgType0x210)
+  private boolean f(MsgType0x210 paramMsgType0x210)
   {
     return (paramMsgType0x210.uSubMsgType == 36L) && (paramMsgType0x210.stMsgInfo0x24 != null);
   }
@@ -69,18 +68,18 @@ public class BaseOnLinePushMessageProcessor
   MessageRecord a(MsgInfo paramMsgInfo, long paramLong)
   {
     MsgType0x210 localMsgType0x210 = a(paramMsgInfo.vMsg);
-    if (!a(localMsgType0x210)) {
+    if (!c(localMsgType0x210)) {
       return null;
     }
-    if (d(localMsgType0x210))
+    if (f(localMsgType0x210))
     {
       a(localMsgType0x210);
       return null;
     }
-    if (b(localMsgType0x210)) {
+    if (d(localMsgType0x210)) {
       return a(paramMsgInfo, paramLong, localMsgType0x210);
     }
-    if (c(localMsgType0x210)) {
+    if (e(localMsgType0x210)) {
       b(localMsgType0x210);
     }
     return null;
@@ -88,7 +87,7 @@ public class BaseOnLinePushMessageProcessor
   
   MessageRecord a(MsgInfo paramMsgInfo, long paramLong, MsgType0x210 paramMsgType0x210)
   {
-    Msg0X210SubTypeDecoder localMsg0X210SubTypeDecoder = (Msg0X210SubTypeDecoder)this.jdField_a_of_type_ComTencentImcoreMessageBasicMapClassGenerator.a(Long.valueOf(paramMsgType0x210.uSubMsgType));
+    Msg0X210SubTypeDecoder localMsg0X210SubTypeDecoder = (Msg0X210SubTypeDecoder)this.t.a(Long.valueOf(paramMsgType0x210.uSubMsgType));
     if (localMsg0X210SubTypeDecoder != null) {
       return localMsg0X210SubTypeDecoder.a(this, paramMsgType0x210, paramLong, paramMsgType0x210.vProtobuf, paramMsgInfo);
     }
@@ -134,17 +133,17 @@ public class BaseOnLinePushMessageProcessor
       {
         Object localObject = (MsgInfo)localIterator.next();
         BaseOnLinePushMessageProcessor.ProcessOneMsgBuildParams localProcessOneMsgBuildParams = new BaseOnLinePushMessageProcessor.ProcessOneMsgBuildParams();
-        localProcessOneMsgBuildParams.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-        localProcessOneMsgBuildParams.jdField_a_of_type_OnlinePushPackSvcReqPushMsg = paramSvcReqPushMsg;
-        localProcessOneMsgBuildParams.jdField_a_of_type_JavaLangString = paramToServiceMsg;
-        localProcessOneMsgBuildParams.jdField_a_of_type_JavaUtilArrayList = localArrayList1;
-        localProcessOneMsgBuildParams.b = localArrayList2;
-        localProcessOneMsgBuildParams.c = localArrayList3;
-        localProcessOneMsgBuildParams.jdField_a_of_type_Long = l;
-        localProcessOneMsgBuildParams.d = localArrayList4;
-        localProcessOneMsgBuildParams.jdField_a_of_type_OnlinePushPackMsgInfo = ((MsgInfo)localObject);
-        localProcessOneMsgBuildParams.jdField_a_of_type_Boolean = false;
-        localObject = a(localProcessOneMsgBuildParams).a();
+        localProcessOneMsgBuildParams.a = paramFromServiceMsg;
+        localProcessOneMsgBuildParams.b = paramSvcReqPushMsg;
+        localProcessOneMsgBuildParams.c = paramToServiceMsg;
+        localProcessOneMsgBuildParams.d = localArrayList1;
+        localProcessOneMsgBuildParams.e = localArrayList2;
+        localProcessOneMsgBuildParams.f = localArrayList3;
+        localProcessOneMsgBuildParams.g = l;
+        localProcessOneMsgBuildParams.h = localArrayList4;
+        localProcessOneMsgBuildParams.i = ((MsgInfo)localObject);
+        localProcessOneMsgBuildParams.j = false;
+        localObject = a(localProcessOneMsgBuildParams).c();
         if ((!((BaseOnLinePushMessageProcessor.ProcessOneMsg)localObject).a()) && (((BaseOnLinePushMessageProcessor.ProcessOneMsg)localObject).b())) {
           return;
         }
@@ -153,21 +152,21 @@ public class BaseOnLinePushMessageProcessor
     }
   }
   
-  boolean a(MsgType0x210 paramMsgType0x210)
+  protected void b(MsgType0x210 paramMsgType0x210) {}
+  
+  boolean c(MsgType0x210 paramMsgType0x210)
   {
     return paramMsgType0x210 != null;
   }
   
-  protected void b(MsgType0x210 paramMsgType0x210) {}
-  
-  public boolean b(MsgType0x210 paramMsgType0x210)
+  public boolean d(MsgType0x210 paramMsgType0x210)
   {
     return paramMsgType0x210.vProtobuf != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseOnLinePushMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

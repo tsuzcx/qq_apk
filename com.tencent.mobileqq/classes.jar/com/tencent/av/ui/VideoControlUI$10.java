@@ -30,8 +30,8 @@ class VideoControlUI$10
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if ((this.a.g != null) && (this.a.g.isShown())) {
-      this.a.s(false);
+    if ((this.a.av != null) && (this.a.av.isShown())) {
+      this.a.u(false);
     }
     return false;
   }

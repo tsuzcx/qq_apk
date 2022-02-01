@@ -5,31 +5,31 @@ import java.util.List;
 
 public abstract class InnerListViewAdapter<T>
 {
-  private int jdField_a_of_type_Int;
-  private List<T> jdField_a_of_type_JavaUtilList;
+  private int a;
+  private List<T> b;
   
   public InnerListViewAdapter(int paramInt, List<T> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramInt;
+    this.b = paramList;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(int paramInt, BaseViewHolder paramBaseViewHolder)
   {
-    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramBaseViewHolder);
+    a(paramInt, this.b.get(paramInt), paramBaseViewHolder);
   }
   
   public abstract void a(int paramInt, T paramT, BaseViewHolder paramBaseViewHolder);
+  
+  public List<T> b()
+  {
+    return this.b;
+  }
 }
 
 

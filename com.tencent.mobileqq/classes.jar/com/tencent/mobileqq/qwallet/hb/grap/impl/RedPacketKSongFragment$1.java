@@ -11,14 +11,14 @@ class RedPacketKSongFragment$1
   
   public void onClick(View paramView)
   {
-    this.a.b.setVisibility(8);
-    this.a.a.setVisibility(8);
+    this.a.q.setVisibility(8);
+    this.a.g.setVisibility(8);
     RedPacketKSongFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.1
  * JD-Core Version:    0.7.0.1
  */

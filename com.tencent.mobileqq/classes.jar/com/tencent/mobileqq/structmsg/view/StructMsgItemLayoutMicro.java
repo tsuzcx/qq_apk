@@ -27,19 +27,14 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgItemLayoutMicro
   extends AbsStructMsgItem
 {
-  protected boolean a;
-  
-  protected int b()
-  {
-    return 2;
-  }
+  protected boolean az;
   
   @TargetApi(16)
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("pre_dialog", false);
+    this.az = paramBundle.getBoolean("pre_dialog", false);
     Resources localResources = paramContext.getResources();
-    AbsShareMsg localAbsShareMsg = (AbsShareMsg)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    AbsShareMsg localAbsShareMsg = (AbsShareMsg)this.as;
     int i = AIOUtils.b(10.0F, localResources);
     Object localObject1;
     if (paramView == null)
@@ -47,7 +42,7 @@ public class StructMsgItemLayoutMicro
       localObject1 = new LinearLayout(paramContext);
       ((LinearLayout)localObject1).setOrientation(1);
       paramBundle = new StructMsgItemLayoutMicro.MiniAppMsgViewHolder(null);
-      ((LinearLayout)localObject1).setTag(2131374849, paramBundle);
+      ((LinearLayout)localObject1).setTag(2131443039, paramBundle);
       paramView = ((LinearLayout)localObject1).getLayoutParams();
       if (paramView == null)
       {
@@ -91,30 +86,30 @@ public class StructMsgItemLayoutMicro
       paramContext.setTextSize(2, 12.0F);
       paramContext.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
       paramContext.setCompoundDrawablePadding(AIOUtils.b(5.0F, localResources));
-      localObject2 = localResources.getDrawable(2130847568);
+      localObject2 = localResources.getDrawable(2130849228);
       ((Drawable)localObject2).setBounds(0, 0, AIOUtils.b(18.0F, localResources), AIOUtils.b(10.0F, localResources));
       paramContext.setCompoundDrawables((Drawable)localObject2, null, null, null);
       paramContext.setPadding(i, i, i, i);
       ((LinearLayout)localObject1).addView(paramContext);
-      paramBundle.jdField_a_of_type_AndroidWidgetTextView = paramView;
-      paramBundle.b = localTextView;
-      paramBundle.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-      paramBundle.c = paramContext;
-      paramBundle.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject1);
+      paramBundle.b = paramView;
+      paramBundle.c = localTextView;
+      paramBundle.d = localImageView;
+      paramBundle.e = paramContext;
+      paramBundle.a = ((LinearLayout)localObject1);
       paramContext = (Context)localObject1;
       paramView = paramBundle;
     }
     else
     {
       paramContext = (LinearLayout)paramView;
-      paramView = (StructMsgItemLayoutMicro.MiniAppMsgViewHolder)paramContext.getTag(2131374849);
+      paramView = (StructMsgItemLayoutMicro.MiniAppMsgViewHolder)paramContext.getTag(2131443039);
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.az) {
       paramContext.setPadding(i, i, i, i);
     } else {
       paramContext.setPadding(0, 0, 0, 0);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg == null)
+    if (this.as == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructMsgItemLayoutMicro", 2, "getView but parentMsg or message is null");
@@ -128,9 +123,9 @@ public class StructMsgItemLayoutMicro
       paramBundle.mRequestWidth = i;
       paramBundle.mRequestHeight = i;
       paramBundle = URLDrawable.getDrawable(localAbsShareMsg.mContentCover, paramBundle);
-      paramBundle.setDecodeHandler(URLDrawableDecodeHandler.a);
+      paramBundle.setDecodeHandler(URLDrawableDecodeHandler.b);
       paramBundle.setBounds(0, 0, i, i);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramBundle, null, null, null);
+      paramView.b.setCompoundDrawables(paramBundle, null, null, null);
     }
     catch (Throwable paramBundle)
     {
@@ -142,14 +137,14 @@ public class StructMsgItemLayoutMicro
         QLog.d("StructMsgItemLayoutMicro", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localAbsShareMsg.mContentTitle);
-    paramView.b.setText(localAbsShareMsg.mContentSummary);
-    paramView.c.setText(HardCodeUtil.a(2131714411));
+    paramView.b.setText(localAbsShareMsg.mContentTitle);
+    paramView.c.setText(localAbsShareMsg.mContentSummary);
+    paramView.e.setText(HardCodeUtil.a(2131911922));
     if (!TextUtils.isEmpty(localAbsShareMsg.mMsg_I_ActionData)) {}
     try
     {
       paramBundle = URLDrawable.getDrawable(localAbsShareMsg.mMsg_I_ActionData, null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+      paramView.d.setImageDrawable(paramBundle);
       return paramContext;
     }
     catch (IllegalArgumentException paramView)
@@ -161,19 +156,24 @@ public class StructMsgItemLayoutMicro
     {
       QLog.d("StructMsgItemLayoutMicro", 2, "getView fail");
       return paramContext;
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      paramView.d.setImageDrawable(null);
     }
     return paramContext;
   }
   
-  public String b()
+  protected int c()
+  {
+    return 2;
+  }
+  
+  public String e()
   {
     return "layoutMicro";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutMicro
  * JD-Core Version:    0.7.0.1
  */

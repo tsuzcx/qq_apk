@@ -12,13 +12,13 @@ class JefsClass$8
   {
     QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
     if ((localQBaseActivity != null) && (!localQBaseActivity.isFinishing())) {
-      DialogUtil.a(localQBaseActivity, 0, null, HardCodeUtil.a(2131705944), localQBaseActivity.getString(2131690728), localQBaseActivity.getString(2131694583), new JefsClass.8.1(this), new JefsClass.8.2(this)).show();
+      DialogUtil.a(localQBaseActivity, 0, null, HardCodeUtil.a(2131903825), localQBaseActivity.getString(2131887648), localQBaseActivity.getString(2131892267), new JefsClass.8.1(this), new JefsClass.8.2(this)).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.8
  * JD-Core Version:    0.7.0.1
  */

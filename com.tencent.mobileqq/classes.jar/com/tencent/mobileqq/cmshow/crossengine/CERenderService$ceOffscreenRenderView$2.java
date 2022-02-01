@@ -26,20 +26,21 @@ final class CERenderService$ceOffscreenRenderView$2
   public final CECMShowOffscreenView invoke()
   {
     Object localObject = new CERenderService.ceOffscreenRenderView.2.apolloViewListener.1(this);
-    CECMShowOffscreenView localCECMShowOffscreenView = new CECMShowOffscreenView(CERenderService.a(this.this$0).a(), CERenderService.a(this.this$0).a(), CERenderService.a(this.this$0).a().name(), CERenderService.a(this.this$0), (OnApolloViewListener)localObject);
-    localObject = CERenderService.a(this.this$0);
+    CECMShowOffscreenView localCECMShowOffscreenView = new CECMShowOffscreenView(CERenderService.c(this.this$0).j(), CERenderService.c(this.this$0).c(), CERenderService.c(this.this$0).k().name(), CERenderService.k(this.this$0), (OnApolloViewListener)localObject);
+    localObject = CERenderService.k(this.this$0);
     if (localObject != null) {
-      localObject = ((RenderConfig)localObject).a;
+      localObject = ((RenderConfig)localObject).f;
     } else {
       localObject = null;
     }
     if (localObject == RenderMode.OFF_SCREEN) {
       ThreadManager.getSubThreadHandler().post((Runnable)new CERenderService.ceOffscreenRenderView.2.1(this));
     }
-    localObject = CERenderService.a(this.this$0);
+    localCECMShowOffscreenView.setAlpha(0.0F);
+    localObject = CERenderService.b(this.this$0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("init CECMShowOffscreenView renderConfig:");
-    localStringBuilder.append(CERenderService.a(this.this$0));
+    localStringBuilder.append(CERenderService.k(this.this$0));
     localStringBuilder.append(", view:");
     localStringBuilder.append(localCECMShowOffscreenView);
     QLog.w((String)localObject, 1, localStringBuilder.toString());
@@ -48,7 +49,7 @@ final class CERenderService$ceOffscreenRenderView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CERenderService.ceOffscreenRenderView.2
  * JD-Core Version:    0.7.0.1
  */

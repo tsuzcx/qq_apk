@@ -14,12 +14,12 @@ class NearbyProxy$7
     if (QLog.isColorLevel()) {
       NearbyUtils.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
     }
-    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyApiNearbyProxy, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    NearbyProxy.a(this.b, 4100, new Object[] { Integer.valueOf(this.a) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyProxy.7
  * JD-Core Version:    0.7.0.1
  */

@@ -24,26 +24,14 @@ public class CommentManager
 {
   private EntityManager a;
   
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
-  
   public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
     return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  public List<CommentEntry> a()
+  private QQStoryContext d()
   {
-    Object localObject = QQStoryContext.a().b();
-    List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "status<>? and authorUnionId=?", new String[] { String.valueOf(0), localObject });
-    localObject = localList;
-    if (localList == null) {
-      localObject = new ArrayList();
-    }
-    SLog.a("Q.qqstory:CommentManager", "query fail comment's size = %d", Integer.valueOf(((List)localObject).size()));
-    return localObject;
+    return QQStoryContext.a();
   }
   
   public List<CommentEntry> a(String paramString, boolean paramBoolean)
@@ -65,7 +53,7 @@ public class CommentManager
   
   public void a()
   {
-    this.a = a().a().createEntityManager();
+    this.a = d().d().createEntityManager();
   }
   
   public void a(int paramInt)
@@ -118,7 +106,7 @@ public class CommentManager
       int k = 0;
       int i = this.a.delete(CommentEntry.class.getSimpleName(), "commentId=? and feedId=? and type in (?,?)", new String[] { String.valueOf(paramInt), paramString, String.valueOf(4), String.valueOf(3) });
       localObject1 = (FeedManager)SuperManager.a(11);
-      Object localObject2 = (CommentLikeFeedItem)((FeedManager)localObject1).a(paramString);
+      Object localObject2 = (CommentLikeFeedItem)((FeedManager)localObject1).b(paramString);
       if (localObject2 == null) {
         return;
       }
@@ -145,7 +133,7 @@ public class CommentManager
       }
       ((FeedManager)localObject1).a((FeedItem)localObject2);
       paramString = new FeedInfoChangeEvent(4, paramString, 2, (CommentLikeFeedItem)localObject2);
-      paramString.c = paramInt;
+      paramString.e = paramInt;
       StoryDispatcher.a().dispatch(paramString);
       return;
     }
@@ -160,7 +148,7 @@ public class CommentManager
     } else {
       i = 3;
     }
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = d().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     if (paramBoolean2) {}
     try
@@ -248,7 +236,7 @@ public class CommentManager
   
   public void b(@NonNull CommentEntry paramCommentEntry)
   {
-    EntityManager localEntityManager = a().a().createEntityManager();
+    EntityManager localEntityManager = d().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     try
     {
@@ -269,9 +257,21 @@ public class CommentManager
     }
   }
   
+  public List<CommentEntry> c()
+  {
+    Object localObject = QQStoryContext.a().i();
+    List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "status<>? and authorUnionId=?", new String[] { String.valueOf(0), localObject });
+    localObject = localList;
+    if (localList == null) {
+      localObject = new ArrayList();
+    }
+    SLog.a("Q.qqstory:CommentManager", "query fail comment's size = %d", Integer.valueOf(((List)localObject).size()));
+    return localObject;
+  }
+  
   public void c(@NonNull CommentEntry paramCommentEntry)
   {
-    localEntityManager = a().a().createEntityManager();
+    localEntityManager = d().d().createEntityManager();
     localEntityManager.getTransaction().begin();
     try
     {
@@ -333,7 +333,7 @@ public class CommentManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.CommentManager
  * JD-Core Version:    0.7.0.1
  */

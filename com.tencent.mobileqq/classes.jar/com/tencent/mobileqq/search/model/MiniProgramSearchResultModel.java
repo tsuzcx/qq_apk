@@ -16,6 +16,7 @@ import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.search.util.SearchUtils.ObjectItemInfo;
+import com.tencent.mobileqq.wxmini.api.IWxMiniManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONException;
@@ -25,63 +26,71 @@ public class MiniProgramSearchResultModel
   extends IContactSearchModel
 {
   public MiniAppLocalSearchEntity a;
-  protected String a;
-  public int[] a;
+  protected String b;
+  public int[] c = new int[3];
   
   public MiniProgramSearchResultModel(QQAppInterface paramQQAppInterface, int paramInt, MiniAppLocalSearchEntity paramMiniAppLocalSearchEntity, String paramString)
   {
     super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity = paramMiniAppLocalSearchEntity;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramMiniAppLocalSearchEntity;
+    this.b = paramString;
+    B();
   }
   
-  public int a()
+  protected boolean A()
   {
-    return 0;
+    String str = this.a.appName;
+    return (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.b)) && (str.equalsIgnoreCase(this.b));
   }
   
-  protected long a(String paramString)
+  protected void B()
   {
-    return 0L;
+    if (A())
+    {
+      f(3);
+      return;
+    }
+    f(9);
   }
   
   public CharSequence a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.desc;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
+    return this.a.desc;
   }
   
   public void a(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.MINI_APP_LOCAL_SEARCH) != null) {
-      if (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask == 0) {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1005, null);
+    if (this.m.getManager(QQManagerFactory.MINI_APP_LOCAL_SEARCH) != null)
+    {
+      int i;
+      if (this.a.showMask == 0) {
+        i = 1005;
       } else {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1027, null);
+        i = 1027;
+      }
+      if (this.a.miniAppType == 1) {
+        ((IWxMiniManager)QRoute.api(IWxMiniManager.class)).startWxMiniAppById((Activity)paramView.getContext(), this.a.appId, "", i);
+      } else {
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById((Activity)paramView.getContext(), this.a.appId, null, null, null, null, i, null);
       }
     }
     if ((paramView.getContext() instanceof UniteSearchActivity))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (SearchUtils.b.containsKey(this))
+      if (SearchUtils.l.containsKey(this))
       {
-        paramView = (SearchUtils.ObjectItemInfo)SearchUtils.b.get(this);
+        paramView = (SearchUtils.ObjectItemInfo)SearchUtils.l.get(this);
         Object localObject1 = new JSONObject();
         try
         {
           ((JSONObject)localObject1).put("project", UniteSearchReportController.a());
           ((JSONObject)localObject1).put("event_src", "client");
-          ((JSONObject)localObject1).put("obj_lct", paramView.jdField_a_of_type_Int);
+          ((JSONObject)localObject1).put("obj_lct", paramView.c);
           ((JSONObject)localObject1).put("get_src", "native");
         }
         catch (JSONException localJSONException)
         {
-          localObject2 = h;
+          localObject2 = l;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("e = ");
           localStringBuilder.append(localJSONException);
@@ -89,10 +98,10 @@ public class MiniProgramSearchResultModel
         }
         ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item");
         Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(paramView.jdField_a_of_type_Long);
+        ((StringBuilder)localObject2).append(paramView.b);
         ((StringBuilder)localObject2).append("");
-        localReportModelDC02528 = localReportModelDC02528.obj1(((StringBuilder)localObject2).toString()).obj2(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(UniteSearchReportController.a(UniteSearchActivity.d));
-        if (c()) {
+        localReportModelDC02528 = localReportModelDC02528.obj1(((StringBuilder)localObject2).toString()).obj2(this.a.appId).ver1(paramView.a).ver2(UniteSearchReportController.a(UniteSearchActivity.f));
+        if (x()) {
           paramView = "1";
         } else {
           paramView = "0";
@@ -100,87 +109,102 @@ public class MiniProgramSearchResultModel
         paramView = localReportModelDC02528.ver3(paramView).ver7(((JSONObject)localObject1).toString());
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(localQQAppInterface.getCurrentAccountUin());
-        ((StringBuilder)localObject1).append(SearchUtils.d);
+        ((StringBuilder)localObject1).append(SearchUtils.j);
         UniteSearchReportController.a(null, paramView.session_id(((StringBuilder)localObject1).toString()));
       }
-      SearchUtils.b(localQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, e(), e());
-      if ((this.i != null) && (!TextUtils.isEmpty(this.i)))
+      SearchUtils.b(localQQAppInterface, this.b, this.p, s(), o());
+      if ((this.p != null) && (!TextUtils.isEmpty(this.p)))
       {
-        UniteSearchReportController.a(null, 0, this.b, "0X8009D31", 3, 0, null, null);
+        UniteSearchReportController.a(null, 0, this.n, "0X8009D31", 3, 0, null, null);
         return;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName != null) && (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName.equals(this.jdField_a_of_type_JavaLangString)))
+      if ((this.a.appName != null) && (this.a.appName.equals(this.b)))
       {
-        UniteSearchReportController.a(null, 0, this.b, "0X8009D33", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
+        UniteSearchReportController.a(null, 0, this.n, "0X8009D33", 0, 0, this.a.appId, null);
         return;
       }
-      UniteSearchReportController.a(null, 0, this.b, "0X8009D45", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
+      UniteSearchReportController.a(null, 0, this.n, "0X8009D45", 0, 0, this.a.appId, null);
     }
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence b()
-  {
-    return SearchUtils.b(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName, this.jdField_a_of_type_JavaLangString, 10, true);
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask & 0x1) != 0;
-  }
-  
-  public int d()
+  public int b()
   {
     return 0;
   }
   
+  public String c()
+  {
+    return this.a.appId;
+  }
+  
   public CharSequence d()
   {
-    return null;
+    return SearchUtils.b(this.a.appName, this.b, 10, true);
   }
   
-  public String d()
+  public CharSequence f()
   {
     return null;
-  }
-  
-  public int e()
-  {
-    return 6;
-  }
-  
-  public String e()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
-  }
-  
-  public String f()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.iconUrl;
   }
   
   public String g()
   {
+    return this.b;
+  }
+  
+  public boolean h()
+  {
+    return false;
+  }
+  
+  public int j()
+  {
+    return 0;
+  }
+  
+  public String m()
+  {
+    return this.a.appName;
+  }
+  
+  public String n()
+  {
+    return null;
+  }
+  
+  protected long n_(String paramString)
+  {
+    return 0L;
+  }
+  
+  public int o()
+  {
+    return 6;
+  }
+  
+  public String s()
+  {
+    return this.a.appId;
+  }
+  
+  public String t()
+  {
+    return this.a.iconUrl;
+  }
+  
+  public String w()
+  {
     return "https://qzonestyle.gtimg.cn/aoi/sola/20190108152813_orkMRcBegl.png";
+  }
+  
+  public boolean x()
+  {
+    return (this.a.showMask & 0x1) != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.MiniProgramSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,16 @@ package com.tencent.av.config;
 
 class ConfigPBProtocol$ConfigSysInfoNew$AudioSwitchPointInfo
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = "";
+  int a = 0;
+  int b = 0;
   int c = 0;
   int d = 0;
-  int e = 0;
+  String e = "";
   int f = 0;
   int g = 0;
   int h = 0;
+  int i = 0;
+  String j = "";
   
   ConfigPBProtocol$ConfigSysInfoNew$AudioSwitchPointInfo(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew) {}
 }

@@ -112,10 +112,10 @@ import tencent.im.msg.im_msg_body.RichMsg;
 
 public class TroopUtils
 {
-  private static int jdField_a_of_type_Int = (int)(System.currentTimeMillis() & 0xFFFFFFFF);
   protected static String a = "https://qun.qq.com/qqweb/m/qunopen/appstore/index.html?_wv=1031&_bid=2195&sonic=1&gc=";
-  private static boolean jdField_a_of_type_Boolean = true;
   protected static String b = "https://qqweb.qq.com/m/qunactivity/index.html?_wv=3&_bid=244&from=aio&groupuin=";
+  private static int c = (int)(System.currentTimeMillis() & 0xFFFFFFFF);
+  private static boolean d = true;
   
   public static int a(int paramInt)
   {
@@ -141,7 +141,7 @@ public class TroopUtils
         return 3;
       }
       TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      paramString = localTroopManager.b(paramString);
+      paramString = localTroopManager.f(paramString);
       i = j;
       if (paramString != null)
       {
@@ -152,7 +152,7 @@ public class TroopUtils
           return 1;
         }
         i = j;
-        if (localTroopManager.l(paramQQAppInterface.getCurrentAccountUin())) {
+        if (localTroopManager.Y(paramQQAppInterface.getCurrentAccountUin())) {
           i = 2;
         }
       }
@@ -162,7 +162,7 @@ public class TroopUtils
   
   public static int a(String paramString)
   {
-    boolean bool = StringUtil.a(paramString);
+    boolean bool = StringUtil.isEmpty(paramString);
     int i = 0;
     if (bool) {
       return 0;
@@ -298,9 +298,9 @@ public class TroopUtils
     int j = paramCard.shGender;
     Object localObject = "";
     if (j == 0) {
-      paramQQAppInterface = paramQQAppInterface.getApp().getString(2131693879);
+      paramQQAppInterface = paramQQAppInterface.getApp().getString(2131891484);
     } else if (paramCard.shGender == 1) {
-      paramQQAppInterface = paramQQAppInterface.getApp().getString(2131692259);
+      paramQQAppInterface = paramQQAppInterface.getApp().getString(2131889246);
     } else {
       paramQQAppInterface = "";
     }
@@ -308,7 +308,7 @@ public class TroopUtils
     String str2 = paramCard.strProvince;
     String str1 = paramCard.strCity;
     j = paramCard.constellation;
-    String str3 = NearbyProfileUtil.c(paramCard.constellation);
+    String str3 = NearbyProfileUtil.e(paramCard.constellation);
     boolean bool = TextUtils.isEmpty(str2);
     if (TextUtils.isEmpty(str1)) {
       paramCard = (Card)localObject;
@@ -317,20 +317,20 @@ public class TroopUtils
     }
     if ((bool) && (j == 0) && (i == -1))
     {
-      paramQQAppInterface = HardCodeUtil.a(2131715211);
+      paramQQAppInterface = HardCodeUtil.a(2131912694);
     }
     else if ((bool) && (j == 0))
     {
-      paramQQAppInterface = HardCodeUtil.a(2131715220);
+      paramQQAppInterface = HardCodeUtil.a(2131912703);
     }
     else if ((bool) && (i == -1))
     {
-      paramQQAppInterface = HardCodeUtil.a(2131715223);
+      paramQQAppInterface = HardCodeUtil.a(2131912706);
     }
     else if ((j == 0) && (i == -1))
     {
       paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append(HardCodeUtil.a(2131715224));
+      paramQQAppInterface.append(HardCodeUtil.a(2131912707));
       paramQQAppInterface.append(str2);
       paramQQAppInterface.append(paramCard);
       paramQQAppInterface = paramQQAppInterface.toString();
@@ -338,7 +338,7 @@ public class TroopUtils
     else if (j == 0)
     {
       paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append(HardCodeUtil.a(2131715217));
+      paramQQAppInterface.append(HardCodeUtil.a(2131912700));
       paramQQAppInterface.append(str2);
       paramQQAppInterface.append(paramCard);
       paramQQAppInterface = paramQQAppInterface.toString();
@@ -346,12 +346,12 @@ public class TroopUtils
     else if (i == -1)
     {
       paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append(HardCodeUtil.a(2131715216));
+      paramQQAppInterface.append(HardCodeUtil.a(2131912699));
       paramQQAppInterface.append(str2);
       paramQQAppInterface.append(paramCard);
-      paramQQAppInterface.append(HardCodeUtil.a(2131715214));
+      paramQQAppInterface.append(HardCodeUtil.a(2131912697));
       paramQQAppInterface.append(str3);
-      paramQQAppInterface.append(HardCodeUtil.a(2131715215));
+      paramQQAppInterface.append(HardCodeUtil.a(2131912698));
       paramQQAppInterface = paramQQAppInterface.toString();
     }
     else if (bool)
@@ -359,19 +359,19 @@ public class TroopUtils
       paramCard = new StringBuilder();
       paramCard.append(str3);
       paramCard.append(paramQQAppInterface);
-      paramCard.append(HardCodeUtil.a(2131715222));
+      paramCard.append(HardCodeUtil.a(2131912705));
       paramQQAppInterface = paramCard.toString();
     }
     else
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715209));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912692));
       ((StringBuilder)localObject).append(str2);
       ((StringBuilder)localObject).append(paramCard);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715221));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912704));
       ((StringBuilder)localObject).append(str3);
       ((StringBuilder)localObject).append(paramQQAppInterface);
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131715212));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131912695));
       paramQQAppInterface = ((StringBuilder)localObject).toString();
     }
     paramCard = new StringBuilder();
@@ -387,7 +387,7 @@ public class TroopUtils
     local5.mMsgBrief = paramString;
     local5.mMsgTemplateID = 1;
     local5.pobingTemplateId = paramInt;
-    paramString = HardCodeUtil.a(2131715210);
+    paramString = HardCodeUtil.a(2131912693);
     Object localObject = StructMsgElementFactory.a(2);
     ((AbsStructMsgItem)localObject).a(new TroopUtils.6(""));
     ((AbsStructMsgItem)localObject).a(new StructMsgItemTitle(paramString));
@@ -407,7 +407,7 @@ public class TroopUtils
     String str = Long.toString(paramLong1);
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Object localObject = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    TroopInfo localTroopInfo = ((TroopManager)localObject).b(str);
+    TroopInfo localTroopInfo = ((TroopManager)localObject).f(str);
     if (localTroopInfo != null)
     {
       boolean bool = TextUtils.equals(paramString, localTroopInfo.oldTroopName);
@@ -416,7 +416,7 @@ public class TroopUtils
       localTroopInfo.hasSetNewTroopName = true;
       ((TroopManager)localObject).b(localTroopInfo);
       ((ITroopListHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).a(TroopObserver.TYPE_GET_TROOP_LIST, false, null);
-      ((ITroopModifyHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MODIFY_HANDLER)).a(TroopModifyObserver.d, true, new Object[] { str, paramString, null });
+      ((ITroopModifyHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MODIFY_HANDLER)).a(TroopModifyObserver.e, true, new Object[] { str, paramString, null });
       if ((bool ^ true))
       {
         if (QLog.isColorLevel())
@@ -441,7 +441,7 @@ public class TroopUtils
     localIntent.putExtra("hide_left_button", false);
     localIntent.putExtra("show_right_close_button", false);
     localIntent.putExtra("individuation_url_type", 40305);
-    VasWebviewUtil.b(paramActivity, VasWebviewUtil.a(IndividuationUrlHelper.a(paramActivity, "background", ""), 46), 33554432L, localIntent, true, paramInt);
+    VasWebviewUtil.b(paramActivity, VasWebviewUtil.b(IndividuationUrlHelper.a(paramActivity, "background", ""), 46), 33554432L, localIntent, true, paramInt);
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004E0E", "0X8004E0E", 0, 0, "", "", "", "");
   }
   
@@ -480,7 +480,7 @@ public class TroopUtils
           i = paramInt;
           if (localTroopManager != null)
           {
-            if (localTroopManager.b(paramBundle.getString("troop_uin")) == null) {
+            if (localTroopManager.f(paramBundle.getString("troop_uin")) == null) {
               break label198;
             }
             i = 1;
@@ -534,7 +534,7 @@ public class TroopUtils
           i = paramInt1;
           if (localTroopManager != null)
           {
-            if (localTroopManager.b(paramBundle.getString("troop_uin")) == null) {
+            if (localTroopManager.f(paramBundle.getString("troop_uin")) == null) {
               break label211;
             }
             i = 1;
@@ -652,9 +652,9 @@ public class TroopUtils
   
   public static void a(View paramView, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, boolean paramBoolean, String paramString1, String paramString2, LongClickCopyAction.ICopyListener paramICopyListener)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131363707);
-    paramView = (TextView)paramView.findViewById(2131376541);
-    paramView.getLayoutParams().height = ViewUtils.b(22.0F);
+    TextView localTextView = (TextView)paramView.findViewById(2131429628);
+    paramView = (TextView)paramView.findViewById(2131444790);
+    paramView.getLayoutParams().height = ViewUtils.dpToPx(22.0F);
     paramView.setGravity(16);
     if (TextUtils.isEmpty(paramCharSequence1))
     {
@@ -689,42 +689,6 @@ public class TroopUtils
     localTextView.setText(paramCharSequence2);
   }
   
-  public static void a(QBaseActivity paramQBaseActivity, TroopInfoData paramTroopInfoData, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramQBaseActivity != null) && (!paramQBaseActivity.isFinishing()) && (paramTroopInfoData != null))
-    {
-      if (paramQQAppInterface == null) {
-        return;
-      }
-      int i;
-      if (paramQBaseActivity.getIntent().getIntExtra("t_s_f", -1) == 1002) {
-        i = 20014;
-      } else if (paramTroopInfoData.isMember) {
-        i = 22000;
-      } else {
-        i = 22003;
-      }
-      String str1 = paramTroopInfoData.troopUin;
-      if (paramTroopInfoData.isMember)
-      {
-        TroopReportor.a("Grp_set_new", "grpData_admin", "clk_report", 0, 0, new String[] { paramTroopInfoData.troopUin, TroopReportor.a(paramTroopInfoData) });
-        paramTroopInfoData = NewReportPlugin.a(str1, 1);
-      }
-      else
-      {
-        String str2 = paramTroopInfoData.troopUin;
-        if (paramTroopInfoData.isMember) {
-          paramTroopInfoData = "1";
-        } else {
-          paramTroopInfoData = "0";
-        }
-        TroopReportor.a("Grp_set_new", "grpData_visitor", "clk_report", 0, 0, new String[] { str2, paramTroopInfoData });
-        paramTroopInfoData = null;
-      }
-      NewReportPlugin.a(paramQBaseActivity, str1, null, null, str1, paramQQAppInterface.getAccount(), i, null, paramTroopInfoData);
-    }
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
   {
     int i;
@@ -737,7 +701,7 @@ public class TroopUtils
       ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupGroupNewsInfo(paramQQAppInterface.getCurrentAccountUin(), "troop_file_new", paramString, 0);
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra(TroopFileProxyActivity.jdField_a_of_type_JavaLangString, paramString);
+    localIntent.putExtra(TroopFileProxyActivity.b, paramString);
     localIntent.putExtra("param_from", 3000);
     TroopFileProxyActivity.a(paramActivity, localIntent, 14, paramQQAppInterface.getCurrentAccountUin());
     ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_set", "", "Grp", "Clk_grpinfo_files", 0, 0, paramString, "0", "", "");
@@ -757,7 +721,7 @@ public class TroopUtils
     paramString2 = (ITroopAppService)paramQQAppInterface.getRuntimeService(ITroopAppService.class, "all");
     if (paramString2 != null)
     {
-      localObject = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString1);
+      localObject = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString1);
       int i = 0;
       if (((TroopInfo)localObject).isHomeworkTroop()) {
         i = 32;
@@ -775,7 +739,7 @@ public class TroopUtils
     if (paramString2 == null)
     {
       paramString2 = new StringBuilder();
-      paramString2.append(jdField_a_of_type_JavaLangString);
+      paramString2.append(a);
       paramString2.append(paramString1);
       localObject = paramString2.toString();
     }
@@ -844,7 +808,7 @@ public class TroopUtils
             paramMessageRecord = (MessageForUniteGrayTip)paramMessageRecord;
             if (paramMessageRecord.tipParam != null)
             {
-              Object localObject = paramMessageRecord.tipParam.a();
+              Object localObject = paramMessageRecord.tipParam.b();
               if (localObject != null)
               {
                 paramMessageRecord = new ArrayList(5);
@@ -882,18 +846,18 @@ public class TroopUtils
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord, String paramString1, String paramString2, String paramString3)
   {
     paramContext = new TroopMsgData();
-    paramContext.jdField_a_of_type_Int = 1;
-    paramContext.jdField_a_of_type_Boolean = true;
+    paramContext.a = 1;
+    paramContext.b = true;
     try
     {
-      paramContext.jdField_a_of_type_Long = Long.parseLong(paramString2);
+      paramContext.c = Long.parseLong(paramString2);
     }
     catch (NumberFormatException paramMessageRecord)
     {
       QLog.e("TroopMemberUtil", 1, paramMessageRecord, new Object[0]);
-      paramContext.jdField_a_of_type_Long = 0L;
+      paramContext.c = 0L;
     }
-    paramContext.b = NumberUtil.a(paramString3);
+    paramContext.d = NumberUtil.b(paramString3);
     paramQQAppInterface.getMessageFacade().a(paramContext);
     ReportController.b(null, "dc00898", "", "", "0X800ADF1", "0X800ADF1", 0, 1, "", "", "", "");
   }
@@ -912,7 +876,7 @@ public class TroopUtils
     TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localTroopManager != null)
     {
-      paramString = localTroopManager.b(paramString);
+      paramString = localTroopManager.f(paramString);
       if (paramString != null)
       {
         ((TroopInfoData)localObject).updateForTroopChatSetting(paramString, paramContext.getResources(), paramQQAppInterface.getCurrentAccountUin());
@@ -956,7 +920,7 @@ public class TroopUtils
       if (!TextUtils.isEmpty(paramString2)) {
         localIntent.putExtra("focusItem", paramString2);
       }
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.g(paramString1))) {
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.F(paramString1))) {
         return;
       }
       a(paramContext, localIntent.getExtras(), 1, 2000);
@@ -982,10 +946,10 @@ public class TroopUtils
       }
       long l = System.currentTimeMillis();
       paramSessionInfo = ((SchoolTroopKeywordManager)paramQQAppInterface.getManager(QQManagerFactory.SCHOOL_TROOP_KEYWORD_MANAGER)).a(paramSessionInfo, paramMessageRecord);
-      if ((paramSessionInfo != null) && (paramSessionInfo.b != -1))
+      if ((paramSessionInfo != null) && (paramSessionInfo.d != -1))
       {
-        ((Spannable)paramTextView.getText()).setSpan(new SchoolTroopKeywordManager.SchoolTroopHighlightSpan(paramQQAppInterface, paramContext, paramSessionInfo), paramSessionInfo.c, paramSessionInfo.d, 17);
-        paramTextView.setTag(2131366954, "school_troop_span");
+        ((Spannable)paramTextView.getText()).setSpan(new SchoolTroopKeywordManager.SchoolTroopHighlightSpan(paramQQAppInterface, paramContext, paramSessionInfo), paramSessionInfo.f, paramSessionInfo.g, 17);
+        paramTextView.setTag(2131433314, "school_troop_span");
       }
       if (QLog.isColorLevel())
       {
@@ -1029,7 +993,7 @@ public class TroopUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, List<ChatMessage> paramList)
   {
-    long l = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+    long l = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).j(paramString);
     Object localObject1;
     int i;
     Object localObject2;
@@ -1057,7 +1021,7 @@ public class TroopUtils
             {
               localObject2 = (MessageForSplitLineTips)localChatMessage;
               ((MessageForSplitLineTips)localObject2).parse();
-              if (HardCodeUtil.a(2131715588).equalsIgnoreCase(((MessageForSplitLineTips)localObject2).msgContent)) {
+              if (HardCodeUtil.a(2131913060).equalsIgnoreCase(((MessageForSplitLineTips)localObject2).msgContent)) {
                 return;
               }
             }
@@ -1079,47 +1043,26 @@ public class TroopUtils
     if ((i > 0) && (localObject1 != null))
     {
       localObject2 = (MessageForSplitLineTips)MessageRecordFactory.a(-4012);
-      ((MessageForSplitLineTips)localObject2).init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramQQAppInterface.getCurrentAccountUin(), HardCodeUtil.a(2131715593), l, -4012, 1, l);
+      ((MessageForSplitLineTips)localObject2).init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramQQAppInterface.getCurrentAccountUin(), HardCodeUtil.a(2131913065), l, -4012, 1, l);
       ((MessageForSplitLineTips)localObject2).shmsgseq = localObject1.shmsgseq;
       ((MessageForSplitLineTips)localObject2).isread = true;
       ((MessageForSplitLineTips)localObject2).mNeedTimeStamp = false;
-      ((MessageForSplitLineTips)localObject2).msgContent = HardCodeUtil.a(2131715594);
+      ((MessageForSplitLineTips)localObject2).msgContent = HardCodeUtil.a(2131913066);
       ((MessageForSplitLineTips)localObject2).subType = 1;
       paramList.add(i, localObject2);
     }
   }
   
-  public static void a(List<String> paramList)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      ITroopRobotService localITroopRobotService = (ITroopRobotService)((QQAppInterface)localObject).getRuntimeService(ITroopRobotService.class, "all");
-      localObject = null;
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (localITroopRobotService.isRobotUin(str)) {
-          localObject = str;
-        }
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramList.remove(localObject);
-      }
-    }
-  }
-  
   public static void a(boolean paramBoolean, View paramView)
   {
-    if (QSecFramework.a().a(1001).booleanValue())
+    if (QSecFramework.c().a(1001).booleanValue())
     {
       if (paramBoolean)
       {
-        QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(2), paramView }, null);
+        QSecFramework.c().a(5, 0, 1, new Object[] { Integer.valueOf(2), paramView }, null);
         return;
       }
-      QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(6), "joingroup", null }, null);
+      QSecFramework.c().a(5, 0, 2, new Object[] { Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(6), "joingroup", null }, null);
     }
   }
   
@@ -1129,7 +1072,7 @@ public class TroopUtils
     if (localObject == null) {
       return false;
     }
-    localObject = ((TroopManager)localObject).b();
+    localObject = ((TroopManager)localObject).h();
     if (localObject == null) {
       return false;
     }
@@ -1197,7 +1140,7 @@ public class TroopUtils
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramLong);
         localStringBuilder.append("");
-        paramQQAppInterface = paramQQAppInterface.b(localStringBuilder.toString());
+        paramQQAppInterface = paramQQAppInterface.f(localStringBuilder.toString());
         bool1 = bool2;
         if (paramQQAppInterface != null) {
           if ((paramQQAppInterface.troopowneruin == null) || (!paramString.equals(paramQQAppInterface.troopowneruin)))
@@ -1226,7 +1169,7 @@ public class TroopUtils
       if (TextUtils.equals(paramMessageRecord.senderuin, paramString)) {
         return false;
       }
-      paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramMessageRecord.frienduin);
+      paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramMessageRecord.frienduin);
       if (paramQQAppInterface == null) {
         return false;
       }
@@ -1240,93 +1183,9 @@ public class TroopUtils
     return false;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a();
-    boolean bool1 = "newJoin".equals(paramString);
-    boolean bool2 = false;
-    if (bool1)
-    {
-      bool1 = bool2;
-      if (paramQQAppInterface.jdField_a_of_type_Int != 1) {}
-    }
-    else
-    {
-      do
-      {
-        for (;;)
-        {
-          bool1 = true;
-          break label137;
-          if ("activeUser".equals(paramString))
-          {
-            bool1 = bool2;
-            if (paramQQAppInterface.h != 1) {
-              break label137;
-            }
-          }
-          else if ("highFreqInteract".equals(paramString))
-          {
-            bool1 = bool2;
-            if (paramQQAppInterface.l != 1) {
-              break label137;
-            }
-          }
-          else
-          {
-            if (!"newMember".equals(paramString)) {
-              break;
-            }
-            bool1 = bool2;
-            if (paramQQAppInterface.o != 1) {
-              break label137;
-            }
-          }
-        }
-        bool1 = bool2;
-        if (!"atMeOrReplyMe".equals(paramString)) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramQQAppInterface.q == 1);
-    }
-    label137:
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkSwitch scene = ");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(",result = ");
-      localStringBuilder.append(bool1);
-      localStringBuilder.append(",config.switchOn = ");
-      localStringBuilder.append(paramQQAppInterface.jdField_a_of_type_Int);
-      localStringBuilder.append(",config.au_switchOn = ");
-      localStringBuilder.append(paramQQAppInterface.h);
-      localStringBuilder.append(",config.hfi_switchOn = ");
-      localStringBuilder.append(paramQQAppInterface.l);
-      localStringBuilder.append(",config.nm_switchOn = ");
-      localStringBuilder.append(paramQQAppInterface.o);
-      localStringBuilder.append(",config.aor_switchOn = ");
-      localStringBuilder.append(paramQQAppInterface.q);
-      QLog.d("TroopMemberUtil", 2, localStringBuilder.toString());
-    }
-    return bool1;
-  }
-  
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
     return TroopInfoUtil.a(paramQQAppInterface, paramString1, paramString2);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    TroopManager localTroopManager = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    paramString = localTroopManager.d(paramString);
-    if (paramString != null) {
-      return paramString.hasSetTroopHead();
-    }
-    return (((ITroopListHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).a()) && (localTroopManager.b());
   }
   
   public static boolean a(List<?> paramList)
@@ -1347,185 +1206,185 @@ public class TroopUtils
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: new 1447	tencent/im/msg/im_msg_body$RichText
+    //   9: new 1362	tencent/im/msg/im_msg_body$RichText
     //   12: dup
-    //   13: invokespecial 1448	tencent/im/msg/im_msg_body$RichText:<init>	()V
+    //   13: invokespecial 1363	tencent/im/msg/im_msg_body$RichText:<init>	()V
     //   16: astore 8
     //   18: aload_1
-    //   19: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   19: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   22: ifne +87 -> 109
-    //   25: new 1450	tencent/im/msg/im_msg_body$Elem
+    //   25: new 1365	tencent/im/msg/im_msg_body$Elem
     //   28: dup
-    //   29: invokespecial 1451	tencent/im/msg/im_msg_body$Elem:<init>	()V
+    //   29: invokespecial 1366	tencent/im/msg/im_msg_body$Elem:<init>	()V
     //   32: astore 9
-    //   34: new 1453	tencent/im/msg/im_msg_body$Text
+    //   34: new 1368	tencent/im/msg/im_msg_body$Text
     //   37: dup
-    //   38: invokespecial 1454	tencent/im/msg/im_msg_body$Text:<init>	()V
+    //   38: invokespecial 1369	tencent/im/msg/im_msg_body$Text:<init>	()V
     //   41: astore 10
     //   43: aload 10
-    //   45: getfield 1457	tencent/im/msg/im_msg_body$Text:str	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   45: getfield 1372	tencent/im/msg/im_msg_body$Text:str	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   48: aload_1
-    //   49: invokestatic 1461	com/tencent/mobileqq/pb/ByteStringMicro:copyFromUtf8	(Ljava/lang/String;)Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   52: invokevirtual 467	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
+    //   49: invokestatic 1376	com/tencent/mobileqq/pb/ByteStringMicro:copyFromUtf8	(Ljava/lang/String;)Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   52: invokevirtual 468	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
     //   55: aload 9
-    //   57: getfield 1465	tencent/im/msg/im_msg_body$Elem:text	Ltencent/im/msg/im_msg_body$Text;
+    //   57: getfield 1380	tencent/im/msg/im_msg_body$Elem:text	Ltencent/im/msg/im_msg_body$Text;
     //   60: aload 10
-    //   62: invokevirtual 1468	tencent/im/msg/im_msg_body$Text:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   62: invokevirtual 1383	tencent/im/msg/im_msg_body$Text:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   65: aload 8
-    //   67: getfield 1472	tencent/im/msg/im_msg_body$RichText:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   67: getfield 1387	tencent/im/msg/im_msg_body$RichText:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   70: aload 9
-    //   72: invokevirtual 1476	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   75: new 1450	tencent/im/msg/im_msg_body$Elem
+    //   72: invokevirtual 1391	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   75: new 1365	tencent/im/msg/im_msg_body$Elem
     //   78: dup
-    //   79: invokespecial 1451	tencent/im/msg/im_msg_body$Elem:<init>	()V
+    //   79: invokespecial 1366	tencent/im/msg/im_msg_body$Elem:<init>	()V
     //   82: astore 9
     //   84: aload 9
-    //   86: getfield 1480	tencent/im/msg/im_msg_body$Elem:rich_msg	Ltencent/im/msg/im_msg_body$RichMsg;
+    //   86: getfield 1395	tencent/im/msg/im_msg_body$Elem:rich_msg	Ltencent/im/msg/im_msg_body$RichMsg;
     //   89: aload_1
     //   90: sipush 2000
-    //   93: invokestatic 1482	com/tencent/mobileqq/troop/utils/TroopUtils:a	(Ljava/lang/String;I)Ltencent/im/msg/im_msg_body$RichMsg;
-    //   96: invokevirtual 1483	tencent/im/msg/im_msg_body$RichMsg:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   93: invokestatic 1397	com/tencent/mobileqq/troop/utils/TroopUtils:a	(Ljava/lang/String;I)Ltencent/im/msg/im_msg_body$RichMsg;
+    //   96: invokevirtual 1398	tencent/im/msg/im_msg_body$RichMsg:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   99: aload 8
-    //   101: getfield 1472	tencent/im/msg/im_msg_body$RichText:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   101: getfield 1387	tencent/im/msg/im_msg_body$RichText:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   104: aload 9
-    //   106: invokevirtual 1476	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   109: new 1485	tencent/im/msg/im_msg_body$MsgBody
+    //   106: invokevirtual 1391	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   109: new 1400	tencent/im/msg/im_msg_body$MsgBody
     //   112: dup
-    //   113: invokespecial 1486	tencent/im/msg/im_msg_body$MsgBody:<init>	()V
+    //   113: invokespecial 1401	tencent/im/msg/im_msg_body$MsgBody:<init>	()V
     //   116: astore_1
     //   117: aload_1
-    //   118: getfield 1490	tencent/im/msg/im_msg_body$MsgBody:rich_text	Ltencent/im/msg/im_msg_body$RichText;
+    //   118: getfield 1405	tencent/im/msg/im_msg_body$MsgBody:rich_text	Ltencent/im/msg/im_msg_body$RichText;
     //   121: aload 8
-    //   123: invokevirtual 1491	tencent/im/msg/im_msg_body$RichText:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   126: new 1493	tencent/im/msg/im_msg$Msg
+    //   123: invokevirtual 1406	tencent/im/msg/im_msg_body$RichText:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   126: new 1408	tencent/im/msg/im_msg$Msg
     //   129: dup
-    //   130: invokespecial 1494	tencent/im/msg/im_msg$Msg:<init>	()V
+    //   130: invokespecial 1409	tencent/im/msg/im_msg$Msg:<init>	()V
     //   133: astore 9
     //   135: aload 9
-    //   137: getfield 1498	tencent/im/msg/im_msg$Msg:body	Ltencent/im/msg/im_msg_body$MsgBody;
+    //   137: getfield 1413	tencent/im/msg/im_msg$Msg:body	Ltencent/im/msg/im_msg_body$MsgBody;
     //   140: aload_1
-    //   141: invokevirtual 1499	tencent/im/msg/im_msg_body$MsgBody:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   144: new 1501	tencent/im/msg/im_msg$Group
+    //   141: invokevirtual 1414	tencent/im/msg/im_msg_body$MsgBody:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   144: new 1416	tencent/im/msg/im_msg$Group
     //   147: dup
-    //   148: invokespecial 1502	tencent/im/msg/im_msg$Group:<init>	()V
+    //   148: invokespecial 1417	tencent/im/msg/im_msg$Group:<init>	()V
     //   151: astore 8
-    //   153: new 1504	tencent/im/msg/im_common$User
+    //   153: new 1419	tencent/im/msg/im_common$User
     //   156: dup
-    //   157: invokespecial 1505	tencent/im/msg/im_common$User:<init>	()V
+    //   157: invokespecial 1420	tencent/im/msg/im_common$User:<init>	()V
     //   160: astore 10
     //   162: aload 10
-    //   164: getfield 1508	tencent/im/msg/im_common$User:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   164: getfield 1423	tencent/im/msg/im_common$User:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   167: lload_2
-    //   168: invokevirtual 1513	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   168: invokevirtual 1428	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   171: aload 10
-    //   173: getfield 1516	tencent/im/msg/im_common$User:app_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   173: getfield 1431	tencent/im/msg/im_common$User:app_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   176: sipush 1001
-    //   179: invokevirtual 476	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   179: invokevirtual 477	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   182: aload 10
-    //   184: getfield 1519	tencent/im/msg/im_common$User:instance_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   184: getfield 1434	tencent/im/msg/im_common$User:instance_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   187: iconst_1
-    //   188: invokevirtual 476	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   188: invokevirtual 477	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   191: aload 10
-    //   193: getfield 1523	tencent/im/msg/im_common$User:client_ip	Lcom/tencent/mobileqq/pb/PBFixed32Field;
-    //   196: invokestatic 1527	com/dataline/util/DatalineMathUtil:a	()J
+    //   193: getfield 1438	tencent/im/msg/im_common$User:client_ip	Lcom/tencent/mobileqq/pb/PBFixed32Field;
+    //   196: invokestatic 1442	com/dataline/util/DatalineMathUtil:a	()J
     //   199: l2i
-    //   200: invokevirtual 1530	com/tencent/mobileqq/pb/PBFixed32Field:set	(I)V
+    //   200: invokevirtual 1445	com/tencent/mobileqq/pb/PBFixed32Field:set	(I)V
     //   203: aload 10
-    //   205: getfield 1533	tencent/im/msg/im_common$User:platform_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   205: getfield 1448	tencent/im/msg/im_common$User:platform_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   208: bipush 109
-    //   210: invokevirtual 476	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   210: invokevirtual 477	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   213: aload 10
-    //   215: getfield 1536	tencent/im/msg/im_common$User:version	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   218: invokestatic 1540	com/tencent/common/config/AppSetting:a	()I
-    //   221: invokevirtual 476	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   215: getfield 1451	tencent/im/msg/im_common$User:version	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   218: invokestatic 1455	com/tencent/common/config/AppSetting:d	()I
+    //   221: invokevirtual 477	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   224: aload 8
-    //   226: getfield 1544	tencent/im/msg/im_msg$Group:sender	Ltencent/im/msg/im_common$User;
+    //   226: getfield 1459	tencent/im/msg/im_msg$Group:sender	Ltencent/im/msg/im_common$User;
     //   229: aload 10
-    //   231: invokevirtual 1545	tencent/im/msg/im_common$User:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   231: invokevirtual 1460	tencent/im/msg/im_common$User:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   234: aload 8
-    //   236: getfield 1544	tencent/im/msg/im_msg$Group:sender	Ltencent/im/msg/im_common$User;
-    //   239: getfield 1508	tencent/im/msg/im_common$User:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   236: getfield 1459	tencent/im/msg/im_msg$Group:sender	Ltencent/im/msg/im_common$User;
+    //   239: getfield 1423	tencent/im/msg/im_common$User:uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   242: lload_2
-    //   243: invokevirtual 1513	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
-    //   246: new 1547	tencent/im/msg/im_common$GroupInfo
+    //   243: invokevirtual 1428	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   246: new 1462	tencent/im/msg/im_common$GroupInfo
     //   249: dup
-    //   250: invokespecial 1548	tencent/im/msg/im_common$GroupInfo:<init>	()V
+    //   250: invokespecial 1463	tencent/im/msg/im_common$GroupInfo:<init>	()V
     //   253: astore_1
     //   254: aload 8
-    //   256: getfield 1552	tencent/im/msg/im_msg$Group:group_info	Ltencent/im/msg/im_common$GroupInfo;
+    //   256: getfield 1467	tencent/im/msg/im_msg$Group:group_info	Ltencent/im/msg/im_common$GroupInfo;
     //   259: aload_1
-    //   260: invokevirtual 1553	tencent/im/msg/im_common$GroupInfo:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   260: invokevirtual 1468	tencent/im/msg/im_common$GroupInfo:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   263: aload 8
-    //   265: getfield 1552	tencent/im/msg/im_msg$Group:group_info	Ltencent/im/msg/im_common$GroupInfo;
-    //   268: getfield 1556	tencent/im/msg/im_common$GroupInfo:group_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   265: getfield 1467	tencent/im/msg/im_msg$Group:group_info	Ltencent/im/msg/im_common$GroupInfo;
+    //   268: getfield 1471	tencent/im/msg/im_common$GroupInfo:group_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   271: lload 4
-    //   273: invokevirtual 1513	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
+    //   273: invokevirtual 1428	com/tencent/mobileqq/pb/PBUInt64Field:set	(J)V
     //   276: aload 8
-    //   278: getfield 1552	tencent/im/msg/im_msg$Group:group_info	Ltencent/im/msg/im_common$GroupInfo;
-    //   281: getfield 1560	tencent/im/msg/im_common$GroupInfo:group_type	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   278: getfield 1467	tencent/im/msg/im_msg$Group:group_info	Ltencent/im/msg/im_common$GroupInfo;
+    //   281: getfield 1475	tencent/im/msg/im_common$GroupInfo:group_type	Lcom/tencent/mobileqq/pb/PBEnumField;
     //   284: iconst_1
-    //   285: invokevirtual 1563	com/tencent/mobileqq/pb/PBEnumField:set	(I)V
-    //   288: new 1565	tencent/im/msg/im_msg$RoutingHead
+    //   285: invokevirtual 1478	com/tencent/mobileqq/pb/PBEnumField:set	(I)V
+    //   288: new 1480	tencent/im/msg/im_msg$RoutingHead
     //   291: dup
-    //   292: invokespecial 1566	tencent/im/msg/im_msg$RoutingHead:<init>	()V
+    //   292: invokespecial 1481	tencent/im/msg/im_msg$RoutingHead:<init>	()V
     //   295: astore_1
     //   296: aload_1
-    //   297: getfield 1570	tencent/im/msg/im_msg$RoutingHead:group	Ltencent/im/msg/im_msg$Group;
+    //   297: getfield 1485	tencent/im/msg/im_msg$RoutingHead:group	Ltencent/im/msg/im_msg$Group;
     //   300: aload 8
-    //   302: invokevirtual 1571	tencent/im/msg/im_msg$Group:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   305: new 1573	tencent/im/msg/im_msg$ContentHead
+    //   302: invokevirtual 1486	tencent/im/msg/im_msg$Group:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   305: new 1488	tencent/im/msg/im_msg$ContentHead
     //   308: dup
-    //   309: invokespecial 1574	tencent/im/msg/im_msg$ContentHead:<init>	()V
+    //   309: invokespecial 1489	tencent/im/msg/im_msg$ContentHead:<init>	()V
     //   312: astore 8
     //   314: aload 8
-    //   316: getfield 1577	tencent/im/msg/im_msg$ContentHead:seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   316: getfield 1492	tencent/im/msg/im_msg$ContentHead:seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   319: astore 11
-    //   321: getstatic 26	com/tencent/mobileqq/troop/utils/TroopUtils:jdField_a_of_type_Int	I
+    //   321: getstatic 27	com/tencent/mobileqq/troop/utils/TroopUtils:c	I
     //   324: istore 6
     //   326: iload 6
     //   328: iconst_1
     //   329: iadd
-    //   330: putstatic 26	com/tencent/mobileqq/troop/utils/TroopUtils:jdField_a_of_type_Int	I
+    //   330: putstatic 27	com/tencent/mobileqq/troop/utils/TroopUtils:c	I
     //   333: aload 11
     //   335: iload 6
-    //   337: invokevirtual 476	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   340: new 1579	tencent/im/msg/im_msg$MsgHead
+    //   337: invokevirtual 477	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   340: new 1494	tencent/im/msg/im_msg$MsgHead
     //   343: dup
-    //   344: invokespecial 1580	tencent/im/msg/im_msg$MsgHead:<init>	()V
+    //   344: invokespecial 1495	tencent/im/msg/im_msg$MsgHead:<init>	()V
     //   347: astore 11
     //   349: aload 11
-    //   351: getfield 1584	tencent/im/msg/im_msg$MsgHead:content_head	Ltencent/im/msg/im_msg$ContentHead;
+    //   351: getfield 1499	tencent/im/msg/im_msg$MsgHead:content_head	Ltencent/im/msg/im_msg$ContentHead;
     //   354: aload 8
-    //   356: invokevirtual 1585	tencent/im/msg/im_msg$ContentHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   356: invokevirtual 1500	tencent/im/msg/im_msg$ContentHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   359: aload 11
-    //   361: getfield 1589	tencent/im/msg/im_msg$MsgHead:routing_head	Ltencent/im/msg/im_msg$RoutingHead;
+    //   361: getfield 1504	tencent/im/msg/im_msg$MsgHead:routing_head	Ltencent/im/msg/im_msg$RoutingHead;
     //   364: aload_1
-    //   365: invokevirtual 1590	tencent/im/msg/im_msg$RoutingHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   365: invokevirtual 1505	tencent/im/msg/im_msg$RoutingHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   368: aload 9
-    //   370: getfield 1594	tencent/im/msg/im_msg$Msg:head	Ltencent/im/msg/im_msg$MsgHead;
+    //   370: getfield 1509	tencent/im/msg/im_msg$Msg:head	Ltencent/im/msg/im_msg$MsgHead;
     //   373: aload 11
-    //   375: invokevirtual 1595	tencent/im/msg/im_msg$MsgHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   378: new 1597	tencent/im/msg/im_imagent$Signature
+    //   375: invokevirtual 1510	tencent/im/msg/im_msg$MsgHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   378: new 1512	tencent/im/msg/im_imagent$Signature
     //   381: dup
-    //   382: invokespecial 1598	tencent/im/msg/im_imagent$Signature:<init>	()V
+    //   382: invokespecial 1513	tencent/im/msg/im_imagent$Signature:<init>	()V
     //   385: astore 11
     //   387: aload 11
-    //   389: getfield 1601	tencent/im/msg/im_imagent$Signature:key_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   389: getfield 1516	tencent/im/msg/im_imagent$Signature:key_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   392: iconst_1
-    //   393: invokevirtual 476	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   393: invokevirtual 477	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   396: aload 11
-    //   398: getfield 1604	tencent/im/msg/im_imagent$Signature:session_app_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   398: getfield 1519	tencent/im/msg/im_imagent$Signature:session_app_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   401: sipush 256
-    //   404: invokevirtual 476	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   404: invokevirtual 477	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
     //   407: aload_0
-    //   408: invokestatic 1609	com/tencent/qqconnect/wtlogin/LoginHelper:a	(Lcom/tencent/common/app/AppInterface;)Ljava/lang/String;
+    //   408: invokestatic 1524	com/tencent/qqconnect/wtlogin/LoginHelper:a	(Lcom/tencent/common/app/AppInterface;)Ljava/lang/String;
     //   411: astore_0
     //   412: aload_0
-    //   413: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   413: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   416: istore 7
     //   418: aload_0
     //   419: astore 8
@@ -1536,146 +1395,146 @@ public class TroopUtils
     //   428: astore_1
     //   429: goto +8 -> 437
     //   432: astore_1
-    //   433: ldc_w 309
+    //   433: ldc_w 310
     //   436: astore_0
     //   437: aload_0
     //   438: astore 8
-    //   440: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   440: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   443: ifeq +45 -> 488
-    //   446: new 385	java/lang/StringBuilder
+    //   446: new 386	java/lang/StringBuilder
     //   449: dup
-    //   450: invokespecial 386	java/lang/StringBuilder:<init>	()V
+    //   450: invokespecial 387	java/lang/StringBuilder:<init>	()V
     //   453: astore 8
     //   455: aload 8
-    //   457: ldc_w 1611
-    //   460: invokevirtual 391	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: ldc_w 1526
+    //   460: invokevirtual 392	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   463: pop
     //   464: aload 8
     //   466: aload_1
-    //   467: invokevirtual 1614	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
-    //   470: invokevirtual 391	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   467: invokevirtual 1529	java/lang/InterruptedException:getMessage	()Ljava/lang/String;
+    //   470: invokevirtual 392	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   473: pop
-    //   474: ldc 105
+    //   474: ldc 107
     //   476: iconst_2
     //   477: aload 8
-    //   479: invokevirtual 394	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   482: invokestatic 1617	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   479: invokevirtual 395	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   482: invokestatic 1532	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   485: aload_0
     //   486: astore 8
     //   488: aload 11
-    //   490: getfield 1620	tencent/im/msg/im_imagent$Signature:session_key	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   490: getfield 1535	tencent/im/msg/im_imagent$Signature:session_key	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   493: aload 8
-    //   495: invokestatic 1461	com/tencent/mobileqq/pb/ByteStringMicro:copyFromUtf8	(Ljava/lang/String;)Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   498: invokevirtual 467	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
-    //   501: new 1622	tencent/im/msg/im_imagent$ImAgentHead
+    //   495: invokestatic 1376	com/tencent/mobileqq/pb/ByteStringMicro:copyFromUtf8	(Ljava/lang/String;)Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   498: invokevirtual 468	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
+    //   501: new 1537	tencent/im/msg/im_imagent$ImAgentHead
     //   504: dup
-    //   505: invokespecial 1623	tencent/im/msg/im_imagent$ImAgentHead:<init>	()V
+    //   505: invokespecial 1538	tencent/im/msg/im_imagent$ImAgentHead:<init>	()V
     //   508: astore_0
     //   509: aload_0
-    //   510: getfield 1626	tencent/im/msg/im_imagent$ImAgentHead:command	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   510: getfield 1541	tencent/im/msg/im_imagent$ImAgentHead:command	Lcom/tencent/mobileqq/pb/PBEnumField;
     //   513: iconst_3
-    //   514: invokevirtual 1563	com/tencent/mobileqq/pb/PBEnumField:set	(I)V
+    //   514: invokevirtual 1478	com/tencent/mobileqq/pb/PBEnumField:set	(I)V
     //   517: aload_0
-    //   518: getfield 1630	tencent/im/msg/im_imagent$ImAgentHead:signature	Ltencent/im/msg/im_imagent$Signature;
+    //   518: getfield 1545	tencent/im/msg/im_imagent$ImAgentHead:signature	Ltencent/im/msg/im_imagent$Signature;
     //   521: aload 11
-    //   523: invokevirtual 1631	tencent/im/msg/im_imagent$Signature:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   523: invokevirtual 1546	tencent/im/msg/im_imagent$Signature:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   526: aload_0
-    //   527: getfield 1634	tencent/im/msg/im_imagent$ImAgentHead:req_user	Ltencent/im/msg/im_common$User;
+    //   527: getfield 1549	tencent/im/msg/im_imagent$ImAgentHead:req_user	Ltencent/im/msg/im_common$User;
     //   530: aload 10
-    //   532: invokevirtual 1545	tencent/im/msg/im_common$User:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   532: invokevirtual 1460	tencent/im/msg/im_common$User:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   535: aload_0
-    //   536: getfield 1635	tencent/im/msg/im_imagent$ImAgentHead:seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   536: getfield 1550	tencent/im/msg/im_imagent$ImAgentHead:seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   539: astore_1
-    //   540: getstatic 26	com/tencent/mobileqq/troop/utils/TroopUtils:jdField_a_of_type_Int	I
+    //   540: getstatic 27	com/tencent/mobileqq/troop/utils/TroopUtils:c	I
     //   543: istore 6
     //   545: iload 6
     //   547: iconst_1
     //   548: iadd
-    //   549: putstatic 26	com/tencent/mobileqq/troop/utils/TroopUtils:jdField_a_of_type_Int	I
+    //   549: putstatic 27	com/tencent/mobileqq/troop/utils/TroopUtils:c	I
     //   552: aload_1
     //   553: iload 6
-    //   555: invokevirtual 476	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
-    //   558: new 1637	tencent/im/msg/im_msg$MsgSendReq
+    //   555: invokevirtual 477	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   558: new 1552	tencent/im/msg/im_msg$MsgSendReq
     //   561: dup
-    //   562: invokespecial 1638	tencent/im/msg/im_msg$MsgSendReq:<init>	()V
+    //   562: invokespecial 1553	tencent/im/msg/im_msg$MsgSendReq:<init>	()V
     //   565: astore_1
     //   566: aload_1
-    //   567: getfield 1642	tencent/im/msg/im_msg$MsgSendReq:msg	Ltencent/im/msg/im_msg$Msg;
+    //   567: getfield 1557	tencent/im/msg/im_msg$MsgSendReq:msg	Ltencent/im/msg/im_msg$Msg;
     //   570: aload 9
-    //   572: invokevirtual 1643	tencent/im/msg/im_msg$Msg:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   575: new 1645	tencent/im/msg/im_imagent$ImAgentPackage
+    //   572: invokevirtual 1558	tencent/im/msg/im_msg$Msg:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   575: new 1560	tencent/im/msg/im_imagent$ImAgentPackage
     //   578: dup
-    //   579: invokespecial 1646	tencent/im/msg/im_imagent$ImAgentPackage:<init>	()V
+    //   579: invokespecial 1561	tencent/im/msg/im_imagent$ImAgentPackage:<init>	()V
     //   582: astore 8
     //   584: aload 8
-    //   586: getfield 1649	tencent/im/msg/im_imagent$ImAgentPackage:head	Ltencent/im/msg/im_imagent$ImAgentHead;
+    //   586: getfield 1564	tencent/im/msg/im_imagent$ImAgentPackage:head	Ltencent/im/msg/im_imagent$ImAgentHead;
     //   589: aload_0
-    //   590: invokevirtual 1650	tencent/im/msg/im_imagent$ImAgentHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   590: invokevirtual 1565	tencent/im/msg/im_imagent$ImAgentHead:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   593: aload 8
-    //   595: getfield 1654	tencent/im/msg/im_imagent$ImAgentPackage:msg_send_req	Ltencent/im/msg/im_msg$MsgSendReq;
+    //   595: getfield 1569	tencent/im/msg/im_imagent$ImAgentPackage:msg_send_req	Ltencent/im/msg/im_msg$MsgSendReq;
     //   598: aload_1
-    //   599: invokevirtual 1655	tencent/im/msg/im_msg$MsgSendReq:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   599: invokevirtual 1570	tencent/im/msg/im_msg$MsgSendReq:set	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
     //   602: aload 8
-    //   604: invokevirtual 1658	tencent/im/msg/im_imagent$ImAgentPackage:toByteArray	()[B
+    //   604: invokevirtual 1573	tencent/im/msg/im_imagent$ImAgentPackage:toByteArray	()[B
     //   607: astore 8
-    //   609: new 1660	java/io/ByteArrayOutputStream
+    //   609: new 1575	java/io/ByteArrayOutputStream
     //   612: dup
     //   613: aload 8
     //   615: arraylength
     //   616: bipush 8
     //   618: iadd
-    //   619: invokespecial 1661	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   619: invokespecial 1576	java/io/ByteArrayOutputStream:<init>	(I)V
     //   622: astore_0
-    //   623: new 1663	java/io/DataOutputStream
+    //   623: new 1578	java/io/DataOutputStream
     //   626: dup
     //   627: aload_0
-    //   628: invokespecial 1666	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   628: invokespecial 1581	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   631: astore_1
     //   632: aload_1
     //   633: aload 8
     //   635: arraylength
     //   636: bipush 8
     //   638: iadd
-    //   639: invokevirtual 1669	java/io/DataOutputStream:writeInt	(I)V
+    //   639: invokevirtual 1584	java/io/DataOutputStream:writeInt	(I)V
     //   642: aload_1
     //   643: bipush 123
-    //   645: invokevirtual 1672	java/io/DataOutputStream:write	(I)V
+    //   645: invokevirtual 1587	java/io/DataOutputStream:write	(I)V
     //   648: aload_1
     //   649: bipush 123
-    //   651: invokevirtual 1672	java/io/DataOutputStream:write	(I)V
+    //   651: invokevirtual 1587	java/io/DataOutputStream:write	(I)V
     //   654: aload_1
     //   655: aload 8
-    //   657: invokevirtual 1675	java/io/DataOutputStream:write	([B)V
+    //   657: invokevirtual 1590	java/io/DataOutputStream:write	([B)V
     //   660: aload_1
     //   661: bipush 125
-    //   663: invokevirtual 1672	java/io/DataOutputStream:write	(I)V
+    //   663: invokevirtual 1587	java/io/DataOutputStream:write	(I)V
     //   666: aload_1
     //   667: bipush 125
-    //   669: invokevirtual 1672	java/io/DataOutputStream:write	(I)V
+    //   669: invokevirtual 1587	java/io/DataOutputStream:write	(I)V
     //   672: aload_0
-    //   673: invokevirtual 1676	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   673: invokevirtual 1591	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   676: astore 8
     //   678: aload_0
-    //   679: invokevirtual 1679	java/io/ByteArrayOutputStream:close	()V
+    //   679: invokevirtual 1594	java/io/ByteArrayOutputStream:close	()V
     //   682: aload_1
-    //   683: invokevirtual 1680	java/io/DataOutputStream:close	()V
+    //   683: invokevirtual 1595	java/io/DataOutputStream:close	()V
     //   686: aload 8
     //   688: areturn
     //   689: astore 8
     //   691: goto +20 -> 711
     //   694: astore 8
     //   696: aload 8
-    //   698: invokevirtual 1683	java/lang/Exception:printStackTrace	()V
+    //   698: invokevirtual 1598	java/lang/Exception:printStackTrace	()V
     //   701: aload_0
-    //   702: invokevirtual 1679	java/io/ByteArrayOutputStream:close	()V
+    //   702: invokevirtual 1594	java/io/ByteArrayOutputStream:close	()V
     //   705: aload_1
-    //   706: invokevirtual 1680	java/io/DataOutputStream:close	()V
+    //   706: invokevirtual 1595	java/io/DataOutputStream:close	()V
     //   709: aconst_null
     //   710: areturn
     //   711: aload_0
-    //   712: invokevirtual 1679	java/io/ByteArrayOutputStream:close	()V
+    //   712: invokevirtual 1594	java/io/ByteArrayOutputStream:close	()V
     //   715: aload_1
-    //   716: invokevirtual 1680	java/io/DataOutputStream:close	()V
+    //   716: invokevirtual 1595	java/io/DataOutputStream:close	()V
     //   719: aload 8
     //   721: athrow
     //   722: astore_0
@@ -1712,39 +1571,49 @@ public class TroopUtils
     //   711	719	729	java/lang/Exception
   }
   
-  public static final int b(QQAppInterface paramQQAppInterface, String paramString)
+  public static void b(QBaseActivity paramQBaseActivity, TroopInfoData paramTroopInfoData, QQAppInterface paramQQAppInterface)
   {
-    int j = 2;
-    int i = j;
-    if (paramQQAppInterface != null)
+    if ((paramQBaseActivity != null) && (!paramQBaseActivity.isFinishing()) && (paramTroopInfoData != null))
     {
-      i = j;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
-        i = j;
-        if (paramString != null)
-        {
-          if (paramString.isTroopOwner(paramQQAppInterface.getCurrentUin())) {
-            return 0;
-          }
-          i = j;
-          if (paramString.isTroopAdmin(paramQQAppInterface.getCurrentUin())) {
-            i = 1;
-          }
-        }
+      if (paramQQAppInterface == null) {
+        return;
       }
+      int i;
+      if (paramQBaseActivity.getIntent().getIntExtra("t_s_f", -1) == 1002) {
+        i = 20014;
+      } else if (paramTroopInfoData.isMember) {
+        i = 22000;
+      } else {
+        i = 22003;
+      }
+      String str1 = paramTroopInfoData.troopUin;
+      if (paramTroopInfoData.isMember)
+      {
+        TroopReportor.a("Grp_set_new", "grpData_admin", "clk_report", 0, 0, new String[] { paramTroopInfoData.troopUin, TroopReportor.a(paramTroopInfoData) });
+        paramTroopInfoData = NewReportPlugin.a(str1, 1);
+      }
+      else
+      {
+        String str2 = paramTroopInfoData.troopUin;
+        if (paramTroopInfoData.isMember) {
+          paramTroopInfoData = "1";
+        } else {
+          paramTroopInfoData = "0";
+        }
+        TroopReportor.a("Grp_set_new", "grpData_visitor", "clk_report", 0, 0, new String[] { str2, paramTroopInfoData });
+        paramTroopInfoData = null;
+      }
+      NewReportPlugin.a(paramQBaseActivity, str1, null, null, str1, paramQQAppInterface.getAccount(), i, null, paramTroopInfoData);
     }
-    return i;
   }
   
   public static void b(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord, String paramString1, String paramString2, String paramString3)
   {
     paramContext = new TroopMsgData();
-    paramContext.jdField_a_of_type_Int = 2;
-    paramContext.jdField_a_of_type_Boolean = true;
-    paramContext.jdField_a_of_type_Long = NumberUtil.a(paramString2);
-    paramContext.b = NumberUtil.a(paramString3);
+    paramContext.a = 2;
+    paramContext.b = true;
+    paramContext.c = NumberUtil.b(paramString2);
+    paramContext.d = NumberUtil.b(paramString3);
     paramQQAppInterface.getMessageFacade().a(paramContext);
     ReportController.b(null, "dc00898", "", "", "0X800B190", "0X800B190", 0, 1, "", "", "", "");
   }
@@ -1766,7 +1635,7 @@ public class TroopUtils
     Object localObject2 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localObject2 != null)
     {
-      localObject2 = ((TroopManager)localObject2).b(paramString);
+      localObject2 = ((TroopManager)localObject2).f(paramString);
       if (localObject2 != null)
       {
         if (((TroopInfo)localObject2).isAdmin())
@@ -1784,6 +1653,27 @@ public class TroopUtils
     }
   }
   
+  public static void b(List<String> paramList)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      ITroopRobotService localITroopRobotService = (ITroopRobotService)((QQAppInterface)localObject).getRuntimeService(ITroopRobotService.class, "all");
+      localObject = null;
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (localITroopRobotService.isRobotUin(str)) {
+          localObject = str;
+        }
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramList.remove(localObject);
+      }
+    }
+  }
+  
   public static boolean b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
     if (paramMessageRecord.istroop == 1)
@@ -1791,7 +1681,7 @@ public class TroopUtils
       if (TextUtils.equals(paramMessageRecord.senderuin, paramString)) {
         return true;
       }
-      paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramMessageRecord.frienduin);
+      paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramMessageRecord.frienduin);
       if (paramQQAppInterface == null) {
         return false;
       }
@@ -1805,18 +1695,119 @@ public class TroopUtils
     return false;
   }
   
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).k();
+    boolean bool1 = "newJoin".equals(paramString);
+    boolean bool2 = false;
+    if (bool1)
+    {
+      bool1 = bool2;
+      if (paramQQAppInterface.b != 1) {}
+    }
+    else
+    {
+      do
+      {
+        for (;;)
+        {
+          bool1 = true;
+          break label137;
+          if ("activeUser".equals(paramString))
+          {
+            bool1 = bool2;
+            if (paramQQAppInterface.l != 1) {
+              break label137;
+            }
+          }
+          else if ("highFreqInteract".equals(paramString))
+          {
+            bool1 = bool2;
+            if (paramQQAppInterface.p != 1) {
+              break label137;
+            }
+          }
+          else
+          {
+            if (!"newMember".equals(paramString)) {
+              break;
+            }
+            bool1 = bool2;
+            if (paramQQAppInterface.s != 1) {
+              break label137;
+            }
+          }
+        }
+        bool1 = bool2;
+        if (!"atMeOrReplyMe".equals(paramString)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (paramQQAppInterface.v == 1);
+    }
+    label137:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkSwitch scene = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",result = ");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append(",config.switchOn = ");
+      localStringBuilder.append(paramQQAppInterface.b);
+      localStringBuilder.append(",config.au_switchOn = ");
+      localStringBuilder.append(paramQQAppInterface.l);
+      localStringBuilder.append(",config.hfi_switchOn = ");
+      localStringBuilder.append(paramQQAppInterface.p);
+      localStringBuilder.append(",config.nm_switchOn = ");
+      localStringBuilder.append(paramQQAppInterface.s);
+      localStringBuilder.append(",config.aor_switchOn = ");
+      localStringBuilder.append(paramQQAppInterface.v);
+      QLog.d("TroopMemberUtil", 2, localStringBuilder.toString());
+    }
+    return bool1;
+  }
+  
   public static boolean b(String paramString)
   {
-    String str = SharePreferenceUtils.a(BaseApplicationImpl.getApplication(), paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberUtil", 2, String.format("isEmptyRedPointSP [%s, %s]", new Object[] { paramString, str }));
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    TroopManager localTroopManager = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    paramString = localTroopManager.h(paramString);
+    if (paramString != null) {
+      return paramString.hasSetTroopHead();
     }
-    return TextUtils.isEmpty(str);
+    return (((ITroopListHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).c()) && (localTroopManager.l());
+  }
+  
+  public static final int c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int j = 2;
+    int i = j;
+    if (paramQQAppInterface != null)
+    {
+      i = j;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString);
+        i = j;
+        if (paramString != null)
+        {
+          if (paramString.isTroopOwner(paramQQAppInterface.getCurrentUin())) {
+            return 0;
+          }
+          i = j;
+          if (paramString.isTroopAdmin(paramQQAppInterface.getCurrentUin())) {
+            i = 1;
+          }
+        }
+      }
+    }
+    return i;
   }
   
   public static boolean c(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString)
   {
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramMessageRecord.frienduin);
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramMessageRecord.frienduin);
     boolean bool = false;
     if (paramQQAppInterface == null) {
       return false;
@@ -1826,10 +1817,19 @@ public class TroopUtils
     }
     return bool;
   }
+  
+  public static boolean c(String paramString)
+  {
+    String str = SharePreferenceUtils.a(BaseApplicationImpl.getApplication(), paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopMemberUtil", 2, String.format("isEmptyRedPointSP [%s, %s]", new Object[] { paramString, str }));
+    }
+    return TextUtils.isEmpty(str);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUtils
  * JD-Core Version:    0.7.0.1
  */

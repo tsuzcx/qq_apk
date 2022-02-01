@@ -10,12 +10,12 @@ class RIJGetArticleListHandler$2$2
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler$2.a, this.jdField_a_of_type_JavaUtilList, false);
+    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.b.b, this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJGetArticleListHandler.2.2
  * JD-Core Version:    0.7.0.1
  */

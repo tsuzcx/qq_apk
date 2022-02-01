@@ -27,7 +27,7 @@ class ChatHistory$11
       label29:
       break label29;
     }
-    paramInt1 = this.a.c;
+    paramInt1 = this.a.r;
     if ((paramCharSequence.length() > 1) && (paramCharSequence.charAt(0) == '0')) {}
     for (paramCharSequence = String.valueOf(paramInt1);; paramCharSequence = String.valueOf(paramInt1))
     {
@@ -37,10 +37,10 @@ class ChatHistory$11
         break label71;
         paramInt2 = 0;
         label71:
-        if ((paramInt1 < 1) || (paramInt1 > this.a.c) || (paramInt2 != 0)) {}
+        if ((paramInt1 < 1) || (paramInt1 > this.a.r) || (paramInt2 != 0)) {}
         try
         {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(Math.max(0, paramCharSequence.length() - 1));
+          this.a.o.setSelection(Math.max(0, paramCharSequence.length() - 1));
         }
         catch (Exception localException2)
         {
@@ -52,30 +52,30 @@ class ChatHistory$11
         localStringBuilder.append("current s:");
         localStringBuilder.append(paramCharSequence);
         QLog.e("ChatHistory", 1, localStringBuilder.toString());
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.toString());
+        this.a.o.setText(paramCharSequence.toString());
         paramCharSequence = this.a;
-        if (paramInt1 >= paramCharSequence.c) {
-          paramInt1 = this.a.c;
+        if (paramInt1 >= paramCharSequence.r) {
+          paramInt1 = this.a.r;
         }
-        paramCharSequence.d = paramInt1;
-        if (this.a.d >= this.a.c)
+        paramCharSequence.s = paramInt1;
+        if (this.a.s >= this.a.r)
         {
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849919);
+          this.a.H.setEnabled(false);
+          this.a.H.setImageResource(2130851647);
         }
         else
         {
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839081);
+          this.a.H.setEnabled(true);
+          this.a.H.setImageResource(2130839236);
         }
-        if (this.a.d <= 1)
+        if (this.a.s <= 1)
         {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840566);
+          this.a.G.setEnabled(false);
+          this.a.G.setImageResource(2130841331);
           break label381;
         }
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839080);
+        this.a.G.setEnabled(true);
+        this.a.G.setImageResource(2130839235);
         break label381;
         paramCharSequence = paramCharSequence.subSequence(0, paramCharSequence.length() - 1).toString();
         try
@@ -88,17 +88,17 @@ class ChatHistory$11
           break label365;
         }
       }
-      paramInt1 = this.a.c;
+      paramInt1 = this.a.r;
     }
     label381:
     paramCharSequence = this.a;
-    paramCharSequence.e = ((paramCharSequence.d - 1) * 8);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+    paramCharSequence.t = ((paramCharSequence.s - 1) * 8);
+    this.a.j.a(this.a.e, this.a.f, this.a.t);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.11
  * JD-Core Version:    0.7.0.1
  */

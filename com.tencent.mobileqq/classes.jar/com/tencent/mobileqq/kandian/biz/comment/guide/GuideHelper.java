@@ -25,12 +25,12 @@ import org.json.JSONObject;
 public class GuideHelper
   implements ReadInJoyCommentDataManager.OnDataChangeListener
 {
-  private int jdField_a_of_type_Int = 10;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b = 0;
+  private Set<String> a = new HashSet();
+  private int b = 10;
+  private String c;
+  private boolean d = false;
+  private int e = 0;
+  private AbsBaseArticleInfo f;
   
   private void a(String paramString, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
@@ -38,7 +38,7 @@ public class GuideHelper
     RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder2 = localReportR5Builder1.addOS();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(CommentGuideConfigHandler.a());
+    localStringBuilder.append(CommentGuideConfigHandler.d());
     localReportR5Builder2.addStringNotThrow("wording", localStringBuilder.toString());
     ReadInJoyCommentUtils.a(paramString, paramAbsBaseArticleInfo, localReportR5Builder1);
   }
@@ -48,19 +48,19 @@ public class GuideHelper
     if (!a(paramCommentViewItem)) {
       return paramView;
     }
-    if ((!TextUtils.isEmpty(paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID)) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID)))
+    if ((!TextUtils.isEmpty(paramCommentViewItem.d.innerUniqueID)) && (!this.a.contains(paramCommentViewItem.d.innerUniqueID)))
     {
-      a("0X8009FE9", paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-      this.jdField_a_of_type_JavaUtilSet.add(paramCommentViewItem.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID);
+      a("0X8009FE9", paramCommentViewItem.d);
+      this.a.add(paramCommentViewItem.d.innerUniqueID);
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
     if (localLayoutParams.bottomMargin >= 0) {
-      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298875));
+      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131299592));
     }
     paramViewGroup.setLayoutParams(localLayoutParams);
     if (paramView == null) {
-      paramView = LayoutInflater.from(paramContext).inflate(2131560316, null);
+      paramView = LayoutInflater.from(paramContext).inflate(2131626362, null);
     }
     paramView.setOnClickListener(new GuideHelper.1(this, paramCommentViewItem, paramContext));
     return paramView;
@@ -72,12 +72,12 @@ public class GuideHelper
     localStringBuilder.append("showGuidePagerNum : ");
     localStringBuilder.append(paramInt);
     QLog.d("GuideHelper", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    this.f = paramAbsBaseArticleInfo;
   }
   
   public void a(String paramString)
@@ -91,10 +91,10 @@ public class GuideHelper
     }
     try
     {
-      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).getString("app_schema");
+      this.c = new JSONObject(paramString).getString("app_schema");
       paramString = new StringBuilder();
       paramString.append("scheme : ");
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.c);
       QLog.d("GuideHelper", 1, paramString.toString());
       return;
     }
@@ -106,37 +106,37 @@ public class GuideHelper
   
   public void a(boolean paramBoolean, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = 0;
+    this.d = paramBoolean;
+    this.e = 0;
     if (paramViewGroup == null) {
       return;
     }
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
     if (!paramBoolean) {
-      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298873));
+      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131299590));
     }
     paramViewGroup.setLayoutParams(localLayoutParams);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.d;
   }
   
   public boolean a(CommentViewItem paramCommentViewItem)
   {
-    return (paramCommentViewItem != null) && (paramCommentViewItem.jdField_a_of_type_Int == 6);
+    return (paramCommentViewItem != null) && (paramCommentViewItem.a == 6);
   }
   
   public boolean a(List<CommentViewItem> paramList)
   {
-    int i = this.b;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (i > this.jdField_a_of_type_Int) && (paramList != null))
+    int i = this.e;
+    if ((!TextUtils.isEmpty(this.c)) && (i > this.b) && (paramList != null))
     {
-      CommentViewItem localCommentViewItem = new CommentViewItem(6, null, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      CommentViewItem localCommentViewItem = new CommentViewItem(6, null, this.f);
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext()) {
-        if (((CommentViewItem)localIterator.next()).jdField_a_of_type_Int == 6) {
+        if (((CommentViewItem)localIterator.next()).a == 6) {
           localIterator.remove();
         }
       }
@@ -145,7 +145,7 @@ public class GuideHelper
       paramList.append("addGuidePager : ");
       paramList.append(i);
       paramList.append("  articleInfo :");
-      paramList.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      paramList.append(this.f);
       QLog.d("GuideHelper", 1, paramList.toString());
       return true;
     }
@@ -164,13 +164,13 @@ public class GuideHelper
   
   public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<CommentViewItem> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
-    this.b = 1;
+    this.e = 1;
     a(paramList);
   }
   
   public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<CommentViewItem> paramList, boolean paramBoolean2, int paramInt2)
   {
-    this.b += 1;
+    this.e += 1;
     a(paramList);
   }
   
@@ -182,7 +182,7 @@ public class GuideHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.guide.GuideHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -24,24 +24,24 @@ import com.tencent.qphone.base.util.QLog;
 public class RoundImageView
   extends URLImageView
 {
-  private static final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
-  private static final ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.CENTER_CROP;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -16777216;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
-  private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 0;
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d;
+  private static final ImageView.ScaleType b = ImageView.ScaleType.CENTER_CROP;
+  private static final Bitmap.Config c = Bitmap.Config.ARGB_8888;
+  String a;
+  private final RectF d = new RectF();
+  private final RectF e = new RectF();
+  private final Matrix f = new Matrix();
+  private final Paint g = new Paint();
+  private final Paint h = new Paint();
+  private int i = -16777216;
+  private int j = 0;
+  private Bitmap k;
+  private BitmapShader l;
+  private int m;
+  private int n;
+  private float o;
+  private float p;
+  private boolean q;
+  private boolean r;
   
   public RoundImageView(Context paramContext)
   {
@@ -73,9 +73,9 @@ public class RoundImageView
     {
       Bitmap localBitmap;
       if ((paramDrawable instanceof ColorDrawable)) {
-        localBitmap = Bitmap.createBitmap(1, 1, jdField_a_of_type_AndroidGraphicsBitmap$Config);
+        localBitmap = Bitmap.createBitmap(1, 1, c);
       } else {
-        localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), jdField_a_of_type_AndroidGraphicsBitmap$Config);
+        localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), c);
       }
       Canvas localCanvas = new Canvas(localBitmap);
       paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
@@ -88,74 +88,74 @@ public class RoundImageView
   
   private void b()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.q)
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.r = true;
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.k;
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader((Bitmap)localObject, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Int);
-    this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    this.c = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-    this.jdField_b_of_type_Float = Math.min((this.jdField_b_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_Int) / 2.0F, (this.jdField_b_of_type_AndroidGraphicsRectF.width() - this.jdField_b_of_type_Int) / 2.0F);
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    int i = this.jdField_b_of_type_Int;
-    ((RectF)localObject).set(i, i, this.jdField_b_of_type_AndroidGraphicsRectF.width() - this.jdField_b_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Float = Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F);
+    this.l = new BitmapShader((Bitmap)localObject, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    this.g.setAntiAlias(true);
+    this.g.setShader(this.l);
+    this.h.setStyle(Paint.Style.STROKE);
+    this.h.setAntiAlias(true);
+    this.h.setColor(this.i);
+    this.h.setStrokeWidth(this.j);
+    this.n = this.k.getHeight();
+    this.m = this.k.getWidth();
+    this.e.set(0.0F, 0.0F, getWidth(), getHeight());
+    this.p = Math.min((this.e.height() - this.j) / 2.0F, (this.e.width() - this.j) / 2.0F);
+    localObject = this.d;
+    int i1 = this.j;
+    ((RectF)localObject).set(i1, i1, this.e.width() - this.j, this.e.height() - this.j);
+    this.o = Math.min(this.d.height() / 2.0F, this.d.width() / 2.0F);
     c();
     invalidate();
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(null);
-    float f1 = this.c;
-    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.height();
-    float f4 = this.jdField_a_of_type_AndroidGraphicsRectF.width();
-    float f5 = this.d;
+    this.f.set(null);
+    float f1 = this.m;
+    float f2 = this.d.height();
+    float f4 = this.d.width();
+    float f5 = this.n;
     float f3 = 0.0F;
     if (f1 * f2 > f4 * f5)
     {
-      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.d;
-      f2 = (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.c * f1) * 0.5F;
+      f1 = this.d.height() / this.n;
+      f2 = (this.d.width() - this.m * f1) * 0.5F;
     }
     else
     {
-      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.c;
-      f3 = (this.jdField_a_of_type_AndroidGraphicsRectF.height() - this.d * f1) * 0.5F;
+      f1 = this.d.width() / this.m;
+      f3 = (this.d.height() - this.n * f1) * 0.5F;
       f2 = 0.0F;
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
-    int i = (int)(f2 + 0.5F);
-    int j = this.jdField_b_of_type_Int;
-    localMatrix.postTranslate(i + j, (int)(f3 + 0.5F) + j);
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.f.setScale(f1, f1);
+    Matrix localMatrix = this.f;
+    int i1 = (int)(f2 + 0.5F);
+    int i2 = this.j;
+    localMatrix.postTranslate(i1 + i2, (int)(f3 + 0.5F) + i2);
+    this.l.setLocalMatrix(this.f);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_b_of_type_Boolean)
+    this.q = true;
+    if (this.r)
     {
       b();
-      this.jdField_b_of_type_Boolean = false;
+      this.r = false;
     }
   }
   
   public ImageView.ScaleType getScaleType()
   {
-    return jdField_a_of_type_AndroidWidgetImageView$ScaleType;
+    return b;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -163,8 +163,8 @@ public class RoundImageView
     if (getDrawable() == null) {
       return;
     }
-    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.o, this.g);
+    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.p, this.h);
   }
   
   @TargetApi(11)
@@ -185,27 +185,27 @@ public class RoundImageView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     super.setImageBitmap(paramBitmap);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.k = paramBitmap;
     b();
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramDrawable);
+    this.k = a(paramDrawable);
     b();
   }
   
   public void setImageFilePath(String paramString)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if ((str != null) && (str.equals(paramString))) {
       return;
     }
     try
     {
       setImageBitmap(BitmapFactory.decodeFile(paramString));
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.a = paramString;
       return;
     }
     catch (OutOfMemoryError paramString)
@@ -217,18 +217,18 @@ public class RoundImageView
   public void setImageResource(int paramInt)
   {
     super.setImageResource(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(getDrawable());
+    this.k = a(getDrawable());
     b();
   }
   
   public void setIsready()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.q = true;
   }
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
-    if (paramScaleType == jdField_a_of_type_AndroidWidgetImageView$ScaleType) {
+    if (paramScaleType == b) {
       return;
     }
     throw new IllegalArgumentException(String.format("ScaleType %s not supported.", new Object[] { paramScaleType }));
@@ -236,7 +236,7 @@ public class RoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

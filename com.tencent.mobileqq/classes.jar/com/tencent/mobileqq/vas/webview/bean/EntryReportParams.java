@@ -49,7 +49,7 @@ public class EntryReportParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.webview.bean.EntryReportParams
  * JD-Core Version:    0.7.0.1
  */

@@ -151,10 +151,10 @@ public final class AdVideo185UIStateUtil
   {
     if (paramIVideoPlayManager != null)
     {
-      paramIVideoPlayManager = paramIVideoPlayManager.a();
+      paramIVideoPlayManager = paramIVideoPlayManager.d();
       if (paramIVideoPlayManager != null)
       {
-        paramIVideoPlayManager = paramIVideoPlayManager.b();
+        paramIVideoPlayManager = paramIVideoPlayManager.d();
         break label27;
       }
     }
@@ -174,10 +174,10 @@ public final class AdVideo185UIStateUtil
   {
     if (paramIVideoPlayManager != null)
     {
-      localObject = paramIVideoPlayManager.a();
+      localObject = paramIVideoPlayManager.d();
       if (localObject != null)
       {
-        localObject = ((IVideoUIManager)localObject).c();
+        localObject = ((IVideoUIManager)localObject).e();
         break label27;
       }
     }
@@ -193,7 +193,7 @@ public final class AdVideo185UIStateUtil
   public final void a(@Nullable VideoPlayParam paramVideoPlayParam)
   {
     if (paramVideoPlayParam != null) {
-      paramVideoPlayParam = paramVideoPlayParam.a;
+      paramVideoPlayParam = paramVideoPlayParam.D;
     } else {
       paramVideoPlayParam = null;
     }
@@ -233,7 +233,7 @@ public final class AdVideo185UIStateUtil
     String str1 = null;
     Object localObject;
     if (paramVideoPlayParam != null) {
-      localObject = paramVideoPlayParam.a;
+      localObject = paramVideoPlayParam.D;
     } else {
       localObject = null;
     }
@@ -289,7 +289,7 @@ public final class AdVideo185UIStateUtil
   public final void a(@Nullable VideoPlayParam paramVideoPlayParam, @Nullable ReadInJoyVideoAdHighLightBar paramReadInJoyVideoAdHighLightBar)
   {
     if (paramVideoPlayParam != null) {
-      paramVideoPlayParam = paramVideoPlayParam.a;
+      paramVideoPlayParam = paramVideoPlayParam.D;
     } else {
       paramVideoPlayParam = null;
     }
@@ -308,7 +308,7 @@ public final class AdVideo185UIStateUtil
     Object localObject3 = null;
     Object localObject1;
     if (paramVideoPlayParam != null) {
-      localObject1 = paramVideoPlayParam.a;
+      localObject1 = paramVideoPlayParam.D;
     } else {
       localObject1 = null;
     }
@@ -324,10 +324,10 @@ public final class AdVideo185UIStateUtil
       }
       if (paramIVideoPlayManager != null)
       {
-        localObject1 = paramIVideoPlayManager.a();
+        localObject1 = paramIVideoPlayManager.d();
         if (localObject1 != null)
         {
-          localObject1 = ((IVideoUIManager)localObject1).c();
+          localObject1 = ((IVideoUIManager)localObject1).e();
           break label88;
         }
       }
@@ -337,10 +337,10 @@ public final class AdVideo185UIStateUtil
       localObject1 = localObject3;
       if (paramIVideoPlayManager != null)
       {
-        IVideoUIManager localIVideoUIManager = paramIVideoPlayManager.a();
+        IVideoUIManager localIVideoUIManager = paramIVideoPlayManager.d();
         localObject1 = localObject3;
         if (localIVideoUIManager != null) {
-          localObject1 = localIVideoUIManager.b();
+          localObject1 = localIVideoUIManager.d();
         }
       }
       localObject1 = (ReadInJoyAdVideoGuide)localObject1;
@@ -369,7 +369,7 @@ public final class AdVideo185UIStateUtil
       }
       long l1;
       if (paramIVideoPlayManager != null) {
-        l1 = paramIVideoPlayManager.a();
+        l1 = paramIVideoPlayManager.e();
       } else {
         l1 = 0L;
       }
@@ -377,7 +377,7 @@ public final class AdVideo185UIStateUtil
       long l3 = l1 - j * 1000;
       long l2;
       if (paramIVideoPlayManager != null) {
-        l2 = paramIVideoPlayManager.b();
+        l2 = paramIVideoPlayManager.f();
       } else {
         l2 = -1L;
       }
@@ -454,7 +454,7 @@ public final class AdVideo185UIStateUtil
   public final void b(@Nullable VideoPlayParam paramVideoPlayParam, @Nullable ReadInJoyAdVideoGuide paramReadInJoyAdVideoGuide)
   {
     if (paramVideoPlayParam != null) {
-      paramVideoPlayParam = paramVideoPlayParam.a;
+      paramVideoPlayParam = paramVideoPlayParam.D;
     } else {
       paramVideoPlayParam = null;
     }
@@ -470,7 +470,7 @@ public final class AdVideo185UIStateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdVideo185UIStateUtil
  * JD-Core Version:    0.7.0.1
  */

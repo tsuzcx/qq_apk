@@ -8,99 +8,100 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ApolloDrawerContext
 {
-  private ApolloDrawerStatus a;
+  private ApolloDrawerStrategy a;
   
-  private boolean a(ApolloDrawerStatus paramApolloDrawerStatus)
+  private boolean b(ApolloDrawerStrategy paramApolloDrawerStrategy)
   {
     if (this.a == null) {
       return true;
     }
-    return paramApolloDrawerStatus.a <= this.a.a;
+    return paramApolloDrawerStrategy.a <= this.a.a;
   }
   
   public int a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, int paramInt, AppInterface paramAppInterface, Context paramContext)
   {
-    ApolloDrawerStatus localApolloDrawerStatus = this.a;
-    if (localApolloDrawerStatus != null) {
-      return localApolloDrawerStatus.a(paramSpriteDrawerInfoManager, paramInt, paramAppInterface, paramContext);
+    ApolloDrawerStrategy localApolloDrawerStrategy = this.a;
+    if (localApolloDrawerStrategy != null) {
+      return localApolloDrawerStrategy.a(paramSpriteDrawerInfoManager, paramInt, paramAppInterface, paramContext);
     }
     return -1;
   }
   
-  public ApolloDrawerStatus a()
-  {
-    return this.a;
-  }
-  
   public void a()
   {
-    ApolloDrawerStatus localApolloDrawerStatus = this.a;
-    if (localApolloDrawerStatus != null)
+    ApolloDrawerStrategy localApolloDrawerStrategy = this.a;
+    if (localApolloDrawerStrategy != null)
     {
-      localApolloDrawerStatus.a();
+      localApolloDrawerStrategy.b();
       this.a.a = 9999;
     }
   }
   
-  public void a(ApolloDrawerStatus paramApolloDrawerStatus)
+  public void a(ApolloDrawerStrategy paramApolloDrawerStrategy)
   {
-    if ((paramApolloDrawerStatus != null) && (a(paramApolloDrawerStatus)) && (paramApolloDrawerStatus.a()))
+    if ((paramApolloDrawerStrategy != null) && (b(paramApolloDrawerStrategy)) && (paramApolloDrawerStrategy.a()))
     {
-      this.a = paramApolloDrawerStatus;
+      this.a = paramApolloDrawerStrategy;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("set status success class=");
-        localStringBuilder.append(paramApolloDrawerStatus.getClass().getSimpleName());
+        localStringBuilder.append(paramApolloDrawerStrategy.getClass().getSimpleName());
         QLog.d("[cmshow]ApolloDrawerContext", 2, localStringBuilder.toString());
       }
+      return;
     }
-    else if (QLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      paramApolloDrawerStatus = new StringBuilder();
-      paramApolloDrawerStatus.append("set status fail class=");
-      paramApolloDrawerStatus.append(null);
-      QLog.d("[cmshow]ApolloDrawerContext", 2, paramApolloDrawerStatus.toString());
+      paramApolloDrawerStrategy = new StringBuilder();
+      paramApolloDrawerStrategy.append("set status fail class=");
+      paramApolloDrawerStrategy.append(null);
+      QLog.d("[cmshow]ApolloDrawerContext", 2, paramApolloDrawerStrategy.toString());
     }
   }
   
   public void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    ApolloDrawerStatus localApolloDrawerStatus = this.a;
-    if (localApolloDrawerStatus != null) {
-      localApolloDrawerStatus.a(paramSpriteDrawerInfoManager, paramContext, paramQQAppInterface);
+    ApolloDrawerStrategy localApolloDrawerStrategy = this.a;
+    if (localApolloDrawerStrategy != null) {
+      localApolloDrawerStrategy.a(paramSpriteDrawerInfoManager, paramContext, paramQQAppInterface);
     }
   }
   
   public void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    ApolloDrawerStatus localApolloDrawerStatus = this.a;
-    if (localApolloDrawerStatus != null) {
-      localApolloDrawerStatus.a(paramSpriteDrawerInfoManager, paramContext, paramQQAppInterface, paramInt);
+    ApolloDrawerStrategy localApolloDrawerStrategy = this.a;
+    if (localApolloDrawerStrategy != null) {
+      localApolloDrawerStrategy.a(paramSpriteDrawerInfoManager, paramContext, paramQQAppInterface, paramInt);
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, SpriteDrawerInfoManager paramSpriteDrawerInfoManager)
   {
-    ApolloDrawerStatus localApolloDrawerStatus = this.a;
-    if (localApolloDrawerStatus != null)
+    ApolloDrawerStrategy localApolloDrawerStrategy = this.a;
+    if (localApolloDrawerStrategy != null)
     {
-      localApolloDrawerStatus.a(paramQQAppInterface, paramSpriteDrawerInfoManager);
+      localApolloDrawerStrategy.a(paramQQAppInterface, paramSpriteDrawerInfoManager);
       this.a.a = 9999;
     }
   }
   
+  public ApolloDrawerStrategy b()
+  {
+    return this.a;
+  }
+  
   public void b(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    ApolloDrawerStatus localApolloDrawerStatus = this.a;
-    if (localApolloDrawerStatus != null) {
-      localApolloDrawerStatus.b(paramSpriteDrawerInfoManager, paramContext, paramQQAppInterface);
+    ApolloDrawerStrategy localApolloDrawerStrategy = this.a;
+    if (localApolloDrawerStrategy != null) {
+      localApolloDrawerStrategy.b(paramSpriteDrawerInfoManager, paramContext, paramQQAppInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext
  * JD-Core Version:    0.7.0.1
  */

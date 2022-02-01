@@ -18,25 +18,25 @@ import mqq.app.MobileQQ;
 public class NetSearchTemplateBaseView
   extends SearchResultView
 {
-  public SquareImageView a;
-  public RelativeLayout b;
-  public SquareImageView b;
-  public ImageView e;
-  public TextView i;
-  public TextView j;
-  public TextView k;
+  public RelativeLayout r;
+  public SquareImageView s;
+  public ImageView t;
+  public TextView u;
+  public TextView v;
+  public SquareImageView w;
+  public TextView x;
   
   public NetSearchTemplateBaseView(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.m = paramInt;
     paramViewGroup.getResources();
     LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
     localLinearLayout.setOrientation(1);
     localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, null, false), new LinearLayout.LayoutParams(-1, -2));
-    localLinearLayout.setBackgroundResource(2130850581);
+    localLinearLayout.setBackgroundResource(2130852377);
     localLinearLayout.setClickable(true);
     localLinearLayout.setFocusable(true);
-    this.jdField_b_of_type_AndroidViewView = localLinearLayout;
+    this.e = localLinearLayout;
     a();
   }
   
@@ -47,33 +47,33 @@ public class NetSearchTemplateBaseView
   
   protected void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376697));
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131368539));
+    this.r = ((RelativeLayout)paramView.findViewById(2131444977));
+    if (this.r == null) {
+      this.r = ((RelativeLayout)paramView.findViewById(2131435444));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369401));
-    this.e = ((ImageView)paramView.findViewById(2131369331));
-    this.i = ((TextView)paramView.findViewById(2131379918));
-    this.j = ((TextView)paramView.findViewById(2131379856));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131376555));
-    this.k = ((TextView)paramView.findViewById(2131376556));
+    this.s = ((SquareImageView)paramView.findViewById(2131436435));
+    this.t = ((ImageView)paramView.findViewById(2131436334));
+    this.u = ((TextView)paramView.findViewById(2131448793));
+    this.v = ((TextView)paramView.findViewById(2131448713));
+    this.w = ((SquareImageView)paramView.findViewById(2131444806));
+    this.x = ((TextView)paramView.findViewById(2131444807));
     if (ThemeUtil.isNowThemeIsNight(MobileQQ.sMobileQQ.peekAppRuntime(), false, null))
     {
-      paramView = this.j;
-      paramView.setTextColor(paramView.getContext().getResources().getColor(2131166983));
-      paramView = this.k;
-      paramView.setTextColor(paramView.getContext().getResources().getColor(2131166983));
+      paramView = this.v;
+      paramView.setTextColor(paramView.getContext().getResources().getColor(2131167917));
+      paramView = this.x;
+      paramView.setTextColor(paramView.getContext().getResources().getColor(2131167917));
       return;
     }
-    paramView = this.j;
-    paramView.setTextColor(paramView.getContext().getResources().getColor(2131167394));
-    paramView = this.k;
-    paramView.setTextColor(paramView.getContext().getResources().getColor(2131167394));
+    paramView = this.v;
+    paramView.setTextColor(paramView.getContext().getResources().getColor(2131168464));
+    paramView = this.x;
+    paramView.setTextColor(paramView.getContext().getResources().getColor(2131168464));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.view.NetSearchTemplateBaseView
  * JD-Core Version:    0.7.0.1
  */

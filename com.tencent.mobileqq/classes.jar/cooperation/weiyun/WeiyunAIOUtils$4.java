@@ -14,19 +14,19 @@ final class WeiyunAIOUtils$4
   
   public void a()
   {
-    if (WeiyunAIOUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, this.c, this.jdField_a_of_type_MqqOsMqqHandler, this.jdField_a_of_type_Int))
+    if (WeiyunAIOUtils.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692690, 0).b(this.jdField_a_of_type_Int);
+      QQToast.makeText(this.a.getApp(), 2131889761, 0).show(this.h);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692743, 0).b(this.jdField_a_of_type_Int);
+    QQToast.makeText(this.a.getApp(), 2131889814, 0).show(this.h);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.4
  * JD-Core Version:    0.7.0.1
  */

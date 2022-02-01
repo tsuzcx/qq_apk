@@ -22,14 +22,14 @@ public class QzoneOpenHomePageAction
   
   private boolean c()
   {
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    String str2 = (String)this.f.get("uin");
     String str1 = str2;
     try
     {
       if (TextUtils.isEmpty(str2)) {
         str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       }
-      QZoneHelper.forwardToUserHome((Activity)this.jdField_a_of_type_AndroidContentContext, QZoneHelper.UserInfo.getInstance(), str1, 0, 0, 0);
+      QZoneHelper.forwardToUserHome((Activity)this.b, QZoneHelper.UserInfo.getInstance(), str1, 0, 0, 0);
       return true;
     }
     catch (Exception localException)
@@ -52,14 +52,14 @@ public class QzoneOpenHomePageAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QzoneOpenHomePageAction", 1, localStringBuilder.toString());
-      b_("QzoneOpenHomePageAction");
+      h_("QzoneOpenHomePageAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzoneOpenHomePageAction
  * JD-Core Version:    0.7.0.1
  */

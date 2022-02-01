@@ -23,12 +23,12 @@ class TroopWithCommonFriendsFragment$2
   {
     paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
     paramContext = new TroopCommonHolder(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373689));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373672));
-    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373680));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373678));
-    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373690));
-    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131373688));
+    paramContext.c = ((LinearLayout)paramViewGroup.findViewById(2131441363));
+    paramContext.d = ((ImageView)paramViewGroup.findViewById(2131441346));
+    paramContext.e = ((LinearLayout)paramViewGroup.findViewById(2131441354));
+    paramContext.f = ((TextView)paramViewGroup.findViewById(2131441352));
+    paramContext.g = ((TextView)paramViewGroup.findViewById(2131441364));
+    paramContext.h = ((Button)paramViewGroup.findViewById(2131441362));
     return paramContext;
   }
   
@@ -39,7 +39,7 @@ class TroopWithCommonFriendsFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -33,22 +33,13 @@ public class ReadInJoySelectPositionFragment
   extends QIphoneTitleBarFragment
   implements ReadInJoySelectPositionHeader.ISelectCityListener, SelectCityPresenter.IView
 {
-  private WordNavView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetWordNavView;
-  private ReadInJoySelectPositionHeader jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader;
-  private SelectCityAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFeedsSelectCityAdapter;
-  private SelectCityPresenter jdField_a_of_type_ComTencentMobileqqKandianBizFeedsSelectCityPresenter;
-  private PositionData jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData = new PositionData();
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private List<CityData> jdField_a_of_type_JavaUtilList;
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.changeBg(true);
-    a("城市");
-    if (ThemeUtil.isInNightMode(ReadInJoyUtils.a())) {
-      View.inflate(getQBaseActivity(), 2131560251, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    }
-  }
+  private ListView a;
+  private WordNavView b;
+  private ReadInJoySelectPositionHeader c;
+  private SelectCityAdapter d;
+  private SelectCityPresenter e;
+  private PositionData f = new PositionData();
+  private List<CityData> g;
   
   private void a(String paramString)
   {
@@ -58,73 +49,82 @@ public class ReadInJoySelectPositionFragment
     for (;;)
     {
       j = k;
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+      if (i >= this.g.size()) {
         break;
       }
-      if ((((CityData)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == 1) && (((CityData)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)))
+      if ((((CityData)this.g.get(i)).a == 1) && (((CityData)this.g.get(i)).b.equals(paramString)))
       {
         j = i;
         break;
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelection(j + 1);
+    this.a.setSelection(j + 1);
+  }
+  
+  private void b()
+  {
+    this.p.changeBg(true);
+    a("城市");
+    if (ThemeUtil.isInNightMode(ReadInJoyUtils.b())) {
+      View.inflate(getQBaseActivity(), 2131626298, this.s);
+    }
   }
   
   private void c()
   {
-    if (this.b != null)
+    if (this.t != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.b.findViewById(2131364648));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetWordNavView = ((WordNavView)this.b.findViewById(2131368757));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetWordNavView.setOnTouchingWordChangedListener(new ReadInJoySelectPositionFragment.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsSelectCityAdapter = new SelectCityAdapter(getQBaseActivity());
+      this.a = ((ListView)this.t.findViewById(2131430735));
+      this.b = ((WordNavView)this.t.findViewById(2131435674));
+      this.b.setOnTouchingWordChangedListener(new ReadInJoySelectPositionFragment.1(this));
+      this.d = new SelectCityAdapter(getQBaseActivity());
       d();
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsSelectCityAdapter);
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(new ReadInJoySelectPositionFragment.2(this));
+      this.a.setAdapter(this.d);
+      this.a.setOnItemClickListener(new ReadInJoySelectPositionFragment.2(this));
     }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader = new ReadInJoySelectPositionHeader(getQBaseActivity());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader.setSelectCityListener(this);
-    this.jdField_a_of_type_ComTencentWidgetListView.addHeaderView(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader);
+    this.c = new ReadInJoySelectPositionHeader(getQBaseActivity());
+    this.c.setSelectCityListener(this);
+    this.a.addHeaderView(this.c);
   }
   
   private void e()
   {
-    Object localObject = ReadInJoyLogicEngine.a().a();
+    Object localObject = ReadInJoyLogicEngine.a().j();
     if (localObject != null)
     {
-      PositionData localPositionData = ((SelectPositionModule)localObject).c();
-      localObject = ((SelectPositionModule)localObject).b();
+      PositionData localPositionData = ((SelectPositionModule)localObject).e();
+      localObject = ((SelectPositionModule)localObject).c();
       if (localPositionData != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData.copy(localPositionData);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader.setSelectedCity(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData.city);
+        this.f.copy(localPositionData);
+        this.c.setSelectedCity(this.f.city);
       }
       else if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader.setSelectedCity(((PositionData)localObject).city);
+        this.c.setSelectedCity(((PositionData)localObject).city);
       }
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader.setGPSCity(((PositionData)localObject).cityGPS);
+        this.c.setGPSCity(((PositionData)localObject).cityGPS);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsSelectCityPresenter = new SelectCityPresenter(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsSelectCityPresenter.a();
+    this.e = new SelectCityPresenter(this);
+    this.e.a();
   }
   
   protected int a()
   {
-    return 2131560276;
+    return 2131626323;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    a();
+    b();
     c();
     e();
     RIJDtReportHelper.a.a(getQBaseActivity());
@@ -145,44 +145,44 @@ public class ReadInJoySelectPositionFragment
       ((StringBuilder)localObject).append(paramPositionData);
       QLog.i("ReadInJoySelectPositionFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData.cityCode == null) || (!this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData.cityCode.equals(paramPositionData.cityCode)))
+    if ((this.f.cityCode == null) || (!this.f.cityCode.equals(paramPositionData.cityCode)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData.copy(paramPositionData);
-      localObject = ReadInJoyLogicEngine.a().a();
+      this.f.copy(paramPositionData);
+      localObject = ReadInJoyLogicEngine.a().j();
       if (localObject != null)
       {
-        ((SelectPositionModule)localObject).a(paramPositionData);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader.setSelectedCity(paramPositionData.city);
+        ((SelectPositionModule)localObject).b(paramPositionData);
+        this.c.setSelectedCity(paramPositionData.city);
       }
-      ReadInJoyLogicEngine.a().a(41695, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPositionData.city);
-      paramPositionData = ReadInJoyLogicEngine.a().a();
+      ReadInJoyLogicEngine.a().a(41695, this.f.city);
+      paramPositionData = ReadInJoyLogicEngine.a().ab();
       if (paramPositionData != null) {
-        paramPositionData.a().b(41695);
+        paramPositionData.i().e(41695);
       }
-      ReadInJoyLogicEngineEventDispatcher.a().g(41695);
+      ReadInJoyLogicEngineEventDispatcher.a().f(41695);
     }
     onBackEvent();
   }
   
   public void a(List<CityData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsSelectCityAdapter.a(this.jdField_a_of_type_JavaUtilList);
+    this.g = paramList;
+    this.d.a(this.g);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramList.size())
     {
-      if (((CityData)paramList.get(i)).jdField_a_of_type_Int == 1) {
-        localArrayList.add(((CityData)paramList.get(i)).jdField_a_of_type_JavaLangString);
+      if (((CityData)paramList.get(i)).a == 1) {
+        localArrayList.add(((CityData)paramList.get(i)).b);
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetWordNavView.setIndexList(localArrayList);
+    this.b.setIndexList(localArrayList);
   }
   
   public void b(PositionData paramPositionData)
   {
-    ReadInJoySelectPositionHeader localReadInJoySelectPositionHeader = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader;
+    ReadInJoySelectPositionHeader localReadInJoySelectPositionHeader = this.c;
     if (localReadInJoySelectPositionHeader != null) {
       localReadInJoySelectPositionHeader.setGPSCity(paramPositionData.cityGPS);
     }
@@ -196,7 +196,7 @@ public class ReadInJoySelectPositionFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoySelectPositionFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public class PicItemDecoration
   
   public PicItemDecoration(int paramInt)
   {
-    this.a = ViewUtils.b(paramInt);
+    this.a = ViewUtils.dpToPx(paramInt);
   }
   
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
@@ -44,7 +44,7 @@ public class PicItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.helper.PicItemDecoration
  * JD-Core Version:    0.7.0.1
  */

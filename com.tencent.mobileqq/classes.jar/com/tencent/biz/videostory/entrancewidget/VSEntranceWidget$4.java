@@ -15,14 +15,14 @@ class VSEntranceWidget$4
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    if (VSEntranceWidget.b(this.a) != null) {
-      VSEntranceWidget.b(this.a).setVisibility(0);
+    if (VSEntranceWidget.e(this.a) != null) {
+      VSEntranceWidget.e(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidget.4
  * JD-Core Version:    0.7.0.1
  */

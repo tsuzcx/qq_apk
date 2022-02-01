@@ -16,19 +16,19 @@ class Face2FaceAddContactFragment$1
   {
     if (paramMessage.what == 5)
     {
-      Face2FaceAddContactFragment.a(this.a).setText(2131692162);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
+      Face2FaceAddContactFragment.a(this.a).setText(2131889148);
+      Face2FaceAddContactFragment.b(this.a).setVisibility(8);
+      Face2FaceAddContactFragment.c(this.a).setVisibility(0);
       return;
     }
     if (paramMessage.what == 301)
     {
-      Face2FaceAddContactFragment.a(this.a);
+      Face2FaceAddContactFragment.d(this.a);
       return;
     }
     if (paramMessage.what == 500)
     {
-      Face2FaceAddContactFragment.b(this.a);
+      Face2FaceAddContactFragment.e(this.a);
       return;
     }
     if (paramMessage.what == 401)
@@ -39,14 +39,14 @@ class Face2FaceAddContactFragment$1
     }
     if (paramMessage.what == 6)
     {
-      Face2FaceAddContactFragment.c(this.a);
-      QQToast.a(this.a.getBaseActivity(), this.a.getString(2131691048), 0).a();
+      Face2FaceAddContactFragment.f(this.a);
+      QQToast.makeText(this.a.getBaseActivity(), this.a.getString(2131887994), 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment.1
  * JD-Core Version:    0.7.0.1
  */

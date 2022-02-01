@@ -12,12 +12,12 @@ import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.TouchDelegate;
 class StructMsgItemLayout29$ViewHolder
   implements BaseBubbleBuilder.TouchDelegate
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  boolean jdField_a_of_type_Boolean;
+  View a;
   TextView b;
+  TextView c;
+  ImageView d;
+  boolean e;
+  int f;
   
   private void a(boolean paramBoolean)
   {
@@ -28,7 +28,7 @@ class StructMsgItemLayout29$ViewHolder
       if (paramBoolean) {
         localColorFilter = null;
       } else {
-        localColorFilter = BaseBubbleBuilder.a;
+        localColorFilter = BaseBubbleBuilder.n;
       }
       localDrawable.setColorFilter(localColorFilter);
       localDrawable.invalidateSelf();
@@ -63,7 +63,7 @@ class StructMsgItemLayout29$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout29.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

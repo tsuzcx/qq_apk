@@ -5,48 +5,48 @@ import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class ChatSelCurPageForLSSHelper
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ChatSelCurPageForLSSHelper.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
+  private BaseChatPie a;
+  private boolean b = false;
+  private Runnable c = new ChatSelCurPageForLSSHelper.1(this);
   
   public ChatSelCurPageForLSSHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
   }
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null))
+    this.b = false;
+    BaseChatPie localBaseChatPie = this.a;
+    if ((localBaseChatPie != null) && (localBaseChatPie.U != null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 == null) {
+      if (this.a.V == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.post(this.jdField_a_of_type_JavaLangRunnable);
+      this.a.U.removeCallbacks(this.c);
+      this.a.U.post(this.c);
     }
   }
   
   public void c()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-    if ((localBaseChatPie != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    BaseChatPie localBaseChatPie = this.a;
+    if ((localBaseChatPie != null) && (localBaseChatPie.U != null)) {
+      this.a.U.removeCallbacks(this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.ChatSelCurPageForLSSHelper
  * JD-Core Version:    0.7.0.1
  */

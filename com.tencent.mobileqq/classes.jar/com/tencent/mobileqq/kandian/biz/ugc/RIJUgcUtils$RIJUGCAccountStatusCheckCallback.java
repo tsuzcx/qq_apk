@@ -8,13 +8,13 @@ import java.lang.ref.WeakReference;
 public class RIJUgcUtils$RIJUGCAccountStatusCheckCallback
   implements RIJUGCAccountCreateModule.UGCAccountStatusCallback
 {
-  private int jdField_a_of_type_Int = 0;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Activity> a;
+  private int b = 0;
   
   public RIJUgcUtils$RIJUGCAccountStatusCheckCallback(Activity paramActivity, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramActivity);
+    this.b = paramInt;
   }
   
   public void a(int paramInt)
@@ -24,7 +24,7 @@ public class RIJUgcUtils$RIJUGCAccountStatusCheckCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils.RIJUGCAccountStatusCheckCallback
  * JD-Core Version:    0.7.0.1
  */

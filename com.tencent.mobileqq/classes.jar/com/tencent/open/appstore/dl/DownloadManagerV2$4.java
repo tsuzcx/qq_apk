@@ -9,10 +9,10 @@ class DownloadManagerV2$4
   
   public void run()
   {
-    if (!DownloadManagerV2.a(this.this$0))
+    if (!DownloadManagerV2.d(this.this$0))
     {
-      MyAppApi.e();
-      if (!MyAppApi.b()) {
+      MyAppApi.g();
+      if (!MyAppApi.m()) {
         this.this$0.a(true);
       }
       DownloadManagerV2.a(this.this$0, true);
@@ -21,7 +21,7 @@ class DownloadManagerV2$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.4
  * JD-Core Version:    0.7.0.1
  */

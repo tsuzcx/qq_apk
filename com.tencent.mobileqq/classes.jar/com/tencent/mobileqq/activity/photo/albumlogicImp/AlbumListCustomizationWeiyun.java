@@ -20,8 +20,8 @@ import java.util.List;
 public class AlbumListCustomizationWeiyun
   extends AlbumListCustomizationDefault
 {
-  public static final String a = "com.tencent.mobileqq.activity.photo.albumlogicImp.AlbumListCustomizationWeiyun";
-  private List<String> a;
+  public static final String j = "com.tencent.mobileqq.activity.photo.albumlogicImp.AlbumListCustomizationWeiyun";
+  private List<String> k;
   
   AlbumListCustomizationWeiyun(AbstractAlbumListFragment paramAbstractAlbumListFragment)
   {
@@ -31,10 +31,10 @@ public class AlbumListCustomizationWeiyun
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     paramView = super.a(paramInt, paramView, paramViewGroup);
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListFragment;
+    paramViewGroup = this.b;
     if ((paramViewGroup != null) && (paramViewGroup.isAdded()) && (!paramViewGroup.isDetached()) && (!paramViewGroup.isRemoving()))
     {
-      paramViewGroup = paramViewGroup.a;
+      paramViewGroup = paramViewGroup.b;
       if (paramViewGroup != null)
       {
         paramViewGroup = paramViewGroup.a(paramInt);
@@ -57,23 +57,23 @@ public class AlbumListCustomizationWeiyun
       paramIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
     }
     super.a(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName = paramIntent.getStringExtra("ALBUM_NAME");
-    paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListFragment;
+    this.d.albumName = paramIntent.getStringExtra("ALBUM_NAME");
+    paramIntent = this.b;
     if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()))
     {
-      paramIntent = PreferenceUtils.a(paramIntent.getActivity().getApplicationContext(), ((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).a, "pref_select_album");
+      paramIntent = PreferenceUtils.a(paramIntent.getActivity().getApplicationContext(), ((PhotoOtherData)this.e).e, "pref_select_album");
       if (TextUtils.isEmpty(paramIntent)) {
         paramIntent = new ArrayList();
       } else {
         paramIntent = PreferenceUtils.a(paramIntent);
       }
-      this.jdField_a_of_type_JavaUtilList = paramIntent;
-      paramIntent = this.jdField_a_of_type_JavaUtilList;
+      this.k = paramIntent;
+      paramIntent = this.k;
       if ((paramIntent != null) && (!paramIntent.isEmpty())) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId = ((String)this.jdField_a_of_type_JavaUtilList.get(0));
+        this.d.albumId = ((String)this.k.get(0));
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumId = "$RecentAlbumId";
+      if (TextUtils.isEmpty(this.d.albumId)) {
+        this.d.albumId = "$RecentAlbumId";
       }
     }
   }
@@ -81,31 +81,31 @@ public class AlbumListCustomizationWeiyun
   public boolean a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
   {
     boolean bool = super.a(paramQQAlbumInfo, paramInt, paramIntent);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName)) {
-      paramIntent.putExtra("ALBUM_NAME", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.albumName);
+    if (!TextUtils.isEmpty(this.d.albumName)) {
+      paramIntent.putExtra("ALBUM_NAME", this.d.albumName);
     }
-    paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListFragment;
-    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()) && (this.jdField_a_of_type_JavaUtilList != null))
+    paramIntent = this.b;
+    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()) && (this.k != null))
     {
       if (!TextUtils.isEmpty(paramQQAlbumInfo.id))
       {
-        if ((this.jdField_a_of_type_JavaUtilList.contains(paramQQAlbumInfo.id)) && (!TextUtils.equals(paramQQAlbumInfo.id, (CharSequence)this.jdField_a_of_type_JavaUtilList.get(0)))) {
-          this.jdField_a_of_type_JavaUtilList.remove(paramQQAlbumInfo.id);
+        if ((this.k.contains(paramQQAlbumInfo.id)) && (!TextUtils.equals(paramQQAlbumInfo.id, (CharSequence)this.k.get(0)))) {
+          this.k.remove(paramQQAlbumInfo.id);
         }
-        if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          this.jdField_a_of_type_JavaUtilList.add(paramQQAlbumInfo.id);
+        if (this.k.isEmpty()) {
+          this.k.add(paramQQAlbumInfo.id);
         } else {
-          this.jdField_a_of_type_JavaUtilList.set(0, paramQQAlbumInfo.id);
+          this.k.set(0, paramQQAlbumInfo.id);
         }
       }
-      PreferenceUtils.a(paramIntent.getActivity().getApplicationContext(), ((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).a, "pref_select_album", PreferenceUtils.a(this.jdField_a_of_type_JavaUtilList.iterator()));
+      PreferenceUtils.a(paramIntent.getActivity().getApplicationContext(), ((PhotoOtherData)this.e).e, "pref_select_album", PreferenceUtils.a(this.k.iterator()));
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.AlbumListCustomizationWeiyun
  * JD-Core Version:    0.7.0.1
  */

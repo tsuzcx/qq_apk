@@ -55,7 +55,7 @@ public class MessageForFile
   public String getSummaryMsg()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131706603));
+    localStringBuilder.append(HardCodeUtil.a(2131904454));
     String str2 = this.fileName;
     String str1 = str2;
     if (str2 == null) {
@@ -90,7 +90,7 @@ public class MessageForFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFile
  * JD-Core Version:    0.7.0.1
  */

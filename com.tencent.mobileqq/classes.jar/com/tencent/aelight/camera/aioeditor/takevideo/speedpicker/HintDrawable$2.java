@@ -13,7 +13,7 @@ class HintDrawable$2
   public Integer a(HintDrawable paramHintDrawable)
   {
     if (paramHintDrawable != null) {
-      return Integer.valueOf(HintDrawable.a(paramHintDrawable));
+      return Integer.valueOf(HintDrawable.b(paramHintDrawable));
     }
     return Integer.valueOf(0);
   }
@@ -27,7 +27,7 @@ class HintDrawable$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.HintDrawable.2
  * JD-Core Version:    0.7.0.1
  */

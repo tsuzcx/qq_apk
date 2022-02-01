@@ -8,8 +8,8 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 public class QQCustomContextMenuDialog
   extends QQCustomDialog
 {
-  private int jdField_a_of_type_Int = 2131558966;
-  QQCustomMenu jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
+  QQCustomMenu a;
+  private int b = 2131624599;
   
   public QQCustomContextMenuDialog(Context paramContext, int paramInt)
   {
@@ -18,7 +18,7 @@ public class QQCustomContextMenuDialog
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(QQCustomMenu paramQQCustomMenu, DialogInterface.OnClickListener paramOnClickListener)
@@ -26,16 +26,16 @@ public class QQCustomContextMenuDialog
     if (paramQQCustomMenu == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = paramQQCustomMenu;
-    String[] arrayOfString = new String[paramQQCustomMenu.a()];
+    this.a = paramQQCustomMenu;
+    String[] arrayOfString = new String[paramQQCustomMenu.b()];
     int i = 0;
-    while (i < paramQQCustomMenu.a())
+    while (i < paramQQCustomMenu.b())
     {
       arrayOfString[i] = paramQQCustomMenu.a(i).a();
       i += 1;
     }
     setItems(arrayOfString, paramOnClickListener);
-    paramQQCustomMenu = paramQQCustomMenu.a();
+    paramQQCustomMenu = paramQQCustomMenu.c();
     if (paramQQCustomMenu != null) {
       setTitle(paramQQCustomMenu);
     }
@@ -43,21 +43,21 @@ public class QQCustomContextMenuDialog
   
   protected int customWhichToCallBack(int paramInt)
   {
-    QQCustomMenuItem localQQCustomMenuItem = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(paramInt);
+    QQCustomMenuItem localQQCustomMenuItem = this.a.a(paramInt);
     if (localQQCustomMenuItem != null) {
-      return localQQCustomMenuItem.a();
+      return localQQCustomMenuItem.b();
     }
     return -1;
   }
   
   protected int getDialogListItemLayout()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomContextMenuDialog
  * JD-Core Version:    0.7.0.1
  */

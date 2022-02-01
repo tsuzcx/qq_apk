@@ -10,17 +10,17 @@ class SelectCoverActivity$6
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a = null;
+    this.a.o = null;
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a = null;
+    this.a.o = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class QQSharedPreferencesImpl
 {
   public <T> T getValue(String paramString, T paramT)
   {
-    return RIJSPUtils.a(paramString, paramT);
+    return RIJSPUtils.b(paramString, paramT);
   }
   
   public <T> void setValue(String paramString, T paramT)
@@ -18,7 +18,7 @@ public class QQSharedPreferencesImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.base.bridgeimpl.QQSharedPreferencesImpl
  * JD-Core Version:    0.7.0.1
  */

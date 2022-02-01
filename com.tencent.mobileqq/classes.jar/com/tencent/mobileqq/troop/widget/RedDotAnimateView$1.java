@@ -10,13 +10,13 @@ class RedDotAnimateView$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.b = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.a / 2.0F);
+    this.a.f = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.c / 2.0F);
     this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotAnimateView.1
  * JD-Core Version:    0.7.0.1
  */

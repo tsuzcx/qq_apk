@@ -10,8 +10,8 @@ import org.json.JSONObject;
 
 final class TdsReaderConfigBean
 {
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
+  private final Map<String, String> a = new HashMap();
+  private boolean b;
   
   public static TdsReaderConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -26,7 +26,7 @@ final class TdsReaderConfigBean
         JSONObject localJSONObject;
         try
         {
-          localObject = new JSONObject(((QConfItem)localObject).a);
+          localObject = new JSONObject(((QConfItem)localObject).b);
         }
         catch (JSONException localJSONException)
         {
@@ -36,9 +36,9 @@ final class TdsReaderConfigBean
         if (localJSONObject != null)
         {
           if (localJSONObject.has("has_gray")) {
-            localTdsReaderConfigBean.jdField_a_of_type_Boolean = localJSONObject.optBoolean("has_gray");
+            localTdsReaderConfigBean.b = localJSONObject.optBoolean("has_gray");
           }
-          a(localJSONObject, localTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap);
+          a(localJSONObject, localTdsReaderConfigBean.a);
         }
         i += 1;
       }
@@ -101,11 +101,11 @@ final class TdsReaderConfigBean
       QLog.w("TdsReaderView_TdsReaderConfigBean", 1, "source error, configBean is null.");
       return;
     }
-    boolean bool = paramTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap.isEmpty() ^ true;
+    boolean bool = paramTdsReaderConfigBean.a.isEmpty() ^ true;
     if (bool) {
-      TdsReaderGlobal.a(paramBoolean, paramTdsReaderConfigBean.jdField_a_of_type_JavaUtilMap);
+      TdsReaderGlobal.a(paramBoolean, paramTdsReaderConfigBean.a);
     }
-    if (paramTdsReaderConfigBean.jdField_a_of_type_Boolean)
+    if (paramTdsReaderConfigBean.b)
     {
       TdsReaderGrayConfigProcessor.a();
       return;
@@ -118,7 +118,7 @@ final class TdsReaderConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderConfigBean
  * JD-Core Version:    0.7.0.1
  */

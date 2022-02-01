@@ -55,7 +55,7 @@ public class FriendListHandlerUtil
       paramProfSmpInfoRes = (BusinessCardManager)paramQQAppInterface.getManager(QQManagerFactory.BUSINESS_CARD_MANAGER);
       if (paramProfSmpInfoRes != null)
       {
-        BusinessCardServlet.a(paramQQAppInterface, paramProfSmpInfoRes.a(), 0, true);
+        BusinessCardServlet.a(paramQQAppInterface, paramProfSmpInfoRes.f(), 0, true);
         paramProfSmpInfoRes.a(1, true);
       }
     }
@@ -271,7 +271,7 @@ public class FriendListHandlerUtil
         String str = (String)paramList.next();
         try
         {
-          Object localObject = paramQQAppInterface.getMessageFacade().a(str, 0);
+          Object localObject = paramQQAppInterface.getMessageFacade().h(str, 0);
           if ((localObject != null) && (((List)localObject).size() > 0))
           {
             localObject = ((List)localObject).iterator();
@@ -279,7 +279,7 @@ public class FriendListHandlerUtil
             {
               MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
               if ((localMessageRecord.msgtype == -1013) || (localMessageRecord.msgtype == -1019) || (localMessageRecord.msgtype == -1018) || (localMessageRecord.msgtype == -2019) || (localMessageRecord.msgtype == -7006)) {
-                paramQQAppInterface.getMessageFacade().b(str, 0, localMessageRecord.uniseq);
+                paramQQAppInterface.getMessageFacade().h(str, 0, localMessageRecord.uniseq);
               }
             }
           }
@@ -326,7 +326,7 @@ public class FriendListHandlerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.FriendListHandlerUtil
  * JD-Core Version:    0.7.0.1
  */

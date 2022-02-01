@@ -33,7 +33,7 @@ class FileResultWatchForObserver$1
       localStringBuilder.append(paramLong);
       localStringBuilder.append("]");
       QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, localStringBuilder.toString());
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString, paramMsgSendCostParams.a, paramLong);
+      paramString = this.a.getMessageFacade().a(paramString, paramMsgSendCostParams.f, paramLong);
       if (paramString == null)
       {
         QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, "onSendResult not find msg");
@@ -41,13 +41,13 @@ class FileResultWatchForObserver$1
       }
       if ((paramString instanceof MessageForLongTextMsg))
       {
-        ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramString.msg);
+        ((DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).d(paramString.msg);
         QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, "onSendResult success longTextMsg");
         return;
       }
       if ((paramString instanceof MessageForText))
       {
-        ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(new QQText(paramString.msg, 13, 32, 0).toPlainText(true), 0);
+        ((DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(new QQText(paramString.msg, 13, 32, 0).toPlainText(true), 0);
         QLog.i("FileResultWatchForObserver<FileAssistant>NDL", 1, "onSendResult success TextMsg");
       }
     }
@@ -55,7 +55,7 @@ class FileResultWatchForObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.FileResultWatchForObserver.1
  * JD-Core Version:    0.7.0.1
  */

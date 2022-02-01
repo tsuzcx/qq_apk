@@ -10,15 +10,14 @@ import android.graphics.PorterDuff.Mode;
 public class Label
   extends Sprite
 {
-  private Paint a;
-  private String b = "";
-  private int g = 20;
-  private int h = -1;
+  private Paint E = new Paint();
+  private String s = "";
+  private int t = 20;
+  private int u = -1;
   
   public Label(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.E.setAntiAlias(true);
     e(paramInt1);
     f(paramInt2);
     a(paramSpriteGLView, paramString);
@@ -26,37 +25,37 @@ public class Label
   
   public void a(SpriteGLView paramSpriteGLView, String paramString)
   {
-    if (paramString.equals(this.b)) {
+    if (paramString.equals(this.s)) {
       return;
     }
-    this.b = paramString;
-    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
+    this.s = paramString;
+    paramString = Bitmap.createBitmap((int)this.E.measureText(paramString), this.t, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(paramString);
     localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
-    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.c();
+    localCanvas.drawText(this.s, 0.0F, this.t * 0.8F, this.E);
+    if (this.w != null) {
+      this.w.c();
     }
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = new Texture(paramSpriteGLView, paramString);
-    g();
-    f();
+    this.w = new Texture(paramSpriteGLView, paramString);
+    m();
+    l();
   }
   
   public void e(int paramInt)
   {
-    this.h = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+    this.u = paramInt;
+    this.E.setColor(this.u);
   }
   
   public void f(int paramInt)
   {
-    this.g = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
+    this.t = paramInt;
+    this.E.setTextSize(this.t);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Label
  * JD-Core Version:    0.7.0.1
  */

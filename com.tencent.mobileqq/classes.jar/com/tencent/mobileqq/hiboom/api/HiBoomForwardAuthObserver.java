@@ -88,7 +88,7 @@ public class HiBoomForwardAuthObserver
           if (paramObject != null)
           {
             a(localContext, paramObject, j);
-            HiBoomConstants.a.set(false);
+            HiBoomConstants.b.set(false);
           }
         }
         else if (k != 1)
@@ -98,11 +98,11 @@ public class HiBoomForwardAuthObserver
             paramObject = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getBaseChatPieAdapter(localContext);
             if (paramObject != null)
             {
-              ((IVasService)paramObject.a().getRuntimeService(IVasService.class, "")).getHiBoomManager().sendHiBoomMessage(paramObject, (String)localObject, j, HiBoomConstants.a(j));
-              paramObject.a();
-              paramObject.a().setText("");
+              ((IVasService)paramObject.h().getRuntimeService(IVasService.class, "")).getHiBoomManager().sendHiBoomMessage(paramObject, (String)localObject, j, HiBoomConstants.a(j));
+              paramObject.f();
+              paramObject.d().setText("");
             }
-            HiBoomConstants.a.set(false);
+            HiBoomConstants.b.set(false);
           }
         }
         else
@@ -112,8 +112,8 @@ public class HiBoomForwardAuthObserver
         }
       }
     }
-    QQToast.a(localContext, 1, HardCodeUtil.a(2131705570), 0).a();
-    HiBoomConstants.a.set(false);
+    QQToast.makeText(localContext, 1, HardCodeUtil.a(2131903456), 0).show();
+    HiBoomConstants.b.set(false);
   }
   
   public void onSetHiBoom(boolean paramBoolean, Object paramObject)
@@ -172,7 +172,7 @@ public class HiBoomForwardAuthObserver
             if (paramBoolean)
             {
               a(localContext, paramObject, j);
-              HiBoomConstants.a.set(false);
+              HiBoomConstants.b.set(false);
             }
             return;
           }
@@ -184,11 +184,11 @@ public class HiBoomForwardAuthObserver
             paramObject = ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).getBaseChatPieAdapter(localContext);
             if (paramObject != null)
             {
-              ((IVasService)paramObject.a().getRuntimeService(IVasService.class, "")).getHiBoomManager().sendHiBoomMessage(paramObject, (String)localObject, j, HiBoomConstants.a(j));
-              paramObject.a();
-              paramObject.a().setText("");
+              ((IVasService)paramObject.h().getRuntimeService(IVasService.class, "")).getHiBoomManager().sendHiBoomMessage(paramObject, (String)localObject, j, HiBoomConstants.a(j));
+              paramObject.f();
+              paramObject.d().setText("");
             }
-            HiBoomConstants.a.set(false);
+            HiBoomConstants.b.set(false);
           }
           paramObject = MobileQQ.sMobileQQ.peekAppRuntime();
           if ((paramObject != null) && ((paramObject instanceof AppInterface)))
@@ -196,7 +196,7 @@ public class HiBoomForwardAuthObserver
             if (QLog.isColorLevel()) {
               QLog.d("HiBoomForwardAuthObserv", 2, "onSetHiBoom get hiboom list");
             }
-            ((ISVIPHandler)((AppInterface)paramObject).getBusinessHandler(((ISVIPHandlerProxy)QRoute.api(ISVIPHandlerProxy.class)).getImplClassName())).b();
+            ((ISVIPHandler)((AppInterface)paramObject).getBusinessHandler(((ISVIPHandlerProxy)QRoute.api(ISVIPHandlerProxy.class)).getImplClassName())).c();
           }
           return;
         }
@@ -209,14 +209,14 @@ public class HiBoomForwardAuthObserver
     }
     if (paramBoolean)
     {
-      QQToast.a(localContext, 1, HardCodeUtil.a(2131705567), 0).a();
-      HiBoomConstants.a.set(false);
+      QQToast.makeText(localContext, 1, HardCodeUtil.a(2131903454), 0).show();
+      HiBoomConstants.b.set(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.api.HiBoomForwardAuthObserver
  * JD-Core Version:    0.7.0.1
  */

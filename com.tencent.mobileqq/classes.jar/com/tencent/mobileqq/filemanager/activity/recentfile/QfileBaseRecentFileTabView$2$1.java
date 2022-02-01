@@ -24,40 +24,40 @@ class QfileBaseRecentFileTabView$2$1
     }
     if (QLog.isColorLevel())
     {
-      localObject = QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString;
+      localObject = QfileBaseRecentFileTabView.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("queryFileEntitiesFromDB end size[");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      localStringBuilder.append(this.a.size());
       localStringBuilder.append("]");
       QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.a(this.jdField_a_of_type_JavaUtilList);
+    this.b.this$0.a(this.a);
     if (QLog.isColorLevel())
     {
-      localObject = QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString;
+      localObject = QfileBaseRecentFileTabView.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("initFileEntities size[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList.size());
+      localStringBuilder.append(this.b.this$0.k.size());
       localStringBuilder.append("]");
       QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.a();
-    Object localObject = QfileBaseRecentFileTabView.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0).getApplication();
+    this.b.this$0.getRecentFileRecords();
+    Object localObject = QfileBaseRecentFileTabView.d(this.b.this$0).getApplication();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OfflineFileMerge");
-    localStringBuilder.append(QfileBaseRecentFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0).getCurrentUin());
+    localStringBuilder.append(QfileBaseRecentFileTabView.c(this.b.this$0).getCurrentUin());
     localObject = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     long l1 = ((SharedPreferences)localObject).getLong("LastRequestTime", 0L);
     long l2 = System.currentTimeMillis();
     if (Math.abs(l2 - l1) > 86400000L)
     {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "updata offlineList");
-      QfileBaseRecentFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0);
+      QLog.i(QfileBaseRecentFileTabView.a, 1, "updata offlineList");
+      QfileBaseRecentFileTabView.e(this.b.this$0);
     }
     else
     {
       ((SharedPreferences)localObject).edit().putLong("LastRequestTime", l2).commit();
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "updata last process time");
+      QLog.i(QfileBaseRecentFileTabView.a, 1, "updata last process time");
     }
     if (QLog.isDevelopLevel())
     {
@@ -71,7 +71,7 @@ class QfileBaseRecentFileTabView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.2.1
  * JD-Core Version:    0.7.0.1
  */

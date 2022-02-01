@@ -13,12 +13,12 @@ class NotifyPushSettingFragment$16$1
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    NotifyPushSettingFragment.h(this.a.a).a().setClickable(true);
+    NotifyPushSettingFragment.s(this.a.a).getSwitch().setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.16.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ final class ExpandRedPointApiChannel$OnRedDotChangeStreamHandler$dispatchRedPoin
   
   public final void run()
   {
-    Iterator localIterator = ((Iterable)this.this$0.a()).iterator();
+    Iterator localIterator = ((Iterable)this.this$0.b()).iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -61,7 +61,7 @@ final class ExpandRedPointApiChannel$OnRedDotChangeStreamHandler$dispatchRedPoin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.redpoint.ExpandRedPointApiChannel.OnRedDotChangeStreamHandler.dispatchRedPoint.1
  * JD-Core Version:    0.7.0.1
  */

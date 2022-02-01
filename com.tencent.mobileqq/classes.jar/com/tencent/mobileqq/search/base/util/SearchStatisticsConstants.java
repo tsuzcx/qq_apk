@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class SearchStatisticsConstants
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static String a = "";
+  private static int b;
+  private static Map<Integer, Integer> c = new HashMap();
   
   public static int a(int paramInt)
   {
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    Integer localInteger = (Integer)c.get(Integer.valueOf(paramInt));
     if (localInteger == null) {
       return 0;
     }
@@ -20,16 +20,16 @@ public class SearchStatisticsConstants
   
   public static String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
-  public static void a()
+  public static void b()
   {
     try
     {
-      jdField_a_of_type_JavaLangString = "";
-      jdField_a_of_type_Int = 0;
-      jdField_a_of_type_JavaUtilMap.clear();
+      a = "";
+      b = 0;
+      c.clear();
       return;
     }
     finally
@@ -39,7 +39,7 @@ public class SearchStatisticsConstants
     }
   }
   
-  public static void a(int paramInt)
+  public static void b(int paramInt)
   {
     switch (paramInt)
     {
@@ -48,20 +48,20 @@ public class SearchStatisticsConstants
     }
     try
     {
-      jdField_a_of_type_Int += 1;
+      b += 1;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append(paramInt);
       localStringBuilder.append("|");
-      jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(jdField_a_of_type_Int));
+      a = localStringBuilder.toString();
+      c.put(Integer.valueOf(paramInt), Integer.valueOf(b));
     }
     finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.util.SearchStatisticsConstants
  * JD-Core Version:    0.7.0.1
  */

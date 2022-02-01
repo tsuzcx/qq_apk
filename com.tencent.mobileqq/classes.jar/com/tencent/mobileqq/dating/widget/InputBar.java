@@ -12,18 +12,18 @@ import com.tencent.widget.ListView;
 public class InputBar
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private InputBar.IIputBarCallback jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private ListView a;
   private int b;
   private int c;
   private int d;
   private int e;
   private int f;
-  private int g;
-  private int h = 0;
+  private boolean g = false;
+  private int h;
+  private int i;
+  private View j;
+  private int k = 0;
+  private InputBar.IIputBarCallback l;
   
   public InputBar(Context paramContext)
   {
@@ -39,20 +39,20 @@ public class InputBar
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    paramInt1 = this.h;
+    paramInt1 = this.k;
     Object localObject;
     if (paramInt1 == 0)
     {
-      this.h = paramInt4;
+      this.k = paramInt4;
     }
     else if (paramInt4 == paramInt1)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback;
+      localObject = this.l;
       if (localObject != null) {
         ((InputBar.IIputBarCallback)localObject).a();
       }
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
     if (QLog.isDevelopLevel())
@@ -67,37 +67,37 @@ public class InputBar
     if (paramInt2 <= 0) {
       return;
     }
-    paramInt1 = this.d;
+    paramInt1 = this.e;
     if (paramInt1 <= 0)
     {
-      this.d = paramInt2;
-      this.g = paramInt2;
+      this.e = paramInt2;
+      this.i = paramInt2;
       return;
     }
-    if ((paramInt2 != paramInt1) && (paramInt2 == this.g))
+    if ((paramInt2 != paramInt1) && (paramInt2 == this.i))
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
+      localObject = this.j;
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentWidgetListView.removeFooterView((View)localObject);
+        this.a.removeFooterView((View)localObject);
       }
-      this.d = paramInt2;
+      this.e = paramInt2;
       return;
     }
-    if ((paramInt2 != this.d) && (paramInt2 != this.g))
+    if ((paramInt2 != this.e) && (paramInt2 != this.i))
     {
       getHandler().post(new InputBar.1(this, paramInt2));
-      this.d = paramInt2;
+      this.e = paramInt2;
     }
   }
   
   public void setmCallback(InputBar.IIputBarCallback paramIIputBarCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback = paramIIputBarCallback;
+    this.l = paramIIputBarCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.InputBar
  * JD-Core Version:    0.7.0.1
  */

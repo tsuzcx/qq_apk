@@ -17,8 +17,8 @@ class WatchTogetherMediaPlayCtrl$2
       return;
     }
     WatchTogetherMediaPlayCtrl.a(this.this$0, null);
-    if (WatchTogetherMediaPlayCtrl.a(this.this$0) != null) {
-      WatchTogetherMediaPlayCtrl.a(this.this$0).b();
+    if (WatchTogetherMediaPlayCtrl.c(this.this$0) != null) {
+      WatchTogetherMediaPlayCtrl.c(this.this$0).c();
     }
   }
 }

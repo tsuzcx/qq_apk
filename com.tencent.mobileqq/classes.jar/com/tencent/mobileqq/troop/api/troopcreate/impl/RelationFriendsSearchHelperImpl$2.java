@@ -10,7 +10,7 @@ class RelationFriendsSearchHelperImpl$2
   
   public int a(Map.Entry<String, RelationFriendsSearchHelperImpl.MemberScore> paramEntry1, Map.Entry<String, RelationFriendsSearchHelperImpl.MemberScore> paramEntry2)
   {
-    long l = ((RelationFriendsSearchHelperImpl.MemberScore)paramEntry2.getValue()).a - ((RelationFriendsSearchHelperImpl.MemberScore)paramEntry1.getValue()).a;
+    long l = ((RelationFriendsSearchHelperImpl.MemberScore)paramEntry2.getValue()).d - ((RelationFriendsSearchHelperImpl.MemberScore)paramEntry1.getValue()).d;
     if (l > 0L) {
       return 1;
     }
@@ -22,7 +22,7 @@ class RelationFriendsSearchHelperImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.troopcreate.impl.RelationFriendsSearchHelperImpl.2
  * JD-Core Version:    0.7.0.1
  */

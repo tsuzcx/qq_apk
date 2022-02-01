@@ -25,9 +25,9 @@ class VasProfileQVipV5View$1$1
       VasProfileQVipV5View.access$202(this.this$1.this$0, this.val$info.pendantId);
       localObject = (AvatarPendantManager)VasProfileQVipV5View.access$300(this.this$1.this$0).getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
       if (AvatarPendantUtil.a(VasProfileQVipV5View.access$400(this.this$1.this$0))) {
-        ((AvatarPendantManager)localObject).a(VasProfileQVipV5View.access$500(this.this$1.this$0)).a(VasProfileQVipV5View.access$100(this.this$1.this$0), 2, PendantInfo.c, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
+        ((AvatarPendantManager)localObject).a(VasProfileQVipV5View.access$500(this.this$1.this$0)).a(VasProfileQVipV5View.access$100(this.this$1.this$0), 2, PendantInfo.d, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
       } else {
-        ((AvatarPendantManager)localObject).a(VasProfileQVipV5View.access$600(this.this$1.this$0)).a(VasProfileQVipV5View.access$100(this.this$1.this$0), 1, PendantInfo.c, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
+        ((AvatarPendantManager)localObject).a(VasProfileQVipV5View.access$600(this.this$1.this$0)).a(VasProfileQVipV5View.access$100(this.this$1.this$0), 1, PendantInfo.d, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
       }
       if (this.this$1.val$isInit) {
         ReportController.b(VasProfileQVipV5View.access$700(this.this$1.this$0), "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
@@ -42,7 +42,7 @@ class VasProfileQVipV5View$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipV5View.1.1
  * JD-Core Version:    0.7.0.1
  */

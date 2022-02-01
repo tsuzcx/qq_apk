@@ -2,11 +2,11 @@ package com.tencent.mobileqq.richmediabrowser;
 
 import android.support.v4.util.ArraySet;
 import android.text.TextUtils;
+import com.tencent.common.danmaku.data.BaseDanmaku;
 import com.tencent.mobileqq.comment.DanmuItemBean;
 import com.tencent.mobileqq.comment.config.DanmuConfProcessor;
 import com.tencent.mobileqq.comment.danmaku.CommentDanmakuManager;
 import com.tencent.mobileqq.comment.danmaku.data.CommentDanmaku;
-import com.tencent.mobileqq.danmaku.data.BaseDanmaku;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
@@ -44,7 +44,7 @@ public class BrowserDanmakuUtils
           BaseDanmaku localBaseDanmaku = paramCommentDanmakuManager.a(new CommentDanmaku((DanmuItemBean)paramConcurrentHashMap.next()));
           if (localBaseDanmaku != null)
           {
-            localBaseDanmaku.a(5000);
+            localBaseDanmaku.b(5000);
             localBaseDanmaku.e(true);
             paramList.add(localBaseDanmaku);
           }
@@ -129,11 +129,11 @@ public class BrowserDanmakuUtils
         BaseDanmaku localBaseDanmaku = paramCommentDanmakuManager.a(localCommentDanmaku);
         if (localBaseDanmaku != null)
         {
-          localBaseDanmaku.b(((DanmuItemBean)localObject).c);
-          if (!TextUtils.isEmpty(localCommentDanmaku.a))
+          localBaseDanmaku.g(((DanmuItemBean)localObject).c);
+          if (!TextUtils.isEmpty(localCommentDanmaku.b))
           {
             localObject = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(localCommentDanmaku.a))) {
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(localCommentDanmaku.b))) {
               localBaseDanmaku.e(true);
             }
           }
@@ -165,7 +165,7 @@ public class BrowserDanmakuUtils
   
   public static boolean a()
   {
-    return (DanmuConfProcessor.a()) && (ParamsManager.a().a() == 1);
+    return (DanmuConfProcessor.a()) && (ParamsManager.a().i() == 1);
   }
   
   public static boolean a(RichMediaBrowserInfo paramRichMediaBrowserInfo)
@@ -177,36 +177,36 @@ public class BrowserDanmakuUtils
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("shouldShowDanmakuBtn, paramsManager.isFromMultiMsg() = ");
-      localStringBuilder.append(ParamsManager.a().d());
+      localStringBuilder.append(ParamsManager.a().g());
       localStringBuilder.append(" , paramsManager.getmCurType() = ");
-      localStringBuilder.append(ParamsManager.a().a());
+      localStringBuilder.append(ParamsManager.a().i());
       localStringBuilder.append(" , paramsManager.getSourceEntrance() = ");
-      localStringBuilder.append(ParamsManager.a().c());
+      localStringBuilder.append(ParamsManager.a().o());
       localStringBuilder.append(" , paramsManager.isReplyMsgFromSameSession() = ");
-      localStringBuilder.append(ParamsManager.a().h());
+      localStringBuilder.append(ParamsManager.a().s());
       localStringBuilder.append(" , paramsManager.isMixedMsg = ");
-      localStringBuilder.append(ParamsManager.a().b);
-      localStringBuilder.append(" , paramsManager.isReplySrcMsgExist = ");
       localStringBuilder.append(ParamsManager.a().c);
+      localStringBuilder.append(" , paramsManager.isReplySrcMsgExist = ");
+      localStringBuilder.append(ParamsManager.a().d);
       if ((paramRichMediaBrowserInfo != null) && ((paramRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)))
       {
         AIOBrowserBaseData localAIOBrowserBaseData = (AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData;
         localStringBuilder.append(", galleryInfo.mData.isInMixedMsg = ");
-        localStringBuilder.append(localAIOBrowserBaseData.b);
+        localStringBuilder.append(localAIOBrowserBaseData.h);
         localStringBuilder.append(" isMsgSeqReady = ");
-        localStringBuilder.append(localAIOBrowserBaseData.c);
+        localStringBuilder.append(localAIOBrowserBaseData.i);
       }
       QLog.d("BrowserDanmakuUtils", 2, localStringBuilder.toString());
     }
-    if ((!ParamsManager.a().d()) && (ParamsManager.a().a() == 1) && (ParamsManager.a().c() != 4) && (ParamsManager.a().h()) && (ParamsManager.a().c) && ((paramRichMediaBrowserInfo == null) || (!(paramRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) || (!((AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData).b))) {
-      return (paramRichMediaBrowserInfo == null) || (!(paramRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) || (((AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData).c);
+    if ((!ParamsManager.a().g()) && (ParamsManager.a().i() == 1) && (ParamsManager.a().o() != 4) && (ParamsManager.a().s()) && (ParamsManager.a().d) && ((paramRichMediaBrowserInfo == null) || (!(paramRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) || (!((AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData).h))) {
+      return (paramRichMediaBrowserInfo == null) || (!(paramRichMediaBrowserInfo.baseData instanceof AIOBrowserBaseData)) || (((AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData).i);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.BrowserDanmakuUtils
  * JD-Core Version:    0.7.0.1
  */

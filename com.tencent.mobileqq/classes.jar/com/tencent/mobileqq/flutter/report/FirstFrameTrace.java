@@ -8,39 +8,39 @@ import mqq.os.MqqHandler;
 
 public class FirstFrameTrace
 {
-  private long jdField_a_of_type_Long;
-  private LaunchTrace jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long c;
-  private long d;
+  private String a;
+  private boolean b;
+  private boolean c;
+  private LaunchTrace d;
   private long e;
   private long f;
+  private long g;
+  private long h;
+  private long i;
+  private long j;
   
   public FirstFrameTrace(String paramString, boolean paramBoolean, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString;
+    this.b = paramBoolean;
+    this.e = paramLong;
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+    this.f = SystemClock.elapsedRealtime();
   }
   
   public void a(LaunchResult paramLaunchResult)
   {
-    this.c = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace = paramLaunchResult.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace;
-    this.jdField_b_of_type_Boolean = paramLaunchResult.jdField_a_of_type_Boolean;
+    this.g = SystemClock.elapsedRealtime();
+    this.d = paramLaunchResult.d;
+    this.c = paramLaunchResult.b;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.d = SystemClock.elapsedRealtime();
+    this.h = SystemClock.elapsedRealtime();
     if (paramBoolean) {
       ThreadManager.getSubThreadHandler().post(new FirstFrameTrace.1(this));
     }
@@ -48,17 +48,17 @@ public class FirstFrameTrace
   
   public void b()
   {
-    this.e = SystemClock.elapsedRealtime();
+    this.i = SystemClock.elapsedRealtime();
   }
   
   public void c()
   {
-    this.f = (SystemClock.elapsedRealtime() - this.e);
+    this.j = (SystemClock.elapsedRealtime() - this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.report.FirstFrameTrace
  * JD-Core Version:    0.7.0.1
  */

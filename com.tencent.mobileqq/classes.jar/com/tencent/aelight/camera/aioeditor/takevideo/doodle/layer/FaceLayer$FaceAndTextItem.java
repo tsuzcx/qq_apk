@@ -23,32 +23,30 @@ import com.tencent.qphone.base.util.QLog;
 public final class FaceLayer$FaceAndTextItem
   extends FaceLayer.FaceItem
 {
-  public int a;
-  public Path a;
-  public StaticLayout a;
-  public final String a;
-  public boolean a;
+  public final String a = "...";
   public int b;
-  public String b;
   public int c;
-  public String c;
-  public int d;
+  public String d;
+  public String e;
+  public StaticLayout f;
+  public int g;
+  public Path h = new Path();
+  public int i;
+  public boolean j;
   
   public FaceLayer$FaceAndTextItem(FaceLayer paramFaceLayer, @NonNull Drawable paramDrawable, @NonNull FaceLayer.LayerParams paramLayerParams, String paramString1, String paramString2, String paramString3, int paramInt)
   {
     super(paramFaceLayer, paramDrawable, paramLayerParams, paramString1, paramString2, paramString3, paramInt);
-    this.jdField_a_of_type_JavaLangString = "...";
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_Int = paramLayerParams.d;
-    this.jdField_b_of_type_Int = paramLayerParams.jdField_c_of_type_Int;
-    a(paramLayerParams.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_Boolean = true;
+    this.b = paramLayerParams.j;
+    this.c = paramLayerParams.i;
+    a(paramLayerParams.h);
+    this.s = true;
   }
   
   public FaceLayer$FaceAndTextItem(FaceLayer paramFaceLayer, @NonNull Drawable paramDrawable, @NonNull FaceLayer.LayerParams paramLayerParams, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     this(paramFaceLayer, paramDrawable, paramLayerParams, paramString1, paramString2, paramString3, paramInt1);
-    this.jdField_f_of_type_Int = paramInt2;
+    this.r = paramInt2;
   }
   
   public void a()
@@ -65,116 +63,116 @@ public final class FaceLayer$FaceAndTextItem
   public void a(Canvas paramCanvas)
   {
     paramCanvas.save();
-    paramCanvas.concat(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper.a(this));
+    paramCanvas.concat(this.k.m.b(this));
     DisplayUtil.a();
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1) {
-      paramCanvas.translate(0.0F, this.jdField_c_of_type_Int);
+    paramCanvas.translate(-this.G / 2.0F, -this.H / 2.0F);
+    if (this.f.getLineCount() == 1) {
+      paramCanvas.translate(0.0F, this.g);
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidGraphicsRectF.height());
+    this.l.draw(paramCanvas);
+    paramCanvas.translate(0.0F, this.m.height());
     paramCanvas.save();
     paramCanvas.translate(6.0F, 16.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    this.k.e.setTextSize(this.b);
+    this.k.e.setColor(this.c);
+    this.f.draw(paramCanvas);
     paramCanvas.restore();
     paramCanvas.save();
     paramCanvas.translate(0.0F, 10.0F);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.j)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.d.setAlpha(this.d);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.d);
+      this.k.h.setAlpha(this.i);
+      paramCanvas.drawPath(this.h, this.k.h);
     }
     paramCanvas.restore();
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 32);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.n, 6);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.translate(0.0F, this.f.getHeight() + 32);
+    this.k.l.setBounds(0, 0, (int)this.G, 6);
+    this.k.l.draw(paramCanvas);
     paramCanvas.restore();
-    if (this.jdField_f_of_type_Boolean)
+    if (this.M)
     {
       paramCanvas.save();
-      int i;
-      if (this.jdField_j_of_type_Int == 0) {
-        i = 2130844622;
+      int m;
+      if (this.O == 0) {
+        m = 2130845995;
       } else {
-        i = 2130844621;
+        m = 2130845994;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isDataLocked()) {
-        if (this.jdField_j_of_type_Int == 0) {
-          i = 2130844630;
+      if (!this.U.isDataLocked()) {
+        if (this.O == 0) {
+          m = 2130846003;
         } else {
-          i = 2130844628;
+          m = 2130846001;
         }
       }
-      int j;
-      if (this.jdField_j_of_type_Int == 1) {
-        j = 2130844620;
+      int n;
+      if (this.O == 1) {
+        n = 2130845993;
       } else {
-        j = 2130844619;
+        n = 2130845992;
       }
-      int k;
-      if (this.jdField_j_of_type_Int == 2) {
-        k = 2130844627;
+      int i1;
+      if (this.O == 2) {
+        i1 = 2130846000;
       } else {
-        k = 2130844626;
+        i1 = 2130845999;
       }
-      DisplayUtil.a(paramCanvas, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUtilGestureHelper, this, i, j, k);
+      DisplayUtil.a(paramCanvas, this.k.m, this, m, n, i1);
       paramCanvas.restore();
     }
   }
   
   public void a(Canvas paramCanvas, boolean paramBoolean)
   {
-    float f2 = this.n;
-    float f1 = this.o;
-    if (f2 * this.jdField_j_of_type_Float < 200.0F) {
-      f2 = this.jdField_j_of_type_Float;
+    float f2 = this.G;
+    float f1 = this.H;
+    if (f2 * this.B < 200.0F) {
+      f2 = this.B;
     }
-    if (f1 * this.jdField_j_of_type_Float < 200.0F) {
-      f1 = this.jdField_j_of_type_Float;
+    if (f1 * this.B < 200.0F) {
+      f1 = this.B;
     }
     paramCanvas.save();
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1) {
-      paramCanvas.translate(0.0F, this.jdField_c_of_type_Int);
+    paramCanvas.translate(-this.G / 2.0F, -this.H / 2.0F);
+    if (this.f.getLineCount() == 1) {
+      paramCanvas.translate(0.0F, this.g);
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidGraphicsRectF.height());
+    this.l.draw(paramCanvas);
+    paramCanvas.translate(0.0F, this.m.height());
     paramCanvas.save();
     paramCanvas.translate(6.0F, 16.0F);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    this.k.e.setTextSize(this.b);
+    this.k.e.setColor(this.c);
+    this.f.draw(paramCanvas);
     paramCanvas.restore();
     if (paramBoolean)
     {
       paramCanvas.save();
       paramCanvas.translate(0.0F, 10.0F);
-      if (this.jdField_a_of_type_Boolean)
+      if (this.j)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.d.setAlpha(this.d);
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.d);
+        this.k.h.setAlpha(this.i);
+        paramCanvas.drawPath(this.h, this.k.h);
       }
       paramCanvas.restore();
     }
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 32);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.n, 6);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    paramCanvas.translate(0.0F, this.f.getHeight() + 32);
+    this.k.l.setBounds(0, 0, (int)this.G, 6);
+    this.k.l.draw(paramCanvas);
     paramCanvas.restore();
   }
   
   public void a(TroopBarPOI paramTroopBarPOI)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI = paramTroopBarPOI;
+    this.u = paramTroopBarPOI;
     if (paramTroopBarPOI != null)
     {
-      a(paramTroopBarPOI.a());
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      a(paramTroopBarPOI.b());
+      this.v = System.currentTimeMillis();
       return;
     }
     a(null);
-    this.jdField_a_of_type_Long = -1L;
+    this.v = -1L;
   }
   
   public void a(String paramString)
@@ -182,84 +180,84 @@ public final class FaceLayer$FaceAndTextItem
     Object localObject = paramString;
     if (TextUtils.isEmpty(paramString))
     {
-      SLog.e(FaceLayer.jdField_a_of_type_JavaLangString, "text is empty.");
+      SLog.e(FaceLayer.a, "text is empty.");
       localObject = "";
     }
-    paramString = FaceLayer.jdField_a_of_type_JavaLangString;
+    paramString = FaceLayer.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("text:");
     localStringBuilder.append((String)localObject);
     SLog.b(paramString, localStringBuilder.toString());
-    this.jdField_c_of_type_JavaLangString = ((String)localObject);
-    this.jdField_b_of_type_JavaLangString = ((String)localObject);
-    int j = (int)(this.n - 12.0F);
-    int i = j;
-    if (j < 0)
+    this.e = ((String)localObject);
+    this.d = ((String)localObject);
+    int n = (int)(this.G - 12.0F);
+    int m = n;
+    if (n < 0)
     {
-      QLog.d(FaceLayer.jdField_a_of_type_JavaLangString, 2, "faceItem setText width < 0");
-      i = 0;
+      QLog.d(FaceLayer.a, 2, "faceItem setText width < 0");
+      m = 0;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > 2)
+    this.k.e.setTextSize(this.b);
+    this.f = new StaticLayout(this.e, this.k.e, m, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
+    if (this.f.getLineCount() > 2)
     {
-      j = this.jdField_a_of_type_AndroidTextStaticLayout.getLineEnd(1);
-      paramString = this.jdField_c_of_type_JavaLangString.substring(0, j);
-      localObject = FaceLayer.jdField_a_of_type_JavaLangString;
+      n = this.f.getLineEnd(1);
+      paramString = this.e.substring(0, n);
+      localObject = FaceLayer.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("subString : ");
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(this.e);
       localStringBuilder.append(" -> ");
       localStringBuilder.append(paramString);
       SLog.b((String)localObject, localStringBuilder.toString());
-      this.jdField_c_of_type_JavaLangString = paramString;
-      j = this.jdField_c_of_type_JavaLangString.length() - 1;
+      this.e = paramString;
+      n = this.e.length() - 1;
       paramString = new StringBuilder();
-      paramString.append(this.jdField_c_of_type_JavaLangString);
+      paramString.append(this.e);
       paramString.append("...");
-      this.jdField_c_of_type_JavaLangString = paramString.toString();
-      for (this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false); (j > 0) && (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > 2); this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidTextTextPaint, i, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false))
+      this.e = paramString.toString();
+      for (this.f = new StaticLayout(this.e, this.k.e, m, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false); (n > 0) && (this.f.getLineCount() > 2); this.f = new StaticLayout(this.e, this.k.e, m, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false))
       {
         paramString = new StringBuilder();
-        paramString.append(this.jdField_c_of_type_JavaLangString.substring(0, j));
+        paramString.append(this.e.substring(0, n));
         paramString.append("...");
         paramString = paramString.toString();
-        j -= 1;
-        localObject = FaceLayer.jdField_a_of_type_JavaLangString;
+        n -= 1;
+        localObject = FaceLayer.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("delete last char : ");
-        localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+        localStringBuilder.append(this.e);
         localStringBuilder.append(" -> ");
         localStringBuilder.append(paramString);
         SLog.b((String)localObject, localStringBuilder.toString());
-        this.jdField_c_of_type_JavaLangString = paramString;
+        this.e = paramString;
       }
-      if (j == 0)
+      if (n == 0)
       {
-        paramString = FaceLayer.jdField_a_of_type_JavaLangString;
+        paramString = FaceLayer.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("text size is too large :");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.b);
         SLog.e(paramString, ((StringBuilder)localObject).toString());
       }
     }
-    paramString = FaceLayer.jdField_a_of_type_JavaLangString;
+    paramString = FaceLayer.a;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("final text : ");
-    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.e);
     ((StringBuilder)localObject).append(" , original text : ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.d);
     SLog.b(paramString, ((StringBuilder)localObject).toString());
     paramString = new Rect();
-    this.jdField_a_of_type_AndroidTextStaticLayout.getLineBounds(0, paramString);
-    this.jdField_c_of_type_Int = paramString.height();
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, this.n, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 12), 4.0F, 4.0F, Path.Direction.CCW);
+    this.f.getLineBounds(0, paramString);
+    this.g = paramString.height();
+    this.h.reset();
+    this.h.addRoundRect(new RectF(0.0F, 0.0F, this.G, this.f.getHeight() + 12), 4.0F, 4.0F, Path.Direction.CCW);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.FaceLayer.FaceAndTextItem
  * JD-Core Version:    0.7.0.1
  */

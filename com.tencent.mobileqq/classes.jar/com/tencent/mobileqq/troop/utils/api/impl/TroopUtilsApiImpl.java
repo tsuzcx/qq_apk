@@ -589,7 +589,7 @@ public class TroopUtilsApiImpl
     {
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramContext.getResources().getString(2131696128));
+      localStringBuilder.append(paramContext.getResources().getString(2131893893));
       localStringBuilder.append(localSimpleDateFormat.format(Long.valueOf(paramLong * 1000L)));
       return localStringBuilder.toString();
     }
@@ -778,7 +778,7 @@ public class TroopUtilsApiImpl
   public void handleJoinTroopFailed(Activity paramActivity, int paramInt)
   {
     QQToastNotifier localQQToastNotifier = new QQToastNotifier(paramActivity);
-    int i = paramActivity.getResources().getDimensionPixelSize(2131299168);
+    int i = paramActivity.getResources().getDimensionPixelSize(2131299920);
     if (paramInt != 2)
     {
       if (paramInt != 3)
@@ -789,22 +789,22 @@ public class TroopUtilsApiImpl
           {
             if ((paramInt != 8) && (paramInt != 11))
             {
-              localQQToastNotifier.a(2131693506, i, 0, 1);
+              localQQToastNotifier.notifyUser(2131891060, i, 0, 1);
               return;
             }
-            localQQToastNotifier.a(2131719931, i, 0, 1);
+            localQQToastNotifier.notifyUser(2131917536, i, 0, 1);
             return;
           }
-          localQQToastNotifier.a(HardCodeUtil.a(2131715586), i, 0, 1);
+          localQQToastNotifier.notifyUser(HardCodeUtil.a(2131913058), i, 0, 1);
           return;
         }
-        localQQToastNotifier.a(HardCodeUtil.a(2131715591), i, 0, 1);
+        localQQToastNotifier.notifyUser(HardCodeUtil.a(2131913063), i, 0, 1);
         return;
       }
-      localQQToastNotifier.a(HardCodeUtil.a(2131715585), i, 0, 1);
+      localQQToastNotifier.notifyUser(HardCodeUtil.a(2131913057), i, 0, 1);
       return;
     }
-    localQQToastNotifier.a(HardCodeUtil.a(2131715596), i, 0, 1);
+    localQQToastNotifier.notifyUser(HardCodeUtil.a(2131913068), i, 0, 1);
   }
   
   public TroopInfo initTroopInfo(AppRuntime paramAppRuntime, TroopInfoData paramTroopInfoData, Context paramContext)
@@ -984,10 +984,10 @@ public class TroopUtilsApiImpl
         }
         return false;
       }
-      if (TextUtils.equals("5295", paramContext))
+      if (TextUtils.equals("5770", paramContext))
       {
         if (QLog.isColorLevel()) {
-          QLog.i("TroopUtilsApiImpl", 2, String.format("isUpdateBeforeSomeVersion pre: %s, cur: %s", new Object[] { "5295", paramContext }));
+          QLog.i("TroopUtilsApiImpl", 2, String.format("isUpdateBeforeSomeVersion pre: %s, cur: %s", new Object[] { "5770", paramContext }));
         }
         return false;
       }
@@ -995,7 +995,7 @@ public class TroopUtilsApiImpl
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         paramContext = "8.0.0";
       }
-      localObject = AppSetting.a();
+      localObject = AppSetting.b();
       if (TextUtils.equals(paramContext, (CharSequence)localObject))
       {
         if (QLog.isColorLevel()) {
@@ -1100,7 +1100,7 @@ public class TroopUtilsApiImpl
   
   public void notifyUser(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    new QQToastNotifier(paramContext).a(paramInt2, paramInt1, 0, paramInt3);
+    new QQToastNotifier(paramContext).notifyUser(paramInt2, paramInt1, 0, paramInt3);
   }
   
   public void preloadWebProcess(AppRuntime paramAppRuntime)
@@ -1147,7 +1147,7 @@ public class TroopUtilsApiImpl
     } else {
       str1 = "2";
     }
-    paramAppRuntime = paramString.replace("$GCODE$", paramTroopInfoData.troopUin).replace("$CLIENTVER$", "android8.7.0").replace("$UIN$", paramAppRuntime.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", str1);
+    paramAppRuntime = paramString.replace("$GCODE$", paramTroopInfoData.troopUin).replace("$CLIENTVER$", "android8.8.17").replace("$UIN$", paramAppRuntime.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", str1);
     if (paramBoolean) {
       paramString = str2;
     } else {
@@ -1352,7 +1352,7 @@ public class TroopUtilsApiImpl
       paramTextView.setVisibility(0);
       paramTextView.setBackgroundResource(0);
       paramTextView.setCompoundDrawablePadding(Utils.a(10.0F, MobileQQ.getContext().getResources()));
-      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130841440, 0);
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130842281, 0);
       return;
     }
     paramTextView.setCompoundDrawablePadding(0);
@@ -1461,7 +1461,7 @@ public class TroopUtilsApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.api.impl.TroopUtilsApiImpl
  * JD-Core Version:    0.7.0.1
  */

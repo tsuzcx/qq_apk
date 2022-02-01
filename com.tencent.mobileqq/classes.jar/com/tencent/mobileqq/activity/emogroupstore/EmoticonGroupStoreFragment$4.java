@@ -17,12 +17,12 @@ class EmoticonGroupStoreFragment$4
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
     paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
     paramInt1 = paramRecyclerView.findFirstVisibleItemPosition();
-    String str = EmoticonGroupStoreFragment.a(this.a).a(paramInt1);
+    String str = EmoticonGroupStoreFragment.g(this.a).a(paramInt1);
     if ((str != null) && (paramInt2 != 0))
     {
-      EmoticonGroupStoreFragment.a(this.a).setTextSize(16.0F);
-      EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF000000"));
-      EmoticonGroupStoreFragment.a(this.a).setText(str);
+      EmoticonGroupStoreFragment.h(this.a).setTextSize(16.0F);
+      EmoticonGroupStoreFragment.h(this.a).setTextColor(Color.parseColor("#FF000000"));
+      EmoticonGroupStoreFragment.h(this.a).setText(str);
     }
     if (paramInt2 < 0)
     {
@@ -32,9 +32,9 @@ class EmoticonGroupStoreFragment$4
         float f = paramRecyclerView.getY();
         if ((paramInt1 == 0) && (0.0F == f))
         {
-          EmoticonGroupStoreFragment.a(this.a).setTextSize(14.0F);
-          EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF777777"));
-          EmoticonGroupStoreFragment.a(this.a).setText(EmoticonGroupStoreFragment.a(this.a));
+          EmoticonGroupStoreFragment.h(this.a).setTextSize(14.0F);
+          EmoticonGroupStoreFragment.h(this.a).setTextColor(Color.parseColor("#FF777777"));
+          EmoticonGroupStoreFragment.h(this.a).setText(EmoticonGroupStoreFragment.i(this.a));
         }
       }
     }
@@ -42,7 +42,7 @@ class EmoticonGroupStoreFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.4
  * JD-Core Version:    0.7.0.1
  */

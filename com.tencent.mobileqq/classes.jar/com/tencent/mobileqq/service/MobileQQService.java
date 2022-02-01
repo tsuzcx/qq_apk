@@ -9,6 +9,7 @@ import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.NearFieldDiscussHandler;
 import com.tencent.mobileqq.compatible.TempServlet;
+import com.tencent.mobileqq.guild.message.api.impl.GuildMessagePushHandler;
 import com.tencent.mobileqq.hotchat.app.HotChatHandler;
 import com.tencent.mobileqq.onlinestatus.music.OnlineStatusHandler;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
@@ -39,39 +40,39 @@ public class MobileQQService
   extends MobileQQServiceBase
 {
   @ConfigInject(configPath="Mqq/resources/Inject_MobileQQServiceConfig.yml", version=1)
-  public static ArrayList<Class<? extends BaseProtocolCoder>> a;
+  public static ArrayList<Class<? extends BaseProtocolCoder>> a = new ArrayList();
   @ConfigInject(configPath="Mqq/resources/Inject_MobileQQServiceConfig.yml", version=1)
   public static ArrayList<Class<? extends BusinessHandler>> b;
   @ConfigInject(configPath="Mqq/resources/Inject_MobileQQServiceConfig.yml", version=1)
   public static ArrayList<Class<? extends BusinessHandler>> c;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private BaseQQAppInterface d;
+  private List<String> e = new ArrayList();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(CameraDataService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ProfileService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(FriendListService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(MessageService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(LBSService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QZoneService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(PushService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ConfigService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(ReportService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(DiscussionService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(RegisterProxySvcPackService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(VIPService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(VasService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(BmqqBusinessService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(UniPayService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(VIPRecommendService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(VIPAioSendService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(QWalletAuthService.class);
-    jdField_a_of_type_JavaUtilArrayList.add(WifiSdkService.class);
+    a.add(CameraDataService.class);
+    a.add(ProfileService.class);
+    a.add(FriendListService.class);
+    a.add(MessageService.class);
+    a.add(LBSService.class);
+    a.add(QZoneService.class);
+    a.add(PushService.class);
+    a.add(ConfigService.class);
+    a.add(ReportService.class);
+    a.add(DiscussionService.class);
+    a.add(RegisterProxySvcPackService.class);
+    a.add(VIPService.class);
+    a.add(VasService.class);
+    a.add(BmqqBusinessService.class);
+    a.add(UniPayService.class);
+    a.add(VIPRecommendService.class);
+    a.add(VIPAioSendService.class);
+    a.add(QWalletAuthService.class);
+    a.add(WifiSdkService.class);
     b = new ArrayList();
     b.add(MessageHandler.class);
     b.add(SubAccountBindHandler.class);
+    b.add(GuildMessagePushHandler.class);
     b.add(HotChatHandler.class);
     c = new ArrayList();
     c.add(MessageHandler.class);
@@ -81,14 +82,14 @@ public class MobileQQService
   
   public MobileQQService(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
+    this.d = paramBaseQQAppInterface;
     b();
     c();
   }
   
   private void a()
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext())
     {
       Class localClass = (Class)localIterator.next();
@@ -113,7 +114,7 @@ public class MobileQQService
         Class localClass = (Class)localIterator.next();
         try
         {
-          Object localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(localClass.getName()).getPushCommandList();
+          Object localObject = this.d.getBusinessHandler(localClass.getName()).getPushCommandList();
           if ((localObject != null) && (!((Set)localObject).isEmpty()))
           {
             localObject = ((Set)localObject).iterator();
@@ -138,9 +139,9 @@ public class MobileQQService
       Object localObject = (Class)localIterator.next();
       try
       {
-        localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(((Class)localObject).getName()).getPushPBCommandList();
+        localObject = this.d.getBusinessHandler(((Class)localObject).getName()).getPushPBCommandList();
         if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+          this.e.addAll((Collection)localObject);
         }
       }
       catch (Exception localException)
@@ -160,7 +161,7 @@ public class MobileQQService
   
   public AppInterface getAppInterface()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    return this.d;
   }
   
   protected Class<? extends MSFServlet> getServlet()
@@ -185,12 +186,12 @@ public class MobileQQService
   
   public boolean isPBPushCmd(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList.contains(paramString);
+    return this.e.contains(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.MobileQQService
  * JD-Core Version:    0.7.0.1
  */

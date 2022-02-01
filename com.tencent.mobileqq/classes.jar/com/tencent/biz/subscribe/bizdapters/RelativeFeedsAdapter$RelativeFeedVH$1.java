@@ -13,8 +13,8 @@ class RelativeFeedsAdapter$RelativeFeedVH$1
   
   public void onClick(View paramView)
   {
-    if (((this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.itemView instanceof RelativeFeedItemView)) && (RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.a) != null)) {
-      RelativeFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.a).a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter$RelativeFeedVH.itemView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+    if (((this.b.itemView instanceof RelativeFeedItemView)) && (RelativeFeedsAdapter.e(this.b.a) != null)) {
+      RelativeFeedsAdapter.e(this.b.a).a(this.b.itemView, this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

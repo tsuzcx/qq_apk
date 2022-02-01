@@ -13,16 +13,16 @@ class JumpActionLegacy$11
   
   public void onClick(View paramView)
   {
-    if ((JumpActionLegacy.a(this.a) != null) && (JumpActionLegacy.a(this.a).isShowing())) {
-      JumpActionLegacy.a(this.a).dismiss();
+    if ((JumpActionLegacy.g(this.a) != null) && (JumpActionLegacy.g(this.a).isShowing())) {
+      JumpActionLegacy.g(this.a).dismiss();
     }
-    ((QBaseActivity)this.a.a).finish();
+    ((QBaseActivity)this.a.b).finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.11
  * JD-Core Version:    0.7.0.1
  */
